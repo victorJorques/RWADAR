@@ -156,7 +156,32 @@ está mal es la base de producción.
 
 ## Deuda que hay que saldar, pero no mañana
 
-**El repositorio ya no describe la base.** Se aplicaron a producción migraciones «14 y 15» que **no existen como fichero** en `rwadar-app/db/`. Hasta que se recuperen, nadie puede reconstruir este proyecto desde cero — y eso es justo lo que se estuvo cuidando durante semanas.
+**~~El repositorio ya no describe la base.~~ RECUPERADO** el 14 de agosto de
+2026: está en **`rwadar-app/db/14-15_recuperado.sql`**, leído de la propia base
+con `pg_get_functiondef`, `pg_get_viewdef` y `pg_get_triggerdef`. No está
+escrito a mano: es literalmente lo que hay. 29 funciones, 9 vistas, 23
+políticas y 11 disparadores.
+
+Y trajeron mucho más de lo que nadie recordaba, casi todo bueno:
+
+- `opiniones` tiene una columna **`opinion_id`**, y por eso las operaciones
+  publicadas piden `p_opinion_id`;
+- **está prohibido escribir en `opiniones` y `denuncias` directamente.** Los
+  disparadores `opiniones_solo_rpc` y `denuncias_solo_rpc` lo impiden aunque
+  tengas permiso de tabla, y obligan a pasar por `guardar_opinion`,
+  `denunciar_opinion` y `borrar_mi_opinion`. **Esto es defensa en profundidad,
+  no un fallo** — fue lo que rompió la web, pero porque la web estaba mal, no
+  la base;
+- `protege_privilegio_admin` impide que un usuario se haga administrador
+  editando su propio perfil;
+- `dispositivos` gana `user_id`, que enlaza el móvil con la cuenta;
+- `limpiar_dispositivos_inactivos` evita que la tabla de tokens crezca sin fin;
+- `sincroniza_autor_opiniones`: cambiar tu nombre cambia la firma de lo que ya
+  escribiste.
+
+Ese fichero **no es una migración replayable**, es un retrato. Si algún día hay
+que reconstruir desde cero, es la referencia contra la que escribir las
+migraciones limpias.
 
 Y ya ha costado algo, no es una deuda teórica: **los permisos que faltaban sobre `opiniones` y `denuncias` los quitó algo que no está escrito en ningún sitio.** El repositorio los concede; producción no los tenía. La explicación más probable es que una de esas dos migraciones fantasma hiciera un `revoke` amplio para tapar la fuga de la cola de moderación y no volviera a conceder estas dos. Mientras 14 y 15 sigan sin fichero no hay forma de saberlo, y tampoco de saber qué más se llevaron por delante.
 
