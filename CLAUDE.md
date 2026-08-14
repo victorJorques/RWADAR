@@ -20,10 +20,18 @@ base64 al principio del `<style>`: no las leas nunca, no dicen nada.
 
 | Si vas a… | Lee primero | Coste |
 |---|---|---|
+| **tocar cuentas, opiniones, moderación o la base en línea** | **`RWADAR-MANANA.md`** | ~2 k |
 | tocar la web | `RWADAR-MAPA.md` → te da la marca de grep exacta | ~2,8 k |
 | entender por qué algo está así | `RWADAR-ESTADO.md` (tiene índice; lee solo la sección) | ~6 k entero |
 | trabajar la app móvil | `rwadar-movil/` | — |
 | tocar datos o esquema | `rwadar-app/` | — |
+
+**Producción NO coincide con el repositorio.** Se le aplicaron migraciones que
+no existen como fichero: la base prohíbe escribir opiniones directamente y
+publica funciones para ello. Eso no se ve leyendo el código y las pruebas
+locales pasan en verde igualmente. Antes de dar nada por bueno:
+`cd rwadar-app && node probar-produccion.mjs` (no necesita token, se limpia
+sola). El contrato real está en `RWADAR-MANANA.md`.
 
 **Cuatro reglas que no se negocian:**
 
@@ -46,6 +54,17 @@ Comprueba que el JS compila, que el pre-renderizado está puesto, que la
 carpeta publicable no tiene archivos de más, que Supabase responde, que
 **ninguna descartada va sin fuente** y si lo publicado coincide con lo
 local. Luego levanta el servidor en http://localhost:4173 (y `/banco`).
+
+---
+
+**El código está publicado** en github.com/victorJorques/RWADAR. El
+`.gitignore` de esta carpeta es una **lista blanca**: ignora todo y readmite
+solo lo de RWAdar, porque aquí dentro hay extractos bancarios y documentos
+personales. No lo conviertas en lista negra ni le quites la primera línea.
+
+**La app móvil se actualiza sola por el aire** (EAS Update). Para publicar un
+cambio de código sin pasar por la tienda:
+`cd rwadar-movil && npx eas update --branch production --environment production -m "qué cambia"`.
 
 ---
 

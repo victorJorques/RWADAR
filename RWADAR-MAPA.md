@@ -54,9 +54,32 @@ el número de línea, y con `Read offset/limit` sacas solo el tramo.
 | `rwadar-servir.js` | Servidor local en `:4173`. También `/banco` y el `POST /guardar` de capturas |
 | `rwadar-banco-de-sonidos.html` | Banco de pruebas de sonido, servido en `/banco` |
 | `RWADAR-ESTADO.md` | El *por qué*: decisiones, trampas, estado del proyecto |
+| `RWADAR-MANANA.md` | **Lo que NO coincide entre producción y el repositorio.** Empieza aquí si tocas cuentas, opiniones o moderación |
 | `RWADAR-MAPA.md` | Este archivo: el *dónde* |
 | `rwadar-app/` | Esquema de Supabase, `sincronizar.js`, utilidades de datos |
 | `rwadar-movil/` | App de Expo (proyecto aparte) |
+
+### Las pruebas: qué comprueba cada una
+
+Ninguna necesita token. Las tres primeras levantan un Postgres embebido; las
+dos últimas atacan la base **en línea** y se limpian solas.
+
+| Comando | Qué demuestra |
+|---|---|
+| `node rwadar-arrancar.js` | Que el JS compila, que lo publicado coincide con lo local, que ninguna descartada va sin fuente |
+| `rwadar-app/probar-opiniones.mjs` | Opiniones, denuncias y retirada automática |
+| `rwadar-app/probar-moderacion.mjs` | Que quien no es administrador **no** puede moderar |
+| `rwadar-app/probar-reparacion.mjs` | La migración 16 sobre el estado roto de producción, reproducido |
+| `rwadar-app/probar-push.mjs` | El reparto de avisos, incluidos los fallos que devuelven 200 |
+| `rwadar-app/probar-produccion.mjs` | **La base en línea**: se registra, opina, vigila y se borra |
+| `rwadar-app/probar-app-movil.mjs` | **La base en línea** desde la app: seguir y guardar el token push |
+
+### El código, publicado
+
+github.com/victorJorques/RWADAR · repositorio público. El `.gitignore` de la
+raíz es una **lista blanca**: ignora todo y readmite solo lo de RWAdar, porque
+esta carpeta es `Downloads` y aquí dentro hay documentos personales. No lo
+conviertas en lista negra.
 
 Y nada más. Si aparece cualquier otra cosa —un `.netlify`, un PNG suelto de
 una captura, una versión vieja del sitio— es basura de trabajo y se puede

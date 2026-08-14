@@ -14,10 +14,14 @@ Entero cuesta ~6.000 tokens. Casi nunca hace falta. Cada fila da la marca
 que se busca con grep y el tramo aproximado, para leerlo con
 `Read offset/limit`.
 
+> **Antes que nada: si el trabajo va de cuentas, opiniones, moderación o de
+> la base en línea, empieza por `RWADAR-MANANA.md`.** Producción no coincide
+> con el repositorio y ese documento tiene el contrato real, medido.
+
 | Necesito | Marca de búsqueda | ~líneas |
 |---|---|---|
 | Qué es, direcciones y qué archivo es cada cosa | `## Qué es` | 71-123 |
-| **Estado y qué bloquea el avance** | `## Estado a día de hoy` | 124-156 |
+| **Estado y qué bloquea el avance** | `## Estado a 14` | 124-156 |
 | Cómo cambiar contenido, publicar, probar | `## Cómo se trabaja` | 157-247 |
 | ↳ avisar a los buscadores (IndexNow) | `## Avisar a los buscadores` | ~215 |
 | ↳ volver atrás si algo sale mal | `## Volver atrás` | ~230 |
@@ -122,36 +126,53 @@ con ella devuelve 401.
 
 ---
 
-## Estado a día de hoy
+## Estado a 14 de agosto de 2026
 
 | Fase | Estado |
 |---|---|
-| Web pública | **Terminada y en línea** |
+| Web pública | **Terminada y en línea**, auditada de punta a punta |
 | Base de datos | **Terminada**: 26 + 4 fichas, 10 fuentes, 12 políticas |
+| Cuentas, opiniones y moderación | **En producción**, `20/0` contra la base real |
 | Rigor editorial | **Terminado**: cero descartes sin fuente |
-| Google | **Verificado**, sitemap enviado y leído |
-| App móvil | **Terminada** como producto; falta publicarla |
+| Google | Verificado, sitemap leído, IndexNow avisado, **un enlace entrante** |
+| Repositorio público | github.com/victorJorques/RWADAR |
+| App móvil | **Terminada**: radar nativo, explicador 3D, logotipo, `10/0` de datos |
+| Reparto de avisos push | **Encendido en producción** |
+| Auto-actualización de la app | **Montada y probada** (EAS Update) |
 | Tiendas | **Bloqueado**: requiere cuentas de desarrollador |
-| Envío de avisos push | **Bloqueado**: depende de la cuenta de Expo |
+| Correos de aviso | Instalado; espera la clave de Brevo en el vault |
 
 ### Lo único que bloquea el avance
 
-Tres cuentas que solo puede abrir una persona con identidad y medio de pago:
+Dos cuentas que solo puede abrir una persona con identidad y medio de pago.
+La de Expo, que antes estaba en esta lista, ya existe (`trapis-team`), y con
+ella el `projectId` `43de8651-0c57-40fc-8cdb-c9a8c72e6835`.
 
-1. **Expo** (gratis) — genera el `projectId` que `lib/avisos.js` está
-   esperando. Sin él no hay token push, y el módulo lo detecta y se calla
-   en lugar de fallar.
+1. **Google Play Console** (25 $, pago único) — el AAB está compilado y
+   firmado, esperando.
 2. **Apple Developer** (99 $/año) — y ojo: **el archivo de iOS no se puede
-   compilar en Windows**. Hace falta la compilación en la nube de EAS.
-3. **Google Play Console** (25 $, pago único).
+   compilar en Windows**. Hace falta la compilación en la nube de EAS, que ya
+   está configurada.
 
 ```bash
 cd rwadar-movil
-npx eas login
-npx eas build:configure
-npx eas build --platform android --profile production
+npx eas build --platform android --profile preview      # APK instalable, sin tienda
+npx eas build --platform android --profile production   # AAB para Google Play
+npx eas build --platform ios --profile production       # exige la cuenta de Apple
 npx eas submit --platform android
 ```
+
+### Una advertencia sobre este documento
+
+**Producción se desvió del repositorio y este documento no lo sabía.** El 14 de
+agosto se descubrió que la base en línea prohíbe escribir opiniones
+directamente, tiene una columna que el esquema del repositorio no conoce y
+había perdido permisos de tabla — nada de eso se veía leyendo el código, y las
+pruebas locales pasaban en verde mientras la web estaba rota para todo el
+mundo.
+
+La lección, que vale para cualquiera que siga: **contra producción se mide, no
+se supone.** Está en `RWADAR-MANANA.md`, con el contrato real y los comandos.
 
 ---
 
@@ -531,6 +552,28 @@ San Francisco de forma legítima.
 4.2. Lo que la justifica como producto propio son los avisos cuando una
 plataforma cae del radar, el funcionamiento sin conexión y que seguir no
 exija registrarse.
+
+**Pero el explicador 3D SÍ se reutiliza de la web, y es deliberado.** La app
+lo abre embebido, apuntando a la sección `#explain` de la página publicada.
+
+El motivo no es la pereza: es que la alternativa ya falló. La app nació en
+agosto con su propio explicador —bloques animados en vez de WebGL— y con su
+propia paleta. Cuando la web se rediseñó el día 8, la app **se quedó atrás sin
+que nadie lo notara durante seis días**: seguía en crema y azul marino, sin
+radar y sin edificio. Dos implementaciones del mismo dibujo divergen; es
+cuestión de tiempo.
+
+Reutilizando, el edificio de la app es el edificio de la web por construcción,
+y con él entran gratis los cuatro pasos, la calculadora y sus avisos legales.
+Si mañana cambia el 3D, cambia en los dos sitios a la vez.
+
+Lo que sí se porta a nativo es lo barato y lo que tiene que ir suelto: **el
+radar de portada** (SVG, con las mismas cifras medidas) y **el logotipo**. La
+lista, el buscador, los filtros, la caché y el seguimiento siempre fueron
+nativos.
+
+**El explicador nativo no se borra**: es lo que se enseña sin conexión, y la
+app promete funcionar sin conexión.
 
 ---
 
