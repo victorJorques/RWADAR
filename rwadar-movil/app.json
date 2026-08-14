@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "RWAdar",
+    "slug": "rwadar",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "rwadar",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B0A0A",
+    "primaryColor": "#25E39A",
+    "description": "Registro curado de plataformas de tokenización de activos reales. 38 analizadas, 26 verificadas, y los descartes solo cuando el motivo se puede respaldar con una fuente citable.",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rwadar.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.rwadar.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B0A0A",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "43de8651-0c57-40fc-8cdb-c9a8c72e6835"
+      }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "color": "#25E39A"
+        }
+      ],
+      "expo-font"
+    ],
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/43de8651-0c57-40fc-8cdb-c9a8c72e6835"
+    }
+  }
+}

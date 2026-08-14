@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fuera de cobertura · RWAdar</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0A0A">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>">
+<style>
+/* ===================================================================
+   Esta página se quedó atrás en el rediseño de agosto de 2026: seguía
+   con el fondo azulado y la marca en ORO, que es exactamente la paleta
+   que el proyecto descartó por «falso premium». Quien llegaba a un
+   enlace roto veía otra marca distinta.
+
+   Tampoco lleva tipografía descargada. La portada las incrusta, pero
+   aquí no compensa cargar 41 kB para una página que casi nadie ve, y
+   pedírselas a Google está prohibido por la política de seguridad del
+   sitio. Cae en la tipografía del sistema, que es la misma familia
+   visual y no cuesta ni una petición.
+   =================================================================== */
+:root{--noche:#0B0A0A;--senal:#25E39A;--senal-cl:#6BF0C0;--tx:#F7F5F0;--tx-2:#BBB5AB;
+ --display:'Geist',system-ui,-apple-system,'Segoe UI Variable Display','Segoe UI',sans-serif;
+ --mono:'Geist Mono',ui-monospace,'Cascadia Mono','Consolas',monospace}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;background:var(--noche);color:var(--tx);font-family:var(--display);
+ display:grid;place-items:center;padding:28px;position:relative;overflow-x:hidden}
+/* el mismo cielo que la portada: un solo foco verde, muy tenue */
+body::before{content:'';position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(ellipse 760px 480px at 50% 16%,rgba(37,227,154,.10),transparent 64%),
+            radial-gradient(ellipse 700px 500px at 82% 92%,rgba(37,227,154,.05),transparent 62%)}
+.in{position:relative;text-align:center;max-width:34rem}
+svg.mk{width:124px;height:124px;margin-bottom:28px;color:var(--senal)}
+.barrido{transform-origin:52px 52px;animation:girar 4.6s linear infinite}
+@keyframes girar{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.barrido{animation:none}}
+.codigo{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+ color:var(--senal);margin-bottom:16px}
+h1{font-weight:800;font-size:clamp(1.9rem,5.4vw,2.8rem);letter-spacing:-.042em;line-height:1.04;
+ color:var(--tx);margin-bottom:16px;text-wrap:balance}
+p{color:var(--tx-2);font-size:1.04rem;line-height:1.6;margin-bottom:32px;
+ max-width:52ch;margin-inline:auto}
+a{display:inline-block;background:var(--senal);color:#06231A;text-decoration:none;
+ font-weight:700;font-size:.96rem;padding:15px 28px;border-radius:99px;
+ box-shadow:0 10px 30px -14px rgba(37,227,154,.7);
+ transition:transform .2s cubic-bezier(.34,1.4,.64,1),background .15s}
+a:hover{background:var(--senal-cl);transform:translateY(-2px)}
+a:active{transform:translateY(0) scale(.97)}
+a:focus-visible{outline:2px solid var(--senal-cl);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="in">
+  <svg class="mk" viewBox="0 0 104 104" role="img" aria-label="Radar sin señal">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" opacity=".45">
+      <circle cx="52" cy="52" r="46"/><circle cx="52" cy="52" r="35"/><circle cx="52" cy="52" r="24"/></g>
+    <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".3">
+      <path d="M52 4v14M52 86v14M4 52h14M86 52h14"/></g>
+    <path class="barrido" d="M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z" fill="#25E39A" opacity=".38"/>
+    <g>
+      <path d="M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z" fill="#25E39A"/>
+      <path d="M65 52L58.5 63.26L45.5 63.26L39 52Z" fill="#0F7A57"/>
+      <path d="M58.5 40.74L65 52L58.5 63.26" fill="none" stroke="#6BF0C0" stroke-width="1.6" stroke-linejoin="round"/></g>
+  </svg>
+  <p class="codigo">Error 404</p>
+  <h1>El radar no detecta esta página.</h1>
+  <p>La dirección no existe o ha cambiado de sitio. Vuelve al radar para consultar las plataformas verificadas y las descartadas con su fuente.</p>
+  <a href="/">Volver al radar</a>
+</div>
+</body>
+</html>

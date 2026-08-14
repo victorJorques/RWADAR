@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RWAdar · banco de sonidos</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--noche:#070910;--sup:#111624;--sup2:#171f30;--linea:#1f2838;--linea2:#2d384c;
+ --tx:#f4f2ed;--tx2:#afb8c8;--tx3:#78829a;--oro:#e8b34b;--menta:#3fd69b;
+ --mono:'Geist Mono',ui-monospace,monospace;--body:'Geist',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--noche);color:var(--tx);font-family:var(--body);
+ padding:44px 24px 80px;line-height:1.55}
+.wrap{max-width:920px;margin:0 auto}
+h1{font-weight:800;letter-spacing:-.04em;font-size:2.1rem;margin:0 0 10px}
+.sub{color:var(--tx2);margin:0 0 8px;max-width:62ch}
+.aviso{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;color:var(--oro);
+ background:rgba(232,179,75,.09);border:1px solid rgba(232,179,75,.25);
+ border-radius:10px;padding:12px 16px;margin:22px 0 30px;max-width:70ch}
+.fam{background:linear-gradient(180deg,var(--sup),#0d111a);border:1px solid var(--linea);
+ border-radius:16px;padding:22px 24px;margin-bottom:14px}
+.fam.elegida{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro)}
+.fam h2{font-size:1.12rem;font-weight:700;letter-spacing:-.025em;margin:0 0 4px;
+ display:flex;align-items:center;gap:10px}
+.letra{font-family:var(--mono);font-size:.7rem;background:var(--oro);color:#0a0c12;
+ width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-weight:600}
+.fam p{margin:0 0 16px;font-size:.88rem;color:var(--tx3);max-width:64ch}
+.bots{display:flex;gap:8px;flex-wrap:wrap}
+button{font-family:var(--mono);font-size:.78rem;background:var(--sup2);color:var(--tx);
+ border:1px solid var(--linea2);padding:11px 18px;border-radius:99px;cursor:pointer;
+ transition:border-color .15s,background .15s,transform .12s}
+button:hover{border-color:var(--oro);background:#1e2739}
+button:active{transform:scale(.95)}
+button.pral{background:var(--oro);color:#0a0c12;border-color:var(--oro);font-weight:600}
+.vol{display:flex;align-items:center;gap:14px;margin:26px 0 32px;
+ font-family:var(--mono);font-size:.72rem;color:var(--tx3)}
+input[type=range]{flex:1;max-width:280px;accent-color:var(--oro)}
+.fin{margin-top:34px;padding:22px 24px;border:1px dashed var(--linea2);border-radius:16px}
+.fin h3{margin:0 0 8px;font-size:1rem}
+.fin p{margin:0;color:var(--tx2);font-size:.9rem}
+kbd{font-family:var(--mono);font-size:.78rem;background:var(--sup2);border:1px solid var(--linea2);
+ border-radius:6px;padding:2px 7px;color:var(--oro)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Banco de sonidos</h1>
+<p class="sub">Cinco familias distintas para los sonidos de la interfaz. Todas salen del mismo motor y están al mismo volumen, así que la comparación es justa.</p>
+<div class="aviso">Yo no puedo oírlas: solo puedo medirlas. Escucha las cinco y dime la letra que quieres — o qué mezclarías de cuáles. Con eso lo dejo montado en la web en un momento.</div>
+
+<div class="vol">Volumen general
+  <input id="vol" type="range" min="10" max="150" step="5" value="100">
+  <span id="volV">100 %</span>
+</div>
+
+<div id="familias"></div>
+
+<div class="fin">
+  <h3>Cómo elegir</h3>
+  <p>Pulsa <kbd>Pulsar</kbd> de cada familia varias veces seguidas: lo que cansa se nota a la tercera, no a la primera. Luego compara <kbd>Abrir</kbd>, que es el sonido más largo y el que más carácter tiene.</p>
+</div>
+</div>
+
+<script>
+/* ---- núcleo común: el mismo grafo que la web ---- */
+let ctx=null,maestro=null,seco=null,sala=null,ruido=null;
+let volGlobal=1;
+function impulso(c,dur,caida){
+ const n=Math.max(1,Math.floor(c.sampleRate*dur));
+ const b=c.createBuffer(2,n,c.sampleRate);
+ for(let ch=0;ch<2;ch++){const d=b.getChannelData(ch);
+  for(let i=0;i<n;i++){const t=i/n; d[i]=(Math.random()*2-1)*Math.pow(1-t,caida);}}
+ return b;
+}
+const CACHE={};
+function envolvente(ataque,forma){
+ const k=ataque+'|'+forma; if(CACHE[k]) return CACHE[k];
+ const n=256,c=new Float32Array(n);
+ for(let i=0;i<n;i++){const t=i/(n-1);
+  c[i]= t<ataque ? 0.5-0.5*Math.cos(Math.PI*t/ataque) : Math.pow(1-(t-ataque)/(1-ataque),forma);}
+ c[n-1]=0; return CACHE[k]=c;
+}
+const escalar=(c,v)=>{const o=new Float32Array(c.length);for(let i=0;i<c.length;i++)o[i]=c[i]*v;return o;};
+function dar(){
+ if(!ctx){
+  ctx=new (window.AudioContext||window.webkitAudioContext)();
+  maestro=ctx.createGain(); maestro.gain.value=1;
+  const lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=7000; lp.Q.value=0.7;
+  const ws=ctx.createWaveShaper();
+  const N=2048,cu=new Float32Array(N),CODO=0.6;
+  for(let i=0;i<N;i++){const x=i*2/(N-1)-1,a=Math.abs(x);
+   cu[i]=a<=CODO?x:Math.sign(x)*(CODO+(1-CODO)*Math.tanh((a-CODO)/(1-CODO)));}
+  ws.curve=cu; ws.oversample='2x';
+  maestro.connect(lp); lp.connect(ws); ws.connect(ctx.destination);
+  seco=ctx.createGain(); seco.gain.value=1; seco.connect(maestro);
+  const rev=ctx.createConvolver(); rev.buffer=impulso(ctx,0.34,9);
+  const hp=ctx.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=380;
+  sala=ctx.createGain(); sala.gain.value=0.34;
+  sala.connect(hp); hp.connect(rev); rev.connect(maestro);
+  const n=Math.floor(ctx.sampleRate*0.4);
+  ruido=ctx.createBuffer(1,n,ctx.sampleRate);
+  const d=ruido.getChannelData(0);
+  for(let i=0;i<n;i++) d[i]=Math.random()*2-1;
+ }
+ if(ctx.state==='suspended') ctx.resume();
+ return ctx;
+}
+function salida(c,pan,envio){
+ const g=c.createGain(); g.gain.value=1;
+ if(c.createStereoPanner){const p=c.createStereoPanner();p.pan.value=pan||0;g.connect(p);p.connect(seco);}
+ else g.connect(seco);
+ const s=c.createGain(); s.gain.value=envio==null?0.22:envio;
+ g.connect(s); s.connect(sala); return g;
+}
+/* pop: tono + armónico + aire. Los parámetros son lo que cambia entre familias. */
+function pop(o){
+ const c=dar(); o=o||{};
+ const desv=1+(Math.random()-0.5)*0.024;
+ const f=(o.f||587)*desv, f2=(o.f2||(o.f||587)*0.92)*desv;
+ const dur=o.dur||0.11, vol=(o.vol||0.28)*volGlobal;
+ const ataque=o.ataque||0.05, forma=o.forma||2.6;
+ const aire=o.aire==null?0.34:o.aire, cuerpo=o.cuerpo==null?0.30:o.cuerpo;
+ const t=c.currentTime+(o.retraso||0)+0.004;
+ const out=salida(c,o.pan||0,o.envio);
+ const env=envolvente(ataque,forma);
+ const osc=c.createOscillator(); osc.type=o.onda||'sine';
+ osc.frequency.setValueAtTime(f,t);
+ osc.frequency.exponentialRampToValueAtTime(Math.max(40,f2),t+dur*(o.glis||0.75));
+ const g=c.createGain(); g.gain.setValueAtTime(0,t);
+ g.gain.setValueCurveAtTime(escalar(env,vol),t,dur);
+ osc.connect(g); g.connect(out); osc.start(t); osc.stop(t+dur+0.02);
+ if(cuerpo>0){
+  const o2=c.createOscillator(); o2.type='sine';
+  o2.frequency.setValueAtTime(f*2,t);
+  o2.frequency.exponentialRampToValueAtTime(Math.max(40,f2*2),t+dur*0.6);
+  const g2=c.createGain(); g2.gain.setValueAtTime(0,t);
+  g2.gain.setValueCurveAtTime(escalar(envolvente(ataque,forma*1.9),vol*cuerpo),t,dur*0.75);
+  o2.connect(g2); g2.connect(out); o2.start(t); o2.stop(t+dur+0.02);
+ }
+ if(aire>0){
+  const s=c.createBufferSource(); s.buffer=ruido; s.loop=true;
+  s.playbackRate.value=0.9+Math.random()*0.2;
+  const lp=c.createBiquadFilter(); lp.type='lowpass';
+  lp.frequency.setValueAtTime(Math.min(5200,f*(o.brilloAire||5.5)),t);
+  lp.frequency.exponentialRampToValueAtTime(Math.max(300,f*1.6),t+dur*0.4);
+  lp.Q.value=0.6;
+  const gn=c.createGain(); gn.gain.setValueAtTime(0,t);
+  const dA=Math.max(0.012,dur*0.34);
+  gn.gain.setValueCurveAtTime(escalar(envolvente(0.10,3.4),vol*aire*2.2),t,dA);
+  s.connect(lp); lp.connect(gn); gn.connect(out); s.start(t); s.stop(t+dA+0.02);
+ }
+}
+/* clic: solo aire, sin tono. Para la familia D. */
+function clic(o){
+ const c=dar(); o=o||{};
+ const dur=o.dur||0.028, vol=(o.vol||0.3)*volGlobal;
+ const t=c.currentTime+(o.retraso||0)+0.004;
+ const out=salida(c,o.pan||0,o.envio==null?0.12:o.envio);
+ const s=c.createBufferSource(); s.buffer=ruido; s.loop=true;
+ const lp=c.createBiquadFilter(); lp.type='lowpass';
+ lp.frequency.setValueAtTime(o.corte||1600,t);
+ lp.frequency.exponentialRampToValueAtTime(Math.max(200,(o.corte||1600)*0.35),t+dur);
+ lp.Q.value=0.8;
+ const g=c.createGain(); g.gain.setValueAtTime(0,t);
+ g.gain.setValueCurveAtTime(escalar(envolvente(0.08,3.2),vol*3.2),t,dur);
+ s.connect(lp); lp.connect(g); g.connect(out); s.start(t); s.stop(t+dur+0.02);
+ if(o.golpe){    /* un pelín de grave para que tenga peso */
+  const osc=c.createOscillator(); osc.type='sine';
+  osc.frequency.setValueAtTime(o.golpe,t);
+  osc.frequency.exponentialRampToValueAtTime(o.golpe*0.5,t+dur*1.6);
+  const gg=c.createGain(); gg.gain.setValueAtTime(0,t);
+  gg.gain.setValueCurveAtTime(escalar(envolvente(0.06,3.0),vol*0.75),t,dur*1.8);
+  osc.connect(gg); gg.connect(out); osc.start(t); osc.stop(t+dur*2);
+ }
+}
+
+/* ---- las cinco familias ---- */
+const FAMILIAS=[
+ {l:'A', n:'La que hay ahora en la web',
+  d:'Tono grave con caída suave y algo de aire. Redondo y bastante largo (100–220 ms). Es lo que ya has oído y no te convence.',
+  toque:()=>pop({f:587,f2:528,dur:.10,vol:.30}),
+  abrir:()=>pop({f:349,f2:311,dur:.22,vol:.32,ataque:.07,forma:2.2,cuerpo:.36,envio:.45}),
+  marcar:()=>{pop({f:698,dur:.09,vol:.24,pan:-.1});setTimeout(()=>pop({f:1046,dur:.14,vol:.26,pan:.1,envio:.35}),55)}},
+
+ {l:'B', n:'Tock seco — el clic del teclado',
+  d:'Muy corto (25–40 ms) y con la altura desplomándose de 700 a 180 Hz en un suspiro. Casi percusión, apenas se percibe como nota. Es la familia más parecida al «tock» del teclado de un Mac.',
+  toque:()=>pop({f:700,f2:180,dur:.038,vol:.34,ataque:.04,forma:3.2,glis:.55,aire:.5,cuerpo:.15,envio:.1}),
+  abrir:()=>pop({f:460,f2:120,dur:.075,vol:.36,ataque:.04,forma:2.8,glis:.5,aire:.4,cuerpo:.25,envio:.22}),
+  marcar:()=>{pop({f:820,f2:220,dur:.032,vol:.30,ataque:.04,forma:3.2,glis:.55,aire:.5,cuerpo:.15,envio:.1});
+              setTimeout(()=>pop({f:1100,f2:300,dur:.04,vol:.30,ataque:.04,forma:3.0,glis:.55,aire:.4,cuerpo:.15,envio:.12}),42)}},
+
+ {l:'C', n:'Pop — el de enviar un mensaje',
+  d:'La altura SUBE en vez de bajar, y la caída es cortísima. Da una sensación de «salir», de algo que se suelta. Es el gesto sonoro del pop clásico de macOS.',
+  toque:()=>pop({f:420,f2:900,dur:.055,vol:.32,ataque:.06,forma:3.4,glis:.6,aire:.18,cuerpo:.22,envio:.14}),
+  abrir:()=>pop({f:300,f2:760,dur:.11,vol:.34,ataque:.07,forma:2.6,glis:.55,aire:.16,cuerpo:.3,envio:.35}),
+  marcar:()=>{pop({f:480,f2:1000,dur:.05,vol:.28,ataque:.06,forma:3.4,glis:.6,aire:.18,cuerpo:.22,pan:-.1});
+              setTimeout(()=>pop({f:640,f2:1350,dur:.06,vol:.28,ataque:.06,forma:3.2,glis:.6,aire:.16,cuerpo:.22,pan:.1,envio:.3}),50)}},
+
+ {l:'D', n:'Aire — sin nota ninguna',
+  d:'Solo ruido oscuro filtrado, muy corto, con una pizca de grave debajo para darle peso. No hay altura, así que es imposible que canse por repetición ni que choque con nada. Es lo más cercano al clic del teclado de un iPhone.',
+  toque:()=>clic({dur:.028,vol:.32,corte:1500,golpe:170}),
+  abrir:()=>clic({dur:.075,vol:.34,corte:1000,golpe:120,envio:.3}),
+  marcar:()=>{clic({dur:.022,vol:.28,corte:2000,pan:-.1});
+              setTimeout(()=>clic({dur:.03,vol:.28,corte:1300,golpe:150,pan:.1}),40)}},
+
+ {l:'E', n:'Burbuja — redondo y con sala',
+  d:'Tono limpio, caída algo más larga y bastante reverberación. Es el más «bonito» y el más presente: se nota mucho más que los otros cuatro. Puede engancharse o puede cansar; depende de cuánto se pulse.',
+  toque:()=>pop({f:523,f2:494,dur:.16,vol:.30,ataque:.05,forma:2.0,aire:.12,cuerpo:.4,envio:.5}),
+  abrir:()=>pop({f:330,f2:294,dur:.32,vol:.32,ataque:.06,forma:1.7,aire:.1,cuerpo:.45,envio:.7}),
+  marcar:()=>{pop({f:659,dur:.14,vol:.26,aire:.1,cuerpo:.4,envio:.5,pan:-.1});
+              setTimeout(()=>pop({f:988,dur:.2,vol:.28,aire:.1,cuerpo:.4,envio:.6,pan:.1}),60)}},
+];
+
+const cont=document.getElementById('familias');
+FAMILIAS.forEach((f,i)=>{
+ const d=document.createElement('div');
+ d.className='fam';
+ d.innerHTML='<h2><span class="letra">'+f.l+'</span>'+f.n+'</h2><p>'+f.d+'</p>'+
+  '<div class="bots"><button class="pral" data-a="toque">Pulsar</button>'+
+  '<button data-a="abrir">Abrir un panel</button>'+
+  '<button data-a="marcar">Marcar</button>'+
+  '<button data-a="rafaga">Cinco seguidos</button></div>';
+ d.querySelectorAll('button').forEach(b=>{
+  b.addEventListener('click',()=>{
+   document.querySelectorAll('.fam').forEach(x=>x.classList.remove('elegida'));
+   d.classList.add('elegida');
+   const a=b.dataset.a;
+   if(a==='rafaga'){ for(let k=0;k<5;k++) setTimeout(f.toque,k*230); }
+   else f[a]();
+  });
+ });
+ cont.appendChild(d);
+});
+
+const vol=document.getElementById('vol'), volV=document.getElementById('volV');
+vol.addEventListener('input',()=>{volGlobal=vol.value/100; volV.textContent=vol.value+' %';});
+</script>
+</body>
+</html>

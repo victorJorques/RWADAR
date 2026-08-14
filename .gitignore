@@ -1,0 +1,41 @@
+# =====================================================================
+#  Lista BLANCA, no lista negra. Y es a propósito.
+# ---------------------------------------------------------------------
+#  Esta carpeta es Downloads: aquí dentro hay extractos bancarios en PDF,
+#  documentos de la asociación y cosas que no son de este proyecto. Con
+#  una lista negra, cualquier archivo nuevo entra en el repositorio por
+#  defecto y basta un `git add -A` despistado para publicarlo.
+#
+#  Así que se ignora TODO y luego se readmite solo lo que es RWAdar. Un
+#  archivo nuevo en Downloads no puede acabar en GitHub por accidente.
+# =====================================================================
+/*
+
+!/.gitignore
+!/README.md
+
+# El sitio publicable y las herramientas que lo construyen
+!/rwadar-site/
+!/rwadar-app/
+!/rwadar-movil/
+!/rwadar-arrancar.js
+!/rwadar-publicar.js
+!/rwadar-servir.js
+!/rwadar-banco-de-sonidos.html
+
+# La documentación del proyecto
+!/RWADAR-ESTADO.md
+!/RWADAR-MAPA.md
+!/RWADAR-MANANA.md
+!/CLAUDE.md
+
+# Dentro de esas carpetas, lo que nunca se versiona
+node_modules/
+.expo/
+dist/
+web-build/
+.netlify/
+*.log
+*.apk
+*.aab
+supabase/.temp/

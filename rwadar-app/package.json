@@ -1,0 +1,19 @@
+{
+  "name": "rwadar-app",
+  "version": "1.0.0",
+  "description": "Esquema y utilidades de datos de RWAdar: instalacion, pruebas y sincronizacion con la web",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "node probar-db.mjs && node probar-cuentas.mjs",
+    "test:registro": "node probar-db.mjs",
+    "test:cuentas": "node probar-cuentas.mjs",
+    "volcar": "node volcar-seed.js",
+    "sincronizar": "node sincronizar.js"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.4",
+    "pg": "^8.22.0"
+  }
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidad · RWAdar</title>
+<meta name="description" content="Qué datos trata RWAdar, para qué, con quién se comparten y cómo ejercer tus derechos. Escrito en claro y ajustado a lo que la web hace de verdad.">
+<link rel="canonical" href="https://rwadar.netlify.app/privacidad">
+<meta name="theme-color" content="#0B0A0A">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>">
+<style>
+/* ===================================================================
+   Sin tipografía descargada, igual que la 404: no compensa cargar
+   41 kB en una página que se lee una vez, y pedírselas a Google está
+   prohibido por la política de seguridad del sitio.
+   =================================================================== */
+:root{--noche:#0B0A0A;--noche-2:#100F0E;--sup:#171614;--linea:rgba(247,245,240,.09);
+ --senal:#25E39A;--senal-cl:#6BF0C0;--tx:#F7F5F0;--tx-2:#BBB5AB;--tx-3:#8A8378;
+ --display:'Geist',system-ui,-apple-system,'Segoe UI Variable Display','Segoe UI',sans-serif;
+ --mono:'Geist Mono',ui-monospace,'Cascadia Mono','Consolas',monospace}
+*{box-sizing:border-box;margin:0}
+body{background:var(--noche);color:var(--tx);font-family:var(--display);
+ line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--linea);background:var(--noche-2);padding:22px 0}
+.marca{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit}
+.wm{font-weight:800;font-size:1.3rem;letter-spacing:-.03em;line-height:1}
+.wm span{color:var(--senal)}
+main{padding:56px 0 72px}
+.volver{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--senal);text-decoration:none;margin-bottom:26px}
+.volver:hover{text-decoration:underline;text-underline-offset:3px}
+h1{font-weight:800;font-size:clamp(2rem,5vw,2.7rem);letter-spacing:-.04em;line-height:1.06;
+ margin-bottom:14px;text-wrap:balance}
+.fecha{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+ color:var(--tx-3);margin-bottom:34px}
+.resumen{background:var(--sup);border:1px solid var(--linea);border-left:3px solid var(--senal);
+ border-radius:12px;padding:20px 22px;margin-bottom:44px}
+.resumen p{color:var(--tx-2);font-size:.95rem;margin-bottom:9px;max-width:64ch}
+.resumen p:last-child{margin-bottom:0}
+.resumen b{color:var(--tx);font-weight:600}
+h2{font-weight:700;font-size:1.28rem;letter-spacing:-.025em;margin:42px 0 14px;
+ padding-top:22px;border-top:1px solid var(--linea)}
+h2:first-of-type{border-top:0;padding-top:0}
+h3{font-weight:600;font-size:1rem;margin:24px 0 8px;color:var(--tx)}
+p,li{color:var(--tx-2);font-size:.95rem;max-width:66ch}
+p{margin-bottom:14px}
+ul{margin:0 0 16px;padding-left:20px}
+li{margin-bottom:9px}
+b,strong{color:var(--tx);font-weight:600}
+a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--senal-cl);outline-offset:3px;border-radius:3px}
+table{width:100%;border-collapse:collapse;margin:6px 0 20px;font-size:.9rem}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--linea);
+ vertical-align:top;color:var(--tx-2)}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+ color:var(--senal);font-weight:400}
+td:first-child{color:var(--tx);font-weight:600;white-space:nowrap}
+.tabla-caja{overflow-x:auto;-webkit-overflow-scrolling:touch}
+footer{border-top:1px solid var(--linea);background:var(--noche-2);padding:30px 0;
+ color:var(--tx-3);font-size:.82rem}
+footer a{color:var(--senal)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="marca" href="/">
+      <svg width="34" height="34" viewBox="0 0 104 104" aria-hidden="true" style="color:var(--senal)">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" opacity=".45">
+          <circle cx="52" cy="52" r="46"/><circle cx="52" cy="52" r="35"/><circle cx="52" cy="52" r="24"/></g>
+        <path d="M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z" fill="#25E39A" opacity=".38"/>
+        <path d="M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z" fill="#25E39A"/>
+        <path d="M65 52L58.5 63.26L45.5 63.26L39 52Z" fill="#0F7A57"/>
+      </svg>
+      <span class="wm">RWA<span>dar</span></span>
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+  <a class="volver" href="/">← Volver al radar</a>
+
+  <h1>Privacidad</h1>
+  <p class="fecha">En vigor desde el 9 de agosto de 2026</p>
+
+  <div class="resumen">
+    <p><b>El resumen, por si no lees el resto.</b></p>
+    <p>Para consultar el registro <b>no hace falta darnos ningún dato</b>. No hay cookies
+      de seguimiento, ni publicidad, ni perfilado, ni venta de datos a nadie.</p>
+    <p>Solo si decides <b>crear una cuenta</b> guardamos tu correo y las plataformas que
+      quieras vigilar, y es únicamente para poder avisarte si alguna cae del radar.</p>
+    <p>Puedes <b>borrar la cuenta cuando quieras</b>, y al hacerlo se borra todo lo tuyo
+      de verdad, no se marca como oculto.</p>
+  </div>
+
+  <h2>1 · Quién responde de tus datos</h2>
+  <p>RWAdar es un registro independiente de plataformas de tokenización de activos
+    reales. No vende nada, no intermedia en ninguna inversión y no cobra por su uso.</p>
+  <p>Para cualquier asunto relacionado con esta política o con tus datos, escribe a
+    <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a>. Es la misma
+    dirección que aparece en el pie de la web para correcciones.</p>
+
+  <h2>2 · Qué se trata cuando solo visitas la web</h2>
+  <p>Aunque no te registres, visitar cualquier web implica que unos servidores reciben
+    ciertos datos técnicos. Esto es lo que ocurre aquí, sin adornos:</p>
+
+  <div class="tabla-caja">
+  <table>
+    <thead><tr><th>Qué</th><th>Por qué ocurre</th><th>Quién lo recibe</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Dirección IP,<br>navegador y hora</td>
+        <td>Es lo mínimo para poder enviarte la página. Sin ello no hay forma técnica de
+          servir un sitio web.</td>
+        <td>Netlify, que aloja la web</td>
+      </tr>
+      <tr>
+        <td>Métricas de<br>rendimiento</td>
+        <td>La analítica de Netlify mide cuánto tarda la página en cargar en equipos
+          reales. <b>No usa cookies ni sigue a nadie entre sitios</b>, y no permite
+          identificar a una persona.</td>
+        <td>Netlify</td>
+      </tr>
+      <tr>
+        <td>Dirección IP al<br>consultar el registro</td>
+        <td>La web pide los datos de las plataformas a la base de datos cada vez que
+          alguien entra, para que veas la versión al día y no una foto vieja.</td>
+        <td>Supabase, la base de datos</td>
+      </tr>
+      <tr>
+        <td>Preferencias y<br>sesión iniciada</td>
+        <td>Dos cosas se guardan <b>en tu propio navegador</b>
+          (<span style="font-family:var(--mono);font-size:.85em">localStorage</span>): si has
+          activado el sonido de la interfaz y, <b>si has iniciado sesión</b>, la llave que
+          te mantiene dentro para no pedirte la contraseña en cada visita. Ninguna de las
+          dos es una cookie y ninguna sirve para seguirte por otras webs. Al cerrar sesión,
+          la llave se borra.</td>
+        <td>Nadie. Se queda en tu equipo</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><b>Esta web no usa cookies.</b> Ni propias ni de terceros, ni de publicidad ni de
+    analítica. Por eso no verás un aviso de cookies: no habría nada que consentir.</p>
+
+  <h2>3 · Qué se trata si creas una cuenta</h2>
+  <p>La cuenta es <b>opcional</b>. El registro se consulta entero sin ella, y así seguirá
+    siendo. Existe por un único motivo: para poder avisarte por correo si una plataforma
+    que vigilas cae del radar.</p>
+
+  <div class="tabla-caja">
+  <table>
+    <thead><tr><th>Dato</th><th>Para qué</th><th>Base jurídica</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Correo<br>electrónico</td>
+        <td>Identificarte al entrar, verificar que la dirección es tuya y enviarte los
+          avisos que hayas pedido.</td>
+        <td>Ejecución del servicio que has solicitado</td>
+      </tr>
+      <tr>
+        <td>Contraseña</td>
+        <td>Nunca se guarda tal cual: se almacena cifrada de forma irreversible. Nadie,
+          tampoco quien mantiene RWAdar, puede leerla.</td>
+        <td>Ejecución del servicio</td>
+      </tr>
+      <tr>
+        <td>Nombre<br>(opcional)</td>
+        <td>Solo para encabezar los correos. Si no lo pones, se usa la parte inicial de
+          tu dirección.</td>
+        <td>Tu consentimiento</td>
+      </tr>
+      <tr>
+        <td>Plataformas<br>que vigilas</td>
+        <td>Saber a quién hay que avisar cuando una ficha cambia de estado.</td>
+        <td>Ejecución del servicio</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Puedes desactivar los avisos por correo desde tu perfil sin borrar la cuenta, y
+    dejar de vigilar una plataforma cuando quieras.</p>
+
+  <h2>4 · Lo que no se hace</h2>
+  <p>Esto importa tanto como lo anterior, y es comprobable mirando el código de la
+    página, que se sirve tal cual, sin compilar ni ofuscar:</p>
+  <ul>
+    <li>No hay <b>publicidad</b> ni espacios vendidos a terceros.</li>
+    <li>No hay <b>rastreadores</b> de redes sociales, ni píxeles, ni Google Analytics.</li>
+    <li>No se <b>vende, alquila ni cede</b> ningún dato a nadie con fines comerciales.</li>
+    <li>No se hace <b>perfilado</b> ni decisiones automatizadas sobre ti.</li>
+    <li>No se piden datos financieros: RWAdar <b>no mueve dinero</b> y nunca te pedirá
+      datos bancarios, claves de monederos ni frases de recuperación. Si alguna vez
+      recibes algo que dice ser RWAdar y te los pide, no es RWAdar.</li>
+  </ul>
+
+  <h2>5 · Con quién se comparten</h2>
+  <p>Con dos proveedores, y solo porque sin ellos el servicio no puede funcionar. Ninguno
+    los usa para fines propios:</p>
+  <ul>
+    <li><b>Netlify</b> — aloja y sirve la web.</li>
+    <li><b>Supabase</b> — guarda el registro, las cuentas y envía los correos de
+      verificación y aviso.</li>
+  </ul>
+  <p>Ambas son empresas estadounidenses que pueden tratar datos fuera del Espacio
+    Económico Europeo, amparadas en las garantías previstas en el RGPD para
+    transferencias internacionales.</p>
+
+  <h2>6 · Cuánto tiempo se guardan</h2>
+  <ul>
+    <li><b>Los datos de tu cuenta</b>, mientras la cuenta exista. Al borrarla se eliminan
+      de inmediato y en cascada: perfil, plataformas vigiladas y avisos pendientes. No
+      queda una copia marcada como «inactiva».</li>
+    <li><b>Los registros técnicos</b> de los proveedores, durante los plazos cortos que
+      ellos aplican para seguridad y diagnóstico.</li>
+    <li><b>Tu preferencia de sonido</b>, hasta que borres los datos de navegación de tu
+      navegador. Nunca sale de tu equipo.</li>
+  </ul>
+
+  <h2>7 · Tus derechos</h2>
+  <p>Puedes pedir <b>acceso</b> a tus datos, su <b>rectificación</b>, su <b>supresión</b>,
+    la <b>limitación</b> u <b>oposición</b> al tratamiento, y la <b>portabilidad</b> de lo
+    que nos hayas dado. También puedes retirar tu consentimiento en cualquier momento, sin
+    que eso afecte a lo hecho antes.</p>
+  <p>La vía más rápida para los dos primeros es tu propio perfil, donde puedes ver y
+    cambiar tus datos y borrar la cuenta entera sin pedir permiso a nadie. Para lo demás,
+    escribe a <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a>.</p>
+  <p>Si crees que tus datos no se están tratando bien, puedes reclamar ante la
+    <a href="https://www.aepd.es" rel="noopener">Agencia Española de Protección de Datos</a>.</p>
+
+  <h2>8 · Menores</h2>
+  <p>RWAdar no está dirigido a menores de 14 años y no recoge sus datos a sabiendas. Si
+    detectas que una cuenta pertenece a un menor, escríbenos y se elimina.</p>
+
+  <h2>9 · Enlaces a otras webs</h2>
+  <p>El registro enlaza a las webs de las plataformas y a las fuentes de cada descarte.
+    Esos enlaces <b>te sacan de aquí</b>: lo que pase en ellos se rige por sus propias
+    políticas, no por esta. Que una plataforma aparezca en el radar no significa que
+    RWAdar respalde su tratamiento de datos.</p>
+
+  <h2>10 · Cambios en esta política</h2>
+  <p>Si cambia, cambia también la fecha de arriba. Si el cambio afecta a datos de cuentas
+    ya creadas, se avisa por correo antes de aplicarlo.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="/">← Volver al radar</a>
+    &nbsp;·&nbsp; © 2026 RWAdar &nbsp;·&nbsp;
+    <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
