@@ -13,10 +13,17 @@ Aquí viven **dos proyectos independientes** de Víctor.
 **En línea y terminado: https://rwadar.netlify.app** · Supabase
 `exgpmjpaaebyoolpwced` · Netlify site `0211fd28-d371-43cd-9d93-3944fea57680`
 
-La web entera es **un solo archivo de 246 kB**: `rwadar-site/index.html`
-(HTML + CSS + JS, sin compilación ni dependencias externas). **Nunca lo leas
-entero: son ~50.000 tokens.** 41 kB son las dos tipografías incrustadas en
-base64 al principio del `<style>`: no las leas nunca, no dicen nada.
+**Esa dirección es también la aplicación.** Desde el móvil se instala en la
+pantalla de inicio y se abre con su icono y sin barra de navegador. Una sola
+dirección para todo: no hay una segunda que explicar. Lo que lo hace posible
+son cinco archivos de `rwadar-site/` —`manifest.webmanifest`, `sw.js` y los
+tres `icono-*.png`— y las etiquetas del `<head>`.
+
+La web entera sigue siendo **un solo archivo de 299 kB**:
+`rwadar-site/index.html` (HTML + CSS + JS, sin compilación ni dependencias
+externas). **Nunca lo leas entero: son ~50.000 tokens.** 41 kB son las dos
+tipografías incrustadas en base64 al principio del `<style>`: no las leas
+nunca, no dicen nada.
 
 | Si vas a… | Lee primero | Coste |
 |---|---|---|

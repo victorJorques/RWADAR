@@ -8,7 +8,7 @@
 
 ## Regla de oro
 
-Toda la web es **un solo archivo de 246 kB**: `rwadar-site/index.html`.
+Toda la web es **un solo archivo de 299 kB**: `rwadar-site/index.html`.
 HTML, CSS, JavaScript y las dos tipografías, juntos, sin dependencias ni
 compilación. Salvo la consulta a Supabase, la página **no pide nada a
 ningún tercero**.
@@ -44,6 +44,15 @@ el número de línea, y con `Read offset/limit` sacas solo el tramo.
 | `_headers` | Cabeceras de Netlify (caché, seguridad) | Casi nunca |
 | `google6b2e3e5f58b7e557.html` | **Verificación de Google** | **NUNCA borrar** |
 | `c9417d2d5003bb9a41fee63c7f5ec00f.txt` | **Llave de IndexNow** | **NUNCA borrar** |
+| `manifest.webmanifest` | Lo que hace que la dirección **se instale como app** | Al cambiar nombre, colores o iconos |
+| `sw.js` | El trabajador de segundo plano: instalable y legible sin red | Casi nunca — y leyendo antes sus cuatro reglas |
+| `icono-192.png` · `icono-512.png` · `icono-maskable-512.png` | El logotipo en la pantalla de inicio | Si cambia la marca |
+
+**Los cinco de abajo son la aplicación.** Sin el manifiesto no aparece
+«Instalar»; sin los iconos, quien la instale se encuentra un cuadrado en
+blanco. Se generan desde `const MARK` del propio `index.html` con la receta
+de «Ver un SVG» de más abajo, y son **los mismos** que lleva la app nativa
+en `rwadar-movil/assets/`: una marca, una dirección, un icono.
 
 ### Fuera de esa carpeta — herramientas, no se publican
 

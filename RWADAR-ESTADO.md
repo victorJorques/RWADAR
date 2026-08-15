@@ -136,6 +136,7 @@ con ella devuelve 401.
 | Rigor editorial | **Terminado**: cero descartes sin fuente |
 | Google | Verificado, sitemap leído, IndexNow avisado, **un enlace entrante** |
 | Repositorio público | github.com/victorJorques/RWADAR |
+| Web instalable (PWA) | **En línea**: la misma dirección se instala como app |
 | App móvil | **Terminada**: radar nativo, explicador 3D, logotipo, `10/0` de datos |
 | Reparto de avisos push | **Encendido en producción** |
 | Auto-actualización de la app | **Montada y probada** (EAS Update) |
@@ -143,6 +144,12 @@ con ella devuelve 401.
 | Correos de aviso | Instalado; espera la clave de Brevo en el vault |
 
 ### Lo único que bloquea el avance
+
+**Ya no bloquea llegar a la gente, solo llegar a las tiendas.** Desde el 15 de
+agosto de 2026 `rwadar.netlify.app` se instala como aplicación desde el propio
+navegador: icono en la pantalla de inicio, ventana sin barra, y el registro
+legible sin cobertura. Una dirección para la web y para la app. Las tiendas
+siguen pendientes de estas dos cuentas, pero ya no son el camino único.
 
 Dos cuentas que solo puede abrir una persona con identidad y medio de pago.
 La de Expo, que antes estaba en esta lista, ya existe (`trapis-team`), y con
