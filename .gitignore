@@ -22,11 +22,13 @@
 !/rwadar-publicar.js
 !/rwadar-servir.js
 !/rwadar-banco-de-sonidos.html
+!/rwadar-qr/
 
 # La documentación del proyecto
 !/RWADAR-ESTADO.md
 !/RWADAR-MAPA.md
 !/RWADAR-MANANA.md
+!/RWADAR-TECNICO.md
 !/CLAUDE.md
 
 # Dentro de esas carpetas, lo que nunca se versiona
