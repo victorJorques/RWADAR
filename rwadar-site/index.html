@@ -621,7 +621,22 @@ select option{background:var(--sup);color:var(--tx)}
 .cmpbar .go:disabled{opacity:.4;cursor:not-allowed}
 .cmpbar .x{background:none;border:none;color:var(--tx-3);cursor:pointer;font-size:1.05rem;padding:0 8px}
 .cmpbar .x:hover{color:var(--tx)}
-.velo{position:fixed;inset:0;background:rgba(3,5,10,.72);backdrop-filter:blur(4px);z-index:80;opacity:0;pointer-events:none;transition:opacity var(--medio) var(--sal)}
+/* EL VELO ES UNO SOLO, Y ESTA ES SU ÚNICA DEFINICIÓN.
+   Hay DOS elementos con esta clase y hacen cosas distintas: #ovl oscurece
+   el fondo de los paneles (ficha, comparador) y se enciende con .show;
+   #velo oscurece el fondo del diálogo de cuenta y se enciende con .on.
+   Lo común va aquí; lo único que cambia entre ellos es la altura, y esa
+   se toca por ID más abajo, junto al diálogo de cuenta.
+
+   Si vuelves a escribir `.velo{...}` más adelante en la hoja, ganará por
+   orden y se lo aplicará TAMBIÉN a #ovl. Eso ya pasó una vez: la función
+   de cuentas redefinió la clase entera con z-index:98, el velo de los
+   paneles subió de 80 a 98 y quedó POR ENCIMA del panel, que está a 90.
+   El panel seguía abierto y con sus colores correctos, pero se veía a
+   través de un 72% de negro y 3 px de desenfoque: la ficha entera en gris
+   ilegible —1,24:1 de contraste— y el enlace a la empresa apagado.
+   La altura se toca por ID, nunca por clase. */
+.velo{position:fixed;inset:0;background:rgba(6,6,6,.72);backdrop-filter:blur(3px);z-index:80;opacity:0;pointer-events:none;transition:opacity var(--medio) var(--sal)}
 .velo.show{opacity:1;pointer-events:auto}
 .modal{position:fixed;z-index:90;inset:auto 0 0 0;margin:0 auto;max-width:1080px;background:var(--noche-2);
   border:1px solid var(--linea);border-bottom:none;border-radius:26px 26px 0 0;max-height:88vh;overflow:auto;
@@ -726,8 +741,12 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .hdr-cuenta .ini{width:21px;height:21px;border-radius:50%;background:var(--senal);color:#06231A;
   display:grid;place-items:center;font-weight:800;font-size:.72rem;text-transform:uppercase}
 
-.velo{position:fixed;inset:0;z-index:98;background:rgba(6,6,6,.72);backdrop-filter:blur(3px);
-  opacity:0;pointer-events:none;transition:opacity var(--medio) var(--sal)}
+/* El velo del diálogo de cuenta. Lo común ya está en `.velo`, arriba; lo
+   único suyo es la altura: por encima de los paneles (90), porque el
+   diálogo se puede abrir con un panel debajo, y por debajo de la caja
+   (99). Va por ID a propósito: redefinir `.velo` aquí se lo aplicaría
+   también al velo de los paneles, que es justo lo que rompió la ficha. */
+#velo{z-index:98}
 .velo.on{opacity:1;pointer-events:auto}
 
 .cuenta-caja{position:fixed;z-index:99;left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);
