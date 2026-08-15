@@ -671,8 +671,21 @@ select option{background:var(--sup);color:var(--tx)}
 .modal.show{transform:translateY(0)}
 .modal-hd{position:sticky;top:0;background:var(--noche-2);border-bottom:1px solid var(--linea);padding:20px 26px;display:flex;align-items:center;justify-content:space-between;z-index:2}
 .modal-hd h3{font-family:var(--display);font-weight:700;font-size:1.26rem;letter-spacing:-.034em;margin:0}
-.cerrar{background:var(--sup);border:1px solid var(--linea);width:38px;height:38px;border-radius:99px;cursor:pointer;font-size:1.05rem;line-height:1;color:var(--tx-3);
+.cerrar{position:relative;background:var(--sup);border:1px solid var(--linea);width:38px;height:38px;border-radius:99px;cursor:pointer;font-size:1.05rem;line-height:1;color:var(--tx-3);
   transition:border-color var(--rapido) var(--sal),color var(--rapido) var(--sal),transform var(--medio) var(--muelle)}
+/* EL DIBUJO MIDE 38; LA DIANA, 44.
+   A 38 px el botón está bien dibujado y encaja en la cabecera del panel,
+   pero un dedo necesita 44 y fallar un cierre es de las cosas que más
+   sensación de app rota dan. Se agranda la zona pulsable por debajo, sin
+   tocar ni el dibujo ni el hueco que ocupa en la fila.
+
+   Va anclada al borde DERECHO y no centrada: centrada sobresalía 3 px por
+   cada lado y engordaba el `scrollWidth` de `.pn-row` de 338 a 341.
+   Medido: no se veía nada —ni la cabecera ni el panel desbordaban—, pero
+   crecer hacia dentro no cuesta nada y deja la caja limpia. Además el
+   dedo llega desde dentro del panel, no desde el canto. */
+.cerrar::after{content:'';position:absolute;top:50%;right:0;width:44px;height:44px;
+  transform:translateY(-50%)}
 .cerrar:hover{border-color:var(--linea-2);color:var(--tx)}
 .cerrar:active{transform:scale(.9);transition-duration:.06s}
 .comp{width:100%;border-collapse:collapse}
@@ -797,6 +810,11 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .cuenta-caja .enlaces button:hover{color:var(--senal)}
 .cuenta-caja .cerrar-x{position:absolute;top:14px;right:14px;background:none;border:0;color:var(--tx-3);
   font-size:1.15rem;cursor:pointer;line-height:1;padding:6px}
+/* La misma diana de 44 que en el botón de cerrar de los paneles, y por el
+   mismo motivo anclada al borde derecho. Aquí el aspa va suelta, sin
+   círculo, así que dibujada mide todavía menos: 27×30. */
+.cuenta-caja .cerrar-x::after{content:'';position:absolute;top:50%;right:0;width:44px;height:44px;
+  transform:translateY(-50%)}
 .cuenta-msj{font-size:.86rem;line-height:1.5;padding:11px 13px;border-radius:10px;margin-bottom:15px;display:none}
 .cuenta-msj.mal{display:block;background:rgba(255,59,48,.1);border:1px solid rgba(255,59,48,.3);color:#FF8A80}
 .cuenta-msj.bien{display:block;background:rgba(37,227,154,.1);border:1px solid var(--senal-30);color:var(--senal)}
@@ -2669,17 +2687,38 @@ function openPanel(id){
  const c=el.querySelector('.cerrar');
  if(c) c.focus();
 }
-function closeAll(){
- ['drawer','modal'].forEach(id=>{
-  const el=document.getElementById(id);
-  el.classList.remove('show');
-  el.setAttribute('inert','');
- });
+/* LOS PANELES SE CIERRAN POR AQUÍ. TODOS.
+   Esta lista es la única verdad sobre qué cosas abre `openPanel`, y por
+   tanto qué cosas hay que saber cerrar. Si añades un panel nuevo, entra
+   aquí: cerrarlo a mano en otro sitio es exactamente el fallo que tuvo
+   el panel de la cuenta.
+
+   Lo que pasó: `openPanel` enciende `show` en el panel, `show` en #ovl,
+   `locked` en el cuerpo e `inert` en cabecera, main, pie y barra. El
+   panel de la cuenta se cerraba desde el módulo de cuentas quitando `on`
+   —que nunca tuvo— y apagando #velo —que es el velo del diálogo, no el
+   de los paneles—. Resultado: la equis no cerraba nada y, peor, el
+   `inert` del fondo no se quitaba nunca: después de abrir "Tu cuenta"
+   la página entera dejaba de responder al ratón. */
+const PANELES=['drawer','modal','perfilPanel'];
+const hayPanelAbierto=()=>PANELES.some(id=>{
+ const n=document.getElementById(id); return n && n.classList.contains('show');
+});
+function closePanel(id){
+ const el=document.getElementById(id); if(!el) return;
+ el.classList.remove('show');
+ el.setAttribute('inert','');
+ /* El velo, el bloqueo del cuerpo y el inert del fondo son de todos los
+    paneles a la vez, así que solo se levantan cuando no queda ninguno
+    abierto. Si se levantaran siempre, cerrar la ficha teniendo el perfil
+    detrás dejaría el perfil abierto, sin fondo y con la página suelta. */
+ if(hayPanelAbierto()) return;
  document.getElementById('ovl').classList.remove('show');
  document.body.classList.remove('locked');
  fondo().forEach(n=>n.removeAttribute('inert'));
  if(focoPrevio && document.contains(focoPrevio)){focoPrevio.focus();focoPrevio=null}
 }
+function closeAll(){ PANELES.forEach(closePanel); }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
 
 /* ---- descartadas ---- */
@@ -3528,7 +3567,14 @@ const Cuenta = (function(){
  function cerrar(){
   $('velo').classList.remove('on');
   const caja=$('cuentaCaja'); caja.classList.remove('on'); caja.setAttribute('inert','');
-  document.body.classList.remove('locked');
+  /* `locked` es de TODOS los que tapan la pantalla, no solo de este
+     diálogo, así que se levanta únicamente cuando no queda nada tapando.
+     El camino que lo destapaba: abrir una ficha, pulsar "Vigilar" sin
+     sesión —ese botón vive DENTRO de la ficha, que no es fondo y por eso
+     sí se puede pulsar—, y cerrar el diálogo. La ficha seguía encima y la
+     página de detrás volvía a hacer scroll. */
+  if(typeof hayPanelAbierto!=='function' || !hayPanelAbierto())
+   document.body.classList.remove('locked');
  }
  function msj(txt,bien){
   const m=$('cuentaMsj'); m.className='cuenta-msj'+(txt?(bien?' bien':' mal'):'');
@@ -3703,11 +3749,12 @@ const Cuenta = (function(){
    aviso('Cuenta borrada. No queda nada tuyo.');
   }catch(e){ aviso('No se ha podido borrar: '+e.message); }
  }
+ /* El panel de la cuenta lo abre `openPanel`, así que lo cierra
+    `closePanel`: es el único que sabe deshacer las cuatro cosas que hace
+    abrirlo. Aquí NO se toca `on` ni `#velo` —ese es el vocabulario del
+    diálogo de entrar, no el de los paneles—, que era justo el error. */
  function cerrarPanelPerfil(){
-  const p=$('perfilPanel'); if(!p) return;
-  p.classList.remove('on'); p.setAttribute('inert','');
-  const v=$('velo'); if(v) v.classList.remove('on');
-  document.body.classList.remove('locked');
+  if(typeof closePanel==='function') closePanel('perfilPanel');
  }
 
  /* --- estado del botón de la cabecera ----------------------------- */
