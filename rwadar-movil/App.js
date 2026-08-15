@@ -37,12 +37,20 @@ export default function App() {
   const [abierta, setAbierta] = useState(null);
   const [explicando, setExplicando] = useState(false);
 
+  /* El `finally` no es adorno: si cualquiera de estas llamadas rechazara,
+     `cargando` se quedaría en true y la pantalla de "Sintonizando el
+     radar…" no se iría nunca. Cada carga ya trae su respaldo desde la
+     copia local, así que salir de la pantalla de carga es SIEMPRE lo
+     correcto: peor que una lista corta es una app que no arranca. */
   const traer = useCallback(async () => {
-    const [r, f, s] = await Promise.all([cargarRadar(), cargarFuera(), siguiendo()]);
-    setRadar(r.datos); setFuera(f.datos); setSigo(s);
-    setSinConexion(!!r.deCache);
-    setAvisos(await novedades(s));
-    setCargando(false);
+    try {
+      const [r, f, s] = await Promise.all([cargarRadar(), cargarFuera(), siguiendo()]);
+      setRadar(r.datos); setFuera(f.datos); setSigo(s);
+      setSinConexion(!!r.deCache);
+      setAvisos(await novedades(s));
+    } finally {
+      setCargando(false);
+    }
   }, []);
 
   useEffect(() => { traer(); }, [traer]);
@@ -60,6 +68,14 @@ export default function App() {
     radar.forEach((p) => m.set(p.categoria, (m.get(p.categoria) || 0) + 1));
     return [...m.entries()].sort((a, b) => a[0].localeCompare(b[0], 'es'));
   }, [radar]);
+
+  /* Lista vacía sin ningún dato NO es "no hay resultados": es que no hubo
+     forma de traerlos y todavía no hay copia guardada. Decirle a alguien
+     que su búsqueda no encontró nada cuando lo que falla es la red le
+     manda a cambiar el filtro en vez de a mirar la cobertura. */
+  const nadaQueVer = radar.length === 0
+    ? 'No se ha podido traer el radar y todavía no hay copia guardada. Desliza hacia abajo para reintentar cuando tengas cobertura.'
+    : 'El radar no detecta nada con esos filtros.';
 
   const visibles = useMemo(() => {
     const q = busqueda.trim().toLowerCase();
@@ -165,7 +181,7 @@ export default function App() {
               <Ficha p={item} sigue={sigo.includes(item.slug)}
                 onAbrir={() => abrir(item)} onSeguir={() => alternar(item)} />
             )}
-            ListEmptyComponent={<Text style={e.vacio}>El radar no detecta nada con esos filtros.</Text>}
+            ListEmptyComponent={<Text style={e.vacio}>{nadaQueVer}</Text>}
             ListFooterComponent={<Descartadas fuera={fuera} />}
           />
         ) : (

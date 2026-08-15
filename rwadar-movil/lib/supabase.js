@@ -23,6 +23,33 @@ async function idInstalacion() {
   return id;
 }
 
+/* TODA PETICIÓN LLEVA PLAZO.
+   Sin esto, una petición que no falla pero tampoco vuelve —cobertura de
+   metro, wifi de hotel que acepta la conexión y no deja salir, portal
+   cautivo— deja la app clavada en "Sintonizando el radar…" para siempre.
+   No es una hipótesis: ni PostgREST ni fetch imponen ningún límite, y el
+   respaldo desde la copia local solo entra si la promesa RECHAZA. Con el
+   plazo, rechaza, y entonces sí: se lee lo guardado, que es justo lo que
+   la app promete para el metro.
+
+   Ocho segundos es largo para una red lenta y corto para una persona de
+   pie en un andén. */
+const PLAZO = 8000;
+
+function conPlazo(url, opciones = {}) {
+  const corte = new AbortController();
+  const reloj = setTimeout(() => corte.abort(), PLAZO);
+  /* Si quien llama traía su propia señal, se respeta: que aborte
+     cualquiera de las dos aborte la petición. */
+  const suya = opciones.signal;
+  if (suya) {
+    if (suya.aborted) corte.abort();
+    else suya.addEventListener('abort', () => corte.abort());
+  }
+  return fetch(url, { ...opciones, signal: corte.signal })
+    .finally(() => clearTimeout(reloj));
+}
+
 let cachePromesa = null;
 
 /* El cliente se crea una sola vez, ya con la cabecera de instalación puesta:
@@ -33,7 +60,7 @@ export function cliente() {
     cachePromesa = idInstalacion().then((id) =>
       createClient(URL, CLAVE, {
         auth: { persistSession: false, autoRefreshToken: false },
-        global: { headers: { 'x-instalacion': id } },
+        global: { headers: { 'x-instalacion': id }, fetch: conPlazo },
       })
     );
   }

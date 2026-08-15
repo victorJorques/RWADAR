@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, Easing, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Animated, Easing, Pressable, StyleSheet, Text, useWindowDimensions, View,
+} from 'react-native';
 import Svg, {
   Circle, Defs, G, Line, Path, RadialGradient, Stop, Text as SvgText,
 } from 'react-native-svg';
@@ -47,6 +49,21 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
   const [leido, setLeido] = useState(null);
   const cats = Object.keys(COLOR_CATEGORIA);
 
+  /* EL RADAR SE ENCOGE, NO SE RECORTA.
+     LADO era fijo a 340 y la tarjeta que lo envuelve se ajusta a él, así
+     que hacían falta 374 px de pantalla para verlo entero: 340 del lienzo,
+     32 del relleno de la lista y 2 del borde. Un Android de 360 dp —el
+     ancho más vendido en España— se comía el borde derecho. Y el radar no
+     es una ilustración, es el producto.
+
+     Las cuentas de los puntos NO cambian: el SVG ya tenía viewBox, así que
+     todo sigue calculándose en el espacio de 340 y solo cambia el tamaño
+     al que se pinta. Las dianas sí se colocan a escala, pero conservan sus
+     34 px: el dedo necesita su diana entera aunque el dibujo mengüe. */
+  const { width: ancho } = useWindowDimensions();
+  const lado = Math.max(240, Math.min(LADO, ancho - 34));
+  const k = lado / LADO;
+
   useEffect(() => {
     const bucle = Animated.loop(
       Animated.timing(giro, {
@@ -77,8 +94,8 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
 
   return (
     <View style={e.caja}>
-      <View style={e.lienzo}>
-        <Svg width={LADO} height={LADO} viewBox={`0 0 ${LADO} ${LADO}`}>
+      <View style={[e.lienzo, { width: lado, height: lado }]}>
+        <Svg width={lado} height={lado} viewBox={`0 0 ${LADO} ${LADO}`}>
           {/* Anillos, uno por nivel de acceso. Sin rótulo dentro: los cuatro
               nombres caían justo encima de los puntos del sector de arriba. */}
           {[0.40, 0.60, 0.76, 0.90].map((f) => (
@@ -134,7 +151,7 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
         <Animated.View
           pointerEvents="none"
           style={[StyleSheet.absoluteFill, { transform: [{ rotate: rotacion }] }]}>
-          <Svg width={LADO} height={LADO} viewBox={`0 0 ${LADO} ${LADO}`}>
+          <Svg width={lado} height={lado} viewBox={`0 0 ${LADO} ${LADO}`}>
             <Defs>
               <RadialGradient id="barrido" cx="0" cy="0.5" r="1">
                 <Stop offset="0" stopColor={C.senal} stopOpacity="0.26" />
@@ -160,7 +177,7 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
             onPressIn={() => setLeido(p)}
             onPress={() => onAbrir(p)}
             hitSlop={4}
-            style={[e.diana, { left: x - 17, top: y - 17 }]}
+            style={[e.diana, { left: x * k - 17, top: y * k - 17 }]}
             accessibilityRole="button"
             accessibilityLabel={`${p.nombre}. ${p.categoria}. Acceso: ${p.acceso}. Abrir ficha.`} />
         ))}
@@ -203,7 +220,9 @@ const e = StyleSheet.create({
     backgroundColor: C.noche2, borderWidth: 1, borderColor: C.linea,
     borderRadius: R.panel, paddingVertical: 16, marginBottom: 14, alignItems: 'center',
   },
-  lienzo: { width: LADO, height: LADO },
+  /* El tamaño va inline: depende del ancho de la pantalla. Aquí solo lo
+     que no cambia. */
+  lienzo: {},
   diana: { position: 'absolute', width: 34, height: 34, borderRadius: 17 },
 
   lectura: {
