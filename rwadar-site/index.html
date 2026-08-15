@@ -512,8 +512,19 @@ select option{background:var(--sup);color:var(--tx)}
 .f:hover{border-color:var(--linea-2);color:var(--tx);transform:translateY(-1px)}
 .f.on{background:var(--senal);border-color:var(--senal);color:#0A0C12;font-weight:600}
 .f.on .ct{color:rgba(10,12,18,.6)}
-.cuenta{font-family:var(--mono);font-size:.76rem;color:var(--tx-3);margin-bottom:18px;font-variant-numeric:tabular-nums}
-.cuenta b{color:var(--senal)}
+/* El renglón que dice cuántas plataformas se están viendo. Se llamaba
+   `.cuenta`, igual que la lista de la calculadora —dos «cuentas» distintas
+   en castellano: ésta es un recuento y aquélla es una suma—, y como las dos
+   son clases con la misma especificidad, ésta ganaba por ir después y le
+   metía a la calculadora tipografía monoespaciada, 12 px y 18 px de margen
+   inferior que su propia regla ponía a cero. Aquí se llama `recuento` y
+   cada una manda solo en lo suyo.
+
+   El margen va escrito entero a propósito: los 18 px de arriba le venían
+   de la regla de la calculadora, y al separarlas se habrían quedado en el
+   margen que trae el navegador. Aquí valen lo que ya valían. */
+.recuento{font-family:var(--mono);font-size:.76rem;color:var(--tx-3);margin:18px 0;font-variant-numeric:tabular-nums}
+.recuento b{color:var(--senal)}
 
 /* ============ 8 · FICHAS ============ */
 .rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;padding-bottom:40px}
@@ -797,7 +808,17 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .vig-lista button{background:none;border:0;color:var(--tx-3);cursor:pointer;font-size:.82rem;
   text-decoration:underline;text-underline-offset:3px;padding:0;font-family:var(--body)}
 .vig-lista button:hover{color:#FF8A80}
-.vacio{font-size:.88rem;color:var(--tx-3);line-height:1.55}
+/* Los renglones apagados del área de la persona: «Miembro desde el…»,
+   «Todavía no vigilas ninguna», «Cargando…», «Nada pendiente». Son una
+   línea de texto y nada más.
+
+   Se llamaban `.vacio`, igual que el cartel de «no hay resultados» de la
+   rejilla, que sí es una caja: 70 px de relleno, fondo, borde de trazos y
+   texto centrado. Misma clase y misma especificidad, así que cada uno se
+   quedaba con lo del otro y estos renglones salían como cajones de 166 y
+   214 px de alto en mitad del panel. Es el mismo defecto que tuvo `.velo`:
+   dos cosas distintas compartiendo nombre sin quererlo. */
+.perfil-nota{font-size:.88rem;color:var(--tx-3);line-height:1.55}
 .fila-opcion{display:flex;align-items:flex-start;gap:11px;padding:13px 0;font-size:.9rem;color:var(--tx-2)}
 .fila-opcion input{margin-top:3px;accent-color:var(--senal);flex:none;width:auto}
 .perfil-pie{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;padding-top:18px;border-top:1px solid var(--linea)}
@@ -1176,7 +1197,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 
 <div class="wrap">
   <div class="fichas-f" id="pills"></div>
-  <p class="cuenta" id="count"></p>
+  <p class="recuento" id="count"></p>
   <div class="rejilla" id="grid"><!--pre:ini--><div class="ficha " style="--cc:#B583FF">
    <div class="ficha-alto"><span class="sigla" style="--cc:#B583FF">A</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" onclick="openDrawer(0)">ADDX</button></h3><div class="sub">Marketplace · Asia-Pacífico</div></div></div>
    <p class="nota">Fondos de capital riesgo y private equity troceados para inversores acreditados.</p>
@@ -3557,11 +3578,11 @@ const Cuenta = (function(){
     '<div><span class="n">'+lista.length+'</span><span class="l">Plataformas<br>vigiladas</span></div>'+
     '<div><span class="n">'+((perfil&&perfil.avisos_recibidos)||0)+'</span><span class="l">Avisos<br>recibidos</span></div>'+
    '</div>'+
-   '<p class="vacio">Miembro desde el '+desde+'.</p>'+
+   '<p class="perfil-nota">Miembro desde el '+desde+'.</p>'+
    '<div class="perfil-sec">Lo que vigilas</div>'+
    (lista.length
      ? '<ul class="vig-lista">'+lista.map(n=>'<li><span>'+n+'</span><button data-q="'+n.replace(/"/g,'&quot;')+'">quitar</button></li>').join('')+'</ul>'
-     : '<p class="vacio">Todavía no vigilas ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Vigilar»: te escribiremos solo si cambia de estado.</p>')+
+     : '<p class="perfil-nota">Todavía no vigilas ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Vigilar»: te escribiremos solo si cambia de estado.</p>')+
    '<div class="perfil-sec">Avisos</div>'+
    '<label class="fila-opcion"><input type="checkbox" id="optAvisos"'+((perfil&&perfil.avisos_correo)!==false?' checked':'')+'>'+
    '<span>Avisarme por correo cuando una plataforma que vigilo cambie de estado. Es el único correo que enviamos.</span></label>'+
@@ -3588,15 +3609,15 @@ const Cuenta = (function(){
   let caja=$('modZona');
   if(!caja){ caja=document.createElement('div'); caja.id='modZona';
     c.querySelector('.perfil-pie').insertAdjacentElement('beforebegin',caja); }
-  caja.innerHTML='<div class="perfil-sec">Moderación</div><p class="vacio">Cargando…</p>';
+  caja.innerHTML='<div class="perfil-sec">Moderación</div><p class="perfil-nota">Cargando…</p>';
 
   let filas=[];
   try{ filas=(await rest('/cola_moderacion?select=*'))||[]; }
-  catch(e){ caja.innerHTML='<div class="perfil-sec">Moderación</div><p class="vacio">No se ha podido cargar la cola.</p>'; return; }
+  catch(e){ caja.innerHTML='<div class="perfil-sec">Moderación</div><p class="perfil-nota">No se ha podido cargar la cola.</p>'; return; }
 
   if(!filas.length){
    caja.innerHTML='<div class="perfil-sec">Moderación</div>'+
-     '<p class="vacio">Nada pendiente. Aquí aparecen las opiniones denunciadas y las que se han ocultado solas.</p>';
+     '<p class="perfil-nota">Nada pendiente. Aquí aparecen las opiniones denunciadas y las que se han ocultado solas.</p>';
    return;
   }
 
