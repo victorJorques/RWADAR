@@ -3,7 +3,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()
   Cross-Origin-Opener-Policy: same-origin
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self' https://exgpmjpaaebyoolpwced.supabase.co; form-action 'none'
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self' https://exgpmjpaaebyoolpwced.supabase.co; worker-src 'self'; manifest-src 'self'; form-action 'none'
 
 /og.png
   Cache-Control: public, max-age=604800, must-revalidate
@@ -11,3 +11,25 @@
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
+
+# El trabajador de segundo plano NO se guarda en caché. Si el navegador
+# sirviera una copia vieja de este archivo, la web se quedaría clavada en
+# una versión antigua y no habría forma de corregirlo desde aquí.
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# El manifiesto cambia poquísimo, pero una hora de caché es suficiente
+# para que un cambio de icono o de nombre llegue el mismo día.
+/manifest.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Los iconos son inmutables mientras no cambie la marca.
+/icono-192.png
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/icono-512.png
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/icono-maskable-512.png
+  Cache-Control: public, max-age=604800, must-revalidate

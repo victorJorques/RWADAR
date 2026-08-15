@@ -1,0 +1,44 @@
+{
+  "id": "/",
+  "name": "RWAdar · registro de plataformas RWA",
+  "short_name": "RWAdar",
+  "description": "Registro curado de plataformas de tokenización de activos reales. 38 analizadas, 26 en el radar, y los descartes solo cuando el motivo se puede respaldar con una fuente citable.",
+  "lang": "es-ES",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#0B0A0A",
+  "theme_color": "#0B0A0A",
+  "categories": ["finance", "business", "news"],
+  "icons": [
+    {
+      "src": "/icono-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icono-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "El radar con las 26 plataformas que pasan el filtro"
+    }
+  ]
+}

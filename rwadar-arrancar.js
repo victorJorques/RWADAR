@@ -53,6 +53,11 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
     'index.html','privacidad.html','og.png','rwadar.csv','sitemap.xml','robots.txt',
     '404.html','_headers',
     'google6b2e3e5f58b7e557.html','c9417d2d5003bb9a41fee63c7f5ec00f.txt',
+    /* Lo que hace que la dirección se pueda instalar como aplicación. Sin
+       el manifiesto no aparece "Instalar"; sin los iconos, el que la
+       instale se encuentra un cuadrado en blanco en la pantalla de inicio. */
+    'manifest.webmanifest','sw.js',
+    'icono-192.png','icono-512.png','icono-maskable-512.png',
   ];
   const hay = fs.readdirSync(SITIO);
   const sobran = hay.filter(f => !DEBIDOS.includes(f));

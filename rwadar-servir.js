@@ -27,6 +27,12 @@ const TIPO = {
   '.html': 'text/html; charset=utf-8', '.png': 'image/png',
   '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml',
   '.json': 'application/json; charset=utf-8', '.csv': 'text/csv; charset=utf-8',
+  /* Sin estos dos, lo desconocido sale como application/octet-stream y el
+     navegador se niega a registrar el trabajador de segundo plano y a leer
+     el manifiesto. En Netlify funcionaría y aquí no: el peor de los fallos,
+     el que solo aparece en producción. */
+  '.js': 'text/javascript; charset=utf-8',
+  '.webmanifest': 'application/manifest+json; charset=utf-8',
 };
 
 http.createServer((req, res) => {

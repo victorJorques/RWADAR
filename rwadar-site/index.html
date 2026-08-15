@@ -30,6 +30,22 @@
 <meta name="twitter:title" content="RWAdar · Todas las plataformas RWA en un solo radar">
 <meta name="twitter:description" content="Analizamos 38 plataformas de activos tokenizados. Solo 26 pasan el filtro. Los descartes, publicados con su fuente.">
 <meta name="twitter:image" content="https://rwadar.netlify.app/og.png">
+<!-- Instalable: una sola dirección para la web y para la aplicación.
+     Quien entre desde el móvil puede añadirla a la pantalla de inicio y
+     se abre con su icono y sin barra de navegador, como una app. No hay
+     tienda de por medio ni una segunda dirección que explicar.
+     El manifiesto está en /manifest.webmanifest; el icono de iOS tiene
+     que ser PNG y por eso convive con el favicon SVG de aquí abajo. -->
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icono-192.png">
+<meta name="application-name" content="RWAdar">
+<meta name="apple-mobile-web-app-title" content="RWAdar">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- `black`, no `black-translucent`: el translúcido mete el contenido
+     debajo de la barra de estado y la cabecera se iría bajo la muesca. -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>">
 
 
@@ -3745,6 +3761,30 @@ const Cuenta = (function(){
  return {abrir:abrir, pintarVigilar:pintarVigilar, hay:()=>!!ses,
          uid:()=>ses&&ses.uid, token:testigo};
 })();
+
+/* =================================================================
+   INSTALABLE · lo que convierte esta direccion en la aplicacion
+   -----------------------------------------------------------------
+   Con esto el navegador ofrece "Instalar" en Android y "Anadir a
+   pantalla de inicio" en iPhone, y la pagina se abre despues con su
+   icono y sin barra de navegador. No hay una segunda direccion que
+   explicarle a nadie: la web ES la app.
+
+   El guardado es el mismo idioma que usa el modulo de cuentas de aqui
+   arriba: en el DOM de juguete del pre-renderizado NO existe navigator,
+   asi que preguntar por el es la senal fiable para salirse sin ruido.
+   Mirar el DOM no valdria, porque alli cualquier id devuelve un nodo.
+
+   Se registra en el evento load y no antes: durante la carga el
+   trabajador se pone a guardar el armazon, y no tiene sentido que
+   compita por el ancho de banda con la propia pagina que lo pidio.
+   Si falla -http sin cifrar, navegador viejo, permisos-, se calla: sin
+   trabajador la web funciona exactamente igual, solo que sin instalar.
+   ================================================================= */
+if(typeof navigator!=='undefined' && navigator.serviceWorker && typeof location!=='undefined'){
+ const registrar=()=>navigator.serviceWorker.register('/sw.js').catch(()=>{});
+ if(typeof addEventListener==='function') addEventListener('load',registrar); else registrar();
+}
 
 </script>
 </body>
