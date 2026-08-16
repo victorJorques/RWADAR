@@ -37,6 +37,19 @@ const j = (s) => JSON.stringify(s == null ? '' : String(s));
 
   if (!radar.length || !fuera.length) throw new Error('la base devolvió listas vacías');
 
+  /* Las emisiones abiertas. Se piden aparte y con red debajo: mientras la
+     migración 18 no esté aplicada en producción, la vista no existe y la
+     base responde con un error. Eso NO puede tumbar la publicación de la
+     web entera, así que aquí se traduce a "no hay emisiones todavía" y la
+     página enseña su estado vacío, que ya está escrito. */
+  let emisiones = [];
+  try {
+    emisiones = await pedir('emisiones_publicas?select=*&estado=eq.abierta');
+  } catch (e) {
+    console.log('Sin emisiones: la vista emisiones_publicas todavía no existe en la base.');
+    console.log('(se aplica con db/18_emisiones.sql; la web sale con su estado vacío)');
+  }
+
   const P = radar.map(p =>
     ` {n:${j(p.nombre)},cat:${j(p.categoria)},tipo:${j(p.actor)},reg:${j(p.region)},` +
     `cadenas:${j(p.cadenas)},ticket:${j(p.ticket)},acceso:${j(p.acceso)},web:${j(p.web)},` +
@@ -61,8 +74,24 @@ const j = (s) => JSON.stringify(s == null ? '' : String(s));
     html = html.slice(0, ini) + `const ${nombre}=[\n${cuerpo}` + html.slice(fin);
   };
 
+  /* Las claves van cortas porque este array viaja en el HTML de todos los
+     visitantes. `pat` es si está patrocinada: viaja SIEMPRE, aunque hoy
+     no cobremos, porque la web la etiqueta y eso no puede depender de que
+     alguien se acuerde de añadirlo el día que se cobre. */
+  const E = emisiones.map(e =>
+    ` {s:${j(e.slug)},t:${j(e.titulo)},res:${j(e.resumen)},pl:${j(e.plataforma)},` +
+    `plw:${j(e.plataforma_web)},cat:${j(e.categoria)},col:${j(e.color)},ub:${j(e.ubicacion)},` +
+    `mon:${j(e.moneda)},min:${Number(e.ticket_minimo) || 0},obj:${Number(e.objetivo) || 0},` +
+    `cap:${Number(e.captado) || 0},pct:${Number(e.porcentaje) || 0},` +
+    `rent:${e.rentabilidad == null ? 'null' : Number(e.rentabilidad)},` +
+    `plazo:${e.plazo_meses == null ? 'null' : Number(e.plazo_meses)},` +
+    `tipo:${j(e.tipo_rendimiento)},cierra:${j(e.cierra_el)},dias:${e.dias_para_cerrar == null ? 'null' : Number(e.dias_para_cerrar)},` +
+    `url:${j(e.url)},ver:${j(e.verificada_el)},pat:${e.patrocinada ? 'true' : 'false'}},`
+  ).join('\n');
+
   sustituir('P', P);
   sustituir('FUERA', F);
+  sustituir('EMI', E);
 
   fs.writeFileSync(HTML, html, 'utf8');
 

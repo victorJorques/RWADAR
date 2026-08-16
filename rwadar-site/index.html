@@ -945,6 +945,89 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   border:1px solid var(--linea-2);background:transparent;color:var(--tx-2)}
 .mod-bot .ocultar:hover{border-color:rgba(255,59,48,.45);color:#FF8A80}
 .mod-bot .restaurar:hover{border-color:var(--senal-30);color:var(--senal)}
+/* ============ 15 · EMISIONES ABIERTAS ============
+   La parte «Booking» del sitio. Se parece a una ficha de plataforma a
+   propósito —mismos tokens, mismo lenguaje— pero manda otra cosa: en la
+   ficha manda el nombre, y aquí manda EL NÚMERO. Quien mira esto compara
+   rentabilidad y entrada mínima de un vistazo, así que esos dos van
+   grandes y en tipografía de cifras, y el resto se aparta. */
+.emis{padding-block:8px 46px}
+.emis-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-bottom:20px}
+.emis-cab h2{font-size:clamp(1.5rem,3.4vw,2.05rem);font-weight:800;letter-spacing:-.035em;margin:0 0 8px}
+.emis-sub{font-size:.92rem;line-height:1.6;color:var(--tx-2);margin:0;max-width:62ch}
+.emis-orden{display:flex;align-items:center;gap:9px;flex:none}
+.emis-orden label{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--tx-3)}
+.emis-orden select{background:var(--sup);border:1px solid var(--linea);color:var(--tx);
+  font-family:var(--body);font-size:.85rem;padding:9px 12px;border-radius:10px;cursor:pointer}
+.emis-orden select:focus{outline:none;border-color:var(--senal)}
+
+.emis-filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+
+.emis-rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+
+/* La tarjeta. El filo de color a la izquierda es el mismo recurso que la
+   sigla de las fichas: dice la categoría sin gastar una línea de texto. */
+.emi{position:relative;background:var(--sup);border:1px solid var(--linea);border-radius:var(--r);
+  padding:20px 20px 16px;display:flex;flex-direction:column;gap:14px;overflow:hidden;
+  transition:border-color var(--rapido) var(--sal),transform var(--medio) var(--muelle)}
+.emi::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--cc,var(--senal))}
+.emi:hover{border-color:var(--linea-2);transform:translateY(-2px)}
+
+.emi-alto{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.emi-tit{font-size:1.02rem;font-weight:700;line-height:1.35;letter-spacing:-.01em;margin:0}
+.emi-donde{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--tx-3);margin-top:5px;
+  display:flex;flex-wrap:wrap;gap:6px}
+.emi-donde b{color:var(--tx-2);font-weight:500}
+
+/* El chivato de urgencia. Booking entero se sostiene sobre esto. */
+.emi-cierra{flex:none;font-family:var(--mono);font-size:.63rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 9px;border-radius:99px;border:1px solid var(--linea-2);color:var(--tx-3);white-space:nowrap}
+.emi-cierra.pronto{border-color:rgba(255,159,10,.4);color:#FFB454;background:rgba(255,159,10,.08)}
+.emi-cierra.ultimo{border-color:rgba(255,59,48,.45);color:#FF8A80;background:rgba(255,59,48,.09)}
+
+/* Las dos cifras que de verdad se comparan. */
+.emi-cifras{display:flex;gap:26px;align-items:flex-end}
+.emi-cifra .v{display:block;font-family:var(--mono);font-size:1.5rem;font-weight:700;letter-spacing:-.03em;
+  color:var(--tx);font-variant-numeric:tabular-nums;line-height:1}
+.emi-cifra .v.oro{color:var(--senal)}
+.emi-cifra .l{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--tx-3);margin-top:6px}
+.emi-cifra .v small{font-size:.62em;font-weight:600;letter-spacing:0}
+
+.emi-nota{font-size:.85rem;line-height:1.55;color:var(--tx-2);margin:0}
+
+/* Cuánto lleva captado. Una barra, no un número: se lee sin leer. */
+.emi-barra{height:4px;border-radius:99px;background:var(--noche-2);overflow:hidden}
+.emi-barra i{display:block;height:100%;background:var(--senal);border-radius:99px}
+.emi-avance{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;
+  color:var(--tx-3);font-variant-numeric:tabular-nums;margin-top:-8px}
+
+.emi-pie{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid var(--linea);padding-top:13px;margin-top:auto}
+.emi-ir{background:var(--sup-2);border:1px solid var(--linea-2);color:var(--tx);font-family:var(--body);
+  font-size:.83rem;font-weight:600;padding:9px 15px;border-radius:99px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+  transition:border-color var(--rapido) var(--sal),background var(--rapido) var(--sal)}
+.emi-ir:hover{border-color:var(--senal-30);background:var(--sup-3);color:var(--senal)}
+.emi-ver{font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;color:var(--tx-3);line-height:1.4}
+.emi-ver a{color:var(--tx-3);text-decoration:underline;text-underline-offset:2px}
+.emi-ver a:hover{color:var(--senal)}
+
+/* Booking marca los anuncios. Nosotros también, y bien visible: es lo
+   que permite que el veredicto editorial siga siendo creíble. */
+.emi-pat{position:absolute;top:0;right:0;font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--tx-3);background:var(--noche-2);
+  border-left:1px solid var(--linea);border-bottom:1px solid var(--linea);
+  border-radius:0 0 0 10px;padding:5px 9px}
+
+/* El estado vacío no es un hueco: explica qué falta y por qué. */
+.emis-vacio{grid-column:1/-1;text-align:center;padding:56px 24px;background:var(--sup);
+  border:1px dashed var(--linea-2);border-radius:var(--r)}
+.emis-vacio h3{font-size:1.05rem;font-weight:700;margin:0 0 10px}
+.emis-vacio p{font-size:.9rem;line-height:1.6;color:var(--tx-2);margin:0 auto;max-width:52ch}
+
+.emis-legal{font-size:.76rem;line-height:1.55;color:var(--tx-3);margin:20px 0 0;max-width:76ch}
+
 /* ============ 14 · RESPONSIVE ============ */
 @media (max-width:1080px){
   .explica-in{grid-template-columns:1fr;gap:22px}
@@ -1088,6 +1171,39 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
     <li><span class="n menta" id="s3">11</span><span class="l">Abiertas a minoristas</span></li>
     <li><span class="n coral" id="s4">4</span><a class="l" href="#fuera">Descartadas · con fuente</a></li>
   </ul>
+</section>
+
+<!-- ============ EMISIONES ABIERTAS ============
+     Va aquí, pegada al radar y por delante del explicador, a propósito:
+     quien entra por primera vez necesita el explicador, pero quien
+     vuelve viene a ver qué hay abierto hoy. El contenido que caduca es
+     lo único que hace que se vuelva a una página. -->
+<section class="emis wrap" id="emisiones">
+  <div class="emis-cab">
+    <div>
+      <h2>Abierto ahora mismo</h2>
+      <p class="emis-sub">Las emisiones que aceptan dinero hoy en las plataformas que
+        pasan el filtro. <b>Cada cifra es la que publica la plataforma</b>, con su
+        enlace y la fecha en que la comprobamos. Aquí no se invierte: se compara y
+        se va al origen.</p>
+    </div>
+    <div class="emis-orden">
+      <label for="emiOrden">Ordenar por</label>
+      <select id="emiOrden">
+        <option value="cierra">Lo que cierra antes</option>
+        <option value="rent">Mayor rentabilidad</option>
+        <option value="min">Menor entrada</option>
+        <option value="pct">Más avanzada</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="emis-filtros" id="emiFiltros"></div>
+  <div class="emis-rejilla" id="emiLista"></div>
+
+  <p class="emis-legal">RWAdar no intermedia, no custodia dinero y no recomienda dónde
+    invertir. Listar una emisión no es respaldarla. Tokenizar no elimina el riesgo de
+    perder lo invertido: comprueba siempre las condiciones en la propia plataforma.</p>
 </section>
 
 <!-- ============ EXPLICADOR 3D ============ -->
@@ -1546,6 +1662,24 @@ const FUERA=[
  {n:"Goldfinch",badge:"Cierre aprobado",why:"En junio de 2026 la comunidad aprobó el cierre de Goldfinch Prime. Quedan más de 50 M$ sin devolver en los fondos de prestatarios y solo se ha recuperado en torno al 30 % del capital: de ocho prestatarios, dos en impago y seis en reestructuración.",fuentes:[{url:"https://www.theblock.co/post/405825/goldfinch-set-shutter-prime-community-vote-backs-wind-down-proposal",titulo:"The Block · la comunidad aprueba el cierre de Goldfinch Prime"},{url:"https://thedefiant.io/news/defi/goldfinch-finance-winds-down-depositors-report-50m-defaults",titulo:"The Defiant · Goldfinch cierra; los depositantes declaran 50 M$ en impagos"}]},
  {n:"RealT",badge:"En liquidación",why:"Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones, en la mayor demanda por insalubridad de la historia de la ciudad. Un juez le prohibió cobrar alquileres en las no conformes y le ordenó reparar. En julio de 2026 la propia empresa anunció liquidación voluntaria y la venta de sus más de 700 inmuebles en Detroit.",fuentes:[{url:"https://detroitmi.gov/news/city-scores-major-win-tenants-living-troubled-real-token-properties-are-subject-sweeping-lawsuit",titulo:"Ciudad de Detroit · la ciudad gana una medida para los inquilinos de Real Token"},{url:"https://www.bridgedetroit.com/detroit-sues-blockchain-real-estate-firm/",titulo:"BridgeDetroit · Detroit demanda a Real Token por cientos de infracciones"},{url:"https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",titulo:"BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar"}]},
  {n:"Toucan Protocol",badge:"Registro bloqueado",why:"El bloqueo no es suyo sino del registro: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudia un estado «inmovilizado» que la permitiría, todavía sin resolver. Toucan respaldó públicamente la decisión.",fuentes:[{url:"https://www.spglobal.com/commodity-insights/en/news-research/latest-news/energy-transition/052522-as-verra-halts-tokenization-of-carbon-credits-toucan-vows-to-keep-web3-ethos-alive",titulo:"S&P Global · Verra detiene la tokenización de créditos de carbono"},{url:"https://carboncredits.com/verra-suspension-carbon-credits-proposes-immobilizing-credits/",titulo:"CarbonCredits · Verra prohíbe tokenizar créditos retirados y propone inmovilizarlos"},{url:"https://blog.toucan.earth/response-to-verras-announcement/",titulo:"Toucan · su propia respuesta al anuncio de Verra"}]},
+];
+
+/* ---- LAS EMISIONES ABIERTAS ----
+   Hasta aquí el registro listaba plataformas: la guía de hoteles. Esto
+   son las habitaciones libres, y es lo que hace que alguien vuelva.
+
+   Lo escribe `sincronizar.js` desde la vista `emisiones_publicas`, igual
+   que P y FUERA, y con el MISMO cierre "\n];" que busca el sustituidor.
+   Si la migración 18 no está aplicada todavía en la base, esto se queda
+   vacío y la sección enseña su estado vacío: la web no se rompe por no
+   tener emisiones, solo lo dice.
+
+   NINGUNA CIFRA DE AQUÍ ES NUESTRA. Todas salen de la página de la
+   plataforma; cada emisión lleva su enlace y su fecha de comprobación, y
+   la ficha las enseña las dos. Es la misma regla que «ninguna descartada
+   sin fuente», que ya evitó el peor riesgo del proyecto — y aquí pesa
+   más, porque son números de dinero ajeno. */
+const EMI=[
 ];
 
 /* ---- categorías: seis colores que se distinguen sobre negro ----
@@ -2733,6 +2867,160 @@ function closePanel(id){
 }
 function closeAll(){ PANELES.forEach(closePanel); }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+
+/* =================================================================
+   LAS EMISIONES ABIERTAS · la parte Booking
+   -----------------------------------------------------------------
+   Se pinta igual que la rejilla de fichas y por el mismo motivo: el
+   pre-renderizado ejecuta esto en su DOM de juguete y deja el resultado
+   escrito en el HTML, así que Google ve las emisiones sin ejecutar nada.
+
+   Dos cuidados por eso mismo:
+   - NADA de `Intl`: no existe en el contexto del pre-renderizado y
+     tumbaría la publicación entera. Los miles se separan a mano.
+   - Los días que faltan se calculan AQUÍ, no se traen de la base. Si
+     vinieran calculados, el contador envejecería entre la publicación y
+     la visita, y un «cierra en 3 días» equivocado es peor que ninguno.
+   ================================================================= */
+/* Escapado propio: el del módulo de opiniones vive dentro de su cierre y
+   aquí no alcanza. Todo lo que se pinta abajo pasa por aquí, incluidas
+   las cadenas que vienen de la base: un título con `<` no puede salir
+   nunca como etiqueta. */
+const esc = (s) => String(s == null ? '' : s)
+ .replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const milesES = (x) => {
+ const n = Math.round(Number(x) || 0);
+ const s = String(Math.abs(n)), out = [];
+ for (let i = s.length; i > 0; i -= 3) out.unshift(s.slice(Math.max(0, i - 3), i));
+ return (n < 0 ? '-' : '') + out.join('.');
+};
+/* 300000 -> "300 mil", 1200000 -> "1,2 M". En una tarjeta que se lee de
+   un vistazo, la cifra exacta estorba; el orden de magnitud es lo útil. */
+const cortoES = (x) => {
+ const n = Number(x) || 0;
+ if (n >= 1e6) return (Math.round(n / 1e5) / 10).toString().replace('.', ',') + ' M';
+ if (n >= 1000) return Math.round(n / 1000) + ' mil';
+ return milesES(n);
+};
+/* "2026-08-16" -> "16.08.2026", el mismo formato que el recuento del
+   radar. Sin `toLocaleDateString`, que depende de Intl y el
+   pre-renderizado no lo tiene. */
+const fechaES = (iso) => {
+ const p = String(iso || '').split('-');
+ return p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : String(iso || '');
+};
+const diasHasta = (iso) => {
+ if (!iso) return null;
+ const d = new Date(iso + 'T00:00:00'), h = new Date();
+ return Math.ceil((d - new Date(h.getFullYear(), h.getMonth(), h.getDate())) / 86400000);
+};
+
+let emiOrden = 'cierra', emiCat = '';
+
+function emisionesVisibles(){
+ const hoy = EMI.filter(e => { const d = diasHasta(e.cierra); return d === null || d >= 0; });
+ const f = emiCat ? hoy.filter(e => e.cat === emiCat) : hoy;
+ const orden = {
+  cierra: (a, b) => (diasHasta(a.cierra) ?? 9e9) - (diasHasta(b.cierra) ?? 9e9),
+  rent:   (a, b) => (b.rent ?? -1) - (a.rent ?? -1),
+  min:    (a, b) => (a.min || 0) - (b.min || 0),
+  pct:    (a, b) => (b.pct || 0) - (a.pct || 0),
+ }[emiOrden];
+ /* Lo patrocinado NO se cuela por delante en la ordenación: si se
+    comprara el orden, el orden dejaría de significar nada y con él la
+    lista entera. Se paga por estar y por la etiqueta, no por mentir. */
+ return f.slice().sort(orden);
+}
+
+function pintarEmisiones(){
+ const caja = document.getElementById('emiLista');
+ if (!caja) return;
+ const v = emisionesVisibles();
+
+ if (!v.length) {
+  caja.innerHTML = EMI.length
+   ? '<div class="emis-vacio"><h3>Nada abierto con ese filtro</h3>'
+     + '<p>Prueba con otra categoría, o vuelve en unos días: esto cambia cada semana.</p></div>'
+   : '<div class="emis-vacio"><h3>Todavía no hay emisiones publicadas</h3>'
+     + '<p>Estamos cargando las primeras. Cada una llevará su enlace a la plataforma '
+     + 'y la fecha en que comprobamos sus cifras, igual que el resto del registro. '
+     + 'Crea una cuenta y te avisamos en cuanto se abra la primera.</p></div>';
+  return;
+ }
+
+ caja.innerHTML = v.map(e => {
+  const d = diasHasta(e.cierra);
+  const urg = d === null ? '' : d <= 3 ? ' ultimo' : d <= 10 ? ' pronto' : '';
+  const cierre = d === null ? '' :
+   '<span class="emi-cierra' + urg + '">' +
+   (d === 0 ? 'cierra hoy' : d === 1 ? 'cierra mañana' : 'cierra en ' + d + ' días') + '</span>';
+
+  const donde = ['<b>' + esc(e.pl) + '</b>', esc(e.cat)];
+  if (e.ub) donde.push(esc(e.ub));
+  if (e.plazo) donde.push(e.plazo + ' meses');
+  if (e.tipo) donde.push(esc(e.tipo));
+
+  const avance = e.obj > 0
+   ? '<div class="emi-barra"><i style="width:' + Math.min(100, e.pct) + '%"></i></div>'
+     + '<div class="emi-avance"><span>' + e.pct + '% captado</span><span>de '
+     + cortoES(e.obj) + ' ' + esc(e.mon) + '</span></div>'
+   : '';
+
+  return '<article class="emi" style="--cc:' + esc(e.col) + '">'
+   + (e.pat ? '<span class="emi-pat">Patrocinada</span>' : '')
+   + '<div class="emi-alto"><div><h3 class="emi-tit">' + esc(e.t) + '</h3>'
+   + '<div class="emi-donde">' + donde.join('<span>·</span>') + '</div></div>' + cierre + '</div>'
+   + '<div class="emi-cifras">'
+   + (e.rent != null
+      ? '<div class="emi-cifra"><span class="v oro">' + String(e.rent).replace('.', ',')
+        + '<small>%</small></span><span class="l">anual, según la plataforma</span></div>' : '')
+   + '<div class="emi-cifra"><span class="v">' + milesES(e.min)
+   + '<small> ' + esc(e.mon) + '</small></span><span class="l">entrada mínima</span></div>'
+   + '</div>'
+   + (e.res ? '<p class="emi-nota">' + esc(e.res) + '</p>' : '')
+   + avance
+   + '<div class="emi-pie"><span class="emi-ver">Cifras de la plataforma,<br>comprobadas el '
+   + fechaES(e.ver) + '</span>'
+   + '<a class="emi-ir" href="' + esc(e.url) + '" target="_blank" rel="noopener nofollow">'
+   + 'Ver en ' + esc(e.pl) + ' ↗</a></div>'
+   + '</article>';
+ }).join('');
+}
+
+function pintarFiltrosEmision(){
+ const caja = document.getElementById('emiFiltros');
+ if (!caja) return;
+ const cats = [];
+ EMI.forEach(e => { if (e.cat && cats.indexOf(e.cat) < 0) cats.push(e.cat); });
+ if (!cats.length) { caja.innerHTML = ''; return; }
+ caja.innerHTML = '<button class="f' + (emiCat ? '' : ' on') + '" data-c="">Todas</button>'
+  + cats.map(c => '<button class="f' + (emiCat === c ? ' on' : '') + '" data-c="' + esc(c) + '">'
+    + '<span class="punto" style="background:' + esc((CATMETA[c] || {}).color || '#25E39A') + '"></span>'
+    + esc(c) + '</button>').join('');
+}
+
+pintarFiltrosEmision();
+pintarEmisiones();
+
+/* Los controles. Delegado en el contenedor y no botón a botón, porque los
+   filtros se repintan enteros al cambiar de categoría y unos oyentes
+   pegados a cada botón se perderían en el primer repintado. */
+(function mandosEmision(){
+ const filtros = document.getElementById('emiFiltros');
+ const orden = document.getElementById('emiOrden');
+ if (filtros && filtros.addEventListener) filtros.addEventListener('click', ev => {
+  const b = ev.target && ev.target.closest && ev.target.closest('[data-c]');
+  if (!b) return;
+  emiCat = b.getAttribute('data-c') || '';
+  pintarFiltrosEmision(); pintarEmisiones();
+  if (typeof Sonido !== 'undefined' && Sonido.marcar) Sonido.marcar();
+ });
+ if (orden && orden.addEventListener) orden.addEventListener('change', () => {
+  emiOrden = orden.value || 'cierra';
+  pintarEmisiones();
+ });
+})();
 
 /* ---- descartadas ---- */
 function pintarDescartadas(){
