@@ -139,7 +139,46 @@ const nFichas = (capturado.grid.match(/class="abrir"/g) || []).length;
 const nFuera  = (capturado.outlist.match(/class="fila"/g) || []).length;
 console.log(`Pre-renderizado: ${nFichas} fichas y ${nFuera} descartadas escritas en el HTML (${kb} kB).`);
 
-/* ---- 5 · publicar ---- */
+/* ---- 5 · construir la carpeta que se sube ----
+   LA FUENTE Y LO PUBLICADO DEJAN DE SER EL MISMO ARCHIVO, a propósito.
+
+   `rwadar-site/` es lo que se lee y se edita: con sus comentarios, que
+   son 56 kB y son justo lo que hace que este archivo se pueda mantener.
+   `rwadar-publicado/` es lo que viaja: lo mismo sin comentarios, 95,2 →
+   77,0 kB comprimido, un 19% menos para quien abre la página.
+
+   Nadie pierde nada. Quien mantiene la web tiene cada porqué escrito al
+   lado del código; quien la visita se descarga menos. Y los números de
+   línea se conservan, así que un error que llegue de un navegador real
+   se localiza en la fuente sin traducir nada.
+
+   La carpeta es desechable: se rehace entera en cada publicación y el
+   .gitignore de la raíz, que es lista blanca, la ignora sola. */
+const { adelgazar } = require('./rwadar-adelgazar.js');
+const SALIDA = path.join(__dirname, 'rwadar-publicado');
+
+fs.rmSync(SALIDA, { recursive: true, force: true });
+fs.mkdirSync(SALIDA, { recursive: true });
+for (const f of fs.readdirSync(DIR)) {
+  const origen = path.join(DIR, f), destino = path.join(SALIDA, f);
+  if (f === 'index.html') fs.writeFileSync(destino, adelgazar(fs.readFileSync(origen, 'utf8')), 'utf8');
+  else fs.copyFileSync(origen, destino);
+}
+const antes = fs.statSync(path.join(DIR, 'index.html')).size;
+const despues = fs.statSync(path.join(SALIDA, 'index.html')).size;
+console.log(`Adelgazado para publicar: ${(antes / 1024).toFixed(0)} kB → ` +
+            `${(despues / 1024).toFixed(0)} kB (la fuente conserva sus comentarios).`);
+
+/* Que nadie suba una página rota por adelgazarla: si el JavaScript
+   resultante no compila, se para aquí y no se publica nada. */
+try { new Function(fs.readFileSync(path.join(SALIDA, 'index.html'), 'utf8')
+        .split('<script>').pop().split('</script>')[0]); }
+catch (e) {
+  console.error('ERROR: el HTML adelgazado no compila (' + e.message + '). No se publica.');
+  process.exit(1);
+}
+
+/* ---- 6 · publicar ---- */
 if (process.argv.includes('--local')) {
   console.log('Modo local: no se publica.');
   process.exit(0);
@@ -152,13 +191,13 @@ console.log('Publicando…');
    resultado. Así una limitación temporal de la plataforma no deja el
    sitio sin actualizar. */
 try {
-  execFileSync('netlify', ['deploy', '--prod', '--dir', DIR, '--site', SITE,
+  execFileSync('netlify', ['deploy', '--prod', '--dir', SALIDA, '--site', SITE,
     '--message', 'Actualizacion con pre-renderizado'],
     { stdio: 'inherit', shell: true });
 } catch (e) {
   console.log('\nLa publicacion directa fue rechazada. Voy por borrador y lo promuevo…\n');
   const salida = execFileSync('netlify',
-    ['deploy', '--dir', DIR, '--site', SITE, '--message', 'Actualizacion', '--json'],
+    ['deploy', '--dir', SALIDA, '--site', SITE, '--message', 'Actualizacion', '--json'],
     { shell: true, encoding: 'utf8', maxBuffer: 1 << 24 });
   const id = JSON.parse(salida).deploy_id;
   if (!id) throw new Error('no se pudo obtener el identificador del borrador');

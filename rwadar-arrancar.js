@@ -121,8 +121,16 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
        href="/pagina.html" en href='/pagina' —comillas simples incluidas—
        y entonces el prefijo deja de coincidir aunque el contenido sea el
        mismo. La solución es enlazar ya sin `.html`, no relajar la
-       comprobación. Pasó al publicar la política de privacidad. */
-    const nuestro = html.slice(0, html.lastIndexOf('</script>') + 9);
+       comprobación. Pasó al publicar la política de privacidad.
+
+       Y desde que se publica adelgazado, lo de arriba NO es lo que hay
+       que comparar: la fuente lleva sus 56 kB de comentarios y lo
+       publicado no. Así que se adelgaza aquí lo local con el MISMO
+       módulo que usa el publicador y se compara eso. Si algún día el
+       adelgazador cambiara, esta comprobación cambia con él sola. */
+    const { adelgazar } = require('./rwadar-adelgazar.js');
+    const local = adelgazar(html);
+    const nuestro = local.slice(0, local.lastIndexOf('</script>') + 9);
     const igual = vivo.startsWith(nuestro);
     (igual ? ok : mal)(igual
       ? 'lo publicado coincide con lo local'

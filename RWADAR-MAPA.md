@@ -6,6 +6,27 @@
 
 ---
 
+## Lo que se lee no es lo que se sube
+
+`rwadar-site/index.html` es la **fuente**: con sus comentarios, que son
+56 kB y son justo lo que permite mantener un archivo de este tamaño.
+`rwadar-publicado/index.html` es lo que **viaja**: lo mismo sin
+comentarios, 84 kB por la red en vez de 104.
+
+La genera `rwadar-publicar.js` en cada publicación llamando a
+`rwadar-adelgazar.js`. **Nunca la edites**: se borra y se rehace entera.
+Y nunca publiques a mano desde `rwadar-site/`, o subirás la fuente.
+
+El adelgazador recorre el texto carácter a carácter sabiendo si está
+dentro de una cadena, una plantilla o una expresión regular, porque
+`'https://x'` y `/[/*]/` se comen a cualquier expresión regular ingenua.
+Los comentarios **dentro de los shaders del 3D** se conservan a
+propósito: viven en cadenas de JavaScript y tocarlos rompe el dibujo.
+Los números de línea se conservan: la línea 2.400 de lo publicado sigue
+siendo la 2.400 de la fuente.
+
+---
+
 ## Regla de oro
 
 Toda la web es **un solo archivo de 299 kB**: `rwadar-site/index.html`.
@@ -59,7 +80,9 @@ en `rwadar-movil/assets/`: una marca, una dirección, un icono.
 | Archivo | Para qué |
 |---|---|
 | `rwadar-arrancar.js` | **Empieza por aquí.** Diagnostica local + publicado + base de datos y levanta el servidor |
-| `rwadar-publicar.js` | Sincroniza + pre-renderiza + publica. **La única forma correcta de publicar** |
+| `rwadar-publicar.js` | Sincroniza + pre-renderiza + adelgaza + publica. **La única forma correcta de publicar** |
+| `rwadar-adelgazar.js` | Quita los comentarios del CSS y del JS **solo en lo que se sube**. 95 → 77 kB comprimido |
+| `rwadar-publicado/` | La carpeta que se sube. **Generada y desechable**: se rehace en cada publicación |
 | `rwadar-servir.js` | Servidor local en `:4173`. También `/banco` y el `POST /guardar` de capturas |
 | `rwadar-banco-de-sonidos.html` | Banco de pruebas de sonido, servido en `/banco` |
 | `RWADAR-ESTADO.md` | El *por qué*: decisiones, trampas, estado del proyecto |

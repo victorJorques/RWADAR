@@ -271,8 +271,6 @@ body.locked{overflow:hidden}
 .radar-barrido{transform-origin:200px 200px;animation:girar 8s linear infinite}
 .radar-et{font-family:var(--mono);font-size:8.5px;letter-spacing:.10em;text-transform:uppercase;
   fill:var(--tx-3);opacity:.72}
-.radar-aro{font-family:var(--mono);font-size:7.5px;letter-spacing:.09em;text-transform:uppercase;
-  fill:var(--tx-3);opacity:.5}
 .radar-tick{stroke:var(--senal);stroke-width:.7;opacity:.16}
 .radar-tick.fuerte{stroke-width:1;opacity:.32}
 .radar-etg{cursor:pointer}
@@ -578,10 +576,10 @@ select option{background:var(--sup);color:var(--tx)}
    categoría, que es lo único que de verdad distingue una ficha de otra.
    Ahora es una nota al margen — se lee cuando se busca, no antes. */
 .aval{display:flex;gap:10px;align-items:flex-start;border-left:2px solid var(--menta-25);
-  padding:2px 0 2px 12px;font-size:.8rem;line-height:1.55;color:var(--tx-3)}
+  padding:2px 0 2px 12px;font-size:.8rem;line-height:1.55;color:var(--tx-3);
+  transition:border-color var(--medio) var(--sal)}
 .aval svg{flex:none;margin-top:3px;color:var(--menta)}
 .ficha:hover .aval{border-left-color:var(--menta)}
-.aval{transition:border-color var(--medio) var(--sal)}
 .marcas{display:flex;flex-wrap:wrap;gap:6px}
 .m{font-family:var(--mono);font-size:.66rem;padding:5px 10px;border-radius:99px;background:var(--noche-2);border:1px solid var(--linea);color:var(--tx-3)}
 .m.acc{background:var(--sup-3);border-color:var(--linea-2);color:var(--tx)}
@@ -729,7 +727,9 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .csv{font-family:var(--mono);font-size:.76rem;font-weight:600;background:var(--sup);border:1px solid var(--linea-2);color:var(--tx);padding:12px 19px;border-radius:99px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;
   transition:border-color var(--rapido) var(--sal),background var(--rapido) var(--sal),transform var(--medio) var(--muelle)}
 .csv:hover{border-color:var(--senal-30);background:var(--sup-2)}
-.csv:active{transform:scale(.96);transition-duration:.06s}
+/* El :active de este botón NO va aquí: lo pone la sección 13 junto al de
+   todos los demás botones, y escribirlo también aquí solo servía para
+   que la de abajo lo sobrescribiera. Un gesto, una regla. */
 
 /* ============ 13 · MOVIMIENTO ============ */
 .btn-p:active,.btn-s:active,.hdr-cta:active,.csv:active,.cmpbar .go:active{transform:translateY(0) scale(.97);transition-duration:.06s}
@@ -757,7 +757,6 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 @media (prefers-reduced-motion:reduce){
   .anim .rev{opacity:1;transform:none}
   .ficha:hover,.ficha:active{transform:none}
-  .radar-fondo i{animation:none}
 }
 
 /* --- un texto para el ratón y otro para el dedo --------------------
@@ -969,7 +968,6 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:560px){
   .portada{padding-block:44px 36px}
   .radar-caja{max-width:330px}
-  .radar-pie{font-size:.58rem}
   /* Tres cifras en 327 px salen a 80 px cada una: no caben ni el número
      ni su rótulo. Apiladas se leen. */
   .calc{padding:20px 18px}
@@ -987,17 +985,27 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
      cosas, así que cae lo prescindible — el rótulo, que ya lo dice el
      logotipo — y el botón deja de partirse. */
   .wm small{display:none}
-  .hdr-cta{white-space:nowrap;padding-inline:15px;font-size:.82rem}
-  .snd{padding-inline:12px}
+
   /* La cabecera NO cabía y por eso la página entera se desplazaba en
      horizontal en un teléfono: medido a 375 px, el documento salía de
      505. Con la marca, el sonido, «Entrar» y el botón grande no hay
      sitio, así que cae lo prescindible — en el móvil el radar está a un
-     scroll de distancia y ese botón no lleva a ningún sitio nuevo. */
+     scroll de distancia y ese botón no lleva a ningún sitio nuevo.
+
+     Antes de llegar a esto se intentó apretarlo: `white-space:nowrap`,
+     15 px de relleno y letra a .82rem. No bastaba, y aquella regla se
+     quedó escrita justo encima de la que lo esconde, sin pintar nada.
+     Dos declaraciones del mismo selector en el mismo @media es la forma
+     exacta en que este archivo se ha roto cuatro veces, así que se deja
+     UNA, y el intento fallido vive aquí contado en vez de en código
+     muerto que aparenta estar haciendo algo. */
   .hdr-in{padding-inline:14px;gap:10px}
   .hdr-cta{display:none}
+
   /* El sonido se queda en su icono. La palabra no cabe y las ondas ya
-     dicen lo que hace; el aria-label sigue contándolo entero. */
+     dicen lo que hace; el aria-label sigue contándolo entero. Su relleno
+     también se escribía dos veces —12 px arriba, 10 px aquí—: manda el
+     de abajo, así que el de arriba se ha ido. */
   .snd{font-size:0;gap:0;padding-inline:10px}
   .snd .ondas{font-size:.73rem}
   /* también en el móvil manda el motivo: la torre necesita alto */

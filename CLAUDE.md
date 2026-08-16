@@ -46,6 +46,9 @@ sola). El contrato real está en `RWADAR-MANANA.md`.
    secas: sin el pre-renderizado la página queda vacía para Google, y sin
    `--dir`/`--site` explícitos el CLI publica lo que diga el `.netlify` que
    él mismo deja en esta carpeta (llegó a apuntar a Downloads entera).
+   Además, **lo que se sube no es `rwadar-site/` sino `rwadar-publicado/`**,
+   que el publicador genera adelgazando el HTML: la fuente conserva sus
+   comentarios y lo publicado pesa 84 kB por la red en vez de 104.
 2. **Los datos no se editan en el HTML.** La fuente de verdad es Supabase;
    la siguiente publicación sobrescribe los arrays `P` y `FUERA`.
 3. **Ninguna descartada sin fuente.** Comprobarlo antes de publicar (el
