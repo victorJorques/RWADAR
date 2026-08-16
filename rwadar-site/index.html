@@ -984,6 +984,16 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   padding:5px 9px;border-radius:99px;border:1px solid var(--linea-2);color:var(--tx-3);white-space:nowrap}
 .emi-cierra.pronto{border-color:rgba(255,159,10,.4);color:#FFB454;background:rgba(255,159,10,.08)}
 .emi-cierra.ultimo{border-color:rgba(255,59,48,.45);color:#FF8A80;background:rgba(255,59,48,.09)}
+/* Lo continuo en verde: no es urgencia, es disponibilidad. Y lo que aún
+   no ha abierto en el gris de la casa, que informa sin apremiar. */
+.emi-cierra.continua{border-color:var(--senal-30);color:var(--senal);background:rgba(37,227,154,.07)}
+.emi-cierra.proximo{border-color:var(--linea-2);color:var(--tx-2);background:var(--noche-2)}
+
+/* Los avisos que le ahorran a alguien tres clics para nada. En coral,
+   como los descartes: aquí ese color significa «esto te frena». */
+.emi-aviso{font-family:var(--mono);font-size:.66rem;line-height:1.45;letter-spacing:.02em;
+  color:#FF8A80;background:rgba(255,59,48,.07);border:1px solid rgba(255,59,48,.22);
+  border-radius:9px;padding:7px 10px;margin:0}
 
 /* Las dos cifras que de verdad se comparan. */
 .emi-cifras{display:flex;gap:26px;align-items:flex-end}
@@ -1680,6 +1690,7 @@ const FUERA=[
    sin fuente», que ya evitó el peor riesgo del proyecto — y aquí pesa
    más, porque son números de dinero ajeno. */
 const EMI=[
+
 ];
 
 /* ---- categorías: seis colores que se distinguen sobre negro ----
@@ -2950,11 +2961,39 @@ function pintarEmisiones(){
  }
 
  caja.innerHTML = v.map(e => {
+  /* El distintivo de arriba a la derecha dice en qué momento está esto.
+     Hay tres formas y no se pueden confundir:
+       · lo continuo NO lleva contador. Poner "cierra en X" a un fondo de
+         tesoro o al oro tokenizado es mentir, y no poner nada lo hace
+         parecer caducado. Lleva su propia etiqueta.
+       · lo programado dice cuándo abre. "Abre el martes" es lo que hace
+         que alguien ponga una alarma.
+       · y lo que cierra por fecha, el contador de siempre. Casi nada lo
+         publica, así que cuando falta, la urgencia sale del porcentaje
+         captado, que es lo que de verdad cierra estas cosas. */
   const d = diasHasta(e.cierra);
-  const urg = d === null ? '' : d <= 3 ? ' ultimo' : d <= 10 ? ' pronto' : '';
-  const cierre = d === null ? '' :
-   '<span class="emi-cierra' + urg + '">' +
-   (d === 0 ? 'cierra hoy' : d === 1 ? 'cierra mañana' : 'cierra en ' + d + ' días') + '</span>';
+  let cierre = '';
+  if (e.cont) {
+   cierre = '<span class="emi-cierra continua">abierto siempre</span>';
+  } else if (e.est === 'programada' || e.est === 'en_estudio') {
+   const da = diasHasta((e.abre || '').slice(0, 10));
+   cierre = '<span class="emi-cierra proximo">' +
+    (da === null ? (e.est === 'en_estudio' ? 'en estudio' : 'aún no abre')
+     : da <= 0 ? 'abre hoy' : da === 1 ? 'abre mañana' : 'abre en ' + da + ' días') + '</span>';
+  } else if (d !== null) {
+   const urg = d <= 3 ? ' ultimo' : d <= 10 ? ' pronto' : '';
+   cierre = '<span class="emi-cierra' + urg + '">' +
+    (d === 0 ? 'cierra hoy' : d === 1 ? 'cierra mañana' : 'cierra en ' + d + ' días') + '</span>';
+  } else if (e.pct >= 90) {
+   cierre = '<span class="emi-cierra ultimo">al ' + e.pct + '%, casi lleno</span>';
+  } else if (e.pct >= 70) {
+   cierre = '<span class="emi-cierra pronto">al ' + e.pct + '%</span>';
+  } else {
+   /* Sin fecha, sin ser continua y sin porcentaje que destacar. Pasa con
+      las que acaban de abrir. Aun así lleva distintivo: una tarjeta sin
+      nada arriba a la derecha parece a la que se le olvidó un dato. */
+   cierre = '<span class="emi-cierra">' + (e.pct > 0 ? 'al ' + e.pct + '%' : 'abierta') + '</span>';
+  }
 
   const donde = ['<b>' + esc(e.pl) + '</b>', esc(e.cat)];
   if (e.ub) donde.push(esc(e.ub));
@@ -2974,10 +3013,29 @@ function pintarEmisiones(){
    + '<div class="emi-cifras">'
    + (e.rent != null
       ? '<div class="emi-cifra"><span class="v oro">' + String(e.rent).replace('.', ',')
-        + '<small>%</small></span><span class="l">anual, según la plataforma</span></div>' : '')
-   + '<div class="emi-cifra"><span class="v">' + milesES(e.min)
-   + '<small> ' + esc(e.mon) + '</small></span><span class="l">entrada mínima</span></div>'
+        + '<small>%</small></span><span class="l">anual, según la plataforma</span></div>'
+      : e.rentNo
+        /* «No la publica» y «no la hemos mirado» NO son lo mismo, y la
+           diferencia importa: Urbanitae no la da nunca, por criterio del
+           supervisor. Dejar el hueco mudo haría pensar que falta trabajo
+           nuestro cuando falta un dato que no existe. */
+        ? '<div class="emi-cifra"><span class="v" style="font-size:1rem;color:var(--tx-3)">—</span>'
+          + '<span class="l">no publica rentabilidad</span></div>' : '')
+   + (e.min
+      ? '<div class="emi-cifra"><span class="v">' + milesES(e.min)
+        + '<small> ' + esc(e.mon) + '</small></span><span class="l">entrada mínima</span></div>'
+      : '<div class="emi-cifra"><span class="v" style="font-size:1rem;color:var(--tx-3)">—</span>'
+        + '<span class="l">entrada mínima sin publicar</span></div>')
    + '</div>'
+   /* Los dos avisos que evitan hacerle perder el tiempo a alguien: que no
+      lo puede comprar desde aquí, o que no es una compra sino una
+      reserva. Van ANTES del resumen a propósito: si no puedes entrar, lo
+      demás sobra. */
+   + (e.esNo === false
+      ? '<p class="emi-aviso">No disponible para residentes en España.</p>' : '')
+   + (e.rest ? '<p class="emi-aviso">Acceso restringido: ' + esc(e.rest) + '</p>' : '')
+   + (e.vinc === false
+      ? '<p class="emi-aviso">Es una reserva sin desembolso, no una compra.</p>' : '')
    + (e.res ? '<p class="emi-nota">' + esc(e.res) + '</p>' : '')
    + avance
    + '<div class="emi-pie"><span class="emi-ver">Cifras de la plataforma,<br>comprobadas el '

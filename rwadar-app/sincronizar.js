@@ -85,7 +85,15 @@ const j = (s) => JSON.stringify(s == null ? '' : String(s));
     `cap:${Number(e.captado) || 0},pct:${Number(e.porcentaje) || 0},` +
     `rent:${e.rentabilidad == null ? 'null' : Number(e.rentabilidad)},` +
     `plazo:${e.plazo_meses == null ? 'null' : Number(e.plazo_meses)},` +
-    `tipo:${j(e.tipo_rendimiento)},cierra:${j(e.cierra_el)},dias:${e.dias_para_cerrar == null ? 'null' : Number(e.dias_para_cerrar)},` +
+    `tipo:${j(e.tipo_rendimiento)},cierra:${j(e.cierra_el)},abre:${j(e.abre_en)},` +
+    `est:${j(e.estado)},cont:${e.continua ? 'true' : 'false'},` +
+    /* `esNo` y `vinc` viajan como null cuando no se han comprobado: la
+       tarjeta solo avisa si vale exactamente false, nunca por un hueco.
+       Decir "no disponible en España" de algo que no hemos mirado sería
+       el mismo pecado que inventar una rentabilidad. */
+    `esNo:${e.disponible_es == null ? 'null' : (e.disponible_es ? 'true' : 'false')},` +
+    `vinc:${e.vinculante == null ? 'null' : (e.vinculante ? 'true' : 'false')},` +
+    `rest:${j(e.acceso_restringido)},rentNo:${e.rentabilidad_no_publicada ? 'true' : 'false'},` +
     `url:${j(e.url)},ver:${j(e.verificada_el)},pat:${e.patrocinada ? 'true' : 'false'}},`
   ).join('\n');
 
