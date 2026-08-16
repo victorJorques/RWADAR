@@ -818,6 +818,10 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .cuenta-msj{font-size:.86rem;line-height:1.5;padding:11px 13px;border-radius:10px;margin-bottom:15px;display:none}
 .cuenta-msj.mal{display:block;background:rgba(255,59,48,.1);border:1px solid rgba(255,59,48,.3);color:#FF8A80}
 .cuenta-msj.bien{display:block;background:rgba(37,227,154,.1);border:1px solid var(--senal-30);color:var(--senal)}
+/* La pista debajo de la contraseña, solo al crear cuenta. Va pegada al
+   campo -margen negativo- porque el input ya trae 15 px de separación
+   abajo y si no la pista quedaba flotando lejos de lo que explica. */
+.cuenta-caja .pista{font-size:.76rem;color:var(--tx-3);line-height:1.45;margin:-9px 0 15px}
 .legal-chica{font-size:.76rem;color:var(--tx-3);line-height:1.5;margin-top:15px}
 .legal-chica a{color:var(--tx-2)}
 
@@ -1440,7 +1444,8 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
     <input id="cCorreo" type="email" autocomplete="email" required>
     <div id="campoClave">
       <label for="cClave">Contraseña</label>
-      <input id="cClave" type="password" autocomplete="current-password" required minlength="8">
+      <input id="cClave" type="password" autocomplete="current-password" required>
+      <p class="pista" id="clavePista" hidden>Al menos 12 caracteres. Sin más normas: ni mayúsculas, ni números, ni símbolos obligatorios.</p>
     </div>
     <button class="principal" id="cuentaEnviar" type="submit">Entrar</button>
   </form>
@@ -3472,7 +3477,18 @@ const Cuenta = (function(){
   if(t.includes('invalid login')) return 'El correo o la contraseña no son correctos.';
   if(t.includes('email not confirmed')) return 'Falta confirmar el correo. Mira tu bandeja, y también el spam.';
   if(t.includes('already registered')||t.includes('already been registered')) return 'Ese correo ya tiene cuenta. Prueba a entrar.';
-  if(t.includes('password should be')||t.includes('at least 8')) return 'La contraseña necesita al menos 8 caracteres.';
+  /* La cifra se saca del propio mensaje, no de nuestra constante: si la
+     política de Supabase cambia y aquí no nos enteramos, el aviso sigue
+     diciendo la verdad. Escribir el número a mano fue justo el fallo que
+     dejó a la gente sin poder registrarse. */
+  if(t.includes('password should be')||t.includes('at least')){
+   const n=(String(m).match(/(\d+)/)||[])[1];
+   return 'La contraseña necesita al menos '+(n||CLAVE_MIN)+' caracteres.';
+  }
+  if(t.includes('cannot be longer')||t.includes('72'))
+   return 'La contraseña es demasiado larga: el tope son '+CLAVE_MAX_BYTES+' caracteres (menos si llevas acentos o emoji).';
+  if(t.includes('weak')||t.includes('pwned')||t.includes('compromised'))
+   return 'Esa contraseña aparece en listas de contraseñas filtradas. Elige otra.';
   if(t.includes('rate limit')||t.includes('too many')) return 'Demasiados intentos seguidos. Espera un minuto y vuelve a probar.';
   if(t.includes('unable to validate email')||t.includes('invalid format')) return 'Esa dirección de correo no parece válida.';
   return m;
@@ -3540,6 +3556,24 @@ const Cuenta = (function(){
   const b=$('btnVig'); if(b) b.addEventListener('click',()=>alternar(nombre));
  }
 
+ /* LA LONGITUD MÍNIMA LA PONE SUPABASE, Y AQUÍ SE COPIA. UNA SOLA VEZ.
+    Medido contra producción el 15 de agosto de 2026: con 8, 9, 10 y 11
+    caracteres el servidor devuelve 422 «Password should be at least 12
+    characters»; con 12 crea la cuenta. El formulario decía 8 y el
+    traductor de errores remataba la faena contando que hacían falta «al
+    menos 8». Es decir: escribías 8, te decía que necesitabas 8, y no te
+    dejaba. Imposible de adivinar.
+
+    Si algún día se cambia la política en el panel de Supabase, este
+    número es lo único que hay que tocar aquí. Y aun así el mensaje del
+    servidor manda: `traduce` saca la cifra real de la respuesta en vez
+    de repetir esta constante, para que no se puedan volver a
+    contradecir.
+
+    El máximo son 72 BYTES, no caracteres: es el límite de bcrypt, que
+    trunca ahí. Con acentos o emoji se llega antes de lo que parece. */
+ const CLAVE_MIN=12, CLAVE_MAX_BYTES=72;
+
  /* --- la ventana de entrar / registro / recuperar ------------------ */
  const TEXTOS={
   entrar:{t:'Entrar',s:'Para vigilar plataformas y que te avisemos si alguna cae del radar.',b:'Entrar',otro:'Crear una cuenta'},
@@ -3556,6 +3590,15 @@ const Cuenta = (function(){
   $('campoClave').hidden=modo==='recuperar';
   $('cClave').required=modo!=='recuperar';
   $('cClave').autocomplete=modo==='registro'?'new-password':'current-password';
+  /* El mínimo SOLO al crear cuenta. Al entrar no se pone: quien se
+     registró antes de que la política subiera tiene una contraseña más
+     corta y es suya y válida; exigirle 12 para entrar sería echarlo de
+     su propia cuenta sin que él haya hecho nada. La pista, igual: al
+     entrar no se explica cómo debe ser algo que ya existe. */
+  if(modo==='registro') $('cClave').setAttribute('minlength',CLAVE_MIN);
+  else $('cClave').removeAttribute('minlength');
+  $('clavePista').hidden=modo!=='registro';
+  $('clavePista').textContent='Al menos '+CLAVE_MIN+' caracteres. Sin más normas: ni mayúsculas, ni números, ni símbolos obligatorios.';
   $('irRecuperar').hidden=modo==='recuperar';
   $('cuentaLegal').hidden=modo!=='registro';
   msj('');
@@ -3588,6 +3631,23 @@ const Cuenta = (function(){
  async function enviar(e){
   e.preventDefault();
   const correo=$('cCorreo').value.trim(), clave=$('cClave').value, nombre=$('cNombre').value.trim();
+  /* El formulario lleva `novalidate` a propósito -los avisos los pinta
+     esta ventana, no el navegador-, así que `minlength` no frena nada y
+     la comprobación tiene que estar aquí. Solo al crear cuenta: al
+     entrar, la contraseña buena es la que ya tenga la persona.
+     Se avisa antes de salir a la red: es instantáneo y no gasta el
+     limitador de intentos de Supabase. */
+  if(modo==='registro'){
+   if(clave.length<CLAVE_MIN){
+    msj('La contraseña necesita al menos '+CLAVE_MIN+' caracteres. Llevas '+clave.length+'.');
+    return;
+   }
+   const bytes=(typeof TextEncoder!=='undefined')?new TextEncoder().encode(clave).length:clave.length;
+   if(bytes>CLAVE_MAX_BYTES){
+    msj('La contraseña es demasiado larga: el tope son '+CLAVE_MAX_BYTES+' caracteres, y los acentos o emoji cuentan doble.');
+    return;
+   }
+  }
   const bot=$('cuentaEnviar'); bot.disabled=true; msj('');
   try{
    if(modo==='recuperar'){
