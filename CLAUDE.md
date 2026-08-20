@@ -19,7 +19,7 @@ dirección para todo: no hay una segunda que explicar. Lo que lo hace posible
 son cinco archivos de `rwadar-site/` —`manifest.webmanifest`, `sw.js` y los
 tres `icono-*.png`— y las etiquetas del `<head>`.
 
-La web entera sigue siendo **un solo archivo de 299 kB**:
+La web entera sigue siendo **un solo archivo de 325 kB**:
 `rwadar-site/index.html` (HTML + CSS + JS, sin compilación ni dependencias
 externas). **Nunca lo leas entero: son ~50.000 tokens.** 41 kB son las dos
 tipografías incrustadas en base64 al principio del `<style>`: no las leas
@@ -27,6 +27,7 @@ nunca, no dicen nada.
 
 | Si vas a… | Lee primero | Coste |
 |---|---|---|
+| **retomar el proyecto donde se dejó** | **`RWADAR-TRASPASO.md`** — en qué punto está, qué falta y las trampas | ~3 k |
 | **tocar cuentas, opiniones, moderación o la base en línea** | **`RWADAR-MANANA.md`** | ~2 k |
 | tocar la web | `RWADAR-MAPA.md` → te da la marca de grep exacta | ~2,8 k |
 | entender por qué algo está así | `RWADAR-ESTADO.md` (tiene índice; lee solo la sección) | ~6 k entero |

@@ -29,7 +29,7 @@ siendo la 2.400 de la fuente.
 
 ## Regla de oro
 
-Toda la web es **un solo archivo de 299 kB**: `rwadar-site/index.html`.
+Toda la web es **un solo archivo de 325 kB**: `rwadar-site/index.html`.
 HTML, CSS, JavaScript y las dos tipografías, juntos, sin dependencias ni
 compilación. Salvo la consulta a Supabase, la página **no pide nada a
 ningún tercero**.
@@ -131,19 +131,19 @@ Cinco tramos, en este orden:
 | # | Tramo | Marca de búsqueda | ~línea |
 |---|---|---|---|
 | 1 | `<head>`: meta, OG, favicon, JSON-LD | `google-site-verification` | 17 |
-| 2 | **CSS** (14 secciones numeradas) | `============ 1 · TOKENS` | 66 |
+| 2 | **CSS** (15 secciones numeradas) | `============ 1 · TOKENS` | 66 |
 | 3 | **Cuerpo HTML** | `<header class="hdr">` | 728 |
-| 4 | **Datos** `P` y `FUERA` | `const P=[` | 1168 |
+| 4 | **Datos** `P`, `FUERA` y `EMI` | `const P=[` | 1168 |
 | 5 | **JavaScript** (11 bloques) | `const CATMETA={` | 1207 |
 
-### Las 14 secciones de CSS
+### Las 15 secciones de CSS
 
 Todas con la forma `/* ============ N · NOMBRE ============ */`:
 
 `1 TOKENS` · `2 MARCA` · `3 CABECERA` · `4 PORTADA` · `5 EXPLICADOR` ·
 `6 MÉTODO` · `7 HERRAMIENTA` · `8 FICHAS` · `9 MATRIZ` ·
 `10 FUERA DEL RADAR` · `11 COMPARADOR Y PANELES` · `12 PIE` ·
-`13 MOVIMIENTO` · `14 RESPONSIVE`
+`13 MOVIMIENTO` · `14 RESPONSIVE` · `15 EMISIONES ABIERTAS`
 
 ```bash
 grep -n "============ 8 · FICHAS" rwadar-site/index.html
