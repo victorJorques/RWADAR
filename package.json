@@ -1,0 +1,15 @@
+{
+  "name": "rwadar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Registro, web, base de datos y aplicación móvil de RWAdar",
+  "scripts": {
+    "test": "npm run test:db && npm run test:web && npm run test:qr && npm run test:mobile && npm run test:tools",
+    "test:db": "npm --prefix rwadar-app test",
+    "test:web": "node rwadar-publicar.js --local --sin-sincronizar && node probar-web.mjs",
+    "test:qr": "node rwadar-qr/comprobar-qr.js",
+    "test:mobile": "npm --prefix rwadar-movil test",
+    "test:tools": "node --check rwadar-arrancar.js && node --check rwadar-publicar.js && node --check rwadar-publicacion-segura.js && node --check rwadar-app/sincronizar.js && node --check rwadar-adelgazar.js && node --check rwadar-servir.js"
+  },
+  "license": "UNLICENSED"
+}

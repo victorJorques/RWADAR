@@ -27,13 +27,17 @@
    `self.registration.unregister()` dentro. La siguiente visita lo quita.
    ===================================================================== */
 
-const VERSION = 'rwadar-v1';
+const VERSION = 'rwadar-v20260820';
 
 /* El armazón mínimo para que la aplicación abra sin red. Los datos no
    están aquí: la página los pide a Supabase al cargar y se repinta sola,
    y el HTML ya trae las fichas pre-renderizadas para poder leerse. */
 const ARMAZON = [
   '/',
+  '/privacidad',
+  '/assets/rwadar-20260820.css',
+  '/assets/rwadar-20260820.js',
+  '/assets/privacidad-20260820.css',
   '/icono-192.png',
   '/icono-512.png',
   '/icono-maskable-512.png',
@@ -41,12 +45,12 @@ const ARMAZON = [
 ];
 
 self.addEventListener('install', e => {
-  /* addAll falla entero si un solo archivo falla, y un fallo aquí dejaría
-     la instalación a medias sin decir nada. Se piden de uno en uno y se
-     perdona al que no esté: el armazón es una comodidad, no un requisito. */
+  /* El armazón es un contrato atómico: si falta un solo recurso, addAll
+     rechaza la instalación. En ese caso no se llama a skipWaiting, no llega
+     activate y la caché anterior continúa sirviendo la versión completa. */
   e.waitUntil((async () => {
     const c = await caches.open(VERSION);
-    await Promise.all(ARMAZON.map(u => c.add(u).catch(() => {})));
+    await c.addAll(ARMAZON);
     await self.skipWaiting();
   })());
 });
@@ -65,6 +69,11 @@ const guardable = (req, res) =>
   new URL(req.url).origin === self.location.origin &&
   res && res.status === 200 && res.type === 'basic';
 
+const esEstaticoPublico = url =>
+  url.pathname.startsWith('/assets/') ||
+  ['/icono-192.png','/icono-512.png','/icono-maskable-512.png',
+   '/manifest.webmanifest','/og.png','/rwadar.csv'].includes(url.pathname);
+
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
@@ -75,25 +84,35 @@ self.addEventListener('fetch', e => {
   /* La página: red primero, copia guardada solo si no hay red. */
   if (req.mode === 'navigate') {
     e.respondWith((async () => {
+      const cache = await caches.open(VERSION);
+      const clave = url.pathname === '/index.html' ? '/' : url.pathname;
       try {
         const res = await fetch(req);
-        if (guardable(req, res)) (await caches.open(VERSION)).put('/', res.clone());
+        if (guardable(req, res)) await cache.put(clave, res.clone());
         return res;
       } catch (_) {
-        return (await caches.match(req)) || (await caches.match('/')) || Response.error();
+        return (await cache.match(clave)) || (await cache.match('/')) || Response.error();
       }
     })());
     return;
   }
 
-  /* Lo estático: se sirve al momento lo guardado y se refresca por detrás,
-     para que la segunda visita abra instantánea sin quedarse congelada. */
+  /* Ninguna respuesta arbitraria se convierte en persistente. Solo entran
+     los recursos públicos de la aplicación; las API ya quedaron fuera por
+     origen y aquí se excluye también cualquier futura ruta dinámica. */
+  if (!esEstaticoPublico(url)) return;
+
+  /* Lo estático versionado: caché primero. Los nombres de los assets y
+     VERSION cambian con cada entrega, así que no hay que lanzar una tarea
+     en segundo plano que el navegador podría cortar antes de escribir. */
   e.respondWith((async () => {
-    const guardada = await caches.match(req);
-    const red = fetch(req).then(res => {
-      if (guardable(req, res)) caches.open(VERSION).then(c => c.put(req, res.clone()));
+    const cache = await caches.open(VERSION);
+    const guardada = await cache.match(req);
+    if (guardada) return guardada;
+    try {
+      const res = await fetch(req);
+      if (guardable(req, res)) await cache.put(req, res.clone());
       return res;
-    }).catch(() => null);
-    return guardada || (await red) || Response.error();
+    } catch (_) { return Response.error(); }
   })());
 });

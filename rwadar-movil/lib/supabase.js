@@ -1,5 +1,8 @@
 import 'react-native-url-polyfill/auto';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Platform } from 'react-native';
+import * as Crypto from 'expo-crypto';
+import * as SecureStore from 'expo-secure-store';
 import { createClient } from '@supabase/supabase-js';
 
 /* La clave publicable va dentro de la app a propósito: es pública por diseño
@@ -9,18 +12,40 @@ const URL = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
 
 const CLAVE_INSTALACION = 'rwadar.instalacion';
+const ID_VALIDO = /^inst_[a-zA-Z0-9_-]{8,80}$/;
+const OPCIONES_SEGURAS = {
+  keychainAccessible: SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
+};
 
-/* Identificador anónimo del dispositivo. No es una cuenta ni identifica a una
-   persona: solo separa el seguimiento de un móvil del de otro, para poder
-   seguir plataformas sin obligar a registrarse. */
-async function idInstalacion() {
-  let id = await AsyncStorage.getItem(CLAVE_INSTALACION);
-  if (!id) {
-    id = 'inst_' + Date.now().toString(36) + '_' +
-         Math.random().toString(36).slice(2, 10);
-    await AsyncStorage.setItem(CLAVE_INSTALACION, id);
+/* El identificador solo se crea cuando la persona usa seguimiento o avisos.
+   En iOS/Android se guarda en Keychain/Keystore; AsyncStorage queda para web
+   y para migrar instalaciones de versiones anteriores sin perder sus datos. */
+async function leerIdInstalacion() {
+  if (Platform.OS === 'web') {
+    const previo = await AsyncStorage.getItem(CLAVE_INSTALACION);
+    return previo && ID_VALIDO.test(previo) ? previo : null;
   }
-  return id;
+
+  const seguro = await SecureStore.getItemAsync(CLAVE_INSTALACION, OPCIONES_SEGURAS);
+  if (seguro && ID_VALIDO.test(seguro)) return seguro;
+
+  const anterior = await AsyncStorage.getItem(CLAVE_INSTALACION);
+  if (!anterior || !ID_VALIDO.test(anterior)) return null;
+
+  await SecureStore.setItemAsync(CLAVE_INSTALACION, anterior, OPCIONES_SEGURAS);
+  await AsyncStorage.removeItem(CLAVE_INSTALACION);
+  return anterior;
+}
+
+async function crearIdInstalacion() {
+  const nuevo = `inst_${Crypto.randomUUID()}`;
+  if (Platform.OS === 'web') {
+    await AsyncStorage.setItem(CLAVE_INSTALACION, nuevo);
+  } else {
+    await SecureStore.setItemAsync(CLAVE_INSTALACION, nuevo, OPCIONES_SEGURAS);
+    await AsyncStorage.removeItem(CLAVE_INSTALACION);
+  }
+  return nuevo;
 }
 
 /* TODA PETICIÓN LLEVA PLAZO.
@@ -42,29 +67,73 @@ function conPlazo(url, opciones = {}) {
   /* Si quien llama traía su propia señal, se respeta: que aborte
      cualquiera de las dos aborte la petición. */
   const suya = opciones.signal;
+  const abortar = () => corte.abort();
   if (suya) {
     if (suya.aborted) corte.abort();
-    else suya.addEventListener('abort', () => corte.abort());
+    else suya.addEventListener('abort', abortar);
   }
   return fetch(url, { ...opciones, signal: corte.signal })
-    .finally(() => clearTimeout(reloj));
+    .finally(() => {
+      clearTimeout(reloj);
+      suya?.removeEventListener?.('abort', abortar);
+    });
 }
 
-let cachePromesa = null;
+let promesaInstalacion = null;
+let cacheClienteDispositivo = null;
+let idClienteDispositivo = null;
 
-/* El cliente se crea una sola vez, ya con la cabecera de instalación puesta:
-   es lo que leen las políticas de seguridad para devolver a cada dispositivo
-   únicamente sus propios datos. */
-export function cliente() {
-  if (!cachePromesa) {
-    cachePromesa = idInstalacion().then((id) =>
-      createClient(URL, CLAVE, {
-        auth: { persistSession: false, autoRefreshToken: false },
-        global: { headers: { 'x-instalacion': id }, fetch: conPlazo },
-      })
-    );
+const clienteCatalogo = createClient(URL, CLAVE, {
+  auth: { persistSession: false, autoRefreshToken: false },
+  global: { fetch: conPlazo },
+});
+
+export function clientePublico() {
+  return clienteCatalogo;
+}
+
+/* Consultar el catálogo o abrir la app no crea un identificador. */
+export async function idInstalacionExistente() {
+  if (promesaInstalacion) return promesaInstalacion;
+  const existente = await leerIdInstalacion();
+  if (existente) promesaInstalacion = Promise.resolve(existente);
+  return existente;
+}
+
+export function idInstalacion() {
+  if (!promesaInstalacion) {
+    promesaInstalacion = (async () => (await leerIdInstalacion()) || crearIdInstalacion())()
+      .catch((error) => {
+        promesaInstalacion = null;
+        throw error;
+      });
   }
-  return cachePromesa;
+  return promesaInstalacion;
 }
 
-export { idInstalacion };
+/* El cliente privado lleva la cabecera que leen las políticas RLS. Con
+   crear=false devuelve null si la instalación no existe, sin generar una. */
+export async function clienteDispositivo({ crear = true } = {}) {
+  const id = crear ? await idInstalacion() : await idInstalacionExistente();
+  if (!id) return null;
+
+  if (!cacheClienteDispositivo || idClienteDispositivo !== id) {
+    idClienteDispositivo = id;
+    cacheClienteDispositivo = createClient(URL, CLAVE, {
+      auth: { persistSession: false, autoRefreshToken: false },
+      global: { headers: { 'x-instalacion': id }, fetch: conPlazo },
+    });
+  }
+  return cacheClienteDispositivo;
+}
+
+/* Solo se llama después de que Supabase confirme el DELETE remoto. */
+export async function borrarIdInstalacionLocal() {
+  if (Platform.OS !== 'web') {
+    await SecureStore.deleteItemAsync(CLAVE_INSTALACION, OPCIONES_SEGURAS);
+  }
+  await AsyncStorage.removeItem(CLAVE_INSTALACION);
+  promesaInstalacion = null;
+  cacheClienteDispositivo = null;
+  idClienteDispositivo = null;
+}

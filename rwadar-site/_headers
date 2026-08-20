@@ -1,35 +1,46 @@
 /*
   X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  Permissions-Policy: accelerometer=(), autoplay=(), browsing-topics=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000
   Cross-Origin-Opener-Policy: same-origin
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self' https://exgpmjpaaebyoolpwced.supabase.co; worker-src 'self'; manifest-src 'self'; form-action 'none'
+  Cross-Origin-Resource-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; worker-src 'self'; manifest-src 'self'; script-src 'self'; style-src 'self'; font-src 'self' data:; img-src 'self' data:; media-src 'none'; connect-src 'self' https://exgpmjpaaebyoolpwced.supabase.co; form-action 'none'; upgrade-insecure-requests
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/privacidad
+  Cache-Control: public, max-age=0, must-revalidate
+
+/privacidad.html
+  Cache-Control: public, max-age=0, must-revalidate
 
 /og.png
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/manifest.webmanifest
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/icono-*.png
   Cache-Control: public, max-age=604800, must-revalidate
 
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
-# El trabajador de segundo plano NO se guarda en caché. Si el navegador
-# sirviera una copia vieja de este archivo, la web se quedaría clavada en
-# una versión antigua y no habría forma de corregirlo desde aquí.
-/sw.js
-  Cache-Control: public, max-age=0, must-revalidate
+/404.html
+  X-Robots-Tag: noindex, nofollow
 
-# El manifiesto cambia poquísimo, pero una hora de caché es suficiente
-# para que un cambio de icono o de nombre llegue el mismo día.
-/manifest.webmanifest
-  Content-Type: application/manifest+json; charset=utf-8
-  Cache-Control: public, max-age=3600, must-revalidate
-
-# Los iconos son inmutables mientras no cambie la marca.
-/icono-192.png
-  Cache-Control: public, max-age=604800, must-revalidate
-
-/icono-512.png
-  Cache-Control: public, max-age=604800, must-revalidate
-
-/icono-maskable-512.png
-  Cache-Control: public, max-age=604800, must-revalidate
+/.well-known/security.txt
+  Cache-Control: public, max-age=86400, must-revalidate

@@ -1,5 +1,11 @@
 -- =====================================================================
--- RWAdar · reparación para la presentación
+-- RETIRADA / SOLO HISTÓRICO: NO APLICAR.
+-- Reabrió permisos de opiniones/denuncias y la firma antigua de moderar.
+-- Los instaladores la bloquean; 22_cierre_regresiones.sql conserva lo útil
+-- y restaura el contrato seguro. Este fichero solo alimenta la prueba que
+-- reproduce la regresión antes de demostrar que 22 la cierra.
+--
+-- RWAdar · reparación para la presentación (histórica)
 -- ---------------------------------------------------------------------
 -- Junta lo único que falta en producción. Pégalo entero en el editor SQL
 -- del panel y dale a Run. Es idempotente: se puede repetir sin miedo.

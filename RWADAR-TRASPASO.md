@@ -1,205 +1,294 @@
-# RWAdar · traspaso
+# RWAdar · traspaso vigente
 
-**Para quien recoge el proyecto.** Escrito el 17 de agosto de 2026.
-Léelo entero antes de tocar nada: son cinco minutos y evita los errores
-que este proyecto ya ha pagado.
+**Reconciliado el 20 de agosto de 2026.** Este documento parte del traspaso
+preparado con Claude Code los días 17–20 de agosto y del commit base
+`42018de`. Por indicación de los responsables, esa información tiene prioridad
+sobre auditorías o documentos anteriores.
 
-Empieza por `CLAUDE.md` (mapa general) y `RWADAR-MAPA.md` (dónde está
-cada cosa). Este archivo cuenta **en qué punto se dejó** y **por qué**.
-
----
+No confundas «construido localmente», «probado localmente» y «aplicado o
+desplegado en producción». Este proyecto todavía **no está terminado**.
 
 ## 1 · Estado en una frase
 
-La web está terminada y en línea. Encima se acaba de construir un
-**«Booking de tokenización»** —listar las emisiones abiertas, no solo las
-plataformas— que está **probado pero sin publicar**, porque al ir a
-cargar datos reales resultó que hoy no hay casi nada abierto.
+La web pública sigue en línea con 26 fichas, 4 descartadas y PWA. La
+reconciliación añade una web local endurecida y la migración de seguridad 22,
+pero ninguna de las dos está todavía en producción. La sección de emisiones no
+está publicada y producción tiene 0 emisiones.
 
-## 2 · Qué está en línea y qué no
+## 2 · Matriz de verdad
 
-| | Estado |
-|---|---|
-| Web pública, 26 fichas + 4 descartadas | **En línea** |
-| Instalable como app (PWA) | **En línea** |
-| Cuentas, opiniones, moderación, avisos push | **En línea** |
-| Arreglo de la contraseña (mínimo 12) | **En línea** |
-| Arreglo de la equis de «Tu cuenta» | **En línea** |
-| Adelgazado al publicar (104 → 84 kB por la red) | **En línea** |
-| Tablas `emisiones` + vistas en Supabase | **Aplicadas en producción** (vacías) |
-| Sección «Abierto ahora mismo» en la web | **Hecha, probada, SIN PUBLICAR** |
-| Emisiones reales cargadas | **Ninguna todavía** ← aquí se paró |
-
-`node rwadar-arrancar.js` dirá «lo publicado NO coincide con lo local».
-Es correcto y deliberado: lo local lleva la sección de emisiones.
-
-## 3 · Lo que se hizo, por commits
-
-- `addd594` La tarjeta de emisión asume que en tokenización lo minorista
-  casi nunca cierra: cinco formas de decir en qué momento está algo.
-- `f672643` El esquema corregido contra la realidad (migraciones 19-21).
-- `b07f974` Las emisiones abiertas: esquema 18, 28 pruebas, sección web.
-- `900c83a` El adelgazador: la fuente y lo publicado dejan de ser el
-  mismo archivo.
-- `40da1d7` La contraseña pedía 8, el servidor exigía 12 y el aviso
-  decía 8.
-- `b19eccd` La equis de «Tu cuenta» no cerraba y dejaba la página muerta.
-
-## 4 · EL HALLAZGO QUE CAMBIA EL PRODUCTO
-
-Se construyó el escaparate y al ir a llenarlo, **estaba vacío**. Medido
-el 16 de agosto de 2026 con los filtros de las propias plataformas:
-
-| Plataforma | Abiertas | Cómo se comprobó |
+| Pieza | Producción | Repositorio reconciliado |
 |---|---|---|
-| Reental (España, en el radar) | **0** | 9 inmuebles, todos «Financiado» / «En explotación» / «En reforma». No existe el estado «disponible» |
-| Hausera (española, NO en el radar) | **0** | Su filtro «Abiertas» devuelve cero. 14 financiadas, 22 cerradas |
-| Domoblock | — | **Descartada** por declarar que no la supervisa la CNMV |
-| Lofty (EE. UU.) | — | Sirve página reducida a navegadores automáticos. **No lo esquives** |
-| Republic (EE. UU.) | — | Rondas de startups Reg CF, no activos reales |
-| Blocksquare | — | Infraestructura B2B: no vende a personas, nunca tendrá emisiones |
-| **Midas** (UE) | **~10 productos** | Reales: mTBILL, mBASIS, mWIN (con Wellington). 3,2 %–29,9 %. 599 M$ |
+| Web pública | En línea en `https://rwadar.netlify.app` | No sustituida aún |
+| Plataformas | 26 en radar + 4 descartadas | Mismo contrato de datos |
+| PWA | En línea | Conservada |
+| Sección «Abierto ahora mismo» | No visible | Implementada localmente |
+| Emisiones | 0 | Esquema y UI preparados, sin datos que publicar |
+| CSS/JS externos + CSP estricta | No: la pública antigua aún usa `unsafe-inline`, privacidad 09-08 y SW v1 | Preparado y probado localmente |
+| Netlify RUM | Desactivado | Su inyección se rechaza como discrepancia |
+| Tokens de sesión en `localStorage` | No asumir | Eliminados en la web local; sesión en memoria |
+| Migraciones 14 y 15 | Parte del contrato seguro ya conocido de producción | Reproducibles y verificables |
+| Migración 22 | **Pendiente** | Validada localmente con verificador y rollback |
+| Alta de cuentas | `mailer_autoconfirm=true`; no valida la dirección y bloquea el despliegue remoto seguro | El preflight exige `false`; falta cambiarlo y probar la confirmación E2E |
+| Avisos por correo | **No operativos** | Migración 13 separada y opt-in; no se aplica por defecto |
+| Avisos push | Opt-in no ejecutado; producción no se tocó | Fresh/22 local: flag `false`, 0 cron `rwadar-push`, funciones y trigger gated |
 
-**La conclusión, y es la clave del proyecto ahora mismo:**
+## 3 · Qué cambió desde `42018de`
 
-> En tokenización inmobiliaria española hoy no hay nada abierto. Lo que
-> sí se puede comprar son **productos continuos** (oro, fondos del
-> Tesoro, estrategias tokenizadas), que están abiertos siempre.
+### Base de datos y seguridad
 
-Y el dato que abre el camino: **Hausera lleva 38 operaciones**. No es que
-no abran nunca; abren, se llenan en días y cierran. Hoy toca vacío.
+- `db/22_cierre_regresiones.sql` cierra regresiones detectadas al reconciliar
+  cuentas, opiniones, moderación, dispositivos y emisiones.
+- Tiene `db/22_cierre_regresiones_verificar.sql` y un rollback que prioriza el
+  fallo cerrado.
+- Los instaladores exigen una referencia de proyecto, confirmación y una
+  versión exacta del CLI; no aceptan tokens como argumento ni seleccionan
+  producción por defecto.
+- El envío de correo de la migración 13 queda fuera de la instalación general.
+  Solo debe activarse con su instalador específico cuando proveedor, secretos,
+  privacidad y consentimiento estén realmente preparados.
 
-**Por tanto el producto no es la lista, es el aviso:** «avísame cuando
-abra una nueva». Eso hace volver a la gente en un mercado intermitente, y
-**ya está construido** (cuentas + seguimiento + push, probado en
-producción). Solo hay que apuntarlo a las emisiones.
+**Límite actual:** que la 22 pase en local no demuestra que producción esté
+actualizada. Hay que aplicarla de forma deliberada y ejecutar su verificador
+contra la base real antes de cambiar esta tabla.
 
-## 5 · Lo que falta, en orden
+El cierre local de DB fue **270 aserciones + 8 gates SQL = 278 controles
+verdes**. Producción no se tocó. `17_avisos_push.sql`, fresh-install, 22,
+rollback y recuperación terminan con `push_configuracion.habilitado=false` y
+**cero** jobs `rwadar-push`. Con el interruptor apagado, las funciones y el
+trigger no copian tokens a la cola ni llaman a Expo.
+La 22 termina también colas heredadas pendientes: elimina la copia del token,
+marca intentos terminales y limpia la petición. SHA-256 final de la 22:
+`9B4A91D919A4ED0DE269EA474E4D84A5C6708489AB0893B5FECB2FABF5843EDB`.
 
-1. **Cargar Midas.** Es real, europea, comprobable en abierto y ya está
-   en el radar. Con eso la sección deja de estar vacía. Sus productos son
-   `continua = true`: sin fecha de cierre ni objetivo.
-2. **Publicar la sección.** `node rwadar-publicar.js`. Si se publica
-   vacía, la web ya enseña un estado vacío honesto que invita a crear
-   cuenta para recibir avisos — es defendible, pero mejor con contenido.
-3. **El aviso de emisión nueva.** El producto de verdad. Reaprovechar
-   `seguimiento` + `avisos_pendientes`.
-4. **Terminar la investigación del sector inmobiliario.** Se quedó a
-   medias por un límite de uso. Dos preguntas concretas y sin responder:
-   - **¿Reental está registrada en la CNMV?** Su web dice literalmente
-     que tokeniza «desde España **bajo los criterios de** la CNMV».
-     «Bajo los criterios de» NO es «registrada en», y esa diferencia es
-     exactamente lo que mide el criterio 01. **No es una acusación: es
-     una comprobación pendiente.** Hace falta el número de registro, o la
-     búsqueda que demuestre que no aparece. El buscador de la CNMV es un
-     formulario ASP.NET antiguo que no devolvió resultados; probar por
-     otra vía.
-   - **Hausera y Equito**: los cuatro criterios, y sobre todo si son
-     tokenización real o crowdfunding con otro nombre. Hausera declara
-     103 M€ financiados y 16,41 % histórico, pero **no está en el radar**
-     y no puede entrar sin pasar el filtro.
-5. **Dominio propio.** Lo único que separa esto de parecer serio. Cuesta
-   ~12 €/año y **lo tiene que comprar Víctor**.
+La retención es independiente del envío: la 22 prepara el job diario
+`rwadar-retencion-dispositivos` a las 03:17, con 10 lotes de hasta 1.000 filas
+por defecto y límites configurables de 50 × 1.000, y el monitor
+`retencion_dispositivos_estado`. El cierre general conserva esa higiene aunque
+el push permanezca apagado.
 
-## 6 · Reglas que NO se negocian
+Los dos smokes remotos carecen de referencia y clave predeterminadas y operan
+en solo lectura salvo opt-in explícito:
 
-Están puestas en la base de datos a propósito, no en la buena voluntad de
-quien mete los datos. Si algo te las salta, es un fallo.
+- `probar-produccion.mjs` usa `RWADAR_SMOKE_URL` y
+  `RWADAR_SMOKE_ANON_KEY`. Mutar exige `RWADAR_SMOKE_MUTANTE=SI` y
+  `RWADAR_SMOKE_CONFIRMACION=PROBAR-MUTACIONES-<REF>`. Usa la RPC nueva, exige
+  rechazo de `INSERT`/`UPDATE`/`DELETE` directos y ausencia de la firma antigua.
+  Su `finally` reintenta la limpieza y solo la confirma cuando la RPC de
+  borrado, el login revocado y la ausencia de contenido están verificados; una
+  duda muestra el correo residual y termina con fallo.
+- `probar-app-movil.mjs` usa `RWADAR_MOVIL_SMOKE_URL` y
+  `RWADAR_MOVIL_SMOKE_ANON_KEY`. Mutar exige
+  `RWADAR_MOVIL_SMOKE_MUTANTE=SI` y
+  `RWADAR_MOVIL_SMOKE_CONFIRMACION=PROBAR-MOVIL-MUTACIONES-<REF>`. Su `finally`
+  verifica que no quede dispositivo ni seguimiento y nunca guarda un token
+  Expo ficticio.
 
-1. **Ninguna descartada sin fuente.** Es el mayor riesgo legal del
-   proyecto. `node rwadar-arrancar.js` lo comprueba.
-2. **Ninguna emisión sin enlace https a su origen.** La cifra que se
-   publica es la que dice la plataforma, y cualquiera debe poder
-   comprobarla en un clic.
-3. **Ninguna emisión sin fecha de comprobación.** La vista
-   `emisiones_rancias` saca las de más de 7 días.
-4. **No se promociona a quien no pasa el filtro.** Un disparador rechaza
-   emisiones de plataformas fuera del radar, y si una cae, sus emisiones
-   se cancelan solas. *Ya funcionó: rechazó la emisión de Domoblock.*
-5. **Un hueco es correcto; una cifra inventada es un problema legal.** Si
-   la plataforma no publica rentabilidad, la tarjeta no pinta cifra.
-6. **Lo patrocinado se marca y NO altera el orden.** Si se comprara el
-   orden, el orden dejaría de significar nada.
-7. **Publicar solo con `node rwadar-publicar.js`.** Nunca `netlify
-   deploy` a secas.
+El contrato adversarial de ambos smokes pasa **21/21** con fallos locales
+inyectados, sin red. Eso prueba el fallo cerrado de los scripts, no producción.
 
-## 7 · Trampas técnicas, todas medidas
+### Web
 
-- **Las cifras solo existen tras ejecutar el JavaScript.** En Urbanitae,
-  el HTML servido decía *719.976 €* y la pantalla mostraba *899.970 €*.
-  Un `fetch` normal habría publicado cifras de dinero equivocadas desde
-  el enlace correcto. **Hace falta navegador real, no HTTP.**
-- **Lofty sirve una página reducida a navegadores automáticos.** Es su
-  decisión: no la esquives.
-- **`Intl` no existe en el pre-renderizado.** Usarlo tumba la
-  publicación. Los miles y las fechas se formatean a mano.
-- **El panel de vista previa no compone fotogramas**: las transiciones
-  CSS no avanzan y un panel deslizante se mide *fuera de pantalla*
-  (`elementFromPoint` devuelve `null`). Inyecta
-  `*{transition:none !important}` antes de medir.
-- **Postgres no deja usar un valor de enum recién creado en la misma
-  transacción.** Por eso las migraciones 19 y 20 van separadas.
-- **Lo que se sube es `rwadar-publicado/`, no `rwadar-site/`.** La
-  primera se genera adelgazando la segunda. Nunca edites la generada.
-- **El `.gitignore` es lista blanca.** Un archivo nuevo hay que
-  readmitirlo; no lo fuerces con `-f`. Y **el repositorio es público**:
-  en esta carpeta hay documentos personales, así que jamás escribas
-  credenciales en disco.
-- **Los fallos de interfaz de este archivo vienen siempre de lo mismo**:
-  dos cosas distintas compartiendo nombre o vocabulario. Ha pasado cuatro
-  veces (`.velo`, `.vacio`, `.cuenta`, y el cierre del panel de cuenta).
-  Antes de buscar a ciegas, pasa el barrido de selectores CSS duplicados
-  y comprueba que cada apertura tenga su cierre simétrico.
+- CSS y JavaScript propios viven en `rwadar-site/assets/` con nombre
+  versionado. Ya no hay código ejecutable, `<style>` ni atributos `style` o
+  `on*` inline.
+- La CSP deja de depender de `unsafe-inline` o `unsafe-eval`.
+- Las sesiones no guardan tokens en `localStorage`.
+- RUM está desactivado; no hay una excepción para ignorar scripts inyectados.
+- El artefacto da una huella de contenido a cada asset desplegable, actualiza
+  las referencias y deriva de todo el conjunto la `VERSION` del service worker;
+  su precaché crítico se instala de forma atómica.
+- El publicador exige exactamente un modo: `--local`, `--preview` o
+  `--produccion`.
+- Un rechazo de Netlify termina en error. No hay fallback a preview ni
+  promoción automática.
+- La carpeta publicada sigue siendo `rwadar-publicado/`, generada desde
+  `rwadar-site/`; nunca se edita a mano.
 
-## 8 · Comandos
+**Límite actual:** esta versión remediada está local y no desplegada. La
+producción visible sigue siendo la versión anterior hasta completar una
+publicación autorizada y verificarla en red.
+
+### Móvil y avisos
+
+- Las escrituras a Supabase comprueban los errores y no anuncian éxito si el
+  servidor no lo confirmó.
+- Los identificadores locales se generan con aleatoriedad segura y se guardan
+  en almacenamiento seguro.
+- La solicitud de permisos para notificaciones es contextual.
+- Sin prueba real de entrega, el estado público es «push no operativo/no
+  demostrado», aunque existan esquema y código de soporte.
+
+El único opt-in es `rwadar-app/activar-push.cmd <REF>`. No forma parte de
+fresh-install ni de la 22 y **no se ejecutó**. Exige `SUPABASE_ACCESS_TOKEN`,
+`RWADAR_PUSH_E2E_APROBADO=SI`, CLI SemVer exacto >= 2.79.0, confirmación
+`ACTIVAR-PUSH-E2E-<REF>` y verificadores 14/15/22/apagado +
+`activar_push_verificar.sql`. Ante un fallo aplica `push_fallo_cerrado.sql`,
+que corta solo el push y conserva API y retención. No lo ejecutes antes de una
+validación externa E2E aprobada.
+
+## 4 · Emisiones y evidencia regulatoria
+
+El traspaso del 17 de agosto documentó el hallazgo de que las ofertas abiertas
+son intermitentes y que la utilidad diferencial puede estar en avisar cuando
+aparece una nueva. Esa es una **hipótesis de producto**, no una afirmación de
+rentabilidad ni de disponibilidad permanente.
+
+Las cifras vistas en plataformas el 16–17 de agosto son una fotografía
+histórica y deben volver a comprobarse con navegador real, URL de origen y
+fecha antes de publicarlas. No mantengas cantidades, rentabilidades, número de
+operaciones o estados «abierto/cerrado» sin una fuente actual.
+
+### Hallazgo oficial CNMV · alcance exacto
+
+El [registro ERIR de la CNMV](https://www.cnmv.es/portal/consultas/esi/erir_esi?lang=es&nif=A86796182),
+consultado el 20 de agosto de 2026, contiene:
+
+- una emisión de obligaciones de **REENTAL TOURIST HOMES, S.A.U.**;
+- varias emisiones de obligaciones de sociedades **HAUSERA PROPERTY MANAGER
+  SPV**.
+
+La página identifica a **URSUS-3 CAPITAL, A.V., S.A.** como entidad responsable
+de la inscripción/registro de valores representados mediante tecnología de
+registros distribuidos. La propia CNMV advierte expresamente que la inscripción
+no implica que haya validado las condiciones de la emisión ni la información
+facilitada por el emisor.
+
+Por tanto:
+
+- sí es evidencia oficial de esas emisiones concretas en el registro ERIR;
+- no prueba un «aval CNMV» de Reental, Hausera o sus plataformas;
+- no es una recomendación, garantía de rentabilidad, liquidez o recuperación
+  del capital;
+- no basta por sí sola para aprobar una plataforma en todos los criterios de
+  RWAdar.
+
+Evita frases como «regulada por la CNMV», «aprobada por la CNMV» o «inversión
+segura» salvo que otra fuente oficial pruebe exactamente ese alcance.
+
+## 5 · Responsabilidad y privacidad
+
+RWAdar no tiene sociedad constituida. Las decisiones se toman conjuntamente
+por:
+
+- Eric Almiñana
+- Samuel Rodriguez
+- Victor Jorques
+
+Correo de contacto: `RWAdar@protonmail.com`.
+
+Existe un borrador de acuerdo de corresponsabilidad, pero todavía no está
+aprobado ni firmado por los tres. Los plazos propuestos de **12 meses y 3
+años** también siguen pendientes de acuerdo. No los presentes como política
+definitiva ni actives tratamientos que dependan de ellos hasta cerrar esa
+decisión y reflejarla en la política pública.
+
+## 6 · Reglas que no se negocian
+
+1. Ninguna descartada sin una fuente citable y revisada.
+2. Ninguna emisión sin URL HTTPS de origen y fecha de comprobación.
+3. Un registro oficial se describe con su alcance literal; nunca se convierte
+   en aval general.
+4. Un hueco es mejor que una cifra no verificada.
+5. Lo patrocinado debe identificarse y no alterar el orden editorial.
+6. No escribir secretos, tokens personales ni credenciales en el repositorio.
+7. No persistir tokens de sesión web en `localStorage`.
+8. No reactivar RUM, JavaScript inline, manejadores `on*` o estilos inline sin
+   una revisión formal de CSP y privacidad.
+9. No aplicar SQL ni publicar sin modo, proyecto y destino explícitos.
+10. No llamar «operativo» al correo o push hasta completar una prueba real de
+    extremo a extremo.
+
+Los reportes de vulnerabilidad se gestionan según `SECURITY.md`; no se publican
+detalles explotables antes de coordinar la corrección.
+
+## 7 · Comandos seguros
+
+### Pruebas locales
 
 ```bash
-node rwadar-arrancar.js                 # diagnóstico + servidor local
-node rwadar-publicar.js                 # sincroniza, pre-renderiza, adelgaza y publica
-node rwadar-publicar.js --local         # todo menos publicar
-cd rwadar-app && node probar-produccion.mjs    # contra la base real, se limpia sola
-cd rwadar-app && node probar-emisiones.mjs     # 28 pruebas del esquema de emisiones
+node probar-web.mjs
+cd rwadar-app && npm.cmd test
+cd rwadar-movil && npm.cmd test
 ```
 
-Migraciones aplicadas en producción: `18_emisiones.sql`,
-`19_emisiones_estados.sql`, `20_emisiones_realidad.sql`,
-`21_emisiones_continuas.sql`. Aplicarlas requiere un **token personal de
-Supabase de Víctor**; el asistente no debe manejarlo ni escribirlo en
-disco.
+### Web
 
-## 9 · Lo que solo puede hacer Víctor
+```bash
+node rwadar-publicar.js --local
+node rwadar-publicar.js --preview
+node rwadar-publicar.js --produccion
+```
 
-1. **Comprar el dominio** (~12 €/año).
-2. **Las cuentas de tienda**: Google Play (25 $) y Apple (99 $/año). Ya
-   no bloquean el acceso a la app: la web se instala desde el navegador.
-3. **Media hora con un abogado antes de cobrar el primer euro** a una
-   plataforma por destacar. Cobrar por destacar productos de inversión
-   tiene normas propias en España. El código ya sabe etiquetar lo
-   patrocinado; falta confirmar que se puede cobrar y cómo.
-4. **Revocar el token de Supabase** que se usó para aplicar las
-   migraciones (*Account → Access Tokens*).
+Exactamente un modo es obligatorio. `--sin-sincronizar` puede acompañar un
+modo, pero no elige destino. Nunca uses `netlify deploy` a secas.
 
-## 10 · El modelo de negocio, decidido
+En el estado entregado, `data-deploy-blocker` bloquea los dos modos remotos
+antes de Auth, sincronización o Netlify: solo `--local` puede construir. Tras
+cerrar el acuerdo y los plazos y retirar el marcador deliberadamente, el
+preflight remoto consulta `/auth/v1/settings` en solo lectura y exige
+`mailer_autoconfirm=false` exacto. Producción devuelve hoy `true`; un error o un
+campo ausente también bloquean. Cambiarlo no demuestra entrega: hay que probar
+un alta y su confirmación real de extremo a extremo.
 
-Booking de **tokenización** (no se mezcla crowdfunding). Gratis los
-primeros años. Cuando se cobre, **a las empresas, no a las personas**.
+### Migración 22
 
-Y la separación que lo sostiene, copiada de Booking: **Booking no puntúa
-los hoteles, los puntúan los usuarios.** El veredicto editorial —en el
-radar o descartada, con su fuente— **no se vende nunca**. Se cobra por
-presencia, herramientas y API. El día que se descarte a un cliente y se
-publique con su fuente, esa decisión será la mejor publicidad; si no se
-puede tomar, no hay producto.
+Desde `rwadar-app/`, con el CLI fijado a un SemVer exacto ya revisado:
 
-## 11 · Cómo trabaja Víctor
+```cmd
+set RWADAR_SUPABASE_CLI_VERSION=2.79.0
+aplicar-sql.cmd exgpmjpaaebyoolpwced db\22_cierre_regresiones.sql
+```
 
-- **Rechaza lo que no puede ver funcionando.** Ejecuta de punta a punta y
-  enséñale el resultado —captura, medida, salida real—, no la intención.
-- Da notas sobre 10 y pide iterar. Cuando dice que algo está soso o
-  falso, suele tener razón.
-- Pide explicaciones en lenguaje llano. Si le sueltas jerga, se pierde y
-  lo dice.
-- No escribas archivos con `Set-Content` de PowerShell: mete BOM y ha
-  roto JSON dos veces.
-- En su terminal `npx` falla por la ExecutionPolicy: usa `npx.cmd` y
-  `npm.cmd`.
+Programa una ventana, conserva una copia previa y guarda la salida real. El
+instalador pide confirmación y ejecuta los verificadores 14, 15 y 22, además de
+`fresh_install_verificar.sql` para 26/4. Si algo falla, no publiques la web
+remediada ni describas la 22 como aplicada.
+
+No ejecutes `16_reparacion.sql`, retratos históricos ni migraciones antiguas
+sobre producción. El rollback 22 es solo para una emergencia diagnosticada,
+no un paso normal ni un sustituto de la copia.
+
+No ejecutes `aplicar-envio-avisos.cmd` hasta que el correo tenga proveedor,
+secretos, base jurídica/consentimiento y prueba de extremo a extremo.
+
+### Dependencias móviles pendientes
+
+`npm audit --omit=dev` sobre el árbol normal informa 46 paquetes afectados: 29
+high, 17 moderate y 0 critical. El resultado se propaga desde tres avisos
+fuente de toolchain (dos `image-size` high y uno `uuid` moderate). No hay fix
+compatible; `--force` propone Expo 46. No maquilles la cifra ejecutando un fix
+sobre el árbol omitido y reinstalando después. Expo install check pasa, Doctor
+21/21 y tests 7/7.
+
+## 8 · Orden de continuación
+
+1. Revisar y firmar el acuerdo entre los tres; decidir los plazos de 12 meses y
+   3 años o sustituirlos.
+2. Hacer copia y aplicar la migración 22 al proyecto correcto; ejecutar sus
+   verificadores contra producción.
+3. Repetir las pruebas de cuentas, opiniones, moderación y borrado contra la
+   base real.
+4. Cerrar el marcador `data-deploy-blocker`, cambiar y verificar Auth hasta que
+   el preflight obtenga `mailer_autoconfirm=false`, y probar un alta con
+   confirmación real; no prometer su entrega antes de esa prueba.
+5. Publicar primero con `--preview`, revisar contenido, privacidad, CSP, PWA y
+   consola; después usar `--produccion` de forma deliberada.
+6. Verificar desde fuera que producción sirve 26/4, canonical, robots,
+   sitemap, CSP sin inline, cero RUM y las rutas de privacidad/404.
+7. Comprobar Search Console tras el despliegue. Robots y sitemap responden,
+   pero la indexación no quedó verificada en esta reconciliación.
+8. Diseñar y probar correo y push por separado. Hasta entonces, mantenerlos
+   desactivados o con fallo cerrado y decirlo con claridad.
+9. Investigar y cargar emisiones solo con fuente vigente. No publiques una
+   sección vacía o promesas de avisos sin una decisión editorial explícita.
+
+## 9 · Qué no debe hacer el siguiente agente
+
+- No sobrescribir este traspaso con una auditoría anterior al 17 de agosto.
+- No asumir que local equivale a producción.
+- No usar un token personal recuperado de historiales o archivos.
+- No sortear un `Forbidden` de Netlify mediante preview/promoción.
+- No publicar rentabilidades o afirmaciones regulatorias a partir de marketing
+  de una plataforma.
+- No atribuir el proyecto solo a una persona: hay tres corresponsables.

@@ -45,12 +45,24 @@ function sinComentariosJS(src) {
   let i = 0;
   const n = src.length;
   /* `anterior` es el último carácter con significado que hemos visto.
-     Sirve para lo único ambiguo de JavaScript: saber si una barra abre
-     una expresión regular o es una división. Detrás de un valor
-     -identificador, número, `)` o `]`- es división; detrás de cualquier
-     otra cosa, expresión regular. */
+     La decisión barra/regex necesita además la palabra anterior: detrás
+     de `return`, `throw` o `case` una barra sí abre una expresión regular,
+     aunque la última letra parezca el final de un identificador. */
   let anterior = '';
   const esValor = (c) => /[\w$)\]]/.test(c);
+  const antesDeRegex = new Set([
+    'return','throw','case','delete','void','typeof','instanceof','in','of',
+    'yield','await','else','do','new',
+  ]);
+  const abreRegex = () => {
+    if (!esValor(anterior)) return true;
+    let k = out.length - 1;
+    while (k >= 0 && /\s/.test(out[k])) k--;
+    if (k < 0 || !/[A-Za-z0-9_$]/.test(out[k])) return false;
+    const fin = k + 1;
+    while (k >= 0 && /[A-Za-z0-9_$]/.test(out[k])) k--;
+    return antesDeRegex.has(out.slice(k + 1, fin));
+  };
 
   while (i < n) {
     const c = src[i], d = src[i + 1];
@@ -78,7 +90,7 @@ function sinComentariosJS(src) {
       anterior = cierre;
       continue;
     }
-    if (c === '/' && !esValor(anterior)) {           // expresión regular
+    if (c === '/' && abreRegex()) {                  // expresión regular
       out += c; i++;
       let enClase = false;
       while (i < n) {
@@ -163,4 +175,7 @@ function adelgazar(html) {
          jsNuevo + html.slice(fGuion);
 }
 
-module.exports = { adelgazar, sinComentariosJS, sinComentariosCSS };
+const adelgazarJS = src => apretar(sinComentariosJS(src));
+const adelgazarCSS = src => apretar(sinComentariosCSS(src));
+
+module.exports = { adelgazar, adelgazarJS, adelgazarCSS, apretar, sinComentariosJS, sinComentariosCSS };

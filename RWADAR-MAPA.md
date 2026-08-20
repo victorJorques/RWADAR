@@ -4,48 +4,56 @@
 > directo al sitio exacto y no gastar el turno buscando. El *por qué* de
 > cada decisión está en `RWADAR-ESTADO.md`; aquí está el *dónde*.
 
+> **Vigencia:** reconciliado el 20 de agosto de 2026 sobre `42018de` y el
+> traspaso del 17–20 de agosto. La web remediada está en local, no en
+> producción. El sitio público aún usa `unsafe-inline`, la política fechada el
+> 09-08 y el service worker v1. No describas la arquitectura local como ya
+> desplegada.
+
 ---
 
 ## Lo que se lee no es lo que se sube
 
-`rwadar-site/index.html` es la **fuente**: con sus comentarios, que son
-56 kB y son justo lo que permite mantener un archivo de este tamaño.
-`rwadar-publicado/index.html` es lo que **viaja**: lo mismo sin
-comentarios, 84 kB por la red en vez de 104.
+`rwadar-site/` es la **fuente**. El HTML, CSS y JavaScript propios están
+separados: `index.html` referencia recursos versionados de `assets/`.
+`rwadar-publicado/` es el artefacto que **viaja**: una copia generada y
+pre-renderizada, nunca la fuente editable.
+
+En el artefacto, todos los assets desplegables reciben una huella de contenido
+y el HTML y `sw.js` se reescriben para apuntar a esos nombres. La `VERSION` del
+service worker se deriva del artefacto completo y su precaché crítico es
+atómico: si falta una pieza, la instalación no presenta una entrega parcial.
 
 La genera `rwadar-publicar.js` en cada publicación llamando a
 `rwadar-adelgazar.js`. **Nunca la edites**: se borra y se rehace entera.
 Y nunca publiques a mano desde `rwadar-site/`, o subirás la fuente.
 
-El adelgazador recorre el texto carácter a carácter sabiendo si está
-dentro de una cadena, una plantilla o una expresión regular, porque
-`'https://x'` y `/[/*]/` se comen a cualquier expresión regular ingenua.
-Los comentarios **dentro de los shaders del 3D** se conservan a
-propósito: viven en cadenas de JavaScript y tocarlos rompe el dibujo.
-Los números de línea se conservan: la línea 2.400 de lo publicado sigue
-siendo la 2.400 de la fuente.
+El adelgazador procesa los recursos generados sin reintroducir código o estilos
+inline. Los comentarios **dentro de los shaders del 3D** se conservan porque
+viven en cadenas de JavaScript y tocarlos puede romper el dibujo.
 
 ---
 
 ## Regla de oro
 
-Toda la web es **un solo archivo de 325 kB**: `rwadar-site/index.html`.
-HTML, CSS, JavaScript y las dos tipografías, juntos, sin dependencias ni
-compilación. Salvo la consulta a Supabase, la página **no pide nada a
-ningún tercero**.
+La web es estática y no necesita compilación, pero **ya no es un solo archivo**.
+`rwadar-site/index.html` contiene la estructura; `assets/rwadar-20260820.css`
+y `assets/rwadar-20260820.js` contienen presentación y comportamiento. También
+hay hojas separadas para privacidad y error. Salvo Supabase y las rutas
+declaradas, la aplicación no debe pedir recursos a terceros.
 
-Por eso **los números de línea de este mapa envejecen mal**: cualquier
-cambio los mueve todos. Los que aparecen son de referencia (8 de agosto de
-2026); lo que no caduca es la **marca de búsqueda**. Usa siempre grep sobre
-la marca, no `Read` con offset a ciegas.
+Los números de línea envejecen mal: usa siempre búsquedas por marca o símbolo,
+no offsets guardados.
 
 ```bash
-# el patrón que sirve para casi todo
-grep -n "SONIDO DE INTERFAZ" rwadar-site/index.html
+# estructura
+rg -n "explain|grid|outlist" rwadar-site/index.html
+# comportamiento
+rg -n "SONIDO DE INTERFAZ" rwadar-site/assets/rwadar-20260820.js
 ```
 
-Y **nunca leas el archivo entero**: son ~50 k tokens. Con la marca tienes
-el número de línea, y con `Read offset/limit` sacas solo el tramo.
+No leas todos los recursos a ciegas: localiza primero el símbolo con `rg` y
+abre solo el tramo necesario.
 
 ---
 
@@ -55,7 +63,11 @@ el número de línea, y con `Read offset/limit` sacas solo el tramo.
 
 | Archivo | Qué es | ¿Se toca? |
 |---|---|---|
-| `index.html` | La web entera | Sí, es el único |
+| `index.html` | Estructura, metadatos y contenedores pre-renderizados | Sí |
+| `assets/rwadar-20260820.css` | Estilos de la aplicación | Sí |
+| `assets/rwadar-20260820.js` | Lógica, datos generados y 3D | Sí |
+| `assets/privacidad-20260820.css` | Estilos de privacidad | Al tocar esa página |
+| `assets/error-20260820.css` | Estilos de 404 | Al tocar esa página |
 | `privacidad.html` | Política de privacidad. Página aparte, se sirve en `/privacidad` | Al cambiar qué datos se tratan |
 | `og.png` | Vista previa al compartir (1200×630) | Regenerar si cambia el diseño |
 | `rwadar.csv` | El registro entero descargable | **Nunca a mano**: lo escribe `sincronizar.js` |
@@ -63,15 +75,18 @@ el número de línea, y con `Read offset/limit` sacas solo el tramo.
 | `robots.txt` | Permite todo + apunta al sitemap | Casi nunca |
 | `404.html` | Página de error | Casi nunca |
 | `_headers` | Cabeceras de Netlify (caché, seguridad) | Casi nunca |
+| `_redirects` | Rutas limpias y redirecciones del sitio | Al cambiar rutas |
+| `.well-known/security.txt` | Contacto y política de reporte de seguridad | Al cambiar contacto o vigencia |
 | `google6b2e3e5f58b7e557.html` | **Verificación de Google** | **NUNCA borrar** |
 | `c9417d2d5003bb9a41fee63c7f5ec00f.txt` | **Llave de IndexNow** | **NUNCA borrar** |
 | `manifest.webmanifest` | Lo que hace que la dirección **se instale como app** | Al cambiar nombre, colores o iconos |
 | `sw.js` | El trabajador de segundo plano: instalable y legible sin red | Casi nunca — y leyendo antes sus cuatro reglas |
 | `icono-192.png` · `icono-512.png` · `icono-maskable-512.png` | El logotipo en la pantalla de inicio | Si cambia la marca |
 
-**Los cinco de abajo son la aplicación.** Sin el manifiesto no aparece
+**El manifiesto, el service worker y los iconos hacen instalable la web.** Sin
+el manifiesto no aparece
 «Instalar»; sin los iconos, quien la instale se encuentra un cuadrado en
-blanco. Se generan desde `const MARK` del propio `index.html` con la receta
+blanco. Se generan desde la marca del proyecto con la receta
 de «Ver un SVG» de más abajo, y son **los mismos** que lleva la app nativa
 en `rwadar-movil/assets/`: una marca, una dirección, un icono.
 
@@ -81,37 +96,61 @@ en `rwadar-movil/assets/`: una marca, una dirección, un icono.
 |---|---|
 | `rwadar-arrancar.js` | **Empieza por aquí.** Diagnostica local + publicado + base de datos y levanta el servidor |
 | `rwadar-publicar.js` | Sincroniza + pre-renderiza + adelgaza + publica. **La única forma correcta de publicar** |
-| `rwadar-adelgazar.js` | Quita los comentarios del CSS y del JS **solo en lo que se sube**. 95 → 77 kB comprimido |
+| `rwadar-adelgazar.js` | Adelgaza el artefacto **solo en lo que se sube** |
 | `rwadar-publicado/` | La carpeta que se sube. **Generada y desechable**: se rehace en cada publicación |
 | `rwadar-servir.js` | Servidor local en `:4173`. También `/banco` y el `POST /guardar` de capturas |
 | `rwadar-banco-de-sonidos.html` | Banco de pruebas de sonido, servido en `/banco` |
 | `RWADAR-ESTADO.md` | El *por qué*: decisiones, trampas, estado del proyecto |
 | `RWADAR-MANANA.md` | **Lo que NO coincide entre producción y el repositorio.** Empieza aquí si tocas cuentas, opiniones o moderación |
 | `RWADAR-MAPA.md` | Este archivo: el *dónde* |
+| `SECURITY.md` | Canal, alcance y reglas para reportes de seguridad |
 | `rwadar-app/` | Esquema de Supabase, `sincronizar.js`, utilidades de datos |
 | `rwadar-movil/` | App de Expo (proyecto aparte) |
 
 ### Las pruebas: qué comprueba cada una
 
-Ninguna necesita token. Las tres primeras levantan un Postgres embebido; las
-dos últimas atacan la base **en línea** y se limpian solas.
+Las baterías locales no necesitan un token personal. Una prueba local no
+demuestra el estado de producción: las comprobaciones contra la base real se
+ejecutan por separado, con datos de prueba y limpieza verificable.
 
 | Comando | Qué demuestra |
 |---|---|
-| `node rwadar-arrancar.js` | Que el JS compila, que lo publicado coincide con lo local, que ninguna descartada va sin fuente |
+| `node rwadar-arrancar.js` | Que el JS compila, informa si lo publicado difiere de local y comprueba descartes con fuente |
+| `node probar-web.mjs` | Contrato estático, CSP, publicación explícita y cerrada, privacidad, SEO y 26/4/0 locales; 121/121 al 20-08 |
+| `node rwadar-qr/comprobar-qr.js` | Geometría, contenido y legibilidad del QR; 6/6 al 20-08 |
 | `rwadar-app/probar-opiniones.mjs` | Opiniones, denuncias y retirada automática |
 | `rwadar-app/probar-moderacion.mjs` | Que quien no es administrador **no** puede moderar |
 | `rwadar-app/probar-reparacion.mjs` | La migración 16 sobre el estado roto de producción, reproducido |
-| `rwadar-app/probar-push.mjs` | El reparto de avisos, incluidos los fallos que devuelven 200 |
-| `rwadar-app/probar-produccion.mjs` | **La base en línea**: se registra, opina, vigila y se borra |
-| `rwadar-app/probar-app-movil.mjs` | **La base en línea** desde la app: seguir y guardar el token push |
+| `rwadar-app/probar-push.mjs` | Lógica local de cola y fallo cerrado; no demuestra entrega externa |
+| `rwadar-app/probar-produccion.mjs` | Smoke remoto: solo lectura por defecto; las mutaciones exigen URL/clave, flag y confirmación ligados al proyecto |
+| `rwadar-app/probar-app-movil.mjs` | Smoke móvil: solo lectura por defecto; mutación con destino/clave, flag, confirmación y limpieza verificable, sin token Expo ficticio |
+| `rwadar-app/probar-cierre-22.mjs` | Migración 22, verificador y rollback en local |
+| `rwadar-app/probar-verificacion.mjs` | Que los verificadores fallen si el estado seguro no se cumple |
+| `rwadar-app/activar-push.cmd` | Único opt-in de push tras E2E; nunca forma parte de fresh/22 |
+| `rwadar-app/db/push_fallo_cerrado.sql` | Cierre de emergencia limitado al push; conserva API y retención |
 
-### El código, publicado
+La suite DB completa terminó el 20-08 con **270 aserciones + 8 gates SQL = 278
+controles verdes**. Es evidencia local; producción no se modificó.
 
-github.com/victorJorques/RWADAR · repositorio público. El `.gitignore` de la
-raíz es una **lista blanca**: ignora todo y readmite solo lo de RWAdar, porque
-esta carpeta es `Downloads` y aquí dentro hay documentos personales. No lo
-conviertas en lista negra.
+Fresh-install, 17, 22, rollback y recuperación dejan el push apagado: flag
+`false` y 0 cron `rwadar-push`. La retención de dispositivos es independiente,
+diaria a las 03:17 y observable en `retencion_dispositivos_estado`.
+
+Ninguno de los dos smokes remotos contiene referencia o clave predeterminadas.
+`probar-produccion.mjs` usa el prefijo `RWADAR_SMOKE_` y
+`probar-app-movil.mjs`, `RWADAR_MOVIL_SMOKE_`; ambos son de solo lectura por
+defecto. El modo mutante exige flag y frase ligados a `<REF>` y termina en un
+`finally` que verifica la limpieza. El primero exige borrado RPC, login revocado
+y contenido ausente; el segundo, cero dispositivo y seguimiento, sin guardar un
+token Expo ficticio. Las pruebas adversariales locales de este contrato pasan
+**21/21**, sin red.
+
+### El código, versionado
+
+Baseline: `42018de`. En este clon, `origin` apunta a una ruta local de
+Downloads, no a un remoto verificable. Comprueba el destino antes de cualquier
+push. El `.gitignore` de la raíz es una **lista blanca** porque la carpeta de
+origen puede contener documentos personales; no lo conviertas en lista negra.
 
 Y nada más. Si aparece cualquier otra cosa —un `.netlify`, un PNG suelto de
 una captura, una versión vieja del sitio— es basura de trabajo y se puede
@@ -124,17 +163,17 @@ un falso fallo.
 
 ---
 
-## Anatomía de `index.html`
+## Anatomía de la web
 
-Cinco tramos, en este orden:
+La estructura y el comportamiento ya no comparten archivo:
 
-| # | Tramo | Marca de búsqueda | ~línea |
-|---|---|---|---|
-| 1 | `<head>`: meta, OG, favicon, JSON-LD | `google-site-verification` | 17 |
-| 2 | **CSS** (15 secciones numeradas) | `============ 1 · TOKENS` | 66 |
-| 3 | **Cuerpo HTML** | `<header class="hdr">` | 728 |
-| 4 | **Datos** `P`, `FUERA` y `EMI` | `const P=[` | 1168 |
-| 5 | **JavaScript** (11 bloques) | `const CATMETA={` | 1207 |
+| Archivo | Tramo | Marca de búsqueda |
+|---|---|---|
+| `index.html` | `<head>`: meta, OG, favicon y JSON-LD | `google-site-verification` |
+| `index.html` | Cuerpo y contenedores pre-renderizados | `<header class="hdr">` |
+| `assets/rwadar-20260820.css` | CSS por secciones | `============ 1 · TOKENS` |
+| `assets/rwadar-20260820.js` | Datos `P`, `FUERA` y `EMI` | `const P=[` |
+| `assets/rwadar-20260820.js` | Comportamiento y WebGL | `const CATMETA={` |
 
 ### Las 15 secciones de CSS
 
@@ -146,7 +185,7 @@ Todas con la forma `/* ============ N · NOMBRE ============ */`:
 `13 MOVIMIENTO` · `14 RESPONSIVE` · `15 EMISIONES ABIERTAS`
 
 ```bash
-grep -n "============ 8 · FICHAS" rwadar-site/index.html
+rg -n "============ 8 · FICHAS" rwadar-site/assets/rwadar-20260820.css
 ```
 
 ### Los bloques de JavaScript, en orden
@@ -154,7 +193,7 @@ grep -n "============ 8 · FICHAS" rwadar-site/index.html
 | Bloque | Marca de búsqueda | ~línea |
 |---|---|---|
 | Categorías y colores de dato | `const CATMETA={` | 1207 |
-| Logotipo inline | `const MARK=` | 1221 |
+| Logotipo | `const MARK=` | 1221 |
 | Shaders del 3D | `const GL_VS=` | 1252 |
 | Geometría del edificio | `function gEdificio` | 1551 |
 | Motor 3D completo | `(function init3D` | 1606 |
@@ -239,10 +278,9 @@ grep -n "============ 8 · FICHAS" rwadar-site/index.html
 | Descarga en CSV | `function downloadCSV` |
 
 ### Textos
-Casi todos están **en el HTML**, no en JavaScript. Busca la frase
-literal — es lo más rápido:
+Casi todos están **en el HTML**. Busca la frase literal:
 ```bash
-grep -n "partir algo caro" rwadar-site/index.html
+rg -n "partir algo caro" rwadar-site/index.html
 ```
 
 ---
@@ -279,13 +317,13 @@ Tres tienen **límites que no se pueden cruzar**, y están razonados en
 
 ## Invariantes: romper esto rompe la publicación
 
-`rwadar-publicar.js` y `rwadar-app/sincronizar.js` leen el HTML con
-expresiones regulares. Si cambias estas formas, la publicación falla o
-—peor— sube una página vacía para Google.
+`rwadar-publicar.js` localiza recursos y contenedores con formas deliberadas.
+Si cambias estas formas, la validación detiene la publicación.
 
-1. **Un único `<script>` sin atributos, y el último del archivo.**
-   El publicador extrae el JS con `lastIndexOf('<script>')`. El `<script
-   type="application/ld+json">` del head no estorba porque lleva atributo.
+1. **Un único script propio externo y versionado.** La aplicación se carga
+   desde `/assets/rwadar-AAAAMMDD.js`. El JSON-LD puede seguir inline porque
+   es datos estructurados, no JavaScript ejecutable. No añadas bloques
+   ejecutables, atributos `on*`, `<style>` ni atributos `style`.
 
 2. **Los arrays de datos, con su forma exacta:**
    ```
@@ -293,8 +331,8 @@ expresiones regulares. Si cambias estas formas, la publicación falla o
     …
    ];        ← el cierre tiene que ser "\n];"
    ```
-   Igual con `const FUERA=[`. `sincronizar.js` los reescribe buscando
-   `const P=[` y `\n];`.
+   Igual con `const FUERA=[` y `const EMI=[`. Están en el JavaScript externo;
+   `sincronizar.js` los reescribe buscando el nombre y `\n];`.
 
 3. **Los contenedores pre-renderizables, con la clase ANTES del id:**
    ```html
@@ -318,7 +356,8 @@ expresiones regulares. Si cambias estas formas, la publicación falla o
 5. **Comprueba la sintaxis antes de publicar.** Un error de sintaxis deja
    la página en blanco y el pre-renderizado no siempre lo caza:
    ```bash
-   node -e "const h=require('fs').readFileSync('rwadar-site/index.html','utf8');new Function(h.slice(h.lastIndexOf('<script>')+8,h.lastIndexOf('</script>')));console.log('sintaxis OK')"
+   node --check rwadar-site/assets/rwadar-20260820.js
+   node probar-web.mjs
    ```
 
 ---
@@ -330,9 +369,10 @@ fotogramas**, así que ni las capturas ni `requestAnimationFrame` funcionan.
 Hay que forzarlo a mano.
 
 ### Ver el 3D de verdad (PNG)
-`window.__gl3d.pinta(t)` pinta un fotograma a mano. El servidor local
-acepta `POST /guardar?n=algo.png` y escribe el archivo junto a
-`rwadar-servir.js`, para poder leerlo con `Read`.
+`window.__gl3d.pinta(t)` pinta un fotograma a mano. Por defecto el servidor no
+acepta escrituras. Inícialo de forma deliberada con
+`node rwadar-servir.js --capturas`; entonces `POST /guardar?n=algo.png` acepta
+solo PNG válidos, limita el tamaño y escribe una captura con nombre saneado.
 
 ```js
 irPaso(0,true);
@@ -369,7 +409,8 @@ segunda medida sale muda.
 
 ### Mirar la web
 ```bash
-node rwadar-servir.js     # http://localhost:4173  y  /banco
+node rwadar-servir.js                 # lectura: http://localhost:4173 y /banco
+node rwadar-servir.js --capturas      # habilita POST /guardar solo para QA
 ```
 
 ---
@@ -377,8 +418,8 @@ node rwadar-servir.js     # http://localhost:4173  y  /banco
 ## Los datos nunca se editan a mano
 
 La fuente de verdad es **Supabase** (proyecto `exgpmjpaaebyoolpwced`), no el
-HTML. Si editas los arrays `P` o `FUERA` a mano, la siguiente publicación
-los sobrescribe.
+HTML ni el JavaScript generado. Si editas `P`, `FUERA` o `EMI` a mano, la
+siguiente publicación los sobrescribe.
 
 - Cambiar contenido → tabla `plataformas` en el panel de Supabase.
 - La web además **se actualiza sola**: consulta la base al cargar y se
@@ -390,21 +431,38 @@ los sobrescribe.
   ```
   Cualquiera con `fuentes: []` es motivo para no publicar.
 
+### Evidencia regulatoria: dónde está el límite
+
+El [registro ERIR de la CNMV](https://www.cnmv.es/portal/consultas/esi/erir_esi?lang=es&nif=A86796182)
+lista una emisión de REENTAL TOURIST HOMES, S.A.U. y varias de sociedades
+HAUSERA PROPERTY MANAGER SPV. Sirve como fuente para esas inscripciones
+concretas. La propia página aclara que la inscripción no implica validación de
+las condiciones ni de la información del emisor: no escribas «avalada por la
+CNMV» ni uses esta fuente como sustituto de los cuatro criterios.
+
 ## Publicar
 
 ```bash
-node rwadar-publicar.js                    # sincroniza + pre-renderiza + publica
-node rwadar-publicar.js --local            # solo pre-renderiza, no sube
-node rwadar-publicar.js --sin-sincronizar  # sin tocar Supabase
+node rwadar-publicar.js --local                       # genera y prueba, no sube
+node rwadar-publicar.js --preview                     # despliegue de revisión
+node rwadar-publicar.js --produccion                  # producción deliberada
+node rwadar-publicar.js --local --sin-sincronizar     # sin tocar Supabase
 ```
 
-Netlify suele rechazar la subida directa con un `Forbidden`; el script lo
-detecta, sube como borrador y lo promueve. Ver *«La publicacion directa fue
-rechazada»* seguido de *«Promovido a produccion»* **es el camino normal**.
+Exactamente uno de los tres modos es obligatorio. `--sin-sincronizar` no
+elige producción. Si Netlify rechaza una subida, el proceso termina: nunca
+crea un borrador alternativo ni lo promueve a espaldas del modo elegido.
 
-**No compares el tamaño de lo publicado con el de lo local.** Netlify
-inyecta al servir su script de analítica (`netlify-rum-container`) justo
-después de nuestro `</script>`, así que el HTML en línea siempre pesa unos
-500 caracteres más aunque sea idéntico. Para comparar de verdad, mira si lo
-publicado **empieza por** el archivo local hasta su último `</script>` —es
-lo que hace `rwadar-arrancar.js`.
+El marcador actual `data-deploy-blocker` bloquea los dos destinos remotos antes
+de consultar Auth, sincronizar o llamar a Netlify: solo `--local` está
+habilitado. Cuando los tres corresponsables cierren el acuerdo y los plazos,
+retirar el marcador será una decisión explícita. Entonces el preflight remoto
+hará un GET de solo lectura a `/auth/v1/settings` y exigirá
+`mailer_autoconfirm=false` exacto; producción devuelve hoy `true`, y todo error
+o campo ausente debe fallar cerrado. No confundas superar el preflight con
+haber probado que llega un correo de confirmación.
+
+Lo que se compara con internet es `rwadar-publicado/`, no la fuente
+comentada de `rwadar-site/`. RUM está desactivado: cualquier
+`netlify-rum-container` inyectado se trata como una discrepancia y se corrige,
+no se incluye en una lista de excepciones ni se publica.

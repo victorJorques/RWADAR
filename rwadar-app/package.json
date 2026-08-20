@@ -5,9 +5,16 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "test": "node probar-db.mjs && node probar-cuentas.mjs",
+    "test": "node probar-db.mjs && node probar-cuentas.mjs && node probar-opiniones.mjs && node probar-moderacion.mjs && node probar-seguridad.mjs && node probar-acl.mjs && node probar-push.mjs && node probar-emisiones.mjs && node probar-cierre-22.mjs && node probar-instaladores.mjs && node probar-smoke-remoto-estatico.mjs && node probar-app-movil-estatico.mjs && node probar-verificacion.mjs",
     "test:registro": "node probar-db.mjs",
     "test:cuentas": "node probar-cuentas.mjs",
+    "test:seguridad": "node probar-seguridad.mjs && node probar-acl.mjs && node probar-cierre-22.mjs && node probar-verificacion.mjs",
+    "test:push": "node probar-push.mjs && node probar-cierre-22.mjs",
+    "test:emisiones": "node probar-emisiones.mjs && node probar-cierre-22.mjs",
+    "test:instaladores": "node probar-instaladores.mjs && node probar-smoke-remoto-estatico.mjs && node probar-app-movil-estatico.mjs",
+    "smoke:remoto": "node probar-produccion.mjs",
+    "smoke:movil": "node probar-app-movil.mjs",
+    "test:historico-16": "node probar-reparacion.mjs",
     "volcar": "node volcar-seed.js",
     "sincronizar": "node sincronizar.js"
   },

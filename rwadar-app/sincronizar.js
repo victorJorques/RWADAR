@@ -1,14 +1,14 @@
 /* =====================================================================
    RWAdar · sincroniza la web con la base de datos
    ---------------------------------------------------------------------
-   Lee el contenido desde Supabase y reescribe los arrays P y FUERA
-   dentro de rwadar-site/index.html.
+   Lee el contenido desde Supabase y reescribe los arrays P, FUERA y EMI
+   dentro del JavaScript externo versionado de la web.
 
    Por qué así y no leyendo desde el navegador: si la página pidiera los
    datos al cargar, el robot de Google volvería a encontrarla vacía y
    perderíamos el pre-renderizado. Generando en tiempo de publicación,
-   la base de datos manda y el HTML sigue siendo completo desde el
-   primer byte.
+   la base de datos manda y el HTML sigue pre-renderizado. Mantener los
+   datos en un recurso externo permite una CSP sin JavaScript inline.
    ===================================================================== */
 const fs = require('fs');
 const path = require('path');
@@ -16,7 +16,7 @@ const path = require('path');
 const URL_BASE = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
 const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
 const SITIO = path.join(__dirname, '..', 'rwadar-site');
-const HTML = path.join(SITIO, 'index.html');
+const JS = path.join(SITIO, 'assets', 'rwadar-20260820.js');
 const CSV = path.join(SITIO, 'rwadar.csv');
 
 async function pedir(ruta) {
@@ -25,29 +25,60 @@ async function pedir(ruta) {
   return r.json();
 }
 
-/* Escapa para incrustar en una cadena JS de comillas dobles */
-const j = (s) => JSON.stringify(s == null ? '' : String(s));
+/* Literal seguro para JavaScript externo. Aunque `</script>` no cierra un
+   recurso externo, neutralizar los signos y separadores evita que el mismo
+   dato se convierta en inyección si en el futuro se mueve de contexto. */
+const j = (s) => JSON.stringify(s == null ? '' : String(s))
+  .replace(/</g, '\\u003c')
+  .replace(/>/g, '\\u003e')
+  .replace(/\u2028/g, '\\u2028')
+  .replace(/\u2029/g, '\\u2029');
 
-(async () => {
-  const radar = await pedir('radar_publico?select=*');
-  const fuera = await pedir(
-    'plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,' +
-    'fuentes(url,titulo)&order=nombre'
-  );
+const esHttps = (valor) => {
+  try { return new URL(String(valor)).protocol === 'https:'; }
+  catch { return false; }
+};
+
+function escribirAtomico(archivo, contenido) {
+  const temporal = `${archivo}.tmp-${process.pid}`;
+  fs.writeFileSync(temporal, contenido, 'utf8');
+  try { fs.renameSync(temporal, archivo); }
+  finally { if (fs.existsSync(temporal)) fs.rmSync(temporal, { force: true }); }
+}
+
+/* Excel y otras hojas interpretan como fórmula las celdas que empiezan por
+   =, +, - o @, incluso tras espacios/tabuladores. El apóstrofo fuerza texto
+   antes de aplicar el escapado CSV normal. */
+function celdaCSV(valor) {
+  let texto = String(valor == null ? '' : valor);
+  if (/^[\t\r\n ]*[=+\-@]/.test(texto)) texto = "'" + texto;
+  return `"${texto.replace(/"/g, '""')}"`;
+}
+
+async function main() {
+  const [radar, fuera, emisiones] = await Promise.all([
+    pedir('radar_publico?select=*'),
+    pedir('plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,' +
+      'fuentes(url,titulo)&order=nombre'),
+    pedir('emisiones_publicas?select=*&estado=in.(abierta,programada,en_estudio)'),
+  ]);
 
   if (!radar.length || !fuera.length) throw new Error('la base devolvió listas vacías');
 
-  /* Las emisiones abiertas. Se piden aparte y con red debajo: mientras la
-     migración 18 no esté aplicada en producción, la vista no existe y la
-     base responde con un error. Eso NO puede tumbar la publicación de la
-     web entera, así que aquí se traduce a "no hay emisiones todavía" y la
-     página enseña su estado vacío, que ya está escrito. */
-  let emisiones = [];
-  try {
-    emisiones = await pedir('emisiones_publicas?select=*&estado=eq.abierta');
-  } catch (e) {
-    console.log('Sin emisiones: la vista emisiones_publicas todavía no existe en la base.');
-    console.log('(se aplica con db/18_emisiones.sql; la web sale con su estado vacío)');
+  /* Una lista vacía de emisiones es un dato legítimo. Un error de red, de
+     permisos o una vista ausente no lo es: Promise.all ya habrá detenido la
+     publicación en vez de transformar el fallo en un escaparate vacío. */
+  for (const e of emisiones) {
+    if (!e || !String(e.titulo || '').trim() || !String(e.plataforma || '').trim() ||
+        !String(e.categoria || '').trim() || !esHttps(e.url) || !esHttps(e.plataforma_web) ||
+        !['abierta','programada','en_estudio'].includes(e.estado) ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(String(e.verificada_el || '')) ||
+        ['ticket_minimo','objetivo','captado','porcentaje'].some(k =>
+          e[k] != null && (!Number.isFinite(Number(e[k])) || Number(e[k]) < 0)) ||
+        ['rentabilidad','plazo_meses'].some(k =>
+          e[k] != null && !Number.isFinite(Number(e[k])))) {
+      throw new Error(`emisión pública inválida: ${e && (e.slug || e.titulo) || 'sin identificador'}`);
+    }
   }
 
   const P = radar.map(p =>
@@ -64,14 +95,14 @@ const j = (s) => JSON.stringify(s == null ? '' : String(s));
            `fuentes:[${fuentes}]},`;
   }).join('\n');
 
-  let html = fs.readFileSync(HTML, 'utf8');
+  let script = fs.readFileSync(JS, 'utf8');
 
   const sustituir = (nombre, cuerpo) => {
-    const ini = html.indexOf(`const ${nombre}=[`);
+    const ini = script.indexOf(`const ${nombre}=[`);
     if (ini < 0) throw new Error(`no encuentro el array ${nombre}`);
-    const fin = html.indexOf('\n];', ini);
+    const fin = script.indexOf('\n];', ini);
     if (fin < 0) throw new Error(`no encuentro el cierre de ${nombre}`);
-    html = html.slice(0, ini) + `const ${nombre}=[\n${cuerpo}` + html.slice(fin);
+    script = script.slice(0, ini) + `const ${nombre}=[\n${cuerpo}` + script.slice(fin);
   };
 
   /* Las claves van cortas porque este array viaja en el HTML de todos los
@@ -101,7 +132,10 @@ const j = (s) => JSON.stringify(s == null ? '' : String(s));
   sustituir('FUERA', F);
   sustituir('EMI', E);
 
-  fs.writeFileSync(HTML, html, 'utf8');
+  /* No sustituimos el archivo hasta haber generado y validado los tres
+     bloques completos. Si el proceso cae antes, la fuente anterior queda. */
+  new Function(script);
+  escribirAtomico(JS, script);
 
   /* El mismo CSV que descarga el botón de la página, pero como archivo de
      verdad en una dirección estable. El botón exporta lo que el visitante
@@ -109,7 +143,6 @@ const j = (s) => JSON.stringify(s == null ? '' : String(s));
      un rastreador no puede pulsar un botón, y el `distribution` de los
      datos estructurados necesita una URL que se pueda abrir. Se genera
      aquí porque es donde ya están los datos en la mano. */
-  const col = v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
   const cabecera = ['Estado','Nombre','Categoria','Tipo','Region','Cadenas',
                     'Entrada','Acceso','Web','Descripcion','Por que','Fuentes'];
   const filas = [
@@ -123,9 +156,14 @@ const j = (s) => JSON.stringify(s == null ? '' : String(s));
      español abre el archivo como Windows-1252 y "Asia-Pacífico" se lee
      "Asia-PacÃ­fico". Los analizadores serios la descartan sin rechistar,
      así que sale gratis. El botón de la página hace lo mismo. */
-  fs.writeFileSync(CSV,
-    '﻿' + [cabecera.join(','), ...filas.map(r => r.map(col).join(','))].join('\n') + '\n', 'utf8');
+  escribirAtomico(CSV,
+    '﻿' + [cabecera.join(','), ...filas.map(r => r.map(celdaCSV).join(','))].join('\n') + '\n');
 
-  console.log(`Sincronizado desde Supabase: ${radar.length} en el radar, ${fuera.length} descartadas.`);
+  console.log(`Sincronizado desde Supabase: ${radar.length} en el radar, ${fuera.length} descartadas y ${emisiones.length} emisiones.`);
   console.log(`rwadar.csv regenerado: ${filas.length} filas.`);
-})().catch(e => { console.error('ERROR:', e.message); process.exit(1); });
+}
+
+module.exports = { celdaCSV };
+if (require.main === module) {
+  main().catch(e => { console.error('ERROR:', e.message); process.exit(1); });
+}

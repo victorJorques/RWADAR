@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import {
-  ActivityIndicator, FlatList, Linking, Modal, Pressable, RefreshControl,
+  ActivityIndicator, Alert, FlatList, Linking, Modal, Pressable, RefreshControl,
   ScrollView, StatusBar, StyleSheet, Text, TextInput, View,
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -12,11 +12,46 @@ import { GeistMono_500Medium } from '@expo-google-fonts/geist-mono';
 
 import { C, COLOR_CATEGORIA, iniciales, T, E, R, F } from './lib/tema';
 import { tacto } from './lib/tacto';
-import { cargarRadar, cargarFuera, siguiendo, alternarSeguimiento, novedades } from './lib/datos';
-import { registrarParaAvisos } from './lib/avisos';
+import {
+  cargarRadar, cargarFuera, siguiendo, alternarSeguimiento, novedades,
+  sincronizarSeguimientoPendiente, borrarDatosDispositivo,
+} from './lib/datos';
+import { consultarEstadoAvisos, registrarParaAvisos } from './lib/avisos';
 import Explicador from './componentes/Explicador';
 import Radar from './componentes/Radar';
 import Marca from './componentes/Marca';
+
+const URL_PRIVACIDAD = 'https://rwadar.netlify.app/privacidad';
+
+async function abrirEnlace(url) {
+  const valor = String(url || '').trim();
+  let permitido = valor === 'mailto:RWAdar@protonmail.com';
+  if (!permitido) {
+    try {
+      const destino = new URL(valor);
+      permitido = destino.protocol === 'https:' && !destino.username && !destino.password;
+    } catch {
+      permitido = false;
+    }
+  }
+  if (!permitido) {
+    Alert.alert('Enlace no válido', 'RWAdar solo abre direcciones HTTPS verificables.');
+    return;
+  }
+  try {
+    await Linking.openURL(valor);
+  } catch {
+    Alert.alert('No se pudo abrir el enlace', 'Comprueba tu conexión e inténtalo de nuevo.');
+  }
+}
+
+async function abrirAjustes() {
+  try {
+    await Linking.openSettings();
+  } catch {
+    Alert.alert('No se pudieron abrir los ajustes', 'Abre los ajustes del sistema y busca RWAdar.');
+  }
+}
 
 export default function App() {
   const [fuentesListas] = useFonts({
@@ -36,6 +71,13 @@ export default function App() {
   const [categoria, setCategoria] = useState('');
   const [abierta, setAbierta] = useState(null);
   const [explicando, setExplicando] = useState(false);
+  const [privacidad, setPrivacidad] = useState(false);
+  const [estadoDatos, setEstadoDatos] = useState('');
+  const [estadoAccion, setEstadoAccion] = useState('');
+  const [procesandoSeguimiento, setProcesandoSeguimiento] = useState(false);
+  const [estadoAvisos, setEstadoAvisos] = useState({ estado: 'comprobando' });
+  const [procesandoAvisos, setProcesandoAvisos] = useState(false);
+  const [borrandoDatos, setBorrandoDatos] = useState(false);
 
   /* El `finally` no es adorno: si cualquiera de estas llamadas rechazara,
      `cargando` se quedaría en true y la pantalla de "Sintonizando el
@@ -46,21 +88,49 @@ export default function App() {
     try {
       const [r, f, s] = await Promise.all([cargarRadar(), cargarFuera(), siguiendo()]);
       setRadar(r.datos); setFuera(f.datos); setSigo(s);
-      setSinConexion(!!r.deCache);
-      setAvisos(await novedades(s));
+      setSinConexion(!!(r.deCache || f.deCache));
+
+      const [n, sincronizacion] = await Promise.all([
+        novedades(s),
+        sincronizarSeguimientoPendiente(),
+      ]);
+      setAvisos(n.datos);
+
+      const mensajes = [];
+      if (r.error || f.error) {
+        mensajes.push('Mostramos la última copia guardada; no se pudo actualizar el catálogo.');
+      }
+      if (n.error && s.length) mensajes.push('No se pudieron consultar las novedades.');
+      if (sincronizacion.pendientes) {
+        mensajes.push(`${sincronizacion.pendientes} cambio(s) de seguimiento pendientes de sincronizar.`);
+      }
+      setEstadoDatos(mensajes.join(' '));
+      return !r.deCache && !f.deCache;
+    } catch {
+      setEstadoDatos('No se pudieron cargar los datos locales. Cierra y vuelve a abrir la app.');
+      return false;
     } finally {
       setCargando(false);
     }
   }, []);
 
   useEffect(() => { traer(); }, [traer]);
-  useEffect(() => { registrarParaAvisos(); }, []);
+  useEffect(() => {
+    let vivo = true;
+    consultarEstadoAvisos().then((resultado) => {
+      if (vivo) setEstadoAvisos(resultado);
+    });
+    return () => { vivo = false; };
+  }, []);
 
   const refrescar = async () => {
     setRefrescando(true);
-    await traer();
-    tacto.novedad();
-    setRefrescando(false);
+    try {
+      const actualizado = await traer();
+      if (actualizado) tacto.novedad();
+    } finally {
+      setRefrescando(false);
+    }
   };
 
   const categorias = useMemo(() => {
@@ -90,9 +160,72 @@ export default function App() {
   const seguidas = useMemo(() => radar.filter((p) => sigo.includes(p.slug)), [radar, sigo]);
 
   const alternar = async (p) => {
-    const yaSigo = sigo.includes(p.slug);
-    yaSigo ? tacto.soltar() : tacto.seguir();
-    setSigo(await alternarSeguimiento(p.slug, p.plataforma_id));
+    if (procesandoSeguimiento) return;
+    setProcesandoSeguimiento(true);
+    setEstadoAccion('');
+    try {
+      const yaSigo = sigo.includes(p.slug);
+      const resultado = await alternarSeguimiento(p.slug, p.plataforma_id);
+      setSigo(resultado.lista);
+      yaSigo ? tacto.soltar() : tacto.seguir();
+      if (!resultado.sincronizado) {
+        setEstadoAccion(
+          'Cambio guardado en este dispositivo, pero pendiente de sincronizar. ' +
+          'Los avisos no pueden depender de él hasta que vuelva la conexión.'
+        );
+      }
+    } catch {
+      Alert.alert('No se guardó el cambio', 'No pudimos actualizar el seguimiento en este dispositivo.');
+    } finally {
+      setProcesandoSeguimiento(false);
+    }
+  };
+
+  const activarAvisos = async () => {
+    if (procesandoAvisos) return;
+    setProcesandoAvisos(true);
+    try {
+      const resultado = await registrarParaAvisos({ solicitarPermiso: true });
+      setEstadoAvisos(resultado);
+      if (resultado.estado === 'error') {
+        Alert.alert('No se pudieron preparar los avisos', 'No se ha registrado ningún éxito. Inténtalo más tarde.');
+      }
+    } finally {
+      setProcesandoAvisos(false);
+    }
+  };
+
+  const confirmarBorrado = () => {
+    Alert.alert(
+      'Borrar datos de este dispositivo',
+      'Se eliminarán de Supabase esta instalación, su token push y todos sus seguimientos, además de las cachés locales. No se puede deshacer.',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Borrar definitivamente',
+          style: 'destructive',
+          onPress: async () => {
+            setBorrandoDatos(true);
+            try {
+              await borrarDatosDispositivo();
+              setRadar([]); setFuera([]); setSigo([]); setAvisos([]);
+              setEstadoDatos('Datos borrados. Actualiza para descargar de nuevo el catálogo público.');
+              setEstadoAccion('');
+              setEstadoAvisos({ estado: 'disponible' });
+              setPrivacidad(false);
+              Alert.alert('Datos borrados', 'La instalación no volverá a identificarse hasta que uses seguimiento o avisos.');
+            } catch {
+              Alert.alert(
+                'No se borraron los datos',
+                'Supabase no confirmó el borrado. Se conservan la identidad y los datos locales para que puedas reintentarlo.'
+              );
+            } finally {
+              setBorrandoDatos(false);
+            }
+          },
+        },
+      ]
+    );
   };
 
   const abrir = (p) => { tacto.abrir(); setAbierta(p); };
@@ -133,6 +266,9 @@ export default function App() {
             ))}
           </View>
         </View>
+
+        {estadoDatos ? <Text style={e.estadoGlobal}>{estadoDatos}</Text> : null}
+        {estadoAccion ? <Text style={e.estadoPendiente}>{estadoAccion}</Text> : null}
 
         {pestana === 'radar' ? (
           <FlatList
@@ -179,10 +315,16 @@ export default function App() {
             }
             renderItem={({ item }) => (
               <Ficha p={item} sigue={sigo.includes(item.slug)}
-                onAbrir={() => abrir(item)} onSeguir={() => alternar(item)} />
+                onAbrir={() => abrir(item)} onSeguir={() => alternar(item)}
+                deshabilitado={procesandoSeguimiento} />
             )}
             ListEmptyComponent={<Text style={e.vacio}>{nadaQueVer}</Text>}
-            ListFooterComponent={<Descartadas fuera={fuera} />}
+            ListFooterComponent={
+              <View>
+                <Descartadas fuera={fuera} />
+                <PiePrivacidad onAbrir={() => setPrivacidad(true)} />
+              </View>
+            }
           />
         ) : (
           <FlatList
@@ -190,26 +332,39 @@ export default function App() {
             keyExtractor={(p) => p.slug}
             contentContainerStyle={e.lista}
             refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
-            ListHeaderComponent={<Avisos avisos={avisos} />}
+            ListHeaderComponent={
+              <View>
+                <PanelAvisos
+                  estado={estadoAvisos}
+                  tieneSeguimientos={sigo.length > 0}
+                  procesando={procesandoAvisos}
+                  onActivar={activarAvisos}
+                  onAjustes={abrirAjustes}
+                />
+                <Avisos avisos={avisos} />
+              </View>
+            }
             renderItem={({ item }) => (
-              <Ficha p={item} sigue onAbrir={() => abrir(item)} onSeguir={() => alternar(item)} />
+              <Ficha p={item} sigue onAbrir={() => abrir(item)} onSeguir={() => alternar(item)}
+                deshabilitado={procesandoSeguimiento} />
             )}
             ListEmptyComponent={
               <View style={e.vacioCaja}>
                 <Text style={e.vacioTitulo}>Todavía no sigues ninguna</Text>
                 <Text style={e.vacio}>
-                  Marca una plataforma en el radar y te avisamos si cambia de estado.
-                  RealT y Goldfinch se hundieron con gente dentro: enterarse el mismo
-                  día es la diferencia.
+                  Marca una plataforma en el radar para verla aquí. La app indicará por
+                  separado si los avisos push están disponibles y realmente operativos.
                 </Text>
               </View>
             }
+            ListFooterComponent={<PiePrivacidad onAbrir={() => setPrivacidad(true)} />}
           />
         )}
 
         <Detalle p={abierta} sigue={abierta && sigo.includes(abierta.slug)}
           onCerrar={() => { tacto.eleccion(); setAbierta(null); }}
-          onSeguir={() => abierta && alternar(abierta)} />
+          onSeguir={() => abierta && alternar(abierta)}
+          deshabilitado={procesandoSeguimiento} />
 
         <Modal visible={explicando} animationType="slide" onRequestClose={() => setExplicando(false)}>
           <SafeAreaProvider>
@@ -218,6 +373,9 @@ export default function App() {
             </SafeAreaView>
           </SafeAreaProvider>
         </Modal>
+
+        <Privacidad visible={privacidad} onCerrar={() => setPrivacidad(false)}
+          onBorrar={confirmarBorrado} borrando={borrandoDatos} />
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -232,7 +390,7 @@ function Chip({ texto, color, activo, onPress }) {
   );
 }
 
-function Ficha({ p, sigue, onAbrir, onSeguir }) {
+function Ficha({ p, sigue, onAbrir, onSeguir, deshabilitado }) {
   return (
     <View style={e.ficha}>
       <Pressable onPress={onAbrir} style={({ pressed }) => [e.fichaTop, pressed && e.pulsadoSuave]}>
@@ -249,7 +407,8 @@ function Ficha({ p, sigue, onAbrir, onSeguir }) {
         <Text style={[e.etiqueta, e.etiquetaAcento]}>{p.acceso}</Text>
         <Text style={e.etiqueta}>Entrada: {(p.ticket || '').toLowerCase()}</Text>
       </View>
-      <Pressable onPress={onSeguir} style={({ pressed }) => [e.seguir, sigue && e.seguirOn, pressed && e.pulsado]}>
+      <Pressable onPress={onSeguir} disabled={deshabilitado}
+        style={({ pressed }) => [e.seguir, sigue && e.seguirOn, deshabilitado && e.deshabilitado, pressed && e.pulsado]}>
         <Text style={[e.seguirTxt, sigue && e.seguirTxtOn]}>{sigue ? '✓ Siguiendo' : '+ Seguir'}</Text>
       </Pressable>
     </View>
@@ -268,6 +427,150 @@ function Avisos({ avisos }) {
         </View>
       ))}
     </View>
+  );
+}
+
+function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjustes }) {
+  let titulo = 'Avisos push';
+  let texto = '';
+  let accion = null;
+  let tono = e.panelAvisos;
+
+  switch (estado.estado) {
+    case 'comprobando':
+      texto = 'Comprobando el estado real de este dispositivo…';
+      break;
+    case 'configuracion-pendiente':
+      texto = 'Esta copia no tiene un projectId de EAS. Seguir una plataforma no implica que vayas a recibir avisos.';
+      tono = [e.panelAvisos, e.panelAvisosAtencion];
+      break;
+    case 'no-compatible':
+      texto = 'Los avisos remotos solo se pueden preparar en la app nativa.';
+      break;
+    case 'emulador':
+      texto = 'Para probar avisos hace falta un dispositivo compatible y una compilación de desarrollo.';
+      break;
+    case 'expo-go':
+      texto = 'Expo Go en Android no admite push remoto desde SDK 53. Usa una compilación de desarrollo; aquí no se solicitará permiso.';
+      break;
+    case 'disponible':
+      texto = tieneSeguimientos
+        ? 'Si continúas, el sistema pedirá permiso y RWAdar guardará un token de entrega asociado a esta instalación.'
+        : 'Primero sigue alguna plataforma. Después podrás decidir, con contexto, si quieres conceder permiso.';
+      if (tieneSeguimientos) accion = ['Continuar y pedir permiso', onActivar];
+      break;
+    case 'registro-pendiente':
+      texto = 'El permiso ya está concedido, pero este dispositivo aún no está registrado en RWAdar.';
+      if (tieneSeguimientos) accion = ['Completar preparación', onActivar];
+      break;
+    case 'preparado':
+      titulo = 'Dispositivo preparado';
+      texto = 'Permiso, token y registro remoto están correctos. El envío automático todavía no está activado, así que no prometemos avisos.';
+      tono = [e.panelAvisos, e.panelAvisosAtencion];
+      break;
+    case 'activo':
+      titulo = 'Avisos push activos';
+      texto = 'Permiso, token, registro remoto y servicio de envío figuran como operativos.';
+      tono = [e.panelAvisos, e.panelAvisosActivo];
+      break;
+    case 'denegado':
+      texto = 'El sistema no permite avisos. RWAdar no volverá a pedir permiso automáticamente.';
+      accion = ['Abrir ajustes', onAjustes];
+      break;
+    case 'error':
+    default:
+      texto = 'No se pudo comprobar o completar la preparación. No se ha registrado ningún éxito.';
+      if (tieneSeguimientos) accion = ['Reintentar', onActivar];
+      tono = [e.panelAvisos, e.panelAvisosAtencion];
+  }
+
+  return (
+    <View style={tono}>
+      <Text style={e.panelAvisosTitulo}>{titulo}</Text>
+      <Text style={e.panelAvisosTexto}>{texto}</Text>
+      {estado.estado === 'comprobando' || procesando ? (
+        <ActivityIndicator size="small" color={C.senal} style={{ marginTop: 10 }} />
+      ) : null}
+      {accion && !procesando ? (
+        <Pressable onPress={accion[1]} style={({ pressed }) => [e.panelAvisosBoton, pressed && e.pulsado]}>
+          <Text style={e.panelAvisosBotonTxt}>{accion[0]}</Text>
+        </Pressable>
+      ) : null}
+    </View>
+  );
+}
+
+function PiePrivacidad({ onAbrir }) {
+  return (
+    <Pressable onPress={onAbrir} style={({ pressed }) => [e.piePrivacidad, pressed && e.pulsadoSuave]}>
+      <Text style={e.piePrivacidadTxt}>Privacidad y datos de esta app</Text>
+    </Pressable>
+  );
+}
+
+function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
+  return (
+    <Modal visible={visible} animationType="slide" onRequestClose={onCerrar}>
+      <SafeAreaProvider>
+        <SafeAreaView style={e.pantalla} edges={['top', 'bottom']}>
+          <View style={e.detCab}>
+            <View style={{ flex: 1 }}>
+              <Text style={e.detNombre}>Privacidad</Text>
+              <Text style={e.fichaSub}>Qué trata la app móvil</Text>
+            </View>
+            <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]} hitSlop={10}>
+              <Text style={e.cerrarTxt}>✕</Text>
+            </Pressable>
+          </View>
+          <ScrollView contentContainerStyle={e.privacidadCuerpo}>
+            <Text style={e.privacidadTit}>Consulta sin cuenta</Text>
+            <Text style={e.privacidadParrafo}>
+              Puedes consultar el catálogo público y los descartes documentados sin crear una cuenta, dar tu nombre o facilitar tu correo.
+            </Text>
+
+            <Text style={e.privacidadTit}>Identificador y seguimiento</Text>
+            <Text style={e.privacidadParrafo}>
+              La app solo genera un UUID aleatorio cuando usas seguimiento o avisos. En iOS y Android se guarda cifrado mediante Keychain o Keystore. Al seguir una plataforma se envían a Supabase ese identificador, la plataforma elegida y el sistema operativo. Si no hay red, el cambio queda pendiente y no se presenta como sincronizado.
+            </Text>
+
+            <Text style={e.privacidadTit}>Avisos opcionales</Text>
+            <Text style={e.privacidadParrafo}>
+              La app no solicita permiso al abrirse. Solo lo hace después de que pulses el botón contextual. Si aceptas, se guarda en Supabase un token de entrega y la versión de la app. El panel distingue entre dispositivo preparado y servicio de envío realmente activo.
+            </Text>
+
+            <Text style={e.privacidadTit}>Datos locales y terceros</Text>
+            <Text style={e.privacidadParrafo}>
+              El catálogo, la fecha de sincronización y tu lista se guardan localmente para funcionar sin conexión. Supabase presta la base de datos y Expo presta los servicios de token push y actualización. RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación.
+            </Text>
+
+            <Text style={e.privacidadTit}>Retención automática</Text>
+            <Text style={e.privacidadParrafo}>
+              La fecha de última actividad se renueva al sincronizar seguimiento o registrar el token. La base elimina instalaciones y tokens sin actividad durante 180 días, además del borrado inmediato que puedes pedir aquí.
+            </Text>
+
+            <Text style={e.privacidadTit}>Control de borrado</Text>
+            <Text style={e.privacidadParrafo}>
+              Puedes eliminar esta instalación, su token push, sus seguimientos y todas las cachés locales. Primero se exige confirmación de Supabase; si falla, la app no finge que el borrado terminó.
+            </Text>
+
+            <Pressable onPress={() => abrirEnlace(URL_PRIVACIDAD)}
+              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}>
+              <Text style={e.botonBordeTxt}>Abrir política completa ↗</Text>
+            </Pressable>
+            <Pressable onPress={() => abrirEnlace('mailto:RWAdar@protonmail.com')}
+              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}>
+              <Text style={e.botonBordeTxt}>Contactar sobre mis datos</Text>
+            </Pressable>
+            <Pressable onPress={onBorrar} disabled={borrando}
+              style={({ pressed }) => [e.botonPeligro, borrando && e.deshabilitado, pressed && e.pulsado]}>
+              {borrando ? <ActivityIndicator size="small" color={C.tx} /> : (
+                <Text style={e.botonPeligroTxt}>Borrar datos de este dispositivo</Text>
+              )}
+            </Pressable>
+          </ScrollView>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </Modal>
   );
 }
 
@@ -292,7 +595,7 @@ function Descartadas({ fuera }) {
             <View style={e.fuentes}>
               <Text style={e.fuentesTitulo}>COMPROBADO EN</Text>
               {f.fuentes.map((s) => (
-                <Pressable key={s.url} onPress={() => { tacto.eleccion(); Linking.openURL(s.url); }}>
+                <Pressable key={s.url} onPress={() => { tacto.eleccion(); abrirEnlace(s.url); }}>
                   <Text style={e.fuente} numberOfLines={2}>{s.titulo} ↗</Text>
                 </Pressable>
               ))}
@@ -304,7 +607,7 @@ function Descartadas({ fuera }) {
   );
 }
 
-function Detalle({ p, sigue, onCerrar, onSeguir }) {
+function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
   if (!p) return null;
   return (
     <Modal visible animationType="slide" onRequestClose={onCerrar}>
@@ -338,13 +641,13 @@ function Detalle({ p, sigue, onCerrar, onSeguir }) {
                 </View>
               ))}
             </View>
-            <Pressable onPress={onSeguir}
-              style={({ pressed }) => [e.botonPrincipal, sigue && e.botonSecundario, pressed && e.pulsado]}>
+            <Pressable onPress={onSeguir} disabled={deshabilitado}
+              style={({ pressed }) => [e.botonPrincipal, sigue && e.botonSecundario, deshabilitado && e.deshabilitado, pressed && e.pulsado]}>
               <Text style={[e.botonTxt, sigue && { color: C.senal }]}>
-                {sigue ? '✓ Siguiendo esta plataforma' : 'Seguir y recibir avisos'}
+                {sigue ? '✓ Siguiendo esta plataforma' : 'Seguir esta plataforma'}
               </Text>
             </Pressable>
-            <Pressable onPress={() => { tacto.eleccion(); p.web && Linking.openURL(p.web); }}
+            <Pressable onPress={() => { tacto.eleccion(); p.web && abrirEnlace(p.web); }}
               style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}>
               <Text style={e.botonBordeTxt}>Abrir la web oficial ↗</Text>
             </Pressable>
@@ -367,6 +670,7 @@ const e = StyleSheet.create({
   /* Todo lo pulsable cede al pulsarlo, igual que en la web. */
   pulsado: { transform: [{ scale: 0.955 }], opacity: 0.92 },
   pulsadoSuave: { opacity: 0.68 },
+  deshabilitado: { opacity: 0.5 },
 
   /* La cabecera ya no es un bloque de color sobre papel: sobre fondo de
      noche lo que la separa es una línea y medio tono de superficie. */
@@ -382,6 +686,15 @@ const e = StyleSheet.create({
   pestanaOn: { backgroundColor: C.senal },
   pestanaTxt: { ...T.menor, fontFamily: F.semi, color: C.tx2 },
   pestanaTxtOn: { color: C.noche },
+
+  estadoGlobal: {
+    ...T.menor, color: '#F2B23C', backgroundColor: '#2B2416',
+    paddingHorizontal: 16, paddingVertical: 9,
+  },
+  estadoPendiente: {
+    ...T.menor, color: C.coral, backgroundColor: C.coral10,
+    paddingHorizontal: 16, paddingVertical: 9,
+  },
 
   lista: { padding: 16, paddingBottom: 40 },
 
@@ -454,6 +767,20 @@ const e = StyleSheet.create({
   avisoTitular: { ...T.cuerpoFte, fontFamily: F.negrita, color: C.coral },
   avisoDetalle: { ...T.menor, color: C.tx2, marginTop: 4 },
 
+  panelAvisos: {
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
+    borderRadius: R.ficha, padding: 15, marginBottom: 16, ...E.e1,
+  },
+  panelAvisosAtencion: { backgroundColor: '#241F14', borderColor: '#6F592B' },
+  panelAvisosActivo: { backgroundColor: C.senal10, borderColor: C.senal34 },
+  panelAvisosTitulo: { ...T.ficha, fontSize: 15, color: C.tx },
+  panelAvisosTexto: { ...T.menor, color: C.tx2, marginTop: 5 },
+  panelAvisosBoton: {
+    alignSelf: 'flex-start', backgroundColor: C.senal, borderRadius: R.pastilla,
+    paddingHorizontal: 14, paddingVertical: 9, marginTop: 12,
+  },
+  panelAvisosBotonTxt: { ...T.menor, fontFamily: F.semi, color: C.noche },
+
   fueraCaja: { marginTop: 28 },
   fueraTitulo: { ...T.seccion, color: C.tx, marginBottom: 6 },
   fueraSub: { ...T.menor, color: C.tx2, marginBottom: 14 },
@@ -471,6 +798,9 @@ const e = StyleSheet.create({
   fuentes: { marginTop: 11, paddingTop: 11, gap: 6, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea },
   fuentesTitulo: { ...T.etiqueta, fontSize: 9.5, color: C.tx2 },
   fuente: { ...T.menor, fontSize: 12, fontFamily: F.semi, color: C.senal },
+
+  piePrivacidad: { alignItems: 'center', paddingVertical: 22 },
+  piePrivacidadTxt: { ...T.menor, fontFamily: F.semi, color: C.senal, textDecorationLine: 'underline' },
 
   detCab: {
     flexDirection: 'row', alignItems: 'center', gap: 12, padding: 18,
@@ -510,4 +840,12 @@ const e = StyleSheet.create({
   },
   botonBordeTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
   nota: { ...T.menor, fontSize: 12, color: C.tx2, textAlign: 'center', marginTop: 16 },
+  privacidadCuerpo: { padding: 20, paddingBottom: 44 },
+  privacidadTit: { ...T.ficha, fontSize: 16, color: C.tx, marginTop: 18, marginBottom: 6 },
+  privacidadParrafo: { ...T.cuerpo, color: C.tx2 },
+  botonPeligro: {
+    backgroundColor: C.coral, borderRadius: R.pastilla, paddingVertical: 14,
+    alignItems: 'center', marginTop: 22,
+  },
+  botonPeligroTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
 });

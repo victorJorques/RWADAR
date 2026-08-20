@@ -30,6 +30,9 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
+      "rwadar": {
+        "pushDeliveryEnabled": false
+      },
       "eas": {
         "projectId": "43de8651-0c57-40fc-8cdb-c9a8c72e6835"
       }
@@ -41,10 +44,16 @@
           "color": "#25E39A"
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true
+        }
+      ]
     ],
     "runtimeVersion": {
-      "policy": "appVersion"
+      "policy": "fingerprint"
     },
     "updates": {
       "url": "https://u.expo.dev/43de8651-0c57-40fc-8cdb-c9a8c72e6835"

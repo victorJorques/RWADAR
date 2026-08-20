@@ -9,12 +9,28 @@
    la web — un GRANT que falta no se ve en el código y las pruebas
    locales pasan en verde igualmente.
 
-   Aquí se repiten, una por una, las consultas que hace `lib/datos.js` y
-   `lib/avisos.js`, con la misma clave y el mismo formato. Al terminar
-   borra la instalación de prueba que ha creado.
+   Por defecto solo repite las lecturas públicas. Las escrituras requieren
+   destino, clave, flag y confirmación explícitos; una limpieza `finally`
+   verifica que no quede instalación ni seguimiento.
    ===================================================================== */
-const URL_BASE = 'https://exgpmjpaaebyoolpwced.supabase.co';
-const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const URL_BASE = (process.env.RWADAR_MOVIL_SMOKE_URL || '').replace(/\/$/, '');
+const CLAVE = process.env.RWADAR_MOVIL_SMOKE_ANON_KEY || '';
+const MUTANTE = process.env.RWADAR_MOVIL_SMOKE_MUTANTE === 'SI';
+let referencia = '';
+try {
+  const objetivo = new URL(URL_BASE);
+  referencia = objetivo.hostname.split('.')[0];
+  if (objetivo.protocol !== 'https:'
+      || !/^[a-z0-9]{20}$/.test(referencia)
+      || objetivo.hostname !== `${referencia}.supabase.co`) throw new Error();
+} catch {
+  console.error('Define RWADAR_MOVIL_SMOKE_URL con un proyecto Supabase HTTPS explícito.');
+  process.exit(1);
+}
+if (!CLAVE) {
+  console.error('Falta RWADAR_MOVIL_SMOKE_ANON_KEY; no se usa ninguna clave predeterminada.');
+  process.exit(1);
+}
 const REST = URL_BASE + '/rest/v1';
 
 /* El identificador se genera con el mismo formato que `lib/supabase.js`.
@@ -74,12 +90,34 @@ const cambios = await pide('/cambios_estado?select=id,titular,detalle,ocurrido_e
 paso('los cambios de estado se pueden leer', cambios.ok,
   `${cambios.estado} ${JSON.stringify(cambios.cuerpo).slice(0, 120)}`);
 
+if (!MUTANTE) {
+  notas.push('Modo solo lectura: no se creó instalación ni seguimiento.');
+  console.log('');
+  ok.forEach((t) => console.log('  OK    ' + t));
+  fail.forEach((t) => console.log('  FALLA ' + t));
+  if (notas.length) notas.forEach((t) => console.log('  nota  ' + t));
+  console.log(`\n${ok.length} correctas, ${fail.length} fallidas\n`);
+  process.exit(fail.length ? 1 : 0);
+}
+
+const confirmacionEsperada = `PROBAR-MOVIL-MUTACIONES-${referencia}`;
+if (process.env.RWADAR_MOVIL_SMOKE_CONFIRMACION !== confirmacionEsperada) {
+  console.error(`Modo mutante bloqueado. Define RWADAR_MOVIL_SMOKE_CONFIRMACION=${confirmacionEsperada}`);
+  process.exit(2);
+}
+
+let mutacionesIniciadas = false;
+let limpiezaConfirmada = false;
+
+try {
+
 /* --- 4 · alternarSeguimiento(): lo que de verdad importa -------------- */
 /* Es la función que justifica que exista la app. Si esto falla, seguir
    una plataforma no llega al servidor y el aviso no se genera nunca. */
 /* `on_conflict` no es un adorno: sin él PostgREST hace un INSERT a secas
    y la segunda vez choca con la clave única en lugar de actualizar. La
    librería lo añade sola desde `upsert(..., { onConflict: 'instalacion' })`. */
+mutacionesIniciadas = true;
 const disp = await pide('/dispositivos?on_conflict=instalacion', {
   method: 'POST',
   headers: { Prefer: 'resolution=merge-duplicates' },
@@ -101,17 +139,9 @@ const dejar = await pide(`/seguimiento?instalacion=eq.${instalacion}&plataforma_
 paso('y se puede dejar de seguir', dejar.ok,
   `${dejar.estado} ${JSON.stringify(dejar.cuerpo).slice(0, 160)}`);
 
-/* --- 5 · registrarParaAvisos(): el token push ------------------------- */
-const token = await pide('/dispositivos?on_conflict=instalacion', {
-  method: 'POST',
-  headers: { Prefer: 'resolution=merge-duplicates' },
-  body: JSON.stringify({
-    instalacion, token_push: 'ExponentPushToken[prueba-automatica]',
-    sistema: 'android', version_app: '1.0.0',
-  }),
-});
-paso('la app puede guardar su token push', token.ok,
-  `${token.estado} ${JSON.stringify(token.cuerpo).slice(0, 160)}`);
+/* El registro de un token push exige un token real de Expo y una prueba E2E
+   separada. Este smoke nunca inventa uno: podría encolarse en un entorno
+   activado y convertir una prueba de permisos en una entrega real. */
 
 /* --- 6 · y que no pueda hacer lo que no debe -------------------------- */
 /* Un `select *` sin filtro: la política tiene que devolver la fila propia
@@ -123,11 +153,51 @@ const filas = Array.isArray(cotilla.cuerpo) ? cotilla.cuerpo : [];
 paso('un dispositivo solo se ve a sí mismo, nunca a los demás',
   cotilla.ok && filas.length === 1 && filas[0].instalacion === instalacion,
   `devuelve ${filas.length} fila(s): ${JSON.stringify(filas.map((f) => f.instalacion))}`);
-paso('y el token guardado es el suyo',
-  filas[0] && filas[0].token_push === 'ExponentPushToken[prueba-automatica]',
+paso('el smoke no guarda ningún token push ficticio',
+  filas[0] && filas[0].token_push === null,
   JSON.stringify(filas[0] || null).slice(0, 120));
 
-await pide(`/dispositivos?instalacion=eq.${instalacion}`, { method: 'DELETE' });
+} catch (error) {
+  fail.push('el smoke móvil mutante terminó sin completar su recorrido');
+  notas.push(`error inesperado → ${error instanceof Error ? error.message : String(error)}`);
+} finally {
+  if (mutacionesIniciadas) {
+    try {
+      await pide(`/seguimiento?instalacion=eq.${instalacion}`, { method: 'DELETE' });
+    } catch (error) {
+      notas.push(`limpieza de seguimiento → ${error instanceof Error ? error.message : String(error)}`);
+    }
+
+    for (let intento = 1; intento <= 2; intento += 1) {
+      try {
+        const borrado = await pide(`/dispositivos?instalacion=eq.${instalacion}`,
+          { method: 'DELETE' });
+        if (borrado.ok) break;
+      } catch (error) {
+        notas.push(`limpieza de dispositivo intento ${intento} → ${error instanceof Error ? error.message : String(error)}`);
+      }
+    }
+
+    try {
+      const quedaDispositivo = await pide(
+        `/dispositivos?instalacion=eq.${instalacion}&select=instalacion`,
+      );
+      const quedaSeguimiento = await pide(
+        `/seguimiento?instalacion=eq.${instalacion}&select=instalacion`,
+      );
+      limpiezaConfirmada = quedaDispositivo.ok && quedaSeguimiento.ok
+        && Array.isArray(quedaDispositivo.cuerpo)
+        && Array.isArray(quedaSeguimiento.cuerpo)
+        && quedaDispositivo.cuerpo.length === 0
+        && quedaSeguimiento.cuerpo.length === 0;
+    } catch (error) {
+      notas.push(`verificación de limpieza → ${error instanceof Error ? error.message : String(error)}`);
+    }
+  } else {
+    limpiezaConfirmada = true;
+  }
+  paso('la limpieza final no deja dispositivo ni seguimiento', limpiezaConfirmada);
+}
 
 /* --------------------------------------------------------------------- */
 console.log('');
@@ -135,4 +205,11 @@ ok.forEach((t) => console.log('  OK    ' + t));
 fail.forEach((t) => console.log('  FALLA ' + t));
 if (notas.length) { console.log(''); notas.forEach((t) => console.log('  nota  ' + t)); }
 console.log(`\n${ok.length} correctas, ${fail.length} fallidas\n`);
+if (mutacionesIniciadas && limpiezaConfirmada) {
+  console.log(`Limpieza móvil confirmada: ${instalacion}\n`);
+} else if (mutacionesIniciadas) {
+  console.log(`ALERTA: limpieza móvil NO confirmada: ${instalacion}\n`);
+} else {
+  console.log('No se creó ninguna instalación de prueba.\n');
+}
 process.exit(fail.length ? 1 : 0);

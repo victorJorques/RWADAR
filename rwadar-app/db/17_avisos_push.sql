@@ -14,11 +14,10 @@
 --
 -- POR QUÉ PUSH ANTES QUE CORREO
 --
--- El push no depende de nadie: la API de Expo no exige clave para un
--- proyecto normal, así que esto funciona **sin cuentas de terceros y sin
--- configurar nada**. El correo (16_reparacion.sql) necesita Brevo. Los
--- dos caminos conviven: al móvil por push, a quien solo usa la web por
--- correo.
+-- La API de Expo puede aceptar peticiones sin una clave adicional, pero eso
+-- no autoriza a activar entregas sin una validación E2E. Esta migración
+-- instala la capacidad con estado apagado; el cron solo se crea mediante el
+-- flujo opt-in separado y confirmado.
 --
 -- MISMA ARQUITECTURA DE DOS FASES QUE EL CORREO, Y POR EL MISMO MOTIVO
 --
@@ -33,6 +32,21 @@ begin;
 
 create extension if not exists pg_net;
 create extension if not exists pg_cron;
+
+-- Interruptor persistente y no expuesto. También protege frente a una llamada
+-- manual de propietario: sin opt-in no se encola ni se llama a Expo.
+create table if not exists push_configuracion (
+  singleton    boolean primary key default true check (singleton),
+  habilitado   boolean not null default false,
+  activado_el  timestamptz,
+  activado_por text
+);
+insert into push_configuracion(singleton, habilitado, activado_el, activado_por)
+values (true, false, null, null)
+on conflict (singleton) do update
+  set habilitado = false, activado_el = null, activado_por = null;
+alter table push_configuracion enable row level security;
+revoke all on table push_configuracion from public, anon, authenticated;
 
 -- ---------------------------------------------------------------------
 -- 1 · La cola, una fila por dispositivo y cambio
@@ -61,8 +75,11 @@ create index if not exists avisos_push_por_enviar
 -- 2 · Encolar solo: nadie tiene que acordarse de disparar el aviso
 -- ---------------------------------------------------------------------
 create or replace function encola_avisos_push() returns trigger
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = public, pg_temp as $$
 begin
+  if not coalesce((select habilitado from push_configuracion where singleton), false) then
+    return new;
+  end if;
   insert into avisos_push (cambio_id, instalacion, token)
   select new.id, d.instalacion, d.token_push
     from seguimiento s
@@ -88,9 +105,13 @@ create trigger cambios_encolan_push
 -- con los dedos de una mano al año: la simplicidad vale más que el
 -- ahorro de peticiones.
 create or replace function push_soltar(p_tanda int default 50)
-returns int language plpgsql security definer set search_path = public, net as $$
+returns int language plpgsql security definer set search_path = public, net, pg_temp as $$
 declare r record; v_id bigint; n int := 0;
 begin
+  if not coalesce((select habilitado from push_configuracion where singleton), false) then
+    raise exception using errcode = '55000',
+      message = 'push desactivado; requiere el flujo opt-in después de validar E2E';
+  end if;
   for r in
     select a.id, a.token, c.titular, c.detalle, c.plataforma_id, p.slug
       from avisos_push a
@@ -127,9 +148,13 @@ end $$;
 -- token está muerto —app desinstalada, permisos revocados— y hay que
 -- borrarlo o se reintentará eternamente contra un móvil que ya no está.
 create or replace function push_confirmar()
-returns int language plpgsql security definer set search_path = public, net as $$
+returns int language plpgsql security definer set search_path = public, net, pg_temp as $$
 declare r record; n int := 0; v_estado text; v_error text;
 begin
+  if not coalesce((select habilitado from push_configuracion where singleton), false) then
+    raise exception using errcode = '55000',
+      message = 'push desactivado; requiere el flujo opt-in después de validar E2E';
+  end if;
   for r in
     select a.id, a.instalacion, a.peticion_id, x.status_code, x.content, x.error_msg
       from avisos_push a
@@ -180,9 +205,13 @@ begin
 end $$;
 
 create or replace function push_ciclo() returns text
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = public, pg_temp as $$
 declare c int; s int;
 begin
+  if not coalesce((select habilitado from push_configuracion where singleton), false) then
+    raise exception using errcode = '55000',
+      message = 'push desactivado; requiere el flujo opt-in después de validar E2E';
+  end if;
   c := push_confirmar(); s := push_soltar();
   return format('confirmados %s, soltados %s', c, s);
 end $$;
@@ -196,11 +225,8 @@ revoke all on function push_ciclo()       from public, anon, authenticated;
 revoke all on table avisos_push from public, anon, authenticated;
 
 -- ---------------------------------------------------------------------
--- 5 · El reloj
+-- 5 · Instalación fail-closed: ningún reloj ni envío por defecto
 -- ---------------------------------------------------------------------
--- Cada dos minutos, no cada cinco como el correo: un push es inmediato
--- por definición y es la promesa que hace la ficha de la tienda.
 select cron.unschedule('rwadar-push') where exists (select 1 from cron.job where jobname = 'rwadar-push');
-select cron.schedule('rwadar-push', '*/2 * * * *', $$ select push_ciclo() $$);
 
 commit;

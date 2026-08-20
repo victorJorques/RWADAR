@@ -5,23 +5,28 @@
 > costaron tiempo una vez.
 >
 > **Este documento explica el POR QUÉ. Para el DÓNDE —en qué punto exacto
-> del `index.html` está cada cosa— está `RWADAR-MAPA.md`, y conviene leerlo
-> antes de abrir el archivo: son 246 kB en una sola pieza.**
+> de la web está cada cosa— está `RWADAR-MAPA.md`. El HTML, CSS y JavaScript
+> propios están ahora en archivos separados.**
+
+> **Vigencia:** reconciliado el 20 de agosto de 2026 sobre el traspaso del
+> 17–20 de agosto y el baseline `42018de`. `RWADAR-TRASPASO.md` manda para el
+> estado operativo. La web remediada y la migración 22 siguen locales; este
+> proyecto no está terminado.
 
 ## Índice · lee solo el tramo que necesites
 
-Entero cuesta ~6.000 tokens. Casi nunca hace falta. Cada fila da la marca
-que se busca con grep y el tramo aproximado, para leerlo con
-`Read offset/limit`.
+Entero cuesta varios miles de tokens. Casi nunca hace falta. Cada fila da una
+marca que se localiza con `rg`; abre solo el tramo necesario.
 
 > **Antes que nada: si el trabajo va de cuentas, opiniones, moderación o de
 > la base en línea, empieza por `RWADAR-MANANA.md`.** Producción no coincide
-> con el repositorio y ese documento tiene el contrato real, medido.
+> con el repositorio y ese documento separa explícitamente lo local de lo
+> desplegado.
 
 | Necesito | Marca de búsqueda | ~líneas |
 |---|---|---|
 | Qué es, direcciones y qué archivo es cada cosa | `## Qué es` | 71-123 |
-| **Estado y qué bloquea el avance** | `## Estado a 14` | 124-156 |
+| **Estado y qué bloquea el avance** | `## Estado a 20` | 124-190 |
 | Cómo cambiar contenido, publicar, probar | `## Cómo se trabaja` | 157-247 |
 | ↳ avisar a los buscadores (IndexNow) | `## Avisar a los buscadores` | ~215 |
 | ↳ volver atrás si algo sale mal | `## Volver atrás` | ~230 |
@@ -44,7 +49,8 @@ que se busca con grep y el tramo aproximado, para leerlo con
 | **Trampas que costaron tiempo** | `## Trampas que ya nos costaron` | 536-578 |
 | Qué hacer a continuación | `## Lo siguiente` | 579-596 |
 
-Última revisión: 8 de agosto de 2026.
+Última reconciliación de estado: 20 de agosto de 2026. El resto conserva
+decisiones de diseño históricas y debe leerse con esa fecha en mente.
 
 **Rediseño de agosto de 2026, publicado el día 8.** La web pasó de papel
 —fondo crema, tinta azul, verde menta— a instrumento: fondo de noche cálido,
@@ -76,9 +82,8 @@ Nada de eso tocó los datos ni el flujo de publicación.
 ## Qué es
 
 Un registro curado de plataformas de tokenización de activos reales (RWA).
-Analiza 38, publica las 26 que superan cuatro criterios de fiabilidad, y
-señala los descartes **solo cuando el motivo se puede respaldar con una
-fuente citable**.
+La producción actual publica 26 fichas y 4 descartadas. Un descarte solo se
+señala cuando el motivo se respalda con una fuente citable y vigente.
 
 Existe como **web pública** y como **app móvil**, ambas alimentadas por la
 misma base de datos.
@@ -95,8 +100,9 @@ misma base de datos.
 | Search Console | https://search.google.com/search-console (propiedad verificada) |
 
 ```
-Downloads/
-  rwadar-site/                  La web. Se sube tal cual: 10 archivos, ni uno más
+repositorio/
+  rwadar-site/                  Fuente web: HTML + assets CSS/JS + PWA
+  rwadar-publicado/             Artefacto generado; es lo que se despliega
   rwadar-app/                   Esquema de la base de datos y utilidades de datos
   rwadar-movil/                 App en React Native / Expo
   rwadar-arrancar.js            Diagnóstico de todo + servidor local. Empieza aquí
@@ -104,12 +110,12 @@ Downloads/
   rwadar-servir.js              Servidor local en :4173 (lo levanta el anterior)
   rwadar-banco-de-sonidos.html  Banco de pruebas de sonido, servido en /banco
   RWADAR-ESTADO.md              Este archivo: el porqué
-  RWADAR-MAPA.md                El dónde: en qué punto del HTML está cada cosa
+  RWADAR-MAPA.md                El dónde: qué archivo y símbolo contiene cada cosa
 ```
 
-Nada fuera de `rwadar-site/` se publica, y es a propósito: el servidor, el
-banco de sonidos y la documentación viven fuera para que no acaben en
-internet.
+Solo se despliega `rwadar-publicado/`, generado por el publicador desde
+`rwadar-site/`. El servidor, el banco de sonidos y la documentación quedan
+fuera del artefacto.
 
 ### Identificadores
 
@@ -120,66 +126,56 @@ Supabase URL   : https://exgpmjpaaebyoolpwced.supabase.co
 Clave pública  : sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F
 ```
 
-La clave pública va dentro de la web y de la app **a propósito**: es pública
-por diseño y no concede escritura. Comprobado contra el servidor: un INSERT
-con ella devuelve 401.
+La clave publicable va dentro de la web y de la app **a propósito**. Identifica
+el proyecto, no es una credencial administrativa. Su seguridad depende de RLS,
+los `GRANT` y las RPC: nunca uses su carácter público como prueba suficiente de
+que una operación esté protegida.
 
 ---
 
-## Estado a 14 de agosto de 2026
+## Estado a 20 de agosto de 2026
 
-| Fase | Estado |
+| Fase | Estado verificable |
 |---|---|
-| Web pública | **Terminada y en línea**, auditada de punta a punta |
-| Base de datos | **Terminada**: 26 + 4 fichas, 10 fuentes, 12 políticas |
-| Cuentas, opiniones y moderación | **En producción**, `20/0` contra la base real |
-| Rigor editorial | **Terminado**: cero descartes sin fuente |
-| Google | Verificado, sitemap leído, IndexNow avisado, **un enlace entrante** |
-| Repositorio público | github.com/victorJorques/RWADAR |
-| Web instalable (PWA) | **En línea**: la misma dirección se instala como app |
-| App móvil | **Terminada**: radar nativo, explicador 3D, logotipo, `10/0` de datos |
-| Reparto de avisos push | **Encendido en producción** |
-| Auto-actualización de la app | **Montada y probada** (EAS Update) |
-| Tiendas | **Bloqueado**: requiere cuentas de desarrollador |
-| Correos de aviso | Instalado; espera la clave de Brevo en el vault |
+| Web pública | En línea con 26 fichas, 4 descartadas y PWA |
+| Emisiones públicas | 0 en producción; sección no visible |
+| Web remediada local | 26/4/0; CSS/JS externos, CSP estricta, sin RUM y sin tokens en `localStorage`; **no desplegada** |
+| Diferencia pública conocida | La versión antigua aún usa `unsafe-inline`, política fechada 09-08 y service worker v1 |
+| Pruebas web locales | 121/121; QR 6/6 |
+| Base de producción | Contrato histórico 14–21; migración 22 **pendiente** |
+| Migración 22 | SQL, verificador y rollback validados localmente; DB 270 aserciones + 8 gates verdes |
+| Smokes remotos | Ambos solo lectura por defecto; mutación opt-in ligada al proyecto y limpieza verificable; contrato local 21/21 sin red |
+| Cuentas | Producción devuelve `mailer_autoconfirm=true`: no valida el correo y bloquea el despliegue remoto seguro |
+| Opiniones/moderación | Backend endurecido mediante RPC; probar el frontend que quede realmente desplegado |
+| Correo de avisos | **No operativo**; migración 13 separada |
+| Push | OFF: `pushDeliveryEnabled=false`; fresh/17/22 dejan flag backend `false` y 0 cron; opt-in no ejecutado |
+| Dependencias móviles | 46 paquetes afectados: 29 high, 17 moderate, 0 critical; 3 avisos fuente de toolchain sin fix compatible |
+| Indexación | No verificada en esta reconciliación; robots y sitemap responden, pero hay que confirmar en Search Console |
+| Tiendas móviles | Fuera del cierre de seguridad y privacidad actual |
 
-### Lo único que bloquea el avance
+### Bloqueos reales
 
-**Ya no bloquea llegar a la gente, solo llegar a las tiendas.** Desde el 15 de
-agosto de 2026 `rwadar.netlify.app` se instala como aplicación desde el propio
-navegador: icono en la pantalla de inicio, ventana sin barra, y el registro
-legible sin cobertura. Una dirección para la web y para la app. Las tiendas
-siguen pendientes de estas dos cuentas, pero ya no son el camino único.
+No hay un único bloqueo y el proyecto no debe llamarse terminado. Faltan, como
+mínimo:
 
-Dos cuentas que solo puede abrir una persona con identidad y medio de pago.
-La de Expo, que antes estaba en esta lista, ya existe (`trapis-team`), y con
-ella el `projectId` `43de8651-0c57-40fc-8cdb-c9a8c72e6835`.
+1. que Eric Almiñana, Samuel Rodriguez y Victor Jorques revisen y firmen el
+   acuerdo de corresponsabilidad y decidan los plazos propuestos de 12 meses y
+   3 años;
+2. aplicar y verificar la migración 22 en la base real;
+3. cerrar `data-deploy-blocker`, configurar Auth con
+   `mailer_autoconfirm=false` y probar una confirmación real de extremo a
+   extremo;
+4. desplegar la web remediada primero como preview y después, tras revisión,
+   en producción;
+5. verificar cuentas, opiniones, borrado, PWA, CSP, privacidad, canonical,
+   robots, sitemap e indexación desde fuera;
+6. diseñar y probar por separado el correo y el push antes de prometer avisos.
 
-1. **Google Play Console** (25 $, pago único) — el AAB está compilado y
-   firmado, esperando.
-2. **Apple Developer** (99 $/año) — y ojo: **el archivo de iOS no se puede
-   compilar en Windows**. Hace falta la compilación en la nube de EAS, que ya
-   está configurada.
+### Advertencia de método
 
-```bash
-cd rwadar-movil
-npx eas build --platform android --profile preview      # APK instalable, sin tienda
-npx eas build --platform android --profile production   # AAB para Google Play
-npx eas build --platform ios --profile production       # exige la cuenta de Apple
-npx eas submit --platform android
-```
-
-### Una advertencia sobre este documento
-
-**Producción se desvió del repositorio y este documento no lo sabía.** El 14 de
-agosto se descubrió que la base en línea prohíbe escribir opiniones
-directamente, tiene una columna que el esquema del repositorio no conoce y
-había perdido permisos de tabla — nada de eso se veía leyendo el código, y las
-pruebas locales pasaban en verde mientras la web estaba rota para todo el
-mundo.
-
-La lección, que vale para cualquiera que siga: **contra producción se mide, no
-se supone.** Está en `RWADAR-MANANA.md`, con el contrato real y los comandos.
+Las pruebas locales describen el repositorio, no Netlify ni la base real. La
+regla permanece: **producción se mide, no se supone**. `RWADAR-MANANA.md`
+contiene el contrato operativo y `RWADAR-TRASPASO.md` el orden de continuación.
 
 ---
 
@@ -188,7 +184,7 @@ se supone.** Está en `RWADAR-MANANA.md`, con el contrato real y los comandos.
 ### Cambiar contenido
 
 **La fuente de verdad es Supabase, no el HTML.** Se edita la tabla
-`plataformas` en el panel. Si editas los arrays de `index.html` a mano, la
+`plataformas` en el panel. Si editas los arrays del JavaScript externo a mano, la
 siguiente publicación los sobrescribe.
 
 Los visitantes ven el cambio **al momento**: la web consulta la base al
@@ -197,12 +193,21 @@ cargar y se actualiza sola si algo cambió desde la última publicación.
 ### Publicar la web
 
 ```bash
-node rwadar-publicar.js
+node rwadar-publicar.js --local        # verificar sin subir
+node rwadar-publicar.js --preview      # revisión deliberada
+node rwadar-publicar.js --produccion   # producción deliberada
 ```
 
-Hace tres cosas seguidas: trae el contenido de Supabase, escribe las fichas
-dentro del HTML para que Google las lea sin ejecutar JavaScript, y sube el
-sitio.
+Sincroniza datos, pre-renderiza y genera `rwadar-publicado/`. `--local` se
+detiene ahí; `--preview` y `--produccion` despliegan solo al destino pedido.
+Exactamente un modo es obligatorio y no hay fallback ni promoción automática.
+
+En el estado actual, `data-deploy-blocker` bloquea ambos modos remotos antes de
+Auth, sincronización o Netlify: solo `--local` puede construir. Tras cerrar el
+acuerdo y los plazos y retirar el marcador, el preflight remoto exige
+`mailer_autoconfirm=false` exacto en `/auth/v1/settings`; producción devuelve
+hoy `true`. Un error o campo ausente detienen la publicación. Superar esa
+comprobación no sustituye una prueba real del correo de confirmación.
 
 **Nunca uses `netlify deploy` a secas.** Sin el pre-renderizado la página
 queda vacía para el buscador, que es un problema que ya arreglamos una vez.
@@ -210,29 +215,45 @@ queda vacía para el buscador, que es un problema que ya arreglamos una vez.
 ### Probar la app
 
 ```bash
-cd rwadar-movil && npx expo start
+cd rwadar-movil && npx.cmd expo start
 ```
 Escanear el QR con **Expo Go**. Añadir `--web` para verla en el ordenador.
 
 ### Tocar el esquema de la base
 
-Requiere un token personal de Supabase (se genera en *Account → Access
-Tokens*, y conviene revocarlo al terminar):
+Requiere la autenticación normal del CLI, una referencia de proyecto explícita
+y una versión exacta revisada. No pases tokens por argumentos ni los escribas
+en disco:
 
-```bash
+```cmd
 cd rwadar-app
-instalar-base-de-datos.cmd sbp_...
+set RWADAR_SUPABASE_CLI_VERSION=2.79.0
+aplicar-sql.cmd exgpmjpaaebyoolpwced db\22_cierre_regresiones.sql
 ```
 
-Aplica `db/01_schema.sql` … `db/04_rls.sql` en orden. Son la instalación
-entera y la única fuente de verdad del esquema: no hay ningún fichero
-"todo en uno", porque el que había se quedó atrás sin que nadie lo notara.
+El instalador general de una base nueva incluye 01–12, 14–15 y 17–22, con
+verificadores. La migración 13 de correo está separada y no se aplica por
+defecto. En la base existente, aplica solo el fichero aprobado que falte.
+
+Para la producción existente no ejecutes 16, retratos recuperados ni
+migraciones históricas. La aplicación deliberada de 22 debe pasar verificadores
+14/15/22 y `fresh_install_verificar.sql` (26/4). Su rollback es solo de
+emergencia y requiere diagnóstico y copia previa.
+
+Aplicar la 22 **no enciende push**: deja `push_configuracion.habilitado=false`,
+0 cron `rwadar-push` y las funciones/trigger gated. Sí instala la retención
+diaria independiente de dispositivos a las 03:17 con monitor de ejecución. La
+22 minimiza además colas heredadas: token nulo, intentos terminales y sin
+petición pendiente. El
+único opt-in es `activar-push.cmd <REF>`, con PAT, aprobación E2E, confirmación
+ligada a la referencia y verificador propio; no se ejecutó y no debe ejecutarse
+antes de una prueba externa aprobada.
 
 Antes de tocar producción, las pruebas corren contra un Postgres real
 embebido, sin instalar nada:
 
 ```bash
-cd rwadar-app && npm install && node probar-db.mjs
+cd rwadar-app && npm.cmd test
 ```
 
 Y para que el fichero de instalación no se separe de la base real:
@@ -258,14 +279,15 @@ Un `202` es aceptado.
 
 ### Volver atrás si algo sale mal
 
-https://app.netlify.com/projects/rwadar → pestaña **Deploys** → abrir una
-versión anterior → *Publish deploy*. El sitio vuelve a como estaba sin tocar
-nada en el ordenador. No hay forma de romper la página de manera permanente.
+Conserva un artefacto conocido y sus hashes. Para restaurarlo, revísalo y
+publícalo deliberadamente con el mismo proceso de producción; no promociones
+un preview ni uses la interfaz de Netlify para saltarte las validaciones. La
+base tiene rollback específico para la 22, pero primero se hace copia.
 
 ### Si algún día se registra un dominio propio
 
-`rwadar.com` no está registrado: se comprobó y no resuelve. Por eso el sitio
-se identifica ante Google como `rwadar.netlify.app`.
+Mientras no exista un dominio propio aprobado, el sitio se identifica ante
+Google como `rwadar.netlify.app`.
 
 Al añadirlo en *Domain settings* hay que sustituir `https://rwadar.netlify.app`
 por el dominio nuevo en tres sitios —`index.html` (14 apariciones),
@@ -282,42 +304,35 @@ de 1.936. Es la diferencia entre indexar una página con contenido y una
 vacía.
 
 **La lista de descartadas tiene un listón alto.** Solo aparece una empresa
-señalada si el motivo se respalda con fuente citable. Se retiraron ocho que
-eran juicio de valor ("escala pequeña", "poca transparencia", "nicho").
-Entre ellas Kinesis, cuya crítica sobre auditorías es de 2021, procede de un
-blog enmarcado en una disputa por difamación y quedó desmentida por
-auditorías posteriores.
+señalada si el motivo se respalda con una fuente citable y vigente. Se retiraron
+motivos que eran juicios de valor (como «escala pequeña», «poca transparencia»
+o «nicho») o dependían de fuentes secundarias controvertidas.
 
 `select * from descartadas_sin_fuente` **debe devolver cero filas siempre.**
-Es lo primero que hay que mirar antes de enviar una versión a las tiendas:
-Apple y Google retiran de inmediato ante la reclamación de una empresa
-nombrada.
+Es una comprobación editorial y legal previa a cualquier publicación.
 
-**El mismo listón vale para lo que ENTRA, y por eso un estudio no es una
-fuente.** El 8 de agosto de 2026 entraron Archax y Republic a partir de un
-estudio externo del top 10 de plataformas RWA
-(`Documents/Codex/2026-08-08/ha/outputs/`). El estudio sirvió para saber a
-quién mirar —de sus diez, ocho ya estaban en el radar, lo que confirma que
-la selección aguanta—, pero **ni un dato suyo se publicó tal cual**:
+**Una inscripción no es un aval.** El
+[registro ERIR de la CNMV](https://www.cnmv.es/portal/consultas/esi/erir_esi?lang=es&nif=A86796182)
+recoge una emisión de REENTAL TOURIST HOMES, S.A.U. y varias de sociedades
+HAUSERA PROPERTY MANAGER SPV. Es evidencia oficial de esas inscripciones
+concretas. La propia CNMV aclara que no implica que haya validado las
+condiciones de la emisión ni la información del emisor. Por tanto no se
+describe a Reental, Hausera o una inversión como «avalada por la CNMV».
 
-- sus puntuaciones (Securitize 94, etc.) se citan a sí mismas: la fuente
-  que declaran es una tabla que el propio documento genera;
-- la fuente de casi cada plataforma es la web de esa plataforma, o sea
-  información autodeclarada, cosa que el propio estudio admite;
-- son 20 enlaces externos para 40 secciones.
+**El mismo listón vale para lo que entra, y por eso un estudio no basta como
+fuente.** Un estudio externo puede servir para decidir a quién investigar,
+pero sus puntuaciones o conclusiones no se publican sin contrastar cada dato
+contra la fuente primaria correspondiente y anotar la fecha.
 
-Los dos avales se comprobaron contra el regulador que los emite: Archax en
-el registro de la FCA (FRN 838656, permiso de MTF, registro de
-criptoactivos) y Republic en SEC y FINRA (OpenDeal Portal LLC como portal
-de financiación, OpenDeal Broker LLC como bróker-dealer). La nota de
-Republic dice lo que el usuario **no** compra —sus Mirror Tokens son
-pagarés de la propia Republic, no acciones de la empresa que replican— y
-eso es deliberado: un registro que presume de decir qué compras de verdad
-no puede callarse justamente ahí.
+Las comprobaciones regulatorias deben enlazar el registro oficial, indicar la
+entidad jurídica y describir solo el permiso o inscripción concreta. Nunca se
+llaman «avales» ni se trasladan automáticamente de una filial a una marca, un
+producto o una inversión. Las características económicas de un producto se
+verifican además en su documentación vigente.
 
-El SQL de esa alta está en `rwadar-app/db/06_archax_republic.sql`, es
-idempotente y se probó contra un Postgres embebido antes de tocar
-producción.
+Los cambios editoriales históricos de Archax y Republic están en
+`rwadar-app/db/06_archax_republic.sql`. Que el SQL sea reproducible no sustituye
+la revisión periódica de las fuentes regulatorias y de producto.
 
 **La retícula del explicador es uniforme.** Si las piezas fueran desiguales
 no serían participaciones y el dibujo contradiría al texto.
@@ -536,17 +551,18 @@ Una gota es un tono que sube muy rápido de altura y se apaga: medido, 76 ms
 subiendo de 567 a 1036 Hz. Esa subida rápida es lo que el oído reconoce como
 gota — es la resonancia de la cavidad al cerrarse.
 
-**Las tipografías van dentro del archivo, no se piden a Google.** Antes la
+**Las tipografías van dentro del CSS local, no se piden a Google.** Antes la
 página cargaba nueve ficheros estáticos desde `fonts.googleapis.com`: 138 kB,
 una petición bloqueante y, sobre todo, la IP de cada visitante viajando a un
 tercero — algo difícil de defender en un sitio dirigido a inversores
 españoles y contradictorio con el cuidado legal del resto del proyecto. Ahora
-van las dos **versiones variables** incrustadas en base64: 30 kB para todo el
+van las dos **versiones variables** incrustadas en base64 dentro de
+`assets/rwadar-20260820.css`: 30 kB para todo el
 rango de peso de ambas familias, cero terceros y sin salto de tipografía al
 cargar. De paso murió una falsa negrita: se usaba Geist Mono 700 sin haberla
 pedido nunca y el navegador la fabricaba estirando la 600.
 
-Cuesta 41 kB de HTML y los ahorra de red. Geist es de Vercel con licencia SIL
+Cuesta peso en el CSS y evita peticiones a terceros. Geist es de Vercel con licencia SIL
 Open Font 1.1, que permite incrustarla; conviene no perder esa nota si el
 proyecto cambia de manos.
 
@@ -555,10 +571,10 @@ restringida a interfaces de sus propias plataformas. Se usa Geist, libre y
 de la misma familia visual, con `system-ui` de respaldo: en un iPhone cae en
 San Francisco de forma legítima.
 
-**La app no puede ser la web envuelta.** Apple rechaza eso por su directriz
-4.2. Lo que la justifica como producto propio son los avisos cuando una
-plataforma cae del radar, el funcionamiento sin conexión y que seguir no
-exija registrarse.
+**La app no debe ser solo la web envuelta.** Su valor nativo está en el
+seguimiento, la caché sin conexión y una experiencia propia. Los avisos push
+son una capacidad preparada, no una entrega operativa: mientras
+`pushDeliveryEnabled=false` y no haya emisor/recibos E2E, no se prometen.
 
 **Pero el explicador 3D SÍ se reutiliza de la web, y es deliberado.** La app
 lo abre embebido, apuntando a la sección `#explain` de la página publicada.
@@ -579,17 +595,18 @@ radar de portada** (SVG, con las mismas cifras medidas) y **el logotipo**. La
 lista, el buscador, los filtros, la caché y el seguimiento siempre fueron
 nativos.
 
-**El explicador nativo no se borra**: es lo que se enseña sin conexión, y la
-app promete funcionar sin conexión.
+**El explicador nativo no se borra**: es el respaldo que se enseña sin
+conexión. La caché y ese fallback deben probarse antes de anunciar cobertura
+offline en una versión de tienda.
 
 ---
 
 ## Trampas que ya nos costaron tiempo
 
-**Netlify rechaza a veces la publicación directa** con un `Forbidden`
-mientras sigue aceptando borradores. `rwadar-publicar.js` lo detecta solo:
-sube como borrador y lo promueve. Si ves *"La publicacion directa fue
-rechazada"* seguido de *"Promovido a produccion"*, todo ha ido bien.
+**Netlify puede rechazar una publicación** con un `Forbidden`. El publicador
+termina con error y no crea ni promueve un borrador alternativo. Revisa permisos
+o créditos y vuelve a ejecutar el modo que querías; nunca cambies de modo para
+sortear un rechazo.
 
 **Las capturas de pantalla mienten con las animaciones.** Ni el modo sin
 ventana ni el panel de vista previa ejecutan fotogramas de forma fiable: el
@@ -627,20 +644,25 @@ los JSON.
 
 ---
 
-## Lo siguiente, por orden de rendimiento
+## Lo siguiente, por orden de riesgo
 
-1. **Abrir las tres cuentas** y publicar la app. Es lo único que separa el
-   proyecto de estar terminado.
-2. **El envío real de los avisos.** La base ya sabe a quién avisar (vista
-   `avisos_pendientes`, probada en producción). Falta el proceso que la lea
-   y llame a la API de Expo Push: una función programada de Supabase, media
-   hora, y tiene sentido cuando exista el `projectId`.
-3. **Conseguir un enlace entrante.** Search Console dice *"Página de
-   referencia: no se ha detectado ninguna"*. Sin un solo enlace, el sitio es
-   una isla y el sitemap es su único camino. Un enlace desde un sitio que
-   Google ya visita a diario vale más que cualquier ajuste.
-4. **Automatizar la publicación** conectando el proyecto a un repositorio de
-   GitHub, para que Netlify construya solo. Requiere cuenta de GitHub.
+1. Cerrar el acuerdo de corresponsabilidad de Eric Almiñana, Samuel Rodriguez
+   y Victor Jorques (`RWAdar@protonmail.com`) y decidir los plazos propuestos
+   de 12 meses y 3 años.
+2. Aplicar y verificar la migración 22 en producción con copia previa.
+3. Retirar `data-deploy-blocker` solo después del acuerdo y los plazos;
+   configurar y verificar `mailer_autoconfirm=false` y probar una confirmación
+   de alta real.
+4. Desplegar la web remediada primero con `--preview` y luego, tras revisión,
+   con `--produccion`.
+5. Verificar en red 26/4/0, CSP sin inline, privacidad actualizada, SW, RUM,
+   cuentas, opiniones, canonical, robots, sitemap e indexación.
+6. Mantener `pushDeliveryEnabled=false` y el correo de avisos no operativo hasta contar
+   con emisor, consentimiento, entrega y recibos E2E verificados.
+7. Resolver de forma compatible los tres avisos fuente del toolchain móvil; no
+   usar `npm audit --force`, que propone Expo 46 incompatible.
+8. Investigar distribución y enlaces solo después de cerrar seguridad,
+   privacidad y despliegue.
 
 **Nunca sembrar enlaces en foros y directorios.** Google lo llama *esquema
 de enlaces*, lo detecta y el castigo es que el sitio entero baje o

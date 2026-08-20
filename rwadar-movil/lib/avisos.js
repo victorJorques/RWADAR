@@ -1,23 +1,13 @@
 import { Platform } from 'react-native';
+import { isRunningInExpoGo } from 'expo';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import { cliente, idInstalacion } from './supabase';
+import { clienteDispositivo, idInstalacion, idInstalacionExistente } from './supabase';
 
-/* ---------------------------------------------------------------------
-   Avisos push
-   ---------------------------------------------------------------------
-   Es la función que justifica que exista la app y no solo la web: cuando
-   una plataforma que sigues cae del radar, te enteras el mismo día.
-
-   Dos límites de la SDK 57 que condicionan cómo está escrito:
-     · getExpoPushTokenAsync() exige un projectId de EAS. Mientras no
-       exista la cuenta de Expo, no hay token: el módulo lo detecta y se
-       calla en lugar de reventar.
-     · En Android los push remotos no funcionan en Expo Go desde la SDK 53.
-       Hace falta una compilación de desarrollo para probarlos.
-   --------------------------------------------------------------------- */
-
+/* Este módulo prepara permiso, token y registro. El panel no declara entrega
+   activa hasta que el proceso de envío exista y la bandera operativa esté
+   activada de forma explícita. */
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowBanner: true,
@@ -35,43 +25,127 @@ function proyectoEas() {
   );
 }
 
-export async function registrarParaAvisos() {
+function envioPushOperativo() {
+  return Constants?.expoConfig?.extra?.rwadar?.pushDeliveryEnabled === true;
+}
+
+function permisoConcedido(permiso) {
+  return permiso.granted ||
+    permiso.ios?.status === Notifications.IosAuthorizationStatus.PROVISIONAL;
+}
+
+function resultadoPreparado() {
+  const envioActivo = envioPushOperativo();
+  return {
+    ok: true,
+    estado: envioActivo ? 'activo' : 'preparado',
+    envioActivo,
+  };
+}
+
+/* Consulta pasiva: nunca abre el diálogo del sistema ni crea una identidad. */
+export async function consultarEstadoAvisos() {
   try {
-    if (!Device.isDevice) return { ok: false, motivo: 'emulador' };
-
-    const previo = await Notifications.getPermissionsAsync();
-    let concedido = previo.granted ||
-      previo.ios?.status === Notifications.IosAuthorizationStatus.PROVISIONAL;
-
-    if (!concedido) {
-      const pedido = await Notifications.requestPermissionsAsync();
-      concedido = pedido.granted ||
-        pedido.ios?.status === Notifications.IosAuthorizationStatus.PROVISIONAL;
+    if (Platform.OS === 'web') return { ok: false, estado: 'no-compatible' };
+    if (!Device.isDevice) return { ok: false, estado: 'emulador' };
+    if (Platform.OS === 'android' && isRunningInExpoGo()) {
+      return { ok: false, estado: 'expo-go' };
     }
-    if (!concedido) return { ok: false, motivo: 'permiso denegado' };
 
     const projectId = proyectoEas();
-    if (!projectId) {
-      /* Sin cuenta de EAS todavía. El resto de la app funciona igual. */
-      return { ok: false, motivo: 'falta projectId de EAS' };
+    if (!projectId) return { ok: false, estado: 'configuracion-pendiente' };
+
+    const permiso = await Notifications.getPermissionsAsync();
+    if (!permisoConcedido(permiso)) {
+      return {
+        ok: false,
+        estado: permiso.canAskAgain ? 'disponible' : 'denegado',
+      };
     }
 
-    const { data: token } = await Notifications.getExpoPushTokenAsync({ projectId });
+    const instalacion = await idInstalacionExistente();
+    if (!instalacion) return { ok: false, estado: 'disponible' };
+    const sb = await clienteDispositivo({ crear: false });
+    const { data: dispositivo } = await sb
+      .from('dispositivos')
+      .select('token_push')
+      .eq('instalacion', instalacion)
+      .maybeSingle()
+      .throwOnError();
 
-    const sb = await cliente();
+    if (!dispositivo?.token_push) {
+      return { ok: false, estado: 'registro-pendiente' };
+    }
+    return resultadoPreparado();
+  } catch (error) {
+    return {
+      ok: false,
+      estado: 'error',
+      motivo: error?.message || 'no se pudo comprobar el estado',
+    };
+  }
+}
+
+/* Solo debe llamarse tras una pulsación explícita en el panel de avisos. */
+export async function registrarParaAvisos({ solicitarPermiso = false } = {}) {
+  try {
+    if (Platform.OS === 'web') return { ok: false, estado: 'no-compatible' };
+    if (!Device.isDevice) return { ok: false, estado: 'emulador' };
+    if (Platform.OS === 'android' && isRunningInExpoGo()) {
+      return { ok: false, estado: 'expo-go' };
+    }
+
+    const projectId = proyectoEas();
+    if (!projectId) return { ok: false, estado: 'configuracion-pendiente' };
+
+    /* Android 13 no muestra el permiso ni entrega token hasta que existe al
+       menos un canal, según la documentación versionada de SDK 57. */
+    if (Platform.OS === 'android') {
+      await Notifications.setNotificationChannelAsync('cambios-estado', {
+        name: 'Cambios de estado',
+        importance: Notifications.AndroidImportance.HIGH,
+        vibrationPattern: [0, 180, 120, 180],
+        lightColor: '#25E39A',
+      });
+    }
+
+    let permiso = await Notifications.getPermissionsAsync();
+    if (!permisoConcedido(permiso)) {
+      if (!solicitarPermiso) {
+        return {
+          ok: false,
+          estado: permiso.canAskAgain ? 'disponible' : 'denegado',
+        };
+      }
+      if (!permiso.canAskAgain) return { ok: false, estado: 'denegado' };
+      permiso = await Notifications.requestPermissionsAsync();
+    }
+    if (!permisoConcedido(permiso)) return { ok: false, estado: 'denegado' };
+
+    const { data: token } = await Notifications.getExpoPushTokenAsync({ projectId });
+    if (!token) throw new Error('Expo no devolvió un token push');
+
+    const sb = await clienteDispositivo();
     const instalacion = await idInstalacion();
-    await sb.from('dispositivos').upsert(
-      {
+    await sb
+      .from('dispositivos')
+      .upsert({
         instalacion,
         token_push: token,
         sistema: ['ios', 'android', 'web'].includes(Platform.OS) ? Platform.OS : 'web',
         version_app: Constants?.expoConfig?.version || null,
-      },
-      { onConflict: 'instalacion' }
-    );
+        visto_el: new Date().toISOString(),
+      }, { onConflict: 'instalacion' })
+      .throwOnError();
 
-    return { ok: true, token };
-  } catch (err) {
-    return { ok: false, motivo: err?.message || 'error desconocido' };
+    /* El token no sale de esta función: es un identificador de entrega y no
+       debe acabar accidentalmente en logs, telemetría o mensajes. */
+    return resultadoPreparado();
+  } catch (error) {
+    return {
+      ok: false,
+      estado: 'error',
+      motivo: error?.message || 'no se pudo preparar el dispositivo',
+    };
   }
 }

@@ -17,6 +17,7 @@ const { execFile } = require('child_process');
 
 const DIR   = __dirname;
 const SITIO = path.join(DIR, 'rwadar-site');
+const PUBLICADO = path.join(DIR, 'rwadar-publicado');
 const HTML  = path.join(SITIO, 'index.html');
 const API   = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
 const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
@@ -35,29 +36,35 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
   const html = fs.readFileSync(HTML, 'utf8');
   const kb = (Buffer.byteLength(html, 'utf8') / 1024).toFixed(0);
 
+  let recursoJS = '';
   try {
-    const js = html.slice(html.lastIndexOf('<script>') + 8, html.lastIndexOf('</script>'));
+    const scripts = [...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
+    if (!scripts.length) throw new Error('index.html no declara el script propio externo');
+    recursoJS = scripts.at(-1)[1];
+    if (!recursoJS.startsWith('/assets/') || !recursoJS.endsWith('.js'))
+      throw new Error('el script de aplicación debe ser un .js versionado de /assets/');
+    const archivoJS = path.resolve(SITIO, '.' + recursoJS);
+    if (!archivoJS.startsWith(path.resolve(SITIO) + path.sep) || !fs.existsSync(archivoJS))
+      throw new Error('no se encuentra ' + recursoJS);
+    const js = fs.readFileSync(archivoJS, 'utf8');
     new Function(js);
-    ok(`el JavaScript compila  ${gris(`(index.html, ${kb} kB)`)}`);
+    const jsKb = (Buffer.byteLength(js, 'utf8') / 1024).toFixed(0);
+    ok(`el JavaScript compila  ${gris(`(${recursoJS}, ${jsKb} kB; HTML ${kb} kB)`)}`);
   } catch (e) {
-    mal('ERROR DE SINTAXIS en index.html: ' + e.message);
+    mal('ERROR DEL JAVASCRIPT PUBLICABLE: ' + e.message);
     console.log('\n  No publiques hasta arreglarlo.\n');
   }
 
-  const fichas = (html.match(/class="abrir"/g) || []).length - 1;
-  const fuera  = (html.match(/class="fila"/g)  || []).length - 1;
+  const fichas = (html.match(/class="abrir"/g) || []).length;
+  const fuera  = (html.match(/class="fila"/g)  || []).length;
   (fichas >= 1 && fuera >= 1 ? ok : mal)(
     `pre-renderizado: ${fichas} fichas y ${fuera} descartadas en el HTML`);
 
   const DEBIDOS = [
     'index.html','privacidad.html','og.png','rwadar.csv','sitemap.xml','robots.txt',
-    '404.html','_headers',
+    '404.html','_headers','_redirects','.well-known','assets',
+    'manifest.webmanifest','sw.js','icono-192.png','icono-512.png','icono-maskable-512.png',
     'google6b2e3e5f58b7e557.html','c9417d2d5003bb9a41fee63c7f5ec00f.txt',
-    /* Lo que hace que la dirección se pueda instalar como aplicación. Sin
-       el manifiesto no aparece "Instalar"; sin los iconos, el que la
-       instale se encuentra un cuadrado en blanco en la pantalla de inicio. */
-    'manifest.webmanifest','sw.js',
-    'icono-192.png','icono-512.png','icono-maskable-512.png',
   ];
   const hay = fs.readdirSync(SITIO);
   const sobran = hay.filter(f => !DEBIDOS.includes(f));
@@ -67,6 +74,17 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
       : faltan.length ? `faltan archivos en rwadar-site/: ${faltan.join(', ')}`
       : `la carpeta publicable tiene sus ${DEBIDOS.length} archivos, ni uno más`);
 
+  const seguridad = path.join(SITIO, '.well-known', 'security.txt');
+  (fs.existsSync(seguridad) ? ok : mal)(
+    fs.existsSync(seguridad)
+      ? 'security.txt está incluido en la carpeta publicable'
+      : 'falta .well-known/security.txt');
+
+  const privacidad = fs.readFileSync(path.join(SITIO, 'privacidad.html'), 'utf8');
+  if (/data-deploy-blocker=["']legal["']/.test(privacidad)) {
+    mal('la publicación productiva está bloqueada por decisiones legales pendientes');
+  }
+
   /* El CLI de Netlify deja un .netlify en el directorio desde el que se
      ejecuta, y ahí dentro apunta a una carpeta a publicar. Llegó a apuntar
      a Downloads entera —extractos del banco incluidos—, así que si vuelve
@@ -75,10 +93,10 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
   const toml = path.join(DIR, '.netlify', 'netlify.toml');
   if (fs.existsSync(toml)) {
     const destino = (fs.readFileSync(toml, 'utf8').match(/publish\s*=\s*"([^"]*)"/) || [])[1] || '';
-    const apuntaBien = destino.replace(/\\\\/g, '\\').toLowerCase().endsWith('rwadar-site');
+    const apuntaBien = destino.replace(/\\\\/g, '\\').toLowerCase().endsWith('rwadar-publicado');
     (apuntaBien ? ok : mal)(apuntaBien
-      ? '.netlify apunta a rwadar-site'
-      : `.netlify quiere publicar "${destino}", que NO es rwadar-site: bórralo`);
+      ? '.netlify apunta a rwadar-publicado'
+      : `.netlify quiere publicar "${destino}", que NO es rwadar-publicado: bórralo`);
   }
 
   /* ---- 2 · la base de datos ---- */
@@ -88,12 +106,13 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
     return r.json();
   };
   try {
-    const [radar, desc] = await Promise.all([
+    const [radar, desc, emisiones] = await Promise.all([
       pide('/radar_publico?select=nombre,verificada_el'),
       pide('/plataformas?estado=eq.descartada&select=nombre,fuentes(url)'),
+      pide('/emisiones_publicas?select=slug,estado'),
     ]);
     const sinFuente = desc.filter(d => !(d.fuentes || []).length);
-    ok(`Supabase responde: ${radar.length} en el radar, ${desc.length} descartadas`);
+    ok(`Supabase responde: ${radar.length} en el radar, ${desc.length} descartadas, ${emisiones.length} emisiones`);
     if (sinFuente.length) {
       mal(`${sinFuente.length} DESCARTADA(S) SIN FUENTE: ${sinFuente.map(d => d.nombre).join(', ')}`);
       console.log('        ' + rojo('No publicar. Es riesgo legal, no una preferencia.'));
@@ -110,32 +129,37 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
   try {
     const r = await fetch(VIVO, { cache: 'no-store' });
     const vivo = await r.text();
-    /* No se pueden comparar tamaños a pelo: Netlify inyecta al servir su
-       script de analítica (`netlify-rum-container`) después de nuestro
-       `</script>`, así que lo publicado siempre pesa ~500 caracteres más
-       aunque sea idéntico. Se compara el prefijo hasta el final de nuestro
-       código, que es lo único que controlamos.
-
-       Ojo si esto empieza a fallar sin motivo: Netlify también reescribe
-       el HTML por dentro. Con las URL limpias activadas convierte
-       href="/pagina.html" en href='/pagina' —comillas simples incluidas—
-       y entonces el prefijo deja de coincidir aunque el contenido sea el
-       mismo. La solución es enlazar ya sin `.html`, no relajar la
-       comprobación. Pasó al publicar la política de privacidad.
-
-       Y desde que se publica adelgazado, lo de arriba NO es lo que hay
-       que comparar: la fuente lleva sus 56 kB de comentarios y lo
-       publicado no. Así que se adelgaza aquí lo local con el MISMO
-       módulo que usa el publicador y se compara eso. Si algún día el
-       adelgazador cambiara, esta comprobación cambia con él sola. */
-    const { adelgazar } = require('./rwadar-adelgazar.js');
-    const local = adelgazar(html);
-    const nuestro = local.slice(0, local.lastIndexOf('</script>') + 9);
-    const igual = vivo.startsWith(nuestro);
+    const indexGenerado = path.join(PUBLICADO, 'index.html');
+    if (!fs.existsSync(indexGenerado))
+      throw new Error('falta rwadar-publicado; ejecuta primero el publicador en modo local');
+    const htmlPublicable = fs.readFileSync(indexGenerado, 'utf8');
+    const scriptsPublicados = [...htmlPublicable.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
+    if (!scriptsPublicados.length) throw new Error('el index generado no declara su JavaScript');
+    const recursoJSPublicado = scriptsPublicados.at(-1)[1];
+    if (!/^\/assets\/[a-z0-9._-]+\.[a-f0-9]{12}\.js$/i.test(recursoJSPublicado)) {
+      throw new Error('el JavaScript generado no tiene una huella de contenido válida');
+    }
+    /* RUM está desactivado y una inyección inesperada es un cambio de código,
+       no una cola tolerable. La comparación es contra el árbol adelgazado que
+       se despliega, no contra la fuente comentada. */
+    const tieneRum = /netlify-rum-container|data-netlify-rum/i.test(vivo);
+    (tieneRum ? mal : ok)('Netlify RUM no está inyectado');
+    const igual = !tieneRum && vivo === htmlPublicable;
     (igual ? ok : mal)(igual
       ? 'lo publicado coincide con lo local'
       : 'lo publicado NO coincide con lo local');
-    if (!igual) console.log(gris('        hay cambios sin publicar: node rwadar-publicar.js'));
+    if (!igual) console.log(gris('        hay cambios sin publicar: node rwadar-publicar.js --produccion'));
+
+    if (recursoJSPublicado) {
+      const archivoJS = path.resolve(PUBLICADO, '.' + recursoJSPublicado);
+      const remotoJS = await fetch(new URL(recursoJSPublicado, VIVO), { cache: 'no-store' });
+      const jsVivo = await remotoJS.text();
+      const jsLocal = fs.readFileSync(archivoJS, 'utf8');
+      (remotoJS.ok && jsVivo === jsLocal ? ok : mal)(
+        remotoJS.ok && jsVivo === jsLocal
+          ? 'el recurso JavaScript publicado coincide con el local'
+          : `el recurso JavaScript publicado NO coincide (HTTP ${remotoJS.status})`);
+    }
     (vivo.includes('google-site-verification') ? ok : mal)('la verificación de Google sigue en línea');
   } catch (e) {
     mal('no se pudo leer el sitio publicado: ' + e.message);
@@ -145,7 +169,7 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
   console.log(gris('─'.repeat(58)));
   console.log('  Dónde está cada cosa  ' + gris('→ RWADAR-MAPA.md'));
   console.log('  Por qué está así      ' + gris('→ RWADAR-ESTADO.md (tiene índice)'));
-  console.log('  Publicar              ' + gris('→ node rwadar-publicar.js'));
+  console.log('  Publicar              ' + gris('→ node rwadar-publicar.js --produccion'));
   console.log(gris('─'.repeat(58)) + '\n');
 
   execFile('node', [path.join(DIR, 'rwadar-servir.js')], { stdio: 'inherit' });

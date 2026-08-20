@@ -1,0 +1,57 @@
+/* ===================================================================
+   Sin tipografía descargada, igual que la 404: no compensa cargar
+   41 kB en una página que se lee una vez, y pedírselas a Google está
+   prohibido por la política de seguridad del sitio.
+   =================================================================== */
+:root{--noche:#0B0A0A;--noche-2:#100F0E;--sup:#171614;--linea:rgba(247,245,240,.09);
+ --senal:#25E39A;--senal-cl:#6BF0C0;--tx:#F7F5F0;--tx-2:#BBB5AB;--tx-3:#8A8378;
+ --display:'Geist',system-ui,-apple-system,'Segoe UI Variable Display','Segoe UI',sans-serif;
+ --mono:'Geist Mono',ui-monospace,'Cascadia Mono','Consolas',monospace}
+*{box-sizing:border-box;margin:0}
+body{background:var(--noche);color:var(--tx);font-family:var(--display);
+ line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--linea);background:var(--noche-2);padding:22px 0}
+.marca{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit}
+.wm{font-weight:800;font-size:1.3rem;letter-spacing:-.03em;line-height:1}
+.wm span{color:var(--senal)}
+main{padding:56px 0 72px}
+.volver{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+ text-transform:uppercase;color:var(--senal);text-decoration:none;margin-bottom:26px}
+.volver:hover{text-decoration:underline;text-underline-offset:3px}
+h1{font-weight:800;font-size:clamp(2rem,5vw,2.7rem);letter-spacing:-.04em;line-height:1.06;
+ margin-bottom:14px;text-wrap:balance}
+.fecha{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+ color:var(--tx-3);margin-bottom:34px}
+.resumen{background:var(--sup);border:1px solid var(--linea);border-left:3px solid var(--senal);
+ border-radius:12px;padding:20px 22px;margin-bottom:44px}
+.resumen p{color:var(--tx-2);font-size:.95rem;margin-bottom:9px;max-width:64ch}
+.resumen p:last-child{margin-bottom:0}
+.resumen b{color:var(--tx);font-weight:600}
+.pendiente{background:rgba(255,170,64,.08);border:1px solid rgba(255,170,64,.32);
+ border-radius:12px;padding:16px 18px;margin:0 0 30px;color:#FFD39B}
+.pendiente p{color:#E8C99F;margin:0;font-size:.9rem}
+.pendiente b{color:#FFE1B7}
+.codigo{font-family:var(--mono);font-size:.85em}
+.marca-icono{color:var(--senal)}
+h2{font-weight:700;font-size:1.28rem;letter-spacing:-.025em;margin:42px 0 14px;
+ padding-top:22px;border-top:1px solid var(--linea)}
+h2:first-of-type{border-top:0;padding-top:0}
+h3{font-weight:600;font-size:1rem;margin:24px 0 8px;color:var(--tx)}
+p,li{color:var(--tx-2);font-size:.95rem;max-width:66ch}
+p{margin-bottom:14px}
+ul{margin:0 0 16px;padding-left:20px}
+li{margin-bottom:9px}
+b,strong{color:var(--tx);font-weight:600}
+a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--senal-cl);outline-offset:3px;border-radius:3px}
+table{width:100%;border-collapse:collapse;margin:6px 0 20px;font-size:.9rem}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--linea);
+ vertical-align:top;color:var(--tx-2)}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+ color:var(--senal);font-weight:400}
+td:first-child{color:var(--tx);font-weight:600;white-space:nowrap}
+.tabla-caja{overflow-x:auto;-webkit-overflow-scrolling:touch}
+footer{border-top:1px solid var(--linea);background:var(--noche-2);padding:30px 0;
+ color:var(--tx-3);font-size:.82rem}
+footer a{color:var(--senal)}

@@ -26,7 +26,8 @@ await db.exec(`create schema auth;
   create function auth.uid() returns uuid language sql stable security definer
     as $$ select uid from _sesion limit 1 $$;`);
 
-for (const f of ['01_schema.sql', '02_seed.sql', '03_app.sql', '04_rls.sql', '07_cuentas.sql'])
+for (const f of ['01_schema.sql', '02_seed.sql', '03_app.sql', '04_rls.sql',
+                 '06_archax_republic.sql', '07_cuentas.sql'])
   await db.exec(fs.readFileSync('db/' + f, 'utf8'));
 console.log('El esquema entero se aplica sin error.\n');
 
@@ -97,12 +98,12 @@ paso('borrar la cuenta no deja perfil, ni vigilancia, ni avisos',
 
 /* --- el registro público, tras los dos descartes que hace la prueba -
    La prueba tira a Lofty y a Midas del radar para disparar los avisos,
-   así que aquí NO deben quedar 24: deben quedar 22. Y las dos que ha
+   así que aquí NO deben quedar 26: deben quedar 24. Y las dos que ha
    descartado van sin fuente a propósito, porque lo que se comprueba es
    que el guardián editorial las caza. Si esto diera cero, sería que el
    invariante no vigila nada. */
-paso('el radar baja a 22 tras los dos descartes de la prueba',
-  (await n('select count(*)::int c from radar_publico'))[0].c === 22);
+paso('el radar baja a 24 tras los dos descartes de la prueba',
+  (await n('select count(*)::int c from radar_publico'))[0].c === 24);
 paso('el guardián detecta las 2 descartadas sin fuente que crea la prueba',
   (await n('select count(*)::int c from descartadas_sin_fuente'))[0].c === 2);
 paso('las 4 descartadas reales conservan sus 10 fuentes',

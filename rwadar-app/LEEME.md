@@ -1,115 +1,180 @@
-# RWAdar · la base de datos
+# RWAdar · backend y base de datos
 
-Todo el contenido del proyecto vive aquí. La web y la app móvil no son más
-que dos formas de leer esta base: **si un dato está mal, se corrige en
-Supabase, nunca en el HTML ni en la app.**
+Esta carpeta contiene el esquema reproducible, los instaladores y las pruebas
+locales. El contrato fresh-install actual termina en la migración 22 y debe
+producir exactamente **26 plataformas en radar, 4 descartadas y ninguna
+descartada sin fuente**.
 
-Panel: https://supabase.com/dashboard/project/exgpmjpaaebyoolpwced
+## Cadena vigente
 
-```
-db/01_schema.sql   Catálogo, plataformas, fuentes y las reglas editoriales
-db/02_seed.sql     El contenido. Se genera desde producción, no se edita
-db/03_app.sql      Historial, dispositivos y seguimiento (avisos push)
-db/04_rls.sql      Seguridad por fila
-db/06_archax...    Alta de Archax y Republic (8 ago 2026) · ya aplicado
-db/07_cuentas.sql  Cuentas, lista de vigilancia y avisos por correo · SIN APLICAR
-probar-db.mjs      19 comprobaciones del registro
-probar-cuentas.mjs 17 comprobaciones de las cuentas
-volcar-seed.js     Regenera 02_seed.sql desde la base en producción
-sincronizar.js     Vuelca el contenido en index.html y genera rwadar.csv
-instalar-base-de-datos.cmd   Instala los cuatro primeros en un proyecto nuevo
-aplicar-sql.cmd    Aplica UN fichero suelto (para migraciones posteriores)
+El instalador nuevo ejecuta, en este orden:
+
+```text
+01, 02, 03, 04,
+06, 07, 08, 09, 10, 11, 12,
+14_seguridad_integral, 15_acl_funciones,
+17_avisos_push (capacidad instalada, envío apagado),
+18, 19, 20, 21 (emisiones),
+22_cierre_regresiones
 ```
 
-**No apliques migraciones desde el editor SQL del panel.** Con ficheros de
-varios kB parte el pegado por la mitad y deja la migración a medias: pasó
-con `07_cuentas.sql`. Para eso está `aplicar-sql.cmd`, que va entero o no va.
+Después ejecuta cuatro verificadores SQL de solo lectura: 14, 15, 22 y el
+contrato fresh-install 26/4. Una excepción en cualquiera significa que la
+instalación no está aprobada.
 
-Los cuatro `db/*.sql` **son la instalación entera y la única fuente de verdad
-del esquema.** Hubo un `supabase_completo.sql` que los juntaba en uno; se
-quedó atrás sin que nadie lo notara y se ha retirado. Si vuelve a hacer falta
-un fichero único, que lo genere un script, no una copia a mano.
+Estos ficheros **no pertenecen a la cadena automática**:
 
-## Lo que hay que saber antes de tocar nada
+- `13_envio_avisos.sql`: activa correo, `pg_net` y `pg_cron`; solo mediante
+  `aplicar-envio-avisos.cmd`, después de configurar Vault/Brevo y privacidad.
+- `16_reparacion.sql`: histórico; reabrió permisos que exponen `usuario_id` y
+  escritura directa. No se aplica. La migración 22 conserva su parte útil y
+  cierra la regresión.
+- `14-15_recuperado.sql`: retrato de producción, expresamente no replayable.
+- `RECUPERAR-14-15.sql`: consulta de diagnóstico, no una migración.
+- `activar_push.sql`: opt-in posterior a una prueba E2E; solo se ejecuta con
+  `activar-push.cmd`. Fresh-install y 22 nunca lo llaman.
 
-**Las reglas editoriales viven en la base, no en la aplicación.** Una ficha
-sin licencia, sin acceso o con una web en `http://` la rechaza Postgres al
-escribirla. Un motivo de descarte de menos de 40 caracteres, también. No
-depende de que nadie valide bien: es que el dato incoherente no cabe.
+## Seguridad que no se puede relajar
 
-**Ninguna descartada sin fuente. Nunca.**
+- `anon` nunca puede leer `opiniones.usuario_id`.
+- El cliente no hace `INSERT/UPDATE/DELETE` directo en opiniones o denuncias;
+  usa RPC autenticadas que derivan la identidad con `auth.uid()`.
+- Solo `service_role` puede ejecutar `establecer_admin`.
+- Las funciones auxiliares/trigger no conservan `EXECUTE` para
+  `PUBLIC`, `anon` ni `authenticated`.
+- Todas las vistas expuestas son `security_invoker`.
+- `x-instalacion` es una credencial bearer aleatoria (`inst_` + UUID), no un
+  dato para publicar. RLS solo acepta ese formato y los grants de dispositivo
+  enumeran las columnas que la app puede insertar/actualizar; `user_id` y las
+  fechas de retención quedan fuera.
+- La cola push tiene RLS y ningún permiso cliente. Un ticket aceptado por
+  Expo no se confunde con una entrega: a los 15 minutos se consulta su recibo
+  y solo un recibo positivo marca `enviado_el`. La ventana máxima es 24 horas.
+  El token copiado se borra al finalizar y el rastro final caduca a los 30
+  días. Fresh-install, 17, 22, rollback y recuperación dejan
+  `push_configuracion.habilitado=false`, no crean el cron `rwadar-push` y las
+  propias funciones rechazan llamadas mientras el interruptor esté apagado.
+- La retención de dispositivos no depende del tráfico ni del push. El cron
+  independiente `rwadar-retencion-dispositivos` ejecuta cada día a las 03:17
+  una limpieza acotada de filas con más de 180 días. La tabla no expuesta
+  `retencion_dispositivos_estado` registra la última ejecución, filas borradas,
+  acumulado y si quedó atraso; `cron.job_run_details` conserva los fallos del
+  trabajo. La FK elimina los seguimientos asociados en cascada.
+- Solo existe `moderar(opinion_id, accion, motivo)`. La firma antigua basada
+  en `(usuario_id, plataforma_id)` está eliminada.
+
+`db/22_cierre_regresiones_verificar.sql` comprueba estos puntos de forma
+fail-closed. `db/22_cierre_regresiones_rollback.sql` es un interruptor de
+emergencia: no vuelve al estado vulnerable; desactiva mutaciones y detiene el
+reloj push conservando datos y catálogo. Reaplicar 22 recupera la API, pero no
+reactiva push.
+
+Si un instalador falla después de enlazar el proyecto ejecuta automáticamente
+`db/fallo_cerrado.sql`. Ese cierre universal no borra datos: revoca todo acceso
+de `anon`/`authenticated` a la API `public`, activa RLS y detiene los relojes
+de salida de correo/push. La retención diaria permanece activa porque minimiza
+datos y no realiza red. La aplicación quedará deliberadamente indisponible hasta que se repare
+y se vuelvan a superar los verificadores. Si también fallase el cierre, el
+mensaje `ALERTA` obliga a aislar el proyecto manualmente.
+
+## Pruebas locales
+
+No necesitan Supabase ni Docker. Usan PostgreSQL embebido y dobles locales de
+`pg_net`, `pg_cron` y Vault; no realizan llamadas de red.
+
+```bat
+npm install
+npm test
+```
+
+La suite general incluye el fresh-install completo, seguridad/RLS/ACL,
+opiniones, moderación, push, emisiones, instaladores, verificadores y la
+reproducción explícita de la regresión 16 seguida de la reparación 22. También
+incluye una revisión estática que impide que el smoke remoto recupere el
+fallback de escritura directa o la firma antigua de moderación.
+
+`probar-produccion.mjs` no forma parte de `npm test` y no contiene proyecto ni
+clave predeterminados. Con `RWADAR_SMOKE_URL` y `RWADAR_SMOKE_ANON_KEY`, su
+modo predeterminado solo lee el radar y sus fuentes. Crear la cuenta efímera y
+probar mutaciones exige además `RWADAR_SMOKE_MUTANTE=SI` y
+`RWADAR_SMOKE_CONFIRMACION=PROBAR-MUTACIONES-REFERENCIA`. Ese modo exige la RPC
+nueva, comprueba que `INSERT/UPDATE/DELETE` directos fallen y que la firma vieja
+de `moderar` no exista. Su bloque `finally` reintenta `borrar_mi_cuenta` y solo
+declara la limpieza confirmada si además el login queda revocado y desaparece
+el contenido público; cualquier duda muestra la dirección residual y falla.
+Nunca debe ejecutarse sin autorización explícita.
+
+`probar-app-movil.mjs` sigue el mismo patrón con
+`RWADAR_MOVIL_SMOKE_URL`/`RWADAR_MOVIL_SMOKE_ANON_KEY`: por defecto solo lee.
+El modo de escritura exige `RWADAR_MOVIL_SMOKE_MUTANTE=SI` y
+`RWADAR_MOVIL_SMOKE_CONFIRMACION=PROBAR-MOVIL-MUTACIONES-REFERENCIA`. Un
+`finally` borra y comprueba la ausencia de dispositivo y seguimiento incluso
+si una petición intermedia falla. No guarda tokens Expo ficticios: esa ruta
+solo se valida en un E2E push real y separado. Las pruebas locales inyectan
+fallos después de cada alta para demostrar ambos cierres sin usar red.
+
+## Instalar un proyecto nuevo
+
+Los instaladores nunca aceptan el token como argumento, nunca usan un proyecto
+por defecto y nunca descargan `supabase@latest`. Antes de usarlos:
+
+1. Configura una sesión del CLI o `SUPABASE_ACCESS_TOKEN` en un entorno seguro.
+2. Define `RWADAR_SUPABASE_CLI_VERSION` con un SemVer exacto ya validado,
+   **2.79.0 o posterior** (`db query` no existe en versiones anteriores). El
+   script también comprueba el subcomando antes de enlazar el proyecto.
+3. Pasa explícitamente la referencia de 20 caracteres y escribe la frase de
+   confirmación que muestra el script.
+
+```bat
+instalar-base-de-datos.cmd REFERENCIA_DEL_PROYECTO
+```
+
+El correo sigue apagado. Para activarlo deliberadamente:
+
+```bat
+aplicar-envio-avisos.cmd REFERENCIA_DEL_PROYECTO
+```
+
+Push también queda apagado y sin cron. Solo después de completar y documentar
+una prueba E2E real se permite configurar, en un entorno seguro,
+`SUPABASE_ACCESS_TOKEN`, `RWADAR_PUSH_E2E_APROBADO=SI` y la versión CLI exacta,
+y ejecutar:
+
+```bat
+activar-push.cmd REFERENCIA_DEL_PROYECTO
+```
+
+El script exige la frase `ACTIVAR-PUSH-E2E-REFERENCIA`, valida primero el
+estado apagado de 22, aplica únicamente el opt-in y ejecuta
+`activar_push_verificar.sql`. Si algo falla tras enlazar, ejecuta
+`push_fallo_cerrado.sql`: apaga solo push, minimiza tokens pendientes y no
+corta la API ni el reloj de retención.
+
+## Actualizar un proyecto existente
+
+`aplicar-sql.cmd` aplica **solo la migración 22 aprobada**, nunca un histórico,
+un rango o un glob. Los históricos 01-21 se reproducen únicamente en orden
+mediante el fresh-install (13 mantiene su flujo separado). Para cerrar en un
+proyecto que ya tiene 14-21:
+
+```bat
+aplicar-sql.cmd REFERENCIA_DEL_PROYECTO db\22_cierre_regresiones.sql
+```
+
+No se debe anunciar el cierre hasta que el propio comando haya superado los
+verificadores 14, 15, 22 y la paridad 26/4. Aplicar 22 cambia producción y no
+se hace desde las pruebas locales de este repositorio. El resultado deliberado
+de aplicar 22 es API reparada, retención diaria activa y push apagado/sin cron.
+
+## Contenido y sincronización
+
+`02_seed.sql` contiene el bloque inicial; `06_archax_republic.sql` completa la
+paridad 26/4. `volcar-seed.js` regenera el seed desde una base autorizada y
+`sincronizar.js` genera los datos consumidos por la web. Una descartada sin
+fuente bloquea la verificación:
 
 ```sql
 select * from descartadas_sin_fuente;
 ```
 
-Debe devolver **cero filas siempre**. Hoy las devuelve: 4 descartadas con 10
-fuentes. Señalar por su nombre a una empresa sin poder demostrarlo es el
-único riesgo legal serio del proyecto, y Apple y Google retiran una app de
-inmediato ante la reclamación de una empresa nombrada.
-
-Es lo primero que comprueba `node rwadar-arrancar.js`, y también lo primero
-que hay que mirar antes de enviar una versión a revisión.
-
-**El historial se escribe solo.** Mover una plataforma al descarte dispara un
-registro en `cambios_estado` mediante un *trigger*. Es imposible degradar una
-plataforma sin dejar rastro, y ese rastro es lo que alimenta los avisos push.
-
-**Seguir plataformas no exige registrarse.** El dispositivo se identifica con
-un código anónimo de instalación: menos abandono en la primera pantalla y
-ningún dato personal almacenado, que en una app financiera es una ventaja
-legal además de una de producto.
-
-**La clave publicable no puede escribir.** Va dentro de la web y de la app, o
-sea que es pública por definición; comprobado contra el servidor: un INSERT
-con ella devuelve 401. El catálogo solo se modifica desde el panel o con un
-token personal.
-
-## Operaciones
-
-Las pruebas no necesitan Supabase ni Docker: levantan un Postgres embebido,
-aplican los cuatro ficheros y comprueban 19 reglas, del recuento de fichas a
-que un cambio de estado genere el aviso correcto a quien seguía esa ficha.
-
-```bash
-npm install        # solo la primera vez
-node probar-db.mjs
-```
-
-Cuando cambie el contenido en producción, para que el fichero de instalación
-no se separe de la base real:
-
-```bash
-node volcar-seed.js
-```
-
-Instalar el esquema en un proyecto de Supabase nuevo (hace falta un token
-personal de *Account → Access Tokens*, y conviene revocarlo al terminar):
-
-```bash
-instalar-base-de-datos.cmd sbp_xxxxxxxx
-```
-
-`sincronizar.js` no se ejecuta a mano: lo llama `rwadar-publicar.js` como
-primer paso de cada publicación.
-
-## Historia que explica el estado actual
-
-La lista de descartadas empezó con **12 nombres y ninguna fuente**. Se
-retiraron ocho porque el motivo era juicio de valor —"escala pequeña", "poca
-transparencia", "nicho"—, entre ellas Kinesis, cuya crítica sobre auditorías
-es de 2021, procede de un blog enmarcado en una disputa por difamación y
-quedó desmentida por auditorías posteriores. De las cuatro que quedaron se
-corrigieron errores de hecho: RealT no estaba en liquidación en abril sino
-desde julio, y lo pendiente en Goldfinch no eran 18 M$ sino más de 50 M$.
-
-Esa depuración era una migración aparte (`05_descartadas_verificadas.sql`).
-Ya está absorbida en `02_seed.sql`, que se regenera desde producción, así que
-el fichero se ha retirado: aplicado sobre una instalación nueva habría
-duplicado fuentes.
-
-## Pendiente
-
-En *Storage → Buckets* quedó un bucket **vacío** llamado `setup-temporal` de
-un intento fallido. No contiene ni expone nada, pero conviene borrarlo desde
-el panel: el CLI borra objetos, no el bucket.
+Debe devolver cero filas siempre.

@@ -12,7 +12,13 @@
 /*
 
 !/.gitignore
+!/.gitattributes
+!/.github/
 !/README.md
+!/package.json
+!/probar-web.mjs
+!/PLAN-GIT-Y-RESPALDOS.md
+!/SECURITY.md
 
 # El sitio publicable y las herramientas que lo construyen
 !/rwadar-site/
@@ -20,6 +26,7 @@
 !/rwadar-movil/
 !/rwadar-arrancar.js
 !/rwadar-publicar.js
+!/rwadar-publicacion-segura.js
 !/rwadar-adelgazar.js
 !/rwadar-servir.js
 !/rwadar-banco-de-sonidos.html
@@ -42,4 +49,30 @@ web-build/
 *.log
 *.apk
 *.aab
-supabase/.temp/
+**/supabase/.temp/
+
+# Secretos y credenciales: las carpetas anteriores están readmitidas, así
+# que estas exclusiones deben seguir aplicándose dentro de cualquiera de ellas.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist
+service-role*.json
+credentials*.json
+.claude/
+coverage/
+.cache/
+*.tmp
+*.local
+captura*.png
+x.png
+.DS_Store
+Thumbs.db

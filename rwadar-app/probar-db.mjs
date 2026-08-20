@@ -17,9 +17,10 @@ await db.exec(fs.readFileSync('db/01_schema.sql','utf8'));
 await db.exec(fs.readFileSync('db/02_seed.sql','utf8'));
 await db.exec(fs.readFileSync('db/03_app.sql','utf8'));
 await db.exec(fs.readFileSync('db/04_rls.sql','utf8'));
-console.log('Los cuatro ficheros se aplican sin error.\n');
+await db.exec(fs.readFileSync('db/06_archax_republic.sql','utf8'));
+console.log('El núcleo 01-06 se aplica sin error.\n');
 
-paso('24 en el radar',(await n("select count(*)::int c from plataformas where estado='en_radar'"))[0].c===24);
+paso('26 en el radar',(await n("select count(*)::int c from plataformas where estado='en_radar'"))[0].c===26);
 paso('4 descartadas',(await n("select count(*)::int c from plataformas where estado='descartada'"))[0].c===4);
 paso('10 fuentes documentales',(await n('select count(*)::int c from fuentes'))[0].c===10);
 /* La regla editorial que cierra el riesgo legal: ninguna empresa señalada
@@ -27,7 +28,7 @@ paso('10 fuentes documentales',(await n('select count(*)::int c from fuentes'))[
 paso('ninguna descartada sin fuente',(await n('select count(*)::int c from descartadas_sin_fuente'))[0].c===0);
 paso('toda fuente apunta a una descartada',
   (await n("select count(*)::int c from fuentes f join plataformas p on p.id=f.plataforma_id where p.estado<>'descartada'"))[0].c===0);
-paso('vista radar_publico devuelve 24',(await n('select count(*)::int c from radar_publico'))[0].c===24);
+paso('vista radar_publico devuelve 26',(await n('select count(*)::int c from radar_publico'))[0].c===26);
 paso('RLS activo en plataformas',
   (await n("select relrowsecurity from pg_class where relname='plataformas'"))[0].relrowsecurity===true);
 const pol=await n("select tablename, count(*)::int c from pg_policies group by tablename order by tablename");
@@ -60,7 +61,7 @@ paso('guarda el estado anterior',camb[0]?.estado_anterior==='en_radar');
 const avisos=await n('select * from avisos_pendientes');
 paso('genera 1 aviso para quien la seguia',avisos.length===1);
 paso('el aviso lleva el token del dispositivo',avisos[0]?.token_push==='ExpoTok[123]');
-paso('el radar publico baja a 23',(await n('select count(*)::int c from radar_publico'))[0].c===23);
+paso('el radar publico baja a 25',(await n('select count(*)::int c from radar_publico'))[0].c===25);
 
 // Nadie sigue a RealT: no debe generar aviso
 await db.query(`update plataformas set nombre=nombre where id=$1`,[realt]);
