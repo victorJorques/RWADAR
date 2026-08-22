@@ -93,7 +93,7 @@
      En escritorio permanece oculto y la cabecera anterior no cambia. -->
 <header class="movil-cabecera" id="movilCabecera" aria-label="Cabecera de RWAdar">
   <div class="movil-cabecera-superior">
-    <a class="movil-marca" href="#top" data-movil-ir="top" aria-label="RWAdar, abrir el radar">
+    <a class="movil-marca" href="#top" data-movil-cambiar="buscar" aria-label="RWAdar, abrir Buscar">
       <svg class="radar mk" width="30" height="30" viewBox="0 0 104 104" aria-hidden="true"></svg>
       <span>RWA<em>dar</em></span>
     </a>
@@ -104,13 +104,13 @@
       </svg>
     </button>
   </div>
-  <p class="movil-cabecera-etiqueta" id="movilCabeceraEtiqueta">RADAR DE ACTIVOS REALES</p>
-  <h2 class="movil-cabecera-titulo" id="movilCabeceraTitulo">Explora lo verificado</h2>
-  <p class="movil-cabecera-sub" id="movilCabeceraSub">26 plataformas · datos contrastados</p>
+  <p class="movil-cabecera-etiqueta" id="movilCabeceraEtiqueta">EXPLORAR RWADAR</p>
+  <h2 class="movil-cabecera-titulo" id="movilCabeceraTitulo">Buscar</h2>
+  <p class="movil-cabecera-sub" id="movilCabeceraSub">Ofertas verificadas y plataformas contrastadas</p>
 </header>
 
 <main id="top">
-<div id="movilPanelRadar" data-movil-panel="radar" role="tabpanel" aria-labelledby="movilTabRadar" tabindex="-1">
+<div id="movilPanelRadar" data-movil-panel="buscar" role="tabpanel" aria-labelledby="movilTabRadar" tabindex="-1">
 
 <!-- ============ PORTADA ============ -->
 <section class="portada">
@@ -178,6 +178,14 @@
      Las emisiones son contenido editorial y no un canal de inversión:
      cada cifra enlaza a su origen y conserva su fecha de comprobación. -->
 <section class="emis wrap" id="emisiones">
+  <article class="movil-ofertas-intro">
+    <span class="movil-ofertas-icono" aria-hidden="true">
+      <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 5.5h7.8l7.2 7.2-6.3 6.3-7.2-7.2z"/><circle cx="8.2" cy="8.4" r="1.2"/>
+      </svg>
+    </span>
+    <div><p class="movil-mini-etiqueta">OFERTAS ESPECÍFICAS</p><h3>Solo emisiones comprobadas</h3><p>No son anuncios: cada dato debe tener origen y fecha de verificación.</p></div>
+  </article>
   <div class="emis-cab">
     <div>
       <h2>Abierto ahora mismo</h2>
@@ -199,6 +207,8 @@
 
   <div class="emis-filtros" id="emiFiltros"></div>
   <div class="emis-rejilla" id="emiLista"><!--pre:ini--><div class="emis-vacio"><h3>Todavía no hay emisiones publicadas</h3><p>Estamos verificando las primeras. Cada una llevará el enlace a su plataforma y la fecha en que comprobamos sus cifras.</p></div><!--pre:fin--></div>
+
+  <p class="movil-ofertas-futuro" id="movilOfertasFuturo">Cuando haya suficientes emisiones verificadas podrás filtrarlas por activo, entrada mínima y fecha. Hasta entonces no mostramos filtros vacíos.</p>
 
   <p class="emis-legal">RWAdar no intermedia, no custodia dinero y no recomienda dónde
     invertir. Listar una emisión no es respaldarla. Tokenizar no elimina el riesgo de
@@ -569,7 +579,7 @@
 <!-- Vistas ligeras de la PWA. No duplican datos privados: los controles
      abren la cuenta y la vigilancia existentes, protegidas por las mismas
      reglas de sesión y RLS que en escritorio. -->
-<section class="movil-panel" id="movilPanelSiguiendo" data-movil-panel="siguiendo"
+<section class="movil-panel" id="movilPanelSiguiendo" data-movil-panel="favoritos"
          role="tabpanel" aria-labelledby="movilTabSiguiendo" tabindex="-1" hidden>
   <div class="movil-panel-cuerpo">
     <article class="movil-resumen">
@@ -579,9 +589,9 @@
         </svg>
       </div>
       <div>
-        <p class="movil-mini-etiqueta">TU RADAR</p>
-        <h3><span id="movilSiguiendoCuenta">0</span> <span id="movilSiguiendoUnidad">plataformas seguidas</span></h3>
-        <p id="movilSiguiendoTexto">Entra para consultar la vigilancia que tienes guardada.</p>
+        <p class="movil-mini-etiqueta">TUS FAVORITOS</p>
+        <h3><span id="movilSiguiendoCuenta">0</span> <span id="movilSiguiendoUnidad">plataformas favoritas</span></h3>
+        <p id="movilSiguiendoTexto">Entra para consultar las plataformas que has guardado.</p>
       </div>
     </article>
 
@@ -589,56 +599,88 @@
 
     <div class="movil-vacio" id="movilSiguiendoVacio">
       <span class="movil-vacio-senal" aria-hidden="true">◎</span>
-      <h3>Guarda lo que quieres vigilar</h3>
-      <p>Abre la ficha de una plataforma y pulsa «Vigilar». La lista se gestiona desde tu cuenta; la entrega de avisos todavía no está activa.</p>
-      <button class="movil-boton-principal" type="button" data-movil-action="cuenta" id="movilCuentaAccion">Entrar y abrir mi lista</button>
-      <button class="movil-boton-enlace" type="button" data-movil-cambiar="radar">Explorar plataformas</button>
+      <h3>Guarda tus favoritas</h3>
+      <p>Abre una plataforma y pulsa «Vigilar» para guardarla aquí. Eso no significa que hayas invertido ni activa envíos.</p>
+      <button class="movil-boton-principal" type="button" data-movil-action="cuenta" id="movilCuentaAccion">Entrar y abrir mis favoritos</button>
+      <button class="movil-boton-enlace" type="button" data-movil-cambiar="buscar">Explorar plataformas</button>
     </div>
   </div>
 </section>
 
-<section class="movil-panel" id="movilPanelAvisos" data-movil-panel="avisos"
-         role="tabpanel" aria-labelledby="movilTabAvisos" tabindex="-1" hidden>
-  <div class="movil-panel-cuerpo">
-    <article class="movil-estado movil-estado-atencion" role="status">
-      <div class="movil-estado-cab">
-        <span class="movil-estado-icono" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6.7 9.8a5.3 5.3 0 0 1 10.6 0c0 6 2.2 6.2 2.2 7.2h-15c0-1 2.2-1.2 2.2-7.2z"/><path d="M9.7 20h4.6"/>
-          </svg>
-        </span>
-        <div><p class="movil-mini-etiqueta">ESTADO DEL SERVICIO</p><h3>Entrega todavía no activa</h3></div>
-      </div>
-      <p>El consentimiento para correo está desactivado por defecto. En tu cuenta puedes aceptarlo expresamente o retirarlo. Aunque lo aceptes, RWAdar aún no envía esos mensajes: faltan configurar Brevo y verificar la entrega de extremo a extremo.</p>
-      <button class="movil-boton-secundario" type="button" data-movil-action="cuenta">Gestionar mi consentimiento</button>
-    </article>
-
-    <div class="movil-estado-pasos" aria-label="Estado de los avisos">
-      <div class="movil-estado-paso"><span aria-hidden="true">1</span><p><b>Preferencia</b><small>Desactivada por defecto; tú decides desde la cuenta.</small></p><i>Opcional</i></div>
-      <div class="movil-estado-paso"><span aria-hidden="true">2</span><p><b>Preparación</b><small>La vigilancia ya puede guardarse con tu sesión.</small></p><i>Disponible</i></div>
-      <div class="movil-estado-paso movil-estado-paso-pendiente"><span aria-hidden="true">3</span><p><b>Entrega</b><small>Correo y push siguen cerrados hasta superar la prueba real.</small></p><i>Pendiente</i></div>
-    </div>
-
-    <div class="movil-vacio movil-vacio-compacto">
-      <span class="movil-vacio-senal" aria-hidden="true">·</span>
-      <h3>Sin novedades entregadas</h3>
-      <p>Mientras se termina y verifica el envío, consulta directamente las fichas y sus fechas de comprobación.</p>
-      <button class="movil-boton-enlace" type="button" data-movil-cambiar="radar">Volver al radar</button>
+<section class="movil-panel" id="movilPanelInversiones" data-movil-panel="inversiones"
+         role="tabpanel" aria-labelledby="movilTabInversiones" tabindex="-1" hidden>
+  <div class="movil-panel-cuerpo movil-inversiones-cuerpo">
+    <div class="movil-vacio movil-vacio-inversiones">
+      <span class="movil-vacio-senal" aria-hidden="true">↗</span>
+      <h3>RWAdar todavía no registra inversiones</h3>
+      <p>RWAdar no intermedia operaciones ni recibe saldos de las plataformas. Favoritos y comparaciones nunca se presentan como inversiones.</p>
+      <button class="movil-boton-principal" type="button" data-movil-ir="emisiones">Ver ofertas verificadas</button>
     </div>
   </div>
 </section>
 
-<section class="movil-panel" id="movilPanelMas" data-movil-panel="mas"
+<section class="movil-panel" id="movilPanelMas" data-movil-panel="cuenta"
          role="tabpanel" aria-labelledby="movilTabMas" tabindex="-1" hidden>
   <div class="movil-panel-cuerpo movil-mas-cuerpo">
     <article class="movil-resumen movil-resumen-marca">
       <svg class="radar mk" width="46" height="46" viewBox="0 0 104 104" aria-hidden="true"></svg>
-      <div><p class="movil-mini-etiqueta">TU INSTALACIÓN</p><h3>RWAdar listo para consultar</h3><p>Catálogo conectado y adaptado a esta pantalla.</p></div>
-      <div class="movil-resumen-numero"><b id="movilMasCuenta">0</b><small>SIGUIENDO</small></div>
+      <div><p class="movil-mini-etiqueta">MI CUENTA</p><h3>Tu espacio en RWAdar</h3><p>Perfil, seguridad, privacidad y preferencias en un solo lugar.</p></div>
+      <div class="movil-resumen-numero"><b id="movilMasCuenta">0</b><small>FAVORITOS</small></div>
     </article>
 
+    <section class="movil-menu-grupo" aria-labelledby="movilCuentaTit">
+      <h3 id="movilCuentaTit">Cuenta y preferencias</h3>
+      <div class="movil-menu">
+        <button type="button" class="movil-menu-fila" data-movil-action="cuenta">
+          <span class="movil-menu-icono" aria-hidden="true">○</span><span><b>Perfil y seguridad</b><small>Entrar, revisar el acceso o borrar la cuenta</small></span><i aria-hidden="true">›</i>
+        </button>
+        <button type="button" class="movil-menu-fila" id="movilAbrirAvisos" data-movil-action="avisos"
+                aria-controls="movilVistaAvisos" aria-expanded="false">
+          <span class="movil-menu-icono" aria-hidden="true">!</span><span><b>Avisos y preferencias</b><small>Estado real del servicio y consentimiento</small></span><i aria-hidden="true">›</i>
+        </button>
+        <a class="movil-menu-fila" href="/privacidad">
+          <span class="movil-menu-icono" aria-hidden="true">▱</span><span><b>Política de privacidad</b><small>Qué se guarda y cómo ejercer tus derechos</small></span><i aria-hidden="true">›</i>
+        </a>
+        <button type="button" class="movil-menu-fila" id="movilSonido" data-movil-action="sonido" aria-pressed="false">
+          <span class="movil-menu-icono" aria-hidden="true">≈</span><span><b>Sonido de la interfaz</b><small id="movilSonidoEstado">Desactivado</small></span><i aria-hidden="true">›</i>
+        </button>
+      </div>
+    </section>
+
+    <section class="movil-cuenta-avisos" id="movilVistaAvisos" aria-labelledby="movilAvisosTitulo" hidden>
+      <div class="movil-subvista-cabecera">
+        <button class="movil-subvista-volver" id="movilCerrarAvisos" type="button" data-movil-action="cerrar-avisos" aria-label="Volver a Mi cuenta">‹</button>
+        <div><p class="movil-mini-etiqueta">MI CUENTA</p><h3 id="movilAvisosTitulo">Avisos y preferencias</h3></div>
+      </div>
+      <article class="movil-estado movil-estado-atencion" role="status">
+        <div class="movil-estado-cab">
+          <span class="movil-estado-icono" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.7 9.8a5.3 5.3 0 0 1 10.6 0c0 6 2.2 6.2 2.2 7.2h-15c0-1 2.2-1.2 2.2-7.2z"/><path d="M9.7 20h4.6"/>
+            </svg>
+          </span>
+          <div><p class="movil-mini-etiqueta">ESTADO DEL SERVICIO</p><h3>Entrega todavía no activa</h3></div>
+        </div>
+        <p>El consentimiento para correo está desactivado por defecto. Puedes aceptarlo expresamente o retirarlo desde tu cuenta. Aunque lo aceptes, RWAdar aún no envía esos mensajes: faltan configurar Brevo y verificar la entrega de extremo a extremo.</p>
+        <button class="movil-boton-secundario" type="button" data-movil-action="cuenta">Gestionar mi consentimiento</button>
+      </article>
+
+      <div class="movil-estado-pasos" aria-label="Estado de los avisos">
+        <div class="movil-estado-paso"><span aria-hidden="true">1</span><p><b>Preferencia</b><small>Desactivada por defecto; tú decides desde la cuenta.</small></p><i>Opcional</i></div>
+        <div class="movil-estado-paso"><span aria-hidden="true">2</span><p><b>Preparación</b><small>La vigilancia ya puede guardarse con tu sesión.</small></p><i>Disponible</i></div>
+        <div class="movil-estado-paso movil-estado-paso-pendiente"><span aria-hidden="true">3</span><p><b>Entrega</b><small>Correo y push siguen cerrados hasta superar la prueba real.</small></p><i>Pendiente</i></div>
+      </div>
+
+      <div class="movil-vacio movil-vacio-compacto">
+        <span class="movil-vacio-senal" aria-hidden="true">·</span>
+        <h3>Sin novedades entregadas</h3>
+        <p>Mientras se termina y verifica el envío, consulta directamente las fichas y sus fechas de comprobación.</p>
+        <button class="movil-boton-enlace" type="button" data-movil-action="cerrar-avisos">Volver a Mi cuenta</button>
+      </div>
+    </section>
+
     <section class="movil-menu-grupo" aria-labelledby="movilEntenderTit">
-      <h3 id="movilEntenderTit">Entender RWAdar</h3>
+      <h3 id="movilEntenderTit">RWAdar y datos</h3>
       <div class="movil-menu">
         <button type="button" class="movil-menu-fila" data-movil-ir="explain">
           <span class="movil-menu-icono" aria-hidden="true">◇</span><span><b>Cómo funciona la tokenización</b><small>Abrir la explicación animada en 3D</small></span><i aria-hidden="true">›</i>
@@ -649,18 +691,6 @@
         <button type="button" class="movil-menu-fila" data-movil-ir="fuera">
           <span class="movil-menu-icono movil-menu-icono-coral" aria-hidden="true">×</span><span><b>Fuera del radar</b><small>Descartes publicados con sus fuentes</small></span><i aria-hidden="true">›</i>
         </button>
-      </div>
-    </section>
-
-    <section class="movil-menu-grupo" aria-labelledby="movilCuentaTit">
-      <h3 id="movilCuentaTit">Cuenta y datos</h3>
-      <div class="movil-menu">
-        <button type="button" class="movil-menu-fila" data-movil-action="cuenta">
-          <span class="movil-menu-icono" aria-hidden="true">○</span><span><b>Cuenta y vigilancia</b><small>Entrar, gestionar plataformas o borrar la cuenta</small></span><i aria-hidden="true">›</i>
-        </button>
-        <a class="movil-menu-fila" href="/privacidad">
-          <span class="movil-menu-icono" aria-hidden="true">▱</span><span><b>Política de privacidad</b><small>Qué se guarda y cómo ejercer tus derechos</small></span><i aria-hidden="true">›</i>
-        </a>
         <button type="button" class="movil-menu-fila" data-accion="descargar-csv">
           <span class="movil-menu-icono" aria-hidden="true">↓</span><span><b>Descargar los datos</b><small>Registro público en formato CSV</small></span><i aria-hidden="true">›</i>
         </button>
@@ -676,24 +706,24 @@
 
 <nav class="movil-nav" id="movilNav" role="tablist" aria-label="Navegación principal">
   <button class="movil-nav-item" id="movilTabRadar" type="button" role="tab"
-          data-movil-tab="radar" aria-controls="movilPanelRadar" aria-selected="true" tabindex="0">
-    <span class="movil-nav-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="m12 12 6-5"/><circle cx="16.8" cy="14.8" r="1" fill="currentColor" stroke="none"/></svg></span>
-    <span>Radar</span>
+          data-movil-tab="buscar" aria-controls="movilPanelRadar" aria-selected="true" tabindex="0">
+    <span class="movil-nav-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 4.1 4.1"/></svg></span>
+    <span>Buscar</span>
   </button>
   <button class="movil-nav-item" id="movilTabSiguiendo" type="button" role="tab"
-          data-movil-tab="siguiendo" aria-controls="movilPanelSiguiendo" aria-selected="false" tabindex="-1">
-    <span class="movil-nav-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h11v17l-5.5-3.4-5.5 3.4z"/><path d="m9.3 10.8 1.8 1.8 3.8-4"/></svg><span class="movil-nav-insignia" id="movilSiguiendoBadge" hidden>0</span></span>
-    <span>Siguiendo</span>
+          data-movil-tab="favoritos" aria-controls="movilPanelSiguiendo" aria-selected="false" tabindex="-1">
+    <span class="movil-nav-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 9.3c0 5-8.5 10-8.5 10s-8.5-5-8.5-10a4.6 4.6 0 0 1 8.5-2.4 4.6 4.6 0 0 1 8.5 2.4z"/></svg><span class="movil-nav-insignia" id="movilSiguiendoBadge" hidden>0</span></span>
+    <span>Favoritos</span>
   </button>
-  <button class="movil-nav-item" id="movilTabAvisos" type="button" role="tab"
-          data-movil-tab="avisos" aria-controls="movilPanelAvisos" aria-selected="false" tabindex="-1">
-    <span class="movil-nav-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.7 9.8a5.3 5.3 0 0 1 10.6 0c0 6 2.2 6.2 2.2 7.2h-15c0-1 2.2-1.2 2.2-7.2z"/><path d="M9.7 20h4.6"/><circle cx="18.2" cy="5.2" r="2.2" fill="#FF3B30" stroke="var(--noche-2)" stroke-width="1.2"/></svg></span>
-    <span>Avisos</span>
+  <button class="movil-nav-item" id="movilTabInversiones" type="button" role="tab"
+          data-movil-tab="inversiones" aria-controls="movilPanelInversiones" aria-selected="false" tabindex="-1">
+    <span class="movil-nav-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/><path d="m3.5 7 6-4 6 6 5-5"/></svg></span>
+    <span>Inversiones</span>
   </button>
   <button class="movil-nav-item" id="movilTabMas" type="button" role="tab"
-          data-movil-tab="mas" aria-controls="movilPanelMas" aria-selected="false" tabindex="-1">
-    <span class="movil-nav-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9" opacity=".48"/><circle cx="5" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></span>
-    <span>Más</span>
+          data-movil-tab="cuenta" aria-controls="movilPanelMas" aria-selected="false" tabindex="-1">
+    <span class="movil-nav-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="12" cy="12" r="9.5" opacity=".45"/></svg></span>
+    <span>Mi cuenta</span>
   </button>
 </nav>
 

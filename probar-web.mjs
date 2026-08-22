@@ -500,6 +500,127 @@ function renderEmisionHostil(codigo) {
   return capturado.emiLista || '';
 }
 
+function reparentadoEmisionesEsReversible(codigo) {
+  const inicio = codigo.indexOf('function ordenarEmisiones(esMovil){');
+  const fin = codigo.indexOf('function mostrarAvisos(', inicio);
+  if (inicio < 0 || fin < 0) return false;
+  const fuente = codigo.slice(inicio, fin);
+  const nodo = nombre => ({
+    nombre, hijos:[], parentNode:null,
+    get firstChild(){ return this.hijos[0] || null; },
+    get nextSibling(){
+      if (!this.parentNode) return null;
+      const indice = this.parentNode.hijos.indexOf(this);
+      return indice < 0 ? null : this.parentNode.hijos[indice + 1] || null;
+    },
+    insertBefore(hijo, referencia){
+      if (hijo.parentNode) {
+        const anterior = hijo.parentNode.hijos.indexOf(hijo);
+        if (anterior >= 0) hijo.parentNode.hijos.splice(anterior, 1);
+      }
+      const indice = referencia == null ? this.hijos.length : this.hijos.indexOf(referencia);
+      if (indice < 0) throw new Error('referencia ajena al padre');
+      this.hijos.splice(indice, 0, hijo);
+      hijo.parentNode = this;
+      return hijo;
+    },
+  });
+  const panelBuscar = nodo('buscar');
+  const portada = nodo('portada');
+  const anclaEmisiones = nodo('ancla');
+  const emisiones = nodo('emisiones');
+  const explicacion = nodo('explicacion');
+  for (const hijo of [portada, anclaEmisiones, emisiones, explicacion]) {
+    panelBuscar.hijos.push(hijo); hijo.parentNode = panelBuscar;
+  }
+  const ordenar = new Function('emisiones', 'panelBuscar', 'anclaEmisiones', `
+    ${fuente}
+    return ordenarEmisiones;
+  `)(emisiones, panelBuscar, anclaEmisiones);
+  const nombres = () => panelBuscar.hijos.map(hijo => hijo.nombre).join(',');
+  ordenar(true); ordenar(true);
+  const movil = nombres() === 'emisiones,portada,ancla,explicacion' &&
+    panelBuscar.firstChild === emisiones && panelBuscar.hijos.filter(x => x === emisiones).length === 1;
+  ordenar(false); ordenar(false);
+  const escritorio = nombres() === 'portada,ancla,emisiones,explicacion' &&
+    anclaEmisiones.nextSibling === emisiones && panelBuscar.hijos.filter(x => x === emisiones).length === 1;
+  return movil && escritorio;
+}
+
+function cambioTabsMovilEsCoherente(codigo) {
+  const inicio = codigo.indexOf('function cambiar(id,opciones){');
+  const fin = codigo.indexOf('function adaptar(){', inicio);
+  if (inicio < 0 || fin < 0) return false;
+  const fuente = codigo.slice(inicio, fin);
+  const nombres = ['buscar','favoritos','inversiones','cuenta'];
+  const paneles = new Map(nombres.map(nombre => [nombre, { hidden:nombre !== 'buscar' }]));
+  const tabs = nombres.map(nombre => ({
+    dataset:{ movilTab:nombre }, tabIndex:nombre === 'buscar' ? 0 : -1,
+    atributos:new Map([['aria-selected', nombre === 'buscar' ? 'true' : 'false']]),
+    setAttribute(clave, valor){ this.atributos.set(clave, String(valor)); },
+    getAttribute(clave){ return this.atributos.get(clave) ?? null; },
+  }));
+  const document = { body:{ dataset:{} } };
+  let cabeceraActual = '', mediciones = 0, cierresAvisos = 0;
+  const fabrica = new Function('media', 'paneles', 'tabs', 'document', 'window', 'reduce',
+    'mostrarAvisos', 'cabecera', 'geometria', `
+      let activa='buscar';
+      ${fuente}
+      return {cambiar, activa:()=>activa};
+    `);
+  const api = fabrica({matches:true}, paneles, tabs, document, {scrollTo(){}}, ()=>true,
+    ()=>{ cierresAvisos++; }, id=>{ cabeceraActual=id; }, ()=>{ mediciones++; });
+  for (const nombre of nombres) {
+    api.cambiar(nombre, { arriba:false });
+    if (api.activa() !== nombre || document.body.dataset.movilPestana !== nombre || cabeceraActual !== nombre)
+      return false;
+    for (const otro of nombres) {
+      const indice = nombres.indexOf(otro);
+      const elegida = otro === nombre;
+      if (paneles.get(otro).hidden === elegida ||
+          tabs[indice].getAttribute('aria-selected') !== (elegida ? 'true' : 'false') ||
+          tabs[indice].tabIndex !== (elegida ? 0 : -1)) return false;
+    }
+  }
+  api.cambiar('sistema-operativo-inventado', { arriba:false });
+  return api.activa() === 'cuenta' && document.body.dataset.movilPestana === 'cuenta' &&
+    mediciones === 1 && cierresAvisos >= 3;
+}
+
+function subvistaAvisosConservaEstadoYFoco(codigo) {
+  const inicio = codigo.indexOf('function mostrarAvisos(mostrar,enfocar=true){');
+  const fin = codigo.indexOf('function pintarSonidoMovil(){', inicio);
+  if (inicio < 0 || fin < 0) return false;
+  const fuente = codigo.slice(inicio, fin);
+  const clases = new Set();
+  const atributos = new Map([['aria-expanded','false']]);
+  const panel = { classList:{ toggle(clase, activo){ activo ? clases.add(clase) : clases.delete(clase); } } };
+  const vista = { hidden:true };
+  const abre = {
+    focused:false,
+    setAttribute(clave, valor){ atributos.set(clave, String(valor)); },
+    focus(){ this.focused=true; },
+  };
+  const cierra = { focused:false, focus(){ this.focused=true; } };
+  const nodos = new Map([
+    ['movilPanelMas',panel], ['movilVistaAvisos',vista], ['movilAbrirAvisos',abre],
+    ['movilCerrarAvisos',cierra],
+  ]);
+  const document = { getElementById:id=>nodos.get(id) || null };
+  let desplazamientos = 0;
+  const mostrarAvisos = new Function('document', 'window', 'reduce', 'requestAnimationFrame', `
+    ${fuente}
+    return mostrarAvisos;
+  `)(document, {scrollTo(){ desplazamientos++; }}, ()=>true, fn=>fn());
+  mostrarAvisos(true);
+  const abierta = vista.hidden === false && clases.has('movil-subvista-abierta') &&
+    atributos.get('aria-expanded') === 'true' && cierra.focused && desplazamientos === 1;
+  mostrarAvisos(false);
+  const cerrada = vista.hidden === true && !clases.has('movil-subvista-abierta') &&
+    atributos.get('aria-expanded') === 'false' && abre.focused;
+  return abierta && cerrada;
+}
+
 console.log('=== PRUEBAS ESTÁTICAS DE LA WEB ===');
 marcadoEstricto('index.html', html);
 marcadoEstricto('privacidad.html', privacidad);
@@ -671,10 +792,10 @@ prueba('la emisión renderizada no genera style ni manejadores inline',
 
 console.log('\n=== ADAPTACIÓN MÓVIL Y ACCESIBILIDAD ===');
 const contratoTabs = [
-  { valor:'radar', id:'movilTabRadar', panel:'movilPanelRadar', etiqueta:'Radar' },
-  { valor:'siguiendo', id:'movilTabSiguiendo', panel:'movilPanelSiguiendo', etiqueta:'Siguiendo' },
-  { valor:'avisos', id:'movilTabAvisos', panel:'movilPanelAvisos', etiqueta:'Avisos' },
-  { valor:'mas', id:'movilTabMas', panel:'movilPanelMas', etiqueta:'Más' },
+  { valor:'buscar', id:'movilTabRadar', panel:'movilPanelRadar', etiqueta:'Buscar' },
+  { valor:'favoritos', id:'movilTabSiguiendo', panel:'movilPanelSiguiendo', etiqueta:'Favoritos' },
+  { valor:'inversiones', id:'movilTabInversiones', panel:'movilPanelInversiones', etiqueta:'Inversiones' },
+  { valor:'cuenta', id:'movilTabMas', panel:'movilPanelMas', etiqueta:'Mi cuenta' },
 ];
 const navegaciones = [...html.matchAll(/<nav\b([^>]*)>([\s\S]*?)<\/nav>/gi)];
 const navMovil = navegaciones.find(n => atributoHTML(n[1], 'id') === 'movilNav');
@@ -702,7 +823,7 @@ prueba('las cuatro pestañas conservan orden, destino y nombre accesible',
       atributoHTML(boton[1], 'aria-controls') === esperada.panel &&
       textoHTML(boton[2]).includes(esperada.etiqueta);
   }));
-prueba('solo Radar empieza seleccionada y el foco sigue el patrón roving-tabindex',
+prueba('solo Buscar empieza seleccionada y el foco sigue el patrón roving-tabindex',
   botonesNavMovil.filter(b => atributoHTML(b[1], 'aria-selected') === 'true').length === 1 &&
   contratoTabs.every((_, i) =>
     atributoHTML(botonesNavMovil[i]?.[1] || '', 'aria-selected') === (i === 0 ? 'true' : 'false') &&
@@ -718,6 +839,12 @@ prueba('cada pestaña controla un panel accesible y los paneles inactivos nacen 
       atributoHTML(panel[2], 'aria-labelledby') === esperada.id &&
       (i === 0 ? atributoHTML(panel[2], 'hidden') === null : atributoHTML(panel[2], 'hidden') !== null);
   }));
+prueba('Buscar, Favoritos, Inversiones y Mi cuenta son las únicas rutas de primer nivel',
+  new Set(botonesNavMovil.map(b => atributoHTML(b[1], 'data-movil-tab'))).size === 4 &&
+  contratoTabs.every(esperada => botonesNavMovil.some(b =>
+    atributoHTML(b[1], 'data-movil-tab') === esperada.valor)) &&
+  !botonesNavMovil.some(b => ['radar','siguiendo','avisos','mas'].includes(
+    atributoHTML(b[1], 'data-movil-tab'))));
 
 const viewport = (html.match(/<meta\s+name=["']viewport["']\s+content=["']([^"']+)["']/i) || [])[1] || '';
 const mediasCSS = bloquesMediaCSS(css);
@@ -747,6 +874,13 @@ const cuentaCerrarBase = declaracionesCSS(cssBase, '.cuenta-caja .cerrar-x').joi
 const cuentaCerrarEnMovil = declaracionesCSS(cssMovil, '.cuenta-caja .cerrar-x').join(';');
 const cuentaAutofill = declaracionesCSS(cssBase, '.cuenta-caja input:-webkit-autofill').join(';');
 const cuentaAutofillFoco = declaracionesCSS(cssBase, '.cuenta-caja input:-webkit-autofill:focus').join(';');
+const ofertasBase = declaracionesCSS(cssBase, '.movil-ofertas-intro').join(';');
+const ofertasEnMovil = declaracionesCSS(cssMovil, '#movilPanelRadar>.emis').join(';');
+const ofertasOrdenEnMovil = declaracionesCSS(cssMovil, '#movilPanelRadar .emis-orden select').join(';');
+const menuFilaEnMovil = declaracionesCSS(cssMovil, '.movil-menu-fila').join(';');
+const volverAvisosEnMovil = declaracionesCSS(cssMovil, '.movil-subvista-volver').join(';');
+const cssMuyEstrecho = mediasCSS.filter(media => /max-width\s*:\s*359px/i.test(media.consulta))
+  .map(media => media.contenido).join('\n');
 const altoMinimo = Number((itemEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0);
 prueba('el viewport permite aprovechar las áreas seguras de iOS y Android',
   /(?:^|,)\s*viewport-fit\s*=\s*cover\s*(?:,|$)/i.test(viewport));
@@ -757,6 +891,12 @@ prueba('la interfaz móvil queda limitada al breakpoint de 767 px y oculta en es
   mediasMoviles.length >= 1 && /display\s*:\s*none/i.test(navBase) &&
   /display\s*:\s*(?:grid|flex)/i.test(navEnMovil) &&
   !/display\s*:\s*(?:grid|flex|block)/i.test(navBase));
+prueba('320, 375, 390 y 430 px comparten el mismo shell fluido sin ancho mínimo',
+  [320,375,390,430].every(ancho => ancho <= 767) &&
+  /minmax\(\s*0\s*,\s*1fr\s*\)/i.test(navEnMovil) &&
+  /min-width\s*:\s*0/i.test(itemEnMovil) &&
+  /--movil-margen\s*:\s*12px/i.test(cssMuyEstrecho) &&
+  /grid-template-columns\s*:\s*1fr/i.test(declaracionesCSS(cssMuyEstrecho, '.barra-in').join(';')));
 prueba('la barra es inferior, tiene cuatro columnas y reserva el safe-area',
   /position\s*:\s*fixed/i.test(navEnMovil) && /bottom\s*:\s*0/i.test(navEnMovil) &&
   (/grid-template-columns\s*:\s*repeat\(\s*4\s*,/i.test(navEnMovil) ||
@@ -766,6 +906,14 @@ prueba('las pestañas ofrecen dianas táctiles de al menos 48 px y foco visible'
   altoMinimo >= 48 && declaracionesCSS(css, '.movil-nav-item:focus-visible').length > 0 &&
   declaracionesCSS(css, ':focus-visible')
     .some(declaraciones => /(?:outline|box-shadow)\s*:(?!\s*none)/i.test(declaraciones)));
+prueba('ofertas, menús y vuelta de Avisos conservan dianas móviles utilizables',
+  Number((ofertasOrdenEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
+  Number((menuFilaEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
+  Number((volverAvisosEnMovil.match(/width\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
+  Number((volverAvisosEnMovil.match(/height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48);
+prueba('las superficies exclusivas de ofertas siguen ocultas en escritorio',
+  /display\s*:\s*none/i.test(ofertasBase) &&
+  /width\s*:\s*100%/i.test(ofertasEnMovil) && /max-width\s*:\s*560px/i.test(ofertasEnMovil));
 prueba('las fichas móviles usan una columna que puede encogerse sin desbordar',
   /grid-template-columns\s*:\s*minmax\(\s*0\s*,\s*1fr\s*\)/i.test(rejillaEnMovil));
 prueba('contenido, comparador y avisos reservan sitio sobre la barra y el área segura',
@@ -901,32 +1049,51 @@ prueba('CSS y JS limitan el paisaje móvil a 960 × 540 con entrada exclusivamen
   ramasShellCSS.length === 2 && ramasShellJS.length === 2 &&
   [ramaMovilVertical, ramaPaisajeTactil].every(rama =>
     ramasShellCSS.includes(rama) && ramasShellJS.includes(rama)));
+const inicioShellMovil = js.indexOf('const Movil = (function(){');
+const finShellMovil = js.indexOf('/* Una sola delegación', inicioShellMovil);
+const codigoShellMovil = inicioShellMovil >= 0 && finShellMovil > inicioShellMovil
+  ? sinComentariosJS(js.slice(inicioShellMovil, finShellMovil)) : '';
+prueba('iPhone y Android ejecutan el mismo shell sin bifurcaciones por agente de usuario',
+  codigoShellMovil.length > 0 &&
+  !/(?:navigator\.(?:userAgent|userAgentData|platform)|\biPhone\b|\biPad\b|\biPod\b|\bAndroid\b|\bCriOS\b|\bSafari\b)/i
+    .test(codigoShellMovil) &&
+  /display-mode:\s*standalone/.test(codigoShellMovil));
 prueba('la navegación móvil sincroniza selección, panel, foco y teclado',
   /movilNav/.test(jsSinComentarios) && /data-movil-tab/.test(jsSinComentarios) &&
   /setAttribute\(\s*['"]aria-selected['"]/.test(jsSinComentarios) &&
   /(?:\.tabIndex\s*=|setAttribute\(\s*['"]tabindex['"])/.test(jsSinComentarios) &&
   /\.hidden\s*=/.test(jsSinComentarios) && /addEventListener\(\s*['"]keydown['"]/.test(jsSinComentarios) &&
   ['ArrowLeft','ArrowRight','Home','End'].every(tecla => jsSinComentarios.includes(tecla)));
+prueba('el cambio dinámico mantiene una sola pestaña y un solo panel activos',
+  cambioTabsMovilEsCoherente(js));
 const declaracionFondo = (jsSinComentarios.match(/const\s+fondo\s*=\s*\(\)\s*=>[^;]+;/) || [])[0] || '';
 prueba('la navegación inferior queda inerte detrás de fichas, comparativas y cuenta',
   declaracionFondo.includes('#movilNav') &&
   /fondo\(\)\.forEach\([^)]*setAttribute\(\s*['"]inert['"]/.test(jsSinComentarios) &&
   /fondo\(\)\.forEach\([^)]*removeAttribute\(\s*['"]inert['"]/.test(jsSinComentarios));
 const codigoNavMovil = jsSinComentarios.slice(jsSinComentarios.indexOf('movilNav'));
-prueba('volver a Radar programa una medición nueva después de mostrar el panel',
-  /data-movil-tab/.test(codigoNavMovil) && /radar/.test(codigoNavMovil) &&
+prueba('volver a Buscar programa una medición nueva después de mostrar el panel',
+  /data-movil-tab/.test(codigoNavMovil) && /buscar/.test(codigoNavMovil) &&
   /requestAnimationFrame/.test(codigoNavMovil) &&
   /(?:dispatchEvent\([^)]*(?:resize|rwadar)|clientWidth|redimension|recalcular)/i.test(codigoNavMovil) &&
   /cv\.clientWidth/.test(jsSinComentarios) && /cv\.width\s*!==\s*w/.test(jsSinComentarios));
 const ordenMovil = selector => Number((declaracionesCSS(cssMovil, selector).join(';').match(/order\s*:\s*(\d+)/i) || [])[1] || 0);
-prueba('Radar móvil adopta la jerarquía nativa antes del contenido editorial',
-  ordenMovil('#movilPanelRadar .portada-radar') === 1 &&
-  ordenMovil('#movilPanelRadar .movil-banner-explica') === 2 &&
+prueba('Buscar prioriza ofertas, búsqueda y resultados antes de radar y 3D',
+  ordenMovil('#movilPanelRadar>.emis') === 1 &&
+  ordenMovil('#movilPanelRadar>.tool') === 2 &&
   ordenMovil('#movilPanelRadar>.barra') === 3 &&
-  ordenMovil('#movilPanelRadar>.tool') === 4 &&
-  ordenMovil('#movilPanelRadar>div.wrap') === 5 &&
-  ordenMovil('#movilPanelRadar .portada-txt') > 5 &&
+  ordenMovil('#movilPanelRadar>div.wrap') === 4 &&
+  ordenMovil('#movilPanelRadar .portada-radar') === 5 &&
+  ordenMovil('#movilPanelRadar .movil-banner-explica') === 6 &&
+  ordenMovil('#movilPanelRadar .portada-txt') > 6 &&
   ordenMovil('#movilPanelRadar>.explica') > ordenMovil('#movilPanelRadar .portada-txt'));
+prueba('Buscar mueve el mismo nodo de emisiones y restaura su lugar al volver a escritorio',
+  (html.match(/\bid=["']emisiones["']/g) || []).length === 1 &&
+  /paneles\.get\(['"]buscar['"]\)/.test(codigoShellMovil) &&
+  /createComment\(['"]rwadar: posici[oó]n de emisiones en escritorio['"]\)/i.test(codigoShellMovil) &&
+  /panelBuscar\.insertBefore\(emisiones,panelBuscar\.firstChild\)/.test(codigoShellMovil) &&
+  /anclaEmisiones\.parentNode\.insertBefore\(emisiones,anclaEmisiones\.nextSibling\)/.test(codigoShellMovil) &&
+  reparentadoEmisionesEsReversible(js));
 prueba('la portada móvil conserva un acceso táctil explícito a la animación 3D',
   /class="movil-banner-explica"[^>]*data-movil-ir="explain"/.test(html) &&
   /Animación 3D paso a paso/.test(html) &&
@@ -938,15 +1105,93 @@ prueba('el buscador móvil es un panel principal y las fichas tienen un CTA prop
 prueba('las superficies nuevas solo aparecen dentro de la interfaz móvil',
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-banner-explica').join(';')) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-busqueda-cab').join(';')) &&
-  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ficha-abrir').join(';')));
-prueba('Siguiendo pinta fichas reales desde la vigilancia existente y escapa el contenido',
+  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ficha-abrir').join(';')) &&
+  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ofertas-intro').join(';')));
+prueba('Favoritos pinta fichas reales desde la vigilancia existente y escapa el contenido',
   /id="movilSiguiendoLista"[^>]*aria-live="polite"[^>]*hidden/.test(html) &&
   /P\.filter\(p=>vigiladas\.has\(p\.n\)\)/.test(jsSinComentarios) &&
-  /class="movil-seguida/.test(js) && /escHtml\(p\.n\)/.test(js));
-prueba('Avisos explica sus tres estados sin prometer una entrega inactiva',
-  (html.match(/class="movil-estado-paso(?:\s|"|$)/g) || []).length === 3 &&
-  /Correo y push siguen cerrados hasta superar la prueba real/.test(html) &&
-  !/Entrega activa/.test(textoHTML((html.match(/<section class="movil-panel" id="movilPanelAvisos"[\s\S]*?<\/section>/) || [''])[0])));
+  /class="movil-seguida/.test(js) && /escHtml\(p\.n\)/.test(js) &&
+  /Eso no significa que hayas invertido ni activa envíos/.test(html));
+
+const inicioInversiones = html.indexOf('<section class="movil-panel" id="movilPanelInversiones"');
+const finInversiones = html.indexOf('</section>', inicioInversiones);
+const panelInversionesHTML = inicioInversiones >= 0 && finInversiones > inicioInversiones
+  ? html.slice(inicioInversiones, finInversiones + 10) : '';
+const textoInversiones = textoHTML(panelInversionesHTML);
+prueba('Inversiones declara la ausencia de registro sin inventar cartera, saldos ni contadores',
+  /RWAdar todavía no registra inversiones/.test(textoInversiones) &&
+  /no intermedia operaciones ni recibe saldos/.test(textoInversiones) &&
+  /Favoritos y comparaciones nunca se presentan como inversiones/.test(textoInversiones) &&
+  !/(?:movil-resumen-numero|movil-seguida|\bemi(?:-|\b)|data-abrir|data-comparar)/i.test(panelInversionesHTML) &&
+  !/(?:rentabilidad|beneficio|confirmada|reservada|saldo\s*[:：]|\b[1-9]\d*(?:[.,]\d+)?\s*%)/i.test(textoInversiones));
+prueba('Inversiones solo deriva hacia las ofertas verificadas de Buscar',
+  /data-movil-ir=["']emisiones["']/.test(panelInversionesHTML) &&
+  /function ir\(destino\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil) &&
+  !/data-movil-action=["']cuenta["']/.test(panelInversionesHTML));
+
+const vistaAvisosHTML = (html.match(
+  /<section\b([^>]*)\bid=["']movilVistaAvisos["']([^>]*)>[\s\S]*?<\/section>/i) || [''])[0];
+const etiquetaVistaAvisos = (html.match(
+  /<section\b([^>]*)\bid=["']movilVistaAvisos["']([^>]*)>/i) || []);
+const atributosVistaAvisos = `${etiquetaVistaAvisos[1] || ''} ${etiquetaVistaAvisos[2] || ''}`;
+prueba('Avisos es una subvista oculta de Mi cuenta y nunca una quinta pestaña',
+  Boolean(vistaAvisosHTML) && atributoHTML(atributosVistaAvisos, 'data-movil-panel') === null &&
+  atributoHTML(atributosVistaAvisos, 'role') !== 'tabpanel' &&
+  atributoHTML(atributosVistaAvisos, 'hidden') !== null &&
+  /id=["']movilAbrirAvisos["'][^>]*data-movil-action=["']avisos["'][^>]*aria-controls=["']movilVistaAvisos["'][^>]*aria-expanded=["']false["']/i.test(html) &&
+  !botonesNavMovil.some(b => /Avisos/i.test(textoHTML(b[2]))));
+prueba('la subvista conserva los tres estados reales sin prometer entrega activa',
+  (vistaAvisosHTML.match(/class="movil-estado-paso(?:\s|"|$)/g) || []).length === 3 &&
+  /Correo y push siguen cerrados hasta superar la prueba real/.test(vistaAvisosHTML) &&
+  !/Entrega activa/.test(textoHTML(vistaAvisosHTML)) &&
+  /data-movil-action=["']cerrar-avisos["']/.test(vistaAvisosHTML));
+prueba('abrir y cerrar Avisos sincroniza hidden, aria-expanded y devuelve el foco',
+  subvistaAvisosConservaEstadoYFoco(js));
+
+const inicioCuentaMovil = html.indexOf('<section class="movil-panel" id="movilPanelMas"');
+const finCuentaMovil = html.indexOf('<nav class="movil-nav"', inicioCuentaMovil);
+const panelCuentaMovilHTML = inicioCuentaMovil >= 0 && finCuentaMovil > inicioCuentaMovil
+  ? html.slice(inicioCuentaMovil, finCuentaMovil) : '';
+prueba('Mi cuenta agrupa acceso, avisos, privacidad y seguridad sin ocultar herramientas',
+  /Perfil y seguridad/.test(panelCuentaMovilHTML) && /Avisos y preferencias/.test(panelCuentaMovilHTML) &&
+  /id=["']movilVistaAvisos["']/.test(panelCuentaMovilHTML) &&
+  /href=["']\/privacidad["']/.test(panelCuentaMovilHTML) &&
+  /no pide datos bancarios, claves de monedero ni frases de recuperación/.test(panelCuentaMovilHTML) &&
+  ['explain','metodo','fuera'].every(destino =>
+    new RegExp(`data-movil-ir=["']${destino}["']`).test(panelCuentaMovilHTML)));
+
+const inicioEmisionesHTML = html.indexOf('<section class="emis wrap" id="emisiones"');
+const finEmisionesHTML = html.indexOf('</section>', inicioEmisionesHTML);
+const emisionesHTML = inicioEmisionesHTML >= 0 && finEmisionesHTML > inicioEmisionesHTML
+  ? html.slice(inicioEmisionesHTML, finEmisionesHTML + 10) : '';
+const emisionesFuente = arrayDe(js, 'EMI');
+prueba('Buscar presenta emisiones comprobadas, no anuncios ni recomendaciones inventadas',
+  /OFERTAS ESPECÍFICAS/.test(emisionesHTML) && /Solo emisiones comprobadas/.test(emisionesHTML) &&
+  /No son anuncios: cada dato debe tener origen y fecha de verificación/.test(emisionesHTML) &&
+  /RWAdar no intermedia, no custodia dinero y no recomienda/.test(emisionesHTML) &&
+  !/(?:recomendada para ti|rentabilidad garantizada|oferta exclusiva)/i.test(textoHTML(emisionesHTML)));
+prueba('cero emisiones mantiene un vacío explícito y oculta filtros inútiles',
+  (emisionesFuente.length > 0 ||
+    (/Todavía no hay emisiones publicadas/.test(emisionesHTML) &&
+     /Estamos verificando las primeras/.test(emisionesHTML))) &&
+  /const hayPublicadas=EMI\.some\(emisionValida\)/.test(jsSinComentarios) &&
+  /seccion\.classList\.toggle\(['"]sin-emisiones['"],!hayPublicadas\)/.test(jsSinComentarios) &&
+  /futuro\.hidden=hayPublicadas/.test(jsSinComentarios) &&
+  /\.emis\.sin-emisiones \.emis-orden/.test(cssMovil) &&
+  /\.emis\.sin-emisiones \.emis-filtros\s*\{display\s*:\s*none/.test(cssMovil));
+prueba('el escritorio recupera emisiones en su posición editorial y no muestra la decoración móvil',
+  html.indexOf('<section class="portada"') < inicioEmisionesHTML &&
+  inicioEmisionesHTML < html.indexOf('<section class="explica wrap" id="explain"') &&
+  /ordenarEmisiones\(esMovil\)/.test(codigoShellMovil) &&
+  /paneles\.forEach\(\(panel,nombre\)=>\{panel\.hidden=nombre!==['"]buscar['"]/.test(codigoShellMovil) &&
+  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ofertas-intro').join(';')) &&
+  !/display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.emis').join(';')));
+prueba('radar, fichas, comparador, método, descartes y 3D siguen en el único panel Buscar',
+  ['radarHero','tool','grid','cmpbar','explain','scene','gl','metodo','fuera']
+    .every(id => ids.includes(id)) &&
+  ['explain','metodo','fuera'].every(destino =>
+    new RegExp(`data-movil-ir=["']${destino}["']`).test(html)) &&
+  /function ir\(destino\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
 prueba('la barra no introduce manejadores inline ni atributos ejecutables',
   botonesNavMovil.every(b => !/\son[a-z]+\s*=|javascript\s*:/i.test(b[1])) &&
   !/\son[a-z]+\s*=|javascript\s*:/i.test(navMovil?.[0] || ''));

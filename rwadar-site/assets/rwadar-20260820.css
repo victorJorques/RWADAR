@@ -1000,7 +1000,8 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
    conserva exactamente la composición editorial anterior. Las vistas
    auxiliares no duplican estado: enlazan con cuenta y vigilancia reales.
    ================================================================== */
-.movil-cabecera,.movil-nav,.movil-panel,.movil-banner-explica,.movil-busqueda-cab,.movil-ficha-abrir{display:none}
+.movil-cabecera,.movil-nav,.movil-panel,.movil-banner-explica,.movil-busqueda-cab,.movil-ficha-abrir,
+.movil-ofertas-intro,.movil-ofertas-futuro{display:none}
 
 @media (max-width:767px),
        (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
@@ -1008,8 +1009,8 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   html{scroll-padding-top:142px;-webkit-text-size-adjust:100%}
   body{padding-bottom:calc(var(--movil-nav-alto) + max(7px,env(safe-area-inset-bottom)));
     min-height:100dvh;overscroll-behavior-y:none}
-  body[data-movil-pestana]:not([data-movil-pestana="radar"]) footer,
-  body[data-movil-pestana]:not([data-movil-pestana="radar"]) .cmpbar{display:none}
+  body[data-movil-pestana]:not([data-movil-pestana="buscar"]) footer,
+  body[data-movil-pestana]:not([data-movil-pestana="buscar"]) .cmpbar{display:none}
   button,a{-webkit-tap-highlight-color:transparent}
   button{touch-action:manipulation}
   .hdr{display:none}
@@ -1040,20 +1041,19 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   .movil-panel:focus{outline:none}
   .movil-panel-cuerpo{width:100%;max-width:560px;margin:0 auto;padding:18px var(--movil-margen) 32px}
 
-  /* La portada web deja paso a la secuencia de la app nativa: radar,
-     explicación, búsqueda y fichas. El contenido editorial no desaparece;
-     queda detrás del registro y conserva el mismo DOM, datos y 3D. */
+  /* Buscar coloca primero la información accionable: ofertas reales,
+     búsqueda y radar. El resto conserva el mismo DOM, datos y WebGL. */
   #movilPanelRadar>.portada,#movilPanelRadar>.portada>.portada-in{display:contents}
-  #movilPanelRadar .portada-radar{order:1}
-  #movilPanelRadar .movil-banner-explica{order:2}
+  #movilPanelRadar>.emis{order:1}
+  #movilPanelRadar>.tool{order:2}
   #movilPanelRadar>.barra{order:3}
-  #movilPanelRadar>.tool{order:4}
-  #movilPanelRadar>div.wrap{order:5}
-  #movilPanelRadar .marcador{order:6}
-  #movilPanelRadar .portada-txt{order:7}
-  #movilPanelRadar>.explica{order:8}
-  #movilPanelRadar>.metodo{order:9}
-  #movilPanelRadar>.emis{order:10}
+  #movilPanelRadar>div.wrap{order:4}
+  #movilPanelRadar .portada-radar{order:5}
+  #movilPanelRadar .movil-banner-explica{order:6}
+  #movilPanelRadar .marcador{order:7}
+  #movilPanelRadar .portada-txt{order:8}
+  #movilPanelRadar>.explica{order:9}
+  #movilPanelRadar>.metodo{order:10}
   #movilPanelRadar>.fuera{order:11}
 
   .wrap{padding-inline:var(--movil-margen)}
@@ -1085,6 +1085,41 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   .movil-banner-explica b{font-size:.94rem;line-height:1.25;letter-spacing:-.02em}
   .movil-banner-explica small{margin-top:3px;color:var(--tx-2);font-size:.72rem;line-height:1.35}
   .movil-banner-explica i{color:var(--tx-3);font-size:1.7rem;font-style:normal;font-weight:300}
+
+  /* Ofertas usa la fuente EMI existente. Con cero resultados no mostramos
+     mandos inútiles ni rellenamos la pantalla con ejemplos inventados. */
+  #movilPanelRadar>.emis{width:100%;max-width:560px;margin:0 auto;padding:18px var(--movil-margen) 22px;
+    border-bottom:1px solid var(--linea)}
+  .movil-ofertas-intro{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;padding:15px;
+    background:linear-gradient(145deg,var(--senal-10),var(--sup));border:1px solid var(--senal-30);
+    border-radius:18px;box-shadow:var(--e1)}
+  .movil-ofertas-icono{display:grid;place-items:center;flex:none;width:46px;height:46px;border-radius:14px;
+    background:var(--senal);color:#06231A}
+  .movil-ofertas-intro h3,.movil-ofertas-intro p{margin:0}
+  .movil-ofertas-intro h3{font-family:var(--display);font-size:1.03rem;line-height:1.25;letter-spacing:-.025em}
+  .movil-ofertas-intro div>p:last-child{margin-top:4px;color:var(--tx-2);font-size:.77rem;line-height:1.45}
+  #movilPanelRadar .emis-cab{display:grid;gap:12px;margin-bottom:14px}
+  #movilPanelRadar .emis-cab h2{font-size:1.36rem;margin-bottom:6px}
+  #movilPanelRadar .emis-sub{font-size:.82rem;line-height:1.5}
+  #movilPanelRadar .emis-orden{width:100%;align-items:flex-start;flex-direction:column;gap:6px}
+  #movilPanelRadar .emis-orden select{width:100%;min-height:48px;font-size:16px}
+  #movilPanelRadar .emis-filtros{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(-1 * var(--movil-margen));
+    padding:3px var(--movil-margen) 8px;scroll-padding-inline:var(--movil-margen);scroll-snap-type:x proximity;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #movilPanelRadar .emis-filtros::-webkit-scrollbar{display:none}
+  #movilPanelRadar .emis-filtros .f{flex:none;min-height:44px;scroll-snap-align:start}
+  #movilPanelRadar .emis-rejilla{grid-template-columns:minmax(0,1fr);gap:12px}
+  #movilPanelRadar .emis-vacio{min-height:210px;display:flex;flex-direction:column;justify-content:center;padding:30px 20px;
+    border-style:solid;background:linear-gradient(180deg,var(--sup),var(--noche-2))}
+  #movilPanelRadar .emis-vacio::before{content:'0';display:grid;place-items:center;width:48px;height:48px;margin:0 auto 16px;
+    border:1px solid var(--senal-30);border-radius:14px;background:var(--senal-10);color:var(--senal);
+    font-family:var(--mono);font-size:1.15rem}
+  #movilPanelRadar .emis.sin-emisiones .emis-orden,
+  #movilPanelRadar .emis.sin-emisiones .emis-filtros{display:none}
+  .movil-ofertas-futuro{display:block;margin:14px 0 0;padding:12px 13px;border:1px solid var(--linea);
+    border-radius:13px;background:var(--sup);color:var(--tx-3);font-size:.72rem;line-height:1.5}
+  .movil-ofertas-futuro[hidden]{display:none!important}
+  #movilPanelRadar .emis-legal{margin-top:14px;font-size:.7rem;line-height:1.5}
 
   .tool{padding-top:13px;scroll-margin-top:142px}
   .tool-cab{align-items:center;margin-bottom:10px}
@@ -1134,7 +1169,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   .fuentes a{display:inline-flex;align-items:center;min-height:44px;border-radius:12px}
   footer{padding-bottom:calc(34px + env(safe-area-inset-bottom))}
 
-  /* Tarjetas de Siguiendo y Avisos. */
+  /* Tarjetas de Favoritos, Inversiones y Avisos. */
   .movil-resumen,.movil-estado{display:flex;align-items:flex-start;gap:13px;padding:18px;
     background:linear-gradient(180deg,var(--sup),var(--noche-2));border:1px solid var(--linea);
     border-radius:18px;box-shadow:var(--e1)}
@@ -1167,6 +1202,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
     font-family:var(--mono);font-size:2.25rem}
   .movil-vacio h3{margin:0;font-family:var(--display);font-size:1.5rem;line-height:1.15;letter-spacing:-.04em}
   .movil-vacio p{max-width:34ch;margin:12px auto 22px;color:var(--tx-2);font-size:.91rem;line-height:1.6}
+  .movil-vacio-inversiones{min-height:440px;padding-bottom:18px}
   .movil-boton-principal,.movil-boton-secundario,.movil-boton-enlace{min-height:48px;border-radius:12px;
     padding:12px 18px;font-weight:700;cursor:pointer}
   .movil-boton-principal{width:min(100%,310px);border:1px solid var(--senal);background:var(--senal);color:#0A0C12}
@@ -1208,6 +1244,16 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   .movil-menu-fila small{margin-top:3px;color:var(--tx-3);font-size:.72rem;line-height:1.35;font-weight:400}
   .movil-menu-fila i{color:var(--tx-3);font-size:1.7rem;font-style:normal;font-weight:300}
   .movil-nota-final{max-width:38ch;margin:28px auto 0;text-align:center;color:var(--tx-3);font-size:.75rem;line-height:1.55}
+  .movil-cuenta-avisos[hidden]{display:none!important}
+  .movil-cuenta-avisos{display:block}
+  #movilPanelMas.movil-subvista-abierta .movil-mas-cuerpo>:not(#movilVistaAvisos){display:none}
+  .movil-subvista-cabecera{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--linea)}
+  .movil-subvista-cabecera h3{margin:0;font-family:var(--display);font-size:1.3rem;letter-spacing:-.035em}
+  .movil-subvista-volver{display:grid;place-items:center;flex:none;width:48px;height:48px;padding:0;
+    border:1px solid var(--linea-2);border-radius:14px;background:var(--sup);color:var(--senal);
+    font-size:2rem;line-height:1;cursor:pointer}
+  .movil-cuenta-avisos .movil-estado-pasos{margin-bottom:10px}
+  .movil-cuenta-avisos .movil-vacio-compacto{min-height:260px}
 
   /* La ficha de plataforma funciona como una pantalla secundaria de la app:
      cabecera y acciones siempre accesibles, y solo el contenido central

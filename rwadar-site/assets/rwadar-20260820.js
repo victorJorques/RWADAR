@@ -1308,8 +1308,13 @@ function emisionesVisibles(){
 function pintarEmisiones(){
  const caja=document.getElementById('emiLista');if(!caja)return;
  const v=emisionesVisibles();
+ const hayPublicadas=EMI.some(emisionValida);
+ const seccion=document.getElementById('emisiones');
+ const futuro=document.getElementById('movilOfertasFuturo');
+ if(seccion)seccion.classList.toggle('sin-emisiones',!hayPublicadas);
+ if(futuro)futuro.hidden=hayPublicadas;
  if(!v.length){
-  caja.innerHTML=EMI.some(emisionValida)
+  caja.innerHTML=hayPublicadas
    ?'<div class="emis-vacio"><h3>Nada abierto con ese filtro</h3><p>Prueba con otra categoría o vuelve en unos días: el registro cambia cuando verificamos novedades.</p></div>'
    :'<div class="emis-vacio"><h3>Todavía no hay emisiones publicadas</h3><p>Estamos verificando las primeras. Cada una llevará el enlace a su plataforma y la fecha en que comprobamos sus cifras.</p></div>';
   return;
@@ -2729,13 +2734,13 @@ const Cuenta = (function(){
   const lista=$('movilSiguiendoLista'),vacio=$('movilSiguiendoVacio'),masCuenta=$('movilMasCuenta');
   if(numero)numero.textContent=String(cantidad);
   if(masCuenta)masCuenta.textContent=String(cantidad);
-  if(unidad)unidad.textContent=cantidad===1?'plataforma seguida':'plataformas seguidas';
+  if(unidad)unidad.textContent=cantidad===1?'plataforma favorita':'plataformas favoritas';
   if(texto)texto.textContent=identidadConfirmada
-   ?(cantidad?'Tu vigilancia está guardada y puedes gestionarla desde aquí.':'Todavía no vigilas ninguna plataforma.')
-   :'Entra para consultar la vigilancia que tienes guardada.';
-  if(accion)accion.textContent=identidadConfirmada?'Abrir mi lista':'Entrar y abrir mi lista';
+   ?(cantidad?'Tus favoritos están guardados y puedes gestionarlos desde aquí.':'Todavía no has guardado ninguna plataforma.')
+   :'Entra para consultar las plataformas que has guardado.';
+  if(accion)accion.textContent=identidadConfirmada?'Abrir mis favoritos':'Entrar y abrir mis favoritos';
   if(insignia){insignia.textContent=cantidad>99?'99+':String(cantidad);insignia.hidden=!cantidad;}
-  if(tab)tab.setAttribute('aria-label',cantidad?'Siguiendo, '+cantidad:'Siguiendo');
+  if(tab)tab.setAttribute('aria-label',cantidad?'Favoritos, '+cantidad:'Favoritos');
   if(lista&&vacio){
    const seguidas=identidadConfirmada?P.filter(p=>vigiladas.has(p.n)):[];
    const hay=seguidas.length>0;
@@ -2820,7 +2825,7 @@ const Cuenta = (function(){
 /* =================================================================
    SHELL MÓVIL / PWA
    -----------------------------------------------------------------
-   Cuatro pestañas como en la app instalada, sin convertir la web de
+   Cuatro pestañas comunes a iPhone y Android, sin convertir la web de
    escritorio en otra cosa. La composición móvil cambia de jerarquía,
    pero comparte el mismo DOM y estado: no duplica datos, filtros, 3D ni
    lógica de cuenta.
@@ -2830,17 +2835,22 @@ const Movil = (function(){
  const tabs=[...document.querySelectorAll('#movilNav [data-movil-tab]')];
  const paneles=new Map([...document.querySelectorAll('[data-movil-panel]')]
   .map(p=>[p.dataset.movilPanel,p]));
+ const panelBuscar=paneles.get('buscar');
+ const emisiones=document.getElementById('emisiones');
+ const anclaEmisiones=typeof document.createComment==='function'
+  ?document.createComment('rwadar: posición de emisiones en escritorio'):null;
+ if(emisiones&&anclaEmisiones&&emisiones.parentNode)emisiones.parentNode.insertBefore(anclaEmisiones,emisiones);
  const cabEtiqueta=document.getElementById('movilCabeceraEtiqueta');
  const cabTitulo=document.getElementById('movilCabeceraTitulo');
  const cabSub=document.getElementById('movilCabeceraSub');
  const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
  const textos={
-  radar:['RADAR DE ACTIVOS REALES','Explora lo verificado',total+' plataformas · datos contrastados'],
-  siguiendo:['TU SEGUIMIENTO','Plataformas seguidas','Guarda y gestiona lo que quieres vigilar'],
-  avisos:['ESTADO Y NOVEDADES','Avisos claros','Preferencia y entrega son estados distintos'],
-  mas:['CONTROL DE LA PWA','Más','Aprendizaje, cuenta, datos y privacidad']
+  buscar:['EXPLORAR RWADAR','Buscar','Ofertas verificadas · '+total+' plataformas contrastadas'],
+  favoritos:['TU SELECCIÓN','Favoritos','Plataformas guardadas, no inversiones'],
+  inversiones:['SIN DATOS DE OPERACIONES','Inversiones','RWAdar todavía no registra operaciones'],
+  cuenta:['TU ESPACIO','Mi cuenta','Perfil, seguridad, privacidad y preferencias']
  };
- let activa='radar';
+ let activa='buscar';
 
  const reduce=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  function geometria(){
@@ -2849,13 +2859,45 @@ const Movil = (function(){
   requestAnimationFrame(()=>requestAnimationFrame(()=>window.dispatchEvent(new Event('resize'))));
  }
  function cabecera(id){
-  const t=textos[id]||textos.radar;
+  const t=textos[id]||textos.buscar;
   if(cabEtiqueta)cabEtiqueta.textContent=t[0];
   if(cabTitulo)cabTitulo.textContent=t[1];
   if(cabSub)cabSub.textContent=t[2];
  }
+ function ordenarEmisiones(esMovil){
+  if(!emisiones||!panelBuscar)return;
+  if(esMovil){
+   /* Es el mismo #emisiones: pasa a ser el primer nodo de lectura y visual
+      en Buscar. No se clona contenido, no cambia ningún id y WebGL queda
+      montado en su portada. */
+   if(panelBuscar.firstChild!==emisiones)panelBuscar.insertBefore(emisiones,panelBuscar.firstChild);
+  }else if(anclaEmisiones&&anclaEmisiones.parentNode&&anclaEmisiones.nextSibling!==emisiones){
+   anclaEmisiones.parentNode.insertBefore(emisiones,anclaEmisiones.nextSibling);
+  }
+ }
+ function mostrarAvisos(mostrar,enfocar=true){
+  const panel=document.getElementById('movilPanelMas');
+  const vista=document.getElementById('movilVistaAvisos');
+  const abre=document.getElementById('movilAbrirAvisos');
+  if(!panel||!vista||!abre)return;
+  vista.hidden=!mostrar;
+  panel.classList.toggle('movil-subvista-abierta',mostrar);
+  abre.setAttribute('aria-expanded',mostrar?'true':'false');
+  if(!enfocar)return;
+  if(mostrar){
+   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
+   requestAnimationFrame(()=>document.getElementById('movilCerrarAvisos')?.focus({preventScroll:true}));
+  }else abre.focus({preventScroll:true});
+ }
+ function pintarSonidoMovil(){
+  const boton=document.getElementById('movilSonido');
+  const estado=document.getElementById('movilSonidoEstado');
+  if(boton)boton.setAttribute('aria-pressed',Sonido.activo?'true':'false');
+  if(estado)estado.textContent=Sonido.activo?'Activado':'Desactivado';
+ }
  function cambiar(id,opciones){
   if(!media.matches||!paneles.has(id))return;
+  if(id!=='cuenta'||activa==='cuenta')mostrarAvisos(false,false);
   activa=id;
   document.body.dataset.movilPestana=id;
   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!==id;});
@@ -2868,22 +2910,24 @@ const Movil = (function(){
   if(!opciones||opciones.arriba!==false){
    window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   }
-  if(id==='radar')geometria();
+  if(id==='buscar')geometria();
  }
  function adaptar(){
   const esMovil=media.matches;
+  ordenarEmisiones(esMovil);
   if(document.documentElement&&document.documentElement.classList)
    document.documentElement.classList.toggle('movil-ui',esMovil);
-  if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();}
+  if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();pintarSonidoMovil();}
   else{
+   mostrarAvisos(false,false);
    document.body.removeAttribute('data-movil-pestana');
    document.body.classList.remove('movil-teclado');
-   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!=='radar';});
+   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!=='buscar';});
    geometria();
   }
  }
  function ir(destino){
-  cambiar('radar',{arriba:false});
+  cambiar('buscar',{arriba:false});
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
    const objetivo=destino==='top'?document.getElementById('top'):document.getElementById(destino);
    if(objetivo)objetivo.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
@@ -2914,6 +2958,14 @@ const Movil = (function(){
   if(!accion)return;
   if(accion.dataset.movilAction==='ayuda'){e.preventDefault();ir('explain');}
   if(accion.dataset.movilAction==='cuenta'){e.preventDefault();Cuenta.abrirGestion();}
+  if(accion.dataset.movilAction==='avisos'){e.preventDefault();mostrarAvisos(true);}
+  if(accion.dataset.movilAction==='cerrar-avisos'){e.preventDefault();mostrarAvisos(false);}
+  if(accion.dataset.movilAction==='sonido'){
+   e.preventDefault();
+   const interruptor=document.getElementById('snd');
+   if(interruptor)interruptor.click();
+   pintarSonidoMovil();
+  }
  });
  document.addEventListener('focusin',e=>{
   if(media.matches&&e.target.matches&&e.target.matches('input:not([type="range"]),textarea,select'))
@@ -2930,7 +2982,7 @@ const Movil = (function(){
   document.documentElement.classList.toggle('pwa-standalone',standalone);
  if(media.addEventListener)media.addEventListener('change',adaptar);
  else if(media.addListener)media.addListener(adaptar);
- window.addEventListener('pageshow',()=>{adaptar();if(media.matches&&activa==='radar')geometria();});
+ window.addEventListener('pageshow',()=>{adaptar();if(media.matches&&activa==='buscar')geometria();});
  adaptar();
  return {cambiar:cambiar};
 })();
