@@ -1503,7 +1503,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   .movil-cabecera-superior{display:contents}
   .movil-marca{grid-column:1;grid-row:1;justify-self:start;min-height:44px;gap:7px;font-size:1.08rem}
   .movil-marca .mk{width:27px;height:27px}
-  .movil-cabecera-accion{grid-column:3;grid-row:1;justify-self:end;width:40px;height:40px;background:var(--m-material);
+  .movil-cabecera-accion{grid-column:3;grid-row:1;justify-self:end;width:44px;height:44px;background:var(--m-material);
     border-color:var(--m-hairline)}
   .movil-cabecera-titulo{grid-column:2;grid-row:1;margin:0;font-size:1.05rem;font-weight:680;
     max-width:min(39vw,150px);overflow:hidden;letter-spacing:-.025em;text-align:center;
@@ -1561,7 +1561,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   #movilPanelRadar .tool-cab p{max-width:33ch;margin:6px 0 0;font-size:.8rem;line-height:1.4}
   #movilPanelRadar .vista{width:auto;min-width:132px;grid-template-columns:1fr 1fr;padding:3px;background:var(--m-material);
     border-color:var(--m-hairline);border-radius:12px}
-  #movilPanelRadar .vista button{min-height:40px;padding:7px 10px;font-family:var(--body);font-size:.76rem;border-radius:9px}
+  #movilPanelRadar .vista button{min-height:44px;padding:7px 10px;font-family:var(--body);font-size:.76rem;border-radius:9px}
   #movilPanelRadar .vista button.on{background:var(--m-raised);color:var(--tx);box-shadow:0 1px 0 rgba(255,255,255,.08) inset}
   #movilPanelRadar>.barra{margin:0;padding:0 var(--movil-margen) 8px}
   #movilPanelRadar .barra-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:0;background:transparent;

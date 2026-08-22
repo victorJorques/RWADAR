@@ -814,12 +814,14 @@ function irPaso(i,manual){
   if(manual && reloj){ clearInterval(reloj); reloj=null;
     const l=document.getElementById('exSteps'); if(l) l.classList.remove('auto'); }
 }
-(function arrancarPasos(){
+function reiniciarPasosAutomaticos(){
   const l=document.getElementById('exSteps'); if(!l) return;
-  if(menos) return;
-  l.className='pasos auto';
+  if(reloj){clearInterval(reloj);reloj=null;}
+  if(menos){l.classList.remove('auto');return;}
+  l.classList.add('auto');
   reloj=setInterval(()=>irPaso((paso+1)%4),5000);
-})();
+}
+reiniciarPasosAutomaticos();
 
 /* =================================================================
    LA CALCULADORA DEL EXPLICADOR
@@ -966,7 +968,7 @@ function pintarRadar(){
       leyenda que le faltaba: se ve de un vistazo qué color es cada tipo
       de activo, sin una tabla aparte. Va en `style` y no en `fill`
       porque un atributo de presentación pierde contra la clase CSS. */
-   +`<rect class="radar-et-zona" x="${(tx-42).toFixed(1)}" y="${(ty-17).toFixed(1)}" width="84" height="34" rx="10" fill="transparent"/>`
+   +`<rect class="radar-et-zona" x="${(tx-48).toFixed(1)}" y="${(ty-22).toFixed(1)}" width="96" height="44" rx="13" fill="transparent"/>`
    +`<text class="radar-et" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" fill="${CATMETA[c].c}">${escHtml(CORTO[c]||c)}</text></g>`;
  });
 
@@ -1011,6 +1013,7 @@ function pintarRadar(){
      puntos donde no había nada. */
   const norm=((ang%360)+360)%360;
   s+=`<g class="blip" tabindex="0" role="button" data-cat="${escHtml(p.cat)}" data-i="${i}"`
+   +` data-x="${x.toFixed(1)}" data-y="${y.toFixed(1)}"`
    +` aria-label="${escHtml(p.n)}. ${escHtml(p.cat)}. Acceso: ${escHtml(p.acceso)}. Abrir ficha.">`
    +`<title>${escHtml(p.n)} · ${escHtml(p.cat)} · ${escHtml(p.acceso)}</title>`
    +`<circle class="halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4" fill="${col}"/>`
@@ -1018,7 +1021,7 @@ function pintarRadar(){
    /* el borde oscuro separa dos puntos que se rocen: sin él, dos colores
       contiguos se funden en una mancha */
    +`<circle class="punto" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.6" fill="${col}" stroke="#0B0A0A" stroke-width="1.4"/>`
-   +`<circle class="zona" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="17" fill="transparent"/>`
+   +`<circle class="zona" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="22" fill="transparent" pointer-events="none"/>`
    +`</g>`;
  });
  svg.innerHTML=`<defs><radialGradient id="gBarrido" cx="0" cy="0.5" r="1">`
@@ -1052,16 +1055,30 @@ function pintarRadar(){
  }
  const deEvento=e=>{const g=e.target.closest?e.target.closest('.blip'):null;
   return g?parseInt(g.dataset.i,10):null;};
+ function masCercano(e){
+  const matriz=svg.getScreenCTM&&svg.getScreenCTM();
+  if(!matriz||!svg.createSVGPoint)return null;
+  let punto;
+  try{
+   punto=svg.createSVGPoint();punto.x=e.clientX;punto.y=e.clientY;
+   punto=punto.matrixTransform(matriz.inverse());
+  }catch{return null;}
+  let mejor=null,distancia=22*22;
+  svg.querySelectorAll('.blip').forEach(g=>{
+   const dx=punto.x-Number(g.dataset.x),dy=punto.y-Number(g.dataset.y),d=dx*dx+dy*dy;
+   if(Number.isFinite(d)&&d<=distancia){distancia=d;mejor=parseInt(g.dataset.i,10);}
+  });
+  return Number.isInteger(mejor)?mejor:null;
+ }
 
- svg.addEventListener('pointerover',e=>{const i=deEvento(e); if(i!=null) lee(i);});
- svg.addEventListener('pointerout',e=>{ if(!e.relatedTarget||!svg.contains(e.relatedTarget)) limpia(); });
+ svg.addEventListener('pointermove',e=>{const i=masCercano(e);i!=null?lee(i):limpia();});
+ svg.addEventListener('pointerleave',limpia);
  svg.addEventListener('focusin',e=>{const i=deEvento(e); if(i!=null) lee(i);});
  svg.addEventListener('focusout',limpia);
  svg.addEventListener('click',e=>{
-  const g=e.target.closest?e.target.closest('.blip'):null;
-  if(g) return openDrawer(parseInt(g.dataset.i,10));
   const et=e.target.closest?e.target.closest('.radar-etg'):null;
-  if(et) filtraDesdeRadar(et.dataset.filtra);
+  if(et)return filtraDesdeRadar(et.dataset.filtra);
+  const i=masCercano(e);if(i!=null)openDrawer(i);
  });
  svg.addEventListener('keydown',e=>{
   const blip=e.target.closest?e.target.closest('.blip'):null;
@@ -1075,8 +1092,7 @@ function pintarRadar(){
    ella: el radar deja de ser una lámina y pasa a ser el índice. */
 function filtraDesdeRadar(cat){
  S2.cat=cat; render();
- const t=document.getElementById('tool');
- if(t&&t.scrollIntoView) t.scrollIntoView();
+ llevaAResultados({categoria:cat,devolverFoco:true});
 }
 
 let S2={cat:"",reg:"",acc:"",tic:"",q:"",view:"grid"};
@@ -1084,6 +1100,21 @@ let compare=[];
 const LIMITE_MOVIL_RESULTADOS=6;
 let movilResultadosExpandidos=false;
 let movilFiltrosAbiertos=false;
+
+function llevaAResultados({categoria='',devolverFoco=false,soloMovil=false}={}){
+ requestAnimationFrame(()=>{
+  const esMovil=Boolean(document.documentElement&&document.documentElement.classList&&
+   document.documentElement.classList.contains('movil-ui'));
+  if(soloMovil&&!esMovil)return;
+  const destino=document.getElementById('plataformasResultados')||document.getElementById('count');
+  if(destino&&destino.scrollIntoView)
+   destino.scrollIntoView({block:'start',behavior:menos?'auto':'smooth'});
+  if(!devolverFoco)return;
+  const equivalente=[...document.querySelectorAll('[data-filtrar-cat]')]
+   .find(nodo=>(nodo.dataset.filtrarCat||'')===categoria);
+  if(equivalente)equivalente.focus({preventScroll:true});
+ });
+}
 
 function actualizarFiltrosMoviles(){
  const boton=document.getElementById('movilFiltrosToggle');
@@ -1141,9 +1172,9 @@ function rellenaRegiones(){
 rellenaRegiones();
 ACCESOS.forEach(a=>document.getElementById('fAcc').add(new Option(a,a)));
 TICKETS.forEach(t=>document.getElementById('fTic').add(new Option(t==="No aplica"?"Entrada: no aplica":"Entrada "+t.toLowerCase(),t)));
-document.getElementById('fReg').onchange=e=>{S2.reg=e.target.value;Sonido.filtro();render()};
-document.getElementById('fAcc').onchange=e=>{S2.acc=e.target.value;Sonido.filtro();render()};
-document.getElementById('fTic').onchange=e=>{S2.tic=e.target.value;Sonido.filtro();render()};
+document.getElementById('fReg').onchange=e=>{S2.reg=e.target.value;Sonido.filtro();render();llevaAResultados({soloMovil:true})};
+document.getElementById('fAcc').onchange=e=>{S2.acc=e.target.value;Sonido.filtro();render();llevaAResultados({soloMovil:true})};
+document.getElementById('fTic').onchange=e=>{S2.tic=e.target.value;Sonido.filtro();render();llevaAResultados({soloMovil:true})};
 document.getElementById('q').oninput=e=>{S2.q=e.target.value.toLowerCase();render()};
 function resetAll(){S2={cat:"",reg:"",acc:"",tic:"",q:"",view:S2.view};movilResultadosExpandidos=false;document.getElementById('q').value='';['fReg','fAcc','fTic'].forEach(i=>document.getElementById(i).value='');render()}
 
@@ -1164,7 +1195,7 @@ function filtered(){
   return true;
  }).sort((a,b)=>a.n.localeCompare(b.n,'es'));
 }
-function setView(v){S2.view=v;['vGrid','vMat'].forEach((id,i)=>{const b=document.getElementById(id),on=(i===0)===(v==='grid');b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')});render()}
+function setView(v){S2.view=v;['vGrid','vMat'].forEach((id,i)=>{const b=document.getElementById(id),on=(i===0)===(v==='grid');b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')});render();llevaAResultados({soloMovil:true})}
 
 function render(){
  document.getElementById('pills').innerHTML=
@@ -2774,6 +2805,28 @@ const Movil = (function(){
  let modoMovilPrevio=media.matches;
 
  const reduce=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const visible=nodo=>Boolean(nodo&&nodo.isConnected&&nodo.getClientRects&&nodo.getClientRects().length);
+ const enVista=nodo=>{
+  if(!visible(nodo)||!nodo.getBoundingClientRect)return false;
+  const r=nodo.getBoundingClientRect();
+  return r.bottom>0&&r.top<window.innerHeight&&r.right>0&&r.left<window.innerWidth;
+ };
+ function devolverFoco(origen,alternativo){
+  const destino=visible(origen)?origen:alternativo;
+  if(!visible(destino))return;
+  setTimeout(()=>{
+   if(!visible(destino))return;
+   if(!enVista(destino)&&destino.scrollIntoView)
+    destino.scrollIntoView({block:'center',behavior:'auto'});
+   destino.focus({preventScroll:true});
+  },60);
+ }
+ function estadoBaseSubvista(){
+  const estado=typeof history!=='undefined'&&history.state&&typeof history.state==='object'
+   ?{...history.state}:{};
+  delete estado.rwadarDetalle;delete estado.rwadarAcademy;delete estado.rwadarAvisos;
+  return estado;
+ }
  function geometria(){
   /* hidden deja canvas y SVG a ancho cero. Dos fotogramas permiten que
      el navegador recomponga antes de que WebGL vuelva a medir. */
@@ -2825,7 +2878,7 @@ const Movil = (function(){
   cabecera('buscar');
   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   const origen=academyOrigen;academyOrigen=null;
-  if(enfocar&&origen&&origen.isConnected)setTimeout(()=>origen.focus({preventScroll:true}),40);
+  if(enfocar)devolverFoco(origen,document.getElementById('q')||document.getElementById('movilTabRadar'));
  }
  function mostrarAcademy(mostrar,enfocar=true,gestionarHistorial=true,origen=null){
   if(!media.matches||!academia||!panelBuscar)return;
@@ -2840,9 +2893,9 @@ const Movil = (function(){
        seguir contando mientras la subvista está oculta, pero nunca debe
        recibir a la persona en el último paso sin haberlo elegido. */
     if(typeof irPaso==='function')irPaso(0,false);
+    if(typeof reiniciarPasosAutomaticos==='function')reiniciarPasosAutomaticos();
     if(gestionarHistorial&&typeof history!=='undefined'&&history.pushState){
-     const previo=history.state&&typeof history.state==='object'?history.state:{};
-     history.pushState({...previo,rwadarAcademy:true},'',location.href);academyHistorial=true;
+     history.pushState({...estadoBaseSubvista(),rwadarAcademy:true},'',location.href);academyHistorial=true;
     }
    }
    window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});geometria();
@@ -2853,16 +2906,24 @@ const Movil = (function(){
   }
  }
  function abrirAcademyDesde(origen){
+  if(academyAbierta){
+   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
+   setTimeout(()=>document.getElementById('movilCerrarAcademy')?.focus({preventScroll:true}),60);
+   return;
+  }
   /* Si Academy sustituye a un detalle abierto, reutiliza la misma entrada
      del historial. Así Atrás vuelve una sola vez a Buscar y el popstate del
      detalle anterior no cierra la lección recién abierta. */
   const sustituyeDetalle=detalleAbierto&&detalleHistorial&&history.state&&
    history.state.rwadarDetalle===detalleAbierto;
+  const vistaAvisos=document.getElementById('movilVistaAvisos');
+  const sustituyeAvisos=vistaAvisos&&!vistaAvisos.hidden&&avisosHistorial&&history.state&&
+   history.state.rwadarAvisos===true;
   if(detalleAbierto)cerrarDetalleVisual(false);
+  if(vistaAvisos&&!vistaAvisos.hidden){avisosHistorial=false;mostrarAvisos(false,false,false);}
   cambiar('buscar',{arriba:false});
-  if(sustituyeDetalle&&typeof history!=='undefined'&&history.replaceState){
-   const estado={...(history.state&&typeof history.state==='object'?history.state:{})};
-   delete estado.rwadarDetalle;estado.rwadarAcademy=true;
+  if((sustituyeDetalle||sustituyeAvisos)&&typeof history!=='undefined'&&history.replaceState){
+   const estado={...estadoBaseSubvista(),rwadarAcademy:true};
    history.replaceState(estado,'',location.href);
    mostrarAcademy(true,true,false,origen);academyHistorial=true;
   }else mostrarAcademy(true,true,true,origen);
@@ -2889,7 +2950,8 @@ const Movil = (function(){
   cabecera('buscar');
   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   const origen=detalleOrigen;detalleOrigen=null;
-  if(enfocar&&origen&&origen.isConnected)setTimeout(()=>origen.focus({preventScroll:true}),40);
+  const alternativo=document.getElementById('q')||document.getElementById('movilTabRadar');
+  if(enfocar)devolverFoco(origen,alternativo);
   return anterior;
  }
  function mostrarDetalle(id,enfocar=true,gestionarHistorial=true,origen=null){
@@ -2911,23 +2973,21 @@ const Movil = (function(){
    b.setAttribute('aria-expanded',b.dataset.movilDetalle===id?'true':'false'));
   cabeceraDetalle(id);
   if(gestionarHistorial&&typeof history!=='undefined'&&history.pushState){
-   const previo=history.state&&typeof history.state==='object'?history.state:{};
-   history.pushState({...previo,rwadarDetalle:id},'',location.href);detalleHistorial=true;
+   history.pushState({...estadoBaseSubvista(),rwadarDetalle:id},'',location.href);detalleHistorial=true;
   }
   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});geometria();
   if(enfocar)setTimeout(()=>objetivo.querySelector('.movil-subvista-volver')?.focus({preventScroll:true}),60);
  }
- function mostrarAvisos(mostrar,enfocar=true){
+ function mostrarAvisos(mostrar,enfocar=true,gestionarHistorial=true){
   const panel=document.getElementById('movilPanelMas');
   const vista=document.getElementById('movilVistaAvisos');
   const abre=document.getElementById('movilAbrirAvisos');
   if(!panel||!vista||!abre)return;
   const estabaAbierta=!vista.hidden;
-  if(mostrar&&!estabaAbierta&&media.matches&&typeof history!=='undefined'&&history.pushState){
-   const previo=history.state&&typeof history.state==='object'?history.state:{};
-   history.pushState({...previo,rwadarAvisos:true},'',location.href);avisosHistorial=true;
+  if(mostrar&&!estabaAbierta&&gestionarHistorial&&media.matches&&typeof history!=='undefined'&&history.pushState){
+   history.pushState({...estadoBaseSubvista(),rwadarAvisos:true},'',location.href);avisosHistorial=true;
   }
-  if(!mostrar&&estabaAbierta&&avisosHistorial&&history.state&&history.state.rwadarAvisos===true){
+  if(!mostrar&&estabaAbierta&&gestionarHistorial&&avisosHistorial&&history.state&&history.state.rwadarAvisos===true){
    avisosHistorial=false;history.back();if(enfocar)return;
   }
   vista.hidden=!mostrar;
@@ -3072,14 +3132,36 @@ const Movil = (function(){
   const avisos=document.getElementById('movilVistaAvisos');
   if(avisos&&!avisos.hidden){e.preventDefault();mostrarAvisos(false);}
  });
- window.addEventListener('popstate',()=>{
-  if(detalleAbierto&&!(history.state&&history.state.rwadarDetalle===detalleAbierto))cerrarDetalleVisual(true);
-  if(academyAbierta&&!(history.state&&history.state.rwadarAcademy===true))cerrarAcademyVisual(true);
-  const avisos=document.getElementById('movilVistaAvisos');
-  if(avisos&&!avisos.hidden&&!(history.state&&history.state.rwadarAvisos===true)){
-   avisosHistorial=false;mostrarAvisos(false,true);
+ function reconciliarEstadoSubvista(enfocar=true){
+  if(!media.matches)return;
+  const estado=history.state&&typeof history.state==='object'?history.state:{};
+  if(estado.rwadarDetalle&&detalles.has(estado.rwadarDetalle)){
+   if(detalleAbierto!==estado.rwadarDetalle){
+    if(detalleAbierto)cerrarDetalleVisual(false);
+    if(academyAbierta)cerrarAcademyVisual(false);
+    cambiar('buscar',{arriba:false});
+    const origen=document.querySelector('[data-movil-action="detalle"][data-movil-detalle="'+estado.rwadarDetalle+'"]');
+    mostrarDetalle(estado.rwadarDetalle,enfocar,false,origen);detalleHistorial=true;
+   }
+  }else if(estado.rwadarAcademy===true){
+   if(!academyAbierta){
+    if(detalleAbierto)cerrarDetalleVisual(false);
+    cambiar('buscar',{arriba:false});
+    mostrarAcademy(true,enfocar,false,document.getElementById('movilAbrirAcademy'));academyHistorial=true;
+   }
+  }else{
+   if(detalleAbierto)cerrarDetalleVisual(enfocar);
+   if(academyAbierta)cerrarAcademyVisual(enfocar);
   }
- });
+  const avisos=document.getElementById('movilVistaAvisos');
+  if(avisos&&avisos.hidden&&estado.rwadarAvisos===true){
+   cambiar('cuenta',{arriba:false});
+   mostrarAvisos(true,enfocar,false);avisosHistorial=true;
+  }else if(avisos&&!avisos.hidden&&estado.rwadarAvisos!==true){
+   avisosHistorial=false;mostrarAvisos(false,enfocar,false);
+  }
+ }
+ window.addEventListener('popstate',()=>reconciliarEstadoSubvista(true));
  const standalone=(typeof navigator!=='undefined'&&navigator.standalone===true)||
   window.matchMedia('(display-mode: standalone)').matches;
  if(document.documentElement&&document.documentElement.classList)
@@ -3091,7 +3173,14 @@ const Movil = (function(){
      (por ejemplo, al pasar de una ventana compacta a una grande). */
   if(media.matches!==modoMovilPrevio)adaptar();
  });
- window.addEventListener('pageshow',()=>{adaptar();if(media.matches&&activa==='buscar')geometria();});
+ window.addEventListener('pageshow',e=>{
+  /* BFCache conserva DOM y variables. Repetir adaptar() en ese caso
+     cerraría una subvista válida y podría lanzar un history.back() antes
+     de reconciliarla. Solo se recompone si hubo carga real o cambió el
+     breakpoint mientras la página estaba aparcada. */
+  if(!e.persisted||media.matches!==modoMovilPrevio)adaptar();
+  if(media.matches){reconciliarEstadoSubvista(false);if(activa==='buscar')geometria();}
+ });
  adaptar();
  return {cambiar:cambiar};
 })();

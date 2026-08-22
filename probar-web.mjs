@@ -552,7 +552,7 @@ function cambioTabsMovilEsCoherente(codigo) {
 }
 
 function subvistaAvisosConservaEstadoYFoco(codigo) {
-  const inicio = codigo.indexOf('function mostrarAvisos(mostrar,enfocar=true){');
+  const inicio = codigo.indexOf('function mostrarAvisos(mostrar,enfocar=true,gestionarHistorial=true){');
   const fin = codigo.indexOf('function pintarSonidoMovil(){', inicio);
   if (inicio < 0 || fin < 0) return false;
   const fuente = codigo.slice(inicio, fin);
@@ -845,9 +845,16 @@ const ofertasEnMovil = declaracionesCSS(cssMovil, '#movilPanelRadar>.emis').join
 const ofertasOrdenEnMovil = declaracionesCSS(cssMovil, '#movilPanelRadar .emis-orden select').join(';');
 const menuFilaEnMovil = declaracionesCSS(cssMovil, '.movil-menu-fila').join(';');
 const volverAvisosEnMovil = declaracionesCSS(cssMovil, '.movil-subvista-volver').join(';');
+const cabeceraAccionEnMovil = declaracionesCSS(cssMovil, '.movil-cabecera-accion').join(';');
+const vistasRadarEnMovil = declaracionesCSS(cssMovil, '#movilPanelRadar .vista button').join(';');
 const cssMuyEstrecho = mediasCSS.filter(media => /max-width\s*:\s*359px/i.test(media.consulta))
   .map(media => media.contenido).join('\n');
 const altoMinimo = Number((itemEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0);
+const minimoPx = (reglas, propiedad) => {
+  const valores = [...reglas.matchAll(new RegExp(`${propiedad}\\s*:\\s*([\\d.]+)px`, 'gi'))]
+    .map(coincidencia => Number(coincidencia[1]));
+  return valores.length ? Math.min(...valores) : 0;
+};
 prueba('el viewport permite aprovechar las áreas seguras de iOS y Android',
   /(?:^|,)\s*viewport-fit\s*=\s*cover\s*(?:,|$)/i.test(viewport));
 prueba('el modo instalado se detecta con el estándar display-mode, no solo con metadatos iOS',
@@ -873,6 +880,18 @@ prueba('las pestañas ofrecen dianas táctiles de al menos 48 px y foco visible'
   altoMinimo >= 48 && declaracionesCSS(css, '.movil-nav-item:focus-visible').length > 0 &&
   declaracionesCSS(css, ':focus-visible')
     .some(declaraciones => /(?:outline|box-shadow)\s*:(?!\s*none)/i.test(declaraciones)));
+prueba('cabecera, selector de vista y radar conservan dianas táctiles suficientes',
+  minimoPx(cabeceraAccionEnMovil, 'width') >= 44 &&
+  minimoPx(cabeceraAccionEnMovil, 'height') >= 44 &&
+  minimoPx(vistasRadarEnMovil, 'min-height') >= 44 &&
+  Number((js.match(/<circle class="zona"[^>]*\br="([\d.]+)"/) || [])[1] || 0) >= 22 &&
+  Number((js.match(/<rect class="radar-et-zona"[^>]*\bheight="([\d.]+)"/) || [])[1] || 0) >= 44);
+prueba('el radar resuelve zonas solapadas por el punto geométricamente más cercano',
+  /class="zona"[^>]*pointer-events="none"/.test(js) &&
+  /function masCercano\(e\)/.test(js) &&
+  /getScreenCTM/.test(js) && /matriz\.inverse\(\)/.test(js) &&
+  /let mejor=null,distancia=22\*22/.test(js) &&
+  /const i=masCercano\(e\);if\(i!=null\)openDrawer\(i\)/.test(js));
 prueba('ofertas, menús y vuelta de Avisos conservan dianas móviles utilizables',
   Number((ofertasOrdenEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
   Number((menuFilaEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
@@ -1078,6 +1097,10 @@ prueba('Academy es una subvista de Buscar sin vídeos ni canvas inventados',
   (html.match(/\bid=["'](?:explain|scene|gl)["']/g) || []).length === 3 &&
   /academyLeccion\.appendChild\(explicador\)/.test(jsSinComentarios) &&
   /rwadarAcademy/.test(jsSinComentarios));
+prueba('Academy vuelve al primer paso y reinicia su ciclo completo al abrirse',
+  /irPaso\(0,false\);\s*if\(typeof reiniciarPasosAutomaticos===['"]function['"]\)reiniciarPasosAutomaticos\(\)/
+    .test(jsSinComentarios) &&
+  /function reiniciarPasosAutomaticos\(\)[\s\S]*?clearInterval\(reloj\)[\s\S]*?setInterval\(\(\)=>irPaso/.test(jsSinComentarios));
 prueba('la información extensa de Buscar usa detalle progresivo sin perder contenido',
   /id="movilTransparencia"/.test(html) &&
   ['presentacion','metodo','fuera'].every(id =>
@@ -1086,6 +1109,26 @@ prueba('la información extensa de Buscar usa detalle progresivo sin perder cont
   /movil-detalle-abierto/.test(jsSinComentarios) &&
   /#movilPanelRadar\.movil-detalle-abierto>\*/.test(cssMovil) &&
   /#movilPanelRadar\.movil-detalle-abierto>\.movil-detalle-activo/.test(cssMovil));
+prueba('Atrás y Adelante restauran las tres subvistas sin mezclar estados',
+  /function estadoBaseSubvista\(\)/.test(codigoShellMovil) &&
+  ['rwadarDetalle','rwadarAcademy','rwadarAvisos'].every(marca =>
+    new RegExp(`delete estado\\.${marca}`).test(codigoShellMovil)) &&
+  /function reconciliarEstadoSubvista\(enfocar=true\)/.test(codigoShellMovil) &&
+  /mostrarDetalle\([^;]+enfocar,false,origen\)/.test(codigoShellMovil) &&
+  /mostrarAcademy\(true,enfocar,false,document\.getElementById\(['"]movilAbrirAcademy['"]\)\)/.test(codigoShellMovil) &&
+  /mostrarAvisos\(true,enfocar,false\)/.test(codigoShellMovil) &&
+  /pageshow[\s\S]*?!e\.persisted\|\|media\.matches!==modoMovilPrevio[\s\S]*?reconciliarEstadoSubvista\(false\)/.test(codigoShellMovil));
+prueba('el cierre devuelve el foco a un control que también queda dentro de pantalla',
+  /getClientRects&&nodo\.getClientRects\(\)\.length/.test(codigoShellMovil) &&
+  /function devolverFoco\(origen,alternativo\)/.test(codigoShellMovil) &&
+  /if\(!enVista\(destino\)&&destino\.scrollIntoView\)/.test(codigoShellMovil) &&
+  /scrollIntoView\(\{block:['"]center['"],behavior:['"]auto['"]\}\)/.test(codigoShellMovil) &&
+  /document\.getElementById\(['"]q['"]\)\|\|document\.getElementById\(['"]movilTabRadar['"]\)/.test(codigoShellMovil));
+prueba('Ayuda sustituye Detalle o Avisos sin encadenar back y push',
+  /if\(academyAbierta\)[\s\S]{0,240}?return/.test(codigoShellMovil) &&
+  /const sustituyeAvisos=[\s\S]{0,180}?rwadarAvisos===true/.test(codigoShellMovil) &&
+  /mostrarAvisos\(false,false,false\)/.test(codigoShellMovil) &&
+  /\(sustituyeDetalle\|\|sustituyeAvisos\)[\s\S]{0,180}?history\.replaceState/.test(codigoShellMovil));
 prueba('el sonido es voluntario, cálido y la animación automática permanece silenciosa',
   /recuerda\.leer\(['"]rwadar\.sonido['"]\)===['"]1['"]/.test(jsSinComentarios) &&
   /function pulsoCalido\(/.test(jsSinComentarios) &&
