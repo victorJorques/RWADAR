@@ -717,35 +717,59 @@
 
 <div class="velo" id="velo"></div>
 
-<div class="cuenta-caja" id="cuentaCaja" role="dialog" aria-modal="true" aria-labelledby="cuentaTit" inert>
-  <button class="cerrar-x" id="cuentaX" aria-label="Cerrar">✕</button>
-  <h3 id="cuentaTit">Entrar</h3>
-  <p class="sub" id="cuentaSub">Para vigilar plataformas y que te avisemos si alguna cae del radar.</p>
-  <div class="cuenta-msj" id="cuentaMsj" role="status"></div>
-  <form id="cuentaForm" novalidate>
-    <div id="campoNombre" hidden>
-      <label for="cNombre">Nombre público (opcional)</label>
-      <input id="cNombre" type="text" autocomplete="name" maxlength="60">
-    </div>
-    <div id="campoCorreo">
-      <label for="cCorreo">Correo electrónico</label>
-      <input id="cCorreo" type="email" autocomplete="email" required>
-    </div>
-    <div id="campoClave">
-      <label for="cClave" id="etiquetaClave">Contraseña</label>
-      <input id="cClave" type="password" autocomplete="current-password" required minlength="12">
-    </div>
-    <div id="campoClave2" hidden>
-      <label for="cClave2">Repite la contraseña nueva</label>
-      <input id="cClave2" type="password" autocomplete="new-password" minlength="12">
-    </div>
-    <button class="principal" id="cuentaEnviar" type="submit">Entrar</button>
-  </form>
-  <div class="enlaces">
-    <button type="button" id="irRecuperar">He olvidado la contraseña</button>
-    <button type="button" id="irCambiar">Crear una cuenta</button>
+<div class="cuenta-caja" id="cuentaCaja" role="dialog" aria-modal="true" aria-labelledby="cuentaTit" tabindex="-1" inert>
+  <div class="cuenta-cabecera">
+    <button class="cerrar-x" id="cuentaX" type="button" aria-label="Cerrar cuenta">✕</button>
+    <h3 id="cuentaTit">Entrar</h3>
+    <p class="sub" id="cuentaSub">Para vigilar plataformas y que te avisemos si alguna cae del radar.</p>
   </div>
-  <p class="legal-chica" id="cuentaLegal" hidden>Al crear la cuenta aceptas el tratamiento necesario para prestarte el servicio, explicado en la <a href="/privacidad">política de privacidad</a>. Si publicas una opinión, tu nombre se mostrará junto a ella; si lo dejas vacío aparecerás como «Anónimo». La cuenta es opcional y puedes borrarla cuando quieras.</p>
+  <div class="cuenta-contenido">
+    <div class="cuenta-msj" id="cuentaMsj" role="status"></div>
+    <form id="cuentaForm" novalidate>
+      <div id="campoNombre" hidden>
+        <label for="cNombre">Nombre público (opcional)</label>
+        <input id="cNombre" name="name" type="text" autocomplete="name" maxlength="60">
+      </div>
+      <div id="campoCorreo">
+        <label for="cCorreo">Correo electrónico</label>
+        <input id="cCorreo" name="email" type="email" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" required>
+      </div>
+      <div id="campoClave">
+        <label for="cClave" id="etiquetaClave">Contraseña</label>
+        <input id="cClave" name="password" type="password" autocomplete="current-password" autocapitalize="none" aria-describedby="claveAyuda" required minlength="12">
+        <p class="campo-ayuda" id="claveAyuda">Mínimo 12 caracteres.</p>
+      </div>
+      <div id="campoClave2" hidden>
+        <label for="cClave2">Repite la contraseña nueva</label>
+        <input id="cClave2" name="password-confirmation" type="password" autocomplete="new-password" autocapitalize="none" aria-describedby="claveAyuda" minlength="12">
+      </div>
+      <button class="principal" id="cuentaEnviar" type="submit">Entrar</button>
+    </form>
+    <div class="enlaces" id="cuentaEnlaces">
+      <button type="button" id="irRecuperar">He olvidado la contraseña</button>
+      <button type="button" id="irCambiar">Crear una cuenta</button>
+    </div>
+    <p class="legal-chica" id="cuentaLegal" hidden>Al crear la cuenta aceptas el tratamiento necesario para prestarte el servicio, explicado en la <a href="/privacidad">política de privacidad</a>. Si publicas una opinión, tu nombre se mostrará junto a ella; si lo dejas vacío aparecerás como «Anónimo». La cuenta es opcional y puedes borrarla cuando quieras.</p>
+
+    <section class="cuenta-estado" id="cuentaEstado" aria-labelledby="cuentaEstadoMarca" tabindex="-1" hidden>
+      <p class="cuenta-estado-marca" id="cuentaEstadoMarca">Solicitud recibida</p>
+      <p class="cuenta-estado-texto" id="cuentaEstadoTexto">La solicitud se ha recibido. Aquí verás qué falta para poder entrar.</p>
+      <p class="cuenta-estado-correo" id="cuentaEstadoCorreo" aria-label="Correo de la solicitud"></p>
+      <ol class="cuenta-estado-pasos" aria-label="Estado del registro">
+        <li class="hecho"><span aria-hidden="true">✓</span><div><b>Solicitud</b><small id="cuentaPaso1">Solicitud aceptada.</small></div></li>
+        <li><span aria-hidden="true">2</span><div><b>Confirmación</b><small id="cuentaPaso2">Confirmación pendiente.</small></div></li>
+        <li><span aria-hidden="true">3</span><div><b>Entrada</b><small id="cuentaPaso3">Después vuelve aquí e inicia sesión.</small></div></li>
+      </ol>
+      <div class="cuenta-estado-acciones">
+        <button class="cuenta-estado-principal" id="cuentaEstadoEntrar" type="button">Ya lo he confirmado · Entrar</button>
+        <button id="cuentaReenviar" type="button">Reintentar solicitud</button>
+        <button id="cuentaCambiarCorreo" type="button">Cambiar correo</button>
+        <button id="cuentaVolver" type="button">Volver al radar</button>
+      </div>
+    </section>
+
+    <p class="cuenta-pie">La cuenta es opcional y está reservada a mayores de 18 años. Consulta la <a href="/privacidad">política de privacidad</a>.</p>
+  </div>
 </div>
 
 <aside class="panel" id="perfilPanel" role="dialog" aria-modal="true" aria-label="Tu cuenta" inert>

@@ -51,6 +51,152 @@ async function capturaError(promesa) {
   catch (e) { return e; }
 }
 
+async function authRechazaJson2xxInvalido(codigo) {
+  const inicio = codigo.indexOf('async function auth(');
+  const fin = codigo.indexOf('function traduce(', inicio);
+  if (inicio < 0 || fin < 0) return false;
+  const fuente = codigo.slice(inicio, fin);
+  const fabrica = new Function('fetch', 'CLAVE_PUB', `
+    const AUTH='https://auth.invalid';
+    const traduce=mensaje=>mensaje;
+    ${fuente}
+    return auth;
+  `);
+  const auth = fabrica(async()=>({
+    ok:true,status:200,
+    async text(){ return '<!doctype html>'; },
+  }), 'sb_publishable_prueba');
+  const error = await capturaError(auth('/signup', { email:'persona@example.test' }));
+  return /respuesta de autenticaci[oó]n no es v[aá]lida/i.test(error?.message || '');
+}
+
+function nodoCuentaPrueba(id, valores) {
+  const atributos = new Map();
+  const clases = new Set();
+  return {
+    id, value:valores[id] || '', textContent:'', className:'', hidden:false,
+    required:false, autocomplete:'', disabled:false, focused:false,
+    classList:{
+      contains:clase=>clases.has(clase),
+      add:(...nombres)=>nombres.forEach(nombre=>clases.add(nombre)),
+      remove:(...nombres)=>nombres.forEach(nombre=>clases.delete(nombre)),
+    },
+    setAttribute:(nombre, valor='')=>atributos.set(nombre, String(valor)),
+    removeAttribute:nombre=>atributos.delete(nombre),
+    getAttribute:nombre=>atributos.get(nombre) ?? null,
+    focus(){ this.focused=true; },
+  };
+}
+
+function estadoPendienteOcultaFormulario(codigo) {
+  const inicio = codigo.indexOf('const TEXTOS={');
+  const fin = codigo.indexOf('function cerrar(){', inicio);
+  if (inicio < 0 || fin < 0) return false;
+  const fuente = codigo.slice(inicio, fin);
+  const nodos = new Map();
+  const valores = { cClave:'secreto principal', cClave2:'secreto repetido' };
+  const $ = id => {
+    if (!nodos.has(id)) nodos.set(id, nodoCuentaPrueba(id, valores));
+    return nodos.get(id);
+  };
+  const clasesCuerpo = new Set();
+  const document = {
+    activeElement:{ focus(){} },
+    body:{ classList:{ add:nombre=>clasesCuerpo.add(nombre) } },
+    querySelector(){ return null; },
+  };
+  const fabrica = new Function('$', 'document', 'matchMedia', 'setTimeout', 'clearTimeout',
+    'fondo', 'closeAll', 'msj', `
+      const CORREO_AUTH_E2E=true;
+      let modo='entrar',correoPendiente='persona@example.test',operacionCuenta=0,
+          temporizadorReenvio=null,focoCuenta=null;
+      ${fuente}
+      return {abrir};
+    `);
+  const api = fabrica($, document, ()=>({matches:true}), fn=>{ fn(); return 1; }, ()=>{},
+    ()=>[], ()=>{}, ()=>{});
+  api.abrir('confirmacion_pendiente');
+  return $('cuentaForm').hidden === true && $('cuentaEnlaces').hidden === true &&
+    $('cuentaEstado').hidden === false && $('cClave').value === '' && $('cClave2').value === '' &&
+    $('cuentaEstadoCorreo').textContent === 'persona@example.test' &&
+    $('cuentaReenviar').hidden === false && $('cuentaCambiarCorreo').hidden === false &&
+    $('cuentaEstadoEntrar').textContent.includes('Entrar') && $('cuentaCaja').focused === true;
+}
+
+function arnesEnvioRegistro(codigo) {
+  const inicio = codigo.indexOf('async function enviar(e){');
+  const fin = codigo.indexOf('async function reenviarConfirmacion(){', inicio);
+  if (inicio < 0 || fin < 0) throw new Error('no se encuentra enviar de Cuenta');
+  const fuente = codigo.slice(inicio, fin);
+  const nodos = new Map();
+  const valores = {
+    cCorreo:'persona@example.test', cClave:'contraseña-larga-segura', cNombre:'Persona', cClave2:'',
+  };
+  const $ = id => {
+    if (!nodos.has(id)) nodos.set(id, nodoCuentaPrueba(id, valores));
+    return nodos.get(id);
+  };
+  let resolver;
+  const respuesta = new Promise(resuelve=>{ resolver=resuelve; });
+  const aperturas = [], mensajes = [];
+  let entradas = 0, limpiezas = 0;
+  const fabrica = new Function('$', 'auth', 'abrir', 'entrarCon', 'testigo',
+    'limpiaErroresCuenta', 'msj', 'limpiaSecretos', 'errorCuenta', 'correoValido', 'location', `
+      const CORREO_AUTH_E2E=true;
+      let modo='registro',operacionCuenta=0,correoPendiente='';
+      ${fuente}
+      return {enviar,invalidar(){operacionCuenta++;modo='entrar';}};
+    `);
+  const api = fabrica($, ()=>respuesta, modo=>aperturas.push(modo), async()=>{ entradas++; },
+    async()=>'testigo', ()=>{}, texto=>{ if (texto) mensajes.push(texto); }, ()=>{
+      limpiezas++;$('cClave').value='';$('cClave2').value='';
+    }, (texto,campo)=>{ const e=new Error(texto);e.campo=campo;return e; },
+    valor=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor), {origin:'https://rwadar.example'});
+  const ejecucion = api.enviar({ preventDefault(){} });
+  return { api, resolver, ejecucion, nodos, aperturas, mensajes,
+    entradas:()=>entradas, limpiezas:()=>limpiezas };
+}
+
+async function altaSinUsuarioValidoFallaCerrada(codigo) {
+  const pruebaAlta = arnesEnvioRegistro(codigo);
+  pruebaAlta.resolver({ id:'usuario-sin-correo' });
+  await pruebaAlta.ejecucion;
+  return pruebaAlta.aperturas.length === 0 && pruebaAlta.entradas() === 0 &&
+    pruebaAlta.mensajes.some(m=>/alta no es v[aá]lida/i.test(m)) && pruebaAlta.limpiezas() === 1;
+}
+
+async function operacionCuentaObsoletaNoMutaVista(codigo) {
+  const pruebaAlta = arnesEnvioRegistro(codigo);
+  pruebaAlta.api.invalidar();
+  pruebaAlta.resolver({ id:'usuario-válido', email:'persona@example.test' });
+  await pruebaAlta.ejecucion;
+  return pruebaAlta.aperturas.length === 0 && pruebaAlta.entradas() === 0 &&
+    pruebaAlta.mensajes.length === 0 && pruebaAlta.limpiezas() === 1 &&
+    pruebaAlta.nodos.get('cuentaEnviar')?.disabled === true;
+}
+
+async function confirmarIdentidadLimpiaSesionAnteFallos(codigo) {
+  const inicio = codigo.indexOf('async function confirmarIdentidad(){');
+  const fin = codigo.indexOf('async function rest(', inicio);
+  if (inicio < 0 || fin < 0) return false;
+  const fuente = codigo.slice(inicio, fin);
+  const ejecutar = async auth => {
+    const fabrica = new Function('testigo', 'auth', `
+      let ses={access_token:'testigo'},versionSesion=1,identidadConfirmada=true,pintadas=0;
+      const guarda=s=>{ses=s;versionSesion++;};
+      const pinta=()=>{pintadas++;};
+      ${fuente}
+      return {confirmarIdentidad,estado:()=>({ses,identidadConfirmada,pintadas})};
+    `);
+    const api = fabrica(async()=>'testigo', auth);
+    const resultado = await api.confirmarIdentidad();
+    const estado = api.estado();
+    return resultado === false && estado.ses === null && estado.identidadConfirmada === false && estado.pintadas === 1;
+  };
+  return await ejecutar(async()=>{ throw new Error('red caída'); }) &&
+    await ejecutar(async()=>({ email:'sin-id@example.test' }));
+}
+
 function pruebaInstalacionAtomica(codigo) {
   const escuchas = {};
   let saltos = 0;
@@ -420,6 +566,40 @@ prueba('la recuperación limpia el fragmento y abre cambio de contraseña',
 prueba('la recuperación cambia la contraseña autenticada con PUT /user',
   /auth\('\/user',\{password:clave\},\{metodo:'PUT',token:tk\}\)/.test(js));
 
+const inicioCuentaHTML = html.search(/<div\b[^>]*\bid=["']cuentaCaja["'][^>]*>/i);
+const finCuentaHTML = html.search(/<aside\b[^>]*\bid=["']perfilPanel["'][^>]*>/i);
+const cuentaHTML = inicioCuentaHTML >= 0 && finCuentaHTML > inicioCuentaHTML
+  ? html.slice(inicioCuentaHTML, finCuentaHTML) : '';
+const cuentaEstadoHTML = (cuentaHTML.match(
+  /<section\b[^>]*\bid=["']cuentaEstado["'][^>]*>[\s\S]*?<\/section>/i) || [''])[0];
+const botonesCuentaEstado = [...cuentaEstadoHTML.matchAll(/<button\b([^>]*)>[\s\S]*?<\/button>/gi)];
+prueba('la cuenta tiene una vista de estado accesible separada del formulario',
+  /id=["']cuentaCaja["'][^>]*role=["']dialog["'][^>]*aria-modal=["']true["'][^>]*tabindex=["']-1["']/i.test(cuentaHTML) &&
+  /id=["']cuentaForm["']/.test(cuentaHTML) && /id=["']cuentaEnlaces["']/.test(cuentaHTML) &&
+  /id=["']cuentaEstado["'][^>]*aria-labelledby=["']cuentaEstadoMarca["'][^>]*tabindex=["']-1["'][^>]*hidden/i.test(cuentaEstadoHTML));
+prueba('la vista de estado ofrece solo botones explícitos y accionables',
+  botonesCuentaEstado.length === 4 &&
+  ['cuentaEstadoEntrar','cuentaReenviar','cuentaCambiarCorreo','cuentaVolver'].every(id =>
+    botonesCuentaEstado.some(b => atributoHTML(b[1], 'id') === id && atributoHTML(b[1], 'type') === 'button')));
+prueba('abrir una confirmación pendiente oculta el formulario y borra las contraseñas',
+  estadoPendienteOcultaFormulario(js));
+prueba('Auth rechaza una respuesta 2xx cuyo cuerpo no sea JSON válido',
+  await authRechazaJson2xxInvalido(js));
+prueba('un signup sin usuario raíz válido nunca se presenta como alta aceptada',
+  await altaSinUsuarioValidoFallaCerrada(js));
+prueba('el reenvío de confirmación usa /resend con type signup y no promete entrega',
+  /auth\('\/resend\?redirect_to='\+vuelta,\{type:'signup',email:correoPendiente\}\)/.test(js) &&
+  /solicitud de reenvío fue aceptada[^']*no confirma la entrega/i.test(js));
+prueba('una operación de cuenta obsoleta no muta la vista que la sustituyó',
+  await operacionCuentaObsoletaNoMutaVista(js) &&
+  (js.match(/if\(operacion!==operacionCuenta\|\|modo!==modoEnvio\)return;/g) || []).length >= 4 &&
+  /if\(operacion===operacionCuenta&&modo===modoEnvio\)/.test(js));
+prueba('confirmar la identidad elimina la sesión ante cualquier fallo de revalidación',
+  await confirmarIdentidadLimpiaSesionAnteFallos(js));
+prueba('el callback solo acepta signup o recovery y borra cualquier otro testigo',
+  /acceso\s*&&\s*!\[\s*['"]signup['"]\s*,\s*['"]recovery['"]\s*\]\.includes\(tipo\)/.test(js) &&
+  /acceso\s*&&\s*!\[[^\]]+\]\.includes\(tipo\)\)\{\s*guarda\(null\);identidadConfirmada=false;/.test(js));
+
 const bloqueConsentimientoCorreo = (js.match(
   /\/\* correo-consentimiento:inicio \*\/[\s\S]*?\/\* correo-consentimiento:fin \*\//) || [])[0] || '';
 const contratoCorreo = new Function(`${bloqueConsentimientoCorreo}\nreturn {
@@ -560,6 +740,13 @@ const drawerAccionesBase = declaracionesCSS(cssBase, '.pn-acciones-movil').join(
 const drawerWebEscritorioEnMovil = declaracionesCSS(cssMovil, '#drawer .pn-web-escritorio').join(';');
 const drawerAccionesConTeclado = declaracionesCSS(cssMovil,
   'body.movil-teclado #drawer .pn-acciones-movil').join(';');
+const cuentaCajaEnMovil = declaracionesCSS(cssMovil, '.cuenta-caja').join(';');
+const cuentaContenidoEnMovil = declaracionesCSS(cssMovil, '.cuenta-contenido').join(';');
+const cuentaInputEnMovil = declaracionesCSS(cssMovil, '.cuenta-caja input').join(';');
+const cuentaCerrarBase = declaracionesCSS(cssBase, '.cuenta-caja .cerrar-x').join(';');
+const cuentaCerrarEnMovil = declaracionesCSS(cssMovil, '.cuenta-caja .cerrar-x').join(';');
+const cuentaAutofill = declaracionesCSS(cssBase, '.cuenta-caja input:-webkit-autofill').join(';');
+const cuentaAutofillFoco = declaracionesCSS(cssBase, '.cuenta-caja input:-webkit-autofill:focus').join(';');
 const altoMinimo = Number((itemEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0);
 prueba('el viewport permite aprovechar las áreas seguras de iOS y Android',
   /(?:^|,)\s*viewport-fit\s*=\s*cover\s*(?:,|$)/i.test(viewport));
@@ -585,6 +772,30 @@ prueba('contenido, comparador y avisos reservan sitio sobre la barra y el área 
   /padding-bottom\s*:[^;{}]*(?:safe-area-inset-bottom|var\(\s*--movil-[^)]+\))/i.test(cuerpoEnMovil) &&
   /bottom\s*:[^;{}]*(?:safe-area-inset-bottom|var\(\s*--movil-[^)]+\))/i.test(compararEnMovil) &&
   /bottom\s*:[^;{}]*(?:safe-area-inset-bottom|var\(\s*--movil-[^)]+\))/i.test(avisoEnMovil));
+prueba('la cuenta móvil evita zoom de iOS y conserva dianas táctiles de 48 px',
+  Number((cuentaInputEnMovil.match(/font-size\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 16 &&
+  Number((cuentaInputEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
+  [cuentaCerrarBase, cuentaCerrarEnMovil].every(reglas =>
+    Number((reglas.match(/width\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
+    Number((reglas.match(/height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48));
+prueba('la hoja de cuenta respeta safe-area superior e inferior y mantiene el cuerpo desplazable',
+  /(?:inset|top)\s*:[^;{}]*env\(\s*safe-area-inset-top\s*\)/i.test(cuentaCajaEnMovil) &&
+  /overflow\s*:\s*hidden/i.test(cuentaCajaEnMovil) &&
+  /overflow-y\s*:\s*auto/i.test(cuentaContenidoEnMovil) &&
+  /overscroll-behavior\s*:\s*contain/i.test(cuentaContenidoEnMovil) &&
+  /padding\s*:[^;{}]*env\(\s*safe-area-inset-bottom\s*\)/i.test(cuentaContenidoEnMovil));
+prueba('la cuenta no enfoca campos automáticamente en móvil',
+  !/\bautofocus(?:\s|=|>)/i.test(cuentaHTML) &&
+  /id=["']cuentaCaja["'][^>]*tabindex=["']-1["']/i.test(cuentaHTML) &&
+  /if\(esEstado\|\|movil\)caja\.focus\(\)/.test(js));
+prueba('los campos declaran autofill seguro y siguen legibles con autocompletado',
+  /id=["']cCorreo["'][^>]*autocomplete=["']username["']/i.test(cuentaHTML) &&
+  /id=["']cClave["'][^>]*autocomplete=["']current-password["']/i.test(cuentaHTML) &&
+  /id=["']cClave2["'][^>]*autocomplete=["']new-password["']/i.test(cuentaHTML) &&
+  /-webkit-text-fill-color\s*:\s*var\(--tx\)/i.test(cuentaAutofill) &&
+  /-webkit-box-shadow\s*:[^;{}]*inset/i.test(cuentaAutofill) &&
+  /-webkit-text-fill-color\s*:\s*var\(--tx\)/i.test(cuentaAutofillFoco) &&
+  /0\s+0\s+0\s+4px\s+rgba\(/i.test(cuentaAutofillFoco));
 
 const drawerHTML = (html.match(/<aside\b[^>]*\bid=["']drawer["'][^>]*>[\s\S]*?<\/aside>/i) || [''])[0];
 prueba('la ficha es un diálogo descrito y ofrece cierre textual accesible',
@@ -964,18 +1175,18 @@ prueba('privacidad y UI explican el consentimiento versionado, reversible y toda
   /El consentimiento para correo está desactivado por defecto/.test(html) &&
   /faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(html) &&
   /Está desactivado por defecto[\s\S]*faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(js));
-prueba('privacidad y UI reflejan confirmación obligatoria sin prometer correos',
-  /nuevas altas están habilitadas/.test(privacidadLineal) &&
+prueba('privacidad y UI pausan altas y recuperación hasta probar el correo completo',
   /mailer_autoconfirm=false/.test(privacidadLineal) &&
-  /debe confirmar su dirección de correo antes de poder iniciar sesión/.test(privacidadLineal) &&
+  /debe confirmar su dirección antes de poder iniciar sesión/.test(privacidadLineal) &&
   /no tiene configurado un SMTP propio/.test(privacidadLineal) &&
-  /no garantiza que el correo llegue/.test(privacidadLineal) &&
-  /no promete su entrega/.test(privacidadLineal) &&
+  /en pausa las nuevas altas y la recuperación/.test(privacidadLineal) &&
+  /no recoge esas solicitudes mientras el correo no sea fiable/.test(privacidadLineal) &&
+  /cuentas existentes pueden seguir entrando/.test(privacidadLineal) &&
   !/mailer_autoconfirm=true|publicación remota[\s\S]{0,80}permanece bloqueada/.test(privacidadLineal) &&
-  /confirmar el correo antes de entrar/.test(js) &&
-  /recuperación completa aún no están verificadas/.test(js) &&
-  /Para entrar tienes que confirmar tu correo/.test(js) &&
-  /flujo completo aún no están verificados/.test(js) &&
+  /const CORREO_AUTH_E2E=false/.test(js) &&
+  /solicitado==='registro'\?'registro_pausado'/.test(js) &&
+  /solicitado==='recuperar'\?'recuperar_pausado'/.test(js) &&
+  /no recogemos nuevas altas ni solicitudes de recuperación/.test(js) &&
   !/Te hemos enviado un correo|ya va en camino un enlace|esta versión no se publicará/.test(js));
 prueba('la privacidad conserva pendientes los plazos de 12 meses y 3 años',
   /máximo de 12 meses[\s\S]*PENDIENTE/.test(privacidad) && /durante 3 años[\s\S]*PENDIENTE/.test(privacidad));

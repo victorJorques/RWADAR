@@ -2206,8 +2206,14 @@ function perfilDesdeRespuestaCorreo(base,fila,esperado){
    ================================================================= */
 const Cuenta = (function(){
  const AUTH='https://exgpmjpaaebyoolpwced.supabase.co/auth/v1';
+ /* El panel de Supabase confirma que Confirm email está activo pero el SMTP
+    propio sigue apagado. Hasta que un alta y una recuperación lleguen de
+    extremo a extremo, la interfaz no debe recoger datos para crear cuentas
+    que la persona no podrá confirmar. Cambiar a true exige esa prueba real. */
+ const CORREO_AUTH_E2E=false;
  let ses=null, perfil=null, vigiladas=new Map(), modo='entrar', fichaAbierta=null,
-     identidadConfirmada=false,versionSesion=0,renovacion=null,focoCuenta=null;
+     identidadConfirmada=false,versionSesion=0,renovacion=null,focoCuenta=null,
+     correoPendiente='',operacionCuenta=0,temporizadorReenvio=null;
 
  const $=id=>document.getElementById(id);
  function normalizaSesion(s){
@@ -2225,11 +2231,21 @@ const Cuenta = (function(){
 
  /* --- la API de autenticación ------------------------------------ */
  async function auth(ruta,cuerpo,opc){
-  const r=await fetch(AUTH+ruta,{method:(opc&&opc.metodo)||'POST',
-    headers:Object.assign({apikey:CLAVE_PUB,'Content-Type':'application/json'},
-      (opc&&opc.token)?{Authorization:'Bearer '+opc.token}:{}),
-    body:cuerpo?JSON.stringify(cuerpo):undefined,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'});
-  const t=await r.text(); let j={}; try{j=t?JSON.parse(t):{}}catch(e){}
+  let r;
+  try{
+   r=await fetch(AUTH+ruta,{method:(opc&&opc.metodo)||'POST',
+     headers:Object.assign({apikey:CLAVE_PUB,'Content-Type':'application/json'},
+       (opc&&opc.token)?{Authorization:'Bearer '+opc.token}:{}),
+     body:cuerpo?JSON.stringify(cuerpo):undefined,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'});
+  }catch(e){throw new Error('No se ha podido conectar. Comprueba la conexión y vuelve a intentarlo.');}
+  const t=await r.text(); let j={};
+  if(t){
+   try{j=JSON.parse(t);}
+   catch(e){
+    if(r.ok)throw new Error('La respuesta de autenticación no es válida. Inténtalo más tarde.');
+    j={};
+   }
+  }
   if(!r.ok){const e=new Error(traduce(j.msg||j.error_description||j.message||('HTTP '+r.status)));
     e.status=r.status;e.code=j.code||j.error_code||'';throw e;}
   return j;
@@ -2281,8 +2297,9 @@ const Cuenta = (function(){
    if(versionSesion!==inicio||!ses||ses.access_token!==tk)return false;
    guarda(Object.assign({},ses,{uid:u.id,correo:u.email||''}));identidadConfirmada=true;return true;
   }catch(e){
-   identidadConfirmada=false;
-   if(e.status===401||e.status===403)guarda(null);
+   /* Un token que no hemos podido revalidar nunca queda utilizable en memoria,
+      tampoco ante cortes de red o errores 5xx. */
+   identidadConfirmada=false;guarda(null);pinta();
    return false;
   }
  }
@@ -2351,16 +2368,66 @@ const Cuenta = (function(){
  /* --- la ventana de entrar / registro / recuperar ------------------ */
  const TEXTOS={
   entrar:{t:'Entrar',s:'Para guardar vigilancia y gestionar tus opiniones.',b:'Entrar',otro:'Crear una cuenta'},
-  registro:{t:'Crear cuenta',s:'Es opcional y gratis. Después tendrás que confirmar el correo antes de entrar; la entrega del mensaje aún no está verificada.',b:'Crear cuenta',otro:'Ya tengo cuenta'},
-  recuperar:{t:'Recuperar el acceso',s:'Solicita a Supabase un enlace para poner una contraseña nueva. La entrega del mensaje aún no está verificada.',b:'Solicitar el enlace',otro:'Volver a entrar'},
-  nueva_clave:{t:'Elige una contraseña nueva',s:'El enlace ya ha verificado tu solicitud. Escribe la contraseña que usarás desde ahora.',b:'Guardar contraseña',otro:''}
+  registro:{t:'Crear cuenta',s:'Es opcional y gratis. Tendrás que confirmar el correo antes de entrar.',b:'Crear cuenta',otro:'Ya tengo cuenta'},
+  recuperar:{t:'Recuperar el acceso',s:'Solicita un enlace para poner una contraseña nueva.',b:'Solicitar el enlace',otro:'Volver a entrar'},
+  nueva_clave:{t:'Elige una contraseña nueva',s:'El enlace ya ha verificado tu solicitud. Escribe la contraseña que usarás desde ahora.',b:'Guardar contraseña',otro:''},
+  registro_pausado:{t:'Alta temporalmente en pausa',s:'Puedes consultar todo RWAdar sin crear una cuenta.'},
+  recuperar_pausado:{t:'Recuperación temporalmente en pausa',s:'Las cuentas existentes siguen pudiendo entrar.'},
+  confirmacion_pendiente:{t:'Confirma tu correo para entrar',s:'La solicitud se ha recibido.'},
+  recuperacion_pendiente:{t:'Revisa tu correo para recuperar el acceso',s:'La solicitud se ha recibido.'}
  };
+ const MODOS_ESTADO=new Set(['registro_pausado','recuperar_pausado','confirmacion_pendiente','recuperacion_pendiente']);
+ const correoValido=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)&&v.length<=254;
+ function limpiaSecretos(){
+  $('cClave').value='';$('cClave2').value='';
+ }
+ function limpiaErroresCuenta(){
+  ['cNombre','cCorreo','cClave','cClave2'].forEach(id=>{$(id).removeAttribute('aria-invalid');});
+ }
+ function errorCuenta(texto,campo){
+  const e=new Error(texto);e.campo=campo;return e;
+ }
+ function estadoCuenta(){
+  const pausado=modo==='registro_pausado'||modo==='recuperar_pausado';
+  const registro=modo==='confirmacion_pendiente';
+  const e=$('cuentaEstado');
+  $('cuentaEstadoMarca').textContent=pausado?'CUENTAS EN PAUSA':'SOLICITUD RECIBIDA';
+  if(pausado){
+   $('cuentaEstadoTexto').textContent='La confirmación obligatoria está activa, pero RWAdar todavía no tiene un servicio de correo propio probado. Para no dejar cuentas bloqueadas, no recogemos nuevas altas ni solicitudes de recuperación por ahora.';
+   $('cuentaEstadoCorreo').hidden=true;$('cuentaEstadoCorreo').textContent='';
+   $('cuentaPaso1').textContent='Puedes usar todo el radar sin cuenta.';
+   $('cuentaPaso2').textContent='Las cuentas que ya funcionan pueden seguir entrando.';
+   $('cuentaPaso3').textContent='Reabriremos este paso cuando el correo se haya comprobado de extremo a extremo.';
+  }else{
+   $('cuentaEstadoTexto').textContent=registro
+    ?'La solicitud fue aceptada. Abre el enlace del correo si lo recibes; la aceptación no demuestra que el mensaje haya sido entregado.'
+    :'La solicitud fue aceptada. Abre el enlace del correo si lo recibes para elegir una contraseña nueva.';
+   $('cuentaEstadoCorreo').hidden=!correoPendiente;
+   $('cuentaEstadoCorreo').textContent=correoPendiente;
+   $('cuentaPaso1').textContent='Solicitud aceptada.';
+   $('cuentaPaso2').textContent=registro?'Confirmación del correo pendiente.':'Enlace de recuperación pendiente.';
+   $('cuentaPaso3').textContent=registro?'Después vuelve a RWAdar e inicia sesión.':'Elige la contraseña nueva desde el enlace.';
+  }
+  $('cuentaEstadoEntrar').textContent=pausado?'Ya tengo cuenta · Entrar':'Ya lo he hecho · Entrar';
+  $('cuentaReenviar').hidden=pausado||!CORREO_AUTH_E2E;
+  $('cuentaCambiarCorreo').hidden=pausado;
+  e.hidden=false;
+ }
  function abrir(m,motivo){
-  modo=m||'entrar'; const T=TEXTOS[modo];
+  const solicitado=m||'entrar';
+  modo=!CORREO_AUTH_E2E&&solicitado==='registro'?'registro_pausado':
+       !CORREO_AUTH_E2E&&solicitado==='recuperar'?'recuperar_pausado':solicitado;
+  const T=TEXTOS[modo];if(!T)return;
+  operacionCuenta++;limpiaSecretos();limpiaErroresCuenta();
+  if(temporizadorReenvio){clearTimeout(temporizadorReenvio);temporizadorReenvio=null;}
   $('cuentaTit').textContent=T.t;
-  $('cuentaSub').textContent=motivo||T.s;
-  $('cuentaEnviar').textContent=T.b;
-  $('irCambiar').textContent=T.otro;
+  $('cuentaSub').textContent=(modo===solicitado&&motivo)||T.s;
+  $('cuentaEnviar').textContent=T.b||'';
+  $('irCambiar').textContent=T.otro||'';
+  const esEstado=MODOS_ESTADO.has(modo);
+  $('cuentaForm').hidden=esEstado;
+  $('cuentaEnlaces').hidden=esEstado;
+  $('cuentaEstado').hidden=!esEstado;
   $('campoNombre').hidden=modo!=='registro';
   $('campoCorreo').hidden=modo==='nueva_clave';
   $('cCorreo').required=modo!=='nueva_clave';
@@ -2373,6 +2440,7 @@ const Cuenta = (function(){
   $('irRecuperar').hidden=modo==='recuperar'||modo==='nueva_clave';
   $('irCambiar').hidden=modo==='nueva_clave';
   $('cuentaLegal').hidden=modo!=='registro';
+  if(esEstado)estadoCuenta();
   msj('');
   const caja=$('cuentaCaja'),yaAbierta=caja.classList.contains('on');
   if(!yaAbierta){
@@ -2383,19 +2451,28 @@ const Cuenta = (function(){
   $('velo').classList.add('on');
   caja.classList.add('on'); caja.removeAttribute('inert');
   document.body.classList.add('locked');
-  setTimeout(()=>{try{$(modo==='nueva_clave'?'cClave':'cCorreo').focus()}catch(e){}},60);
+  caja.scrollTop=0;
+  const movil=typeof matchMedia==='function'&&matchMedia('(max-width:767px),(pointer:coarse)').matches;
+  setTimeout(()=>{try{
+   if(esEstado||movil)caja.focus();
+   else $(modo==='nueva_clave'?'cClave':'cCorreo').focus();
+  }catch(e){}},60);
  }
  function cerrar(){
   const caja=$('cuentaCaja'),estabaAbierta=caja.classList.contains('on');
+  operacionCuenta++;
   $('velo').classList.remove('on');
   caja.classList.remove('on'); caja.setAttribute('inert','');
-  $('cClave').value='';$('cClave2').value='';
+  limpiaSecretos();$('cCorreo').value='';$('cNombre').value='';correoPendiente='';
+  $('cuentaForm').removeAttribute('aria-busy');
+  if(temporizadorReenvio){clearTimeout(temporizadorReenvio);temporizadorReenvio=null;}
   document.body.classList.remove('locked');
   if(estabaAbierta){fondo().forEach(n=>n.removeAttribute('inert'));
    if(focoCuenta&&document.contains(focoCuenta))focoCuenta.focus();focoCuenta=null;}
  }
  function msj(txt,bien){
   const m=$('cuentaMsj'); m.className='cuenta-msj'+(txt?(bien?' bien':' mal'):'');
+  m.setAttribute('role',txt&&!bien?'alert':'status');
   m.textContent=txt||'';
  }
  function aviso(txt){
@@ -2405,38 +2482,86 @@ const Cuenta = (function(){
  async function enviar(e){
   e.preventDefault();
   const correo=$('cCorreo').value.trim(), clave=$('cClave').value, nombre=$('cNombre').value.trim();
-  const bot=$('cuentaEnviar'); bot.disabled=true; msj('');
+  const modoEnvio=modo,operacion=++operacionCuenta;
+  const bot=$('cuentaEnviar'); bot.disabled=true;$('cuentaForm').setAttribute('aria-busy','true');
+  limpiaErroresCuenta();msj('');
   try{
-   if(modo==='nueva_clave'){
-    if(clave.length<12)throw new Error('La contraseña necesita al menos 12 caracteres.');
-    if(clave!==$('cClave2').value)throw new Error('Las dos contraseñas no coinciden.');
+   if(['entrar','registro','recuperar'].includes(modoEnvio)&&!correoValido(correo))
+    throw errorCuenta('Escribe una dirección de correo válida.','cCorreo');
+   if(modoEnvio==='entrar'&&!clave)throw errorCuenta('Escribe tu contraseña.','cClave');
+   if(modoEnvio==='registro'&&!CORREO_AUTH_E2E)
+    throw new Error('El alta está temporalmente en pausa hasta comprobar el correo de confirmación.');
+   if(modoEnvio==='recuperar'&&!CORREO_AUTH_E2E)
+    throw new Error('La recuperación está temporalmente en pausa hasta comprobar el correo.');
+   if(modoEnvio==='nueva_clave'){
+    if(clave.length<12)throw errorCuenta('La contraseña necesita al menos 12 caracteres.','cClave');
+    if(clave!==$('cClave2').value)throw errorCuenta('Las dos contraseñas no coinciden.','cClave2');
     const tk=await testigo();if(!tk)throw new Error('El enlace ha caducado. Solicita uno nuevo.');
     await auth('/user',{password:clave},{metodo:'PUT',token:tk});
-    $('cClave').value='';$('cClave2').value='';
+    if(operacion!==operacionCuenta||modo!==modoEnvio)return;
     msj('Contraseña cambiada. La sesión sigue abierta.',true);
-   }else if(modo==='recuperar'){
+   }else if(modoEnvio==='recuperar'){
     const vuelta=encodeURIComponent(location.origin+'/');
     await auth('/recover?redirect_to='+vuelta,{email:correo});
-    msj('Solicitud aceptada por Supabase. La entrega del correo y la recuperación completa aún no están verificadas; no podemos asegurar que el mensaje llegue.',true);
-   }else if(modo==='registro'){
+    if(operacion!==operacionCuenta||modo!==modoEnvio)return;
+    correoPendiente=correo;abrir('recuperacion_pendiente');
+   }else if(modoEnvio==='registro'){
+    if(clave.length<12)throw errorCuenta('La contraseña necesita al menos 12 caracteres.','cClave');
     const vuelta=encodeURIComponent(location.origin+'/');
     const j=await auth('/signup?redirect_to='+vuelta,{email:correo,password:clave,
       data:nombre?{nombre:nombre}:undefined});
-    if(j.access_token){ await entrarCon(j); }
-    else { msj('Solicitud de alta aceptada. Para entrar tienes que confirmar tu correo. La entrega del mensaje y el flujo completo aún no están verificados; no podemos asegurar que llegue.',true); }
+    if(operacion!==operacionCuenta||modo!==modoEnvio)return;
+    if(j&&typeof j.access_token==='string'&&j.access_token){ await entrarCon(j); }
+    else if(j&&typeof j.id==='string'&&j.id&&typeof j.email==='string'){
+     correoPendiente=correo;$('cNombre').value='';$('cCorreo').value='';
+     abrir('confirmacion_pendiente');
+    }else throw new Error('La respuesta del alta no es válida. No damos la cuenta por creada.');
    }else{
     const j=await auth('/token?grant_type=password',{email:correo,password:clave});
+    if(operacion!==operacionCuenta||modo!==modoEnvio)return;
     await entrarCon(j);
    }
-  }catch(err){ msj(err.message); }
-  bot.disabled=false;
+  }catch(err){
+   if(operacion===operacionCuenta&&modo===modoEnvio){
+    msj(err.message);if(err.campo){$(err.campo).setAttribute('aria-invalid','true');$(err.campo).focus();}
+   }
+  }finally{
+   limpiaSecretos();
+   if(operacion===operacionCuenta){bot.disabled=false;$('cuentaForm').removeAttribute('aria-busy');}
+  }
+ }
+ async function reenviarConfirmacion(){
+  if(!CORREO_AUTH_E2E||!correoValido(correoPendiente))return;
+  const bot=$('cuentaReenviar'),operacion=++operacionCuenta,modoEnvio=modo;
+  bot.disabled=true;bot.setAttribute('aria-busy','true');msj('');
+  try{
+   const vuelta=encodeURIComponent(location.origin+'/');
+   if(modoEnvio==='confirmacion_pendiente')
+    await auth('/resend?redirect_to='+vuelta,{type:'signup',email:correoPendiente});
+   else if(modoEnvio==='recuperacion_pendiente')
+    await auth('/recover?redirect_to='+vuelta,{email:correoPendiente});
+   else return;
+   if(operacion!==operacionCuenta||modo!==modoEnvio)return;
+   msj('La solicitud de reenvío fue aceptada. Esto no confirma la entrega del mensaje.',true);
+   bot.textContent='Espera un minuto para reintentar';
+   temporizadorReenvio=setTimeout(()=>{
+    if(modo===modoEnvio){bot.disabled=false;bot.textContent='Reintentar correo';}
+    temporizadorReenvio=null;
+   },60000);
+  }catch(err){if(operacion===operacionCuenta&&modo===modoEnvio){msj(err.message);bot.disabled=false;}}
+  finally{bot.removeAttribute('aria-busy');}
  }
  async function entrarCon(j){
+  if(!j||typeof j.access_token!=='string'||!j.access_token)
+   throw new Error('La sesión recibida no es válida.');
   guarda({access_token:j.access_token,refresh_token:j.refresh_token,
           expira:Date.now()+(j.expires_in||3600)*1000,
           correo:(j.user&&j.user.email)||'', uid:(j.user&&j.user.id)||''});
   identidadConfirmada=false;
-  if(!await confirmarIdentidad())throw new Error('No se ha podido verificar la sesión.');
+  if(!await confirmarIdentidad()){
+   guarda(null);identidadConfirmada=false;pinta();
+   throw new Error('No se ha podido verificar la sesión. Vuelve a entrar.');
+  }
   if(modo==='registro'&&$('cNombre').value.trim()){
    try{ await rest('/perfiles?id=eq.'+encodeURIComponent(ses.uid),{method:'PATCH',body:JSON.stringify({nombre:$('cNombre').value.trim()})}); }catch(e){}
   }
@@ -2638,6 +2763,16 @@ const Cuenta = (function(){
   $('cuentaForm').addEventListener('submit',enviar);
   $('irCambiar').addEventListener('click',()=>abrir(modo==='entrar'?'registro':'entrar'));
   $('irRecuperar').addEventListener('click',()=>abrir('recuperar'));
+  $('cuentaEstadoEntrar').addEventListener('click',()=>{
+   const correo=correoPendiente;abrir('entrar');
+   if(correo)$('cCorreo').value=correo;
+  });
+  $('cuentaReenviar').addEventListener('click',reenviarConfirmacion);
+  $('cuentaCambiarCorreo').addEventListener('click',()=>{
+   const correo=correoPendiente;abrir('registro');
+   if(CORREO_AUTH_E2E&&correo)$('cCorreo').value=correo;
+  });
+  $('cuentaVolver').addEventListener('click',cerrar);
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){cerrar();cerrarPanelPerfil();}});
 
   const parametrosRetorno=typeof location!=='undefined'&&location.hash
@@ -2655,14 +2790,17 @@ const Cuenta = (function(){
    const acceso=p.get('access_token');
    history.replaceState(null,'',location.pathname+location.search);
    if(error){abrir('entrar');msj(traduce(error));}
-   else if(acceso){
+   else if(acceso&&!['signup','recovery'].includes(tipo)){
+    guarda(null);identidadConfirmada=false;abrir('entrar');
+    msj('El tipo de enlace no es válido. Solicita uno nuevo desde RWAdar.');
+   }else if(acceso){
     guarda({access_token:acceso,refresh_token:p.get('refresh_token')||'',
       expira:Date.now()+(Number(p.get('expires_in'))||3600)*1000,correo:'',uid:''});
     confirmarIdentidad().then(async ok=>{
      if(!ok){pinta();abrir('entrar');msj('El enlace no es válido o ha caducado. Solicita uno nuevo.');return;}
      await cargarMio();pinta();if(fichaAbierta)pintarVigilar(fichaAbierta);
      if(tipo==='recovery')abrir('nueva_clave');
-     else aviso('Correo confirmado. La cuenta ya está lista.');
+     else aviso('Correo confirmado en esta pestaña. Ya puedes iniciar sesión en RWAdar.');
     });
    }
   }

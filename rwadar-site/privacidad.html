@@ -226,13 +226,15 @@
 
   <h2>6 · Correos de servicio</h2>
   <p>Supabase Auth contiene las funciones de alta, confirmación y recuperación de cuentas.
-    En la configuración de producción revisada el 20 de agosto de 2026,
-    las nuevas altas están habilitadas y <code>mailer_autoconfirm=false</code>. Una cuenta
-    nueva <b>debe confirmar su dirección de correo antes de poder iniciar sesión</b>.</p>
+    En la configuración de producción revisada el 22 de agosto de 2026, el proveedor de
+    correo está habilitado y <code>mailer_autoconfirm=false</code>: una cuenta nueva debe
+    confirmar su dirección antes de poder iniciar sesión.</p>
   <p>RWAdar no tiene configurado un SMTP propio. La entrega de los mensajes de confirmación
     y recuperación, y ambos recorridos completos, todavía no se han probado de extremo a
-    extremo. Por eso, aceptar una solicitud de alta o recuperación <b>no garantiza que el
-    correo llegue</b>; RWAdar no promete su entrega mientras falte esa verificación.</p>
+    extremo. Por ello, la interfaz pública mantiene <b>en pausa las nuevas altas y la
+    recuperación</b>; no recoge esas solicitudes mientras el correo no sea fiable. Las
+    cuentas existentes pueden seguir entrando y el radar completo continúa disponible sin
+    cuenta.</p>
   <p>La entrega de correos por cambios del radar <b>todavía no está activa</b>. La preferencia
     nace desactivada y solo cambia tras una acción explícita en el perfil, registrada con
     fecha y con la versión <code>correo-v1-2026-08-22</code>. Puede retirarse en el mismo

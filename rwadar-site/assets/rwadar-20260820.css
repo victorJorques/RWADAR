@@ -685,6 +685,8 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   background:var(--noche-2);border:1px solid var(--linea-2);border-radius:20px;padding:28px 26px 24px;
   opacity:0;pointer-events:none;transition:opacity var(--medio) var(--sal),transform var(--medio) var(--muelle)}
 .cuenta-caja.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.cuenta-cabecera{position:relative}
+.cuenta-contenido{min-width:0}
 .cuenta-caja h3{font-size:1.32rem;font-weight:800;letter-spacing:-.03em;margin:0 0 7px}
 .cuenta-caja .sub{font-size:.9rem;color:var(--tx-2);margin:0 0 20px;line-height:1.55;max-width:44ch}
 .cuenta-caja label{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.13em;
@@ -692,22 +694,57 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .cuenta-caja input{width:100%;background:var(--sup);border:1px solid var(--linea-2);color:var(--tx);
   font-family:var(--body);font-size:.95rem;padding:12px 14px;border-radius:11px;margin-bottom:15px}
 .cuenta-caja input:focus{outline:none;border-color:var(--senal);box-shadow:0 0 0 4px rgba(37,227,154,.14)}
+.campo-ayuda{margin:-9px 0 14px;color:var(--tx-3);font-size:.72rem;line-height:1.4}
+.cuenta-caja input:-webkit-autofill,
+.cuenta-caja input:-webkit-autofill:hover{-webkit-text-fill-color:var(--tx);caret-color:var(--tx);
+  -webkit-box-shadow:0 0 0 1000px var(--sup) inset;transition:background-color 9999s ease-out 0s}
+.cuenta-caja input:-webkit-autofill:focus{-webkit-text-fill-color:var(--tx);caret-color:var(--tx);
+  -webkit-box-shadow:0 0 0 1000px var(--sup) inset,0 0 0 4px rgba(37,227,154,.14)}
 .cuenta-caja .principal{width:100%;background:var(--senal);color:#06231A;border:0;font-weight:700;
   font-size:.95rem;padding:14px;border-radius:99px;cursor:pointer;margin-top:4px}
 .cuenta-caja .principal:disabled{opacity:.55;cursor:default}
 .cuenta-caja .enlaces{display:flex;justify-content:space-between;gap:12px;margin-top:16px;flex-wrap:wrap}
+.cuenta-caja .enlaces[hidden],.cuenta-caja form[hidden]{display:none!important}
 .cuenta-caja .enlaces button{background:none;border:0;color:var(--tx-2);font-family:var(--body);
   font-size:.85rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
 .cuenta-caja .enlaces button:hover{color:var(--senal)}
-.cuenta-caja .cerrar-x{position:absolute;top:14px;right:14px;background:none;border:0;color:var(--tx-3);
-  font-size:1.15rem;cursor:pointer;line-height:1;padding:6px}
-.cuenta-caja .cerrar-x::after{content:'';position:absolute;top:50%;right:0;width:44px;height:44px;
-  transform:translateY(-50%)}
+.cuenta-caja .cerrar-x{position:absolute;z-index:2;top:-12px;right:-12px;display:grid;place-items:center;
+  width:48px;height:48px;padding:0;background:var(--sup);border:1px solid var(--linea);border-radius:99px;
+  color:var(--tx-3);font-size:1.15rem;cursor:pointer;line-height:1}
+.cuenta-caja .cerrar-x:hover{border-color:var(--linea-2);color:var(--tx)}
 .cuenta-msj{font-size:.86rem;line-height:1.5;padding:11px 13px;border-radius:10px;margin-bottom:15px;display:none}
 .cuenta-msj.mal{display:block;background:rgba(255,59,48,.1);border:1px solid rgba(255,59,48,.3);color:#FF8A80}
 .cuenta-msj.bien{display:block;background:rgba(37,227,154,.1);border:1px solid var(--senal-30);color:var(--senal)}
 .legal-chica{font-size:.76rem;color:var(--tx-3);line-height:1.5;margin-top:15px}
 .legal-chica a{color:var(--tx-2)}
+.cuenta-estado[hidden]{display:none!important}
+.cuenta-estado{display:block}
+.cuenta-estado-marca{margin:0 0 8px;color:var(--senal);font-family:var(--mono);font-size:.65rem;
+  font-weight:650;letter-spacing:.14em;text-transform:uppercase}
+.cuenta-estado-texto{margin:0;color:var(--tx-2);font-size:.91rem;line-height:1.58}
+.cuenta-estado-correo{min-height:48px;margin:16px 0 0;padding:13px 14px;border:1px solid var(--senal-30);
+  border-radius:12px;background:var(--senal-10);color:var(--tx);font-weight:700;line-height:1.4;overflow-wrap:anywhere}
+.cuenta-estado-correo:empty{display:none}
+.cuenta-estado-pasos{list-style:none;margin:18px 0 0;padding:0;overflow:hidden;border:1px solid var(--linea);
+  border-radius:15px;background:var(--sup)}
+.cuenta-estado-pasos li{display:grid;grid-template-columns:34px minmax(0,1fr);align-items:center;gap:11px;
+  min-height:68px;padding:11px 13px;border-bottom:1px solid var(--linea)}
+.cuenta-estado-pasos li:last-child{border-bottom:0}
+.cuenta-estado-pasos li>span{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;
+  border:1px solid var(--linea-2);background:var(--noche-2);color:var(--tx-3);font-family:var(--mono);font-size:.7rem}
+.cuenta-estado-pasos li.hecho>span{border-color:var(--senal-30);background:var(--senal-10);color:var(--senal)}
+.cuenta-estado-pasos b,.cuenta-estado-pasos small{display:block}
+.cuenta-estado-pasos b{font-size:.86rem;line-height:1.3}
+.cuenta-estado-pasos small{margin-top:3px;color:var(--tx-3);font-size:.72rem;line-height:1.4}
+.cuenta-estado-acciones{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}
+.cuenta-estado-acciones button{min-width:0;min-height:48px;padding:11px 12px;border:1px solid var(--linea-2);
+  border-radius:12px;background:var(--sup);color:var(--tx-2);font:600 .82rem/1.25 var(--body);cursor:pointer}
+.cuenta-estado-acciones button:disabled{opacity:.55;cursor:default}
+.cuenta-estado-acciones .cuenta-estado-principal{grid-column:1/-1;border-color:var(--senal);background:var(--senal);color:#06231A}
+.cuenta-estado-acciones button:last-child{grid-column:1/-1;background:transparent}
+.cuenta-pie{margin:20px 0 0;padding-top:15px;border-top:1px solid var(--linea);color:var(--tx-3);
+  font-size:.72rem;line-height:1.5;text-align:center}
+.cuenta-pie a{color:var(--tx-2);text-decoration:underline;text-underline-offset:3px}
 
 /* --- el área de la persona --- */
 .perfil-cab{display:flex;align-items:center;gap:14px;margin-bottom:22px}
@@ -1260,8 +1297,32 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   .aviso{bottom:calc(var(--movil-nav-alto) + max(7px,env(safe-area-inset-bottom)) + 12px);
     max-width:calc(100vw - 24px);white-space:normal;text-align:center}
   .modal,.panel{padding-bottom:env(safe-area-inset-bottom)}
-  .cuenta-caja{max-height:calc(100dvh - env(safe-area-inset-top) - 16px);overflow:auto;
-    padding-bottom:max(26px,env(safe-area-inset-bottom))}
+
+  /* Cuenta y confirmación se comportan como una hoja de la app. La cabecera
+     nunca se desplaza y el contenido absorbe tanto las pantallas cortas como
+     el teclado virtual sin esconder el cierre ni la información legal. */
+  .cuenta-caja{inset:max(6px,env(safe-area-inset-top)) 0 0;left:0;top:max(6px,env(safe-area-inset-top));
+    width:100%;max-width:none;max-height:none;display:grid;grid-template-columns:minmax(0,1fr);
+    grid-template-rows:auto minmax(0,1fr);padding:0;overflow:hidden;border-bottom:0;
+    border-radius:24px 24px 0 0;transform:translateY(103%);opacity:1}
+  .cuenta-caja.on{transform:translateY(0)}
+  .cuenta-cabecera{min-width:0;padding:16px 68px 13px var(--movil-margen);background:rgba(16,15,14,.98);
+    border-bottom:1px solid var(--linea-2);z-index:2}
+  .cuenta-caja .cerrar-x{top:8px;right:var(--movil-margen);width:48px;height:48px;border-color:var(--senal-30);
+    background:var(--senal-10);color:var(--senal)}
+  .cuenta-caja h3{font-size:1.25rem;line-height:1.12}
+  .cuenta-caja .sub{margin:4px 0 0;font-size:.78rem;line-height:1.42}
+  .cuenta-contenido{min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+    padding:18px var(--movil-margen) max(24px,env(safe-area-inset-bottom));scroll-padding-block:14px 24px}
+  .cuenta-caja input{min-height:48px;font-size:16px;scroll-margin-block:84px}
+  .cuenta-caja .principal,.cuenta-caja .enlaces button{min-height:48px}
+  .cuenta-caja .enlaces button{display:inline-flex;align-items:center;padding:9px 0}
+  .cuenta-estado-texto{font-size:.9rem}
+  .cuenta-estado-acciones{grid-template-columns:minmax(0,1fr);gap:9px}
+  .cuenta-estado-acciones .cuenta-estado-principal,
+  .cuenta-estado-acciones button:last-child{grid-column:auto}
+  .cuenta-estado-acciones button{width:100%;font-size:.86rem}
+  .cuenta-pie{padding-bottom:max(2px,env(safe-area-inset-bottom))}
 
   /* Cuando aparece el teclado virtual, la barra no roba espacio ni tapa
      los campos. Al cerrar el teclado reaparece sin perder la pestaña. */
