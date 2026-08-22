@@ -42,8 +42,8 @@ marca que se localiza con `rg`; abre solo el tramo necesario.
 | ↳ reflejo, sombra y suelo | `Tres cosas del render` | ~351 |
 | ↳ el radar de portada | `no es un adorno` | ~363 |
 | ↳ la calculadora | `enseña la cuenta` | ~382 |
-| ↳ **sonido**: carácter y motivos | `La altura SUBE, no baja` | ~393 |
-| ↳ sonido: nada de DynamicsCompressor | `DynamicsCompressor` | ~435 |
+| ↳ **sonido**: carácter y motivos | `El sonido empieza apagado` | ~393 |
+| ↳ sonido: salida y protección | `WaveShaper` | ~420 |
 | ↳ **color**: los dos errores previos | `el verde de un eco de radar` | ~450 |
 | ↳ color: distancias medidas en Lab | `medidas en Lab` | ~479 |
 | ↳ tipografía | `tipografía de Apple` | ~484 |
@@ -69,8 +69,8 @@ propia. Con el cambio de piel entraron:
 - la **calculadora** del explicador, con la cuenta a la vista paso a paso y
   la rentabilidad recibida;
 - el explicador **reescrito sin tecnicismos**;
-- el **sonido rehecho tres veces** hasta dar con el carácter (familia «pop»,
-  la altura sube), elegido a oído en un banco de pruebas;
+- el **sonido rehecho** como pulsos cálidos, muy breves y voluntarios, sin la
+  antigua «gota» robótica y con el avance automático siempre silencioso;
 - la **paleta**, que llegó a su sitio por descarte: crema y azul → negro y
   oro (falso premium) → monocromo (soso) → verde de radar con grises
   cálidos;
@@ -123,7 +123,7 @@ fuera del artefacto.
 ### Identificadores
 
 ```
-Cloudflare Pages: rwadar (deployment actual a0be7029...)
+Cloudflare Pages: rwadar (deployment actual b247c02d...)
 Netlify legado : 0211fd28-d371-43cd-9d93-3944fea57680
 Supabase ref   : exgpmjpaaebyoolpwced
 Supabase URL   : https://exgpmjpaaebyoolpwced.supabase.co
@@ -144,7 +144,7 @@ que una operación esté protegida.
 | Web pública | **GO en `https://rwadar.pages.dev`** con 26 fichas, 4 descartadas y PWA |
 | Emisiones públicas | 0 en producción; `Buscar` muestra un estado vacío explícito, sin ofertas ni cifras inventadas |
 | Web remediada | **Desplegada y verificada**: 26/4/0; CSS/JS externos, CSP estricta, sin RUM/Zaraz y sin tokens en `localStorage` |
-| Deployment y artefacto | Actual `a0be7029-6281-47dd-963d-9c397a18848b` (`https://a0be7029.rwadar.pages.dev`); canonical `https://rwadar.pages.dev`; web 219/219 y suite raíz código 0; ZIP `rwadar-cloudflare-pages-20260822-d4a30d52.zip`, 880.760 bytes, 21/21, SHA-256 `AF9FDA2A5612BCD80BE16EE4251E8FD36261BC522DBFF8E96F18566AEBDEF096`; canonical y preview coinciden byte a byte |
+| Deployment y artefacto | Actual `b247c02d-14fa-4732-b6ee-9d5e461590ee` (`https://b247c02d.rwadar.pages.dev`); canonical `https://rwadar.pages.dev`; web 222/222 y suite raíz código 0; ZIP `rwadar-cloudflare-pages-20260822-624322e8.zip`, 882.282 bytes, 21/21, SHA-256 `03FAD72E5102F271D0D72AF29AD9B3C3F32504A558DF3CE86A2925BB8A47D46B`; canonical y preview coinciden byte a byte |
 | Base de producción | Migración 22 **aplicada y verificada**; Security Advisor: 0 Critical y 0 Security Definer View |
 | Migración 22 | `02F2...0666`: `COMMIT`, `schedule=19`; verificador `4182...2C3`: `Success. No rows returned` y aviso `RWAdar 22 OK` |
 | Smoke público backend | Radar 26, descartadas 4; `opiniones.usuario_id` 401, moderación directa 401, firma antigua ausente (404/PGRST202), firma nueva anónima 401/42501 |
@@ -156,7 +156,7 @@ que una operación esté protegida.
 | Dependencias móviles | 46 paquetes afectados: 29 high, 17 moderate, 0 critical; 3 avisos fuente de toolchain sin fix compatible |
 | Indexación | Pages verificada; portada en cola. Sitemap enviado, primera lectura «No se ha podido obtener». Netlify legada sí indexada |
 | Hosting | Cloudflare Pages es producción. Netlify conserva la versión anterior: producción pausada porque solo quedan créditos operativos y CLI `Forbidden`; seguirá así hasta reinicio o ampliación de créditos. CALIX es distinto y no se tocó |
-| Móvil | Android nativo: build 4 compatible con OTA `preview` `4f9d7e19...`, runtime `af694...`; sin Play Store ni iOS nativo. PWA común iPhone/Android: caché `rwadar-v-d4a30d5261f16a4b`, pestañas `Buscar`/`Favoritos`/`Inversiones`/`Mi cuenta` y migración automática desde SW v1. Conserva fichas, comparador, descartes, radar y 3D; `Inversiones` no muestra cartera porque el backend todavía no registra operaciones |
+| Móvil | Android nativo: build 4 compatible con OTA `preview` `4f9d7e19...`, runtime `af694...`; sin Play Store ni iOS nativo. PWA común iPhone/Android: caché `rwadar-v-624322e8a5d58585`, pestañas `Buscar`/`Favoritos`/`Inversiones`/`Mi cuenta` y migración automática desde SW v1. Buscar prioriza ofertas, radar animado, Academy, buscador y seis resultados iniciales; conserva las 26 fichas, comparador, descartes y 3D; `Inversiones` no muestra cartera porque el backend todavía no registra operaciones |
 
 ### Bloqueos reales
 
@@ -222,12 +222,12 @@ de signup: altas y recuperación públicas quedan pausadas fail-closed y no env�
 solicitudes. El login existente sigue disponible y el radar no exige cuenta.
 
 La web endurecida ya está en Cloudflare Pages, deployment actual
-`a0be7029-6281-47dd-963d-9c397a18848b`
-(`https://a0be7029.rwadar.pages.dev`), canonical `https://rwadar.pages.dev` y
-caché `rwadar-v-d4a30d5261f16a4b`. El ZIP congelado
-`outputs/rwadar-cloudflare-pages-20260822-d4a30d52.zip` tiene 880.760 bytes,
+`b247c02d-14fa-4732-b6ee-9d5e461590ee`
+(`https://b247c02d.rwadar.pages.dev`), canonical `https://rwadar.pages.dev` y
+caché `rwadar-v-624322e8a5d58585`. El ZIP congelado
+`outputs/rwadar-cloudflare-pages-20260822-624322e8.zip` tiene 882.282 bytes,
 21/21 archivos verificados y SHA-256
-`AF9FDA2A5612BCD80BE16EE4251E8FD36261BC522DBFF8E96F18566AEBDEF096`.
+`03FAD72E5102F271D0D72AF29AD9B3C3F32504A558DF3CE86A2925BB8A47D46B`.
 El paquete `PRE-AUTH-NO-USAR-...-9b158323.zip` anterior no debe usarse. El publicador remoto heredado
 aún llama a Netlify: no lo uses como ruta de Pages ni ejecutes `netlify deploy`
 a secas; hoy la CLI responde `Forbidden` y el panel mantiene producción pausada
@@ -466,62 +466,29 @@ la misma proporción que el dueño de al lado. Lleva su aviso de que es el
 bruto, antes de comisiones e impuestos, y de que no es una oferta ni una
 previsión. Ese aviso no se quita.
 
-**La altura SUBE, no baja.** Es la decisión que define el carácter del
-sonido y se tomó **a oído**, comparando cinco familias en un banco de
-pruebas (`rwadar-banco-de-sonidos.html`, servido en `/banco`). Un tono que
-cae suena a algo que se posa; uno que sube en cincuenta milisegundos suena
-a algo que se suelta. La segunda sensación es la que engancha, y es la del
-«pop» de enviar un mensaje en un Mac. Todo el juego está montado sobre ese
-gesto ascendente, con dos excepciones que significan lo contrario: cerrar
-baja, y desmarcar baja.
+**El sonido empieza apagado.** La ausencia de una preferencia afirmativa
+equivale a OFF; no hay audio al instalar, cargar, hacer scroll o avanzar
+automáticamente por la lección 3D. Solo un gesto deliberado puede desbloquear
+Web Audio y el control «Sonido y tacto» deja visible y reversible el estado.
 
-Ese banco de pruebas **no se borra**. Yo puedo medir el sonido —pico,
-espectro, duración, chasquidos— pero no oírlo, así que la única forma de
-decidir el carácter es que lo escuche una persona. Si algún día hay que
-volver a tocarlo, se añade una familia más y se compara.
+La versión anterior producía una «gota» artificial por combinar ruido,
+reverberación, azar y barridos rápidos de altura. La receta actual es más
+discreta y determinista:
 
-**Los sonidos son TONOS cortos, no golpes de ruido.**
-Esto corrige una decisión anterior de este mismo documento, que decía
-«golpes de material, nunca notas». Aquella regla nació de huir del tono
-puro sostenido —que efectivamente suena a juguete— pero la conclusión era
-demasiado amplia, y la receta que la sustituía (ruido blanco por un paso
-banda de Q alto) es un resonador metálico: todo el registro caía entre 2 y
-4 kHz, justo donde el oído es más sensible y antes se cansa. Sonaba tosco,
-y cuanto más se subía, más chillaba.
+- dos parciales fijos —seno y triángulo muy bajo—, sin ruido blanco;
+- pulsos de 22 a 95 ms con entrada de 5 ms para evitar chasquidos;
+- movimientos de frecuencia pequeños, nunca saltos de varias octavas;
+- salida seca: sin reverberación, paneo aleatorio ni desafinación al azar;
+- paso bajo general a 2,8 kHz y ganancia maestra de 0,45;
+- un `WaveShaper` como tope instantáneo, sin `DynamicsCompressor`;
+- el tic de los deslizadores se limita a uno cada 45 ms;
+- si el documento está oculto, no suena nada.
 
-La receta actual es la que usa cualquiera que hace esto bien:
-
-- **tono, no ruido**: un seno con una caída de altura mínima;
-- **grave de salida**: arrancan entre 260 y 700 Hz y suben hasta su octava
-  en unos 30 ms. Medido por cruces por cero, el `toque` pasa de 625 Hz a
-  los 25 ms a 856 Hz a los 45 ms, y `cerrar` hace el camino inverso, de
-  562 a 428. Nada vive por encima de 3 kHz, que es donde chillaba antes;
-- **cortos**: entre 22 y 105 ms las pulsaciones. La versión anterior
-  llegaba a 220 ms y por eso sonaba a xilófono en vez de a interfaz;
-- **sin chasquido**: el ataque es un coseno elevado vía
-  `setValueCurveAtTime`, no una rampa. Una rampa recta deja un quiebre en
-  la derivada y el oído lo oye como un «clac»;
-- **una sola familia**: todo sale del mismo timbre y de una escala
-  pentatónica, así que dos sonidos seguidos nunca disuenan. Hay altura
-  distinta solo cuando significa algo: marcar sube, desmarcar baja, y cada
-  categoría tiene su nota de la misma escala.
-- **±1,2 % de desafinación por pulsación**: inaudible como nota, decisivo
-  como sensación. Dos toques idénticos delatan una grabación.
-
-**El sonido NO puede pasar por un `DynamicsCompressor`.** Parece la pieza
-obvia para no saturar y es justo la que lo arruinaba: tiene detector de
-envolvente y un sonido de interfaz dura milisegundos. Medido en el propio
-grafo, un transitorio de 0,30 salía a 0,074. En su lugar va un `WaveShaper`
-con una curva que es una recta por debajo de 0,6 y se dobla por encima:
-recorta sin detector y sin tocar los transitorios. Detrás va un paso bajo a
-7 kHz, que es lo que separa «sonido de interfaz» de «pitido de
-electrodoméstico».
-
-**Los picos están medidos, no elegidos a ojo.** Todos entre 0,09 y 0,27, sin
-recorte. La comprobación se hace renderizando el mismo grafo en un
-`OfflineAudioContext` y midiendo pico, duración, reparto por bandas y saltos
-entre muestras (un chasquido es una discontinuidad aislada; muchos saltos
-repartidos son solo el aire del sonido).
+Marcar, desmarcar, abrir, cerrar y descargar mantienen señales distinguibles,
+pero todas pertenecen a la misma familia breve. Android puede añadir una
+vibración de pocos milisegundos bajo el mismo opt-in; iOS simplemente la omite.
+El banco histórico `rwadar-banco-de-sonidos.html` se conserva para comparar
+futuras variantes, pero ya no define el comportamiento publicado.
 
 **El color de RWAdar es `#25E39A`, el verde de un eco de radar.**
 Esta decisión pasó por dos errores antes de asentarse, y los dos enseñan
@@ -575,13 +542,10 @@ lectura de «distancia = a quién deja entrar». El óptimo dentro de eso deja
 11,2 unidades entre los dos puntos más juntos, frente a 9,4 antes. El azar
 sobra: jitter 0 gana a cualquier jitter, porque desordena sin separar.
 
-**Cada paso del dibujo suena UNA vez, como una gota.** Antes cada paso
-disparaba una ráfaga —cinco chispas, cuatro destellos, dos roces— y sonaba a
-fuegos artificiales y a algo que se alargaba. Un explicador que avanza solo
-no puede sonar sostenido: la atención se va al sonido en vez de al dibujo.
-Una gota es un tono que sube muy rápido de altura y se apaga: medido, 76 ms
-subiendo de 567 a 1036 Hz. Esa subida rápida es lo que el oído reconoce como
-gota — es la resonancia de la cavidad al cerrarse.
+**El avance automático del dibujo es mudo.** Si la persona activa el sonido y
+elige manualmente un paso, recibe un único pulso cálido y breve. No hay gotas,
+ráfagas, ruido, reverberación ni barridos largos; así la animación conserva su
+carácter sin competir con la explicación.
 
 **Las tipografías van dentro del CSS local, no se piden a Google.** Antes la
 página cargaba nueve ficheros estáticos desde `fonts.googleapis.com`: 138 kB,
@@ -686,8 +650,8 @@ los JSON.
 3. Conservar visible `acuerdo-pendiente-de-documentar`; mantener altas y
    recuperación públicas pausadas fail-closed hasta tener SMTP propio y pruebas
    E2E. Mantener el login existente y el radar completo sin cuenta.
-4. Conservar el deployment `a0be7029...`, el ZIP final y su SHA-256; repetir web
-   219/219 y smoke externo después de cualquier cambio.
+4. Conservar el deployment `b247c02d...`, el ZIP final y su SHA-256; repetir web
+   222/222 y smoke externo después de cualquier cambio.
 5. Reconsultar la portada y el sitemap en Search Console hasta obtener un estado
    definitivo; la solicitud ya está hecha, no la indexación confirmada.
 6. Mantener push y correo OFF hasta contar con sus credenciales, consentimiento,

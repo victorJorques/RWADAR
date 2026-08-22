@@ -6,7 +6,7 @@ paga en todas las sesiones.
 
 Este repositorio contiene RWAdar. La información de estado más reciente es la
 de `RWADAR-TRASPASO.md`, reconciliada el **22 de agosto de 2026** sobre el
-commit fuente `0f4ef6d92699a4158b90bd09e79a7c8fc61f9643`; prevalece sobre cualquier afirmación histórica que aún
+commit desplegado `c795756d9561084030ee4b88b2f0f22cb5fb714e`; prevalece sobre cualquier afirmación histórica que aún
 quede en un documento de contexto.
 
 ---
@@ -19,16 +19,16 @@ quede en un documento de contexto.
 Cloudflare sirve la versión endurecida, pre-renderizada e instalable como PWA:
 26 fichas, 4 descartadas y 0 emisiones públicas; CSP estricta, sin RUM/Zaraz y
 sin tokens de sesión en `localStorage`. El despliegue actual es
-`a0be7029-6281-47dd-963d-9c397a18848b`
-(`https://a0be7029.rwadar.pages.dev`), el canonical es
-`https://rwadar.pages.dev` y la caché es `rwadar-v-d4a30d5261f16a4b`. El
-artefacto final es `outputs/rwadar-cloudflare-pages-20260822-d4a30d52.zip`,
-880.760 bytes y 21/21
+`b247c02d-14fa-4732-b6ee-9d5e461590ee`
+(`https://b247c02d.rwadar.pages.dev`), el canonical es
+`https://rwadar.pages.dev` y la caché es `rwadar-v-624322e8a5d58585`. El
+artefacto final es `outputs/rwadar-cloudflare-pages-20260822-624322e8.zip`,
+882.282 bytes y 21/21
 archivos verificados, SHA-256
-`AF9FDA2A5612BCD80BE16EE4251E8FD36261BC522DBFF8E96F18566AEBDEF096`.
+`03FAD72E5102F271D0D72AF29AD9B3C3F32504A558DF3CE86A2925BB8A47D46B`.
 Producción y el preview exacto coinciden byte a byte para raíz, service worker,
 manifest, privacidad, CSS y JavaScript; el alta móvil pausada quedó verificada.
-La web pasa 219/219 y la suite raíz terminó con código 0. El smoke externo de
+La web pasa 222/222 y la suite raíz terminó con código 0. El smoke externo de
 portada, privacidad, redirecciones, 404, cabeceras, assets,
 service worker, manifiesto, canonical, robots y sitemap quedó GO.
 
@@ -80,8 +80,12 @@ La OTA del canal Android `preview`, grupo `4f9d7e19...` y runtime
 que abre un aviso push; es compatible con ese build 4. No hay publicación en
 Play Store ni build nativo iOS. La PWA común sí se actualiza desde la web en iOS
 y Android, muestra `Buscar`, `Favoritos`, `Inversiones` y `Mi cuenta`, y migra
-automáticamente instalaciones con service worker v1. `Inversiones` no inventa
-cartera: el backend todavía no registra operaciones. La ficha de empresa
+automáticamente instalaciones con service worker v1. Dentro de `Buscar`, el
+orden móvil es ofertas verificadas, radar animado, acceso a `RWAdar Academy`,
+búsqueda y seis resultados iniciales; las 26 fichas siguen completas y se
+pueden desplegar. Academy reutiliza la lección 3D real y deja la videoteca
+vacía hasta disponer de vídeos revisados, sin crear contenido ficticio.
+`Inversiones` no inventa cartera: el backend todavía no registra operaciones. La ficha de empresa
 móvil conserva información, puntuación, opiniones y animaciones 3D, pero las
 agrupa visualmente; mantiene «Web oficial» fija, reinicia el scroll y ofrece
 cierres superior e inferior de al menos 48 px, safe-area y cierre con Back. La
@@ -156,7 +160,7 @@ local. Luego levanta el servidor en http://localhost:4173 (y `/banco`).
 
 ---
 
-El commit fuente versionado es `9b4778ea98c0e740c9ebd5ec47fd12519bcf362a`.
+El commit de producto desplegado es `c795756d9561084030ee4b88b2f0f22cb5fb714e`.
 En este clon, `origin` apunta a la copia
 local de Downloads; una URL histórica de GitHub no demuestra que el remoto
 esté accesible o actualizado. Comprueba el destino antes de empujar. El

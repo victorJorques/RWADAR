@@ -4,11 +4,11 @@
 > directo al sitio exacto y no gastar el turno buscando. El *por qué* de
 > cada decisión está en `RWADAR-ESTADO.md`; aquí está el *dónde*.
 
-> **Vigencia:** reconciliado el 22 de agosto de 2026 sobre `42018de` y el
-> traspaso del 17–20 de agosto. La web remediada está desplegada y verificada en
+> **Vigencia:** reconciliado el 22 de agosto de 2026 sobre el producto
+> desplegado `c795756d9561084030ee4b88b2f0f22cb5fb714e`. La web remediada está desplegada y verificada en
 > `https://rwadar.pages.dev`; deployment actual
-> `a0be7029-6281-47dd-963d-9c397a18848b`
-> (`https://a0be7029.rwadar.pages.dev`), web 219/219 y
+> `b247c02d-14fa-4732-b6ee-9d5e461590ee`
+> (`https://b247c02d.rwadar.pages.dev`), web 222/222 y
 > smoke externo GO. La 22 está aplicada y verificada. Correo y push siguen OFF.
 > Search Console tiene Pages verificada y la portada en cola; el sitemap se
 > envió y su primera lectura fue el estado transitorio «No se ha podido
@@ -29,13 +29,19 @@ En el artefacto, todos los assets desplegables reciben una huella de contenido
 y el HTML y `sw.js` se reescriben para apuntar a esos nombres. La `VERSION` del
 service worker se deriva del artefacto completo y su precaché crítico es
 atómico: si falta una pieza, la instalación no presenta una entrega parcial.
-La revisión publicada usa `rwadar-v-d4a30d5261f16a4b` y migra automáticamente
+La revisión publicada usa `rwadar-v-624322e8a5d58585` y migra automáticamente
 instalaciones que todavía tengan el service worker v1.
 
 La misma PWA móvil se usa en iPhone y Android. Su navegación principal es
-`Buscar`, `Favoritos`, `Inversiones` y `Mi cuenta`; las ofertas verificadas y el
-buscador preceden al radar. El backend todavía no guarda inversiones, así que
-esa vista declara la ausencia de datos en vez de inventar una cartera.
+`Buscar`, `Favoritos`, `Inversiones` y `Mi cuenta`. Dentro de `Buscar`, el orden
+real del DOM es ofertas verificadas → radar animado → acceso a `RWAdar Academy`
+→ buscador → resultados. Muestra seis plataformas inicialmente y permite abrir
+las 26 sin perder filtros ni datos. El backend todavía no guarda inversiones,
+así que esa vista declara la ausencia de datos en vez de inventar una cartera.
+
+`RWAdar Academy` es una subvista de `Buscar`, no una quinta pestaña. Reutiliza
+el explicador 3D real como primera lección y mantiene la videoteca vacía hasta
+recibir vídeos reales, revisados, subtitulados y acompañados de fuentes.
 
 La ficha móvil conserva todos los campos, opiniones y animaciones 3D, pero los
 agrupa en bloques con cabecera y acciones persistentes; reinicia el scroll y se
@@ -133,7 +139,7 @@ ejecutan por separado, con datos de prueba y limpieza verificable.
 | Comando | Qué demuestra |
 |---|---|
 | `node rwadar-arrancar.js` | Que el JS compila, informa si lo publicado difiere de local y comprueba descartes con fuente |
-| `node probar-web.mjs` | Contrato estático, CSP, publicación explícita y cerrada, privacidad, SEO y 26/4/0; **219/219** al 22-08 |
+| `node probar-web.mjs` | Contrato estático, CSP, publicación explícita y cerrada, privacidad, SEO, shell móvil, Academy, sonido y 26/4/0; **222/222** al 22-08 |
 | `node rwadar-qr/comprobar-qr.js` | Geometría, contenido y legibilidad del QR; 6/6 al 20-08 |
 | `rwadar-app/probar-opiniones.mjs` | Opiniones, denuncias y retirada automática |
 | `rwadar-app/probar-moderacion.mjs` | Que quien no es administrador **no** puede moderar |
@@ -146,7 +152,7 @@ ejecutan por separado, con datos de prueba y limpieza verificable.
 | `rwadar-app/activar-push.cmd` | Único opt-in de push tras E2E; nunca forma parte de fresh/22 |
 | `rwadar-app/db/push_fallo_cerrado.sql` | Cierre de emergencia limitado al push; conserva API y retención |
 
-La suite raíz terminó el 22-08 con código 0; la web pasó **219/219**.
+La suite raíz terminó el 22-08 con código 0; la web pasó **222/222**.
 En producción, la 22 (`02F2...0666`) terminó en `COMMIT` con `schedule=19`; su
 verificador (`4182...2C3`) devolvió `Success. No rows returned` y `RWAdar 22
 OK`. El smoke público confirmó 26/4, las denegaciones ACL/RPC y la ausencia de
@@ -168,7 +174,8 @@ token Expo ficticio. Las pruebas adversariales locales de este contrato pasan
 
 ### El código, versionado
 
-Baseline: `42018de`. En este clon, `origin` apunta a una ruta local de
+Baseline histórico: `42018de`; producto desplegado:
+`c795756d9561084030ee4b88b2f0f22cb5fb714e`. En este clon, `origin` apunta a una ruta local de
 Downloads, no a un remoto verificable. Comprueba el destino antes de cualquier
 push. El `.gitignore` de la raíz es una **lista blanca** porque la carpeta de
 origen puede contener documentos personales; no lo conviertas en lista negra.
@@ -195,14 +202,15 @@ La estructura y el comportamiento ya no comparten archivo:
 | `assets/rwadar-20260820.js` | Datos `P`, `FUERA` y `EMI` | `const P=[` |
 | `assets/rwadar-20260820.js` | Comportamiento y WebGL | `const CATMETA={` |
 
-### Las 15 secciones de CSS
+### Las 19 secciones de CSS
 
 Todas con la forma `/* ============ N · NOMBRE ============ */`:
 
 `1 TOKENS` · `2 MARCA` · `3 CABECERA` · `4 PORTADA` · `5 EXPLICADOR` ·
 `6 MÉTODO` · `7 HERRAMIENTA` · `8 FICHAS` · `9 MATRIZ` ·
 `10 FUERA DEL RADAR` · `11 COMPARADOR Y PANELES` · `12 PIE` ·
-`13 MOVIMIENTO` · `14 RESPONSIVE` · `15 EMISIONES ABIERTAS`
+`13 MOVIMIENTO` · `14 RESPONSIVE` · `15 CUENTA` · `16 OPINIONES` ·
+`17 MODERACIÓN` · `18 EMISIONES ABIERTAS` · `19 RWADAR ACADEMY`
 
 ```bash
 rg -n "============ 8 · FICHAS" rwadar-site/assets/rwadar-20260820.css
@@ -212,19 +220,21 @@ rg -n "============ 8 · FICHAS" rwadar-site/assets/rwadar-20260820.css
 
 | Bloque | Marca de búsqueda | ~línea |
 |---|---|---|
-| Categorías y colores de dato | `const CATMETA={` | 1207 |
-| Logotipo | `const MARK=` | 1221 |
-| Shaders del 3D | `const GL_VS=` | 1252 |
-| Geometría del edificio | `function gEdificio` | 1551 |
-| Motor 3D completo | `(function init3D` | 1606 |
-| Paso a paso del explicador | `function irPaso` | 1951 |
-| Calculadora | `(function calculadora` | 1977 |
-| Radar de portada | `function pintarRadar` | 2069 |
-| Interacción del radar | `(function radarInteractivo` | 2179 |
-| Herramienta (filtros, fichas, matriz, paneles) | `function render()` | 2254 |
-| **Sonido** | `SONIDO DE INTERFAZ` | 2381 |
-| Revelado y contadores | `function pulir` | 2755 |
-| Actualización viva desde Supabase | `async function alDia` | 2834 |
+| Categorías y colores de dato | `const CATMETA={` | 58 |
+| Logotipo | `const MARK=` | 72 |
+| Shaders del 3D | `const GL_VS=` | 103 |
+| Geometría del edificio | `function gEdificio` | 402 |
+| Motor 3D completo | `(function init3D` | 457 |
+| Paso a paso del explicador | `function irPaso` | 802 |
+| Calculadora | `(function calculadora` | 832 |
+| Radar de portada | `function pintarRadar` | 924 |
+| Interacción del radar | `(function radarInteractivo` | 1032 |
+| Herramienta (filtros, fichas, matriz, paneles) | `function render()` | 1148 |
+| **Sonido** | `SONIDO DE INTERFAZ` | 1447 |
+| Revelado y contadores | `function pulir` | 1632 |
+| Actualización viva desde Supabase | `async function alDia` | 1778 |
+| Cuenta y favoritos | `const Cuenta =` | 2066 |
+| Shell móvil y Academy | `const Movil =` | 2702 |
 
 ---
 
@@ -272,12 +282,23 @@ rg -n "============ 8 · FICHAS" rwadar-site/assets/rwadar-20260820.css
 | Quiero | Marca |
 |---|---|
 | Cualquier sonido concreto | `toque :` `abrir :` `cerrar:` `marcar:` `tic   :` |
-| El sonido de los pasos del 3D | `UNA GOTA POR PASO` |
-| El motor (envolvente, aire, cuerpo) | `function pop(o)` |
+| El sonido manual de los pasos del 3D | `paso(i)` y `irPaso(i,manual)` |
+| El motor (envolvente y dos parciales) | `function pulsoCalido(o)` |
 | La cadena maestra (paso bajo, recortador) | `const dar=()=>` |
-| Las notas disponibles | `const NOTAS=` |
-| Qué gesto dispara qué sonido | `pointerdown` |
-| Probar familias nuevas a oído | `rwadar-banco-de-sonidos.html` |
+| El opt-in y la preferencia | `rwadar.sonido` y `get activo()` |
+| Qué gesto desbloquea Web Audio | `Sonido.despertar()` |
+| Probar variantes históricas a oído | `rwadar-banco-de-sonidos.html` |
+
+### RWAdar Academy y el shell móvil
+| Quiero | Marca |
+|---|---|
+| Contenido y temas de Academy | `<!-- ============ RWADAR ACADEMY ============ -->` |
+| Estilos de Academy | `19 · RWADAR ACADEMY` |
+| Orden real de Buscar en móvil | `const ordenMovil=` |
+| Abrir, cerrar, Atrás y foco de Academy | `function mostrarAcademy` / `function cerrarAcademyVisual` |
+| Las cuatro pestañas | `const tabs=` dentro de `const Movil` |
+| Límite inicial de seis fichas | `LIMITE_MOVIL_RESULTADOS` |
+| Expandir o contraer resultados | `function alternarResultadosMoviles` |
 
 ### La calculadora
 | Quiero | Marca |
@@ -418,12 +439,12 @@ momento, sustituyendo `window.AudioContext`:
 const c=new OfflineAudioContext(2,44100*2,44100);
 c.resume=()=>{};                       // que Sonido no arranque el render
 window.AudioContext=function(){return c};
-Sonido.despertar();                    // sin esto, paso() no suena
+Sonido.despertar(); Sonido.activo=true; // opt-in explícito para la medición
 c.suspend(0.5).then(()=>{Sonido.toque(); resumeReal();});
 ```
-Mide pico, duración, reparto por bandas y saltos entre muestras. Un
-chasquido es **un salto aislado**; muchos saltos repartidos son el aire del
-sonido, no un defecto.
+Mide pico, duración, reparto por bandas y discontinuidades entre muestras. Un
+chasquido aparece como un salto aislado anormal; no se introducen ruido,
+reverberación ni aleatoriedad en el grafo publicado.
 **Recarga la página entre medidas**: el módulo cachea su contexto y la
 segunda medida sale muda.
 
@@ -484,12 +505,12 @@ probado: las altas y la recuperación públicas están pausadas fail-closed y no
 envían solicitudes, aunque el login de cuentas existentes y el radar sin cuenta
 siguen disponibles. No confundas superar el preflight con haber probado que
 llega un correo. Cloudflare Pages sirve el deployment actual
-`a0be7029-6281-47dd-963d-9c397a18848b`
-(`https://a0be7029.rwadar.pages.dev`) con caché
-`rwadar-v-d4a30d5261f16a4b`. El ZIP final es
-`outputs/rwadar-cloudflare-pages-20260822-d4a30d52.zip`, 880.760 bytes y 21/21
+`b247c02d-14fa-4732-b6ee-9d5e461590ee`
+(`https://b247c02d.rwadar.pages.dev`) con caché
+`rwadar-v-624322e8a5d58585`. El ZIP final es
+`outputs/rwadar-cloudflare-pages-20260822-624322e8.zip`, 882.282 bytes y 21/21
 archivos verificados, SHA-256
-`AF9FDA2A5612BCD80BE16EE4251E8FD36261BC522DBFF8E96F18566AEBDEF096`; no usar
+`03FAD72E5102F271D0D72AF29AD9B3C3F32504A558DF3CE86A2925BB8A47D46B`; no usar
 el paquete `PRE-AUTH-NO-USAR-...-9b158323.zip` anterior.
 
 La app móvil local está GO y mantiene push OFF. El preview EAS terminó
