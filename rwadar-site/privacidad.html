@@ -253,10 +253,11 @@
       cuando corresponda, cláusulas contractuales tipo (SCC). Consulta su
       <a href="https://www.cloudflare.com/policies/privacy/" rel="noopener">política de privacidad</a>
       y su <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" rel="noopener">DPA</a>.</li>
-    <li><b>Netlify</b> — mantiene en <span class="codigo">rwadar.netlify.app</span> una copia
-      de compatibilidad de la misma aplicación para actualizar los accesos instalados desde
-      el dominio anterior. Puede recibir datos técnicos si visitas esa dirección; RUM
-      continúa desactivado. Cloudflare Pages sigue siendo el origen canónico.</li>
+    <li><b>Netlify</b> — conserva en <span class="codigo">rwadar.netlify.app</span> una versión
+      anterior para los accesos instalados desde ese dominio. Mientras sus despliegues de
+      producción estén pausados, esa copia no recibe automáticamente las mejoras de la versión
+      vigente en Cloudflare Pages. Puede recibir datos técnicos si visitas esa dirección; RUM
+      continúa desactivado. Cloudflare Pages es el origen canónico y actualizado.</li>
     <li><b>Supabase</b> — base de datos y autenticación; el proyecto está alojado en
       <b>eu-west-1 (Irlanda)</b>. Su DPA incluye SCC para los tratamientos que puedan
       implicar una transferencia. Consulta su
