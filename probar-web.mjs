@@ -668,6 +668,10 @@ prueba('Escape, velo y ambos botones cierran la ficha y restauran el foco',
   /dataset\.accion===['"]cerrar-panel['"]\)return closeAll\(\)/.test(jsSinComentarios) &&
   /focoPrevio=document\.activeElement/.test(codigoPaneles) &&
   /document\.contains\(focoPrevio\)[\s\S]*?focoPrevio\.focus\(\)/.test(codigoPaneles));
+prueba('Atrás de Android o del navegador cierra la ficha antes de abandonar RWAdar',
+  /history\.pushState\([\s\S]*?rwadarPanel:true/.test(codigoPaneles) &&
+  /addEventListener\(['"]popstate['"][\s\S]*?cierraPanelVisual\(\)/.test(codigoPaneles) &&
+  /if\(retiraEntrada\)history\.back\(\)/.test(codigoPaneles));
 prueba('el detalle dinámico mantiene CSP estricta y escapa los datos antes de usar HTML',
   camposDetalle.every(([, valor]) => codigoDetalle.includes(`escHtml(${valor})`)) &&
   ['p.n','p.nota','p.aval'].every(valor => codigoDetalle.includes(`escHtml(${valor})`)) &&

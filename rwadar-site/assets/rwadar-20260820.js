@@ -1236,6 +1236,7 @@ const fondo=()=>[...document.querySelectorAll(
  '.hdr,.movil-cabecera,main,.movil-panel,footer,#cmpbar,#movilNav'
 )];
 let focoPrevio=null;
+let panelHistorialActivo=false;
 function openPanel(id){
  focoPrevio=document.activeElement;
  const el=document.getElementById(id);
@@ -1246,8 +1247,13 @@ function openPanel(id){
  fondo().forEach(n=>n.setAttribute('inert',''));
  const c=el.querySelector('.cerrar');
  if(c) c.focus();
+ if(!panelHistorialActivo){
+  const previo=history.state&&typeof history.state==='object'?history.state:{};
+  history.pushState({...previo,rwadarPanel:true},'',location.href);
+  panelHistorialActivo=true;
+ }
 }
-function closeAll(){
+function cierraPanelVisual(){
  ['drawer','modal','perfilPanel'].forEach(id=>{
   const el=document.getElementById(id);
   el.classList.remove('show');
@@ -1258,6 +1264,17 @@ function closeAll(){
  fondo().forEach(n=>n.removeAttribute('inert'));
  if(focoPrevio && document.contains(focoPrevio)){focoPrevio.focus();focoPrevio=null}
 }
+function closeAll(){
+ const retiraEntrada=panelHistorialActivo&&history.state&&history.state.rwadarPanel===true;
+ panelHistorialActivo=false;
+ cierraPanelVisual();
+ if(retiraEntrada)history.back();
+}
+window.addEventListener('popstate',()=>{
+ if(panelHistorialActivo||document.querySelector('#drawer.show,#modal.show,#perfilPanel.show')){
+  panelHistorialActivo=false;cierraPanelVisual();
+ }
+});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
 
 /* ---- emisiones abiertas ---- */
