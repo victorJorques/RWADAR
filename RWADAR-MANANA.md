@@ -6,11 +6,14 @@
 
 ## Lo que puede enseñarse hoy
 
-La producción actual en `https://rwadar.pages.dev` sirve:
+La producción actual en `https://rwadar.pages.dev`, deployment `a171891e...`
+(`https://a171891e.rwadar.pages.dev`), sirve:
 
 - 26 fichas del radar y 4 descartadas;
 - contenido pre-renderizado;
-- PWA instalable;
+- PWA instalable con caché `rwadar-v-9e3e00b497252711`, cuatro pestañas móviles
+  visibles (`Radar`, `Siguiendo`, `Avisos`, `Más`) y migración automática desde
+  service worker v1;
 - CSV, privacidad, sitemap, robots y 404;
 - canonical de la dirección pública.
 
@@ -37,8 +40,10 @@ comprobación.
   producción devuelve `mailer_autoconfirm=false`; el preflight Auth ya pasa.
   No hay SMTP propio y todavía faltan pruebas reales E2E de confirmación y
   recuperación. La configuración no demuestra que el mensaje llegue.
-- **Netlify:** queda como origen legado. Cloudflare Pages es el canonical y la
-  producción actual. El publicador remoto heredado no debe usarse para Pages.
+- **Netlify:** conserva una versión anterior. El panel dice que los despliegues
+  de producción están pausados porque solo quedan créditos operativos y la CLI
+  responde `Forbidden`; no se actualizará hasta el reinicio o ampliación de
+  créditos. Cloudflare Pages es el canonical y la producción actual.
 - **Emisiones:** 0 en producción y sin sección pública. Cualquier cifra o
   estado observado días atrás necesita una fuente y fecha nuevas.
 
@@ -65,7 +70,7 @@ rollback. **Está aplicada y verificada en producción.** El SQL ejecutado
 Security Advisor quedó en 0 Critical y 0 Security Definer View; la firma
 antigua de moderación está ausente.
 
-La suite raíz completa terminó con código 0: DB, web **164/164**, QR **6/6**,
+La suite raíz completa terminó con código 0: DB, web **176/176**, QR **6/6**,
 móvil **15/15** y herramientas. En producción, el smoke público posterior
 confirmó radar 26, descartadas 4, `opiniones.usuario_id` 401, moderación directa
 401, firma antigua 404/PGRST202 y firma nueva anónima 401/42501.
@@ -193,6 +198,12 @@ recuperación. La producción actual se publicó en Cloudflare Pages con Wrangle
 heredado llama a Netlify y no es la ruta de Pages. Nunca subas `rwadar-site/`,
 la raíz ni CALIX.
 
+El artefacto final congelado es
+`outputs/rwadar-cloudflare-pages-20260822-9e3e00b4.zip`, 873.635 bytes y 21/21
+archivos verificados, SHA-256
+`1AF8F60C36777B5E59C36CB27EE2B0B88C6870980D38DECC658056B9E79533CA`. El
+paquete pre-privacidad anterior no debe usarse.
+
 ## Después del despliegue
 
 Comprueba desde una conexión externa:
@@ -203,7 +214,8 @@ Comprueba desde una conexión externa:
 4. CSP efectiva, cero inline y cero `netlify-rum-container`;
 5. registro, recuperación, opinión, denuncia, borrado y cierre de sesión;
 6. que ninguna respuesta fallida se presenta como éxito;
-7. PWA y service worker después de limpiar caché;
+7. PWA, las cuatro pestañas móviles y migración automática desde service worker
+   v1;
 8. Search Console tras la publicación; Pages está verificada y en cola, pero la
    indexación efectiva todavía no está confirmada.
 

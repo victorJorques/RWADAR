@@ -18,16 +18,21 @@ quede en un documento de contexto.
 
 Cloudflare sirve la versión endurecida, pre-renderizada e instalable como PWA:
 26 fichas, 4 descartadas y 0 emisiones públicas; CSP estricta, sin RUM/Zaraz y
-sin tokens de sesión en `localStorage`. El despliegue final `2aedebd9...`
-coincide con
-el artefacto exacto validado. ZIP de entrega:
-`outputs/rwadar-cloudflare-pages-20260822-d6f73fb3.zip`, SHA-256
-`143B6ECBB8B883006D36C9297A3C574B09BBB2A46950208E4B821C792499BDFC`.
-La web pasa 164/164 y la suite raíz terminó con código 0. El smoke externo de
+sin tokens de sesión en `localStorage`. El despliegue actual es `a171891e...`
+(`https://a171891e.rwadar.pages.dev`) y la caché es
+`rwadar-v-9e3e00b497252711`. El artefacto final es
+`outputs/rwadar-cloudflare-pages-20260822-9e3e00b4.zip`, 873.635 bytes y 21/21
+archivos verificados, SHA-256
+`1AF8F60C36777B5E59C36CB27EE2B0B88C6870980D38DECC658056B9E79533CA`; no usar
+el paquete pre-privacidad anterior.
+La web pasa 176/176 y la suite raíz terminó con código 0. El smoke externo de
 portada, privacidad, redirecciones, 404, cabeceras, assets,
 service worker, manifiesto, canonical, robots y sitemap quedó GO.
 
-`https://rwadar.netlify.app` es ahora el origen antiguo: sigue en línea y ya
+`https://rwadar.netlify.app` es ahora el origen antiguo: conserva una versión
+anterior porque el panel indica que los despliegues de producción están
+pausados al quedar solo créditos operativos y la CLI responde `Forbidden`.
+Seguirá así hasta el reinicio o ampliación de créditos; está en línea y ya
 figura indexado, pero no es el canonical ni el destino de producción actual.
 Search Console tiene verificada la propiedad `rwadar.pages.dev`; se solicitó la
 indexación de la portada. El sitemap se envió y su primera lectura mostró el
@@ -70,7 +75,9 @@ La OTA del canal Android `preview`, grupo `4f9d7e19...` y runtime
 `af69452933f988f2d48d45861802f09d3df06e8b`, publica el rediseño y el listener
 que abre un aviso push; es compatible con ese build 4. No hay publicación en
 Play Store ni build nativo iOS. La PWA sí se actualiza desde la web en iOS y
-Android. La OTA no demuestra ni activa la entrega push.
+Android, muestra las cuatro pestañas `Radar`, `Siguiendo`, `Avisos` y `Más`, y
+migra automáticamente instalaciones con service worker v1. La OTA no demuestra
+ni activa la entrega push.
 
 Los corresponsables actuales, sin sociedad constituida, son **Eric Almiñana,
 Samuel Rodriguez y Victor Jorques**. Contacto: `RWAdar@protonmail.com`. El

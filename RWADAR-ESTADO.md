@@ -121,7 +121,7 @@ fuera del artefacto.
 ### Identificadores
 
 ```
-Cloudflare Pages: rwadar (deployment final 2aedebd9...)
+Cloudflare Pages: rwadar (deployment actual a171891e...)
 Netlify legado : 0211fd28-d371-43cd-9d93-3944fea57680
 Supabase ref   : exgpmjpaaebyoolpwced
 Supabase URL   : https://exgpmjpaaebyoolpwced.supabase.co
@@ -142,7 +142,7 @@ que una operación esté protegida.
 | Web pública | **GO en `https://rwadar.pages.dev`** con 26 fichas, 4 descartadas y PWA |
 | Emisiones públicas | 0 en producción; sección no visible |
 | Web remediada | **Desplegada y verificada**: 26/4/0; CSS/JS externos, CSP estricta, sin RUM/Zaraz y sin tokens en `localStorage` |
-| Deployment y artefacto | Final `2aedebd9...`; web 164/164; ZIP `rwadar-cloudflare-pages-20260822-d6f73fb3.zip`, SHA-256 `143B6ECBB8B883006D36C9297A3C574B09BBB2A46950208E4B821C792499BDFC`; smoke externo GO |
+| Deployment y artefacto | Actual `a171891e...` (`https://a171891e.rwadar.pages.dev`); web 176/176 y suite raíz código 0; ZIP `rwadar-cloudflare-pages-20260822-9e3e00b4.zip`, 873.635 bytes, 21/21, SHA-256 `1AF8F60C36777B5E59C36CB27EE2B0B88C6870980D38DECC658056B9E79533CA`; smoke externo GO |
 | Base de producción | Migración 22 **aplicada y verificada**; Security Advisor: 0 Critical y 0 Security Definer View |
 | Migración 22 | `02F2...0666`: `COMMIT`, `schedule=19`; verificador `4182...2C3`: `Success. No rows returned` y aviso `RWAdar 22 OK` |
 | Smoke público backend | Radar 26, descartadas 4; `opiniones.usuario_id` 401, moderación directa 401, firma antigua ausente (404/PGRST202), firma nueva anónima 401/42501 |
@@ -153,8 +153,8 @@ que una operación esté protegida.
 | Push | **OFF en producción:** 0 tokens y 0 cron; exige dispositivo físico y E2E |
 | Dependencias móviles | 46 paquetes afectados: 29 high, 17 moderate, 0 critical; 3 avisos fuente de toolchain sin fix compatible |
 | Indexación | Pages verificada; portada en cola. Sitemap enviado, primera lectura «No se ha podido obtener». Netlify legada sí indexada |
-| Hosting | Cloudflare Pages es producción; Netlify es legado. CALIX es distinto y no se tocó |
-| Móvil | Android build 4 compatible con OTA `preview` `4f9d7e19...`, runtime `af694...`; rediseño + apertura de avisos. Sin Play Store ni iOS nativo; PWA actualizada en ambos |
+| Hosting | Cloudflare Pages es producción. Netlify conserva la versión anterior: producción pausada porque solo quedan créditos operativos y CLI `Forbidden`; seguirá así hasta reinicio o ampliación de créditos. CALIX es distinto y no se tocó |
+| Móvil | Android build 4 compatible con OTA `preview` `4f9d7e19...`, runtime `af694...`; rediseño + apertura de avisos. Sin Play Store ni iOS nativo; PWA en ambos con caché `rwadar-v-9e3e00b497252711`, pestañas `Radar`/`Siguiendo`/`Avisos`/`Más` y migración automática desde SW v1 |
 
 ### Bloqueos reales
 
@@ -169,7 +169,7 @@ mínimo:
 3. conservar Confirm email activo con signup habilitado y probar confirmación y
    recuperación reales de extremo a extremo; el acuerdo pendiente ya se declara
    de forma transparente y no es un bloqueo técnico del publicador;
-4. conservar el deployment Cloudflare, el ZIP y el hash como evidencia de la
+4. conservar el deployment Cloudflare, el ZIP final y el hash como evidencia de la
    publicación GO, y repetir el smoke tras cualquier cambio;
 5. reconsultar Search Console hasta que la portada y el sitemap de Pages tengan
    estado definitivo;
@@ -217,11 +217,16 @@ ambos modos remotos antes de Auth o sincronización. El preflight exige
 ausente detienen la publicación. Superar esa comprobación no sustituye pruebas
 reales E2E de confirmación y recuperación; no hay SMTP propio.
 
-La web endurecida ya está en Cloudflare Pages, deployment final `2aedebd9...`.
-El ZIP congelado `outputs/rwadar-cloudflare-pages-20260822-d6f73fb3.zip` tiene
-SHA-256 `143B6ECBB8B883006D36C9297A3C574B09BBB2A46950208E4B821C792499BDFC`.
-El publicador remoto heredado aún llama a Netlify: no lo uses como ruta de
-Pages ni ejecutes `netlify deploy` a secas.
+La web endurecida ya está en Cloudflare Pages, deployment actual `a171891e...`
+(`https://a171891e.rwadar.pages.dev`) y caché
+`rwadar-v-9e3e00b497252711`. El ZIP congelado
+`outputs/rwadar-cloudflare-pages-20260822-9e3e00b4.zip` tiene 873.635 bytes,
+21/21 archivos verificados y SHA-256
+`1AF8F60C36777B5E59C36CB27EE2B0B88C6870980D38DECC658056B9E79533CA`.
+El paquete pre-privacidad anterior no debe usarse. El publicador remoto heredado
+aún llama a Netlify: no lo uses como ruta de Pages ni ejecutes `netlify deploy`
+a secas; hoy la CLI responde `Forbidden` y el panel mantiene producción pausada
+por créditos, por lo que Netlify conserva la versión anterior.
 
 ### Probar la app
 
@@ -676,8 +681,8 @@ los JSON.
 3. Conservar visible `acuerdo-pendiente-de-documentar`, Confirm email activo y
    signup habilitado; probar confirmación y recuperación reales E2E antes de
    prometer entrega.
-4. Conservar el deployment `2aedebd9...`, el ZIP final y su SHA-256; repetir web
-   164/164 y smoke externo después de cualquier cambio.
+4. Conservar el deployment `a171891e...`, el ZIP final y su SHA-256; repetir web
+   176/176 y smoke externo después de cualquier cambio.
 5. Reconsultar la portada y el sitemap en Search Console hasta obtener un estado
    definitivo; la solicitud ya está hecha, no la indexación confirmada.
 6. Mantener push y correo OFF hasta contar con sus credenciales, consentimiento,

@@ -35,7 +35,10 @@ como discrepancia.
 
 **Estado publicado:** Cloudflare Pages sirve la arquitectura endurecida, CSP sin
 `unsafe-inline`/`unsafe-eval`, política actual y service worker versionado. El
-origen Netlify queda como legado y no es el canonical.
+deployment vigente es `a171891e...` (`https://a171891e.rwadar.pages.dev`) y la
+caché PWA es `rwadar-v-9e3e00b497252711`. Netlify conserva una versión anterior:
+sus despliegues de producción están pausados porque solo quedan créditos
+operativos y la CLI responde `Forbidden`; no es el canonical.
 
 ## 2 · Pre-renderizado y publicación con intención
 
@@ -185,7 +188,7 @@ sigue OFF.
 
 ## 8 · Evidencia de calidad
 
-Al 22 de agosto, la batería web pasa **164/164**, la comprobación del QR
+Al 22 de agosto, la batería web pasa **176/176**, la comprobación del QR
 **6/6**, el artefacto contiene **26/4/0** y la suite raíz completa termina con
 código 0 e incluye DB, web, QR, móvil **15/15** y tools. La migración 22 se
 verificó además contra producción como se describe arriba.
@@ -213,7 +216,7 @@ Por eso el traspaso exige verificar producción después de cada cambio.
 | Datos | PostgreSQL, RLS, RPC; 22 aplicada y verificada en producción | Repetir verificación tras cambios de esquema |
 | Privacidad | Sin RUM local, tokens web en memoria, responsables identificados | Firmar acuerdo y decidir plazos |
 | Editorial | Fuentes obligatorias y controles automáticos | Revisión humana y actualización periódica |
-| PWA | Producción instalable en iOS y Android | Reinstalar desde Pages si se usaba el acceso directo del origen Netlify |
+| PWA | Producción instalable en iOS y Android; cuatro pestañas (`Radar`, `Siguiendo`, `Avisos`, `Más`) y migración automática desde service worker v1 | Abrir desde Pages; Netlify mantiene la versión anterior mientras producción siga pausada por créditos |
 | Correo | Instalación separada y opt-in | Proveedor, consentimiento y prueba E2E |
 | Push | Preparación con fallo cerrado | Sigue deshabilitado; emisor y recibos E2E |
 | SEO | Pre-render, robots, sitemap y canonical en Pages | Confirmar cobertura real en Search Console |

@@ -19,14 +19,14 @@ no hay publicación en tiendas móviles.
 
 | Pieza | Producción | Repositorio reconciliado |
 |---|---|---|
-| Web pública | **GO en `https://rwadar.pages.dev`**, deployment final `2aedebd9...`, smoke externo verde | Mismo artefacto exacto validado; web 164/164 |
+| Web pública | **GO en `https://rwadar.pages.dev`**, deployment actual `a171891e...` (`https://a171891e.rwadar.pages.dev`), smoke externo verde | Web 176/176 y suite raíz con código 0 |
 | Cloudflare Pages | Proyecto `rwadar`; canonical y producción actual | Wrangler 4.125.0; OAuth mínimo: User Read, Account Read y Pages Write |
-| Netlify | Origen legado aún accesible e indexado; no es canonical ni producción actual | El publicador remoto heredado todavía llama a Netlify; no usarlo para publicar Pages |
+| Netlify | Conserva una versión anterior: producción pausada por créditos; no es canonical ni producción actual | El panel indica que solo quedan créditos operativos y la CLI responde `Forbidden`; no se actualizará hasta reinicio o ampliación de créditos |
 | Plataformas | 26 en radar + 4 descartadas | Mismo contrato de datos |
-| PWA | En línea | Conservada |
+| PWA | En línea; caché `rwadar-v-9e3e00b497252711` | Cuatro pestañas móviles visibles (`Radar`, `Siguiendo`, `Avisos`, `Más`) y migración automática desde service worker v1 |
 | Sección «Abierto ahora mismo» | No visible | Implementada localmente |
 | Emisiones | 0 | Esquema y UI preparados, sin datos que publicar |
-| CSS/JS externos + CSP estricta | **Desplegados**; sin `unsafe-inline`/`unsafe-eval` | Contrato 164/164 |
+| CSS/JS externos + CSP estricta | **Desplegados**; sin `unsafe-inline`/`unsafe-eval` | Contrato 176/176 |
 | Analítica/RUM | Cloudflare Web Analytics, Zaraz y Netlify RUM ausentes | Su inyección se rechaza como discrepancia |
 | Tokens de sesión en `localStorage` | No se persisten; sesión en memoria | Mismo contrato |
 | Migraciones 14 y 15 | Parte del contrato seguro ya conocido de producción | Reproducibles y verificables |
@@ -64,7 +64,8 @@ moderación directa 401, firma antigua 404/PGRST202 y firma nueva anónima
 Security Advisor quedó en 0 Critical y 0 Security Definer View; la firma
 antigua está ausente.
 
-El cierre local de DB y sus gates queda verde. La web actual pasa **164/164**.
+El cierre local de DB y sus gates queda verde. La web actual pasa **176/176**
+y la suite raíz completa termina con código 0.
 `17_avisos_push.sql`, fresh-install, 22,
 rollback y recuperación terminan con `push_configuracion.habilitado=false` y
 **cero** jobs `rwadar-push`. Con el interruptor apagado, las funciones y el
@@ -118,11 +119,14 @@ inyectados, sin red. Eso prueba el fallo cerrado de los scripts, no producción.
   `rwadar-site/`; nunca se edita a mano.
 
 La versión remediada **ya está desplegada y verificada** en Cloudflare Pages.
-El deployment final es `2aedebd9...`; el ZIP congelado es
-`outputs/rwadar-cloudflare-pages-20260822-d6f73fb3.zip`, SHA-256
-`143B6ECBB8B883006D36C9297A3C574B09BBB2A46950208E4B821C792499BDFC`.
-El smoke confirmó rutas, 26/4/0, CSP, caché, PWA y SEO técnico. Netlify queda
-como origen legado y no debe presentarse como canonical.
+El deployment actual es `a171891e...` (`https://a171891e.rwadar.pages.dev`) y
+la caché PWA es `rwadar-v-9e3e00b497252711`. El ZIP final es
+`outputs/rwadar-cloudflare-pages-20260822-9e3e00b4.zip`, 873.635 bytes y 21/21
+archivos verificados, SHA-256
+`1AF8F60C36777B5E59C36CB27EE2B0B88C6870980D38DECC658056B9E79533CA`; no uses
+el paquete pre-privacidad anterior. El smoke confirmó rutas, 26/4/0, CSP,
+caché, PWA y SEO técnico. Netlify conserva la versión anterior mientras
+producción siga pausada por créditos y no debe presentarse como canonical.
 
 ### Móvil y avisos
 
@@ -154,7 +158,8 @@ Tiene estructura y firma v2; no está en tienda. La OTA Android del canal
 `af69452933f988f2d48d45861802f09d3df06e8b` y entrega el rediseño más el
 listener que abre un aviso. Eso no activa la entrega push: producción conserva
 0 tokens y 0 cron. No hay build nativo iOS; en iOS y Android la PWA sí toma la
-web actualizada.
+web actualizada, presenta `Radar`, `Siguiendo`, `Avisos` y `Más`, y migra
+automáticamente instalaciones con service worker v1.
 
 ## 4 · Emisiones y evidencia regulatoria
 
@@ -313,8 +318,9 @@ sobre el árbol omitido y reinstalando después. Expo install check pasa, Doctor
 4. Mantener visible el estado `acuerdo-pendiente-de-documentar`; conservar
    Confirm email activo con signup habilitado y probar confirmación y
    recuperación reales E2E; no prometer entrega antes de esas pruebas.
-5. Conservar el deployment Cloudflare `2aedebd9...`, el ZIP y su SHA-256 como
-   evidencia de la entrega GO; repetir el smoke tras cualquier despliegue.
+5. Conservar el deployment Cloudflare `a171891e...`, el ZIP final
+   `rwadar-cloudflare-pages-20260822-9e3e00b4.zip` y su SHA-256 como evidencia;
+   repetir el smoke tras cualquier despliegue.
 6. Reconsultar Search Console: la propiedad Pages está verificada y la portada
    en cola; confirmar que el sitemap deja atrás el primer «No se ha podido
    obtener» antes de afirmar indexación de la URL nueva.
