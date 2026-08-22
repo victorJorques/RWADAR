@@ -6,16 +6,20 @@
 
 ## Lo que puede enseñarse hoy
 
-La producción actual en `https://rwadar.pages.dev`, deployment `a171891e...`
-(`https://a171891e.rwadar.pages.dev`), sirve:
+La producción actual en `https://rwadar.pages.dev`, deployment `395980eb...`
+(`https://395980eb.rwadar.pages.dev`), sirve:
 
 - 26 fichas del radar y 4 descartadas;
 - contenido pre-renderizado;
-- PWA instalable con caché `rwadar-v-9e3e00b497252711`, cuatro pestañas móviles
+- PWA instalable con caché `rwadar-v-9b1583232e8bea4b`, cuatro pestañas móviles
   visibles (`Radar`, `Siguiendo`, `Avisos`, `Más`) y migración automática desde
   service worker v1;
+- ficha móvil agrupada por bloques, con toda la información y el 3D conservados,
+  acciones fijas y cierre arriba, abajo o con Atrás;
 - CSV, privacidad, sitemap, robots y 404;
 - canonical de la dirección pública.
+
+La política pública fija una edad mínima de 18 años en su punto 11.
 
 No enseña la sección de emisiones y la base de producción tiene 0 emisiones.
 Robots y sitemap responden. Search Console tiene la propiedad Pages verificada,
@@ -70,7 +74,7 @@ rollback. **Está aplicada y verificada en producción.** El SQL ejecutado
 Security Advisor quedó en 0 Critical y 0 Security Definer View; la firma
 antigua de moderación está ausente.
 
-La suite raíz completa terminó con código 0: DB, web **176/176**, QR **6/6**,
+La suite raíz completa terminó con código 0: DB, web **190/190**, QR **6/6**,
 móvil **15/15** y herramientas. En producción, el smoke público posterior
 confirmó radar 26, descartadas 4, `opiniones.usuario_id` 401, moderación directa
 401, firma antigua 404/PGRST202 y firma nueva anónima 401/42501.
@@ -199,9 +203,9 @@ heredado llama a Netlify y no es la ruta de Pages. Nunca subas `rwadar-site/`,
 la raíz ni CALIX.
 
 El artefacto final congelado es
-`outputs/rwadar-cloudflare-pages-20260822-9e3e00b4.zip`, 873.635 bytes y 21/21
+`outputs/rwadar-cloudflare-pages-20260822-9b158323.zip`, 875.030 bytes y 21/21
 archivos verificados, SHA-256
-`1AF8F60C36777B5E59C36CB27EE2B0B88C6870980D38DECC658056B9E79533CA`. El
+`3435EC036030F390855D721EAAFB7FE0FB904187FA3284D20C270C479B6DE945`. El
 paquete pre-privacidad anterior no debe usarse.
 
 ## Después del despliegue

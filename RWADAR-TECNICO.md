@@ -35,10 +35,14 @@ como discrepancia.
 
 **Estado publicado:** Cloudflare Pages sirve la arquitectura endurecida, CSP sin
 `unsafe-inline`/`unsafe-eval`, política actual y service worker versionado. El
-deployment vigente es `a171891e...` (`https://a171891e.rwadar.pages.dev`) y la
-caché PWA es `rwadar-v-9e3e00b497252711`. Netlify conserva una versión anterior:
+deployment vigente es `395980eb...` (`https://395980eb.rwadar.pages.dev`) y la
+caché PWA es `rwadar-v-9b1583232e8bea4b`. Netlify conserva una versión anterior:
 sus despliegues de producción están pausados porque solo quedan créditos
 operativos y la CLI responde `Forbidden`; no es el canonical.
+
+En móvil, la ficha usa cabecera y acciones persistentes, safe-area, contenido
+agrupado y scroll interior; conserva todos los datos, opiniones y el acceso al
+3D, y puede cerrarse arriba, abajo o con Atrás. Privacidad exige 18 años.
 
 ## 2 · Pre-renderizado y publicación con intención
 
@@ -188,7 +192,7 @@ sigue OFF.
 
 ## 8 · Evidencia de calidad
 
-Al 22 de agosto, la batería web pasa **176/176**, la comprobación del QR
+Al 22 de agosto, la batería web pasa **190/190**, la comprobación del QR
 **6/6**, el artefacto contiene **26/4/0** y la suite raíz completa termina con
 código 0 e incluye DB, web, QR, móvil **15/15** y tools. La migración 22 se
 verificó además contra producción como se describe arriba.

@@ -18,14 +18,15 @@ quede en un documento de contexto.
 
 Cloudflare sirve la versión endurecida, pre-renderizada e instalable como PWA:
 26 fichas, 4 descartadas y 0 emisiones públicas; CSP estricta, sin RUM/Zaraz y
-sin tokens de sesión en `localStorage`. El despliegue actual es `a171891e...`
-(`https://a171891e.rwadar.pages.dev`) y la caché es
-`rwadar-v-9e3e00b497252711`. El artefacto final es
-`outputs/rwadar-cloudflare-pages-20260822-9e3e00b4.zip`, 873.635 bytes y 21/21
+sin tokens de sesión en `localStorage`. El despliegue actual es `395980eb...`
+(`https://395980eb.rwadar.pages.dev`), el canonical es
+`https://rwadar.pages.dev` y la caché es `rwadar-v-9b1583232e8bea4b`. El
+artefacto final es `outputs/rwadar-cloudflare-pages-20260822-9b158323.zip`,
+875.030 bytes y 21/21
 archivos verificados, SHA-256
-`1AF8F60C36777B5E59C36CB27EE2B0B88C6870980D38DECC658056B9E79533CA`; no usar
+`3435EC036030F390855D721EAAFB7FE0FB904187FA3284D20C270C479B6DE945`; no usar
 el paquete pre-privacidad anterior.
-La web pasa 176/176 y la suite raíz terminó con código 0. El smoke externo de
+La web pasa 190/190 y la suite raíz terminó con código 0. El smoke externo de
 portada, privacidad, redirecciones, 404, cabeceras, assets,
 service worker, manifiesto, canonical, robots y sitemap quedó GO.
 
@@ -76,13 +77,17 @@ La OTA del canal Android `preview`, grupo `4f9d7e19...` y runtime
 que abre un aviso push; es compatible con ese build 4. No hay publicación en
 Play Store ni build nativo iOS. La PWA sí se actualiza desde la web en iOS y
 Android, muestra las cuatro pestañas `Radar`, `Siguiendo`, `Avisos` y `Más`, y
-migra automáticamente instalaciones con service worker v1. La OTA no demuestra
-ni activa la entrega push.
+migra automáticamente instalaciones con service worker v1. La ficha de empresa
+móvil conserva información, puntuación, opiniones y animaciones 3D, pero las
+agrupa visualmente; mantiene «Web oficial» fija, reinicia el scroll y ofrece
+cierres superior e inferior de al menos 48 px, safe-area y cierre con Back. La
+OTA no demuestra ni activa la entrega push.
 
 Los corresponsables actuales, sin sociedad constituida, son **Eric Almiñana,
 Samuel Rodriguez y Victor Jorques**. Contacto: `RWAdar@protonmail.com`. El
 acuerdo interno y los plazos de conservación siguen pendientes de aprobación;
-no los presentes como definitivos.
+no los presentes como definitivos. La política de privacidad fija en el punto
+11 una edad mínima de 18 años.
 
 **Esa dirección es también la aplicación.** Desde el móvil se instala en la
 pantalla de inicio y se abre con su icono y sin barra de navegador. Una sola

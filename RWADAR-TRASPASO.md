@@ -19,14 +19,14 @@ no hay publicación en tiendas móviles.
 
 | Pieza | Producción | Repositorio reconciliado |
 |---|---|---|
-| Web pública | **GO en `https://rwadar.pages.dev`**, deployment actual `a171891e...` (`https://a171891e.rwadar.pages.dev`), smoke externo verde | Web 176/176 y suite raíz con código 0 |
+| Web pública | **GO en `https://rwadar.pages.dev`**, deployment actual `395980eb...` (`https://395980eb.rwadar.pages.dev`), smoke externo verde | Web 190/190 y suite raíz con código 0 |
 | Cloudflare Pages | Proyecto `rwadar`; canonical y producción actual | Wrangler 4.125.0; OAuth mínimo: User Read, Account Read y Pages Write |
 | Netlify | Conserva una versión anterior: producción pausada por créditos; no es canonical ni producción actual | El panel indica que solo quedan créditos operativos y la CLI responde `Forbidden`; no se actualizará hasta reinicio o ampliación de créditos |
 | Plataformas | 26 en radar + 4 descartadas | Mismo contrato de datos |
-| PWA | En línea; caché `rwadar-v-9e3e00b497252711` | Cuatro pestañas móviles visibles (`Radar`, `Siguiendo`, `Avisos`, `Más`) y migración automática desde service worker v1 |
+| PWA | En línea; caché `rwadar-v-9b1583232e8bea4b` | Cuatro pestañas móviles visibles (`Radar`, `Siguiendo`, `Avisos`, `Más`), ficha ordenada y migración automática desde service worker v1 |
 | Sección «Abierto ahora mismo» | No visible | Implementada localmente |
 | Emisiones | 0 | Esquema y UI preparados, sin datos que publicar |
-| CSS/JS externos + CSP estricta | **Desplegados**; sin `unsafe-inline`/`unsafe-eval` | Contrato 176/176 |
+| CSS/JS externos + CSP estricta | **Desplegados**; sin `unsafe-inline`/`unsafe-eval` | Contrato 190/190 |
 | Analítica/RUM | Cloudflare Web Analytics, Zaraz y Netlify RUM ausentes | Su inyección se rechaza como discrepancia |
 | Tokens de sesión en `localStorage` | No se persisten; sesión en memoria | Mismo contrato |
 | Migraciones 14 y 15 | Parte del contrato seguro ya conocido de producción | Reproducibles y verificables |
@@ -64,7 +64,7 @@ moderación directa 401, firma antigua 404/PGRST202 y firma nueva anónima
 Security Advisor quedó en 0 Critical y 0 Security Definer View; la firma
 antigua está ausente.
 
-El cierre local de DB y sus gates queda verde. La web actual pasa **176/176**
+El cierre local de DB y sus gates queda verde. La web actual pasa **190/190**
 y la suite raíz completa termina con código 0.
 `17_avisos_push.sql`, fresh-install, 22,
 rollback y recuperación terminan con `push_configuracion.habilitado=false` y
@@ -119,11 +119,11 @@ inyectados, sin red. Eso prueba el fallo cerrado de los scripts, no producción.
   `rwadar-site/`; nunca se edita a mano.
 
 La versión remediada **ya está desplegada y verificada** en Cloudflare Pages.
-El deployment actual es `a171891e...` (`https://a171891e.rwadar.pages.dev`) y
-la caché PWA es `rwadar-v-9e3e00b497252711`. El ZIP final es
-`outputs/rwadar-cloudflare-pages-20260822-9e3e00b4.zip`, 873.635 bytes y 21/21
+El deployment actual es `395980eb...` (`https://395980eb.rwadar.pages.dev`) y
+la caché PWA es `rwadar-v-9b1583232e8bea4b`. El ZIP final es
+`outputs/rwadar-cloudflare-pages-20260822-9b158323.zip`, 875.030 bytes y 21/21
 archivos verificados, SHA-256
-`1AF8F60C36777B5E59C36CB27EE2B0B88C6870980D38DECC658056B9E79533CA`; no uses
+`3435EC036030F390855D721EAAFB7FE0FB904187FA3284D20C270C479B6DE945`; no uses
 el paquete pre-privacidad anterior. El smoke confirmó rutas, 26/4/0, CSP,
 caché, PWA y SEO técnico. Netlify conserva la versión anterior mientras
 producción siga pausada por créditos y no debe presentarse como canonical.
@@ -210,6 +210,8 @@ por:
 - Victor Jorques
 
 Correo de contacto: `RWAdar@protonmail.com`.
+
+El punto 11 de la política pública establece una edad mínima de 18 años.
 
 Existe un borrador de acuerdo de corresponsabilidad, pero todavía no está
 aprobado ni firmado por los tres. Los plazos propuestos de **12 meses y 3
@@ -318,8 +320,8 @@ sobre el árbol omitido y reinstalando después. Expo install check pasa, Doctor
 4. Mantener visible el estado `acuerdo-pendiente-de-documentar`; conservar
    Confirm email activo con signup habilitado y probar confirmación y
    recuperación reales E2E; no prometer entrega antes de esas pruebas.
-5. Conservar el deployment Cloudflare `a171891e...`, el ZIP final
-   `rwadar-cloudflare-pages-20260822-9e3e00b4.zip` y su SHA-256 como evidencia;
+5. Conservar el deployment Cloudflare `395980eb...`, el ZIP final
+   `rwadar-cloudflare-pages-20260822-9b158323.zip` y su SHA-256 como evidencia;
    repetir el smoke tras cualquier despliegue.
 6. Reconsultar Search Console: la propiedad Pages está verificada y la portada
    en cola; confirmar que el sitemap deja atrás el primer «No se ha podido

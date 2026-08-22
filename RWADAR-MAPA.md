@@ -6,8 +6,8 @@
 
 > **Vigencia:** reconciliado el 22 de agosto de 2026 sobre `42018de` y el
 > traspaso del 17–20 de agosto. La web remediada está desplegada y verificada en
-> `https://rwadar.pages.dev`; deployment actual `a171891e...`
-> (`https://a171891e.rwadar.pages.dev`), web 176/176 y
+> `https://rwadar.pages.dev`; deployment actual `395980eb...`
+> (`https://395980eb.rwadar.pages.dev`), web 190/190 y
 > smoke externo GO. La 22 está aplicada y verificada. Correo y push siguen OFF.
 > Search Console tiene Pages verificada y la portada en cola; el sitemap se
 > envió y su primera lectura fue el estado transitorio «No se ha podido
@@ -28,8 +28,12 @@ En el artefacto, todos los assets desplegables reciben una huella de contenido
 y el HTML y `sw.js` se reescriben para apuntar a esos nombres. La `VERSION` del
 service worker se deriva del artefacto completo y su precaché crítico es
 atómico: si falta una pieza, la instalación no presenta una entrega parcial.
-La revisión publicada usa `rwadar-v-9e3e00b497252711` y migra automáticamente
+La revisión publicada usa `rwadar-v-9b1583232e8bea4b` y migra automáticamente
 instalaciones que todavía tengan el service worker v1.
+
+La ficha móvil conserva todos los campos, opiniones y animaciones 3D, pero los
+agrupa en bloques con cabecera y acciones persistentes; reinicia el scroll y se
+cierra arriba, abajo o con Atrás. Privacidad exige una edad mínima de 18 años.
 
 La genera `rwadar-publicar.js` en cada publicación llamando a
 `rwadar-adelgazar.js`. **Nunca la edites**: se borra y se rehace entera.
@@ -123,7 +127,7 @@ ejecutan por separado, con datos de prueba y limpieza verificable.
 | Comando | Qué demuestra |
 |---|---|
 | `node rwadar-arrancar.js` | Que el JS compila, informa si lo publicado difiere de local y comprueba descartes con fuente |
-| `node probar-web.mjs` | Contrato estático, CSP, publicación explícita y cerrada, privacidad, SEO y 26/4/0; **176/176** al 22-08 |
+| `node probar-web.mjs` | Contrato estático, CSP, publicación explícita y cerrada, privacidad, SEO y 26/4/0; **190/190** al 22-08 |
 | `node rwadar-qr/comprobar-qr.js` | Geometría, contenido y legibilidad del QR; 6/6 al 20-08 |
 | `rwadar-app/probar-opiniones.mjs` | Opiniones, denuncias y retirada automática |
 | `rwadar-app/probar-moderacion.mjs` | Que quien no es administrador **no** puede moderar |
@@ -136,7 +140,7 @@ ejecutan por separado, con datos de prueba y limpieza verificable.
 | `rwadar-app/activar-push.cmd` | Único opt-in de push tras E2E; nunca forma parte de fresh/22 |
 | `rwadar-app/db/push_fallo_cerrado.sql` | Cierre de emergencia limitado al push; conserva API y retención |
 
-La suite raíz terminó el 22-08 con código 0; la web pasó **176/176**.
+La suite raíz terminó el 22-08 con código 0; la web pasó **190/190**.
 En producción, la 22 (`02F2...0666`) terminó en `COMMIT` con `schedule=19`; su
 verificador (`4182...2C3`) devolvió `Success. No rows returned` y `RWAdar 22
 OK`. El smoke público confirmó 26/4, las denegaciones ACL/RPC y la ausencia de
@@ -474,12 +478,12 @@ cerrado. No confundas superar el preflight con
 haber probado que llega un correo de confirmación.
 
 No hay SMTP propio y todavía faltan pruebas E2E reales de confirmación y
-recuperación. Cloudflare Pages sirve el deployment actual `a171891e...`
-(`https://a171891e.rwadar.pages.dev`) con caché
-`rwadar-v-9e3e00b497252711`. El ZIP final es
-`outputs/rwadar-cloudflare-pages-20260822-9e3e00b4.zip`, 873.635 bytes y 21/21
+recuperación. Cloudflare Pages sirve el deployment actual `395980eb...`
+(`https://395980eb.rwadar.pages.dev`) con caché
+`rwadar-v-9b1583232e8bea4b`. El ZIP final es
+`outputs/rwadar-cloudflare-pages-20260822-9b158323.zip`, 875.030 bytes y 21/21
 archivos verificados, SHA-256
-`1AF8F60C36777B5E59C36CB27EE2B0B88C6870980D38DECC658056B9E79533CA`; no usar
+`3435EC036030F390855D721EAAFB7FE0FB904187FA3284D20C270C479B6DE945`; no usar
 el paquete pre-privacidad anterior.
 
 La app móvil local está GO y mantiene push OFF. El preview EAS terminó
