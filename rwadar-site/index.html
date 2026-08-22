@@ -704,10 +704,11 @@
   <button class="x" data-accion="vaciar-comparacion" aria-label="Vaciar la comparación">✕</button>
 </div>
 <div class="velo" id="ovl" data-accion="cerrar-panel"></div>
-<aside class="panel" id="drawer" role="dialog" aria-modal="true" aria-label="Ficha de plataforma" inert>
-  <div class="pn-hd"><div class="pn-row"><div class="pn-id" id="dwId"></div>
-    <button class="cerrar" data-accion="cerrar-panel" aria-label="Cerrar">✕</button></div></div>
+<aside class="panel" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dwTitulo" aria-describedby="dwResumen" inert>
+ <div class="pn-hd"><div class="pn-row"><div class="pn-id" id="dwId"></div>
+    <button class="cerrar pn-cerrar" data-accion="cerrar-panel" aria-label="Cerrar ficha"><span aria-hidden="true">✕</span><span class="pn-cerrar-texto">Cerrar</span></button></div></div>
   <div class="pn-body" id="dwBody"></div>
+  <div class="pn-acciones-movil" id="dwAcciones" aria-label="Acciones de la ficha"></div>
 </aside>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Comparativa" inert>
   <div class="modal-hd"><h3>Comparativa</h3><button class="cerrar" data-accion="cerrar-panel" aria-label="Cerrar">✕</button></div>

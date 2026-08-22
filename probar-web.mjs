@@ -551,6 +551,15 @@ const cuerpoEnMovil = declaracionesCSS(cssMovil, 'body').join(';');
 const rejillaEnMovil = declaracionesCSS(cssMovil, '.rejilla').join(';');
 const compararEnMovil = declaracionesCSS(cssMovil, '.cmpbar').join(';');
 const avisoEnMovil = declaracionesCSS(cssMovil, '.aviso').join(';');
+const drawerBase = declaracionesCSS(cssBase, '.panel').join(';');
+const drawerEnMovil = declaracionesCSS(cssMovil, '#drawer.panel').join(';');
+const drawerCuerpoEnMovil = declaracionesCSS(cssMovil, '#drawer .pn-body').join(';');
+const drawerCerrarEnMovil = declaracionesCSS(cssMovil, '#drawer .pn-cerrar').join(';');
+const drawerAccionesEnMovil = declaracionesCSS(cssMovil, '#drawer .pn-acciones-movil').join(';');
+const drawerAccionesBase = declaracionesCSS(cssBase, '.pn-acciones-movil').join(';');
+const drawerWebEscritorioEnMovil = declaracionesCSS(cssMovil, '#drawer .pn-web-escritorio').join(';');
+const drawerAccionesConTeclado = declaracionesCSS(cssMovil,
+  'body.movil-teclado #drawer .pn-acciones-movil').join(';');
 const altoMinimo = Number((itemEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0);
 prueba('el viewport permite aprovechar las áreas seguras de iOS y Android',
   /(?:^|,)\s*viewport-fit\s*=\s*cover\s*(?:,|$)/i.test(viewport));
@@ -577,7 +586,93 @@ prueba('contenido, comparador y avisos reservan sitio sobre la barra y el área 
   /bottom\s*:[^;{}]*(?:safe-area-inset-bottom|var\(\s*--movil-[^)]+\))/i.test(compararEnMovil) &&
   /bottom\s*:[^;{}]*(?:safe-area-inset-bottom|var\(\s*--movil-[^)]+\))/i.test(avisoEnMovil));
 
+const drawerHTML = (html.match(/<aside\b[^>]*\bid=["']drawer["'][^>]*>[\s\S]*?<\/aside>/i) || [''])[0];
+prueba('la ficha es un diálogo descrito y ofrece cierre textual accesible',
+  /role=["']dialog["']/.test(drawerHTML) && /aria-modal=["']true["']/.test(drawerHTML) &&
+  /aria-labelledby=["']dwTitulo["']/.test(drawerHTML) && /aria-describedby=["']dwResumen["']/.test(drawerHTML) &&
+  /class=["'][^"']*\bpn-cerrar\b[^"']*["'][^>]*aria-label=["']Cerrar ficha["'][^>]*>[\s\S]*?\bCerrar\b[\s\S]*?<\/button>/i.test(drawerHTML) &&
+  /id=["']dwAcciones["'][^>]*aria-label=["']Acciones de la ficha["']/.test(drawerHTML));
+prueba('la ficha móvil separa cabecera, contenido desplazable y acciones persistentes',
+  /display\s*:\s*grid/i.test(drawerEnMovil) &&
+  /grid-template-rows\s*:\s*auto\s+minmax\(\s*0\s*,\s*1fr\s*\)\s+auto/i.test(drawerEnMovil) &&
+  /overflow\s*:\s*hidden/i.test(drawerEnMovil) &&
+  /min-height\s*:\s*0/i.test(drawerCuerpoEnMovil) &&
+  /overflow-y\s*:\s*auto/i.test(drawerCuerpoEnMovil) &&
+  /overscroll-behavior\s*:\s*contain/i.test(drawerCuerpoEnMovil) &&
+  /display\s*:\s*grid/i.test(drawerAccionesEnMovil));
+prueba('cabecera, cierre y pie respetan las áreas seguras y dianas de 48 px',
+  /inset\s*:[^;{}]*env\(\s*safe-area-inset-top\s*\)/i.test(drawerEnMovil) &&
+  Number((drawerCerrarEnMovil.match(/height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
+  Number((drawerCerrarEnMovil.match(/min-width\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
+  /padding\s*:[^;{}]*env\(\s*safe-area-inset-bottom\s*\)/i.test(drawerAccionesEnMovil) &&
+  Number((declaracionesCSS(cssMovil, '#drawer .pn-accion-principal')
+    .join(';').match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48);
+prueba('el teclado oculta solo el pie móvil para no tapar campos u opiniones',
+  /display\s*:\s*none/i.test(drawerAccionesConTeclado) &&
+  /movil-teclado/.test(js) && /input:not\(\[type=["']range["']\]\),textarea,select/.test(js));
+prueba('las acciones móviles no alteran la ficha lateral de escritorio',
+  /display\s*:\s*none/i.test(drawerAccionesBase) &&
+  /width\s*:\s*min\(\s*480px\s*,\s*100%\s*\)/i.test(drawerBase) &&
+  /transform\s*:\s*translateX\(\s*103%\s*\)/i.test(drawerBase) &&
+  /display\s*:\s*none/i.test(drawerWebEscritorioEnMovil) &&
+  !/display\s*:\s*grid/i.test(drawerBase));
+
 const jsSinComentarios = sinComentariosJS(js);
+const inicioDetalle = jsSinComentarios.indexOf('function openDrawer(i){');
+const finDetalle = jsSinComentarios.indexOf('function toggleCompare(i)', inicioDetalle);
+const codigoDetalle = inicioDetalle >= 0 && finDetalle > inicioDetalle
+  ? jsSinComentarios.slice(inicioDetalle, finDetalle) : '';
+const inicioPaneles = jsSinComentarios.indexOf('const fondo=');
+const finPaneles = jsSinComentarios.indexOf('const milesES=', inicioPaneles);
+const codigoPaneles = inicioPaneles >= 0 && finPaneles > inicioPaneles
+  ? jsSinComentarios.slice(inicioPaneles, finPaneles) : '';
+const camposDetalle = [
+  ['Tipo de actor', 'p.tipo'],
+  ['Quién puede entrar', 'p.acceso'],
+  ['Importe de entrada', 'p.ticket'],
+  ['Tipo de activo', 'p.cat'],
+  ['Región / marco', 'p.reg'],
+  ['Cadenas', 'p.cadenas'],
+  ['Última verificación', 'fLarga(p.ver)'],
+];
+prueba('el detalle ordena la información en resumen, verificación, datos, seguimiento y opiniones',
+  ['pn-resumen','pn-verificacion','pn-datos-grid','pn-seguimiento','pn-opiniones-seccion']
+    .every(clase => codigoDetalle.includes(clase)) &&
+  ['Resumen','Verificación RWAdar','Acceso e inversión','Activo y alcance','Seguimiento','Puntuación y opiniones']
+    .every(titulo => codigoDetalle.includes(titulo)));
+prueba('el detalle conserva exactamente sus siete datos de ficha',
+  (codigoDetalle.match(/<dt>/g) || []).length === 7 && camposDetalle.every(([etiqueta, valor]) =>
+    codigoDetalle.includes(`<dt>${etiqueta}</dt><dd>\${escHtml(${valor})}</dd>`)));
+prueba('el detalle conserva nota, aval, web oficial, vigilancia y opiniones',
+  codigoDetalle.includes('id="dwResumen">${escHtml(p.nota)}</p>') &&
+  codigoDetalle.includes('${escudoSVG}<span>${escHtml(p.aval)}</span>') &&
+  codigoDetalle.includes('const web=urlHttps(p.web)') &&
+  (codigoDetalle.match(/target="_blank" rel="noopener"/g) || []).length === 2 &&
+  codigoDetalle.includes('id="dwVigilar"') && codigoDetalle.includes('Cuenta.pintarVigilar(p.n)') &&
+  codigoDetalle.includes('id="dwOpiniones"') && codigoDetalle.includes('Opiniones.pinta(p.n,c)'));
+prueba('la acción oficial y el cierre quedan disponibles al pie sin duplicar estado',
+  codigoDetalle.includes("document.getElementById('dwAcciones')") &&
+  /class="pn-accion-principal"[\s\S]*?href="\$\{escHtml\(web\)\}"[\s\S]*?rel="noopener"/.test(codigoDetalle) &&
+  /class="pn-accion-cerrar"[^>]*type="button"[^>]*data-accion="cerrar-panel"/.test(codigoDetalle) &&
+  /class="pn-web-escritorio"/.test(codigoDetalle));
+prueba('cada empresa abre desde el principio y conserva el aviso de verificar la fuente',
+  /const cuerpo=document\.getElementById\(['"]dwBody['"]\);if\(cuerpo\)cuerpo\.scrollTop=0/.test(codigoDetalle) &&
+  codigoDetalle.includes('pn-web-movil-nota') &&
+  codigoDetalle.includes('Verifica siempre los datos en origen') &&
+  /display\s*:\s*block/i.test(declaracionesCSS(cssMovil, '#drawer .pn-web-movil-nota').join(';')));
+prueba('Escape, velo y ambos botones cierran la ficha y restauran el foco',
+  /id=["']ovl["'][^>]*data-accion=["']cerrar-panel["']/.test(html) &&
+  /data-accion=["']cerrar-panel["']/.test(drawerHTML) &&
+  codigoDetalle.includes('data-accion="cerrar-panel"') &&
+  /e\.key===['"]Escape['"]\)closeAll\(\)/.test(codigoPaneles) &&
+  /dataset\.accion===['"]cerrar-panel['"]\)return closeAll\(\)/.test(jsSinComentarios) &&
+  /focoPrevio=document\.activeElement/.test(codigoPaneles) &&
+  /document\.contains\(focoPrevio\)[\s\S]*?focoPrevio\.focus\(\)/.test(codigoPaneles));
+prueba('el detalle dinámico mantiene CSP estricta y escapa los datos antes de usar HTML',
+  camposDetalle.every(([, valor]) => codigoDetalle.includes(`escHtml(${valor})`)) &&
+  ['p.n','p.nota','p.aval'].every(valor => codigoDetalle.includes(`escHtml(${valor})`)) &&
+  /const web=urlHttps\(p\.web\)/.test(codigoDetalle) && /href="\$\{escHtml\(web\)\}"/.test(codigoDetalle) &&
+  !/(?:\bdocument\.write\s*\(|\.insertAdjacentHTML\s*\(|\.outerHTML\s*=|setAttribute\(\s*['"]on[a-z]+['"]|\beval\s*\(|javascript\s*:|\sstyle\s*=|\son[a-z]+\s*=)/i.test(codigoDetalle));
 const normalizaConsultaMedia = consulta => consulta.toLowerCase().replace(/\s+/g, '');
 const ramaMovilVertical = '(max-width:767px)';
 const ramaPaisajeTactil = '(max-width:960px)and(max-height:540px)and(hover:none)and(pointer:coarse)';
@@ -835,6 +930,10 @@ prueba('la privacidad declara el acuerdo pendiente sin conservar un blocker remo
   /data-deploy-legal-status=["']acuerdo-pendiente-de-documentar["']/.test(privacidad) &&
   !/data-deploy-blocker/.test(privacidad));
 const privacidadLineal = privacidad.replace(/\s+/g, ' ');
+prueba('RWAdar exige una edad mínima de 18 años sin conservar el umbral antiguo',
+  /exclusivamente a personas mayores de 18 años/i.test(privacidadLineal) &&
+  /personas menores de 18 años no deben crear una cuenta/i.test(privacidadLineal) &&
+  !/menores de 14 años/i.test(privacidadLineal));
 for (const texto of ['Eric Almiñana','Samuel Rodriguez','Victor Jorques','RWAdar@protonmail.com'])
   prueba(`la privacidad identifica ${texto}`, privacidadLineal.includes(texto));
 prueba('el estado pendiente es por acuerdo y plazos, no por los nombres ya facilitados',

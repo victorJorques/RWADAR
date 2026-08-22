@@ -598,9 +598,10 @@ select option{background:var(--sup);color:var(--tx)}
 .pn-hd h3{font-family:var(--display);font-weight:800;font-size:1.46rem;letter-spacing:-.038em;margin:0;color:var(--tx)}
 .pn-hd .cat{font-family:var(--mono);font-size:.7rem;color:var(--tx-3);margin-top:4px}
 .pn-body{padding:22px 24px 44px}
-.pn-body h4{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--tx-3);margin:26px 0 11px}
-.pn-body h4:first-child{margin-top:0}
+.pn-seccion{margin-top:26px}.pn-seccion:first-child{margin-top:0}.pn-datos-grid{display:contents}
+.pn-body h4{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--tx-3);margin:0 0 11px}
 .pn-body p{margin:0;font-size:.94rem;line-height:1.6;color:var(--tx-2)}
+.pn-cerrar-texto,.pn-acciones-movil,.pn-claves,.pn-web-movil-nota{display:none}
 .datos{margin:0;background:var(--sup);border:1px solid var(--linea);border-radius:var(--rs);overflow:hidden}
 .datos div{display:flex;justify-content:space-between;gap:14px;padding:13px 16px;border-bottom:1px solid var(--linea);font-size:.87rem}
 .datos div:last-child{border-bottom:none}
@@ -1170,6 +1171,69 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   .movil-menu-fila small{margin-top:3px;color:var(--tx-3);font-size:.72rem;line-height:1.35;font-weight:400}
   .movil-menu-fila i{color:var(--tx-3);font-size:1.7rem;font-style:normal;font-weight:300}
   .movil-nota-final{max-width:38ch;margin:28px auto 0;text-align:center;color:var(--tx-3);font-size:.75rem;line-height:1.55}
+
+  /* La ficha de plataforma funciona como una pantalla secundaria de la app:
+     cabecera y acciones siempre accesibles, y solo el contenido central
+     desplaza. Así no hay que volver arriba para encontrar cómo cerrarla. */
+  #drawer.panel{inset:max(6px,env(safe-area-inset-top)) 0 0;width:100%;max-width:none;max-height:none;
+    display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;padding-bottom:0;
+    border:1px solid var(--linea-2);border-bottom:0;border-radius:24px 24px 0 0;
+    transform:translateY(103%);box-shadow:0 -24px 70px -28px rgba(0,0,0,.94)}
+  #drawer.panel.show{transform:translateY(0)}
+  #drawer .pn-hd{position:relative;top:auto;padding:8px var(--movil-margen) 13px;
+    background:rgba(16,15,14,.98);border-bottom:1px solid var(--linea-2)}
+  #drawer .pn-row{align-items:center;gap:10px}
+  #drawer .pn-id{min-width:0;gap:11px}
+  #drawer .pn-id>div{min-width:0}
+  #drawer .pn-id .sigla{width:48px;height:48px;border-radius:14px;font-size:1rem;flex:none}
+  #drawer .pn-hd h3{overflow-wrap:anywhere;font-size:1.2rem;line-height:1.08}
+  #drawer .pn-hd .cat{overflow:hidden;margin-top:3px;font-size:.6rem;line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
+  #drawer .pn-cerrar{display:inline-flex;flex:none;width:auto;min-width:92px;height:48px;align-items:center;
+    justify-content:center;gap:7px;padding:0 14px;border-color:var(--senal-30);background:var(--senal-10);color:var(--senal)}
+  #drawer .pn-cerrar::after{display:none}
+  #drawer .pn-cerrar-texto{display:inline;font-family:var(--body);font-size:.8rem;font-weight:700}
+  #drawer .pn-body{min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+    padding:14px var(--movil-margen) 22px;scroll-padding-block:12px}
+  #drawer .pn-seccion{margin:0 0 12px;padding:16px;background:var(--sup);border:1px solid var(--linea);border-radius:17px}
+  #drawer .pn-body h4{margin:0 0 10px;color:var(--senal);font-size:.61rem;letter-spacing:.13em}
+  #drawer .pn-resumen{border-color:var(--senal-30);background:linear-gradient(180deg,var(--senal-10),var(--sup))}
+  #drawer .pn-resumen>p{font-size:.96rem;line-height:1.58;color:var(--tx)}
+  #drawer .pn-claves{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+  #drawer .pn-claves span{padding:6px 9px;border:1px solid var(--linea-2);border-radius:99px;background:var(--noche-2);
+    color:var(--tx-2);font-family:var(--mono);font-size:.58rem;line-height:1.25}
+  #drawer .pn-verificacion .aval{padding:0 0 0 11px;color:var(--tx-2);font-size:.84rem;line-height:1.55}
+  #drawer .pn-datos-grid{display:grid;gap:12px}
+  #drawer .pn-datos-grid .pn-seccion{margin-bottom:0}
+  #drawer .datos{border:0;border-radius:0;background:transparent}
+  #drawer .datos div{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:11px 0}
+  #drawer .datos div:first-child{padding-top:2px}
+  #drawer .datos div:last-child{padding-bottom:2px}
+  #drawer .datos dt{font-size:.62rem;letter-spacing:.04em}
+  #drawer .datos dd{text-align:left;font-size:.88rem;line-height:1.38}
+  #drawer .pn-seguimiento{margin-top:12px}
+  #drawer .btn-vigilar{width:100%;min-height:48px;justify-content:center;border-radius:12px}
+  #drawer .pn-nota{text-align:left;font-size:.73rem;line-height:1.5}
+  #drawer .pn-web-escritorio{display:none}
+  #drawer .pn-web-movil-nota{display:block;margin:0 5px 12px;color:var(--tx-3)}
+  #drawer .pn-opiniones-seccion{margin-bottom:0}
+  #drawer .pn-opiniones-seccion .op-bloque{margin-top:0;padding-top:0;border-top:0}
+  #drawer .pn-opiniones-seccion .op-cab{align-items:center;margin-bottom:10px}
+  #drawer .pn-opiniones-seccion .op-tit{font-size:.63rem;letter-spacing:.12em;color:var(--senal)}
+  #drawer .pn-opiniones-seccion .op-aviso{margin:10px 0 14px;background:var(--noche-2)}
+  #drawer .pn-opiniones-seccion .op-lista li{padding:14px 0}
+  #drawer .op-notas{display:grid;grid-template-columns:repeat(5,minmax(44px,1fr));gap:7px}
+  #drawer .op-notas button{width:100%;height:44px}
+  #drawer .op-acciones button{min-height:44px;padding:8px 0}
+  #drawer .op-enviar{min-height:48px;border-radius:12px}
+  #drawer .pn-acciones-movil{display:grid;width:100%;min-width:0;grid-template-columns:minmax(0,1fr) auto;gap:9px;
+    padding:10px var(--movil-margen) max(10px,env(safe-area-inset-bottom));background:rgba(16,15,14,.98);
+    border-top:1px solid var(--linea-2);box-shadow:0 -12px 28px rgba(0,0,0,.28);z-index:3}
+  #drawer .pn-accion-principal,#drawer .pn-accion-cerrar{display:flex;min-height:50px;align-items:center;justify-content:center;
+    padding:11px 15px;border-radius:13px;font-family:var(--body);font-size:.86rem;font-weight:750;cursor:pointer}
+  #drawer .pn-accion-principal{min-width:0;gap:7px;border:1px solid var(--senal);background:var(--senal);color:#06231A}
+  #drawer .pn-accion-cerrar{min-width:108px;border:1px solid var(--linea-2);background:var(--sup-2);color:var(--tx)}
+  #drawer .pn-accion-no-web{align-self:center;color:var(--tx-3);font-size:.72rem;line-height:1.35}
+  body.movil-teclado #drawer .pn-acciones-movil{display:none}
 
   /* Barra inferior común a navegador, PWA de iOS y PWA de Android. */
   .movil-nav{position:fixed;left:0;right:0;bottom:0;z-index:74;display:grid;

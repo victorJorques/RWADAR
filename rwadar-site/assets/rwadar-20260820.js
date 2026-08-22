@@ -1151,31 +1151,63 @@ function openDrawer(i){
  const p=P[i];
  if(!p)return;
  const web=urlHttps(p.web);
- document.getElementById('dwId').innerHTML=`${siglaEl(p)}<div><h3>${escHtml(p.n)}</h3><div class="cat">${escHtml(p.cat)}</div></div>`;
+ document.getElementById('dwId').innerHTML=`${siglaEl(p)}<div><h3 id="dwTitulo">${escHtml(p.n)}</h3><div class="cat">${escHtml(p.cat)}</div></div>`;
  document.getElementById('dwBody').innerHTML=`
-  <h4>Por qué está en el radar</h4>
-  <div class="aval aval-detalle">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
-  <h4>Qué hace</h4><p>${escHtml(p.nota)}</p>
-  <h4>Ficha</h4>
-  <dl class="datos">
-   <div><dt>Tipo de actor</dt><dd>${escHtml(p.tipo)}</dd></div>
-   <div><dt>Tipo de activo</dt><dd>${escHtml(p.cat)}</dd></div>
-   <div><dt>Región / marco</dt><dd>${escHtml(p.reg)}</dd></div>
-   <div><dt>Quién puede entrar</dt><dd>${escHtml(p.acceso)}</dd></div>
-   <div><dt>Importe de entrada</dt><dd>${escHtml(p.ticket)}</dd></div>
-   <div><dt>Cadenas</dt><dd>${escHtml(p.cadenas)}</dd></div>
-   <div><dt>Última verificación</dt><dd>${escHtml(fLarga(p.ver))}</dd></div>
-  </dl>
-  <div id="dwVigilar"></div>
-  ${web?`<a class="pn-cta" href="${escHtml(web)}" target="_blank" rel="noopener">Abrir ${escHtml(p.n)} ↗</a>`:'<p class="pn-nota">Web oficial no disponible.</p>'}
-  <p class="pn-nota">Se abre la web oficial en otra pestaña. Verifica siempre los datos en origen.</p>
-  <div id="dwOpiniones"></div>`;
+  <section class="pn-seccion pn-resumen" aria-labelledby="dwResumenTit">
+   <h4 id="dwResumenTit">Resumen</h4>
+   <p id="dwResumen">${escHtml(p.nota)}</p>
+   <div class="pn-claves" aria-label="Datos principales">
+    <span>${escHtml(p.tipo)}</span><span>${escHtml(p.reg)}</span><span>${escHtml(p.acceso)}</span>
+   </div>
+  </section>
+  <section class="pn-seccion pn-verificacion" aria-labelledby="dwVerificacionTit">
+   <h4 id="dwVerificacionTit">Verificación RWAdar</h4>
+   <div class="aval aval-detalle">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
+  </section>
+  <div class="pn-datos-grid">
+   <section class="pn-seccion pn-datos" aria-labelledby="dwAccesoTit">
+    <h4 id="dwAccesoTit">Acceso e inversión</h4>
+    <dl class="datos">
+     <div><dt>Tipo de actor</dt><dd>${escHtml(p.tipo)}</dd></div>
+     <div><dt>Quién puede entrar</dt><dd>${escHtml(p.acceso)}</dd></div>
+     <div><dt>Importe de entrada</dt><dd>${escHtml(p.ticket)}</dd></div>
+    </dl>
+   </section>
+   <section class="pn-seccion pn-datos" aria-labelledby="dwActivoTit">
+    <h4 id="dwActivoTit">Activo y alcance</h4>
+    <dl class="datos">
+     <div><dt>Tipo de activo</dt><dd>${escHtml(p.cat)}</dd></div>
+     <div><dt>Región / marco</dt><dd>${escHtml(p.reg)}</dd></div>
+     <div><dt>Cadenas</dt><dd>${escHtml(p.cadenas)}</dd></div>
+     <div><dt>Última verificación</dt><dd>${escHtml(fLarga(p.ver))}</dd></div>
+    </dl>
+   </section>
+  </div>
+  <section class="pn-seccion pn-seguimiento" aria-labelledby="dwSeguimientoTit">
+   <h4 id="dwSeguimientoTit">Seguimiento</h4>
+   <div id="dwVigilar"></div>
+  </section>
+  <div class="pn-web-escritorio">
+   ${web?`<a class="pn-cta" href="${escHtml(web)}" target="_blank" rel="noopener">Abrir ${escHtml(p.n)} ↗</a>`:'<p class="pn-nota">Web oficial no disponible.</p>'}
+   <p class="pn-nota">Se abre la web oficial en otra pestaña. Verifica siempre los datos en origen.</p>
+  </div>
+  <p class="pn-nota pn-web-movil-nota">El botón «Web oficial» abre otra pestaña. Verifica siempre los datos en origen.</p>
+  <section class="pn-seccion pn-opiniones-seccion" aria-label="Puntuación y opiniones">
+   <div id="dwOpiniones"></div>
+  </section>`;
+ const acciones=document.getElementById('dwAcciones');
+ acciones.classList.toggle('sin-web',!web);
+ acciones.innerHTML=(web
+  ? `<a class="pn-accion-principal" href="${escHtml(web)}" target="_blank" rel="noopener" aria-label="Abrir la web oficial de ${escHtml(p.n)}">Web oficial <span aria-hidden="true">↗</span></a>`
+  : '<span class="pn-accion-no-web">Web oficial no disponible</span>')+
+  '<button class="pn-accion-cerrar" type="button" data-accion="cerrar-panel">Cerrar ficha</button>';
  /* const en el nivel superior NO se cuelga de window: hay que preguntar
     por el nombre, no por la propiedad. */
  if(typeof Cuenta!=="undefined") Cuenta.pintarVigilar(p.n);
  /* Las opiniones se cargan de la red, asi que van despues de abrir el
     panel: primero se ve la ficha, y ellas entran cuando lleguen. */
  if(typeof Opiniones!=="undefined"){const c=document.getElementById("dwOpiniones");if(c)Opiniones.pinta(p.n,c);}
+ const cuerpo=document.getElementById('dwBody');if(cuerpo)cuerpo.scrollTop=0;
  openPanel('drawer');
 }
 function toggleCompare(i){const a=compare.indexOf(i);if(a>-1)compare.splice(a,1);else{if(compare.length>=3)return;compare.push(i)}render()}
