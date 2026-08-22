@@ -954,3 +954,219 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   .escena{height:min(62vh,440px)}
   .marcador .n{font-size:1.9rem}
 }
+
+/* ==================================================================
+   17 · SHELL MÓVIL / PWA
+   ------------------------------------------------------------------
+   La navegación de app solo existe por debajo de 768 px. El escritorio
+   conserva exactamente la composición editorial anterior. Las vistas
+   auxiliares no duplican estado: enlazan con cuenta y vigilancia reales.
+   ================================================================== */
+.movil-cabecera,.movil-nav,.movil-panel{display:none}
+
+@media (max-width:767px),
+       (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
+  :root{--movil-nav-alto:68px;--movil-margen:16px}
+  html{scroll-padding-top:142px;-webkit-text-size-adjust:100%}
+  body{padding-bottom:calc(var(--movil-nav-alto) + max(7px,env(safe-area-inset-bottom)));
+    min-height:100dvh;overscroll-behavior-y:none}
+  body[data-movil-pestana]:not([data-movil-pestana="radar"]) footer,
+  body[data-movil-pestana]:not([data-movil-pestana="radar"]) .cmpbar{display:none}
+  button,a{-webkit-tap-highlight-color:transparent}
+  button{touch-action:manipulation}
+  .hdr{display:none}
+  .saltar{top:env(safe-area-inset-top)}
+
+  /* Cabecera estable como en la app nativa, incluida la isla/notch de iOS. */
+  .movil-cabecera{display:block;position:sticky;top:0;z-index:62;
+    padding:calc(9px + env(safe-area-inset-top)) var(--movil-margen) 13px;
+    background:rgba(11,10,10,.94);border-bottom:1px solid var(--linea);
+    backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%)}
+  .movil-cabecera-superior{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .movil-marca{display:inline-flex;align-items:center;gap:8px;min-height:44px;
+    font-family:var(--display);font-size:1.22rem;font-weight:800;letter-spacing:-.04em}
+  .movil-marca em{color:var(--senal);font-style:normal}
+  .movil-cabecera-accion{display:grid;place-items:center;width:44px;height:44px;padding:0;
+    border:1px solid var(--linea-2);border-radius:99px;background:var(--sup);color:var(--tx);cursor:pointer}
+  .movil-cabecera-accion:active{transform:scale(.94)}
+  .movil-cabecera-etiqueta,.movil-mini-etiqueta{margin:0 0 3px;font-family:var(--mono);
+    font-size:.59rem;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;color:var(--senal)}
+  .movil-cabecera-titulo{margin:0;font-family:var(--display);font-size:1.48rem;line-height:1.12;
+    font-weight:800;letter-spacing:-.045em;color:var(--tx)}
+  .movil-cabecera-sub{margin:4px 0 0;font-size:.79rem;line-height:1.4;color:var(--tx-3)}
+
+  [data-movil-panel][hidden]{display:none!important}
+  #movilPanelRadar:not([hidden]){display:flex;flex-direction:column;min-width:0}
+  #movilPanelRadar>*{min-width:0;width:100%}
+  .movil-panel:not([hidden]){display:block;min-height:calc(100dvh - 210px)}
+  .movil-panel:focus{outline:none}
+  .movil-panel-cuerpo{width:100%;max-width:560px;margin:0 auto;padding:18px var(--movil-margen) 32px}
+
+  /* El radar y las fichas suben delante del contenido editorial largo.
+     Nada se elimina: explicador, método y emisiones siguen después. */
+  #movilPanelRadar>.portada{order:1}
+  #movilPanelRadar>.tool{order:2}
+  #movilPanelRadar>.barra{order:3}
+  #movilPanelRadar>div.wrap{order:4}
+  #movilPanelRadar>.explica{order:5}
+  #movilPanelRadar>.metodo{order:6}
+  #movilPanelRadar>.emis{order:7}
+  #movilPanelRadar>.fuera{order:8}
+
+  .wrap{padding-inline:var(--movil-margen)}
+  .portada{padding-block:16px 22px}
+  .portada-in{gap:16px}
+  .portada-radar{order:-1}
+  .radar-caja{max-width:100%;padding:11px 8px 9px;background:linear-gradient(180deg,var(--sup),var(--noche-2));
+    border:1px solid var(--linea);border-radius:22px;box-shadow:var(--e2)}
+  .radar-lectura{margin:1px 8px 3px}
+  .portada-txt{padding:18px;background:var(--sup);border:1px solid var(--linea);border-radius:18px}
+  .portada-txt .etiq{margin-bottom:9px}
+  .portada h1{font-size:clamp(1.75rem,9vw,2.35rem);line-height:1.02;margin-bottom:14px}
+  .portada .entrada{font-size:.91rem;line-height:1.58}
+  .botones{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+  .btn-p,.btn-s{min-height:48px;padding:12px 14px;text-align:center;justify-content:center}
+  .marcador{margin-top:14px;border-radius:18px;overflow:hidden;background:var(--linea);gap:1px}
+  .marcador li{min-width:0;background:var(--noche-2);padding:14px 10px}
+  .marcador .n{font-size:1.62rem}
+  .marcador .l{font-size:.58rem}
+
+  .tool{padding-top:22px;scroll-margin-top:142px}
+  .tool-cab{align-items:center;margin-bottom:10px}
+  .tool-cab h2.sec{font-size:1.55rem;margin-bottom:5px}
+  .tool-cab p{font-size:.84rem;line-height:1.45}
+  .vista{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .vista button{min-height:44px}
+  .barra{position:relative;top:auto;z-index:1;margin:0 0 8px;padding:0 var(--movil-margen) 10px;
+    background:transparent;border:0;backdrop-filter:none}
+  .barra-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;
+    padding:11px;background:var(--sup);border:1px solid var(--linea);border-radius:18px;box-shadow:var(--e1)}
+  .buscar{grid-column:1/-1;max-width:none;width:100%}
+  .buscar input,select{min-height:48px;font-size:16px;border-radius:12px;background:var(--noche-2)}
+  select{width:100%;min-width:0;padding-inline:10px}
+  .limpiar{grid-column:1/-1;min-height:44px;text-align:center;border:1px solid var(--linea);border-radius:12px;text-decoration:none}
+  .fichas-f{flex-wrap:nowrap;overflow-x:auto;margin:4px calc(-1 * var(--movil-margen)) 12px;
+    padding:4px var(--movil-margen) 8px;scroll-padding-inline:var(--movil-margen);scroll-snap-type:x proximity;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .fichas-f::-webkit-scrollbar{display:none}
+  .fichas-f .f{flex:none;min-height:44px;padding:9px 14px;scroll-snap-align:start}
+  .recuento{margin:8px 0 14px}
+  .rejilla{grid-template-columns:minmax(0,1fr);gap:12px;padding-bottom:24px}
+  .ficha{min-width:0;padding:18px;border-radius:18px;gap:11px}
+  .ficha .nota{font-size:.87rem;line-height:1.55}
+  .ficha-pie{padding-top:12px}
+  .cmp{min-width:86px;min-height:44px;padding:9px 12px}
+  .matriz{margin-inline:calc(-1 * var(--movil-margen));padding-inline:var(--movil-margen)}
+
+  .explica,.metodo,.emis,.fuera{scroll-margin-top:142px}
+  .explica{padding-top:36px}
+  .explica-cab h2{font-size:1.75rem}
+  .escena{height:min(58vh,390px);border-radius:18px}
+  .paso{min-height:48px}
+  .metodo{padding-top:42px}
+  .emis{padding-block:42px 20px}
+  .fuera{padding-block:30px 42px}
+  .fila{padding:17px 16px}
+  .fuentes a{display:inline-flex;align-items:center;min-height:44px;border-radius:12px}
+  footer{padding-bottom:calc(34px + env(safe-area-inset-bottom))}
+
+  /* Tarjetas de Siguiendo y Avisos. */
+  .movil-resumen,.movil-estado{display:flex;align-items:flex-start;gap:13px;padding:18px;
+    background:linear-gradient(180deg,var(--sup),var(--noche-2));border:1px solid var(--linea);
+    border-radius:18px;box-shadow:var(--e1)}
+  .movil-resumen-icono,.movil-estado-icono{display:grid;place-items:center;flex:none;width:48px;height:48px;
+    border-radius:14px;background:var(--senal-10);border:1px solid var(--senal-30);color:var(--senal)}
+  .movil-resumen h3,.movil-estado h3{margin:0;font-family:var(--display);font-size:1.08rem;
+    line-height:1.28;letter-spacing:-.025em}
+  .movil-resumen p:not(.movil-mini-etiqueta),.movil-estado>p{margin:5px 0 0;font-size:.83rem;line-height:1.55;color:var(--tx-2)}
+  .movil-resumen-marca{align-items:center}
+  .movil-resumen-marca>svg{flex:none}
+  .movil-vacio{display:flex;min-height:380px;flex-direction:column;align-items:center;justify-content:center;
+    padding:34px 15px;text-align:center}
+  .movil-vacio-compacto{min-height:300px}
+  .movil-vacio-senal{display:grid;place-items:center;width:68px;height:68px;margin-bottom:20px;
+    border:1px solid var(--senal-30);border-radius:22px;background:var(--senal-10);color:var(--senal);
+    font-family:var(--mono);font-size:2.25rem}
+  .movil-vacio h3{margin:0;font-family:var(--display);font-size:1.5rem;line-height:1.15;letter-spacing:-.04em}
+  .movil-vacio p{max-width:34ch;margin:12px auto 22px;color:var(--tx-2);font-size:.91rem;line-height:1.6}
+  .movil-boton-principal,.movil-boton-secundario,.movil-boton-enlace{min-height:48px;border-radius:12px;
+    padding:12px 18px;font-weight:700;cursor:pointer}
+  .movil-boton-principal{width:min(100%,310px);border:1px solid var(--senal);background:var(--senal);color:#0A0C12}
+  .movil-boton-secundario{margin-top:16px;border:1px solid var(--linea-2);background:var(--sup-2);color:var(--tx)}
+  .movil-boton-enlace{border:0;background:transparent;color:var(--senal)}
+  .movil-estado{display:block}
+  .movil-estado-cab{display:flex;align-items:center;gap:12px}
+  .movil-estado-atencion{border-color:rgba(242,178,60,.38);background:linear-gradient(180deg,rgba(242,178,60,.10),var(--noche-2))}
+  .movil-estado-atencion .movil-estado-icono{color:#F2B23C;background:rgba(242,178,60,.10);border-color:rgba(242,178,60,.35)}
+
+  /* Menús agrupados de Más: filas grandes, una sola decisión por toque. */
+  .movil-mas-cuerpo{padding-bottom:38px}
+  .movil-menu-grupo{margin-top:26px}
+  .movil-menu-grupo>h3{margin:0 0 10px 3px;font-family:var(--display);font-size:1.02rem;letter-spacing:-.025em}
+  .movil-menu{overflow:hidden;background:var(--sup);border:1px solid var(--linea);border-radius:18px}
+  .movil-menu-fila{display:grid;width:100%;min-height:70px;grid-template-columns:42px minmax(0,1fr) 18px;
+    align-items:center;gap:10px;padding:11px 14px;border:0;border-bottom:1px solid var(--linea);
+    background:transparent;color:var(--tx);text-align:left;cursor:pointer}
+  .movil-menu-fila:last-child{border-bottom:0}
+  .movil-menu-fila:active{background:var(--sup-2)}
+  .movil-menu-icono{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;
+    background:var(--sup-2);border:1px solid var(--linea-2);color:var(--senal);font-family:var(--mono);font-style:normal}
+  .movil-menu-icono-coral{color:var(--coral)}
+  .movil-menu-fila b,.movil-menu-fila small{display:block}
+  .movil-menu-fila b{font-size:.9rem;line-height:1.25}
+  .movil-menu-fila small{margin-top:3px;color:var(--tx-3);font-size:.72rem;line-height:1.35;font-weight:400}
+  .movil-menu-fila i{color:var(--tx-3);font-size:1.7rem;font-style:normal;font-weight:300}
+  .movil-nota-final{max-width:38ch;margin:28px auto 0;text-align:center;color:var(--tx-3);font-size:.75rem;line-height:1.55}
+
+  /* Barra inferior común a navegador, PWA de iOS y PWA de Android. */
+  .movil-nav{position:fixed;left:0;right:0;bottom:0;z-index:74;display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));min-height:var(--movil-nav-alto);
+    padding:7px 4px max(7px,env(safe-area-inset-bottom));
+    background:rgba(16,15,14,.96);border-top:1px solid var(--linea-2);
+    backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+    transition:transform var(--medio) var(--sal),opacity var(--rapido) var(--sal)}
+  .movil-nav-item{position:relative;display:flex;min-width:0;min-height:52px;flex-direction:column;
+    align-items:center;justify-content:center;gap:2px;padding:3px 2px;border:0;background:transparent;
+    color:var(--tx-3);font-size:.68rem;line-height:1.2;font-weight:600;cursor:pointer}
+  .movil-nav-item[aria-selected="true"]{color:var(--senal)}
+  .movil-nav-item:active{transform:scale(.96);opacity:.72}
+  .movil-nav-item:focus-visible{outline-offset:-1px}
+  .movil-nav-icono{position:relative;display:block;width:28px;height:28px}
+  .movil-nav-icono>svg{display:block;width:28px;height:28px}
+  .movil-nav-insignia{position:absolute;right:-8px;top:-5px;display:grid;place-items:center;min-width:18px;height:18px;
+    padding:0 4px;border:2px solid var(--noche-2);border-radius:99px;background:var(--coral);color:white;
+    font-family:var(--mono);font-size:.54rem;font-weight:700}
+  .movil-nav-insignia[hidden]{display:none}
+
+  /* Elementos flotantes existentes quedan por encima de la barra, no debajo. */
+  .cmpbar{bottom:calc(var(--movil-nav-alto) + max(7px,env(safe-area-inset-bottom)) + 10px)}
+  .aviso{bottom:calc(var(--movil-nav-alto) + max(7px,env(safe-area-inset-bottom)) + 12px);
+    max-width:calc(100vw - 24px);white-space:normal;text-align:center}
+  .modal,.panel{padding-bottom:env(safe-area-inset-bottom)}
+  .cuenta-caja{max-height:calc(100dvh - env(safe-area-inset-top) - 16px);overflow:auto;
+    padding-bottom:max(26px,env(safe-area-inset-bottom))}
+
+  /* Cuando aparece el teclado virtual, la barra no roba espacio ni tapa
+     los campos. Al cerrar el teclado reaparece sin perder la pestaña. */
+  body.movil-teclado{padding-bottom:16px}
+  body.movil-teclado .movil-nav{transform:translateY(112%);opacity:0;pointer-events:none}
+}
+
+@media (max-width:767px) and (display-mode:standalone),
+       (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse) and (display-mode:standalone){
+  .movil-cabecera{background:rgba(11,10,10,.97)}
+}
+
+@media (max-width:960px) and (max-height:540px) and (orientation:landscape) and (hover:none) and (pointer:coarse){
+  .movil-cabecera{padding-top:max(6px,env(safe-area-inset-top));padding-bottom:8px}
+  .movil-cabecera-superior{margin-bottom:5px}
+  .movil-cabecera-sub{display:none}
+}
+
+@media (max-width:359px){
+  :root{--movil-margen:12px}
+  .movil-nav-item{font-size:.62rem}
+  .botones{grid-template-columns:1fr}
+  .barra-in{grid-template-columns:1fr}
+  .barra-in select{grid-column:1/-1}
+}

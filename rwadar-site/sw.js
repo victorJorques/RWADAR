@@ -1,7 +1,7 @@
 /* =====================================================================
    RWAdar · el trabajador de segundo plano
    ---------------------------------------------------------------------
-   Existe para una sola cosa: que rwadar.netlify.app se pueda INSTALAR y
+   Existe para una sola cosa: que rwadar.pages.dev se pueda INSTALAR y
    se comporte como una aplicación de verdad —icono propio, ventana sin
    barra de navegador, y el registro legible aunque no haya cobertura—.
    Una única dirección para la web y para la app, que era el problema.
@@ -27,7 +27,7 @@
    `self.registration.unregister()` dentro. La siguiente visita lo quita.
    ===================================================================== */
 
-const VERSION = 'rwadar-v20260820';
+const VERSION = 'rwadar-v20260821-movil';
 
 /* El armazón mínimo para que la aplicación abra sin red. Los datos no
    están aquí: la página los pide a Supabase al cargar y se repinta sola,
@@ -88,7 +88,11 @@ self.addEventListener('fetch', e => {
       const clave = url.pathname === '/index.html' ? '/' : url.pathname;
       try {
         const res = await fetch(req);
-        if (guardable(req, res)) await cache.put(clave, res.clone());
+        /* Una escritura de caché puede fallar por cuota o modo privado.
+           La respuesta de red ya es válida y debe llegar igualmente. */
+        if (guardable(req, res)) {
+          try { await cache.put(clave, res.clone()); } catch (_) {}
+        }
         return res;
       } catch (_) {
         return (await cache.match(clave)) || (await cache.match('/')) || Response.error();
@@ -111,7 +115,9 @@ self.addEventListener('fetch', e => {
     if (guardada) return guardada;
     try {
       const res = await fetch(req);
-      if (guardable(req, res)) await cache.put(req, res.clone());
+      if (guardable(req, res)) {
+        try { await cache.put(req, res.clone()); } catch (_) {}
+      }
       return res;
     } catch (_) { return Response.error(); }
   })());

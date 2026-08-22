@@ -6,7 +6,7 @@ REM  Uso: instalar-base-de-datos.cmd REFERENCIA_DEL_PROYECTO
 REM
 REM  La credencial viene de la sesion del CLI o SUPABASE_ACCESS_TOKEN.
 REM  Nunca se acepta como argumento. La version del CLI es exacta.
-REM  13 (correo), 16 (regresion) y los retratos recuperados quedan fuera.
+REM  13/16 historicos, el opt-in de correo 23 y los retratos quedan fuera.
 REM ====================================================================
 setlocal DisableDelayedExpansion
 cd /d "%~dp0"
@@ -97,7 +97,7 @@ for %%F in (%MIGRACIONES% %CONTROLES%) do (
 
 echo.
 echo   OBJETIVO: proyecto Supabase %REF%
-echo   FLUJO: 01-12, 14-15, 17-22; correo 13 NO activado.
+echo   FLUJO: 01-12, 14-15, 17-22; opt-in de correo 23 NO activado.
 echo.
 set "CONFIRMACION="
 set /p "CONFIRMACION=   Escribe exactamente INSTALAR-%REF% para continuar: "
@@ -142,6 +142,6 @@ echo.
 echo   LISTO. Fresh-install 26 + 4 y emisiones instalado y verificado.
 echo   PUSH sigue APAGADO y sin cron. Solo activar-push.cmd puede habilitarlo
 echo   tras una validacion E2E explicita. La retencion diaria queda activa.
-echo   El correo 13 sigue desactivado hasta usar aplicar-envio-avisos.cmd.
+echo   El correo sigue bloqueado hasta el opt-in seguro 23 mediante aplicar-envio-avisos.cmd.
 echo.
 exit /b 0

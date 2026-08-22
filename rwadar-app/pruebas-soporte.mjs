@@ -33,6 +33,7 @@ const preparaSupabase = async (db) => {
     create table auth.users (
       id uuid primary key default gen_random_uuid(),
       email text unique,
+      email_confirmed_at timestamptz default now(),
       raw_user_meta_data jsonb not null default '{}'::jsonb
     );
     create role anon;
@@ -47,23 +48,35 @@ const preparaSupabase = async (db) => {
     create table vault.decrypted_secrets(name text primary key, decrypted_secret text);
 
     create schema net;
-    create table net._peticiones(
+    create table net.http_request_queue(
       id bigint generated always as identity primary key,
-      url text, headers jsonb, body jsonb
+      url text, headers jsonb, body jsonb, params jsonb,
+      timeout_milliseconds integer
     );
+    grant all on table net.http_request_queue to public;
+    create view net._peticiones as
+      select id,url,headers,body,params,timeout_milliseconds
+        from net.http_request_queue;
     create table net._http_response(
       id bigint primary key, status_code integer, content text, error_msg text
     );
-    create function net.http_post(url text, headers jsonb, body jsonb)
+    create function net.http_post(
+      url text,
+      body jsonb default '{}'::jsonb,
+      params jsonb default '{}'::jsonb,
+      headers jsonb default '{"Content-Type":"application/json"}'::jsonb,
+      timeout_milliseconds integer default 1000
+    )
       returns bigint language sql as $$
-        insert into net._peticiones(url, headers, body)
-        values (url, headers, body) returning id
+        insert into net.http_request_queue(url, headers, body, params, timeout_milliseconds)
+        values (url, headers, body, params, timeout_milliseconds) returning id
       $$;
 
     create schema cron;
     create table cron.job(
       jobid bigint generated always as identity primary key,
-      jobname text unique, schedule text, command text
+      jobname text unique, schedule text, command text,
+      active boolean not null default true
     );
     create function cron.unschedule(p_jobname text) returns boolean
       language sql as $$ delete from cron.job where jobname = p_jobname returning true $$;

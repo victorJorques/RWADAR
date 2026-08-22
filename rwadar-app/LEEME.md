@@ -5,6 +5,26 @@ locales. El contrato fresh-install actual termina en la migración 22 y debe
 producir exactamente **26 plataformas en radar, 4 descartadas y ninguna
 descartada sin fuente**.
 
+## Estado de producción · 20 de agosto de 2026
+
+En `exgpmjpaaebyoolpwced`, la migración 22 (`02F2...0666`) terminó en
+`COMMIT` mediante SQL Editor y devolvió `schedule=19`. Su verificador interno
+de solo lectura (`4182...2C3`) terminó con `Success. No rows returned` y el
+aviso `RWAdar 22 OK: permisos, RPC, correo/push apagados y retención diaria
+verificados`.
+
+El smoke público posterior confirmó radar 26, descartadas 4,
+`opiniones.usuario_id` 401, moderación directa 401, ausencia de la firma antigua
+de `moderar` (404/PGRST202) y rechazo anónimo de la firma nueva (401/42501).
+Security Advisor quedó en **0 Critical** y **0 Security Definer View**. La 22
+está aplicada y verificada en producción; no se debe reaplicar para comprobarla.
+
+La suite raíz local terminó con código 0 e incluyó DB (270 aserciones + 8 gates
+SQL), web 122/122, QR 6/6, móvil 7/7 y tools. En Auth todavía figura
+`mailer_autoconfirm=false`, Confirm email está activo y signup sigue habilitado.
+No hay SMTP propio y todavía faltan pruebas E2E reales de confirmación y
+recuperación. Correo de avisos y push siguen apagados.
+
 ## Cadena vigente
 
 El instalador nuevo ejecuta, en este orden:
@@ -24,8 +44,12 @@ instalación no está aprobada.
 
 Estos ficheros **no pertenecen a la cadena automática**:
 
-- `13_envio_avisos.sql`: activa correo, `pg_net` y `pg_cron`; solo mediante
-  `aplicar-envio-avisos.cmd`, después de configurar Vault/Brevo y privacidad.
+- `13_envio_avisos.sql`: histórico no replayable. Usa el dominio antiguo,
+  interpola HTML sin escapar y el cierre 22 lo vuelve a apagar. No se aplica.
+- `23_activar_correo.sql`: opt-in idempotente posterior a 22. Solo se ejecuta
+  mediante `aplicar-envio-avisos.cmd`; exige Vault/Brevo y aprobación explícita.
+  Su verificador es read-only y `correo_fallo_cerrado.sql` apaga únicamente
+  correo sin cortar la API, push ni la retención.
 - `16_reparacion.sql`: histórico; reabrió permisos que exponen `usuario_id` y
   escritura directa. No se aplica. La migración 22 conserva su parte útil y
   cierra la regresión.
@@ -54,6 +78,26 @@ Estos ficheros **no pertenecen a la cadena automática**:
   días. Fresh-install, 17, 22, rollback y recuperación dejan
   `push_configuracion.habilitado=false`, no crean el cron `rwadar-push` y las
   propias funciones rechazan llamadas mientras el interruptor esté apagado.
+- El correo heredado de 13/16 queda también apagado al aplicar 22, aunque el
+  Vault conserve credenciales: se eliminan todos los relojes que invoquen sus
+  tres funciones y esas firmas se sustituyen por bloqueos fail-closed sin
+  acceso a `net` ni `vault`. La cola `avisos_correo` se conserva intacta. El
+  opt-in 23 añade un interruptor privado y auditable, rechaza Vault ausente o
+  inválido sin revelar secretos, escapa todo dato interpolado en HTML, usa solo
+  `https://rwadar.pages.dev` y mantiene un único cron. No envía el histórico
+  acumulado antes de activarse, comprueba la baja y la confirmación del correo
+  de nuevo justo antes de entregar y limita los reintentos a cinco. Cada fila
+  conserva un UUID idempotente: se reintenta dentro del TTL de Brevo y a los
+  25 minutos pasa a «entrega incierta» en vez de arriesgar un duplicado. El
+  payload omite el nombre de perfil, desactiva tracking identificable por
+  contacto y las ACL ocultan tanto Vault como las colas internas de `pg_net`.
+- El `true` heredado de `perfiles.avisos_correo` no se considera consentimiento:
+  la primera 23 lo invalida, cambia el valor por defecto a `false` y bloquea el
+  `PATCH` directo. Solo `configurar_avisos_correo(habilitado, version)` puede
+  registrar fecha y versión (`correo-v1-2026-08-22`) desde una sesión
+  autenticada. La web debe mostrar ese texto y usar la RPC antes de desplegar
+  correo; mientras no lo haga, el artefacto es deliberadamente NO-GO para
+  producción aunque sus pruebas locales pasen.
 - La retención de dispositivos no depende del tráfico ni del push. El cron
   independiente `rwadar-retencion-dispositivos` ejecuta cada día a las 03:17
   una limpieza acotada de filas con más de 180 días. La tabla no expuesta
@@ -67,7 +111,7 @@ Estos ficheros **no pertenecen a la cadena automática**:
 fail-closed. `db/22_cierre_regresiones_rollback.sql` es un interruptor de
 emergencia: no vuelve al estado vulnerable; desactiva mutaciones y detiene el
 reloj push conservando datos y catálogo. Reaplicar 22 recupera la API, pero no
-reactiva push.
+reactiva correo ni push.
 
 Si un instalador falla después de enlazar el proyecto ejecuta automáticamente
 `db/fallo_cerrado.sql`. Ese cierre universal no borra datos: revoca todo acceso
@@ -88,7 +132,7 @@ npm test
 ```
 
 La suite general incluye el fresh-install completo, seguridad/RLS/ACL,
-opiniones, moderación, push, emisiones, instaladores, verificadores y la
+opiniones, moderación, push, correo 23, emisiones, instaladores, verificadores y la
 reproducción explícita de la regresión 16 seguida de la reparación 22. También
 incluye una revisión estática que impide que el smoke remoto recupere el
 fallback de escritura directa o la firma antigua de moderación.
@@ -129,11 +173,26 @@ por defecto y nunca descargan `supabase@latest`. Antes de usarlos:
 instalar-base-de-datos.cmd REFERENCIA_DEL_PROYECTO
 ```
 
-El correo sigue apagado. Para activarlo deliberadamente:
+El correo sigue apagado y bloqueado. Solo después de aprobar proveedor,
+privacidad y consentimiento se puede sustituir deliberadamente ese bloqueo:
 
 ```bat
+set SUPABASE_ACCESS_TOKEN=credencial_configurada_fuera_del_repo
+set RWADAR_SUPABASE_CLI_VERSION=VERSION_EXACTA_VALIDADA
+set RWADAR_CORREO_PROVEEDOR_APROBADO=SI
+set RWADAR_CORREO_PRIVACIDAD_APROBADA=SI
 aplicar-envio-avisos.cmd REFERENCIA_DEL_PROYECTO
 ```
+
+Antes, Vault debe contener `BREVO_API_KEY` y `RWADAR_REMITENTE`; el script no
+acepta ni imprime sus valores. Ejecuta únicamente `23_activar_correo.sql` y su
+verificador read-only, nunca el histórico 13 ni una reaplicación de 22 que lo
+volvería a apagar. Si algo falla tras enlazar, aplica
+`correo_fallo_cerrado.sql`. Un verificador verde demuestra configuración,
+ACL, origen, escape y cron. Un `201` con `messageId` solo demuestra aceptación
+por Brevo, no entrega: hay que confirmar el evento `Delivered` o el buzón real,
+además de revisar el tracking global de aperturas/clics de la cuenta, antes de
+anunciar el correo como operativo.
 
 Push también queda apagado y sin cron. Solo después de completar y documentar
 una prueba E2E real se permite configurar, en un entorno seguro,
@@ -161,10 +220,13 @@ proyecto que ya tiene 14-21:
 aplicar-sql.cmd REFERENCIA_DEL_PROYECTO db\22_cierre_regresiones.sql
 ```
 
-No se debe anunciar el cierre hasta que el propio comando haya superado los
-verificadores 14, 15, 22 y la paridad 26/4. Aplicar 22 cambia producción y no
-se hace desde las pruebas locales de este repositorio. El resultado deliberado
-de aplicar 22 es API reparada, retención diaria activa y push apagado/sin cron.
+En el proyecto de producción de RWAdar este paso ya terminó y pasó su
+verificador interno; la receta queda para otra instalación que todavía no tenga
+la 22. No se debe anunciar el cierre en otro proyecto hasta que el propio
+comando haya superado los verificadores 14, 15, 22 y la paridad 26/4. Aplicar
+22 cambia producción y no se hace desde las pruebas locales de este repositorio.
+El resultado deliberado es API reparada, retención diaria activa y correo/push
+apagados, bloqueados y sin cron.
 
 ## Contenido y sincronización
 

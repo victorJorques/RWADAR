@@ -6,7 +6,7 @@
 <title>Privacidad · RWAdar</title>
 <meta name="description" content="Qué datos trata RWAdar, para qué, con quién se comparten y cómo ejercer tus derechos. Escrito en claro y ajustado a lo que la web hace de verdad.">
 <meta name="robots" content="index,follow,max-snippet:-1">
-<link rel="canonical" href="https://rwadar.netlify.app/privacidad">
+<link rel="canonical" href="https://rwadar.pages.dev/privacidad">
 <meta name="theme-color" content="#0B0A0A">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>">
@@ -29,11 +29,11 @@
   </div>
 </header>
 
-<main class="wrap" data-deploy-blocker="legal">
+<main class="wrap" data-deploy-legal-status="acuerdo-pendiente-de-documentar">
   <a class="volver" href="/">← Volver al radar</a>
 
   <h1>Privacidad</h1>
-  <p class="fecha">Versión revisada el <time datetime="2026-08-20">20 de agosto de 2026</time></p>
+  <p class="fecha">Versión revisada el <time datetime="2026-08-22">22 de agosto de 2026</time></p>
 
   <div class="resumen">
     <p><b>El resumen, por si no lees el resto.</b></p>
@@ -49,10 +49,13 @@
   </div>
 
   <div class="pendiente" role="note">
-    <p><b>Datos legales pendientes antes de desplegar esta versión:</b> documentar el acuerdo
-      interno entre corresponsables y la información esencial que debe ponerse a disposición,
-      y aprobar y automatizar los plazos todavía marcados como pendientes. Los mecanismos
-      contractuales de los proveedores actuales se describen en el apartado 7.</p>
+    <p><b>Estado legal comunicado al publicar esta versión:</b> RWAdar se ofrece en su versión
+      completa identificando a sus tres corresponsables, pero su acuerdo interno sobre el
+      reparto de obligaciones y la información esencial que debe ponerse a disposición
+      <b>todavía está pendiente de documentar</b>. Publicar no significa que ese acuerdo ya
+      esté firmado. Los plazos señalados como pendientes en el apartado 8 siguen siendo
+      propuestas no aprobadas ni automatizadas. Los mecanismos contractuales de los
+      proveedores actuales se describen en el apartado 7.</p>
   </div>
 
   <h2>1 · Quién responde de tus datos</h2>
@@ -79,7 +82,7 @@
         <td>Dirección IP,<br>navegador y hora</td>
         <td>Es lo mínimo para poder enviarte la página. Sin ello no hay forma técnica de
           servir un sitio web.</td>
-        <td>Netlify, que aloja la web</td>
+        <td>Cloudflare Pages, que aloja y distribuye la web</td>
       </tr>
       <tr>
         <td>Dirección IP al<br>actualizar el registro</td>
@@ -114,10 +117,10 @@
   </div>
 
   <p><b>El código propio de esta web no crea cookies.</b> Usa el almacenamiento local solo
-    para recordar el sonido y Cache Storage para la copia PWA pública; no incluye publicidad, píxeles sociales ni analítica
-    de seguimiento entre sitios. Netlify Real User Monitoring (RUM) está desactivado y
-    RWAdar no carga su script de métricas; Netlify sí interviene como alojamiento y CDN y
-    puede conservar registros técnicos necesarios para entrega, seguridad y diagnóstico.</p>
+    para recordar el sonido y Cache Storage para la copia PWA pública; no incluye publicidad,
+    píxeles sociales ni analítica de seguimiento entre sitios. RWAdar no activa Cloudflare
+    Web Analytics, Zaraz ni otros scripts de métricas. Cloudflare sí interviene como
+    alojamiento y CDN y trata datos técnicos de conexión para entregar y proteger la web.</p>
 
   <h2>3 · Qué se trata si creas una cuenta</h2>
   <p>La cuenta es <b>opcional</b>. El registro se consulta entero sin ella, y así seguirá
@@ -147,16 +150,24 @@
       </tr>
       <tr>
         <td>Plataformas<br>que vigilas</td>
-        <td>Conservar tu lista. Tu preferencia para futuros avisos por correo se guarda,
-          aunque la entrega de esos avisos aún no está activa.</td>
+        <td>Conservar tu lista de plataformas vigiladas.</td>
         <td>Ejecución del servicio</td>
+      </tr>
+      <tr>
+        <td>Consentimiento para<br>avisos por correo<br>(opcional)</td>
+        <td>Guardar si lo has aceptado, la fecha de aceptación y la versión
+          <code>correo-v1-2026-08-22</code>. Está desactivado por defecto. Aunque lo aceptes,
+          la entrega todavía no está activa hasta configurar Brevo y verificar el recorrido
+          de extremo a extremo.</td>
+        <td>Tu consentimiento explícito</td>
       </tr>
     </tbody>
   </table>
   </div>
 
-  <p>Puedes cambiar el nombre público y la preferencia de correo desde tu perfil, dejar
-    de vigilar una plataforma y borrar la cuenta cuando quieras.</p>
+  <p>Puedes cambiar el nombre público, aceptar expresamente o retirar el consentimiento
+    de correo desde tu perfil, dejar de vigilar una plataforma y borrar la cuenta cuando
+    quieras. La retirada usa el mismo control y deja la preferencia desactivada.</p>
 
   <h2>4 · Opiniones, denuncias y moderación</h2>
   <div class="tabla-caja">
@@ -216,27 +227,36 @@
   <h2>6 · Correos de servicio</h2>
   <p>Supabase Auth contiene las funciones de alta, confirmación y recuperación de cuentas.
     En la configuración de producción revisada el 20 de agosto de 2026,
-    <code>mailer_autoconfirm=true</code>: las altas se marcan automáticamente como
-    confirmadas. Por tanto, hoy <b>no se exige ni se ha verificado</b> que una cuenta nueva
-    confirme su dirección antes de iniciar sesión.</p>
-  <p>La publicación remota de esta versión permanece bloqueada hasta establecer
-    <code>mailer_autoconfirm=false</code> y probar de extremo a extremo el alta, la
-    confirmación y la recuperación. Mientras no se complete esa prueba, RWAdar no promete
-    la entrega de esos correos.</p>
-  <p>La entrega de correos por cambios del radar <b>todavía no está activa</b>. Existe una
-    integración preparada con Brevo, pero Brevo no recibe datos por esa función mientras
-    no se configure y active. Antes de hacerlo se comprobará el contrato de encargo, la
-    región de tratamiento y las garantías de transferencia, y se actualizará esta política
-    si fuera necesario. No se enviarán boletines ni publicidad.</p>
+    las nuevas altas están habilitadas y <code>mailer_autoconfirm=false</code>. Una cuenta
+    nueva <b>debe confirmar su dirección de correo antes de poder iniciar sesión</b>.</p>
+  <p>RWAdar no tiene configurado un SMTP propio. La entrega de los mensajes de confirmación
+    y recuperación, y ambos recorridos completos, todavía no se han probado de extremo a
+    extremo. Por eso, aceptar una solicitud de alta o recuperación <b>no garantiza que el
+    correo llegue</b>; RWAdar no promete su entrega mientras falte esa verificación.</p>
+  <p>La entrega de correos por cambios del radar <b>todavía no está activa</b>. La preferencia
+    nace desactivada y solo cambia tras una acción explícita en el perfil, registrada con
+    fecha y con la versión <code>correo-v1-2026-08-22</code>. Puede retirarse en el mismo
+    control en cualquier momento. Aceptarla ahora no promete ningún envío.</p>
+  <p>Existe una integración preparada con Brevo, pero Brevo no recibe datos por esa función
+    mientras no se configure y se verifique de extremo a extremo. Antes de activarla se
+    comprobarán además el contrato de encargo, la región de tratamiento y las garantías de
+    transferencia, y se actualizará esta política si fuera necesario. No se enviarán
+    boletines ni publicidad.</p>
 
   <h2>7 · Proveedores y transferencias</h2>
   <p>Estos proveedores intervienen o pueden intervenir solo para prestar el servicio:</p>
   <ul>
-    <li><b>Netlify</b> — alojamiento, CDN, entrega y seguridad de la web; recibe los datos
-      técnicos de conexión y mantiene los registros técnicos necesarios para esos fines.
-      Su función RUM está desactivada. Su DPA está incorporado a sus términos e incluye
-      cláusulas contractuales tipo (SCC) para transferencias. Consulta su
-      <a href="https://www.netlify.com/privacy/" rel="noopener">información de privacidad</a>.</li>
+    <li><b>Cloudflare Pages</b> — alojamiento, CDN, entrega y seguridad de la web; trata
+      direcciones IP, datos de enrutamiento y otra información técnica necesaria para esos
+      fines. RWAdar no activa Web Analytics ni Zaraz. El DPA de Cloudflare forma parte de
+      sus condiciones de autoservicio y contempla el EU-U.S. Data Privacy Framework y,
+      cuando corresponda, cláusulas contractuales tipo (SCC). Consulta su
+      <a href="https://www.cloudflare.com/policies/privacy/" rel="noopener">política de privacidad</a>
+      y su <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" rel="noopener">DPA</a>.</li>
+    <li><b>Netlify</b> — durante la transición conserva únicamente la versión anterior en
+      <span class="codigo">rwadar.netlify.app</span> como respaldo temporal. Puede recibir
+      datos técnicos si visitas esa dirección; RUM continúa desactivado. Se retirará o
+      redirigirá ese origen cuando el plan permita publicar el cambio.</li>
     <li><b>Supabase</b> — base de datos y autenticación; el proyecto está alojado en
       <b>eu-west-1 (Irlanda)</b>. Su DPA incluye SCC para los tratamientos que puedan
       implicar una transferencia. Consulta su
@@ -248,10 +268,10 @@
       Los términos de Expo incorporan SCC y contemplan el EU-U.S. Data Privacy Framework.</li>
   </ul>
   <p>Algunos proveedores o subencargados pueden tratar datos fuera del Espacio Económico
-    Europeo. Para Netlify, Supabase y Expo se han identificado los mecanismos contractuales
-    indicados arriba. Antes de activar una cadena de push se verificará además la configuración
-    concreta y el mecanismo aplicable a Apple o Google. Mientras la entrega automática siga
-    desactivada, RWAdar no promete que se envíe ninguna notificación remota.</p>
+    Europeo. Para Cloudflare, Netlify, Supabase y Expo se han identificado los mecanismos
+    contractuales indicados arriba. Antes de activar una cadena de push se verificará además
+    la configuración concreta y el mecanismo aplicable a Apple o Google. Mientras la entrega
+    automática siga desactivada, RWAdar no promete que se envíe ninguna notificación remota.</p>
 
   <h2>8 · Cuánto tiempo se guardan</h2>
   <ul>

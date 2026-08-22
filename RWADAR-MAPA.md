@@ -4,11 +4,13 @@
 > directo al sitio exacto y no gastar el turno buscando. El *por qué* de
 > cada decisión está en `RWADAR-ESTADO.md`; aquí está el *dónde*.
 
-> **Vigencia:** reconciliado el 20 de agosto de 2026 sobre `42018de` y el
-> traspaso del 17–20 de agosto. La web remediada está en local, no en
-> producción. El sitio público aún usa `unsafe-inline`, la política fechada el
-> 09-08 y el service worker v1. No describas la arquitectura local como ya
-> desplegada.
+> **Vigencia:** reconciliado el 22 de agosto de 2026 sobre `42018de` y el
+> traspaso del 17–20 de agosto. La web remediada está desplegada y verificada en
+> `https://rwadar.pages.dev`; deployment final `2aedebd9...`, web 164/164 y
+> smoke externo GO. La 22 está aplicada y verificada. Correo y push siguen OFF.
+> Search Console tiene Pages verificada y la portada en cola; el sitemap se
+> envió y su primera lectura fue el estado transitorio «No se ha podido
+> obtener». Netlify es legado indexado. CALIX es otro proyecto y no se toca.
 
 ---
 
@@ -74,7 +76,7 @@ abre solo el tramo necesario.
 | `sitemap.xml` | Para Google | Actualizar `lastmod` al publicar |
 | `robots.txt` | Permite todo + apunta al sitemap | Casi nunca |
 | `404.html` | Página de error | Casi nunca |
-| `_headers` | Cabeceras de Netlify (caché, seguridad) | Casi nunca |
+| `_headers` | Cabeceras de Cloudflare Pages (caché, seguridad) | Casi nunca |
 | `_redirects` | Rutas limpias y redirecciones del sitio | Al cambiar rutas |
 | `.well-known/security.txt` | Contacto y política de reporte de seguridad | Al cambiar contacto o vigencia |
 | `google6b2e3e5f58b7e557.html` | **Verificación de Google** | **NUNCA borrar** |
@@ -116,7 +118,7 @@ ejecutan por separado, con datos de prueba y limpieza verificable.
 | Comando | Qué demuestra |
 |---|---|
 | `node rwadar-arrancar.js` | Que el JS compila, informa si lo publicado difiere de local y comprueba descartes con fuente |
-| `node probar-web.mjs` | Contrato estático, CSP, publicación explícita y cerrada, privacidad, SEO y 26/4/0 locales; 121/121 al 20-08 |
+| `node probar-web.mjs` | Contrato estático, CSP, publicación explícita y cerrada, privacidad, SEO y 26/4/0; **164/164** al 22-08 |
 | `node rwadar-qr/comprobar-qr.js` | Geometría, contenido y legibilidad del QR; 6/6 al 20-08 |
 | `rwadar-app/probar-opiniones.mjs` | Opiniones, denuncias y retirada automática |
 | `rwadar-app/probar-moderacion.mjs` | Que quien no es administrador **no** puede moderar |
@@ -129,8 +131,12 @@ ejecutan por separado, con datos de prueba y limpieza verificable.
 | `rwadar-app/activar-push.cmd` | Único opt-in de push tras E2E; nunca forma parte de fresh/22 |
 | `rwadar-app/db/push_fallo_cerrado.sql` | Cierre de emergencia limitado al push; conserva API y retención |
 
-La suite DB completa terminó el 20-08 con **270 aserciones + 8 gates SQL = 278
-controles verdes**. Es evidencia local; producción no se modificó.
+La suite raíz terminó el 22-08 con código 0; la web pasó **164/164**.
+En producción, la 22 (`02F2...0666`) terminó en `COMMIT` con `schedule=19`; su
+verificador (`4182...2C3`) devolvió `Success. No rows returned` y `RWAdar 22
+OK`. El smoke público confirmó 26/4, las denegaciones ACL/RPC y la ausencia de
+la firma antigua. Security Advisor quedó en 0 Critical y 0 Security Definer
+View.
 
 Fresh-install, 17, 22, rollback y recuperación dejan el push apagado: flag
 `false` y 0 cron `rwadar-push`. La retención de dispositivos es independiente,
@@ -156,10 +162,9 @@ Y nada más. Si aparece cualquier otra cosa —un `.netlify`, un PNG suelto de
 una captura, una versión vieja del sitio— es basura de trabajo y se puede
 borrar: `rwadar-arrancar.js` avisa de lo que sobra dentro de `rwadar-site/`.
 
-**Enlaza siempre sin `.html`.** Netlify tiene las URL limpias activadas y
-reescribe `href="/x.html"` como `href='/x'` al servir; si lo escribes con
-extensión, lo publicado deja de coincidir con lo local y el diagnóstico da
-un falso fallo.
+**Enlaza siempre sin `.html`.** `_redirects` mantiene las URL limpias en
+Cloudflare Pages; si escribes enlaces internos con extensión, lo publicado deja
+de coincidir con el contrato y el diagnóstico falla.
 
 ---
 
@@ -443,24 +448,40 @@ CNMV» ni uses esta fuente como sustituto de los cuatro criterios.
 ## Publicar
 
 ```bash
-node rwadar-publicar.js --local                       # genera y prueba, no sube
-node rwadar-publicar.js --preview                     # despliegue de revisión
-node rwadar-publicar.js --produccion                  # producción deliberada
-node rwadar-publicar.js --local --sin-sincronizar     # sin tocar Supabase
+node rwadar-publicar.js --local
+npx.cmd --yes wrangler@4.125.0 pages deploy rwadar-publicado --project-name rwadar --branch main
 ```
 
-Exactamente uno de los tres modos es obligatorio. `--sin-sincronizar` no
-elige producción. Si Netlify rechaza una subida, el proceso termina: nunca
-crea un borrador alternativo ni lo promueve a espaldas del modo elegido.
+Primero genera y valida; después despliega solo `rwadar-publicado/` a la cuenta
+y proyecto Pages exactos. El publicador remoto heredado aún llama a Netlify y
+no es la ruta actual. Wrangler quedó con User Read, Account Read y Pages Write.
+CALIX es otro proyecto y no se toca.
 
-El marcador actual `data-deploy-blocker` bloquea los dos destinos remotos antes
-de consultar Auth, sincronizar o llamar a Netlify: solo `--local` está
-habilitado. Cuando los tres corresponsables cierren el acuerdo y los plazos,
-retirar el marcador será una decisión explícita. Entonces el preflight remoto
-hará un GET de solo lectura a `/auth/v1/settings` y exigirá
-`mailer_autoconfirm=false` exacto; producción devuelve hoy `true`, y todo error
-o campo ausente debe fallar cerrado. No confundas superar el preflight con
+La política declara
+`data-deploy-legal-status="acuerdo-pendiente-de-documentar"`: la versión
+completa puede publicarse sin presentar el acuerdo ni los plazos como cerrados.
+Un `data-deploy-blocker`, un estado ausente o uno desconocido bloquean los dos
+destinos remotos antes de consultar Auth o sincronizar. El
+preflight remoto hace un GET de solo lectura a `/auth/v1/settings` y exige
+`mailer_autoconfirm=false` exacto; producción ya devuelve `false`, Confirm email
+está activo y signup sigue habilitado. Todo error o campo ausente debe fallar
+cerrado. No confundas superar el preflight con
 haber probado que llega un correo de confirmación.
+
+No hay SMTP propio y todavía faltan pruebas E2E reales de confirmación y
+recuperación. Cloudflare Pages sirve el deployment final `2aedebd9...`; el ZIP
+final es `outputs/rwadar-cloudflare-pages-20260822-d6f73fb3.zip`, SHA-256
+`143B6ECBB8B883006D36C9297A3C574B09BBB2A46950208E4B821C792499BDFC`.
+
+La app móvil local está GO y mantiene push OFF. El preview EAS terminó
+`FINISHED`: Android 1.0.0 build 4, ID
+`c7bb915b-da3b-46d4-9bd6-811a432b4cb3`, fingerprint
+`af69452933f988f2d48d45861802f09d3df06e8b`. APK:
+`outputs/rwadar-android-preview-v1.0.0-build4-c7bb915b.apk`, 84.783.140 bytes,
+SHA-256 `5E505F18C26FF91A8FC12899DEE39D9757C5D2E7FFC665DF0D7AFF090CFC4DB7`.
+Estructura y firma v2 presentes; no está en tienda. La OTA Android `preview`
+grupo `4f9d7e19...` y runtime `af694...` entrega el rediseño y apertura de
+avisos al build 4 compatible; no es Play Store ni iOS nativo.
 
 Lo que se compara con internet es `rwadar-publicado/`, no la fuente
 comentada de `rwadar-site/`. RUM está desactivado: cualquier

@@ -50,7 +50,9 @@ for (const nombre of nombres) {
     && /supabase@%RWADAR_SUPABASE_CLI_VERSION%/.test(contenido)
     && !/supabase@latest/i.test(contenido));
   const cierreEsperado = nombre === 'activar-push.cmd'
-    ? /db\\push_fallo_cerrado\.sql/i : /db\\fallo_cerrado\.sql/i;
+    ? /db\\push_fallo_cerrado\.sql/i
+    : nombre === 'aplicar-envio-avisos.cmd'
+      ? /db\\correo_fallo_cerrado\.sql/i : /db\\fallo_cerrado\.sql/i;
   paso(`${nombre} precomprueba y ejecuta su cierre si falla tras enlazar`,
     cierreEsperado.test(contenido)
     && /set "ENLAZADO=1"/.test(contenido)
@@ -79,20 +81,26 @@ paso('el actualizador exige un único fichero y no usa globs',
   && /if not defined UNO goto :uso/.test(actualizador)
   && !/db\\0\[6-9\]/.test(actualizador)
   && !/db\\1\?_\*\.sql/.test(actualizador));
-paso('el actualizador solo permite 22 y bloquea históricos/correo/recuperado',
+paso('el actualizador solo permite 22 y deriva el opt-in 23 a su flujo seguro',
   /if \/i "%UNO%"=="db\\22_cierre_regresiones\.sql" set "PERMITIDO=1"/i
     .test(actualizador)
   && !/do if \/i "%UNO%"/i.test(actualizador)
-  && /13 usa aplicar-envio-avisos\.cmd/i.test(actualizador)
+  && /23 usa aplicar-envio-avisos\.cmd/i.test(actualizador)
+  && /13 es historico y no se aplica/i.test(actualizador)
   && /16 y 14-15_recuperado\.sql NO se pueden ejecutar/i.test(actualizador));
 paso('aplicar 22 ejecuta seguridad y la paridad 26/4 inmediatamente',
   /22_cierre_regresiones\.sql[\s\S]*14_seguridad_integral_verificar\.sql[\s\S]*15_acl_funciones_verificar\.sql[\s\S]*22_cierre_regresiones_verificar\.sql[\s\S]*fresh_install_verificar\.sql/i.test(actualizador));
 
-paso('correo 13 requiere frase reforzada y reafirma 15/22',
-  /ACTIVAR-ENVIO-%REF%/.test(envio)
-  && /db\\13_envio_avisos\.sql/.test(envio)
+paso('correo usa solo el opt-in 23, frase reforzada y cierre limitado',
+  /ACTIVAR-CORREO-BREVO-%REF%/.test(envio)
+  && /db\\23_activar_correo\.sql/.test(envio)
+  && /db\\23_activar_correo_verificar\.sql/.test(envio)
+  && /db\\correo_fallo_cerrado\.sql/.test(envio)
+  && !/db\\13_envio_avisos\.sql/.test(envio)
+  && !/db\\22_cierre_regresiones\.sql/.test(envio)
   && /db\\15_acl_funciones_verificar\.sql/.test(envio)
-  && /db\\22_cierre_regresiones_verificar\.sql/.test(envio));
+  && /RWADAR_CORREO_PROVEEDOR_APROBADO%"=="SI/i.test(envio)
+  && /RWADAR_CORREO_PRIVACIDAD_APROBADA%"=="SI/i.test(envio));
 
 paso('push exige opt-in E2E, token de entorno y frase reforzada',
   /RWADAR_PUSH_E2E_APROBADO%"=="SI/i.test(activadorPush)
@@ -128,6 +136,10 @@ if (process.platform === 'win32') {
     if (nombre === 'activar-push.cmd') {
       entornoConfirmacion.SUPABASE_ACCESS_TOKEN = 'token-de-prueba-no-usado';
       entornoConfirmacion.RWADAR_PUSH_E2E_APROBADO = 'SI';
+    } else if (nombre === 'aplicar-envio-avisos.cmd') {
+      entornoConfirmacion.SUPABASE_ACCESS_TOKEN = 'token-de-prueba-no-usado';
+      entornoConfirmacion.RWADAR_CORREO_PROVEEDOR_APROBADO = 'SI';
+      entornoConfirmacion.RWADAR_CORREO_PRIVACIDAD_APROBADA = 'SI';
     }
     const sinConfirmar = spawnSync(process.env.ComSpec,
       ['/d', '/q', '/c', 'call', ...argsConfirmacion],
@@ -175,6 +187,29 @@ if (process.platform === 'win32') {
     { cwd: DIR, encoding: 'utf8', input: '', windowsHide: true,
       env: entornoSinToken });
   paso('activar-push.cmd falla cerrado sin credencial explícita', sinToken.status === 1);
+
+  const baseCorreo = [path.join(DIR, 'aplicar-envio-avisos.cmd'),
+    'aaaaaaaaaaaaaaaaaaaa'];
+  const sinAprobacionCorreo = spawnSync(process.env.ComSpec,
+    ['/d', '/q', '/c', 'call', ...baseCorreo],
+    { cwd: DIR, encoding: 'utf8', input: '', windowsHide: true,
+      env: { ...process.env, RWADAR_SUPABASE_CLI_VERSION: '2.79.0',
+        SUPABASE_ACCESS_TOKEN: 'token-de-prueba-no-usado',
+        RWADAR_CORREO_PROVEEDOR_APROBADO: 'NO',
+        RWADAR_CORREO_PRIVACIDAD_APROBADA: 'SI' } });
+  paso('correo falla cerrado sin aprobación de proveedor y privacidad',
+    sinAprobacionCorreo.status === 1);
+
+  const entornoCorreoSinToken = { ...process.env,
+    RWADAR_SUPABASE_CLI_VERSION: '2.79.0',
+    RWADAR_CORREO_PROVEEDOR_APROBADO: 'SI',
+    RWADAR_CORREO_PRIVACIDAD_APROBADA: 'SI' };
+  delete entornoCorreoSinToken.SUPABASE_ACCESS_TOKEN;
+  const correoSinToken = spawnSync(process.env.ComSpec,
+    ['/d', '/q', '/c', 'call', ...baseCorreo],
+    { cwd: DIR, encoding: 'utf8', input: '', windowsHide: true,
+      env: entornoCorreoSinToken });
+  paso('correo falla cerrado sin credencial explícita', correoSinToken.status === 1);
 }
 
 console.log(`\n${correctas} correctas, 0 fallidas`);

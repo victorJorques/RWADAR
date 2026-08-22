@@ -23,8 +23,10 @@ const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const {
   ARCHIVOS_PUBLICABLES,
   comprobarConfiguracionAuth,
+  comprobarEstadoLegalPublicacion,
   nombreAssetVersionado,
   validarArbolPublicable,
+  validarOrigenPublicable,
   versionCacheDesdeEntradas,
 } = require('./rwadar-publicacion-segura');
 
@@ -43,14 +45,18 @@ const preview = modos[0] === '--preview';
 const produccion = modos[0] === '--produccion';
 const remoto = preview || produccion;
 
-/* Comprobar el bloqueo antes de consultar la base o generar artefactos. Una
-   ejecución remota con decisiones jurídicas pendientes debe ser un
-   no-op local además de no desplegar. */
+/* Comprobar el estado declarado antes de consultar la base o generar
+   artefactos. La política puede transparentar que el acuerdo interno sigue
+   pendiente, pero un blocker, un estado ausente o uno desconocido fallan
+   cerrados. */
 const privacidad = fs.readFileSync(path.join(DIR, 'privacidad.html'), 'utf8');
-if (remoto && /\bdata-deploy-blocker\b/i.test(privacidad)) {
-  console.error('PUBLICACION REMOTA BLOQUEADA: la política de privacidad conserva decisiones pendientes.');
-  console.error('No se permite ni preview público ni producción mientras exista data-deploy-blocker. El modo --local sigue disponible.');
-  process.exit(2);
+if (remoto) {
+  try { comprobarEstadoLegalPublicacion(privacidad); }
+  catch (e) {
+    console.error('PUBLICACION REMOTA BLOQUEADA: estado legal ausente, desconocido o bloqueado.');
+    console.error(e.message);
+    process.exit(2);
+  }
 }
 
 /* El control se hace sobre archivos reales, no sobre Git. Debe ocurrir antes
@@ -58,6 +64,8 @@ if (remoto && /\bdata-deploy-blocker\b/i.test(privacidad)) {
    toda la ejecución en un no-op. */
 try { validarArbolPublicable(DIR); }
 catch (e) { console.error('ARBOL PUBLICABLE BLOQUEADO:', e.message); process.exit(2); }
+try { validarOrigenPublicable(DIR); }
+catch (e) { console.error('ORIGEN PUBLICO BLOQUEADO:', e.message); process.exit(2); }
 
 async function main() {
 /* Un preview también carga la aplicación real y puede hablar con Auth. Tras

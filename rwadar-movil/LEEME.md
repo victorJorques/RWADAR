@@ -3,15 +3,31 @@
 App nativa en React Native con Expo (SDK 57). Comparte base de datos con la web:
 lo que cambies en Supabase aparece en las dos.
 
+## Estado verificado · 21 de agosto de 2026
+
+- APK interno Android `1.0.0` build 4, runtime
+  `af69452933f988f2d48d45861802f09d3df06e8b`.
+- Rediseño publicado por EAS Update en el canal `preview`, grupo
+  `c20b2752-8d53-48a1-a29b-36285e254b3b`.
+- AAB de producción `1.0.0` build 5 terminado con el mismo runtime y el mismo
+  keystore: build `965fc4b6-3c77-4661-b2a7-b8281c06aac2`.
+- Google Play todavía no ha recibido el AAB: la cuenta de Play Console no está
+  creada y Google exige activar antes la verificación en dos pasos.
+- La entrega push sigue apagada deliberadamente; seguir una plataforma no se
+  presenta como garantía de recibir avisos.
+
 ## Probarla ahora mismo
 
 ```bash
-cd C:/Users/vcicr/Downloads/rwadar-movil
+cd rwadar-movil
+npm test
 npx expo start
 ```
 
-Escanea el código QR con la app **Expo Go** en tu móvil y la tendrás
-funcionando en 10 segundos. Para verla en el ordenador, añade `--web`.
+Expo Go sirve para revisar parte de la interfaz, pero no reproduce el contrato
+nativo completo de avisos, SecureStore y EAS Update. Para una prueba de entrega
+usa el APK build 4. El export `--web` solo se usa como apoyo de QA responsive;
+no es la versión web/ordenador de RWAdar.
 
 ## Qué hace, y por qué eso importa
 
@@ -42,8 +58,10 @@ borrado elimina primero la fila remota y solo después la identidad local.
 ## Estructura
 
 ```
-App.js                     Pantallas: radar, seguidas, detalle
-componentes/Explicador.js  "¿Qué es tokenizar?" con animación nativa
+App.js                     Radar, Siguiendo, Avisos, Más y modales
+componentes/Navegacion.js  Barra inferior, iconos propios e insignias
+componentes/Radar.js       Radar animado, puntos y filtros accesibles
+componentes/Explicador.js  3D en WebView y fallback nativo animado
 lib/tema.js                Colores, tipografía, sombras y radios
 lib/tacto.js               Respuesta háptica
 lib/supabase.js            Cliente + identificador anónimo de instalación
@@ -70,10 +88,10 @@ en gestos deliberados, con intensidad proporcional. Seguir es seco y
 definido; dejar de seguir, blando. La diferencia se nota en el dedo sin
 mirar la pantalla.
 
-**El explicador** es la misma narración que el 3D de la web —entero,
-dividido, con dueño, negociable— resuelta con animación nativa en vez de
-WebGL: va más suelto, gasta menos batería y nunca se queda sin arrancar.
-Cuarenta bloques que salen todos de un único valor animado.
+**El explicador** conserva la misma narración 3D que la web —entero, dividido,
+con dueño, negociable— dentro de una WebView limitada al origen HTTPS exacto
+de RWAdar. Si no puede cargar, usa el fallback nativo de cuarenta bloques y
+cuatro pasos animados.
 
 ## La piel es la de la web, desde el 14 de agosto de 2026
 
@@ -94,49 +112,33 @@ superficies, y la sombra solo añade profundidad en iOS.
 
 ## Lo que falta para llegar a las tiendas
 
-**1 · Acceso al proyecto Expo** para poder compilar en la nube, que es la única
-vía de generar el archivo de iOS desde Windows. El `projectId` y la URL de EAS
-Update ya están configurados; no deben sustituirse por otro proyecto.
+El acceso a Expo, el APK interno y el AAB de producción Android ya están
+resueltos. Antes de entregar a Google Play falta:
 
-```bash
-npx eas login
-```
+1. activar la verificación en dos pasos de la cuenta de Google;
+2. crear y pagar la cuenta de Play Console;
+3. crear la ficha `com.rwadar.app`, completar privacidad, seguridad de datos,
+   contenido, países y canal de pruebas;
+4. instalar el APK build 4 en un Android real y comprobar navegación, 3D,
+   seguimiento online/offline, borrado y recepción de la OTA;
+5. subir el AAB build 5 primero a una pista de prueba, no directamente a
+   producción.
 
-`eas.json` tiene tres perfiles: `development`, `preview` y `production`. El
-panel comprueba el dispositivo, Expo Go, el permiso y el registro remoto sin
-solicitar permiso al arrancar.
+iOS sigue necesitando Apple Developer, credenciales de firma, un build EAS y
+pruebas mediante TestFlight.
 
-**2 · Para enseñarla sin pagar nada**, que es lo que casi siempre hace falta
-primero: el perfil `preview` genera un **APK instalable** en cualquier Android,
-sin tiendas, sin revisión y sin los 124 $/año.
-
-```bash
-npx eas build --platform android --profile preview
-```
-
-**3 · Cuenta de Apple Developer** (99 $/año) y **Google Play Console** (25 $ una
-vez). Las tiene que abrir y pagar una persona. Solo hacen falta para publicar.
-
-```bash
-npx eas build --platform android --profile production
-npx eas build --platform ios --profile production
-npx eas submit --platform android
-npx eas submit --platform ios
-```
-
-**4 · El envío de los avisos.** La base ya sabe *a quién* avisar (vista
+**El envío de los avisos.** La base ya sabe *a quién* avisar (vista
 `avisos_pendientes`). Falta el proceso que lea esa vista y llame a la API de
 Expo Push, compruebe recibos y retire tokens inválidos. Solo después de una
 prueba real debe activarse la bandera operativa.
 
 ## Actualizaciones por EAS
 
-EAS Update está configurado por canales, pero `runtimeVersion` usa la política
-`fingerprint`: una actualización solo puede llegar a binarios cuyo código
-nativo sea compatible. Esta remediación añade `expo-crypto` y
-`expo-secure-store`, así que exige crear y validar un binario nuevo antes de
-publicar cualquier OTA. No envíes estos cambios con `eas update` a una copia
-anterior de la app.
+EAS Update está configurado por canales y `runtimeVersion` usa la política
+`fingerprint`. La OTA del rediseño ya está en `preview` y solo es compatible
+con el APK build 4, cuya huella coincide exactamente. Los APK 1 y 3 usan otro
+runtime y necesitan instalar build 4 una vez. El AAB build 5 incluye el mismo
+código y runtime en el canal `production`; no se ha enviado a Google Play.
 
 Ni una configuración presente ni un comando escrito prueban que una OTA o un
 push se hayan entregado. Antes de cambiar la bandera operativa hay que probar
@@ -145,17 +147,19 @@ de tokens inválidos, borrado y recuperación ante fallo.
 
 ## Verificación local y avisos de dependencias
 
-Foto de la revisión del **20 de agosto de 2026**, sin ejecutar EAS ni tocar
-producción:
+Foto de la revisión del **21 de agosto de 2026**:
 
-- `npm test`: 7 de 7 pruebas superadas;
+- `npm test`: 14 de 14 pruebas móviles superadas;
 - `npx expo install --check`: dependencias compatibles con SDK 57;
 - `npx expo-doctor`: 21 de 21 comprobaciones superadas;
-- exportación local de los bundles Android y web: correcta.
+- exportación local Android (901 módulos) y web de QA (566): correcta;
+- batería integral del repositorio: exit 0;
+- QA visual a 320, 390 y 430 px sin desbordamiento horizontal;
+- APK build 4 y AAB build 5: misma huella nativa.
 
 Después de aplicar las actualizaciones compatibles de `npm audit fix` **sin
 `--force`** y alinear los parches exigidos por Expo, `npm audit --omit=dev`
-informa de **46 paquetes afectados**: 29 altos, 17 moderados y ninguno crítico.
+informa de **15 paquetes afectados**: 5 altos, 10 moderados y ninguno crítico.
 El reporte los propaga desde tres avisos subyacentes del toolchain: dos DoS de
 `image-size` y uno de límites de búfer de `uuid`, a través de Expo CLI, Metro y
 `xcode`. npm los cuenta en el árbol de producción porque `expo` es una

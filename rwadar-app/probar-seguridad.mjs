@@ -23,11 +23,12 @@ paso('la suite carga la cadena fresh-install segura 01-22',
   MIGRACIONES[0].startsWith('01_') && MIGRACIONES.at(-1).startsWith('22_')
   && MIGRACIONES.length === 19
   && !MIGRACIONES.some((f) => /^(13_|16_|14-15_)/.test(f)));
-paso('la cadena instala push apagado y emisiones, sin activar correo',
+paso('la cadena instala correo/push bloqueados y emisiones disponibles',
   (await filas(db, "select count(*)::int n from pg_proc where proname='push_ciclo'"))[0].n === 1
-  && (await filas(db, "select count(*)::int n from pg_proc where proname='avisos_ciclo'"))[0].n === 0
+  && (await filas(db, "select count(*)::int n from pg_proc where proname='avisos_ciclo'"))[0].n === 1
   && !(await filas(db, 'select habilitado from push_configuracion where singleton'))[0].habilitado
-  && (await filas(db, "select count(*)::int n from cron.job where jobname='rwadar-push'"))[0].n === 0
+  && (await filas(db, `select count(*)::int n from cron.job
+    where jobname in ('rwadar-avisos','rwadar-push')`))[0].n === 0
   && (await filas(db, "select count(*)::int n from pg_class where relname='emisiones'"))[0].n === 1);
 
 // La migración correctora debe poder completar una ejecución anterior y

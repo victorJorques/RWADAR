@@ -1,17 +1,17 @@
 # RWAdar · valor técnico y límites actuales
 
 > Documento explicativo para clientes, socios o colaboradores. Reconciliado el
-> 20 de agosto de 2026 sobre `42018de` y el traspaso del 17–20 de agosto.
+> 22 de agosto de 2026 sobre la entrega publicada en Cloudflare Pages.
 > Para trabajar usa `RWADAR-TRASPASO.md`, `RWADAR-MANANA.md` y
 > `RWADAR-MAPA.md`.
 
 ## En una frase
 
 RWAdar es un registro curado de plataformas de tokenización de activos reales.
-La web pública enseña 26 fichas y 4 descartadas con fuente. La ingeniería local
-ha sido endurecida, pero **el proyecto no está terminado**: esa web no se ha
-desplegado, la migración 22 sigue pendiente en producción y correo/push no son
-operativos.
+La web pública enseña 26 fichas y 4 descartadas con fuente. La versión endurecida
+está desplegada y verificada en `https://rwadar.pages.dev`, pero **el proyecto no
+está terminado**: correo y push no son operativos. La migración 22 sí está
+aplicada y verificada en producción.
 
 ## 1 · Una web estática, explícita y auditable
 
@@ -33,9 +33,9 @@ Google Fonts ni se entrega la IP del visitante a ese servicio. Netlify RUM está
 desactivado; si reaparece un `netlify-rum-container`, la validación lo trata
 como discrepancia.
 
-**Límite:** la producción visible sigue en la versión antigua con
-`unsafe-inline`, política de privacidad fechada 09-08 y service worker v1. La
-arquitectura endurecida es local hasta que se despliegue y verifique.
+**Estado publicado:** Cloudflare Pages sirve la arquitectura endurecida, CSP sin
+`unsafe-inline`/`unsafe-eval`, política actual y service worker versionado. El
+origen Netlify queda como legado y no es el canonical.
 
 ## 2 · Pre-renderizado y publicación con intención
 
@@ -51,27 +51,32 @@ node rwadar-publicar.js --preview
 node rwadar-publicar.js --produccion
 ```
 
-El publicador no interpreta un error como permiso para cambiar de destino. Si
-Netlify rechaza la operación, termina: no crea un preview alternativo ni lo
-promociona. El artefacto es `rwadar-publicado/`, nunca la fuente directamente.
+El publicador no interpreta un error como permiso para cambiar de destino. El
+artefacto es `rwadar-publicado/`, nunca la fuente directamente. El publicador
+remoto heredado todavía apunta a Netlify; la producción actual se desplegó de
+forma explícita con Wrangler 4.125.0 al proyecto Pages `rwadar`, rama `main`, y
+solo con ese directorio generado. CALIX es otro proyecto y no se toca.
 
 Cada asset del artefacto recibe una huella de contenido; el HTML y el service
 worker apuntan a esos nombres. La `VERSION` del worker se deriva del conjunto
 desplegable completo y el precaché crítico es atómico, así que una pieza ausente
 impide instalar como válida una entrega parcial.
 
-El marcador `data-deploy-blocker` presente en la fuente corta cualquier modo
-remoto antes de Auth, sincronización o Netlify; hoy solo `--local` puede
-construir. Después de cerrar el acuerdo y los plazos y retirar el marcador, el
-preflight remoto hace un GET de solo lectura a `/auth/v1/settings` y exige
-`mailer_autoconfirm=false` exacto. Producción devuelve actualmente `true`; un
-error o campo ausente también detienen la operación. Esta comprobación evita
-publicar con autoconfirmación, pero no demuestra entrega de correo: hace falta
-una prueba de alta y confirmación de extremo a extremo.
+La fuente declara
+`data-deploy-legal-status="acuerdo-pendiente-de-documentar"`; ese estado permite
+la versión completa y conserva visible que el acuerdo y los plazos no están
+cerrados. Un `data-deploy-blocker`, un estado ausente o uno desconocido cortan
+cualquier remoto antes de Auth o sincronización. El preflight remoto
+hace un GET de solo lectura a `/auth/v1/settings` y exige
+`mailer_autoconfirm=false` exacto. Producción ya devuelve `false`, Confirm email
+está activo y signup sigue habilitado; un error o campo ausente detienen la
+operación. Esta comprobación evita publicar con autoconfirmación, pero no
+demuestra entrega de correo: faltan pruebas reales E2E de confirmación y
+recuperación.
 
-Robots y sitemap públicos responden, pero esta reconciliación no demostró la
-indexación. Debe confirmarse en Search Console y volver a medirse tras cada
-despliegue importante.
+Robots y sitemap públicos responden. Search Console tiene verificada la propiedad
+Pages y la portada está en la cola de indexación; el dominio nuevo aún no debe
+describirse como indexado. Debe volver a medirse tras cada despliegue importante.
 
 ## 3 · El gráfico 3D
 
@@ -105,7 +110,14 @@ una RPC falla.
 
 Las migraciones 14 y 15 representan el endurecimiento ya conocido. La 22 añade
 un cierre de regresiones, un verificador y un rollback de fallo cerrado. **La
-22 pasa en local pero está pendiente de aplicar y verificar en producción.**
+22 está aplicada y verificada en producción.** El SQL (`02F2...0666`) terminó
+en `COMMIT` y mostró `schedule=19`; el verificador (`4182...2C3`) devolvió
+`Success. No rows returned` y `RWAdar 22 OK`. El smoke público posterior dio
+26/4 y confirmó las denegaciones ACL/RPC esperadas: 401 para lecturas sensibles
+y moderación directa, 404/PGRST202 para la firma antigua y 401/42501 para la
+firma nueva anónima.
+
+Security Advisor quedó en 0 Critical y 0 Security Definer View.
 
 ## 5 · Privacidad con estado honesto
 
@@ -117,11 +129,11 @@ Existe un borrador de acuerdo, no un acuerdo firmado. Los plazos propuestos de
 12 meses y 3 años no están aprobados. La política pública debe actualizarse
 solo cuando los tres decidan el texto y los tratamientos reales lo cumplan.
 
-Producción devuelve `mailer_autoconfirm=true`: el alta no verifica que una
-dirección de correo sea real y el publicador remoto seguro queda bloqueado. El
-preflight exige `false` exacto, pero aun después del cambio deberá probarse la
-confirmación real de extremo a extremo. El correo de avisos no es operativo y
-la migración 13 se mantiene separada de la instalación general.
+Confirm email está activo, signup sigue habilitado y producción devuelve
+`mailer_autoconfirm=false`; el preflight Auth ya pasa. No hay SMTP propio y aún
+deben probarse confirmación y recuperación reales de extremo a extremo. El
+correo de avisos no es operativo y la migración 13 se mantiene separada de la
+instalación general.
 
 En móvil, registrar un token o preparar una cola no equivale a entregar una
 notificación. `pushDeliveryEnabled=false`; no hay emisor ni recibos de extremo
@@ -161,11 +173,22 @@ Hay soporte técnico para seguimiento y push, pero no una cadena de entrega
 operativa. Esa distinción es deliberada: ante un fallo, se conserva trabajo
 pendiente o se informa del error; no se presenta un éxito falso.
 
+La versión móvil local está GO y pasa 15/15. El preview EAS terminó `FINISHED`:
+Android 1.0.0 build 4, ID `c7bb915b-da3b-46d4-9bd6-811a432b4cb3`, fingerprint
+`af69452933f988f2d48d45861802f09d3df06e8b`. El APK local mide 84.783.140 bytes
+y tiene SHA-256
+`5E505F18C26FF91A8FC12899DEE39D9757C5D2E7FFC665DF0D7AFF090CFC4DB7`;
+su estructura y firma v2 están presentes. La OTA Android `preview`, grupo
+`4f9d7e19...`, entrega el rediseño y la apertura segura de avisos al build 4
+compatible. Falta instalación/prueba en dispositivo y no está en tienda. Push
+sigue OFF.
+
 ## 8 · Evidencia de calidad
 
-Al 20 de agosto, la batería web local pasa **121/121**, la comprobación del QR
-**6/6**, el artefacto local contiene **26/4/0** y la base local cierra con
-**270 aserciones + 8 gates SQL = 278 controles verdes**. Producción no se tocó.
+Al 22 de agosto, la batería web pasa **164/164**, la comprobación del QR
+**6/6**, el artefacto contiene **26/4/0** y la suite raíz completa termina con
+código 0 e incluye DB, web, QR, móvil **15/15** y tools. La migración 22 se
+verificó además contra producción como se describe arriba.
 
 Los dos smokes remotos son de solo lectura por defecto y no llevan destino ni
 clave embebidos. Su modo mutante requiere variables y frase ligadas al proyecto
@@ -174,12 +197,10 @@ en el smoke de producción y dispositivo/seguimiento en el móvil, sin tokens Ex
 ficticios. Este contrato pasa **21/21** con fallos locales inyectados y sin red.
 
 Las pruebas locales demuestran coherencia del código y de las migraciones en un
-entorno controlado. No demuestran por sí solas:
+entorno controlado. La comprobación de producción ya demostró la 22, pero las
+pruebas locales no demuestran por sí solas:
 
-- que la migración 22 esté aplicada en Supabase;
-- que el sitio endurecido sea el servido por Netlify;
 - que correo o push entreguen mensajes;
-- que Google haya indexado la URL;
 - que una afirmación financiera siga vigente.
 
 Por eso el traspaso exige verificar producción después de cada cambio.
@@ -188,20 +209,20 @@ Por eso el traspaso exige verificar producción después de cada cambio.
 
 | Área | Fortaleza | Pendiente |
 |---|---|---|
-| Web | Estática, pre-renderizada, CSS/JS externos, CSP estricta local | Desplegar y verificar la remediación |
-| Datos | PostgreSQL, RLS, RPC y verificadores | Aplicar/verificar 22 en producción |
+| Web | Estática, pre-renderizada, CSS/JS externos y CSP estricta, desplegada y verificada en Pages | Repetir smoke tras cada entrega |
+| Datos | PostgreSQL, RLS, RPC; 22 aplicada y verificada en producción | Repetir verificación tras cambios de esquema |
 | Privacidad | Sin RUM local, tokens web en memoria, responsables identificados | Firmar acuerdo y decidir plazos |
 | Editorial | Fuentes obligatorias y controles automáticos | Revisión humana y actualización periódica |
-| PWA | Producción instalable | Actualizar privacidad y SW con el nuevo deploy |
+| PWA | Producción instalable en iOS y Android | Reinstalar desde Pages si se usaba el acceso directo del origen Netlify |
 | Correo | Instalación separada y opt-in | Proveedor, consentimiento y prueba E2E |
 | Push | Preparación con fallo cerrado | Sigue deshabilitado; emisor y recibos E2E |
-| SEO | Pre-render, robots, sitemap y canonical | Confirmar indexación en Search Console |
+| SEO | Pre-render, robots, sitemap y canonical en Pages | Confirmar cobertura real en Search Console |
 
 Dependencias: backend tiene 0 hallazgos de `npm audit`. El árbol móvil normal
 reporta 46 paquetes afectados (29 high, 17 moderate, 0 critical) propagados
 desde tres avisos de build/toolchain —dos `image-size` high y uno `uuid`
 moderate— sin arreglo compatible. `npm audit --force` propone Expo 46 y no es
-una remediación aceptable. Expo install check, Doctor 21/21 y tests 7/7 pasan,
+una remediación aceptable. Expo install check, Doctor 21/21 y tests 15/15 pasan,
 pero no cancelan ese riesgo pendiente.
 
 RWAdar informa; no asesora ni recomienda inversiones. Una inscripción o

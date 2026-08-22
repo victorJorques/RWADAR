@@ -14,6 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFile } = require('child_process');
+const { comprobarEstadoLegalPublicacion } = require('./rwadar-publicacion-segura');
 
 const DIR   = __dirname;
 const SITIO = path.join(DIR, 'rwadar-site');
@@ -21,7 +22,7 @@ const PUBLICADO = path.join(DIR, 'rwadar-publicado');
 const HTML  = path.join(SITIO, 'index.html');
 const API   = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
 const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
-const VIVO  = 'https://rwadar.netlify.app/';
+const VIVO  = 'https://rwadar.pages.dev/';
 
 const verde = t => `\x1b[32m${t}\x1b[0m`;
 const rojo  = t => `\x1b[31m${t}\x1b[0m`;
@@ -81,8 +82,11 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
       : 'falta .well-known/security.txt');
 
   const privacidad = fs.readFileSync(path.join(SITIO, 'privacidad.html'), 'utf8');
-  if (/data-deploy-blocker=["']legal["']/.test(privacidad)) {
-    mal('la publicación productiva está bloqueada por decisiones legales pendientes');
+  try {
+    const estadoLegal = comprobarEstadoLegalPublicacion(privacidad);
+    ok(`estado legal de publicación declarado: ${estadoLegal}`);
+  } catch (e) {
+    mal(`estado legal de publicación no válido: ${e.message}`);
   }
 
   /* El CLI de Netlify deja un .netlify en el directorio desde el que se
@@ -139,16 +143,16 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
     if (!/^\/assets\/[a-z0-9._-]+\.[a-f0-9]{12}\.js$/i.test(recursoJSPublicado)) {
       throw new Error('el JavaScript generado no tiene una huella de contenido válida');
     }
-    /* RUM está desactivado y una inyección inesperada es un cambio de código,
+    /* La analítica de alojamiento está desactivada y una inyección inesperada es un cambio de código,
        no una cola tolerable. La comparación es contra el árbol adelgazado que
        se despliega, no contra la fuente comentada. */
-    const tieneRum = /netlify-rum-container|data-netlify-rum/i.test(vivo);
-    (tieneRum ? mal : ok)('Netlify RUM no está inyectado');
-    const igual = !tieneRum && vivo === htmlPublicable;
+    const tieneMetricas = /netlify-rum-container|data-netlify-rum|static\.cloudflareinsights\.com|\bzaraz\b/i.test(vivo);
+    (tieneMetricas ? mal : ok)('Cloudflare Web Analytics/Zaraz y Netlify RUM no están inyectados');
+    const igual = !tieneMetricas && vivo === htmlPublicable;
     (igual ? ok : mal)(igual
       ? 'lo publicado coincide con lo local'
       : 'lo publicado NO coincide con lo local');
-    if (!igual) console.log(gris('        hay cambios sin publicar: node rwadar-publicar.js --produccion'));
+    if (!igual) console.log(gris('        hay cambios sin publicar en Cloudflare Pages'));
 
     if (recursoJSPublicado) {
       const archivoJS = path.resolve(PUBLICADO, '.' + recursoJSPublicado);
@@ -169,7 +173,7 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
   console.log(gris('─'.repeat(58)));
   console.log('  Dónde está cada cosa  ' + gris('→ RWADAR-MAPA.md'));
   console.log('  Por qué está así      ' + gris('→ RWADAR-ESTADO.md (tiene índice)'));
-  console.log('  Publicar              ' + gris('→ node rwadar-publicar.js --produccion'));
+  console.log('  Preparar artefacto     ' + gris('→ node rwadar-publicar.js --local'));
   console.log(gris('─'.repeat(58)) + '\n');
 
   execFile('node', [path.join(DIR, 'rwadar-servir.js')], { stdio: 'inherit' });

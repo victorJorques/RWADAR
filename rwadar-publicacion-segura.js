@@ -6,6 +6,13 @@ const path = require('path');
 
 const SUPABASE_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co/auth/v1';
 const CLAVE_PUBLICA = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const ORIGEN_PUBLICO = 'https://rwadar.pages.dev';
+const ORIGEN_LEGADO = 'https://rwadar.netlify.app';
+const PROYECTO_CLOUDFLARE = 'rwadar';
+const ESTADOS_LEGALES_PUBLICABLES = Object.freeze(new Set([
+  'acuerdo-pendiente-de-documentar',
+  'acuerdo-documentado',
+]));
 
 /* Lista cerrada del único árbol que puede llegar al artefacto desplegable.
    Un archivo ignorado por Git sigue siendo un archivo publicable si se copia
@@ -36,6 +43,46 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
 
 function rutaPortable(base, archivo) {
   return path.relative(base, archivo).split(path.sep).join('/');
+}
+
+function comprobarOrigenPublico(valor = ORIGEN_PUBLICO) {
+  let url;
+  try { url = new URL(String(valor || '')); }
+  catch { throw new Error('origen público no válido'); }
+  if (url.protocol !== 'https:' || url.username || url.password || url.port ||
+      url.pathname !== '/' || url.search || url.hash || url.origin !== String(valor) ||
+      url.origin !== ORIGEN_PUBLICO) {
+    throw new Error('el origen público debe ser un origen HTTPS exacto, sin credenciales, puerto, ruta, consulta ni fragmento');
+  }
+  return url.origin;
+}
+
+function validarOrigenPublicable(directorio, origen = ORIGEN_PUBLICO) {
+  const base = path.resolve(directorio);
+  const canonico = comprobarOrigenPublico(origen);
+  const leer = nombre => fs.readFileSync(path.join(base, ...nombre.split('/')), 'utf8');
+  const index = leer('index.html');
+  const privacidad = leer('privacidad.html');
+  const robots = leer('robots.txt');
+  const sitemap = leer('sitemap.xml');
+  const seguridad = leer('.well-known/security.txt');
+  const fallos = [];
+  if (!index.includes(`<link rel="canonical" href="${canonico}/">`) || index.includes(ORIGEN_LEGADO)) {
+    fallos.push('canonical/metadatos de index.html');
+  }
+  if (!privacidad.includes(`<link rel="canonical" href="${canonico}/privacidad">`)) {
+    fallos.push('canonical de privacidad.html');
+  }
+  if (!robots.includes(`Sitemap: ${canonico}/sitemap.xml`)) fallos.push('robots.txt');
+  if (!sitemap.includes(`<loc>${canonico}/</loc>`) ||
+      !sitemap.includes(`<loc>${canonico}/privacidad</loc>`) || sitemap.includes(ORIGEN_LEGADO)) {
+    fallos.push('sitemap.xml');
+  }
+  if (!seguridad.includes(`Canonical: ${canonico}/.well-known/security.txt`)) {
+    fallos.push('security.txt');
+  }
+  if (fallos.length) throw new Error(`origen público incoherente en: ${fallos.join(', ')}`);
+  return canonico;
 }
 
 function listarArchivosRegulares(directorio) {
@@ -102,6 +149,28 @@ function versionCacheDesdeEntradas(entradas) {
   return `rwadar-v-${hash.digest('hex').slice(0, 16)}`;
 }
 
+/* La decisión de publicar con el acuerdo interno aún pendiente debe quedar
+   declarada en la propia política. No basta con retirar un blocker: un estado
+   ausente, desconocido o contradictorio vuelve a cerrar el despliegue. */
+function comprobarEstadoLegalPublicacion(contenido) {
+  const privacidad = String(contenido || '');
+  if (/\bdata-deploy-blocker\b/i.test(privacidad)) {
+    throw new Error('la política de privacidad conserva data-deploy-blocker');
+  }
+  const patronEstado = /\bdata-deploy-legal-status\s*=\s*(["'])([^"']+)\1/gi;
+  const declaraciones = [...privacidad.matchAll(patronEstado)];
+  const principales = [...privacidad.matchAll(/<main\b[^>]*>/gi)];
+  if (declaraciones.length !== 1 || principales.length !== 1 ||
+      !/\bdata-deploy-legal-status\s*=\s*(["'])([^"']+)\1/i.test(principales[0][0])) {
+    throw new Error('data-deploy-legal-status debe aparecer una sola vez y dentro de <main>');
+  }
+  const estado = declaraciones[0][2];
+  if (!estado || !ESTADOS_LEGALES_PUBLICABLES.has(estado)) {
+    throw new Error('data-deploy-legal-status ausente o no reconocido');
+  }
+  return estado;
+}
+
 async function comprobarConfiguracionAuth({
   fetchFn = globalThis.fetch,
   timeoutMs = 8000,
@@ -139,10 +208,16 @@ async function comprobarConfiguracionAuth({
 
 module.exports = {
   ARCHIVOS_PUBLICABLES,
+  ORIGEN_LEGADO,
+  ORIGEN_PUBLICO,
+  PROYECTO_CLOUDFLARE,
   comprobarConfiguracionAuth,
+  comprobarEstadoLegalPublicacion,
+  comprobarOrigenPublico,
   huellaContenido,
   listarArchivosRegulares,
   nombreAssetVersionado,
+  validarOrigenPublicable,
   validarArbolPublicable,
   versionCacheDesdeEntradas,
 };

@@ -34,6 +34,65 @@ function permisoConcedido(permiso) {
     permiso.ios?.status === Notifications.IosAuthorizationStatus.PROVISIONAL;
 }
 
+/* El contenido de una notificacion es entrada remota. Aunque hoy lo genera
+   nuestro backend, nunca se usa como URL ni como ruta libre: solo aceptamos el
+   mismo formato acotado que tienen los slugs editoriales de RWAdar. */
+export function slugDesdeRespuestaAviso(respuesta) {
+  const slug = respuesta?.notification?.request?.content?.data?.slug;
+  if (typeof slug !== 'string' || slug.length > 80) return null;
+  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ? slug : null;
+}
+
+/* Observa exclusivamente interacciones del usuario. Consultar la ultima
+   respuesta y registrar el listener no solicita permisos ni crea un token.
+   Se cubren tanto el arranque en frio como un toque con la app abierta. */
+export function observarAperturasAvisos(onAbrir) {
+  if (Platform.OS === 'web' || typeof onAbrir !== 'function') return () => {};
+
+  let activo = true;
+  const atendidas = new Set();
+  const manejar = async (respuesta) => {
+    if (!activo) return;
+    const accion = respuesta?.actionIdentifier;
+    if (accion && Notifications.DEFAULT_ACTION_IDENTIFIER &&
+        accion !== Notifications.DEFAULT_ACTION_IDENTIFIER) return;
+
+    const slug = slugDesdeRespuestaAviso(respuesta);
+    if (!slug) return;
+    const identificador = respuesta?.notification?.request?.identifier;
+    if (identificador && atendidas.has(identificador)) return;
+    if (identificador) atendidas.add(identificador);
+
+    try {
+      const abierta = await onAbrir(slug);
+      if (abierta === false) {
+        if (identificador) atendidas.delete(identificador);
+        return;
+      }
+      await Notifications.clearLastNotificationResponseAsync();
+    } catch {
+      if (identificador) atendidas.delete(identificador);
+    }
+  };
+
+  let suscripcion;
+  try {
+    suscripcion = Notifications.addNotificationResponseReceivedListener(
+      (respuesta) => { void manejar(respuesta); },
+    );
+    Notifications.getLastNotificationResponseAsync()
+      .then((respuesta) => { if (respuesta) void manejar(respuesta); })
+      .catch(() => {});
+  } catch {
+    return () => { activo = false; };
+  }
+
+  return () => {
+    activo = false;
+    suscripcion?.remove();
+  };
+}
+
 function resultadoPreparado() {
   const envioActivo = envioPushOperativo();
   return {

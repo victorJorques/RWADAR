@@ -45,6 +45,21 @@ const [colaLegada] = await filas(db, `insert into avisos_push
   (cambio_id,instalacion,token) values($1,'inst-legada','ExponentPushToken[legada]')
   returning id`, [cambioLegado.id]);
 
+// 16 también podía dejar correo Brevo operativo. Se conserva una fila en
+// cola, se simulan secretos presentes y se añaden relojes renombrados para
+// demostrar que 22 no depende de nombres convencionales para apagar salidas.
+const [usuarioCorreo] = await filas(db, `insert into auth.users(email)
+  values('legado@example.invalid') returning id`);
+const [correoLegado] = await filas(db, `insert into avisos_correo(usuario_id,cambio_id)
+  values($1,$2) returning id`, [usuarioCorreo.id, cambioLegado.id]);
+await filas(db, `insert into vault.decrypted_secrets(name,decrypted_secret) values
+  ('BREVO_API_KEY','secreto-local'),('RWADAR_REMITENTE','no-reply@example.invalid')`);
+await filas(db, `insert into cron.job(jobname,schedule,command) values
+  ('rwadar-correo-renombrado','* * * * *','select public.avisos_soltar()'),
+  ('rwadar-push-renombrado','* * * * *','select public.push_ciclo()'),
+  ('rwadar-retencion-renombrada','* * * * *',
+   'select public.retencion_dispositivos_ciclo()')`);
+
 let permisos = (await filas(db, `select
   has_column_privilege('anon','opiniones','usuario_id','SELECT') anon_uuid,
   has_table_privilege('authenticated','opiniones','INSERT') op_insert,
@@ -53,6 +68,12 @@ paso('el escenario reproduce la regresión de permisos de 16',
   permisos.anon_uuid && permisos.op_insert && permisos.den_insert);
 paso('el escenario reproduce la firma de moderación obsoleta',
   (await filas(db, "select to_regprocedure('moderar(uuid,uuid,text,text)') is not null x"))[0].x);
+paso('el escenario reproduce correo 13/16 activo y relojes renombrados',
+  (await filas(db, "select to_regprocedure('avisos_soltar(integer)') is not null x"))[0].x
+  && (await filas(db, `select count(*)::int n from cron.job where
+    jobname='rwadar-avisos' or lower(command) like '%avisos_soltar%'`))[0].n === 2
+  && (await filas(db, `select count(*)::int n from cron.job where
+    lower(command) like '%push_ciclo%'`))[0].n === 1);
 
 const sql22 = fs.readFileSync('db/22_cierre_regresiones.sql', 'utf8');
 await db.exec(sql22);
@@ -74,6 +95,24 @@ paso('22 minimiza y termina cualquier cola heredada pendiente',
   legadaCerrada.token === null && legadaCerrada.intentos === 5
   && legadaCerrada.error === 'Push desactivado por cierre 22');
 await rechaza('select push_ciclo()', [], 'enviar push antes del opt-in');
+await rechaza('select avisos_soltar()', [], 'enviar correo heredado antes de un opt-in');
+await rechaza('select avisos_confirmar()', [], 'confirmar correo heredado');
+await rechaza('select avisos_ciclo()', [], 'ejecutar el ciclo de correo heredado');
+const [correoCerrado] = await filas(db, `select enviado_el,peticion_id,intentos,error
+  from avisos_correo where id=$1`, [correoLegado.id]);
+paso('22 conserva la cola de correo sin tocarla ni enviarla',
+  correoCerrado.enviado_el === null && correoCerrado.peticion_id === null
+  && correoCerrado.intentos === 0 && correoCerrado.error === null);
+paso('22 retira correo/push renombrados y deja un solo reloj de retención',
+  (await filas(db, `select count(*)::int n from cron.job where
+    lower(command) like '%avisos_ciclo%'
+    or lower(command) like '%avisos_soltar%'
+    or lower(command) like '%avisos_confirmar%'
+    or lower(command) like '%push_ciclo%'
+    or lower(command) like '%push_soltar%'
+    or lower(command) like '%push_confirmar%'`))[0].n === 0
+  && (await filas(db, `select count(*)::int n from cron.job where
+    lower(command) like '%retencion_dispositivos_ciclo%'`))[0].n === 1);
 paso('el estado apagado no produjo peticiones de red',
   (await filas(db, 'select count(*)::int n from net._peticiones'))[0].n === 0);
 
@@ -109,9 +148,12 @@ paso('fresh-install mantiene paridad 26 en radar y 4 descartadas',
   && recuentos.find((r) => r.estado === 'descartada')?.n === 4);
 
 const vistas = await filas(db, `select relname,coalesce(reloptions,array[]::text[]) opciones
-  from pg_class where relname in ('emisiones_publicas','emisiones_rancias')`);
-paso('las dos vistas de emisiones respetan RLS del invocador',
-  vistas.length === 2 && vistas.every((v) => v.opciones.includes('security_invoker=true')));
+  from pg_class where relnamespace='public'::regnamespace and relname in
+  ('radar_publico','descartadas_sin_fuente','avisos_pendientes',
+   'avisos_correo_pendientes','mi_perfil','opiniones_publicas','nota_media',
+   'mis_opiniones','cola_moderacion','emisiones_publicas','emisiones_rancias')`);
+paso('las 11 vistas expuestas respetan RLS del invocador',
+  vistas.length === 11 && vistas.every((v) => v.opciones.includes('security_invoker=true')));
 
 const [categoria] = await filas(db, 'select slug from categorias order by orden limit 1');
 const [plataformaEmision] = await filas(db,

@@ -120,7 +120,7 @@ http.createServer((req, res) => {
     }
   }
 
-  /* Reproduce las URL limpias y canónicas de Netlify para que la prueba
+  /* Reproduce las URL limpias y canónicas del alojamiento público para que la prueba
      local no oculte enlaces rotos que solo aparecerían al publicar. */
   if (p === '/index.html') {
     res.writeHead(301, { Location: '/', 'Cache-Control': 'no-store' });

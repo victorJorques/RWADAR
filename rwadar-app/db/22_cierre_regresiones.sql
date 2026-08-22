@@ -591,12 +591,81 @@ begin
 end $$;
 
 -- El cierre y cualquier recuperación permanecen apagados. Solo el artefacto
--- opt-in agenda el cron después de una validación E2E explícita.
-select cron.unschedule('rwadar-push')
- where exists (select 1 from cron.job where jobname = 'rwadar-push');
+-- opt-in agenda el cron después de una validación E2E explícita. Se retiran
+-- también relojes renombrados: el nombre no es una frontera de seguridad.
+do $$
+declare v_job record;
+begin
+  for v_job in
+    select jobname
+      from cron.job
+     where jobname = 'rwadar-push'
+        or lower(coalesce(command, '')) like '%push_ciclo%'
+        or lower(coalesce(command, '')) like '%push_soltar%'
+        or lower(coalesce(command, '')) like '%push_confirmar%'
+  loop
+    perform cron.unschedule(v_job.jobname);
+  end loop;
+end $$;
 
 -- ---------------------------------------------------------------------
--- 5 · Retención real: reloj diario independiente y ejecución acotada
+-- 5 · Correo heredado: capacidad conservada como bloqueo, salida apagada
+-- ---------------------------------------------------------------------
+-- 13/16 podían dejar un cron de Brevo activo. El acuerdo con el proveedor y
+-- el consentimiento operativo siguen pendientes, así que 22 no debe confiar
+-- ni en el nombre histórico del reloj ni en la ausencia de secretos del vault.
+-- Las firmas se conservan para no romper dependencias, pero quedan fail-closed
+-- y no tocan la cola ni realizan red. Reaplicar 22 restaura siempre este estado.
+create or replace function public.avisos_soltar(p_tanda integer default 20)
+returns integer
+language plpgsql security definer set search_path = public, pg_temp as $$
+begin
+  raise exception using errcode = '55000',
+    message = 'correo desactivado por cierre 22; requiere un opt-in separado';
+end $$;
+
+create or replace function public.avisos_confirmar()
+returns integer
+language plpgsql security definer set search_path = public, pg_temp as $$
+begin
+  raise exception using errcode = '55000',
+    message = 'correo desactivado por cierre 22; requiere un opt-in separado';
+end $$;
+
+create or replace function public.avisos_ciclo()
+returns text
+language plpgsql security definer set search_path = public, pg_temp as $$
+begin
+  raise exception using errcode = '55000',
+    message = 'correo desactivado por cierre 22; requiere un opt-in separado';
+end $$;
+
+-- Retira también relojes renombrados que invoquen cualquiera de las rutas
+-- heredadas. No se elimina ni altera ninguna fila de avisos_correo.
+do $$
+declare v_job record;
+begin
+  for v_job in
+    select jobname
+      from cron.job
+     where jobname = 'rwadar-avisos'
+        or lower(coalesce(command, '')) like '%avisos_ciclo%'
+        or lower(coalesce(command, '')) like '%avisos_soltar%'
+        or lower(coalesce(command, '')) like '%avisos_confirmar%'
+  loop
+    perform cron.unschedule(v_job.jobname);
+  end loop;
+end $$;
+
+revoke all on function public.avisos_soltar(integer)
+  from public, anon, authenticated;
+revoke all on function public.avisos_confirmar()
+  from public, anon, authenticated;
+revoke all on function public.avisos_ciclo()
+  from public, anon, authenticated;
+
+-- ---------------------------------------------------------------------
+-- 6 · Retención real: reloj diario independiente y ejecución acotada
 -- ---------------------------------------------------------------------
 create table if not exists public.retencion_dispositivos_estado (
   singleton        boolean primary key default true check (singleton),
@@ -654,10 +723,20 @@ begin
   return v_total;
 end $$;
 
-select cron.unschedule('rwadar-retencion-dispositivos')
- where exists (
-   select 1 from cron.job where jobname = 'rwadar-retencion-dispositivos'
- );
+-- Evita que un reloj renombrado convierta la limpieza acotada en varias
+-- ejecuciones diarias. Tras este bloque queda exactamente el reloj canónico.
+do $$
+declare v_job record;
+begin
+  for v_job in
+    select jobname
+      from cron.job
+     where jobname = 'rwadar-retencion-dispositivos'
+        or lower(coalesce(command, '')) like '%retencion_dispositivos_ciclo%'
+  loop
+    perform cron.unschedule(v_job.jobname);
+  end loop;
+end $$;
 select cron.schedule(
   'rwadar-retencion-dispositivos',
   '17 3 * * *',
@@ -665,7 +744,7 @@ select cron.schedule(
 );
 
 -- ---------------------------------------------------------------------
--- 6 · ACL explícita y search_path fijo para todo lo expuesto/interno
+-- 7 · ACL explícita y search_path fijo para todo lo expuesto/interno
 -- ---------------------------------------------------------------------
 -- Recompone el contrato de lectura/escritura completo. Esto hace que 22 sea
 -- también la salida verificable de un cierre de emergencia previo, sin
@@ -698,23 +777,20 @@ alter function public.retencion_dispositivos_ciclo(integer, integer)
   set search_path = public, pg_temp;
 alter function public.borrar_mi_cuenta() set search_path = public, auth, pg_temp;
 
--- El correo es opcional. Si 13/16 existe, se endurece sin convertirlo en
--- requisito de una instalación que todavía no haya configurado Brevo.
-do $$
-begin
-  if to_regprocedure('public.avisos_soltar(integer)') is not null then
-    execute 'alter function public.avisos_soltar(integer) set search_path = public, net, vault, pg_temp';
-    execute 'revoke all on function public.avisos_soltar(integer) from public, anon, authenticated';
-  end if;
-  if to_regprocedure('public.avisos_confirmar()') is not null then
-    execute 'alter function public.avisos_confirmar() set search_path = public, net, pg_temp';
-    execute 'revoke all on function public.avisos_confirmar() from public, anon, authenticated';
-  end if;
-  if to_regprocedure('public.avisos_ciclo()') is not null then
-    execute 'alter function public.avisos_ciclo() set search_path = public, pg_temp';
-    execute 'revoke all on function public.avisos_ciclo() from public, anon, authenticated';
-  end if;
-end $$;
+-- 22 conserva las firmas del correo como bloqueos fail-closed. No deben
+-- recuperar `net` ni `vault` en el search_path al recomponer las ACL.
+alter function public.avisos_soltar(integer)
+  set search_path = public, pg_temp;
+alter function public.avisos_confirmar()
+  set search_path = public, pg_temp;
+alter function public.avisos_ciclo()
+  set search_path = public, pg_temp;
+revoke all on function public.avisos_soltar(integer)
+  from public, anon, authenticated;
+revoke all on function public.avisos_confirmar()
+  from public, anon, authenticated;
+revoke all on function public.avisos_ciclo()
+  from public, anon, authenticated;
 
 revoke all on function public.crea_perfil() from public, anon, authenticated;
 revoke all on function public.protege_privilegio_admin() from public, anon, authenticated;

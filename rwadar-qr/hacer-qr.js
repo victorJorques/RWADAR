@@ -1,7 +1,7 @@
 /* =====================================================================
    RWAdar · genera el código QR de entrada
    ---------------------------------------------------------------------
-       node rwadar-qr/hacer-qr.js                     # a rwadar.netlify.app
+       node rwadar-qr/hacer-qr.js                     # a rwadar.pages.dev
        node rwadar-qr/hacer-qr.js https://otra.cosa   # a donde le digas
 
    Escribe tres archivos junto a este:
@@ -26,7 +26,13 @@
 const fs = require('fs'), path = require('path'), zlib = require('zlib');
 const { codificar } = require('./codigo-qr.js');
 
-const DESTINO = process.argv[2] || 'https://rwadar.netlify.app';
+const DESTINO = process.argv[2] || 'https://rwadar.pages.dev';
+const DESTINO_URL = new URL(DESTINO);
+if (DESTINO_URL.protocol !== 'https:' || DESTINO_URL.username || DESTINO_URL.password ||
+    DESTINO_URL.port || DESTINO_URL.pathname !== '/' || DESTINO_URL.search || DESTINO_URL.hash) {
+  throw new Error('El destino debe ser un origen HTTPS sin credenciales, puerto, ruta, consulta ni fragmento.');
+}
+const ETIQUETA_DESTINO = DESTINO_URL.host;
 const AQUI = __dirname;
 
 /* Los colores salen de la sección «1 · TOKENS» de la web. Si allí cambian,
@@ -197,7 +203,7 @@ ${tipografias()}
 <rect x="${PX}" y="${PY}" width="${PS}" height="${PS}" rx="34" fill="#FFFFFF"/>
 <path d="${dib}" fill="${NOCHE}" shape-rendering="crispEdges"/>
 
-<text class="m" x="${A / 2}" y="1224" text-anchor="middle" fill="${SENAL}" font-size="35" letter-spacing="-.5">rwadar.netlify.app</text>
+<text class="m" x="${A / 2}" y="1224" text-anchor="middle" fill="${SENAL}" font-size="35" letter-spacing="-.5">${ETIQUETA_DESTINO}</text>
 <text class="t" x="${A / 2}" y="1280" text-anchor="middle" fill="${TX3}" font-size="24" letter-spacing="2.6">ESCANEA PARA ENTRAR</text>
 </svg>
 `;

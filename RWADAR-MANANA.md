@@ -1,12 +1,12 @@
 # RWAdar · estado operativo para retomar
 
-> Reconciliado el 20 de agosto de 2026 sobre el traspaso del 17–20 de agosto y
-> el baseline `42018de`. Para estado y prioridades, este documento y
+> Reconciliado el 22 de agosto de 2026 después de la publicación en Cloudflare
+> Pages. Para estado y prioridades, este documento y
 > `RWADAR-TRASPASO.md` sustituyen las notas del 13–14 de agosto.
 
 ## Lo que puede enseñarse hoy
 
-La producción actual en `https://rwadar.netlify.app` sirve:
+La producción actual en `https://rwadar.pages.dev` sirve:
 
 - 26 fichas del radar y 4 descartadas;
 - contenido pre-renderizado;
@@ -15,26 +15,30 @@ La producción actual en `https://rwadar.netlify.app` sirve:
 - canonical de la dirección pública.
 
 No enseña la sección de emisiones y la base de producción tiene 0 emisiones.
-Robots y sitemap responden, pero la indexación no quedó demostrada en esta
-reconciliación. Hay que confirmarla en Search Console; una futura publicación
-exige repetir la comprobación.
+Robots y sitemap responden. Search Console tiene la propiedad Pages verificada,
+la portada en cola y el sitemap enviado; su primera lectura fue transitoria y
+todavía no demuestra indexación. Una futura publicación exige repetir la
+comprobación.
 
 ## Lo que no debe prometerse
 
-- **No está terminado.** La web remediada permanece local y la migración 22 no
-  está aplicada en producción.
-- **Cuentas/opiniones:** no las des por buenas desde el frontend público
-  histórico. El backend seguro usa RPC y la web local se adaptó a ese contrato;
-  hay que probar la combinación que quede realmente desplegada.
-- **Correo:** no operativo. La migración 13 se mantiene separada y no entra en
-  la instalación general.
+- **No está terminado.** La web remediada está publicada y verificada, y la
+  migración 22 está aplicada y verificada; correo, push y tiendas siguen
+  pendientes.
+- **Cuentas/opiniones:** el frontend publicado usa el contrato RPC seguro. Las
+  pruebas locales y el smoke público están verdes, pero Auth real aún necesita
+  la prueba E2E de confirmación y recuperación.
+- **Correo:** no operativo. La migración 23 y el consentimiento web están listos,
+  pero 23 no está aplicada; faltan Brevo, Vault, remitente verificado y E2E.
 - **Push:** deshabilitado. `pushDeliveryEnabled=false`; fresh/17/22, rollback y
   recuperación dejan el flag backend en `false` y 0 cron `rwadar-push`. El
   opt-in separado no se ejecutó.
-- **Correo de alta:** producción devuelve `mailer_autoconfirm=true`; no valida
-  la dirección y es un bloqueo del publicador remoto. El preflight exige
-  `false` exacto, pero cambiarlo tampoco demuestra que el mensaje llegue: falta
-  una prueba real de alta y confirmación de extremo a extremo.
+- **Correo de alta:** Confirm email está activo, signup sigue habilitado y
+  producción devuelve `mailer_autoconfirm=false`; el preflight Auth ya pasa.
+  No hay SMTP propio y todavía faltan pruebas reales E2E de confirmación y
+  recuperación. La configuración no demuestra que el mensaje llegue.
+- **Netlify:** queda como origen legado. Cloudflare Pages es el canonical y la
+  producción actual. El publicador remoto heredado no debe usarse para Pages.
 - **Emisiones:** 0 en producción y sin sección pública. Cualquier cifra o
   estado observado días atrás necesita una fuente y fecha nuevas.
 
@@ -55,11 +59,16 @@ Las migraciones 14 y 15 documentan y verifican el endurecimiento histórico:
 - las funciones fijan un `search_path` seguro.
 
 La migración 22 cierra regresiones adicionales y dispone de verificador y
-rollback. **Está validada en local y pendiente en producción.** No mezcles ese
-estado con el de la 14/15.
+rollback. **Está aplicada y verificada en producción.** El SQL ejecutado
+(`02F2...0666`) terminó en `COMMIT` con `schedule=19`; su verificador interno
+(`4182...2C3`) devolvió `Success. No rows returned` y el aviso `RWAdar 22 OK`.
+Security Advisor quedó en 0 Critical y 0 Security Definer View; la firma
+antigua de moderación está ausente.
 
-Resultado final local de DB: **270 aserciones y 8 gates SQL, 278 controles
-verdes**. Producción no se tocó.
+La suite raíz completa terminó con código 0: DB, web **164/164**, QR **6/6**,
+móvil **15/15** y herramientas. En producción, el smoke público posterior
+confirmó radar 26, descartadas 4, `opiniones.usuario_id` 401, moderación directa
+401, firma antigua 404/PGRST202 y firma nueva anónima 401/42501.
 
 La retención no depende de enviar notificaciones. La 22 prepara un job diario
 `rwadar-retencion-dispositivos` a las 03:17, por defecto 10 lotes de hasta
@@ -122,10 +131,24 @@ El contrato adversarial local de los dos pasa **21/21** con fallos inyectados y
 sin red. No actives los modos mutantes como comprobación rutinaria ni sin
 ventana y limpieza supervisadas.
 
-## Aplicar la migración 22
+La app móvil local está GO y push sigue OFF. El preview EAS terminó `FINISHED`:
+Android 1.0.0 build 4, ID `c7bb915b-da3b-46d4-9bd6-811a432b4cb3`, fingerprint
+`af69452933f988f2d48d45861802f09d3df06e8b`. APK:
+`outputs/rwadar-android-preview-v1.0.0-build4-c7bb915b.apk`, 84.783.140 bytes,
+SHA-256 `5E505F18C26FF91A8FC12899DEE39D9757C5D2E7FFC665DF0D7AFF090CFC4DB7`.
+La estructura y firma v2 están presentes; falta instalarlo/probarlo en un
+dispositivo y no está en tienda.
 
-Solo con copia previa, referencia explícita y una versión exacta ya revisada
-del CLI:
+## Migración 22 aplicada: no reaplicar
+
+La migración se ejecutó sobre `exgpmjpaaebyoolpwced` mediante SQL Editor y
+terminó en `COMMIT`. Después pasó el verificador interno y el smoke público
+descritos arriba. No vuelvas a ejecutar el SQL para «comprobar» su estado; usa
+el verificador de solo lectura.
+
+La receta siguiente queda únicamente para otra instalación que todavía no
+tenga la 22, siempre con copia previa, referencia explícita y una versión exacta
+ya revisada del CLI:
 
 ```cmd
 cd rwadar-app
@@ -133,8 +156,8 @@ set RWADAR_SUPABASE_CLI_VERSION=2.79.0
 aplicar-sql.cmd exgpmjpaaebyoolpwced db\22_cierre_regresiones.sql
 ```
 
-El instalador ejecuta los verificadores correspondientes. Conserva la salida y
-no continúes si alguno falla: debe pasar 14, 15, 22 y
+El instalador ejecuta los verificadores correspondientes. En otro proyecto,
+conserva la salida y no continúes si alguno falla: debe pasar 14, 15, 22 y
 `fresh_install_verificar.sql` con 26/4. No ejecutes la migración 16, retratos
 históricos ni otras migraciones antiguas sobre esta producción. El rollback 22
 se reserva para una emergencia diagnosticada y no sustituye una copia.
@@ -159,17 +182,16 @@ node rwadar-publicar.js --preview
 node rwadar-publicar.js --produccion
 ```
 
-Exactamente un modo es obligatorio. Ahora `data-deploy-blocker` permite solo
-`--local`: `--preview` y `--produccion` terminan antes de Auth, sincronización o
-Netlify. Tras cerrar el acuerdo y los plazos, retirar el marcador y obtener
-`mailer_autoconfirm=false` exacto en el preflight remoto, el orden será local →
-preview → producción, con revisión entre pasos. El script no cambia de modo si
-Netlify rechaza la operación: termina con error. No crea ni promueve un
-borrador alternativo.
-
-Nunca uses `netlify deploy` directamente. El artefacto correcto es
-`rwadar-publicado/`, generado desde `rwadar-site/` con datos sincronizados y
-pre-renderizado.
+Exactamente un modo es obligatorio. La política declara
+`data-deploy-legal-status="acuerdo-pendiente-de-documentar"`, por lo que la
+versión completa puede avanzar sin presentar el acuerdo ni los plazos como
+cerrados. Un `data-deploy-blocker`, un estado ausente o uno desconocido fallan
+cerrados. El preflight remoto ya obtiene `mailer_autoconfirm=false` exacto y
+signup sigue habilitado. Aún faltan las pruebas E2E de confirmación y
+recuperación. La producción actual se publicó en Cloudflare Pages con Wrangler
+4.125.0, desplegando exclusivamente `rwadar-publicado/`. El publicador remoto
+heredado llama a Netlify y no es la ruta de Pages. Nunca subas `rwadar-site/`,
+la raíz ni CALIX.
 
 ## Después del despliegue
 
@@ -182,7 +204,8 @@ Comprueba desde una conexión externa:
 5. registro, recuperación, opinión, denuncia, borrado y cierre de sesión;
 6. que ninguna respuesta fallida se presenta como éxito;
 7. PWA y service worker después de limpiar caché;
-8. Search Console tras la publicación.
+8. Search Console tras la publicación; Pages está verificada y en cola, pero la
+   indexación efectiva todavía no está confirmada.
 
 ## Hallazgo regulatorio que corrige una pregunta antigua
 
@@ -202,7 +225,8 @@ registro concreto y enlaza la fuente.
   correcto; los verificadores deben fallar con tablas llenas, no solo vacías.
 - Un `403` por falta de `GRANT` no es lo mismo que una denegación de RLS.
 - Un resultado vacío no demuestra protección.
-- `Forbidden` de Netlify es un error, no una vía de publicación alternativa.
+- Un rechazo de cualquier proveedor es un error, no una vía de publicación
+  alternativa ni permiso para cambiar de proyecto.
 - El navegador o panel en segundo plano puede falsear pruebas visuales; usa un
   navegador real y revisa consola/red.
 - No escribas JSON con herramientas que añadan BOM.

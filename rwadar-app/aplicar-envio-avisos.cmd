@@ -1,12 +1,11 @@
 @echo off
 REM ====================================================================
-REM  RWAdar - activa deliberadamente el envio de avisos por correo
+REM  RWAdar - activa correo Brevo con el opt-in seguro posterior a 22
 REM
 REM  Uso: aplicar-envio-avisos.cmd REFERENCIA_DEL_PROYECTO
 REM
-REM  Flujo separado y reforzado para 13_envio_avisos.sql. Requiere que
-REM  Vault, Brevo y la politica operativa esten aprobados y configurados.
-REM  RWADAR_SUPABASE_CLI_VERSION debe ser un SemVer exacto validado.
+REM  Nunca aplica el historico 13 ni reaplica 22 despues de activar. Requiere
+REM  credencial explicita, CLI fijada y aprobacion de proveedor/privacidad.
 REM ====================================================================
 setlocal DisableDelayedExpansion
 cd /d "%~dp0"
@@ -18,60 +17,52 @@ call :validar_ref
 if errorlevel 1 goto :ref_invalida
 call :validar_cli
 if errorlevel 1 goto :cli_invalida
+if not defined SUPABASE_ACCESS_TOKEN goto :credencial_ausente
+if /i not "%RWADAR_CORREO_PROVEEDOR_APROBADO%"=="SI" goto :aprobacion_ausente
+if /i not "%RWADAR_CORREO_PRIVACIDAD_APROBADA%"=="SI" goto :aprobacion_ausente
+
 for %%F in (
-  db\13_envio_avisos.sql db\15_acl_funciones.sql
-  db\22_cierre_regresiones.sql db\15_acl_funciones_verificar.sql
-  db\22_cierre_regresiones_verificar.sql db\fallo_cerrado.sql
+  db\14_seguridad_integral_verificar.sql
+  db\15_acl_funciones_verificar.sql
+  db\23_activar_correo.sql
+  db\23_activar_correo_verificar.sql
+  db\correo_fallo_cerrado.sql
 ) do if not exist "%%F" goto :control_ausente
 
 echo.
-echo   ATENCION: este flujo activa pg_cron/pg_net y el ciclo de correo.
 echo   OBJETIVO: proyecto Supabase %REF%
-echo   Verifica antes Vault, remitente, DPA y prueba de entrega.
+echo   ACCION: habilitar correo real por Brevo cada cinco minutos.
+echo   ORIGEN: https://rwadar.pages.dev
+echo   Vault debe contener BREVO_API_KEY y RWADAR_REMITENTE validos.
 echo.
 set "CONFIRMACION="
-set /p "CONFIRMACION=   Escribe ACTIVAR-ENVIO-%REF% para continuar: "
-if not "%CONFIRMACION%"=="ACTIVAR-ENVIO-%REF%" goto :cancelado
+set /p "CONFIRMACION=   Escribe ACTIVAR-CORREO-BREVO-%REF% para continuar: "
+if not "%CONFIRMACION%"=="ACTIVAR-CORREO-BREVO-%REF%" goto :cancelado
 
-if defined SUPABASE_ACCESS_TOKEN (
-  echo   Credencial: SUPABASE_ACCESS_TOKEN detectada ^(valor oculto^).
-) else (
-  echo   Credencial: se usara la sesion ya configurada del CLI.
-)
-
-echo.
-echo == Comprobando que la CLI fijada incluye db query ...
+echo   Credencial: SUPABASE_ACCESS_TOKEN detectada ^(valor oculto^).
 call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --help >nul 2>&1
 if errorlevel 1 goto :cli_incompatible
 
-echo.
-echo == Enlazando exclusivamente con %REF% ...
 call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% link --project-ref "%REF%" --yes
 if errorlevel 1 goto :error
 set "ENLAZADO=1"
 
-echo.
-echo == Aplicando db\13_envio_avisos.sql ...
-call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\13_envio_avisos.sql"
-if errorlevel 1 goto :error
-
-REM Reaplicar 15 y 22 es idempotente y garantiza que los helpers internos
-REM mantienen ACL/search_path cerrados tras activar componentes opcionales.
-echo.
-echo == Reafirmando ACL y ejecutando el verificador ...
-call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\15_acl_funciones.sql"
-if errorlevel 1 goto :error
-call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\22_cierre_regresiones.sql"
+REM 14/15 comprueban la base de seguridad. 23 verifica por si misma los
+REM marcadores de 22 y admite la primera aplicacion y la reaplicacion idempotente.
+call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\14_seguridad_integral_verificar.sql"
 if errorlevel 1 goto :error
 call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\15_acl_funciones_verificar.sql"
 if errorlevel 1 goto :error
-call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\22_cierre_regresiones_verificar.sql"
+
+call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\23_activar_correo.sql"
+if errorlevel 1 goto :error
+call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\23_activar_correo_verificar.sql"
 if errorlevel 1 goto :error
 
 echo.
-echo   LISTO. Envio 13 activado deliberadamente en %REF% y ACL/22 verificados.
-echo   PUSH queda APAGADO; si algun dia supera E2E se activa por separado.
-echo   Comprueba una entrega real y los reintentos antes de anunciarlo.
+echo   CORREO CONFIGURADO: flag, Vault, ACL, HTML, origen y reloj verificados.
+echo   Haz una prueba controlada: Brevo debe aceptar con 201 y messageId.
+echo   No anuncies entrega hasta confirmar Delivered o el buzon real.
 echo.
 exit /b 0
 
@@ -88,63 +79,43 @@ exit /b %errorlevel%
 
 :uso
 echo.
-echo   Falta la referencia explicita del proyecto Supabase.
 echo   Uso: aplicar-envio-avisos.cmd REFERENCIA_DEL_PROYECTO
-echo.
-echo   La credencial procede del CLI o de SUPABASE_ACCESS_TOKEN; nunca
-echo   se acepta como argumento ni se imprime.
-echo   Define RWADAR_SUPABASE_CLI_VERSION=MAJOR.MINOR.PATCH con la version
-echo   exacta previamente validada y registrada por el equipo.
-echo   La version minima compatible es 2.79.0.
-echo.
-exit /b 1
-
-:cli_invalida
-echo.
-echo   Falta RWADAR_SUPABASE_CLI_VERSION o no es SemVer exacto.
-echo   Se exige 2.79.0 o posterior; no se admiten "latest", rangos ni sufijos.
-echo   El envio no se ha activado y no se ha enlazado el proyecto.
-echo.
-exit /b 1
-
-:cli_incompatible
-echo.
-echo   La CLI fijada no ofrece "supabase db query" con ficheros SQL.
-echo   El envio no se ha activado y no se ha enlazado el proyecto.
-echo.
-exit /b 1
-
-:control_ausente
-echo.
-echo   Falta SQL necesario, un verificador o db\fallo_cerrado.sql.
-echo   El envio no se ha activado y no se ha enlazado el proyecto.
+echo   Requiere SUPABASE_ACCESS_TOKEN, RWADAR_CORREO_PROVEEDOR_APROBADO=SI,
+echo   RWADAR_CORREO_PRIVACIDAD_APROBADA=SI y una version CLI exacta.
 echo.
 exit /b 1
 
 :ref_invalida
-echo.
 echo   Referencia no valida. No se ha enlazado ni cambiado ningun proyecto.
-echo.
 exit /b 1
-
+:cli_invalida
+echo   La version CLI falta o no es SemVer exacto ^>= 2.79.0.
+exit /b 1
+:credencial_ausente
+echo   Falta SUPABASE_ACCESS_TOKEN. No se admite activacion por sesion implicita.
+exit /b 1
+:aprobacion_ausente
+echo   Faltan las aprobaciones explicitas de proveedor y privacidad.
+echo   El correo permanece apagado.
+exit /b 1
+:control_ausente
+echo   Falta SQL de activacion, cierre o verificacion. No se ha enlazado.
+exit /b 1
+:cli_incompatible
+echo   La CLI fijada no ofrece supabase db query. No se ha enlazado.
+exit /b 1
 :cancelado
-echo.
-echo   Frase incorrecta. El envio NO se ha activado y no se enlazo el proyecto.
-echo.
+echo   Confirmacion incorrecta. El correo permanece apagado.
 exit /b 2
 
 :error
 echo.
-echo   HA FALLADO la activacion. Conserva la salida, revisa el estado exacto
+echo   HA FALLADO LA ACTIVACION DE CORREO.
 if defined ENLAZADO (
-  echo   Ejecutando cierre de emergencia sin borrar datos ...
-  call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\fallo_cerrado.sql"
-  if errorlevel 1 (
-    echo   ALERTA: el cierre automatico tambien fallo. Aisla el proyecto ahora.
-  ) else (
-    echo   Acceso cliente y salidas correo/push cerrados; retencion sigue activa.
-  )
+  echo   Ejecutando cierre limitado al correo; API, push y retencion siguen operativos ...
+  call npx --yes supabase@%RWADAR_SUPABASE_CLI_VERSION% db query --linked -f "db\correo_fallo_cerrado.sql"
+  if errorlevel 1 echo   ALERTA: el cierre de correo tambien fallo; aisla el reloj manualmente.
 )
-echo   No anuncies el correo hasta reparar, verificar y probar una entrega real.
+echo   No anuncies el correo hasta reparar y repetir la prueba E2E.
 echo.
 exit /b 1

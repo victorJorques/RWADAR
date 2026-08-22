@@ -1199,7 +1199,9 @@ function openCompare(){
 }
 /* Paneles: mientras uno está abierto el resto de la página queda inerte, así
    el tabulador no se escapa por detrás y el lector de pantalla no lo anuncia. */
-const fondo=()=>['.hdr','main','footer','#cmpbar'].map(s=>document.querySelector(s)).filter(Boolean);
+const fondo=()=>[...document.querySelectorAll(
+ '.hdr,.movil-cabecera,main,.movil-panel,footer,#cmpbar,#movilNav'
+)];
 let focoPrevio=null;
 function openPanel(id){
  focoPrevio=document.activeElement;
@@ -2112,6 +2114,34 @@ const Opiniones=(function(){
  return {pinta:pinta};
 })();
 
+/* correo-consentimiento:inicio */
+const VERSION_CONSENTIMIENTO_CORREO='correo-v1-2026-08-22';
+function consentimientoCorreoVigente(datos){
+ if(!datos||datos.avisos_correo!==true||
+    datos.avisos_correo_version!==VERSION_CONSENTIMIENTO_CORREO||
+    typeof datos.avisos_correo_aceptado_el!=='string')return false;
+ return Number.isFinite(Date.parse(datos.avisos_correo_aceptado_el));
+}
+function perfilConCorreoSeguro(base,datos){
+ const vigente=consentimientoCorreoVigente(datos);
+ return Object.assign({},base||{}, {
+  avisos_correo:vigente,
+  avisos_correo_aceptado_el:vigente?datos.avisos_correo_aceptado_el:null,
+  avisos_correo_version:vigente?VERSION_CONSENTIMIENTO_CORREO:null
+ });
+}
+function perfilDesdeRespuestaCorreo(base,fila,esperado){
+ if(!fila||fila.habilitado!==esperado)throw new Error('respuesta de consentimiento no válida');
+ const datos={avisos_correo:fila.habilitado,
+  avisos_correo_aceptado_el:fila.aceptado_el,avisos_correo_version:fila.version};
+ if(esperado&&!consentimientoCorreoVigente(datos))
+  throw new Error('el consentimiento no quedó registrado');
+ if(!esperado&&(fila.aceptado_el!==null||fila.version!==null))
+  throw new Error('la retirada no quedó registrada');
+ return perfilConCorreoSeguro(base,datos);
+}
+/* correo-consentimiento:fin */
+
 /* =================================================================
    CUENTA · registro, sesión y lista de vigilancia
    -----------------------------------------------------------------
@@ -2222,6 +2252,15 @@ const Cuenta = (function(){
  async function cargarMio(){
   try{
    const p=await rest('/mi_perfil?select=*'); perfil=(p&&p[0])||null;
+   if(perfil){
+    let preferencia=null;
+    try{
+     const filas=await rest('/perfiles?select=avisos_correo,avisos_correo_aceptado_el,avisos_correo_version&id=eq.'+
+       encodeURIComponent(ses.uid));
+     preferencia=(filas&&filas[0])||null;
+    }catch(e){}
+    perfil=perfilConCorreoSeguro(perfil,preferencia);
+   }
    const v=await rest('/vigilancia?select=plataforma_id,plataformas(nombre)');
    vigiladas=new Map((v||[]).map(x=>[x.plataformas&&x.plataformas.nombre,x.plataforma_id]));
   }catch(e){perfil=null;vigiladas=new Map();}
@@ -2262,8 +2301,8 @@ const Cuenta = (function(){
  /* --- la ventana de entrar / registro / recuperar ------------------ */
  const TEXTOS={
   entrar:{t:'Entrar',s:'Para guardar vigilancia y gestionar tus opiniones.',b:'Entrar',otro:'Crear una cuenta'},
-  registro:{t:'Crear cuenta',s:'Es opcional y gratis. El correo sirve para autenticarte; el nombre público también es opcional.',b:'Crear cuenta',otro:'Ya tengo cuenta'},
-  recuperar:{t:'Recuperar el acceso',s:'Solicita a Supabase un enlace para poner una contraseña nueva.',b:'Solicitar el enlace',otro:'Volver a entrar'},
+  registro:{t:'Crear cuenta',s:'Es opcional y gratis. Después tendrás que confirmar el correo antes de entrar; la entrega del mensaje aún no está verificada.',b:'Crear cuenta',otro:'Ya tengo cuenta'},
+  recuperar:{t:'Recuperar el acceso',s:'Solicita a Supabase un enlace para poner una contraseña nueva. La entrega del mensaje aún no está verificada.',b:'Solicitar el enlace',otro:'Volver a entrar'},
   nueva_clave:{t:'Elige una contraseña nueva',s:'El enlace ya ha verificado tu solicitud. Escribe la contraseña que usarás desde ahora.',b:'Guardar contraseña',otro:''}
  };
  function abrir(m,motivo){
@@ -2328,13 +2367,13 @@ const Cuenta = (function(){
    }else if(modo==='recuperar'){
     const vuelta=encodeURIComponent(location.origin+'/');
     await auth('/recover?redirect_to='+vuelta,{email:correo});
-    msj('Solicitud aceptada. La entrega del correo todavía no está verificada; si el servicio está operativo, revisa también el spam.',true);
+    msj('Solicitud aceptada por Supabase. La entrega del correo y la recuperación completa aún no están verificadas; no podemos asegurar que el mensaje llegue.',true);
    }else if(modo==='registro'){
     const vuelta=encodeURIComponent(location.origin+'/');
     const j=await auth('/signup?redirect_to='+vuelta,{email:correo,password:clave,
       data:nombre?{nombre:nombre}:undefined});
     if(j.access_token){ await entrarCon(j); }
-    else { msj('Cuenta creada sin sesión. La entrega del correo de confirmación todavía no está verificada; esta versión no se publicará hasta probarla.',true); }
+    else { msj('Solicitud de alta aceptada. Para entrar tienes que confirmar tu correo. La entrega del mensaje y el flujo completo aún no están verificados; no podemos asegurar que llegue.',true); }
    }else{
     const j=await auth('/token?grant_type=password',{email:correo,password:clave});
     await entrarCon(j);
@@ -2364,6 +2403,7 @@ const Cuenta = (function(){
   const avisosRecibidos=Math.max(0,Number.parseInt(perfil&&perfil.avisos_recibidos,10)||0);
   const desde=perfil&&perfil.miembro_desde?new Date(perfil.miembro_desde).toLocaleDateString('es-ES',{day:'2-digit',month:'long',year:'numeric'}):'—';
   const lista=[...vigiladas.keys()].filter(Boolean).sort((a,b)=>a.localeCompare(b,'es'));
+  const correoConsentido=consentimientoCorreoVigente(perfil);
   c.innerHTML=
    '<div class="perfil-cab"><div class="perfil-ini">'+esc(nom.slice(0,1))+'</div>'+
    '<div><div class="quien">'+esc(nom)+'</div><div class="correo">'+esc(ses.correo||'')+'</div></div></div>'+
@@ -2383,8 +2423,9 @@ const Cuenta = (function(){
      ? '<ul class="vig-lista">'+lista.map(n=>'<li><span>'+esc(n)+'</span><button data-q="'+esc(n)+'">quitar</button></li>').join('')+'</ul>'
      : '<p class="perfil-nota">Todavía no vigilas ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Vigilar» para guardarla aquí.</p>')+
    '<div class="perfil-sec">Avisos</div>'+
-   '<label class="fila-opcion"><input type="checkbox" id="optAvisos"'+((perfil&&perfil.avisos_correo)!==false?' checked':'')+'>'+
-   '<span>Guardar mi preferencia para recibir un correo cuando una plataforma vigilada cambie de estado. <b>La entrega todavía no está activa</b>; no recibirás estos avisos hasta que se configure.</span></label>'+
+   '<label class="fila-opcion"><input type="checkbox" id="optAvisos" aria-describedby="optAvisosAyuda"'+(correoConsentido?' checked':'')+'>'+
+   '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que vigilo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
+   '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, el envío todavía no está activo: faltan configurar Brevo y verificar la entrega de extremo a extremo. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'+
    '<div class="perfil-pie">'+
     '<button id="pfSalir">Cerrar sesión</button>'+
     '<button class="peligro" id="pfBorrar">Borrar mi cuenta</button>'+
@@ -2397,9 +2438,22 @@ const Cuenta = (function(){
    }catch(e){g.disabled=false;aviso('No se ha podido guardar el nombre.');}
   });
   const o=$('optAvisos'); if(o) o.addEventListener('change',async()=>{
-   try{ await rest('/perfiles?id=eq.'+encodeURIComponent(ses.uid),{method:'PATCH',body:JSON.stringify({avisos_correo:o.checked})});
-        if(perfil) perfil.avisos_correo=o.checked; aviso('Preferencia de correo guardada.');
-   }catch(e){ aviso('No se ha podido guardar'); o.checked=!o.checked; }
+   const anterior=correoConsentido,deseado=o.checked;o.disabled=true;
+   try{
+    const filas=await rest('/rpc/configurar_avisos_correo',{method:'POST',body:JSON.stringify({
+     p_habilitado:deseado,p_version:VERSION_CONSENTIMIENTO_CORREO
+    })});
+    perfil=perfilDesdeRespuestaCorreo(perfil,filas&&filas[0],deseado);
+    o.checked=consentimientoCorreoVigente(perfil);
+    aviso(deseado
+     ? 'Consentimiento guardado. El correo aún no está activo: faltan Brevo y la prueba de extremo a extremo.'
+     : 'Consentimiento retirado. No se enviarán nuevos avisos de cambios por correo.');
+   }catch(e){
+    o.checked=anterior;
+    aviso(deseado
+     ? 'No se ha guardado el consentimiento; sigue desactivado.'
+     : 'No se ha podido confirmar la retirada; la preferencia sigue activada. Vuelve a intentarlo.');
+   }finally{o.disabled=false;}
   });
   const s=$('pfSalir'); if(s) s.addEventListener('click',salir);
   const b=$('pfBorrar'); if(b) b.addEventListener('click',borrar);
@@ -2490,6 +2544,25 @@ const Cuenta = (function(){
    b.innerHTML='<span class="ini">'+esc(nom.slice(0,1))+'</span>'+esc(nom.split(' ')[0].slice(0,12));
    b.setAttribute('aria-label','Tu cuenta');
   }else{ b.textContent='Entrar'; b.setAttribute('aria-label','Entrar o crear una cuenta'); }
+  pintaMovil();
+ }
+ function pintaMovil(){
+  const cantidad=vigiladas.size;
+  const numero=$('movilSiguiendoCuenta'),unidad=$('movilSiguiendoUnidad');
+  const texto=$('movilSiguiendoTexto'),accion=$('movilCuentaAccion');
+  const insignia=$('movilSiguiendoBadge'),tab=$('movilTabSiguiendo');
+  if(numero)numero.textContent=String(cantidad);
+  if(unidad)unidad.textContent=cantidad===1?'plataforma seguida':'plataformas seguidas';
+  if(texto)texto.textContent=identidadConfirmada
+   ?(cantidad?'Tu vigilancia está guardada y puedes gestionarla desde aquí.':'Todavía no vigilas ninguna plataforma.')
+   :'Entra para consultar la vigilancia que tienes guardada.';
+  if(accion)accion.textContent=identidadConfirmada?'Abrir mi lista':'Entrar y abrir mi lista';
+  if(insignia){insignia.textContent=cantidad>99?'99+':String(cantidad);insignia.hidden=!cantidad;}
+  if(tab)tab.setAttribute('aria-label',cantidad?'Siguiendo, '+cantidad:'Siguiendo');
+ }
+ function abrirGestion(){
+  if(identidadConfirmada&&ses)abrirPerfil();
+  else abrir('entrar','Entra para consultar y gestionar las plataformas que vigilas.');
  }
 
  /* --- arranque ---------------------------------------------------- */
@@ -2538,8 +2611,126 @@ const Cuenta = (function(){
     para cualquier id y la comprobacion pasaria igual. */
  if(typeof fetch!=='undefined' && typeof location!=='undefined') iniciar();
 
- return {abrir:abrir,pintarVigilar:pintarVigilar,hay:()=>identidadConfirmada,
+ return {abrir:abrir,abrirGestion:abrirGestion,pintarVigilar:pintarVigilar,
+         actualizarMovil:pintaMovil,hay:()=>identidadConfirmada,
          uid:()=>identidadConfirmada&&ses&&ses.uid,token:testigo};
+})();
+
+/* =================================================================
+   SHELL MÓVIL / PWA
+   -----------------------------------------------------------------
+   Cuatro pestañas como en la app instalada, sin convertir la web de
+   escritorio en otra cosa. El radar sigue siendo el mismo DOM: así no
+   se duplican datos, filtros, 3D ni lógica de cuenta.
+   ================================================================= */
+const Movil = (function(){
+ const media=window.matchMedia('(max-width: 767px), (max-width: 960px) and (max-height: 540px) and (hover: none) and (pointer: coarse)');
+ const tabs=[...document.querySelectorAll('#movilNav [data-movil-tab]')];
+ const paneles=new Map([...document.querySelectorAll('[data-movil-panel]')]
+  .map(p=>[p.dataset.movilPanel,p]));
+ const cabEtiqueta=document.getElementById('movilCabeceraEtiqueta');
+ const cabTitulo=document.getElementById('movilCabeceraTitulo');
+ const cabSub=document.getElementById('movilCabeceraSub');
+ const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
+ const textos={
+  radar:['RADAR DE ACTIVOS REALES','Explora lo verificado',total+' plataformas · datos contrastados'],
+  siguiendo:['TU SEGUIMIENTO','Plataformas seguidas','Guarda y gestiona lo que quieres vigilar'],
+  avisos:['ESTADO Y NOVEDADES','Avisos claros','Preferencia y entrega son estados distintos'],
+  mas:['CONTROL DE LA PWA','Más','Aprendizaje, cuenta, datos y privacidad']
+ };
+ let activa='radar';
+
+ const reduce=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function geometria(){
+  /* hidden deja canvas y SVG a ancho cero. Dos fotogramas permiten que
+     el navegador recomponga antes de que WebGL vuelva a medir. */
+  requestAnimationFrame(()=>requestAnimationFrame(()=>window.dispatchEvent(new Event('resize'))));
+ }
+ function cabecera(id){
+  const t=textos[id]||textos.radar;
+  if(cabEtiqueta)cabEtiqueta.textContent=t[0];
+  if(cabTitulo)cabTitulo.textContent=t[1];
+  if(cabSub)cabSub.textContent=t[2];
+ }
+ function cambiar(id,opciones){
+  if(!media.matches||!paneles.has(id))return;
+  activa=id;
+  document.body.dataset.movilPestana=id;
+  paneles.forEach((panel,nombre)=>{panel.hidden=nombre!==id;});
+  tabs.forEach(tab=>{
+   const elegida=tab.dataset.movilTab===id;
+   tab.setAttribute('aria-selected',elegida?'true':'false');
+   tab.tabIndex=elegida?0:-1;
+  });
+  cabecera(id);
+  if(!opciones||opciones.arriba!==false){
+   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
+  }
+  if(id==='radar')geometria();
+ }
+ function adaptar(){
+  const esMovil=media.matches;
+  if(document.documentElement&&document.documentElement.classList)
+   document.documentElement.classList.toggle('movil-ui',esMovil);
+  if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();}
+  else{
+   document.body.removeAttribute('data-movil-pestana');
+   document.body.classList.remove('movil-teclado');
+   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!=='radar';});
+   geometria();
+  }
+ }
+ function ir(destino){
+  cambiar('radar',{arriba:false});
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+   const objetivo=destino==='top'?document.getElementById('top'):document.getElementById(destino);
+   if(objetivo)objetivo.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
+   geometria();
+  }));
+ }
+
+ tabs.forEach((tab,indice)=>{
+  tab.addEventListener('click',()=>cambiar(tab.dataset.movilTab));
+  tab.addEventListener('keydown',e=>{
+   let siguiente=null;
+   if(e.key==='ArrowRight')siguiente=(indice+1)%tabs.length;
+   if(e.key==='ArrowLeft')siguiente=(indice-1+tabs.length)%tabs.length;
+   if(e.key==='Home')siguiente=0;
+   if(e.key==='End')siguiente=tabs.length-1;
+   if(siguiente==null)return;
+   e.preventDefault();cambiar(tabs[siguiente].dataset.movilTab);
+   tabs[siguiente].focus({preventScroll:true});
+  });
+ });
+ document.addEventListener('click',e=>{
+  if(!media.matches)return;
+  const cambio=e.target.closest&&e.target.closest('[data-movil-cambiar]');
+  if(cambio){e.preventDefault();cambiar(cambio.dataset.movilCambiar);return;}
+  const destino=e.target.closest&&e.target.closest('[data-movil-ir]');
+  if(destino){e.preventDefault();ir(destino.dataset.movilIr);return;}
+  const accion=e.target.closest&&e.target.closest('[data-movil-action]');
+  if(!accion)return;
+  if(accion.dataset.movilAction==='ayuda'){e.preventDefault();ir('explain');}
+  if(accion.dataset.movilAction==='cuenta'){e.preventDefault();Cuenta.abrirGestion();}
+ });
+ document.addEventListener('focusin',e=>{
+  if(media.matches&&e.target.matches&&e.target.matches('input:not([type="range"]),textarea,select'))
+   document.body.classList.add('movil-teclado');
+ });
+ document.addEventListener('focusout',()=>setTimeout(()=>{
+  const a=document.activeElement;
+  if(!a||!a.matches||!a.matches('input:not([type="range"]),textarea,select'))
+   document.body.classList.remove('movil-teclado');
+ },80));
+ const standalone=(typeof navigator!=='undefined'&&navigator.standalone===true)||
+  window.matchMedia('(display-mode: standalone)').matches;
+ if(document.documentElement&&document.documentElement.classList)
+  document.documentElement.classList.toggle('pwa-standalone',standalone);
+ if(media.addEventListener)media.addEventListener('change',adaptar);
+ else if(media.addListener)media.addListener(adaptar);
+ window.addEventListener('pageshow',()=>{adaptar();if(media.matches&&activa==='radar')geometria();});
+ adaptar();
+ return {cambiar:cambiar};
 })();
 
 /* Una sola delegación sustituye todos los atributos onclick/onkeydown.

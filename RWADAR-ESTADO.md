@@ -8,10 +8,10 @@
 > de la web está cada cosa— está `RWADAR-MAPA.md`. El HTML, CSS y JavaScript
 > propios están ahora en archivos separados.**
 
-> **Vigencia:** reconciliado el 20 de agosto de 2026 sobre el traspaso del
+> **Vigencia:** reconciliado el 22 de agosto de 2026 sobre el traspaso del
 > 17–20 de agosto y el baseline `42018de`. `RWADAR-TRASPASO.md` manda para el
-> estado operativo. La web remediada y la migración 22 siguen locales; este
-> proyecto no está terminado.
+> estado operativo. La web remediada y la migración 22 están desplegadas y
+> verificadas; correo y push siguen OFF. Este proyecto no está terminado.
 
 ## Índice · lee solo el tramo que necesites
 
@@ -26,7 +26,7 @@ marca que se localiza con `rg`; abre solo el tramo necesario.
 | Necesito | Marca de búsqueda | ~líneas |
 |---|---|---|
 | Qué es, direcciones y qué archivo es cada cosa | `## Qué es` | 71-123 |
-| **Estado y qué bloquea el avance** | `## Estado a 20` | 124-190 |
+| **Estado y qué bloquea el avance** | `## Estado a 22` | 124-190 |
 | Cómo cambiar contenido, publicar, probar | `## Cómo se trabaja` | 157-247 |
 | ↳ avisar a los buscadores (IndexNow) | `## Avisar a los buscadores` | ~215 |
 | ↳ volver atrás si algo sale mal | `## Volver atrás` | ~230 |
@@ -49,7 +49,7 @@ marca que se localiza con `rg`; abre solo el tramo necesario.
 | **Trampas que costaron tiempo** | `## Trampas que ya nos costaron` | 536-578 |
 | Qué hacer a continuación | `## Lo siguiente` | 579-596 |
 
-Última reconciliación de estado: 20 de agosto de 2026. El resto conserva
+Última reconciliación de estado: 22 de agosto de 2026. El resto conserva
 decisiones de diseño históricas y debe leerse con esa fecha en mente.
 
 **Rediseño de agosto de 2026, publicado el día 8.** La web pasó de papel
@@ -94,8 +94,9 @@ misma base de datos.
 
 | Pieza | Dirección |
 |---|---|
-| Web | https://rwadar.netlify.app |
-| Panel de Netlify | https://app.netlify.com/projects/rwadar |
+| Web canónica | https://rwadar.pages.dev |
+| Panel de Cloudflare | Cuenta `52d07be006e7a27f5f793c59e1796b13`, proyecto Pages `rwadar` |
+| Web legada | https://rwadar.netlify.app (no canónica; ya indexada) |
 | Base de datos | https://supabase.com/dashboard/project/exgpmjpaaebyoolpwced |
 | Search Console | https://search.google.com/search-console (propiedad verificada) |
 
@@ -120,7 +121,8 @@ fuera del artefacto.
 ### Identificadores
 
 ```
-Netlify site   : 0211fd28-d371-43cd-9d93-3944fea57680
+Cloudflare Pages: rwadar (deployment final 2aedebd9...)
+Netlify legado : 0211fd28-d371-43cd-9d93-3944fea57680
 Supabase ref   : exgpmjpaaebyoolpwced
 Supabase URL   : https://exgpmjpaaebyoolpwced.supabase.co
 Clave pública  : sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F
@@ -133,25 +135,26 @@ que una operación esté protegida.
 
 ---
 
-## Estado a 20 de agosto de 2026
+## Estado a 22 de agosto de 2026
 
 | Fase | Estado verificable |
 |---|---|
-| Web pública | En línea con 26 fichas, 4 descartadas y PWA |
+| Web pública | **GO en `https://rwadar.pages.dev`** con 26 fichas, 4 descartadas y PWA |
 | Emisiones públicas | 0 en producción; sección no visible |
-| Web remediada local | 26/4/0; CSS/JS externos, CSP estricta, sin RUM y sin tokens en `localStorage`; **no desplegada** |
-| Diferencia pública conocida | La versión antigua aún usa `unsafe-inline`, política fechada 09-08 y service worker v1 |
-| Pruebas web locales | 121/121; QR 6/6 |
-| Base de producción | Contrato histórico 14–21; migración 22 **pendiente** |
-| Migración 22 | SQL, verificador y rollback validados localmente; DB 270 aserciones + 8 gates verdes |
+| Web remediada | **Desplegada y verificada**: 26/4/0; CSS/JS externos, CSP estricta, sin RUM/Zaraz y sin tokens en `localStorage` |
+| Deployment y artefacto | Final `2aedebd9...`; web 164/164; ZIP `rwadar-cloudflare-pages-20260822-d6f73fb3.zip`, SHA-256 `143B6ECBB8B883006D36C9297A3C574B09BBB2A46950208E4B821C792499BDFC`; smoke externo GO |
+| Base de producción | Migración 22 **aplicada y verificada**; Security Advisor: 0 Critical y 0 Security Definer View |
+| Migración 22 | `02F2...0666`: `COMMIT`, `schedule=19`; verificador `4182...2C3`: `Success. No rows returned` y aviso `RWAdar 22 OK` |
+| Smoke público backend | Radar 26, descartadas 4; `opiniones.usuario_id` 401, moderación directa 401, firma antigua ausente (404/PGRST202), firma nueva anónima 401/42501 |
 | Smokes remotos | Ambos solo lectura por defecto; mutación opt-in ligada al proyecto y limpieza verificable; contrato local 21/21 sin red |
-| Cuentas | Producción devuelve `mailer_autoconfirm=true`: no valida el correo y bloquea el despliegue remoto seguro |
+| Cuentas | Confirm email activo, signup habilitado y `mailer_autoconfirm=false`; Site URL Pages; redirects Pages + Netlify. Sin SMTP propio; confirmación y recuperación reales pendientes de prueba E2E |
 | Opiniones/moderación | Backend endurecido mediante RPC; probar el frontend que quede realmente desplegado |
-| Correo de avisos | **No operativo**; migración 13 separada |
-| Push | OFF: `pushDeliveryEnabled=false`; fresh/17/22 dejan flag backend `false` y 0 cron; opt-in no ejecutado |
+| Correo de avisos | **OFF en producción**; 23 GO local, sin Brevo/Vault/remitente ni E2E |
+| Push | **OFF en producción:** 0 tokens y 0 cron; exige dispositivo físico y E2E |
 | Dependencias móviles | 46 paquetes afectados: 29 high, 17 moderate, 0 critical; 3 avisos fuente de toolchain sin fix compatible |
-| Indexación | No verificada en esta reconciliación; robots y sitemap responden, pero hay que confirmar en Search Console |
-| Tiendas móviles | Fuera del cierre de seguridad y privacidad actual |
+| Indexación | Pages verificada; portada en cola. Sitemap enviado, primera lectura «No se ha podido obtener». Netlify legada sí indexada |
+| Hosting | Cloudflare Pages es producción; Netlify es legado. CALIX es distinto y no se tocó |
+| Móvil | Android build 4 compatible con OTA `preview` `4f9d7e19...`, runtime `af694...`; rediseño + apertura de avisos. Sin Play Store ni iOS nativo; PWA actualizada en ambos |
 
 ### Bloqueos reales
 
@@ -161,19 +164,21 @@ mínimo:
 1. que Eric Almiñana, Samuel Rodriguez y Victor Jorques revisen y firmen el
    acuerdo de corresponsabilidad y decidan los plazos propuestos de 12 meses y
    3 años;
-2. aplicar y verificar la migración 22 en la base real;
-3. cerrar `data-deploy-blocker`, configurar Auth con
-   `mailer_autoconfirm=false` y probar una confirmación real de extremo a
-   extremo;
-4. desplegar la web remediada primero como preview y después, tras revisión,
-   en producción;
-5. verificar cuentas, opiniones, borrado, PWA, CSP, privacidad, canonical,
-   robots, sitemap e indexación desde fuera;
-6. diseñar y probar por separado el correo y el push antes de prometer avisos.
+2. conservar la evidencia de la 22 aplicada y verificada y repetir su
+   verificador de solo lectura tras cualquier cambio de esquema;
+3. conservar Confirm email activo con signup habilitado y probar confirmación y
+   recuperación reales de extremo a extremo; el acuerdo pendiente ya se declara
+   de forma transparente y no es un bloqueo técnico del publicador;
+4. conservar el deployment Cloudflare, el ZIP y el hash como evidencia de la
+   publicación GO, y repetir el smoke tras cualquier cambio;
+5. reconsultar Search Console hasta que la portada y el sitemap de Pages tengan
+   estado definitivo;
+6. configurar y probar por separado correo y push antes de activarlos o
+   prometer avisos.
 
 ### Advertencia de método
 
-Las pruebas locales describen el repositorio, no Netlify ni la base real. La
+Las pruebas locales describen el repositorio, no Cloudflare ni la base real. La
 regla permanece: **producción se mide, no se supone**. `RWADAR-MANANA.md`
 contiene el contrato operativo y `RWADAR-TRASPASO.md` el orden de continuación.
 
@@ -193,24 +198,30 @@ cargar y se actualiza sola si algo cambió desde la última publicación.
 ### Publicar la web
 
 ```bash
-node rwadar-publicar.js --local        # verificar sin subir
-node rwadar-publicar.js --preview      # revisión deliberada
-node rwadar-publicar.js --produccion   # producción deliberada
+node rwadar-publicar.js --local
+npx.cmd --yes wrangler@4.125.0 pages deploy rwadar-publicado --project-name rwadar --branch main
 ```
 
-Sincroniza datos, pre-renderiza y genera `rwadar-publicado/`. `--local` se
-detiene ahí; `--preview` y `--produccion` despliegan solo al destino pedido.
-Exactamente un modo es obligatorio y no hay fallback ni promoción automática.
+El primer comando sincroniza, pre-renderiza y valida `rwadar-publicado/`. El
+segundo despliega solo ese artefacto al proyecto Pages `rwadar`, tras comprobar
+cuenta, directorio y hashes. Wrangler quedó con 3 permisos: User Read
+obligatorio, Account Read y Pages Write. No subas la fuente, la raíz ni CALIX.
 
-En el estado actual, `data-deploy-blocker` bloquea ambos modos remotos antes de
-Auth, sincronización o Netlify: solo `--local` puede construir. Tras cerrar el
-acuerdo y los plazos y retirar el marcador, el preflight remoto exige
-`mailer_autoconfirm=false` exacto en `/auth/v1/settings`; producción devuelve
-hoy `true`. Un error o campo ausente detienen la publicación. Superar esa
-comprobación no sustituye una prueba real del correo de confirmación.
+En el estado actual, la política declara
+`data-deploy-legal-status="acuerdo-pendiente-de-documentar"`: la versión
+completa puede avanzar dejando visible que el acuerdo y los plazos no están
+cerrados. Un `data-deploy-blocker`, un estado ausente o uno desconocido detienen
+ambos modos remotos antes de Auth o sincronización. El preflight exige
+`mailer_autoconfirm=false` exacto en `/auth/v1/settings`; producción ya devuelve
+`false`, Confirm email está activo y signup sigue habilitado. Un error o campo
+ausente detienen la publicación. Superar esa comprobación no sustituye pruebas
+reales E2E de confirmación y recuperación; no hay SMTP propio.
 
-**Nunca uses `netlify deploy` a secas.** Sin el pre-renderizado la página
-queda vacía para el buscador, que es un problema que ya arreglamos una vez.
+La web endurecida ya está en Cloudflare Pages, deployment final `2aedebd9...`.
+El ZIP congelado `outputs/rwadar-cloudflare-pages-20260822-d6f73fb3.zip` tiene
+SHA-256 `143B6ECBB8B883006D36C9297A3C574B09BBB2A46950208E4B821C792499BDFC`.
+El publicador remoto heredado aún llama a Netlify: no lo uses como ruta de
+Pages ni ejecutes `netlify deploy` a secas.
 
 ### Probar la app
 
@@ -232,13 +243,14 @@ aplicar-sql.cmd exgpmjpaaebyoolpwced db\22_cierre_regresiones.sql
 ```
 
 El instalador general de una base nueva incluye 01–12, 14–15 y 17–22, con
-verificadores. La migración 13 de correo está separada y no se aplica por
+verificadores. La activación de correo 23 está separada y no se aplica por
 defecto. En la base existente, aplica solo el fichero aprobado que falte.
 
 Para la producción existente no ejecutes 16, retratos recuperados ni
-migraciones históricas. La aplicación deliberada de 22 debe pasar verificadores
-14/15/22 y `fresh_install_verificar.sql` (26/4). Su rollback es solo de
-emergencia y requiere diagnóstico y copia previa.
+migraciones históricas. La 22 ya se aplicó y pasó su verificador interno; no la
+reapliques como forma de comprobación. Conserva el verificador 22 y
+`fresh_install_verificar.sql` (26/4) para controles de solo lectura. Su rollback
+es solo de emergencia y requiere diagnóstico y copia previa.
 
 Aplicar la 22 **no enciende push**: deja `push_configuracion.habilitado=false`,
 0 cron `rwadar-push` y las funciones/trigger gated. Sí instala la retención
@@ -248,6 +260,11 @@ petición pendiente. El
 único opt-in es `activar-push.cmd <REF>`, con PAT, aprobación E2E, confirmación
 ligada a la referencia y verificador propio; no se ejecutó y no debe ejecutarse
 antes de una prueba externa aprobada.
+
+Producción conserva 0 tokens y 0 cron `rwadar-push`. La OTA solo añade el
+listener que abre avisos; activar exige dispositivo físico, token real y E2E.
+La 23 de correo está GO local, pero faltan Brevo, secreto y remitente en Vault
+y E2E: no se aplica en producción.
 
 Antes de tocar producción, las pruebas corren contra un Postgres real
 embebido, sin instalar nada:
@@ -268,11 +285,16 @@ Google va por Search Console: *Inspección de URLs* → pegar la dirección →
 **Solicitar indexación**. Hay cuota diaria; si dice "Cuota superada", al día
 siguiente.
 
+La propiedad Pages está verificada y la portada se envió a indexación. El
+sitemap también se envió, pero la primera lectura mostró «No se ha podido
+obtener». Reconsulta antes de afirmar que Pages ya está indexada. La URL legada
+de Netlify sí figura indexada.
+
 Al resto —Bing, Yandex, Seznam, Naver, Yep— se les avisa de una vez con
 IndexNow. La llave es el archivo de nombre raro de `rwadar-site/`:
 
 ```bash
-curl -X POST "https://api.indexnow.org/indexnow" -H "Content-Type: application/json" -d "{\"host\":\"rwadar.netlify.app\",\"key\":\"c9417d2d5003bb9a41fee63c7f5ec00f\",\"keyLocation\":\"https://rwadar.netlify.app/c9417d2d5003bb9a41fee63c7f5ec00f.txt\",\"urlList\":[\"https://rwadar.netlify.app/\"]}"
+curl -X POST "https://api.indexnow.org/indexnow" -H "Content-Type: application/json" -d "{\"host\":\"rwadar.pages.dev\",\"key\":\"c9417d2d5003bb9a41fee63c7f5ec00f\",\"keyLocation\":\"https://rwadar.pages.dev/c9417d2d5003bb9a41fee63c7f5ec00f.txt\",\"urlList\":[\"https://rwadar.pages.dev/\"]}"
 ```
 
 Un `202` es aceptado.
@@ -281,15 +303,15 @@ Un `202` es aceptado.
 
 Conserva un artefacto conocido y sus hashes. Para restaurarlo, revísalo y
 publícalo deliberadamente con el mismo proceso de producción; no promociones
-un preview ni uses la interfaz de Netlify para saltarte las validaciones. La
+un preview ni uses la interfaz del hosting para saltarte las validaciones. La
 base tiene rollback específico para la 22, pero primero se hace copia.
 
 ### Si algún día se registra un dominio propio
 
 Mientras no exista un dominio propio aprobado, el sitio se identifica ante
-Google como `rwadar.netlify.app`.
+Google como `rwadar.pages.dev`.
 
-Al añadirlo en *Domain settings* hay que sustituir `https://rwadar.netlify.app`
+Al añadirlo en *Domain settings* hay que sustituir `https://rwadar.pages.dev`
 por el dominio nuevo en tres sitios —`index.html` (14 apariciones),
 `robots.txt` y `sitemap.xml`— y volver a publicar. Si el sitio dice ser una
 dirección y vive en otra, Google indexa la equivocada.
@@ -603,10 +625,10 @@ offline en una versión de tienda.
 
 ## Trampas que ya nos costaron tiempo
 
-**Netlify puede rechazar una publicación** con un `Forbidden`. El publicador
-termina con error y no crea ni promueve un borrador alternativo. Revisa permisos
-o créditos y vuelve a ejecutar el modo que querías; nunca cambies de modo para
-sortear un rechazo.
+**El publicador remoto heredado sigue siendo de Netlify.** No lo uses para
+actualizar Cloudflare Pages. La ruta vigente es generar/verificar con `--local`
+y desplegar `rwadar-publicado/` con Wrangler al proyecto y cuenta exactos.
+CALIX es otro proyecto y queda fuera de cualquier operación RWAdar.
 
 **Las capturas de pantalla mienten con las animaciones.** Ni el modo sin
 ventana ni el panel de vista previa ejecutan fotogramas de forma fiable: el
@@ -649,20 +671,23 @@ los JSON.
 1. Cerrar el acuerdo de corresponsabilidad de Eric Almiñana, Samuel Rodriguez
    y Victor Jorques (`RWAdar@protonmail.com`) y decidir los plazos propuestos
    de 12 meses y 3 años.
-2. Aplicar y verificar la migración 22 en producción con copia previa.
-3. Retirar `data-deploy-blocker` solo después del acuerdo y los plazos;
-   configurar y verificar `mailer_autoconfirm=false` y probar una confirmación
-   de alta real.
-4. Desplegar la web remediada primero con `--preview` y luego, tras revisión,
-   con `--produccion`.
-5. Verificar en red 26/4/0, CSP sin inline, privacidad actualizada, SW, RUM,
-   cuentas, opiniones, canonical, robots, sitemap e indexación.
-6. Mantener `pushDeliveryEnabled=false` y el correo de avisos no operativo hasta contar
-   con emisor, consentimiento, entrega y recibos E2E verificados.
+2. Conservar la evidencia de la migración 22 aplicada y verificada; repetir el
+   verificador tras cambios de esquema.
+3. Conservar visible `acuerdo-pendiente-de-documentar`, Confirm email activo y
+   signup habilitado; probar confirmación y recuperación reales E2E antes de
+   prometer entrega.
+4. Conservar el deployment `2aedebd9...`, el ZIP final y su SHA-256; repetir web
+   164/164 y smoke externo después de cualquier cambio.
+5. Reconsultar la portada y el sitemap en Search Console hasta obtener un estado
+   definitivo; la solicitud ya está hecha, no la indexación confirmada.
+6. Mantener push y correo OFF hasta contar con sus credenciales, consentimiento,
+   dispositivo o remitente y pruebas E2E verificadas.
 7. Resolver de forma compatible los tres avisos fuente del toolchain móvil; no
    usar `npm audit --force`, que propone Expo 46 incompatible.
 8. Investigar distribución y enlaces solo después de cerrar seguridad,
    privacidad y despliegue.
+9. Probar en un Android físico el build 4 actualizado por OTA `preview` antes
+   de cualquier opt-in push; no presentarlo como Play Store ni como app iOS.
 
 **Nunca sembrar enlaces en foros y directorios.** Google lo llama *esquema
 de enlaces*, lo detecta y el castigo es que el sitio entero baje o

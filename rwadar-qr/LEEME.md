@@ -1,6 +1,6 @@
 # RWAdar · código QR de entrada
 
-El código lleva a **https://rwadar.netlify.app**, que es la web pública y
+El código lleva a **https://rwadar.pages.dev**, que es la web pública y
 funciona igual en el móvil. *No* lleva a la app de las tiendas: a 15 de
 agosto de 2026 la app móvil está terminada pero sin publicar, porque eso
 depende de dos cuentas de desarrollador que aún no están abiertas
@@ -30,7 +30,7 @@ web, usa el PNG.
 ## Rehacerlo
 
 ```bash
-node rwadar-qr/hacer-qr.js            # los tres archivos, a rwadar.netlify.app
+node rwadar-qr/hacer-qr.js            # los tres archivos, a rwadar.pages.dev
 node rwadar-qr/hacer-qr.js https://…  # a otra dirección
 node rwadar-qr/comprobar-qr.js        # comprueba que se lee
 ```
@@ -70,7 +70,7 @@ Va a **nivel H**, el más protegido: aguanta que se estropee hasta el 30 %
 del dibujo y se sigue leyendo. Es el nivel que hay que usar en algo que se
 va a imprimir, doblar, fotocopiar o fotografiar de lado desde una pantalla.
 
-Para `https://rwadar.netlify.app` salen 33×33 módulos (versión 4) más los
+Para `https://rwadar.pages.dev` salen 29×29 módulos (versión 3) más los
 4 módulos de margen claro que exige la norma — sin ese margen el lector no
 encuentra dónde empieza el código, y es el fallo más común al recortar un
 QR de un diseño.

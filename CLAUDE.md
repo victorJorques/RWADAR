@@ -5,45 +5,72 @@ al sitio correcto **sin leer nada más**. No lo alargues: cada línea aquí se
 paga en todas las sesiones.
 
 Este repositorio contiene RWAdar. La información de estado más reciente es la
-de `RWADAR-TRASPASO.md`, reconciliada el 20 de agosto de 2026 sobre el baseline
-`42018de`; prevalece sobre cualquier afirmación histórica que aún quede en un
-documento de contexto.
+de `RWADAR-TRASPASO.md`, reconciliada el **22 de agosto de 2026** sobre el
+baseline `42018de`; prevalece sobre cualquier afirmación histórica que aún
+quede en un documento de contexto.
 
 ---
 
 ## RWAdar · registro de plataformas de tokenización
 
-**En línea, pero no terminado: https://rwadar.netlify.app** · Supabase
-`exgpmjpaaebyoolpwced` · Netlify site `0211fd28-d371-43cd-9d93-3944fea57680`
+**Producción web GO: https://rwadar.pages.dev** · Cloudflare Pages proyecto
+`rwadar` · Supabase `exgpmjpaaebyoolpwced`.
 
-Producción muestra 26 fichas y 4 descartadas, es instalable como PWA y no
-publica la sección de emisiones. La web remediada de este repositorio está
-probada localmente (121/121; QR 6/6; 26/4/0) pero no desplegada. La versión
-pública antigua aún usa `unsafe-inline`, privacidad 09-08 y service worker v1.
-La indexación no quedó confirmada en esta reconciliación: robots y sitemap
-responden, pero hay que verificar Search Console. La migración 22 está validada
-en local (270 aserciones + 8 gates SQL) y pendiente de aplicar y verificar en
-producción, que no se tocó. El correo no envía avisos y el
-push permanece deshabilitado. Fresh-install, 22, rollback y recuperación dejan
-el flag backend en `false` y 0 cron `rwadar-push`; el opt-in no se ejecutó.
-La 22 termina además las colas heredadas pendientes, pone `token=NULL`, marca
-los intentos como terminales y limpia la petición.
+Cloudflare sirve la versión endurecida, pre-renderizada e instalable como PWA:
+26 fichas, 4 descartadas y 0 emisiones públicas; CSP estricta, sin RUM/Zaraz y
+sin tokens de sesión en `localStorage`. El despliegue final `2aedebd9...`
+coincide con
+el artefacto exacto validado. ZIP de entrega:
+`outputs/rwadar-cloudflare-pages-20260822-d6f73fb3.zip`, SHA-256
+`143B6ECBB8B883006D36C9297A3C574B09BBB2A46950208E4B821C792499BDFC`.
+La web pasa 164/164 y la suite raíz terminó con código 0. El smoke externo de
+portada, privacidad, redirecciones, 404, cabeceras, assets,
+service worker, manifiesto, canonical, robots y sitemap quedó GO.
+
+`https://rwadar.netlify.app` es ahora el origen antiguo: sigue en línea y ya
+figura indexado, pero no es el canonical ni el destino de producción actual.
+Search Console tiene verificada la propiedad `rwadar.pages.dev`; se solicitó la
+indexación de la portada. El sitemap se envió y su primera lectura mostró el
+estado transitorio «No se ha podido obtener»: hay que revisarlo de nuevo, no
+describir todavía la URL nueva como indexada.
+
+La migración 22 (`02F2...0666`) está aplicada y verificada en producción. Su
+verificador (`4182...2C3`) terminó con `Success. No rows returned`; el smoke
+backend quedó verde y Security Advisor mostró 0 Critical y 0 Security Definer
+View. Correo y push permanecen apagados; la retención diaria independiente está
+activa.
 
 Los dos smokes remotos son de solo lectura por defecto, sin destino ni clave
 embebidos. Su modo mutante requiere confirmación ligada a la referencia y un
 `finally` con limpieza verificable; el contrato adversarial local pasa 21/21
 sin red.
 
-Producción devuelve `mailer_autoconfirm=true`. El marcador
-`data-deploy-blocker` bloquea tanto `--preview` como `--produccion`, por lo que
-hoy solo se puede construir con `--local`. Aun después de retirar el marcador,
-el preflight remoto exige `mailer_autoconfirm=false` exacto y falla cerrado si
-Auth no responde o falta el campo. No prometas confirmación por correo hasta
-cambiar esa configuración y probar un alta real de extremo a extremo.
+Confirm email está activo, signup sigue habilitado y Auth devuelve
+`mailer_autoconfirm=false`. `Site URL` está guardada como
+`https://rwadar.pages.dev`; las redirecciones permitidas son exactamente
+`https://rwadar.pages.dev/` y `https://rwadar.netlify.app/`. No hay SMTP propio
+y todavía faltan pruebas E2E reales de confirmación y recuperación.
+
+El correo de avisos tiene una migración 23 preparada y verificada **solo en
+local**. No está aplicada en producción: faltan `BREVO_API_KEY`, remitente
+verificado en Vault y prueba E2E. El push también
+sigue OFF en producción: 0 tokens, 0 cron `rwadar-push` y entrega E2E no
+demostrada. Activarlo exige un dispositivo físico nativo con token válido,
+credenciales de entrega y verificación de ticket, recibo y recepción.
 
 Auditoría de dependencias: backend 0; móvil 46 paquetes afectados (29 high, 17
 moderate, 0 critical), derivados de tres avisos fuente de toolchain sin arreglo
-compatible. Expo install check OK, Doctor 21/21 y tests 7/7.
+compatible. Expo install check y Doctor están verdes. El preview terminó
+`FINISHED`: Android 1.0.0 build 4, ID
+`c7bb915b-da3b-46d4-9bd6-811a432b4cb3`, fingerprint
+`af69452933f988f2d48d45861802f09d3df06e8b`. APK:
+`outputs/rwadar-android-preview-v1.0.0-build4-c7bb915b.apk`, 84.783.140 bytes,
+SHA-256 `5E505F18C26FF91A8FC12899DEE39D9757C5D2E7FFC665DF0D7AFF090CFC4DB7`.
+La OTA del canal Android `preview`, grupo `4f9d7e19...` y runtime
+`af69452933f988f2d48d45861802f09d3df06e8b`, publica el rediseño y el listener
+que abre un aviso push; es compatible con ese build 4. No hay publicación en
+Play Store ni build nativo iOS. La PWA sí se actualiza desde la web en iOS y
+Android. La OTA no demuestra ni activa la entrega push.
 
 Los corresponsables actuales, sin sociedad constituida, son **Eric Almiñana,
 Samuel Rodriguez y Victor Jorques**. Contacto: `RWAdar@protonmail.com`. El
@@ -72,25 +99,21 @@ para permitir una CSP estricta. Las sesiones no persisten tokens en
 | trabajar la app móvil | `rwadar-movil/` | — |
 | tocar datos o esquema | `rwadar-app/` | — |
 
-**Producción NO coincide con este repositorio.** Las migraciones históricas 14
-y 15 ya tienen implementación y verificadores reproducibles, pero el cierre de
-regresiones de `db/22_cierre_regresiones.sql` sigue solo en local. No describas
-la 22 como aplicada hasta ejecutar su verificador contra producción. El
-contrato vigente está en `RWADAR-MANANA.md`.
+**La web remediada sí está en producción en Cloudflare Pages.** No confundas
+eso con tener correo, push o apps de tienda operativos. El cierre 22 está en
+Supabase; la 23 de correo sigue solo local. El contrato vigente está en
+`RWADAR-MANANA.md`.
 
 **Seis reglas que no se negocian:**
 
-1. **Publicar solo con `node rwadar-publicar.js --produccion`.** Exactamente un
-   modo es obligatorio. Mientras exista `data-deploy-blocker`, usa únicamente
-   `--local`: `--preview` y `--produccion` deben fallar antes de tocar Auth,
-   Supabase o Netlify. Tras cerrar los bloqueos y superar el preflight de Auth,
-   usa `--preview` para revisar y `--produccion` solo de forma deliberada. Nunca
-   `netlify deploy` a secas: sin el pre-renderizado la página queda vacía para Google, y sin
-   `--dir`/`--site` explícitos el CLI publica lo que diga el `.netlify` que
-   él mismo deja en esta carpeta (llegó a apuntar a Downloads entera).
-   Además, **lo que se sube no es `rwadar-site/` sino `rwadar-publicado/`**,
-   que el publicador genera adelgazando el HTML: la fuente conserva sus
-   comentarios y lo publicado pesa 84 kB por la red en vez de 104.
+1. **Generar y validar primero con `node rwadar-publicar.js --local`.** El
+   publicador remoto existente aún llama a Netlify; no es la ruta de producción
+   de Cloudflare. Para Cloudflare se despliega deliberadamente
+   `rwadar-publicado/` con Wrangler fijado, proyecto `rwadar` y rama `main`,
+   después de verificar cuenta, artefacto y hashes. El OAuth de Wrangler quedó
+   reducido a 3 permisos: User Read obligatorio, Account Read y Pages Write.
+   Nunca subas `rwadar-site/`, la raíz ni CALIX. **CALIX es otro proyecto y no
+   se toca desde RWAdar.**
 2. **Los datos no se editan en el HTML ni en el JS generado.** La fuente de
    verdad es Supabase; la siguiente publicación sobrescribe `P`, `FUERA` y `EMI`
    dentro del JavaScript externo versionado.
@@ -125,8 +148,9 @@ quites la primera línea, porque la carpeta de origen puede contener documentos
 ajenos al proyecto.
 
 La app móvil admite actualizaciones EAS, pero una configuración no demuestra
-que la entrega real esté operativa. Para preparar un cambio de código:
-`cd rwadar-movil && npx.cmd eas update --branch production --environment production -m "qué cambia"`.
+que la entrega real esté operativa. El build 4 escucha el canal `preview`; la
+OTA vigente es el grupo `4f9d7e19...`. No publiques una actualización en otra
+rama ni inicies otro build/update salvo una nueva decisión explícita.
 
 No ejecutes ese comando como si fuera una prueba de push: el reparto de avisos
 push sigue sin estar demostrado de extremo a extremo en producción y debe

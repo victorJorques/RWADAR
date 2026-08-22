@@ -185,15 +185,48 @@ begin
      or (select count(*) from public.push_configuracion
           where singleton and not habilitado and activado_el is null
             and activado_por is null) <> 1
-     or (select count(*) from cron.job where jobname = 'rwadar-push') <> 0 then
+     or exists (
+       select 1 from cron.job
+        where jobname = 'rwadar-push'
+           or lower(coalesce(command, '')) like '%push_ciclo%'
+           or lower(coalesce(command, '')) like '%push_soltar%'
+           or lower(coalesce(command, '')) like '%push_confirmar%'
+     ) then
     raise exception '22: push no quedó fail-closed y sin reloj';
+  end if;
+
+  if to_regprocedure('public.avisos_soltar(integer)') is null
+     or to_regprocedure('public.avisos_confirmar()') is null
+     or to_regprocedure('public.avisos_ciclo()') is null
+     or exists (
+       select 1 from cron.job
+        where jobname = 'rwadar-avisos'
+           or lower(coalesce(command, '')) like '%avisos_ciclo%'
+           or lower(coalesce(command, '')) like '%avisos_soltar%'
+           or lower(coalesce(command, '')) like '%avisos_confirmar%'
+     )
+     or position('correo desactivado por cierre 22' in pg_get_functiondef(
+          'public.avisos_soltar(integer)'::regprocedure
+        )) = 0
+     or position('correo desactivado por cierre 22' in pg_get_functiondef(
+          'public.avisos_confirmar()'::regprocedure
+        )) = 0
+     or position('correo desactivado por cierre 22' in pg_get_functiondef(
+          'public.avisos_ciclo()'::regprocedure
+        )) = 0
+     or position('http_post' in pg_get_functiondef(
+          'public.avisos_soltar(integer)'::regprocedure
+        )) > 0 then
+    raise exception '22: correo heredado no quedó fail-closed y sin reloj';
   end if;
 
   if to_regclass('public.retencion_dispositivos_estado') is null
      or (select count(*) from public.retencion_dispositivos_estado
           where singleton) <> 1
      or (select count(*) from cron.job
-          where jobname = 'rwadar-retencion-dispositivos') <> 1
+          where jobname = 'rwadar-retencion-dispositivos'
+             or lower(coalesce(command, '')) like
+                '%retencion_dispositivos_ciclo%') <> 1
      or exists (
        select 1 from cron.job
         where jobname = 'rwadar-retencion-dispositivos'
@@ -212,9 +245,20 @@ begin
     raise exception '22: monitorización de retención no disponible a service_role';
   end if;
 
-  if exists (
+  if (select count(*)
+        from pg_class
+       where relnamespace = 'public'::regnamespace
+         and relname in (
+           'radar_publico', 'descartadas_sin_fuente', 'avisos_pendientes',
+           'avisos_correo_pendientes', 'mi_perfil', 'opiniones_publicas',
+           'nota_media', 'mis_opiniones', 'cola_moderacion',
+           'emisiones_publicas', 'emisiones_rancias'
+         )
+         and relkind = 'v') <> 11
+     or exists (
     select 1 from pg_class
-     where relname in (
+     where relnamespace = 'public'::regnamespace
+       and relname in (
        'radar_publico', 'descartadas_sin_fuente', 'avisos_pendientes',
        'avisos_correo_pendientes', 'mi_perfil', 'opiniones_publicas',
        'nota_media', 'mis_opiniones', 'cola_moderacion',
@@ -260,8 +304,8 @@ begin
 
   for v_fila in
     select * from (values
-      ('avisos_soltar(integer)', 'search_path=public, net, vault, pg_temp'),
-      ('avisos_confirmar()', 'search_path=public, net, pg_temp'),
+      ('avisos_soltar(integer)', 'search_path=public, pg_temp'),
+      ('avisos_confirmar()', 'search_path=public, pg_temp'),
       ('avisos_ciclo()', 'search_path=public, pg_temp')
     ) as opcional(funcion, configuracion)
   loop
@@ -281,7 +325,7 @@ begin
     end if;
   end loop;
 
-  raise notice 'RWAdar 22 OK: permisos, RPC, push apagado y retención diaria verificados';
+  raise notice 'RWAdar 22 OK: permisos, RPC, correo/push apagados y retención diaria verificados';
 end $$;
 
 rollback;

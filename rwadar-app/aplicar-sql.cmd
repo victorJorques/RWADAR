@@ -5,7 +5,7 @@ REM
 REM  Uso: aplicar-sql.cmd REFERENCIA_DEL_PROYECTO db\22_cierre_regresiones.sql
 REM
 REM  No hay destino ni fichero por defecto, no hay globs y no se aceptan
-REM  credenciales por argumento. 13 usa su flujo separado; 16 y los
+REM  credenciales por argumento. 23 usa su flujo separado; 13/16 y los
 REM  retratos recuperados estan bloqueados.
 REM ====================================================================
 setlocal DisableDelayedExpansion
@@ -81,7 +81,7 @@ if /i "%~nx2"=="22_cierre_regresiones.sql" (
 
 echo.
 echo   LISTO. %UNO% aplicado y sus invariantes verificadas.
-echo   PUSH queda APAGADO y sin cron; la retencion diaria queda activa.
+echo   CORREO y PUSH quedan APAGADOS y sin cron; la retencion diaria queda activa.
 echo.
 exit /b 0
 
@@ -107,7 +107,8 @@ exit /b 1
 :fichero_bloqueado
 echo.
 echo   Fichero no permitido. Solo se aprueba 22 para proyectos existentes.
-echo   13 usa aplicar-envio-avisos.cmd; 01-21 solo van en el fresh-install.
+echo   23 usa aplicar-envio-avisos.cmd; 13 es historico y no se aplica.
+echo   01-21 solo van en el fresh-install seguro ^(que excluye 13 y 16^).
 echo   16 y 14-15_recuperado.sql NO se pueden ejecutar.
 echo.
 exit /b 1

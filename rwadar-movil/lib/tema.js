@@ -123,6 +123,18 @@ export const E = {
 /* Escala de radios: la curva crece con la superficie. */
 export const R = { xs: 8, s: 12, m: 14, ficha: 18, panel: 24, pastilla: 99 };
 
+/* Medidas semánticas compartidas por el nuevo shell. Mantenerlas aquí evita
+   que navegación, filas y botones acaben con dianas distintas al crecer la
+   app. Son mínimos táctiles, no tamaños visuales obligatorios. */
+export const UI = {
+  margen: 16,
+  tactil: 48,
+  fila: 60,
+  boton: 52,
+  nav: 68,
+  icono: 24,
+};
+
 export const iniciales = (nombre) =>
   (nombre || '')
     .replace(/[^A-Za-zÀ-ÿ ]/g, '')

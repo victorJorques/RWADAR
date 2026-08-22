@@ -30,7 +30,20 @@ import { C, T, F, R } from '../lib/tema';
    no carga. Se ve peor, pero se ve.
    --------------------------------------------------------------------- */
 
-const PAGINA = 'https://rwadar.netlify.app/#explain';
+const PAGINA = 'https://rwadar.pages.dev/#explain';
+const ORIGEN_RWADAR = new URL(PAGINA).origin;
+
+/* Compara el origen que calcula URL, no un prefijo de texto: así una dirección
+   como `rwadar.pages.dev.ejemplo.test` nunca puede pasar por propia. También
+   se rechazan credenciales embebidas aunque el host final sea el correcto. */
+export function esOrigenRWAdar(valor) {
+  try {
+    const destino = new URL(String(valor || ''));
+    return destino.origin === ORIGEN_RWADAR && !destino.username && !destino.password;
+  } catch {
+    return false;
+  }
+}
 
 /* Se esconde todo menos el explicador, y se desactiva el desplazamiento
    horizontal y el rebote para que dentro de la app no se note que es una
@@ -86,11 +99,11 @@ export default function Explicador({ onCerrar }) {
           onError={() => setFallo(true)}
           onHttpError={() => setFallo(true)}
           startInLoadingState={false}
-          originWhitelist={['https://rwadar.netlify.app']}
+          originWhitelist={['https://rwadar.pages.dev']}
           /* Que no se pueda navegar fuera del explicador: cualquier enlace
              a otra dirección se ignora en vez de convertir la app en un
              navegador. */
-          onShouldStartLoadWithRequest={(r) => r.url.startsWith('https://rwadar.netlify.app')}
+          onShouldStartLoadWithRequest={(r) => esOrigenRWAdar(r?.url)}
           allowsBackForwardNavigationGestures={false}
           scrollEnabled
           bounces={false}

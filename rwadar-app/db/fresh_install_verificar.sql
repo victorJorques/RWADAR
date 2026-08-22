@@ -24,6 +24,7 @@ begin
 
   if to_regclass('public.avisos_push') is null
      or to_regprocedure('public.push_ciclo()') is null
+     or to_regprocedure('public.avisos_ciclo()') is null
      or to_regclass('public.push_configuracion') is null
      or to_regclass('public.retencion_dispositivos_estado') is null
      or to_regclass('public.emisiones') is null
@@ -38,8 +39,17 @@ begin
 
   if (select count(*) from public.push_configuracion
        where singleton and not habilitado and activado_el is null) <> 1
-     or exists (select 1 from cron.job where jobname = 'rwadar-push') then
-    raise exception 'fresh-install: push debe quedar apagado y sin cron';
+     or exists (
+       select 1 from cron.job
+        where jobname in ('rwadar-push', 'rwadar-avisos')
+           or lower(coalesce(command, '')) like '%push_ciclo%'
+           or lower(coalesce(command, '')) like '%push_soltar%'
+           or lower(coalesce(command, '')) like '%push_confirmar%'
+           or lower(coalesce(command, '')) like '%avisos_ciclo%'
+           or lower(coalesce(command, '')) like '%avisos_soltar%'
+           or lower(coalesce(command, '')) like '%avisos_confirmar%'
+     ) then
+    raise exception 'fresh-install: correo y push deben quedar apagados y sin cron';
   end if;
 
   if (select count(*) from cron.job
@@ -55,7 +65,7 @@ begin
     raise exception 'fresh-install: reapareció el contrato inseguro de 16';
   end if;
 
-  raise notice 'RWAdar fresh-install OK: 26/4, push apagado, retención, emisiones y seguridad';
+  raise notice 'RWAdar fresh-install OK: 26/4, correo/push apagados, retención, emisiones y seguridad';
 end $$;
 
 rollback;

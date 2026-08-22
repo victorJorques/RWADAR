@@ -10,18 +10,21 @@ import {
 } from '@expo-google-fonts/geist';
 import { GeistMono_500Medium } from '@expo-google-fonts/geist-mono';
 
-import { C, COLOR_CATEGORIA, iniciales, T, E, R, F } from './lib/tema';
+import { C, COLOR_CATEGORIA, iniciales, T, E, R, F, UI } from './lib/tema';
 import { tacto } from './lib/tacto';
 import {
   cargarRadar, cargarFuera, siguiendo, alternarSeguimiento, novedades,
   sincronizarSeguimientoPendiente, borrarDatosDispositivo,
 } from './lib/datos';
-import { consultarEstadoAvisos, registrarParaAvisos } from './lib/avisos';
+import {
+  consultarEstadoAvisos, registrarParaAvisos, observarAperturasAvisos,
+} from './lib/avisos';
 import Explicador from './componentes/Explicador';
 import Radar from './componentes/Radar';
 import Marca from './componentes/Marca';
+import Navegacion, { Icono } from './componentes/Navegacion';
 
-const URL_PRIVACIDAD = 'https://rwadar.netlify.app/privacidad';
+const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
 
 async function abrirEnlace(url) {
   const valor = String(url || '').trim();
@@ -78,6 +81,7 @@ export default function App() {
   const [estadoAvisos, setEstadoAvisos] = useState({ estado: 'comprobando' });
   const [procesandoAvisos, setProcesandoAvisos] = useState(false);
   const [borrandoDatos, setBorrandoDatos] = useState(false);
+  const [slugAvisoPendiente, setSlugAvisoPendiente] = useState(null);
 
   /* El `finally` no es adorno: si cualquiera de estas llamadas rechazara,
      `cargando` se quedaría en true y la pantalla de "Sintonizando el
@@ -122,6 +126,25 @@ export default function App() {
     });
     return () => { vivo = false; };
   }, []);
+  useEffect(() => observarAperturasAvisos((slug) => {
+    setSlugAvisoPendiente(slug);
+    return true;
+  }), []);
+  useEffect(() => {
+    if (!slugAvisoPendiente || cargando) return;
+    const plataforma = radar.find((p) => p.slug === slugAvisoPendiente);
+    setBusqueda('');
+    setCategoria('');
+    if (plataforma) {
+      setPestana('radar');
+      setAbierta(plataforma);
+    } else {
+      /* Si el cambio acaba de sacar la plataforma del radar, su ficha activa
+         ya no existe. La pantalla de avisos conserva el titular y el motivo. */
+      setPestana('avisos');
+    }
+    setSlugAvisoPendiente(null);
+  }, [slugAvisoPendiente, cargando, radar]);
 
   const refrescar = async () => {
     setRefrescando(true);
@@ -230,7 +253,11 @@ export default function App() {
 
   const abrir = (p) => { tacto.abrir(); setAbierta(p); };
   const filtrar = (c) => { tacto.eleccion(); setCategoria(c); };
-  const cambiarPestana = (id) => { tacto.eleccion(); setPestana(id); };
+  const cambiarPestana = (id) => {
+    if (id === pestana) return;
+    tacto.eleccion();
+    setPestana(id);
+  };
 
   if (!fuentesListas || cargando) {
     return (
@@ -247,119 +274,199 @@ export default function App() {
     <SafeAreaProvider>
       <StatusBar barStyle="light-content" backgroundColor={C.noche2} />
       <SafeAreaView style={e.pantalla} edges={['top']}>
-        <View style={e.cabecera}>
-          <View style={e.marcaFila}>
-            <Marca tamano={30} />
-            <View>
-              <Text style={e.marca}>RWA<Text style={{ color: C.senal }}>dar</Text></Text>
-              <Text style={e.marcaSub}>
-                {radar.length} plataformas verificadas{sinConexion ? ' · sin conexión' : ''}
-              </Text>
-            </View>
-          </View>
-          <View style={e.pestanas}>
-            {[['radar', 'Radar'], ['sigo', `Sigo${sigo.length ? ` ${sigo.length}` : ''}`]].map(([id, txt]) => (
-              <Pressable key={id} onPress={() => cambiarPestana(id)}
-                style={({ pressed }) => [e.pestana, pestana === id && e.pestanaOn, pressed && e.pulsado]}>
-                <Text style={[e.pestanaTxt, pestana === id && e.pestanaTxtOn]}>{txt}</Text>
-              </Pressable>
-            ))}
-          </View>
+        <Cabecera
+          pestana={pestana}
+          total={radar.length}
+          seguidas={sigo.length}
+          sinConexion={sinConexion}
+          onAyuda={() => { tacto.abrir(); setExplicando(true); }}
+        />
+
+        {estadoDatos ? (
+          <Text style={e.estadoGlobal} accessibilityRole="alert" accessibilityLiveRegion="polite">
+            {estadoDatos}
+          </Text>
+        ) : null}
+        {estadoAccion ? (
+          <Text style={e.estadoPendiente} accessibilityRole="alert" accessibilityLiveRegion="polite">
+            {estadoAccion}
+          </Text>
+        ) : null}
+
+        <View style={e.contenido}>
+          {pestana === 'radar' ? (
+            <FlatList
+              data={visibles}
+              keyExtractor={(p) => p.slug}
+              contentContainerStyle={e.lista}
+              keyboardShouldPersistTaps="handled"
+              refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
+              ListHeaderComponent={
+                <View>
+                  {/* El radar sigue siendo el producto y conserva toda su
+                      animación, lectura, puntos y filtros. */}
+                  <Radar
+                    datos={radar}
+                    categoriaActiva={categoria}
+                    onAbrir={(p) => abrir(p)}
+                    onFiltrar={(c) => filtrar(c)} />
+
+                  <Pressable
+                    onPress={() => { tacto.abrir(); setExplicando(true); }}
+                    style={({ pressed }) => [e.banner, pressed && e.pulsado]}
+                    accessibilityRole="button"
+                    accessibilityLabel="Abrir explicación animada sobre tokenización"
+                  >
+                    <View style={e.bannerMarca}><Icono nombre="ayuda" color={C.noche} tamano={22} /></View>
+                    <View style={{ flex: 1 }}>
+                      <Text style={e.bannerTit}>¿Qué es tokenizar un activo?</Text>
+                      <Text style={e.bannerSub}>Explicado con una animación 3D, paso a paso</Text>
+                    </View>
+                    <Icono nombre="flecha" color={C.tx3} tamano={20} />
+                  </Pressable>
+
+                  <View style={e.panelBusqueda}>
+                    <View style={e.busquedaFila}>
+                      <Icono nombre="buscar" color={C.tx2} tamano={23} />
+                      <TextInput
+                        style={e.buscador}
+                        placeholder="Plataforma o palabra clave"
+                        placeholderTextColor={C.tx3}
+                        value={busqueda}
+                        onChangeText={setBusqueda}
+                        returnKeyType="search"
+                        accessibilityLabel="Buscar plataforma o palabra clave"
+                      />
+                      {busqueda || categoria ? (
+                        <Pressable
+                          onPress={() => { setBusqueda(''); filtrar(''); }}
+                          style={({ pressed }) => [e.limpiar, pressed && e.pulsadoSuave]}
+                          accessibilityRole="button"
+                          accessibilityLabel="Limpiar búsqueda y filtros"
+                          hitSlop={8}
+                        >
+                          <Text style={e.limpiarTxt}>✕</Text>
+                        </Pressable>
+                      ) : null}
+                    </View>
+                    <ScrollView
+                      horizontal
+                      showsHorizontalScrollIndicator={false}
+                      style={e.chips}
+                      contentContainerStyle={e.chipsContenido}
+                    >
+                      <Chip texto={`Todas ${radar.length}`} activo={!categoria} onPress={() => filtrar('')} />
+                      {categorias.map(([c, n]) => (
+                        <Chip key={c} texto={`${c} ${n}`} color={COLOR_CATEGORIA[c]}
+                          activo={categoria === c} onPress={() => filtrar(categoria === c ? '' : c)} />
+                      ))}
+                    </ScrollView>
+                    <View style={e.resultadoResumen}>
+                      <Text style={e.resultadoTit}>Plataformas detectadas</Text>
+                      <Text style={e.contador}>{visibles.length} de {radar.length}</Text>
+                    </View>
+                  </View>
+                </View>
+              }
+              renderItem={({ item }) => (
+                <Ficha p={item} sigue={sigo.includes(item.slug)}
+                  onAbrir={() => abrir(item)} onSeguir={() => alternar(item)}
+                  deshabilitado={procesandoSeguimiento} />
+              )}
+              ListEmptyComponent={
+                <EstadoVacioResultados
+                  texto={nadaQueVer}
+                  sePuedeLimpiar={radar.length > 0 && !!(busqueda || categoria)}
+                  onLimpiar={() => { setBusqueda(''); filtrar(''); }}
+                />
+              }
+              ListFooterComponent={
+                <View>
+                  <Descartadas fuera={fuera} />
+                  <PiePrivacidad onAbrir={() => setPrivacidad(true)} />
+                </View>
+              }
+            />
+          ) : null}
+
+          {pestana === 'sigo' ? (
+            <FlatList
+              data={seguidas}
+              keyExtractor={(p) => p.slug}
+              contentContainerStyle={[e.lista, !seguidas.length && e.listaVacia]}
+              refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
+              ListHeaderComponent={seguidas.length ? (
+                <ResumenSeguimiento cantidad={seguidas.length} onAvisos={() => cambiarPestana('avisos')} />
+              ) : null}
+              renderItem={({ item }) => (
+                <Ficha p={item} sigue onAbrir={() => abrir(item)} onSeguir={() => alternar(item)}
+                  deshabilitado={procesandoSeguimiento} />
+              )}
+              ListEmptyComponent={
+                <EstadoVacioSeguimiento
+                  onExplorar={() => cambiarPestana('radar')}
+                  onAprender={() => { tacto.abrir(); setExplicando(true); }}
+                />
+              }
+              ListFooterComponent={seguidas.length ? <PiePrivacidad onAbrir={() => setPrivacidad(true)} /> : null}
+            />
+          ) : null}
+
+          {pestana === 'avisos' ? (
+            <FlatList
+              data={avisos}
+              keyExtractor={(a) => String(a.id)}
+              contentContainerStyle={[e.lista, !avisos.length && e.listaVacia]}
+              refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
+              ListHeaderComponent={
+                <View>
+                  <PanelAvisos
+                    estado={estadoAvisos}
+                    tieneSeguimientos={sigo.length > 0}
+                    procesando={procesandoAvisos}
+                    onActivar={activarAvisos}
+                    onAjustes={abrirAjustes}
+                  />
+                  {avisos.length ? (
+                    <View style={e.seccionCab}>
+                      <Text style={e.seccionTit}>Últimas novedades</Text>
+                      <Text style={e.seccionDato}>{avisos.length}</Text>
+                    </View>
+                  ) : null}
+                </View>
+              }
+              renderItem={({ item }) => <Aviso aviso={item} />}
+              ListEmptyComponent={
+                <EstadoVacioAvisos onExplorar={() => cambiarPestana('radar')} />
+              }
+              ListFooterComponent={<PiePrivacidad onAbrir={() => setPrivacidad(true)} />}
+            />
+          ) : null}
+
+          {pestana === 'mas' ? (
+            <PantallaMas
+              cantidadSeguimientos={sigo.length}
+              sinConexion={sinConexion}
+              estadoAvisos={estadoAvisos}
+              refrescando={refrescando}
+              borrando={borrandoDatos}
+              onActualizar={refrescar}
+              onAvisos={() => cambiarPestana('avisos')}
+              onExplicar={() => { tacto.abrir(); setExplicando(true); }}
+              onPrivacidad={() => setPrivacidad(true)}
+              onPolitica={() => abrirEnlace(URL_PRIVACIDAD)}
+              onContacto={() => abrirEnlace('mailto:RWAdar@protonmail.com')}
+              onBorrar={confirmarBorrado}
+            />
+          ) : null}
         </View>
 
-        {estadoDatos ? <Text style={e.estadoGlobal}>{estadoDatos}</Text> : null}
-        {estadoAccion ? <Text style={e.estadoPendiente}>{estadoAccion}</Text> : null}
-
-        {pestana === 'radar' ? (
-          <FlatList
-            data={visibles}
-            keyExtractor={(p) => p.slug}
-            contentContainerStyle={e.lista}
-            refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
-            ListHeaderComponent={
-              <View>
-                {/* El radar va lo primero, igual que en la web: es el
-                    producto, no una ilustración. Sale de la misma lista que
-                    las fichas de abajo y cada punto abre la suya. */}
-                <Radar
-                  datos={radar}
-                  categoriaActiva={categoria}
-                  onAbrir={(p) => abrir(p)}
-                  onFiltrar={(c) => filtrar(c)} />
-
-                <Pressable onPress={() => { tacto.abrir(); setExplicando(true); }}
-                  style={({ pressed }) => [e.banner, pressed && e.pulsado]}>
-                  <View style={e.bannerMarca}><Text style={e.bannerMarcaTxt}>?</Text></View>
-                  <View style={{ flex: 1 }}>
-                    <Text style={e.bannerTit}>¿Qué es tokenizar un activo?</Text>
-                    <Text style={e.bannerSub}>Explicado en 30 segundos, paso a paso</Text>
-                  </View>
-                  <Text style={e.bannerFlecha}>›</Text>
-                </Pressable>
-
-                <TextInput
-                  style={e.buscador}
-                  placeholder="Buscar plataforma o palabra clave…"
-                  placeholderTextColor={C.tx2}
-                  value={busqueda} onChangeText={setBusqueda}
-                />
-                <ScrollView horizontal showsHorizontalScrollIndicator={false} style={e.chips}>
-                  <Chip texto={`Todas ${radar.length}`} activo={!categoria} onPress={() => filtrar('')} />
-                  {categorias.map(([c, n]) => (
-                    <Chip key={c} texto={`${c} ${n}`} color={COLOR_CATEGORIA[c]}
-                      activo={categoria === c} onPress={() => filtrar(categoria === c ? '' : c)} />
-                  ))}
-                </ScrollView>
-                <Text style={e.contador}>{visibles.length} de {radar.length} plataformas</Text>
-              </View>
-            }
-            renderItem={({ item }) => (
-              <Ficha p={item} sigue={sigo.includes(item.slug)}
-                onAbrir={() => abrir(item)} onSeguir={() => alternar(item)}
-                deshabilitado={procesandoSeguimiento} />
-            )}
-            ListEmptyComponent={<Text style={e.vacio}>{nadaQueVer}</Text>}
-            ListFooterComponent={
-              <View>
-                <Descartadas fuera={fuera} />
-                <PiePrivacidad onAbrir={() => setPrivacidad(true)} />
-              </View>
-            }
-          />
-        ) : (
-          <FlatList
-            data={seguidas}
-            keyExtractor={(p) => p.slug}
-            contentContainerStyle={e.lista}
-            refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
-            ListHeaderComponent={
-              <View>
-                <PanelAvisos
-                  estado={estadoAvisos}
-                  tieneSeguimientos={sigo.length > 0}
-                  procesando={procesandoAvisos}
-                  onActivar={activarAvisos}
-                  onAjustes={abrirAjustes}
-                />
-                <Avisos avisos={avisos} />
-              </View>
-            }
-            renderItem={({ item }) => (
-              <Ficha p={item} sigue onAbrir={() => abrir(item)} onSeguir={() => alternar(item)}
-                deshabilitado={procesandoSeguimiento} />
-            )}
-            ListEmptyComponent={
-              <View style={e.vacioCaja}>
-                <Text style={e.vacioTitulo}>Todavía no sigues ninguna</Text>
-                <Text style={e.vacio}>
-                  Marca una plataforma en el radar para verla aquí. La app indicará por
-                  separado si los avisos push están disponibles y realmente operativos.
-                </Text>
-              </View>
-            }
-            ListFooterComponent={<PiePrivacidad onAbrir={() => setPrivacidad(true)} />}
-          />
-        )}
+        <Navegacion
+          activa={pestana}
+          seguimientos={sigo.length}
+          novedades={avisos.length}
+          onCambiar={cambiarPestana}
+        />
 
         <Detalle p={abierta} sigue={abierta && sigo.includes(abierta.slug)}
           onCerrar={() => { tacto.eleccion(); setAbierta(null); }}
@@ -381,9 +488,289 @@ export default function App() {
   );
 }
 
+function Cabecera({ pestana, total, seguidas, sinConexion, onAyuda }) {
+  const textos = {
+    radar: {
+      etiqueta: 'RADAR DE ACTIVOS REALES',
+      titulo: 'Explora lo verificado',
+      subtitulo: `${total} plataformas${sinConexion ? ' · copia sin conexión' : ' · datos actualizados'}`,
+    },
+    sigo: {
+      etiqueta: 'TU SEGUIMIENTO',
+      titulo: 'Plataformas seguidas',
+      subtitulo: seguidas ? `${seguidas} bajo seguimiento en este dispositivo` : 'Guarda las que quieras vigilar',
+    },
+    avisos: {
+      etiqueta: 'ESTADO Y NOVEDADES',
+      titulo: 'Avisos claros',
+      subtitulo: 'Permiso, preparación y entrega son estados distintos',
+    },
+    mas: {
+      etiqueta: 'CONTROL DE LA APP',
+      titulo: 'Más',
+      subtitulo: 'Aprendizaje, actualización y privacidad',
+    },
+  };
+  const actual = textos[pestana] || textos.radar;
+
+  return (
+    <View style={e.cabecera}>
+      <View style={e.cabeceraSuperior}>
+        <View style={e.marcaFila} accessibilityRole="header">
+          <Marca tamano={27} />
+          <Text style={e.marca}>RWA<Text style={{ color: C.senal }}>dar</Text></Text>
+        </View>
+        <Pressable
+          onPress={onAyuda}
+          style={({ pressed }) => [e.accionCabecera, pressed && e.pulsado]}
+          accessibilityRole="button"
+          accessibilityLabel="Abrir explicación animada sobre RWAdar"
+          hitSlop={7}
+        >
+          <Icono nombre="ayuda" color={C.tx} tamano={23} />
+        </Pressable>
+      </View>
+      <Text style={e.cabeceraEtiqueta}>{actual.etiqueta}</Text>
+      <Text style={e.cabeceraTitulo} accessibilityRole="header">{actual.titulo}</Text>
+      <Text style={e.cabeceraSub}>{actual.subtitulo}</Text>
+    </View>
+  );
+}
+
+function ResumenSeguimiento({ cantidad, onAvisos }) {
+  return (
+    <View style={e.resumenSeguimiento}>
+      <Text style={e.resumenEtiqueta}>TU RADAR</Text>
+      <Text style={e.resumenTitulo}>
+        {cantidad} {cantidad === 1 ? 'plataforma seguida' : 'plataformas seguidas'}
+      </Text>
+      <Text style={e.resumenTexto}>
+        Los cambios se guardan también sin conexión. RWAdar te indicará si queda algo pendiente de sincronizar.
+      </Text>
+      <Pressable
+        onPress={onAvisos}
+        style={({ pressed }) => [e.resumenAccion, pressed && e.pulsado]}
+        accessibilityRole="button"
+      >
+        <Icono nombre="avisos" color={C.senal} tamano={20} />
+        <Text style={e.resumenAccionTxt}>Comprobar avisos</Text>
+        <Icono nombre="flecha" color={C.tx3} tamano={18} />
+      </Pressable>
+    </View>
+  );
+}
+
+function EstadoVacioSeguimiento({ onExplorar, onAprender }) {
+  return (
+    <View style={e.vacioGrande}>
+      <View style={e.vacioMarca}>
+        <View style={e.vacioEco} />
+        <Marca tamano={74} />
+      </View>
+      <Text style={e.vacioTituloGrande}>Guarda lo que quieras vigilar</Text>
+      <Text style={e.vacioDescripcion}>
+        Sigue una plataforma para tenerla a mano y consultar aquí sus novedades verificadas.
+      </Text>
+      <Pressable
+        onPress={onExplorar}
+        style={({ pressed }) => [e.cta, pressed && e.pulsado]}
+        accessibilityRole="button"
+      >
+        <Text style={e.ctaTxt}>Explorar el radar</Text>
+      </Pressable>
+      <Pressable
+        onPress={onAprender}
+        style={({ pressed }) => [e.ctaTexto, pressed && e.pulsadoSuave]}
+        accessibilityRole="button"
+      >
+        <Text style={e.ctaTextoTxt}>Ver cómo funciona la tokenización</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+function EstadoVacioAvisos({ onExplorar }) {
+  return (
+    <View style={e.vacioAvisos}>
+      <View style={e.vacioIcono}><Icono nombre="avisos" color={C.senal} tamano={44} /></View>
+      <Text style={e.vacioTituloGrande}>No hay novedades todavía</Text>
+      <Text style={e.vacioDescripcion}>
+        Aquí aparecerán los cambios publicados para las plataformas que sigues. El panel superior muestra el estado real del dispositivo.
+      </Text>
+      <Pressable
+        onPress={onExplorar}
+        style={({ pressed }) => [e.cta, pressed && e.pulsado]}
+        accessibilityRole="button"
+      >
+        <Text style={e.ctaTxt}>Explorar plataformas</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+function EstadoVacioResultados({ texto, sePuedeLimpiar, onLimpiar }) {
+  return (
+    <View style={e.vacioResultados}>
+      <Icono nombre="radar" color={C.tx3} tamano={38} />
+      <Text style={e.vacio}>{texto}</Text>
+      {sePuedeLimpiar ? (
+        <Pressable
+          onPress={onLimpiar}
+          style={({ pressed }) => [e.ctaBorde, pressed && e.pulsado]}
+          accessibilityRole="button"
+        >
+          <Text style={e.ctaBordeTxt}>Quitar filtros</Text>
+        </Pressable>
+      ) : null}
+    </View>
+  );
+}
+
+function etiquetaEstadoAvisos(estado) {
+  switch (estado?.estado) {
+    case 'activo': return 'Envío activo';
+    case 'preparado': return 'Dispositivo preparado';
+    case 'disponible': return 'Permiso disponible';
+    case 'registro-pendiente': return 'Registro pendiente';
+    case 'denegado': return 'Permiso denegado';
+    case 'comprobando': return 'Comprobando';
+    case 'no-compatible': return 'No compatible aquí';
+    case 'emulador': return 'Requiere dispositivo';
+    case 'expo-go': return 'Requiere compilación nativa';
+    case 'configuracion-pendiente': return 'Configuración pendiente';
+    default: return 'No comprobado';
+  }
+}
+
+function PantallaMas({
+  cantidadSeguimientos, sinConexion, estadoAvisos, refrescando, borrando,
+  onActualizar, onAvisos, onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar,
+}) {
+  return (
+    <ScrollView
+      contentContainerStyle={e.masCuerpo}
+      refreshControl={<RefreshControl refreshing={refrescando} onRefresh={onActualizar} tintColor={C.senal} />}
+    >
+      <View style={e.resumenDispositivo}>
+        <View style={e.resumenMarca}><Marca tamano={48} /></View>
+        <View style={{ flex: 1 }}>
+          <Text style={e.resumenEtiqueta}>TU DISPOSITIVO</Text>
+          <Text style={e.resumenTitulo}>RWAdar listo para consultar</Text>
+          <Text style={e.resumenTexto}>
+            {sinConexion ? 'Usando la última copia local disponible.' : 'Catálogo conectado y disponible sin crear una cuenta.'}
+          </Text>
+        </View>
+        <View style={e.resumenNumero}>
+          <Text style={e.resumenNumeroValor}>{cantidadSeguimientos}</Text>
+          <Text style={e.resumenNumeroEtiqueta}>SIGUIENDO</Text>
+        </View>
+      </View>
+
+      <GrupoMenu titulo="Entender RWAdar">
+        <FilaMenu
+          icono="ayuda"
+          titulo="Cómo funciona la tokenización"
+          subtitulo="Abrir la explicación animada en 3D"
+          onPress={onExplicar}
+        />
+        <FilaMenu
+          icono="actualizar"
+          titulo="Actualizar catálogo"
+          subtitulo={sinConexion ? 'Volver a intentar la conexión' : 'Descargar los últimos datos verificados'}
+          onPress={onActualizar}
+          cargando={refrescando}
+          ultima
+        />
+      </GrupoMenu>
+
+      <GrupoMenu titulo="Avisos">
+        <FilaMenu
+          icono="avisos"
+          titulo="Gestionar avisos"
+          subtitulo={etiquetaEstadoAvisos(estadoAvisos)}
+          onPress={onAvisos}
+          ultima
+        />
+      </GrupoMenu>
+
+      <GrupoMenu titulo="Privacidad y datos">
+        <FilaMenu
+          icono="privacidad"
+          titulo="Datos de esta app"
+          subtitulo="Qué se guarda y cómo eliminarlo"
+          onPress={onPrivacidad}
+        />
+        <FilaMenu
+          icono="enlace"
+          titulo="Política de privacidad"
+          subtitulo="Abrir la política completa"
+          onPress={onPolitica}
+        />
+        <FilaMenu
+          icono="correo"
+          titulo="Contactar sobre mis datos"
+          subtitulo="RWAdar@protonmail.com"
+          onPress={onContacto}
+        />
+        <FilaMenu
+          icono="borrar"
+          titulo="Borrar datos del dispositivo"
+          subtitulo="Instalación, seguimientos, token y cachés"
+          onPress={onBorrar}
+          cargando={borrando}
+          peligro
+          ultima
+        />
+      </GrupoMenu>
+
+      <Text style={e.notaMas}>
+        RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación. Esto no es asesoramiento financiero.
+      </Text>
+    </ScrollView>
+  );
+}
+
+function GrupoMenu({ titulo, children }) {
+  return (
+    <View style={e.grupoSeccion}>
+      <Text style={e.grupoTitulo}>{titulo}</Text>
+      <View style={e.grupo}>{children}</View>
+    </View>
+  );
+}
+
+function FilaMenu({ icono, titulo, subtitulo, onPress, ultima, peligro, cargando }) {
+  const color = peligro ? C.coral : C.tx;
+  return (
+    <Pressable
+      onPress={onPress}
+      disabled={cargando}
+      style={({ pressed }) => [e.filaMenu, !ultima && e.filaMenuBorde, pressed && e.pulsadoSuave, cargando && e.deshabilitado]}
+      accessibilityRole="button"
+      accessibilityLabel={`${titulo}. ${subtitulo}`}
+      accessibilityState={{ disabled: !!cargando, busy: !!cargando }}
+    >
+      <View style={[e.filaIcono, peligro && e.filaIconoPeligro]}>
+        <Icono nombre={icono} color={color} tamano={22} />
+      </View>
+      <View style={{ flex: 1 }}>
+        <Text style={[e.filaTitulo, peligro && e.filaTituloPeligro]}>{titulo}</Text>
+        <Text style={e.filaSub}>{subtitulo}</Text>
+      </View>
+      {cargando ? <ActivityIndicator size="small" color={color} /> : <Icono nombre="flecha" color={C.tx3} tamano={18} />}
+    </Pressable>
+  );
+}
+
 function Chip({ texto, color, activo, onPress }) {
   return (
-    <Pressable onPress={onPress} style={({ pressed }) => [e.chip, activo && e.chipOn, pressed && e.pulsado]}>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [e.chip, activo && e.chipOn, pressed && e.pulsado]}
+      accessibilityRole="button"
+      accessibilityState={{ selected: activo }}
+      accessibilityLabel={`Filtrar por ${texto}`}
+    >
       {color ? <View style={[e.punto, { backgroundColor: color }]} /> : null}
       <Text style={[e.chipTxt, activo && e.chipTxtOn]} numberOfLines={1}>{texto}</Text>
     </Pressable>
@@ -393,7 +780,12 @@ function Chip({ texto, color, activo, onPress }) {
 function Ficha({ p, sigue, onAbrir, onSeguir, deshabilitado }) {
   return (
     <View style={e.ficha}>
-      <Pressable onPress={onAbrir} style={({ pressed }) => [e.fichaTop, pressed && e.pulsadoSuave]}>
+      <Pressable
+        onPress={onAbrir}
+        style={({ pressed }) => [e.fichaTop, pressed && e.pulsadoSuave]}
+        accessibilityRole="button"
+        accessibilityLabel={`${p.nombre}. ${p.actor}, ${p.region}. Abrir ficha.`}
+      >
         <View style={[e.mono, { backgroundColor: COLOR_CATEGORIA[p.categoria] || C.sup3 }]}>
           <Text style={e.monoTxt}>{iniciales(p.nombre)}</Text>
         </View>
@@ -401,6 +793,7 @@ function Ficha({ p, sigue, onAbrir, onSeguir, deshabilitado }) {
           <Text style={e.fichaNombre}>{p.nombre}</Text>
           <Text style={e.fichaSub}>{p.actor} · {p.region}</Text>
         </View>
+        <Icono nombre="flecha" color={C.tx3} tamano={18} />
       </Pressable>
       <Text style={e.fichaNota} numberOfLines={3}>{p.nota}</Text>
       <View style={e.etiquetas}>
@@ -408,24 +801,24 @@ function Ficha({ p, sigue, onAbrir, onSeguir, deshabilitado }) {
         <Text style={e.etiqueta}>Entrada: {(p.ticket || '').toLowerCase()}</Text>
       </View>
       <Pressable onPress={onSeguir} disabled={deshabilitado}
-        style={({ pressed }) => [e.seguir, sigue && e.seguirOn, deshabilitado && e.deshabilitado, pressed && e.pulsado]}>
+        style={({ pressed }) => [e.seguir, sigue && e.seguirOn, deshabilitado && e.deshabilitado, pressed && e.pulsado]}
+        accessibilityRole="button"
+        accessibilityLabel={sigue ? `Dejar de seguir ${p.nombre}` : `Seguir ${p.nombre}`}
+        accessibilityState={{ selected: sigue, disabled: deshabilitado }}>
         <Text style={[e.seguirTxt, sigue && e.seguirTxtOn]}>{sigue ? '✓ Siguiendo' : '+ Seguir'}</Text>
       </Pressable>
     </View>
   );
 }
 
-function Avisos({ avisos }) {
-  if (!avisos.length) return null;
+function Aviso({ aviso }) {
   return (
-    <View style={e.avisos}>
-      <Text style={e.avisosTitulo}>NOVEDADES</Text>
-      {avisos.map((a) => (
-        <View key={a.id} style={e.aviso}>
-          <Text style={e.avisoTitular}>{a.titular}</Text>
-          {a.detalle ? <Text style={e.avisoDetalle} numberOfLines={3}>{a.detalle}</Text> : null}
-        </View>
-      ))}
+    <View style={e.aviso} accessibilityRole="summary">
+      <View style={e.avisoMarca} />
+      <View style={{ flex: 1 }}>
+        <Text style={e.avisoTitular}>{aviso.titular}</Text>
+        {aviso.detalle ? <Text style={e.avisoDetalle}>{aviso.detalle}</Text> : null}
+      </View>
     </View>
   );
 }
@@ -485,14 +878,26 @@ function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjust
   }
 
   return (
-    <View style={tono}>
-      <Text style={e.panelAvisosTitulo}>{titulo}</Text>
+    <View style={tono} accessibilityLiveRegion="polite">
+      <View style={e.panelAvisosCab}>
+        <View style={e.panelAvisosIcono}>
+          <Icono nombre="avisos" color={C.senal} tamano={24} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Text style={e.panelAvisosEtiqueta}>ESTADO DEL DISPOSITIVO</Text>
+          <Text style={e.panelAvisosTitulo}>{titulo}</Text>
+        </View>
+      </View>
       <Text style={e.panelAvisosTexto}>{texto}</Text>
       {estado.estado === 'comprobando' || procesando ? (
         <ActivityIndicator size="small" color={C.senal} style={{ marginTop: 10 }} />
       ) : null}
       {accion && !procesando ? (
-        <Pressable onPress={accion[1]} style={({ pressed }) => [e.panelAvisosBoton, pressed && e.pulsado]}>
+        <Pressable
+          onPress={accion[1]}
+          style={({ pressed }) => [e.panelAvisosBoton, pressed && e.pulsado]}
+          accessibilityRole="button"
+        >
           <Text style={e.panelAvisosBotonTxt}>{accion[0]}</Text>
         </Pressable>
       ) : null}
@@ -502,7 +907,11 @@ function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjust
 
 function PiePrivacidad({ onAbrir }) {
   return (
-    <Pressable onPress={onAbrir} style={({ pressed }) => [e.piePrivacidad, pressed && e.pulsadoSuave]}>
+    <Pressable
+      onPress={onAbrir}
+      style={({ pressed }) => [e.piePrivacidad, pressed && e.pulsadoSuave]}
+      accessibilityRole="button"
+    >
       <Text style={e.piePrivacidadTxt}>Privacidad y datos de esta app</Text>
     </Pressable>
   );
@@ -518,7 +927,8 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
               <Text style={e.detNombre}>Privacidad</Text>
               <Text style={e.fichaSub}>Qué trata la app móvil</Text>
             </View>
-            <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]} hitSlop={10}>
+            <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]} hitSlop={10}
+              accessibilityRole="button" accessibilityLabel="Cerrar privacidad">
               <Text style={e.cerrarTxt}>✕</Text>
             </Pressable>
           </View>
@@ -554,15 +964,18 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
             </Text>
 
             <Pressable onPress={() => abrirEnlace(URL_PRIVACIDAD)}
-              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}>
+              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
+              accessibilityRole="link">
               <Text style={e.botonBordeTxt}>Abrir política completa ↗</Text>
             </Pressable>
             <Pressable onPress={() => abrirEnlace('mailto:RWAdar@protonmail.com')}
-              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}>
+              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
+              accessibilityRole="link">
               <Text style={e.botonBordeTxt}>Contactar sobre mis datos</Text>
             </Pressable>
             <Pressable onPress={onBorrar} disabled={borrando}
-              style={({ pressed }) => [e.botonPeligro, borrando && e.deshabilitado, pressed && e.pulsado]}>
+              style={({ pressed }) => [e.botonPeligro, borrando && e.deshabilitado, pressed && e.pulsado]}
+              accessibilityRole="button" accessibilityState={{ disabled: borrando, busy: borrando }}>
               {borrando ? <ActivityIndicator size="small" color={C.tx} /> : (
                 <Text style={e.botonPeligroTxt}>Borrar datos de este dispositivo</Text>
               )}
@@ -595,7 +1008,8 @@ function Descartadas({ fuera }) {
             <View style={e.fuentes}>
               <Text style={e.fuentesTitulo}>COMPROBADO EN</Text>
               {f.fuentes.map((s) => (
-                <Pressable key={s.url} onPress={() => { tacto.eleccion(); abrirEnlace(s.url); }}>
+                <Pressable key={s.url} onPress={() => { tacto.eleccion(); abrirEnlace(s.url); }}
+                  accessibilityRole="link" accessibilityLabel={`Abrir fuente: ${s.titulo}`}>
                   <Text style={e.fuente} numberOfLines={2}>{s.titulo} ↗</Text>
                 </Pressable>
               ))}
@@ -621,7 +1035,8 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
               <Text style={e.detNombre}>{p.nombre}</Text>
               <Text style={e.fichaSub}>{p.categoria}</Text>
             </View>
-            <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]} hitSlop={10}>
+            <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]} hitSlop={10}
+              accessibilityRole="button" accessibilityLabel={`Cerrar ficha de ${p.nombre}`}>
               <Text style={e.cerrarTxt}>✕</Text>
             </Pressable>
           </View>
@@ -642,13 +1057,16 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
               ))}
             </View>
             <Pressable onPress={onSeguir} disabled={deshabilitado}
-              style={({ pressed }) => [e.botonPrincipal, sigue && e.botonSecundario, deshabilitado && e.deshabilitado, pressed && e.pulsado]}>
+              style={({ pressed }) => [e.botonPrincipal, sigue && e.botonSecundario, deshabilitado && e.deshabilitado, pressed && e.pulsado]}
+              accessibilityRole="button"
+              accessibilityState={{ selected: sigue, disabled: deshabilitado }}>
               <Text style={[e.botonTxt, sigue && { color: C.senal }]}>
                 {sigue ? '✓ Siguiendo esta plataforma' : 'Seguir esta plataforma'}
               </Text>
             </Pressable>
             <Pressable onPress={() => { tacto.eleccion(); p.web && abrirEnlace(p.web); }}
-              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}>
+              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
+              accessibilityRole="link">
               <Text style={e.botonBordeTxt}>Abrir la web oficial ↗</Text>
             </Pressable>
             <Text style={e.nota}>
@@ -667,25 +1085,27 @@ const e = StyleSheet.create({
   centro: { alignItems: 'center', justifyContent: 'center' },
   cargandoTxt: { ...T.cuerpo, marginTop: 14, color: C.tx2 },
 
-  /* Todo lo pulsable cede al pulsarlo, igual que en la web. */
-  pulsado: { transform: [{ scale: 0.955 }], opacity: 0.92 },
+  /* Las superficies grandes apenas ceden: conservan la respuesta táctil
+     sin producir el salto visual de encoger una tarjeta completa. */
+  pulsado: { transform: [{ scale: 0.98 }], opacity: 0.9 },
   pulsadoSuave: { opacity: 0.68 },
   deshabilitado: { opacity: 0.5 },
 
-  /* La cabecera ya no es un bloque de color sobre papel: sobre fondo de
-     noche lo que la separa es una línea y medio tono de superficie. */
+  contenido: { flex: 1 },
   cabecera: {
-    backgroundColor: C.noche2, paddingHorizontal: 18, paddingTop: 12, paddingBottom: 14,
-    borderBottomWidth: 1, borderBottomColor: C.linea,
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    backgroundColor: C.noche2, paddingHorizontal: UI.margen, paddingTop: 10, paddingBottom: 17,
+    borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2,
   },
-  marca: { fontFamily: F.extra, fontSize: 24, letterSpacing: -0.8, color: C.tx },
-  marcaSub: { ...T.dato, fontSize: 10.5, color: C.tx3, marginTop: 3 },
-  pestanas: { flexDirection: 'row', backgroundColor: C.sup2, borderRadius: R.pastilla, padding: 3 },
-  pestana: { paddingHorizontal: 14, paddingVertical: 7, borderRadius: R.pastilla },
-  pestanaOn: { backgroundColor: C.senal },
-  pestanaTxt: { ...T.menor, fontFamily: F.semi, color: C.tx2 },
-  pestanaTxtOn: { color: C.noche },
+  cabeceraSuperior: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  marcaFila: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  marca: { fontFamily: F.extra, fontSize: 21, letterSpacing: -0.7, color: C.tx },
+  accionCabecera: {
+    width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.sup2, borderWidth: 1, borderColor: C.linea2,
+  },
+  cabeceraEtiqueta: { ...T.etiqueta, color: C.senal, marginTop: 13, marginBottom: 4 },
+  cabeceraTitulo: { ...T.titular, fontSize: 26, lineHeight: 30, color: C.tx },
+  cabeceraSub: { ...T.menor, color: C.tx2, marginTop: 3 },
 
   estadoGlobal: {
     ...T.menor, color: '#F2B23C', backgroundColor: '#2B2416',
@@ -696,30 +1116,39 @@ const e = StyleSheet.create({
     paddingHorizontal: 16, paddingVertical: 9,
   },
 
-  lista: { padding: 16, paddingBottom: 40 },
+  lista: { padding: UI.margen, paddingBottom: 26 },
+  listaVacia: { flexGrow: 1 },
 
   banner: {
     flexDirection: 'row', alignItems: 'center', gap: 13,
     backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.ficha, padding: 15, marginBottom: 14, ...E.e2,
+    borderRadius: R.ficha, padding: 15, minHeight: 76, marginBottom: 14, ...E.e1,
   },
   bannerMarca: {
-    width: 38, height: 38, borderRadius: R.s, backgroundColor: C.senal,
+    width: 42, height: 42, borderRadius: R.m, backgroundColor: C.senal,
     alignItems: 'center', justifyContent: 'center',
   },
-  bannerMarcaTxt: { fontFamily: F.extra, fontSize: 19, color: C.noche },
   bannerTit: { ...T.ficha, fontSize: 15.5, color: C.tx },
   bannerSub: { ...T.menor, fontSize: 12, color: C.tx2, marginTop: 2 },
-  bannerFlecha: { fontFamily: F.media, fontSize: 24, color: C.tx3 },
 
-  buscador: {
-    ...T.cuerpo, backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.pastilla, paddingHorizontal: 18, paddingVertical: 12,
-    color: C.tx, marginBottom: 12,
+  panelBusqueda: {
+    backgroundColor: C.sup, borderWidth: 1.5, borderColor: C.senal34,
+    borderRadius: R.ficha, marginBottom: 15, overflow: 'hidden', ...E.e2,
   },
-  chips: { marginBottom: 12 },
+  busquedaFila: {
+    minHeight: UI.fila, flexDirection: 'row', alignItems: 'center', gap: 11,
+    paddingHorizontal: 14, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2,
+  },
+  buscador: { ...T.cuerpo, color: C.tx, flex: 1, paddingVertical: 12 },
+  limpiar: {
+    width: 36, height: 36, borderRadius: 18, backgroundColor: C.sup2,
+    alignItems: 'center', justifyContent: 'center',
+  },
+  limpiarTxt: { fontFamily: F.media, fontSize: 13, color: C.tx2 },
+  chips: { maxHeight: 58 },
+  chipsContenido: { paddingHorizontal: 12, paddingVertical: 10 },
   chip: {
-    flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: C.sup,
+    minHeight: 38, flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: C.sup2,
     borderWidth: 1, borderColor: C.linea, borderRadius: R.pastilla,
     paddingHorizontal: 13, paddingVertical: 8, marginRight: 8,
   },
@@ -727,13 +1156,18 @@ const e = StyleSheet.create({
   chipTxt: { ...T.menor, fontFamily: F.media, color: C.tx2 },
   chipTxtOn: { color: C.noche },
   punto: { width: 8, height: 8, borderRadius: 4 },
-  contador: { ...T.dato, color: C.tx2, marginBottom: 12 },
+  resultadoResumen: {
+    minHeight: 48, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    paddingHorizontal: 14, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2,
+  },
+  resultadoTit: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
+  contador: { ...T.dato, color: C.senal },
 
   ficha: {
     backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
     borderRadius: R.ficha, padding: 16, marginBottom: 12, gap: 10, ...E.e1,
   },
-  fichaTop: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  fichaTop: { minHeight: 50, flexDirection: 'row', alignItems: 'center', gap: 12 },
   mono: { width: 44, height: 44, borderRadius: R.m, alignItems: 'center', justifyContent: 'center' },
   monoGrande: { width: 52, height: 52, borderRadius: 16 },
   /* Las iniciales van sobre el color de la categoría, que es claro:
@@ -749,37 +1183,130 @@ const e = StyleSheet.create({
     paddingHorizontal: 9, paddingVertical: 4, overflow: 'hidden',
   },
   etiquetaAcento: { backgroundColor: C.senal10, borderColor: C.senal34, color: C.senal },
-  seguir: { borderWidth: 1, borderColor: C.linea, borderRadius: R.pastilla, paddingVertical: 10, alignItems: 'center' },
+  seguir: {
+    minHeight: UI.tactil, borderWidth: 1, borderColor: C.senal,
+    borderRadius: R.m, alignItems: 'center', justifyContent: 'center',
+  },
   seguirOn: { backgroundColor: C.senal10, borderColor: C.senal },
-  seguirTxt: { ...T.menor, fontFamily: F.semi, color: C.tx2 },
+  seguirTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.senal },
   seguirTxtOn: { color: C.senal },
 
   vacio: { ...T.cuerpo, color: C.tx2, textAlign: 'center' },
-  vacioCaja: { padding: 28, alignItems: 'center', gap: 8 },
-  vacioTitulo: { ...T.ficha, color: C.tx },
-
-  avisos: { marginBottom: 16 },
-  avisosTitulo: { ...T.etiqueta, color: C.tx2, marginBottom: 8 },
-  aviso: {
-    backgroundColor: C.coral10, borderWidth: 1, borderColor: C.coral32,
-    borderRadius: R.s, padding: 13, marginBottom: 8,
+  vacioGrande: {
+    flex: 1, minHeight: 430, alignItems: 'center', justifyContent: 'center',
+    paddingHorizontal: 16, paddingBottom: 28,
   },
-  avisoTitular: { ...T.cuerpoFte, fontFamily: F.negrita, color: C.coral },
-  avisoDetalle: { ...T.menor, color: C.tx2, marginTop: 4 },
+  vacioMarca: {
+    width: 132, height: 132, alignItems: 'center', justifyContent: 'center', marginBottom: 24,
+  },
+  vacioEco: {
+    position: 'absolute', width: 128, height: 128, borderRadius: 64,
+    borderWidth: 1, borderColor: C.senal34, backgroundColor: C.senal10,
+  },
+  vacioIcono: {
+    width: 92, height: 92, borderRadius: 46, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34, marginBottom: 22,
+  },
+  vacioTituloGrande: { ...T.seccion, color: C.tx, textAlign: 'center', marginBottom: 10 },
+  vacioDescripcion: { ...T.cuerpo, color: C.tx2, textAlign: 'center', maxWidth: 360, marginBottom: 22 },
+  vacioAvisos: { minHeight: 330, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 14 },
+  vacioResultados: { alignItems: 'center', gap: 12, paddingHorizontal: 20, paddingVertical: 36 },
+  cta: {
+    width: '100%', maxWidth: 340, minHeight: UI.boton, borderRadius: R.m,
+    backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 18,
+  },
+  ctaTxt: { ...T.cuerpoFte, fontFamily: F.negrita, fontSize: 15.5, color: C.noche },
+  ctaTexto: { minHeight: UI.tactil, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 12, marginTop: 7 },
+  ctaTextoTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.senal, textAlign: 'center' },
+  ctaBorde: {
+    minHeight: UI.tactil, borderRadius: R.m, borderWidth: 1, borderColor: C.senal,
+    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20, marginTop: 4,
+  },
+  ctaBordeTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.senal },
+
+  resumenSeguimiento: {
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.senal34,
+    borderRadius: R.ficha, padding: 17, marginBottom: 16, ...E.e2,
+  },
+  resumenEtiqueta: { ...T.etiqueta, color: C.senal, marginBottom: 5 },
+  resumenTitulo: { ...T.ficha, color: C.tx },
+  resumenTexto: { ...T.menor, color: C.tx2, marginTop: 5 },
+  resumenAccion: {
+    minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', gap: 10,
+    borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, marginTop: 14, paddingTop: 12,
+  },
+  resumenAccionTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.senal, flex: 1 },
+
+  seccionCab: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 3, marginBottom: 10,
+  },
+  seccionTit: { ...T.seccion, fontSize: 19, color: C.tx },
+  seccionDato: {
+    ...T.dato, color: C.noche, backgroundColor: C.senal, minWidth: 27,
+    paddingHorizontal: 7, paddingVertical: 4, borderRadius: R.pastilla, textAlign: 'center', overflow: 'hidden',
+  },
+  aviso: {
+    minHeight: 74, flexDirection: 'row', gap: 12, backgroundColor: C.sup,
+    borderWidth: 1, borderColor: C.linea, borderRadius: R.ficha,
+    padding: 15, marginBottom: 10, ...E.e1,
+  },
+  avisoMarca: { width: 4, alignSelf: 'stretch', borderRadius: 2, backgroundColor: C.coral },
+  avisoTitular: { ...T.cuerpoFte, fontFamily: F.negrita, color: C.tx },
+  avisoDetalle: { ...T.menor, color: C.tx2, marginTop: 5 },
 
   panelAvisos: {
     backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.ficha, padding: 15, marginBottom: 16, ...E.e1,
+    borderRadius: R.ficha, padding: 17, marginBottom: 18, ...E.e2,
   },
   panelAvisosAtencion: { backgroundColor: '#241F14', borderColor: '#6F592B' },
   panelAvisosActivo: { backgroundColor: C.senal10, borderColor: C.senal34 },
-  panelAvisosTitulo: { ...T.ficha, fontSize: 15, color: C.tx },
-  panelAvisosTexto: { ...T.menor, color: C.tx2, marginTop: 5 },
-  panelAvisosBoton: {
-    alignSelf: 'flex-start', backgroundColor: C.senal, borderRadius: R.pastilla,
-    paddingHorizontal: 14, paddingVertical: 9, marginTop: 12,
+  panelAvisosCab: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  panelAvisosIcono: {
+    width: 46, height: 46, borderRadius: 23, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34,
   },
-  panelAvisosBotonTxt: { ...T.menor, fontFamily: F.semi, color: C.noche },
+  panelAvisosEtiqueta: { ...T.etiqueta, fontSize: 9, color: C.senal, marginBottom: 2 },
+  panelAvisosTitulo: { ...T.ficha, color: C.tx },
+  panelAvisosTexto: { ...T.menor, color: C.tx2, marginTop: 12 },
+  panelAvisosBoton: {
+    minHeight: UI.boton, backgroundColor: C.senal, borderRadius: R.m,
+    paddingHorizontal: 16, marginTop: 15, alignItems: 'center', justifyContent: 'center',
+  },
+  panelAvisosBotonTxt: { ...T.cuerpoFte, fontFamily: F.negrita, color: C.noche },
+
+  masCuerpo: { padding: UI.margen, paddingBottom: 32 },
+  resumenDispositivo: {
+    minHeight: 136, flexDirection: 'row', alignItems: 'center', gap: 13,
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.senal34,
+    borderRadius: R.ficha, padding: 16, marginBottom: 28, ...E.e2,
+  },
+  resumenMarca: {
+    width: 62, height: 62, borderRadius: 31, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.noche2, borderWidth: 1, borderColor: C.linea2,
+  },
+  resumenNumero: { alignItems: 'center', paddingLeft: 8 },
+  resumenNumeroValor: { fontFamily: F.extra, fontSize: 27, lineHeight: 30, color: C.senal },
+  resumenNumeroEtiqueta: { ...T.etiqueta, fontSize: 8, color: C.tx3, marginTop: 2 },
+  grupoSeccion: { marginBottom: 25 },
+  grupoTitulo: { ...T.seccion, fontSize: 19, color: C.tx, marginBottom: 10 },
+  grupo: {
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
+    borderRadius: R.ficha, overflow: 'hidden', ...E.e1,
+  },
+  filaMenu: {
+    minHeight: 74, flexDirection: 'row', alignItems: 'center', gap: 12,
+    paddingHorizontal: 14, paddingVertical: 11,
+  },
+  filaMenuBorde: { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2 },
+  filaIcono: {
+    width: 42, height: 42, borderRadius: R.m, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.sup2, borderWidth: 1, borderColor: C.linea2,
+  },
+  filaIconoPeligro: { backgroundColor: C.coral10, borderColor: C.coral32 },
+  filaTitulo: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
+  filaTituloPeligro: { color: C.coral },
+  filaSub: { ...T.menor, fontSize: 12, color: C.tx2, marginTop: 2 },
+  notaMas: { ...T.menor, fontSize: 12, lineHeight: 18, color: C.tx3, textAlign: 'center', paddingHorizontal: 14 },
 
   fueraCaja: { marginTop: 28 },
   fueraTitulo: { ...T.seccion, color: C.tx, marginBottom: 6 },
@@ -829,14 +1356,14 @@ const e = StyleSheet.create({
   /* La acción principal es el único sitio, con el logotipo y los
      rótulos, donde la señal se usa como fondo. */
   botonPrincipal: {
-    backgroundColor: C.senal, borderRadius: R.pastilla, paddingVertical: 15,
-    alignItems: 'center', marginTop: 24, ...E.e2,
+    minHeight: UI.boton, backgroundColor: C.senal, borderRadius: R.m,
+    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, marginTop: 24, ...E.e2,
   },
   botonSecundario: { backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal },
   botonTxt: { ...T.cuerpoFte, fontFamily: F.negrita, fontSize: 15, color: C.noche },
   botonBorde: {
-    borderWidth: 1, borderColor: C.linea, borderRadius: R.pastilla,
-    paddingVertical: 14, alignItems: 'center', marginTop: 10, backgroundColor: C.sup,
+    minHeight: UI.boton, borderWidth: 1, borderColor: C.linea, borderRadius: R.m,
+    paddingHorizontal: 16, alignItems: 'center', justifyContent: 'center', marginTop: 10, backgroundColor: C.sup,
   },
   botonBordeTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
   nota: { ...T.menor, fontSize: 12, color: C.tx2, textAlign: 'center', marginTop: 16 },
@@ -844,8 +1371,8 @@ const e = StyleSheet.create({
   privacidadTit: { ...T.ficha, fontSize: 16, color: C.tx, marginTop: 18, marginBottom: 6 },
   privacidadParrafo: { ...T.cuerpo, color: C.tx2 },
   botonPeligro: {
-    backgroundColor: C.coral, borderRadius: R.pastilla, paddingVertical: 14,
-    alignItems: 'center', marginTop: 22,
+    minHeight: UI.boton, backgroundColor: C.coral, borderRadius: R.m,
+    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, marginTop: 22,
   },
   botonPeligroTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
 });

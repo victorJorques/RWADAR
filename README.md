@@ -2,29 +2,33 @@
 
 Registro curado de plataformas de tokenización de activos reales. La versión
 pública muestra **26 plataformas en el radar y 4 descartadas con fuente**:
-[rwadar.netlify.app](https://rwadar.netlify.app).
+[rwadar.pages.dev](https://rwadar.pages.dev).
 
-## Estado real · 20 de agosto de 2026
+## Estado real · 22 de agosto de 2026
 
 RWAdar **no se considera terminado**. Conviven dos estados que no deben
 confundirse:
 
 | Pieza | Estado |
 |---|---|
-| Web pública | En línea, pre-renderizada e instalable como PWA; 26 fichas y 4 descartadas. Sigue en la versión antigua con `unsafe-inline`, privacidad 09-08 y service worker v1 |
+| Web pública | **GO en Cloudflare Pages**: `https://rwadar.pages.dev`; versión endurecida, pre-renderizada e instalable como PWA, con 26 fichas y 4 descartadas |
 | Sección pública de emisiones | No está publicada; producción muestra 0 emisiones y no enseña esa sección |
-| Web remediada de este repositorio | 121/121 pruebas locales y QR 6/6; 26/4/0; todavía no desplegada |
-| Base de producción | No se tocó en esta reconciliación; la migración 22 solo está validada localmente y sigue pendiente de aplicar y verificar |
-| Registro de cuentas | Producción devuelve `mailer_autoconfirm=true`: no verifica que la dirección exista y bloquea cualquier despliegue remoto del publicador seguro |
-| Avisos por correo | No operativos |
-| Avisos push | Deshabilitados: `pushDeliveryEnabled=false`; el contrato local fresh/22 deja flag backend `false` y 0 cron `rwadar-push`. El opt-in no se ejecutó |
+| Artefacto web | Web 164/164; 26/4/0. Despliegue final `2aedebd9...` verificado contra el artefacto exacto; smoke externo GO |
+| Base de producción | La migración 22 (`02F2...0666`) terminó en `COMMIT` en `exgpmjpaaebyoolpwced`; el resultado mostró `schedule=19`. El verificador SQL interno (`4182...2C3`) terminó correctamente y el smoke público posterior quedó verde. Security Advisor: 0 Critical y 0 Security Definer View |
+| Registro de cuentas | Confirm email activo, signup habilitado y `mailer_autoconfirm=false`. Site URL: `https://rwadar.pages.dev`; redirects permitidos: Pages + Netlify. Sin SMTP propio; confirmación/recuperación reales aún no probadas E2E |
+| Avisos por correo | **OFF en producción.** La 23 está GO solo local; faltan Brevo, secreto y remitente en Vault y prueba E2E |
+| Avisos push | **OFF en producción:** 0 tokens y 0 cron `rwadar-push`; requiere dispositivo físico nativo y prueba de entrega E2E |
+| Hosting anterior | Netlify sigue accesible como origen legado; no es el canonical ni el destino actual. CALIX es un proyecto distinto y no se tocó |
+| Google | Propiedad `rwadar.pages.dev` verificada; portada enviada a indexación. Sitemap enviado, con primera lectura transitoria «No se ha podido obtener». La antigua Netlify sí figura indexada |
+| App móvil | Android build 4 compatible con OTA `preview` grupo `4f9d7e19...`, runtime `af694...`: rediseño + apertura de avisos. No está en Play Store; no hay build nativo iOS. La PWA web sí se actualiza en iOS y Android |
 
 La base de esta reconciliación es el commit `42018de` y, por indicación de los
 responsables, los archivos de traspaso del 17–20 de agosto tienen prioridad
 sobre documentación anterior.
 
-La suite de base local cerró con **278 controles verdes**: 270 aserciones y 8
-gates SQL. Esto no cambia el estado de producción.
+La validación web actual termina **164/164** y el smoke del artefacto publicado
+queda GO. El verificador SQL interno de producción terminó con
+`Success. No rows returned` y el aviso `RWAdar 22 OK`.
 
 Los dos smokes remotos —base pública y contrato móvil— no contienen destino ni
 clave predeterminados y son de solo lectura por defecto. Mutar exige variables
@@ -39,8 +43,21 @@ contrato se probó localmente, con fallos inyectados y sin red, **21/21**.
   tres avisos fuente de build/toolchain —dos `image-size` high y uno `uuid`
   moderate— propagados por Expo/Metro/xcode. No hay corrección compatible en
   el árbol actual; `--force` propone Expo 46 y no debe aplicarse.
-- La app pasa Expo install check, Doctor 21/21 y pruebas 7/7. Eso no elimina el
-  riesgo anterior ni autoriza a ocultar la cifra 46.
+- La app pasa Expo install check, Doctor 21/21 y pruebas 15/15. Eso no elimina el
+  riesgo anterior ni autoriza a ocultar la cifra 46. La cuenta EAS Free está
+  autenticada. El preview terminó `FINISHED`: Android 1.0.0 build 4, ID
+  `c7bb915b-da3b-46d4-9bd6-811a432b4cb3`, fingerprint
+  `af69452933f988f2d48d45861802f09d3df06e8b`. El APK está en
+  `outputs/rwadar-android-preview-v1.0.0-build4-c7bb915b.apk` (84.783.140 bytes;
+  SHA-256 `5E505F18C26FF91A8FC12899DEE39D9757C5D2E7FFC665DF0D7AFF090CFC4DB7`).
+  Tiene estructura y firma v2, pero aún falta instalarlo y probarlo en un
+  dispositivo; no está en tienda. Consumió 1 cuota Android del plan Free: el
+  contador del ciclo pasó de 4/15 a 5/15. El overage estimado fue 0; no es una
+  afirmación de cargo financiero.
+- La actualización EAS OTA del canal `preview`, grupo `4f9d7e19...` y runtime
+  `af69452933f988f2d48d45861802f09d3df06e8b`, lleva el rediseño móvil y el
+  listener para abrir avisos al Android build 4 compatible. No activa el push,
+  no publica en Play Store y no crea una app nativa iOS.
 
 ## Qué contiene
 
@@ -61,33 +78,42 @@ contrato se probó localmente, con fallos inyectados y sin red, **21/21**.
 | 3D | WebGL escrito para el proyecto |
 | Datos | Supabase/PostgreSQL con seguridad por fila y operaciones sensibles mediante RPC |
 | App móvil | React Native/Expo; comparte la base de datos |
-| Publicación | Pre-renderizado para buscadores y tres modos explícitos: local, preview y producción |
+| Publicación | Artefacto `rwadar-publicado/` pre-renderizado; producción actual en Cloudflare Pages mediante Wrangler fijado |
 
-En la versión local, la política CSP no permite JavaScript ejecutable ni estilos inline. Netlify RUM
-está desactivado y una inyección de `netlify-rum-container` se considera una
-discrepancia. Las sesiones web no se persisten en `localStorage`: los tokens se
+La política CSP publicada no permite JavaScript ejecutable ni estilos inline.
+Cloudflare Web Analytics y Zaraz no están activados, Netlify RUM no está
+inyectado y las sesiones web no se persisten en `localStorage`: los tokens se
 mantienen en memoria.
 
 ## Publicar de forma segura
 
+Primero genera y valida el único artefacto publicable:
+
 ```bash
 node rwadar-publicar.js --local
-node rwadar-publicar.js --preview
-node rwadar-publicar.js --produccion
 ```
 
-Exactamente uno de esos modos es obligatorio. El publicador no cambia de modo,
-no crea un borrador alternativo y no promociona un preview si Netlify rechaza
-la operación. No uses `netlify deploy` directamente.
+El publicador remoto heredado todavía llama a Netlify. Para la producción
+actual, despliega **solo** `rwadar-publicado/` al proyecto Cloudflare Pages
+`rwadar`, rama `main`, con Wrangler `4.125.0` y la cuenta comprobada. El OAuth
+usado quedó en el mínimo funcional: User Read obligatorio, Account Read y
+Pages Write. No subas la fuente, la raíz ni el proyecto separado CALIX.
 
-Ahora mismo el marcador `data-deploy-blocker` permite construir solo con
-`--local`: bloquea `--preview` y `--produccion` antes de Auth, sincronización o
-Netlify. Tras cerrar el acuerdo y los plazos de conservación y retirar ese
-marcador de forma deliberada, cualquier modo remoto comprueba
-`/auth/v1/settings` en solo lectura y exige `mailer_autoconfirm=false` exacto.
-Un error, un campo ausente o el valor actual `true` detienen el proceso. Después
-del cambio habrá que probar un alta y la confirmación real de extremo a extremo;
-no se promete hoy que el correo de confirmación llegue.
+La política declara `data-deploy-legal-status="acuerdo-pendiente-de-documentar"`:
+la versión completa puede publicarse sin ocultar que el acuerdo interno y los
+plazos propuestos siguen pendientes. El publicador solo acepta ese estado
+transparente o el futuro `acuerdo-documentado`; un `data-deploy-blocker`, un
+estado ausente o uno desconocido detienen los dos modos remotos. Además,
+cualquier remoto comprueba `/auth/v1/settings` en solo lectura y exige
+`mailer_autoconfirm=false` exacto. Producción ya devuelve ese valor y signup
+sigue habilitado; un error o un campo ausente detienen el proceso. Esto no
+demuestra entrega: sin SMTP propio, la confirmación y la recuperación reales
+siguen pendientes de prueba E2E. La versión completa ya está publicada en
+Cloudflare Pages; Netlify queda únicamente como origen legado.
+
+Artefacto congelado de la entrega:
+`outputs/rwadar-cloudflare-pages-20260822-d6f73fb3.zip`, SHA-256
+`143B6ECBB8B883006D36C9297A3C574B09BBB2A46950208E4B821C792499BDFC`.
 
 ## Rigor editorial y regulatorio
 
@@ -120,7 +146,8 @@ consulta [SECURITY.md](SECURITY.md) para el alcance y las reglas de prueba.
 
 El acuerdo entre los tres y los plazos de conservación propuestos siguen
 pendientes de revisión y aprobación. Hasta entonces no deben presentarse como
-acordados.
+acordados. La política pública comunica expresamente ese estado; publicar no
+equivale a afirmar que el acuerdo ya esté firmado.
 
 ## No es asesoramiento financiero
 

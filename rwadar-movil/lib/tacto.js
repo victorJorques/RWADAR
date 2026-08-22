@@ -20,7 +20,17 @@ import * as Haptics from 'expo-haptics';
 
 const puede = Platform.OS === 'ios' || Platform.OS === 'android';
 
-const seguro = (fn) => { if (puede) { try { fn(); } catch {} } };
+/* Expo devuelve promesas. El `try` cubre fallos síncronos y el `catch` de la
+   promesa absorbe rechazos posteriores: ninguna vibración opcional puede
+   convertirse en un `unhandledRejection` ni romper el gesto principal. */
+const seguro = (fn) => {
+  if (!puede) return Promise.resolve();
+  try {
+    return Promise.resolve(fn()).catch(() => undefined);
+  } catch {
+    return Promise.resolve();
+  }
+};
 
 export const tacto = {
   /* Cambiar de filtro o de pestaña: el gesto más leve que existe. */

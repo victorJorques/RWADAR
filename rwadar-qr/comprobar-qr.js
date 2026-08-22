@@ -24,7 +24,7 @@
 const fs = require('fs'), path = require('path'), zlib = require('zlib');
 const { codificar } = require('./codigo-qr.js');
 
-const DESTINO = process.argv[2] || 'https://rwadar.netlify.app';
+const DESTINO = process.argv[2] || 'https://rwadar.pages.dev';
 const AQUI = __dirname;
 const MARGEN = 4;
 

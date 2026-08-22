@@ -33,6 +33,7 @@ import { C, COLOR_CATEGORIA, T, F, R } from '../lib/tema';
 const LADO = 340;
 const CX = 170, CY = 170, RMAX = 119;
 const VUELTA = 8000;              // lo que tarda el barrido en dar la vuelta
+const TAMANO_DIANA = 44;           // mínimo táctil recomendado en iOS y Android
 const RADIO_ACCESO = { Minorista: 0.40, Acreditado: 0.60, Empresas: 0.76, Institucional: 0.90 };
 const CORTO = {
   'Inmobiliario': 'Inmuebles', 'Crédito privado': 'Crédito', 'Tesoro y fondos': 'Tesoro',
@@ -176,8 +177,10 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
             key={p.slug}
             onPressIn={() => setLeido(p)}
             onPress={() => onAbrir(p)}
-            hitSlop={4}
-            style={[e.diana, { left: x * k - 17, top: y * k - 17 }]}
+            style={[e.diana, {
+              left: x * k - TAMANO_DIANA / 2,
+              top: y * k - TAMANO_DIANA / 2,
+            }]}
             accessibilityRole="button"
             accessibilityLabel={`${p.nombre}. ${p.categoria}. Acceso: ${p.acceso}. Abrir ficha.`} />
         ))}
@@ -203,7 +206,12 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
       <View style={e.leyenda}>
         {Object.keys(COLOR_CATEGORIA).map((c) => (
           <Pressable key={c} onPress={() => onFiltrar(categoriaActiva === c ? '' : c)}
-            style={({ pressed }) => [e.leyendaItem, pressed && { opacity: 0.6 }]}>
+            style={({ pressed }) => [e.leyendaItem, pressed && { opacity: 0.6 }]}
+            accessibilityRole="button"
+            accessibilityState={{ selected: categoriaActiva === c }}
+            accessibilityLabel={categoriaActiva === c
+              ? `${c}. Filtro activo. Quitar filtro.`
+              : `${c}. Filtrar plataformas de esta categoría.`}>
             <View style={[e.chincheta, { backgroundColor: COLOR_CATEGORIA[c] }]} />
             <Text style={[e.leyendaTxt, categoriaActiva === c && { color: C.tx }]}>
               {CORTO[c] || c}
@@ -223,7 +231,10 @@ const e = StyleSheet.create({
   /* El tamaño va inline: depende del ancho de la pantalla. Aquí solo lo
      que no cambia. */
   lienzo: {},
-  diana: { position: 'absolute', width: 34, height: 34, borderRadius: 17 },
+  diana: {
+    position: 'absolute', width: TAMANO_DIANA, height: TAMANO_DIANA,
+    borderRadius: TAMANO_DIANA / 2,
+  },
 
   lectura: {
     minHeight: 46, width: '100%', paddingHorizontal: 20, paddingTop: 4,

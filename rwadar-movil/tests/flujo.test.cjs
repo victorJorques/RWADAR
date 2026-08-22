@@ -256,6 +256,60 @@ test('un upsert push rechazado nunca devuelve éxito ni expone el token', async 
   assert.ok(eventos.some(([metodo]) => metodo === 'throwOnError'));
 });
 
+test('un toque push abre solo un slug editorial valido sin pedir permisos', async () => {
+  let escuchar;
+  let retirado = false;
+  let solicitudes = 0;
+  let limpiezas = 0;
+  const abiertos = [];
+  const respuesta = (slug, identificador = 'aviso-1') => ({
+    actionIdentifier: 'default',
+    notification: {
+      request: { identifier: identificador, content: { data: { slug } } },
+    },
+  });
+  const avisos = cargar('lib/avisos.js', {
+    'react-native': { Platform: { OS: 'android' } },
+    expo: { isRunningInExpoGo() { return false; } },
+    'expo-constants': { __esModule: true, default: {} },
+    'expo-device': { isDevice: true },
+    'expo-notifications': {
+      DEFAULT_ACTION_IDENTIFIER: 'default',
+      IosAuthorizationStatus: { PROVISIONAL: 'provisional' },
+      AndroidImportance: { HIGH: 4 },
+      setNotificationHandler() {},
+      addNotificationResponseReceivedListener(fn) {
+        escuchar = fn;
+        return { remove() { retirado = true; } };
+      },
+      async getLastNotificationResponseAsync() { return respuesta('reental'); },
+      async clearLastNotificationResponseAsync() { limpiezas += 1; },
+      async requestPermissionsAsync() { solicitudes += 1; },
+    },
+    'avisos.js:./supabase': {},
+  });
+
+  assert.equal(avisos.slugDesdeRespuestaAviso(respuesta('alpha-rwa')), 'alpha-rwa');
+  assert.equal(avisos.slugDesdeRespuestaAviso(respuesta('https://mal.example')), null);
+  assert.equal(avisos.slugDesdeRespuestaAviso(respuesta('../radar')), null);
+
+  const detener = avisos.observarAperturasAvisos(async (slug) => {
+    abiertos.push(slug);
+    return true;
+  });
+  await new Promise((resolve) => setImmediate(resolve));
+  escuchar(respuesta('ondo', 'aviso-2'));
+  escuchar(respuesta('ondo', 'aviso-2'));
+  escuchar(respuesta('https://mal.example', 'aviso-3'));
+  await new Promise((resolve) => setImmediate(resolve));
+
+  assert.deepEqual(abiertos, ['reental', 'ondo']);
+  assert.equal(limpiezas, 2);
+  assert.equal(solicitudes, 0);
+  detener();
+  assert.equal(retirado, true);
+});
+
 test('la configuración conserva el producto nuevo y falla cerrado', () => {
   const app = JSON.parse(fs.readFileSync(path.join(RAIZ, 'app.json'), 'utf8')).expo;
   const eas = JSON.parse(fs.readFileSync(path.join(RAIZ, 'eas.json'), 'utf8'));
@@ -271,6 +325,8 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
   assert.equal(paquete.dependencies['expo-secure-store'], '~57.0.1');
   assert.match(codigo, /import Radar from '.\/componentes\/Radar'/);
   assert.match(codigo, /import Marca from '.\/componentes\/Marca'/);
+  assert.match(codigo, /observarAperturasAvisos/);
+  assert.match(codigo, /p\.slug === slugAvisoPendiente/);
   assert.doesNotMatch(codigo, /useEffect\(\(\) => \{\s*registrarParaAvisos\(/);
   assert.match(codigo, /Seguir esta plataforma/);
   assert.doesNotMatch(codigo, /Seguir y recibir avisos/);

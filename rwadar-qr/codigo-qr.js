@@ -6,7 +6,7 @@
    media guarda 271 caracteres y aquí sólo metemos una dirección web.
 
        const { codificar } = require('./codigo-qr.js');
-       const m = codificar('https://rwadar.netlify.app', 'H');
+       const m = codificar('https://rwadar.pages.dev', 'H');
        m.tam        // lado en módulos
        m.mod[y][x]  // true = módulo oscuro
 
