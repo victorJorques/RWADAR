@@ -503,7 +503,7 @@ function renderEmisionHostil(codigo) {
 function reparentadoEmisionesEsReversible(codigo) {
   const limpio = sinComentariosJS(codigo);
   return /function ordenarBuscar\(esMovil\)/.test(limpio) &&
-    /const ordenMovil=\[emisiones,radarIntro,radarPortada,bannerAcademy,herramienta,barra,resultados,academia,portada\]/.test(limpio) &&
+    /const ordenMovil=\[emisiones,herramienta,barra,radarIntro,radarPortada,marcador,bannerAcademy,resultados,transparencia,academia,portadaTexto,portada\]/.test(limpio) &&
     /ordenMovil\.forEach\(nodo=>panelBuscar\.insertBefore\(nodo,referencia\)\)/.test(limpio) &&
     /function restaurarEscritorio\(\)/.test(limpio) &&
     /ancla\.parentNode\.insertBefore\(nodo,ancla\.nextSibling\)/.test(limpio) &&
@@ -528,6 +528,7 @@ function cambioTabsMovilEsCoherente(codigo) {
   const fabrica = new Function('media', 'paneles', 'tabs', 'document', 'window', 'reduce',
     'mostrarAvisos', 'cabecera', 'geometria', `
       let activa='buscar',academyAbierta=false,academyHistorial=false;
+      let detalleAbierto=null,detalleHistorial=false,movilFiltrosAbiertos=false;
       ${fuente}
       return {cambiar, activa:()=>activa};
     `);
@@ -861,7 +862,8 @@ prueba('320, 375, 390 y 430 px comparten el mismo shell fluido sin ancho mínimo
   /minmax\(\s*0\s*,\s*1fr\s*\)/i.test(navEnMovil) &&
   /min-width\s*:\s*0/i.test(itemEnMovil) &&
   /--movil-margen\s*:\s*12px/i.test(cssMuyEstrecho) &&
-  /grid-template-columns\s*:\s*1fr/i.test(declaracionesCSS(cssMuyEstrecho, '.barra-in').join(';')));
+  /grid-template-columns\s*:\s*minmax\(\s*0\s*,\s*1fr\s*\)\s+52px/i
+    .test(declaracionesCSS(cssMuyEstrecho, '#movilPanelRadar .barra-in').join(';')));
 prueba('la barra es inferior, tiene cuatro columnas y reserva el safe-area',
   /position\s*:\s*fixed/i.test(navEnMovil) && /bottom\s*:\s*0/i.test(navEnMovil) &&
   (/grid-template-columns\s*:\s*repeat\(\s*4\s*,/i.test(navEnMovil) ||
@@ -1043,15 +1045,16 @@ prueba('volver a Buscar programa una medición nueva después de mostrar el pane
   /(?:dispatchEvent\([^)]*(?:resize|rwadar)|clientWidth|redimension|recalcular)/i.test(codigoNavMovil) &&
   /cv\.clientWidth/.test(jsSinComentarios) && /cv\.width\s*!==\s*w/.test(jsSinComentarios));
 const ordenMovil = selector => Number((declaracionesCSS(cssMovil, selector).join(';').match(/order\s*:\s*(\d+)/i) || [])[1] || 0);
-prueba('Buscar prioriza ofertas, radar animado y Academy antes de búsqueda y resultados',
+prueba('Buscar prioriza ofertas, búsqueda, radar animado, Academy y resultados',
   ordenMovil('#movilPanelRadar>.emis') === 1 &&
-  ordenMovil('#movilPanelRadar>.movil-radar-intro') === 2 &&
-  ordenMovil('#movilPanelRadar>.portada-radar') === 3 &&
-  ordenMovil('#movilPanelRadar>.movil-banner-explica') === 4 &&
-  ordenMovil('#movilPanelRadar>.tool') === 5 &&
-  ordenMovil('#movilPanelRadar>.barra') === 6 &&
-  ordenMovil('#movilPanelRadar>#plataformasResultados') === 7 &&
-  ordenMovil('#movilPanelRadar .portada-txt') > 7);
+  ordenMovil('#movilPanelRadar>.tool') === 2 &&
+  ordenMovil('#movilPanelRadar>.barra') === 3 &&
+  ordenMovil('#movilPanelRadar>.movil-radar-intro') === 4 &&
+  ordenMovil('#movilPanelRadar>.portada-radar') === 5 &&
+  ordenMovil('#movilPanelRadar>.movil-banner-explica') === 7 &&
+  ordenMovil('#movilPanelRadar>#plataformasResultados') === 8 &&
+  ordenMovil('#movilPanelRadar>.movil-transparencia') === 9 &&
+  ordenMovil('#movilPanelRadar>.portada-txt') > 9);
 prueba('Buscar mueve los mismos nodos y restaura su lugar al volver a escritorio',
   (html.match(/\bid=["']emisiones["']/g) || []).length === 1 &&
   /paneles\.get\(['"]buscar['"]\)/.test(codigoShellMovil) &&
@@ -1075,6 +1078,14 @@ prueba('Academy es una subvista de Buscar sin vídeos ni canvas inventados',
   (html.match(/\bid=["'](?:explain|scene|gl)["']/g) || []).length === 3 &&
   /academyLeccion\.appendChild\(explicador\)/.test(jsSinComentarios) &&
   /rwadarAcademy/.test(jsSinComentarios));
+prueba('la información extensa de Buscar usa detalle progresivo sin perder contenido',
+  /id="movilTransparencia"/.test(html) &&
+  ['presentacion','metodo','fuera'].every(id =>
+    new RegExp(`data-movil-action="detalle"[^>]*data-movil-detalle="${id}"[^>]*aria-controls="${id}"`).test(html)) &&
+  /function mostrarDetalle\(/.test(jsSinComentarios) && /rwadarDetalle/.test(jsSinComentarios) &&
+  /movil-detalle-abierto/.test(jsSinComentarios) &&
+  /#movilPanelRadar\.movil-detalle-abierto>\*/.test(cssMovil) &&
+  /#movilPanelRadar\.movil-detalle-abierto>\.movil-detalle-activo/.test(cssMovil));
 prueba('el sonido es voluntario, cálido y la animación automática permanece silenciosa',
   /recuerda\.leer\(['"]rwadar\.sonido['"]\)===['"]1['"]/.test(jsSinComentarios) &&
   /function pulsoCalido\(/.test(jsSinComentarios) &&
@@ -1109,7 +1120,7 @@ prueba('Inversiones declara la ausencia de registro sin inventar cartera, saldos
   !/(?:rentabilidad|beneficio|confirmada|reservada|saldo\s*[:：]|\b[1-9]\d*(?:[.,]\d+)?\s*%)/i.test(textoInversiones));
 prueba('Inversiones solo deriva hacia las ofertas verificadas de Buscar',
   /data-movil-ir=["']emisiones["']/.test(panelInversionesHTML) &&
-  /function ir\(destino\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil) &&
+  /function ir\(destino,origen=null\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil) &&
   !/data-movil-action=["']cuenta["']/.test(panelInversionesHTML));
 
 const vistaAvisosHTML = (html.match(
@@ -1150,14 +1161,14 @@ const emisionesHTML = inicioEmisionesHTML >= 0 && finEmisionesHTML > inicioEmisi
   ? html.slice(inicioEmisionesHTML, finEmisionesHTML + 10) : '';
 const emisionesFuente = arrayDe(js, 'EMI');
 prueba('Buscar presenta emisiones comprobadas, no anuncios ni recomendaciones inventadas',
-  /OFERTAS ESPECÍFICAS/.test(emisionesHTML) && /Solo emisiones comprobadas/.test(emisionesHTML) &&
-  /No son anuncios: cada dato debe tener origen y fecha de verificación/.test(emisionesHTML) &&
+  /OFERTAS ESPECÍFICAS/.test(emisionesHTML) && /Ofertas verificadas/.test(emisionesHTML) &&
+  /Con origen, fecha y revisión independiente/.test(emisionesHTML) &&
   /RWAdar no intermedia, no custodia dinero y no recomienda/.test(emisionesHTML) &&
   !/(?:recomendada para ti|rentabilidad garantizada|oferta exclusiva)/i.test(textoHTML(emisionesHTML)));
 prueba('cero emisiones mantiene un vacío explícito y oculta filtros inútiles',
   (emisionesFuente.length > 0 ||
-    (/Todavía no hay emisiones publicadas/.test(emisionesHTML) &&
-     /Estamos verificando las primeras/.test(emisionesHTML))) &&
+    (/Sin emisiones abiertas/.test(emisionesHTML) &&
+     /Publicaremos aquí las primeras cuando su origen y sus cifras estén comprobados/.test(emisionesHTML))) &&
   /const hayPublicadas=EMI\.some\(emisionValida\)/.test(jsSinComentarios) &&
   /seccion\.classList\.toggle\(['"]sin-emisiones['"],!hayPublicadas\)/.test(jsSinComentarios) &&
   /futuro\.hidden=hayPublicadas/.test(jsSinComentarios) &&
@@ -1176,7 +1187,7 @@ prueba('radar, fichas, comparador, método, descartes y 3D siguen en el único p
   /data-movil-action=["']academy["']/.test(html) &&
   ['metodo','fuera'].every(destino =>
     new RegExp(`data-movil-ir=["']${destino}["']`).test(html)) &&
-  /function ir\(destino\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
+  /function ir\(destino,origen=null\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
 prueba('la barra no introduce manejadores inline ni atributos ejecutables',
   botonesNavMovil.every(b => !/\son[a-z]+\s*=|javascript\s*:/i.test(b[1])) &&
   !/\son[a-z]+\s*=|javascript\s*:/i.test(navMovil?.[0] || ''));

@@ -1032,7 +1032,9 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
    auxiliares no duplican estado: enlazan con cuenta y vigilancia reales.
    ================================================================== */
 .movil-cabecera,.movil-nav,.movil-panel,.movil-banner-explica,.movil-busqueda-cab,.movil-ficha-abrir,
-.movil-ofertas-intro,.movil-ofertas-futuro,.movil-radar-intro,.movil-registro-intro,.movil-resultados-mas{display:none}
+.movil-ofertas-intro,.movil-ofertas-futuro,.movil-radar-intro,.movil-registro-intro,.movil-resultados-mas,
+.movil-filtros-toggle,.movil-transparencia,.movil-detalle-cab,.solo-movil{display:none}
+.filtros-avanzados{display:contents}
 
 @media (max-width:767px),
        (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
@@ -1077,17 +1079,19 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
      lector de pantalla coincidan; estas órdenes son una red de seguridad. */
   #movilPanelRadar>.portada,#movilPanelRadar>.portada>.portada-in{display:contents}
   #movilPanelRadar>.emis{order:1}
-  #movilPanelRadar>.movil-radar-intro{order:2}
-  #movilPanelRadar>.portada-radar{order:3}
-  #movilPanelRadar>.movil-banner-explica{order:4}
-  #movilPanelRadar>.tool{order:5}
-  #movilPanelRadar>.barra{order:6}
-  #movilPanelRadar>#plataformasResultados{order:7}
-  #movilPanelRadar .portada-txt{order:8}
-  #movilPanelRadar .marcador{order:9}
+  #movilPanelRadar>.tool{order:2}
+  #movilPanelRadar>.barra{order:3}
+  #movilPanelRadar>.movil-radar-intro{order:4}
+  #movilPanelRadar>.portada-radar{order:5}
+  #movilPanelRadar>.marcador{order:6}
+  #movilPanelRadar>.movil-banner-explica{order:7}
+  #movilPanelRadar>#plataformasResultados{order:8}
+  #movilPanelRadar>.movil-transparencia{order:9}
   #movilPanelRadar>.academia{order:10}
-  #movilPanelRadar>.metodo{order:11}
-  #movilPanelRadar>.fuera{order:12}
+  #movilPanelRadar>.portada-txt{order:11}
+  #movilPanelRadar>.portada{order:12}
+  #movilPanelRadar>.metodo{order:13}
+  #movilPanelRadar>.fuera{order:14}
 
   .movil-radar-intro{display:block;width:100%;max-width:560px;margin:0 auto;padding:24px var(--movil-margen) 4px}
   .movil-radar-intro h2,.movil-radar-intro p{margin:0}
@@ -1468,6 +1472,230 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   body.movil-teclado .movil-nav{transform:translateY(112%);opacity:0;pointer-events:none}
 }
 
+/* ==================================================================
+   20 · BÚSQUEDA MÓVIL · JERARQUÍA Y DETALLE PROGRESIVO
+   ------------------------------------------------------------------
+   Toma de las interfaces de sistema la claridad, los materiales sobrios
+   y la agrupación; conserva el negro cálido, el verde de señal, el radar
+   y los colores de datos propios de RWAdar.
+   ================================================================== */
+@media (max-width:767px),
+       (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
+  :root{
+    --m-material:rgba(23,22,20,.84);
+    --m-raised:#1D1C19;
+    --m-hairline:rgba(255,255,255,.085);
+    --m-radius-control:14px;
+    --m-radius-card:20px;
+    --m-radius-hero:24px;
+    --m-ease:cubic-bezier(.25,.8,.25,1);
+  }
+  html{scroll-padding-top:72px}
+  body::after{opacity:.018}
+  .solo-escritorio{display:none!important}
+  .solo-movil{display:inline}
+
+  /* Barra compacta de navegación: marca, destino actual y ayuda. */
+  .movil-cabecera{display:grid;grid-template-columns:minmax(92px,1fr) auto minmax(92px,1fr);
+    align-items:center;padding:calc(7px + env(safe-area-inset-top)) var(--movil-margen) 7px;
+    background:rgba(11,10,10,.88);border-color:var(--m-hairline);
+    backdrop-filter:blur(24px) saturate(145%);-webkit-backdrop-filter:blur(24px) saturate(145%)}
+  .movil-cabecera-superior{display:contents}
+  .movil-marca{grid-column:1;grid-row:1;justify-self:start;min-height:44px;gap:7px;font-size:1.08rem}
+  .movil-marca .mk{width:27px;height:27px}
+  .movil-cabecera-accion{grid-column:3;grid-row:1;justify-self:end;width:40px;height:40px;background:var(--m-material);
+    border-color:var(--m-hairline)}
+  .movil-cabecera-titulo{grid-column:2;grid-row:1;margin:0;font-size:1.05rem;font-weight:680;
+    max-width:min(39vw,150px);overflow:hidden;letter-spacing:-.025em;text-align:center;
+    text-overflow:ellipsis;white-space:nowrap}
+  .movil-cabecera-etiqueta,.movil-cabecera-sub{position:absolute!important;width:1px!important;height:1px!important;
+    padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important}
+
+  /* El DOM y la lectura siguen el mismo orden que la vista. */
+  #movilPanelRadar>.emis{order:1}
+  #movilPanelRadar>.tool{order:2}
+  #movilPanelRadar>.barra{order:3}
+  #movilPanelRadar>.movil-radar-intro{order:4}
+  #movilPanelRadar>.portada-radar{order:5}
+  #movilPanelRadar>.marcador{order:6}
+  #movilPanelRadar>.movil-banner-explica{order:7}
+  #movilPanelRadar>#plataformasResultados{order:8}
+  #movilPanelRadar>.movil-transparencia{order:9}
+  #movilPanelRadar>.academia{order:10}
+  #movilPanelRadar>.portada-txt{order:11}
+  #movilPanelRadar>.portada{order:12}
+  #movilPanelRadar>.metodo{order:13}
+  #movilPanelRadar>.fuera{order:14}
+
+  /* Una sola tarjeta para ofertas. El detalle legal se abre si se busca. */
+  #movilPanelRadar>.emis{width:calc(100% - 2 * var(--movil-margen));max-width:528px;margin:16px auto 0;padding:0;
+    overflow:hidden;border:1px solid var(--m-hairline);border-radius:var(--m-radius-card);
+    background:var(--m-material);box-shadow:0 1px 0 rgba(255,255,255,.045) inset,0 16px 40px -34px #000}
+  #movilPanelRadar .movil-ofertas-intro{display:grid;grid-template-columns:40px minmax(0,1fr) auto;
+    align-items:center;gap:11px;margin:0;padding:15px 16px;background:transparent;border:0;border-radius:0;box-shadow:none}
+  #movilPanelRadar .movil-ofertas-icono{width:40px;height:40px;border-radius:12px;background:var(--senal-10);
+    border:1px solid var(--senal-30);color:var(--senal)}
+  #movilPanelRadar .movil-ofertas-icono svg{width:21px;height:21px}
+  #movilPanelRadar .movil-mini-etiqueta{font-size:.68rem;letter-spacing:.12em}
+  #movilPanelRadar .movil-ofertas-intro h3{font-size:1rem;letter-spacing:-.02em}
+  #movilPanelRadar .movil-ofertas-intro div>p:last-child{font-size:.78rem;line-height:1.35}
+  .movil-ofertas-estado{align-self:start;padding:5px 8px;border:1px solid var(--m-hairline);border-radius:99px;
+    color:var(--tx-3);font:600 .65rem/1.2 var(--mono);white-space:nowrap}
+  .movil-ofertas-estado.hay-ofertas{border-color:var(--senal-30);background:var(--senal-10);color:var(--senal)}
+  #movilPanelRadar .emis.sin-emisiones .emis-cab{display:none}
+  #movilPanelRadar .emis-rejilla{padding:0 16px 14px}
+  #movilPanelRadar .emis.sin-emisiones .emis-vacio{min-height:0;padding:1px 0 2px;border:0;border-radius:0;
+    background:transparent;text-align:left}
+  #movilPanelRadar .emis.sin-emisiones .emis-vacio h3{margin:0 0 3px;font-size:.95rem}
+  #movilPanelRadar .emis.sin-emisiones .emis-vacio p{margin:0;color:var(--tx-3);font-size:.78rem;line-height:1.42}
+  #movilPanelRadar .emis-informacion{margin:0;border:0;border-top:1px solid var(--m-hairline);border-radius:0;background:transparent}
+  #movilPanelRadar .emis-informacion>summary{min-height:46px;padding:11px 16px;font-size:.78rem;color:var(--tx-2)}
+  #movilPanelRadar .emis-informacion>.emis-sub,
+  #movilPanelRadar .emis-informacion>.movil-ofertas-futuro,
+  #movilPanelRadar .emis-informacion>.emis-legal{padding-inline:16px}
+
+  /* Un único encabezado y un buscador siempre disponible. */
+  #movilPanelRadar>.tool{padding:28px var(--movil-margen) 10px}
+  #movilPanelRadar .tool-cab{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;margin:0}
+  #movilPanelRadar .tool-cab h2.sec{margin:0;font-size:1.46rem;line-height:1.08;letter-spacing:-.045em}
+  #movilPanelRadar .tool-cab p{max-width:33ch;margin:6px 0 0;font-size:.8rem;line-height:1.4}
+  #movilPanelRadar .vista{width:auto;min-width:132px;grid-template-columns:1fr 1fr;padding:3px;background:var(--m-material);
+    border-color:var(--m-hairline);border-radius:12px}
+  #movilPanelRadar .vista button{min-height:40px;padding:7px 10px;font-family:var(--body);font-size:.76rem;border-radius:9px}
+  #movilPanelRadar .vista button.on{background:var(--m-raised);color:var(--tx);box-shadow:0 1px 0 rgba(255,255,255,.08) inset}
+  #movilPanelRadar>.barra{margin:0;padding:0 var(--movil-margen) 8px}
+  #movilPanelRadar .barra-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:0;background:transparent;
+    border:0;border-radius:0;box-shadow:none}
+  #movilPanelRadar .movil-busqueda-cab{display:none}
+  #movilPanelRadar .buscar{grid-column:1;min-width:0}
+  #movilPanelRadar .buscar input{min-height:52px;padding-left:43px;border-color:var(--m-hairline);
+    border-radius:var(--m-radius-control);background:var(--m-material)}
+  #movilPanelRadar .buscar input:focus{border-color:var(--senal-30);background:var(--m-raised)}
+  .movil-filtros-toggle{display:flex;grid-column:2;align-items:center;justify-content:center;gap:7px;min-width:102px;
+    min-height:52px;padding:0 13px;border:1px solid var(--m-hairline);border-radius:var(--m-radius-control);
+    background:var(--m-material);color:var(--tx-2);font-size:.83rem;font-weight:650;cursor:pointer}
+  .movil-filtros-toggle[aria-expanded="true"],.movil-filtros-toggle.tiene-filtros{border-color:var(--senal-30);color:var(--senal)}
+  .movil-filtros-toggle b{display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:99px;
+    background:var(--senal);color:#06231A;font:700 .66rem/1 var(--mono)}
+  .movil-filtros-toggle b[hidden]{display:none}
+  #movilPanelRadar .filtros-avanzados{display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:8px;
+    padding:10px;border:1px solid var(--m-hairline);border-radius:var(--m-radius-control);background:var(--m-material)}
+  #movilPanelRadar .filtros-avanzados.abiertos{display:grid}
+  #movilPanelRadar .filtros-avanzados select{min-height:48px;border-color:var(--m-hairline);border-radius:12px;background:var(--noche-2)}
+  #movilPanelRadar .filtros-avanzados select:nth-of-type(3),
+  #movilPanelRadar .filtros-avanzados .limpiar{grid-column:1/-1}
+  #movilPanelRadar .filtros-avanzados .limpiar{min-height:44px;border:0;border-top:1px solid var(--m-hairline);border-radius:0}
+
+  /* El radar sigue siendo la pieza protagonista, pero sin tarjetas anidadas. */
+  #movilPanelRadar>.movil-radar-intro{padding:26px var(--movil-margen) 7px}
+  #movilPanelRadar .movil-radar-intro h2{font-size:1.46rem;line-height:1.1}
+  #movilPanelRadar .movil-radar-intro>p:last-child{margin-top:7px;font-size:.875rem;line-height:1.45}
+  #movilPanelRadar>.portada-radar{padding:8px var(--movil-margen) 0}
+  #movilPanelRadar .radar-caja{padding:10px 8px 8px;border-color:var(--m-hairline);border-radius:var(--m-radius-hero);
+    background:linear-gradient(180deg,rgba(29,28,25,.92),rgba(16,15,14,.96));
+    box-shadow:0 1px 0 rgba(255,255,255,.055) inset,0 22px 52px -38px #000}
+  #movilPanelRadar .radar-et{font-size:14px;letter-spacing:.035em}
+  #movilPanelRadar .radar-lectura{margin:0 8px;padding:11px 4px 2px;border:0;border-top:1px solid var(--m-hairline);
+    border-radius:0;background:transparent;min-height:64px}
+  #movilPanelRadar .radar-etg,.blip{touch-action:manipulation}
+
+  /* Cifras de contexto: escaneables y sin una cuarta tarjeta. */
+  #movilPanelRadar>.marcador{display:grid;grid-template-columns:1fr 1fr;width:calc(100% - 2 * var(--movil-margen));
+    max-width:528px;margin:10px auto 0;border:1px solid var(--m-hairline);border-radius:var(--m-radius-card);
+    background:var(--m-hairline);gap:1px;overflow:hidden}
+  #movilPanelRadar>.marcador li{min-height:70px;padding:12px;background:var(--m-material)}
+  #movilPanelRadar>.marcador .n{font-size:1.42rem}
+  #movilPanelRadar>.marcador .l{font-size:.68rem;line-height:1.25}
+
+  /* Academy es una fila de navegación, no otra promoción dominante. */
+  #movilPanelRadar>.movil-banner-explica{min-height:70px;margin:12px auto 3px;padding:12px 14px;
+    border-color:var(--m-hairline);border-radius:17px;background:var(--m-material);box-shadow:none}
+  #movilPanelRadar .movil-banner-icono{width:42px;height:42px;border-radius:12px;background:var(--senal-10);
+    border:1px solid var(--senal-30);color:var(--senal)}
+  #movilPanelRadar .movil-banner-explica b{font-size:.98rem}
+  #movilPanelRadar .movil-banner-explica small{font-size:.78rem}
+
+  /* Las fichas son resúmenes; toda la evidencia permanece en el panel. */
+  #movilPanelRadar>#plataformasResultados{padding-top:26px}
+  #movilPanelRadar .movil-registro-intro{display:none}
+  #movilPanelRadar .fichas-f{margin-top:0;margin-bottom:7px}
+  #movilPanelRadar .fichas-f .f{border-color:var(--m-hairline);background:var(--m-material);font-size:.8rem}
+  #movilPanelRadar .recuento{margin:8px 0 13px;font-family:var(--body);font-size:.78rem}
+  #movilPanelRadar .rejilla{gap:0;padding-bottom:0;overflow:hidden;border:1px solid var(--m-hairline);
+    border-radius:var(--m-radius-card);background:var(--m-material)}
+  #movilPanelRadar .ficha{padding:15px 16px;border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;
+    background:transparent;box-shadow:none;gap:9px;transition:background .16s var(--m-ease)}
+  #movilPanelRadar .ficha:hover{transform:none;box-shadow:none;background:rgba(255,255,255,.025)}
+  #movilPanelRadar .ficha::before{left:0;right:auto;top:16px;bottom:16px;width:2px;height:auto;border-radius:99px}
+  #movilPanelRadar .ficha:last-child,
+  #movilPanelRadar #grid:not(.movil-resultados-abiertos)>.ficha:nth-child(6){border-bottom:0}
+  #movilPanelRadar .sigla{width:42px;height:42px;border-radius:12px;box-shadow:none}
+  #movilPanelRadar .ficha h3{font-size:1.04rem}
+  #movilPanelRadar .ficha .sub{font-size:.7rem}
+  #movilPanelRadar .ficha .nota{-webkit-line-clamp:1;font-size:.82rem;line-height:1.45}
+  #movilPanelRadar .ficha>.aval{display:none}
+  #movilPanelRadar .ficha .marcas{gap:5px}
+  #movilPanelRadar .ficha .marcas .m{font-size:.65rem;padding:4px 8px}
+  #movilPanelRadar .ficha .marcas .m:nth-child(n+3){display:none}
+  #movilPanelRadar .ficha-pie{grid-template-columns:minmax(0,1fr) auto;margin-top:1px;padding-top:9px}
+  #movilPanelRadar .verif{font-size:.68rem}
+  #movilPanelRadar .cmp{min-width:96px;min-height:44px;padding:8px 11px}
+  #movilPanelRadar .movil-ficha-abrir{position:relative;z-index:1;grid-column:1/-1;min-height:44px;margin:0 -16px -15px;
+    padding:10px 16px;border:0;border-top:1px solid var(--m-hairline);border-radius:0;background:transparent;color:var(--senal)}
+  #movilPanelRadar .movil-ficha-abrir:active{background:var(--senal-10);color:var(--senal);transform:none}
+  #movilPanelRadar .movil-resultados-mas{min-height:48px;margin:12px 0 24px;border-color:var(--m-hairline);
+    border-radius:14px;background:var(--m-material);color:var(--tx-2)}
+  #movilPanelRadar .movil-resultados-mas:active{background:var(--m-raised);color:var(--tx);transform:scale(.99)}
+
+  /* El contexto editorial sigue completo, pero deja de competir con la
+     búsqueda. Se presenta como un menú de transparencia y cada tema abre
+     una pantalla secundaria con su propio volver. */
+  .movil-ui #movilPanelRadar:not(.movil-detalle-abierto)>.portada-txt,
+  .movil-ui #movilPanelRadar:not(.movil-detalle-abierto)>.metodo,
+  .movil-ui #movilPanelRadar:not(.movil-detalle-abierto)>.fuera{display:none}
+  #movilPanelRadar>.movil-transparencia{display:block;width:calc(100% - 2 * var(--movil-margen));
+    max-width:528px;margin:2px auto 30px;padding:0}
+  #movilPanelRadar>.movil-transparencia>h2{margin:3px 0 12px;font-family:var(--display);
+    font-size:1.18rem;line-height:1.2;letter-spacing:-.035em}
+  #movilPanelRadar .movil-transparencia-lista{overflow:hidden;border:1px solid var(--m-hairline);
+    border-radius:var(--m-radius-card);background:var(--m-material)}
+  #movilPanelRadar .movil-transparencia-lista>button{display:grid;width:100%;min-height:72px;
+    grid-template-columns:minmax(0,1fr) 22px;align-items:center;gap:10px;padding:12px 15px;
+    border:0;border-bottom:1px solid var(--m-hairline);background:transparent;color:var(--tx);
+    text-align:left;cursor:pointer}
+  #movilPanelRadar .movil-transparencia-lista>button:last-child{border-bottom:0}
+  #movilPanelRadar .movil-transparencia-lista>button:active{background:rgba(255,255,255,.035)}
+  #movilPanelRadar .movil-transparencia-lista b,
+  #movilPanelRadar .movil-transparencia-lista small{display:block}
+  #movilPanelRadar .movil-transparencia-lista b{font-size:.91rem;line-height:1.25;letter-spacing:-.015em}
+  #movilPanelRadar .movil-transparencia-lista small{margin-top:4px;color:var(--tx-3);font-size:.72rem;line-height:1.35}
+  #movilPanelRadar .movil-transparencia-lista i{justify-self:end;color:var(--tx-3);font-size:1.55rem;
+    line-height:1;font-style:normal;font-weight:300}
+
+  #movilPanelRadar.movil-detalle-abierto>*{display:none!important}
+  #movilPanelRadar.movil-detalle-abierto>.movil-detalle-activo{display:block!important;order:1;
+    width:100%;max-width:560px;margin:0 auto;padding:12px var(--movil-margen) 38px;
+    border:0;border-radius:0;background:transparent;box-shadow:none;scroll-margin-top:72px}
+  #movilPanelRadar .movil-detalle-activo>.movil-detalle-cab{display:flex;align-items:center;gap:12px;
+    margin:0 0 22px;padding:0 0 14px;border-bottom:1px solid var(--m-hairline)}
+  #movilPanelRadar .movil-detalle-cab h2,
+  #movilPanelRadar .movil-detalle-cab p{margin:0}
+  #movilPanelRadar .movil-detalle-cab h2{font-family:var(--display);font-size:1.18rem;
+    line-height:1.2;letter-spacing:-.035em}
+  #movilPanelRadar .movil-detalle-activo>.movil-detalle-cab .movil-subvista-volver{
+    width:44px;height:44px;border-color:var(--m-hairline);border-radius:13px;background:var(--m-material)}
+  #movilPanelRadar>.portada-txt.movil-detalle-activo .etiq{margin-top:2px}
+  #movilPanelRadar>.portada-txt.movil-detalle-activo h1{font-size:clamp(1.65rem,7.7vw,2.15rem)}
+  #movilPanelRadar>.portada-txt.movil-detalle-activo .botones{grid-template-columns:1fr}
+  #movilPanelRadar>.metodo.movil-detalle-activo{padding-top:12px}
+  #movilPanelRadar>.metodo.movil-detalle-activo .metodo-cab{margin-bottom:18px}
+  #movilPanelRadar>.metodo.movil-detalle-activo .criterios{grid-template-columns:1fr;gap:10px}
+  #movilPanelRadar>.fuera.movil-detalle-activo{padding-top:12px}
+  #movilPanelRadar>.fuera.movil-detalle-activo .fuera-cab h2{display:none}
+  #movilPanelRadar>.fuera.movil-detalle-activo .fuera-cab{margin-bottom:16px}
+  #movilPanelRadar>.fuera.movil-detalle-activo .fuera-lista{gap:10px}
+}
+
 @media (max-width:767px) and (display-mode:standalone),
        (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse) and (display-mode:standalone){
   .movil-cabecera{background:rgba(11,10,10,.97)}
@@ -1483,6 +1711,13 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   :root{--movil-margen:12px}
   .movil-nav-item{font-size:.62rem}
   .botones{grid-template-columns:1fr}
-  .barra-in{grid-template-columns:1fr}
+  #movilPanelRadar .movil-ofertas-intro{grid-template-columns:40px minmax(0,1fr)}
+  #movilPanelRadar .movil-ofertas-estado{grid-column:2;justify-self:start}
+  #movilPanelRadar .emis.sin-emisiones .movil-ofertas-estado{display:none}
+  #movilPanelRadar .barra-in{grid-template-columns:minmax(0,1fr) 52px}
+  .movil-filtros-toggle{grid-column:2;width:52px;min-width:52px;padding:0}
+  .movil-filtros-toggle>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  #movilPanelRadar .filtros-avanzados{grid-template-columns:1fr}
+  #movilPanelRadar .filtros-avanzados select{grid-column:1}
   .barra-in select{grid-column:1/-1}
 }

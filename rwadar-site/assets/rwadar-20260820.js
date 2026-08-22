@@ -929,7 +929,7 @@ function pintarRadar(){
  const CX=200, CY=200, RMAX=140;
  const cats=Object.keys(CATMETA);
  const CORTO={"Inmobiliario":"Inmuebles","Crédito privado":"Crédito","Tesoro y fondos":"Tesoro",
-  "Acciones y capital privado":"Acciones","Materias primas":"Materias"};
+  "Acciones y capital privado":"Acciones","Materias primas":"Materias","Infraestructura":"Infra"};
  const pol=(ang,rad)=>[CX+Math.cos(ang*Math.PI/180)*rad, CY+Math.sin(ang*Math.PI/180)*rad];
 
  let s='';
@@ -966,6 +966,7 @@ function pintarRadar(){
       leyenda que le faltaba: se ve de un vistazo qué color es cada tipo
       de activo, sin una tabla aparte. Va en `style` y no en `fill`
       porque un atributo de presentación pierde contra la clase CSS. */
+   +`<rect class="radar-et-zona" x="${(tx-42).toFixed(1)}" y="${(ty-17).toFixed(1)}" width="84" height="34" rx="10" fill="transparent"/>`
    +`<text class="radar-et" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" fill="${CATMETA[c].c}">${escHtml(CORTO[c]||c)}</text></g>`;
  });
 
@@ -1017,7 +1018,7 @@ function pintarRadar(){
    /* el borde oscuro separa dos puntos que se rocen: sin él, dos colores
       contiguos se funden en una mancha */
    +`<circle class="punto" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.6" fill="${col}" stroke="#0B0A0A" stroke-width="1.4"/>`
-   +`<circle class="zona" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="13" fill="transparent"/>`
+   +`<circle class="zona" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="17" fill="transparent"/>`
    +`</g>`;
  });
  svg.innerHTML=`<defs><radialGradient id="gBarrido" cx="0" cy="0.5" r="1">`
@@ -1082,6 +1083,26 @@ let S2={cat:"",reg:"",acc:"",tic:"",q:"",view:"grid"};
 let compare=[];
 const LIMITE_MOVIL_RESULTADOS=6;
 let movilResultadosExpandidos=false;
+let movilFiltrosAbiertos=false;
+
+function actualizarFiltrosMoviles(){
+ const boton=document.getElementById('movilFiltrosToggle');
+ const panel=document.getElementById('movilFiltrosAvanzados');
+ const cuenta=document.getElementById('movilFiltrosCuenta');
+ const activos=[S2.reg,S2.acc,S2.tic].filter(Boolean).length;
+ if(boton){
+  boton.setAttribute('aria-expanded',movilFiltrosAbiertos?'true':'false');
+  boton.classList.toggle('tiene-filtros',activos>0);
+ }
+ if(panel)panel.classList.toggle('abiertos',movilFiltrosAbiertos);
+ if(cuenta){cuenta.hidden=activos===0;cuenta.textContent=String(activos);}
+}
+function alternarFiltrosMoviles(){
+ movilFiltrosAbiertos=!movilFiltrosAbiertos;
+ actualizarFiltrosMoviles();
+ if(movilFiltrosAbiertos)requestAnimationFrame(()=>document.getElementById('fReg')?.focus({preventScroll:true}));
+ else document.getElementById('movilFiltrosToggle')?.focus({preventScroll:true});
+}
 
 function hayFiltrosPlataformas(){
  return Boolean(S2.cat||S2.reg||S2.acc||S2.tic||S2.q);
@@ -1095,8 +1116,8 @@ function actualizarResultadosMoviles(total){
  b.hidden=S2.view!=='grid'||filtrando||total<=LIMITE_MOVIL_RESULTADOS;
  b.setAttribute('aria-expanded',movilResultadosExpandidos?'true':'false');
  b.textContent=movilResultadosExpandidos
-  ?'Mostrar solo las 6 primeras'
-  :'Ver las '+(total-LIMITE_MOVIL_RESULTADOS)+' plataformas restantes';
+  ?'Mostrar solo 6'
+  :'Ver '+(total-LIMITE_MOVIL_RESULTADOS)+' más';
 }
 function alternarResultadosMoviles(){
  movilResultadosExpandidos=!movilResultadosExpandidos;
@@ -1156,6 +1177,7 @@ function render(){
  document.getElementById('matrix').classList.toggle('show',S2.view==='matrix');
  S2.view==='grid'?renderGrid(f):renderMatrix(f);
  actualizarResultadosMoviles(f.length);
+ actualizarFiltrosMoviles();
  pintarRadar();
  renderCmpBar();
  pulir();   /* al filtrar se crean fichas nuevas: vuelven a entrar animadas */
@@ -1171,7 +1193,7 @@ function renderGrid(f){
    <div class="marcas"><span class="m acc">${escHtml(p.acceso)}</span><span class="m">Entrada: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>
    <div class="ficha-pie"><span class="verif">${okSVG} Verificado ${escHtml(fCorta(p.ver))}</span>
     <button class="cmp ${on?'on':''}" data-comparar="${i}" aria-pressed="${on?'true':'false'}">${on?'✓ Comparando':'+ Comparar'}</button>
-    <button class="movil-ficha-abrir" data-abrir="${i}">Abrir ficha <span aria-hidden="true">›</span></button></div></div>`}).join('');
+    <button class="movil-ficha-abrir" data-abrir="${i}">Ver ficha <span aria-hidden="true">›</span></button></div></div>`}).join('');
 }
 function renderMatrix(f){
  document.getElementById('matrix').innerHTML=`<table class="tabla">
@@ -1351,15 +1373,20 @@ function pintarEmisiones(){
  const seccion=document.getElementById('emisiones');
  const futuro=document.getElementById('movilOfertasFuturo');
  const informacion=document.getElementById('emisInformacion');
+ const estadoMovil=document.getElementById('movilOfertasEstado');
  if(seccion)seccion.classList.toggle('sin-emisiones',!hayPublicadas);
  if(futuro)futuro.hidden=hayPublicadas;
+ if(estadoMovil){
+  estadoMovil.textContent=v.length===1?'1 abierta':v.length+' abiertas';
+  estadoMovil.classList.toggle('hay-ofertas',v.length>0);
+ }
  const movilUI=Boolean(document.documentElement&&document.documentElement.classList&&
   document.documentElement.classList.contains('movil-ui'));
  if(informacion)informacion.open=hayPublicadas||!movilUI;
  if(!v.length){
   caja.innerHTML=hayPublicadas
    ?'<div class="emis-vacio"><h3>Nada abierto con ese filtro</h3><p>Prueba con otra categoría o vuelve en unos días: el registro cambia cuando verificamos novedades.</p></div>'
-   :'<div class="emis-vacio"><h3>Todavía no hay emisiones publicadas</h3><p>Estamos verificando las primeras. Cada una llevará el enlace a su plataforma y la fecha en que comprobamos sus cifras.</p></div>';
+   :'<div class="emis-vacio"><h3>Sin emisiones abiertas</h3><p>Publicaremos aquí las primeras cuando su origen y sus cifras estén comprobados.</p></div>';
   return;
  }
  caja.innerHTML=v.map(e=>{
@@ -2707,17 +2734,24 @@ const Movil = (function(){
  const panelBuscar=paneles.get('buscar');
  const emisiones=document.getElementById('emisiones');
  const portada=document.querySelector('#movilPanelRadar>.portada');
+ const portadaTexto=document.querySelector('.portada-txt');
+ const marcador=document.querySelector('.marcador');
  const radarIntro=document.getElementById('movilRadarIntro');
  const radarPortada=document.querySelector('.portada-radar');
  const bannerAcademy=document.getElementById('movilAbrirAcademy');
  const herramienta=document.getElementById('tool');
  const barra=document.querySelector('#movilPanelRadar>.barra');
  const resultados=document.getElementById('plataformasResultados');
+ const transparencia=document.getElementById('movilTransparencia');
  const academia=document.getElementById('academy');
  const explicador=document.getElementById('explain');
  const academyLeccion=document.getElementById('academyLeccion');
  const metodo=document.getElementById('metodo');
- const ordenMovil=[emisiones,radarIntro,radarPortada,bannerAcademy,herramienta,barra,resultados,academia,portada].filter(Boolean);
+ const fuera=document.getElementById('fuera');
+ const detalles=new Map([
+  ['presentacion',portadaTexto],['metodo',metodo],['fuera',fuera]
+ ].filter(([,nodo])=>Boolean(nodo)));
+ const ordenMovil=[emisiones,herramienta,barra,radarIntro,radarPortada,marcador,bannerAcademy,resultados,transparencia,academia,portadaTexto,portada].filter(Boolean);
  const movibles=[...ordenMovil,explicador].filter(Boolean);
  const anclas=new Map();
  if(typeof document.createComment==='function')movibles.forEach((nodo,indice)=>{
@@ -2730,12 +2764,14 @@ const Movil = (function(){
  const cabSub=document.getElementById('movilCabeceraSub');
  const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
  const textos={
-  buscar:['EXPLORAR RWADAR','Buscar','Ofertas verificadas · '+total+' plataformas contrastadas'],
+  buscar:['EXPLORAR RWADAR','Buscar','Ofertas y '+total+' plataformas contrastadas'],
   favoritos:['TU SELECCIÓN','Favoritos','Plataformas guardadas, no inversiones'],
   inversiones:['SIN DATOS DE OPERACIONES','Inversiones','RWAdar todavía no registra operaciones'],
   cuenta:['TU ESPACIO','Mi cuenta','Perfil, seguridad, privacidad y preferencias']
  };
  let activa='buscar',academyAbierta=false,academyOrigen=null,academyHistorial=false,avisosHistorial=false;
+ let detalleAbierto=null,detalleOrigen=null,detalleHistorial=false;
+ let modoMovilPrevio=media.matches;
 
  const reduce=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  function geometria(){
@@ -2768,9 +2804,11 @@ const Movil = (function(){
   }else{
    restaurarEscritorio();
    academyAbierta=false;academyHistorial=false;academyOrigen=null;
+   detalleAbierto=null;detalleHistorial=false;detalleOrigen=null;
+   detalles.forEach(nodo=>nodo.classList.remove('movil-detalle-activo'));
    if(academia)academia.hidden=false;
    const informacion=document.getElementById('emisInformacion');if(informacion)informacion.open=true;
-   panelBuscar.classList.remove('movil-academy-abierta');
+   panelBuscar.classList.remove('movil-academy-abierta','movil-detalle-abierto');
   }
  }
  function cabeceraAcademy(){
@@ -2798,6 +2836,10 @@ const Movil = (function(){
     panelBuscar.classList.add('movil-academy-abierta');
     document.querySelectorAll('[data-movil-action="academy"]').forEach(b=>b.setAttribute('aria-expanded','true'));
     cabeceraAcademy();
+    /* La lección se abre siempre por el principio. El temporizador puede
+       seguir contando mientras la subvista está oculta, pero nunca debe
+       recibir a la persona en el último paso sin haberlo elegido. */
+    if(typeof irPaso==='function')irPaso(0,false);
     if(gestionarHistorial&&typeof history!=='undefined'&&history.pushState){
      const previo=history.state&&typeof history.state==='object'?history.state:{};
      history.pushState({...previo,rwadarAcademy:true},'',location.href);academyHistorial=true;
@@ -2809,6 +2851,71 @@ const Movil = (function(){
    if(gestionarHistorial&&academyHistorial&&history.state&&history.state.rwadarAcademy===true)history.back();
    else cerrarAcademyVisual(enfocar);
   }
+ }
+ function abrirAcademyDesde(origen){
+  /* Si Academy sustituye a un detalle abierto, reutiliza la misma entrada
+     del historial. Así Atrás vuelve una sola vez a Buscar y el popstate del
+     detalle anterior no cierra la lección recién abierta. */
+  const sustituyeDetalle=detalleAbierto&&detalleHistorial&&history.state&&
+   history.state.rwadarDetalle===detalleAbierto;
+  if(detalleAbierto)cerrarDetalleVisual(false);
+  cambiar('buscar',{arriba:false});
+  if(sustituyeDetalle&&typeof history!=='undefined'&&history.replaceState){
+   const estado={...(history.state&&typeof history.state==='object'?history.state:{})};
+   delete estado.rwadarDetalle;estado.rwadarAcademy=true;
+   history.replaceState(estado,'',location.href);
+   mostrarAcademy(true,true,false,origen);academyHistorial=true;
+  }else mostrarAcademy(true,true,true,origen);
+ }
+ const textosDetalle={
+  presentacion:['QUÉ INCLUYE EL RADAR','Qué analiza RWAdar','Alcance, límites y lectura del registro'],
+  metodo:['CRITERIOS CONTRASTADOS','Método de selección','Cómo decidimos qué plataformas entran'],
+  fuera:['TRANSPARENCIA','Fuera del radar','Descartes publicados con su motivo y sus fuentes']
+ };
+ function cabeceraDetalle(id){
+  const t=textosDetalle[id]||textos.buscar;
+  if(cabEtiqueta)cabEtiqueta.textContent=t[0];
+  if(cabTitulo)cabTitulo.textContent=t[1];
+  if(cabSub)cabSub.textContent=t[2];
+ }
+ function cerrarDetalleVisual(enfocar=true){
+  if(!detalleAbierto)return;
+  const anterior=detalleAbierto;
+  detalleAbierto=null;detalleHistorial=false;
+  if(panelBuscar)panelBuscar.classList.remove('movil-detalle-abierto');
+  detalles.forEach(nodo=>nodo.classList.remove('movil-detalle-activo'));
+  document.querySelectorAll('[data-movil-action="detalle"]').forEach(b=>
+   b.setAttribute('aria-expanded','false'));
+  cabecera('buscar');
+  window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
+  const origen=detalleOrigen;detalleOrigen=null;
+  if(enfocar&&origen&&origen.isConnected)setTimeout(()=>origen.focus({preventScroll:true}),40);
+  return anterior;
+ }
+ function mostrarDetalle(id,enfocar=true,gestionarHistorial=true,origen=null){
+  const objetivo=detalles.get(id);
+  if(!media.matches||!objetivo||!panelBuscar)return;
+  if(detalleAbierto===id){
+   if(gestionarHistorial&&detalleHistorial&&history.state&&history.state.rwadarDetalle===id)history.back();
+   else cerrarDetalleVisual(enfocar);
+   return;
+  }
+  if(detalleAbierto)cerrarDetalleVisual(false);
+  if(academyAbierta)cerrarAcademyVisual(false);
+  movilFiltrosAbiertos=false;actualizarFiltrosMoviles();
+  detalleOrigen=origen||document.activeElement;
+  detalleAbierto=id;
+  detalles.forEach((nodo,clave)=>nodo.classList.toggle('movil-detalle-activo',clave===id));
+  panelBuscar.classList.add('movil-detalle-abierto');
+  document.querySelectorAll('[data-movil-action="detalle"]').forEach(b=>
+   b.setAttribute('aria-expanded',b.dataset.movilDetalle===id?'true':'false'));
+  cabeceraDetalle(id);
+  if(gestionarHistorial&&typeof history!=='undefined'&&history.pushState){
+   const previo=history.state&&typeof history.state==='object'?history.state:{};
+   history.pushState({...previo,rwadarDetalle:id},'',location.href);detalleHistorial=true;
+  }
+  window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});geometria();
+  if(enfocar)setTimeout(()=>objetivo.querySelector('.movil-subvista-volver')?.focus({preventScroll:true}),60);
  }
  function mostrarAvisos(mostrar,enfocar=true){
   const panel=document.getElementById('movilPanelMas');
@@ -2841,10 +2948,15 @@ const Movil = (function(){
  }
  function cambiar(id,opciones){
   if(!media.matches||!paneles.has(id))return;
+  if(detalleAbierto){
+   const volver=detalleHistorial&&history.state&&history.state.rwadarDetalle===detalleAbierto;
+   cerrarDetalleVisual(false);if(volver)history.back();
+  }
   if(academyAbierta){
    const volver=academyHistorial&&history.state&&history.state.rwadarAcademy===true;
    cerrarAcademyVisual(false);if(volver)history.back();
   }
+  if(id!=='buscar'&&movilFiltrosAbiertos){movilFiltrosAbiertos=false;actualizarFiltrosMoviles();}
   if(id!=='cuenta'||activa==='cuenta')mostrarAvisos(false,false);
   activa=id;
   document.body.dataset.movilPestana=id;
@@ -2862,6 +2974,7 @@ const Movil = (function(){
  }
  function adaptar(){
   const esMovil=media.matches;
+  modoMovilPrevio=esMovil;
   ordenarBuscar(esMovil);
   if(document.documentElement&&document.documentElement.classList)
    document.documentElement.classList.toggle('movil-ui',esMovil);
@@ -2874,8 +2987,12 @@ const Movil = (function(){
    geometria();
   }
  }
- function ir(destino){
+ function ir(destino,origen=null){
   cambiar('buscar',{arriba:false});
+  if(detalles.has(destino)){
+   requestAnimationFrame(()=>mostrarDetalle(destino,true,true,origen));
+   return;
+  }
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
    const objetivo=destino==='top'?document.getElementById('top'):document.getElementById(destino);
    if(objetivo)objetivo.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
@@ -2899,16 +3016,25 @@ const Movil = (function(){
  document.addEventListener('click',e=>{
   if(!media.matches)return;
   const cambio=e.target.closest&&e.target.closest('[data-movil-cambiar]');
-  if(cambio){e.preventDefault();cambiar(cambio.dataset.movilCambiar);return;}
+  if(cambio){e.preventDefault();e.stopImmediatePropagation();cambiar(cambio.dataset.movilCambiar);return;}
   const destino=e.target.closest&&e.target.closest('[data-movil-ir]');
-  if(destino){e.preventDefault();ir(destino.dataset.movilIr);return;}
+  if(destino){e.preventDefault();e.stopImmediatePropagation();ir(destino.dataset.movilIr,destino);return;}
   const accion=e.target.closest&&e.target.closest('[data-movil-action]');
   if(!accion)return;
+  e.stopImmediatePropagation();
   if(accion.dataset.movilAction==='ayuda'){
-   e.preventDefault();cambiar('buscar',{arriba:false});mostrarAcademy(true,true,true,accion);
+   e.preventDefault();abrirAcademyDesde(accion);
   }
   if(accion.dataset.movilAction==='academy'){
-   e.preventDefault();cambiar('buscar',{arriba:false});mostrarAcademy(true,true,true,accion);
+   e.preventDefault();abrirAcademyDesde(accion);
+  }
+  if(accion.dataset.movilAction==='detalle'){
+   e.preventDefault();cambiar('buscar',{arriba:false});mostrarDetalle(accion.dataset.movilDetalle,true,true,accion);
+  }
+  if(accion.dataset.movilAction==='cerrar-detalle'){
+   e.preventDefault();
+   if(detalleHistorial&&history.state&&history.state.rwadarDetalle===detalleAbierto)history.back();
+   else cerrarDetalleVisual(true);
   }
   if(accion.dataset.movilAction==='cerrar-academy'){e.preventDefault();mostrarAcademy(false);}
   if(accion.dataset.movilAction==='cuenta'){e.preventDefault();Cuenta.abrirGestion();}
@@ -2932,11 +3058,22 @@ const Movil = (function(){
  },80));
  document.addEventListener('keydown',e=>{
   if(!media.matches||e.key!=='Escape')return;
+  if(detalleAbierto){
+   e.preventDefault();
+   if(detalleHistorial&&history.state&&history.state.rwadarDetalle===detalleAbierto)history.back();
+   else cerrarDetalleVisual(true);
+   return;
+  }
   if(academyAbierta){e.preventDefault();mostrarAcademy(false);return;}
+  if(movilFiltrosAbiertos){
+   e.preventDefault();movilFiltrosAbiertos=false;actualizarFiltrosMoviles();
+   document.getElementById('movilFiltrosToggle')?.focus({preventScroll:true});return;
+  }
   const avisos=document.getElementById('movilVistaAvisos');
   if(avisos&&!avisos.hidden){e.preventDefault();mostrarAvisos(false);}
  });
  window.addEventListener('popstate',()=>{
+  if(detalleAbierto&&!(history.state&&history.state.rwadarDetalle===detalleAbierto))cerrarDetalleVisual(true);
   if(academyAbierta&&!(history.state&&history.state.rwadarAcademy===true))cerrarAcademyVisual(true);
   const avisos=document.getElementById('movilVistaAvisos');
   if(avisos&&!avisos.hidden&&!(history.state&&history.state.rwadarAvisos===true)){
@@ -2949,6 +3086,11 @@ const Movil = (function(){
   document.documentElement.classList.toggle('pwa-standalone',standalone);
  if(media.addEventListener)media.addEventListener('change',adaptar);
  else if(media.addListener)media.addListener(adaptar);
+ window.addEventListener('resize',()=>{
+  /* Algunos WebViews cambian el viewport sin emitir change en MediaQueryList
+     (por ejemplo, al pasar de una ventana compacta a una grande). */
+  if(media.matches!==modoMovilPrevio)adaptar();
+ });
  window.addEventListener('pageshow',()=>{adaptar();if(media.matches&&activa==='buscar')geometria();});
  adaptar();
  return {cambiar:cambiar};
@@ -2970,6 +3112,7 @@ document.addEventListener('click',e=>{
  if(b.dataset.abrir!=null){const i=Number(b.dataset.abrir);if(Number.isInteger(i))return openDrawer(i);}
  if(b.dataset.comparar!=null){const i=Number(b.dataset.comparar);if(Number.isInteger(i))return toggleCompare(i);}
  if(b.dataset.accion==='limpiar')return resetAll();
+ if(b.dataset.accion==='alternar-filtros')return alternarFiltrosMoviles();
  if(b.dataset.accion==='alternar-resultados')return alternarResultadosMoviles();
  if(b.dataset.accion==='comparar')return openCompare();
  if(b.dataset.accion==='vaciar-comparacion')return clearCompare();
