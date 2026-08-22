@@ -6,7 +6,7 @@ paga en todas las sesiones.
 
 Este repositorio contiene RWAdar. La información de estado más reciente es la
 de `RWADAR-TRASPASO.md`, reconciliada el **22 de agosto de 2026** sobre el
-commit fuente `9b4778ea98c0e740c9ebd5ec47fd12519bcf362a`; prevalece sobre cualquier afirmación histórica que aún
+commit fuente `0f4ef6d92699a4158b90bd09e79a7c8fc61f9643`; prevalece sobre cualquier afirmación histórica que aún
 quede en un documento de contexto.
 
 ---
@@ -19,16 +19,16 @@ quede en un documento de contexto.
 Cloudflare sirve la versión endurecida, pre-renderizada e instalable como PWA:
 26 fichas, 4 descartadas y 0 emisiones públicas; CSP estricta, sin RUM/Zaraz y
 sin tokens de sesión en `localStorage`. El despliegue actual es
-`d7f7e611-15a3-4e89-9a39-72bbe371b054`
-(`https://d7f7e611.rwadar.pages.dev`), el canonical es
-`https://rwadar.pages.dev` y la caché es `rwadar-v-3688f59d62fd0079`. El
-artefacto final es `outputs/rwadar-cloudflare-pages-20260822-3688f59d.zip`,
-878.052 bytes y 21/21
+`a0be7029-6281-47dd-963d-9c397a18848b`
+(`https://a0be7029.rwadar.pages.dev`), el canonical es
+`https://rwadar.pages.dev` y la caché es `rwadar-v-d4a30d5261f16a4b`. El
+artefacto final es `outputs/rwadar-cloudflare-pages-20260822-d4a30d52.zip`,
+880.760 bytes y 21/21
 archivos verificados, SHA-256
-`C2FAC300F4B6C9BC83FDD63C26EB64B4615F8F540B73589D54B6EDD8D8E936E4`.
+`AF9FDA2A5612BCD80BE16EE4251E8FD36261BC522DBFF8E96F18566AEBDEF096`.
 Producción y el preview exacto coinciden byte a byte para raíz, service worker,
-privacidad, CSS y JavaScript; el alta móvil pausada quedó verificada.
-La web pasa 203/203 y la suite raíz terminó con código 0. El smoke externo de
+manifest, privacidad, CSS y JavaScript; el alta móvil pausada quedó verificada.
+La web pasa 219/219 y la suite raíz terminó con código 0. El smoke externo de
 portada, privacidad, redirecciones, 404, cabeceras, assets,
 service worker, manifiesto, canonical, robots y sitemap quedó GO.
 
@@ -78,9 +78,10 @@ SHA-256 `5E505F18C26FF91A8FC12899DEE39D9757C5D2E7FFC665DF0D7AFF090CFC4DB7`.
 La OTA del canal Android `preview`, grupo `4f9d7e19...` y runtime
 `af69452933f988f2d48d45861802f09d3df06e8b`, publica el rediseño y el listener
 que abre un aviso push; es compatible con ese build 4. No hay publicación en
-Play Store ni build nativo iOS. La PWA sí se actualiza desde la web en iOS y
-Android, muestra las cuatro pestañas `Radar`, `Siguiendo`, `Avisos` y `Más`, y
-migra automáticamente instalaciones con service worker v1. La ficha de empresa
+Play Store ni build nativo iOS. La PWA común sí se actualiza desde la web en iOS
+y Android, muestra `Buscar`, `Favoritos`, `Inversiones` y `Mi cuenta`, y migra
+automáticamente instalaciones con service worker v1. `Inversiones` no inventa
+cartera: el backend todavía no registra operaciones. La ficha de empresa
 móvil conserva información, puntuación, opiniones y animaciones 3D, pero las
 agrupa visualmente; mantiene «Web oficial» fija, reinicia el scroll y ofrece
 cierres superior e inferior de al menos 48 px, safe-area y cierre con Back. La

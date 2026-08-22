@@ -12,22 +12,22 @@ confundirse:
 | Pieza | Estado |
 |---|---|
 | Web pública | **GO en Cloudflare Pages**: `https://rwadar.pages.dev`; versión endurecida, pre-renderizada e instalable como PWA, con 26 fichas y 4 descartadas |
-| Sección pública de emisiones | No está publicada; producción muestra 0 emisiones y no enseña esa sección |
-| Artefacto web | Web 203/203; 26/4/0 y suite raíz con código 0. Producción `d7f7e611-15a3-4e89-9a39-72bbe371b054` (`https://d7f7e611.rwadar.pages.dev`); canonical `https://rwadar.pages.dev`; smoke externo GO |
+| Sección pública de emisiones | Visible como bloque prioritario de `Buscar`; producción tiene 0 emisiones y muestra un vacío explícito, sin ofertas, cifras ni filtros inventados |
+| Artefacto web | Web 219/219; 26/4/0 y suite raíz con código 0. Producción `a0be7029-6281-47dd-963d-9c397a18848b` (`https://a0be7029.rwadar.pages.dev`); canonical `https://rwadar.pages.dev`; bytes y cabeceras verificados |
 | Base de producción | La migración 22 (`02F2...0666`) terminó en `COMMIT` en `exgpmjpaaebyoolpwced`; el resultado mostró `schedule=19`. El verificador SQL interno (`4182...2C3`) terminó correctamente y el smoke público posterior quedó verde. Security Advisor: 0 Critical y 0 Security Definer View |
 | Cuentas | El radar completo se consulta sin cuenta. El login de cuentas existentes sigue disponible. Aunque Auth conserva Confirm email y devuelve `mailer_autoconfirm=false`, no hay SMTP propio probado: las altas y la recuperación públicas están pausadas y fallan cerradas, sin enviar solicitudes a Supabase |
 | Avisos por correo | **OFF en producción.** La 23 está GO solo local; faltan Brevo, secreto y remitente en Vault y prueba E2E |
 | Avisos push | **OFF en producción:** 0 tokens y 0 cron `rwadar-push`; requiere dispositivo físico nativo y prueba de entrega E2E |
 | Hosting anterior | Netlify conserva la versión anterior: el panel indica que los despliegues de producción están pausados porque solo quedan créditos operativos y la CLI responde `Forbidden`. No se actualizará hasta el reinicio o ampliación de créditos. No es el canonical ni el destino actual; CALIX es distinto y no se tocó |
 | Google | Propiedad `rwadar.pages.dev` verificada; portada enviada a indexación. Sitemap enviado, con primera lectura transitoria «No se ha podido obtener». La antigua Netlify sí figura indexada |
-| App móvil | Android build 4 compatible con OTA `preview` grupo `4f9d7e19...`, runtime `af694...`: rediseño + apertura de avisos. No está en Play Store; no hay build nativo iOS. La PWA web actual en iOS y Android muestra `Radar`, `Siguiendo`, `Avisos` y `Más`, usa la caché `rwadar-v-3688f59d62fd0079` y migra automáticamente instalaciones con service worker v1. La ficha móvil ordena toda la información y opiniones por grupos, mantiene el 3D, fija «Web oficial», reinicia el scroll y permite cerrar arriba, abajo o con Back |
+| App móvil | Android nativo: build 4 compatible con OTA `preview` grupo `4f9d7e19...`, runtime `af694...`; no está en Play Store y no hay build nativo iOS. PWA común para iPhone y Android: `Buscar`, `Favoritos`, `Inversiones` y `Mi cuenta`, caché `rwadar-v-d4a30d5261f16a4b`; conserva fichas, comparador, descartes, radar y 3D. `Inversiones` declara que todavía no existe cartera en el backend y no inventa operaciones |
 
 La fuente de este cierre es el commit
-`9b4778ea98c0e740c9ebd5ec47fd12519bcf362a` y, por indicación de los
+`0f4ef6d92699a4158b90bd09e79a7c8fc61f9643` y, por indicación de los
 responsables, los archivos de traspaso del 17–20 de agosto tienen prioridad
 sobre documentación anterior.
 
-La validación web actual termina **203/203**, la suite raíz completa termina con
+La validación web actual termina **219/219**, la suite raíz completa termina con
 código 0 y el smoke del artefacto publicado
 queda GO. El verificador SQL interno de producción terminó con
 `Success. No rows returned` y el aviso `RWAdar 22 OK`.
@@ -71,10 +71,12 @@ contrato se probó localmente, con fallos inyectados y sin red, **21/21**.
   editorial. El radar no exige cuenta; las altas y la recuperación públicas
   permanecen pausadas mientras no exista SMTP propio probado.
 - Descarga del registro en CSV.
-- Una PWA que reutiliza la misma dirección pública, con cuatro pestañas móviles
-  (`Radar`, `Siguiendo`, `Avisos` y `Más`) y migración automática desde el
+- Una PWA común para iPhone y Android que reutiliza la misma dirección pública,
+  con cuatro pestañas móviles (`Buscar`, `Favoritos`, `Inversiones` y `Mi cuenta`)
+  y migración automática desde el
   service worker v1.
-- Una sección de emisiones construida localmente, aún sin publicar.
+- Una sección pública de emisiones que, mientras siga en 0, muestra un estado
+  vacío veraz y no simula ofertas ni rentabilidades.
 
 ## Arquitectura actual
 
@@ -117,18 +119,19 @@ Auth no se presenta como alta pública: sin SMTP propio probado, la interfaz
 pausa altas y recuperación y no envía esas solicitudes. El login de cuentas
 existentes permanece disponible y el radar completo no exige cuenta. La versión
 completa ya está publicada en
-Cloudflare Pages, deployment `d7f7e611-15a3-4e89-9a39-72bbe371b054`
-(`https://d7f7e611.rwadar.pages.dev`), y usa la caché PWA
-`rwadar-v-3688f59d62fd0079`. Netlify conserva la versión anterior
+Cloudflare Pages, deployment `a0be7029-6281-47dd-963d-9c397a18848b`
+(`https://a0be7029.rwadar.pages.dev`), y usa la caché PWA
+`rwadar-v-d4a30d5261f16a4b`. Netlify conserva la versión anterior
 mientras los despliegues de producción sigan pausados por créditos; la CLI
 responde `Forbidden`.
 
 Artefacto final congelado:
-`outputs/rwadar-cloudflare-pages-20260822-3688f59d.zip`, 878.052 bytes, 21/21
+`outputs/rwadar-cloudflare-pages-20260822-d4a30d52.zip`, 880.760 bytes, 21/21
 archivos verificados, SHA-256
-`C2FAC300F4B6C9BC83FDD63C26EB64B4615F8F540B73589D54B6EDD8D8E936E4`.
+`AF9FDA2A5612BCD80BE16EE4251E8FD36261BC522DBFF8E96F18566AEBDEF096`.
 Producción y el preview exacto coinciden byte a byte en raíz, service worker,
-privacidad, CSS y JavaScript; el alta móvil pausada quedó verificada.
+manifest, privacidad, CSS y JavaScript; la navegación móvil y el alta pausada
+quedaron verificadas.
 
 ## Rigor editorial y regulatorio
 

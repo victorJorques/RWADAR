@@ -7,8 +7,8 @@
 > **Vigencia:** reconciliado el 22 de agosto de 2026 sobre `42018de` y el
 > traspaso del 17–20 de agosto. La web remediada está desplegada y verificada en
 > `https://rwadar.pages.dev`; deployment actual
-> `d7f7e611-15a3-4e89-9a39-72bbe371b054`
-> (`https://d7f7e611.rwadar.pages.dev`), web 203/203 y
+> `a0be7029-6281-47dd-963d-9c397a18848b`
+> (`https://a0be7029.rwadar.pages.dev`), web 219/219 y
 > smoke externo GO. La 22 está aplicada y verificada. Correo y push siguen OFF.
 > Search Console tiene Pages verificada y la portada en cola; el sitemap se
 > envió y su primera lectura fue el estado transitorio «No se ha podido
@@ -29,8 +29,13 @@ En el artefacto, todos los assets desplegables reciben una huella de contenido
 y el HTML y `sw.js` se reescriben para apuntar a esos nombres. La `VERSION` del
 service worker se deriva del artefacto completo y su precaché crítico es
 atómico: si falta una pieza, la instalación no presenta una entrega parcial.
-La revisión publicada usa `rwadar-v-3688f59d62fd0079` y migra automáticamente
+La revisión publicada usa `rwadar-v-d4a30d5261f16a4b` y migra automáticamente
 instalaciones que todavía tengan el service worker v1.
+
+La misma PWA móvil se usa en iPhone y Android. Su navegación principal es
+`Buscar`, `Favoritos`, `Inversiones` y `Mi cuenta`; las ofertas verificadas y el
+buscador preceden al radar. El backend todavía no guarda inversiones, así que
+esa vista declara la ausencia de datos en vez de inventar una cartera.
 
 La ficha móvil conserva todos los campos, opiniones y animaciones 3D, pero los
 agrupa en bloques con cabecera y acciones persistentes; reinicia el scroll y se
@@ -128,7 +133,7 @@ ejecutan por separado, con datos de prueba y limpieza verificable.
 | Comando | Qué demuestra |
 |---|---|
 | `node rwadar-arrancar.js` | Que el JS compila, informa si lo publicado difiere de local y comprueba descartes con fuente |
-| `node probar-web.mjs` | Contrato estático, CSP, publicación explícita y cerrada, privacidad, SEO y 26/4/0; **203/203** al 22-08 |
+| `node probar-web.mjs` | Contrato estático, CSP, publicación explícita y cerrada, privacidad, SEO y 26/4/0; **219/219** al 22-08 |
 | `node rwadar-qr/comprobar-qr.js` | Geometría, contenido y legibilidad del QR; 6/6 al 20-08 |
 | `rwadar-app/probar-opiniones.mjs` | Opiniones, denuncias y retirada automática |
 | `rwadar-app/probar-moderacion.mjs` | Que quien no es administrador **no** puede moderar |
@@ -141,7 +146,7 @@ ejecutan por separado, con datos de prueba y limpieza verificable.
 | `rwadar-app/activar-push.cmd` | Único opt-in de push tras E2E; nunca forma parte de fresh/22 |
 | `rwadar-app/db/push_fallo_cerrado.sql` | Cierre de emergencia limitado al push; conserva API y retención |
 
-La suite raíz terminó el 22-08 con código 0; la web pasó **203/203**.
+La suite raíz terminó el 22-08 con código 0; la web pasó **219/219**.
 En producción, la 22 (`02F2...0666`) terminó en `COMMIT` con `schedule=19`; su
 verificador (`4182...2C3`) devolvió `Success. No rows returned` y `RWAdar 22
 OK`. El smoke público confirmó 26/4, las denegaciones ACL/RPC y la ausencia de
@@ -479,12 +484,12 @@ probado: las altas y la recuperación públicas están pausadas fail-closed y no
 envían solicitudes, aunque el login de cuentas existentes y el radar sin cuenta
 siguen disponibles. No confundas superar el preflight con haber probado que
 llega un correo. Cloudflare Pages sirve el deployment actual
-`d7f7e611-15a3-4e89-9a39-72bbe371b054`
-(`https://d7f7e611.rwadar.pages.dev`) con caché
-`rwadar-v-3688f59d62fd0079`. El ZIP final es
-`outputs/rwadar-cloudflare-pages-20260822-3688f59d.zip`, 878.052 bytes y 21/21
+`a0be7029-6281-47dd-963d-9c397a18848b`
+(`https://a0be7029.rwadar.pages.dev`) con caché
+`rwadar-v-d4a30d5261f16a4b`. El ZIP final es
+`outputs/rwadar-cloudflare-pages-20260822-d4a30d52.zip`, 880.760 bytes y 21/21
 archivos verificados, SHA-256
-`C2FAC300F4B6C9BC83FDD63C26EB64B4615F8F540B73589D54B6EDD8D8E936E4`; no usar
+`AF9FDA2A5612BCD80BE16EE4251E8FD36261BC522DBFF8E96F18566AEBDEF096`; no usar
 el paquete `PRE-AUTH-NO-USAR-...-9b158323.zip` anterior.
 
 La app móvil local está GO y mantiene push OFF. El preview EAS terminó
