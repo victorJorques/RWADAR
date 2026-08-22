@@ -804,9 +804,13 @@ function irPaso(i,manual){
   colocar(i);
   const rot=document.getElementById('exRot');
   if(rot) rot.textContent=ROTULOS[i];
-  document.querySelectorAll('.paso').forEach((d,k)=>d.classList.toggle('on',k===i));
+  document.querySelectorAll('.paso').forEach((d,k)=>{
+   const activa=k===i;d.classList.toggle('on',activa);d.setAttribute('aria-pressed',activa?'true':'false');
+  });
   document.querySelectorAll('.ventaja').forEach((b,k)=>b.classList.toggle('on',VENTAJAS_POR_PASO[i].indexOf(k)>-1));
-  if(escenaVisible) Sonido.paso(i);
+  /* La animación automática permanece silenciosa. El sonido solo responde
+     cuando la persona elige un paso de forma deliberada. */
+  if(manual&&escenaVisible) Sonido.paso(i);
   if(manual && reloj){ clearInterval(reloj); reloj=null;
     const l=document.getElementById('exSteps'); if(l) l.classList.remove('auto'); }
 }
@@ -851,6 +855,8 @@ function irPaso(i,manual){
 
   pon('calcEuros_v',eur(e,0));
   pon('calcRent_v',num(r,1)+' % al año');
+  bEur.setAttribute('aria-valuetext',eur(e,0));
+  bRent.setAttribute('aria-valuetext',num(r,1)+' % al año');
   pon('tRent',num(tuRent,1)+' %');
   pon('tAnual',eur(tuyoAnual,tuyoAnual<100?2:0));
   pon('tMes',eur(tuyoAnual/12,2));
@@ -1074,6 +1080,33 @@ function filtraDesdeRadar(cat){
 
 let S2={cat:"",reg:"",acc:"",tic:"",q:"",view:"grid"};
 let compare=[];
+const LIMITE_MOVIL_RESULTADOS=6;
+let movilResultadosExpandidos=false;
+
+function hayFiltrosPlataformas(){
+ return Boolean(S2.cat||S2.reg||S2.acc||S2.tic||S2.q);
+}
+function actualizarResultadosMoviles(total){
+ const g=document.getElementById('grid'),b=document.getElementById('movilResultadosMas');
+ if(!g||!b)return;
+ const filtrando=hayFiltrosPlataformas();
+ const todos=movilResultadosExpandidos||filtrando||S2.view!=='grid';
+ g.classList.toggle('movil-resultados-abiertos',todos);
+ b.hidden=S2.view!=='grid'||filtrando||total<=LIMITE_MOVIL_RESULTADOS;
+ b.setAttribute('aria-expanded',movilResultadosExpandidos?'true':'false');
+ b.textContent=movilResultadosExpandidos
+  ?'Mostrar solo las 6 primeras'
+  :'Ver las '+(total-LIMITE_MOVIL_RESULTADOS)+' plataformas restantes';
+}
+function alternarResultadosMoviles(){
+ movilResultadosExpandidos=!movilResultadosExpandidos;
+ const total=filtered().length;
+ actualizarResultadosMoviles(total);
+ if(!movilResultadosExpandidos){
+  const cuenta=document.getElementById('count');
+  if(cuenta)cuenta.scrollIntoView({block:'start',behavior:menos?'auto':'smooth'});
+ }
+}
 
 function rellenaRegiones(){
  const s=document.getElementById('fReg');if(!s)return;
@@ -1091,7 +1124,7 @@ document.getElementById('fReg').onchange=e=>{S2.reg=e.target.value;Sonido.filtro
 document.getElementById('fAcc').onchange=e=>{S2.acc=e.target.value;Sonido.filtro();render()};
 document.getElementById('fTic').onchange=e=>{S2.tic=e.target.value;Sonido.filtro();render()};
 document.getElementById('q').oninput=e=>{S2.q=e.target.value.toLowerCase();render()};
-function resetAll(){S2={cat:"",reg:"",acc:"",tic:"",q:"",view:S2.view};document.getElementById('q').value='';['fReg','fAcc','fTic'].forEach(i=>document.getElementById(i).value='');render()}
+function resetAll(){S2={cat:"",reg:"",acc:"",tic:"",q:"",view:S2.view};movilResultadosExpandidos=false;document.getElementById('q').value='';['fReg','fAcc','fTic'].forEach(i=>document.getElementById(i).value='');render()}
 
 document.getElementById('s1').textContent=P.length;
 document.getElementById('s3').textContent=P.filter(p=>p.acceso==="Minorista").length;
@@ -1110,18 +1143,19 @@ function filtered(){
   return true;
  }).sort((a,b)=>a.n.localeCompare(b.n,'es'));
 }
-function setView(v){S2.view=v;document.getElementById('vGrid').classList.toggle('on',v==='grid');document.getElementById('vMat').classList.toggle('on',v==='matrix');render()}
+function setView(v){S2.view=v;['vGrid','vMat'].forEach((id,i)=>{const b=document.getElementById(id),on=(i===0)===(v==='grid');b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')});render()}
 
 function render(){
  document.getElementById('pills').innerHTML=
-  `<button class="f ${S2.cat===''?'on':''}" data-filtrar-cat="">Todas <span class="ct">${P.length}</span></button>`+
+  `<button class="f ${S2.cat===''?'on':''}" data-filtrar-cat="" aria-pressed="${S2.cat===''?'true':'false'}">Todas <span class="ct">${P.length}</span></button>`+
   Object.keys(CATMETA).map(c=>{const n=P.filter(p=>p.cat===c).length;
-   const cp={cat:c};return `<button class="f ${S2.cat===c?'on':''}" data-cat="${escHtml(c)}" data-filtrar-cat="${escHtml(c)}"><span class="punto ${catClase(cp)}"></span>${escHtml(c)} <span class="ct">${n}</span></button>`}).join('');
+   const cp={cat:c};return `<button class="f ${S2.cat===c?'on':''}" data-cat="${escHtml(c)}" data-filtrar-cat="${escHtml(c)}" aria-pressed="${S2.cat===c?'true':'false'}"><span class="punto ${catClase(cp)}"></span>${escHtml(c)} <span class="ct">${n}</span></button>`}).join('');
  const f=filtered();
  document.getElementById('count').innerHTML=`<b>${f.length}</b> de ${P.length} plataformas · última revisión ${ultimaRevision()}`;
  document.getElementById('grid').classList.toggle('hide',S2.view!=='grid');
  document.getElementById('matrix').classList.toggle('show',S2.view==='matrix');
  S2.view==='grid'?renderGrid(f):renderMatrix(f);
+ actualizarResultadosMoviles(f.length);
  pintarRadar();
  renderCmpBar();
  pulir();   /* al filtrar se crean fichas nuevas: vuelven a entrar animadas */
@@ -1136,7 +1170,7 @@ function renderGrid(f){
    <div class="aval">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
    <div class="marcas"><span class="m acc">${escHtml(p.acceso)}</span><span class="m">Entrada: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>
    <div class="ficha-pie"><span class="verif">${okSVG} Verificado ${escHtml(fCorta(p.ver))}</span>
-    <button class="cmp ${on?'on':''}" data-comparar="${i}">${on?'✓ Comparando':'+ Comparar'}</button>
+    <button class="cmp ${on?'on':''}" data-comparar="${i}" aria-pressed="${on?'true':'false'}">${on?'✓ Comparando':'+ Comparar'}</button>
     <button class="movil-ficha-abrir" data-abrir="${i}">Abrir ficha <span aria-hidden="true">›</span></button></div></div>`}).join('');
 }
 function renderMatrix(f){
@@ -1210,7 +1244,12 @@ function openDrawer(i){
  const cuerpo=document.getElementById('dwBody');if(cuerpo)cuerpo.scrollTop=0;
  openPanel('drawer');
 }
-function toggleCompare(i){const a=compare.indexOf(i);if(a>-1)compare.splice(a,1);else{if(compare.length>=3)return;compare.push(i)}render()}
+function toggleCompare(i){
+ const a=compare.indexOf(i);
+ if(a>-1)compare.splice(a,1);
+ else{if(compare.length>=3){avisar('Puedes comparar hasta tres plataformas a la vez.');return;}compare.push(i)}
+ render();requestAnimationFrame(()=>document.querySelector('[data-comparar="'+i+'"]')?.focus({preventScroll:true}));
+}
 function clearCompare(){compare=[];render()}
 function renderCmpBar(){
  document.getElementById('cmpbar').classList.toggle('show',compare.length>0);
@@ -1311,8 +1350,12 @@ function pintarEmisiones(){
  const hayPublicadas=EMI.some(emisionValida);
  const seccion=document.getElementById('emisiones');
  const futuro=document.getElementById('movilOfertasFuturo');
+ const informacion=document.getElementById('emisInformacion');
  if(seccion)seccion.classList.toggle('sin-emisiones',!hayPublicadas);
  if(futuro)futuro.hidden=hayPublicadas;
+ const movilUI=Boolean(document.documentElement&&document.documentElement.classList&&
+  document.documentElement.classList.contains('movil-ui'));
+ if(informacion)informacion.open=hayPublicadas||!movilUI;
  if(!v.length){
   caja.innerHTML=hayPublicadas
    ?'<div class="emis-vacio"><h3>Nada abierto con ese filtro</h3><p>Prueba con otra categoría o vuelve en unos días: el registro cambia cuando verificamos novedades.</p></div>'
@@ -1403,48 +1446,12 @@ function downloadCSV(){
 /* =================================================================
    SONIDO DE INTERFAZ
    -----------------------------------------------------------------
-   Sintetizado con Web Audio: ni un fichero que descargar, ni una
-   petición de red.
-
-   La versión anterior se oía, pero sonaba tosca, y el motivo era la
-   receta: ruido blanco por un paso banda de Q alto. Eso es un resonador
-   metálico —una lámina golpeada—, y todo el registro caía entre 2 y 4
-   kHz, que es justo donde el oído humano es más sensible y donde antes
-   se cansa. Cuanto más se subía el volumen, más chillaba.
-
-   Cómo suena lo que hacen en Cupertino, que es a lo que vamos:
-
-     · TONO, no ruido. La base es un seno con una caída de altura
-       mínima. Redondo, sin filo.
-     · GRAVE, no agudo. Casi todo entre 250 y 900 Hz. El ruido queda
-       como una pizca de textura, filtrado por arriba y a un cuarto del
-       volumen — se nota si se quita, no se oye si está.
-     · SIN CHASQUIDO. El ataque no es una rampa recta sino un coseno
-       elevado de unos milisegundos. Ese detalle es el que separa un
-       "toc" de un "clac": una rampa recta introduce una discontinuidad
-       en la derivada y el oído la oye como un chasquido.
-     · UNA SOLA FAMILIA. Todo sale del mismo timbre y de una escala
-       pentatónica, así que dos sonidos seguidos nunca disuenan.
-
-   LA ALTURA SUBE, NO BAJA. Esta es la decisión que define el carácter y
-   se tomó a oído, comparando cinco familias en un banco de pruebas. Un
-   tono que cae suena a algo que se posa, a algo que termina; un tono que
-   sube en cincuenta milisegundos suena a algo que se suelta, que sale
-   despedido. La segunda sensación es la que engancha, y es la del "pop"
-   de enviar un mensaje en un Mac. Todo el juego de sonidos está montado
-   sobre ese gesto ascendente.
-
-   La única excepción es cerrar, que baja: es el gesto contrario y tiene
-   que oírse como tal. Marcar sube y desmarcar baja por lo mismo.
-
-   Esto corrige la norma anterior de "golpes de material, nunca notas".
-   Se escribió para huir del tono puro sostenido, que efectivamente suena
-   a juguete — pero la conclusión era demasiado amplia. Lo que no puede
-   haber es melodía: la altura solo cambia cuando significa algo, y
-   siempre dentro de la misma escala.
-
-   Las reglas de convivencia no cambian: solo al pulsar algo a propósito,
-   nunca al pasar por encima ni al hacer scroll.
+   Sintetizado localmente con Web Audio, sin descargar ficheros ni hacer
+   peticiones de red. Usa dos parciales suaves, un ataque de 5 ms y un
+   paso bajo para evitar el antiguo efecto metálico de «gota». No incluye
+   ruido, paneo aleatorio, reverberación ni barridos largos. Empieza
+   apagado, solo responde a acciones deliberadas y el avance automático
+   de la lección 3D permanece siempre silencioso.
    ================================================================= */
 /* En navegación privada o dentro de un iframe restringido, tocar
    localStorage lanza excepción. Se accede siempre protegido. */
@@ -1453,61 +1460,24 @@ const recuerda={
  guardar(k,v){try{localStorage.setItem(k,v)}catch{}}
 };
 
-/* Escala pentatónica sobre do. Cualquier par de estas notas suena bien
-   junto, así que dos sonidos que se solapen nunca chocan. */
-const NOTAS={do1:261.63, mib:311.13, fa:349.23, sol:392.00, sib:466.16,
-             do2:523.25, re:587.33, fa2:698.46, sol2:783.99, la:880.00, do3:1046.50};
-
 const Sonido=(()=>{
- let ctx=null, maestro=null, seco=null, sala=null, ruido=null;
- let on=recuerda.leer('rwadar.sonido')!=='0';
+ let ctx=null, maestro=null, seco=null;
+ /* Opt-in real: una instalación nueva empieza en silencio. */
+ let on=recuerda.leer('rwadar.sonido')==='1';
  let despierto=false;    /* ¿ha habido ya un gesto del usuario? */
 
- /* Una sala pequeña generada a mano: ruido que se apaga deprisa. No es
-    una grabación de una iglesia, es el aire de un despacho. */
- function impulso(c,dur,caida){
-  const n=Math.max(1,Math.floor(c.sampleRate*dur));
-  const b=c.createBuffer(2,n,c.sampleRate);
-  for(let ch=0;ch<2;ch++){
-   const d=b.getChannelData(ch);
-   for(let i=0;i<n;i++){const t=i/n; d[i]=(Math.random()*2-1)*Math.pow(1-t,caida);}
-  }
-  return b;
- }
-
- /* La envolvente, como curva y no como rampa.
-    `exponentialRampToValueAtTime` va de un valor a otro en línea recta
-    (en logaritmo), y al llegar cambia de pendiente de golpe. Ese quiebre
-    es audible: es el chasquido. Una curva calculada con coseno elevado
-    al principio entra sin borde, y la caída en potencia se parece a como
-    se apaga un objeto de verdad. */
- const CACHE={};
- function envolvente(ataque,forma){
-  const clave=ataque+'|'+forma;
-  if(CACHE[clave]) return CACHE[clave];
-  const n=256, c=new Float32Array(n);
-  for(let i=0;i<n;i++){
-   const t=i/(n-1);
-   c[i]= t<ataque ? 0.5-0.5*Math.cos(Math.PI*t/ataque)
-                  : Math.pow(1-(t-ataque)/(1-ataque),forma);
-  }
-  c[n-1]=0;
-  return CACHE[clave]=c;
- }
- const escalar=(c,v)=>{const o=new Float32Array(c.length);
-  for(let i=0;i<c.length;i++) o[i]=c[i]*v; return o;};
-
  const dar=()=>{
+  if(ctx&&ctx.state==='closed'){ctx=null;maestro=null;seco=null;}
   if(!ctx){
    const A=window.AudioContext||window.webkitAudioContext; if(!A) return null;
    try{ ctx=new A(); }catch(e){ return null; }
-   maestro=ctx.createGain(); maestro.gain.value=1;
+   maestro=ctx.createGain(); maestro.gain.value=.45;
 
    /* Un paso bajo en la salida general. Es la diferencia entre "sonido de
       interfaz" y "sonido de aviso de electrodoméstico": por encima de 7
       kHz no hay nada que aporte, y sí mucho que moleste. */
    const suave=ctx.createBiquadFilter();
-   suave.type='lowpass'; suave.frequency.value=7000; suave.Q.value=0.7;
+   suave.type='lowpass'; suave.frequency.value=2800; suave.Q.value=0.7;
 
    /* NO un DynamicsCompressor: tiene detector de envolvente y un sonido
       de interfaz dura milisegundos. Medido en este mismo grafo, aplastaba
@@ -1524,119 +1494,42 @@ const Sonido=(()=>{
    maestro.connect(suave); suave.connect(tope); tope.connect(ctx.destination);
 
    seco=ctx.createGain(); seco.gain.value=1; seco.connect(maestro);
-
-   const rev=ctx.createConvolver(); rev.buffer=impulso(ctx,0.34,9);
-   const corte=ctx.createBiquadFilter(); corte.type='highpass'; corte.frequency.value=380;
-   sala=ctx.createGain(); sala.gain.value=0.34;
-   sala.connect(corte); corte.connect(rev); rev.connect(maestro);
-
-   const n=Math.floor(ctx.sampleRate*0.4);
-   ruido=ctx.createBuffer(1,n,ctx.sampleRate);
-   const d=ruido.getChannelData(0);
-   for(let i=0;i<n;i++) d[i]=Math.random()*2-1;
   }
-  if(ctx.state==='suspended') ctx.resume();
+  if(ctx.state==='suspended') ctx.resume().catch(()=>{});
   return ctx;
  };
 
- const salida=(c,pan,envio)=>{
+ const salida=c=>{
   const g=c.createGain(); g.gain.value=1;
-  if(c.createStereoPanner){
-   const p=c.createStereoPanner(); p.pan.value=pan||0;
-   g.connect(p); p.connect(seco);
-  }else g.connect(seco);
-  const s=c.createGain(); s.gain.value=envio==null?0.22:envio;
-  g.connect(s); s.connect(sala);
+  g.connect(seco);
   return g;
  };
 
- /* El sonido base: un tono breve que SUBE de altura, con una pizca de
-    aire encima. Todo lo demás son ajustes de esta receta. */
- function pop(o){
-  if(!on) return;
-  const c=dar(); if(!c) return;
-  o=o||{};
-  /* Una pizca de desafinación por pulsación, ±1,2 %. Es inaudible como
-     nota y decisiva como sensación: dos toques idénticos delatan que el
-     sonido está grabado; dos toques que varían un pelo se perciben como
-     algo que ocurre, no como algo que se reproduce. */
-  const desv=1+(Math.random()-0.5)*0.024;
-  const f=(o.f||NOTAS.sol)*desv, f2=(o.f2||(o.f||NOTAS.sol)*2.1)*desv,
-        dur=o.dur||0.055, vol=o.vol||0.30,
-        ataque=o.ataque||0.06, forma=o.forma||3.4,
-        /* `glis` es qué parte de la nota tarda en llegar arriba. Cuanto
-           más corto, más "salto" y menos "sirena". 0,6 es el punto donde
-           deja de parecer un barrido y empieza a parecer un gesto. */
-        glis=o.glis||0.60,
-        aire=o.aire==null?0.18:o.aire, cuerpo=o.cuerpo==null?0.22:o.cuerpo;
-  const t=c.currentTime+(o.retraso||0)+0.004;
-  const out=salida(c,o.pan||0,o.envio);
-  const env=envolvente(ataque,forma);
-
-  /* fundamental */
-  const osc=c.createOscillator(); osc.type='sine';
-  osc.frequency.setValueAtTime(f,t);
-  osc.frequency.exponentialRampToValueAtTime(Math.max(40,f2),t+dur*glis);
-  const g=c.createGain(); g.gain.setValueAtTime(0,t);
-  g.gain.setValueCurveAtTime(escalar(env,vol),t,dur);
-  osc.connect(g); g.connect(out); osc.start(t); osc.stop(t+dur+0.02);
-
-  /* Un armónico a la octava, muy por debajo. Es lo que impide que suene
-     a tono de prueba de laboratorio: un seno solo no existe en la
-     naturaleza; con su octava ya parece un objeto. */
-  if(cuerpo>0){
-   const o2=c.createOscillator(); o2.type='sine';
-   o2.frequency.setValueAtTime(f*2,t);
-   o2.frequency.exponentialRampToValueAtTime(Math.max(40,f2*2),t+dur*glis*0.85);
-   const g2=c.createGain(); g2.gain.setValueAtTime(0,t);
-   g2.gain.setValueCurveAtTime(escalar(envolvente(ataque,forma*1.9),vol*cuerpo),t,dur*0.75);
-   o2.connect(g2); g2.connect(out); o2.start(t); o2.stop(t+dur+0.02);
-  }
-
-  /* El aire: ruido con paso BAJO, no paso banda. El paso banda de Q alto
-     es lo que sonaba a lámina metálica; un paso bajo suave deja solo el
-     soplo del contacto y se queda debajo del tono. */
-  if(aire>0){
-   const s=c.createBufferSource(); s.buffer=ruido; s.loop=true;
-   s.playbackRate.value=0.9+Math.random()*0.2;
-   const lp=c.createBiquadFilter(); lp.type='lowpass';
-   lp.frequency.setValueAtTime(Math.min(5200,f*5.5),t);
-   lp.frequency.exponentialRampToValueAtTime(Math.max(300,f*1.6),t+dur*0.4);
-   lp.Q.value=0.6;
-   const gn=c.createGain(); gn.gain.setValueAtTime(0,t);
-   const dAire=Math.max(0.012,dur*0.34);
-   gn.gain.setValueCurveAtTime(escalar(envolvente(0.10,3.4),vol*aire*2.2),t,dAire);
-   s.connect(lp); lp.connect(gn); gn.connect(out);
-   s.start(t); s.stop(t+dAire+0.02);
-  }
- }
-
- /* Un roce de aire: para cuando algo viaja, no cuando algo se toca. */
- function roce(o){
-  if(!on) return;
-  const c=dar(); if(!c) return;
-  o=o||{};
-  const desde=o.desde||400, hasta=o.hasta||1800, dur=o.dur||0.42, vol=o.vol||0.13;
-  const t=c.currentTime+(o.retraso||0)+0.004;
-  const out=salida(c,o.pan||0,o.envio==null?0.45:o.envio);
-  const s=c.createBufferSource(); s.buffer=ruido; s.loop=true;
-  const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.Q.value=0.9;
-  bp.frequency.setValueAtTime(desde,t);
-  bp.frequency.exponentialRampToValueAtTime(hasta,t+dur*0.8);
-  const g=c.createGain(); g.gain.setValueAtTime(0,t);
-  g.gain.setValueCurveAtTime(escalar(envolvente(0.42,2.2),vol*2.6),t,dur);
-  s.connect(bp); bp.connect(g); g.connect(out);
-  s.start(t); s.stop(t+dur+0.03);
+ /* Pulso cálido: dos parciales fijos, sin ruido, paneo, azar ni barridos
+    de varias octavas. La entrada de 5 ms evita el clic digital y todo el
+    gesto termina antes de que compita con la lectura. */
+ let ultimoTic=0;
+ function pulsoCalido(o){
+  if(!on||!despierto||(typeof document!=='undefined'&&document.hidden))return;
+  const c=dar();if(!c)return;o=o||{};
+  const f=o.f||247,f2=o.f2||f,dur=o.dur||.065,vol=o.vol||.07;
+  const t=c.currentTime+(o.retraso||0)+.004,out=salida(c);
+  const osc=c.createOscillator(),g=c.createGain();osc.type='sine';
+  osc.frequency.setValueAtTime(f,t);osc.frequency.linearRampToValueAtTime(f2,t+Math.min(.03,dur*.45));
+  g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(vol,t+.005);
+  g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  osc.connect(g);g.connect(out);osc.start(t);osc.stop(t+dur+.012);
+  const arm=c.createOscillator(),ga=c.createGain();arm.type='triangle';
+  arm.frequency.setValueAtTime(f*1.5,t);ga.gain.setValueAtTime(.0001,t);
+  ga.gain.linearRampToValueAtTime(vol*.13,t+.006);ga.gain.exponentialRampToValueAtTime(.0001,t+dur*.72);
+  arm.connect(ga);ga.connect(out);arm.start(t);arm.stop(t+dur+.012);
  }
 
  return {
   get activo(){return on},
   set activo(v){
-   /* apagar baja, encender sube: el interruptor se oye en su dirección */
-   if(!v){ pop({f:NOTAS.fa2,f2:NOTAS.do1,dur:.15,vol:.26,glis:.55,envio:.3}); on=false; }
-   else { on=true; dar();
-          pop({f:NOTAS.do1,f2:NOTAS.do2,dur:.07,vol:.28});
-          pop({f:NOTAS.sol,f2:NOTAS.sol2,dur:.12,vol:.26,retraso:.07,envio:.4}); }
+   if(!v){pulsoCalido({f:294,f2:277,dur:.07,vol:.06});on=false;}
+   else{on=true;despierto=true;dar();pulsoCalido({f:262,f2:277,dur:.085,vol:.07});}
    recuerda.guardar('rwadar.sonido',v?'1':'0');
   },
   despertar(){ despierto=true; },
@@ -1653,80 +1546,37 @@ const Sonido=(()=>{
    try{ if(navigator.vibrate) navigator.vibrate(ms||8); }catch(e){}
   },
 
-  /* --- pulsaciones corrientes ---
-     Todas parten de una nota de la pentatónica y suben hasta otra nota de
-     la misma pentatónica, casi siempre su octava. Así el gesto ascendente
-     nunca cae en un intervalo raro por mucho que se repita. */
-  toque : ()=>pop({f:NOTAS.sol,f2:NOTAS.la,dur:.055,vol:.32,envio:.14}),
+  /* Pulsaciones muy breves y próximas entre sí: informan sin convertirse
+     en una melodía ni competir con el contenido. */
+  toque : ()=>pulsoCalido({f:220,f2:210,dur:.045,vol:.055}),
   /* el tic del deslizador: lo más pequeño que puede sonar sin desaparecer */
-  tic   : ()=>pop({f:NOTAS.fa2,f2:NOTAS.do3*1.15,dur:.028,vol:.13,ataque:.08,forma:3.8,
-                   glis:.5,aire:.10,cuerpo:.10,envio:.08}),
-  filtro: ()=>pop({f:NOTAS.do2,f2:NOTAS.do3,dur:.045,vol:.22,aire:.14,envio:.12}),
-  /* Abrir arranca grave y sube mucho: es el sonido de algo que se
-     despliega hacia arriba. Cerrar hace exactamente el camino contrario,
-     y por eso es la única excepción a la regla de que todo sube. */
-  abrir : ()=>pop({f:NOTAS.do1,f2:NOTAS.fa2,dur:.12,vol:.34,ataque:.07,forma:2.6,
-                   glis:.55,aire:.16,cuerpo:.30,envio:.35}),
+  tic   : ()=>{const ahora=performance.now();if(ahora-ultimoTic<45)return;ultimoTic=ahora;pulsoCalido({f:270,dur:.022,vol:.035});},
+  filtro: ()=>pulsoCalido({f:294,f2:311,dur:.05,vol:.05}),
+  /* Abrir y cerrar se distinguen con movimientos pequeños, nunca con un
+     barrido de varias octavas. */
+  abrir : ()=>pulsoCalido({f:262,f2:277,dur:.085,vol:.075}),
   /* Cerrar no es un tobogán. La primera versión caía una octava y media
      de golpe y sonaba a decepción, a "se ha estropeado". Cerrar un panel
      no es un fracaso: es dejar algo bien puesto. Así que apenas baja un
      tono, dura poco y tiene cuerpo — el ruido de una tapa que asienta. */
-  cerrar: ()=>pop({f:NOTAS.sol,f2:NOTAS.fa,dur:.085,vol:.28,ataque:.07,forma:3.0,
-                   glis:.7,aire:.12,cuerpo:.38,envio:.22}),
-  /* Marcar sube dos veces, desmarcar baja dos veces: la dirección del
-     gesto se oye sin tener que mirar. */
-  marcar: ()=>{pop({f:NOTAS.sol,f2:NOTAS.sol2,dur:.05,vol:.28,pan:-.10});
-               pop({f:NOTAS.do2,f2:NOTAS.do3,dur:.06,vol:.28,retraso:.05,pan:.10,envio:.30});},
-  desmarcar:()=>{pop({f:NOTAS.do2,f2:NOTAS.do1,dur:.05,vol:.24,glis:.55,pan:.10});
-                 pop({f:NOTAS.sol,f2:NOTAS.sol/2,dur:.07,vol:.24,glis:.55,retraso:.05,pan:-.10,envio:.28});},
-  descarga:()=>{pop({f:NOTAS.do2,f2:NOTAS.sol2,dur:.06,vol:.28});
-                pop({f:NOTAS.sol,f2:NOTAS.do3,dur:.13,vol:.28,retraso:.08,envio:.45,cuerpo:.34});},
+  cerrar: ()=>pulsoCalido({f:330,f2:294,dur:.065,vol:.06}),
+  /* Dos pulsos suaves distinguen cambios de selección y descargas. */
+  marcar: ()=>{pulsoCalido({f:392,dur:.05,vol:.06});pulsoCalido({f:523,dur:.06,vol:.055,retraso:.038});},
+  desmarcar:()=>{pulsoCalido({f:523,dur:.045,vol:.05});pulsoCalido({f:392,dur:.055,vol:.045,retraso:.038});},
+  descarga:()=>{pulsoCalido({f:330,dur:.06,vol:.06});pulsoCalido({f:494,dur:.095,vol:.055,retraso:.045});},
 
-  /* Cada tipo de activo arranca en su nota de la pentatónica, de lo más
-     pesado a lo más técnico, y todas suben a su octava. Al recorrer los
-     filtros se oye una escala, no seis ruidos distintos — y como todas
-     pertenecen al mismo acorde, dos seguidas nunca suenan a error. */
-  categoria:i=>{
-   const esc=[NOTAS.do1,NOTAS.mib,NOTAS.fa,NOTAS.sol,NOTAS.sib,NOTAS.do2];
-   const f=esc[i%esc.length];
-   pop({f,f2:f*2.15,dur:.07,vol:.30,cuerpo:.28,envio:.22});
-  },
+  /* Los filtros comparten una única firma sonora para no crear ruido. */
+  categoria:()=>pulsoCalido({f:294,f2:311,dur:.05,vol:.05}),
 
-  /* --- el dibujo suena ---
-     Solo después del primer gesto del usuario. Un explicador que empieza
-     a hacer ruido solo, antes de que nadie haya tocado nada, es
-     exactamente lo que hace que se cierre la pestaña. */
-  /* UNA GOTA POR PASO. Nada más.
-     Antes cada paso disparaba una ráfaga: cinco chispas, cuatro destellos,
-     dos roces… Sonaba a fuegos artificiales y, sobre todo, a algo que se
-     alargaba. Un explicador que avanza solo no puede sonar sostenido: la
-     atención se va al sonido en vez de al dibujo.
-
-     Una gota de agua es exactamente esto — un tono que sube muy rápido de
-     altura y se apaga en cien milisegundos. La subida rápida es lo que el
-     oído reconoce como «gota»: es la resonancia de la cavidad cerrándose.
-     Cada paso cae en una nota distinta de la pentatónica, subiendo, así
-     que los cuatro seguidos suenan a una frase y no a cuatro avisos. */
+  /* La lección 3D solo responde a un paso elegido manualmente. El avance
+     automático nunca reproduce audio. */
   paso(i){
    if(!on||!despierto) return;
-   const gotas=[NOTAS.fa,NOTAS.sol,NOTAS.sib,NOTAS.do2];
-   const f=gotas[i%4];
-   pop({f,f2:f*2.7,dur:.10,vol:.26,ataque:.11,forma:3.6,glis:.42,
-        aire:.05,cuerpo:.14,envio:.42});
+   const pasos=[220,233,247,262];
+   pulsoCalido({f:pasos[i%4],dur:.055,vol:.045});
   }
  };
 })();
-
-/* La nota de cada categoría, por orden en CATMETA: de lo más pesado
-   (inmobiliario) a lo más técnico (infraestructura). */
-const NOTA_CAT={
- 'Inmobiliario'               :0,
- 'Crédito privado'            :1,
- 'Tesoro y fondos'            :2,
- 'Acciones y capital privado' :3,
- 'Materias primas'            :4,
- 'Infraestructura'            :5,
-};
 
 (function interruptorSonido(){
  const b=document.getElementById('snd'); if(!b) return;
@@ -1735,27 +1585,31 @@ const NOTA_CAT={
  b.addEventListener('click',()=>{Sonido.despertar();Sonido.activo=!Sonido.activo; pinta();});
 })();
 
-/* Sonido en el gesto de pulsar, no al soltar: así responde antes que la vista. */
+/* Pointerdown se reserva para la respuesta táctil. Los sonidos viven en
+   click para que ratón, tacto, Enter, Espacio y lector de pantalla reciban
+   exactamente el mismo cue y nunca dos. */
 document.addEventListener('pointerdown',ev=>{
  Sonido.despertar();
  const t=ev.target;
  /* la vibración va con cualquier control, incluido el interruptor de
     sonido: es la respuesta física al dedo, no un aviso */
  if(t.closest('button,.blip,input[type=range],select,a')) Sonido.toca(8);
- if(t.closest('#snd')) return;
- /* el pestillo va en la dirección correcta: marcar y desmarcar no suenan
-    igual, y se sabe cuál toca mirando si el botón ya estaba encendido */
+});
+document.addEventListener('click',ev=>{
+ Sonido.despertar();
+ const t=ev.target;
+ if(t.closest('#snd')||t.closest('.paso'))return;
  const marca=t.closest('.cmp');
  if(marca) return marca.classList.contains('on')?Sonido.desmarcar():Sonido.marcar();
+ if(t.closest('.abrir,.mm,.movil-ficha-abrir'))return Sonido.abrir();
  const conCat=t.closest('[data-cat]');
- if(conCat && NOTA_CAT[conCat.dataset.cat]!=null) return Sonido.categoria(NOTA_CAT[conCat.dataset.cat]);
- if(t.closest('.abrir,.mm'))                 return Sonido.abrir();
+ if(conCat && CATMETA[conCat.dataset.cat]) return Sonido.categoria();
  if(t.closest('.cerrar')||t.id==='ovl')      return Sonido.cerrar();
  if(t.closest('.csv'))                       return Sonido.descarga();
  if(t.closest('.f,.paso,.btn-p,.btn-s,.hdr-cta,.limpiar,.vista button,.cmpbar .go,.cmpbar .x'))
    return Sonido.toque();
-},{passive:true});
-document.addEventListener('keydown',e=>{Sonido.despertar();if(e.key==='Escape')Sonido.cerrar();});
+});
+document.addEventListener('keydown',()=>{Sonido.despertar();});
 
 /* =================================================================
    REVELADO Y CONTADORES
@@ -2218,7 +2072,7 @@ const Cuenta = (function(){
  const CORREO_AUTH_E2E=false;
  let ses=null, perfil=null, vigiladas=new Map(), modo='entrar', fichaAbierta=null,
      identidadConfirmada=false,versionSesion=0,renovacion=null,focoCuenta=null,
-     correoPendiente='',operacionCuenta=0,temporizadorReenvio=null;
+     correoPendiente='',operacionCuenta=0,temporizadorReenvio=null,cuentaHistorial=false;
 
  const $=id=>document.getElementById(id);
  function normalizaSesion(s){
@@ -2458,13 +2312,20 @@ const Cuenta = (function(){
   document.body.classList.add('locked');
   caja.scrollTop=0;
   const movil=typeof matchMedia==='function'&&matchMedia('(max-width:767px),(pointer:coarse)').matches;
+  if(!yaAbierta&&movil&&typeof history!=='undefined'&&history.pushState){
+   const previo=history.state&&typeof history.state==='object'?history.state:{};
+   history.pushState({...previo,rwadarCuenta:true},'',location.href);cuentaHistorial=true;
+  }
   setTimeout(()=>{try{
    if(esEstado||movil)caja.focus();
    else $(modo==='nueva_clave'?'cClave':'cCorreo').focus();
   }catch(e){}},60);
  }
- function cerrar(){
+ function cerrar(forzar=false){
   const caja=$('cuentaCaja'),estabaAbierta=caja.classList.contains('on');
+  if(!forzar&&estabaAbierta&&cuentaHistorial&&history.state&&history.state.rwadarCuenta===true){
+   cuentaHistorial=false;history.back();return;
+  }
   operacionCuenta++;
   $('velo').classList.remove('on');
   caja.classList.remove('on'); caja.setAttribute('inert','');
@@ -2472,7 +2333,7 @@ const Cuenta = (function(){
   $('cuentaForm').removeAttribute('aria-busy');
   if(temporizadorReenvio){clearTimeout(temporizadorReenvio);temporizadorReenvio=null;}
   document.body.classList.remove('locked');
-  if(estabaAbierta){fondo().forEach(n=>n.removeAttribute('inert'));
+  if(estabaAbierta){cuentaHistorial=false;fondo().forEach(n=>n.removeAttribute('inert'));
    if(focoCuenta&&document.contains(focoCuenta))focoCuenta.focus();focoCuenta=null;}
  }
  function msj(txt,bien){
@@ -2576,7 +2437,7 @@ const Cuenta = (function(){
  }
 
  /* --- el área de la persona --------------------------------------- */
- function abrirPerfil(){
+ function abrirPerfil(soloPintar=false){
   const c=$('perfilCuerpo'); if(!c) return;
   const nom=(perfil&&perfil.nombre)||(ses.correo||'').split('@')[0];
   const dias=Math.max(0,Number.parseInt(perfil&&perfil.dias_de_miembro,10)||0);
@@ -2610,7 +2471,9 @@ const Cuenta = (function(){
     '<button id="pfSalir">Cerrar sesión</button>'+
     '<button class="peligro" id="pfBorrar">Borrar mi cuenta</button>'+
    '</div>';
-  c.querySelectorAll('.vig-lista button').forEach(b=>b.addEventListener('click',()=>alternar(b.dataset.q).then?0:0));
+  c.querySelectorAll('.vig-lista button').forEach(b=>b.addEventListener('click',async()=>{
+   const nombre=b.dataset.q;b.disabled=true;await alternar(nombre);abrirPerfil(true);
+  }));
   const g=$('pfGuardarNombre');if(g)g.addEventListener('click',async()=>{
    const n=$('pfNombre').value.trim();g.disabled=true;
    try{await rest('/perfiles?id=eq.'+encodeURIComponent(ses.uid),{method:'PATCH',body:JSON.stringify({nombre:n||null})});
@@ -2637,7 +2500,7 @@ const Cuenta = (function(){
   });
   const s=$('pfSalir'); if(s) s.addEventListener('click',salir);
   const b=$('pfBorrar'); if(b) b.addEventListener('click',borrar);
-  openPanel('perfilPanel');
+  if(!soloPintar)openPanel('perfilPanel');
   /* La moderación se pide DESPUÉS de abrir: si la base dice que no eres
      administrador devuelve cero filas y aquí no aparece nada. */
   if(perfil && perfil.es_admin) pintarModeracion();
@@ -2778,6 +2641,12 @@ const Cuenta = (function(){
    if(CORREO_AUTH_E2E&&correo)$('cCorreo').value=correo;
   });
   $('cuentaVolver').addEventListener('click',cerrar);
+  document.addEventListener('keydown',e=>{
+   if(e.key==='Escape'&&$('cuentaCaja').classList.contains('on')){e.preventDefault();cerrar();}
+  });
+  window.addEventListener('popstate',()=>{
+   if($('cuentaCaja').classList.contains('on')&&!(history.state&&history.state.rwadarCuenta===true))cerrar(true);
+  });
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){cerrar();cerrarPanelPerfil();}});
 
   const parametrosRetorno=typeof location!=='undefined'&&location.hash
@@ -2837,9 +2706,25 @@ const Movil = (function(){
   .map(p=>[p.dataset.movilPanel,p]));
  const panelBuscar=paneles.get('buscar');
  const emisiones=document.getElementById('emisiones');
- const anclaEmisiones=typeof document.createComment==='function'
-  ?document.createComment('rwadar: posición de emisiones en escritorio'):null;
- if(emisiones&&anclaEmisiones&&emisiones.parentNode)emisiones.parentNode.insertBefore(anclaEmisiones,emisiones);
+ const portada=document.querySelector('#movilPanelRadar>.portada');
+ const radarIntro=document.getElementById('movilRadarIntro');
+ const radarPortada=document.querySelector('.portada-radar');
+ const bannerAcademy=document.getElementById('movilAbrirAcademy');
+ const herramienta=document.getElementById('tool');
+ const barra=document.querySelector('#movilPanelRadar>.barra');
+ const resultados=document.getElementById('plataformasResultados');
+ const academia=document.getElementById('academy');
+ const explicador=document.getElementById('explain');
+ const academyLeccion=document.getElementById('academyLeccion');
+ const metodo=document.getElementById('metodo');
+ const ordenMovil=[emisiones,radarIntro,radarPortada,bannerAcademy,herramienta,barra,resultados,academia,portada].filter(Boolean);
+ const movibles=[...ordenMovil,explicador].filter(Boolean);
+ const anclas=new Map();
+ if(typeof document.createComment==='function')movibles.forEach((nodo,indice)=>{
+  if(!nodo.parentNode)return;
+  const ancla=document.createComment('rwadar: posición de escritorio '+indice);
+  nodo.parentNode.insertBefore(ancla,nodo);anclas.set(nodo,ancla);
+ });
  const cabEtiqueta=document.getElementById('movilCabeceraEtiqueta');
  const cabTitulo=document.getElementById('movilCabeceraTitulo');
  const cabSub=document.getElementById('movilCabeceraSub');
@@ -2850,7 +2735,7 @@ const Movil = (function(){
   inversiones:['SIN DATOS DE OPERACIONES','Inversiones','RWAdar todavía no registra operaciones'],
   cuenta:['TU ESPACIO','Mi cuenta','Perfil, seguridad, privacidad y preferencias']
  };
- let activa='buscar';
+ let activa='buscar',academyAbierta=false,academyOrigen=null,academyHistorial=false,avisosHistorial=false;
 
  const reduce=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  function geometria(){
@@ -2864,15 +2749,65 @@ const Movil = (function(){
   if(cabTitulo)cabTitulo.textContent=t[1];
   if(cabSub)cabSub.textContent=t[2];
  }
- function ordenarEmisiones(esMovil){
-  if(!emisiones||!panelBuscar)return;
+ function restaurarEscritorio(){
+  anclas.forEach((ancla,nodo)=>{
+   if(ancla&&ancla.parentNode&&ancla.nextSibling!==nodo)ancla.parentNode.insertBefore(nodo,ancla.nextSibling);
+  });
+ }
+ function ordenarBuscar(esMovil){
+  if(!panelBuscar)return;
   if(esMovil){
-   /* Es el mismo #emisiones: pasa a ser el primer nodo de lectura y visual
-      en Buscar. No se clona contenido, no cambia ningún id y WebGL queda
-      montado en su portada. */
-   if(panelBuscar.firstChild!==emisiones)panelBuscar.insertBefore(emisiones,panelBuscar.firstChild);
-  }else if(anclaEmisiones&&anclaEmisiones.parentNode&&anclaEmisiones.nextSibling!==emisiones){
-   anclaEmisiones.parentNode.insertBefore(emisiones,anclaEmisiones.nextSibling);
+   /* Mover los nodos reales evita que flex order enseñe una cosa mientras
+      Tab y el lector de pantalla recorren otra. No se clona ningún dato. */
+   const referencia=metodo&&metodo.parentNode===panelBuscar?metodo:null;
+   ordenMovil.forEach(nodo=>panelBuscar.insertBefore(nodo,referencia));
+   if(explicador&&academyLeccion&&explicador.parentNode!==academyLeccion)academyLeccion.appendChild(explicador);
+   if(academia)academia.hidden=!academyAbierta;
+   const informacion=document.getElementById('emisInformacion');
+   if(informacion)informacion.open=!emisiones||!emisiones.classList.contains('sin-emisiones');
+  }else{
+   restaurarEscritorio();
+   academyAbierta=false;academyHistorial=false;academyOrigen=null;
+   if(academia)academia.hidden=false;
+   const informacion=document.getElementById('emisInformacion');if(informacion)informacion.open=true;
+   panelBuscar.classList.remove('movil-academy-abierta');
+  }
+ }
+ function cabeceraAcademy(){
+  if(cabEtiqueta)cabEtiqueta.textContent='APRENDE A TU RITMO';
+  if(cabTitulo)cabTitulo.textContent='RWAdar Academy';
+  if(cabSub)cabSub.textContent='Tokenización, inversión, seguridad y riesgos';
+ }
+ function cerrarAcademyVisual(enfocar=true){
+  if(!academyAbierta)return;
+  academyAbierta=false;academyHistorial=false;
+  if(panelBuscar)panelBuscar.classList.remove('movil-academy-abierta');
+  if(academia)academia.hidden=true;
+  document.querySelectorAll('[data-movil-action="academy"]').forEach(b=>b.setAttribute('aria-expanded','false'));
+  cabecera('buscar');
+  window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
+  const origen=academyOrigen;academyOrigen=null;
+  if(enfocar&&origen&&origen.isConnected)setTimeout(()=>origen.focus({preventScroll:true}),40);
+ }
+ function mostrarAcademy(mostrar,enfocar=true,gestionarHistorial=true,origen=null){
+  if(!media.matches||!academia||!panelBuscar)return;
+  if(mostrar){
+   if(!academyAbierta){
+    academyOrigen=origen||document.activeElement;
+    academyAbierta=true;academia.hidden=false;
+    panelBuscar.classList.add('movil-academy-abierta');
+    document.querySelectorAll('[data-movil-action="academy"]').forEach(b=>b.setAttribute('aria-expanded','true'));
+    cabeceraAcademy();
+    if(gestionarHistorial&&typeof history!=='undefined'&&history.pushState){
+     const previo=history.state&&typeof history.state==='object'?history.state:{};
+     history.pushState({...previo,rwadarAcademy:true},'',location.href);academyHistorial=true;
+    }
+   }
+   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});geometria();
+   if(enfocar)setTimeout(()=>document.getElementById('movilCerrarAcademy')?.focus({preventScroll:true}),60);
+  }else if(academyAbierta){
+   if(gestionarHistorial&&academyHistorial&&history.state&&history.state.rwadarAcademy===true)history.back();
+   else cerrarAcademyVisual(enfocar);
   }
  }
  function mostrarAvisos(mostrar,enfocar=true){
@@ -2880,9 +2815,18 @@ const Movil = (function(){
   const vista=document.getElementById('movilVistaAvisos');
   const abre=document.getElementById('movilAbrirAvisos');
   if(!panel||!vista||!abre)return;
+  const estabaAbierta=!vista.hidden;
+  if(mostrar&&!estabaAbierta&&media.matches&&typeof history!=='undefined'&&history.pushState){
+   const previo=history.state&&typeof history.state==='object'?history.state:{};
+   history.pushState({...previo,rwadarAvisos:true},'',location.href);avisosHistorial=true;
+  }
+  if(!mostrar&&estabaAbierta&&avisosHistorial&&history.state&&history.state.rwadarAvisos===true){
+   avisosHistorial=false;history.back();if(enfocar)return;
+  }
   vista.hidden=!mostrar;
   panel.classList.toggle('movil-subvista-abierta',mostrar);
   abre.setAttribute('aria-expanded',mostrar?'true':'false');
+  if(!mostrar)avisosHistorial=false;
   if(!enfocar)return;
   if(mostrar){
    window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
@@ -2897,6 +2841,10 @@ const Movil = (function(){
  }
  function cambiar(id,opciones){
   if(!media.matches||!paneles.has(id))return;
+  if(academyAbierta){
+   const volver=academyHistorial&&history.state&&history.state.rwadarAcademy===true;
+   cerrarAcademyVisual(false);if(volver)history.back();
+  }
   if(id!=='cuenta'||activa==='cuenta')mostrarAvisos(false,false);
   activa=id;
   document.body.dataset.movilPestana=id;
@@ -2914,7 +2862,7 @@ const Movil = (function(){
  }
  function adaptar(){
   const esMovil=media.matches;
-  ordenarEmisiones(esMovil);
+  ordenarBuscar(esMovil);
   if(document.documentElement&&document.documentElement.classList)
    document.documentElement.classList.toggle('movil-ui',esMovil);
   if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();pintarSonidoMovil();}
@@ -2956,7 +2904,13 @@ const Movil = (function(){
   if(destino){e.preventDefault();ir(destino.dataset.movilIr);return;}
   const accion=e.target.closest&&e.target.closest('[data-movil-action]');
   if(!accion)return;
-  if(accion.dataset.movilAction==='ayuda'){e.preventDefault();ir('explain');}
+  if(accion.dataset.movilAction==='ayuda'){
+   e.preventDefault();cambiar('buscar',{arriba:false});mostrarAcademy(true,true,true,accion);
+  }
+  if(accion.dataset.movilAction==='academy'){
+   e.preventDefault();cambiar('buscar',{arriba:false});mostrarAcademy(true,true,true,accion);
+  }
+  if(accion.dataset.movilAction==='cerrar-academy'){e.preventDefault();mostrarAcademy(false);}
   if(accion.dataset.movilAction==='cuenta'){e.preventDefault();Cuenta.abrirGestion();}
   if(accion.dataset.movilAction==='avisos'){e.preventDefault();mostrarAvisos(true);}
   if(accion.dataset.movilAction==='cerrar-avisos'){e.preventDefault();mostrarAvisos(false);}
@@ -2976,6 +2930,19 @@ const Movil = (function(){
   if(!a||!a.matches||!a.matches('input:not([type="range"]),textarea,select'))
    document.body.classList.remove('movil-teclado');
  },80));
+ document.addEventListener('keydown',e=>{
+  if(!media.matches||e.key!=='Escape')return;
+  if(academyAbierta){e.preventDefault();mostrarAcademy(false);return;}
+  const avisos=document.getElementById('movilVistaAvisos');
+  if(avisos&&!avisos.hidden){e.preventDefault();mostrarAvisos(false);}
+ });
+ window.addEventListener('popstate',()=>{
+  if(academyAbierta&&!(history.state&&history.state.rwadarAcademy===true))cerrarAcademyVisual(true);
+  const avisos=document.getElementById('movilVistaAvisos');
+  if(avisos&&!avisos.hidden&&!(history.state&&history.state.rwadarAvisos===true)){
+   avisosHistorial=false;mostrarAvisos(false,true);
+  }
+ });
  const standalone=(typeof navigator!=='undefined'&&navigator.standalone===true)||
   window.matchMedia('(display-mode: standalone)').matches;
  if(document.documentElement&&document.documentElement.classList)
@@ -2995,10 +2962,15 @@ document.addEventListener('click',e=>{
  if(b.dataset.ir)return irA(b.dataset.ir);
  if(b.classList.contains('paso'))return irPaso(Number(b.dataset.s),true);
  if(b.dataset.vista)return setView(b.dataset.vista);
- if(b.hasAttribute('data-filtrar-cat')){S2.cat=b.dataset.filtrarCat||'';return render();}
+ if(b.hasAttribute('data-filtrar-cat')){
+  const valor=b.dataset.filtrarCat||'';S2.cat=valor;render();
+  requestAnimationFrame(()=>[...document.querySelectorAll('[data-filtrar-cat]')]
+   .find(x=>(x.dataset.filtrarCat||'')===valor)?.focus({preventScroll:true}));return;
+ }
  if(b.dataset.abrir!=null){const i=Number(b.dataset.abrir);if(Number.isInteger(i))return openDrawer(i);}
  if(b.dataset.comparar!=null){const i=Number(b.dataset.comparar);if(Number.isInteger(i))return toggleCompare(i);}
  if(b.dataset.accion==='limpiar')return resetAll();
+ if(b.dataset.accion==='alternar-resultados')return alternarResultadosMoviles();
  if(b.dataset.accion==='comparar')return openCompare();
  if(b.dataset.accion==='vaciar-comparacion')return clearCompare();
  if(b.dataset.accion==='cerrar-panel')return closeAll();

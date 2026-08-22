@@ -80,8 +80,8 @@
       <a class="hdr-link" href="#explain">¿Qué es tokenizar?</a>
       <a class="hdr-link" href="#metodo">Método</a>
       <a class="hdr-link" href="#fuera">Fuera del radar</a>
-      <button class="snd" id="snd" aria-pressed="false" aria-label="Activar o desactivar el sonido de la interfaz">
-        <span class="ondas" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Sonido
+      <button class="snd" id="snd" aria-pressed="false" aria-label="Activar o desactivar el sonido y la respuesta táctil">
+        <span class="ondas" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Sonido y tacto
       </button>
       <button class="hdr-cuenta" id="btnCuenta">Entrar</button>
       <button class="hdr-cta" data-ir="tool">Abrir el radar →</button>
@@ -98,7 +98,7 @@
       <span>RWA<em>dar</em></span>
     </a>
     <button class="movil-cabecera-accion" type="button" data-movil-action="ayuda"
-            aria-label="Abrir la explicación animada sobre tokenización">
+            aria-label="Abrir RWAdar Academy">
       <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.4 2.4 0 1 1 3.2 2.3c-.8.35-1 1-1 1.7"/><circle cx="12" cy="17" r=".8" fill="currentColor" stroke="none"/>
       </svg>
@@ -111,6 +111,12 @@
 
 <main id="top">
 <div id="movilPanelRadar" data-movil-panel="buscar" role="tabpanel" aria-labelledby="movilTabRadar" tabindex="-1">
+
+<article class="movil-radar-intro" id="movilRadarIntro">
+  <p class="movil-mini-etiqueta">RADAR INTERACTIVO</p>
+  <h2>Todo el registro, de un vistazo</h2>
+  <p>Cada punto es una plataforma contrastada. Tócalo para abrir su ficha o toca una categoría para filtrar.</p>
+</article>
 
 <!-- ============ PORTADA ============ -->
 <section class="portada">
@@ -143,7 +149,7 @@
         <div class="radar-lectura" id="radarLee" aria-live="polite">
           <div class="rl-vacio">
             <span class="rl-t" id="rlTotal">26 plataformas en el radar</span>
-            <span class="rl-s raton">Pasa por encima de un punto — o tabula — para leerlo. Púlsalo para abrir su ficha.</span><span class="rl-s dedo">Toca un punto para leerlo, y otra vez para abrir su ficha.</span>
+            <span class="rl-s raton">Pasa por encima de un punto — o tabula — para leerlo. Púlsalo para abrir su ficha.</span><span class="rl-s dedo">Toca un punto para abrir su ficha.</span>
           </div>
           <div class="rl-dato" hidden>
             <span class="rl-punto" id="rlPunto"></span>
@@ -154,14 +160,14 @@
       </div>
     </div>
 
-    <button class="movil-banner-explica" type="button" data-movil-ir="explain"
-            aria-label="Abrir la explicación animada en 3D sobre tokenización">
+    <button class="movil-banner-explica" id="movilAbrirAcademy" type="button" data-movil-action="academy"
+            aria-controls="academy" aria-expanded="false" aria-label="Abrir RWAdar Academy">
       <span class="movil-banner-icono" aria-hidden="true">
         <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.4 2.4 0 1 1 3.2 2.3c-.8.35-1 1-1 1.7"/><circle cx="12" cy="17" r=".8" fill="currentColor" stroke="none"/>
         </svg>
       </span>
-      <span><b>¿Qué es tokenizar un activo?</b><small>Animación 3D paso a paso, sin salir de RWAdar</small></span>
+      <span><b>RWAdar Academy</b><small>Empieza con la lección 3D sobre tokenización</small></span>
       <i aria-hidden="true">›</i>
     </button>
   </div>
@@ -189,10 +195,6 @@
   <div class="emis-cab">
     <div>
       <h2>Abierto ahora mismo</h2>
-      <p class="emis-sub">Las emisiones que aceptan dinero hoy en las plataformas que
-        pasan el filtro. <b>Cada cifra es la que publica la plataforma</b>, con su
-        enlace y la fecha en que la comprobamos. Aquí no se invierte: se compara y
-        se va al origen.</p>
     </div>
     <div class="emis-orden">
       <label for="emiOrden">Ordenar por</label>
@@ -208,11 +210,17 @@
   <div class="emis-filtros" id="emiFiltros"></div>
   <div class="emis-rejilla" id="emiLista"><!--pre:ini--><div class="emis-vacio"><h3>Todavía no hay emisiones publicadas</h3><p>Estamos verificando las primeras. Cada una llevará el enlace a su plataforma y la fecha en que comprobamos sus cifras.</p></div><!--pre:fin--></div>
 
-  <p class="movil-ofertas-futuro" id="movilOfertasFuturo">Cuando haya suficientes emisiones verificadas podrás filtrarlas por activo, entrada mínima y fecha. Hasta entonces no mostramos filtros vacíos.</p>
-
-  <p class="emis-legal">RWAdar no intermedia, no custodia dinero y no recomienda dónde
-    invertir. Listar una emisión no es respaldarla. Tokenizar no elimina el riesgo de
-    perder lo invertido: comprueba siempre las condiciones en la propia plataforma.</p>
+  <details class="emis-informacion" id="emisInformacion" open>
+    <summary>Cómo comprobamos y mostramos las ofertas</summary>
+    <p class="emis-sub">Las emisiones que aceptan dinero hoy en las plataformas que
+      pasan el filtro. <b>Cada cifra es la que publica la plataforma</b>, con su
+      enlace y la fecha en que la comprobamos. Aquí no se invierte: se compara y
+      se va al origen.</p>
+    <p class="movil-ofertas-futuro" id="movilOfertasFuturo">Cuando haya suficientes emisiones verificadas podrás filtrarlas por activo, entrada mínima y fecha. Hasta entonces no mostramos filtros vacíos.</p>
+    <p class="emis-legal">RWAdar no intermedia, no custodia dinero y no recomienda dónde
+      invertir. Listar una emisión no es respaldarla. Tokenizar no elimina el riesgo de
+      perder lo invertido: comprueba siempre las condiciones en la propia plataforma.</p>
+  </details>
 </section>
 
 <!-- ============ EXPLICADOR 3D ============ -->
@@ -237,19 +245,19 @@
     </div>
 
     <ol class="pasos" id="exSteps">
-      <li><button class="paso on" type="button" data-s="0">
+      <li><button class="paso on" type="button" data-s="0" aria-pressed="true">
         <span class="avance"></span><span class="num">1</span>
         <span><b>Una cosa cara y de una pieza</b><span class="d">Un edificio, un local, un lingote de oro. Vale 300.000 € y no se puede partir por la mitad: para tener una parte hay que comprarlo entero. Por eso siempre ha sido cosa de pocos.</span></span>
       </button></li>
-      <li><button class="paso" type="button" data-s="1">
+      <li><button class="paso" type="button" data-s="1" aria-pressed="false">
         <span class="avance"></span><span class="num">2</span>
         <span><b>Se parte en trozos iguales</b><span class="d">Se divide en 3.000 trozos idénticos de 100 € cada uno. Cada trozo es propiedad de verdad: te toca su parte del alquiler y su parte del precio el día que se venda.</span></span>
       </button></li>
-      <li><button class="paso" type="button" data-s="2">
+      <li><button class="paso" type="button" data-s="2" aria-pressed="false">
         <span class="avance"></span><span class="num">3</span>
         <span><b>Cada trozo lleva escrito de quién es</b><span class="d">Los colores son los dueños. Quién tiene cada trozo queda anotado en un registro digital que puede mirar cualquiera. No hay que fiarse de la palabra de nadie: se comprueba.</span></span>
       </button></li>
-      <li><button class="paso" type="button" data-s="3">
+      <li><button class="paso" type="button" data-s="3" aria-pressed="false">
         <span class="avance"></span><span class="num">4</span>
         <span><b>Los trozos cambian de mano</b><span class="d">Fíjate en los colores: se mueven de sitio. Alguien ha vendido y otro ha comprado. El edificio no se ha movido — sigue entero, con los mismos inquilinos pagando el mismo alquiler.</span></span>
       </button></li>
@@ -276,13 +284,13 @@
       <div class="calc-mando">
         <label for="calcEuros">Cuánto pones tú</label>
         <output id="calcEuros_v" for="calcEuros">2.500 €</output>
-        <input id="calcEuros" type="range" min="100" max="10000" step="100" value="2500">
+        <input id="calcEuros" type="range" min="100" max="10000" step="100" value="2500" aria-valuetext="2.500 €">
         <div class="calc-topes"><span>100 €</span><span>10.000 €</span></div>
       </div>
       <div class="calc-mando">
         <label for="calcRent">Cuánto renta el local</label>
         <output id="calcRent_v" for="calcRent">6,0 % al año</output>
-        <input id="calcRent" type="range" min="30" max="90" step="5" value="60">
+        <input id="calcRent" type="range" min="30" max="90" step="5" value="60" aria-valuetext="6,0 % al año">
         <div class="calc-topes"><span>3 %</span><span>9 %</span></div>
       </div>
     </div>
@@ -347,8 +355,8 @@
   <div class="tool-cab">
     <div><h2 class="sec">El radar</h2><p>Filtra, abre una ficha para ver el detalle o marca hasta tres para compararlas.</p></div>
     <div class="vista">
-      <button id="vGrid" class="on" data-vista="grid">Fichas</button>
-      <button id="vMat" data-vista="matrix">Matriz</button>
+      <button id="vGrid" class="on" data-vista="grid" aria-pressed="true">Fichas</button>
+      <button id="vMat" data-vista="matrix" aria-pressed="false">Matriz</button>
     </div>
   </div>
 </section>
@@ -371,194 +379,237 @@
   </div>
 </div>
 
-<div class="wrap">
+<div class="wrap" id="plataformasResultados">
+  <div class="movil-registro-intro">
+    <p class="movil-mini-etiqueta">PLATAFORMAS CONTRASTADAS</p>
+    <h2>Busca y compara sin perderte</h2>
+    <p>Empieza por seis fichas. Usa el buscador o los filtros para encontrar una concreta y abre su ficha para ver todas las pruebas.</p>
+  </div>
   <div class="fichas-f" id="pills"></div>
-  <p class="recuento" id="count"></p>
+  <p class="recuento" id="count" aria-live="polite"></p>
   <div class="rejilla" id="grid"><!--pre:ini--><div class="ficha   cat-3">
    <div class="ficha-alto"><span class="sigla  cat-3">A</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="0">ADDX</button></h3><div class="sub">Marketplace · Asia-Pacífico</div></div></div>
    <p class="nota">Fondos de capital riesgo y private equity troceados para inversores acreditados.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Licencia de mercado reconocido del MAS de Singapur; accionistas de referencia: la bolsa SGX y el fondo estatal Temasek.</span></div>
    <div class="marcas"><span class="m acc">Acreditado</span><span class="m">Entrada: alto</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="0">+ Comparar</button>
+    <button class="cmp " data-comparar="0" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="0">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <div class="ficha-alto"><span class="sigla  cat-3">A</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="1">Archax</button></h3><div class="sub">Marketplace · Reino Unido</div></div></div>
    <p class="nota">Mercado regulado de valores digitales en Londres que reúne emisión, negociación y custodia bajo la misma licencia. Cuidado con los clones: la FCA tiene avisos publicados sobre webs que la suplantan, y el dominio válido es archax.com.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Autorizada y supervisada por la FCA británica con el número 838656, como exchange, bróker y custodio, e inscrita en su registro de criptoactivos. Tiene permiso para operar un sistema multilateral de negociación, no solo para intermediar.</span></div>
    <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 08.08.26</span>
-    <button class="cmp " data-comparar="1">+ Comparar</button>
+    <button class="cmp " data-comparar="1" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="1">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-4">
    <div class="ficha-alto"><span class="sigla  cat-4">AG</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Materias primas" data-abrir="2">ARTEX Global Markets</button></h3><div class="sub">Marketplace · Liechtenstein</div></div></div>
    <p class="nota">Mercado regulado de acciones sobre obras de arte: cada cuadro se trocea en acciones de 100 €. Ojo: el token «ARTEX» de BNB Chain no tiene relación con esta plataforma.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Licencia de sistema multilateral de negociación (MTF) bajo MiFID II del regulador de Liechtenstein; SIX aporta compensación y liquidación.</span></div>
    <div class="marcas"><span class="m acc">Acreditado</span><span class="m">Entrada: alto</span><span class="m">Mercado regulado (MTF)</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="2">+ Comparar</button>
+    <button class="cmp " data-comparar="2" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="2">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <div class="ficha-alto"><span class="sigla  cat-3">BF</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="3">Backed Finance</button></h3><div class="sub">Emisor · Suiza</div></div></div>
    <p class="nota">Réplicas tokenizadas de acciones y bonos cotizados, activas desde 2021.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Emisor suizo con el activo real depositado 1:1 en custodia de un tercero y atestaciones públicas de respaldo.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Ethereum, Base, Gnosis</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="3">+ Comparar</button>
+    <button class="cmp " data-comparar="3" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="3">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-0">
    <div class="ficha-alto"><span class="sigla  cat-0">B</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Inmobiliario" data-abrir="4">Blocksquare</button></h3><div class="sub">Infraestructura · Unión Europea</div></div></div>
    <p class="nota">Tecnología para que una inmobiliaria tokenice sus propios activos con respaldo registral.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Vincula cada token a una anotación en el registro de la propiedad, no solo a un contrato inteligente.</span></div>
    <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: no aplica</span><span class="m">Ethereum</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="4">+ Comparar</button>
+    <button class="cmp " data-comparar="4" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="4">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-1">
    <div class="ficha-alto"><span class="sigla  cat-1">C</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Crédito privado" data-abrir="5">Centrifuge</button></h3><div class="sub">Infraestructura · Global</div></div></div>
    <p class="nota">Financiación de carteras de préstamos y facturas con garantía fuera de cadena. Tuvo impagos por 5,8 M$ en 2023 y reforzó su modelo después.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Una de las tres plataformas que concentran dos tercios del crédito privado tokenizado; estructura de tramos senior/junior.</span></div>
    <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Ethereum, Base</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="5">+ Comparar</button>
+    <button class="cmp " data-comparar="5" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="5">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-4">
    <div class="ficha-alto"><span class="sigla  cat-4">C</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Materias primas" data-abrir="6">Courtyard</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
    <p class="nota">Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados. Líder por volumen semanal en 2026.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>El objeto físico se guarda en cámara asegurada y el token es canjeable por él en cualquier momento: respaldo comprobable.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Polygon</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="6">+ Comparar</button>
+    <button class="cmp " data-comparar="6" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="6">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-1">
    <div class="ficha-alto"><span class="sigla  cat-1">F</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Crédito privado" data-abrir="7">Figure</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
    <p class="nota">Mercado de capitales nativo en blockchain para crédito privado y activos tokenizados, con préstamos hipotecarios (HELOC) en su propia cadena.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Cotiza en Nasdaq (FIGR): cuentas auditadas, información pública trimestral y supervisión de la SEC como emisor.</span></div>
    <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Provenance</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="7">+ Comparar</button>
+    <button class="cmp " data-comparar="7" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="7">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-5">
    <div class="ficha-alto"><span class="sigla  cat-5">F</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Infraestructura" data-abrir="8">Fireblocks</button></h3><div class="sub">Infraestructura · Global</div></div></div>
    <p class="nota">El motor de custodia y emisión detrás de decenas de proyectos institucionales de tokenización.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Custodia institucional con seguros y certificaciones de seguridad, usada por bancos y gestoras de primer nivel.</span></div>
    <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: no aplica</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="8">+ Comparar</button>
+    <button class="cmp " data-comparar="8" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="8">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <div class="ficha-alto"><span class="sigla  cat-2">FT</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="9">Franklin Templeton</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
    <p class="nota">Fondo monetario de deuda pública con el registro de partícipes llevado en cadena desde 2021.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Gestora tradicional con décadas de historial y fondo registrado ante la SEC. La vía más conservadora para empezar.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Stellar, Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="9">+ Comparar</button>
+    <button class="cmp " data-comparar="9" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="9">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <div class="ficha-alto"><span class="sigla  cat-3">I</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="10">INX</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
    <p class="nota">Plataforma regulada de valores digitales con negociación secundaria abierta a minoristas.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Bróker-dealer registrado ante la SEC y miembro de FINRA; su matriz cotiza en Nasdaq.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Ethereum</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="10">+ Comparar</button>
+    <button class="cmp " data-comparar="10" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="10">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-0">
    <div class="ficha-alto"><span class="sigla  cat-0">L</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Inmobiliario" data-abrir="11">Lofty</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
    <p class="nota">Vivienda unifamiliar troceada desde 50 $, con reparto de renta diario y voto de los inversores en cada propiedad.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Estructura de LLC por inmueble con oferta registrada; una de las pocas vías reales de entrada minorista al inmobiliario tokenizado.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Algorand</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="11">+ Comparar</button>
+    <button class="cmp " data-comparar="11" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="11">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-1">
    <div class="ficha-alto"><span class="sigla  cat-1">MF</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Crédito privado" data-abrir="12">Maple Finance</button></h3><div class="sub">Emisor · Global</div></div></div>
    <p class="nota">El mayor actor del crédito privado tokenizado: cerró el primer semestre de 2026 con 4.600 M$ gestionados (+81 % interanual) y 1.900 M$ en préstamos vivos.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Cifras auditadas y publicadas cada trimestre en formato de resultados; crédito institucional integrado con Robinhood y Kraken.</span></div>
    <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Ethereum, Solana</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="12">+ Comparar</button>
+    <button class="cmp " data-comparar="12" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="12">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <div class="ficha-alto"><span class="sigla  cat-2">M</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="13">Midas</button></h3><div class="sub">Emisor · Unión Europea</div></div></div>
    <p class="nota">Certificados tokenizados sobre estrategias de renta fija. Levantó 50 M$ con Franklin Templeton y Coinbase Ventures.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Emite bajo folleto aprobado en la Unión Europea, lo que obliga a información periódica y responsabilidad del emisor.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: medio</span><span class="m">Ethereum</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="13">+ Comparar</button>
+    <button class="cmp " data-comparar="13" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="13">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <div class="ficha-alto"><span class="sigla  cat-2">OF</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="14">Ondo Finance</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
    <p class="nota">Exposición a deuda pública de EE. UU. y, desde 2026, a ETFs de Franklin Templeton tokenizados.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>La mayor plataforma de valores tokenizados por volumen, con los activos subyacentes en custodia de gestoras reguladas.</span></div>
    <div class="marcas"><span class="m acc">Acreditado</span><span class="m">Entrada: alto</span><span class="m">Ethereum, Solana</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="14">+ Comparar</button>
+    <button class="cmp " data-comparar="14" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="14">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <div class="ficha-alto"><span class="sigla  cat-2">O</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="15">OpenEden</button></h3><div class="sub">Emisor · Asia-Pacífico</div></div></div>
    <p class="nota">Letras del Tesoro de EE. UU. envueltas en un token de suscripción y reembolso, para clientes profesionales.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Estructura de fondo con calificación crediticia de agencia y reservas en letras del Tesoro custodiadas por un tercero.</span></div>
    <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Ethereum, Arbitrum</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="15">+ Comparar</button>
+    <button class="cmp " data-comparar="15" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="15">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-4">
    <div class="ficha-alto"><span class="sigla  cat-4">PG</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Materias primas" data-abrir="16">Pax Gold</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
    <p class="nota">Cada token representa una onza concreta de oro asignada en cámaras de Londres, identificable por número de lingote.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Emitido por Paxos bajo supervisión del regulador bancario de Nueva York (NYDFS), con atestaciones mensuales del oro asignado.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Ethereum</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="16">+ Comparar</button>
+    <button class="cmp " data-comparar="16" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="16">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-0">
    <div class="ficha-alto"><span class="sigla  cat-0">R</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Inmobiliario" data-abrir="17">Reental</button></h3><div class="sub">Emisor · España</div></div></div>
    <p class="nota">Proyectos inmobiliarios en España y Latinoamérica desde 100 €. La opción más accesible para un inversor español.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Historial de proyectos completados y devueltos, con cientos de reseñas públicas verificadas de inversores.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="17">+ Comparar</button>
+    <button class="cmp " data-comparar="17" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="17">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <div class="ficha-alto"><span class="sigla  cat-3">R</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="18">Republic</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
    <p class="nota">Mercados privados troceados desde importes pequeños: empresas sin cotizar, fondos, cine, deporte y arte. Importante: sus Mirror Tokens no son acciones de la empresa que replican, sino pagarés de la propia Republic que pagan solo si llega una salida a bolsa o una compra.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Opera con entidades registradas y supervisadas en EE. UU.: OpenDeal Portal LLC como portal de financiación ante la SEC y FINRA desde 2016, y OpenDeal Broker LLC como bróker-dealer miembro de FINRA y SIPC.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 08.08.26</span>
-    <button class="cmp " data-comparar="18">+ Comparar</button>
+    <button class="cmp " data-comparar="18" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="18">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <div class="ficha-alto"><span class="sigla  cat-2">S</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="19">Securitize</button></h3><div class="sub">Infraestructura · EE. UU.</div></div></div>
    <p class="nota">La infraestructura sobre la que las grandes gestoras sacan sus fondos a la cadena. El nombre más institucional del sector.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Agente de transferencia registrado ante la SEC. Es quien emite y administra el fondo tokenizado BUIDL de BlackRock.</span></div>
    <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="19">+ Comparar</button>
+    <button class="cmp " data-comparar="19" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="19">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <div class="ficha-alto"><span class="sigla  cat-2">S</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="20">Spiko</button></h3><div class="sub">Emisor · Unión Europea</div></div></div>
    <p class="nota">Fondos en euros y dólares pensados para la tesorería de empresas, con reembolso diario.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Fondos monetarios autorizados y supervisados por la AMF, el regulador financiero francés. Marco europeo completo.</span></div>
    <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: bajo</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="20">+ Comparar</button>
+    <button class="cmp " data-comparar="20" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="20">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <div class="ficha-alto"><span class="sigla  cat-2">S</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="21">Superstate</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
    <p class="nota">Fondos de deuda pública con las participaciones anotadas directamente en cadena.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Fondos estadounidenses registrados con administrador y auditor independientes; fundada por un antiguo responsable de Compound.</span></div>
    <div class="marcas"><span class="m acc">Acreditado</span><span class="m">Entrada: alto</span><span class="m">Ethereum</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="21">+ Comparar</button>
+    <button class="cmp " data-comparar="21" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="21">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <div class="ficha-alto"><span class="sigla  cat-3">S</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="22">Swarm</button></h3><div class="sub">Marketplace · Unión Europea</div></div></div>
    <p class="nota">Acciones y bonos tokenizados negociables dentro del marco regulatorio alemán.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Opera bajo licencia de intermediación financiera de BaFin, el regulador alemán, con respaldo 1:1 verificable.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Polygon</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="22">+ Comparar</button>
+    <button class="cmp " data-comparar="22" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="22">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-5">
    <div class="ficha-alto"><span class="sigla  cat-5">T</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Infraestructura" data-abrir="23">Taurus</button></h3><div class="sub">Infraestructura · Suiza</div></div></div>
    <p class="nota">Custodia y emisión de valores digitales para banca, con la exigencia de auditoría del sector bancario.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Proveedor suizo de custodia para bancos regulados, con despliegues verificables en entidades europeas.</span></div>
    <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: no aplica</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="23">+ Comparar</button>
+    <button class="cmp " data-comparar="23" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="23">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-5">
    <div class="ficha-alto"><span class="sigla  cat-5">T</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Infraestructura" data-abrir="24">Tokeny</button></h3><div class="sub">Infraestructura · Unión Europea</div></div></div>
    <p class="nota">La capa de cumplimiento normativo que usan decenas de emisores institucionales.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Autora del estándar ERC-3643, hoy la referencia del sector para tokens con reglas de cumplimiento incorporadas.</span></div>
    <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: no aplica</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="24">+ Comparar</button>
+    <button class="cmp " data-comparar="24" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="24">Abrir ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <div class="ficha-alto"><span class="sigla  cat-3">T</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="25">tZERO</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
    <p class="nota">El mercado secundario de referencia en EE. UU. para valores emitidos en cadena.</p>
    <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Opera un sistema alternativo de negociación (ATS) autorizado por la SEC y supervisado por FINRA.</span></div>
    <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Varias</span></div>
    <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
-    <button class="cmp " data-comparar="25">+ Comparar</button>
+    <button class="cmp " data-comparar="25" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="25">Abrir ficha <span aria-hidden="true">›</span></button></div></div><!--pre:fin--></div>
+  <button class="movil-resultados-mas" id="movilResultadosMas" type="button"
+          data-accion="alternar-resultados" aria-controls="grid" aria-expanded="false">Ver las plataformas restantes</button>
   <div class="matriz" id="matrix"></div>
 </div>
+
+<!-- ============ RWADAR ACADEMY ============ -->
+<section class="academia wrap" id="academy" aria-labelledby="academyTit">
+  <div class="academia-subvista-cab">
+    <button class="movil-subvista-volver" id="movilCerrarAcademy" type="button"
+            data-movil-action="cerrar-academy" aria-label="Volver a Buscar">‹</button>
+    <div><p class="movil-mini-etiqueta">APRENDE A TU RITMO</p><h2>RWAdar Academy</h2></div>
+  </div>
+  <div class="academia-cab">
+    <p class="etiq">RWAdar Academy</p>
+    <h2 id="academyTit">Entiende antes de invertir</h2>
+    <p>Lecciones cortas y claras para aprender conceptos, revisar una oportunidad y reconocer riesgos sin convertir la educación en una recomendación de inversión.</p>
+  </div>
+
+  <article class="academia-destacada">
+    <div class="academia-destacada-icono" aria-hidden="true">3D</div>
+    <div>
+      <span class="academia-estado academia-disponible">Disponible ahora · 4 pasos</span>
+      <h3>Qué significa tokenizar un activo</h3>
+      <p>Parte un activo, sigue quién posee cada trozo y observa cómo puede cambiar de manos con la explicación interactiva de RWAdar.</p>
+      <button class="btn-p" type="button" data-ir="explain">Abrir la primera lección</button>
+    </div>
+  </article>
+
+  <div class="academia-videoteca" aria-labelledby="academiaVideosTit">
+    <p class="etiq">Próximas lecciones</p>
+    <h3 id="academiaVideosTit">La videoteca todavía no tiene vídeos publicados</h3>
+    <p>Los vídeos aparecerán aquí cuando estén revisados, subtitulados y acompañados de sus fuentes. Mientras tanto puedes completar la lección interactiva en 3D.</p>
+    <div class="academia-temas" aria-label="Temas previstos">
+      <span>Tokenización</span><span>Conceptos básicos</span><span>Inversión</span><span>Seguridad</span><span>Riesgos</span>
+    </div>
+  </div>
+
+  <p class="academia-nota">No mostraremos miniaturas ni botones que todavía no lleven a contenido real. Los futuros vídeos usarán subtítulos, transcripción, fuentes y fecha de revisión.</p>
+  <div id="academyLeccion"></div>
+</section>
 
 <!-- ============ FUERA DEL RADAR ============ -->
 <section class="fuera wrap" id="fuera">
@@ -642,7 +693,7 @@
           <span class="movil-menu-icono" aria-hidden="true">▱</span><span><b>Política de privacidad</b><small>Qué se guarda y cómo ejercer tus derechos</small></span><i aria-hidden="true">›</i>
         </a>
         <button type="button" class="movil-menu-fila" id="movilSonido" data-movil-action="sonido" aria-pressed="false">
-          <span class="movil-menu-icono" aria-hidden="true">≈</span><span><b>Sonido de la interfaz</b><small id="movilSonidoEstado">Desactivado</small></span><i aria-hidden="true">›</i>
+          <span class="movil-menu-icono" aria-hidden="true">≈</span><span><b>Sonido y respuesta táctil</b><small id="movilSonidoEstado">Desactivado</small></span><i aria-hidden="true">›</i>
         </button>
       </div>
     </section>
@@ -680,10 +731,10 @@
     </section>
 
     <section class="movil-menu-grupo" aria-labelledby="movilEntenderTit">
-      <h3 id="movilEntenderTit">RWAdar y datos</h3>
+      <h3 id="movilEntenderTit">Aprender y consultar</h3>
       <div class="movil-menu">
-        <button type="button" class="movil-menu-fila" data-movil-ir="explain">
-          <span class="movil-menu-icono" aria-hidden="true">◇</span><span><b>Cómo funciona la tokenización</b><small>Abrir la explicación animada en 3D</small></span><i aria-hidden="true">›</i>
+        <button type="button" class="movil-menu-fila" data-movil-action="academy" aria-controls="academy" aria-expanded="false">
+          <span class="movil-menu-icono" aria-hidden="true">A</span><span><b>RWAdar Academy</b><small>Lecciones sobre tokenización, seguridad y riesgos</small></span><i aria-hidden="true">›</i>
         </button>
         <button type="button" class="movil-menu-fila" data-movil-ir="metodo">
           <span class="movil-menu-icono" aria-hidden="true">✓</span><span><b>Método de selección</b><small>Los cuatro criterios del radar</small></span><i aria-hidden="true">›</i>
@@ -729,7 +780,7 @@
 
 <div class="cmpbar" id="cmpbar">
   <div class="avs" id="cmpAvs"></div>
-  <span class="txt" id="cmpTxt"></span>
+  <span class="txt" id="cmpTxt" aria-live="polite"></span>
   <button class="go" id="cmpGo" data-accion="comparar">Comparar</button>
   <button class="x" data-accion="vaciar-comparacion" aria-label="Vaciar la comparación">✕</button>
 </div>
@@ -749,7 +800,7 @@
 
 <div class="cuenta-caja" id="cuentaCaja" role="dialog" aria-modal="true" aria-labelledby="cuentaTit" tabindex="-1" inert>
   <div class="cuenta-cabecera">
-    <button class="cerrar-x" id="cuentaX" type="button" aria-label="Cerrar cuenta">✕</button>
+    <button class="cerrar-x" id="cuentaX" type="button" aria-label="Cerrar ventana de cuenta">✕</button>
     <h3 id="cuentaTit">Entrar</h3>
     <p class="sub" id="cuentaSub">Para vigilar plataformas y que te avisemos si alguna cae del radar.</p>
   </div>

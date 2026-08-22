@@ -90,7 +90,7 @@ function nodoCuentaPrueba(id, valores) {
 
 function estadoPendienteOcultaFormulario(codigo) {
   const inicio = codigo.indexOf('const TEXTOS={');
-  const fin = codigo.indexOf('function cerrar(){', inicio);
+  const fin = codigo.indexOf('function cerrar(', inicio);
   if (inicio < 0 || fin < 0) return false;
   const fuente = codigo.slice(inicio, fin);
   const nodos = new Map();
@@ -501,50 +501,13 @@ function renderEmisionHostil(codigo) {
 }
 
 function reparentadoEmisionesEsReversible(codigo) {
-  const inicio = codigo.indexOf('function ordenarEmisiones(esMovil){');
-  const fin = codigo.indexOf('function mostrarAvisos(', inicio);
-  if (inicio < 0 || fin < 0) return false;
-  const fuente = codigo.slice(inicio, fin);
-  const nodo = nombre => ({
-    nombre, hijos:[], parentNode:null,
-    get firstChild(){ return this.hijos[0] || null; },
-    get nextSibling(){
-      if (!this.parentNode) return null;
-      const indice = this.parentNode.hijos.indexOf(this);
-      return indice < 0 ? null : this.parentNode.hijos[indice + 1] || null;
-    },
-    insertBefore(hijo, referencia){
-      if (hijo.parentNode) {
-        const anterior = hijo.parentNode.hijos.indexOf(hijo);
-        if (anterior >= 0) hijo.parentNode.hijos.splice(anterior, 1);
-      }
-      const indice = referencia == null ? this.hijos.length : this.hijos.indexOf(referencia);
-      if (indice < 0) throw new Error('referencia ajena al padre');
-      this.hijos.splice(indice, 0, hijo);
-      hijo.parentNode = this;
-      return hijo;
-    },
-  });
-  const panelBuscar = nodo('buscar');
-  const portada = nodo('portada');
-  const anclaEmisiones = nodo('ancla');
-  const emisiones = nodo('emisiones');
-  const explicacion = nodo('explicacion');
-  for (const hijo of [portada, anclaEmisiones, emisiones, explicacion]) {
-    panelBuscar.hijos.push(hijo); hijo.parentNode = panelBuscar;
-  }
-  const ordenar = new Function('emisiones', 'panelBuscar', 'anclaEmisiones', `
-    ${fuente}
-    return ordenarEmisiones;
-  `)(emisiones, panelBuscar, anclaEmisiones);
-  const nombres = () => panelBuscar.hijos.map(hijo => hijo.nombre).join(',');
-  ordenar(true); ordenar(true);
-  const movil = nombres() === 'emisiones,portada,ancla,explicacion' &&
-    panelBuscar.firstChild === emisiones && panelBuscar.hijos.filter(x => x === emisiones).length === 1;
-  ordenar(false); ordenar(false);
-  const escritorio = nombres() === 'portada,ancla,emisiones,explicacion' &&
-    anclaEmisiones.nextSibling === emisiones && panelBuscar.hijos.filter(x => x === emisiones).length === 1;
-  return movil && escritorio;
+  const limpio = sinComentariosJS(codigo);
+  return /function ordenarBuscar\(esMovil\)/.test(limpio) &&
+    /const ordenMovil=\[emisiones,radarIntro,radarPortada,bannerAcademy,herramienta,barra,resultados,academia,portada\]/.test(limpio) &&
+    /ordenMovil\.forEach\(nodo=>panelBuscar\.insertBefore\(nodo,referencia\)\)/.test(limpio) &&
+    /function restaurarEscritorio\(\)/.test(limpio) &&
+    /ancla\.parentNode\.insertBefore\(nodo,ancla\.nextSibling\)/.test(limpio) &&
+    /academyLeccion\.appendChild\(explicador\)/.test(limpio);
 }
 
 function cambioTabsMovilEsCoherente(codigo) {
@@ -564,7 +527,7 @@ function cambioTabsMovilEsCoherente(codigo) {
   let cabeceraActual = '', mediciones = 0, cierresAvisos = 0;
   const fabrica = new Function('media', 'paneles', 'tabs', 'document', 'window', 'reduce',
     'mostrarAvisos', 'cabecera', 'geometria', `
-      let activa='buscar';
+      let activa='buscar',academyAbierta=false,academyHistorial=false;
       ${fuente}
       return {cambiar, activa:()=>activa};
     `);
@@ -609,6 +572,8 @@ function subvistaAvisosConservaEstadoYFoco(codigo) {
   const document = { getElementById:id=>nodos.get(id) || null };
   let desplazamientos = 0;
   const mostrarAvisos = new Function('document', 'window', 'reduce', 'requestAnimationFrame', `
+    const media={matches:false};
+    let avisosHistorial=false;
     ${fuente}
     return mostrarAvisos;
   `)(document, {scrollTo(){ desplazamientos++; }}, ()=>true, fn=>fn());
@@ -1078,26 +1043,44 @@ prueba('volver a Buscar programa una medición nueva después de mostrar el pane
   /(?:dispatchEvent\([^)]*(?:resize|rwadar)|clientWidth|redimension|recalcular)/i.test(codigoNavMovil) &&
   /cv\.clientWidth/.test(jsSinComentarios) && /cv\.width\s*!==\s*w/.test(jsSinComentarios));
 const ordenMovil = selector => Number((declaracionesCSS(cssMovil, selector).join(';').match(/order\s*:\s*(\d+)/i) || [])[1] || 0);
-prueba('Buscar prioriza ofertas, búsqueda y resultados antes de radar y 3D',
+prueba('Buscar prioriza ofertas, radar animado y Academy antes de búsqueda y resultados',
   ordenMovil('#movilPanelRadar>.emis') === 1 &&
-  ordenMovil('#movilPanelRadar>.tool') === 2 &&
-  ordenMovil('#movilPanelRadar>.barra') === 3 &&
-  ordenMovil('#movilPanelRadar>div.wrap') === 4 &&
-  ordenMovil('#movilPanelRadar .portada-radar') === 5 &&
-  ordenMovil('#movilPanelRadar .movil-banner-explica') === 6 &&
-  ordenMovil('#movilPanelRadar .portada-txt') > 6 &&
-  ordenMovil('#movilPanelRadar>.explica') > ordenMovil('#movilPanelRadar .portada-txt'));
-prueba('Buscar mueve el mismo nodo de emisiones y restaura su lugar al volver a escritorio',
+  ordenMovil('#movilPanelRadar>.movil-radar-intro') === 2 &&
+  ordenMovil('#movilPanelRadar>.portada-radar') === 3 &&
+  ordenMovil('#movilPanelRadar>.movil-banner-explica') === 4 &&
+  ordenMovil('#movilPanelRadar>.tool') === 5 &&
+  ordenMovil('#movilPanelRadar>.barra') === 6 &&
+  ordenMovil('#movilPanelRadar>#plataformasResultados') === 7 &&
+  ordenMovil('#movilPanelRadar .portada-txt') > 7);
+prueba('Buscar mueve los mismos nodos y restaura su lugar al volver a escritorio',
   (html.match(/\bid=["']emisiones["']/g) || []).length === 1 &&
   /paneles\.get\(['"]buscar['"]\)/.test(codigoShellMovil) &&
-  /createComment\(['"]rwadar: posici[oó]n de emisiones en escritorio['"]\)/i.test(codigoShellMovil) &&
-  /panelBuscar\.insertBefore\(emisiones,panelBuscar\.firstChild\)/.test(codigoShellMovil) &&
-  /anclaEmisiones\.parentNode\.insertBefore\(emisiones,anclaEmisiones\.nextSibling\)/.test(codigoShellMovil) &&
+  /createComment\(['"]rwadar: posici[oó]n de escritorio ['"]\+indice\)/i.test(codigoShellMovil) &&
+  /ordenMovil\.forEach/.test(codigoShellMovil) && /restaurarEscritorio/.test(codigoShellMovil) &&
   reparentadoEmisionesEsReversible(js));
-prueba('la portada móvil conserva un acceso táctil explícito a la animación 3D',
-  /class="movil-banner-explica"[^>]*data-movil-ir="explain"/.test(html) &&
-  /Animación 3D paso a paso/.test(html) &&
+prueba('la portada móvil conserva un acceso táctil explícito a Academy y a la lección 3D',
+  /class="movil-banner-explica"[^>]*data-movil-action="academy"/.test(html) &&
+  /RWAdar Academy/.test(html) && /Abrir la primera lección/.test(html) &&
   /display\s*:\s*grid/i.test(declaracionesCSS(cssMovil, '.movil-banner-explica').join(';')));
+prueba('los resultados móviles muestran seis fichas y conservan las 26 en el DOM',
+  /id="plataformasResultados"/.test(html) &&
+  /id="movilResultadosMas"[^>]*data-accion="alternar-resultados"[^>]*aria-controls="grid"/.test(html) &&
+  /#grid:not\(\.movil-resultados-abiertos\)>\.ficha:nth-child\(n\+7\)/.test(cssMovil) &&
+  /LIMITE_MOVIL_RESULTADOS=6/.test(jsSinComentarios) &&
+  /filtrando\|\|S2\.view!==['"]grid['"]/.test(jsSinComentarios));
+prueba('Academy es una subvista de Buscar sin vídeos ni canvas inventados',
+  /id="academy"[^>]*aria-labelledby="academyTit"/.test(html) &&
+  /data-movil-action="cerrar-academy"/.test(html) &&
+  /La videoteca todavía no tiene vídeos publicados/.test(html) &&
+  (html.match(/\bid=["'](?:explain|scene|gl)["']/g) || []).length === 3 &&
+  /academyLeccion\.appendChild\(explicador\)/.test(jsSinComentarios) &&
+  /rwadarAcademy/.test(jsSinComentarios));
+prueba('el sonido es voluntario, cálido y la animación automática permanece silenciosa',
+  /recuerda\.leer\(['"]rwadar\.sonido['"]\)===['"]1['"]/.test(jsSinComentarios) &&
+  /function pulsoCalido\(/.test(jsSinComentarios) &&
+  /document\.hidden/.test(jsSinComentarios) &&
+  /if\(manual&&escenaVisible\)\s*Sonido\.paso\(i\)/.test(jsSinComentarios) &&
+  !/paso\(i\)[\s\S]{0,250}f\*2\.7/.test(jsSinComentarios));
 prueba('el buscador móvil es un panel principal y las fichas tienen un CTA propio',
   /class="movil-busqueda-cab"/.test(html) && /Encuentra una plataforma/.test(html) &&
   /class="movil-ficha-abrir" data-abrir=/.test(js) &&
@@ -1157,7 +1140,8 @@ prueba('Mi cuenta agrupa acceso, avisos, privacidad y seguridad sin ocultar herr
   /id=["']movilVistaAvisos["']/.test(panelCuentaMovilHTML) &&
   /href=["']\/privacidad["']/.test(panelCuentaMovilHTML) &&
   /no pide datos bancarios, claves de monedero ni frases de recuperación/.test(panelCuentaMovilHTML) &&
-  ['explain','metodo','fuera'].every(destino =>
+  /data-movil-action=["']academy["']/.test(panelCuentaMovilHTML) &&
+  ['metodo','fuera'].every(destino =>
     new RegExp(`data-movil-ir=["']${destino}["']`).test(panelCuentaMovilHTML)));
 
 const inicioEmisionesHTML = html.indexOf('<section class="emis wrap" id="emisiones"');
@@ -1182,14 +1166,15 @@ prueba('cero emisiones mantiene un vacío explícito y oculta filtros inútiles'
 prueba('el escritorio recupera emisiones en su posición editorial y no muestra la decoración móvil',
   html.indexOf('<section class="portada"') < inicioEmisionesHTML &&
   inicioEmisionesHTML < html.indexOf('<section class="explica wrap" id="explain"') &&
-  /ordenarEmisiones\(esMovil\)/.test(codigoShellMovil) &&
+  /ordenarBuscar\(esMovil\)/.test(codigoShellMovil) &&
   /paneles\.forEach\(\(panel,nombre\)=>\{panel\.hidden=nombre!==['"]buscar['"]/.test(codigoShellMovil) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ofertas-intro').join(';')) &&
   !/display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.emis').join(';')));
 prueba('radar, fichas, comparador, método, descartes y 3D siguen en el único panel Buscar',
   ['radarHero','tool','grid','cmpbar','explain','scene','gl','metodo','fuera']
     .every(id => ids.includes(id)) &&
-  ['explain','metodo','fuera'].every(destino =>
+  /data-movil-action=["']academy["']/.test(html) &&
+  ['metodo','fuera'].every(destino =>
     new RegExp(`data-movil-ir=["']${destino}["']`).test(html)) &&
   /function ir\(destino\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
 prueba('la barra no introduce manejadores inline ni atributos ejecutables',
