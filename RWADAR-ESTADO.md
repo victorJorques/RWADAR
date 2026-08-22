@@ -11,7 +11,9 @@
 > **Vigencia:** reconciliado el 22 de agosto de 2026 sobre el traspaso del
 > 17–20 de agosto y el baseline `42018de`. `RWADAR-TRASPASO.md` manda para el
 > estado operativo. La web remediada y la migración 22 están desplegadas y
-> verificadas; correo y push siguen OFF. Este proyecto no está terminado.
+> verificadas; correo y push siguen OFF. Sin SMTP propio probado, las altas y la
+> recuperación públicas están pausadas fail-closed; el login existente y el
+> radar sin cuenta permanecen disponibles. Este proyecto no está terminado.
 
 ## Índice · lee solo el tramo que necesites
 
@@ -121,7 +123,7 @@ fuera del artefacto.
 ### Identificadores
 
 ```
-Cloudflare Pages: rwadar (deployment actual 395980eb...)
+Cloudflare Pages: rwadar (deployment actual d7f7e611...)
 Netlify legado : 0211fd28-d371-43cd-9d93-3944fea57680
 Supabase ref   : exgpmjpaaebyoolpwced
 Supabase URL   : https://exgpmjpaaebyoolpwced.supabase.co
@@ -142,19 +144,19 @@ que una operación esté protegida.
 | Web pública | **GO en `https://rwadar.pages.dev`** con 26 fichas, 4 descartadas y PWA |
 | Emisiones públicas | 0 en producción; sección no visible |
 | Web remediada | **Desplegada y verificada**: 26/4/0; CSS/JS externos, CSP estricta, sin RUM/Zaraz y sin tokens en `localStorage` |
-| Deployment y artefacto | Actual `395980eb...` (`https://395980eb.rwadar.pages.dev`); canonical `https://rwadar.pages.dev`; web 190/190 y suite raíz código 0; ZIP `rwadar-cloudflare-pages-20260822-9b158323.zip`, 875.030 bytes, 21/21, SHA-256 `3435EC036030F390855D721EAAFB7FE0FB904187FA3284D20C270C479B6DE945`; smoke externo GO |
+| Deployment y artefacto | Actual `d7f7e611-15a3-4e89-9a39-72bbe371b054` (`https://d7f7e611.rwadar.pages.dev`); canonical `https://rwadar.pages.dev`; web 203/203 y suite raíz código 0; ZIP `rwadar-cloudflare-pages-20260822-3688f59d.zip`, 878.052 bytes, 21/21, SHA-256 `C2FAC300F4B6C9BC83FDD63C26EB64B4615F8F540B73589D54B6EDD8D8E936E4`; smoke externo GO |
 | Base de producción | Migración 22 **aplicada y verificada**; Security Advisor: 0 Critical y 0 Security Definer View |
 | Migración 22 | `02F2...0666`: `COMMIT`, `schedule=19`; verificador `4182...2C3`: `Success. No rows returned` y aviso `RWAdar 22 OK` |
 | Smoke público backend | Radar 26, descartadas 4; `opiniones.usuario_id` 401, moderación directa 401, firma antigua ausente (404/PGRST202), firma nueva anónima 401/42501 |
 | Smokes remotos | Ambos solo lectura por defecto; mutación opt-in ligada al proyecto y limpieza verificable; contrato local 21/21 sin red |
-| Cuentas | Confirm email activo, signup habilitado y `mailer_autoconfirm=false`; Site URL Pages; redirects Pages + Netlify. Sin SMTP propio; confirmación y recuperación reales pendientes de prueba E2E |
+| Cuentas | Radar completo sin cuenta y login existente disponible. Altas y recuperación públicas pausadas fail-closed, sin llamadas `/signup` ni `/recover`; Auth conserva Confirm email y `mailer_autoconfirm=false`, pero no hay SMTP propio probado |
 | Opiniones/moderación | Backend endurecido mediante RPC; probar el frontend que quede realmente desplegado |
 | Correo de avisos | **OFF en producción**; 23 GO local, sin Brevo/Vault/remitente ni E2E |
 | Push | **OFF en producción:** 0 tokens y 0 cron; exige dispositivo físico y E2E |
 | Dependencias móviles | 46 paquetes afectados: 29 high, 17 moderate, 0 critical; 3 avisos fuente de toolchain sin fix compatible |
 | Indexación | Pages verificada; portada en cola. Sitemap enviado, primera lectura «No se ha podido obtener». Netlify legada sí indexada |
 | Hosting | Cloudflare Pages es producción. Netlify conserva la versión anterior: producción pausada porque solo quedan créditos operativos y CLI `Forbidden`; seguirá así hasta reinicio o ampliación de créditos. CALIX es distinto y no se tocó |
-| Móvil | Android build 4 compatible con OTA `preview` `4f9d7e19...`, runtime `af694...`; rediseño + apertura de avisos. Sin Play Store ni iOS nativo; PWA en ambos con caché `rwadar-v-9b1583232e8bea4b`, pestañas `Radar`/`Siguiendo`/`Avisos`/`Más` y migración automática desde SW v1. La ficha agrupa toda la información y opiniones, conserva el 3D, fija «Web oficial», reinicia el scroll y permite cerrar arriba, abajo o con Back |
+| Móvil | Android build 4 compatible con OTA `preview` `4f9d7e19...`, runtime `af694...`; rediseño + apertura de avisos. Sin Play Store ni iOS nativo; PWA en ambos con caché `rwadar-v-3688f59d62fd0079`, pestañas `Radar`/`Siguiendo`/`Avisos`/`Más` y migración automática desde SW v1. La ficha agrupa toda la información y opiniones, conserva el 3D, fija «Web oficial», reinicia el scroll y permite cerrar arriba, abajo o con Back |
 
 ### Bloqueos reales
 
@@ -166,9 +168,10 @@ mínimo:
    3 años;
 2. conservar la evidencia de la 22 aplicada y verificada y repetir su
    verificador de solo lectura tras cualquier cambio de esquema;
-3. conservar Confirm email activo con signup habilitado y probar confirmación y
-   recuperación reales de extremo a extremo; el acuerdo pendiente ya se declara
-   de forma transparente y no es un bloqueo técnico del publicador;
+3. mantener altas y recuperación públicas pausadas fail-closed hasta disponer
+   de SMTP propio y pruebas reales de extremo a extremo; conservar el login de
+   cuentas existentes y el radar completo sin cuenta. El acuerdo pendiente ya
+   se declara de forma transparente y no es un bloqueo técnico del publicador;
 4. conservar el deployment Cloudflare, el ZIP final y el hash como evidencia de la
    publicación GO, y repetir el smoke tras cualquier cambio;
 5. reconsultar Search Console hasta que la portada y el sitemap de Pages tengan
@@ -213,17 +216,19 @@ completa puede avanzar dejando visible que el acuerdo y los plazos no están
 cerrados. Un `data-deploy-blocker`, un estado ausente o uno desconocido detienen
 ambos modos remotos antes de Auth o sincronización. El preflight exige
 `mailer_autoconfirm=false` exacto en `/auth/v1/settings`; producción ya devuelve
-`false`, Confirm email está activo y signup sigue habilitado. Un error o campo
-ausente detienen la publicación. Superar esa comprobación no sustituye pruebas
-reales E2E de confirmación y recuperación; no hay SMTP propio.
+`false` y Confirm email está activo. Un error o campo ausente detienen la
+publicación. Sin SMTP propio probado, la interfaz no expone la capacidad técnica
+de signup: altas y recuperación públicas quedan pausadas fail-closed y no envían
+solicitudes. El login existente sigue disponible y el radar no exige cuenta.
 
-La web endurecida ya está en Cloudflare Pages, deployment actual `395980eb...`
-(`https://395980eb.rwadar.pages.dev`), canonical `https://rwadar.pages.dev` y
-caché `rwadar-v-9b1583232e8bea4b`. El ZIP congelado
-`outputs/rwadar-cloudflare-pages-20260822-9b158323.zip` tiene 875.030 bytes,
+La web endurecida ya está en Cloudflare Pages, deployment actual
+`d7f7e611-15a3-4e89-9a39-72bbe371b054`
+(`https://d7f7e611.rwadar.pages.dev`), canonical `https://rwadar.pages.dev` y
+caché `rwadar-v-3688f59d62fd0079`. El ZIP congelado
+`outputs/rwadar-cloudflare-pages-20260822-3688f59d.zip` tiene 878.052 bytes,
 21/21 archivos verificados y SHA-256
-`3435EC036030F390855D721EAAFB7FE0FB904187FA3284D20C270C479B6DE945`.
-El paquete pre-privacidad anterior no debe usarse. El publicador remoto heredado
+`C2FAC300F4B6C9BC83FDD63C26EB64B4615F8F540B73589D54B6EDD8D8E936E4`.
+El paquete `PRE-AUTH-NO-USAR-...-9b158323.zip` anterior no debe usarse. El publicador remoto heredado
 aún llama a Netlify: no lo uses como ruta de Pages ni ejecutes `netlify deploy`
 a secas; hoy la CLI responde `Forbidden` y el panel mantiene producción pausada
 por créditos, por lo que Netlify conserva la versión anterior.
@@ -678,11 +683,11 @@ los JSON.
    de 12 meses y 3 años.
 2. Conservar la evidencia de la migración 22 aplicada y verificada; repetir el
    verificador tras cambios de esquema.
-3. Conservar visible `acuerdo-pendiente-de-documentar`, Confirm email activo y
-   signup habilitado; probar confirmación y recuperación reales E2E antes de
-   prometer entrega.
-4. Conservar el deployment `395980eb...`, el ZIP final y su SHA-256; repetir web
-   190/190 y smoke externo después de cualquier cambio.
+3. Conservar visible `acuerdo-pendiente-de-documentar`; mantener altas y
+   recuperación públicas pausadas fail-closed hasta tener SMTP propio y pruebas
+   E2E. Mantener el login existente y el radar completo sin cuenta.
+4. Conservar el deployment `d7f7e611...`, el ZIP final y su SHA-256; repetir web
+   203/203 y smoke externo después de cualquier cambio.
 5. Reconsultar la portada y el sitemap en Search Console hasta obtener un estado
    definitivo; la solicitud ya está hecha, no la indexación confirmada.
 6. Mantener push y correo OFF hasta contar con sus credenciales, consentimiento,

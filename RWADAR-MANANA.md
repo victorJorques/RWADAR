@@ -6,16 +6,19 @@
 
 ## Lo que puede enseñarse hoy
 
-La producción actual en `https://rwadar.pages.dev`, deployment `395980eb...`
-(`https://395980eb.rwadar.pages.dev`), sirve:
+La producción actual en `https://rwadar.pages.dev`, deployment
+`d7f7e611-15a3-4e89-9a39-72bbe371b054`
+(`https://d7f7e611.rwadar.pages.dev`), sirve:
 
 - 26 fichas del radar y 4 descartadas;
 - contenido pre-renderizado;
-- PWA instalable con caché `rwadar-v-9b1583232e8bea4b`, cuatro pestañas móviles
+- PWA instalable con caché `rwadar-v-3688f59d62fd0079`, cuatro pestañas móviles
   visibles (`Radar`, `Siguiendo`, `Avisos`, `Más`) y migración automática desde
   service worker v1;
 - ficha móvil agrupada por bloques, con toda la información y el 3D conservados,
   acciones fijas y cierre arriba, abajo o con Atrás;
+- radar completo sin cuenta y login disponible para cuentas existentes; las
+  altas y la recuperación públicas están pausadas fail-closed;
 - CSV, privacidad, sitemap, robots y 404;
 - canonical de la dirección pública.
 
@@ -32,18 +35,18 @@ comprobación.
 - **No está terminado.** La web remediada está publicada y verificada, y la
   migración 22 está aplicada y verificada; correo, push y tiendas siguen
   pendientes.
-- **Cuentas/opiniones:** el frontend publicado usa el contrato RPC seguro. Las
-  pruebas locales y el smoke público están verdes, pero Auth real aún necesita
-  la prueba E2E de confirmación y recuperación.
+- **Cuentas/opiniones:** el frontend usa el contrato RPC seguro. El radar no
+  exige cuenta y las cuentas existentes pueden entrar; las altas y la
+  recuperación públicas están pausadas fail-closed y no envían solicitudes.
 - **Correo:** no operativo. La migración 23 y el consentimiento web están listos,
   pero 23 no está aplicada; faltan Brevo, Vault, remitente verificado y E2E.
 - **Push:** deshabilitado. `pushDeliveryEnabled=false`; fresh/17/22, rollback y
   recuperación dejan el flag backend en `false` y 0 cron `rwadar-push`. El
   opt-in separado no se ejecutó.
-- **Correo de alta:** Confirm email está activo, signup sigue habilitado y
-  producción devuelve `mailer_autoconfirm=false`; el preflight Auth ya pasa.
-  No hay SMTP propio y todavía faltan pruebas reales E2E de confirmación y
-  recuperación. La configuración no demuestra que el mensaje llegue.
+- **Correo de cuenta:** Confirm email está activo y producción devuelve
+  `mailer_autoconfirm=false`; el preflight Auth ya pasa. No hay SMTP propio ni
+  entrega E2E probada: no se presenta el alta o la recuperación como operativa.
+  La interfaz las pausa antes de recoger o enviar la solicitud.
 - **Netlify:** conserva una versión anterior. El panel dice que los despliegues
   de producción están pausados porque solo quedan créditos operativos y la CLI
   responde `Forbidden`; no se actualizará hasta el reinicio o ampliación de
@@ -74,7 +77,7 @@ rollback. **Está aplicada y verificada en producción.** El SQL ejecutado
 Security Advisor quedó en 0 Critical y 0 Security Definer View; la firma
 antigua de moderación está ausente.
 
-La suite raíz completa terminó con código 0: DB, web **190/190**, QR **6/6**,
+La suite raíz completa terminó con código 0: DB, web **203/203**, QR **6/6**,
 móvil **15/15** y herramientas. En producción, el smoke público posterior
 confirmó radar 26, descartadas 4, `opiniones.usuario_id` 401, moderación directa
 401, firma antigua 404/PGRST202 y firma nueva anónima 401/42501.
@@ -195,18 +198,19 @@ Exactamente un modo es obligatorio. La política declara
 `data-deploy-legal-status="acuerdo-pendiente-de-documentar"`, por lo que la
 versión completa puede avanzar sin presentar el acuerdo ni los plazos como
 cerrados. Un `data-deploy-blocker`, un estado ausente o uno desconocido fallan
-cerrados. El preflight remoto ya obtiene `mailer_autoconfirm=false` exacto y
-signup sigue habilitado. Aún faltan las pruebas E2E de confirmación y
-recuperación. La producción actual se publicó en Cloudflare Pages con Wrangler
+cerrados. El preflight remoto ya obtiene `mailer_autoconfirm=false` exacto. Sin
+SMTP propio probado, las altas y la recuperación públicas permanecen pausadas
+fail-closed; el login existente y el radar sin cuenta siguen disponibles. La
+producción actual se publicó en Cloudflare Pages con Wrangler
 4.125.0, desplegando exclusivamente `rwadar-publicado/`. El publicador remoto
 heredado llama a Netlify y no es la ruta de Pages. Nunca subas `rwadar-site/`,
 la raíz ni CALIX.
 
 El artefacto final congelado es
-`outputs/rwadar-cloudflare-pages-20260822-9b158323.zip`, 875.030 bytes y 21/21
+`outputs/rwadar-cloudflare-pages-20260822-3688f59d.zip`, 878.052 bytes y 21/21
 archivos verificados, SHA-256
-`3435EC036030F390855D721EAAFB7FE0FB904187FA3284D20C270C479B6DE945`. El
-paquete pre-privacidad anterior no debe usarse.
+`C2FAC300F4B6C9BC83FDD63C26EB64B4615F8F540B73589D54B6EDD8D8E936E4`. El
+paquete `PRE-AUTH-NO-USAR-...-9b158323.zip` anterior no debe usarse.
 
 ## Después del despliegue
 
@@ -216,7 +220,9 @@ Comprueba desde una conexión externa:
 2. 26 fichas y 4 descartadas en HTML pre-renderizado;
 3. canonical, robots y sitemap;
 4. CSP efectiva, cero inline y cero `netlify-rum-container`;
-5. registro, recuperación, opinión, denuncia, borrado y cierre de sesión;
+5. login de una cuenta existente, opinión, denuncia, borrado y cierre de sesión;
+   además, comprobar sin enviar datos que alta y recuperación públicas muestran
+   el estado pausado fail-closed;
 6. que ninguna respuesta fallida se presenta como éxito;
 7. PWA, las cuatro pestañas móviles y migración automática desde service worker
    v1;

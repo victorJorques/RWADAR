@@ -13,25 +13,27 @@ desplegado en producción». Este proyecto todavía **no está terminado**.
 La web endurecida está en producción y verificada en
 `https://rwadar.pages.dev`: 26 fichas, 4 descartadas, PWA y 0 emisiones
 públicas. La migración 22 está aplicada y verificada. Correo y push siguen OFF;
-no hay publicación en tiendas móviles.
+sin SMTP propio probado, las altas y la recuperación públicas están pausadas y
+fallan cerradas. El login existente y el radar sin cuenta siguen disponibles.
+No hay publicación en tiendas móviles.
 
 ## 2 · Matriz de verdad
 
 | Pieza | Producción | Repositorio reconciliado |
 |---|---|---|
-| Web pública | **GO en `https://rwadar.pages.dev`**, deployment actual `395980eb...` (`https://395980eb.rwadar.pages.dev`), smoke externo verde | Web 190/190 y suite raíz con código 0 |
+| Web pública | **GO en `https://rwadar.pages.dev`**, deployment actual `d7f7e611-15a3-4e89-9a39-72bbe371b054` (`https://d7f7e611.rwadar.pages.dev`), smoke externo verde | Web 203/203 y suite raíz con código 0 |
 | Cloudflare Pages | Proyecto `rwadar`; canonical y producción actual | Wrangler 4.125.0; OAuth mínimo: User Read, Account Read y Pages Write |
 | Netlify | Conserva una versión anterior: producción pausada por créditos; no es canonical ni producción actual | El panel indica que solo quedan créditos operativos y la CLI responde `Forbidden`; no se actualizará hasta reinicio o ampliación de créditos |
 | Plataformas | 26 en radar + 4 descartadas | Mismo contrato de datos |
-| PWA | En línea; caché `rwadar-v-9b1583232e8bea4b` | Cuatro pestañas móviles visibles (`Radar`, `Siguiendo`, `Avisos`, `Más`), ficha ordenada y migración automática desde service worker v1 |
+| PWA | En línea; caché `rwadar-v-3688f59d62fd0079` | Cuatro pestañas móviles visibles (`Radar`, `Siguiendo`, `Avisos`, `Más`), ficha ordenada y migración automática desde service worker v1 |
 | Sección «Abierto ahora mismo» | No visible | Implementada localmente |
 | Emisiones | 0 | Esquema y UI preparados, sin datos que publicar |
-| CSS/JS externos + CSP estricta | **Desplegados**; sin `unsafe-inline`/`unsafe-eval` | Contrato 190/190 |
+| CSS/JS externos + CSP estricta | **Desplegados**; sin `unsafe-inline`/`unsafe-eval` | Contrato 203/203 |
 | Analítica/RUM | Cloudflare Web Analytics, Zaraz y Netlify RUM ausentes | Su inyección se rechaza como discrepancia |
 | Tokens de sesión en `localStorage` | No se persisten; sesión en memoria | Mismo contrato |
 | Migraciones 14 y 15 | Parte del contrato seguro ya conocido de producción | Reproducibles y verificables |
 | Migración 22 | **Aplicada y verificada**; `COMMIT`, `schedule=19`, verificador interno OK y smoke público verde | Validada localmente con verificador y rollback |
-| Alta de cuentas | Confirm email activo, signup habilitado y `mailer_autoconfirm=false`; Site URL Pages y redirects Pages + Netlify | Sin SMTP propio; confirmación y recuperación reales aún no probadas E2E |
+| Cuentas | Radar completo sin cuenta; login de cuentas existentes disponible. Altas y recuperación públicas pausadas fail-closed: no envían `/signup` ni `/recover` | Auth conserva Confirm email y `mailer_autoconfirm=false`, pero no hay SMTP propio probado ni E2E de confirmación/recuperación |
 | Avisos por correo | **OFF**; 23 no aplicada en producción | 23 GO local y fail-closed; faltan Brevo/Vault/remitente y E2E |
 | Avisos push | **OFF: 0 tokens y 0 cron `rwadar-push`** | Listener para abrir avisos publicado por OTA; entrega requiere dispositivo físico y E2E |
 | Indexación | Propiedad Pages verificada y portada en cola; sitemap enviado con primera lectura «No se ha podido obtener» | La antigua Netlify sí figura indexada; reconsultar Pages |
@@ -53,6 +55,10 @@ no hay publicación en tiendas móviles.
   verificador y cierre limitado están GO en local y fallan cerrados, pero no se
   aplican hasta tener Brevo, secreto y remitente válidos en Vault y una prueba
   E2E aprobada.
+- La ausencia de SMTP propio probado también cierra el alta y la recuperación
+  públicas en la web: sus controles muestran el estado pausado y no recopilan ni
+  envían solicitudes. Esto no afecta al login de cuentas existentes ni al radar,
+  que se consulta entero sin cuenta.
 
 En producción, el SQL de la 22 (`02F2...0666`) terminó en `COMMIT` y devolvió
 `schedule=19`. El verificador interno (`4182...2C3`) terminó con
@@ -64,7 +70,7 @@ moderación directa 401, firma antigua 404/PGRST202 y firma nueva anónima
 Security Advisor quedó en 0 Critical y 0 Security Definer View; la firma
 antigua está ausente.
 
-El cierre local de DB y sus gates queda verde. La web actual pasa **190/190**
+El cierre local de DB y sus gates queda verde. La web actual pasa **203/203**
 y la suite raíz completa termina con código 0.
 `17_avisos_push.sql`, fresh-install, 22,
 rollback y recuperación terminan con `push_configuracion.habilitado=false` y
@@ -119,12 +125,13 @@ inyectados, sin red. Eso prueba el fallo cerrado de los scripts, no producción.
   `rwadar-site/`; nunca se edita a mano.
 
 La versión remediada **ya está desplegada y verificada** en Cloudflare Pages.
-El deployment actual es `395980eb...` (`https://395980eb.rwadar.pages.dev`) y
-la caché PWA es `rwadar-v-9b1583232e8bea4b`. El ZIP final es
-`outputs/rwadar-cloudflare-pages-20260822-9b158323.zip`, 875.030 bytes y 21/21
+El deployment actual es `d7f7e611-15a3-4e89-9a39-72bbe371b054`
+(`https://d7f7e611.rwadar.pages.dev`) y la caché PWA es
+`rwadar-v-3688f59d62fd0079`. El ZIP final es
+`outputs/rwadar-cloudflare-pages-20260822-3688f59d.zip`, 878.052 bytes y 21/21
 archivos verificados, SHA-256
-`3435EC036030F390855D721EAAFB7FE0FB904187FA3284D20C270C479B6DE945`; no uses
-el paquete pre-privacidad anterior. El smoke confirmó rutas, 26/4/0, CSP,
+`C2FAC300F4B6C9BC83FDD63C26EB64B4615F8F540B73589D54B6EDD8D8E936E4`; no uses
+el paquete `PRE-AUTH-NO-USAR-...-9b158323.zip` anterior. El smoke confirmó rutas, 26/4/0, CSP,
 caché, PWA y SEO técnico. Netlify conserva la versión anterior mientras
 producción siga pausada por créditos y no debe presentarse como canonical.
 
@@ -268,10 +275,11 @@ la versión completa y deja visible que el acuerdo y los plazos aún no están
 cerrados. Un `data-deploy-blocker`, un estado ausente o uno desconocido bloquean
 los dos modos remotos antes de Auth, sincronización o Netlify. El preflight
 remoto consulta `/auth/v1/settings` en solo lectura y exige
-`mailer_autoconfirm=false` exacto. Producción ya devuelve `false`, Confirm email
-está activo y signup sigue habilitado; un error o un campo ausente bloquean.
-Sin SMTP propio, esto no demuestra entrega: aún hay que probar confirmación y
-recuperación reales E2E. `Site URL` está guardada como
+`mailer_autoconfirm=false` exacto. Producción ya devuelve `false` y Confirm email
+está activo; un error o un campo ausente bloquean. La capacidad técnica de Auth
+no se expone como alta pública: sin SMTP propio probado, altas y recuperación
+permanecen pausadas fail-closed y no envían solicitudes. El login existente
+sigue operativo y el radar no exige cuenta. `Site URL` está guardada como
 `https://rwadar.pages.dev` y las redirecciones autorizadas son Pages y Netlify.
 
 ### Migración 22 · ya aplicada en producción
@@ -318,10 +326,11 @@ sobre el árbol omitido y reinstalando después. Expo install check pasa, Doctor
 3. Repetir las pruebas mutantes de cuentas, opiniones, moderación y borrado
    contra la base real solo con ventana y limpieza autorizadas.
 4. Mantener visible el estado `acuerdo-pendiente-de-documentar`; conservar
-   Confirm email activo con signup habilitado y probar confirmación y
-   recuperación reales E2E; no prometer entrega antes de esas pruebas.
-5. Conservar el deployment Cloudflare `395980eb...`, el ZIP final
-   `rwadar-cloudflare-pages-20260822-9b158323.zip` y su SHA-256 como evidencia;
+   altas y recuperación públicas pausadas fail-closed hasta disponer de SMTP
+   propio y pruebas E2E. Mantener el login de cuentas existentes y el radar sin
+   cuenta; no prometer entrega antes de esas pruebas.
+5. Conservar el deployment Cloudflare `d7f7e611...`, el ZIP final
+   `rwadar-cloudflare-pages-20260822-3688f59d.zip` y su SHA-256 como evidencia;
    repetir el smoke tras cualquier despliegue.
 6. Reconsultar Search Console: la propiedad Pages está verificada y la portada
    en cola; confirmar que el sitemap deja atrás el primer «No se ha podido

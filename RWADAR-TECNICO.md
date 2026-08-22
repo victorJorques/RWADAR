@@ -10,8 +10,10 @@
 RWAdar es un registro curado de plataformas de tokenización de activos reales.
 La web pública enseña 26 fichas y 4 descartadas con fuente. La versión endurecida
 está desplegada y verificada en `https://rwadar.pages.dev`, pero **el proyecto no
-está terminado**: correo y push no son operativos. La migración 22 sí está
-aplicada y verificada en producción.
+está terminado**: correo y push no son operativos. Sin SMTP propio probado, las
+altas y la recuperación públicas están pausadas fail-closed; el login existente
+y el radar sin cuenta siguen disponibles. La migración 22 sí está aplicada y
+verificada en producción.
 
 ## 1 · Una web estática, explícita y auditable
 
@@ -35,8 +37,9 @@ como discrepancia.
 
 **Estado publicado:** Cloudflare Pages sirve la arquitectura endurecida, CSP sin
 `unsafe-inline`/`unsafe-eval`, política actual y service worker versionado. El
-deployment vigente es `395980eb...` (`https://395980eb.rwadar.pages.dev`) y la
-caché PWA es `rwadar-v-9b1583232e8bea4b`. Netlify conserva una versión anterior:
+deployment vigente es `d7f7e611-15a3-4e89-9a39-72bbe371b054`
+(`https://d7f7e611.rwadar.pages.dev`) y la caché PWA es
+`rwadar-v-3688f59d62fd0079`. Netlify conserva una versión anterior:
 sus despliegues de producción están pausados porque solo quedan créditos
 operativos y la CLI responde `Forbidden`; no es el canonical.
 
@@ -75,11 +78,11 @@ la versión completa y conserva visible que el acuerdo y los plazos no están
 cerrados. Un `data-deploy-blocker`, un estado ausente o uno desconocido cortan
 cualquier remoto antes de Auth o sincronización. El preflight remoto
 hace un GET de solo lectura a `/auth/v1/settings` y exige
-`mailer_autoconfirm=false` exacto. Producción ya devuelve `false`, Confirm email
-está activo y signup sigue habilitado; un error o campo ausente detienen la
-operación. Esta comprobación evita publicar con autoconfirmación, pero no
-demuestra entrega de correo: faltan pruebas reales E2E de confirmación y
-recuperación.
+`mailer_autoconfirm=false` exacto. Producción ya devuelve `false` y Confirm email
+está activo; un error o campo ausente detienen la operación. Como no hay SMTP
+propio probado, la web no envía altas ni recuperaciones públicas: las pausa de
+forma fail-closed. El login de cuentas existentes permanece disponible y el
+radar completo no requiere cuenta.
 
 Robots y sitemap públicos responden. Search Console tiene verificada la propiedad
 Pages y la portada está en la cola de indexación; el dominio nuevo aún no debe
@@ -136,11 +139,12 @@ Existe un borrador de acuerdo, no un acuerdo firmado. Los plazos propuestos de
 12 meses y 3 años no están aprobados. La política pública debe actualizarse
 solo cuando los tres decidan el texto y los tratamientos reales lo cumplan.
 
-Confirm email está activo, signup sigue habilitado y producción devuelve
-`mailer_autoconfirm=false`; el preflight Auth ya pasa. No hay SMTP propio y aún
-deben probarse confirmación y recuperación reales de extremo a extremo. El
-correo de avisos no es operativo y la migración 13 se mantiene separada de la
-instalación general.
+Confirm email está activo y producción devuelve `mailer_autoconfirm=false`; el
+preflight Auth ya pasa. Eso no convierte el correo en operativo: no hay SMTP
+propio probado. Por ello, las altas y la recuperación públicas están pausadas
+fail-closed y no generan solicitudes; el login de cuentas existentes y la
+consulta completa del radar siguen disponibles. El correo de avisos tampoco es
+operativo y su activación se mantiene separada de la instalación general.
 
 En móvil, registrar un token o preparar una cola no equivale a entregar una
 notificación. `pushDeliveryEnabled=false`; no hay emisor ni recibos de extremo
@@ -192,7 +196,7 @@ sigue OFF.
 
 ## 8 · Evidencia de calidad
 
-Al 22 de agosto, la batería web pasa **190/190**, la comprobación del QR
+Al 22 de agosto, la batería web pasa **203/203**, la comprobación del QR
 **6/6**, el artefacto contiene **26/4/0** y la suite raíz completa termina con
 código 0 e incluye DB, web, QR, móvil **15/15** y tools. La migración 22 se
 verificó además contra producción como se describe arriba.
@@ -219,6 +223,7 @@ Por eso el traspaso exige verificar producción después de cada cambio.
 | Web | Estática, pre-renderizada, CSS/JS externos y CSP estricta, desplegada y verificada en Pages | Repetir smoke tras cada entrega |
 | Datos | PostgreSQL, RLS, RPC; 22 aplicada y verificada en producción | Repetir verificación tras cambios de esquema |
 | Privacidad | Sin RUM local, tokens web en memoria, responsables identificados | Firmar acuerdo y decidir plazos |
+| Cuentas | Radar sin cuenta y login existente; altas/recuperación públicas cerradas sin SMTP | SMTP propio y E2E antes de reabrir altas o recuperación |
 | Editorial | Fuentes obligatorias y controles automáticos | Revisión humana y actualización periódica |
 | PWA | Producción instalable en iOS y Android; cuatro pestañas (`Radar`, `Siguiendo`, `Avisos`, `Más`) y migración automática desde service worker v1 | Abrir desde Pages; Netlify mantiene la versión anterior mientras producción siga pausada por créditos |
 | Correo | Instalación separada y opt-in | Proveedor, consentimiento y prueba E2E |

@@ -13,20 +13,21 @@ confundirse:
 |---|---|
 | Web pública | **GO en Cloudflare Pages**: `https://rwadar.pages.dev`; versión endurecida, pre-renderizada e instalable como PWA, con 26 fichas y 4 descartadas |
 | Sección pública de emisiones | No está publicada; producción muestra 0 emisiones y no enseña esa sección |
-| Artefacto web | Web 190/190; 26/4/0 y suite raíz con código 0. Producción `395980eb...` (`https://395980eb.rwadar.pages.dev`); canonical `https://rwadar.pages.dev`; smoke externo GO |
+| Artefacto web | Web 203/203; 26/4/0 y suite raíz con código 0. Producción `d7f7e611-15a3-4e89-9a39-72bbe371b054` (`https://d7f7e611.rwadar.pages.dev`); canonical `https://rwadar.pages.dev`; smoke externo GO |
 | Base de producción | La migración 22 (`02F2...0666`) terminó en `COMMIT` en `exgpmjpaaebyoolpwced`; el resultado mostró `schedule=19`. El verificador SQL interno (`4182...2C3`) terminó correctamente y el smoke público posterior quedó verde. Security Advisor: 0 Critical y 0 Security Definer View |
-| Registro de cuentas | Confirm email activo, signup habilitado y `mailer_autoconfirm=false`. Site URL: `https://rwadar.pages.dev`; redirects permitidos: Pages + Netlify. Sin SMTP propio; confirmación/recuperación reales aún no probadas E2E |
+| Cuentas | El radar completo se consulta sin cuenta. El login de cuentas existentes sigue disponible. Aunque Auth conserva Confirm email y devuelve `mailer_autoconfirm=false`, no hay SMTP propio probado: las altas y la recuperación públicas están pausadas y fallan cerradas, sin enviar solicitudes a Supabase |
 | Avisos por correo | **OFF en producción.** La 23 está GO solo local; faltan Brevo, secreto y remitente en Vault y prueba E2E |
 | Avisos push | **OFF en producción:** 0 tokens y 0 cron `rwadar-push`; requiere dispositivo físico nativo y prueba de entrega E2E |
 | Hosting anterior | Netlify conserva la versión anterior: el panel indica que los despliegues de producción están pausados porque solo quedan créditos operativos y la CLI responde `Forbidden`. No se actualizará hasta el reinicio o ampliación de créditos. No es el canonical ni el destino actual; CALIX es distinto y no se tocó |
 | Google | Propiedad `rwadar.pages.dev` verificada; portada enviada a indexación. Sitemap enviado, con primera lectura transitoria «No se ha podido obtener». La antigua Netlify sí figura indexada |
-| App móvil | Android build 4 compatible con OTA `preview` grupo `4f9d7e19...`, runtime `af694...`: rediseño + apertura de avisos. No está en Play Store; no hay build nativo iOS. La PWA web actual en iOS y Android muestra `Radar`, `Siguiendo`, `Avisos` y `Más`, usa la caché `rwadar-v-9b1583232e8bea4b` y migra automáticamente instalaciones con service worker v1. La ficha móvil ordena toda la información y opiniones por grupos, mantiene el 3D, fija «Web oficial», reinicia el scroll y permite cerrar arriba, abajo o con Back |
+| App móvil | Android build 4 compatible con OTA `preview` grupo `4f9d7e19...`, runtime `af694...`: rediseño + apertura de avisos. No está en Play Store; no hay build nativo iOS. La PWA web actual en iOS y Android muestra `Radar`, `Siguiendo`, `Avisos` y `Más`, usa la caché `rwadar-v-3688f59d62fd0079` y migra automáticamente instalaciones con service worker v1. La ficha móvil ordena toda la información y opiniones por grupos, mantiene el 3D, fija «Web oficial», reinicia el scroll y permite cerrar arriba, abajo o con Back |
 
-La base de esta reconciliación es el commit `42018de` y, por indicación de los
+La fuente de este cierre es el commit
+`9b4778ea98c0e740c9ebd5ec47fd12519bcf362a` y, por indicación de los
 responsables, los archivos de traspaso del 17–20 de agosto tienen prioridad
 sobre documentación anterior.
 
-La validación web actual termina **190/190**, la suite raíz completa termina con
+La validación web actual termina **203/203**, la suite raíz completa termina con
 código 0 y el smoke del artefacto publicado
 queda GO. El verificador SQL interno de producción terminó con
 `Success. No rows returned` y el aviso `RWAdar 22 OK`.
@@ -66,7 +67,9 @@ contrato se probó localmente, con fallos inyectados y sin red, **21/21**.
 - Un explicador 3D de qué significa tokenizar un activo.
 - Una calculadora educativa.
 - Un registro de descartes que exige una fuente citable.
-- Cuentas y opiniones moderadas, separadas del criterio editorial.
+- Login para cuentas existentes y opiniones moderadas, separadas del criterio
+  editorial. El radar no exige cuenta; las altas y la recuperación públicas
+  permanecen pausadas mientras no exista SMTP propio probado.
 - Descarga del registro en CSV.
 - Una PWA que reutiliza la misma dirección pública, con cuatro pestañas móviles
   (`Radar`, `Siguiendo`, `Avisos` y `Más`) y migración automática desde el
@@ -108,19 +111,24 @@ plazos propuestos siguen pendientes. El publicador solo acepta ese estado
 transparente o el futuro `acuerdo-documentado`; un `data-deploy-blocker`, un
 estado ausente o uno desconocido detienen los dos modos remotos. Además,
 cualquier remoto comprueba `/auth/v1/settings` en solo lectura y exige
-`mailer_autoconfirm=false` exacto. Producción ya devuelve ese valor y signup
-sigue habilitado; un error o un campo ausente detienen el proceso. Esto no
-demuestra entrega: sin SMTP propio, la confirmación y la recuperación reales
-siguen pendientes de prueba E2E. La versión completa ya está publicada en
-Cloudflare Pages, deployment `395980eb...` (`https://395980eb.rwadar.pages.dev`),
-y usa la caché PWA `rwadar-v-9b1583232e8bea4b`. Netlify conserva la versión anterior
+`mailer_autoconfirm=false` exacto. Producción ya devuelve ese valor; un error o
+un campo ausente detienen el proceso. La disponibilidad técnica de signup en
+Auth no se presenta como alta pública: sin SMTP propio probado, la interfaz
+pausa altas y recuperación y no envía esas solicitudes. El login de cuentas
+existentes permanece disponible y el radar completo no exige cuenta. La versión
+completa ya está publicada en
+Cloudflare Pages, deployment `d7f7e611-15a3-4e89-9a39-72bbe371b054`
+(`https://d7f7e611.rwadar.pages.dev`), y usa la caché PWA
+`rwadar-v-3688f59d62fd0079`. Netlify conserva la versión anterior
 mientras los despliegues de producción sigan pausados por créditos; la CLI
 responde `Forbidden`.
 
-Artefacto final congelado: `outputs/rwadar-cloudflare-pages-20260822-9b158323.zip`,
-875.030 bytes, 21/21 archivos verificados, SHA-256
-`3435EC036030F390855D721EAAFB7FE0FB904187FA3284D20C270C479B6DE945`. El
-paquete pre-privacidad anterior no debe usarse.
+Artefacto final congelado:
+`outputs/rwadar-cloudflare-pages-20260822-3688f59d.zip`, 878.052 bytes, 21/21
+archivos verificados, SHA-256
+`C2FAC300F4B6C9BC83FDD63C26EB64B4615F8F540B73589D54B6EDD8D8E936E4`.
+Producción y el preview exacto coinciden byte a byte en raíz, service worker,
+privacidad, CSS y JavaScript; el alta móvil pausada quedó verificada.
 
 ## Rigor editorial y regulatorio
 
