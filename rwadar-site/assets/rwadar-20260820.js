@@ -1136,7 +1136,8 @@ function renderGrid(f){
    <div class="aval">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
    <div class="marcas"><span class="m acc">${escHtml(p.acceso)}</span><span class="m">Entrada: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>
    <div class="ficha-pie"><span class="verif">${okSVG} Verificado ${escHtml(fCorta(p.ver))}</span>
-    <button class="cmp ${on?'on':''}" data-comparar="${i}">${on?'✓ Comparando':'+ Comparar'}</button></div></div>`}).join('');
+    <button class="cmp ${on?'on':''}" data-comparar="${i}">${on?'✓ Comparando':'+ Comparar'}</button>
+    <button class="movil-ficha-abrir" data-abrir="${i}">Abrir ficha <span aria-hidden="true">›</span></button></div></div>`}).join('');
 }
 function renderMatrix(f){
  document.getElementById('matrix').innerHTML=`<table class="tabla">
@@ -2551,7 +2552,9 @@ const Cuenta = (function(){
   const numero=$('movilSiguiendoCuenta'),unidad=$('movilSiguiendoUnidad');
   const texto=$('movilSiguiendoTexto'),accion=$('movilCuentaAccion');
   const insignia=$('movilSiguiendoBadge'),tab=$('movilTabSiguiendo');
+  const lista=$('movilSiguiendoLista'),vacio=$('movilSiguiendoVacio'),masCuenta=$('movilMasCuenta');
   if(numero)numero.textContent=String(cantidad);
+  if(masCuenta)masCuenta.textContent=String(cantidad);
   if(unidad)unidad.textContent=cantidad===1?'plataforma seguida':'plataformas seguidas';
   if(texto)texto.textContent=identidadConfirmada
    ?(cantidad?'Tu vigilancia está guardada y puedes gestionarla desde aquí.':'Todavía no vigilas ninguna plataforma.')
@@ -2559,6 +2562,17 @@ const Cuenta = (function(){
   if(accion)accion.textContent=identidadConfirmada?'Abrir mi lista':'Entrar y abrir mi lista';
   if(insignia){insignia.textContent=cantidad>99?'99+':String(cantidad);insignia.hidden=!cantidad;}
   if(tab)tab.setAttribute('aria-label',cantidad?'Siguiendo, '+cantidad:'Siguiendo');
+  if(lista&&vacio){
+   const seguidas=identidadConfirmada?P.filter(p=>vigiladas.has(p.n)):[];
+   const hay=seguidas.length>0;
+   lista.hidden=!hay;vacio.hidden=hay;
+   lista.innerHTML=hay?seguidas.map(p=>{const i=P.indexOf(p);return `
+    <article class="movil-seguida ${catClase(p)}">
+     ${siglaEl(p)}
+     <div><h3>${escHtml(p.n)}</h3><p>${escHtml(p.tipo)} · ${escHtml(p.reg)}</p></div>
+     <button type="button" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}">›</button>
+    </article>`;}).join(''):'';
+  }
  }
  function abrirGestion(){
   if(identidadConfirmada&&ses)abrirPerfil();
@@ -2620,8 +2634,9 @@ const Cuenta = (function(){
    SHELL MÓVIL / PWA
    -----------------------------------------------------------------
    Cuatro pestañas como en la app instalada, sin convertir la web de
-   escritorio en otra cosa. El radar sigue siendo el mismo DOM: así no
-   se duplican datos, filtros, 3D ni lógica de cuenta.
+   escritorio en otra cosa. La composición móvil cambia de jerarquía,
+   pero comparte el mismo DOM y estado: no duplica datos, filtros, 3D ni
+   lógica de cuenta.
    ================================================================= */
 const Movil = (function(){
  const media=window.matchMedia('(max-width: 767px), (max-width: 960px) and (max-height: 540px) and (hover: none) and (pointer: coarse)');
@@ -2752,8 +2767,29 @@ document.addEventListener('click',e=>{
 });
 
 /* El trabajador solo se registra en HTTP(S), nunca durante el pre-render ni
-   al abrir el archivo directamente. La red sigue mandando sobre la caché. */
+   al abrir el archivo directamente. `updateViaCache:none` y update() evitan
+   que iOS reanude durante horas un trabajador ya superado. Cuando cambia el
+   controlador se recarga una sola vez el documento que ya estaba abierto:
+   en la página nueva el controlador ya existe y no se crea ningún bucle. */
 if(typeof navigator!=='undefined'&&'serviceWorker' in navigator&&
    typeof location!=='undefined'&&/^https?:$/.test(location.protocol)){
- window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
+ window.addEventListener('load',async()=>{
+  const trabajador=navigator.serviceWorker;
+  const yaControlada=!!trabajador.controller;
+  let recargando=false;
+  trabajador.addEventListener('controllerchange',()=>{
+   if(!yaControlada||recargando)return;
+   recargando=true;
+   location.reload();
+  });
+  try{
+   const registro=await trabajador.register('/sw.js',{updateViaCache:'none'});
+   const revisar=()=>registro.update().catch(()=>{});
+   window.addEventListener('pageshow',e=>{if(e.persisted)revisar();});
+   document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState==='visible')revisar();
+   });
+   await revisar();
+  }catch(_){}
+ },{once:true});
 }

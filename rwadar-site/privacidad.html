@@ -82,7 +82,7 @@
         <td>Dirección IP,<br>navegador y hora</td>
         <td>Es lo mínimo para poder enviarte la página. Sin ello no hay forma técnica de
           servir un sitio web.</td>
-        <td>Cloudflare Pages, que aloja y distribuye la web</td>
+        <td>Cloudflare Pages o el acceso de compatibilidad en Netlify, según la dirección que abras</td>
       </tr>
       <tr>
         <td>Dirección IP al<br>actualizar el registro</td>
@@ -253,10 +253,10 @@
       cuando corresponda, cláusulas contractuales tipo (SCC). Consulta su
       <a href="https://www.cloudflare.com/policies/privacy/" rel="noopener">política de privacidad</a>
       y su <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" rel="noopener">DPA</a>.</li>
-    <li><b>Netlify</b> — durante la transición conserva únicamente la versión anterior en
-      <span class="codigo">rwadar.netlify.app</span> como respaldo temporal. Puede recibir
-      datos técnicos si visitas esa dirección; RUM continúa desactivado. Se retirará o
-      redirigirá ese origen cuando el plan permita publicar el cambio.</li>
+    <li><b>Netlify</b> — mantiene en <span class="codigo">rwadar.netlify.app</span> una copia
+      de compatibilidad de la misma aplicación para actualizar los accesos instalados desde
+      el dominio anterior. Puede recibir datos técnicos si visitas esa dirección; RUM
+      continúa desactivado. Cloudflare Pages sigue siendo el origen canónico.</li>
     <li><b>Supabase</b> — base de datos y autenticación; el proyecto está alojado en
       <b>eu-west-1 (Irlanda)</b>. Su DPA incluye SCC para los tratamientos que puedan
       implicar una transferencia. Consulta su

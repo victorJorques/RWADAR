@@ -27,7 +27,7 @@
    `self.registration.unregister()` dentro. La siguiente visita lo quita.
    ===================================================================== */
 
-const VERSION = 'rwadar-v20260821-movil';
+const VERSION = 'rwadar-v20260822-recarga';
 
 /* El armazón mínimo para que la aplicación abra sin red. Los datos no
    están aquí: la página los pide a Supabase al cargar y se repinta sola,
@@ -58,8 +58,29 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil((async () => {
     const nombres = await caches.keys();
+    const versionesAnteriores = nombres.filter(n => n !== VERSION && n.startsWith('rwadar-v'));
+    const ventanasAnteriores = versionesAnteriores.length
+      ? await self.clients.matchAll({ type:'window', includeUncontrolled:true })
+      : [];
     await Promise.all(nombres.filter(n => n !== VERSION).map(n => caches.delete(n)));
     await self.clients.claim();
+
+    /* El HTML v1 no escuchaba controllerchange. Si una PWA de aquella
+       entrega sigue abierta, claim cambia su trabajador pero no su DOM y
+       parece que la publicación no llegó. Solo cuando había una caché
+       RWAdar anterior se comprueban los clientes que sobrevivieron. El
+       margen permite que el código actual se recargue por sí mismo; una
+       navegación cambia el id del Client y evita una segunda recarga. */
+    if (ventanasAnteriores.length) {
+      const idsAnteriores = new Set(ventanasAnteriores.map(cliente => cliente.id));
+      await new Promise(resolver => setTimeout(resolver, 400));
+      const ventanasActuales = await self.clients.matchAll({ type:'window', includeUncontrolled:true });
+      await Promise.all(ventanasActuales
+        .filter(cliente => idsAnteriores.has(cliente.id) && typeof cliente.navigate === 'function')
+        .map(async cliente => {
+          try { await cliente.navigate(cliente.url); } catch (_) {}
+        }));
+    }
   })());
 });
 

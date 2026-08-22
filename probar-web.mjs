@@ -154,11 +154,20 @@ async function pruebaActivacionCache(codigo) {
   const escuchas = {};
   const version = (codigo.match(/const VERSION\s*=\s*'([^']+)'/) || [])[1];
   const borradas = [];
+  const navegadas = [];
+  const consultas = [];
   let reclamos = 0;
+  const clienteAnterior = {
+    id:'documento-antiguo', url:'https://rwadar.example/',
+    async navigate(url){ navegadas.push(url); },
+  };
   const contexto = {
     self: {
       location:{ origin:'https://rwadar.example' },
-      clients:{ async claim(){ reclamos++; } },
+      clients:{
+        async claim(){ reclamos++; },
+        async matchAll(opciones){ consultas.push(opciones); return [clienteAnterior]; },
+      },
       addEventListener(tipo, fn){ escuchas[tipo] = fn; },
       async skipWaiting(){},
     },
@@ -167,7 +176,8 @@ async function pruebaActivacionCache(codigo) {
       async keys(){ return [version, 'rwadar-v-antigua', 'otra-cache-antigua']; },
       async delete(nombre){ borradas.push(nombre); return true; },
     },
-    URL, Response, fetch,
+    URL, Response, fetch, Set,
+    setTimeout(fn){ fn(); },
   };
   vm.createContext(contexto);
   vm.runInContext(codigo, contexto);
@@ -175,7 +185,44 @@ async function pruebaActivacionCache(codigo) {
   escuchas.activate({ waitUntil(promesa){ activacion = promesa; } });
   await activacion;
   return version && reclamos === 1 && !borradas.includes(version) &&
-    borradas.length === 2 && borradas.includes('rwadar-v-antigua') && borradas.includes('otra-cache-antigua');
+    borradas.length === 2 && borradas.includes('rwadar-v-antigua') && borradas.includes('otra-cache-antigua') &&
+    consultas.length === 2 && consultas.every(x => x.type === 'window' && x.includeUncontrolled === true) &&
+    navegadas.length === 1 && navegadas[0] === clienteAnterior.url;
+}
+
+async function pruebaActivacionSinMigracion(codigo, clienteYaRecargado) {
+  const escuchas = {};
+  const version = (codigo.match(/const VERSION\s*=\s*'([^']+)'/) || [])[1];
+  let consultas = 0;
+  let navegaciones = 0;
+  const contexto = {
+    self: {
+      location:{ origin:'https://rwadar.example' },
+      clients:{
+        async claim(){},
+        async matchAll(){
+          consultas++;
+          const id = clienteYaRecargado && consultas > 1 ? 'documento-nuevo' : 'documento-antiguo';
+          return [{ id, url:'https://rwadar.example/', async navigate(){ navegaciones++; } }];
+        },
+      },
+      addEventListener(tipo, fn){ escuchas[tipo] = fn; },
+      async skipWaiting(){},
+    },
+    caches: {
+      async open(){ return { async addAll(){}, async match(){}, async put(){} }; },
+      async keys(){ return clienteYaRecargado ? [version, 'rwadar-v-anterior'] : [version, 'otra-cache']; },
+      async delete(){ return true; },
+    },
+    URL, Response, fetch, Set,
+    setTimeout(fn){ fn(); },
+  };
+  vm.createContext(contexto);
+  vm.runInContext(codigo, contexto);
+  let activacion;
+  escuchas.activate({ waitUntil(promesa){ activacion = promesa; } });
+  await activacion;
+  return { consultas, navegaciones };
 }
 
 async function pruebaRedConCacheRota(codigo) {
@@ -215,6 +262,51 @@ async function pruebaRedConCacheRota(codigo) {
     return escrituras === 2;
   }
   catch { return false; }
+}
+
+async function pruebaActualizacionPWACliente(codigo, controlada) {
+  const marca = '/* El trabajador solo se registra en HTTP(S)';
+  const inicio = codigo.indexOf(marca);
+  if (inicio < 0) throw new Error('no se encuentra el registro del service worker');
+  const bloque = codigo.slice(inicio);
+  const escuchasVentana = {};
+  const escuchasDocumento = {};
+  const escuchasTrabajador = {};
+  let recargas = 0;
+  let actualizaciones = 0;
+  let registro = null;
+  const registroSW = {
+    async update(){ actualizaciones++; },
+  };
+  const contexto = {
+    navigator: {
+      serviceWorker: {
+        controller: controlada ? {} : null,
+        addEventListener(tipo, fn){ escuchasTrabajador[tipo] = fn; },
+        async register(ruta, opciones){ registro = { ruta, opciones }; return registroSW; },
+      },
+    },
+    location: { protocol:'https:', reload(){ recargas++; } },
+    window: { addEventListener(tipo, fn){ escuchasVentana[tipo] = fn; } },
+    document: {
+      visibilityState:'visible',
+      addEventListener(tipo, fn){ escuchasDocumento[tipo] = fn; },
+    },
+  };
+  vm.createContext(contexto);
+  vm.runInContext(bloque, contexto);
+  await escuchasVentana.load();
+  escuchasVentana.pageshow({ persisted:true });
+  escuchasDocumento.visibilitychange();
+  escuchasTrabajador.controllerchange();
+  escuchasTrabajador.controllerchange();
+  await Promise.resolve();
+  return {
+    registro,
+    actualizaciones,
+    recargas,
+    escuchaCambio:typeof escuchasTrabajador.controllerchange === 'function',
+  };
 }
 
 function renderEmisionHostil(codigo) {
@@ -516,6 +608,35 @@ prueba('volver a Radar programa una medición nueva después de mostrar el panel
   /requestAnimationFrame/.test(codigoNavMovil) &&
   /(?:dispatchEvent\([^)]*(?:resize|rwadar)|clientWidth|redimension|recalcular)/i.test(codigoNavMovil) &&
   /cv\.clientWidth/.test(jsSinComentarios) && /cv\.width\s*!==\s*w/.test(jsSinComentarios));
+const ordenMovil = selector => Number((declaracionesCSS(cssMovil, selector).join(';').match(/order\s*:\s*(\d+)/i) || [])[1] || 0);
+prueba('Radar móvil adopta la jerarquía nativa antes del contenido editorial',
+  ordenMovil('#movilPanelRadar .portada-radar') === 1 &&
+  ordenMovil('#movilPanelRadar .movil-banner-explica') === 2 &&
+  ordenMovil('#movilPanelRadar>.barra') === 3 &&
+  ordenMovil('#movilPanelRadar>.tool') === 4 &&
+  ordenMovil('#movilPanelRadar>div.wrap') === 5 &&
+  ordenMovil('#movilPanelRadar .portada-txt') > 5 &&
+  ordenMovil('#movilPanelRadar>.explica') > ordenMovil('#movilPanelRadar .portada-txt'));
+prueba('la portada móvil conserva un acceso táctil explícito a la animación 3D',
+  /class="movil-banner-explica"[^>]*data-movil-ir="explain"/.test(html) &&
+  /Animación 3D paso a paso/.test(html) &&
+  /display\s*:\s*grid/i.test(declaracionesCSS(cssMovil, '.movil-banner-explica').join(';')));
+prueba('el buscador móvil es un panel principal y las fichas tienen un CTA propio',
+  /class="movil-busqueda-cab"/.test(html) && /Encuentra una plataforma/.test(html) &&
+  /class="movil-ficha-abrir" data-abrir=/.test(js) &&
+  /min-height\s*:\s*48px/i.test(declaracionesCSS(cssMovil, '.movil-ficha-abrir').join(';')));
+prueba('las superficies nuevas solo aparecen dentro de la interfaz móvil',
+  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-banner-explica').join(';')) &&
+  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-busqueda-cab').join(';')) &&
+  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ficha-abrir').join(';')));
+prueba('Siguiendo pinta fichas reales desde la vigilancia existente y escapa el contenido',
+  /id="movilSiguiendoLista"[^>]*aria-live="polite"[^>]*hidden/.test(html) &&
+  /P\.filter\(p=>vigiladas\.has\(p\.n\)\)/.test(jsSinComentarios) &&
+  /class="movil-seguida/.test(js) && /escHtml\(p\.n\)/.test(js));
+prueba('Avisos explica sus tres estados sin prometer una entrega inactiva',
+  (html.match(/class="movil-estado-paso(?:\s|"|$)/g) || []).length === 3 &&
+  /Correo y push siguen cerrados hasta superar la prueba real/.test(html) &&
+  !/Entrega activa/.test(textoHTML((html.match(/<section class="movil-panel" id="movilPanelAvisos"[\s\S]*?<\/section>/) || [''])[0])));
 prueba('la barra no introduce manejadores inline ni atributos ejecutables',
   botonesNavMovil.every(b => !/\son[a-z]+\s*=|javascript\s*:/i.test(b[1])) &&
   !/\son[a-z]+\s*=|javascript\s*:/i.test(navMovil?.[0] || ''));
@@ -539,9 +660,9 @@ prueba('el manifest es instalable y tiene iconos 192, 512 y maskable',
   manifest.icons.some(i=>i.sizes==='192x192') && manifest.icons.some(i=>i.sizes==='512x512') &&
   manifest.icons.some(i=>i.purpose==='maskable'));
 prueba('el service worker se registra solo bajo HTTP(S)',
-  /navigator\.serviceWorker\.register\('\/sw\.js'\)/.test(js) && /\^https\?:\$/.test(js));
+  /trabajador\.register\('\/sw\.js'/.test(js) && /\^https\?:\$/.test(js));
 prueba('el service worker fuente identifica la entrega móvil actual',
-  /const VERSION\s*=\s*['"]rwadar-v20260821-movil['"]/.test(sw));
+  /const VERSION\s*=\s*['"]rwadar-v20260822-recarga['"]/.test(sw));
 prueba('el precache crítico se instala de forma atómica',
   /await c\.addAll\(ARMAZON\)/.test(sw) && !/\.add\(u\)\.catch/.test(sw) && await pruebaInstalacionAtomica(sw));
 prueba('cada navegación se guarda bajo su propia ruta',
@@ -579,8 +700,26 @@ prueba('portada y manifest comparten los colores de arranque para evitar destell
   manifest.background_color.toLowerCase() === manifest.theme_color.toLowerCase());
 prueba('activar una entrega elimina cachés anteriores y toma control de los clientes',
   await pruebaActivacionCache(sw));
+const primeraActivacion = await pruebaActivacionSinMigracion(sw, false);
+const clienteRecargado = await pruebaActivacionSinMigracion(sw, true);
+prueba('la primera instalación no navega clientes si no había otra caché RWAdar',
+  primeraActivacion.consultas === 0 && primeraActivacion.navegaciones === 0);
+prueba('la migración no duplica la recarga si controllerchange ya renovó el documento',
+  clienteRecargado.consultas === 2 && clienteRecargado.navegaciones === 0);
 prueba('un fallo al escribir caché nunca sustituye navegación ni assets recibidos de la red',
   await pruebaRedConCacheRota(sw));
+const actualizacionControlada = await pruebaActualizacionPWACliente(js, true);
+const primeraInstalacion = await pruebaActualizacionPWACliente(js, false);
+prueba('la PWA consulta el worker sin caché al cargar, reanudarse y volver a primer plano',
+  actualizacionControlada.registro?.ruta === '/sw.js' &&
+  actualizacionControlada.registro?.opciones?.updateViaCache === 'none' &&
+  actualizacionControlada.actualizaciones === 3);
+prueba('un cambio de controlador recarga una sola vez una PWA ya instalada',
+  actualizacionControlada.escuchaCambio && actualizacionControlada.recargas === 1);
+prueba('la primera instalación no provoca una recarga ni puede entrar en bucle',
+  primeraInstalacion.recargas === 0);
+prueba('la navegación sigue siendo red primero y solo cae a caché ante un fallo',
+  /if \(req\.mode === 'navigate'\)[\s\S]*?try \{\s*const res = await fetch\(req\);[\s\S]*?catch \(_\) \{\s*return \(await cache\.match\(clave\)\)/.test(sw));
 
 const casoRegex = 'function f(c){return /[/*]/.test(c)}';
 const casoReducido = sinComentariosJS(casoRegex);
