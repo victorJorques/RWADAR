@@ -489,8 +489,8 @@ npx.cmd --yes wrangler@4.125.0 pages deploy rwadar-publicado --project-name rwad
 ```
 
 Primero genera y valida; después despliega solo `rwadar-publicado/` a la cuenta
-y proyecto Pages exactos. El publicador remoto heredado aún llama a Netlify y
-no es la ruta actual. Wrangler quedó con User Read, Account Read y Pages Write.
+y proyecto Pages exactos. El publicador remoto usa ya Wrangler y Cloudflare
+Pages. Wrangler quedó con User Read, Account Read y Pages Write.
 CALIX es otro proyecto y no se toca.
 
 La política declara

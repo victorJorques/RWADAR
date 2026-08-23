@@ -221,17 +221,19 @@ publicación. Sin SMTP propio probado, la interfaz no expone la capacidad técni
 de signup: altas y recuperación públicas quedan pausadas fail-closed y no envían
 solicitudes. El login existente sigue disponible y el radar no exige cuenta.
 
-La web endurecida ya está en Cloudflare Pages, deployment actual
-`b247c02d-14fa-4732-b6ee-9d5e461590ee`
-(`https://b247c02d.rwadar.pages.dev`), canonical `https://rwadar.pages.dev` y
-caché `rwadar-v-624322e8a5d58585`. El ZIP congelado
-`outputs/rwadar-cloudflare-pages-20260822-624322e8.zip` tiene 882.282 bytes,
-21/21 archivos verificados y SHA-256
-`03FAD72E5102F271D0D72AF29AD9B3C3F32504A558DF3CE86A2925BB8A47D46B`.
-El paquete `PRE-AUTH-NO-USAR-...-9b158323.zip` anterior no debe usarse. El publicador remoto heredado
-aún llama a Netlify: no lo uses como ruta de Pages ni ejecutes `netlify deploy`
-a secas; hoy la CLI responde `Forbidden` y el panel mantiene producción pausada
-por créditos, por lo que Netlify conserva la versión anterior.
+La web endurecida ya está en Cloudflare Pages. La entrega móvil actual es
+`f6be41e5-985e-4470-91bf-4aea74d31cc4`
+(`https://f6be41e5.rwadar.pages.dev`), entorno Production, rama `main`, canonical
+`https://rwadar.pages.dev` y caché `rwadar-v-acd0630667bf7ad8`. El artefacto
+generado contiene 48 archivos y 1.595.970 bytes. Incluye 26 portadas WebP
+cuadradas, obtenidas de las webs oficiales, con URL, tamaño y SHA-256 en
+`plataformas/fuentes.json`; las 26 forman parte del precache PWA. La publicación
+canónica y cada portada se comprobaron después del despliegue y las 241 pruebas
+web quedaron correctas. El ZIP `outputs/rwadar-cloudflare-pages-20260822-624322e8.zip`
+y el paquete `PRE-AUTH-NO-USAR-...-9b158323.zip` son históricos y no representan
+esta entrega. El publicador remoto usa ahora Cloudflare Pages con Wrangler
+fijado. No ejecutes `netlify deploy` a secas; Netlify conserva únicamente la
+versión anterior.
 
 ### Probar la app
 
@@ -599,9 +601,9 @@ offline en una versión de tienda.
 
 ## Trampas que ya nos costaron tiempo
 
-**El publicador remoto heredado sigue siendo de Netlify.** No lo uses para
-actualizar Cloudflare Pages. La ruta vigente es generar/verificar con `--local`
-y desplegar `rwadar-publicado/` con Wrangler al proyecto y cuenta exactos.
+**El publicador remoto ya es exclusivo de Cloudflare Pages.** La ruta vigente es
+generar/verificar con `--local` y desplegar `rwadar-publicado/` con Wrangler al
+proyecto y cuenta exactos. No uses Netlify para una actualización nueva.
 CALIX es otro proyecto y queda fuera de cualquier operación RWAdar.
 
 **Las capturas de pantalla mienten con las animaciones.** Ni el modo sin

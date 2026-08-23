@@ -63,8 +63,8 @@ node rwadar-publicar.js --produccion
 
 El publicador no interpreta un error como permiso para cambiar de destino. El
 artefacto es `rwadar-publicado/`, nunca la fuente directamente. El publicador
-remoto heredado todavía apunta a Netlify; la producción actual se desplegó de
-forma explícita con Wrangler 4.125.0 al proyecto Pages `rwadar`, rama `main`, y
+remoto apunta exclusivamente a Cloudflare mediante Wrangler 4.125.0, proyecto
+Pages `rwadar`, rama `main`, y
 solo con ese directorio generado. CALIX es otro proyecto y no se toca.
 
 Cada asset del artefacto recibe una huella de contenido; el HTML y el service

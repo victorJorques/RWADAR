@@ -126,9 +126,8 @@ Supabase; la 23 de correo sigue solo local. El contrato vigente está en
 
 **Seis reglas que no se negocian:**
 
-1. **Generar y validar primero con `node rwadar-publicar.js --local`.** El
-   publicador remoto existente aún llama a Netlify; no es la ruta de producción
-   de Cloudflare. Para Cloudflare se despliega deliberadamente
+1. **Generar y validar primero con `node rwadar-publicar.js --local`.** Los
+   modos remotos del publicador usan exclusivamente Cloudflare Pages. Despliegan
    `rwadar-publicado/` con Wrangler fijado, proyecto `rwadar` y rama `main`,
    después de verificar cuenta, artefacto y hashes. El OAuth de Wrangler quedó
    reducido a 3 permisos: User Read obligatorio, Account Read y Pages Write.

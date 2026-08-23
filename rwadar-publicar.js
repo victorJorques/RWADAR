@@ -22,6 +22,7 @@ const { execFileSync } = require('child_process');
 const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const {
   ARCHIVOS_PUBLICABLES,
+  PROYECTO_CLOUDFLARE,
   comprobarConfiguracionAuth,
   comprobarEstadoLegalPublicacion,
   nombreAssetVersionado,
@@ -33,8 +34,7 @@ const {
 const DIR = path.join(__dirname, 'rwadar-site');
 const FILE = path.join(DIR, 'index.html');
 const SALIDA = path.join(__dirname, 'rwadar-publicado');
-const SITE = '0211fd28-d371-43cd-9d93-3944fea57680';
-const NETLIFY_VERSION = '27.1.1';
+const WRANGLER_VERSION = '4.125.0';
 const modos = ['--local', '--preview', '--produccion'].filter(x => process.argv.includes(x));
 if (modos.length !== 1) {
   console.error('USO: node rwadar-publicar.js (--local | --preview | --produccion) [--sin-sincronizar]');
@@ -232,6 +232,50 @@ if (!capturado.emiLista || capturado.emiLista.length < 100) {
   process.exit(1);
 }
 
+/* Cada elemento de P genera exactamente una ficha tradicional y una portada
+   móvil. La portada es ahora el acceso principal en la PWA: una sincronización
+   que renombre o añada una plataforma no puede publicar una ruta rota. */
+const nombresPlataformas = Array.from(
+  vm.runInContext('P.map(plataforma => plataforma.n)', contexto, { timeout: 1000 }),
+  nombre => String(nombre)
+);
+const slugPortada = nombre => nombre.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+function validarPortadasPlataformas(contenido, nombres) {
+  const fichas = (contenido.match(/class="abrir"/g) || []).length;
+  const rutas = [...contenido.matchAll(/\bsrc="(\/plataformas\/[a-z0-9-]+\.webp)"/g)]
+    .map(coincidencia => coincidencia[1]);
+  const esperadas = nombres.map(nombre => `/plataformas/${slugPortada(nombre)}.webp`);
+  if (!fichas || nombres.length !== fichas || rutas.length !== fichas ||
+      new Set(rutas).size !== fichas) {
+    throw new Error(`se esperaban ${fichas} portadas locales únicas y se encontraron ${rutas.length}`);
+  }
+  for (let i = 0; i < esperadas.length; i++) {
+    const ruta = rutas[i];
+    if (ruta !== esperadas[i]) {
+      throw new Error(`la portada de ${nombres[i]} debe ser ${esperadas[i]} y se encontró ${ruta}`);
+    }
+    const relativa = ruta.slice(1);
+    if (!ARCHIVOS_PUBLICABLES.includes(relativa)) {
+      throw new Error(`la portada no está incluida en el manifiesto publicable: ${ruta}`);
+    }
+    const archivo = path.join(DIR, ...relativa.split('/'));
+    if (!fs.existsSync(archivo) || !fs.statSync(archivo).isFile()) {
+      throw new Error(`falta la portada local: ${ruta}`);
+    }
+    const bytes = fs.readFileSync(archivo);
+    if (bytes.length <= 1024 || bytes.subarray(0, 4).toString('ascii') !== 'RIFF' ||
+        bytes.subarray(8, 12).toString('ascii') !== 'WEBP') {
+      throw new Error(`la portada no es un WebP válido: ${ruta}`);
+    }
+  }
+  return rutas;
+}
+
+try { validarPortadasPlataformas(capturado.grid, nombresPlataformas); }
+catch (e) { console.error('ERROR PORTADAS:', e.message); process.exit(1); }
+
 /* ---- 4 · inyectar entre marcas, de forma repetible ---- */
 function inyectar(html, id, contenido) {
   const marca = new RegExp(
@@ -369,34 +413,32 @@ if (process.argv.includes('--local')) {
   process.exit(0);
 }
 
-const netlify = process.platform === 'win32' ? 'npx.cmd' : 'npx';
-const destino = preview ? 'Deploy Preview' : 'producción';
+/* Node 24 ya no ejecuta archivos .cmd con execFileSync en Windows (EINVAL).
+   ComSpec lanza el mismo npx.cmd sin activar shell para el resto de sistemas;
+   todos los argumentos posteriores son constantes cerradas del publicador. */
+const wrangler = process.platform === 'win32' ? (process.env.ComSpec || 'cmd.exe') : 'npx';
+const prefijoWrangler = process.platform === 'win32' ? ['/d', '/s', '/c', 'npx.cmd'] : [];
+const rama = preview ? 'revision' : 'main';
+const destino = preview ? 'preview de Cloudflare Pages' : 'producción de Cloudflare Pages';
 console.log(`Publicando en ${destino}…`);
 
 /* La producción y los previews son operaciones deliberadamente distintas.
-   Si Netlify rechaza producción (créditos, permisos, etc.), no se intenta
-   sortear el bloqueo subiendo un borrador y promocionándolo. */
+   Si Cloudflare rechaza producción (credenciales, permisos, etc.), no se
+   intenta sortear el bloqueo subiendo a otro proveedor ni promoviendo una
+   rama de revisión. */
 try {
   const args = [
-    '--yes', `netlify-cli@${NETLIFY_VERSION}`, 'deploy',
-    '--dir', SALIDA,
-    '--site', SITE,
-    '--message', preview ? 'Revision previa con pre-renderizado' : 'Actualizacion con pre-renderizado',
+    ...prefijoWrangler,
+    '--yes', `wrangler@${WRANGLER_VERSION}`, 'pages', 'deploy', SALIDA,
+    '--project-name', PROYECTO_CLOUDFLARE,
+    '--branch', rama,
   ];
-  if (!preview) args.push('--prod');
-  execFileSync(netlify, args, { stdio: 'inherit', shell: false });
+  execFileSync(wrangler, args, { stdio: 'inherit', shell: false });
 } catch (e) {
-  console.error(`\nNetlify rechazo la publicacion en ${destino}.`);
-  console.error('No se ha creado ni promovido ningun despliegue alternativo.');
+  console.error(`\nCloudflare rechazo la publicacion en ${destino}.`);
+  console.error(`Detalle: ${e && (e.code || e.message) || 'error desconocido'}.`);
+  console.error('No se ha creado ningun despliegue alternativo ni se ha usado Netlify.');
   process.exitCode = 1;
-} finally {
-  /* El CLI deja aquí un .netlify con `publish = C:\Users\vcicr\Downloads`,
-     es decir, apuntando a la carpeta padre entera. Si alguien ejecutara
-     luego `netlify deploy` a secas desde aquí, subiría a internet todo lo
-     que haya en Downloads. Nada nuestro lo necesita —siempre pasamos --dir
-     y --site explícitos— así que se borra en cuanto termina el despliegue
-     y la trampa no llega a existir. */
-  fs.rmSync(path.join(__dirname, '.netlify'), { recursive: true, force: true });
 }
 }
 

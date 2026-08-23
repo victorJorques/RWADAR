@@ -38,6 +38,32 @@ const ARMAZON = [
   '/assets/rwadar-20260820.css',
   '/assets/rwadar-20260820.js',
   '/assets/privacidad-20260820.css',
+  '/plataformas/addx.webp',
+  '/plataformas/archax.webp',
+  '/plataformas/artex-global-markets.webp',
+  '/plataformas/backed-finance.webp',
+  '/plataformas/blocksquare.webp',
+  '/plataformas/centrifuge.webp',
+  '/plataformas/courtyard.webp',
+  '/plataformas/figure.webp',
+  '/plataformas/fireblocks.webp',
+  '/plataformas/franklin-templeton.webp',
+  '/plataformas/inx.webp',
+  '/plataformas/lofty.webp',
+  '/plataformas/maple-finance.webp',
+  '/plataformas/midas.webp',
+  '/plataformas/ondo-finance.webp',
+  '/plataformas/openeden.webp',
+  '/plataformas/pax-gold.webp',
+  '/plataformas/reental.webp',
+  '/plataformas/republic.webp',
+  '/plataformas/securitize.webp',
+  '/plataformas/spiko.webp',
+  '/plataformas/superstate.webp',
+  '/plataformas/swarm.webp',
+  '/plataformas/taurus.webp',
+  '/plataformas/tokeny.webp',
+  '/plataformas/tzero.webp',
   '/icono-192.png',
   '/icono-512.png',
   '/icono-maskable-512.png',
@@ -92,6 +118,7 @@ const guardable = (req, res) =>
 
 const esEstaticoPublico = url =>
   url.pathname.startsWith('/assets/') ||
+  url.pathname.startsWith('/plataformas/') ||
   ['/icono-192.png','/icono-512.png','/icono-maskable-512.png',
    '/manifest.webmanifest','/og.png','/rwadar.csv'].includes(url.pathname);
 

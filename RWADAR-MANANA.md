@@ -202,8 +202,8 @@ cerrados. El preflight remoto ya obtiene `mailer_autoconfirm=false` exacto. Sin
 SMTP propio probado, las altas y la recuperación públicas permanecen pausadas
 fail-closed; el login existente y el radar sin cuenta siguen disponibles. La
 producción actual se publicó en Cloudflare Pages con Wrangler
-4.125.0, desplegando exclusivamente `rwadar-publicado/`. El publicador remoto
-heredado llama a Netlify y no es la ruta de Pages. Nunca subas `rwadar-site/`,
+4.125.0, desplegando exclusivamente `rwadar-publicado/`. Los modos remotos del
+publicador apuntan ya a Pages. Nunca subas `rwadar-site/`,
 la raíz ni CALIX.
 
 El artefacto final congelado es

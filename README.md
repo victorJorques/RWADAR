@@ -101,8 +101,7 @@ Primero genera y valida el único artefacto publicable:
 node rwadar-publicar.js --local
 ```
 
-El publicador remoto heredado todavía llama a Netlify. Para la producción
-actual, despliega **solo** `rwadar-publicado/` al proyecto Cloudflare Pages
+El publicador remoto despliega **solo** `rwadar-publicado/` al proyecto Cloudflare Pages
 `rwadar`, rama `main`, con Wrangler `4.125.0` y la cuenta comprobada. El OAuth
 usado quedó en el mínimo funcional: User Read obligatorio, Account Read y
 Pages Write. No subas la fuente, la raíz ni el proyecto separado CALIX.

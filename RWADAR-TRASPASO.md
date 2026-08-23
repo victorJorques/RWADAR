@@ -119,8 +119,8 @@ inyectados, sin red. Eso prueba el fallo cerrado de los scripts, no producción.
   su precaché crítico se instala de forma atómica.
 - El publicador exige exactamente un modo: `--local`, `--preview` o
   `--produccion`.
-- Un rechazo de Netlify termina en error. No hay fallback a preview ni
-  promoción automática.
+- Un rechazo de Cloudflare termina en error. No hay fallback a Netlify, preview
+  ni promoción automática.
 - La carpeta publicada sigue siendo `rwadar-publicado/`, generada desde
   `rwadar-site/`; nunca se edita a mano.
 - La PWA móvil conserva exactamente cuatro destinos. `Buscar` ordena los
@@ -277,8 +277,8 @@ npx.cmd --yes wrangler@4.125.0 pages deploy rwadar-publicado --project-name rwad
 
 El primer comando sincroniza, pre-renderiza y valida. El segundo es la ruta de
 producción actual y solo puede ejecutarse después de comprobar el directorio,
-la cuenta y el proyecto. El publicador remoto heredado aún apunta a Netlify: no
-lo confundas con el despliegue de Pages ni uses `netlify deploy` a secas.
+la cuenta y el proyecto. Los modos remotos del publicador usan ya Cloudflare
+Pages; no uses `netlify deploy` a secas.
 Wrangler se autorizó con 3 permisos mínimos: User Read obligatorio, Account
 Read y Pages Write. No subas `rwadar-site/`, la raíz ni CALIX.
 
@@ -286,7 +286,7 @@ La política declara
 `data-deploy-legal-status="acuerdo-pendiente-de-documentar"`: permite preparar
 la versión completa y deja visible que el acuerdo y los plazos aún no están
 cerrados. Un `data-deploy-blocker`, un estado ausente o uno desconocido bloquean
-los dos modos remotos antes de Auth, sincronización o Netlify. El preflight
+los dos modos remotos antes de Auth, sincronización o Cloudflare. El preflight
 remoto consulta `/auth/v1/settings` en solo lectura y exige
 `mailer_autoconfirm=false` exacto. Producción ya devuelve `false` y Confirm email
 está activo; un error o un campo ausente bloquean. La capacidad técnica de Auth

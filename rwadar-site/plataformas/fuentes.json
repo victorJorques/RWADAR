@@ -1,0 +1,267 @@
+{
+  "generado": "2026-08-23T10:01:15.442Z",
+  "criterio": "Imagen declarada o mostrada por la web oficial de cada empresa; copia local cuadrada optimizada sin rastreo externo.",
+  "plataformas": [
+    {
+      "empresa": "ADDX",
+      "archivo": "plataformas/addx.webp",
+      "pagina": "https://addx.co/en/",
+      "imagenOrigen": "https://www.addx.co/images/Social_Share_Hero_image2.png",
+      "capturada": "2026-08-23T09:59:47.732Z",
+      "sha256": "e08d10f6ca0e72d4003ded28beeb74dda4c736cc4328e4ec1280ca2945750dce",
+      "bytes": 21606,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Archax",
+      "archivo": "plataformas/archax.webp",
+      "pagina": "https://uk.archax.com/businesses/tokenisation",
+      "imagenOrigen": "https://uk.archax.com/images/diagrams/tokenisation-diagram.png",
+      "capturada": "2026-08-23T09:59:47.253Z",
+      "sha256": "c1bad6fb5bd26f66713e18893c3325fab33ac3627a9d3db4ddbcabc2e914bf0b",
+      "bytes": 25264,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "ARTEX Global Markets",
+      "archivo": "plataformas/artex-global-markets.webp",
+      "pagina": "https://www.artexgm.com/",
+      "imagenOrigen": "https://www.artexgm.com/share_meta_visual.jpg",
+      "capturada": "2026-08-23T09:59:47.389Z",
+      "sha256": "907ee721d85ef557d555411629b26d2505eca3899a9a6ed27bfa85e7650f8e61",
+      "bytes": 13458,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Backed Finance",
+      "archivo": "plataformas/backed-finance.webp",
+      "pagina": "https://backed.fi/",
+      "imagenOrigen": "https://cdn.prod.website-files.com/603de78742be86399f94ec70/6601774445d818d97a6dd234_7b02687dcb1e9359f89bb46322ff203a_backed-website-meta-image-2025.png",
+      "capturada": "2026-08-23T09:59:48.815Z",
+      "sha256": "a51698f97ce6ebd30571b22eefbf77a11219ffa157793a2f6e1f97aef26feafa",
+      "bytes": 14316,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Blocksquare",
+      "archivo": "plataformas/blocksquare.webp",
+      "pagina": "https://blocksquare.io/",
+      "imagenOrigen": "https://blocksquare.io/assets/previews/share.jpg",
+      "capturada": "2026-08-23T09:59:48.747Z",
+      "sha256": "f6591adda25d68397993dc7559263d52ab8ea4c80a2e16ebae037eaf72751b57",
+      "bytes": 23358,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Centrifuge",
+      "archivo": "plataformas/centrifuge.webp",
+      "pagina": "https://centrifuge.io",
+      "imagenOrigen": "https://cdn.prod.website-files.com/6706324b4c48131ee537ff96/687e239782203000d816ce87_Centrifuge%20OpenGraph%20-%20Home.png",
+      "capturada": "2026-08-23T09:59:48.847Z",
+      "sha256": "1b2a27304df1fd4102bfb963bfe602344d162cf98ae72264f0d5749eae607a11",
+      "bytes": 14058,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Courtyard",
+      "archivo": "plataformas/courtyard.webp",
+      "pagina": "https://courtyard.io/",
+      "imagenOrigen": "https://courtyard.io/courtyard-logo-social-sharing.jpg",
+      "capturada": "2026-08-23T09:59:49.871Z",
+      "sha256": "47e25c016f7871728c1f396d38813cf92fb57bfd51809a6bbff01f79aa13d3ce",
+      "bytes": 3502,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Figure",
+      "archivo": "plataformas/figure.webp",
+      "pagina": "https://www.figure.com/",
+      "imagenOrigen": "https://cdn.figure.com/shared-assets/social-logos/figure-logo-social.png",
+      "capturada": "2026-08-23T09:59:50.534Z",
+      "sha256": "38e327deba28683edd498611732500250749f4127cb5b5c328f660ff88ce3230",
+      "bytes": 5942,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Fireblocks",
+      "archivo": "plataformas/fireblocks.webp",
+      "pagina": "https://www.fireblocks.com/",
+      "imagenOrigen": "https://www.fireblocks.com/wp-content/uploads/2025/10/home-screenshot-scaled.webp",
+      "capturada": "2026-08-23T09:59:50.604Z",
+      "sha256": "c20e0af4d584f9f2cd3c480c32fa52fd31f51e9cda1e78dbfb9fc9b534eff597",
+      "bytes": 18072,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Franklin Templeton",
+      "archivo": "plataformas/franklin-templeton.webp",
+      "pagina": "https://www.franklintempleton.com/about-us/our-teams/specialist-investment-managers/digital-assets/digital-assets-technology",
+      "imagenOrigen": "https://franklintempletonprod.widen.net/content/9flm2dfcxt/webp/FTDA_Tech_TransferAgent.jpg",
+      "capturada": "2026-08-23T09:59:51.119Z",
+      "sha256": "db1f7834d9bfcc5734381bcc0656bd166365ba1f9e04dbffa9fd0ce15a68ecd4",
+      "bytes": 25468,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "INX",
+      "archivo": "plataformas/inx.webp",
+      "pagina": "https://inx.co",
+      "imagenOrigen": "https://uploads.republic.com/p/images/attachments/original/000/206/906/206906-1771981450-cc8ab10bb1e0f9371bd8eb8b8dc46ebfad65f9ea.png",
+      "capturada": "2026-08-23T09:52:09.465Z",
+      "sha256": "9091af877ef2b3aaee6a1e200a1623b1252e804b1abb79dc737cb75b07fa8e72",
+      "bytes": 4744,
+      "metodo": "Recurso observado en la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Lofty",
+      "archivo": "plataformas/lofty.webp",
+      "pagina": "https://www.lofty.ai/",
+      "imagenOrigen": "https://dnldumbki4b4x.cloudfront.net/website/img/social/preview-nft.png",
+      "capturada": "2026-08-23T09:59:52.895Z",
+      "sha256": "8a4ba4743a5ea9f554c36a297144c46ab2df6984bd24b9a80b41f52bfbba0152",
+      "bytes": 26992,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Maple Finance",
+      "archivo": "plataformas/maple-finance.webp",
+      "pagina": "https://maple.finance/",
+      "imagenOrigen": "https://maple.finance/images/seo-image-main.jpg",
+      "capturada": "2026-08-23T09:59:52.181Z",
+      "sha256": "f03e341d1d6c0681074f9b9790b50838b43aca5e5fc0313d661b0f5d74d638e7",
+      "bytes": 6456,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Midas",
+      "archivo": "plataformas/midas.webp",
+      "pagina": "https://midas.app",
+      "imagenOrigen": "https://midas.app/graph.png",
+      "capturada": "2026-08-23T09:59:52.080Z",
+      "sha256": "941c805fd71b3f5fd9b2588ff9000c3028f64738c300c4a955af89e6c669f829",
+      "bytes": 3704,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Ondo Finance",
+      "archivo": "plataformas/ondo-finance.webp",
+      "pagina": "https://ondo.finance/",
+      "imagenOrigen": "https://ondo.finance/images/ondo-wordmark-preview-card.png",
+      "capturada": "2026-08-23T09:59:53.877Z",
+      "sha256": "9f8d3ff9b595a732347cda0361c3129c17ce1c78939517c860f8ff255e6aa312",
+      "bytes": 18220,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "OpenEden",
+      "archivo": "plataformas/openeden.webp",
+      "pagina": "https://openeden.com/media-kit",
+      "imagenOrigen": "https://openeden.com/media-kit/logotype-dark.png",
+      "capturada": "2026-08-23T09:59:54.361Z",
+      "sha256": "c14ae2e5b30b948bfae5d9d5aa65c2124b095457519bb4b955103011fad79c87",
+      "bytes": 6840,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Pax Gold",
+      "archivo": "plataformas/pax-gold.webp",
+      "pagina": "https://www.paxos.com/pax-gold",
+      "imagenOrigen": "https://framerusercontent.com/assets/xzmmNidz7aGcoDAy3OWodDKl4g8.png",
+      "capturada": "2026-08-23T09:59:54.753Z",
+      "sha256": "e8527855490fb6d08afe84d0b8de1582c7ab84e24441d262b3c04511b426ff72",
+      "bytes": 5178,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Reental",
+      "archivo": "plataformas/reental.webp",
+      "pagina": "https://www.reental.co/",
+      "imagenOrigen": "https://cdn.prod.website-files.com/64883b1804f368bf8575ed2e/6a03014886b8c273d3a13019_seoheropage.jpg",
+      "capturada": "2026-08-23T09:59:55.673Z",
+      "sha256": "250f51aff061bf119dcc11a78324fcf217f4e0e8853bd137387398b2ecbc2c0e",
+      "bytes": 28590,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Republic",
+      "archivo": "plataformas/republic.webp",
+      "pagina": "https://republic.com",
+      "imagenOrigen": "https://republic.com/_next/static/media/pic-logos.16b4e92d.png",
+      "capturada": "2026-08-23T10:00:05.162Z",
+      "sha256": "004138e69ad0ad71f238ecf3cad793316b0210f0184f4c30cda25e9019721af2",
+      "bytes": 21700,
+      "metodo": "Recurso descargado con el navegador desde la página oficial y optimizado localmente.",
+      "revisionPortada": 4
+    },
+    {
+      "empresa": "Securitize",
+      "archivo": "plataformas/securitize.webp",
+      "pagina": "https://securitize.io/",
+      "imagenOrigen": "https://cdn.builder.io/api/v1/image/assets%2Fd39b51a544e84e2fbb2445f58c6c6f2c%2F0eeaf40c7ecd4ee0a05f030d32ae949e",
+      "capturada": "2026-08-23T09:59:56.116Z",
+      "sha256": "59d6f860cf522469fbcd195e4fef7beac024628eeb9a8829d4e7d1490025c5f0",
+      "bytes": 3684,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Spiko",
+      "archivo": "plataformas/spiko.webp",
+      "pagina": "https://www.spiko.io/",
+      "imagenOrigen": "https://cdn.prod.website-files.com/670cbf7bea9b168605318b30/674b4c0d4a61fe0fa0036e29_Logo_square_white%402x.png",
+      "capturada": "2026-08-23T09:59:57.481Z",
+      "sha256": "979e6e683ed5d1995beec2ff91a5432c8566bcb3a684ac0a459a95d4b98dba55",
+      "bytes": 4926,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Superstate",
+      "archivo": "plataformas/superstate.webp",
+      "pagina": "https://superstate.com/",
+      "imagenOrigen": "https://assets.superstate.com/images/2025/09/02/og-home.jpg",
+      "capturada": "2026-08-23T09:59:58.693Z",
+      "sha256": "62f0559cac2f07f9627cfe50e2c30c6d111ead5da02ceb84cb7100252dcb6356",
+      "bytes": 6410,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Swarm",
+      "archivo": "plataformas/swarm.webp",
+      "pagina": "https://swarm.com",
+      "imagenOrigen": "https://443125518-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH47eAliP3CFktA0GA1zW%2Fuploads%2FZA3wd9fZk2riAHUmIdBv%2FSwarm-Circle.png?alt=media&token=09a1a52e-627c-4f47-b42b-274a491dff7a",
+      "capturada": "2026-08-23T09:59:58.406Z",
+      "sha256": "b4939498d5afaeb00f12bd517b9c687f92348d9d095e865311f18842e6080fd6",
+      "bytes": 18752,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Taurus",
+      "archivo": "plataformas/taurus.webp",
+      "pagina": "https://www.taurushq.com/",
+      "imagenOrigen": "https://www.taurushq.com/favicon.ico",
+      "capturada": "2026-08-23T09:59:59.653Z",
+      "sha256": "0480cee6c7bd62dcffa2e6159d3a39a740e0d96fb741442e0fa18020a3e5c7d2",
+      "bytes": 2460,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "Tokeny",
+      "archivo": "plataformas/tokeny.webp",
+      "pagina": "https://tokeny.com/",
+      "imagenOrigen": "https://tokeny.com/wp-content/uploads/2024/05/New-homepage_Tokeny-1024x536.png",
+      "capturada": "2026-08-23T10:00:00.293Z",
+      "sha256": "4da33c409dc4291a40dc5e9bda4205cd6755e10b5015ccf9ae3b6c035a8f14e6",
+      "bytes": 15856,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    },
+    {
+      "empresa": "tZERO",
+      "archivo": "plataformas/tzero.webp",
+      "pagina": "https://www.tzero.com/",
+      "imagenOrigen": "https://www.tzero.com/favicon.ico",
+      "capturada": "2026-08-23T10:00:01.461Z",
+      "sha256": "5a469f91baf2e460c935d75200285fc56e0da054e21235e359c12968c529ab1b",
+      "bytes": 7842,
+      "metodo": "Recurso declarado o mostrado por la página oficial y optimizado localmente."
+    }
+  ]
+}

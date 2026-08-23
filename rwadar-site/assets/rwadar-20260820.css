@@ -469,6 +469,7 @@ select option{background:var(--sup);color:var(--tx)}
   border:1px solid var(--linea);border-radius:var(--r);padding:22px;cursor:pointer;text-align:left;width:100%;
   display:flex;flex-direction:column;gap:13px;overflow:hidden;box-shadow:var(--e1);
   transition:border-color var(--rapido) var(--sal),box-shadow var(--medio) var(--sal),transform var(--medio) var(--sal)}
+.empresa-visual__abrir,.empresa-visual__comparar{display:none}
 /* el filo de color de la categoría: lo único que identifica el tipo de
    activo antes de leer nada. Encendido al acercarse. */
 .ficha::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:var(--cc);opacity:.5;
@@ -1615,34 +1616,59 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   #movilPanelRadar .movil-banner-explica b{font-size:.98rem}
   #movilPanelRadar .movil-banner-explica small{font-size:.78rem}
 
-  /* Las fichas son resúmenes; toda la evidencia permanece en el panel. */
+  /* En móvil las empresas se reconocen primero por una imagen procedente
+     de su web oficial. El nombre y dos señales de contexto siguen visibles;
+     toda la evidencia permanece en el panel que abre la fotografía. */
   #movilPanelRadar>#plataformasResultados{padding-top:26px}
   #movilPanelRadar .movil-registro-intro{display:none}
   #movilPanelRadar .fichas-f{margin-top:0;margin-bottom:7px}
   #movilPanelRadar .fichas-f .f{border-color:var(--m-hairline);background:var(--m-material);font-size:.8rem}
   #movilPanelRadar .recuento{margin:8px 0 13px;font-family:var(--body);font-size:.78rem}
-  #movilPanelRadar .rejilla{gap:0;padding-bottom:0;overflow:hidden;border:1px solid var(--m-hairline);
-    border-radius:var(--m-radius-card);background:var(--m-material)}
-  #movilPanelRadar .ficha{padding:15px 16px;border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;
-    background:transparent;box-shadow:none;gap:9px;transition:background .16s var(--m-ease)}
-  #movilPanelRadar .ficha:hover{transform:none;box-shadow:none;background:rgba(255,255,255,.025)}
-  #movilPanelRadar .ficha::before{left:0;right:auto;top:16px;bottom:16px;width:2px;height:auto;border-radius:99px}
-  #movilPanelRadar .ficha:last-child,
-  #movilPanelRadar #grid:not(.movil-resultados-abiertos)>.ficha:nth-child(6){border-bottom:0}
-  #movilPanelRadar .sigla{width:42px;height:42px;border-radius:12px;box-shadow:none}
-  #movilPanelRadar .ficha h3{font-size:1.04rem}
-  #movilPanelRadar .ficha .sub{font-size:.7rem}
-  #movilPanelRadar .ficha .nota{-webkit-line-clamp:1;font-size:.82rem;line-height:1.45}
-  #movilPanelRadar .ficha>.aval{display:none}
-  #movilPanelRadar .ficha .marcas{gap:5px}
-  #movilPanelRadar .ficha .marcas .m{font-size:.65rem;padding:4px 8px}
-  #movilPanelRadar .ficha .marcas .m:nth-child(n+3){display:none}
-  #movilPanelRadar .ficha-pie{grid-template-columns:minmax(0,1fr) auto;margin-top:1px;padding-top:9px}
-  #movilPanelRadar .verif{font-size:.68rem}
-  #movilPanelRadar .cmp{min-width:96px;min-height:44px;padding:8px 11px}
-  #movilPanelRadar .movil-ficha-abrir{position:relative;z-index:1;grid-column:1/-1;min-height:44px;margin:0 -16px -15px;
-    padding:10px 16px;border:0;border-top:1px solid var(--m-hairline);border-radius:0;background:transparent;color:var(--senal)}
-  #movilPanelRadar .movil-ficha-abrir:active{background:var(--senal-10);color:var(--senal);transform:none}
+  #movilPanelRadar .rejilla{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-bottom:0;
+    overflow:visible;border:0;border-radius:0;background:transparent}
+  #movilPanelRadar .ficha{display:block;min-width:0;min-height:0;aspect-ratio:1;padding:0;overflow:hidden;
+    border:1px solid var(--m-hairline);border-radius:18px;background:var(--noche-2);box-shadow:var(--e1);gap:0;
+    isolation:isolate;transition:border-color .16s var(--m-ease),transform .16s var(--m-ease),box-shadow .16s var(--m-ease)}
+  #movilPanelRadar .ficha:hover{transform:none;background:var(--noche-2);box-shadow:var(--e1)}
+  #movilPanelRadar .ficha:active{transform:scale(.985)}
+  #movilPanelRadar .ficha.sel{border-color:var(--senal);box-shadow:0 0 0 1px var(--senal-30),var(--e2)}
+  #movilPanelRadar .ficha::before{display:none}
+  #movilPanelRadar .ficha>.ficha-alto,
+  #movilPanelRadar .ficha>.nota,
+  #movilPanelRadar .ficha>.aval,
+  #movilPanelRadar .ficha>.marcas,
+  #movilPanelRadar .ficha>.ficha-pie{display:none!important}
+  #movilPanelRadar .empresa-visual__abrir{position:relative;display:block;width:100%;height:100%;min-height:0;padding:0;
+    overflow:hidden;border:0;border-radius:inherit;background:var(--noche-2);color:#fff;text-align:left;cursor:pointer}
+  #movilPanelRadar .empresa-visual__abrir:focus-visible{outline:3px solid var(--senal);outline-offset:-3px}
+  #movilPanelRadar .empresa-visual__imagen{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    object-position:center;filter:saturate(.94) brightness(.9);transform:scale(1.002);
+    transition:transform .3s var(--m-ease),filter .3s var(--m-ease)}
+  #movilPanelRadar .empresa-visual__abrir:active .empresa-visual__imagen{transform:scale(1.035);filter:saturate(1) brightness(.82)}
+  #movilPanelRadar .empresa-visual__sombra{position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(3,5,9,.5) 0%,rgba(3,5,9,.04) 38%,rgba(3,5,9,.92) 100%),
+    linear-gradient(90deg,rgba(3,5,9,.2),transparent 58%);pointer-events:none}
+  #movilPanelRadar .empresa-visual__categoria{position:absolute;z-index:1;top:9px;left:9px;max-width:calc(100% - 62px);
+    padding:5px 8px;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:99px;
+    background:rgba(8,10,14,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    color:#fff;font:650 .58rem/1.15 var(--body);text-overflow:ellipsis;white-space:nowrap}
+  #movilPanelRadar .empresa-visual__texto{position:absolute;z-index:1;left:10px;right:10px;bottom:30px;display:block}
+  #movilPanelRadar .empresa-visual__texto strong,#movilPanelRadar .empresa-visual__texto small{display:block}
+  #movilPanelRadar .empresa-visual__texto strong{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+    color:#fff;font:760 clamp(.79rem,3.4vw,.98rem)/1.08 var(--display);letter-spacing:-.025em;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+  #movilPanelRadar .empresa-visual__texto small{margin-top:4px;overflow:hidden;color:rgba(255,255,255,.75);
+    font:500 .57rem/1.2 var(--body);text-overflow:ellipsis;white-space:nowrap}
+  #movilPanelRadar .empresa-visual__verificada{position:absolute;z-index:1;left:10px;bottom:9px;display:flex;align-items:center;
+    gap:4px;color:#BFFFE9;font:650 .55rem/1 var(--body);text-shadow:0 1px 7px rgba(0,0,0,.8)}
+  #movilPanelRadar .empresa-visual__verificada svg{width:11px;height:11px}
+  #movilPanelRadar .empresa-visual__flecha{position:absolute;z-index:1;right:10px;bottom:7px;color:#fff;
+    font:300 1.25rem/1 var(--body);text-shadow:0 1px 7px rgba(0,0,0,.8)}
+  #movilPanelRadar .empresa-visual__comparar{position:absolute;z-index:3;display:grid;place-items:center;top:7px;right:7px;
+    width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:1px solid rgba(255,255,255,.18);
+    border-radius:99px;background:rgba(8,10,14,.7);color:#fff;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    font:700 1.12rem/1 var(--body);box-shadow:0 5px 18px -10px #000}
+  #movilPanelRadar .empresa-visual__comparar.on{border-color:var(--senal);background:var(--senal);color:#06231A}
+  #movilPanelRadar .empresa-visual__comparar:focus-visible{outline:3px solid #fff;outline-offset:2px}
   #movilPanelRadar .movil-resultados-mas{min-height:48px;margin:12px 0 24px;border-color:var(--m-hairline);
     border-radius:14px;background:var(--m-material);color:var(--tx-2)}
   #movilPanelRadar .movil-resultados-mas:active{background:var(--m-raised);color:var(--tx);transform:scale(.99)}
@@ -1720,4 +1746,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
   #movilPanelRadar .filtros-avanzados{grid-template-columns:1fr}
   #movilPanelRadar .filtros-avanzados select{grid-column:1}
   .barra-in select{grid-column:1/-1}
+  #movilPanelRadar .empresa-visual__texto small{display:none}
+  #movilPanelRadar .empresa-visual__texto strong{font-size:.9rem}
+  #movilPanelRadar .empresa-visual__verificada{font-size:.7rem}
 }

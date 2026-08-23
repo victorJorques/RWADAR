@@ -1217,7 +1217,18 @@ function renderGrid(f){
  const g=document.getElementById('grid');
  if(!f.length){g.innerHTML=`<div class="vacio"><p>El radar no detecta ninguna plataforma con estos filtros.</p><button class="f" data-accion="limpiar">Limpiar filtros</button></div>`;return}
  g.innerHTML=f.map(p=>{const i=P.indexOf(p),on=compare.includes(i);
+  const portada=String(p.n).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const compararTexto=on?`Quitar ${p.n} de la comparación`:`Añadir ${p.n} a la comparación`;
   return `<div class="ficha ${on?'sel':''} ${catClase(p)}">
+   <button type="button" class="empresa-visual__abrir" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}">
+    <img class="empresa-visual__imagen" src="/plataformas/${portada}.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
+    <span class="empresa-visual__sombra" aria-hidden="true"></span>
+    <span class="empresa-visual__categoria">${escHtml(p.cat)}</span>
+    <span class="empresa-visual__texto"><strong>${escHtml(p.n)}</strong><small>${escHtml(p.tipo)} · ${escHtml(p.reg)}</small></span>
+    <span class="empresa-visual__verificada">${okSVG}<span>Verificada</span></span>
+    <span class="empresa-visual__flecha" aria-hidden="true">›</span>
+   </button>
+   <button type="button" class="cmp empresa-visual__comparar ${on?'on':''}" data-comparar="${i}" aria-pressed="${on?'true':'false'}" aria-label="${escHtml(compararTexto)}" title="${escHtml(compararTexto)}"><span aria-hidden="true">${on?'✓':'+'}</span></button>
    <div class="ficha-alto">${siglaEl(p)}<div class="ficha-nom"><h3><button class="abrir" data-cat="${escHtml(p.cat)}" data-abrir="${i}">${escHtml(p.n)}</button></h3><div class="sub">${escHtml(p.tipo)} · ${escHtml(p.reg)}</div></div></div>
    <p class="nota">${escHtml(p.nota)}</p>
    <div class="aval">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
@@ -1301,7 +1312,11 @@ function toggleCompare(i){
  const a=compare.indexOf(i);
  if(a>-1)compare.splice(a,1);
  else{if(compare.length>=3){avisar('Puedes comparar hasta tres plataformas a la vez.');return;}compare.push(i)}
- render();requestAnimationFrame(()=>document.querySelector('[data-comparar="'+i+'"]')?.focus({preventScroll:true}));
+ render();requestAnimationFrame(()=>{
+  const boton=[...document.querySelectorAll('[data-comparar="'+i+'"]')]
+   .find(nodo=>nodo.getClientRects&&nodo.getClientRects().length);
+  if(boton)boton.focus({preventScroll:true});
+ });
 }
 function clearCompare(){compare=[];render()}
 function renderCmpBar(){
@@ -1659,7 +1674,7 @@ document.addEventListener('click',ev=>{
  if(t.closest('#snd')||t.closest('.paso'))return;
  const marca=t.closest('.cmp');
  if(marca) return marca.classList.contains('on')?Sonido.desmarcar():Sonido.marcar();
- if(t.closest('.abrir,.mm,.movil-ficha-abrir'))return Sonido.abrir();
+ if(t.closest('.abrir,.mm,.movil-ficha-abrir,.empresa-visual__abrir'))return Sonido.abrir();
  const conCat=t.closest('[data-cat]');
  if(conCat && CATMETA[conCat.dataset.cat]) return Sonido.categoria();
  if(t.closest('.cerrar')||t.id==='ovl')      return Sonido.cerrar();

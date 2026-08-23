@@ -35,7 +35,7 @@ const ORIGENES_LOCALES = [`http://127.0.0.1:${PUERTO}`, `http://localhost:${PUER
 const LIMITE_CAPTURA = 8 * 1024 * 1024;
 const CAPTURAS = process.argv.includes('--capturas');
 const TIPO = {
-  '.html': 'text/html; charset=utf-8', '.png': 'image/png',
+  '.html': 'text/html; charset=utf-8', '.png': 'image/png', '.webp': 'image/webp',
   '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml',
   '.json': 'application/json; charset=utf-8', '.csv': 'text/csv; charset=utf-8',
   '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8',

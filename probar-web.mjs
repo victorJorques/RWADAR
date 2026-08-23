@@ -33,6 +33,7 @@ const headers = lee('_headers');
 const redirecciones = lee('_redirects');
 const sw = lee('sw.js');
 const publicador = fs.readFileSync(path.join(raiz, 'rwadar-publicar.js'), 'utf8');
+const capturadorPortadas = fs.readFileSync(path.join(raiz, 'rwadar-capturar-portadas.mjs'), 'utf8');
 const sincronizador = fs.readFileSync(path.join(raiz, 'rwadar-app', 'sincronizar.js'), 'utf8');
 const servidor = fs.readFileSync(path.join(raiz, 'rwadar-servir.js'), 'utf8');
 const arrancador = fs.readFileSync(path.join(raiz, 'rwadar-arrancar.js'), 'utf8');
@@ -1139,6 +1140,55 @@ prueba('el buscador móvil es un panel principal y las fichas tienen un CTA prop
   /class="movil-busqueda-cab"/.test(html) && /Encuentra una plataforma/.test(html) &&
   /class="movil-ficha-abrir" data-abrir=/.test(js) &&
   /min-height\s*:\s*48px/i.test(declaracionesCSS(cssMovil, '.movil-ficha-abrir').join(';')));
+const plataformasFuente = arrayDe(js, 'P');
+const slugPortada = valor => String(valor).normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const rutasPortada = plataformasFuente.map(p => `/plataformas/${slugPortada(p.n)}.webp`);
+const manifiestoPortadas = JSON.parse(lee('plataformas/fuentes.json'));
+const entradasPortadas = manifiestoPortadas.plataformas || [];
+const portadasPorEmpresa = new Map(entradasPortadas.map(x => [x?.empresa, x]));
+const botonesEmpresaVisual = etiquetasInicio.filter(e => e[1].toLowerCase() === 'button' &&
+  (atributoHTML(e[2], 'class') || '').split(/\s+/).includes('empresa-visual__abrir'));
+const imagenesEmpresaVisual = etiquetasInicio.filter(e => e[1].toLowerCase() === 'img' &&
+  (atributoHTML(e[2], 'class') || '').split(/\s+/).includes('empresa-visual__imagen'));
+prueba('las 26 empresas usan portadas WebP locales y trazables a su página oficial',
+  rutasPortada.length === 26 && new Set(rutasPortada).size === 26 &&
+  entradasPortadas.length === 26 && portadasPorEmpresa.size === 26 &&
+  new Set(entradasPortadas.map(x => x?.archivo)).size === 26 &&
+  rutasPortada.every((ruta, i) => {
+    const plataforma = plataformasFuente[i];
+    const entrada = portadasPorEmpresa.get(plataforma.n);
+    const bytes = fs.readFileSync(path.join(sitio, ...ruta.slice(1).split('/')));
+    const sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
+    return entrada && !entrada.error && entrada.empresa === plataforma.n &&
+      entrada.archivo === ruta.slice(1) && /^https:\/\//.test(entrada.pagina) &&
+      /^https:\/\//.test(entrada.imagenOrigen) && entrada.bytes === bytes.length &&
+      entrada.sha256 === sha256 && /^[a-f0-9]{64}$/.test(entrada.sha256) &&
+      bytes.length > 1024 && bytes.subarray(0,4).toString('ascii') === 'RIFF' &&
+      bytes.subarray(8,12).toString('ascii') === 'WEBP';
+  }));
+prueba('cada portada móvil es el botón accesible que abre su ficha y carga la imagen de forma eficiente',
+  botonesEmpresaVisual.length === 26 && imagenesEmpresaVisual.length === 26 &&
+  botonesEmpresaVisual.every((b, i) => atributoHTML(b[2], 'type') === 'button' &&
+    atributoHTML(b[2], 'data-abrir') === String(i) &&
+    atributoHTML(b[2], 'aria-label') === `Abrir la ficha de ${plataformasFuente[i].n}` &&
+    atributoHTML(imagenesEmpresaVisual[i]?.[2] || '', 'src') === rutasPortada[i]) &&
+  imagenesEmpresaVisual.every(img => atributoHTML(img[2], 'alt') === '' &&
+    atributoHTML(img[2], 'width') === '720' && atributoHTML(img[2], 'height') === '720' &&
+    atributoHTML(img[2], 'decoding') === 'async' &&
+    atributoHTML(img[2], 'loading') === 'lazy'));
+prueba('la galería visual solo sustituye las fichas en móvil y mantiene dos columnas táctiles',
+  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.empresa-visual__abrir').join(';')) &&
+  /grid-template-columns\s*:\s*repeat\(2,minmax\(0,1fr\)\)/i.test(
+    declaracionesCSS(cssMovil, '#movilPanelRadar .rejilla').join(';')) &&
+  /display\s*:\s*block/i.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__abrir').join(';')) &&
+  /display\s*:\s*none!important/i.test(declaracionesCSS(cssMovil, '#movilPanelRadar .ficha>.ficha-alto').join(';')) &&
+  /width\s*:\s*44px/i.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__comparar').join(';')) &&
+  /height\s*:\s*44px/i.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__comparar').join(';')));
+prueba('comparar restaura el foco al control visible tras reconstruir las fichas',
+  js.includes(`const boton=[...document.querySelectorAll('[data-comparar="'+i+'"]')]`) &&
+  js.includes('.find(nodo=>nodo.getClientRects&&nodo.getClientRects().length);') &&
+  js.includes('if(boton)boton.focus({preventScroll:true});'));
 prueba('las superficies nuevas solo aparecen dentro de la interfaz móvil',
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-banner-explica').join(';')) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-busqueda-cab').join(';')) &&
@@ -1271,7 +1321,8 @@ prueba('las emisiones se revalidan desde Supabase sin vaciar la copia ante un fa
 
 const armazon = arrayConstante(sw, 'ARMAZON');
 const recursosCriticos = ['/', '/privacidad', scripts[0][1], estilos[0][1],
-  '/assets/privacidad-20260820.css', '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src)];
+  '/assets/privacidad-20260820.css', '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src),
+  ...rutasPortada];
 const existeRutaArmazon = ruta => {
   if (ruta === '/') return fs.existsSync(path.join(sitio, 'index.html'));
   if (ruta === '/privacidad') return fs.existsSync(path.join(sitio, 'privacidad.html'));
@@ -1280,6 +1331,9 @@ const existeRutaArmazon = ruta => {
 prueba('el armazón PWA contiene una sola vez toda la interfaz crítica que declara la portada',
   armazon.length === new Set(armazon).size && recursosCriticos.every(ruta => armazon.includes(ruta)) &&
   armazon.every(ruta => /^\/(?:[^?#]*)$/.test(ruta) && existeRutaArmazon(ruta)));
+prueba('las 26 portadas forman parte del precache de la primera instalación',
+  armazon.filter(ruta => /^\/plataformas\/.+\.webp$/.test(ruta)).length === 26 &&
+  rutasPortada.every(ruta => armazon.includes(ruta)));
 prueba('el armazón no persiste el worker, APIs, sesiones ni respuestas dinámicas',
   !armazon.includes('/sw.js') &&
   armazon.every(ruta => !/(?:supabase|\/auth\/|\/rest\/|access_token|refresh_token|rwadar\.csv)/i.test(ruta)));
@@ -1344,15 +1398,20 @@ prueba('el árbol generado existe y usa el JavaScript adelgazado con huella real
   new RegExp(`/assets/rwadar-20260820\\.${huellaJSIndependiente}\\.js$`).test(recursoJSPublicado));
 const archivosPublicados = listarArchivosRegulares(publicado);
 const assetsPublicados = archivosPublicados.filter(x=>x.startsWith('assets/'));
+const portadasPublicadas = archivosPublicados.filter(x=>/^plataformas\/.+\.webp$/.test(x));
 prueba('todo asset desplegable lleva su huella de contenido y no queda el nombre estable',
   assetsPublicados.length === 4 && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
   !archivosPublicados.some(x=>/^assets\/(?:error|privacidad|rwadar)-20260820\.(?:css|js)$/.test(x)));
+prueba('el paquete desplegable incluye las 26 portadas y su manifiesto de procedencia',
+  portadasPublicadas.length === 26 &&
+  archivosPublicados.includes('plataformas/fuentes.json') &&
+  rutasPortada.every(ruta => portadasPublicadas.includes(ruta.slice(1))));
 prueba('HTML y service worker apuntan al mismo JavaScript versionado',
   htmlPublicado.includes(recursoJSPublicado) && swPublicado.includes(recursoJSPublicado));
 prueba('el worker publicado precachea los assets con huella que realmente usan ambas páginas',
   recursoJSPublicado && hojasPublicadas.length === 2 &&
   ['/', '/privacidad', recursoJSPublicado, ...hojasPublicadas,
-    '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src)]
+    '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src), ...rutasPortada]
     .every(ruta => armazonPublicado.includes(ruta)) &&
   armazonPublicado.length === new Set(armazonPublicado).size &&
   !armazonPublicado.some(ruta => /^\/assets\/(?:privacidad|rwadar)-20260820\.(?:css|js)$/.test(ruta)));
@@ -1381,13 +1440,43 @@ prueba('un cambio de código o datos invalida nombre de asset y VERSION',
 console.log('\n=== PUBLICADOR, SINCRONIZADOR Y SERVIDOR ===');
 prueba('el publicador exige exactamente un modo explícito',
   /modos\.length !== 1/.test(publicador) && /--local \| --preview \| --produccion/.test(publicador));
-prueba('Netlify CLI está fijado a una versión', /NETLIFY_VERSION = '\d+\.\d+\.\d+'/.test(publicador));
+prueba('Wrangler está fijado a una versión exacta', /WRANGLER_VERSION = '\d+\.\d+\.\d+'/.test(publicador));
+prueba('el publicador usa ComSpec en Windows y evita el EINVAL de ejecutar npx.cmd directamente',
+  /process\.env\.ComSpec \|\| 'cmd\.exe'/.test(publicador) &&
+  /\['\/d', '\/s', '\/c', 'npx\.cmd'\]/.test(publicador) &&
+  /\.\.\.prefijoWrangler/.test(publicador));
 prueba('el origen Cloudflare está fijado y se valida como origen HTTPS exacto',
   ORIGEN_PUBLICO === 'https://rwadar.pages.dev' && ORIGEN_LEGADO === 'https://rwadar.netlify.app' &&
   PROYECTO_CLOUDFLARE === 'rwadar' && comprobarOrigenPublico() === ORIGEN_PUBLICO);
-prueba('solo se despliega rwadar-publicado', /'--dir', SALIDA/.test(publicador));
+prueba('solo se despliega rwadar-publicado al proyecto Cloudflare declarado',
+  /'pages', 'deploy', SALIDA/.test(publicador) && /'--project-name', PROYECTO_CLOUDFLARE/.test(publicador));
+prueba('producción usa main, preview usa una rama separada y no queda despliegue Netlify',
+  /const rama = preview \? 'revision' : 'main'/.test(publicador) &&
+  /'--branch', rama/.test(publicador) && !/netlify-cli|\bnetlify\s*,\s*args/.test(publicador));
 prueba('la salida se construye desde lista cerrada y nunca por copia recursiva',
   /ARCHIVOS_PUBLICABLES/.test(publicador) && /fs\.copyFileSync/.test(publicador) && !/fs\.cpSync/.test(publicador));
+prueba('el publicador bloquea una plataforma sin portada WebP local y publicable',
+  /vm\.runInContext\('P\.map\(plataforma => plataforma\.n\)'/.test(publicador) &&
+  /function validarPortadasPlataformas\(contenido, nombres\)/.test(publicador) &&
+  /const esperadas = nombres\.map\(nombre => `\/plataformas\/\$\{slugPortada\(nombre\)\}\.webp`\)/.test(publicador) &&
+  /ruta !== esperadas\[i\]/.test(publicador) &&
+  /rutas\.length !== fichas/.test(publicador) && /new Set\(rutas\)\.size !== fichas/.test(publicador) &&
+  /ARCHIVOS_PUBLICABLES\.includes\(relativa\)/.test(publicador) &&
+  /fs\.existsSync\(archivo\)/.test(publicador) && /RIFF/.test(publicador) && /WEBP/.test(publicador) &&
+  publicador.indexOf('validarPortadasPlataformas(capturado.grid, nombresPlataformas)') > -1 &&
+  publicador.indexOf('validarPortadasPlataformas(capturado.grid, nombresPlataformas)') <
+    publicador.indexOf("html = inyectar(html, 'grid'"));
+prueba('el capturador de portadas bloquea SSRF y limita cada respuesta mientras la lee',
+  /async function urlPublicaHttps\(valor\)/.test(capturadorPortadas) &&
+  /url\.protocol !== 'https:'/.test(capturadorPortadas) && /dns\.lookup/.test(capturadorPortadas) &&
+  /ipNoPublica/.test(capturadorPortadas) && /redirect: 'manual'/.test(capturadorPortadas) &&
+  /MAX_REDIRECCIONES/.test(capturadorPortadas) && /res\.body\.getReader\(\)/.test(capturadorPortadas) &&
+  /total > maximo/.test(capturadorPortadas));
+prueba('el capturador conserva el encuadre y sustituye cada WebP solo tras validar un temporal',
+  /force_original_aspect_ratio=decrease/.test(capturadorPortadas) &&
+  /scale=720:720/.test(capturadorPortadas) && !/crop=720:480/.test(capturadorPortadas) &&
+  /temporalSalida/.test(capturadorPortadas) && /WebP convertido no válido/.test(capturadorPortadas) &&
+  /await fs\.rename\(temporalSalida, destino\)/.test(capturadorPortadas));
 prueba('el publicador genera y valida JS/CSS adelgazados',
   /adelgazarJS/.test(publicador) && /adelgazarCSS/.test(publicador) && /new Function\(reducido\)/.test(publicador));
 prueba('no existe promoción ni despliegue alternativo tras un fallo',
@@ -1423,6 +1512,10 @@ prueba('guardar capturas requiere flag, origen local, PNG y límite',
   /ORIGENES_LOCALES\.includes\(origen\)/.test(servidor) && /firmaPng/.test(servidor) && /LIMITE_CAPTURA/.test(servidor));
 prueba('el servidor local replica la CSP de worker/manifest',
   /worker-src 'self'/.test(servidor) && /manifest-src 'self'/.test(servidor));
+prueba('servidor, worker y CDN tratan las portadas como imágenes estáticas propias',
+  /'\.webp': 'image\/webp'/.test(servidor) &&
+  /url\.pathname\.startsWith\('\/plataformas\/'\)/.test(sw) &&
+  /\/plataformas\/\*[\s\S]{0,120}max-age=0, must-revalidate/.test(headers));
 
 console.log('\n=== PRIVACIDAD, ÍNDICE Y BLOQUEOS ===');
 prueba('la privacidad declara el acuerdo pendiente sin conservar un blocker remoto',
