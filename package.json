@@ -11,5 +11,8 @@
     "test:mobile": "npm --prefix rwadar-movil test",
     "test:tools": "node --check rwadar-arrancar.js && node --check rwadar-publicar.js && node --check rwadar-publicacion-segura.js && node --check rwadar-capturar-portadas.mjs && node --check rwadar-app/sincronizar.js && node --check rwadar-adelgazar.js && node --check rwadar-servir.js"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
 }

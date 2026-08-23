@@ -1167,6 +1167,13 @@ prueba('las 26 empresas usan portadas WebP locales y trazables a su página ofic
       bytes.length > 1024 && bytes.subarray(0,4).toString('ascii') === 'RIFF' &&
       bytes.subarray(8,12).toString('ascii') === 'WEBP';
   }));
+prueba('las portadas explican qué muestran y conservan el encuadre editorial elegido',
+  entradasPortadas.every(entrada =>
+    /^(Activo real|Hito oficial|Imagen corporativa oficial|Ilustración 3D oficial|Interfaz real|Producto oficial|Producto real|Proyecto e interfaz real|Render oficial del activo)$/.test(entrada?.tipoVisual || '') &&
+    typeof entrada?.descripcionVisual === 'string' && entrada.descripcionVisual.length >= 28 &&
+    ['cover', 'contain'].includes(entrada?.encuadre) && /^\d+% \d+%$/.test(entrada?.foco || '') &&
+    /no implica afiliación, patrocinio ni recomendación de inversión/.test(entrada?.uso || '') &&
+    Number(entrada?.revisionPortada) >= 5));
 prueba('cada portada móvil es el botón accesible que abre su ficha y carga la imagen de forma eficiente',
   botonesEmpresaVisual.length === 26 && imagenesEmpresaVisual.length === 26 &&
   botonesEmpresaVisual.every((b, i) => atributoHTML(b[2], 'type') === 'button' &&
@@ -1477,6 +1484,15 @@ prueba('el capturador conserva el encuadre y sustituye cada WebP solo tras valid
   /scale=720:720/.test(capturadorPortadas) && !/crop=720:480/.test(capturadorPortadas) &&
   /temporalSalida/.test(capturadorPortadas) && /WebP convertido no válido/.test(capturadorPortadas) &&
   /await fs\.rename\(temporalSalida, destino\)/.test(capturadorPortadas));
+prueba('la selección editorial cubre las 26 empresas y falla cerrada si una fuente curada no responde',
+  /const PORTADAS_EDITORIALES = Object\.freeze\(/.test(capturadorPortadas) &&
+  /Object\.keys\(PORTADAS_EDITORIALES\)\.map\(empresa => \[empresa, 5\]\)/.test(capturadorPortadas) &&
+  /if \(PORTADAS_EDITORIALES\[p\.n\]\) \{\s*throw new Error/.test(capturadorPortadas) &&
+  !/favicon[^\n]+PORTADAS_EDITORIALES/i.test(capturadorPortadas));
+prueba('las fotografías móviles se muestran vivas sin perder legibilidad en la capa de texto',
+  /saturate\(1\.06\)/.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__imagen').join(';')) &&
+  /contrast\(1\.035\)/.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__imagen').join(';')) &&
+  /rgba\(3,5,9,\.92\)/.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__sombra').join(';')));
 prueba('el publicador genera y valida JS/CSS adelgazados',
   /adelgazarJS/.test(publicador) && /adelgazarCSS/.test(publicador) && /new Function\(reducido\)/.test(publicador));
 prueba('no existe promoción ni despliegue alternativo tras un fallo',

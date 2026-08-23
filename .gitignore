@@ -16,6 +16,7 @@
 !/.github/
 !/README.md
 !/package.json
+!/package-lock.json
 !/probar-web.mjs
 !/PLAN-GIT-Y-RESPALDOS.md
 !/SECURITY.md
