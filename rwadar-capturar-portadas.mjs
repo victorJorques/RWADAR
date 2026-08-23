@@ -27,11 +27,11 @@ const MAX_PIXELES = 48_000_000;
 const MAX_LADO = 10_000;
 const MAX_REDIRECCIONES = 5;
 
-/* Selección editorial comprobada el 23-08-2026 en páginas oficiales. No usa
-   favicons, bancos de imágenes ni recursos generados por RWAdar: cada
-   miniatura muestra un activo, proyecto, producto o interfaz identificable.
-   La copia local evita rastreo y cambios silenciosos del proveedor; el
-   manifiesto conserva procedencia, encuadre y una descripción auditable. */
+/* Catálogo de páginas e imágenes oficiales comprobado el 23-08-2026. La
+   selección activa se compone más abajo: conservamos una fotografía oficial
+   cuando explica por sí sola el activo y usamos una representación editorial
+   propia cuando la web solo ofrece pantallas, precios o diagramas. Nunca se
+   mezclan ambas procedencias en el manifiesto. */
 const PORTADAS_EDITORIALES = Object.freeze({
   ADDX: {
     pagina: 'https://addx.co/en/how-to-start/',
@@ -217,14 +217,61 @@ const PORTADAS_EDITORIALES = Object.freeze({
   },
 });
 
+/* Una escena distinta por empresa. Son explicaciones visuales del tipo de
+   activo, no fotografías de un proyecto concreto ni material promocional de
+   la plataforma. Los maestros viven fuera del árbol publicable; únicamente
+   sale el WebP 720×720 sin metadatos. */
+const PORTADAS_GENERADAS = Object.freeze({
+  ADDX: { archivoFuente: 'addx.webp', descripcionVisual: 'Cartera de empresas privadas convertida en participaciones digitales.' },
+  Archax: { archivoFuente: 'archax.webp', descripcionVisual: 'Valores privados y bonos dentro de una infraestructura de mercado institucional.' },
+  'Backed Finance': { archivoFuente: 'backed-finance.webp', descripcionVisual: 'Cesta de sectores empresariales convertida en unidades digitales respaldadas.' },
+  Blocksquare: { archivoFuente: 'blocksquare.webp', descripcionVisual: 'Edificio residencial y comercial completo representado mediante participaciones digitales.' },
+  Centrifuge: { archivoFuente: 'centrifuge.webp', descripcionVisual: 'Inventario productivo financiado mediante un préstamo respaldado por activos.' },
+  Courtyard: { archivoFuente: 'courtyard.webp', descripcionVisual: 'Coleccionables físicos protegidos en una cámara y representados digitalmente.' },
+  Figure: { archivoFuente: 'figure.webp', descripcionVisual: 'Vivienda completa vinculada a un crédito hipotecario digital.' },
+  Fireblocks: { archivoFuente: 'fireblocks.webp', descripcionVisual: 'Bóveda institucional que custodia y protege distintos activos digitales.' },
+  'Franklin Templeton': { archivoFuente: 'franklin-templeton.webp', descripcionVisual: 'Fondo monetario respaldado por deuda pública de corto plazo en custodia.' },
+  INX: { archivoFuente: 'inx.webp', descripcionVisual: 'Participación empresarial transferida dentro de un mercado digital regulado.' },
+  'Maple Finance': { archivoFuente: 'maple-finance.webp', descripcionVisual: 'Préstamo institucional respaldado por activos digitales hacia una empresa real.' },
+  Midas: { archivoFuente: 'midas.webp', descripcionVisual: 'Cesta diversificada de bonos soberanos y corporativos convertida en fondo.' },
+  'Ondo Finance': { archivoFuente: 'ondo-finance.webp', descripcionVisual: 'Deuda pública y fondos cotizados disponibles mediante unidades digitales.' },
+  OpenEden: { archivoFuente: 'openeden.webp', descripcionVisual: 'Letras del Tesoro protegidas en custodia y representadas en cadena.' },
+  Reental: { archivoFuente: 'reental.webp', descripcionVisual: 'Promoción residencial mediterránea completa dividida en participaciones digitales.' },
+  Republic: { archivoFuente: 'republic.webp', descripcionVisual: 'Empresa privada de tecnología limpia financiada mediante participaciones digitales.' },
+  Securitize: { archivoFuente: 'securitize.webp', descripcionVisual: 'Participaciones de un fondo institucional registradas en una infraestructura digital.' },
+  Spiko: { archivoFuente: 'spiko.webp', descripcionVisual: 'Tesorería empresarial y deuda pública de corto plazo dentro de un fondo monetario.' },
+  Superstate: { archivoFuente: 'superstate.webp', descripcionVisual: 'Participaciones de deuda pública anotadas directamente en un libro mayor digital.' },
+  Swarm: { archivoFuente: 'swarm.webp', descripcionVisual: 'Acción y bono representados como activos digitales dentro de un mercado seguro.' },
+  Taurus: { archivoFuente: 'taurus.webp', descripcionVisual: 'Bóveda bancaria conectada con la emisión y custodia de activos digitales.' },
+  Tokeny: { archivoFuente: 'tokeny.webp', descripcionVisual: 'Puerta de identidad y cumplimiento que admite únicamente unidades verificadas.' },
+  tZERO: { archivoFuente: 'tzero.webp', descripcionVisual: 'Participaciones de una empresa privada dentro de un mercado secundario digital.' },
+});
+
+const PORTADAS_ACTIVAS = Object.freeze(Object.fromEntries(
+  Object.entries(PORTADAS_EDITORIALES).map(([empresa, portada]) => {
+    const generada = PORTADAS_GENERADAS[empresa];
+    return [empresa, generada ? {
+      ...portada,
+      ...generada,
+      imagen: null,
+      tipoVisual: 'Representación editorial generada',
+      origenVisual: 'representacion-editorial-generada',
+      encuadre: 'cover',
+      focoX: .5,
+      focoY: .5,
+    } : { ...portada, origenVisual: 'fuente-oficial' }];
+  }),
+));
 const PORTADAS_OFICIALES = Object.freeze(Object.fromEntries(
-  Object.entries(PORTADAS_EDITORIALES).map(([empresa, portada]) => [empresa, portada.imagen]),
+  Object.entries(PORTADAS_ACTIVAS)
+    .filter(([, portada]) => portada.origenVisual === 'fuente-oficial')
+    .map(([empresa, portada]) => [empresa, portada.imagen]),
 ));
 const PAGINAS_PORTADA = Object.freeze(Object.fromEntries(
-  Object.entries(PORTADAS_EDITORIALES).map(([empresa, portada]) => [empresa, portada.pagina]),
+  Object.entries(PORTADAS_ACTIVAS).map(([empresa, portada]) => [empresa, portada.pagina]),
 ));
 const REVISIONES_MANUALES = Object.freeze(Object.fromEntries(
-  Object.keys(PORTADAS_EDITORIALES).map(empresa => [empresa, 5]),
+  Object.keys(PORTADAS_ACTIVAS).map(empresa => [empresa, 6]),
 ));
 
 let anteriores = new Map();
@@ -421,7 +468,7 @@ async function convertirWebp(bytes, destino, carpetaTemporal, empresa) {
     if (!ancho || !alto || ancho > MAX_LADO || alto > MAX_LADO || ancho * alto > MAX_PIXELES) {
       throw new Error(`dimensiones no permitidas: ${ancho}×${alto}`);
     }
-    const portada = PORTADAS_EDITORIALES[empresa] || {};
+    const portada = PORTADAS_ACTIVAS[empresa] || {};
     const focoX = Math.min(1, Math.max(0, Number(portada.focoX ?? .5)));
     const focoY = Math.min(1, Math.max(0, Number(portada.focoY ?? .5)));
     const filtroContain = [
@@ -438,7 +485,7 @@ async function convertirWebp(bytes, destino, carpetaTemporal, empresa) {
     await ejecutar('ffmpeg', [
       '-hide_banner', '-loglevel', 'error', '-y', '-i', temporal,
       '-filter_complex', filtro, '-map', '[out]', '-frames:v', '1',
-      '-an', '-c:v', 'libwebp', '-quality', '78', '-compression_level', '6',
+      '-an', '-map_metadata', '-1', '-c:v', 'libwebp', '-quality', '84', '-compression_level', '6',
       temporalSalida,
     ]);
     const finales = await fs.readFile(temporalSalida);
@@ -467,13 +514,18 @@ async function plataformas() {
 async function una(p, carpetaTemporal) {
   const nombreArchivo = `${slug(p.n)}.webp`;
   const destino = path.join(SALIDA, nombreArchivo);
-  const portada = PORTADAS_EDITORIALES[p.n] || {};
+  const portada = PORTADAS_ACTIVAS[p.n] || {};
+  const generada = PORTADAS_GENERADAS[p.n] || null;
+  const esGenerada = portada.origenVisual === 'representacion-editorial-generada';
   const metadatosEditoriales = {
     tipoVisual: portada.tipoVisual || 'Imagen oficial',
     descripcionVisual: portada.descripcionVisual || 'Imagen publicada por la página oficial de la empresa.',
     encuadre: portada.encuadre || 'contain',
     foco: `${Math.round(Number(portada.focoX ?? .5) * 100)}% ${Math.round(Number(portada.focoY ?? .5) * 100)}%`,
-    uso: 'Miniatura editorial informativa; no implica afiliación, patrocinio ni recomendación de inversión.',
+    origenVisual: portada.origenVisual || 'fuente-oficial',
+    uso: esGenerada
+      ? `Representación editorial creada por RWAdar para explicar ${p.cat.toLowerCase()}. No muestra un activo concreto de ${p.n} ni implica afiliación, patrocinio o recomendación de inversión.`
+      : 'Miniatura editorial informativa procedente de una fuente oficial; no implica afiliación, patrocinio ni recomendación de inversión.',
   };
   const conservar = async observacion => {
     const anterior = anteriores.get(p.n) || {};
@@ -492,23 +544,60 @@ async function una(p, carpetaTemporal) {
       bytesFinales = await fs.readFile(destino);
     }
     const sha256 = crypto.createHash('sha256').update(bytesFinales).digest('hex');
+    const procedencia = esGenerada ? {
+      pagina: null,
+      paginaReferencia: PAGINAS_PORTADA[p.n] || p.web,
+      imagenOrigen: null,
+      creador: 'RWAdar',
+      herramienta: 'ImageGen integrado de Codex',
+    } : {
+      pagina: PAGINAS_PORTADA[p.n] || anterior.pagina || p.web,
+      imagenOrigen: PORTADAS_OFICIALES[p.n] || anterior.imagenOrigen || p.web,
+    };
     return {
       empresa: p.n,
       archivo: `plataformas/${nombreArchivo}`,
-      pagina: PAGINAS_PORTADA[p.n] || anterior.pagina || p.web,
-      imagenOrigen: PORTADAS_OFICIALES[p.n] || anterior.imagenOrigen || p.web,
+      ...procedencia,
       capturada: anterior.sha256 === sha256 && anterior.capturada ? anterior.capturada : estado.mtime.toISOString(),
       sha256,
       bytes: bytesFinales.length,
-      metodo: 'Recurso observado en la página oficial y optimizado localmente.',
+      metodo: esGenerada
+        ? 'Representación editorial generada para RWAdar y optimizada localmente sin metadatos.'
+        : 'Recurso observado en la página oficial y optimizado localmente.',
       ...metadatosEditoriales,
       ...(revisionDeseada ? { revisionPortada: revisionDeseada } : {}),
       conservada: true,
       ...(observacion ? { observacion } : {}),
     };
   };
-  if (!FORZAR) {
+  const anterior = anteriores.get(p.n) || {};
+  if (!FORZAR && (!esGenerada || Number(anterior.revisionPortada || 0) >= Number(REVISIONES_MANUALES[p.n] || 0))) {
     try { return await conservar(); } catch {}
+  }
+
+  if (esGenerada) {
+    const fuente = path.join(RAIZ, 'rwadar-editorial-source', generada.archivoFuente);
+    const bytes = await fs.readFile(fuente);
+    if (bytes.length < 1_024 || bytes.length > MAX_BYTES) {
+      throw new Error(`maestro editorial con tamaño no permitido: ${bytes.length}`);
+    }
+    await convertirWebp(bytes, destino, carpetaTemporal, p.n);
+    const bytesFinales = await fs.readFile(destino);
+    return {
+      empresa: p.n,
+      archivo: `plataformas/${nombreArchivo}`,
+      pagina: null,
+      paginaReferencia: PAGINAS_PORTADA[p.n] || p.web,
+      imagenOrigen: null,
+      creador: 'RWAdar',
+      herramienta: 'ImageGen integrado de Codex',
+      capturada: new Date().toISOString(),
+      sha256: crypto.createHash('sha256').update(bytesFinales).digest('hex'),
+      bytes: bytesFinales.length,
+      metodo: 'Representación editorial generada para RWAdar y optimizada localmente sin metadatos.',
+      ...metadatosEditoriales,
+      revisionPortada: REVISIONES_MANUALES[p.n],
+    };
   }
 
   const recursoLocal = RECURSOS_LOCALES.get(p.n);
@@ -566,7 +655,7 @@ async function una(p, carpetaTemporal) {
       };
     } catch (e) { errores.push(`${candidato}: ${e.message}`); }
   }
-  if (PORTADAS_EDITORIALES[p.n]) {
+  if (PORTADAS_ACTIVAS[p.n]) {
     throw new Error(errores.length ? errores.join(' | ') : 'la portada editorial oficial no se pudo recapturar');
   }
   try {
@@ -602,7 +691,7 @@ async function obrero() {
 try {
   await Promise.all(Array.from({ length: 3 }, obrero));
   resultados.sort((a, b) => a.empresa.localeCompare(b.empresa, 'es'));
-  const criterio = 'Activo, proyecto, producto o interfaz identificable mostrado por la web oficial de cada empresa; copia local cuadrada optimizada sin rastreo externo y con procedencia auditable.';
+  const criterio = 'Una portada completa por empresa: fotografía oficial cuando explica el activo o representación editorial propia cuando la web solo ofrece pantallas, precios o diagramas; procedencia discriminada y copia WebP local sin metadatos ni rastreo externo.';
   const limpiarEstado = lista => lista.map(({ conservada: _conservada, ...entrada }) => entrada);
   const resultadosPublicos = limpiarEstado(resultados);
   const anterioresPublicos = limpiarEstado(manifiestoAnterior?.plataformas || []);

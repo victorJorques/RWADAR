@@ -23,6 +23,7 @@
 
 # El sitio publicable y las herramientas que lo construyen
 !/rwadar-site/
+!/rwadar-editorial-source/
 !/rwadar-app/
 !/rwadar-movil/
 !/rwadar-arrancar.js

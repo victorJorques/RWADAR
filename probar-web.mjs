@@ -1147,13 +1147,20 @@ const rutasPortada = plataformasFuente.map(p => `/plataformas/${slugPortada(p.n)
 const manifiestoPortadas = JSON.parse(lee('plataformas/fuentes.json'));
 const entradasPortadas = manifiestoPortadas.plataformas || [];
 const portadasPorEmpresa = new Map(entradasPortadas.map(x => [x?.empresa, x]));
+const portadasGeneradas = entradasPortadas.filter(x => x?.origenVisual === 'representacion-editorial-generada');
+const portadasOficiales = entradasPortadas.filter(x => x?.origenVisual === 'fuente-oficial');
+const bloqueGeneradasMovil = js.match(/const PORTADAS_GENERADAS_MOVIL=new Set\(\[([\s\S]*?)\]\);/);
+const nombresGeneradasMovil = bloqueGeneradasMovil
+  ? vm.runInNewContext(`[${bloqueGeneradasMovil[1]}]`, Object.create(null), { timeout: 1_000 }) : [];
 const botonesEmpresaVisual = etiquetasInicio.filter(e => e[1].toLowerCase() === 'button' &&
   (atributoHTML(e[2], 'class') || '').split(/\s+/).includes('empresa-visual__abrir'));
 const imagenesEmpresaVisual = etiquetasInicio.filter(e => e[1].toLowerCase() === 'img' &&
   (atributoHTML(e[2], 'class') || '').split(/\s+/).includes('empresa-visual__imagen'));
-prueba('las 26 empresas usan portadas WebP locales y trazables a su página oficial',
+prueba('las 26 empresas usan portadas WebP locales con procedencia discriminada y hash verificable',
   rutasPortada.length === 26 && new Set(rutasPortada).size === 26 &&
   entradasPortadas.length === 26 && portadasPorEmpresa.size === 26 &&
+  portadasGeneradas.length === 23 && portadasOficiales.length === 3 &&
+  new Set(entradasPortadas.map(x => x?.sha256)).size === 26 &&
   new Set(entradasPortadas.map(x => x?.archivo)).size === 26 &&
   rutasPortada.every((ruta, i) => {
     const plataforma = plataformasFuente[i];
@@ -1161,29 +1168,45 @@ prueba('las 26 empresas usan portadas WebP locales y trazables a su página ofic
     const bytes = fs.readFileSync(path.join(sitio, ...ruta.slice(1).split('/')));
     const sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
     return entrada && !entrada.error && entrada.empresa === plataforma.n &&
-      entrada.archivo === ruta.slice(1) && /^https:\/\//.test(entrada.pagina) &&
-      /^https:\/\//.test(entrada.imagenOrigen) && entrada.bytes === bytes.length &&
+      entrada.archivo === ruta.slice(1) && entrada.bytes === bytes.length &&
       entrada.sha256 === sha256 && /^[a-f0-9]{64}$/.test(entrada.sha256) &&
+      (entrada.origenVisual === 'fuente-oficial'
+        ? /^https:\/\//.test(entrada.pagina) && /^https:\/\//.test(entrada.imagenOrigen) &&
+          entrada.paginaReferencia == null && entrada.creador == null
+        : entrada.origenVisual === 'representacion-editorial-generada' && entrada.pagina === null &&
+          entrada.imagenOrigen === null && /^https:\/\//.test(entrada.paginaReferencia) &&
+          entrada.creador === 'RWAdar' && /ImageGen/.test(entrada.herramienta || '')) &&
       bytes.length > 1024 && bytes.subarray(0,4).toString('ascii') === 'RIFF' &&
       bytes.subarray(8,12).toString('ascii') === 'WEBP';
   }));
+prueba('el distintivo móvil coincide exactamente con las 23 portadas generadas del manifiesto',
+  nombresGeneradasMovil.length === 23 && new Set(nombresGeneradasMovil).size === 23 &&
+  [...nombresGeneradasMovil].sort().join('|') === portadasGeneradas.map(x => x.empresa).sort().join('|'));
 prueba('las portadas explican qué muestran y conservan el encuadre editorial elegido',
   entradasPortadas.every(entrada =>
-    /^(Activo real|Hito oficial|Imagen corporativa oficial|Ilustración 3D oficial|Interfaz real|Producto oficial|Producto real|Proyecto e interfaz real|Render oficial del activo)$/.test(entrada?.tipoVisual || '') &&
+    /^(Activo real|Representación editorial generada|Render oficial del activo)$/.test(entrada?.tipoVisual || '') &&
     typeof entrada?.descripcionVisual === 'string' && entrada.descripcionVisual.length >= 28 &&
     ['cover', 'contain'].includes(entrada?.encuadre) && /^\d+% \d+%$/.test(entrada?.foco || '') &&
-    /no implica afiliación, patrocinio ni recomendación de inversión/.test(entrada?.uso || '') &&
-    Number(entrada?.revisionPortada) >= 5));
+    /(?:no|ni) implica afiliación, patrocinio (?:ni|o) recomendación de inversión/i.test(entrada?.uso || '') &&
+    Number(entrada?.revisionPortada) >= 6));
 prueba('cada portada móvil es el botón accesible que abre su ficha y carga la imagen de forma eficiente',
   botonesEmpresaVisual.length === 26 && imagenesEmpresaVisual.length === 26 &&
   botonesEmpresaVisual.every((b, i) => atributoHTML(b[2], 'type') === 'button' &&
     atributoHTML(b[2], 'data-abrir') === String(i) &&
-    atributoHTML(b[2], 'aria-label') === `Abrir la ficha de ${plataformasFuente[i].n}` &&
+    atributoHTML(b[2], 'aria-label') === `Abrir la ficha de ${plataformasFuente[i].n}${
+      portadasPorEmpresa.get(plataformasFuente[i].n)?.origenVisual === 'representacion-editorial-generada'
+        ? '; portada ilustrativa' : ''}` &&
     atributoHTML(imagenesEmpresaVisual[i]?.[2] || '', 'src') === rutasPortada[i]) &&
   imagenesEmpresaVisual.every(img => atributoHTML(img[2], 'alt') === '' &&
     atributoHTML(img[2], 'width') === '720' && atributoHTML(img[2], 'height') === '720' &&
     atributoHTML(img[2], 'decoding') === 'async' &&
     atributoHTML(img[2], 'loading') === 'lazy'));
+prueba('las ilustraciones editoriales se identifican en la tarjeta, la ficha y la accesibilidad',
+  /class="empresa-visual__origen">Ilustración/.test(js) &&
+  /<span>Ficha verificada<\/span>/.test(js) &&
+  /Imagen ilustrativa/.test(js) && /No muestra un activo concreto/.test(js) &&
+  /top\s*:\s*56px/i.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__origen').join(';')) &&
+  /minmax\(0,1fr\)/i.test(declaracionesCSS(cssBase, '.pn-origen-visual').join(';')));
 prueba('la galería visual solo sustituye las fichas en móvil y mantiene dos columnas táctiles',
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.empresa-visual__abrir').join(';')) &&
   /grid-template-columns\s*:\s*repeat\(2,minmax\(0,1fr\)\)/i.test(
@@ -1484,11 +1507,19 @@ prueba('el capturador conserva el encuadre y sustituye cada WebP solo tras valid
   /scale=720:720/.test(capturadorPortadas) && !/crop=720:480/.test(capturadorPortadas) &&
   /temporalSalida/.test(capturadorPortadas) && /WebP convertido no válido/.test(capturadorPortadas) &&
   /await fs\.rename\(temporalSalida, destino\)/.test(capturadorPortadas));
-prueba('la selección editorial cubre las 26 empresas y falla cerrada si una fuente curada no responde',
+prueba('la selección editorial separa fuentes oficiales y arte generado y falla cerrada',
   /const PORTADAS_EDITORIALES = Object\.freeze\(/.test(capturadorPortadas) &&
-  /Object\.keys\(PORTADAS_EDITORIALES\)\.map\(empresa => \[empresa, 5\]\)/.test(capturadorPortadas) &&
-  /if \(PORTADAS_EDITORIALES\[p\.n\]\) \{\s*throw new Error/.test(capturadorPortadas) &&
+  /const PORTADAS_GENERADAS = Object\.freeze\(/.test(capturadorPortadas) &&
+  /Object\.keys\(PORTADAS_ACTIVAS\)\.map\(empresa => \[empresa, 6\]\)/.test(capturadorPortadas) &&
+  /origenVisual: 'representacion-editorial-generada'/.test(capturadorPortadas) &&
+  /paginaReferencia: PAGINAS_PORTADA\[p\.n\]/.test(capturadorPortadas) &&
+  /imagenOrigen: null/.test(capturadorPortadas) && /creador: 'RWAdar'/.test(capturadorPortadas) &&
+  /if \(PORTADAS_ACTIVAS\[p\.n\]\) \{\s*throw new Error/.test(capturadorPortadas) &&
   !/favicon[^\n]+PORTADAS_EDITORIALES/i.test(capturadorPortadas));
+prueba('las portadas generadas pierden metadatos y nunca reutilizan la vía de descarga oficial',
+  /if \(esGenerada\) \{[\s\S]{0,900}?rwadar-editorial-source/.test(capturadorPortadas) &&
+  /-map_metadata/.test(capturadorPortadas) &&
+  capturadorPortadas.indexOf('if (esGenerada) {') < capturadorPortadas.indexOf('const recursoLocal = RECURSOS_LOCALES.get(p.n)'));
 prueba('las fotografías móviles se muestran vivas sin perder legibilidad en la capa de texto',
   /saturate\(1\.06\)/.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__imagen').join(';')) &&
   /contrast\(1\.035\)/.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__imagen').join(';')) &&

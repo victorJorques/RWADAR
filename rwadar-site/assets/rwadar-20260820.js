@@ -35,6 +35,17 @@ const P=[
  {n:"tZERO",cat:"Acciones y capital privado",tipo:"Marketplace",reg:"EE. UU.",cadenas:"Varias",ticket:"Bajo",acceso:"Minorista",web:"https://tzero.com",aval:"Opera un sistema alternativo de negociación (ATS) autorizado por la SEC y supervisado por FINRA.",nota:"El mercado secundario de referencia en EE. UU. para valores emitidos en cadena.",ver:"2026-07-26"},
 ];
 
+/* Estas portadas explican visualmente el tipo de activo. No son fotografías
+   de un proyecto concreto de la empresa: el distintivo y la ficha lo dicen
+   de forma visible, y la procedencia completa queda en fuentes.json. */
+const PORTADAS_GENERADAS_MOVIL=new Set([
+ 'ADDX','Archax','Backed Finance','Blocksquare','Centrifuge','Courtyard','Figure',
+ 'Fireblocks','Franklin Templeton','INX','Maple Finance','Midas','Ondo Finance',
+ 'OpenEden','Reental','Republic','Securitize','Spiko','Superstate','Swarm','Taurus',
+ 'Tokeny','tZERO'
+]);
+const portadaEsIlustrativa=p=>PORTADAS_GENERADAS_MOVIL.has(p.n);
+
 /* ---- DESCARTADAS · nombre, motivo verificado y fuente ---- */
 const FUERA=[
  {n:"Domoblock",badge:"Sin supervisión",why:"La propia plataforma declara que no está supervisada por la CNMV, que no es una Empresa de Servicios de Inversión y que sus productos no son valores negociables. Antes sus emisiones pasaban por una ESI autorizada; dejó de ser así a partir del proyecto DOMO-VLC-4.",fuentes:[{url:"https://redinversora.com/recursos/inversion-alternativa/domoblock",titulo:"RedInversora · análisis de Domoblock con datos verificados"},{url:"https://todocrowdlending.com/domoblock/",titulo:"TodoCrowdlending · situación regulatoria de Domoblock"}]},
@@ -1216,16 +1227,16 @@ function render(){
 function renderGrid(f){
  const g=document.getElementById('grid');
  if(!f.length){g.innerHTML=`<div class="vacio"><p>El radar no detecta ninguna plataforma con estos filtros.</p><button class="f" data-accion="limpiar">Limpiar filtros</button></div>`;return}
- g.innerHTML=f.map(p=>{const i=P.indexOf(p),on=compare.includes(i);
+ g.innerHTML=f.map(p=>{const i=P.indexOf(p),on=compare.includes(i),ilustrativa=portadaEsIlustrativa(p);
   const portada=String(p.n).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const compararTexto=on?`Quitar ${p.n} de la comparación`:`Añadir ${p.n} a la comparación`;
   return `<div class="ficha ${on?'sel':''} ${catClase(p)}">
-   <button type="button" class="empresa-visual__abrir" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}">
+   <button type="button" class="empresa-visual__abrir" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}${ilustrativa?'; portada ilustrativa':''}">
     <img class="empresa-visual__imagen" src="/plataformas/${portada}.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
-    <span class="empresa-visual__categoria">${escHtml(p.cat)}</span>
+    <span class="empresa-visual__categoria">${escHtml(p.cat)}</span>${ilustrativa?'<span class="empresa-visual__origen">Ilustración</span>':''}
     <span class="empresa-visual__texto"><strong>${escHtml(p.n)}</strong><small>${escHtml(p.tipo)} · ${escHtml(p.reg)}</small></span>
-    <span class="empresa-visual__verificada">${okSVG}<span>Verificada</span></span>
+    <span class="empresa-visual__verificada">${okSVG}<span>Ficha verificada</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar ${on?'on':''}" data-comparar="${i}" aria-pressed="${on?'true':'false'}" aria-label="${escHtml(compararTexto)}" title="${escHtml(compararTexto)}"><span aria-hidden="true">${on?'✓':'+'}</span></button>
@@ -1249,6 +1260,9 @@ function openDrawer(i){
  const p=P[i];
  if(!p)return;
  const web=urlHttps(p.web);
+ const origenVisual=portadaEsIlustrativa(p)
+  ? `<aside class="pn-origen-visual" aria-label="Origen de la portada"><strong>Imagen ilustrativa</strong><span>Representación editorial creada por RWAdar para explicar ${escHtml(p.cat.toLowerCase())}. No muestra un activo concreto de ${escHtml(p.n)}.</span></aside>`
+  : `<aside class="pn-origen-visual oficial" aria-label="Origen de la portada"><strong>Imagen oficial</strong><span>Portada procedente de una fuente oficial y usada con finalidad informativa.</span></aside>`;
  document.getElementById('dwId').innerHTML=`${siglaEl(p)}<div><h3 id="dwTitulo">${escHtml(p.n)}</h3><div class="cat">${escHtml(p.cat)}</div></div>`;
  document.getElementById('dwBody').innerHTML=`
   <section class="pn-seccion pn-resumen" aria-labelledby="dwResumenTit">
@@ -1258,6 +1272,7 @@ function openDrawer(i){
     <span>${escHtml(p.tipo)}</span><span>${escHtml(p.reg)}</span><span>${escHtml(p.acceso)}</span>
    </div>
   </section>
+  ${origenVisual}
   <section class="pn-seccion pn-verificacion" aria-labelledby="dwVerificacionTit">
    <h4 id="dwVerificacionTit">Verificación RWAdar</h4>
    <div class="aval aval-detalle">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
