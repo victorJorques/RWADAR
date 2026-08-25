@@ -43,3 +43,7 @@ web-build/
 *.apk
 *.aab
 supabase/.temp/
+
+# La plataforma de análisis de rivales del Mister
+!/mister-rivales/
+!/.github/

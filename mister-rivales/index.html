@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B0A0A">
+<title>Rivales · Mister</title>
+<style>
+:root{
+  --noche:#0B0A0A; --noche-2:#100F0E; --sup:#171614; --sup-2:#1E1D1B; --sup-3:#262523;
+  --linea:#26241F; --linea-2:#3A3833;
+  --tx:#F7F5F0; --tx-2:#BBB5AB; --tx-3:#8A8378;
+  --menta:#25E39A; --menta-os:#0B5F42; --menta-10:rgba(37,227,154,.10);
+  --coral:#FF3B30; --coral-10:rgba(255,59,48,.10);
+  --ambar:#F2B23C; --ambar-10:rgba(242,178,60,.12);
+  --violeta:#B583FF; --azul:#5B8CFF;
+  --body:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'Geist Mono',ui-monospace,'Cascadia Mono',Consolas,monospace;
+  --r:16px; --rs:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noche);color:var(--tx);font-family:var(--body);
+  font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;
+  padding:0 0 80px;overscroll-behavior-y:none}
+.env{max-width:1140px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+
+/* --- cabecera --- */
+header{position:sticky;top:0;z-index:20;background:rgba(11,10,10,.86);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+.cab{display:flex;align-items:center;gap:12px;padding:12px 0}
+.marca{display:flex;align-items:baseline;gap:9px;min-width:0}
+.marca b{font-size:17px;font-weight:650;letter-spacing:-.03em}
+.marca span{color:var(--tx-3);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sello{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--tx-3)}
+.punto{width:7px;height:7px;border-radius:50%;background:var(--menta);
+  box-shadow:0 0 0 3px var(--menta-10)}
+.punto.viejo{background:var(--ambar);box-shadow:0 0 0 3px var(--ambar-10)}
+.bt{padding:7px 13px;border-radius:99px;border:1px solid var(--linea-2);
+  font-size:13px;font-weight:550;transition:.18s;white-space:nowrap}
+.bt:hover{background:var(--sup-2);border-color:var(--tx-3)}
+.bt.pri{background:var(--menta);color:#07281C;border-color:transparent}
+.bt.pri:hover{background:#6BF0C0}
+
+/* --- pestañas --- */
+nav{display:flex;gap:2px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{padding:7px 14px;border-radius:99px;font-size:13.5px;color:var(--tx-3);
+  font-weight:550;white-space:nowrap;transition:.16s}
+nav button:hover{color:var(--tx-2);background:var(--sup)}
+nav button[aria-selected=true]{background:var(--sup-3);color:var(--tx)}
+nav button i{font-style:normal;color:var(--tx-3);font-size:11.5px;margin-left:5px}
+
+/* --- avisos --- */
+.tira{margin:14px 0;padding:12px 14px;border-radius:var(--rs);font-size:13.5px;
+  display:flex;gap:10px;align-items:flex-start;border:1px solid}
+.tira.mal{background:var(--coral-10);border-color:rgba(255,59,48,.3);color:#FFB3AE}
+.tira.ojo{background:var(--ambar-10);border-color:rgba(242,178,60,.3);color:#F5D08A}
+.tira.bien{background:var(--menta-10);border-color:rgba(37,227,154,.26);color:#8FF0C8}
+.tira b{font-weight:650}
+
+/* --- rejilla y tarjetas --- */
+section{padding:18px 0 8px}
+.tit{display:flex;align-items:baseline;gap:10px;margin:0 0 4px}
+.tit h2{font-size:19px}
+.tit p{color:var(--tx-3);font-size:13px}
+.sub{color:var(--tx-3);font-size:13px;margin:0 0 16px;max-width:70ch}
+
+.fila{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:14px 0}
+.caja{background:var(--sup);border:1px solid var(--linea);border-radius:var(--r);padding:14px 16px}
+.caja .et{color:var(--tx-3);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+.caja .gr{font-size:26px;font-weight:600;letter-spacing:-.03em;margin-top:5px}
+.caja .pie{color:var(--tx-3);font-size:12.5px;margin-top:3px}
+
+/* --- tabla poder --- */
+.poder{display:flex;flex-direction:column;gap:7px}
+.pf{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;
+  background:var(--sup);border:1px solid var(--linea);border-radius:var(--rs);
+  padding:11px 14px;transition:.16s;cursor:pointer;text-align:left;width:100%}
+.pf:hover{border-color:var(--linea-2);background:var(--sup-2)}
+.pf.yo{border-color:var(--menta-os);background:linear-gradient(90deg,var(--menta-10),transparent 55%)}
+.pf .pos{color:var(--tx-3);font-size:13px;text-align:center}
+.pf .nom{font-weight:600;font-size:15px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pf .nom em{font-style:normal;font-size:10.5px;font-weight:600;letter-spacing:.05em;
+  padding:2px 6px;border-radius:5px;background:var(--menta-os);color:#8FF0C8;text-transform:uppercase}
+.pf .desglose{color:var(--tx-3);font-size:12.5px;margin-top:3px}
+.pf .cifra{text-align:right}
+.pf .cifra b{font-size:18px;font-weight:600;letter-spacing:-.02em;display:block}
+.pf .cifra span{color:var(--tx-3);font-size:11.5px}
+.barra{height:4px;border-radius:3px;background:var(--sup-3);overflow:hidden;margin-top:7px}
+.barra i{display:block;height:100%;background:var(--menta);border-radius:3px}
+.barra i.neg{background:var(--coral)}
+
+/* --- tablas --- */
+.tabla{width:100%;border-collapse:collapse;font-size:13.5px}
+.tabla th{text-align:left;color:var(--tx-3);font-size:11.5px;text-transform:uppercase;
+  letter-spacing:.06em;font-weight:600;padding:8px 10px;border-bottom:1px solid var(--linea)}
+.tabla td{padding:9px 10px;border-bottom:1px solid var(--linea)}
+.tabla tr:hover td{background:var(--sup)}
+.tabla .der{text-align:right}
+.env-tabla{overflow-x:auto;border:1px solid var(--linea);border-radius:var(--r);background:var(--sup)}
+.chapa{display:inline-block;padding:2px 7px;border-radius:6px;font-size:11px;font-weight:600}
+.chapa.peligro{background:var(--coral-10);color:#FF8A82}
+.chapa.vigilar{background:var(--ambar-10);color:var(--ambar)}
+.chapa.salvo{background:var(--menta-10);color:var(--menta)}
+.chapa.gris{background:var(--sup-3);color:var(--tx-3)}
+.pos-et{font-family:var(--mono);font-size:11px;color:var(--tx-3);width:34px;display:inline-block}
+
+/* --- ficha rival --- */
+.rival{border:1px solid var(--linea);border-radius:var(--r);background:var(--sup);margin-bottom:10px;overflow:hidden}
+.rival>summary{padding:13px 16px;cursor:pointer;list-style:none;display:flex;
+  align-items:center;gap:12px;font-weight:600}
+.rival>summary::-webkit-details-marker{display:none}
+.rival>summary:hover{background:var(--sup-2)}
+.rival .cuerpo{padding:0 16px 16px;border-top:1px solid var(--linea)}
+.rival .mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;
+  background:var(--linea);border-radius:var(--rs);overflow:hidden;margin:14px 0}
+.rival .mini div{background:var(--sup-2);padding:10px 12px}
+.rival .mini span{display:block;color:var(--tx-3);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.rival .mini b{font-size:16px;font-weight:600}
+
+/* --- pegar datos --- */
+.pegar{border:1px dashed var(--linea-2);border-radius:var(--r);padding:22px;text-align:center;background:var(--sup)}
+.pegar textarea{width:100%;min-height:110px;background:var(--noche-2);color:var(--tx);
+  border:1px solid var(--linea);border-radius:var(--rs);padding:11px;font-family:var(--mono);
+  font-size:12px;margin:12px 0;resize:vertical}
+.pasos{text-align:left;max-width:640px;margin:0 auto;color:var(--tx-2);font-size:13.5px}
+.pasos li{margin:7px 0 7px 18px}
+.pasos code{background:var(--noche-2);border:1px solid var(--linea);border-radius:6px;
+  padding:2px 6px;font-family:var(--mono);font-size:12px;color:var(--menta)}
+pre.orden{background:var(--noche-2);border:1px solid var(--linea);border-radius:var(--rs);
+  padding:12px;overflow-x:auto;font-family:var(--mono);font-size:11.5px;color:var(--menta-10);
+  color:#8FF0C8;text-align:left;margin:10px 0}
+
+.vacio{text-align:center;color:var(--tx-3);padding:34px 16px;font-size:14px}
+.oculto{display:none!important}
+@media(max-width:640px){
+  .cab{flex-wrap:wrap}
+  .pf{grid-template-columns:22px 1fr auto;gap:9px;padding:10px 11px}
+  .pf .cifra b{font-size:16px}
+  .caja .gr{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="env cab">
+  <div class="marca"><b>Rivales</b><span id="cabLiga">—</span></div>
+  <div class="sello"><i class="punto" id="punto"></i><span id="cabSello">sin datos</span></div>
+  <button class="bt" id="btDatos">Datos</button>
+ </div>
+ <div class="env"><nav id="pestanas"></nav></div>
+</header>
+
+<div class="env" id="avisos"></div>
+<main class="env" id="lienzo"></main>
+
+<script src="motor.js"></script>
+<script src="datos.js" onerror="void 0"></script>
+<script>
+(function(){
+'use strict';
+var M = globalThis.MotorMister;
+var $ = function(s,d){return (d||document).querySelector(s);};
+var LLAVE = 'mister-rivales-datos';
+
+/* ---------- de dónde salen los datos --------------------------------
+   Por orden: lo que pegaste en este aparato, el archivo datos.js que
+   deja el robot, o el datos.json de al lado. Lo primero que haya. */
+var datos = null, analisis = null, pestana = 'resumen';
+
+function cargar(){
+  try{
+    var guardado = localStorage.getItem(LLAVE);
+    if(guardado) return JSON.parse(guardado);
+  }catch(e){}
+  if(globalThis.DATOS_MISTER) return globalThis.DATOS_MISTER;
+  return null;
+}
+
+function guardar(d){
+  datos = d;
+  try{ localStorage.setItem(LLAVE, JSON.stringify(d)); }catch(e){}
+  recalcular(); pintar();
+}
+
+function recalcular(){ analisis = datos ? M.analizar(datos) : null; }
+
+/* ---------- ayudas de pintura --------------------------------------- */
+function el(etiqueta, atributos, hijos){
+  var n = document.createElement(etiqueta);
+  if(atributos) for(var k in atributos){
+    if(k==='texto') n.textContent = atributos[k];
+    else if(k==='html') n.innerHTML = atributos[k];
+    else if(k.slice(0,2)==='on') n.addEventListener(k.slice(2), atributos[k]);
+    else if(atributos[k]!=null) n.setAttribute(k, atributos[k]);
+  }
+  (hijos||[]).forEach(function(h){ if(h) n.appendChild(typeof h==='string'?document.createTextNode(h):h); });
+  return n;
+}
+function dn(v,corto){ return M.dinero(v,corto); }
+function haceCuanto(iso){
+  if(!iso) return 'sin fecha';
+  var s = (Date.now()-new Date(iso).getTime())/1000;
+  if(isNaN(s)) return 'sin fecha';
+  if(s<90) return 'ahora mismo';
+  if(s<5400) return 'hace '+Math.round(s/60)+' min';
+  if(s<172800) return 'hace '+Math.round(s/3600)+' h';
+  return 'hace '+Math.round(s/86400)+' días';
+}
+
+/* ---------- pestañas ------------------------------------------------- */
+var PESTANAS = [
+  {id:'resumen',  nombre:'Poder de compra'},
+  {id:'amenazas', nombre:'Me pueden robar'},
+  {id:'oportunidades', nombre:'Puedo robar'},
+  {id:'rivales',  nombre:'Ficha por rival'},
+  {id:'mercado',  nombre:'Mercado'},
+  {id:'cuentas',  nombre:'Las cuentas'},
+  {id:'datos',    nombre:'Datos'}
+];
+
+function pintarPestanas(){
+  var nav = $('#pestanas'); nav.innerHTML='';
+  PESTANAS.forEach(function(p){
+    var n = null;
+    if(analisis){
+      if(p.id==='amenazas') n = analisis.amenazas.filter(function(a){return a.pueden.length;}).length || null;
+      if(p.id==='oportunidades') n = analisis.oportunidades.length || null;
+      if(p.id==='rivales') n = analisis.managers.length || null;
+      if(p.id==='mercado') n = analisis.mercado.length || null;
+    }
+    nav.appendChild(el('button',{
+      'aria-selected': String(pestana===p.id),
+      onclick:function(){ pestana=p.id; pintar(); window.scrollTo({top:0,behavior:'smooth'}); }
+    },[p.nombre, n?el('i',{texto:String(n)}):null]));
+  });
+}
+
+/* ---------- pantallas ------------------------------------------------ */
+
+function pantallaResumen(){
+  var a = analisis, cont = document.createDocumentFragment();
+  var max = Math.max.apply(null, a.managers.map(function(m){return Math.abs(m.poderCompra);}).concat([1]));
+
+  cont.appendChild(el('div',{class:'fila'},[
+    caja('Managers', String(a.totales.managers), a.liga.nombre||''),
+    caja('Dinero suelto en la liga', dn(a.totales.dineroEnJuego,true), 'suma de todos los saldos'),
+    caja('Valor de todas las plantillas', dn(a.totales.valorTotalLiga,true), a.totales.movimientos+' movimientos registrados'),
+    a.yo ? caja('Tu poder de compra', dn(a.yo.poderCompra,true), 'puesto '+a.yo.puestoPoder+' de '+a.managers.length) : null
+  ]));
+
+  cont.appendChild(el('div',{class:'tit'},[el('h2',{texto:'Quién puede gastar más ahora mismo'})]));
+  cont.appendChild(el('p',{class:'sub',texto:
+    'Saldo reconstruido desde el reinicio: '+dn(a.reglas.presupuestoInicial)+' de salida, menos la plantilla, más y menos cada movimiento. '+
+    'El crédito es el '+Math.round(a.reglas.porcentajeDeuda*100)+' % del valor de su plantilla.'}));
+
+  var lista = el('div',{class:'poder'});
+  a.managers.forEach(function(m){
+    var ancho = Math.round(Math.abs(m.poderCompra)/max*100);
+    lista.appendChild(el('button',{class:'pf'+(m.esYo?' yo':''), onclick:function(){ pestana='rivales'; pintar(); setTimeout(function(){
+        var d = document.getElementById('rival-'+m.id); if(d){ d.open=true; d.scrollIntoView({block:'center',behavior:'smooth'}); }
+      },60); }},[
+      el('div',{class:'pos num',texto:String(m.puestoPoder)}),
+      el('div',{},[
+        el('div',{class:'nom'},[m.nombre, m.esYo?el('em',{texto:'tú'}):null,
+          m.fiabilidad!=='exacto'?el('span',{class:'chapa gris',texto:m.fiabilidad}):null]),
+        el('div',{class:'desglose num',texto:
+          'saldo '+dn(m.saldo,true)+'  +  crédito '+dn(m.credito,true)+'   ·   plantilla '+dn(m.valorPlantilla,true)+' ('+m.nJugadores+')'}),
+        el('div',{class:'barra'},[el('i',{class:m.poderCompra<0?'neg':'',style:'width:'+ancho+'%'})])
+      ]),
+      el('div',{class:'cifra'},[el('b',{class:'num',texto:dn(m.poderCompra,true)}),el('span',{texto:'puja máxima'})])
+    ]));
+  });
+  cont.appendChild(lista);
+  return cont;
+}
+
+function caja(et,gr,pie){
+  return el('div',{class:'caja'},[
+    el('div',{class:'et',texto:et}), el('div',{class:'gr num',texto:gr}), el('div',{class:'pie',texto:pie||''})
+  ]);
+}
+
+function pantallaAmenazas(){
+  var a = analisis, c = document.createDocumentFragment();
+  if(!a.yo) return avisoSinYo();
+  c.appendChild(el('div',{class:'tit'},[el('h2',{texto:'Quién puede pagarte la cláusula'})]));
+  c.appendChild(el('p',{class:'sub',texto:'Tus '+a.yo.jugadores.length+' jugadores contra el poder de compra de cada rival. Si alguien llega a la cláusula, puede llevárselo hoy mismo.'}));
+
+  var t = el('table',{class:'tabla'});
+  t.appendChild(el('thead',{},[el('tr',{},[
+    th('Jugador'),th('Valor','der'),th('Cláusula','der'),th('Riesgo'),th('Quién puede pagarla')
+  ])]));
+  var cuerpo = el('tbody');
+  a.amenazas.forEach(function(x){
+    cuerpo.appendChild(el('tr',{},[
+      el('td',{},[el('span',{class:'pos-et',texto:x.posicion||''}), x.jugador,
+        el('span',{style:'color:var(--tx-3)',texto:x.equipo?'  '+x.equipo:''})]),
+      td(dn(x.valor,true),'der num'),
+      el('td',{class:'der num'},[dn(x.clausula,true), x.estimada?el('span',{style:'color:var(--tx-3)',texto:' *'}):null]),
+      el('td',{},[el('span',{class:'chapa '+(x.riesgo==='en peligro'?'peligro':x.riesgo==='vigilar'?'vigilar':'salvo'),texto:x.riesgo})]),
+      td(x.pueden.length ? x.pueden.map(function(p){return p.nombre+' (+'+dn(p.margen,true)+')';}).join(', ')
+        : (x.masCerca? 'nadie · al más rico le faltan '+dn(x.masCerca.leFaltan,true) : 'nadie'))
+    ]));
+  });
+  t.appendChild(cuerpo);
+  c.appendChild(el('div',{class:'env-tabla'},[t]));
+  if(a.amenazas.some(function(x){return x.estimada;}))
+    c.appendChild(el('p',{class:'sub',style:'margin-top:10px',texto:'* cláusula estimada como valor × '+a.reglas.multiplicadorClausula+' porque la captura no la traía.'}));
+  return c;
+}
+
+function pantallaOportunidades(){
+  var a = analisis, c = document.createDocumentFragment();
+  if(!a.yo) return avisoSinYo();
+  c.appendChild(el('div',{class:'tit'},[el('h2',{texto:'A quién puedes pagarle tú la cláusula'})]));
+  c.appendChild(el('p',{class:'sub',texto:'Con '+dn(a.yo.poderCompra)+' de puja máxima. Ordenado por valor del jugador.'}));
+  if(!a.oportunidades.length) return (c.appendChild(el('div',{class:'vacio',texto:'Ninguna cláusula de la liga está a tu alcance ahora mismo.'})), c);
+
+  var t = el('table',{class:'tabla'});
+  t.appendChild(el('thead',{},[el('tr',{},[th('Jugador'),th('Dueño'),th('Valor','der'),th('Cláusula','der'),th('Sobrecoste','der'),th('Te quedaría','der')])]));
+  var cuerpo = el('tbody');
+  a.oportunidades.slice(0,60).forEach(function(x){
+    cuerpo.appendChild(el('tr',{},[
+      el('td',{},[el('span',{class:'pos-et',texto:x.posicion||''}), x.jugador]),
+      td(x.de), td(dn(x.valor,true),'der num'), td(dn(x.clausula,true),'der num'),
+      td('+'+dn(x.sobrecoste,true),'der num'), td(dn(x.meQueda,true),'der num')
+    ]));
+  });
+  t.appendChild(cuerpo);
+  c.appendChild(el('div',{class:'env-tabla'},[t]));
+  return c;
+}
+
+function pantallaRivales(){
+  var a = analisis, c = document.createDocumentFragment();
+  c.appendChild(el('div',{class:'tit'},[el('h2',{texto:'Ficha por manager'})]));
+  c.appendChild(el('p',{class:'sub',texto:'Abre cualquiera para ver su plantilla y, debajo, el libro mayor: de dónde sale su saldo, apunte a apunte.'}));
+  a.managers.forEach(function(m){
+    var det = el('details',{class:'rival',id:'rival-'+m.id});
+    det.appendChild(el('summary',{},[
+      el('span',{class:'num',style:'color:var(--tx-3);width:22px',texto:String(m.puestoPoder)}),
+      el('span',{},[m.nombre, m.esYo?' (tú)':'']),
+      el('span',{class:'num',style:'margin-left:auto;font-weight:600',texto:dn(m.poderCompra,true)})
+    ]));
+    var cuerpo = el('div',{class:'cuerpo'});
+    cuerpo.appendChild(el('div',{class:'mini'},[
+      mini('Saldo', dn(m.saldo,true)), mini('Crédito 25 %', dn(m.credito,true)),
+      mini('Puja máxima', dn(m.poderCompra,true)), mini('Valor plantilla', dn(m.valorPlantilla,true)),
+      mini('Jugadores', String(m.nJugadores)), mini('Puntos', String(m.puntos))
+    ]));
+    if(m.sinExplicar.length) cuerpo.appendChild(el('div',{class:'tira ojo'},[
+      el('span',{html:'<b>Faltan movimientos.</b> Tiene a '+m.sinExplicar.join(', ')+' sin que se haya visto el fichaje. Su saldo real es más bajo, seguramente en '+dn(-m.ajusteProbable)+'.'})]));
+
+    var tp = el('table',{class:'tabla'});
+    tp.appendChild(el('thead',{},[el('tr',{},[th('Jugador'),th('Equipo'),th('Valor','der'),th('Cláusula','der')])]));
+    var cp = el('tbody');
+    m.jugadores.forEach(function(j){
+      cp.appendChild(el('tr',{},[
+        el('td',{},[el('span',{class:'pos-et',texto:j.posicion||''}), j.nombre]),
+        td(j.equipo||''), td(dn(j.valor,true),'der num'),
+        el('td',{class:'der num'},[dn(j.clausulaCalculada,true), j.clausulaEstimada?el('span',{style:'color:var(--tx-3)',texto:' *'}):null])
+      ]));
+    });
+    tp.appendChild(cp);
+    cuerpo.appendChild(el('div',{class:'env-tabla'},[tp]));
+    det.appendChild(cuerpo);
+    c.appendChild(det);
+  });
+  return c;
+}
+
+function mini(et,val){ return el('div',{},[el('span',{texto:et}), el('b',{class:'num',texto:val})]); }
+
+function pantallaMercado(){
+  var a = analisis, c = document.createDocumentFragment();
+  c.appendChild(el('div',{class:'tit'},[el('h2',{texto:'Mercado'})]));
+  if(!a.mercado.length) return (c.appendChild(el('div',{class:'vacio',texto:'La captura no traía el mercado. Pasa por la pantalla de Mercado antes de guardar.'})), c);
+  c.appendChild(el('p',{class:'sub',texto:'Quién puede permitirse a cada libre, por valor de salida.'}));
+  var t = el('table',{class:'tabla'});
+  t.appendChild(el('thead',{},[el('tr',{},[th('Jugador'),th('Equipo'),th('Valor','der'),th('Pueden pujar')])]));
+  var cuerpo = el('tbody');
+  a.mercado.forEach(function(x){
+    cuerpo.appendChild(el('tr',{},[
+      el('td',{},[el('span',{class:'pos-et',texto:x.posicion||''}), x.jugador]),
+      td(x.equipo||''), td(dn(x.valor,true),'der num'),
+      td(x.puedenPujar.length? x.puedenPujar.join(', ') : 'nadie llega')
+    ]));
+  });
+  t.appendChild(cuerpo);
+  c.appendChild(el('div',{class:'env-tabla'},[t]));
+  return c;
+}
+
+function pantallaCuentas(){
+  var a = analisis, c = document.createDocumentFragment();
+  c.appendChild(el('div',{class:'tit'},[el('h2',{texto:'Las cuentas, apunte a apunte'})]));
+  c.appendChild(el('p',{class:'sub',texto:'Aquí no hay magia: esto es exactamente lo que se ha sumado y restado para cada uno. Si un número te chirría, aquí se ve por qué.'}));
+  a.managers.forEach(function(m){
+    var det = el('details',{class:'rival'});
+    det.appendChild(el('summary',{},[el('span',{},[m.nombre]),
+      el('span',{class:'num',style:'margin-left:auto',texto:dn(m.saldo,true)})]));
+    var t = el('table',{class:'tabla'});
+    t.appendChild(el('thead',{},[el('tr',{},[th('Concepto'),th('Importe','der'),th('Saldo','der')])]));
+    var cuerpo = el('tbody');
+    m.libro.forEach(function(ap){
+      cuerpo.appendChild(el('tr',{},[
+        td(ap.concepto),
+        el('td',{class:'der num',style:'color:'+(ap.importe<0?'var(--coral)':'var(--menta)'),texto:(ap.importe>0?'+':'')+dn(ap.importe,true)}),
+        td(dn(ap.saldo,true),'der num')
+      ]));
+    });
+    t.appendChild(cuerpo);
+    det.appendChild(el('div',{class:'cuerpo'},[el('div',{class:'env-tabla',style:'margin-top:14px'},[t])]));
+    c.appendChild(det);
+  });
+  return c;
+}
+
+function pantallaDatos(){
+  var c = document.createDocumentFragment();
+  c.appendChild(el('div',{class:'tit'},[el('h2',{texto:'Traer tu liga'})]));
+  c.appendChild(el('p',{class:'sub',texto:'En el ordenador, con la liga abierta en mister.mundodeportivo.com y la sesión iniciada.'}));
+
+  var pasos = el('ol',{class:'pasos'});
+  [['Abre la consola con <code>F12</code> → pestaña <b>Console</b>. Si Chrome no te deja pegar, escribe <code>allow pasting</code> y Enter.'],
+   ['Pega el contenido de <code>navegador/captura.js</code> y Enter.'],
+   ['Pasa por <b>Clasificación</b>, el equipo de <b>un rival</b>, <b>Actividad</b> (baja hasta el reinicio) y <b>Mercado</b>.'],
+   ['Ejecuta <code>mister.barrer()</code> y luego <code>mister.guardar()</code>.'],
+   ['Pega aquí abajo lo que se ha copiado al portapapeles.']]
+   .forEach(function(p){ pasos.appendChild(el('li',{html:p[0]})); });
+  c.appendChild(el('div',{class:'pegar'},[pasos]));
+
+  var caja = el('textarea',{placeholder:'Pega aquí el JSON de tu liga…'});
+  var salida = el('p',{class:'sub',style:'margin:8px 0 0'});
+  var zona = el('div',{class:'pegar',style:'margin-top:14px'},[
+    el('h3',{texto:'Pegar la liga'}), caja,
+    el('button',{class:'bt pri',onclick:function(){
+      try{
+        var d = JSON.parse(caja.value);
+        if(!d.managers || !d.managers.length) throw new Error('no trae managers');
+        d.reglas = Object.assign({}, (datos&&datos.reglas)||{}, d.reglas||{});
+        d.demo = false;
+        guardar(d);
+        salida.textContent = 'Cargada: '+d.managers.length+' managers.';
+      }catch(e){ salida.textContent = 'No se ha podido leer: '+e.message; }
+    },texto:'Cargar'}),
+    ' ',
+    el('button',{class:'bt',onclick:function(){
+      if(!datos) return;
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(datos,null,1)],{type:'application/json'}));
+      a.download='datos.json'; a.click();
+    },texto:'Descargar datos.json'}),
+    ' ',
+    el('button',{class:'bt',onclick:function(){
+      if(confirm('¿Borrar los datos guardados en este aparato?')){ localStorage.removeItem(LLAVE); location.reload(); }
+    },texto:'Borrar'}),
+    salida
+  ]);
+  c.appendChild(zona);
+
+  if(analisis){
+    c.appendChild(el('div',{class:'tit',style:'margin-top:26px'},[el('h2',{texto:'Reglas de la liga'})]));
+    var f = el('div',{class:'fila'});
+    [['presupuestoInicial','Presupuesto de salida'],['porcentajeDeuda','Crédito (0.25 = 25 %)'],['multiplicadorClausula','Cláusula = valor ×']]
+    .forEach(function(par){
+      var inp = el('input',{value:String(analisis.reglas[par[0]]),style:
+        'width:100%;background:var(--noche-2);border:1px solid var(--linea);border-radius:8px;padding:8px;color:var(--tx);font-family:var(--mono);margin-top:6px',
+        onchange:function(){
+          datos.reglas = Object.assign({}, datos.reglas||{}); 
+          datos.reglas[par[0]] = parseFloat(inp.value.replace(',','.'))||0;
+          guardar(datos);
+        }});
+      f.appendChild(el('div',{class:'caja'},[el('div',{class:'et',texto:par[1]}), inp]));
+    });
+    var sel = el('select',{style:'width:100%;background:var(--noche-2);border:1px solid var(--linea);border-radius:8px;padding:8px;color:var(--tx);margin-top:6px',
+      onchange:function(){ datos.yo = sel.value||null; guardar(datos); }});
+    sel.appendChild(el('option',{value:'',texto:'— elige —'}));
+    analisis.managers.forEach(function(m){
+      var o = el('option',{value:m.id,texto:m.nombre}); if(m.esYo) o.selected=true; sel.appendChild(o);
+    });
+    f.appendChild(el('div',{class:'caja'},[el('div',{class:'et',texto:'Cuál eres tú'}), sel]));
+    c.appendChild(f);
+  }
+  return c;
+}
+
+function avisoSinYo(){
+  var c = document.createDocumentFragment();
+  c.appendChild(el('div',{class:'tira ojo'},[el('span',{html:'<b>No sé cuál eres tú.</b> Ve a la pestaña Datos y elígete en «Cuál eres tú»: sin eso no puedo decirte quién te puede robar.'})]));
+  return c;
+}
+
+function th(t,c){ return el('th',{class:c||'',texto:t}); }
+function td(t,c){ return el('td',{class:c||'',texto:t==null?'':String(t)}); }
+
+/* ---------- pintar todo ---------------------------------------------- */
+function pintar(){
+  pintarPestanas();
+  var av = $('#avisos'); av.innerHTML='';
+  var lienzo = $('#lienzo'); lienzo.innerHTML='';
+
+  if(!analisis){
+    $('#cabLiga').textContent='';
+    $('#cabSello').textContent='sin datos';
+    lienzo.appendChild(pantallaDatos());
+    return;
+  }
+
+  $('#cabLiga').textContent = (analisis.liga.nombre||'') + (analisis.liga.jornada?' · J'+analisis.liga.jornada:'');
+  $('#cabSello').textContent = haceCuanto(analisis.capturado);
+  var viejo = (Date.now()-new Date(analisis.capturado).getTime()) > 14*3600000;
+  $('#punto').className = 'punto'+(viejo?' viejo':'');
+
+  if(analisis.demo) av.appendChild(el('div',{class:'tira mal'},[el('span',{html:
+    '<b>Esto son datos inventados.</b> Es una liga de mentira para que veas la forma de la app. Trae la tuya desde la pestaña Datos y desaparece este aviso.'})]));
+  analisis.avisos.forEach(function(a){
+    av.appendChild(el('div',{class:'tira '+(a.nivel==='error'?'mal':'ojo')},[el('span',{texto:a.texto})]));
+  });
+
+  var f = {resumen:pantallaResumen, amenazas:pantallaAmenazas, oportunidades:pantallaOportunidades,
+           rivales:pantallaRivales, mercado:pantallaMercado, cuentas:pantallaCuentas, datos:pantallaDatos}[pestana];
+  lienzo.appendChild(f());
+}
+
+$('#btDatos').addEventListener('click', function(){ pestana='datos'; pintar(); window.scrollTo({top:0}); });
+
+/* Arrastrar un datos.json encima de la ventana también vale. */
+document.addEventListener('dragover', function(e){ e.preventDefault(); });
+document.addEventListener('drop', function(e){
+  e.preventDefault();
+  var f = e.dataTransfer.files && e.dataTransfer.files[0]; if(!f) return;
+  f.text().then(function(t){ try{ guardar(JSON.parse(t)); }catch(err){ alert('Ese archivo no es JSON válido.'); } });
+});
+
+datos = cargar();
+if(!datos){
+  fetch('datos.json').then(function(r){ return r.ok?r.json():null; }).then(function(d){
+    if(d){ datos=d; recalcular(); pintar(); }
+  }).catch(function(){});
+}
+recalcular();
+pintar();
+})();
+</script>
+</body>
+</html>

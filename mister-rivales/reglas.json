@@ -1,0 +1,20 @@
+{
+  "_comentario": "Las reglas de TU liga. Si cambias algo aquí, cambia todo el análisis. Nada de esto está escondido en el código.",
+
+  "presupuestoInicial": 50000000,
+  "_presupuestoInicial": "Con lo que arrancó cada manager en el reinicio de la J2.",
+
+  "porcentajeDeuda": 0.25,
+  "_porcentajeDeuda": "Crédito sobre el valor de la plantilla. Poder de compra = saldo + este % del valor del equipo.",
+
+  "multiplicadorClausula": 2,
+  "_multiplicadorClausula": "Solo se usa si el Mister no da la cláusula real del jugador. Entonces se estima como valor x este número, y la app lo marca como estimada.",
+
+  "jornadaInicio": 2,
+  "_jornadaInicio": "La jornada en la que se reinició la liga. Los movimientos anteriores no cuentan.",
+
+  "yo": null,
+  "_yo": "El id (o el nombre exacto) de tu manager. Sin esto no hay amenazas ni oportunidades: la app no sabe cuáles son tus jugadores.",
+
+  "moneda": "€"
+}
