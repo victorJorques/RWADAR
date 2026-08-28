@@ -19,7 +19,7 @@ const DIR   = __dirname;
 const SITIO = path.join(DIR, 'rwadar-site');
 const HTML  = path.join(SITIO, 'index.html');
 const API   = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
-const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const CLAVE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const VIVO  = 'https://rwadar.netlify.app/';
 
 const verde = t => `\x1b[32m${t}\x1b[0m`;
@@ -128,15 +128,25 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
        publicado no. Así que se adelgaza aquí lo local con el MISMO
        módulo que usa el publicador y se compara eso. Si algún día el
        adelgazador cambiara, esta comprobación cambia con él sola. */
-    const { adelgazar } = require('./rwadar-adelgazar.js');
-    const local = adelgazar(html);
-    const nuestro = local.slice(0, local.lastIndexOf('</script>') + 9);
-    const igual = vivo.startsWith(nuestro);
-    (igual ? ok : mal)(igual
-      ? 'lo publicado coincide con lo local'
-      : 'lo publicado NO coincide con lo local');
-    if (!igual) console.log(gris('        hay cambios sin publicar: node rwadar-publicar.js'));
-    (vivo.includes('google-site-verification') ? ok : mal)('la verificación de Google sigue en línea');
+    /* Desde el 25 de agosto de 2026 esa dirección ya no sirve RWAdar, sino la
+       página que desinstala las copias que quedaron en móviles ajenos. Compararla
+       con lo local daría un FALLA que no es tal y que despista: lo correcto ahora
+       es justo que NO coincidan. Ver RWADAR-APAGADO.md. */
+    if (vivo.includes('Esta dirección ya no está en uso')) {
+      ok('fuera de internet, y la limpieza de copias sigue en pie');
+      console.log(gris('        rwadar.netlify.app desinstala las apps que quedaron en móviles'));
+      console.log(gris('        no publiques encima sin leer RWADAR-APAGADO.md'));
+    } else {
+      const { adelgazar } = require('./rwadar-adelgazar.js');
+      const local = adelgazar(html);
+      const nuestro = local.slice(0, local.lastIndexOf('</script>') + 9);
+      const igual = vivo.startsWith(nuestro);
+      (igual ? ok : mal)(igual
+        ? 'lo publicado coincide con lo local'
+        : 'lo publicado NO coincide con lo local');
+      if (!igual) console.log(gris('        hay cambios sin publicar: node rwadar-publicar.js'));
+      (vivo.includes('google-site-verification') ? ok : mal)('la verificación de Google sigue en línea');
+    }
   } catch (e) {
     mal('no se pudo leer el sitio publicado: ' + e.message);
   }

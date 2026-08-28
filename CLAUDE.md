@@ -4,26 +4,51 @@ Este archivo se carga solo al abrir sesión. Su único trabajo es que llegues
 al sitio correcto **sin leer nada más**. No lo alargues: cada línea aquí se
 paga en todas las sesiones.
 
-Aquí viven **dos proyectos independientes** de Víctor.
+Aquí viven **varios proyectos independientes** de Víctor.
 
 ---
 
 ## RWAdar · registro de plataformas de tokenización
 
-**En línea y terminado: https://rwadar.netlify.app** · Supabase
-`exgpmjpaaebyoolpwced` · Netlify site `0211fd28-d371-43cd-9d93-3944fea57680`
+**FUERA DE INTERNET desde el 25 de agosto de 2026, y a propósito.** No queda
+nada público: se borró el proyecto de Cloudflare Pages y el sitio de Netlify
+(con sus 14 URL permanentes) y el repositorio pasó a privado. **No lo vuelvas
+a publicar sin que Víctor lo pida.** Se trabaja solo en local. Supabase
+`exgpmjpaaebyoolpwced` sigue en pie y es la fuente de verdad de los datos.
 
-**Esa dirección es también la aplicación.** Desde el móvil se instala en la
-pantalla de inicio y se abre con su icono y sin barra de navegador. Una sola
-dirección para todo: no hay una segunda que explicar. Lo que lo hace posible
-son cinco archivos de `rwadar-site/` —`manifest.webmanifest`, `sw.js` y los
-tres `icono-*.png`— y las etiquetas del `<head>`.
+**Ojo: `rwadar.pages.dev` responde 200 y NO es la web.** Es una página de
+limpieza de tres líneas cuyo único trabajo es desregistrar el service worker
+y vaciar la caché de los móviles que instalaron RWAdar como aplicación —si no,
+seguirían abriéndola de memoria para siempre. Está en `rwadar-limpieza/`. No
+la borres ni la confundas con el sitio: mientras siga ahí, sigue desinfectando.
+**`rwadar.netlify.app` sirve esa misma página desde el 28 de agosto** y es la
+más importante de las dos, porque es a donde apuntan los QR ya repartidos.
+Estuvo dos días en 404 porque Netlify bloquea los despliegues cuando se acaban
+los créditos del plan gratis: eso, y no un capricho, es lo que empujó a Codex a
+Cloudflare.
 
-La web entera sigue siendo **un solo archivo de 325 kB**:
-`rwadar-site/index.html` (HTML + CSS + JS, sin compilación ni dependencias
-externas). **Nunca lo leas entero: son ~50.000 tokens.** 41 kB son las dos
-tipografías incrustadas en base64 al principio del `<style>`: no las leas
-nunca, no dicen nada.
+La clave publicable de Supabase **se rotó el 25 de agosto**: la vieja
+(`…LIyeUqws…`) está revocada para que las copias cacheadas no puedan tocar la
+base. La nueva vive en 8 ficheros del proyecto; si algo da 401, es esto.
+
+**Hay dos versiones en el disco y NO son la misma. Mira las dos antes de tocar
+nada:**
+
+| Carpeta | Qué es | Cómo verla |
+|---|---|---|
+| `rwadar-version-codex/` | **La más avanzada.** La hizo Codex del 20 al 23 de agosto y vivía *solo* en Cloudflare; se rescató justo antes de apagarlo. Móvil reordenado al estilo Booking, imágenes por plataforma, RWAdar Academy, privacidad corregida a 18 años. HTML+JS+CSS separados y sin minificar. **Nunca pasó por Git.** | `node rwadar-version-codex/servir.js` → localhost:4174 |
+| `rwadar-site/` | La anterior, la que estaba en Netlify y la única que sigue Git. Archivo único de 325 kB. | `node rwadar-arrancar.js` → localhost:4173 |
+| `rwadar-version-netlify/` | Copia exacta de lo último que sirvió Netlify. Solo respaldo, no se edita. | — |
+
+Las dos **no están fusionadas**: decidir cuál es la buena es el primer trabajo
+pendiente. `rwadar-site/index.html` es un solo archivo de 325 kB — **nunca lo
+leas entero: son ~50.000 tokens.** 41 kB son las dos tipografías en base64 al
+principio del `<style>`: no las leas nunca, no dicen nada.
+
+**La dirección era también la aplicación.** Se instalaba en el móvil desde el
+navegador. Eso lo hacían cinco archivos de `rwadar-site/`
+—`manifest.webmanifest`, `sw.js` y los tres `icono-*.png`— y las etiquetas del
+`<head>`. Al estar apagada la web, el icono del iPhone ya no carga.
 
 | Si vas a… | Lee primero | Coste |
 |---|---|---|
@@ -43,13 +68,14 @@ sola). El contrato real está en `RWADAR-MANANA.md`.
 
 **Cuatro reglas que no se negocian:**
 
-1. **Publicar solo con `node rwadar-publicar.js`.** Nunca `netlify deploy` a
-   secas: sin el pre-renderizado la página queda vacía para Google, y sin
-   `--dir`/`--site` explícitos el CLI publica lo que diga el `.netlify` que
-   él mismo deja en esta carpeta (llegó a apuntar a Downloads entera).
-   Además, **lo que se sube no es `rwadar-site/` sino `rwadar-publicado/`**,
-   que el publicador genera adelgazando el HTML: la fuente conserva sus
-   comentarios y lo publicado pesa 84 kB por la red en vez de 104.
+1. **Ahora mismo no se publica.** El proyecto está fuera de internet a
+   petición de Víctor. `rwadar-publicar.js` sigue ahí pero **apunta a un sitio
+   de Netlify que ya no existe**: si algún día se republica habrá que crear
+   destino nuevo y decidir antes cuál de las dos versiones es la buena. Cuando
+   llegue ese día valen las reglas de siempre: nunca `netlify deploy` a secas
+   (sin pre-renderizado la página queda vacía para Google, y sin `--dir`/
+   `--site` explícitos el CLI publica lo que diga el `.netlify` de la
+   carpeta), y **lo que se sube no es `rwadar-site/` sino `rwadar-publicado/`**.
 2. **Los datos no se editan en el HTML.** La fuente de verdad es Supabase;
    la siguiente publicación sobrescribe los arrays `P` y `FUERA`.
 3. **Ninguna descartada sin fuente.** Comprobarlo antes de publicar (el
@@ -87,6 +113,19 @@ el resto de `docs/` está numerado por temas.
 Dos cosas que ahorran un rato: `corepack pnpm verify` falla, así que usa
 `pnpm --filter` por paquete; y las migraciones de la fase 3 están escritas
 pero **sin aplicar**.
+
+---
+
+## Radar del Mister · economía de la liga de fantasy
+
+Carpeta `mister-radar/`. Reconstruye el saldo y la puja máxima de cada rival en
+Mister, se actualiza solo 3 veces al día y lo enseña en http://localhost:4400.
+Todo lo que necesitas saber está en **`mister-radar/LEEME.md`** (~1,5 k):
+las reglas del cálculo, las cinco validaciones y qué hacer cuando falle.
+
+Dos cosas que no se negocian: **solo lee** —nunca pujar, vender ni blindar
+dentro del juego— y **`perfil/` lleva la sesión de Víctor**, no se sube a
+ningún sitio.
 
 ---
 

@@ -6,7 +6,7 @@ import { createClient } from '@supabase/supabase-js';
    y no concede escritura sobre el catálogo. Comprobado contra el servidor: un
    INSERT con esta clave devuelve 401. */
 const URL = 'https://exgpmjpaaebyoolpwced.supabase.co';
-const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const CLAVE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 
 const CLAVE_INSTALACION = 'rwadar.instalacion';
 

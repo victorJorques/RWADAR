@@ -19,7 +19,7 @@
    solo crea y destruye una cuenta de usar y tirar.
    ===================================================================== */
 const URL_BASE = 'https://exgpmjpaaebyoolpwced.supabase.co';
-const CLAVE    = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const CLAVE    = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const REST     = URL_BASE + '/rest/v1';
 
 const ok = [], fail = [], notas = [];

@@ -70,4 +70,6 @@ http.createServer((req, res) => {
     'Cache-Control': 'no-store',
   });
   fs.createReadStream(f).pipe(res);
-}).listen(PUERTO, () => console.log('RWAdar en http://localhost:' + PUERTO));
+// Atado a 127.0.0.1 a proposito: solo este ordenador. Sin el segundo
+// argumento Node escucha en 0.0.0.0 y cualquiera de la misma WiFi entraria.
+}).listen(PUERTO, '127.0.0.1', () => console.log('RWAdar en http://localhost:' + PUERTO));

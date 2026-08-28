@@ -8,9 +8,12 @@
    navegador, así que no hay discrepancia entre lo que ve el buscador y el
    visitante.
 
-   Uso:  node rwadar-publicar.js                    sincroniza, pre-renderiza y publica
-         node rwadar-publicar.js --local            solo pre-renderiza, no sube nada
+   Uso:  node rwadar-publicar.js --local            solo pre-renderiza, no sube nada
          node rwadar-publicar.js --sin-sincronizar  no consulta Supabase
+
+   OJO: PUBLICAR ESTÁ DESACTIVADO A PROPÓSITO desde el 25 de agosto de 2026.
+   RWAdar está fuera de internet porque Víctor lo pidió. Ver `RWADAR-APAGADO.md`.
+   `--local` sigue funcionando: pre-renderiza sin subir nada.
    ===================================================================== */
 const fs = require('fs');
 const vm = require('vm');
@@ -19,7 +22,40 @@ const { execFileSync } = require('child_process');
 
 const DIR = path.join(__dirname, 'rwadar-site');
 const FILE = path.join(DIR, 'index.html');
-const SITE = '0211fd28-d371-43cd-9d93-3944fea57680';
+
+/* El sitio original se borró al retirar RWAdar de internet, así que este id
+   ya no existe y el despliegue fallaría de todos modos. Se deja escrito para
+   que quede claro que NO es el sitio actual.
+
+   El sitio que hoy responde en rwadar.netlify.app es otro
+   (f13a4520-b3e2-4668-9ec2-6c1f52d1b999) y sirve la página de limpieza que
+   desinstala las copias que la gente tiene en el móvil. Publicar RWAdar encima
+   la mataría y devolvería la web al público de una sentada: por eso hace falta
+   una bandera explícita, y por eso no basta con cambiar el id de aquí. */
+const SITE = '0211fd28-d371-43cd-9d93-3944fea57680';  // borrado, no vale
+
+const SOLO_LOCAL = process.argv.includes('--local');
+const REPUBLICAR = process.argv.includes('--republicar-de-verdad');
+
+if (!SOLO_LOCAL && !REPUBLICAR) {
+  console.error(`
+  RWAdar está fuera de internet a propósito. No se publica.
+
+  Lo que hay ahora en rwadar.netlify.app y rwadar.pages.dev NO es la web:
+  es una página que desinstala las copias que quedaron en móviles ajenos.
+  Publicar encima la borraría y volvería a exponer el sitio.
+
+  Si de verdad toca republicar, antes hay que:
+    1. Decidir cuál de las dos versiones es la buena (siguen sin fusionarse).
+    2. Retirar a conciencia la página de limpieza del destino.
+    3. Crear el sitio de destino y poner su id en SITE.
+  Y entonces:  node rwadar-publicar.js --republicar-de-verdad
+
+  Mientras tanto:  node rwadar-publicar.js --local
+  Contexto completo en RWADAR-APAGADO.md
+`);
+  process.exit(1);
+}
 
 /* ---- 0 · traer el contenido desde la base de datos ---- */
 if (!process.argv.includes('--sin-sincronizar')) {

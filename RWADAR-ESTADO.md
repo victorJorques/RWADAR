@@ -117,7 +117,7 @@ internet.
 Netlify site   : 0211fd28-d371-43cd-9d93-3944fea57680
 Supabase ref   : exgpmjpaaebyoolpwced
 Supabase URL   : https://exgpmjpaaebyoolpwced.supabase.co
-Clave pública  : sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F
+Clave pública  : sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n
 ```
 
 La clave pública va dentro de la web y de la app **a propósito**: es pública

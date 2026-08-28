@@ -25,12 +25,22 @@
 !/rwadar-banco-de-sonidos.html
 !/rwadar-qr/
 
+# La version que hizo Codex en Cloudflare. Se rescato descargandola justo
+# antes de apagar el hosting porque NO existía en ningún otro sitio: ni en
+# el disco ni aquí. Mientras siga siendo la única copia, va versionada.
+!/rwadar-version-codex/
+
+# La página que desinstala las copias que quedaron en móviles ajenos.
+# Está viva en rwadar.netlify.app y rwadar.pages.dev: es infraestructura.
+!/rwadar-limpieza/
+
 # La documentación del proyecto
 !/RWADAR-ESTADO.md
 !/RWADAR-TRASPASO.md
 !/RWADAR-MAPA.md
 !/RWADAR-MANANA.md
 !/RWADAR-TECNICO.md
+!/RWADAR-APAGADO.md
 !/CLAUDE.md
 
 # Dentro de esas carpetas, lo que nunca se versiona
@@ -43,3 +53,8 @@ web-build/
 *.apk
 *.aab
 supabase/.temp/
+
+# La clave del servidor local, y el QR que la lleva codificada dentro.
+# Son la llave de casa: no se suben aunque el repositorio sea privado.
+/rwadar-version-codex/.clave-local
+/rwadar-version-codex/qr-movil.png

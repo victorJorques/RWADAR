@@ -14,7 +14,7 @@
    borra la instalación de prueba que ha creado.
    ===================================================================== */
 const URL_BASE = 'https://exgpmjpaaebyoolpwced.supabase.co';
-const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const CLAVE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const REST = URL_BASE + '/rest/v1';
 
 /* El identificador se genera con el mismo formato que `lib/supabase.js`.

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Dirección no disponible</title>
+<style>
+  html { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh;
+    display: grid; place-items: center;
+    background: #0B0A0A; color: #8A8378;
+    font: 15px/1.6 system-ui, -apple-system, sans-serif;
+    padding: 2rem; text-align: center;
+  }
+</style>
+</head>
+<body>
+  <p>Esta dirección ya no está en uso.</p>
+
+<script>
+/* Único trabajo de esta página: deshacer la aplicación que quedó instalada
+   en los aparatos de quien la añadió a su pantalla de inicio.
+
+   Funciona porque el service worker anterior pedía la página a la red antes
+   que a su copia guardada. Al abrirse con internet llega hasta aquí, y aquí
+   se borra a sí mismo. Sin esto seguiría funcionando de memoria para
+   siempre, y no hay forma de alcanzarlo de otra manera.
+
+   Se hace por partida doble —desde la página y desde el propio sw.js— porque
+   cuál de los dos llega primero depende del navegador. */
+(async () => {
+  try {
+    if ('caches' in window) {
+      const nombres = await caches.keys();
+      await Promise.all(nombres.map(n => caches.delete(n)));
+    }
+  } catch (_) { /* modo privado o cuota: nada que hacer, seguimos */ }
+
+  try {
+    if ('serviceWorker' in navigator) {
+      const registros = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(registros.map(r => r.unregister()));
+    }
+  } catch (_) {}
+
+  try { localStorage.clear(); sessionStorage.clear(); } catch (_) {}
+})();
+</script>
+</body>
+</html>

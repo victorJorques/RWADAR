@@ -385,7 +385,7 @@ los sobrescribe.
   repinta si algo cambió (`async function alDia`).
 - **Antes de publicar**, comprobar que ninguna descartada va sin fuente:
   ```bash
-  curl -s -H "apikey: sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F" \
+  curl -s -H "apikey: sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n" \
     "https://exgpmjpaaebyoolpwced.supabase.co/rest/v1/plataformas?estado=eq.descartada&select=nombre,fuentes(url)"
   ```
   Cualquiera con `fuentes: []` es motivo para no publicar.

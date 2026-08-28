@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const BASE = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
-const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const CLAVE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 
 const q = (v) => (v === null || v === undefined ? 'null' : `'${String(v).replace(/'/g, "''")}'`);
 
