@@ -1,14 +1,20 @@
 /* =====================================================================
    RWAdar · sincroniza la web con la base de datos
    ---------------------------------------------------------------------
-   Lee el contenido desde Supabase y reescribe los arrays P y FUERA
-   dentro de rwadar-site/index.html.
+   Lee el contenido desde Supabase y reescribe los arrays P, FUERA y EMI
+   en las DOS versiones de la web que hay en el disco.
 
    Por qué así y no leyendo desde el navegador: si la página pidiera los
    datos al cargar, el robot de Google volvería a encontrarla vacía y
    perderíamos el pre-renderizado. Generando en tiempo de publicación,
    la base de datos manda y el HTML sigue siendo completo desde el
    primer byte.
+
+   Por qué las dos: hasta el 28 de agosto de 2026 esto solo tocaba
+   `rwadar-site/`, así que la versión que hizo Codex —la más avanzada en
+   móvil— tenía los datos congelados en el día que se construyó. Una
+   plataforma descartada en la base no llegaba a ella. Ahora las dos beben
+   de la misma fuente. Ver `RWADAR-APAGADO.md`.
    ===================================================================== */
 const fs = require('fs');
 const path = require('path');
@@ -18,6 +24,17 @@ const CLAVE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const SITIO = path.join(__dirname, '..', 'rwadar-site');
 const HTML = path.join(SITIO, 'index.html');
 const CSV = path.join(SITIO, 'rwadar.csv');
+
+/* La versión de Codex lleva su JavaScript aparte y con el hash en el
+   nombre, así que se busca en vez de escribirse a mano: si se reconstruye,
+   el hash cambia y esto sigue encontrándolo. Si la carpeta no está, no
+   pasa nada: se sincroniza solo lo que haya. */
+function jsDeCodex() {
+  const dir = path.join(__dirname, '..', 'rwadar-version-codex', 'assets');
+  if (!fs.existsSync(dir)) return null;
+  const js = fs.readdirSync(dir).filter(f => f.endsWith('.js'));
+  return js.length === 1 ? path.join(dir, js[0]) : null;
+}
 
 async function pedir(ruta) {
   const r = await fetch(`${URL_BASE}/${ruta}`, { headers: { apikey: CLAVE } });
@@ -64,14 +81,15 @@ const j = (s) => JSON.stringify(s == null ? '' : String(s));
            `fuentes:[${fuentes}]},`;
   }).join('\n');
 
-  let html = fs.readFileSync(HTML, 'utf8');
-
-  const sustituir = (nombre, cuerpo) => {
-    const ini = html.indexOf(`const ${nombre}=[`);
-    if (ini < 0) throw new Error(`no encuentro el array ${nombre}`);
-    const fin = html.indexOf('\n];', ini);
-    if (fin < 0) throw new Error(`no encuentro el cierre de ${nombre}`);
-    html = html.slice(0, ini) + `const ${nombre}=[\n${cuerpo}` + html.slice(fin);
+  /* Se sustituye sobre un texto cualquiera, no sobre una variable global,
+     porque ahora hay dos ficheros que actualizar y el procedimiento es
+     idéntico en los dos. */
+  const sustituir = (texto, nombre, cuerpo, donde) => {
+    const ini = texto.indexOf(`const ${nombre}=[`);
+    if (ini < 0) throw new Error(`no encuentro el array ${nombre} en ${donde}`);
+    const fin = texto.indexOf('\n];', ini);
+    if (fin < 0) throw new Error(`no encuentro el cierre de ${nombre} en ${donde}`);
+    return texto.slice(0, ini) + `const ${nombre}=[\n${cuerpo}` + texto.slice(fin);
   };
 
   /* Las claves van cortas porque este array viaja en el HTML de todos los
@@ -97,11 +115,19 @@ const j = (s) => JSON.stringify(s == null ? '' : String(s));
     `url:${j(e.url)},ver:${j(e.verificada_el)},pat:${e.patrocinada ? 'true' : 'false'}},`
   ).join('\n');
 
-  sustituir('P', P);
-  sustituir('FUERA', F);
-  sustituir('EMI', E);
+  const destinos = [{ ruta: HTML, nombre: 'rwadar-site/index.html' }];
+  const codex = jsDeCodex();
+  if (codex) destinos.push({ ruta: codex, nombre: 'rwadar-version-codex/' + path.basename(codex) });
 
-  fs.writeFileSync(HTML, html, 'utf8');
+  for (const d of destinos) {
+    let texto = fs.readFileSync(d.ruta, 'utf8');
+    texto = sustituir(texto, 'P', P, d.nombre);
+    texto = sustituir(texto, 'FUERA', F, d.nombre);
+    texto = sustituir(texto, 'EMI', E, d.nombre);
+    fs.writeFileSync(d.ruta, texto, 'utf8');
+    console.log(`  sincronizado: ${d.nombre}`);
+  }
+  if (!codex) console.log('  (no hay rwadar-version-codex/: solo se sincroniza rwadar-site)');
 
   /* El mismo CSV que descarga el botón de la página, pero como archivo de
      verdad en una dirección estable. El botón exporta lo que el visitante
