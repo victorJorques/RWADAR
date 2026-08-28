@@ -1,5 +1,8 @@
 # RWAdar · estado operativo para retomar
 
+> **ARCHIVO HISTÓRICO.** No representa el estado actual. Consulta
+> `../../INTERNO.md` antes de usar cualquier cifra, despliegue o prioridad.
+
 > Reconciliado el 22 de agosto de 2026 después de la publicación en Cloudflare
 > Pages. Para estado y prioridades, este documento y
 > `RWADAR-TRASPASO.md` sustituyen las notas del 13–14 de agosto.

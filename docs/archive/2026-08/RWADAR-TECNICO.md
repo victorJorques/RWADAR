@@ -1,5 +1,8 @@
 # RWAdar · valor técnico y límites actuales
 
+> **ARCHIVO HISTÓRICO.** No representa el estado actual. Consulta
+> `../../INTERNO.md` antes de usar cualquier cifra, despliegue o prioridad.
+
 > Documento explicativo para clientes, socios o colaboradores. Reconciliado el
 > 22 de agosto de 2026 sobre la entrega publicada en Cloudflare Pages.
 > Para trabajar usa `RWADAR-TRASPASO.md`, `RWADAR-MANANA.md` y

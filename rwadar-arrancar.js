@@ -1,10 +1,11 @@
 /* =====================================================================
    RWAdar · arrancar
    ---------------------------------------------------------------------
-       node rwadar-arrancar.js
+       node rwadar-arrancar.js [--comprobar-remoto]
 
    Un solo comando para estar operativo. Dice en qué estado está todo
-   —lo local, lo publicado y la base de datos— y levanta el servidor.
+   Valida lo local y levanta el servidor. Solo con --comprobar-remoto
+   consulta Supabase y el antiguo origen público.
 
    Existe para no gastar media sesión averiguando cosas que se pueden
    comprobar en cuatro segundos: si el JavaScript compila, si lo que hay
@@ -21,8 +22,9 @@ const SITIO = path.join(DIR, 'rwadar-site');
 const PUBLICADO = path.join(DIR, 'rwadar-publicado');
 const HTML  = path.join(SITIO, 'index.html');
 const API   = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
-const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const CLAVE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const VIVO  = 'https://rwadar.pages.dev/';
+const COMPROBAR_REMOTO = process.argv.includes('--comprobar-remoto');
 
 const verde = t => `\x1b[32m${t}\x1b[0m`;
 const rojo  = t => `\x1b[31m${t}\x1b[0m`;
@@ -103,7 +105,8 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
       : `.netlify quiere publicar "${destino}", que NO es rwadar-publicado: bórralo`);
   }
 
-  /* ---- 2 · la base de datos ---- */
+  if (COMPROBAR_REMOTO) {
+  /* ---- 2 · la base de datos (opt-in) ---- */
   const pide = async ruta => {
     const r = await fetch(API + ruta, { headers: { apikey: CLAVE } });
     if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -168,12 +171,15 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
   } catch (e) {
     mal('no se pudo leer el sitio publicado: ' + e.message);
   }
+  } else {
+    console.log(gris('  remoto omitido  → usa --comprobar-remoto solo si necesitas lecturas de producción'));
+  }
 
   /* ---- 4 · a trabajar ---- */
   console.log(gris('─'.repeat(58)));
-  console.log('  Dónde está cada cosa  ' + gris('→ RWADAR-MAPA.md'));
-  console.log('  Por qué está así      ' + gris('→ RWADAR-ESTADO.md (tiene índice)'));
-  console.log('  Preparar artefacto     ' + gris('→ node rwadar-publicar.js --local'));
+  console.log('  Estado y mapa          ' + gris('→ docs/INTERNO.md'));
+  console.log('  Operar y probar        ' + gris('→ docs/RUNBOOK.md'));
+  console.log('  Preparar sin red       ' + gris('→ node rwadar-publicar.js --local --sin-sincronizar'));
   console.log(gris('─'.repeat(58)) + '\n');
 
   execFile('node', [path.join(DIR, 'rwadar-servir.js')], { stdio: 'inherit' });

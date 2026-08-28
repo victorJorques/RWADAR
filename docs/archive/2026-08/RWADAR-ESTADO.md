@@ -1,5 +1,8 @@
 # RWAdar · estado del proyecto
 
+> **ARCHIVO HISTÓRICO.** No representa el estado actual. Consulta
+> `../../INTERNO.md` antes de usar cualquier cifra, despliegue o prioridad.
+
 > Documento de traspaso. Léelo entero antes de tocar nada: hay decisiones
 > que parecen arbitrarias y no lo son, y dos o tres trampas que ya nos
 > costaron tiempo una vez.
@@ -127,7 +130,7 @@ Cloudflare Pages: rwadar (deployment actual b247c02d...)
 Netlify legado : 0211fd28-d371-43cd-9d93-3944fea57680
 Supabase ref   : exgpmjpaaebyoolpwced
 Supabase URL   : https://exgpmjpaaebyoolpwced.supabase.co
-Clave pública  : sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F
+Clave pública  : sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n
 ```
 
 La clave publicable va dentro de la web y de la app **a propósito**. Identifica

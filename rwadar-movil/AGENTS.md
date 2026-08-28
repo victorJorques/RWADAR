@@ -1,3 +1,6 @@
-# Expo HAS CHANGED
+# RWAdar móvil
 
-Read the exact versioned docs at https://docs.expo.dev/versions/v57.0.0/ before writing any code.
+Hereda las reglas de `../AGENTS.md`. Solo cuando se cambien APIs,
+dependencias o configuración de Expo, consulta la documentación exacta de
+Expo 57 antes de editar. No ejecutar `eas update`, `eas build` ni `eas submit`
+sin autorización explícita del usuario.

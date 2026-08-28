@@ -20,6 +20,9 @@
 !/probar-web.mjs
 !/PLAN-GIT-Y-RESPALDOS.md
 !/SECURITY.md
+!/AGENTS.md
+!/docs/
+!/docs/**
 
 # El sitio publicable y las herramientas que lo construyen
 !/rwadar-site/
@@ -34,13 +37,10 @@
 !/rwadar-servir.js
 !/rwadar-banco-de-sonidos.html
 !/rwadar-qr/
+!/rwadar-limpieza/
+!/rwadar-version-codex/
 
 # La documentación del proyecto
-!/RWADAR-ESTADO.md
-!/RWADAR-TRASPASO.md
-!/RWADAR-MAPA.md
-!/RWADAR-MANANA.md
-!/RWADAR-TECNICO.md
 !/CLAUDE.md
 
 # Dentro de esas carpetas, lo que nunca se versiona
@@ -70,6 +70,8 @@ google-services.json
 GoogleService-Info.plist
 service-role*.json
 credentials*.json
+**/.clave-local
+**/qr-movil.png
 .claude/
 coverage/
 .cache/

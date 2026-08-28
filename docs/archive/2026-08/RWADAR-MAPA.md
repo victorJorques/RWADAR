@@ -1,5 +1,8 @@
 # RWAdar · mapa de navegación
 
+> **ARCHIVO HISTÓRICO.** La fuente evolucionó después de este mapa. Consulta
+> `../../INTERNO.md` y localiza el código vigente con `rg`.
+
 > **Léeme antes de abrir `index.html`.** Este documento existe para ir
 > directo al sitio exacto y no gastar el turno buscando. El *por qué* de
 > cada decisión está en `RWADAR-ESTADO.md`; aquí está el *dónde*.
@@ -467,7 +470,7 @@ siguiente publicación los sobrescribe.
   repinta si algo cambió (`async function alDia`).
 - **Antes de publicar**, comprobar que ninguna descartada va sin fuente:
   ```bash
-  curl -s -H "apikey: sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F" \
+  curl -s -H "apikey: sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n" \
     "https://exgpmjpaaebyoolpwced.supabase.co/rest/v1/plataformas?estado=eq.descartada&select=nombre,fuentes(url)"
   ```
   Cualquiera con `fuentes: []` es motivo para no publicar.

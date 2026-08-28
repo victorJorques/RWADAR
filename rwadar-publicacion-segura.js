@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SUPABASE_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co/auth/v1';
-const CLAVE_PUBLICA = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const CLAVE_PUBLICA = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const ORIGEN_PUBLICO = 'https://rwadar.pages.dev';
 const ORIGEN_LEGADO = 'https://rwadar.netlify.app';
 const PROYECTO_CLOUDFLARE = 'rwadar';

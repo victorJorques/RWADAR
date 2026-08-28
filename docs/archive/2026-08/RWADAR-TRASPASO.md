@@ -1,5 +1,8 @@
 # RWAdar · traspaso vigente
 
+> **ARCHIVO HISTÓRICO.** Este traspaso dejó de ser vigente al apagarse RWAdar.
+> El estado canónico está en `../../INTERNO.md`.
+
 **Reconciliado el 22 de agosto de 2026.** Este documento parte del traspaso
 preparado con Claude Code los días 17–20 de agosto y del commit base
 `42018de`. Por indicación de los responsables, esa información tiene prioridad

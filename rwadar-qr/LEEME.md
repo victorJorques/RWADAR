@@ -4,7 +4,7 @@ El código lleva a **https://rwadar.pages.dev**, que es la web pública y
 funciona igual en el móvil. *No* lleva a la app de las tiendas: a 15 de
 agosto de 2026 la app móvil está terminada pero sin publicar, porque eso
 depende de dos cuentas de desarrollador que aún no están abiertas
-(`RWADAR-ESTADO.md` → «Lo único que bloquea el avance»). Cuando la app esté
+(`docs/INTERNO.md` → «Pendientes reales»). Cuando la app esté
 en Google Play o en la App Store, se regenera apuntando allí:
 
 ```bash

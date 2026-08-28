@@ -44,6 +44,17 @@ if (modos.length !== 1) {
 const preview = modos[0] === '--preview';
 const produccion = modos[0] === '--produccion';
 const remoto = preview || produccion;
+const MODO_PRIVADO = true;
+
+/* RWAdar está retirado de internet. El bloqueo ocurre antes de consultar
+   Auth, sincronizar datos, generar el artefacto o invocar Wrangler. Volver a
+   publicar exige una decisión explícita y un cambio revisable de este código;
+   no hay variable de entorno ni bandera oculta que lo salte por accidente. */
+if (MODO_PRIVADO && remoto) {
+  console.error('PUBLICACION REMOTA BLOQUEADA: RWAdar está en modo privado y apagado.');
+  console.error('Usa --local. Para republicar, sigue docs/RUNBOOK.md y revisa este bloqueo.');
+  process.exit(2);
+}
 
 /* Comprobar el estado declarado antes de consultar la base o generar
    artefactos. La política puede transparentar que el acuerdo interno sigue

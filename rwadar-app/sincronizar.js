@@ -14,7 +14,7 @@ const fs = require('fs');
 const path = require('path');
 
 const URL_BASE = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
-const CLAVE = 'sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const CLAVE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const SITIO = path.join(__dirname, '..', 'rwadar-site');
 const JS = path.join(SITIO, 'assets', 'rwadar-20260820.js');
 const CSV = path.join(SITIO, 'rwadar.csv');

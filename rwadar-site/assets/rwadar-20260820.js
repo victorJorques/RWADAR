@@ -1791,7 +1791,7 @@ function contarHasta(el,fin){
    nada: se queda la foto, que es contenido válido.
    ================================================================= */
 const API='https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
-const CLAVE_PUB='sb_publishable_LIyeUqwsQGCqSwH6dtsaqQ_HUQ-RX8F';
+const CLAVE_PUB='sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 
 /* La huella incluye todos los campos visibles. La anterior omitía textos y
    fuentes, de modo que una corrección editorial podía no llegar al visitante. */

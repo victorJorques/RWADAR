@@ -37,7 +37,7 @@ const capturadorPortadas = fs.readFileSync(path.join(raiz, 'rwadar-capturar-port
 const sincronizador = fs.readFileSync(path.join(raiz, 'rwadar-app', 'sincronizar.js'), 'utf8');
 const servidor = fs.readFileSync(path.join(raiz, 'rwadar-servir.js'), 'utf8');
 const arrancador = fs.readFileSync(path.join(raiz, 'rwadar-arrancar.js'), 'utf8');
-const documentos = ['CLAUDE.md','RWADAR-MAPA.md','RWADAR-TRASPASO.md','RWADAR-ESTADO.md','RWADAR-MANANA.md']
+const documentos = ['AGENTS.md','CLAUDE.md','docs/INTERNO.md','docs/RUNBOOK.md']
   .map(n=>fs.readFileSync(path.join(raiz,n),'utf8')).join('\n');
 let correctas = 0;
 
@@ -1470,6 +1470,10 @@ prueba('un cambio de código o datos invalida nombre de asset y VERSION',
 console.log('\n=== PUBLICADOR, SINCRONIZADOR Y SERVIDOR ===');
 prueba('el publicador exige exactamente un modo explícito',
   /modos\.length !== 1/.test(publicador) && /--local \| --preview \| --produccion/.test(publicador));
+prueba('el modo privado bloquea cualquier publicación antes de preparar el artefacto',
+  /const MODO_PRIVADO = true/.test(publicador) &&
+  /MODO_PRIVADO && remoto/.test(publicador) &&
+  publicador.indexOf('MODO_PRIVADO && remoto') < publicador.indexOf('async function main()'));
 prueba('Wrangler está fijado a una versión exacta', /WRANGLER_VERSION = '\d+\.\d+\.\d+'/.test(publicador));
 prueba('el publicador usa ComSpec en Windows y evita el EINVAL de ejecutar npx.cmd directamente',
   /process\.env\.ComSpec \|\| 'cmd\.exe'/.test(publicador) &&
@@ -1648,6 +1652,9 @@ prueba('la documentación exige modo explícito y no recomienda promoción autom
 
 const sinModo = spawnSync(process.execPath, ['rwadar-publicar.js'], { cwd:raiz, encoding:'utf8' });
 prueba('invocar el publicador sin modo falla sin desplegar', sinModo.status===2 && /modo es obligatorio/.test(sinModo.stderr));
+const remotoBloqueado = spawnSync(process.execPath, ['rwadar-publicar.js','--preview','--sin-sincronizar'], { cwd:raiz, encoding:'utf8' });
+prueba('invocar un modo remoto falla por privacidad antes de usar red',
+  remotoBloqueado.status===2 && /modo privado y apagado/.test(remotoBloqueado.stderr));
 prueba('el contrato legal acepta el pendiente transparente y rechaza todo blocker',
   comprobarEstadoLegalPublicacion(privacidad) === 'acuerdo-pendiente-de-documentar' &&
   /data-deploy-blocker/.test((await capturaError(Promise.resolve().then(() =>
