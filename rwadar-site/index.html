@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>RWAdar · Todas las plataformas RWA en un solo radar</title>
-<meta name="description" content="Entiende qué es tokenizar y compara 26 plataformas de activos reales que superan el filtro de RWAdar; los 4 descartes se publican con fuentes verificables.">
+<title>RWAdar · Plataformas y ofertas de activos tokenizados</title>
+<meta name="description" content="Explora plataformas y ofertas de activos tokenizados con fuentes, fechas y advertencias. Consulta qué se ha podido verificar y qué sigue pendiente.">
 <meta name="theme-color" content="#0B0A0A">
 <meta name="color-scheme" content="dark">
 <meta name="author" content="RWAdar">
@@ -22,8 +22,8 @@
 <meta property="og:locale" content="es_ES">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rwadar.pages.dev/">
-<meta property="og:title" content="RWAdar · Todas las plataformas RWA en un solo radar">
-<meta property="og:description" content="Analizamos 38 plataformas de activos tokenizados. Solo 26 pasan el filtro. Los descartes, publicados con su fuente.">
+<meta property="og:title" content="RWAdar · Plataformas y ofertas de activos tokenizados">
+<meta property="og:description" content="Plataformas y ofertas con fuentes, fechas y advertencias. Aparecer en el radar no implica autorización, disponibilidad para invertir ni recomendación.">
 <meta property="og:image" content="https://rwadar.pages.dev/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -31,8 +31,8 @@
 <meta property="og:image:alt" content="RWAdar · 38 plataformas analizadas, 26 en el radar, descartes documentados.">
 <meta property="og:updated_time" content="2026-08-22T00:00:00+02:00">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="RWAdar · Todas las plataformas RWA en un solo radar">
-<meta name="twitter:description" content="Analizamos 38 plataformas de activos tokenizados. Solo 26 pasan el filtro. Los descartes, publicados con su fuente.">
+<meta name="twitter:title" content="RWAdar · Plataformas y ofertas de activos tokenizados">
+<meta name="twitter:description" content="Plataformas y ofertas con fuentes, fechas y advertencias. Aparecer en el radar no implica autorización, disponibilidad para invertir ni recomendación.">
 <meta name="twitter:image" content="https://rwadar.pages.dev/og.png">
 <meta name="twitter:image:alt" content="RWAdar · 38 plataformas analizadas, 26 en el radar, descartes documentados.">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -49,14 +49,14 @@
  {"@type":"WebSite","@id":"https://rwadar.pages.dev/#website","url":"https://rwadar.pages.dev/","name":"RWAdar",
   "description":"Registro curado de plataformas de tokenización de activos reales (RWA).","inLanguage":"es-ES",
   "publisher":{"@id":"https://rwadar.pages.dev/#org"}},
- {"@type":"WebPage","@id":"https://rwadar.pages.dev/#webpage","url":"https://rwadar.pages.dev/","name":"RWAdar · Todas las plataformas RWA en un solo radar","isPartOf":{"@id":"https://rwadar.pages.dev/#website"},"about":{"@id":"https://rwadar.pages.dev/#dataset"},"inLanguage":"es-ES","dateModified":"2026-08-22"},
+ {"@type":"WebPage","@id":"https://rwadar.pages.dev/#webpage","url":"https://rwadar.pages.dev/","name":"RWAdar · Plataformas y ofertas de activos tokenizados","isPartOf":{"@id":"https://rwadar.pages.dev/#website"},"about":{"@id":"https://rwadar.pages.dev/#dataset"},"inLanguage":"es-ES","dateModified":"2026-09-28"},
  {"@type":"Organization","@id":"https://rwadar.pages.dev/#org","name":"RWAdar",
   "alternateName":["RWA Radar","Radar RWA","RWAdar · Registro de tokenización"],
   "url":"https://rwadar.pages.dev/",
   "logo":"https://rwadar.pages.dev/og.png","email":"RWAdar@protonmail.com"},
  {"@type":"Dataset","@id":"https://rwadar.pages.dev/#dataset","name":"RWAdar · Registro de plataformas RWA",
-  "description":"Conjunto público de 30 plataformas de tokenización de activos reales: 26 que superan el filtro de RWAdar y 4 descartes documentados con fuentes. El análisis editorial total incluye además casos que no se publican por nombre cuando el descarte es solo cualitativo.",
-  "url":"https://rwadar.pages.dev/","inLanguage":"es-ES","isAccessibleForFree":true,"dateModified":"2026-08-22","version":"2026-08-22",
+  "description":"Registro editorial de plataformas de tokenización de activos reales y descartes documentados. La presencia en el registro no acredita autorización, apertura de una oferta ni acceso desde una jurisdicción concreta. Cada ficha distingue evidencias, fechas e incertidumbres.",
+  "url":"https://rwadar.pages.dev/","inLanguage":"es-ES","isAccessibleForFree":true,"dateModified":"2026-09-28","version":"2026-09-28",
   "license":"https://rwadar.pages.dev/#licencia","creator":{"@id":"https://rwadar.pages.dev/#org"},
   "keywords":["tokenización","RWA","activos reales","inmobiliario tokenizado","crédito privado","deuda pública tokenizada"],
   "distribution":{"@type":"DataDownload","encodingFormat":"text/csv","name":"rwadar.csv",
@@ -83,7 +83,7 @@
       <button class="snd" id="snd" aria-pressed="false" aria-label="Activar o desactivar el sonido y la respuesta táctil">
         <span class="ondas" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Sonido y tacto
       </button>
-      <button class="hdr-cuenta" id="btnCuenta">Entrar</button>
+    <button class="hdr-cuenta" id="btnCuenta" type="button" disabled>Cuentas en pausa</button>
       <button class="hdr-cta" data-ir="tool">Abrir el radar →</button>
     </nav>
   </div>
@@ -115,7 +115,7 @@
 <article class="movil-radar-intro" id="movilRadarIntro">
   <p class="movil-mini-etiqueta">RADAR INTERACTIVO</p>
   <h2>Todo el registro, de un vistazo</h2>
-  <p>Cada punto es una plataforma contrastada. Tócalo para abrir su ficha o toca una categoría para filtrar.</p>
+  <p>Cada punto es una plataforma del registro. Abre su ficha para consultar fuentes, alcance y advertencias, o toca una categoría para filtrar.</p>
 </article>
 
 <!-- ============ PORTADA ============ -->
@@ -127,8 +127,8 @@
         <div><p class="movil-mini-etiqueta">TRANSPARENCIA</p><h2>Qué analiza RWAdar</h2></div>
       </div>
       <p class="etiq">Registro independiente · no es asesoramiento financiero</p>
-      <h1>38 plataformas de tokenización analizadas. <em>26 pasan el filtro.</em></h1>
-      <p class="entrada">Trocean inmuebles, deuda, fondos, acciones y oro en participaciones digitales. Comprobamos <b>quién las supervisa</b>, si de verdad operan y si arrastran alguna crisis abierta. Publicamos también <b>las que descartamos, con la fuente al lado</b> — no con nuestra opinión.</p>
+      <h1>Plataformas de activos tokenizados. <em>Fuentes y riesgos, a la vista.</em></h1>
+      <p class="entrada">Explora inmuebles, deuda, fondos, acciones y oro. Documentamos <b>qué entidad opera, qué permisos constan y qué condiciones publica</b>. Cada ficha señala lo contrastado y lo que no hemos podido verificar. Estar en el radar no es una recomendación ni confirma que puedas invertir.</p>
       <div class="botones">
         <button class="btn-p" data-ir="tool" data-movil-ir="tool">Abrir el radar</button>
         <button class="btn-s" data-ir="explain" data-movil-action="academy">Qué es tokenizar</button>
@@ -177,9 +177,9 @@
   </div>
 
   <ul class="marcador wrap">
-    <li><span class="n">38</span><span class="l">Analizadas</span></li>
+    <li><span class="n">0 €</span><span class="l">Por aparecer en el radar</span></li>
     <li><span class="n oro" id="s1">26</span><span class="l">En el radar</span></li>
-    <li><span class="n menta" id="s3">11</span><span class="l">Abiertas a minoristas</span></li>
+    <li><span class="n menta" id="s3">—</span><span class="l">Categorías de activos</span></li>
     <li><span class="n coral" id="s4">4</span><a class="l" href="#fuera" data-movil-ir="fuera">Descartadas · con fuente</a></li>
   </ul>
 </section>
@@ -194,12 +194,20 @@
         <path d="M4 5.5h7.8l7.2 7.2-6.3 6.3-7.2-7.2z"/><circle cx="8.2" cy="8.4" r="1.2"/>
       </svg>
     </span>
-    <div><p class="movil-mini-etiqueta">OFERTAS ESPECÍFICAS</p><h3>Ofertas verificadas</h3><p>Con origen, fecha y revisión independiente.</p></div>
+    <div><p class="movil-mini-etiqueta">OFERTAS ESPECÍFICAS</p><h3 id="movilOfertasTitulo">Ofertas verificadas</h3><p id="movilOfertasBajada">Con origen, fecha y revisión independiente.</p></div>
     <span class="movil-ofertas-estado" id="movilOfertasEstado" aria-live="polite">0 abiertas</span>
   </article>
+  <aside class="escaparate-local-aviso" id="escaparateLocalAviso" hidden aria-live="polite">
+    <span class="escaparate-local-marca">INTERNO · SOLO LOCAL</span>
+    <div>
+      <b>Escaparate de revisión aislado de producción</b>
+      <p>Esta vista usa una copia local del material entregado. No consulta Supabase, no permite cuentas ni escribe seguimientos.</p>
+    </div>
+  </aside>
   <div class="emis-cab">
     <div>
-      <h2>Abierto ahora mismo</h2>
+      <h2 id="emiTitulo">Abierto ahora mismo</h2>
+      <p class="emis-sub solo-escaparate-local" id="emiBajada" hidden></p>
     </div>
     <div class="emis-orden">
       <label for="emiOrden">Ordenar por</label>
@@ -212,19 +220,49 @@
     </div>
   </div>
 
+  <div class="escaparate-busqueda solo-escaparate-local" id="escaparateBusqueda" hidden>
+    <label for="emiBuscar">Buscar por oferta, empresa, país o activo</label>
+    <input id="emiBuscar" type="search" autocomplete="off" placeholder="Ej.: Midas, inmobiliario, Suiza…">
+  </div>
+  <div class="emis-filtros solo-escaparate-local" id="emiTipoFiltros" hidden></div>
   <div class="emis-filtros" id="emiFiltros"></div>
-  <div class="emis-rejilla" id="emiLista"><!--pre:ini--><div class="emis-vacio"><h3>Sin emisiones abiertas</h3><p>Publicaremos aquí las primeras cuando su origen y sus cifras estén comprobados.</p></div><!--pre:fin--></div>
+  <div class="emis-rejilla" id="emiLista"><!--pre:ini--><article class="emi escaparate-oferta cat-3"><div class="escaparate-imagen"><img src="/ofertas-editoriales/capital-privado-rwadar.webp" alt="Ilustración editorial de acciones y capital privado tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Valor</span><span class="escaparate-estado vigente">revisar hoy</span><span class="escaparate-destacado"><b>Consultar fuente</b><small>Precio de referencia</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Aktionariat · BOSS</b><span>·</span>Acciones y capital privado<span>·</span>CH</div><h3 class="emi-tit">Boss Info</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><div class="escaparate-metricas"><div class="escaparate-metrica"><b>Descripción documental contrastada; consulta las condiciones.</b><span>Revisión</span></div></div><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://shares.bossinfo.com/" target="_blank" rel="noopener nofollow" aria-label="Ver oferta en Aktionariat · BOSS · Boss Info · Aktionariat · BOSS">Ver oferta en Aktionariat · BOSS ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-3"><div class="escaparate-imagen"><img src="/ofertas-editoriales/capital-privado-rwadar.webp" alt="Ilustración editorial de acciones y capital privado tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Valor</span><span class="escaparate-estado vigente">revisar hoy</span><span class="escaparate-destacado"><b>6,25 CHF</b><small>Precio de referencia</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Aktionariat · DAKS</b><span>·</span>Acciones y capital privado<span>·</span>CH</div><h3 class="emi-tit">Aktionariat</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-referencia">último cruce · 22 sep 2026; no precio de ejecución garantizado</p><div class="escaparate-metricas"><div class="escaparate-metrica"><b>último cruce · 22 sep 2026; no precio de ejecución garantizado</b><span>Unidad / referencia</span></div><div class="escaparate-metrica"><b>Descripción documental contrastada; consulta las condiciones.</b><span>Revisión</span></div></div><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://shares.aktionariat.com/" target="_blank" rel="noopener nofollow" aria-label="Ver oferta en Aktionariat · DAKS · Aktionariat · Aktionariat · DAKS">Ver oferta en Aktionariat · DAKS ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-3"><div class="escaparate-imagen"><img src="/ofertas-editoriales/capital-privado-rwadar.webp" alt="Ilustración editorial de acciones y capital privado tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Valor</span><span class="escaparate-estado vigente">revisar hoy</span><span class="escaparate-destacado"><b>Consultar fuente</b><small>Precio de referencia</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Aktionariat · DQTS</b><span>·</span>Acciones y capital privado<span>·</span>CH</div><h3 class="emi-tit">ServiceHunter · quitt</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><div class="escaparate-metricas"><div class="escaparate-metrica"><b>Descripción documental contrastada; consulta las condiciones.</b><span>Revisión</span></div></div><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://shares.quitt.ch/" target="_blank" rel="noopener nofollow" aria-label="Ver oferta en Aktionariat · DQTS · ServiceHunter · quitt · Aktionariat · DQTS">Ver oferta en Aktionariat · DQTS ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-3"><div class="escaparate-imagen"><img src="/ofertas-editoriales/capital-privado-rwadar.webp" alt="Ilustración editorial de acciones y capital privado tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Valor</span><span class="escaparate-estado vigente">revisar hoy</span><span class="escaparate-destacado"><b>68,01 CHF</b><small>Precio de referencia</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Aktionariat · LENDS</b><span>·</span>Acciones y capital privado<span>·</span>CH</div><h3 class="emi-tit">Switzerlend</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-referencia">último cruce · 25 sep 2026; no precio de ejecución garantizado</p><div class="escaparate-metricas"><div class="escaparate-metrica"><b>último cruce · 25 sep 2026; no precio de ejecución garantizado</b><span>Unidad / referencia</span></div><div class="escaparate-metrica"><b>Descripción documental contrastada; consulta las condiciones.</b><span>Revisión</span></div></div><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://shares.lend.ch/" target="_blank" rel="noopener nofollow" aria-label="Ver oferta en Aktionariat · LENDS · Switzerlend · Aktionariat · LENDS">Ver oferta en Aktionariat · LENDS ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-3"><div class="escaparate-imagen"><img src="/ofertas-editoriales/capital-privado-rwadar.webp" alt="Ilustración editorial de acciones y capital privado tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Valor</span><span class="escaparate-estado vigente">revisar hoy</span><span class="escaparate-destacado"><b>8,38 CHF</b><small>Precio de referencia</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Aktionariat · WMKT</b><span>·</span>Acciones y capital privado<span>·</span>CH</div><h3 class="emi-tit">wemakeit</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-referencia">valor definido por el emisor, observado el 27-09-2026</p><div class="escaparate-metricas"><div class="escaparate-metrica"><b>valor definido por el emisor, observado el 27-09-2026</b><span>Unidad / referencia</span></div><div class="escaparate-metrica"><b>Descripción documental contrastada; consulta las condiciones.</b><span>Revisión</span></div></div><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://shares.wemakeit.com/" target="_blank" rel="noopener nofollow" aria-label="Ver oferta en Aktionariat · WMKT · wemakeit · Aktionariat · WMKT">Ver oferta en Aktionariat · WMKT ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-4"><div class="escaparate-imagen"><img src="/ofertas-editoriales/materias-primas-rwadar.webp" alt="Ilustración editorial de materias primas tokenizadas" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Valor</span><span class="escaparate-estado vigente">revisar hoy</span><span class="escaparate-destacado"><b>Consultar fuente</b><small>Precio de referencia</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Prosegur Crypto</b><span>·</span>Materias primas<span>·</span>ES</div><h3 class="emi-tit">Prosegur Digital Gold</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><div class="escaparate-metricas"><div class="escaparate-metrica"><b>1 g de oro por token</b><span>Unidad descrita</span></div><div class="escaparate-metrica"><b>Polygon · ERC-3643</b><span>Tecnología publicada</span></div></div><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://www.prosegurcrypto.com/digital-gold" target="_blank" rel="noopener nofollow" aria-label="Ver oferta en Prosegur Crypto · Prosegur Digital Gold · Prosegur Crypto">Ver oferta en Prosegur Crypto ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-2"><div class="escaparate-imagen"><img src="/ofertas-editoriales/tesoro-fondos-rwadar.webp" alt="Ilustración editorial de tesorería y fondos tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado vigente">revisar hoy</span><span class="escaparate-destacado"><b>2,18 %</b><small>Rentabilidad publicada</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Spiko</b><span>·</span>Tesoro y fondos<span>·</span>FR</div><h3 class="emi-tit">Spiko Letras del Tesoro Euro</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-referencia">Anualizada a 30 días; NAV fechado el 27-09-2026. Variable, no garantizada.</p><div class="escaparate-metricas"><div class="escaparate-metrica"><b>Anualizada a 30 días; NAV fechado el 27-09-2026. Variable, no garantizada.</b><span>Método / ventana</span></div><div class="escaparate-metrica"><b>1 EUR</b><span>Entrada publicada</span></div></div><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://www.spiko.io/es/spiko-letras-del-tesoro-euro" target="_blank" rel="noopener nofollow" aria-label="Ver oferta en Spiko · Spiko Letras del Tesoro Euro · Spiko">Ver oferta en Spiko ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-3"><div class="escaparate-imagen"><img src="/ofertas-editoriales/capital-privado-rwadar.webp" alt="Ilustración editorial de acciones y capital privado tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Valor</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Aktionariat · EHCK</b><span>·</span>Acciones y capital privado<span>·</span>CH</div><h3 class="emi-tit">EHC Kloten</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://investor.ehc-kloten.ch/" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · EHC Kloten · Aktionariat · EHCK">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-3"><div class="escaparate-imagen"><img src="/ofertas-editoriales/capital-privado-rwadar.webp" alt="Ilustración editorial de acciones y capital privado tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Valor</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Aktionariat · LINES</b><span>·</span>Acciones y capital privado<span>·</span>CH</div><h3 class="emi-tit">Twiliner</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://tokeninfo.aktionariat.com/twiliner" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Twiliner · Aktionariat · LINES">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-3"><div class="escaparate-imagen"><img src="/ofertas-editoriales/capital-privado-rwadar.webp" alt="Ilustración editorial de acciones y capital privado tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Valor</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Alius Capital · PSFP supervisada por CNMV</b><span>·</span>Acciones y capital privado<span>·</span>ES</div><h3 class="emi-tit">Casa de Outeiro</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://aliuscap.com/projects/casa-de-outeiro" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Casa de Outeiro · Alius Capital · PSFP supervisada por CNMV">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Apartamento vacacional · Hinterstoder 50</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Apartamento vacacional · Hinterstoder 50 · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Drautalresidenz · Paternion</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Drautalresidenz · Paternion · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Fotovoltaica Cohotel</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A38J40" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Fotovoltaica Cohotel · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Fotovoltaica GreenPoint</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A38J32" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Fotovoltaica GreenPoint · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Local de estanco · Klagenfurt</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Local de estanco · Klagenfurt · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Randhartingergasse 9, Viena</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Randhartingergasse 9, Viena · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Terreno con arrendamiento BILLA</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Terreno con arrendamiento BILLA · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Vivienda · Plüddemanngasse 101, Graz</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Vivienda · Plüddemanngasse 101, Graz · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Vivienda · Pottendorfer Straße 62, Wr. Neustadt</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A324B4" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Vivienda · Pottendorfer Straße 62, Wr. Neustadt · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Vivienda · Schwarzer Weg 18, Graz</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Vivienda · Schwarzer Weg 18, Graz · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Vivienda · Sonnleithnergasse 2, Viena</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Vivienda · Sonnleithnergasse 2, Viena · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Brickwise</b><span>·</span>Inmobiliario<span>·</span>AT</div><h3 class="emi-tit">Vivienda · Stallhofstraße 28, Gratwein</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Vivienda · Stallhofstraße 28, Gratwein · Brickwise">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-2"><div class="escaparate-imagen"><img src="/ofertas-editoriales/tesoro-fondos-rwadar.webp" alt="Ilustración editorial de tesorería y fondos tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Midas</b><span>·</span>Tesoro y fondos<span>·</span>UE</div><h3 class="emi-tit">mF-ONE</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://midas.app/products" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · mF-ONE · Midas">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-2"><div class="escaparate-imagen"><img src="/ofertas-editoriales/tesoro-fondos-rwadar.webp" alt="Ilustración editorial de tesorería y fondos tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Midas</b><span>·</span>Tesoro y fondos<span>·</span>UE</div><h3 class="emi-tit">mGLOBAL</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://midas.app/products" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · mGLOBAL · Midas">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-2"><div class="escaparate-imagen"><img src="/ofertas-editoriales/tesoro-fondos-rwadar.webp" alt="Ilustración editorial de tesorería y fondos tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Midas</b><span>·</span>Tesoro y fondos<span>·</span>UE</div><h3 class="emi-tit">mTBILL</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://midas.app/products" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · mTBILL · Midas">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-2"><div class="escaparate-imagen"><img src="/ofertas-editoriales/tesoro-fondos-rwadar.webp" alt="Ilustración editorial de tesorería y fondos tokenizados" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Midas</b><span>·</span>Tesoro y fondos<span>·</span>UE</div><h3 class="emi-tit">mWIN</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://midas.app/products" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · mWIN · Midas">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Reental</b><span>·</span>Inmobiliario<span>·</span>MX</div><h3 class="emi-tit">Caribe 1</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.reental.co/dashboard/properties/8befd7a6-692f-404d-9fb8-d48fab2a74ca" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Caribe 1 · Reental">Consultar fuente ↗</a></span></div></div></article><article class="emi escaparate-oferta cat-0"><div class="escaparate-imagen"><img src="/ofertas-editoriales/inmobiliario-rwadar.webp" alt="Ilustración editorial de un activo inmobiliario tokenizado" loading="lazy" width="640" height="440"><span class="escaparate-editorial" aria-hidden="true">Ilustración editorial</span><span class="escaparate-tipo">Rendimiento</span><span class="escaparate-estado caducado">apertura no verificable</span><span class="escaparate-destacado"><b>Pendiente de revisión</b><small>Cifras no vigentes</small></span></div><div class="escaparate-cuerpo"><div class="emi-donde"><b>Reental</b><span>·</span>Inmobiliario<span>·</span>MX</div><h3 class="emi-tit">Caribe 2</h3><span class="escaparate-disponibilidad">Disponibilidad por confirmar</span><p class="escaparate-aviso-compacto"><b>Atención</b> · Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor. <span>+1</span></p><div class="emi-pie"><span class="emi-ver">Revisada 27.09.2026</span><span class="escaparate-enlaces"><a class="emi-ir" href="https://app.reental.co/dashboard/properties/10c30adb-542d-4f40-ab89-6c1f1474e5b7" target="_blank" rel="noopener nofollow" aria-label="Consultar fuente · Caribe 2 · Reental">Consultar fuente ↗</a></span></div></div></article><!--pre:fin--></div>
+
+  <details class="escaparate-secundario solo-escaparate-local" id="escaparateSecundario" hidden>
+    <summary class="escaparate-seccion-cab">
+      <div><p class="etiq">MERCADO SECUNDARIO</p><h3 id="escaparateSecundarioTitulo">Reental · referencias entre inversores</h3></div>
+      <span id="escaparateSecundarioCuenta"></span>
+    </summary>
+    <div class="escaparate-secundario-cuerpo">
+      <p class="emis-sub">Precios y rentabilidades de una fotografía local; confirma existencia, condiciones y disponibilidad en el origen.</p>
+      <div class="emis-rejilla escaparate-secundario-rejilla" id="escaparateSecundarioLista"></div>
+    </div>
+  </details>
+
+  <details class="escaparate-exclusiones solo-escaparate-local" id="escaparateExclusiones" hidden>
+    <summary><span>Ofertas revisadas que no entran en el escaparate</span><b id="escaparateExclusionesCuenta"></b></summary>
+    <p class="emis-sub">Se conservan para que una exclusión sea auditable y no parezca una omisión accidental.</p>
+    <div class="escaparate-exclusiones-lista" id="escaparateExclusionesLista"></div>
+  </details>
+
+  <footer class="escaparate-fuente solo-escaparate-local" id="escaparateFuente" hidden></footer>
 
   <details class="emis-informacion" id="emisInformacion" open>
     <summary>Cómo verificamos las ofertas</summary>
-    <p class="emis-sub">Las emisiones que aceptan dinero hoy en las plataformas que
-      pasan el filtro. <b>Cada cifra es la que publica la plataforma</b>, con su
-      enlace y la fecha en que la comprobamos. Aquí no se invierte: se compara y
-      se va al origen.</p>
+    <p class="emis-sub"><b>La inversión y el pago se realizan directamente con la
+      empresa que ofrece el activo.</b> RWAdar muestra la ficha y te lleva a su web;
+      no recibimos ni custodiamos el dinero de tu inversión. Cada oferta tiene
+      sus propios requisitos y disponibilidad: confírmalos con la empresa.
+      Las cifras conservan su fuente, fecha y alcance; ocultamos las que no
+      podemos verificar o han vencido.</p>
     <p class="movil-ofertas-futuro" id="movilOfertasFuturo">Cuando haya suficientes emisiones verificadas podrás filtrarlas por activo, entrada mínima y fecha. Hasta entonces no mostramos filtros vacíos.</p>
     <p class="emis-legal">RWAdar no intermedia, no custodia dinero y no recomienda dónde
       invertir. Listar una emisión no es respaldarla. Tokenizar no elimina el riesgo de
-      perder lo invertido: comprueba siempre las condiciones en la propia plataforma.</p>
+      perder lo invertido: comprueba siempre las condiciones en la propia plataforma.
+      Aparecer en el radar es gratis para las empresas. RWAdar no cobra comisión al inversor;
+      tampoco cobramos ahora a las empresas por inversiones. Preparamos publicidad dentro de la app,
+      todavía sin anuncios ni enlaces remunerados activos. Las comisiones quedan para una fase futura.
+      Una relación comercial se identifica y no altera el ranking editorial. <a href="/transparencia-comercial">Cómo se financia RWAdar</a>.</p>
   </details>
 </section>
 
@@ -256,11 +294,11 @@
       </button></li>
       <li><button class="paso" type="button" data-s="1" aria-pressed="false">
         <span class="avance"></span><span class="num">2</span>
-        <span><b>Se parte en trozos iguales</b><span class="d">Se divide en 3.000 trozos idénticos de 100 € cada uno. Cada trozo es propiedad de verdad: te toca su parte del alquiler y su parte del precio el día que se venda.</span></span>
+        <span><b>Se representa con participaciones</b><span class="d">En este ejemplo, 3.000 participaciones de 100 € representan derechos económicos. En un producto real, esos derechos dependen del contrato: un token no te convierte automáticamente en propietario del inmueble.</span></span>
       </button></li>
       <li><button class="paso" type="button" data-s="2" aria-pressed="false">
         <span class="avance"></span><span class="num">3</span>
-        <span><b>Cada trozo lleva escrito de quién es</b><span class="d">Los colores son los dueños. Quién tiene cada trozo queda anotado en un registro digital que puede mirar cualquiera. No hay que fiarse de la palabra de nadie: se comprueba.</span></span>
+        <span><b>Cada participación tiene un titular</b><span class="d">Los colores representan titulares y los cambios quedan anotados en un registro digital. La información accesible depende del sistema; el registro no prueba por sí solo que exista el activo o que se cumpla el contrato.</span></span>
       </button></li>
       <li><button class="paso" type="button" data-s="3" aria-pressed="false">
         <span class="avance"></span><span class="num">4</span>
@@ -271,7 +309,7 @@
 
   <div class="frase">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"/><path d="M12 12l7.8-4.5M12 12v9M12 12L4.2 7.5"/></svg>
-    <p>Comprar un trozo de un edificio con lo que cuesta una cena, y venderlo sin poner el edificio en venta.</p>
+    <p>Representar derechos sobre un activo con tokens. El contrato define qué posees y bajo qué condiciones puedes transferirlo.</p>
   </div>
 
   <!-- Ponerle tus propios números es lo que hace que la idea baje de
@@ -330,7 +368,7 @@
     </div>
     <div class="ventaja" data-b="2">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15h9M9 11l-5 4 5 4"/><path d="M20 9h-9M15 5l5 4-5 4"/></svg>
-      <b>Vendes solo tu parte</b><span>Sin poner el edificio en venta ni esperar meses a que aparezca un comprador para el todo.</span>
+      <b>Una participación transferible</b><span>Solo si las condiciones permiten transferirla y encuentras comprador. No hay venta inmediata ni liquidez garantizada.</span>
     </div>
     <div class="ventaja" data-b="3">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 11V7.5a6 6 0 0 1 12 0"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg>
@@ -338,7 +376,7 @@
     </div>
   </div>
 
-  <p class="letra-chica"><b>El trozo vale lo que valga quien lo emite y quien guarda el activo.</b> Si esa empresa quiebra, o si el edificio nunca existió, el registro digital no te devuelve nada. Por eso aquí solo entran plataformas con supervisor comprobable, y los descartes se publican con su fuente.</p>
+  <p class="letra-chica"><b>El registro digital no garantiza el activo ni recupera tu dinero.</b> Puedes perder lo invertido por insolvencia, problemas de custodia, fraude o falta de liquidez. Identificamos la entidad y el alcance de las fuentes; un permiso de una filial no cubre automáticamente todos los productos. Los descartes se documentan con su fuente.</p>
 </section>
 
 <!-- ============ MÉTODO ============ -->
@@ -348,14 +386,14 @@
     <div><p class="movil-mini-etiqueta">TRANSPARENCIA</p><h2>Método de selección</h2></div>
   </div>
   <div class="metodo-cab">
-    <h2 class="sec">Cómo elegimos las 26</h2>
-    <p>No listamos todo lo que existe. Una plataforma entra en el radar solo si cumple los cuatro criterios. Si falla uno, se va a la lista de descartadas con el motivo y la fuente.</p>
+    <h2 class="sec">Qué comprobamos en cada ficha</h2>
+    <p>El registro no es exhaustivo ni un sello de aprobación. Estas cuatro dimensiones se documentan por separado. Si falta evidencia, indicamos la incertidumbre; estar listado no convierte un producto en regulado, abierto o adecuado para ti.</p>
   </div>
   <ol class="criterios">
-    <li class="criterio"><span class="cn">01</span><h3>Supervisión real</h3><p>Licencia de un regulador financiero reconocido, o respaldo de una entidad que sí la tenga.</p></li>
-    <li class="criterio"><span class="cn">02</span><h3>Actividad verificable</h3><p>Operaciones o cifras públicas que se puedan comprobar en 2026, no promesas.</p></li>
-    <li class="criterio"><span class="cn">03</span><h3>Sin crisis abierta</h3><p>Nada de liquidaciones, pagos suspendidos ni intervención judicial en marcha.</p></li>
-    <li class="criterio"><span class="cn">04</span><h3>Recorrido</h3><p>Al menos dos años funcionando, o el respaldo de una institución con historial.</p></li>
+    <li class="criterio"><span class="cn">01</span><h3>Entidad y permisos</h3><p>Qué entidad figura en la fuente y para qué actividad. Un registro, folleto o proveedor tecnológico no equivalen a una licencia universal.</p></li>
+    <li class="criterio"><span class="cn">02</span><h3>Actividad y fecha</h3><p>Qué se pudo observar y cuándo. Una web accesible o una ficha publicada no prueban que acepte inversiones hoy.</p></li>
+    <li class="criterio"><span class="cn">03</span><h3>Acceso y condiciones</h3><p>Jurisdicción, tipo de cliente y requisitos por producto. Cuando no se confirma el acceso desde España, se indica como pendiente.</p></li>
+    <li class="criterio"><span class="cn">04</span><h3>Riesgos y alertas</h3><p>Advertencias documentadas y límites de la revisión. No detectar una incidencia no garantiza solvencia, seguridad ni liquidez.</p></li>
   </ol>
 </section>
 
@@ -409,15 +447,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Acciones y capital privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>ADDX</strong><small>Marketplace · Asia-Pacífico</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="0" aria-pressed="false" aria-label="Añadir ADDX a la comparación" title="Añadir ADDX a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-3">A</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="0">ADDX</button></h3><div class="sub">Marketplace · Asia-Pacífico</div></div></div>
-   <p class="nota">Fondos de capital riesgo y private equity troceados para inversores acreditados.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Licencia de mercado reconocido del MAS de Singapur; accionistas de referencia: la bolsa SGX y el fondo estatal Temasek.</span></div>
-   <div class="marcas"><span class="m acc">Acreditado</span><span class="m">Entrada: alto</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web mantiene alta y catálogo de oportunidades.</p>
+   <div class="aval aval-local"><span>ADDX Pte. Ltd. figura en el directorio de MAS como CMS licensee y recognised market operator.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No presentar como acceso minorista general ni como disponible automáticamente en España.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="0" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="0">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <button type="button" class="empresa-visual__abrir" data-abrir="1" aria-label="Abrir la ficha de Archax; portada ilustrativa">
@@ -425,31 +463,31 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Acciones y capital privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Archax</strong><small>Marketplace · Reino Unido</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="1" aria-pressed="false" aria-label="Añadir Archax a la comparación" title="Añadir Archax a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-3">A</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="1">Archax</button></h3><div class="sub">Marketplace · Reino Unido</div></div></div>
-   <p class="nota">Mercado regulado de valores digitales en Londres que reúne emisión, negociación y custodia bajo la misma licencia. Cuidado con los clones: la FCA tiene avisos publicados sobre webs que la suplantan, y el dominio válido es archax.com.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Autorizada y supervisada por la FCA británica con el número 838656, como exchange, bróker y custodio, e inscrita en su registro de criptoactivos. Tiene permiso para operar un sistema multilateral de negociación, no solo para intermediar.</span></div>
-   <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 08.08.26</span>
+   <p class="nota">Las páginas del grupo y de Europa no devolvieron contenido legible en la consulta; no se confirmó actividad comercial actual.</p>
+   <div class="aval aval-local"><span>Archax Markets Europe, S.V., S.A. figura en CNMV con registro 289 de 08/08/2019. Este registro no se extiende a otras entidades del grupo.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado atencion"><b>Estado operativo</b>No verificable</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>El registro de la sociedad europea no confirma que un producto esté abierto ni que una persona concreta sea elegible.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="1" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="1">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-4">
-   <button type="button" class="empresa-visual__abrir" data-abrir="2" aria-label="Abrir la ficha de ARTEX Global Markets">
+   <button type="button" class="empresa-visual__abrir" data-abrir="2" aria-label="Abrir la ficha de ARTEX Global Markets; portada ilustrativa">
     <img class="empresa-visual__imagen" src="/plataformas/artex-global-markets.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
-    <span class="empresa-visual__categoria">Materias primas</span>
+    <span class="empresa-visual__categoria">Materias primas</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>ARTEX Global Markets</strong><small>Marketplace · Liechtenstein</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="2" aria-pressed="false" aria-label="Añadir ARTEX Global Markets a la comparación" title="Añadir ARTEX Global Markets a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-4">AG</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Materias primas" data-abrir="2">ARTEX Global Markets</button></h3><div class="sub">Marketplace · Liechtenstein</div></div></div>
-   <p class="nota">Mercado regulado de acciones sobre obras de arte: cada cuadro se trocea en acciones de 100 €. Ojo: el token «ARTEX» de BNB Chain no tiene relación con esta plataforma.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Licencia de sistema multilateral de negociación (MTF) bajo MiFID II del regulador de Liechtenstein; SIX aporta compensación y liquidación.</span></div>
-   <div class="marcas"><span class="m acc">Acreditado</span><span class="m">Entrada: alto</span><span class="m">Mercado regulado (MTF)</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La portada oficial no pudo leerse durante el barrido; no se confirmó una oferta negociable abierta.</p>
+   <div class="aval aval-local"><span>El Banco de Lituania mantiene ARTEX Global Markets AG, de Liechtenstein, en su lista de empresas de inversión del EEE que prestan servicios sin sucursal. No prueba actividad comercial actual.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado atencion"><b>Estado operativo</b>No verificable</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>Mantener la fila como no verificable hasta confirmar web, instrumento vivo y proceso de alta.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="2" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="2">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <button type="button" class="empresa-visual__abrir" data-abrir="3" aria-label="Abrir la ficha de Backed Finance; portada ilustrativa">
@@ -457,15 +495,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Acciones y capital privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Backed Finance</strong><small>Emisor · Suiza</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="3" aria-pressed="false" aria-label="Añadir Backed Finance a la comparación" title="Añadir Backed Finance a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-3">BF</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="3">Backed Finance</button></h3><div class="sub">Emisor · Suiza</div></div></div>
-   <p class="nota">Réplicas tokenizadas de acciones y bonos cotizados, activas desde 2021.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Emisor suizo con el activo real depositado 1:1 en custodia de un tercero y atestaciones públicas de respaldo.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Ethereum, Base, Gnosis</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web muestra xStocks y documentación de producto vigente.</p>
+   <div class="aval aval-local"><span>La documentación describe valores emitidos bajo un folleto del EEE; no acredita que Backed sea una plataforma de inversión licenciada en España.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Documento de producto</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No traducir &#39;folleto aprobado&#39; a disponibilidad minorista universal ni a aval del regulador.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="3" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="3">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-0">
    <button type="button" class="empresa-visual__abrir" data-abrir="4" aria-label="Abrir la ficha de Blocksquare; portada ilustrativa">
@@ -473,15 +511,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Inmobiliario</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Blocksquare</strong><small>Infraestructura · Unión Europea</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="4" aria-pressed="false" aria-label="Añadir Blocksquare a la comparación" title="Añadir Blocksquare a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-0">B</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Inmobiliario" data-abrir="4">Blocksquare</button></h3><div class="sub">Infraestructura · Unión Europea</div></div></div>
-   <p class="nota">Tecnología para que una inmobiliaria tokenice sus propios activos con respaldo registral.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Vincula cada token a una anotación en el registro de la propiedad, no solo a un contrato inteligente.</span></div>
-   <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: no aplica</span><span class="m">Ethereum</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La consulta solo devolvió el título de la portada; no se comprobó actividad comercial ni disponibilidad de portales actuales.</p>
+   <div class="aval aval-local"><span>No se pudieron leer los términos actuales ni comprobar un registro regulatorio que identifique entidad y permisos.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado atencion"><b>Estado operativo</b>No verificable</span><span class="verificacion-local-estado atencion"><b>Licencia / registro</b>No verificable</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No atribuir a cada portal una licencia o vínculo registral por utilizar tecnología de tokenización. Revisar emisor, contrato y jurisdicción del activo.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="4" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="4">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-1">
    <button type="button" class="empresa-visual__abrir" data-abrir="5" aria-label="Abrir la ficha de Centrifuge; portada ilustrativa">
@@ -489,15 +527,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Crédito privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Centrifuge</strong><small>Infraestructura · Global</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="5" aria-pressed="false" aria-label="Añadir Centrifuge a la comparación" title="Añadir Centrifuge a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-1">C</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Crédito privado" data-abrir="5">Centrifuge</button></h3><div class="sub">Infraestructura · Global</div></div></div>
-   <p class="nota">Financiación de carteras de préstamos y facturas con garantía fuera de cadena. Tuvo impagos por 5,8 M$ en 2023 y reforzó su modelo después.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Una de las tres plataformas que concentran dos tercios del crédito privado tokenizado; estructura de tramos senior/junior.</span></div>
-   <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Ethereum, Base</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web mantiene infraestructura de gestión de activos on-chain.</p>
+   <div class="aval aval-local"><span>Centrifuge es protocolo/infraestructura; sus términos dicen que ni Centrifuge ni afiliadas se licencian en cada jurisdicción y que los productos pueden ser no regulados.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>No aplica a la plataforma</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>Verificar cada fondo, emisor, jurisdicción y documento de oferta; no atribuir al protocolo la licencia del vehículo.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="5" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="5">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-4">
    <button type="button" class="empresa-visual__abrir" data-abrir="6" aria-label="Abrir la ficha de Courtyard; portada ilustrativa">
@@ -505,15 +543,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Materias primas</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Courtyard</strong><small>Marketplace · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="6" aria-pressed="false" aria-label="Añadir Courtyard a la comparación" title="Añadir Courtyard a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-4">C</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Materias primas" data-abrir="6">Courtyard</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
-   <p class="nota">Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados. Líder por volumen semanal en 2026.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>El objeto físico se guarda en cámara asegurada y el token es canjeable por él en cualquier momento: respaldo comprobable.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Polygon</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web muestra packs y coleccionables tokenizados con custodia física.</p>
+   <div class="aval aval-local"><span>La documentación revisada describe un marketplace de NFT/coleccionables, no una licencia de mercado de valores.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>No aplica a la plataforma</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No presentar coleccionables, recompra o mercado secundario como inversión regulada ni como liquidez garantizada.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="6" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="6">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-1">
    <button type="button" class="empresa-visual__abrir" data-abrir="7" aria-label="Abrir la ficha de Figure; portada ilustrativa">
@@ -521,15 +559,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Crédito privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Figure</strong><small>Emisor · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="7" aria-pressed="false" aria-label="Añadir Figure a la comparación" title="Añadir Figure a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-1">F</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Crédito privado" data-abrir="7">Figure</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
-   <p class="nota">Mercado de capitales nativo en blockchain para crédito privado y activos tokenizados, con préstamos hipotecarios (HELOC) en su propia cadena.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Cotiza en Nasdaq (FIGR): cuentas auditadas, información pública trimestral y supervisión de la SEC como emisor.</span></div>
-   <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Provenance</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">Figure.com mantiene servicios de crédito y enlaces a OPEN y Figure Markets; esto no acredita una oferta de inversión concreta abierta.</p>
+   <div class="aval aval-local"><span>El informe oficial FINRA de Figure Securities, Inc., CRD 307093, confirma registro SEC y operación de ATS. No se extiende a otras entidades Figure.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>Distinguir Figure Securities de los servicios de crédito y otras entidades de la marca; comprobar el contrato específico del producto.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="7" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="7">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-5">
    <button type="button" class="empresa-visual__abrir" data-abrir="8" aria-label="Abrir la ficha de Fireblocks; portada ilustrativa">
@@ -537,15 +575,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Infraestructura</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Fireblocks</strong><small>Infraestructura · Global</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="8" aria-pressed="false" aria-label="Añadir Fireblocks a la comparación" title="Añadir Fireblocks a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-5">F</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Infraestructura" data-abrir="8">Fireblocks</button></h3><div class="sub">Infraestructura · Global</div></div></div>
-   <p class="nota">El motor de custodia y emisión detrás de decenas de proyectos institucionales de tokenización.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Custodia institucional con seguros y certificaciones de seguridad, usada por bancos y gestoras de primer nivel.</span></div>
-   <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: no aplica</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web ofrece infraestructura de activos digitales y stablecoins.</p>
+   <div class="aval aval-local"><span>Fireblocks Trust Company, LLC figura como trust de propósito limitado en NYDFS; la licencia pertenece a esa entidad, no al software completo.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado "><b>Acceso</b>No aplica a la plataforma</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No describir todos los servicios Fireblocks como custodia regulada; separar Trust Company, software y terceros custodios.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="8" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="8">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <button type="button" class="empresa-visual__abrir" data-abrir="9" aria-label="Abrir la ficha de Franklin Templeton; portada ilustrativa">
@@ -553,15 +591,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Tesoro y fondos</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Franklin Templeton</strong><small>Emisor · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="9" aria-pressed="false" aria-label="Añadir Franklin Templeton a la comparación" title="Añadir Franklin Templeton a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-2">FT</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="9">Franklin Templeton</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
-   <p class="nota">Fondo monetario de deuda pública con el registro de partícipes llevado en cadena desde 2021.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Gestora tradicional con décadas de historial y fondo registrado ante la SEC. La vía más conservadora para empezar.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Stellar, Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">Benji y el Franklin OnChain U.S. Government Money Fund mantienen superficies y folleto.</p>
+   <div class="aval aval-local"><span>El folleto y el expediente SEC de 2025 identifican Franklin OnChain U.S. Government Money Fund. La existencia del expediente no significa aprobación o recomendación de SEC ni confirma distribución en España.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Documento de producto</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No convertir un fondo estadounidense accesible por Benji en oferta minorista global.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="9" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="9">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <button type="button" class="empresa-visual__abrir" data-abrir="10" aria-label="Abrir la ficha de INX; portada ilustrativa">
@@ -569,31 +607,31 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Acciones y capital privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>INX</strong><small>Marketplace · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="10" aria-pressed="false" aria-label="Añadir INX a la comparación" title="Añadir INX a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-3">I</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="10">INX</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
-   <p class="nota">Plataforma regulada de valores digitales con negociación secundaria abierta a minoristas.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Bróker-dealer registrado ante la SEC y miembro de FINRA; su matriz cotiza en Nasdaq.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Ethereum</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">INX One sigue activo y aparece integrado con el ecosistema Republic.</p>
+   <div class="aval aval-local"><span>INX Securities, LLC figura en FINRA como broker-dealer registrado y opera un ATS.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No afirmar que INX cotiza en Nasdaq; la evidencia revisada confirma el broker/ATS, no ese mercado bursátil.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="10" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="10">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-0">
-   <button type="button" class="empresa-visual__abrir" data-abrir="11" aria-label="Abrir la ficha de Lofty">
+   <button type="button" class="empresa-visual__abrir" data-abrir="11" aria-label="Abrir la ficha de Lofty; portada ilustrativa">
     <img class="empresa-visual__imagen" src="/plataformas/lofty.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
-    <span class="empresa-visual__categoria">Inmobiliario</span>
+    <span class="empresa-visual__categoria">Inmobiliario</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Lofty</strong><small>Marketplace · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="11" aria-pressed="false" aria-label="Añadir Lofty a la comparación" title="Añadir Lofty a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-0">L</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Inmobiliario" data-abrir="11">Lofty</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
-   <p class="nota">Vivienda unifamiliar troceada desde 50 $, con reparto de renta diario y voto de los inversores en cada propiedad.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Estructura de LLC por inmueble con oferta registrada; una de las pocas vías reales de entrada minorista al inmobiliario tokenizado.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Algorand</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web y el marketplace de participaciones inmobiliarias siguen activos.</p>
+   <div class="aval aval-local"><span>Sus términos declaran que Lofty no está registrada ante la SEC como bolsa de valores ni en otra capacidad.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado atencion"><b>Licencia / registro</b>Sin registro declarado</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No llamar &#39;oferta registrada&#39; al marketplace ni prometer liquidez instantánea; la ejecución ocurre en redes públicas y no se garantiza mejor ejecución.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="11" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="11">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-1">
    <button type="button" class="empresa-visual__abrir" data-abrir="12" aria-label="Abrir la ficha de Maple Finance; portada ilustrativa">
@@ -601,15 +639,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Crédito privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Maple Finance</strong><small>Emisor · Global</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="12" aria-pressed="false" aria-label="Añadir Maple Finance a la comparación" title="Añadir Maple Finance a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-1">MF</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Crédito privado" data-abrir="12">Maple Finance</button></h3><div class="sub">Emisor · Global</div></div></div>
-   <p class="nota">El mayor actor del crédito privado tokenizado: cerró el primer semestre de 2026 con 4.600 M$ gestionados (+81 % interanual) y 1.900 M$ en préstamos vivos.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Cifras auditadas y publicadas cada trimestre en formato de resultados; crédito institucional integrado con Robinhood y Kraken.</span></div>
-   <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Ethereum, Solana</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web mantiene productos de crédito institucional y syrup.</p>
+   <div class="aval aval-local"><span>Los términos de la interfaz syrup declaran que la operadora no está registrada ante ningún regulador.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado atencion"><b>Licencia / registro</b>Sin registro declarado</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No atribuir licencia o elegibilidad de un pool a todo Maple; protocolo, interfaz, emisor y vehículo son capas distintas.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="12" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="12">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <button type="button" class="empresa-visual__abrir" data-abrir="13" aria-label="Abrir la ficha de Midas; portada ilustrativa">
@@ -617,15 +655,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Tesoro y fondos</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Midas</strong><small>Emisor · Unión Europea</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="13" aria-pressed="false" aria-label="Añadir Midas a la comparación" title="Añadir Midas a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-2">M</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="13">Midas</button></h3><div class="sub">Emisor · Unión Europea</div></div></div>
-   <p class="nota">Certificados tokenizados sobre estrategias de renta fija. Levantó 50 M$ con Franklin Templeton y Coinbase Ventures.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Emite bajo folleto aprobado en la Unión Europea, lo que obliga a información periódica y responsabilidad del emisor.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: medio</span><span class="m">Ethereum</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La documentación oficial mantiene una página mTBILL con referencias a folleto y términos finales; la portada transaccional no pudo verificarse.</p>
+   <div class="aval aval-local"><span>La nueva página mTBILL enlaza documentos embebidos cuyo contenido vigente no se obtuvo. El folleto regulatorio de 2024 consultado venció el 17/07/2025.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado atencion"><b>Licencia / registro</b>No verificable</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No usar &#39;aprobado por la FMA&#39; como aval ni como licencia de Midas; exigir folleto y términos finales actualmente vigentes.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="13" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="13">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <button type="button" class="empresa-visual__abrir" data-abrir="14" aria-label="Abrir la ficha de Ondo Finance; portada ilustrativa">
@@ -633,15 +671,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Tesoro y fondos</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Ondo Finance</strong><small>Emisor · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="14" aria-pressed="false" aria-label="Añadir Ondo Finance a la comparación" title="Añadir Ondo Finance a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-2">OF</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="14">Ondo Finance</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
-   <p class="nota">Exposición a deuda pública de EE. UU. y, desde 2026, a ETFs de Franklin Templeton tokenizados.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>La mayor plataforma de valores tokenizados por volumen, con los activos subyacentes en custodia de gestoras reguladas.</span></div>
-   <div class="marcas"><span class="m acc">Acreditado</span><span class="m">Entrada: alto</span><span class="m">Ethereum, Solana</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web mantiene USDY, OUSG y Ondo Stocks.</p>
+   <div class="aval aval-local"><span>No se confirmó una licencia única aplicable a la marca; emisor, producto y jurisdicción deben revisarse por separado.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado atencion"><b>Licencia / registro</b>No verificable</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No presentar Ondo como minorista global; incluso productos llamados de acceso general tienen restricciones por jurisdicción.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="14" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="14">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <button type="button" class="empresa-visual__abrir" data-abrir="15" aria-label="Abrir la ficha de OpenEden; portada ilustrativa">
@@ -649,31 +687,31 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Tesoro y fondos</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>OpenEden</strong><small>Emisor · Asia-Pacífico</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="15" aria-pressed="false" aria-label="Añadir OpenEden a la comparación" title="Añadir OpenEden a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-2">O</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="15">OpenEden</button></h3><div class="sub">Emisor · Asia-Pacífico</div></div></div>
-   <p class="nota">Letras del Tesoro de EE. UU. envueltas en un token de suscripción y reembolso, para clientes profesionales.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Estructura de fondo con calificación crediticia de agencia y reservas en letras del Tesoro custodiadas por un tercero.</span></div>
-   <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Ethereum, Arbitrum</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La documentación oficial de TBILL y su proceso de onboarding es legible; la portada no aportó contenido verificable.</p>
+   <div class="aval aval-local"><span>La documentación identifica al emisor TBILL como fondo profesional BVI; no convierte a toda OpenEden en entidad regulada para cada servicio.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Documento de producto</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No presentar TBILL como acceso minorista ni confundir rating del fondo con garantía de capital.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="15" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="15">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-4">
-   <button type="button" class="empresa-visual__abrir" data-abrir="16" aria-label="Abrir la ficha de Pax Gold">
+   <button type="button" class="empresa-visual__abrir" data-abrir="16" aria-label="Abrir la ficha de Pax Gold; portada ilustrativa">
     <img class="empresa-visual__imagen" src="/plataformas/pax-gold.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
-    <span class="empresa-visual__categoria">Materias primas</span>
+    <span class="empresa-visual__categoria">Materias primas</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Pax Gold</strong><small>Emisor · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="16" aria-pressed="false" aria-label="Añadir Pax Gold a la comparación" title="Añadir Pax Gold a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-4">PG</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Materias primas" data-abrir="16">Pax Gold</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
-   <p class="nota">Cada token representa una onza concreta de oro asignada en cámaras de Londres, identificable por número de lingote.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Emitido por Paxos bajo supervisión del regulador bancario de Nueva York (NYDFS), con atestaciones mensuales del oro asignado.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Ethereum</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">Paxos mantiene la ficha PAXG, custodia y opciones de redención.</p>
+   <div class="aval aval-local"><span>Paxos Trust Company, National Association figura en la lista OCC de trust banks activos de 31/08/2026. La autorización NYDFS de PAX Gold es un antecedente de 2019, no la única evidencia del estado actual.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>Respaldado y canjeable no significa sin riesgo; verificar custodio, comisiones, tamaño mínimo y canal de redención.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="16" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="16">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-0">
    <button type="button" class="empresa-visual__abrir" data-abrir="17" aria-label="Abrir la ficha de Reental; portada ilustrativa">
@@ -681,15 +719,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Inmobiliario</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Reental</strong><small>Emisor · España</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="17" aria-pressed="false" aria-label="Añadir Reental a la comparación" title="Añadir Reental a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-0">R</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Inmobiliario" data-abrir="17">Reental</button></h3><div class="sub">Emisor · España</div></div></div>
-   <p class="nota">Proyectos inmobiliarios en España y Latinoamérica desde 100 €. La opción más accesible para un inversor español.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Historial de proyectos completados y devueltos, con cientos de reseñas públicas verificadas de inversores.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La FAQ oficial describe registro, KYC/AML y firma del acuerdo; no se comprobó la apertura actual de una emisión concreta.</p>
+   <div class="aval aval-local"><span>La fuente primaria localizada acredita una emisión española concreta con ERIR; no acredita una autorización general de Reental como empresa de servicios de inversión.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado atencion"><b>Licencia / registro</b>No verificable</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No convertir el registro de una emisión/ERIR en licencia global de plataforma ni dar por abierta una oportunidad sin ficha actual.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="17" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="17">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <button type="button" class="empresa-visual__abrir" data-abrir="18" aria-label="Abrir la ficha de Republic; portada ilustrativa">
@@ -697,15 +735,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Acciones y capital privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Republic</strong><small>Marketplace · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="18" aria-pressed="false" aria-label="Añadir Republic a la comparación" title="Añadir Republic a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-3">R</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="18">Republic</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
-   <p class="nota">Mercados privados troceados desde importes pequeños: empresas sin cotizar, fondos, cine, deporte y arte. Importante: sus Mirror Tokens no son acciones de la empresa que replican, sino pagarés de la propia Republic que pagan solo si llega una salida a bolsa o una compra.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Opera con entidades registradas y supervisadas en EE. UU.: OpenDeal Portal LLC como portal de financiación ante la SEC y FINRA desde 2016, y OpenDeal Broker LLC como bróker-dealer miembro de FINRA y SIPC.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 08.08.26</span>
+   <p class="nota">La plataforma mantiene ofertas y servicios de captación.</p>
+   <div class="aval aval-local"><span>El informe FINRA CRD 291387 confirma OpenDeal Broker LLC. La página corporativa de entidades declara una actualización de 2022 y no acredita por sí sola todo el organigrama actual.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No atribuir a Republic en bloque el registro de una filial ni omitir el régimen específico de cada oferta.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="18" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="18">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <button type="button" class="empresa-visual__abrir" data-abrir="19" aria-label="Abrir la ficha de Securitize; portada ilustrativa">
@@ -713,15 +751,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Tesoro y fondos</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Securitize</strong><small>Infraestructura · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="19" aria-pressed="false" aria-label="Añadir Securitize a la comparación" title="Añadir Securitize a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-2">S</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="19">Securitize</button></h3><div class="sub">Infraestructura · EE. UU.</div></div></div>
-   <p class="nota">La infraestructura sobre la que las grandes gestoras sacan sus fondos a la cadena. El nombre más institucional del sector.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Agente de transferencia registrado ante la SEC. Es quien emite y administra el fondo tokenizado BUIDL de BlackRock.</span></div>
-   <div class="marcas"><span class="m acc">Institucional</span><span class="m">Entrada: alto</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La portada no aportó contenido comercial suficiente para verificar la operación actual; el registro de Securitize Markets se comprueba por separado.</p>
+   <div class="aval aval-local"><span>Securitize Markets, LLC figura como broker-dealer SEC/FINRA y ATS; otras funciones pertenecen a otras filiales.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado atencion"><b>Estado operativo</b>No verificable</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>Nombrar la filial regulada y no extender su permiso a tokenización, administración o asesoramiento del grupo.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="19" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="19">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <button type="button" class="empresa-visual__abrir" data-abrir="20" aria-label="Abrir la ficha de Spiko; portada ilustrativa">
@@ -729,15 +767,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Tesoro y fondos</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Spiko</strong><small>Emisor · Unión Europea</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="20" aria-pressed="false" aria-label="Añadir Spiko a la comparación" title="Añadir Spiko a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-2">S</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="20">Spiko</button></h3><div class="sub">Emisor · Unión Europea</div></div></div>
-   <p class="nota">Fondos en euros y dólares pensados para la tesorería de empresas, con reembolso diario.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Fondos monetarios autorizados y supervisados por la AMF, el regulador financiero francés. Marco europeo completo.</span></div>
-   <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: bajo</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La página oficial Web3 mantiene productos de tesorería, suscripción y reembolso; no se realizó onboarding.</p>
+   <div class="aval aval-local"><span>La empresa declara fondos UCITS y una licencia ACPR de Spiko Finance, pero GECO no devolvió texto legible y no se verificó directamente el registro actual de la entidad y el fondo.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado atencion"><b>Licencia / registro</b>No verificable</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>UCITS no equivale por sí solo a onboarding disponible en España; comprobar pasaporte, distribuidor y clase.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="20" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="20">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-2">
    <button type="button" class="empresa-visual__abrir" data-abrir="21" aria-label="Abrir la ficha de Superstate; portada ilustrativa">
@@ -745,15 +783,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Tesoro y fondos</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Superstate</strong><small>Emisor · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="21" aria-pressed="false" aria-label="Añadir Superstate a la comparación" title="Añadir Superstate a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-2">S</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Tesoro y fondos" data-abrir="21">Superstate</button></h3><div class="sub">Emisor · EE. UU.</div></div></div>
-   <p class="nota">Fondos de deuda pública con las participaciones anotadas directamente en cadena.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Fondos estadounidenses registrados con administrador y auditor independientes; fundada por un antiguo responsable de Compound.</span></div>
-   <div class="marcas"><span class="m acc">Acreditado</span><span class="m">Entrada: alto</span><span class="m">Ethereum</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web mantiene fondos tokenizados y FundOS.</p>
+   <div class="aval aval-local"><span>La ficha actual identifica USTB como Invesco Short Duration US Government Securities Fund. El expediente SEC de Superstate Trust de 2025 se conserva como antecedente, sin atribuirle aprobación ni condiciones actuales.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Documento de producto</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No omitir la doble elegibilidad ni confundir filing/registro con aprobación o garantía.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="21" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="21">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <button type="button" class="empresa-visual__abrir" data-abrir="22" aria-label="Abrir la ficha de Swarm; portada ilustrativa">
@@ -761,15 +799,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Acciones y capital privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Swarm</strong><small>Marketplace · Unión Europea</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="22" aria-pressed="false" aria-label="Añadir Swarm a la comparación" title="Añadir Swarm a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-3">S</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="22">Swarm</button></h3><div class="sub">Marketplace · Unión Europea</div></div></div>
-   <p class="nota">Acciones y bonos tokenizados negociables dentro del marco regulatorio alemán.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Opera bajo licencia de intermediación financiera de BaFin, el regulador alemán, con respaldo 1:1 verificable.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Polygon</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web redirige a una aplicación sin contenido extraíble; no se confirmó actividad transaccional ni una oferta abierta.</p>
+   <div class="aval aval-local"><span>No se obtuvo durante el barrido un registro primario actual que delimitase entidad y permisos; no se reutiliza la etiqueta genérica &#39;regulada por BaFin&#39;.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado atencion"><b>Estado operativo</b>No verificable</span><span class="verificacion-local-estado atencion"><b>Licencia / registro</b>No verificable</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No presentar Swarm como acceso minorista disponible sin condiciones actuales de alta, entidad y jurisdicción verificables.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="22" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="22">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-5">
    <button type="button" class="empresa-visual__abrir" data-abrir="23" aria-label="Abrir la ficha de Taurus; portada ilustrativa">
@@ -777,15 +815,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Infraestructura</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Taurus</strong><small>Infraestructura · Suiza</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="23" aria-pressed="false" aria-label="Añadir Taurus a la comparación" title="Añadir Taurus a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-5">T</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Infraestructura" data-abrir="23">Taurus</button></h3><div class="sub">Infraestructura · Suiza</div></div></div>
-   <p class="nota">Custodia y emisión de valores digitales para banca, con la exigencia de auditoría del sector bancario.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Proveedor suizo de custodia para bancos regulados, con despliegues verificables en entidades europeas.</span></div>
-   <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: no aplica</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web mantiene infraestructura, custodia y T-DX.</p>
+   <div class="aval aval-local"><span>Taurus SA figura en FINMA como securities firm y declara operar T-DX como OTF.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado "><b>Acceso</b>Acceso condicionado</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No confundir clasificación de cliente con disponibilidad universal, asesoramiento o evaluación de idoneidad.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="23" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="23">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-5">
    <button type="button" class="empresa-visual__abrir" data-abrir="24" aria-label="Abrir la ficha de Tokeny; portada ilustrativa">
@@ -793,15 +831,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Infraestructura</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>Tokeny</strong><small>Infraestructura · Unión Europea</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="24" aria-pressed="false" aria-label="Añadir Tokeny a la comparación" title="Añadir Tokeny a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-5">T</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Infraestructura" data-abrir="24">Tokeny</button></h3><div class="sub">Infraestructura · Unión Europea</div></div></div>
-   <p class="nota">La capa de cumplimiento normativo que usan decenas de emisores institucionales.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Autora del estándar ERC-3643, hoy la referencia del sector para tokens con reglas de cumplimiento incorporadas.</span></div>
-   <div class="marcas"><span class="m acc">Empresas</span><span class="m">Entrada: no aplica</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web mantiene software de emisión y cumplimiento on-chain.</p>
+   <div class="aval aval-local"><span>Sus términos definen a Tokeny como proveedor tecnológico; el cliente/emisor conserva las obligaciones financieras y regulatorias.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>No aplica a la plataforma</span><span class="verificacion-local-estado "><b>Acceso</b>No aplica a la plataforma</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No atribuir a Tokeny la licencia, custodia, solvencia o elegibilidad del emisor que usa su software.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="24" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="24">Ver ficha <span aria-hidden="true">›</span></button></div></div><div class="ficha   cat-3">
    <button type="button" class="empresa-visual__abrir" data-abrir="25" aria-label="Abrir la ficha de tZERO; portada ilustrativa">
@@ -809,15 +847,15 @@
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">Acciones y capital privado</span><span class="empresa-visual__origen">Ilustración</span>
     <span class="empresa-visual__texto"><strong>tZERO</strong><small>Marketplace · EE. UU.</small></span>
-    <span class="empresa-visual__verificada"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg><span>Ficha verificada</span></span>
+    <span class="empresa-visual__verificada"><span>Revisión local 2026-09-28</span></span>
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar " data-comparar="25" aria-pressed="false" aria-label="Añadir tZERO a la comparación" title="Añadir tZERO a la comparación"><span aria-hidden="true">+</span></button>
    <div class="ficha-alto"><span class="sigla  cat-3">T</span><div class="ficha-nom"><h3><button class="abrir" data-cat="Acciones y capital privado" data-abrir="25">tZERO</button></h3><div class="sub">Marketplace · EE. UU.</div></div></div>
-   <p class="nota">El mercado secundario de referencia en EE. UU. para valores emitidos en cadena.</p>
-   <div class="aval"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg><span>Opera un sistema alternativo de negociación (ATS) autorizado por la SEC y supervisado por FINRA.</span></div>
-   <div class="marcas"><span class="m acc">Minorista</span><span class="m">Entrada: bajo</span><span class="m">Varias</span></div>
-   <div class="ficha-pie"><span class="verif"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg> Verificado 26.07.26</span>
+   <p class="nota">La web mantiene infraestructura de emisión, trading y custodia.</p>
+   <div class="aval aval-local"><span>tZERO Securities, LLC figura en FINRA como broker-dealer y opera ATS; otras funciones pertenecen a entidades separadas.</span></div>
+   <div class="verificacion-local-resumen" aria-label="Revisión local 2026-09-28"><div class="verificacion-local-fecha">REVISIÓN LOCAL · 2026-09-28</div><div class="verificacion-local-estados"><span class="verificacion-local-estado "><b>Estado operativo</b>Observada</span><span class="verificacion-local-estado "><b>Licencia / registro</b>Registro confirmado</span><span class="verificacion-local-estado atencion"><b>Acceso</b>No verificable</span></div><p class="verificacion-local-alerta"><b>Alerta crítica</b>No extender SEC/FINRA a todo el grupo ni asumir que cada activo del ATS está abierto a minoristas.</p></div>
+   <div class="ficha-pie"><span class="verif">Revisión local 2026-09-28</span>
     <button class="cmp " data-comparar="25" aria-pressed="false">+ Comparar</button>
     <button class="movil-ficha-abrir" data-abrir="25">Ver ficha <span aria-hidden="true">›</span></button></div></div><!--pre:fin--></div>
   <button class="movil-resultados-mas" id="movilResultadosMas" type="button"
@@ -900,9 +938,8 @@
 </div>
 </main>
 
-<!-- Vistas ligeras de la PWA. No duplican datos privados: los controles
-     abren la cuenta y la vigilancia existentes, protegidas por las mismas
-     reglas de sesión y RLS que en escritorio. -->
+<!-- La versión editorial mantiene las vistas de la PWA, pero no habilita
+     cuentas ni vigilancia remota. Esta interfaz no cambia permisos del servidor. -->
 <section class="movil-panel" id="movilPanelSiguiendo" data-movil-panel="favoritos"
          role="tabpanel" aria-labelledby="movilTabSiguiendo" tabindex="-1" hidden>
   <div class="movil-panel-cuerpo">
@@ -914,8 +951,8 @@
       </div>
       <div>
         <p class="movil-mini-etiqueta">TUS FAVORITOS</p>
-        <h3><span id="movilSiguiendoCuenta">0</span> <span id="movilSiguiendoUnidad">plataformas favoritas</span></h3>
-        <p id="movilSiguiendoTexto">Entra para consultar las plataformas que has guardado.</p>
+        <h3><span id="movilSiguiendoCuenta">—</span> <span id="movilSiguiendoUnidad">seguimiento en pausa</span></h3>
+        <p id="movilSiguiendoTexto">Esta versión de la web no accede a tus favoritos anteriores ni guarda seguimiento remoto.</p>
       </div>
     </article>
 
@@ -923,9 +960,9 @@
 
     <div class="movil-vacio" id="movilSiguiendoVacio">
       <span class="movil-vacio-senal" aria-hidden="true">◎</span>
-      <h3>Guarda tus favoritas</h3>
-      <p>Abre una plataforma y pulsa «Vigilar» para guardarla aquí. Eso no significa que hayas invertido ni activa envíos.</p>
-      <button class="movil-boton-principal" type="button" data-movil-action="cuenta" id="movilCuentaAccion">Entrar y abrir mis favoritos</button>
+      <h3>Consulta el radar sin cuenta</h3>
+      <p>Puedes explorar las fichas y compararlas. Para consultar o gestionar datos de una cuenta anterior, escribe a <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a>.</p>
+      <button class="movil-boton-principal" type="button" data-movil-action="cuenta" id="movilCuentaAccion" disabled>Cuentas en pausa</button>
       <button class="movil-boton-enlace" type="button" data-movil-cambiar="buscar">Explorar plataformas</button>
     </div>
   </div>
@@ -948,16 +985,16 @@
   <div class="movil-panel-cuerpo movil-mas-cuerpo">
     <article class="movil-resumen movil-resumen-marca">
       <svg class="radar mk" width="46" height="46" viewBox="0 0 104 104" aria-hidden="true"></svg>
-      <div><p class="movil-mini-etiqueta">MI CUENTA</p><h3>Tu espacio en RWAdar</h3><p>Perfil, seguridad, privacidad y preferencias en un solo lugar.</p></div>
-      <div class="movil-resumen-numero"><b id="movilMasCuenta">0</b><small>FAVORITOS</small></div>
+      <div><p class="movil-mini-etiqueta">MI CUENTA</p><h3>Privacidad y preferencias</h3><p>Las cuentas están en pausa. El radar se consulta sin registrarse.</p></div>
+      <div class="movil-resumen-numero"><b id="movilMasCuenta">—</b><small>CUENTAS</small></div>
     </article>
 
     <section class="movil-menu-grupo" aria-labelledby="movilCuentaTit">
       <h3 id="movilCuentaTit">Cuenta y preferencias</h3>
       <div class="movil-menu">
-        <button type="button" class="movil-menu-fila" data-movil-action="cuenta">
-          <span class="movil-menu-icono" aria-hidden="true">○</span><span><b>Perfil y seguridad</b><small>Entrar, revisar el acceso o borrar la cuenta</small></span><i aria-hidden="true">›</i>
-        </button>
+        <a class="movil-menu-fila" href="/privacidad#derechos">
+          <span class="movil-menu-icono" aria-hidden="true">○</span><span><b>Perfil y seguridad</b><small>Cómo gestionar datos de una cuenta anterior</small></span><i aria-hidden="true">›</i>
+        </a>
         <button type="button" class="movil-menu-fila" id="movilAbrirAvisos" data-movil-action="avisos"
                 aria-controls="movilVistaAvisos" aria-expanded="false">
           <span class="movil-menu-icono" aria-hidden="true">!</span><span><b>Avisos y preferencias</b><small>Estado real del servicio y consentimiento</small></span><i aria-hidden="true">›</i>
@@ -985,13 +1022,13 @@
           </span>
           <div><p class="movil-mini-etiqueta">ESTADO DEL SERVICIO</p><h3>Entrega todavía no activa</h3></div>
         </div>
-        <p>El consentimiento para correo está desactivado por defecto. Puedes aceptarlo expresamente o retirarlo desde tu cuenta. Aunque lo aceptes, RWAdar aún no envía esos mensajes: faltan configurar Brevo y verificar la entrega de extremo a extremo.</p>
-        <button class="movil-boton-secundario" type="button" data-movil-action="cuenta">Gestionar mi consentimiento</button>
+        <p>Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar. Si diste un consentimiento en una versión anterior, puedes retirarlo escribiendo a RWAdar@protonmail.com.</p>
+        <a class="movil-boton-secundario" href="/privacidad#derechos">Consultar mis derechos</a>
       </article>
 
       <div class="movil-estado-pasos" aria-label="Estado de los avisos">
-        <div class="movil-estado-paso"><span aria-hidden="true">1</span><p><b>Preferencia</b><small>Desactivada por defecto; tú decides desde la cuenta.</small></p><i>Opcional</i></div>
-        <div class="movil-estado-paso"><span aria-hidden="true">2</span><p><b>Preparación</b><small>La vigilancia ya puede guardarse con tu sesión.</small></p><i>Disponible</i></div>
+        <div class="movil-estado-paso"><span aria-hidden="true">1</span><p><b>Preferencia</b><small>No se recoge un nuevo consentimiento en esta versión.</small></p><i>En pausa</i></div>
+        <div class="movil-estado-paso"><span aria-hidden="true">2</span><p><b>Seguimiento</b><small>Las cuentas y la vigilancia remota están desactivadas.</small></p><i>En pausa</i></div>
         <div class="movil-estado-paso movil-estado-paso-pendiente"><span aria-hidden="true">3</span><p><b>Entrega</b><small>Correo y push siguen cerrados hasta superar la prueba real.</small></p><i>Pendiente</i></div>
       </div>
 
@@ -1151,18 +1188,21 @@
     </div>
     <div>
       <h4>Secciones</h4>
-      <p><a href="#explain">Qué es tokenizar</a><br><a href="#metodo">Cómo elegimos las 26</a><br><a href="#tool">El radar</a><br><a href="#fuera">Fuera del radar</a></p>
+      <p><a href="#explain">Qué es tokenizar</a><br><a href="#metodo">Qué comprobamos</a><br><a href="#tool">El radar</a><br><a href="#fuera">Fuera del radar</a></p>
     </div>
     <div>
       <h4>Contacto</h4>
       <p>Correcciones y avisos:<br><a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a></p>
-      <p id="pieRevision">Última revisión del registro: 08.08.2026</p>
+      <p id="pieRevision">Última revisión del registro: 28.09.2026</p>
       <p><a href="/privacidad">Política de privacidad</a></p>
+      <p><a href="/transparencia-comercial">Transparencia comercial</a></p>
+      <p><a href="/para-empresas">Para empresas</a></p>
       <p id="licencia">© 2026 RWAdar. Todos los derechos reservados.<br>El registro y su selección no pueden reproducirse ni redistribuirse sin permiso.</p>
     </div>
   </div>
 </footer>
 
+<script src="/assets/analitica-20260927.js" defer></script>
 <script src="/assets/rwadar-20260820.js" defer></script>
 </body>
 </html>

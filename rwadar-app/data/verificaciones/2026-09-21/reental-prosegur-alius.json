@@ -1,0 +1,472 @@
+{
+  "version": 1,
+  "id": "verificacion-oficial-reental-prosegur-alius-2026-09-21",
+  "verificadoEl": "2026-09-21",
+  "publicable": false,
+  "uso": "Solo local y trazable. No es un catálogo, no autoriza publicación y no debe importarse automáticamente.",
+  "criterio": {
+    "estadosDato": [
+      "observado",
+      "calculado",
+      "no_verificable"
+    ],
+    "regla": "Observado significa leído en una fuente primaria oficial en la fecha indicada; calculado conserva fórmula y operandos; no verificable nunca puede convertirse en disponible o vigente por inferencia.",
+    "red": "La captura original fue manual y de solo lectura. Este registro y su prueba funcionan sin red."
+  },
+  "fuentes": [
+    {
+      "id": "reental-caribe-1-corporativa",
+      "organizacion": "Reental",
+      "tipo": "proveedor",
+      "url": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Página informativa fechada el 5 de agosto de 2026; publica condiciones estimadas, pero no estado de captación ni financiación actual."
+    },
+    {
+      "id": "reental-caribe-2-corporativa",
+      "organizacion": "Reental",
+      "tipo": "proveedor",
+      "url": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Página informativa fechada el 5 de agosto de 2026; publica condiciones estimadas, pero no estado de captación ni financiación actual."
+    },
+    {
+      "id": "reental-catalogo-publico",
+      "organizacion": "Reental",
+      "tipo": "proveedor",
+      "url": "https://www.reental.co/properties",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Se revisaron las 14 páginas y 123 entradas visibles del catálogo; Caribe 1 y Caribe 2 no figuraban."
+    },
+    {
+      "id": "reental-faq",
+      "organizacion": "Reental",
+      "tipo": "proveedor",
+      "url": "https://www.reental.co/faqs",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Describe elegibilidad general tras KYC/AML y un mínimo general aproximado de un token, pero no acredita disponibilidad ni mínimo de Caribe 1 o Caribe 2."
+    },
+    {
+      "id": "reental-aviso-legal",
+      "organizacion": "Reental",
+      "tipo": "proveedor",
+      "url": "https://www.reental.co/aviso-legal",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "La reproducción y explotación de imágenes o contenidos requiere autorización escrita previa."
+    },
+    {
+      "id": "reental-caribe-1-aplicacion",
+      "organizacion": "Reental",
+      "tipo": "proveedor",
+      "url": "https://app.reental.co/dashboard/properties/8befd7a6-692f-404d-9fb8-d48fab2a74ca",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "La URL redirigió a inicio de sesión y no expuso estado, financiación ni disponibilidad."
+    },
+    {
+      "id": "reental-caribe-2-aplicacion",
+      "organizacion": "Reental",
+      "tipo": "proveedor",
+      "url": "https://app.reental.co/dashboard/properties/10c30adb-542d-4f40-ab89-6c1f1474e5b7",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "La URL redirigió a inicio de sesión y no expuso estado, financiación ni disponibilidad."
+    },
+    {
+      "id": "prosegur-producto",
+      "organizacion": "Prosegur Crypto",
+      "tipo": "proveedor",
+      "url": "https://es.prosegurdigitalgold.com/",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Producto disponible para compra; un token representa un gramo de oro y la compra mínima publicada es un gramo."
+    },
+    {
+      "id": "prosegur-ficha-publica",
+      "organizacion": "Prosegur Crypto",
+      "tipo": "proveedor",
+      "url": "https://app.prosegurdigitalgold.com/?dg_country=ES#/public-sto/79e44365-1c1d-426e-88b6-39987083bbbe",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "La ficha mostró estado Emitida y 126,65 EUR por token de un gramo; el precio es dinámico."
+    },
+    {
+      "id": "prosegur-condiciones",
+      "organizacion": "Prosegur Crypto",
+      "tipo": "proveedor",
+      "url": "https://app.prosegurdigitalgold.com/?dg_country=ES#/terms-service",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Condiciones actualizadas el 8 de julio de 2026: compra LBMA +4 %, recompra LBMA -6 %, KYC, sin vencimiento ni rentabilidad garantizada y sin transmisión a terceros."
+    },
+    {
+      "id": "prosegur-aviso-legal",
+      "organizacion": "Prosegur Crypto",
+      "tipo": "proveedor",
+      "url": "https://es.prosegurdigitalgold.com/legal",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "No concede licencia de contenidos o imágenes y exige autorización expresa para su reutilización."
+    },
+    {
+      "id": "alius-casa-outeiro",
+      "organizacion": "Alius Capital",
+      "tipo": "proveedor",
+      "url": "https://aliuscap.com/projects/casa-de-outeiro",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Campaña abierta con cifras cargadas en la ficha oficial y enlace de inversión."
+    },
+    {
+      "id": "casa-outeiro-emision",
+      "organizacion": "Casa de Outeiro",
+      "tipo": "emisor",
+      "url": "https://casadeouteiro.com/emision-capital/",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "El emisor declara la emisión abierta y fecha su última actualización el 17 de septiembre de 2026."
+    },
+    {
+      "id": "alius-aviso-legal",
+      "organizacion": "Alius Capital",
+      "tipo": "proveedor",
+      "url": "https://aliuscap.com/legal-notice/",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Prohíbe copiar, transmitir o reproducir imágenes y contenidos de la web."
+    },
+    {
+      "id": "cnmv-psfp",
+      "organizacion": "CNMV",
+      "tipo": "regulador",
+      "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores?lang=es",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Registro número 11 para ADVENTUREES CAPITAL PFP, S.L., vinculado a aliuscap.com."
+    },
+    {
+      "id": "borme-cambio-alius",
+      "organizacion": "Registro Mercantil",
+      "tipo": "registro-oficial",
+      "url": "https://www.boe.es/borme/dias/2026/03/24/pdfs/BORME-A-2026-57-38.pdf",
+      "consultadaEl": "2026-09-21",
+      "primaria": true,
+      "resultado": "Acredita el cambio de denominación de ADVENTUREES CAPITAL PFP, S.L. a ALIUS CAPITAL STOS PSFP, S.L."
+    }
+  ],
+  "empresas": {
+    "reental": {
+      "denominacion": "RENTAL TOKEN, S.L.",
+      "identificacionFiscal": "B01988393",
+      "estado": "observado",
+      "fuentes": [
+        "reental-aviso-legal"
+      ]
+    },
+    "prosegur-crypto": {
+      "denominacion": "PROSEGUR CUSTODIA DE ACTIVOS DIGITALES, S.L.U.",
+      "identificacionFiscal": "B88610126",
+      "estado": "observado",
+      "fuentes": [
+        "prosegur-condiciones"
+      ]
+    },
+    "alius-capital": {
+      "denominacion": "ALIUS CAPITAL STOS PSFP, S.L.",
+      "denominacionAnterior": "ADVENTUREES CAPITAL PFP, S.L.",
+      "identificacionFiscal": "B76632793",
+      "registroCnmv": 11,
+      "estado": "observado",
+      "fuentes": [
+        "alius-aviso-legal",
+        "cnmv-psfp",
+        "borme-cambio-alius"
+      ]
+    }
+  },
+  "ofertas": [
+    {
+      "slug": "caribe-1",
+      "proveedor": "reental",
+      "titulo": "Caribe 1",
+      "urlCanonica": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+      "disponibilidad": {
+        "estado": "no_verificable",
+        "abiertaVerificada": false,
+        "observadoEl": "2026-09-21",
+        "ttl": "P0D",
+        "detalle": "La página corporativa permanece publicada, pero la oferta no figura en el catálogo público vigente y la ficha transaccional exige inicio de sesión. No hay prueba pública de abierta, cerrada o financiada."
+      },
+      "condicionesPublicadas": {
+        "estado": "observado",
+        "fuente": "reental-caribe-1-corporativa",
+        "observadoEl": "2026-09-21",
+        "ttl": "P30D",
+        "plazoMeses": 30,
+        "reparto": "Mensual, desde 90 días después del inicio de la cuenta del proyecto",
+        "rentabilidadAnualEstimadaPorNivel": {
+          "reentel": 10,
+          "reentelPro": 11,
+          "superReentel": 13
+        },
+        "rentabilidadTotalEstimadaPorNivel": {
+          "reentel": 25,
+          "reentelPro": 27.5,
+          "superReentel": 32.5
+        },
+        "advertencia": "Estimaciones no garantizadas; no prueban que la captación continúe abierta."
+      },
+      "inversionMinima": {
+        "estado": "no_verificable",
+        "valor": null,
+        "ttl": "P0D",
+        "detalle": "La ficha pública de la oferta no muestra mínimo y las páginas generales de Reental contienen cifras incompatibles; no reutilizar 100 USD del artefacto de agosto."
+      },
+      "elegibilidadEspana": {
+        "estado": "no_verificable",
+        "valor": null,
+        "ttl": "P0D",
+        "detalle": "Reental admite en general adultos tras KYC/AML y contempla residentes españoles, pero no se verificó elegibilidad ni disponibilidad específica de esta emisión."
+      },
+      "derechosImagen": {
+        "estado": "no_verificable",
+        "publicacionAutorizada": false,
+        "fuenteLegal": "reental-aviso-legal",
+        "detalle": "No se localizó licencia pública ni permiso escrito para RWAdar."
+      },
+      "fuentes": [
+        "reental-caribe-1-corporativa",
+        "reental-catalogo-publico",
+        "reental-faq",
+        "reental-caribe-1-aplicacion",
+        "reental-aviso-legal"
+      ]
+    },
+    {
+      "slug": "caribe-2",
+      "proveedor": "reental",
+      "titulo": "Caribe 2",
+      "urlCanonica": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+      "disponibilidad": {
+        "estado": "no_verificable",
+        "abiertaVerificada": false,
+        "observadoEl": "2026-09-21",
+        "ttl": "P0D",
+        "detalle": "La página corporativa permanece publicada, pero la oferta no figura en el catálogo público vigente y la ficha transaccional exige inicio de sesión. No hay prueba pública de abierta, cerrada o financiada."
+      },
+      "condicionesPublicadas": {
+        "estado": "observado",
+        "fuente": "reental-caribe-2-corporativa",
+        "observadoEl": "2026-09-21",
+        "ttl": "P30D",
+        "plazoMeses": 30,
+        "reparto": "Rendimiento final al terminar el proyecto",
+        "rentabilidadAnualEstimadaPorNivel": {
+          "reentel": 11,
+          "reentelPro": 13,
+          "superReentel": 18
+        },
+        "rentabilidadTotalEstimadaPorNivel": {
+          "reentel": 27.5,
+          "reentelPro": 32.5,
+          "superReentel": 45
+        },
+        "advertencia": "Estimaciones no garantizadas; no prueban que la captación continúe abierta."
+      },
+      "inversionMinima": {
+        "estado": "no_verificable",
+        "valor": null,
+        "ttl": "P0D",
+        "detalle": "La ficha pública de la oferta no muestra mínimo y las páginas generales de Reental contienen cifras incompatibles; no reutilizar 100 USD del artefacto de agosto."
+      },
+      "elegibilidadEspana": {
+        "estado": "no_verificable",
+        "valor": null,
+        "ttl": "P0D",
+        "detalle": "Reental admite en general adultos tras KYC/AML y contempla residentes españoles, pero no se verificó elegibilidad ni disponibilidad específica de esta emisión."
+      },
+      "derechosImagen": {
+        "estado": "no_verificable",
+        "publicacionAutorizada": false,
+        "fuenteLegal": "reental-aviso-legal",
+        "detalle": "No se localizó licencia pública ni permiso escrito para RWAdar."
+      },
+      "fuentes": [
+        "reental-caribe-2-corporativa",
+        "reental-catalogo-publico",
+        "reental-faq",
+        "reental-caribe-2-aplicacion",
+        "reental-aviso-legal"
+      ]
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "proveedor": "prosegur-crypto",
+      "titulo": "Prosegur Digital Gold",
+      "urlCanonica": "https://es.prosegurdigitalgold.com/",
+      "disponibilidad": {
+        "estado": "observado",
+        "valor": "emitida_y_comprable",
+        "observadoEl": "2026-09-21",
+        "ttl": "P1D",
+        "fuente": "prosegur-ficha-publica"
+      },
+      "precio": {
+        "estado": "observado",
+        "valor": 126.65,
+        "moneda": "EUR",
+        "unidad": "token de 1 gramo",
+        "observadoEl": "2026-09-21",
+        "ttl": "PT0M",
+        "dinamico": true,
+        "fuente": "prosegur-ficha-publica",
+        "detalle": "Instantánea probatoria, caduca inmediatamente y no debe presentarse como cotización actual sin volver a consultar al proveedor."
+      },
+      "inversionMinima": {
+        "estado": "observado",
+        "valor": 1,
+        "unidad": "gramo/token",
+        "observadoEl": "2026-09-21",
+        "ttl": "P7D",
+        "fuente": "prosegur-producto"
+      },
+      "comisiones": {
+        "estado": "observado",
+        "compraSobreLbmaPorcentaje": 4,
+        "recompraBajoLbmaPorcentaje": 6,
+        "observadoEl": "2026-09-21",
+        "ttl": "P1D",
+        "fuente": "prosegur-condiciones",
+        "detalle": "Pueden añadirse costes bancarios o del proveedor de pago según las condiciones."
+      },
+      "plazo": {
+        "estado": "observado",
+        "valor": "sin_vencimiento_fijo",
+        "recompra": "Solo por Prosegur Crypto; plazo ordinario aproximado de 1 a 7 días hábiles",
+        "fuente": "prosegur-condiciones"
+      },
+      "rentabilidad": {
+        "estado": "observado",
+        "valor": null,
+        "detalle": "No existe rentabilidad fija ni garantizada; el valor depende del precio del oro. No es un instrumento financiero ni un security token.",
+        "fuente": "prosegur-condiciones"
+      },
+      "elegibilidadEspana": {
+        "estado": "observado",
+        "valor": true,
+        "condiciones": "Registro y KYC; operaciones del EEE normalmente liquidadas en euros.",
+        "fuente": "prosegur-condiciones"
+      },
+      "derechosImagen": {
+        "estado": "no_verificable",
+        "publicacionAutorizada": false,
+        "fuenteLegal": "prosegur-aviso-legal",
+        "detalle": "No se localizó licencia pública ni permiso escrito para RWAdar."
+      },
+      "fuentes": [
+        "prosegur-producto",
+        "prosegur-ficha-publica",
+        "prosegur-condiciones",
+        "prosegur-aviso-legal"
+      ]
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "proveedor": "alius-capital",
+      "titulo": "Casa de Outeiro",
+      "urlCanonica": "https://aliuscap.com/projects/casa-de-outeiro",
+      "disponibilidad": {
+        "estado": "observado",
+        "valor": "campaña_abierta",
+        "observadoEl": "2026-09-21",
+        "ttl": "P1D",
+        "validaHasta": "2026-09-22",
+        "fuente": "alius-casa-outeiro"
+      },
+      "precio": {
+        "estado": "observado",
+        "valor": 25,
+        "moneda": "EUR",
+        "unidad": "acción tokenizada",
+        "observadoEl": "2026-09-21",
+        "ttl": "P1D",
+        "fuente": "alius-casa-outeiro"
+      },
+      "inversionMinima": {
+        "estado": "observado",
+        "valor": 2000,
+        "moneda": "EUR",
+        "equivalenciaTokens": 80,
+        "observadoEl": "2026-09-21",
+        "ttl": "P1D",
+        "fuente": "alius-casa-outeiro"
+      },
+      "captacion": {
+        "estado": "observado",
+        "recaudado": 1082000,
+        "objetivo": 3220000,
+        "tokensVendidos": 43280,
+        "tokensTotales": 128800,
+        "moneda": "EUR",
+        "observadoEl": "2026-09-21",
+        "ttl": "P1D",
+        "fuente": "alius-casa-outeiro"
+      },
+      "porcentajeCaptado": {
+        "estado": "calculado",
+        "valor": 33.6,
+        "unidad": "porcentaje",
+        "formula": "recaudado / objetivo * 100",
+        "operandos": {
+          "recaudado": 1082000,
+          "objetivo": 3220000
+        },
+        "decimales": 2,
+        "calculadoEl": "2026-09-21",
+        "ttl": "P1D"
+      },
+      "plazo": {
+        "estado": "observado",
+        "diasRestantes": 40,
+        "fechaCierre": null,
+        "fechaCierreEstado": "no_verificable",
+        "observadoEl": "2026-09-21",
+        "ttl": "P1D",
+        "detalle": "La ficha mostraba 40 días restantes, pero no escribía una fecha exacta de cierre; no convertir la inferencia en hecho."
+      },
+      "rentabilidad": {
+        "estado": "no_verificable",
+        "valor": null,
+        "detalle": "Es una ampliación de capital mediante acciones; la ficha no publica cupón, rentabilidad prometida ni vencimiento."
+      },
+      "elegibilidadEspana": {
+        "estado": "observado",
+        "valor": true,
+        "condiciones": "Registro, validación del perfil inversor y controles de identidad de la plataforma.",
+        "fuentes": [
+          "alius-casa-outeiro",
+          "cnmv-psfp",
+          "borme-cambio-alius"
+        ]
+      },
+      "derechosImagen": {
+        "estado": "no_verificable",
+        "publicacionAutorizada": false,
+        "fuenteLegal": "alius-aviso-legal",
+        "detalle": "No se localizó licencia pública ni permiso escrito para RWAdar."
+      },
+      "fuentes": [
+        "alius-casa-outeiro",
+        "casa-outeiro-emision",
+        "alius-aviso-legal",
+        "cnmv-psfp",
+        "borme-cambio-alius"
+      ]
+    }
+  ]
+}

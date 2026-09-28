@@ -1,0 +1,2265 @@
+{
+  "sourceUrl": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+  "extractedAt": "2026-08-30T08:31:26.686Z",
+  "articles": [
+    {
+      "className": "row",
+      "i": 0,
+      "images": [
+        {
+          "alt": "Caribe 1",
+          "j": 0,
+          "srcIndex": 0
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.reental.co/dashboard/properties/8befd7a6-692f-404d-9fb8-d48fab2a74ca",
+          "text": "Invertir\n→"
+        }
+      ],
+      "text": "01\nCaribe 1\nReental\nMX\n30 meses\nReparto mensual\nDesde 100 $\n52,97 % financiado\nColateralizable\n\nCobras cada mes desde el arranque, a cambio de un punto menos de rentabilidad que su gemelo.\n\nEspaña ✓\nverificado hace 12 días\n10,00 %\n«10 % anual estimado»\nInvertir\n→\nscore 11,75"
+    },
+    {
+      "className": "row",
+      "i": 1,
+      "images": [
+        {
+          "alt": "Caribe 2",
+          "j": 0,
+          "srcIndex": 1
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.reental.co/dashboard/properties/10c30adb-542d-4f40-ab89-6c1f1474e5b7",
+          "text": "Invertir\n→"
+        }
+      ],
+      "text": "02\nCaribe 2\nReental\nMX\n30 meses\nAl vencimiento\nDesde 100 $\n51,15 % financiado\nColateralizable\n\nEl mayor bonus del catálogo de Reental, pero no cobras nada hasta 2029.\n\nEspaña ✓\nverificado hace 12 días\n11,00 %\n«11 % anual estimado»\nInvertir\n→\nscore 11,25"
+    },
+    {
+      "className": "row",
+      "i": 2,
+      "images": [
+        {
+          "alt": "mF-ONE",
+          "j": 0,
+          "srcIndex": 2
+        }
+      ],
+      "links": [
+        {
+          "href": "https://midas.app/products",
+          "text": "Ver en Midas\n→"
+        }
+      ],
+      "text": "03\nmF-ONE\nMidas\nUE\nSin plazo\nAcumulación · reembolso instantáneo\nTVL 72,0 M$\n\nLa rentabilidad más alta del escaparate con salida instantánea, a cambio de necesitar wallet propia. Es crédito respaldado por activos, no inmobiliario.\n\nEspaña ✓\nverificado hace 3 días\n7,43 %\nAPY 7 d · 9,30 % a 30 d\nVer en Midas\n→\nscore 8,43"
+    },
+    {
+      "className": "row",
+      "i": 3,
+      "images": [
+        {
+          "alt": "mGLOBAL",
+          "j": 0,
+          "srcIndex": 3
+        }
+      ],
+      "links": [
+        {
+          "href": "https://midas.app/products",
+          "text": "Ver en Midas\n→"
+        }
+      ],
+      "text": "04\nmGLOBAL\nMidas\nUE\nSin plazo\nAcumulación · reembolso instantáneo\nTVL 68,6 M$\n\nCrédito diversificado con salida instantánea. Su APY lleva dos ventanas idéntico: es el más estable de los cuatro de Midas.\n\nEspaña ✓\nverificado hace 3 días\n6,65 %\nAPY 7 d · igual a 30 d\nVer en Midas\n→\nscore 7,65"
+    },
+    {
+      "className": "row",
+      "i": 4,
+      "images": [
+        {
+          "alt": "Fotovoltaica GreenPoint",
+          "j": 0,
+          "srcIndex": 4
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A38J32",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "05\nFotovoltaica GreenPoint\nBrickwise\nAT\nPerpetuo · mercado activo\nReparto mensual, día 15\nDesde 103,00 €\n7 cruces en 30 días\nPagas justo el ultimo cruce\n\nLa renovable mejor pagada que se puede comprar hoy, pero devuelve 100,32 € en 2038 por los 103 € que cuesta: parte del reparto está pagando la pérdida de principal.\n\nEspaña ✓ EEE\nverificado hace 3 días\namortiza por debajo del precio\n5,94 %\nanuncia 6,17 % · recalculado sobre el precio del tablón\nVer la ficha\n→\nscore 7,44"
+    },
+    {
+      "className": "row",
+      "i": 5,
+      "images": [
+        {
+          "alt": "Fotovoltaica Cohotel",
+          "j": 0,
+          "srcIndex": 5
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A38J40",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "06\nFotovoltaica Cohotel\nBrickwise\nAT\nPerpetuo\nReparto mensual, día 15\nDesde 110,00 €\n47 días sin cruce\nPagas un 15,8 % sobre el ultimo cruce\n\nSobre el papel es la segunda mejor pagada, pero lleva +ías sin que nadie cruce una operación y el vendedor pide 110 € cuando lo último que se pagó fueron 95. La oferta existe; el mercado no la está tomando.\n\nEspaña ✓ EEE\nverificado hace 3 días\namortiza por debajo del precio\n5,58 %\nanuncia 6,46 % · recalculado\nVer la ficha\n→\nscore 7,08"
+    },
+    {
+      "className": "row",
+      "i": 6,
+      "images": [
+        {
+          "alt": "Drautalresidenz · Paternion",
+          "j": 0,
+          "srcIndex": 6
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "07\nDrautalresidenz · Paternion\nBrickwise\nAT\nPerpetuo · mercado activo\nReparto mensual, día 15\nDesde 65,00 €\n13 cruces en 30 días\nPagas justo el ultimo cruce\n\nVivienda tutelada con garantía de cuidados, la más negociada del catálogo —trece operaciones en treinta días— y se compra al mismo precio al que se cruza. El aviso de horquilla del 72 % que llevaba el 18 de agosto ya no aplica: el precio ha bajado de 75 a 65 €.\n\nEspaña ✓ EEE\nverificado hace 3 días\n5,04 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 7,04"
+    },
+    {
+      "className": "row",
+      "i": 7,
+      "images": [
+        {
+          "alt": "Terreno con arrendamiento BILLA",
+          "j": 0,
+          "srcIndex": 7
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "08\nTerreno con arrendamiento BILLA\nBrickwise\nAT\nEmisión primaria\nReparto mensual, día 15\nDesde 100,00 €\nInquilino hasta 2057\nColocado al 99,84 %: quedan 1.000 € de las 6.404 participaciones\n\nEl único en emisión primaria: suelo con un supermercado BILLA de inquilino hasta 2057. Casi no queda: de sus 6.404 participaciones solo hay 10 libres —1.000 € en total, a 100 € cada una— y la ventana venció en mayo.\n\nEspaña ✓ EEE\nverificado hace 3 días\nventana vencida\n5,07 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 6,57"
+    },
+    {
+      "className": "row",
+      "i": 8,
+      "images": [
+        {
+          "alt": "Apartamento vacacional · Hinterstoder 50",
+          "j": 0,
+          "srcIndex": 8
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "09\nApartamento vacacional · Hinterstoder 50\nBrickwise\nAT\nPerpetuo · mercado activo\nReparto mensual, día 15\nDesde 70,00 €\n5 cruces en 30 días\nPagas un 19,4 % POR DEBAJO del ultimo cruce\n\nApartamento turístico con ocupación del 100 % y la horquilla compra-venta más estrecha del inmobiliario de Brickwise.\n\nEspaña ✓ EEE\nverificado hace 3 días\n4,98 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 6,48"
+    },
+    {
+      "className": "row",
+      "i": 9,
+      "images": [
+        {
+          "alt": "Vivienda · Stallhofstraße 28, Gratwein",
+          "j": 0,
+          "srcIndex": 9
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "10\nVivienda · Stallhofstraße 28, Gratwein\nBrickwise\nAT\nPerpetuo · mercado activo\nReparto mensual, día 15\nDesde 69,96 €\n9 cruces en 30 días\nPagas un 7,6 % sobre el ultimo cruce\n\nLa más negociada del catálogo — doce operaciones en treinta días — y con la hipoteca ya inscrita en el registro austriaco.\n\nEspaña ✓ EEE\nverificado hace 3 días\nla más líquida\n4,11 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 6,11"
+    },
+    {
+      "className": "row",
+      "i": 10,
+      "images": [
+        {
+          "alt": "Vivienda · Schwarzer Weg 18, Graz",
+          "j": 0,
+          "srcIndex": 10
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "11\nVivienda · Schwarzer Weg 18, Graz\nBrickwise\nAT\nPerpetuo · mercado activo\nReparto mensual, día 15\nDesde 65,00 €\n12 cruces en 30 días\nPagas justo el ultimo cruce\n\nEntrada de 65 € —la más baja del radar— con hipoteca inscrita, doce cruces en treinta días y sin pagar prima sobre el último.\n\nEspaña ✓ EEE\nverificado hace 3 días\n3,73 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 5,73"
+    },
+    {
+      "className": "row",
+      "i": 11,
+      "images": [
+        {
+          "alt": "Vivienda · Pottendorfer Straße 62, Wr. Neustadt",
+          "j": 0,
+          "srcIndex": 11
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A324B4",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "12\nVivienda · Pottendorfer Straße 62, Wr. Neustadt\nBrickwise\nAT\nPerpetuo\nReparto mensual, día 15\nDesde 75,00 €\n2 cruces en 30 días\nPagas un 4,9 % sobre el ultimo cruce\n\nAlquilada al 100 %, pero es deuda y su hipoteca sigue sin inscribirse.\n\nEspaña ✓ EEE\nverificado hace 3 días\nhipoteca sin inscribir\n4,05 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 5,55"
+    },
+    {
+      "className": "row",
+      "i": 12,
+      "images": [
+        {
+          "alt": "Vivienda · Plüddemanngasse 101, Graz",
+          "j": 0,
+          "srcIndex": 12
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "13\nVivienda · Plüddemanngasse 101, Graz\nBrickwise\nAT\nPerpetuo\nReparto mensual, día 15\nDesde 85,00 €\nNota del tasador 5/5\n2 cruces en 30 días\nPagas un 88,9 % sobre el ultimo cruce\n\nLa mejor nota del tasador, 5 sobre 5, al precio más caro del catálogo residencial: 85 € la participación.\n\nEspaña ✓ EEE\nverificado hace 3 días\n3,54 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 5,54"
+    },
+    {
+      "className": "row",
+      "i": 13,
+      "images": [
+        {
+          "alt": "Local de estanco · Klagenfurt",
+          "j": 0,
+          "srcIndex": 13
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "14\nLocal de estanco · Klagenfurt\nBrickwise\nAT\nPerpetuo\nReparto mensual, día 15\nDesde 95,00 €\nNota del tasador 5/5\n2 cruces en 30 días\nPagas un 4,1 % POR DEBAJO del ultimo cruce\n\nLocal con contrato y nota 5 sobre 5. Es la única no residencial del mercado secundario.\n\nEspaña ✓ EEE\nverificado hace 3 días\n3,46 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 5,46"
+    },
+    {
+      "className": "row",
+      "i": 14,
+      "images": [
+        {
+          "alt": "Vivienda · Sonnleithnergasse 2, Viena",
+          "j": 0,
+          "srcIndex": 14
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "15\nVivienda · Sonnleithnergasse 2, Viena\nBrickwise\nAT\nPerpetuo · mercado activo\nReparto mensual, día 15\nDesde 75,00 €\n11 cruces en 30 días\nPagas un 15,4 % sobre el ultimo cruce\n\nCuarenta ofertas de venta compitiendo: es donde más fácil resulta entrar barato.\n\nEspaña ✓ EEE\nverificado hace 3 días\n40 vendedores\n3,42 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 5,42"
+    },
+    {
+      "className": "row",
+      "i": 15,
+      "images": [
+        {
+          "alt": "mWIN",
+          "j": 0,
+          "srcIndex": 15
+        }
+      ],
+      "links": [
+        {
+          "href": "https://midas.app/products",
+          "text": "Ver en Midas\n→"
+        }
+      ],
+      "text": "16\nmWIN\nMidas\nUE\nSin plazo\nAcumulación · reembolso instantáneo\nTVL 14,7 M$\n\nCartera de renta fija gestionada por Wellington Management. Lo que hay que mirar aquí no es el número sino su recorrido: 4,95 % el 16, 1,49 % el 18 por la mañana, 2,44 % esa tarde y 5,76 % el 20. Se puede comprar, pero el porcentaje del día dice poco.\n\nEspaña ✓\nverificado hace 3 días\n4,95 → 1,49 → 5,76 → 3,65 en once días\n3,65 %\nAPY 7 d · 5,64 % a 30 d\nVer en Midas\n→\nscore 4,65"
+    },
+    {
+      "className": "row",
+      "i": 16,
+      "images": [
+        {
+          "alt": "mTBILL",
+          "j": 0,
+          "srcIndex": 16
+        }
+      ],
+      "links": [
+        {
+          "href": "https://midas.app/products",
+          "text": "Ver en Midas\n→"
+        }
+      ],
+      "text": "17\nmTBILL\nMidas\nUE\nSin plazo\nAcumulación · reembolso instantáneo\nTVL 66,5 M$\n\nLo más conservador del escaparate: letras del Tesoro de EE. UU. con salida instantánea. Es el único producto de deuda pública que tenemos.\n\nEspaña ✓\nverificado hace 3 días\n3,17 %\nAPY 7 d · 3,48 % a 30 d\nVer en Midas\n→\nscore 4,17"
+    },
+    {
+      "className": "row",
+      "i": 17,
+      "images": [
+        {
+          "alt": "Randhartingergasse 9, Viena",
+          "j": 0,
+          "srcIndex": 17
+        }
+      ],
+      "links": [
+        {
+          "href": "https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "18\nRandhartingergasse 9, Viena\nBrickwise\nAT\nPerpetuo\nReparto mensual, día 15\nDesde 71,00 €\n1 cruce en 30 días\nPagas un 255 % sobre el ultimo cruce\n\nLa rentabilidad más baja del bloque. Solo tiene sentido por diversificar a Viena.\n\nEspaña ✓ EEE\nverificado hace 3 días\n2,61 %\n«reparto corriente esperado»\nVer la ficha\n→\nscore 4,11"
+    },
+    {
+      "className": "row",
+      "i": 18,
+      "images": [
+        {
+          "alt": "Spiko Letras del Tesoro Euro",
+          "j": 0,
+          "srcIndex": 18
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+          "text": "Invertir\n→"
+        }
+      ],
+      "text": "19\nSpiko Letras del Tesoro Euro\nSpiko\nFR\nEN EUROS\nSin plazo · retirada instantánea\nDesde 1 €\n804 M€ en el fondo\nUCITS · AMF\n\nEl único producto en euros de deuda pública del escaparate, y el mejor regulado de todo el radar: fondo monetario UCITS aprobado por la AMF francesa, con ISIN, depositario de Crédit Agricole y la cartera publicada letra por letra. Entras desde 1 € y sales el mismo día.\n\nEspaña ✓ UCITS\nverificado hace 12 días\nriesgo soberano puro\n2,20 %\nneto de comisiones · 31 días\nInvertir\n→\nscore 3,20"
+    },
+    {
+      "className": "vcard stale",
+      "i": 19,
+      "images": [
+        {
+          "alt": "Prosegur Digital Gold",
+          "j": 0,
+          "srcIndex": 43
+        }
+      ],
+      "links": [
+        {
+          "href": "https://www.prosegurcrypto.com/digital-gold",
+          "text": "Comprar oro\n→"
+        }
+      ],
+      "text": "Prosegur Digital Gold\nES\nProsegur Crypto\n≈126,84 €\npor gramo · cálculo propio sobre 3.945,26 €/onza\nRespaldo\n1 g físico, 1:1\nCustodia\nBóvedas Prosegur Cash\nCertificación\nLBMA\nLiquidez\nRecompra del emisor\n\nLiquidez contra Prosegur en cualquier momento, no contra un mercado secundario. Es la única vía de oro tokenizado verificada para un minorista español: Pax Gold no está disponible en la UE.\n\nEspaña ✓ y oficinas físicas\nverificado hace 3 días · cifra sin verificar\nmínimo y comisiones sin publicar\nComprar oro\n→"
+    },
+    {
+      "className": "vcard",
+      "i": 20,
+      "images": [
+        {
+          "alt": "Casa de Outeiro",
+          "j": 0,
+          "srcIndex": 44
+        }
+      ],
+      "links": [
+        {
+          "href": "https://aliuscap.com/projects/casa-de-outeiro",
+          "text": "Invertir\n→"
+        }
+      ],
+      "text": "Casa de Outeiro\nES\nAlius Capital · PSFP supervisada por CNMV\n25,00 €\npor token · 1 token = 1 acción\nInversión mínima\n2.000,00 €\nFinanciado\n967.000 € / 3,22 M€\nValoración pre-money\n4,26 M€\nDías restantes\n75\n\nBodega que ya vende: 20 ha en producción desde 2020, más de 200.000 botellas y exportación a Europa, Canadá y Japón. A cambio, el ticket más alto del escaparate y ningún cupón — se cobra si la empresa vale más.\n\nEspaña ✓ plataforma española\nverificado hace 12 días\nsin mercado secundario\nInvertir\n→"
+    },
+    {
+      "className": "vcard",
+      "i": 21,
+      "images": [
+        {
+          "alt": "Aktionariat",
+          "j": 0,
+          "srcIndex": 45
+        }
+      ],
+      "links": [
+        {
+          "href": "https://shares.aktionariat.com/",
+          "text": "Comprar acciones\n→"
+        }
+      ],
+      "text": "Aktionariat\nCH\nAktionariat · DAKS\n7,25 CHF\ncompra directa al emisor · último cruce de mercado: 5,00 CHF\nSector\nFintech\nFundada\n2020\nAccionistas\n368\nPago\nTransferencia o cripto\n\nLa empresa que monta la infraestructura de todas las demás suizas. Su servicio de ayuda es donde está la regla que no aparece en ningún documento legal: la oferta se dirige a residentes en Suiza o el EEE, con tope de 100.000 € para el EEE. Pero comprarle al emisor cuesta un 45 % más que el último precio de mercado.\n\nEspaña ✓ EEE, tope 100.000 €\nventa forzosa al 75 %\nverificado hace 12 días\nprima del 45 % sobre mercado\nComprar acciones\n→"
+    },
+    {
+      "className": "vcard",
+      "i": 22,
+      "images": [
+        {
+          "alt": "Boss Info",
+          "j": 0,
+          "srcIndex": 46
+        }
+      ],
+      "links": [
+        {
+          "href": "https://shares.bossinfo.com/",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "Boss Info\nCH\nAktionariat · BOSS\n8,50 CHF\ncompra directa al emisor · último cruce de mercado: 6,90 CHF\nSector\nServicios TI a pymes\nFundada\n1998\nAccionistas\n156\nTokenizadas\n10,65 M · el 100 %\n\nLa mayor del catálogo suizo y la única con todo su capital tokenizado. Se puede entrar sin wallet, por transferencia bancaria — pero el emisor vende un 23 % por encima del último precio de mercado.\n\nEspaña ✓ EEE\nverificado hace 12 días\nprima del 23 % sobre mercado\nVer la ficha\n→"
+    },
+    {
+      "className": "vcard",
+      "i": 23,
+      "images": [
+        {
+          "alt": "wemakeit",
+          "j": 0,
+          "srcIndex": 47
+        }
+      ],
+      "links": [
+        {
+          "href": "https://shares.wemakeit.com/",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "wemakeit\nCH\nAktionariat · WMKT\n8,38 CHF\nprecio actual · fecha de cruce no publicada\nSector\nCrowdfunding\nFundada\n2012\nAccionistas\n5.276\nTokenizadas\n435.384 de 1,05 M\n\nLa mayor plataforma de crowdfunding de Suiza, en manos de su propia comunidad desde 2022. Con 5.276 accionistas es, con diferencia, el capital más repartido del escaparate.\n\nEspaña ✓ EEE\nverificado hace 12 días\nsin fecha de último cruce\nVer la ficha\n→"
+    },
+    {
+      "className": "vcard",
+      "i": 24,
+      "images": [
+        {
+          "alt": "ServiceHunter · quitt",
+          "j": 0,
+          "srcIndex": 48
+        }
+      ],
+      "links": [
+        {
+          "href": "https://shares.quitt.ch/",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "ServiceHunter · quitt\nCH\nAktionariat · DQTS\n8,00 CHF\núltimo cruce · 23 jul 2026\nSector\nSaaS · empleo doméstico\nFundada\n2010\nAccionistas\n229\nTokenizadas\n1,66 M de 2,00 M\n\nPublica su nómina bruta procesada cada mes —unos 15 M CHF— así que se puede seguir el negocio, no solo el precio. Solo mercado secundario: hace falta wallet.\n\nEspaña ✓ EEE\nverificado hace 12 días\nventa forzosa al 75 %\nsolo secundario\nVer la ficha\n→"
+    },
+    {
+      "className": "vcard",
+      "i": 25,
+      "images": [
+        {
+          "alt": "Switzerlend",
+          "j": 0,
+          "srcIndex": 49
+        }
+      ],
+      "links": [
+        {
+          "href": "https://shares.lend.ch/",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "Switzerlend\nCH\nAktionariat · LENDS\n68,00 CHF\núltimo cruce · 27 jul 2026\nSector\nCrédito\nFundada\n2015\nAccionistas\n283\nClase\nC1 · 27.277 tokens\n\nFintech de crédito y la única del lote que vende al emisor al mismo precio que el mercado, sin prima. Ojo: la capitalización que declara (47,7 M CHF) no cuadra con su precio por el número de acciones de esta clase, y no publicamos esa cifra como si fuera de mercado.\n\nEspaña ✓ EEE\nverificado hace 12 días\ncapitalización descuadrada\nVer la ficha\n→"
+    },
+    {
+      "className": "vcard",
+      "i": 26,
+      "images": [
+        {
+          "alt": "Twiliner",
+          "j": 0,
+          "srcIndex": 50
+        }
+      ],
+      "links": [
+        {
+          "href": "https://tokeninfo.aktionariat.com/twiliner",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "Twiliner\nCH\nAktionariat · LINES\n3,00 CHF\núltimo cruce · 6 nov 2025\nSector\nTransporte\nFundada\n2021\nAccionistas\n188\nTokenizadas\n676.042 de 3,68 M\n\nAutobuses nocturnos de alta gama por Europa. El precio que ves tiene nueve meses: el mercado existe, pero apenas cruza.\n\nEspaña ✓ EEE\nverificado hace 12 días\n9 meses sin operaciones\nVer la ficha\n→"
+    },
+    {
+      "className": "vcard",
+      "i": 27,
+      "images": [
+        {
+          "alt": "EHC Kloten",
+          "j": 0,
+          "srcIndex": 51
+        }
+      ],
+      "links": [
+        {
+          "href": "https://tokeninfo.aktionariat.com/ehc-kloten",
+          "text": "Ver la ficha\n→"
+        }
+      ],
+      "text": "EHC Kloten\nCH\nAktionariat · EHCK\n91,00 CHF\núltimo cruce · 5 sep 2025\nSector\nClub de hockey\nFundado\n1934\nAccionistas\n403\nInstrumento\nBono de participación\nTítulos\n10.000 · el 100 % tokenizados\n\nClub de la liga nacional suiza desde 2022/23, con 403 titulares. No son acciones: es un Partizipationsschein, un bono de participación con derechos económicos pero sin voto. Se publica por lo que es —una participación en un club— y con tres avisos encima.\n\nverificado hace 12 días\nEspaña ✓ EEE\n11 meses sin operaciones\ncapitalización descuadrada\nVer la ficha\n→"
+    }
+  ],
+  "cardMeta": [
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "12",
+        "es": "1",
+        "estado": "ok",
+        "eu": "0",
+        "perm": "0",
+        "score": "11.75"
+      },
+      "date": "2026-08-18",
+      "i": 0,
+      "platform": "Reental",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "12",
+        "es": "1",
+        "estado": "ok",
+        "eu": "0",
+        "perm": "0",
+        "score": "11.25"
+      },
+      "date": "2026-08-18",
+      "i": 1,
+      "platform": "Reental",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "1",
+        "score": "8.43"
+      },
+      "date": "2026-08-27",
+      "i": 2,
+      "platform": "Midas",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "1",
+        "score": "7.65"
+      },
+      "date": "2026-08-27",
+      "i": 3,
+      "platform": "Midas",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "7.44"
+      },
+      "date": "2026-08-27",
+      "i": 4,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "7.08"
+      },
+      "date": "2026-08-27",
+      "i": 5,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "7.04"
+      },
+      "date": "2026-08-27",
+      "i": 6,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "6.57"
+      },
+      "date": "2026-08-27",
+      "i": 7,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "6.48"
+      },
+      "date": "2026-08-27",
+      "i": 8,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "6.11"
+      },
+      "date": "2026-08-27",
+      "i": 9,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "5.73"
+      },
+      "date": "2026-08-27",
+      "i": 10,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "5.55"
+      },
+      "date": "2026-08-27",
+      "i": 11,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "5.54"
+      },
+      "date": "2026-08-27",
+      "i": 12,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "5.46"
+      },
+      "date": "2026-08-27",
+      "i": 13,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "5.42"
+      },
+      "date": "2026-08-27",
+      "i": 14,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "1",
+        "score": "4.65"
+      },
+      "date": "2026-08-27",
+      "i": 15,
+      "platform": "Midas",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "1",
+        "score": "4.17"
+      },
+      "date": "2026-08-27",
+      "i": 16,
+      "platform": "Midas",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "0",
+        "dias": "3",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0",
+        "score": "4.11"
+      },
+      "date": "2026-08-27",
+      "i": 17,
+      "platform": "Brickwise",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "12",
+        "es": "1",
+        "estado": "warn",
+        "eu": "1",
+        "perm": "0",
+        "score": "3.20"
+      },
+      "date": "2026-08-18",
+      "i": 18,
+      "platform": "Spiko",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "3",
+        "es": "1",
+        "estado": "stop",
+        "eu": "1",
+        "perm": "1"
+      },
+      "date": "2026-08-27",
+      "i": 19,
+      "platform": "Prosegur Crypto",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "12",
+        "es": "1",
+        "estado": "warn",
+        "eu": "1",
+        "perm": "0"
+      },
+      "date": "2026-08-18",
+      "i": 20,
+      "platform": "Alius Capital · PSFP supervisada por CNMV",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "12",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0"
+      },
+      "date": "2026-08-18",
+      "i": 21,
+      "platform": "Aktionariat · DAKS",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "12",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0"
+      },
+      "date": "2026-08-18",
+      "i": 22,
+      "platform": "Aktionariat · BOSS",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "12",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0"
+      },
+      "date": "2026-08-18",
+      "i": 23,
+      "platform": "Aktionariat · WMKT",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "12",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0"
+      },
+      "date": "2026-08-18",
+      "i": 24,
+      "platform": "Aktionariat · DQTS",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "12",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0"
+      },
+      "date": "2026-08-18",
+      "i": 25,
+      "platform": "Aktionariat · LENDS",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "12",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0"
+      },
+      "date": "2026-08-18",
+      "i": 26,
+      "platform": "Aktionariat · LINES",
+      "title": null
+    },
+    {
+      "dataset": {
+        "brick": "1",
+        "dias": "12",
+        "es": "1",
+        "estado": "ok",
+        "eu": "1",
+        "perm": "0"
+      },
+      "date": "2026-08-18",
+      "i": 27,
+      "platform": "Aktionariat · EHCK",
+      "title": null
+    }
+  ],
+  "tables": [
+    {
+      "className": "",
+      "headers": [
+        "INMUEBLE",
+        "AJUSTADA",
+        "ANUNCIA",
+        "PIDES HOY",
+        "ÚLTIMO CRUCE",
+        "FONDO",
+        "REPARTO",
+        "IR"
+      ],
+      "i": 0,
+      "rows": [
+        {
+          "cells": [
+            "Houston 3",
+            "12,74 %",
+            "12,42 %",
+            "97,50–101,00 $",
+            "98,45 $ hoy\n-1,0 %",
+            "39,80 tok\n3.897 $ · 7 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 19
+            }
+          ],
+          "j": 0,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774310320298-25fd8701-69a9-4e39-ab20-28b8414b7228-houston-3",
+              "text": "Houston 3"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Costa Mediterránea 1",
+            "12,50 %",
+            "15,87 %",
+            "127,00 $",
+            "115,00 $ hace 5 d\n+10,4 %",
+            "1,00 tok\n127 $ · 1 ord",
+            "Al vencimiento",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 20
+            }
+          ],
+          "j": 1,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1777893609395-54efbb45-6dcc-48c9-b5c8-39be3e44d583-costa-mediterranea-1",
+              "text": "Costa Mediterránea 1"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Proyecto 100",
+            "11,68 %",
+            "12,50 %",
+            "107,00 $",
+            "100,00 $ hoy\n+7,0 %",
+            "1,00 tok\n107 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 21
+            }
+          ],
+          "j": 2,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774313602684-4dd13b10-c2ac-434e-86d7-c4f8c87c10ee-proyecto-100",
+              "text": "Proyecto 100"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Rentas 3",
+            "11,54 %",
+            "12,00 %",
+            "104,00 $",
+            "103,00 $ ayer\n+1,0 %",
+            "2,00 tok\n208 $ · 2 ord",
+            "Mensual",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 22
+            }
+          ],
+          "j": 3,
+          "links": [
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Abu Dhabi 1",
+            "11,54 %",
+            "12,00 %",
+            "104,00 $",
+            "100,00 $ hace 2 d\n+4,0 %",
+            "3,00 tok\n312 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 23
+            }
+          ],
+          "j": 4,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774315175080-87f4dc55-7908-40fe-af98-5b0df656d676-abu-dhabi-1",
+              "text": "Abu Dhabi 1"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Granada 3",
+            "11,43 %",
+            "13,32 %",
+            "116,50–117,00 $",
+            "108,00 $ hace 7 d\n+7,9 %",
+            "16,00 tok\n1.864 $ · 3 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 24
+            }
+          ],
+          "j": 5,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774311898691-6ae8ab8c-bd98-4cb8-934b-426d08565080-granada-3",
+              "text": "Granada 3"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Carolina del Norte 1",
+            "11,43 %",
+            "12,00 %",
+            "105,00 $",
+            "sin cruce reciente",
+            "2,48 tok\n261 $ · 1 ord",
+            "Al vencimiento",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 25
+            }
+          ],
+          "j": 6,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1783059046258-7af3abf7-654e-4603-8f13-7febae6d1ebc-carolina-del-norte-1",
+              "text": "Carolina del Norte 1"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Dania Beach 1",
+            "10,78 %",
+            "11,00 %",
+            "102,00–108,00 $",
+            "102,00 $ ayer\nal mismo precio",
+            "10,00 tok\n1.050 $ · 6 ord",
+            "Trimestral + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 26
+            }
+          ],
+          "j": 7,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1776342884951-447dad95-1362-49ac-b603-effd274a5eed-dania-beach-1",
+              "text": "Dania Beach 1"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Punta Cana 5",
+            "10,68 %",
+            "10,89 %",
+            "102,00 $",
+            "100,60 $ hace 2 d\n+1,4 %",
+            "2,00 tok\n204 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 27
+            }
+          ],
+          "j": 8,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774307840959-c9c09fa2-b957-497e-a021-928159e045c6-punta-cana-5",
+              "text": "Punta Cana 5"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Miami 2",
+            "10,49 %",
+            "15,22 %",
+            "145,00 $",
+            "sin cruce reciente",
+            "6,57 tok\n952 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 28
+            }
+          ],
+          "j": 9,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774306629799-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+              "text": "Miami 2"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Rentas 2",
+            "10,34 %",
+            "12,00 %",
+            "116,00–117,00 $",
+            "115,00 $ hace 4 d\n+0,9 %",
+            "30,05 tok\n3.516 $ · 2 ord",
+            "Mensual",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 29
+            }
+          ],
+          "j": 10,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774683600734-168248bf-3f35-4ba9-8021-f9a95c23583a-rentas-2",
+              "text": "Rentas 2"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Jacksonville 1",
+            "10,31 %",
+            "10,31 %",
+            "100,00 $",
+            "sin cruce reciente",
+            "1,50 tok\n150 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 30
+            }
+          ],
+          "j": 11,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774305047112-ae02b84c-eebb-4b3a-bc4a-e1e9f82013dd-jacksonville-1",
+              "text": "Jacksonville 1"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Punta Cana 4",
+            "10,19 %",
+            "10,39 %",
+            "102,00 $",
+            "sin cruce reciente",
+            "2,00 tok\n204 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 31
+            }
+          ],
+          "j": 12,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774307778125-d39e8c37-cafd-41fa-91c1-29d38f1fea2f-punta-cana-4",
+              "text": "Punta Cana 4"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Jacksonville 3",
+            "10,04 %",
+            "10,54 %",
+            "105,00 $",
+            "sin cruce reciente",
+            "2,00 tok\n210 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 32
+            }
+          ],
+          "j": 13,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774305162991-ca58a74f-5b46-4955-85d2-25e6bd3683d7-jacksonville-3",
+              "text": "Jacksonville 3"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Jacksonville 2",
+            "9,93 %",
+            "10,43 %",
+            "105,00 $",
+            "sin cruce reciente",
+            "2,00 tok\n210 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 33
+            }
+          ],
+          "j": 14,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774305105000-49537ead-80f3-43d0-ab37-88dfbb4c0653-jacksonville-2",
+              "text": "Jacksonville 2"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Index 1",
+            "9,45 %",
+            "12,00 %",
+            "127,00 $",
+            "115,50 $ hace 17 d\n+10,0 %",
+            "1,00 tok\n127 $ · 1 ord",
+            "Mensual",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 34
+            }
+          ],
+          "j": 15,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774312865498-53e3826d-e97b-45a9-b0ae-a91ff639f45c-index-1",
+              "text": "Index 1"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Opportunity 1",
+            "9,32 %",
+            "11,00 %",
+            "118,00–119,98 $",
+            "115,00 $ hace 5 d\n+2,6 %",
+            "6,00 tok\n710 $ · 2 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 35
+            }
+          ],
+          "j": 16,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774314569089-56e730b9-ce30-4235-8fa2-0c089d4d5eae-opportunity-1",
+              "text": "Opportunity 1"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Coliving Málaga 2",
+            "9,29 %",
+            "11,06 %",
+            "119,00 $",
+            "117,00 $ hace 5 d\n+1,7 %",
+            "2,00 tok\n238 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 36
+            }
+          ],
+          "j": 17,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774304078282-e1086f2d-fbcd-4969-8e86-27c8c9105e1e-coliving-malaga-2",
+              "text": "Coliving Málaga 2"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Málaga 8",
+            "9,02 %",
+            "10,46 %",
+            "116,00–118,00 $",
+            "115,50 $ hoy\n+0,4 %",
+            "12,00 tok\n1.396 $ · 3 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 37
+            }
+          ],
+          "j": 18,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774308871407-909625d4-a224-4922-84f7-e71445b0d36f-malaga-8",
+              "text": "Málaga 8"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Opportunity 2",
+            "8,70 %",
+            "10,00 %",
+            "115,00–118,75 $",
+            "sin cruce reciente",
+            "14,00 tok\n1.653 $ · 4 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 38
+            }
+          ],
+          "j": 19,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1781572440446-effc8261-b6e5-4bcb-bc9b-0cc8a3669786-opportunity-2",
+              "text": "Opportunity 2"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Málaga 7",
+            "8,65 %",
+            "10,21 %",
+            "118,00 $",
+            "116,00 $ hace 5 d\n+1,7 %",
+            "2,00 tok\n236 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 39
+            }
+          ],
+          "j": 20,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774307900044-8af7293f-d42d-46cc-bd70-69e294455ce8-malaga-7",
+              "text": "Málaga 7"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Málaga 3",
+            "8,53 %",
+            "10,06 %",
+            "118,00 $",
+            "sin cruce reciente",
+            "1,00 tok\n118 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 40
+            }
+          ],
+          "j": 21,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774305594117-fb2d34b6-b963-4193-a4ac-20d6afb475b2-malaga-3",
+              "text": "Málaga 3"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Málaga 6",
+            "8,51 %",
+            "10,04 %",
+            "118,00 $",
+            "sin cruce reciente",
+            "2,00 tok\n236 $ · 1 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 41
+            }
+          ],
+          "j": 22,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774307472822-79ac0eff-2c25-46d8-877f-61b289829810-malaga-6",
+              "text": "Málaga 6"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        },
+        {
+          "cells": [
+            "Málaga 4",
+            "8,18 %",
+            "10,39 %",
+            "127,00–129,00 $",
+            "sin cruce reciente",
+            "2,00 tok\n256 $ · 2 ord",
+            "Mensual + final",
+            "Buscar en el P2P"
+          ],
+          "images": [
+            {
+              "alt": "",
+              "srcIndex": 42
+            }
+          ],
+          "j": 23,
+          "links": [
+            {
+              "href": "https://www.reental.co/properties/1774305776388-cf0e05d5-b4d3-406e-b02c-fb9aebf43050-malaga-4",
+              "text": "Málaga 4"
+            },
+            {
+              "href": "https://p2p.rnt.finance/",
+              "text": "Buscar en el P2P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "className": "",
+      "headers": [
+        "QUÉ",
+        "CUÁNTO",
+        "MOTIVO"
+      ],
+      "i": 1,
+      "rows": [
+        {
+          "cells": [
+            "RealUnit Schweiz",
+            "66,5 M CHF",
+            "Sociedad de inversión suiza en activos reales, cotizada, con operaciones cruzadas el 18 de agosto a las 08:01. Su web limita la oferta a residentes en Suiza, Alemania y Liechtenstein: España fuera. Es el mejor activo que hemos tenido que retirar."
+          ],
+          "images": [],
+          "j": 0,
+          "links": []
+        },
+        {
+          "cells": [
+            "Lofty",
+            "82 propiedades",
+            "No aclara si un residente en España puede comprar. Correo enviado a su soporte, sin respuesta."
+          ],
+          "images": [],
+          "j": 1,
+          "links": []
+        },
+        {
+          "cells": [
+            "Pax Gold",
+            "Oro",
+            "Su propia web lo dice: no disponible en la Unión Europea."
+          ],
+          "images": [],
+          "j": 2,
+          "links": []
+        },
+        {
+          "cells": [
+            "Midas",
+            "49 de 54 productos",
+            "Estrategias market-neutral de cripto y basis trade. Rendimiento de cripto, no de activos reales: no pintan nada en un radar RWA."
+          ],
+          "images": [],
+          "j": 3,
+          "links": []
+        },
+        {
+          "cells": [
+            "Midas mGLO",
+            "TVL 40,3 M$",
+            "Su APY marca 0 % a 7 y 30 días. Sin cifra utilizable no entra."
+          ],
+          "images": [],
+          "j": 4,
+          "links": []
+        },
+        {
+          "cells": [
+            "Hausera",
+            "0 de 39",
+            "Comprobado el 23 de agosto en su propio fichero de datos: 13 financiadas, 5 en explotación y 21 cerradas. Ninguna abierta ni en preventa. Sus ventanas duran once días, así que puede haber una mañana. Su rentabilidad histórica sí la hemos recalculado y cuadra: 16,37 % de media simple sobre 21 operaciones cerradas, 14,19 % ponderada por capital."
+          ],
+          "images": [],
+          "j": 5,
+          "links": []
+        },
+        {
+          "cells": [
+            "OTESA Calella Living",
+            "993.000 €",
+            "Primer bono tokenizado con garantía hipotecaria de España, al 10 % a 12 meses. Comprobado el 18 de agosto: emisión completada. Colocó 1 M€ en 21 días."
+          ],
+          "images": [],
+          "j": 6,
+          "links": []
+        },
+        {
+          "cells": [
+            "Exporo",
+            "2 de 2",
+            "Retiradas por nosotros mismos el 18/08. No hemos podido confirmar que estén en blockchain, que es el filtro fundacional del radar. Su ficha ofrece un «Informationsblatt Vermögensanlagen» —documento de las Vermögensanlagen alemanas, que no son valores— mientras el aviso de la plataforma habla de «valores transferibles». Ninguno menciona token. Exporo tuvo bonos tokenizados en Ethereum desde 2019, pero su línea Bestand ya no existe como tal. Pendiente de preguntarles."
+          ],
+          "images": [],
+          "j": 7,
+          "links": []
+        },
+        {
+          "cells": [
+            "Brickwise",
+            "2 de 14",
+            "Una retirada del tablón y otra sin órdenes vivas. De las 12 que quedan, dos amortizan por debajo de lo que cuestan hoy."
+          ],
+          "images": [],
+          "j": 8,
+          "links": []
+        },
+        {
+          "cells": [
+            "Aktionariat",
+            "28 de 53 empresas",
+            "Tokenizadas pero sin mercado abierto (NOT_TRADED) o aún por estrenar. No hay nada que comprar."
+          ],
+          "images": [],
+          "j": 9,
+          "links": []
+        },
+        {
+          "cells": [
+            "Fleap · Weltix",
+            "Italia",
+            "Infraestructura de registro autorizada por Consob. No venden nada: Ferveo SpA tokenizó su libro de accionistas, no una oferta."
+          ],
+          "images": [],
+          "j": 10,
+          "links": []
+        },
+        {
+          "cells": [
+            "Finexity · Splint · Timeless",
+            "Coleccionables UE",
+            "Minoristas de verdad, desde 50 €, pero ninguna publica catálogo sin abrir cuenta. No se puede verificar precio ni estado."
+          ],
+          "images": [],
+          "j": 11,
+          "links": []
+        },
+        {
+          "cells": [
+            "Backed Finance",
+            "xStocks",
+            "Only Qualified Investors, según su web. Además es exposición sin rendimiento: COINx hizo −14,84 % en un año."
+          ],
+          "images": [],
+          "j": 12,
+          "links": []
+        },
+        {
+          "cells": [
+            "tZERO",
+            "Emisiones activas",
+            "Reg D 506c: solo inversores acreditados, mínimo 10.000 $."
+          ],
+          "images": [],
+          "j": 13,
+          "links": []
+        },
+        {
+          "cells": [
+            "Beself Brands",
+            "Acciones",
+            "Colocó el 3 % de su emisión, recompró los tokens y entró en concurso de acreedores en junio de 2026."
+          ],
+          "images": [],
+          "j": 14,
+          "links": []
+        }
+      ]
+    }
+  ],
+  "logic": "\n  (function(){\n    /* Caducidad por plataforma, en días. Sale de la velocidad medida de cada una.\n       Ver ~/.claude/rwadar-data/03-frescura.md */\n    var TTL = { 'Prosegur':1, 'Midas':3, 'Hausera':3, 'Brickwise':5, 'Alius':7, 'Spiko':7,\n                'Reental':14, 'Aktionariat':30 };\n\n    /* Producto PERMANENTE (Tipo A del contrato de oferta): siempre comprable, no tiene ventana.\n       Cuando caduca, lo que caduca es la CIFRA, no la oferta: la ficha se queda y el número se tacha. */\n    var PERM = { 'Prosegur':1, 'Midas':1 };\n\n    // Ordenar por puntuacion y renumerar. La posicion sale del DATO, no del orden en que\n    // se escribieron las tarjetas: asi actualizar una cifra nunca obliga a mover HTML.\n    (function(){\n      var cont = document.getElementById('rowsYield');\n      if (!cont) return;\n      var filas = Array.prototype.slice.call(cont.querySelectorAll('.row'));\n      filas.sort(function(a, b){ return parseFloat(b.dataset.score) - parseFloat(a.dataset.score); });\n      filas.forEach(function(f, i){\n        cont.appendChild(f);\n        var r = f.querySelector('.rank');\n        if (r) r.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);\n      });\n    })();\n\n    var cards = Array.prototype.slice.call(document.querySelectorAll('.row, .vcard'));\n    var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));\n    var gate  = document.getElementById('onlyES');\n    var tally = document.getElementById('tally');\n    var emptyYield = document.getElementById('emptyYield');\n    var emptyValue = document.getElementById('emptyValue');\n    var current = 'all';\n    var HOY = new Date(); HOY.setHours(0,0,0,0);\n\n    function ttlDe(card){\n      var p = (card.querySelector('.plat') || {}).textContent || '';\n      for (var k in TTL) { if (p.indexOf(k) !== -1) return TTL[k]; }\n      return 7;\n    }\n    function esPerm(card){\n      var p = (card.querySelector('.plat') || {}).textContent || '';\n      for (var k in PERM) { if (p.indexOf(k) !== -1) return true; }\n      return false;\n    }\n    function dias(iso){\n      var d = new Date(iso + 'T00:00:00');\n      return Math.max(0, Math.round((HOY - d) / 86400000));\n    }\n    function texto(n){\n      if (n === 0) return 'verificado hoy';\n      if (n === 1) return 'verificado ayer';\n      return 'verificado hace ' + n + ' días';\n    }\n\n    /* Envejecer cada ficha con la fecha que lleva dentro, no con texto escrito a mano */\n    cards.forEach(function(c){\n      var chip = c.querySelector('.f.age');\n      if (!chip) return;\n      var n = dias(chip.dataset.ver), ttl = ttlDe(c);\n      var estado = n <= ttl ? 'ok' : (n <= ttl * 2 ? 'warn' : 'stop');\n      chip.classList.add(estado);\n      c.dataset.perm = esPerm(c) ? '1' : '0';\n      chip.textContent = texto(n) + (estado !== 'stop' ? '' : (c.dataset.perm === '1' ? ' · cifra sin verificar' : ' · caducada'));\n      if (estado === 'stop' && c.dataset.perm === '1') c.classList.add('stale');\n      chip.title = 'Esta plataforma caduca a los ' + ttl + ' días';\n      c.dataset.estado = estado;\n      c.dataset.dias = n;\n    });\n\n    function visible(c, f){\n      /* Caducada: fuera del escaparate — salvo los permanentes, que siguen comprables */\n      if (c.dataset.estado === 'stop' && c.dataset.perm !== '1') return false;\n      if (gate.checked && c.dataset.es !== '1') return false;\n      if (f === 'eu') return c.dataset.eu === '1';\n      if (f === 'noladrillo') return c.dataset.brick === '1';\n      if (f === 'aldia') return c.dataset.estado === 'ok';\n      return true;\n    }\n    function apply(){\n      var shown = 0, y = 0, v = 0;\n      cards.forEach(function(c){\n        var ok = visible(c, current);\n        c.classList.toggle('hidden', !ok);\n        if (ok){ shown++; c.classList.contains('row') ? y++ : v++; }\n      });\n      tally.textContent = 'Mostrando ' + shown + ' de ' + cards.length;\n      emptyYield.classList.toggle('hidden', y > 0);\n      emptyValue.classList.toggle('hidden', v > 0);\n    }\n\n    /* Contadores vivos: se calculan al abrir la página, no se escriben a mano */\n    var retiradas = cards.filter(function(c){ return c.dataset.estado === 'stop' && c.dataset.perm !== '1'; });\n    var tachadas  = cards.filter(function(c){ return c.dataset.estado === 'stop' && c.dataset.perm === '1'; });\n    var vigentes  = cards.filter(function(c){ return retiradas.indexOf(c) === -1; });\n    var fresca = cards.filter(function(c){ return c.dataset.estado === 'ok'; }).length;\n    var tibia  = cards.filter(function(c){ return c.dataset.estado === 'warn'; }).length;\n    var cad    = retiradas.length;\n\n    document.getElementById('cEs').textContent    = vigentes.filter(function(c){ return c.dataset.es === '1'; }).length;\n    document.getElementById('cSin').textContent   = vigentes.filter(function(c){ return c.dataset.es !== '1'; }).length;\n    document.getElementById('cFresca').textContent = fresca;\n    document.getElementById('cTibia').textContent  = tibia;\n    document.getElementById('cCad').textContent    = cad;\n    document.getElementById('boxTibia').classList.toggle('hidden', tibia === 0);\n    document.getElementById('boxCad').classList.toggle('hidden', cad === 0);\n\n    /* Aviso de frescura, solo si hay algo que avisar */\n    if (tibia || cad || tachadas.length){\n      var partes = [];\n      if (cad)      partes.push('<strong>' + cad + ' ' + (cad === 1 ? 'ficha ha caducado y se ha retirado' : 'fichas han caducado y se han retirado') + '</strong>');\n      if (tachadas.length) partes.push(tachadas.length + ' ' + (tachadas.length === 1 ? 'sigue comprable pero con la cifra sin verificar' : 'siguen comprables pero con la cifra sin verificar'));\n      if (tibia) partes.push(tibia + ' ' + (tibia === 1 ? 'está envejeciendo' : 'están envejeciendo'));\n      document.getElementById('freshText').innerHTML =\n        partes.join(' y ') + '. Cada plataforma tiene su propio plazo, medido por lo rápido que se mueve: el oro de Prosegur caduca en un día, Midas y Hausera en tres, Aktionariat en treinta. ' +\n        'Esta página calcula la antigüedad cada vez que se abre, así que envejece sola en lugar de seguir diciendo «verificado hoy» para siempre. Toca barrido.';\n      document.getElementById('freshBanner').hidden = false;\n    }\n\n    chips.forEach(function(chip){\n      chip.addEventListener('click', function(){\n        current = chip.dataset.filter;\n        chips.forEach(function(c){ c.setAttribute('aria-pressed', String(c === chip)); });\n        apply();\n      });\n    });\n    gate.addEventListener('change', apply);\n    apply();\n  })();\n\n\n  /* ================================================================\n     SECUNDARIO EN VIVO\n     El mercado de reventa de Reental permite que lo llame el navegador\n     directamente (comprobado el 23/08/2026). Asi que en vez de servir\n     una foto fija del libro, la pedimos al abrir la pagina.\n\n     Lo que NO viene de la API y por eso se conserva de la tabla ya\n     pintada: la rentabilidad nominal de cada inmueble (la publica su\n     catalogo, no el mercado), la foto incrustada y el enlace a la ficha.\n     Si la llamada falla, la tabla se queda tal cual estaba: nunca deja\n     la seccion vacia.\n     ================================================================ */\n  (function(){\n    var API = 'https://backend.reentalp2p.com/graphql';\n    var tabla = document.querySelector('#secundario tbody');\n    var rotulo = document.querySelector('#secundario .count');\n    if (!tabla) return;\n\n    /* Cosechar lo curado de las filas ya pintadas: no duplicamos nada */\n    var CUR = {};\n    Array.prototype.forEach.call(tabla.querySelectorAll('tr'), function(tr){\n      var tds = tr.querySelectorAll('td');\n      if (tds.length < 8) return;\n      var a = tds[0].querySelector('a');\n      var img = tds[0].querySelector('img');\n      var nombre = (tds[0].textContent || '').trim();\n      CUR[llave(nombre)] = {\n        n: nombre,\n        img: img ? img.getAttribute('src') : null,\n        ficha: a ? a.getAttribute('href') : null,\n        raNom: parseFloat((tds[2].textContent || '').replace('%','').replace(',','.').trim()),\n        reparto: (tds[6].textContent || '').trim()\n      };\n    });\n\n    function llave(s){\n      return String(s).normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');\n    }\n    function esp(n, dec){\n      return Number(n).toFixed(dec).replace('.', ',');\n    }\n    function miles(n){\n      return Math.round(n).toLocaleString('es-ES');\n    }\n\n    var qLibro = 'query($i:GetOrdersDataInput!){getOrdersData(input:$i){... on MarketplaceOrdersData{numOrders items{propertyName amountSum numOrders prices{pricePerTokenMin pricePerTokenMax priceSum}}}}}';\n    var qCruces = 'query($i:FinalizedOrdersPaginatedInput!){getFinalizedOrdersPaginated(input:$i){... on FinalizedOrderAssets{items{propertyName matchedPrice matchedUnixtime amount}}}}';\n\n    function pedir(q, vars){\n      return fetch(API, {\n        method: 'POST',\n        headers: {'Content-Type': 'application/json'},\n        body: JSON.stringify({query: q, variables: vars})\n      }).then(function(r){ return r.json(); });\n    }\n\n    Promise.all([\n      pedir(qLibro,  {i:{limit:100, offset:0, excludeExpired:true}}),\n      pedir(qCruces, {i:{limit:300, offset:0, orderBy:'matchedUnixtime', orderDirection:'DESC'}})\n    ]).then(function(res){\n      var libro = res[0].data.getOrdersData;\n      var items = (libro && libro.items) || [];\n      if (!items.length) throw new Error('libro vacio');\n\n      /* ultimo cruce real por inmueble */\n      var cruces = {};\n      var HOY = Math.floor(Date.now()/1000);\n      var hist = (res[1].data.getFinalizedOrdersPaginated && res[1].data.getFinalizedOrdersPaginated.items) || [];\n      hist.forEach(function(o){\n        if (!o.propertyName) return;\n        var k = llave(o.propertyName);\n        var t = parseInt(o.matchedUnixtime, 10);\n        var am = parseFloat(o.amount)/1e18;\n        if (!(am > 0)) return;\n        var pt = (parseFloat(o.matchedPrice)/1e6) / am;\n        if (!cruces[k]) cruces[k] = {ult:0, precio:null, ops30:0};\n        if (HOY - t <= 30*86400) cruces[k].ops30++;\n        if (t > cruces[k].ult){ cruces[k].ult = t; cruces[k].precio = pt; }\n      });\n\n      var filas = items.map(function(x){\n        var k = llave(x.propertyName);\n        var c = CUR[k] || {};\n        var p = (x.prices && x.prices[0]) || {};\n        var pide = p.pricePerTokenMin;\n        var cr = cruces[k];\n        return {\n          k: k,\n          n: c.n || x.propertyName,\n          img: c.img || null,\n          ficha: c.ficha || null,\n          reparto: c.reparto || '',\n          raNom: c.raNom,\n          pide: pide,\n          pideMax: p.pricePerTokenMax,\n          fondo: p.priceSum || 0,\n          tokens: x.amountSum || 0,\n          ord: x.numOrders || 0,\n          raAjust: (isFinite(c.raNom) && pide > 0) ? (c.raNom * 100 / pide) : null,\n          ult: cr ? cr.precio : null,\n          dias: cr ? Math.floor((HOY - cr.ult)/86400) : null,\n          prima: (cr && cr.precio) ? ((pide/cr.precio - 1) * 100) : null\n        };\n      });\n\n      filas.sort(function(a,b){\n        if (a.raAjust === null) return 1;\n        if (b.raAjust === null) return -1;\n        return b.raAjust - a.raAjust;\n      });\n\n      tabla.innerHTML = filas.map(function(f){\n        var foto = f.img ? '<img class=\"tmini\" src=\"'+f.img+'\" alt=\"\" loading=\"lazy\">' : '';\n        var nom = f.ficha\n          ? foto + '<a href=\"'+f.ficha+'\" target=\"_blank\" rel=\"noopener\">'+f.n+'</a>'\n          : foto + f.n;\n\n        var aj = (f.raAjust === null)\n          ? '<span class=\"pz\">sin dato propio</span>'\n          : '<strong>'+esp(f.raAjust,2)+' %</strong>';\n        var nomPct = isFinite(f.raNom) ? esp(f.raNom,2)+' %' : '—';\n\n        var precio = (f.pideMax > f.pide)\n          ? esp(f.pide,2)+'–'+esp(f.pideMax,2)+' $'\n          : esp(f.pide,2)+' $';\n\n        var cruce;\n        if (f.ult){\n          var cls = f.prima <= 0 ? 'ok' : (f.prima < 5 ? '' : 'warn');\n          var sig = f.prima > 0 ? '+' : '';\n          var etq = Math.abs(f.prima) < 0.05 ? 'al mismo precio' : sig+esp(f.prima,1)+' %';\n          var d = f.dias === 0 ? 'hoy' : (f.dias === 1 ? 'ayer' : 'hace '+f.dias+' d');\n          cruce = esp(f.ult,2)+' $ <small>'+d+'</small><br><span class=\"pz '+cls+'\">'+etq+'</span>';\n        } else {\n          cruce = '<span class=\"pz stop\">sin cruce reciente</span>';\n        }\n\n        return '<tr>'+\n          '<td>'+nom+'</td>'+\n          '<td data-l=\"Ajustada\">'+aj+'</td>'+\n          '<td data-l=\"Anuncia\">'+nomPct+'</td>'+\n          '<td data-l=\"Pides hoy\">'+precio+'</td>'+\n          '<td data-l=\"Último cruce\">'+cruce+'</td>'+\n          '<td data-l=\"Fondo\">'+esp(f.tokens,2)+' tok<br><small>'+miles(f.fondo)+' $ · '+f.ord+' ord</small></td>'+\n          '<td data-l=\"Reparto\">'+f.reparto+'</td>'+\n          '<td><a class=\"mini\" href=\"https://p2p.rnt.finance/\" target=\"_blank\" rel=\"noopener\">Buscar en el P2P</a></td>'+\n        '</tr>';\n      }).join('');\n\n      /* rotulos que dependen del libro */\n      var hora = new Date().toLocaleTimeString('es-ES', {hour:'2-digit', minute:'2-digit'});\n      if (rotulo) rotulo.textContent = filas.length + ' activos · Reental · libro en vivo, ' + hora;\n      var cont = document.querySelector('#cSec');\n      if (cont) cont.textContent = filas.length;\n      var tam = document.getElementById('secTam');\n      if (tam){\n        var fondo = filas.reduce(function(s,f){ return s + f.fondo; }, 0);\n        tam.textContent = libro.numOrders + ' órdenes y unos ' + miles(fondo) + ' $';\n      }\n      var sinCruce = filas.filter(function(f){ return !f.ult; }).length;\n      var sc = document.getElementById('secSinCruce');\n      if (sc) sc.textContent = sinCruce;\n      var st = document.getElementById('secTotal');\n      if (st) st.textContent = filas.length;\n    }).catch(function(){\n      /* silencio: se queda la tabla verificada a mano */\n      if (rotulo && rotulo.textContent.indexOf('en vivo') < 0){\n        rotulo.textContent = rotulo.textContent + ' · sin conexión con el mercado';\n      }\n    });\n  })();\n\n",
+  "imageFiles": [
+    {
+      "index": 0,
+      "name": "Caribe 1",
+      "file": "01-caribe-1.jpg",
+      "mime": "image/jpeg",
+      "bytes": 15709,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 1,
+      "name": "Caribe 2",
+      "file": "02-caribe-2.jpg",
+      "mime": "image/jpeg",
+      "bytes": 17410,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 2,
+      "name": "mF-ONE",
+      "file": "03-mf-one.svg",
+      "mime": "image/svg+xml",
+      "bytes": 11271,
+      "width": 50,
+      "height": 51
+    },
+    {
+      "index": 3,
+      "name": "mGLOBAL",
+      "file": "04-mglobal.svg",
+      "mime": "image/svg+xml",
+      "bytes": 15178,
+      "width": 300,
+      "height": 300
+    },
+    {
+      "index": 4,
+      "name": "Fotovoltaica GreenPoint",
+      "file": "05-fotovoltaica-greenpoint.jpg",
+      "mime": "image/jpeg",
+      "bytes": 13295,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 5,
+      "name": "Fotovoltaica Cohotel",
+      "file": "06-fotovoltaica-cohotel.jpg",
+      "mime": "image/jpeg",
+      "bytes": 14256,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 6,
+      "name": "Drautalresidenz · Paternion",
+      "file": "07-drautalresidenz-paternion.jpg",
+      "mime": "image/jpeg",
+      "bytes": 21187,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 7,
+      "name": "Terreno con arrendamiento BILLA",
+      "file": "08-terreno-con-arrendamiento-billa.jpg",
+      "mime": "image/jpeg",
+      "bytes": 14370,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 8,
+      "name": "Apartamento vacacional · Hinterstoder 50",
+      "file": "09-apartamento-vacacional-hinterstoder-50.jpg",
+      "mime": "image/jpeg",
+      "bytes": 12489,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 9,
+      "name": "Vivienda · Stallhofstraße 28, Gratwein",
+      "file": "10-vivienda-stallhofstra-e-28-gratwein.jpg",
+      "mime": "image/jpeg",
+      "bytes": 12555,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 10,
+      "name": "Vivienda · Schwarzer Weg 18, Graz",
+      "file": "11-vivienda-schwarzer-weg-18-graz.jpg",
+      "mime": "image/jpeg",
+      "bytes": 14235,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 11,
+      "name": "Vivienda · Pottendorfer Straße 62, Wr. Neustadt",
+      "file": "12-vivienda-pottendorfer-stra-e-62-wr-neustadt.jpg",
+      "mime": "image/jpeg",
+      "bytes": 14863,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 12,
+      "name": "Vivienda · Plüddemanngasse 101, Graz",
+      "file": "13-vivienda-pluddemanngasse-101-graz.jpg",
+      "mime": "image/jpeg",
+      "bytes": 7878,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 13,
+      "name": "Local de estanco · Klagenfurt",
+      "file": "14-local-de-estanco-klagenfurt.jpg",
+      "mime": "image/jpeg",
+      "bytes": 15070,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 14,
+      "name": "Vivienda · Sonnleithnergasse 2, Viena",
+      "file": "15-vivienda-sonnleithnergasse-2-viena.jpg",
+      "mime": "image/jpeg",
+      "bytes": 18152,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 15,
+      "name": "mWIN",
+      "file": "16-mwin.svg",
+      "mime": "image/svg+xml",
+      "bytes": 4165,
+      "width": 50,
+      "height": 50
+    },
+    {
+      "index": 16,
+      "name": "mTBILL",
+      "file": "17-mtbill.svg",
+      "mime": "image/svg+xml",
+      "bytes": 551,
+      "width": 41,
+      "height": 40
+    },
+    {
+      "index": 17,
+      "name": "Randhartingergasse 9, Viena",
+      "file": "18-randhartingergasse-9-viena.jpg",
+      "mime": "image/jpeg",
+      "bytes": 14408,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 18,
+      "name": "Spiko Letras del Tesoro Euro",
+      "file": "19-spiko-letras-del-tesoro-euro.jpg",
+      "mime": "image/jpeg",
+      "bytes": 11071,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 19,
+      "name": "Houston 3",
+      "file": "20-houston-3.jpg",
+      "mime": "image/jpeg",
+      "bytes": 17122,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 20,
+      "name": "Costa Mediterránea 1",
+      "file": "21-costa-mediterranea-1.jpg",
+      "mime": "image/jpeg",
+      "bytes": 12348,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 21,
+      "name": "Proyecto 100",
+      "file": "22-proyecto-100.jpg",
+      "mime": "image/jpeg",
+      "bytes": 14539,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 22,
+      "name": "Rentas 3",
+      "file": "23-rentas-3.jpg",
+      "mime": "image/jpeg",
+      "bytes": 11165,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 23,
+      "name": "Abu Dhabi 1",
+      "file": "24-abu-dhabi-1.jpg",
+      "mime": "image/jpeg",
+      "bytes": 12276,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 24,
+      "name": "Granada 3",
+      "file": "25-granada-3.jpg",
+      "mime": "image/jpeg",
+      "bytes": 8342,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 25,
+      "name": "Carolina del Norte 1",
+      "file": "26-carolina-del-norte-1.jpg",
+      "mime": "image/jpeg",
+      "bytes": 12589,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 26,
+      "name": "Dania Beach 1",
+      "file": "27-dania-beach-1.jpg",
+      "mime": "image/jpeg",
+      "bytes": 13910,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 27,
+      "name": "Punta Cana 5",
+      "file": "28-punta-cana-5.jpg",
+      "mime": "image/jpeg",
+      "bytes": 12747,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 28,
+      "name": "Miami 2",
+      "file": "29-miami-2.jpg",
+      "mime": "image/jpeg",
+      "bytes": 12385,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 29,
+      "name": "Rentas 2",
+      "file": "30-rentas-2.jpg",
+      "mime": "image/jpeg",
+      "bytes": 11011,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 30,
+      "name": "Jacksonville 1",
+      "file": "31-jacksonville-1.jpg",
+      "mime": "image/jpeg",
+      "bytes": 13536,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 31,
+      "name": "Punta Cana 4",
+      "file": "32-punta-cana-4.jpg",
+      "mime": "image/jpeg",
+      "bytes": 18436,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 32,
+      "name": "Jacksonville 3",
+      "file": "33-jacksonville-3.jpg",
+      "mime": "image/jpeg",
+      "bytes": 10766,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 33,
+      "name": "Jacksonville 2",
+      "file": "34-jacksonville-2.jpg",
+      "mime": "image/jpeg",
+      "bytes": 11445,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 34,
+      "name": "Index 1",
+      "file": "35-index-1.jpg",
+      "mime": "image/jpeg",
+      "bytes": 11803,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 35,
+      "name": "Opportunity 1",
+      "file": "36-opportunity-1.jpg",
+      "mime": "image/jpeg",
+      "bytes": 12707,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 36,
+      "name": "Coliving Málaga 2",
+      "file": "37-coliving-malaga-2.jpg",
+      "mime": "image/jpeg",
+      "bytes": 10422,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 37,
+      "name": "Málaga 8",
+      "file": "38-malaga-8.jpg",
+      "mime": "image/jpeg",
+      "bytes": 9798,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 38,
+      "name": "Opportunity 2",
+      "file": "39-opportunity-2.jpg",
+      "mime": "image/jpeg",
+      "bytes": 17220,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 39,
+      "name": "Málaga 7",
+      "file": "40-malaga-7.jpg",
+      "mime": "image/jpeg",
+      "bytes": 10210,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 40,
+      "name": "Málaga 3",
+      "file": "41-malaga-3.jpg",
+      "mime": "image/jpeg",
+      "bytes": 14275,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 41,
+      "name": "Málaga 6",
+      "file": "42-malaga-6.jpg",
+      "mime": "image/jpeg",
+      "bytes": 8587,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 42,
+      "name": "Málaga 4",
+      "file": "43-malaga-4.jpg",
+      "mime": "image/jpeg",
+      "bytes": 6927,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 43,
+      "name": "Prosegur Digital Gold",
+      "file": "44-prosegur-digital-gold.jpg",
+      "mime": "image/jpeg",
+      "bytes": 4260,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 44,
+      "name": "Casa de Outeiro",
+      "file": "45-casa-de-outeiro.jpg",
+      "mime": "image/jpeg",
+      "bytes": 4930,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 45,
+      "name": "Aktionariat",
+      "file": "46-aktionariat.jpg",
+      "mime": "image/jpeg",
+      "bytes": 3369,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 46,
+      "name": "Boss Info",
+      "file": "47-boss-info.jpg",
+      "mime": "image/jpeg",
+      "bytes": 3440,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 47,
+      "name": "wemakeit",
+      "file": "48-wemakeit.jpg",
+      "mime": "image/jpeg",
+      "bytes": 6429,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 48,
+      "name": "ServiceHunter · quitt",
+      "file": "49-servicehunter-quitt.jpg",
+      "mime": "image/jpeg",
+      "bytes": 5355,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 49,
+      "name": "Switzerlend",
+      "file": "50-switzerlend.jpg",
+      "mime": "image/jpeg",
+      "bytes": 3473,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 50,
+      "name": "Twiliner",
+      "file": "51-twiliner.jpg",
+      "mime": "image/jpeg",
+      "bytes": 4642,
+      "width": 320,
+      "height": 220
+    },
+    {
+      "index": 51,
+      "name": "EHC Kloten",
+      "file": "52-ehc-kloten.jpg",
+      "mime": "image/jpeg",
+      "bytes": 6262,
+      "width": 320,
+      "height": 220
+    }
+  ]
+}

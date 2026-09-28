@@ -2,14 +2,14 @@
   "expo": {
     "name": "RWAdar",
     "slug": "rwadar",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "rwadar",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#0B0A0A",
     "primaryColor": "#25E39A",
-    "description": "Registro curado de plataformas de tokenización de activos reales. 38 analizadas, 26 verificadas, y los descartes solo cuando el motivo se puede respaldar con una fuente citable.",
+    "description": "Explora plataformas y activos tokenizados con fuentes, fechas y advertencias. Consulta editorial gratuita: RWAdar no recibe inversiones ni cobra comisiones por invertir.",
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.rwadar.app",
@@ -19,6 +19,13 @@
     },
     "android": {
       "package": "com.rwadar.app",
+      "allowBackup": false,
+      "blockedPermissions": [
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
       "adaptiveIcon": {
         "backgroundColor": "#0B0A0A",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -53,9 +60,10 @@
       ]
     ],
     "runtimeVersion": {
-      "policy": "fingerprint"
+      "policy": "appVersion"
     },
     "updates": {
+      "enabled": false,
       "url": "https://u.expo.dev/43de8651-0c57-40fc-8cdb-c9a8c72e6835"
     }
   }

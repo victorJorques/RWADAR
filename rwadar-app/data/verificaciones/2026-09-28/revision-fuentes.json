@@ -1,0 +1,428 @@
+{
+  "version": 1,
+  "consultadaEl": "2026-09-28",
+  "metodo": "Consulta de todas las URL oficiales del corte anterior, lectura de contenidos y búsqueda de documentos primarios alternativos cuando falló la extracción. Sin autenticación ni inversiones.",
+  "alcance": "Revisión editorial de fuentes primarias del 28/09/2026: existencia documental, entidad regulada y límites de acceso. No acredita onboarding, oferta abierta ni rentabilidad. Ofertas conservadas con su revisión del 27/09/2026.",
+  "fuentes": [
+    {
+      "id": "addx-web",
+      "url": "https://addx.co/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Portada legible, catálogo de mercados privados y alta; no se reproducen rendimientos promocionales."
+    },
+    {
+      "id": "addx-acceso",
+      "url": "https://www.addx.co/en/inside-addx/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Inside ADDX limita su público a acreditados e institucionales no estadounidenses."
+    },
+    {
+      "id": "addx-mas",
+      "url": "https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD",
+      "consultadaEl": "2026-09-28",
+      "resultado": "MAS identifica ADDX Pte. Ltd. como CMS licensee y Recognised Market Operator; ficha actualizada 25/08/2026."
+    },
+    {
+      "id": "archax-web",
+      "url": "https://archax.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Respuesta sin contenido extraíble; operación comercial actual no comprobada."
+    },
+    {
+      "id": "archax-permisos",
+      "url": "https://uk.archax.com/regulatory-permissions",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Respuesta sin contenido extraíble; no se renueva la afirmación sobre FRN británico."
+    },
+    {
+      "id": "archax-cnmv",
+      "url": "https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0",
+      "consultadaEl": "2026-09-28",
+      "resultado": "El enlace individual falló. El listado oficial alternativo identifica Archax Markets Europe, S.V., S.A., registro 289 de 08/08/2019."
+    },
+    {
+      "id": "archax-eu",
+      "url": "https://eu.archax.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Respuesta sin contenido extraíble; no se confirma ni lanzamiento ni disponibilidad inversora."
+    },
+    {
+      "id": "artex-web",
+      "url": "https://www.artexgm.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Sin contenido extraíble; no permite comprobar una oferta negociable abierta."
+    },
+    {
+      "id": "artex-lb",
+      "url": "https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Banco de Lituania mantiene la ficha de ARTEX Global Markets AG, Liechtenstein, código 307407, como empresa de inversión del EEE sin sucursal."
+    },
+    {
+      "id": "backed-web",
+      "url": "https://backed.fi/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Portada legible con xStocks y documentación. Las cifras de rendimiento mostradas remiten a diciembre de 2025 y no se importan."
+    },
+    {
+      "id": "backed-legal",
+      "url": "https://assets.backed.fi/legal-documentation",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Documentación identifica folleto de 08/05/2026, vencimiento 07/05/2027 y certificados bajo derecho suizo; declaración documental del emisor."
+    },
+    {
+      "id": "xstocks-legal",
+      "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Explica distribución en EEE mediante distribuidores autorizados y términos finales por producto, con restricciones territoriales."
+    },
+    {
+      "id": "blocksquare-web",
+      "url": "https://blocksquare.io/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Solo título extraíble; no se verifican operación ni condiciones actuales."
+    },
+    {
+      "id": "blocksquare-terms",
+      "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Falló la lectura tanto de la ruta markdown como de la página sin extensión; no se renuevan sus afirmaciones."
+    },
+    {
+      "id": "centrifuge-web",
+      "url": "https://centrifuge.io/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Infraestructura de gestión de activos on-chain y productos para gestores; página legible."
+    },
+    {
+      "id": "centrifuge-terms",
+      "url": "https://centrifuge.io/terms",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Ruta antigua fallida; enlace actual del pie de la web leído. Términos 5, 7 y 8 limitan jurisdicción y clases de inversor y no acreditan licencia del protocolo."
+    },
+    {
+      "id": "courtyard-web",
+      "url": "https://courtyard.io/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Portada con packs y cartas físicas custodiadas; sin comprobar compra, entrega ni liquidez."
+    },
+    {
+      "id": "courtyard-terms",
+      "url": "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Términos de NFT y representaciones del usuario, incluidas restricciones de sanciones; no acredita admisión desde España ni licencia de valores."
+    },
+    {
+      "id": "figure-web",
+      "url": "https://figure.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Portada con crédito y enlaces a OPEN y Figure Markets; no se ejecutó alta ni inversión."
+    },
+    {
+      "id": "figure-open",
+      "url": "https://www.figuremarkets.com/c/open",
+      "consultadaEl": "2026-09-28",
+      "resultado": "La ruta OPEN no devolvió contenido extraíble; no permite renovar sus condiciones específicas."
+    },
+    {
+      "id": "figure-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_307093.pdf",
+      "consultadaEl": "2026-09-28",
+      "resultado": "La ficha dinámica no mostró datos; el informe PDF oficial CRD 307093 confirma Figure Securities, registro SEC y actividad ATS."
+    },
+    {
+      "id": "fireblocks-web",
+      "url": "https://fireblocks.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Oferta de infraestructura, pagos, carteras y custodia para organizaciones; no se importan magnitudes comerciales."
+    },
+    {
+      "id": "fireblocks-trust",
+      "url": "https://www.fireblocks.com/trustco",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Describe custodia institucional y la entidad Fireblocks Trust Company, LLC; distingue software y custodia."
+    },
+    {
+      "id": "nydfs-virtual",
+      "url": "https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Listado NYDFS incluye Fireblocks Trust Company, LLC, Limited Purpose Trust Charter, 2024-08."
+    },
+    {
+      "id": "franklin-benji",
+      "url": "https://digitalassets.franklintempleton.com/benji/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Superficie Benji legible con inversión mediante app; no acredita acceso desde España."
+    },
+    {
+      "id": "franklin-prospectus",
+      "url": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Folleto PDF legible: app, portal institucional y carteras aprobadas por el agente; no se importan rentabilidades."
+    },
+    {
+      "id": "franklin-sec",
+      "url": "https://www.sec.gov/Archives/edgar/data/1786958/000174177325002737/c485bpos.htm",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Expediente N-1A de 25/07/2025, efectivo 01/08/2025; documento histórico con advertencia expresa de no aprobación por SEC."
+    },
+    {
+      "id": "inx-web",
+      "url": "https://inx.co/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "INX One legible; no se verificó onboarding ni disponibilidad de cada valor."
+    },
+    {
+      "id": "inx-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Informe PDF oficial CRD 162182 confirma INX Securities, LLC como broker-dealer registrado."
+    },
+    {
+      "id": "inx-disclosure",
+      "url": "https://inx.co/funds-availability-disclosure",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Describe fondos USD y diferencias entre INX Securities, INX Digital y BMO; no acredita elegibilidad española."
+    },
+    {
+      "id": "lofty-web",
+      "url": "https://lofty.ai/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Marketplace inmobiliario y alta visibles; no se atribuye garantía a sus promesas comerciales de liquidez."
+    },
+    {
+      "id": "lofty-terms",
+      "url": "https://www.lofty.ai/terms",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Sección 9.4 declara ausencia de registro ante SEC y no garantiza mejor ejecución."
+    },
+    {
+      "id": "maple-web",
+      "url": "https://maple.finance/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Sitio legible de gestión on-chain y crédito; no se importan cifras promocionales."
+    },
+    {
+      "id": "maple-terms",
+      "url": "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt",
+      "consultadaEl": "2026-09-28",
+      "resultado": "La interfaz declara no estar registrada ante reguladores y restringe jurisdicciones, incluida EE. UU."
+    },
+    {
+      "id": "maple-institutional",
+      "url": "https://maple.finance/earn/maple-institutional",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Página de secured lending legible; no se encontró evidencia suficiente para renovar el requisito exacto de acreditación/KYC."
+    },
+    {
+      "id": "midas-web",
+      "url": "https://midas.app/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Solo título extraíble; no se confirma operativa transaccional."
+    },
+    {
+      "id": "midas-mtbill",
+      "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Ruta antigua eliminada. Nueva página oficial enumera folleto, términos finales y estados financieros mediante archivos embebidos; no se obtuvo el contenido del folleto vigente."
+    },
+    {
+      "id": "midas-old-prospectus",
+      "url": "https://www.mfsa.mt/wp-content/uploads/2024/11/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2024.pdf",
+      "consultadaEl": "2026-09-28",
+      "resultado": "PDF histórico de 17/07/2024 declara vencimiento 17/07/2025; no acredita vigencia en 2026."
+    },
+    {
+      "id": "ondo-web",
+      "url": "https://ondo.finance/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Página legible de productos on-chain; no se extrapola elegibilidad entre productos."
+    },
+    {
+      "id": "ondo-usdy-access",
+      "url": "https://docs.ondo.finance/general-access-products/usdy/eligibility",
+      "consultadaEl": "2026-09-28",
+      "resultado": "USDY exige en EEE cliente profesional o inversor cualificado y evidencia al emisor."
+    },
+    {
+      "id": "openeden-web",
+      "url": "https://openeden.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Portada sin contenido extraíble; se utilizó documentación TBILL legible para describir el producto."
+    },
+    {
+      "id": "openeden-intro",
+      "url": "https://docs.openeden.com/tbill/introduction",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Documento describe fondo profesional BVI emisor de TBILL y proveedor tecnológico separado; afirmación documental, no consulta directa del registro BVI."
+    },
+    {
+      "id": "openeden-onboarding",
+      "url": "https://docs.openeden.com/tbill/investor-onboarding",
+      "consultadaEl": "2026-09-28",
+      "resultado": "TBILL permissioned: profesional conforme a SIBA de BVI o acreditado estadounidense, con controles de onboarding."
+    },
+    {
+      "id": "paxg-web",
+      "url": "https://paxos.com/paxgold",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Ficha actual identifica PAXG respaldado por oro y custodia Paxos; ahora remite a supervisión OCC, no solo a la autorización histórica NYDFS."
+    },
+    {
+      "id": "paxg-nydfs",
+      "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Comunicado histórico de 2019 sobre autorización PAX Gold. No se usa como prueba única de situación actual."
+    },
+    {
+      "id": "reental-web",
+      "url": "https://reental.co/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Error de lectura de portada; no se deduce cierre. FAQ y comunicado corporativo sí legibles."
+    },
+    {
+      "id": "reental-faq",
+      "url": "https://www.reental.co/en/faqs",
+      "consultadaEl": "2026-09-28",
+      "resultado": "FAQ describe alta de adultos mediante KYC/AML y acreditación para residentes fiscales estadounidenses; no acredita oferta concreta abierta."
+    },
+    {
+      "id": "reental-emision",
+      "url": "https://www.reental.co/en/corporate/reental-lanza-la-primera-emision-de-un-security-token-inmobiliario-en-espana-autorizado-por-la-cnmv",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Comunicado de julio de 2025 sobre emisión inmobiliaria concreta y Ursus-3 como ERIR; no equivale a licencia general de Reental."
+    },
+    {
+      "id": "republic-web",
+      "url": "https://republic.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Página de ofertas y servicios legible; no se verifican términos de cada oferta."
+    },
+    {
+      "id": "republic-entities",
+      "url": "https://republic.com/help/which-entities-comprise-republic-s-family-of-companies",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Página de entidades legible pero última actualización declarada 01/01/2022; no se toma como organigrama completo vigente."
+    },
+    {
+      "id": "republic-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Informe PDF oficial CRD 291387 confirma OpenDeal Broker LLC; no se extiende a todas las entidades del grupo."
+    },
+    {
+      "id": "securitize-web",
+      "url": "https://securitize.io/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Sin contenido comercial suficiente en la extracción; el registro se verifica por informe FINRA separado."
+    },
+    {
+      "id": "securitize-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Informe PDF oficial CRD 283256 confirma Securitize Markets, LLC, registro SEC y operación ATS."
+    },
+    {
+      "id": "spiko-web",
+      "url": "https://spiko.io/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Error de lectura de portada; la página Web3 sí es legible."
+    },
+    {
+      "id": "spiko-access",
+      "url": "https://www.spiko.io/use-cases/web3",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Página Web3 presenta fondos UCITS, admite no profesionales según la empresa y declara licencia ACPR 19183. No se verificó esa licencia directamente en REGAFI."
+    },
+    {
+      "id": "spiko-amf",
+      "url": "https://geco.amf-france.org/produit-d-epargne/c79399",
+      "consultadaEl": "2026-09-28",
+      "resultado": "GECO no devuelve texto extraíble; no se renueva el estado de confirmación directa por regulador."
+    },
+    {
+      "id": "superstate-web",
+      "url": "https://superstate.co/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Página de FundOS y acciones tokenizadas legible."
+    },
+    {
+      "id": "superstate-ustb",
+      "url": "https://superstate.com/assets/ustb",
+      "consultadaEl": "2026-09-28",
+      "resultado": "La ficha actual se denomina Invesco Short Duration US Government Securities Fund y exige Accredited Investors and Qualified Purchasers; se conserva la distinción respecto al filing de 2025."
+    },
+    {
+      "id": "superstate-sec",
+      "url": "https://www.sec.gov/Archives/edgar/data/1982577/000110465925042142/tm2513524d1_n1a.htm",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Expediente histórico N-1A de Superstate Trust de 2025, con fecha de folleto sin completar; no acredita aprobación ni condiciones vigentes de USTB."
+    },
+    {
+      "id": "swarm-web",
+      "url": "https://swarm.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Redirige a app.swarm.markets sin contenido extraíble; no se confirma actividad transaccional."
+    },
+    {
+      "id": "swarm-terms",
+      "url": "https://swarm.com/terms/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Error de lectura; se retira la afirmación como vigente de condiciones de 2022."
+    },
+    {
+      "id": "taurus-web",
+      "url": "https://taurushq.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Página de infraestructura financiera legible."
+    },
+    {
+      "id": "taurus-disclosure",
+      "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Documento explica T-DX como OTF, clientes minoristas/profesionales/institucionales y ejecución sin asesoramiento; no confirma España."
+    },
+    {
+      "id": "taurus-finma",
+      "url": "https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Lista FINMA incluye Taurus SA, Genève, como securities firm."
+    },
+    {
+      "id": "tokeny-web",
+      "url": "https://tokeny.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Página legible de software para finanzas on-chain."
+    },
+    {
+      "id": "tokeny-terms",
+      "url": "https://tokeny.com/general-terms-of-service/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Servicios tecnológicos para clientes profesionales; obligaciones del cliente/emisor diferenciadas."
+    },
+    {
+      "id": "tzero-web",
+      "url": "https://tzero.com/",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Servicios de tokenización y negociación visibles; no se comprobó alta desde España."
+    },
+    {
+      "id": "tzero-company",
+      "url": "https://tzero.com/company",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Distingue Securities, Digital Asset Securities y otras entidades; no confundir solicitudes CFTC pendientes con licencias concedidas."
+    },
+    {
+      "id": "tzero-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_123421.pdf",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Informe PDF oficial CRD 123421 confirma tZERO Securities, LLC; no se extiende a todo el grupo."
+    },
+    {
+      "id": "paxg-occ",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+      "consultadaEl": "2026-09-28",
+      "resultado": "Lista OCC de trust banks activos al 31/08/2026 incluye Paxos Trust Company, National Association, charter 25379."
+    }
+  ]
+}

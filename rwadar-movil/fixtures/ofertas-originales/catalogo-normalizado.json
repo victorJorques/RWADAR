@@ -1,0 +1,2205 @@
+{
+  "schema_version": 1,
+  "source": {
+    "url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+    "title": "Escaparate RWAdar",
+    "sweep_date": "2026-08-27",
+    "captured_at": "2026-08-30T00:00:00+02:00",
+    "notice": "Instantánea de desarrollo local; no sustituye Supabase ni está autorizada para publicación."
+  },
+  "freshness_ttl_days": {
+    "prosegur": 1,
+    "midas": 3,
+    "hausera": 3,
+    "brickwise": 5,
+    "alius": 7,
+    "spiko": 7,
+    "reental": 14,
+    "aktionariat": 30
+  },
+  "offers": [
+    {
+      "country": "MX",
+      "cta": "Invertir",
+      "description": "Cobras cada mes desde el arranque, a cambio de un punto menos de rentabilidad que su gemelo.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": false,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "ok",
+          "verified_at": "2026-08-18"
+        }
+      ],
+      "image_index": 0,
+      "kind": "yield",
+      "meta": [
+        "30 meses",
+        "Reparto mensual",
+        "Desde 100 $",
+        "52,97 % financiado",
+        "Colateralizable"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Reental",
+      "price_display": null,
+      "score": 11.75,
+      "source_index": 0,
+      "title": "Caribe 1",
+      "unit": null,
+      "url": "https://app.reental.co/dashboard/properties/8befd7a6-692f-404d-9fb8-d48fab2a74ca",
+      "verified_at": "2026-08-18",
+      "yield_display": "10,00 %",
+      "yield_literal": "«10 % anual estimado»",
+      "slug": "caribe-1",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "ttl_days": 14,
+      "image_source_file": "01-caribe-1.jpg"
+    },
+    {
+      "country": "MX",
+      "cta": "Invertir",
+      "description": "El mayor bonus del catálogo de Reental, pero no cobras nada hasta 2029.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": false,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "ok",
+          "verified_at": "2026-08-18"
+        }
+      ],
+      "image_index": 1,
+      "kind": "yield",
+      "meta": [
+        "30 meses",
+        "Al vencimiento",
+        "Desde 100 $",
+        "51,15 % financiado",
+        "Colateralizable"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Reental",
+      "price_display": null,
+      "score": 11.25,
+      "source_index": 1,
+      "title": "Caribe 2",
+      "unit": null,
+      "url": "https://app.reental.co/dashboard/properties/10c30adb-542d-4f40-ab89-6c1f1474e5b7",
+      "verified_at": "2026-08-18",
+      "yield_display": "11,00 %",
+      "yield_literal": "«11 % anual estimado»",
+      "slug": "caribe-2",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "ttl_days": 14,
+      "image_source_file": "02-caribe-2.jpg"
+    },
+    {
+      "country": "UE",
+      "cta": "Ver en Midas",
+      "description": "La rentabilidad más alta del escaparate con salida instantánea, a cambio de necesitar wallet propia. Es crédito respaldado por activos, no inmobiliario.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        }
+      ],
+      "image_index": 2,
+      "kind": "yield",
+      "meta": [
+        "Sin plazo",
+        "Acumulación · reembolso instantáneo",
+        "TVL 72,0 M$"
+      ],
+      "outside_real_estate": true,
+      "permanent": true,
+      "platform": "Midas",
+      "price_display": null,
+      "score": 8.43,
+      "source_index": 2,
+      "title": "mF-ONE",
+      "unit": null,
+      "url": "https://midas.app/products",
+      "verified_at": "2026-08-27",
+      "yield_display": "7,43 %",
+      "yield_literal": "APY 7 d · 9,30 % a 30 d",
+      "slug": "mf-one",
+      "platform_slug": "midas",
+      "category": "Tesoro y fondos",
+      "ttl_days": 3,
+      "image_source_file": "03-mf-one.svg"
+    },
+    {
+      "country": "UE",
+      "cta": "Ver en Midas",
+      "description": "Crédito diversificado con salida instantánea. Su APY lleva dos ventanas idéntico: es el más estable de los cuatro de Midas.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        }
+      ],
+      "image_index": 3,
+      "kind": "yield",
+      "meta": [
+        "Sin plazo",
+        "Acumulación · reembolso instantáneo",
+        "TVL 68,6 M$"
+      ],
+      "outside_real_estate": true,
+      "permanent": true,
+      "platform": "Midas",
+      "price_display": null,
+      "score": 7.65,
+      "source_index": 3,
+      "title": "mGLOBAL",
+      "unit": null,
+      "url": "https://midas.app/products",
+      "verified_at": "2026-08-27",
+      "yield_display": "6,65 %",
+      "yield_literal": "APY 7 d · igual a 30 d",
+      "slug": "mglobal",
+      "platform_slug": "midas",
+      "category": "Tesoro y fondos",
+      "ttl_days": 3,
+      "image_source_file": "04-mglobal.svg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "La renovable mejor pagada que se puede comprar hoy, pero devuelve 100,32 € en 2038 por los 103 € que cuesta: parte del reparto está pagando la pérdida de principal.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        },
+        {
+          "is_age": false,
+          "text": "amortiza por debajo del precio",
+          "tone": "warn",
+          "verified_at": null
+        }
+      ],
+      "image_index": 4,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo · mercado activo",
+        "Reparto mensual, día 15",
+        "Desde 103,00 €",
+        "7 cruces en 30 días",
+        "Pagas justo el ultimo cruce"
+      ],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 7.44,
+      "source_index": 4,
+      "title": "Fotovoltaica GreenPoint",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A38J32",
+      "verified_at": "2026-08-27",
+      "yield_display": "5,94 %",
+      "yield_literal": "anuncia 6,17 % · recalculado sobre el precio del tablón",
+      "slug": "fotovoltaica-greenpoint",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "05-fotovoltaica-greenpoint.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "Sobre el papel es la segunda mejor pagada, pero lleva +ías sin que nadie cruce una operación y el vendedor pide 110 € cuando lo último que se pagó fueron 95. La oferta existe; el mercado no la está tomando.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        },
+        {
+          "is_age": false,
+          "text": "amortiza por debajo del precio",
+          "tone": "warn",
+          "verified_at": null
+        }
+      ],
+      "image_index": 5,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo",
+        "Reparto mensual, día 15",
+        "Desde 110,00 €",
+        "47 días sin cruce",
+        "Pagas un 15,8 % sobre el ultimo cruce"
+      ],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 7.08,
+      "source_index": 5,
+      "title": "Fotovoltaica Cohotel",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A38J40",
+      "verified_at": "2026-08-27",
+      "yield_display": "5,58 %",
+      "yield_literal": "anuncia 6,46 % · recalculado",
+      "slug": "fotovoltaica-cohotel",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "06-fotovoltaica-cohotel.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "Vivienda tutelada con garantía de cuidados, la más negociada del catálogo —trece operaciones en treinta días— y se compra al mismo precio al que se cruza. El aviso de horquilla del 72 % que llevaba el 18 de agosto ya no aplica: el precio ha bajado de 75 a 65 €.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        }
+      ],
+      "image_index": 6,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo · mercado activo",
+        "Reparto mensual, día 15",
+        "Desde 65,00 €",
+        "13 cruces en 30 días",
+        "Pagas justo el ultimo cruce"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 7.04,
+      "source_index": 6,
+      "title": "Drautalresidenz · Paternion",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0",
+      "verified_at": "2026-08-27",
+      "yield_display": "5,04 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "drautalresidenz-paternion",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "07-drautalresidenz-paternion.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "El único en emisión primaria: suelo con un supermercado BILLA de inquilino hasta 2057. Casi no queda: de sus 6.404 participaciones solo hay 10 libres —1.000 € en total, a 100 € cada una— y la ventana venció en mayo.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        },
+        {
+          "is_age": false,
+          "text": "ventana vencida",
+          "tone": "stop",
+          "verified_at": null
+        }
+      ],
+      "image_index": 7,
+      "kind": "yield",
+      "meta": [
+        "Emisión primaria",
+        "Reparto mensual, día 15",
+        "Desde 100,00 €",
+        "Inquilino hasta 2057",
+        "Colocado al 99,84 %: quedan 1.000 € de las 6.404 participaciones"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 6.57,
+      "source_index": 7,
+      "title": "Terreno con arrendamiento BILLA",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89",
+      "verified_at": "2026-08-27",
+      "yield_display": "5,07 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "terreno-con-arrendamiento-billa",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "08-terreno-con-arrendamiento-billa.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "Apartamento turístico con ocupación del 100 % y la horquilla compra-venta más estrecha del inmobiliario de Brickwise.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        }
+      ],
+      "image_index": 8,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo · mercado activo",
+        "Reparto mensual, día 15",
+        "Desde 70,00 €",
+        "5 cruces en 30 días",
+        "Pagas un 19,4 % POR DEBAJO del ultimo cruce"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 6.48,
+      "source_index": 8,
+      "title": "Apartamento vacacional · Hinterstoder 50",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7",
+      "verified_at": "2026-08-27",
+      "yield_display": "4,98 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "09-apartamento-vacacional-hinterstoder-50.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "La más negociada del catálogo — doce operaciones en treinta días — y con la hipoteca ya inscrita en el registro austriaco.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        },
+        {
+          "is_age": false,
+          "text": "la más líquida",
+          "tone": "ok",
+          "verified_at": null
+        }
+      ],
+      "image_index": 9,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo · mercado activo",
+        "Reparto mensual, día 15",
+        "Desde 69,96 €",
+        "9 cruces en 30 días",
+        "Pagas un 7,6 % sobre el ultimo cruce"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 6.11,
+      "source_index": 9,
+      "title": "Vivienda · Stallhofstraße 28, Gratwein",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0",
+      "verified_at": "2026-08-27",
+      "yield_display": "4,11 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "10-vivienda-stallhofstra-e-28-gratwein.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "Entrada de 65 € —la más baja del radar— con hipoteca inscrita, doce cruces en treinta días y sin pagar prima sobre el último.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        }
+      ],
+      "image_index": 10,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo · mercado activo",
+        "Reparto mensual, día 15",
+        "Desde 65,00 €",
+        "12 cruces en 30 días",
+        "Pagas justo el ultimo cruce"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 5.73,
+      "source_index": 10,
+      "title": "Vivienda · Schwarzer Weg 18, Graz",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8",
+      "verified_at": "2026-08-27",
+      "yield_display": "3,73 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "11-vivienda-schwarzer-weg-18-graz.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "Alquilada al 100 %, pero es deuda y su hipoteca sigue sin inscribirse.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        },
+        {
+          "is_age": false,
+          "text": "hipoteca sin inscribir",
+          "tone": "warn",
+          "verified_at": null
+        }
+      ],
+      "image_index": 11,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo",
+        "Reparto mensual, día 15",
+        "Desde 75,00 €",
+        "2 cruces en 30 días",
+        "Pagas un 4,9 % sobre el ultimo cruce"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 5.55,
+      "source_index": 11,
+      "title": "Vivienda · Pottendorfer Straße 62, Wr. Neustadt",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A324B4",
+      "verified_at": "2026-08-27",
+      "yield_display": "4,05 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "12-vivienda-pottendorfer-stra-e-62-wr-neustadt.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "La mejor nota del tasador, 5 sobre 5, al precio más caro del catálogo residencial: 85 € la participación.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        }
+      ],
+      "image_index": 12,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo",
+        "Reparto mensual, día 15",
+        "Desde 85,00 €",
+        "Nota del tasador 5/5",
+        "2 cruces en 30 días",
+        "Pagas un 88,9 % sobre el ultimo cruce"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 5.54,
+      "source_index": 12,
+      "title": "Vivienda · Plüddemanngasse 101, Graz",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5",
+      "verified_at": "2026-08-27",
+      "yield_display": "3,54 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "13-vivienda-pluddemanngasse-101-graz.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "Local con contrato y nota 5 sobre 5. Es la única no residencial del mercado secundario.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        }
+      ],
+      "image_index": 13,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo",
+        "Reparto mensual, día 15",
+        "Desde 95,00 €",
+        "Nota del tasador 5/5",
+        "2 cruces en 30 días",
+        "Pagas un 4,1 % POR DEBAJO del ultimo cruce"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 5.46,
+      "source_index": 13,
+      "title": "Local de estanco · Klagenfurt",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3",
+      "verified_at": "2026-08-27",
+      "yield_display": "3,46 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "local-de-estanco-klagenfurt",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "14-local-de-estanco-klagenfurt.jpg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "Cuarenta ofertas de venta compitiendo: es donde más fácil resulta entrar barato.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        },
+        {
+          "is_age": false,
+          "text": "40 vendedores",
+          "tone": "ok",
+          "verified_at": null
+        }
+      ],
+      "image_index": 14,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo · mercado activo",
+        "Reparto mensual, día 15",
+        "Desde 75,00 €",
+        "11 cruces en 30 días",
+        "Pagas un 15,4 % sobre el ultimo cruce"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 5.42,
+      "source_index": 14,
+      "title": "Vivienda · Sonnleithnergasse 2, Viena",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7",
+      "verified_at": "2026-08-27",
+      "yield_display": "3,42 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "15-vivienda-sonnleithnergasse-2-viena.jpg"
+    },
+    {
+      "country": "UE",
+      "cta": "Ver en Midas",
+      "description": "Cartera de renta fija gestionada por Wellington Management. Lo que hay que mirar aquí no es el número sino su recorrido: 4,95 % el 16, 1,49 % el 18 por la mañana, 2,44 % esa tarde y 5,76 % el 20. Se puede comprar, pero el porcentaje del día dice poco.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        },
+        {
+          "is_age": false,
+          "text": "4,95 → 1,49 → 5,76 → 3,65 en once días",
+          "tone": "warn",
+          "verified_at": null
+        }
+      ],
+      "image_index": 15,
+      "kind": "yield",
+      "meta": [
+        "Sin plazo",
+        "Acumulación · reembolso instantáneo",
+        "TVL 14,7 M$"
+      ],
+      "outside_real_estate": true,
+      "permanent": true,
+      "platform": "Midas",
+      "price_display": null,
+      "score": 4.65,
+      "source_index": 15,
+      "title": "mWIN",
+      "unit": null,
+      "url": "https://midas.app/products",
+      "verified_at": "2026-08-27",
+      "yield_display": "3,65 %",
+      "yield_literal": "APY 7 d · 5,64 % a 30 d",
+      "slug": "mwin",
+      "platform_slug": "midas",
+      "category": "Tesoro y fondos",
+      "ttl_days": 3,
+      "image_source_file": "16-mwin.svg"
+    },
+    {
+      "country": "UE",
+      "cta": "Ver en Midas",
+      "description": "Lo más conservador del escaparate: letras del Tesoro de EE. UU. con salida instantánea. Es el único producto de deuda pública que tenemos.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        }
+      ],
+      "image_index": 16,
+      "kind": "yield",
+      "meta": [
+        "Sin plazo",
+        "Acumulación · reembolso instantáneo",
+        "TVL 66,5 M$"
+      ],
+      "outside_real_estate": true,
+      "permanent": true,
+      "platform": "Midas",
+      "price_display": null,
+      "score": 4.17,
+      "source_index": 16,
+      "title": "mTBILL",
+      "unit": null,
+      "url": "https://midas.app/products",
+      "verified_at": "2026-08-27",
+      "yield_display": "3,17 %",
+      "yield_literal": "APY 7 d · 3,48 % a 30 d",
+      "slug": "mtbill",
+      "platform_slug": "midas",
+      "category": "Tesoro y fondos",
+      "ttl_days": 3,
+      "image_source_file": "17-mtbill.svg"
+    },
+    {
+      "country": "AT",
+      "cta": "Ver la ficha",
+      "description": "La rentabilidad más baja del bloque. Solo tiene sentido por diversificar a Viena.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días",
+          "tone": "ok",
+          "verified_at": "2026-08-27"
+        }
+      ],
+      "image_index": 17,
+      "kind": "yield",
+      "meta": [
+        "Perpetuo",
+        "Reparto mensual, día 15",
+        "Desde 71,00 €",
+        "1 cruce en 30 días",
+        "Pagas un 255 % sobre el ultimo cruce"
+      ],
+      "outside_real_estate": false,
+      "permanent": false,
+      "platform": "Brickwise",
+      "price_display": null,
+      "score": 4.11,
+      "source_index": 17,
+      "title": "Randhartingergasse 9, Viena",
+      "unit": null,
+      "url": "https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84",
+      "verified_at": "2026-08-27",
+      "yield_display": "2,61 %",
+      "yield_literal": "«reparto corriente esperado»",
+      "slug": "randhartingergasse-9-viena",
+      "platform_slug": "brickwise",
+      "category": "Inmobiliario",
+      "ttl_days": 5,
+      "image_source_file": "18-randhartingergasse-9-viena.jpg"
+    },
+    {
+      "country": "FR",
+      "cta": "Invertir",
+      "description": "El único producto en euros de deuda pública del escaparate, y el mejor regulado de todo el radar: fondo monetario UCITS aprobado por la AMF francesa, con ISIN, depositario de Crédit Agricole y la cartera publicada letra por letra. Entras desde 1 € y sales el mismo día.",
+      "details": [],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ UCITS",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "warn",
+          "verified_at": "2026-08-18"
+        },
+        {
+          "is_age": false,
+          "text": "riesgo soberano puro",
+          "tone": "ok",
+          "verified_at": null
+        }
+      ],
+      "image_index": 18,
+      "kind": "yield",
+      "meta": [
+        "EN EUROS",
+        "Sin plazo · retirada instantánea",
+        "Desde 1 €",
+        "804 M€ en el fondo",
+        "UCITS · AMF"
+      ],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Spiko",
+      "price_display": null,
+      "score": 3.2,
+      "source_index": 18,
+      "title": "Spiko Letras del Tesoro Euro",
+      "unit": null,
+      "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+      "verified_at": "2026-08-18",
+      "yield_display": "2,20 %",
+      "yield_literal": "neto de comisiones · 31 días",
+      "slug": "spiko-letras-del-tesoro-euro",
+      "platform_slug": "spiko",
+      "category": "Tesoro y fondos",
+      "ttl_days": 7,
+      "image_source_file": "19-spiko-letras-del-tesoro-euro.jpg"
+    },
+    {
+      "country": "ES",
+      "cta": "Comprar oro",
+      "description": "Liquidez contra Prosegur en cualquier momento, no contra un mercado secundario. Es la única vía de oro tokenizado verificada para un minorista español: Pax Gold no está disponible en la UE.",
+      "details": [
+        {
+          "label": "Respaldo",
+          "value": "1 g físico, 1:1"
+        },
+        {
+          "label": "Custodia",
+          "value": "Bóvedas Prosegur Cash"
+        },
+        {
+          "label": "Certificación",
+          "value": "LBMA"
+        },
+        {
+          "label": "Liquidez",
+          "value": "Recompra del emisor"
+        }
+      ],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ y oficinas físicas",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 3 días · cifra sin verificar",
+          "tone": "stop",
+          "verified_at": "2026-08-27"
+        },
+        {
+          "is_age": false,
+          "text": "mínimo y comisiones sin publicar",
+          "tone": "warn",
+          "verified_at": null
+        }
+      ],
+      "image_index": 43,
+      "kind": "value",
+      "meta": [],
+      "outside_real_estate": true,
+      "permanent": true,
+      "platform": "Prosegur Crypto",
+      "price_display": "≈126,84 €",
+      "score": null,
+      "source_index": 19,
+      "title": "Prosegur Digital Gold",
+      "unit": "por gramo · cálculo propio sobre 3.945,26 €/onza",
+      "url": "https://www.prosegurcrypto.com/digital-gold",
+      "verified_at": "2026-08-27",
+      "yield_display": null,
+      "yield_literal": null,
+      "slug": "prosegur-digital-gold",
+      "platform_slug": "prosegur-crypto",
+      "category": "Materias primas",
+      "ttl_days": 1,
+      "image_source_file": "44-prosegur-digital-gold.jpg"
+    },
+    {
+      "country": "ES",
+      "cta": "Invertir",
+      "description": "Bodega que ya vende: 20 ha en producción desde 2020, más de 200.000 botellas y exportación a Europa, Canadá y Japón. A cambio, el ticket más alto del escaparate y ningún cupón — se cobra si la empresa vale más.",
+      "details": [
+        {
+          "label": "Inversión mínima",
+          "value": "2.000,00 €"
+        },
+        {
+          "label": "Financiado",
+          "value": "967.000 € / 3,22 M€"
+        },
+        {
+          "label": "Valoración pre-money",
+          "value": "4,26 M€"
+        },
+        {
+          "label": "Días restantes",
+          "value": "75"
+        }
+      ],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ plataforma española",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "warn",
+          "verified_at": "2026-08-18"
+        },
+        {
+          "is_age": false,
+          "text": "sin mercado secundario",
+          "tone": "neutral",
+          "verified_at": null
+        }
+      ],
+      "image_index": 44,
+      "kind": "value",
+      "meta": [],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Alius Capital · PSFP supervisada por CNMV",
+      "price_display": "25,00 €",
+      "score": null,
+      "source_index": 20,
+      "title": "Casa de Outeiro",
+      "unit": "por token · 1 token = 1 acción",
+      "url": "https://aliuscap.com/projects/casa-de-outeiro",
+      "verified_at": "2026-08-18",
+      "yield_display": null,
+      "yield_literal": null,
+      "slug": "casa-de-outeiro",
+      "platform_slug": "alius-capital",
+      "category": "Acciones y capital privado",
+      "ttl_days": 7,
+      "image_source_file": "45-casa-de-outeiro.jpg"
+    },
+    {
+      "country": "CH",
+      "cta": "Comprar acciones",
+      "description": "La empresa que monta la infraestructura de todas las demás suizas. Su servicio de ayuda es donde está la regla que no aparece en ningún documento legal: la oferta se dirige a residentes en Suiza o el EEE, con tope de 100.000 € para el EEE. Pero comprarle al emisor cuesta un 45 % más que el último precio de mercado.",
+      "details": [
+        {
+          "label": "Sector",
+          "value": "Fintech"
+        },
+        {
+          "label": "Fundada",
+          "value": "2020"
+        },
+        {
+          "label": "Accionistas",
+          "value": "368"
+        },
+        {
+          "label": "Pago",
+          "value": "Transferencia o cripto"
+        }
+      ],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE, tope 100.000 €",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": false,
+          "text": "venta forzosa al 75 %",
+          "tone": "stop",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "ok",
+          "verified_at": "2026-08-18"
+        },
+        {
+          "is_age": false,
+          "text": "prima del 45 % sobre mercado",
+          "tone": "stop",
+          "verified_at": null
+        }
+      ],
+      "image_index": 45,
+      "kind": "value",
+      "meta": [],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Aktionariat · DAKS",
+      "price_display": "7,25 CHF",
+      "score": null,
+      "source_index": 21,
+      "title": "Aktionariat",
+      "unit": "compra directa al emisor · último cruce de mercado: 5,00 CHF",
+      "url": "https://shares.aktionariat.com/",
+      "verified_at": "2026-08-18",
+      "yield_display": null,
+      "yield_literal": null,
+      "slug": "aktionariat",
+      "platform_slug": "aktionariat",
+      "category": "Acciones y capital privado",
+      "ttl_days": 30,
+      "image_source_file": "46-aktionariat.jpg"
+    },
+    {
+      "country": "CH",
+      "cta": "Ver la ficha",
+      "description": "La mayor del catálogo suizo y la única con todo su capital tokenizado. Se puede entrar sin wallet, por transferencia bancaria — pero el emisor vende un 23 % por encima del último precio de mercado.",
+      "details": [
+        {
+          "label": "Sector",
+          "value": "Servicios TI a pymes"
+        },
+        {
+          "label": "Fundada",
+          "value": "1998"
+        },
+        {
+          "label": "Accionistas",
+          "value": "156"
+        },
+        {
+          "label": "Tokenizadas",
+          "value": "10,65 M · el 100 %"
+        }
+      ],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "ok",
+          "verified_at": "2026-08-18"
+        },
+        {
+          "is_age": false,
+          "text": "prima del 23 % sobre mercado",
+          "tone": "stop",
+          "verified_at": null
+        }
+      ],
+      "image_index": 46,
+      "kind": "value",
+      "meta": [],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Aktionariat · BOSS",
+      "price_display": "8,50 CHF",
+      "score": null,
+      "source_index": 22,
+      "title": "Boss Info",
+      "unit": "compra directa al emisor · último cruce de mercado: 6,90 CHF",
+      "url": "https://shares.bossinfo.com/",
+      "verified_at": "2026-08-18",
+      "yield_display": null,
+      "yield_literal": null,
+      "slug": "boss-info",
+      "platform_slug": "aktionariat",
+      "category": "Acciones y capital privado",
+      "ttl_days": 30,
+      "image_source_file": "47-boss-info.jpg"
+    },
+    {
+      "country": "CH",
+      "cta": "Ver la ficha",
+      "description": "La mayor plataforma de crowdfunding de Suiza, en manos de su propia comunidad desde 2022. Con 5.276 accionistas es, con diferencia, el capital más repartido del escaparate.",
+      "details": [
+        {
+          "label": "Sector",
+          "value": "Crowdfunding"
+        },
+        {
+          "label": "Fundada",
+          "value": "2012"
+        },
+        {
+          "label": "Accionistas",
+          "value": "5.276"
+        },
+        {
+          "label": "Tokenizadas",
+          "value": "435.384 de 1,05 M"
+        }
+      ],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "ok",
+          "verified_at": "2026-08-18"
+        },
+        {
+          "is_age": false,
+          "text": "sin fecha de último cruce",
+          "tone": "warn",
+          "verified_at": null
+        }
+      ],
+      "image_index": 47,
+      "kind": "value",
+      "meta": [],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Aktionariat · WMKT",
+      "price_display": "8,38 CHF",
+      "score": null,
+      "source_index": 23,
+      "title": "wemakeit",
+      "unit": "precio actual · fecha de cruce no publicada",
+      "url": "https://shares.wemakeit.com/",
+      "verified_at": "2026-08-18",
+      "yield_display": null,
+      "yield_literal": null,
+      "slug": "wemakeit",
+      "platform_slug": "aktionariat",
+      "category": "Acciones y capital privado",
+      "ttl_days": 30,
+      "image_source_file": "48-wemakeit.jpg"
+    },
+    {
+      "country": "CH",
+      "cta": "Ver la ficha",
+      "description": "Publica su nómina bruta procesada cada mes —unos 15 M CHF— así que se puede seguir el negocio, no solo el precio. Solo mercado secundario: hace falta wallet.",
+      "details": [
+        {
+          "label": "Sector",
+          "value": "SaaS · empleo doméstico"
+        },
+        {
+          "label": "Fundada",
+          "value": "2010"
+        },
+        {
+          "label": "Accionistas",
+          "value": "229"
+        },
+        {
+          "label": "Tokenizadas",
+          "value": "1,66 M de 2,00 M"
+        }
+      ],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "ok",
+          "verified_at": "2026-08-18"
+        },
+        {
+          "is_age": false,
+          "text": "venta forzosa al 75 %",
+          "tone": "stop",
+          "verified_at": null
+        },
+        {
+          "is_age": false,
+          "text": "solo secundario",
+          "tone": "warn",
+          "verified_at": null
+        }
+      ],
+      "image_index": 48,
+      "kind": "value",
+      "meta": [],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Aktionariat · DQTS",
+      "price_display": "8,00 CHF",
+      "score": null,
+      "source_index": 24,
+      "title": "ServiceHunter · quitt",
+      "unit": "último cruce · 23 jul 2026",
+      "url": "https://shares.quitt.ch/",
+      "verified_at": "2026-08-18",
+      "yield_display": null,
+      "yield_literal": null,
+      "slug": "servicehunter-quitt",
+      "platform_slug": "aktionariat",
+      "category": "Acciones y capital privado",
+      "ttl_days": 30,
+      "image_source_file": "49-servicehunter-quitt.jpg"
+    },
+    {
+      "country": "CH",
+      "cta": "Ver la ficha",
+      "description": "Fintech de crédito y la única del lote que vende al emisor al mismo precio que el mercado, sin prima. Ojo: la capitalización que declara (47,7 M CHF) no cuadra con su precio por el número de acciones de esta clase, y no publicamos esa cifra como si fuera de mercado.",
+      "details": [
+        {
+          "label": "Sector",
+          "value": "Crédito"
+        },
+        {
+          "label": "Fundada",
+          "value": "2015"
+        },
+        {
+          "label": "Accionistas",
+          "value": "283"
+        },
+        {
+          "label": "Clase",
+          "value": "C1 · 27.277 tokens"
+        }
+      ],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "ok",
+          "verified_at": "2026-08-18"
+        },
+        {
+          "is_age": false,
+          "text": "capitalización descuadrada",
+          "tone": "stop",
+          "verified_at": null
+        }
+      ],
+      "image_index": 49,
+      "kind": "value",
+      "meta": [],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Aktionariat · LENDS",
+      "price_display": "68,00 CHF",
+      "score": null,
+      "source_index": 25,
+      "title": "Switzerlend",
+      "unit": "último cruce · 27 jul 2026",
+      "url": "https://shares.lend.ch/",
+      "verified_at": "2026-08-18",
+      "yield_display": null,
+      "yield_literal": null,
+      "slug": "switzerlend",
+      "platform_slug": "aktionariat",
+      "category": "Acciones y capital privado",
+      "ttl_days": 30,
+      "image_source_file": "50-switzerlend.jpg"
+    },
+    {
+      "country": "CH",
+      "cta": "Ver la ficha",
+      "description": "Autobuses nocturnos de alta gama por Europa. El precio que ves tiene nueve meses: el mercado existe, pero apenas cruza.",
+      "details": [
+        {
+          "label": "Sector",
+          "value": "Transporte"
+        },
+        {
+          "label": "Fundada",
+          "value": "2021"
+        },
+        {
+          "label": "Accionistas",
+          "value": "188"
+        },
+        {
+          "label": "Tokenizadas",
+          "value": "676.042 de 3,68 M"
+        }
+      ],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "ok",
+          "verified_at": "2026-08-18"
+        },
+        {
+          "is_age": false,
+          "text": "9 meses sin operaciones",
+          "tone": "stop",
+          "verified_at": null
+        }
+      ],
+      "image_index": 50,
+      "kind": "value",
+      "meta": [],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Aktionariat · LINES",
+      "price_display": "3,00 CHF",
+      "score": null,
+      "source_index": 26,
+      "title": "Twiliner",
+      "unit": "último cruce · 6 nov 2025",
+      "url": "https://tokeninfo.aktionariat.com/twiliner",
+      "verified_at": "2026-08-18",
+      "yield_display": null,
+      "yield_literal": null,
+      "slug": "twiliner",
+      "platform_slug": "aktionariat",
+      "category": "Acciones y capital privado",
+      "ttl_days": 30,
+      "image_source_file": "51-twiliner.jpg"
+    },
+    {
+      "country": "CH",
+      "cta": "Ver la ficha",
+      "description": "Club de la liga nacional suiza desde 2022/23, con 403 titulares. No son acciones: es un Partizipationsschein, un bono de participación con derechos económicos pero sin voto. Se publica por lo que es —una participación en un club— y con tres avisos encima.",
+      "details": [
+        {
+          "label": "Sector",
+          "value": "Club de hockey"
+        },
+        {
+          "label": "Fundado",
+          "value": "1934"
+        },
+        {
+          "label": "Accionistas",
+          "value": "403"
+        },
+        {
+          "label": "Instrumento",
+          "value": "Bono de participación"
+        },
+        {
+          "label": "Títulos",
+          "value": "10.000 · el 100 % tokenizados"
+        }
+      ],
+      "eligible_spain": true,
+      "europe": true,
+      "flags": [
+        {
+          "is_age": true,
+          "text": "verificado hace 12 días",
+          "tone": "ok",
+          "verified_at": "2026-08-18"
+        },
+        {
+          "is_age": false,
+          "text": "España ✓ EEE",
+          "tone": "ok",
+          "verified_at": null
+        },
+        {
+          "is_age": false,
+          "text": "11 meses sin operaciones",
+          "tone": "stop",
+          "verified_at": null
+        },
+        {
+          "is_age": false,
+          "text": "capitalización descuadrada",
+          "tone": "stop",
+          "verified_at": null
+        }
+      ],
+      "image_index": 51,
+      "kind": "value",
+      "meta": [],
+      "outside_real_estate": true,
+      "permanent": false,
+      "platform": "Aktionariat · EHCK",
+      "price_display": "91,00 CHF",
+      "score": null,
+      "source_index": 27,
+      "title": "EHC Kloten",
+      "unit": "último cruce · 5 sep 2025",
+      "url": "https://tokeninfo.aktionariat.com/ehc-kloten",
+      "verified_at": "2026-08-18",
+      "yield_display": null,
+      "yield_literal": null,
+      "slug": "ehc-kloten",
+      "platform_slug": "aktionariat",
+      "category": "Acciones y capital privado",
+      "ttl_days": 30,
+      "image_source_file": "52-ehc-kloten.jpg"
+    }
+  ],
+  "secondary_market": [
+    {
+      "slug": "reental-sec-houston-3",
+      "title": "Houston 3",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "12,74 %",
+      "advertised_yield": "12,42 %",
+      "ask": "97,50–101,00 $",
+      "last_trade": "98,45 $ hoy\n-1,0 %",
+      "depth": "39,80 tok\n3.897 $ · 7 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774310320298-25fd8701-69a9-4e39-ab20-28b8414b7228-houston-3",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 19,
+      "image_source_file": "20-houston-3.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-costa-mediterranea-1",
+      "title": "Costa Mediterránea 1",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "12,50 %",
+      "advertised_yield": "15,87 %",
+      "ask": "127,00 $",
+      "last_trade": "115,00 $ hace 5 d\n+10,4 %",
+      "depth": "1,00 tok\n127 $ · 1 ord",
+      "payout": "Al vencimiento",
+      "url": "https://www.reental.co/properties/1777893609395-54efbb45-6dcc-48c9-b5c8-39be3e44d583-costa-mediterranea-1",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 20,
+      "image_source_file": "21-costa-mediterranea-1.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-proyecto-100",
+      "title": "Proyecto 100",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "11,68 %",
+      "advertised_yield": "12,50 %",
+      "ask": "107,00 $",
+      "last_trade": "100,00 $ hoy\n+7,0 %",
+      "depth": "1,00 tok\n107 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774313602684-4dd13b10-c2ac-434e-86d7-c4f8c87c10ee-proyecto-100",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 21,
+      "image_source_file": "22-proyecto-100.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-rentas-3",
+      "title": "Rentas 3",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "11,54 %",
+      "advertised_yield": "12,00 %",
+      "ask": "104,00 $",
+      "last_trade": "103,00 $ ayer\n+1,0 %",
+      "depth": "2,00 tok\n208 $ · 2 ord",
+      "payout": "Mensual",
+      "url": "https://p2p.rnt.finance/",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 22,
+      "image_source_file": "23-rentas-3.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-abu-dhabi-1",
+      "title": "Abu Dhabi 1",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "11,54 %",
+      "advertised_yield": "12,00 %",
+      "ask": "104,00 $",
+      "last_trade": "100,00 $ hace 2 d\n+4,0 %",
+      "depth": "3,00 tok\n312 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774315175080-87f4dc55-7908-40fe-af98-5b0df656d676-abu-dhabi-1",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 23,
+      "image_source_file": "24-abu-dhabi-1.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-granada-3",
+      "title": "Granada 3",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "11,43 %",
+      "advertised_yield": "13,32 %",
+      "ask": "116,50–117,00 $",
+      "last_trade": "108,00 $ hace 7 d\n+7,9 %",
+      "depth": "16,00 tok\n1.864 $ · 3 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774311898691-6ae8ab8c-bd98-4cb8-934b-426d08565080-granada-3",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 24,
+      "image_source_file": "25-granada-3.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-carolina-del-norte-1",
+      "title": "Carolina del Norte 1",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "11,43 %",
+      "advertised_yield": "12,00 %",
+      "ask": "105,00 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "2,48 tok\n261 $ · 1 ord",
+      "payout": "Al vencimiento",
+      "url": "https://www.reental.co/properties/1783059046258-7af3abf7-654e-4603-8f13-7febae6d1ebc-carolina-del-norte-1",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 25,
+      "image_source_file": "26-carolina-del-norte-1.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-dania-beach-1",
+      "title": "Dania Beach 1",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "10,78 %",
+      "advertised_yield": "11,00 %",
+      "ask": "102,00–108,00 $",
+      "last_trade": "102,00 $ ayer\nal mismo precio",
+      "depth": "10,00 tok\n1.050 $ · 6 ord",
+      "payout": "Trimestral + final",
+      "url": "https://www.reental.co/properties/1776342884951-447dad95-1362-49ac-b603-effd274a5eed-dania-beach-1",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 26,
+      "image_source_file": "27-dania-beach-1.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-punta-cana-5",
+      "title": "Punta Cana 5",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "10,68 %",
+      "advertised_yield": "10,89 %",
+      "ask": "102,00 $",
+      "last_trade": "100,60 $ hace 2 d\n+1,4 %",
+      "depth": "2,00 tok\n204 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774307840959-c9c09fa2-b957-497e-a021-928159e045c6-punta-cana-5",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 27,
+      "image_source_file": "28-punta-cana-5.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-miami-2",
+      "title": "Miami 2",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "10,49 %",
+      "advertised_yield": "15,22 %",
+      "ask": "145,00 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "6,57 tok\n952 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774306629799-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 28,
+      "image_source_file": "29-miami-2.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-rentas-2",
+      "title": "Rentas 2",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "10,34 %",
+      "advertised_yield": "12,00 %",
+      "ask": "116,00–117,00 $",
+      "last_trade": "115,00 $ hace 4 d\n+0,9 %",
+      "depth": "30,05 tok\n3.516 $ · 2 ord",
+      "payout": "Mensual",
+      "url": "https://www.reental.co/properties/1774683600734-168248bf-3f35-4ba9-8021-f9a95c23583a-rentas-2",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 29,
+      "image_source_file": "30-rentas-2.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-jacksonville-1",
+      "title": "Jacksonville 1",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "10,31 %",
+      "advertised_yield": "10,31 %",
+      "ask": "100,00 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "1,50 tok\n150 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774305047112-ae02b84c-eebb-4b3a-bc4a-e1e9f82013dd-jacksonville-1",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 30,
+      "image_source_file": "31-jacksonville-1.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-punta-cana-4",
+      "title": "Punta Cana 4",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "10,19 %",
+      "advertised_yield": "10,39 %",
+      "ask": "102,00 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "2,00 tok\n204 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774307778125-d39e8c37-cafd-41fa-91c1-29d38f1fea2f-punta-cana-4",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 31,
+      "image_source_file": "32-punta-cana-4.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-jacksonville-3",
+      "title": "Jacksonville 3",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "10,04 %",
+      "advertised_yield": "10,54 %",
+      "ask": "105,00 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "2,00 tok\n210 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774305162991-ca58a74f-5b46-4955-85d2-25e6bd3683d7-jacksonville-3",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 32,
+      "image_source_file": "33-jacksonville-3.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-jacksonville-2",
+      "title": "Jacksonville 2",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "9,93 %",
+      "advertised_yield": "10,43 %",
+      "ask": "105,00 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "2,00 tok\n210 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774305105000-49537ead-80f3-43d0-ab37-88dfbb4c0653-jacksonville-2",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 33,
+      "image_source_file": "34-jacksonville-2.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-index-1",
+      "title": "Index 1",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "9,45 %",
+      "advertised_yield": "12,00 %",
+      "ask": "127,00 $",
+      "last_trade": "115,50 $ hace 17 d\n+10,0 %",
+      "depth": "1,00 tok\n127 $ · 1 ord",
+      "payout": "Mensual",
+      "url": "https://www.reental.co/properties/1774312865498-53e3826d-e97b-45a9-b0ae-a91ff639f45c-index-1",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 34,
+      "image_source_file": "35-index-1.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-opportunity-1",
+      "title": "Opportunity 1",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "9,32 %",
+      "advertised_yield": "11,00 %",
+      "ask": "118,00–119,98 $",
+      "last_trade": "115,00 $ hace 5 d\n+2,6 %",
+      "depth": "6,00 tok\n710 $ · 2 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774314569089-56e730b9-ce30-4235-8fa2-0c089d4d5eae-opportunity-1",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 35,
+      "image_source_file": "36-opportunity-1.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-coliving-malaga-2",
+      "title": "Coliving Málaga 2",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "9,29 %",
+      "advertised_yield": "11,06 %",
+      "ask": "119,00 $",
+      "last_trade": "117,00 $ hace 5 d\n+1,7 %",
+      "depth": "2,00 tok\n238 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774304078282-e1086f2d-fbcd-4969-8e86-27c8c9105e1e-coliving-malaga-2",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 36,
+      "image_source_file": "37-coliving-malaga-2.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-malaga-8",
+      "title": "Málaga 8",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "9,02 %",
+      "advertised_yield": "10,46 %",
+      "ask": "116,00–118,00 $",
+      "last_trade": "115,50 $ hoy\n+0,4 %",
+      "depth": "12,00 tok\n1.396 $ · 3 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774308871407-909625d4-a224-4922-84f7-e71445b0d36f-malaga-8",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 37,
+      "image_source_file": "38-malaga-8.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-opportunity-2",
+      "title": "Opportunity 2",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "8,70 %",
+      "advertised_yield": "10,00 %",
+      "ask": "115,00–118,75 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "14,00 tok\n1.653 $ · 4 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1781572440446-effc8261-b6e5-4bcb-bc9b-0cc8a3669786-opportunity-2",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 38,
+      "image_source_file": "39-opportunity-2.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-malaga-7",
+      "title": "Málaga 7",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "8,65 %",
+      "advertised_yield": "10,21 %",
+      "ask": "118,00 $",
+      "last_trade": "116,00 $ hace 5 d\n+1,7 %",
+      "depth": "2,00 tok\n236 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774307900044-8af7293f-d42d-46cc-bd70-69e294455ce8-malaga-7",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 39,
+      "image_source_file": "40-malaga-7.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-malaga-3",
+      "title": "Málaga 3",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "8,53 %",
+      "advertised_yield": "10,06 %",
+      "ask": "118,00 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "1,00 tok\n118 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774305594117-fb2d34b6-b963-4193-a4ac-20d6afb475b2-malaga-3",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 40,
+      "image_source_file": "41-malaga-3.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-malaga-6",
+      "title": "Málaga 6",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "8,51 %",
+      "advertised_yield": "10,04 %",
+      "ask": "118,00 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "2,00 tok\n236 $ · 1 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774307472822-79ac0eff-2c25-46d8-877f-61b289829810-malaga-6",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 41,
+      "image_source_file": "42-malaga-6.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    },
+    {
+      "slug": "reental-sec-malaga-4",
+      "title": "Málaga 4",
+      "platform": "Reental",
+      "platform_slug": "reental",
+      "category": "Inmobiliario",
+      "country": null,
+      "kind": "secondary",
+      "adjusted_yield": "8,18 %",
+      "advertised_yield": "10,39 %",
+      "ask": "127,00–129,00 $",
+      "last_trade": "sin cruce reciente",
+      "depth": "2,00 tok\n256 $ · 2 ord",
+      "payout": "Mensual + final",
+      "url": "https://www.reental.co/properties/1774305776388-cf0e05d5-b4d3-406e-b02c-fb9aebf43050-malaga-4",
+      "market_url": "https://p2p.rnt.finance/",
+      "image_index": 42,
+      "image_source_file": "43-malaga-4.jpg",
+      "eligible_spain": true,
+      "verified_at": "2026-08-30",
+      "ttl_days": 1
+    }
+  ],
+  "excluded_offers": [
+    {
+      "name": "RealUnit Schweiz",
+      "scope": "66,5 M CHF",
+      "reason": "Sociedad de inversión suiza en activos reales, cotizada, con operaciones cruzadas el 18 de agosto a las 08:01. Su web limita la oferta a residentes en Suiza, Alemania y Liechtenstein: España fuera. Es el mejor activo que hemos tenido que retirar.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Lofty",
+      "scope": "82 propiedades",
+      "reason": "No aclara si un residente en España puede comprar. Correo enviado a su soporte, sin respuesta.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Pax Gold",
+      "scope": "Oro",
+      "reason": "Su propia web lo dice: no disponible en la Unión Europea.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Midas",
+      "scope": "49 de 54 productos",
+      "reason": "Estrategias market-neutral de cripto y basis trade. Rendimiento de cripto, no de activos reales: no pintan nada en un radar RWA.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Midas mGLO",
+      "scope": "TVL 40,3 M$",
+      "reason": "Su APY marca 0 % a 7 y 30 días. Sin cifra utilizable no entra.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Hausera",
+      "scope": "0 de 39",
+      "reason": "Comprobado el 23 de agosto en su propio fichero de datos: 13 financiadas, 5 en explotación y 21 cerradas. Ninguna abierta ni en preventa. Sus ventanas duran once días, así que puede haber una mañana. Su rentabilidad histórica sí la hemos recalculado y cuadra: 16,37 % de media simple sobre 21 operaciones cerradas, 14,19 % ponderada por capital.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "OTESA Calella Living",
+      "scope": "993.000 €",
+      "reason": "Primer bono tokenizado con garantía hipotecaria de España, al 10 % a 12 meses. Comprobado el 18 de agosto: emisión completada. Colocó 1 M€ en 21 días.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Exporo",
+      "scope": "2 de 2",
+      "reason": "Retiradas por nosotros mismos el 18/08. No hemos podido confirmar que estén en blockchain, que es el filtro fundacional del radar. Su ficha ofrece un «Informationsblatt Vermögensanlagen» —documento de las Vermögensanlagen alemanas, que no son valores— mientras el aviso de la plataforma habla de «valores transferibles». Ninguno menciona token. Exporo tuvo bonos tokenizados en Ethereum desde 2019, pero su línea Bestand ya no existe como tal. Pendiente de preguntarles.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Brickwise",
+      "scope": "2 de 14",
+      "reason": "Una retirada del tablón y otra sin órdenes vivas. De las 12 que quedan, dos amortizan por debajo de lo que cuestan hoy.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Aktionariat",
+      "scope": "28 de 53 empresas",
+      "reason": "Tokenizadas pero sin mercado abierto (NOT_TRADED) o aún por estrenar. No hay nada que comprar.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Fleap · Weltix",
+      "scope": "Italia",
+      "reason": "Infraestructura de registro autorizada por Consob. No venden nada: Ferveo SpA tokenizó su libro de accionistas, no una oferta.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Finexity · Splint · Timeless",
+      "scope": "Coleccionables UE",
+      "reason": "Minoristas de verdad, desde 50 €, pero ninguna publica catálogo sin abrir cuenta. No se puede verificar precio ni estado.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Backed Finance",
+      "scope": "xStocks",
+      "reason": "Only Qualified Investors, según su web. Además es exposición sin rendimiento: COINx hizo −14,84 % en un año.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "tZERO",
+      "scope": "Emisiones activas",
+      "reason": "Reg D 506c: solo inversores acreditados, mínimo 10.000 $.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    },
+    {
+      "name": "Beself Brands",
+      "scope": "Acciones",
+      "reason": "Colocó el 3 % de su emisión, recompró los tokens y entró en concurso de acreedores en junio de 2026.",
+      "source_url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links"
+    }
+  ]
+}

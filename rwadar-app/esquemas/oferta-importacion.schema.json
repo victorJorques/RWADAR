@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rwadar:esquema:oferta-importacion:1",
+  "title": "Lote de importación de ofertas de RWAdar",
+  "description": "Contrato fail-closed para preparar ofertas fuera de Supabase. Validar el esquema no concede permiso de publicación.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "versionEsquema",
+    "idLote",
+    "estado",
+    "publicable",
+    "uso",
+    "fuente",
+    "catalogo",
+    "imagenes",
+    "proveedores",
+    "politica",
+    "evidencias",
+    "derechosImagenes"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versionEsquema": {
+      "const": 1
+    },
+    "idLote": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 120
+    },
+    "estado": {
+      "enum": ["staging", "revisado", "aprobado"]
+    },
+    "publicable": {
+      "type": "boolean"
+    },
+    "uso": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 500
+    },
+    "nota": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "fuente": {
+      "$ref": "#/$defs/fuenteLote"
+    },
+    "catalogo": {
+      "$ref": "#/$defs/archivoReferenciado"
+    },
+    "imagenes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifiestoRuta",
+        "sha256",
+        "bytes",
+        "duplicadasEnLote",
+        "derechosVerificados"
+      ],
+      "properties": {
+        "manifiestoRuta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "duplicadasEnLote": {
+          "const": false
+        },
+        "derechosVerificados": {
+          "type": "boolean"
+        }
+      }
+    },
+    "proveedores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ruta", "sha256", "bytes", "formato"],
+      "properties": {
+        "ruta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "formato": {
+          "const": "rwadar-seed-sql"
+        }
+      }
+    },
+    "politica": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxAntiguedadBarridoDias",
+        "exigirFuentePrimaria",
+        "exigirDerechosImagen",
+        "permitirFechaImportacionComoVerificacion"
+      ],
+      "properties": {
+        "maxAntiguedadBarridoDias": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 90
+        },
+        "exigirFuentePrimaria": {
+          "const": true
+        },
+        "exigirDerechosImagen": {
+          "const": true
+        },
+        "permitirFechaImportacionComoVerificacion": {
+          "const": false
+        }
+      }
+    },
+    "evidencias": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidenciaOferta"
+      }
+    },
+    "derechosImagenes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/derechosImagen"
+      }
+    }
+  },
+  "$defs": {
+    "fecha": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 140
+    },
+    "urlHttps": {
+      "type": "string",
+      "pattern": "^https://",
+      "maxLength": 2048
+    },
+    "archivoReferenciado": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ruta", "sha256", "bytes", "formato"],
+      "properties": {
+        "ruta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "formato": {
+          "const": "rwadar-escaparate-v1"
+        }
+      }
+    },
+    "fuenteLote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tipo",
+        "url",
+        "titulo",
+        "barridoEl",
+        "capturadoEl",
+        "verificacionIndependiente"
+      ],
+      "properties": {
+        "tipo": {
+          "enum": ["artefacto-usuario", "exportacion-oficial", "captura-editorial"]
+        },
+        "url": {
+          "$ref": "#/$defs/urlHttps"
+        },
+        "titulo": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "barridoEl": {
+          "$ref": "#/$defs/fecha"
+        },
+        "capturadoEl": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verificacionIndependiente": {
+          "type": "boolean"
+        }
+      }
+    },
+    "fuentePrimaria": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tipo", "url", "titulo", "consultadaEl", "primaria"],
+      "properties": {
+        "tipo": {
+          "enum": ["oferta", "precio", "rentabilidad", "elegibilidad", "estado", "mercado-secundario"]
+        },
+        "url": {
+          "$ref": "#/$defs/urlHttps"
+        },
+        "titulo": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "consultadaEl": {
+          "$ref": "#/$defs/fecha"
+        },
+        "primaria": {
+          "const": true
+        }
+      }
+    },
+    "evidenciaOferta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "fuentes"],
+      "properties": {
+        "slug": {
+          "$ref": "#/$defs/slug"
+        },
+        "fuentes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/fuentePrimaria"
+          }
+        }
+      }
+    },
+    "derechosImagen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "fuenteUrl",
+        "titular",
+        "licencia",
+        "publicacionAutorizada",
+        "verificadaEl"
+      ],
+      "properties": {
+        "slug": {
+          "$ref": "#/$defs/slug"
+        },
+        "fuenteUrl": {
+          "$ref": "#/$defs/urlHttps"
+        },
+        "titular": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "licencia": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 300
+        },
+        "publicacionAutorizada": {
+          "const": true
+        },
+        "verificadaEl": {
+          "$ref": "#/$defs/fecha"
+        }
+      }
+    }
+  }
+}

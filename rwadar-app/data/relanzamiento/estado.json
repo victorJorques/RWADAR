@@ -1,0 +1,142 @@
+{
+  "version": 3,
+  "actualizadoEl": "2026-09-28",
+  "publicacionSolicitada": true,
+  "perfilPublicacion": "editorial-gratuito",
+  "modeloComercial": "publicidad-en-app-pendiente",
+  "actividadComercial": {
+    "comisiones": false,
+    "publicidad": false,
+    "atribucion": false,
+    "cobros": false
+  },
+  "comisionVariableSobreInversion": false,
+  "nota": "Lanzamiento público expresamente autorizado. Corte editorial gratuito con catálogo real de solo lectura, identidad completa, imágenes propias y analítica agregada web. Publicidad y cobros permanecen desactivados hasta completar la configuración y revisión comercial.",
+  "revisionAprobada": null,
+  "controles": {
+    "identidad_legal_y_fiscal": {
+      "estado": "aprobado",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "rwadar-site/privacidad.html#aviso-legal",
+          "verificadoEl": "2026-09-27",
+          "resumen": "El titular ha facilitado nombre completo, NIF con letra de control válida y domicilio completo declarado sin número. El correo público de RWAdar está confirmado. Identificación de persona física para el alcance editorial gratuito; no acredita altas ni habilita cobros."
+        }
+      ],
+      "detalle": "Identificación del titular persona física incorporada por indicación expresa. La comprobación es formal y documental según lo declarado por el titular; las obligaciones de una actividad remunerada se revisan antes de activar publicidad o cobros."
+    },
+    "revision_legal": {
+      "estado": "aprobado",
+      "detalle": "Revisión interna limitada al radar editorial gratuito y su política publicable. No constituye un dictamen externo, licencia financiera ni aprobación para monetizar.",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/comercial/REVISION-EDITORIAL-2026-09-27.md",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Identidad, condiciones, límites editoriales, ausencia de intermediación y de monetización, proveedores y derechos documentados para este corte."
+        }
+      ]
+    },
+    "aviso_legal_y_condiciones": {
+      "estado": "aprobado",
+      "detalle": "Titular identificado y política alineada con el servidor: usuarios pausados, nuevas altas cerradas, catálogo público de solo lectura y canal de derechos por correo.",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "rwadar-site/privacidad.html#aviso-legal",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Datos declarados por el titular completos, finalidades y proveedores descritos, criterios de conservación y proceso diario de180días comprobado en metadatos."
+        }
+      ]
+    },
+    "primer_acuerdo_patrocinio": {
+      "estado": "pendiente",
+      "evidencias": [],
+      "detalle": "No exigido al perfil editorial gratuito. Para monetizar anuncios faltan red elegida, titular y condiciones aceptadas, revision de la app y controles de privacidad; no se exige a las empresas del catalogo pagar por aparecer."
+    },
+    "facturacion_y_cobro": {
+      "estado": "pendiente",
+      "evidencias": [],
+      "detalle": "Faltan datos de facturacion, tratamiento fiscal y medio de cobro a nombre del titular."
+    },
+    "catalogo_actual_y_citable": {
+      "estado": "aprobado",
+      "detalle": "Revisión 80159d96-dcb8-b476-ae10-bc9cd2a45c83 aprobada en Supabase el 28/09/2026 a las 08:32 UTC. Radar contrastado hoy: 26 plataformas, 70 fuentes, 28 referencias y 4 descartes. Ofertas conservadas con fecha 27/09. Lote vigente hasta 05/10 inclusive.",
+      "evidencias": [
+        {
+          "tipo": "fuente-primaria",
+          "referencia": "rwadar-app/data/verificaciones/2026-09-28/revision-fuentes.json",
+          "verificadoEl": "2026-09-28",
+          "resumen": "Consultadas las 69 fuentes anteriores y documentos alternativos oficiales. Se añade OCC para Paxos; no se renuevan afirmaciones de acceso o licencia que no pudieron contrastarse."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "rwadar-app/probar-catalogo-publico.mjs",
+          "verificadoEl": "2026-09-28",
+          "resumen": "76 pruebas locales aprobadas. Borrador remoto invisible bajo anon, fechas canónicas compatibles y catálogo aprobado 26/28; sincronizador REST real correcto."
+        }
+      ]
+    },
+    "derechos_de_imagen": {
+      "estado": "aprobado",
+      "detalle": "Publicación de material generado propio, con procedencia y etiqueta. No se publican las52fotografías internas de terceros.",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/comercial/REVISION-EDITORIAL-2026-09-27.md",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Revisión visual de las4ilustraciones sin referencias ajenas, manifiesto y huellas verificados;26portadas editoriales con procedencia registrada."
+        }
+      ]
+    },
+    "beta_segura_extremo_a_extremo": {
+      "estado": "en_progreso",
+      "detalle": "Revocación declarada por el titular y límites de investigación histórica registrados. Servidor validado, permisos cerrados y pruebas locales aprobadas; preview público pendiente de QA antes de producción.",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/seguridad/REVISION-SEGURIDAD-2026-09-27.md",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Contención actual y límites históricos separados; nuevas altas cerradas, cero permisos de mutación ni RPCprivilegiadas para clientes, catálogo público íntegro."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "rwadar-app/probar-catalogo-publico.mjs",
+          "verificadoEl": "2026-09-27",
+          "resumen": "70pruebas aisladas con defaults heredados y cierre de permisos, más verificación RESTreal de26/28 y4descartes documentados."
+        }
+      ]
+    },
+    "alcance_editorial_sin_monetizacion": {
+      "estado": "aprobado",
+      "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "rwadar-app/probar-transparencia-comercial.mjs",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Dieciséis comprobaciones superadas: fichas gratuitas, anuncios pendientes, ausencia de comisión activa y separación del criterio editorial. La medición agregada de visitas no añade conversiones ni cobros."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "rwadar-app/probar-para-empresas.mjs",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Dieciocho comprobaciones superadas sobre el canal exploratorio, sin precios, contratación, factura ni captación de datos de inversores. Un contacto no activa un anuncio o una ficha pagada."
+        }
+      ],
+      "detalle": "Alcance editorial gratuito revisado conforme a la decisión del titular, con las cuatro capacidades comerciales desactivadas. No habilita SDK publicitario, atribución, comisiones ni recepción de dinero. El resto de controles y la revisión del artefacto permanecen separados."
+    },
+    "operacion_monitorizacion_y_rollback": {
+      "estado": "aprobado",
+      "detalle": "Soporte por correo del titular, panel de métricas creado, verificación por etapas y punto de restauración real conservado. No se afirma vigilancia humana continua ni rollback público ya ensayado.",
+      "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/OPERACION-LANZAMIENTO.md",
+          "verificadoEl": "2026-09-27",
+          "resumen": "Procedimiento de preview, comprobación y producción; restauración a237c1ed9-feaf-44ea-b408-bac23f904f27 listado por Cloudflare; limpieza preservada."
+        }
+      ]
+    }
+  }
+}

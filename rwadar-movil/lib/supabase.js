@@ -4,6 +4,13 @@ import { Platform } from 'react-native';
 import * as Crypto from 'expo-crypto';
 import * as SecureStore from 'expo-secure-store';
 import { createClient } from '@supabase/supabase-js';
+import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './modo-local';
+
+function exigirServiciosUsuario() {
+  if (MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true) {
+    throw new Error('Los servicios remotos de usuario están desactivados');
+  }
+}
 
 /* La clave publicable va dentro de la app a propósito: es pública por diseño
    y no concede escritura sobre el catálogo. Comprobado contra el servidor: un
@@ -84,7 +91,9 @@ let cacheClienteDispositivo = null;
 let idClienteDispositivo = null;
 
 const clienteCatalogo = createClient(URL, CLAVE, {
-  auth: { persistSession: false, autoRefreshToken: false },
+  // Tampoco aceptar callbacks Auth al usar el export web: este cliente no
+  // autentica usuarios, aunque la URL contenga credenciales de un enlace viejo.
+  auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
   global: { fetch: conPlazo },
 });
 
@@ -94,6 +103,7 @@ export function clientePublico() {
 
 /* Consultar el catálogo o abrir la app no crea un identificador. */
 export async function idInstalacionExistente() {
+  exigirServiciosUsuario();
   if (promesaInstalacion) return promesaInstalacion;
   const existente = await leerIdInstalacion();
   if (existente) promesaInstalacion = Promise.resolve(existente);
@@ -101,6 +111,7 @@ export async function idInstalacionExistente() {
 }
 
 export function idInstalacion() {
+  exigirServiciosUsuario();
   if (!promesaInstalacion) {
     promesaInstalacion = (async () => (await leerIdInstalacion()) || crearIdInstalacion())()
       .catch((error) => {
@@ -114,13 +125,14 @@ export function idInstalacion() {
 /* El cliente privado lleva la cabecera que leen las políticas RLS. Con
    crear=false devuelve null si la instalación no existe, sin generar una. */
 export async function clienteDispositivo({ crear = true } = {}) {
+  exigirServiciosUsuario();
   const id = crear ? await idInstalacion() : await idInstalacionExistente();
   if (!id) return null;
 
   if (!cacheClienteDispositivo || idClienteDispositivo !== id) {
     idClienteDispositivo = id;
     cacheClienteDispositivo = createClient(URL, CLAVE, {
-      auth: { persistSession: false, autoRefreshToken: false },
+      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
       global: { headers: { 'x-instalacion': id }, fetch: conPlazo },
     });
   }
@@ -129,6 +141,7 @@ export async function clienteDispositivo({ crear = true } = {}) {
 
 /* Solo se llama después de que Supabase confirme el DELETE remoto. */
 export async function borrarIdInstalacionLocal() {
+  exigirServiciosUsuario();
   if (Platform.OS !== 'web') {
     await SecureStore.deleteItemAsync(CLAVE_INSTALACION, OPCIONES_SEGURAS);
   }

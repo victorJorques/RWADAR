@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import {
-  ActivityIndicator, Alert, FlatList, Linking, Modal, Pressable, RefreshControl,
-  ScrollView, StatusBar, StyleSheet, Text, TextInput, View,
+  ActivityIndicator, Alert, AppState, FlatList, Linking, Modal, Pressable, RefreshControl,
+  ScrollView, StatusBar, StyleSheet, Text, TextInput, useWindowDimensions, View,
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -13,9 +13,15 @@ import { GeistMono_500Medium } from '@expo-google-fonts/geist-mono';
 import { C, COLOR_CATEGORIA, iniciales, T, E, R, F, UI } from './lib/tema';
 import { tacto } from './lib/tacto';
 import {
-  cargarRadar, cargarFuera, siguiendo, alternarSeguimiento, novedades,
+  cargarCatalogo, cargarFuera, siguiendo, alternarSeguimiento, novedades,
   sincronizarSeguimientoPendiente, borrarDatosDispositivo,
+  cargarSecundario, cargarExclusiones, proveedoresDeOfertas, textoBusquedaOferta,
 } from './lib/datos';
+import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './lib/modo-local';
+import { vigilarCaducidadCatalogo } from './lib/catalogo-remoto';
+import {
+  etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible,
+} from './lib/verificacion-local';
 import {
   consultarEstadoAvisos, registrarParaAvisos, observarAperturasAvisos,
 } from './lib/avisos';
@@ -23,8 +29,12 @@ import Explicador from './componentes/Explicador';
 import Radar from './componentes/Radar';
 import Marca from './componentes/Marca';
 import Navegacion, { Icono } from './componentes/Navegacion';
+import {
+  DetalleOferta, ExclusionesOfertas, FichaOferta,
+} from './componentes/Ofertas';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
+const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
 
 async function abrirEnlace(url) {
   const valor = String(url || '').trim();
@@ -65,6 +75,10 @@ export default function App() {
   const [pestana, setPestana] = useState('radar');
   const [radar, setRadar] = useState([]);
   const [fuera, setFuera] = useState([]);
+  const [ofertas, setOfertas] = useState([]);
+  const [fechaCatalogo, setFechaCatalogo] = useState(null);
+  const [secundario, setSecundario] = useState([]);
+  const [exclusionesOfertas, setExclusionesOfertas] = useState([]);
   const [sigo, setSigo] = useState([]);
   const [avisos, setAvisos] = useState([]);
   const [cargando, setCargando] = useState(true);
@@ -72,7 +86,13 @@ export default function App() {
   const [sinConexion, setSinConexion] = useState(false);
   const [busqueda, setBusqueda] = useState('');
   const [categoria, setCategoria] = useState('');
+  const [busquedaOfertas, setBusquedaOfertas] = useState('');
+  const [grupoOfertas, setGrupoOfertas] = useState('principales');
+  const [tipoOferta, setTipoOferta] = useState('');
+  const [proveedorOferta, setProveedorOferta] = useState('');
+  const [filtrosOfertasAbiertos, setFiltrosOfertasAbiertos] = useState(false);
   const [abierta, setAbierta] = useState(null);
+  const [ofertaAbierta, setOfertaAbierta] = useState(null);
   const [explicando, setExplicando] = useState(false);
   const [privacidad, setPrivacidad] = useState(false);
   const [estadoDatos, setEstadoDatos] = useState('');
@@ -82,6 +102,7 @@ export default function App() {
   const [procesandoAvisos, setProcesandoAvisos] = useState(false);
   const [borrandoDatos, setBorrandoDatos] = useState(false);
   const [slugAvisoPendiente, setSlugAvisoPendiente] = useState(null);
+  const { width: anchoPantalla } = useWindowDimensions();
 
   /* El `finally` no es adorno: si cualquiera de estas llamadas rechazara,
      `cargando` se quedaría en true y la pantalla de "Sintonizando el
@@ -90,9 +111,22 @@ export default function App() {
      correcto: peor que una lista corta es una app que no arranca. */
   const traer = useCallback(async () => {
     try {
-      const [r, f, s] = await Promise.all([cargarRadar(), cargarFuera(), siguiendo()]);
-      setRadar(r.datos); setFuera(f.datos); setSigo(s);
-      setSinConexion(!!(r.deCache || f.deCache));
+      const escaparate = MODO_LOCAL ? [
+        cargarSecundario(), cargarExclusiones(),
+      ] : [
+        Promise.resolve({ datos: [] }),
+        Promise.resolve({ datos: [] }),
+      ];
+      const [catalogo, f, mercado, exclusiones, s] = await Promise.all([
+        cargarCatalogo(), cargarFuera(), ...escaparate, siguiendo(),
+      ]);
+      setRadar(catalogo.plataformas); setFuera(f.datos); setOfertas(catalogo.ofertas);
+      setFechaCatalogo(catalogo.fecha || null);
+      setSecundario(mercado.datos); setExclusionesOfertas(exclusiones.datos); setSigo(s);
+      setAbierta(actual => actual && catalogo.plataformas.find(p => p.slug === actual.slug) || null);
+      setOfertaAbierta(actual => actual && [...catalogo.ofertas, ...mercado.datos]
+        .find(o => o.slug === actual.slug) || null);
+      setSinConexion(!!catalogo.deCache);
 
       const [n, sincronizacion] = await Promise.all([
         novedades(s),
@@ -101,17 +135,23 @@ export default function App() {
       setAvisos(n.datos);
 
       const mensajes = [];
-      if (r.error || f.error) {
-        mensajes.push('Mostramos la última copia guardada; no se pudo actualizar el catálogo.');
+      if (catalogo.error) {
+        mensajes.push(catalogo.deCache
+          ? 'No se pudo actualizar. Mostramos una copia guardada dentro de su plazo de revisión.'
+          : 'No hay un catálogo vigente disponible. Las fichas se ocultan hasta verificarlo.');
       }
+      if (f.error) mensajes.push('No se pudieron actualizar los descartes documentados.');
       if (n.error && s.length) mensajes.push('No se pudieron consultar las novedades.');
       if (sincronizacion.pendientes) {
         mensajes.push(`${sincronizacion.pendientes} cambio(s) de seguimiento pendientes de sincronizar.`);
       }
       setEstadoDatos(mensajes.join(' '));
-      return !r.deCache && !f.deCache;
+      return !catalogo.error && !catalogo.deCache && !f.deCache;
     } catch {
-      setEstadoDatos('No se pudieron cargar los datos locales. Cierra y vuelve a abrir la app.');
+      setRadar([]); setOfertas([]); setSecundario([]); setFuera([]);
+      setExclusionesOfertas([]); setAbierta(null); setOfertaAbierta(null);
+      setFechaCatalogo(null);
+      setEstadoDatos('No se pudo cargar un catálogo verificable. Desliza hacia abajo para reintentar.');
       return false;
     } finally {
       setCargando(false);
@@ -119,6 +159,16 @@ export default function App() {
   }, []);
 
   useEffect(() => { traer(); }, [traer]);
+  useEffect(() => {
+    if (MODO_LOCAL || !fechaCatalogo) return;
+    return vigilarCaducidadCatalogo({ fecha: fechaCatalogo, appState: AppState,
+      alCaducar: () => {
+        setRadar([]); setOfertas([]); setAbierta(null); setOfertaAbierta(null);
+        setFechaCatalogo(null);
+        setEstadoDatos('La revisión del catálogo ha caducado. Actualiza para consultar un nuevo lote verificado.');
+      },
+    });
+  }, [fechaCatalogo]);
   useEffect(() => {
     let vivo = true;
     consultarEstadoAvisos().then((resultado) => {
@@ -167,7 +217,9 @@ export default function App() {
      que su búsqueda no encontró nada cuando lo que falla es la red le
      manda a cambiar el filtro en vez de a mirar la cobertura. */
   const nadaQueVer = radar.length === 0
-    ? 'No se ha podido traer el radar y todavía no hay copia guardada. Desliza hacia abajo para reintentar cuando tengas cobertura.'
+    ? MODO_LOCAL
+      ? 'No se pudo leer el radar incluido en esta copia. Desliza hacia abajo para reintentar la carga local.'
+      : 'No se ha podido traer el radar y todavía no hay copia guardada. Desliza hacia abajo para reintentar cuando tengas cobertura.'
     : 'El radar no detecta nada con esos filtros.';
 
   const visibles = useMemo(() => {
@@ -175,10 +227,46 @@ export default function App() {
     return radar.filter((p) => {
       if (categoria && p.categoria !== categoria) return false;
       if (!q) return true;
-      return [p.nombre, p.nota, p.aval, p.categoria, p.region, p.cadenas]
+      const verificacion = p.verificacionLocal;
+      const textoVerificado = verificacion ? [
+        verificacion.estadoOperativo?.estado, verificacion.estadoOperativo?.detalle,
+        verificacion.licenciaRegistro?.estado, verificacion.licenciaRegistro?.detalle,
+        verificacion.acceso?.estado, verificacion.acceso?.detalle,
+        ...(verificacion.alertasCriticas || []).flatMap((alerta) => [alerta.codigo, alerta.detalle]),
+      ] : [p.nota, p.aval, p.acceso];
+      return [p.nombre, p.categoria, p.region, p.cadenas, ...textoVerificado]
         .join(' ').toLowerCase().includes(q);
     });
   }, [radar, busqueda, categoria]);
+
+  const todasOfertas = useMemo(() => [...ofertas, ...secundario], [ofertas, secundario]);
+  const proveedoresOferta = useMemo(() => proveedoresDeOfertas(
+    grupoOfertas === 'principales' ? ofertas
+      : grupoOfertas === 'secundario' ? secundario : todasOfertas
+  ), [grupoOfertas, ofertas, secundario, todasOfertas]);
+  const ofertasVisibles = useMemo(() => {
+    const q = busquedaOfertas.trim().toLocaleLowerCase('es');
+    return todasOfertas.filter((oferta) => {
+      if (grupoOfertas === 'principales' && oferta.tipo === 'secundario') return false;
+      if (grupoOfertas === 'secundario' && oferta.tipo !== 'secundario') return false;
+      if (tipoOferta && oferta.tipo !== tipoOferta) return false;
+      if (proveedorOferta && oferta.plataformaSlug !== proveedorOferta) return false;
+      return !q || textoBusquedaOferta(oferta).includes(q);
+    });
+  }, [todasOfertas, busquedaOfertas, grupoOfertas, tipoOferta, proveedorOferta]);
+  const columnasOfertas = anchoPantalla >= 1120 ? 3 : anchoPantalla >= 720 ? 2 : 1;
+  const separacionOfertas = 12;
+  const anchoCeldaOferta = (anchoPantalla - (UI.margen * 2)
+    - (separacionOfertas * (columnasOfertas - 1))) / columnasOfertas;
+  const filtrosOfertasActivos = Number(!!tipoOferta) + Number(!!proveedorOferta);
+  const hayRestriccionesOfertas = !!(busquedaOfertas || tipoOferta || proveedorOferta);
+
+  const seleccionarGrupoOfertas = (grupo) => {
+    tacto.eleccion();
+    setGrupoOfertas(grupo);
+    setProveedorOferta('');
+    if (grupo !== 'principales') setTipoOferta('');
+  };
 
   const seguidas = useMemo(() => radar.filter((p) => sigo.includes(p.slug)), [radar, sigo]);
 
@@ -221,7 +309,11 @@ export default function App() {
   const confirmarBorrado = () => {
     Alert.alert(
       'Borrar datos de este dispositivo',
-      'Se eliminarán de Supabase esta instalación, su token push y todos sus seguimientos, además de las cachés locales. No se puede deshacer.',
+      MODO_LOCAL
+        ? 'Se eliminarán únicamente los seguimientos y cachés del escaparate local. No se contactará con Supabase.'
+        : USUARIO_LOCAL
+          ? 'Se borrarán los favoritos de esta versión editorial y la caché del catálogo en este dispositivo. No se borran datos de versiones anteriores ni del servidor.'
+        : 'Se eliminarán de Supabase esta instalación, su token push y todos sus seguimientos, además de las cachés locales. No se puede deshacer.',
       [
         { text: 'Cancelar', style: 'cancel' },
         {
@@ -231,16 +323,27 @@ export default function App() {
             setBorrandoDatos(true);
             try {
               await borrarDatosDispositivo();
-              setRadar([]); setFuera([]); setSigo([]); setAvisos([]);
-              setEstadoDatos('Datos borrados. Actualiza para descargar de nuevo el catálogo público.');
+              setRadar([]); setFuera([]); setOfertas([]); setSecundario([]);
+              setExclusionesOfertas([]); setSigo([]); setAvisos([]);
+              setEstadoDatos(MODO_LOCAL
+                ? 'Datos locales borrados. Actualiza para volver a cargar el escaparate incluido en esta copia.'
+                : 'Datos borrados. Actualiza para descargar de nuevo el catálogo público.');
               setEstadoAccion('');
-              setEstadoAvisos({ estado: 'disponible' });
+              setEstadoAvisos(MODO_LOCAL
+                ? { ok: false, estado: 'local', local: true }
+                : USUARIO_LOCAL ? { ok: false, estado: 'desactivados' }
+                : { estado: 'disponible' });
               setPrivacidad(false);
-              Alert.alert('Datos borrados', 'La instalación no volverá a identificarse hasta que uses seguimiento o avisos.');
+              Alert.alert('Datos borrados', MODO_LOCAL
+                ? 'Se han eliminado los seguimientos y cachés de esta copia local.'
+                : USUARIO_LOCAL ? 'Se han eliminado los favoritos editoriales y la caché del catálogo de este dispositivo. No se han modificado datos anteriores ni del servidor.'
+                : 'La instalación no volverá a identificarse hasta que uses seguimiento o avisos.');
             } catch {
               Alert.alert(
                 'No se borraron los datos',
-                'Supabase no confirmó el borrado. Se conservan la identidad y los datos locales para que puedas reintentarlo.'
+                USUARIO_LOCAL
+                  ? 'No se pudo completar el borrado local. Inténtalo de nuevo.'
+                  : 'Supabase no confirmó el borrado. Se conservan la identidad y los datos locales para que puedas reintentarlo.'
               );
             } finally {
               setBorrandoDatos(false);
@@ -277,10 +380,14 @@ export default function App() {
         <Cabecera
           pestana={pestana}
           total={radar.length}
+          ofertas={ofertas.length}
+          secundario={secundario.length}
           seguidas={sigo.length}
           sinConexion={sinConexion}
           onAyuda={() => { tacto.abrir(); setExplicando(true); }}
         />
+
+        {MODO_LOCAL ? <BannerModoLocal /> : null}
 
         {estadoDatos ? (
           <Text style={e.estadoGlobal} accessibilityRole="alert" accessibilityLiveRegion="polite">
@@ -389,6 +496,121 @@ export default function App() {
             />
           ) : null}
 
+          {pestana === 'ofertas' ? (
+            <FlatList
+              key={`ofertas-${columnasOfertas}`}
+              data={ofertasVisibles}
+              keyExtractor={(oferta) => `${oferta.tipo}:${oferta.slug}`}
+              numColumns={columnasOfertas}
+              columnWrapperStyle={columnasOfertas > 1 ? e.filaOfertas : null}
+              contentContainerStyle={e.lista}
+              keyboardShouldPersistTaps="handled"
+              refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
+              ListHeaderComponent={
+                <View style={e.panelOfertasCompacto}>
+                  {MODO_LOCAL ? <View style={e.selectorOfertas} accessibilityRole="tablist"
+                    accessibilityLabel="Seleccionar grupo de ofertas">
+                    <SegmentoOferta texto="Principales" activo={grupoOfertas === 'principales'}
+                      onPress={() => seleccionarGrupoOfertas('principales')} />
+                    <SegmentoOferta texto="Secundario" activo={grupoOfertas === 'secundario'}
+                      onPress={() => seleccionarGrupoOfertas('secundario')} />
+                    <SegmentoOferta texto="Todo" activo={grupoOfertas === 'todo'}
+                      onPress={() => seleccionarGrupoOfertas('todo')} />
+                  </View> : null}
+                  <View style={e.panelBusquedaOfertas}>
+                    <View style={[e.busquedaFila, e.busquedaFilaOfertas]}>
+                      <Icono nombre="buscar" color={C.tx2} tamano={23} />
+                      <TextInput
+                        style={e.buscador}
+                        placeholder="Oferta, proveedor, país o métrica"
+                        placeholderTextColor={C.tx3}
+                        value={busquedaOfertas}
+                        onChangeText={setBusquedaOfertas}
+                        returnKeyType="search"
+                        accessibilityLabel="Buscar ofertas por nombre, proveedor, país o métrica"
+                      />
+                      {hayRestriccionesOfertas ? (
+                        <Pressable
+                          onPress={() => { setBusquedaOfertas(''); setTipoOferta(''); setProveedorOferta(''); }}
+                          style={({ pressed }) => [e.limpiar, pressed && e.pulsadoSuave]}
+                          accessibilityRole="button"
+                          accessibilityLabel="Limpiar búsqueda y filtros de ofertas"
+                          hitSlop={8}
+                        >
+                          <Text style={e.limpiarTxt}>✕</Text>
+                        </Pressable>
+                      ) : null}
+                    </View>
+                    <View style={e.barraFiltrosOfertas}>
+                      <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
+                        {ofertasVisibles.length} {ofertasVisibles.length === 1 ? 'ficha' : 'fichas'}
+                      </Text>
+                      <Pressable
+                        onPress={() => setFiltrosOfertasAbiertos((abiertos) => !abiertos)}
+                        style={({ pressed }) => [e.botonFiltrosOfertas, filtrosOfertasAbiertos && e.botonFiltrosOfertasOn,
+                          pressed && e.pulsadoSuave]}
+                        accessibilityRole="button"
+                        accessibilityState={{ expanded: filtrosOfertasAbiertos }}
+                        accessibilityLabel={`Filtros adicionales${filtrosOfertasActivos ? `, ${filtrosOfertasActivos} activos` : ''}`}
+                      >
+                        <Text style={[e.botonFiltrosOfertasTxt, filtrosOfertasAbiertos && e.botonFiltrosOfertasTxtOn]}>
+                          Filtros{filtrosOfertasActivos ? ` · ${filtrosOfertasActivos}` : ''} {filtrosOfertasAbiertos ? '↑' : '↓'}
+                        </Text>
+                      </Pressable>
+                    </View>
+                  </View>
+                  {filtrosOfertasAbiertos ? (
+                    <View style={e.filtrosOfertasDesplegados}>
+                      {grupoOfertas !== 'secundario' ? (
+                        <View>
+                          <Text style={e.filtroGrupoEtiqueta}>TIPO DE OFERTA PRINCIPAL</Text>
+                          <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                            style={e.chipsOfertas} contentContainerStyle={e.chipsContenidoCompacto}>
+                            <Chip texto="Cualquier tipo" activo={!tipoOferta}
+                              onPress={() => { tacto.eleccion(); setTipoOferta(''); }} />
+                            <Chip texto={`Rendimiento ${ofertas.filter((o) => o.tipo === 'rendimiento').length}`}
+                              activo={tipoOferta === 'rendimiento'}
+                              onPress={() => { tacto.eleccion(); setTipoOferta(tipoOferta === 'rendimiento' ? '' : 'rendimiento'); }} />
+                            <Chip texto={`Valor ${ofertas.filter((o) => o.tipo === 'valor').length}`}
+                              activo={tipoOferta === 'valor'}
+                              onPress={() => { tacto.eleccion(); setTipoOferta(tipoOferta === 'valor' ? '' : 'valor'); }} />
+                          </ScrollView>
+                        </View>
+                      ) : null}
+                      <Text style={e.filtroGrupoEtiqueta}>PROVEEDOR</Text>
+                      <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                        style={e.chipsOfertas} contentContainerStyle={e.chipsContenidoCompacto}>
+                        <Chip texto="Todos" activo={!proveedorOferta}
+                          onPress={() => { tacto.eleccion(); setProveedorOferta(''); }} />
+                        {proveedoresOferta.map((proveedor) => (
+                          <Chip key={proveedor.slug} texto={proveedor.nombre} activo={proveedorOferta === proveedor.slug}
+                            onPress={() => {
+                              tacto.eleccion();
+                              setProveedorOferta(proveedorOferta === proveedor.slug ? '' : proveedor.slug);
+                            }} />
+                        ))}
+                      </ScrollView>
+                    </View>
+                  ) : null}
+                </View>
+              }
+              renderItem={({ item }) => (
+                <View style={{ width: columnasOfertas > 1 ? anchoCeldaOferta : '100%' }}>
+                  <FichaOferta oferta={item} onAbrir={() => { tacto.abrir(); setOfertaAbierta(item); }} />
+                </View>
+              )}
+              ListEmptyComponent={
+                <EstadoVacioResultados
+                  texto={todasOfertas.length ? 'No hay ofertas que coincidan con esos filtros.'
+                    : 'No hay un catálogo de ofertas vigente disponible. Desliza hacia abajo para reintentar.'}
+                  sePuedeLimpiar={todasOfertas.length > 0 && !!(busquedaOfertas || tipoOferta || proveedorOferta)}
+                  onLimpiar={() => { setBusquedaOfertas(''); setTipoOferta(''); setProveedorOferta(''); }}
+                />
+              }
+              ListFooterComponent={<ExclusionesOfertas datos={exclusionesOfertas} onAbrirEnlace={abrirEnlace} />}
+            />
+          ) : null}
+
           {pestana === 'sigo' ? (
             <FlatList
               data={seguidas}
@@ -465,6 +687,7 @@ export default function App() {
           activa={pestana}
           seguimientos={sigo.length}
           novedades={avisos.length}
+          mostrarOfertas
           onCambiar={cambiarPestana}
         />
 
@@ -472,6 +695,13 @@ export default function App() {
           onCerrar={() => { tacto.eleccion(); setAbierta(null); }}
           onSeguir={() => abierta && alternar(abierta)}
           deshabilitado={procesandoSeguimiento} />
+
+        <DetalleOferta
+          oferta={ofertaAbierta}
+          onCerrar={() => { tacto.eleccion(); setOfertaAbierta(null); }}
+          onAbrirEnlace={abrirEnlace}
+          plataformaCanonica={!!ofertaAbierta && radar.some((p) => p.slug === ofertaAbierta.plataformaSlug)}
+        />
 
         <Modal visible={explicando} animationType="slide" onRequestClose={() => setExplicando(false)}>
           <SafeAreaProvider>
@@ -488,12 +718,20 @@ export default function App() {
   );
 }
 
-function Cabecera({ pestana, total, seguidas, sinConexion, onAyuda }) {
+function Cabecera({ pestana, total, ofertas, secundario, seguidas, sinConexion, onAyuda }) {
   const textos = {
     radar: {
       etiqueta: 'RADAR DE ACTIVOS REALES',
       titulo: 'Explora lo verificado',
-      subtitulo: `${total} plataformas${sinConexion ? ' · copia sin conexión' : ' · datos actualizados'}`,
+      subtitulo: MODO_LOCAL
+        ? `${total} plataformas · fixture local`
+        : `${total} plataformas${sinConexion ? ' · copia sin conexión' : ' · revisión editorial'}`,
+    },
+    ofertas: {
+      etiqueta: MODO_LOCAL ? 'ESCAPARATE LOCAL' : 'ESCAPARATE DE ACTIVOS',
+      titulo: 'Ofertas específicas',
+      subtitulo: MODO_LOCAL ? `${ofertas} principales · ${secundario} referencias secundarias`
+        : `${ofertas} fichas · contratación directa con el proveedor`,
     },
     sigo: {
       etiqueta: 'TU SEGUIMIENTO',
@@ -537,6 +775,17 @@ function Cabecera({ pestana, total, seguidas, sinConexion, onAyuda }) {
   );
 }
 
+function BannerModoLocal() {
+  return (
+    <View style={e.bannerLocal} accessibilityRole="alert">
+      <View style={e.bannerLocalPunto} />
+      <Text style={e.bannerLocalTxt}>
+        INTERNO · datos locales · sin conexión a Supabase de producción
+      </Text>
+    </View>
+  );
+}
+
 function ResumenSeguimiento({ cantidad, onAvisos }) {
   return (
     <View style={e.resumenSeguimiento}>
@@ -545,7 +794,10 @@ function ResumenSeguimiento({ cantidad, onAvisos }) {
         {cantidad} {cantidad === 1 ? 'plataforma seguida' : 'plataformas seguidas'}
       </Text>
       <Text style={e.resumenTexto}>
-        Los cambios se guardan también sin conexión. RWAdar te indicará si queda algo pendiente de sincronizar.
+        {MODO_LOCAL
+          ? 'Los cambios se guardan solo en el espacio local de esta copia y nunca se sincronizan con producción.'
+          : USUARIO_LOCAL ? 'Tus favoritos se guardan solo en este dispositivo. No se envían a RWAdar ni se dejan pendientes de sincronización.'
+          : 'Los cambios se guardan también sin conexión. RWAdar te indicará si queda algo pendiente de sincronizar.'}
       </Text>
       <Pressable
         onPress={onAvisos}
@@ -569,7 +821,9 @@ function EstadoVacioSeguimiento({ onExplorar, onAprender }) {
       </View>
       <Text style={e.vacioTituloGrande}>Guarda lo que quieras vigilar</Text>
       <Text style={e.vacioDescripcion}>
-        Sigue una plataforma para tenerla a mano y consultar aquí sus novedades verificadas.
+        {USUARIO_LOCAL
+          ? 'Guarda una plataforma para tenerla a mano en este dispositivo. Los avisos y la sincronización remota no están activados.'
+          : 'Sigue una plataforma para tenerla a mano y consultar aquí sus novedades verificadas.'}
       </Text>
       <Pressable
         onPress={onExplorar}
@@ -593,9 +847,11 @@ function EstadoVacioAvisos({ onExplorar }) {
   return (
     <View style={e.vacioAvisos}>
       <View style={e.vacioIcono}><Icono nombre="avisos" color={C.senal} tamano={44} /></View>
-      <Text style={e.vacioTituloGrande}>No hay novedades todavía</Text>
+      <Text style={e.vacioTituloGrande}>{USUARIO_LOCAL ? 'Novedades remotas no activadas' : 'No hay novedades todavía'}</Text>
       <Text style={e.vacioDescripcion}>
-        Aquí aparecerán los cambios publicados para las plataformas que sigues. El panel superior muestra el estado real del dispositivo.
+        {USUARIO_LOCAL
+          ? 'Puedes consultar las plataformas guardadas en «Siguiendo». Esta versión no consulta ni envía novedades remotas.'
+          : 'Aquí aparecerán los cambios publicados para las plataformas que sigues. El panel superior muestra el estado real del dispositivo.'}
       </Text>
       <Pressable
         onPress={onExplorar}
@@ -628,6 +884,8 @@ function EstadoVacioResultados({ texto, sePuedeLimpiar, onLimpiar }) {
 
 function etiquetaEstadoAvisos(estado) {
   switch (estado?.estado) {
+    case 'local': return 'Desactivados en modo local';
+    case 'desactivados': return 'No activados en esta versión';
     case 'activo': return 'Envío activo';
     case 'preparado': return 'Dispositivo preparado';
     case 'disponible': return 'Permiso disponible';
@@ -657,7 +915,9 @@ function PantallaMas({
           <Text style={e.resumenEtiqueta}>TU DISPOSITIVO</Text>
           <Text style={e.resumenTitulo}>RWAdar listo para consultar</Text>
           <Text style={e.resumenTexto}>
-            {sinConexion ? 'Usando la última copia local disponible.' : 'Catálogo conectado y disponible sin crear una cuenta.'}
+            {MODO_LOCAL
+              ? 'Escaparate incluido en la app; Supabase de producción está bloqueado.'
+              : sinConexion ? 'Usando la última copia local disponible.' : 'Catálogo conectado y disponible sin crear una cuenta.'}
           </Text>
         </View>
         <View style={e.resumenNumero}>
@@ -676,7 +936,8 @@ function PantallaMas({
         <FilaMenu
           icono="actualizar"
           titulo="Actualizar catálogo"
-          subtitulo={sinConexion ? 'Volver a intentar la conexión' : 'Descargar los últimos datos verificados'}
+          subtitulo={MODO_LOCAL ? 'Recargar el fixture incluido en esta copia' :
+            sinConexion ? 'Volver a intentar la conexión' : 'Descargar los últimos datos verificados'}
           onPress={onActualizar}
           cargando={refrescando}
           ultima
@@ -700,12 +961,14 @@ function PantallaMas({
           subtitulo="Qué se guarda y cómo eliminarlo"
           onPress={onPrivacidad}
         />
-        <FilaMenu
-          icono="enlace"
-          titulo="Política de privacidad"
-          subtitulo="Abrir la política completa"
-          onPress={onPolitica}
-        />
+        {!MODO_LOCAL ? (
+          <FilaMenu
+            icono="enlace"
+            titulo="Política de privacidad"
+            subtitulo="Abrir la política completa"
+            onPress={onPolitica}
+          />
+        ) : null}
         <FilaMenu
           icono="correo"
           titulo="Contactar sobre mis datos"
@@ -715,7 +978,7 @@ function PantallaMas({
         <FilaMenu
           icono="borrar"
           titulo="Borrar datos del dispositivo"
-          subtitulo="Instalación, seguimientos, token y cachés"
+          subtitulo={USUARIO_LOCAL ? 'Favoritos y cachés de esta versión' : 'Instalación, seguimientos, token y cachés'}
           onPress={onBorrar}
           cargando={borrando}
           peligro
@@ -777,7 +1040,94 @@ function Chip({ texto, color, activo, onPress }) {
   );
 }
 
+function SegmentoOferta({ texto, activo, onPress }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [e.segmentoOferta, activo && e.segmentoOfertaOn, pressed && e.pulsadoSuave]}
+      accessibilityRole="tab"
+      accessibilityState={{ selected: activo }}
+      accessibilityLabel={`Mostrar ${texto.toLocaleLowerCase('es')}`}
+    >
+      <Text style={[e.segmentoOfertaTxt, activo && e.segmentoOfertaTxtOn]} numberOfLines={1}>{texto}</Text>
+    </Pressable>
+  );
+}
+
+function PanelVerificacionLocal({ verificacion, compacta = false }) {
+  if (!verificacion) return null;
+  const campos = [
+    ['Estado operativo', verificacion.estadoOperativo],
+    ['Licencia / registro', verificacion.licenciaRegistro],
+    ['Acceso', verificacion.acceso],
+  ];
+  const fecha = fechaVerificacionLocalVisible(verificacion.verificadoEl);
+  const fuentes = [...new Map([
+    ...campos.flatMap(([, campo]) => campo.fuentes || []),
+    ...(verificacion.alertasCriticas || []).flatMap(alerta => alerta.fuentes || []),
+  ].map(fuente => [fuente.url, fuente])).values()];
+  const etiquetaAccesible = [
+    `Revisión de fuentes del ${fecha}`,
+    ...campos.flatMap(([nombre, campo]) => [
+      `${nombre}: ${etiquetaEstadoVerificacionLocal(campo.estado)}`,
+      campo.detalle,
+    ]),
+    ...(verificacion.alertasCriticas || []).map((alerta) => `Alerta crítica: ${alerta.detalle}`),
+  ].join('. ');
+
+  return (
+    <View
+      style={[e.verLocal, compacta && e.verLocalCompacta]}
+      accessible={compacta}
+      accessibilityLabel={compacta ? etiquetaAccesible : undefined}
+    >
+      <Text style={e.verLocalFecha}>REVISIÓN DE FUENTES · {verificacion.verificadoEl}</Text>
+      <View style={e.verLocalCampos}>
+        {campos.map(([nombre, campo]) => {
+          const atencion = campo.estado === 'no_verificable' ||
+            campo.estado === 'sin_registro_declarado';
+          return (
+            <View key={nombre} style={[e.verLocalCampo, atencion && e.verLocalCampoAtencion]}>
+              <Text style={e.verLocalCampoNombre}>{nombre}</Text>
+              <Text style={[e.verLocalCampoEstado, atencion && e.verLocalCampoEstadoAtencion]}>
+                {etiquetaEstadoVerificacionLocal(campo.estado)}
+              </Text>
+              {!compacta ? <Text style={e.verLocalDetalle}>{campo.detalle}</Text> : null}
+            </View>
+          );
+        })}
+      </View>
+      <View style={e.verLocalAlertas}>
+        {(verificacion.alertasCriticas || []).map((alerta) => (
+          <View key={alerta.codigo} style={e.verLocalAlerta}>
+            <Text style={e.verLocalAlertaTitulo}>ALERTA CRÍTICA</Text>
+            <Text style={e.verLocalAlertaTexto} numberOfLines={compacta ? 3 : undefined}>
+              {alerta.detalle}
+            </Text>
+          </View>
+        ))}
+      </View>
+      {!compacta ? (
+        <>
+          <Text style={e.verLocalNota}>
+            La fecha canónica se conserva aparte. Esta revisión no convierte un registro,
+            documento o web accesible en aval, licencia global ni acceso desde España.
+          </Text>
+          {fuentes.map(fuente => (
+            <Pressable key={fuente.url} onPress={() => abrirEnlace(fuente.url)}
+              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
+              accessibilityRole="link" accessibilityLabel={`Abrir fuente: ${fuente.titulo}`}>
+              <Text style={e.botonBordeTxt}>{fuente.titulo} ↗</Text>
+            </Pressable>
+          ))}
+        </>
+      ) : null}
+    </View>
+  );
+}
+
 function Ficha({ p, sigue, onAbrir, onSeguir, deshabilitado }) {
+  const verificacion = p.verificacionLocal;
   return (
     <View style={e.ficha}>
       <Pressable
@@ -795,11 +1145,17 @@ function Ficha({ p, sigue, onAbrir, onSeguir, deshabilitado }) {
         </View>
         <Icono nombre="flecha" color={C.tx3} tamano={18} />
       </Pressable>
-      <Text style={e.fichaNota} numberOfLines={3}>{p.nota}</Text>
-      <View style={e.etiquetas}>
-        <Text style={[e.etiqueta, e.etiquetaAcento]}>{p.acceso}</Text>
-        <Text style={e.etiqueta}>Entrada: {(p.ticket || '').toLowerCase()}</Text>
-      </View>
+      <Text style={e.fichaNota} numberOfLines={verificacion ? 4 : 3}>
+        {verificacion ? verificacion.estadoOperativo.detalle : p.nota}
+      </Text>
+      {verificacion ? (
+        <PanelVerificacionLocal verificacion={verificacion} compacta />
+      ) : (
+        <View style={e.etiquetas}>
+          <Text style={[e.etiqueta, e.etiquetaAcento]}>{p.acceso}</Text>
+          <Text style={e.etiqueta}>Entrada: {(p.ticket || '').toLowerCase()}</Text>
+        </View>
+      )}
       <Pressable onPress={onSeguir} disabled={deshabilitado}
         style={({ pressed }) => [e.seguir, sigue && e.seguirOn, deshabilitado && e.deshabilitado, pressed && e.pulsado]}
         accessibilityRole="button"
@@ -829,7 +1185,18 @@ function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjust
   let accion = null;
   let tono = e.panelAvisos;
 
-  switch (estado.estado) {
+  const estadoVisible = USUARIO_LOCAL
+    ? (MODO_LOCAL ? 'local' : 'desactivados') : estado.estado;
+  switch (estadoVisible) {
+    case 'local':
+      titulo = 'Avisos desconectados';
+      texto = 'El modo interno no solicita permisos, no obtiene tokens y no registra este dispositivo en Supabase.';
+      tono = [e.panelAvisos, e.panelAvisosActivo];
+      break;
+    case 'desactivados':
+      titulo = 'Avisos no activados';
+      texto = 'Esta versión permite consultar el catálogo y guardar favoritos en el dispositivo. No solicita permisos push, obtiene tokens ni registra instalaciones. No se envían avisos.';
+      break;
     case 'comprobando':
       texto = 'Comprobando el estado real de este dispositivo…';
       break;
@@ -889,7 +1256,7 @@ function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjust
         </View>
       </View>
       <Text style={e.panelAvisosTexto}>{texto}</Text>
-      {estado.estado === 'comprobando' || procesando ? (
+      {estadoVisible === 'comprobando' || (!USUARIO_LOCAL && procesando) ? (
         <ActivityIndicator size="small" color={C.senal} style={{ marginTop: 10 }} />
       ) : null}
       {accion && !procesando ? (
@@ -933,41 +1300,84 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
             </Pressable>
           </View>
           <ScrollView contentContainerStyle={e.privacidadCuerpo}>
-            <Text style={e.privacidadTit}>Consulta sin cuenta</Text>
+            {MODO_LOCAL ? (
+              <>
+                <Text style={e.privacidadTit}>Copia interna aislada</Text>
+                <Text style={e.privacidadParrafo}>
+                  Empresas, descartes, ofertas e imágenes se leen del fixture incluido en esta copia. La app no consulta Supabase de producción.
+                </Text>
+                <Text style={e.privacidadTit}>Seguimiento exclusivamente local</Text>
+                <Text style={e.privacidadParrafo}>
+                  Seguir una plataforma guarda solo su slug bajo claves rwadar.local.*. No se crea UUID, no se registra un dispositivo y no se conserva ninguna operación para sincronizarla después.
+                </Text>
+                <Text style={e.privacidadTit}>Avisos desconectados</Text>
+                <Text style={e.privacidadParrafo}>
+                  Esta copia no solicita permiso, no obtiene un token push y no registra avisos remotos.
+                </Text>
+                <Text style={e.privacidadTit}>Control de borrado</Text>
+                <Text style={e.privacidadParrafo}>
+                  El borrado elimina únicamente seguimientos y cachés con el prefijo local. Las claves de una instalación productiva anterior no se leen ni se modifican.
+                </Text>
+              </>
+            ) : USUARIO_LOCAL ? (
+              <>
+                <Text style={e.privacidadTit}>Catálogo conectado, sin cuenta</Text>
+                <Text style={e.privacidadParrafo}>
+                  La app consulta el catálogo público en Supabase. El proveedor de infraestructura recibe los datos técnicos de la conexión, como la dirección IP. Consultarlo no crea una cuenta ni un identificador de instalación de RWAdar.
+                </Text>
+                <Text style={e.privacidadTit}>Favoritos en este dispositivo</Text>
+                <Text style={e.privacidadParrafo}>
+                  Los favoritos se guardan bajo claves rwadar.editorial.*. No se envían al servidor ni se crean operaciones pendientes de sincronización. La caché del catálogo permite consultar un lote válido sin conexión hasta su caducidad.
+                </Text>
+                <Text style={e.privacidadTit}>Servicios de usuario desactivados</Text>
+                <Text style={e.privacidadParrafo}>
+                  No se solicitan permisos push, obtienen tokens ni registran instalaciones. Cambiar de catálogo local a conectado no activa estos servicios.
+                </Text>
+                <Text style={e.privacidadTit}>Borrado limitado a esta versión</Text>
+                <Text style={e.privacidadParrafo}>
+                  El botón elimina los favoritos editoriales y la caché del catálogo de este dispositivo. No lee ni modifica identificadores o seguimientos de versiones anteriores y no elimina datos del servidor. Para solicitar acceso o borrado de datos históricos, usa «Contactar sobre mis datos».
+                </Text>
+              </>
+            ) : (
+              <>
+                <Text style={e.privacidadTit}>Consulta sin cuenta</Text>
+                <Text style={e.privacidadParrafo}>
+                  Puedes consultar el catálogo público y los descartes documentados sin crear una cuenta, dar tu nombre o facilitar tu correo.
+                </Text>
+                <Text style={e.privacidadTit}>Identificador y seguimiento</Text>
+                <Text style={e.privacidadParrafo}>
+                  La app solo genera un UUID aleatorio cuando usas seguimiento o avisos. En iOS y Android se guarda cifrado mediante Keychain o Keystore. Al seguir una plataforma se envían a Supabase ese identificador, la plataforma elegida y el sistema operativo. Si no hay red, el cambio queda pendiente y no se presenta como sincronizado.
+                </Text>
+                <Text style={e.privacidadTit}>Avisos opcionales</Text>
+                <Text style={e.privacidadParrafo}>
+                  La app no solicita permiso al abrirse. Solo lo hace después de que pulses el botón contextual. Si aceptas, se guarda en Supabase un token de entrega y la versión de la app.
+                </Text>
+                <Text style={e.privacidadTit}>Datos locales y terceros</Text>
+                <Text style={e.privacidadParrafo}>
+                  El catálogo, la fecha de sincronización y tu lista se guardan localmente para funcionar sin conexión. Supabase presta la base de datos y Expo los servicios de token push y actualización.
+                </Text>
+                <Text style={e.privacidadTit}>Control de borrado</Text>
+                <Text style={e.privacidadParrafo}>
+                  Puedes eliminar esta instalación, su token push, sus seguimientos y todas las cachés locales. Primero se exige confirmación remota.
+                </Text>
+              </>
+            )}
+
+            <Text style={e.privacidadTit}>Transparencia comercial</Text>
             <Text style={e.privacidadParrafo}>
-              Puedes consultar el catálogo público y los descartes documentados sin crear una cuenta, dar tu nombre o facilitar tu correo.
+              RWAdar no cobra comisión al inversor ni cobra ahora a las empresas por inversiones. Las fichas editoriales son gratuitas; no hay comisiones ni enlaces remunerados activos. Las comisiones por venta quedan para una fase futura, con revisión legal y acuerdo previo, nunca retroactivas. Una relación comercial debe identificarse y no altera el ranking editorial. El dinero de la inversión nunca pasa por RWAdar.
+            </Text>
+            <Text style={e.privacidadParrafo}>
+              La vía inicial de ingresos prevista es publicidad dentro de la app: una red publicitaria pagaría a RWAdar por los anuncios, en espacios separados y marcados como «Publicidad». No depende de invertir en un token. No hay campañas activas ni redes de anuncios integradas en esta versión.
             </Text>
 
-            <Text style={e.privacidadTit}>Identificador y seguimiento</Text>
-            <Text style={e.privacidadParrafo}>
-              La app solo genera un UUID aleatorio cuando usas seguimiento o avisos. En iOS y Android se guarda cifrado mediante Keychain o Keystore. Al seguir una plataforma se envían a Supabase ese identificador, la plataforma elegida y el sistema operativo. Si no hay red, el cambio queda pendiente y no se presenta como sincronizado.
-            </Text>
-
-            <Text style={e.privacidadTit}>Avisos opcionales</Text>
-            <Text style={e.privacidadParrafo}>
-              La app no solicita permiso al abrirse. Solo lo hace después de que pulses el botón contextual. Si aceptas, se guarda en Supabase un token de entrega y la versión de la app. El panel distingue entre dispositivo preparado y servicio de envío realmente activo.
-            </Text>
-
-            <Text style={e.privacidadTit}>Datos locales y terceros</Text>
-            <Text style={e.privacidadParrafo}>
-              El catálogo, la fecha de sincronización y tu lista se guardan localmente para funcionar sin conexión. Supabase presta la base de datos y Expo presta los servicios de token push y actualización. RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación.
-            </Text>
-
-            <Text style={e.privacidadTit}>Retención automática</Text>
-            <Text style={e.privacidadParrafo}>
-              La fecha de última actividad se renueva al sincronizar seguimiento o registrar el token. La base elimina instalaciones y tokens sin actividad durante 180 días, además del borrado inmediato que puedes pedir aquí.
-            </Text>
-
-            <Text style={e.privacidadTit}>Control de borrado</Text>
-            <Text style={e.privacidadParrafo}>
-              Puedes eliminar esta instalación, su token push, sus seguimientos y todas las cachés locales. Primero se exige confirmación de Supabase; si falla, la app no finge que el borrado terminó.
-            </Text>
-
-            <Pressable onPress={() => abrirEnlace(URL_PRIVACIDAD)}
-              style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
-              accessibilityRole="link">
-              <Text style={e.botonBordeTxt}>Abrir política completa ↗</Text>
-            </Pressable>
+            {!MODO_LOCAL ? (
+              <Pressable onPress={() => abrirEnlace(URL_PRIVACIDAD)}
+                style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
+                accessibilityRole="link">
+                <Text style={e.botonBordeTxt}>Abrir política completa ↗</Text>
+              </Pressable>
+            ) : null}
             <Pressable onPress={() => abrirEnlace('mailto:RWAdar@protonmail.com')}
               style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
               accessibilityRole="link">
@@ -1023,6 +1433,12 @@ function Descartadas({ fuera }) {
 
 function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
   if (!p) return null;
+  const verificacion = p.verificacionLocal;
+  const filasFicha = verificacion
+    ? [['Tipo de actor', p.actor], ['Región / marco', p.region], ['Cadenas', p.cadenas]]
+    : [['Tipo de actor', p.actor], ['Región / marco', p.region],
+      ['Quién puede entrar', p.acceso], ['Importe de entrada', p.ticket],
+      ['Cadenas', p.cadenas]];
   return (
     <Modal visible animationType="slide" onRequestClose={onCerrar}>
       <SafeAreaProvider>
@@ -1041,15 +1457,19 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
             </Pressable>
           </View>
           <ScrollView contentContainerStyle={e.detCuerpo}>
-            <Text style={e.detEtiqueta}>POR QUÉ ESTÁ EN EL RADAR</Text>
-            <View style={e.aval}><Text style={e.avalTxt}>{p.aval}</Text></View>
-            <Text style={e.detEtiqueta}>QUÉ HACE</Text>
-            <Text style={e.detParrafo}>{p.nota}</Text>
+            {verificacion ? (
+              <PanelVerificacionLocal verificacion={verificacion} />
+            ) : (
+              <>
+                <Text style={e.detEtiqueta}>POR QUÉ ESTÁ EN EL RADAR</Text>
+                <View style={e.aval}><Text style={e.avalTxt}>{p.aval}</Text></View>
+                <Text style={e.detEtiqueta}>QUÉ HACE</Text>
+                <Text style={e.detParrafo}>{p.nota}</Text>
+              </>
+            )}
             <Text style={e.detEtiqueta}>FICHA</Text>
             <View style={e.tabla}>
-              {[['Tipo de actor', p.actor], ['Región / marco', p.region],
-                ['Quién puede entrar', p.acceso], ['Importe de entrada', p.ticket],
-                ['Cadenas', p.cadenas]].map(([k, v]) => (
+              {filasFicha.map(([k, v]) => (
                 <View key={k} style={e.filaTabla}>
                   <Text style={e.filaClave}>{k}</Text>
                   <Text style={e.filaValor}>{v}</Text>
@@ -1070,8 +1490,9 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
               <Text style={e.botonBordeTxt}>Abrir la web oficial ↗</Text>
             </Pressable>
             <Text style={e.nota}>
-              Esto no es asesoramiento financiero. Que una plataforma esté supervisada
-              no significa que la inversión sea segura.
+              {verificacion
+                ? 'Revisión de fuentes primarias, sin comprobación transaccional. No acredita una oferta abierta ni constituye asesoramiento financiero.'
+                : 'Esto no es asesoramiento financiero. Que una plataforma esté supervisada no significa que la inversión sea segura.'}
             </Text>
           </ScrollView>
         </SafeAreaView>
@@ -1115,6 +1536,13 @@ const e = StyleSheet.create({
     ...T.menor, color: C.coral, backgroundColor: C.coral10,
     paddingHorizontal: 16, paddingVertical: 9,
   },
+  bannerLocal: {
+    minHeight: 34, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+    paddingHorizontal: 14, paddingVertical: 7, backgroundColor: C.senal10,
+    borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.senal34,
+  },
+  bannerLocalPunto: { width: 7, height: 7, borderRadius: 4, backgroundColor: C.senal },
+  bannerLocalTxt: { ...T.etiqueta, fontSize: 9, color: C.senal, textAlign: 'center' },
 
   lista: { padding: UI.margen, paddingBottom: 26 },
   listaVacia: { flexGrow: 1 },
@@ -1162,6 +1590,44 @@ const e = StyleSheet.create({
   },
   resultadoTit: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
   contador: { ...T.dato, color: C.senal },
+  filaOfertas: { gap: 12 },
+  panelOfertasCompacto: { marginBottom: 12 },
+  selectorOfertas: {
+    minHeight: UI.tactil + 6, flexDirection: 'row', gap: 3, padding: 3,
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
+    borderRadius: R.m,
+  },
+  segmentoOferta: {
+    flex: 1, minHeight: UI.tactil, alignItems: 'center', justifyContent: 'center',
+    borderRadius: R.s, paddingHorizontal: 7,
+  },
+  segmentoOfertaOn: { backgroundColor: C.senal },
+  segmentoOfertaTxt: { ...T.dato, fontFamily: F.semi, color: C.tx2 },
+  segmentoOfertaTxtOn: { color: C.noche },
+  panelBusquedaOfertas: {
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
+    borderRadius: R.m, marginTop: 8, overflow: 'hidden',
+  },
+  busquedaFilaOfertas: { minHeight: 48 },
+  barraFiltrosOfertas: {
+    minHeight: 42, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    paddingHorizontal: 12,
+  },
+  resultadoCompacto: { ...T.dato, color: C.tx2 },
+  botonFiltrosOfertas: {
+    minHeight: UI.tactil, justifyContent: 'center', borderRadius: R.pastilla,
+    borderWidth: 1, borderColor: C.linea2, paddingHorizontal: 11,
+  },
+  botonFiltrosOfertasOn: { backgroundColor: C.senal10, borderColor: C.senal34 },
+  botonFiltrosOfertasTxt: { ...T.dato, fontFamily: F.semi, color: C.tx2 },
+  botonFiltrosOfertasTxtOn: { color: C.senal },
+  filtrosOfertasDesplegados: {
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
+    borderRadius: R.m, marginTop: 8, paddingTop: 10, paddingBottom: 2,
+  },
+  filtroGrupoEtiqueta: { ...T.etiqueta, color: C.tx3, paddingHorizontal: 12, marginBottom: 2 },
+  chipsOfertas: { maxHeight: 50 },
+  chipsContenidoCompacto: { paddingHorizontal: 12, paddingTop: 5, paddingBottom: 7 },
 
   ficha: {
     backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
@@ -1183,6 +1649,29 @@ const e = StyleSheet.create({
     paddingHorizontal: 9, paddingVertical: 4, overflow: 'hidden',
   },
   etiquetaAcento: { backgroundColor: C.senal10, borderColor: C.senal34, color: C.senal },
+  verLocal: {
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.senal34,
+    borderRadius: R.s, padding: 14, gap: 11, marginBottom: 2,
+  },
+  verLocalCompacta: { padding: 11, gap: 8, backgroundColor: C.noche2 },
+  verLocalFecha: { ...T.etiqueta, fontSize: 9.5, color: C.senal },
+  verLocalCampos: { gap: 7 },
+  verLocalCampo: {
+    borderLeftWidth: 2, borderLeftColor: C.senal34, paddingLeft: 9,
+  },
+  verLocalCampoAtencion: { borderLeftColor: C.coral32 },
+  verLocalCampoNombre: { ...T.etiqueta, fontSize: 8.5, color: C.tx3 },
+  verLocalCampoEstado: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 12, color: C.senal, marginTop: 1 },
+  verLocalCampoEstadoAtencion: { color: C.coral },
+  verLocalDetalle: { ...T.menor, fontSize: 12.5, lineHeight: 18, color: C.tx2, marginTop: 4 },
+  verLocalAlertas: { gap: 7 },
+  verLocalAlerta: {
+    borderWidth: 1, borderColor: C.coral32, borderRadius: R.s,
+    backgroundColor: C.coral10, padding: 10,
+  },
+  verLocalAlertaTitulo: { ...T.etiqueta, fontSize: 8.5, color: C.coral },
+  verLocalAlertaTexto: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx, marginTop: 4 },
+  verLocalNota: { ...T.menor, fontSize: 11.5, lineHeight: 17, color: C.tx3 },
   seguir: {
     minHeight: UI.tactil, borderWidth: 1, borderColor: C.senal,
     borderRadius: R.m, alignItems: 'center', justifyContent: 'center',

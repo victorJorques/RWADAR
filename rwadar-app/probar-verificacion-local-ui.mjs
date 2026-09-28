@@ -1,0 +1,92 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const AQUI = path.dirname(fileURLToPath(import.meta.url));
+const RAIZ = path.resolve(AQUI, '..');
+const fixture = JSON.parse(fs.readFileSync(path.join(
+  RAIZ, 'rwadar-movil', 'fixtures', 'escaparate-local.json'), 'utf8'));
+const web = fs.readFileSync(path.join(
+  RAIZ, 'rwadar-site', 'assets', 'rwadar-20260820.js'), 'utf8');
+const css = fs.readFileSync(path.join(
+  RAIZ, 'rwadar-site', 'assets', 'rwadar-20260820.css'), 'utf8');
+const indice = fs.readFileSync(path.join(RAIZ, 'rwadar-site', 'index.html'), 'utf8');
+const explicador = fs.readFileSync(path.join(RAIZ, 'rwadar-movil', 'componentes', 'ExplicadorNativo.js'), 'utf8');
+
+let correctas = 0;
+function paso(nombre, condicion) {
+  assert.ok(condicion, nombre);
+  correctas += 1;
+  console.log(`  OK    ${nombre}`);
+}
+
+console.log('=== UI DE VERIFICACIÓN LOCAL ===');
+
+paso('la portada no promete aprobación, apertura universal ni acceso minorista',
+  !/pasan el filtro|superan el filtro|aceptan dinero hoy|solo entran plataformas con supervisor|Abiertas a minoristas|cumple los cuatro criterios/i.test(indice) &&
+  indice.includes('Categorías de activos') && indice.includes('no es exhaustivo ni un sello de aprobación') &&
+  (web.match(/document\.getElementById\('s3'\)\.textContent=new Set\(P\.map\(p=>p\.cat\)\)\.size/g) || []).length === 3);
+paso('web y explicador móvil distinguen el pago al proveedor de los ingresos de RWAdar',
+  /La inversión y el pago se realizan directamente con la\s+empresa/.test(indice) &&
+  indice.includes('no recibimos ni custodiamos el dinero de tu inversión') &&
+  explicador.includes('el pago se realiza directamente con la empresa; RWAdar'));
+paso('el material educativo no garantiza propiedad directa ni venta inmediata',
+  !/cada trozo es propiedad de verdad|ni esperar meses a que aparezca comprador|lista plataformas con supervisión verificable|fracción legal de la propiedad/i.test(indice + explicador) &&
+  indice.includes('no te convierte automáticamente en propietario') &&
+  explicador.includes('No hay venta inmediata ni liquidez garantizada'));
+
+paso('las 26 plataformas entregan verificacionLocal del 2026-09-21',
+  fixture.plataformas.length === 26
+  && fixture.plataformas.every((plataforma) => {
+    const v = plataforma.verificacionLocal;
+    return v?.verificadoEl === '2026-09-21'
+      && v.conservaFechaCanonica === true
+      && v.estadoOperativo?.estado && v.estadoOperativo?.detalle
+      && v.licenciaRegistro?.estado && v.licenciaRegistro?.detalle
+      && v.acceso?.estado && v.acceso?.detalle
+      && Array.isArray(v.alertasCriticas) && v.alertasCriticas.length > 0;
+  }));
+
+paso('la web valida el overlay antes de adjuntarlo al modelo visible',
+  web.includes("const FECHA_VERIFICACION_LOCAL='2026-09-21'")
+  && web.includes('verificacionLocal:validarVerificacionLocal(p.verificacionLocal)')
+  && web.includes("d.plataformas.map(plataformaDesdeEscaparate)")
+  && web.includes("verificación local ausente, desactualizada o no conservadora"));
+
+paso('la carga web falla cerrada sin volver al radar canónico antiguo',
+  web.includes('P.length=0;compare=[];render();')
+  && web.indexOf('P.length=0;compare=[];render();')
+    < web.indexOf("fetch('/__rwadar_local/escaparate.json'")
+  && web.includes('El radar queda oculto: falta una verificación local completa y vigente.')
+  && !web.includes('Se mantiene el radar incluido en la fuente'));
+
+paso('las fichas y el detalle muestran fecha, tres estados y alertas críticas',
+  web.includes('resumenVerificacionLocalHtml(v)')
+  && web.includes('detalleVerificacionLocalHtml(v)')
+  && web.includes("['Estado operativo',verificacion.estadoOperativo]")
+  && web.includes("['Licencia / registro',verificacion.licenciaRegistro]")
+  && web.includes("['Acceso',verificacion.acceso]")
+  && web.includes('verificacion.alertasCriticas.map')
+  && css.includes('.verificacion-local-fecha')
+  && css.includes('.pn-verificacion-local-alertas'));
+
+const porSlug = new Map(fixture.plataformas.map((plataforma) => [plataforma.slug, plataforma]));
+paso('INX no se presenta como cotizada en Nasdaq',
+  porSlug.get('inx')?.verificacionLocal.alertasCriticas
+    .some((alerta) => alerta.codigo === 'no_nasdaq' && /No afirmar que INX cotiza en Nasdaq/i.test(alerta.detalle)));
+paso('ARTEX no se presenta como operativa por tener un registro',
+  porSlug.get('artex-global-markets')?.verificacionLocal.estadoOperativo.estado === 'no_verificable'
+  && /no prueba actividad comercial actual/i.test(
+    porSlug.get('artex-global-markets')?.verificacionLocal.licenciaRegistro.detalle));
+paso('Lofty muestra su declaración de ausencia de registro',
+  porSlug.get('lofty')?.verificacionLocal.licenciaRegistro.estado === 'sin_registro_declarado'
+  && /no está registrada ante la SEC/i.test(
+    porSlug.get('lofty')?.verificacionLocal.licenciaRegistro.detalle));
+paso('Swarm no conserva como visibles Minorista ni la etiqueta genérica BaFin',
+  porSlug.get('swarm')?.verificacionLocal.acceso.estado === 'no_verificable'
+  && /no se reutiliza la etiqueta genérica 'regulada por BaFin'/i.test(
+    porSlug.get('swarm')?.verificacionLocal.licenciaRegistro.detalle)
+  && web.includes("accesoClasificado=p=>p&&p.verificacionLocal&&p.verificacionLocal.acceso.estado==='no_verificable'"));
+
+console.log(`\n${correctas} correctas, 0 fallidas`);

@@ -6,6 +6,7 @@ import Svg, {
   Circle, Defs, G, Line, Path, RadialGradient, Stop, Text as SvgText,
 } from 'react-native-svg';
 import { C, COLOR_CATEGORIA, T, F, R } from '../lib/tema';
+import { etiquetaEstadoVerificacionLocal } from '../lib/verificacion-local';
 
 /* ---------------------------------------------------------------------
    El radar de portada
@@ -39,6 +40,10 @@ const CORTO = {
   'Inmobiliario': 'Inmuebles', 'Crédito privado': 'Crédito', 'Tesoro y fondos': 'Tesoro',
   'Acciones y capital privado': 'Acciones', 'Materias primas': 'Materias',
 };
+
+const accesoLegible = (plataforma) => plataforma?.verificacionLocal
+  ? etiquetaEstadoVerificacionLocal(plataforma.verificacionLocal.acceso?.estado)
+  : plataforma?.acceso;
 
 const pol = (ang, rad) => [
   CX + Math.cos((ang * Math.PI) / 180) * rad,
@@ -82,8 +87,16 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
     const k = mismaCat.indexOf(p);
     const ang = -90 + ci * 60 + (((k + 0.5) / Math.max(mismaCat.length, 1)) - 0.5) * 56;
 
-    const base = RADIO_ACCESO[p.acceso] != null ? RADIO_ACCESO[p.acceso] : 0.7;
-    const mismos = datos.filter((x) => x.categoria === p.categoria && x.acceso === p.acceso);
+    const accesoRadar = p.verificacionLocal?.acceso?.estado === 'no_verificable'
+      ? '__no_verificable' : p.acceso;
+    /* Un acceso no verificable no conserva el anillo histórico de
+       «Minorista»: se lleva al perímetro para que el gráfico no convierta
+       una clasificación contradicha en un hecho visual. */
+    const base = accesoRadar === '__no_verificable'
+      ? 0.98 : (RADIO_ACCESO[accesoRadar] != null ? RADIO_ACCESO[accesoRadar] : 0.7);
+    const mismos = datos.filter((x) => x.categoria === p.categoria &&
+      (x.verificacionLocal?.acceso?.estado === 'no_verificable'
+        ? '__no_verificable' : x.acceso) === accesoRadar);
     const kk = mismos.indexOf(p);
     const escalon = mismos.length > 1 ? ((kk / (mismos.length - 1)) - 0.5) * 0.115 : 0;
 
@@ -182,7 +195,7 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
               top: y * k - TAMANO_DIANA / 2,
             }]}
             accessibilityRole="button"
-            accessibilityLabel={`${p.nombre}. ${p.categoria}. Acceso: ${p.acceso}. Abrir ficha.`} />
+            accessibilityLabel={`${p.nombre}. ${p.categoria}. Estado de acceso: ${accesoLegible(p)}. Abrir ficha.`} />
         ))}
       </View>
 
@@ -193,7 +206,9 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
           <>
             <View style={[e.chincheta, { backgroundColor: COLOR_CATEGORIA[leido.categoria] }]} />
             <Text style={e.lecturaNom} numberOfLines={1}>{leido.nombre}</Text>
-            <Text style={e.lecturaSub} numberOfLines={1}>{leido.categoria} · {leido.acceso}</Text>
+            <Text style={e.lecturaSub} numberOfLines={1}>
+              {leido.categoria} · Acceso: {accesoLegible(leido)}
+            </Text>
           </>
         ) : (
           <Text style={e.lecturaVacia}>

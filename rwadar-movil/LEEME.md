@@ -1,7 +1,32 @@
 # RWAdar · app móvil
 
-App nativa en React Native con Expo (SDK 57). Comparte base de datos con la web:
-lo que cambies en Supabase aparece en las dos.
+App nativa en React Native con Expo (SDK 57).
+
+## Corte editorial conectado · 27 de septiembre de 2026
+
+Esta copia usa `catalogo-editorial`: consulta las dos vistas verificadas de
+Supabase sin iniciar sesión. No sincroniza operaciones pendientes ni solicita
+permisos push. Los favoritos se guardan bajo `rwadar.editorial.*`, separados de
+cualquier instalación anterior. Un catálogo retirado o vencido no se sustituye
+por el fixture interno. El estado de distribución se registra en `docs/INTERNO.md`.
+
+El catálogo y los servicios remotos de usuario tienen compuertas separadas.
+`SERVICIOS_USUARIO_REMOTOS = false` mantiene desactivados identidad, sincronización
+y push con el catálogo conectado. En este perfil
+editorial los favoritos usan `rwadar.editorial.*`: no se leen ni migran claves
+`rwadar.*` de instalaciones anteriores y no se generan reintentos. El borrado
+afecta solo a ese espacio y a la caché pública del catálogo, nunca a datos
+históricos del servidor. Esta guarda del cliente no acredita bloqueo de los
+endpoints ni sustituye la revisión de permisos/RLS en Supabase.
+
+El fixture incluido contiene 26 plataformas del radar, 4 descartes con sus
+fuentes, 28 ofertas principales y 24 referencias secundarias con imágenes
+locales. Los proveedores exclusivos del escaparate no se incorporan al radar
+ni pueden seguirse como plataformas canónicas.
+
+El fixture se conserva para pruebas aisladas, no como catálogo de respaldo del
+perfil conectado. La sección siguiente es histórica, no una entrega del corte
+actual. Las builds anteriores no validan los cambios de septiembre.
 
 ## Estado verificado · 21 de agosto de 2026
 
@@ -24,36 +49,67 @@ npm test
 npx expo start
 ```
 
-Expo Go sirve para revisar parte de la interfaz, pero no reproduce el contrato
-nativo completo de avisos, SecureStore y EAS Update. Para una prueba de entrega
-usa el APK build 4. El export `--web` solo se usa como apoyo de QA responsive;
-no es la versión web/ordenador de RWAdar.
+Expo Go sirve para revisar parte de la interfaz, pero no sustituye una prueba
+nativa de entrega. El export `--web` solo se usa como apoyo de QA responsive;
+no es la versión web/ordenador de RWAdar. No entregar el APK histórico build 4
+como si incorporara el catálogo y la seguridad nuevos.
+
+El perfil EAS `editorial` genera un APK Android firmado, con el mismo paquete
+`com.rwadar.app` y firma existente. Antes de iniciarlo se inspecciona el archivo
+con `eas build:inspect --platform android --profile editorial --stage archive`.
+La `.easignore` de la raíz solo admite el código móvil y sus activos necesarios:
+excluye otros proyectos, documentos, fotografías internas y credenciales.
+`tests/empaquetado.test.cjs` cubre esa frontera, también para rutas de Windows.
+
+El corte desactiva `updates.enabled`: el APK ejecuta su código incluido y no
+recupera JavaScript de los canales históricos. El catálogo se actualiza por
+REST; cambiar el código requiere una nueva build revisada. También desactiva
+la copia Android a Google Drive y bloquea permisos de notificaciones,
+micrófono y almacenamiento externo que este alcance no necesita.
+La identidad de runtime usa la política oficial `appVersion` (`1.1.0`), ya que
+se distribuye el binario completo sin OTA. El primer intento con `fingerprint`
+fue rechazado por una discrepancia entre la huella local y la del constructor;
+no se usa ninguna bandera para omitir la comprobación. Reactivar OTA exigiría
+una revisión independiente de compatibilidad y firma. `expo-updates` se fija
+a la revisión compatible `~57.0.23` indicada por Expo Doctor para SDK 57.
+
+La comprobación operativa `node verificar-catalogo-remoto.cjs --lectura-remota`
+realiza solo GET públicos con el lector móvil, verifica las 26/28 fichas,
+la caché, cuatro descartes citables y que el esquema interno no está expuesto.
+No forma parte de `npm test`, no escribe en Supabase ni imprime claves.
 
 ## Qué hace, y por qué eso importa
 
 Apple rechaza las apps que son una web envuelta (directriz 4.2). Estas tres
 cosas son las que la convierten en un producto propio:
 
-**Está preparada para avisar cuando una plataforma cae del radar.** La app
-registra permiso, token y seguimiento, pero el proceso que envía el push aún no
-está activado. La interfaz solo mostrará «avisos activos» cuando ese proceso se
+**Conserva un adaptador de avisos desactivado.** Solo con capacidad remota
+explícita puede registrar permiso, token y seguimiento; el proceso que envía
+el push tampoco está activado. La interfaz solo mostrará «avisos activos» cuando ese proceso se
 haya probado de extremo a extremo y `extra.rwadar.pushDeliveryEnabled` cambie
 explícitamente a `true`.
 
-**Funciona sin conexión.** Un registro de consulta se lee en el metro o en una
-reunión. La última respuesta buena queda guardada y se sirve al instante; si
-hay red, se refresca por detrás. La cabecera indica "sin conexión" cuando los
-datos vienen de la caché.
+**Consulta sin conexión con caducidad.** El adaptador conectado conserva un lote
+atómico de plataformas y ofertas, no dos respuestas que puedan pertenecer a
+revisiones distintas. Solo admite una copia completa dentro de su plazo; una
+respuesta vacía, retirada, inválida o sin permisos no recupera el catálogo
+anterior. La cabecera indica cuándo se usa una copia sin conexión. Las cifras
+tienen su propio TTL y los días se computan en UTC, como en las vistas SQL.
+La caducidad se revisa también con la app abierta y al volver de suspensión.
+Esto no cambia `local-interno` ni activa el adaptador en esta copia.
 
-**Seguir no exige registrarse.** La instalación se identifica con un UUID
+**Seguir no exige registrarse.** En el perfil editorial la lista permanece en
+el dispositivo, sin UUID ni sincronización. El adaptador remoto conservado,
+desactivado por defecto, identifica la instalación con un UUID
 aleatorio criptográfico, no con una cuenta. En iOS y Android se guarda en
 Keychain/Keystore. Consultar el catálogo no crea ese identificador; si Supabase
 no confirma un seguimiento, queda marcado como pendiente y no se prometen
 avisos basados en él.
 
-La pantalla **Privacidad y datos de esta app** explica estos tratamientos y
-permite borrar la instalación, el token, los seguimientos y las cachés. El
-borrado elimina primero la fila remota y solo después la identidad local.
+La pantalla **Privacidad y datos de esta app** explica únicamente los
+tratamientos habilitados y el alcance real del borrado. Solo en el adaptador
+remoto habilitado el borrado exige primero confirmar la fila remota y después
+elimina la identidad local. En los perfiles local y editorial no contacta al servidor.
 
 ## Estructura
 
@@ -66,8 +122,17 @@ lib/tema.js                Colores, tipografía, sombras y radios
 lib/tacto.js               Respuesta háptica
 lib/supabase.js            Cliente + identificador anónimo de instalación
 lib/datos.js               Consultas, caché sin conexión y seguimiento
+lib/contrato-catalogo.js    Validación pura compartida con el importador web
+lib/catalogo-remoto.js     Lectura del lote verificado y caducidad sin conexión
 lib/avisos.js              Registro para avisos push
 ```
+
+El lector conectado usa únicamente `catalogo_plataformas_publicas` y
+`catalogo_ofertas_publicas` para el lote 26/28. No usa `radar_publico` como
+respaldo ni publica las referencias secundarias del fixture interno. La
+migración y la activación requieren el procedimiento de
+[`docs/RUNBOOK.md`](../docs/RUNBOOK.md); las pruebas con mocks o PGlite no
+acreditan disponibilidad del backend ni una compilación móvil publicada.
 
 ## Diseño: lo mismo que la web, adaptado al móvil
 

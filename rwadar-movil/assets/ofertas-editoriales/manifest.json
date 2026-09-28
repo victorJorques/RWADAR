@@ -1,0 +1,58 @@
+{
+  "versionEsquema": 1,
+  "generadoEl": "2026-09-21",
+  "herramienta": "OpenAI image_gen integrado",
+  "modo": "generacion-sin-imagenes-de-terceros",
+  "usoPrevisto": "Fallback editorial para fichas sin autorizacion escrita de fotografia o marca",
+  "estadoUso": "aprobado-para-publicacion",
+  "etiquetaVisibleObligatoria": "Ilustración editorial",
+  "restriccionesGlobales": [
+    "No presentar la ilustracion como fotografia del activo o del proveedor",
+    "No ocultar la etiqueta visible Ilustración editorial",
+    "No incorporar logos, marcas, personas, texto, cifras ni promesas de rentabilidad",
+    "Sustituir por material autorizado si el proveedor aporta licencia escrita"
+  ],
+  "direccionVisual": "Render editorial 3D original, fondo grafito, anillos de radar y luz esmeralda RWAdar; composicion 16:10 preparada para recorte 640x440 y overlays HTML",
+  "archivos": [
+    {
+      "categoria": "Inmobiliario",
+      "archivo": "inmobiliario-rwadar.webp",
+      "ancho": 640,
+      "alto": 440,
+      "bytes": 47824,
+      "hashSha256": "1579cf2d5709edc82f5d9b960ee422ff1764b0367ce0ec68862d7f292983413f",
+      "alt": "Ilustración editorial de un edificio y parcelas convertidos en unidades digitales",
+      "promptFinal": "Ilustracion editorial original para activos inmobiliarios tokenizados: maqueta arquitectonica generica y parcelas en unidades digitales, estetica RWAdar oscura y esmeralda, sin texto, logos, marcas, personas ni edificio real reconocible."
+    },
+    {
+      "categoria": "Tesoro y fondos",
+      "archivo": "tesoro-fondos-rwadar.webp",
+      "ancho": 640,
+      "alto": 440,
+      "bytes": 37370,
+      "hashSha256": "476331ac6a158cf54f97dc0d3de29d1c69bdb6e26e793807d85bdc4e9febf8aa",
+      "alt": "Ilustración editorial de instrumentos de tesorería y liquidación modular",
+      "promptFinal": "Ilustracion editorial original para letras del tesoro y fondos monetarios: instrumentos institucionales genericos y rail de liquidacion modular, estetica RWAdar oscura y esmeralda, sin texto, moneda, sellos, banderas, logos ni marcas."
+    },
+    {
+      "categoria": "Materias primas",
+      "archivo": "materias-primas-rwadar.webp",
+      "ancho": 640,
+      "alto": 440,
+      "bytes": 50952,
+      "hashSha256": "dab2eb1255ec6ae30d344fed5ed87bd20964f5dfd1ee9de5d864a59ee1775c78",
+      "alt": "Ilustración editorial de un lingote genérico custodiado y dividido en unidades verificables",
+      "promptFinal": "Ilustracion editorial original para metales preciosos tokenizados: un unico lingote generico sin marcas dentro de un entorno de custodia con unidades verificables, estetica RWAdar oscura y esmeralda, sin texto, logos, personas, monedas ni simbolos nacionales."
+    },
+    {
+      "categoria": "Acciones y capital privado",
+      "archivo": "capital-privado-rwadar.webp",
+      "ancho": 640,
+      "alto": 440,
+      "bytes": 72142,
+      "hashSha256": "5384573368ca62e4320e8d96f3d0bda98f8b82d57957d06518fbd0f0b1c6bcf9",
+      "alt": "Ilustración editorial de una empresa genérica dividida en módulos de propiedad conectados",
+      "promptFinal": "Ilustracion editorial original para participaciones de empresas privadas: estructura empresarial generica dividida en modulos de propiedad conectados, estetica RWAdar oscura y esmeralda, sin texto, logos, personas, tickers, graficos ni promesas de crecimiento."
+    }
+  ]
+}

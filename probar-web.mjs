@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
+import { request as solicitarHttp } from 'node:http';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { spawn, spawnSync } from 'node:child_process';
@@ -18,21 +19,30 @@ const {
   PROYECTO_CLOUDFLARE,
   comprobarConfiguracionAuth,
   comprobarEstadoLegalPublicacion,
+  comprobarPreparacionRelanzamiento,
   comprobarOrigenPublico,
+  evaluarPreparacionRelanzamiento,
   huellaContenido,
+  huellaAlcancePublicacion,
   listarArchivosRegulares,
   nombreAssetVersionado,
   validarOrigenPublicable,
   versionCacheDesdeEntradas,
 } = require('./rwadar-publicacion-segura.js');
-const { celdaCSV } = require('./rwadar-app/sincronizar.js');
+const { celdaCSV, ofertaPublica } = require('./rwadar-app/sincronizar.js');
+const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales.js');
+const activosEditoriales = cargarActivosEditoriales(raiz);
 const html = lee('index.html');
 const privacidad = lee('privacidad.html');
+const transparenciaComercial = lee('transparencia-comercial.html');
+const paraEmpresas = lee('para-empresas.html');
 const error404 = lee('404.html');
 const headers = lee('_headers');
 const redirecciones = lee('_redirects');
 const sw = lee('sw.js');
 const publicador = fs.readFileSync(path.join(raiz, 'rwadar-publicar.js'), 'utf8');
+const estadoRelanzamiento = JSON.parse(fs.readFileSync(
+  path.join(raiz, 'rwadar-app', 'data', 'relanzamiento', 'estado.json'), 'utf8'));
 const capturadorPortadas = fs.readFileSync(path.join(raiz, 'rwadar-capturar-portadas.mjs'), 'utf8');
 const sincronizador = fs.readFileSync(path.join(raiz, 'rwadar-app', 'sincronizar.js'), 'utf8');
 const servidor = fs.readFileSync(path.join(raiz, 'rwadar-servir.js'), 'utf8');
@@ -52,6 +62,75 @@ async function capturaError(promesa) {
   catch (e) { return e; }
 }
 
+function arnesServiciosEditoriales(codigo, direccion) {
+  const capacidad = codigo.match(/\/\* servicios-usuario:inicio \*\/[\s\S]*?\/\* servicios-usuario:fin \*\//)?.[0];
+  if (!capacidad) throw new Error('Falta la capacidad explícita de servicios de usuario');
+  const modulo = marca => {
+    const inicio = codigo.indexOf(marca), fin = codigo.indexOf('\n})();', inicio);
+    if (inicio < 0 || fin < 0) throw new Error(`No se encuentra ${marca}`);
+    return codigo.slice(inicio, fin + '\n})();'.length);
+  };
+  const funcion = (inicio, fin) => {
+    const posicion = codigo.indexOf(inicio);
+    if (posicion < 0 || codigo.indexOf(fin, posicion) < 0) throw new Error(`No se encuentra ${inicio}`);
+    return codigo.slice(posicion, codigo.indexOf(fin, posicion));
+  };
+  const nodos = new Map(), avisos = [], peticiones = [], historial = [], escuchas = [];
+  const nodo = id => {
+    if (!nodos.has(id)) nodos.set(id, {
+      ...nodoCuentaPrueba(id, {}), innerHTML:'',
+      addEventListener(tipo){ escuchas.push([id, tipo]); },
+    });
+    return nodos.get(id);
+  };
+  const url = new URL(direccion);
+  const contexto = {
+    API:'https://datos.invalid/rest/v1', CLAVE_PUB:'publicable-prueba',
+    MODO_LOCAL_SEGURO:['localhost','127.0.0.1'].includes(url.hostname),
+    URL, URLSearchParams, location:url,
+    history:{replaceState(_estado, _titulo, ruta){historial.push(ruta);}},
+    document:{getElementById:nodo, addEventListener(tipo){escuchas.push(['document',tipo]);}},
+    avisar:mensaje=>avisos.push(mensaje),
+    fetch:async(...args)=>{peticiones.push(args);throw new Error('Ninguna petición permitida en esta prueba');},
+    localStorage:{getItem(){throw new Error('No debe leer sesiones anteriores');},
+      setItem(){throw new Error('No debe guardar sesiones');},removeItem(){throw new Error('No debe borrar datos anteriores');}},
+  };
+  vm.createContext(contexto);
+  vm.runInContext(`${capacidad}\n${modulo('const Opiniones=')}\n${modulo('const Cuenta =')}
+    globalThis.apiEditorial={Cuenta,Opiniones,disponible:SERVICIOS_USUARIO_DISPONIBLES};
+    globalThis.redEditorial=(function(){
+      let ses={access_token:'sesion-anterior',refresh_token:'renovacion-anterior',expira:Date.now()+3600000};
+      ${funcion('async function auth(', 'function traduce(')}
+      ${funcion('async function testigo(){', 'async function confirmarIdentidad(){')}
+      ${funcion('async function rest(', 'async function cargarMio(){')}
+      ${funcion('async function pide(', 'const idDe=')}
+      return {auth,rest,pide,testigo};
+    })();`, contexto);
+  return {contexto, nodos, avisos, peticiones, historial, escuchas,
+    ...contexto.apiEditorial, red:contexto.redEditorial};
+}
+
+function solicitarConHost(puerto, host) {
+  return new Promise((resolve, reject) => {
+    const peticion = solicitarHttp({
+      hostname: '127.0.0.1',
+      port: puerto,
+      path: '/',
+      method: 'GET',
+      headers: { Host: host },
+    }, respuesta => {
+      const trozos = [];
+      respuesta.on('data', trozo => trozos.push(trozo));
+      respuesta.on('end', () => resolve({
+        status: respuesta.statusCode,
+        cuerpo: Buffer.concat(trozos).toString('utf8'),
+      }));
+    });
+    peticion.on('error', reject);
+    peticion.end();
+  });
+}
+
 async function authRechazaJson2xxInvalido(codigo) {
   const inicio = codigo.indexOf('async function auth(');
   const fin = codigo.indexOf('function traduce(', inicio);
@@ -59,6 +138,7 @@ async function authRechazaJson2xxInvalido(codigo) {
   const fuente = codigo.slice(inicio, fin);
   const fabrica = new Function('fetch', 'CLAVE_PUB', `
     const AUTH='https://auth.invalid';
+    const SERVICIOS_USUARIO_DISPONIBLES=true;
     const traduce=mensaje=>mensaje;
     ${fuente}
     return auth;
@@ -109,6 +189,7 @@ function estadoPendienteOcultaFormulario(codigo) {
   const fabrica = new Function('$', 'document', 'matchMedia', 'setTimeout', 'clearTimeout',
     'fondo', 'closeAll', 'msj', `
       const CORREO_AUTH_E2E=true;
+      const SERVICIOS_USUARIO_DISPONIBLES=true;
       let modo='entrar',correoPendiente='persona@example.test',operacionCuenta=0,
           temporizadorReenvio=null,focoCuenta=null;
       ${fuente}
@@ -144,6 +225,7 @@ function arnesEnvioRegistro(codigo) {
   const fabrica = new Function('$', 'auth', 'abrir', 'entrarCon', 'testigo',
     'limpiaErroresCuenta', 'msj', 'limpiaSecretos', 'errorCuenta', 'correoValido', 'location', `
       const CORREO_AUTH_E2E=true;
+      const SERVICIOS_USUARIO_DISPONIBLES=true;
       let modo='registro',operacionCuenta=0,correoPendiente='';
       ${fuente}
       return {enviar,invalidar(){operacionCuenta++;modo='entrar';}};
@@ -463,7 +545,6 @@ function renderEmisionHostil(codigo) {
     pct:50, rent:3.2, plazo:12, tipo:'estimada', est:'abierta', cont:false,
     url:'https://example.com/emision', ver:'2026-08-20', pat:false,
   }];
-  const preparado = codigo.replace(/const EMI=\[\s*\];/, `const EMI=${JSON.stringify(dato)};`);
   const capturado = {};
   const lista = [];
   lista.forEach = Array.prototype.forEach.bind(lista);
@@ -497,7 +578,10 @@ function renderEmisionHostil(codigo) {
   };
   contexto.globalThis = contexto;
   vm.createContext(contexto);
-  vm.runInContext(preparado, contexto, { timeout:15000 });
+  vm.runInContext(codigo, contexto, { timeout:15000 });
+  // Inyectar después del arranque: el snapshot público ya no es una lista vacía.
+  // Ejecutamos el render real sin alterar la fuente ni depender de su contenido.
+  vm.runInContext(`EMI.splice(0,EMI.length,...${JSON.stringify(dato)});pintarEmisiones();`, contexto);
   return capturado.emiLista || '';
 }
 
@@ -591,6 +675,8 @@ function subvistaAvisosConservaEstadoYFoco(codigo) {
 console.log('=== PRUEBAS ESTÁTICAS DE LA WEB ===');
 marcadoEstricto('index.html', html);
 marcadoEstricto('privacidad.html', privacidad);
+marcadoEstricto('transparencia-comercial.html', transparenciaComercial);
+marcadoEstricto('para-empresas.html', paraEmpresas);
 marcadoEstricto('404.html', error404);
 
 const ids = [...html.matchAll(/\sid=["']([^"']+)["']/gi)].map(m => m[1]);
@@ -599,14 +685,17 @@ prueba('index.html no tiene ID duplicados', repetidos.length === 0);
 
 const scripts = [...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
 const estilos = [...html.matchAll(/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhref=["']([^"']+)["'][^>]*>/gi)];
-prueba('la aplicación carga un único JavaScript propio versionado',
-  scripts.length === 1 && scripts[0][1] === '/assets/rwadar-20260820.js');
+const rutaScriptApp = '/assets/rwadar-20260820.js';
+const rutaAnalitica = '/assets/analitica-20260927.js';
+prueba('la analítica comprueba la URL antes del cliente Auth y ambos scripts usan defer',
+  scripts.length === 2 && scripts[0][1] === rutaAnalitica && scripts[1][1] === rutaScriptApp &&
+  scripts.every(script => /\bdefer\b/.test(script[0])));
 prueba('la aplicación carga una hoja propia versionada',
   estilos.length === 1 && estilos[0][1] === '/assets/rwadar-20260820.css');
-for (const recurso of [scripts[0][1], estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
+for (const recurso of [rutaScriptApp, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
-const js = lee('.' + scripts[0][1]);
+const js = lee('.' + rutaScriptApp);
 const css = lee('.' + estilos[0][1]);
 new Function(js);
 prueba('el JavaScript externo compila', true);
@@ -620,20 +709,34 @@ prueba('hay exactamente un JSON-LD', jsonLd.length === 1);
 const datosLd = JSON.parse(jsonLd[0][1]);
 prueba('el JSON-LD es JSON válido', true);
 prueba('la página y el conjunto de datos comparten la revisión actual',
-  datosLd['@graph'].filter(x=>x.dateModified).every(x=>x.dateModified==='2026-08-22'));
+  datosLd['@graph'].filter(x=>x.dateModified).every(x=>x.dateModified===
+    [...arrayDe(js,'P').map(p=>p.verificacionLocal?.verificadoEl || p.ver),
+     ...arrayDe(js,'EMI').map(o=>o.verificadaEl || o.ver)].filter(Boolean).sort().at(-1)));
 const descripcion = (html.match(/<meta name="description" content="([^"]+)"/) || [])[1] || '';
 prueba('la meta description es precisa y tiene longitud útil para buscadores',
-  descripcion.length >= 150 && descripcion.length <= 160 && /26 plataformas/.test(descripcion) && /4 descartes/.test(descripcion));
-const ultimaVerificacion = arrayDe(lee('.' + scripts[0][1]), 'P').map(p=>p.ver).filter(Boolean).sort().at(-1);
+  descripcion.length >= 120 && descripcion.length <= 190 &&
+  /activos tokenizados/.test(descripcion) && /fuentes, fechas y advertencias/.test(descripcion) &&
+  !/superan|pasan el filtro|garantizada|abiertas/.test(descripcion));
+prueba('la presentación no convierte presencia editorial en acceso minorista o autorización universal',
+  !/pasan el filtro|superan el filtro|aceptan dinero hoy|Abiertas a minoristas|solo entran plataformas con supervisor/.test(html) &&
+  html.includes('no es exhaustivo ni un sello de aprobación') && html.includes('Categorías de activos'));
+prueba('las cifras de cabecera cuentan categorías, no supuestas ofertas abiertas a minoristas',
+  (js.match(/document\.getElementById\('s3'\)\.textContent=new Set\(P\.map\(p=>p\.cat\)\)\.size/g) || []).length === 3);
+prueba('la inversión se paga al proveedor y no a RWAdar',
+  /La inversión y el pago se realizan directamente con la\s+empresa/.test(html) &&
+  html.includes('no recibimos ni custodiamos el dinero de tu inversión'));
+const ultimaVerificacion = arrayDe(js, 'P').map(p=>p.verificacionLocal?.verificadoEl || p.ver).filter(Boolean).sort().at(-1);
 const fechaPie = ultimaVerificacion.split('-').reverse().join('.');
 prueba('el HTML sin JavaScript contiene la revisión real derivada de los datos',
-  html.includes(`<p id="pieRevision">Última revisión del registro: ${fechaPie}</p>`) && !html.includes('26.07.2026'));
+  html.includes(`<p id="pieRevision">Última revisión del registro: ${fechaPie}</p>`));
 
 console.log('\n=== CSP, SESIÓN Y CONTRATOS ===');
 prueba('la CSP no permite unsafe-inline ni eval', !/unsafe-inline|unsafe-eval/i.test(headers));
-prueba('la CSP limita script, estilo, worker y manifest a recursos propios',
-  /script-src\s+'self'/i.test(headers) && /style-src\s+'self'/i.test(headers) &&
+prueba('la CSP permite solo el beacon adicional y conserva estilo, worker y manifest propios',
+  /script-src 'self' https:\/\/static\.cloudflareinsights\.com;/i.test(headers) && /style-src\s+'self'/i.test(headers) &&
   /worker-src\s+'self'/i.test(headers) && /manifest-src\s+'self'/i.test(headers));
+prueba('la CSP limita las conexiones a Supabase y al colector de métricas declarado',
+  /connect-src 'self' https:\/\/exgpmjpaaebyoolpwced\.supabase\.co https:\/\/cloudflareinsights\.com;/.test(headers));
 prueba('la CSP impide formularios, marcos y objetos',
   /form-action\s+'none'/i.test(headers) && /frame-ancestors\s+'none'/i.test(headers) && /object-src\s+'none'/i.test(headers));
 prueba('los assets versionados tienen caché immutable', /\/assets\/\*[\s\S]*max-age=31536000, immutable/i.test(headers));
@@ -642,6 +745,123 @@ prueba('portada y manifest se revalidan para descubrir cada nueva entrega',
   /^\/\r?\n\s+Cache-Control:\s*public, max-age=0, must-revalidate/im.test(headers) &&
   /\/manifest\.webmanifest[\s\S]*?Cache-Control:\s*public, max-age=86400, must-revalidate/i.test(headers));
 
+console.log('\n=== ANALÍTICA Y FRONTERAS DE PRIVACIDAD ===');
+const codigoAnalitica = lee('.' + rutaAnalitica);
+function simularAnalitica(href, opciones = {}) {
+  const creados = [];
+  const contexto = {
+    URL,
+    location: { href },
+    navigator: { onLine: true, ...opciones.navigator },
+    document: {
+      referrer: opciones.referrer || '',
+      get cookie() { throw new Error('La analítica no debe acceder a cookies'); },
+      querySelector: () => opciones.yaExiste || creados.find(s => s.atributos['data-cf-beacon']),
+      createElement: () => ({ atributos: {}, setAttribute(n, v) { this.atributos[n] = v; } }),
+      head: { appendChild: script => creados.push(script) },
+    },
+    get localStorage() { throw new Error('La analítica no debe acceder a localStorage'); },
+    get sessionStorage() { throw new Error('La analítica no debe acceder a sessionStorage'); },
+  };
+  vm.createContext(contexto);
+  for (let i = 0; i < (opciones.veces || 1); i++) vm.runInContext(codigoAnalitica, contexto);
+  return creados;
+}
+const medicion = simularAnalitica('https://rwadar.pages.dev/', { veces: 2 });
+prueba('la página pública carga una sola medición sin tocar cookies ni almacenamiento',
+  medicion.length === 1 && medicion[0].src === 'https://static.cloudflareinsights.com/beacon.min.js' &&
+  medicion[0].type === 'module' && medicion[0].referrerPolicy === 'no-referrer');
+const configuracionMedicion = JSON.parse(medicion[0].atributos['data-cf-beacon']);
+prueba('la configuración del proveedor desactiva navegación SPA y no añade identidad de usuario',
+  configuracionMedicion.spa === false && /^[a-f0-9]{32}$/.test(configuracionMedicion.token) &&
+  Object.keys(configuracionMedicion).sort().join(',') === 'spa,token');
+for (const url of [
+  'http://localhost:4173/', 'http://127.0.0.1:4173/', 'file:///index.html',
+  'https://preview.rwadar.pages.dev/', 'https://rwadar.netlify.app/',
+  'https://rwadar.pages.dev.ejemplo.com/', 'http://rwadar.pages.dev/',
+  'https://rwadar.pages.dev:8443/', 'https://rwadar.pages.dev/cuenta',
+  'https://rwadar.pages.dev/?code=prueba', 'https://rwadar.pages.dev/#access_token=prueba',
+  'https://rwadar.pages.dev/?utm_source=prueba', 'https://rwadar.pages.dev/privacidad#aviso-legal',
+]) prueba(`la analítica no se carga en ${url}`, simularAnalitica(url).length === 0);
+prueba('la analítica respeta Do Not Track, Global Privacy Control y ausencia de conexión',
+  [{ doNotTrack: '1' }, { globalPrivacyControl: true }, { onLine: false }]
+    .every(navigator => simularAnalitica('https://rwadar.pages.dev/', { navigator }).length === 0));
+prueba('un referente con parámetros o fragmentos tampoco se comunica al proveedor',
+  ['https://rwadar.pages.dev/?email=prueba', 'https://ejemplo.com/#token=prueba', 'url inválida']
+    .every(referrer => simularAnalitica('https://rwadar.pages.dev/', { referrer }).length === 0));
+prueba('las páginas públicas auxiliares incluyen medición y un beacon existente no se duplica',
+  [privacidad, transparenciaComercial, paraEmpresas].every(pagina => pagina.includes(rutaAnalitica)) &&
+  ['/privacidad', '/transparencia-comercial', '/para-empresas'].every(ruta =>
+    simularAnalitica('https://rwadar.pages.dev' + ruta).length === 1) &&
+  simularAnalitica('https://rwadar.pages.dev/', { yaExiste: true }).length === 0);
+
+console.log('\n=== SERVICIOS DE USUARIO CERRADOS EN LA VERSIÓN EDITORIAL ===');
+for (const direccion of [
+  'https://rwadar.pages.dev/', 'https://rwadar.netlify.app/',
+  'https://preview.example/?cuentas=true&SERVICIOS_USUARIO_REMOTOS=true',
+  'http://127.0.0.1:4173/',
+]) {
+  const editorial = arnesServiciosEditoriales(js, direccion);
+  for (const modo of ['entrar','registro','recuperar','nueva_clave']) editorial.Cuenta.abrir(modo);
+  editorial.Cuenta.abrirGestion();
+  editorial.Cuenta.pintarVigilar('Plataforma de prueba');
+  editorial.Cuenta.actualizarMovil();
+  const opiniones = {innerHTML:'contenido anterior'};
+  await editorial.Opiniones.pinta('Plataforma de prueba', opiniones);
+  prueba(`la versión editorial no abre cuentas ni pide datos de usuario en ${new URL(direccion).hostname}`,
+    editorial.disponible === false && editorial.Cuenta.hay() === false &&
+    editorial.Cuenta.uid() === false && await editorial.Cuenta.token() === null &&
+    editorial.peticiones.length === 0 && editorial.escuchas.length === 0 &&
+    opiniones.innerHTML === '' && editorial.nodos.get('btnCuenta').disabled === true &&
+    editorial.nodos.get('movilCuentaAccion').disabled === true &&
+    /seguimiento está en pausa/.test(editorial.nodos.get('dwVigilar').innerHTML));
+}
+const redEditorial = arnesServiciosEditoriales(js, 'https://rwadar.pages.dev/');
+for (const [nombre, argumentos] of [
+  ['auth',['/token?grant_type=password',{email:'prueba@example.test',password:'solo-prueba'}]],
+  ['rest',['/vigilancia',{method:'POST',body:'{}'}]],
+  ['pide',['/opiniones_publicas?select=*']],
+]) prueba(`la entrada de red ${nombre} rechaza el uso directo con la capacidad cerrada`,
+  /desactivad/.test((await capturaError(redEditorial.red[nombre](...argumentos)))?.message || '') &&
+  redEditorial.peticiones.length === 0);
+prueba('ni siquiera una sesión previa en memoria entrega o renueva su token',
+  await redEditorial.red.testigo() === null && redEditorial.peticiones.length === 0);
+for (const [direccion, salida] of [
+  ['https://rwadar.pages.dev/?sector=inmobiliario#access_token=prueba&refresh_token=prueba&type=recovery', '/?sector=inmobiliario'],
+  ['https://rwadar.pages.dev/?code=prueba&type=signup&sector=oro#metodo', '/?sector=oro#metodo'],
+  ['https://rwadar.pages.dev/#error=access_denied&error_description=prueba', '/'],
+]) {
+  const editorial = arnesServiciosEditoriales(js, direccion);
+  prueba('un retorno antiguo se limpia sin iniciar sesión ni guardar o transmitir sus credenciales',
+    editorial.historial.length === 1 && editorial.historial[0] === salida &&
+    editorial.peticiones.length === 0 && editorial.Cuenta.hay() === false &&
+    await editorial.Cuenta.token() === null);
+}
+prueba('la pausa no elimina anclas o filtros editoriales normales',
+  arnesServiciosEditoriales(js, 'https://rwadar.pages.dev/?sector=oro#metodo').historial.length === 0);
+prueba('los accesos a cuenta nacen desactivados incluso antes de ejecutar JavaScript',
+  /id="btnCuenta"[^>]*\bdisabled/.test(html) &&
+  [...html.matchAll(/<button\b([^>]*data-movil-action="cuenta"[^>]*)>/g)]
+    .every(m => /\bdisabled/.test(m[1])) && /href="\/privacidad#derechos"/.test(html));
+const inicioLectorPublico = js.indexOf('async function alDia(){');
+const finLectorPublico = js.indexOf('\n}\n', inicioLectorPublico);
+const lecturasEditoriales = [];
+const lectorPublico = new Function('fetch', `
+  const MODO_LOCAL_SEGURO=false,SERVICIOS_USUARIO_REMOTOS=false,SERVICIOS_USUARIO_DISPONIBLES=false;
+  const API='https://catalogo.invalid/rest/v1',CLAVE_PUB='publicable-prueba';
+  ${js.slice(inicioLectorPublico, finLectorPublico + 2)}
+  return alDia;
+`)(async direccion => {lecturasEditoriales.push(direccion);return {ok:false,status:503};});
+await capturaError(lectorPublico());
+prueba('el cierre de cuentas conserva el lector de catálogo público y sus tres consultas anónimas',
+  lecturasEditoriales.length === 3 &&
+  lecturasEditoriales.some(u => u.includes('/catalogo_plataformas_publicas?')) &&
+  lecturasEditoriales.some(u => u.includes('/catalogo_ofertas_publicas?')) &&
+  lecturasEditoriales.some(u => u.includes('/plataformas?estado=eq.descartada&')));
+
+/* Las siguientes regresiones prueban el código de cuenta conservado para una
+   futura reapertura. Sus arneses habilitan la capacidad de forma explícita;
+   el código distribuido sigue usando la capacidad false comprobada arriba. */
 prueba('la contraseña mínima es de 12 caracteres en HTML y JS',
   (html.match(/minlength="12"/g) || []).length === 2 && /clave\.length<12/.test(js));
 prueba('los testigos de sesión solo se guardan en memoria',
@@ -1156,10 +1376,10 @@ const botonesEmpresaVisual = etiquetasInicio.filter(e => e[1].toLowerCase() === 
   (atributoHTML(e[2], 'class') || '').split(/\s+/).includes('empresa-visual__abrir'));
 const imagenesEmpresaVisual = etiquetasInicio.filter(e => e[1].toLowerCase() === 'img' &&
   (atributoHTML(e[2], 'class') || '').split(/\s+/).includes('empresa-visual__imagen'));
-prueba('las 26 empresas usan portadas WebP locales con procedencia discriminada y hash verificable',
+prueba('las 26 empresas usan portadas WebP editoriales propias sin imagen externa y con hash verificable',
   rutasPortada.length === 26 && new Set(rutasPortada).size === 26 &&
   entradasPortadas.length === 26 && portadasPorEmpresa.size === 26 &&
-  portadasGeneradas.length === 23 && portadasOficiales.length === 3 &&
+  portadasGeneradas.length === 26 && portadasOficiales.length === 0 &&
   new Set(entradasPortadas.map(x => x?.sha256)).size === 26 &&
   new Set(entradasPortadas.map(x => x?.archivo)).size === 26 &&
   rutasPortada.every((ruta, i) => {
@@ -1170,21 +1390,20 @@ prueba('las 26 empresas usan portadas WebP locales con procedencia discriminada 
     return entrada && !entrada.error && entrada.empresa === plataforma.n &&
       entrada.archivo === ruta.slice(1) && entrada.bytes === bytes.length &&
       entrada.sha256 === sha256 && /^[a-f0-9]{64}$/.test(entrada.sha256) &&
-      (entrada.origenVisual === 'fuente-oficial'
-        ? /^https:\/\//.test(entrada.pagina) && /^https:\/\//.test(entrada.imagenOrigen) &&
-          entrada.paginaReferencia == null && entrada.creador == null
-        : entrada.origenVisual === 'representacion-editorial-generada' && entrada.pagina === null &&
-          entrada.imagenOrigen === null && /^https:\/\//.test(entrada.paginaReferencia) &&
-          entrada.creador === 'RWAdar' && /ImageGen/.test(entrada.herramienta || '')) &&
+      entrada.origenVisual === 'representacion-editorial-generada' && entrada.pagina === null &&
+      entrada.imagenOrigen === null && /^https:\/\//.test(entrada.paginaReferencia) &&
+      entrada.creador === 'RWAdar' && /ImageGen/.test(entrada.herramienta || '') &&
+      entrada.tipoVisual === 'Representación editorial generada' &&
+      /sin metadatos/i.test(entrada.metodo || '') &&
       bytes.length > 1024 && bytes.subarray(0,4).toString('ascii') === 'RIFF' &&
       bytes.subarray(8,12).toString('ascii') === 'WEBP';
   }));
-prueba('el distintivo móvil coincide exactamente con las 23 portadas generadas del manifiesto',
-  nombresGeneradasMovil.length === 23 && new Set(nombresGeneradasMovil).size === 23 &&
+prueba('el distintivo móvil coincide exactamente con las 26 portadas generadas del manifiesto',
+  nombresGeneradasMovil.length === 26 && new Set(nombresGeneradasMovil).size === 26 &&
   [...nombresGeneradasMovil].sort().join('|') === portadasGeneradas.map(x => x.empresa).sort().join('|'));
 prueba('las portadas explican qué muestran y conservan el encuadre editorial elegido',
   entradasPortadas.every(entrada =>
-    /^(Activo real|Representación editorial generada|Render oficial del activo)$/.test(entrada?.tipoVisual || '') &&
+    entrada?.tipoVisual === 'Representación editorial generada' &&
     typeof entrada?.descripcionVisual === 'string' && entrada.descripcionVisual.length >= 28 &&
     ['cover', 'contain'].includes(entrada?.encuadre) && /^\d+% \d+%$/.test(entrada?.foco || '') &&
     /(?:no|ni) implica afiliación, patrocinio (?:ni|o) recomendación de inversión/i.test(entrada?.uso || '') &&
@@ -1224,11 +1443,12 @@ prueba('las superficies nuevas solo aparecen dentro de la interfaz móvil',
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-busqueda-cab').join(';')) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ficha-abrir').join(';')) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ofertas-intro').join(';')));
-prueba('Favoritos pinta fichas reales desde la vigilancia existente y escapa el contenido',
+prueba('Favoritos mantiene el contenedor seguro y explica la pausa del seguimiento web',
   /id="movilSiguiendoLista"[^>]*aria-live="polite"[^>]*hidden/.test(html) &&
   /P\.filter\(p=>vigiladas\.has\(p\.n\)\)/.test(jsSinComentarios) &&
   /class="movil-seguida/.test(js) && /escHtml\(p\.n\)/.test(js) &&
-  /Eso no significa que hayas invertido ni activa envíos/.test(html));
+  /no accede a tus favoritos anteriores ni guarda seguimiento remoto/.test(html) &&
+  /Para consultar o gestionar datos de una cuenta anterior/.test(html));
 
 const inicioInversiones = html.indexOf('<section class="movil-panel" id="movilPanelInversiones"');
 const finInversiones = html.indexOf('</section>', inicioInversiones);
@@ -1336,7 +1556,7 @@ prueba('el manifest es instalable y tiene iconos 192, 512 y maskable',
 prueba('el service worker se registra solo bajo HTTP(S)',
   /trabajador\.register\('\/sw\.js'/.test(js) && /\^https\?:\$/.test(js));
 prueba('el service worker fuente identifica la entrega móvil actual',
-  /const VERSION\s*=\s*['"]rwadar-v20260822-recarga['"]/.test(sw));
+  /const VERSION\s*=\s*['"]rwadar-v20260921-tarjetas-local-6['"]/.test(sw));
 prueba('el precache crítico se instala de forma atómica',
   /await c\.addAll\(ARMAZON\)/.test(sw) && !/\.add\(u\)\.catch/.test(sw) && await pruebaInstalacionAtomica(sw));
 prueba('cada navegación se guarda bajo su propia ruta',
@@ -1344,18 +1564,27 @@ prueba('cada navegación se guarda bajo su propia ruta',
   !/cache\.put\('\/', res\.clone\(\)\)/.test(sw));
 prueba('solo se cachean recursos estáticos públicos del mismo origen',
   /url\.origin !== self\.location\.origin/.test(sw) && /esEstaticoPublico/.test(sw));
-prueba('las emisiones se revalidan desde Supabase sin vaciar la copia ante un fallo',
-  /emisiones_publicas\?select=\*&estado=in\.\(abierta,programada,en_estudio\)/.test(js) &&
-  /const nE=e\.map\(emisionRemota\)/.test(js) && /EMI\.length=0;\s+EMI\.push/.test(js) &&
-  /try\{ if\(await alDia\(\)\)/.test(js));
+prueba('el catálogo remoto exige las vistas 26/28 y nunca vuelve a las tablas antiguas',
+  /catalogo_plataformas_publicas\?select=\*/.test(js) &&
+  /catalogo_ofertas_publicas\?select=\*/.test(js) &&
+  /validarLoteCatalogoRemoto\(r,e\)/.test(js) &&
+  /const nE=e\.map\(o=>ofertaCatalogoRemota\(o,fecha\)\)/.test(js) &&
+  /EMI\.length=0;\s+EMI\.push/.test(js) &&
+  !/\/radar_publico\?select=\*|\/emisiones_publicas\?select=\*/.test(js));
+prueba('el snapshot 26/28 caducado falla cerrado incluso si la red devuelve vacío',
+  /function comprobarCatalogoEmbebido\(\)/.test(js) && /edad<0\|\|edad>7/.test(js) &&
+  /P\.length=0;EMI\.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true/.test(js) &&
+  /catch\{comprobarCatalogoEmbebido\(\);pintarFiltrosEmision\(\);pintarEmisiones\(\);render\(\)\}/.test(js));
 
 const armazon = arrayConstante(sw, 'ARMAZON');
-const recursosCriticos = ['/', '/privacidad', scripts[0][1], estilos[0][1],
+const recursosCriticos = ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', rutaScriptApp, rutaAnalitica, estilos[0][1],
   '/assets/privacidad-20260820.css', '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src),
   ...rutasPortada];
 const existeRutaArmazon = ruta => {
   if (ruta === '/') return fs.existsSync(path.join(sitio, 'index.html'));
   if (ruta === '/privacidad') return fs.existsSync(path.join(sitio, 'privacidad.html'));
+  if (ruta === '/transparencia-comercial') return fs.existsSync(path.join(sitio, 'transparencia-comercial.html'));
+  if (ruta === '/para-empresas') return fs.existsSync(path.join(sitio, 'para-empresas.html'));
   return fs.existsSync(path.join(sitio, ...ruta.slice(1).split('/')));
 };
 prueba('el armazón PWA contiene una sola vez toda la interfaz crítica que declara la portada',
@@ -1410,13 +1639,17 @@ for (const nombre of ['P','FUERA','EMI'])
   prueba(`el adelgazado conserva exactamente ${nombre}`, JSON.stringify(arrayDe(js,nombre)) === JSON.stringify(arrayDe(jsReducido,nombre)));
 const htmlPublicado = fs.readFileSync(path.join(publicado, 'index.html'), 'utf8');
 const privacidadPublicada = fs.readFileSync(path.join(publicado, 'privacidad.html'), 'utf8');
+const transparenciaComercialPublicada = fs.readFileSync(
+  path.join(publicado, 'transparencia-comercial.html'), 'utf8');
+const paraEmpresasPublicada = fs.readFileSync(path.join(publicado, 'para-empresas.html'), 'utf8');
 const swPublicado = fs.readFileSync(path.join(publicado, 'sw.js'), 'utf8');
 const scriptsPublicados = [...htmlPublicado.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
 const recursoJSPublicado = scriptsPublicados.at(-1)?.[1] || '';
-const hojasPublicadas = [htmlPublicado, privacidadPublicada].flatMap(documento =>
-  [...documento.matchAll(/<link\b([^>]*)>/gi)]
-    .filter(link => (atributoHTML(link[1], 'rel') || '').toLowerCase().split(/\s+/).includes('stylesheet'))
-    .map(link => atributoHTML(link[1], 'href')));
+const hojasPublicadas = [...new Set(
+  [htmlPublicado, privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada].flatMap(documento =>
+    [...documento.matchAll(/<link\b([^>]*)>/gi)]
+      .filter(link => (atributoHTML(link[1], 'rel') || '').toLowerCase().split(/\s+/).includes('stylesheet'))
+      .map(link => atributoHTML(link[1], 'href'))))];
 const armazonPublicado = arrayConstante(swPublicado, 'ARMAZON');
 const rutaJSPublicado = path.join(publicado, '.' + recursoJSPublicado);
 const jsPublicado = fs.readFileSync(rutaJSPublicado, 'utf8');
@@ -1430,17 +1663,30 @@ const archivosPublicados = listarArchivosRegulares(publicado);
 const assetsPublicados = archivosPublicados.filter(x=>x.startsWith('assets/'));
 const portadasPublicadas = archivosPublicados.filter(x=>/^plataformas\/.+\.webp$/.test(x));
 prueba('todo asset desplegable lleva su huella de contenido y no queda el nombre estable',
-  assetsPublicados.length === 4 && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
-  !archivosPublicados.some(x=>/^assets\/(?:error|privacidad|rwadar)-20260820\.(?:css|js)$/.test(x)));
+  assetsPublicados.length === 5 && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
+  !archivosPublicados.some(x=>/^assets\/(?:error|privacidad|rwadar|analitica)-\d{8}\.(?:css|js)$/.test(x)));
+const analiticaPublicada = scriptsPublicados.find(script => /\/analitica-/.test(script[1]))?.[1];
+prueba('la analítica se versiona en todas las páginas y el worker conserva solo el cargador propio',
+  analiticaPublicada && [htmlPublicado, privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada]
+    .every(pagina => pagina.includes(analiticaPublicada)) && armazonPublicado.includes(analiticaPublicada) &&
+  !armazonPublicado.some(ruta => /cloudflareinsights/.test(ruta)));
 prueba('el paquete desplegable incluye las 26 portadas y su manifiesto de procedencia',
   portadasPublicadas.length === 26 &&
   archivosPublicados.includes('plataformas/fuentes.json') &&
   rutasPortada.every(ruta => portadasPublicadas.includes(ruta.slice(1))));
+const editorialesPublicadas = archivosPublicados.filter(x=>x.startsWith('ofertas-editoriales/'));
+prueba('la salida incluye solo el manifiesto y los cuatro fallback editoriales validados',
+  editorialesPublicadas.length === 5 &&
+  activosEditoriales.publicables.every((activo) => {
+    const destino = path.join(publicado, ...activo.salida.split('/'));
+    return editorialesPublicadas.includes(activo.salida) && fs.statSync(destino).size === activo.bytes &&
+      crypto.createHash('sha256').update(fs.readFileSync(destino)).digest('hex') === activo.hashSha256;
+  }));
 prueba('HTML y service worker apuntan al mismo JavaScript versionado',
   htmlPublicado.includes(recursoJSPublicado) && swPublicado.includes(recursoJSPublicado));
 prueba('el worker publicado precachea los assets con huella que realmente usan ambas páginas',
   recursoJSPublicado && hojasPublicadas.length === 2 &&
-  ['/', '/privacidad', recursoJSPublicado, ...hojasPublicadas,
+  ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', recursoJSPublicado, ...hojasPublicadas,
     '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src), ...rutasPortada]
     .every(ruta => armazonPublicado.includes(ruta)) &&
   armazonPublicado.length === new Set(armazonPublicado).size &&
@@ -1469,9 +1715,13 @@ prueba('un cambio de código o datos invalida nombre de asset y VERSION',
 
 console.log('\n=== PUBLICADOR, SINCRONIZADOR Y SERVIDOR ===');
 prueba('el publicador exige exactamente un modo explícito',
-  /modos\.length !== 1/.test(publicador) && /--local \| --preview \| --produccion/.test(publicador));
+  /modos\.length !== 1/.test(publicador) &&
+  /--local \[--sin-sincronizar\] \| --preview \| --produccion/.test(publicador));
+prueba('omitir la sincronización está limitado de forma explícita al modo local',
+  /remoto && sinSincronizar/.test(publicador) &&
+  publicador.indexOf('remoto && sinSincronizar') < publicador.indexOf('MODO_PRIVADO && remoto'));
 prueba('el modo privado bloquea cualquier publicación antes de preparar el artefacto',
-  /const MODO_PRIVADO = true/.test(publicador) &&
+  /const MODO_PRIVADO = (?:true|false)/.test(publicador) &&
   /MODO_PRIVADO && remoto/.test(publicador) &&
   publicador.indexOf('MODO_PRIVADO && remoto') < publicador.indexOf('async function main()'));
 prueba('Wrangler está fijado a una versión exacta', /WRANGLER_VERSION = '\d+\.\d+\.\d+'/.test(publicador));
@@ -1484,6 +1734,11 @@ prueba('el origen Cloudflare está fijado y se valida como origen HTTPS exacto',
   PROYECTO_CLOUDFLARE === 'rwadar' && comprobarOrigenPublico() === ORIGEN_PUBLICO);
 prueba('solo se despliega rwadar-publicado al proyecto Cloudflare declarado',
   /'pages', 'deploy', SALIDA/.test(publicador) && /'--project-name', PROYECTO_CLOUDFLARE/.test(publicador));
+prueba('el remoto coteja Git y la huella aprobada antes y después de sincronizar',
+  /comprobarRevisionGitPublicable/.test(publicador) &&
+  /antes de acceder a servicios externos/.test(publicador) &&
+  /después de sincronizar/.test(publicador) &&
+  /antes de invocar el proveedor de alojamiento/.test(publicador));
 prueba('producción usa main, preview usa una rama separada y no queda despliegue Netlify',
   /const rama = preview \? 'revision' : 'main'/.test(publicador) &&
   /'--branch', rama/.test(publicador) && !/netlify-cli|\bnetlify\s*,\s*args/.test(publicador));
@@ -1508,13 +1763,16 @@ prueba('el capturador de portadas bloquea SSRF y limita cada respuesta mientras 
   /total > maximo/.test(capturadorPortadas));
 prueba('el capturador conserva el encuadre y sustituye cada WebP solo tras validar un temporal',
   /force_original_aspect_ratio=decrease/.test(capturadorPortadas) &&
-  /scale=720:720/.test(capturadorPortadas) && !/crop=720:480/.test(capturadorPortadas) &&
+  /scale=\$\{anchoSalida\}:\$\{altoSalida\}/.test(capturadorPortadas) &&
+  /crop=\$\{anchoSalida\}:\$\{altoSalida\}/.test(capturadorPortadas) &&
   /temporalSalida/.test(capturadorPortadas) && /WebP convertido no válido/.test(capturadorPortadas) &&
   /await fs\.rename\(temporalSalida, destino\)/.test(capturadorPortadas));
-prueba('la selección editorial separa fuentes oficiales y arte generado y falla cerrada',
+prueba('la selección editorial activa las 26 fuentes propias y falla cerrada',
   /const PORTADAS_EDITORIALES = Object\.freeze\(/.test(capturadorPortadas) &&
   /const PORTADAS_GENERADAS = Object\.freeze\(/.test(capturadorPortadas) &&
-  /Object\.keys\(PORTADAS_ACTIVAS\)\.map\(empresa => \[empresa, 6\]\)/.test(capturadorPortadas) &&
+  /'ARTEX Global Markets': \{[\s\S]{0,220}?archivoFuente: 'artex-global-markets\.webp'/.test(capturadorPortadas) &&
+  /Lofty: \{[\s\S]{0,220}?archivoFuente: 'lofty\.webp'/.test(capturadorPortadas) &&
+  /'Pax Gold': \{[\s\S]{0,220}?archivoFuente: 'pax-gold\.webp'/.test(capturadorPortadas) &&
   /origenVisual: 'representacion-editorial-generada'/.test(capturadorPortadas) &&
   /paginaReferencia: PAGINAS_PORTADA\[p\.n\]/.test(capturadorPortadas) &&
   /imagenOrigen: null/.test(capturadorPortadas) && /creador: 'RWAdar'/.test(capturadorPortadas) &&
@@ -1532,10 +1790,13 @@ prueba('el publicador genera y valida JS/CSS adelgazados',
   /adelgazarJS/.test(publicador) && /adelgazarCSS/.test(publicador) && /new Function\(reducido\)/.test(publicador));
 prueba('no existe promoción ni despliegue alternativo tras un fallo',
   !/restoreSiteDeploy|api\/v1\/deploys|deployId|--prod-if-unlocked/.test(publicador));
-prueba('todo remoto valida el estado legal declarado antes de sincronizar',
+prueba('todo remoto exige estado legal documentado y corte operativo antes de sincronizar',
   /const remoto = preview \|\| produccion/.test(publicador) &&
-  /if \(remoto\)[\s\S]*comprobarEstadoLegalPublicacion\(privacidad\)/.test(publicador) &&
-  publicador.indexOf('comprobarEstadoLegalPublicacion(privacidad)') < publicador.indexOf("execFileSync('node'"));
+  /if \(remoto\)[\s\S]*comprobarEstadoLegalPublicacion\(privacidad, \{ exigirDocumentado: true \}\)/.test(publicador) &&
+  /comprobarPreparacionRelanzamiento\(estadoRelanzamiento, \{ destino: preview \? 'preview' : 'produccion' \}\)/.test(publicador) &&
+  publicador.indexOf('comprobarEstadoLegalPublicacion(privacidad') < publicador.indexOf("execFileSync('node'") &&
+  publicador.indexOf('comprobarPreparacionRelanzamiento(estadoRelanzamiento,') >= 0 &&
+  publicador.indexOf('comprobarPreparacionRelanzamiento(estadoRelanzamiento,') < publicador.indexOf("execFileSync('node'"));
 prueba('todo remoto hace preflight Auth de solo lectura y falla cerrado',
   /if \(remoto\)[\s\S]*await comprobarConfiguracionAuth\(\)/.test(publicador) &&
   /mailer_autoconfirm !== false/.test(fs.readFileSync(path.join(raiz,'rwadar-publicacion-segura.js'),'utf8')));
@@ -1547,7 +1808,31 @@ prueba('radar, descartes y emisiones se consultan juntos y fallan cerrados',
 prueba('el sincronizador neutraliza <, > y separadores Unicode',
   /replace\(\/<\/g, '\\\\u003c'\)/.test(sincronizador) &&
   /replace\(\/>\/g, '\\\\u003e'\)/.test(sincronizador) && /\\u2028/.test(sincronizador));
-prueba('las emisiones exigen URL HTTPS y fecha verificable', /esHttps\(e\.url\)/.test(sincronizador) && /verificada_el/.test(sincronizador));
+const ofertaNormalizador = {
+  revision_id:'00000000-0000-0000-0000-000000000001',
+  slug:'prueba-contrato', tipo:'rendimiento', titulo:'Oferta de prueba',
+  plataforma_slug:'proveedor', plataforma_nombre:'Proveedor', categoria:'Inmobiliario',
+  resumen:'Oferta sintética para comprobar el contrato del normalizador.',
+  url:'https://example.test/oferta', verificada_el:'2026-09-21', vigencia_dias:1,
+  estado_revision:'actual', metricas:[], avisos:[], fuentes_actuales:[],
+};
+prueba('el normalizador de ofertas conserva HTTPS y fecha explícita',
+  ofertaPublica(ofertaNormalizador).url === ofertaNormalizador.url &&
+  ofertaPublica(ofertaNormalizador).verificadaEl === ofertaNormalizador.verificada_el);
+for (const entrada of [
+  { url:'http://example.test/oferta' }, { url:'javascript:alert(1)' },
+  { url:'/sin-origen' }, { verificada_el:null }, { verificada_el:'21/09/2026' },
+]) {
+  prueba(`el normalizador rechaza ${JSON.stringify(entrada)}`,
+    Boolean(await capturaError(Promise.resolve().then(() =>
+      ofertaPublica({ ...ofertaNormalizador, ...entrada })))));
+}
+prueba('el sincronizador exige validar el lote antes de normalizar y escribir',
+  sincronizador.indexOf('validarLotePublico(radar, emisiones, { hoy })') > 0 &&
+  sincronizador.indexOf('validarLotePublico(radar, emisiones, { hoy })') <
+    sincronizador.indexOf('emisiones.map(ofertaPublica)') &&
+  sincronizador.indexOf('emisiones.map(ofertaPublica)') <
+    sincronizador.indexOf('escribirAtomico(jsPath, script)'));
 prueba('el sincronizador valida que el JS generado compile', /new Function\(script\)/.test(sincronizador));
 prueba('el CSV estable neutraliza fórmulas incluso tras espacios o tabuladores',
   celdaCSV('=HYPERLINK("https://evil.example")') === '"\'=HYPERLINK(""https://evil.example"")"' &&
@@ -1563,79 +1848,145 @@ prueba('guardar capturas requiere flag, origen local, PNG y límite',
   /ORIGENES_LOCALES\.includes\(origen\)/.test(servidor) && /firmaPng/.test(servidor) && /LIMITE_CAPTURA/.test(servidor));
 prueba('el servidor local replica la CSP de worker/manifest',
   /worker-src 'self'/.test(servidor) && /manifest-src 'self'/.test(servidor));
+prueba('el servidor local corta físicamente cualquier conexión a producción',
+  /connect-src 'self'; form-action 'none'/.test(servidor) &&
+  !/connect-src[^;]*supabase/i.test(servidor));
+prueba('el escaparate local se sirve desde una lista de rutas cerrada y fuera del árbol público',
+  /ESCAPARATE_LOCAL = path\.join\(RAIZ, 'rwadar-movil', 'fixtures', 'escaparate-local\.json'\)/.test(servidor) &&
+  /DIR_OFERTAS_LOCAL = path\.join\(RAIZ, 'rwadar-movil', 'assets', 'ofertas'\)/.test(servidor) &&
+  /\^\[a-z0-9-\]\+\\\.webp\$/.test(servidor) && /fs\.realpathSync\(archivo\)/.test(servidor));
+prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remotas en ese modo',
+  /\^\(\?:localhost\|127\\\.0\\\.0\\\.1\)\$/.test(js) &&
+  /MODO_LOCAL_SEGURO\)throw new Error\('Supabase está bloqueado/.test(js) &&
+  /if\(MODO_LOCAL_SEGURO\)\{[\s\S]{0,500}?cargarEscaparateLocal\(\)/.test(js) &&
+  /else\{\s*mirar\(\)/.test(js));
+prueba('el escaparate local abre el mercado secundario cuando aporta un enlace específico',
+  /urlMercado=urlHttps\(o\.urlMercado\)/.test(js) &&
+  /secundario&&urlMercado\?'Abrir mercado'/.test(js) && /Ficha oficial/.test(js));
+prueba('las tarjetas locales priorizan imagen y dos datos sin convertir el escaparate en un ranking',
+  /function clavesOfertaLocal\(o,secundario\)/.test(js) &&
+  /preferidas\.slice\(0,2\)/.test(js) && /avisos\[0\]/.test(js) &&
+  /escaparate-destacado/.test(js) && !/Ordenar por puntuaci[oó]n/.test(js));
+prueba('en móvil la tarjeta prioriza imagen y dato clave y mueve las métricas al detalle',
+  /#movilPanelRadar \.escaparate-oferta \.escaparate-imagen\{aspect-ratio:16\/7\.7\}/.test(css) &&
+  /#movilPanelRadar \.escaparate-oferta \.escaparate-metricas\{display:none\}/.test(css) &&
+  /#movilPanelRadar \.escaparate-oferta \.emi-pie\{display:flex;align-items:center;flex-direction:row/.test(css) &&
+  /#movilPanelRadar \.escaparate-oferta \.escaparate-detalle-boton,[\s\S]{0,100}min-height:44px/.test(css));
+prueba('el secundario usa filas compactas y la carga local devuelve los controles visibles',
+  /function filaSecundariaLocal\(o\)/.test(js) && /sec\.map\(filaSecundariaLocal\)/.test(js) &&
+  /seccion\.classList\.remove\('sin-emisiones'\)/.test(js));
+prueba('cada tarjeta compacta conserva la información completa en un diálogo accesible',
+  /function abrirDetalleOfertaLocal\(slug\)/.test(js) && /showModal/.test(js) &&
+  /aria-labelledby/.test(js) && /data-cerrar-detalle/.test(js) &&
+  /Instantánea interna/.test(js));
+prueba('los controles compactos distinguen cada oferta y anuncian el filtro seleccionado',
+  /aria-label="Ver detalles de /.test(js) && /aria-label="Abrir mercado para /.test(js) &&
+  js.includes("escHtml(textoEnlace+' · '+o.titulo+' · '+o.plataformaNombre)") &&
+  js.includes("'Ver oferta en '+o.plataformaNombre") && /aria-pressed="/.test(js));
+prueba('el secundario conserva dianas táctiles y microtexto legible en móvil',
+  /\.escaparate-sec-enlaces a,\.escaparate-sec-enlaces button\{min-height:40px/.test(css) &&
+  /\.escaparate-sec-cifras small\{[^}]*font:600 \.6rem/.test(css));
+prueba('el orden de menor entrada contempla las métricas Desde además del precio',
+  /find\(x=>\/\^desde\\s\/i\.test\(x\)\)/.test(js) && /min:\(a,b\)=>entrada\(a\)-entrada\(b\)/.test(js));
 prueba('servidor, worker y CDN tratan las portadas como imágenes estáticas propias',
   /'\.webp': 'image\/webp'/.test(servidor) &&
   /url\.pathname\.startsWith\('\/plataformas\/'\)/.test(sw) &&
   /\/plataformas\/\*[\s\S]{0,120}max-age=0, must-revalidate/.test(headers));
 
 console.log('\n=== PRIVACIDAD, ÍNDICE Y BLOQUEOS ===');
-prueba('la privacidad declara el acuerdo pendiente sin conservar un blocker remoto',
-  /data-deploy-legal-status=["']acuerdo-pendiente-de-documentar["']/.test(privacidad) &&
+prueba('la privacidad identifica al titular y documenta el alcance editorial',
+  /data-deploy-legal-status=["']acuerdo-documentado["']/.test(privacidad) &&
   !/data-deploy-blocker/.test(privacidad));
 const privacidadLineal = privacidad.replace(/\s+/g, ' ');
 prueba('RWAdar exige una edad mínima de 18 años sin conservar el umbral antiguo',
   /exclusivamente a personas mayores de 18 años/i.test(privacidadLineal) &&
   /personas menores de 18 años no deben crear una cuenta/i.test(privacidadLineal) &&
   !/menores de 14 años/i.test(privacidadLineal));
-for (const texto of ['Eric Almiñana','Samuel Rodriguez','Victor Jorques','RWAdar@protonmail.com'])
+for (const texto of ['Víctor Manuel Jorques Granero','persona física','RWAdar@protonmail.com'])
   prueba(`la privacidad identifica ${texto}`, privacidadLineal.includes(texto));
-prueba('el estado pendiente es por acuerdo y plazos, no por los nombres ya facilitados',
-  /pendiente de documentar/.test(privacidadLineal) && /propuestas no aprobadas ni automatizadas/.test(privacidadLineal) &&
-  /Publicar no significa que ese acuerdo ya esté firmado/.test(privacidadLineal) &&
-  !/grafía[\s\S]{0,100}pendiente de confirmación/.test(privacidad));
-prueba('la privacidad declara Cloudflare sin analítica ni Zaraz',
-  /no activa Cloudflare[\s\S]*Web Analytics[\s\S]*Zaraz/.test(privacidad) &&
+prueba('la identidad declarada incluye aviso legal sin aprobar funciones ni extinguir obligaciones anteriores',
+  /id="aviso-legal"/.test(privacidad) && /id="identificacion-titular"/.test(privacidad) &&
+  /<b>NIF:<\/b>\s*\d{8}[A-Z]/.test(privacidad) &&
+  /<b>Domicilio:<\/b>/.test(privacidad) &&
+  /criterios de conservación/.test(privacidadLineal) &&
+  /no extingue las obligaciones anteriores/.test(privacidadLineal) &&
+  /Alcance de esta versión/.test(privacidadLineal) &&
+  !/Eric Almiñana|Samuel Rodriguez|<b>Corresponsables del tratamiento:/.test(privacidad));
+prueba('la privacidad identifica la medición agregada, sus límites y su estado sin despliegue',
+  /Cloudflare Web Analytics/.test(privacidad) && /No se utiliza Zaraz/.test(privacidad) &&
+  /Do Not Track o Global Privacy Control/.test(privacidad) && /no representan personas únicas/.test(privacidad) &&
+  /no permite reconstruir el tráfico anterior/.test(privacidad) &&
   /Cloudflare Pages/.test(privacidad) && /cloudflare-customer-dpa/.test(privacidad));
-prueba('la privacidad explica memoria de sesión y caché PWA sin tokens',
-  /Memoria de la pestaña/.test(privacidad) && /No se guardan respuestas de Supabase,[\s\S]*tokens de sesión/.test(privacidad));
-prueba('la privacidad distingue dispositivo preparado de entrega push no operativa',
-  /permiso y token[\s\S]*no significa que vayas a recibir[\s\S]*avisos/.test(privacidadLineal) &&
+prueba('la privacidad explica ausencia de sesión, limpieza de enlaces y caché PWA sin tokens',
+  /no inicia ni renueva sesiones/.test(privacidad) && /sin canjearlos ni/.test(privacidad) &&
+  /No se guardan respuestas de Supabase,[\s\S]*tokens de sesión/.test(privacidad));
+prueba('la privacidad describe favoritos locales y push cerrado sin prometer borrado histórico',
+  /favoritos solo en el dispositivo/.test(privacidadLineal) &&
+  /no obtiene ni registra tokens push/.test(privacidadLineal) &&
+  /no quedan revocados por esta pausa/.test(privacidadLineal) &&
   /entrega automática está desactivada/.test(privacidadLineal) &&
   /no se ha verificado de extremo a extremo/.test(privacidadLineal) &&
-  /Tampoco están conectados los avisos de nuevas emisiones/.test(privacidadLineal));
+  /Los avisos de nuevas emisiones tampoco están conectados/.test(privacidadLineal));
 prueba('la privacidad tampoco promete correos de cambio del radar',
   /entrega de correos por cambios del radar[\s\S]*todavía no está activa/.test(privacidadLineal));
-prueba('privacidad y UI explican el consentimiento versionado, reversible y todavía inoperativo',
+prueba('privacidad y UI permiten solicitar la retirada del consentimiento anterior sin recoger otro',
   /correo-v1-2026-08-22/.test(privacidadLineal) &&
   /desactivad[oa] por defecto/.test(privacidadLineal) &&
-  /Puede retirarse en el mismo control en cualquier momento/.test(privacidadLineal) &&
+  /retirar cualquier consentimiento anterior escribiendo/.test(privacidadLineal) &&
   /consentimiento explícito/.test(privacidadLineal) &&
-  /El consentimiento para correo está desactivado por defecto/.test(html) &&
-  /faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(html) &&
+  /Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar/.test(html) &&
+  /puedes retirarlo escribiendo a RWAdar@protonmail.com/.test(html) &&
   /Está desactivado por defecto[\s\S]*faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(js));
-prueba('privacidad y UI pausan altas y recuperación hasta probar el correo completo',
-  /mailer_autoconfirm=false/.test(privacidadLineal) &&
-  /debe confirmar su dirección antes de poder iniciar sesión/.test(privacidadLineal) &&
-  /no tiene configurado un SMTP propio/.test(privacidadLineal) &&
-  /en pausa las nuevas altas y la recuperación/.test(privacidadLineal) &&
-  /no recoge esas solicitudes mientras el correo no sea fiable/.test(privacidadLineal) &&
-  /cuentas existentes pueden seguir entrando/.test(privacidadLineal) &&
-  !/mailer_autoconfirm=true|publicación remota[\s\S]{0,80}permanece bloqueada/.test(privacidadLineal) &&
+prueba('privacidad pausa también el acceso existente y mantiene una vía de derechos por correo',
+  /Las altas, el acceso y la recuperación de cuentas están en pausa/.test(privacidadLineal) &&
+  /no recoge esas solicitudes ni envía peticiones de autenticación/.test(privacidadLineal) &&
+  /id="derechos"/.test(privacidad) && /El titular verificará la identidad/.test(privacidadLineal) &&
+  !/cuentas existentes pueden seguir entrando|borrar la cuenta desde tu perfil/.test(privacidadLineal) &&
+  /const SERVICIOS_USUARIO_REMOTOS=false/.test(js) &&
   /const CORREO_AUTH_E2E=false/.test(js) &&
   /solicitado==='registro'\?'registro_pausado'/.test(js) &&
   /solicitado==='recuperar'\?'recuperar_pausado'/.test(js) &&
   /no recogemos nuevas altas ni solicitudes de recuperación/.test(js) &&
   !/Te hemos enviado un correo|ya va en camino un enlace|esta versión no se publicará/.test(js));
-prueba('la privacidad conserva pendientes los plazos de 12 meses y 3 años',
-  /máximo de 12 meses[\s\S]*PENDIENTE/.test(privacidad) && /durante 3 años[\s\S]*PENDIENTE/.test(privacidad));
+prueba('la privacidad explica criterios de conservación y la limpieza de instalaciones comprobada',
+  /más de 180 días sin actividad/.test(privacidadLineal) &&
+  /atender derechos, incidencias u obligaciones/.test(privacidadLineal) &&
+  /Este proceso no borra cuentas/.test(privacidadLineal));
 
 prueba('los redirects usan sintaxis portable de Cloudflare Pages',
   /^\/index\.html\s+\/\s+301$/m.test(redirecciones) &&
-  /^\/privacidad\.html\s+\/privacidad\s+301$/m.test(redirecciones) && !/301!/.test(redirecciones));
+  /^\/privacidad\.html\s+\/privacidad\s+301$/m.test(redirecciones) &&
+  /^\/transparencia-comercial\.html\s+\/transparencia-comercial\s+301$/m.test(redirecciones) &&
+  /^\/para-empresas\.html\s+\/para-empresas\s+301$/m.test(redirecciones) &&
+  !/301!/.test(redirecciones));
 prueba('security.txt tiene contacto, canonical, política de reporte y caducidad futura',
   /Contact: mailto:RWAdar@protonmail\.com/.test(lee('.well-known/security.txt')) &&
   /Canonical: https:\/\/rwadar\.pages\.dev\/\.well-known\/security\.txt/.test(lee('.well-known/security.txt')) &&
-  /Policy: https:\/\/github\.com\/victorJorques\/RWADAR\/security\/policy/.test(lee('.well-known/security.txt')) &&
-  !/Policy: https:\/\/rwadar\.pages\.dev\/privacidad/.test(lee('.well-known/security.txt')) &&
+  /Policy: https:\/\/rwadar\.pages\.dev\/privacidad#reporte-seguridad/.test(lee('.well-known/security.txt')) &&
+  !/github\.com/i.test(lee('.well-known/security.txt')) &&
   /Expires: 2027-08-22T00:00:00\.000Z/.test(lee('.well-known/security.txt')));
-prueba('sitemap y metadatos usan la revisión 2026-08-22',
-  (lee('sitemap.xml').match(/<lastmod>2026-08-22<\/lastmod>/g)||[]).length===2 &&
-  /"dateModified":"2026-08-22"/.test(html));
+const fechasSitemap = new Map([...lee('sitemap.xml').matchAll(
+  /<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/g,
+)].map(m => [m[1], m[2]]));
+const fechaRadarSEO = html.match(/"dateModified":"(\d{4}-\d{2}-\d{2})"/)?.[1];
+const fechaPrivacidadSEO = privacidad.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
+const fechaTransparenciaSEO = transparenciaComercial.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
+prueba('sitemap conserva por ruta las fechas reales del radar y de cada política',
+  fechasSitemap.size === 3 && Boolean(fechaRadarSEO && fechaPrivacidadSEO && fechaTransparenciaSEO) &&
+  fechasSitemap.get(`${ORIGEN_PUBLICO}/`) === fechaRadarSEO &&
+  fechasSitemap.get(`${ORIGEN_PUBLICO}/privacidad`) === fechaPrivacidadSEO &&
+  fechasSitemap.get(`${ORIGEN_PUBLICO}/transparencia-comercial`) === fechaTransparenciaSEO &&
+  /data-partner-status=["']interest-only["']/.test(paraEmpresas) &&
+  !/<loc>https:\/\/rwadar\.pages\.dev\/para-empresas<\/loc>/.test(lee('sitemap.xml')));
 prueba('todo el SEO absoluto usa el origen canónico de Cloudflare',
   html.includes(`<link rel="canonical" href="${ORIGEN_PUBLICO}/">`) &&
+  transparenciaComercial.includes(
+    `<link rel="canonical" href="${ORIGEN_PUBLICO}/transparencia-comercial">`) &&
+  paraEmpresas.includes(`<link rel="canonical" href="${ORIGEN_PUBLICO}/para-empresas">`) &&
+  /<meta name="robots" content="noindex,nofollow">/.test(paraEmpresas) &&
   !/rwadar\.netlify\.app/.test(html) &&
   lee('robots.txt').includes(`${ORIGEN_PUBLICO}/sitemap.xml`) &&
-  (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev/g) || []).length === 2 &&
+  (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev/g) || []).length === 3 &&
   validarOrigenPublicable(sitio) === ORIGEN_PUBLICO);
 prueba('el auditor compara lo publicado con el árbol adelgazado y rechaza analítica inyectada',
   /path\.join\(PUBLICADO, 'index\.html'\)/.test(arrancador) &&
@@ -1652,13 +2003,53 @@ prueba('la documentación exige modo explícito y no recomienda promoción autom
 
 const sinModo = spawnSync(process.execPath, ['rwadar-publicar.js'], { cwd:raiz, encoding:'utf8' });
 prueba('invocar el publicador sin modo falla sin desplegar', sinModo.status===2 && /modo es obligatorio/.test(sinModo.stderr));
-const remotoBloqueado = spawnSync(process.execPath, ['rwadar-publicar.js','--preview','--sin-sincronizar'], { cwd:raiz, encoding:'utf8' });
+const remotoSinSincronizar = spawnSync(
+  process.execPath, ['rwadar-publicar.js','--preview','--sin-sincronizar'], { cwd:raiz, encoding:'utf8' });
+prueba('invocar un remoto con --sin-sincronizar falla antes de cualquier otra compuerta',
+  remotoSinSincronizar.status===2 && /solo se permite con --local/.test(remotoSinSincronizar.stderr) &&
+  !/modo privado y apagado/.test(remotoSinSincronizar.stderr));
+// Probar el cierre privado sin que npm test pueda desplegar la versión real.
+const publicadorPrivado = publicador.replace(/const MODO_PRIVADO = (?:true|false);/, 'const MODO_PRIVADO = true;');
+const remotoBloqueado = spawnSync(process.execPath, ['-e',
+  "process.argv=['node','rwadar-publicar.js','--preview'];\n"+publicadorPrivado], { cwd:raiz, encoding:'utf8' });
 prueba('invocar un modo remoto falla por privacidad antes de usar red',
   remotoBloqueado.status===2 && /modo privado y apagado/.test(remotoBloqueado.stderr));
 prueba('el contrato legal acepta el pendiente transparente y rechaza todo blocker',
-  comprobarEstadoLegalPublicacion(privacidad) === 'acuerdo-pendiente-de-documentar' &&
+  comprobarEstadoLegalPublicacion(privacidad) === 'acuerdo-documentado' &&
   /data-deploy-blocker/.test((await capturaError(Promise.resolve().then(() =>
     comprobarEstadoLegalPublicacion('<main data-deploy-blocker="legal" data-deploy-legal-status="acuerdo-pendiente-de-documentar">'))))?.message || ''));
+const estadoIncompleto = structuredClone(estadoRelanzamiento);
+estadoIncompleto.controles.catalogo_actual_y_citable.estado = 'pendiente';
+prueba('el contrato remoto rechaza el estado pendiente y un corte incompleto',
+  /exige data-deploy-legal-status/.test((await capturaError(Promise.resolve().then(() =>
+    comprobarEstadoLegalPublicacion('<main data-deploy-legal-status="titular-identificado-revision-pendiente">', { exigirDocumentado: true }))))?.message || '') &&
+  /CONTROL_NO_APROBADO/.test((await capturaError(Promise.resolve().then(() =>
+    comprobarPreparacionRelanzamiento(estadoIncompleto, {
+      ahora: new Date('2026-09-21T12:00:00.000Z'),
+    }))))?.message || ''));
+const manifiestoConOk = structuredClone(estadoRelanzamiento);
+manifiestoConOk.actualizadoEl = '2026-09-21';
+manifiestoConOk.revisionAprobada = {
+  commit: 'a'.repeat(40),
+  contenidoSha256: `sha256:${'b'.repeat(64)}`,
+  alcanceSha256: huellaAlcancePublicacion(manifiestoConOk),
+};
+for (const control of Object.values(manifiestoConOk.controles)) {
+  control.estado = 'aprobado';
+  control.evidencias = ['ok'];
+}
+const fallosEvidenciaTrivial = evaluarPreparacionRelanzamiento(manifiestoConOk, {
+  ahora: new Date('2026-09-21T12:00:00.000Z'),
+});
+prueba('el manifiesto v3 exige fecha reciente y evidencia estructurada no trivial',
+  estadoRelanzamiento.version===3 &&
+  fallosEvidenciaTrivial.some(({codigo}) => codigo==='EVIDENCIA_INVALIDA') &&
+  evaluarPreparacionRelanzamiento({...manifiestoConOk, actualizadoEl:'2026-09-13'}, {
+    ahora:new Date('2026-09-21T12:00:00.000Z'),
+  }).some(({codigo}) => codigo==='MANIFIESTO_CADUCADO') &&
+  evaluarPreparacionRelanzamiento({...manifiestoConOk, actualizadoEl:'2026-02-30'}, {
+    ahora:new Date('2026-09-21T12:00:00.000Z'),
+  }).some(({codigo}) => codigo==='FECHA_MANIFIESTO_INVALIDA'));
 prueba('el contrato legal falla cerrado ante estado ausente, desconocido o contradictorio',
   /una sola vez/.test((await capturaError(Promise.resolve().then(() =>
     comprobarEstadoLegalPublicacion('<main>'))))?.message || '') &&
@@ -1725,11 +2116,74 @@ try {
     catch { await new Promise(r=>setTimeout(r,50)); }
   }
   prueba('el servidor local responde por loopback', inicio && inicio.status===200);
+  const htmlLocal = await inicio.text();
+  prueba('el HTML local no expone fichas antiguas antes de validar el fixture',
+    !htmlLocal.includes('Ficha verificada') &&
+    htmlLocal.includes('Cargando catálogo local verificado') &&
+    htmlLocal.includes('Cargando exclusiones verificadas'));
+  const hostLocal = await solicitarConHost(puerto, `localhost:${puerto}`);
+  const hostHostil = await solicitarConHost(puerto, 'rwadar.example.test');
+  const hostSinPuerto = await solicitarConHost(puerto, 'localhost');
+  prueba('el servidor acepta solo Host exacto de localhost o 127.0.0.1 con su puerto',
+    hostLocal.status===200 && hostHostil.status===421 && hostHostil.cuerpo==='host no permitido' &&
+    hostSinPuerto.status===421 && /HOSTS_LOCALES/.test(servidor));
   const cspLocal = inicio.headers.get('content-security-policy') || '';
   prueba('la respuesta local aplica CSP estricta y permite el worker propio',
-    !/unsafe-inline|unsafe-eval/.test(cspLocal) && /worker-src 'self'/.test(cspLocal));
+    !/unsafe-inline|unsafe-eval/.test(cspLocal) && /worker-src 'self'/.test(cspLocal) &&
+    /connect-src 'self'(?:;|$)/.test(cspLocal) && !/supabase/i.test(cspLocal));
+  const escaparateRespuesta = await fetch(`http://127.0.0.1:${puerto}/__rwadar_local/escaparate.json`);
+  const escaparate = await escaparateRespuesta.json();
+  prueba('el endpoint local entrega el escaparate completo sin caché',
+    escaparateRespuesta.status===200 && escaparateRespuesta.headers.get('cache-control')==='no-store' &&
+    escaparate.ofertas?.length===28 && escaparate.secundario?.length===24 &&
+    escaparate.exclusionesOfertas?.length===15);
+  const imagenNombre = escaparate.ofertas[0].imagen.replace(/^ofertas\//,'');
+  const imagenRespuesta = await fetch(`http://127.0.0.1:${puerto}/__rwadar_local/ofertas/${imagenNombre}`);
+  const imagenBytes = Buffer.from(await imagenRespuesta.arrayBuffer());
+  prueba('las imágenes locales son WebP propias y se entregan con nosniff',
+    imagenRespuesta.status===200 && imagenRespuesta.headers.get('content-type')==='image/webp' &&
+    imagenRespuesta.headers.get('x-content-type-options')==='nosniff' &&
+    imagenBytes.subarray(0,4).toString('ascii')==='RIFF' && imagenBytes.subarray(8,12).toString('ascii')==='WEBP');
+  const cabeza = await fetch(`http://127.0.0.1:${puerto}/__rwadar_local/ofertas/${imagenNombre}`, {method:'HEAD'});
+  prueba('los activos locales aceptan HEAD sin abrir métodos de escritura', cabeza.status===200);
+  const manifiestoEditorialRespuesta = await fetch(
+    `http://127.0.0.1:${puerto}/ofertas-editoriales/manifest.json`);
+  const manifiestoEditorial = await manifiestoEditorialRespuesta.json();
+  prueba('el servidor entrega el manifiesto editorial exacto, sin caché y con etiqueta visible',
+    manifiestoEditorialRespuesta.status===200 &&
+    manifiestoEditorialRespuesta.headers.get('cache-control')==='no-store' &&
+    manifiestoEditorialRespuesta.headers.get('x-content-type-options')==='nosniff' &&
+    manifiestoEditorial.etiquetaVisibleObligatoria==='Ilustración editorial' &&
+    manifiestoEditorial.archivos?.length===4);
+  let editorialesValidas = true;
+  for (const entrada of manifiestoEditorial.archivos) {
+    const respuesta = await fetch(`http://127.0.0.1:${puerto}/ofertas-editoriales/${entrada.archivo}`);
+    const bytes = Buffer.from(await respuesta.arrayBuffer());
+    const cabezaEditorial = await fetch(
+      `http://127.0.0.1:${puerto}/ofertas-editoriales/${entrada.archivo}`, {method:'HEAD'});
+    editorialesValidas &&= respuesta.status===200 && cabezaEditorial.status===200 &&
+      respuesta.headers.get('content-type')==='image/webp' && bytes.length===entrada.bytes &&
+      crypto.createHash('sha256').update(bytes).digest('hex')===entrada.hashSha256;
+  }
+  prueba('los cuatro WebP editoriales se sirven por lista cerrada con bytes y SHA-256 exactos',
+    editorialesValidas);
+  const editorialNoListada = await fetch(
+    `http://127.0.0.1:${puerto}/ofertas-editoriales/no-listada.webp`);
+  const editorialPost = await fetch(
+    `http://127.0.0.1:${puerto}/ofertas-editoriales/${manifiestoEditorial.archivos[0].archivo}`,
+    {method:'POST'});
+  prueba('la ruta editorial rechaza nombres no listados y métodos de escritura',
+    editorialNoListada.status===404 && editorialPost.status===405);
+  const traversal = await fetch(`http://127.0.0.1:${puerto}/__rwadar_local/ofertas/%2e%2e%2fescaparate-local.json`);
+  const metodoLocal = await fetch(`http://127.0.0.1:${puerto}/__rwadar_local/escaparate.json`, {method:'POST'});
+  prueba('el endpoint rechaza traversal y cualquier método de mutación', traversal.status===404 && metodoLocal.status===405);
   const politica = await fetch(`http://127.0.0.1:${puerto}/privacidad`);
   prueba('la URL limpia de privacidad funciona localmente', politica.status===200);
+  const transparencia = await fetch(`http://127.0.0.1:${puerto}/transparencia-comercial`);
+  prueba('la URL limpia de transparencia comercial funciona localmente', transparencia.status===200);
+  const empresas = await fetch(`http://127.0.0.1:${puerto}/para-empresas`);
+  prueba('la URL limpia para empresas funciona localmente', empresas.status===200 &&
+    (await empresas.text()).includes('data-partner-status="interest-only"'));
   const post = await fetch(`http://127.0.0.1:${puerto}/guardar?n=prueba.png`, {
     method:'POST',headers:{Origin:`http://127.0.0.1:${puerto}`,'Content-Type':'image/png'},body:new Uint8Array([1,2,3]),
   });

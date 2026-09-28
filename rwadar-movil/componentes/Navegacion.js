@@ -14,7 +14,7 @@ export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
   };
 
   return (
-    <Svg width={tamano} height={tamano} viewBox="0 0 24 24" accessibilityElementsHidden>
+    <Svg width={tamano} height={tamano} viewBox="0 0 24 24">
       {nombre === 'radar' ? (
         <>
           <Circle cx="12" cy="12" r="8" {...comun} />
@@ -27,6 +27,13 @@ export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
         <>
           <Path d="M6.5 3.5h11v17l-5.5-3.4-5.5 3.4z" {...comun} />
           <Path d="m9.3 10.8 1.8 1.8 3.8-4" {...comun} />
+        </>
+      ) : null}
+      {nombre === 'ofertas' ? (
+        <>
+          <Path d="M4 8.5h16v10.2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" {...comun} />
+          <Path d="M8.5 8.5V6.2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2.3M4 12.5c4.8 2 11.2 2 16 0" {...comun} />
+          <Circle cx="12" cy="13.4" r="1.1" fill={color} stroke="none" />
         </>
       ) : null}
       {nombre === 'avisos' ? (
@@ -95,20 +102,22 @@ export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
 
 const DESTINOS = [
   ['radar', 'Radar', 'radar'],
+  ['ofertas', 'Ofertas', 'ofertas'],
   ['sigo', 'Siguiendo', 'siguiendo'],
   ['avisos', 'Avisos', 'avisos'],
   ['mas', 'Más', 'mas'],
 ];
 
-export default function Navegacion({ activa, seguimientos, novedades, onCambiar }) {
+export default function Navegacion({ activa, seguimientos, novedades, onCambiar, mostrarOfertas = false }) {
   const insets = useSafeAreaInsets();
+  const destinos = mostrarOfertas ? DESTINOS : DESTINOS.filter(([id]) => id !== 'ofertas');
   return (
     <View
       style={[e.barra, { paddingBottom: Math.max(insets.bottom, 7) }]}
       accessibilityRole="tablist"
       accessibilityLabel="Navegación principal"
     >
-      {DESTINOS.map(([id, etiqueta, icono]) => {
+      {destinos.map(([id, etiqueta, icono]) => {
         const seleccionada = activa === id;
         const insignia = id === 'sigo' ? seguimientos : id === 'avisos' ? novedades : 0;
         const color = seleccionada ? C.senal : C.tx3;

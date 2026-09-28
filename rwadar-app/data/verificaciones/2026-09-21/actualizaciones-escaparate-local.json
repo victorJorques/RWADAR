@@ -1,0 +1,451 @@
+{
+  "version": 1,
+  "verificadoEl": "2026-09-21",
+  "publicable": false,
+  "derechosImagenVerificados": false,
+  "uso": "Overlay editorial solo local. Actualiza texto y cifras contrastadas, bloquea las dudosas y no autoriza a publicar las imágenes del snapshot.",
+  "ofertas": [
+    {
+      "slug": "caribe-1",
+      "estadoRevision": "no_verificable",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "La página corporativa sigue accesible, pero la oferta no aparece en el catálogo público vigente y la ficha transaccional exige acceso. No se puede afirmar que siga abierta.",
+      "metricas": [
+        { "etiqueta": "Plazo publicado", "valor": "30 meses" },
+        { "etiqueta": "Apertura", "valor": "No verificable" }
+      ],
+      "avisos": [
+        { "texto": "No usar como oferta abierta ni reutilizar el mínimo de 100 $ del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": [
+        "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+        "https://www.reental.co/properties"
+      ]
+    },
+    {
+      "slug": "caribe-2",
+      "estadoRevision": "no_verificable",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "La página corporativa sigue accesible, pero la oferta no aparece en el catálogo público vigente y la ficha transaccional exige acceso. No se puede afirmar que siga abierta.",
+      "metricas": [
+        { "etiqueta": "Plazo publicado", "valor": "30 meses" },
+        { "etiqueta": "Apertura", "valor": "No verificable" }
+      ],
+      "avisos": [
+        { "texto": "No usar como oferta abierta ni reutilizar el mínimo de 100 $ del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": [
+        "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+        "https://www.reental.co/properties"
+      ]
+    },
+    {
+      "slug": "mf-one",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": { "mostrada": "7,51 %", "literal": "APY indicativo y variable observado el 21-09-2026" },
+      "resumen": "Producto vivo sujeto a elegibilidad y onboarding como oferta exenta. España figura en la lista general, pero no se acredita acceso minorista incondicional.",
+      "metricas": [
+        { "etiqueta": "Gestión", "valor": "0,60 % anual sobre AUM" },
+        { "etiqueta": "Performance", "valor": "0 %" },
+        { "etiqueta": "Entrada", "valor": "Mínimo no publicado" }
+      ],
+      "avisos": [
+        { "texto": "Oferta exenta: la disponibilidad depende de elegibilidad, whitelist y KYC/AML.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://midas.app/mfone", "https://docs.midas.app/legal/eligibility-and-compliance"]
+    },
+    {
+      "slug": "mglobal",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "resumen": "Producto vivo con nuevas suscripciones pausadas en la consulta. El 6,65 % publicado corresponde al periodo 1–31 de julio y no es una cifra corriente de septiembre.",
+      "metricas": [
+        { "etiqueta": "Estado", "valor": "Nuevas suscripciones pausadas" },
+        { "etiqueta": "Dato histórico", "valor": "6,65 % · 1–31 julio" },
+        { "etiqueta": "Gestión", "valor": "0,40 % anual sobre AUM" }
+      ],
+      "avisos": [
+        { "texto": "Acceso por whitelist y oferta exenta; no presentar 6,65 % como rendimiento actual.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://midas.app/mglobal", "https://docs.midas.app/legal/eligibility-and-compliance"]
+    },
+    {
+      "slug": "mwin",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": { "mostrada": "3,17 %", "literal": "APY indicativo y variable observado el 21-09-2026" },
+      "resumen": "Producto vivo en Ethereum como oferta exenta, sujeto a acceso, elegibilidad y onboarding; no es una oferta abierta a todo el público.",
+      "metricas": [
+        { "etiqueta": "Gestión", "valor": "0,40 % anual sobre AUM" },
+        { "etiqueta": "Performance", "valor": "0 %" },
+        { "etiqueta": "Entrada", "valor": "Mínimo no publicado" }
+      ],
+      "avisos": [
+        { "texto": "La disponibilidad minorista específica para España no está demostrada.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://midas.app/mwin", "https://docs.midas.app/legal/eligibility-and-compliance"]
+    },
+    {
+      "slug": "mtbill",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": true,
+      "rentabilidad": { "mostrada": "3,41 %", "literal": "APY indicativo y variable observado en la portada el 21-09-2026" },
+      "resumen": "Oferta pública bajo el Reglamento de Folletos de la UE, abierta a inversores minoristas elegibles tras KYC/AML.",
+      "metricas": [
+        { "etiqueta": "Entrada", "valor": "Sin mínimo / umbral cero" },
+        { "etiqueta": "Gestión", "valor": "0 %" },
+        { "etiqueta": "Performance", "valor": "5 % sobre el rendimiento" }
+      ],
+      "avisos": [
+        { "texto": "El APY es dinámico y no constituye una rentabilidad prometida.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://midas.app/mtbill", "https://docs.midas.app/tokens/mtbill"]
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": { "mostrada": "2,09 %", "literal": "Neto anualizado a 30 días · NAV del 20-09-2026" },
+      "resumen": "Fondo monetario UCITS VNAV de corto plazo, vivo en el registro AMF. La disponibilidad española queda condicionada a residencia, nacionalidad y KYC/AML.",
+      "metricas": [
+        { "etiqueta": "Entrada", "valor": "Desde 1 €" },
+        { "etiqueta": "Gestión", "valor": "0,25 % anual" },
+        { "etiqueta": "ISIN", "valor": "FR001400ODL1" }
+      ],
+      "avisos": [
+        { "texto": "La autorización transfronteriza específica en España no quedó confirmada; disponibilidad condicional.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://www.spiko.io/es/spiko-letras-del-tesoro-euro", "https://data.spiko.io/eutbl/", "https://geco.amf-france.org/produit-d-epargne/c79399"]
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": true,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Oro digital respaldado: cada token representa un gramo. No tiene cupón ni vencimiento y solo puede recomprarlo Prosegur; el precio puntual caduca de inmediato.",
+      "metricas": [
+        { "etiqueta": "Entrada", "valor": "1 token = 1 g" },
+        { "etiqueta": "Compra", "valor": "LBMA +4 %" },
+        { "etiqueta": "Recompra", "valor": "LBMA −6 %" }
+      ],
+      "avisos": [
+        { "texto": "No es un valor negociable ni ofrece rentabilidad fija; verifica la cotización en origen.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://es.prosegurdigitalgold.com/", "https://app.prosegurdigitalgold.com/?dg_country=ES#/terms-service"]
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": true,
+      "precio": { "mostrado": "25,00 €", "unidad": "por acción tokenizada" },
+      "rentabilidad": null,
+      "resumen": "Ampliación de capital abierta. Es equity: la ficha no publica cupón, rentabilidad prometida ni vencimiento.",
+      "metricas": [
+        { "etiqueta": "Inversión mínima", "valor": "2.000 € · 80 tokens" },
+        { "etiqueta": "Financiación", "valor": "33,60 % · 1.082.000 / 3.220.000 €" },
+        { "etiqueta": "Ventana", "valor": "40 días observados el 21-09-2026" }
+      ],
+      "avisos": [
+        { "texto": "Campaña dinámica: cifras y días restantes deben revalidarse a diario.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://aliuscap.com/projects/casa-de-outeiro", "https://casadeouteiro.com/emision-capital/"]
+    },
+    {
+      "slug": "aktionariat",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "precio": { "mostrado": "5,00 CHF", "unidad": "último cruce · 20 sep 2026" },
+      "resumen": "Acciones tokenizadas DAKS con inversión directa y mercado secundario. La propia página advierte que parte de sus datos se compila automáticamente sin verificación adicional.",
+      "metricas": [
+        { "etiqueta": "Acciones tokenizadas", "valor": "800.000 DAKS" },
+        { "etiqueta": "Accionistas", "valor": "365" },
+        { "etiqueta": "Capitalización mostrada", "valor": "8.914.960 CHF" }
+      ],
+      "avisos": [
+        { "texto": "Precio de mercado observado; no confundir con el precio fijo del emisor ni con una valoración independiente.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://shares.aktionariat.com/"]
+    },
+    {
+      "slug": "boss-info",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "precio": { "mostrado": "8,44 CHF", "unidad": "último cruce · 29 ago 2026" },
+      "resumen": "Acciones tokenizadas BOSS con inversión directa y mercado secundario. Los datos de la página incluyen fuentes automáticas y deben tratarse como información del emisor.",
+      "metricas": [
+        { "etiqueta": "Acciones tokenizadas", "valor": "10.650.100 BOSS" },
+        { "etiqueta": "Accionistas", "valor": "155" },
+        { "etiqueta": "Capitalización mostrada", "valor": "89.792.561 CHF" }
+      ],
+      "avisos": [
+        { "texto": "El último cruce no garantiza liquidez ni coincide necesariamente con el precio de inversión directa.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://shares.bossinfo.com/"]
+    },
+    {
+      "slug": "wemakeit",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "precio": { "mostrado": "8,38 CHF", "unidad": "precio definido por el emisor" },
+      "resumen": "Acciones tokenizadas WMKT con acceso al mercado secundario. El precio mostrado lo define el emisor y no es un último cruce independiente.",
+      "metricas": [
+        { "etiqueta": "Acciones tokenizadas", "valor": "436.184 WMKT" },
+        { "etiqueta": "Accionistas", "valor": "5.276" },
+        { "etiqueta": "Acciones totales", "valor": "1.050.000" }
+      ],
+      "avisos": [
+        { "texto": "Precio definido por el emisor; confirma el libro y la liquidez antes de actuar.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://shares.wemakeit.com/"]
+    },
+    {
+      "slug": "servicehunter-quitt",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "precio": { "mostrado": "8,00 CHF", "unidad": "último cruce · 23 jul 2026" },
+      "resumen": "Acciones tokenizadas DQTS con mercado secundario. El último cruce es antiguo y no acredita profundidad ni salida inmediata.",
+      "metricas": [
+        { "etiqueta": "Acciones tokenizadas", "valor": "1.655.280 DQTS" },
+        { "etiqueta": "Accionistas", "valor": "227" },
+        { "etiqueta": "Acciones totales", "valor": "2.000.000" }
+      ],
+      "avisos": [
+        { "texto": "Último cruce del 23-07-2026; no interpretar 8 CHF como precio ejecutable hoy.", "tono": "warn", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://shares.quitt.ch/"]
+    },
+    {
+      "slug": "switzerlend",
+      "estadoRevision": "actual",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "precio": { "mostrado": "68,00 CHF", "unidad": "último cruce · 3 sep 2026" },
+      "resumen": "Acciones tokenizadas LENDS con inversión directa y mercado secundario. La capitalización mostrada no cuadra con precio por acciones totales y se omite como métrica fiable.",
+      "metricas": [
+        { "etiqueta": "Acciones tokenizadas", "valor": "27.277 LENDS" },
+        { "etiqueta": "Accionistas", "valor": "284" },
+        { "etiqueta": "Acciones totales", "valor": "31.066" }
+      ],
+      "avisos": [
+        { "texto": "La capitalización publicada es internamente inconsistente; confirma precio, clase y valoración en origen.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }
+      ],
+      "fuentesActuales": ["https://shares.lend.ch/"]
+    },
+    {
+      "slug": "twiliner",
+      "estadoRevision": "no_verificable",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "precio": null,
+      "rentabilidad": null,
+      "resumen": "La ficha oficial no devolvió una lectura actual verificable durante el barrido. No se conserva como vigente el precio de 3 CHF del snapshot de agosto.",
+      "metricas": [{ "etiqueta": "Apertura", "valor": "No verificable" }],
+      "avisos": [{ "texto": "Requiere una ficha oficial accesible o confirmación escrita del emisor.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://tokeninfo.aktionariat.com/twiliner"]
+    },
+    {
+      "slug": "ehc-kloten",
+      "estadoRevision": "no_verificable",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "precio": null,
+      "rentabilidad": null,
+      "resumen": "La ficha oficial no devolvió una lectura actual verificable durante el barrido. No se conserva como vigente el precio de 91 CHF del snapshot de agosto.",
+      "metricas": [{ "etiqueta": "Apertura", "valor": "No verificable" }],
+      "avisos": [{ "texto": "Requiere una ficha oficial accesible o confirmación escrita del emisor.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://tokeninfo.aktionariat.com/ehc-kloten"]
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Las superficies oficiales de Brickwise mostraron cifras repetidas o incompatibles entre marketplace, calculadora y fichas. No se publica una rentabilidad hasta aclararlo.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales en conflicto" }],
+      "avisos": [{ "texto": "No reutilizar el 5,94 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/marketplace", "https://www.brickwise.at/renditerechner"]
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Las superficies oficiales de Brickwise no permiten asociar de forma inequívoca una cifra actual a esta oferta. Se bloquea el dato hasta confirmación del proveedor.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales en conflicto" }],
+      "avisos": [{ "texto": "No reutilizar el 5,58 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/marketplace", "https://www.brickwise.at/renditerechner"]
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "La página oficial identificada por ISIN carga contenido y cifras de otro activo, mientras marketplace y calculadora discrepan. El dato actual queda bloqueado.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Ficha oficial incoherente" }],
+      "avisos": [{ "texto": "No reutilizar el 5,04 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/assets/at0000a2ypq0", "https://www.brickwise.at/marketplace"]
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "No se obtuvo una cifra oficial actual inequívoca para esta oferta. Se conserva la referencia solo para revisión local.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales insuficientes" }],
+      "avisos": [{ "texto": "No reutilizar el 5,07 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/marketplace"]
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Marketplace, calculadora y ficha oficial muestran contenidos o cifras incompatibles. La oferta no conserva una cifra de rendimiento como vigente.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales en conflicto" }],
+      "avisos": [{ "texto": "No reutilizar el 4,98 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/assets/at0000a31kp7", "https://www.brickwise.at/marketplace"]
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Las superficies oficiales consultadas no coinciden de forma fiable en rendimiento, valor y disponibilidad. El dato queda bloqueado.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales en conflicto" }],
+      "avisos": [{ "texto": "No reutilizar el 4,11 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/assets/at0000a2wcd0", "https://www.brickwise.at/marketplace"]
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Las superficies oficiales consultadas no coinciden de forma fiable en rendimiento, valor y disponibilidad. El dato queda bloqueado.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales en conflicto" }],
+      "avisos": [{ "texto": "No reutilizar el 3,73 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/assets/at0000a2wce8", "https://www.brickwise.at/marketplace"]
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "La ficha oficial identificada por ISIN carga contenido de otro activo y las cifras del marketplace no son consistentes. El dato queda bloqueado.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Ficha oficial incoherente" }],
+      "avisos": [{ "texto": "No reutilizar el 4,05 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/assets/at0000a324b4", "https://www.brickwise.at/marketplace"]
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Las fuentes oficiales consultadas muestran cifras incompatibles. La referencia se mantiene sin rentabilidad ni precio actuales.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales en conflicto" }],
+      "avisos": [{ "texto": "No reutilizar el 3,54 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/assets/at0000a2rah5", "https://www.brickwise.at/marketplace"]
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Las fuentes oficiales consultadas muestran cifras incompatibles. La referencia se mantiene sin rentabilidad ni precio actuales.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales en conflicto" }],
+      "avisos": [{ "texto": "No reutilizar el 3,46 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/assets/at0000a2u5v3", "https://www.brickwise.at/marketplace"]
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Las fuentes oficiales consultadas muestran cifras incompatibles. La referencia se mantiene sin rentabilidad ni precio actuales.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales en conflicto" }],
+      "avisos": [{ "texto": "No reutilizar el 3,42 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/assets/at0000a2t4d7", "https://www.brickwise.at/marketplace"]
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "estadoRevision": "fuentes_en_conflicto",
+      "verificadaEl": "2026-09-21",
+      "vigenciaDias": 1,
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "resumen": "Las fuentes oficiales consultadas muestran cifras incompatibles. La referencia se mantiene sin rentabilidad ni precio actuales.",
+      "metricas": [{ "etiqueta": "Estado de revisión", "valor": "Fuentes oficiales en conflicto" }],
+      "avisos": [{ "texto": "No reutilizar el 2,61 % del snapshot de agosto.", "tono": "stop", "esAntiguedad": false, "verificadaEl": "2026-09-21" }],
+      "fuentesActuales": ["https://www.brickwise.at/assets/at0000a2zt84", "https://www.brickwise.at/marketplace"]
+    }
+  ]
+}

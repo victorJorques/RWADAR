@@ -1,0 +1,26 @@
+title = "RWAdar: reglas generales y tokens administrativos de Supabase"
+
+[extend]
+useDefault = true
+
+# Identificador público entregado por la instalación oficial de Web Analytics.
+# No es una API key ni permite acceder al panel. La excepción exige a la vez
+# ESTE valor y ESTE archivo; no excluye otros valores ni las reglas Supabase.
+[[allowlists]]
+description = "Beacon público de RWAdar, confirmado en Cloudflare Web Analytics"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)rwadar-site/assets/analitica-20260927\.js$''']
+regexes = ['''^104ff4d825364641952c49aef4c94fb1$''']
+
+[[rules]]
+id = "rwadar-supabase-personal-token"
+description = "Token personal administrativo de Supabase; no equivale a la clave publicable"
+regex = '''\bsbp_[A-Za-z0-9]{12,}'''
+keywords = ["sbp_"]
+
+[[rules]]
+id = "rwadar-supabase-secret-key"
+description = "Clave secreta de servidor Supabase; nunca debe llegar al cliente"
+regex = '''\bsb_secret_[A-Za-z0-9_-]{20,}\b'''
+keywords = ["sb_secret_"]

@@ -3,19 +3,29 @@ import { isRunningInExpoGo } from 'expo';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import { clienteDispositivo, idInstalacion, idInstalacionExistente } from './supabase';
+import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './modo-local';
+
+const SERVICIOS_ACTIVOS = !MODO_LOCAL && SERVICIOS_USUARIO_REMOTOS === true;
+let moduloSupabase = SERVICIOS_ACTIVOS ? require('./supabase') : null;
+function supabaseRemoto() {
+  if (!SERVICIOS_ACTIVOS) throw new Error('Los servicios remotos de usuario están desactivados');
+  if (!moduloSupabase) throw new Error('No se pudo cargar el cliente remoto');
+  return moduloSupabase;
+}
 
 /* Este módulo prepara permiso, token y registro. El panel no declara entrega
    activa hasta que el proceso de envío exista y la bandera operativa esté
    activada de forma explícita. */
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowBanner: true,
-    shouldShowList: true,
-    shouldPlaySound: false,
-    shouldSetBadge: true,
-  }),
-});
+if (SERVICIOS_ACTIVOS) {
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowBanner: true,
+      shouldShowList: true,
+      shouldPlaySound: false,
+      shouldSetBadge: true,
+    }),
+  });
+}
 
 function proyectoEas() {
   return (
@@ -47,6 +57,7 @@ export function slugDesdeRespuestaAviso(respuesta) {
    respuesta y registrar el listener no solicita permisos ni crea un token.
    Se cubren tanto el arranque en frio como un toque con la app abierta. */
 export function observarAperturasAvisos(onAbrir) {
+  if (!SERVICIOS_ACTIVOS) return () => {};
   if (Platform.OS === 'web' || typeof onAbrir !== 'function') return () => {};
 
   let activo = true;
@@ -105,6 +116,8 @@ function resultadoPreparado() {
 /* Consulta pasiva: nunca abre el diálogo del sistema ni crea una identidad. */
 export async function consultarEstadoAvisos() {
   try {
+    if (MODO_LOCAL) return { ok: false, estado: 'local', local: true };
+    if (!SERVICIOS_ACTIVOS) return { ok: false, estado: 'desactivados' };
     if (Platform.OS === 'web') return { ok: false, estado: 'no-compatible' };
     if (!Device.isDevice) return { ok: false, estado: 'emulador' };
     if (Platform.OS === 'android' && isRunningInExpoGo()) {
@@ -122,6 +135,7 @@ export async function consultarEstadoAvisos() {
       };
     }
 
+    const { clienteDispositivo, idInstalacionExistente } = supabaseRemoto();
     const instalacion = await idInstalacionExistente();
     if (!instalacion) return { ok: false, estado: 'disponible' };
     const sb = await clienteDispositivo({ crear: false });
@@ -148,6 +162,8 @@ export async function consultarEstadoAvisos() {
 /* Solo debe llamarse tras una pulsación explícita en el panel de avisos. */
 export async function registrarParaAvisos({ solicitarPermiso = false } = {}) {
   try {
+    if (MODO_LOCAL) return { ok: false, estado: 'local', local: true };
+    if (!SERVICIOS_ACTIVOS) return { ok: false, estado: 'desactivados' };
     if (Platform.OS === 'web') return { ok: false, estado: 'no-compatible' };
     if (!Device.isDevice) return { ok: false, estado: 'emulador' };
     if (Platform.OS === 'android' && isRunningInExpoGo()) {
@@ -184,6 +200,7 @@ export async function registrarParaAvisos({ solicitarPermiso = false } = {}) {
     const { data: token } = await Notifications.getExpoPushTokenAsync({ projectId });
     if (!token) throw new Error('Expo no devolvió un token push');
 
+    const { clienteDispositivo, idInstalacion } = supabaseRemoto();
     const sb = await clienteDispositivo();
     const instalacion = await idInstalacion();
     await sb

@@ -1,0 +1,37 @@
+{
+  "versionEsquema": 1,
+  "idLote": "escaparate-rwadar-2026-08-27",
+  "publicable": false,
+  "uso": "Solo staging local; no publicable y sin escritura remota.",
+  "loteRuta": "lote.json",
+  "esquemaRuta": "../../../esquemas/oferta-importacion.schema.json",
+  "imagenesDuplicadas": false,
+  "imagenesCopiadas": 0,
+  "archivosReferenciados": [
+    {
+      "rol": "catalogo-origen",
+      "ruta": "../../../../rwadar-movil/fixtures/ofertas-originales/catalogo-normalizado.json",
+      "sha256": "8dcc8d7a74003c5cfb1e21df19114b71ccee6994fd90455773182672a501a3e8",
+      "bytes": 71054
+    },
+    {
+      "rol": "manifiesto-imagenes",
+      "ruta": "../../../../rwadar-movil/fixtures/fuentes-imagenes.json",
+      "sha256": "06f28006f7af4538e26f527986971b193201ebb9109b8723205feca6b9dcf504",
+      "bytes": 50649
+    },
+    {
+      "rol": "proveedores-canonicos-locales",
+      "ruta": "../../../db/02_seed.sql",
+      "sha256": "c7bb5fc9ab67f3a39f770ee9cd80e5c3b563ba808a37ac53a96f380bc23f330c",
+      "bytes": 20497
+    }
+  ],
+  "bloqueosDeclarados": [
+    "snapshot-rancio",
+    "fuentes-primarias-ausentes",
+    "derechos-de-imagen-no-verificados",
+    "proveedores-fuera-del-radar-canonico",
+    "fuente-de-usuario-no-verificada"
+  ]
+}

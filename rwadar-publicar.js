@@ -8,23 +8,27 @@
    navegador, así que no hay discrepancia entre lo que ve el buscador y el
    visitante.
 
-   Uso:  node rwadar-publicar.js --produccion [--sin-sincronizar]
+   Uso:  node rwadar-publicar.js --produccion
          node rwadar-publicar.js --local [--sin-sincronizar]
-         node rwadar-publicar.js --preview [--sin-sincronizar]
+         node rwadar-publicar.js --preview
 
    Exactamente uno de los tres modos es obligatorio. --sin-sincronizar es
-   solo un modificador: nunca selecciona ni presupone producción.
+   solo un modificador local: nunca se admite en un destino remoto.
    ===================================================================== */
 const fs = require('fs');
 const vm = require('vm');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
+const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const {
   ARCHIVOS_PUBLICABLES,
   PROYECTO_CLOUDFLARE,
   comprobarConfiguracionAuth,
   comprobarEstadoLegalPublicacion,
+  comprobarPreparacionRelanzamiento,
+  comprobarContenidoPerfilPublicacion,
+  comprobarRevisionGitPublicable,
   nombreAssetVersionado,
   validarArbolPublicable,
   validarOrigenPublicable,
@@ -37,16 +41,26 @@ const SALIDA = path.join(__dirname, 'rwadar-publicado');
 const WRANGLER_VERSION = '4.125.0';
 const modos = ['--local', '--preview', '--produccion'].filter(x => process.argv.includes(x));
 if (modos.length !== 1) {
-  console.error('USO: node rwadar-publicar.js (--local | --preview | --produccion) [--sin-sincronizar]');
+  console.error('USO: node rwadar-publicar.js (--local [--sin-sincronizar] | --preview | --produccion)');
   console.error('El modo es obligatorio y solo puede indicarse uno. Sin modo nunca se publica.');
   process.exit(2);
 }
 const preview = modos[0] === '--preview';
 const produccion = modos[0] === '--produccion';
 const remoto = preview || produccion;
-const MODO_PRIVADO = true;
+const sinSincronizar = process.argv.includes('--sin-sincronizar');
+const MODO_PRIVADO = false;
 
-/* RWAdar está retirado de internet. El bloqueo ocurre antes de consultar
+/* Un despliegue remoto nunca puede reutilizar silenciosamente el catálogo que
+   haya quedado en disco. Este rechazo precede incluso al bloqueo privado para
+   que la propiedad se conserve al retirar MODO_PRIVADO en un cambio futuro. */
+if (remoto && sinSincronizar) {
+  console.error('PUBLICACION REMOTA BLOQUEADA: --sin-sincronizar solo se permite con --local.');
+  process.exit(2);
+}
+
+/* La republicación fue autorizada expresamente el 27/09/2026. Si se activa
+   de nuevo el modo privado, el bloqueo ocurre antes de consultar
    Auth, sincronizar datos, generar el artefacto o invocar Wrangler. Volver a
    publicar exige una decisión explícita y un cambio revisable de este código;
    no hay variable de entorno ni bandera oculta que lo salte por accidente. */
@@ -61,13 +75,38 @@ if (MODO_PRIVADO && remoto) {
    pendiente, pero un blocker, un estado ausente o uno desconocido fallan
    cerrados. */
 const privacidad = fs.readFileSync(path.join(DIR, 'privacidad.html'), 'utf8');
+let estadoRelanzamiento = null;
+
+function comprobarRevisionRemota(etapa) {
+  try {
+    comprobarContenidoPerfilPublicacion({
+      manifiesto: estadoRelanzamiento,
+      transparencia: fs.readFileSync(path.join(DIR, 'transparencia-comercial.html'), 'utf8'),
+      empresas: fs.readFileSync(path.join(DIR, 'para-empresas.html'), 'utf8'),
+    });
+    return comprobarRevisionGitPublicable({ raiz: __dirname, manifiesto: estadoRelanzamiento });
+  } catch (e) {
+    console.error(`PUBLICACION REMOTA BLOQUEADA (${etapa}): revisión Git no aprobada.`);
+    console.error(`[${e.codigo || 'REVISION_INVALIDA'}] ${e.message}`);
+    process.exit(2);
+  }
+}
+
 if (remoto) {
-  try { comprobarEstadoLegalPublicacion(privacidad); }
+  try {
+    comprobarEstadoLegalPublicacion(privacidad, { exigirDocumentado: true });
+    estadoRelanzamiento = JSON.parse(fs.readFileSync(
+      path.join(__dirname, 'rwadar-app', 'data', 'relanzamiento', 'estado.json'), 'utf8'));
+    comprobarPreparacionRelanzamiento(estadoRelanzamiento, { destino: preview ? 'preview' : 'produccion' });
+  }
   catch (e) {
-    console.error('PUBLICACION REMOTA BLOQUEADA: estado legal ausente, desconocido o bloqueado.');
+    console.error('PUBLICACION REMOTA BLOQUEADA: el corte legal y operativo no está aprobado.');
     console.error(e.message);
     process.exit(2);
   }
+  /* Antes de Auth o Supabase: no se toca red con WIP, evidencia caducada o
+     contenido distinto del commit/sha256 que se aprobó. */
+  comprobarRevisionRemota('antes de acceder a servicios externos');
 }
 
 /* El control se hace sobre archivos reales, no sobre Git. Debe ocurrir antes
@@ -77,6 +116,13 @@ try { validarArbolPublicable(DIR); }
 catch (e) { console.error('ARBOL PUBLICABLE BLOQUEADO:', e.message); process.exit(2); }
 try { validarOrigenPublicable(DIR); }
 catch (e) { console.error('ORIGEN PUBLICO BLOQUEADO:', e.message); process.exit(2); }
+let activosEditoriales;
+try { activosEditoriales = cargarActivosEditoriales(__dirname); }
+catch (e) { console.error('ACTIVOS EDITORIALES BLOQUEADOS:', e.message); process.exit(2); }
+if (remoto && activosEditoriales.manifiesto.estadoUso !== 'aprobado-para-publicacion') {
+  console.error('PUBLICACION REMOTA BLOQUEADA: las ilustraciones editoriales siguen pendientes de aprobación legal.');
+  process.exit(2);
+}
 
 async function main() {
 /* Un preview también carga la aplicación real y puede hablar con Auth. Tras
@@ -93,16 +139,23 @@ if (remoto) {
 }
 
 /* ---- 0 · traer el contenido desde la base de datos ---- */
-if (!process.argv.includes('--sin-sincronizar')) {
+if (!sinSincronizar) {
   try {
     execFileSync('node', [path.join(__dirname, 'rwadar-app', 'sincronizar.js')],
       { stdio: 'inherit' });
   } catch (e) {
     console.error('No se pudo sincronizar con Supabase. No se publica nada.');
-    console.error('(usa --sin-sincronizar para saltarte este paso a proposito)');
+    console.error(remoto
+      ? '(un destino remoto no permite omitir la sincronización)'
+      : '(usa --sin-sincronizar para saltarte este paso a propósito en local)');
     process.exit(1);
   }
 }
+
+/* La sincronización remota solo puede confirmar que el snapshot aprobado ya
+   era actual. Si cambia un byte versionado, el árbol queda sucio y el corte se
+   detiene antes de construir o contactar al proveedor de alojamiento. */
+if (remoto) comprobarRevisionRemota('después de sincronizar');
 
 let html = fs.readFileSync(FILE, 'utf8');
 const htmlOriginal = html;
@@ -125,7 +178,7 @@ function validaMarcadoEstricto(nombre, contenido) {
 }
 
 try {
-  for (const nombre of ['index.html', 'privacidad.html', '404.html']) {
+  for (const nombre of ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html']) {
     const archivo = path.join(DIR, nombre);
     validaMarcadoEstricto(nombre, fs.readFileSync(archivo, 'utf8'));
   }
@@ -314,6 +367,19 @@ if (!marcaPie.test(html)) {
   process.exit(1);
 }
 html = html.replace(marcaPie, `$1${escapaTexto(pieRevision)}$2`);
+
+// Fecha editorial real de los datos, sin rejuvenecer las fuentes canónicas.
+const fechaDatos = vm.runInContext(
+  "[...P.map(p=>p.verificacionLocal?.verificadoEl || p.ver),...EMI.map(o=>o.verificadaEl || o.ver)].filter(Boolean).sort().at(-1)", contexto);
+if (!/^\d{4}-\d{2}-\d{2}$/.test(fechaDatos)) throw new Error('Fecha editorial no verificable');
+html = html.replace(/"dateModified":"\d{4}-\d{2}-\d{2}"/g, `"dateModified":"${fechaDatos}"`)
+  .replace(/"version":"\d{4}-\d{2}-\d{2}"/g, `"version":"${fechaDatos}"`);
+const rutaSitemap = path.join(DIR, 'sitemap.xml');
+const sitemapAntes = fs.readFileSync(rutaSitemap, 'utf8');
+const sitemapAhora = sitemapAntes.replace(
+  /(<loc>https:\/\/rwadar\.pages\.dev\/<\/loc>\s*<lastmod>)[^<]+(<\/lastmod>)/,
+  `$1${fechaDatos}$2`);
+if (sitemapAhora !== sitemapAntes) fs.writeFileSync(rutaSitemap, sitemapAhora, 'utf8');
 try { validaMarcadoEstricto('index.html pre-renderizado', html); }
 catch (e) { console.error('ERROR CSP:', e.message); process.exit(1); }
 if (html !== htmlOriginal) fs.writeFileSync(FILE, html, 'utf8');
@@ -341,6 +407,14 @@ function construirSalida() {
       fs.mkdirSync(path.dirname(destino), { recursive: true });
       fs.copyFileSync(origen, destino);
     }
+    /* Las cuatro ilustraciones viven en una fuente única compartida con
+       Expo. Se copian una a una desde el manifiesto validado; nunca se copia
+       el directorio completo ni se incluyen las 52 imágenes sin derechos. */
+    for (const activo of activosEditoriales.publicables) {
+      const destino = path.join(temporal, ...activo.salida.split('/'));
+      fs.mkdirSync(path.dirname(destino), { recursive: true });
+      fs.copyFileSync(activo.origen, destino);
+    }
 
     /* Minificar primero y poner después una huella del contenido que sí se
        servirá. De este modo immutable nunca congela bytes bajo un nombre
@@ -366,13 +440,15 @@ function construirSalida() {
       for (const [antes, despues] of referencias) salida = salida.split(antes).join(despues);
       return salida;
     };
-    for (const nombre of ['index.html', 'privacidad.html', '404.html', 'sw.js']) {
+    for (const nombre of ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html', 'sw.js']) {
       const archivo = path.join(temporal, nombre);
       fs.writeFileSync(archivo, reescribirReferencias(fs.readFileSync(archivo, 'utf8')), 'utf8');
     }
 
-    const salidaEsperada = ARCHIVOS_PUBLICABLES.map(nombre =>
-      referencias.get('/' + nombre)?.slice(1) || nombre).sort();
+    const salidaEsperada = [
+      ...ARCHIVOS_PUBLICABLES.map(nombre => referencias.get('/' + nombre)?.slice(1) || nombre),
+      ...activosEditoriales.publicables.map(activo => activo.salida),
+    ].sort();
 
     /* VERSION representa todo el artefacto, no una fecha escrita a mano. El
        worker entra normalizado con un marcador para romper únicamente la
@@ -395,7 +471,7 @@ function construirSalida() {
       workerAnterior.replace(/const VERSION = 'rwadar-v[^']+';/, `const VERSION = '${versionCache}';`),
       'utf8');
 
-    for (const nombre of ['index.html','privacidad.html','404.html']) {
+    for (const nombre of ['index.html','privacidad.html','transparencia-comercial.html','para-empresas.html','404.html']) {
       validaMarcadoEstricto(`salida/${nombre}`, fs.readFileSync(path.join(temporal, nombre), 'utf8'));
     }
     validarArbolPublicable(temporal, salidaEsperada);
@@ -423,6 +499,9 @@ if (process.argv.includes('--local')) {
   console.log('Modo local: salida verificada; no se publica.');
   process.exit(0);
 }
+
+/* Último control contra cambios concurrentes durante la construcción local. */
+comprobarRevisionRemota('antes de invocar el proveedor de alojamiento');
 
 /* Node 24 ya no ejecuta archivos .cmd con execFileSync en Windows (EINVAL).
    ComSpec lanza el mismo npx.cmd sin activar shell para el resto de sistemas;

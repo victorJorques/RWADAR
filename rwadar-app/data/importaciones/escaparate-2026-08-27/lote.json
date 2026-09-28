@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../esquemas/oferta-importacion.schema.json",
+  "versionEsquema": 1,
+  "idLote": "escaparate-rwadar-2026-08-27",
+  "estado": "staging",
+  "publicable": false,
+  "uso": "Staging local de trazabilidad. No importar en Supabase, no publicar y no usar para actualizar fechas de verificación.",
+  "nota": "Derivado sin copiar imágenes del artefacto aportado por el usuario. Conserva las fechas reales del snapshot y falla cerrado hasta obtener fuentes primarias, derechos y revisión de proveedores.",
+  "fuente": {
+    "tipo": "artefacto-usuario",
+    "url": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+    "titulo": "Escaparate RWAdar",
+    "barridoEl": "2026-08-27",
+    "capturadoEl": "2026-08-30T00:00:00+02:00",
+    "verificacionIndependiente": false
+  },
+  "catalogo": {
+    "ruta": "../../../../rwadar-movil/fixtures/ofertas-originales/catalogo-normalizado.json",
+    "sha256": "8dcc8d7a74003c5cfb1e21df19114b71ccee6994fd90455773182672a501a3e8",
+    "bytes": 71054,
+    "formato": "rwadar-escaparate-v1"
+  },
+  "imagenes": {
+    "manifiestoRuta": "../../../../rwadar-movil/fixtures/fuentes-imagenes.json",
+    "sha256": "06f28006f7af4538e26f527986971b193201ebb9109b8723205feca6b9dcf504",
+    "bytes": 50649,
+    "duplicadasEnLote": false,
+    "derechosVerificados": false
+  },
+  "proveedores": {
+    "ruta": "../../../db/02_seed.sql",
+    "sha256": "c7bb5fc9ab67f3a39f770ee9cd80e5c3b563ba808a37ac53a96f380bc23f330c",
+    "bytes": 20497,
+    "formato": "rwadar-seed-sql"
+  },
+  "politica": {
+    "maxAntiguedadBarridoDias": 7,
+    "exigirFuentePrimaria": true,
+    "exigirDerechosImagen": true,
+    "permitirFechaImportacionComoVerificacion": false
+  },
+  "evidencias": [],
+  "derechosImagenes": []
+}

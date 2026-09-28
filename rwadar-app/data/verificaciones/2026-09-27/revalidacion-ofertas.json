@@ -1,0 +1,714 @@
+{
+  "version": 1,
+  "consultadaEl": "2026-09-27",
+  "publicable": false,
+  "aplicadoASupabase": false,
+  "aplicadoAlFixture": false,
+  "alcance": "Revalidación editorial de fuentes del escaparate. No sustituye la fuente canónica Supabase ni renueva verificaciones de plataformas, licencias o fotos.",
+  "fuentes": [
+    {
+      "id": "reental-catalogo",
+      "url": "https://www.reental.co/properties",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "Catálogo público; no acredita órdenes de venta en el mercado secundario."
+    },
+    {
+      "id": "midas-elegibilidad",
+      "url": "https://docs.midas.app/legal/eligibility-and-compliance",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "Acceso condicionado por documentación de oferta, jurisdicción y controles del proveedor."
+    },
+    {
+      "id": "midas-mfone",
+      "url": "https://midas.app/mfone",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "En navegador se muestra declaración de elegibilidad antes de acceder. No se aceptó en nombre de un inversor."
+    },
+    {
+      "id": "midas-mglobal",
+      "url": "https://midas.app/mglobal",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "La lectura pública devuelve una aplicación JavaScript sin cifras contrastables."
+    },
+    {
+      "id": "midas-mwin",
+      "url": "https://midas.app/mwin",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "La lectura pública devuelve una aplicación JavaScript sin cifras contrastables."
+    },
+    {
+      "id": "midas-mtbill",
+      "url": "https://midas.app/mtbill",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "La lectura pública devuelve una aplicación JavaScript sin cifras contrastables."
+    },
+    {
+      "id": "brickwise-mercado",
+      "url": "https://www.brickwise.at/marketplace",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "La lectura del listado repite cifras idénticas en diversos inmuebles; no se reutilizan como condiciones individuales actuales."
+    },
+    {
+      "id": "spiko-datos",
+      "url": "https://data.spiko.io/eutbl/",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "NAV fechado el 27-09-2026; rendimiento anualizado a 30 días 2,18 %, NAV 1,0597 y entrada mínima 1 EUR."
+    },
+    {
+      "id": "spiko-producto",
+      "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "Identifica ISIN FR001400ODL1, gestora Twenty First Capital y gestión 0,25 % anual."
+    },
+    {
+      "id": "prosegur-transparencia",
+      "url": "https://prosegurdigitalgold.com/transparency",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "Describe token de un gramo de oro, Polygon y ERC-3643. No se verificó cotización ni se auditó el respaldo físico."
+    },
+    {
+      "id": "outeiro-emisor",
+      "url": "https://casadeouteiro.com/emision-capital/",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "La web del emisor anuncia entrada desde 2.000 EUR y fecha de actualización 17-09-2026; no confirma aquí el precio unitario de 25 EUR."
+    },
+    {
+      "id": "outeiro-plataforma",
+      "url": "https://aliuscap.com/projects/casa-de-outeiro",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "La ficha no fue recuperable mediante la herramienta de lectura web."
+    },
+    {
+      "id": "aktionariat-emisor",
+      "url": "https://shares.aktionariat.com/",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "DAKS: 6,25 CHF, último cruce mostrado 22-09-2026. No es garantía de ejecución."
+    },
+    {
+      "id": "boss-emisor",
+      "url": "https://shares.bossinfo.com/",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "BOSS: el último cruce mostrado sigue siendo 8,44 CHF del 29-08-2026; no es una operación de septiembre."
+    },
+    {
+      "id": "wemakeit-emisor",
+      "url": "https://shares.wemakeit.com/",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "WMKT: 8,38 CHF, expresamente definido por el emisor; no descrito como último cruce."
+    },
+    {
+      "id": "quitt-emisor",
+      "url": "https://shares.quitt.ch/",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "DQTS: último cruce mostrado 8,00 CHF del 23-07-2026; no acredita precio ejecutable actual."
+    },
+    {
+      "id": "lend-emisor",
+      "url": "https://shares.lend.ch/",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "LENDS: 68,01 CHF, último cruce mostrado 25-09-2026."
+    },
+    {
+      "id": "twiliner-emisor",
+      "url": "https://www.twiliner.com/en/partner-werden",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "Anuncia una ronda prevista para el segundo semestre de 2026; el anuncio no demuestra que ya esté abierta."
+    },
+    {
+      "id": "kloten-emisor",
+      "url": "https://investor.ehc-kloten.ch/",
+      "primaria": true,
+      "consultadaEl": "2026-09-27",
+      "resultado": "Describe certificados de participación tokenizados y restricciones territoriales, pero la lectura contiene también datos de plantilla. No se usa para afirmar precio, volumen o liquidez."
+    }
+  ],
+  "grupos": {
+    "reental": {
+      "fuentes": [
+        "reental-catalogo"
+      ],
+      "resultado": "Caribe 1 y Caribe 2 no aparecen en el listado público consultado. No se acredita que estén abiertas ni se reutilizan mínimos o rendimientos antiguos."
+    },
+    "midas": {
+      "fuentes": [
+        "midas-elegibilidad"
+      ],
+      "resultado": "Las condiciones económicas de los cuatro productos no pudieron revalidarse en acceso público. No se trasladan APY del 21 de septiembre a la fecha actual ni se presume elegibilidad."
+    },
+    "brickwise": {
+      "fuentes": [
+        "brickwise-mercado"
+      ],
+      "resultado": "Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes."
+    }
+  },
+  "ofertas": [
+    {
+      "slug": "caribe-1",
+      "titulo": "Caribe 1",
+      "plataformaSlug": "reental",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "no_verificable",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "reental",
+      "fuentes": [
+        "reental-catalogo"
+      ]
+    },
+    {
+      "slug": "caribe-2",
+      "titulo": "Caribe 2",
+      "plataformaSlug": "reental",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "no_verificable",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "reental",
+      "fuentes": [
+        "reental-catalogo"
+      ]
+    },
+    {
+      "slug": "mf-one",
+      "titulo": "mF-ONE",
+      "plataformaSlug": "midas",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "midas",
+      "fuentes": [
+        "midas-elegibilidad",
+        "midas-mfone"
+      ]
+    },
+    {
+      "slug": "mglobal",
+      "titulo": "mGLOBAL",
+      "plataformaSlug": "midas",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "midas",
+      "fuentes": [
+        "midas-elegibilidad",
+        "midas-mglobal"
+      ]
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "titulo": "Fotovoltaica GreenPoint",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "titulo": "Fotovoltaica Cohotel",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "titulo": "Drautalresidenz · Paternion",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "titulo": "Terreno con arrendamiento BILLA",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "titulo": "Apartamento vacacional · Hinterstoder 50",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "titulo": "Vivienda · Stallhofstraße 28, Gratwein",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "titulo": "Vivienda · Schwarzer Weg 18, Graz",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "titulo": "Vivienda · Pottendorfer Straße 62, Wr. Neustadt",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "titulo": "Vivienda · Plüddemanngasse 101, Graz",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "titulo": "Local de estanco · Klagenfurt",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "titulo": "Vivienda · Sonnleithnergasse 2, Viena",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "mwin",
+      "titulo": "mWIN",
+      "plataformaSlug": "midas",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "midas",
+      "fuentes": [
+        "midas-elegibilidad",
+        "midas-mwin"
+      ]
+    },
+    {
+      "slug": "mtbill",
+      "titulo": "mTBILL",
+      "plataformaSlug": "midas",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "midas",
+      "fuentes": [
+        "midas-elegibilidad",
+        "midas-mtbill"
+      ]
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "titulo": "Randhartingergasse 9, Viena",
+      "plataformaSlug": "brickwise",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "fuentes_en_conflicto",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "grupo": "brickwise",
+      "fuentes": [
+        "brickwise-mercado"
+      ]
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "titulo": "Spiko Letras del Tesoro Euro",
+      "plataformaSlug": "spiko",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": {
+        "mostrada": "2,18 %",
+        "literal": "Anualizada a 30 días; NAV fechado el 27-09-2026. Variable, no garantizada."
+      },
+      "precio": null,
+      "estadoRevision": "actual",
+      "fuentes": [
+        "spiko-datos",
+        "spiko-producto"
+      ],
+      "metricas": [
+        {
+          "etiqueta": "NAV",
+          "valor": "1,0597 EUR · 27-09-2026"
+        },
+        {
+          "etiqueta": "Entrada publicada",
+          "valor": "1 EUR"
+        },
+        {
+          "etiqueta": "Gestión",
+          "valor": "0,25 % anual"
+        }
+      ],
+      "resultado": "Se reemplaza la referencia del 2,09 % fechada el 20-09-2026. Acceso efectivo sujeto al proveedor."
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "titulo": "Prosegur Digital Gold",
+      "plataformaSlug": "prosegur-crypto",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "actual",
+      "fuentes": [
+        "prosegur-transparencia"
+      ],
+      "metricas": [
+        {
+          "etiqueta": "Unidad descrita",
+          "valor": "1 g de oro por token"
+        },
+        {
+          "etiqueta": "Tecnología publicada",
+          "valor": "Polygon · ERC-3643"
+        }
+      ],
+      "resultado": "Solo descripción documental; sin precio, rentabilidad, auditoría independiente propia ni elegibilidad afirmada."
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "titulo": "Casa de Outeiro",
+      "plataformaSlug": "alius-capital",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "fuentes": [
+        "outeiro-emisor",
+        "outeiro-plataforma"
+      ],
+      "metricas": [
+        {
+          "etiqueta": "Entrada anunciada por el emisor",
+          "valor": "Desde 2.000 EUR · web actualizada 17-09-2026"
+        }
+      ],
+      "resultado": "No confundir importe mínimo total con precio por acción. El dato previo de 25 EUR por acción queda sin revalidar."
+    },
+    {
+      "slug": "aktionariat",
+      "titulo": "Aktionariat",
+      "plataformaSlug": "aktionariat",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": {
+        "mostrado": "6,25 CHF",
+        "unidad": "último cruce · 22 sep 2026; no precio de ejecución garantizado"
+      },
+      "estadoRevision": "actual",
+      "fuentes": [
+        "aktionariat-emisor"
+      ],
+      "resultado": "Se actualiza la referencia anterior de 5,00 CHF. No se afirma que exista liquidez disponible."
+    },
+    {
+      "slug": "boss-info",
+      "titulo": "Boss Info",
+      "plataformaSlug": "aktionariat",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "actual",
+      "fuentes": [
+        "boss-emisor"
+      ],
+      "precioHistorico": {
+        "mostrado": "8,44 CHF",
+        "fecha": "2026-08-29"
+      },
+      "resultado": "La ficha existe; el precio queda como referencia histórica separada, no como cotización actual."
+    },
+    {
+      "slug": "wemakeit",
+      "titulo": "wemakeit",
+      "plataformaSlug": "aktionariat",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": {
+        "mostrado": "8,38 CHF",
+        "unidad": "valor definido por el emisor, observado el 27-09-2026"
+      },
+      "estadoRevision": "actual",
+      "fuentes": [
+        "wemakeit-emisor"
+      ],
+      "resultado": "Corresponde a acciones de wemakeit, no a los proyectos de crowdfunding alojados en su plataforma."
+    },
+    {
+      "slug": "servicehunter-quitt",
+      "titulo": "ServiceHunter · quitt",
+      "plataformaSlug": "aktionariat",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "actual",
+      "fuentes": [
+        "quitt-emisor"
+      ],
+      "precioHistorico": {
+        "mostrado": "8,00 CHF",
+        "fecha": "2026-07-23"
+      },
+      "resultado": "La ficha corresponde a ServiceHunter AG, operadora de quitt. La última operación mostrada es histórica."
+    },
+    {
+      "slug": "switzerlend",
+      "titulo": "Switzerlend",
+      "plataformaSlug": "aktionariat",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "actual",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": {
+        "mostrado": "68,01 CHF",
+        "unidad": "último cruce · 25 sep 2026; no precio de ejecución garantizado"
+      },
+      "estadoRevision": "actual",
+      "fuentes": [
+        "lend-emisor"
+      ],
+      "resultado": "Acciones LENDS de Switzerlend, distintas de los préstamos ofrecidos por LEND."
+    },
+    {
+      "slug": "twiliner",
+      "titulo": "Twiliner",
+      "plataformaSlug": "aktionariat",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "no_verificable",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "fuentes": [
+        "twiliner-emisor"
+      ],
+      "resultado": "Nueva fuente corporativa encontrada. Se conserva bloqueada la disponibilidad hasta verificar apertura y documentación de la emisión."
+    },
+    {
+      "slug": "ehc-kloten",
+      "titulo": "EHC Kloten",
+      "plataformaSlug": "aktionariat",
+      "consultadaEl": "2026-09-27",
+      "fechaRevisionAnterior": "2026-09-21",
+      "estadoAnterior": "no_verificable",
+      "disponibleEs": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "no_verificable",
+      "fuentes": [
+        "kloten-emisor"
+      ],
+      "urlPropuesta": "https://investor.ehc-kloten.ch/",
+      "resultado": "Sustituir el antiguo enlace fallido por la fuente del emisor al importar. Certificados de participación; no presentar como acciones ordinarias con voto. Cifras de la página sin validar."
+    }
+  ],
+  "secundario": {
+    "estado": "revalidacion_individual_pendiente",
+    "cantidad": 24,
+    "fuenteConsultada": "reental-catalogo",
+    "decision": "El listado público general no acredita profundidad, órdenes ni precios ejecutables del mercado secundario. Se mantienen ocultas las cifras antiguas; no se renuevan las fechas individuales.",
+    "slugs": [
+      "reental-sec-houston-3",
+      "reental-sec-costa-mediterranea-1",
+      "reental-sec-proyecto-100",
+      "reental-sec-rentas-3",
+      "reental-sec-abu-dhabi-1",
+      "reental-sec-granada-3",
+      "reental-sec-carolina-del-norte-1",
+      "reental-sec-dania-beach-1",
+      "reental-sec-punta-cana-5",
+      "reental-sec-miami-2",
+      "reental-sec-rentas-2",
+      "reental-sec-jacksonville-1",
+      "reental-sec-punta-cana-4",
+      "reental-sec-jacksonville-3",
+      "reental-sec-jacksonville-2",
+      "reental-sec-index-1",
+      "reental-sec-opportunity-1",
+      "reental-sec-coliving-malaga-2",
+      "reental-sec-malaga-8",
+      "reental-sec-opportunity-2",
+      "reental-sec-malaga-7",
+      "reental-sec-malaga-3",
+      "reental-sec-malaga-6",
+      "reental-sec-malaga-4"
+    ]
+  },
+  "radarCanonico": {
+    "archivo": "rwadar-app/data/verificaciones/2026-09-21/radar-canonico-26.json",
+    "cantidad": 26,
+    "fechaConservada": "2026-09-21",
+    "revalidadoCompletoEnEstaRevision": false
+  },
+  "criterios": {
+    "imagenes": "Solo ilustraciones editoriales propias al publicar; esta revisión no concede derechos sobre fotos del proveedor.",
+    "comparabilidad": "No equiparar rentabilidad de fondos con precios de acciones ni disponibilidad web con oferta abierta.",
+    "entrada": "Dato del proveedor y requisitos de acceso, sin garantía de admisión.",
+    "importacion": "Pendiente de revisar lote completo, fechas por campo y aplicar a Supabase con autorización específica."
+  }
+}

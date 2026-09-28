@@ -27,7 +27,7 @@
    `self.registration.unregister()` dentro. La siguiente visita lo quita.
    ===================================================================== */
 
-const VERSION = 'rwadar-v20260822-recarga';
+const VERSION = 'rwadar-v20260921-tarjetas-local-6';
 
 /* El armazón mínimo para que la aplicación abra sin red. Los datos no
    están aquí: la página los pide a Supabase al cargar y se repinta sola,
@@ -35,8 +35,11 @@ const VERSION = 'rwadar-v20260822-recarga';
 const ARMAZON = [
   '/',
   '/privacidad',
+  '/transparencia-comercial',
+  '/para-empresas',
   '/assets/rwadar-20260820.css',
   '/assets/rwadar-20260820.js',
+  '/assets/analitica-20260927.js',
   '/assets/privacidad-20260820.css',
   '/plataformas/addx.webp',
   '/plataformas/archax.webp',

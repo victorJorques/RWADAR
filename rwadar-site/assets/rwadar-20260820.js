@@ -6,43 +6,83 @@
      acceso: Minorista | Acreditado | Institucional | Empresas
      aval:   el motivo concreto por el que supera el filtro
    ================================================================= */
+/* El servidor de revisión solo escucha en loopback. Esta comprobación
+   deliberadamente estrecha impide que el escaparate interno se active por
+   un parámetro, una ruta o un dominio que simplemente contenga "local". */
+const MODO_LOCAL_SEGURO=typeof location!=='undefined'&&
+ /^(?:localhost|127\.0\.0\.1)$/.test(String(location.hostname||''))&&
+ /^https?:$/.test(String(location.protocol||''));
+/* servicios-usuario:inicio */
+/* El catálogo público no habilita cuentas. Esta capacidad pertenece al corte
+   editorial y no se puede activar con un dominio, un enlace o almacenamiento.
+   Es una guarda del cliente: no modifica los permisos del servidor. */
+const SERVICIOS_USUARIO_REMOTOS=false;
+const SERVICIOS_USUARIO_DISPONIBLES=SERVICIOS_USUARIO_REMOTOS&&!MODO_LOCAL_SEGURO;
+function limpiarRetornoSinServiciosUsuario(){
+ if(SERVICIOS_USUARIO_DISPONIBLES||typeof location==='undefined'||
+    typeof history==='undefined'||typeof history.replaceState!=='function')return;
+ try{
+  const u=new URL(location.href),fragmento=new URLSearchParams(u.hash.slice(1));
+  const sensibles=['access_token','refresh_token','provider_token','provider_refresh_token',
+   'token','token_hash','code','error','error_code','error_description'];
+  const retorno=sensibles.some(k=>u.searchParams.has(k)||fragmento.has(k));
+  if(!retorno)return;
+  [...sensibles,'type','token_type','expires_in','expires_at'].forEach(k=>u.searchParams.delete(k));
+  if(sensibles.some(k=>fragmento.has(k)))u.hash='';
+  history.replaceState(null,'',u.pathname+u.search+u.hash);
+ }catch(e){} /* Un enlace defectuoso tampoco inicia autenticación. */
+}
+/* servicios-usuario:fin */
+const FECHA_VERIFICACION_LOCAL='2026-09-21';
+let ESCAPARATE_LOCAL=null;
+let MANIFIESTO_EDITORIAL_LOCAL=null;
+let CATALOGO_EMBEBIDO_BLOQUEADO=false;
+/* Activos propios, no fotografías del emisor. La compuerta de publicación
+   comprueba por separado el manifiesto y sus huellas antes de copiarlos. */
+const EDITORIAL_OFERTA_POR_CATEGORIA={
+ 'Inmobiliario':{src:'/ofertas-editoriales/inmobiliario-rwadar.webp',alt:'Ilustración editorial de un activo inmobiliario tokenizado'},
+ 'Tesoro y fondos':{src:'/ofertas-editoriales/tesoro-fondos-rwadar.webp',alt:'Ilustración editorial de tesorería y fondos tokenizados'},
+ 'Materias primas':{src:'/ofertas-editoriales/materias-primas-rwadar.webp',alt:'Ilustración editorial de materias primas tokenizadas'},
+ 'Acciones y capital privado':{src:'/ofertas-editoriales/capital-privado-rwadar.webp',alt:'Ilustración editorial de acciones y capital privado tokenizados'}
+};
+
 const P=[
- {n:"ADDX",cat:"Acciones y capital privado",tipo:"Marketplace",reg:"Asia-Pacífico",cadenas:"Varias",ticket:"Alto",acceso:"Acreditado",web:"https://addx.co",aval:"Licencia de mercado reconocido del MAS de Singapur; accionistas de referencia: la bolsa SGX y el fondo estatal Temasek.",nota:"Fondos de capital riesgo y private equity troceados para inversores acreditados.",ver:"2026-07-26"},
- {n:"Archax",cat:"Acciones y capital privado",tipo:"Marketplace",reg:"Reino Unido",cadenas:"Varias",ticket:"Alto",acceso:"Institucional",web:"https://archax.com",aval:"Autorizada y supervisada por la FCA británica con el número 838656, como exchange, bróker y custodio, e inscrita en su registro de criptoactivos. Tiene permiso para operar un sistema multilateral de negociación, no solo para intermediar.",nota:"Mercado regulado de valores digitales en Londres que reúne emisión, negociación y custodia bajo la misma licencia. Cuidado con los clones: la FCA tiene avisos publicados sobre webs que la suplantan, y el dominio válido es archax.com.",ver:"2026-08-08"},
- {n:"ARTEX Global Markets",cat:"Materias primas",tipo:"Marketplace",reg:"Liechtenstein",cadenas:"Mercado regulado (MTF)",ticket:"Alto",acceso:"Acreditado",web:"https://www.artexgm.com",aval:"Licencia de sistema multilateral de negociación (MTF) bajo MiFID II del regulador de Liechtenstein; SIX aporta compensación y liquidación.",nota:"Mercado regulado de acciones sobre obras de arte: cada cuadro se trocea en acciones de 100 €. Ojo: el token «ARTEX» de BNB Chain no tiene relación con esta plataforma.",ver:"2026-07-26"},
- {n:"Backed Finance",cat:"Acciones y capital privado",tipo:"Emisor",reg:"Suiza",cadenas:"Ethereum, Base, Gnosis",ticket:"Bajo",acceso:"Minorista",web:"https://backed.fi",aval:"Emisor suizo con el activo real depositado 1:1 en custodia de un tercero y atestaciones públicas de respaldo.",nota:"Réplicas tokenizadas de acciones y bonos cotizados, activas desde 2021.",ver:"2026-07-26"},
- {n:"Blocksquare",cat:"Inmobiliario",tipo:"Infraestructura",reg:"Unión Europea",cadenas:"Ethereum",ticket:"No aplica",acceso:"Empresas",web:"https://blocksquare.io",aval:"Vincula cada token a una anotación en el registro de la propiedad, no solo a un contrato inteligente.",nota:"Tecnología para que una inmobiliaria tokenice sus propios activos con respaldo registral.",ver:"2026-07-26"},
- {n:"Centrifuge",cat:"Crédito privado",tipo:"Infraestructura",reg:"Global",cadenas:"Ethereum, Base",ticket:"Alto",acceso:"Institucional",web:"https://centrifuge.io",aval:"Una de las tres plataformas que concentran dos tercios del crédito privado tokenizado; estructura de tramos senior/junior.",nota:"Financiación de carteras de préstamos y facturas con garantía fuera de cadena. Tuvo impagos por 5,8 M$ en 2023 y reforzó su modelo después.",ver:"2026-07-26"},
- {n:"Courtyard",cat:"Materias primas",tipo:"Marketplace",reg:"EE. UU.",cadenas:"Polygon",ticket:"Bajo",acceso:"Minorista",web:"https://courtyard.io",aval:"El objeto físico se guarda en cámara asegurada y el token es canjeable por él en cualquier momento: respaldo comprobable.",nota:"Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados. Líder por volumen semanal en 2026.",ver:"2026-07-26"},
- {n:"Figure",cat:"Crédito privado",tipo:"Emisor",reg:"EE. UU.",cadenas:"Provenance",ticket:"Alto",acceso:"Institucional",web:"https://figure.com",aval:"Cotiza en Nasdaq (FIGR): cuentas auditadas, información pública trimestral y supervisión de la SEC como emisor.",nota:"Mercado de capitales nativo en blockchain para crédito privado y activos tokenizados, con préstamos hipotecarios (HELOC) en su propia cadena.",ver:"2026-07-26"},
- {n:"Fireblocks",cat:"Infraestructura",tipo:"Infraestructura",reg:"Global",cadenas:"Varias",ticket:"No aplica",acceso:"Empresas",web:"https://fireblocks.com",aval:"Custodia institucional con seguros y certificaciones de seguridad, usada por bancos y gestoras de primer nivel.",nota:"El motor de custodia y emisión detrás de decenas de proyectos institucionales de tokenización.",ver:"2026-07-26"},
- {n:"Franklin Templeton",cat:"Tesoro y fondos",tipo:"Emisor",reg:"EE. UU.",cadenas:"Stellar, Varias",ticket:"Bajo",acceso:"Minorista",web:"https://franklintempleton.com",aval:"Gestora tradicional con décadas de historial y fondo registrado ante la SEC. La vía más conservadora para empezar.",nota:"Fondo monetario de deuda pública con el registro de partícipes llevado en cadena desde 2021.",ver:"2026-07-26"},
- {n:"INX",cat:"Acciones y capital privado",tipo:"Marketplace",reg:"EE. UU.",cadenas:"Ethereum",ticket:"Bajo",acceso:"Minorista",web:"https://inx.co",aval:"Bróker-dealer registrado ante la SEC y miembro de FINRA; su matriz cotiza en Nasdaq.",nota:"Plataforma regulada de valores digitales con negociación secundaria abierta a minoristas.",ver:"2026-07-26"},
- {n:"Lofty",cat:"Inmobiliario",tipo:"Marketplace",reg:"EE. UU.",cadenas:"Algorand",ticket:"Bajo",acceso:"Minorista",web:"https://lofty.ai",aval:"Estructura de LLC por inmueble con oferta registrada; una de las pocas vías reales de entrada minorista al inmobiliario tokenizado.",nota:"Vivienda unifamiliar troceada desde 50 $, con reparto de renta diario y voto de los inversores en cada propiedad.",ver:"2026-07-26"},
- {n:"Maple Finance",cat:"Crédito privado",tipo:"Emisor",reg:"Global",cadenas:"Ethereum, Solana",ticket:"Alto",acceso:"Institucional",web:"https://maple.finance",aval:"Cifras auditadas y publicadas cada trimestre en formato de resultados; crédito institucional integrado con Robinhood y Kraken.",nota:"El mayor actor del crédito privado tokenizado: cerró el primer semestre de 2026 con 4.600 M$ gestionados (+81 % interanual) y 1.900 M$ en préstamos vivos.",ver:"2026-07-26"},
- {n:"Midas",cat:"Tesoro y fondos",tipo:"Emisor",reg:"Unión Europea",cadenas:"Ethereum",ticket:"Medio",acceso:"Minorista",web:"https://midas.app",aval:"Emite bajo folleto aprobado en la Unión Europea, lo que obliga a información periódica y responsabilidad del emisor.",nota:"Certificados tokenizados sobre estrategias de renta fija. Levantó 50 M$ con Franklin Templeton y Coinbase Ventures.",ver:"2026-07-26"},
- {n:"Ondo Finance",cat:"Tesoro y fondos",tipo:"Emisor",reg:"EE. UU.",cadenas:"Ethereum, Solana",ticket:"Alto",acceso:"Acreditado",web:"https://ondo.finance",aval:"La mayor plataforma de valores tokenizados por volumen, con los activos subyacentes en custodia de gestoras reguladas.",nota:"Exposición a deuda pública de EE. UU. y, desde 2026, a ETFs de Franklin Templeton tokenizados.",ver:"2026-07-26"},
- {n:"OpenEden",cat:"Tesoro y fondos",tipo:"Emisor",reg:"Asia-Pacífico",cadenas:"Ethereum, Arbitrum",ticket:"Alto",acceso:"Institucional",web:"https://openeden.com",aval:"Estructura de fondo con calificación crediticia de agencia y reservas en letras del Tesoro custodiadas por un tercero.",nota:"Letras del Tesoro de EE. UU. envueltas en un token de suscripción y reembolso, para clientes profesionales.",ver:"2026-07-26"},
- {n:"Pax Gold",cat:"Materias primas",tipo:"Emisor",reg:"EE. UU.",cadenas:"Ethereum",ticket:"Bajo",acceso:"Minorista",web:"https://paxos.com/paxgold",aval:"Emitido por Paxos bajo supervisión del regulador bancario de Nueva York (NYDFS), con atestaciones mensuales del oro asignado.",nota:"Cada token representa una onza concreta de oro asignada en cámaras de Londres, identificable por número de lingote.",ver:"2026-07-26"},
- {n:"Reental",cat:"Inmobiliario",tipo:"Emisor",reg:"España",cadenas:"Varias",ticket:"Bajo",acceso:"Minorista",web:"https://reental.co",aval:"Historial de proyectos completados y devueltos, con cientos de reseñas públicas verificadas de inversores.",nota:"Proyectos inmobiliarios en España y Latinoamérica desde 100 €. La opción más accesible para un inversor español.",ver:"2026-07-26"},
- {n:"Republic",cat:"Acciones y capital privado",tipo:"Marketplace",reg:"EE. UU.",cadenas:"Varias",ticket:"Bajo",acceso:"Minorista",web:"https://republic.com",aval:"Opera con entidades registradas y supervisadas en EE. UU.: OpenDeal Portal LLC como portal de financiación ante la SEC y FINRA desde 2016, y OpenDeal Broker LLC como bróker-dealer miembro de FINRA y SIPC.",nota:"Mercados privados troceados desde importes pequeños: empresas sin cotizar, fondos, cine, deporte y arte. Importante: sus Mirror Tokens no son acciones de la empresa que replican, sino pagarés de la propia Republic que pagan solo si llega una salida a bolsa o una compra.",ver:"2026-08-08"},
- {n:"Securitize",cat:"Tesoro y fondos",tipo:"Infraestructura",reg:"EE. UU.",cadenas:"Varias",ticket:"Alto",acceso:"Institucional",web:"https://securitize.io",aval:"Agente de transferencia registrado ante la SEC. Es quien emite y administra el fondo tokenizado BUIDL de BlackRock.",nota:"La infraestructura sobre la que las grandes gestoras sacan sus fondos a la cadena. El nombre más institucional del sector.",ver:"2026-07-26"},
- {n:"Spiko",cat:"Tesoro y fondos",tipo:"Emisor",reg:"Unión Europea",cadenas:"Varias",ticket:"Bajo",acceso:"Empresas",web:"https://spiko.io",aval:"Fondos monetarios autorizados y supervisados por la AMF, el regulador financiero francés. Marco europeo completo.",nota:"Fondos en euros y dólares pensados para la tesorería de empresas, con reembolso diario.",ver:"2026-07-26"},
- {n:"Superstate",cat:"Tesoro y fondos",tipo:"Emisor",reg:"EE. UU.",cadenas:"Ethereum",ticket:"Alto",acceso:"Acreditado",web:"https://superstate.co",aval:"Fondos estadounidenses registrados con administrador y auditor independientes; fundada por un antiguo responsable de Compound.",nota:"Fondos de deuda pública con las participaciones anotadas directamente en cadena.",ver:"2026-07-26"},
- {n:"Swarm",cat:"Acciones y capital privado",tipo:"Marketplace",reg:"Unión Europea",cadenas:"Polygon",ticket:"Bajo",acceso:"Minorista",web:"https://swarm.com",aval:"Opera bajo licencia de intermediación financiera de BaFin, el regulador alemán, con respaldo 1:1 verificable.",nota:"Acciones y bonos tokenizados negociables dentro del marco regulatorio alemán.",ver:"2026-07-26"},
- {n:"Taurus",cat:"Infraestructura",tipo:"Infraestructura",reg:"Suiza",cadenas:"Varias",ticket:"No aplica",acceso:"Empresas",web:"https://taurushq.com",aval:"Proveedor suizo de custodia para bancos regulados, con despliegues verificables en entidades europeas.",nota:"Custodia y emisión de valores digitales para banca, con la exigencia de auditoría del sector bancario.",ver:"2026-07-26"},
- {n:"Tokeny",cat:"Infraestructura",tipo:"Infraestructura",reg:"Unión Europea",cadenas:"Varias",ticket:"No aplica",acceso:"Empresas",web:"https://tokeny.com",aval:"Autora del estándar ERC-3643, hoy la referencia del sector para tokens con reglas de cumplimiento incorporadas.",nota:"La capa de cumplimiento normativo que usan decenas de emisores institucionales.",ver:"2026-07-26"},
- {n:"tZERO",cat:"Acciones y capital privado",tipo:"Marketplace",reg:"EE. UU.",cadenas:"Varias",ticket:"Bajo",acceso:"Minorista",web:"https://tzero.com",aval:"Opera un sistema alternativo de negociación (ATS) autorizado por la SEC y supervisado por FINRA.",nota:"El mercado secundario de referencia en EE. UU. para valores emitidos en cadena.",ver:"2026-07-26"},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"addx","n":"ADDX","cat":"Acciones y capital privado","tipo":"Marketplace","reg":"Asia-Pacífico","cadenas":"Varias","ticket":"Alto","acceso":"Acreditado","web":"https://addx.co","aval":"Licencia de mercado reconocido del MAS de Singapur; accionistas de referencia: la bolsa SGX y el fondo estatal Temasek.","nota":"Fondos de capital riesgo y private equity troceados para inversores acreditados.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"La propia empresa limita el alta a inversores acreditados o institucionales no estadounidenses.","fuentes":[{"id":"addx-acceso","url":"https://www.addx.co/en/inside-addx/","tipo":"empresa","titulo":"Inside ADDX","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"no_minorista","detalle":"No presentar como acceso minorista general ni como disponible automáticamente en España.","fuentes":[{"id":"addx-acceso","url":"https://www.addx.co/en/inside-addx/","tipo":"empresa","titulo":"Inside ADDX","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web mantiene alta y catálogo de oportunidades.","fuentes":[{"id":"addx-web","url":"https://addx.co/","tipo":"empresa","titulo":"ADDX","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"ADDX Pte. Ltd. figura en el directorio de MAS como CMS licensee y recognised market operator.","fuentes":[{"id":"addx-mas","url":"https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD","tipo":"regulador","titulo":"MAS Financial Institutions Directory — ADDX Pte. Ltd.","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"archax","n":"Archax","cat":"Acciones y capital privado","tipo":"Marketplace","reg":"Reino Unido","cadenas":"Varias","ticket":"Alto","acceso":"Institucional","web":"https://archax.com","aval":"Autorizada y supervisada por la FCA británica con el número 838656, como exchange, bróker y custodio, e inscrita en su registro de criptoactivos. Tiene permiso para operar un sistema multilateral de negociación, no solo para intermediar.","nota":"Mercado regulado de valores digitales en Londres que reúne emisión, negociación y custodia bajo la misma licencia. Cuidado con los clones: la FCA tiene avisos publicados sobre webs que la suplantan, y el dominio válido es archax.com.","ver":"2026-08-08","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"No se pudo contrastar el proceso de alta ni la disponibilidad por producto y país en las páginas consultadas.","fuentes":[{"id":"archax-eu","url":"https://eu.archax.com/","tipo":"empresa","titulo":"Archax Markets Europe","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"entidad_y_servicio","detalle":"El registro de la sociedad europea no confirma que un producto esté abierto ni que una persona concreta sea elegible.","fuentes":[{"id":"archax-cnmv","url":"https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0","tipo":"regulador","titulo":"CNMV — Archax Markets Europe, S.V., S.A.","primaria":true,"consultadaEl":"2026-09-28"},{"id":"archax-eu","url":"https://eu.archax.com/","tipo":"empresa","titulo":"Archax Markets Europe","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"no_verificable","detalle":"Las páginas del grupo y de Europa no devolvieron contenido legible en la consulta; no se confirmó actividad comercial actual.","fuentes":[{"id":"archax-eu","url":"https://eu.archax.com/","tipo":"empresa","titulo":"Archax Markets Europe","primaria":true,"consultadaEl":"2026-09-28"},{"id":"archax-web","url":"https://archax.com/","tipo":"empresa","titulo":"Archax","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"Archax Markets Europe, S.V., S.A. figura en CNMV con registro 289 de 08/08/2019. Este registro no se extiende a otras entidades del grupo.","fuentes":[{"id":"archax-cnmv","url":"https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0","tipo":"regulador","titulo":"CNMV — Archax Markets Europe, S.V., S.A.","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"artex-global-markets","n":"ARTEX Global Markets","cat":"Materias primas","tipo":"Marketplace","reg":"Liechtenstein","cadenas":"Mercado regulado (MTF)","ticket":"Alto","acceso":"Acreditado","web":"https://www.artexgm.com","aval":"Licencia de sistema multilateral de negociación (MTF) bajo MiFID II del regulador de Liechtenstein; SIX aporta compensación y liquidación.","nota":"Mercado regulado de acciones sobre obras de arte: cada cuadro se trocea en acciones de 100 €. Ojo: el token «ARTEX» de BNB Chain no tiene relación con esta plataforma.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"No se obtuvo una fuente primaria actual que confirmase alta, países admitidos y elegibilidad.","fuentes":[{"id":"artex-lb","url":"https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag","tipo":"regulador","titulo":"Bank of Lithuania — ARTEX Global Markets AG","primaria":true,"consultadaEl":"2026-09-28"},{"id":"artex-web","url":"https://www.artexgm.com/","tipo":"empresa","titulo":"ARTEX Global Markets","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"registro_no_equivale_operacion","detalle":"Mantener la fila como no verificable hasta confirmar web, instrumento vivo y proceso de alta.","fuentes":[{"id":"artex-lb","url":"https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag","tipo":"regulador","titulo":"Bank of Lithuania — ARTEX Global Markets AG","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"no_verificable","detalle":"La portada oficial no pudo leerse durante el barrido; no se confirmó una oferta negociable abierta.","fuentes":[{"id":"artex-web","url":"https://www.artexgm.com/","tipo":"empresa","titulo":"ARTEX Global Markets","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"El Banco de Lituania mantiene ARTEX Global Markets AG, de Liechtenstein, en su lista de empresas de inversión del EEE que prestan servicios sin sucursal. No prueba actividad comercial actual.","fuentes":[{"id":"artex-lb","url":"https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag","tipo":"regulador","titulo":"Bank of Lithuania — ARTEX Global Markets AG","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"backed-finance","n":"Backed Finance","cat":"Acciones y capital privado","tipo":"Emisor","reg":"Suiza","cadenas":"Ethereum, Base, Gnosis","ticket":"Bajo","acceso":"Minorista","web":"https://backed.fi","aval":"Emisor suizo con el activo real depositado 1:1 en custodia de un tercero y atestaciones públicas de respaldo.","nota":"Réplicas tokenizadas de acciones y bonos cotizados, activas desde 2021.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"La distribución minorista en el EEE depende de distribuidores autorizados y términos finales; Estados Unidos está excluido.","fuentes":[{"id":"xstocks-legal","url":"https://docs.xstocks.fi/docs/product-legal-overview","tipo":"documento_legal","titulo":"xStocks product legal overview","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"distribuidor_y_producto","detalle":"No traducir 'folleto aprobado' a disponibilidad minorista universal ni a aval del regulador.","fuentes":[{"id":"xstocks-legal","url":"https://docs.xstocks.fi/docs/product-legal-overview","tipo":"documento_legal","titulo":"xStocks product legal overview","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web muestra xStocks y documentación de producto vigente.","fuentes":[{"id":"backed-legal","url":"https://assets.backed.fi/legal-documentation","tipo":"documento_legal","titulo":"Backed Assets product documentation","primaria":true,"consultadaEl":"2026-09-28"},{"id":"backed-web","url":"https://backed.fi/","tipo":"empresa","titulo":"Backed Finance","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_documento_producto","detalle":"La documentación describe valores emitidos bajo un folleto del EEE; no acredita que Backed sea una plataforma de inversión licenciada en España.","fuentes":[{"id":"backed-legal","url":"https://assets.backed.fi/legal-documentation","tipo":"documento_legal","titulo":"Backed Assets product documentation","primaria":true,"consultadaEl":"2026-09-28"},{"id":"xstocks-legal","url":"https://docs.xstocks.fi/docs/product-legal-overview","tipo":"documento_legal","titulo":"xStocks product legal overview","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"blocksquare","n":"Blocksquare","cat":"Inmobiliario","tipo":"Infraestructura","reg":"Unión Europea","cadenas":"Ethereum","ticket":"No aplica","acceso":"Empresas","web":"https://blocksquare.io","aval":"Vincula cada token a una anotación en el registro de la propiedad, no solo a un contrato inteligente.","nota":"Tecnología para que una inmobiliaria tokenice sus propios activos con respaldo registral.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"Los términos enlazados no pudieron leerse; el acceso debe confirmarse con el operador de cada portal y activo.","fuentes":[{"id":"blocksquare-terms","url":"https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md","tipo":"documento_legal","titulo":"Blocksquare certified partner terms template","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"operador_y_activo","detalle":"No atribuir a cada portal una licencia o vínculo registral por utilizar tecnología de tokenización. Revisar emisor, contrato y jurisdicción del activo.","fuentes":[{"id":"blocksquare-terms","url":"https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md","tipo":"documento_legal","titulo":"Blocksquare certified partner terms template","primaria":true,"consultadaEl":"2026-09-28"},{"id":"blocksquare-web","url":"https://blocksquare.io/","tipo":"empresa","titulo":"Blocksquare","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"no_verificable","detalle":"La consulta solo devolvió el título de la portada; no se comprobó actividad comercial ni disponibilidad de portales actuales.","fuentes":[{"id":"blocksquare-web","url":"https://blocksquare.io/","tipo":"empresa","titulo":"Blocksquare","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"no_verificable","detalle":"No se pudieron leer los términos actuales ni comprobar un registro regulatorio que identifique entidad y permisos.","fuentes":[{"id":"blocksquare-terms","url":"https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md","tipo":"documento_legal","titulo":"Blocksquare certified partner terms template","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"centrifuge","n":"Centrifuge","cat":"Crédito privado","tipo":"Infraestructura","reg":"Global","cadenas":"Ethereum, Base","ticket":"Alto","acceso":"Institucional","web":"https://centrifuge.io","aval":"Una de las tres plataformas que concentran dos tercios del crédito privado tokenizado; estructura de tramos senior/junior.","nota":"Financiación de carteras de préstamos y facturas con garantía fuera de cadena. Tuvo impagos por 5,8 M$ en 2023 y reforzó su modelo después.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"La disponibilidad es por fondo y puede limitarse a inversores sofisticados, acreditados o cualificados.","fuentes":[{"id":"centrifuge-terms","url":"https://centrifuge.io/terms","tipo":"documento_legal","titulo":"Centrifuge website terms","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"protocolo_no_emisor","detalle":"Verificar cada fondo, emisor, jurisdicción y documento de oferta; no atribuir al protocolo la licencia del vehículo.","fuentes":[{"id":"centrifuge-terms","url":"https://centrifuge.io/terms","tipo":"documento_legal","titulo":"Centrifuge website terms","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web mantiene infraestructura de gestión de activos on-chain.","fuentes":[{"id":"centrifuge-web","url":"https://centrifuge.io/","tipo":"empresa","titulo":"Centrifuge","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"no_aplica_plataforma","detalle":"Centrifuge es protocolo/infraestructura; sus términos dicen que ni Centrifuge ni afiliadas se licencian en cada jurisdicción y que los productos pueden ser no regulados.","fuentes":[{"id":"centrifuge-terms","url":"https://centrifuge.io/terms","tipo":"documento_legal","titulo":"Centrifuge website terms","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"courtyard","n":"Courtyard","cat":"Materias primas","tipo":"Marketplace","reg":"EE. UU.","cadenas":"Polygon","ticket":"Bajo","acceso":"Minorista","web":"https://courtyard.io","aval":"El objeto físico se guarda en cámara asegurada y el token es canjeable por él en cualquier momento: respaldo comprobable.","nota":"Cromos y coleccionables físicos (cartas Pokémon, deportivas) tokenizados. Líder por volumen semanal en 2026.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"Los términos contienen restricciones de sanciones, pero no se confirmó admisión operativa desde España.","fuentes":[{"id":"courtyard-terms","url":"https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service","tipo":"documento_legal","titulo":"Courtyard terms of service","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"coleccionable_no_valor","detalle":"No presentar coleccionables, recompra o mercado secundario como inversión regulada ni como liquidez garantizada.","fuentes":[{"id":"courtyard-terms","url":"https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service","tipo":"documento_legal","titulo":"Courtyard terms of service","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web muestra packs y coleccionables tokenizados con custodia física.","fuentes":[{"id":"courtyard-web","url":"https://courtyard.io/","tipo":"empresa","titulo":"Courtyard","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"no_aplica_plataforma","detalle":"La documentación revisada describe un marketplace de NFT/coleccionables, no una licencia de mercado de valores.","fuentes":[{"id":"courtyard-terms","url":"https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service","tipo":"documento_legal","titulo":"Courtyard terms of service","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"figure","n":"Figure","cat":"Crédito privado","tipo":"Emisor","reg":"EE. UU.","cadenas":"Provenance","ticket":"Alto","acceso":"Institucional","web":"https://figure.com","aval":"Cotiza en Nasdaq (FIGR): cuentas auditadas, información pública trimestral y supervisión de la SEC como emisor.","nota":"Mercado de capitales nativo en blockchain para crédito privado y activos tokenizados, con préstamos hipotecarios (HELOC) en su propia cadena.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"El registro del broker y su actividad ATS no bastan para confirmar condiciones de alta ni elegibilidad desde España.","fuentes":[{"id":"figure-finra","url":"https://files.brokercheck.finra.org/firm/firm_307093.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — Figure Securities, Inc.","primaria":true,"consultadaEl":"2026-09-28"},{"id":"figure-open","url":"https://www.figuremarkets.com/c/open","tipo":"empresa","titulo":"Figure Markets OPEN disclosures","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"marca_multi_entidad","detalle":"Distinguir Figure Securities de los servicios de crédito y otras entidades de la marca; comprobar el contrato específico del producto.","fuentes":[{"id":"figure-finra","url":"https://files.brokercheck.finra.org/firm/firm_307093.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — Figure Securities, Inc.","primaria":true,"consultadaEl":"2026-09-28"},{"id":"figure-web","url":"https://figure.com/","tipo":"empresa","titulo":"Figure","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"Figure.com mantiene servicios de crédito y enlaces a OPEN y Figure Markets; esto no acredita una oferta de inversión concreta abierta.","fuentes":[{"id":"figure-web","url":"https://figure.com/","tipo":"empresa","titulo":"Figure","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"El informe oficial FINRA de Figure Securities, Inc., CRD 307093, confirma registro SEC y operación de ATS. No se extiende a otras entidades Figure.","fuentes":[{"id":"figure-finra","url":"https://files.brokercheck.finra.org/firm/firm_307093.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — Figure Securities, Inc.","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"fireblocks","n":"Fireblocks","cat":"Infraestructura","tipo":"Infraestructura","reg":"Global","cadenas":"Varias","ticket":"No aplica","acceso":"Empresas","web":"https://fireblocks.com","aval":"Custodia institucional con seguros y certificaciones de seguridad, usada por bancos y gestoras de primer nivel.","nota":"El motor de custodia y emisión detrás de decenas de proyectos institucionales de tokenización.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_aplica_plataforma","detalle":"La oferta principal es B2B/institucional, no un marketplace minorista directo.","fuentes":[{"id":"fireblocks-trust","url":"https://www.fireblocks.com/trustco","tipo":"empresa","titulo":"Fireblocks Trust Company","primaria":true,"consultadaEl":"2026-09-28"},{"id":"fireblocks-web","url":"https://fireblocks.com/","tipo":"empresa","titulo":"Fireblocks","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"licencia_entidad_especifica","detalle":"No describir todos los servicios Fireblocks como custodia regulada; separar Trust Company, software y terceros custodios.","fuentes":[{"id":"fireblocks-trust","url":"https://www.fireblocks.com/trustco","tipo":"empresa","titulo":"Fireblocks Trust Company","primaria":true,"consultadaEl":"2026-09-28"},{"id":"nydfs-virtual","url":"https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses","tipo":"regulador","titulo":"NYDFS virtual currency businesses","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web ofrece infraestructura de activos digitales y stablecoins.","fuentes":[{"id":"fireblocks-web","url":"https://fireblocks.com/","tipo":"empresa","titulo":"Fireblocks","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"Fireblocks Trust Company, LLC figura como trust de propósito limitado en NYDFS; la licencia pertenece a esa entidad, no al software completo.","fuentes":[{"id":"fireblocks-trust","url":"https://www.fireblocks.com/trustco","tipo":"empresa","titulo":"Fireblocks Trust Company","primaria":true,"consultadaEl":"2026-09-28"},{"id":"nydfs-virtual","url":"https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses","tipo":"regulador","titulo":"NYDFS virtual currency businesses","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"franklin-templeton","n":"Franklin Templeton","cat":"Tesoro y fondos","tipo":"Emisor","reg":"EE. UU.","cadenas":"Stellar, Varias","ticket":"Bajo","acceso":"Minorista","web":"https://franklintempleton.com","aval":"Gestora tradicional con décadas de historial y fondo registrado ante la SEC. La vía más conservadora para empezar.","nota":"Fondo monetario de deuda pública con el registro de partícipes llevado en cadena desde 2021.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"El folleto contempla app para particulares y portal institucional, con KYC, mínimos y redes sujetos a elegibilidad; no confirma distribución en España.","fuentes":[{"id":"franklin-prospectus","url":"https://www.franklintempleton.com/forms-literature/download-preview/9001-P","tipo":"folleto_regulatorio","titulo":"Franklin OnChain U.S. Government Money Fund prospectus","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"producto_y_geografia","detalle":"No convertir un fondo estadounidense accesible por Benji en oferta minorista global.","fuentes":[{"id":"franklin-prospectus","url":"https://www.franklintempleton.com/forms-literature/download-preview/9001-P","tipo":"folleto_regulatorio","titulo":"Franklin OnChain U.S. Government Money Fund prospectus","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"Benji y el Franklin OnChain U.S. Government Money Fund mantienen superficies y folleto.","fuentes":[{"id":"franklin-benji","url":"https://digitalassets.franklintempleton.com/benji/","tipo":"empresa","titulo":"Franklin Templeton Benji","primaria":true,"consultadaEl":"2026-09-28"},{"id":"franklin-prospectus","url":"https://www.franklintempleton.com/forms-literature/download-preview/9001-P","tipo":"folleto_regulatorio","titulo":"Franklin OnChain U.S. Government Money Fund prospectus","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_documento_producto","detalle":"El folleto y el expediente SEC de 2025 identifican Franklin OnChain U.S. Government Money Fund. La existencia del expediente no significa aprobación o recomendación de SEC ni confirma distribución en España.","fuentes":[{"id":"franklin-prospectus","url":"https://www.franklintempleton.com/forms-literature/download-preview/9001-P","tipo":"folleto_regulatorio","titulo":"Franklin OnChain U.S. Government Money Fund prospectus","primaria":true,"consultadaEl":"2026-09-28"},{"id":"franklin-sec","url":"https://www.sec.gov/Archives/edgar/data/1786958/000174177325002737/c485bpos.htm","tipo":"regulador","titulo":"SEC EDGAR — Franklin OnChain U.S. Government Money Fund","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"inx","n":"INX","cat":"Acciones y capital privado","tipo":"Marketplace","reg":"EE. UU.","cadenas":"Ethereum","ticket":"Bajo","acceso":"Minorista","web":"https://inx.co","aval":"Bróker-dealer registrado ante la SEC y miembro de FINRA; su matriz cotiza en Nasdaq.","nota":"Plataforma regulada de valores digitales con negociación secundaria abierta a minoristas.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"La documentación describe financiación en USD para usuarios estadounidenses y no estadounidenses, pero no acredita admisión desde España ni elegibilidad para cada valor.","fuentes":[{"id":"inx-disclosure","url":"https://inx.co/funds-availability-disclosure","tipo":"documento_legal","titulo":"INX funds availability disclosure","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"no_nasdaq","detalle":"No afirmar que INX cotiza en Nasdaq; la evidencia revisada confirma el broker/ATS, no ese mercado bursátil.","fuentes":[{"id":"inx-finra","url":"https://files.brokercheck.finra.org/firm/firm_162182.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — INX Securities, LLC","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"INX One sigue activo y aparece integrado con el ecosistema Republic.","fuentes":[{"id":"inx-web","url":"https://inx.co/","tipo":"empresa","titulo":"INX One","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"INX Securities, LLC figura en FINRA como broker-dealer registrado y opera un ATS.","fuentes":[{"id":"inx-disclosure","url":"https://inx.co/funds-availability-disclosure","tipo":"documento_legal","titulo":"INX funds availability disclosure","primaria":true,"consultadaEl":"2026-09-28"},{"id":"inx-finra","url":"https://files.brokercheck.finra.org/firm/firm_162182.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — INX Securities, LLC","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"lofty","n":"Lofty","cat":"Inmobiliario","tipo":"Marketplace","reg":"EE. UU.","cadenas":"Algorand","ticket":"Bajo","acceso":"Minorista","web":"https://lofty.ai","aval":"Estructura de LLC por inmueble con oferta registrada; una de las pocas vías reales de entrada minorista al inmobiliario tokenizado.","nota":"Vivienda unifamiliar troceada desde 50 $, con reparto de renta diario y voto de los inversores en cada propiedad.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"Hay información para no estadounidenses, pero no se confirmó base legal, elegibilidad ni comercialización específica en España.","fuentes":[{"id":"lofty-terms","url":"https://www.lofty.ai/terms","tipo":"documento_legal","titulo":"Lofty terms and conditions","primaria":true,"consultadaEl":"2026-09-28"},{"id":"lofty-web","url":"https://lofty.ai/","tipo":"empresa","titulo":"Lofty","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"sin_registro_y_liquidez","detalle":"No llamar 'oferta registrada' al marketplace ni prometer liquidez instantánea; la ejecución ocurre en redes públicas y no se garantiza mejor ejecución.","fuentes":[{"id":"lofty-terms","url":"https://www.lofty.ai/terms","tipo":"documento_legal","titulo":"Lofty terms and conditions","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web y el marketplace de participaciones inmobiliarias siguen activos.","fuentes":[{"id":"lofty-web","url":"https://lofty.ai/","tipo":"empresa","titulo":"Lofty","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"sin_registro_declarado","detalle":"Sus términos declaran que Lofty no está registrada ante la SEC como bolsa de valores ni en otra capacidad.","fuentes":[{"id":"lofty-terms","url":"https://www.lofty.ai/terms","tipo":"documento_legal","titulo":"Lofty terms and conditions","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"maple-finance","n":"Maple Finance","cat":"Crédito privado","tipo":"Emisor","reg":"Global","cadenas":"Ethereum, Solana","ticket":"Alto","acceso":"Institucional","web":"https://maple.finance","aval":"Cifras auditadas y publicadas cada trimestre en formato de resultados; crédito institucional integrado con Robinhood y Kraken.","nota":"El mayor actor del crédito privado tokenizado: cerró el primer semestre de 2026 con 4.600 M$ gestionados (+81 % interanual) y 1.900 M$ en préstamos vivos.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"La interfaz syrup excluye varias jurisdicciones, entre ellas EE. UU. La página institucional no permite confirmar en este corte todos los requisitos de alta; comprobar el producto concreto.","fuentes":[{"id":"maple-institutional","url":"https://maple.finance/earn/maple-institutional","tipo":"empresa","titulo":"Maple Institutional","primaria":true,"consultadaEl":"2026-09-28"},{"id":"maple-terms","url":"https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt","tipo":"documento_legal","titulo":"Maple interface terms — syrupUSDC and syrupUSDT","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"producto_a_producto","detalle":"No atribuir licencia o elegibilidad de un pool a todo Maple; protocolo, interfaz, emisor y vehículo son capas distintas.","fuentes":[{"id":"maple-terms","url":"https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt","tipo":"documento_legal","titulo":"Maple interface terms — syrupUSDC and syrupUSDT","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web mantiene productos de crédito institucional y syrup.","fuentes":[{"id":"maple-institutional","url":"https://maple.finance/earn/maple-institutional","tipo":"empresa","titulo":"Maple Institutional","primaria":true,"consultadaEl":"2026-09-28"},{"id":"maple-web","url":"https://maple.finance/","tipo":"empresa","titulo":"Maple Finance","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"sin_registro_declarado","detalle":"Los términos de la interfaz syrup declaran que la operadora no está registrada ante ningún regulador.","fuentes":[{"id":"maple-terms","url":"https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt","tipo":"documento_legal","titulo":"Maple interface terms — syrupUSDC and syrupUSDT","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"midas","n":"Midas","cat":"Tesoro y fondos","tipo":"Emisor","reg":"Unión Europea","cadenas":"Ethereum","ticket":"Medio","acceso":"Minorista","web":"https://midas.app","aval":"Emite bajo folleto aprobado en la Unión Europea, lo que obliga a información periódica y responsabilidad del emisor.","nota":"Certificados tokenizados sobre estrategias de renta fija. Levantó 50 M$ con Franklin Templeton y Coinbase Ventures.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"No se obtuvieron términos finales vigentes que permitan confirmar acceso minorista, mínimo de inversión o elegibilidad desde España.","fuentes":[{"id":"midas-mtbill","url":"https://docs.midas.app/resources/legal-product-documentation/mtbill","tipo":"documento_legal","titulo":"Midas mTBILL documentation","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"folleto_vigente_no_confirmado","detalle":"No usar 'aprobado por la FMA' como aval ni como licencia de Midas; exigir folleto y términos finales actualmente vigentes.","fuentes":[{"id":"midas-mtbill","url":"https://docs.midas.app/resources/legal-product-documentation/mtbill","tipo":"documento_legal","titulo":"Midas mTBILL documentation","primaria":true,"consultadaEl":"2026-09-28"},{"id":"midas-old-prospectus","url":"https://www.mfsa.mt/wp-content/uploads/2024/11/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2024.pdf","tipo":"regulador","titulo":"MFSA copy of 2024 Midas base prospectus","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La documentación oficial mantiene una página mTBILL con referencias a folleto y términos finales; la portada transaccional no pudo verificarse.","fuentes":[{"id":"midas-mtbill","url":"https://docs.midas.app/resources/legal-product-documentation/mtbill","tipo":"documento_legal","titulo":"Midas mTBILL documentation","primaria":true,"consultadaEl":"2026-09-28"},{"id":"midas-web","url":"https://midas.app/","tipo":"empresa","titulo":"Midas","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"no_verificable","detalle":"La nueva página mTBILL enlaza documentos embebidos cuyo contenido vigente no se obtuvo. El folleto regulatorio de 2024 consultado venció el 17/07/2025.","fuentes":[{"id":"midas-mtbill","url":"https://docs.midas.app/resources/legal-product-documentation/mtbill","tipo":"documento_legal","titulo":"Midas mTBILL documentation","primaria":true,"consultadaEl":"2026-09-28"},{"id":"midas-old-prospectus","url":"https://www.mfsa.mt/wp-content/uploads/2024/11/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2024.pdf","tipo":"regulador","titulo":"MFSA copy of 2024 Midas base prospectus","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"ondo-finance","n":"Ondo Finance","cat":"Tesoro y fondos","tipo":"Emisor","reg":"EE. UU.","cadenas":"Ethereum, Solana","ticket":"Alto","acceso":"Acreditado","web":"https://ondo.finance","aval":"La mayor plataforma de valores tokenizados por volumen, con los activos subyacentes en custodia de gestoras reguladas.","nota":"Exposición a deuda pública de EE. UU. y, desde 2026, a ETFs de Franklin Templeton tokenizados.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"Para residentes del EEE, USDY exige cliente profesional o inversor cualificado, además del onboarding del emisor.","fuentes":[{"id":"ondo-usdy-access","url":"https://docs.ondo.finance/general-access-products/usdy/eligibility","tipo":"documento_legal","titulo":"Ondo USDY eligibility","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"no_acceso_general","detalle":"No presentar Ondo como minorista global; incluso productos llamados de acceso general tienen restricciones por jurisdicción.","fuentes":[{"id":"ondo-usdy-access","url":"https://docs.ondo.finance/general-access-products/usdy/eligibility","tipo":"documento_legal","titulo":"Ondo USDY eligibility","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web mantiene USDY, OUSG y Ondo Stocks.","fuentes":[{"id":"ondo-web","url":"https://ondo.finance/","tipo":"empresa","titulo":"Ondo Finance","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"no_verificable","detalle":"No se confirmó una licencia única aplicable a la marca; emisor, producto y jurisdicción deben revisarse por separado.","fuentes":[{"id":"ondo-usdy-access","url":"https://docs.ondo.finance/general-access-products/usdy/eligibility","tipo":"documento_legal","titulo":"Ondo USDY eligibility","primaria":true,"consultadaEl":"2026-09-28"},{"id":"ondo-web","url":"https://ondo.finance/","tipo":"empresa","titulo":"Ondo Finance","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"openeden","n":"OpenEden","cat":"Tesoro y fondos","tipo":"Emisor","reg":"Asia-Pacífico","cadenas":"Ethereum, Arbitrum","ticket":"Alto","acceso":"Institucional","web":"https://openeden.com","aval":"Estructura de fondo con calificación crediticia de agencia y reservas en letras del Tesoro custodiadas por un tercero.","nota":"Letras del Tesoro de EE. UU. envueltas en un token de suscripción y reembolso, para clientes profesionales.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"TBILL es permissioned y se limita a inversores profesionales BVI o acreditados de EE. UU. tras KYC/KYT.","fuentes":[{"id":"openeden-onboarding","url":"https://docs.openeden.com/tbill/investor-onboarding","tipo":"documento_legal","titulo":"OpenEden investor onboarding","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"solo_profesional","detalle":"No presentar TBILL como acceso minorista ni confundir rating del fondo con garantía de capital.","fuentes":[{"id":"openeden-intro","url":"https://docs.openeden.com/tbill/introduction","tipo":"documento_legal","titulo":"OpenEden TBILL introduction","primaria":true,"consultadaEl":"2026-09-28"},{"id":"openeden-onboarding","url":"https://docs.openeden.com/tbill/investor-onboarding","tipo":"documento_legal","titulo":"OpenEden investor onboarding","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La documentación oficial de TBILL y su proceso de onboarding es legible; la portada no aportó contenido verificable.","fuentes":[{"id":"openeden-intro","url":"https://docs.openeden.com/tbill/introduction","tipo":"documento_legal","titulo":"OpenEden TBILL introduction","primaria":true,"consultadaEl":"2026-09-28"},{"id":"openeden-onboarding","url":"https://docs.openeden.com/tbill/investor-onboarding","tipo":"documento_legal","titulo":"OpenEden investor onboarding","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_documento_producto","detalle":"La documentación identifica al emisor TBILL como fondo profesional BVI; no convierte a toda OpenEden en entidad regulada para cada servicio.","fuentes":[{"id":"openeden-intro","url":"https://docs.openeden.com/tbill/introduction","tipo":"documento_legal","titulo":"OpenEden TBILL introduction","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"pax-gold","n":"Pax Gold","cat":"Materias primas","tipo":"Emisor","reg":"EE. UU.","cadenas":"Ethereum","ticket":"Bajo","acceso":"Minorista","web":"https://paxos.com/paxgold","aval":"Emitido por Paxos bajo supervisión del regulador bancario de Nueva York (NYDFS), con atestaciones mensuales del oro asignado.","nota":"Cada token representa una onza concreta de oro asignada en cámaras de Londres, identificable por número de lingote.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"La ficha se dirige a individuos e instituciones, pero no confirmó alta o distribución directa desde España.","fuentes":[{"id":"paxg-web","url":"https://paxos.com/paxgold","tipo":"empresa","titulo":"Pax Gold","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"oro_tokenizado","detalle":"Respaldado y canjeable no significa sin riesgo; verificar custodio, comisiones, tamaño mínimo y canal de redención.","fuentes":[{"id":"paxg-nydfs","url":"https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051","tipo":"regulador","titulo":"NYDFS approval of PAX Gold","primaria":true,"consultadaEl":"2026-09-28"},{"id":"paxg-web","url":"https://paxos.com/paxgold","tipo":"empresa","titulo":"Pax Gold","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"Paxos mantiene la ficha PAXG, custodia y opciones de redención.","fuentes":[{"id":"paxg-web","url":"https://paxos.com/paxgold","tipo":"empresa","titulo":"Pax Gold","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"Paxos Trust Company, National Association figura en la lista OCC de trust banks activos de 31/08/2026. La autorización NYDFS de PAX Gold es un antecedente de 2019, no la única evidencia del estado actual.","fuentes":[{"id":"paxg-nydfs","url":"https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051","tipo":"regulador","titulo":"NYDFS approval of PAX Gold","primaria":true,"consultadaEl":"2026-09-28"},{"id":"paxg-occ","url":"https://www.occ.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf","tipo":"regulador","titulo":"OCC — active national trust banks","primaria":true,"consultadaEl":"2026-09-28"},{"id":"paxg-web","url":"https://paxos.com/paxgold","tipo":"empresa","titulo":"Pax Gold","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"reental","n":"Reental","cat":"Inmobiliario","tipo":"Emisor","reg":"España","cadenas":"Varias","ticket":"Bajo","acceso":"Minorista","web":"https://reental.co","aval":"Historial de proyectos completados y devueltos, con cientos de reseñas públicas verificadas de inversores.","nota":"Proyectos inmobiliarios en España y Latinoamérica desde 100 €. La opción más accesible para un inversor español.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"La FAQ declara alta de adultos tras KYC/AML y exige acreditación a residentes fiscales de EE. UU.; cada emisión conserva sus propios términos.","fuentes":[{"id":"reental-faq","url":"https://www.reental.co/en/faqs","tipo":"empresa","titulo":"Reental FAQ","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"emision_no_licencia_plataforma","detalle":"No convertir el registro de una emisión/ERIR en licencia global de plataforma ni dar por abierta una oportunidad sin ficha actual.","fuentes":[{"id":"reental-emision","url":"https://www.reental.co/en/corporate/reental-lanza-la-primera-emision-de-un-security-token-inmobiliario-en-espana-autorizado-por-la-cnmv","tipo":"empresa","titulo":"Reental — emisión concreta y ERIR","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La FAQ oficial describe registro, KYC/AML y firma del acuerdo; no se comprobó la apertura actual de una emisión concreta.","fuentes":[{"id":"reental-faq","url":"https://www.reental.co/en/faqs","tipo":"empresa","titulo":"Reental FAQ","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"no_verificable","detalle":"La fuente primaria localizada acredita una emisión española concreta con ERIR; no acredita una autorización general de Reental como empresa de servicios de inversión.","fuentes":[{"id":"reental-emision","url":"https://www.reental.co/en/corporate/reental-lanza-la-primera-emision-de-un-security-token-inmobiliario-en-espana-autorizado-por-la-cnmv","tipo":"empresa","titulo":"Reental — emisión concreta y ERIR","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"republic","n":"Republic","cat":"Acciones y capital privado","tipo":"Marketplace","reg":"EE. UU.","cadenas":"Varias","ticket":"Bajo","acceso":"Minorista","web":"https://republic.com","aval":"Opera con entidades registradas y supervisadas en EE. UU.: OpenDeal Portal LLC como portal de financiación ante la SEC y FINRA desde 2016, y OpenDeal Broker LLC como bróker-dealer miembro de FINRA y SIPC.","nota":"Mercados privados troceados desde importes pequeños: empresas sin cotizar, fondos, cine, deporte y arte. Importante: sus Mirror Tokens no son acciones de la empresa que replican, sino pagarés de la propia Republic que pagan solo si llega una salida a bolsa o una compra.","ver":"2026-08-08","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"Las páginas consultadas no permiten confirmar la elegibilidad vigente para cada oferta ni acceso desde España; debe revisarse la documentación de la emisión.","fuentes":[{"id":"republic-entities","url":"https://republic.com/help/which-entities-comprise-republic-s-family-of-companies","tipo":"empresa","titulo":"Republic group entities","primaria":true,"consultadaEl":"2026-09-28"},{"id":"republic-web","url":"https://republic.com/","tipo":"empresa","titulo":"Republic","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"grupo_multi_entidad","detalle":"No atribuir a Republic en bloque el registro de una filial ni omitir el régimen específico de cada oferta.","fuentes":[{"id":"republic-entities","url":"https://republic.com/help/which-entities-comprise-republic-s-family-of-companies","tipo":"empresa","titulo":"Republic group entities","primaria":true,"consultadaEl":"2026-09-28"},{"id":"republic-finra","url":"https://files.brokercheck.finra.org/firm/firm_291387.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — OpenDeal Broker LLC","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La plataforma mantiene ofertas y servicios de captación.","fuentes":[{"id":"republic-web","url":"https://republic.com/","tipo":"empresa","titulo":"Republic","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"El informe FINRA CRD 291387 confirma OpenDeal Broker LLC. La página corporativa de entidades declara una actualización de 2022 y no acredita por sí sola todo el organigrama actual.","fuentes":[{"id":"republic-entities","url":"https://republic.com/help/which-entities-comprise-republic-s-family-of-companies","tipo":"empresa","titulo":"Republic group entities","primaria":true,"consultadaEl":"2026-09-28"},{"id":"republic-finra","url":"https://files.brokercheck.finra.org/firm/firm_291387.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — OpenDeal Broker LLC","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"securitize","n":"Securitize","cat":"Tesoro y fondos","tipo":"Infraestructura","reg":"EE. UU.","cadenas":"Varias","ticket":"Alto","acceso":"Institucional","web":"https://securitize.io","aval":"Agente de transferencia registrado ante la SEC. Es quien emite y administra el fondo tokenizado BUIDL de BlackRock.","nota":"La infraestructura sobre la que las grandes gestoras sacan sus fondos a la cadena. El nombre más institucional del sector.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"El informe del broker/ATS no acredita alta disponible ni elegibilidad concreta del inversor para cada activo.","fuentes":[{"id":"securitize-finra","url":"https://files.brokercheck.finra.org/firm/firm_283256.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — Securitize Markets, LLC","primaria":true,"consultadaEl":"2026-09-28"},{"id":"securitize-web","url":"https://securitize.io/","tipo":"empresa","titulo":"Securitize","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"entidades_separadas","detalle":"Nombrar la filial regulada y no extender su permiso a tokenización, administración o asesoramiento del grupo.","fuentes":[{"id":"securitize-finra","url":"https://files.brokercheck.finra.org/firm/firm_283256.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — Securitize Markets, LLC","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"no_verificable","detalle":"La portada no aportó contenido comercial suficiente para verificar la operación actual; el registro de Securitize Markets se comprueba por separado.","fuentes":[{"id":"securitize-finra","url":"https://files.brokercheck.finra.org/firm/firm_283256.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — Securitize Markets, LLC","primaria":true,"consultadaEl":"2026-09-28"},{"id":"securitize-web","url":"https://securitize.io/","tipo":"empresa","titulo":"Securitize","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"Securitize Markets, LLC figura como broker-dealer SEC/FINRA y ATS; otras funciones pertenecen a otras filiales.","fuentes":[{"id":"securitize-finra","url":"https://files.brokercheck.finra.org/firm/firm_283256.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — Securitize Markets, LLC","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"spiko","n":"Spiko","cat":"Tesoro y fondos","tipo":"Emisor","reg":"Unión Europea","cadenas":"Varias","ticket":"Bajo","acceso":"Empresas","web":"https://spiko.io","aval":"Fondos monetarios autorizados y supervisados por la AMF, el regulador financiero francés. Marco europeo completo.","nota":"Fondos en euros y dólares pensados para la tesorería de empresas, con reembolso diario.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"Spiko indica que UCITS puede aceptar no profesionales; no se confirmó la comercialización transfronteriza concreta en España.","fuentes":[{"id":"spiko-access","url":"https://www.spiko.io/use-cases/web3","tipo":"empresa","titulo":"Spiko Web3 use case and UCITS access","primaria":true,"consultadaEl":"2026-09-28"},{"id":"spiko-amf","url":"https://geco.amf-france.org/produit-d-epargne/c79399","tipo":"regulador","titulo":"AMF GECO — fondo Spiko","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"distribucion_espana","detalle":"UCITS no equivale por sí solo a onboarding disponible en España; comprobar pasaporte, distribuidor y clase.","fuentes":[{"id":"spiko-amf","url":"https://geco.amf-france.org/produit-d-epargne/c79399","tipo":"regulador","titulo":"AMF GECO — fondo Spiko","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La página oficial Web3 mantiene productos de tesorería, suscripción y reembolso; no se realizó onboarding.","fuentes":[{"id":"spiko-access","url":"https://www.spiko.io/use-cases/web3","tipo":"empresa","titulo":"Spiko Web3 use case and UCITS access","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"no_verificable","detalle":"La empresa declara fondos UCITS y una licencia ACPR de Spiko Finance, pero GECO no devolvió texto legible y no se verificó directamente el registro actual de la entidad y el fondo.","fuentes":[{"id":"spiko-access","url":"https://www.spiko.io/use-cases/web3","tipo":"empresa","titulo":"Spiko Web3 use case and UCITS access","primaria":true,"consultadaEl":"2026-09-28"},{"id":"spiko-amf","url":"https://geco.amf-france.org/produit-d-epargne/c79399","tipo":"regulador","titulo":"AMF GECO — fondo Spiko","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"superstate","n":"Superstate","cat":"Tesoro y fondos","tipo":"Emisor","reg":"EE. UU.","cadenas":"Ethereum","ticket":"Alto","acceso":"Acreditado","web":"https://superstate.co","aval":"Fondos estadounidenses registrados con administrador y auditor independientes; fundada por un antiguo responsable de Compound.","nota":"Fondos de deuda pública con las participaciones anotadas directamente en cadena.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"USTB exige acreditado y qualified purchaser; no es oferta minorista general.","fuentes":[{"id":"superstate-ustb","url":"https://superstate.com/assets/ustb","tipo":"empresa","titulo":"Superstate USTB","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"solo_cualificados","detalle":"No omitir la doble elegibilidad ni confundir filing/registro con aprobación o garantía.","fuentes":[{"id":"superstate-sec","url":"https://www.sec.gov/Archives/edgar/data/1982577/000110465925042142/tm2513524d1_n1a.htm","tipo":"regulador","titulo":"SEC EDGAR — Superstate Trust filing","primaria":true,"consultadaEl":"2026-09-28"},{"id":"superstate-ustb","url":"https://superstate.com/assets/ustb","tipo":"empresa","titulo":"Superstate USTB","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web mantiene fondos tokenizados y FundOS.","fuentes":[{"id":"superstate-ustb","url":"https://superstate.com/assets/ustb","tipo":"empresa","titulo":"Superstate USTB","primaria":true,"consultadaEl":"2026-09-28"},{"id":"superstate-web","url":"https://superstate.co/","tipo":"empresa","titulo":"Superstate","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_documento_producto","detalle":"La ficha actual identifica USTB como Invesco Short Duration US Government Securities Fund. El expediente SEC de Superstate Trust de 2025 se conserva como antecedente, sin atribuirle aprobación ni condiciones actuales.","fuentes":[{"id":"superstate-sec","url":"https://www.sec.gov/Archives/edgar/data/1982577/000110465925042142/tm2513524d1_n1a.htm","tipo":"regulador","titulo":"SEC EDGAR — Superstate Trust filing","primaria":true,"consultadaEl":"2026-09-28"},{"id":"superstate-ustb","url":"https://superstate.com/assets/ustb","tipo":"empresa","titulo":"Superstate USTB","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"swarm","n":"Swarm","cat":"Acciones y capital privado","tipo":"Marketplace","reg":"Unión Europea","cadenas":"Polygon","ticket":"Bajo","acceso":"Minorista","web":"https://swarm.com","aval":"Opera bajo licencia de intermediación financiera de BaFin, el regulador alemán, con respaldo 1:1 verificable.","nota":"Acciones y bonos tokenizados negociables dentro del marco regulatorio alemán.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"No se pudieron leer los términos actuales. El texto de 2022 de la revisión anterior no acredita el acceso de 2026.","fuentes":[{"id":"swarm-terms","url":"https://swarm.com/terms/","tipo":"documento_legal","titulo":"Swarm Markets terms","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"acceso_no_confirmado","detalle":"No presentar Swarm como acceso minorista disponible sin condiciones actuales de alta, entidad y jurisdicción verificables.","fuentes":[{"id":"swarm-terms","url":"https://swarm.com/terms/","tipo":"documento_legal","titulo":"Swarm Markets terms","primaria":true,"consultadaEl":"2026-09-28"},{"id":"swarm-web","url":"https://swarm.com/","tipo":"empresa","titulo":"Swarm","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"no_verificable","detalle":"La web redirige a una aplicación sin contenido extraíble; no se confirmó actividad transaccional ni una oferta abierta.","fuentes":[{"id":"swarm-web","url":"https://swarm.com/","tipo":"empresa","titulo":"Swarm","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"no_verificable","detalle":"No se obtuvo durante el barrido un registro primario actual que delimitase entidad y permisos; no se reutiliza la etiqueta genérica 'regulada por BaFin'.","fuentes":[{"id":"swarm-terms","url":"https://swarm.com/terms/","tipo":"documento_legal","titulo":"Swarm Markets terms","primaria":true,"consultadaEl":"2026-09-28"},{"id":"swarm-web","url":"https://swarm.com/","tipo":"empresa","titulo":"Swarm","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"taurus","n":"Taurus","cat":"Infraestructura","tipo":"Infraestructura","reg":"Suiza","cadenas":"Varias","ticket":"No aplica","acceso":"Empresas","web":"https://taurushq.com","aval":"Proveedor suizo de custodia para bancos regulados, con despliegues verificables en entidades europeas.","nota":"Custodia y emisión de valores digitales para banca, con la exigencia de auditoría del sector bancario.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"La documentación contempla clientes minoristas, profesionales e institucionales, en ejecución-only; onboarding desde España no confirmado.","fuentes":[{"id":"taurus-disclosure","url":"https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/","tipo":"documento_legal","titulo":"Taurus regulatory disclosure","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"execution_only","detalle":"No confundir clasificación de cliente con disponibilidad universal, asesoramiento o evaluación de idoneidad.","fuentes":[{"id":"taurus-disclosure","url":"https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/","tipo":"documento_legal","titulo":"Taurus regulatory disclosure","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web mantiene infraestructura, custodia y T-DX.","fuentes":[{"id":"taurus-web","url":"https://taurushq.com/","tipo":"empresa","titulo":"Taurus","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"Taurus SA figura en FINMA como securities firm y declara operar T-DX como OTF.","fuentes":[{"id":"taurus-disclosure","url":"https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/","tipo":"documento_legal","titulo":"Taurus regulatory disclosure","primaria":true,"consultadaEl":"2026-09-28"},{"id":"taurus-finma","url":"https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf","tipo":"regulador","titulo":"FINMA authorised banks and securities firms","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"tokeny","n":"Tokeny","cat":"Infraestructura","tipo":"Infraestructura","reg":"Unión Europea","cadenas":"Varias","ticket":"No aplica","acceso":"Empresas","web":"https://tokeny.com","aval":"Autora del estándar ERC-3643, hoy la referencia del sector para tokens con reglas de cumplimiento incorporadas.","nota":"La capa de cumplimiento normativo que usan decenas de emisores institucionales.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_aplica_plataforma","detalle":"Los servicios son para clientes profesionales; Tokeny no es el punto de acceso inversor a una oferta única.","fuentes":[{"id":"tokeny-terms","url":"https://tokeny.com/general-terms-of-service/","tipo":"documento_legal","titulo":"Tokeny general terms of service","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"proveedor_no_emisor","detalle":"No atribuir a Tokeny la licencia, custodia, solvencia o elegibilidad del emisor que usa su software.","fuentes":[{"id":"tokeny-terms","url":"https://tokeny.com/general-terms-of-service/","tipo":"documento_legal","titulo":"Tokeny general terms of service","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web mantiene software de emisión y cumplimiento on-chain.","fuentes":[{"id":"tokeny-web","url":"https://tokeny.com/","tipo":"empresa","titulo":"Tokeny","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"no_aplica_plataforma","detalle":"Sus términos definen a Tokeny como proveedor tecnológico; el cliente/emisor conserva las obligaciones financieras y regulatorias.","fuentes":[{"id":"tokeny-terms","url":"https://tokeny.com/general-terms-of-service/","tipo":"documento_legal","titulo":"Tokeny general terms of service","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
+ {"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"tzero","n":"tZERO","cat":"Acciones y capital privado","tipo":"Marketplace","reg":"EE. UU.","cadenas":"Varias","ticket":"Bajo","acceso":"Minorista","web":"https://tzero.com","aval":"Opera un sistema alternativo de negociación (ATS) autorizado por la SEC y supervisado por FINRA.","nota":"El mercado secundario de referencia en EE. UU. para valores emitidos en cadena.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"no_verificable","detalle":"La web contempla negociación y servicios para inversores, pero no se comprobaron las condiciones de alta y admisión desde España para cada activo.","fuentes":[{"id":"tzero-company","url":"https://tzero.com/company","tipo":"empresa","titulo":"tZERO company and regulatory entities","primaria":true,"consultadaEl":"2026-09-28"},{"id":"tzero-web","url":"https://tzero.com/","tipo":"empresa","titulo":"tZERO","primaria":true,"consultadaEl":"2026-09-28"}]},"verificadoEl":"2026-09-28","alertasCriticas":[{"codigo":"entidad_y_activo","detalle":"No extender SEC/FINRA a todo el grupo ni asumir que cada activo del ATS está abierto a minoristas.","fuentes":[{"id":"tzero-company","url":"https://tzero.com/company","tipo":"empresa","titulo":"tZERO company and regulatory entities","primaria":true,"consultadaEl":"2026-09-28"},{"id":"tzero-finra","url":"https://files.brokercheck.finra.org/firm/firm_123421.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — tZERO Securities, LLC","primaria":true,"consultadaEl":"2026-09-28"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web mantiene infraestructura de emisión, trading y custodia.","fuentes":[{"id":"tzero-company","url":"https://tzero.com/company","tipo":"empresa","titulo":"tZERO company and regulatory entities","primaria":true,"consultadaEl":"2026-09-28"},{"id":"tzero-web","url":"https://tzero.com/","tipo":"empresa","titulo":"tZERO","primaria":true,"consultadaEl":"2026-09-28"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"tZERO Securities, LLC figura en FINRA como broker-dealer y opera ATS; otras funciones pertenecen a entidades separadas.","fuentes":[{"id":"tzero-company","url":"https://tzero.com/company","tipo":"empresa","titulo":"tZERO company and regulatory entities","primaria":true,"consultadaEl":"2026-09-28"},{"id":"tzero-finra","url":"https://files.brokercheck.finra.org/firm/firm_123421.pdf","tipo":"regulador","titulo":"FINRA BrokerCheck — tZERO Securities, LLC","primaria":true,"consultadaEl":"2026-09-28"}]},"conservaFechaCanonica":true}},
 ];
 
 /* Estas portadas explican visualmente el tipo de activo. No son fotografías
    de un proyecto concreto de la empresa: el distintivo y la ficha lo dicen
    de forma visible, y la procedencia completa queda en fuentes.json. */
 const PORTADAS_GENERADAS_MOVIL=new Set([
- 'ADDX','Archax','Backed Finance','Blocksquare','Centrifuge','Courtyard','Figure',
- 'Fireblocks','Franklin Templeton','INX','Maple Finance','Midas','Ondo Finance',
- 'OpenEden','Reental','Republic','Securitize','Spiko','Superstate','Swarm','Taurus',
- 'Tokeny','tZERO'
+ 'ADDX','Archax','ARTEX Global Markets','Backed Finance','Blocksquare','Centrifuge',
+ 'Courtyard','Figure','Fireblocks','Franklin Templeton','INX','Lofty','Maple Finance',
+ 'Midas','Ondo Finance','OpenEden','Pax Gold','Reental','Republic','Securitize','Spiko',
+ 'Superstate','Swarm','Taurus','Tokeny','tZERO'
 ]);
 const portadaEsIlustrativa=p=>PORTADAS_GENERADAS_MOVIL.has(p.n);
 
@@ -59,7 +99,34 @@ const FUERA=[
    cualquier script inline. Un fallo de la consulta detiene la publicación:
    una lista vacía es válida; fingir que no hay emisiones por un error no. */
 const EMI=[
-
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"boss-info","tipo":"valor","titulo":"Boss Info","plataformaSlug":"aktionariat","plataformaNombre":"Aktionariat · BOSS","categoria":"Acciones y capital privado","pais":"CH","resumen":"La ficha existe; el precio queda como referencia histórica separada, no como cotización actual.","url":"https://shares.bossinfo.com/","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Descripción documental contrastada; consulta las condiciones.","etiqueta":"Revisión"}],"avisos":[{"tono":"warn","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"La ficha existe; el precio queda como referencia histórica separada, no como cotización actual.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"actual","fuentesActuales":["https://shares.bossinfo.com/"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"aktionariat","tipo":"valor","titulo":"Aktionariat","plataformaSlug":"aktionariat","plataformaNombre":"Aktionariat · DAKS","categoria":"Acciones y capital privado","pais":"CH","resumen":"Se actualiza la referencia anterior de 5,00 CHF. No se afirma que exista liquidez disponible.","url":"https://shares.aktionariat.com/","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":{"unidad":"último cruce · 22 sep 2026; no precio de ejecución garantizado","mostrado":"6,25 CHF"},"metricas":[{"valor":"Descripción documental contrastada; consulta las condiciones.","etiqueta":"Revisión"}],"avisos":[{"tono":"warn","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se actualiza la referencia anterior de 5,00 CHF. No se afirma que exista liquidez disponible.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"actual","fuentesActuales":["https://shares.aktionariat.com/"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"servicehunter-quitt","tipo":"valor","titulo":"ServiceHunter · quitt","plataformaSlug":"aktionariat","plataformaNombre":"Aktionariat · DQTS","categoria":"Acciones y capital privado","pais":"CH","resumen":"La ficha corresponde a ServiceHunter AG, operadora de quitt. La última operación mostrada es histórica.","url":"https://shares.quitt.ch/","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Descripción documental contrastada; consulta las condiciones.","etiqueta":"Revisión"}],"avisos":[{"tono":"warn","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"La ficha corresponde a ServiceHunter AG, operadora de quitt. La última operación mostrada es histórica.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"actual","fuentesActuales":["https://shares.quitt.ch/"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"switzerlend","tipo":"valor","titulo":"Switzerlend","plataformaSlug":"aktionariat","plataformaNombre":"Aktionariat · LENDS","categoria":"Acciones y capital privado","pais":"CH","resumen":"Acciones LENDS de Switzerlend, distintas de los préstamos ofrecidos por LEND.","url":"https://shares.lend.ch/","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":{"unidad":"último cruce · 25 sep 2026; no precio de ejecución garantizado","mostrado":"68,01 CHF"},"metricas":[{"valor":"Descripción documental contrastada; consulta las condiciones.","etiqueta":"Revisión"}],"avisos":[{"tono":"warn","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Acciones LENDS de Switzerlend, distintas de los préstamos ofrecidos por LEND.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"actual","fuentesActuales":["https://shares.lend.ch/"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"wemakeit","tipo":"valor","titulo":"wemakeit","plataformaSlug":"aktionariat","plataformaNombre":"Aktionariat · WMKT","categoria":"Acciones y capital privado","pais":"CH","resumen":"Corresponde a acciones de wemakeit, no a los proyectos de crowdfunding alojados en su plataforma.","url":"https://shares.wemakeit.com/","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":{"unidad":"valor definido por el emisor, observado el 27-09-2026","mostrado":"8,38 CHF"},"metricas":[{"valor":"Descripción documental contrastada; consulta las condiciones.","etiqueta":"Revisión"}],"avisos":[{"tono":"warn","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Corresponde a acciones de wemakeit, no a los proyectos de crowdfunding alojados en su plataforma.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"actual","fuentesActuales":["https://shares.wemakeit.com/"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"prosegur-digital-gold","tipo":"valor","titulo":"Prosegur Digital Gold","plataformaSlug":"prosegur-crypto","plataformaNombre":"Prosegur Crypto","categoria":"Materias primas","pais":"ES","resumen":"Solo descripción documental; sin precio, rentabilidad, auditoría independiente propia ni elegibilidad afirmada.","url":"https://www.prosegurcrypto.com/digital-gold","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"1 g de oro por token","etiqueta":"Unidad descrita"},{"valor":"Polygon · ERC-3643","etiqueta":"Tecnología publicada"}],"avisos":[{"tono":"warn","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Solo descripción documental; sin precio, rentabilidad, auditoría independiente propia ni elegibilidad afirmada.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"actual","fuentesActuales":["https://prosegurdigitalgold.com/transparency"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"spiko-letras-del-tesoro-euro","tipo":"rendimiento","titulo":"Spiko Letras del Tesoro Euro","plataformaSlug":"spiko","plataformaNombre":"Spiko","categoria":"Tesoro y fondos","pais":"FR","resumen":"Se reemplaza la referencia del 2,09 % fechada el 20-09-2026. Acceso efectivo sujeto al proveedor.","url":"https://www.spiko.io/es/spiko-letras-del-tesoro-euro","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":{"literal":"Anualizada a 30 días; NAV fechado el 27-09-2026. Variable, no garantizada.","mostrada":"2,18 %"},"precio":null,"metricas":[{"valor":"1,0597 EUR · 27-09-2026","etiqueta":"NAV"},{"valor":"1 EUR","etiqueta":"Entrada publicada"},{"valor":"0,25 % anual","etiqueta":"Gestión"}],"avisos":[{"tono":"warn","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se reemplaza la referencia del 2,09 % fechada el 20-09-2026. Acceso efectivo sujeto al proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"actual","fuentesActuales":["https://data.spiko.io/eutbl/","https://www.spiko.io/es/spiko-letras-del-tesoro-euro"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"ehc-kloten","tipo":"valor","titulo":"EHC Kloten","plataformaSlug":"aktionariat","plataformaNombre":"Aktionariat · EHCK","categoria":"Acciones y capital privado","pais":"CH","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://investor.ehc-kloten.ch/","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Sustituir el antiguo enlace fallido por la fuente del emisor al importar. Certificados de participación; no presentar como acciones ordinarias con voto. Cifras de la página sin validar.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://investor.ehc-kloten.ch/"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"twiliner","tipo":"valor","titulo":"Twiliner","plataformaSlug":"aktionariat","plataformaNombre":"Aktionariat · LINES","categoria":"Acciones y capital privado","pais":"CH","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://tokeninfo.aktionariat.com/twiliner","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Nueva fuente corporativa encontrada. Se conserva bloqueada la disponibilidad hasta verificar apertura y documentación de la emisión.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.twiliner.com/en/partner-werden"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"casa-de-outeiro","tipo":"valor","titulo":"Casa de Outeiro","plataformaSlug":"alius-capital","plataformaNombre":"Alius Capital · PSFP supervisada por CNMV","categoria":"Acciones y capital privado","pais":"ES","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://aliuscap.com/projects/casa-de-outeiro","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"No confundir importe mínimo total con precio por acción. El dato previo de 25 EUR por acción queda sin revalidar.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://casadeouteiro.com/emision-capital/","https://aliuscap.com/projects/casa-de-outeiro"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"apartamento-vacacional-hinterstoder-50","tipo":"rendimiento","titulo":"Apartamento vacacional · Hinterstoder 50","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"drautalresidenz-paternion","tipo":"rendimiento","titulo":"Drautalresidenz · Paternion","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"fotovoltaica-cohotel","tipo":"rendimiento","titulo":"Fotovoltaica Cohotel","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A38J40","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"fotovoltaica-greenpoint","tipo":"rendimiento","titulo":"Fotovoltaica GreenPoint","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A38J32","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"local-de-estanco-klagenfurt","tipo":"rendimiento","titulo":"Local de estanco · Klagenfurt","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"randhartingergasse-9-viena","tipo":"rendimiento","titulo":"Randhartingergasse 9, Viena","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"terreno-con-arrendamiento-billa","tipo":"rendimiento","titulo":"Terreno con arrendamiento BILLA","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"vivienda-pluddemanngasse-101-graz","tipo":"rendimiento","titulo":"Vivienda · Plüddemanngasse 101, Graz","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"vivienda-pottendorfer-stra-e-62-wr-neustadt","tipo":"rendimiento","titulo":"Vivienda · Pottendorfer Straße 62, Wr. Neustadt","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A324B4","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"vivienda-schwarzer-weg-18-graz","tipo":"rendimiento","titulo":"Vivienda · Schwarzer Weg 18, Graz","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"vivienda-sonnleithnergasse-2-viena","tipo":"rendimiento","titulo":"Vivienda · Sonnleithnergasse 2, Viena","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"vivienda-stallhofstra-e-28-gratwein","tipo":"rendimiento","titulo":"Vivienda · Stallhofstraße 28, Gratwein","plataformaSlug":"brickwise","plataformaNombre":"Brickwise","categoria":"Inmobiliario","pais":"AT","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Se mantiene la cautela del registro anterior. El listado compartido no aporta una verificación individual fiable de las doce referencias. Cifras, apertura y acceso desde España pendientes.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.brickwise.at/marketplace"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"mf-one","tipo":"rendimiento","titulo":"mF-ONE","plataformaSlug":"midas","plataformaNombre":"Midas","categoria":"Tesoro y fondos","pais":"UE","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://midas.app/products","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Las condiciones económicas de los cuatro productos no pudieron revalidarse en acceso público. No se trasladan APY del 21 de septiembre a la fecha actual ni se presume elegibilidad.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://docs.midas.app/legal/eligibility-and-compliance","https://midas.app/mfone"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"mglobal","tipo":"rendimiento","titulo":"mGLOBAL","plataformaSlug":"midas","plataformaNombre":"Midas","categoria":"Tesoro y fondos","pais":"UE","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://midas.app/products","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Las condiciones económicas de los cuatro productos no pudieron revalidarse en acceso público. No se trasladan APY del 21 de septiembre a la fecha actual ni se presume elegibilidad.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://docs.midas.app/legal/eligibility-and-compliance","https://midas.app/mglobal"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"mtbill","tipo":"rendimiento","titulo":"mTBILL","plataformaSlug":"midas","plataformaNombre":"Midas","categoria":"Tesoro y fondos","pais":"UE","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://midas.app/products","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Las condiciones económicas de los cuatro productos no pudieron revalidarse en acceso público. No se trasladan APY del 21 de septiembre a la fecha actual ni se presume elegibilidad.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://docs.midas.app/legal/eligibility-and-compliance","https://midas.app/mtbill"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"mwin","tipo":"rendimiento","titulo":"mWIN","plataformaSlug":"midas","plataformaNombre":"Midas","categoria":"Tesoro y fondos","pais":"UE","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://midas.app/products","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":true,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Las condiciones económicas de los cuatro productos no pudieron revalidarse en acceso público. No se trasladan APY del 21 de septiembre a la fecha actual ni se presume elegibilidad.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://docs.midas.app/legal/eligibility-and-compliance","https://midas.app/mwin"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"caribe-1","tipo":"rendimiento","titulo":"Caribe 1","plataformaSlug":"reental","plataformaNombre":"Reental","categoria":"Inmobiliario","pais":"MX","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.reental.co/dashboard/properties/8befd7a6-692f-404d-9fb8-d48fab2a74ca","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Caribe 1 y Caribe 2 no aparecen en el listado público consultado. No se acredita que estén abiertas ni se reutilizan mínimos o rendimientos antiguos.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.reental.co/properties"],"patrocinada":false},
+ {"catalogo":true,"revisionId":"80159d96-dcb8-b476-ae10-bc9cd2a45c83","slug":"caribe-2","tipo":"rendimiento","titulo":"Caribe 2","plataformaSlug":"reental","plataformaNombre":"Reental","categoria":"Inmobiliario","pais":"MX","resumen":"Condiciones pendientes de nueva revisión. Consulta la fuente oficial antes de tomar decisiones.","url":"https://app.reental.co/dashboard/properties/10c30adb-542d-4f40-ab89-6c1f1474e5b7","verificadaEl":"2026-09-27","vigenciaDias":1,"permanente":false,"disponibleEs":null,"eu":null,"fueraLadrillo":false,"puntuacion":null,"rentabilidad":null,"precio":null,"metricas":[{"valor":"Cifras pendientes de nueva revisión","etiqueta":"Revisión"}],"avisos":[{"tono":"stop","texto":"Consulta editorial de fuentes; no acredita oferta abierta, admisión desde España ni precio ejecutable. Confirma las condiciones con el proveedor.","esAntiguedad":false,"verificadaEl":"2026-09-27"},{"tono":"warn","texto":"Caribe 1 y Caribe 2 no aparecen en el listado público consultado. No se acredita que estén abiertas ni se reutilizan mínimos o rendimientos antiguos.","esAntiguedad":false,"verificadaEl":"2026-09-27"}],"estadoRevision":"no_verificable","fuentesActuales":["https://www.reental.co/properties"],"patrocinada":false},
 ];
 
 /* ---- categorías: seis colores que se distinguen sobre negro ----
@@ -909,7 +976,45 @@ const urlHttps=s=>{const v=String(s||'').trim();
    registro que se vende precisamente por estar al día. */
 const fCorta=s=>{if(!s)return'';const[a,m,d]=String(s).split('-');return `${d}.${m}.${a.slice(2)}`};
 const fLarga=s=>{if(!s)return'';const[a,m,d]=String(s).split('-');return `${d}.${m}.${a}`};
-const ultimaRevision=()=>{const ds=P.map(p=>p.ver).filter(Boolean).sort();return ds.length?fLarga(ds[ds.length-1]):''};
+const revisionVisible=p=>p&&p.verificacionLocal?p.verificacionLocal.verificadoEl:p&&p.ver;
+const accesoVisible=p=>p&&p.verificacionLocal
+ ?etiquetaVerificacionLocal(p.verificacionLocal.acceso.estado):p&&p.acceso;
+const accesoClasificado=p=>p&&p.verificacionLocal&&p.verificacionLocal.acceso.estado==='no_verificable'
+ ?'':p&&p.acceso;
+const ultimaRevision=()=>{const ds=P.map(revisionVisible).filter(Boolean).sort();return ds.length?fLarga(ds[ds.length-1]):''};
+function textoBusquedaPlataforma(p){
+ const v=p&&p.verificacionLocal;
+ const verificado=v?[
+  v.estadoOperativo.estado,v.estadoOperativo.detalle,
+  v.licenciaRegistro.estado,v.licenciaRegistro.detalle,
+  v.acceso.estado,v.acceso.detalle,
+  ...v.alertasCriticas.flatMap(alerta=>[alerta.codigo,alerta.detalle])
+ ]:[p.nota,p.aval,p.acceso];
+ return [p.n,p.cat,p.reg,p.cadenas,...verificado].filter(Boolean).join(' ').toLowerCase();
+}
+function resumenVerificacionLocalHtml(verificacion){
+ if(!verificacion)return'';
+ const campos=[['Estado operativo',verificacion.estadoOperativo],
+  ['Licencia / registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
+ return '<div class="verificacion-local-resumen" aria-label="Revisión local '+escHtml(verificacion.verificadoEl)+'">'+
+  '<div class="verificacion-local-fecha">REVISIÓN LOCAL · '+escHtml(verificacion.verificadoEl)+'</div><div class="verificacion-local-estados">'+
+  campos.map(([nombre,campo])=>'<span class="verificacion-local-estado '+
+   ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><b>'+escHtml(nombre)+'</b>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span>').join('')+
+  '</div>'+verificacion.alertasCriticas.map(alerta=>'<p class="verificacion-local-alerta"><b>Alerta crítica</b>'+escHtml(alerta.detalle)+'</p>').join('')+'</div>';
+}
+function detalleVerificacionLocalHtml(verificacion){
+ if(!verificacion)return'';
+ const campos=[['Estado operativo',verificacion.estadoOperativo],
+  ['Licencia / registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
+ return '<section class="pn-seccion pn-verificacion-local" aria-labelledby="dwVerificacionLocalTit">'+
+  '<div class="pn-verificacion-local-cab"><h4 id="dwVerificacionLocalTit">Revisión local</h4><time datetime="'+
+  escHtml(verificacion.verificadoEl)+'">'+escHtml(verificacion.verificadoEl)+'</time></div><div class="pn-verificacion-local-campos">'+
+  campos.map(([nombre,campo])=>'<article class="pn-verificacion-local-campo '+
+   ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><div><b>'+escHtml(nombre)+'</b><span>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span></div><p>'+escHtml(campo.detalle)+'</p></article>').join('')+
+  '</div><div class="pn-verificacion-local-alertas"><h5>Alertas críticas</h5><ul>'+
+  verificacion.alertasCriticas.map(alerta=>'<li>'+escHtml(alerta.detalle)+'</li>').join('')+
+  '</ul></div><p class="pn-nota">La fecha canónica se conserva aparte. Registro, documento o web accesible no equivalen a aval, licencia global ni acceso desde España.</p></section>';
+}
 const colOf=p=>(CATMETA[p.cat]||{c:'#7C8699'}).c;
 const catClase=p=>' cat-'+Math.max(0,Object.keys(CATMETA).indexOf(p.cat));
 const aplicaCat=(el,p)=>{if(!el)return;for(let i=0;i<6;i++)el.classList.remove('cat-'+i);el.classList.add(catClase(p).trim())};
@@ -1010,8 +1115,17 @@ function pintarRadar(){
      las 9,4 de antes. Y el azar sobra: jitter 0 gana a cualquier jitter,
      porque desordena sin separar. */
   const ang=-90+ci*60+(((k+0.5)/Math.max(n,1))-0.5)*56;
-  const base=RADIO_ACCESO[p.acceso]!=null?RADIO_ACCESO[p.acceso]:0.7;
-  const mismos=P.filter(x=>x.cat===p.cat&&x.acceso===p.acceso);
+  /* Un acceso que el overlay actual no pudo confirmar no conserva en el
+     dibujo la posición histórica de «Minorista». Se lleva al perímetro,
+     fuera de los cuatro anillos con significado, para no codificar como
+     hecho visual precisamente lo que la revisión deja abierto. */
+  const accesoRadar=p.verificacionLocal&&p.verificacionLocal.acceso.estado==='no_verificable'
+   ?'__no_verificable':p.acceso;
+  const base=accesoRadar==='__no_verificable'?0.98:
+   (RADIO_ACCESO[accesoRadar]!=null?RADIO_ACCESO[accesoRadar]:0.7);
+  const mismos=P.filter(x=>x.cat===p.cat&&(
+   x.verificacionLocal&&x.verificacionLocal.acceso.estado==='no_verificable'
+    ?'__no_verificable':x.acceso)===accesoRadar);
   const kk=mismos.indexOf(p);
   const escalon=mismos.length>1 ? ((kk/(mismos.length-1))-0.5)*0.115 : 0;
   const rad=RMAX*(base+escalon);
@@ -1025,8 +1139,8 @@ function pintarRadar(){
   const norm=((ang%360)+360)%360;
   s+=`<g class="blip" tabindex="0" role="button" data-cat="${escHtml(p.cat)}" data-i="${i}"`
    +` data-x="${x.toFixed(1)}" data-y="${y.toFixed(1)}"`
-   +` aria-label="${escHtml(p.n)}. ${escHtml(p.cat)}. Acceso: ${escHtml(p.acceso)}. Abrir ficha.">`
-   +`<title>${escHtml(p.n)} · ${escHtml(p.cat)} · ${escHtml(p.acceso)}</title>`
+   +` aria-label="${escHtml(p.n)}. ${escHtml(p.cat)}. Estado de acceso: ${escHtml(accesoVisible(p))}. Abrir ficha.">`
+   +`<title>${escHtml(p.n)} · ${escHtml(p.cat)} · acceso: ${escHtml(accesoVisible(p))}</title>`
    +`<circle class="halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4" fill="${col}"/>`
    +`<circle class="anillo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="none" stroke="${col}"/>`
    /* el borde oscuro separa dos puntos que se rocen: sin él, dos colores
@@ -1058,7 +1172,7 @@ function pintarRadar(){
   vacio.hidden=true; dato.hidden=false;
   aplicaCat($('rlPunto'),p);
   $('rlNom').textContent=p.n;
-  $('rlMeta').textContent=p.cat+' · '+p.acceso+' · '+p.reg;
+  $('rlMeta').textContent=p.cat+' · acceso: '+accesoVisible(p)+' · '+p.reg;
  }
  function limpia(){
   caja.classList.remove('viva');
@@ -1190,7 +1304,7 @@ document.getElementById('q').oninput=e=>{S2.q=e.target.value.toLowerCase();rende
 function resetAll(){S2={cat:"",reg:"",acc:"",tic:"",q:"",view:S2.view};movilResultadosExpandidos=false;document.getElementById('q').value='';['fReg','fAcc','fTic'].forEach(i=>document.getElementById(i).value='');render()}
 
 document.getElementById('s1').textContent=P.length;
-document.getElementById('s3').textContent=P.filter(p=>p.acceso==="Minorista").length;
+document.getElementById('s3').textContent=new Set(P.map(p=>p.cat)).size;
 document.getElementById('s4').textContent=FUERA.length;
 /* El rotulo del radar tambien: estaba escrito a mano y se quedo en 24
    cuando el registro crecio. Ahora sale de P como todo lo demas. */
@@ -1200,9 +1314,9 @@ function filtered(){
  return P.filter(p=>{
   if(S2.cat&&p.cat!==S2.cat)return false;
   if(S2.reg&&p.reg!==S2.reg)return false;
-  if(S2.acc&&p.acceso!==S2.acc)return false;
+  if(S2.acc&&accesoClasificado(p)!==S2.acc)return false;
   if(S2.tic&&p.ticket!==S2.tic)return false;
-  if(S2.q){const h=(p.n+' '+p.nota+' '+p.aval+' '+p.cat+' '+p.reg+' '+p.cadenas).toLowerCase();if(!h.includes(S2.q))return false}
+  if(S2.q&&!textoBusquedaPlataforma(p).includes(S2.q))return false;
   return true;
  }).sort((a,b)=>a.n.localeCompare(b.n,'es'));
 }
@@ -1230,21 +1344,28 @@ function renderGrid(f){
  g.innerHTML=f.map(p=>{const i=P.indexOf(p),on=compare.includes(i),ilustrativa=portadaEsIlustrativa(p);
   const portada=String(p.n).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const compararTexto=on?`Quitar ${p.n} de la comparación`:`Añadir ${p.n} a la comparación`;
+  const v=p.verificacionLocal;
+  const nota=v?v.estadoOperativo.detalle:p.nota;
+  const aval=v?v.licenciaRegistro.detalle:p.aval;
+  const marcaRevision=v?'Revisión local '+v.verificadoEl:'Ficha verificada';
+  const marcas=v?resumenVerificacionLocalHtml(v):
+   `<div class="marcas"><span class="m acc">${escHtml(p.acceso)}</span><span class="m">Entrada: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>`;
   return `<div class="ficha ${on?'sel':''} ${catClase(p)}">
    <button type="button" class="empresa-visual__abrir" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}${ilustrativa?'; portada ilustrativa':''}">
     <img class="empresa-visual__imagen" src="/plataformas/${portada}.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">${escHtml(p.cat)}</span>${ilustrativa?'<span class="empresa-visual__origen">Ilustración</span>':''}
     <span class="empresa-visual__texto"><strong>${escHtml(p.n)}</strong><small>${escHtml(p.tipo)} · ${escHtml(p.reg)}</small></span>
-    <span class="empresa-visual__verificada">${okSVG}<span>Ficha verificada</span></span>
+    ${v?`<span class="empresa-visual__verificada"><span>${escHtml(marcaRevision)}</span></span>`:
+     `<span class="empresa-visual__verificada">${okSVG}<span>Ficha verificada</span></span>`}
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar ${on?'on':''}" data-comparar="${i}" aria-pressed="${on?'true':'false'}" aria-label="${escHtml(compararTexto)}" title="${escHtml(compararTexto)}"><span aria-hidden="true">${on?'✓':'+'}</span></button>
    <div class="ficha-alto">${siglaEl(p)}<div class="ficha-nom"><h3><button class="abrir" data-cat="${escHtml(p.cat)}" data-abrir="${i}">${escHtml(p.n)}</button></h3><div class="sub">${escHtml(p.tipo)} · ${escHtml(p.reg)}</div></div></div>
-   <p class="nota">${escHtml(p.nota)}</p>
-   <div class="aval">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
-   <div class="marcas"><span class="m acc">${escHtml(p.acceso)}</span><span class="m">Entrada: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>
-   <div class="ficha-pie"><span class="verif">${okSVG} Verificado ${escHtml(fCorta(p.ver))}</span>
+   <p class="nota">${escHtml(nota)}</p>
+   <div class="aval${v?' aval-local':''}">${v?'':escudoSVG}<span>${escHtml(aval)}</span></div>
+   ${marcas}
+   <div class="ficha-pie"><span class="verif">${v?'':' '+okSVG}${v?'Revisión local '+escHtml(v.verificadoEl):' Verificado '+escHtml(fCorta(p.ver))}</span>
     <button class="cmp ${on?'on':''}" data-comparar="${i}" aria-pressed="${on?'true':'false'}">${on?'✓ Comparando':'+ Comparar'}</button>
     <button class="movil-ficha-abrir" data-abrir="${i}">Ver ficha <span aria-hidden="true">›</span></button></div></div>`}).join('');
 }
@@ -1252,7 +1373,7 @@ function renderMatrix(f){
  document.getElementById('matrix').innerHTML=`<table class="tabla">
   <thead><tr><th>Tipo de activo ↓ &nbsp;/&nbsp; Quién puede entrar →</th>${ACCESOS.map(a=>`<th>${escHtml(a)}</th>`).join('')}</tr></thead>
   <tbody>${Object.keys(CATMETA).map(c=>`<tr><th>${escHtml(c)}</th>${ACCESOS.map(a=>{
-   const l=f.filter(p=>p.cat===c&&p.acceso===a);
+   const l=f.filter(p=>p.cat===c&&accesoClasificado(p)===a);
    return `<td><div class="celda">${l.length?l.map(p=>{const i=P.indexOf(p);
     return `<button class="mm" data-abrir="${i}"><span class="md ${catClase(p)}">${escHtml(initials(p.n))}</span>${escHtml(p.n)}</button>`}).join(''):'<span class="nada">—</span>'}</div></td>`}).join('')}</tr>`).join('')}</tbody></table>`;
 }
@@ -1260,6 +1381,8 @@ function openDrawer(i){
  const p=P[i];
  if(!p)return;
  const web=urlHttps(p.web);
+ const v=p.verificacionLocal;
+ const resumen=v?v.estadoOperativo.detalle:p.nota;
  const origenVisual=portadaEsIlustrativa(p)
   ? `<aside class="pn-origen-visual" aria-label="Origen de la portada"><strong>Imagen ilustrativa</strong><span>Representación editorial creada por RWAdar para explicar ${escHtml(p.cat.toLowerCase())}. No muestra un activo concreto de ${escHtml(p.n)}.</span></aside>`
   : `<aside class="pn-origen-visual oficial" aria-label="Origen de la portada"><strong>Imagen oficial</strong><span>Portada procedente de una fuente oficial y usada con finalidad informativa.</span></aside>`;
@@ -1269,14 +1392,14 @@ function openDrawer(i){
    <h4 id="dwResumenTit">Resumen</h4>
    <p id="dwResumen">${escHtml(p.nota)}</p>
    <div class="pn-claves" aria-label="Datos principales">
-    <span>${escHtml(p.tipo)}</span><span>${escHtml(p.reg)}</span><span>${escHtml(p.acceso)}</span>
+    <span>${escHtml(p.tipo)}</span><span>${escHtml(p.reg)}</span><span>Acceso: ${escHtml(accesoVisible(p))}</span>
    </div>
   </section>
   ${origenVisual}
-  <section class="pn-seccion pn-verificacion" aria-labelledby="dwVerificacionTit">
+  ${v?detalleVerificacionLocalHtml(v):`<section class="pn-seccion pn-verificacion" aria-labelledby="dwVerificacionTit">
    <h4 id="dwVerificacionTit">Verificación RWAdar</h4>
    <div class="aval aval-detalle">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
-  </section>
+  </section>`}
   <div class="pn-datos-grid">
    <section class="pn-seccion pn-datos" aria-labelledby="dwAccesoTit">
     <h4 id="dwAccesoTit">Acceso e inversión</h4>
@@ -1305,9 +1428,18 @@ function openDrawer(i){
    <p class="pn-nota">Se abre la web oficial en otra pestaña. Verifica siempre los datos en origen.</p>
   </div>
   <p class="pn-nota pn-web-movil-nota">El botón «Web oficial» abre otra pestaña. Verifica siempre los datos en origen.</p>
-  <section class="pn-seccion pn-opiniones-seccion" aria-label="Puntuación y opiniones">
+  ${v?'':`<section class="pn-seccion pn-opiniones-seccion" aria-label="Puntuación y opiniones">
    <div id="dwOpiniones"></div>
-  </section>`;
+  </section>`}`;
+ if(v){
+  const resumenLocal=document.getElementById('dwResumen');
+  if(resumenLocal)resumenLocal.textContent=resumen;
+  const filas=[...document.querySelectorAll('#dwBody .datos>div')];
+  const accesoLocal=filas.find(fila=>fila.querySelector('dt')&&fila.querySelector('dt').textContent==='Quién puede entrar');
+  if(accesoLocal){accesoLocal.querySelector('dt').textContent='Estado de acceso';accesoLocal.querySelector('dd').textContent=accesoVisible(p);}
+  const revisionLocal=filas.find(fila=>fila.querySelector('dt')&&fila.querySelector('dt').textContent==='Última verificación');
+  if(revisionLocal){revisionLocal.querySelector('dt').textContent='Revisión local';revisionLocal.querySelector('dd').textContent=v.verificadoEl;}
+ }
  const acciones=document.getElementById('dwAcciones');
  acciones.classList.toggle('sin-web',!web);
  acciones.innerHTML=(web
@@ -1319,7 +1451,7 @@ function openDrawer(i){
  if(typeof Cuenta!=="undefined") Cuenta.pintarVigilar(p.n);
  /* Las opiniones se cargan de la red, asi que van despues de abrir el
     panel: primero se ve la ficha, y ellas entran cuando lleguen. */
- if(typeof Opiniones!=="undefined"){const c=document.getElementById("dwOpiniones");if(c)Opiniones.pinta(p.n,c);}
+ if(typeof Opiniones!=="undefined"&&SERVICIOS_USUARIO_DISPONIBLES){const c=document.getElementById("dwOpiniones");if(c)Opiniones.pinta(p.n,c);}
  const cuerpo=document.getElementById('dwBody');if(cuerpo)cuerpo.scrollTop=0;
  openPanel('drawer');
 }
@@ -1342,10 +1474,15 @@ function renderCmpBar(){
 }
 function openCompare(){
  const sel=compare.map(i=>P[i]);
+ const datoLocal=(p,campo)=>p.verificacionLocal
+  ?`<span class="comp-estado">${escHtml(etiquetaVerificacionLocal(p.verificacionLocal[campo].estado))}</span><span class="comp-nota">${escHtml(p.verificacionLocal[campo].detalle)}</span>`
+  :null;
  const rows=[['Tipo de activo',p=>escHtml(p.cat)],['Tipo de actor',p=>escHtml(p.tipo)],['Región / marco',p=>escHtml(p.reg)],
-  ['Quién entra',p=>`<span class="m acc">${escHtml(p.acceso)}</span>`],['Entrada',p=>escHtml(p.ticket)],['Cadenas',p=>escHtml(p.cadenas)],
-  ['Por qué está aquí',p=>`<span class="comp-aval">${escHtml(p.aval)}</span>`],
-  ['Qué hace',p=>`<span class="comp-nota">${escHtml(p.nota)}</span>`],
+  ['Estado de acceso',p=>datoLocal(p,'acceso')||`<span class="m acc">${escHtml(p.acceso)}</span>`],['Entrada',p=>escHtml(p.ticket)],['Cadenas',p=>escHtml(p.cadenas)],
+  ['Licencia / registro',p=>datoLocal(p,'licenciaRegistro')||`<span class="comp-aval">${escHtml(p.aval)}</span>`],
+  ['Estado operativo',p=>datoLocal(p,'estadoOperativo')||`<span class="comp-nota">${escHtml(p.nota)}</span>`],
+  ['Alertas críticas',p=>p.verificacionLocal?`<span class="comp-alerta">${p.verificacionLocal.alertasCriticas.map(a=>escHtml(a.detalle)).join('<br>')}</span>`:'—'],
+  ['Revisión',p=>escHtml(p.verificacionLocal?p.verificacionLocal.verificadoEl:fLarga(p.ver))],
   ['',p=>{const u=urlHttps(p.web);return u?`<a href="${escHtml(u)}" target="_blank" rel="noopener" class="comp-enlace">Abrir ↗</a>`:'—'}]];
  document.getElementById('modalBody').innerHTML=`<table class="comp">
   <thead><tr><th></th>${sel.map(p=>`<th><div class="hc">${siglaEl(p)}<strong>${escHtml(p.n)}</strong></div></th>`).join('')}</tr></thead>
@@ -1429,6 +1566,28 @@ function emisionesVisibles(){
 }
 function pintarEmisiones(){
  const caja=document.getElementById('emiLista');if(!caja)return;
+ if(MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL){pintarEscaparateLocal();return;}
+ if(CATALOGO_EMBEBIDO_BLOQUEADO){
+  const seccion=document.getElementById('emisiones');if(seccion)seccion.classList.add('sin-emisiones');
+  caja.innerHTML='<div class="emis-vacio"><h3>Revisión pendiente</h3><p>La copia verificada ha caducado o está incompleta. RWAdar no muestra datos anteriores mientras se renueva el lote.</p></div>';
+  return;
+ }
+ const catalogo=EMI.filter(e=>e&&e.catalogo===true);
+ if(catalogo.length){
+  if(catalogo.length!==EMI.length||!catalogo.every(ofertaLocalValida)){
+   caja.innerHTML='<div class="emis-vacio"><h3>Catálogo no disponible</h3><p>La revisión remota no supera el contrato completo. No mostramos una copia parcial.</p></div>';
+   return;
+  }
+  const visibles=ordenarOfertasLocales(catalogo.filter(coincideOfertaLocal));
+  const seccion=document.getElementById('emisiones');if(seccion)seccion.classList.remove('sin-emisiones');
+  const futuro=document.getElementById('movilOfertasFuturo');if(futuro)futuro.hidden=true;
+  const informacion=document.getElementById('emisInformacion');if(informacion)informacion.open=true;
+  const estado=document.getElementById('movilOfertasEstado');
+  if(estado){estado.textContent=visibles.length+' de '+catalogo.length;estado.classList.toggle('hay-ofertas',visibles.length>0)}
+  caja.innerHTML=visibles.length?visibles.map(o=>tarjetaOfertaLocal(o)).join(''):
+   '<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>';
+  return;
+ }
  const v=emisionesVisibles();
  const hayPublicadas=EMI.some(emisionValida);
  const seccion=document.getElementById('emisiones');
@@ -1488,22 +1647,321 @@ function pintarEmisiones(){
    (e.vinc===false?'<p class="emi-aviso">Es una reserva sin desembolso, no una compra.</p>':'')+
    (e.res?'<p class="emi-nota">'+escHtml(e.res)+'</p>':'')+avance+
    '<div class="emi-pie"><span class="emi-ver">Cifras de la plataforma,<br>comprobadas el '+fechaES(e.ver)+'</span>'+ 
-   '<a class="emi-ir" href="'+escHtml(urlHttps(e.url))+'" target="_blank" rel="noopener nofollow">Ver en '+escHtml(e.pl)+' ↗</a></div></article>';
+   '<a class="emi-ir" href="'+escHtml(urlHttps(e.url))+'" target="_blank" rel="noopener nofollow'+(e.pat?' sponsored':'')+'">Ver oferta en '+escHtml(e.pl)+' ↗</a></div></article>';
  }).join('');
 }
 function pintarFiltrosEmision(){
  const caja=document.getElementById('emiFiltros');if(!caja)return;
- const cats=[];EMI.filter(emisionValida).forEach(e=>{if(!cats.includes(e.cat))cats.push(e.cat)});
- caja.innerHTML=cats.length?'<button class="f'+(emiCat?'':' on')+'" data-emi-cat="">Todas</button>'+cats.map(c=>
-  '<button class="f'+(emiCat===c?' on':'')+'" data-emi-cat="'+escHtml(c)+'"><span class="punto'+catClase({cat:c})+'"></span>'+escHtml(c)+'</button>').join(''):'';
+ const cats=[],hayCatalogo=EMI.some(e=>e&&e.catalogo===true);
+ const origen=MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL?ESCAPARATE_LOCAL.ofertas:
+  hayCatalogo?EMI.filter(ofertaLocalValida):EMI.filter(emisionValida);
+ origen.forEach(e=>{const cat=e.categoria||e.cat;if(cat&&!cats.includes(cat))cats.push(cat)});
+ caja.innerHTML=cats.length?'<button class="f'+(emiCat?'':' on')+'" data-emi-cat="" aria-pressed="'+(!emiCat)+'">Todas</button>'+cats.map(c=>
+  '<button class="f'+(emiCat===c?' on':'')+'" data-emi-cat="'+escHtml(c)+'" aria-pressed="'+(emiCat===c)+'"><span class="punto'+catClase({cat:c})+'"></span>'+escHtml(c)+'</button>').join(''):'';
 }
-pintarFiltrosEmision();pintarEmisiones();
 (function mandosEmision(){
  const filtros=document.getElementById('emiFiltros'),orden=document.getElementById('emiOrden');
  if(filtros&&filtros.addEventListener)filtros.addEventListener('click',ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest('[data-emi-cat]');if(!b)return;
   emiCat=b.getAttribute('data-emi-cat')||'';pintarFiltrosEmision();pintarEmisiones();if(typeof Sonido!=='undefined'&&Sonido.marcar)Sonido.marcar()});
  if(orden&&orden.addEventListener)orden.addEventListener('change',()=>{emiOrden=orden.value||'cierra';pintarEmisiones()});
 })();
+
+/* ---- escaparate de revisión local ---------------------------------
+   Los datos no se incrustan en el sitio. El servidor loopback los sirve
+   desde rwadar-movil/fixtures y esta capa los valida antes de pintar. */
+let emiTipoLocal='todos',emiBusquedaLocal='';
+const textoLocal=v=>typeof v==='string'?v.trim():'';
+const fechaLocalValida=v=>typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&
+ Number.isFinite(Date.parse(v+'T00:00:00Z'))&&new Date(v+'T00:00:00Z').toISOString().slice(0,10)===v;
+const normalizaBuscaLocal=v=>String(v==null?'':v).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+function tipoOfertaLocal(o){
+ const t=normalizaBuscaLocal(o&&o.tipo);
+ return t==='valor'?'valor':t==='secundario'?'secundario':'rendimiento';
+}
+function valorLocal(v){
+ if(v==null)return '';
+ if(typeof v==='string'||typeof v==='number')return String(v);
+ if(typeof v==='object'){
+  for(const k of ['mostrado','mostrada','display','valor','texto','literal','importe']){
+   if(v[k]!=null&&String(v[k]).trim())return String(v[k]).trim();
+  }
+ }
+ return '';
+}
+function numeroLocal(v,def){
+ const t=valorLocal(v).replace(/\./g,'').replace(',','.').match(/-?\d+(?:\.\d+)?/);
+ const n=t?Number(t[0]):NaN;return Number.isFinite(n)?n:def;
+}
+function imagenOfertaLocal(o){
+ if(o&&o.catalogo===true){const entrada=EDITORIAL_OFERTA_POR_CATEGORIA[o.categoria];
+  return entrada?{src:entrada.src,alt:entrada.alt,etiqueta:'Ilustración editorial'}:null;}
+ const m=textoLocal(o&&o.imagen).match(/^ofertas\/([a-z0-9-]+\.webp)$/);
+ if(!m||!MANIFIESTO_EDITORIAL_LOCAL)return null;
+ const entrada=MANIFIESTO_EDITORIAL_LOCAL.porCategoria[o.categoria];
+ return entrada?{src:'/ofertas-editoriales/'+entrada.archivo,
+  alt:entrada.alt,etiqueta:MANIFIESTO_EDITORIAL_LOCAL.etiqueta}:null;
+}
+function ofertaLocalValida(o){
+ return o&&typeof o==='object'&&textoLocal(o.slug)&&textoLocal(o.titulo)&&
+   textoLocal(o.plataformaNombre)&&textoLocal(o.categoria)&&urlHttps(o.url)&&
+   fechaLocalValida(o.verificadaEl)&&imagenOfertaLocal(o)&&
+   (!o.catalogo||['actual','no_verificable','fuentes_en_conflicto'].includes(o.estadoRevision));
+}
+function estadoVigenciaLocal(o,ahora=new Date()){
+ if(o.estadoRevision==='no_verificable')return {clase:'caducado',texto:'apertura no verificable'};
+ if(o.estadoRevision==='fuentes_en_conflicto')return {clase:'caducado',texto:'fuentes en conflicto'};
+ const base=Date.parse(o.verificadaEl+'T00:00:00Z'),ttl=Number(o.vigenciaDias);
+ if(!fechaLocalValida(o.verificadaEl)||!Number.isFinite(base)||new Date(base).toISOString().slice(0,10)!==o.verificadaEl||
+    !Number.isInteger(ttl)||ttl<1||!Number.isFinite(new Date(base+ttl*86400000).getTime())||!Number.isFinite(ahora.getTime())||
+    (o.estadoRevision!=null&&o.estadoRevision!=='actual'))return {clase:'caducado',texto:'vigencia sin definir'};
+ const hoyUTC=Date.UTC(ahora.getUTCFullYear(),ahora.getUTCMonth(),ahora.getUTCDate());
+ if(base>hoyUTC)return {clase:'caducado',texto:'revisión futura no válida'};
+ const resta=Math.floor((base+ttl*86400000-hoyUTC)/86400000);
+ if(resta<0)return {clase:'caducado',texto:'cifra caducada'};
+ if(o.permanente)return {clase:'permanente',texto:resta===0?'revisar hoy':'vigente '+resta+' d'};
+ return {clase:'vigente',texto:resta===0?'revisar hoy':resta===1?'vigente 1 d':'vigente '+resta+' d'};
+}
+function etiquetaMetricaLocal(valor,indice){
+ const v=normalizaBuscaLocal(valor);
+ if(/meses|sin plazo|perpetuo|emision primaria|en euros/.test(v))return 'Estructura';
+ if(/reparto|vencimiento|acumulacion|retirada/.test(v))return 'Cobro / salida';
+ if(/^desde /.test(v))return 'Entrada';
+ if(/tvl| en el fondo/.test(v))return 'Tamaño';
+ if(/financiad|colocado/.test(v))return 'Financiación';
+ if(/pagas |prima|descuento/.test(v))return 'Precio relativo';
+ if(/cruce|operacion/.test(v))return 'Actividad';
+ if(/inquilino|contrato/.test(v))return 'Contrato';
+ if(/tasador|valoracion/.test(v))return 'Valoración';
+ if(/colateral/.test(v))return 'Garantía / uso';
+ return 'Detalle '+(indice+1);
+}
+const pulirMetricaLocal=v=>String(v).replace(/\bUltima\b/g,'Última').replace(/\bultima\b/g,'última')
+ .replace(/\bUltimo\b/g,'Último').replace(/\bultimo\b/g,'último').replace(/\boperacion\b/g,'operación');
+function metricasOfertaLocal(o){
+ if(estadoVigenciaLocal(o).clase==='caducado')return [];
+ const m=Array.isArray(o.metricas)?o.metricas:[];
+ const limpias=m.map((x,i)=>typeof x==='string'?{etiqueta:etiquetaMetricaLocal(x,i),valor:pulirMetricaLocal(x)}:{
+  etiqueta:pulirMetricaLocal(textoLocal(x&&x.etiqueta)||etiquetaMetricaLocal(valorLocal(x&&x.valor),i)),valor:pulirMetricaLocal(valorLocal(x&&x.valor))
+ }).filter(x=>x.valor).slice(0,8);
+ if(valorLocal(o.rentabilidad)&&!limpias.some(x=>/rent|apy|tir/i.test(x.etiqueta)))
+  limpias.unshift({etiqueta:'Rentabilidad publicada',valor:valorLocal(o.rentabilidad)});
+ if(valorLocal(o.precio)&&!limpias.some(x=>/precio|entrada|ticket/i.test(x.etiqueta)))
+  limpias.push({etiqueta:'Precio / entrada',valor:valorLocal(o.precio)});
+ return limpias.slice(0,8);
+}
+function avisosOfertaLocal(o){
+ return (Array.isArray(o.avisos)?o.avisos:[]).filter(x=>typeof x==='string'||
+  (x&&x.tono!=='ok'&&(!x.esAntiguedad||x.tono==='stop'))).map(x=>typeof x==='string'?x:textoLocal(x&&x.texto)).filter(Boolean);
+}
+function coincideBusquedaOfertaLocal(o){
+ if(!emiBusquedaLocal)return true;
+ const bolsa=[o.titulo,o.plataformaNombre,o.categoria,o.pais,estadoVigenciaLocal(o).clase==='caducado'?'':o.resumen,
+  ...metricasOfertaLocal(o).flatMap(x=>[x.etiqueta,x.valor]),...avisosOfertaLocal(o)].join(' ');
+ return normalizaBuscaLocal(bolsa).includes(normalizaBuscaLocal(emiBusquedaLocal));
+}
+function coincideOfertaLocal(o){
+ const tipo=tipoOfertaLocal(o);
+ return (emiTipoLocal==='todos'||tipo===emiTipoLocal)&&(!emiCat||o.categoria===emiCat)&&coincideBusquedaOfertaLocal(o);
+}
+function ordenarOfertasLocales(lista){
+ const estado=o=>estadoVigenciaLocal(o).clase==='caducado'?1:0;
+ const entrada=o=>{
+  if(estado(o))return Infinity;
+  const precio=numeroLocal(o&&o.precio,NaN);if(Number.isFinite(precio))return precio;
+  const metrica=(Array.isArray(o&&o.metricas)?o.metricas:[]).map(x=>valorLocal(x&&x.valor!=null?x.valor:x))
+   .find(x=>/^desde\s/i.test(x));
+  return numeroLocal(metrica,Infinity);
+ };
+ const orden={
+  cierra:(a,b)=>estado(a)-estado(b)||String(b.verificadaEl).localeCompare(String(a.verificadaEl)),
+  rent:(a,b)=>(estado(b)?-Infinity:numeroLocal(b.rentabilidad,-Infinity))-(estado(a)?-Infinity:numeroLocal(a.rentabilidad,-Infinity)),
+  min:(a,b)=>entrada(a)-entrada(b),
+  az:(a,b)=>String(a.plataformaNombre||'').localeCompare(String(b.plataformaNombre||''),'es')||
+   String(a.titulo||'').localeCompare(String(b.titulo||''),'es'),
+ }[emiOrden]||(()=>0);
+ return lista.slice().sort(orden);
+}
+function clavesOfertaLocal(o,secundario){
+ if(estadoVigenciaLocal(o).clase==='caducado')return {
+  destacado:{etiqueta:'Cifras no vigentes',valor:'Pendiente de revisión'},auxiliares:[]};
+ const tipo=tipoOfertaLocal(o),rentabilidad=valorLocal(o.rentabilidad),precio=valorLocal(o.precio);
+ const destacado=secundario
+  ? {etiqueta:'Precio observado',valor:precio||'Consultar mercado'}
+  : tipo==='valor'
+   ? {etiqueta:'Precio de referencia',valor:precio||'Consultar fuente'}
+   : {etiqueta:'Rentabilidad publicada',valor:rentabilidad||'No publicada'};
+ const metricas=metricasOfertaLocal(o).filter(x=>
+  !/rentabilidad publicada|precio \/ entrada/i.test(normalizaBuscaLocal(x.etiqueta)));
+ const preferidas=[];
+ const literalRentabilidad=textoLocal(o&&o.rentabilidad&&o.rentabilidad.literal);
+ const unidadPrecio=textoLocal(o&&o.precio&&o.precio.unidad);
+ const patrones=secundario
+  ? [/rent|apy|tir/i,/ultima operacion|actividad/i,/profundidad|liquidez/i]
+  : tipo==='rendimiento'
+   ? [/entrada|ticket/i,/estructura|plazo|cobro|salida/i,/actividad|liquidez|tamano/i]
+   : [/inversion minima|entrada|ticket/i,/respaldo|representa|sector/i,/prima|descuento|liquidez/i];
+ if(secundario&&rentabilidad)preferidas.push({etiqueta:'Rentabilidad ajustada',valor:rentabilidad});
+ if(!secundario&&tipo==='rendimiento'&&literalRentabilidad)
+  preferidas.push({etiqueta:'Método / ventana',valor:literalRentabilidad});
+ if(!secundario&&tipo==='valor'&&unidadPrecio)
+  preferidas.push({etiqueta:'Unidad / referencia',valor:unidadPrecio});
+ patrones.forEach(p=>{const m=metricas.find(x=>p.test(normalizaBuscaLocal(x.etiqueta))&&!preferidas.includes(x));if(m)preferidas.push(m)});
+ metricas.forEach(x=>{if(!preferidas.includes(x))preferidas.push(x)});
+ return {destacado,auxiliares:preferidas.slice(0,2)};
+}
+function tarjetaOfertaLocal(o,{secundario=false}={}){
+ const estado=estadoVigenciaLocal(o),tipo=tipoOfertaLocal(o),claves=clavesOfertaLocal(o,secundario);
+ const referencia=estado.clase==='caducado'?'':textoLocal(tipo==='rendimiento'?o.rentabilidad&&o.rentabilidad.literal:o.precio&&o.precio.unidad);
+ const avisos=avisosOfertaLocal(o),urlFicha=urlHttps(o.url),urlMercado=urlHttps(o.urlMercado);
+  const url=secundario?(urlMercado||urlFicha):urlFicha,imagen=imagenOfertaLocal(o);
+  const enlazable=o.estadoRevision==='actual'&&estado.clase!=='caducado';
+  const textoEnlace=secundario&&urlMercado?'Abrir mercado':enlazable?'Ver oferta en '+o.plataformaNombre:'Consultar fuente';
+ const cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
+ const disponibilidad=estado.clase==='caducado'?'Disponibilidad por confirmar':o.disponibleEs===true?'España declarada':o.disponibleEs===false?'No disponible en España':'Disponibilidad por confirmar';
+ return '<article class="emi escaparate-oferta'+cat+(secundario?' escaparate-oferta-secundaria':'')+'">'+
+  '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'" loading="lazy" width="640" height="440">'+
+   '<span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
+   '<span class="escaparate-tipo">'+escHtml(secundario?'Secundario':tipo==='valor'?'Valor':'Rendimiento')+'</span>'+
+   '<span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span>'+
+   '<span class="escaparate-destacado"><b>'+escHtml(claves.destacado.valor)+'</b><small>'+escHtml(claves.destacado.etiqueta)+'</small></span></div>'+
+  '<div class="escaparate-cuerpo"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b><span>·</span>'+escHtml(o.categoria)+(o.pais?'<span>·</span>'+escHtml(o.pais):'')+'</div>'+
+   '<h3 class="emi-tit">'+escHtml(o.titulo)+'</h3>'+
+   '<span class="escaparate-disponibilidad">'+escHtml(disponibilidad)+'</span>'+
+  (referencia?'<p class="escaparate-referencia">'+escHtml(referencia)+'</p>':'')+
+  (claves.auxiliares.length?'<div class="escaparate-metricas">'+claves.auxiliares.map(x=>'<div class="escaparate-metrica"><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div>':'')+
+  (avisos.length?'<p class="escaparate-aviso-compacto"><b>Atención</b> · '+escHtml(avisos[0])+(avisos.length>1?' <span>+'+(avisos.length-1)+'</span>':'')+'</p>':'')+
+  '<div class="emi-pie"><span class="emi-ver">Revisada '+fechaES(o.verificadaEl)+'</span><span class="escaparate-enlaces">'+
+    (o.catalogo?'':'<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver detalles de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalles</button>')+
+    '<a class="emi-ir" href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow'+(o.patrocinada?' sponsored':'')+'" aria-label="'+escHtml(textoEnlace+' · '+o.titulo+' · '+o.plataformaNombre)+'">'+escHtml(textoEnlace)+' ↗</a>'+
+   (secundario&&urlMercado&&urlFicha&&urlFicha!==urlMercado?'<a class="emi-ir escaparate-ficha-oficial" href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir ficha oficial de '+escHtml(o.titulo)+'">Ficha oficial ↗</a>':'')+
+  '</span></div></div></article>';
+}
+function filaSecundariaLocal(o){
+ const estado=estadoVigenciaLocal(o),imagen=imagenOfertaLocal(o),vigente=estado.clase!=='caducado';
+ const precio=vigente?(valorLocal(o.precio)||'Consultar'):'Pendiente de revisión';
+ const rentabilidad=vigente?(valorLocal(o.rentabilidad)||'No publicada'):'Pendiente de revisión';
+ const ultima=metricasOfertaLocal(o).find(x=>/ultima operacion/i.test(normalizaBuscaLocal(x.etiqueta)));
+ const urlMercado=urlHttps(o.urlMercado),urlFicha=urlHttps(o.url),url=urlMercado||urlFicha;
+ return '<article class="escaparate-sec-fila"><div class="escaparate-sec-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
+  escHtml(imagen.alt)+'" loading="lazy" width="640" height="440"><span class="escaparate-editorial escaparate-editorial-compacta" aria-hidden="true">'+
+  escHtml(imagen.etiqueta)+'</span></div><div class="escaparate-sec-contenido">'+
+  '<div class="escaparate-sec-meta"><b>'+escHtml(o.plataformaNombre)+'</b><span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
+  '<h4>'+escHtml(o.titulo)+'</h4><div class="escaparate-sec-cifras"><span><b>'+escHtml(rentabilidad)+'</b><small>Rentabilidad ajustada</small></span>'+
+  '<span><b>'+escHtml(precio)+'</b><small>Precio observado</small></span></div>'+
+  '<div class="escaparate-sec-pie">'+(ultima?'<span>'+escHtml(ultima.valor)+'</span>':'<span>Sin última operación publicada</span>')+
+  '<span class="escaparate-sec-enlaces"><button type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver detalles de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalle</button><a href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir mercado para '+escHtml(o.titulo)+'">Mercado ↗</a>'+
+  (urlMercado&&urlFicha&&urlFicha!==urlMercado?'<a href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir ficha oficial de '+escHtml(o.titulo)+'">Ficha</a>':'')+
+  '</span></div></div></article>';
+}
+function ofertaDetalleLocalPorSlug(slug){
+ if(!ESCAPARATE_LOCAL)return null;
+ return [...ESCAPARATE_LOCAL.ofertas,...ESCAPARATE_LOCAL.secundario]
+  .find(o=>textoLocal(o&&o.slug)===textoLocal(slug))||null;
+}
+function dialogoOfertaLocal(){
+ let d=document.getElementById('escaparateDetalleLocal');
+ if(d)return d;
+ d=document.createElement('dialog');
+ d.id='escaparateDetalleLocal';d.className='escaparate-dialogo';
+ d.setAttribute('aria-labelledby','escaparateDetalleTitulo');
+ d.addEventListener('click',e=>{
+  if(e.target===d||e.target.closest('[data-cerrar-detalle]'))d.close();
+ });
+ d.addEventListener('close',()=>document.body.classList.remove('detalle-local-abierto'));
+ document.body.appendChild(d);return d;
+}
+function abrirDetalleOfertaLocal(slug){
+ const o=ofertaDetalleLocalPorSlug(slug);if(!o)return;
+ const d=dialogoOfertaLocal(),secundario=tipoOfertaLocal(o)==='secundario';
+ d.setAttribute('data-oferta-slug',o.slug);
+ const estado=estadoVigenciaLocal(o),claves=clavesOfertaLocal(o,secundario);
+ const metricas=metricasOfertaLocal(o),avisos=avisosOfertaLocal(o),imagen=imagenOfertaLocal(o);
+ const urlFicha=urlHttps(o.url),urlMercado=urlHttps(o.urlMercado);
+ const disponibilidad=estado.clase==='caducado'?'Disponibilidad para España por confirmar':o.disponibleEs===true?'Disponible para España según la fuente':
+  o.disponibleEs===false?'No disponible en España según la fuente':'Disponibilidad para España por confirmar';
+ const enlaces=(secundario&&urlMercado?'<a class="emi-ir" href="'+escHtml(urlMercado)+'" target="_blank" rel="noopener nofollow">Abrir mercado ↗</a>':'')+
+  (urlFicha?'<a class="emi-ir" href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow">'+
+   escHtml(secundario?'Ficha oficial':'Consultar fuente')+' ↗</a>':'');
+ d.innerHTML='<div class="escaparate-dialogo-marco"><header class="escaparate-dialogo-cab">'+
+  '<div><span>'+(secundario?'Mercado secundario':'Oferta principal')+'</span><h2 id="escaparateDetalleTitulo">'+escHtml(o.titulo)+'</h2></div>'+
+  '<button type="button" data-cerrar-detalle aria-label="Cerrar detalle">×</button></header>'+
+  '<div class="escaparate-dialogo-cuerpo"><div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
+   escHtml(imagen.alt)+'" width="960" height="540"><span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
+   '<span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
+  '<div class="escaparate-dialogo-identidad"><div><b>'+escHtml(o.plataformaNombre)+'</b><span>'+escHtml(o.categoria)+
+   (o.pais?' · '+escHtml(o.pais):'')+'</span></div><div class="escaparate-dialogo-dato"><b>'+escHtml(claves.destacado.valor)+
+   '</b><span>'+escHtml(claves.destacado.etiqueta)+'</span></div></div>'+
+  (o.resumen&&estado.clase!=='caducado'?'<p class="escaparate-dialogo-resumen">'+escHtml(o.resumen)+'</p>':'')+
+  '<div class="escaparate-dialogo-contexto"><span>'+escHtml(disponibilidad)+'</span><span>Revisada '+escHtml(fechaES(o.verificadaEl))+'</span></div>'+
+  (metricas.length?'<section class="escaparate-dialogo-seccion"><h3>Datos publicados</h3><div class="escaparate-dialogo-metricas">'+
+   metricas.map(x=>'<div><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div></section>':'')+
+  (avisos.length?'<section class="escaparate-dialogo-seccion"><h3>Qué conviene revisar</h3><ul class="escaparate-dialogo-avisos">'+
+   avisos.map(x=>'<li>'+escHtml(x)+'</li>').join('')+'</ul></section>':'')+
+  '<footer class="escaparate-dialogo-pie"><p>Instantánea interna. Las cifras pueden cambiar; confirma vigencia, condiciones y disponibilidad en la fuente.</p><div>'+enlaces+'</div></footer>'+
+  '</div></div>';
+ if(d.open)d.close();
+ if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');
+ document.body.classList.add('detalle-local-abierto');
+ const cerrar=d.querySelector('[data-cerrar-detalle]');if(cerrar)cerrar.focus();
+}
+function pintarEscaparateLocal(){
+ const caja=document.getElementById('emiLista');if(!caja||!ESCAPARATE_LOCAL)return;
+ const ofertas=ordenarOfertasLocales(ESCAPARATE_LOCAL.ofertas.filter(ofertaLocalValida).filter(coincideOfertaLocal));
+ const sec=ESCAPARATE_LOCAL.secundario.filter(ofertaLocalValida).filter(coincideBusquedaOfertaLocal);
+ const seccion=document.getElementById('emisiones');if(seccion)seccion.classList.remove('sin-emisiones');
+ caja.innerHTML=ofertas.length?ofertas.map(o=>tarjetaOfertaLocal(o)).join(''):
+  '<div class="emis-vacio"><h3>'+escHtml(sec.length&&emiBusquedaLocal?'Sin coincidencias en la selección principal':'Ninguna oferta coincide')+'</h3><p>'+
+  (sec.length&&emiBusquedaLocal?'Hay '+sec.length+' coincidencia'+(sec.length===1?'':'s')+' en mercado secundario, justo debajo.':'Cambia la búsqueda o los filtros para volver a ver el escaparate.')+'</p></div>';
+ const estado=document.getElementById('movilOfertasEstado');
+ if(estado){estado.textContent=ofertas.length+' de '+ESCAPARATE_LOCAL.ofertas.length;estado.classList.toggle('hay-ofertas',ofertas.length>0)}
+ const listaSec=document.getElementById('escaparateSecundarioLista');
+ if(listaSec)listaSec.innerHTML=sec.length?sec.map(filaSecundariaLocal).join(''):
+  '<div class="emis-vacio"><h3>Sin coincidencias en secundario</h3><p>Prueba con otro término de búsqueda.</p></div>';
+ const cuentaSec=document.getElementById('escaparateSecundarioCuenta');if(cuentaSec)cuentaSec.textContent=sec.length+' de '+ESCAPARATE_LOCAL.secundario.length;
+ const panelSec=document.getElementById('escaparateSecundario');if(panelSec&&emiBusquedaLocal&&sec.length)panelSec.open=true;
+}
+function pintarTiposOfertaLocal(){
+ const caja=document.getElementById('emiTipoFiltros');if(!caja||!ESCAPARATE_LOCAL)return;
+ const cuenta=t=>ESCAPARATE_LOCAL.ofertas.filter(o=>tipoOfertaLocal(o)===t).length;
+ caja.innerHTML=[['todos','Todas',ESCAPARATE_LOCAL.ofertas.length],['rendimiento','Rendimiento',cuenta('rendimiento')],['valor','Revalorización',cuenta('valor')]]
+  .map(x=>'<button class="f'+(emiTipoLocal===x[0]?' on':'')+'" data-emi-tipo="'+x[0]+'" aria-pressed="'+(emiTipoLocal===x[0])+'">'+x[1]+' <small>'+x[2]+'</small></button>').join('');
+}
+function pintarExclusionesLocales(){
+ const caja=document.getElementById('escaparateExclusionesLista');if(!caja||!ESCAPARATE_LOCAL)return;
+ caja.innerHTML=ESCAPARATE_LOCAL.exclusionesOfertas.map(x=>{
+  const u=urlHttps(x.urlFuente);
+  return '<article class="escaparate-exclusion"><b>'+escHtml(x.nombre)+(x.alcance?' · '+escHtml(x.alcance):'')+'</b><p>'+escHtml(x.motivo)+(u?' <a href="'+escHtml(u)+'" target="_blank" rel="noopener nofollow">Fuente ↗</a>':'')+'</p></article>';
+ }).join('');
+ const n=document.getElementById('escaparateExclusionesCuenta');if(n)n.textContent=ESCAPARATE_LOCAL.exclusionesOfertas.length+' exclusiones';
+}
+function pintarFuenteLocal(){
+ const caja=document.getElementById('escaparateFuente');if(!caja||!ESCAPARATE_LOCAL)return;
+ const f=ESCAPARATE_LOCAL.fuente||{},u=urlHttps(f.url);
+ caja.innerHTML='<b>Procedencia:</b> '+escHtml(f.titulo||'Escaparate RWAdar')+' · barrido '+escHtml(fechaES(f.barridoEl))+
+  (u?' · <a href="'+escHtml(u)+'" target="_blank" rel="noopener nofollow">abrir artefacto original ↗</a>':'')+'<br>'+escHtml(f.aviso||'Instantánea interna; confirma cada dato en el origen.')+
+  (f.uso?'<br><b>Uso:</b> '+escHtml(f.uso):'');
+}
+function activaControlesEscaparateLocal(){
+ document.querySelectorAll('.solo-escaparate-local').forEach(x=>{x.hidden=false});
+ const aviso=document.getElementById('escaparateLocalAviso');if(aviso)aviso.hidden=false;
+ const busca=document.getElementById('emiBuscar');
+ if(busca&&!busca.dataset.escaparateActivo){busca.dataset.escaparateActivo='1';busca.addEventListener('input',()=>{emiBusquedaLocal=busca.value.trim();pintarEmisiones()})}
+ const tipos=document.getElementById('emiTipoFiltros');
+ if(tipos&&!tipos.dataset.escaparateActivo){tipos.dataset.escaparateActivo='1';tipos.addEventListener('click',e=>{const b=e.target.closest('[data-emi-tipo]');if(!b)return;emiTipoLocal=b.dataset.emiTipo;pintarTiposOfertaLocal();pintarEmisiones()})}
+ const seccion=document.getElementById('emisiones');
+ if(seccion&&!seccion.dataset.detalleOfertaActivo){seccion.dataset.detalleOfertaActivo='1';seccion.addEventListener('click',e=>{
+  const b=e.target.closest('[data-oferta-detalle]');if(b)abrirDetalleOfertaLocal(b.dataset.ofertaDetalle);
+ })}
+ const orden=document.getElementById('emiOrden');
+ if(orden)orden.innerHTML='<option value="cierra">Frescura y revisión</option><option value="rent">Cifra de rentabilidad</option><option value="min">Entrada o precio</option><option value="az">Empresa y nombre</option>';
+ const fechaOferta=ESCAPARATE_LOCAL&&ESCAPARATE_LOCAL.fuente&&ESCAPARATE_LOCAL.fuente.actualizacionLocal
+  ?ESCAPARATE_LOCAL.fuente.actualizacionLocal.verificadoEl:'';
+ const tit=document.getElementById('emiTitulo');if(tit)tit.textContent='Ofertas observadas'+
+  (fechaLocalValida(fechaOferta)?' · revisión '+fechaES(fechaOferta):'');
+ const bajada=document.getElementById('emiBajada');if(bajada)bajada.textContent='28 fichas principales con imagen, cifra clave y vigencia editorial. Las referencias de mercado secundario se consultan en su bloque independiente.';
+ const mt=document.getElementById('movilOfertasTitulo');if(mt)mt.textContent='Escaparate interno';
+ const mb=document.getElementById('movilOfertasBajada');if(mb)mb.textContent='Copia local, sin conexión a producción.';
+}
 
 /* ---- descartadas ---- */
 function pintarDescartadas(){
@@ -1796,12 +2254,12 @@ const CLAVE_PUB='sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 /* La huella incluye todos los campos visibles. La anterior omitía textos y
    fuentes, de modo que una corrección editorial podía no llegar al visitante. */
 const huella=(a,b,e=[])=>JSON.stringify({
- p:a.map(x=>[x.n,x.cat,x.tipo,x.reg,x.cadenas,x.ticket,x.acceso,x.web,x.aval,x.nota,x.ver])
-    .sort((x,y)=>String(x[0]).localeCompare(String(y[0]),'es')),
+ p:a.map(x=>[x.slug,x.n,x.cat,x.tipo,x.reg,x.cadenas,x.ticket,x.acceso,x.web,x.aval,x.nota,x.ver,x.verificacionLocal,x.revisionId])
+     .sort((x,y)=>String(x[0]).localeCompare(String(y[0]),'es')),
  f:b.map(x=>[x.n,x.badge,x.why,(Array.isArray(x.fuentes)?x.fuentes:[]).map(s=>[s.url,s.titulo])])
     .sort((x,y)=>String(x[0]).localeCompare(String(y[0]),'es')),
- e:e.map(x=>[x.s,x.t,x.res,x.pl,x.plw,x.cat,x.ub,x.mon,x.min,x.obj,x.cap,x.pct,
-      x.rent,x.plazo,x.tipo,x.cierra,x.abre,x.est,x.cont,x.esNo,x.vinc,x.rest,x.rentNo,x.url,x.ver,x.pat])
+ e:e.map(x=>x.catalogo?['catalogo',x]:[x.s,x.t,x.res,x.pl,x.plw,x.cat,x.ub,x.mon,x.min,x.obj,x.cap,x.pct,
+       x.rent,x.plazo,x.tipo,x.cierra,x.abre,x.est,x.cont,x.esNo,x.vinc,x.rest,x.rentNo,x.url,x.ver,x.pat])
     .sort((x,y)=>String(x[0]).localeCompare(String(y[0]),'es'))
 });
 
@@ -1863,29 +2321,311 @@ function emisionRemota(e){
  return x;
 }
 
+const ESTADOS_VERIFICACION_LOCAL={
+ estadoOperativo:new Set(['observada','no_verificable']),
+ licenciaRegistro:new Set(['confirmada_regulador','confirmada_documento_producto',
+  'no_aplica_plataforma','no_verificable','sin_registro_declarado']),
+ acceso:new Set(['confirmado_condicionado','no_aplica_plataforma','no_verificable'])
+};
+const ETIQUETAS_VERIFICACION_LOCAL={
+ observada:'Observada',no_verificable:'No verificable',
+ confirmada_regulador:'Registro confirmado',
+ confirmada_documento_producto:'Documento de producto',
+ no_aplica_plataforma:'No aplica a la plataforma',
+ sin_registro_declarado:'Sin registro declarado',
+ confirmado_condicionado:'Acceso condicionado'
+};
+function etiquetaVerificacionLocal(estado){
+ return ETIQUETAS_VERIFICACION_LOCAL[estado]||'No verificado';
+}
+function fuenteVerificacionLocal(fuente,fecha,contexto){
+ const x={
+  id:textoDato(fuente&&fuente.id,contexto+' id',120),
+  tipo:textoDato(fuente&&fuente.tipo,contexto+' tipo',40),
+  titulo:textoDato(fuente&&fuente.titulo,contexto+' título',300),
+  url:urlHttps(fuente&&fuente.url),
+  primaria:fuente&&fuente.primaria===true,
+  consultadaEl:textoDato(fuente&&fuente.consultadaEl,contexto+' fecha',10)
+ };
+ if(!x.url||!x.primaria||x.consultadaEl!==fecha)throw new Error(contexto+' fuera del contrato local');
+ return x;
+}
+function campoVerificacionLocal(campo,nombre,fecha){
+ const estados=ESTADOS_VERIFICACION_LOCAL[nombre];
+ if(!campo||!estados||!estados.has(campo.estado))throw new Error(nombre+' local fuera de contrato');
+ const detalle=textoDato(campo.detalle,nombre+' detalle',3000);
+ if(detalle.length<24||!Array.isArray(campo.fuentes)||!campo.fuentes.length)
+  throw new Error(nombre+' local incompleto');
+ return {estado:campo.estado,detalle,
+  fuentes:campo.fuentes.map((fuente,indice)=>fuenteVerificacionLocal(
+   fuente,fecha,nombre+' fuente '+indice))};
+}
+function validarVerificacionLocal(verificacion,fechaEsperada=FECHA_VERIFICACION_LOCAL){
+ if(!verificacion||verificacion.verificadoEl!==fechaEsperada||
+     verificacion.conservaFechaCanonica!==true)
+  throw new Error('verificación local ausente, desactualizada o no conservadora');
+ const x={
+  verificadoEl:verificacion.verificadoEl,
+  conservaFechaCanonica:true,
+  estadoOperativo:campoVerificacionLocal(verificacion.estadoOperativo,'estadoOperativo',verificacion.verificadoEl),
+  licenciaRegistro:campoVerificacionLocal(verificacion.licenciaRegistro,'licenciaRegistro',verificacion.verificadoEl),
+  acceso:campoVerificacionLocal(verificacion.acceso,'acceso',verificacion.verificadoEl),
+  alertasCriticas:[]
+ };
+ if(!Array.isArray(verificacion.alertasCriticas)||!verificacion.alertasCriticas.length)
+  throw new Error('alertas críticas locales ausentes');
+ x.alertasCriticas=verificacion.alertasCriticas.map((alerta,indice)=>{
+  if(!alerta||!/^[a-z0-9]+(?:_[a-z0-9]+)*$/.test(alerta.codigo||''))
+   throw new Error('código de alerta local no válido');
+  const detalle=textoDato(alerta.detalle,'alerta local',3000);
+  if(detalle.length<24||!Array.isArray(alerta.fuentes)||!alerta.fuentes.length)
+   throw new Error('alerta crítica local incompleta');
+  return {codigo:alerta.codigo,detalle,
+   fuentes:alerta.fuentes.map((fuente,j)=>fuenteVerificacionLocal(
+    fuente,verificacion.verificadoEl,'alerta '+indice+' fuente '+j))};
+ });
+ return x;
+}
+
+function plataformaCatalogoRemota(p,fecha){
+ const x=plataformaRemota(p);
+ x.revisionId=textoDato(p.revision_id,'revisión de plataforma',36);
+ x.slug=textoDato(p.slug,'slug de plataforma',140);
+ if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(x.slug))throw new Error('slug de plataforma no válido');
+ x.verificacionLocal=validarVerificacionLocal(p.verificacion_local,fecha);
+ return x;
+}
+
+function cifraCatalogoRemota(valor,nombre){
+ if(valor==null)return null;
+ if(!valor||typeof valor!=='object'||Array.isArray(valor))throw new Error(nombre+' no es un objeto');
+ const x={};
+ for(const clave of ['mostrado','mostrada','literal','unidad']){
+  if(valor[clave]!=null)x[clave]=textoDato(valor[clave],nombre+' '+clave,500);
+ }
+ if(!Object.keys(x).length)throw new Error(nombre+' vacío');
+ return x;
+}
+function ofertaCatalogoRemota(e,fecha){
+ if(e?.patrocinada!==false)throw new Error('patrocinio no habilitado en el catálogo editorial gratuito');
+ const estado=textoDato(e.estado_revision,'estado de oferta',40);
+ if(!['actual','no_verificable','fuentes_en_conflicto'].includes(estado))throw new Error('estado de oferta no público');
+ const metricas=Array.isArray(e.metricas)?e.metricas.map((m,i)=>({
+  etiqueta:textoDato(m&&m.etiqueta,'métrica '+i+' etiqueta',120),
+  valor:textoDato(m&&m.valor,'métrica '+i+' valor',500)})):[];
+ const avisos=Array.isArray(e.avisos)?e.avisos.map((a,i)=>{
+  if(typeof a==='string')return textoDato(a,'aviso '+i,1000);
+  return {texto:textoDato(a&&a.texto,'aviso '+i,1000),
+   tono:a&&typeof a.tono==='string'?textoDato(a.tono,'tono '+i,30):'',
+   esAntiguedad:a&&a.esAntiguedad===true,
+   verificadaEl:a&&a.verificadaEl==null?e.verificada_el:textoDato(a.verificadaEl,'fecha de aviso',10)};
+ }):[];
+ const fuentes=Array.isArray(e.fuentes_actuales)?e.fuentes_actuales.map((u,i)=>{
+  const url=urlHttps(u);if(!url)throw new Error('fuente de oferta '+i+' no HTTPS');return url;
+ }):[];
+ const vigencia=Number(e.vigencia_dias),disponible=booleanoOpcional(e.disponible_es,'disponibilidad en España');
+ const eu=booleanoOpcional(e.eu,'ámbito UE'),puntuacion=e.puntuacion==null?null:numeroRemoto(e.puntuacion,'puntuación');
+ const x={catalogo:true,revisionId:textoDato(e.revision_id,'revisión de oferta',36),slug:textoDato(e.slug,'slug de oferta',180),
+  tipo:textoDato(e.tipo,'tipo de oferta',30),titulo:textoDato(e.titulo,'título de oferta',180),
+  plataformaSlug:textoDato(e.plataforma_slug,'slug de proveedor',140),
+  plataformaNombre:textoDato(e.plataforma_nombre,'proveedor',120),
+  categoria:textoDato(e.categoria,'categoría de oferta',80),
+  pais:e.pais==null?null:textoDato(e.pais,'país de oferta',100),
+  resumen:textoDato(e.resumen,'resumen de oferta',3000),url:urlHttps(e.url),
+  verificadaEl:textoDato(e.verificada_el,'fecha de oferta',10),vigenciaDias:vigencia,
+  permanente:e.permanente===true,disponibleEs:disponible,eu:eu,
+  fueraLadrillo:e.fuera_ladrillo===true,puntuacion:puntuacion,
+  rentabilidad:cifraCatalogoRemota(e.rentabilidad,'rentabilidad'),
+  precio:cifraCatalogoRemota(e.precio,'precio'),metricas:metricas,avisos:avisos,
+  estadoRevision:estado,fuentesActuales:fuentes,patrocinada:e.patrocinada===true};
+ if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(x.slug)||!x.url||!fechaOfertaPublicaValida(x.verificadaEl,fecha)||
+    !Number.isInteger(vigencia)||vigencia<1||vigencia>7||!Object.hasOwn(CATMETA,x.categoria)||
+    !metricas.length||!avisos.length||!fuentes.length||
+    (estado!=='actual'&&(x.rentabilidad!==null||x.precio!==null)))
+  throw new Error('oferta fuera del contrato público');
+ return x;
+}
+function fechaOfertaPublicaValida(fecha,fechaRadar){
+ return fechaLocalValida(fecha)&&fechaLocalValida(fechaRadar)&&
+  fecha<=new Date().toISOString().slice(0,10)&&
+  Date.parse(fecha+'T00:00:00Z')<=Date.parse(fechaRadar+'T00:00:00Z')+7*86400000;
+}
+function validarRevisionCatalogo(revisiones){
+ const ids=new Set(revisiones);
+ if(ids.size!==1||!/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test([...ids][0]||''))
+  throw new Error('lote público con revisiones mezcladas o sin revision_id');
+}
+function validarLoteCatalogoRemoto(plataformas,ofertas){
+ if(!Array.isArray(plataformas)||plataformas.length!==26||
+    !Array.isArray(ofertas)||ofertas.length!==28)throw new Error('lote público incompleto');
+ if(new Set(plataformas.map(p=>p.slug)).size!==26||new Set(ofertas.map(o=>o.slug)).size!==28)
+  throw new Error('lote público con slugs duplicados');
+ validarRevisionCatalogo([...plataformas,...ofertas].map(x=>x.revision_id));
+ const fechas=new Set(plataformas.map(p=>p.verificacion_local&&p.verificacion_local.verificadoEl));
+ if(fechas.size!==1)throw new Error('lote público con fechas mezcladas');
+ const fecha=[...fechas][0];
+ if(!fechaLocalValida(fecha))throw new Error('fecha de lote inválida');
+ const base=Date.parse(fecha+'T00:00:00Z'),hoy=new Date(),hoyUTC=Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate());
+ const edad=Math.floor((hoyUTC-base)/86400000);
+ if(!Number.isFinite(base)||edad<0||edad>7)throw new Error('lote público futuro o caducado');
+ if(!ofertas.every(o=>fechaOfertaPublicaValida(o.verificada_el,fecha)))throw new Error('fecha individual de oferta inválida');
+ return fecha;
+}
+
+/* El pre-render es una caché, no una excepción a la vigencia. Si envejece
+   mientras Supabase falla o devuelve cero filas, se elimina antes de pintar:
+   nunca conservamos 26/28 antiguos por comodidad. */
+function comprobarCatalogoEmbebido(){
+ if(CATALOGO_EMBEBIDO_BLOQUEADO)return false;
+ const catalogo=EMI.filter(e=>e&&e.catalogo===true);
+ if(!catalogo.length)return true; /* fuente interna anterior, aún sin lote */
+ try{
+  if(EMI.length!==28||catalogo.length!==28||P.length!==26||
+     new Set(P.map(p=>p.slug)).size!==26||new Set(catalogo.map(o=>o.slug)).size!==28)
+   throw new Error('lote embebido incompleto');
+  validarRevisionCatalogo([...P,...catalogo].map(x=>x.revisionId));
+  const fechas=new Set(P.map(p=>p.verificacionLocal&&p.verificacionLocal.verificadoEl));
+  if(fechas.size!==1)throw new Error('fechas embebidas mezcladas');
+  const fecha=[...fechas][0],base=Date.parse(fecha+'T00:00:00Z'),hoy=new Date();
+  const hoyUTC=Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate());
+  const edad=Math.floor((hoyUTC-base)/86400000);
+  if(!fechaLocalValida(fecha)||!Number.isFinite(base)||edad<0||edad>7)
+   throw new Error('lote embebido futuro o caducado');
+  P.forEach(p=>validarVerificacionLocal(p.verificacionLocal,fecha));
+  if(!catalogo.every(o=>ofertaLocalValida(o)&&fechaOfertaPublicaValida(o.verificadaEl,fecha)&&
+      Array.isArray(o.metricas)&&o.metricas.length&&Array.isArray(o.avisos)&&o.avisos.length&&
+      Array.isArray(o.fuentesActuales)&&o.fuentesActuales.length&&o.fuentesActuales.every(urlHttps)&&
+      (o.estadoRevision==='actual'||(o.rentabilidad==null&&o.precio==null))))
+   throw new Error('oferta embebida fuera de contrato');
+  return true;
+ }catch(_){
+  P.length=0;EMI.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true;
+  return false;
+ }
+}
+
+function plataformaDesdeEscaparate(p){
+ const x={n:textoDato(p.nombre,'nombre local',120),cat:textoDato(p.categoria,'categoría local',80),
+  tipo:textoDato(p.actor,'actor local',80),reg:textoDato(p.region,'región local',100),
+  cadenas:textoDato(p.cadenas,'cadenas locales',160),ticket:textoDato(p.ticket,'entrada local',40),
+  acceso:textoDato(p.acceso,'acceso local',40),web:urlHttps(p.web),
+  aval:textoDato(p.aval,'aval local',2000),nota:textoDato(p.nota,'descripción local',3000),
+  ver:textoDato(p.verificadaEl||p.verificada_el,'fecha local',10),
+  slug:textoDato(p.slug,'slug local',140),
+  verificacionLocal:validarVerificacionLocal(p.verificacionLocal)};
+ if(!Object.hasOwn(CATMETA,x.cat)||!ACCESOS.includes(x.acceso)||!TICKETS.includes(x.ticket)||
+    !x.web||!fechaLocalValida(x.ver))throw new Error('plataforma local fuera de contrato');
+ return x;
+}
+function descarteDesdeEscaparate(x){
+ const fuentes=(Array.isArray(x.fuentes)?x.fuentes:[]).map(s=>{
+  const url=urlHttps(s&&s.url),titulo=textoDato(s&&s.titulo,'fuente local',300);
+  if(!url)throw new Error('fuente local sin HTTPS');return {url,titulo};
+ });
+ return {n:textoDato(x.nombre||x.n,'nombre descartado local',120),
+  badge:textoDato(x.etiqueta||x.etiquetaDescarte||x.etiqueta_descarte||x.badge,'etiqueta descartada local',100),
+  why:textoDato(x.motivo||x.motivoDescarte||x.motivo_descarte||x.why,'motivo descartado local',3000),fuentes};
+}
+function validarEscaparateLocal(d){
+ if(!d||d.versionEsquema!==1||!d.fuente||!urlHttps(d.fuente.url))throw new Error('cabecera local no válida');
+ for(const [nombre,n] of [['plataformas',26],['descartes',4],['ofertas',28],['secundario',24],['exclusionesOfertas',15]]){
+  if(!Array.isArray(d[nombre])||d[nombre].length!==n)throw new Error(nombre+' no contiene '+n+' elementos');
+ }
+ if(!d.ofertas.every(ofertaLocalValida)||!d.secundario.every(ofertaLocalValida))throw new Error('oferta local fuera de contrato');
+ const plataformas=d.plataformas.map(plataformaDesdeEscaparate);
+ if(new Set(plataformas.map(p=>p.slug)).size!==26)throw new Error('slug de plataforma local duplicado');
+ const slugs=[...d.ofertas,...d.secundario].map(x=>x.slug);
+ if(new Set(slugs).size!==slugs.length)throw new Error('slug local duplicado');
+ if(!d.exclusionesOfertas.every(x=>textoLocal(x.nombre)&&textoLocal(x.motivo)&&urlHttps(x.urlFuente)))
+  throw new Error('exclusión local fuera de contrato');
+ return d;
+}
+function validarManifiestoEditorialLocal(m){
+ if(!m||m.versionEsquema!==1||m.etiquetaVisibleObligatoria!=='Ilustración editorial'||
+    !Array.isArray(m.archivos)||m.archivos.length!==4)
+  throw new Error('manifiesto editorial local fuera de contrato');
+ const categorias=new Set(),archivos=new Set(),porCategoria={};
+ for(const x of m.archivos){
+  if(!x||!Object.hasOwn(CATMETA,x.categoria)||categorias.has(x.categoria)||
+     !/^[a-z0-9]+(?:-[a-z0-9]+)*\.webp$/.test(x.archivo||'')||archivos.has(x.archivo)||
+     x.ancho!==640||x.alto!==440||!Number.isInteger(x.bytes)||x.bytes<=1024||
+     !/^[a-f0-9]{64}$/.test(x.hashSha256||'')||
+     !textoLocal(x.alt).startsWith(m.etiquetaVisibleObligatoria+' '))
+   throw new Error('entrada editorial local fuera de contrato');
+  categorias.add(x.categoria);archivos.add(x.archivo);porCategoria[x.categoria]=x;
+ }
+ return {etiqueta:m.etiquetaVisibleObligatoria,porCategoria};
+}
+async function cargarEscaparateLocal(){
+ if(!MODO_LOCAL_SEGURO)return false;
+ document.body.classList.add('modo-local-seguro');
+ /* Cierra antes de esperar al fixture: si falta, está incompleto o tiene una
+    fecha distinta, nunca se vuelve a la ficha canónica antigua como si fuese
+    equivalente a la revisión local. */
+ P.length=0;compare=[];render();
+ document.getElementById('s1').textContent='0';
+ document.getElementById('s3').textContent='0';
+ const radarTotalVacio=document.getElementById('rlTotal');
+ if(radarTotalVacio)radarTotalVacio.textContent='Verificación local pendiente';
+ const aviso=document.getElementById('escaparateLocalAviso');
+ if(aviso){aviso.hidden=false;const b=aviso.querySelector('b');if(b)b.textContent='Cargando escaparate local aislado…'}
+ const opciones={method:'GET',cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'};
+ const [r,m]=await Promise.all([
+  fetch('/__rwadar_local/escaparate.json',opciones),
+  fetch('/ofertas-editoriales/manifest.json',opciones)
+ ]);
+ if(!r.ok||!m.ok)throw new Error('HTTP '+(!r.ok?r.status:m.status)+' al leer el escaparate local');
+ MANIFIESTO_EDITORIAL_LOCAL=validarManifiestoEditorialLocal(await m.json());
+ const d=validarEscaparateLocal(await r.json());
+ const categoriasOfertas=new Set([...d.ofertas,...d.secundario].map(o=>o.categoria));
+ if(categoriasOfertas.size!==4||[...categoriasOfertas].some(c=>!MANIFIESTO_EDITORIAL_LOCAL.porCategoria[c]))
+  throw new Error('el fallback editorial no cubre todas las ofertas locales');
+ const plataformas=d.plataformas.map(plataformaDesdeEscaparate);
+ const descartes=d.descartes.map(descarteDesdeEscaparate);
+ ESCAPARATE_LOCAL=d;
+ P.length=0;P.push(...plataformas);
+ FUERA.length=0;FUERA.push(...descartes);
+ activaControlesEscaparateLocal();
+ pintarTiposOfertaLocal();pintarFiltrosEmision();pintarEmisiones();pintarExclusionesLocales();pintarFuenteLocal();
+ rellenaRegiones();pintarDescartadas();render();
+ document.getElementById('s1').textContent=P.length;
+ document.getElementById('s3').textContent=new Set(P.map(p=>p.cat)).size;
+ document.getElementById('s4').textContent=FUERA.length;
+ const rt=document.getElementById('rlTotal');if(rt)rt.textContent=P.length+' plataformas en el radar';
+ const pie=document.getElementById('pieRevision');if(pie)pie.textContent='Fuentes del radar: '+
+  fechaES(d.fuente.actualizacionRadarLocal.verificadoEl)+' · Ofertas: '+
+  fechaES(d.fuente.actualizacionLocal.verificadoEl)+' · Secundario: '+
+  [...new Set(d.secundario.map(o=>o.verificadaEl))].sort().map(fechaES).join(', ');
+ if(aviso){const b=aviso.querySelector('b');if(b)b.textContent='Escaparate de revisión aislado de producción'}
+ return true;
+}
+
 async function alDia(){
+ if(typeof MODO_LOCAL_SEGURO!=='undefined'&&MODO_LOCAL_SEGURO)throw new Error('Supabase está bloqueado en el modo local seguro');
  const cab={apikey:CLAVE_PUB};
  const pide=u=>fetch(API+u,{headers:cab,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'})
    .then(r=>r.ok?r.json():Promise.reject(new Error('HTTP '+r.status)));
- const [r,f,e]=await Promise.all([
-   pide('/radar_publico?select=*'),
-   pide('/plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)&order=nombre'),
-   pide('/emisiones_publicas?select=*&estado=in.(abierta,programada,en_estudio)')
- ]);
- if(!Array.isArray(r)||!r.length||!Array.isArray(f)||!Array.isArray(e)) throw new Error('respuesta vacia');
+  const [r,f,e]=await Promise.all([
+    pide('/catalogo_plataformas_publicas?select=*'),
+    pide('/plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)&order=nombre'),
+    pide('/catalogo_ofertas_publicas?select=*')
+  ]);
+  if(!Array.isArray(f)||f.length!==4)throw new Error('descartes públicos incompletos');
+  const fecha=validarLoteCatalogoRemoto(r,e);
 
- const nP=r.map(plataformaRemota).sort((a,b)=>a.n.localeCompare(b.n,'es'));
- const nF=f.map(descarteRemoto).sort((a,b)=>a.n.localeCompare(b.n,'es'));
- const nE=e.map(emisionRemota).sort((a,b)=>a.s.localeCompare(b.s,'es'));
+  const nP=r.map(p=>plataformaCatalogoRemota(p,fecha)).sort((a,b)=>a.n.localeCompare(b.n,'es'));
+  const nF=f.map(descarteRemoto).sort((a,b)=>a.n.localeCompare(b.n,'es'));
+  const nE=e.map(o=>ofertaCatalogoRemota(o,fecha)).sort((a,b)=>a.slug.localeCompare(b.slug,'es'));
 
  if(huella(nP,nF,nE)===huella(P,FUERA,EMI)) return false;   /* ya estaba al día */
 
  P.length=0;    P.push(...nP);
  FUERA.length=0; FUERA.push(...nF);
- EMI.length=0;  EMI.push(...nE);
+  EMI.length=0;  EMI.push(...nE);
+  CATALOGO_EMBEBIDO_BLOQUEADO=false;
  rellenaRegiones();
  document.getElementById('s1').textContent=P.length;
- document.getElementById('s3').textContent=P.filter(p=>p.acceso==='Minorista').length;
+ document.getElementById('s3').textContent=new Set(P.map(p=>p.cat)).size;
  document.getElementById('s4').textContent=FUERA.length;
 /* El rotulo del radar tambien: estaba escrito a mano y se quedo en 24
    cuando el registro crecio. Ahora sale de P como todo lo demas. */
@@ -1898,6 +2638,11 @@ async function alDia(){
  if(pie) pie.textContent='Última revisión del registro: '+ultimaRevision();
  return true;
 }
+
+/* Todo el contrato está inicializado antes del primer render, también cuando
+   sincronizar.js ha embebido el nuevo lote. */
+comprobarCatalogoEmbebido();
+pintarFiltrosEmision();pintarEmisiones();
 
 function avisar(texto){
  let t=document.getElementById('avisoGlobal');
@@ -1913,10 +2658,31 @@ function avisar(texto){
 /* Al cargar, y de nuevo si la pestaña vuelve a primer plano tras un rato:
    quien deja la página abierta todo el día también merece ver lo último. */
 let ultimaMirada=0;
+function refrescarVigenciaOfertas(){
+ if(MODO_LOCAL_SEGURO){
+  if(ESCAPARATE_LOCAL)pintarEscaparateLocal();
+ }else{
+  comprobarCatalogoEmbebido();pintarFiltrosEmision();pintarEmisiones();
+ }
+ const detalle=document.getElementById('escaparateDetalleLocal');
+ if(detalle&&detalle.open)abrirDetalleOfertaLocal(detalle.getAttribute('data-oferta-slug'));
+}
+/* No basta con comprobar al descargar: una pestaña puede cruzar medianoche
+   o volver de suspensión sin que el catálogo remoto haya cambiado. */
+function programarRevisionVigenciaOfertas(){
+ const ahora=new Date(),siguienteDia=new Date(ahora);
+ siguienteDia.setUTCHours(24,0,0,100);
+ setTimeout(()=>{refrescarVigenciaOfertas();programarRevisionVigenciaOfertas()},siguienteDia-ahora);
+}
+programarRevisionVigenciaOfertas();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refrescarVigenciaOfertas()});
 async function mirar(){
+ if(MODO_LOCAL_SEGURO)return;
+ comprobarCatalogoEmbebido();
  if(Date.now()-ultimaMirada<60000) return;
  ultimaMirada=Date.now();
- try{ if(await alDia()) avisar('Registro actualizado'); }catch{}
+ try{ if(await alDia()) avisar('Registro actualizado'); }
+ catch{comprobarCatalogoEmbebido();pintarFiltrosEmision();pintarEmisiones();render()}
 }
 /* Primero se pinta lo que ya venía en el HTML, y solo después se
    consulta la base: así la página está usable de inmediato y la
@@ -1925,8 +2691,17 @@ render();
 pulir();
 (function pieFecha(){const p=document.getElementById('pieRevision');
  if(p) p.textContent='Última revisión del registro: '+ultimaRevision();})();
-mirar();
-document.addEventListener('visibilitychange',()=>{ if(!document.hidden) mirar(); });
+if(MODO_LOCAL_SEGURO){
+ cargarEscaparateLocal().catch(e=>{
+  document.body.classList.add('modo-local-seguro');
+  const aviso=document.getElementById('escaparateLocalAviso');
+  if(aviso){aviso.hidden=false;const b=aviso.querySelector('b');if(b)b.textContent='No se pudo abrir el escaparate local';
+   const p=aviso.querySelector('p');if(p)p.textContent='El radar queda oculto: falta una verificación local completa y vigente. No se contacta producción. '+e.message;}
+ });
+}else{
+ mirar();
+ document.addEventListener('visibilitychange',()=>{ if(!document.hidden) mirar(); });
+}
 
 
 /* =================================================================
@@ -1950,6 +2725,7 @@ const Opiniones=(function(){
    c.Authorization='Bearer '+t;return c;};
 
  async function pide(ruta,opc){
+  if(!SERVICIOS_USUARIO_DISPONIBLES)throw new Error('Opiniones desactivadas en esta versión editorial');
   const cfg=Object.assign({cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'},opc||{});
   cfg.headers=Object.assign({apikey:CLAVE_PUB},(opc&&opc.headers)||{});
   const r=await fetch(REST+ruta,cfg);
@@ -1976,6 +2752,7 @@ const Opiniones=(function(){
  const nota=s=>{const n=Number(s);return Number.isInteger(n)&&n>=1&&n<=10?n:null};
 
  async function pinta(nombre,host){
+  if(!SERVICIOS_USUARIO_DISPONIBLES){host.innerHTML='';return;}
   host.innerHTML='<p class="op-cargando">Cargando opiniones…</p>';
   let pid;
   try{ pid=await idPlataforma(nombre); }catch(e){ host.innerHTML=''; return; }
@@ -2178,6 +2955,7 @@ const Cuenta = (function(){
 
  /* --- la API de autenticación ------------------------------------ */
  async function auth(ruta,cuerpo,opc){
+  if(!SERVICIOS_USUARIO_DISPONIBLES)throw new Error('Cuentas desactivadas en esta versión editorial');
   let r;
   try{
    r=await fetch(AUTH+ruta,{method:(opc&&opc.metodo)||'POST',
@@ -2213,6 +2991,7 @@ const Cuenta = (function(){
  /* Renueva el testigo si ha caducado. Sin esto, la sesión se cae sola
     al cabo de una hora y parece que el sitio te ha echado. */
  async function testigo(){
+  if(!SERVICIOS_USUARIO_DISPONIBLES)return null;
   if(!ses) return null;
   if(ses.expira && Date.now() < ses.expira-60000) return ses.access_token;
   if(!ses.refresh_token){guarda(null);identidadConfirmada=false;pinta();return null;}
@@ -2253,6 +3032,7 @@ const Cuenta = (function(){
 
  /* --- datos propios (la base ya filtra por RLS) ------------------- */
  async function rest(ruta,opc){
+  if(!SERVICIOS_USUARIO_DISPONIBLES)throw new Error('Datos de cuenta desactivados en esta versión editorial');
   const tk=await testigo();if(!tk){const e=new Error('La sesión ha caducado. Vuelve a entrar.');e.status=401;throw e;}
   const cfg=Object.assign({cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'},opc||{});
   cfg.headers=Object.assign({apikey:CLAVE_PUB,Authorization:'Bearer '+tk,
@@ -2286,6 +3066,7 @@ const Cuenta = (function(){
   return r&&r[0]&&r[0].id;
  }
  async function alternar(nombre){
+  if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('El seguimiento está en pausa. Puedes consultar las fichas sin cuenta.');return;}
   if(!identidadConfirmada){abrir('registro','Crea una cuenta para guardar '+nombre+' en tu lista de vigilancia.');return;}
   const b=$('btnVig'); if(b) b.disabled=true;
   try{
@@ -2303,6 +3084,10 @@ const Cuenta = (function(){
  }
  function pintarVigilar(nombre){
   fichaAbierta=nombre; const c=$('dwVigilar'); if(!c) return;
+  if(!SERVICIOS_USUARIO_DISPONIBLES){
+   c.innerHTML='<p class="pn-nota pn-nota-separada">El seguimiento está en pausa. Puedes consultar esta ficha y visitar la web del proveedor sin cuenta.</p>';
+   return;
+  }
   const on=vigiladas.has(nombre);
   c.innerHTML='<button class="btn-vigilar'+(on?' on':'')+'" id="btnVig">'+
    (on?'✓ La estás vigilando':'+ Vigilar esta plataforma')+'</button>'+
@@ -2361,6 +3146,7 @@ const Cuenta = (function(){
   e.hidden=false;
  }
  function abrir(m,motivo){
+  if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Puedes consultar todo el radar sin registrarte.');return;}
   const solicitado=m||'entrar';
   modo=!CORREO_AUTH_E2E&&solicitado==='registro'?'registro_pausado':
        !CORREO_AUTH_E2E&&solicitado==='recuperar'?'recuperar_pausado':solicitado;
@@ -2435,6 +3221,7 @@ const Cuenta = (function(){
 
  async function enviar(e){
   e.preventDefault();
+  if(!SERVICIOS_USUARIO_DISPONIBLES)return;
   const correo=$('cCorreo').value.trim(), clave=$('cClave').value, nombre=$('cNombre').value.trim();
   const modoEnvio=modo,operacion=++operacionCuenta;
   const bot=$('cuentaEnviar'); bot.disabled=true;$('cuentaForm').setAttribute('aria-busy','true');
@@ -2670,6 +3457,11 @@ const Cuenta = (function(){
  /* --- estado del botón de la cabecera ----------------------------- */
  function pinta(){
   const b=$('btnCuenta'); if(!b) return;
+  b.disabled=!SERVICIOS_USUARIO_DISPONIBLES;
+  if(!SERVICIOS_USUARIO_DISPONIBLES){
+   b.textContent='Cuentas en pausa';b.setAttribute('aria-label','Cuentas en pausa; consulta el radar sin registrarte');
+   pintaMovil();return;
+  }
   if(identidadConfirmada&&ses){
    const nom=(perfil&&perfil.nombre)||(ses.correo||'?').split('@')[0];
    b.innerHTML='<span class="ini">'+esc(nom.slice(0,1))+'</span>'+esc(nom.split(' ')[0].slice(0,12));
@@ -2683,6 +3475,18 @@ const Cuenta = (function(){
   const texto=$('movilSiguiendoTexto'),accion=$('movilCuentaAccion');
   const insignia=$('movilSiguiendoBadge'),tab=$('movilTabSiguiendo');
   const lista=$('movilSiguiendoLista'),vacio=$('movilSiguiendoVacio'),masCuenta=$('movilMasCuenta');
+  if(!SERVICIOS_USUARIO_DISPONIBLES){
+   if(numero)numero.textContent='—';
+   if(masCuenta)masCuenta.textContent='—';
+   if(unidad)unidad.textContent='seguimiento en pausa';
+   if(texto)texto.textContent='Esta versión de la web no accede a tus favoritos anteriores ni guarda seguimiento remoto.';
+   if(accion){accion.textContent='Cuentas en pausa';accion.disabled=true;}
+   if(insignia){insignia.textContent='';insignia.hidden=true;}
+   if(tab)tab.setAttribute('aria-label','Favoritos, seguimiento en pausa');
+   if(lista){lista.hidden=true;lista.innerHTML='';}
+   if(vacio)vacio.hidden=false;
+   return;
+  }
   if(numero)numero.textContent=String(cantidad);
   if(masCuenta)masCuenta.textContent=String(cantidad);
   if(unidad)unidad.textContent=cantidad===1?'plataforma favorita':'plataformas favoritas';
@@ -2705,12 +3509,14 @@ const Cuenta = (function(){
   }
  }
  function abrirGestion(){
+  if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Para gestionar datos anteriores, escribe a RWAdar@protonmail.com.');return;}
   if(identidadConfirmada&&ses)abrirPerfil();
   else abrir('entrar','Entra para consultar y gestionar las plataformas que vigilas.');
  }
 
  /* --- arranque ---------------------------------------------------- */
  function iniciar(){
+  if(!SERVICIOS_USUARIO_DISPONIBLES)return;
   const b=$('btnCuenta'); if(!b) return;          /* en el pre-renderizado no hay DOM */
   b.addEventListener('click',()=>identidadConfirmada?abrirPerfil():abrir('entrar'));
   $('cuentaX').addEventListener('click',cerrar);
@@ -2772,11 +3578,14 @@ const Cuenta = (function(){
     asi que esa es la senal mas fiable para salirse sin ruido. Ojo: no
     vale mirar el DOM, porque alli getElementById devuelve un nodo falso
     para cualquier id y la comprobacion pasaria igual. */
- if(typeof fetch!=='undefined' && typeof location!=='undefined') iniciar();
+ if(typeof fetch!=='undefined' && typeof location!=='undefined'){
+  if(SERVICIOS_USUARIO_DISPONIBLES)iniciar();
+  else{limpiarRetornoSinServiciosUsuario();pinta();}
+ }
 
  return {abrir:abrir,abrirGestion:abrirGestion,pintarVigilar:pintarVigilar,
-         actualizarMovil:pintaMovil,hay:()=>identidadConfirmada,
-         uid:()=>identidadConfirmada&&ses&&ses.uid,token:testigo};
+         actualizarMovil:pintaMovil,hay:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada,
+         uid:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada&&ses&&ses.uid,token:testigo};
 })();
 
 /* =================================================================

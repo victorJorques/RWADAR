@@ -1,0 +1,53 @@
+# EAS empaqueta la raíz de Git (Downloads). Lista blanca exclusiva del móvil:
+# ningún otro proyecto, documento personal, historial, web o SQL se sube a Expo.
+/*
+!/.easignore
+!/rwadar-movil
+/rwadar-movil/*
+!/rwadar-movil/App.js
+!/rwadar-movil/index.js
+!/rwadar-movil/app.json
+!/rwadar-movil/eas.json
+!/rwadar-movil/package.json
+!/rwadar-movil/package-lock.json
+!/rwadar-movil/componentes
+!/rwadar-movil/lib
+!/rwadar-movil/assets
+!/rwadar-movil/fixtures
+/rwadar-movil/fixtures/*
+!/rwadar-movil/fixtures/imagenes-editoriales.js
+!/rwadar-movil/fixtures/escaparate-local.json
+
+# Las fotografías y sus módulos de importación son solo de revisión interna.
+/rwadar-movil/assets/ofertas/
+/rwadar-movil/fixtures/imagenes-ofertas.js
+/rwadar-movil/fixtures/fuentes-imagenes.json
+
+# Defensa independiente de la lista blanca frente a ficheros futuros.
+node_modules/
+.git/
+.expo/
+.npm-cache/
+.cache/
+dist/
+tests/
+android/
+ios/
+*.log
+*.apk
+*.aab
+.env
+.env.*
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist
+service-role*.json
+credentials*.json
+**/.clave-local

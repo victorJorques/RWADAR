@@ -1,136 +1,41 @@
 # RWAdar · estado interno canónico
 
-- **Última consolidación:** 28 de agosto de 2026
-- **Estado:** proyecto privado; aplicación completa apagada; trabajo conservado
-- **Rama de trabajo:** `codex/interno-privado`
+Corte: 28/09/2026. Rama `codex/relanzamiento-publico`. Este documento prevalece sobre estados históricos.
 
-Este es el único documento de estado vivo. Si contradice un informe de
-`docs/archive/2026-08/`, prevalece este archivo.
+## Autorización y alcance
 
-## 1. Resumen ejecutivo
+El titular pidió expresamente publicar web y app nativa, actualizar el servidor y completar las comprobaciones. Autorizó SQL de lectura y después las acciones necesarias para el lanzamiento, además de coordinar ambos chats. No faltan permisos generales ni datos del aviso legal.
 
-RWAdar es un registro editorial de plataformas de tokenización, con web/PWA,
-backend Supabase, app Expo y herramientas de publicación. Se retiró de internet
-para continuar su desarrollo internamente sin exponer versiones incompletas.
+La consulta y la inclusión editorial son gratuitas. RWAdar es el radar; no emite los activos, ejecuta inversiones ni recibe el dinero invertido. Publicidad, comisiones, atribución y cobros continúan desactivados. Las cuentas, opiniones y seguimiento remoto están en pausa; los favoritos nativos nuevos son locales.
 
-- La aplicación completa **no se sirve públicamente**.
-- `rwadar.pages.dev` y `rwadar.netlify.app` sirven una página neutra de
-  limpieza y un service worker que intenta borrar la antigua PWA instalada.
-- Supabase `exgpmjpaaebyoolpwced` sigue activo. La clave publicable se rotó el
-  25 de agosto; la anterior quedó revocada. No guardar valores de claves aquí.
-- El repositorio privado conserva tanto el producto más reciente como la
-  historia del apagado. Privado en Git no significa aislado en ejecución: los
-  clientes locales siguen conectados a Supabase de producción.
+## Corte comprobado
 
-## 2. Qué versión es cada cosa
+- **Web:** integrada y generada desde Supabase. Preview y producción aún pendientes; los dominios conservan la retirada hasta registrar aquí el despliegue real.
+- **Supabase:** migraciones 24 y 25 aplicadas a `exgpmjpaaebyoolpwced`, ACTIVE_HEALTHY, eu-west-1. CALIX intacto.
+- **Catálogo:** revisión `80159d96-dcb8-b476-ae10-bc9cd2a45c83`, SHA256 `80159d96dcb8b476ae10bc9cd2a45c83f2bbc83626db30891871fbdac46a7099`, aprobada el 28/09 a las 08:32 UTC. 26 plataformas, 28 referencias, 70 fuentes y 4 descartes citables. Se consultaron las 69 fuentes anteriores, se sustituyeron enlaces fallidos por documentos oficiales y se añadió OCC para Paxos. Alcance por fuente en `rwadar-app/data/verificaciones/2026-09-28/revision-fuentes.json`. Borrador invisible bajo anon y lote aprobado 26/28 comprobados en SQL real y REST.
+- **Fechas:** radar del 28/09 y ofertas del 27/09. Las ofertas no reciben una fecha nueva por revisar plataformas. Vigencia del lote hasta el 05/10 inclusive; después queda oculto sin nueva revisión. Las cifras individuales caducan según su plazo, sin desaparecer la referencia ni su evidencia.
+- **Seguridad de datos:** RLS y vistas invoker. Borrador invisible bajo anon. Esquema editorial no expuesto en Data API (406/PGRST106). Cero permisos de mutación de tabla/columna y cero RPC privilegiadas públicas para anon/authenticated. REST sigue entregando 26/28 y 4 descartes.
+- **Auth:** altas nuevas cerradas, confirmado por HTTP: disable_signup=true, mailer_autoconfirm=false, acceso anónimo desactivado. Los clientes no inician ni renuevan sesiones; no se borraron cuentas históricas.
+- **Móvil:** modo editorial conectado, servicios remotos de usuario=false, sin OTA ni backup Android. Build6 falló por incompatibilidad del runtime fingerprint; se corrigió a appVersion y se actualizaron parches compatibles. APK 1.1.0/versionCode7 `8572d0b9-d97c-41c2-8d05-1bf7de5d9734` compilándose con firma existente. 58/58 pruebas y Expo Doctor 21/21 aprobados. Resultado, firma e instalación del binario pendientes; no hay publicación acreditada en tiendas.
+- **Legal:** persona física identificada con los datos declarados por el titular. Aviso y condiciones completados; revisión interna acotada, sin atribuir un dictamen a un despacho.
+- **Imágenes:** 26 portadas y 4 ilustraciones generadas propias, procedencia y etiquetas documentadas. Las 52 fotografías internas de terceros no se publican.
+- **Analítica:** panel gratuito Cloudflare creado y cargador preparado. Recepción de visitas públicas aún por verificar. No hay cifras orgánicas acreditadas.
+- **Correos:** 13 presentaciones individuales ya enviadas desde la cuenta elegida a Reental, Midas, Brickwise, Spiko, Prosegur, Alius, Aktionariat, Boss Info, wemakeit, quitt, LEND, Twiliner y EHC Kloten. Evidencia privada en `rwadar-contactos-2026-09-27`. No duplicar envíos ni presumir recepción.
 
-| Pieza | Papel vigente |
-|---|---|
-| `codex/interno-privado` | Rama canónica para continuar el trabajo interno. Une la rama moderna con los commits del apagado sin reemplazar el producto nuevo por la web antigua. |
-| `4b8c952` | Último commit de producto recuperado: portadas editoriales. No llegó a producción. |
-| `c6a61fa` | Última versión que coincide materialmente con la producción de Cloudflare antes del apagado. |
-| `rwadar-site/` | Fuente editable de la web/PWA más reciente. |
-| `rwadar-publicado/` | Artefacto generado; se reconstruye y no se edita. |
-| `rwadar-version-codex/` | Copia forense descargada del antiguo despliegue. Es histórica e incompleta como fuente canónica; no editar. |
-| `rwadar-limpieza/` | Cinco archivos de retirada que hoy sirven ambos dominios. Conservar. |
+## Incidente y conservación
 
-La rama moderna recuperada contiene 19 commits posteriores al antiguo
-`origin/main` `42018de`. Los commits locales `3110fe8` y `f71f5fe` documentaron
-el apagado, la rotación y la sincronización del rescate. La rama interna
-conserva ambas líneas de historia para que nada dependa de sesiones antiguas.
+El titular confirmó la revocación del token personal del commit histórico `229450ce4ee1690f26e3f7c52e9f0e57d8794ea6`. No se recuperó ni probó su valor. El historial sigue en Git privado, fuera del artefacto publicado. La retención del proveedor de un día impide reconstruir toda la ventana; no se afirma ausencia de actividad histórica. Informe en `seguridad/REVISION-SEGURIDAD-2026-09-27.md`.
 
-## 3. Estado externo verificado
+Gitleaks 8.30.1 se ejecuta sobre el árbol enumerado por Git. Inventario y resultado final sin secretos: `rwadar-contactos-2026-09-27/seguridad/resultado-final.json`. La excepción de Web Analytics se limita al identificador público, archivo y regla exactos.
 
-Comprobado directamente el **28 de agosto de 2026 a las 11:23 CEST**:
+El cron existente de dispositivos inactivos más de 180 días corre a las 03:17 UTC y tuvo ejecuciones correctas el 26 y 27/09. No se ejecutó una purga manual ni se leyeron registros personales. Los derechos sobre datos anteriores se atienden por correo.
 
-| Superficie | Estado |
-|---|---|
-| Cloudflare `https://rwadar.pages.dev/` | `200`, página neutra, `no-store`, `noindex`. |
-| Cloudflare `/sw.js` | `200`, JavaScript, 979 bytes; service worker de limpieza. Despliegue de referencia `237c1ed9`. |
-| Netlify `https://rwadar.netlify.app/` | `200`, misma limpieza; site ID `f13a4520-b3e2-4668-9ec2-6c1f52d1b999`. |
-| Netlify `/sw.js` | `200`, `application/javascript`, 979 bytes. |
-| GitHub `victorJorques/RWADAR` | `PRIVATE`, verificado mediante la API el 28 de agosto de 2026. Volver a comprobar antes de cada subida; nunca asumirlo por `package.json`. |
-| Supabase | Producción activa; catálogo y aplicaciones comparten el proyecto `exgpmjpaaebyoolpwced`. |
+## Fuentes y operación
 
-La limpieza PWA es coherente, pero tiene límites: necesita una apertura con
-red; cada origen se limpia por separado; no borra el icono de la pantalla de
-inicio, cookies, IndexedDB ni datos del servidor. En Netlify, un HTTP 404
-online se mostraba como 404 porque `fetch()` no rechaza por estado HTTP; sin
-red se intentaba usar la caché antigua. Falta una prueba física concluyente en
-iPhone de una instalación antigua. En un futuro despliegue de limpieza conviene
-esperar `skipWaiting()` desde `install` y esperar también las navegaciones de
-clientes durante `activate`.
+`rwadar-site` es la fuente web. `rwadar-publicado` y `rwadar-generated-source` son generados. `rwadar-version-codex` es forense y no se edita. `rwadar-limpieza` se conserva. El catálogo cambia mediante Supabase/importadores, nunca editando cifras en HTML/JS.
 
-## 4. Mapa mínimo
+Cloudflare: proyecto rwadar, cuenta `52d07be006e7a27f5f793c59e1796b13`, dominio `https://rwadar.pages.dev`. Retirada comprobada: `237c1ed9-feaf-44ea-b408-bac23f904f27`. Netlify conserva la limpieza del dominio anterior. No se cambia la privacidad de GitHub.
 
-| Ruta | Qué contiene | Regla |
-|---|---|---|
-| `rwadar-site/` | HTML, CSS, JS, PWA y activos web | Fuente web canónica. |
-| `rwadar-editorial-source/` | Maestros de portadas editoriales | Fuente; no confundir con imágenes generadas. |
-| `rwadar-app/` | Esquema, migraciones, pruebas y sincronización | Supabase es producción salvo configuración explícita distinta. |
-| `rwadar-movil/` | App React Native / Expo 57 | Puede escribir instalaciones, seguimiento y tokens. |
-| `rwadar-qr/` | Generación y validación del QR | Los artefactos actuales resuelven a Cloudflare; tarjetas impresas anteriores pueden apuntar a Netlify, por eso se conservan ambas limpiezas. |
-| `rwadar-limpieza/` | Retirada de PWA | Infraestructura pública mínima; no es la aplicación. |
-| `rwadar-publicado/` | Resultado publicable | Generado, ignorado y reemplazable. |
-| `rwadar-generated-source/` | Intermedios de imagen | Generado; no canónico. |
-| `rwadar-version-codex/` | Rescate histórico del hosting | Solo forense. |
+Operación en `OPERACION-LANZAMIENTO.md`; alcance revisado en `comercial/REVISION-EDITORIAL-2026-09-27.md`; panel en `ANALITICA.md`. Un documento no crea vigilancia ni tareas programadas. La revisión futura debe contrastar fuentes.
 
-Flujo web: **Supabase → `rwadar-app/sincronizar.js` → `rwadar-site/` →
-`rwadar-publicar.js --local` → `rwadar-publicado/`**.
-
-## 5. Frontera real de privacidad
-
-El servidor `node rwadar-servir.js` escucha en `127.0.0.1`, de modo que no
-abre el ordenador a la Wi-Fi. Sin embargo, el JavaScript servido puede leer
-Supabase de producción y, con sesión, escribir vigilancia u opiniones. La app
-móvil usa el mismo backend y puede registrar dispositivos, seguimiento y
-tokens. Para un entorno totalmente aislado todavía falta uno de estos pasos:
-
-1. crear un proyecto Supabase de desarrollo con datos anonimizados; o
-2. introducir un modo local basado en mocks/PGlite para web y móvil.
-
-Hasta entonces, trabajar en local sin iniciar sesión y usar las pruebas
-PGlite/mocks es el modo de menor riesgo. No probar escrituras remotas por
-comodidad.
-
-## 6. Decisiones vigentes
-
-1. El proyecto y su Git permanecen privados.
-2. La aplicación completa permanece apagada hasta una petición explícita de
-   republicación.
-3. Las páginas de limpieza se conservan mientras puedan existir PWA antiguas.
-4. La rama interna y `rwadar-site/` son la fuente; el rescate no se bifurca.
-5. Supabase sigue siendo la fuente de verdad de catálogo, descartes y
-   emisiones; no se congelan datos a mano en el artefacto.
-6. Correo, push, tienda y cualquier entrega EAS siguen fuera del flujo normal.
-7. Una inscripción regulatoria no se presenta como aval y ningún descarte se
-   publica sin fuente verificable.
-8. Las decisiones nuevas se registran en este archivo, no en cinco memorias.
-
-## 7. Pendientes reales
-
-| Prioridad | Pendiente | Cierre verificable |
-|---|---|---|
-| Alta | Aislar el backend de desarrollo | Web y móvil funcionan contra desarrollo/mocks sin tocar producción. |
-| Alta | Mantener el bloqueo técnico de despliegue | `--preview` y `--produccion` fallan antes de contactar al proveedor. |
-| Media | Probar la retirada en un iPhone con PWA antigua | Sin registros SW ni Cache Storage tras apertura online y reapertura. |
-| Media | Corregir el correo del smoke mutante | Usa un dominio real controlado y siempre limpia la cuenta en `finally`. |
-| Baja | Decidir cuándo retirar las páginas de limpieza | Decisión explícita, con fecha y evidencia; nunca por accidente. |
-
-## 8. Documentación histórica
-
-Los informes de agosto conservan decisiones, pruebas y trazabilidad, pero
-mezclan distintos commits, despliegues, cachés y cifras. Están en
-`docs/archive/2026-08/`. No se actualizan ni se cargan por defecto. Para una
-investigación histórica, localiza primero una fecha, hash o título con `rg` y
-lee solo el fragmento necesario.
-
-`SECURITY.md` permanece como referencia de seguridad y divulgación. Los
-`LEEME.md` dentro de backend, móvil, QR y portadas siguen siendo guías de su
-ámbito; este archivo prevalece para el estado global.
-
-## 9. Regla de mantenimiento
-
-Después de cualquier cambio material, actualiza solo: fecha, estado afectado,
-decisión y evidencia mínima. No copies claves, sesiones, cuerpos de logs ni
-inventarios extensos. Git conserva el detalle; este manual conserva el mapa.
+Antes de publicar: suite raíz, escaneo, commits revisados, preview con QA y producción. Catálogo: 76 pruebas; control de publicación: 51. Registrar los resultados finales y enlaces tras comprobarlos.

@@ -3,6 +3,7 @@ import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-nati
 import { WebView } from 'react-native-webview';
 import ExplicadorNativo from './ExplicadorNativo';
 import { C, T, F, R } from '../lib/tema';
+import { MODO_LOCAL } from '../lib/modo-local';
 
 /* ---------------------------------------------------------------------
    El explicador: el edificio 3D de la web, dentro de la app
@@ -72,8 +73,8 @@ export default function Explicador({ onCerrar }) {
   const [fallo, setFallo] = useState(false);
   const web = useRef(null);
 
-  /* Sin red se cae al explicador nativo, que no necesita nada. */
-  if (fallo) return <ExplicadorNativo onCerrar={onCerrar} />;
+  /* La copia interna no intenta abrir la antigua dirección pública. */
+  if (MODO_LOCAL || fallo) return <ExplicadorNativo onCerrar={onCerrar} />;
 
   return (
     <View style={e.pantalla}>

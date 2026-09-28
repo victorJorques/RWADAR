@@ -1,0 +1,1234 @@
+{
+  "versionEsquema": 1,
+  "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+  "generadoDesde": "2026-08-30T00:00:00+02:00",
+  "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+  "procedenciaVerificada": false,
+  "uso": "Solo interno; no publicable.",
+  "aviso": "Procedencia y derechos de las imágenes no verificados; uso solo interno, no publicable.",
+  "archivosFuente": [
+    {
+      "archivo": "rwadar-movil/fixtures/ofertas-originales/catalogo-normalizado.json",
+      "hashSha256": "8dcc8d7a74003c5cfb1e21df19114b71ccee6994fd90455773182672a501a3e8",
+      "bytes": 71054
+    },
+    {
+      "archivo": "rwadar-movil/fixtures/ofertas-originales/artifact.json",
+      "hashSha256": "7ddca00cd9c2c692621823f8f75689c5c7d67c095659244d654aa1bfdc3c4718",
+      "bytes": 79253
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-09-21/actualizaciones-escaparate-local.json",
+      "hashSha256": "247a4a5418c927c10fd46e562274899981e4eba83d14c442f4a8cc3f953ece38",
+      "bytes": 24339
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-09-21/radar-canonico-26.json",
+      "hashSha256": "505f5a850279d63a2d6c779aac004c54356a9d51c6228537e58a3f470c0d49ea",
+      "bytes": 38749
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-09-27/revalidacion-ofertas.json",
+      "hashSha256": "7f0eb0fae8a26012072db319092f96f0b429fbe0f2a853a6cb59958c0bdf5a25",
+      "bytes": 23534
+    }
+  ],
+  "imagenes": [
+    {
+      "slug": "caribe-1",
+      "titulo": "Caribe 1",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/01-caribe-1.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/caribe-1.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "c364180d062cd624f9136197840f0f15048dfb4e138f3aad4155f030c3077371",
+        "bytes": 15709,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "85b6c3ab80ece89e2898264c28c6ef45651829d21337c35b5367098734ea70a1",
+        "bytes": 41616,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "caribe-2",
+      "titulo": "Caribe 2",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/02-caribe-2.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/caribe-2.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "069d4419c01114b9b7d3b4d44f9d7153479c055f62fe371647952b30fe705c50",
+        "bytes": 17410,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "b092043aa8328a98be37f83d36add6966875107eb3251a4b5529f44746166934",
+        "bytes": 44680,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "mf-one",
+      "titulo": "mF-ONE",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/03-mf-one.svg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/mf-one.webp",
+      "original": {
+        "mime": "image/svg+xml",
+        "hashSha256": "7ed72379c6e2f867ba6b0f22d3fbc0fe8d033bca0b351ef9acd048eef6c906cb",
+        "bytes": 11271,
+        "ancho": 50,
+        "alto": 51
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "c8c5a12044263f0cdfa0fc78e32a45e6a8a04022a37bb704d6a0ef4b6afb092e",
+        "bytes": 15462,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "mglobal",
+      "titulo": "mGLOBAL",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/04-mglobal.svg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/mglobal.webp",
+      "original": {
+        "mime": "image/svg+xml",
+        "hashSha256": "5922ba14b29169e59928f6ff4e5d8d038612ec4b4d3570a78b0fd8412b890720",
+        "bytes": 15178,
+        "ancho": 300,
+        "alto": 300
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "c0ab0a2fce1836ab14f53c4d742cc2d951b24846bb795efc7d3877b137247892",
+        "bytes": 14256,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "titulo": "Fotovoltaica GreenPoint",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/05-fotovoltaica-greenpoint.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/fotovoltaica-greenpoint.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "8fe768121189b69f84402d470409fb3e1307df74cfc2add1e0817f9f72956097",
+        "bytes": 13295,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "860b6ffa34102fed664181cf7da7ee4022556e7a00a19f525e801294e2cb83e3",
+        "bytes": 32116,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "titulo": "Fotovoltaica Cohotel",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/06-fotovoltaica-cohotel.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/fotovoltaica-cohotel.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "49a5646af53e53899f7b763ef04af06bed5d8d1e19a22cfcfc4cabd4d8d5dff5",
+        "bytes": 14256,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "7c2fa41196b7091a5928d064b365c2b61c84e507241ab839140409f51e7eb7ce",
+        "bytes": 33294,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "titulo": "Drautalresidenz · Paternion",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/07-drautalresidenz-paternion.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/drautalresidenz-paternion.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "95ba9bef5aba20dec88a61cf689b3c1193fa54c26b9ffb3d260b6b47b2e6803e",
+        "bytes": 21187,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "77550cd169f98085251aa6ca9d18889224bfc64beb6e4b6c025f73618ee56999",
+        "bytes": 56880,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "titulo": "Terreno con arrendamiento BILLA",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/08-terreno-con-arrendamiento-billa.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/terreno-con-arrendamiento-billa.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "78af8ea8a27e36898c24f1d1dd80edd79ea2a388fbfd8b55f921d644d0f4bfef",
+        "bytes": 14370,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "035dc7dae103f2f668693592cd570b68c43ca1594f9d2d377b196e407193d08e",
+        "bytes": 34188,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "titulo": "Apartamento vacacional · Hinterstoder 50",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/09-apartamento-vacacional-hinterstoder-50.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/apartamento-vacacional-hinterstoder-50.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "a39f4468371161804b81599aa430896132e6741da1eb3d5af3a249ca9e5e7e7d",
+        "bytes": 12489,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "739451f0337ff487977ab4f2e46d04bc3075b647fe47dd33bac0d24d0682f1b9",
+        "bytes": 28010,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "titulo": "Vivienda · Stallhofstraße 28, Gratwein",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/10-vivienda-stallhofstra-e-28-gratwein.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/vivienda-stallhofstra-e-28-gratwein.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "7e91da44040a066201573e5c027bc3743d31b3e79fedc4ff3a64d25847253c6c",
+        "bytes": 12555,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "96ad702031472819bde0e1a21e8a9c78e6ecab6e91573e6f6152bd814cc4165d",
+        "bytes": 28008,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "titulo": "Vivienda · Schwarzer Weg 18, Graz",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/11-vivienda-schwarzer-weg-18-graz.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/vivienda-schwarzer-weg-18-graz.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "8c9c75431de81e1461a2d94d9bba48fa15b8e815cd7e433b3d33c437f525b3a4",
+        "bytes": 14235,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "689dc616b3ec5d82c80fa75e26ad8aa1dcaa4b933615c45f87a06005e0764144",
+        "bytes": 33868,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "titulo": "Vivienda · Pottendorfer Straße 62, Wr. Neustadt",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/12-vivienda-pottendorfer-stra-e-62-wr-neustadt.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/vivienda-pottendorfer-stra-e-62-wr-neustadt.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "50f3ad070a0f41b331c5bc8104abb1b5caf03ae451291014cecaae82e22fbe0b",
+        "bytes": 14863,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "71bf078400b0dc12f20e4215c8b4de5f0306e3b89449770c31b96ad2636b428a",
+        "bytes": 32746,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "titulo": "Vivienda · Plüddemanngasse 101, Graz",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/13-vivienda-pluddemanngasse-101-graz.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/vivienda-pluddemanngasse-101-graz.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "d177547ef542b621f03e288695b81d7db91d7a4646152ffb5d8af1818e15e25c",
+        "bytes": 7878,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "102e8f1ecb489bfdc14e9f1cb674b93f1558e0d68896925ba20109905bf2a7cc",
+        "bytes": 14400,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "titulo": "Local de estanco · Klagenfurt",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/14-local-de-estanco-klagenfurt.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/local-de-estanco-klagenfurt.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "d0424fb0a1b7ffbd9c34c464c270ea9d74861115ae66e896a5b1c2937609dc52",
+        "bytes": 15070,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "54242964cc918c5e82023ca50ea53b447f0bc1ffc07f3b0a0841aba3f0b6cd5c",
+        "bytes": 32280,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "titulo": "Vivienda · Sonnleithnergasse 2, Viena",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/15-vivienda-sonnleithnergasse-2-viena.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/vivienda-sonnleithnergasse-2-viena.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "ea7a8d9b2bbde13bae7e7b60a40236ae11d080172f01dec8221bebb15af1e2aa",
+        "bytes": 18152,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "c6d03aff6349eaebad06926b4c33c4e994160af7e042e6084f899f89d2f4ddff",
+        "bytes": 45838,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "mwin",
+      "titulo": "mWIN",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/16-mwin.svg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/mwin.webp",
+      "original": {
+        "mime": "image/svg+xml",
+        "hashSha256": "0c65bbbb648111dc38892aaf377404dea07ec2cbbeca3e98de1d37e2ced96445",
+        "bytes": 4165,
+        "ancho": 50,
+        "alto": 50
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "93ed081a1a898019cfdf2d398c425e356192c6dadeeaaced0d366bdf886f325a",
+        "bytes": 10236,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "mtbill",
+      "titulo": "mTBILL",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/17-mtbill.svg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/mtbill.webp",
+      "original": {
+        "mime": "image/svg+xml",
+        "hashSha256": "747d3e61c005db2ba0464a63359c3177bde91371d6974cde096c590e3bbc047c",
+        "bytes": 551,
+        "ancho": 41,
+        "alto": 40
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "401d1827af30d658eac2d4a633f53d934c2a6248f37e3d797f8e4bd2f15cec32",
+        "bytes": 9006,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "titulo": "Randhartingergasse 9, Viena",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/18-randhartingergasse-9-viena.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/randhartingergasse-9-viena.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "b8e0d58972aae25b16ee7d6bbec0e0e7283fe40810566fd441180a3186a5e982",
+        "bytes": 14408,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "50d0e98cb123153fa03276c07a380f6588b255f5e0df5530e482beaca1ea033a",
+        "bytes": 32934,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "titulo": "Spiko Letras del Tesoro Euro",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/19-spiko-letras-del-tesoro-euro.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/spiko-letras-del-tesoro-euro.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "e3330f36cf9a0cd7699b0c89d0ce12a7841b0135ebc667828768dc2ccaa92dba",
+        "bytes": 11071,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "24a636008ee96065c4317485620395a73feaec496e9b4c1e0bdc8fb876a34447",
+        "bytes": 19358,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "titulo": "Prosegur Digital Gold",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/44-prosegur-digital-gold.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/prosegur-digital-gold.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "79ab1db09ec8c59816ce6ac3970ed3f66aa29912bdd91ade502d2870446dcba2",
+        "bytes": 4260,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "993e3c460c75a94bde75450a208af17d7c9fb9bf843fa867b89c215f547f5313",
+        "bytes": 5620,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "titulo": "Casa de Outeiro",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/45-casa-de-outeiro.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/casa-de-outeiro.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "8e237fde5ef123d8362e147cba7304dbd39a563eb0058301b1f7a9e10af69c13",
+        "bytes": 4930,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "48f49cb12ccfd0112235d969b41b8534451adcf85f969fa59f77fabf8cad339f",
+        "bytes": 6714,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "aktionariat",
+      "titulo": "Aktionariat",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/46-aktionariat.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/aktionariat.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "ca2192a784b7ec22c3e29c5134784475c5efa4b9dbf4208f44db6a9840553aed",
+        "bytes": 3369,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "bd2783aa6f16817761d89b9f0b50b7eefb00a0c31e06e420f005de1669644a57",
+        "bytes": 2156,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "boss-info",
+      "titulo": "Boss Info",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/47-boss-info.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/boss-info.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "57bb4298d512329047c8b73a9f3f9f1cf9e31d4554756243f8ca1898512c4a03",
+        "bytes": 3440,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "367562c70cf4179d4aefc91821da93faf310cabb4e2cdc4473d74af02ebc2382",
+        "bytes": 2716,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "wemakeit",
+      "titulo": "wemakeit",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/48-wemakeit.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/wemakeit.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "8615d3d259fce6641b8a56d7f8c10ebe017e523ad8da1b9398da2c8e1bfbb463",
+        "bytes": 6429,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "f1bad293d82df2af541427af92b245e332b7c4d442ab15e18e7ad42a49d1fdea",
+        "bytes": 7954,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "servicehunter-quitt",
+      "titulo": "ServiceHunter · quitt",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/49-servicehunter-quitt.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/servicehunter-quitt.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "a5ad2c7e58b1091ed6eee3dc8a2ebeaf0093fab762862445ce3dbcec4e7222b2",
+        "bytes": 5355,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "c03697d2638f0636b4eca051e708258a33c724af58ea896c145aad5aa78bda4b",
+        "bytes": 5624,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "switzerlend",
+      "titulo": "Switzerlend",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/50-switzerlend.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/switzerlend.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "285b6750e3f09c15cc5ff94725617bb12e42570037b7207aec732838a820b734",
+        "bytes": 3473,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "277a47e6afa8b413e60677fbaccad8deb63810eef8bd02ffa45c70c102eda1bf",
+        "bytes": 3084,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "twiliner",
+      "titulo": "Twiliner",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/51-twiliner.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/twiliner.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "ea93aa0f6d5af0baebe7ae48206839c65bb6d77c319ff31b88e825c044a28e5b",
+        "bytes": 4642,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "b2f87bf59db148048416bbed27615914f3d59ecaff3487d599e54edb20f6b8b3",
+        "bytes": 4818,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "ehc-kloten",
+      "titulo": "EHC Kloten",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/52-ehc-kloten.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/ehc-kloten.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "614dc04d3c602d8791c13ea38233e88a2c75be4bbf309809989a98f069449f15",
+        "bytes": 6262,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "751af8d1c76f340fe259b5287f0324aecd5c7c40d8a3f8afe8909a740dbcd553",
+        "bytes": 6392,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-houston-3",
+      "titulo": "Houston 3",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/20-houston-3.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-houston-3.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "94d16bd467e0c1300ddb3d01cef1f174870514890c6df04e41566a81d90f4432",
+        "bytes": 17122,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "493f12221e4676fcf96bee80f6a56519a374624037cef287d31ddd307bb19982",
+        "bytes": 44840,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-costa-mediterranea-1",
+      "titulo": "Costa Mediterránea 1",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/21-costa-mediterranea-1.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-costa-mediterranea-1.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "e034ca9e848199a4be0fa348502d9f74e0c5bc647c66a42ad93a4d6282b7158c",
+        "bytes": 12348,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "927e4086626394d3eeae733f56623b904693e84953f8b531406ce7ec0bc12665",
+        "bytes": 24200,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-proyecto-100",
+      "titulo": "Proyecto 100",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/22-proyecto-100.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-proyecto-100.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "3738e8844f6b9a384d2b013cc93d07c7a96291cde7e1120d9a57c3cf4334c74c",
+        "bytes": 14539,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "ca8f9bea9b3b5725fdb80bc9be4dead8134b03728b8a8d3d5d0fb664db32adad",
+        "bytes": 32168,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-rentas-3",
+      "titulo": "Rentas 3",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/23-rentas-3.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-rentas-3.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "4d21211032a9b566fba0b8070fbef283023b0e6bdd936d35c368575a441eafca",
+        "bytes": 11165,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "ec276f3d9f42fabf305fa96d77f26281dc95afe897739982617afbdd6eb69ad9",
+        "bytes": 21478,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-abu-dhabi-1",
+      "titulo": "Abu Dhabi 1",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/24-abu-dhabi-1.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-abu-dhabi-1.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "8d0cadd9f5a0ecc0478eef6eb9d21ed9d7c10c386ddfe40a3052554390c51d29",
+        "bytes": 12276,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "774614f5db1464e4571a6e54fecda8cd46700ff2f8f624f4c1ee25cb54315058",
+        "bytes": 27432,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-granada-3",
+      "titulo": "Granada 3",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/25-granada-3.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-granada-3.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "9c03016159730545a27d6667ddfe55c538e803d49282b63c268dc0592555a62f",
+        "bytes": 8342,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "0afa31447e4903be609075f15a1b6e48d03b6f989a3a6f0e8c74482f09eee088",
+        "bytes": 14782,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-carolina-del-norte-1",
+      "titulo": "Carolina del Norte 1",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/26-carolina-del-norte-1.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-carolina-del-norte-1.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "dcf51aa3b68337629625c58fd4f3a10d4d2f1cb72cd298f73bca06be09ef930e",
+        "bytes": 12589,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "3692170265970d6e08e949b4856395bad2087fe27801680e5bb81f9f479e353c",
+        "bytes": 26842,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-dania-beach-1",
+      "titulo": "Dania Beach 1",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/27-dania-beach-1.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-dania-beach-1.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "df1ef0329a5c801959d3d10d1c4b3191b72b19cfc0faee1cd84f017cfb0c77b9",
+        "bytes": 13910,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "4c237259107a6b14fac9dff1256986a48f913a0c9057f518831ed3d6e1c06521",
+        "bytes": 32356,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-punta-cana-5",
+      "titulo": "Punta Cana 5",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/28-punta-cana-5.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-punta-cana-5.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "26b46b22ccbd711d8719bbde175970855db4d1e2e871d1a826e1e2a16ac9937b",
+        "bytes": 12747,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "f2d61db8f9a2bff9e77317a79a5d61d584109f216a3d3b04e1cc677c53e47d5d",
+        "bytes": 31326,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-miami-2",
+      "titulo": "Miami 2",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/29-miami-2.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-miami-2.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "54b5c996714d7436e088c0054b64b592eeb1f90f960db4b34a41cf6e1f1725c2",
+        "bytes": 12385,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "5f1e979f363e087540370d436b519a7da0bbbf082d539873e2fcf86c5452f7c8",
+        "bytes": 25562,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-rentas-2",
+      "titulo": "Rentas 2",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/30-rentas-2.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-rentas-2.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "befcd86d4e868bc8dad3b95240ff4ead4c40e6837258c7a81947ec80d08ea6ce",
+        "bytes": 11011,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "6bec654e690a34923fae7a87abfd16a306e4c40d826ed61dd9588eccef2bdc87",
+        "bytes": 23066,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-jacksonville-1",
+      "titulo": "Jacksonville 1",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/31-jacksonville-1.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-jacksonville-1.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "0a40a0513e5620a7cdaa2e4d92f3de59c53be2ad09d3986b5cdc1af3f0dce280",
+        "bytes": 13536,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "b260bcbbfbeeaddcdffcd3eaa62c233b57b6be9810f2a38a83c5022941b5f2d8",
+        "bytes": 30794,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-punta-cana-4",
+      "titulo": "Punta Cana 4",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/32-punta-cana-4.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-punta-cana-4.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "86268b7faf25f4e2e66b87d2973a410e1f315d1cf41a3b18c9a4eaee7aa268fa",
+        "bytes": 18436,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "28e76094e01e4469d806bc76052c8cc88346df2870fd2e091641cabb3f0b3a70",
+        "bytes": 46650,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-jacksonville-3",
+      "titulo": "Jacksonville 3",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/33-jacksonville-3.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-jacksonville-3.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "e36403fc7e598ba81cffd69ee651428d0e3e3c0c7bbf8e3c8476c6b84449937e",
+        "bytes": 10766,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "660e2dc364650a62bc5904a4aac95590502706a4a1764044c8f37b27cbe65f3f",
+        "bytes": 21976,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-jacksonville-2",
+      "titulo": "Jacksonville 2",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/34-jacksonville-2.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-jacksonville-2.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "ae2ae0b8737394a8ba5c274d89e74684a4ecc1a7db1537997ea862119a797c37",
+        "bytes": 11445,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "37d7e144a66d780cd9652fafe29973cf5dbfcaa00e608c0f22c94fee89bae2e8",
+        "bytes": 24532,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-index-1",
+      "titulo": "Index 1",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/35-index-1.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-index-1.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "dfa4feb15649c825ae2e0be90284b406e79915317e7a521ccae8a8329fec54bb",
+        "bytes": 11803,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "c1d9f0fa6c3efade1304b5c79881159dba6f7c15c6236cf16668fb375d04016a",
+        "bytes": 25946,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-opportunity-1",
+      "titulo": "Opportunity 1",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/36-opportunity-1.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-opportunity-1.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "7f46149053feff50bd4fe6d4c708cc3c342cef2c42fa5ff6b00fdf635921f7c9",
+        "bytes": 12707,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "5b491eeb60f10562bb0a978569687e6dbfb1fa975b26600a33dc849cbe7c8304",
+        "bytes": 29244,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-coliving-malaga-2",
+      "titulo": "Coliving Málaga 2",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/37-coliving-malaga-2.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-coliving-malaga-2.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "8840399d652d51b2deb68a3b73ac8ff785840b638c08d329cd3881f11bf26fab",
+        "bytes": 10422,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "dbc11d18e101d0106bf3d2da1a8791c58b7a37794f43f3428cb279399f426247",
+        "bytes": 18928,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-malaga-8",
+      "titulo": "Málaga 8",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/38-malaga-8.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-malaga-8.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "214e72cbab32d000ab3dae050c0a585c7a2d5caae4820b2a8d1fb675a245975c",
+        "bytes": 9798,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "0104b0965aa4ab04f2924d57c7fb96b1f03e55c97d7c25b201a9a8df50ca93c6",
+        "bytes": 18002,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-opportunity-2",
+      "titulo": "Opportunity 2",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/39-opportunity-2.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-opportunity-2.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "f3b3c5b02038e71d72d27f77368beefe372fcdb196288bd0243de84eb5fdfee9",
+        "bytes": 17220,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "9c778769d77b8b2e8b26794fe8d704a9cbe8a35bd52038d393ed12bca0e813ff",
+        "bytes": 42894,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-malaga-7",
+      "titulo": "Málaga 7",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/40-malaga-7.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-malaga-7.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "95cf1361ffa5d3a80724ac9cf182f0a3bd825c9954a26a4b2bbf86875e2a9e1e",
+        "bytes": 10210,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "e4aa822a2c7d9287259a7d16a146ed168ab9239e3c7c6f874b09e56add786b11",
+        "bytes": 22756,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-malaga-3",
+      "titulo": "Málaga 3",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/41-malaga-3.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-malaga-3.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "1e4344d6a58c6bc6147b948f0dfa2f46da52ba6d02e68b1a9d3435b6dac74e0c",
+        "bytes": 14275,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "b25612c9ca92e1ca3b7186e5ed463dd5105a9f56a651e4b9be8e68e73f05b2c6",
+        "bytes": 33174,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-malaga-6",
+      "titulo": "Málaga 6",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/42-malaga-6.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-malaga-6.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "cde36b427ae3c89ea159bcb1fa32684868d25c64020cb4b481a294befad6933c",
+        "bytes": 8587,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "e1470ad2084bc21982f6b484e14356167989b0b44a8863c995eb1d4451d5a107",
+        "bytes": 15896,
+        "ancho": 640,
+        "alto": 440
+      }
+    },
+    {
+      "slug": "reental-sec-malaga-4",
+      "titulo": "Málaga 4",
+      "urlArtefacto": "https://claude.ai/code/artifact/6a13dd6c-a1d0-405a-87c4-0bb895c3a79a#no_universal_links",
+      "procedencia": "Artefacto aportado por el usuario; procedencia no verificada de forma independiente.",
+      "uso": "Solo interno; no publicable.",
+      "archivoOriginal": "rwadar-movil/fixtures/ofertas-originales/43-malaga-4.jpg",
+      "archivoWebp": "rwadar-movil/assets/ofertas/reental-sec-malaga-4.webp",
+      "original": {
+        "mime": "image/jpeg",
+        "hashSha256": "5201ef7c8f5408a17c6d605bd9e4391f20437ad8752cd7b03a41076772299b11",
+        "bytes": 6927,
+        "ancho": 320,
+        "alto": 220
+      },
+      "derivada": {
+        "mime": "image/webp",
+        "hashSha256": "a03d4692dc70cc9f1d17aa35af84679bd39a519c921c28470d8243d12712139d",
+        "bytes": 11858,
+        "ancho": 640,
+        "alto": 440
+      }
+    }
+  ]
+}

@@ -28,10 +28,9 @@ const MAX_LADO = 10_000;
 const MAX_REDIRECCIONES = 5;
 
 /* Catálogo de páginas e imágenes oficiales comprobado el 23-08-2026. La
-   selección activa se compone más abajo: conservamos una fotografía oficial
-   cuando explica por sí sola el activo y usamos una representación editorial
-   propia cuando la web solo ofrece pantallas, precios o diagramas. Nunca se
-   mezclan ambas procedencias en el manifiesto. */
+   selección activa se compone más abajo y usa únicamente representaciones
+   editoriales propias. Las páginas oficiales se conservan como referencia
+   temática, nunca como origen visual ni como material descargable. */
 const PORTADAS_EDITORIALES = Object.freeze({
   ADDX: {
     pagina: 'https://addx.co/en/how-to-start/',
@@ -111,7 +110,7 @@ const PORTADAS_EDITORIALES = Object.freeze({
     encuadre: 'cover', focoX: .5, focoY: .5,
   },
   Lofty: {
-    pagina: 'https://www.lofty.ai/property_deal/6601-E-Hearn-Rd_Scottsdale-AZ-85254',
+    pagina: 'https://www.lofty.ai/',
     imagen: 'https://images.lofty.ai/images/01J1ZRN9EZVYA08NMNVHT2BPC1/01JK78G5F00ZVVBANM5ZTM3Q6M.webp',
     tipoVisual: 'Activo real',
     descripcionVisual: 'Propiedad de Scottsdale con vivienda, piscina, jardín y pista deportiva.',
@@ -224,6 +223,12 @@ const PORTADAS_EDITORIALES = Object.freeze({
 const PORTADAS_GENERADAS = Object.freeze({
   ADDX: { archivoFuente: 'addx.webp', descripcionVisual: 'Cartera de empresas privadas convertida en participaciones digitales.' },
   Archax: { archivoFuente: 'archax.webp', descripcionVisual: 'Valores privados y bonos dentro de una infraestructura de mercado institucional.' },
+  'ARTEX Global Markets': {
+    archivoFuente: 'artex-global-markets.webp',
+    descripcionVisual: 'Galería contemporánea con una obra abstracta ficticia dividida visualmente en participaciones.',
+    anchoSalida: 640,
+    altoSalida: 440,
+  },
   'Backed Finance': { archivoFuente: 'backed-finance.webp', descripcionVisual: 'Cesta de sectores empresariales convertida en unidades digitales respaldadas.' },
   Blocksquare: { archivoFuente: 'blocksquare.webp', descripcionVisual: 'Edificio residencial y comercial completo representado mediante participaciones digitales.' },
   Centrifuge: { archivoFuente: 'centrifuge.webp', descripcionVisual: 'Inventario productivo financiado mediante un préstamo respaldado por activos.' },
@@ -232,10 +237,22 @@ const PORTADAS_GENERADAS = Object.freeze({
   Fireblocks: { archivoFuente: 'fireblocks.webp', descripcionVisual: 'Bóveda institucional que custodia y protege distintos activos digitales.' },
   'Franklin Templeton': { archivoFuente: 'franklin-templeton.webp', descripcionVisual: 'Fondo monetario respaldado por deuda pública de corto plazo en custodia.' },
   INX: { archivoFuente: 'inx.webp', descripcionVisual: 'Participación empresarial transferida dentro de un mercado digital regulado.' },
+  Lofty: {
+    archivoFuente: 'lofty.webp',
+    descripcionVisual: 'Vivienda unifamiliar ficticia al atardecer con una capa visual de participaciones digitales.',
+    anchoSalida: 640,
+    altoSalida: 440,
+  },
   'Maple Finance': { archivoFuente: 'maple-finance.webp', descripcionVisual: 'Préstamo institucional respaldado por activos digitales hacia una empresa real.' },
   Midas: { archivoFuente: 'midas.webp', descripcionVisual: 'Cesta diversificada de bonos soberanos y corporativos convertida en fondo.' },
   'Ondo Finance': { archivoFuente: 'ondo-finance.webp', descripcionVisual: 'Deuda pública y fondos cotizados disponibles mediante unidades digitales.' },
   OpenEden: { archivoFuente: 'openeden.webp', descripcionVisual: 'Letras del Tesoro protegidas en custodia y representadas en cadena.' },
+  'Pax Gold': {
+    archivoFuente: 'pax-gold.webp',
+    descripcionVisual: 'Lingotes genéricos sin marca dentro de una bóveda, conectados por un libro mayor digital.',
+    anchoSalida: 640,
+    altoSalida: 440,
+  },
   Reental: { archivoFuente: 'reental.webp', descripcionVisual: 'Promoción residencial mediterránea completa dividida en participaciones digitales.' },
   Republic: { archivoFuente: 'republic.webp', descripcionVisual: 'Empresa privada de tecnología limpia financiada mediante participaciones digitales.' },
   Securitize: { archivoFuente: 'securitize.webp', descripcionVisual: 'Participaciones de un fondo institucional registradas en una infraestructura digital.' },
@@ -271,7 +288,8 @@ const PAGINAS_PORTADA = Object.freeze(Object.fromEntries(
   Object.entries(PORTADAS_ACTIVAS).map(([empresa, portada]) => [empresa, portada.pagina]),
 ));
 const REVISIONES_MANUALES = Object.freeze(Object.fromEntries(
-  Object.keys(PORTADAS_ACTIVAS).map(empresa => [empresa, 6]),
+  Object.keys(PORTADAS_ACTIVAS).map(empresa => [empresa,
+    ['ARTEX Global Markets', 'Lofty', 'Pax Gold'].includes(empresa) ? 7 : 6]),
 ));
 
 let anteriores = new Map();
@@ -471,14 +489,16 @@ async function convertirWebp(bytes, destino, carpetaTemporal, empresa) {
     const portada = PORTADAS_ACTIVAS[empresa] || {};
     const focoX = Math.min(1, Math.max(0, Number(portada.focoX ?? .5)));
     const focoY = Math.min(1, Math.max(0, Number(portada.focoY ?? .5)));
+    const anchoSalida = Math.max(1, Math.round(Number(portada.anchoSalida || 720)));
+    const altoSalida = Math.max(1, Math.round(Number(portada.altoSalida || 720)));
     const filtroContain = [
       '[0:v]format=rgba,split=2[bg][fg]',
-      '[bg]scale=720:720:force_original_aspect_ratio=increase,crop=720:720,gblur=sigma=28,eq=brightness=-0.2:saturation=0.88[back]',
-      '[fg]scale=720:720:force_original_aspect_ratio=decrease,eq=saturation=1.04:contrast=1.015[front]',
+      `[bg]scale=${anchoSalida}:${altoSalida}:force_original_aspect_ratio=increase,crop=${anchoSalida}:${altoSalida},gblur=sigma=28,eq=brightness=-0.2:saturation=0.88[back]`,
+      `[fg]scale=${anchoSalida}:${altoSalida}:force_original_aspect_ratio=decrease,eq=saturation=1.04:contrast=1.015[front]`,
       '[back][front]overlay=(W-w)/2:(H-h)/2:format=auto,format=yuv420p[out]',
     ].join(';');
     const filtroCover = [
-      `[0:v]format=rgba,scale=720:720:force_original_aspect_ratio=increase,crop=720:720:'(iw-ow)*${focoX}':'(ih-oh)*${focoY}'`,
+      `[0:v]format=rgba,scale=${anchoSalida}:${altoSalida}:force_original_aspect_ratio=increase,crop=${anchoSalida}:${altoSalida}:'(iw-ow)*${focoX}':'(ih-oh)*${focoY}'`,
       'eq=saturation=1.07:contrast=1.025:brightness=0.01,format=yuv420p[out]',
     ].join(',');
     const filtro = portada.encuadre === 'cover' ? filtroCover : filtroContain;
@@ -537,7 +557,9 @@ async function una(p, carpetaTemporal) {
       '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height',
       '-of', 'json', destino,
     ]));
-    if (Number(datos.streams?.[0]?.width) !== 720 || Number(datos.streams?.[0]?.height) !== 720 ||
+    const anchoEsperado = Math.max(1, Math.round(Number(portada.anchoSalida || 720)));
+    const altoEsperado = Math.max(1, Math.round(Number(portada.altoSalida || 720)));
+    if (Number(datos.streams?.[0]?.width) !== anchoEsperado || Number(datos.streams?.[0]?.height) !== altoEsperado ||
       Number(anterior.revisionPortada || 0) < revisionDeseada) {
       await convertirWebp(bytesFinales, destino, carpetaTemporal, p.n);
       estado = await fs.stat(destino);

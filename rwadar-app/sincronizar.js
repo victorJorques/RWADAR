@@ -12,6 +12,11 @@
    ===================================================================== */
 const fs = require('fs');
 const path = require('path');
+const {
+  CUENTA_PLATAFORMAS,
+  CUENTA_OFERTAS,
+  validarLotePublico,
+} = require('./catalogo-publico.js');
 
 const URL_BASE = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
 const CLAVE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
@@ -19,8 +24,9 @@ const SITIO = path.join(__dirname, '..', 'rwadar-site');
 const JS = path.join(SITIO, 'assets', 'rwadar-20260820.js');
 const CSV = path.join(SITIO, 'rwadar.csv');
 
-async function pedir(ruta) {
-  const r = await fetch(`${URL_BASE}/${ruta}`, { headers: { apikey: CLAVE } });
+async function pedir(ruta, fetchFn = globalThis.fetch) {
+  if (typeof fetchFn !== 'function') throw new Error('fetch no está disponible');
+  const r = await fetchFn(`${URL_BASE}/${ruta}`, { headers: { apikey: CLAVE } });
   if (!r.ok) throw new Error(`${ruta} -> HTTP ${r.status}: ${await r.text()}`);
   return r.json();
 }
@@ -29,6 +35,12 @@ async function pedir(ruta) {
    recurso externo, neutralizar los signos y separadores evita que el mismo
    dato se convierta en inyección si en el futuro se mueve de contexto. */
 const j = (s) => JSON.stringify(s == null ? '' : String(s))
+  .replace(/</g, '\\u003c')
+  .replace(/>/g, '\\u003e')
+  .replace(/\u2028/g, '\\u2028')
+  .replace(/\u2029/g, '\\u2029');
+
+const jsonSeguro = valor => JSON.stringify(valor)
   .replace(/</g, '\\u003c')
   .replace(/>/g, '\\u003e')
   .replace(/\u2028/g, '\\u2028')
@@ -55,37 +67,94 @@ function celdaCSV(valor) {
   return `"${texto.replace(/"/g, '""')}"`;
 }
 
-async function main() {
+function textoObligatorio(valor, nombre, maximo) {
+  const texto = typeof valor === 'string' ? valor.trim() : '';
+  if (!texto || texto.length > maximo) throw new Error(`${nombre} no válido`);
+  return texto;
+}
+
+function plataformaPublica(p) {
+  const x = {
+    revisionId: textoObligatorio(p.revision_id, 'revisión de plataforma', 36),
+    slug: textoObligatorio(p.slug, 'slug de plataforma', 140),
+    n: textoObligatorio(p.nombre, 'nombre de plataforma', 120),
+    cat: textoObligatorio(p.categoria, 'categoría de plataforma', 80),
+    tipo: textoObligatorio(p.actor, 'actor de plataforma', 80),
+    reg: textoObligatorio(p.region, 'región de plataforma', 100),
+    cadenas: textoObligatorio(p.cadenas, 'cadenas de plataforma', 160),
+    ticket: textoObligatorio(p.ticket, 'ticket de plataforma', 40),
+    acceso: textoObligatorio(p.acceso, 'acceso canónico', 40),
+    web: textoObligatorio(p.web, 'web de plataforma', 500),
+    aval: textoObligatorio(p.aval, 'aval de plataforma', 2000),
+    nota: textoObligatorio(p.nota, 'descripción de plataforma', 3000),
+    ver: textoObligatorio(p.verificada_el, 'fecha canónica', 10),
+    verificacionLocal: p.verificacion_local,
+  };
+  if (!esHttps(x.web) || !/^\d{4}-\d{2}-\d{2}$/.test(x.ver)) {
+    throw new Error(`plataforma pública inválida: ${x.slug}`);
+  }
+  return x;
+}
+
+function ofertaPublica(o) {
+  const x = {
+    catalogo: true,
+    revisionId: textoObligatorio(o.revision_id, 'revisión de oferta', 36),
+    slug: textoObligatorio(o.slug, 'slug de oferta', 180),
+    tipo: textoObligatorio(o.tipo, 'tipo de oferta', 30),
+    titulo: textoObligatorio(o.titulo, 'título de oferta', 180),
+    plataformaSlug: textoObligatorio(o.plataforma_slug, 'slug de proveedor', 140),
+    plataformaNombre: textoObligatorio(o.plataforma_nombre, 'proveedor', 120),
+    categoria: textoObligatorio(o.categoria, 'categoría de oferta', 80),
+    pais: o.pais == null ? null : textoObligatorio(o.pais, 'país de oferta', 100),
+    resumen: textoObligatorio(o.resumen, 'resumen de oferta', 3000),
+    url: textoObligatorio(o.url, 'URL de oferta', 1000),
+    verificadaEl: textoObligatorio(o.verificada_el, 'fecha de oferta', 10),
+    vigenciaDias: Number(o.vigencia_dias),
+    permanente: o.permanente === true,
+    disponibleEs: o.disponible_es == null ? null : o.disponible_es === true,
+    eu: o.eu == null ? null : o.eu === true,
+    fueraLadrillo: o.fuera_ladrillo === true,
+    puntuacion: o.puntuacion == null ? null : Number(o.puntuacion),
+    rentabilidad: o.rentabilidad == null ? null : o.rentabilidad,
+    precio: o.precio == null ? null : o.precio,
+    metricas: o.metricas,
+    avisos: o.avisos,
+    estadoRevision: textoObligatorio(o.estado_revision, 'estado de oferta', 40),
+    fuentesActuales: o.fuentes_actuales,
+    patrocinada: o.patrocinada === true,
+  };
+  if (!esHttps(x.url) || !Number.isInteger(x.vigenciaDias) ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(x.verificadaEl)) {
+    throw new Error(`oferta pública inválida: ${x.slug}`);
+  }
+  return x;
+}
+
+async function main({
+  fetchFn = globalThis.fetch,
+  jsPath = JS,
+  csvPath = CSV,
+  hoy = new Date(),
+} = {}) {
   const [radar, fuera, emisiones] = await Promise.all([
-    pedir('radar_publico?select=*'),
+    pedir('catalogo_plataformas_publicas?select=*', fetchFn),
     pedir('plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,' +
-      'fuentes(url,titulo)&order=nombre'),
-    pedir('emisiones_publicas?select=*&estado=in.(abierta,programada,en_estudio)'),
+      'fuentes(url,titulo)&order=nombre', fetchFn),
+    pedir('catalogo_ofertas_publicas?select=*', fetchFn),
   ]);
 
-  if (!radar.length || !fuera.length) throw new Error('la base devolvió listas vacías');
-
-  /* Una lista vacía de emisiones es un dato legítimo. Un error de red, de
-     permisos o una vista ausente no lo es: Promise.all ya habrá detenido la
-     publicación en vez de transformar el fallo en un escaparate vacío. */
-  for (const e of emisiones) {
-    if (!e || !String(e.titulo || '').trim() || !String(e.plataforma || '').trim() ||
-        !String(e.categoria || '').trim() || !esHttps(e.url) || !esHttps(e.plataforma_web) ||
-        !['abierta','programada','en_estudio'].includes(e.estado) ||
-        !/^\d{4}-\d{2}-\d{2}$/.test(String(e.verificada_el || '')) ||
-        ['ticket_minimo','objetivo','captado','porcentaje'].some(k =>
-          e[k] != null && (!Number.isFinite(Number(e[k])) || Number(e[k]) < 0)) ||
-        ['rentabilidad','plazo_meses'].some(k =>
-          e[k] != null && !Number.isFinite(Number(e[k])))) {
-      throw new Error(`emisión pública inválida: ${e && (e.slug || e.titulo) || 'sin identificador'}`);
-    }
+  if (!Array.isArray(fuera) || fuera.length !== 4) {
+    throw new Error('el catálogo público debe contener exactamente 4 descartes documentados');
+  }
+  validarLotePublico(radar, emisiones, { hoy });
+  const plataformas = radar.map(plataformaPublica);
+  const ofertas = emisiones.map(ofertaPublica);
+  if (plataformas.length !== CUENTA_PLATAFORMAS || ofertas.length !== CUENTA_OFERTAS) {
+    throw new Error('el lote cambió durante la normalización');
   }
 
-  const P = radar.map(p =>
-    ` {n:${j(p.nombre)},cat:${j(p.categoria)},tipo:${j(p.actor)},reg:${j(p.region)},` +
-    `cadenas:${j(p.cadenas)},ticket:${j(p.ticket)},acceso:${j(p.acceso)},web:${j(p.web)},` +
-    `aval:${j(p.aval)},nota:${j(p.nota)},ver:${j(p.verificada_el)}},`
-  ).join('\n');
+  const P = plataformas.map(p => ` ${jsonSeguro(p)},`).join('\n');
 
   const F = fuera.map(f => {
     const fuentes = (f.fuentes || [])
@@ -95,7 +164,7 @@ async function main() {
            `fuentes:[${fuentes}]},`;
   }).join('\n');
 
-  let script = fs.readFileSync(JS, 'utf8');
+  let script = fs.readFileSync(jsPath, 'utf8');
 
   const sustituir = (nombre, cuerpo) => {
     const ini = script.indexOf(`const ${nombre}=[`);
@@ -105,28 +174,7 @@ async function main() {
     script = script.slice(0, ini) + `const ${nombre}=[\n${cuerpo}` + script.slice(fin);
   };
 
-  /* Las claves van cortas porque este array viaja en el HTML de todos los
-     visitantes. `pat` es si está patrocinada: viaja SIEMPRE, aunque hoy
-     no cobremos, porque la web la etiqueta y eso no puede depender de que
-     alguien se acuerde de añadirlo el día que se cobre. */
-  const E = emisiones.map(e =>
-    ` {s:${j(e.slug)},t:${j(e.titulo)},res:${j(e.resumen)},pl:${j(e.plataforma)},` +
-    `plw:${j(e.plataforma_web)},cat:${j(e.categoria)},col:${j(e.color)},ub:${j(e.ubicacion)},` +
-    `mon:${j(e.moneda)},min:${Number(e.ticket_minimo) || 0},obj:${Number(e.objetivo) || 0},` +
-    `cap:${Number(e.captado) || 0},pct:${Number(e.porcentaje) || 0},` +
-    `rent:${e.rentabilidad == null ? 'null' : Number(e.rentabilidad)},` +
-    `plazo:${e.plazo_meses == null ? 'null' : Number(e.plazo_meses)},` +
-    `tipo:${j(e.tipo_rendimiento)},cierra:${j(e.cierra_el)},abre:${j(e.abre_en)},` +
-    `est:${j(e.estado)},cont:${e.continua ? 'true' : 'false'},` +
-    /* `esNo` y `vinc` viajan como null cuando no se han comprobado: la
-       tarjeta solo avisa si vale exactamente false, nunca por un hueco.
-       Decir "no disponible en España" de algo que no hemos mirado sería
-       el mismo pecado que inventar una rentabilidad. */
-    `esNo:${e.disponible_es == null ? 'null' : (e.disponible_es ? 'true' : 'false')},` +
-    `vinc:${e.vinculante == null ? 'null' : (e.vinculante ? 'true' : 'false')},` +
-    `rest:${j(e.acceso_restringido)},rentNo:${e.rentabilidad_no_publicada ? 'true' : 'false'},` +
-    `url:${j(e.url)},ver:${j(e.verificada_el)},pat:${e.patrocinada ? 'true' : 'false'}},`
-  ).join('\n');
+  const E = ofertas.map(e => ` ${jsonSeguro(e)},`).join('\n');
 
   sustituir('P', P);
   sustituir('FUERA', F);
@@ -135,7 +183,7 @@ async function main() {
   /* No sustituimos el archivo hasta haber generado y validado los tres
      bloques completos. Si el proceso cae antes, la fuente anterior queda. */
   new Function(script);
-  escribirAtomico(JS, script);
+  escribirAtomico(jsPath, script);
 
   /* El mismo CSV que descarga el botón de la página, pero como archivo de
      verdad en una dirección estable. El botón exporta lo que el visitante
@@ -156,14 +204,20 @@ async function main() {
      español abre el archivo como Windows-1252 y "Asia-Pacífico" se lee
      "Asia-PacÃ­fico". Los analizadores serios la descartan sin rechistar,
      así que sale gratis. El botón de la página hace lo mismo. */
-  escribirAtomico(CSV,
+  escribirAtomico(csvPath,
     '﻿' + [cabecera.join(','), ...filas.map(r => r.map(celdaCSV).join(','))].join('\n') + '\n');
 
-  console.log(`Sincronizado desde Supabase: ${radar.length} en el radar, ${fuera.length} descartadas y ${emisiones.length} emisiones.`);
+  console.log(`Sincronizado desde Supabase: ${radar.length} plataformas verificadas, ${fuera.length} descartadas y ${emisiones.length} ofertas clasificadas.`);
   console.log(`rwadar.csv regenerado: ${filas.length} filas.`);
 }
 
-module.exports = { celdaCSV };
+module.exports = {
+  celdaCSV,
+  jsonSeguro,
+  plataformaPublica,
+  ofertaPublica,
+  sincronizar: main,
+};
 if (require.main === module) {
   main().catch(e => { console.error('ERROR:', e.message); process.exit(1); });
 }

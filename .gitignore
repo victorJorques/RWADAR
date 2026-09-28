@@ -33,6 +33,7 @@
 !/rwadar-capturar-portadas.mjs
 !/rwadar-publicar.js
 !/rwadar-publicacion-segura.js
+!/rwadar-ofertas-editoriales.js
 !/rwadar-adelgazar.js
 !/rwadar-servir.js
 !/rwadar-banco-de-sonidos.html
@@ -81,3 +82,4 @@ captura*.png
 x.png
 .DS_Store
 Thumbs.db
+!/.easignore

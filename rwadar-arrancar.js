@@ -64,7 +64,8 @@ const mal   = t => console.log('  ' + rojo('FALLA') + ' ' + t);
     `pre-renderizado: ${fichas} fichas y ${fuera} descartadas en el HTML`);
 
   const DEBIDOS = [
-    'index.html','privacidad.html','og.png','rwadar.csv','sitemap.xml','robots.txt',
+    'index.html','privacidad.html','transparencia-comercial.html','para-empresas.html',
+    'og.png','rwadar.csv','sitemap.xml','robots.txt',
     '404.html','_headers','_redirects','.well-known','assets',
     'manifest.webmanifest','sw.js','icono-192.png','icono-512.png','icono-maskable-512.png',
     'google6b2e3e5f58b7e557.html','c9417d2d5003bb9a41fee63c7f5ec00f.txt',

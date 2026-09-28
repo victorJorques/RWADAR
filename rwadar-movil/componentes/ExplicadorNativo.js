@@ -29,11 +29,11 @@ export const PASOS = [
   { c: 'Entero', t: 'Un activo, un dueño',
     d: 'Un edificio de 400.000 €. Indivisible: para tener una parte hay que comprarlo entero o quedarse fuera.' },
   { c: 'Dividido', t: 'Se divide en participaciones iguales',
-    d: 'El activo se trocea en participaciones idénticas. Cada una es una fracción legal de la propiedad y de la renta que produce.' },
+    d: 'En este ejemplo, las participaciones representan derechos económicos. En un producto real, el contrato define esos derechos: tener el token no implica automáticamente ser propietario del inmueble.' },
   { c: 'Con dueño', t: 'Cada participación tiene su dueño',
-    d: 'El mismo edificio, ahora con muchos propietarios. Quién posee qué queda anotado y lo puede comprobar cualquiera.' },
+    d: 'Los colores representan titulares. Las participaciones se anotan en un registro digital; la información accesible depende del sistema. Ese registro no garantiza que exista el activo ni que se cumpla el contrato.' },
   { c: 'Negociable', t: 'Se venden sin tocar el resto',
-    d: 'Vendes tu parte y el edificio sigue en pie, entero y alquilado. Ni liquidarlo, ni esperar meses a que aparezca comprador.' },
+    d: 'Una participación puede cambiar de titular sin vender el edificio entero, si el contrato permite la transferencia y hay comprador. No hay venta inmediata ni liquidez garantizada.' },
 ];
 
 const DURACION = 4200;
@@ -149,9 +149,11 @@ export default function ExplicadorNativo({ onCerrar }) {
         <Text style={e.pasoTit}>{p.t}</Text>
         <Text style={e.pasoDes}>{p.d}</Text>
         <Text style={e.nota}>
-          La contrapartida: el token vale lo que valga quien lo emite. Si la plataforma
-          quiebra o el activo no existe, el token no te protege. Por eso este radar solo
-          lista plataformas con supervisión verificable.
+          El token no protege frente a insolvencia, fraude o falta de liquidez.
+          Consulta la entidad, el contrato y el alcance de los permisos de cada producto.
+          Estar en RWAdar no es una aprobación ni confirma disponibilidad para invertir.
+          Si decides invertir, el pago se realiza directamente con la empresa; RWAdar
+          no recibe ni custodia ese dinero.
         </Text>
       </ScrollView>
     </View>
