@@ -1505,7 +1505,7 @@ const emisionesHTML = inicioEmisionesHTML >= 0 && finEmisionesHTML > inicioEmisi
 const emisionesFuente = arrayDe(js, 'EMI');
 prueba('Buscar presenta emisiones comprobadas, no anuncios ni recomendaciones inventadas',
   /OFERTAS ESPECÍFICAS/.test(emisionesHTML) && /Referencias revisadas/.test(emisionesHTML) &&
-  /Con origen, fecha y revisión independiente/.test(emisionesHTML) &&
+  /Con origen, fecha y límites de la revisión/.test(emisionesHTML) &&
   /RWAdar no intermedia, no custodia dinero y no recomienda/.test(emisionesHTML) &&
   !/(?:recomendada para ti|rentabilidad garantizada|oferta exclusiva)/i.test(textoHTML(emisionesHTML)));
 prueba('cero emisiones mantiene un vacío explícito y oculta filtros inútiles',
