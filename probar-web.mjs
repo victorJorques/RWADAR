@@ -1504,7 +1504,7 @@ const emisionesHTML = inicioEmisionesHTML >= 0 && finEmisionesHTML > inicioEmisi
   ? html.slice(inicioEmisionesHTML, finEmisionesHTML + 10) : '';
 const emisionesFuente = arrayDe(js, 'EMI');
 prueba('Buscar presenta emisiones comprobadas, no anuncios ni recomendaciones inventadas',
-  /OFERTAS ESPECÍFICAS/.test(emisionesHTML) && /Ofertas verificadas/.test(emisionesHTML) &&
+  /OFERTAS ESPECÍFICAS/.test(emisionesHTML) && /Referencias revisadas/.test(emisionesHTML) &&
   /Con origen, fecha y revisión independiente/.test(emisionesHTML) &&
   /RWAdar no intermedia, no custodia dinero y no recomienda/.test(emisionesHTML) &&
   !/(?:recomendada para ti|rentabilidad garantizada|oferta exclusiva)/i.test(textoHTML(emisionesHTML)));

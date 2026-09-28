@@ -1746,6 +1746,7 @@ body.detalle-local-abierto{overflow:hidden}
   .movil-marca .mk{width:27px;height:27px}
   .movil-cabecera-accion{grid-column:3;grid-row:1;justify-self:end;width:44px;height:44px;background:var(--m-material);
     border-color:var(--m-hairline)}
+  .movil-cabecera-accion.movil-descarga{margin-right:47px;text-decoration:none}
   .movil-cabecera-titulo{grid-column:2;grid-row:1;margin:0;font-size:1.05rem;font-weight:680;
     max-width:min(39vw,150px);overflow:hidden;letter-spacing:-.025em;text-align:center;
     text-overflow:ellipsis;white-space:nowrap}
