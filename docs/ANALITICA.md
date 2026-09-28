@@ -1,9 +1,11 @@
 # RWAdar · visitas y resultados
 
-Estado comprobado el 27 de septiembre de 2026: sitio gratuito creado en
-Cloudflare Web Analytics, panel vacío y código incorporado localmente.
-**Todavía no se ha desplegado ni verificado la recepción de visitas.**
-No existen cifras históricas recuperadas ni ingresos publicitarios acreditados.
+Estado comprobado el 28 de septiembre de 2026: **medición web/PWA publicada y
+recibiendo datos** en Cloudflare Web Analytics. A las 09:16 UTC el panel mostró
+1 visita y 1 página vista de las comprobaciones del lanzamiento, con despliegue
+`ddc0115b.rwadar.pages.dev` y dominio `rwadar.pages.dev`.
+Es tráfico de prueba, no audiencia orgánica acreditada. No se han recuperado
+cifras anteriores ni hay ingresos publicitarios activos.
 
 ## Dónde entrar
 
@@ -25,7 +27,8 @@ para comparar semanas y mantén el mismo periodo y zona horaria.
 | ¿La app web funciona con rapidez? | Page load time, LCP, INP, CLS | Rendimiento y estabilidad visual, no resultados de inversión. |
 
 La PWA instalada sigue siendo la web y usa este mismo panel al estar conectada.
-La app nativa Expo necesitaría una integración distinta. Las peticiones de la
+El APK Android todavía no mide aperturas ni personas activas: esa integración
+queda como trabajo técnico de RWAdar. Las peticiones de la
 cuenta o del CDN incluyen archivos y tráfico automatizado: **requests no es
 visitas**. El filtro de bots tampoco garantiza identificar a todas las personas.
 
@@ -55,6 +58,18 @@ consola/CSP, comprobar que callbacks y entorno local no lo cargan y confirmar
 en el panel la recepción de la visita de prueba. Identificar esa visita como
 prueba, no como audiencia orgánica. Registrar fecha, despliegue y resultado en
 `INTERNO.md`; no declarar la integración operativa solo porque el script compila.
+
+El recorrido anterior se verificó en este lanzamiento: 1 beacon en el DOM,
+ningún error de consola observado y recepción en el panel tras unos minutos.
+Captura privada: `rwadar-contactos-2026-09-27/analitica-primera-visita.png`.
+
+## Descargas Android
+
+El repositorio público [RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)
+distribuye el APK. La [API pública de la última versión](https://api.github.com/repos/victorJorques/RWAdar-downloads/releases/latest)
+incluye `assets[].download_count` para `RWAdar.apk`. Cuenta descargas de ese
+archivo, incluidas nuestras verificaciones y descargas repetidas; no demuestra
+instalaciones, personas únicas ni aperturas. No sumar ese contador a Visits.
 
 Para retirar la medición, quitar las referencias al cargador, ajustar CSP y
 desplegar el artefacto revisado. El servicio puede desactivarse también en la

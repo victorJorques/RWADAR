@@ -10,7 +10,7 @@ RWAdar 1.1.0, versionCode 8, paquete `com.rwadar.app`. Build EAS
   coincide con la firma existente. Mínimo Android 7, target SDK 36.
 - Manifiesto comprobado: Internet, estado de red, vibración y receptor interno;
   sin permisos de almacenamiento ni superposición. Backup y OTA desactivados.
-- 58 pruebas nativas y Expo Doctor 21/21 aprobados. Auditoría sin hallazgos
+- 58 pruebas automáticas del código móvil y Expo Doctor 21/21 aprobados. Auditoría sin hallazgos
   críticos o altos; 10 moderados de dependencias documentados.
 - [Prueba real del APK instalado](https://github.com/victorJorques/RWAdar-downloads/actions/runs/36401384266):
   éxito en emulador Android API 35. Instalación limpia, apertura, catálogo remoto

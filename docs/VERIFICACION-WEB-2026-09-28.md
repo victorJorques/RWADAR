@@ -38,3 +38,19 @@ posibles. La recepción de analítica se comprueba en el dominio canónico despu
 de desplegar. El destino final Android se verifica al publicar el APK firmado;
 su prueba nativa se documenta separadamente. La entrega final y sus enlaces se
 registran en `INTERNO.md`.
+
+## Producción comprobada
+
+El 28/09/2026 se desplegó `https://ddc0115b.rwadar.pages.dev` a producción.
+`https://rwadar.pages.dev` entrega los mismos 54 recursos verificados (09:13:59 UTC),
+sin fallos de contenido o cabeceras. `/android` redirige a la release pública
+de GitHub; una descarga anónima completa coincide con el APK8 probado.
+El navegador público muestra 26 plataformas y 28 referencias, sin imágenes
+rotas ni errores de consola observados; aviso legal accesible y regreso al radar.
+La medición carga un único beacon. El panel mostró la primera visita/página vista
+de prueba a las 09:16 UTC. No se confunden con audiencia orgánica.
+
+Evidencias privadas añadidas: `http-rwadar.pages.dev.json`,
+`web-publica-final.png`, `analitica-primera-visita.png`, en
+`rwadar-contactos-2026-09-27/`. La prueba pública no acredita cobertura universal
+de dispositivos ni usuarios Android medidos por Cloudflare.
