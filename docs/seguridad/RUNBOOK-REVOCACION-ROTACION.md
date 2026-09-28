@@ -1,12 +1,15 @@
 # RWAdar · runbook de revocación y rotación de credenciales
 
-Estado: procedimiento pendiente de ejecución por una persona autorizada.  
+Estado: procedimiento de referencia para incidentes. El titular confirmó la
+revocación del token histórico; el corte y sus límites constan en
+`REVISION-SEGURIDAD-2026-09-27.md` y `../INTERNO.md`.
 Ámbito inicial: token personal de Supabase expuesto en el historial Git.  
 Regla: no pegar, comparar, probar ni transmitir el valor comprometido.
 
 ## 1. Contener
 
-1. Mantener `MODO_PRIVADO`, despliegues y escrituras remotas bloqueados.
+1. Ante un nuevo incidente activo, bloquear despliegues y escrituras afectadas
+   durante la contención. El estado vigente lo determina `../INTERNO.md`.
 2. No ejecutar el token antiguo para comprobar si funciona; el intento añade
    riesgo y no aporta una evidencia de cierre mejor que el panel del proveedor.
 3. Designar responsable principal y segundo revisor. Usar un dispositivo y una

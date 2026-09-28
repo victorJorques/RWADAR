@@ -10,13 +10,13 @@ La consulta y la inclusión editorial son gratuitas. RWAdar es el radar; no emit
 
 ## Corte comprobado
 
-- **Web:** integrada y generada desde Supabase. Preview y producción aún pendientes; los dominios conservan la retirada hasta registrar aquí el despliegue real.
+- **Web:** preview `https://6a548507.rwadar.pages.dev` validado: 54 recursos HTTP, 329 pruebas web, 13 editoriales y recorridos en navegador de escritorio y móvil. La producción está pendiente del comando final; el dominio canónico conserva la retirada hasta registrar aquí su despliegue real.
 - **Supabase:** migraciones 24 y 25 aplicadas a `exgpmjpaaebyoolpwced`, ACTIVE_HEALTHY, eu-west-1. CALIX intacto.
 - **Catálogo:** revisión `80159d96-dcb8-b476-ae10-bc9cd2a45c83`, SHA256 `80159d96dcb8b476ae10bc9cd2a45c83f2bbc83626db30891871fbdac46a7099`, aprobada el 28/09 a las 08:32 UTC. 26 plataformas, 28 referencias, 70 fuentes y 4 descartes citables. Se consultaron las 69 fuentes anteriores, se sustituyeron enlaces fallidos por documentos oficiales y se añadió OCC para Paxos. Alcance por fuente en `rwadar-app/data/verificaciones/2026-09-28/revision-fuentes.json`. Borrador invisible bajo anon y lote aprobado 26/28 comprobados en SQL real y REST.
 - **Fechas:** radar del 28/09 y ofertas del 27/09. Las ofertas no reciben una fecha nueva por revisar plataformas. Vigencia del lote hasta el 05/10 inclusive; después queda oculto sin nueva revisión. Las cifras individuales caducan según su plazo, sin desaparecer la referencia ni su evidencia.
 - **Seguridad de datos:** RLS y vistas invoker. Borrador invisible bajo anon. Esquema editorial no expuesto en Data API (406/PGRST106). Cero permisos de mutación de tabla/columna y cero RPC privilegiadas públicas para anon/authenticated. REST sigue entregando 26/28 y 4 descartes.
 - **Auth:** altas nuevas cerradas, confirmado por HTTP: disable_signup=true, mailer_autoconfirm=false, acceso anónimo desactivado. Los clientes no inician ni renuevan sesiones; no se borraron cuentas históricas.
-- **Móvil:** modo editorial conectado, servicios remotos de usuario=false, sin OTA ni backup Android. Build6 falló por incompatibilidad del runtime fingerprint; se corrigió a appVersion y se actualizaron parches compatibles. APK 1.1.0/versionCode7 `8572d0b9-d97c-41c2-8d05-1bf7de5d9734` compilándose con firma existente. 58/58 pruebas y Expo Doctor 21/21 aprobados. Resultado, firma e instalación del binario pendientes; no hay publicación acreditada en tiendas.
+- **Móvil:** Android 1.1.0/versionCode8 publicado el 28/09 a las 09:11 UTC en `https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.1.0`. APK firmado, 85.254.924 bytes, SHA256 `593099b7c23d420da0aa361d74d4760b6e73368089849a57887489e7cfb1a255`. Prueba de instalación limpia y catálogo 26/28, búsqueda y ficha aprobada en emulador API35, run36401384266. 58 pruebas y Doctor21/21 aprobados. Sin OTA, backup, cuentas ni anuncios activos. Distribución directa; no publicado en tiendas. Evidencia en `VERIFICACION-ANDROID-2026-09-28.md`.
 - **Legal:** persona física identificada con los datos declarados por el titular. Aviso y condiciones completados; revisión interna acotada, sin atribuir un dictamen a un despacho.
 - **Imágenes:** 26 portadas y 4 ilustraciones generadas propias, procedencia y etiquetas documentadas. Las 52 fotografías internas de terceros no se publican.
 - **Analítica:** panel gratuito Cloudflare creado y cargador preparado. Recepción de visitas públicas aún por verificar. No hay cifras orgánicas acreditadas.
@@ -38,4 +38,4 @@ Cloudflare: proyecto rwadar, cuenta `52d07be006e7a27f5f793c59e1796b13`, dominio 
 
 Operación en `OPERACION-LANZAMIENTO.md`; alcance revisado en `comercial/REVISION-EDITORIAL-2026-09-27.md`; panel en `ANALITICA.md`. Un documento no crea vigilancia ni tareas programadas. La revisión futura debe contrastar fuentes.
 
-Antes de publicar: suite raíz, escaneo, commits revisados, preview con QA y producción. Catálogo: 76 pruebas; control de publicación: 51. Registrar los resultados finales y enlaces tras comprobarlos.
+Suite raíz aprobada; catálogo: 76 pruebas; control de publicación: 51. Preview y APK validados. Falta verificar producción y recepción de analítica tras el despliegue final. Ads y tiendas se documentan en `ENTREGA-TIENDAS-Y-ANUNCIOS.md`.

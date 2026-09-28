@@ -2,7 +2,7 @@
 
 App nativa en React Native con Expo (SDK 57).
 
-## Corte editorial conectado · 27 de septiembre de 2026
+## Corte editorial conectado · 28 de septiembre de 2026
 
 Esta copia usa `catalogo-editorial`: consulta las dos vistas verificadas de
 Supabase sin iniciar sesión. No sincroniza operaciones pendientes ni solicita
@@ -28,7 +28,43 @@ El fixture se conserva para pruebas aisladas, no como catálogo de respaldo del
 perfil conectado. La sección siguiente es histórica, no una entrega del corte
 actual. Las builds anteriores no validan los cambios de septiembre.
 
-## Estado verificado · 21 de agosto de 2026
+## Binario revisado para la entrega editorial
+
+El candidato actual es Android **1.1.0, versionCode 8**, paquete
+`com.rwadar.app`, build EAS `d6966f1f-b0b3-415d-b732-311c4b31f7a3`.
+No usar los APK 4, 6 o 7 ni el AAB 5 para esta entrega.
+
+- SHA-256 del APK:
+  `593099b7c23d420da0aa361d74d4760b6e73368089849a57887489e7cfb1a255`.
+- Certificado de firma SHA-256:
+  `f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72`.
+  `apksigner` confirma la firma v2 y el mismo certificado que el APK 4.
+- Manifiesto efectivo: solo `INTERNET`, `ACCESS_NETWORK_STATE`, `VIBRATE`
+  y `com.rwadar.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`.
+  `allowBackup=false` y `expo.modules.updates.ENABLED=false`.
+- Android mínimo API 24, destino API 36. La compilación terminada, su firma
+  y una descarga comprobada no prueban por sí solas toda la navegación.
+
+La prueba remota instala el **mismo APK**, sin recompilarlo, en un emulador
+Android API 35 de un runner efímero. La ejecución
+[36401384266](https://github.com/victorJorques/RWAdar-downloads/actions/runs/36401384266)
+superó instalación, arranque en frío, catálogo real de 26 plataformas,
+28 fichas, búsqueda de Spiko y apertura de su detalle. Las cuatro capturas
+se revisaron visualmente; `app-errors.log` y `final-errors.log` están vacíos.
+La extracción usa un helper de pruebas separado y efímero basado en
+`Instrumentation`/`UiAutomation`, sin esperar reposo de la animación ni
+reutilizar XML antiguo; no cambia el APK de RWAdar.
+
+El intento anterior conservó una pantalla de carga obsoleta al esperar
+reposo mediante `uiautomator dump`; se conserva como intento fallido, no
+como evidencia aprobada. La prueba final no cubre un teléfono físico,
+todas las versiones Android, todas las funcionalidades ni las tiendas.
+
+La URL de EAS caduca el 12 de octubre de 2026; no debe ser el enlace
+permanente de distribución. La publicación y el estado operativo vigentes
+se registran únicamente en [`docs/INTERNO.md`](../docs/INTERNO.md).
+
+## Histórico · 21 de agosto de 2026 · no ejecutar como instrucciones actuales
 
 - APK interno Android `1.0.0` build 4, runtime
   `af69452933f988f2d48d45861802f09d3df06e8b`.
@@ -65,7 +101,8 @@ El corte desactiva `updates.enabled`: el APK ejecuta su código incluido y no
 recupera JavaScript de los canales históricos. El catálogo se actualiza por
 REST; cambiar el código requiere una nueva build revisada. También desactiva
 la copia Android a Google Drive y bloquea permisos de notificaciones,
-micrófono y almacenamiento externo que este alcance no necesita.
+micrófono, almacenamiento externo, superposición de pantalla, arranque,
+biometría, recepción push y contadores OEM que este alcance no necesita.
 La identidad de runtime usa la política oficial `appVersion` (`1.1.0`), ya que
 se distribuye el binario completo sin OTA. El primer intento con `fingerprint`
 fue rechazado por una discrepancia entre la huella local y la del constructor;
@@ -80,8 +117,8 @@ No forma parte de `npm test`, no escribe en Supabase ni imprime claves.
 
 ## Qué hace, y por qué eso importa
 
-Apple rechaza las apps que son una web envuelta (directriz 4.2). Estas tres
-cosas son las que la convierten en un producto propio:
+La app usa interfaz nativa, favoritos locales y caché con caducidad; no es
+solo una WebView del sitio. Eso no garantiza la admisión en ninguna tienda.
 
 **Conserva un adaptador de avisos desactivado.** Solo con capacidad remota
 explícita puede registrar permiso, token y seguimiento; el proceso que envía
@@ -96,7 +133,8 @@ respuesta vacía, retirada, inválida o sin permisos no recupera el catálogo
 anterior. La cabecera indica cuándo se usa una copia sin conexión. Las cifras
 tienen su propio TTL y los días se computan en UTC, como en las vistas SQL.
 La caducidad se revisa también con la app abierta y al volver de suspensión.
-Esto no cambia `local-interno` ni activa el adaptador en esta copia.
+El adaptador del catálogo está habilitado en `catalogo-editorial`; el perfil
+`local-interno` conserva su comportamiento aislado para pruebas.
 
 **Seguir no exige registrarse.** En el perfil editorial la lista permanece en
 el dispositivo, sin UUID ni sincronización. El adaptador remoto conservado,
@@ -177,33 +215,41 @@ superficies, y la sombra solo añade profundidad en iOS.
 
 ## Lo que falta para llegar a las tiendas
 
-El acceso a Expo, el APK interno y el AAB de producción Android ya están
-resueltos. Antes de entregar a Google Play falta:
+La descarga directa de un APK firmado no equivale a publicar en Google Play.
+El AAB 5 es histórico y no contiene este corte editorial. Para las tiendas:
 
-1. activar la verificación en dos pasos de la cuenta de Google;
-2. crear y pagar la cuenta de Play Console;
-3. crear la ficha `com.rwadar.app`, completar privacidad, seguridad de datos,
-   contenido, países y canal de pruebas;
-4. instalar el APK build 4 en un Android real y comprobar navegación, 3D,
-   seguimiento online/offline, borrado y recepción de la OTA;
-5. subir el AAB build 5 primero a una pista de prueba, no directamente a
-   producción.
+1. El titular debe completar identidad, condiciones y pago del alta de Play
+   Console, y su verificación en dos pasos si Google la exige. No se suplantan
+   esas decisiones ni se contratan planes automáticamente.
+2. Preparar la ficha `com.rwadar.app`, privacidad, seguridad de datos,
+   contenido, países y la pista de prueba que corresponda a esa cuenta.
+3. Generar y verificar un **AAB nuevo del corte vigente**, con su versión y
+   firma revisadas. No reutilizar el AAB 5 ni reactivar canales OTA antiguos.
+4. Completar navegación, catálogo conectado, modo sin conexión, favoritos,
+   borrado local, enlaces y accesibilidad en Android real y en la pista de
+   prueba. La verificación del emulador se declara por separado.
+5. Solicitar la revisión y confirmar la publicación efectiva antes de
+   anunciar que está disponible en Google Play.
 
 iOS sigue necesitando Apple Developer, credenciales de firma, un build EAS y
 pruebas mediante TestFlight.
 
-**El envío de los avisos.** La base ya sabe *a quién* avisar (vista
-`avisos_pendientes`). Falta el proceso que lea esa vista y llame a la API de
-Expo Push, compruebe recibos y retire tokens inválidos. Solo después de una
-prueba real debe activarse la bandera operativa.
+**Avisos, cuentas y comisiones quedan fuera de esta entrega.** El código
+conservado para servicios remotos está desactivado y no acredita que sus
+endpoints o procesos históricos sigan operativos. Cualquier activación
+requiere revisar permisos del servidor, privacidad y pruebas completas.
+RWAdar no recibe dinero de inversión ni cobra comisiones en este corte.
 
-## Actualizaciones por EAS
+## Actualizaciones actuales e histórico de EAS
 
-EAS Update está configurado por canales y `runtimeVersion` usa la política
-`fingerprint`. La OTA del rediseño ya está en `preview` y solo es compatible
-con el APK build 4, cuya huella coincide exactamente. Los APK 1 y 3 usan otro
-runtime y necesitan instalar build 4 una vez. El AAB build 5 incluye el mismo
-código y runtime en el canal `production`; no se ha enviado a Google Play.
+**Corte actual:** `updates.enabled=false` y runtime por `appVersion`.
+El código se actualiza mediante un binario nuevo revisado; los datos públicos
+se actualizan por las vistas REST del catálogo, con sus controles de vigencia.
+
+**Solo como evidencia histórica:** la OTA de agosto usaba `fingerprint` y
+el canal `preview`, compatible con APK 4; AAB 5 usaba el canal `production`.
+No instalar esos binarios, no seguir ese flujo y no activar OTA para la
+entrega editorial actual.
 
 Ni una configuración presente ni un comando escrito prueban que una OTA o un
 push se hayan entregado. Antes de cambiar la bandera operativa hay que probar
@@ -212,27 +258,26 @@ de tokens inválidos, borrado y recuperación ante fallo.
 
 ## Verificación local y avisos de dependencias
 
-Foto de la revisión del **21 de agosto de 2026**:
+Revisión del **28 de septiembre de 2026**, antes de compilar APK 8:
 
-- `npm test`: 14 de 14 pruebas móviles superadas;
-- `npx expo install --check`: dependencias compatibles con SDK 57;
-- `npx expo-doctor`: 21 de 21 comprobaciones superadas;
-- exportación local Android (901 módulos) y web de QA (566): correcta;
-- batería integral del repositorio: exit 0;
-- QA visual a 320, 390 y 430 px sin desbordamiento horizontal;
-- APK build 4 y AAB build 5: misma huella nativa.
+- `npm test`: 58 de 58 pruebas móviles superadas.
+- `npx expo-doctor`: 21 de 21 comprobaciones superadas, con parches compatibles
+  de SDK 57 y React Native 0.86.3.
+- `npm audit --omit=dev`: cero avisos críticos, cero altos y diez moderados
+  propagados en el toolchain de Expo, `xcode` y `uuid`.
+- El parche compatible `@xmldom/xmldom` 0.8.15 está en el lock utilizado por
+  APK 8; no se rebaja Expo ni se omiten verificaciones.
+- Export web de QA revisado a 320 y 390 px, sin desbordamiento horizontal ni
+  errores de consola en las pruebas realizadas. Eso no es evidencia nativa.
+- Lectura real del catálogo: 26 plataformas y 28 ofertas, revisión
+  `80159d96-dcb8-b476-ae10-bc9cd2a45c83`; sin escrituras ni sesión de usuario.
+- Prueba nativa del APK 8 en Android API 35: descarga, firma, instalación,
+  arranque, catálogo, búsqueda y ficha aprobados; evidencia enlazada arriba.
 
-Después de aplicar las actualizaciones compatibles de `npm audit fix` **sin
-`--force`** y alinear los parches exigidos por Expo, `npm audit --omit=dev`
-informa de **15 paquetes afectados**: 5 altos, 10 moderados y ninguno crítico.
-El reporte los propaga desde tres avisos subyacentes del toolchain: dos DoS de
-`image-size` y uno de límites de búfer de `uuid`, a través de Expo CLI, Metro y
-`xcode`. npm los cuenta en el árbol de producción porque `expo` es una
-dependencia directa. La única reparación automática que elimina todo el
-conjunto baja a Expo 46, incompatible con SDK 57 y React Native 0.86, por lo
-que no se aplicó ni se debe ejecutar `npm audit fix --force`. Esto no equivale
-a declarar riesgo cero: hay que repetir la auditoría al actualizar Expo y
-adoptar la corrección compatible cuando el SDK la publique.
+No ejecutar `npm audit fix --force`: la propuesta automática rebaja a Expo
+46 y rompe la compatibilidad del proyecto. Los avisos moderados pendientes
+se deben reevaluar al actualizar el SDK. Estas comprobaciones no certifican
+riesgo cero ni sustituyen la revisión del backend y del binario distribuido.
 
 La implementación se contrastó antes de editar con la documentación oficial
 versionada de [Expo SDK 57](https://docs.expo.dev/versions/v57.0.0/),
@@ -256,6 +301,6 @@ difamación y quedó desmentida por auditorías independientes posteriores.
 
 La base impide que esto se degrade: `select * from descartadas_sin_fuente`
 lista cualquier empresa señalada sin respaldo. **Debe devolver cero filas
-siempre.** Es lo primero que hay que mirar antes de enviar una versión a
-revisión: Apple y Google retiran de inmediato ante la reclamación de una
-empresa nombrada.
+siempre.** Antes de publicar debe comprobarse la evidencia, su vigencia y
+un canal de rectificación; una reclamación requiere revisión, no se puede
+prometer un resultado específico de moderación de las tiendas.

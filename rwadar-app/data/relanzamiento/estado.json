@@ -95,9 +95,21 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "en_progreso",
-      "detalle": "Revocación declarada por el titular y límites de investigación histórica registrados. Servidor validado, permisos cerrados y pruebas locales aprobadas; preview público pendiente de QA antes de producción.",
+      "estado": "aprobado",
+      "detalle": "Servidor real y permisos comprobados. Preview 6a548507 validado por HTTP (54 recursos), navegador de escritorio y móvil (390 y 320 px), búsqueda, fuentes y comparación. APK8 firmado instalado en emulador Android API35: 26 plataformas, 28 referencias, búsqueda y ficha aprobadas en run36401384266. No se afirma prueba en todos los dispositivos ni publicación en tiendas.",
       "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-WEB-2026-09-28.md",
+          "verificadoEl": "2026-09-28",
+          "resumen": "329 pruebas web y 13 de presentación editorial aprobadas; 54 archivos del preview idénticos, cabeceras y rutas correctas, navegación y tamaños móviles revisados sin errores de consola observados."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ANDROID-2026-09-28.md",
+          "verificadoEl": "2026-09-28",
+          "resumen": "APK8 con identidad y firma verificadas; instalación limpia y navegación del catálogo real en emulador Android superadas. Evidencia y limitaciones registradas."
+        },
         {
           "tipo": "documento",
           "referencia": "docs/seguridad/REVISION-SEGURIDAD-2026-09-27.md",

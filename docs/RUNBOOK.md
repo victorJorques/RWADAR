@@ -103,8 +103,8 @@ local no prueba RLS, Auth, correo, push, hosting ni dispositivos reales.
   pero su poder depende de RLS y debe rotarse si queda obsoleta.
 - Tokens administrativos, `service_role`, credenciales de proveedor y ficheros
   de firma nunca entran en Git.
-- Hay un P0 histórico abierto por un token personal de Supabase en un commit
-  antiguo. No leas ni pruebes el valor. Sigue
+- Hubo un incidente por un token personal de Supabase en un commit antiguo;
+  el titular confirmó su revocación. No leas ni pruebes el valor. Consulta
   `seguridad/RUNBOOK-REVOCACION-ROTACION.md`; revocación, rotación o reescritura
   de Git requieren autorización y evidencia separadas.
 - La `.gitignore` es una lista blanca porque la raíz está en `Downloads`.
