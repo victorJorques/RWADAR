@@ -2,7 +2,7 @@
   "id": "/",
   "name": "RWAdar · registro de plataformas RWA",
   "short_name": "RWAdar",
-  "description": "Registro curado de plataformas de tokenización de activos reales. 38 analizadas, 26 en el radar, y los descartes solo cuando el motivo se puede respaldar con una fuente citable.",
+  "description": "Consulta plataformas y activos tokenizados con fuentes, fechas y riesgos. La inclusión en el radar es gratuita y no constituye una recomendación de inversión.",
   "lang": "es-ES",
   "dir": "ltr",
   "start_url": "/",
@@ -38,7 +38,7 @@
       "sizes": "1200x630",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "El radar con las 26 plataformas que pasan el filtro"
+      "label": "RWAdar: plataformas, fuentes y riesgos"
     }
   ]
 }

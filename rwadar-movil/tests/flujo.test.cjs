@@ -569,7 +569,40 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
   assert.ok(app.updates.url.startsWith('https://u.expo.dev/'));
   assert.equal(app.updates.enabled, false, 'la build no descarga código de canales anteriores');
   assert.equal(app.android.allowBackup, false);
-  assert.ok(app.android.blockedPermissions.includes('android.permission.POST_NOTIFICATIONS'));
+  for (const permiso of [
+    'android.permission.POST_NOTIFICATIONS',
+    'android.permission.SYSTEM_ALERT_WINDOW',
+    'android.permission.RECEIVE_BOOT_COMPLETED',
+    'android.permission.USE_BIOMETRIC',
+    'android.permission.USE_FINGERPRINT',
+    'android.permission.WAKE_LOCK',
+    'com.google.android.c2dm.permission.RECEIVE',
+    'com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE',
+    'com.sec.android.provider.badge.permission.READ',
+    'com.sec.android.provider.badge.permission.WRITE',
+    'com.htc.launcher.permission.READ_SETTINGS',
+    'com.htc.launcher.permission.UPDATE_SHORTCUT',
+    'com.sonyericsson.home.permission.BROADCAST_BADGE',
+    'com.sonymobile.home.permission.PROVIDER_INSERT_BADGE',
+    'com.anddoes.launcher.permission.UPDATE_COUNT',
+    'com.majeur.launcher.permission.UPDATE_BADGE',
+    'com.huawei.android.launcher.permission.CHANGE_BADGE',
+    'com.huawei.android.launcher.permission.READ_SETTINGS',
+    'com.huawei.android.launcher.permission.WRITE_SETTINGS',
+    'android.permission.READ_APP_BADGE',
+    'com.oppo.launcher.permission.READ_SETTINGS',
+    'com.oppo.launcher.permission.WRITE_SETTINGS',
+    'me.everything.badger.permission.BADGE_COUNT_READ',
+    'me.everything.badger.permission.BADGE_COUNT_WRITE',
+  ]) {
+    assert.ok(app.android.blockedPermissions.includes(permiso),
+      `El manifiesto editorial debe retirar el permiso heredado ${permiso}`);
+  }
+  for (const permiso of ['android.permission.INTERNET', 'android.permission.ACCESS_NETWORK_STATE',
+    'android.permission.VIBRATE', 'com.rwadar.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION']) {
+    assert.ok(!app.android.blockedPermissions.includes(permiso),
+      `Se conserva la capacidad necesaria o protección interna ${permiso}`);
+  }
   assert.equal(eas.build.editorial.android.buildType, 'apk');
   assert.equal(eas.build.editorial.channel, 'editorial');
   assert.equal(eas.build.editorial.distribution, 'internal');

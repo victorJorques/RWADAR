@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
@@ -88,5 +89,24 @@ paso('Swarm no conserva como visibles Minorista ni la etiqueta genérica BaFin',
   && /no se reutiliza la etiqueta genérica 'regulada por BaFin'/i.test(
     porSlug.get('swarm')?.verificacionLocal.licenciaRegistro.detalle)
   && web.includes("accesoClasificado=p=>p&&p.verificacionLocal&&p.verificacionLocal.acceso.estado==='no_verificable'"));
+
+const bloqueFuentes = web.slice(web.indexOf('function fuentesVerificacionHtml('), web.indexOf('\nconst colOf='));
+const contexto = vm.createContext({
+  escHtml: s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),
+  urlHttps: s => typeof s === 'string' && /^https:\/\/[^\s<>"']+$/.test(s) ? s : '',
+});
+vm.runInContext(bloqueFuentes, contexto);
+const fuente = {url:'https://example.com/fuente', titulo:'Informe <b>regulatorio</b>', consultadaEl:'2026-09-28'};
+const fuenteNoSegura = {url:'javascript:alert(1)', titulo:'No abrir'};
+const fuentesHtml = contexto.fuentesVerificacionHtml({
+  estadoOperativo:{fuentes:[fuente]}, licenciaRegistro:{fuentes:[fuente,fuenteNoSegura]},
+  acceso:{fuentes:[]}, alertasCriticas:[{fuentes:[fuente]}],
+});
+paso('el detalle permite consultar las fuentes sin duplicarlas ni ejecutar HTML',
+  (fuentesHtml.match(/href=/g)||[]).length===1 && fuentesHtml.includes('&lt;b&gt;regulatorio&lt;/b&gt;') &&
+  fuentesHtml.includes('2026-09-28') && !fuentesHtml.includes('javascript:') &&
+  web.includes("'</ul></div>'+fuentesVerificacionHtml(verificacion)"));
+paso('el escaparate público no afirma que todas las referencias estén abiertas',
+  indice.includes('Activos y ofertas documentados') && !indice.includes('Abierto ahora mismo'));
 
 console.log(`\n${correctas} correctas, 0 fallidas`);

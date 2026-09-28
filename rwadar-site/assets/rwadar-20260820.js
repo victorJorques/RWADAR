@@ -996,8 +996,8 @@ function resumenVerificacionLocalHtml(verificacion){
  if(!verificacion)return'';
  const campos=[['Estado operativo',verificacion.estadoOperativo],
   ['Licencia / registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
- return '<div class="verificacion-local-resumen" aria-label="Revisión local '+escHtml(verificacion.verificadoEl)+'">'+
-  '<div class="verificacion-local-fecha">REVISIÓN LOCAL · '+escHtml(verificacion.verificadoEl)+'</div><div class="verificacion-local-estados">'+
+ return '<div class="verificacion-local-resumen" aria-label="Revisión editorial '+escHtml(verificacion.verificadoEl)+'">'+
+  '<div class="verificacion-local-fecha">REVISIÓN EDITORIAL · '+escHtml(verificacion.verificadoEl)+'</div><div class="verificacion-local-estados">'+
   campos.map(([nombre,campo])=>'<span class="verificacion-local-estado '+
    ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><b>'+escHtml(nombre)+'</b>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span>').join('')+
   '</div>'+verificacion.alertasCriticas.map(alerta=>'<p class="verificacion-local-alerta"><b>Alerta crítica</b>'+escHtml(alerta.detalle)+'</p>').join('')+'</div>';
@@ -1007,13 +1007,23 @@ function detalleVerificacionLocalHtml(verificacion){
  const campos=[['Estado operativo',verificacion.estadoOperativo],
   ['Licencia / registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
  return '<section class="pn-seccion pn-verificacion-local" aria-labelledby="dwVerificacionLocalTit">'+
-  '<div class="pn-verificacion-local-cab"><h4 id="dwVerificacionLocalTit">Revisión local</h4><time datetime="'+
+  '<div class="pn-verificacion-local-cab"><h4 id="dwVerificacionLocalTit">Revisión editorial</h4><time datetime="'+
   escHtml(verificacion.verificadoEl)+'">'+escHtml(verificacion.verificadoEl)+'</time></div><div class="pn-verificacion-local-campos">'+
   campos.map(([nombre,campo])=>'<article class="pn-verificacion-local-campo '+
    ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><div><b>'+escHtml(nombre)+'</b><span>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span></div><p>'+escHtml(campo.detalle)+'</p></article>').join('')+
   '</div><div class="pn-verificacion-local-alertas"><h5>Alertas críticas</h5><ul>'+
   verificacion.alertasCriticas.map(alerta=>'<li>'+escHtml(alerta.detalle)+'</li>').join('')+
-  '</ul></div><p class="pn-nota">La fecha canónica se conserva aparte. Registro, documento o web accesible no equivalen a aval, licencia global ni acceso desde España.</p></section>';
+  '</ul></div>'+fuentesVerificacionHtml(verificacion)+'<p class="pn-nota">Registro, documento o web accesible no equivalen a aval, licencia global ni acceso desde España.</p></section>';
+}
+function fuentesVerificacionHtml(verificacion){
+ const fuentes=[...new Map([
+  ...['estadoOperativo','licenciaRegistro','acceso'].flatMap(c=>verificacion[c]?.fuentes||[]),
+  ...(verificacion.alertasCriticas||[]).flatMap(a=>a.fuentes||[])
+ ].filter(f=>f&&urlHttps(f.url)).map(f=>[f.url,f])).values()];
+ if(!fuentes.length)return'';
+ return '<div class="fuentes"><span class="fuentes-t">Fuentes consultadas</span>'+fuentes.map(f=>
+  '<a href="'+escHtml(urlHttps(f.url))+'" target="_blank" rel="noopener nofollow">'+escHtml(f.titulo||f.url)+
+  (f.consultadaEl?' · '+escHtml(f.consultadaEl):'')+' ↗</a>').join('')+'</div>';
 }
 const colOf=p=>(CATMETA[p.cat]||{c:'#7C8699'}).c;
 const catClase=p=>' cat-'+Math.max(0,Object.keys(CATMETA).indexOf(p.cat));
@@ -1347,7 +1357,7 @@ function renderGrid(f){
   const v=p.verificacionLocal;
   const nota=v?v.estadoOperativo.detalle:p.nota;
   const aval=v?v.licenciaRegistro.detalle:p.aval;
-  const marcaRevision=v?'Revisión local '+v.verificadoEl:'Ficha verificada';
+  const marcaRevision=v?'Revisión editorial '+v.verificadoEl:'Ficha verificada';
   const marcas=v?resumenVerificacionLocalHtml(v):
    `<div class="marcas"><span class="m acc">${escHtml(p.acceso)}</span><span class="m">Entrada: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>`;
   return `<div class="ficha ${on?'sel':''} ${catClase(p)}">
@@ -1365,7 +1375,7 @@ function renderGrid(f){
    <p class="nota">${escHtml(nota)}</p>
    <div class="aval${v?' aval-local':''}">${v?'':escudoSVG}<span>${escHtml(aval)}</span></div>
    ${marcas}
-   <div class="ficha-pie"><span class="verif">${v?'':' '+okSVG}${v?'Revisión local '+escHtml(v.verificadoEl):' Verificado '+escHtml(fCorta(p.ver))}</span>
+   <div class="ficha-pie"><span class="verif">${v?'':' '+okSVG}${v?'Revisión editorial '+escHtml(v.verificadoEl):' Verificado '+escHtml(fCorta(p.ver))}</span>
     <button class="cmp ${on?'on':''}" data-comparar="${i}" aria-pressed="${on?'true':'false'}">${on?'✓ Comparando':'+ Comparar'}</button>
     <button class="movil-ficha-abrir" data-abrir="${i}">Ver ficha <span aria-hidden="true">›</span></button></div></div>`}).join('');
 }
@@ -1438,7 +1448,7 @@ function openDrawer(i){
   const accesoLocal=filas.find(fila=>fila.querySelector('dt')&&fila.querySelector('dt').textContent==='Quién puede entrar');
   if(accesoLocal){accesoLocal.querySelector('dt').textContent='Estado de acceso';accesoLocal.querySelector('dd').textContent=accesoVisible(p);}
   const revisionLocal=filas.find(fila=>fila.querySelector('dt')&&fila.querySelector('dt').textContent==='Última verificación');
-  if(revisionLocal){revisionLocal.querySelector('dt').textContent='Revisión local';revisionLocal.querySelector('dd').textContent=v.verificadoEl;}
+  if(revisionLocal){revisionLocal.querySelector('dt').textContent='Revisión editorial';revisionLocal.querySelector('dd').textContent=v.verificadoEl;}
  }
  const acciones=document.getElementById('dwAcciones');
  acciones.classList.toggle('sin-web',!web);
@@ -1977,7 +1987,9 @@ pintarDescartadas();
 /* ---- CSV ---- */
 function downloadCSV(){
  const h=['Estado','Nombre','Categoria','Tipo','Region','Cadenas','Entrada','Acceso','Web','Descripcion','Por que','Fuentes'];
- const inR=P.map(p=>['En el radar',p.n,p.cat,p.tipo,p.reg,p.cadenas,p.ticket,p.acceso,p.web,p.nota,p.aval,'']);
+ const inR=P.map(p=>{const v=p.verificacionLocal;return ['En el radar',p.n,p.cat,p.tipo,p.reg,p.cadenas,p.ticket,
+  accesoVisible(p),p.web,v?v.estadoOperativo.detalle:p.nota,v?v.licenciaRegistro.detalle:p.aval,
+  v?[...new Set(['estadoOperativo','licenciaRegistro','acceso'].flatMap(c=>(v[c].fuentes||[]).map(f=>urlHttps(f.url))).filter(Boolean))].join(' | '):''];});
  const outR=FUERA.map(f=>['Descartada',f.n,'','','','','','','','',f.badge+': '+f.why,
    (f.fuentes||[]).map(s=>s.url).join(' | ')]);
  const celda=v=>{let s=String(v==null?'':v);if(/^[\t\r\n ]*[=+\-@]/.test(s))s="'"+s;
