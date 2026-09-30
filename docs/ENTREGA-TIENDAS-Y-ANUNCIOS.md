@@ -1,23 +1,47 @@
 # Tiendas y anuncios: preparación de RWAdar
 
-Corte comprobado: 28/09/2026. La publicación web y la distribución Android
-directa se registran en `INTERNO.md`. Esta página no acredita alta ni revisión
-favorable en una tienda o red publicitaria.
+Corte actualizado: 30/09/2026. La publicación web y la distribución Android
+directa se registran en `INTERNO.md`. Esta página no acredita aprobación de
+RWAdar en una tienda o red publicitaria.
 
 ## Cuentas comprobadas
 
-- Google Play Console, cuenta `victorjorquesgranero@gmail.com`: la visita llevó
+- Google Play Console, cuenta `victorjorquesgranero@gmail.com`: la visita del 28/09 llevó
   a **Crear una cuenta de desarrollador**. No hay un panel de desarrollador
   operativo acreditado en esta cuenta. No se aceptaron contratos ni se pagó
   la inscripción.
-- AdMob, la misma cuenta: pantalla de alta, país de pago España y contrato con
-  Google Ireland Ltd. Condiciones de 2024 servidas en el alta. Se seleccionó
-  no recibir consejos personalizados. La casilla contractual no está aceptada
-  y se solicitó confirmación concreta al titular. El país de pago no se puede
-  cambiar después según la pantalla del proveedor.
+- AdMob: la lectura del 30/09, entre las 12:02 y 12:05 UTC, realizada por el chat coordinado en el Chrome
+  existente mostró una cuenta ya creada, saldo 0 EUR y «Configuración de pagos
+  incompleta». La vista Todas las aplicaciones mostraba «Añadir mi primera
+  aplicación»: RWAdar todavía no está registrada. No se creó una cuenta duplicada
+  ni se rellenaron datos, aceptaron contratos o activaron anuncios en esta lectura.
+  El corte del 28/09, con pantalla de alta y casilla contractual pendiente,
+  es evidencia histórica; no describe el estado actual de la cuenta. La
+  existencia del panel no acredita aprobación publicitaria, perfil completo
+  ni ingresos. Lectura del chat «Actualiza ofertas de RWAdar local», conservada
+  en `rwadar-contactos-2026-09-27/estado-admob-2026-09-30.md`. Es un registro
+  minimizado del resultado DOM, sin captura ni AX bruto con identificadores.
+  El intento de abrir «Solucionarlo» quedó en «Configurando facturación»;
+  no se obtuvo un formulario utilizable ni se atribuye una causa al aviso.
 
-Evidencia de alta en `rwadar-contactos-2026-09-27/admob-alta-pendiente.png`.
+Evidencia histórica de alta: `rwadar-contactos-2026-09-27/admob-alta-pendiente.png`.
 No hay ID de editor/app publicitario inventado, SDK de anuncios ni cobros activos.
+
+## Perfil y método de cobro
+
+El perfil de pagos inicial y el método bancario para recibir ingresos son
+pasos distintos. La [guía oficial de AdMob](https://support.google.com/admob/answer/15948559?hl=en),
+consultada el 30/09, exige completar la información de pagos antes de que la
+cuenta pueda monetizar y la app sea revisada para ello. La
+[tabla oficial de umbrales](https://support.google.com/admob/answer/2772208?hl=en)
+indica para EUR selección de método de pago a 10 EUR y pago a 70 EUR.
+Estos umbrales no sustituyen el perfil inicial ni garantizan ingresos; no se
+afirma que sea necesario introducir un banco antes de toda preparación técnica.
+
+La base local aislada en `rwadar-monetizacion/` prueba el control de activación
+y sus límites. No está importada por la app ni contiene una integración real
+del SDK. Sus pruebas no equivalen a consentimiento real, revisión de AdMob,
+anuncios servidos o ingresos.
 
 ## Ficha de tienda preparada
 

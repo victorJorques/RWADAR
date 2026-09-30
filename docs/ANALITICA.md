@@ -79,8 +79,11 @@ configuración del sitio de Web Analytics, sin eliminar el proyecto Pages.
 
 Web Analytics no muestra dinero. Si se aprueba AdSense para la web/PWA, los
 ingresos e impresiones se consultarán en AdSense. Si se publica la app nativa
-con AdMob, se consultarán en AdMob. Actualmente no hay una cuenta publicitaria
-verificada ni un SDK activo y no se han generado ingresos acreditados.
+con AdMob, se consultarán en AdMob. La lectura del 30/09 del chat coordinado
+mostró una cuenta AdMob existente con saldo 0 EUR, perfil de pagos incompleto
+y ninguna aplicación añadida. No acredita aprobación para monetizar RWAdar:
+no hay SDK publicitario activo ni ingresos acreditados. El estado del panel
+no debe confundirse con la pantalla de alta histórica del 28/09.
 
 Separar ingresos estimados, ingresos finalizados y pagos realmente recibidos.
 No usar visitas de Cloudflare para inventar impresiones, eCPM o beneficios.
