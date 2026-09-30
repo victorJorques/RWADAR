@@ -13,8 +13,8 @@
   "comisionVariableSobreInversion": false,
   "nota": "Lanzamiento público expresamente autorizado. Corte editorial gratuito con catálogo real de solo lectura, identidad completa, imágenes propias y analítica agregada web. Publicidad y cobros permanecen desactivados hasta completar la configuración y revisión comercial.",
   "revisionAprobada": {
-    "commit": "db65073e67128021db7757762eaeadbc026ffe87",
-    "contenidoSha256": "sha256:e6d50816e44159085e796429005d3031805f8d11a043324fe5e82c01c2fd30a4",
+    "commit": "1dd0445422826a63b156292ed13c50f71a228ca4",
+    "contenidoSha256": "sha256:8fa246a583090d27dee48f58967cea5bf9a34548708595dfddfffe1feac6568f",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
@@ -66,7 +66,7 @@
     },
     "catalogo_actual_y_citable": {
       "estado": "aprobado",
-      "detalle": "Revisión 1b910634-8d87-a657-33f7-63e22e28b6cc aprobada el 30/09/2026: 26 plataformas y 28 fichas documentadas con 52 referencias fechadas. Radar 28/09 y cifras 27/09 conservados; consultas nuevas de Spiko y DAKS separadas. Lote vigente hasta 05/10 inclusive. Borrador invisible para anon y REST completo comprobados.",
+      "detalle": "V2 2ce9cb15-465b-5b7d-707f-382c2b001f93 aprobada a las 10:13:26 UTC: 26 plataformas y 49 referencias documentadas, 24 principales, 21 secundarias y 4 en preparación. SQL anon, borrador invisible y sincronización REST real comprobados. V1 compatible 84e86962 reparada conserva 26/28 y fechas históricas. Radar 28/09 vigente hasta 05/10 inclusive.",
       "evidencias": [
         {
           "tipo": "fuente-primaria",
@@ -85,6 +85,12 @@
           "referencia": "docs/CORRECCION-OFERTAS-2026-09-30.md",
           "verificadoEl": "2026-09-30",
           "resumen": "Migración SQL aplicada y contrato comprobado: documentación conservada al caducar cifras, cero permisos de mutación, 26/28 reales y fuentes fechadas."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CATALOGO-V2-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "Lote real 26/49 y colecciones 24/21/4, Spiko ISIN y 13 destinos V2 comprobados. PGlite verifica exclusión de borradores y falta de retorno a lotes anteriores."
         }
       ]
     },
@@ -101,8 +107,8 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "aprobado",
-      "detalle": "Corrección web del 30/09 validada en preview c0e96231: 54/54 recursos, catálogo26/28, detalles con fuentes, filtros, búsqueda y diálogos a1280/390/320px sin errores de consola. npm test completo aprobado con329web y74móvil. El APK público8 conserva su prueba de instalación previa; APK9 no se publicará hasta su propia prueba. Revocación declarada y limitación de evidencia histórica separadas de la beta.",
+      "estado": "en_progreso",
+      "detalle": "Candidato V2 sincronizado del servidor final y preparado con 49 referencias. Suite completa aprobada: 331 pruebas web y 84 móviles; tras reparar destinos, 331 web vuelven a pasar. APK9 publicado con instalación real aprobada. El candidato web requiere preview de escritorio y móvil antes de producción. APK10 tiene CI de instalación independiente en curso. Revocación declarada y límites de evidencia histórica separados de la beta.",
       "evidencias": [
         {
           "tipo": "prueba",
@@ -133,6 +139,12 @@
           "referencia": "docs/CORRECCION-OFERTAS-2026-09-30.md",
           "verificadoEl": "2026-09-30",
           "resumen": "Preview web corregido verificado por HTTP y navegador en escritorio y móvil; suite completa aprobada. Nueva publicación Android se verifica por separado antes de sustituir APK8."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CATALOGO-V2-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "Pruebas locales y servidor final verificados. Preview V2 y publicación Android10 pendientes de navegación real; no se presentan como pruebas ya completadas."
         }
       ]
     },
