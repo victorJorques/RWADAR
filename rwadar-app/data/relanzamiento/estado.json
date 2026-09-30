@@ -108,7 +108,7 @@
     },
     "beta_segura_extremo_a_extremo": {
       "estado": "aprobado",
-      "detalle": "Preview final164c8c56 comprobado:54/54 recursos,49 referencias26 radar, fuentes corregidas, ordenación y diálogo móvil320px sin desbordar ni errores de consola. Revisión coordinada cubre escritorio/móvil390, filtros,búsqueda, academia,calculadora y legal. npm test341web84móvil; diez regresiones caducidad/fallo parcial. APK10 instalación y documentación final PASS en Android API35,run36703760962; límites del emulador y renderer registrados. Revocación declarada y evidencia histórica separadas.",
+      "detalle": "Producción final78977d11 y dominio canónico comprobados:54/54 recursos,49 referencias26 radar, fuentes corregidas, ordenación y diálogos móvil320/390px sin desbordar ni errores de consola observados. Revisión coordinada cubre los49diálogos, filtros,búsqueda, academia,calculadora y legal. npm test341web84móvil; diez regresiones caducidad/fallo parcial. APK10 instalado en Android API35,run36703760962 PASS, publicado y descargado anónimamente con bytes,checksum,firma y latest idénticos; límites del emulador y renderer registrados. Revocación declarada y evidencia histórica separadas.",
       "evidencias": [
         {
           "tipo": "prueba",
@@ -138,13 +138,19 @@
           "tipo": "prueba",
           "referencia": "docs/CORRECCION-OFERTAS-2026-09-30.md",
           "verificadoEl": "2026-09-30",
-          "resumen": "Preview web corregido verificado por HTTP y navegador en escritorio y móvil; suite completa aprobada. Nueva publicación Android se verifica por separado antes de sustituir APK8."
+          "resumen": "Evidencia de la etapa V1: preview corregido y pruebas aprobadas. El cierre posterior enlaza el catálogo V2 y APK10 publicados y comprobados por separado."
         },
         {
           "tipo": "prueba",
           "referencia": "docs/CATALOGO-V2-2026-09-30.md",
           "verificadoEl": "2026-09-30",
-          "resumen": "Preview definitivo164c8c56 comprobado por HTTP y navegador;341web84móviles. APK10 PASS final36703760962 con GreenPoint/Hausera y REST idéntico antes/después. Producción y descarga pública se verifican tras publicar."
+          "resumen": "Preview164c8c56 y producción78977d11 comprobados por HTTP54/54 y navegador;49fichas,341web84móviles. APK10 PASS final36703760962 con GreenPoint/Hausera y REST idéntico antes/después. Publicación y descarga anónima posterior comprobadas."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ANDROID-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "APK1.1.2/código10 publicado a las10:50:52UTC y descargado sin autenticación a las10:52:17UTC; misma huella y certificado que el binario ensayado. Distribución directa y emulador, sin atribuir tiendas ni dispositivo físico."
         }
       ]
     },
