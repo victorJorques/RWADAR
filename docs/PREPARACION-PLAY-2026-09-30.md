@@ -7,6 +7,34 @@ El inventario inicial corresponde al código inspeccionado en
 explicador se incorporó después en `a486c5c`, como se detalla al final. No se
 atribuye esa corrección al APK 8. Una nueva compilación requiere revisión.
 
+La distribución directa vigente ya es Android 1.1.2/versionCode10. La
+publicación, descarga anónima, firma y prueba de ese APK se documentan en
+`VERIFICACION-ANDROID-2026-09-30.md`. El inventario inicial siguiente se
+conserva como evidencia histórica; no acredita un AAB actual ni declaraciones
+enviadas a Play.
+
+## Recursos gráficos: criterios antes de declarar la ficha lista
+
+Requisitos contrastados el 30/09 en la
+[documentación oficial de recursos de vista previa](https://support.google.com/googleplay/android-developer/answer/9866151?hl=en):
+
+| Recurso | Requisito obligatorio |
+| --- | --- |
+| Icono de ficha | 512 × 512px, PNG de 32 bits con alfa, máximo 1024KB; diseño conforme a la especificación de Play |
+| Imagen de presentación | 1024 × 500px, JPEG o PNG de 24 bits sin alfa |
+| Capturas | Al menos dos; JPEG o PNG de 24 bits sin alfa, dimensiones entre 320 y 3840px; lado mayor como máximo dos veces el menor |
+
+La recomendación para promoción de apps es disponer de cuatro capturas de
+al menos 1080 × 1920px en vertical 9:16 o 1920 × 1080px en horizontal 16:9.
+Se distingue del mínimo obligatorio. Las capturas deben mostrar el uso real;
+no estirar, comprimir ni simular la interfaz. Añadir texto alternativo claro.
+
+El icono fuente de 1024px no es por sí solo el icono listo de Play. Las
+capturas reales conservadas de 1080 × 2400px incumplen la proporción máxima.
+La preparación local de recursos compatibles no cambia la app publicada.
+No se declara un paquete gráfico completo hasta comprobar los archivos
+generados y disponer de capturas válidas.
+
 ## Entrega que se ha examinado
 
 - Android `com.rwadar.app`, 1.1.0/versionCode 8, distribución directa APK.
