@@ -101,8 +101,8 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "en_progreso",
-      "detalle": "Versión del 28/09 validada en producción y APK8 instalado en emulador. Corrección del 30/09 en pruebas de preview y compilación APK9; no se presume verificación de esta entrega antes de finalizar. Revocación declarada por el titular y limitación de evidencia histórica separadas de las pruebas de la aplicación.",
+      "estado": "aprobado",
+      "detalle": "Corrección web del 30/09 validada en preview c0e96231: 54/54 recursos, catálogo26/28, detalles con fuentes, filtros, búsqueda y diálogos a1280/390/320px sin errores de consola. npm test completo aprobado con329web y74móvil. El APK público8 conserva su prueba de instalación previa; APK9 no se publicará hasta su propia prueba. Revocación declarada y limitación de evidencia histórica separadas de la beta.",
       "evidencias": [
         {
           "tipo": "prueba",
@@ -127,6 +127,12 @@
           "referencia": "rwadar-app/probar-catalogo-publico.mjs",
           "verificadoEl": "2026-09-27",
           "resumen": "70pruebas aisladas con defaults heredados y cierre de permisos, más verificación RESTreal de26/28 y4descartes documentados."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CORRECCION-OFERTAS-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "Preview web corregido verificado por HTTP y navegador en escritorio y móvil; suite completa aprobada. Nueva publicación Android se verifica por separado antes de sustituir APK8."
         }
       ]
     },

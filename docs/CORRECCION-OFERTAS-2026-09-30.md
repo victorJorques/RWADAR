@@ -39,8 +39,25 @@ Prueba la frontera de caducidad, la conservación documental y la desaparición
 de cifras, disponibilidad y puntuación vencidas; también el cierre del lote
 a ocho días. Las 76 pruebas anteriores del catálogo pasan.
 
-La revisión final de web, Android y publicación se incorpora al terminar sus
-comprobaciones. Este registro por sí solo no acredita un despliegue.
+`npm test` completo aprobado el 30/09 tras corregir las integraciones con los
+simuladores DOM: 329 pruebas web, 74 móviles y toda la cadena de base de datos,
+QR y herramientas. Log privado `pruebas-20260930-integradas.log`.
+El escaneo Gitleaks del árbol enumerado por Git terminó sin hallazgos.
+
+Preview `https://c0e96231.rwadar.pages.dev`, caché
+`rwadar-v-b5e379f4e13cdfbe`: HTTP54/54 recursos idénticos, CSP, 404 y
+redirecciones correctos. Navegador real: 28 fichas, detalles BOSS y Spiko con
+fechas y fuentes, filtro de fondos devuelve cinco, búsqueda Spiko devuelve una
+de 26 plataformas. Sin errores de consola observados. Escritorio1280px y
+móvil390/320px sin desbordamiento horizontal, incluido el diálogo.
+Capturas privadas `preview-oferta-escritorio-20260930.png` y
+`preview-oferta-movil-20260930.png`.
+
+Android1.1.1/código9 está compilándose desde
+`a486c5cc481daccc1294d8cba8a773f9dd4314f6`, build EAS
+`eebe0939-e987-4184-909a-c68656538ae4`. Todavía no se declara probado o publicado
+ese binario. La publicación nativa existente sigue siendo1.1.0/código8.
+La comprobación de producción se incorpora al terminar su despliegue.
 
 Los avisos de seguridad de Supabase siguen limitados a configuración anterior:
 tablas internas cerradas sin políticas, pg_net en public y protección contra
