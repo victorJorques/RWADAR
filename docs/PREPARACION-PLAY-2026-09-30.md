@@ -29,11 +29,59 @@ al menos 1080 × 1920px en vertical 9:16 o 1920 × 1080px en horizontal 16:9.
 Se distingue del mínimo obligatorio. Las capturas deben mostrar el uso real;
 no estirar, comprimir ni simular la interfaz. Añadir texto alternativo claro.
 
-El icono fuente de 1024px no es por sí solo el icono listo de Play. Las
-capturas reales conservadas de 1080 × 2400px incumplen la proporción máxima.
-La preparación local de recursos compatibles no cambia la app publicada.
-No se declara un paquete gráfico completo hasta comprobar los archivos
-generados y disponer de capturas válidas.
+El icono fuente de 1024px no es por sí solo el icono listo de Play. Las capturas
+anteriores de 1080 × 2400px incumplen la proporción máxima; no se estiraron ni
+recortaron. El mismo APK vigente se volvió a capturar en un AVD configurado a
+1080 × 1920px, como se detalla debajo. Preparar recursos compatibles no cambia
+la app publicada ni acredita aprobación de la ficha por Google.
+
+## Cuatro capturas reales del APK vigente
+
+El [run de capturas 36716353398](https://github.com/victorJorques/RWAdar-downloads/actions/runs/36716353398)
+terminó correctamente el 30/09 a las 12:43:48 UTC. Workflow y head
+`73b79cf91c256ae6b0929d3091b2ae9fc18163af`; configuración SHA256
+`ca1d4a1dd5732595f56992e03eabc7dae44053535d6239ba070680fa399cd6df`.
+Descargó el APK público 1.1.2/código 10 y comprobó sus 85.274.516 bytes,
+SHA256 `0e06d6c4f8e32048fc761b8630467dd91b5a57940f577263571c7915fdd5b574`,
+certificado, firma V2, paquete, SDK y cuatro permisos exactos antes de instalar.
+No compiló otra versión de RWAdar ni modificó release, latest, SQL o anuncios.
+
+El emulador API 35 usó el perfil Pixel 2 con tamaño físico 1080×1920, sin
+override. Las cuatro imágenes proceden de `adb screencap`: radar con 26
+plataformas, catálogo principal con 24 fichas, secundario con 21 y detalle
+de Miami 1. El catálogo mostraba 26/49 y grupos 24/21/4, sin fallback V1
+o copia local. En el detalle se ven 14,88 %, fecha del dato 28/09,
+consulta 30/09 y el aviso de cifras históricas. No se
+atribuyen esas cifras a un precio o una oportunidad actual.
+
+Cada original RGBA8 tenía alfa 255 en todos los píxeles. La conversión a PNG
+RGB8 conservó los canales RGB y comprobó igualdad al decodificar de nuevo;
+no escaló, recortó, compuso ni añadió texto. Un decodificador independiente
+confirmó los hashes RGB. El integrador inspeccionó visualmente las cuatro
+imágenes antes de entregarlas al responsable del paquete gráfico.
+
+| PNG 1080×1920 RGB8 | Bytes | SHA256 |
+| --- | --- | --- |
+| `01-radar.png` | 209311 | `c0250a7f5952b291ce3651f9b770c8c93cdd5cd37b711697af00214840ce0d3f` |
+| `02-principales.png` | 835006 | `2779bab868cc6ba7226f93571c2bd3ba6e39a64b7e2c5c713a97dac8e03719a5` |
+| `03-secundario.png` | 885350 | `519e6104e10f3095fef60cd5b4dee4efff6af8e2330acb6adbfec9ff1a8a4fa4` |
+| `04-detalle-fechado.png` | 145492 | `aa00a5695d518cd6c236de3c0a2dde63a087fb28c1fff276d9ef21e7cfce81e4` |
+
+El artefacto contiene únicamente cuatro PNG, cuatro XML y manifiesto: nueve
+archivos. ZIP verificado el 30/09 a las 12:45:02 UTC, 2.060.488 bytes, SHA256
+`024af0e111d5378dd849385e8ef5614123637faa05269300b95803fbab1a3521`,
+retención de 1 día y límite de 10 MiB. Copia privada conservada en
+`rwadar-capturas-play-112-20260930/run-36716353398`; comprobaciones en
+`verified-run-36716353398.json` de la carpeta padre. No incluye APK, claves,
+originales RGBA, fuente privada o logs completos. El workflow genérico y sus
+logs estándar son públicos en el repositorio separado de distribución.
+
+Este PASS tiene alcance de capturas, no reemplaza el ensayo completo de
+lanzamiento 36703760962. No abrió explicador, enlaces externos, cuentas o
+acciones comerciales; no acredita dispositivo físico, AAB ni publicación
+en Play. No se activó gasto ni se amplió cuota: runner estándar público y
+artefacto pequeño de un día. La cuota compartida libre de la cuenta no fue
+comprobada, por lo que no se afirma coste total cero.
 
 ## Entrega que se ha examinado
 
@@ -117,15 +165,30 @@ titular no basta para decidir que RWAdar puede usar cuenta personal. Tampoco
 se concluye aquí que un directorio editorial sea necesariamente un proveedor
 financiero regulado: son clasificaciones distintas que hay que resolver.
 
+La revisión focalizada del 30/09 de los requisitos, la política financiera y
+la declaración no encontró una mención expresa a directorios editoriales ni
+una excepción por gratuidad o ausencia de custodia. Mostrar activos y enlazar
+al proveedor puede entrar en el alcance de promoción de productos; es una
+inferencia, no una clasificación aprobada por Google. La regla de tipo de
+cuenta y la casilla de funciones financieras son decisiones separadas.
+
 Texto preparado para una consulta a soporte, **no enviado**:
 
-> RWAdar es un directorio editorial gratuito de plataformas y referencias de
-> activos tokenizados. Publica fuentes, fechas y riesgos, ofrece búsqueda y
-> favoritos locales y abre las webs de terceros. No abre cuentas de inversión,
-> recibe fondos, ejecuta órdenes, custodia activos ni da recomendaciones
-> personalizadas. Prevemos publicidad identificada, no comisiones de inversión
-> en esta versión. ¿Qué tipo de cuenta y categoría de funciones financieras
-> corresponden a este alcance, y se exige una cuenta de organización?
+> RWAdar, mantenido por una persona física en España, es un directorio editorial
+> gratuito de plataformas y referencias de activos tokenizados. Presenta
+> fuentes, fechas y riesgos, permite búsqueda y favoritos locales y abre
+> enlaces a webs de terceros. No abre cuentas de inversión, recibe fondos,
+> ejecuta órdenes, custodia activos ni ofrece recomendaciones personalizadas.
+> La versión actual no incluye publicidad; prevemos incorporarla identificada
+> en el futuro.
+>
+> Para este alcance actual, ¿Google Play exige cuenta de organización conforme
+> al apartado 1.1 de Play Console Requirements, o permite cuenta personal?
+>
+> ¿Qué opciones de Financial features debemos declarar: Other, ausencia de
+> funciones financieras u otra categoría concreta? Si exige organización,
+> ¿qué documentación de identidad corresponde al titular que opera como
+> persona física en España?
 
 Todas las apps deben completar la
 [declaración de funciones financieras](https://support.google.com/googleplay/android-developer/answer/13849271?hl=en).
@@ -217,9 +280,11 @@ del navegador y se cerró la pestaña de prueba. No hay capturas guardadas en
 este expediente.
 
 Estas comprobaciones prueban la corrección local y sus interacciones en
-navegador. **Quedan pendientes su instalación y recorrido en el nuevo APK**,
-incluida la ruta sin red. El proceso EAS
+navegador. En aquel corte quedaban pendientes la instalación y el recorrido
+del nuevo APK, incluida la ruta sin red. El proceso EAS
 `eebe0939-e987-4184-909a-c68656538ae4` se encontraba `IN_PROGRESS` para
-1.1.1/versionCode 9 al cerrar este registro; no se declara publicado ni aprobado
-por Google Play. El hilo que integra el lanzamiento conserva la responsabilidad
-de comprobar el binario, distribuirlo y actualizar el estado canónico.
+1.1.1/versionCode 9; ese estado es histórico. El APK 1.1.2/código 10 vigente
+ya se instaló y recorrió, incluido el explicador y su retorno, como registra
+`VERIFICACION-ANDROID-2026-09-30.md` con sus límites. No se atribuye a ese
+ensayo una prueba sin red o una aprobación de Play. El estado vigente de
+distribución está en `INTERNO.md`.
