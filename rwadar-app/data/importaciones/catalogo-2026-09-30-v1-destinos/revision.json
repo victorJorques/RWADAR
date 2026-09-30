@@ -1,7 +1,7 @@
 {
   "versionEsquema": 1,
-  "revisionId": "84e86962-d71a-5d70-4973-a7a35721a57a",
-  "hash": "84e86962d71a5d704973a7a35721a57a96640f10116ea56cbdb3766df49b9d53",
+  "revisionId": "a8360ce0-9469-6e6b-a6e3-ff36963284aa",
+  "hash": "a8360ce094696e6ba6e3ff36963284aa017c41936387bb95b7436373b3941f42",
   "fechaRadar": "2026-09-28",
   "revisionAnterior": "1b910634-8d87-a657-33f7-63e22e28b6cc",
   "plataformas": 26,
@@ -115,5 +115,97 @@
     "campo": "plataformaNombre",
     "valor": "Alius Capital",
     "motivo": "Retirar atribución regulatoria PSFP/CNMV sin fuente primaria confirmada; no altera condiciones ni radar."
-  }
+  },
+  "revisionFuentesAnterior": "84e86962-d71a-5d70-4973-a7a35721a57a",
+  "reparacionFuentes": [
+    {
+      "slug": "caribe-1",
+      "destino": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+      "localizadorHistorico": "https://app.reental.co/dashboard/properties/8befd7a6-692f-404d-9fb8-d48fab2a74ca",
+      "retiradas": []
+    },
+    {
+      "slug": "caribe-2",
+      "destino": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+      "localizadorHistorico": "https://app.reental.co/dashboard/properties/10c30adb-542d-4f40-ab89-6c1f1474e5b7",
+      "retiradas": []
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A38J32",
+      "retiradas": [
+        "https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details"
+      ]
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A38J40",
+      "retiradas": []
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0",
+      "retiradas": []
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89",
+      "retiradas": []
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A324B4",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5",
+      "retiradas": []
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7",
+      "retiradas": []
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84",
+      "retiradas": []
+    }
+  ],
+  "sqlBytes": 188015,
+  "sqlCaracteres": 187185,
+  "sqlSha256": "06823c6ad7fefc3874ff71225d5f7a9201cdec4e25e34161a941666493b47dca"
 }

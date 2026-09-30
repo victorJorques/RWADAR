@@ -365,7 +365,7 @@ new Function(web);
 paso('el cliente compila y cierra el catálogo embebido caduco antes de renderizar',
   /function comprobarCatalogoEmbebido\(\)/.test(web) &&
   /edad<0\|\|edad>7/.test(web) && /P\.length=0;EMI\.length=0/.test(web) &&
-  /catch\{comprobarCatalogoEmbebido\(\);refrescarDetalleOfertaAbierto\(\);pintarFiltrosEmision\(\);pintarEmisiones\(\);render\(\)\}/.test(web) &&
+  /catch\{refrescarVigenciaOfertas\(\)\}/.test(web) &&
   !/\/radar_publico\?select=\*|\/emisiones_publicas\?select=\*/.test(web));
 
 await db.exec('begin');

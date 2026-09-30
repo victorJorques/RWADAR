@@ -430,6 +430,7 @@ test('un modal público abierto actualiza su documento y se cierra al retirarse 
   assert.ok(!dialogo.innerHTML.includes(doc.descripcion));
   contexto.comprobarCatalogoEmbebido = () => { contexto.EMI.length = 0; contexto.CATALOGO_EMBEBIDO_BLOQUEADO = true; return false; };
   contexto.pintarFiltrosEmision = contexto.pintarEmisiones = () => {};
+  contexto.pintarCierreCatalogo = () => {}; // El DOM completo del radar se ensaya en probar-web.mjs.
   cargarFuncionesWeb(contexto, ['refrescarVigenciaOfertas']);
   contexto.refrescarVigenciaOfertas();
   assert.equal(dialogo.open, false);
@@ -591,6 +592,7 @@ test('V2 cierra un detalle secundario y vacía todos los grupos al vencer el lot
   assert.equal(dialogo.open, true);
   contexto.Date = class extends Date { constructor(...args) { super(...(args.length ? args : ['2026-09-29T00:00:00Z'])); } };
   contexto.pintarFiltrosEmision = () => {};
+  contexto.pintarCierreCatalogo = () => {}; // El cierre del radar real se verifica en probar-web.mjs.
   cargarFuncionesWeb(contexto, ['refrescarVigenciaOfertas']);
   contexto.refrescarVigenciaOfertas();
   assert.equal(contexto.P.length, 0); assert.equal(contexto.EMI.length, 0);
@@ -623,7 +625,8 @@ test('una recarga web V2 parcial retira los tres grupos y el diálogo, sin consu
       : url.includes('/catalogo_ofertas_publicas_v2') ? lote.ofertas.slice(0, -1) : [{}, {}, {}, {}];
     return { ok: true, json: async () => data };
   };
-  cargarFuncionesWeb(contexto, ['alDia']);
+  contexto.pintarCierreCatalogo = contexto.pintarFiltrosEmision = () => {};
+  cargarFuncionesWeb(contexto, ['alDia', 'refrescarVigenciaOfertas']);
   await assert.rejects(() => contexto.alDia(), /incompleto/);
   assert.ok(rutas.some(url => url.includes('/catalogo_ofertas_publicas_v2?')));
   assert.ok(rutas.every(url => !/catalogo_(?:plataformas|ofertas)_publicas\?/.test(url)));

@@ -1574,7 +1574,7 @@ prueba('el catálogo remoto exige vistas V2 y manifiesto completo, sin volver a 
 prueba('el snapshot V2 caducado falla cerrado incluso si la red devuelve vacío',
   /function comprobarCatalogoEmbebido\(\)/.test(js) && /edad<0\|\|edad>7/.test(js) &&
   /P\.length=0;EMI\.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true/.test(js) &&
-  /catch\{comprobarCatalogoEmbebido\(\);refrescarDetalleOfertaAbierto\(\);pintarFiltrosEmision\(\);pintarEmisiones\(\);render\(\)\}/.test(js));
+  /catch\{refrescarVigenciaOfertas\(\)\}/.test(js));
 
 const armazon = arrayConstante(sw, 'ARMAZON');
 const recursosCriticos = ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', rutaScriptApp, rutaAnalitica, estilos[0][1],
@@ -1738,6 +1738,93 @@ prueba('el simulador real conserva URL HTTPS, las 26 plataformas y las 49 refere
   (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === 26 &&
   (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === 49 &&
   (simulacionPublicador.capturado.emiLista.match(/Referencia documentada/g) || []).length === 49);
+// Ejecutar el cliente entero, con un reloj y un DOM persistentes como los de
+// una pestaña abierta. No se sustituye la validación ni el render del catálogo.
+function pestanaCatalogo() {
+  const prefijo = publicador.slice(inicioSimulador, publicador.indexOf('vm.createContext(contexto);', inicioSimulador));
+  const { contexto, nodo } = vm.runInNewContext(prefijo + '\n({contexto,nodo});', { URL, console });
+  const nodos = new Map(), escuchas = new Map(), tiempos = [];
+  let instante = Date.parse('2026-09-30T12:00:00Z');
+  contexto.Date = class extends Date {
+    constructor(...args) { super(...(args.length ? args : [instante])); }
+    static now() { return instante; }
+  };
+  function obtiene(id) {
+    if (id === 'gl') return null;
+    if (!nodos.has(id)) {
+      const el = nodo(id), clases = new Set(), atributos = new Map();
+      Object.assign(el, {
+        classList: { add(...xs) { xs.forEach(x => clases.add(x)); }, remove(...xs) { xs.forEach(x => clases.delete(x)); },
+          contains(x) { return clases.has(x); }, toggle(x, forzar) { const on = forzar ?? !clases.has(x); on ? clases.add(x) : clases.delete(x); return on; } },
+        setAttribute(k,v) { atributos.set(k,String(v)); }, getAttribute(k) { return atributos.get(k); },
+        removeAttribute(k) { atributos.delete(k); }, hasAttribute(k) { return atributos.has(k); },
+        showModal() { el.open = true; }, close() { el.open = false; },
+        options: [{value:''}], add(o) { el.options.push(o); }, remove(i) { el.options.splice(i,1); },
+        querySelector(s) { return id==='radarLee'&&['.rl-dato','.rl-vacio'].includes(s)?obtiene(id+s):null; },
+        addEventListener(evento, fn) { const k=id+':'+evento;if(!escuchas.has(k))escuchas.set(k,[]);escuchas.get(k).push(fn); },
+      });
+      nodos.set(id, el);
+    }
+    return nodos.get(id);
+  }
+  contexto.document.getElementById = obtiene;
+  contexto.document.body = obtiene('body');
+  contexto.document.contains = () => false;
+  contexto.document.addEventListener = (evento, fn) => { if (!escuchas.has(evento)) escuchas.set(evento,[]); escuchas.get(evento).push(fn); };
+  contexto.Option = function(text, value) { this.text=text; this.value=value; };
+  contexto.setTimeout = (fn, demora) => { tiempos.push({fn,demora}); return tiempos.length; };
+  contexto.location = {href:'https://rwadar.pages.dev/'};
+  contexto.history = {state:null, pushState(state) { this.state=state; }, back() { this.state=null; }};
+  vm.createContext(contexto);
+  vm.runInContext(js, contexto, {timeout:20000});
+  return {contexto, obtiene, escuchas, tiempos, reloj(valor) { instante = Date.parse(valor); }};
+}
+for (const causa of ['medianoche','reactivacion','consulta-limitada']) {
+  const p = pestanaCatalogo(), c = p.contexto;
+  const corte = vm.runInContext("new Date(Date.parse(P[0].verificado_lote_el+'T00:00:00Z')+(P[0].vigencia_lote_dias+1)*86400000).toISOString()", c);
+  p.reloj(new Date(Date.parse(corte)-50).toISOString());
+  vm.runInContext("setView('matrix');setView('grid');compare=[0,1];openDrawer(0);openCompare();abrirDetalleOfertaLocal(EMI[0].slug);programarRevisionVigenciaOfertas();ultimaMirada=Date.now();", c);
+  p.escuchas.get('radarHero:focusin').forEach(fn=>fn({target:{closest:()=>({dataset:{i:'0'}})}}));
+  prueba(`pestaña ${causa}: radar, matriz y detalles contienen el lote antes del vencimiento`,
+    /data-abrir=/.test(p.obtiene('grid').innerHTML) && /data-abrir=/.test(p.obtiene('matrix').innerHTML) &&
+    p.obtiene('modalBody').innerHTML.length > 100 && p.obtiene('escaparateDetalleLocal').open &&
+    p.obtiene('rlNom').textContent.length>0 && p.obtiene('radarLee.rl-dato').hidden===false);
+  p.reloj(corte);
+  if (causa === 'medianoche') p.tiempos.at(-1).fn();
+  else if (causa === 'reactivacion') p.escuchas.get('visibilitychange').forEach(fn => fn());
+  else await vm.runInContext('mirar()', c);
+  prueba(`pestaña ${causa}: caducidad retira radar, vistas, filtros, contadores y todos los detalles sin red`,
+    vm.runInContext('P.length===0&&EMI.length===0&&compare.length===0&&CATALOGO_EMBEBIDO_BLOQUEADO',c) &&
+    !/data-abrir=/.test(p.obtiene('grid').innerHTML+p.obtiene('matrix').innerHTML) &&
+    !/class="blip"/.test(p.obtiene('radarHero').innerHTML) &&
+    p.obtiene('rlNom').textContent==='' && p.obtiene('rlMeta').textContent==='' && p.obtiene('radarLee.rl-dato').hidden===true &&
+    p.obtiene('s1').textContent==='0' && p.obtiene('s3').textContent==='0' &&
+    p.obtiene('rlTotal').textContent.startsWith('0 plataformas') && p.obtiene('fReg').options.length===1 &&
+    !p.obtiene('modal').classList.contains('show') && !p.obtiene('drawer').classList.contains('show') &&
+    ['modalBody','dwBody','dwAcciones'].every(id=>p.obtiene(id).innerHTML==='') &&
+    !p.obtiene('escaparateDetalleLocal').open && p.obtiene('escaparateDetalleLocal').innerHTML==='' &&
+    !/data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML) &&
+    p.obtiene('movilOfertasEstado').textContent==='Catálogo no disponible');
+}
+for (const vacia of ['plataformas','ofertas']) {
+  const p=pestanaCatalogo(), c=p.contexto;
+  c.fetch=async url=>{const ok=url.includes('catalogo_'+vacia+'_');return{ok,status:ok?200:500,json:async()=>[]};};
+  const error=await capturaError(vm.runInContext('alDia()',c));
+  prueba(`una vista ${vacia} vacía con otra HTTP 500 retira el lote completo y el DOM`, Boolean(error) &&
+    vm.runInContext('CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===0&&EMI.length===0',c) &&
+    !/data-abrir=/.test(p.obtiene('grid').innerHTML) && !/data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML));
+}
+{
+  const p=pestanaCatalogo(), c=p.contexto;
+  c.fetch=async()=>({ok:false,status:500});
+  const error=await capturaError(vm.runInContext('alDia()',c));
+  prueba('un fallo de transporte aislado conserva solo el lote completo que todavía está vigente', Boolean(error) &&
+    vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===26&&EMI.length===49',c));
+}
+prueba('las etiquetas públicas de ordenación describen los comparadores documentales reales',
+  /value="cierra">Frescura y revisión/.test(html) && /value="rent">Cifra de rentabilidad/.test(html) &&
+  /value="min">Entrada o precio/.test(html) && /value="az">Empresa y nombre/.test(html) &&
+  !/Lo que cierra antes|Más avanzada/.test(html));
 prueba('el publicador usa ComSpec en Windows y evita el EINVAL de ejecutar npx.cmd directamente',
   /process\.env\.ComSpec \|\| 'cmd\.exe'/.test(publicador) &&
   /\['\/d', '\/s', '\/c', 'npx\.cmd'\]/.test(publicador) &&

@@ -1,0 +1,95 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "06abe207-0b5d-9918-5c48-ca647c013bd5",
+  "hash": "06abe2070b5d99185c48ca647c013bd517fdfeb42688ee161a1470503954ba3e",
+  "revisionFuentesAnterior": "2ce9cb15-465b-5b7d-707f-382c2b001f93",
+  "fechaRadar": "2026-09-28",
+  "plataformas": 26,
+  "ofertas": 49,
+  "estado": "borrador",
+  "reparacionFuentes": [
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A38J32",
+      "retiradas": [
+        "https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details"
+      ]
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A38J40",
+      "retiradas": []
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0",
+      "retiradas": []
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89",
+      "retiradas": []
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A324B4",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5",
+      "retiradas": []
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3",
+      "retiradas": []
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7",
+      "retiradas": []
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "destino": "https://app.brickwise.at/desktopWeb/marketplace",
+      "localizadorHistorico": "https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84",
+      "retiradas": []
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "destino": "https://hausera.io/",
+      "localizadorHistorico": "https://www.hausera.com/",
+      "retiradas": []
+    }
+  ],
+  "sqlBytes": 332137,
+  "sqlCaracteres": 330716,
+  "sqlSha256": "9270ad2d8e22234faf846eb4b9819144aebd0e0535ae55709351e5ffe0146116"
+}

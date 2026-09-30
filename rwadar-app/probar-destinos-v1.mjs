@@ -24,7 +24,8 @@ for (const o of fuentes.escaparate.ofertas) {
     'disponibleEs', 'puntuacion', 'estadoRevision']) {
     assert.deepEqual(o[clave], anterior[clave], `${o.slug}: no renovar ${clave} al reparar un enlace`);
   }
-  assert.deepEqual(o.documentacion.referencias.filter(r => r.etiqueta !== 'Destino de consulta'),
+  assert.deepEqual(o.documentacion.referencias.filter(r => r.etiqueta !== 'Destino de consulta')
+    .map(r => ({ ...r, alcance: r.alcance.split(' Localizador histórico ')[0] })),
     anterior.referencias, `${o.slug}: referencias financieras y fechas históricas preservadas`);
 }
 for (const cambio of manifiesto.cambios) {

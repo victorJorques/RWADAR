@@ -51,7 +51,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.reental.co/dashboard/properties/8befd7a6-692f-404d-9fb8-d48fab2a74ca (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -107,7 +107,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.reental.co/dashboard/properties/10c30adb-542d-4f40-ab89-6c1f1474e5b7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -203,8 +203,7 @@
     "revisadaEl": "2026-09-30",
     "descripcion": "Instalación fotovoltaica GreenPoint, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
-      "https://app.brickwise.at/desktopWeb/marketplace",
-      "https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details"
+      "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
       {
@@ -227,7 +226,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -235,7 +234,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -243,7 +242,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura. Localizador histórico https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -274,7 +273,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -282,7 +281,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -290,7 +289,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -321,7 +320,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -329,7 +328,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -337,7 +336,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -368,7 +367,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Importe mínimo total anunciado en la tarjeta individual, no precio por participación. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Importe mínimo total anunciado en la tarjeta individual, no precio por participación. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -376,7 +375,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -384,7 +383,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -415,7 +414,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -423,7 +422,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -431,7 +430,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -462,7 +461,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -470,7 +469,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -478,7 +477,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -509,7 +508,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -517,7 +516,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -525,7 +524,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -556,7 +555,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -564,7 +563,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -572,7 +571,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -603,7 +602,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -611,7 +610,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -619,7 +618,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -650,7 +649,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -658,7 +657,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -666,7 +665,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -697,7 +696,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -705,7 +704,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -713,7 +712,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
@@ -841,7 +840,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Distribución anual prevista anunciada",
@@ -849,7 +848,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       },
       {
         "etiqueta": "Destino de consulta",
@@ -857,7 +856,7 @@
         "fechaDato": null,
         "fechaConsulta": "2026-09-30",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
       }
     ]
   },
