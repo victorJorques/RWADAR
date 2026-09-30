@@ -107,8 +107,8 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "en_progreso",
-      "detalle": "Candidato V2 definitivo sincronizado del servidor y generado con49 referencias. npm test final aprobado:341 web y84 móviles, incluidas regresiones de caducidad y respuesta vacía con fallo parcial. Gitleaks sin hallazgos en473 archivos. APK9 publicado y probado; APK10 pasó su instalación y recorrido inicial, con ensayo documental final en curso. Nuevo preview web pendiente antes de producción. Revocación declarada y límites de evidencia histórica separados de la beta.",
+      "estado": "aprobado",
+      "detalle": "Preview final164c8c56 comprobado:54/54 recursos,49 referencias26 radar, fuentes corregidas, ordenación y diálogo móvil320px sin desbordar ni errores de consola. Revisión coordinada cubre escritorio/móvil390, filtros,búsqueda, academia,calculadora y legal. npm test341web84móvil; diez regresiones caducidad/fallo parcial. APK10 instalación y documentación final PASS en Android API35,run36703760962; límites del emulador y renderer registrados. Revocación declarada y evidencia histórica separadas.",
       "evidencias": [
         {
           "tipo": "prueba",
@@ -144,7 +144,7 @@
           "tipo": "prueba",
           "referencia": "docs/CATALOGO-V2-2026-09-30.md",
           "verificadoEl": "2026-09-30",
-          "resumen": "Pruebas locales y servidor final verificados. Preview V2 y publicación Android10 pendientes de navegación real; no se presentan como pruebas ya completadas."
+          "resumen": "Preview definitivo164c8c56 comprobado por HTTP y navegador;341web84móviles. APK10 PASS final36703760962 con GreenPoint/Hausera y REST idéntico antes/después. Producción y descarga pública se verifican tras publicar."
         }
       ]
     },
