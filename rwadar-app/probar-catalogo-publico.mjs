@@ -31,7 +31,7 @@ const astWeb = parse(web, { ecmaVersion: 2024, sourceType: 'script' });
 const dependencias = ['CATMETA', 'urlHttps', 'textoDato', 'numeroRemoto',
   'booleanoOpcional', 'cifraCatalogoRemota', 'ofertaCatalogoRemota', 'fechaLocalValida',
   'fechaOfertaPublicaValida', 'validarRevisionCatalogo', 'validarLoteCatalogoRemoto',
-  'textoLocal', 'imagenOfertaLocal', 'ofertaLocalValida', 'EDITORIAL_OFERTA_POR_CATEGORIA',
+  'textoLocal', 'imagenOfertaLocal', 'ofertaLocalValida', 'documentacionOfertaLocal', 'EDITORIAL_OFERTA_POR_CATEGORIA',
   'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal',
   'validarVerificacionLocal', 'comprobarCatalogoEmbebido'];
 const lector = dependencias.map(nombre => {
@@ -209,6 +209,23 @@ const apiPlataformas = serializaApi(plataformas).map(p => ({
 const apiOfertas = serializaApi(ofertas).map(o => ({
   ...o, verificada_el:String(o.verificada_el).slice(0, 10),
 }));
+const documentacionApi = { revisadaEl: fechaPrueba,
+  descripcion: 'Documentación estable que debe sobrevivir al lector remoto del navegador.',
+  fuentes: [apiOfertas[0].fuentes_actuales[0]],
+  caracteristicas: [{ etiqueta: 'Activo', valor: 'Referencia documental' }],
+  referencias: [{ etiqueta: 'Precio histórico', valor: '54,20 CHF', fechaDato: null,
+    fechaConsulta: fechaPrueba, fuente: apiOfertas[0].fuentes_actuales[0],
+    alcance: 'Observación documental; no es una cotización actual.' }] };
+const ofertaDocumentada = normalizarCliente({ ...apiOfertas[0], documentacion: documentacionApi }, fechaPrueba);
+paso('el normalizador web conserva documentación tipada sin perderla en una recarga REST',
+  JSON.stringify(ofertaDocumentada.documentacion) === JSON.stringify(documentacionApi) &&
+  ofertaDocumentada.documentacion !== documentacionApi &&
+  ofertaDocumentada.documentacion.referencias[0] !== documentacionApi.referencias[0]);
+for (const cambio of [{ descripcion: 'incompleta' }, { fuentes: ['javascript:alert(1)'] }, { referencias: [{}] }]) {
+  assert.throws(() => normalizarCliente({ ...apiOfertas[0], documentacion: { ...documentacionApi, ...cambio } }, fechaPrueba),
+    /documentación de oferta fuera del contrato público/);
+}
+paso('el normalizador web rechaza documentación remota presente pero inválida', true);
 paso('SQL expone una única identidad de revisión para las dos vistas',
   [...apiPlataformas, ...apiOfertas].every(x => x.revision_id === generado.revisionId));
 paso('el lector web valida la identidad de revisión y la fecha del radar',
@@ -347,7 +364,7 @@ new Function(web);
 paso('el cliente compila y cierra el catálogo embebido caduco antes de renderizar',
   /function comprobarCatalogoEmbebido\(\)/.test(web) &&
   /edad<0\|\|edad>7/.test(web) && /P\.length=0;EMI\.length=0/.test(web) &&
-  /catch\{comprobarCatalogoEmbebido\(\);pintarFiltrosEmision\(\);pintarEmisiones\(\);render\(\)\}/.test(web) &&
+  /catch\{comprobarCatalogoEmbebido\(\);refrescarDetalleOfertaAbierto\(\);pintarFiltrosEmision\(\);pintarEmisiones\(\);render\(\)\}/.test(web) &&
   !/\/radar_publico\?select=\*|\/emisiones_publicas\?select=\*/.test(web));
 
 await db.exec('begin');

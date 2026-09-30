@@ -20,7 +20,16 @@ function cargarModulo(ruta, mocks = {}, contexto = {}) {
   }, ...Object.values(contexto));
   return modulo.exports;
 }
-const movil = cargarModulo('lib/verificacion-local.js');
+const movil = cargarModulo('lib/verificacion-local.js', {
+  './contrato-catalogo': require('../lib/contrato-catalogo'),
+});
+const datosMoviles = cargarModulo('lib/datos.js', {
+  '@react-native-async-storage/async-storage': {},
+  'react-native': { Platform: { OS: 'android' } },
+  './modo-local': { MODO_LOCAL: true, SERVICIOS_USUARIO_REMOTOS: false },
+  './verificacion-local': movil,
+  './catalogo-remoto': {},
+});
 const oferta = {
   slug: 'prueba-frescura', titulo: 'Oferta de prueba', plataformaNombre: 'Proveedor',
   tipo: 'rendimiento', categoria: 'Inmobiliario', imagen: 'ofertas/prueba.webp',
@@ -45,19 +54,34 @@ function cargarWeb(ahora) {
     constructor(...args) { super(...(args.length ? args : [ahora.getTime()])); }
     static now() { return ahora.getTime(); }
   }
-  const dialogo = { innerHTML: '', open: false, close() {}, showModal() {}, querySelector() {}, setAttribute() {} };
+  const atributos = {};
+  const dialogo = { innerHTML: '', open: false, close() { this.open = false; }, showModal() { this.open = true; }, querySelector() {},
+    setAttribute(nombre, valor) { atributos[nombre] = valor; }, getAttribute(nombre) { return atributos[nombre]; },
+    removeAttribute(nombre) { delete atributos[nombre]; } };
   const contexto = {
-    Date: FechaControlada, URL, emiOrden: 'rent', emiBusquedaLocal: '', emiTipoLocal: 'todos',
+    Date: FechaControlada, URL, emiOrden: 'rent', emiBusquedaLocal: '', emiTipoLocal: 'todos', MODO_LOCAL_SEGURO: true,
     ESCAPARATE_LOCAL: { ofertas: [oferta], secundario: [] },
     MANIFIESTO_EDITORIAL_LOCAL: { porCategoria: { Inmobiliario: { archivo: 'propia.webp', alt: 'Ilustración propia' } }, etiqueta: 'Ilustración editorial' },
     EDITORIAL_OFERTA_POR_CATEGORIA: { Inmobiliario: { src: '/propia.webp', alt: 'Ilustración propia' } },
-    CATMETA: { Inmobiliario: {} }, catClase: () => '', escHtml: (v) => String(v),
+    CATMETA: { Inmobiliario: {} }, catClase: () => '',
+    escHtml: (v) => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),
     fechaES: (v) => v, urlHttps: (v) => /^https:\/\//.test(v || '') ? v : '',
     document: { getElementById: () => dialogo, body: { classList: { add() {}, remove() {} } } },
   };
   vm.createContext(contexto);
   vm.runInContext(codigo.slice(inicio, fin), contexto);
   return { contexto, dialogo };
+}
+
+function cargarFuncionesWeb(contexto, nombres) {
+  const codigo = fs.readFileSync(path.join(RAIZ, '..', 'rwadar-site', 'assets', 'rwadar-20260820.js'), 'utf8');
+  const ast = babel.parseSync(codigo, { sourceType: 'script', babelrc: false, configFile: false });
+  for (const nombre of nombres) {
+    const nodo = ast.program.body.find(n => n.type === 'FunctionDeclaration' && n.id.name === nombre ||
+      n.type === 'VariableDeclaration' && n.declarations.some(d => d.id.name === nombre));
+    assert.ok(nodo, `función web real ${nombre}`);
+    vm.runInContext(codigo.slice(nodo.start, nodo.end), contexto);
+  }
 }
 
 test('web y móvil conservan el último día completo y retiran cifras al siguiente, aunque el lote siga vigente', () => {
@@ -72,7 +96,7 @@ test('web y móvil conservan el último día completo y retiran cifras al siguie
     assert.match(webVigente.tarjetaOfertaLocal(dato), /97,13/);
     assert.match(webVigente.tarjetaOfertaLocal(dato), /aria-label="Ver oferta en Proveedor · Oferta de prueba · Proveedor"/);
     assert.doesNotMatch(webCaducada.tarjetaOfertaLocal(dato), centinelas);
-    assert.match(webCaducada.tarjetaOfertaLocal(dato), /Pendiente de revisión/);
+    assert.match(webCaducada.tarjetaOfertaLocal(dato), /Consultar emisor/);
     assert.match(webCaducada.tarjetaOfertaLocal(dato), /aria-label="Consultar fuente · Oferta de prueba · Proveedor"/);
     assert.equal(movil.ofertaConCifrasVigentes(dato, caducada).precio, null);
   }
@@ -85,7 +109,7 @@ test('secundario y diálogo web no recuperan cifras vencidas desde métricas o r
   assert.doesNotMatch(contexto.filaSecundariaLocal(secundaria), centinelas);
   contexto.abrirDetalleOfertaLocal(oferta.slug);
   assert.doesNotMatch(dialogo.innerHTML, centinelas);
-  assert.match(dialogo.innerHTML, /Pendiente de revisión/);
+  assert.match(dialogo.innerHTML, /Consultar emisor/);
 });
 
 test('ambas superficies rechazan revisiones futuras, imposibles, sin TTL o con conflicto', () => {
@@ -136,12 +160,13 @@ test('una web abierta revisa las cifras a medianoche sin depender de una respues
     reloj.setTime(caducada.getTime());
     temporizador();
     assert.doesNotMatch(html, centinelas);
-    assert.match(html, /Pendiente de revisión/);
+    assert.match(html, /Consultar emisor/);
   }
 });
 
 function componentesMoviles(ahora, simulacion = {}) {
-  const crear = (type, props, ...children) => ({ type: typeof type === 'function' ? type.name : type, props, children });
+  const crear = (type, props, ...children) => typeof type === 'function' && type.name === 'FilaMetrica'
+    ? type(props) : { type: typeof type === 'function' ? type.name : type, props, children };
   class FechaControlada extends Date {
     constructor(...args) { super(...(args.length ? args : [ahora.getTime()])); }
   }
@@ -150,8 +175,8 @@ function componentesMoviles(ahora, simulacion = {}) {
     'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
     '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null },
-    '../lib/datos': { vigenciaOferta: () => ({ estado: 'vencida', etiqueta: 'Datos vencidos' }) },
-    '../lib/verificacion-local': { ofertaConCifrasVigentes: (o, fecha) => movil.ofertaConCifrasVigentes(o, fecha) },
+    '../lib/datos': datosMoviles,
+    '../lib/verificacion-local': movil,
     '../lib/tema': { C: {}, COLOR_CATEGORIA: {}, F: {}, R: {}, T: {}, UI: {}, iniciales: () => 'PR' },
   }, { Date: FechaControlada, setTimeout: simulacion.setTimeout || (() => 1), clearTimeout: simulacion.clearTimeout || (() => {}) });
 }
@@ -172,7 +197,8 @@ test('tarjeta, accesibilidad y detalle móvil ocultan precio/yield vencidos sin 
     for (const render of [componentes.FichaOferta, componentes.DetalleOferta]) {
       const texto = textoRenderizado(render({ oferta: dato }));
       assert.doesNotMatch(texto, centinelas);
-      assert.match(texto, /Pendiente de revisión/);
+      assert.match(texto, /Consultar emisor/);
+      assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo/);
     }
   }
   assert.deepEqual(oferta, original);
@@ -231,4 +257,233 @@ test('el detalle conserva acceso a fuentes fechadas cuando retira las cifras', (
   assert.ok(texto.includes(fuente));
   assert.match(texto, /contratación y el pago se realizan directamente con el proveedor/);
   assert.doesNotMatch(texto, centinelas);
+});
+
+test('una referencia del 27 de septiembre conserva su revisión documental el día 30 sin revivir cifras ni apertura', () => {
+  const ahora = new Date('2026-09-30T12:00:00Z');
+  const componentes = componentesMoviles(ahora);
+  const fuente = 'https://example.test/fuente-documental';
+  for (const estadoRevision of ['actual', 'no_verificable', 'fuentes_en_conflicto']) {
+    const dato = { ...oferta, verificadaEl: '2026-09-27', fuentesActuales: [fuente],
+      estadoRevision, permanente: true,
+      avisos: [{ tono: 'warn', texto: 'La inversión puede perder valor.' }] };
+    const original = structuredClone(dato);
+    const documentacion = movil.documentacionOferta(dato, ahora);
+    assert.equal(documentacion.fecha, '2026-09-27');
+    assert.deepEqual(documentacion.fuentes, [fuente]);
+    assert.equal(movil.cifrasOfertaVigentes(dato, ahora), false);
+    const sanitizada = movil.ofertaConCifrasVigentes(dato, ahora);
+    assert.equal(sanitizada.estadoRevision, estadoRevision);
+    assert.equal(sanitizada.verificadaEl, '2026-09-27');
+    assert.equal(sanitizada.vigenciaDias, 1);
+    assert.equal(sanitizada.disponibleEs, null);
+    for (const render of [componentes.FichaOferta, componentes.DetalleOferta]) {
+      const texto = textoRenderizado(render({ oferta: dato }));
+      assert.match(texto, /Referencia documentada · 27\/09\/2026/);
+      assert.match(texto, /Consultar emisor/);
+      assert.match(texto, /La inversión puede perder valor/);
+      assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo|Disponible desde España/);
+      assert.doesNotMatch(texto, centinelas);
+    }
+    const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
+    assert.ok(detalle.includes(fuente));
+    assert.match(detalle, /Disponibilidad desde España sin comprobar/);
+    if (estadoRevision === 'no_verificable') assert.match(detalle, /Apertura no confirmada/);
+    if (estadoRevision === 'fuentes_en_conflicto') assert.match(detalle, /Fuentes oficiales en conflicto/);
+    assert.deepEqual(dato, original);
+  }
+});
+
+test('el sello documental exige fuentes HTTPS y una fecha real no futura, incluso sin cifras', () => {
+  const ahora = new Date('2026-09-30T12:00:00Z');
+  const dato = { ...oferta, verificadaEl: '2026-09-27', fuentesActuales: ['https://example.test/fuente'] };
+  for (const cambio of [
+    { fuentesActuales: [] }, { fuentesActuales: ['javascript:alert(1)'] },
+    { fuentesActuales: ['https://usuario:secreto@example.test'] },
+    { verificadaEl: '2026-10-01' }, { verificadaEl: '2026-02-30' }, { verificadaEl: '' },
+  ]) {
+    const sinEvidencia = { ...dato, ...cambio };
+    assert.equal(movil.documentacionOferta(sinEvidencia, ahora), null);
+    assert.doesNotMatch(textoRenderizado(componentesMoviles(ahora).FichaOferta({ oferta: sinEvidencia })), /Referencia documentada/);
+  }
+});
+
+test('la ficha documental y sus referencias históricas sobreviven al TTL sin presentarse como cotización actual', () => {
+  const fuente = 'https://example.test/historico';
+  const documentacion = {
+    revisadaEl: '2026-09-30', descripcion: 'Participación documentada en un edificio residencial.',
+    fuentes: [fuente], caracteristicas: [{ etiqueta: 'Tipo de activo', valor: 'Inmobiliario residencial' }],
+    referencias: [{ etiqueta: 'Precio publicado', valor: '54,20 CHF', fechaDato: '2026-09-26',
+      fechaConsulta: '2026-09-27', fuente, alcance: 'Última operación documentada; no es un precio ejecutable.' }],
+  };
+  const dato = { ...oferta, verificadaEl: '2026-09-27', documentacion };
+  const original = structuredClone(dato);
+  const ahora = new Date('2026-09-30T12:00:00Z');
+  const vista = movil.ofertaConCifrasVigentes(dato, ahora);
+  assert.equal(vista.precio, null);
+  assert.equal(vista.rentabilidad, null);
+  assert.equal(vista.disponibleEs, null);
+  assert.deepEqual(vista.documentacion, documentacion);
+  const componentes = componentesMoviles(ahora);
+  const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: dato }));
+  assert.match(tarjeta, /Referencia documentada · 30\/09\/2026/);
+  assert.match(tarjeta, /Consultar emisor/);
+  assert.doesNotMatch(tarjeta, /54,20|97,13|9876|1234|4455/);
+  const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
+  for (const esperado of ['FICHA DOCUMENTADA', documentacion.descripcion, 'Inmobiliario residencial',
+    'REFERENCIAS FECHADAS', 'No son precios actuales', '54,20 CHF', '26/09/2026',
+    '27/09/2026', documentacion.referencias[0].alcance, fuente]) assert.ok(detalle.includes(esperado), esperado);
+  assert.doesNotMatch(detalle, centinelas);
+  assert.deepEqual(dato, original);
+  assert.doesNotMatch(datosMoviles.textoBusquedaOferta({ ...dato, verificadaEl: '2000-01-01' }), /54,20/);
+});
+
+test('una referencia documental inválida o de otra fuente no se convierte en información verificada', () => {
+  const fuente = 'https://example.test/primaria';
+  const documento = {
+    revisadaEl: '2026-09-30', descripcion: 'Ficha de prueba con referencias fechadas.',
+    fuentes: [fuente], caracteristicas: [{ etiqueta: 'Activo', valor: 'Participación documentada' }], referencias: [{ etiqueta: 'Precio', valor: '54 CHF',
+      fechaDato: null, fechaConsulta: '2026-09-30', fuente, alcance: 'Dato histórico sin cotización vigente.' }],
+  };
+  const ahora = new Date('2026-09-30T12:00:00Z');
+  assert.ok(movil.documentacionOferta({ ...oferta, documentacion: documento }, ahora));
+  for (const cambio of [
+    { fechaDato: '2026-10-01' }, { fechaConsulta: '2026-10-01' },
+    { fechaDato: '2026-02-30' }, { fuente: 'https://example.test/otra' },
+    { alcance: '' }, { fuente: 'javascript:alert(1)' },
+  ]) {
+    const documentacion = { ...documento, referencias: [{ ...documento.referencias[0], ...cambio }] };
+    assert.equal(movil.documentacionOferta({ ...oferta, documentacion }, ahora), null);
+  }
+});
+
+test('las 28 fichas reales conservan documentación y referencias fechadas en web pública y móvil el 30/09', () => {
+  const raiz = path.join(RAIZ, '..', 'rwadar-app', 'data', 'verificaciones');
+  const catalogo = JSON.parse(fs.readFileSync(path.join(raiz, '2026-09-28', 'escaparate-publicacion.json'), 'utf8'));
+  const documentos = JSON.parse(fs.readFileSync(path.join(raiz, '2026-09-30', 'documentacion-ofertas.json'), 'utf8'));
+  const ahora = new Date('2026-09-30T12:00:00Z');
+  const { contexto, dialogo } = cargarWeb(ahora);
+  contexto.MODO_LOCAL_SEGURO = false;
+  contexto.ESCAPARATE_LOCAL = null;
+  contexto.CATALOGO_EMBEBIDO_BLOQUEADO = false;
+  const categorias = [...new Set(catalogo.ofertas.map(o => o.categoria))];
+  contexto.CATMETA = Object.fromEntries(categorias.map(c => [c, {}]));
+  contexto.EDITORIAL_OFERTA_POR_CATEGORIA = Object.fromEntries(categorias.map(c => [c, { src: '/propia.webp', alt: 'Editorial' }]));
+  cargarFuncionesWeb(contexto, ['textoDato', 'numeroRemoto', 'booleanoOpcional', 'cifraCatalogoRemota', 'fechaOfertaPublicaValida', 'ofertaCatalogoRemota']);
+  const apiOfertas = catalogo.ofertas.map(o => ({ ...o, revision_id: '12345678-1234-4000-8000-123456789012',
+    plataforma_slug: o.plataformaSlug, plataforma_nombre: o.plataformaNombre, verificada_el: o.verificadaEl,
+    vigencia_dias: o.vigenciaDias, disponible_es: o.disponibleEs, fuera_ladrillo: o.fueraLadrillo,
+    estado_revision: o.estadoRevision, fuentes_actuales: o.fuentesActuales, patrocinada: false,
+    documentacion: documentos[o.slug] }));
+  contexto.EMI = apiOfertas.map(o => contexto.ofertaCatalogoRemota(o, '2026-09-28'));
+  const componentes = componentesMoviles(ahora);
+  assert.equal(contexto.EMI.length, 28);
+  assert.equal(Object.keys(documentos).length, 28);
+  const original = structuredClone(contexto.EMI);
+  for (const o of contexto.EMI) {
+    const doc = documentos[o.slug];
+    require('../lib/contrato-catalogo').validarDocumentacionOferta(doc, o.slug, { hoy: ahora });
+    assert.ok(contexto.documentacionOfertaLocal(o), o.slug);
+    assert.ok(movil.documentacionOferta(o, ahora), o.slug);
+    const tarjetaWeb = contexto.tarjetaOfertaLocal(o);
+    const tarjetaMovil = textoRenderizado(componentes.FichaOferta({ oferta: o }));
+    for (const tarjeta of [tarjetaWeb, tarjetaMovil]) {
+      assert.match(tarjeta, /Referencia documentada/);
+      assert.match(tarjeta, /Consultar emisor/);
+      assert.doesNotMatch(tarjeta, /Pendiente de revisión/);
+    }
+    assert.ok(tarjetaWeb.includes('data-oferta-detalle="'+o.slug+'"'));
+    assert.equal(contexto.ofertaDetalleLocalPorSlug(o.slug), o);
+    contexto.abrirDetalleOfertaLocal(o.slug);
+    const detalleWeb = dialogo.innerHTML;
+    const detalleMovil = textoRenderizado(componentes.DetalleOferta({ oferta: o }));
+    assert.ok(detalleWeb.includes(contexto.escHtml(doc.descripcion)), o.slug);
+    assert.ok(detalleMovil.includes(doc.descripcion), o.slug);
+    for (const referencia of doc.referencias) {
+      assert.ok(detalleWeb.includes(contexto.escHtml(referencia.valor)), o.slug);
+      assert.ok(detalleWeb.includes(contexto.escHtml(referencia.alcance)), o.slug);
+      assert.ok(detalleWeb.includes(referencia.fechaConsulta), o.slug);
+      assert.ok(detalleMovil.includes(referencia.valor), o.slug);
+      assert.ok(detalleMovil.includes(referencia.alcance), o.slug);
+    }
+    assert.equal(contexto.estadoVigenciaLocal(o).clase, 'caducado', o.slug);
+    assert.equal(movil.cifrasOfertaVigentes(o, ahora), false, o.slug);
+  }
+  assert.deepEqual(structuredClone(contexto.EMI), original);
+  contexto.CATALOGO_EMBEBIDO_BLOQUEADO = true;
+  assert.equal(contexto.ofertaDetalleLocalPorSlug(contexto.EMI[0].slug), null);
+});
+
+test('un modal público abierto actualiza su documento y se cierra al retirarse el lote', () => {
+  const { contexto, dialogo } = cargarWeb(new Date('2026-09-30T12:00:00Z'));
+  const doc = { revisadaEl: '2026-09-30', descripcion: 'Descripción documental antes de la actualización.',
+    fuentes: ['https://example.test/fuente'], caracteristicas: [{ etiqueta: 'Activo', valor: 'Descripción estable' }], referencias: [] };
+  const o = { ...oferta, catalogo: true, documentacion: doc };
+  contexto.MODO_LOCAL_SEGURO = false; contexto.ESCAPARATE_LOCAL = null;
+  contexto.EMI = [o]; contexto.CATALOGO_EMBEBIDO_BLOQUEADO = false;
+  contexto.abrirDetalleOfertaLocal(o.slug);
+  assert.equal(dialogo.open, true);
+  assert.ok(dialogo.innerHTML.includes(doc.descripcion));
+  contexto.EMI = [{ ...o, documentacion: { ...doc, descripcion: 'Descripción documental corregida desde la respuesta nueva.' } }];
+  contexto.refrescarDetalleOfertaAbierto();
+  assert.ok(dialogo.innerHTML.includes('corregida desde la respuesta nueva'));
+  assert.ok(!dialogo.innerHTML.includes(doc.descripcion));
+  contexto.comprobarCatalogoEmbebido = () => { contexto.EMI.length = 0; contexto.CATALOGO_EMBEBIDO_BLOQUEADO = true; return false; };
+  contexto.pintarFiltrosEmision = contexto.pintarEmisiones = () => {};
+  cargarFuncionesWeb(contexto, ['refrescarVigenciaOfertas']);
+  contexto.refrescarVigenciaOfertas();
+  assert.equal(dialogo.open, false);
+  assert.equal(dialogo.innerHTML, '');
+  assert.equal(dialogo.getAttribute('data-oferta-slug'), undefined);
+});
+
+test('el botón público de detalles funciona sin activar la interfaz local ni duplicar el listener', () => {
+  const { contexto, dialogo } = cargarWeb(caducada);
+  const o = { ...oferta, catalogo: true };
+  const escuchas = [];
+  const seccion = { dataset: {}, addEventListener(tipo, fn) { escuchas.push([tipo, fn]); } };
+  contexto.MODO_LOCAL_SEGURO = false;
+  contexto.ESCAPARATE_LOCAL = null;
+  contexto.EMI = [o];
+  contexto.document.getElementById = id => id === 'emisiones' ? seccion : dialogo;
+  contexto.activarDetallesOfertas();
+  contexto.activarDetallesOfertas();
+  assert.equal(escuchas.length, 1);
+  escuchas[0][1]({ target: { closest(selector) {
+    assert.equal(selector, '[data-oferta-detalle]'); return { dataset: { ofertaDetalle: o.slug } };
+  } } });
+  assert.match(dialogo.innerHTML, /Oferta de prueba/);
+  assert.match(dialogo.innerHTML, /Consultar emisor/);
+  assert.equal(contexto.ESCAPARATE_LOCAL, null);
+  contexto.EMI = [{ ...o, catalogo: false }];
+  assert.equal(contexto.ofertaDetalleLocalPorSlug(o.slug), null);
+});
+
+test('web y contrato compartido rechazan la misma documentación inválida y escapan texto de fuentes', () => {
+  const ahora = new Date('2026-09-30T12:00:00Z');
+  const { contexto } = cargarWeb(ahora);
+  const validar = require('../lib/contrato-catalogo').validarDocumentacionOferta;
+  const fuente = 'https://example.test/fuente?a=1&b=2';
+  const base = { revisadaEl: '2026-09-30', descripcion: 'Descripción documental <b>con texto</b>', fuentes: [fuente],
+    caracteristicas: [{ etiqueta: '<Tipo>', valor: '<script>alert(1)</script>' }],
+    referencias: [{ etiqueta: '<precio>', valor: '54 CHF', fechaDato: null, fechaConsulta: '2026-09-29', fuente,
+      alcance: 'Referencia histórica sin precio ejecutable.' }] };
+  const casos = [base, ...[
+    d => { d.revisadaEl = '2026-10-01'; }, d => { d.revisadaEl = '2026-02-30'; },
+    d => { d.descripcion = 'corta'; }, d => { d.caracteristicas = []; },
+    d => { d.fuentes.push(fuente); }, d => { d.fuentes = ['javascript:alert(1)']; },
+    d => { d.referencias[0].fechaDato = '2026-09-30'; }, d => { d.referencias[0].fechaConsulta = '2026-10-01'; },
+    d => { d.referencias[0].fuente = 'https://example.test/otra'; },
+    d => { d.referencias[0].alcance = ''; }, d => { d.referencias[0].fechaDato = '2026-02-30'; },
+  ].map(cambiar => { const d = structuredClone(base); cambiar(d); return d; })];
+  for (const documentacion of casos) {
+    let valida = true;
+    try { validar(documentacion, 'prueba', { hoy: ahora }); } catch { valida = false; }
+    assert.equal(!!contexto.documentacionOfertaLocal({ ...oferta, documentacion }), valida);
+    assert.equal(!!movil.documentacionOferta({ ...oferta, documentacion }, ahora), valida);
+  }
+  const html = contexto.documentacionOfertaHtml(base);
+  assert.doesNotMatch(html, /<script>|<b>con texto<\/b>|javascript:/);
+  assert.match(html, /&lt;script&gt;/);
+  assert.match(html, /a=1&amp;b=2/);
 });

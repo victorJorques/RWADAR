@@ -13,6 +13,7 @@ const {
   asegurar,
   validarFuente,
   validarVerificacionPlataforma,
+  validarDocumentacionOferta,
   validarOferta,
   validarLotePublico,
 } = require('../rwadar-movil/lib/contrato-catalogo');
@@ -23,7 +24,25 @@ function cargarFuentesLocales(raiz = path.join(__dirname, '..'), { revision } = 
     const carpeta = path.join(raiz, 'rwadar-app', 'data', 'verificaciones', revision);
     const radar = JSON.parse(fs.readFileSync(path.join(carpeta, 'radar-canonico-26.json'), 'utf8'));
     const escaparate = JSON.parse(fs.readFileSync(path.join(carpeta, 'escaparate-publicacion.json'), 'utf8'));
-    asegurar(radar.verificadoEl === revision, 'la revisión no coincide con su carpeta');
+    const rutaDocumentacion = path.join(carpeta, 'documentacion-ofertas.json');
+    let fechaDocumentacion = null;
+    if (fs.existsSync(rutaDocumentacion)) {
+      const documentacion = JSON.parse(fs.readFileSync(rutaDocumentacion, 'utf8'));
+      asegurar(documentacion && typeof documentacion === 'object' && !Array.isArray(documentacion),
+        'documentación local: se esperaba un mapa por slug');
+      const slugs = escaparate.ofertas.map(o => o.slug);
+      asegurar(Object.keys(documentacion).length === CUENTA_OFERTAS &&
+        slugs.every(slug => Object.hasOwn(documentacion, slug) && documentacion[slug] != null),
+        'documentación local: el mapa debe corresponder a las 28 ofertas');
+      for (const slug of slugs) validarDocumentacionOferta(documentacion[slug], `documentación/${slug}`);
+      fechaDocumentacion = Object.values(documentacion).map(d => d.revisadaEl).sort().at(-1);
+      escaparate.ofertas = escaparate.ofertas.map(o => ({ ...o, documentacion: documentacion[o.slug] }));
+    }
+    // Una entrega documental puede ser posterior al radar sin revalidarlo.
+    // La carpeta debe corresponder al radar o al último documento real del mapa.
+    asegurar(radar.verificadoEl === revision ||
+      (esFecha(radar.verificadoEl) && radar.verificadoEl < revision && fechaDocumentacion === revision),
+      'la revisión no coincide con su carpeta ni con el corte documental');
     return { radar, escaparate };
   }
   const radar = JSON.parse(fs.readFileSync(path.join(
@@ -117,7 +136,9 @@ function construirSqlImportacion(fuentes) {
   }
   for (const o of escaparate.ofertas) {
     const categoriaSlug = CATEGORIAS.get(o.categoria);
-    lineas.push(`insert into rwadar_catalogo.ofertas (revision_id,slug,tipo,titulo,plataforma_slug,plataforma_nombre,categoria_slug,pais,resumen,url,verificada_el,vigencia_dias,permanente,disponible_es,eu,fuera_ladrillo,puntuacion,rentabilidad,precio,metricas,avisos,estado_revision,fuentes_actuales,patrocinada) values (${sqlTexto(revisionId)}::uuid,${sqlTexto(o.slug)},${sqlTexto(o.tipo)},${sqlTexto(o.titulo)},${sqlTexto(o.plataformaSlug)},${sqlTexto(o.plataformaNombre)},${sqlTexto(categoriaSlug)},${sqlTexto(o.pais)},${sqlTexto(o.resumen)},${sqlTexto(o.url)},${sqlFecha(o.verificadaEl)},${o.vigenciaDias},${sqlBooleano(o.permanente)},${sqlBooleano(o.disponibleEs)},${sqlBooleano(o.eu)},${sqlBooleano(o.fueraLadrillo)},${sqlNumero(o.puntuacion)},${o.rentabilidad == null ? 'null' : sqlJson(o.rentabilidad)},${o.precio == null ? 'null' : sqlJson(o.precio)},${sqlJson(o.metricas)},${sqlJson(o.avisos)},${sqlTexto(o.estadoRevision)}::rwadar_catalogo.estado_oferta,${sqlJson(o.fuentesActuales)},false) on conflict (revision_id,slug) do nothing;`);
+    const columnaDocumentacion = o.documentacion == null ? '' : ',documentacion';
+    const valorDocumentacion = o.documentacion == null ? '' : `,${sqlJson(o.documentacion)}`;
+    lineas.push(`insert into rwadar_catalogo.ofertas (revision_id,slug,tipo,titulo,plataforma_slug,plataforma_nombre,categoria_slug,pais,resumen,url,verificada_el,vigencia_dias,permanente,disponible_es,eu,fuera_ladrillo,puntuacion,rentabilidad,precio,metricas,avisos,estado_revision,fuentes_actuales,patrocinada${columnaDocumentacion}) values (${sqlTexto(revisionId)}::uuid,${sqlTexto(o.slug)},${sqlTexto(o.tipo)},${sqlTexto(o.titulo)},${sqlTexto(o.plataformaSlug)},${sqlTexto(o.plataformaNombre)},${sqlTexto(categoriaSlug)},${sqlTexto(o.pais)},${sqlTexto(o.resumen)},${sqlTexto(o.url)},${sqlFecha(o.verificadaEl)},${o.vigenciaDias},${sqlBooleano(o.permanente)},${sqlBooleano(o.disponibleEs)},${sqlBooleano(o.eu)},${sqlBooleano(o.fueraLadrillo)},${sqlNumero(o.puntuacion)},${o.rentabilidad == null ? 'null' : sqlJson(o.rentabilidad)},${o.precio == null ? 'null' : sqlJson(o.precio)},${sqlJson(o.metricas)},${sqlJson(o.avisos)},${sqlTexto(o.estadoRevision)}::rwadar_catalogo.estado_oferta,${sqlJson(o.fuentesActuales)},false${valorDocumentacion}) on conflict (revision_id,slug) do nothing;`);
   }
   lineas.push('commit;', '');
   return { sql: lineas.join('\n'), revisionId, hash, fecha: radar.verificadoEl };
@@ -130,5 +151,6 @@ module.exports = {
   cargarFuentesLocales,
   construirSqlImportacion,
   validarFuentesLocales,
+  validarDocumentacionOferta,
   validarLotePublico,
 };

@@ -239,6 +239,7 @@ function nodo(id) {
     set textContent(v) { capturadoTexto[id] = String(v == null ? '' : v); },
     get textContent() { return capturadoTexto[id] || ''; },
     value: '',
+    dataset: {},
     classList: { add(){}, remove(){}, toggle(){}, contains(){ return false; } },
     add(){}, focus(){}, setAttribute(){}, removeAttribute(){},
     hasAttribute(){ return false; },

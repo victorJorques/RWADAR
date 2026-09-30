@@ -122,6 +122,7 @@ function ofertaPublica(o) {
     avisos: o.avisos,
     estadoRevision: textoObligatorio(o.estado_revision, 'estado de oferta', 40),
     fuentesActuales: o.fuentes_actuales,
+    documentacion: o.documentacion ?? null,
     patrocinada: o.patrocinada === true,
   };
   if (!esHttps(x.url) || !Number.isInteger(x.vigenciaDias) ||

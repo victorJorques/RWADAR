@@ -552,7 +552,7 @@ function renderEmisionHostil(codigo) {
   const nodo = id => {
     if (nodos.has(id)) return nodos.get(id);
     let contenidoTexto = '';
-    const n = { id, value:'', hidden:false, style:{},
+    const n = { id, value:'', hidden:false, style:{}, dataset:{},
       set textContent(v){ contenidoTexto=String(v ?? ''); }, get textContent(){ return contenidoTexto; },
       set innerHTML(v){ capturado[id]=v; }, get innerHTML(){ return capturado[id]||''; },
       classList:{add(){},remove(){},toggle(){},contains(){return false}},
@@ -1574,7 +1574,7 @@ prueba('el catálogo remoto exige las vistas 26/28 y nunca vuelve a las tablas a
 prueba('el snapshot 26/28 caducado falla cerrado incluso si la red devuelve vacío',
   /function comprobarCatalogoEmbebido\(\)/.test(js) && /edad<0\|\|edad>7/.test(js) &&
   /P\.length=0;EMI\.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true/.test(js) &&
-  /catch\{comprobarCatalogoEmbebido\(\);pintarFiltrosEmision\(\);pintarEmisiones\(\);render\(\)\}/.test(js));
+  /catch\{comprobarCatalogoEmbebido\(\);refrescarDetalleOfertaAbierto\(\);pintarFiltrosEmision\(\);pintarEmisiones\(\);render\(\)\}/.test(js));
 
 const armazon = arrayConstante(sw, 'ARMAZON');
 const recursosCriticos = ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', rutaScriptApp, rutaAnalitica, estilos[0][1],

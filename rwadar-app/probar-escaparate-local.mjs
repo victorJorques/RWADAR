@@ -200,7 +200,7 @@ for (const [nombre, cambiar] of [
 
 paso('la web explica la causa editorial y no disfraza los bloqueos como simple caducidad',
   webJs.includes("estadoRevision==='no_verificable'")
-  && webJs.includes("texto:'apertura no verificable'")
+  && webJs.includes("texto:'apertura no confirmada'")
   && webJs.includes("estadoRevision==='fuentes_en_conflicto'")
   && webJs.includes("texto:'fuentes en conflicto'")
   && webJs.includes('fuente.actualizacionLocal.verificadoEl')
