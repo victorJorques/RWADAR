@@ -21,10 +21,9 @@ import { MODO_LOCAL } from '../lib/modo-local';
    Apuntando a la misma página publicada, el edificio es exactamente el
    mismo, y si mañana cambia el 3D en la web, cambia solo aquí.
 
-   No compromete la revisión de Apple. La directriz 4.2 rechaza las apps
-   que son SOLO una web envuelta; esta tiene lista nativa, buscador,
-   filtros, radar nativo en SVG, caché sin conexión, seguimiento y avisos
-   push. Un módulo embebido dentro de eso es lo corriente.
+   La lista, el buscador, el radar SVG y los favoritos son nativos. La
+   revisión de cada tienda sigue pendiente: usar este módulo web no
+   acredita aprobación. Los servicios remotos y push están desactivados.
 
    SIN CONEXIÓN NO HAY WEB, y la app promete funcionar sin conexión. Por
    eso el explicador nativo no se borra: es lo que se enseña cuando esto
@@ -46,26 +45,78 @@ export function esOrigenRWAdar(valor) {
   }
 }
 
-/* Se esconde todo menos el explicador, y se desactiva el desplazamiento
-   horizontal y el rebote para que dentro de la app no se note que es una
-   página. El fondo es el mismo `--noche` de los dos sitios, así que no hay
-   costura visible entre lo nativo y lo embebido. */
+/* Se conserva la lección y su cadena de contenedores, no una lista de
+   secciones que esconder. En móvil la web mueve #explain a Academy, que
+   empieza oculta. No clonamos ni movemos el canvas: conserva sus eventos. */
 const SOLO_EL_EXPLICADOR = `
   (function(){
-    var quitar = ['header.hdr', '.portada', '#metodo', '#tool', '#fuera',
-                  'footer', '.saltar', '.cmpbar', '.aviso'];
-    var css = quitar.join(',') + '{display:none!important}'
-      + 'html,body{background:#0B0A0A!important;overflow-x:hidden!important}'
-      + '#explain{padding-top:6px!important;margin:0!important}'
-      + '#explain .escena{height:min(58vh,430px)!important}'
-      + '::-webkit-scrollbar{display:none}';
-    var s = document.createElement('style');
-    s.textContent = css;
-    document.head.appendChild(s);
+    if (document.documentElement.hasAttribute('data-rwadar-explicador-activo')) return;
+    var atributo = 'data-rwadar-explicador-ruta';
+    var anteriores = [], rutaAnterior = [];
+    function estilo(nodo, propiedad, valor){
+      anteriores.push({ nodo: nodo, propiedad: propiedad,
+        valor: nodo.style.getPropertyValue(propiedad), prioridad: nodo.style.getPropertyPriority(propiedad) });
+      nodo.style.setProperty(propiedad, valor, 'important');
+    }
+    function aislar(){
+      var leccion = document.getElementById('explain');
+      if (!leccion) return false;
+      for (var i = 0; i < anteriores.length; i++) {
+        var previo = anteriores[i];
+        if (previo.valor) previo.nodo.style.setProperty(previo.propiedad, previo.valor, previo.prioridad);
+        else previo.nodo.style.removeProperty(previo.propiedad);
+      }
+      for (var i = 0; i < rutaAnterior.length; i++) rutaAnterior[i].removeAttribute(atributo);
+      anteriores = [];
+      rutaAnterior = [];
+      for (var nodo = leccion; nodo && nodo !== document.documentElement; nodo = nodo.parentElement) {
+        rutaAnterior.push(nodo);
+        nodo.setAttribute(atributo, '');
+        nodo.removeAttribute('hidden');
+        nodo.removeAttribute('inert');
+        nodo.removeAttribute('aria-hidden');
+        estilo(nodo, 'display', 'block');
+        if (nodo !== leccion) {
+          estilo(nodo, 'padding', '0');
+          estilo(nodo, 'margin', '0');
+          estilo(nodo, 'min-height', '0');
+          estilo(nodo, 'max-width', 'none');
+        }
+        if (nodo.parentElement && nodo.parentElement !== document.documentElement) {
+          var hermanos = nodo.parentElement.children;
+          for (var j = 0; j < hermanos.length; j++) {
+            if (hermanos[j] !== nodo) estilo(hermanos[j], 'display', 'none');
+          }
+        }
+      }
+      // CSSOM directo: la CSP pública style-src 'self' bloquea un <style>
+      // creado con texto. No se relaja la política ni se añade unsafe-inline.
+      estilo(document.documentElement, 'background', '#0B0A0A');
+      estilo(document.documentElement, 'overflow-x', 'hidden');
+      estilo(document.documentElement, 'scroll-padding-top', '0');
+      estilo(document.documentElement, 'scroll-behavior', 'auto');
+      estilo(document.body, 'background', '#0B0A0A');
+      estilo(document.body, 'overflow-x', 'hidden');
+      estilo(leccion, 'padding-top', '6px');
+      estilo(leccion, 'padding-inline', '16px');
+      estilo(leccion, 'margin', '0 auto');
+      var escena = document.getElementById('scene');
+      if (escena && leccion.contains(escena)) estilo(escena, 'height', 'min(58vh,430px)');
+      return true;
+    }
+    if (!aislar()) {
+      if (window.ReactNativeWebView) window.ReactNativeWebView.postMessage('rwadar:explicador-no-disponible');
+      return;
+    }
+    document.documentElement.setAttribute('data-rwadar-explicador-activo', '');
+    // La web puede recolocar la lección si cambia su breakpoint.
+    window.addEventListener('resize', aislar);
     /* El explicador arranca solo al entrar en pantalla; aquí ya lo está. */
     if (window.irPaso) { try { window.irPaso(0, true); } catch (e) {} }
-    true;
+    window.scrollTo(0, 0);
+    window.requestAnimationFrame(function(){ window.dispatchEvent(new Event('resize')); });
   })();
+  true;
 `;
 
 export default function Explicador({ onCerrar }) {
@@ -95,7 +146,9 @@ export default function Explicador({ onCerrar }) {
           ref={web}
           source={{ uri: PAGINA }}
           injectedJavaScript={SOLO_EL_EXPLICADOR}
-          onMessage={() => {}}
+          onMessage={(evento) => {
+            if (evento?.nativeEvent?.data === 'rwadar:explicador-no-disponible') setFallo(true);
+          }}
           onLoadEnd={() => setCargando(false)}
           onError={() => setFallo(true)}
           onHttpError={() => setFallo(true)}

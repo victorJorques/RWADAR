@@ -114,6 +114,34 @@ test('cada oferta caduca en UTC incluso dentro de un lote aún vigente y sin red
   assert.deepEqual(lote, original);
 });
 
+test('el catálogo transporta la documentación fechada sin rescatar cifras vencidas el 30 de septiembre', async () => {
+  const lote = lotePrueba('2026-09-28');
+  const fuente = 'https://example.test/dato-publicado';
+  const documentacion = {
+    revisadaEl: '2026-09-30', descripcion: 'Referencia documental de un activo con condiciones publicadas.',
+    fuentes: [fuente], caracteristicas: [{ etiqueta: 'Activo', valor: 'Participación inmobiliaria' }],
+    referencias: [{ etiqueta: 'Precio publicado', valor: '54,20 CHF', fechaDato: '2026-09-26',
+      fechaConsulta: '2026-09-27', fuente, alcance: 'Operación histórica; no equivale a cotización actual.' }],
+  };
+  lote.ofertas[0].documentacion = documentacion;
+  const e = entorno({ lote, ahora: new Date('2026-09-30T12:00:00Z') });
+  const resultado = await e.lector.cargar();
+  assert.equal(resultado.error, null);
+  const oferta = resultado.ofertas[0];
+  assert.deepEqual(oferta.documentacion, documentacion);
+  assert.notEqual(oferta.documentacion, documentacion);
+  assert.notEqual(oferta.documentacion.referencias[0], documentacion.referencias[0]);
+  assert.equal(oferta.verificadaEl, '2026-09-27');
+  assert.equal(oferta.vigenciaDias, 1);
+  assert.equal(oferta.cifrasPendientes, true);
+  assert.equal(oferta.precio, null);
+  assert.equal(oferta.rentabilidad, null);
+  assert.equal(oferta.disponibleEs, null);
+  assert.deepEqual(oferta.metricas, []);
+  const sinConexion = await e.lector.cargar({ soloCache: true });
+  assert.deepEqual(sinConexion.ofertas[0].documentacion, documentacion);
+});
+
 test('un 200 vacío, parcial o inválido retira el lote entero, sin rescatar una caché previa', async () => {
   const casos = [
     l => { l.plataformas = []; l.ofertas = []; },

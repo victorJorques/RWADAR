@@ -191,7 +191,7 @@ export function proveedoresDeOfertas(ofertas) {
 export function vigenciaOferta(oferta, ahora = new Date()) {
   if (oferta?.estadoRevision === 'no_verificable') {
     return {
-      estado: 'bloqueada', etiqueta: 'Apertura no verificable', venceEl: null, dias: null,
+      estado: 'bloqueada', etiqueta: 'Apertura no confirmada', venceEl: null, dias: null,
     };
   }
   if (oferta?.estadoRevision === 'fuentes_en_conflicto') {
@@ -202,41 +202,41 @@ export function vigenciaOferta(oferta, ahora = new Date()) {
   const revision = revisionTemporalOferta(oferta, ahora);
   if (!revision) {
     return oferta?.permanente
-      ? { estado: 'permanente-sin-fecha', etiqueta: 'Producto activo · cifra sin vigencia', venceEl: null, dias: null }
-      : { estado: 'sin-fecha', etiqueta: 'Vigencia no indicada', venceEl: null, dias: null };
+      ? { estado: 'permanente-sin-fecha', etiqueta: 'Cifras sin fecha válida', venceEl: null, dias: null }
+      : { estado: 'sin-fecha', etiqueta: 'Cifras sin fecha válida', venceEl: null, dias: null };
   }
   const { dias, venceEl } = revision;
   const vencida = dias < 0;
   if (oferta?.permanente) {
     if (vencida) {
       return {
-        estado: 'permanente-vencida', etiqueta: 'Producto activo · cifra vencida',
+        estado: 'permanente-vencida', etiqueta: 'Cifras por actualizar',
         venceEl, dias,
       };
     }
     if (dias <= 7) {
       return {
         estado: 'permanente-proxima',
-        etiqueta: dias === 0 ? 'Producto activo · revisar hoy' : `Producto activo · cifra vence en ${dias} d`,
+        etiqueta: dias === 0 ? 'Cifras vigentes hasta hoy' : `Cifras vigentes ${dias} d`,
         venceEl, dias,
       };
     }
     return {
-      estado: 'permanente-vigente', etiqueta: `Producto activo · cifra vigente ${dias} d`,
+      estado: 'permanente-vigente', etiqueta: `Cifras vigentes ${dias} d`,
       venceEl, dias,
     };
   }
   if (vencida) {
-    return { estado: 'vencida', etiqueta: 'Datos vencidos', venceEl, dias };
+    return { estado: 'vencida', etiqueta: 'Cifras por actualizar', venceEl, dias };
   }
   if (dias <= 7) {
     return {
       estado: 'proxima',
-      etiqueta: dias === 0 ? 'Revisar datos hoy' : `Datos caducan en ${dias} d`,
+      etiqueta: dias === 0 ? 'Cifras vigentes hasta hoy' : `Cifras vigentes ${dias} d`,
       venceEl, dias,
     };
   }
-  return { estado: 'vigente', etiqueta: `Datos vigentes ${dias} d`, venceEl, dias };
+  return { estado: 'vigente', etiqueta: `Cifras vigentes ${dias} d`, venceEl, dias };
 }
 
 export function textoBusquedaOferta(oferta) {

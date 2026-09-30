@@ -37,6 +37,11 @@ function adaptarCatalogo(lote, ahora) {
       pais: texto(o.pais), url: o.url, verificadaEl: o.verificada_el,
       vigenciaDias: o.vigencia_dias, permanente: o.permanente === true,
       estadoRevision: o.estado_revision, fuentesActuales: [...o.fuentes_actuales],
+      documentacion: o.documentacion == null ? null : {
+        ...o.documentacion, fuentes: [...o.documentacion.fuentes],
+        caracteristicas: o.documentacion.caracteristicas.map(c => ({ ...c })),
+        referencias: o.documentacion.referencias.map(r => ({ ...r })),
+      },
       patrocinada: false, eu: o.eu === true ? true : o.eu === false ? false : null,
       fueraLadrillo: o.fuera_ladrillo === true, avisos: o.avisos,
       cifrasPendientes: !vigente,

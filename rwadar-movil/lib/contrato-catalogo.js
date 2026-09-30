@@ -93,7 +93,42 @@ function validarVerificacionPlataforma(verificacion, fecha, contexto) {
   }
 }
 
-function validarOferta(oferta, fecha, contexto) {
+function validarDocumentacionOferta(documentacion, contexto, { hoy = new Date() } = {}) {
+  // Ausente en APK8 y en los lotes anteriores. Una sección presente se valida
+  // por separado de las cifras comerciales y nunca amplía su vigencia.
+  if (documentacion == null) return null;
+  const hoyIso = fechaIso(hoy);
+  asegurar(esFecha(hoyIso), `${contexto}: fecha de ejecución inválida`);
+  asegurar(typeof documentacion === 'object' && !Array.isArray(documentacion),
+    `${contexto}: documentación inválida`);
+  asegurar(esFecha(documentacion.revisadaEl) && documentacion.revisadaEl <= hoyIso,
+    `${contexto}: fecha documental inválida o futura`);
+  asegurar(esTexto(documentacion.descripcion, 20, 6000),
+    `${contexto}: descripción documental incompleta`);
+  asegurar(Array.isArray(documentacion.fuentes) && documentacion.fuentes.length > 0 &&
+    documentacion.fuentes.every(esHttps) &&
+    new Set(documentacion.fuentes).size === documentacion.fuentes.length,
+    `${contexto}: fuentes documentales inválidas`);
+  asegurar(Array.isArray(documentacion.caracteristicas) && documentacion.caracteristicas.length > 0 &&
+    documentacion.caracteristicas.every(c => esTexto(c?.etiqueta, 1, 180) && esTexto(c?.valor, 1, 3000)),
+    `${contexto}: características documentales inválidas`);
+  asegurar(Array.isArray(documentacion.referencias), `${contexto}: referencias documentales inválidas`);
+  documentacion.referencias.forEach((referencia, indice) => {
+    const lugar = `${contexto}/referencia/${indice}`;
+    asegurar(esTexto(referencia?.etiqueta, 1, 180) && esTexto(referencia?.valor, 1, 3000) &&
+      esTexto(referencia?.alcance, 12, 3000), `${lugar}: referencia incompleta`);
+    asegurar(esFecha(referencia.fechaConsulta) && referencia.fechaConsulta <= documentacion.revisadaEl,
+      `${lugar}: fecha de consulta inválida o posterior a la revisión`);
+    asegurar(referencia.fechaDato === null ||
+      (esFecha(referencia.fechaDato) && referencia.fechaDato <= referencia.fechaConsulta),
+      `${lugar}: fecha del dato inválida o posterior a la consulta`);
+    asegurar(esHttps(referencia.fuente) && documentacion.fuentes.includes(referencia.fuente),
+      `${lugar}: fuente no incluida en la documentación`);
+  });
+  return documentacion;
+}
+
+function validarOferta(oferta, fecha, contexto, opciones = {}) {
   asegurar(oferta && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(oferta.slug || ''),
     `${contexto}: slug inválido`);
   asegurar(TIPOS_OFERTA.has(oferta.tipo), `${contexto}: tipo inválido`);
@@ -123,6 +158,7 @@ function validarOferta(oferta, fecha, contexto) {
     esTexto(oferta.rentabilidad?.literal, 1, 2000)), `${contexto}: rentabilidad fuera de contrato`);
   asegurar(Array.isArray(oferta.fuentesActuales) && oferta.fuentesActuales.length > 0 &&
     oferta.fuentesActuales.every(esHttps), `${contexto}: fuentes actuales inválidas`);
+  validarDocumentacionOferta(oferta.documentacion, `${contexto}/documentacion`, opciones);
   if (oferta.estadoRevision !== 'actual') {
     asegurar(oferta.rentabilidad == null && oferta.precio == null,
       `${contexto}: una oferta bloqueada conserva cifras comerciales`);
@@ -172,7 +208,7 @@ function validarLotePublico(plataformas, ofertas, { hoy = new Date() } = {}) {
       estadoRevision: oferta.estado_revision,
       fuentesActuales: oferta.fuentes_actuales,
     };
-    validarOferta(normalizada, fecha, `oferta/${oferta.slug || indice}`);
+    validarOferta(normalizada, fecha, `oferta/${oferta.slug || indice}`, { hoy: hoyIso });
     asegurar(normalizada.verificadaEl <= hoyIso, `oferta/${oferta.slug || indice}: fecha futura`);
   });
   return { fecha, edadDias: edad, revisionId: [...revisiones][0] };
@@ -187,6 +223,7 @@ module.exports = {
   asegurar,
   validarFuente,
   validarVerificacionPlataforma,
+  validarDocumentacionOferta,
   validarOferta,
   validarLotePublico,
 };

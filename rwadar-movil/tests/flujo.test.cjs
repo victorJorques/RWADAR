@@ -467,11 +467,11 @@ test('las ofertas se normalizan sin perder métricas y calculan su TTL', () => {
     { texto: 'Ventana vencida', tono: 'stop' },
   ]);
   assert.deepEqual(datos.vigenciaOferta(oferta, new Date('2026-08-30T12:00:00Z')), {
-    estado: 'proxima', etiqueta: 'Datos caducan en 2 d',
+    estado: 'proxima', etiqueta: 'Cifras vigentes 2 d',
     venceEl: '2026-09-01T00:00:00.000Z', dias: 2,
   });
   assert.deepEqual(datos.vigenciaOferta(oferta, new Date('2026-09-01T18:00:00Z')), {
-    estado: 'proxima', etiqueta: 'Revisar datos hoy',
+    estado: 'proxima', etiqueta: 'Cifras vigentes hasta hoy',
     venceEl: '2026-09-01T00:00:00.000Z', dias: 0,
   });
   const comercial = datos.normalizarOferta({
@@ -482,7 +482,7 @@ test('las ofertas se normalizan sin perder métricas y calculan su TTL', () => {
   const buscable = datos.textoBusquedaOferta({
     ...oferta, verificadaEl: '2000-01-01', vigenciaDias: 1,
   });
-  for (const fragmento of ['ventana vencida', 'stop', 'datos vencidos']) {
+  for (const fragmento of ['ventana vencida', 'stop', 'cifras por actualizar']) {
     assert.ok(buscable.includes(fragmento), `la búsqueda no indexó ${fragmento}`);
   }
   for (const fragmento of ['10,00 %', '97,50–101,00 $', '100 €']) {
@@ -494,7 +494,7 @@ test('las ofertas se normalizan sin perder métricas y calculan su TTL', () => {
     verificadaEl: '2026-08-27', vigenciaDias: 1,
   });
   assert.deepEqual(datos.vigenciaOferta(permanente, new Date('2026-08-30T12:00:00Z')), {
-    estado: 'permanente-vencida', etiqueta: 'Producto activo · cifra vencida',
+    estado: 'permanente-vencida', etiqueta: 'Cifras por actualizar',
     venceEl: '2026-08-28T00:00:00.000Z', dias: -2,
   });
 
@@ -503,7 +503,7 @@ test('las ofertas se normalizan sin perder métricas y calculan su TTL', () => {
     verificadaEl: '2026-09-21', vigenciaDias: 1,
   });
   assert.deepEqual(datos.vigenciaOferta(noVerificable, new Date('2026-09-21T12:00:00Z')), {
-    estado: 'bloqueada', etiqueta: 'Apertura no verificable', venceEl: null, dias: null,
+    estado: 'bloqueada', etiqueta: 'Apertura no confirmada', venceEl: null, dias: null,
   });
 
   const fuentesEnConflicto = datos.normalizarOferta({
@@ -565,7 +565,7 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
 
   assert.equal(app.extra.rwadar.pushDeliveryEnabled, false);
   assert.equal(app.runtimeVersion.policy, 'appVersion');
-  assert.equal(app.version, '1.1.0');
+  assert.equal(app.version, '1.1.1');
   assert.ok(app.updates.url.startsWith('https://u.expo.dev/'));
   assert.equal(app.updates.enabled, false, 'la build no descarga código de canales anteriores');
   assert.equal(app.android.allowBackup, false);

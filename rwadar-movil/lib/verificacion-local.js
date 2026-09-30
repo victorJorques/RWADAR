@@ -1,3 +1,5 @@
+import { validarDocumentacionOferta } from './contrato-catalogo';
+
 export const FECHA_VERIFICACION_LOCAL = '2026-09-21';
 
 const ESTADOS_OPERATIVOS = new Set(['observada', 'no_verificable']);
@@ -105,6 +107,38 @@ export function fechaVerificacionLocalVisible(fecha) {
   if (!fechaValida(fecha)) return 'fecha no verificable';
   const [ano, mes, dia] = fecha.split('-');
   return `${dia}/${mes}/${ano}`;
+}
+
+// Documentar una referencia no confirma que siga abierta ni que sus importes
+// estén vigentes. Esta procedencia se conserva al vencer el TTL de las cifras.
+export function documentacionOferta(oferta, ahora = new Date()) {
+  const fechaDocumental = (fecha) => {
+    const base = Date.parse(`${fecha}T00:00:00Z`);
+    return fechaValida(fecha) && Number.isFinite(base) &&
+      new Date(base).toISOString().slice(0, 10) === fecha &&
+      Number.isFinite(ahora.getTime()) && base <= ahora.getTime();
+  };
+  const esFuente = (valor) => {
+    if (typeof valor !== 'string') return false;
+    try {
+      const url = new URL(valor);
+      return url.protocol === 'https:' && !url.username && !url.password;
+    } catch { return false; }
+  };
+  const documento = oferta?.documentacion;
+  if (documento != null) {
+    try { validarDocumentacionOferta(documento, 'oferta/documentacion', { hoy: ahora }); }
+    catch { return null; }
+  }
+  const fecha = documento == null ? oferta?.verificadaEl : documento.revisadaEl;
+  if (!fechaDocumental(fecha)) return null;
+  const fuentes = documento == null ? oferta?.fuentesActuales : documento.fuentes;
+  if (!Array.isArray(fuentes) || !fuentes.length || !fuentes.every(esFuente)) return null;
+  return { fecha, fuentes: [...new Set(fuentes)],
+    descripcion: documento?.descripcion || '',
+    caracteristicas: (documento?.caracteristicas || []).map(c => ({ ...c })),
+    referencias: (documento?.referencias || []).map(r => ({ ...r })),
+    etiqueta: `Referencia documentada · ${fechaVerificacionLocalVisible(fecha)}` };
 }
 
 /* El TTL pertenece a la oferta, no al lote del catálogo. Se evalúa al pintar,

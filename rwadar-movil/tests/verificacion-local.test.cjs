@@ -16,7 +16,10 @@ function cargarVerificacionLocal() {
     plugins: [commonjs],
   }).code;
   const modulo = { exports: {} };
-  new Function('module', 'exports', codigo)(modulo, modulo.exports);
+  new Function('module', 'exports', 'require', codigo)(modulo, modulo.exports, (nombre) => {
+    assert.equal(nombre, './contrato-catalogo');
+    return require('../lib/contrato-catalogo');
+  });
   return modulo.exports;
 }
 

@@ -85,7 +85,8 @@ test('las 52 imágenes originales se conservan y la interfaz prefiere cuatro fal
   assert.match(componente, /accessibilityLabel=\{decorativa \? undefined : editorial\.alt\}/);
   assert.doesNotMatch(componente, /oferta\.imagenAlt/);
   assert.match(componente, /Proveedor solo del escaparate · no admite seguimiento/);
-  assert.match(componente, /Producto puede seguir activo|producto puede seguir activo/i);
+  assert.match(componente, /La referencia sigue documentada; ha vencido la actualización de sus cifras/);
+  assert.doesNotMatch(componente, /Producto activo/);
   assert.match(componente, /permanente-vencida/);
   assert.match(componente, /accessibilityLabel=\{etiquetaAccesible\}/);
   assert.match(componente, /avisosCriticos\(oferta\)/);

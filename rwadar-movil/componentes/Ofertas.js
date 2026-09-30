@@ -5,7 +5,7 @@ import {
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ETIQUETA_EDITORIAL, imagenEditorial } from '../fixtures/imagenes-editoriales';
 import { vigenciaOferta } from '../lib/datos';
-import { ofertaConCifrasVigentes } from '../lib/verificacion-local';
+import { documentacionOferta, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 
 function useFechaOferta() {
@@ -31,7 +31,7 @@ function useFechaOferta() {
 
 function datoDestacado(oferta) {
   if (oferta.cifrasPendientes) {
-    return { etiqueta: 'CIFRAS NO VIGENTES', valor: 'Pendiente de revisión' };
+    return { etiqueta: 'CONDICIONES ACTUALES', valor: 'Consultar emisor' };
   }
   if (oferta.tipo === 'rendimiento') {
     return {
@@ -132,6 +132,7 @@ function ImagenOferta({ oferta, grande = false, decorativa = false, estilo }) {
 export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
   const ahora = useFechaOferta();
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
+  const documentacion = documentacionOferta(ofertaOriginal, ahora);
   const vigencia = vigenciaOferta(oferta, ahora);
   const destacado = datoDestacado(oferta);
   const rentabilidadSec = rentabilidadSecundaria(oferta);
@@ -143,6 +144,7 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
     oferta.patrocinada ? 'Contenido patrocinado; no altera el ranking' : null,
     `${destacado.etiqueta}: ${destacado.valor}`,
     destacado.referencia,
+    documentacion?.etiqueta,
     rentabilidadSec ? `Rentabilidad ajustada o publicada: ${rentabilidadSec}` : null,
     vigencia.etiqueta,
     primerCritico
@@ -171,9 +173,10 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
         {oferta.patrocinada ? <Text style={e.patrocinada}>PATROCINADA</Text> : null}
         <Text style={e.plataforma} numberOfLines={1}>{oferta.plataformaNombre}</Text>
         <Text style={e.titulo} numberOfLines={2}>{oferta.titulo}</Text>
+        {documentacion ? <Text style={e.referencia}>{documentacion.etiqueta}</Text> : null}
         <View style={e.datosCompactos}>
           <View style={e.datoCompacto}>
-            <Text style={e.datoEtiqueta} numberOfLines={1}>{etiquetaDatoCompacta(oferta.tipo)}</Text>
+            <Text style={e.datoEtiqueta} numberOfLines={1}>{oferta.cifrasPendientes ? destacado.etiqueta : etiquetaDatoCompacta(oferta.tipo)}</Text>
             <Text style={e.datoValor} numberOfLines={1}>{destacado.valor}</Text>
           </View>
           {rentabilidadSec ? (
@@ -216,6 +219,7 @@ export function DetalleOferta({ oferta: ofertaOriginal, onCerrar, onAbrirEnlace,
   const ahora = useFechaOferta();
   if (!ofertaOriginal) return null;
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
+  const documentacion = documentacionOferta(ofertaOriginal, ahora);
   const vigencia = vigenciaOferta(oferta, ahora);
   const destacado = datoDestacado(oferta);
   const rentabilidadSec = rentabilidadSecundaria(oferta);
@@ -243,6 +247,7 @@ export function DetalleOferta({ oferta: ofertaOriginal, onCerrar, onAbrirEnlace,
               <Text style={e.proveedorMeta}>
                 {[oferta.categoria, oferta.pais].filter(Boolean).join(' · ')}
               </Text>
+              {documentacion ? <Text style={e.referencia}>{documentacion.etiqueta}</Text> : null}
               <Text style={[e.proveedorEstado, !plataformaCanonica && e.proveedorSolo]}>
                 {plataformaCanonica
                   ? 'Plataforma incluida también en el radar canónico'
@@ -266,20 +271,34 @@ export function DetalleOferta({ oferta: ofertaOriginal, onCerrar, onAbrirEnlace,
               <Text style={[e.estadoTitulo, tonoVigencia(vigencia.estado)]}>{vigencia.etiqueta}</Text>
               <Text style={e.estadoTexto}>
                 {vigencia.estado === 'bloqueada'
-                  ? 'La revisión actual no permite demostrar que la oferta siga abierta. No uses las cifras del snapshot como si fueran vigentes.'
+                  ? 'No está confirmada la admisión de nuevas inversiones. Consulta la apertura y las condiciones actuales con el emisor.'
                   : vigencia.estado === 'conflicto'
-                    ? 'Las superficies oficiales consultadas se contradicen. RWAdar retira las cifras hasta recibir una fuente inequívoca.'
+                    ? 'Las fuentes consultadas se contradicen. Conservamos la referencia y sus avisos, pero ocultamos las cifras hasta poder contrastarlas.'
                     : vigencia.estado === 'permanente-vencida'
-                  ? 'El producto puede seguir activo, pero su revisión editorial ha vencido. Las cifras se retiran hasta contrastar precio, rentabilidad y condiciones en la fuente.'
+                  ? `${documentacion ? 'La referencia sigue documentada; ha vencido la actualización de sus cifras.' : 'Ha vencido la actualización de las cifras.'} Consulta precio, rentabilidad y disponibilidad actuales con el emisor.`
                   : vigencia.estado === 'vencida'
-                    ? 'La ventana editorial ha vencido. Revalida precio, disponibilidad y condiciones en la fuente antes de actuar.'
+                    ? `${documentacion ? 'La referencia sigue documentada; ha vencido la actualización de sus cifras.' : 'Ha vencido la actualización de las cifras.'} Consulta precio, rentabilidad y disponibilidad actuales con el emisor.`
                   : cifraVencida
-                    ? 'Las cifras están ocultas porque falta una revisión con fecha y vigencia válidas.'
+                    ? 'No hay cifras con fecha y vigencia válidas. Consulta las condiciones actuales con el emisor.'
                   : oferta.permanente
-                    ? 'El producto permanece en el escaparate, pero la cifra conserva su propia fecha de revisión.'
+                    ? 'Estas cifras conservan su fecha de revisión. Su vigencia no garantiza la disponibilidad actual ni que puedas contratar el producto.'
                     : `Información comprobada el ${oferta.verificadaEl || 'día indicado en la fuente'}.`}
               </Text>
             </View>
+
+            {documentacion?.descripcion ? (
+              <View style={e.documentacion}>
+                <Text style={e.avisosTitulo}>FICHA DOCUMENTADA · {fechaVerificacionLocalVisible(documentacion.fecha)}</Text>
+                <Text style={e.estadoTexto}>{documentacion.descripcion}</Text>
+                {documentacion.caracteristicas.length ? (
+                  <View style={[e.tabla, e.tablaDocumental]}>
+                    {documentacion.caracteristicas.map((caracteristica, indice) => (
+                      <FilaMetrica key={`documentacion-${indice}`} {...caracteristica} />
+                    ))}
+                  </View>
+                ) : null}
+              </View>
+            ) : null}
 
             {oferta.resumen ? <Text style={e.parrafo}>{oferta.resumen}</Text> : null}
             <View style={e.destacado}>
@@ -298,6 +317,31 @@ export function DetalleOferta({ oferta: ofertaOriginal, onCerrar, onAbrirEnlace,
               <View style={e.tabla}>
                 {oferta.metricas.map((metrica, indice) => (
                   <FilaMetrica key={`${metrica.etiqueta}-${indice}`} {...metrica} />
+                ))}
+              </View>
+            ) : null}
+
+            {documentacion?.referencias.length ? (
+              <View style={e.documentacion}>
+                <Text style={e.avisosTitulo}>REFERENCIAS FECHADAS</Text>
+                <Text style={e.estadoTexto}>
+                  Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.
+                </Text>
+                {documentacion.referencias.map((referencia, indice) => (
+                  <View style={e.referenciaDocumental} key={`referencia-${indice}`}>
+                    <Text style={e.datoEtiqueta}>{referencia.etiqueta}</Text>
+                    <Text style={e.datoValor}>{referencia.valor}</Text>
+                    <Text style={e.referencia}>
+                      Fecha del dato: {referencia.fechaDato ? fechaVerificacionLocalVisible(referencia.fechaDato) : 'no indicada en la fuente'}
+                    </Text>
+                    <Text style={e.referencia}>Consultado el {fechaVerificacionLocalVisible(referencia.fechaConsulta)}</Text>
+                    <Text style={e.referencia}>{referencia.alcance}</Text>
+                    <Pressable onPress={() => onAbrirEnlace(referencia.fuente)}
+                      style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
+                      accessibilityRole="link" accessibilityLabel={`Fuente de ${referencia.etiqueta}: ${referencia.fuente}`}>
+                      <Text style={e.enlaceSecundarioTxt}>Fuente: {referencia.fuente} ↗</Text>
+                    </Pressable>
+                  </View>
                 ))}
               </View>
             ) : null}
@@ -341,10 +385,10 @@ export function DetalleOferta({ oferta: ofertaOriginal, onCerrar, onAbrirEnlace,
                 <Text style={e.enlaceSecundarioTxt}>Abrir ficha oficial ↗</Text>
               </Pressable>
             ) : null}
-            {oferta.fuentesActuales?.length ? (
+            {documentacion ? (
               <View>
-                <Text style={e.avisosTitulo}>FUENTES CONSULTADAS · {oferta.verificadaEl}</Text>
-                {oferta.fuentesActuales.map((url, indice) => (
+                <Text style={e.avisosTitulo}>FUENTES CONSULTADAS · {documentacion.fecha}</Text>
+                {documentacion.fuentes.map((url, indice) => (
                   <Pressable key={url} onPress={() => onAbrirEnlace(url)}
                     style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
                     accessibilityRole="link" accessibilityLabel={`Abrir fuente ${indice + 1}: ${url}`}>
@@ -493,6 +537,9 @@ const e = StyleSheet.create({
   estadoCajaVencida: { backgroundColor: C.coral10 },
   estadoTitulo: { ...T.etiqueta, color: C.tx, marginBottom: 6 },
   estadoTexto: { ...T.menor, color: C.tx2 },
+  documentacion: { marginVertical: 14 },
+  tablaDocumental: { marginTop: 12 },
+  referenciaDocumental: { backgroundColor: C.sup2, borderRadius: R.m, padding: 13, marginTop: 12 },
   parrafo: { ...T.cuerpo, color: C.tx, marginVertical: 18 },
   destacado: { backgroundColor: C.sup2, borderRadius: R.m, padding: 15, marginBottom: 14 },
   referencia: { color: C.tx2, fontSize: 11, lineHeight: 15, marginTop: 4 },
