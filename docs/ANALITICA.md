@@ -83,12 +83,19 @@ configuración del sitio de Web Analytics, sin eliminar el proyecto Pages.
 ## Ingresos por anuncios
 
 Web Analytics no muestra dinero. Si se aprueba AdSense para la web/PWA, los
-ingresos e impresiones se consultarán en AdSense. Si se publica la app nativa
-con AdMob, se consultarán en AdMob. La lectura del 30/09 del chat coordinado
-mostró una cuenta AdMob existente con saldo 0 EUR, perfil de pagos incompleto
-y ninguna aplicación añadida. No acredita aprobación para monetizar RWAdar:
-no hay SDK publicitario activo ni ingresos acreditados. El estado del panel
-no debe confundirse con la pantalla de alta histórica del 28/09.
+ingresos e impresiones se consultarán en AdSense. Cuando se integre y active
+AdMob en la app nativa, se consultarán en AdMob.
+
+La primera lectura del 30/09, entre las 12:02 y 12:05 UTC, mostró una cuenta
+AdMob existente con saldo 0 EUR, perfil de pagos incompleto y ninguna app.
+Ese es el corte inicial. Después, con autorización específica, se crearon
+las dos fichas de RWAdar, Android e iOS; el listado confirma dos fichas en
+estado «Debe revisarse». **No crear duplicados.** El perfil de pagos sigue
+incompleto: hay cero unidades publicitarias, ningún SDK integrado y la
+monetización continúa desactivada. No hay anuncios servidos ni ingresos
+acreditados. Las fichas no acreditan aprobación publicitaria o publicación
+en las tiendas. El detalle y la evidencia privada se referencian desde
+`ENTREGA-TIENDAS-Y-ANUNCIOS.md`; la pantalla de alta del 28/09 es histórica.
 
 Separar ingresos estimados, ingresos finalizados y pagos realmente recibidos.
 No usar visitas de Cloudflare para inventar impresiones, eCPM o beneficios.

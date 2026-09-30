@@ -36,13 +36,35 @@ los permisos necesarios con otra migración revisada, nunca GRANT ALL.
 
 ## Catálogo y métricas
 
-La revisión publicada conserva sus fechas reales: plataformas del 28/09 y ofertas
-del 27/09. La vigencia máxima del lote es el 05/10 inclusive; después se oculta si
-no se revisa. Una actualización debe contrastar fuentes, importar un nuevo borrador,
-probarlo y aprobarlo. Nunca cambiar una fecha para aparentar una revisión nueva.
-El corte y sus consultas están en `rwadar-app/data/verificaciones/2026-09-28/`.
-Se genera su borrador reproducible con `node rwadar-app/preparar-catalogo-publico.mjs --revision 2026-09-28 --salida rwadar-app/data/importaciones/<nuevo-directorio>/catalogo.sql`.
-La salida nunca aprueba datos ni escribe en Supabase por sí sola.
+El catálogo vigente es V2: 26 plataformas y 49 referencias, distribuidas en
+24 principales, 21 del secundario y 4 en preparación. Su fuente versionada es
+`rwadar-app/data/verificaciones/2026-09-30-v2/`, con manifiesto explícito
+`manifiesto-catalogo.json`. El radar conserva el corte del 28/09, la documentación
+se actualizó el 30/09 y cada cifra mantiene su fecha propia. Secundario y
+preparación no acreditan liquidez ni apertura. La vigencia máxima del lote es
+el 05/10 inclusive; después se oculta si no se revisa. Una actualización debe
+contrastar fuentes, importar un nuevo borrador, probarlo y aprobarlo. Nunca
+cambiar una fecha para aparentar una revisión nueva.
+
+La reconstrucción local del borrador del snapshot V2 del 30/09 utiliza las
+funciones existentes de `rwadar-app/catalogo-publico.js`:
+`cargarFuentesLocales(raiz, { revision: '2026-09-30', versionEsquema: 2 })`
+y `construirSqlImportacion(fuentes)`. El SQL y su identidad reproducible están
+en `rwadar-app/data/importaciones/catalogo-2026-09-30-v2/`. Ese snapshot ya fue
+aplicado y aprobado; reconstruirlo no crea una revisión nueva ni justifica
+repetir su importación o migración. No renueva fechas ni escribe en Supabase.
+Una revisión futura exige fuentes nuevas contrastadas y un borrador distinto;
+la importación y aprobación son pasos remotos independientes. Los clientes
+nuevos leen V2 y no vuelven silenciosamente a V1 ni a un lote retirado.
+
+V1 se mantiene para los APK anteriores, con 26 plataformas y 28 ofertas y sus
+cifras/fechas históricas conservadas. La reparación del 30/09 está en
+`rwadar-app/data/verificaciones/2026-09-30/`. El corte original de plataformas
+del 28/09 y ofertas del 27/09 queda como contexto histórico; la orden
+`node rwadar-app/preparar-catalogo-publico.mjs --revision 2026-09-28 --salida rwadar-app/data/importaciones/<nuevo-directorio>/catalogo.sql`
+reproduce ese V1 histórico, no el V2 vigente: ese CLI no acepta un selector V2.
+El resultado publicado y las pruebas están en `docs/CATALOGO-V2-2026-09-30.md`.
+
 El panel de visitas y las limitaciones de medición están en `docs/ANALITICA.md`.
 Las estadísticas de web no equivalen a usuarios únicos ni cubren el binario Android.
 
