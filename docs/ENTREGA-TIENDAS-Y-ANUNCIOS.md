@@ -6,14 +6,14 @@ RWAdar en una tienda o red publicitaria.
 
 ## Cuentas comprobadas
 
-- Google Play Console, cuenta `victorjorquesgranero@gmail.com`: la visita del 28/09 llevó
+- Google Play Console, cuenta elegida por el titular: las visitas del 28/09 y del 30/09 llevaron
   a **Crear una cuenta de desarrollador**. No hay un panel de desarrollador
   operativo acreditado en esta cuenta. No se aceptaron contratos ni se pagó
   la inscripción.
 - AdMob: la lectura del 30/09, entre las 12:02 y 12:05 UTC, realizada por el chat coordinado en el Chrome
   existente mostró una cuenta ya creada, saldo 0 EUR y «Configuración de pagos
   incompleta». La vista Todas las aplicaciones mostraba «Añadir mi primera
-  aplicación»: RWAdar todavía no está registrada. No se creó una cuenta duplicada
+  aplicación»: en ese corte RWAdar todavía no estaba registrada. No se creó una cuenta duplicada
   ni se rellenaron datos, aceptaron contratos o activaron anuncios en esta lectura.
   El corte del 28/09, con pantalla de alta y casilla contractual pendiente,
   es evidencia histórica; no describe el estado actual de la cuenta. La
@@ -23,6 +23,24 @@ RWAdar en una tienda o red publicitaria.
   minimizado del resultado DOM, sin captura ni AX bruto con identificadores.
   El intento de abrir «Solucionarlo» quedó en «Configurando facturación»;
   no se obtuvo un formulario utilizable ni se atribuye una causa al aviso.
+- AdMob, actualización posterior del 30/09: tras autorización específica se
+  crearon las dos fichas, Android e iOS. El listado real confirma 1–2 de 2,
+  estado «Debe revisarse», sin tienda/paquete vinculado ni bloques activos.
+  El perfil de pagos sigue incompleto. Los IDs cliente reales y la evidencia
+  minimizada están en `rwadar-cuentas-20260930/VERIFICACION-CUENTAS.md`, fuera
+  del artefacto público. No hay SDK, anuncios servidos o ingresos acreditados.
+- Apple: el titular completó el acceso oficial. Account invita a inscribirse
+  en Developer; no hay membresía activa o equipo de distribución acreditados.
+  No se aceptó la inscripción ni se pagó. La consulta autorizada sobre el
+  directorio editorial y el tipo de cuenta se envió por ContactUs; confirmación
+  «Thanks for contacting us», caso `102981629030`. Esto acredita el envío,
+  sin respuesta o aceptación de la app todavía.
+- Google, consulta posterior del 30/09: el formulario oficial de problemas de
+  creación/acceso confirmó «Your email has been sent», sin número de caso.
+  Se enviaron las tres preguntas autorizadas en traducción abreviada, sin
+  adjuntos ni ID de desarrollador inventado. El envío no crea una cuenta de
+  Play y la respuesta sigue pendiente. Las dos consultas ya enviadas no deben
+  repetirse.
 
 Evidencia histórica de alta: `rwadar-contactos-2026-09-27/admob-alta-pendiente.png`.
 No hay ID de editor/app publicitario inventado, SDK de anuncios ni cobros activos.
