@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-09-28",
+  "actualizadoEl": "2026-09-30",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -13,8 +13,8 @@
   "comisionVariableSobreInversion": false,
   "nota": "Lanzamiento público expresamente autorizado. Corte editorial gratuito con catálogo real de solo lectura, identidad completa, imágenes propias y analítica agregada web. Publicidad y cobros permanecen desactivados hasta completar la configuración y revisión comercial.",
   "revisionAprobada": {
-    "commit": "6c5e395a432a4ed5e58d96dcfcd7b1eebd3c9ba3",
-    "contenidoSha256": "sha256:d6aa40abb2b25ee3deec8508b85eaf77c90ab544279275fb610e01eb22ef1ece",
+    "commit": "db65073e67128021db7757762eaeadbc026ffe87",
+    "contenidoSha256": "sha256:e6d50816e44159085e796429005d3031805f8d11a043324fe5e82c01c2fd30a4",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
@@ -66,7 +66,7 @@
     },
     "catalogo_actual_y_citable": {
       "estado": "aprobado",
-      "detalle": "Revisión 80159d96-dcb8-b476-ae10-bc9cd2a45c83 aprobada en Supabase el 28/09/2026 a las 08:32 UTC. Radar contrastado hoy: 26 plataformas, 70 fuentes, 28 referencias y 4 descartes. Ofertas conservadas con fecha 27/09. Lote vigente hasta 05/10 inclusive.",
+      "detalle": "Revisión 1b910634-8d87-a657-33f7-63e22e28b6cc aprobada el 30/09/2026: 26 plataformas y 28 fichas documentadas con 52 referencias fechadas. Radar 28/09 y cifras 27/09 conservados; consultas nuevas de Spiko y DAKS separadas. Lote vigente hasta 05/10 inclusive. Borrador invisible para anon y REST completo comprobados.",
       "evidencias": [
         {
           "tipo": "fuente-primaria",
@@ -79,6 +79,12 @@
           "referencia": "rwadar-app/probar-catalogo-publico.mjs",
           "verificadoEl": "2026-09-28",
           "resumen": "76 pruebas locales aprobadas. Borrador remoto invisible bajo anon, fechas canónicas compatibles y catálogo aprobado 26/28; sincronizador REST real correcto."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CORRECCION-OFERTAS-2026-09-30.md",
+          "verificadoEl": "2026-09-30",
+          "resumen": "Migración SQL aplicada y contrato comprobado: documentación conservada al caducar cifras, cero permisos de mutación, 26/28 reales y fuentes fechadas."
         }
       ]
     },
@@ -95,8 +101,8 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "aprobado",
-      "detalle": "Servidor real y permisos comprobados. Preview 6a548507 validado por HTTP (54 recursos), navegador de escritorio y móvil (390 y 320 px), búsqueda, fuentes y comparación. APK8 firmado instalado en emulador Android API35: 26 plataformas, 28 referencias, búsqueda y ficha aprobadas en run36401384266. No se afirma prueba en todos los dispositivos ni publicación en tiendas.",
+      "estado": "en_progreso",
+      "detalle": "Versión del 28/09 validada en producción y APK8 instalado en emulador. Corrección del 30/09 en pruebas de preview y compilación APK9; no se presume verificación de esta entrega antes de finalizar. Revocación declarada por el titular y limitación de evidencia histórica separadas de las pruebas de la aplicación.",
       "evidencias": [
         {
           "tipo": "prueba",
