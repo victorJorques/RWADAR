@@ -1,0 +1,792 @@
+[
+  {
+    "slug": "caribe-1",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Plazo anunciado",
+        "valor": "30 meses",
+        "fechaDato": "2026-08-05",
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+        "alcance": "Duración descrita en el artículo corporativo fechado el 05/08/2026; no es un plazo restante calculado hoy. No confirma apertura."
+      },
+      {
+        "etiqueta": "Estimación anual por nivel",
+        "valor": "10 % / 11 % / 13 %",
+        "fechaDato": "2026-08-05",
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+        "alcance": "Estimaciones del proveedor para Reentel / Reentel Pro / Super Reentel, respectivamente, recogidas en el artículo corporativo del 05/08/2026. No garantizadas ni revalidadas como condiciones actuales."
+      },
+      {
+        "etiqueta": "Reparto descrito",
+        "valor": "Mensual, desde 90 días después del inicio de la cuenta del proyecto",
+        "fechaDato": "2026-08-05",
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+        "alcance": "Estructura publicada en el artículo corporativo; no acredita pagos realizados, disponibilidad ni condiciones actuales."
+      }
+    ]
+  },
+  {
+    "slug": "caribe-2",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Plazo anunciado",
+        "valor": "30 meses",
+        "fechaDato": "2026-08-05",
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+        "alcance": "Duración descrita en el artículo corporativo fechado el 05/08/2026; no es un plazo restante calculado hoy. No confirma apertura."
+      },
+      {
+        "etiqueta": "Estimación anual por nivel",
+        "valor": "11 % / 13 % / 18 %",
+        "fechaDato": "2026-08-05",
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+        "alcance": "Estimaciones del proveedor para Reentel / Reentel Pro / Super Reentel, respectivamente, recogidas en el artículo corporativo del 05/08/2026. No garantizadas ni revalidadas como condiciones actuales."
+      },
+      {
+        "etiqueta": "Reparto descrito",
+        "valor": "Rendimiento final al terminar el proyecto",
+        "fechaDato": "2026-08-05",
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+        "alcance": "Estructura publicada en el artículo corporativo; no acredita pagos realizados, disponibilidad ni condiciones actuales."
+      }
+    ]
+  },
+  {
+    "slug": "mf-one",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "APY observado",
+        "valor": "7,51 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mfone",
+        "alcance": "Instantánea indicativa y variable observada el 21/09/2026; la fuente no establece aquí una fecha de cálculo independiente. No se pudo revalidar en la consulta del 27/09/2026 y no representa rendimiento actual ni garantizado."
+      },
+      {
+        "etiqueta": "Comisión publicada · Gestión",
+        "valor": "0,60 % anual sobre AUM",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mfone",
+        "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+      },
+      {
+        "etiqueta": "Comisión publicada · Performance",
+        "valor": "0 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mfone",
+        "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+      }
+    ]
+  },
+  {
+    "slug": "mglobal",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Rendimiento histórico publicado",
+        "valor": "6,65 % · periodo 1–31 de julio",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mglobal",
+        "alcance": "La revisión del 21/09/2026 identifica expresamente un periodo histórico de julio. No es un rendimiento de septiembre ni se ha revalidado; se conserva sin inferir una fecha completa del dato."
+      },
+      {
+        "etiqueta": "Comisión publicada · Gestión",
+        "valor": "0,40 % anual sobre AUM",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mglobal",
+        "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+      }
+    ]
+  },
+  {
+    "slug": "fotovoltaica-greenpoint",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "100 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "6,11 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "fotovoltaica-cohotel",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "110 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "5,57 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "drautalresidenz-paternion",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "55 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "5,96 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "terreno-con-arrendamiento-billa",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Inversión mínima anunciada",
+        "valor": "1.000 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Importe mínimo total anunciado en la tarjeta individual, no precio por participación. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "5,07 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "apartamento-vacacional-hinterstoder-50",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "75 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "4,65 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "vivienda-stallhofstra-e-28-gratwein",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "65 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "4,42 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "vivienda-schwarzer-weg-18-graz",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "70 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "3,46 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "80 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "3,80 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "vivienda-pluddemanngasse-101-graz",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "84 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "3,58 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "local-de-estanco-klagenfurt",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "95 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "3,46 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "vivienda-sonnleithnergasse-2-viena",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "75 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "3,42 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "mwin",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "APY observado",
+        "valor": "3,17 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mwin",
+        "alcance": "Instantánea indicativa y variable observada el 21/09/2026; la fuente no establece aquí una fecha de cálculo independiente. No se pudo revalidar en la consulta del 27/09/2026 y no representa rendimiento actual ni garantizado."
+      },
+      {
+        "etiqueta": "Comisión publicada · Gestión",
+        "valor": "0,40 % anual sobre AUM",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mwin",
+        "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+      },
+      {
+        "etiqueta": "Comisión publicada · Performance",
+        "valor": "0 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mwin",
+        "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+      }
+    ]
+  },
+  {
+    "slug": "mtbill",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "APY observado",
+        "valor": "3,41 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mtbill",
+        "alcance": "Instantánea indicativa y variable observada el 21/09/2026; la fuente no establece aquí una fecha de cálculo independiente. No se pudo revalidar en la consulta del 27/09/2026 y no representa rendimiento actual ni garantizado."
+      },
+      {
+        "etiqueta": "Comisión publicada · Gestión",
+        "valor": "0 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mtbill",
+        "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+      },
+      {
+        "etiqueta": "Comisión publicada · Performance",
+        "valor": "5 % sobre el rendimiento",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-21",
+        "fuente": "https://midas.app/mtbill",
+        "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+      }
+    ]
+  },
+  {
+    "slug": "randhartingergasse-9-viena",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Precio desde anunciado",
+        "valor": "60 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual."
+      },
+      {
+        "etiqueta": "Distribución anual prevista anunciada",
+        "valor": "3,09 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      }
+    ]
+  },
+  {
+    "slug": "spiko-letras-del-tesoro-euro",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": {
+      "mostrada": "2,18 %",
+      "literal": "Anualizada a 30 días; NAV fechado el 27-09-2026. Variable, no garantizada."
+    },
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "actual",
+    "referencias": [
+      {
+        "etiqueta": "Rendimiento anualizado a 30 días observado",
+        "valor": "2,17 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://data.spiko.io/eutbl/",
+        "alcance": "Dato leído el 30/09/2026. La página no fecha por separado el cálculo del rendimiento; no se le atribuye la fecha del NAV. Rendimiento variable, no garantizado ni ejecutable."
+      },
+      {
+        "etiqueta": "Último NAV publicado",
+        "valor": "1,0597 EUR",
+        "fechaDato": "2026-09-28",
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://data.spiko.io/eutbl/",
+        "alcance": "La fuente fecha expresamente este valor liquidativo el 28/09/2026; la consulta del 30/09/2026 no transforma el dato en un NAV de ese día."
+      },
+      {
+        "etiqueta": "Suscripción inicial mínima publicada",
+        "valor": "1 EUR",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://data.spiko.io/eutbl/",
+        "alcance": "Condición mostrada durante la consulta; no prueba acceso específico desde España ni aceptación de una suscripción. Confirmar condiciones con el proveedor."
+      },
+      {
+        "etiqueta": "Gestión publicada",
+        "valor": "0,25 %",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://data.spiko.io/eutbl/",
+        "alcance": "La ficha de producto describe esta comisión como anual. Condición observada; no se inventa una fecha de entrada en vigor."
+      }
+    ]
+  },
+  {
+    "slug": "prosegur-digital-gold",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "actual",
+    "referencias": []
+  },
+  {
+    "slug": "casa-de-outeiro",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Entrada total anunciada",
+        "valor": "Desde 2.000 EUR",
+        "fechaDato": "2026-09-17",
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://casadeouteiro.com/emision-capital/",
+        "alcance": "Mínimo total anunciado en la página del emisor, que muestra actualización del 17/09/2026. No confirma el antiguo precio unitario de 25 EUR, número de acciones ni disponibilidad actual."
+      }
+    ]
+  },
+  {
+    "slug": "aktionariat",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": {
+      "mostrado": "6,25 CHF",
+      "unidad": "último cruce · 22 sep 2026; no precio de ejecución garantizado"
+    },
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "actual",
+    "referencias": [
+      {
+        "etiqueta": "Último cruce publicado",
+        "valor": "6,25 CHF",
+        "fechaDato": "2026-09-22",
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://shares.aktionariat.com/",
+        "alcance": "La página sigue mostrando el cruce del 22/09/2026 a las 20:21. No es una cotización de ejecución garantizada ni prueba de liquidez actual."
+      }
+    ]
+  },
+  {
+    "slug": "boss-info",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "actual",
+    "referencias": [
+      {
+        "etiqueta": "Último cruce documentado",
+        "valor": "8,44 CHF",
+        "fechaDato": "2026-08-29",
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://shares.bossinfo.com/",
+        "alcance": "La revisión del 27/09/2026 seguía mostrando esta operación de agosto. Referencia histórica, no cotización ejecutable ni prueba de liquidez."
+      }
+    ]
+  },
+  {
+    "slug": "wemakeit",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": {
+      "mostrado": "8,38 CHF",
+      "unidad": "valor definido por el emisor, observado el 27-09-2026"
+    },
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "actual",
+    "referencias": [
+      {
+        "etiqueta": "Valor definido por el emisor",
+        "valor": "8,38 CHF",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://shares.wemakeit.com/",
+        "alcance": "La fuente lo identifica como valor definido por el emisor, no como último cruce. No se conoce aquí una fecha de cálculo independiente ni se garantiza ejecución."
+      }
+    ]
+  },
+  {
+    "slug": "servicehunter-quitt",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "actual",
+    "referencias": [
+      {
+        "etiqueta": "Último cruce documentado",
+        "valor": "8,00 CHF",
+        "fechaDato": "2026-07-23",
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://shares.quitt.ch/",
+        "alcance": "Operación de julio que continuaba mostrada en la consulta del 27/09/2026. No acredita precio ejecutable ni liquidez actual."
+      }
+    ]
+  },
+  {
+    "slug": "switzerlend",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": {
+      "mostrado": "68,01 CHF",
+      "unidad": "último cruce · 25 sep 2026; no precio de ejecución garantizado"
+    },
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "actual",
+    "referencias": [
+      {
+        "etiqueta": "Último cruce documentado",
+        "valor": "68,01 CHF",
+        "fechaDato": "2026-09-25",
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://shares.lend.ch/",
+        "alcance": "Última operación mostrada durante la revisión del 27/09/2026. Referencia histórica; no se garantiza ejecución ni liquidez actual."
+      }
+    ]
+  },
+  {
+    "slug": "twiliner",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": [
+      {
+        "etiqueta": "Calendario anunciado",
+        "valor": "Ronda prevista para el segundo semestre de 2026",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-27",
+        "fuente": "https://www.twiliner.com/en/partner-werden",
+        "alcance": "Previsión corporativa observada el 27/09/2026, sin una fecha completa de apertura confirmada. No acredita que se admitan suscripciones ni elegibilidad actual."
+      }
+    ]
+  },
+  {
+    "slug": "ehc-kloten",
+    "verificadaEl": "2026-09-27",
+    "vigenciaDias": 1,
+    "permanente": false,
+    "precio": null,
+    "rentabilidad": null,
+    "disponibleEs": null,
+    "puntuacion": null,
+    "estadoRevision": "no_verificable",
+    "referencias": []
+  }
+]

@@ -217,7 +217,6 @@
     "descripcion": "Instalación fotovoltaica GreenPoint, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A38J32",
       "https://app.brickwise.at/desktopWeb/marketplace",
       "https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details"
     ],
@@ -233,6 +232,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Photovoltaik Anlage GreenPoint mit Überschussbeteiligung (ISIN AT0000A38J32) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -267,6 +270,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -275,7 +286,6 @@
     "descripcion": "Referencia inmobiliaria Drautalresidenz en Paternion, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -290,6 +300,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Drautalresidenz, Paternion (ISIN AT0000A2YPQ0) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -324,6 +338,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -332,7 +354,6 @@
     "descripcion": "Terreno presentado con arrendamiento a BILLA, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -351,6 +372,10 @@
       {
         "etiqueta": "Entrada mínima",
         "valor": "Precio por participación y suscripción mínima son distintos. La documentación primaria anterior recoge 1.000 EUR; el artefacto menciona 100 EUR por participación."
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Betriebsgrundstück mit langfristigem BILLA-Mietvertrag (ISIN AT0000A3SE89) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -385,6 +410,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -393,7 +426,6 @@
     "descripcion": "Vivienda de Stallhofstraße 28, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -408,6 +440,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Wohnung, Stallhofstraße 28, Gratwein (ISIN AT0000A2WCD0) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -442,6 +478,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -450,7 +494,6 @@
     "descripcion": "Instalación fotovoltaica Cohotel, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A38J40",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -465,6 +508,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Photovoltaik Anlage Cohotel mit Überschussbeteiligung (ISIN AT0000A38J40) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -499,6 +546,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -507,7 +562,6 @@
     "descripcion": "Apartamento vacacional Hinterstoder 50, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -522,6 +576,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Ferien-Appartement, Hinterstoder 50 (ISIN AT0000A31KP7) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -556,6 +614,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -564,7 +630,6 @@
     "descripcion": "Vivienda de Plüddemanngasse 101, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -579,6 +644,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Wohnung, Plüddemanngasse 101, Graz (ISIN AT0000A2RAH5) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -613,6 +682,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -621,7 +698,6 @@
     "descripcion": "Local de estanco de Kohldorfer Straße 102, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -636,6 +712,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Trafik, Kohldorfer Straße 102, Klagenfurt (ISIN AT0000A2U5V3) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -670,6 +750,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -678,7 +766,6 @@
     "descripcion": "Vivienda de Schwarzer Weg 18, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -693,6 +780,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Wohnung, Schwarzer Weg 18, Graz (ISIN AT0000A2WCE8) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -727,6 +818,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -735,7 +834,6 @@
     "descripcion": "Vivienda de Sonnleithnergasse 2, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -750,6 +848,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Wohnung, Sonnleithnergasse 2, Wien 10. (ISIN AT0000A2T4D7) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -784,6 +886,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -792,7 +902,6 @@
     "descripcion": "Vivienda de Pottendorfer Straße 62, TOP 2.06, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A324B4",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -807,6 +916,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Wohnung, Pottendorfer Straße 62 TOP 2.06, Wr. Neustadt (ISIN AT0000A324B4) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -841,6 +954,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -932,7 +1053,6 @@
     "descripcion": "Inmueble de Randhartingergasse 9, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84",
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
     "caracteristicas": [
@@ -947,6 +1067,10 @@
       {
         "etiqueta": "Corte del artefacto",
         "valor": "28/09/2026"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre el mercado del proveedor. Busca Randhartingergasse 9, Wien (ISIN AT0000A2ZT84) y confirma su disponibilidad y condiciones con Brickwise."
       }
     ],
     "referencias": [
@@ -981,6 +1105,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Dato recogido en el artefacto aportado, con corte declarado del 28/09/2026. Es evidencia secundaria fechada; no confirma condiciones actuales, disponibilidad ni ejecución."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Mercado público de Brickwise",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },
@@ -3483,7 +3615,7 @@
     "descripcion": "Seguimiento de nuevas ofertas de Hausera. El artefacto declara que no había emisiones abiertas en su corte del 28/09/2026; no se extrapola esa observación al día actual.",
     "fuentes": [
       "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
-      "https://www.hausera.com/"
+      "https://hausera.io/"
     ],
     "caracteristicas": [
       {
@@ -3493,6 +3625,10 @@
       {
         "etiqueta": "Moneda indicada",
         "valor": "EUR"
+      },
+      {
+        "etiqueta": "Consulta del activo",
+        "valor": "El enlace abre la plataforma inmobiliaria Hausera. Sus próximas ofertas y condiciones deben consultarse directamente con el proveedor."
       }
     ],
     "referencias": [
@@ -3511,6 +3647,14 @@
         "fechaDato": "2026-09-28",
         "fechaConsulta": "2026-09-30",
         "alcance": "Resumen descriptivo del artefacto del 28/09/2026. Sus porcentajes, volúmenes y plazos no están aprobados como condiciones actuales. No es una invitación a contratar."
+      },
+      {
+        "etiqueta": "Destino de consulta comprobado",
+        "valor": "Plataforma inmobiliaria Hausera",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://hausera.io/",
+        "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable."
       }
     ]
   },

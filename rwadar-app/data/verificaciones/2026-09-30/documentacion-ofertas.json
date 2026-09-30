@@ -1,7 +1,7 @@
 {
   "caribe-1": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Referencia inmobiliaria Caribe 1 de Reental, presentada por el proveedor en Quintana Roo, México. La página corporativa describe el proyecto; su presencia documental no confirma que continúe la captación.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Referencia inmobiliaria Caribe 1 de Reental, presentada por el proveedor en Quintana Roo, México. La página corporativa describe el proyecto; su presencia documental no confirma que continúe la captación. El enlace abre el artículo oficial del proyecto, publicado el 05/08/2026. Describe el activo y sus condiciones anunciadas entonces; no acredita que la captación siga abierta.",
     "fuentes": [
       "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
       "https://www.reental.co/properties"
@@ -44,12 +44,20 @@
         "fechaConsulta": "2026-09-21",
         "fuente": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
         "alcance": "Estructura publicada en el artículo corporativo; no acredita pagos realizados, disponibilidad ni condiciones actuales."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el artículo oficial del proyecto, publicado el 05/08/2026. Describe el activo y sus condiciones anunciadas entonces; no acredita que la captación siga abierta.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "caribe-2": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Referencia inmobiliaria Caribe 2 de Reental, presentada por el proveedor como terrenos frente al mar en Chetumal, México. La página corporativa describe el proyecto; su presencia documental no confirma que continúe la captación.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Referencia inmobiliaria Caribe 2 de Reental, presentada por el proveedor como terrenos frente al mar en Chetumal, México. La página corporativa describe el proyecto; su presencia documental no confirma que continúe la captación. El enlace abre el artículo oficial del proyecto, publicado el 05/08/2026. Describe el activo y sus condiciones anunciadas entonces; no acredita que la captación siga abierta.",
     "fuentes": [
       "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
       "https://www.reental.co/properties"
@@ -92,6 +100,14 @@
         "fechaConsulta": "2026-09-21",
         "fuente": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
         "alcance": "Estructura publicada en el artículo corporativo; no acredita pagos realizados, disponibilidad ni condiciones actuales."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el artículo oficial del proyecto, publicado el 05/08/2026. Describe el activo y sus condiciones anunciadas entonces; no acredita que la captación siga abierta.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
@@ -184,8 +200,8 @@
     ]
   },
   "fotovoltaica-greenpoint": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Instalación fotovoltaica GreenPoint, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Instalación fotovoltaica GreenPoint, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace",
       "https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details"
@@ -220,12 +236,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "fotovoltaica-cohotel": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Instalación fotovoltaica Cohotel, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Instalación fotovoltaica Cohotel, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -259,12 +283,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "drautalresidenz-paternion": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Referencia inmobiliaria Drautalresidenz en Paternion, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Referencia inmobiliaria Drautalresidenz en Paternion, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -298,12 +330,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "terreno-con-arrendamiento-billa": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Terreno presentado con arrendamiento a BILLA, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Terreno presentado con arrendamiento a BILLA, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -337,12 +377,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "apartamento-vacacional-hinterstoder-50": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Apartamento vacacional Hinterstoder 50, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Apartamento vacacional Hinterstoder 50, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -376,12 +424,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "vivienda-stallhofstra-e-28-gratwein": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Vivienda de Stallhofstraße 28, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Vivienda de Stallhofstraße 28, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -415,12 +471,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "vivienda-schwarzer-weg-18-graz": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Vivienda de Schwarzer Weg 18, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Vivienda de Schwarzer Weg 18, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -454,12 +518,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Vivienda de Pottendorfer Straße 62, TOP 2.06, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Vivienda de Pottendorfer Straße 62, TOP 2.06, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -493,12 +565,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "vivienda-pluddemanngasse-101-graz": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Vivienda de Plüddemanngasse 101, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Vivienda de Plüddemanngasse 101, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -532,12 +612,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "local-de-estanco-klagenfurt": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Local de estanco de Kohldorfer Straße 102, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Local de estanco de Kohldorfer Straße 102, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -571,12 +659,20 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
   "vivienda-sonnleithnergasse-2-viena": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Vivienda de Sonnleithnergasse 2, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Vivienda de Sonnleithnergasse 2, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -610,6 +706,14 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },
@@ -711,8 +815,8 @@
     ]
   },
   "randhartingergasse-9-viena": {
-    "revisadaEl": "2026-09-27",
-    "descripcion": "Inmueble de Randhartingergasse 9, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles.",
+    "revisadaEl": "2026-09-30",
+    "descripcion": "Inmueble de Randhartingergasse 9, identificado en una tarjeta individual de la aplicación pública de Brickwise durante la consulta del 27/09/2026. La ficha documental conserva lo anunciado entonces sin afirmar que hoy haya participaciones disponibles. El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace"
     ],
@@ -746,6 +850,14 @@
         "fechaConsulta": "2026-09-27",
         "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual."
+      },
+      {
+        "etiqueta": "Destino de consulta",
+        "valor": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise.",
+        "fechaDato": null,
+        "fechaConsulta": "2026-09-30",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+        "alcance": "Comprobación del enlace de acceso el 30/09/2026. No revalida las cifras financieras, la captación ni la disponibilidad del activo."
       }
     ]
   },

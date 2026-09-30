@@ -1,0 +1,84 @@
+{
+  "versionEsquema": 1,
+  "finalizadaEl": "2026-09-30T09:48:12Z",
+  "alcance": "Lectura de los 21 enlaces documentales individuales de Reental en documentacion-ofertas.json y dos destinos generales oficiales. No comprende Caribe 2 del catálogo V1; ese caso lo reproduce el agente principal.",
+  "archivoOrigen": "documentacion-ofertas.json",
+  "metodo": {
+    "seleccion": "Claves reental-secundario-*; primer elemento de fuentes que comienza por https://www.reental.co/properties/.",
+    "comprobacion": "Invoke-WebRequest público de solo lectura. Captura de código HTTP, title, primer h1 y longitud del HTML. No se iniciaron sesiones, conectaron carteras ni ejecutaron contratos.",
+    "interpretacion": "HTTP 200 y title/h1 correspondiente acredita que la página documental del activo existe y se leyó su HTML. No acredita disponibilidad de tokens ni funcionamiento de operaciones P2P.",
+    "crawling": "El lector web devolvió Cache miss para Miami 1, Houston 1 y Houston 2. Los tres respondieron HTTP 200 con title/h1 correctos en la lectura directa. No se clasifican como 404 ni como enlaces rotos.",
+    "webPrimarioLeido": [
+      "https://www.reental.co/properties",
+      "https://p2p.rnt.finance/",
+      "https://www.reental.co/properties/1787852371029-7af3abf7-654e-4603-8f13-7febae6d1ebc-carolina-del-norte-1",
+      "https://www.reental.co/properties/1788186156723-effc8261-b6e5-4bcb-bc9b-0cc8a3669786-opportunity-2",
+      "https://www.reental.co/properties/1787852371041-91af96a4-088a-43b0-8f1b-870fb1990f70-miami-5",
+      "https://www.reental.co/properties/1787853287296-05055284-03bb-44ac-8ecb-c7969c05fcda-san-antonio-1"
+    ]
+  },
+  "resumen": {
+    "individualesRevisados": 21,
+    "individualesHttp200ConIdentidad": 21,
+    "individualesHttp404": 0,
+    "generalesRevisados": 2,
+    "generalesHttp200": 2,
+    "sustitucionesRecomendadas": 0,
+    "accion": "Conservar los 21 destinos documentales actuales. Mantener separada la acción de consultar la ficha documental y la acción de buscar el activo por nombre en el P2P."
+  },
+  "individuales": [
+    {"slug":"reental-secundario-miami-1","url":"https://www.reental.co/properties/1787866211976-3b2d048e-a885-4915-a0bd-d228f55669f8-miami-1","status":200,"title":"Inmueble - Miami 1","h1":"Miami 1","caracteresHtml":107965},
+    {"slug":"reental-secundario-houston-2","url":"https://www.reental.co/properties/1787860261558-32021c80-5bc7-437f-a3ab-46491aa68f1c-houston-2","status":200,"title":"Inmueble - Houston 2","h1":"Houston 2","caracteresHtml":109288},
+    {"slug":"reental-secundario-houston-1","url":"https://www.reental.co/properties/1787860996401-df29d003-1e5d-4b61-b4e4-ecd4fe23c3a6-houston-1","status":200,"title":"Inmueble - Houston 1","h1":"Houston 1","caracteresHtml":110164},
+    {"slug":"reental-secundario-san-antonio-1","url":"https://www.reental.co/properties/1787853287296-05055284-03bb-44ac-8ecb-c7969c05fcda-san-antonio-1","status":200,"title":"Inmueble - San Antonio 1","h1":"San Antonio 1","caracteresHtml":115298},
+    {"slug":"reental-secundario-atlanta-1","url":"https://www.reental.co/properties/1787859836487-31a111a4-88e6-4942-a299-02d96d0c6a3c-atlanta-1","status":200,"title":"Inmueble - Atlanta 1","h1":"Atlanta 1","caracteresHtml":109694},
+    {"slug":"reental-secundario-houston-3","url":"https://www.reental.co/properties/1787859843516-25fd8701-69a9-4e39-ab20-28b8414b7228-houston-3","status":200,"title":"Inmueble - Houston 3","h1":"Houston 3","caracteresHtml":110849},
+    {"slug":"reental-secundario-proyecto-100","url":"https://www.reental.co/properties/1787856383323-4dd13b10-c2ac-434e-86d7-c4f8c87c10ee-proyecto-100","status":200,"title":"Inmueble - Proyecto 100","h1":"Proyecto 100","caracteresHtml":111513},
+    {"slug":"reental-secundario-miami-3","url":"https://www.reental.co/properties/1787863904813-d4526acf-f44b-47ea-84be-13360b89fdf0-miami-3","status":200,"title":"Inmueble - Miami 3","h1":"Miami 3","caracteresHtml":108905},
+    {"slug":"reental-secundario-granada-3","url":"https://www.reental.co/properties/1787858322699-6ae8ab8c-bd98-4cb8-934b-426d08565080-granada-3","status":200,"title":"Inmueble - Granada 3","h1":"Granada 3","caracteresHtml":111943},
+    {"slug":"reental-secundario-carolina-del-norte-1","url":"https://www.reental.co/properties/1787852371029-7af3abf7-654e-4603-8f13-7febae6d1ebc-carolina-del-norte-1","status":200,"title":"Inmueble - Carolina del Norte 1","h1":"Carolina del Norte 1","caracteresHtml":113197},
+    {"slug":"reental-secundario-abu-dhabi-1","url":"https://www.reental.co/properties/1787855475218-87f4dc55-7908-40fe-af98-5b0df656d676-abu-dhabi-1","status":200,"title":"Inmueble - Abu Dhabi 1","h1":"Abu Dhabi 1","caracteresHtml":114099},
+    {"slug":"reental-secundario-rentas-3","url":"https://www.reental.co/properties/1788424803785-5ee312c8-8c80-40ec-84c9-eff7c31dfb73-rentas-3","status":200,"title":"Inmueble - Rentas 3","h1":"Rentas 3","caracteresHtml":111970},
+    {"slug":"reental-secundario-miami-2","url":"https://www.reental.co/properties/1787864202186-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2","status":200,"title":"Inmueble - Miami 2","h1":"Miami 2","caracteresHtml":110235},
+    {"slug":"reental-secundario-miami-5","url":"https://www.reental.co/properties/1787852371041-91af96a4-088a-43b0-8f1b-870fb1990f70-miami-5","status":200,"title":"Inmueble - Miami 5","h1":"Miami 5","caracteresHtml":113235},
+    {"slug":"reental-secundario-rentas-1","url":"https://www.reental.co/properties/1787856322980-e1042bfc-0830-4e36-9a5a-bd37b59ddeca-rentas-1","status":200,"title":"Inmueble - Rentas 1","h1":"Rentas 1","caracteresHtml":110770},
+    {"slug":"reental-secundario-dania-beach-1","url":"https://www.reental.co/properties/1787857589693-447dad95-1362-49ac-b603-effd274a5eed-dania-beach-1","status":200,"title":"Inmueble - Dania Beach 1","h1":"Dania Beach 1","caracteresHtml":115187},
+    {"slug":"reental-secundario-rentas-2","url":"https://www.reental.co/properties/1787855172059-168248bf-3f35-4ba9-8021-f9a95c23583a-rentas-2","status":200,"title":"Inmueble - Rentas 2","h1":"Rentas 2","caracteresHtml":113042},
+    {"slug":"reental-secundario-pirineos-1","url":"https://www.reental.co/properties/1789120829529-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1","status":200,"title":"Inmueble - Pirineos 1","h1":"Pirineos 1","caracteresHtml":113155},
+    {"slug":"reental-secundario-levante-1","url":"https://www.reental.co/properties/1787857107976-e599d341-daf3-4b04-8dde-652fd27586ca-levante-1","status":200,"title":"Inmueble - Levante 1","h1":"Levante 1","caracteresHtml":109695},
+    {"slug":"reental-secundario-opportunity-2","url":"https://www.reental.co/properties/1788186156723-effc8261-b6e5-4bcb-bc9b-0cc8a3669786-opportunity-2","status":200,"title":"Inmueble - Opportunity 2","h1":"Opportunity 2","caracteresHtml":114935},
+    {"slug":"reental-secundario-malaga-6","url":"https://www.reental.co/properties/1787863663698-79ac0eff-2c25-46d8-877f-61b289829810-malaga-6","status":200,"title":"Inmueble - Málaga 6","h1":"Málaga 6","caracteresHtml":108507}
+  ],
+  "observacionesAdicionales": [
+    {
+      "comprobadaEl": "2026-09-30T09:55:34Z",
+      "alcance": "Dos alternativas oficiales legadas para las fichas Caribe 1 y Caribe 2 del catálogo V1. Comprobación adicional independiente de los 21 enlaces V2; sus recuentos no cambian.",
+      "metodo": "Invoke-WebRequest público de solo lectura; captura de HTTP, title y primer h1. No se modificó ningún catálogo ni servicio.",
+      "limite": "Son artículos corporativos oficiales, no pantallas de compra ni prueba de oferta actualmente disponible. No se revalidaron condiciones financieras y no deben obtener una fecha de vigencia nueva por comprobar el enlace.",
+      "alternativasLegadas": [
+        {
+          "activo": "Caribe 2",
+          "url": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+          "status": 200,
+          "title": "Caribe 2: Invest in beachfront lots in Chetumal | Reental | Reental",
+          "h1": "New investment opportunity: Caribe 2, luxury oceanfront lots in Chetumal",
+          "caracteresHtml": 104688,
+          "observacion": "Página oficial legible e identidad Caribe 2 explícita. Alternativa documental válida para sustituir el destino antiguo fallido, sujeto a la verificación del recorrido V1 por el agente principal."
+        },
+        {
+          "activo": "Caribe 1",
+          "url": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+          "status": 200,
+          "title": "Caribe 1: real estate investment in Quintana Roo with up to 32.5% estimated return | Reental",
+          "h1": "Invest in Caribe 1 with an estimated total return of up to 32.5%",
+          "caracteresHtml": 104821,
+          "observacion": "Página oficial legible e identidad Caribe 1 explícita. El porcentaje del título se conserva solo como texto observado, no como rentabilidad actual validada."
+        }
+      ]
+    }
+  ],
+  "generales": [
+    {"url":"https://www.reental.co/properties","status":200,"title":"Descubre Oportunidades de Inversión en Inmuebles Tokenizados | Reental","caracteresHtml":191881,"observacion":"Catálogo oficial legible con fichas y enlaces individuales; no es una ficha del activo ni una orden P2P."},
+    {"url":"https://p2p.rnt.finance/","status":200,"title":"RNT P2P | Plataforma P2P creada por la comunidad","caracteresHtml":18879,"observacion":"Página pública P2P legible con Comprar, Mis ofertas y términos. No se verificaron órdenes, conexión de cartera ni compras."}
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "fechaConsulta": "2026-09-30",
+  "metodo": "CUA en una pestaña Chrome propia; navegación a las URL ya observadas, estado de accesibilidad y captura visual cuando la SPA aún estaba cargando",
+  "alcance": "Lectura sin iniciar sesión, aceptar declaraciones legales ni efectuar operaciones. No se modificó catálogo ni Supabase.",
+  "http": "No se capturó el código HTTP en esta comprobación visual; los resultados no lo presuponen.",
+  "resultados": [
+    {
+      "url": "https://midas.app/mfone",
+      "urlFinal": "https://midas.app/mfone",
+      "titulo": "Midas | mF-ONE",
+      "resultado": "ruta_especifica_con_declaracion_legal",
+      "evidenciaVisible": "Confirm your eligibility; Eligibility & Jurisdiction; Confirm & Continue",
+      "limite": "No se pulsó Confirm & Continue. El título específico y el aviso visible no prueban el contenido posterior ni la elegibilidad personal.",
+      "error404Visible": false,
+      "reemplazoPropuesto": null
+    },
+    {
+      "url": "https://midas.app/mglo",
+      "urlFinal": "https://midas.app/mglo",
+      "titulo": "Midas | mGLO",
+      "resultado": "ruta_especifica_con_declaracion_legal",
+      "evidenciaVisible": "Confirm your eligibility; Eligibility & Jurisdiction; Confirm & Continue",
+      "limite": "No se aceptó la declaración. No se verificó contenido posterior ni elegibilidad.",
+      "error404Visible": false,
+      "reemplazoPropuesto": null
+    },
+    {
+      "url": "https://midas.app/mglobal",
+      "urlFinal": "https://midas.app/mglobal",
+      "titulo": "Midas | mGLOBAL",
+      "resultado": "ruta_especifica_con_declaracion_legal",
+      "evidenciaVisible": "Confirm your eligibility; Eligibility & Jurisdiction; Confirm & Continue",
+      "limite": "No se aceptó la declaración. No se verificó contenido posterior ni elegibilidad.",
+      "error404Visible": false,
+      "reemplazoPropuesto": null
+    },
+    {
+      "url": "https://midas.app/mtbill",
+      "urlFinal": "https://midas.app/mtbill",
+      "titulo": "Midas | mTBILL",
+      "resultado": "ruta_especifica_con_declaracion_legal",
+      "evidenciaVisible": "Confirm your eligibility; Eligibility & Jurisdiction; Confirm & Continue",
+      "limite": "No se aceptó la declaración. No se verificó contenido posterior ni elegibilidad.",
+      "error404Visible": false,
+      "reemplazoPropuesto": null
+    },
+    {
+      "url": "https://midas.app/mgloeuro",
+      "urlFinal": "https://midas.app/mgloeuro",
+      "titulo": "Midas | mGLOeuro",
+      "resultado": "ruta_especifica_con_declaracion_legal",
+      "evidenciaVisible": "Confirm your eligibility; Eligibility & Jurisdiction; Confirm & Continue",
+      "limite": "No se aceptó la declaración. No se verificó contenido posterior ni elegibilidad.",
+      "error404Visible": false,
+      "reemplazoPropuesto": null
+    },
+    {
+      "url": "https://aliuscap.com/invest/",
+      "urlFinal": "https://aliuscap.com/invest/",
+      "titulo": "Alius Capital - Financiación Participativa Tokenizada",
+      "resultado": "contenido_valido_tras_carga_spa",
+      "evidenciaVisible": "Oportunidades de inversión; Casa de Outeiro, En campaña, enlace a /projects/casa-de-outeiro; IOD | Bono 12% a 12 meses, En estudio, enlace a /projects/iodo1",
+      "observacion": "La observación inicial solo tenía el título. Tras carga aparecieron el aviso Cookiebot y las ofertas; se denegaron cookies opcionales.",
+      "error404Visible": false,
+      "reemplazoPropuesto": null
+    },
+    {
+      "url": "https://aliuscap.com/projects/casa-de-outeiro",
+      "urlFinal": "https://aliuscap.com/projects/casa-de-outeiro",
+      "titulo": "Alius Capital - Financiación Participativa Tokenizada",
+      "resultado": "ficha_especifica_valida",
+      "evidenciaVisible": "Casa de Outeiro (CdO), Campaña; Acciones; Precio por Token 25,00 €; Inversión mínima 2.000,00 €; 31 días restantes; Documento de emisión; enlace Invertir a dashboard.aliuscap.com",
+      "observacion": "La SPA tardó en presentar contenido. Se verificaron tanto la imagen de Casa de Outeiro como los campos de la ficha, sin entrar al dashboard.",
+      "error404Visible": false,
+      "reemplazoPropuesto": null
+    },
+    {
+      "url": "https://aliuscap.com/projects/iodo1",
+      "urlFinal": "https://aliuscap.com/projects/iodo1",
+      "titulo": "Alius Capital - Financiación Participativa Tokenizada",
+      "resultado": "ficha_especifica_valida_en_estudio",
+      "evidenciaVisible": "IOD | Bono 12% a 12 meses, para anticipo de cobros; IOD Occasio (IODO1); En estudio; Bono; Próximamente; Objetivo 120.000,00 €; Documento de emisión",
+      "observacion": "Primera observación Cargando; la imagen y el texto de la ficha se presentaron después. No se expresó interés ni se inició sesión.",
+      "error404Visible": false,
+      "reemplazoPropuesto": null
+    },
+    {
+      "url": "https://tokeninfo.aktionariat.com/twiliner",
+      "urlFinal": "https://tokeninfo.aktionariat.com/twiliner",
+      "titulo": "Twiliner AG Investor Page",
+      "resultado": "ficha_especifica_valida",
+      "evidenciaVisible": "Twiliner AG; Twiliner AG Shares SHA (LINES); Current Price CHF 3; Last trade 6 Nov 2025, 15:55; 188 Shareholders; More info www.twiliner.com",
+      "limite": "Última operación histórica, no una cotización ejecutable actual. La propia página advierte que compila varias fuentes sin verificación adicional.",
+      "error404Visible": false,
+      "reemplazoPropuesto": null
+    }
+  ],
+  "conclusion": "No se propone sustituir ninguna de estas nueve URL por un fallo inexistente. Alius y Twiliner tienen fichas específicas visibles; las cinco rutas Midas muestran título específico y un aviso legal, con el contenido posterior no comprobado. Caribe/Reental y Brickwise se revisan por otros agentes y quedan fuera de este archivo."
+}

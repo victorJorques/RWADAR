@@ -1,0 +1,119 @@
+{
+  "versionEsquema": 1,
+  "revisionId": "84e86962-d71a-5d70-4973-a7a35721a57a",
+  "hash": "84e86962d71a5d704973a7a35721a57a96640f10116ea56cbdb3766df49b9d53",
+  "fechaRadar": "2026-09-28",
+  "revisionAnterior": "1b910634-8d87-a657-33f7-63e22e28b6cc",
+  "plataformas": 26,
+  "ofertas": 28,
+  "destinosCorregidos": 14,
+  "estado": "borrador",
+  "deltaSha256": "c46bcae7103efa4dcfe93ed8b2e5d88e461728948ffb50b5439062c4d4ef57a5",
+  "cambios": [
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el mercado del proveedor. Busca el activo por su nombre o ISIN y confirma su disponibilidad y condiciones con Brickwise."
+    },
+    {
+      "slug": "caribe-1",
+      "url": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+      "fuente": "https://www.reental.co/en/corporate/caribe-1-beachfront-real-estate-investment-quintana-roo",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el artículo oficial del proyecto, publicado el 05/08/2026. Describe el activo y sus condiciones anunciadas entonces; no acredita que la captación siga abierta."
+    },
+    {
+      "slug": "caribe-2",
+      "url": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+      "fuente": "https://www.reental.co/en/corporate/caribbean-2-beachfront-lots-investment-chetumal",
+      "consultadaEl": "2026-09-30",
+      "nota": "El enlace abre el artículo oficial del proyecto, publicado el 05/08/2026. Describe el activo y sus condiciones anunciadas entonces; no acredita que la captación siga abierta."
+    }
+  ],
+  "revisionDestinoAnterior": "6b9b4d92-cad5-3549-6d50-87eda2cca42d",
+  "correccionAdicional": {
+    "slug": "casa-de-outeiro",
+    "campo": "plataformaNombre",
+    "valor": "Alius Capital",
+    "motivo": "Retirar atribución regulatoria PSFP/CNMV sin fuente primaria confirmada; no altera condiciones ni radar."
+  }
+}
