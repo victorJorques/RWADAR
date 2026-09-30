@@ -53,7 +53,7 @@ test('el rediseño conserva radar, 3D, detalle, descartes, avisos y privacidad',
   assert.doesNotMatch(codigo, /mostrarOfertas=\{MODO_LOCAL\}/);
   assert.match(codigo, /const escaparate = MODO_LOCAL \? \[/);
   assert.match(codigo, /cargarCatalogo\(\), cargarFuera\(\), \.\.\.escaparate, siguiendo\(\)/);
-  assert.match(codigo, /setRadar\(catalogo\.plataformas\); setFuera\(f\.datos\); setOfertas\(catalogo\.ofertas\)/);
+  assert.match(codigo, /setRadar\(catalogo\.plataformas\); setFuera\(f\.datos\); setOfertas\(principales\)/);
   assert.match(codigo, /\{!MODO_LOCAL \? \(/);
 });
 
@@ -102,22 +102,18 @@ test('las 52 imágenes originales se conservan y la interfaz prefiere cuatro fal
   assert.doesNotMatch(componente, /alternarSeguimiento|onSeguir|Seguir esta plataforma/);
 });
 
-test('ofertas separa principal y secundario y adapta una, dos o tres columnas al ancho', () => {
+test('ofertas separa tres colecciones y adapta una, dos o tres columnas al ancho', () => {
   const app = leer('App.js');
 
   assert.match(app, /const \[grupoOfertas, setGrupoOfertas\] = useState\('principales'\)/);
-  assert.match(app, /grupoOfertas === 'principales' && oferta\.tipo === 'secundario'/);
-  assert.match(app, /grupoOfertas === 'secundario' && oferta\.tipo !== 'secundario'/);
-  for (const [texto, grupo] of [
-    ['Principales', 'principales'],
-    ['Secundario', 'secundario'],
-    ['Todo', 'todo'],
-  ]) {
-    assert.match(app, new RegExp(
-      `<SegmentoOferta texto="${texto}" activo=\\{grupoOfertas === '${grupo}'\\}`
-      + `[\\s\\S]{0,180}seleccionarGrupoOfertas\\('${grupo}'\\)`
-    ));
+  for (const grupo of ['principales', 'secundario', 'en_camino']) {
+    assert.match(app, new RegExp(`catalogo\\.ofertas\\.filter\\(o => o\\.coleccion === '${grupo}'\\)`));
+    assert.match(app, new RegExp(`activo=\\{grupoOfertas === '${grupo}'\\}[\\s\\S]{0,180}seleccionarGrupoOfertas\\('${grupo}'\\)`));
   }
+  assert.match(app, /MODO_LOCAL \? <SegmentoOferta texto="Todo"/);
+  assert.match(app, /No confirman precio, liquidez ni disponibilidad actuales/);
+  assert.match(app, /No confirman apertura, fecha de lanzamiento ni acceso/);
+  assert.match(app, /setSecundario\(\[\]\); setEnCamino\(\[\]\)/);
 
   assert.match(app, /accessibilityLabel="Seleccionar grupo de ofertas"/);
   assert.match(app, /accessibilityRole="tab"/);

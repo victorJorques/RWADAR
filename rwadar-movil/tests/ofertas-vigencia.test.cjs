@@ -487,3 +487,223 @@ test('web y contrato compartido rechazan la misma documentación inválida y esc
   assert.match(html, /&lt;script&gt;/);
   assert.match(html, /a=1&amp;b=2/);
 });
+
+function loteV2Cliente() {
+  const fixture = require('../fixtures/escaparate-local.json');
+  const meta = { version_esquema: 2, plataformas_esperadas: 26, ofertas_esperadas: 49,
+    colecciones_esperadas: { principales: 24, secundario: 21, en_camino: 4 },
+    verificado_lote_el: '2026-09-21', vigencia_lote_dias: 7,
+    revision_id: '12345678-1234-4000-8000-123456789012' };
+  const plataformas = fixture.plataformas.map((p, i) => ({ ...structuredClone(p), ...structuredClone(meta),
+    verificada_el: p.verificada_el || p.verificadaEl,
+    verificacion_local: structuredClone(p.verificacionLocal),
+    plataforma_id: `00000000-0000-4000-8000-${String(i + 1).padStart(12, '0')}` }));
+  const ofertas = [];
+  for (const [coleccion, n] of Object.entries(meta.colecciones_esperadas)) {
+    for (let i = 0; i < n; i++) {
+      const o = structuredClone(fixture.ofertas[i]);
+      ofertas.push({ ...o, ...structuredClone(meta), coleccion,
+        slug: `${coleccion.replace('_', '-')}-${o.slug}`, plataforma_slug: o.plataformaSlug,
+        plataforma_nombre: o.plataformaNombre, verificada_el: o.verificadaEl,
+        vigencia_dias: o.vigenciaDias, estado_revision: coleccion === 'principales' ? o.estadoRevision : 'no_verificable',
+        disponible_es: null, puntuacion: null, fuentes_actuales: o.fuentesActuales, patrocinada: false,
+        precio: coleccion === 'principales' ? o.precio : null,
+        rentabilidad: coleccion === 'principales' ? o.rentabilidad : null,
+        documentacion: { revisadaEl: '2026-09-27', descripcion: 'Descripción estable del activo documental en esta prueba.',
+          fuentes: [o.url], caracteristicas: [{ etiqueta: 'Clase', valor: 'Activo documentado' }],
+          referencias: [{ etiqueta: 'Referencia histórica', valor: '9043 CHF', fechaDato: '2026-09-20',
+            fechaConsulta: '2026-09-27', fuente: o.url, alcance: 'Dato histórico de prueba, sin cotización ni oferta actual.' }] },
+      });
+    }
+  }
+  return { version: 2, plataformas, ofertas };
+}
+
+function webV2Cliente(lote, ahora = new Date('2026-09-27T12:00:00Z')) {
+  const { contexto, dialogo } = cargarWeb(ahora);
+  const clases = { add() {}, remove() {}, toggle() {} };
+  const nodos = Object.fromEntries(['emiLista', 'emisiones', 'movilOfertasFuturo', 'emisInformacion', 'movilOfertasEstado']
+    .map(id => [id, { innerHTML: '', textContent: '', classList: clases }]));
+  contexto.document.getElementById = id => id === 'escaparateDetalleLocal' ? dialogo : nodos[id];
+  Object.assign(contexto, { MODO_LOCAL_SEGURO: false, ESCAPARATE_LOCAL: null,
+    CATALOGO_EMBEBIDO_BLOQUEADO: false, emiCat: '', emiOrden: 'rent' });
+  cargarFuncionesWeb(contexto, ['CATMETA', 'ACCESOS', 'TICKETS', 'EDITORIAL_OFERTA_POR_CATEGORIA',
+    'textoDato', 'numeroRemoto', 'booleanoOpcional', 'cifraCatalogoRemota',
+    'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal', 'validarVerificacionLocal',
+    'metadatosCatalogoV2', 'validarManifiestoCatalogoV2', 'validarRevisionCatalogo',
+    'fechaOfertaPublicaValida', 'ofertaCatalogoRemota', 'plataformaRemota', 'plataformaCatalogoRemota',
+    'validarLoteCatalogoRemotoV2', 'comprobarCatalogoEmbebido', 'pintarEmisiones', 'seccionReferenciasCatalogo']);
+  const fecha = contexto.validarLoteCatalogoRemotoV2(lote.plataformas, lote.ofertas);
+  contexto.P = lote.plataformas.map(p => contexto.plataformaCatalogoRemota(p, fecha));
+  contexto.EMI = lote.ofertas.map(o => contexto.ofertaCatalogoRemota(o, fecha));
+  return { contexto, dialogo, nodos };
+}
+
+test('V2 recorre REST y normalizadores hasta tres grupos web y detalles documentales móviles', () => {
+  const lote = loteV2Cliente(), ahora = new Date('2026-09-27T12:00:00Z');
+  const { contexto, nodos, dialogo } = webV2Cliente(lote, ahora);
+  const adaptado = require('../lib/catalogo-remoto').adaptarCatalogoV2(lote, ahora);
+  assert.equal(contexto.comprobarCatalogoEmbebido(), true);
+  contexto.pintarEmisiones();
+  const html = nodos.emiLista.innerHTML;
+  assert.match(nodos.movilOfertasEstado.textContent, /24 de 24 principales/);
+  assert.match(html, /21 de 21 referencias/); assert.match(html, /4 de 4 referencias/);
+  assert.match(html, /No confirman precio, liquidez ni disponibilidad actuales/);
+  assert.match(html, /No confirman apertura, fecha de lanzamiento ni acceso/);
+  assert.doesNotMatch(html, /9043 CHF/);
+  const principales = html.slice(0, html.indexOf('<details class="catalogo-referencias"'));
+  assert.equal((principales.match(/data-oferta-detalle=/g) || []).length, 24);
+  const componentes = componentesMoviles(ahora);
+  for (const o of adaptado.ofertas.filter(o => o.coleccion !== 'principales')) {
+    contexto.abrirDetalleOfertaLocal(o.slug);
+    assert.equal(dialogo.open, true); assert.match(dialogo.innerHTML, /9043 CHF/);
+    assert.match(dialogo.innerHTML, /2026-09-20/); assert.match(dialogo.innerHTML, /2026-09-27/);
+    const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: o }));
+    assert.match(tarjeta, /REFERENCIA DOCUMENTAL/); assert.doesNotMatch(tarjeta, /9043 CHF/);
+    assert.match(textoRenderizado(componentes.DetalleOferta({ oferta: o })), /9043 CHF/);
+  }
+});
+
+test('V2 web y móvil rechazan a la vez manifiestos parciales, metadatos y colecciones adulteradas', () => {
+  const base = loteV2Cliente();
+  const { contexto } = webV2Cliente(base);
+  const adaptar = require('../lib/catalogo-remoto').adaptarCatalogoV2;
+  for (const cambiar of [
+    l => { l.ofertas.pop(); }, l => { l.plataformas.pop(); },
+    l => { l.ofertas[0].revision_id = '87654321-1234-4000-8000-123456789012'; },
+    l => { l.ofertas[0].colecciones_esperadas.secundario = 20; },
+    l => { l.ofertas[0].vigencia_lote_dias = 1; },
+    l => { l.ofertas[24].coleccion = 'principales'; },
+    l => { l.ofertas[24].estado_revision = 'actual'; },
+    l => { l.ofertas[24].precio = { mostrado: '777 CHF', unidad: 'token' }; },
+    l => { l.ofertas[24].disponible_es = true; },
+    l => { delete l.ofertas[0].documentacion; },
+  ]) {
+    const lote = structuredClone(base); cambiar(lote);
+    assert.throws(() => contexto.validarLoteCatalogoRemotoV2(lote.plataformas, lote.ofertas), String(cambiar));
+    assert.throws(() => adaptar(lote, new Date('2026-09-27T12:00:00Z')), String(cambiar));
+  }
+});
+
+test('V2 cierra un detalle secundario y vacía todos los grupos al vencer el lote', () => {
+  const { contexto, dialogo, nodos } = webV2Cliente(loteV2Cliente());
+  contexto.abrirDetalleOfertaLocal(contexto.EMI.find(o => o.coleccion === 'secundario').slug);
+  assert.equal(dialogo.open, true);
+  contexto.Date = class extends Date { constructor(...args) { super(...(args.length ? args : ['2026-09-29T00:00:00Z'])); } };
+  contexto.pintarFiltrosEmision = () => {};
+  cargarFuncionesWeb(contexto, ['refrescarVigenciaOfertas']);
+  contexto.refrescarVigenciaOfertas();
+  assert.equal(contexto.P.length, 0); assert.equal(contexto.EMI.length, 0);
+  assert.equal(dialogo.open, false); assert.equal(dialogo.innerHTML, '');
+  assert.doesNotMatch(nodos.emiLista.innerHTML, /data-oferta-detalle=/);
+});
+
+test('las colecciones documentales tampoco recuperan cifras manipuladas al renderizar', () => {
+  const ahora = new Date('2026-09-22T12:00:00Z');
+  const { contexto } = cargarWeb(ahora);
+  const componentes = componentesMoviles(ahora);
+  for (const coleccion of ['secundario', 'en_camino']) {
+    const o = { ...oferta, coleccion };
+    assert.equal(movil.cifrasOfertaVigentes(o, ahora), false);
+    assert.doesNotMatch(contexto.tarjetaOfertaLocal(o), centinelas);
+    assert.doesNotMatch(textoRenderizado(componentes.FichaOferta({ oferta: o })), centinelas);
+    assert.doesNotMatch(textoRenderizado(componentes.DetalleOferta({ oferta: o })), centinelas);
+  }
+});
+
+test('una recarga web V2 parcial retira los tres grupos y el diálogo, sin consultar las vistas V1', async () => {
+  const lote = loteV2Cliente();
+  const { contexto, dialogo } = webV2Cliente(lote);
+  contexto.abrirDetalleOfertaLocal(contexto.EMI[0].slug);
+  const rutas = [];
+  contexto.API = 'https://example.test/rest/v1'; contexto.CLAVE_PUB = 'public-test';
+  contexto.fetch = async url => {
+    rutas.push(url);
+    const data = url.includes('/catalogo_plataformas_publicas_v2') ? lote.plataformas
+      : url.includes('/catalogo_ofertas_publicas_v2') ? lote.ofertas.slice(0, -1) : [{}, {}, {}, {}];
+    return { ok: true, json: async () => data };
+  };
+  cargarFuncionesWeb(contexto, ['alDia']);
+  await assert.rejects(() => contexto.alDia(), /incompleto/);
+  assert.ok(rutas.some(url => url.includes('/catalogo_ofertas_publicas_v2?')));
+  assert.ok(rutas.every(url => !/catalogo_(?:plataformas|ofertas)_publicas\?/.test(url)));
+  assert.equal(contexto.P.length, 0); assert.equal(contexto.EMI.length, 0);
+  assert.equal(contexto.CATALOGO_EMBEBIDO_BLOQUEADO, true);
+  assert.equal(dialogo.open, false); assert.equal(dialogo.innerHTML, '');
+});
+
+test('la nueva categoría Crédito privado conserva ilustración propia en las dos interfaces', () => {
+  const manifiesto = require('../assets/ofertas-editoriales/manifest.json');
+  const mocks = { '../assets/ofertas-editoriales/manifest.json': manifiesto };
+  for (const entrada of manifiesto.archivos) mocks[`../assets/ofertas-editoriales/${entrada.archivo}`] = entrada.archivo;
+  const imagenes = cargarModulo('fixtures/imagenes-editoriales.js', mocks);
+  const editorial = imagenes.imagenEditorial('Crédito privado');
+  assert.equal(editorial.archivo, 'capital-privado-rwadar.webp');
+  assert.match(editorial.alt, /Ilustración editorial/);
+  assert.match(editorial.alt, /no representa un activo concreto/);
+  const { contexto } = cargarWeb(ultimoDia);
+  cargarFuncionesWeb(contexto, ['EDITORIAL_OFERTA_POR_CATEGORIA']);
+  const web = contexto.imagenOfertaLocal({ catalogo: true, categoria: 'Crédito privado' });
+  assert.equal(web.src, '/ofertas-editoriales/'+editorial.archivo);
+  assert.equal(web.alt, editorial.alt);
+});
+
+test('la entrega V2 real y versionada recorre 49 fichas, ambos clientes y el vencimiento de sus cifras', () => {
+  const { cargarFuentesLocales, construirSqlImportacion } = require('../../rwadar-app/catalogo-publico');
+  const fuentes = cargarFuentesLocales(path.join(RAIZ, '..'), { revision: '2026-09-30', versionEsquema: 2 });
+  const { escaparate, radar, manifiesto } = fuentes;
+  const importacion = construirSqlImportacion(fuentes);
+  const canonicas = require('../fixtures/escaparate-local.json').plataformas;
+  const meta = { version_esquema: manifiesto.versionEsquema,
+    plataformas_esperadas: manifiesto.plataformasEsperadas, ofertas_esperadas: manifiesto.ofertasEsperadas,
+    colecciones_esperadas: manifiesto.coleccionesEsperadas,
+    verificado_lote_el: radar.verificadoEl, vigencia_lote_dias: 7, revision_id: importacion.revisionId };
+  // Los datos comerciales y documentales vienen íntegros de la entrega versionada.
+  // La identidad SQL de plataforma se simula; su revisión es la real del corte.
+  const plataformas = escaparate.plataformas.map((p, i) => ({
+    ...canonicas.find(c => c.slug === p.slug), ...p, ...meta, verificacion_local: p.verificacionLocal,
+    plataforma_id: `00000000-0000-4000-8000-${String(i + 1).padStart(12, '0')}`,
+  }));
+  const ofertas = escaparate.ofertas.map(o => ({ ...o, ...meta, patrocinada: false,
+    plataforma_slug: o.plataformaSlug, plataforma_nombre: o.plataformaNombre,
+    verificada_el: o.verificadaEl, vigencia_dias: o.vigenciaDias, disponible_es: o.disponibleEs,
+    fuera_ladrillo: o.fueraLadrillo, estado_revision: o.estadoRevision, fuentes_actuales: o.fuentesActuales,
+  }));
+  const lote = { version: 2, plataformas, ofertas };
+  const original = structuredClone(lote);
+  for (const instante of ['2026-09-30T12:00:00Z', '2026-10-02T00:00:00Z']) {
+    const ahora = new Date(instante), { contexto, dialogo, nodos } = webV2Cliente(lote, ahora);
+    const nativo = require('../lib/catalogo-remoto').adaptarCatalogoV2(lote, ahora);
+    const componentes = componentesMoviles(ahora);
+    assert.equal(contexto.comprobarCatalogoEmbebido(), true);
+    assert.equal(nativo.plataformas.length, 26); assert.equal(nativo.ofertas.length, 49);
+    assert.equal(nativo.fecha, '2026-09-28');
+    contexto.pintarEmisiones();
+    assert.match(nodos.movilOfertasEstado.textContent, /24 de 24 principales/);
+    assert.match(nodos.emiLista.innerHTML, /21 de 21 referencias/);
+    assert.match(nodos.emiLista.innerHTML, /4 de 4 referencias/);
+    assert.equal((nodos.emiLista.innerHTML.match(/data-oferta-detalle=/g) || []).length, 49);
+    for (const o of nativo.ofertas) {
+      const doc = o.documentacion;
+      contexto.abrirDetalleOfertaLocal(o.slug);
+      assert.equal(dialogo.open, true, o.slug);
+      assert.ok(dialogo.innerHTML.includes(contexto.escHtml(doc.descripcion)), o.slug);
+      assert.ok(dialogo.innerHTML.includes(doc.revisadaEl), o.slug);
+      const detalleNativo = textoRenderizado(componentes.DetalleOferta({ oferta: o }));
+      assert.ok(detalleNativo.includes(doc.descripcion), o.slug);
+      for (const referencia of doc.referencias) {
+        for (const valor of [referencia.valor, referencia.alcance, referencia.fechaConsulta]) {
+          assert.ok(dialogo.innerHTML.includes(contexto.escHtml(valor)), `${o.slug}: ${valor}`);
+        }
+        assert.ok(detalleNativo.includes(referencia.valor), o.slug);
+        assert.ok(detalleNativo.includes(referencia.alcance), o.slug);
+      }
+      if (instante.startsWith('2026-10-02') || o.coleccion !== 'principales') {
+        assert.equal(o.rentabilidad, null, o.slug); assert.equal(o.precio, null, o.slug);
+        assert.equal(o.disponibleEs, null, o.slug); assert.equal(o.puntuacion, null, o.slug);
+        assert.equal(contexto.estadoVigenciaLocal(contexto.ofertaDetalleLocalPorSlug(o.slug)).clase, 'caducado', o.slug);
+      }
+    }
+  }
+  assert.deepEqual(lote, original);
+});

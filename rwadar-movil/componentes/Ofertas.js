@@ -30,6 +30,9 @@ function useFechaOferta() {
 }
 
 function datoDestacado(oferta) {
+  if (oferta.coleccion === 'secundario' || oferta.coleccion === 'en_camino') {
+    return { etiqueta: 'REFERENCIA DOCUMENTAL', valor: 'Consultar fuente' };
+  }
   if (oferta.cifrasPendientes) {
     return { etiqueta: 'CONDICIONES ACTUALES', valor: 'Consultar emisor' };
   }
@@ -62,7 +65,9 @@ function avisosCriticos(oferta) {
     .sort((a, b) => Number(b.tono === 'stop') - Number(a.tono === 'stop'));
 }
 
-function tipoVisible(tipo) {
+function tipoVisible(tipo, coleccion) {
+  if (coleccion === 'en_camino') return 'EN CAMINO';
+  if (coleccion === 'secundario') return 'SECUNDARIO';
   if (tipo === 'secundario') return 'SECUNDARIO';
   if (tipo === 'valor') return 'VALOR';
   return 'RENDIMIENTO';
@@ -163,7 +168,7 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
       <View style={e.imagenFicha}>
         <ImagenOferta oferta={oferta} decorativa estilo={e.imagenEnFicha} />
         <View style={e.tipoPastilla}>
-          <Text style={e.tipoPastillaTxt}>{tipoVisible(oferta.tipo)}</Text>
+          <Text style={e.tipoPastillaTxt}>{tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
         </View>
         <Text style={[e.vigenciaSobreImagen, tonoVigencia(vigencia.estado)]} numberOfLines={1}>
           {vigencia.etiqueta}
@@ -173,6 +178,7 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
         {oferta.patrocinada ? <Text style={e.patrocinada}>PATROCINADA</Text> : null}
         <Text style={e.plataforma} numberOfLines={1}>{oferta.plataformaNombre}</Text>
         <Text style={e.titulo} numberOfLines={2}>{oferta.titulo}</Text>
+        {documentacion?.descripcion ? <Text style={e.referencia} numberOfLines={3}>{documentacion.descripcion}</Text> : null}
         {documentacion ? <Text style={e.referencia}>{documentacion.etiqueta}</Text> : null}
         <View style={e.datosCompactos}>
           <View style={e.datoCompacto}>
@@ -232,7 +238,7 @@ export function DetalleOferta({ oferta: ofertaOriginal, onCerrar, onAbrirEnlace,
         <SafeAreaView style={e.modal} edges={['top', 'bottom']}>
           <View style={e.cabeceraModal}>
             <View style={{ flex: 1 }}>
-              <Text style={e.supra}>OFERTA · {oferta.tipo.toUpperCase()}</Text>
+              <Text style={e.supra}>{oferta.coleccion && oferta.coleccion !== 'principales' ? 'REFERENCIA' : 'OFERTA'} · {tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
               <Text style={e.modalTitulo} numberOfLines={2}>{oferta.titulo}</Text>
             </View>
             <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]}

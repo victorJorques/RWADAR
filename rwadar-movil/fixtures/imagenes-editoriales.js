@@ -55,6 +55,11 @@ const EDITORIALES_POR_CATEGORIA = Object.freeze(Object.fromEntries(paresEditoria
 export { ETIQUETA_EDITORIAL, MANIFIESTO_EDITORIAL };
 
 export function imagenEditorial(categoria) {
+  // Reutilización del activo propio; no añade una foto ni otro origen al manifiesto.
+  if (String(categoria || '').trim() === 'Crédito privado') {
+    return { ...EDITORIALES_POR_CATEGORIA['Acciones y capital privado'],
+      alt: 'Ilustración editorial financiera; no representa un activo concreto' };
+  }
   return EDITORIALES_POR_CATEGORIA[String(categoria || '').trim()] || null;
 }
 

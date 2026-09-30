@@ -275,7 +275,12 @@ const contexto = {
   localStorage: { getItem: () => null, setItem(){}, removeItem(){} },
   performance: { now: () => 0 },
   IntersectionObserver: function(){ this.observe = () => {}; this.unobserve = () => {}; this.disconnect = () => {}; },
-  URL: { createObjectURL: () => '', revokeObjectURL: () => {} },
+  // El contrato documental valida HTTPS con new URL(). Conservar el parser
+  // real; solo la descarga interactiva de blobs queda inerte en pre-render.
+  URL: class URLNavegador extends URL {
+    static createObjectURL() { return ''; }
+    static revokeObjectURL() {}
+  },
   Blob: function(){},
   Math, JSON, Date, Set, Array, Object, String, Number, Float32Array, Uint16Array,
 };

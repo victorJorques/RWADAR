@@ -4,6 +4,10 @@
 // Sin Node, red, almacenamiento ni lectura del fixture; apto para Metro.
 const CUENTA_PLATAFORMAS = 26;
 const CUENTA_OFERTAS = 28;
+const COLECCIONES_OFERTA = Object.freeze(['principales', 'secundario', 'en_camino']);
+const MANIFIESTO_CATALOGO_V2 = Object.freeze({ versionEsquema: 2,
+  plataformasEsperadas: 26, ofertasEsperadas: 49,
+  coleccionesEsperadas: Object.freeze({ principales: 24, secundario: 21, en_camino: 4 }) });
 const MAX_VIGENCIA_DIAS = 7;
 const ESTADOS_OPERATIVOS = new Set(['observada', 'no_verificable']);
 const ESTADOS_LICENCIA = new Set([
@@ -214,9 +218,89 @@ function validarLotePublico(plataformas, ofertas, { hoy = new Date() } = {}) {
   return { fecha, edadDias: edad, revisionId: [...revisiones][0] };
 }
 
+function validarManifiestoV2(manifiesto) {
+  asegurar(manifiesto && manifiesto.versionEsquema === 2,
+    'V2: falta un manifiesto explícito de esquema 2');
+  for (const campo of ['plataformasEsperadas', 'ofertasEsperadas']) {
+    asegurar(Number.isInteger(manifiesto[campo]) && manifiesto[campo] > 0 &&
+      manifiesto[campo] <= 32767, `V2: ${campo} inválido`);
+  }
+  const colecciones = manifiesto.coleccionesEsperadas;
+  asegurar(colecciones && typeof colecciones === 'object' && !Array.isArray(colecciones) &&
+    Object.keys(colecciones).length === COLECCIONES_OFERTA.length &&
+    COLECCIONES_OFERTA.every(c => Number.isInteger(colecciones[c]) && colecciones[c] >= 0),
+    'V2: manifiesto de colecciones inválido');
+  asegurar(colecciones.principales > 0 &&
+    COLECCIONES_OFERTA.reduce((total, c) => total + colecciones[c], 0) === manifiesto.ofertasEsperadas,
+    'V2: el total de colecciones no coincide con el manifiesto');
+  return manifiesto;
+}
+
+function validarLotePublicoV2(plataformas, ofertas, { manifiesto, hoy = new Date() } = {}) {
+  validarManifiestoV2(manifiesto);
+  asegurar(Array.isArray(plataformas) && plataformas.length === manifiesto.plataformasEsperadas,
+    'V2: plataformas incompletas respecto al manifiesto');
+  asegurar(Array.isArray(ofertas) && ofertas.length === manifiesto.ofertasEsperadas,
+    'V2: ofertas incompletas respecto al manifiesto');
+  asegurar(new Set(plataformas.map(p => p?.slug)).size === plataformas.length,
+    'V2: slugs de plataforma duplicados');
+  asegurar(new Set(ofertas.map(o => o?.slug)).size === ofertas.length,
+    'V2: slugs de oferta duplicados');
+  const filas = [...plataformas, ...ofertas];
+  const revisiones = new Set(filas.map(x => x?.revision_id));
+  asegurar(revisiones.size === 1 && /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test([...revisiones][0] || ''),
+    'V2: el lote mezcla revisiones o carece de revision_id');
+  const fecha = fechaIso(filas[0]?.verificado_lote_el);
+  const vigencia = filas[0]?.vigencia_lote_dias;
+  asegurar(esFecha(fecha) && Number.isInteger(vigencia) && vigencia >= 1 && vigencia <= MAX_VIGENCIA_DIAS,
+    'V2: fecha o vigencia del lote inválida');
+  for (const fila of filas) {
+    asegurar(fila.version_esquema === 2 &&
+      fila.plataformas_esperadas === manifiesto.plataformasEsperadas &&
+      fila.ofertas_esperadas === manifiesto.ofertasEsperadas &&
+      fechaIso(fila.verificado_lote_el) === fecha && fila.vigencia_lote_dias === vigencia &&
+      fila.colecciones_esperadas &&
+      Object.keys(fila.colecciones_esperadas).length === COLECCIONES_OFERTA.length &&
+      COLECCIONES_OFERTA.every(c => fila.colecciones_esperadas[c] === manifiesto.coleccionesEsperadas[c]),
+      'V2: metadatos de revisión ausentes, distintos o ajenos al manifiesto');
+  }
+  const hoyIso = fechaIso(hoy);
+  asegurar(esFecha(hoyIso), 'V2: fecha de ejecución inválida');
+  const edad = diasEntre(fecha, hoyIso);
+  asegurar(edad >= 0 && edad <= vigencia, 'V2: revisión futura o caducada');
+  plataformas.forEach((p, i) => {
+    asegurar(p && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug || '') && esTexto(p.nombre, 2, 120),
+      `V2/plataforma/${i}: identidad inválida`);
+    validarVerificacionPlataforma(p.verificacion_local, fecha, `V2/plataforma/${p.slug}`);
+  });
+  for (const coleccion of COLECCIONES_OFERTA) {
+    asegurar(ofertas.filter(o => o.coleccion === coleccion).length === manifiesto.coleccionesEsperadas[coleccion],
+      `V2: colección ${coleccion} incompleta respecto al manifiesto`);
+  }
+  ofertas.forEach((o, i) => {
+    asegurar(COLECCIONES_OFERTA.includes(o.coleccion), `V2/oferta/${i}: colección inválida`);
+    asegurar(o.patrocinada === false, `V2/oferta/${i}: patrocinio no habilitado`);
+    const normalizada = { ...o, plataformaSlug: o.plataforma_slug,
+      plataformaNombre: o.plataforma_nombre, verificadaEl: fechaIso(o.verificada_el),
+      vigenciaDias: o.vigencia_dias, estadoRevision: o.estado_revision, fuentesActuales: o.fuentes_actuales };
+    validarOferta(normalizada, fecha, `V2/oferta/${o.slug || i}`, { hoy: hoyIso });
+    asegurar(normalizada.verificadaEl <= hoyIso, `V2/oferta/${o.slug}: fecha futura`);
+    asegurar(o.documentacion != null, `V2/oferta/${o.slug}: falta documentación`);
+    if (o.coleccion !== 'principales') {
+      asegurar(o.estado_revision === 'no_verificable' && o.precio == null &&
+        o.rentabilidad == null && o.puntuacion == null && o.disponible_es == null,
+        `V2/oferta/${o.slug}: una colección documental conserva cifras comerciales`);
+    }
+  });
+  return { fecha, edadDias: edad, vigenciaDias: vigencia, revisionId: [...revisiones][0], versionEsquema: 2,
+    coleccionesEsperadas: { ...manifiesto.coleccionesEsperadas } };
+}
+
 module.exports = {
   CUENTA_PLATAFORMAS,
   CUENTA_OFERTAS,
+  COLECCIONES_OFERTA,
+  MANIFIESTO_CATALOGO_V2,
   MAX_VIGENCIA_DIAS,
   CATEGORIAS,
   esFecha,
@@ -226,4 +310,6 @@ module.exports = {
   validarDocumentacionOferta,
   validarOferta,
   validarLotePublico,
+  validarManifiestoV2,
+  validarLotePublicoV2,
 };

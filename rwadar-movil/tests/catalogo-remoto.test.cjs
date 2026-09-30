@@ -1,12 +1,12 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { CACHE_CATALOGO, adaptarCatalogo, crearLectorCatalogo, vigilarCaducidadCatalogo } = require('../lib/catalogo-remoto');
+const { CACHE_CATALOGO, adaptarCatalogo, adaptarCatalogoV2, crearLectorCatalogo, vigilarCaducidadCatalogo } = require('../lib/catalogo-remoto');
 const contrato = require('../lib/contrato-catalogo');
 const fixture = require('../fixtures/escaparate-local.json');
 
 const REVISION = '12345678-1234-4000-8000-123456789012';
 const AHORA = new Date('2026-09-27T12:00:00Z');
-function lotePrueba(fechaRadar = '2026-09-21') {
+function lotePruebaV1(fechaRadar = '2026-09-21') {
   const plataformas = structuredClone(fixture.plataformas).map((p, i) => {
     const v = p.verificacionLocal;
     v.verificadoEl = fechaRadar;
@@ -24,6 +24,25 @@ function lotePrueba(fechaRadar = '2026-09-21') {
     fuentes_actuales: o.fuentesActuales, patrocinada: false,
   }));
   return { version: 1, plataformas, ofertas };
+}
+function lotePrueba(fechaRadar = '2026-09-21') {
+  const lote = lotePruebaV1(fechaRadar);
+  const metadata = { version_esquema: 2, plataformas_esperadas: 26, ofertas_esperadas: 49,
+    colecciones_esperadas: { principales: 24, secundario: 21, en_camino: 4 },
+    verificado_lote_el: fechaRadar, vigencia_lote_dias: 7 };
+  const ofertas = lote.ofertas.slice(0, 24).map(o => ({ ...o, coleccion: 'principales' }));
+  for (const [coleccion, n] of [['secundario', 21], ['en_camino', 4]]) {
+    for (let i = 0; i < n; i++) ofertas.push({ ...structuredClone(lote.ofertas[i]),
+      slug: `referencia-${coleccion.replace('_', '-')}-${i}`, coleccion,
+      estado_revision: 'no_verificable', precio: null, rentabilidad: null,
+      puntuacion: null, disponible_es: null });
+  }
+  for (const o of ofertas) o.documentacion = {
+    revisadaEl: '2026-09-27', descripcion: 'Referencia documental sintética para comprobar el protocolo de catálogo.',
+    fuentes: [o.url], caracteristicas: [{ etiqueta: 'Clase', valor: 'Fixture de prueba' }], referencias: [],
+  };
+  return { version: 2, plataformas: lote.plataformas.map(p => ({ ...p, ...structuredClone(metadata) })),
+    ofertas: ofertas.map(o => ({ ...o, ...structuredClone(metadata) })) };
 }
 function entorno({ lote = lotePrueba(), cache, fallo, ahora = AHORA } = {}) {
   const mapa = new Map(cache ? [[CACHE_CATALOGO, JSON.stringify(cache)]] : []);
@@ -43,7 +62,7 @@ function entorno({ lote = lotePrueba(), cache, fallo, ahora = AHORA } = {}) {
           llamadas.push(['limit', n]);
           if (estado.fallo instanceof Error) throw estado.fallo;
           if (estado.fallo) return { error: { message: 'fallo simulado' }, status: estado.fallo };
-          return { data: tabla === 'catalogo_plataformas_publicas'
+          return { data: tabla === 'catalogo_plataformas_publicas_v2'
             ? estado.lote.plataformas : estado.lote.ofertas, error: null, status: 200 };
         } };
       } };
@@ -57,21 +76,24 @@ test('móvil e importador usan exactamente el mismo contrato de revisión', () =
     contrato.validarLotePublico);
 });
 
-test('el lector trae 26/28 por las vistas nuevas y guarda un único lote, sin escrituras de inversión', async () => {
+test('el lector trae 26/49 por las vistas V2 y guarda un único lote, sin escrituras de inversión', async () => {
   const e = entorno();
   const r = await e.lector.cargar();
   assert.equal(r.error, null);
   assert.equal(r.revisionId, REVISION);
   assert.equal(r.fecha, '2026-09-21');
   assert.equal(r.plataformas.length, 26);
-  assert.equal(r.ofertas.length, 28);
+  assert.equal(r.ofertas.length, 49);
+  assert.deepEqual(Object.fromEntries(['principales', 'secundario', 'en_camino']
+    .map(c => [c, r.ofertas.filter(o => o.coleccion === c).length])),
+  { principales: 24, secundario: 21, en_camino: 4 });
   assert.equal(r.ofertas[0].verificadaEl, '2026-09-27');
   assert.ok(r.plataformas.every(p => p.verificacionLocal.alertasCriticas.length > 0));
   assert.ok(r.ofertas.every(o => !Object.hasOwn(o, 'imagen')));
   assert.deepEqual(e.escrituras, [CACHE_CATALOGO]);
   assert.deepEqual(e.llamadas, [
-    ['from', 'catalogo_plataformas_publicas'], ['select', '*'], ['limit', 27],
-    ['from', 'catalogo_ofertas_publicas'], ['select', '*'], ['limit', 29],
+    ['from', 'catalogo_plataformas_publicas_v2'], ['select', '*'], ['limit', 27],
+    ['from', 'catalogo_ofertas_publicas_v2'], ['select', '*'], ['limit', 50],
   ]);
 });
 
@@ -87,7 +109,7 @@ test('la copia sin conexión conserva el plazo original y no lee cachés antigua
   e.mapa.set('rwadar.cache.radar', '[{"nombre":"dato antiguo"}]');
   const r = await e.lector.cargar();
   assert.equal(r.deCache, true);
-  assert.equal(r.ofertas.length, 28);
+  assert.equal(r.ofertas.length, 49);
   assert.equal(r.fecha, '2026-09-21');
   assert.ok(r.error);
   assert.equal(e.escrituras.length, 0);
@@ -205,7 +227,7 @@ test('un fallo de disco no destruye la respuesta válida ni revive una revisión
   const e = entorno({ cache: lotePrueba() });
   e.almacenamiento.setItem = async () => { throw new Error('disco lleno'); };
   e.almacenamiento.removeItem = async () => { throw new Error('disco inaccesible'); };
-  assert.equal((await e.lector.cargar()).ofertas.length, 28);
+  assert.equal((await e.lector.cargar()).ofertas.length, 49);
   assert.equal((await e.lector.cargar({ soloCache: true })).ofertas.length, 0);
   e.estado.fallo = new Error('offline');
   assert.equal((await e.lector.cargar()).ofertas.length, 0);
@@ -216,7 +238,7 @@ test('un 503 en una vista no oculta la denegación de la otra', async () => {
   const lector = crearLectorCatalogo({ almacenamiento: e.almacenamiento, ahora: () => AHORA,
     clientePublico: () => ({ from: tabla => ({ select: () => ({ limit: async () => ({
       error: { message: 'error simulado' },
-      status: tabla === 'catalogo_plataformas_publicas' ? 503 : 403,
+      status: tabla === 'catalogo_plataformas_publicas_v2' ? 503 : 403,
     }) }) }) }),
   });
   assert.equal((await lector.cargar()).ofertas.length, 0);
@@ -227,7 +249,7 @@ test('una vista vacía retira la caché aunque la otra falle por red', async () 
   const e = entorno({ cache: lotePrueba() });
   const lector = crearLectorCatalogo({ almacenamiento: e.almacenamiento, ahora: () => AHORA,
     clientePublico: () => ({ from: tabla => ({ select: () => ({ limit: async () => {
-      if (tabla === 'catalogo_plataformas_publicas') throw new Error('offline');
+      if (tabla === 'catalogo_plataformas_publicas_v2') throw new Error('offline');
       return { data: [], error: null, status: 200 };
     } }) }) }),
   });
@@ -235,9 +257,9 @@ test('una vista vacía retira la caché aunque la otra falle por red', async () 
   assert.equal(e.mapa.has(CACHE_CATALOGO), false);
 });
 
-test('la adaptación no cambia fuentes, fechas, evidencia original ni pertenencia al radar', () => {
+test('la adaptación V2 no cambia fuentes, fechas, evidencia original ni pertenencia al radar', () => {
   const lote = lotePrueba(); const original = structuredClone(lote);
-  const r = adaptarCatalogo(lote, AHORA);
+  const r = adaptarCatalogoV2(lote, AHORA);
   const slugs = new Set(r.plataformas.map(p => p.slug));
   for (const slug of ['aktionariat', 'alius-capital', 'brickwise', 'prosegur-crypto']) {
     assert.equal(slugs.has(slug), false);
@@ -262,4 +284,55 @@ test('una app abierta o suspendida retira el catálogo completo al vencer sin co
     assert.equal(retiradas, 1);
     detener(); assert.equal(limpia, true);
   }
+});
+
+test('V2 rechaza manifiestos, colecciones y revisiones mezclados, sin rescatar V1', async () => {
+  const cambios = [
+    l => { l.ofertas[24].coleccion = 'principales'; },
+    l => { l.ofertas[24].estado_revision = 'actual'; },
+    l => { l.ofertas[24].disponible_es = true; },
+    l => { l.ofertas[24].puntuacion = 10; },
+    l => { delete l.ofertas[0].documentacion; },
+    l => { l.plataformas[0].version_esquema = 1; },
+    l => { l.ofertas[0].ofertas_esperadas = 48; },
+    l => { l.ofertas[0].colecciones_esperadas.secundario = 20; },
+    l => { l.ofertas[0].verificado_lote_el = '2026-09-22'; },
+    l => { l.ofertas[0].vigencia_lote_dias = 1; },
+    l => { for (const f of [...l.plataformas, ...l.ofertas]) f.ofertas_esperadas = 48; l.ofertas.pop(); },
+  ];
+  for (const cambiar of cambios) {
+    const lote = lotePrueba(); cambiar(lote);
+    const e = entorno({ lote, cache: lotePrueba() });
+    const r = await e.lector.cargar();
+    assert.ok(r.error, String(cambiar)); assert.equal(r.ofertas.length, 0);
+    assert.equal(e.mapa.has(CACHE_CATALOGO), false);
+  }
+  const e = entorno({ fallo: new Error('offline') });
+  e.mapa.set('rwadar.cache.catalogo.v1', JSON.stringify(lotePruebaV1()));
+  assert.equal((await e.lector.cargar()).ofertas.length, 0);
+  assert.equal(adaptarCatalogo(lotePruebaV1(), AHORA).ofertas.length, 28);
+  assert.throws(() => adaptarCatalogoV2(lotePruebaV1(), AHORA));
+});
+
+test('V2 conserva documentación secundaria pero elimina toda cifra actual en red y caché', async () => {
+  const e = entorno();
+  for (const opciones of [{}, { soloCache: true }]) {
+    const r = await e.lector.cargar(opciones);
+    const referencias = r.ofertas.filter(o => o.coleccion !== 'principales');
+    assert.equal(referencias.length, 25);
+    assert.ok(referencias.every(o => o.documentacion && o.cifrasPendientes &&
+      o.precio === null && o.rentabilidad === null && o.disponibleEs === null &&
+      o.puntuacion === null && o.resumen === '' && o.metricas.length === 0));
+    assert.equal(r.vigenciaDias, 7);
+  }
+});
+
+test('la app abierta respeta también una revisión con un plazo menor de siete días', () => {
+  let retirada = 0;
+  const detener = vigilarCaducidadCatalogo({ fecha: '2026-09-27', vigenciaDias: 1,
+    ahora: () => Date.parse('2026-09-29T00:00:00Z'), alCaducar: () => { retirada++; },
+    cancelar() {}, programar() { assert.fail('No debe esperar al plazo de siete días'); },
+    appState: { addEventListener() { return { remove() {} }; } },
+  });
+  assert.equal(retirada, 1); detener();
 });

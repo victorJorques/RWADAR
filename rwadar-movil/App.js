@@ -78,6 +78,7 @@ export default function App() {
   const [ofertas, setOfertas] = useState([]);
   const [fechaCatalogo, setFechaCatalogo] = useState(null);
   const [secundario, setSecundario] = useState([]);
+  const [enCamino, setEnCamino] = useState([]);
   const [exclusionesOfertas, setExclusionesOfertas] = useState([]);
   const [sigo, setSigo] = useState([]);
   const [avisos, setAvisos] = useState([]);
@@ -120,9 +121,16 @@ export default function App() {
       const [catalogo, f, mercado, exclusiones, s] = await Promise.all([
         cargarCatalogo(), cargarFuera(), ...escaparate, siguiendo(),
       ]);
-      setRadar(catalogo.plataformas); setFuera(f.datos); setOfertas(catalogo.ofertas);
-      setFechaCatalogo(catalogo.fecha || null);
-      setSecundario(mercado.datos); setExclusionesOfertas(exclusiones.datos); setSigo(s);
+      const principales = MODO_LOCAL ? catalogo.ofertas
+        : catalogo.ofertas.filter(o => o.coleccion === 'principales');
+      const referenciasSecundarias = MODO_LOCAL ? mercado.datos
+        : catalogo.ofertas.filter(o => o.coleccion === 'secundario');
+      const referenciasEnCamino = MODO_LOCAL ? []
+        : catalogo.ofertas.filter(o => o.coleccion === 'en_camino');
+      setRadar(catalogo.plataformas); setFuera(f.datos); setOfertas(principales);
+      setFechaCatalogo(catalogo.fecha ? { fecha: catalogo.fecha, vigenciaDias: catalogo.vigenciaDias } : null);
+      setSecundario(referenciasSecundarias); setEnCamino(referenciasEnCamino);
+      setExclusionesOfertas(exclusiones.datos); setSigo(s);
       setAbierta(actual => actual && catalogo.plataformas.find(p => p.slug === actual.slug) || null);
       setOfertaAbierta(actual => actual && [...catalogo.ofertas, ...mercado.datos]
         .find(o => o.slug === actual.slug) || null);
@@ -148,7 +156,7 @@ export default function App() {
       setEstadoDatos(mensajes.join(' '));
       return !catalogo.error && !catalogo.deCache && !f.deCache;
     } catch {
-      setRadar([]); setOfertas([]); setSecundario([]); setFuera([]);
+      setRadar([]); setOfertas([]); setSecundario([]); setEnCamino([]); setFuera([]);
       setExclusionesOfertas([]); setAbierta(null); setOfertaAbierta(null);
       setFechaCatalogo(null);
       setEstadoDatos('No se pudo cargar un catálogo verificable. Desliza hacia abajo para reintentar.');
@@ -161,9 +169,10 @@ export default function App() {
   useEffect(() => { traer(); }, [traer]);
   useEffect(() => {
     if (MODO_LOCAL || !fechaCatalogo) return;
-    return vigilarCaducidadCatalogo({ fecha: fechaCatalogo, appState: AppState,
+    return vigilarCaducidadCatalogo({ ...fechaCatalogo, appState: AppState,
       alCaducar: () => {
-        setRadar([]); setOfertas([]); setAbierta(null); setOfertaAbierta(null);
+        setRadar([]); setOfertas([]); setSecundario([]); setEnCamino([]);
+        setAbierta(null); setOfertaAbierta(null);
         setFechaCatalogo(null);
         setEstadoDatos('La revisión del catálogo ha caducado. Actualiza para consultar un nuevo lote verificado.');
       },
@@ -239,21 +248,22 @@ export default function App() {
     });
   }, [radar, busqueda, categoria]);
 
-  const todasOfertas = useMemo(() => [...ofertas, ...secundario], [ofertas, secundario]);
+  const todasOfertas = useMemo(() => [...ofertas, ...secundario, ...enCamino], [ofertas, secundario, enCamino]);
+  const ofertasDelGrupo = useMemo(() => grupoOfertas === 'principales' ? ofertas
+    : grupoOfertas === 'secundario' ? secundario
+      : grupoOfertas === 'en_camino' ? enCamino : MODO_LOCAL ? todasOfertas : [],
+  [grupoOfertas, ofertas, secundario, enCamino, todasOfertas]);
   const proveedoresOferta = useMemo(() => proveedoresDeOfertas(
-    grupoOfertas === 'principales' ? ofertas
-      : grupoOfertas === 'secundario' ? secundario : todasOfertas
-  ), [grupoOfertas, ofertas, secundario, todasOfertas]);
+    ofertasDelGrupo
+  ), [ofertasDelGrupo]);
   const ofertasVisibles = useMemo(() => {
     const q = busquedaOfertas.trim().toLocaleLowerCase('es');
-    return todasOfertas.filter((oferta) => {
-      if (grupoOfertas === 'principales' && oferta.tipo === 'secundario') return false;
-      if (grupoOfertas === 'secundario' && oferta.tipo !== 'secundario') return false;
+    return ofertasDelGrupo.filter((oferta) => {
       if (tipoOferta && oferta.tipo !== tipoOferta) return false;
       if (proveedorOferta && oferta.plataformaSlug !== proveedorOferta) return false;
       return !q || textoBusquedaOferta(oferta).includes(q);
     });
-  }, [todasOfertas, busquedaOfertas, grupoOfertas, tipoOferta, proveedorOferta]);
+  }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta]);
   const columnasOfertas = anchoPantalla >= 1120 ? 3 : anchoPantalla >= 720 ? 2 : 1;
   const separacionOfertas = 12;
   const anchoCeldaOferta = (anchoPantalla - (UI.margen * 2)
@@ -323,7 +333,7 @@ export default function App() {
             setBorrandoDatos(true);
             try {
               await borrarDatosDispositivo();
-              setRadar([]); setFuera([]); setOfertas([]); setSecundario([]);
+              setRadar([]); setFuera([]); setOfertas([]); setSecundario([]); setEnCamino([]);
               setExclusionesOfertas([]); setSigo([]); setAvisos([]);
               setEstadoDatos(MODO_LOCAL
                 ? 'Datos locales borrados. Actualiza para volver a cargar el escaparate incluido en esta copia.'
@@ -382,6 +392,7 @@ export default function App() {
           total={radar.length}
           ofertas={ofertas.length}
           secundario={secundario.length}
+          enCamino={enCamino.length}
           seguidas={sigo.length}
           sinConexion={sinConexion}
           onAyuda={() => { tacto.abrir(); setExplicando(true); }}
@@ -508,15 +519,21 @@ export default function App() {
               refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
               ListHeaderComponent={
                 <View style={e.panelOfertasCompacto}>
-                  {MODO_LOCAL ? <View style={e.selectorOfertas} accessibilityRole="tablist"
+                  <View style={e.selectorOfertas} accessibilityRole="tablist"
                     accessibilityLabel="Seleccionar grupo de ofertas">
-                    <SegmentoOferta texto="Principales" activo={grupoOfertas === 'principales'}
+                    <SegmentoOferta texto={`Principales ${ofertas.length}`} activo={grupoOfertas === 'principales'}
                       onPress={() => seleccionarGrupoOfertas('principales')} />
-                    <SegmentoOferta texto="Secundario" activo={grupoOfertas === 'secundario'}
+                    <SegmentoOferta texto={`Secundario ${secundario.length}`} activo={grupoOfertas === 'secundario'}
                       onPress={() => seleccionarGrupoOfertas('secundario')} />
-                    <SegmentoOferta texto="Todo" activo={grupoOfertas === 'todo'}
+                    {MODO_LOCAL ? <SegmentoOferta texto="Todo" activo={grupoOfertas === 'todo'}
                       onPress={() => seleccionarGrupoOfertas('todo')} />
-                  </View> : null}
+                      : <SegmentoOferta texto={`En camino ${enCamino.length}`} activo={grupoOfertas === 'en_camino'}
+                        onPress={() => seleccionarGrupoOfertas('en_camino')} />}
+                  </View>
+                  {grupoOfertas === 'secundario' || grupoOfertas === 'en_camino'
+                    ? <Text style={e.resultadoCompacto}>{grupoOfertas === 'secundario'
+                      ? 'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
+                      : 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'}</Text> : null}
                   <View style={e.panelBusquedaOfertas}>
                     <View style={[e.busquedaFila, e.busquedaFilaOfertas]}>
                       <Icono nombre="buscar" color={C.tx2} tamano={23} />
@@ -561,7 +578,7 @@ export default function App() {
                   </View>
                   {filtrosOfertasAbiertos ? (
                     <View style={e.filtrosOfertasDesplegados}>
-                      {grupoOfertas !== 'secundario' ? (
+                      {grupoOfertas === 'principales' || (MODO_LOCAL && grupoOfertas === 'todo') ? (
                         <View>
                           <Text style={e.filtroGrupoEtiqueta}>TIPO DE OFERTA PRINCIPAL</Text>
                           <ScrollView horizontal showsHorizontalScrollIndicator={false}
@@ -718,7 +735,7 @@ export default function App() {
   );
 }
 
-function Cabecera({ pestana, total, ofertas, secundario, seguidas, sinConexion, onAyuda }) {
+function Cabecera({ pestana, total, ofertas, secundario, enCamino, seguidas, sinConexion, onAyuda }) {
   const textos = {
     radar: {
       etiqueta: 'RADAR DE ACTIVOS REALES',
@@ -731,7 +748,7 @@ function Cabecera({ pestana, total, ofertas, secundario, seguidas, sinConexion, 
       etiqueta: MODO_LOCAL ? 'ESCAPARATE LOCAL' : 'ESCAPARATE DE ACTIVOS',
       titulo: 'Ofertas específicas',
       subtitulo: MODO_LOCAL ? `${ofertas} principales · ${secundario} referencias secundarias`
-        : `${ofertas} fichas · contratación directa con el proveedor`,
+        : `${ofertas} principales · ${secundario} secundarias · ${enCamino} en camino`,
     },
     sigo: {
       etiqueta: 'TU SEGUIMIENTO',
@@ -1049,7 +1066,7 @@ function SegmentoOferta({ texto, activo, onPress }) {
       accessibilityState={{ selected: activo }}
       accessibilityLabel={`Mostrar ${texto.toLocaleLowerCase('es')}`}
     >
-      <Text style={[e.segmentoOfertaTxt, activo && e.segmentoOfertaTxtOn]} numberOfLines={1}>{texto}</Text>
+      <Text style={[e.segmentoOfertaTxt, activo && e.segmentoOfertaTxtOn]} numberOfLines={2}>{texto}</Text>
     </Pressable>
   );
 }
@@ -1602,7 +1619,7 @@ const e = StyleSheet.create({
     borderRadius: R.s, paddingHorizontal: 7,
   },
   segmentoOfertaOn: { backgroundColor: C.senal },
-  segmentoOfertaTxt: { ...T.dato, fontFamily: F.semi, color: C.tx2 },
+  segmentoOfertaTxt: { ...T.dato, fontFamily: F.semi, color: C.tx2, textAlign: 'center' },
   segmentoOfertaTxtOn: { color: C.noche },
   panelBusquedaOfertas: {
     backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,

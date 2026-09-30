@@ -435,7 +435,7 @@ test('el adaptador remoto de datos no puede usar el fixture como sustituto de un
   assert.deepEqual(resultado.plataformas, []);
   assert.deepEqual(resultado.ofertas, []);
   assert.ok(resultado.error);
-  assert.deepEqual(tablas, ['catalogo_plataformas_publicas', 'catalogo_ofertas_publicas']);
+  assert.deepEqual(tablas, ['catalogo_plataformas_publicas_v2', 'catalogo_ofertas_publicas_v2']);
   assert.equal((await datos.cargarRadar({ soloCache: true })).datos.length, 0);
   assert.equal((await datos.cargarOfertas({ soloCache: true })).datos.length, 0);
 });
@@ -565,7 +565,7 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
 
   assert.equal(app.extra.rwadar.pushDeliveryEnabled, false);
   assert.equal(app.runtimeVersion.policy, 'appVersion');
-  assert.equal(app.version, '1.1.1');
+  assert.equal(app.version, '1.1.2');
   assert.ok(app.updates.url.startsWith('https://u.expo.dev/'));
   assert.equal(app.updates.enabled, false, 'la build no descarga código de canales anteriores');
   assert.equal(app.android.allowBackup, false);
@@ -653,7 +653,7 @@ test('el catálogo conectado no habilita seguimiento remoto ni consume datos his
       },
     });
     const catalogo = await datos.cargarCatalogo();
-    assert.deepEqual(tablas.sort(), ['catalogo_ofertas_publicas', 'catalogo_plataformas_publicas']);
+    assert.deepEqual(tablas.sort(), ['catalogo_ofertas_publicas_v2', 'catalogo_plataformas_publicas_v2']);
     assert.deepEqual(catalogo.plataformas, []);
     assert.deepEqual(await datos.siguiendo(), []);
     assert.deepEqual(await datos.alternarSeguimiento('nueva', 'id-nueva'), {
@@ -667,11 +667,13 @@ test('el catálogo conectado no habilita seguimiento remoto ni consume datos his
     });
     await datos.alternarSeguimiento('nueva', 'id-nueva');
     assert.deepEqual(await datos.siguiendo(), []);
-    almacenamiento.datos.set('rwadar.cache.catalogo.v1', 'copia-borrable');
+    almacenamiento.datos.set('rwadar.cache.catalogo.v2', 'copia-borrable');
+    almacenamiento.datos.set('rwadar.cache.catalogo.v1', 'copia-de-version-anterior');
     assert.deepEqual(await datos.borrarDatosDispositivo(), { ok: true, local: true });
     assert.deepEqual(Object.fromEntries(almacenamiento.datos), anteriores);
     const clavesTocadas = almacenamiento.llamadas.flatMap(([, claves]) => Array.isArray(claves) ? claves : [claves]);
-    assert.ok(clavesTocadas.every((clave) => clave.startsWith('rwadar.editorial.') || clave === 'rwadar.cache.catalogo.v1'));
+    assert.ok(clavesTocadas.every((clave) => clave.startsWith('rwadar.editorial.') ||
+      ['rwadar.cache.catalogo.v1', 'rwadar.cache.catalogo.v2'].includes(clave)));
   }
 });
 

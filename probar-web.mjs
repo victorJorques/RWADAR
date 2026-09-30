@@ -855,8 +855,8 @@ const lectorPublico = new Function('fetch', `
 await capturaError(lectorPublico());
 prueba('el cierre de cuentas conserva el lector de catálogo público y sus tres consultas anónimas',
   lecturasEditoriales.length === 3 &&
-  lecturasEditoriales.some(u => u.includes('/catalogo_plataformas_publicas?')) &&
-  lecturasEditoriales.some(u => u.includes('/catalogo_ofertas_publicas?')) &&
+  lecturasEditoriales.some(u => u.includes('/catalogo_plataformas_publicas_v2?')) &&
+  lecturasEditoriales.some(u => u.includes('/catalogo_ofertas_publicas_v2?')) &&
   lecturasEditoriales.some(u => u.includes('/plataformas?estado=eq.descartada&')));
 
 /* Las siguientes regresiones prueban el código de cuenta conservado para una
@@ -1564,14 +1564,14 @@ prueba('cada navegación se guarda bajo su propia ruta',
   !/cache\.put\('\/', res\.clone\(\)\)/.test(sw));
 prueba('solo se cachean recursos estáticos públicos del mismo origen',
   /url\.origin !== self\.location\.origin/.test(sw) && /esEstaticoPublico/.test(sw));
-prueba('el catálogo remoto exige las vistas 26/28 y nunca vuelve a las tablas antiguas',
-  /catalogo_plataformas_publicas\?select=\*/.test(js) &&
-  /catalogo_ofertas_publicas\?select=\*/.test(js) &&
-  /validarLoteCatalogoRemoto\(r,e\)/.test(js) &&
-  /const nE=e\.map\(o=>ofertaCatalogoRemota\(o,fecha\)\)/.test(js) &&
+prueba('el catálogo remoto exige vistas V2 y manifiesto completo, sin volver a V1',
+  /catalogo_plataformas_publicas_v2\?select=\*/.test(js) &&
+  /catalogo_ofertas_publicas_v2\?select=\*/.test(js) &&
+  /validarLoteCatalogoRemotoV2\(r,e\)/.test(js) &&
+  /nE=e\.map\(o=>ofertaCatalogoRemota\(o,fecha\)\)/.test(js) &&
   /EMI\.length=0;\s+EMI\.push/.test(js) &&
   !/\/radar_publico\?select=\*|\/emisiones_publicas\?select=\*/.test(js));
-prueba('el snapshot 26/28 caducado falla cerrado incluso si la red devuelve vacío',
+prueba('el snapshot V2 caducado falla cerrado incluso si la red devuelve vacío',
   /function comprobarCatalogoEmbebido\(\)/.test(js) && /edad<0\|\|edad>7/.test(js) &&
   /P\.length=0;EMI\.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true/.test(js) &&
   /catch\{comprobarCatalogoEmbebido\(\);refrescarDetalleOfertaAbierto\(\);pintarFiltrosEmision\(\);pintarEmisiones\(\);render\(\)\}/.test(js));
@@ -1725,6 +1725,19 @@ prueba('el modo privado bloquea cualquier publicación antes de preparar el arte
   /MODO_PRIVADO && remoto/.test(publicador) &&
   publicador.indexOf('MODO_PRIVADO && remoto') < publicador.indexOf('async function main()'));
 prueba('Wrangler está fijado a una versión exacta', /WRANGLER_VERSION = '\d+\.\d+\.\d+'/.test(publicador));
+// Ejecutar el simulador exacto del generador, sin su sincronización ni escrituras.
+// Un mock URL que deja de ser constructor invalida toda la documentación HTTPS.
+const inicioSimulador = publicador.indexOf('const capturado = {};');
+const finSimulador = publicador.indexOf('/* ---- 3 · comprobar', inicioSimulador);
+prueba('el simulador del generador se puede ensayar de forma aislada', inicioSimulador > 0 && finSimulador > inicioSimulador);
+const simulacionPublicador = vm.runInNewContext(
+  publicador.slice(inicioSimulador, finSimulador) + '\n({capturado, contexto});',
+  { vm, script: js, URL, console }, { timeout: 20000 });
+prueba('el simulador real conserva URL HTTPS, las 26 plataformas y las 49 referencias documentadas',
+  vm.runInContext("new URL('https://example.test/fuente').protocol", simulacionPublicador.contexto) === 'https:' &&
+  (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === 26 &&
+  (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === 49 &&
+  (simulacionPublicador.capturado.emiLista.match(/Referencia documentada/g) || []).length === 49);
 prueba('el publicador usa ComSpec en Windows y evita el EINVAL de ejecutar npx.cmd directamente',
   /process\.env\.ComSpec \|\| 'cmd\.exe'/.test(publicador) &&
   /\['\/d', '\/s', '\/c', 'npx\.cmd'\]/.test(publicador) &&

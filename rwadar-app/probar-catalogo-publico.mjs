@@ -31,6 +31,7 @@ const astWeb = parse(web, { ecmaVersion: 2024, sourceType: 'script' });
 const dependencias = ['CATMETA', 'urlHttps', 'textoDato', 'numeroRemoto',
   'booleanoOpcional', 'cifraCatalogoRemota', 'ofertaCatalogoRemota', 'fechaLocalValida',
   'fechaOfertaPublicaValida', 'validarRevisionCatalogo', 'validarLoteCatalogoRemoto',
+  'metadatosCatalogoV2', 'validarManifiestoCatalogoV2',
   'textoLocal', 'imagenOfertaLocal', 'ofertaLocalValida', 'documentacionOfertaLocal', 'EDITORIAL_OFERTA_POR_CATEGORIA',
   'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal',
   'validarVerificacionLocal', 'comprobarCatalogoEmbebido'];
@@ -264,7 +265,7 @@ const probarCache = cambio => {
   const resultado = vm.runInNewContext(`${lector}\ncomprobarCatalogoEmbebido();`, contexto);
   return { resultado, contexto };
 };
-paso('la caché embebida real acepta revisiones de oferta distintas sin renovar el radar', probarCache().resultado === true);
+paso('el cliente V2 rechaza una caché V1 aunque todavía sea temporalmente válida', probarCache().resultado === false);
 for (const [nombre, cambio] of [
   ['identidad mezclada', c => { c.EMI[0].revisionId = '00000000-0000-0000-0000-000000000000'; }],
   ['identidad ausente', c => { delete c.P[0].revisionId; }],

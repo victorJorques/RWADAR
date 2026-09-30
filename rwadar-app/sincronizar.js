@@ -16,6 +16,8 @@ const {
   CUENTA_PLATAFORMAS,
   CUENTA_OFERTAS,
   validarLotePublico,
+  validarLotePublicoV2,
+  MANIFIESTO_CATALOGO_V2,
 } = require('./catalogo-publico.js');
 
 const URL_BASE = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
@@ -73,8 +75,16 @@ function textoObligatorio(valor, nombre, maximo) {
   return texto;
 }
 
+function metadatosRevision(p) {
+  if (p.version_esquema !== 2) return {};
+  return { version_esquema: 2, plataformas_esperadas: p.plataformas_esperadas,
+    ofertas_esperadas: p.ofertas_esperadas, colecciones_esperadas: p.colecciones_esperadas,
+    verificado_lote_el: p.verificado_lote_el, vigencia_lote_dias: p.vigencia_lote_dias };
+}
+
 function plataformaPublica(p) {
   const x = {
+    ...metadatosRevision(p),
     revisionId: textoObligatorio(p.revision_id, 'revisión de plataforma', 36),
     slug: textoObligatorio(p.slug, 'slug de plataforma', 140),
     n: textoObligatorio(p.nombre, 'nombre de plataforma', 120),
@@ -98,6 +108,8 @@ function plataformaPublica(p) {
 
 function ofertaPublica(o) {
   const x = {
+    ...metadatosRevision(o),
+    ...(o.version_esquema === 2 ? { coleccion: o.coleccion } : {}),
     catalogo: true,
     revisionId: textoObligatorio(o.revision_id, 'revisión de oferta', 36),
     slug: textoObligatorio(o.slug, 'slug de oferta', 180),
@@ -137,21 +149,27 @@ async function main({
   jsPath = JS,
   csvPath = CSV,
   hoy = new Date(),
+  versionEsquema = 1,
+  manifiesto,
 } = {}) {
+  if (![1, 2].includes(versionEsquema)) throw new Error('versión de catálogo desconocida');
+  const sufijo = versionEsquema === 2 ? '_v2' : '';
   const [radar, fuera, emisiones] = await Promise.all([
-    pedir('catalogo_plataformas_publicas?select=*', fetchFn),
+    pedir(`catalogo_plataformas_publicas${sufijo}?select=*`, fetchFn),
     pedir('plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,' +
       'fuentes(url,titulo)&order=nombre', fetchFn),
-    pedir('catalogo_ofertas_publicas?select=*', fetchFn),
+    pedir(`catalogo_ofertas_publicas${sufijo}?select=*`, fetchFn),
   ]);
 
   if (!Array.isArray(fuera) || fuera.length !== 4) {
     throw new Error('el catálogo público debe contener exactamente 4 descartes documentados');
   }
-  validarLotePublico(radar, emisiones, { hoy });
+  if (versionEsquema === 2) validarLotePublicoV2(radar, emisiones, { hoy, manifiesto });
+  else validarLotePublico(radar, emisiones, { hoy });
   const plataformas = radar.map(plataformaPublica);
   const ofertas = emisiones.map(ofertaPublica);
-  if (plataformas.length !== CUENTA_PLATAFORMAS || ofertas.length !== CUENTA_OFERTAS) {
+  if (plataformas.length !== (versionEsquema === 2 ? manifiesto.plataformasEsperadas : CUENTA_PLATAFORMAS) ||
+    ofertas.length !== (versionEsquema === 2 ? manifiesto.ofertasEsperadas : CUENTA_OFERTAS)) {
     throw new Error('el lote cambió durante la normalización');
   }
 
@@ -217,8 +235,10 @@ module.exports = {
   jsonSeguro,
   plataformaPublica,
   ofertaPublica,
+  metadatosRevision,
   sincronizar: main,
 };
 if (require.main === module) {
-  main().catch(e => { console.error('ERROR:', e.message); process.exit(1); });
+  main({ versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2 })
+    .catch(e => { console.error('ERROR:', e.message); process.exit(1); });
 }

@@ -16,14 +16,25 @@ const {
   validarDocumentacionOferta,
   validarOferta,
   validarLotePublico,
+  validarManifiestoV2,
+  validarLotePublicoV2,
+  COLECCIONES_OFERTA,
+  MANIFIESTO_CATALOGO_V2,
 } = require('../rwadar-movil/lib/contrato-catalogo');
 
-function cargarFuentesLocales(raiz = path.join(__dirname, '..'), { revision } = {}) {
+function cargarFuentesLocales(raiz = path.join(__dirname, '..'), { revision, versionEsquema = 1 } = {}) {
   if (revision !== undefined) {
     asegurar(esFecha(revision), 'fecha de revisión local inválida');
-    const carpeta = path.join(raiz, 'rwadar-app', 'data', 'verificaciones', revision);
+    asegurar([1, 2].includes(versionEsquema), 'versión de revisión local inválida');
+    const carpeta = path.join(raiz, 'rwadar-app', 'data', 'verificaciones',
+      `${revision}${versionEsquema === 2 ? '-v2' : ''}`);
     const radar = JSON.parse(fs.readFileSync(path.join(carpeta, 'radar-canonico-26.json'), 'utf8'));
     const escaparate = JSON.parse(fs.readFileSync(path.join(carpeta, 'escaparate-publicacion.json'), 'utf8'));
+    asegurar(escaparate.versionEsquema === versionEsquema, 'el esquema local no coincide con la carpeta solicitada');
+    const manifiesto = escaparate.versionEsquema === 2
+      ? normalizarManifiestoLocal(JSON.parse(fs.readFileSync(path.join(carpeta, 'manifiesto-catalogo.json'), 'utf8')))
+      : undefined;
+    if (manifiesto) validarManifiestoV2(manifiesto);
     const rutaDocumentacion = path.join(carpeta, 'documentacion-ofertas.json');
     let fechaDocumentacion = null;
     if (fs.existsSync(rutaDocumentacion)) {
@@ -31,9 +42,9 @@ function cargarFuentesLocales(raiz = path.join(__dirname, '..'), { revision } = 
       asegurar(documentacion && typeof documentacion === 'object' && !Array.isArray(documentacion),
         'documentación local: se esperaba un mapa por slug');
       const slugs = escaparate.ofertas.map(o => o.slug);
-      asegurar(Object.keys(documentacion).length === CUENTA_OFERTAS &&
+      asegurar(Object.keys(documentacion).length === (manifiesto?.ofertasEsperadas ?? CUENTA_OFERTAS) &&
         slugs.every(slug => Object.hasOwn(documentacion, slug) && documentacion[slug] != null),
-        'documentación local: el mapa debe corresponder a las 28 ofertas');
+        'documentación local: el mapa debe corresponder al manifiesto de ofertas');
       for (const slug of slugs) validarDocumentacionOferta(documentacion[slug], `documentación/${slug}`);
       fechaDocumentacion = Object.values(documentacion).map(d => d.revisadaEl).sort().at(-1);
       escaparate.ofertas = escaparate.ofertas.map(o => ({ ...o, documentacion: documentacion[o.slug] }));
@@ -43,7 +54,7 @@ function cargarFuentesLocales(raiz = path.join(__dirname, '..'), { revision } = 
     asegurar(radar.verificadoEl === revision ||
       (esFecha(radar.verificadoEl) && radar.verificadoEl < revision && fechaDocumentacion === revision),
       'la revisión no coincide con su carpeta ni con el corte documental');
-    return { radar, escaparate };
+    return { radar, escaparate, ...(manifiesto ? { manifiesto } : {}) };
   }
   const radar = JSON.parse(fs.readFileSync(path.join(
     raiz, 'rwadar-app', 'data', 'verificaciones', '2026-09-21', 'radar-canonico-26.json'), 'utf8'));
@@ -52,21 +63,38 @@ function cargarFuentesLocales(raiz = path.join(__dirname, '..'), { revision } = 
   return { radar, escaparate };
 }
 
-function validarFuentesLocales({ radar, escaparate }) {
+function normalizarManifiestoLocal(valor) {
+  asegurar(valor && typeof valor === 'object' && !Array.isArray(valor), 'manifiesto local ausente');
+  return validarManifiestoV2({ versionEsquema: valor.version_esquema,
+    plataformasEsperadas: valor.plataformas_esperadas, ofertasEsperadas: valor.ofertas_esperadas,
+    coleccionesEsperadas: valor.colecciones_esperadas });
+}
+
+function validarFuentesLocales({ radar, escaparate, manifiesto }) {
+  const v2 = escaparate?.versionEsquema === 2;
+  if (v2) validarManifiestoV2(manifiesto);
+  const plataformasEsperadas = v2 ? manifiesto.plataformasEsperadas : CUENTA_PLATAFORMAS;
+  const ofertasEsperadas = v2 ? manifiesto.ofertasEsperadas : CUENTA_OFERTAS;
   asegurar(radar && radar.version === 1 && esFecha(radar.verificadoEl),
     'radar local: cabecera inválida');
   asegurar(Array.isArray(radar.fuentes) && radar.fuentes.length > 0,
     'radar local: faltan fuentes');
-  asegurar(Array.isArray(radar.plataformas) && radar.plataformas.length === CUENTA_PLATAFORMAS,
-    `radar local: se esperaban ${CUENTA_PLATAFORMAS} plataformas`);
-  asegurar(escaparate && escaparate.versionEsquema === 1 &&
+  asegurar(Array.isArray(radar.plataformas) && radar.plataformas.length === plataformasEsperadas,
+    `radar local: se esperaban ${plataformasEsperadas} plataformas`);
+  asegurar(escaparate && [1, 2].includes(escaparate.versionEsquema) &&
     esFecha(escaparate.fuente?.actualizacionLocal?.verificadoEl) &&
     escaparate.fuente?.actualizacionRadarLocal?.verificadoEl === radar.verificadoEl,
     'escaparate local: fecha o esquema incoherente');
-  asegurar(Array.isArray(escaparate.plataformas) && escaparate.plataformas.length === CUENTA_PLATAFORMAS,
+  asegurar(Array.isArray(escaparate.plataformas) && escaparate.plataformas.length === plataformasEsperadas,
     'escaparate local: plataformas incompletas');
-  asegurar(Array.isArray(escaparate.ofertas) && escaparate.ofertas.length === CUENTA_OFERTAS,
+  asegurar(Array.isArray(escaparate.ofertas) && escaparate.ofertas.length === ofertasEsperadas,
     'escaparate local: ofertas incompletas');
+  if (v2) {
+    asegurar(new Set(escaparate.ofertas.map(o => o.slug)).size === ofertasEsperadas,
+      'escaparate local: slugs de oferta duplicados');
+    asegurar(new Set(escaparate.plataformas.map(p => p.slug)).size === plataformasEsperadas,
+      'escaparate local: slugs de plataforma duplicados');
+  }
   const porSlug = new Map(radar.plataformas.map(p => [p.slug, p]));
   const idsFuente = new Set(radar.fuentes.map(f => f.id));
   radar.fuentes.forEach((f, i) => validarFuente(f, radar.verificadoEl, `fuente/${i}`));
@@ -87,7 +115,19 @@ function validarFuentesLocales({ radar, escaparate }) {
     validarOferta(o, radar.verificadoEl, `oferta/${o.slug || i}`);
     asegurar(o.verificadaEl <= escaparate.fuente.actualizacionLocal.verificadoEl,
       `oferta/${o.slug || i}: fecha posterior al corte documental`);
+    if (v2) {
+      asegurar(COLECCIONES_OFERTA.includes(o.coleccion), `oferta/${o.slug}: colección inválida`);
+      asegurar(o.documentacion != null, `oferta/${o.slug}: falta documentación V2`);
+      if (o.coleccion !== 'principales') asegurar(o.estadoRevision === 'no_verificable' &&
+        o.precio == null && o.rentabilidad == null &&
+        o.puntuacion == null && o.disponibleEs == null,
+        `oferta/${o.slug}: colección documental con cifras comerciales`);
+    }
   });
+  if (v2) for (const coleccion of COLECCIONES_OFERTA) {
+    asegurar(escaparate.ofertas.filter(o => o.coleccion === coleccion).length ===
+      manifiesto.coleccionesEsperadas[coleccion], `escaparate local: colección ${coleccion} incompleta`);
+  }
   return { fecha: radar.verificadoEl, fechaOfertas: escaparate.fuente.actualizacionLocal.verificadoEl };
 }
 
@@ -99,16 +139,17 @@ const sqlNumero = valor => valor == null ? 'null' : String(Number(valor));
 const uuidDesdeHash = hash => `${hash.slice(0, 8)}-${hash.slice(8, 12)}-${hash.slice(12, 16)}-${hash.slice(16, 20)}-${hash.slice(20, 32)}`;
 
 function construirSqlImportacion(fuentes) {
-  const { radar, escaparate } = fuentes;
+  const { radar, escaparate, manifiesto } = fuentes;
   validarFuentesLocales(fuentes);
-  const contenido = JSON.stringify({ radar, ofertas: escaparate.ofertas });
+  const v2 = escaparate.versionEsquema === 2;
+  const contenido = JSON.stringify({ radar, ofertas: escaparate.ofertas, ...(v2 ? { manifiesto } : {}) });
   const hash = crypto.createHash('sha256').update(contenido).digest('hex');
   const revisionId = uuidDesdeHash(hash);
   const lineas = [
     '-- Generado localmente; revisar antes de cualquier aplicación remota.',
     '-- El lote entra como BORRADOR. Este fichero nunca lo aprueba ni lo publica.',
     'begin;',
-    `insert into rwadar_catalogo.revisiones (id, verificado_el, contenido_sha256, origen) values (${sqlTexto(revisionId)}::uuid, ${sqlFecha(radar.verificadoEl)}, ${sqlTexto(hash)}, ${sqlTexto(radar.alcance)}) on conflict (id) do nothing;`,
+    `insert into rwadar_catalogo.revisiones (id, verificado_el, contenido_sha256, origen${v2 ? ',version_esquema,plataformas_esperadas,ofertas_esperadas,colecciones_esperadas' : ''}) values (${sqlTexto(revisionId)}::uuid, ${sqlFecha(radar.verificadoEl)}, ${sqlTexto(hash)}, ${sqlTexto(radar.alcance)}${v2 ? `,2,${manifiesto.plataformasEsperadas},${manifiesto.ofertasEsperadas},${sqlJson(manifiesto.coleccionesEsperadas)}` : ''}) on conflict (id) do nothing;`,
   ];
 
   for (const f of radar.fuentes) {
@@ -136,8 +177,9 @@ function construirSqlImportacion(fuentes) {
   }
   for (const o of escaparate.ofertas) {
     const categoriaSlug = CATEGORIAS.get(o.categoria);
-    const columnaDocumentacion = o.documentacion == null ? '' : ',documentacion';
-    const valorDocumentacion = o.documentacion == null ? '' : `,${sqlJson(o.documentacion)}`;
+    const columnaDocumentacion = (o.documentacion == null ? '' : ',documentacion') + (v2 ? ',coleccion' : '');
+    const valorDocumentacion = (o.documentacion == null ? '' : `,${sqlJson(o.documentacion)}`) +
+      (v2 ? `,${sqlTexto(o.coleccion)}` : '');
     lineas.push(`insert into rwadar_catalogo.ofertas (revision_id,slug,tipo,titulo,plataforma_slug,plataforma_nombre,categoria_slug,pais,resumen,url,verificada_el,vigencia_dias,permanente,disponible_es,eu,fuera_ladrillo,puntuacion,rentabilidad,precio,metricas,avisos,estado_revision,fuentes_actuales,patrocinada${columnaDocumentacion}) values (${sqlTexto(revisionId)}::uuid,${sqlTexto(o.slug)},${sqlTexto(o.tipo)},${sqlTexto(o.titulo)},${sqlTexto(o.plataformaSlug)},${sqlTexto(o.plataformaNombre)},${sqlTexto(categoriaSlug)},${sqlTexto(o.pais)},${sqlTexto(o.resumen)},${sqlTexto(o.url)},${sqlFecha(o.verificadaEl)},${o.vigenciaDias},${sqlBooleano(o.permanente)},${sqlBooleano(o.disponibleEs)},${sqlBooleano(o.eu)},${sqlBooleano(o.fueraLadrillo)},${sqlNumero(o.puntuacion)},${o.rentabilidad == null ? 'null' : sqlJson(o.rentabilidad)},${o.precio == null ? 'null' : sqlJson(o.precio)},${sqlJson(o.metricas)},${sqlJson(o.avisos)},${sqlTexto(o.estadoRevision)}::rwadar_catalogo.estado_oferta,${sqlJson(o.fuentesActuales)},false${valorDocumentacion}) on conflict (revision_id,slug) do nothing;`);
   }
   lineas.push('commit;', '');
@@ -153,4 +195,8 @@ module.exports = {
   validarFuentesLocales,
   validarDocumentacionOferta,
   validarLotePublico,
+  validarLotePublicoV2,
+  validarManifiestoV2,
+  MANIFIESTO_CATALOGO_V2,
+  normalizarManifiestoLocal,
 };

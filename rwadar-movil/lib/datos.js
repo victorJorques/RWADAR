@@ -44,7 +44,7 @@ const CLAVES_LOCALES = [
   CACHE_RADAR, CACHE_FUERA, CACHE_OFERTAS, CACHE_SECUNDARIO,
   CACHE_EXCLUSIONES, CACHE_FECHA, CACHE_SIGO, CACHE_PENDIENTES,
 ];
-if (!MODO_LOCAL) CLAVES_LOCALES.push(CACHE_CATALOGO);
+if (!MODO_LOCAL) CLAVES_LOCALES.push(CACHE_CATALOGO, 'rwadar.cache.catalogo.v1');
 
 let lectorCatalogo = null;
 function cargarCatalogoRemoto(opciones) {
@@ -189,6 +189,11 @@ export function proveedoresDeOfertas(ofertas) {
 }
 
 export function vigenciaOferta(oferta, ahora = new Date()) {
+  if (oferta?.coleccion === 'secundario' || oferta?.coleccion === 'en_camino') {
+    return { estado: 'documental', etiqueta: oferta.coleccion === 'en_camino'
+      ? 'Anuncio documentado · apertura no confirmada'
+      : 'Referencia documental · liquidez no confirmada', venceEl: null, dias: null };
+  }
   if (oferta?.estadoRevision === 'no_verificable') {
     return {
       estado: 'bloqueada', etiqueta: 'Apertura no confirmada', venceEl: null, dias: null,

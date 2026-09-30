@@ -144,6 +144,7 @@ export function documentacionOferta(oferta, ahora = new Date()) {
 /* El TTL pertenece a la oferta, no al lote del catálogo. Se evalúa al pintar,
    incluso si la oferta procede de una caché cargada cuando aún era vigente. */
 export function revisionTemporalOferta(oferta, ahora = new Date()) {
+  if (oferta?.coleccion != null && oferta.coleccion !== 'principales') return null;
   if (!oferta || (oferta.estadoRevision != null && oferta.estadoRevision !== 'actual')) return null;
   const fecha = oferta.verificadaEl;
   const base = Date.parse(`${fecha}T00:00:00Z`);
@@ -167,5 +168,5 @@ export function ofertaConCifrasVigentes(oferta, ahora = new Date()) {
   // El resumen y las métricas libres también pueden repetir precio o yield.
   // El original se conserva intacto para trazabilidad, pero no se presenta.
   return { ...oferta, cifrasPendientes: true, rentabilidad: null, precio: null,
-    metricas: [], resumen: '', disponibleEs: null };
+    metricas: [], resumen: '', disponibleEs: null, puntuacion: null };
 }

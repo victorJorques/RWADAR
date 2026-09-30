@@ -1,15 +1,26 @@
 'use strict';
 
-const { validarLotePublico, MAX_VIGENCIA_DIAS, CUENTA_PLATAFORMAS, CUENTA_OFERTAS,
+const { validarLotePublico, validarLotePublicoV2, MANIFIESTO_CATALOGO_V2, MAX_VIGENCIA_DIAS,
   esFecha } = require('./contrato-catalogo');
 
 // Una sola entrada: nunca combinar el radar antiguo con ofertas de otra revisión.
-const CACHE_CATALOGO = 'rwadar.cache.catalogo.v1';
+const CACHE_CATALOGO = 'rwadar.cache.catalogo.v2';
 const texto = valor => typeof valor === 'string' ? valor.trim() : '';
 
 function adaptarCatalogo(lote, ahora) {
   if (lote?.version !== 1) throw new Error('Versión de caché de catálogo no válida');
   const revision = validarLotePublico(lote.plataformas, lote.ofertas, { hoy: ahora });
+  return adaptarFilas(lote, revision, ahora);
+}
+
+function adaptarCatalogoV2(lote, ahora) {
+  if (lote?.version !== 2) throw new Error('Versión de caché de catálogo no válida');
+  const revision = validarLotePublicoV2(lote.plataformas, lote.ofertas,
+    { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: ahora });
+  return adaptarFilas(lote, revision, ahora);
+}
+
+function adaptarFilas(lote, revision, ahora) {
   const plataformas = lote.plataformas.map(p => {
     const url = new URL(p.web);
     if (url.protocol !== 'https:' || url.username || url.password ||
@@ -29,9 +40,10 @@ function adaptarCatalogo(lote, ahora) {
   const ofertas = lote.ofertas.map(o => {
     const vence = new Date(Date.parse(`${o.verificada_el}T00:00:00Z`) +
       o.vigencia_dias * 86400000).toISOString().slice(0, 10);
-    const vigente = o.estado_revision === 'actual' && hoy <= vence;
+    const coleccion = lote.version === 2 ? o.coleccion : 'principales';
+    const vigente = coleccion === 'principales' && o.estado_revision === 'actual' && hoy <= vence;
     return {
-      catalogo: true, revisionId: o.revision_id, slug: o.slug, tipo: o.tipo,
+      catalogo: true, revisionId: o.revision_id, slug: o.slug, tipo: o.tipo, coleccion,
       titulo: o.titulo, plataformaSlug: o.plataforma_slug,
       plataformaNombre: o.plataforma_nombre, categoria: o.categoria,
       pais: texto(o.pais), url: o.url, verificadaEl: o.verificada_el,
@@ -69,7 +81,7 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
     try {
       const raw = await almacenamiento.getItem(CACHE_CATALOGO);
       if (!raw) return vacio(error || 'No hay un catálogo vigente guardado');
-      return { ...adaptarCatalogo(JSON.parse(raw), ahora()), deCache: true, error };
+      return { ...adaptarCatalogoV2(JSON.parse(raw), ahora()), deCache: true, error };
     } catch {
       await descartarCache();
       return vacio(error || 'La copia guardada está caducada o no es verificable');
@@ -80,15 +92,17 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
     try {
       const sb = clientePublico();
       const resultados = await Promise.allSettled([
-        sb.from('catalogo_plataformas_publicas').select('*').limit(27),
-        sb.from('catalogo_ofertas_publicas').select('*').limit(29),
+        sb.from('catalogo_plataformas_publicas_v2').select('*').limit(MANIFIESTO_CATALOGO_V2.plataformasEsperadas + 1),
+        sb.from('catalogo_ofertas_publicas_v2').select('*').limit(MANIFIESTO_CATALOGO_V2.ofertasEsperadas + 1),
       ]);
       respuestas = resultados.map(r => r.status === 'fulfilled' ? r.value
         : { error: true, status: 0 });
     } catch {
       return desdeCache('No se pudo conectar para actualizar el catálogo');
     }
-    const cantidades = [CUENTA_PLATAFORMAS, CUENTA_OFERTAS];
+    // Una respuesta parcial también retira la caché cuando la otra vista falla.
+    const cantidades = [MANIFIESTO_CATALOGO_V2.plataformasEsperadas,
+      MANIFIESTO_CATALOGO_V2.ofertasEsperadas];
     if (respuestas.some((r, i) => !r?.error &&
         (!Array.isArray(r?.data) || r.data.length !== cantidades[i]))) {
       await descartarCache();
@@ -103,10 +117,10 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
       await descartarCache();
       return vacio('El catálogo no está disponible para consulta pública');
     }
-    const lote = { version: 1, plataformas: respuestas[0]?.data, ofertas: respuestas[1]?.data };
+    const lote = { version: 2, plataformas: respuestas[0]?.data, ofertas: respuestas[1]?.data };
     let adaptado;
     try {
-      adaptado = adaptarCatalogo(lote, ahora());
+      adaptado = adaptarCatalogoV2(lote, ahora());
     } catch {
       // Incluso un 200 con cero filas significa retirada/no publicable, no usar caché.
       await descartarCache();
@@ -131,16 +145,18 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
 }
 
 // Invalida también una app que permanece abierta o vuelve de suspensión.
-function vigilarCaducidadCatalogo({ fecha, alCaducar, appState,
+function vigilarCaducidadCatalogo({ fecha, vigenciaDias = MAX_VIGENCIA_DIAS, alCaducar, appState,
   ahora = () => Date.now(), programar = setTimeout, cancelar = clearTimeout }) {
   const inicio = esFecha(fecha) ? Date.parse(`${fecha}T00:00:00Z`) : NaN;
-  const vence = inicio + (MAX_VIGENCIA_DIAS + 1) * 86400000;
+  const plazo = Number.isInteger(vigenciaDias) && vigenciaDias >= 1 && vigenciaDias <= MAX_VIGENCIA_DIAS
+    ? vigenciaDias : NaN;
+  const vence = inicio + (plazo + 1) * 86400000;
   let temporizador, cerrada = false;
   const revisar = () => {
     cancelar(temporizador);
     if (cerrada) return;
     const instante = ahora();
-    if (!Number.isFinite(instante) || !Number.isFinite(inicio) || instante < inicio || instante >= vence) {
+    if (!Number.isFinite(instante) || !Number.isFinite(inicio) || !Number.isFinite(vence) || instante < inicio || instante >= vence) {
       cerrada = true;
       alCaducar();
       return;
@@ -154,4 +170,4 @@ function vigilarCaducidadCatalogo({ fecha, alCaducar, appState,
   return () => { cerrada = true; cancelar(temporizador); escucha.remove(); };
 }
 
-module.exports = { CACHE_CATALOGO, adaptarCatalogo, crearLectorCatalogo, vigilarCaducidadCatalogo };
+module.exports = { CACHE_CATALOGO, adaptarCatalogo, adaptarCatalogoV2, crearLectorCatalogo, vigilarCaducidadCatalogo };

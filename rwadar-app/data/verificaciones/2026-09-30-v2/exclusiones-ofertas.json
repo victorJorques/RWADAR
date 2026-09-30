@@ -1,0 +1,170 @@
+{
+  "fuente": "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links",
+  "fechaDeclarada": "2026-09-28",
+  "consultadaEl": "2026-09-30",
+  "alcance": "Motivos atribuidos al artefacto; no son bajas de plataformas del radar ni un dictamen jurídico. Revalidar fuentes primarias antes de afirmarlos como actuales.",
+  "exclusiones": [
+    {
+      "titulo": "RealUnit Schweiz",
+      "magnitudAportada": "66,5 M CHF",
+      "motivoAportado": "Sociedad de inversión suiza en activos reales, cotizada, con operaciones cruzadas el 18 de agosto a las 08:01. Su web limita la oferta a residentes en Suiza, Alemania y Liechtenstein: España fuera. Es el mejor activo que hemos tenido que retirar.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Lofty",
+      "magnitudAportada": "82 propiedades",
+      "motivoAportado": "No aclara si un residente en España puede comprar. Correo enviado a su soporte, sin respuesta.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Pax Gold",
+      "magnitudAportada": "Oro",
+      "motivoAportado": "Su propia web lo dice: no disponible en la Unión Europea.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Caribe 1 y Caribe 2 · Reental",
+      "magnitudAportada": "10 % y 11 %",
+      "motivoAportado": "Caducadas el 15 de septiembre por nuestro propio contrato: su emisión primaria solo se ve con sesión en la app de Reental y a los 28 días sin verificar una ficha sale del escaparate. No sabemos si siguen abiertas; por eso no las publicamos.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Twiliner · Aktionariat",
+      "magnitudAportada": "3,00 CHF",
+      "motivoAportado": "Retirada el 18 de septiembre: no cruza una operación desde el 6 de noviembre de 2025. Sin cruce en 90 días, el precio es histórico, no un precio.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "EHC Kloten · Aktionariat",
+      "magnitudAportada": "91,00 CHF",
+      "motivoAportado": "Retirada el 18 de septiembre: un año sin operaciones —la última, el 5 de septiembre de 2025— y una capitalización declarada que no cuadra con su precio.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Midas",
+      "magnitudAportada": "51 de 57 productos",
+      "motivoAportado": "Estrategias market-neutral de cripto y basis trade. Rendimiento de cripto, no de activos reales: no pintan nada en un radar RWA. Tampoco entra solmFONE, que es mF-ONE emitido en Solana y no un activo distinto.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Midas mWIN",
+      "magnitudAportada": "TVL 34,8 M$",
+      "motivoAportado": "Retirada el 28 de septiembre. Su cartera de renta fija la gestiona Wellington Management, pero Midas ha dejado de publicar su rentabilidad: su web marca «N/A» . La API devuelve un 1,33 % a siete días que la propia plataforma no respalda, así que no lo publicamos. Ya avisábamos de su recorrido: 4,95 %, 1,49 %, 5,76 % y 3,65 % en agosto.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Hausera",
+      "magnitudAportada": "0 de 40",
+      "motivoAportado": "Ninguna abierta ni en preventa el 28 de septiembre. Ver «En camino», arriba.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "OTESA Calella Living",
+      "magnitudAportada": "993.000 €",
+      "motivoAportado": "Primer bono tokenizado con garantía hipotecaria de España, al 10 % a 12 meses. Comprobado el 18 de agosto: emisión completada. Colocó 1 M€ en 21 días.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Exporo",
+      "magnitudAportada": "2 de 2",
+      "motivoAportado": "Retiradas por nosotros mismos el 18/08. No hemos podido confirmar que estén en blockchain, que es el filtro fundacional del radar. Su ficha ofrece un «Informationsblatt Vermögensanlagen» —documento de las Vermögensanlagen alemanas, que no son valores— mientras el aviso de la plataforma habla de «valores transferibles». Ninguno menciona token. Exporo tuvo bonos tokenizados en Ethereum desde 2019, pero su línea Bestand ya no existe como tal. Pendiente de preguntarles.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Brickwise",
+      "magnitudAportada": "2 de 14",
+      "motivoAportado": "El parking con fotovoltaica de St. Pölten no tiene ni una oferta de venta, y el apartamento con renta fija de Hinterstoder proyecta un reparto negativo (−0,10 %): no rinde. Las 12 restantes sí están arriba.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Aktionariat",
+      "magnitudAportada": "28 de 53 empresas",
+      "motivoAportado": "Tokenizadas pero sin mercado abierto ( NOT_TRADED ) o aún por estrenar. No hay nada que comprar.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Fleap · Weltix",
+      "magnitudAportada": "Italia",
+      "motivoAportado": "Infraestructura de registro autorizada por Consob. No venden nada: Ferveo SpA tokenizó su libro de accionistas, no una oferta.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Finexity · Splint · Timeless",
+      "magnitudAportada": "Coleccionables UE",
+      "motivoAportado": "Minoristas de verdad, desde 50 €, pero ninguna publica catálogo sin abrir cuenta. No se puede verificar precio ni estado.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Backed Finance",
+      "magnitudAportada": "xStocks",
+      "motivoAportado": "Only Qualified Investors , según su web. Además es exposición sin rendimiento: COINx hizo −14,84 % en un año.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "tZERO",
+      "magnitudAportada": "Emisiones activas",
+      "motivoAportado": "Reg D 506c: solo inversores acreditados, mínimo 10.000 $.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    },
+    {
+      "titulo": "Beself Brands",
+      "magnitudAportada": "Acciones",
+      "motivoAportado": "Colocó el 3 % de su emisión, recompró los tokens y entró en concurso de acreedores en junio de 2026.",
+      "fuentes": [
+        "https://claude.ai/code/artifact/09900c9d-b92d-4da9-b2df-09815751ab1f#no_universal_links"
+      ],
+      "estado": "pendiente_contraste_primario"
+    }
+  ]
+}

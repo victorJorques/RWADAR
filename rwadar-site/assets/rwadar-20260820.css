@@ -2020,3 +2020,13 @@ body.detalle-local-abierto{overflow:hidden}
   #movilPanelRadar .empresa-visual__texto strong{font-size:.9rem}
   #movilPanelRadar .empresa-visual__verificada{font-size:.7rem}
 }
+/* Las referencias documentales son grupos separados de la comparación actual. */
+.catalogo-coleccion-cab,.catalogo-referencias{grid-column:1/-1;min-width:0}
+.catalogo-coleccion-cab h3,.catalogo-referencias h3{margin:0;font-size:1.15rem}
+.catalogo-coleccion-cab p,.catalogo-referencias>p{line-height:1.6;color:var(--tx-2);font-size:.88rem}
+.catalogo-referencias{border:1px solid var(--linea);border-radius:14px;padding:18px;margin-top:16px}
+.catalogo-referencias>summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.catalogo-referencias>summary span{font-size:.8rem;color:var(--tx-2)}
+.catalogo-referencias[open]>summary{margin-bottom:12px}
+.catalogo-referencias>.emis-rejilla{margin-top:18px}
+.catalogo-descripcion{font-size:.82rem;line-height:1.6;color:var(--tx-2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:0 0 12px}
