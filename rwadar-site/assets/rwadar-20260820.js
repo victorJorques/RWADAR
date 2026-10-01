@@ -37,6 +37,11 @@ const FECHA_VERIFICACION_LOCAL='2026-09-21';
 let ESCAPARATE_LOCAL=null;
 let MANIFIESTO_EDITORIAL_LOCAL=null;
 let CATALOGO_EMBEBIDO_BLOQUEADO=false;
+/* El catálogo se publica siempre salvo orden expresa de retirada (Víctor,
+   1/10/2026). Caducado, o si no se puede comprobar la revisión remota, se
+   muestra la última copia completa con un aviso; las cifras vencidas siguen
+   ocultas oferta a oferta. Solo public.catalogo_publicacion.retirado lo oculta. */
+let CATALOGO_CADUCADO=false,CATALOGO_SIN_COMPROBAR=false,CATALOGO_RETIRADO=false;
 /* Activos propios, no fotografías del emisor. La compuerta de publicación
    comprueba por separado el manifiesto y sus huellas antes de copiarlos. */
 const EDITORIAL_OFERTA_POR_CATEGORIA={
@@ -1360,7 +1365,7 @@ function render(){
   Object.keys(CATMETA).map(c=>{const n=P.filter(p=>p.cat===c).length;
    const cp={cat:c};return `<button class="f ${S2.cat===c?'on':''}" data-cat="${escHtml(c)}" data-filtrar-cat="${escHtml(c)}" aria-pressed="${S2.cat===c?'true':'false'}"><span class="punto ${catClase(cp)}"></span>${escHtml(c)} <span class="ct">${n}</span></button>`}).join('');
  const f=filtered();
- document.getElementById('count').innerHTML=CATALOGO_EMBEBIDO_BLOQUEADO?'<b>0</b> plataformas · catálogo pendiente de revisión':`<b>${f.length}</b> de ${P.length} plataformas · última revisión ${ultimaRevision()}`;
+ document.getElementById('count').innerHTML=CATALOGO_EMBEBIDO_BLOQUEADO?'<b>0</b> plataformas · catálogo no disponible temporalmente':`<b>${f.length}</b> de ${P.length} plataformas · última revisión ${ultimaRevision()}${CATALOGO_CADUCADO?' · pendiente de renovar':''}`;
  document.getElementById('grid').classList.toggle('hide',S2.view!=='grid');
  document.getElementById('matrix').classList.toggle('show',S2.view==='matrix');
  S2.view==='grid'?renderGrid(f):renderMatrix(f);
@@ -1372,7 +1377,7 @@ function render(){
 }
 function renderGrid(f){
  const g=document.getElementById('grid');
- if(CATALOGO_EMBEBIDO_BLOQUEADO){g.innerHTML='<div class="vacio"><p>Catálogo pendiente de revisión. Las plataformas volverán a mostrarse cuando haya un lote completo y vigente.</p></div>';return}
+ if(CATALOGO_EMBEBIDO_BLOQUEADO){g.innerHTML='<div class="vacio"><p>Catálogo no disponible temporalmente. Las plataformas volverán a mostrarse en cuanto se publique de nuevo.</p></div>';return}
  if(!f.length){g.innerHTML=`<div class="vacio"><p>El radar no detecta ninguna plataforma con estos filtros.</p><button class="f" data-accion="limpiar">Limpiar filtros</button></div>`;return}
  g.innerHTML=f.map(p=>{const i=P.indexOf(p),on=compare.includes(i),ilustrativa=portadaEsIlustrativa(p);
   const portada=String(p.n).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -1597,13 +1602,37 @@ function emisionesVisibles(){
  }[emiOrden]||(()=>0);
  return filtradas.slice().sort(orden);
 }
+/* Lo que ve la persona cuando el catálogo no está al día: nunca un vacío,
+   sino la última copia completa con su fecha y qué hacer. */
+function textoAvisoCatalogo(){
+ if(MODO_LOCAL_SEGURO||CATALOGO_EMBEBIDO_BLOQUEADO||!P.length)return '';
+ const fecha=fechaES(P[0].verificado_lote_el);
+ if(CATALOGO_SIN_COMPROBAR)return 'No hemos podido comprobar la revisión más reciente. Mostramos la última revisión completa, del '+
+  fecha+'. Comprueba cada dato en la web del emisor antes de decidir.';
+ if(CATALOGO_CADUCADO)return 'Revisión pendiente. Estos datos se revisaron el '+fecha+
+  ' y su revisión semanal ha vencido. Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor antes de decidir.';
+ return '';
+}
+function textoPieRevision(){
+ if(CATALOGO_EMBEBIDO_BLOQUEADO)return 'Catálogo no disponible temporalmente';
+ return 'Última revisión del registro: '+ultimaRevision()+(CATALOGO_CADUCADO||CATALOGO_SIN_COMPROBAR?' · pendiente de renovar':'');
+}
+function pintarAvisoCatalogo(){
+ const texto=textoAvisoCatalogo();
+ ['avisoCatalogoRadar','avisoCatalogoOfertas'].forEach(id=>{
+  const el=document.getElementById(id);if(!el)return;
+  el.textContent=texto;el.hidden=!texto;
+ });
+ if(!MODO_LOCAL_SEGURO){const pie=document.getElementById('pieRevision');if(pie)pie.textContent=textoPieRevision();}
+}
 function pintarEmisiones(){
+ pintarAvisoCatalogo();
  const caja=document.getElementById('emiLista');if(!caja)return;
  if(MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL){pintarEscaparateLocal();return;}
  if(CATALOGO_EMBEBIDO_BLOQUEADO){
   const seccion=document.getElementById('emisiones');if(seccion)seccion.classList.add('sin-emisiones');
   const estado=document.getElementById('movilOfertasEstado');if(estado){estado.textContent='Catálogo no disponible';estado.classList.remove('hay-ofertas')}
-  caja.innerHTML='<div class="emis-vacio"><h3>Revisión pendiente</h3><p>La copia verificada ha caducado o está incompleta. RWAdar no muestra datos anteriores mientras se renueva el lote.</p></div>';
+  caja.innerHTML='<div class="emis-vacio"><h3>Catálogo no disponible</h3><p>El catálogo se ha retirado temporalmente. Volverá a mostrarse en cuanto se publique de nuevo.</p></div>';
   return;
  }
  const catalogo=EMI.filter(e=>e&&e.catalogo===true);
@@ -2622,8 +2651,12 @@ function validarManifiestoCatalogoV2(plataformas,ofertas){
   throw new Error('V2: colección incompleta');
  const hoy=new Date(),edad=Math.floor((Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate())-
   Date.parse(fecha+'T00:00:00Z'))/86400000);
- if(!Number.isFinite(edad)||edad<0||edad>plazo)throw new Error('V2: lote futuro o caducado');
+ if(!Number.isFinite(edad)||edad<0)throw new Error('V2: lote fechado en el futuro');
  return fecha;
+}
+function edadLoteDias(fecha){
+ const hoy=new Date();
+ return Math.floor((Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate())-Date.parse(fecha+'T00:00:00Z'))/86400000);
 }
 function validarLoteCatalogoRemotoV2(plataformas,ofertas){
  const fecha=validarManifiestoCatalogoV2(plataformas,ofertas);
@@ -2633,9 +2666,10 @@ function validarLoteCatalogoRemotoV2(plataformas,ofertas){
  return fecha;
 }
 
-/* El pre-render es una caché, no una excepción a la vigencia. Si envejece
-   mientras Supabase falla o devuelve cero filas, se elimina antes de pintar:
-   nunca conservamos lotes antiguos por comodidad. */
+/* El pre-render es la última copia completa publicada. Si envejece mientras
+   Supabase falla o no responde con un lote completo, se sigue mostrando con
+   el aviso de revisión pendiente. Solo se elimina si está dañada, fechada en
+   el futuro o si llega la orden expresa de retirada. */
 function comprobarCatalogoEmbebido(){
  if(CATALOGO_EMBEBIDO_BLOQUEADO)return false;
  const catalogo=EMI.filter(e=>e&&e.catalogo===true);
@@ -2650,8 +2684,8 @@ function comprobarCatalogoEmbebido(){
   const base=Date.parse(fecha+'T00:00:00Z'),hoy=new Date();
   const hoyUTC=Date.UTC(hoy.getUTCFullYear(),hoy.getUTCMonth(),hoy.getUTCDate());
   const edad=Math.floor((hoyUTC-base)/86400000);
-  if(!fechaLocalValida(fecha)||!Number.isFinite(base)||edad<0||edad>7)
-   throw new Error('lote embebido futuro o caducado');
+  if(!fechaLocalValida(fecha)||!Number.isFinite(base)||edad<0)
+   throw new Error('lote embebido fechado en el futuro');
   P.forEach(p=>validarVerificacionLocal(p.verificacionLocal,fecha));
   if(!catalogo.every(o=>ofertaLocalValida(o)&&fechaOfertaPublicaValida(o.verificadaEl,fecha)&&
       Array.isArray(o.metricas)&&o.metricas.length&&Array.isArray(o.avisos)&&o.avisos.length&&
@@ -2660,6 +2694,7 @@ function comprobarCatalogoEmbebido(){
       (o.estadoRevision==='actual'||(o.rentabilidad==null&&o.precio==null))&&
       (o.coleccion==='principales'||(o.estadoRevision==='no_verificable'&&o.puntuacion==null&&o.disponibleEs==null))))
    throw new Error('oferta embebida fuera de contrato');
+  CATALOGO_CADUCADO=edad>P[0].vigencia_lote_dias;
   return true;
  }catch(_){
   P.length=0;EMI.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true;
@@ -2771,16 +2806,24 @@ async function alDia(){
   const respuestas=await Promise.allSettled([
     pide('/catalogo_plataformas_publicas_v2?select=*'),
     pide('/plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)&order=nombre'),
-    pide('/catalogo_ofertas_publicas_v2?select=*')
+    pide('/catalogo_ofertas_publicas_v2?select=*'),
+    pide('/catalogo_publicacion?select=retirado,motivo')
   ]);
-  // Una vista que responde vacía o incompleta retira explícitamente el lote.
-  // Un fallo simultáneo de otra petición no debe esconder esa retirada.
+  // Solo la orden expresa de retirada oculta el catálogo. Si esa consulta
+  // falla, o la base todavía no tiene la tabla, no se toma como una orden.
+  const orden=respuestas[3].status==='fulfilled'&&Array.isArray(respuestas[3].value)?respuestas[3].value[0]:null;
+  if(orden&&orden.retirado===true){
+   P.length=0;EMI.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true;CATALOGO_RETIRADO=true;
+   refrescarVigenciaOfertas();throw new Error('catálogo retirado por orden expresa');
+  }
+  // Una vista vacía o incompleta ya no retira el lote: se conserva la última
+  // copia completa y se avisa de que no se ha podido comprobar la más reciente.
   if([[0,26],[2,49]].some(([i,total])=>
    respuestas[i].status==='fulfilled'&&(!Array.isArray(respuestas[i].value)||respuestas[i].value.length!==total))){
-   P.length=0;EMI.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true;
-   refrescarVigenciaOfertas();throw new Error('catálogo remoto retirado o incompleto');
+   CATALOGO_SIN_COMPROBAR=true;
+   refrescarVigenciaOfertas();throw new Error('catálogo remoto incompleto: se conserva la última copia completa');
   }
-  const fallo=respuestas.find(r=>r.status==='rejected');if(fallo)throw fallo.reason;
+  const fallo=respuestas.slice(0,3).find(r=>r.status==='rejected');if(fallo)throw fallo.reason;
   const [r,f,e]=respuestas.map(r=>r.value);
   if(!Array.isArray(f)||f.length!==4)throw new Error('descartes públicos incompletos');
   let fecha,nP,nE;
@@ -2789,12 +2832,19 @@ async function alDia(){
    nP=r.map(p=>plataformaCatalogoRemota(p,fecha)).sort((a,b)=>a.n.localeCompare(b.n,'es'));
    nE=e.map(o=>ofertaCatalogoRemota(o,fecha)).sort((a,b)=>a.slug.localeCompare(b.slug,'es'));
   }catch(error){
-   P.length=0;EMI.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true;
-   refrescarDetalleOfertaAbierto();throw error;
+   // Un lote remoto que no supera el contrato tampoco borra la copia buena.
+   CATALOGO_SIN_COMPROBAR=true;
+   refrescarVigenciaOfertas();throw error;
   }
   const nF=f.map(descarteRemoto).sort((a,b)=>a.n.localeCompare(b.n,'es'));
+  const caducadoRemoto=edadLoteDias(fecha)>r[0].vigencia_lote_dias;
+  const cambiaAviso=CATALOGO_SIN_COMPROBAR||CATALOGO_RETIRADO||CATALOGO_CADUCADO!==caducadoRemoto;
+  CATALOGO_SIN_COMPROBAR=false;CATALOGO_RETIRADO=false;CATALOGO_CADUCADO=caducadoRemoto;
 
- if(huella(nP,nF,nE)===huella(P,FUERA,EMI)) return false;   /* ya estaba al día */
+ if(huella(nP,nF,nE)===huella(P,FUERA,EMI)){   /* ya estaba al día */
+  if(cambiaAviso)refrescarVigenciaOfertas();
+  return false;
+ }
 
  P.length=0;    P.push(...nP);
  FUERA.length=0; FUERA.push(...nF);
@@ -2813,7 +2863,7 @@ async function alDia(){
  pintarEmisiones();
  render();
  const pie=document.getElementById('pieRevision');
- if(pie) pie.textContent='Última revisión del registro: '+ultimaRevision();
+ if(pie) pie.textContent=textoPieRevision();
  return true;
 }
 
@@ -2847,8 +2897,8 @@ function pintarCierreCatalogo(){
  const lectura=document.getElementById('radarLee');
  if(lectura){lectura.classList.remove('viva');const dato=lectura.querySelector('.rl-dato'),vacio=lectura.querySelector('.rl-vacio');if(dato)dato.hidden=true;if(vacio)vacio.hidden=false}
  ['rlNom','rlMeta'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=''});
- const total=document.getElementById('rlTotal');if(total)total.textContent='0 plataformas · catálogo pendiente de revisión';
- const pie=document.getElementById('pieRevision');if(pie)pie.textContent='Catálogo pendiente de revisión';
+ const total=document.getElementById('rlTotal');if(total)total.textContent='0 plataformas · catálogo no disponible temporalmente';
+ const pie=document.getElementById('pieRevision');if(pie)pie.textContent='Catálogo no disponible temporalmente';
  rellenaRegiones();
  resetAll();
 }
@@ -2884,7 +2934,7 @@ async function mirar(){
 render();
 pulir();
 (function pieFecha(){const p=document.getElementById('pieRevision');
- if(p) p.textContent=CATALOGO_EMBEBIDO_BLOQUEADO?'Catálogo pendiente de revisión':'Última revisión del registro: '+ultimaRevision();})();
+ if(p) p.textContent=textoPieRevision();})();
 if(MODO_LOCAL_SEGURO){
  cargarEscaparateLocal().catch(e=>{
   document.body.classList.add('modo-local-seguro');

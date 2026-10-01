@@ -435,7 +435,7 @@ test('el adaptador remoto de datos no puede usar el fixture como sustituto de un
   assert.deepEqual(resultado.plataformas, []);
   assert.deepEqual(resultado.ofertas, []);
   assert.ok(resultado.error);
-  assert.deepEqual(tablas, ['catalogo_plataformas_publicas_v2', 'catalogo_ofertas_publicas_v2']);
+  assert.deepEqual(tablas, ['catalogo_plataformas_publicas_v2', 'catalogo_ofertas_publicas_v2', 'catalogo_publicacion']);
   assert.equal((await datos.cargarRadar({ soloCache: true })).datos.length, 0);
   assert.equal((await datos.cargarOfertas({ soloCache: true })).datos.length, 0);
 });
@@ -653,7 +653,7 @@ test('el catálogo conectado no habilita seguimiento remoto ni consume datos his
       },
     });
     const catalogo = await datos.cargarCatalogo();
-    assert.deepEqual(tablas.sort(), ['catalogo_ofertas_publicas_v2', 'catalogo_plataformas_publicas_v2']);
+    assert.deepEqual(tablas.sort(), ['catalogo_ofertas_publicas_v2', 'catalogo_plataformas_publicas_v2', 'catalogo_publicacion']);
     assert.deepEqual(catalogo.plataformas, []);
     assert.deepEqual(await datos.siguiendo(), []);
     assert.deepEqual(await datos.alternarSeguimiento('nueva', 'id-nueva'), {

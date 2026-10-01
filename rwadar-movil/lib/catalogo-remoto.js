@@ -13,10 +13,13 @@ function adaptarCatalogo(lote, ahora) {
   return adaptarFilas(lote, revision, ahora);
 }
 
+// El catálogo se publica siempre salvo orden expresa de retirada (Víctor,
+// 1/10/2026): un lote completo y vencido se acepta con `caducado: true` y sus
+// cifras vencidas se ocultan oferta a oferta en adaptarFilas.
 function adaptarCatalogoV2(lote, ahora) {
   if (lote?.version !== 2) throw new Error('Versión de caché de catálogo no válida');
   const revision = validarLotePublicoV2(lote.plataformas, lote.ofertas,
-    { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: ahora });
+    { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: ahora, permitirCaducado: true });
   return adaptarFilas(lote, revision, ahora);
 }
 
@@ -69,22 +72,23 @@ function adaptarFilas(lote, revision, ahora) {
 function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new Date() }) {
   let enCurso = null;
   let cacheDescartada = false;
-  const vacio = error => ({ plataformas: [], ofertas: [], deCache: false,
-    error, revisionId: null });
+  const vacio = (error, extra = {}) => ({ plataformas: [], ofertas: [], deCache: false,
+    error, revisionId: null, ...extra });
+  const SIN_COMPROBAR = 'No hemos podido comprobar la revisión más reciente';
   async function descartarCache() {
     // Si el disco falla tampoco se reutiliza en esta sesión una revisión retirada.
     cacheDescartada = true;
     try { await almacenamiento.removeItem(CACHE_CATALOGO); } catch {}
   }
   async function desdeCache(error = null) {
-    if (cacheDescartada) return vacio(error || 'No hay un catálogo vigente guardado');
+    if (cacheDescartada) return vacio(error || 'No hay un catálogo guardado');
     try {
       const raw = await almacenamiento.getItem(CACHE_CATALOGO);
-      if (!raw) return vacio(error || 'No hay un catálogo vigente guardado');
+      if (!raw) return vacio(error || 'No hay un catálogo guardado');
       return { ...adaptarCatalogoV2(JSON.parse(raw), ahora()), deCache: true, error };
     } catch {
       await descartarCache();
-      return vacio(error || 'La copia guardada está caducada o no es verificable');
+      return vacio(error || 'La copia guardada no es verificable');
     }
   }
   async function desdeRed() {
@@ -94,37 +98,40 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
       const resultados = await Promise.allSettled([
         sb.from('catalogo_plataformas_publicas_v2').select('*').limit(MANIFIESTO_CATALOGO_V2.plataformasEsperadas + 1),
         sb.from('catalogo_ofertas_publicas_v2').select('*').limit(MANIFIESTO_CATALOGO_V2.ofertasEsperadas + 1),
+        sb.from('catalogo_publicacion').select('retirado,motivo').limit(1),
       ]);
       respuestas = resultados.map(r => r.status === 'fulfilled' ? r.value
         : { error: true, status: 0 });
     } catch {
       return desdeCache('No se pudo conectar para actualizar el catálogo');
     }
-    // Una respuesta parcial también retira la caché cuando la otra vista falla.
+    // Solo la orden expresa de retirada borra la copia guardada. Si esa
+    // consulta falla, o la base aún no tiene la tabla, no es una orden.
+    const orden = !respuestas[2]?.error && Array.isArray(respuestas[2]?.data) ? respuestas[2].data[0] : null;
+    if (orden?.retirado === true) {
+      await descartarCache();
+      return vacio('El catálogo se ha retirado temporalmente', { retirado: true });
+    }
+    // Una vista vacía, incompleta, un error de permisos o un lote que no
+    // supera el contrato ya no retiran nada: se conserva la última copia
+    // completa guardada y se avisa de que no se pudo comprobar la más reciente.
     const cantidades = [MANIFIESTO_CATALOGO_V2.plataformasEsperadas,
       MANIFIESTO_CATALOGO_V2.ofertasEsperadas];
-    if (respuestas.some((r, i) => !r?.error &&
+    const catalogo = respuestas.slice(0, 2);
+    if (catalogo.some((r, i) => !r?.error &&
         (!Array.isArray(r?.data) || r.data.length !== cantidades[i]))) {
-      await descartarCache();
-      return vacio('Catálogo incompleto, retirado o pendiente de revisión');
+      return desdeCache(SIN_COMPROBAR);
     }
-    const fallos = respuestas.filter(r => r?.error);
-    if (fallos.length) {
-      // Errores de permisos/esquema o HTTP definitivos no son modo sin conexión.
-      if (fallos.every(f => !f.status || f.status >= 500)) {
-        return desdeCache('No se pudo actualizar el catálogo');
-      }
-      await descartarCache();
-      return vacio('El catálogo no está disponible para consulta pública');
+    if (catalogo.some(r => r?.error)) {
+      return desdeCache(catalogo.every(f => !f?.error || !f.status || f.status >= 500)
+        ? 'No se pudo actualizar el catálogo' : SIN_COMPROBAR);
     }
     const lote = { version: 2, plataformas: respuestas[0]?.data, ofertas: respuestas[1]?.data };
     let adaptado;
     try {
       adaptado = adaptarCatalogoV2(lote, ahora());
     } catch {
-      // Incluso un 200 con cero filas significa retirada/no publicable, no usar caché.
-      await descartarCache();
-      return vacio('Catálogo incompleto, caducado o pendiente de revisión');
+      return desdeCache(SIN_COMPROBAR);
     }
     try {
       await almacenamiento.setItem(CACHE_CATALOGO, JSON.stringify(lote));
@@ -170,4 +177,32 @@ function vigilarCaducidadCatalogo({ fecha, vigenciaDias = MAX_VIGENCIA_DIAS, alC
   return () => { cerrada = true; cancelar(temporizador); escucha.remove(); };
 }
 
-module.exports = { CACHE_CATALOGO, adaptarCatalogo, adaptarCatalogoV2, crearLectorCatalogo, vigilarCaducidadCatalogo };
+// Con el lote ya caducado no hay vencimiento que vigilar, pero las cifras de
+// cada oferta siguen venciendo en su propia fecha: se vuelve a cargar al
+// cambiar de día (medianoche UTC o al volver a la app otro día).
+function programarRevisionDiaria({ alCambiarDia, appState, ahora = () => Date.now(),
+  programar = setTimeout, cancelar = clearTimeout }) {
+  const dia = instante => new Date(instante).toISOString().slice(0, 10);
+  let actual = dia(ahora()), temporizador, cerrada = false;
+  const siguiente = () => {
+    cancelar(temporizador);
+    if (cerrada) return;
+    const instante = ahora();
+    const medianoche = Date.parse(`${dia(instante)}T00:00:00Z`) + 86400000;
+    temporizador = programar(revisar, medianoche - instante + 100);
+  };
+  const revisar = () => {
+    if (cerrada) return;
+    const hoy = dia(ahora());
+    if (hoy !== actual) { actual = hoy; alCambiarDia(); }
+    siguiente();
+  };
+  siguiente();
+  const escucha = appState.addEventListener('change', estado => {
+    if (estado === 'active') revisar();
+  });
+  return () => { cerrada = true; cancelar(temporizador); escucha.remove(); };
+}
+
+module.exports = { CACHE_CATALOGO, adaptarCatalogo, adaptarCatalogoV2, crearLectorCatalogo, vigilarCaducidadCatalogo,
+  programarRevisionDiaria };

@@ -164,7 +164,14 @@ async function main({
   if (!Array.isArray(fuera) || fuera.length !== 4) {
     throw new Error('el catálogo público debe contener exactamente 4 descartes documentados');
   }
-  if (versionEsquema === 2) validarLotePublicoV2(radar, emisiones, { hoy, manifiesto });
+  if (versionEsquema === 2) {
+    // Siempre disponible salvo orden expresa (1/10/2026): un lote completo y
+    // caducado se puede publicar; la web lo enseña con el aviso de revisión.
+    const lote = validarLotePublicoV2(radar, emisiones, { hoy, manifiesto, permitirCaducado: true });
+    if (lote.caducado) {
+      console.warn(`AVISO: la revisión del catálogo (${lote.fecha}) está caducada. Se publica con el aviso de revisión pendiente.`);
+    }
+  }
   else validarLotePublico(radar, emisiones, { hoy });
   const plataformas = radar.map(plataformaPublica);
   const ofertas = emisiones.map(ofertaPublica);
