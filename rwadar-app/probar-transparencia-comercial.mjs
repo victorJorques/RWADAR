@@ -59,9 +59,12 @@ paso('obliga a identificar el patrocinio de forma visible',
   && pagina.includes('«Patrocinada»')
   && cliente.includes("e.pat?' sponsored':'"));
 
-paso('las tarjetas públicas usan un CTA externo con el proveedor',
+paso('la tarjeta abre una ficha identificada y los enlaces externos conservan el proveedor en el detalle',
   cliente.includes("Ver oferta en '+escHtml(e.pl)")
-  && cliente.includes("'Ver oferta en '+o.plataformaNombre"));
+  && cliente.includes('data-oferta-detalle=')
+  && cliente.includes('>Ver ficha ')
+  && cliente.includes("(secundario?'Ficha oficial':'Consultar fuente')+' de '+o.titulo+' en '+o.plataformaNombre")
+  && cliente.includes("o.patrocinada?' sponsored':''"));
 
 paso('la página no activa el modelo porcentual 3–5 %',
   !/(?:3\s*(?:%|\/)|5\s*%)/.test(pagina));
