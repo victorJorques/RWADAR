@@ -1,0 +1,55 @@
+name: Copia de seguridad
+
+# Copia cifrada diaria de la base de Supabase. Guía completa, incluida la
+# restauración: docs/COPIAS-DE-SEGURIDAD.md
+#
+# Necesita dos secretos del repositorio (Settings → Secrets and variables →
+# Actions):
+#   SUPABASE_DB_URL  dirección del «Session pooler» con la contraseña
+#   COPIA_CLAVE      contraseña para cifrar la copia (16 caracteres o más)
+#
+# Ojo: GitHub solo ejecuta los horarios desde la rama principal (main).
+
+on:
+  schedule:
+    - cron: '43 2 * * *' # todos los días a las 02:43 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-copia-seguridad
+  cancel-in-progress: false
+
+jobs:
+  copia:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Instalar pg_dump 17 (misma versión que Supabase)
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Hacer, comprobar y cifrar la copia
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          COPIA_CLAVE: ${{ secrets.COPIA_CLAVE }}
+        run: bash rwadar-app/copia-seguridad.sh copia-rwadar
+
+      - name: Guardar la copia 35 días
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: copia-rwadar-${{ github.run_number }}
+          path: copia-rwadar/
+          retention-days: 35
+          compression-level: 0
+          if-no-files-found: error
