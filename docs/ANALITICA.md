@@ -1,16 +1,15 @@
 # RWAdar · visitas y resultados
 
-Lectura actual del 30 de septiembre de 2026, aproximadamente a las 20:18 UTC,
-por el chat coordinado en la sesión Cloudflare existente: **29 visitas y 40
-páginas vistas**, dominio `rwadar.pages.dev`, periodo **Last 24 hours (CEST)**,
-filtro `ExcludeBots=Yes`. Incluye las comprobaciones del equipo; no se ha
-separado tráfico de prueba de visitantes externos. No equivale a 29 personas
-únicas ni acredita audiencia orgánica. No hay ingresos publicitarios activos.
+## En pocas palabras
 
-La medición web/PWA se había comprobado el 28/09 a las 09:16 UTC con una visita
-y una página vista propias, despliegue `ddc0115b.rwadar.pages.dev`. Ese corte es
-histórico y no sustituye los números actuales. La lectura del 30/09 no cambia
-la configuración ni incorpora medición de aperturas del APK.
+- Las visitas de la web se miden con **Cloudflare Web Analytics**: sin cookies
+  y sin datos personales.
+- Última lectura (30 de septiembre de 2026, últimas 24 horas): **29 visitas y
+  40 páginas vistas**. Incluye las pruebas del propio equipo, así que **no son
+  29 personas** ni demuestran audiencia todavía.
+- La app de Android aún no mide cuánta gente la abre. Descargas no es lo mismo
+  que instalaciones.
+- No hay ingresos por publicidad.
 
 ## Dónde entrar
 

@@ -853,8 +853,9 @@ const lectorPublico = new Function('fetch', `
   return alDia;
 `)(async direccion => {lecturasEditoriales.push(direccion);return {ok:false,status:503};});
 await capturaError(lectorPublico());
-prueba('el cierre de cuentas conserva el lector de catálogo público y sus tres consultas anónimas',
-  lecturasEditoriales.length === 3 &&
+prueba('el cierre de cuentas conserva el lector de catálogo público y sus cuatro consultas anónimas',
+  lecturasEditoriales.length === 4 &&
+  lecturasEditoriales.some(u => u.includes('/catalogo_publicacion?select=retirado,motivo')) &&
   lecturasEditoriales.some(u => u.includes('/catalogo_plataformas_publicas_v2?')) &&
   lecturasEditoriales.some(u => u.includes('/catalogo_ofertas_publicas_v2?')) &&
   lecturasEditoriales.some(u => u.includes('/plataformas?estado=eq.descartada&')));
@@ -1571,9 +1572,11 @@ prueba('el catálogo remoto exige vistas V2 y manifiesto completo, sin volver a 
   /nE=e\.map\(o=>ofertaCatalogoRemota\(o,fecha\)\)/.test(js) &&
   /EMI\.length=0;\s+EMI\.push/.test(js) &&
   !/\/radar_publico\?select=\*|\/emisiones_publicas\?select=\*/.test(js));
-prueba('el snapshot V2 caducado falla cerrado incluso si la red devuelve vacío',
-  /function comprobarCatalogoEmbebido\(\)/.test(js) && /edad<0\|\|edad>7/.test(js) &&
-  /P\.length=0;EMI\.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true/.test(js) &&
+prueba('el snapshot V2 caducado se conserva con aviso y solo la orden expresa lo retira',
+  /function comprobarCatalogoEmbebido\(\)/.test(js) && /\|\|edad<0\)\n\s+throw new Error\('lote embebido fechado en el futuro'\)/.test(js) &&
+  !/edad>7/.test(js.slice(js.indexOf('function comprobarCatalogoEmbebido'), js.indexOf('function plataformaDesdeEscaparate'))) &&
+  /\/catalogo_publicacion\?select=retirado,motivo/.test(js) &&
+  /orden\.retirado===true\)\{\n\s+P\.length=0;EMI\.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true;CATALOGO_RETIRADO=true/.test(js) &&
   /catch\{refrescarVigenciaOfertas\(\)\}/.test(js));
 
 const armazon = arrayConstante(sw, 'ARMAZON');
@@ -1793,26 +1796,49 @@ for (const causa of ['medianoche','reactivacion','consulta-limitada']) {
   if (causa === 'medianoche') p.tiempos.at(-1).fn();
   else if (causa === 'reactivacion') p.escuchas.get('visibilitychange').forEach(fn => fn());
   else await vm.runInContext('mirar()', c);
-  prueba(`pestaña ${causa}: caducidad retira radar, vistas, filtros, contadores y todos los detalles sin red`,
-    vm.runInContext('P.length===0&&EMI.length===0&&compare.length===0&&CATALOGO_EMBEBIDO_BLOQUEADO',c) &&
-    !/data-abrir=/.test(p.obtiene('grid').innerHTML+p.obtiene('matrix').innerHTML) &&
-    !/class="blip"/.test(p.obtiene('radarHero').innerHTML) &&
-    p.obtiene('rlNom').textContent==='' && p.obtiene('rlMeta').textContent==='' && p.obtiene('radarLee.rl-dato').hidden===true &&
-    p.obtiene('s1').textContent==='0' && p.obtiene('s3').textContent==='0' &&
-    p.obtiene('rlTotal').textContent.startsWith('0 plataformas') && p.obtiene('fReg').options.length===1 &&
-    !p.obtiene('modal').classList.contains('show') && !p.obtiene('drawer').classList.contains('show') &&
-    ['modalBody','dwBody','dwAcciones'].every(id=>p.obtiene(id).innerHTML==='') &&
-    !p.obtiene('escaparateDetalleLocal').open && p.obtiene('escaparateDetalleLocal').innerHTML==='' &&
-    !/data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML) &&
-    p.obtiene('movilOfertasEstado').textContent==='Catálogo no disponible');
+  prueba(`pestaña ${causa}: al caducar, radar, vistas y ofertas siguen visibles con el aviso de revisión pendiente`,
+    vm.runInContext('P.length===26&&EMI.length===49&&!CATALOGO_EMBEBIDO_BLOQUEADO&&CATALOGO_CADUCADO',c) &&
+    /data-abrir=/.test(p.obtiene('grid').innerHTML) && /data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML) &&
+    p.obtiene('avisoCatalogoRadar').hidden===false && /^Revisión pendiente\. Estos datos se revisaron el /.test(p.obtiene('avisoCatalogoRadar').textContent) &&
+    p.obtiene('avisoCatalogoOfertas').textContent===p.obtiene('avisoCatalogoRadar').textContent &&
+    /pendiente de renovar$/.test(p.obtiene('pieRevision').textContent));
+  p.reloj(new Date(Date.parse(corte)+30*86400000).toISOString());
+  vm.runInContext('refrescarVigenciaOfertas()', c);
+  prueba(`pestaña ${causa}: un mes después sigue visible y ninguna cifra comercial vencida se muestra`,
+    vm.runInContext("P.length===26&&EMI.length===49&&EMI.filter(o=>o.coleccion==='principales').every(o=>estadoVigenciaLocal(o).clase==='caducado')",c) &&
+    /data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML) && /cifras por actualizar/.test(p.obtiene('emiLista').innerHTML) &&
+    p.obtiene('avisoCatalogoRadar').hidden===false);
 }
 for (const vacia of ['plataformas','ofertas']) {
   const p=pestanaCatalogo(), c=p.contexto;
   c.fetch=async url=>{const ok=url.includes('catalogo_'+vacia+'_');return{ok,status:ok?200:500,json:async()=>[]};};
+  vm.runInContext('render()', c);
   const error=await capturaError(vm.runInContext('alDia()',c));
-  prueba(`una vista ${vacia} vacía con otra HTTP 500 retira el lote completo y el DOM`, Boolean(error) &&
-    vm.runInContext('CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===0&&EMI.length===0',c) &&
-    !/data-abrir=/.test(p.obtiene('grid').innerHTML) && !/data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML));
+  prueba(`una vista ${vacia} vacía con otra HTTP 500 conserva la última copia completa y avisa`, Boolean(error) &&
+    vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&CATALOGO_SIN_COMPROBAR&&P.length===26&&EMI.length===49',c) &&
+    /data-abrir=/.test(p.obtiene('grid').innerHTML) && /data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML) &&
+    /^No hemos podido comprobar la revisión más reciente/.test(p.obtiene('avisoCatalogoRadar').textContent));
+}
+{
+  const p=pestanaCatalogo(), c=p.contexto;
+  c.fetch=async url=>url.includes('catalogo_publicacion')
+    ? {ok:true,status:200,json:async()=>[{retirado:true,motivo:'Orden de prueba'}]}
+    : {ok:false,status:500};
+  const error=await capturaError(vm.runInContext('alDia()',c));
+  prueba('solo la orden expresa de retirada oculta radar, ofertas y contadores', Boolean(error) &&
+    vm.runInContext('CATALOGO_EMBEBIDO_BLOQUEADO&&CATALOGO_RETIRADO&&P.length===0&&EMI.length===0',c) &&
+    !/data-abrir=/.test(p.obtiene('grid').innerHTML) && !/data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML) &&
+    p.obtiene('movilOfertasEstado').textContent==='Catálogo no disponible' &&
+    p.obtiene('avisoCatalogoRadar').hidden===true && p.obtiene('pieRevision').textContent==='Catálogo no disponible temporalmente');
+}
+{
+  const p=pestanaCatalogo(), c=p.contexto;
+  c.fetch=async url=>url.includes('catalogo_publicacion')
+    ? {ok:false,status:404}
+    : {ok:true,status:200,json:async()=>[]};
+  const error=await capturaError(vm.runInContext('alDia()',c));
+  prueba('sin la tabla de la orden (base antigua), las vistas vacías no ocultan el catálogo', Boolean(error) &&
+    vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===26&&EMI.length===49',c));
 }
 {
   const p=pestanaCatalogo(), c=p.contexto;

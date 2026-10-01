@@ -236,7 +236,10 @@ function validarManifiestoV2(manifiesto) {
   return manifiesto;
 }
 
-function validarLotePublicoV2(plataformas, ofertas, { manifiesto, hoy = new Date() } = {}) {
+// permitirCaducado: el catálogo se publica siempre salvo orden expresa de
+// retirada (decisión del 1/10/2026). Un lote completo y vencido se acepta
+// marcado con `caducado`; uno futuro, incompleto o mezclado sigue fallando.
+function validarLotePublicoV2(plataformas, ofertas, { manifiesto, hoy = new Date(), permitirCaducado = false } = {}) {
   validarManifiestoV2(manifiesto);
   asegurar(Array.isArray(plataformas) && plataformas.length === manifiesto.plataformasEsperadas,
     'V2: plataformas incompletas respecto al manifiesto');
@@ -267,7 +270,8 @@ function validarLotePublicoV2(plataformas, ofertas, { manifiesto, hoy = new Date
   const hoyIso = fechaIso(hoy);
   asegurar(esFecha(hoyIso), 'V2: fecha de ejecución inválida');
   const edad = diasEntre(fecha, hoyIso);
-  asegurar(edad >= 0 && edad <= vigencia, 'V2: revisión futura o caducada');
+  const caducado = edad > vigencia;
+  asegurar(edad >= 0 && (permitirCaducado || !caducado), 'V2: revisión futura o caducada');
   plataformas.forEach((p, i) => {
     asegurar(p && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug || '') && esTexto(p.nombre, 2, 120),
       `V2/plataforma/${i}: identidad inválida`);
@@ -292,7 +296,7 @@ function validarLotePublicoV2(plataformas, ofertas, { manifiesto, hoy = new Date
         `V2/oferta/${o.slug}: una colección documental conserva cifras comerciales`);
     }
   });
-  return { fecha, edadDias: edad, vigenciaDias: vigencia, revisionId: [...revisiones][0], versionEsquema: 2,
+  return { fecha, edadDias: edad, vigenciaDias: vigencia, caducado, revisionId: [...revisiones][0], versionEsquema: 2,
     coleccionesEsperadas: { ...manifiesto.coleccionesEsperadas } };
 }
 

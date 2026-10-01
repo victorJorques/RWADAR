@@ -1,54 +1,64 @@
 # RWAdar
 
-Registro editorial de plataformas de tokenización, con web/PWA, backend
-Supabase, app Expo y herramientas de investigación y publicación.
+**Un radar de plataformas de tokenización de activos reales.** Dice cuáles
+existen, cuáles están supervisadas y cuáles se han descartado, siempre con la
+fuente al lado.
 
-## Estado actual
+→ **https://rwadar.pages.dev** · App Android en
+[RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)
 
-RWAdar es un proyecto **privado e interno**. La aplicación completa se retiró
-de internet el 25 de agosto de 2026 para continuar el trabajo sin exponer una
-versión en desarrollo.
+> Este repositorio es **privado**. RWAdar es un registro independiente y no es
+> asesoramiento financiero.
 
-Los dominios históricos no sirven la aplicación: muestran únicamente una
-página de limpieza para desregistrar la antigua PWA instalada.
+## Estado
 
-- `https://rwadar.pages.dev`
-- `https://rwadar.netlify.app`
+La web y la app de Android están **publicadas** desde el 28 de septiembre de
+2026, con 26 plataformas, 4 descartadas y 49 referencias de inversión. Las
+cuentas, las opiniones y los avisos están en pausa. Las tiendas de apps están
+pendientes.
 
-No desplegar la aplicación ni sustituir esa limpieza sin una decisión expresa
-de republicación.
+Todo el detalle, en lenguaje llano: **[`docs/INTERNO.md`](docs/INTERNO.md)**.
 
 ## Empezar
 
-- Estado canónico y mapa: [`docs/INTERNO.md`](docs/INTERNO.md)
-- Trabajo local y pruebas: [`docs/RUNBOOK.md`](docs/RUNBOOK.md)
-- Reglas automáticas para agentes: [`AGENTS.md`](AGENTS.md)
-- Seguridad: [`SECURITY.md`](SECURITY.md)
-- Informes anteriores: `docs/archive/2026-08/`
+| Si quieres… | Lee |
+|---|---|
+| saber cómo está el proyecto | [`docs/INTERNO.md`](docs/INTERNO.md) |
+| trabajar en local | [`docs/RUNBOOK.md`](docs/RUNBOOK.md) |
+| ver toda la documentación | [`docs/LEEME.md`](docs/LEEME.md) |
+| reglas para Codex y Claude | [`AGENTS.md`](AGENTS.md) |
+| avisar de un fallo de seguridad | [`SECURITY.md`](SECURITY.md) |
 
-Reconstrucción local sin consultar Supabase:
+Ver la web en tu ordenador, sin tocar la base de datos:
 
 ```powershell
 node rwadar-publicar.js --local --sin-sincronizar
 node rwadar-servir.js
 ```
 
-Después abre `http://localhost:4173`. Aunque el servidor solo escucha en
-`127.0.0.1`, el JavaScript de la web todavía apunta al Supabase de producción.
-No iniciar sesión ni probar escrituras hasta disponer de un backend aislado o
-una autorización concreta.
+Y abre `http://localhost:4173`.
 
-## Fuente y generados
+Comprobar que todo está bien:
 
-| Ruta | Papel |
+```powershell
+npm test
+```
+
+## Qué hay en cada carpeta
+
+| Carpeta | Qué es |
 |---|---|
-| `rwadar-site/` | Fuente web/PWA |
-| `rwadar-editorial-source/` | Maestros de portadas |
-| `rwadar-app/` | Base, migraciones, sincronización y pruebas |
-| `rwadar-movil/` | App Expo |
-| `rwadar-qr/` | QR |
-| `rwadar-limpieza/` | Retirada pública de la PWA; conservar |
-| `rwadar-publicado/` | Generado; no editar |
-| `rwadar-version-codex/` | Rescate histórico; no editar |
+| `rwadar-site/` | La web (fuente) |
+| `rwadar-app/` | Base de datos, importadores y pruebas |
+| `rwadar-movil/` | App Expo para Android e iPhone |
+| `rwadar-qr/` | Código QR |
+| `rwadar-limpieza/` | Desinstala la PWA antigua de Netlify; se conserva |
+| `rwadar-publicado/` | Generado al publicar; no se edita |
+| `rwadar-version-codex/` | Copia histórica de agosto; no se edita |
+| `docs/` | Documentación |
 
-La rama canónica para continuar el trabajo es `codex/interno-privado`.
+## Ramas
+
+**`main` es la rama vigente.** Desde el 1 de octubre de 2026 contiene todo el
+trabajo de Codex y de Claude. Las ramas `codex/*` y `claude/*` se conservan
+como historial. Trabaja siempre a partir de `main` actualizada (`git pull`).

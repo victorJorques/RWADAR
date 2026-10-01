@@ -18,7 +18,7 @@ import {
   cargarSecundario, cargarExclusiones, proveedoresDeOfertas, textoBusquedaOferta,
 } from './lib/datos';
 import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './lib/modo-local';
-import { vigilarCaducidadCatalogo } from './lib/catalogo-remoto';
+import { vigilarCaducidadCatalogo, programarRevisionDiaria } from './lib/catalogo-remoto';
 import {
   etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible,
 } from './lib/verificacion-local';
@@ -128,7 +128,8 @@ export default function App() {
       const referenciasEnCamino = MODO_LOCAL ? []
         : catalogo.ofertas.filter(o => o.coleccion === 'en_camino');
       setRadar(catalogo.plataformas); setFuera(f.datos); setOfertas(principales);
-      setFechaCatalogo(catalogo.fecha ? { fecha: catalogo.fecha, vigenciaDias: catalogo.vigenciaDias } : null);
+      setFechaCatalogo(catalogo.fecha
+        ? { fecha: catalogo.fecha, vigenciaDias: catalogo.vigenciaDias, caducado: catalogo.caducado === true } : null);
       setSecundario(referenciasSecundarias); setEnCamino(referenciasEnCamino);
       setExclusionesOfertas(exclusiones.datos); setSigo(s);
       setAbierta(actual => actual && catalogo.plataformas.find(p => p.slug === actual.slug) || null);
@@ -143,10 +144,17 @@ export default function App() {
       setAvisos(n.datos);
 
       const mensajes = [];
-      if (catalogo.error) {
+      if (catalogo.retirado) {
+        mensajes.push('El catálogo se ha retirado temporalmente. Volverá a mostrarse en cuanto se publique de nuevo.');
+      } else if (catalogo.error) {
         mensajes.push(catalogo.deCache
-          ? 'No se pudo actualizar. Mostramos una copia guardada dentro de su plazo de revisión.'
-          : 'No hay un catálogo vigente disponible. Las fichas se ocultan hasta verificarlo.');
+          ? 'No hemos podido comprobar la revisión más reciente. Mostramos la última copia completa guardada.'
+          : 'Todavía no hay un catálogo guardado. Desliza hacia abajo para reintentar.');
+      }
+      if (catalogo.caducado) {
+        const [a, m, d] = String(catalogo.fecha).split('-');
+        mensajes.push(`Revisión pendiente: estos datos se revisaron el ${d}.${m}.${a} y su revisión semanal ha vencido. ` +
+          'Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor.');
       }
       if (f.error) mensajes.push('No se pudieron actualizar los descartes documentados.');
       if (n.error && s.length) mensajes.push('No se pudieron consultar las novedades.');
@@ -169,15 +177,15 @@ export default function App() {
   useEffect(() => { traer(); }, [traer]);
   useEffect(() => {
     if (MODO_LOCAL || !fechaCatalogo) return;
-    return vigilarCaducidadCatalogo({ ...fechaCatalogo, appState: AppState,
-      alCaducar: () => {
-        setRadar([]); setOfertas([]); setSecundario([]); setEnCamino([]);
-        setAbierta(null); setOfertaAbierta(null);
-        setFechaCatalogo(null);
-        setEstadoDatos('La revisión del catálogo ha caducado. Actualiza para consultar un nuevo lote verificado.');
-      },
-    });
-  }, [fechaCatalogo]);
+    // Al vencer, el catálogo no se borra: se vuelve a cargar y queda marcado
+    // como caducado, con sus cifras vencidas ocultas. Ya caducado, basta con
+    // refrescarlo una vez al día para ocultar las cifras que vayan venciendo.
+    if (fechaCatalogo.caducado) {
+      return programarRevisionDiaria({ appState: AppState, alCambiarDia: () => { traer(); } });
+    }
+    return vigilarCaducidadCatalogo({ fecha: fechaCatalogo.fecha, vigenciaDias: fechaCatalogo.vigenciaDias,
+      appState: AppState, alCaducar: () => { traer(); } });
+  }, [fechaCatalogo, traer]);
   useEffect(() => {
     let vivo = true;
     consultarEstadoAvisos().then((resultado) => {

@@ -535,17 +535,20 @@ function loteV2Cliente() {
 function webV2Cliente(lote, ahora = new Date('2026-09-27T12:00:00Z')) {
   const { contexto, dialogo } = cargarWeb(ahora);
   const clases = { add() {}, remove() {}, toggle() {} };
-  const nodos = Object.fromEntries(['emiLista', 'emisiones', 'movilOfertasFuturo', 'emisInformacion', 'movilOfertasEstado']
-    .map(id => [id, { innerHTML: '', textContent: '', classList: clases }]));
+  const nodos = Object.fromEntries(['emiLista', 'emisiones', 'movilOfertasFuturo', 'emisInformacion', 'movilOfertasEstado',
+    'avisoCatalogoRadar', 'avisoCatalogoOfertas']
+    .map(id => [id, { innerHTML: '', textContent: '', hidden: true, classList: clases }]));
   contexto.document.getElementById = id => id === 'escaparateDetalleLocal' ? dialogo : nodos[id];
   Object.assign(contexto, { MODO_LOCAL_SEGURO: false, ESCAPARATE_LOCAL: null,
-    CATALOGO_EMBEBIDO_BLOQUEADO: false, emiCat: '', emiOrden: 'rent' });
+    CATALOGO_EMBEBIDO_BLOQUEADO: false, CATALOGO_CADUCADO: false, CATALOGO_SIN_COMPROBAR: false,
+    CATALOGO_RETIRADO: false, emiCat: '', emiOrden: 'rent' });
   cargarFuncionesWeb(contexto, ['CATMETA', 'ACCESOS', 'TICKETS', 'EDITORIAL_OFERTA_POR_CATEGORIA',
     'textoDato', 'numeroRemoto', 'booleanoOpcional', 'cifraCatalogoRemota',
     'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal', 'validarVerificacionLocal',
-    'metadatosCatalogoV2', 'validarManifiestoCatalogoV2', 'validarRevisionCatalogo',
+    'metadatosCatalogoV2', 'validarManifiestoCatalogoV2', 'edadLoteDias', 'validarRevisionCatalogo',
     'fechaOfertaPublicaValida', 'ofertaCatalogoRemota', 'plataformaRemota', 'plataformaCatalogoRemota',
-    'validarLoteCatalogoRemotoV2', 'comprobarCatalogoEmbebido', 'pintarEmisiones', 'seccionReferenciasCatalogo']);
+    'validarLoteCatalogoRemotoV2', 'comprobarCatalogoEmbebido', 'textoAvisoCatalogo', 'textoPieRevision',
+    'pintarAvisoCatalogo', 'pintarEmisiones', 'seccionReferenciasCatalogo']);
   const fecha = contexto.validarLoteCatalogoRemotoV2(lote.plataformas, lote.ofertas);
   contexto.P = lote.plataformas.map(p => contexto.plataformaCatalogoRemota(p, fecha));
   contexto.EMI = lote.ofertas.map(o => contexto.ofertaCatalogoRemota(o, fecha));
@@ -598,18 +601,23 @@ test('V2 web y móvil rechazan a la vez manifiestos parciales, metadatos y colec
   }
 });
 
-test('V2 cierra un detalle secundario y vacía todos los grupos al vencer el lote', () => {
+test('V2 conserva los tres grupos y el detalle abierto al vencer el lote, con el aviso de revisión pendiente', () => {
   const { contexto, dialogo, nodos } = webV2Cliente(loteV2Cliente());
   contexto.abrirDetalleOfertaLocal(contexto.EMI.find(o => o.coleccion === 'secundario').slug);
   assert.equal(dialogo.open, true);
   contexto.Date = class extends Date { constructor(...args) { super(...(args.length ? args : ['2026-09-29T00:00:00Z'])); } };
   contexto.pintarFiltrosEmision = () => {};
-  contexto.pintarCierreCatalogo = () => {}; // El cierre del radar real se verifica en probar-web.mjs.
+  contexto.pintarCierreCatalogo = () => assert.fail('un lote caducado no se retira');
   cargarFuncionesWeb(contexto, ['refrescarVigenciaOfertas']);
   contexto.refrescarVigenciaOfertas();
-  assert.equal(contexto.P.length, 0); assert.equal(contexto.EMI.length, 0);
-  assert.equal(dialogo.open, false); assert.equal(dialogo.innerHTML, '');
-  assert.doesNotMatch(nodos.emiLista.innerHTML, /data-oferta-detalle=/);
+  assert.equal(contexto.P.length, 26); assert.equal(contexto.EMI.length, 49);
+  assert.equal(contexto.CATALOGO_CADUCADO, true); assert.equal(contexto.CATALOGO_EMBEBIDO_BLOQUEADO, false);
+  assert.equal(dialogo.open, true);
+  assert.match(nodos.emiLista.innerHTML, /data-oferta-detalle=/);
+  assert.equal(nodos.avisoCatalogoOfertas.hidden, false);
+  assert.match(nodos.avisoCatalogoOfertas.textContent, /^Revisión pendiente\. /);
+  assert.ok(contexto.EMI.filter(o => o.coleccion === 'principales')
+    .every(o => contexto.estadoVigenciaLocal(o).clase === 'caducado' || o.verificadaEl >= '2026-09-23'));
 });
 
 test('las colecciones documentales tampoco recuperan cifras manipuladas al renderizar', () => {
@@ -625,7 +633,7 @@ test('las colecciones documentales tampoco recuperan cifras manipuladas al rende
   }
 });
 
-test('una recarga web V2 parcial retira los tres grupos y el diálogo, sin consultar las vistas V1', async () => {
+test('una recarga web V2 parcial conserva los tres grupos y el diálogo con aviso, sin consultar las vistas V1', async () => {
   const lote = loteV2Cliente();
   const { contexto, dialogo } = webV2Cliente(lote);
   contexto.abrirDetalleOfertaLocal(contexto.EMI[0].slug);
@@ -641,10 +649,12 @@ test('una recarga web V2 parcial retira los tres grupos y el diálogo, sin consu
   cargarFuncionesWeb(contexto, ['alDia', 'refrescarVigenciaOfertas']);
   await assert.rejects(() => contexto.alDia(), /incompleto/);
   assert.ok(rutas.some(url => url.includes('/catalogo_ofertas_publicas_v2?')));
+  assert.ok(rutas.some(url => url.includes('/catalogo_publicacion?select=retirado,motivo')));
   assert.ok(rutas.every(url => !/catalogo_(?:plataformas|ofertas)_publicas\?/.test(url)));
-  assert.equal(contexto.P.length, 0); assert.equal(contexto.EMI.length, 0);
-  assert.equal(contexto.CATALOGO_EMBEBIDO_BLOQUEADO, true);
-  assert.equal(dialogo.open, false); assert.equal(dialogo.innerHTML, '');
+  assert.equal(contexto.P.length, 26); assert.equal(contexto.EMI.length, 49);
+  assert.equal(contexto.CATALOGO_EMBEBIDO_BLOQUEADO, false);
+  assert.equal(contexto.CATALOGO_SIN_COMPROBAR, true);
+  assert.equal(dialogo.open, true);
 });
 
 test('la nueva categoría Crédito privado conserva ilustración propia en las dos interfaces', () => {

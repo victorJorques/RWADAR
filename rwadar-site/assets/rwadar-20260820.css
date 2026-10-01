@@ -990,6 +990,10 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
    Estas reglas pueden viajar con la fuente pública, pero no hacen visible
    ningún dato: el catálogo y sus imágenes están fuera de rwadar-site. */
 .solo-escaparate-local[hidden],.escaparate-local-aviso[hidden]{display:none!important}
+/* Catálogo caducado o sin comprobar: se sigue mostrando, con este aviso. */
+.aviso-catalogo[hidden]{display:none!important}
+.aviso-catalogo{margin:0 0 18px;padding:13px 16px;border:1px solid rgba(255,159,10,.4);border-left:3px solid #FFB454;
+  border-radius:12px;background:rgba(255,159,10,.08);color:var(--tx);font-size:.86rem;line-height:1.55}
 .escaparate-local-aviso{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:16px;
   margin:0 0 24px;padding:16px 18px;border:1px solid var(--senal-30);border-radius:15px;
   background:linear-gradient(125deg,rgba(37,227,154,.11),var(--sup));color:var(--tx)}
