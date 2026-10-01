@@ -59,6 +59,6 @@ npm test
 
 ## Ramas
 
-El trabajo vigente está en `codex/relanzamiento-publico` y en las ramas que
-salen de ella. **`main` se quedó en agosto** y está pendiente de ponerse al
-día.
+**`main` es la rama vigente.** Desde el 1 de octubre de 2026 contiene todo el
+trabajo de Codex y de Claude. Las ramas `codex/*` y `claude/*` se conservan
+como historial. Trabaja siempre a partir de `main` actualizada (`git pull`).

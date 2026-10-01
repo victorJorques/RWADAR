@@ -130,7 +130,7 @@ commit.
    y la publique antes).
 2. Crear los dos secretos de la copia en GitHub y lanzar la primera copia
    (`docs/COPIAS-DE-SEGURIDAD.md`, parte 1).
-3. Unir esta rama a `main`. Las copias nocturnas solo funcionan desde `main`.
+3. ~~Unir esta rama a `main`.~~ Hecho el 1 de octubre: `main` incluye todo.
 4. En la carpeta local, una vez: `git config user.name "Victor Jorques"` y tu
    correo de GitHub.
 5. Si quieres que Claude revise la web real: permitir en la red del entorno

@@ -54,11 +54,13 @@ dos fichas de prueba, pero nada conectado a la app.
    Renovar la revisión cada semana sigue siendo lo ideal. Si no se hace, la web
    avisa en lugar de vaciarse.
 2. **Activar las copias de seguridad** (5 minutos) y, después, actualizar
-   Postgres. Guía: [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-3. **Unir la rama de trabajo a `main`.** Todo lo actual está en
-   `codex/relanzamiento-publico` (y en la rama de Claude encima de esta).
-   `main` se quedó en agosto, y las copias nocturnas solo se ejecutan desde
-   `main`.
+   Postgres. Guía: [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md). El
+   workflow ya está en `main` y se ejecuta cada noche a las 02:43 UTC: hasta
+   que existan los dos secretos, fallará y GitHub mandará un correo.
+3. **Trabajo sin subir.** `main` está al día desde el 1 de octubre: contiene
+   todo lo de Codex y lo de Claude. Si queda trabajo en tu ordenador que no
+   está en GitHub (el estado del 30/09 citaba una mejora visual de las
+   tarjetas), hay que subirlo partiendo de `main` actualizado.
 4. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte
    pendiente sobre el alta como persona física. Hasta que respondan, no se paga
    ni se rellena nada. El paquete para Google Play (AAB 1.1.2, icono, cabecera y
