@@ -136,3 +136,30 @@ móviles de verdad se comprueban aparte.
 El catálogo se carga en Supabase con los importadores, nunca a mano en la web.
 Guía: [`comercial/RUNBOOK-CATALOGO-SUPABASE.md`](comercial/RUNBOOK-CATALOGO-SUPABASE.md).
 Cada revisión dura como mucho 7 días: renuévala antes de que venza.
+
+**Siempre disponible.** Si la revisión vence o no se puede comprobar, la web y
+la app siguen enseñando la última copia completa con un aviso de «revisión
+pendiente» y sin cifras caducadas. Una revisión incompleta, futura o retirada
+nunca se publica, y nunca se vuelve a una anterior.
+
+### Retirar el catálogo (solo por orden de Víctor)
+
+En el editor SQL de Supabase:
+
+```sql
+update public.catalogo_publicacion
+   set retirado = true, motivo = 'Explica aquí el motivo', actualizado_el = now()
+ where unica;
+```
+
+Para volver a mostrarlo:
+
+```sql
+update public.catalogo_publicacion
+   set retirado = false, motivo = null, actualizado_el = now()
+ where unica;
+```
+
+Retirar la revisión publicada (estado `retirada`) activa la orden sola, y
+aprobar una revisión nueva la desactiva. Las webs ya abiertas lo notan en su
+siguiente consulta (como mucho, un minuto después de volver a la pestaña).

@@ -1,5 +1,12 @@
 # Tarea para Codex · que el catálogo no desaparezca al caducar
 
+> **Estado: HECHO por Claude el 1 de octubre de 2026** (Víctor se quedó sin
+> créditos de Codex y pidió que siguiera Claude). Además, Víctor amplió la
+> regla: *el catálogo tiene que estar siempre disponible para el público salvo
+> que él diga lo contrario*. Qué se hizo y cómo ponerlo en producción:
+> [`PARA-CODEX.md`](PARA-CODEX.md), entrada «1 de octubre · Claude (2)».
+> Lo de abajo es el planteamiento original y se conserva como referencia.
+
 **Pedida por:** Víctor, 1 de octubre de 2026.
 **Preparada por:** Claude (solo la investigación; el código no está tocado).
 **Prioridad:** alta. El lote actual vence al terminar el **5 de octubre de 2026**.

@@ -32,6 +32,10 @@ Lo de `docs/archive/` es histórico y no describe el estado vigente.
 - `rwadar-limpieza/` desinstala la PWA antigua de Netlify: se conserva.
 - Los datos del catálogo no se editan en el HTML ni en el JS: la fuente de
   verdad es Supabase. **Ninguna plataforma descartada sin una fuente citable.**
+- **El catálogo está siempre disponible para el público** salvo orden expresa
+  de Víctor (`public.catalogo_publicacion.retirado`). No vuelvas a vaciar la
+  web porque una revisión caduque o no se pueda comprobar: se muestra la última
+  copia completa con aviso y sin cifras vencidas.
 - Los informes con fecha de `docs/` (`VERIFICACION-…`, `CATALOGO-V2-…`, etc.)
   los cita la compuerta de publicación: no se borran ni se mueven.
 

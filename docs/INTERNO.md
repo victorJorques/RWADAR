@@ -40,10 +40,19 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-1. **Renovar el catálogo antes del 5 de octubre.** Cada revisión dura 7 días.
-   Si vence, la web oculta las fichas. Codex tiene una tarea para cambiarlo y
-   que se vea la última revisión con un aviso:
-   [`tareas/CODEX-catalogo-no-desaparece.md`](tareas/CODEX-catalogo-no-desaparece.md).
+1. **Poner en producción el «catálogo siempre disponible»** (hecho y probado
+   en local el 1 de octubre, falta subirlo). Hasta entonces, si la revisión
+   vence (5 de octubre), la web publicada hoy oculta las fichas. En orden:
+   1. Pegar en el editor SQL de Supabase
+      `rwadar-app/supabase/migrations/20261001150000_catalogo_siempre_disponible.sql`
+      y ejecutarlo. Es seguro para la web y el APK de hoy: se comportan igual
+      que ahora.
+   2. Registrar la aprobación y publicar la web siguiendo
+      [`OPERACION-LANZAMIENTO.md`](OPERACION-LANZAMIENTO.md).
+   3. La app de Android lo tendrá en su próxima versión: no se actualiza sola.
+
+   Renovar la revisión cada semana sigue siendo lo ideal. Si no se hace, la web
+   avisa en lugar de vaciarse.
 2. **Activar las copias de seguridad** (5 minutos) y, después, actualizar
    Postgres. Guía: [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
 3. **Unir la rama de trabajo a `main`.** Todo lo actual está en
@@ -134,3 +143,7 @@ ahí. No hace falta leerlas para trabajar. Índice en [`LEEME.md`](LEEME.md).
    expreso de Víctor.
 6. **Secretos fuera de Git:** contraseñas, tokens y claves de servicio nunca
    entran en el repositorio.
+7. **El catálogo está siempre disponible para el público**, salvo que Víctor
+   diga lo contrario. Si la revisión caduca o no se puede comprobar, se muestra
+   la última copia completa con un aviso y sin cifras vencidas. Solo se oculta
+   con la orden expresa (ver «Retirar el catálogo» en [`RUNBOOK.md`](RUNBOOK.md)).

@@ -6,6 +6,82 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 1 de octubre de 2026 · Claude (2) · catálogo siempre disponible
+
+Víctor se quedó sin créditos de Codex y pidió a Claude que siguiera. Regla
+nueva de Víctor: **el catálogo tiene que estar siempre disponible para el
+público, salvo que él diga lo contrario.** He hecho la tarea
+[`CODEX-catalogo-no-desaparece.md`](CODEX-catalogo-no-desaparece.md) con esa
+regla ampliada.
+
+### Qué hace ahora
+
+| Situación | Antes | Ahora |
+|---|---|---|
+| La revisión vence (7 días) | Web y app vacías | Se ve la última copia completa con el aviso «Revisión pendiente» |
+| Cifras de una oferta vencidas | Ocultas | Ocultas (sin cambios) |
+| Supabase responde vacío o incompleto | Web y app vacías | Se conserva la última copia completa con el aviso «No hemos podido comprobar…» |
+| Revisión incompleta, futura o mezclada | No se publica | No se publica (sin cambios); nunca se vuelve a una anterior |
+| Víctor quiere quitar el catálogo | No había forma clara | `public.catalogo_publicacion.retirado = true` (ver `RUNBOOK.md`) |
+
+### Qué he cambiado
+
+- **Base:** `rwadar-app/supabase/migrations/20261001150000_catalogo_siempre_disponible.sql`.
+  - Políticas nuevas `*_de_revision_publicada_v2`: se puede leer la revisión
+    del puntero `publicacion_v2` aunque haya vencido.
+  - `revision_publicable_v2`: igual que antes, salvo que ya no exige
+    vigencia.
+  - Tabla `public.catalogo_publicacion`: es la orden expresa. Un disparador la
+    activa al retirar la revisión publicada y la desactiva al aprobar otra.
+  - **Las vistas públicas no cambian de columnas:** la web y el APK de hoy
+    rechazan un lote caducado igual que antes.
+- **Contrato compartido:** `validarLotePublicoV2(..., { permitirCaducado })`
+  en `rwadar-movil/lib/contrato-catalogo.js`. Por defecto se comporta como
+  antes; con la opción devuelve `caducado`.
+- **Web** (`rwadar-site/assets/rwadar-20260820.js`, `index.html`, `.css`):
+  - La caducidad ya no vacía nada. `alDia` consulta además
+    `/catalogo_publicacion` y solo `retirado === true` oculta el catálogo.
+  - Una vista vacía, incompleta o un lote fuera de contrato conservan la copia
+    embebida o la descargada antes, con aviso.
+  - Avisos nuevos: `#avisoCatalogoRadar` y `#avisoCatalogoOfertas`. El pie y
+    el contador dicen «pendiente de renovar».
+- **App** (`lib/catalogo-remoto.js`, `App.js`):
+  - Al vencer se recarga en lugar de borrar.
+  - Ya caducado, se refresca una vez al día (`programarRevisionDiaria`) para
+    ocultar las cifras que vayan venciendo.
+  - Solo la orden expresa borra la caché.
+- **Publicación:** `sincronizar.js` admite un lote V2 caducado y avisa por
+  pantalla. Así se puede publicar aunque la revisión haya vencido.
+
+### Pruebas
+
+- Nueva: `rwadar-app/probar-catalogo-siempre-disponible.mjs` → 29/29 contra
+  PGlite. Cubre vigente, caducada, nueva revisión, incompleta, futura,
+  retirada, reaprobación, orden manual y permisos.
+- Web: 346/346. Las pruebas de caducidad ahora exigen que todo siga visible
+  con aviso. Hay pruebas nuevas de la orden expresa y de una base antigua sin
+  la tabla. Las 4 consultas anónimas están vigiladas.
+- App: 93/93. Las pruebas de «retira la caché» ahora exigen que la conserve,
+  y hay pruebas nuevas de la orden expresa, de una base antigua y de la
+  revisión diaria.
+- `npm test` completo en verde.
+- Navegador real (Chromium) con la fecha fijada en el 10/10/2026 y Supabase
+  caído: 26 plataformas, 49 referencias y el aviso visible, en escritorio y
+  en móvil.
+
+### Para ponerlo en producción (Víctor o Codex, con permiso de Víctor)
+
+1. **Primero la migración** en el editor SQL de Supabase. Después del 5/10 es
+   imprescindible: sin ella, Supabase devuelve las vistas vacías y la
+   sincronización no puede publicar.
+2. Registrar la aprobación (commit y huellas en `estado.json`, paso 2 de
+   `docs/OPERACION-LANZAMIENTO.md`). La compuerta lo pide porque cambia
+   `rwadar-site`, `sincronizar.js` y `contrato-catalogo.js`.
+3. `--preview`, comprobar, y `--produccion`.
+4. App: entra en la próxima compilación (no hay OTA).
+
+---
+
 ## 1 de octubre de 2026 · Claude
 
 **Rama:** `claude/magical-hamilton-aiddjs`, creada encima de
