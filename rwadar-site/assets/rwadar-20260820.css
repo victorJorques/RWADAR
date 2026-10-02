@@ -1770,9 +1770,12 @@ body.detalle-local-abierto{overflow:hidden}
   .solo-escritorio{display:none!important}
   .solo-movil{display:inline}
 
-  /* Barra compacta de navegación: marca, destino actual y ayuda. */
-  .movil-cabecera{display:grid;grid-template-columns:minmax(92px,1fr) auto minmax(92px,1fr);
-    align-items:center;padding:calc(7px + env(safe-area-inset-top)) var(--movil-margen) 7px;
+  /* Barra compacta de navegación: marca, destino actual y ayuda.
+     Los laterales nunca miden menos que su contenido (la marca y los botones)
+     y el título central es el único que cede: se recorta con «…» en vez de
+     montarse sobre la marca en pantallas estrechas. */
+  .movil-cabecera{display:grid;grid-template-columns:minmax(max-content,1fr) minmax(0,auto) minmax(max-content,1fr);
+    column-gap:10px;align-items:center;padding:calc(7px + env(safe-area-inset-top)) var(--movil-margen) 7px;
     background:rgba(11,10,10,.88);border-color:var(--m-hairline);
     backdrop-filter:blur(24px) saturate(145%);-webkit-backdrop-filter:blur(24px) saturate(145%)}
   .movil-cabecera-superior{display:contents}
@@ -1782,10 +1785,17 @@ body.detalle-local-abierto{overflow:hidden}
     border-color:var(--m-hairline)}
   .movil-cabecera-accion.movil-descarga{margin-right:47px;text-decoration:none}
   .movil-cabecera-titulo{grid-column:2;grid-row:1;margin:0;font-size:1.05rem;font-weight:680;
-    max-width:min(39vw,150px);overflow:hidden;letter-spacing:-.025em;text-align:center;
+    min-width:0;max-width:min(39vw,150px);overflow:hidden;letter-spacing:-.025em;text-align:center;
     text-overflow:ellipsis;white-space:nowrap}
   .movil-cabecera-etiqueta,.movil-cabecera-sub{position:absolute!important;width:1px!important;height:1px!important;
     padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important}
+  /* Teléfonos de 320-350 px: la marca cede un poco para que el título quepa. */
+  @media (max-width:350px){
+    .movil-cabecera{column-gap:7px}
+    .movil-marca{gap:5px;font-size:.98rem}
+    .movil-marca .mk{width:23px;height:23px}
+    .movil-cabecera-titulo{font-size:.96rem}
+  }
 
   /* El DOM y la lectura siguen el mismo orden que la vista. */
   #movilPanelRadar>.emis{order:1}

@@ -291,11 +291,12 @@ function Dato({ etiqueta, valor }) {
 }
 
 function Vecina({ l, lado, onPress }) {
-  const etiqueta = `${lado === 'anterior' ? '← ANTERIOR' : 'SIGUIENTE →'} · LECCIÓN ${l.modulo}`;
+  const etiqueta = lado === 'anterior' ? `← LECCIÓN ${l.modulo}` : `LECCIÓN ${l.modulo} →`;
   if (!l.publicado) {
     return (
       <View style={[e.vecina, e.vecinaPronto]}>
-        <Text style={[e.vecinaEtiqueta, e.apagado]}>{etiqueta} · PRÓXIMAMENTE</Text>
+        <Text style={[e.vecinaEtiqueta, e.apagado]}>{etiqueta}</Text>
+        <Text style={[e.vecinaEtiqueta, e.vecinaPronta]}>PRÓXIMAMENTE</Text>
         <Text style={e.vecinaTit} numberOfLines={3}>{l.titulo}</Text>
       </View>
     );
@@ -498,7 +499,7 @@ function Acciones({ tramos, onAccion }) {
           return (
             <View key={k} style={e.accionPronto} accessible accessibilityLabel={`${destino.etiqueta}: próximamente`}>
               <Text style={e.accionProntoTxt}>{destino.etiqueta}</Text>
-              <Text style={e.pronto}>PRÓXIMAMENTE</Text>
+              <Text style={e.pronto} numberOfLines={1}>PRÓXIMAMENTE</Text>
             </View>
           );
         }
@@ -683,12 +684,13 @@ const e = StyleSheet.create({
   accionTxt: { fontFamily: F.negrita, fontSize: 15, color: C.noche, textAlign: 'center' },
   accionPronto: {
     minHeight: UI.tactil, borderRadius: R.s, borderWidth: 1, borderStyle: 'dashed', borderColor: C.linea2,
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, paddingHorizontal: 14, paddingVertical: 10,
+    flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 8,
+    paddingHorizontal: 14, paddingVertical: 10,
   },
-  accionProntoTxt: { fontFamily: F.semi, fontSize: 14.5, color: C.tx2 },
+  accionProntoTxt: { fontFamily: F.semi, fontSize: 14.5, color: C.tx2, flexShrink: 1, textAlign: 'center' },
   pronto: {
     ...T.etiqueta, fontSize: 9, color: '#FFAA40', borderWidth: 1, borderColor: 'rgba(255,170,64,0.34)',
-    borderRadius: R.pastilla, paddingHorizontal: 7, paddingVertical: 2, overflow: 'hidden',
+    borderRadius: R.pastilla, paddingHorizontal: 7, paddingVertical: 2, overflow: 'hidden', flexShrink: 0,
   },
   enlinea: { fontFamily: F.negrita, color: C.senal, textDecorationLine: 'underline' },
   enlineaPronto: { fontFamily: F.semi, color: C.tx },
@@ -703,7 +705,8 @@ const e = StyleSheet.create({
   vecinas: { flexDirection: 'row', gap: 10, marginBottom: 20 },
   vecina: { flex: 1, backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.m, padding: 12, minHeight: 88 },
   vecinaPronto: { backgroundColor: 'transparent', borderStyle: 'dashed', borderColor: C.linea2 },
-  vecinaEtiqueta: { ...T.etiqueta, fontSize: 9, color: C.senal, marginBottom: 6 },
+  vecinaEtiqueta: { ...T.etiqueta, fontSize: 9.5, color: C.senal, marginBottom: 6 },
+  vecinaPronta: { color: '#F2B23C', marginTop: -3 },
   vecinaTit: { ...T.menor, fontFamily: F.semi, color: C.tx },
 
   legal: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, paddingTop: 16, marginTop: 8 },

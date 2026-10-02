@@ -202,11 +202,11 @@ h1 em{font-style:normal;color:var(--senal)}
 .ac-accion-pronto{background:transparent;border:1px dashed var(--linea-2);color:var(--tx-2);font-weight:600;cursor:default}
 .ac-accion-pronto:hover{background:transparent;color:var(--tx-2)}
 .ac-accion-pronto small{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
- color:var(--ambar);border:1px solid var(--ambar-30);border-radius:99px;padding:3px 7px;font-weight:500}
+ color:var(--ambar);border:1px solid var(--ambar-30);border-radius:99px;padding:3px 7px;font-weight:500;white-space:nowrap}
 .ac-enlinea{font-weight:700;text-decoration-thickness:2px;white-space:nowrap}
 .ac-enlinea-pronto{font-weight:650;color:var(--tx)}
 .ac-enlinea-pronto small{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
- color:var(--ambar);border:1px solid var(--ambar-30);border-radius:99px;padding:2px 6px;margin-left:2px;font-weight:500;
+ color:var(--ambar);border:1px solid var(--ambar-30);border-radius:99px;padding:2px 6px;margin-left:2px;font-weight:500;white-space:nowrap;
  vertical-align:2px}
 .ac-acciones{display:flex;flex-wrap:wrap;gap:10px}
 .ac-accion-nota{font-size:.84rem!important;color:var(--tx-3)!important;margin-top:-6px}

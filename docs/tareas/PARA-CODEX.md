@@ -66,9 +66,14 @@ y checklist del expediente: «Próximamente», nunca enlace roto.
    en `estado.json` (la auditoría dirá que el contenido cambió), `--preview`,
    comprobar `/academy/`, `--produccion`.
 3. **App:** entra en la próxima compilación; subir versión al compilar.
-4. Visto de paso y **no tocado**: en la PWA móvil, al abrir Academy y bajar,
-   la cabecera compacta solapa «RWAdar» con el título («RWAdarRWAdar
-   Acade…»). Ya pasaba antes de este cambio.
+4. ~~Cabecera compacta de la PWA móvil que solapaba «RWAdar» con el título.~~
+   **Arreglado** en un segundo commit: los laterales de la rejilla ya no
+   pueden medir menos que la marca y los botones, el título es lo único que
+   cede (con «…»), la marca se aprieta un poco por debajo de 350 px y el
+   título de la subvista pasa a «Academy». Medido en 320, 360, 390 y 430 px
+   en Buscar, Academy, Método, Fuera, Favoritos, Inversiones y Mi cuenta:
+   ningún solape. En la app nativa, «PRÓXIMAMENTE» ya no se parte en dos
+   líneas a 320 px y las tarjetas anterior/siguiente dicen «← LECCIÓN 1».
 
 ---
 

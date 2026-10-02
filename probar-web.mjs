@@ -2364,6 +2364,11 @@ console.log('\n=== RWADAR ACADEMY ===');
   prueba('el generador se para ante negritas sin cerrar o botones sin destino',
     rechazoMarca instanceof academyMod.ErrorAcademy && rechazoBoton instanceof academyMod.ErrorAcademy &&
     /sin destino conocido/.test(rechazoBoton.message));
+  const cssPortada = lee('assets/rwadar-20260820.css');
+  prueba('la cabecera compacta móvil no monta el título sobre la marca',
+    /\.movil-cabecera\{display:grid;grid-template-columns:minmax\(max-content,1fr\) minmax\(0,auto\) minmax\(max-content,1fr\);\s*column-gap:10px/.test(cssPortada) &&
+    /\.movil-cabecera-titulo\{[^}]*min-width:0;[^}]*text-overflow:ellipsis/.test(cssPortada) &&
+    /cabTitulo\.textContent='Academy'/.test(lee('assets/rwadar-20260820.js')));
   prueba('el publicador se niega a construir si la Academy no está al día',
     /comprobarAcademy\(\)/.test(publicador) && /ACADEMY BLOQUEADA/.test(publicador) &&
     /\.\.\.PAGINAS_ACADEMY\]/.test(publicador));

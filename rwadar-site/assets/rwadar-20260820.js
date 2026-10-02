@@ -3949,8 +3949,8 @@ const Movil = (function(){
  }
  function cabeceraAcademy(){
   if(cabEtiqueta)cabEtiqueta.textContent='APRENDE A TU RITMO';
-  if(cabTitulo)cabTitulo.textContent='RWAdar Academy';
-  if(cabSub)cabSub.textContent='Tokenización, inversión, seguridad y riesgos';
+  if(cabTitulo)cabTitulo.textContent='Academy';
+  if(cabSub)cabSub.textContent='Lecciones por niveles, con test y revisión legal';
  }
  function cerrarAcademyVisual(enfocar=true){
   if(!academyAbierta)return;
