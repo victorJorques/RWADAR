@@ -52,7 +52,7 @@ test('el contenido de la app sale del mismo generador que la web y está al día
 
 test('la app trae las nueve lecciones y solo el texto completo de las publicadas', () => {
   assert.equal(contenido.LECCIONES.length, 9);
-  assert.equal(publicadas.length, 6);
+  assert.equal(publicadas.length, 7);
   for (const l of contenido.LECCIONES) {
     assert.match(l.url, /^https:\/\/rwadar\.pages\.dev\/academy\/[a-z0-9-]+$/);
     if (l.publicado) {
@@ -151,7 +151,7 @@ test('EAS empaqueta la Academy de la app', () => {
 
 /* Pinta la pantalla de verdad con react-native-web: si un bloque de una
    lección no se pudiera dibujar, esta prueba lo detecta. */
-test('la Academy se pinta: índice y las seis lecciones publicadas', () => {
+test('la Academy se pinta: índice y todas las lecciones publicadas', () => {
   const React = require('react');
   const { renderToStaticMarkup } = require('react-dom/server');
   const rnw = require('react-native-web');
@@ -169,7 +169,7 @@ test('la Academy se pinta: índice y las seis lecciones publicadas', () => {
 
   const indice = renderToStaticMarkup(React.createElement(Academy, { ...props, slug: null }));
   for (const l of contenido.LECCIONES) assert.ok(indice.includes(l.titulo.replace(/«/g, '«')), l.slug);
-  assert.equal((indice.match(/>Próximamente</g) || []).length, 3);
+  assert.equal((indice.match(/>Próximamente</g) || []).length, 2);
   assert.match(indice, /0<\/span>|>0</);
 
   for (const l of publicadas) {
@@ -183,5 +183,6 @@ test('la Academy se pinta: índice y las seis lecciones publicadas', () => {
   }
   assert.equal(academy.resolverDestino('evaluador-viabilidad').estado, 'proximamente');
   assert.equal(academy.resolverDestino('leccion:marco-legal-cuando-tu-token-es-un-valor').app, 'leccion');
-  assert.equal(academy.resolverDestino('leccion:como-leer-el-radar').estado, 'proximamente');
+  assert.equal(academy.resolverDestino('leccion:como-leer-el-radar').app, 'leccion');
+  assert.equal(academy.resolverDestino('leccion:expediente-de-tokenizacion').estado, 'proximamente');
 });

@@ -535,7 +535,8 @@ function Texto({ tramos, estilo, onAccion }) {
       );
     }
     if (!t.b && !t.i) return t.v;
-    return <Text key={k} style={[t.b && e.negrita, t.i && e.cursiva]}>{t.v}</Text>;
+    // Si un tramo es negrita y cursiva a la vez, manda la negrita.
+    return <Text key={k} style={[t.i && e.cursiva, t.b && e.negrita]}>{t.v}</Text>;
   }), [tramos, onAccion]);
   return <Text style={estilo}>{partes}</Text>;
 }
@@ -556,14 +557,16 @@ const e = StyleSheet.create({
   },
   botonTxt: { fontFamily: F.media, fontSize: 26, lineHeight: 30, color: C.tx, marginTop: -2 },
   cerrarTxt: { fontFamily: F.media, fontSize: 15, color: C.tx2 },
-  cuerpo: { padding: UI.margen, paddingBottom: 48 },
+  /* En tabletas el texto no se estira de lado a lado: columna de lectura. */
+  cuerpo: { padding: UI.margen, paddingBottom: 48, width: '100%', maxWidth: 720, alignSelf: 'center' },
   aviso: { ...T.menor, color: '#F2B23C', backgroundColor: '#2B2416', padding: 10, borderRadius: R.s, marginBottom: 14 },
 
   sobrelinea: { ...T.etiqueta, color: C.senal, marginBottom: 8 },
   titular: { ...T.titular, color: C.tx, marginBottom: 12 },
   entradilla: { ...T.cuerpo, fontSize: 15.5, lineHeight: 23, color: C.tx2, marginBottom: 16 },
   negrita: { fontFamily: F.semi, color: C.tx },
-  cursiva: { fontStyle: 'italic' },
+  /* Cursiva de verdad (Geist Italic), no la inclinada que fabrica el sistema. */
+  cursiva: { fontFamily: F.cursiva },
   apagado: { color: C.tx3 },
 
   progreso: {
@@ -612,16 +615,17 @@ const e = StyleSheet.create({
   tldrFila: { flexDirection: 'row', gap: 11, marginBottom: 12 },
   tldrNum: { width: 26, height: 26, borderRadius: 13, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center', marginTop: 1 },
   tldrNumTxt: { fontFamily: F.extra, fontSize: 13, color: C.noche },
-  tldrTxt: { ...T.cuerpo, fontSize: 15.5, lineHeight: 23, color: C.tx2, flex: 1 },
+  tldrTxt: { ...T.cuerpo, fontSize: 16, lineHeight: 25, color: '#D2CCC2', flex: 1 },
 
-  seccion: { ...T.seccion, fontSize: 20, lineHeight: 25, color: C.tx, marginTop: 26, marginBottom: 10 },
+  seccion: { ...T.seccion, fontSize: 21, lineHeight: 26, color: C.tx, marginTop: 32, marginBottom: 12 },
   subseccion: { ...T.ficha, color: C.tx, marginTop: 14, marginBottom: 6 },
-  parrafo: { ...T.cuerpo, fontSize: 15.5, lineHeight: 24, color: C.tx2, marginBottom: 13 },
+  /* Lectura larga: letra mayor, más interlineado y un gris más claro. */
+  parrafo: { ...T.cuerpo, fontSize: 16.5, lineHeight: 27, letterSpacing: -0.05, color: '#D2CCC2', marginBottom: 15 },
   parrafoMenor: { ...T.cuerpo, color: C.tx2, marginBottom: 12 },
   nota: { ...T.menor, fontSize: 12, color: C.tx3, marginTop: -6, marginBottom: 12 },
   lista: { marginBottom: 6 },
   listaFila: { flexDirection: 'row', gap: 8 },
-  listaMarca: { ...T.cuerpo, fontSize: 15.5, lineHeight: 24, color: C.senal, minWidth: 16 },
+  listaMarca: { ...T.cuerpo, fontSize: 16.5, lineHeight: 27, color: C.senal, minWidth: 18 },
   listaTxt: { flex: 1, marginBottom: 8 },
 
   recuadro: { borderRadius: R.m, borderWidth: 1, padding: 14, paddingBottom: 2, marginBottom: 16 },

@@ -6,7 +6,7 @@ modulo: 7
 categoria: Selección de proveedor
 tiempo_lectura: 13
 fecha_publicacion: 2026-08-21
-ultima_revision_legal: 2026-08-21
+ultima_revision_legal: 2026-10-02
 jurisdiccion_referencia: España / Unión Europea
 quiz: true
 cta: radar-comparador
@@ -18,7 +18,7 @@ leccion_siguiente: expediente-de-tokenizacion
 ## Cómo leer el radar: comparar proveedores sin dejarte deslumbrar
 
 **Nivel:** Avanzado · **Lectura:** 13 min · **Categoría:** Selección de proveedor
-**Última revisión legal:** 21 de agosto de 2026 · **Jurisdicción de referencia:** España / UE
+**Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 ---
 
@@ -253,4 +253,4 @@ RWAdar no presta servicios de asesoramiento financiero regulado ni emite recomen
 
 La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente.
 
-*Contenido revisado el 21 de agosto de 2026. Jurisdicción de referencia: España / Unión Europea.*
+*Contenido revisado el 2 de octubre de 2026. Jurisdicción de referencia: España / Unión Europea.*

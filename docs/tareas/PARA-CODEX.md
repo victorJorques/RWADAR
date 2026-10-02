@@ -58,6 +58,22 @@ y checklist del expediente: «Próximamente», nunca enlace roto.
   índice, lección, test, tabla con desplazamiento, aviso reforzado, botón al
   radar y progreso tras recargar.
 
+### Cierre del 2 de octubre (petición de Víctor)
+
+- **Lección 7 publicada** (7 de 9). `PAGINAS_ACADEMY` ya la incluye.
+- **Revisión legal:** Víctor la ha verificado; las nueve lecciones dicen
+  2 de octubre de 2026.
+- **Lectura:** letra mayor, más interlineado y gris más claro en web y app;
+  cursiva real de Geist en la app.
+- **Tipografía de toda la web arreglada:** la Geist incrustada en
+  `rwadar-20260820.css` era solo el recorte «latin-ext» (sin a-z), así que la
+  web se veía con la letra del sistema. Ahora es el paquete oficial `geist`
+  1.7.2 recortado a latín (22 kB sans, 16 kB mono; la Academy lleva además
+  la cursiva). Comprobado en Chromium: el 100 % del texto sale en Geist.
+- **Aprobación registrada** en `estado.json` (commit propio) para publicar.
+  Desde la nube de Claude no hay red ni credenciales de Cloudflare: la subida
+  la hace Víctor o Codex en local (`--preview` y luego `--produccion`).
+
 ### Pendiente
 
 1. ~~Decidir con Eric los criterios y las funciones prometidas.~~ **Hecho**

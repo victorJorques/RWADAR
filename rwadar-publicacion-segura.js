@@ -94,6 +94,7 @@ const PAGINAS_ACADEMY = Object.freeze([
   'academy/marco-legal-cuando-tu-token-es-un-valor.html',
   'academy/cuanto-cuesta-tokenizar.html',
   'academy/liquidez-como-evaluarla.html',
+  'academy/como-leer-el-radar.html',
 ].sort());
 
 const ARCHIVOS_PUBLICABLES = Object.freeze([

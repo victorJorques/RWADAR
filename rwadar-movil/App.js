@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
-  useFonts, Geist_400Regular, Geist_500Medium, Geist_600SemiBold,
+  useFonts, Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
   Geist_700Bold, Geist_800ExtraBold,
 } from '@expo-google-fonts/geist';
 import { GeistMono_500Medium } from '@expo-google-fonts/geist-mono';
@@ -71,7 +71,7 @@ async function abrirAjustes() {
 
 export default function App() {
   const [fuentesListas] = useFonts({
-    Geist_400Regular, Geist_500Medium, Geist_600SemiBold,
+    Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
     Geist_700Bold, Geist_800ExtraBold, GeistMono_500Medium,
   });
 

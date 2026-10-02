@@ -81,6 +81,7 @@ export const COLOR_CATEGORIA = {
    --------------------------------------------------------------------- */
 export const F = {
   regular: 'Geist_400Regular',
+  cursiva: 'Geist_400Regular_Italic',
   media: 'Geist_500Medium',
   semi: 'Geist_600SemiBold',
   negrita: 'Geist_700Bold',

@@ -28,7 +28,8 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
-| **RWAdar Academy** | Hecha en la rama, **sin publicar**. 9 lecciones de Eric en 3 niveles: las 6 primeras listas para salir, la 7, 8 y 9 como «Próximamente». Web en `/academy/` y app (Más › RWAdar Academy). Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
+| **RWAdar Academy** | Terminada y aprobada, **pendiente de subir** a Cloudflare (desde aquí no hay red). 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. Web en `/academy/` y app (Más › RWAdar Academy). Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
+| **Tipografía** | Arreglada el 2/10: la Geist incrustada no traía a-z, así que la web se veía con la letra del sistema. Ya es la completa. |
 
 **En pausa a propósito:** cuentas de usuario, opiniones, avisos por correo y
 avisos push. Las altas nuevas están cerradas. Los favoritos de la app se
@@ -41,10 +42,11 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-0. **Publicar RWAdar Academy** (cuando Víctor lo autorice): el texto ya está
-   alineado con el Método y lo que falta sale como «próximamente». Queda
-   registrar la aprobación y publicar la web. En la app llega con la próxima
-   compilación.
+0. **Subir RWAdar Academy** (autorizado por Víctor el 2/10): la aprobación ya
+   está registrada en `estado.json`. Falta, en un ordenador con red y
+   credenciales de Cloudflare, unir la rama a `main` y ejecutar
+   `node rwadar-publicar.js --preview`, comprobar y `--produccion`. En la app
+   llega con la próxima compilación (subir versión).
 
 1. **Renovar la revisión del catálogo** antes del 5 de octubre si se puede.
    Ya no es urgente: desde el 2 de octubre el «catálogo siempre disponible»

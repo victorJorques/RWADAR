@@ -57,14 +57,13 @@ Cambios aplicados en `rwadar-academy/lecciones/`:
 Una prueba automática impide que vuelvan los criterios antiguos o que se
 mencione una función futura sin «próximamente».
 
-**Fecha de revisión legal:** no se ha cambiado. Los cambios son de producto
-(qué existe y qué no), no de contenido legal. Si Eric quiere, que lo
-confirme y se actualiza la fecha.
+**Fecha de revisión legal:** Víctor verificó el contenido y pidió poner la
+fecha más reciente: las nueve lecciones dicen ahora **2 de octubre de 2026**.
 
 ## Lo que queda abierto
 
-1. **Lección 7:** ya no choca con el Método. Sale como «Próximamente» solo
-   por el calendario de Eric (fase 2). Publicarla es cambiar una línea.
+1. **Lección 7:** publicada el 2/10/2026 por decisión de Víctor. Las 8 y 9
+   siguen como «Próximamente» (calendario de Eric).
 2. **Imágenes por nivel** para compartir en redes (la especificación pide
    tres). De momento todas usan la imagen general de RWAdar.
 3. **Variantes del aviso común**: unificadas en la versión más completa

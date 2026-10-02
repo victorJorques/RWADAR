@@ -6,7 +6,7 @@ modulo: 2
 categoria: Fundamentos
 tiempo_lectura: 14
 fecha_publicacion: 2026-08-21
-ultima_revision_legal: 2026-08-21
+ultima_revision_legal: 2026-10-02
 jurisdiccion_referencia: España / Unión Europea
 quiz: true
 cta: radar-categorias
@@ -18,7 +18,7 @@ leccion_siguiente: es-tu-activo-tokenizable
 ## Quién es quién: el mapa de actores de una tokenización
 
 **Nivel:** Principiante · **Lectura:** 14 min · **Categoría:** Fundamentos
-**Última revisión legal:** 21 de agosto de 2026 · **Jurisdicción de referencia:** España / UE
+**Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 ---
 
@@ -262,4 +262,4 @@ RWAdar no presta servicios de asesoramiento financiero regulado, no emite recome
 
 La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente.
 
-*Contenido revisado el 21 de agosto de 2026. Jurisdicción de referencia: España / Unión Europea.*
+*Contenido revisado el 2 de octubre de 2026. Jurisdicción de referencia: España / Unión Europea.*

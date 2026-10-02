@@ -2257,9 +2257,9 @@ console.log('\n=== RWADAR ACADEMY ===');
 
   prueba('las páginas de la Academy están generadas desde las lecciones y al día',
     academyMod.comprobar(academy).length === 0);
-  prueba('las nueve lecciones se validan y la entrega fija 6 publicadas y 3 en revisión',
-    academy.lecciones.length === 9 && publicadasA.length === 6 &&
-    publicadasA.every(l => l.modulo <= 6) && pendientesA.every(l => l.estado === 'en_revision' && l.motivo));
+  prueba('las nueve lecciones se validan: 7 publicadas y 2 en revisión con su motivo',
+    academy.lecciones.length === 9 && publicadasA.length === 7 &&
+    publicadasA.every(l => l.modulo <= 7) && pendientesA.every(l => l.estado === 'en_revision' && l.motivo));
   prueba('el manifiesto publicable lista exactamente el índice y las lecciones publicadas',
     JSON.stringify(academyMod.paginasAcademy(academy)) === JSON.stringify([...PAGINAS_ACADEMY]) &&
     fs.readdirSync(path.join(sitio, 'academy')).length === publicadasA.length + 1 &&
@@ -2326,12 +2326,13 @@ console.log('\n=== RWADAR ACADEMY ===');
     (paginaDe('es-tu-activo-tokenizable').match(/<div class="ac-tabla ac-tabla-c\d" role="region" tabindex="0"/g) || []).length >= 1 &&
     /\.ac-tabla\{overflow-x:auto/.test(lee('assets/academy-20261002.css')) &&
     /body\{[^}]*overflow-x:hidden/.test(lee('assets/academy-20261002.css')));
-  prueba('la lección 6 enlaza la 7 como «Próximamente» sin enlace a una página inexistente',
-    paginaDe('liquidez-como-evaluarla').includes('ac-vecina-pronto') &&
-    !paginaDe('liquidez-como-evaluarla').includes('href="/academy/como-leer-el-radar"'));
+  prueba('la última lección publicada enlaza la siguiente como «Próximamente», sin página inexistente',
+    paginaDe('como-leer-el-radar').includes('ac-vecina-pronto') &&
+    !paginaDe('como-leer-el-radar').includes('href="/academy/expediente-de-tokenizacion"') &&
+    paginaDe('liquidez-como-evaluarla').includes('href="/academy/como-leer-el-radar"'));
   prueba('el índice muestra los tres niveles, el progreso local y las pendientes como «Próximamente»',
     academy.niveles.every(n => indiceAcademy.includes(`<section class="ac-nivel" id="${n.id}"`)) &&
-    indiceAcademy.includes('<progress max="6" value="0"') &&
+    indiceAcademy.includes(`<progress max="${publicadasA.length}" value="0"`) &&
     (indiceAcademy.match(/ac-tarjeta ac-tarjeta-pronto/g) || []).length === pendientesA.length &&
     publicadasA.every(l => indiceAcademy.includes(`href="/academy/${l.slug}" data-academy-tarjeta="${l.slug}"`)) &&
     indiceAcademy.includes('<link rel="canonical" href="https://rwadar.pages.dev/academy/">'));
@@ -2379,6 +2380,14 @@ console.log('\n=== RWADAR ACADEMY ===');
   prueba('toda función que aún no existe se anuncia como «próximamente» en el texto',
     sinProximamente.length === 0);
   const cssPortada = lee('assets/rwadar-20260820.css');
+  const fuentesDe = css => [...css.matchAll(/font-family:'(Geist(?: Mono)?)';font-style:(\w+)[^}]*?base64,([A-Za-z0-9+/=]+)\)/g)]
+    .map(m => ({ familia: m[1], estilo: m[2], bytes: Buffer.from(m[3], 'base64') }));
+  const fuentesPortada = fuentesDe(cssPortada), fuentesAcademy = fuentesDe(lee('assets/academy-20261002.css'));
+  prueba('la Geist incrustada es la completa para español, no el recorte sin a-z',
+    fuentesPortada.length === 2 && fuentesAcademy.length === 3 &&
+    [...fuentesPortada, ...fuentesAcademy].every(f => f.bytes.subarray(0, 4).toString('latin1') === 'wOF2' && f.bytes.length > 15000) &&
+    fuentesAcademy.some(f => f.estilo === 'italic') &&
+    !(cssPortada + lee('assets/academy-20261002.css')).includes('d09GMgABAAAAAECAABQAAAAAjngAAEALAAEAA'));
   prueba('la cabecera compacta móvil no monta el título sobre la marca',
     /\.movil-cabecera\{display:grid;grid-template-columns:minmax\(max-content,1fr\) minmax\(0,auto\) minmax\(max-content,1fr\);\s*column-gap:10px/.test(cssPortada) &&
     /\.movil-cabecera-titulo\{[^}]*min-width:0;[^}]*text-overflow:ellipsis/.test(cssPortada) &&
@@ -2475,7 +2484,7 @@ try {
   const academyIndice = await fetch(`http://127.0.0.1:${puerto}/academy/`);
   const academyLeccion = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo`);
   const academyHtml = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo.html`, { redirect:'manual' });
-  const academyPendiente = await fetch(`http://127.0.0.1:${puerto}/academy/como-leer-el-radar`);
+  const academyPendiente = await fetch(`http://127.0.0.1:${puerto}/academy/expediente-de-tokenizacion`);
   prueba('las URL limpias de la Academy funcionan localmente como en Cloudflare',
     academySinBarra.status===308 && academySinBarra.headers.get('location')==='/academy/' &&
     academyIndice.status===200 && (await academyIndice.text()).includes('data-academy-indice-pagina') &&

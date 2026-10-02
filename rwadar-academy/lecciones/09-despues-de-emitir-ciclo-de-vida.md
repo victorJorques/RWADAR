@@ -6,7 +6,7 @@ modulo: 9
 categoria: Post-emisión
 tiempo_lectura: 17
 fecha_publicacion: 2026-09-23
-ultima_revision_legal: 2026-09-23
+ultima_revision_legal: 2026-10-02
 jurisdiccion_referencia: España / Unión Europea
 quiz: true
 cta: radar-comparador
@@ -18,7 +18,7 @@ leccion_siguiente:
 ## Después de emitir: gobierno, reporting, fiscalidad y ciclo de vida del token
 
 **Nivel:** Avanzado · **Lectura:** 17 min · **Categoría:** Post-emisión
-**Última revisión legal:** 23 de septiembre de 2026 · **Jurisdicción de referencia:** España / UE
+**Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 > **Antes de empezar**
 > Esta lección toca materia fiscal. Lo hace como **panorama general de qué planos existen y qué preguntas hay que llevar a un profesional**, nunca como criterio aplicable a un caso concreto. La fiscalidad de una emisión depende del tipo de activo, del vehículo, de la residencia de cada titular y del régimen aplicable en cada momento: **es terreno exclusivo de un asesor fiscal**, y conviene sentarse con uno antes de cerrar la estructura, no después.
@@ -277,4 +277,4 @@ RWAdar no presta servicios de asesoramiento financiero regulado, no emite recome
 
 La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente y verifica la información vigente en las fuentes oficiales de los supervisores competentes.
 
-*Contenido revisado el 23 de septiembre de 2026. Jurisdicción de referencia: España / Unión Europea.*
+*Contenido revisado el 2 de octubre de 2026. Jurisdicción de referencia: España / Unión Europea.*

@@ -6,7 +6,7 @@ modulo: 5
 categoria: Economía del proyecto
 tiempo_lectura: 15
 fecha_publicacion: 2026-08-21
-ultima_revision_legal: 2026-08-21
+ultima_revision_legal: 2026-10-02
 jurisdiccion_referencia: España / Unión Europea
 quiz: true
 cta: radar-comparador
@@ -18,7 +18,7 @@ leccion_siguiente: liquidez-como-evaluarla
 ## Cuánto cuesta y cuánto tarda: la anatomía de un presupuesto de tokenización
 
 **Nivel:** Intermedio · **Lectura:** 15 min · **Categoría:** Economía del proyecto
-**Última revisión legal:** 21 de agosto de 2026 · **Jurisdicción de referencia:** España / UE
+**Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 ---
 
@@ -281,4 +281,4 @@ RWAdar no presta servicios de asesoramiento financiero regulado, no emite recome
 
 La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente.
 
-*Contenido revisado el 21 de agosto de 2026. Jurisdicción de referencia: España / Unión Europea.*
+*Contenido revisado el 2 de octubre de 2026. Jurisdicción de referencia: España / Unión Europea.*
