@@ -42,11 +42,12 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-0. **Subir RWAdar Academy** (autorizado por Víctor el 2/10): la aprobación ya
-   está registrada en `estado.json`. Falta, en un ordenador con red y
-   credenciales de Cloudflare, unir la rama a `main` y ejecutar
-   `node rwadar-publicar.js --preview`, comprobar y `--produccion`. En la app
-   llega con la próxima compilación (subir versión).
+0. **Subir RWAdar Academy** (autorizado por Víctor el 2/10): ya está en `main`
+   (PR #1) con la aprobación registrada en `estado.json` («LISTO PARA CORTE
+   FINAL»). Falta solo, en un ordenador con red y credenciales de Cloudflare:
+   `git pull`, `node rwadar-publicar.js --preview`, comprobar `/academy/` y
+   `node rwadar-publicar.js --produccion`. En la app llega con la próxima
+   compilación (subir versión).
 
 1. **Renovar la revisión del catálogo** antes del 5 de octubre si se puede.
    Ya no es urgente: desde el 2 de octubre el «catálogo siempre disponible»
