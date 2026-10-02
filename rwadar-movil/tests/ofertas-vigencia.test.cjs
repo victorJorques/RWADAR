@@ -29,6 +29,7 @@ const datosMoviles = cargarModulo('lib/datos.js', {
   './modo-local': { MODO_LOCAL: true, SERVICIOS_USUARIO_REMOTOS: false },
   './verificacion-local': movil,
   './catalogo-remoto': {},
+  './academy-progreso': cargarModulo('lib/academy-progreso.js'),
 });
 const oferta = {
   slug: 'prueba-frescura', titulo: 'Oferta de prueba', plataformaNombre: 'Proveedor',

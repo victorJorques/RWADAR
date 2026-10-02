@@ -95,6 +95,12 @@ export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
           <Line x1="15.5" y1="15.5" x2="21" y2="21" {...comun} />
         </>
       ) : null}
+      {nombre === 'academy' ? (
+        <>
+          <Path d="M12 6.6C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.6 2-1.6 5-2.1 8.5-1.6V5C17 4.5 14 5 12 6.6z" {...comun} />
+          <Line x1="12" y1="6.6" x2="12" y2="19.4" {...comun} />
+        </>
+      ) : null}
       {nombre === 'flecha' ? <Path d="m9 5 7 7-7 7" {...comun} /> : null}
     </Svg>
   );

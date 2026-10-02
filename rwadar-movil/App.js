@@ -26,6 +26,8 @@ import {
   consultarEstadoAvisos, registrarParaAvisos, observarAperturasAvisos,
 } from './lib/avisos';
 import Explicador from './componentes/Explicador';
+import Academy from './componentes/Academy';
+import { LECCIONES } from './lib/academy-contenido';
 import Radar from './componentes/Radar';
 import Marca from './componentes/Marca';
 import Navegacion, { Icono } from './componentes/Navegacion';
@@ -34,6 +36,7 @@ import {
 } from './componentes/Ofertas';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
+const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
 const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
 
 async function abrirEnlace(url) {
@@ -95,6 +98,8 @@ export default function App() {
   const [abierta, setAbierta] = useState(null);
   const [ofertaAbierta, setOfertaAbierta] = useState(null);
   const [explicando, setExplicando] = useState(false);
+  // null: Academy cerrada · '': lista de lecciones · slug: lección abierta.
+  const [academy, setAcademy] = useState(null);
   const [privacidad, setPrivacidad] = useState(false);
   const [estadoDatos, setEstadoDatos] = useState('');
   const [estadoAccion, setEstadoAccion] = useState('');
@@ -330,7 +335,7 @@ export default function App() {
       MODO_LOCAL
         ? 'Se eliminarán únicamente los seguimientos y cachés del escaparate local. No se contactará con Supabase.'
         : USUARIO_LOCAL
-          ? 'Se borrarán los favoritos de esta versión editorial y la caché del catálogo en este dispositivo. No se borran datos de versiones anteriores ni del servidor.'
+          ? 'Se borrarán los favoritos de esta versión editorial, el progreso de la Academy y la caché del catálogo en este dispositivo. No se borran datos de versiones anteriores ni del servidor.'
         : 'Se eliminarán de Supabase esta instalación, su token push y todos sus seguimientos, además de las cachés locales. No se puede deshacer.',
       [
         { text: 'Cancelar', style: 'cancel' },
@@ -373,6 +378,17 @@ export default function App() {
   };
 
   const abrir = (p) => { tacto.abrir(); setAbierta(p); };
+  const abrirAcademy = () => { tacto.abrir(); setAcademy(''); };
+  /* Los botones de una lección llevan al radar de la app o abren la web
+     (el comparador solo existe allí). Nunca a una pantalla inexistente. */
+  const accionAcademy = (destino) => {
+    if (destino.app === 'radar') {
+      setAcademy(null);
+      setPestana('radar');
+    } else if (destino.app === 'web' && destino.url) {
+      abrirEnlace(destino.url);
+    }
+  };
   const filtrar = (c) => { tacto.eleccion(); setCategoria(c); };
   const cambiarPestana = (id) => {
     if (id === pestana) return;
@@ -447,6 +463,20 @@ export default function App() {
                     <View style={{ flex: 1 }}>
                       <Text style={e.bannerTit}>¿Qué es tokenizar un activo?</Text>
                       <Text style={e.bannerSub}>Explicado con una animación 3D, paso a paso</Text>
+                    </View>
+                    <Icono nombre="flecha" color={C.tx3} tamano={20} />
+                  </Pressable>
+
+                  <Pressable
+                    onPress={abrirAcademy}
+                    style={({ pressed }) => [e.banner, pressed && e.pulsado]}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Abrir RWAdar Academy: ${LECCIONES_PUBLICADAS} lecciones sobre tokenización`}
+                  >
+                    <View style={e.bannerMarca}><Icono nombre="academy" color={C.noche} tamano={22} /></View>
+                    <View style={{ flex: 1 }}>
+                      <Text style={e.bannerTit}>RWAdar Academy</Text>
+                      <Text style={e.bannerSub}>{LECCIONES_PUBLICADAS} lecciones por niveles, con test y revisión legal</Text>
                     </View>
                     <Icono nombre="flecha" color={C.tx3} tamano={20} />
                   </Pressable>
@@ -700,6 +730,7 @@ export default function App() {
               onActualizar={refrescar}
               onAvisos={() => cambiarPestana('avisos')}
               onExplicar={() => { tacto.abrir(); setExplicando(true); }}
+              onAcademy={abrirAcademy}
               onPrivacidad={() => setPrivacidad(true)}
               onPolitica={() => abrirEnlace(URL_PRIVACIDAD)}
               onContacto={() => abrirEnlace('mailto:RWAdar@protonmail.com')}
@@ -727,6 +758,26 @@ export default function App() {
           onAbrirEnlace={abrirEnlace}
           plataformaCanonica={!!ofertaAbierta && radar.some((p) => p.slug === ofertaAbierta.plataformaSlug)}
         />
+
+        <Modal visible={academy !== null} animationType="slide"
+          onRequestClose={() => setAcademy((actual) => (actual ? '' : null))}>
+          <SafeAreaProvider>
+            <SafeAreaView style={{ flex: 1, backgroundColor: C.noche }} edges={['top', 'bottom']}>
+              <Academy
+                slug={academy || null}
+                onAbrirLeccion={(slug) => setAcademy(slug)}
+                onVolver={() => { tacto.eleccion(); setAcademy(''); }}
+                onCerrar={() => { tacto.eleccion(); setAcademy(null); }}
+                onAccion={accionAcademy}
+                onExplicar={() => {
+                  /* Un modal no se presenta mientras otro se está cerrando. */
+                  setAcademy(null);
+                  setTimeout(() => setExplicando(true), 450);
+                }}
+              />
+            </SafeAreaView>
+          </SafeAreaProvider>
+        </Modal>
 
         <Modal visible={explicando} animationType="slide" onRequestClose={() => setExplicando(false)}>
           <SafeAreaProvider>
@@ -927,7 +978,7 @@ function etiquetaEstadoAvisos(estado) {
 
 function PantallaMas({
   cantidadSeguimientos, sinConexion, estadoAvisos, refrescando, borrando,
-  onActualizar, onAvisos, onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar,
+  onActualizar, onAvisos, onExplicar, onAcademy, onPrivacidad, onPolitica, onContacto, onBorrar,
 }) {
   return (
     <ScrollView
@@ -952,6 +1003,12 @@ function PantallaMas({
       </View>
 
       <GrupoMenu titulo="Entender RWAdar">
+        <FilaMenu
+          icono="academy"
+          titulo="RWAdar Academy"
+          subtitulo={`${LECCIONES_PUBLICADAS} lecciones en 3 niveles, con test`}
+          onPress={onAcademy}
+        />
         <FilaMenu
           icono="ayuda"
           titulo="Cómo funciona la tokenización"
@@ -1333,7 +1390,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
                 </Text>
                 <Text style={e.privacidadTit}>Seguimiento exclusivamente local</Text>
                 <Text style={e.privacidadParrafo}>
-                  Seguir una plataforma guarda solo su slug bajo claves rwadar.local.*. No se crea UUID, no se registra un dispositivo y no se conserva ninguna operación para sincronizarla después.
+                  Seguir una plataforma guarda solo su slug bajo claves rwadar.local.*, igual que el progreso de la Academy. No se crea UUID, no se registra un dispositivo y no se conserva ninguna operación para sincronizarla después.
                 </Text>
                 <Text style={e.privacidadTit}>Avisos desconectados</Text>
                 <Text style={e.privacidadParrafo}>
@@ -1352,7 +1409,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
                 </Text>
                 <Text style={e.privacidadTit}>Favoritos en este dispositivo</Text>
                 <Text style={e.privacidadParrafo}>
-                  Los favoritos se guardan bajo claves rwadar.editorial.*. No se envían al servidor ni se crean operaciones pendientes de sincronización. La caché del catálogo permite consultar un lote válido sin conexión hasta su caducidad.
+                  Los favoritos y el progreso de RWAdar Academy (lecciones leídas y aciertos del test) se guardan bajo claves rwadar.editorial.*. No se envían al servidor ni se crean operaciones pendientes de sincronización. La caché del catálogo permite consultar un lote válido sin conexión hasta su caducidad.
                 </Text>
                 <Text style={e.privacidadTit}>Servicios de usuario desactivados</Text>
                 <Text style={e.privacidadParrafo}>
@@ -1360,7 +1417,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
                 </Text>
                 <Text style={e.privacidadTit}>Borrado limitado a esta versión</Text>
                 <Text style={e.privacidadParrafo}>
-                  El botón elimina los favoritos editoriales y la caché del catálogo de este dispositivo. No lee ni modifica identificadores o seguimientos de versiones anteriores y no elimina datos del servidor. Para solicitar acceso o borrado de datos históricos, usa «Contactar sobre mis datos».
+                  El botón elimina los favoritos editoriales, el progreso de la Academy y la caché del catálogo de este dispositivo. No lee ni modifica identificadores o seguimientos de versiones anteriores y no elimina datos del servidor. Para solicitar acceso o borrado de datos históricos, usa «Contactar sobre mis datos».
                 </Text>
               </>
             ) : (
@@ -1379,7 +1436,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
                 </Text>
                 <Text style={e.privacidadTit}>Datos locales y terceros</Text>
                 <Text style={e.privacidadParrafo}>
-                  El catálogo, la fecha de sincronización y tu lista se guardan localmente para funcionar sin conexión. Supabase presta la base de datos y Expo los servicios de token push y actualización.
+                  El catálogo, la fecha de sincronización, tu lista y el progreso de la Academy se guardan localmente para funcionar sin conexión. Supabase presta la base de datos y Expo los servicios de token push y actualización.
                 </Text>
                 <Text style={e.privacidadTit}>Control de borrado</Text>
                 <Text style={e.privacidadParrafo}>

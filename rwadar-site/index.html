@@ -79,6 +79,7 @@
     </a>
     <nav class="hdr-nav">
       <a class="hdr-link" href="#explain">¿Qué es tokenizar?</a>
+      <a class="hdr-link" href="/academy/">Academy</a>
       <a class="hdr-link" href="#metodo">Método</a>
       <a class="hdr-link" href="/android">App Android ↗</a>
       <button class="snd" id="snd" aria-pressed="false" aria-label="Activar o desactivar el sonido y la respuesta táctil">
@@ -176,7 +177,7 @@
           <circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.4 2.4 0 1 1 3.2 2.3c-.8.35-1 1-1 1.7"/><circle cx="12" cy="17" r=".8" fill="currentColor" stroke="none"/>
         </svg>
       </span>
-      <span><b>RWAdar Academy</b><small>Empieza con la lección 3D sobre tokenización</small></span>
+      <span><b>RWAdar Academy</b><small>Lecciones por niveles y la lección 3D sobre tokenización</small></span>
       <i aria-hidden="true">›</i>
     </button>
   </div>
@@ -406,7 +407,7 @@
 <!-- ============ RADAR ============ -->
 <section class="tool wrap" id="tool">
   <div class="tool-cab">
-    <div><h2 class="sec"><span class="solo-escritorio">El radar</span><span class="solo-movil">Explorar plataformas</span></h2><p><span class="solo-escritorio">Filtra, abre una ficha para ver el detalle o marca hasta tres para compararlas.</span><span class="solo-movil">Busca, filtra y abre una ficha para consultar todas sus pruebas.</span></p></div>
+    <div><h2 class="sec"><span class="solo-escritorio">El radar</span><span class="solo-movil">Explorar plataformas</span></h2><p id="comparador"><span class="solo-escritorio">Filtra, abre una ficha para ver el detalle o marca hasta tres para compararlas.</span><span class="solo-movil">Busca, filtra y abre una ficha para consultar todas sus pruebas.</span></p></div>
     <div class="vista">
       <button id="vGrid" class="on" data-vista="grid" aria-pressed="true">Fichas</button>
       <button id="vMat" data-vista="matrix" aria-pressed="false">Matriz</button>
@@ -899,29 +900,62 @@
   <div class="academia-cab">
     <p class="etiq">RWAdar Academy</p>
     <h2 id="academyTit">Entiende antes de invertir</h2>
-    <p>Lecciones cortas y claras para aprender conceptos, revisar una oportunidad y reconocer riesgos sin convertir la educación en una recomendación de inversión.</p>
+    <p>Lecciones claras para entender la tokenización, decidir si te conviene y elegir proveedor sin convertir la educación en una recomendación de inversión.</p>
   </div>
 
   <article class="academia-destacada">
     <div class="academia-destacada-icono" aria-hidden="true">3D</div>
     <div>
-      <span class="academia-estado academia-disponible">Disponible ahora · 4 pasos</span>
-      <h3>Qué significa tokenizar un activo</h3>
+      <span class="academia-estado academia-disponible">Introducción interactiva · 4 pasos</span>
+      <h3>Tokenizar, visto en 3D</h3>
       <p>Parte un activo, sigue quién posee cada trozo y observa cómo puede cambiar de manos con la explicación interactiva de RWAdar.</p>
-      <button class="btn-p" type="button" data-ir="explain">Abrir la primera lección</button>
+      <button class="btn-p" type="button" data-ir="explain">Abrir la lección 3D</button>
     </div>
   </article>
 
-  <div class="academia-videoteca" aria-labelledby="academiaVideosTit">
-    <p class="etiq">Próximas lecciones</p>
-    <h3 id="academiaVideosTit">La videoteca todavía no tiene vídeos publicados</h3>
-    <p>Los vídeos aparecerán aquí cuando estén revisados, subtitulados y acompañados de sus fuentes. Mientras tanto puedes completar la lección interactiva en 3D.</p>
-    <div class="academia-temas" aria-label="Temas previstos">
-      <span>Tokenización</span><span>Conceptos básicos</span><span>Inversión</span><span>Seguridad</span><span>Riesgos</span>
+  <!--academy:ini-->
+  <div class="academia-lecciones" aria-labelledby="academiaLeccionesTit">
+    <div class="academia-lecciones-cab">
+      <p class="etiq">6 de 9 lecciones disponibles</p>
+      <h3 id="academiaLeccionesTit">9 lecciones en 3 niveles</h3>
+      <p>Cada nivel responde a una pregunta. Se leen gratis y sin registro, con un resumen de 30 segundos, un test corto y la fecha de su última revisión legal.</p>
     </div>
+    <div class="academia-niveles">
+    <section class="academia-nivel" aria-labelledby="academiaNivel1">
+      <p class="academia-nivel-etiq">Nivel 1 · Entender</p>
+      <h4 id="academiaNivel1">Principiante</h4>
+      <p class="academia-nivel-preg">¿Qué es esto y me afecta?</p>
+      <ol class="academia-lista">
+        <li><a href="/academy/que-significa-tokenizar-un-activo"><span class="academia-num">01</span><b>Tokenizar no es «meter tu activo en blockchain»: qué significa de verdad</b><small>Fundamentos · 10 min</small></a></li>
+        <li><a href="/academy/quien-es-quien-actores-tokenizacion"><span class="academia-num">02</span><b>Quién es quién: el mapa de actores de una tokenización</b><small>Fundamentos · 14 min</small></a></li>
+        <li><a href="/academy/es-tu-activo-tokenizable"><span class="academia-num">03</span><b>¿Es tu activo tokenizable? Las cinco condiciones previas</b><small>Diagnóstico · 15 min</small></a></li>
+      </ol>
+    </section>
+    <section class="academia-nivel" aria-labelledby="academiaNivel2">
+      <p class="academia-nivel-etiq">Nivel 2 · Decidir</p>
+      <h4 id="academiaNivel2">Intermedio</h4>
+      <p class="academia-nivel-preg">¿Me conviene y qué me va a costar?</p>
+      <ol class="academia-lista">
+        <li><a href="/academy/marco-legal-cuando-tu-token-es-un-valor"><span class="academia-num">04</span><b>El marco legal sin abogados: cuándo tu token es un valor y cuándo no</b><small>Marco regulatorio · 16 min</small></a></li>
+        <li><a href="/academy/cuanto-cuesta-tokenizar"><span class="academia-num">05</span><b>Cuánto cuesta y cuánto tarda: la anatomía de un presupuesto de tokenización</b><small>Economía del proyecto · 15 min</small></a></li>
+        <li><a href="/academy/liquidez-como-evaluarla"><span class="academia-num">06</span><b>La liquidez es la promesa más incumplida del sector: cómo evaluarla antes de creerla</b><small>Gestión de riesgos · 13 min</small></a></li>
+      </ol>
+    </section>
+    <section class="academia-nivel" aria-labelledby="academiaNivel3">
+      <p class="academia-nivel-etiq">Nivel 3 · Ejecutar</p>
+      <h4 id="academiaNivel3">Avanzado</h4>
+      <p class="academia-nivel-preg">¿Con quién y cómo lo ejecuto?</p>
+      <ol class="academia-lista">
+        <li class="academia-pronto"><span class="academia-num">07</span><b>Cómo leer el radar: comparar proveedores sin dejarte deslumbrar</b><small>Próximamente</small></li>
+        <li class="academia-pronto"><span class="academia-num">08</span><b>El expediente de tokenización: los doce documentos que te van a pedir</b><small>Próximamente</small></li>
+        <li class="academia-pronto"><span class="academia-num">09</span><b>Después de emitir: gobierno, reporting, fiscalidad y ciclo de vida del token</b><small>Próximamente</small></li>
+      </ol>
+    </section>
+    </div>
+    <a class="academia-ver-todo" href="/academy/">Ver todas las lecciones <span aria-hidden="true">→</span></a>
+    <p class="academia-nota">Las lecciones son de texto. Todavía no hay vídeos: no mostraremos miniaturas ni botones que no lleven a contenido real.</p>
   </div>
-
-  <p class="academia-nota">No mostraremos miniaturas ni botones que todavía no lleven a contenido real. Los futuros vídeos usarán subtítulos, transcripción, fuentes y fecha de revisión.</p>
+  <!--academy:fin-->
   <div id="academyLeccion"></div>
 </section>
 
@@ -1195,7 +1229,7 @@
     </div>
     <div>
       <h4>Secciones</h4>
-      <p><a href="#explain">Qué es tokenizar</a><br><a href="#metodo">Qué comprobamos</a><br><a href="#tool">El radar</a><br><a href="#fuera">Fuera del radar</a></p>
+      <p><a href="#explain">Qué es tokenizar</a><br><a href="/academy/">RWAdar Academy</a><br><a href="#metodo">Qué comprobamos</a><br><a href="#tool">El radar</a><br><a href="#fuera">Fuera del radar</a></p>
     </div>
     <div>
       <h4>Contacto</h4>

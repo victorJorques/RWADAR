@@ -789,6 +789,12 @@ prueba('la analítica respeta Do Not Track, Global Privacy Control y ausencia de
 prueba('un referente con parámetros o fragmentos tampoco se comunica al proveedor',
   ['https://rwadar.pages.dev/?email=prueba', 'https://ejemplo.com/#token=prueba', 'url inválida']
     .every(referrer => simularAnalitica('https://rwadar.pages.dev/', { referrer }).length === 0));
+prueba('la Academy se mide solo con sus URL limpias, sin parámetros ni rutas raras',
+  ['/academy/', '/academy/que-significa-tokenizar-un-activo'].every(ruta =>
+    simularAnalitica('https://rwadar.pages.dev' + ruta).length === 1) &&
+  ['/academy', '/academy/Mayusculas', '/academy/a/b', '/academy/leccion.html',
+    '/academy/?q=1', '/academy/leccion#seccion', '/academy/-leccion'].every(ruta =>
+    simularAnalitica('https://rwadar.pages.dev' + ruta).length === 0));
 prueba('las páginas públicas auxiliares incluyen medición y un beacon existente no se duplica',
   [privacidad, transparenciaComercial, paraEmpresas].every(pagina => pagina.includes(rutaAnalitica)) &&
   ['/privacidad', '/transparencia-comercial', '/para-empresas'].every(ruta =>
@@ -1304,7 +1310,7 @@ prueba('Buscar mueve los mismos nodos y restaura su lugar al volver a escritorio
   reparentadoEmisionesEsReversible(js));
 prueba('la portada móvil conserva un acceso táctil explícito a Academy y a la lección 3D',
   /class="movil-banner-explica"[^>]*data-movil-action="academy"/.test(html) &&
-  /RWAdar Academy/.test(html) && /Abrir la primera lección/.test(html) &&
+  /RWAdar Academy/.test(html) && /Abrir la lección 3D/.test(html) &&
   /display\s*:\s*grid/i.test(declaracionesCSS(cssMovil, '.movil-banner-explica').join(';')));
 prueba('los resultados móviles muestran seis fichas y conservan las 26 en el DOM',
   /id="plataformasResultados"/.test(html) &&
@@ -1315,7 +1321,8 @@ prueba('los resultados móviles muestran seis fichas y conservan las 26 en el DO
 prueba('Academy es una subvista de Buscar sin vídeos ni canvas inventados',
   /id="academy"[^>]*aria-labelledby="academyTit"/.test(html) &&
   /data-movil-action="cerrar-academy"/.test(html) &&
-  /La videoteca todavía no tiene vídeos publicados/.test(html) &&
+  /Todavía no hay vídeos/.test(html) && !/<video\b|<iframe\b/i.test(html) &&
+  /<!--academy:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy:fin-->/.test(html) &&
   (html.match(/\bid=["'](?:explain|scene|gl)["']/g) || []).length === 3 &&
   /academyLeccion\.appendChild\(explicador\)/.test(jsSinComentarios) &&
   /rwadarAcademy/.test(jsSinComentarios));
@@ -1666,8 +1673,8 @@ const archivosPublicados = listarArchivosRegulares(publicado);
 const assetsPublicados = archivosPublicados.filter(x=>x.startsWith('assets/'));
 const portadasPublicadas = archivosPublicados.filter(x=>/^plataformas\/.+\.webp$/.test(x));
 prueba('todo asset desplegable lleva su huella de contenido y no queda el nombre estable',
-  assetsPublicados.length === 5 && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
-  !archivosPublicados.some(x=>/^assets\/(?:error|privacidad|rwadar|analitica)-\d{8}\.(?:css|js)$/.test(x)));
+  assetsPublicados.length === 7 && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
+  !archivosPublicados.some(x=>/^assets\/(?:error|privacidad|rwadar|analitica|academy)-\d{8}\.(?:css|js)$/.test(x)));
 const analiticaPublicada = scriptsPublicados.find(script => /\/analitica-/.test(script[1]))?.[1];
 prueba('la analítica se versiona en todas las páginas y el worker conserva solo el cargador propio',
   analiticaPublicada && [htmlPublicado, privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada]
@@ -2098,7 +2105,8 @@ const fechaRadarSEO = html.match(/"dateModified":"(\d{4}-\d{2}-\d{2})"/)?.[1];
 const fechaPrivacidadSEO = privacidad.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
 const fechaTransparenciaSEO = transparenciaComercial.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
 prueba('sitemap conserva por ruta las fechas reales del radar y de cada política',
-  fechasSitemap.size === 3 && Boolean(fechaRadarSEO && fechaPrivacidadSEO && fechaTransparenciaSEO) &&
+  [...fechasSitemap.keys()].filter(url => !url.startsWith(`${ORIGEN_PUBLICO}/academy/`)).length === 3 &&
+  Boolean(fechaRadarSEO && fechaPrivacidadSEO && fechaTransparenciaSEO) &&
   fechasSitemap.get(`${ORIGEN_PUBLICO}/`) === fechaRadarSEO &&
   fechasSitemap.get(`${ORIGEN_PUBLICO}/privacidad`) === fechaPrivacidadSEO &&
   fechasSitemap.get(`${ORIGEN_PUBLICO}/transparencia-comercial`) === fechaTransparenciaSEO &&
@@ -2112,7 +2120,9 @@ prueba('todo el SEO absoluto usa el origen canónico de Cloudflare',
   /<meta name="robots" content="noindex,nofollow">/.test(paraEmpresas) &&
   !/rwadar\.netlify\.app/.test(html) &&
   lee('robots.txt').includes(`${ORIGEN_PUBLICO}/sitemap.xml`) &&
-  (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev/g) || []).length === 3 &&
+  (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev/g) || []).length ===
+    (lee('sitemap.xml').match(/<loc>/g) || []).length &&
+  (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev\/(?!academy\/)/g) || []).length === 3 &&
   validarOrigenPublicable(sitio) === ORIGEN_PUBLICO);
 prueba('el auditor compara lo publicado con el árbol adelgazado y rechaza analítica inyectada',
   /path\.join\(PUBLICADO, 'index\.html'\)/.test(arrancador) &&
@@ -2231,6 +2241,134 @@ try {
   fs.rmSync(intruso, { force:true });
 }
 
+console.log('\n=== RWADAR ACADEMY ===');
+{
+  const academyMod = require('./rwadar-academy.js');
+  const { PAGINAS_ACADEMY } = require('./rwadar-publicacion-segura.js');
+  const academy = academyMod.cargarAcademy();
+  const publicadasA = academy.lecciones.filter(l => l.estado === 'publicado');
+  const pendientesA = academy.lecciones.filter(l => l.estado !== 'publicado');
+  const paginaDe = slug => lee(`academy/${slug}.html`);
+  const indiceAcademy = lee('academy/index.html');
+  const sitemapAcademy = lee('sitemap.xml');
+  const avisoComun = academy.avisoComun.map(tramos => academyMod.textoPlano(tramos));
+  const textoDe = pagina => pagina.replace(/<[^>]+>/g, '').replace(/&quot;/g, '"').replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ');
+
+  prueba('las páginas de la Academy están generadas desde las lecciones y al día',
+    academyMod.comprobar(academy).length === 0);
+  prueba('las nueve lecciones se validan y la entrega fija 6 publicadas y 3 en revisión',
+    academy.lecciones.length === 9 && publicadasA.length === 6 &&
+    publicadasA.every(l => l.modulo <= 6) && pendientesA.every(l => l.estado === 'en_revision' && l.motivo));
+  prueba('el manifiesto publicable lista exactamente el índice y las lecciones publicadas',
+    JSON.stringify(academyMod.paginasAcademy(academy)) === JSON.stringify([...PAGINAS_ACADEMY]) &&
+    fs.readdirSync(path.join(sitio, 'academy')).length === publicadasA.length + 1 &&
+    pendientesA.every(l => !fs.existsSync(path.join(sitio, 'academy', `${l.slug}.html`))));
+  for (const l of publicadasA) {
+    const pagina = paginaDe(l.slug);
+    const canonica = `https://rwadar.pages.dev/academy/${l.slug}`;
+    const ld = JSON.parse(pagina.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    const articulo = ld['@graph'].find(x => x['@type'] === 'Article');
+    prueba(`lección ${l.modulo}: CSP estricta, URL canónica y datos estructurados Article`,
+      !/<style\b|\sstyle\s*=|\son[a-z]+\s*=/i.test(pagina) &&
+      [...pagina.matchAll(/<script\b([^>]*)>/gi)].every(m => /\bsrc=|application\/ld\+json/.test(m[1])) &&
+      pagina.includes(`<link rel="canonical" href="${canonica}">`) &&
+      pagina.includes(`<title>${l.titulo} · RWAdar Academy</title>`) &&
+      articulo.datePublished === l.fechaPublicacion && articulo.dateModified === l.revisionLegal &&
+      pagina.includes('/assets/academy-20261002.css') && pagina.includes('/assets/academy-20261002.js') &&
+      pagina.includes(rutaAnalitica));
+    prueba(`lección ${l.modulo}: minutos corregidos, TL;DR destacado antes del cuerpo y revisión legal visible`,
+      pagina.includes(`<li><span>Lectura</span>${l.minutos} min</li>`) &&
+      (pagina.match(/<section class="ac-tldr"[\s\S]*?<\/section>/)?.[0].match(/<li>/g) || []).length === 3 &&
+      pagina.indexOf('class="ac-tldr"') < pagina.indexOf('class="ac-articulo"') &&
+      pagina.includes(`<li><span>Última revisión legal</span><time datetime="${l.revisionLegal}">`) &&
+      /<p class="ac-revision">Contenido revisado el <time datetime="\d{4}-\d{2}-\d{2}">[^<]+<\/time>\. Jurisdicción de referencia: España \/ Unión Europea\.<\/p>/.test(pagina));
+    const preguntas = [...pagina.matchAll(/data-academy-pregunta data-correcta="(\d)"[\s\S]*?<\/details>/g)];
+    prueba(`lección ${l.modulo}: test de ${l.quiz.length} preguntas con explicación siempre disponible`,
+      preguntas.length === l.quiz.length && preguntas.every((m, k) =>
+        Number(m[1]) === l.quiz[k].correcta && /Respuesta correcta: [A-D]\./.test(m[0]) &&
+        (m[0].match(/type="radio"/g) || []).length === l.quiz[k].opciones.length) &&
+      pagina.includes('data-academy-resumen') && pagina.includes('href="#siguiente-paso"'));
+    const texto = textoDe(pagina);
+    prueba(`lección ${l.modulo}: aviso legal de una sola fuente${l.avisoReforzado ? ' y variante reforzada' : ''}`,
+      avisoComun.every(parrafo => texto.split(parrafo).length === 2) &&
+      pagina.includes('ac-legal-reforzado') === l.avisoReforzado &&
+      fs.readFileSync(path.join(raiz, 'rwadar-academy', 'lecciones',
+        `${String(l.modulo).padStart(2, '0')}-${l.slug}.md`), 'utf8').includes('## Aviso importante'));
+    const anclasPropias = new Set([...pagina.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
+    const anclasPortada = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
+    const enlaces = [...pagina.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(m => m[1]);
+    const roto = enlaces.find(href => {
+      if (href.startsWith('#')) return !anclasPropias.has(href.slice(1));
+      if (href.startsWith('mailto:')) return href !== 'mailto:RWAdar@protonmail.com';
+      if (['/', '/privacidad', '/transparencia-comercial', '/academy/'].includes(href)) return false;
+      const ancla = href.match(/^\/#([a-z]+)$/);
+      if (ancla) return !anclasPortada.has(ancla[1]);
+      const otra = href.match(/^\/academy\/(#[a-z]+|[a-z0-9-]+)$/);
+      if (otra && otra[1].startsWith('#')) return !academy.niveles.some(n => '#' + n.id === otra[1]);
+      if (otra) return !fs.existsSync(path.join(sitio, 'academy', `${otra[1]}.html`));
+      return true;
+    });
+    prueba(`lección ${l.modulo}: termina en su CTA y ningún enlace lleva a un 404`,
+      roto === undefined && pagina.includes('id="siguiente-paso"') && /class="ac-(?:accion|enlinea)[ "]/.test(
+        pagina.match(/<section class="ac-siguiente"[\s\S]*?<\/section>/)[0]));
+  }
+  const leccion1 = paginaDe('que-significa-tokenizar-un-activo');
+  prueba('los dos tipos de recuadro (idea y aviso) se distinguen en el marcado',
+    leccion1.includes('ac-recuadro ac-recuadro-idea') && leccion1.includes('ac-recuadro ac-recuadro-aviso'));
+  prueba('un destino que aún no existe se muestra como «Próximamente», nunca como enlace',
+    /<span class="ac-accion ac-accion-pronto">Evaluador de Viabilidad <small>Próximamente<\/small><\/span>/.test(leccion1) &&
+    !/href="[^"]*evaluador/i.test(publicadasA.map(l => paginaDe(l.slug)).join('')));
+  prueba('un destino parcial enlaza al radar y explica qué falta',
+    paginaDe('quien-es-quien-actores-tokenizacion').includes('todavía no filtra por tipo de proveedor') &&
+    paginaDe('marco-legal-cuando-tu-token-es-un-valor').includes('Todavía no hay un filtro por supervisión'));
+  prueba('las tablas tienen desplazamiento propio y cabeceras accesibles',
+    (paginaDe('es-tu-activo-tokenizable').match(/<div class="ac-tabla ac-tabla-c\d" role="region" tabindex="0"/g) || []).length >= 1 &&
+    /\.ac-tabla\{overflow-x:auto/.test(lee('assets/academy-20261002.css')) &&
+    /body\{[^}]*overflow-x:hidden/.test(lee('assets/academy-20261002.css')));
+  prueba('la lección 6 enlaza la 7 como «Próximamente» sin enlace a una página inexistente',
+    paginaDe('liquidez-como-evaluarla').includes('ac-vecina-pronto') &&
+    !paginaDe('liquidez-como-evaluarla').includes('href="/academy/como-leer-el-radar"'));
+  prueba('el índice muestra los tres niveles, el progreso local y las pendientes como «Próximamente»',
+    academy.niveles.every(n => indiceAcademy.includes(`<section class="ac-nivel" id="${n.id}"`)) &&
+    indiceAcademy.includes('<progress max="6" value="0"') &&
+    (indiceAcademy.match(/ac-tarjeta ac-tarjeta-pronto/g) || []).length === pendientesA.length &&
+    publicadasA.every(l => indiceAcademy.includes(`href="/academy/${l.slug}" data-academy-tarjeta="${l.slug}"`)) &&
+    indiceAcademy.includes('<link rel="canonical" href="https://rwadar.pages.dev/academy/">'));
+  prueba('la portada enlaza la Academy desde la cabecera, el pie y el bloque de lecciones',
+    html.includes('<a class="hdr-link" href="/academy/">Academy</a>') &&
+    html.includes('<a href="/academy/">RWAdar Academy</a>') &&
+    publicadasA.every(l => html.includes(`<a href="/academy/${l.slug}">`)) &&
+    pendientesA.every(l => !html.includes(`href="/academy/${l.slug}"`)) &&
+    html.includes('<p id="comparador">'));
+  prueba('el sitemap incluye solo la Academy publicada',
+    sitemapAcademy.includes('<loc>https://rwadar.pages.dev/academy/</loc>') &&
+    publicadasA.every(l => sitemapAcademy.includes(`<loc>https://rwadar.pages.dev/academy/${l.slug}</loc>`)) &&
+    pendientesA.every(l => !sitemapAcademy.includes(l.slug)));
+  prueba('las URL limpias de la Academy no se quedan en caché del CDN',
+    /\/academy\/\*\n\s+Cache-Control: public, max-age=0, must-revalidate/.test(headers));
+  const codigoAcademy = lee('assets/academy-20261002.js');
+  prueba('el progreso vive solo en localStorage, protegido y sin innerHTML ni red',
+    /const CLAVE = 'rwadar\.academy\.v1'/.test(codigoAcademy) &&
+    (codigoAcademy.match(/try \{/g) || []).length >= 3 &&
+    !/innerHTML|fetch\(|XMLHttpRequest|sendBeacon|document\.cookie/.test(codigoAcademy));
+  prueba('el publicado reescribe los assets de la Academy con su huella',
+    PAGINAS_ACADEMY.every(nombre => {
+      const salida = fs.readFileSync(path.join(publicado, ...nombre.split('/')), 'utf8');
+      return /\/assets\/academy-20261002\.[0-9a-f]{12}\.css/.test(salida) &&
+        /\/assets\/academy-20261002\.[0-9a-f]{12}\.js/.test(salida) && !salida.includes('/assets/academy-20261002.css');
+    }));
+  let rechazoMarca = null, rechazoBoton = null;
+  try { academyMod.parsearInline('texto **sin cerrar', 'prueba', {}); } catch (e) { rechazoMarca = e; }
+  try { academyMod.parsearInline('**[Botón inventado →]**', 'prueba', {}); } catch (e) { rechazoBoton = e; }
+  prueba('el generador se para ante negritas sin cerrar o botones sin destino',
+    rechazoMarca instanceof academyMod.ErrorAcademy && rechazoBoton instanceof academyMod.ErrorAcademy &&
+    /sin destino conocido/.test(rechazoBoton.message));
+  prueba('el publicador se niega a construir si la Academy no está al día',
+    /comprobarAcademy\(\)/.test(publicador) && /ACADEMY BLOQUEADA/.test(publicador) &&
+    /\.\.\.PAGINAS_ACADEMY\]/.test(publicador));
+}
+
 console.log('\n=== PRUEBA HTTP LOCAL ===');
 const puerto = 43173;
 const proceso = spawn(process.execPath, ['rwadar-servir.js',`--puerto=${puerto}`], { cwd:raiz, stdio:['ignore','pipe','pipe'] });
@@ -2314,6 +2452,17 @@ try {
     method:'POST',headers:{Origin:`http://127.0.0.1:${puerto}`,'Content-Type':'image/png'},body:new Uint8Array([1,2,3]),
   });
   prueba('POST /guardar está desactivado por defecto', post.status===403);
+  const academySinBarra = await fetch(`http://127.0.0.1:${puerto}/academy`, { redirect:'manual' });
+  const academyIndice = await fetch(`http://127.0.0.1:${puerto}/academy/`);
+  const academyLeccion = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo`);
+  const academyHtml = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo.html`, { redirect:'manual' });
+  const academyPendiente = await fetch(`http://127.0.0.1:${puerto}/academy/como-leer-el-radar`);
+  prueba('las URL limpias de la Academy funcionan localmente como en Cloudflare',
+    academySinBarra.status===308 && academySinBarra.headers.get('location')==='/academy/' &&
+    academyIndice.status===200 && (await academyIndice.text()).includes('data-academy-indice-pagina') &&
+    academyLeccion.status===200 && (await academyLeccion.text()).includes('data-academy-leccion="que-significa-tokenizar-un-activo"') &&
+    academyHtml.status===308 && academyHtml.headers.get('location')==='/academy/que-significa-tokenizar-un-activo' &&
+    academyPendiente.status===404);
 } finally {
   proceso.kill();
 }

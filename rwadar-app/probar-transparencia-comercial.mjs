@@ -81,7 +81,8 @@ paso('la transparencia es descubrible desde la portada',
 paso('la página forma parte del árbol local publicable y de sus validaciones',
   manifiesto.includes("'transparencia-comercial.html'")
   && manifiesto.includes('canonical de transparencia-comercial.html')
-  && publicador.match(/transparencia-comercial\.html/g)?.length >= 3);
+  && /const PAGINAS_HTML = \[[^\]]*'transparencia-comercial\.html'/.test(publicador)
+  && (publicador.match(/PAGINAS_HTML/g)?.length || 0) >= 4);
 
 paso('la ruta tiene canonical, sitemap, redirección, caché y soporte offline',
   pagina.includes('href="https://rwadar.pages.dev/transparencia-comercial"')

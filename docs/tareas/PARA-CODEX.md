@@ -6,6 +6,72 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 2 de octubre de 2026 · Claude · RWAdar Academy en la web y en la app
+
+**Rama:** `claude/zealous-shannon-endwcn`, commit «feat(academy): …». No toca
+producción: ni web publicada, ni Supabase, ni EAS.
+
+Víctor pasó la entrega de Eric (`RWAdar_Academy_ENTREGA_WEB`): 9 lecciones en
+Markdown y una especificación. Está montada en la web y en la app.
+
+### Qué hay
+
+| Pieza | Dónde |
+|---|---|
+| Fuente única: las 9 lecciones tal cual, `academy.json` (qué se publica, niveles, destinos de los botones) y el aviso legal común | `rwadar-academy/` (léete su `LEEME.md`) |
+| Generador: valida las lecciones y escribe web + app; `--comprobar` no escribe | `rwadar-academy.js` |
+| Web: índice `/academy/` y una página por lección publicada (TL;DR, índice lateral, recuadros, test con explicación, siguiente paso, aviso legal, progreso en `localStorage`) | `rwadar-site/academy/`, `assets/academy-20261002.{css,js}` |
+| Portada: bloque de lecciones (entre `<!--academy:ini-->` y `<!--academy:fin-->`), enlace «Academy» en cabecera y pie, ancla `#comparador` | `rwadar-site/index.html` |
+| App: pantalla nativa (Más › RWAdar Academy y aviso en el radar), test, progreso en el dispositivo | `rwadar-movil/componentes/Academy.js`, `lib/academy-contenido.js` (generado), `lib/academy-progreso.js` |
+| Revisión del contenido y decisiones | `docs/academy/REVISION-CONTENIDO-2026-10-02.md` |
+
+**Publicadas:** lecciones 1–6. **Próximamente:** 7 (sus «cuatro criterios» no
+coinciden con el Método), 8 y 9 (calendario de Eric). Evaluador de Viabilidad
+y checklist del expediente: «Próximamente», nunca enlace roto.
+
+### Cambios en piezas existentes
+
+- `rwadar-publicacion-segura.js`: `PAGINAS_ACADEMY` (lista cerrada) dentro de
+  `ARCHIVOS_PUBLICABLES`, más los dos assets; `rwadar-academy` y
+  `rwadar-academy.js` añadidos a `RUTAS_CONTENIDO_APROBADO`.
+- `rwadar-publicar.js`: `PAGINAS_HTML` común (CSP estricta y assets con
+  huella también en la Academy) y bloqueo si la Academy no está al día o no
+  coincide con `PAGINAS_ACADEMY`.
+- `rwadar-servir.js`: URL limpias `/academy/…` como en Cloudflare.
+- `_headers` (`/academy/*` sin caché), analítica (mide `/academy/…` limpias),
+  `sitemap.xml` (solo lo publicado).
+- **`privacidad.html`**: dice que el progreso de la Academy se guarda en el
+  navegador o en el dispositivo y no se envía. Fecha de revisión → 2/10/2026.
+  En la app, «Borrar datos del dispositivo» también borra el progreso.
+- Pruebas antiguas ajustadas: la «videoteca» ya no existe, y dos pruebas de
+  `rwadar-app` contaban apariciones de nombres de página en el publicador.
+
+### Pruebas
+
+- `npm test` completo en verde: web 394 (48 nuevas de la Academy), app 101
+  (8 nuevas, una pinta las 6 lecciones con react-native-web) y todas las de
+  `rwadar-app`.
+- Chromium real, web en escritorio y móvil: sin desbordamiento horizontal,
+  test corrige y abre las explicaciones, «Marcar como leída» sobrevive a
+  recargar y se ve en el índice, sin errores de consola.
+- App exportada a web (copia aislada con datos locales, sin Supabase):
+  índice, lección, test, tabla con desplazamiento, aviso reforzado, botón al
+  radar y progreso tras recargar.
+
+### Pendiente
+
+1. **Víctor:** decidir con Eric lo de `REVISION-CONTENIDO-2026-10-02.md`
+   (criterios del Método y funciones que el texto promete).
+2. **Para publicar la web (con permiso de Víctor):** registrar la aprobación
+   en `estado.json` (la auditoría dirá que el contenido cambió), `--preview`,
+   comprobar `/academy/`, `--produccion`.
+3. **App:** entra en la próxima compilación; subir versión al compilar.
+4. Visto de paso y **no tocado**: en la PWA móvil, al abrir Academy y bajar,
+   la cabecera compacta solapa «RWAdar» con el título («RWAdarRWAdar
+   Acade…»). Ya pasaba antes de este cambio.
+
+---
+
 ## 1 de octubre de 2026 · Claude (2) · catálogo siempre disponible
 
 Víctor se quedó sin créditos de Codex y pidió a Claude que siguiera. Regla

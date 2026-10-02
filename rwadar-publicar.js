@@ -21,8 +21,10 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
+const { comprobar: comprobarAcademy, paginasAcademy } = require('./rwadar-academy');
 const {
   ARCHIVOS_PUBLICABLES,
+  PAGINAS_ACADEMY,
   PROYECTO_CLOUDFLARE,
   comprobarConfiguracionAuth,
   comprobarEstadoLegalPublicacion,
@@ -37,6 +39,10 @@ const {
 
 const DIR = path.join(__dirname, 'rwadar-site');
 const FILE = path.join(DIR, 'index.html');
+/* Todas las páginas HTML propias: pasan la misma CSP estricta y reciben los
+   nombres versionados de los assets. */
+const PAGINAS_HTML = ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html',
+  ...PAGINAS_ACADEMY];
 const SALIDA = path.join(__dirname, 'rwadar-publicado');
 const WRANGLER_VERSION = '4.125.0';
 const modos = ['--local', '--preview', '--produccion'].filter(x => process.argv.includes(x));
@@ -112,6 +118,20 @@ if (remoto) {
 /* El control se hace sobre archivos reales, no sobre Git. Debe ocurrir antes
    de sincronizar o de modificar el pre-render: un .env accidental convierte
    toda la ejecución en un no-op. */
+/* La Academy se genera desde rwadar-academy/. Si alguien cambió una lección
+   y no regeneró, o publicó una lección sin añadirla al manifiesto cerrado,
+   no se construye nada. */
+try {
+  const pendientes = comprobarAcademy();
+  if (pendientes.length) throw new Error(`no está al día (ejecuta node rwadar-academy.js): ${pendientes.join(', ')}`);
+  const generadas = paginasAcademy();
+  if (generadas.join('|') !== [...PAGINAS_ACADEMY].join('|')) {
+    throw new Error(`las lecciones publicadas (${generadas.join(', ')}) no coinciden con PAGINAS_ACADEMY de rwadar-publicacion-segura.js`);
+  }
+} catch (e) {
+  console.error('ACADEMY BLOQUEADA:', e.message);
+  process.exit(2);
+}
 try { validarArbolPublicable(DIR); }
 catch (e) { console.error('ARBOL PUBLICABLE BLOQUEADO:', e.message); process.exit(2); }
 try { validarOrigenPublicable(DIR); }
@@ -178,8 +198,8 @@ function validaMarcadoEstricto(nombre, contenido) {
 }
 
 try {
-  for (const nombre of ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html']) {
-    const archivo = path.join(DIR, nombre);
+  for (const nombre of PAGINAS_HTML) {
+    const archivo = path.join(DIR, ...nombre.split('/'));
     validaMarcadoEstricto(nombre, fs.readFileSync(archivo, 'utf8'));
   }
   const cabeceras = fs.readFileSync(path.join(DIR, '_headers'), 'utf8');
@@ -446,8 +466,8 @@ function construirSalida() {
       for (const [antes, despues] of referencias) salida = salida.split(antes).join(despues);
       return salida;
     };
-    for (const nombre of ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html', 'sw.js']) {
-      const archivo = path.join(temporal, nombre);
+    for (const nombre of [...PAGINAS_HTML, 'sw.js']) {
+      const archivo = path.join(temporal, ...nombre.split('/'));
       fs.writeFileSync(archivo, reescribirReferencias(fs.readFileSync(archivo, 'utf8')), 'utf8');
     }
 
@@ -477,8 +497,8 @@ function construirSalida() {
       workerAnterior.replace(/const VERSION = 'rwadar-v[^']+';/, `const VERSION = '${versionCache}';`),
       'utf8');
 
-    for (const nombre of ['index.html','privacidad.html','transparencia-comercial.html','para-empresas.html','404.html']) {
-      validaMarcadoEstricto(`salida/${nombre}`, fs.readFileSync(path.join(temporal, nombre), 'utf8'));
+    for (const nombre of PAGINAS_HTML) {
+      validaMarcadoEstricto(`salida/${nombre}`, fs.readFileSync(path.join(temporal, ...nombre.split('/')), 'utf8'));
     }
     validarArbolPublicable(temporal, salidaEsperada);
     fs.rmSync(SALIDA, { recursive: true, force: true });

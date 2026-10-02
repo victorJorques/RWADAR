@@ -28,6 +28,7 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
+| **RWAdar Academy** | Hecha en la rama, **sin publicar**. 9 lecciones de Eric en 3 niveles: las 6 primeras listas para salir, la 7, 8 y 9 como «Próximamente». Web en `/academy/` y app (Más › RWAdar Academy). Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
 
 **En pausa a propósito:** cuentas de usuario, opiniones, avisos por correo y
 avisos push. Las altas nuevas están cerradas. Los favoritos de la app se
@@ -39,6 +40,11 @@ dos fichas de prueba, pero nada conectado a la app.
 ---
 
 ## Lo que falta, por orden
+
+0. **Publicar RWAdar Academy** (cuando Víctor lo autorice): revisar el
+   contenido pendiente de Eric (los «cuatro criterios» no coinciden con el
+   Método y varias lecciones prometen funciones que aún no existen), registrar
+   la aprobación y publicar la web. En la app llega con la próxima compilación.
 
 1. **Renovar la revisión del catálogo** antes del 5 de octubre si se puede.
    Ya no es urgente: desde el 2 de octubre el «catálogo siempre disponible»
@@ -97,6 +103,7 @@ Cada herramienta firma sus commits con su propio nombre (ver
 | Carpeta | Qué hay |
 |---|---|
 | `rwadar-site/` | La web: lo que se edita |
+| `rwadar-academy/` | Las lecciones de la Academy en Markdown; `node rwadar-academy.js` genera la web y la app |
 | `rwadar-publicado/` | La web lista para subir. Se genera sola: no se edita |
 | `rwadar-app/` | Base de datos: migraciones, importadores y pruebas |
 | `rwadar-movil/` | App de Android e iPhone (Expo) |

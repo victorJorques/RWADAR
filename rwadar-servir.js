@@ -297,6 +297,19 @@ http.createServer((req, res) => {
     res.writeHead(301, { Location: '/para-empresas', 'Cache-Control': 'no-store' });
     return res.end();
   }
+  /* RWAdar Academy: /academy → /academy/ y /academy/<lección> → <lección>.html,
+     igual que Cloudflare Pages. */
+  if (p === '/academy') {
+    res.writeHead(308, { Location: '/academy/', 'Cache-Control': 'no-store' });
+    return res.end();
+  }
+  const leccionHtml = p.match(/^\/academy\/([a-z0-9]+(?:-[a-z0-9]+)*)\.html$/);
+  if (leccionHtml) {
+    res.writeHead(308, { Location: `/academy/${leccionHtml[1] === 'index' ? '' : leccionHtml[1]}`, 'Cache-Control': 'no-store' });
+    return res.end();
+  }
+  if (p === '/academy/') p = '/academy/index.html';
+  else if (/^\/academy\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p)) p += '.html';
   if (p === '/') return servirIndiceLocal(req, res);
   if (p === '/privacidad') p = '/privacidad.html';
   if (p === '/transparencia-comercial') p = '/transparencia-comercial.html';

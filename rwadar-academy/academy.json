@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "nota": "Configuración editorial de RWAdar Academy. Las lecciones viven en lecciones/*.md (fuente de verdad, tal como las entregó Eric). Aquí solo se decide qué se publica, cómo se agrupan y adónde llevan los botones. Después de cambiar algo: node rwadar-academy.js",
+  "niveles": [
+    {
+      "id": "principiante",
+      "nombre": "Principiante",
+      "lema": "Entender",
+      "pregunta": "¿Qué es esto y me afecta?"
+    },
+    {
+      "id": "intermedio",
+      "nombre": "Intermedio",
+      "lema": "Decidir",
+      "pregunta": "¿Me conviene y qué me va a costar?"
+    },
+    {
+      "id": "avanzado",
+      "nombre": "Avanzado",
+      "lema": "Ejecutar",
+      "pregunta": "¿Con quién y cómo lo ejecuto?"
+    }
+  ],
+  "lecciones": [
+    {
+      "slug": "que-significa-tokenizar-un-activo",
+      "estado": "publicado"
+    },
+    {
+      "slug": "quien-es-quien-actores-tokenizacion",
+      "estado": "publicado"
+    },
+    {
+      "slug": "es-tu-activo-tokenizable",
+      "estado": "publicado"
+    },
+    {
+      "slug": "marco-legal-cuando-tu-token-es-un-valor",
+      "estado": "publicado"
+    },
+    {
+      "slug": "cuanto-cuesta-tokenizar",
+      "estado": "publicado"
+    },
+    {
+      "slug": "liquidez-como-evaluarla",
+      "estado": "publicado"
+    },
+    {
+      "slug": "como-leer-el-radar",
+      "estado": "en_revision",
+      "motivo": "Sus cuatro criterios de verificación no coinciden con los del Método publicado. Eric pide no publicarla hasta unificarlos."
+    },
+    {
+      "slug": "expediente-de-tokenizacion",
+      "estado": "en_revision",
+      "motivo": "Fase 2 del calendario editorial (2 a 4 semanas después del lanzamiento)."
+    },
+    {
+      "slug": "despues-de-emitir-ciclo-de-vida",
+      "estado": "en_revision",
+      "motivo": "Fase 3 del calendario editorial."
+    }
+  ],
+  "destinos": {
+    "radar": {
+      "estado": "disponible",
+      "etiqueta": "Abrir el radar",
+      "web": "/#tool",
+      "app": "radar"
+    },
+    "radar-nivel-acceso": {
+      "estado": "disponible",
+      "etiqueta": "Abrir el radar y filtrar por acceso",
+      "web": "/#tool",
+      "app": "radar"
+    },
+    "radar-comparador": {
+      "estado": "disponible",
+      "etiqueta": "Abrir el comparador",
+      "web": "/#comparador",
+      "app": "web",
+      "notaApp": "El comparador está en la web: se abre en el navegador."
+    },
+    "radar-categorias": {
+      "estado": "parcial",
+      "etiqueta": "Abrir el radar",
+      "web": "/#tool",
+      "app": "radar",
+      "nota": "El radar todavía no filtra por tipo de proveedor (marketplace, emisor, infraestructura): se abre con sus filtros actuales."
+    },
+    "radar-capacidad-regulatoria": {
+      "estado": "parcial",
+      "etiqueta": "Abrir el radar",
+      "web": "/#tool",
+      "app": "radar",
+      "nota": "Todavía no hay un filtro por supervisión: cada ficha del radar indica su licencia o registro y la fuente."
+    },
+    "fuera-del-radar": {
+      "estado": "disponible",
+      "etiqueta": "Ver «Fuera del radar»",
+      "web": "/#fuera",
+      "app": "radar"
+    },
+    "evaluador-viabilidad": {
+      "estado": "proximamente",
+      "etiqueta": "Evaluador de Viabilidad"
+    },
+    "checklist-expediente": {
+      "estado": "proximamente",
+      "etiqueta": "Checklist del expediente"
+    }
+  },
+  "acciones": {
+    "Abrir el radar": "radar",
+    "Abrir el radar y filtrar por categoría": "radar-categorias",
+    "Abrir el radar y filtrar por capacidad regulatoria": "radar-capacidad-regulatoria",
+    "Abrir el radar y filtrar por nivel de acceso": "radar-nivel-acceso",
+    "Abrir el comparador del radar": "radar-comparador",
+    "Ir al comparador": "radar-comparador",
+    "Probar el Evaluador de Viabilidad": "evaluador-viabilidad",
+    "Descargar la checklist del expediente": "checklist-expediente",
+    "Continuar al Nivel Intermedio → Lección 4": "leccion:marco-legal-cuando-tu-token-es-un-valor"
+  }
+}
