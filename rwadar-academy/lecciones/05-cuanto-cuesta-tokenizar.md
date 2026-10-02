@@ -261,11 +261,11 @@ El discurso comercial se organiza alrededor del coste de llegar a emitir, porque
 >
 > Ahora tienes las siete partidas y el formato de solicitud. Lo que falta es a quién enviárselo.
 >
-> En el radar de RWAdar puedes **comparar hasta tres plataformas en paralelo**, filtrar por región, tipo de activo, nivel de acceso y categoría, y exportar los datos para llevarlos a tu propia hoja de comparación. También publicamos la sección *Fuera del radar*, con las plataformas que no superan nuestros cuatro criterios de verificación, su motivo y su fuente.
+> En el radar de RWAdar puedes **comparar hasta tres plataformas en paralelo**, filtrar por región, tipo de activo y nivel de acceso —el filtro por categoría llegará próximamente— y exportar los datos para llevarlos a tu propia hoja de comparación. También publicamos la sección *Fuera del radar*, con las plataformas que hemos descartado, su motivo y su fuente.
 >
 > **[Abrir el comparador del radar →]**
 >
-> Y recuerda la palanca que solo depende de ti: cuanto más preparado esté tu expediente, menos horas profesionales pagarás. El **Evaluador de Viabilidad** te dice exactamente qué te falta. Puedes completarlo de forma anónima, sin identificar tu activo ni facilitar datos personales.
+> Y recuerda la palanca que solo depende de ti: cuanto más preparado esté tu expediente, menos horas profesionales pagarás. Próximamente, el **Evaluador de Viabilidad** te dirá exactamente qué te falta. Podrás completarlo de forma anónima, sin identificar tu activo ni facilitar datos personales.
 >
 > **[Probar el Evaluador de Viabilidad →]**
 

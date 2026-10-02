@@ -5,7 +5,7 @@ la web (`/academy/`) y la app (Más › RWAdar Academy, y el aviso del radar).
 
 ```
 rwadar-academy/
-├── lecciones/NN-slug.md   ← las lecciones, tal como las entrega el equipo editorial
+├── lecciones/NN-slug.md   ← las lecciones (entrega de Eric con las correcciones del 2/10/2026)
 ├── academy.json           ← qué se publica, niveles y adónde lleva cada botón
 ├── aviso-legal.md         ← el aviso legal común (una sola fuente)
 └── LEEME.md               ← este archivo

@@ -41,10 +41,10 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-0. **Publicar RWAdar Academy** (cuando Víctor lo autorice): revisar el
-   contenido pendiente de Eric (los «cuatro criterios» no coinciden con el
-   Método y varias lecciones prometen funciones que aún no existen), registrar
-   la aprobación y publicar la web. En la app llega con la próxima compilación.
+0. **Publicar RWAdar Academy** (cuando Víctor lo autorice): el texto ya está
+   alineado con el Método y lo que falta sale como «próximamente». Queda
+   registrar la aprobación y publicar la web. En la app llega con la próxima
+   compilación.
 
 1. **Renovar la revisión del catálogo** antes del 5 de octubre si se puede.
    Ya no es urgente: desde el 2 de octubre el «catálogo siempre disponible»

@@ -240,11 +240,11 @@ No hay un mínimo universal, porque depende del coste real de cada estructura y 
 
 > ### Has terminado el Nivel Principiante. Ahora ponle números a tu caso.
 >
-> El **Evaluador de Viabilidad de RWAdar** recorre estas cinco condiciones contigo y te devuelve dos cosas: una **puntuación de madurez** y un **mapa de brechas** — qué te falta, en qué orden conviene resolverlo y qué documentación tendrás que reunir.
+> El **Evaluador de Viabilidad de RWAdar**, que llegará próximamente, recorrerá estas cinco condiciones contigo y te devolverá dos cosas: una **puntuación de madurez** y un **mapa de brechas** — qué te falta, en qué orden conviene resolverlo y qué documentación tendrás que reunir. Mientras tanto, el semáforo de esta lección te sirve para hacerlo por tu cuenta.
 >
-> No te dice si debes tokenizar ni qué proveedor elegir. Te dice **en qué punto estás**.
+> No te dirá si debes tokenizar ni qué proveedor elegir. Te dirá **en qué punto estás**.
 >
-> **Privacidad por diseño:** puedes completarlo de forma anónima. No necesitas identificar tu activo ni facilitar datos personales para ver el resultado. Si más adelante decides contactar con algún proveedor, se te pedirá un consentimiento específico para ese proveedor concreto, revocable en un clic.
+> **Privacidad por diseño:** podrás completarlo de forma anónima. No tendrás que identificar tu activo ni facilitar datos personales para ver el resultado. Si más adelante decides contactar con algún proveedor, se te pedirá un consentimiento específico para ese proveedor concreto, revocable en un clic.
 >
 > **[Probar el Evaluador de Viabilidad →]**
 >

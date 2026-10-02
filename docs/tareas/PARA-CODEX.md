@@ -60,8 +60,12 @@ y checklist del expediente: «Próximamente», nunca enlace roto.
 
 ### Pendiente
 
-1. **Víctor:** decidir con Eric lo de `REVISION-CONTENIDO-2026-10-02.md`
-   (criterios del Método y funciones que el texto promete).
+1. ~~Decidir con Eric los criterios y las funciones prometidas.~~ **Hecho**
+   por petición de Víctor (tercer commit): las lecciones usan los cuatro
+   criterios del Método y anuncian como «próximamente» el Evaluador, los
+   filtros por categoría y por supervisión y la checklist. Detalle en
+   `docs/academy/REVISION-CONTENIDO-2026-10-02.md`. La lección 7 ya se
+   podría publicar (solo espera al calendario).
 2. **Para publicar la web (con permiso de Víctor):** registrar la aprobación
    en `estado.json` (la auditoría dirá que el contenido cambió), `--preview`,
    comprobar `/academy/`, `--produccion`.

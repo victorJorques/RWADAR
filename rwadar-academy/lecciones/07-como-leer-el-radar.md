@@ -51,8 +51,8 @@ Sin juicio de valor, sin reuniones, sin hablar con nadie. Son cinco preguntas bi
 |---|---|---|
 | **Jurisdicción** | ¿Puede operar con emisores y ofertas dirigidas a mi país? | Filtro de región del radar |
 | **Tipo de activo** | ¿Cubre mi clase de activo, o solo se parece a la mía? | Filtro de tipo de activo |
-| **Nivel de acceso** | ¿Llega a los inversores a los que quiero dirigirme —minorista, acreditado, institucional, enterprise—? | Filtro de nivel de acceso |
-| **Rol** | ¿Qué pieza del mapa de la Lección 2 cubre: marketplace, emisor, infraestructura? | Filtro de categoría |
+| **Nivel de acceso** | ¿Llega a los inversores a los que quiero dirigirme —minorista, acreditado, institucional, empresas—? | Filtro de nivel de acceso |
+| **Rol** | ¿Qué pieza del mapa de la Lección 2 cubre: marketplace, emisor, infraestructura? | Ficha de la plataforma (el filtro de categoría llegará próximamente) |
 | **Tamaño** | ¿Trabaja con emisiones del orden de la mía? | Ficha de la plataforma |
 
 Al terminar este filtro deberías pasar de una lista larga a **tres o cuatro candidatos**. Si te quedas con quince, no has aplicado bien alguna dimensión. Si te quedas con cero, no es mala suerte: es información valiosa sobre tu propio proyecto, y probablemente signifique que hay que revisar el diseño de la oferta antes que la lista de proveedores.
@@ -61,19 +61,19 @@ Al terminar este filtro deberías pasar de una lista larga a **tres o cuatro can
 
 ### Filtro 2 · Los cuatro criterios de verificación, y qué significan de verdad
 
-El radar de RWAdar evalúa a cada plataforma frente a cuatro criterios. Merece la pena entender qué comprueba cada uno **y qué no comprueba**, porque de ahí sale el uso correcto de la herramienta.
+El radar de RWAdar documenta en cada ficha los mismos cuatro criterios que publica en su *Método*. Merece la pena entender qué comprueba cada uno **y qué no comprueba**, porque de ahí sale el uso correcto de la herramienta.
 
-**1 · Supervisión regulatoria.** Que la entidad esté sujeta a supervisión y cuente con las autorizaciones que su actividad requiere.
-*Lo que no comprueba:* que esa autorización cubra exactamente el servicio que tú vas a contratar. Verifícalo tú en el registro público del supervisor correspondiente.
+**1 · Entidad y permisos.** Qué entidad figura en la fuente y para qué actividad tiene licencia o registro.
+*Lo que no comprueba:* que esa autorización cubra exactamente el servicio que tú vas a contratar. Un registro, un folleto o un proveedor tecnológico no equivalen a una licencia universal. Verifícalo tú en el registro público del supervisor correspondiente.
 
-**2 · Operativa verificable.** Que existan emisiones y operaciones reales y comprobables, no solo anunciadas.
-*Lo que no comprueba:* que esas emisiones se parezcan a la tuya en activo, tamaño o jurisdicción.
+**2 · Actividad y fecha.** Qué actividad se pudo observar y en qué fecha.
+*Lo que no comprueba:* que acepte inversiones hoy, ni que sus emisiones se parezcan a la tuya en activo, tamaño o jurisdicción.
 
-**3 · Ausencia de crisis activas.** Que no haya en curso procedimientos, suspensiones o incidencias públicas relevantes.
-*Lo que no comprueba:* solvencia futura. Es una fotografía, no una previsión.
+**3 · Acceso y condiciones.** Para qué jurisdicción, qué tipo de cliente y qué requisitos publica cada producto. Si no se confirma el acceso desde España, la ficha lo indica como pendiente.
+*Lo que no comprueba:* que tú cumplas esos requisitos ni las condiciones que te ofrecerán a ti.
 
-**4 · Trayectoria.** Que exista un historial contrastable de actividad en el tiempo.
-*Lo que no comprueba:* calidad del servicio ni encaje con tu proyecto.
+**4 · Riesgos y alertas.** Advertencias documentadas y límites de la propia revisión.
+*Lo que no comprueba:* solvencia, seguridad ni liquidez futuras. No detectar una incidencia no las garantiza: es una fotografía, no una previsión.
 
 > **Atención — lo más importante de esta lección**
 > Que una plataforma figure en el radar **no es un aval, ni una recomendación, ni una garantía de desempeño**. Significa exactamente esto: *en la fecha de verificación indicada, no se identificaron motivos conocidos para excluirla*.
@@ -134,7 +134,7 @@ Tres reglas, y son suficientes:
 
 Puede sonar contraintuitivo, pero es el mejor consejo de esta lección.
 
-RWAdar publica también las plataformas que **no** superan los cuatro criterios, con el motivo concreto y la fuente. Leer esos casos primero te enseña más que cualquier lista de aprobados, porque te muestra **cómo se manifiestan los problemas**: qué aspecto tiene una operativa que no se puede verificar, cómo se ve una crisis en curso, qué señales precedieron a cada exclusión.
+RWAdar publica también las plataformas que **ha descartado**, con el motivo concreto y la fuente. Leer esos casos primero te enseña más que cualquier lista de aprobados, porque te muestra **cómo se manifiestan los problemas**: qué aspecto tiene una operativa que no se puede verificar, cómo se ve una crisis en curso, qué señales precedieron a cada exclusión.
 
 Cuando después vuelvas al radar, ya no estarás leyendo fichas: estarás buscando patrones. Y esa es exactamente la competencia que esta Academy pretende darte.
 
@@ -189,7 +189,7 @@ La compatibilidad es binaria y se resuelve sin hablar con nadie: jurisdicción, 
 
 ---
 
-**2. Una plataforma figura en el radar de RWAdar y ha superado los cuatro criterios de verificación. ¿Qué puedes concluir?**
+**2. Una plataforma figura en el radar de RWAdar con sus cuatro criterios documentados. ¿Qué puedes concluir?**
 
 - A) Que RWAdar la recomienda y responde de su desempeño
 - B) Que no es necesario realizar comprobaciones adicionales por tu cuenta
@@ -227,7 +227,7 @@ Las autorizaciones se conceden a personas jurídicas determinadas, no a marcas n
 >
 > **Empieza por *Fuera del radar*.** Lee los casos excluidos, su motivo y su fuente: aprenderás a reconocer patrones antes de mirar a ningún candidato.
 >
-> **Después aplica el filtro 1** en el radar —región, tipo de activo, nivel de acceso y categoría— hasta quedarte con tres o cuatro nombres.
+> **Después aplica el filtro 1** en el radar —región, tipo de activo y nivel de acceso; el filtro por categoría llegará próximamente— hasta quedarte con tres o cuatro nombres.
 >
 > **Y compara esos tres en paralelo**, con el comparador y la exportación de datos como base de tu propia hoja.
 >
@@ -235,7 +235,7 @@ Las autorizaciones se conceden a personas jurídicas determinadas, no a marcas n
 >
 > Recuerda: figurar en el radar significa que en la fecha indicada no se identificaron motivos conocidos de exclusión. La decisión, y la debida diligencia, siguen siendo tuyas.
 >
-> ¿Aún no has diagnosticado tu activo? El **Evaluador de Viabilidad** te dice en qué punto estás y qué te falta. Puedes completarlo de forma anónima, sin identificar tu activo ni facilitar datos personales.
+> ¿Aún no has diagnosticado tu activo? Próximamente, el **Evaluador de Viabilidad** te dirá en qué punto estás y qué te falta. Podrás completarlo de forma anónima, sin identificar tu activo ni facilitar datos personales.
 >
 > **[Probar el Evaluador de Viabilidad →]**
 

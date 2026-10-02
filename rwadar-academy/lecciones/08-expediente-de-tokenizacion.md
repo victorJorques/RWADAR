@@ -12,7 +12,7 @@ quiz: true
 cta: evaluador-viabilidad
 aviso_reforzado: false
 leccion_anterior: como-leer-el-radar
-leccion_siguiente: despues-de-emitir
+leccion_siguiente: despues-de-emitir-ciclo-de-vida
 ---
 
 ## El expediente de tokenización: los doce documentos que te van a pedir
@@ -175,13 +175,13 @@ Y a diferencia del resto del expediente, no se arregla ni con plazo ni con presu
 >
 > **Capa 3 — Proveedor seleccionado:** expediente completo, en sala de datos, con acuerdo de confidencialidad y contrato de tratamiento de datos firmados.
 >
-> Enviar los doce documentos a cinco proveedores en la primera semana significa entregar la radiografía completa de tu patrimonio —y la de tus socios— a cuatro empresas con las que nunca vas a trabajar. Es exactamente el mismo principio de dos capas con el que está diseñado el Evaluador de Viabilidad de RWAdar: primero anónimo, después identificado, y solo con consentimiento específico para cada destinatario.
+> Enviar los doce documentos a cinco proveedores en la primera semana significa entregar la radiografía completa de tu patrimonio —y la de tus socios— a cuatro empresas con las que nunca vas a trabajar. Es exactamente el mismo principio de dos capas con el que estamos diseñando el Evaluador de Viabilidad de RWAdar, que llegará próximamente: primero anónimo, después identificado, y solo con consentimiento específico para cada destinatario.
 
 ---
 
 ### Tu checklist descargable
 
-Los doce documentos, con sus cuatro bloques, la columna de estado, la de fecha de caducidad y la de responsable de obtenerlo.
+Próximamente podrás descargar los doce documentos, con sus cuatro bloques, la columna de estado, la de fecha de caducidad y la de responsable de obtenerlo.
 
 **[Descargar la checklist del expediente →]**
 
@@ -260,11 +260,11 @@ En una primera toma de contacto, el proveedor solo necesita saber si tu caso ent
 
 > ### Convierte esta lección en tu plan de trabajo
 >
-> **[Descargar la checklist del expediente →]** — doce documentos, cuatro bloques, columnas de estado, caducidad y responsable.
+> **[Descargar la checklist del expediente →]** — llegará próximamente: doce documentos, cuatro bloques, columnas de estado, caducidad y responsable.
 >
-> Y si quieres saber **por dónde empezar**, el **Evaluador de Viabilidad de RWAdar** recorre las condiciones previas de tu activo y te devuelve un mapa de brechas ordenado por prioridad: qué falta, qué bloquea y en qué orden conviene resolverlo.
+> Y para saber **por dónde empezar**, el **Evaluador de Viabilidad de RWAdar**, que llegará próximamente, recorrerá las condiciones previas de tu activo y te devolverá un mapa de brechas ordenado por prioridad: qué falta, qué bloquea y en qué orden conviene resolverlo.
 >
-> **Privacidad por diseño, igual que la regla de las tres capas que acabas de leer:** puedes completarlo de forma anónima, sin identificar tu activo ni facilitar datos personales. Si más adelante decides contactar con algún proveedor, se te pedirá un consentimiento específico para ese proveedor concreto, revocable en un clic.
+> **Privacidad por diseño, igual que la regla de las tres capas que acabas de leer:** podrás completarlo de forma anónima, sin identificar tu activo ni facilitar datos personales. Si más adelante decides contactar con algún proveedor, se te pedirá un consentimiento específico para ese proveedor concreto, revocable en un clic.
 >
 > **[Probar el Evaluador de Viabilidad →]** · **[Abrir el radar →]**
 

@@ -2364,6 +2364,20 @@ console.log('\n=== RWADAR ACADEMY ===');
   prueba('el generador se para ante negritas sin cerrar o botones sin destino',
     rechazoMarca instanceof academyMod.ErrorAcademy && rechazoBoton instanceof academyMod.ErrorAcademy &&
     /sin destino conocido/.test(rechazoBoton.message));
+  const textosLecciones = fs.readdirSync(path.join(raiz, 'rwadar-academy', 'lecciones'))
+    .map(n => fs.readFileSync(path.join(raiz, 'rwadar-academy', 'lecciones', n), 'utf8'));
+  const parrafosLecciones = textosLecciones.flatMap(t => t.split(/\n\s*>?\s*\n/))
+    .map(p => p.replace(/^>\s?/gm, '').replace(/\*\*\[[^\]]+\]\*\*/g, '').replace(/[*_]/g, '').replace(/\s+/g, ' ').trim());
+  const criteriosMetodo = ['Entidad y permisos', 'Actividad y fecha', 'Acceso y condiciones', 'Riesgos y alertas'];
+  prueba('los cuatro criterios de las lecciones son los mismos que publica el Método',
+    criteriosMetodo.every(c => html.includes(`<h3>${c}</h3>`)) &&
+    criteriosMetodo.every((c, k) => textosLecciones.some(t => t.includes(`**${k + 1} · ${c}.**`))) &&
+    !textosLecciones.some(t => /supervisión regulatoria\*\*\.|Operativa verificable|Ausencia de crisis activas|\*\*4 · Trayectoria|no superan (?:nuestros|los) (?:cuatro )?criterios|enterprise/i.test(t)));
+  const sinProximamente = parrafosLecciones.filter(p =>
+    /Evaluador de Viabilidad|checklist del expediente|filtrar (?:a los proveedores )?por categoría|filtro por (?:categoría|capacidad regulatoria)/i.test(p) &&
+    !/próximamente/i.test(p));
+  prueba('toda función que aún no existe se anuncia como «próximamente» en el texto',
+    sinProximamente.length === 0);
   const cssPortada = lee('assets/rwadar-20260820.css');
   prueba('la cabecera compacta móvil no monta el título sobre la marca',
     /\.movil-cabecera\{display:grid;grid-template-columns:minmax\(max-content,1fr\) minmax\(0,auto\) minmax\(max-content,1fr\);\s*column-gap:10px/.test(cssPortada) &&

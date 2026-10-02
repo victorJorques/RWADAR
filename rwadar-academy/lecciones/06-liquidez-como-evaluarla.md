@@ -156,7 +156,7 @@ La iliquidez solo se convierte en problema cuando se ha vendido lo contrario. Un
 
 Has terminado el **Nivel Intermedio**. Sabes qué régimen te aplica, cuánto cuesta el proceso y qué esperar razonablemente de la liquidez.
 
-El **Nivel Avanzado** es el de la ejecución. En la **Lección 7** aprenderás a leer el radar: cómo aplicar a tu caso concreto los cuatro criterios de verificación de RWAdar, qué comparar entre plataformas y cómo descartar candidatos por incompatibilidad objetiva antes de perder una sola reunión.
+El **Nivel Avanzado** es el de la ejecución. En la **Lección 7** aprenderás a leer el radar: cómo leer en tu caso concreto los cuatro criterios que RWAdar documenta en cada ficha, qué comparar entre plataformas y cómo descartar candidatos por incompatibilidad objetiva antes de perder una sola reunión.
 
 ---
 
@@ -229,13 +229,13 @@ La tecnología no crea una vía de negociación legalmente válida —eso lo det
 >
 > Ya tienes las nueve preguntas. Llévalas a cada conversación y compara las respuestas, no las presentaciones.
 >
-> En el radar de RWAdar puedes filtrar por **nivel de acceso** —minorista, acreditado, institucional, enterprise— y por región y tipo de activo, para ver a qué inversores llega realmente cada plataforma. Ese dato es el que más se aproxima a la profundidad potencial de su mercado.
+> En el radar de RWAdar puedes filtrar por **nivel de acceso** —minorista, acreditado, institucional, empresas— y por región y tipo de activo, para ver a qué inversores llega realmente cada plataforma. Ese dato es el que más se aproxima a la profundidad potencial de su mercado.
 >
-> Consulta también **Fuera del radar**: uno de nuestros cuatro criterios de verificación es la ausencia de crisis activas, y publicamos con motivo y fuente las plataformas que no lo superan.
+> Consulta también **Fuera del radar**: uno de los cuatro criterios que documentamos en cada ficha es **riesgos y alertas**, y publicamos con motivo y fuente las plataformas que hemos descartado.
 >
 > **[Abrir el radar y filtrar por nivel de acceso →]**
 >
-> ¿Aún no has diagnosticado tu activo? El **Evaluador de Viabilidad** te dice en qué punto estás y qué te falta. Puedes completarlo de forma anónima, sin identificar tu activo ni facilitar datos personales.
+> ¿Aún no has diagnosticado tu activo? Próximamente, el **Evaluador de Viabilidad** te dirá en qué punto estás y qué te falta. Podrás completarlo de forma anónima, sin identificar tu activo ni facilitar datos personales.
 >
 > **[Probar el Evaluador de Viabilidad →]**
 

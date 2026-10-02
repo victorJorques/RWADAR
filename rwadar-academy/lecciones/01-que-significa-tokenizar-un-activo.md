@@ -12,7 +12,7 @@ quiz: true
 cta: evaluador-viabilidad
 aviso_reforzado: false
 leccion_anterior: 
-leccion_siguiente: 
+leccion_siguiente: quien-es-quien-actores-tokenizacion
 ---
 
 ## Tokenizar no es «meter tu activo en blockchain»: qué significa de verdad
@@ -183,13 +183,13 @@ La calificación de lo que emites depende de qué derecho representa, no de con 
 
 > ### ¿Tu activo está preparado?
 >
-> Antes de hablar con ningún proveedor, comprueba en qué punto estás. El **Evaluador de Viabilidad de RWAdar** te devuelve una puntuación de madurez y el mapa de lo que te falta —documentación, estructura, valoración— en unos minutos.
+> Antes de hablar con ningún proveedor, conviene saber en qué punto estás. Para eso estamos preparando el **Evaluador de Viabilidad de RWAdar**, que llegará próximamente: te devolverá una puntuación de madurez y el mapa de lo que te falta —documentación, estructura, valoración— en unos minutos.
 >
-> **Puedes completarlo de forma anónima:** no necesitas identificar tu activo ni facilitar datos personales para ver el resultado. Si más adelante decides contactar con un proveedor, se te pedirá un consentimiento específico para ese proveedor concreto, y podrás revocarlo cuando quieras.
+> **Podrás completarlo de forma anónima:** no tendrás que identificar tu activo ni facilitar datos personales para ver el resultado. Si más adelante decides contactar con un proveedor, se te pedirá un consentimiento específico para ese proveedor concreto, y podrás revocarlo cuando quieras.
 >
 > **[Probar el Evaluador de Viabilidad →]**
 >
-> ¿Prefieres explorar primero? **[Abrir el radar →]** y filtra las plataformas verificadas por región, tipo de activo y nivel de acceso. También publicamos las que **no** superan nuestros criterios, con el motivo y la fuente.
+> Mientras tanto, puedes explorar: **[Abrir el radar →]** y filtra las plataformas por región, tipo de activo y nivel de acceso. También publicamos las que **hemos descartado**, con el motivo y la fuente.
 
 ---
 

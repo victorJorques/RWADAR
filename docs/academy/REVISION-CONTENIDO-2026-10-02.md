@@ -29,51 +29,46 @@ una coma, en [`../../rwadar-academy/lecciones/`](../../rwadar-academy/lecciones/
 | Aviso legal | El texto común vive en **un solo archivo** (`aviso-legal.md`). Cada lección conserva solo lo suyo; la 4, 7 y 9 con estilo de aviso reforzado. | `rwadar-academy/aviso-legal.md` |
 | Progreso | Sin cuentas: en el navegador (web) o en el dispositivo (app). La política de privacidad se ha actualizado para decirlo. | `rwadar-site/privacidad.html` |
 
-## Lo que tiene que resolver el equipo editorial (Eric / Víctor)
+## Correcciones hechas en las lecciones (2/10/2026, a petición de Víctor)
 
-1. **Los cuatro criterios del método no coinciden.** La lección 7 enseña
-   «supervisión regulatoria · operativa verificable · ausencia de crisis
-   activas · trayectoria»; la web publica «Entidad y permisos · Actividad y
-   fecha · Acceso y condiciones · Riesgos y alertas». Eric ya lo había visto.
-   **Ojo: no es solo la lección 7.** También aparecen los «cuatro criterios»
-   en lecciones ya publicables:
-   - Lección 2, siguiente paso: «las plataformas que no superan nuestros
-     cuatro criterios de verificación».
-   - Lección 4, siguiente paso: «el radar verifica a cada plataforma frente a
-     cuatro criterios, y el primero es precisamente la supervisión
-     regulatoria».
-   - Lección 6, «Qué viene ahora» y siguiente paso: «uno de nuestros cuatro
-     criterios de verificación es la ausencia de crisis activas».
-2. **Funciones del radar que el texto da por hechas y no existen:**
-   - Filtrar por **categoría de proveedor** (marketplace, emisor,
-     infraestructura): lecciones 2, 4, 5 y 7. El radar filtra por tipo de
-     activo, región, acceso y entrada.
-   - Filtrar por **supervisión o capacidad regulatoria**: lección 4.
-   - El **Evaluador de Viabilidad** se describe con detalle (puntuación de
-     madurez, mapa de brechas, capa anónima y consentimiento por proveedor):
-     lecciones 1 a 9. No existe.
-   - La **checklist descargable del expediente**: lección 8. No está en el
-     repositorio (el README habla de un PDF «ya terminado»: si existe, que nos
-     lo pasen).
-   - En la lección 6, el filtro de acceso se describe como «minorista,
-     acreditado, institucional, enterprise»; la web dice «Minorista,
-     Acreditado, Institucional, Empresas».
+El texto original de Eric está en el historial de Git (commit `5cecbb8`).
+Cambios aplicados en `rwadar-academy/lecciones/`:
 
-   La web y la app ya muestran «Próximamente» o una nota en cada botón, pero
-   el **texto** de las lecciones sigue describiendo esas funciones. Lo más
-   limpio es ajustar las frases o construir las funciones.
-3. **Dos enlaces mal en el frontmatter** (el generador los corrige usando el
-   orden de módulos y avisa cada vez):
-   - Lección 1: `leccion_siguiente` vacío (debería ser la lección 2).
-   - Lección 8: `leccion_siguiente: despues-de-emitir` (el slug real es
-     `despues-de-emitir-ciclo-de-vida`).
-4. **Variantes del aviso común.** Las lecciones traían el descargo común con
-   pequeñas diferencias (unas con «y verifica la información vigente en las
-   fuentes oficiales», otras sin ella; la 7 con una frase más corta). Se ha
-   unificado en la versión más completa. Si Eric prefiere otra redacción,
-   basta con cambiar `aviso-legal.md`.
-5. **Imágenes por nivel** para compartir en redes (la especificación pide
+1. **Los cuatro criterios ya coinciden con el Método publicado:** Entidad y
+   permisos · Actividad y fecha · Acceso y condiciones · Riesgos y alertas.
+   - Lección 7: el «Filtro 2» se ha reescrito con esos cuatro criterios, qué
+     comprueba cada uno y qué no, a partir del texto del Método de la web.
+     También su pregunta 2 del test.
+   - Lecciones 2, 4 y 6: ya no hablan de «supervisión regulatoria» ni de
+     «ausencia de crisis activas» como criterios; la 4 cita «entidad y
+     permisos» y la 6 «riesgos y alertas».
+   - «Fuera del radar» se describe como lo que es: plataformas **descartadas
+     con motivo y fuente** (lecciones 1, 2, 4, 5, 6, 7 y 9).
+2. **Lo que todavía no existe se anuncia como «próximamente»**, en futuro:
+   - Evaluador de Viabilidad (lecciones 1 a 9).
+   - Filtro por categoría de proveedor (lecciones 2, 4, 5 y 7) y por
+     capacidad regulatoria (lección 4).
+   - Checklist descargable del expediente (lección 8).
+   - Lección 9: el comparador ya no promete comparar reporting, coste
+     recurrente y plan de salida; dice que eso se pide por escrito.
+3. **Acceso:** «enterprise» → «empresas», como en el radar (lecciones 6 y 7).
+4. **Enlaces del frontmatter** corregidos (lecciones 1 y 8).
+
+Una prueba automática impide que vuelvan los criterios antiguos o que se
+mencione una función futura sin «próximamente».
+
+**Fecha de revisión legal:** no se ha cambiado. Los cambios son de producto
+(qué existe y qué no), no de contenido legal. Si Eric quiere, que lo
+confirme y se actualiza la fecha.
+
+## Lo que queda abierto
+
+1. **Lección 7:** ya no choca con el Método. Sale como «Próximamente» solo
+   por el calendario de Eric (fase 2). Publicarla es cambiar una línea.
+2. **Imágenes por nivel** para compartir en redes (la especificación pide
    tres). De momento todas usan la imagen general de RWAdar.
+3. **Variantes del aviso común**: unificadas en la versión más completa
+   (`aviso-legal.md`). Si Eric prefiere otra redacción, se cambia ahí.
 
 ## Fuera de esta entrega (como pide la especificación)
 
