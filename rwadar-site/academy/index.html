@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RWAdar Academy · Aprende a tokenizar sin promesas</title>
+<meta name="description" content="Lecciones gratuitas sobre tokenización de activos reales: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores. Con test y fecha de revisión legal.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://rwadar.pages.dev/academy/">
+<meta name="theme-color" content="#0B0A0A">
+<meta name="color-scheme" content="dark">
+<meta property="og:site_name" content="RWAdar">
+<meta property="og:locale" content="es_ES">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rwadar.pages.dev/academy/">
+<meta property="og:title" content="RWAdar Academy · Aprende a tokenizar sin promesas">
+<meta property="og:description" content="Lecciones gratuitas sobre tokenización de activos reales: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores. Con test y fecha de revisión legal.">
+<meta property="og:image" content="https://rwadar.pages.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>">
+<link rel="stylesheet" href="/assets/academy-20261002.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://rwadar.pages.dev/academy/#academy","name":"RWAdar Academy","description":"Lecciones gratuitas sobre tokenización de activos reales, en tres niveles, con test de autoevaluación y fecha de revisión legal.","url":"https://rwadar.pages.dev/academy/","inLanguage":"es-ES","isPartOf":{"@type":"WebSite","name":"RWAdar","url":"https://rwadar.pages.dev/"},"hasPart":[{"@type":"Article","headline":"Tokenizar no es «meter tu activo en blockchain»: qué significa de verdad","url":"https://rwadar.pages.dev/academy/que-significa-tokenizar-un-activo","datePublished":"2026-08-21","dateModified":"2026-10-02"},{"@type":"Article","headline":"Quién es quién: el mapa de actores de una tokenización","url":"https://rwadar.pages.dev/academy/quien-es-quien-actores-tokenizacion","datePublished":"2026-08-21","dateModified":"2026-10-02"},{"@type":"Article","headline":"¿Es tu activo tokenizable? Las cinco condiciones previas","url":"https://rwadar.pages.dev/academy/es-tu-activo-tokenizable","datePublished":"2026-08-21","dateModified":"2026-10-02"},{"@type":"Article","headline":"El marco legal sin abogados: cuándo tu token es un valor y cuándo no","url":"https://rwadar.pages.dev/academy/marco-legal-cuando-tu-token-es-un-valor","datePublished":"2026-08-21","dateModified":"2026-10-02"},{"@type":"Article","headline":"Cuánto cuesta y cuánto tarda: la anatomía de un presupuesto de tokenización","url":"https://rwadar.pages.dev/academy/cuanto-cuesta-tokenizar","datePublished":"2026-08-21","dateModified":"2026-10-02"},{"@type":"Article","headline":"La liquidez es la promesa más incumplida del sector: cómo evaluarla antes de creerla","url":"https://rwadar.pages.dev/academy/liquidez-como-evaluarla","datePublished":"2026-08-21","dateModified":"2026-10-02"},{"@type":"Article","headline":"Cómo leer el radar: comparar proveedores sin dejarte deslumbrar","url":"https://rwadar.pages.dev/academy/como-leer-el-radar","datePublished":"2026-08-21","dateModified":"2026-10-02"}]}
+</script>
+<script src="/assets/analitica-20260927.js" defer></script>
+<script src="/assets/academy-20261002.js" defer></script>
+</head>
+<body class="ac-cuerpo-pagina">
+<a class="ac-saltar" href="#contenido">Saltar al contenido</a>
+<header class="ac-cab">
+  <div class="ac-envoltura ac-cab-in">
+    <a class="ac-marca" href="/" aria-label="RWAdar, volver al radar">
+      <svg class="ac-marca-icono" width="32" height="32" viewBox="0 0 104 104" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" opacity=".45"><circle cx="52" cy="52" r="46"/><circle cx="52" cy="52" r="35"/><circle cx="52" cy="52" r="24"/></g>
+        <path d="M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z" fill="#25E39A" opacity=".38"/>
+        <path d="M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z" fill="#25E39A"/>
+        <path d="M65 52L58.5 63.26L45.5 63.26L39 52Z" fill="#0F7A57"/>
+      </svg>
+      <span class="ac-wm">RWA<span>dar</span></span><span class="ac-wm-sub">Academy</span>
+    </a>
+    <nav class="ac-cab-nav" aria-label="Secciones">
+      <a href="/academy/" aria-current="page">Lecciones</a>
+      <a href="/#tool">Radar</a>
+      <a href="/#metodo">Método</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido" class="ac-envoltura ac-portada" data-academy-indice-pagina data-academy-total="7">
+  <header class="ac-portada-cab">
+    <p class="ac-sobrelinea">RWAdar Academy</p>
+    <h1>Entiende la tokenización <em>antes</em> de decidir</h1>
+    <p class="ac-entradilla">9 lecciones en 3 niveles. Cada nivel responde a una sola pregunta. Se leen gratis y sin registro, empiezan con un resumen de 30 segundos y terminan con un test corto.</p>
+    <div class="ac-progreso" data-academy-progreso hidden>
+      <progress max="7" value="0" aria-labelledby="progresoTxt"></progress>
+      <p id="progresoTxt"><b data-academy-progreso-n>0</b> de 7 lecciones leídas en este navegador</p>
+    </div>
+    <ol class="ac-saltos" aria-label="Niveles">
+      <li><a href="#principiante"><span>Nivel 1</span>Principiante · Entender</a></li>
+      <li><a href="#intermedio"><span>Nivel 2</span>Intermedio · Decidir</a></li>
+      <li><a href="#avanzado"><span>Nivel 3</span>Avanzado · Ejecutar</a></li>
+    </ol>
+  </header>
+
+    <section class="ac-nivel" id="principiante" aria-labelledby="nivel-principiante-tit">
+      <header class="ac-nivel-cab">
+        <p class="ac-sobrelinea">Nivel 1 · Entender</p>
+        <h2 id="nivel-principiante-tit">Principiante</h2>
+        <p class="ac-nivel-pregunta">¿Qué es esto y me afecta?</p>
+        <p class="ac-nivel-datos">3 de 3 lecciones disponibles · 39 min de lectura</p>
+      </header>
+      <ol class="ac-tarjetas">
+        <li><a class="ac-tarjeta" href="/academy/que-significa-tokenizar-un-activo" data-academy-tarjeta="que-significa-tokenizar-un-activo">
+          <span class="ac-tarjeta-num" aria-hidden="true">01</span>
+          <span class="ac-tarjeta-meta">Lección 1 · Fundamentos · 10 min</span>
+          <span class="ac-tarjeta-tit">Tokenizar no es «meter tu activo en blockchain»: qué significa de verdad</span>
+          <span class="ac-tarjeta-resumen">El token no es tu activo. Es la anotación digital de un derecho sobre ese activo. Tu edificio sigue siendo tu edificio, con su escritura, sus cargas y sus impuestos.</span>
+          <span class="ac-tarjeta-estado" data-academy-leida hidden>✓ Leída</span>
+        </a></li>
+        <li><a class="ac-tarjeta" href="/academy/quien-es-quien-actores-tokenizacion" data-academy-tarjeta="quien-es-quien-actores-tokenizacion">
+          <span class="ac-tarjeta-num" aria-hidden="true">02</span>
+          <span class="ac-tarjeta-meta">Lección 2 · Fundamentos · 14 min</span>
+          <span class="ac-tarjeta-tit">Quién es quién: el mapa de actores de una tokenización</span>
+          <span class="ac-tarjeta-resumen">Una tokenización no la hace una empresa: la hacen seis. Cada rol tiene una función distinta, una responsabilidad distinta y, en varios casos, una licencia distinta.</span>
+          <span class="ac-tarjeta-estado" data-academy-leida hidden>✓ Leída</span>
+        </a></li>
+        <li><a class="ac-tarjeta" href="/academy/es-tu-activo-tokenizable" data-academy-tarjeta="es-tu-activo-tokenizable">
+          <span class="ac-tarjeta-num" aria-hidden="true">03</span>
+          <span class="ac-tarjeta-meta">Lección 3 · Diagnóstico · 15 min</span>
+          <span class="ac-tarjeta-tit">¿Es tu activo tokenizable? Las cinco condiciones previas</span>
+          <span class="ac-tarjeta-resumen">Casi cualquier activo es tokenizable en teoría. Muy pocos lo son la semana que lo decides. La diferencia está en cinco condiciones previas que se comprueban antes de hablar con nadie.</span>
+          <span class="ac-tarjeta-estado" data-academy-leida hidden>✓ Leída</span>
+        </a></li>
+      </ol>
+    </section>
+
+    <section class="ac-nivel" id="intermedio" aria-labelledby="nivel-intermedio-tit">
+      <header class="ac-nivel-cab">
+        <p class="ac-sobrelinea">Nivel 2 · Decidir</p>
+        <h2 id="nivel-intermedio-tit">Intermedio</h2>
+        <p class="ac-nivel-pregunta">¿Me conviene y qué me va a costar?</p>
+        <p class="ac-nivel-datos">3 de 3 lecciones disponibles · 44 min de lectura</p>
+      </header>
+      <ol class="ac-tarjetas">
+        <li><a class="ac-tarjeta" href="/academy/marco-legal-cuando-tu-token-es-un-valor" data-academy-tarjeta="marco-legal-cuando-tu-token-es-un-valor">
+          <span class="ac-tarjeta-num" aria-hidden="true">04</span>
+          <span class="ac-tarjeta-meta">Lección 4 · Marco regulatorio · 16 min</span>
+          <span class="ac-tarjeta-tit">El marco legal sin abogados: cuándo tu token es un valor y cuándo no</span>
+          <span class="ac-tarjeta-resumen">La calificación no depende de la tecnología ni del nombre que le pongas. Depende de una sola cosa: qué derecho estás vendiendo.</span>
+          <span class="ac-tarjeta-estado" data-academy-leida hidden>✓ Leída</span>
+        </a></li>
+        <li><a class="ac-tarjeta" href="/academy/cuanto-cuesta-tokenizar" data-academy-tarjeta="cuanto-cuesta-tokenizar">
+          <span class="ac-tarjeta-num" aria-hidden="true">05</span>
+          <span class="ac-tarjeta-meta">Lección 5 · Economía del proyecto · 15 min</span>
+          <span class="ac-tarjeta-tit">Cuánto cuesta y cuánto tarda: la anatomía de un presupuesto de tokenización</span>
+          <span class="ac-tarjeta-resumen">No existe una tarifa única, y quien te da un precio antes de saber qué emites y a quién no está presupuestando: está captando.</span>
+          <span class="ac-tarjeta-estado" data-academy-leida hidden>✓ Leída</span>
+        </a></li>
+        <li><a class="ac-tarjeta" href="/academy/liquidez-como-evaluarla" data-academy-tarjeta="liquidez-como-evaluarla">
+          <span class="ac-tarjeta-num" aria-hidden="true">06</span>
+          <span class="ac-tarjeta-meta">Lección 6 · Gestión de riesgos · 13 min</span>
+          <span class="ac-tarjeta-tit">La liquidez es la promesa más incumplida del sector: cómo evaluarla antes de creerla</span>
+          <span class="ac-tarjeta-resumen">Fraccionar un activo crea divisibilidad, no compradores. La liquidez es un hecho de mercado, no una propiedad técnica del token.</span>
+          <span class="ac-tarjeta-estado" data-academy-leida hidden>✓ Leída</span>
+        </a></li>
+      </ol>
+    </section>
+
+    <section class="ac-nivel" id="avanzado" aria-labelledby="nivel-avanzado-tit">
+      <header class="ac-nivel-cab">
+        <p class="ac-sobrelinea">Nivel 3 · Ejecutar</p>
+        <h2 id="nivel-avanzado-tit">Avanzado</h2>
+        <p class="ac-nivel-pregunta">¿Con quién y cómo lo ejecuto?</p>
+        <p class="ac-nivel-datos">1 de 3 lecciones disponibles · 13 min de lectura</p>
+      </header>
+      <ol class="ac-tarjetas">
+        <li><a class="ac-tarjeta" href="/academy/como-leer-el-radar" data-academy-tarjeta="como-leer-el-radar">
+          <span class="ac-tarjeta-num" aria-hidden="true">07</span>
+          <span class="ac-tarjeta-meta">Lección 7 · Selección de proveedor · 13 min</span>
+          <span class="ac-tarjeta-tit">Cómo leer el radar: comparar proveedores sin dejarte deslumbrar</span>
+          <span class="ac-tarjeta-resumen">Un directorio te dice quién existe y quién ha superado un filtro. No te dice quién te conviene. Eso depende del encaje con tu caso, y ese análisis es tuyo.</span>
+          <span class="ac-tarjeta-estado" data-academy-leida hidden>✓ Leída</span>
+        </a></li>
+        <li><div class="ac-tarjeta ac-tarjeta-pronto">
+          <span class="ac-tarjeta-num" aria-hidden="true">08</span>
+          <span class="ac-tarjeta-meta">Lección 8 · Preparación · 15 min</span>
+          <span class="ac-tarjeta-tit">El expediente de tokenización: los doce documentos que te van a pedir</span>
+          <span class="ac-tarjeta-resumen">El expediente es la única palanca de coste y plazo que está enteramente en tus manos. Cada semana que dedicas a prepararlo es una semana que no pagas a tarifa profesional.</span>
+          <span class="ac-tarjeta-estado">Próximamente</span>
+        </div></li>
+        <li><div class="ac-tarjeta ac-tarjeta-pronto">
+          <span class="ac-tarjeta-num" aria-hidden="true">09</span>
+          <span class="ac-tarjeta-meta">Lección 9 · Post-emisión · 17 min</span>
+          <span class="ac-tarjeta-tit">Después de emitir: gobierno, reporting, fiscalidad y ciclo de vida del token</span>
+          <span class="ac-tarjeta-resumen">Emitir es el principio, no el final. Una emisión viva genera obligaciones de gobierno, información, fiscalidad y mantenimiento que duran tanto como la emisión.</span>
+          <span class="ac-tarjeta-estado">Próximamente</span>
+        </div></li>
+      </ol>
+    </section>
+
+  <aside class="ac-extra" aria-labelledby="extraTit">
+    <span class="ac-extra-icono" aria-hidden="true">3D</span>
+    <div>
+      <h2 id="extraTit">¿Prefieres verlo antes de leerlo?</h2>
+      <p>La portada de RWAdar tiene una explicación interactiva en cuatro pasos: un activo que se parte, titulares que cambian y el edificio que sigue en su sitio.</p>
+      <a class="ac-accion" href="/#explain">Abrir la explicación 3D <span aria-hidden="true">→</span></a>
+    </div>
+  </aside>
+
+  <p class="ac-nota">Tu progreso (lecciones leídas y tests hechos) se guarda solo en este navegador: no hay cuentas y no se envía a RWAdar. Si cambias de dispositivo, empieza de cero.</p>
+
+  <section class="ac-legal" id="aviso-legal" aria-labelledby="avisoLegalTit">
+  <h2 id="avisoLegalTit">Aviso importante</h2>
+  <p>RWAdar es un directorio informativo y una plataforma educativa. Este contenido tiene finalidad exclusivamente divulgativa y <strong>no constituye asesoramiento en materia de inversión, jurídico, fiscal ni contable</strong>, ni una oferta, recomendación o invitación a suscribir o adquirir ningún instrumento financiero o criptoactivo.</p>
+  <p>RWAdar no presta servicios de asesoramiento financiero regulado, no emite recomendaciones personalizadas, no interviene en la contratación entre usuarios y proveedores y no garantiza el desempeño de las entidades incluidas en su directorio.</p>
+  <p>La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente y verifica la información vigente en las fuentes oficiales de los supervisores competentes.</p>
+  
+</section>
+</main>
+
+<footer class="ac-pie">
+  <div class="ac-envoltura">
+    <p><b>RWAdar Academy</b> forma parte de RWAdar, un registro independiente de plataformas de tokenización de activos reales. No es asesoramiento financiero.</p>
+    <p><a href="/">Radar</a> · <a href="/academy/">Academy</a> · <a href="/privacidad">Privacidad</a> · <a href="/transparencia-comercial">Transparencia comercial</a> · <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a></p>
+  </div>
+</footer>
+</body>
+</html>

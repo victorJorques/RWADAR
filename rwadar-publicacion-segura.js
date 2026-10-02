@@ -68,6 +68,8 @@ function huellaAlcancePublicacion(estado) {
    estas rutas puede haber cambiado desde entonces. */
 const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-site',
+  'rwadar-academy',
+  'rwadar-academy.js',
   'rwadar-adelgazar.js',
   'rwadar-app/sincronizar.js',
   'rwadar-app/catalogo-publico.js',
@@ -81,11 +83,28 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
 /* Lista cerrada del único árbol que puede llegar al artefacto desplegable.
    Un archivo ignorado por Git sigue siendo un archivo publicable si se copia
    a ciegas; por eso aquí no se confía ni en .gitignore ni en extensiones. */
+/* Las páginas de RWAdar Academy las genera rwadar-academy.js a partir de
+   rwadar-academy/. Publicar una lección nueva exige añadirla aquí a mano:
+   así ninguna página llega a producción sin una decisión revisable. */
+const PAGINAS_ACADEMY = Object.freeze([
+  'academy/index.html',
+  'academy/que-significa-tokenizar-un-activo.html',
+  'academy/quien-es-quien-actores-tokenizacion.html',
+  'academy/es-tu-activo-tokenizable.html',
+  'academy/marco-legal-cuando-tu-token-es-un-valor.html',
+  'academy/cuanto-cuesta-tokenizar.html',
+  'academy/liquidez-como-evaluarla.html',
+  'academy/como-leer-el-radar.html',
+].sort());
+
 const ARCHIVOS_PUBLICABLES = Object.freeze([
   '.well-known/security.txt',
   '_headers',
   '_redirects',
   '404.html',
+  ...PAGINAS_ACADEMY,
+  'assets/academy-20261002.css',
+  'assets/academy-20261002.js',
   'assets/analitica-20260927.js',
   'assets/error-20260820.css',
   'assets/privacidad-20260820.css',
@@ -736,6 +755,7 @@ async function comprobarConfiguracionAuth({
 
 module.exports = {
   ARCHIVOS_PUBLICABLES,
+  PAGINAS_ACADEMY,
   CONTROLES_RELANZAMIENTO,
   CAPACIDADES_COMERCIALES,
   controlesExigidosPorPerfil,

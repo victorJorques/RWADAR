@@ -30,6 +30,12 @@
   Cache-Control: public, max-age=0, must-revalidate
   X-Robots-Tag: noindex, nofollow
 
+/academy
+  Cache-Control: public, max-age=0, must-revalidate
+
+/academy/*
+  Cache-Control: public, max-age=0, must-revalidate
+
 /para-empresas.html
   Cache-Control: public, max-age=0, must-revalidate
   X-Robots-Tag: noindex, nofollow
