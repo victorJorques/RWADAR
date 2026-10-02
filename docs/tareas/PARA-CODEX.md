@@ -70,9 +70,11 @@ y checklist del expediente: «Próximamente», nunca enlace roto.
   web se veía con la letra del sistema. Ahora es el paquete oficial `geist`
   1.7.2 recortado a latín (22 kB sans, 16 kB mono; la Academy lleva además
   la cursiva). Comprobado en Chromium: el 100 % del texto sale en Geist.
-- **Aprobación registrada** en `estado.json` (commit propio) para publicar.
-  Desde la nube de Claude no hay red ni credenciales de Cloudflare: la subida
-  la hace Víctor o Codex en local (`--preview` y luego `--produccion`).
+- **Aprobación registrada** en `estado.json` (commit propio) y **unido a
+  `main`** con merge commit (PR #1); la auditoría sobre `main` da «LISTO PARA
+  CORTE FINAL». Desde la nube de Claude no hay red ni credenciales de
+  Cloudflare: la subida la hace Víctor o Codex en local (`git pull`,
+  `--preview`, comprobar y `--produccion`).
 
 ### Pendiente
 
