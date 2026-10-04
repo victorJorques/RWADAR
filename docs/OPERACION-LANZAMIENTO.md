@@ -19,6 +19,20 @@ no se presupone un servicio humano de vigilancia permanente tras cerrar el chat.
 6. Comprobar dominio canónico y recursos tras desplegar. La publicación no queda
    acreditada por un build local, una URL reservada o un comando iniciado.
 
+### Publicar desde GitHub (sin ordenador)
+
+El flujo **Publicar web** (`.github/workflows/publicar.yml`) hace los pasos 3
+a 6 en una máquina de GitHub: se lanza a mano desde *Actions › Publicar web ›
+Run workflow* eligiendo `preview` o `produccion`, solo desde `main`. Ejecuta el
+mismo `rwadar-publicar.js` con todas sus compuertas y, al terminar, comprueba
+la web real con `.github/comprobar-publicado.mjs` (portada, privacidad, mapa
+del sitio, Academy, lecciones, assets, CSP y 404 de lo no publicado).
+
+Necesita una vez el secreto de repositorio `CLOUDFLARE_API_TOKEN`
+(*Settings › Secrets and variables › Actions*), creado en Cloudflare con la
+plantilla «Edit Cloudflare Workers» o un token propio con permiso
+*Account › Cloudflare Pages › Edit*. Sin él, el flujo se para avisando.
+
 ## Restauración y retirada
 
 Cloudflare cuenta `52d07be006e7a27f5f793c59e1796b13`, proyecto `rwadar`.
