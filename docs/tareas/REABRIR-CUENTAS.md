@@ -12,7 +12,8 @@ cerrados, por decisión de Víctor: opiniones, avisos por correo y avisos push.
 | Verificador de solo lectura | `rwadar-app/db/26_reabrir_cuentas_verificar.sql` | Falla si algo de más queda abierto o si falta algo |
 | Marcha atrás | Volver a ejecutar `rwadar-app/db/25_servicios_editoriales_solo_lectura.sql` | Probado en la misma batería |
 | Web: cuentas sin opiniones ni avisos | `rwadar-site/assets/rwadar-20260820.js`: `SERVICIOS_USUARIO_REMOTOS`, `CORREO_AUTH_E2E`, `OPINIONES_REMOTAS`, `AVISOS_CORREO_REMOTOS`, `MANUAL_BIENVENIDA` | Todo sigue **apagado** en lo publicado |
-| Ensayo completo en el navegador | `node rwadar-app/ensayo-cuentas-web.mjs` | 37/37: la web real con las cuentas encendidas contra la base con la 26 |
+| Ensayo completo en el navegador | `node rwadar-app/ensayo-cuentas-web.mjs` | 61/61: la web real con las cuentas encendidas contra la base con la 26 y la 27, y con el anti-robots encendido contra un Supabase que lo exige |
+| Anti-robots (Cloudflare Turnstile) | `TURNSTILE_SITEKEY` en `rwadar-site/assets/rwadar-20260820.js` | **Apagado**: no carga nada de fuera. Ver «Anti-robots» más abajo |
 
 El ensayo encontró y ya están corregidos dos fallos que habrían salido al
 abrir: en el móvil el botón «Entrar» seguía bloqueado, y tras «Confirma tu
@@ -115,10 +116,48 @@ todo el mundo. Necesita la clave de Cloudflare en GitHub
 - La sesión vive solo en la memoria de la pestaña: no queda guardada en el
   navegador.
 - Cada persona solo ve y toca lo suyo (RLS, probado con dos cuentas).
-- Recomendado antes de anunciar las cuentas en redes: activar un CAPTCHA
-  (Cloudflare Turnstile, gratis) en **Authentication › Attack Protection**,
-  para que nadie use el alta para mandar correos en masa. Necesita también un
-  pequeño cambio en la web: pídemelo cuando quieras activarlo.
+- Recomendado antes de anunciar las cuentas en redes: el anti-robots (abajo).
+
+## Anti-robots: que nadie use el alta para mandar correos en masa
+
+La web ya lo tiene hecho y probado, pero **apagado**. Encendido, crear cuenta,
+entrar y pedir correos pasan antes por Cloudflare Turnstile (gratis). Casi
+nunca pide nada a la persona: solo enseña una casilla si sospecha. La web
+carga Turnstile solo cuando alguien pulsa uno de esos botones, nunca al abrir
+la página.
+
+**Víctor (5 minutos), mejor junto con los pasos 1 a 3:**
+1. Cloudflare › **Turnstile** › *Add widget*. Nombre `RWAdar cuentas`.
+   Hostnames: `rwadar.pages.dev` y `revision.rwadar.pages.dev`. Modo
+   *Managed*. Crear.
+2. Salen dos claves:
+   - La **Site Key** es pública (va dentro de la web): pégala en el chat sin
+     problema.
+   - La **Secret Key** no se pega en el chat nunca. Va directa a Supabase en
+     el paso 4.
+3. Espera a que te diga «anti-robots publicado en revisión».
+4. Supabase › **Authentication › Attack Protection** › *Enable Captcha
+   protection* › proveedor *Turnstile* › pega la Secret Key › *Save*.
+
+El orden importa. Si Supabase exige el anti-robots antes de que la web lo
+lleve, nadie puede entrar ni darse de alta. La web lo explica con «No hemos
+podido comprobar que no eres un robot», pero no deja seguir. Mientras las
+cuentas sigan cerradas al público, esto no afecta a nadie.
+
+**Lo que hace Claude o Codex con la Site Key:**
+- `const TURNSTILE_SITEKEY='<site key>';` en `rwadar-site/assets/rwadar-20260820.js`.
+- La CSP, en `rwadar-site/_headers` y en `rwadar-servir.js`:
+  - `script-src` añade `https://challenges.cloudflare.com`;
+  - `frame-src 'none'` pasa a `frame-src https://challenges.cloudflare.com`.
+
+  Hay que ajustar las tres pruebas de CSP de `probar-web.mjs` («la CSP
+  permite solo el beacon adicional…», «impide formularios, marcos…» y la del
+  servidor local). Es la misma CSP con la que pasa el ensayo, sección 11.
+- Privacidad: añadir que, al crear cuenta, entrar o pedir un correo,
+  Cloudflare Turnstile comprueba que no es un robot (datos técnicos del
+  navegador; Cloudflare como encargado; sin cookies de seguimiento).
+- Pruebas, aprobación, publicar en revisión y probar con Víctor (paso 4 de
+  arriba); después, producción.
 
 ## Plantillas de correo (Supabase › Authentication › Emails › Templates)
 
@@ -154,7 +193,8 @@ añadir antes del pie:
 
 1. Poner `SERVICIOS_USUARIO_REMOTOS=true` y `CORREO_AUTH_E2E=true` (las
    opiniones y los avisos siguen en `false`).
-2. Reescribir la privacidad para las cuentas abiertas.
+2. Reescribir la privacidad para las cuentas abiertas. Si ya está la Site
+   Key de Turnstile, encender también el anti-robots (sección «Anti-robots»).
 3. Pruebas, renovar la aprobación en `estado.json`, publicar en `revision`
    para el paso 4 y, con el visto bueno, en producción.
 

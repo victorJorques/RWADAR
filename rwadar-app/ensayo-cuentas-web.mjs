@@ -11,7 +11,8 @@
    nombre, salir, volver a entrar y encontrar su lista, recuperar la
    contraseña, entrar desde el móvil y borrar la cuenta. Comprueba además
    que opiniones, moderación y avisos por correo siguen ocultos y que la
-   CSP de producción no bloquea nada.
+   CSP de producción no bloquea nada. Al final, con la comprobación
+   anti-robots (Turnstile) encendida contra un Supabase que la exige.
 
    No es la prueba real del correo: el «buzón» es una lista en memoria.
    Esa prueba solo puede hacerse en Supabase con el SMTP configurado
@@ -36,7 +37,9 @@ const SITIO = path.join(RAIZ, 'rwadar-site');
 const WEB = 'https://rwadar.pages.dev';
 const SUPA = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const RUTA_MANUAL = '/descargas/como-usar-rwadar.pdf';
-const PDF_MANUAL = path.join(RAIZ, 'docs', 'manual', 'RWAdar_Como_Usar_RWAdar_2026.pdf');
+const PDF_MANUAL = path.join(RAIZ, 'docs', 'manual', 'RWAdar_Como_Usar_RWAdar_2026_corregido.pdf');
+const TURNSTILE = 'https://challenges.cloudflare.com';
+const SITEKEY_PRUEBA = '1x00000000000000000000AA'; // clave de prueba pública de Cloudflare
 const CAPTURAS = path.resolve(process.argv[2] || path.join(os.tmpdir(), 'rwadar-ensayo-cuentas'));
 fs.mkdirSync(CAPTURAS, { recursive: true });
 
@@ -111,10 +114,25 @@ const errorPg = (e) => {
   return json(estado, { code: codigo, message: e?.message || 'error' });
 };
 
+/* Anti-robots: con captchaExigido, Auth se comporta como Supabase con
+   Attack Protection encendido: alta, entrada con contraseña, recuperación y
+   reenvío exigen gotrue_meta_security.captcha_token, y cada testigo vale una
+   sola vez. */
+let captchaExigido = false;
+const testigosRobot = [];
+const RUTAS_CON_ROBOT = new Set(['/signup', '/recover', '/resend']);
 async function atenderAuth(peticion, url) {
   const ruta = url.pathname.replace('/auth/v1', '');
   const cuerpo = peticion.postDataJSON?.() || {};
   const vuelta = url.searchParams.get('redirect_to');
+  if (captchaExigido && (RUTAS_CON_ROBOT.has(ruta) ||
+      (ruta === '/token' && url.searchParams.get('grant_type') === 'password'))) {
+    const t = cuerpo.gotrue_meta_security?.captcha_token;
+    if (!/^tt_[0-9a-f]{16}$/.test(t || '') || testigosRobot.some((x) => x.t === t))
+      return json(400, { code: 400, error_code: 'captcha_failed',
+        msg: t ? 'captcha protection: request disallowed (invalid-input-response)' : 'captcha protection: request disallowed (no captcha response)' });
+    testigosRobot.push({ ruta, t });
+  }
   if (ruta === '/signup') {
     if (await usuarioPorCorreo(cuerpo.email)) return json(422, { msg: 'User already registered' });
     if (String(cuerpo.password || '').length < 12) return json(422, { msg: 'Password should be at least 12 characters' });
@@ -264,11 +282,43 @@ const jsCuentas = (() => {
   }
   return js;
 })();
+/* Variante con el anti-robots encendido: la clave de prueba y la CSP abierta
+   a Turnstile exactamente como indica docs/tareas/REABRIR-CUENTAS.md. */
+const jsTurnstile = (() => {
+  const de = "const TURNSTILE_SITEKEY='';";
+  if (!jsCuentas.includes(de)) throw new Error('no encuentro el interruptor ' + de);
+  return jsCuentas.replace(de, `const TURNSTILE_SITEKEY='${SITEKEY_PRUEBA}';`);
+})();
+const CSP_TURNSTILE = CSP
+  .replace("frame-src 'none'", `frame-src ${TURNSTILE}`)
+  .replace("script-src 'self' https://static.cloudflareinsights.com", `script-src 'self' https://static.cloudflareinsights.com ${TURNSTILE}`);
+if (CSP_TURNSTILE === CSP || !CSP_TURNSTILE.includes(`frame-src ${TURNSTILE}`)) throw new Error('no he podido preparar la CSP con Turnstile');
+let jsServido = jsCuentas, cspServida = CSP;
+/* Turnstile de mentira: mismo contrato (render con callbacks, remove) y un
+   testigo nuevo en cada render. */
+let retrasoTurnstile = 40, retrasoScript = 0;
+const turnstileFalso = () => `(() => {
+  const RETRASO = ${retrasoTurnstile};
+  let n = 0; const vivos = new Map();
+  window.turnstile = {
+    render(caja, o) {
+      if (!caja || o.sitekey !== '${SITEKEY_PRUEBA}' || o.appearance !== 'interaction-only' ||
+          typeof o.callback !== 'function' || typeof o['error-callback'] !== 'function') throw new Error('render mal configurado');
+      const id = 'w' + (++n);
+      const t = 'tt_' + Array.from(crypto.getRandomValues(new Uint8Array(8)), (b) => b.toString(16).padStart(2, '0')).join('');
+      vivos.set(id, setTimeout(() => { vivos.delete(id); o.callback(t); }, RETRASO));
+      return id;
+    },
+    remove(id) { clearTimeout(vivos.get(id)); vivos.delete(id); },
+    reset() {}, getResponse() {}, execute() {},
+  };
+})();`;
+let turnstileCaido = false, cargasTurnstile = 0;
 const servidas = new Set();
 function servirWeb(url) {
   let ruta = decodeURIComponent(url.pathname);
   servidas.add(ruta);
-  if (ruta === '/assets/rwadar-20260820.js') return { status: 200, contentType: TIPOS['.js'], body: jsCuentas };
+  if (ruta === '/assets/rwadar-20260820.js') return { status: 200, contentType: TIPOS['.js'], body: jsServido };
   if (ruta === RUTA_MANUAL) return { status: 200, contentType: 'application/pdf', body: fs.readFileSync(PDF_MANUAL) };
   if (ruta.endsWith('/')) ruta += 'index.html';
   let archivo = path.join(SITIO, ruta);
@@ -276,7 +326,7 @@ function servirWeb(url) {
   if (!fs.existsSync(archivo) && fs.existsSync(archivo + '.html')) archivo += '.html';
   if (!fs.existsSync(archivo) || fs.statSync(archivo).isDirectory()) return { status: 404, body: 'no existe' };
   const tipo = TIPOS[path.extname(archivo)] || 'application/octet-stream';
-  return { status: 200, contentType: tipo, headers: tipo.startsWith('text/html') ? { 'content-security-policy': CSP } : {},
+  return { status: 200, contentType: tipo, headers: tipo.startsWith('text/html') ? { 'content-security-policy': cspServida } : {},
     body: fs.readFileSync(archivo) };
 }
 
@@ -289,6 +339,12 @@ async function contexto(opciones) {
     const url = new URL(peticion.url());
     try {
       if (url.origin === WEB) return await route.fulfill(servirWeb(url));
+      if (url.origin === TURNSTILE && url.pathname === '/turnstile/v0/api.js') {
+        if (turnstileCaido) return await route.abort('blockedbyclient');
+        if (retrasoScript) await new Promise((r) => setTimeout(r, retrasoScript));
+        cargasTurnstile++;
+        return await route.fulfill({ status: 200, contentType: 'text/javascript', body: turnstileFalso() });
+      }
       if (url.origin === SUPA) {
         if (peticion.method() === 'OPTIONS') return await route.fulfill({ status: 204, headers: CORS, body: '' });
         const r = url.pathname.startsWith('/auth/v1') ? await atenderAuth(peticion, url) : await atenderRest(peticion, url);
@@ -380,7 +436,7 @@ for (let i = 0; i < 20 && !servidas.has(RUTA_MANUAL); i++) await new Promise((r)
 await pdf.close();
 /* Chromium sin pantalla descarga el PDF en vez de mostrarlo: basta con
    comprobar que se pidió a su dirección estable y que existe. */
-paso('el manual se abre en su dirección estable', servidas.has(RUTA_MANUAL) && fs.statSync(PDF_MANUAL).size > 500000);
+paso('el manual (corregido) se abre en su dirección estable', servidas.has(RUTA_MANUAL) && fs.statSync(PDF_MANUAL).size > 100000);
 let anotada = null;
 for (let i = 0; i < 20 && !anotada; i++) {
   [{ manual_descargado_el: anotada }] = await enCola(() => filas(db,
@@ -439,7 +495,11 @@ await pagina.click('#btnCuenta');
 await pagina.fill('#cCorreo', CORREO);
 await pagina.fill('#cClave', CLAVE);
 await pagina.click('#cuentaEnviar');
-await aviso(pagina, /Sesión iniciada/);
+/* Si esto falla, el texto de la ventana dice por qué (antes el fallo solo se
+   veía después, como un clic tapado por el velo). */
+const reentra = await aviso(pagina, /Sesión iniciada/) &&
+  await pagina.waitForSelector('#cuentaCaja:not(.on)', { state: 'attached', timeout: 8000 }).then(() => true, () => false);
+paso('vuelve a entrar' + (reentra ? '' : ` (la ventana dice: «${(await texto(pagina, '#cuentaMsj')).trim()}»)`), reentra);
 await pagina.click('#btnCuenta');
 await pagina.waitForSelector('#perfilPanel.show');
 paso('al volver a entrar, su lista sigue ahí', (await texto(pagina, '#perfilCuerpo')).includes(elegida));
@@ -530,9 +590,13 @@ paso('un enlace se rechaza antes de enviarlo', /no pueden llevar enlaces/.test(a
 await pc.fill('#comunidadTexto', 'Hoy he terminado la lección 7 y por fin entiendo cómo leer el radar.');
 await pc.click('#comunidadPublicar');
 await pc.waitForFunction(() => /Publicado/.test(document.getElementById('comunidadEstado').textContent));
+/* La lista se vuelve a pedir después de publicar: se espera a que llegue. */
+await pc.waitForFunction(() => /lección 7/.test(document.getElementById('comunidadLista').innerText) &&
+  /Borrar/.test(document.getElementById('comunidadLista').innerText), null, { timeout: 8000 }).catch(() => {});
 const lista = await texto(pc, '#comunidadLista');
-paso('se publica y aparece como «Miembro de RWAdar», con «Borrar» para quien la escribió',
-  /lección 7/.test(lista) && /Miembro de RWAdar/.test(lista) && /Borrar/.test(lista) && !/Denunciar/.test(lista));
+const publicada = /lección 7/.test(lista) && /Miembro de RWAdar/.test(lista) && /Borrar/.test(lista) && !/Denunciar/.test(lista);
+paso('se publica y aparece como «Miembro de RWAdar», con «Borrar» para quien la escribió' +
+  (publicada ? '' : ` (la lista dice: «${lista.replace(/\s+/g, ' ').slice(0, 160)}»)`), publicada);
 await pc.fill('#comunidadTexto', 'Una segunda publicación el mismo día no debería entrar.');
 await pc.click('#comunidadPublicar');
 await pc.waitForFunction(() => /Ya has publicado hoy/.test(document.getElementById('comunidadEstado').textContent))
@@ -561,6 +625,99 @@ paso('otra cuenta puede denunciarla', await aviso(po, /Denuncia enviada/));
 const [den] = await enCola(() => filas(db, 'select denuncias from publicaciones where id=$1', [pub.id]));
 paso('y la denuncia queda contada en la base de datos', den.denuncias === 1);
 await otra.ctx.close();
+
+/* 11 · anti-robots (Turnstile) encendido, contra un Supabase que lo exige */
+paso('con el anti-robots apagado no se ha cargado nada de Cloudflare en todo el ensayo', cargasTurnstile === 0);
+jsServido = jsTurnstile; cspServida = CSP_TURNSTILE; captchaExigido = true;
+const robot = await contexto({ viewport: { width: 1366, height: 900 } });
+const pr = robot.pagina;
+await pr.goto(WEB + '/', { waitUntil: 'networkidle' });
+paso('encendido, abrir la web tampoco carga Turnstile (solo al pedir algo a la cuenta)', cargasTurnstile === 0);
+const RITA = 'rita@ejemplo.test';
+await pr.click('#btnCuenta');
+await pr.click('#irCambiar');
+await pr.fill('#cCorreo', RITA);
+await pr.fill('#cClave', CLAVE);
+await pr.click('#cuentaEnviar');
+await pr.waitForSelector('#cuentaEstado:not([hidden])');
+paso('el alta pasa la comprobación y Supabase recibe el testigo',
+  !!correoDe(RITA, 'signup') && testigosRobot.some((x) => x.ruta === '/signup'));
+await pr.click('#cuentaReenviar');
+paso('«Reintentar» el correo pide otro testigo', await aviso(pr, /La solicitud de reenvío fue aceptada/) &&
+  testigosRobot.some((x) => x.ruta === '/resend'));
+await enCola(() => db.query('update auth.users set email_confirmed_at=now() where email=$1', [RITA]));
+await pr.click('#cuentaEstadoEntrar');
+await pr.fill('#cClave', CLAVE);
+await pr.click('#cuentaEnviar');
+paso('entrar con contraseña también pasa la comprobación', await aviso(pr, /Sesión iniciada/) &&
+  testigosRobot.some((x) => x.ruta === '/token'));
+paso('cada petición llevó un testigo distinto y Turnstile se cargó una sola vez',
+  testigosRobot.length === 3 && new Set(testigosRobot.map((x) => x.t)).size === 3 && cargasTurnstile === 1);
+paso('la caja de la comprobación se recoge al terminar', await pr.locator('#cuentaRobot').isHidden());
+await robot.ctx.close();
+
+/* Cerrar la ventana a mitad de la comprobación la cancela sin enviar nada:
+   (a) mientras se carga el script de Turnstile y (b) mientras la comprobación
+   espera. Al volver, se entra con normalidad y sale una sola petición. */
+retrasoTurnstile = 1500; retrasoScript = 800;
+const lento = await contexto({ viewport: { width: 1366, height: 900 } });
+const pl = lento.pagina;
+await pl.goto(WEB + '/', { waitUntil: 'networkidle' });
+const entradas = () => testigosRobot.filter((x) => x.ruta === '/token').length;
+const entradasAntes = entradas();
+const intentaEntrar = async () => {
+  await pl.click('#btnCuenta');
+  await pl.fill('#cCorreo', RITA);
+  await pl.fill('#cClave', CLAVE);
+  await pl.click('#cuentaEnviar');
+};
+await intentaEntrar();
+await pl.waitForTimeout(200);
+const aMedioCargar = cargasTurnstile;
+await pl.keyboard.press('Escape');
+await pl.waitForTimeout(2600);
+paso('cerrar la ventana mientras carga Turnstile no envía nada', entradas() === entradasAntes &&
+  cargasTurnstile === aMedioCargar + 1 && await pl.locator('#cuentaRobot').isHidden());
+await intentaEntrar();
+await pl.waitForSelector('#cuentaRobot:not([hidden])', { state: 'attached' });
+await pl.keyboard.press('Escape');
+await pl.waitForTimeout(2000);
+paso('cerrar la ventana mientras la comprobación espera tampoco envía nada',
+  entradas() === entradasAntes && await pl.locator('#cuentaRobot').isHidden());
+await intentaEntrar();
+const entraTrasCancelar = await aviso(pl, /Sesión iniciada/);
+paso('al volver se entra con normalidad, con una sola petición en total',
+  entraTrasCancelar && entradas() === entradasAntes + 1);
+await lento.ctx.close();
+retrasoTurnstile = 40; retrasoScript = 0;
+
+turnstileCaido = true;
+const bloqueado = await contexto({ viewport: { width: 1366, height: 900 } });
+const pb = bloqueado.pagina;
+await pb.goto(WEB + '/', { waitUntil: 'networkidle' });
+await pb.click('#btnCuenta');
+await pb.click('#irRecuperar');
+await pb.fill('#cCorreo', RITA);
+const antes = buzon.length;
+await pb.click('#cuentaEnviar');
+paso('si un bloqueador impide cargar Turnstile, lo explica y no envía nada',
+  await aviso(pb, /No se ha podido cargar la comprobación anti-robots/) && buzon.length === antes &&
+  await pb.locator('#cuentaEnviar').isEnabled());
+await captura(pb, '11-anti-robots-bloqueado');
+await bloqueado.ctx.close();
+
+turnstileCaido = false; jsServido = jsCuentas; cspServida = CSP;
+const sinClave = await contexto({ viewport: { width: 1366, height: 900 } });
+const ps = sinClave.pagina;
+await ps.goto(WEB + '/', { waitUntil: 'networkidle' });
+await ps.click('#btnCuenta');
+await ps.fill('#cCorreo', RITA);
+await ps.fill('#cClave', CLAVE);
+await ps.click('#cuentaEnviar');
+paso('si Supabase lo exige y la web aún no lo tiene encendido, el mensaje se entiende',
+  await aviso(ps, /No hemos podido comprobar que no eres un robot/));
+await sinClave.ctx.close();
+captchaExigido = false;
 
 paso('ningún error de página ni bloqueo de la CSP de producción', problemas.length === 0);
 problemas.forEach((p) => console.log('     · ' + p));

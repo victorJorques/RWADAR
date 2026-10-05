@@ -3258,6 +3258,13 @@ const Cuenta = (function(){
     enciende con su ruta estable (/descargas/como-usar-rwadar.pdf) cuando el
     PDF esté revisado y publicado; ver docs/manual/LEEME.md. */
  const MANUAL_BIENVENIDA='';
+ /* Comprobación anti-robots (Cloudflare Turnstile) al crear cuenta, entrar
+    y pedir correos, para que nadie use el alta para mandar correos en masa.
+    Vacío: apagada y sin cargar nada de fuera. Encenderla exige también la
+    clave secreta en Supabase (Attack Protection), abrir la CSP a
+    https://challenges.cloudflare.com y contarlo en la privacidad: pasos en
+    docs/tareas/REABRIR-CUENTAS.md. */
+ const TURNSTILE_SITEKEY='';
  let ses=null, perfil=null, vigiladas=new Map(), modo='entrar', fichaAbierta=null,
      identidadConfirmada=false,versionSesion=0,renovacion=null,focoCuenta=null,
      correoPendiente='',operacionCuenta=0,temporizadorReenvio=null,cuentaHistorial=false;
@@ -3308,7 +3315,63 @@ const Cuenta = (function(){
   if(t.includes('password should be')||t.includes('at least 12')||t.includes('at least 8')) return 'La contraseña necesita al menos 12 caracteres.';
   if(t.includes('rate limit')||t.includes('too many')) return 'Demasiados intentos seguidos. Espera un minuto y vuelve a probar.';
   if(t.includes('unable to validate email')||t.includes('invalid format')) return 'Esa dirección de correo no parece válida.';
+  if(t.includes('captcha')) return 'No hemos podido comprobar que no eres un robot. Vuelve a intentarlo.';
   return m;
+ }
+
+ /* --- anti-robots (Turnstile) --------------------------------------
+    Solo se carga al pedir algo a Auth, nunca al abrir la página. Cada
+    petición lleva un testigo nuevo: Turnstile no admite reutilizarlos. */
+ let turnstileCarga=null,turnstileWidget=null,cancelaRobot=null;
+ function cargaTurnstile(){
+  if(window.turnstile)return Promise.resolve(window.turnstile);
+  if(!turnstileCarga)turnstileCarga=new Promise((ok,mal)=>{
+   const s=document.createElement('script');
+   s.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+   s.async=true;
+   const falla=()=>{turnstileCarga=null;s.remove();mal(new Error('turnstile'));};
+   s.onload=()=>window.turnstile?ok(window.turnstile):falla();
+   s.onerror=falla;
+   document.head.appendChild(s);
+  });
+  return turnstileCarga;
+ }
+ function quitaAntiRobots(){
+  if(cancelaRobot){const c=cancelaRobot;cancelaRobot=null;c();}
+  if(turnstileWidget!==null&&window.turnstile){try{window.turnstile.remove(turnstileWidget);}catch(e){}}
+  turnstileWidget=null;
+  const caja=$('cuentaRobot');if(caja){caja.hidden=true;caja.textContent='';}
+ }
+ async function antiRobots(){
+  if(!TURNSTILE_SITEKEY)return null;
+  const op=operacionCuenta;
+  let ts;
+  try{ts=await cargaTurnstile();}
+  catch(e){throw new Error('No se ha podido cargar la comprobación anti-robots. Revisa la conexión o permite este sitio en tu bloqueador y vuelve a intentarlo.');}
+  /* Si mientras cargaba se cerró la ventana o se cambió de pantalla, no se
+     sigue: antes la entrada cancelada acababa enviándose igualmente. */
+  if(op!==operacionCuenta)throw new Error('Operación cancelada.');
+  quitaAntiRobots();
+  const caja=$('cuentaRobot');caja.hidden=false;
+  return new Promise((ok,mal)=>{
+   let reloj=null;
+   /* Cada comprobación solo puede cerrar la suya: una respuesta tardía de
+      una anterior no debe resolver ni bloquear la que está en curso. */
+   const cancela=()=>{clearTimeout(reloj);mal(new Error('Operación cancelada.'));};
+   const fin=(f,v)=>{if(cancelaRobot!==cancela)return;cancelaRobot=null;clearTimeout(reloj);f(v);};
+   const falla=()=>{fin(mal,new Error('No hemos podido comprobar que no eres un robot. Vuelve a intentarlo.'));return true;};
+   cancelaRobot=cancela;
+   reloj=setTimeout(falla,120000);
+   try{
+    turnstileWidget=ts.render(caja,{sitekey:TURNSTILE_SITEKEY,language:'es',appearance:'interaction-only',
+     callback:t=>fin(ok,t),'error-callback':falla,'expired-callback':falla,'timeout-callback':falla});
+   }catch(e){falla();}
+  });
+ }
+ async function conAntiRobots(cuerpo){
+  const op=operacionCuenta,t=await antiRobots();
+  if(op!==operacionCuenta)throw new Error('Operación cancelada.');
+  return t?Object.assign({},cuerpo,{gotrue_meta_security:{captcha_token:t}}):cuerpo;
  }
 
  /* Renueva el testigo si ha caducado. Sin esto, la sesión se cae sola
@@ -3487,7 +3550,7 @@ const Cuenta = (function(){
   modo=!CORREO_AUTH_E2E&&solicitado==='registro'?'registro_pausado':
        !CORREO_AUTH_E2E&&solicitado==='recuperar'?'recuperar_pausado':solicitado;
   const T=TEXTOS[modo];if(!T)return;
-  operacionCuenta++;limpiaSecretos();limpiaErroresCuenta();
+  operacionCuenta++;limpiaSecretos();limpiaErroresCuenta();quitaAntiRobots();
   if(temporizadorReenvio){clearTimeout(temporizadorReenvio);temporizadorReenvio=null;}
   /* Cambiar de modo invalida la operación en curso, que ya no reactivará el
      botón al terminar: sin esto, tras «Confirma tu correo» → «Entrar» el
@@ -3530,7 +3593,12 @@ const Cuenta = (function(){
    const previo=history.state&&typeof history.state==='object'?history.state:{};
    history.pushState({...previo,rwadarCuenta:true},'',location.href);cuentaHistorial=true;
   }
+  /* Si la persona ya está escribiendo en un campo de la ventana, no se le
+     mueve el cursor: antes, en un equipo lento, la contraseña acababa
+     escrita en el campo del correo. */
   setTimeout(()=>{try{
+   const activo=document.activeElement;
+   if(activo&&activo.tagName==='INPUT'&&caja.contains(activo))return;
    if(esEstado||movil)caja.focus();
    else $(modo==='nueva_clave'?'cClave':'cCorreo').focus();
   }catch(e){}},60);
@@ -3540,7 +3608,7 @@ const Cuenta = (function(){
   if(!forzar&&estabaAbierta&&cuentaHistorial&&history.state&&history.state.rwadarCuenta===true){
    cuentaHistorial=false;history.back();return;
   }
-  operacionCuenta++;
+  operacionCuenta++;quitaAntiRobots();
   $('velo').classList.remove('on');
   caja.classList.remove('on'); caja.setAttribute('inert','');
   limpiaSecretos();$('cCorreo').value='';$('cNombre').value='';correoPendiente='';
@@ -3583,14 +3651,14 @@ const Cuenta = (function(){
     msj('Contraseña cambiada. La sesión sigue abierta.',true);
    }else if(modoEnvio==='recuperar'){
     const vuelta=encodeURIComponent(location.origin+'/');
-    await auth('/recover?redirect_to='+vuelta,{email:correo});
+    await auth('/recover?redirect_to='+vuelta,await conAntiRobots({email:correo}));
     if(operacion!==operacionCuenta||modo!==modoEnvio)return;
     correoPendiente=correo;abrir('recuperacion_pendiente');
    }else if(modoEnvio==='registro'){
     if(clave.length<12)throw errorCuenta('La contraseña necesita al menos 12 caracteres.','cClave');
     const vuelta=encodeURIComponent(location.origin+'/');
-    const j=await auth('/signup?redirect_to='+vuelta,{email:correo,password:clave,
-      data:nombre?{nombre:nombre}:undefined});
+    const j=await auth('/signup?redirect_to='+vuelta,await conAntiRobots({email:correo,password:clave,
+      data:nombre?{nombre:nombre}:undefined}));
     if(operacion!==operacionCuenta||modo!==modoEnvio)return;
     if(j&&typeof j.access_token==='string'&&j.access_token){ await entrarCon(j); }
     else if(j&&typeof j.id==='string'&&j.id&&typeof j.email==='string'){
@@ -3598,7 +3666,7 @@ const Cuenta = (function(){
      abrir('confirmacion_pendiente');
     }else throw new Error('La respuesta del alta no es válida. No damos la cuenta por creada.');
    }else{
-    const j=await auth('/token?grant_type=password',{email:correo,password:clave});
+    const j=await auth('/token?grant_type=password',await conAntiRobots({email:correo,password:clave}));
     if(operacion!==operacionCuenta||modo!==modoEnvio)return;
     await entrarCon(j);
    }
@@ -3608,7 +3676,7 @@ const Cuenta = (function(){
    }
   }finally{
    limpiaSecretos();
-   if(operacion===operacionCuenta){bot.disabled=false;$('cuentaForm').removeAttribute('aria-busy');}
+   if(operacion===operacionCuenta){bot.disabled=false;$('cuentaForm').removeAttribute('aria-busy');quitaAntiRobots();}
   }
  }
  async function reenviarConfirmacion(){
@@ -3618,9 +3686,9 @@ const Cuenta = (function(){
   try{
    const vuelta=encodeURIComponent(location.origin+'/');
    if(modoEnvio==='confirmacion_pendiente')
-    await auth('/resend?redirect_to='+vuelta,{type:'signup',email:correoPendiente});
+    await auth('/resend?redirect_to='+vuelta,await conAntiRobots({type:'signup',email:correoPendiente}));
    else if(modoEnvio==='recuperacion_pendiente')
-    await auth('/recover?redirect_to='+vuelta,{email:correoPendiente});
+    await auth('/recover?redirect_to='+vuelta,await conAntiRobots({email:correoPendiente}));
    else return;
    if(operacion!==operacionCuenta||modo!==modoEnvio)return;
    msj('La solicitud de reenvío fue aceptada. Esto no confirma la entrega del mensaje.',true);
@@ -3630,7 +3698,7 @@ const Cuenta = (function(){
     temporizadorReenvio=null;
    },60000);
   }catch(err){if(operacion===operacionCuenta&&modo===modoEnvio){msj(err.message);bot.disabled=false;}}
-  finally{bot.removeAttribute('aria-busy');}
+  finally{bot.removeAttribute('aria-busy');if(operacion===operacionCuenta)quitaAntiRobots();}
  }
  async function entrarCon(j){
   if(!j||typeof j.access_token!=='string'||!j.access_token)

@@ -746,6 +746,8 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .cuenta-msj{font-size:.86rem;line-height:1.5;padding:11px 13px;border-radius:10px;margin-bottom:15px;display:none}
 .cuenta-msj.mal{display:block;background:rgba(255,59,48,.1);border:1px solid rgba(255,59,48,.3);color:#FF8A80}
 .cuenta-msj.bien{display:block;background:rgba(37,227,154,.1);border:1px solid var(--senal-30);color:var(--senal)}
+.cuenta-robot{display:flex;justify-content:center;margin:14px 0 0}
+.cuenta-robot[hidden]{display:none}
 .legal-chica{font-size:.76rem;color:var(--tx-3);line-height:1.5;margin-top:15px}
 .legal-chica a{color:var(--tx-2)}
 .cuenta-estado[hidden]{display:none!important}

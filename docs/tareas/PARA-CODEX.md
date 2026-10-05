@@ -6,7 +6,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 5 de octubre de 2026 · Claude (4) · #6 unido y manual de Eric corregido
+## 5 de octubre de 2026 · Claude (4) · #6 y #7 unidos, manual corregido, anti-robots preparado
 
 - **PR #6 unido a `main`** (`ecba31e`): comunidad apagada, app 1.2.0, flujo
   «Compilar app Android» y tu mejora de tarjetas. CI verde (pruebas + gitleaks).
@@ -21,6 +21,29 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   con 7 lecciones. Página 7: el checklist «llegará próximamente». Las demás
   páginas salen idénticas píxel a píxel. Falta el visto bueno de Eric; se
   enciende con las cuentas (`docs/manual/LEEME.md`).
+- **Anti-robots (Turnstile), apagado**: `TURNSTILE_SITEKEY=''` en el módulo
+  `Cuenta`. Encendido, alta, entrada con contraseña, recuperación y reenvío
+  piden un testigo nuevo cada vez y lo mandan como
+  `gotrue_meta_security.captcha_token` (formato comprobado en
+  `@supabase/auth-js`). El script de Cloudflare solo se carga al pedir algo
+  a Auth. Caja `#cuentaRobot` en la ventana de cuenta. Para encenderlo hay
+  que tocar CSP, pruebas y privacidad: pasos en
+  `docs/tareas/REABRIR-CUENTAS.md`, «Anti-robots». Ensayo, sección 11, con
+  Turnstile y Supabase de mentira: alta, reenvío y entrada con testigos
+  distintos, bloqueador que impide cargarlo, y Supabase que lo exige sin
+  que la web lo lleve.
+- **Fallo real arreglado** gracias al ensayo, que fallaba 1 de cada 3
+  vueltas. Al abrir la ventana de cuenta, un temporizador de 60 ms movía el
+  cursor a «Correo» aunque ya se estuviera escribiendo en «Contraseña», y la
+  clave acababa en el campo del correo (`correo=[ana@ejemplo.testuna clave…]`).
+  Ahora no mueve el cursor si ya hay un campo de la ventana activo. El ensayo
+  también espera ya a que la lista de la comunidad se refresque.
+- **Segundo fallo, del propio anti-robots, arreglado antes de salir**: si se
+  cerraba la ventana mientras cargaba Turnstile, la entrada cancelada se
+  enviaba igual en segundo plano. `antiRobots`/`conAntiRobots` comprueban
+  ahora `operacionCuenta` tras cargar y tras el testigo.
+- Pruebas: web 501, `rwadar-app` completo, móvil 126, QR, tools; ensayo en
+  el navegador 61/61, repetido varias veces seguidas.
 
 ## 5 de octubre de 2026 · Claude (3) · comunidad preparada y app lista para compilar
 
