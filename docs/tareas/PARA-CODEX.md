@@ -6,6 +6,32 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de octubre de 2026 · Claude (5) · web publicada en producción desde el ordenador de Víctor
+
+- **Publicado** con `rwadar-publicar.js --produccion` desde una copia limpia
+  de `main` (`23f9faf`) en el ordenador de Víctor, con su sesión de
+  Wrangler (cuenta `52d07be0…`). Despliegue `cbe0aa77`; antes, preview
+  `a060c69e` (alias `revision.rwadar.pages.dev`). Ya no hace falta el
+  secreto `CLOUDFLARE_API_TOKEN` para esta publicación, aunque sigue
+  pendiente para publicar desde GitHub.
+- La sincronización con Supabase cambió dos archivos, igual que el 2/10:
+  `eee89fc` (catálogo en el JS: 10 fichas del 30/09 con vigencia de 1 día
+  pasan a «Cifras pendientes de nueva revisión») y `e320b21` (portada
+  pre-renderizada). Aprobaciones en `589be2c` y `4e06d9e`, por orden expresa
+  de Víctor en el chat.
+- Comprobado: `npm test` en verde; `.github/comprobar-publicado.mjs` 35/35
+  sobre la preview y sobre `https://rwadar.pages.dev`; en Chromium móvil, la
+  barra Inicio · Buscar · Academy · Perfil cambia de panel, Academy muestra
+  «0 de 7 lecciones leídas», Perfil muestra «Cuentas en pausa»; consola sin
+  errores; cabeceras (CSP, HSTS, X-Frame-Options DENY, nosniff) presentes;
+  `/.git/config`, `/package.json`, `/.env` y el código fuente dan 404;
+  barrido de secretos de `rwadar-publicado/` sin coincidencias.
+- **Cuentas: siguen en pausa.** Para abrirlas faltan los pasos 1 a 3 de
+  `docs/tareas/REABRIR-CUENTAS.md` (SMTP, ajustes de Auth y SQL 26), que
+  solo puede hacer Víctor.
+- **Ojo:** el lote del catálogo vence el 5/10 inclusive; a partir del 6/10
+  la web lo enseña con «Revisión pendiente» hasta que haya revisión nueva.
+
 ## 5 de octubre de 2026 · Claude (4) · #6 y #7 unidos, manual corregido, anti-robots preparado
 
 - **PR #6 unido a `main`** (`ecba31e`): comunidad apagada, app 1.2.0, flujo
