@@ -6,6 +6,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de octubre de 2026 · Claude (4) · #6 unido y manual de Eric corregido
+
+- **PR #6 unido a `main`** (`ecba31e`): comunidad apagada, app 1.2.0, flujo
+  «Compilar app Android» y tu mejora de tarjetas. CI verde (pruebas + gitleaks).
+  `main` es idéntico a lo aprobado en `estado.json` (`70b2346`).
+- **Publicar sigue bloqueado por la clave**: lancé «Publicar web» (preview)
+  desde `main` y se paró en «Comprobar que existe la credencial de
+  Cloudflare» (run 37311901615). No se tocó nada en línea. La aprobación
+  caduca el 7/10.
+- **Manual de Eric corregido** (sin tocar el original):
+  `docs/manual/corregir-manual.py` → `RWAdar_Como_Usar_RWAdar_2026_corregido.pdf`.
+  Página 9: lista de vigilancia hoy, guías y avisos «próximamente», Academy
+  con 7 lecciones. Página 7: el checklist «llegará próximamente». Las demás
+  páginas salen idénticas píxel a píxel. Falta el visto bueno de Eric; se
+  enciende con las cuentas (`docs/manual/LEEME.md`).
+
 ## 5 de octubre de 2026 · Claude (3) · comunidad preparada y app lista para compilar
 
 - **Comunidad** (apagada, `PUBLICACIONES_REMOTAS=false`): `rwadar-app/db/27_comunidad.sql`
