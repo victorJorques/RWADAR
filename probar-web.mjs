@@ -1752,7 +1752,7 @@ prueba('el simulador real conserva URL HTTPS, las 26 plataformas y las 49 refere
   vm.runInContext("new URL('https://example.test/fuente').protocol", simulacionPublicador.contexto) === 'https:' &&
   (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === 26 &&
   (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === 49 &&
-  (simulacionPublicador.capturado.emiLista.match(/Referencia documentada/g) || []).length === 49);
+  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}">Doc\. /g) || []).length === 49);
 // Ejecutar el cliente entero, con un reloj y un DOM persistentes como los de
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
 function pestanaCatalogo() {
@@ -1998,18 +1998,169 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
   /MODO_LOCAL_SEGURO\)throw new Error\('Supabase está bloqueado/.test(js) &&
   /if\(MODO_LOCAL_SEGURO\)\{[\s\S]{0,500}?cargarEscaparateLocal\(\)/.test(js) &&
   /else\{\s*mirar\(\)/.test(js));
-prueba('el escaparate local abre el mercado secundario cuando aporta un enlace específico',
-  /urlMercado=urlHttps\(o\.urlMercado\)/.test(js) &&
-  /secundario&&urlMercado\?'Abrir mercado'/.test(js) && /Ficha oficial/.test(js));
-prueba('las tarjetas locales priorizan imagen y dos datos sin convertir el escaparate en un ranking',
-  /function clavesOfertaLocal\(o,secundario\)/.test(js) &&
-  /preferidas\.slice\(0,2\)/.test(js) && /avisos\[0\]/.test(js) &&
-  /escaparate-destacado/.test(js) && !/Ordenar por puntuaci[oó]n/.test(js));
-prueba('en móvil la tarjeta prioriza imagen y dato clave y mueve las métricas al detalle',
-  /#movilPanelRadar \.escaparate-oferta \.escaparate-imagen\{aspect-ratio:16\/7\.7\}/.test(css) &&
-  /#movilPanelRadar \.escaparate-oferta \.escaparate-metricas\{display:none\}/.test(css) &&
-  /#movilPanelRadar \.escaparate-oferta \.emi-pie\{display:flex;align-items:center;flex-direction:row/.test(css) &&
-  /#movilPanelRadar \.escaparate-oferta \.escaparate-detalle-boton,[\s\S]{0,100}min-height:44px/.test(css));
+{
+  const detalleOfertaParaPruebas = js.slice(js.indexOf('function abrirDetalleOfertaLocal('),
+    js.indexOf('function refrescarDetalleOfertaAbierto('));
+  prueba('la ficha conserva el enlace al mercado secundario y distingue su ficha oficial',
+    /urlFicha=urlHttps\(o\.url\),urlMercado=urlHttps\(o\.urlMercado\)/.test(detalleOfertaParaPruebas) &&
+    detalleOfertaParaPruebas.includes("secundario&&urlMercado?'<a class=\"emi-ir\" href=\"'+escHtml(urlMercado)") &&
+    /Abrir mercado ↗/.test(detalleOfertaParaPruebas) &&
+    /secundario\?'Ficha oficial':'Consultar fuente'/.test(detalleOfertaParaPruebas));
+}
+// REGRESION_TARJETAS_EDITORIALES: fixtures sintéticos, sin consultar ni editar
+// el catálogo real. Se comprueba el HTML generado, no solo CSS que lo esconda.
+{
+  const p = pestanaCatalogo();
+  const fuentes = ['https://proveedor.example.test/ficha', 'https://documentos.example.test/referencia'];
+  const literal = 'Método publicado: rendimiento anual simple de referencia, antes de gastos e impuestos. ' +
+    'La ventana documental no garantiza rentabilidad futura ni disponibilidad. REFERENCIA_INTEGRA_FINAL.';
+  const unidad = 'Precio publicado por participación indivisible, denominada en euros y sin incluir comisiones. ' +
+    'La unidad no representa el inmueble completo ni garantiza liquidez. UNIDAD_INTEGRA_FINAL.';
+  const descripcion = 'DOCUMENTO_LARGO_SOLO_EN_FICHA. ' +
+    'Texto documental completo que explica la estructura, los derechos, los costes y sus límites. '.repeat(15) +
+    'DOCUMENTO_FINAL_INTEGRO.';
+  const avisoCritico = 'Acceso restringido a clientes elegibles: confirma los requisitos antes de contratar.';
+  const avisoAmpliado = 'AVISO_COMPLETO_SOLO_EN_FICHA. ' +
+    'La información publicada no garantiza apertura, liquidez ni recuperación del capital. '.repeat(4) +
+    'AVISO_FINAL_INTEGRO.';
+  const base = {
+    catalogo:true, slug:'regresion-rendimiento', coleccion:'principales', tipo:'rendimiento',
+    titulo:'Activo sintético de regresión', plataformaNombre:'Proveedor sintético',
+    plataformaSlug:'proveedor-sintetico', categoria:'Inmobiliario', pais:'ES',
+    resumen:'RESUMEN_COMPLETO_SOLO_EN_FICHA. Condiciones y contexto de la oferta sintética.',
+    url:fuentes[0], urlMercado:'https://proveedor.example.test/mercado',
+    verificadaEl:'2026-09-30', vigenciaDias:7, estadoRevision:'actual', disponibleEs:true,
+    rentabilidad:{mostrada:'6,50 %', literal}, precio:{mostrada:'100 EUR', unidad},
+    metricas:[
+      {etiqueta:'Entrada mínima', valor:'AUXILIAR_ENTRADA_SOLO_EN_FICHA 100 EUR'},
+      {etiqueta:'Estructura', valor:'AUXILIAR_PLAZO_SOLO_EN_FICHA 24 meses'},
+      {etiqueta:'Garantía / uso', valor:'AUXILIAR_GARANTIA_SOLO_EN_FICHA'},
+    ],
+    // El aviso crítico se coloca después del ordinario para probar su prioridad.
+    avisos:[{tono:'warn', texto:avisoAmpliado}, {tono:'stop', texto:avisoCritico}],
+    fuentesActuales:fuentes,
+    documentacion:{
+      revisadaEl:'2026-09-29', descripcion, fuentes,
+      caracteristicas:[{etiqueta:'Derechos documentados', valor:'CARACTERISTICA_COMPLETA_SOLO_EN_FICHA'}],
+      referencias:[{
+        etiqueta:'Referencia económica histórica', valor:'DATO_DOCUMENTAL_COMPLETO 5,00 %',
+        alcance:'Alcance documental íntegro: dato histórico con fecha, no una condición actual. ALCANCE_FINAL_INTEGRO.',
+        fechaDato:'2026-09-28', fechaConsulta:'2026-09-29', fuente:fuentes[1],
+      }],
+    },
+  };
+  const casos = [
+    {nombre:'rendimiento vigente', cambios:{}, estado:'vigente 7 d'},
+    {nombre:'valor vigente', cambios:{slug:'regresion-valor', tipo:'valor'}, estado:'vigente 7 d'},
+    {nombre:'caducada con documentación reciente', cambios:{slug:'regresion-caducada', verificadaEl:'2026-09-01', vigenciaDias:1}, estado:'cifras por actualizar'},
+    {nombre:'apertura no confirmada', cambios:{slug:'regresion-apertura', estadoRevision:'no_verificable'}, estado:'apertura no confirmada'},
+    {nombre:'fuentes en conflicto', cambios:{slug:'regresion-conflicto', estadoRevision:'fuentes_en_conflicto'}, estado:'fuentes en conflicto'},
+    {nombre:'mercado secundario', cambios:{slug:'regresion-secundario', coleccion:'secundario', tipo:'secundario'}, estado:'Liquidez no confirmada'},
+    {nombre:'anuncio en camino', cambios:{slug:'regresion-en-camino', coleccion:'en_camino'}, estado:'Apertura no confirmada'},
+    {nombre:'restricción territorial', cambios:{slug:'regresion-no-es', disponibleEs:false}, estado:'No disponible en España'},
+    {nombre:'patrocinio declarado', cambios:{slug:'regresion-patrocinada', patrocinada:true}, estado:'Patrocinada'},
+  ];
+  const ofertas = casos.map(caso => ({...base, ...caso.cambios}));
+  vm.runInContext(`EMI.splice(0, EMI.length, ...${JSON.stringify(ofertas)});`, p.contexto);
+  for (let i = 0; i < casos.length; i++) {
+    const caso = casos[i], oferta = ofertas[i];
+    const render = vm.runInContext(`(() => {
+      const o = EMI[${i}], estado = estadoVigenciaLocal(o);
+      const tarjeta = tarjetaOfertaLocal(o, {secundario:o.coleccion==='secundario'});
+      abrirDetalleOfertaLocal(o.slug);
+      const d = document.getElementById('escaparateDetalleLocal');
+      return {tarjeta, detalle:d.innerHTML, abierto:d.open, valida:!!ofertaLocalValida(o),
+        docValida:!!documentacionOfertaLocal(o), vigente:estado.clase!=='caducado',
+        metricas:metricasOfertaLocal(o), avisos:avisosOfertaLocal(o),
+        referencia:estado.clase==='caducado'?'':textoLocal(tipoOfertaLocal(o)==='rendimiento'?o.rentabilidad.literal:o.precio.unidad),
+        titulo:escHtml(o.titulo), proveedor:escHtml(o.plataformaNombre),
+        estado:escHtml(estado.texto), fecha:fechaES(o.documentacion.revisadaEl)};
+    })()`, p.contexto);
+    const {tarjeta, detalle} = render;
+    const cuerpo = tarjeta.slice(tarjeta.indexOf('<div class="escaparate-cuerpo">'));
+    /* «☆ Guardar» (favoritos locales, solo móvil) se comprueba aparte. */
+    const todosBotones = [...tarjeta.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)];
+    const botones = todosBotones.filter(b => atributoHTML(b[1], 'data-guardar-oferta') === null);
+    prueba(`tarjeta ${caso.nombre}: un botón «Guardar» solo para el móvil, con su oferta`,
+      todosBotones.filter(b => atributoHTML(b[1], 'data-guardar-oferta') === oferta.slug &&
+        /\bfav-local\b/.test(atributoHTML(b[1], 'class') || '')).length === 1);
+    prueba(`tarjeta ${caso.nombre}: fixture válido y documento largo aceptado`, render.valida && render.docValida);
+    prueba(`tarjeta ${caso.nombre}: imagen, título, proveedor y un solo dato siguen el orden de lectura`,
+      /<img\b[^>]*alt="[^"]+"[^>]*loading="lazy"[^>]*width="\d+"[^>]*height="\d+"/.test(tarjeta) &&
+      tarjeta.indexOf('escaparate-imagen') < tarjeta.indexOf('escaparate-cuerpo') &&
+      cuerpo.includes('<h3 class="emi-tit">'+render.titulo+'</h3>') &&
+      cuerpo.includes('<div class="emi-donde"><b>'+render.proveedor+'</b></div>') &&
+      cuerpo.indexOf('<h3') < cuerpo.indexOf('class="emi-donde"') &&
+      cuerpo.indexOf('class="emi-donde"') < cuerpo.indexOf('class="escaparate-dato-principal"') &&
+      (cuerpo.match(/class="escaparate-dato-principal"/g)||[]).length === 1 &&
+      !/escaparate-destacado/.test(tarjeta));
+    prueba(`tarjeta ${caso.nombre}: no contiene documento, descripción, métricas auxiliares ni enlaces externos`,
+      !/<a\b|catalogo-descripcion|escaparate-metrica|escaparate-disponibilidad/.test(tarjeta) &&
+      !['DOCUMENTO_LARGO_SOLO_EN_FICHA','DOCUMENTO_FINAL_INTEGRO','RESUMEN_COMPLETO_SOLO_EN_FICHA',
+        'AUXILIAR_ENTRADA_SOLO_EN_FICHA','AUXILIAR_PLAZO_SOLO_EN_FICHA','AUXILIAR_GARANTIA_SOLO_EN_FICHA',
+        'CARACTERISTICA_COMPLETA_SOLO_EN_FICHA','DATO_DOCUMENTAL_COMPLETO','AVISO_COMPLETO_SOLO_EN_FICHA']
+        .some(marca => tarjeta.includes(marca)));
+    prueba(`tarjeta ${caso.nombre}: conserva el estado y prioriza el aviso crítico íntegro`,
+      tarjeta.includes(caso.estado) && tarjeta.includes('escaparate-estado-linea') &&
+      tarjeta.includes('escaparate-aviso-bloqueo') && tarjeta.includes(avisoCritico));
+    prueba(`tarjeta ${caso.nombre}: fecha documental y único botón Ver ficha con nombre accesible`,
+      /<time\b[^>]*datetime="2026-09-29"/.test(tarjeta) && tarjeta.includes(render.fecha) &&
+      botones.length === 1 && atributoHTML(botones[0][1], 'type') === 'button' &&
+      atributoHTML(botones[0][1], 'data-oferta-detalle') === oferta.slug &&
+      atributoHTML(botones[0][1], 'aria-label').startsWith('Ver ficha de ') &&
+      atributoHTML(botones[0][1], 'aria-label').includes(render.titulo) &&
+      atributoHTML(botones[0][1], 'aria-label').includes(render.proveedor) &&
+      /Ver ficha/.test(botones[0][2]));
+    prueba(`tarjeta ${caso.nombre}: la referencia de cifra vigente no se trunca ni revive cifras caducadas`,
+      render.vigente ? tarjeta.includes(render.referencia) && detalle.includes(render.referencia) :
+      !tarjeta.includes(literal) && !tarjeta.includes(unidad) && !/6,50 %|100 EUR/.test(tarjeta));
+    prueba(`ficha ${caso.nombre}: abre y conserva documento, características, referencias y avisos completos`,
+      render.abierto && /<h2 id="escaparateDetalleTitulo">/.test(detalle) &&
+      /data-cerrar-detalle aria-label="Cerrar detalle"/.test(detalle) &&
+      detalle.includes(descripcion) && detalle.includes(oferta.documentacion.caracteristicas[0].valor) &&
+      oferta.documentacion.referencias.every(r => [r.etiqueta,r.valor,r.alcance].every(v=>detalle.includes(v))) &&
+      detalle.includes('28.09.2026') && detalle.includes('29.09.2026') &&
+      detalle.includes(avisoAmpliado) && detalle.includes(avisoCritico) &&
+      render.avisos.every(aviso => detalle.includes(aviso)) &&
+      render.metricas.every(m => detalle.includes(m.etiqueta) && detalle.includes(m.valor)) &&
+      (render.vigente ? detalle.includes(oferta.resumen) &&
+        oferta.metricas.every(m=>detalle.includes(m.etiqueta) && detalle.includes(m.valor)) : detalle.includes(render.estado)));
+    const enlaces = [...detalle.matchAll(/<a\b([^>]*)>/g)].map(m=>m[1]);
+    const urlsEsperadas = [...new Set([...fuentes, oferta.url, ...(oferta.tipo==='secundario'?[oferta.urlMercado]:[])])];
+    prueba(`ficha ${caso.nombre}: las fuentes y enlaces completos permanecen fuera de la tarjeta`,
+      urlsEsperadas.every(url=>enlaces.some(a=>atributoHTML(a,'href')===url)) &&
+      enlaces.every(a=>atributoHTML(a,'target')==='_blank' &&
+        /\bnoopener\b/.test(atributoHTML(a,'rel')) && /\bnofollow\b/.test(atributoHTML(a,'rel'))) &&
+      (oferta.tipo!=='secundario' || detalle.includes('Abrir mercado ↗') && detalle.includes('Ficha oficial')));
+    prueba(`ficha ${caso.nombre}: los nombres accesibles conservan la etiqueta visible de cada enlace`,
+      [...detalle.matchAll(/<a\b([^>]*)>([^<]*)<\/a>/g)].every(m => {
+        const visible = m[2].replace(/ ↗$/, '').trim();
+        return atributoHTML(m[1], 'aria-label').startsWith(visible);
+      }));
+  }
+  prueba('las tarjetas editoriales no convierten los datos documentales en un ranking',
+    !/Ordenar por puntuaci[oó]n/.test(js));
+  const reglasImagen = declaracionesCSS(cssBase, '.escaparate-imagen');
+  const reglasImagenMovil = declaracionesCSS(cssMovil, '#movilPanelRadar .escaparate-oferta .escaparate-imagen');
+  prueba('las tarjetas mantienen portada 16/10 en escritorio y móvil',
+    reglasImagen.some(d=>/aspect-ratio\s*:\s*16\s*\/\s*10/.test(d)) &&
+    reglasImagenMovil.some(d=>/aspect-ratio\s*:\s*16\s*\/\s*10/.test(d)) &&
+    !reglasImagenMovil.some(d=>/aspect-ratio\s*:\s*16\s*\/\s*7\.7/.test(d)));
+  const controles = ['.escaparate-detalle-boton','.escaparate-oferta .escaparate-detalle-boton',
+    '#movilPanelRadar .escaparate-oferta .escaparate-detalle-boton'];
+  const reglasBoton = controles.flatMap(selector=>declaracionesCSS(css,selector));
+  prueba('Ver ficha mantiene diana de al menos 44 px y foco visible sin override táctil menor',
+    reglasBoton.some(d=>/min-height\s*:\s*44px/.test(d)) &&
+    reglasBoton.every(d=>[...d.matchAll(/min-height\s*:\s*(\d+(?:\.\d+)?)px/g)].every(m=>Number(m[1])>=44)) &&
+    declaracionesCSS(css,'.escaparate-detalle-boton:focus-visible').some(d=>/outline\s*:\s*[1-9]\d*px/.test(d)));
+  const reglasSeguridad = ['.escaparate-referencia','.escaparate-dato-principal .escaparate-referencia',
+    '.escaparate-dialogo-dato .escaparate-referencia','.escaparate-aviso-compacto',
+    '.escaparate-estado.escaparate-estado-linea'].flatMap(selector=>declaracionesCSS(css,selector));
+  prueba('referencia obligatoria, aviso crítico y estado no se ocultan ni recortan por CSS',
+    reglasSeguridad.length >= 5 && reglasSeguridad.every(d=>
+      !/(?:line-clamp|text-overflow\s*:\s*ellipsis|overflow(?:-y)?\s*:\s*hidden|display\s*:\s*none|visibility\s*:\s*hidden)/.test(d)));
+}
+// FIN_REGRESION_TARJETAS_EDITORIALES
 prueba('el secundario usa filas compactas y la carga local devuelve los controles visibles',
   /function filaSecundariaLocal\(o\)/.test(js) && /sec\.map\(filaSecundariaLocal\)/.test(js) &&
   /seccion\.classList\.remove\('sin-emisiones'\)/.test(js));
@@ -2017,10 +2168,16 @@ prueba('cada tarjeta compacta conserva la información completa en un diálogo a
   /function abrirDetalleOfertaLocal\(slug\)/.test(js) && /showModal/.test(js) &&
   /aria-labelledby/.test(js) && /data-cerrar-detalle/.test(js) &&
   /Instantánea interna/.test(js));
-prueba('los controles compactos distinguen cada oferta y anuncian el filtro seleccionado',
-  /aria-label="Ver detalles de /.test(js) && /aria-label="Abrir mercado para /.test(js) &&
-  js.includes("escHtml(textoEnlace+' · '+o.titulo+' · '+o.plataformaNombre)") &&
-  js.includes("'Ver oferta en '+o.plataformaNombre") && /aria-pressed="/.test(js));
+{
+  const p = pestanaCatalogo();
+  vm.runInContext("ESCAPARATE_LOCAL={ofertas:[{tipo:'rendimiento'},{tipo:'valor'}]};emiTipoLocal='valor';pintarTiposOfertaLocal();", p.contexto);
+  const filtros = [...p.obtiene('emiTipoFiltros').innerHTML.matchAll(/<button\b([^>]*)>/g)].map(m=>m[1]);
+  prueba('los controles compactos distinguen cada oferta y anuncian el filtro seleccionado',
+    /aria-label="Ver ficha de /.test(js) && /aria-label="Detalle de /.test(js) && /aria-label="Abrir mercado para /.test(js) &&
+    js.includes("data-oferta-detalle=\"'+escHtml(o.slug)") &&
+    filtros.length === 3 && filtros.every(f=>atributoHTML(f,'aria-pressed') ===
+      (atributoHTML(f,'data-emi-tipo') === 'valor' ? 'true' : 'false')));
+}
 prueba('el secundario conserva dianas táctiles y microtexto legible en móvil',
   /\.escaparate-sec-enlaces a,\.escaparate-sec-enlaces button\{min-height:40px/.test(css) &&
   /\.escaparate-sec-cifras small\{[^}]*font:600 \.6rem/.test(css));

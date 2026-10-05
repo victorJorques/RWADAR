@@ -62,8 +62,17 @@ function rentabilidadSecundaria(oferta) {
 
 function avisosCriticos(oferta) {
   return (oferta?.avisos || [])
-    .filter((aviso) => aviso.tono === 'warn' || aviso.tono === 'stop')
+    .filter((aviso) => (aviso.tono === 'warn' || aviso.tono === 'stop')
+      && (!aviso.esAntiguedad || aviso.tono === 'stop'))
     .sort((a, b) => Number(b.tono === 'stop') - Number(a.tono === 'stop'));
+}
+
+function dominioFuente(url) {
+  try {
+    const fuente = new URL(url);
+    if (fuente.protocol !== 'https:' || fuente.username || fuente.password) return 'fuente oficial';
+    return fuente.hostname.replace(/^www\./, '');
+  } catch { return 'fuente oficial'; }
 }
 
 function tipoVisible(tipo, coleccion) {
@@ -141,17 +150,15 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
   const vigencia = vigenciaOferta(oferta, ahora);
   const destacado = datoDestacado(oferta);
-  const rentabilidadSec = rentabilidadSecundaria(oferta);
   const criticos = avisosCriticos(oferta);
   const primerCritico = criticos[0];
   const etiquetaAccesible = [
-    oferta.titulo, oferta.plataformaNombre,
+    `Ver ficha de ${oferta.titulo}`, oferta.plataformaNombre,
     ETIQUETA_EDITORIAL,
     oferta.patrocinada ? 'Contenido patrocinado; no altera el ranking' : null,
     `${destacado.etiqueta}: ${destacado.valor}`,
     destacado.referencia,
     documentacion?.etiqueta,
-    rentabilidadSec ? `Rentabilidad ajustada o publicada: ${rentabilidadSec}` : null,
     vigencia.etiqueta,
     primerCritico
       ? `${primerCritico.tono === 'stop' ? 'Aviso bloqueante' : 'Precaución'}: ${primerCritico.texto}`
@@ -171,29 +178,21 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
         <View style={e.tipoPastilla}>
           <Text style={e.tipoPastillaTxt}>{tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
         </View>
-        <Text style={[e.vigenciaSobreImagen, tonoVigencia(vigencia.estado)]} numberOfLines={1}>
-          {vigencia.etiqueta}
-        </Text>
       </View>
       <View style={e.cuerpoFicha}>
         {oferta.patrocinada ? <Text style={e.patrocinada}>PATROCINADA</Text> : null}
-        <Text style={e.plataforma} numberOfLines={1}>{oferta.plataformaNombre}</Text>
         <Text style={e.titulo} numberOfLines={2}>{oferta.titulo}</Text>
-        {documentacion?.descripcion ? <Text style={e.referencia} numberOfLines={3}>{documentacion.descripcion}</Text> : null}
-        {documentacion ? <Text style={e.referencia}>{documentacion.etiqueta}</Text> : null}
+        <Text style={e.plataforma} numberOfLines={1}>{oferta.plataformaNombre}</Text>
         <View style={e.datosCompactos}>
           <View style={e.datoCompacto}>
-            <Text style={e.datoEtiqueta} numberOfLines={1}>{oferta.cifrasPendientes ? destacado.etiqueta : etiquetaDatoCompacta(oferta.tipo)}</Text>
-            <Text style={e.datoValor} numberOfLines={1}>{destacado.valor}</Text>
+            <Text style={e.datoEtiqueta}>{oferta.cifrasPendientes ? destacado.etiqueta : etiquetaDatoCompacta(oferta.tipo)}</Text>
+            <Text style={e.datoValor}>{destacado.valor}</Text>
           </View>
-          {rentabilidadSec ? (
-            <View style={[e.datoCompacto, e.datoCompactoSecundario]}>
-              <Text style={e.datoEtiqueta} numberOfLines={1}>RENT. AJUSTADA</Text>
-              <Text style={e.datoValor} numberOfLines={1}>{rentabilidadSec}</Text>
-            </View>
-          ) : null}
         </View>
+        {/* Una cifra conserva su ventana/unidad completa. La compactación
+            elimina bloques duplicados, nunca la condición de una cifra. */}
         {destacado.referencia ? <Text style={e.referencia}>{destacado.referencia}</Text> : null}
+        <Text style={[e.estadoFicha, tonoVigencia(vigencia.estado)]}>{vigencia.etiqueta}</Text>
         {primerCritico ? (
           <View style={[
             e.avisoFicha,
@@ -202,12 +201,18 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
             <Text style={[
               e.avisoFichaTxt,
               primerCritico.tono === 'stop' ? e.avisoTxtStop : e.avisoTxtWarn,
-            ]} numberOfLines={1}>
-              {primerCritico.tono === 'stop' ? 'BLOQUEO' : 'REVISAR'} · {primerCritico.texto}
-              {criticos.length > 1 ? ` · +${criticos.length - 1}` : ''}
+            ]}>
+              {primerCritico.tono === 'stop' ? 'IMPORTANTE' : 'ATENCIÓN'} · {primerCritico.texto}
+              {criticos.length > 1 ? ` · ${criticos.length - 1} más en la ficha` : ''}
             </Text>
           </View>
         ) : null}
+        <View style={e.pieFicha}>
+          <Text style={e.fechaFicha}>
+            {documentacion ? `Doc. ${fechaVerificacionLocalVisible(documentacion.fecha)}` : 'Fecha sin verificar'}
+          </Text>
+          <Text style={e.abrirFicha}>Ver ficha →</Text>
+        </View>
       </View>
     </Pressable>
   );
@@ -356,8 +361,8 @@ export function DetalleOferta({
                     <Text style={e.referencia}>{referencia.alcance}</Text>
                     <Pressable onPress={() => onAbrirEnlace(referencia.fuente)}
                       style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
-                      accessibilityRole="link" accessibilityLabel={`Fuente de ${referencia.etiqueta}: ${referencia.fuente}`}>
-                      <Text style={e.enlaceSecundarioTxt}>Fuente: {referencia.fuente} ↗</Text>
+                      accessibilityRole="link" accessibilityLabel={`Ver fuente · ${dominioFuente(referencia.fuente)} de ${referencia.etiqueta}: ${referencia.fuente}`}>
+                      <Text style={e.enlaceSecundarioTxt}>Ver fuente · {dominioFuente(referencia.fuente)} ↗</Text>
                     </Pressable>
                   </View>
                 ))}
@@ -409,8 +414,8 @@ export function DetalleOferta({
                 {documentacion.fuentes.map((url, indice) => (
                   <Pressable key={url} onPress={() => onAbrirEnlace(url)}
                     style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
-                    accessibilityRole="link" accessibilityLabel={`Abrir fuente ${indice + 1}: ${url}`}>
-                    <Text style={e.enlaceSecundarioTxt}>Fuente {indice + 1}: {url} ↗</Text>
+                    accessibilityRole="link" accessibilityLabel={`Ver fuente ${indice + 1} · ${dominioFuente(url)}: ${url}`}>
+                    <Text style={e.enlaceSecundarioTxt}>Ver fuente {indice + 1} · {dominioFuente(url)} ↗</Text>
                   </Pressable>
                 ))}
               </View>
@@ -478,13 +483,13 @@ const e = StyleSheet.create({
   imagenEditorialMarco: { position: 'relative', overflow: 'hidden' },
   imagenEditorial: { width: '100%', height: '100%' },
   etiquetaEditorial: {
-    position: 'absolute', left: 10, top: 44, zIndex: 2,
+    position: 'absolute', left: 10, bottom: 8, zIndex: 2,
     paddingHorizontal: 8, paddingVertical: 5, borderRadius: 999,
     backgroundColor: 'rgba(8,10,13,0.86)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.22)',
     color: '#FFFFFF', fontFamily: F.mono, fontSize: 10, fontWeight: '700',
     letterSpacing: 0.5,
   },
-  imagenFicha: { width: '100%', aspectRatio: 16 / 9, position: 'relative', backgroundColor: C.sup3 },
+  imagenFicha: { width: '100%', aspectRatio: 2, position: 'relative', backgroundColor: C.sup3 },
   imagenEnFicha: { height: '100%' },
   imagenGrande: { height: 220, borderRadius: R.ficha },
   imagenFallback: { alignItems: 'center', justifyContent: 'center' },
@@ -494,42 +499,37 @@ const e = StyleSheet.create({
     borderWidth: 1, borderColor: C.linea2, borderRadius: R.pastilla,
     paddingHorizontal: 7, paddingVertical: 4,
   },
-  tipoPastillaTxt: { ...T.etiqueta, color: C.tx, fontSize: 9 },
-  vigenciaSobreImagen: {
-    ...T.dato, position: 'absolute', right: 8, bottom: 8, maxWidth: '82%',
-    color: C.tx2, backgroundColor: 'rgba(8, 18, 17, 0.9)', borderWidth: 1,
-    borderColor: C.linea2, borderRadius: R.pastilla, paddingHorizontal: 7, paddingVertical: 4,
-    overflow: 'hidden', fontSize: 9.5,
-  },
+  tipoPastillaTxt: { ...T.etiqueta, color: C.tx, fontSize: 11 },
+  estadoFicha: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 12, lineHeight: 17, marginTop: 8 },
   vigenciaOk: { color: C.senal, borderColor: C.senal34 },
   vigenciaProxima: { color: '#F2B23C', borderColor: '#665126' },
   vigenciaVencida: { color: C.coral, borderColor: C.coral32 },
-  cuerpoFicha: { padding: 11 },
+  cuerpoFicha: { padding: 12 },
   patrocinada: {
     ...T.etiqueta, alignSelf: 'flex-start', color: C.noche, backgroundColor: C.senal,
     borderRadius: R.pastilla, paddingHorizontal: 7, paddingVertical: 3, marginBottom: 7,
   },
-  plataforma: { ...T.etiqueta, color: C.tx2, marginBottom: 4 },
-  titulo: { ...T.ficha, color: C.tx, fontSize: 16, lineHeight: 20 },
+  plataforma: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 12, lineHeight: 17, marginTop: 3 },
+  titulo: { ...T.ficha, color: C.tx, fontSize: 17, lineHeight: 21 },
   datosCompactos: {
     flexDirection: 'row', gap: 9, marginTop: 9, paddingTop: 8,
     borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2,
   },
   datoCompacto: { flex: 1, minWidth: 0 },
-  datoCompactoSecundario: {
-    borderLeftWidth: StyleSheet.hairlineWidth, borderLeftColor: C.linea2, paddingLeft: 9,
-  },
+  pieFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginTop: 10 },
+  fechaFicha: { ...T.menor, color: C.tx2, fontSize: 12, lineHeight: 17 },
+  abrirFicha: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 12, lineHeight: 17 },
   avisoFicha: {
     borderWidth: 1, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 5, marginTop: 8,
   },
   avisoFichaStop: { backgroundColor: C.coral10, borderColor: C.coral32 },
   avisoFichaWarn: { backgroundColor: '#2B2416', borderColor: '#6F592B' },
-  avisoFichaTxt: { ...T.menor, fontFamily: F.semi, fontSize: 10.5, lineHeight: 14 },
+  avisoFichaTxt: { ...T.menor, fontFamily: F.media, fontSize: 12, lineHeight: 17 },
   avisoTxtStop: { color: C.coral },
   avisoTxtWarn: { color: '#F2B23C' },
   avisoTxtOk: { color: C.senal },
-  datoEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 4 },
-  datoValor: { ...T.dato, color: C.tx, fontSize: 13, lineHeight: 17 },
+  datoEtiqueta: { ...T.etiqueta, color: C.tx2, fontSize: 11.5, lineHeight: 16, marginBottom: 4 },
+  datoValor: { ...T.dato, color: C.tx, fontSize: 17, lineHeight: 22 },
   modal: { flex: 1, backgroundColor: C.noche },
   cabeceraModal: {
     flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingHorizontal: 18,
@@ -561,7 +561,7 @@ const e = StyleSheet.create({
   referenciaDocumental: { backgroundColor: C.sup2, borderRadius: R.m, padding: 13, marginTop: 12 },
   parrafo: { ...T.cuerpo, color: C.tx, marginVertical: 18 },
   destacado: { backgroundColor: C.sup2, borderRadius: R.m, padding: 15, marginBottom: 14 },
-  referencia: { color: C.tx2, fontSize: 11, lineHeight: 15, marginTop: 4 },
+  referencia: { ...T.menor, color: C.tx2, fontSize: 12, lineHeight: 18, marginTop: 5 },
   destacadoSecundario: {
     backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34,
     borderRadius: R.m, padding: 15, marginBottom: 14,
@@ -569,11 +569,11 @@ const e = StyleSheet.create({
   destacadoValor: { ...T.ficha, color: C.tx, fontSize: 21 },
   tabla: { borderWidth: 1, borderColor: C.linea, borderRadius: R.m, overflow: 'hidden' },
   filaMetrica: {
-    flexDirection: 'row', gap: 14, paddingHorizontal: 13, paddingVertical: 11,
+    gap: 5, paddingHorizontal: 13, paddingVertical: 12,
     borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2,
   },
-  metricaEtiqueta: { ...T.menor, color: C.tx2, flex: 1 },
-  metricaValor: { ...T.dato, color: C.tx, flex: 1, textAlign: 'right', lineHeight: 17 },
+  metricaEtiqueta: { ...T.menor, fontFamily: F.media, color: C.tx2 },
+  metricaValor: { ...T.cuerpo, color: C.tx, lineHeight: 21 },
   avisos: { backgroundColor: C.sup, borderRadius: R.m, padding: 14, marginTop: 14 },
   avisosTitulo: { ...T.etiqueta, color: '#F2B23C', marginBottom: 8 },
   avisoFila: {
@@ -591,7 +591,7 @@ const e = StyleSheet.create({
   enlaceTxt: { fontFamily: F.negrita, color: C.noche, fontSize: 15 },
   enlaceSecundario: {
     minHeight: UI.boton, borderWidth: 1, borderColor: C.linea2, borderRadius: R.m,
-    marginTop: 10, alignItems: 'center', justifyContent: 'center',
+    marginTop: 10, paddingHorizontal: 12, paddingVertical: 10, alignItems: 'center', justifyContent: 'center',
   },
   enlaceSecundarioTxt: { fontFamily: F.semi, color: C.tx, fontSize: 14 },
   deshabilitado: { opacity: 0.45 },

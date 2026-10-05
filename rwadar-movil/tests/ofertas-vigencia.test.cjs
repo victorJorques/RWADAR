@@ -90,17 +90,27 @@ function cargarFuncionesWeb(contexto, nombres) {
 test('web y móvil conservan el último día completo y retiran cifras al siguiente, aunque el lote siga vigente', () => {
   for (const permanente of [false, true]) {
     const dato = { ...oferta, permanente, catalogo: true };
-    const webVigente = cargarWeb(ultimoDia).contexto;
-    const webCaducada = cargarWeb(caducada).contexto;
+    const vistaVigente = cargarWeb(ultimoDia);
+    const vistaCaducada = cargarWeb(caducada);
+    const webVigente = vistaVigente.contexto;
+    const webCaducada = vistaCaducada.contexto;
     assert.notEqual(webVigente.estadoVigenciaLocal(dato).clase, 'caducado');
     assert.equal(webCaducada.estadoVigenciaLocal(dato).clase, 'caducado');
     assert.equal(movil.cifrasOfertaVigentes(dato, ultimoDia), true);
     assert.equal(movil.cifrasOfertaVigentes(dato, caducada), false);
     assert.match(webVigente.tarjetaOfertaLocal(dato), /97,13/);
-    assert.match(webVigente.tarjetaOfertaLocal(dato), /aria-label="Ver oferta en Proveedor · Oferta de prueba · Proveedor"/);
+    assert.match(webVigente.tarjetaOfertaLocal(dato), /aria-label="Ver ficha de Oferta de prueba en Proveedor"/);
     assert.doesNotMatch(webCaducada.tarjetaOfertaLocal(dato), centinelas);
     assert.match(webCaducada.tarjetaOfertaLocal(dato), /Consultar emisor/);
-    assert.match(webCaducada.tarjetaOfertaLocal(dato), /aria-label="Consultar fuente · Oferta de prueba · Proveedor"/);
+    assert.match(webCaducada.tarjetaOfertaLocal(dato), /aria-label="Ver ficha de Oferta de prueba en Proveedor"/);
+    for (const vista of [vistaVigente, vistaCaducada]) {
+      vista.contexto.ESCAPARATE_LOCAL = { ofertas: [dato], secundario: [] };
+      assert.doesNotMatch(vista.contexto.tarjetaOfertaLocal(dato), /href=/);
+      vista.contexto.abrirDetalleOfertaLocal(dato.slug);
+      assert.ok(vista.dialogo.innerHTML.includes(`href="${dato.url}"`));
+    }
+    assert.match(vistaVigente.dialogo.innerHTML, /97,13/);
+    assert.doesNotMatch(vistaCaducada.dialogo.innerHTML, centinelas);
     assert.equal(movil.ofertaConCifrasVigentes(dato, caducada).precio, null);
   }
 });
@@ -392,10 +402,12 @@ test('las 28 fichas reales conservan documentación y referencias fechadas en we
     const tarjetaWeb = contexto.tarjetaOfertaLocal(o);
     const tarjetaMovil = textoRenderizado(componentes.FichaOferta({ oferta: o }));
     for (const tarjeta of [tarjetaWeb, tarjetaMovil]) {
-      assert.match(tarjeta, /Referencia documentada/);
+      assert.match(tarjeta, /Doc\./);
       assert.match(tarjeta, /Consultar emisor/);
       assert.doesNotMatch(tarjeta, /Pendiente de revisión/);
     }
+    assert.ok(tarjetaWeb.includes(`datetime="${doc.revisadaEl}"`), o.slug);
+    assert.ok(tarjetaMovil.includes(movil.fechaVerificacionLocalVisible(doc.revisadaEl)), o.slug);
     assert.ok(tarjetaWeb.includes('data-oferta-detalle="'+o.slug+'"'));
     assert.equal(contexto.ofertaDetalleLocalPorSlug(o.slug), o);
     contexto.abrirDetalleOfertaLocal(o.slug);

@@ -186,10 +186,13 @@ test('la ficha compacta prioriza imagen y una parada accesible, y las exclusione
   assert.equal((imagen.match(/importantForAccessibility=\{decorativa \? 'no-hide-descendants' : 'auto'\}/g) || []).length, 2);
   assert.match(ficha, /<ImagenOferta oferta=\{oferta\} decorativa estilo=\{e\.imagenEnFicha\} \/>/);
   assert.match(ficha, /accessibilityHint="Abre la ficha completa de la oferta"/);
-  assert.doesNotMatch(ficha, /oferta\.resumen|VER →|criticos\.slice\(0, 2\)/);
+  assert.doesNotMatch(ficha, /oferta\.resumen|documentacion\.descripcion|rentabilidadSecundaria\(|VER →|criticos\.slice\(0, 2\)/);
   assert.match(ficha, /numberOfLines=\{2\}>\{oferta\.titulo\}/);
   assert.match(ficha, /const primerCritico = criticos\[0\]/);
   assert.match(ficha, /aspectRatio|imagenFicha/);
+  assert.match(ficha, /Doc\. \$\{fechaVerificacionLocalVisible\(documentacion\.fecha\)\}/);
+  assert.match(ficha, /Ver ficha →/);
+  assert.doesNotMatch(ficha, /vigenciaSobreImagen|datoCompactoSecundario/);
   assert.match(detalle, /<ImagenOferta oferta=\{oferta\} grande \/>/);
 
   assert.match(exclusiones, /const \[abiertas, setAbiertas\] = useState\(false\)/);
