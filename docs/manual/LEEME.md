@@ -21,7 +21,26 @@ campos de la ficha (Estado operativo, Licencia / registro, Acceso, Alerta
 crítica, Revisión editorial), los filtros (región, acceso, entrada, búsqueda),
 el comparador de hasta tres, el CSV y «Fuera del radar».
 
-**Hay que corregir dos cosas antes de ofrecerlo:**
+**Había que corregir dos cosas antes de ofrecerlo. Ya hay una versión
+corregida, pendiente del visto bueno de Eric:**
+[`RWAdar_Como_Usar_RWAdar_2026_corregido.pdf`](RWAdar_Como_Usar_RWAdar_2026_corregido.pdf)
+(sha256 `85f3bd5b…3b4a`). La genera [`corregir-manual.py`](corregir-manual.py)
+a partir del original, que no se toca. Usa la misma letra (Carlito), con el
+mismo tamaño, color e interlineado. Las páginas 1–6, 8 y 10 salen idénticas
+píxel a píxel, y el texto viejo se elimina de verdad, no se tapa. Solo
+cambian estas dos:
+
+- **Página 9:** el título pasa a «Su cuenta: su lista de vigilancia».
+  Arriba, lo que la cuenta hace hoy: guardar la lista y volver a ella. El
+  párrafo «Por qué importa» es el de Eric, sin tocar. «Qué recibirá a partir
+  de ahora» pasa a «Próximamente: las guías de la serie», con la misma tabla
+  y la aclaración de que llegarán solo si la persona lo pide. La Academy
+  tiene «siete lecciones publicadas … y dos más en preparación». Los avisos
+  por correo se anuncian como próximamente, opcionales y con baja en un clic.
+- **Página 7:** el Checklist «llegará próximamente a la web, de descarga
+  libre y sin registro».
+
+Lo que se corrigió y por qué:
 
 1. **Sección 8 (página 9) promete lo que no existe.** Dice que la cuenta
    avisa por correo si una plataforma cae del radar, que llegará una serie de
@@ -54,7 +73,7 @@ el comparador de hasta tres, el CSV y «Fuera del radar».
    `/descargas/checklist-elegibilidad-rwa.pdf` (libre, sin registro), o la
    frase pasa a «próximamente».
 
-## Qué está hecho (apagado hasta tener el PDF corregido)
+## Qué está hecho (apagado hasta abrir las cuentas)
 
 - **Web:** botón «Descargar el manual de uso (PDF)» en la pantalla «Confirma
   tu correo para entrar», y sección «Manual de uso» en «Tu cuenta». Al abrir
@@ -78,9 +97,9 @@ el comparador de hasta tres, el CSV y «Fuera del radar».
 - **Ensayo:** `node rwadar-app/ensayo-cuentas-web.mjs` lo prueba encendido
   en el navegador (botón, apertura tras confirmar, PDF servido y recuento).
 
-## Para encenderlo (cuando llegue el PDF corregido)
+## Para encenderlo (con el visto bueno de Eric y las cuentas abiertas)
 
-1. Copiar el PDF a `rwadar-site/descargas/como-usar-rwadar.pdf` (siempre
+1. Copiar el PDF corregido a `rwadar-site/descargas/como-usar-rwadar.pdf` (siempre
    con ese nombre: las ediciones nuevas sustituyen el archivo).
 2. Añadir `descargas/como-usar-rwadar.pdf` a `ARCHIVOS_PUBLICABLES` en
    `rwadar-publicacion-segura.js`, y en `rwadar-site/_headers` el bloque
