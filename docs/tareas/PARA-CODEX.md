@@ -23,6 +23,11 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   EAS → artefacto con SHA-256). Necesita el secreto `EXPO_TOKEN`
   (`rwadar-movil/LEEME.md`, «Compilar desde GitHub»).
 - Pruebas: web 407, `rwadar-app` completo, móvil 104, tools y QR.
+- **Tu mejora de tarjetas (`mejora-tarjetas-local`) está integrada** en esta
+  rama: tarjeta nueva + botón «☆ Guardar», pruebas adaptadas (web 499, móvil
+  126). `lib/config-ios-uuid-seguro.js` se conserva con sus pruebas pero se
+  quitó de `app.json`: choca con `scripts/parchear-expo-uuidv5.cjs` (mismo
+  archivo, huella distinta) y rompería la build de iOS. Hay que elegir uno.
 
 ## 5 de octubre de 2026 · Claude (2) · nueva barra: Inicio · Buscar · Academy · Perfil
 

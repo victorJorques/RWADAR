@@ -75,9 +75,9 @@ dos fichas de prueba, pero nada conectado a la app.
    primera, del 2 de octubre (run 36932444985), copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
    como explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-3. **Revisar la mejora visual de las tarjetas.** El trabajo de Codex que estaba
-   sin subir está en la rama `mejora-tarjetas-local`, ya unida con `main` y con
-   las pruebas pasando (web 429, móvil 115). No está publicado ni en `main`.
+3. **Mejora visual de las tarjetas: integrada (5/10)** con la nueva barra y el
+   botón «Guardar». Llega con la próxima publicación de la web y la versión
+   1.2.0 de la app.
 4. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte
    pendiente sobre el alta como persona física. Hasta que respondan, no se paga
    ni se rellena nada. El paquete para Google Play (AAB 1.1.2, icono, cabecera y
