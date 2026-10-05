@@ -1,7 +1,7 @@
 # RWAdar · cómo está el proyecto
 
 *Actualizado el 5 de octubre de 2026.* Si solo vas a leer un documento, que sea
-este. El detalle técnico con todas las pruebas del 30 de septiembre está en
+este. **Codex:** empieza por [`tareas/CODEX-EMPIEZA-AQUI.md`](tareas/CODEX-EMPIEZA-AQUI.md). El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
 ---
@@ -28,11 +28,11 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
-| **RWAdar Academy** | Terminada y aprobada, **pendiente de subir** a Cloudflare (desde aquí no hay red). 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. Web en `/academy/` y app (Más › RWAdar Academy). Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
+| **RWAdar Academy** | Terminada y aprobada, **pendiente de subir** a Cloudflare (falta la clave de Cloudflare en GitHub). 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. Web en `/academy/` y app (pestaña Academy). Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
 | **Tipografía** | Arreglada el 2/10: la Geist incrustada no traía a-z, así que la web se veía con la letra del sistema. Ya es la completa. |
 
-**En pausa a propósito:** cuentas de usuario, opiniones, avisos por correo y
-avisos push. Las altas nuevas están cerradas. Los favoritos de la app se
+**En pausa a propósito:** cuentas de usuario, comunidad, opiniones, avisos por
+correo y avisos push. Las altas nuevas están cerradas. Los favoritos de la app se
 guardan solo en el móvil.
 
 **Cuentas, fase 1 (5/10): preparadas y probadas, sin abrir.** Crear cuenta,
@@ -41,15 +41,17 @@ Opiniones y avisos siguen cerrados. Faltan los pasos de Víctor en Supabase
 (remitente de correo, ajustes de Auth y la migración 26):
 [`tareas/REABRIR-CUENTAS.md`](tareas/REABRIR-CUENTAS.md). Seguridad revisada:
 [`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
-Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
+Manual de bienvenida de Eric corregido, pendiente de su visto bueno:
 [`manual/LEEME.md`](manual/LEEME.md).
 
 **Nueva barra del móvil (5/10): Inicio · Buscar · Academy · Perfil**, en la
 web y en la app. Inicio trae las noticias de RWAdar (se editan en
 [`../rwadar-noticias/`](../rwadar-noticias/LEEME.md)) y anuncia la comunidad;
 Perfil reúne las empresas y ofertas guardadas (solo en el navegador o en el
-móvil) y los avisos como «próximamente». En la web llega con la próxima
-publicación; en la app, con la próxima versión.
+móvil) y los avisos como «próximamente». La **comunidad** (una publicación al
+día por cuenta) está preparada y apagada: se enciende cuando se abran las
+cuentas. En la web llega con la próxima publicación; en la app, con la 1.2.0,
+que está lista para compilar en cuanto Víctor guarde el secreto `EXPO_TOKEN`.
 
 **Desactivado:** publicidad, comisiones y cobros. Hay una cuenta de AdMob con
 dos fichas de prueba, pero nada conectado a la app.
@@ -85,6 +87,9 @@ dos fichas de prueba, pero nada conectado a la app.
 5. **Dominio propio** (unos 12 € al año). Da seriedad y permite un correo
    propio.
 6. **iPhone:** el fallo de memoria de una librería de Expo ya está corregido.
+   Hay dos correcciones y solo una puede estar activa: hay que elegir antes de
+   la primera compilación de iPhone (ver
+   [`tareas/CODEX-EMPIEZA-AQUI.md`](tareas/CODEX-EMPIEZA-AQUI.md), apartado 5).
    Falta probar la app en un simulador o un iPhone de verdad antes de enviarla.
 7. **Ingresos:** decidir con un abogado cómo se puede cobrar a las
    plataformas. El veredicto editorial no se vende nunca.

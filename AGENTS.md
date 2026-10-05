@@ -5,10 +5,12 @@ Android en GitHub (`RWAdar-downloads`). El repositorio es privado.
 
 **Antes de empezar, lee en este orden:**
 
-1. [`docs/tareas/PARA-CODEX.md`](docs/tareas/PARA-CODEX.md): lo último que
-   hizo la otra herramienta y lo que queda pendiente.
-2. [`docs/INTERNO.md`](docs/INTERNO.md): estado del proyecto.
-3. Solo la sección de [`docs/RUNBOOK.md`](docs/RUNBOOK.md) que necesites.
+1. [`docs/tareas/CODEX-EMPIEZA-AQUI.md`](docs/tareas/CODEX-EMPIEZA-AQUI.md):
+   una página con lo hecho, lo que falta y la única decisión abierta.
+2. [`docs/tareas/PARA-CODEX.md`](docs/tareas/PARA-CODEX.md): lo último que
+   hizo la otra herramienta, con detalle.
+3. [`docs/INTERNO.md`](docs/INTERNO.md): estado del proyecto.
+4. Solo la sección de [`docs/RUNBOOK.md`](docs/RUNBOOK.md) que necesites.
 
 Lo de `docs/archive/` es histórico y no describe el estado vigente.
 
@@ -86,6 +88,10 @@ Al terminar una sesión con cambios, añade una entrada **arriba del todo** en
 - qué cambiaste y en qué commits;
 - qué pruebas pasaste;
 - qué queda pendiente o qué tiene que hacer Víctor.
+
+Si cambia lo que está hecho, lo que falta o una decisión abierta, pon al día
+también [`docs/tareas/CODEX-EMPIEZA-AQUI.md`](docs/tareas/CODEX-EMPIEZA-AQUI.md):
+tiene que seguir cabiendo en una página.
 
 Las tareas grandes para la otra herramienta van en su propio archivo dentro de
 `docs/tareas/`.

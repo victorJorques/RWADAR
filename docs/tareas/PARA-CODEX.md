@@ -6,6 +6,21 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de octubre de 2026 · Claude (5) · resumen de una página para Codex
+
+- **Nuevo:** [`CODEX-EMPIEZA-AQUI.md`](CODEX-EMPIEZA-AQUI.md). Una página con
+  lo hecho, lo que falta y quién lo hace, la barra del móvil, la decisión de
+  iPhone, las ramas y las reglas. `AGENTS.md` y `CLAUDE.md` lo ponen el primero
+  de la lista; `INTERNO.md` corrige tres líneas viejas (Academy en su pestaña,
+  manual de Eric corregido y comunidad apagada).
+- Comprobado sobre `main` (`32f1dab`): `npm test` en verde (web 499, móvil
+  126), auditoría «LISTO PARA CORTE FINAL» y las cuatro pestañas del móvil,
+  vistas en Chromium a 390 px, coinciden con lo que pidió Víctor.
+- Ramas: todas dentro de `main` salvo `claude/tarjetas-al-dia` (duplicado,
+  se puede borrar) y `claude/rivals-analysis-platform-xriobj` (no es de
+  RWAdar).
+- Solo documentación: no cambia código, la web ni la aprobación.
+
 ## 5 de octubre de 2026 · Claude (4) · #6 unido y manual de Eric corregido
 
 - **PR #6 unido a `main`** (`ecba31e`): comunidad apagada, app 1.2.0, flujo
