@@ -6,6 +6,52 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de octubre de 2026 · Claude (3) · tu mejora de tarjetas, al día con `main`
+
+**Rama:** `claude/tarjetas-al-dia` (commit `7da6856`). Es tu
+`mejora-tarjetas-local` (`91f827d`) con el `main` de hoy (`13197bf`: Academy,
+nueva barra, Perfil, cuentas fase 1) unido encima. **No está en `main` ni
+publicada**: Víctor decide cuándo. No se ha quitado nada tuyo.
+
+**Conflictos y cómo se resolvieron**
+
+- `rwadar-20260820.js`: tu tarjeta tal cual, más el botón «☆ Guardar» de
+  Perfil (`botonGuardarOferta`, solo visible en el móvil con `.fav-local`)
+  en la tarjeta principal y en la fila de secundario.
+- `probar-web.mjs`: tu prueba exigía un único botón en la tarjeta. Ahora
+  «Guardar» no cuenta como acción de lectura y se comprueba aparte: como
+  mucho uno, de la propia oferta, `type="button"` y con `aria-pressed`.
+- `tests/ofertas-presentacion.test.cjs`: añadidos los simulacros de
+  `./academy-progreso` y `./Navegacion`, que `datos.js` y `Ofertas.js`
+  importan desde `main`.
+- `index.html`: pre-render regenerado con la tarjeta nueva.
+
+**iPhone (uuidv5): se queda tu plugin y se retira mi parche**
+
+Los dos corregían el mismo fallo de `Uuidv5.swift`. Para no parchear dos
+veces, se queda `lib/config-ios-uuid-seguro.js` (registrado en `app.json`,
+fijado a `expo-modules-core` 57.0.19 por huella, falla cerrado). Se borraron
+`scripts/parchear-expo-uuidv5.cjs`, su prueba, el `postinstall`, sus líneas
+de `.easignore` y el paso de `ci.yml`. Comprobado sobre un `npm ci` limpio:
+la huella original coincide y la inspección devuelve `would-patch`.
+
+Ojo: tu plugin solo actúa en el `prebuild` de iOS (EAS), no en
+`npm install`. La línea `[rwadar] expo-modules-core uuidv5 parcheado` que
+pedía en el registro ya no saldrá; si la huella no cuadra, la compilación de
+iOS se para con `RWAdar UUID iOS: …`. Al subir Expo hay que revisar el
+archivo y actualizar `CORE_VERSION` y las dos huellas. La línea «El parche
+propio de uuidv5 sigue aplicándose» de
+`seguridad/REVISION-SEGURIDAD-2026-10-05.md` describe `main` de ese día; al
+unir esta rama, la corrección pasa a ser tu plugin.
+
+**Pruebas:** `npm test` en verde: web 498/498, móvil 121/121 y base de datos.
+
+**Para unirla a `main`:** abrir PR desde `claude/tarjetas-al-dia`. Cambia
+`rwadar-site`, así que antes de publicar hace falta registrar la nueva
+aprobación en `estado.json` (paso 2 de `OPERACION-LANZAMIENTO.md`).
+
+---
+
 ## 5 de octubre de 2026 · Claude (2) · nueva barra: Inicio · Buscar · Academy · Perfil
 
 **Rama:** `claude/zealous-shannon-endwcn` (reiniciada desde `main` tras unir

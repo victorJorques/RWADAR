@@ -75,9 +75,10 @@ dos fichas de prueba, pero nada conectado a la app.
    primera, del 2 de octubre (run 36932444985), copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
    como explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-3. **Revisar la mejora visual de las tarjetas.** El trabajo de Codex que estaba
-   sin subir está en la rama `mejora-tarjetas-local`, ya unida con `main` y con
-   las pruebas pasando (web 429, móvil 115). No está publicado ni en `main`.
+3. **Revisar la mejora visual de las tarjetas.** El trabajo de Codex está en la
+   rama `claude/tarjetas-al-dia`, unida con el `main` del 5/10 (Academy, barra
+   nueva y Perfil, con su botón «Guardar») y con las pruebas pasando (web 498,
+   móvil 121). No está publicado ni en `main`: Víctor decide.
 4. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte
    pendiente sobre el alta como persona física. Hasta que respondan, no se paga
    ni se rellena nada. El paquete para Google Play (AAB 1.1.2, icono, cabecera y
@@ -85,7 +86,10 @@ dos fichas de prueba, pero nada conectado a la app.
 5. **Dominio propio** (unos 12 € al año). Da seriedad y permite un correo
    propio.
 6. **iPhone:** el fallo de memoria de una librería de Expo ya está corregido.
-   Falta probar la app en un simulador o un iPhone de verdad antes de enviarla.
+   En `claude/tarjetas-al-dia` la corrección es el plugin de Codex, que actúa
+   al compilar para iOS; el parche anterior de Claude se retira para no
+   aplicarla dos veces. Falta probar la app en un simulador o un iPhone de
+   verdad antes de enviarla.
 7. **Ingresos:** decidir con un abogado cómo se puede cobrar a las
    plataformas. El veredicto editorial no se vende nunca.
 
