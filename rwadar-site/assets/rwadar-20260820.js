@@ -18,6 +18,15 @@ const MODO_LOCAL_SEGURO=typeof location!=='undefined'&&
    Es una guarda del cliente: no modifica los permisos del servidor. */
 const SERVICIOS_USUARIO_REMOTOS=false;
 const SERVICIOS_USUARIO_DISPONIBLES=SERVICIOS_USUARIO_REMOTOS&&!MODO_LOCAL_SEGURO;
+/* Las cuentas se reabren por fases (docs/tareas/REABRIR-CUENTAS.md). La
+   fase 1 (db/26) abre perfil, vigilancia y baja; opiniones con su
+   moderación y avisos por correo necesitan su propio permiso en el servidor
+   y su propia prueba, así que tienen interruptor aparte y nunca se encienden
+   sin las cuentas. */
+const OPINIONES_REMOTAS=false;
+const OPINIONES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&OPINIONES_REMOTAS;
+const AVISOS_CORREO_REMOTOS=false;
+const AVISOS_CORREO_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_CORREO_REMOTOS;
 function limpiarRetornoSinServiciosUsuario(){
  if(SERVICIOS_USUARIO_DISPONIBLES||typeof location==='undefined'||
     typeof history==='undefined'||typeof history.replaceState!=='function')return;
@@ -1489,7 +1498,7 @@ function openDrawer(i){
  if(typeof Cuenta!=="undefined") Cuenta.pintarVigilar(p.n);
  /* Las opiniones se cargan de la red, asi que van despues de abrir el
     panel: primero se ve la ficha, y ellas entran cuando lleguen. */
- if(typeof Opiniones!=="undefined"&&SERVICIOS_USUARIO_DISPONIBLES){const c=document.getElementById("dwOpiniones");if(c)Opiniones.pinta(p.n,c);}
+ if(typeof Opiniones!=="undefined"&&OPINIONES_DISPONIBLES){const c=document.getElementById("dwOpiniones");if(c)Opiniones.pinta(p.n,c);}
  const cuerpo=document.getElementById('dwBody');if(cuerpo)cuerpo.scrollTop=0;
  openPanel('drawer');
 }
@@ -2969,7 +2978,7 @@ const Opiniones=(function(){
    c.Authorization='Bearer '+t;return c;};
 
  async function pide(ruta,opc){
-  if(!SERVICIOS_USUARIO_DISPONIBLES)throw new Error('Opiniones desactivadas en esta versión editorial');
+  if(!OPINIONES_DISPONIBLES)throw new Error('Opiniones desactivadas en esta versión editorial');
   const cfg=Object.assign({cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'},opc||{});
   cfg.headers=Object.assign({apikey:CLAVE_PUB},(opc&&opc.headers)||{});
   const r=await fetch(REST+ruta,cfg);
@@ -2996,7 +3005,7 @@ const Opiniones=(function(){
  const nota=s=>{const n=Number(s);return Number.isInteger(n)&&n>=1&&n<=10?n:null};
 
  async function pinta(nombre,host){
-  if(!SERVICIOS_USUARIO_DISPONIBLES){host.innerHTML='';return;}
+  if(!OPINIONES_DISPONIBLES){host.innerHTML='';return;}
   host.innerHTML='<p class="op-cargando">Cargando opiniones…</p>';
   let pid;
   try{ pid=await idPlataforma(nombre); }catch(e){ host.innerHTML=''; return; }
@@ -3179,6 +3188,10 @@ const Cuenta = (function(){
     extremo a extremo, la interfaz no debe recoger datos para crear cuentas
     que la persona no podrá confirmar. Cambiar a true exige esa prueba real. */
  const CORREO_AUTH_E2E=false;
+ /* Manual de bienvenida de Eric (docs/manual). Vacío: no se ofrece. Se
+    enciende con su ruta estable (/descargas/como-usar-rwadar.pdf) cuando el
+    PDF esté revisado y publicado; ver docs/manual/LEEME.md. */
+ const MANUAL_BIENVENIDA='';
  let ses=null, perfil=null, vigiladas=new Map(), modo='entrar', fichaAbierta=null,
      identidadConfirmada=false,versionSesion=0,renovacion=null,focoCuenta=null,
      correoPendiente='',operacionCuenta=0,temporizadorReenvio=null,cuentaHistorial=false;
@@ -3343,7 +3356,7 @@ const Cuenta = (function(){
 
  /* --- la ventana de entrar / registro / recuperar ------------------ */
  const TEXTOS={
-  entrar:{t:'Entrar',s:'Para guardar vigilancia y gestionar tus opiniones.',b:'Entrar',otro:'Crear una cuenta'},
+  entrar:{t:'Entrar',s:OPINIONES_DISPONIBLES?'Para guardar vigilancia y gestionar tus opiniones.':'Para guardar tu lista de vigilancia entre visitas y dispositivos.',b:'Entrar',otro:'Crear una cuenta'},
   registro:{t:'Crear cuenta',s:'Es opcional y gratis. Tendrás que confirmar el correo antes de entrar.',b:'Crear cuenta',otro:'Ya tengo cuenta'},
   recuperar:{t:'Recuperar el acceso',s:'Solicita un enlace para poner una contraseña nueva.',b:'Solicitar el enlace',otro:'Volver a entrar'},
   nueva_clave:{t:'Elige una contraseña nueva',s:'El enlace ya ha verificado tu solicitud. Escribe la contraseña que usarás desde ahora.',b:'Guardar contraseña',otro:''},
@@ -3384,6 +3397,8 @@ const Cuenta = (function(){
    $('cuentaPaso2').textContent=registro?'Confirmación del correo pendiente.':'Enlace de recuperación pendiente.';
    $('cuentaPaso3').textContent=registro?'Después vuelve a RWAdar e inicia sesión.':'Elige la contraseña nueva desde el enlace.';
   }
+  const manual=$('cuentaManual');
+  if(manual){manual.hidden=!(registro&&MANUAL_BIENVENIDA);if(!manual.hidden)manual.href=MANUAL_BIENVENIDA;}
   $('cuentaEstadoEntrar').textContent=pausado?'Ya tengo cuenta · Entrar':'Ya lo he hecho · Entrar';
   $('cuentaReenviar').hidden=pausado||!CORREO_AUTH_E2E;
   $('cuentaCambiarCorreo').hidden=pausado;
@@ -3397,6 +3412,10 @@ const Cuenta = (function(){
   const T=TEXTOS[modo];if(!T)return;
   operacionCuenta++;limpiaSecretos();limpiaErroresCuenta();
   if(temporizadorReenvio){clearTimeout(temporizadorReenvio);temporizadorReenvio=null;}
+  /* Cambiar de modo invalida la operación en curso, que ya no reactivará el
+     botón al terminar: sin esto, tras «Confirma tu correo» → «Entrar» el
+     botón se quedaba desactivado y no había forma de entrar sin recargar. */
+  $('cuentaEnviar').disabled=false;$('cuentaForm').removeAttribute('aria-busy');
   $('cuentaTit').textContent=T.t;
   $('cuentaSub').textContent=(modo===solicitado&&motivo)||T.s;
   $('cuentaEnviar').textContent=T.b||'';
@@ -3573,19 +3592,28 @@ const Cuenta = (function(){
     '<div><span class="n">'+avisosRecibidos+'</span><span class="l">Alertas<br>generadas</span></div>'+
    '</div>'+
    '<p class="perfil-nota">Miembro desde el '+desde+'.</p>'+ 
-   '<div class="perfil-sec">Identidad pública</div>'+
-   '<div class="perfil-editar"><label for="pfNombre">Nombre junto a tus opiniones'+
+   '<div class="perfil-sec">'+(OPINIONES_DISPONIBLES?'Identidad pública':'Tu nombre')+'</div>'+
+   '<div class="perfil-editar"><label for="pfNombre">'+(OPINIONES_DISPONIBLES?'Nombre junto a tus opiniones':'Cómo quieres que te saludemos')+
      '<input id="pfNombre" type="text" maxlength="60" autocomplete="name" value="'+esc((perfil&&perfil.nombre)||'')+'"></label>'+
      '<button id="pfGuardarNombre" type="button">Guardar nombre</button></div>'+
-   '<p class="perfil-nota perfil-ayuda">Si lo dejas vacío, tus opiniones aparecen como «Anónimo».</p>'+ 
+   (OPINIONES_DISPONIBLES
+     ? '<p class="perfil-nota perfil-ayuda">Si lo dejas vacío, tus opiniones aparecen como «Anónimo».</p>'
+     : '<p class="perfil-nota perfil-ayuda">Solo lo ves tú. Las opiniones llegarán próximamente.</p>')+ 
+   (MANUAL_BIENVENIDA
+     ? '<div class="perfil-sec">Manual de uso</div>'+
+       '<p class="perfil-nota">Cómo verificamos, cómo leer una ficha, los filtros, el comparador y por qué conviene mirar «Fuera del radar» primero.</p>'+
+       '<a class="perfil-manual" id="pfManual" href="'+esc(MANUAL_BIENVENIDA)+'" target="_blank" rel="noopener">Descargar el manual (PDF, 10 páginas)</a>'
+     : '')+
    '<div class="perfil-sec">Lo que vigilas</div>'+
    (lista.length
      ? '<ul class="vig-lista">'+lista.map(n=>'<li><span>'+esc(n)+'</span><button data-q="'+esc(n)+'">quitar</button></li>').join('')+'</ul>'
      : '<p class="perfil-nota">Todavía no vigilas ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Vigilar» para guardarla aquí.</p>')+
    '<div class="perfil-sec">Avisos</div>'+
-   '<label class="fila-opcion"><input type="checkbox" id="optAvisos" aria-describedby="optAvisosAyuda"'+(correoConsentido?' checked':'')+'>'+
-   '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que vigilo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
-   '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, el envío todavía no está activo: faltan configurar Brevo y verificar la entrega de extremo a extremo. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'+
+   (AVISOS_CORREO_DISPONIBLES
+     ? '<label class="fila-opcion"><input type="checkbox" id="optAvisos" aria-describedby="optAvisosAyuda"'+(correoConsentido?' checked':'')+'>'+
+       '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que vigilo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
+       '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, el envío todavía no está activo: faltan configurar Brevo y verificar la entrega de extremo a extremo. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'
+     : '<p class="perfil-nota">Próximamente: avisos por correo cuando cambie una plataforma que vigilas. Se activarán solo si tú lo pides. Mientras tanto, tu lista queda guardada en tu cuenta.</p>')+
    '<div class="perfil-pie">'+
     '<button id="pfSalir">Cerrar sesión</button>'+
     '<button class="peligro" id="pfBorrar">Borrar mi cuenta</button>'+
@@ -3596,7 +3624,7 @@ const Cuenta = (function(){
   const g=$('pfGuardarNombre');if(g)g.addEventListener('click',async()=>{
    const n=$('pfNombre').value.trim();g.disabled=true;
    try{await rest('/perfiles?id=eq.'+encodeURIComponent(ses.uid),{method:'PATCH',body:JSON.stringify({nombre:n||null})});
-     if(perfil)perfil.nombre=n||null;pinta();abrirPerfil();aviso('Nombre público guardado.');
+     if(perfil)perfil.nombre=n||null;pinta();abrirPerfil();aviso(OPINIONES_DISPONIBLES?'Nombre público guardado.':'Nombre guardado.');
    }catch(e){g.disabled=false;aviso('No se ha podido guardar el nombre.');}
   });
   const o=$('optAvisos'); if(o) o.addEventListener('change',async()=>{
@@ -3617,12 +3645,16 @@ const Cuenta = (function(){
      : 'No se ha podido confirmar la retirada; la preferencia sigue activada. Vuelve a intentarlo.');
    }finally{o.disabled=false;}
   });
+  /* Solo se anota la fecha de la primera descarga, en el propio perfil. */
+  const m=$('pfManual'); if(m) m.addEventListener('click',()=>{
+   rest('/rpc/marcar_manual_descargado',{method:'POST',body:'{}',keepalive:true}).catch(()=>{});
+  });
   const s=$('pfSalir'); if(s) s.addEventListener('click',salir);
   const b=$('pfBorrar'); if(b) b.addEventListener('click',borrar);
   if(!soloPintar)openPanel('perfilPanel');
   /* La moderación se pide DESPUÉS de abrir: si la base dice que no eres
      administrador devuelve cero filas y aquí no aparece nada. */
-  if(perfil && perfil.es_admin) pintarModeracion();
+  if(OPINIONES_DISPONIBLES && perfil && perfil.es_admin) pintarModeracion();
  }
  /* --- moderación (solo administradores) --------------------------- */
  async function pintarModeracion(){
@@ -3737,7 +3769,9 @@ const Cuenta = (function(){
   if(texto)texto.textContent=identidadConfirmada
    ?(cantidad?'Tus favoritos están guardados y puedes gestionarlos desde aquí.':'Todavía no has guardado ninguna plataforma.')
    :'Entra para consultar las plataformas que has guardado.';
-  if(accion)accion.textContent=identidadConfirmada?'Abrir mis favoritos':'Entrar y abrir mis favoritos';
+  /* El HTML nace con el botón desactivado (pausa); al abrir cuentas hay que
+     habilitarlo aquí o en el móvil no habría forma de entrar. */
+  if(accion){accion.disabled=false;accion.textContent=identidadConfirmada?'Abrir mis favoritos':'Entrar y abrir mis favoritos';}
   if(insignia){insignia.textContent=cantidad>99?'99+':String(cantidad);insignia.hidden=!cantidad;}
   if(tab)tab.setAttribute('aria-label',cantidad?'Favoritos, '+cantidad:'Favoritos');
   if(lista&&vacio){
@@ -3812,6 +3846,7 @@ const Cuenta = (function(){
      if(!ok){pinta();abrir('entrar');msj('El enlace no es válido o ha caducado. Solicita uno nuevo.');return;}
      await cargarMio();pinta();if(fichaAbierta)pintarVigilar(fichaAbierta);
      if(tipo==='recovery')abrir('nueva_clave');
+     else if(MANUAL_BIENVENIDA){abrirPerfil();aviso('Correo confirmado. Te damos la bienvenida: tienes el manual de uso en tu cuenta.');}
      else aviso('Correo confirmado en esta pestaña. Ya puedes iniciar sesión en RWAdar.');
     });
    }

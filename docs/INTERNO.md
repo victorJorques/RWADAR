@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 2 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 5 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -35,6 +35,15 @@ consulta. Entrar en el radar es gratis para las plataformas.
 avisos push. Las altas nuevas están cerradas. Los favoritos de la app se
 guardan solo en el móvil.
 
+**Cuentas, fase 1 (5/10): preparadas y probadas, sin abrir.** Crear cuenta,
+entrar, recuperar contraseña, lista de vigilancia y borrar la cuenta.
+Opiniones y avisos siguen cerrados. Faltan los pasos de Víctor en Supabase
+(remitente de correo, ajustes de Auth y la migración 26):
+[`tareas/REABRIR-CUENTAS.md`](tareas/REABRIR-CUENTAS.md). Seguridad revisada:
+[`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
+Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
+[`manual/LEEME.md`](manual/LEEME.md).
+
 **Desactivado:** publicidad, comisiones y cobros. Hay una cuenta de AdMob con
 dos fichas de prueba, pero nada conectado a la app.
 
@@ -43,11 +52,11 @@ dos fichas de prueba, pero nada conectado a la app.
 ## Lo que falta, por orden
 
 0. **Subir RWAdar Academy** (autorizado por Víctor el 2/10): ya está en `main`
-   (PR #1) con la aprobación registrada en `estado.json` («LISTO PARA CORTE
-   FINAL»). Falta solo, en un ordenador con red y credenciales de Cloudflare:
-   `git pull`, `node rwadar-publicar.js --preview`, comprobar `/academy/` y
-   `node rwadar-publicar.js --produccion`. En la app llega con la próxima
-   compilación (subir versión).
+   con la aprobación registrada en `estado.json` («LISTO PARA CORTE FINAL»),
+   válida hasta el 7/10. Falta solo que Víctor guarde la clave de Cloudflare
+   en GitHub (pasos en [`OPERACION-LANZAMIENTO.md`](OPERACION-LANZAMIENTO.md),
+   «Publicar desde GitHub»); después Claude lanza `preview`, revisa y lanza
+   `produccion`. En la app llega con la próxima compilación (subir versión).
 
 1. **Renovar la revisión del catálogo** antes del 5 de octubre si se puede.
    Ya no es urgente: desde el 2 de octubre el «catálogo siempre disponible»

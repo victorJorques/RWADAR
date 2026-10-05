@@ -773,6 +773,12 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .cuenta-estado-acciones button:disabled{opacity:.55;cursor:default}
 .cuenta-estado-acciones .cuenta-estado-principal{grid-column:1/-1;border-color:var(--senal);background:var(--senal);color:#06231A}
 .cuenta-estado-acciones button:last-child{grid-column:1/-1;background:transparent}
+/* Manual de bienvenida: enlace con aspecto de botón secundario. */
+.cuenta-estado-manual,.perfil-manual{display:flex;align-items:center;justify-content:center;min-height:48px;
+  margin-top:14px;padding:11px 14px;border:1px solid var(--senal-30);border-radius:12px;background:var(--senal-10);
+  color:var(--senal);font:600 .86rem/1.25 var(--body);text-align:center;text-decoration:none}
+.cuenta-estado-manual:hover,.perfil-manual:hover{border-color:var(--senal)}
+.cuenta-estado-manual[hidden]{display:none}
 .cuenta-pie{margin:20px 0 0;padding-top:15px;border-top:1px solid var(--linea);color:var(--tx-3);
   font-size:.72rem;line-height:1.5;text-align:center}
 .cuenta-pie a{color:var(--tx-2);text-decoration:underline;text-underline-offset:3px}

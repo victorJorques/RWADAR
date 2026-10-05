@@ -190,6 +190,7 @@ function estadoPendienteOcultaFormulario(codigo) {
     'fondo', 'closeAll', 'msj', `
       const CORREO_AUTH_E2E=true;
       const SERVICIOS_USUARIO_DISPONIBLES=true;
+      const OPINIONES_DISPONIBLES=false,MANUAL_BIENVENIDA='';
       let modo='entrar',correoPendiente='persona@example.test',operacionCuenta=0,
           temporizadorReenvio=null,focoCuenta=null;
       ${fuente}
@@ -2081,6 +2082,16 @@ prueba('privacidad pausa también el acceso existente y mantiene una vía de der
   /solicitado==='recuperar'\?'recuperar_pausado'/.test(js) &&
   /no recogemos nuevas altas ni solicitudes de recuperación/.test(js) &&
   !/Te hemos enviado un correo|ya va en camino un enlace|esta versión no se publicará/.test(js));
+prueba('las cuentas se reabren por fases: opiniones, avisos por correo y manual siguen apagados',
+  /const OPINIONES_REMOTAS=false;/.test(js) && /const AVISOS_CORREO_REMOTOS=false;/.test(js) &&
+  /const MANUAL_BIENVENIDA='';/.test(js) &&
+  /const OPINIONES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&OPINIONES_REMOTAS;/.test(js) &&
+  /const AVISOS_CORREO_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_CORREO_REMOTOS;/.test(js) &&
+  /if\(!OPINIONES_DISPONIBLES\)throw new Error\('Opiniones desactivadas/.test(js) &&
+  /OPINIONES_DISPONIBLES && perfil && perfil\.es_admin\) pintarModeracion\(\)/.test(js));
+prueba('con las cuentas abiertas no se quedan botones bloqueados (fallos hallados en el ensayo del 5/10)',
+  /\$\('cuentaEnviar'\)\.disabled=false;\$\('cuentaForm'\)\.removeAttribute\('aria-busy'\);/.test(js) &&
+  /if\(accion\)\{accion\.disabled=false;/.test(js));
 prueba('la privacidad explica criterios de conservación y la limpieza de instalaciones comprobada',
   /más de 180 días sin actividad/.test(privacidadLineal) &&
   /atender derechos, incidencias u obligaciones/.test(privacidadLineal) &&
