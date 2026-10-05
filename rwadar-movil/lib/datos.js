@@ -42,9 +42,11 @@ const CACHE_FECHA = `${PREFIJO}cache.fecha`;
 const CACHE_SIGO = `${PREFIJO}siguiendo`;
 const CACHE_PENDIENTES = `${PREFIJO}seguimiento.pendiente`;
 const PROGRESO_ACADEMY = `${PREFIJO}academy.progreso.v1`;
+const OFERTAS_GUARDADAS = `${PREFIJO}ofertas.guardadas.v1`;
 const CLAVES_LOCALES = [
   CACHE_RADAR, CACHE_FUERA, CACHE_OFERTAS, CACHE_SECUNDARIO,
   CACHE_EXCLUSIONES, CACHE_FECHA, CACHE_SIGO, CACHE_PENDIENTES, PROGRESO_ACADEMY,
+  OFERTAS_GUARDADAS,
 ];
 if (!MODO_LOCAL) CLAVES_LOCALES.push(CACHE_CATALOGO, 'rwadar.cache.catalogo.v1');
 
@@ -427,6 +429,31 @@ export async function borrarDatosDispositivo() {
   await borrarIdInstalacionLocal();
   await AsyncStorage.multiRemove(CLAVES_LOCALES);
   return { ok: true };
+}
+
+/* Ofertas guardadas: como los favoritos, solo en este dispositivo y por
+   slug público. Guardar una oferta no es invertir ni avisa de nada. */
+const MAX_GUARDADAS = 200;
+const limpiarGuardadas = (lista) => (Array.isArray(lista)
+  ? [...new Set(lista.filter((s) => typeof s === 'string' && s.length > 0 && s.length <= 160))].slice(0, MAX_GUARDADAS)
+  : []);
+
+export async function ofertasGuardadas() {
+  try {
+    return limpiarGuardadas(await leer(OFERTAS_GUARDADAS));
+  } catch {
+    return [];
+  }
+}
+
+export async function alternarOfertaGuardada(slug) {
+  if (typeof slug !== 'string' || !slug) throw new Error('La oferta no tiene un identificador válido');
+  const actual = await ofertasGuardadas();
+  const nueva = actual.includes(slug)
+    ? actual.filter((s) => s !== slug)
+    : [slug, ...actual].slice(0, MAX_GUARDADAS);
+  await guardar(OFERTAS_GUARDADAS, nueva);
+  return nueva;
 }
 
 /* Progreso de la Academy: solo en este dispositivo y borrado junto con el

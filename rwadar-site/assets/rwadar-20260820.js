@@ -42,6 +42,63 @@ function limpiarRetornoSinServiciosUsuario(){
  }catch(e){} /* Un enlace defectuoso tampoco inicia autenticación. */
 }
 /* servicios-usuario:fin */
+/* favoritos-locales:inicio */
+/* =================================================================
+   FAVORITOS · empresas y ofertas guardadas en este navegador
+   -----------------------------------------------------------------
+   Mientras las cuentas están en pausa, «Guardar» funciona igual que en
+   la app: se queda en el almacenamiento local, no se envía a RWAdar y se
+   borra desde Perfil. Solo guarda nombres de empresa y slugs de oferta.
+   ================================================================= */
+const Favoritos=(function(){
+ const CLAVE='rwadar.favoritos.v1',MAX=200;
+ const oyentes=new Set();
+ let datos={empresas:[],ofertas:[]};
+ const limpia=lista=>Array.isArray(lista)
+  ?[...new Set(lista.filter(x=>typeof x==='string'&&x.length>0&&x.length<=160))].slice(0,MAX):[];
+ function leer(){
+  try{
+   const j=JSON.parse(localStorage.getItem(CLAVE)||'null');
+   datos=j&&typeof j==='object'?{empresas:limpia(j.empresas),ofertas:limpia(j.ofertas)}:{empresas:[],ofertas:[]};
+  }catch(e){datos={empresas:[],ofertas:[]};}
+ }
+ function avisarCambio(){oyentes.forEach(f=>{try{f();}catch(e){}});}
+ function guardar(){try{localStorage.setItem(CLAVE,JSON.stringify(datos));}catch(e){}}
+ function alternar(tipo,clave){
+  if(!Object.hasOwn(datos,tipo)||typeof clave!=='string'||!clave)return false;
+  const i=datos[tipo].indexOf(clave);
+  if(i>=0)datos[tipo].splice(i,1);else datos[tipo]=[clave,...datos[tipo]].slice(0,MAX);
+  guardar();avisarCambio();return i<0;
+ }
+ function borrar(){datos={empresas:[],ofertas:[]};try{localStorage.removeItem(CLAVE);}catch(e){}avisarCambio();}
+ if(typeof localStorage!=='undefined')leer();
+ if(typeof window!=='undefined'&&window.addEventListener)
+  window.addEventListener('storage',e=>{if(e.key===CLAVE){leer();avisarCambio();}});
+ return {
+  tiene:(tipo,clave)=>Object.hasOwn(datos,tipo)&&datos[tipo].includes(clave),
+  lista:tipo=>Object.hasOwn(datos,tipo)?datos[tipo].slice():[],
+  total:()=>datos.empresas.length+datos.ofertas.length,
+  alternar,borrar,alCambiar:f=>{oyentes.add(f);}
+ };
+})();
+function botonGuardarOferta(o){
+ const on=typeof Favoritos!=='undefined'&&Favoritos.tiene('ofertas',o.slug);
+ return '<button class="escaparate-guardar fav-local'+(on?' on':'')+'" type="button" data-guardar-oferta="'+escHtml(o.slug)+'" aria-pressed="'+on+'" aria-label="'+
+  escHtml((on?'Quitar de guardadas: ':'Guardar: ')+o.titulo)+'">'+(on?'★ Guardada':'☆ Guardar')+'</button>';
+}
+if(typeof document!=='undefined'&&document.addEventListener&&typeof fetch!=='undefined')
+ document.addEventListener('click',e=>{
+  const b=e.target&&e.target.closest&&e.target.closest('[data-guardar-oferta]');
+  if(!b)return;
+  e.preventDefault();
+  const slug=b.dataset.guardarOferta,ahora=Favoritos.alternar('ofertas',slug);
+  document.querySelectorAll('[data-guardar-oferta]').forEach(x=>{
+   if(x.dataset.guardarOferta!==slug||x.closest('#perfilOfertas'))return;
+   x.classList.toggle('on',ahora);x.setAttribute('aria-pressed',String(ahora));x.textContent=ahora?'★ Guardada':'☆ Guardar';
+  });
+  avisar(ahora?'Oferta guardada. La tienes en Perfil.':'Oferta quitada de guardadas.');
+ });
+/* favoritos-locales:fin */
 const FECHA_VERIFICACION_LOCAL='2026-09-21';
 let ESCAPARATE_LOCAL=null;
 let MANIFIESTO_EDITORIAL_LOCAL=null;
@@ -1959,6 +2016,7 @@ function tarjetaOfertaLocal(o,{secundario=false}={}){
   (claves.auxiliares.length?'<div class="escaparate-metricas">'+claves.auxiliares.map(x=>'<div class="escaparate-metrica"><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div>':'')+
   (avisos.length?'<p class="escaparate-aviso-compacto"><b>Atención</b> · '+escHtml(avisos[0])+(avisos.length>1?' <span>+'+(avisos.length-1)+'</span>':'')+'</p>':'')+
   '<div class="emi-pie"><span class="emi-ver">'+(documentacion?'Referencia documentada · '+fechaES(documentacion.revisadaEl):'Datos revisados · '+fechaES(o.verificadaEl))+'</span><span class="escaparate-enlaces">'+
+    botonGuardarOferta(o)+
     '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver detalles de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalles</button>'+
     '<a class="emi-ir" href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow'+(o.patrocinada?' sponsored':'')+'" aria-label="'+escHtml(textoEnlace+' · '+o.titulo+' · '+o.plataformaNombre)+'">'+escHtml(textoEnlace)+' ↗</a>'+
    (secundario&&urlMercado&&urlFicha&&urlFicha!==urlMercado?'<a class="emi-ir escaparate-ficha-oficial" href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir ficha oficial de '+escHtml(o.titulo)+'">Ficha oficial ↗</a>':'')+
@@ -1977,7 +2035,7 @@ function filaSecundariaLocal(o){
   '<h4>'+escHtml(o.titulo)+'</h4><div class="escaparate-sec-cifras"><span><b>'+escHtml(rentabilidad)+'</b><small>Rentabilidad ajustada</small></span>'+
   '<span><b>'+escHtml(precio)+'</b><small>Precio observado</small></span></div>'+
   '<div class="escaparate-sec-pie">'+(ultima?'<span>'+escHtml(ultima.valor)+'</span>':'<span>Sin última operación publicada</span>')+
-  '<span class="escaparate-sec-enlaces"><button type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver detalles de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalle</button><a href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir mercado para '+escHtml(o.titulo)+'">Mercado ↗</a>'+
+  '<span class="escaparate-sec-enlaces">'+botonGuardarOferta(o)+'<button type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver detalles de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalle</button><a href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir mercado para '+escHtml(o.titulo)+'">Mercado ↗</a>'+
   (urlMercado&&urlFicha&&urlFicha!==urlMercado?'<a href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir ficha oficial de '+escHtml(o.titulo)+'">Ficha</a>':'')+
   '</span></div></div></article>';
 }
@@ -3169,6 +3227,7 @@ function perfilDesdeRespuestaCorreo(base,fila,esperado){
 }
 /* correo-consentimiento:fin */
 
+
 /* =================================================================
    CUENTA · registro, sesión y lista de vigilancia
    -----------------------------------------------------------------
@@ -3342,7 +3401,18 @@ const Cuenta = (function(){
  function pintarVigilar(nombre){
   fichaAbierta=nombre; const c=$('dwVigilar'); if(!c) return;
   if(!SERVICIOS_USUARIO_DISPONIBLES){
-   c.innerHTML='<p class="pn-nota pn-nota-separada">El seguimiento está en pausa. Puedes consultar esta ficha y visitar la web del proveedor sin cuenta.</p>';
+   const fav=typeof Favoritos!=='undefined'&&Favoritos.tiene('empresas',nombre);
+   c.innerHTML=(typeof Favoritos!=='undefined'
+     ?'<button class="btn-vigilar fav-local'+(fav?' on':'')+'" id="btnFav" type="button" aria-pressed="'+fav+'">'+
+       (fav?'★ Guardada en favoritos':'☆ Guardar en favoritos')+'</button>'+
+      '<p class="pn-nota pn-nota-separada fav-local">Se guarda solo en este navegador. La encontrarás en Perfil.</p>':'')+
+    '<p class="pn-nota pn-nota-separada fav-escritorio">El seguimiento está en pausa. Puedes consultar esta ficha y visitar la web del proveedor sin cuenta.</p>';
+   const bf=typeof Favoritos!=='undefined'?$('btnFav'):null;
+   if(bf)bf.addEventListener('click',()=>{
+    const ahora=Favoritos.alternar('empresas',nombre);
+    avisar(ahora?nombre+' guardada en favoritos. La tienes en Perfil.':nombre+' quitada de favoritos.');
+    pintarVigilar(nombre);
+   });
    return;
   }
   const on=vigiladas.has(nombre);
@@ -3746,45 +3816,24 @@ const Cuenta = (function(){
   pintaMovil();
  }
  function pintaMovil(){
-  const cantidad=vigiladas.size;
-  const numero=$('movilSiguiendoCuenta'),unidad=$('movilSiguiendoUnidad');
-  const texto=$('movilSiguiendoTexto'),accion=$('movilCuentaAccion');
-  const insignia=$('movilSiguiendoBadge'),tab=$('movilTabSiguiendo');
-  const lista=$('movilSiguiendoLista'),vacio=$('movilSiguiendoVacio'),masCuenta=$('movilMasCuenta');
+  /* Solo la tarjeta «Tu perfil». Empresas y ofertas guardadas las pinta
+     Movil desde Favoritos, haya o no cuenta. */
+  const titulo=$('movilPerfilTitulo'),texto=$('movilSiguiendoTexto'),accion=$('movilCuentaAccion');
   if(!SERVICIOS_USUARIO_DISPONIBLES){
-   if(numero)numero.textContent='—';
-   if(masCuenta)masCuenta.textContent='—';
-   if(unidad)unidad.textContent='seguimiento en pausa';
-   if(texto)texto.textContent='Esta versión de la web no accede a tus favoritos anteriores ni guarda seguimiento remoto.';
+   if(titulo)titulo.textContent='Sin cuenta, por ahora';
+   if(texto)texto.textContent='Las cuentas llegarán pronto. Mientras tanto, lo que guardas se queda en este navegador.';
    if(accion){accion.textContent='Cuentas en pausa';accion.disabled=true;}
-   if(insignia){insignia.textContent='';insignia.hidden=true;}
-   if(tab)tab.setAttribute('aria-label','Favoritos, seguimiento en pausa');
-   if(lista){lista.hidden=true;lista.innerHTML='';}
-   if(vacio)vacio.hidden=false;
    return;
   }
-  if(numero)numero.textContent=String(cantidad);
-  if(masCuenta)masCuenta.textContent=String(cantidad);
-  if(unidad)unidad.textContent=cantidad===1?'plataforma favorita':'plataformas favoritas';
+  const cantidad=vigiladas.size;
+  if(titulo)titulo.textContent=identidadConfirmada&&ses
+   ?((perfil&&perfil.nombre)||(ses.correo||'').split('@')[0]||'Tu cuenta'):'Sin sesión';
   if(texto)texto.textContent=identidadConfirmada
-   ?(cantidad?'Tus favoritos están guardados y puedes gestionarlos desde aquí.':'Todavía no has guardado ninguna plataforma.')
-   :'Entra para consultar las plataformas que has guardado.';
+   ?(cantidad?cantidad+(cantidad===1?' plataforma vigilada':' plataformas vigiladas')+' en tu cuenta.':'Todavía no vigilas ninguna plataforma desde tu cuenta.')
+   :'Entra o crea una cuenta para guardar tu lista de vigilancia entre dispositivos.';
   /* El HTML nace con el botón desactivado (pausa); al abrir cuentas hay que
      habilitarlo aquí o en el móvil no habría forma de entrar. */
-  if(accion){accion.disabled=false;accion.textContent=identidadConfirmada?'Abrir mis favoritos':'Entrar y abrir mis favoritos';}
-  if(insignia){insignia.textContent=cantidad>99?'99+':String(cantidad);insignia.hidden=!cantidad;}
-  if(tab)tab.setAttribute('aria-label',cantidad?'Favoritos, '+cantidad:'Favoritos');
-  if(lista&&vacio){
-   const seguidas=identidadConfirmada?P.filter(p=>vigiladas.has(p.n)):[];
-   const hay=seguidas.length>0;
-   lista.hidden=!hay;vacio.hidden=hay;
-   lista.innerHTML=hay?seguidas.map(p=>{const i=P.indexOf(p);return `
-    <article class="movil-seguida ${catClase(p)}">
-     ${siglaEl(p)}
-     <div><h3>${escHtml(p.n)}</h3><p>${escHtml(p.tipo)} · ${escHtml(p.reg)}</p></div>
-     <button type="button" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}">›</button>
-    </article>`;}).join(''):'';
-  }
+  if(accion){accion.disabled=false;accion.textContent=identidadConfirmada?'Abrir mi cuenta':'Entrar o crear cuenta';}
  }
  function abrirGestion(){
   if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Para gestionar datos anteriores, escribe a RWAdar@protonmail.com.');return;}
@@ -3870,8 +3919,8 @@ const Cuenta = (function(){
 /* =================================================================
    SHELL MÓVIL / PWA
    -----------------------------------------------------------------
-   Cuatro pestañas comunes a iPhone y Android, sin convertir la web de
-   escritorio en otra cosa. La composición móvil cambia de jerarquía,
+   Cuatro pestañas comunes a iPhone y Android (Inicio, Buscar, Academy y
+   Perfil), sin convertir la web de escritorio en otra cosa. La composición móvil cambia de jerarquía,
    pero comparte el mismo DOM y estado: no duplica datos, filtros, 3D ni
    lógica de cuenta.
    ================================================================= */
@@ -3895,13 +3944,15 @@ const Movil = (function(){
  const academia=document.getElementById('academy');
  const explicador=document.getElementById('explain');
  const academyLeccion=document.getElementById('academyLeccion');
+ const leccionesAcademy=document.querySelector('.academia-lecciones');
+ const contenedorAcademy=document.getElementById('movilAcademyLecciones');
  const metodo=document.getElementById('metodo');
  const fuera=document.getElementById('fuera');
  const detalles=new Map([
   ['presentacion',portadaTexto],['metodo',metodo],['fuera',fuera]
  ].filter(([,nodo])=>Boolean(nodo)));
  const ordenMovil=[emisiones,herramienta,barra,radarIntro,radarPortada,marcador,bannerAcademy,resultados,transparencia,academia,portadaTexto,portada].filter(Boolean);
- const movibles=[...ordenMovil,explicador].filter(Boolean);
+ const movibles=[...ordenMovil,explicador,leccionesAcademy].filter(Boolean);
  const anclas=new Map();
  if(typeof document.createComment==='function')movibles.forEach((nodo,indice)=>{
   if(!nodo.parentNode)return;
@@ -3913,12 +3964,15 @@ const Movil = (function(){
  const cabSub=document.getElementById('movilCabeceraSub');
  const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
  const textos={
+  inicio:['RWADAR','Inicio','Noticias, novedades y por dónde empezar'],
   buscar:['EXPLORAR RWADAR','Buscar','Ofertas y '+total+' plataformas contrastadas'],
-  favoritos:['TU SELECCIÓN','Favoritos','Plataformas guardadas, no inversiones'],
-  inversiones:['SIN DATOS DE OPERACIONES','Inversiones','RWAdar todavía no registra operaciones'],
-  cuenta:['TU ESPACIO','Mi cuenta','Perfil, seguridad, privacidad y preferencias']
+  academy:['APRENDE A TU RITMO','Academy','Lecciones por niveles, con test y revisión legal'],
+  cuenta:['TU ESPACIO','Perfil','Lo que guardas, avisos y privacidad']
  };
- let activa='buscar',academyAbierta=false,academyOrigen=null,academyHistorial=false,avisosHistorial=false;
+ /* La app abre en Inicio. Un enlace con ancla (#emisiones, #fuera…) va a
+    Buscar, que es donde está ese contenido. */
+ const destinoInicial=typeof location!=='undefined'&&location.hash&&location.hash.length>1?'buscar':'inicio';
+ let activa=destinoInicial,academyAbierta=false,academyOrigen=null,academyHistorial=false,avisosHistorial=false;
  let detalleAbierto=null,detalleOrigen=null,detalleHistorial=false;
  let modoMovilPrevio=media.matches;
 
@@ -3969,6 +4023,8 @@ const Movil = (function(){
    const referencia=metodo&&metodo.parentNode===panelBuscar?metodo:null;
    ordenMovil.forEach(nodo=>panelBuscar.insertBefore(nodo,referencia));
    if(explicador&&academyLeccion&&explicador.parentNode!==academyLeccion)academyLeccion.appendChild(explicador);
+   if(leccionesAcademy&&contenedorAcademy&&leccionesAcademy.parentNode!==contenedorAcademy)
+    contenedorAcademy.appendChild(leccionesAcademy);
    if(academia)academia.hidden=!academyAbierta;
    const informacion=document.getElementById('emisInformacion');
    if(informacion)informacion.open=!emisiones||!emisiones.classList.contains('sin-emisiones');
@@ -4124,6 +4180,61 @@ const Movil = (function(){
   if(boton)boton.setAttribute('aria-pressed',Sonido.activo?'true':'false');
   if(estado)estado.textContent=Sonido.activo?'Activado':'Desactivado';
  }
+ /* Perfil: empresas y ofertas guardadas en este navegador. */
+ function pintarPerfil(){
+  const empresas=Favoritos.lista('empresas'),ofertas=Favoritos.lista('ofertas');
+  const total=Favoritos.total();
+  const n=(id,v)=>{const x=document.getElementById(id);if(x)x.textContent=String(v);};
+  n('movilGuardadosTotal',total);n('perfilEmpresasN',empresas.length);n('perfilOfertasN',ofertas.length);
+  const insignia=document.getElementById('movilGuardadosBadge');
+  if(insignia){insignia.textContent=total>99?'99+':String(total);insignia.hidden=!total;}
+  const tab=document.getElementById('movilTabMas');
+  if(tab)tab.setAttribute('aria-label',total?'Perfil, '+total+' guardados':'Perfil');
+  const lista=document.getElementById('perfilEmpresas'),vacio=document.getElementById('perfilEmpresasVacio');
+  if(lista&&vacio){
+   const filas=empresas.map(nombre=>{const i=P.findIndex(p=>p.n===nombre);return i<0?null:[P[i],i];}).filter(Boolean);
+   lista.hidden=!filas.length;vacio.hidden=filas.length>0;
+   lista.innerHTML=filas.map(([p,i])=>`
+    <article class="movil-seguida ${catClase(p)}">
+     ${siglaEl(p)}
+     <div><h3>${escHtml(p.n)}</h3><p>${escHtml(p.tipo)} · ${escHtml(p.reg)}</p></div>
+     <button type="button" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}">›</button>
+    </article>`).join('');
+  }
+  const listaO=document.getElementById('perfilOfertas'),vacioO=document.getElementById('perfilOfertasVacio');
+  if(listaO&&vacioO){
+   listaO.hidden=!ofertas.length;vacioO.hidden=ofertas.length>0;
+   listaO.innerHTML=ofertas.map(slug=>{
+    const o=typeof ofertaDetalleLocalPorSlug==='function'?ofertaDetalleLocalPorSlug(slug):null;
+    if(!o)return `
+    <article class="perfil-oferta perfil-oferta-retirada">
+     <div><h3>Ya no está en el catálogo</h3><p>La referencia que guardaste se ha retirado o está en revisión.</p></div>
+     <button type="button" class="perfil-oferta-quitar" data-guardar-oferta="${escHtml(slug)}" aria-pressed="true">Quitar</button>
+    </article>`;
+    return `
+    <article class="perfil-oferta">
+     <div><h3>${escHtml(o.titulo)}</h3><p>${escHtml(o.plataformaNombre)} · ${escHtml(o.categoria||'')}</p></div>
+     <button type="button" class="perfil-oferta-ver" data-perfil-oferta="${escHtml(o.slug)}">Detalles</button>
+     <button type="button" class="perfil-oferta-quitar" data-guardar-oferta="${escHtml(o.slug)}" aria-pressed="true" aria-label="Quitar ${escHtml(o.titulo)} de guardadas">Quitar</button>
+    </article>`;
+   }).join('');
+  }
+ }
+ /* Academy: cuántas lecciones has marcado como leídas en este navegador
+    (la misma clave que usan las páginas de /academy/). */
+ function pintarAcademy(){
+  const titulo=document.getElementById('movilAcademyProgreso');
+  if(!titulo||!leccionesAcademy)return;
+  const slugs=[...leccionesAcademy.querySelectorAll('a[href^="/academy/"]')]
+   .map(a=>a.getAttribute('href').replace('/academy/','')).filter(Boolean);
+  let leidas=0;
+  try{
+   const j=JSON.parse(localStorage.getItem('rwadar.academy.v1')||'null');
+   if(j&&Array.isArray(j.leidas))leidas=slugs.filter(x=>j.leidas.includes(x)).length;
+  }catch(e){}
+  titulo.textContent=slugs.length?leidas+' de '+slugs.length+' lecciones leídas':'Lecciones gratuitas, sin registro';
+ }
+ Favoritos.alCambiar(pintarPerfil);
  function cambiar(id,opciones){
   if(!media.matches||!paneles.has(id))return;
   if(detalleAbierto){
@@ -4145,6 +4256,8 @@ const Movil = (function(){
    tab.tabIndex=elegida?0:-1;
   });
   cabecera(id);
+  if(id==='cuenta')pintarPerfil();
+  if(id==='academy')pintarAcademy();
   if(!opciones||opciones.arriba!==false){
    window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   }
@@ -4156,7 +4269,7 @@ const Movil = (function(){
   ordenarBuscar(esMovil);
   if(document.documentElement&&document.documentElement.classList)
    document.documentElement.classList.toggle('movil-ui',esMovil);
-  if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();pintarSonidoMovil();}
+  if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();pintarSonidoMovil();pintarPerfil();pintarAcademy();}
   else{
    mostrarAvisos(false,false);
    document.body.removeAttribute('data-movil-pestana');
@@ -4193,6 +4306,8 @@ const Movil = (function(){
  });
  document.addEventListener('click',e=>{
   if(!media.matches)return;
+  const ofertaPerfil=e.target.closest&&e.target.closest('[data-perfil-oferta]');
+  if(ofertaPerfil){e.preventDefault();abrirDetalleOfertaLocal(ofertaPerfil.dataset.perfilOferta);return;}
   const cambio=e.target.closest&&e.target.closest('[data-movil-cambiar]');
   if(cambio){e.preventDefault();e.stopImmediatePropagation();cambiar(cambio.dataset.movilCambiar);return;}
   const destino=e.target.closest&&e.target.closest('[data-movil-ir]');
@@ -4216,6 +4331,13 @@ const Movil = (function(){
   }
   if(accion.dataset.movilAction==='cerrar-academy'){e.preventDefault();mostrarAcademy(false);}
   if(accion.dataset.movilAction==='cuenta'){e.preventDefault();Cuenta.abrirGestion();}
+  if(accion.dataset.movilAction==='borrar-guardados'){
+   e.preventDefault();
+   if(!Favoritos.total()){avisar('No hay nada guardado en este navegador.');return;}
+   if(confirm('Se borrarán las empresas y ofertas guardadas en este navegador. ¿Seguimos?')){
+    Favoritos.borrar();avisar('Guardados borrados de este navegador.');
+   }
+  }
   if(accion.dataset.movilAction==='avisos'){e.preventDefault();mostrarAvisos(true);}
   if(accion.dataset.movilAction==='cerrar-avisos'){e.preventDefault();mostrarAvisos(false);}
   if(accion.dataset.movilAction==='sonido'){

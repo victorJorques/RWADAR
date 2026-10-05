@@ -1321,7 +1321,7 @@ body.detalle-local-abierto{overflow:hidden}
    ================================================================== */
 .movil-cabecera,.movil-nav,.movil-panel,.movil-banner-explica,.movil-busqueda-cab,.movil-ficha-abrir,
 .movil-ofertas-intro,.movil-ofertas-futuro,.movil-radar-intro,.movil-registro-intro,.movil-resultados-mas,
-.movil-filtros-toggle,.movil-transparencia,.movil-detalle-cab,.solo-movil{display:none}
+.movil-filtros-toggle,.movil-transparencia,.movil-detalle-cab,.solo-movil,.fav-local{display:none}
 .filtros-avanzados{display:contents}
 
 @media (max-width:767px),
@@ -1700,6 +1700,57 @@ body.detalle-local-abierto{overflow:hidden}
   #drawer .pn-accion-cerrar{min-width:108px;border:1px solid var(--linea-2);background:var(--sup-2);color:var(--tx)}
   #drawer .pn-accion-no-web{align-self:center;color:var(--tx-3);font-size:.72rem;line-height:1.35}
   body.movil-teclado #drawer .pn-acciones-movil{display:none}
+
+  /* Inicio: noticias de RWAdar, comunidad (próximamente) y atajos. */
+  .inicio-atajos{display:grid;gap:9px;margin-top:14px}
+  .inicio-atajos .movil-boton-principal,.inicio-atajos .movil-boton-secundario{width:100%;margin:0}
+  .inicio-seccion{margin-top:26px}
+  .inicio-seccion-tit{margin:0 0 10px 3px;font-family:var(--display);font-size:1.02rem;letter-spacing:-.025em}
+  .inicio-noticias{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+  .inicio-noticia{padding:16px;background:var(--sup);border:1px solid var(--linea);border-radius:16px;box-shadow:var(--e1)}
+  .inicio-noticia-meta{display:flex;align-items:center;gap:9px;margin:0 0 8px;color:var(--tx-3);
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.06em}
+  .inicio-etiqueta{padding:3px 8px;border-radius:99px;background:var(--senal-10);border:1px solid var(--senal-30);
+    color:var(--senal);text-transform:uppercase;letter-spacing:.1em}
+  .inicio-noticia h4{margin:0;font-family:var(--display);font-size:1.02rem;line-height:1.3;letter-spacing:-.02em}
+  .inicio-noticia p:not(.inicio-noticia-meta){margin:6px 0 0;color:var(--tx-2);font-size:.86rem;line-height:1.6}
+  .inicio-noticia-enlace,.inicio-noticia-red{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:4px;
+    margin-right:14px;color:var(--senal);font-size:.86rem;font-weight:700;text-decoration:none}
+
+  /* Academy: el bloque real de lecciones de la portada, a una columna. */
+  .movil-academy-lecciones .academia-lecciones{margin-top:14px;padding:16px}
+  .movil-academy-lecciones .academia-niveles{grid-template-columns:minmax(0,1fr)}
+  .movil-academy-lecciones .academia-lista a,.movil-academy-lecciones .academia-lista .academia-pronto{min-height:52px}
+  .movil-academy-extra{margin-top:14px}
+
+  /* Perfil: tarjeta de cuenta, guardados y avisos próximamente. */
+  .movil-perfil-cuenta{display:block;width:100%;margin-top:12px}
+  .movil-perfil-cuenta:disabled{border-color:var(--linea-2);background:var(--sup-2);color:var(--tx-3);cursor:default}
+  .perfil-cuenta-n{margin-left:6px;padding:2px 8px;border-radius:99px;background:var(--sup-2);
+    color:var(--tx-2);font-family:var(--mono);font-size:.68rem;vertical-align:2px}
+  .perfil-vacio{margin:0;padding:14px 16px;border:1px dashed var(--linea-2);border-radius:14px;
+    color:var(--tx-3);font-size:.82rem;line-height:1.55}
+  .perfil-vacio[hidden]{display:none}
+  .perfil-oferta{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px;
+    min-height:72px;padding:12px;background:var(--sup);border:1px solid var(--linea);border-radius:16px;box-shadow:var(--e1)}
+  .perfil-oferta h3,.perfil-oferta p{margin:0}
+  .perfil-oferta h3{font-size:.9rem;line-height:1.3;letter-spacing:-.02em}
+  .perfil-oferta p{margin-top:3px;color:var(--tx-2);font-size:.72rem;line-height:1.35}
+  .perfil-oferta button{min-height:44px;padding:0 11px;border:1px solid var(--linea-2);border-radius:12px;
+    background:var(--sup-2);color:var(--tx-2);font-size:.76rem;font-weight:600;cursor:pointer}
+  .perfil-oferta .perfil-oferta-ver{color:var(--senal)}
+  .perfil-oferta-retirada{grid-template-columns:minmax(0,1fr) auto}
+  .movil-estado>p.perfil-aviso-detalle{margin-top:8px;color:var(--tx-3);font-size:.76rem}
+
+  /* Guardar en favoritos: solo en el móvil, donde está Perfil. */
+  .fav-escritorio{display:none!important}
+  .btn-vigilar.fav-local{display:inline-flex}
+  .pn-nota.fav-local{display:block}
+  .escaparate-guardar.fav-local{display:inline-flex;align-items:center;justify-content:center}
+  .escaparate-enlaces .escaparate-guardar{min-height:42px;padding:6px 10px;border:1px solid var(--linea-2);
+    border-radius:99px;background:transparent;font:650 .74rem/1.2 var(--body);cursor:pointer}
+  .escaparate-guardar{color:var(--tx-2)}
+  .escaparate-guardar.on{border-color:var(--senal-30)!important;background:var(--senal-10)!important;color:var(--senal)!important}
 
   /* Barra inferior común a navegador, PWA de iOS y PWA de Android. */
   .movil-nav{position:fixed;left:0;right:0;bottom:0;z-index:74;display:grid;

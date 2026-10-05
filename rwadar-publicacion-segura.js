@@ -70,6 +70,8 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-site',
   'rwadar-academy',
   'rwadar-academy.js',
+  'rwadar-noticias',
+  'rwadar-noticias.js',
   'rwadar-adelgazar.js',
   'rwadar-app/sincronizar.js',
   'rwadar-app/catalogo-publico.js',

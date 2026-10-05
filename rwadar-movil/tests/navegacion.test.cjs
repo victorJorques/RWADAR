@@ -6,40 +6,51 @@ const path = require('node:path');
 const RAIZ = path.resolve(__dirname, '..');
 const leer = (...partes) => fs.readFileSync(path.join(RAIZ, ...partes), 'utf8');
 
-test('la navegación inferior ofrece cinco destinos propios y respeta el safe area', () => {
+test('la navegación inferior ofrece Inicio, Buscar, Academy y Perfil y respeta el safe area', () => {
   const codigo = leer('componentes', 'Navegacion.js');
 
   for (const destino of [
-    "['radar', 'Radar', 'radar']",
-    "['ofertas', 'Ofertas', 'ofertas']",
-    "['sigo', 'Siguiendo', 'siguiendo']",
-    "['avisos', 'Avisos', 'avisos']",
-    "['mas', 'Más', 'mas']",
+    "['inicio', 'Inicio', 'inicio']",
+    "['buscar', 'Buscar', 'buscar']",
+    "['academy', 'Academy', 'academy']",
+    "['perfil', 'Perfil', 'perfil']",
   ]) assert.ok(codigo.includes(destino), `falta el destino ${destino}`);
-
-  assert.match(codigo, /mostrarOfertas = false/);
-  assert.match(codigo, /mostrarOfertas \? DESTINOS : DESTINOS\.filter\(\(\[id\]\) => id !== 'ofertas'\)/);
+  for (const antiguo of ["'Siguiendo'", "'Avisos'", "'Más'", "'Radar'", "'Ofertas'"]) {
+    assert.ok(!codigo.includes(`, ${antiguo}, `), `sigue el destino antiguo ${antiguo}`);
+  }
+  assert.match(codigo, /const insignia = id === 'perfil' \? guardados : id === 'inicio' \? novedades : 0;/);
   assert.match(codigo, /useSafeAreaInsets\(\)/);
   assert.match(codigo, /paddingBottom: Math\.max\(insets\.bottom, 7\)/);
   assert.match(codigo, /accessibilityRole="tablist"/);
   assert.match(codigo, /accessibilityRole="tab"/);
   assert.match(codigo, /accessibilityState=\{\{ selected: seleccionada \}\}/);
+  for (const icono of ['inicio', 'perfil', 'comunidad', 'guardar', 'guardada']) {
+    assert.match(codigo, new RegExp(`nombre === '${icono}'`), `falta el icono ${icono}`);
+  }
 });
 
-test('el rediseño conserva radar, 3D, detalle, descartes, avisos y privacidad', () => {
+test('el rediseño conserva radar, ofertas, 3D, detalle, descartes, avisos y privacidad', () => {
   const codigo = leer('App.js');
 
-  for (const pantalla of ['radar', 'ofertas', 'sigo', 'avisos', 'mas']) {
+  assert.match(codigo, /const \[pestana, setPestana\] = useState\('inicio'\)/);
+  for (const pantalla of ['inicio', 'academy', 'perfil']) {
     assert.ok(codigo.includes(`pestana === '${pantalla}'`), `falta la pantalla ${pantalla}`);
+  }
+  assert.ok(codigo.includes("pestana === 'buscar' && vistaBuscar === 'empresas'"), 'Buscar perdió las empresas');
+  assert.ok(codigo.includes("pestana === 'buscar' && vistaBuscar === 'ofertas'"), 'Buscar perdió las ofertas');
+  for (const viejo of ["pestana === 'sigo'", "pestana === 'avisos'", "pestana === 'mas'", 'PantallaMas']) {
+    assert.ok(!codigo.includes(viejo), `queda la pantalla antigua ${viejo}`);
   }
 
   for (const pieza of [
     '<Radar', '<Detalle', '<FichaOferta', '<DetalleOferta', '<ExclusionesOfertas',
-    '<Descartadas', '<PanelAvisos', '<Explicador', '<Privacidad',
+    '<Descartadas', '<PanelAvisos', '<Explicador', '<Privacidad', '<Inicio', '<SelectorBuscar',
+    '<PantallaPerfil', '<Academy',
     'alternarSeguimiento', 'sincronizarSeguimientoPendiente', 'borrarDatosDispositivo',
+    'alternarOfertaGuardada', 'ofertasGuardadas',
   ]) assert.ok(codigo.includes(pieza), `el rediseño perdió ${pieza}`);
 
-  assert.match(codigo, /Explicado con una animación 3D/);
+  assert.match(leer('componentes', 'Inicio.js'), /Explicado con una animación 3D/);
   assert.match(codigo, /accessibilityLabel="Buscar plataforma o palabra clave"/);
   assert.match(codigo, /accessibilityLabel=\{sigue \? `Dejar de seguir/);
   assert.match(codigo, /accessibilityLiveRegion="polite"/);
@@ -49,12 +60,35 @@ test('el rediseño conserva radar, 3D, detalle, descartes, avisos y privacidad',
   assert.match(codigo, /Una relación comercial debe identificarse y no altera el ranking editorial/);
   assert.match(codigo, /oferta\.plataformaSlug !== proveedorOferta/);
   assert.match(codigo, /proveedor\.slug/);
-  assert.match(codigo, /mostrarOfertas\s+onCambiar=/);
-  assert.doesNotMatch(codigo, /mostrarOfertas=\{MODO_LOCAL\}/);
   assert.match(codigo, /const escaparate = MODO_LOCAL \? \[/);
   assert.match(codigo, /cargarCatalogo\(\), cargarFuera\(\), \.\.\.escaparate, siguiendo\(\)/);
   assert.match(codigo, /setRadar\(catalogo\.plataformas\); setFuera\(f\.datos\); setOfertas\(principales\)/);
   assert.match(codigo, /\{!MODO_LOCAL \? \(/);
+});
+
+test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => {
+  const codigo = leer('App.js');
+  assert.match(codigo, /Empresas guardadas · \$\{seguidas\.length\}/);
+  assert.match(codigo, /Ofertas guardadas · \$\{ofertasGuardadas\.length\}/);
+  assert.match(codigo, /Los avisos llegarán próximamente a la app con las nuevas actualizaciones\./);
+  assert.match(codigo, /\{USUARIO_LOCAL \? \(\s*<View style=\{e\.avisoProximo\}>/);
+  assert.match(codigo, /guardada=\{!!ofertaAbierta && guardadas\.includes\(ofertaAbierta\.slug\)\}/);
+  const ofertas = leer('componentes', 'Ofertas.js');
+  assert.match(ofertas, /accessibilityLabel=\{guardada \? `Quitar \$\{oferta\.titulo\} de guardadas` : `Guardar \$\{oferta\.titulo\} en Perfil`\}/);
+  const datos = leer('lib', 'datos.js');
+  assert.match(datos, /const OFERTAS_GUARDADAS = `\$\{PREFIJO\}ofertas\.guardadas\.v1`;/);
+  assert.match(datos, /PROGRESO_ACADEMY,\s*OFERTAS_GUARDADAS,\s*\];/);
+});
+
+test('Inicio muestra las mismas noticias que la web y anuncia la comunidad sin simularla', () => {
+  const inicio = leer('componentes', 'Inicio.js');
+  const noticias = leer('lib', 'noticias-contenido.js');
+  assert.match(noticias, /GENERADO por rwadar-noticias\.js/);
+  assert.match(inicio, /from '\.\.\/lib\/noticias-contenido'/);
+  assert.match(inicio, /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/);
+  assert.doesNotMatch(inicio, /TextInput|fetch\(|supabase/);
+  const fuente = JSON.parse(fs.readFileSync(path.join(RAIZ, '..', 'rwadar-noticias', 'noticias.json'), 'utf8'));
+  for (const n of fuente.noticias) assert.ok(noticias.includes(n.titulo), `falta la noticia ${n.id} en la app`);
 });
 
 test('las 52 imágenes originales se conservan y la interfaz prefiere cuatro fallbacks editoriales', () => {
@@ -188,5 +222,5 @@ test('la nueva interfaz no introduce identidad ni funciones ficticias de la refe
   for (const ajeno of ['Booking.com', 'Genius', 'Reservas', 'Métodos de pago', 'Mi cuenta']) {
     assert.equal(codigo.includes(ajeno), false, `se introdujo texto ajeno: ${ajeno}`);
   }
-  assert.match(codigo, /Catálogo conectado y disponible sin crear una cuenta/);
+  assert.match(codigo, /Las cuentas llegarán próximamente a la app con las nuevas actualizaciones/);
 });

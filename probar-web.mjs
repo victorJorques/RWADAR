@@ -601,7 +601,7 @@ function cambioTabsMovilEsCoherente(codigo) {
   const fin = codigo.indexOf('function adaptar(){', inicio);
   if (inicio < 0 || fin < 0) return false;
   const fuente = codigo.slice(inicio, fin);
-  const nombres = ['buscar','favoritos','inversiones','cuenta'];
+  const nombres = ['inicio','buscar','academy','cuenta'];
   const paneles = new Map(nombres.map(nombre => [nombre, { hidden:nombre !== 'buscar' }]));
   const tabs = nombres.map(nombre => ({
     dataset:{ movilTab:nombre }, tabIndex:nombre === 'buscar' ? 0 : -1,
@@ -611,15 +611,17 @@ function cambioTabsMovilEsCoherente(codigo) {
   }));
   const document = { body:{ dataset:{} } };
   let cabeceraActual = '', mediciones = 0, cierresAvisos = 0;
+  let perfiles = 0, academias = 0;
   const fabrica = new Function('media', 'paneles', 'tabs', 'document', 'window', 'reduce',
-    'mostrarAvisos', 'cabecera', 'geometria', `
+    'mostrarAvisos', 'cabecera', 'geometria', 'pintarPerfil', 'pintarAcademy', `
       let activa='buscar',academyAbierta=false,academyHistorial=false;
       let detalleAbierto=null,detalleHistorial=false,movilFiltrosAbiertos=false;
       ${fuente}
       return {cambiar, activa:()=>activa};
     `);
   const api = fabrica({matches:true}, paneles, tabs, document, {scrollTo(){}}, ()=>true,
-    ()=>{ cierresAvisos++; }, id=>{ cabeceraActual=id; }, ()=>{ mediciones++; });
+    ()=>{ cierresAvisos++; }, id=>{ cabeceraActual=id; }, ()=>{ mediciones++; },
+    ()=>{ perfiles++; }, ()=>{ academias++; });
   for (const nombre of nombres) {
     api.cambiar(nombre, { arriba:false });
     if (api.activa() !== nombre || document.body.dataset.movilPestana !== nombre || cabeceraActual !== nombre)
@@ -634,7 +636,7 @@ function cambioTabsMovilEsCoherente(codigo) {
   }
   api.cambiar('sistema-operativo-inventado', { arriba:false });
   return api.activa() === 'cuenta' && document.body.dataset.movilPestana === 'cuenta' &&
-    mediciones === 1 && cierresAvisos >= 3;
+    mediciones === 1 && cierresAvisos >= 3 && perfiles === 1 && academias === 1;
 }
 
 function subvistaAvisosConservaEstadoYFoco(codigo) {
@@ -987,10 +989,10 @@ prueba('la emisión renderizada no genera style ni manejadores inline',
 
 console.log('\n=== ADAPTACIÓN MÓVIL Y ACCESIBILIDAD ===');
 const contratoTabs = [
+  { valor:'inicio', id:'movilTabInicio', panel:'movilPanelInicio', etiqueta:'Inicio' },
   { valor:'buscar', id:'movilTabRadar', panel:'movilPanelRadar', etiqueta:'Buscar' },
-  { valor:'favoritos', id:'movilTabSiguiendo', panel:'movilPanelSiguiendo', etiqueta:'Favoritos' },
-  { valor:'inversiones', id:'movilTabInversiones', panel:'movilPanelInversiones', etiqueta:'Inversiones' },
-  { valor:'cuenta', id:'movilTabMas', panel:'movilPanelMas', etiqueta:'Mi cuenta' },
+  { valor:'academy', id:'movilTabAcademy', panel:'movilPanelAcademy', etiqueta:'Academy' },
+  { valor:'cuenta', id:'movilTabMas', panel:'movilPanelMas', etiqueta:'Perfil' },
 ];
 const navegaciones = [...html.matchAll(/<nav\b([^>]*)>([\s\S]*?)<\/nav>/gi)];
 const navMovil = navegaciones.find(n => atributoHTML(n[1], 'id') === 'movilNav');
@@ -1018,11 +1020,16 @@ prueba('las cuatro pestañas conservan orden, destino y nombre accesible',
       atributoHTML(boton[1], 'aria-controls') === esperada.panel &&
       textoHTML(boton[2]).includes(esperada.etiqueta);
   }));
-prueba('solo Buscar empieza seleccionada y el foco sigue el patrón roving-tabindex',
+/* Sin JavaScript se ve Buscar (es el contenido de <main> y el escritorio);
+   con JavaScript, el móvil abre Inicio salvo que la URL traiga un ancla. */
+prueba('en el HTML solo Buscar empieza seleccionada y el foco sigue el patrón roving-tabindex',
   botonesNavMovil.filter(b => atributoHTML(b[1], 'aria-selected') === 'true').length === 1 &&
-  contratoTabs.every((_, i) =>
-    atributoHTML(botonesNavMovil[i]?.[1] || '', 'aria-selected') === (i === 0 ? 'true' : 'false') &&
-    atributoHTML(botonesNavMovil[i]?.[1] || '', 'tabindex') === (i === 0 ? '0' : '-1')));
+  contratoTabs.every((esperada, i) =>
+    atributoHTML(botonesNavMovil[i]?.[1] || '', 'aria-selected') === (esperada.valor === 'buscar' ? 'true' : 'false') &&
+    atributoHTML(botonesNavMovil[i]?.[1] || '', 'tabindex') === (esperada.valor === 'buscar' ? '0' : '-1')));
+prueba('en el móvil la app abre en Inicio, y un enlace con ancla abre Buscar',
+  /const destinoInicial=typeof location!=='undefined'&&location\.hash&&location\.hash\.length>1\?'buscar':'inicio';/.test(js) &&
+  /let activa=destinoInicial,/.test(js));
 
 const etiquetasInicio = [...html.matchAll(/<([a-z][\w:-]*)\b([^>]*)>/gi)];
 const panelesMoviles = etiquetasInicio.filter(e => atributoHTML(e[2], 'data-movil-panel') !== null);
@@ -1032,13 +1039,13 @@ prueba('cada pestaña controla un panel accesible y los paneles inactivos nacen 
     return panel && atributoHTML(panel[2], 'data-movil-panel') === esperada.valor &&
       atributoHTML(panel[2], 'role') === 'tabpanel' &&
       atributoHTML(panel[2], 'aria-labelledby') === esperada.id &&
-      (i === 0 ? atributoHTML(panel[2], 'hidden') === null : atributoHTML(panel[2], 'hidden') !== null);
+      (esperada.valor === 'buscar' ? atributoHTML(panel[2], 'hidden') === null : atributoHTML(panel[2], 'hidden') !== null);
   }));
-prueba('Buscar, Favoritos, Inversiones y Mi cuenta son las únicas rutas de primer nivel',
+prueba('Inicio, Buscar, Academy y Perfil son las únicas rutas de primer nivel',
   new Set(botonesNavMovil.map(b => atributoHTML(b[1], 'data-movil-tab'))).size === 4 &&
   contratoTabs.every(esperada => botonesNavMovil.some(b =>
     atributoHTML(b[1], 'data-movil-tab') === esperada.valor)) &&
-  !botonesNavMovil.some(b => ['radar','siguiendo','avisos','mas'].includes(
+  !botonesNavMovil.some(b => ['radar','siguiendo','avisos','mas','favoritos','inversiones'].includes(
     atributoHTML(b[1], 'data-movil-tab'))));
 
 const viewport = (html.match(/<meta\s+name=["']viewport["']\s+content=["']([^"']+)["']/i) || [])[1] || '';
@@ -1452,60 +1459,56 @@ prueba('las superficies nuevas solo aparecen dentro de la interfaz móvil',
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-busqueda-cab').join(';')) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ficha-abrir').join(';')) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ofertas-intro').join(';')));
-prueba('Favoritos mantiene el contenedor seguro y explica la pausa del seguimiento web',
-  /id="movilSiguiendoLista"[^>]*aria-live="polite"[^>]*hidden/.test(html) &&
-  /P\.filter\(p=>vigiladas\.has\(p\.n\)\)/.test(jsSinComentarios) &&
+const panelHTML = id => {
+  const a = html.indexOf(`<section class="movil-panel" id="${id}"`);
+  const b = a >= 0 ? html.indexOf('\n</section>', a) : -1;
+  return a >= 0 && b > a ? html.slice(a, b + 11) : '';
+};
+const panelInicioHTML = panelHTML('movilPanelInicio');
+const panelAcademyHTML = panelHTML('movilPanelAcademy');
+const panelPerfilHTML = panelHTML('movilPanelMas');
+prueba('Inicio trae las noticias generadas, la comunidad como próximamente y por dónde empezar',
+  /<!--noticias:ini-->[\s\S]*class="inicio-noticias"[\s\S]*<!--noticias:fin-->/.test(panelInicioHTML) &&
+  (panelInicioHTML.match(/class="inicio-noticia"/g) || []).length >= 1 &&
+  /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/.test(panelInicioHTML) &&
+  !/<(?:textarea|input|form)\b/i.test(panelInicioHTML) &&
+  ['metodo','fuera'].every(destino => new RegExp(`data-movil-ir=["']${destino}["']`).test(panelInicioHTML)) &&
+  /data-movil-cambiar="buscar"/.test(panelInicioHTML) && /data-movil-cambiar="academy"/.test(panelInicioHTML));
+prueba('Academy mueve el bloque real de lecciones (sin copiarlo) y cuenta las leídas del navegador',
+  /id="movilAcademyLecciones"/.test(panelAcademyHTML) &&
+  !/class="academia-lecciones"/.test(panelAcademyHTML) &&
+  /const leccionesAcademy=document\.querySelector\('\.academia-lecciones'\);/.test(js) &&
+  /const movibles=\[\.\.\.ordenMovil,explicador,leccionesAcademy\]\.filter\(Boolean\);/.test(js) &&
+  /contenedorAcademy\.appendChild\(leccionesAcademy\)/.test(js) &&
+  /localStorage\.getItem\('rwadar\.academy\.v1'\)/.test(js));
+prueba('Perfil guarda empresas y ofertas solo en este navegador y lo explica',
+  /id="perfilEmpresas"[^>]*aria-live="polite"[^>]*hidden/.test(panelPerfilHTML) &&
+  /id="perfilOfertas"[^>]*aria-live="polite"[^>]*hidden/.test(panelPerfilHTML) &&
+  /lo que guardas se queda en este navegador/.test(panelPerfilHTML) &&
+  /Guardar no es invertir: RWAdar no mueve dinero\./.test(panelPerfilHTML) &&
+  /const CLAVE='rwadar\.favoritos\.v1'/.test(js) &&
+  /localStorage\.setItem\(CLAVE,JSON\.stringify\(datos\)\)/.test(js) &&
   /class="movil-seguida/.test(js) && /escHtml\(p\.n\)/.test(js) &&
-  /no accede a tus favoritos anteriores ni guarda seguimiento remoto/.test(html) &&
-  /Para consultar o gestionar datos de una cuenta anterior/.test(html));
-
-const inicioInversiones = html.indexOf('<section class="movil-panel" id="movilPanelInversiones"');
-const finInversiones = html.indexOf('</section>', inicioInversiones);
-const panelInversionesHTML = inicioInversiones >= 0 && finInversiones > inicioInversiones
-  ? html.slice(inicioInversiones, finInversiones + 10) : '';
-const textoInversiones = textoHTML(panelInversionesHTML);
-prueba('Inversiones declara la ausencia de registro sin inventar cartera, saldos ni contadores',
-  /RWAdar todavía no registra inversiones/.test(textoInversiones) &&
-  /no intermedia operaciones ni recibe saldos/.test(textoInversiones) &&
-  /Favoritos y comparaciones nunca se presentan como inversiones/.test(textoInversiones) &&
-  !/(?:movil-resumen-numero|movil-seguida|\bemi(?:-|\b)|data-abrir|data-comparar)/i.test(panelInversionesHTML) &&
-  !/(?:rentabilidad|beneficio|confirmada|reservada|saldo\s*[:：]|\b[1-9]\d*(?:[.,]\d+)?\s*%)/i.test(textoInversiones));
-prueba('Inversiones solo deriva hacia las ofertas verificadas de Buscar',
-  /data-movil-ir=["']emisiones["']/.test(panelInversionesHTML) &&
-  /function ir\(destino,origen=null\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil) &&
-  !/data-movil-action=["']cuenta["']/.test(panelInversionesHTML));
-
-const vistaAvisosHTML = (html.match(
-  /<section\b([^>]*)\bid=["']movilVistaAvisos["']([^>]*)>[\s\S]*?<\/section>/i) || [''])[0];
-const etiquetaVistaAvisos = (html.match(
-  /<section\b([^>]*)\bid=["']movilVistaAvisos["']([^>]*)>/i) || []);
-const atributosVistaAvisos = `${etiquetaVistaAvisos[1] || ''} ${etiquetaVistaAvisos[2] || ''}`;
-prueba('Avisos es una subvista oculta de Mi cuenta y nunca una quinta pestaña',
-  Boolean(vistaAvisosHTML) && atributoHTML(atributosVistaAvisos, 'data-movil-panel') === null &&
-  atributoHTML(atributosVistaAvisos, 'role') !== 'tabpanel' &&
-  atributoHTML(atributosVistaAvisos, 'hidden') !== null &&
-  /id=["']movilAbrirAvisos["'][^>]*data-movil-action=["']avisos["'][^>]*aria-controls=["']movilVistaAvisos["'][^>]*aria-expanded=["']false["']/i.test(html) &&
+  /data-guardar-oferta="'\+escHtml\(o\.slug\)\+'"/.test(js) &&
+  /data-movil-action="borrar-guardados"/.test(panelPerfilHTML) &&
+  !/(?:rentabilidad|beneficio|saldo\s*[:：]|\b[1-9]\d*(?:[.,]\d+)?\s*%)/i.test(textoHTML(panelPerfilHTML)));
+prueba('guardar solo existe en el móvil, donde está Perfil',
+  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.fav-local').join(';')) &&
+  /display\s*:\s*inline-flex/i.test(declaracionesCSS(cssMovil, '.escaparate-guardar.fav-local').join(';')) &&
+  /function ir\(destino,origen=null\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
+prueba('Avisos se anuncia en Perfil como próximamente y nunca es una pestaña',
+  /Los avisos llegarán próximamente a la app con las nuevas actualizaciones\./.test(panelPerfilHTML) &&
+  !/id=["']movilVistaAvisos["']/.test(html) &&
   !botonesNavMovil.some(b => /Avisos/i.test(textoHTML(b[2]))));
-prueba('la subvista conserva los tres estados reales sin prometer entrega activa',
-  (vistaAvisosHTML.match(/class="movil-estado-paso(?:\s|"|$)/g) || []).length === 3 &&
-  /Correo y push siguen cerrados hasta superar la prueba real/.test(vistaAvisosHTML) &&
-  !/Entrega activa/.test(textoHTML(vistaAvisosHTML)) &&
-  /data-movil-action=["']cerrar-avisos["']/.test(vistaAvisosHTML));
 prueba('abrir y cerrar Avisos sincroniza hidden, aria-expanded y devuelve el foco',
   subvistaAvisosConservaEstadoYFoco(js));
 
-const inicioCuentaMovil = html.indexOf('<section class="movil-panel" id="movilPanelMas"');
-const finCuentaMovil = html.indexOf('<nav class="movil-nav"', inicioCuentaMovil);
-const panelCuentaMovilHTML = inicioCuentaMovil >= 0 && finCuentaMovil > inicioCuentaMovil
-  ? html.slice(inicioCuentaMovil, finCuentaMovil) : '';
-prueba('Mi cuenta agrupa acceso, avisos, privacidad y seguridad sin ocultar herramientas',
-  /Perfil y seguridad/.test(panelCuentaMovilHTML) && /Avisos y preferencias/.test(panelCuentaMovilHTML) &&
-  /id=["']movilVistaAvisos["']/.test(panelCuentaMovilHTML) &&
-  /href=["']\/privacidad["']/.test(panelCuentaMovilHTML) &&
-  /no pide datos bancarios, claves de monedero ni frases de recuperación/.test(panelCuentaMovilHTML) &&
-  /data-movil-action=["']academy["']/.test(panelCuentaMovilHTML) &&
-  ['metodo','fuera'].every(destino =>
-    new RegExp(`data-movil-ir=["']${destino}["']`).test(panelCuentaMovilHTML)));
+prueba('Perfil agrupa cuenta, guardados, avisos y privacidad sin ocultar herramientas',
+  /id="movilCuentaAccion"[^>]*disabled/.test(panelPerfilHTML) &&
+  /Datos de una cuenta anterior/.test(panelPerfilHTML) &&
+  /href=["']\/privacidad["']/.test(panelPerfilHTML) && /href=["']\/privacidad#derechos["']/.test(panelPerfilHTML) &&
+  /data-accion=["']descargar-csv["']/.test(panelPerfilHTML) &&
+  /no pide datos bancarios, claves de monedero ni frases de recuperación/.test(panelPerfilHTML));
 
 const inicioEmisionesHTML = html.indexOf('<section class="emis wrap" id="emisiones"');
 const finEmisionesHTML = html.indexOf('</section>', inicioEmisionesHTML);

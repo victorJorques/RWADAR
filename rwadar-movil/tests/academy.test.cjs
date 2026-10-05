@@ -128,15 +128,16 @@ test('el progreso vive en el dispositivo y se borra con «Borrar datos del dispo
   assert.match(componente, /guardarProgresoAcademy/);
 });
 
-test('la Academy se abre desde el radar y desde Más, y sus botones solo llevan al radar o a la web', () => {
+test('la Academy es una pestaña y sus botones solo llevan a Buscar o a la web', () => {
   const app = leer('App.js');
   assert.match(app, /<Academy\b/);
-  assert.match(app, /const \[academy, setAcademy\] = useState\(null\)/);
-  assert.match(app, /icono="academy"\s+titulo="RWAdar Academy"/);
-  assert.match(app, /accessibilityLabel=\{`Abrir RWAdar Academy: \$\{LECCIONES_PUBLICADAS\} lecciones sobre tokenización`\}/);
-  assert.match(app, /if \(destino\.app === 'radar'\) \{\s*setAcademy\(null\);\s*setPestana\('radar'\);/);
+  assert.match(app, /const \[leccion, setLeccion\] = useState\(''\)/);
+  assert.match(app, /\{pestana === 'academy' \? \(\s*<Academy\s+slug=\{leccion \|\| null\}/);
+  assert.match(app, /const abrirAcademy = \(\) => \{ tacto\.abrir\(\); setLeccion\(''\); setPestana\('academy'\); \};/);
+  assert.match(app, /if \(destino\.app === 'radar'\) \{\s*setPestana\('buscar'\);\s*setVistaBuscar\('empresas'\);/);
   assert.match(app, /else if \(destino\.app === 'web' && destino\.url\) \{\s*abrirEnlace\(destino\.url\);/);
-  assert.match(app, /onRequestClose=\{\(\) => setAcademy\(\(actual\) => \(actual \? '' : null\)\)\}/);
+  assert.doesNotMatch(app, /Modal visible=\{academy/);
+  assert.match(leer('componentes', 'Academy.js'), /\{onCerrar \? \(/);
   assert.match(leer('componentes', 'Navegacion.js'), /nombre === 'academy'/);
 });
 
