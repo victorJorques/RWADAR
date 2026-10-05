@@ -29,7 +29,6 @@
   },
   "scripts": {
     "test": "node --test",
-    "postinstall": "node scripts/parchear-expo-uuidv5.cjs",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",

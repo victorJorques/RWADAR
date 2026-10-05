@@ -18,6 +18,15 @@ const MODO_LOCAL_SEGURO=typeof location!=='undefined'&&
    Es una guarda del cliente: no modifica los permisos del servidor. */
 const SERVICIOS_USUARIO_REMOTOS=false;
 const SERVICIOS_USUARIO_DISPONIBLES=SERVICIOS_USUARIO_REMOTOS&&!MODO_LOCAL_SEGURO;
+/* Las cuentas se reabren por fases (docs/tareas/REABRIR-CUENTAS.md). La
+   fase 1 (db/26) abre perfil, vigilancia y baja; opiniones con su
+   moderación y avisos por correo necesitan su propio permiso en el servidor
+   y su propia prueba, así que tienen interruptor aparte y nunca se encienden
+   sin las cuentas. */
+const OPINIONES_REMOTAS=false;
+const OPINIONES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&OPINIONES_REMOTAS;
+const AVISOS_CORREO_REMOTOS=false;
+const AVISOS_CORREO_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_CORREO_REMOTOS;
 function limpiarRetornoSinServiciosUsuario(){
  if(SERVICIOS_USUARIO_DISPONIBLES||typeof location==='undefined'||
     typeof history==='undefined'||typeof history.replaceState!=='function')return;
@@ -33,6 +42,63 @@ function limpiarRetornoSinServiciosUsuario(){
  }catch(e){} /* Un enlace defectuoso tampoco inicia autenticación. */
 }
 /* servicios-usuario:fin */
+/* favoritos-locales:inicio */
+/* =================================================================
+   FAVORITOS · empresas y ofertas guardadas en este navegador
+   -----------------------------------------------------------------
+   Mientras las cuentas están en pausa, «Guardar» funciona igual que en
+   la app: se queda en el almacenamiento local, no se envía a RWAdar y se
+   borra desde Perfil. Solo guarda nombres de empresa y slugs de oferta.
+   ================================================================= */
+const Favoritos=(function(){
+ const CLAVE='rwadar.favoritos.v1',MAX=200;
+ const oyentes=new Set();
+ let datos={empresas:[],ofertas:[]};
+ const limpia=lista=>Array.isArray(lista)
+  ?[...new Set(lista.filter(x=>typeof x==='string'&&x.length>0&&x.length<=160))].slice(0,MAX):[];
+ function leer(){
+  try{
+   const j=JSON.parse(localStorage.getItem(CLAVE)||'null');
+   datos=j&&typeof j==='object'?{empresas:limpia(j.empresas),ofertas:limpia(j.ofertas)}:{empresas:[],ofertas:[]};
+  }catch(e){datos={empresas:[],ofertas:[]};}
+ }
+ function avisarCambio(){oyentes.forEach(f=>{try{f();}catch(e){}});}
+ function guardar(){try{localStorage.setItem(CLAVE,JSON.stringify(datos));}catch(e){}}
+ function alternar(tipo,clave){
+  if(!Object.hasOwn(datos,tipo)||typeof clave!=='string'||!clave)return false;
+  const i=datos[tipo].indexOf(clave);
+  if(i>=0)datos[tipo].splice(i,1);else datos[tipo]=[clave,...datos[tipo]].slice(0,MAX);
+  guardar();avisarCambio();return i<0;
+ }
+ function borrar(){datos={empresas:[],ofertas:[]};try{localStorage.removeItem(CLAVE);}catch(e){}avisarCambio();}
+ if(typeof localStorage!=='undefined')leer();
+ if(typeof window!=='undefined'&&window.addEventListener)
+  window.addEventListener('storage',e=>{if(e.key===CLAVE){leer();avisarCambio();}});
+ return {
+  tiene:(tipo,clave)=>Object.hasOwn(datos,tipo)&&datos[tipo].includes(clave),
+  lista:tipo=>Object.hasOwn(datos,tipo)?datos[tipo].slice():[],
+  total:()=>datos.empresas.length+datos.ofertas.length,
+  alternar,borrar,alCambiar:f=>{oyentes.add(f);}
+ };
+})();
+function botonGuardarOferta(o){
+ const on=typeof Favoritos!=='undefined'&&Favoritos.tiene('ofertas',o.slug);
+ return '<button class="escaparate-guardar fav-local'+(on?' on':'')+'" type="button" data-guardar-oferta="'+escHtml(o.slug)+'" aria-pressed="'+on+'" aria-label="'+
+  escHtml((on?'Quitar de guardadas: ':'Guardar: ')+o.titulo)+'">'+(on?'★ Guardada':'☆ Guardar')+'</button>';
+}
+if(typeof document!=='undefined'&&document.addEventListener&&typeof fetch!=='undefined')
+ document.addEventListener('click',e=>{
+  const b=e.target&&e.target.closest&&e.target.closest('[data-guardar-oferta]');
+  if(!b)return;
+  e.preventDefault();
+  const slug=b.dataset.guardarOferta,ahora=Favoritos.alternar('ofertas',slug);
+  document.querySelectorAll('[data-guardar-oferta]').forEach(x=>{
+   if(x.dataset.guardarOferta!==slug||x.closest('#perfilOfertas'))return;
+   x.classList.toggle('on',ahora);x.setAttribute('aria-pressed',String(ahora));x.textContent=ahora?'★ Guardada':'☆ Guardar';
+  });
+  avisar(ahora?'Oferta guardada. La tienes en Perfil.':'Oferta quitada de guardadas.');
+ });
+/* favoritos-locales:fin */
 const FECHA_VERIFICACION_LOCAL='2026-09-21';
 let ESCAPARATE_LOCAL=null;
 let MANIFIESTO_EDITORIAL_LOCAL=null;
@@ -1489,7 +1555,7 @@ function openDrawer(i){
  if(typeof Cuenta!=="undefined") Cuenta.pintarVigilar(p.n);
  /* Las opiniones se cargan de la red, asi que van despues de abrir el
     panel: primero se ve la ficha, y ellas entran cuando lleguen. */
- if(typeof Opiniones!=="undefined"&&SERVICIOS_USUARIO_DISPONIBLES){const c=document.getElementById("dwOpiniones");if(c)Opiniones.pinta(p.n,c);}
+ if(typeof Opiniones!=="undefined"&&OPINIONES_DISPONIBLES){const c=document.getElementById("dwOpiniones");if(c)Opiniones.pinta(p.n,c);}
  const cuerpo=document.getElementById('dwBody');if(cuerpo)cuerpo.scrollTop=0;
  openPanel('drawer');
 }
@@ -1954,6 +2020,7 @@ function tarjetaOfertaLocal(o,{secundario=false}={}){
    (avisoPrincipal?'<p class="escaparate-aviso-compacto'+(bloqueo?' escaparate-aviso-bloqueo':'')+'"><b>'+ (bloqueo?'Importante':'Revisa')+'</b> · '+escHtml(avisoPrincipal)+'</p>':'')+
    '<div class="emi-pie"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'">'+
     (documentacion?'Doc. ':'Revisado ')+escHtml(fechaES(fechaRevision))+'</time>'+
+    botonGuardarOferta(o)+
     '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Ver ficha <span aria-hidden="true">→</span></button>'+
    '</div></div></article>';
 }
@@ -1970,7 +2037,7 @@ function filaSecundariaLocal(o){
   '<h4>'+escHtml(o.titulo)+'</h4><div class="escaparate-sec-cifras"><span><b>'+escHtml(rentabilidad)+'</b><small>Rentabilidad ajustada</small></span>'+
   '<span><b>'+escHtml(precio)+'</b><small>Precio observado</small></span></div>'+
   '<div class="escaparate-sec-pie">'+(ultima?'<span>'+escHtml(ultima.valor)+'</span>':'<span>Sin última operación publicada</span>')+
-  '<span class="escaparate-sec-enlaces"><button type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Detalle de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalle</button><a href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir mercado para '+escHtml(o.titulo)+'">Mercado ↗</a>'+
+  '<span class="escaparate-sec-enlaces">'+botonGuardarOferta(o)+'<button type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Detalle de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalle</button><a href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir mercado para '+escHtml(o.titulo)+'">Mercado ↗</a>'+
   (urlMercado&&urlFicha&&urlFicha!==urlMercado?'<a href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir ficha oficial de '+escHtml(o.titulo)+'">Ficha</a>':'')+
   '</span></div></div></article>';
 }
@@ -2973,7 +3040,7 @@ const Opiniones=(function(){
    c.Authorization='Bearer '+t;return c;};
 
  async function pide(ruta,opc){
-  if(!SERVICIOS_USUARIO_DISPONIBLES)throw new Error('Opiniones desactivadas en esta versión editorial');
+  if(!OPINIONES_DISPONIBLES)throw new Error('Opiniones desactivadas en esta versión editorial');
   const cfg=Object.assign({cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'},opc||{});
   cfg.headers=Object.assign({apikey:CLAVE_PUB},(opc&&opc.headers)||{});
   const r=await fetch(REST+ruta,cfg);
@@ -3000,7 +3067,7 @@ const Opiniones=(function(){
  const nota=s=>{const n=Number(s);return Number.isInteger(n)&&n>=1&&n<=10?n:null};
 
  async function pinta(nombre,host){
-  if(!SERVICIOS_USUARIO_DISPONIBLES){host.innerHTML='';return;}
+  if(!OPINIONES_DISPONIBLES){host.innerHTML='';return;}
   host.innerHTML='<p class="op-cargando">Cargando opiniones…</p>';
   let pid;
   try{ pid=await idPlataforma(nombre); }catch(e){ host.innerHTML=''; return; }
@@ -3164,6 +3231,7 @@ function perfilDesdeRespuestaCorreo(base,fila,esperado){
 }
 /* correo-consentimiento:fin */
 
+
 /* =================================================================
    CUENTA · registro, sesión y lista de vigilancia
    -----------------------------------------------------------------
@@ -3183,6 +3251,10 @@ const Cuenta = (function(){
     extremo a extremo, la interfaz no debe recoger datos para crear cuentas
     que la persona no podrá confirmar. Cambiar a true exige esa prueba real. */
  const CORREO_AUTH_E2E=false;
+ /* Manual de bienvenida de Eric (docs/manual). Vacío: no se ofrece. Se
+    enciende con su ruta estable (/descargas/como-usar-rwadar.pdf) cuando el
+    PDF esté revisado y publicado; ver docs/manual/LEEME.md. */
+ const MANUAL_BIENVENIDA='';
  let ses=null, perfil=null, vigiladas=new Map(), modo='entrar', fichaAbierta=null,
      identidadConfirmada=false,versionSesion=0,renovacion=null,focoCuenta=null,
      correoPendiente='',operacionCuenta=0,temporizadorReenvio=null,cuentaHistorial=false;
@@ -3333,7 +3405,18 @@ const Cuenta = (function(){
  function pintarVigilar(nombre){
   fichaAbierta=nombre; const c=$('dwVigilar'); if(!c) return;
   if(!SERVICIOS_USUARIO_DISPONIBLES){
-   c.innerHTML='<p class="pn-nota pn-nota-separada">El seguimiento está en pausa. Puedes consultar esta ficha y visitar la web del proveedor sin cuenta.</p>';
+   const fav=typeof Favoritos!=='undefined'&&Favoritos.tiene('empresas',nombre);
+   c.innerHTML=(typeof Favoritos!=='undefined'
+     ?'<button class="btn-vigilar fav-local'+(fav?' on':'')+'" id="btnFav" type="button" aria-pressed="'+fav+'">'+
+       (fav?'★ Guardada en favoritos':'☆ Guardar en favoritos')+'</button>'+
+      '<p class="pn-nota pn-nota-separada fav-local">Se guarda solo en este navegador. La encontrarás en Perfil.</p>':'')+
+    '<p class="pn-nota pn-nota-separada fav-escritorio">El seguimiento está en pausa. Puedes consultar esta ficha y visitar la web del proveedor sin cuenta.</p>';
+   const bf=typeof Favoritos!=='undefined'?$('btnFav'):null;
+   if(bf)bf.addEventListener('click',()=>{
+    const ahora=Favoritos.alternar('empresas',nombre);
+    avisar(ahora?nombre+' guardada en favoritos. La tienes en Perfil.':nombre+' quitada de favoritos.');
+    pintarVigilar(nombre);
+   });
    return;
   }
   const on=vigiladas.has(nombre);
@@ -3347,7 +3430,7 @@ const Cuenta = (function(){
 
  /* --- la ventana de entrar / registro / recuperar ------------------ */
  const TEXTOS={
-  entrar:{t:'Entrar',s:'Para guardar vigilancia y gestionar tus opiniones.',b:'Entrar',otro:'Crear una cuenta'},
+  entrar:{t:'Entrar',s:OPINIONES_DISPONIBLES?'Para guardar vigilancia y gestionar tus opiniones.':'Para guardar tu lista de vigilancia entre visitas y dispositivos.',b:'Entrar',otro:'Crear una cuenta'},
   registro:{t:'Crear cuenta',s:'Es opcional y gratis. Tendrás que confirmar el correo antes de entrar.',b:'Crear cuenta',otro:'Ya tengo cuenta'},
   recuperar:{t:'Recuperar el acceso',s:'Solicita un enlace para poner una contraseña nueva.',b:'Solicitar el enlace',otro:'Volver a entrar'},
   nueva_clave:{t:'Elige una contraseña nueva',s:'El enlace ya ha verificado tu solicitud. Escribe la contraseña que usarás desde ahora.',b:'Guardar contraseña',otro:''},
@@ -3388,6 +3471,8 @@ const Cuenta = (function(){
    $('cuentaPaso2').textContent=registro?'Confirmación del correo pendiente.':'Enlace de recuperación pendiente.';
    $('cuentaPaso3').textContent=registro?'Después vuelve a RWAdar e inicia sesión.':'Elige la contraseña nueva desde el enlace.';
   }
+  const manual=$('cuentaManual');
+  if(manual){manual.hidden=!(registro&&MANUAL_BIENVENIDA);if(!manual.hidden)manual.href=MANUAL_BIENVENIDA;}
   $('cuentaEstadoEntrar').textContent=pausado?'Ya tengo cuenta · Entrar':'Ya lo he hecho · Entrar';
   $('cuentaReenviar').hidden=pausado||!CORREO_AUTH_E2E;
   $('cuentaCambiarCorreo').hidden=pausado;
@@ -3401,6 +3486,10 @@ const Cuenta = (function(){
   const T=TEXTOS[modo];if(!T)return;
   operacionCuenta++;limpiaSecretos();limpiaErroresCuenta();
   if(temporizadorReenvio){clearTimeout(temporizadorReenvio);temporizadorReenvio=null;}
+  /* Cambiar de modo invalida la operación en curso, que ya no reactivará el
+     botón al terminar: sin esto, tras «Confirma tu correo» → «Entrar» el
+     botón se quedaba desactivado y no había forma de entrar sin recargar. */
+  $('cuentaEnviar').disabled=false;$('cuentaForm').removeAttribute('aria-busy');
   $('cuentaTit').textContent=T.t;
   $('cuentaSub').textContent=(modo===solicitado&&motivo)||T.s;
   $('cuentaEnviar').textContent=T.b||'';
@@ -3577,19 +3666,28 @@ const Cuenta = (function(){
     '<div><span class="n">'+avisosRecibidos+'</span><span class="l">Alertas<br>generadas</span></div>'+
    '</div>'+
    '<p class="perfil-nota">Miembro desde el '+desde+'.</p>'+ 
-   '<div class="perfil-sec">Identidad pública</div>'+
-   '<div class="perfil-editar"><label for="pfNombre">Nombre junto a tus opiniones'+
+   '<div class="perfil-sec">'+(OPINIONES_DISPONIBLES?'Identidad pública':'Tu nombre')+'</div>'+
+   '<div class="perfil-editar"><label for="pfNombre">'+(OPINIONES_DISPONIBLES?'Nombre junto a tus opiniones':'Cómo quieres que te saludemos')+
      '<input id="pfNombre" type="text" maxlength="60" autocomplete="name" value="'+esc((perfil&&perfil.nombre)||'')+'"></label>'+
      '<button id="pfGuardarNombre" type="button">Guardar nombre</button></div>'+
-   '<p class="perfil-nota perfil-ayuda">Si lo dejas vacío, tus opiniones aparecen como «Anónimo».</p>'+ 
+   (OPINIONES_DISPONIBLES
+     ? '<p class="perfil-nota perfil-ayuda">Si lo dejas vacío, tus opiniones aparecen como «Anónimo».</p>'
+     : '<p class="perfil-nota perfil-ayuda">Solo lo ves tú. Las opiniones llegarán próximamente.</p>')+ 
+   (MANUAL_BIENVENIDA
+     ? '<div class="perfil-sec">Manual de uso</div>'+
+       '<p class="perfil-nota">Cómo verificamos, cómo leer una ficha, los filtros, el comparador y por qué conviene mirar «Fuera del radar» primero.</p>'+
+       '<a class="perfil-manual" id="pfManual" href="'+esc(MANUAL_BIENVENIDA)+'" target="_blank" rel="noopener">Descargar el manual (PDF, 10 páginas)</a>'
+     : '')+
    '<div class="perfil-sec">Lo que vigilas</div>'+
    (lista.length
      ? '<ul class="vig-lista">'+lista.map(n=>'<li><span>'+esc(n)+'</span><button data-q="'+esc(n)+'">quitar</button></li>').join('')+'</ul>'
      : '<p class="perfil-nota">Todavía no vigilas ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Vigilar» para guardarla aquí.</p>')+
    '<div class="perfil-sec">Avisos</div>'+
-   '<label class="fila-opcion"><input type="checkbox" id="optAvisos" aria-describedby="optAvisosAyuda"'+(correoConsentido?' checked':'')+'>'+
-   '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que vigilo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
-   '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, el envío todavía no está activo: faltan configurar Brevo y verificar la entrega de extremo a extremo. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'+
+   (AVISOS_CORREO_DISPONIBLES
+     ? '<label class="fila-opcion"><input type="checkbox" id="optAvisos" aria-describedby="optAvisosAyuda"'+(correoConsentido?' checked':'')+'>'+
+       '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que vigilo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
+       '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, el envío todavía no está activo: faltan configurar Brevo y verificar la entrega de extremo a extremo. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'
+     : '<p class="perfil-nota">Próximamente: avisos por correo cuando cambie una plataforma que vigilas. Se activarán solo si tú lo pides. Mientras tanto, tu lista queda guardada en tu cuenta.</p>')+
    '<div class="perfil-pie">'+
     '<button id="pfSalir">Cerrar sesión</button>'+
     '<button class="peligro" id="pfBorrar">Borrar mi cuenta</button>'+
@@ -3600,7 +3698,7 @@ const Cuenta = (function(){
   const g=$('pfGuardarNombre');if(g)g.addEventListener('click',async()=>{
    const n=$('pfNombre').value.trim();g.disabled=true;
    try{await rest('/perfiles?id=eq.'+encodeURIComponent(ses.uid),{method:'PATCH',body:JSON.stringify({nombre:n||null})});
-     if(perfil)perfil.nombre=n||null;pinta();abrirPerfil();aviso('Nombre público guardado.');
+     if(perfil)perfil.nombre=n||null;pinta();abrirPerfil();aviso(OPINIONES_DISPONIBLES?'Nombre público guardado.':'Nombre guardado.');
    }catch(e){g.disabled=false;aviso('No se ha podido guardar el nombre.');}
   });
   const o=$('optAvisos'); if(o) o.addEventListener('change',async()=>{
@@ -3621,12 +3719,16 @@ const Cuenta = (function(){
      : 'No se ha podido confirmar la retirada; la preferencia sigue activada. Vuelve a intentarlo.');
    }finally{o.disabled=false;}
   });
+  /* Solo se anota la fecha de la primera descarga, en el propio perfil. */
+  const m=$('pfManual'); if(m) m.addEventListener('click',()=>{
+   rest('/rpc/marcar_manual_descargado',{method:'POST',body:'{}',keepalive:true}).catch(()=>{});
+  });
   const s=$('pfSalir'); if(s) s.addEventListener('click',salir);
   const b=$('pfBorrar'); if(b) b.addEventListener('click',borrar);
   if(!soloPintar)openPanel('perfilPanel');
   /* La moderación se pide DESPUÉS de abrir: si la base dice que no eres
      administrador devuelve cero filas y aquí no aparece nada. */
-  if(perfil && perfil.es_admin) pintarModeracion();
+  if(OPINIONES_DISPONIBLES && perfil && perfil.es_admin) pintarModeracion();
  }
  /* --- moderación (solo administradores) --------------------------- */
  async function pintarModeracion(){
@@ -3718,43 +3820,24 @@ const Cuenta = (function(){
   pintaMovil();
  }
  function pintaMovil(){
-  const cantidad=vigiladas.size;
-  const numero=$('movilSiguiendoCuenta'),unidad=$('movilSiguiendoUnidad');
-  const texto=$('movilSiguiendoTexto'),accion=$('movilCuentaAccion');
-  const insignia=$('movilSiguiendoBadge'),tab=$('movilTabSiguiendo');
-  const lista=$('movilSiguiendoLista'),vacio=$('movilSiguiendoVacio'),masCuenta=$('movilMasCuenta');
+  /* Solo la tarjeta «Tu perfil». Empresas y ofertas guardadas las pinta
+     Movil desde Favoritos, haya o no cuenta. */
+  const titulo=$('movilPerfilTitulo'),texto=$('movilSiguiendoTexto'),accion=$('movilCuentaAccion');
   if(!SERVICIOS_USUARIO_DISPONIBLES){
-   if(numero)numero.textContent='—';
-   if(masCuenta)masCuenta.textContent='—';
-   if(unidad)unidad.textContent='seguimiento en pausa';
-   if(texto)texto.textContent='Esta versión de la web no accede a tus favoritos anteriores ni guarda seguimiento remoto.';
+   if(titulo)titulo.textContent='Sin cuenta, por ahora';
+   if(texto)texto.textContent='Las cuentas llegarán pronto. Mientras tanto, lo que guardas se queda en este navegador.';
    if(accion){accion.textContent='Cuentas en pausa';accion.disabled=true;}
-   if(insignia){insignia.textContent='';insignia.hidden=true;}
-   if(tab)tab.setAttribute('aria-label','Favoritos, seguimiento en pausa');
-   if(lista){lista.hidden=true;lista.innerHTML='';}
-   if(vacio)vacio.hidden=false;
    return;
   }
-  if(numero)numero.textContent=String(cantidad);
-  if(masCuenta)masCuenta.textContent=String(cantidad);
-  if(unidad)unidad.textContent=cantidad===1?'plataforma favorita':'plataformas favoritas';
+  const cantidad=vigiladas.size;
+  if(titulo)titulo.textContent=identidadConfirmada&&ses
+   ?((perfil&&perfil.nombre)||(ses.correo||'').split('@')[0]||'Tu cuenta'):'Sin sesión';
   if(texto)texto.textContent=identidadConfirmada
-   ?(cantidad?'Tus favoritos están guardados y puedes gestionarlos desde aquí.':'Todavía no has guardado ninguna plataforma.')
-   :'Entra para consultar las plataformas que has guardado.';
-  if(accion)accion.textContent=identidadConfirmada?'Abrir mis favoritos':'Entrar y abrir mis favoritos';
-  if(insignia){insignia.textContent=cantidad>99?'99+':String(cantidad);insignia.hidden=!cantidad;}
-  if(tab)tab.setAttribute('aria-label',cantidad?'Favoritos, '+cantidad:'Favoritos');
-  if(lista&&vacio){
-   const seguidas=identidadConfirmada?P.filter(p=>vigiladas.has(p.n)):[];
-   const hay=seguidas.length>0;
-   lista.hidden=!hay;vacio.hidden=hay;
-   lista.innerHTML=hay?seguidas.map(p=>{const i=P.indexOf(p);return `
-    <article class="movil-seguida ${catClase(p)}">
-     ${siglaEl(p)}
-     <div><h3>${escHtml(p.n)}</h3><p>${escHtml(p.tipo)} · ${escHtml(p.reg)}</p></div>
-     <button type="button" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}">›</button>
-    </article>`;}).join(''):'';
-  }
+   ?(cantidad?cantidad+(cantidad===1?' plataforma vigilada':' plataformas vigiladas')+' en tu cuenta.':'Todavía no vigilas ninguna plataforma desde tu cuenta.')
+   :'Entra o crea una cuenta para guardar tu lista de vigilancia entre dispositivos.';
+  /* El HTML nace con el botón desactivado (pausa); al abrir cuentas hay que
+     habilitarlo aquí o en el móvil no habría forma de entrar. */
+  if(accion){accion.disabled=false;accion.textContent=identidadConfirmada?'Abrir mi cuenta':'Entrar o crear cuenta';}
  }
  function abrirGestion(){
   if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Para gestionar datos anteriores, escribe a RWAdar@protonmail.com.');return;}
@@ -3816,6 +3899,7 @@ const Cuenta = (function(){
      if(!ok){pinta();abrir('entrar');msj('El enlace no es válido o ha caducado. Solicita uno nuevo.');return;}
      await cargarMio();pinta();if(fichaAbierta)pintarVigilar(fichaAbierta);
      if(tipo==='recovery')abrir('nueva_clave');
+     else if(MANUAL_BIENVENIDA){abrirPerfil();aviso('Correo confirmado. Te damos la bienvenida: tienes el manual de uso en tu cuenta.');}
      else aviso('Correo confirmado en esta pestaña. Ya puedes iniciar sesión en RWAdar.');
     });
    }
@@ -3839,8 +3923,8 @@ const Cuenta = (function(){
 /* =================================================================
    SHELL MÓVIL / PWA
    -----------------------------------------------------------------
-   Cuatro pestañas comunes a iPhone y Android, sin convertir la web de
-   escritorio en otra cosa. La composición móvil cambia de jerarquía,
+   Cuatro pestañas comunes a iPhone y Android (Inicio, Buscar, Academy y
+   Perfil), sin convertir la web de escritorio en otra cosa. La composición móvil cambia de jerarquía,
    pero comparte el mismo DOM y estado: no duplica datos, filtros, 3D ni
    lógica de cuenta.
    ================================================================= */
@@ -3864,13 +3948,15 @@ const Movil = (function(){
  const academia=document.getElementById('academy');
  const explicador=document.getElementById('explain');
  const academyLeccion=document.getElementById('academyLeccion');
+ const leccionesAcademy=document.querySelector('.academia-lecciones');
+ const contenedorAcademy=document.getElementById('movilAcademyLecciones');
  const metodo=document.getElementById('metodo');
  const fuera=document.getElementById('fuera');
  const detalles=new Map([
   ['presentacion',portadaTexto],['metodo',metodo],['fuera',fuera]
  ].filter(([,nodo])=>Boolean(nodo)));
  const ordenMovil=[emisiones,herramienta,barra,radarIntro,radarPortada,marcador,bannerAcademy,resultados,transparencia,academia,portadaTexto,portada].filter(Boolean);
- const movibles=[...ordenMovil,explicador].filter(Boolean);
+ const movibles=[...ordenMovil,explicador,leccionesAcademy].filter(Boolean);
  const anclas=new Map();
  if(typeof document.createComment==='function')movibles.forEach((nodo,indice)=>{
   if(!nodo.parentNode)return;
@@ -3882,12 +3968,15 @@ const Movil = (function(){
  const cabSub=document.getElementById('movilCabeceraSub');
  const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
  const textos={
+  inicio:['RWADAR','Inicio','Noticias, novedades y por dónde empezar'],
   buscar:['EXPLORAR RWADAR','Buscar','Ofertas y '+total+' plataformas contrastadas'],
-  favoritos:['TU SELECCIÓN','Favoritos','Plataformas guardadas, no inversiones'],
-  inversiones:['SIN DATOS DE OPERACIONES','Inversiones','RWAdar todavía no registra operaciones'],
-  cuenta:['TU ESPACIO','Mi cuenta','Perfil, seguridad, privacidad y preferencias']
+  academy:['APRENDE A TU RITMO','Academy','Lecciones por niveles, con test y revisión legal'],
+  cuenta:['TU ESPACIO','Perfil','Lo que guardas, avisos y privacidad']
  };
- let activa='buscar',academyAbierta=false,academyOrigen=null,academyHistorial=false,avisosHistorial=false;
+ /* La app abre en Inicio. Un enlace con ancla (#emisiones, #fuera…) va a
+    Buscar, que es donde está ese contenido. */
+ const destinoInicial=typeof location!=='undefined'&&location.hash&&location.hash.length>1?'buscar':'inicio';
+ let activa=destinoInicial,academyAbierta=false,academyOrigen=null,academyHistorial=false,avisosHistorial=false;
  let detalleAbierto=null,detalleOrigen=null,detalleHistorial=false;
  let modoMovilPrevio=media.matches;
 
@@ -3938,6 +4027,8 @@ const Movil = (function(){
    const referencia=metodo&&metodo.parentNode===panelBuscar?metodo:null;
    ordenMovil.forEach(nodo=>panelBuscar.insertBefore(nodo,referencia));
    if(explicador&&academyLeccion&&explicador.parentNode!==academyLeccion)academyLeccion.appendChild(explicador);
+   if(leccionesAcademy&&contenedorAcademy&&leccionesAcademy.parentNode!==contenedorAcademy)
+    contenedorAcademy.appendChild(leccionesAcademy);
    if(academia)academia.hidden=!academyAbierta;
    const informacion=document.getElementById('emisInformacion');
    if(informacion)informacion.open=!emisiones||!emisiones.classList.contains('sin-emisiones');
@@ -3953,8 +4044,8 @@ const Movil = (function(){
  }
  function cabeceraAcademy(){
   if(cabEtiqueta)cabEtiqueta.textContent='APRENDE A TU RITMO';
-  if(cabTitulo)cabTitulo.textContent='RWAdar Academy';
-  if(cabSub)cabSub.textContent='Tokenización, inversión, seguridad y riesgos';
+  if(cabTitulo)cabTitulo.textContent='Academy';
+  if(cabSub)cabSub.textContent='Lecciones por niveles, con test y revisión legal';
  }
  function cerrarAcademyVisual(enfocar=true){
   if(!academyAbierta)return;
@@ -4093,6 +4184,61 @@ const Movil = (function(){
   if(boton)boton.setAttribute('aria-pressed',Sonido.activo?'true':'false');
   if(estado)estado.textContent=Sonido.activo?'Activado':'Desactivado';
  }
+ /* Perfil: empresas y ofertas guardadas en este navegador. */
+ function pintarPerfil(){
+  const empresas=Favoritos.lista('empresas'),ofertas=Favoritos.lista('ofertas');
+  const total=Favoritos.total();
+  const n=(id,v)=>{const x=document.getElementById(id);if(x)x.textContent=String(v);};
+  n('movilGuardadosTotal',total);n('perfilEmpresasN',empresas.length);n('perfilOfertasN',ofertas.length);
+  const insignia=document.getElementById('movilGuardadosBadge');
+  if(insignia){insignia.textContent=total>99?'99+':String(total);insignia.hidden=!total;}
+  const tab=document.getElementById('movilTabMas');
+  if(tab)tab.setAttribute('aria-label',total?'Perfil, '+total+' guardados':'Perfil');
+  const lista=document.getElementById('perfilEmpresas'),vacio=document.getElementById('perfilEmpresasVacio');
+  if(lista&&vacio){
+   const filas=empresas.map(nombre=>{const i=P.findIndex(p=>p.n===nombre);return i<0?null:[P[i],i];}).filter(Boolean);
+   lista.hidden=!filas.length;vacio.hidden=filas.length>0;
+   lista.innerHTML=filas.map(([p,i])=>`
+    <article class="movil-seguida ${catClase(p)}">
+     ${siglaEl(p)}
+     <div><h3>${escHtml(p.n)}</h3><p>${escHtml(p.tipo)} · ${escHtml(p.reg)}</p></div>
+     <button type="button" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}">›</button>
+    </article>`).join('');
+  }
+  const listaO=document.getElementById('perfilOfertas'),vacioO=document.getElementById('perfilOfertasVacio');
+  if(listaO&&vacioO){
+   listaO.hidden=!ofertas.length;vacioO.hidden=ofertas.length>0;
+   listaO.innerHTML=ofertas.map(slug=>{
+    const o=typeof ofertaDetalleLocalPorSlug==='function'?ofertaDetalleLocalPorSlug(slug):null;
+    if(!o)return `
+    <article class="perfil-oferta perfil-oferta-retirada">
+     <div><h3>Ya no está en el catálogo</h3><p>La referencia que guardaste se ha retirado o está en revisión.</p></div>
+     <button type="button" class="perfil-oferta-quitar" data-guardar-oferta="${escHtml(slug)}" aria-pressed="true">Quitar</button>
+    </article>`;
+    return `
+    <article class="perfil-oferta">
+     <div><h3>${escHtml(o.titulo)}</h3><p>${escHtml(o.plataformaNombre)} · ${escHtml(o.categoria||'')}</p></div>
+     <button type="button" class="perfil-oferta-ver" data-perfil-oferta="${escHtml(o.slug)}">Detalles</button>
+     <button type="button" class="perfil-oferta-quitar" data-guardar-oferta="${escHtml(o.slug)}" aria-pressed="true" aria-label="Quitar ${escHtml(o.titulo)} de guardadas">Quitar</button>
+    </article>`;
+   }).join('');
+  }
+ }
+ /* Academy: cuántas lecciones has marcado como leídas en este navegador
+    (la misma clave que usan las páginas de /academy/). */
+ function pintarAcademy(){
+  const titulo=document.getElementById('movilAcademyProgreso');
+  if(!titulo||!leccionesAcademy)return;
+  const slugs=[...leccionesAcademy.querySelectorAll('a[href^="/academy/"]')]
+   .map(a=>a.getAttribute('href').replace('/academy/','')).filter(Boolean);
+  let leidas=0;
+  try{
+   const j=JSON.parse(localStorage.getItem('rwadar.academy.v1')||'null');
+   if(j&&Array.isArray(j.leidas))leidas=slugs.filter(x=>j.leidas.includes(x)).length;
+  }catch(e){}
+  titulo.textContent=slugs.length?leidas+' de '+slugs.length+' lecciones leídas':'Lecciones gratuitas, sin registro';
+ }
+ Favoritos.alCambiar(pintarPerfil);
  function cambiar(id,opciones){
   if(!media.matches||!paneles.has(id))return;
   if(detalleAbierto){
@@ -4114,6 +4260,8 @@ const Movil = (function(){
    tab.tabIndex=elegida?0:-1;
   });
   cabecera(id);
+  if(id==='cuenta')pintarPerfil();
+  if(id==='academy')pintarAcademy();
   if(!opciones||opciones.arriba!==false){
    window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   }
@@ -4125,7 +4273,7 @@ const Movil = (function(){
   ordenarBuscar(esMovil);
   if(document.documentElement&&document.documentElement.classList)
    document.documentElement.classList.toggle('movil-ui',esMovil);
-  if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();pintarSonidoMovil();}
+  if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();pintarSonidoMovil();pintarPerfil();pintarAcademy();}
   else{
    mostrarAvisos(false,false);
    document.body.removeAttribute('data-movil-pestana');
@@ -4162,6 +4310,8 @@ const Movil = (function(){
  });
  document.addEventListener('click',e=>{
   if(!media.matches)return;
+  const ofertaPerfil=e.target.closest&&e.target.closest('[data-perfil-oferta]');
+  if(ofertaPerfil){e.preventDefault();abrirDetalleOfertaLocal(ofertaPerfil.dataset.perfilOferta);return;}
   const cambio=e.target.closest&&e.target.closest('[data-movil-cambiar]');
   if(cambio){e.preventDefault();e.stopImmediatePropagation();cambiar(cambio.dataset.movilCambiar);return;}
   const destino=e.target.closest&&e.target.closest('[data-movil-ir]');
@@ -4185,6 +4335,13 @@ const Movil = (function(){
   }
   if(accion.dataset.movilAction==='cerrar-academy'){e.preventDefault();mostrarAcademy(false);}
   if(accion.dataset.movilAction==='cuenta'){e.preventDefault();Cuenta.abrirGestion();}
+  if(accion.dataset.movilAction==='borrar-guardados'){
+   e.preventDefault();
+   if(!Favoritos.total()){avisar('No hay nada guardado en este navegador.');return;}
+   if(confirm('Se borrarán las empresas y ofertas guardadas en este navegador. ¿Seguimos?')){
+    Favoritos.borrar();avisar('Guardados borrados de este navegador.');
+   }
+  }
   if(accion.dataset.movilAction==='avisos'){e.preventDefault();mostrarAvisos(true);}
   if(accion.dataset.movilAction==='cerrar-avisos'){e.preventDefault();mostrarAvisos(false);}
   if(accion.dataset.movilAction==='sonido'){

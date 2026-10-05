@@ -34,6 +34,7 @@ const datos = modulo('lib/datos.js', {
   './modo-local': { MODO_LOCAL: true, SERVICIOS_USUARIO_REMOTOS: false },
   './verificacion-local': verificacion,
   './catalogo-remoto': {},
+  './academy-progreso': modulo('lib/academy-progreso.js', {}),
 });
 
 function componentes(ahora = AHORA) {
@@ -50,6 +51,7 @@ function componentes(ahora = AHORA) {
     '../lib/datos': datos,
     '../lib/verificacion-local': verificacion,
     '../lib/tema': { C: {}, COLOR_CATEGORIA: {}, F: { media: 'Media', semi: 'Semi' }, R: {}, T: {}, UI: { tactil: 44, boton: 48 }, iniciales: () => 'PR' },
+    './Navegacion': { Icono: 'Icono' },
   }, { Date: Reloj, setTimeout: () => 1, clearTimeout() {} });
   return { ...render, estilos };
 }

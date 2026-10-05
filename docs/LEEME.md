@@ -13,6 +13,8 @@ RWAdar, qué funciona hoy y qué falta.
 | [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md) | Copias nocturnas, recuperar datos y actualizar Postgres |
 | [`ANALITICA.md`](ANALITICA.md) | Dónde mirar las visitas y cómo interpretarlas |
 | [`ENTREGA-TIENDAS-Y-ANUNCIOS.md`](ENTREGA-TIENDAS-Y-ANUNCIOS.md) | Google Play, App Store y AdMob |
+| [`../rwadar-academy/LEEME.md`](../rwadar-academy/LEEME.md) | Cómo se actualizan y publican las lecciones de RWAdar Academy |
+| [`academy/`](academy/) | Entrega de la Academy de Eric y la revisión de su contenido |
 | [`tareas/`](tareas/) | Trabajo pendiente y traspasos entre Codex y Claude |
 
 ## Seguridad

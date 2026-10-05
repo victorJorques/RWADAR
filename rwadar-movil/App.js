@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
-  useFonts, Geist_400Regular, Geist_500Medium, Geist_600SemiBold,
+  useFonts, Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
   Geist_700Bold, Geist_800ExtraBold,
 } from '@expo-google-fonts/geist';
 import { GeistMono_500Medium } from '@expo-google-fonts/geist-mono';
@@ -16,6 +16,7 @@ import {
   cargarCatalogo, cargarFuera, siguiendo, alternarSeguimiento, novedades,
   sincronizarSeguimientoPendiente, borrarDatosDispositivo,
   cargarSecundario, cargarExclusiones, proveedoresDeOfertas, textoBusquedaOferta,
+  ofertasGuardadas, alternarOfertaGuardada,
 } from './lib/datos';
 import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './lib/modo-local';
 import { vigilarCaducidadCatalogo, programarRevisionDiaria } from './lib/catalogo-remoto';
@@ -26,6 +27,9 @@ import {
   consultarEstadoAvisos, registrarParaAvisos, observarAperturasAvisos,
 } from './lib/avisos';
 import Explicador from './componentes/Explicador';
+import Academy from './componentes/Academy';
+import Inicio from './componentes/Inicio';
+import { LECCIONES } from './lib/academy-contenido';
 import Radar from './componentes/Radar';
 import Marca from './componentes/Marca';
 import Navegacion, { Icono } from './componentes/Navegacion';
@@ -34,6 +38,7 @@ import {
 } from './componentes/Ofertas';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
+const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
 const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
 
 async function abrirEnlace(url) {
@@ -68,11 +73,14 @@ async function abrirAjustes() {
 
 export default function App() {
   const [fuentesListas] = useFonts({
-    Geist_400Regular, Geist_500Medium, Geist_600SemiBold,
+    Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
     Geist_700Bold, Geist_800ExtraBold, GeistMono_500Medium,
   });
 
-  const [pestana, setPestana] = useState('radar');
+  /* Cuatro pestañas: inicio · buscar (empresas u ofertas) · academy · perfil. */
+  const [pestana, setPestana] = useState('inicio');
+  const [vistaBuscar, setVistaBuscar] = useState('empresas');
+  const [guardadas, setGuardadas] = useState([]);
   const [radar, setRadar] = useState([]);
   const [fuera, setFuera] = useState([]);
   const [ofertas, setOfertas] = useState([]);
@@ -95,6 +103,8 @@ export default function App() {
   const [abierta, setAbierta] = useState(null);
   const [ofertaAbierta, setOfertaAbierta] = useState(null);
   const [explicando, setExplicando] = useState(false);
+  // Pestaña Academy: '' muestra la lista de lecciones; un slug, esa lección.
+  const [leccion, setLeccion] = useState('');
   const [privacidad, setPrivacidad] = useState(false);
   const [estadoDatos, setEstadoDatos] = useState('');
   const [estadoAccion, setEstadoAccion] = useState('');
@@ -176,6 +186,11 @@ export default function App() {
 
   useEffect(() => { traer(); }, [traer]);
   useEffect(() => {
+    let vivo = true;
+    ofertasGuardadas().then((lista) => { if (vivo) setGuardadas(lista); });
+    return () => { vivo = false; };
+  }, []);
+  useEffect(() => {
     if (MODO_LOCAL || !fechaCatalogo) return;
     // Al vencer, el catálogo no se borra: se vuelve a cargar y queda marcado
     // como caducado, con sus cifras vencidas ocultas. Ya caducado, basta con
@@ -203,12 +218,13 @@ export default function App() {
     setBusqueda('');
     setCategoria('');
     if (plataforma) {
-      setPestana('radar');
+      setPestana('buscar');
+      setVistaBuscar('empresas');
       setAbierta(plataforma);
     } else {
       /* Si el cambio acaba de sacar la plataforma del radar, su ficha activa
-         ya no existe. La pantalla de avisos conserva el titular y el motivo. */
-      setPestana('avisos');
+         ya no existe. Inicio conserva el titular y el motivo del cambio. */
+      setPestana('inicio');
     }
     setSlugAvisoPendiente(null);
   }, [slugAvisoPendiente, cargando, radar]);
@@ -330,7 +346,7 @@ export default function App() {
       MODO_LOCAL
         ? 'Se eliminarán únicamente los seguimientos y cachés del escaparate local. No se contactará con Supabase.'
         : USUARIO_LOCAL
-          ? 'Se borrarán los favoritos de esta versión editorial y la caché del catálogo en este dispositivo. No se borran datos de versiones anteriores ni del servidor.'
+          ? 'Se borrarán las empresas y ofertas guardadas en esta versión editorial, el progreso de la Academy y la caché del catálogo en este dispositivo. No se borran datos de versiones anteriores ni del servidor.'
         : 'Se eliminarán de Supabase esta instalación, su token push y todos sus seguimientos, además de las cachés locales. No se puede deshacer.',
       [
         { text: 'Cancelar', style: 'cancel' },
@@ -342,7 +358,7 @@ export default function App() {
             try {
               await borrarDatosDispositivo();
               setRadar([]); setFuera([]); setOfertas([]); setSecundario([]); setEnCamino([]);
-              setExclusionesOfertas([]); setSigo([]); setAvisos([]);
+              setExclusionesOfertas([]); setSigo([]); setAvisos([]); setGuardadas([]);
               setEstadoDatos(MODO_LOCAL
                 ? 'Datos locales borrados. Actualiza para volver a cargar el escaparate incluido en esta copia.'
                 : 'Datos borrados. Actualiza para descargar de nuevo el catálogo público.');
@@ -354,7 +370,7 @@ export default function App() {
               setPrivacidad(false);
               Alert.alert('Datos borrados', MODO_LOCAL
                 ? 'Se han eliminado los seguimientos y cachés de esta copia local.'
-                : USUARIO_LOCAL ? 'Se han eliminado los favoritos editoriales y la caché del catálogo de este dispositivo. No se han modificado datos anteriores ni del servidor.'
+                : USUARIO_LOCAL ? 'Se han eliminado los guardados editoriales, el progreso de la Academy y la caché del catálogo de este dispositivo. No se han modificado datos anteriores ni del servidor.'
                 : 'La instalación no volverá a identificarse hasta que uses seguimiento o avisos.');
             } catch {
               Alert.alert(
@@ -373,6 +389,41 @@ export default function App() {
   };
 
   const abrir = (p) => { tacto.abrir(); setAbierta(p); };
+  const abrirAcademy = () => { tacto.abrir(); setLeccion(''); setPestana('academy'); };
+  /* Los botones de una lección llevan al radar de la app o abren la web
+     (el comparador solo existe allí). Nunca a una pantalla inexistente. */
+  const accionAcademy = (destino) => {
+    if (destino.app === 'radar') {
+      setPestana('buscar');
+      setVistaBuscar('empresas');
+    } else if (destino.app === 'web' && destino.url) {
+      abrirEnlace(destino.url);
+    }
+  };
+  /* Destinos de Inicio (noticias y atajos). */
+  const irA = (destino, url) => {
+    if (destino === 'academy') abrirAcademy();
+    else if (destino === 'web' && url) abrirEnlace(url);
+    else if (destino === 'buscar' || destino === 'ofertas' || destino === 'fuera') {
+      tacto.eleccion();
+      setVistaBuscar(destino === 'ofertas' ? 'ofertas' : 'empresas');
+      setPestana('buscar');
+    }
+  };
+  const ofertaPorSlug = useMemo(() => new Map(
+    [...ofertas, ...secundario, ...enCamino].map((o) => [o.slug, o])), [ofertas, secundario, enCamino]);
+  const ofertasGuardadasVisibles = useMemo(() => guardadas
+    .map((slug) => ofertaPorSlug.get(slug)).filter(Boolean), [guardadas, ofertaPorSlug]);
+  const alternarGuardada = async (oferta) => {
+    if (!oferta?.slug) return;
+    const yaEstaba = guardadas.includes(oferta.slug);
+    try {
+      setGuardadas(await alternarOfertaGuardada(oferta.slug));
+      yaEstaba ? tacto.soltar() : tacto.seguir();
+    } catch {
+      Alert.alert('No se guardó el cambio', 'No pudimos actualizar las ofertas guardadas en este dispositivo.');
+    }
+  };
   const filtrar = (c) => { tacto.eleccion(); setCategoria(c); };
   const cambiarPestana = (id) => {
     if (id === pestana) return;
@@ -395,16 +446,20 @@ export default function App() {
     <SafeAreaProvider>
       <StatusBar barStyle="light-content" backgroundColor={C.noche2} />
       <SafeAreaView style={e.pantalla} edges={['top']}>
-        <Cabecera
-          pestana={pestana}
-          total={radar.length}
-          ofertas={ofertas.length}
-          secundario={secundario.length}
-          enCamino={enCamino.length}
-          seguidas={sigo.length}
-          sinConexion={sinConexion}
-          onAyuda={() => { tacto.abrir(); setExplicando(true); }}
-        />
+        {/* La Academy trae su propia cabecera (con «volver» dentro de una lección). */}
+        {pestana !== 'academy' ? (
+          <Cabecera
+            pestana={pestana}
+            vistaBuscar={vistaBuscar}
+            total={radar.length}
+            ofertas={ofertas.length}
+            secundario={secundario.length}
+            enCamino={enCamino.length}
+            guardados={sigo.length + guardadas.length}
+            sinConexion={sinConexion}
+            onAyuda={() => { tacto.abrir(); setExplicando(true); }}
+          />
+        ) : null}
 
         {MODO_LOCAL ? <BannerModoLocal /> : null}
 
@@ -420,7 +475,28 @@ export default function App() {
         ) : null}
 
         <View style={e.contenido}>
-          {pestana === 'radar' ? (
+          {pestana === 'inicio' ? (
+            <Inicio
+              refrescando={refrescando}
+              onActualizar={refrescar}
+              onDestino={irA}
+              onExplicar={() => { tacto.abrir(); setExplicando(true); }}
+              fuera={fuera}
+              cambios={avisos}
+              renderCambio={(aviso) => <Aviso aviso={aviso} />}
+            />
+          ) : null}
+
+          {pestana === 'buscar' ? (
+            <SelectorBuscar
+              vista={vistaBuscar}
+              empresas={radar.length}
+              ofertas={todasOfertas.length}
+              onCambiar={(vista) => { tacto.eleccion(); setVistaBuscar(vista); }}
+            />
+          ) : null}
+
+          {pestana === 'buscar' && vistaBuscar === 'empresas' ? (
             <FlatList
               data={visibles}
               keyExtractor={(p) => p.slug}
@@ -436,20 +512,6 @@ export default function App() {
                     categoriaActiva={categoria}
                     onAbrir={(p) => abrir(p)}
                     onFiltrar={(c) => filtrar(c)} />
-
-                  <Pressable
-                    onPress={() => { tacto.abrir(); setExplicando(true); }}
-                    style={({ pressed }) => [e.banner, pressed && e.pulsado]}
-                    accessibilityRole="button"
-                    accessibilityLabel="Abrir explicación animada sobre tokenización"
-                  >
-                    <View style={e.bannerMarca}><Icono nombre="ayuda" color={C.noche} tamano={22} /></View>
-                    <View style={{ flex: 1 }}>
-                      <Text style={e.bannerTit}>¿Qué es tokenizar un activo?</Text>
-                      <Text style={e.bannerSub}>Explicado con una animación 3D, paso a paso</Text>
-                    </View>
-                    <Icono nombre="flecha" color={C.tx3} tamano={20} />
-                  </Pressable>
 
                   <View style={e.panelBusqueda}>
                     <View style={e.busquedaFila}>
@@ -515,7 +577,7 @@ export default function App() {
             />
           ) : null}
 
-          {pestana === 'ofertas' ? (
+          {pestana === 'buscar' && vistaBuscar === 'ofertas' ? (
             <FlatList
               key={`ofertas-${columnasOfertas}`}
               data={ofertasVisibles}
@@ -636,69 +698,32 @@ export default function App() {
             />
           ) : null}
 
-          {pestana === 'sigo' ? (
-            <FlatList
-              data={seguidas}
-              keyExtractor={(p) => p.slug}
-              contentContainerStyle={[e.lista, !seguidas.length && e.listaVacia]}
-              refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
-              ListHeaderComponent={seguidas.length ? (
-                <ResumenSeguimiento cantidad={seguidas.length} onAvisos={() => cambiarPestana('avisos')} />
-              ) : null}
-              renderItem={({ item }) => (
-                <Ficha p={item} sigue onAbrir={() => abrir(item)} onSeguir={() => alternar(item)}
-                  deshabilitado={procesandoSeguimiento} />
-              )}
-              ListEmptyComponent={
-                <EstadoVacioSeguimiento
-                  onExplorar={() => cambiarPestana('radar')}
-                  onAprender={() => { tacto.abrir(); setExplicando(true); }}
-                />
-              }
-              ListFooterComponent={seguidas.length ? <PiePrivacidad onAbrir={() => setPrivacidad(true)} /> : null}
+          {pestana === 'academy' ? (
+            <Academy
+              slug={leccion || null}
+              onAbrirLeccion={(slug) => setLeccion(slug)}
+              onVolver={() => { tacto.eleccion(); setLeccion(''); }}
+              onAccion={accionAcademy}
+              onExplicar={() => { tacto.abrir(); setExplicando(true); }}
             />
           ) : null}
 
-          {pestana === 'avisos' ? (
-            <FlatList
-              data={avisos}
-              keyExtractor={(a) => String(a.id)}
-              contentContainerStyle={[e.lista, !avisos.length && e.listaVacia]}
-              refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
-              ListHeaderComponent={
-                <View>
-                  <PanelAvisos
-                    estado={estadoAvisos}
-                    tieneSeguimientos={sigo.length > 0}
-                    procesando={procesandoAvisos}
-                    onActivar={activarAvisos}
-                    onAjustes={abrirAjustes}
-                  />
-                  {avisos.length ? (
-                    <View style={e.seccionCab}>
-                      <Text style={e.seccionTit}>Últimas novedades</Text>
-                      <Text style={e.seccionDato}>{avisos.length}</Text>
-                    </View>
-                  ) : null}
-                </View>
-              }
-              renderItem={({ item }) => <Aviso aviso={item} />}
-              ListEmptyComponent={
-                <EstadoVacioAvisos onExplorar={() => cambiarPestana('radar')} />
-              }
-              ListFooterComponent={<PiePrivacidad onAbrir={() => setPrivacidad(true)} />}
-            />
-          ) : null}
-
-          {pestana === 'mas' ? (
-            <PantallaMas
-              cantidadSeguimientos={sigo.length}
+          {pestana === 'perfil' ? (
+            <PantallaPerfil
+              seguidas={seguidas}
+              ofertasGuardadas={ofertasGuardadasVisibles}
+              guardadasRetiradas={guardadas.length - ofertasGuardadasVisibles.length}
               sinConexion={sinConexion}
               estadoAvisos={estadoAvisos}
+              procesandoAvisos={procesandoAvisos}
               refrescando={refrescando}
               borrando={borrandoDatos}
               onActualizar={refrescar}
-              onAvisos={() => cambiarPestana('avisos')}
+              onAbrirEmpresa={abrir}
+              onAbrirOferta={(oferta) => { tacto.abrir(); setOfertaAbierta(oferta); }}
+              onExplorar={() => irA('buscar')}
+              onActivarAvisos={activarAvisos}
+              onAjustes={abrirAjustes}
               onExplicar={() => { tacto.abrir(); setExplicando(true); }}
               onPrivacidad={() => setPrivacidad(true)}
               onPolitica={() => abrirEnlace(URL_PRIVACIDAD)}
@@ -710,9 +735,8 @@ export default function App() {
 
         <Navegacion
           activa={pestana}
-          seguimientos={sigo.length}
+          guardados={sigo.length + guardadas.length}
           novedades={avisos.length}
-          mostrarOfertas
           onCambiar={cambiarPestana}
         />
 
@@ -726,6 +750,8 @@ export default function App() {
           onCerrar={() => { tacto.eleccion(); setOfertaAbierta(null); }}
           onAbrirEnlace={abrirEnlace}
           plataformaCanonica={!!ofertaAbierta && radar.some((p) => p.slug === ofertaAbierta.plataformaSlug)}
+          guardada={!!ofertaAbierta && guardadas.includes(ofertaAbierta.slug)}
+          onGuardar={() => ofertaAbierta && alternarGuardada(ofertaAbierta)}
         />
 
         <Modal visible={explicando} animationType="slide" onRequestClose={() => setExplicando(false)}>
@@ -743,8 +769,13 @@ export default function App() {
   );
 }
 
-function Cabecera({ pestana, total, ofertas, secundario, enCamino, seguidas, sinConexion, onAyuda }) {
+function Cabecera({ pestana, vistaBuscar, total, ofertas, secundario, enCamino, guardados, sinConexion, onAyuda }) {
   const textos = {
+    inicio: {
+      etiqueta: 'RWADAR',
+      titulo: 'Inicio',
+      subtitulo: 'Noticias, novedades y por dónde empezar',
+    },
     radar: {
       etiqueta: 'RADAR DE ACTIVOS REALES',
       titulo: 'Explora lo verificado',
@@ -758,23 +789,14 @@ function Cabecera({ pestana, total, ofertas, secundario, enCamino, seguidas, sin
       subtitulo: MODO_LOCAL ? `${ofertas} principales · ${secundario} referencias secundarias`
         : `${ofertas} principales · ${secundario} secundarias · ${enCamino} en camino`,
     },
-    sigo: {
-      etiqueta: 'TU SEGUIMIENTO',
-      titulo: 'Plataformas seguidas',
-      subtitulo: seguidas ? `${seguidas} bajo seguimiento en este dispositivo` : 'Guarda las que quieras vigilar',
-    },
-    avisos: {
-      etiqueta: 'ESTADO Y NOVEDADES',
-      titulo: 'Avisos claros',
-      subtitulo: 'Permiso, preparación y entrega son estados distintos',
-    },
-    mas: {
-      etiqueta: 'CONTROL DE LA APP',
-      titulo: 'Más',
-      subtitulo: 'Aprendizaje, actualización y privacidad',
+    perfil: {
+      etiqueta: 'TU ESPACIO',
+      titulo: 'Perfil',
+      subtitulo: guardados ? `${guardados} guardados en este dispositivo` : 'Lo que guardas, avisos y privacidad',
     },
   };
-  const actual = textos[pestana] || textos.radar;
+  const clave = pestana === 'buscar' ? (vistaBuscar === 'ofertas' ? 'ofertas' : 'radar') : pestana;
+  const actual = textos[clave] || textos.inicio;
 
   return (
     <View style={e.cabecera}>
@@ -807,84 +829,6 @@ function BannerModoLocal() {
       <Text style={e.bannerLocalTxt}>
         INTERNO · datos locales · sin conexión a Supabase de producción
       </Text>
-    </View>
-  );
-}
-
-function ResumenSeguimiento({ cantidad, onAvisos }) {
-  return (
-    <View style={e.resumenSeguimiento}>
-      <Text style={e.resumenEtiqueta}>TU RADAR</Text>
-      <Text style={e.resumenTitulo}>
-        {cantidad} {cantidad === 1 ? 'plataforma seguida' : 'plataformas seguidas'}
-      </Text>
-      <Text style={e.resumenTexto}>
-        {MODO_LOCAL
-          ? 'Los cambios se guardan solo en el espacio local de esta copia y nunca se sincronizan con producción.'
-          : USUARIO_LOCAL ? 'Tus favoritos se guardan solo en este dispositivo. No se envían a RWAdar ni se dejan pendientes de sincronización.'
-          : 'Los cambios se guardan también sin conexión. RWAdar te indicará si queda algo pendiente de sincronizar.'}
-      </Text>
-      <Pressable
-        onPress={onAvisos}
-        style={({ pressed }) => [e.resumenAccion, pressed && e.pulsado]}
-        accessibilityRole="button"
-      >
-        <Icono nombre="avisos" color={C.senal} tamano={20} />
-        <Text style={e.resumenAccionTxt}>Comprobar avisos</Text>
-        <Icono nombre="flecha" color={C.tx3} tamano={18} />
-      </Pressable>
-    </View>
-  );
-}
-
-function EstadoVacioSeguimiento({ onExplorar, onAprender }) {
-  return (
-    <View style={e.vacioGrande}>
-      <View style={e.vacioMarca}>
-        <View style={e.vacioEco} />
-        <Marca tamano={74} />
-      </View>
-      <Text style={e.vacioTituloGrande}>Guarda lo que quieras vigilar</Text>
-      <Text style={e.vacioDescripcion}>
-        {USUARIO_LOCAL
-          ? 'Guarda una plataforma para tenerla a mano en este dispositivo. Los avisos y la sincronización remota no están activados.'
-          : 'Sigue una plataforma para tenerla a mano y consultar aquí sus novedades verificadas.'}
-      </Text>
-      <Pressable
-        onPress={onExplorar}
-        style={({ pressed }) => [e.cta, pressed && e.pulsado]}
-        accessibilityRole="button"
-      >
-        <Text style={e.ctaTxt}>Explorar el radar</Text>
-      </Pressable>
-      <Pressable
-        onPress={onAprender}
-        style={({ pressed }) => [e.ctaTexto, pressed && e.pulsadoSuave]}
-        accessibilityRole="button"
-      >
-        <Text style={e.ctaTextoTxt}>Ver cómo funciona la tokenización</Text>
-      </Pressable>
-    </View>
-  );
-}
-
-function EstadoVacioAvisos({ onExplorar }) {
-  return (
-    <View style={e.vacioAvisos}>
-      <View style={e.vacioIcono}><Icono nombre="avisos" color={C.senal} tamano={44} /></View>
-      <Text style={e.vacioTituloGrande}>{USUARIO_LOCAL ? 'Novedades remotas no activadas' : 'No hay novedades todavía'}</Text>
-      <Text style={e.vacioDescripcion}>
-        {USUARIO_LOCAL
-          ? 'Puedes consultar las plataformas guardadas en «Siguiendo». Esta versión no consulta ni envía novedades remotas.'
-          : 'Aquí aparecerán los cambios publicados para las plataformas que sigues. El panel superior muestra el estado real del dispositivo.'}
-      </Text>
-      <Pressable
-        onPress={onExplorar}
-        style={({ pressed }) => [e.cta, pressed && e.pulsado]}
-        accessibilityRole="button"
-      >
-        <Text style={e.ctaTxt}>Explorar plataformas</Text>
-      </Pressable>
     </View>
   );
 }
@@ -925,10 +869,14 @@ function etiquetaEstadoAvisos(estado) {
   }
 }
 
-function PantallaMas({
-  cantidadSeguimientos, sinConexion, estadoAvisos, refrescando, borrando,
-  onActualizar, onAvisos, onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar,
+/* Perfil: la cuenta (cuando llegue a la app), lo guardado en este
+   dispositivo, los avisos y lo que antes estaba en «Más». */
+function PantallaPerfil({
+  seguidas, ofertasGuardadas, guardadasRetiradas = 0, sinConexion, estadoAvisos, procesandoAvisos,
+  refrescando, borrando, onActualizar, onAbrirEmpresa, onAbrirOferta, onExplorar, onActivarAvisos, onAjustes,
+  onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar,
 }) {
+  const total = seguidas.length + ofertasGuardadas.length;
   return (
     <ScrollView
       contentContainerStyle={e.masCuerpo}
@@ -937,18 +885,65 @@ function PantallaMas({
       <View style={e.resumenDispositivo}>
         <View style={e.resumenMarca}><Marca tamano={48} /></View>
         <View style={{ flex: 1 }}>
-          <Text style={e.resumenEtiqueta}>TU DISPOSITIVO</Text>
-          <Text style={e.resumenTitulo}>RWAdar listo para consultar</Text>
+          <Text style={e.resumenEtiqueta}>TU PERFIL</Text>
+          <Text style={e.resumenTitulo}>Sin cuenta, por ahora</Text>
           <Text style={e.resumenTexto}>
             {MODO_LOCAL
-              ? 'Escaparate incluido en la app; Supabase de producción está bloqueado.'
-              : sinConexion ? 'Usando la última copia local disponible.' : 'Catálogo conectado y disponible sin crear una cuenta.'}
+              ? 'Copia interna: lo guardado vive solo en su espacio local y nunca se sincroniza.'
+              : USUARIO_LOCAL
+                ? 'Las cuentas llegarán próximamente a la app con las nuevas actualizaciones. Lo que guardas se queda en este dispositivo.'
+                : 'Lo que guardas se sincroniza con esta instalación.'}
           </Text>
         </View>
         <View style={e.resumenNumero}>
-          <Text style={e.resumenNumeroValor}>{cantidadSeguimientos}</Text>
-          <Text style={e.resumenNumeroEtiqueta}>SIGUIENDO</Text>
+          <Text style={e.resumenNumeroValor}>{total}</Text>
+          <Text style={e.resumenNumeroEtiqueta}>GUARDADOS</Text>
         </View>
+      </View>
+
+      <GrupoMenu titulo={`Empresas guardadas · ${seguidas.length}`}>
+        {seguidas.length ? seguidas.map((p, i) => (
+          <FilaMenu key={p.slug} icono="radar" titulo={p.nombre}
+            subtitulo={[p.categoria, p.region].filter(Boolean).join(' · ')}
+            onPress={() => onAbrirEmpresa(p)} ultima={i === seguidas.length - 1} />
+        )) : (
+          <FilaMenu icono="buscar" titulo="Todavía no sigues ninguna"
+            subtitulo="Abre Buscar y pulsa «+ Seguir» en una empresa" onPress={onExplorar} ultima />
+        )}
+      </GrupoMenu>
+
+      <GrupoMenu titulo={`Ofertas guardadas · ${ofertasGuardadas.length}`}>
+        {ofertasGuardadas.length ? ofertasGuardadas.map((o, i) => (
+          <FilaMenu key={o.slug} icono="guardada" titulo={o.titulo}
+            subtitulo={[o.plataformaNombre, o.categoria].filter(Boolean).join(' · ')}
+            onPress={() => onAbrirOferta(o)} ultima={i === ofertasGuardadas.length - 1} />
+        )) : (
+          <FilaMenu icono="ofertas" titulo="Todavía no has guardado ninguna"
+            subtitulo="Abre una oferta y pulsa la estrella. Guardar no es invertir." onPress={onExplorar} ultima />
+        )}
+      </GrupoMenu>
+      {guardadasRetiradas > 0 ? (
+        <Text style={e.notaGuardadas}>
+          {guardadasRetiradas === 1 ? 'Una oferta guardada ya no está' : `${guardadasRetiradas} ofertas guardadas ya no están`} en
+          el catálogo actual. Se conserva en el dispositivo por si vuelve.
+        </Text>
+      ) : null}
+
+      <View style={e.grupoSeccion}>
+        <Text style={e.grupoTitulo}>Avisos</Text>
+        {USUARIO_LOCAL ? (
+          <View style={e.avisoProximo}>
+            <View style={e.avisoProximoIcono}><Icono nombre="avisos" color={C.senal} tamano={22} /></View>
+            <View style={{ flex: 1 }}>
+              <Text style={e.resumenEtiqueta}>PRÓXIMAMENTE</Text>
+              <Text style={e.avisoProximoTit}>Avisos de cambios</Text>
+              <Text style={e.resumenTexto}>Los avisos llegarán próximamente a la app con las nuevas actualizaciones.</Text>
+            </View>
+          </View>
+        ) : (
+          <PanelAvisos estado={estadoAvisos} tieneSeguimientos={seguidas.length > 0}
+            procesando={procesandoAvisos} onActivar={onActivarAvisos} onAjustes={onAjustes} />
+        )}
       </View>
 
       <GrupoMenu titulo="Entender RWAdar">
@@ -965,16 +960,6 @@ function PantallaMas({
             sinConexion ? 'Volver a intentar la conexión' : 'Descargar los últimos datos verificados'}
           onPress={onActualizar}
           cargando={refrescando}
-          ultima
-        />
-      </GrupoMenu>
-
-      <GrupoMenu titulo="Avisos">
-        <FilaMenu
-          icono="avisos"
-          titulo="Gestionar avisos"
-          subtitulo={etiquetaEstadoAvisos(estadoAvisos)}
-          onPress={onAvisos}
           ultima
         />
       </GrupoMenu>
@@ -1003,7 +988,7 @@ function PantallaMas({
         <FilaMenu
           icono="borrar"
           titulo="Borrar datos del dispositivo"
-          subtitulo={USUARIO_LOCAL ? 'Favoritos y cachés de esta versión' : 'Instalación, seguimientos, token y cachés'}
+          subtitulo={USUARIO_LOCAL ? 'Guardados, progreso y cachés de esta versión' : 'Instalación, seguimientos, token y cachés'}
           onPress={onBorrar}
           cargando={borrando}
           peligro
@@ -1062,6 +1047,17 @@ function Chip({ texto, color, activo, onPress }) {
       {color ? <View style={[e.punto, { backgroundColor: color }]} /> : null}
       <Text style={[e.chipTxt, activo && e.chipTxtOn]} numberOfLines={1}>{texto}</Text>
     </Pressable>
+  );
+}
+
+/* Buscar: todas las empresas del radar o todas las ofertas documentadas. */
+function SelectorBuscar({ vista, empresas, ofertas, onCambiar }) {
+  return (
+    <View style={[e.selectorOfertas, e.selectorBuscar]} accessibilityRole="tablist"
+      accessibilityLabel="Buscar empresas u ofertas">
+      <SegmentoOferta texto={`Empresas ${empresas}`} activo={vista === 'empresas'} onPress={() => onCambiar('empresas')} />
+      <SegmentoOferta texto={`Ofertas ${ofertas}`} activo={vista === 'ofertas'} onPress={() => onCambiar('ofertas')} />
+    </View>
   );
 }
 
@@ -1333,7 +1329,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
                 </Text>
                 <Text style={e.privacidadTit}>Seguimiento exclusivamente local</Text>
                 <Text style={e.privacidadParrafo}>
-                  Seguir una plataforma guarda solo su slug bajo claves rwadar.local.*. No se crea UUID, no se registra un dispositivo y no se conserva ninguna operación para sincronizarla después.
+                  Seguir una plataforma guarda solo su slug bajo claves rwadar.local.*, igual que el progreso de la Academy. No se crea UUID, no se registra un dispositivo y no se conserva ninguna operación para sincronizarla después.
                 </Text>
                 <Text style={e.privacidadTit}>Avisos desconectados</Text>
                 <Text style={e.privacidadParrafo}>
@@ -1352,7 +1348,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
                 </Text>
                 <Text style={e.privacidadTit}>Favoritos en este dispositivo</Text>
                 <Text style={e.privacidadParrafo}>
-                  Los favoritos se guardan bajo claves rwadar.editorial.*. No se envían al servidor ni se crean operaciones pendientes de sincronización. La caché del catálogo permite consultar un lote válido sin conexión hasta su caducidad.
+                  Las empresas y ofertas guardadas (solo su identificador público) y el progreso de RWAdar Academy (lecciones leídas y aciertos del test) se guardan bajo claves rwadar.editorial.*. No se envían al servidor ni se crean operaciones pendientes de sincronización. La caché del catálogo permite consultar un lote válido sin conexión hasta su caducidad.
                 </Text>
                 <Text style={e.privacidadTit}>Servicios de usuario desactivados</Text>
                 <Text style={e.privacidadParrafo}>
@@ -1360,7 +1356,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
                 </Text>
                 <Text style={e.privacidadTit}>Borrado limitado a esta versión</Text>
                 <Text style={e.privacidadParrafo}>
-                  El botón elimina los favoritos editoriales y la caché del catálogo de este dispositivo. No lee ni modifica identificadores o seguimientos de versiones anteriores y no elimina datos del servidor. Para solicitar acceso o borrado de datos históricos, usa «Contactar sobre mis datos».
+                  El botón elimina las empresas y ofertas guardadas, el progreso de la Academy y la caché del catálogo de este dispositivo. No lee ni modifica identificadores o seguimientos de versiones anteriores y no elimina datos del servidor. Para solicitar acceso o borrado de datos históricos, usa «Contactar sobre mis datos».
                 </Text>
               </>
             ) : (
@@ -1379,7 +1375,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
                 </Text>
                 <Text style={e.privacidadTit}>Datos locales y terceros</Text>
                 <Text style={e.privacidadParrafo}>
-                  El catálogo, la fecha de sincronización y tu lista se guardan localmente para funcionar sin conexión. Supabase presta la base de datos y Expo los servicios de token push y actualización.
+                  El catálogo, la fecha de sincronización, tu lista y el progreso de la Academy se guardan localmente para funcionar sin conexión. Supabase presta la base de datos y Expo los servicios de token push y actualización.
                 </Text>
                 <Text style={e.privacidadTit}>Control de borrado</Text>
                 <Text style={e.privacidadParrafo}>
@@ -1622,6 +1618,7 @@ const e = StyleSheet.create({
     backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
     borderRadius: R.m,
   },
+  selectorBuscar: { marginHorizontal: UI.margen, marginTop: 10, marginBottom: 2 },
   segmentoOferta: {
     flex: 1, minHeight: UI.tactil, alignItems: 'center', justifyContent: 'center',
     borderRadius: R.s, paddingHorizontal: 7,
@@ -1802,6 +1799,16 @@ const e = StyleSheet.create({
   resumenNumeroValor: { fontFamily: F.extra, fontSize: 27, lineHeight: 30, color: C.senal },
   resumenNumeroEtiqueta: { ...T.etiqueta, fontSize: 8, color: C.tx3, marginTop: 2 },
   grupoSeccion: { marginBottom: 25 },
+  notaGuardadas: { ...T.menor, fontSize: 12, color: C.tx3, marginTop: -14, marginBottom: 22, paddingHorizontal: 4 },
+  avisoProximo: {
+    flexDirection: 'row', gap: 12, padding: 15, backgroundColor: C.sup, borderRadius: R.m,
+    borderWidth: StyleSheet.hairlineWidth, borderColor: C.linea,
+  },
+  avisoProximoIcono: {
+    width: 44, height: 44, borderRadius: R.s, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34,
+  },
+  avisoProximoTit: { ...T.ficha, fontSize: 15.5, color: C.tx, marginBottom: 2 },
   grupoTitulo: { ...T.seccion, fontSize: 19, color: C.tx, marginBottom: 10 },
   grupo: {
     backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,

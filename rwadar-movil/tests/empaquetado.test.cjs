@@ -11,7 +11,7 @@ test('EAS incluye el proyecto móvil sin depender de separadores de directorio d
   for (const ruta of ['rwadar-movil', 'rwadar-movil/App.js', 'rwadar-movil/app.json',
     'rwadar-movil/package.json', 'rwadar-movil/package-lock.json', 'rwadar-movil/eas.json',
     'rwadar-movil/index.js', 'rwadar-movil/lib', 'rwadar-movil/lib/modo-local.js',
-    'rwadar-movil/scripts/parchear-expo-uuidv5.cjs',
+    'rwadar-movil/lib/config-ios-uuid-seguro.js',
     'rwadar-movil/componentes', 'rwadar-movil/componentes/Ofertas.js',
     'rwadar-movil/assets', 'rwadar-movil/assets/icon.png',
     'rwadar-movil/assets/ofertas-editoriales/inmobiliario-rwadar.webp',

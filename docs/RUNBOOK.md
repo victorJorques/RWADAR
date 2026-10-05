@@ -92,6 +92,7 @@ sincronizan con Supabase y se paran si esa lectura deja cambios en Git.
 | App móvil | `npm --prefix rwadar-movil test` |
 | Código QR | `node rwadar-qr/comprobar-qr.js` |
 | Web o publicador | `node rwadar-publicar.js --local --sin-sincronizar` y `node probar-web.mjs` |
+| Lecciones de la Academy | `node rwadar-academy.js` y después `npm run test:web` y `npm run test:mobile` |
 | Compuerta de publicación | `npm --prefix rwadar-app run test:relanzamiento` y `npm --prefix rwadar-app run auditar:relanzamiento` |
 | Varias cosas a la vez | `npm test` |
 
@@ -163,3 +164,18 @@ update public.catalogo_publicacion
 Retirar la revisión publicada (estado `retirada`) activa la orden sola, y
 aprobar una revisión nueva la desactiva. Las webs ya abiertas lo notan en su
 siguiente consulta (como mucho, un minuto después de volver a la pestaña).
+
+---
+
+## RWAdar Academy
+
+Las lecciones viven en `rwadar-academy/lecciones/` (Markdown, tal como las
+entrega el equipo editorial) y salen en la web (`/academy/`) y en la app.
+**No se editan las páginas de `rwadar-site/academy/` a mano:** se cambia la
+lección y se ejecuta `node rwadar-academy.js`. Qué se publica, adónde lleva
+cada botón y el aviso legal común están explicados en
+[`../rwadar-academy/LEEME.md`](../rwadar-academy/LEEME.md).
+
+El publicador se niega a construir si la Academy no está al día con sus
+lecciones o si una lección publicada no está en la lista cerrada
+`PAGINAS_ACADEMY` de `rwadar-publicacion-segura.js`.

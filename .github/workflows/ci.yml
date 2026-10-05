@@ -63,9 +63,6 @@ jobs:
       - name: Instalar dependencias móviles
         run: npm ci --prefix rwadar-movil --ignore-scripts
 
-      - name: Aplicar el parche de seguridad de Expo (uuidv5 en iOS)
-        run: npm --prefix rwadar-movil run postinstall
-
       - name: Ejecutar toda la batería local
         run: npm test
 

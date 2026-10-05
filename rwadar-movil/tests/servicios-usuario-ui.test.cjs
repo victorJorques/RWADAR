@@ -7,7 +7,7 @@ const jsx = require('@babel/plugin-transform-react-jsx');
 
 // Ejecuta las funciones JSX reales sin arrancar Expo, red, fuentes o permisos.
 const codigo = fs.readFileSync(path.join(__dirname, '..', 'App.js'), 'utf8');
-const funciones = ['PanelAvisos', 'Privacidad', 'ResumenSeguimiento', 'EstadoVacioSeguimiento', 'EstadoVacioAvisos', 'etiquetaEstadoAvisos'];
+const funciones = ['PanelAvisos', 'Privacidad', 'PantallaPerfil', 'etiquetaEstadoAvisos'];
 const ast = babel.parseSync(codigo, { babelrc: false, configFile: false, parserOpts: { plugins: ['jsx'] } });
 ast.program.body = ast.program.body.filter((nodo) => nodo.type === 'FunctionDeclaration' && funciones.includes(nodo.id.name));
 const js = babel.transformFromAstSync(ast, codigo, { babelrc: false, configFile: false, plugins: [jsx] }).code;
@@ -18,7 +18,8 @@ function componentes(local, capacidad) {
     React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
     e: {}, C: {}, URL_PRIVACIDAD: 'https://example.test/privacidad', abrirEnlace() {},
   };
-  for (const nombre of ['View', 'Text', 'Pressable', 'Icono', 'Marca', 'ActivityIndicator', 'Modal', 'SafeAreaProvider', 'SafeAreaView', 'ScrollView']) entorno[nombre] = nombre;
+  for (const nombre of ['View', 'Text', 'Pressable', 'Icono', 'Marca', 'ActivityIndicator', 'Modal', 'SafeAreaProvider', 'SafeAreaView', 'ScrollView',
+    'RefreshControl', 'GrupoMenu', 'FilaMenu']) entorno[nombre] = nombre;
   return new Function(...Object.keys(entorno), `${js}; return { ${funciones.join(', ')} };`)(...Object.values(entorno));
 }
 function nodos(arbol) {
@@ -48,10 +49,16 @@ test('privacidad editorial describe conexión y borrado limitado, sin prometer b
   assert.match(visible, /no elimina datos del servidor/);
   assert.match(visible, /datos históricos/);
   assert.doesNotMatch(visible, /La app solo genera un UUID|Primero se exige confirmación remota/);
-  assert.match(texto(ui.ResumenSeguimiento({ cantidad: 1 })), /No se envían a RWAdar/);
-  assert.match(texto(ui.EstadoVacioSeguimiento({})), /no están activados/);
-  assert.match(texto(ui.EstadoVacioAvisos({})), /no consulta ni envía novedades remotas/);
-  assert.doesNotMatch(texto(ui.EstadoVacioAvisos({})), /Aquí aparecerán los cambios publicados/);
+});
+
+test('Perfil editorial anuncia avisos y cuentas como próximamente, sin ofrecer activarlos', () => {
+  const ui = componentes(false, false);
+  const perfil = ui.PantallaPerfil({ seguidas: [], ofertasGuardadas: [] });
+  assert.match(texto(perfil), /Los avisos llegarán próximamente a la app con las nuevas actualizaciones/);
+  assert.match(texto(perfil), /Las cuentas llegarán próximamente a la app/);
+  assert.match(texto(perfil), /Lo que guardas se queda en este dispositivo/);
+  assert.ok(nodos(perfil).every((n) => n.type !== 'PanelAvisos'), 'no debe pintar el panel de activación');
+  assert.doesNotMatch(texto(perfil), /pedir permiso|Avisos push activos/);
 });
 
 test('las explicaciones local y remota siguen separadas por capacidad explícita', () => {
@@ -62,4 +69,7 @@ test('las explicaciones local y remota siguen separadas por capacidad explícita
   assert.match(texto(remoto.Privacidad({})), /Identificador y seguimiento/);
   const arbol = remoto.PanelAvisos({ estado: { estado: 'disponible' }, tieneSeguimientos: true });
   assert.match(texto(arbol), /Continuar y pedir permiso/);
+  // Solo con la capacidad remota encendida, Perfil vuelve a usar el panel real.
+  const perfilRemoto = remoto.PantallaPerfil({ seguidas: [], ofertasGuardadas: [] });
+  assert.ok(nodos(perfilRemoto).some((n) => n.type === remoto.PanelAvisos));
 });

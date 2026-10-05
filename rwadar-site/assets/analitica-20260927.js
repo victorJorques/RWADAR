@@ -8,9 +8,12 @@
     '/transparencia-comercial', '/transparencia-comercial.html',
     '/para-empresas', '/para-empresas.html',
   ]);
+  // RWAdar Academy: el índice y cada lección, siempre con su URL limpia.
+  const academy = /^\/academy\/(?:[a-z0-9]+(?:-[a-z0-9]+)*)?$/;
   // Se ejecuta antes del cliente Auth: un callback no debe medirse aunque
   // la aplicación limpie después el token o código de la barra de dirección.
-  if (entrada.origin !== 'https://rwadar.pages.dev' || !paginas.has(entrada.pathname) ||
+  if (entrada.origin !== 'https://rwadar.pages.dev' ||
+      (!paginas.has(entrada.pathname) && !academy.test(entrada.pathname)) ||
       entrada.search || entrada.hash || entrada.username || entrada.password) return;
   if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true ||
       navigator.onLine === false) return;

@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 1 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 5 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -21,17 +21,35 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 | | Estado |
 |---|---|
-| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare). Se instala en el móvil como app. |
+| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare). Se instala en el móvil como app. Última publicación: 2 de octubre, despliegue `e1abcd33`, revisión `cccb21c`; los 54 archivos servidos coinciden con lo construido. |
 | **Catálogo** | 26 plataformas en el radar, 4 descartadas con su fuente y 49 referencias de inversión: 24 principales, 21 de mercado secundario y 4 en preparación. |
 | **App Android** | Versión 1.1.2, descargable desde GitHub ([RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)). Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
+| **RWAdar Academy** | Terminada y aprobada, **pendiente de subir** a Cloudflare (desde aquí no hay red). 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. Web en `/academy/` y app (Más › RWAdar Academy). Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
+| **Tipografía** | Arreglada el 2/10: la Geist incrustada no traía a-z, así que la web se veía con la letra del sistema. Ya es la completa. |
 
 **En pausa a propósito:** cuentas de usuario, opiniones, avisos por correo y
 avisos push. Las altas nuevas están cerradas. Los favoritos de la app se
 guardan solo en el móvil.
+
+**Cuentas, fase 1 (5/10): preparadas y probadas, sin abrir.** Crear cuenta,
+entrar, recuperar contraseña, lista de vigilancia y borrar la cuenta.
+Opiniones y avisos siguen cerrados. Faltan los pasos de Víctor en Supabase
+(remitente de correo, ajustes de Auth y la migración 26):
+[`tareas/REABRIR-CUENTAS.md`](tareas/REABRIR-CUENTAS.md). Seguridad revisada:
+[`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
+Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
+[`manual/LEEME.md`](manual/LEEME.md).
+
+**Nueva barra del móvil (5/10): Inicio · Buscar · Academy · Perfil**, en la
+web y en la app. Inicio trae las noticias de RWAdar (se editan en
+[`../rwadar-noticias/`](../rwadar-noticias/LEEME.md)) y anuncia la comunidad;
+Perfil reúne las empresas y ofertas guardadas (solo en el navegador o en el
+móvil) y los avisos como «próximamente». En la web llega con la próxima
+publicación; en la app, con la próxima versión.
 
 **Desactivado:** publicidad, comisiones y cobros. Hay una cuenta de AdMob con
 dos fichas de prueba, pero nada conectado a la app.
@@ -40,27 +58,26 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-1. **Poner en producción el «catálogo siempre disponible»** (hecho y probado
-   en local el 1 de octubre, falta subirlo). Hasta entonces, si la revisión
-   vence (5 de octubre), la web publicada hoy oculta las fichas. En orden:
-   1. Pegar en el editor SQL de Supabase
-      `rwadar-app/supabase/migrations/20261001150000_catalogo_siempre_disponible.sql`
-      y ejecutarlo. Es seguro para la web y el APK de hoy: se comportan igual
-      que ahora.
-   2. Registrar la aprobación y publicar la web siguiendo
-      [`OPERACION-LANZAMIENTO.md`](OPERACION-LANZAMIENTO.md).
-   3. La app de Android lo tendrá en su próxima versión: no se actualiza sola.
+0. **Subir RWAdar Academy** (autorizado por Víctor el 2/10): ya está en `main`
+   con la aprobación registrada en `estado.json` («LISTO PARA CORTE FINAL»),
+   válida hasta el 7/10. Falta solo que Víctor guarde la clave de Cloudflare
+   en GitHub (pasos en [`OPERACION-LANZAMIENTO.md`](OPERACION-LANZAMIENTO.md),
+   «Publicar desde GitHub»); después Claude lanza `preview`, revisa y lanza
+   `produccion`. En la app llega con la próxima compilación (subir versión).
 
-   Renovar la revisión cada semana sigue siendo lo ideal. Si no se hace, la web
-   avisa en lugar de vaciarse.
-2. **Activar las copias de seguridad** (5 minutos) y, después, actualizar
-   Postgres. Guía: [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md). El
-   workflow ya está en `main` y se ejecuta cada noche a las 02:43 UTC: hasta
-   que existan los dos secretos, fallará y GitHub mandará un correo.
-3. **Trabajo sin subir.** `main` está al día desde el 1 de octubre: contiene
-   todo lo de Codex y lo de Claude. Si queda trabajo en tu ordenador que no
-   está en GitHub (el estado del 30/09 citaba una mejora visual de las
-   tarjetas), hay que subirlo partiendo de `main` actualizado.
+1. **Renovar la revisión del catálogo** antes del 5 de octubre si se puede.
+   Ya no es urgente: desde el 2 de octubre el «catálogo siempre disponible»
+   está en producción (migración aplicada en Supabase y web publicada), así
+   que al vencer la web avisa en lugar de vaciarse. La app de Android lo
+   tendrá en su próxima versión: la 1.1.2 sigue ocultando las fichas al
+   vencer.
+2. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
+   primera, del 2 de octubre (run 36932444985), copió 52 tablas y se comprobó
+   que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
+   como explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
+3. **Revisar la mejora visual de las tarjetas.** El trabajo de Codex que estaba
+   sin subir está en la rama `mejora-tarjetas-local`, ya unida con `main` y con
+   las pruebas pasando (web 429, móvil 115). No está publicado ni en `main`.
 4. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte
    pendiente sobre el alta como persona física. Hasta que respondan, no se paga
    ni se rellena nada. El paquete para Google Play (AAB 1.1.2, icono, cabecera y
@@ -78,8 +95,8 @@ dos fichas de prueba, pero nada conectado a la app.
 
 | Cuándo | Qué |
 |---|---|
-| **5 de octubre de 2026** | Vence la revisión del catálogo |
-| Cada noche, 02:43 UTC | Copia de seguridad (cuando esté activada) |
+| **5 de octubre de 2026** | Vence la revisión del catálogo (la web avisa, no se vacía) |
+| Cada noche, 02:43 UTC | Copia de seguridad cifrada, guardada 35 días en GitHub |
 | Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días |
 | Agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |
 
@@ -105,6 +122,7 @@ Cada herramienta firma sus commits con su propio nombre (ver
 | Carpeta | Qué hay |
 |---|---|
 | `rwadar-site/` | La web: lo que se edita |
+| `rwadar-academy/` | Las lecciones de la Academy en Markdown; `node rwadar-academy.js` genera la web y la app |
 | `rwadar-publicado/` | La web lista para subir. Se genera sola: no se edita |
 | `rwadar-app/` | Base de datos: migraciones, importadores y pruebas |
 | `rwadar-movil/` | App de Android e iPhone (Expo) |

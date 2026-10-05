@@ -19,6 +19,34 @@ no se presupone un servicio humano de vigilancia permanente tras cerrar el chat.
 6. Comprobar dominio canónico y recursos tras desplegar. La publicación no queda
    acreditada por un build local, una URL reservada o un comando iniciado.
 
+### Publicar desde GitHub (sin ordenador)
+
+El flujo **Publicar web** (`.github/workflows/publicar.yml`) hace los pasos 3
+a 6 en una máquina de GitHub: se lanza a mano desde *Actions › Publicar web ›
+Run workflow* eligiendo `preview` o `produccion`, solo desde `main`. Ejecuta el
+mismo `rwadar-publicar.js` con todas sus compuertas y, al terminar, comprueba
+la web real con `.github/comprobar-publicado.mjs` (portada, privacidad, mapa
+del sitio, Academy, lecciones, assets, CSP y 404 de lo no publicado).
+
+Necesita una vez el secreto de repositorio `CLOUDFLARE_API_TOKEN`. Sin él,
+el flujo se para avisando (así fallaron los intentos del 4 y del 5/10).
+Cómo crearlo, paso a paso (cinco minutos, lo hace Víctor):
+
+1. dash.cloudflare.com › icono de perfil (arriba a la derecha) › **My Profile**
+   › **API Tokens** › **Create Token**.
+2. Abajo, «Custom token» › **Get started**. Nombre: `RWAdar GitHub`.
+3. **Permissions:** `Account` › `Cloudflare Pages` › `Edit`. Nada más.
+4. **Account Resources:** `Include` › la cuenta de RWAdar.
+5. **Continue to summary** › **Create Token**. El valor se muestra **una sola
+   vez**: copiarlo. No pegarlo nunca en un chat ni en un archivo.
+6. github.com/victorJorques/RWADAR › **Settings** › **Secrets and variables**
+   › **Actions** › **New repository secret**. Name: `CLOUDFLARE_API_TOKEN`;
+   Secret: el valor copiado › **Add secret**.
+
+Con eso, Claude (o cualquiera con acceso al repositorio) lanza `preview`,
+revisa y lanza `produccion`. Si se sospecha una filtración: Cloudflare ›
+API Tokens › *Roll* y actualizar el secreto.
+
 ## Restauración y retirada
 
 Cloudflare cuenta `52d07be006e7a27f5f793c59e1796b13`, proyecto `rwadar`.

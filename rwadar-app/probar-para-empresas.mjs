@@ -130,7 +130,8 @@ paso('publica instrucciones de reporte de seguridad y security.txt no revela el 
 paso('el árbol publicable y el servidor local incluyen la página de forma explícita',
   manifiesto.includes("'para-empresas.html'")
   && manifiesto.includes('canonical/noindex de para-empresas.html')
-  && (publicador.match(/para-empresas\.html/g) || []).length >= 3
+  && /const PAGINAS_HTML = \[[^\]]*'para-empresas\.html'/.test(publicador)
+  && (publicador.match(/PAGINAS_HTML/g) || []).length >= 4
   && servidor.includes("p === '/para-empresas'")
   && servidor.includes("p = '/para-empresas.html'"));
 

@@ -12,9 +12,6 @@
 !/rwadar-movil/package-lock.json
 !/rwadar-movil/componentes
 !/rwadar-movil/lib
-!/rwadar-movil/scripts
-/rwadar-movil/scripts/*
-!/rwadar-movil/scripts/parchear-expo-uuidv5.cjs
 !/rwadar-movil/assets
 !/rwadar-movil/fixtures
 /rwadar-movil/fixtures/*

@@ -190,6 +190,7 @@ function estadoPendienteOcultaFormulario(codigo) {
     'fondo', 'closeAll', 'msj', `
       const CORREO_AUTH_E2E=true;
       const SERVICIOS_USUARIO_DISPONIBLES=true;
+      const OPINIONES_DISPONIBLES=false,MANUAL_BIENVENIDA='';
       let modo='entrar',correoPendiente='persona@example.test',operacionCuenta=0,
           temporizadorReenvio=null,focoCuenta=null;
       ${fuente}
@@ -600,7 +601,7 @@ function cambioTabsMovilEsCoherente(codigo) {
   const fin = codigo.indexOf('function adaptar(){', inicio);
   if (inicio < 0 || fin < 0) return false;
   const fuente = codigo.slice(inicio, fin);
-  const nombres = ['buscar','favoritos','inversiones','cuenta'];
+  const nombres = ['inicio','buscar','academy','cuenta'];
   const paneles = new Map(nombres.map(nombre => [nombre, { hidden:nombre !== 'buscar' }]));
   const tabs = nombres.map(nombre => ({
     dataset:{ movilTab:nombre }, tabIndex:nombre === 'buscar' ? 0 : -1,
@@ -610,15 +611,17 @@ function cambioTabsMovilEsCoherente(codigo) {
   }));
   const document = { body:{ dataset:{} } };
   let cabeceraActual = '', mediciones = 0, cierresAvisos = 0;
+  let perfiles = 0, academias = 0;
   const fabrica = new Function('media', 'paneles', 'tabs', 'document', 'window', 'reduce',
-    'mostrarAvisos', 'cabecera', 'geometria', `
+    'mostrarAvisos', 'cabecera', 'geometria', 'pintarPerfil', 'pintarAcademy', `
       let activa='buscar',academyAbierta=false,academyHistorial=false;
       let detalleAbierto=null,detalleHistorial=false,movilFiltrosAbiertos=false;
       ${fuente}
       return {cambiar, activa:()=>activa};
     `);
   const api = fabrica({matches:true}, paneles, tabs, document, {scrollTo(){}}, ()=>true,
-    ()=>{ cierresAvisos++; }, id=>{ cabeceraActual=id; }, ()=>{ mediciones++; });
+    ()=>{ cierresAvisos++; }, id=>{ cabeceraActual=id; }, ()=>{ mediciones++; },
+    ()=>{ perfiles++; }, ()=>{ academias++; });
   for (const nombre of nombres) {
     api.cambiar(nombre, { arriba:false });
     if (api.activa() !== nombre || document.body.dataset.movilPestana !== nombre || cabeceraActual !== nombre)
@@ -633,7 +636,7 @@ function cambioTabsMovilEsCoherente(codigo) {
   }
   api.cambiar('sistema-operativo-inventado', { arriba:false });
   return api.activa() === 'cuenta' && document.body.dataset.movilPestana === 'cuenta' &&
-    mediciones === 1 && cierresAvisos >= 3;
+    mediciones === 1 && cierresAvisos >= 3 && perfiles === 1 && academias === 1;
 }
 
 function subvistaAvisosConservaEstadoYFoco(codigo) {
@@ -789,6 +792,12 @@ prueba('la analítica respeta Do Not Track, Global Privacy Control y ausencia de
 prueba('un referente con parámetros o fragmentos tampoco se comunica al proveedor',
   ['https://rwadar.pages.dev/?email=prueba', 'https://ejemplo.com/#token=prueba', 'url inválida']
     .every(referrer => simularAnalitica('https://rwadar.pages.dev/', { referrer }).length === 0));
+prueba('la Academy se mide solo con sus URL limpias, sin parámetros ni rutas raras',
+  ['/academy/', '/academy/que-significa-tokenizar-un-activo'].every(ruta =>
+    simularAnalitica('https://rwadar.pages.dev' + ruta).length === 1) &&
+  ['/academy', '/academy/Mayusculas', '/academy/a/b', '/academy/leccion.html',
+    '/academy/?q=1', '/academy/leccion#seccion', '/academy/-leccion'].every(ruta =>
+    simularAnalitica('https://rwadar.pages.dev' + ruta).length === 0));
 prueba('las páginas públicas auxiliares incluyen medición y un beacon existente no se duplica',
   [privacidad, transparenciaComercial, paraEmpresas].every(pagina => pagina.includes(rutaAnalitica)) &&
   ['/privacidad', '/transparencia-comercial', '/para-empresas'].every(ruta =>
@@ -980,10 +989,10 @@ prueba('la emisión renderizada no genera style ni manejadores inline',
 
 console.log('\n=== ADAPTACIÓN MÓVIL Y ACCESIBILIDAD ===');
 const contratoTabs = [
+  { valor:'inicio', id:'movilTabInicio', panel:'movilPanelInicio', etiqueta:'Inicio' },
   { valor:'buscar', id:'movilTabRadar', panel:'movilPanelRadar', etiqueta:'Buscar' },
-  { valor:'favoritos', id:'movilTabSiguiendo', panel:'movilPanelSiguiendo', etiqueta:'Favoritos' },
-  { valor:'inversiones', id:'movilTabInversiones', panel:'movilPanelInversiones', etiqueta:'Inversiones' },
-  { valor:'cuenta', id:'movilTabMas', panel:'movilPanelMas', etiqueta:'Mi cuenta' },
+  { valor:'academy', id:'movilTabAcademy', panel:'movilPanelAcademy', etiqueta:'Academy' },
+  { valor:'cuenta', id:'movilTabMas', panel:'movilPanelMas', etiqueta:'Perfil' },
 ];
 const navegaciones = [...html.matchAll(/<nav\b([^>]*)>([\s\S]*?)<\/nav>/gi)];
 const navMovil = navegaciones.find(n => atributoHTML(n[1], 'id') === 'movilNav');
@@ -1011,11 +1020,16 @@ prueba('las cuatro pestañas conservan orden, destino y nombre accesible',
       atributoHTML(boton[1], 'aria-controls') === esperada.panel &&
       textoHTML(boton[2]).includes(esperada.etiqueta);
   }));
-prueba('solo Buscar empieza seleccionada y el foco sigue el patrón roving-tabindex',
+/* Sin JavaScript se ve Buscar (es el contenido de <main> y el escritorio);
+   con JavaScript, el móvil abre Inicio salvo que la URL traiga un ancla. */
+prueba('en el HTML solo Buscar empieza seleccionada y el foco sigue el patrón roving-tabindex',
   botonesNavMovil.filter(b => atributoHTML(b[1], 'aria-selected') === 'true').length === 1 &&
-  contratoTabs.every((_, i) =>
-    atributoHTML(botonesNavMovil[i]?.[1] || '', 'aria-selected') === (i === 0 ? 'true' : 'false') &&
-    atributoHTML(botonesNavMovil[i]?.[1] || '', 'tabindex') === (i === 0 ? '0' : '-1')));
+  contratoTabs.every((esperada, i) =>
+    atributoHTML(botonesNavMovil[i]?.[1] || '', 'aria-selected') === (esperada.valor === 'buscar' ? 'true' : 'false') &&
+    atributoHTML(botonesNavMovil[i]?.[1] || '', 'tabindex') === (esperada.valor === 'buscar' ? '0' : '-1')));
+prueba('en el móvil la app abre en Inicio, y un enlace con ancla abre Buscar',
+  /const destinoInicial=typeof location!=='undefined'&&location\.hash&&location\.hash\.length>1\?'buscar':'inicio';/.test(js) &&
+  /let activa=destinoInicial,/.test(js));
 
 const etiquetasInicio = [...html.matchAll(/<([a-z][\w:-]*)\b([^>]*)>/gi)];
 const panelesMoviles = etiquetasInicio.filter(e => atributoHTML(e[2], 'data-movil-panel') !== null);
@@ -1025,13 +1039,13 @@ prueba('cada pestaña controla un panel accesible y los paneles inactivos nacen 
     return panel && atributoHTML(panel[2], 'data-movil-panel') === esperada.valor &&
       atributoHTML(panel[2], 'role') === 'tabpanel' &&
       atributoHTML(panel[2], 'aria-labelledby') === esperada.id &&
-      (i === 0 ? atributoHTML(panel[2], 'hidden') === null : atributoHTML(panel[2], 'hidden') !== null);
+      (esperada.valor === 'buscar' ? atributoHTML(panel[2], 'hidden') === null : atributoHTML(panel[2], 'hidden') !== null);
   }));
-prueba('Buscar, Favoritos, Inversiones y Mi cuenta son las únicas rutas de primer nivel',
+prueba('Inicio, Buscar, Academy y Perfil son las únicas rutas de primer nivel',
   new Set(botonesNavMovil.map(b => atributoHTML(b[1], 'data-movil-tab'))).size === 4 &&
   contratoTabs.every(esperada => botonesNavMovil.some(b =>
     atributoHTML(b[1], 'data-movil-tab') === esperada.valor)) &&
-  !botonesNavMovil.some(b => ['radar','siguiendo','avisos','mas'].includes(
+  !botonesNavMovil.some(b => ['radar','siguiendo','avisos','mas','favoritos','inversiones'].includes(
     atributoHTML(b[1], 'data-movil-tab'))));
 
 const viewport = (html.match(/<meta\s+name=["']viewport["']\s+content=["']([^"']+)["']/i) || [])[1] || '';
@@ -1304,7 +1318,7 @@ prueba('Buscar mueve los mismos nodos y restaura su lugar al volver a escritorio
   reparentadoEmisionesEsReversible(js));
 prueba('la portada móvil conserva un acceso táctil explícito a Academy y a la lección 3D',
   /class="movil-banner-explica"[^>]*data-movil-action="academy"/.test(html) &&
-  /RWAdar Academy/.test(html) && /Abrir la primera lección/.test(html) &&
+  /RWAdar Academy/.test(html) && /Abrir la lección 3D/.test(html) &&
   /display\s*:\s*grid/i.test(declaracionesCSS(cssMovil, '.movil-banner-explica').join(';')));
 prueba('los resultados móviles muestran seis fichas y conservan las 26 en el DOM',
   /id="plataformasResultados"/.test(html) &&
@@ -1315,7 +1329,8 @@ prueba('los resultados móviles muestran seis fichas y conservan las 26 en el DO
 prueba('Academy es una subvista de Buscar sin vídeos ni canvas inventados',
   /id="academy"[^>]*aria-labelledby="academyTit"/.test(html) &&
   /data-movil-action="cerrar-academy"/.test(html) &&
-  /La videoteca todavía no tiene vídeos publicados/.test(html) &&
+  /Todavía no hay vídeos/.test(html) && !/<video\b|<iframe\b/i.test(html) &&
+  /<!--academy:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy:fin-->/.test(html) &&
   (html.match(/\bid=["'](?:explain|scene|gl)["']/g) || []).length === 3 &&
   /academyLeccion\.appendChild\(explicador\)/.test(jsSinComentarios) &&
   /rwadarAcademy/.test(jsSinComentarios));
@@ -1444,60 +1459,56 @@ prueba('las superficies nuevas solo aparecen dentro de la interfaz móvil',
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-busqueda-cab').join(';')) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ficha-abrir').join(';')) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ofertas-intro').join(';')));
-prueba('Favoritos mantiene el contenedor seguro y explica la pausa del seguimiento web',
-  /id="movilSiguiendoLista"[^>]*aria-live="polite"[^>]*hidden/.test(html) &&
-  /P\.filter\(p=>vigiladas\.has\(p\.n\)\)/.test(jsSinComentarios) &&
+const panelHTML = id => {
+  const a = html.indexOf(`<section class="movil-panel" id="${id}"`);
+  const b = a >= 0 ? html.indexOf('\n</section>', a) : -1;
+  return a >= 0 && b > a ? html.slice(a, b + 11) : '';
+};
+const panelInicioHTML = panelHTML('movilPanelInicio');
+const panelAcademyHTML = panelHTML('movilPanelAcademy');
+const panelPerfilHTML = panelHTML('movilPanelMas');
+prueba('Inicio trae las noticias generadas, la comunidad como próximamente y por dónde empezar',
+  /<!--noticias:ini-->[\s\S]*class="inicio-noticias"[\s\S]*<!--noticias:fin-->/.test(panelInicioHTML) &&
+  (panelInicioHTML.match(/class="inicio-noticia"/g) || []).length >= 1 &&
+  /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/.test(panelInicioHTML) &&
+  !/<(?:textarea|input|form)\b/i.test(panelInicioHTML) &&
+  ['metodo','fuera'].every(destino => new RegExp(`data-movil-ir=["']${destino}["']`).test(panelInicioHTML)) &&
+  /data-movil-cambiar="buscar"/.test(panelInicioHTML) && /data-movil-cambiar="academy"/.test(panelInicioHTML));
+prueba('Academy mueve el bloque real de lecciones (sin copiarlo) y cuenta las leídas del navegador',
+  /id="movilAcademyLecciones"/.test(panelAcademyHTML) &&
+  !/class="academia-lecciones"/.test(panelAcademyHTML) &&
+  /const leccionesAcademy=document\.querySelector\('\.academia-lecciones'\);/.test(js) &&
+  /const movibles=\[\.\.\.ordenMovil,explicador,leccionesAcademy\]\.filter\(Boolean\);/.test(js) &&
+  /contenedorAcademy\.appendChild\(leccionesAcademy\)/.test(js) &&
+  /localStorage\.getItem\('rwadar\.academy\.v1'\)/.test(js));
+prueba('Perfil guarda empresas y ofertas solo en este navegador y lo explica',
+  /id="perfilEmpresas"[^>]*aria-live="polite"[^>]*hidden/.test(panelPerfilHTML) &&
+  /id="perfilOfertas"[^>]*aria-live="polite"[^>]*hidden/.test(panelPerfilHTML) &&
+  /lo que guardas se queda en este navegador/.test(panelPerfilHTML) &&
+  /Guardar no es invertir: RWAdar no mueve dinero\./.test(panelPerfilHTML) &&
+  /const CLAVE='rwadar\.favoritos\.v1'/.test(js) &&
+  /localStorage\.setItem\(CLAVE,JSON\.stringify\(datos\)\)/.test(js) &&
   /class="movil-seguida/.test(js) && /escHtml\(p\.n\)/.test(js) &&
-  /no accede a tus favoritos anteriores ni guarda seguimiento remoto/.test(html) &&
-  /Para consultar o gestionar datos de una cuenta anterior/.test(html));
-
-const inicioInversiones = html.indexOf('<section class="movil-panel" id="movilPanelInversiones"');
-const finInversiones = html.indexOf('</section>', inicioInversiones);
-const panelInversionesHTML = inicioInversiones >= 0 && finInversiones > inicioInversiones
-  ? html.slice(inicioInversiones, finInversiones + 10) : '';
-const textoInversiones = textoHTML(panelInversionesHTML);
-prueba('Inversiones declara la ausencia de registro sin inventar cartera, saldos ni contadores',
-  /RWAdar todavía no registra inversiones/.test(textoInversiones) &&
-  /no intermedia operaciones ni recibe saldos/.test(textoInversiones) &&
-  /Favoritos y comparaciones nunca se presentan como inversiones/.test(textoInversiones) &&
-  !/(?:movil-resumen-numero|movil-seguida|\bemi(?:-|\b)|data-abrir|data-comparar)/i.test(panelInversionesHTML) &&
-  !/(?:rentabilidad|beneficio|confirmada|reservada|saldo\s*[:：]|\b[1-9]\d*(?:[.,]\d+)?\s*%)/i.test(textoInversiones));
-prueba('Inversiones solo deriva hacia las ofertas verificadas de Buscar',
-  /data-movil-ir=["']emisiones["']/.test(panelInversionesHTML) &&
-  /function ir\(destino,origen=null\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil) &&
-  !/data-movil-action=["']cuenta["']/.test(panelInversionesHTML));
-
-const vistaAvisosHTML = (html.match(
-  /<section\b([^>]*)\bid=["']movilVistaAvisos["']([^>]*)>[\s\S]*?<\/section>/i) || [''])[0];
-const etiquetaVistaAvisos = (html.match(
-  /<section\b([^>]*)\bid=["']movilVistaAvisos["']([^>]*)>/i) || []);
-const atributosVistaAvisos = `${etiquetaVistaAvisos[1] || ''} ${etiquetaVistaAvisos[2] || ''}`;
-prueba('Avisos es una subvista oculta de Mi cuenta y nunca una quinta pestaña',
-  Boolean(vistaAvisosHTML) && atributoHTML(atributosVistaAvisos, 'data-movil-panel') === null &&
-  atributoHTML(atributosVistaAvisos, 'role') !== 'tabpanel' &&
-  atributoHTML(atributosVistaAvisos, 'hidden') !== null &&
-  /id=["']movilAbrirAvisos["'][^>]*data-movil-action=["']avisos["'][^>]*aria-controls=["']movilVistaAvisos["'][^>]*aria-expanded=["']false["']/i.test(html) &&
+  /data-guardar-oferta="'\+escHtml\(o\.slug\)\+'"/.test(js) &&
+  /data-movil-action="borrar-guardados"/.test(panelPerfilHTML) &&
+  !/(?:rentabilidad|beneficio|saldo\s*[:：]|\b[1-9]\d*(?:[.,]\d+)?\s*%)/i.test(textoHTML(panelPerfilHTML)));
+prueba('guardar solo existe en el móvil, donde está Perfil',
+  /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.fav-local').join(';')) &&
+  /display\s*:\s*inline-flex/i.test(declaracionesCSS(cssMovil, '.escaparate-guardar.fav-local').join(';')) &&
+  /function ir\(destino,origen=null\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
+prueba('Avisos se anuncia en Perfil como próximamente y nunca es una pestaña',
+  /Los avisos llegarán próximamente a la app con las nuevas actualizaciones\./.test(panelPerfilHTML) &&
+  !/id=["']movilVistaAvisos["']/.test(html) &&
   !botonesNavMovil.some(b => /Avisos/i.test(textoHTML(b[2]))));
-prueba('la subvista conserva los tres estados reales sin prometer entrega activa',
-  (vistaAvisosHTML.match(/class="movil-estado-paso(?:\s|"|$)/g) || []).length === 3 &&
-  /Correo y push siguen cerrados hasta superar la prueba real/.test(vistaAvisosHTML) &&
-  !/Entrega activa/.test(textoHTML(vistaAvisosHTML)) &&
-  /data-movil-action=["']cerrar-avisos["']/.test(vistaAvisosHTML));
 prueba('abrir y cerrar Avisos sincroniza hidden, aria-expanded y devuelve el foco',
   subvistaAvisosConservaEstadoYFoco(js));
 
-const inicioCuentaMovil = html.indexOf('<section class="movil-panel" id="movilPanelMas"');
-const finCuentaMovil = html.indexOf('<nav class="movil-nav"', inicioCuentaMovil);
-const panelCuentaMovilHTML = inicioCuentaMovil >= 0 && finCuentaMovil > inicioCuentaMovil
-  ? html.slice(inicioCuentaMovil, finCuentaMovil) : '';
-prueba('Mi cuenta agrupa acceso, avisos, privacidad y seguridad sin ocultar herramientas',
-  /Perfil y seguridad/.test(panelCuentaMovilHTML) && /Avisos y preferencias/.test(panelCuentaMovilHTML) &&
-  /id=["']movilVistaAvisos["']/.test(panelCuentaMovilHTML) &&
-  /href=["']\/privacidad["']/.test(panelCuentaMovilHTML) &&
-  /no pide datos bancarios, claves de monedero ni frases de recuperación/.test(panelCuentaMovilHTML) &&
-  /data-movil-action=["']academy["']/.test(panelCuentaMovilHTML) &&
-  ['metodo','fuera'].every(destino =>
-    new RegExp(`data-movil-ir=["']${destino}["']`).test(panelCuentaMovilHTML)));
+prueba('Perfil agrupa cuenta, guardados, avisos y privacidad sin ocultar herramientas',
+  /id="movilCuentaAccion"[^>]*disabled/.test(panelPerfilHTML) &&
+  /Datos de una cuenta anterior/.test(panelPerfilHTML) &&
+  /href=["']\/privacidad["']/.test(panelPerfilHTML) && /href=["']\/privacidad#derechos["']/.test(panelPerfilHTML) &&
+  /data-accion=["']descargar-csv["']/.test(panelPerfilHTML) &&
+  /no pide datos bancarios, claves de monedero ni frases de recuperación/.test(panelPerfilHTML));
 
 const inicioEmisionesHTML = html.indexOf('<section class="emis wrap" id="emisiones"');
 const finEmisionesHTML = html.indexOf('</section>', inicioEmisionesHTML);
@@ -1666,8 +1677,8 @@ const archivosPublicados = listarArchivosRegulares(publicado);
 const assetsPublicados = archivosPublicados.filter(x=>x.startsWith('assets/'));
 const portadasPublicadas = archivosPublicados.filter(x=>/^plataformas\/.+\.webp$/.test(x));
 prueba('todo asset desplegable lleva su huella de contenido y no queda el nombre estable',
-  assetsPublicados.length === 5 && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
-  !archivosPublicados.some(x=>/^assets\/(?:error|privacidad|rwadar|analitica)-\d{8}\.(?:css|js)$/.test(x)));
+  assetsPublicados.length === 7 && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
+  !archivosPublicados.some(x=>/^assets\/(?:error|privacidad|rwadar|analitica|academy)-\d{8}\.(?:css|js)$/.test(x)));
 const analiticaPublicada = scriptsPublicados.find(script => /\/analitica-/.test(script[1]))?.[1];
 prueba('la analítica se versiona en todas las páginas y el worker conserva solo el cargador propio',
   analiticaPublicada && [htmlPublicado, privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada]
@@ -2066,7 +2077,10 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     })()`, p.contexto);
     const {tarjeta, detalle} = render;
     const cuerpo = tarjeta.slice(tarjeta.indexOf('<div class="escaparate-cuerpo">'));
-    const botones = [...tarjeta.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)];
+    // «Guardar» (Perfil, visible solo en el móvil) no es una acción de lectura de la tarjeta.
+    const todosBotones = [...tarjeta.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)];
+    const guardar = todosBotones.filter(b => atributoHTML(b[1], 'data-guardar-oferta') !== null);
+    const botones = todosBotones.filter(b => !guardar.includes(b));
     prueba(`tarjeta ${caso.nombre}: fixture válido y documento largo aceptado`, render.valida && render.docValida);
     prueba(`tarjeta ${caso.nombre}: imagen, título, proveedor y un solo dato siguen el orden de lectura`,
       /<img\b[^>]*alt="[^"]+"[^>]*loading="lazy"[^>]*width="\d+"[^>]*height="\d+"/.test(tarjeta) &&
@@ -2094,6 +2108,11 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       atributoHTML(botones[0][1], 'aria-label').includes(render.titulo) &&
       atributoHTML(botones[0][1], 'aria-label').includes(render.proveedor) &&
       /Ver ficha/.test(botones[0][2]));
+    prueba(`tarjeta ${caso.nombre}: como mucho un botón Guardar, de la propia oferta y sin enlaces`,
+      guardar.length <= 1 && guardar.every(b => atributoHTML(b[1], 'type') === 'button' &&
+        atributoHTML(b[1], 'data-guardar-oferta') === oferta.slug &&
+        /\bfav-local\b/.test(atributoHTML(b[1], 'class') || '') &&
+        ['true', 'false'].includes(atributoHTML(b[1], 'aria-pressed'))));
     prueba(`tarjeta ${caso.nombre}: la referencia de cifra vigente no se trunca ni revive cifras caducadas`,
       render.vigente ? tarjeta.includes(render.referencia) && detalle.includes(render.referencia) :
       !tarjeta.includes(literal) && !tarjeta.includes(unidad) && !/6,50 %|100 EUR/.test(tarjeta));
@@ -2226,6 +2245,16 @@ prueba('privacidad pausa también el acceso existente y mantiene una vía de der
   /solicitado==='recuperar'\?'recuperar_pausado'/.test(js) &&
   /no recogemos nuevas altas ni solicitudes de recuperación/.test(js) &&
   !/Te hemos enviado un correo|ya va en camino un enlace|esta versión no se publicará/.test(js));
+prueba('las cuentas se reabren por fases: opiniones, avisos por correo y manual siguen apagados',
+  /const OPINIONES_REMOTAS=false;/.test(js) && /const AVISOS_CORREO_REMOTOS=false;/.test(js) &&
+  /const MANUAL_BIENVENIDA='';/.test(js) &&
+  /const OPINIONES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&OPINIONES_REMOTAS;/.test(js) &&
+  /const AVISOS_CORREO_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_CORREO_REMOTOS;/.test(js) &&
+  /if\(!OPINIONES_DISPONIBLES\)throw new Error\('Opiniones desactivadas/.test(js) &&
+  /OPINIONES_DISPONIBLES && perfil && perfil\.es_admin\) pintarModeracion\(\)/.test(js));
+prueba('con las cuentas abiertas no se quedan botones bloqueados (fallos hallados en el ensayo del 5/10)',
+  /\$\('cuentaEnviar'\)\.disabled=false;\$\('cuentaForm'\)\.removeAttribute\('aria-busy'\);/.test(js) &&
+  /if\(accion\)\{accion\.disabled=false;/.test(js));
 prueba('la privacidad explica criterios de conservación y la limpieza de instalaciones comprobada',
   /más de 180 días sin actividad/.test(privacidadLineal) &&
   /atender derechos, incidencias u obligaciones/.test(privacidadLineal) &&
@@ -2250,7 +2279,8 @@ const fechaRadarSEO = html.match(/"dateModified":"(\d{4}-\d{2}-\d{2})"/)?.[1];
 const fechaPrivacidadSEO = privacidad.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
 const fechaTransparenciaSEO = transparenciaComercial.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
 prueba('sitemap conserva por ruta las fechas reales del radar y de cada política',
-  fechasSitemap.size === 3 && Boolean(fechaRadarSEO && fechaPrivacidadSEO && fechaTransparenciaSEO) &&
+  [...fechasSitemap.keys()].filter(url => !url.startsWith(`${ORIGEN_PUBLICO}/academy/`)).length === 3 &&
+  Boolean(fechaRadarSEO && fechaPrivacidadSEO && fechaTransparenciaSEO) &&
   fechasSitemap.get(`${ORIGEN_PUBLICO}/`) === fechaRadarSEO &&
   fechasSitemap.get(`${ORIGEN_PUBLICO}/privacidad`) === fechaPrivacidadSEO &&
   fechasSitemap.get(`${ORIGEN_PUBLICO}/transparencia-comercial`) === fechaTransparenciaSEO &&
@@ -2264,7 +2294,9 @@ prueba('todo el SEO absoluto usa el origen canónico de Cloudflare',
   /<meta name="robots" content="noindex,nofollow">/.test(paraEmpresas) &&
   !/rwadar\.netlify\.app/.test(html) &&
   lee('robots.txt').includes(`${ORIGEN_PUBLICO}/sitemap.xml`) &&
-  (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev/g) || []).length === 3 &&
+  (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev/g) || []).length ===
+    (lee('sitemap.xml').match(/<loc>/g) || []).length &&
+  (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev\/(?!academy\/)/g) || []).length === 3 &&
   validarOrigenPublicable(sitio) === ORIGEN_PUBLICO);
 prueba('el auditor compara lo publicado con el árbol adelgazado y rechaza analítica inyectada',
   /path\.join\(PUBLICADO, 'index\.html'\)/.test(arrancador) &&
@@ -2383,6 +2415,162 @@ try {
   fs.rmSync(intruso, { force:true });
 }
 
+console.log('\n=== RWADAR ACADEMY ===');
+{
+  const academyMod = require('./rwadar-academy.js');
+  const { PAGINAS_ACADEMY } = require('./rwadar-publicacion-segura.js');
+  const academy = academyMod.cargarAcademy();
+  const publicadasA = academy.lecciones.filter(l => l.estado === 'publicado');
+  const pendientesA = academy.lecciones.filter(l => l.estado !== 'publicado');
+  const paginaDe = slug => lee(`academy/${slug}.html`);
+  const indiceAcademy = lee('academy/index.html');
+  const sitemapAcademy = lee('sitemap.xml');
+  const avisoComun = academy.avisoComun.map(tramos => academyMod.textoPlano(tramos));
+  const textoDe = pagina => pagina.replace(/<[^>]+>/g, '').replace(/&quot;/g, '"').replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ');
+
+  prueba('las páginas de la Academy están generadas desde las lecciones y al día',
+    academyMod.comprobar(academy).length === 0);
+  prueba('las nueve lecciones se validan: 7 publicadas y 2 en revisión con su motivo',
+    academy.lecciones.length === 9 && publicadasA.length === 7 &&
+    publicadasA.every(l => l.modulo <= 7) && pendientesA.every(l => l.estado === 'en_revision' && l.motivo));
+  prueba('el manifiesto publicable lista exactamente el índice y las lecciones publicadas',
+    JSON.stringify(academyMod.paginasAcademy(academy)) === JSON.stringify([...PAGINAS_ACADEMY]) &&
+    fs.readdirSync(path.join(sitio, 'academy')).length === publicadasA.length + 1 &&
+    pendientesA.every(l => !fs.existsSync(path.join(sitio, 'academy', `${l.slug}.html`))));
+  for (const l of publicadasA) {
+    const pagina = paginaDe(l.slug);
+    const canonica = `https://rwadar.pages.dev/academy/${l.slug}`;
+    const ld = JSON.parse(pagina.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    const articulo = ld['@graph'].find(x => x['@type'] === 'Article');
+    prueba(`lección ${l.modulo}: CSP estricta, URL canónica y datos estructurados Article`,
+      !/<style\b|\sstyle\s*=|\son[a-z]+\s*=/i.test(pagina) &&
+      [...pagina.matchAll(/<script\b([^>]*)>/gi)].every(m => /\bsrc=|application\/ld\+json/.test(m[1])) &&
+      pagina.includes(`<link rel="canonical" href="${canonica}">`) &&
+      pagina.includes(`<title>${l.titulo} · RWAdar Academy</title>`) &&
+      articulo.datePublished === l.fechaPublicacion && articulo.dateModified === l.revisionLegal &&
+      pagina.includes('/assets/academy-20261002.css') && pagina.includes('/assets/academy-20261002.js') &&
+      pagina.includes(rutaAnalitica));
+    prueba(`lección ${l.modulo}: minutos corregidos, TL;DR destacado antes del cuerpo y revisión legal visible`,
+      pagina.includes(`<li><span>Lectura</span>${l.minutos} min</li>`) &&
+      (pagina.match(/<section class="ac-tldr"[\s\S]*?<\/section>/)?.[0].match(/<li>/g) || []).length === 3 &&
+      pagina.indexOf('class="ac-tldr"') < pagina.indexOf('class="ac-articulo"') &&
+      pagina.includes(`<li><span>Última revisión legal</span><time datetime="${l.revisionLegal}">`) &&
+      /<p class="ac-revision">Contenido revisado el <time datetime="\d{4}-\d{2}-\d{2}">[^<]+<\/time>\. Jurisdicción de referencia: España \/ Unión Europea\.<\/p>/.test(pagina));
+    const preguntas = [...pagina.matchAll(/data-academy-pregunta data-correcta="(\d)"[\s\S]*?<\/details>/g)];
+    prueba(`lección ${l.modulo}: test de ${l.quiz.length} preguntas con explicación siempre disponible`,
+      preguntas.length === l.quiz.length && preguntas.every((m, k) =>
+        Number(m[1]) === l.quiz[k].correcta && /Respuesta correcta: [A-D]\./.test(m[0]) &&
+        (m[0].match(/type="radio"/g) || []).length === l.quiz[k].opciones.length) &&
+      pagina.includes('data-academy-resumen') && pagina.includes('href="#siguiente-paso"'));
+    const texto = textoDe(pagina);
+    prueba(`lección ${l.modulo}: aviso legal de una sola fuente${l.avisoReforzado ? ' y variante reforzada' : ''}`,
+      avisoComun.every(parrafo => texto.split(parrafo).length === 2) &&
+      pagina.includes('ac-legal-reforzado') === l.avisoReforzado &&
+      fs.readFileSync(path.join(raiz, 'rwadar-academy', 'lecciones',
+        `${String(l.modulo).padStart(2, '0')}-${l.slug}.md`), 'utf8').includes('## Aviso importante'));
+    const anclasPropias = new Set([...pagina.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
+    const anclasPortada = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
+    const enlaces = [...pagina.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(m => m[1]);
+    const roto = enlaces.find(href => {
+      if (href.startsWith('#')) return !anclasPropias.has(href.slice(1));
+      if (href.startsWith('mailto:')) return href !== 'mailto:RWAdar@protonmail.com';
+      if (['/', '/privacidad', '/transparencia-comercial', '/academy/'].includes(href)) return false;
+      const ancla = href.match(/^\/#([a-z]+)$/);
+      if (ancla) return !anclasPortada.has(ancla[1]);
+      const otra = href.match(/^\/academy\/(#[a-z]+|[a-z0-9-]+)$/);
+      if (otra && otra[1].startsWith('#')) return !academy.niveles.some(n => '#' + n.id === otra[1]);
+      if (otra) return !fs.existsSync(path.join(sitio, 'academy', `${otra[1]}.html`));
+      return true;
+    });
+    prueba(`lección ${l.modulo}: termina en su CTA y ningún enlace lleva a un 404`,
+      roto === undefined && pagina.includes('id="siguiente-paso"') && /class="ac-(?:accion|enlinea)[ "]/.test(
+        pagina.match(/<section class="ac-siguiente"[\s\S]*?<\/section>/)[0]));
+  }
+  const leccion1 = paginaDe('que-significa-tokenizar-un-activo');
+  prueba('los dos tipos de recuadro (idea y aviso) se distinguen en el marcado',
+    leccion1.includes('ac-recuadro ac-recuadro-idea') && leccion1.includes('ac-recuadro ac-recuadro-aviso'));
+  prueba('un destino que aún no existe se muestra como «Próximamente», nunca como enlace',
+    /<span class="ac-accion ac-accion-pronto">Evaluador de Viabilidad <small>Próximamente<\/small><\/span>/.test(leccion1) &&
+    !/href="[^"]*evaluador/i.test(publicadasA.map(l => paginaDe(l.slug)).join('')));
+  prueba('un destino parcial enlaza al radar y explica qué falta',
+    paginaDe('quien-es-quien-actores-tokenizacion').includes('todavía no filtra por tipo de proveedor') &&
+    paginaDe('marco-legal-cuando-tu-token-es-un-valor').includes('Todavía no hay un filtro por supervisión'));
+  prueba('las tablas tienen desplazamiento propio y cabeceras accesibles',
+    (paginaDe('es-tu-activo-tokenizable').match(/<div class="ac-tabla ac-tabla-c\d" role="region" tabindex="0"/g) || []).length >= 1 &&
+    /\.ac-tabla\{overflow-x:auto/.test(lee('assets/academy-20261002.css')) &&
+    /body\{[^}]*overflow-x:hidden/.test(lee('assets/academy-20261002.css')));
+  prueba('la última lección publicada enlaza la siguiente como «Próximamente», sin página inexistente',
+    paginaDe('como-leer-el-radar').includes('ac-vecina-pronto') &&
+    !paginaDe('como-leer-el-radar').includes('href="/academy/expediente-de-tokenizacion"') &&
+    paginaDe('liquidez-como-evaluarla').includes('href="/academy/como-leer-el-radar"'));
+  prueba('el índice muestra los tres niveles, el progreso local y las pendientes como «Próximamente»',
+    academy.niveles.every(n => indiceAcademy.includes(`<section class="ac-nivel" id="${n.id}"`)) &&
+    indiceAcademy.includes(`<progress max="${publicadasA.length}" value="0"`) &&
+    (indiceAcademy.match(/ac-tarjeta ac-tarjeta-pronto/g) || []).length === pendientesA.length &&
+    publicadasA.every(l => indiceAcademy.includes(`href="/academy/${l.slug}" data-academy-tarjeta="${l.slug}"`)) &&
+    indiceAcademy.includes('<link rel="canonical" href="https://rwadar.pages.dev/academy/">'));
+  prueba('la portada enlaza la Academy desde la cabecera, el pie y el bloque de lecciones',
+    html.includes('<a class="hdr-link" href="/academy/">Academy</a>') &&
+    html.includes('<a href="/academy/">RWAdar Academy</a>') &&
+    publicadasA.every(l => html.includes(`<a href="/academy/${l.slug}">`)) &&
+    pendientesA.every(l => !html.includes(`href="/academy/${l.slug}"`)) &&
+    html.includes('<p id="comparador">'));
+  prueba('el sitemap incluye solo la Academy publicada',
+    sitemapAcademy.includes('<loc>https://rwadar.pages.dev/academy/</loc>') &&
+    publicadasA.every(l => sitemapAcademy.includes(`<loc>https://rwadar.pages.dev/academy/${l.slug}</loc>`)) &&
+    pendientesA.every(l => !sitemapAcademy.includes(l.slug)));
+  prueba('las URL limpias de la Academy no se quedan en caché del CDN',
+    /\/academy\/\*\n\s+Cache-Control: public, max-age=0, must-revalidate/.test(headers));
+  const codigoAcademy = lee('assets/academy-20261002.js');
+  prueba('el progreso vive solo en localStorage, protegido y sin innerHTML ni red',
+    /const CLAVE = 'rwadar\.academy\.v1'/.test(codigoAcademy) &&
+    (codigoAcademy.match(/try \{/g) || []).length >= 3 &&
+    !/innerHTML|fetch\(|XMLHttpRequest|sendBeacon|document\.cookie/.test(codigoAcademy));
+  prueba('el publicado reescribe los assets de la Academy con su huella',
+    PAGINAS_ACADEMY.every(nombre => {
+      const salida = fs.readFileSync(path.join(publicado, ...nombre.split('/')), 'utf8');
+      return /\/assets\/academy-20261002\.[0-9a-f]{12}\.css/.test(salida) &&
+        /\/assets\/academy-20261002\.[0-9a-f]{12}\.js/.test(salida) && !salida.includes('/assets/academy-20261002.css');
+    }));
+  let rechazoMarca = null, rechazoBoton = null;
+  try { academyMod.parsearInline('texto **sin cerrar', 'prueba', {}); } catch (e) { rechazoMarca = e; }
+  try { academyMod.parsearInline('**[Botón inventado →]**', 'prueba', {}); } catch (e) { rechazoBoton = e; }
+  prueba('el generador se para ante negritas sin cerrar o botones sin destino',
+    rechazoMarca instanceof academyMod.ErrorAcademy && rechazoBoton instanceof academyMod.ErrorAcademy &&
+    /sin destino conocido/.test(rechazoBoton.message));
+  const textosLecciones = fs.readdirSync(path.join(raiz, 'rwadar-academy', 'lecciones'))
+    .map(n => fs.readFileSync(path.join(raiz, 'rwadar-academy', 'lecciones', n), 'utf8'));
+  const parrafosLecciones = textosLecciones.flatMap(t => t.split(/\n\s*>?\s*\n/))
+    .map(p => p.replace(/^>\s?/gm, '').replace(/\*\*\[[^\]]+\]\*\*/g, '').replace(/[*_]/g, '').replace(/\s+/g, ' ').trim());
+  const criteriosMetodo = ['Entidad y permisos', 'Actividad y fecha', 'Acceso y condiciones', 'Riesgos y alertas'];
+  prueba('los cuatro criterios de las lecciones son los mismos que publica el Método',
+    criteriosMetodo.every(c => html.includes(`<h3>${c}</h3>`)) &&
+    criteriosMetodo.every((c, k) => textosLecciones.some(t => t.includes(`**${k + 1} · ${c}.**`))) &&
+    !textosLecciones.some(t => /supervisión regulatoria\*\*\.|Operativa verificable|Ausencia de crisis activas|\*\*4 · Trayectoria|no superan (?:nuestros|los) (?:cuatro )?criterios|enterprise/i.test(t)));
+  const sinProximamente = parrafosLecciones.filter(p =>
+    /Evaluador de Viabilidad|checklist del expediente|filtrar (?:a los proveedores )?por categoría|filtro por (?:categoría|capacidad regulatoria)/i.test(p) &&
+    !/próximamente/i.test(p));
+  prueba('toda función que aún no existe se anuncia como «próximamente» en el texto',
+    sinProximamente.length === 0);
+  const cssPortada = lee('assets/rwadar-20260820.css');
+  const fuentesDe = css => [...css.matchAll(/font-family:'(Geist(?: Mono)?)';font-style:(\w+)[^}]*?base64,([A-Za-z0-9+/=]+)\)/g)]
+    .map(m => ({ familia: m[1], estilo: m[2], bytes: Buffer.from(m[3], 'base64') }));
+  const fuentesPortada = fuentesDe(cssPortada), fuentesAcademy = fuentesDe(lee('assets/academy-20261002.css'));
+  prueba('la Geist incrustada es la completa para español, no el recorte sin a-z',
+    fuentesPortada.length === 2 && fuentesAcademy.length === 3 &&
+    [...fuentesPortada, ...fuentesAcademy].every(f => f.bytes.subarray(0, 4).toString('latin1') === 'wOF2' && f.bytes.length > 15000) &&
+    fuentesAcademy.some(f => f.estilo === 'italic') &&
+    !(cssPortada + lee('assets/academy-20261002.css')).includes('d09GMgABAAAAAECAABQAAAAAjngAAEALAAEAA'));
+  prueba('la cabecera compacta móvil no monta el título sobre la marca',
+    /\.movil-cabecera\{display:grid;grid-template-columns:minmax\(max-content,1fr\) minmax\(0,auto\) minmax\(max-content,1fr\);\s*column-gap:10px/.test(cssPortada) &&
+    /\.movil-cabecera-titulo\{[^}]*min-width:0;[^}]*text-overflow:ellipsis/.test(cssPortada) &&
+    /cabTitulo\.textContent='Academy'/.test(lee('assets/rwadar-20260820.js')));
+  prueba('el publicador se niega a construir si la Academy no está al día',
+    /comprobarAcademy\(\)/.test(publicador) && /ACADEMY BLOQUEADA/.test(publicador) &&
+    /\.\.\.PAGINAS_ACADEMY\]/.test(publicador));
+}
+
 console.log('\n=== PRUEBA HTTP LOCAL ===');
 const puerto = 43173;
 const proceso = spawn(process.execPath, ['rwadar-servir.js',`--puerto=${puerto}`], { cwd:raiz, stdio:['ignore','pipe','pipe'] });
@@ -2466,6 +2654,17 @@ try {
     method:'POST',headers:{Origin:`http://127.0.0.1:${puerto}`,'Content-Type':'image/png'},body:new Uint8Array([1,2,3]),
   });
   prueba('POST /guardar está desactivado por defecto', post.status===403);
+  const academySinBarra = await fetch(`http://127.0.0.1:${puerto}/academy`, { redirect:'manual' });
+  const academyIndice = await fetch(`http://127.0.0.1:${puerto}/academy/`);
+  const academyLeccion = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo`);
+  const academyHtml = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo.html`, { redirect:'manual' });
+  const academyPendiente = await fetch(`http://127.0.0.1:${puerto}/academy/expediente-de-tokenizacion`);
+  prueba('las URL limpias de la Academy funcionan localmente como en Cloudflare',
+    academySinBarra.status===308 && academySinBarra.headers.get('location')==='/academy/' &&
+    academyIndice.status===200 && (await academyIndice.text()).includes('data-academy-indice-pagina') &&
+    academyLeccion.status===200 && (await academyLeccion.text()).includes('data-academy-leccion="que-significa-tokenizar-un-activo"') &&
+    academyHtml.status===308 && academyHtml.headers.get('location')==='/academy/que-significa-tokenizar-un-activo' &&
+    academyPendiente.status===404);
 } finally {
   proceso.kill();
 }
