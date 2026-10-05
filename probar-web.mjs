@@ -193,6 +193,7 @@ function estadoPendienteOcultaFormulario(codigo) {
       const OPINIONES_DISPONIBLES=false,MANUAL_BIENVENIDA='';
       let modo='entrar',correoPendiente='persona@example.test',operacionCuenta=0,
           temporizadorReenvio=null,focoCuenta=null;
+      const quitaAntiRobots=()=>{};
       ${fuente}
       return {abrir};
     `);
@@ -228,6 +229,7 @@ function arnesEnvioRegistro(codigo) {
       const CORREO_AUTH_E2E=true;
       const SERVICIOS_USUARIO_DISPONIBLES=true;
       let modo='registro',operacionCuenta=0,correoPendiente='';
+      const conAntiRobots=async cuerpo=>cuerpo,quitaAntiRobots=()=>{};
       ${fuente}
       return {enviar,invalidar(){operacionCuenta++;modo='entrar';}};
     `);
@@ -906,8 +908,20 @@ prueba('Auth rechaza una respuesta 2xx cuyo cuerpo no sea JSON válido',
 prueba('un signup sin usuario raíz válido nunca se presenta como alta aceptada',
   await altaSinUsuarioValidoFallaCerrada(js));
 prueba('el reenvío de confirmación usa /resend con type signup y no promete entrega',
-  /auth\('\/resend\?redirect_to='\+vuelta,\{type:'signup',email:correoPendiente\}\)/.test(js) &&
+  /auth\('\/resend\?redirect_to='\+vuelta,await conAntiRobots\(\{type:'signup',email:correoPendiente\}\)\)/.test(js) &&
   /solicitud de reenvío fue aceptada[^']*no confirma la entrega/i.test(js));
+prueba('alta, entrada, recuperación y reenvío pasan por el anti-robots; renovar la sesión y cambiar la clave no',
+  (js.match(/auth\('\/(signup|recover|resend)\?redirect_to='\+vuelta,await conAntiRobots\(/g) || []).length === 4 &&
+  /auth\('\/token\?grant_type=password',await conAntiRobots\(/.test(js) &&
+  /auth\('\/token\?grant_type=refresh_token',\{refresh_token:/.test(js) &&
+  /auth\('\/user',\{password:clave\},\{metodo:'PUT'/.test(js) &&
+  /gotrue_meta_security:\{captcha_token:t\}/.test(js));
+prueba('el anti-robots nace apagado, solo carga el script de Cloudflare al pedirlo y no sigue si se cerró la ventana',
+  /const TURNSTILE_SITEKEY='';/.test(js) &&
+  /async function antiRobots\(\)\{\n  if\(!TURNSTILE_SITEKEY\)return null;\n[^]*?await cargaTurnstile\(\)/.test(js) &&
+  /if\(op!==operacionCuenta\)throw new Error\('Operación cancelada\.'\);\n  quitaAntiRobots\(\);/.test(js) &&
+  (js.match(/challenges\.cloudflare\.com\/turnstile\/v0\/api\.js\?render=explicit/g) || []).length === 1 &&
+  !/challenges\.cloudflare\.com/.test(html) && !/challenges\.cloudflare\.com/.test(headers));
 prueba('una operación de cuenta obsoleta no muta la vista que la sustituyó',
   await operacionCuentaObsoletaNoMutaVista(js) &&
   (js.match(/if\(operacion!==operacionCuenta\|\|modo!==modoEnvio\)return;/g) || []).length >= 4 &&
