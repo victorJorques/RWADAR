@@ -44,6 +44,13 @@ Opiniones y avisos siguen cerrados. Faltan los pasos de Víctor en Supabase
 Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
 [`manual/LEEME.md`](manual/LEEME.md).
 
+**Nueva barra del móvil (5/10): Inicio · Buscar · Academy · Perfil**, en la
+web y en la app. Inicio trae las noticias de RWAdar (se editan en
+[`../rwadar-noticias/`](../rwadar-noticias/LEEME.md)) y anuncia la comunidad;
+Perfil reúne las empresas y ofertas guardadas (solo en el navegador o en el
+móvil) y los avisos como «próximamente». En la web llega con la próxima
+publicación; en la app, con la próxima versión.
+
 **Desactivado:** publicidad, comisiones y cobros. Hay una cuenta de AdMob con
 dos fichas de prueba, pero nada conectado a la app.
 

@@ -101,22 +101,47 @@ export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
           <Line x1="12" y1="6.6" x2="12" y2="19.4" {...comun} />
         </>
       ) : null}
+      {nombre === 'inicio' ? (
+        <>
+          <Path d="M4 10.5 12 4l8 6.5V20h-5.5v-5.5h-5V20H4z" {...comun} />
+        </>
+      ) : null}
+      {nombre === 'perfil' ? (
+        <>
+          <Circle cx="12" cy="8" r="3.4" {...comun} />
+          <Path d="M5.5 20a6.5 6.5 0 0 1 13 0" {...comun} />
+          <Circle cx="12" cy="12" r="9.5" {...comun} opacity="0.45" />
+        </>
+      ) : null}
+      {nombre === 'comunidad' ? (
+        <>
+          <Path d="M4 5.5h16v10H9l-5 4z" {...comun} />
+          <Path d="M8 9.5h8M8 12.5h5" {...comun} />
+        </>
+      ) : null}
+      {nombre === 'guardar' ? (
+        <Path d="M12 3.6l2.5 5.2 5.7.8-4.1 4 1 5.7L12 16.6l-5.1 2.7 1-5.7-4.1-4 5.7-.8z" {...comun} />
+      ) : null}
+      {nombre === 'guardada' ? (
+        <Path d="M12 3.6l2.5 5.2 5.7.8-4.1 4 1 5.7L12 16.6l-5.1 2.7 1-5.7-4.1-4 5.7-.8z" {...comun} fill={color} />
+      ) : null}
       {nombre === 'flecha' ? <Path d="m9 5 7 7-7 7" {...comun} /> : null}
     </Svg>
   );
 }
 
+/* Inicio (noticias y novedades), Buscar (empresas y ofertas), Academy y
+   Perfil (lo guardado, avisos y privacidad). */
 const DESTINOS = [
-  ['radar', 'Radar', 'radar'],
-  ['ofertas', 'Ofertas', 'ofertas'],
-  ['sigo', 'Siguiendo', 'siguiendo'],
-  ['avisos', 'Avisos', 'avisos'],
-  ['mas', 'Más', 'mas'],
+  ['inicio', 'Inicio', 'inicio'],
+  ['buscar', 'Buscar', 'buscar'],
+  ['academy', 'Academy', 'academy'],
+  ['perfil', 'Perfil', 'perfil'],
 ];
 
-export default function Navegacion({ activa, seguimientos, novedades, onCambiar, mostrarOfertas = false }) {
+export default function Navegacion({ activa, guardados = 0, novedades = 0, onCambiar }) {
   const insets = useSafeAreaInsets();
-  const destinos = mostrarOfertas ? DESTINOS : DESTINOS.filter(([id]) => id !== 'ofertas');
+  const destinos = DESTINOS;
   return (
     <View
       style={[e.barra, { paddingBottom: Math.max(insets.bottom, 7) }]}
@@ -125,7 +150,7 @@ export default function Navegacion({ activa, seguimientos, novedades, onCambiar,
     >
       {destinos.map(([id, etiqueta, icono]) => {
         const seleccionada = activa === id;
-        const insignia = id === 'sigo' ? seguimientos : id === 'avisos' ? novedades : 0;
+        const insignia = id === 'perfil' ? guardados : id === 'inicio' ? novedades : 0;
         const color = seleccionada ? C.senal : C.tx3;
         return (
           <Pressable

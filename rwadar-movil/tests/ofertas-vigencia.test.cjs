@@ -65,6 +65,8 @@ function cargarWeb(ahora) {
     MANIFIESTO_EDITORIAL_LOCAL: { porCategoria: { Inmobiliario: { archivo: 'propia.webp', alt: 'Ilustración propia' } }, etiqueta: 'Ilustración editorial' },
     EDITORIAL_OFERTA_POR_CATEGORIA: { Inmobiliario: { src: '/propia.webp', alt: 'Ilustración propia' } },
     CATMETA: { Inmobiliario: {} }, catClase: () => '',
+    // Botón «Guardar» de favoritos locales: vive fuera del fragmento cargado.
+    botonGuardarOferta: () => '',
     escHtml: (v) => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),
     fechaES: (v) => v, urlHttps: (v) => /^https:\/\//.test(v || '') ? v : '',
     document: { getElementById: () => dialogo, body: { classList: { add() {}, remove() {} } } },
@@ -179,6 +181,7 @@ function componentesMoviles(ahora, simulacion = {}) {
     '../lib/datos': datosMoviles,
     '../lib/verificacion-local': movil,
     '../lib/tema': { C: {}, COLOR_CATEGORIA: {}, F: {}, R: {}, T: {}, UI: {}, iniciales: () => 'PR' },
+    './Navegacion': { Icono: 'Icono' },
   }, { Date: FechaControlada, setTimeout: simulacion.setTimeout || (() => 1), clearTimeout: simulacion.clearTimeout || (() => {}) });
 }
 

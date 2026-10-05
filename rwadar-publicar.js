@@ -22,6 +22,7 @@ const { execFileSync } = require('child_process');
 const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { comprobar: comprobarAcademy, paginasAcademy } = require('./rwadar-academy');
+const { comprobar: comprobarNoticias } = require('./rwadar-noticias');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
@@ -130,6 +131,15 @@ try {
   }
 } catch (e) {
   console.error('ACADEMY BLOQUEADA:', e.message);
+  process.exit(2);
+}
+/* Las noticias de Inicio se generan desde rwadar-noticias/: tampoco se
+   publica una portada que no coincida con su fuente. */
+try {
+  const pendientes = comprobarNoticias();
+  if (pendientes.length) throw new Error(`no están al día (ejecuta node rwadar-noticias.js): ${pendientes.join(', ')}`);
+} catch (e) {
+  console.error('NOTICIAS BLOQUEADAS:', e.message);
   process.exit(2);
 }
 try { validarArbolPublicable(DIR); }

@@ -6,6 +6,61 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de octubre de 2026 · Claude (2) · nueva barra: Inicio · Buscar · Academy · Perfil
+
+**Rama:** `claude/zealous-shannon-endwcn` (reiniciada desde `main` tras unir
+#4). Petición de Víctor: reorganizar la barra del móvil y dejar los avisos
+como «próximamente». No toca producción, Supabase ni EAS.
+
+### Web (móvil; el escritorio no cambia)
+
+- Pestañas `inicio` · `buscar` · `academy` · `cuenta` (rótulo «Perfil»). Con
+  JavaScript el móvil abre en Inicio salvo que la URL traiga ancla; sin él se
+  ve Buscar (`movilPanelRadar` no lleva `hidden`, como el escritorio).
+- **Inicio** (`movilPanelInicio`): presentación, atajos, noticias generadas
+  (marcas `<!--noticias:ini-->`), Comunidad «próximamente» (una publicación al
+  día por cuenta cuando haya cuentas) y Método/Fuera/3D.
+- **Academy** (`movilPanelAcademy`): en el móvil se **mueve** el bloque real
+  `.academia-lecciones` de la portada (con ancla para devolverlo en
+  escritorio) y se cuenta lo leído con la clave `rwadar.academy.v1`.
+- **Perfil** (`movilPanelMas`): tarjeta de cuenta (en pausa), empresas y
+  ofertas guardadas, Avisos «llegarán próximamente a la app» con la vía para
+  retirar un consentimiento anterior, privacidad, sonido, borrar guardados,
+  CSV y contacto. Desaparecen Favoritos, Inversiones y la subvista de Avisos
+  (su JS queda inerte: sin esos nodos no hace nada).
+- **Favoritos locales**: módulo `Favoritos` (`favoritos-locales:inicio/fin`,
+  al principio del JS porque las tarjetas se pintan antes), clave
+  `rwadar.favoritos.v1` (nombres de empresa y slugs de oferta). Botón
+  «Guardar en favoritos» en la ficha (cuando no hay cuentas) y «☆ Guardar» en
+  las tarjetas de oferta; solo visibles en el móvil (`.fav-local`).
+- Privacidad actualizada (5/10/2026) y `sitemap.xml`.
+
+### Noticias
+
+Fuente única `rwadar-noticias/noticias.json` → `rwadar-noticias.js` escribe
+el bloque de Inicio de la web y `rwadar-movil/lib/noticias-contenido.js`.
+`--comprobar` en `test:tools`; `rwadar-publicar.js` bloquea si no está al día;
+añadido a `RUTAS_CONTENIDO_APROBADO`. **Ojo:** la noticia «RWAdar Academy ya
+está abierta» lleva fecha 5/10; si se publica otro día, cambia la fecha.
+
+### App (necesita versión nueva para llegar a los móviles)
+
+- `Navegacion.js`: Inicio · Buscar · Academy · Perfil (iconos nuevos; insignia
+  de guardados en Perfil).
+- `componentes/Inicio.js` nuevo. Buscar = selector «Empresas | Ofertas» sobre
+  las dos listas de siempre. Academy pasa de modal a pestaña (`onCerrar`
+  opcional). `PantallaPerfil` sustituye a «Más», «Siguiendo» y «Avisos»: en
+  modo editorial enseña «Avisos · próximamente»; con la capacidad remota
+  vuelve a usar `PanelAvisos`.
+- Ofertas guardadas en el dispositivo (`ofertasGuardadas`,
+  `alternarOfertaGuardada`, clave `…ofertas.guardadas.v1`, borrada con el
+  resto) y estrella en `DetalleOferta`.
+
+### Pruebas
+
+Web 406, `rwadar-app` completo, móvil 104, tools, QR y ensayo de cuentas 37.
+Capturas reales en Chromium (web móvil y app exportada con react-native-web).
+
 ## 5 de octubre de 2026 · Claude · cuentas (fase 1) preparadas, manual, seguridad
 
 **Rama:** `claude/zealous-shannon-endwcn`. **No toca producción:** nada

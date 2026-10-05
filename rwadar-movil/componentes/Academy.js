@@ -95,10 +95,13 @@ export default function Academy({ slug, onAbrirLeccion, onVolver, onCerrar, onAc
             {leccion ? `Lección ${leccion.modulo} de ${LECCIONES.length}` : 'Lecciones'}
           </Text>
         </View>
-        <Pressable onPress={onCerrar} style={({ pressed }) => [e.boton, pressed && e.pulsado]} hitSlop={8}
-          accessibilityRole="button" accessibilityLabel="Cerrar RWAdar Academy">
-          <Text style={e.cerrarTxt}>✕</Text>
-        </Pressable>
+        {/* Como pestaña no se cierra: se cambia de pestaña. */}
+        {onCerrar ? (
+          <Pressable onPress={onCerrar} style={({ pressed }) => [e.boton, pressed && e.pulsado]} hitSlop={8}
+            accessibilityRole="button" accessibilityLabel="Cerrar RWAdar Academy">
+            <Text style={e.cerrarTxt}>✕</Text>
+          </Pressable>
+        ) : null}
       </View>
 
       <ScrollView ref={desplazamiento} contentContainerStyle={e.cuerpo}>

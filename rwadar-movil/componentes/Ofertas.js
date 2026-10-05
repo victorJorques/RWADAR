@@ -7,6 +7,7 @@ import { ETIQUETA_EDITORIAL, imagenEditorial } from '../fixtures/imagenes-editor
 import { vigenciaOferta } from '../lib/datos';
 import { documentacionOferta, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
+import { Icono } from './Navegacion';
 
 function useFechaOferta() {
   const [ahora, setAhora] = useState(() => new Date());
@@ -221,7 +222,9 @@ function FilaMetrica({ etiqueta, valor }) {
   );
 }
 
-export function DetalleOferta({ oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataformaCanonica }) {
+export function DetalleOferta({
+  oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataformaCanonica, guardada = false, onGuardar,
+}) {
   const ahora = useFechaOferta();
   if (!ofertaOriginal) return null;
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
@@ -241,6 +244,15 @@ export function DetalleOferta({ oferta: ofertaOriginal, onCerrar, onAbrirEnlace,
               <Text style={e.supra}>{oferta.coleccion && oferta.coleccion !== 'principales' ? 'REFERENCIA' : 'OFERTA'} · {tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
               <Text style={e.modalTitulo} numberOfLines={2}>{oferta.titulo}</Text>
             </View>
+            {/* Guardar no es invertir: solo la deja a mano en Perfil, en este dispositivo. */}
+            {onGuardar ? (
+              <Pressable onPress={onGuardar} style={({ pressed }) => [e.cerrar, guardada && e.guardarOn, pressed && e.pulsado]}
+                accessibilityRole="button" accessibilityState={{ selected: guardada }}
+                accessibilityLabel={guardada ? `Quitar ${oferta.titulo} de guardadas` : `Guardar ${oferta.titulo} en Perfil`}
+                hitSlop={10}>
+                <Icono nombre={guardada ? 'guardada' : 'guardar'} color={C.senal} tamano={22} />
+              </Pressable>
+            ) : null}
             <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]}
               accessibilityRole="button" accessibilityLabel={`Cerrar ${oferta.titulo}`} hitSlop={10}>
               <Text style={e.cerrarTxt}>✕</Text>
@@ -525,6 +537,7 @@ const e = StyleSheet.create({
   },
   supra: { ...T.etiqueta, color: C.senal, marginBottom: 5 },
   modalTitulo: { ...T.ficha, color: C.tx, fontSize: 19 },
+  guardarOn: { backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34 },
   cerrar: {
     width: UI.tactil, height: UI.tactil, alignItems: 'center', justifyContent: 'center',
     borderRadius: R.pastilla, backgroundColor: C.sup2,
