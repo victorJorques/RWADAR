@@ -69,6 +69,14 @@ fecha más reciente: las nueve lecciones dicen ahora **2 de octubre de 2026**.
 3. **Variantes del aviso común**: unificadas en la versión más completa
    (`aviso-legal.md`). Si Eric prefiere otra redacción, se cambia ahí.
 
+## Segunda copia de la entrega (5/10/2026)
+
+Víctor reenvió `RWAdar_Academy_ENTREGA_WEB_1_2.zip`. Sus nueve lecciones son
+idénticas byte a byte a las de esta entrega (commit `5cecbb8`) y su
+`README_ENTREGA.md` y `ESPECIFICACION_WEB.md` también; trae además versiones
+HTML para leer y `lecciones.json`. No hay contenido nuevo que montar: lo
+publicado ya incluye las correcciones de arriba.
+
 ## Fuera de esta entrega (como pide la especificación)
 
 Cuentas, certificados, comentarios, buscador interno de la Academy, otros

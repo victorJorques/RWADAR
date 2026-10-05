@@ -6,6 +6,46 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de octubre de 2026 · Claude · cuentas (fase 1) preparadas, manual, seguridad
+
+**Rama:** `claude/zealous-shannon-endwcn`. **No toca producción:** nada
+publicado, nada aplicado en Supabase, sin EAS. Todo lo nuevo queda apagado.
+
+### Qué hay
+
+| Pieza | Dónde |
+|---|---|
+| Migración de reapertura, fase 1: perfil, vigilancia, baja y fecha de descarga del manual. Opiniones, moderación, dispositivos y push siguen cerrados | `rwadar-app/db/26_reabrir_cuentas.sql` + `_verificar.sql`; marcha atrás = reaplicar 25 |
+| Prueba sobre la cadena de producción (01-22, 24, 25, catálogo) | `rwadar-app/probar-reabrir-cuentas.mjs` (36/36), dentro de `npm test` |
+| Ensayo E2E en Chromium: la web real con cuentas encendidas en memoria contra un Supabase simulado sobre PGlite + 26 | `rwadar-app/ensayo-cuentas-web.mjs` (37/37; necesita Playwright, no está en `npm test`) |
+| Web: interruptores separados `OPINIONES_REMOTAS`, `AVISOS_CORREO_REMOTOS`, `MANUAL_BIENVENIDA` (todos apagados, igual que `SERVICIOS_USUARIO_REMOTOS` y `CORREO_AUTH_E2E`) | `rwadar-site/assets/rwadar-20260820.js` |
+| Dos fallos corregidos que solo salían con cuentas abiertas: botón de cuenta del móvil siempre desactivado; botón «Entrar» bloqueado tras «Confirma tu correo» | mismo archivo; pruebas fijas en `probar-web.mjs` |
+| Textos de cuenta sin promesas de opiniones mientras estén cerradas (etiqueta del nombre, aviso legal del alta, subtítulo) | `rwadar-site/index.html` |
+| Manual de bienvenida de Eric (PDF original, revisión y cómo encenderlo). **Sección 8 promete avisos y guías por correo que no existen; la 6 remite a un checklist que no tenemos** | `docs/manual/` |
+| Pasos de Víctor para abrir cuentas (SMTP, Auth, SQL, prueba real) | `docs/tareas/REABRIR-CUENTAS.md` |
+| Revisión de seguridad | `docs/seguridad/REVISION-SEGURIDAD-2026-10-05.md` |
+| Pasos exactos para crear la clave de Cloudflare | `docs/OPERACION-LANZAMIENTO.md`, «Publicar desde GitHub» |
+
+Academy «ENTREGA_WEB_1_2»: las 9 lecciones son idénticas byte a byte a la
+entrega del 2/10 (commit `5cecbb8`); no hay nada nuevo que montar.
+
+### Pruebas
+
+`npm test` por partes en verde: web 405, `rwadar-app` completo (incluida la
+nueva), móvil 101, tools y QR. Gitleaks sobre 74 commits: 10 avisos, todos
+falsos (detalle en la revisión de seguridad).
+
+### Pendiente (de Víctor)
+
+1. Secreto `CLOUDFLARE_API_TOKEN` en GitHub → Claude publica (la aprobación
+   caduca el 7/10).
+2. Pasos 1 a 3 de `REABRIR-CUENTAS.md` → Claude enciende cuentas en
+   `revision`, Víctor prueba, se reescribe la privacidad y se publica.
+3. Eric: corregir la sección 8 del manual y enviar el Checklist de
+   Elegibilidad.
+
+---
+
 ## 2 de octubre de 2026 · Claude · RWAdar Academy en la web y en la app
 
 **Rama:** `claude/zealous-shannon-endwcn`, commit «feat(academy): …». No toca
