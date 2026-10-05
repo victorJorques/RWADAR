@@ -13,8 +13,8 @@
   "comisionVariableSobreInversion": false,
   "nota": "Lanzamiento público expresamente autorizado. Corte editorial gratuito con catálogo real de solo lectura, identidad completa, imágenes propias y analítica agregada web. Publicidad y cobros permanecen desactivados hasta completar la configuración y revisión comercial.",
   "revisionAprobada": {
-    "commit": "eee89fc0a1529b4459a7bfa4f949cbfd491af8d7",
-    "contenidoSha256": "sha256:cbf473af33b4587708d8aa5156ab2e0fb8f7967495ad0ea55035036e723cda42",
+    "commit": "e320b215ca714c1620adcd3c78b476641420d3a4",
+    "contenidoSha256": "sha256:0628c77b720b5f725edcf3f816ddbb211b1f7c5e00ce7a47e887ed8283e49928",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
