@@ -27,6 +27,9 @@ const OPINIONES_REMOTAS=false;
 const OPINIONES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&OPINIONES_REMOTAS;
 const AVISOS_CORREO_REMOTOS=false;
 const AVISOS_CORREO_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_CORREO_REMOTOS;
+/* Comunidad (db/27): una publicación al día por cuenta. Necesita las cuentas. */
+const PUBLICACIONES_REMOTAS=false;
+const PUBLICACIONES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&PUBLICACIONES_REMOTAS;
 function limpiarRetornoSinServiciosUsuario(){
  if(SERVICIOS_USUARIO_DISPONIBLES||typeof location==='undefined'||
     typeof history==='undefined'||typeof history.replaceState!=='function')return;
@@ -1888,19 +1891,22 @@ function documentacionOfertaLocal(o,ahora=new Date()){
       fuente(r.fuente)&&d.fuentes.includes(r.fuente)))return null;
  return d;
 }
+function nombreFuenteLocal(url){
+ try{return new URL(url).hostname.replace(/^www\./,'')}catch{return 'Fuente documental'}
+}
 function documentacionOfertaHtml(d){
  if(!d)return '';
  const fecha=v=>escHtml(fechaES(v));
- const ficha=d.descripcion?'<section class="escaparate-dialogo-seccion"><h3>Ficha documentada · '+fecha(d.revisadaEl)+'</h3>'+
-  '<p class="escaparate-dialogo-resumen">'+escHtml(d.descripcion)+'</p><dl class="escaparate-documentacion-caracteristicas">'+
-  d.caracteristicas.map(c=>'<div><dt>'+escHtml(c.etiqueta)+'</dt><dd>'+escHtml(c.valor)+'</dd></div>').join('')+'</dl></section>':'';
- const referencias=d.referencias.length?'<section class="escaparate-dialogo-seccion"><h3>Referencias fechadas</h3>'+
+ const ficha=d.descripcion?'<section class="escaparate-dialogo-seccion"><h3>Sobre esta referencia</h3>'+
+  '<p class="escaparate-dialogo-resumen">'+escHtml(d.descripcion)+'</p><details class="escaparate-detalle-ampliable"><summary>Características <span>'+d.caracteristicas.length+'</span></summary><dl class="escaparate-documentacion-caracteristicas">'+
+  d.caracteristicas.map(c=>'<div><dt>'+escHtml(c.etiqueta)+'</dt><dd>'+escHtml(c.valor)+'</dd></div>').join('')+'</dl></details></section>':'';
+ const referencias=d.referencias.length?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Referencias fechadas <span>'+d.referencias.length+'</span></summary>'+
   '<p class="escaparate-documentacion-aviso">Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.</p>'+
   '<div class="escaparate-referencias-fechadas">'+d.referencias.map(r=>'<article><h4>'+escHtml(r.etiqueta)+'</h4><p><b>'+escHtml(r.valor)+'</b></p>'+
     '<p>Fecha del dato: '+(r.fechaDato?fecha(r.fechaDato):'no indicada en la fuente')+' · Consultado el '+fecha(r.fechaConsulta)+'</p>'+
-    '<p>'+escHtml(r.alcance)+'</p><a href="'+escHtml(r.fuente)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Fuente de '+r.etiqueta)+'">Fuente: '+escHtml(r.fuente)+' ↗</a></article>').join('')+'</div></section>':'';
+    '<p>'+escHtml(r.alcance)+'</p><a href="'+escHtml(r.fuente)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Ver fuente · '+nombreFuenteLocal(r.fuente)+' de '+r.etiqueta+': '+r.fuente)+'">Ver fuente · '+escHtml(nombreFuenteLocal(r.fuente))+' ↗</a></article>').join('')+'</div></details>':'';
  return ficha+referencias+'<section class="escaparate-dialogo-seccion"><h3>Fuentes documentales · '+fecha(d.revisadaEl)+'</h3><ul class="escaparate-fuentes-documentales">'+
-  d.fuentes.map(u=>'<li><a href="'+escHtml(u)+'" target="_blank" rel="noopener nofollow">'+escHtml(u)+' ↗</a></li>').join('')+'</ul></section>';
+  d.fuentes.map((u,i)=>'<li><a href="'+escHtml(u)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Fuente '+(i+1)+' · '+nombreFuenteLocal(u)+': '+u)+'">Fuente '+(i+1)+' · '+escHtml(nombreFuenteLocal(u))+' ↗</a></li>').join('')+'</ul></section>';
 }
 function etiquetaMetricaLocal(valor,indice){
  const v=normalizaBuscaLocal(valor);
@@ -1996,31 +2002,30 @@ function tarjetaOfertaLocal(o,{secundario=false}={}){
  const estado=estadoVigenciaLocal(o),tipo=tipoOfertaLocal(o),claves=clavesOfertaLocal(o,secundario);
  const documentacion=documentacionOfertaLocal(o);
  const referencia=estado.clase==='caducado'?'':textoLocal(tipo==='rendimiento'?o.rentabilidad&&o.rentabilidad.literal:o.precio&&o.precio.unidad);
- const avisos=avisosOfertaLocal(o),urlFicha=urlHttps(o.url),urlMercado=urlHttps(o.urlMercado);
-  const url=secundario?(urlMercado||urlFicha):urlFicha,imagen=imagenOfertaLocal(o);
-  const enlazable=o.estadoRevision==='actual'&&estado.clase!=='caducado';
-  const textoEnlace=secundario&&urlMercado?'Abrir mercado':enlazable?'Ver oferta en '+o.plataformaNombre:'Consultar fuente';
+ const avisos=avisosOfertaLocal(o),imagen=imagenOfertaLocal(o);
+ const bloqueo=(Array.isArray(o.avisos)?o.avisos:[]).find(x=>x&&x.tono==='stop');
+ const avisoPrincipal=bloqueo?textoLocal(bloqueo.texto):avisos[0];
+ const fechaRevision=documentacion?documentacion.revisadaEl:o.verificadaEl;
+ const estadoCompacto=o.coleccion==='en_camino'?'Apertura no confirmada':
+  o.coleccion==='secundario'?'Liquidez no confirmada':estado.texto;
  const cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
- const disponibilidad=estado.clase==='caducado'?'Disponibilidad por confirmar':o.disponibleEs===true?'España declarada':o.disponibleEs===false?'No disponible en España':'Disponibilidad por confirmar';
  return '<article class="emi escaparate-oferta'+cat+(secundario?' escaparate-oferta-secundaria':'')+'">'+
   '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'" loading="lazy" width="640" height="440">'+
    '<span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
-   '<span class="escaparate-tipo">'+escHtml(o.coleccion==='en_camino'?'En camino':o.coleccion==='secundario'||secundario?'Secundario':tipo==='valor'?'Valor':'Rendimiento')+'</span>'+
-   '<span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span>'+
-   '<span class="escaparate-destacado"><b>'+escHtml(claves.destacado.valor)+'</b><small>'+escHtml(claves.destacado.etiqueta)+'</small></span></div>'+
-  '<div class="escaparate-cuerpo"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b><span>·</span>'+escHtml(o.categoria)+(o.pais?'<span>·</span>'+escHtml(o.pais):'')+'</div>'+
-   '<h3 class="emi-tit">'+escHtml(o.titulo)+'</h3>'+
-   (documentacion&&documentacion.descripcion?'<p class="catalogo-descripcion">'+escHtml(documentacion.descripcion)+'</p>':'')+
-   '<span class="escaparate-disponibilidad">'+escHtml(disponibilidad)+'</span>'+
-  (referencia?'<p class="escaparate-referencia">'+escHtml(referencia)+'</p>':'')+
-  (claves.auxiliares.length?'<div class="escaparate-metricas">'+claves.auxiliares.map(x=>'<div class="escaparate-metrica"><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div>':'')+
-  (avisos.length?'<p class="escaparate-aviso-compacto"><b>Atención</b> · '+escHtml(avisos[0])+(avisos.length>1?' <span>+'+(avisos.length-1)+'</span>':'')+'</p>':'')+
-  '<div class="emi-pie"><span class="emi-ver">'+(documentacion?'Referencia documentada · '+fechaES(documentacion.revisadaEl):'Datos revisados · '+fechaES(o.verificadaEl))+'</span><span class="escaparate-enlaces">'+
+   '<span class="escaparate-tipo">'+escHtml(o.coleccion==='en_camino'?'En camino':o.coleccion==='secundario'||secundario?'Secundario':tipo==='valor'?'Valor':'Rendimiento')+'</span></div>'+
+  '<div class="escaparate-cuerpo">'+
+   (o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
+   '<h3 class="emi-tit">'+escHtml(o.titulo)+'</h3><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
+   '<div class="escaparate-dato-principal"><span>'+escHtml(claves.destacado.etiqueta)+'</span><b>'+escHtml(claves.destacado.valor)+'</b>'+
+    (referencia?'<p class="escaparate-referencia">'+escHtml(referencia)+'</p>':'')+'</div>'+
+   '<span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
+   (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+
+   (avisoPrincipal?'<p class="escaparate-aviso-compacto'+(bloqueo?' escaparate-aviso-bloqueo':'')+'"><b>'+ (bloqueo?'Importante':'Revisa')+'</b> · '+escHtml(avisoPrincipal)+'</p>':'')+
+   '<div class="emi-pie"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'">'+
+    (documentacion?'Doc. ':'Revisado ')+escHtml(fechaES(fechaRevision))+'</time>'+
     botonGuardarOferta(o)+
-    '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver detalles de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalles</button>'+
-    '<a class="emi-ir" href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow'+(o.patrocinada?' sponsored':'')+'" aria-label="'+escHtml(textoEnlace+' · '+o.titulo+' · '+o.plataformaNombre)+'">'+escHtml(textoEnlace)+' ↗</a>'+
-   (secundario&&urlMercado&&urlFicha&&urlFicha!==urlMercado?'<a class="emi-ir escaparate-ficha-oficial" href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir ficha oficial de '+escHtml(o.titulo)+'">Ficha oficial ↗</a>':'')+
-  '</span></div></div></article>';
+    '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Ver ficha <span aria-hidden="true">→</span></button>'+
+   '</div></div></article>';
 }
 function filaSecundariaLocal(o){
  const estado=estadoVigenciaLocal(o),imagen=imagenOfertaLocal(o),vigente=estado.clase!=='caducado';
@@ -2035,7 +2040,7 @@ function filaSecundariaLocal(o){
   '<h4>'+escHtml(o.titulo)+'</h4><div class="escaparate-sec-cifras"><span><b>'+escHtml(rentabilidad)+'</b><small>Rentabilidad ajustada</small></span>'+
   '<span><b>'+escHtml(precio)+'</b><small>Precio observado</small></span></div>'+
   '<div class="escaparate-sec-pie">'+(ultima?'<span>'+escHtml(ultima.valor)+'</span>':'<span>Sin última operación publicada</span>')+
-  '<span class="escaparate-sec-enlaces">'+botonGuardarOferta(o)+'<button type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver detalles de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalle</button><a href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir mercado para '+escHtml(o.titulo)+'">Mercado ↗</a>'+
+  '<span class="escaparate-sec-enlaces">'+botonGuardarOferta(o)+'<button type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Detalle de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Detalle</button><a href="'+escHtml(url)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir mercado para '+escHtml(o.titulo)+'">Mercado ↗</a>'+
   (urlMercado&&urlFicha&&urlFicha!==urlMercado?'<a href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow" aria-label="Abrir ficha oficial de '+escHtml(o.titulo)+'">Ficha</a>':'')+
   '</span></div></div></article>';
 }
@@ -2080,12 +2085,13 @@ function abrirDetalleOfertaLocal(slug){
  d.setAttribute('data-oferta-slug',o.slug);
  const estado=estadoVigenciaLocal(o),claves=clavesOfertaLocal(o,secundario);
  const documentacion=documentacionOfertaLocal(o);
+ const referencia=estado.clase==='caducado'?'':textoLocal(tipoOfertaLocal(o)==='rendimiento'?o.rentabilidad&&o.rentabilidad.literal:o.precio&&o.precio.unidad);
  const metricas=metricasOfertaLocal(o),avisos=avisosOfertaLocal(o),imagen=imagenOfertaLocal(o);
  const urlFicha=urlHttps(o.url),urlMercado=urlHttps(o.urlMercado);
  const disponibilidad=estado.clase==='caducado'?'Disponibilidad para España por confirmar':o.disponibleEs===true?'Disponible para España según la fuente':
   o.disponibleEs===false?'No disponible en España según la fuente':'Disponibilidad para España por confirmar';
- const enlaces=(secundario&&urlMercado?'<a class="emi-ir" href="'+escHtml(urlMercado)+'" target="_blank" rel="noopener nofollow">Abrir mercado ↗</a>':'')+
-  (urlFicha?'<a class="emi-ir" href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow">'+
+ const enlaces=(secundario&&urlMercado?'<a class="emi-ir" href="'+escHtml(urlMercado)+'" target="_blank" rel="noopener nofollow'+(o.patrocinada?' sponsored':'')+'" aria-label="'+escHtml('Abrir mercado de '+o.titulo+' en '+o.plataformaNombre)+'">Abrir mercado ↗</a>':'')+
+  (urlFicha?'<a class="emi-ir" href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow'+(o.patrocinada?' sponsored':'')+'" aria-label="'+escHtml((secundario?'Ficha oficial':'Consultar fuente')+' de '+o.titulo+' en '+o.plataformaNombre)+'">'+
    escHtml(secundario?'Ficha oficial':'Consultar fuente')+' ↗</a>':'');
  d.innerHTML='<div class="escaparate-dialogo-marco"><header class="escaparate-dialogo-cab">'+
   '<div><span>'+(o.coleccion==='en_camino'?'En camino':o.coleccion==='secundario'||secundario?'Mercado secundario':'Oferta principal')+'</span><h2 id="escaparateDetalleTitulo">'+escHtml(o.titulo)+'</h2></div>'+
@@ -2095,12 +2101,13 @@ function abrirDetalleOfertaLocal(slug){
    '<span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
   '<div class="escaparate-dialogo-identidad"><div><b>'+escHtml(o.plataformaNombre)+'</b><span>'+escHtml(o.categoria)+
    (o.pais?' · '+escHtml(o.pais):'')+'</span></div><div class="escaparate-dialogo-dato"><b>'+escHtml(claves.destacado.valor)+
-   '</b><span>'+escHtml(claves.destacado.etiqueta)+'</span></div></div>'+
+   '</b><span>'+escHtml(claves.destacado.etiqueta)+'</span>'+
+   (referencia?'<p class="escaparate-referencia">'+escHtml(referencia)+'</p>':'')+'</div></div>'+
   (o.resumen&&estado.clase!=='caducado'?'<p class="escaparate-dialogo-resumen">'+escHtml(o.resumen)+'</p>':'')+
   '<div class="escaparate-dialogo-contexto"><span>'+escHtml(disponibilidad)+'</span><span>'+escHtml(documentacion?'Referencia documentada · '+fechaES(documentacion.revisadaEl):'Datos revisados · '+fechaES(o.verificadaEl))+'</span></div>'+
   documentacionOfertaHtml(documentacion)+
-  (metricas.length?'<section class="escaparate-dialogo-seccion"><h3>Datos publicados</h3><div class="escaparate-dialogo-metricas">'+
-   metricas.map(x=>'<div><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div></section>':'')+
+  (metricas.length?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Datos publicados <span>'+metricas.length+'</span></summary><div class="escaparate-dialogo-metricas">'+
+   metricas.map(x=>'<div><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div></details>':'')+
   (avisos.length?'<section class="escaparate-dialogo-seccion"><h3>Qué conviene revisar</h3><ul class="escaparate-dialogo-avisos">'+
    avisos.map(x=>'<li>'+escHtml(x)+'</li>').join('')+'</ul></section>':'')+
   '<footer class="escaparate-dialogo-pie"><p>Información editorial. Confirma las condiciones actuales con el emisor. RWAdar no recibe ni custodia tu inversión.</p><div>'+enlaces+'</div></footer>'+
@@ -3802,6 +3809,9 @@ const Cuenta = (function(){
 
  /* --- estado del botón de la cabecera ----------------------------- */
  function pinta(){
+  /* La comunidad escucha este aviso para enseñar u ocultar el formulario. */
+  if(typeof document!=='undefined'&&document.dispatchEvent&&typeof CustomEvent==='function')
+   document.dispatchEvent(new CustomEvent('rwadar:sesion'));
   const b=$('btnCuenta'); if(!b) return;
   b.disabled=!SERVICIOS_USUARIO_DISPONIBLES;
   if(!SERVICIOS_USUARIO_DISPONIBLES){
@@ -3915,6 +3925,118 @@ const Cuenta = (function(){
          actualizarMovil:pintaMovil,hay:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada,
          uid:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada&&ses&&ses.uid,token:testigo};
 })();
+
+/* comunidad:inicio */
+/* =================================================================
+   COMUNIDAD · una publicación al día por cuenta (db/27)
+   -----------------------------------------------------------------
+   Las reglas las pone la base de datos (una al día, sin enlaces, tres
+   denuncias la ocultan); aquí solo se avisa antes para ahorrar un viaje.
+   La lectura es pública y nunca trae quién escribió cada publicación.
+   ================================================================= */
+const Comunidad=(function(){
+ const $=id=>document.getElementById(id);
+ let mias=new Set();
+ async function api(ruta,opc,conSesion){
+  if(!PUBLICACIONES_DISPONIBLES)throw new Error('Comunidad desactivada en esta versión');
+  const cab={apikey:CLAVE_PUB,'Content-Type':'application/json'};
+  if(conSesion){
+   const t=await Cuenta.token();
+   if(!t){const e=new Error('Entra en tu cuenta para continuar.');e.status=401;throw e;}
+   cab.Authorization='Bearer '+t;
+  }
+  let r;
+  try{r=await fetch(API+ruta,Object.assign({cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'},opc||{},{headers:cab}));}
+  catch(e){throw new Error('No se ha podido conectar. Comprueba la conexión.');}
+  const texto=await r.text();let j=null;try{j=texto?JSON.parse(texto):null}catch(e){}
+  if(!r.ok){const e=new Error((j&&typeof j==='object'&&j.message)||'No se ha podido completar. Inténtalo más tarde.');e.status=r.status;throw e;}
+  return j;
+ }
+ function cuando(iso){
+  const d=new Date(iso);if(Number.isNaN(d.getTime()))return '';
+  const hoy=new Date(),ayer=new Date(hoy);ayer.setDate(hoy.getDate()-1);
+  const hora=d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  if(d.toDateString()===hoy.toDateString())return 'hoy, '+hora;
+  if(d.toDateString()===ayer.toDateString())return 'ayer, '+hora;
+  return d.toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric'});
+ }
+ function estado(texto,bien){const p=$('comunidadEstado');if(p){p.textContent=texto||'';p.className='comunidad-estado'+(texto?(bien?' bien':' mal'):'');}}
+ function pintarLista(items){
+  const lista=$('comunidadLista');if(!lista)return;
+  const conCuenta=Cuenta.hay();
+  lista.innerHTML=items.length?items.map(p=>
+   '<li class="comunidad-item"><p class="comunidad-meta"><b>'+escHtml(p.autor)+'</b><span>'+escHtml(cuando(p.creada_el))+'</span></p>'+
+   '<p class="comunidad-texto">'+escHtml(p.texto)+'</p>'+
+   (conCuenta?(mias.has(p.id)
+     ?'<button type="button" class="comunidad-accion" data-comunidad-borrar="'+escHtml(p.id)+'">Borrar</button>'
+     :'<button type="button" class="comunidad-accion" data-comunidad-denunciar="'+escHtml(p.id)+'">Denunciar</button>'):'')+
+   '</li>').join('')
+   :'<li class="comunidad-vacia">Todavía no hay publicaciones. ¿Empiezas tú?</li>';
+ }
+ async function cargar(){
+  if(!PUBLICACIONES_DISPONIBLES)return;
+  try{
+   const items=await api('/publicaciones?select=id,autor,texto,creada_el&order=creada_el.desc&limit=30');
+   mias=new Set();
+   if(Cuenta.hay()){
+    try{mias=new Set(((await api('/rpc/mis_publicaciones',{method:'POST',body:'{}'},true))||[]).map(x=>x.id));}catch(e){}
+   }
+   pintarLista(Array.isArray(items)?items:[]);
+  }catch(e){const lista=$('comunidadLista');if(lista)lista.innerHTML='<li class="comunidad-vacia">No se han podido cargar las publicaciones.</li>';}
+ }
+ function pintarFormulario(){
+  if(!PUBLICACIONES_DISPONIBLES)return;
+  const hay=Cuenta.hay();
+  const f=$('comunidadForm'),entrar=$('comunidadEntrar');
+  if(f)f.hidden=!hay;
+  if(entrar){entrar.hidden=hay;entrar.disabled=false;}
+ }
+ async function publicar(e){
+  e.preventDefault();
+  const area=$('comunidadTexto'),boton=$('comunidadPublicar');
+  const texto=area.value.trim();
+  if(texto.length<10){estado('Escribe al menos 10 caracteres.');area.focus();return;}
+  if(/https?:\/\/|www\./i.test(texto)){estado('Las publicaciones no pueden llevar enlaces.');area.focus();return;}
+  boton.disabled=true;estado('');
+  try{
+   await api('/rpc/publicar',{method:'POST',body:JSON.stringify({p_texto:texto,p_mostrar_nombre:$('comunidadNombre').checked})},true);
+   area.value='';$('comunidadCuenta').textContent='0';
+   estado('Publicado. Mañana podrás volver a publicar.',true);
+   await cargar();
+  }catch(err){estado(err.message);}
+  finally{boton.disabled=false;}
+ }
+ function iniciar(){
+  if(!PUBLICACIONES_DISPONIBLES)return;
+  const caja=$('comunidad'),proxima=$('comunidadProximamente');
+  if(!caja)return;
+  caja.hidden=false;if(proxima)proxima.hidden=true;
+  $('comunidadForm').addEventListener('submit',publicar);
+  $('comunidadTexto').addEventListener('input',e=>{$('comunidadCuenta').textContent=String(e.target.value.length);});
+  $('comunidadLista').addEventListener('click',async e=>{
+   const borrar=e.target.closest&&e.target.closest('[data-comunidad-borrar]');
+   const denunciar=e.target.closest&&e.target.closest('[data-comunidad-denunciar]');
+   try{
+    if(borrar){
+     if(!confirm('¿Borrar tu publicación? No se puede deshacer.'))return;
+     await api('/rpc/borrar_mi_publicacion',{method:'POST',body:JSON.stringify({p_id:borrar.dataset.comunidadBorrar})},true);
+     avisar('Publicación borrada.');await cargar();
+    }else if(denunciar){
+     const motivo=prompt('¿Por qué la denuncias? (opcional: publicidad, estafa, insultos…)');
+     if(motivo===null)return;
+     await api('/rpc/denunciar_publicacion',{method:'POST',body:JSON.stringify({p_id:denunciar.dataset.comunidadDenunciar,p_motivo:motivo})},true);
+     denunciar.disabled=true;denunciar.textContent='Denunciada';
+     avisar('Denuncia enviada. Con tres denuncias se oculta hasta revisarla.');
+    }
+   }catch(err){avisar(err.message);}
+  });
+  document.addEventListener('rwadar:sesion',()=>{pintarFormulario();cargar();});
+  pintarFormulario();cargar();
+ }
+ if(typeof fetch!=='undefined'&&typeof location!=='undefined')iniciar();
+ return {cargar,pintarFormulario};
+})();
+/* comunidad:fin */
 
 /* =================================================================
    SHELL MÓVIL / PWA

@@ -61,7 +61,7 @@ for (const archivo of ['db/24_catalogo_publico_verificado.sql', 'db/25_servicios
   'supabase/migrations/20260930084133_ofertas_documentacion_publica.sql',
   'supabase/migrations/20260930090621_catalogo_v2_colecciones.sql',
   'supabase/migrations/20261001150000_catalogo_siempre_disponible.sql',
-  'db/26_reabrir_cuentas.sql']) {
+  'db/26_reabrir_cuentas.sql', 'db/27_comunidad.sql']) {
   await db.exec(fs.readFileSync(archivo, 'utf8'));
 }
 
@@ -107,7 +107,7 @@ const json = (status, cuerpo) => ({ status, headers: { ...CORS, 'content-type': 
 const uidDe = (peticion) => testigos.get(String(peticion.headers().authorization || '').replace(/^Bearer /, ''));
 const errorPg = (e) => {
   const codigo = e?.code || '';
-  const estado = codigo === '42501' ? 403 : codigo === '42703' || codigo === '22P02' ? 400 : 500;
+  const estado = codigo === '42501' ? 403 : ['42703', '22P02', 'P0001', '23514'].includes(codigo) ? 400 : 500;
   return json(estado, { code: codigo, message: e?.message || 'error' });
 };
 
@@ -178,6 +178,16 @@ async function atenderAuth(peticion, url) {
 /* --- PostgREST de mentira: solo las rutas que usa el módulo Cuenta ----- */
 async function atenderRest(peticion, url) {
   const uid = uidDe(peticion);
+  /* La comunidad se lee sin sesión, con el rol anon y sus permisos reales. */
+  if (peticion.method() === 'GET' && url.pathname === '/rest/v1/publicaciones') {
+    try {
+      return json(200, await enCola(async () => {
+        await sesion(db, null, 'anon');
+        try { return await filas(db, 'select id, autor, texto, creada_el from publicaciones order by creada_el desc limit 30'); }
+        finally { await sesion(db); }
+      }));
+    } catch (e) { return errorPg(e); }
+  }
   /* Sin sesión (lecturas del catálogo): 503 y la web usa su copia embebida. */
   if (!uid) return json(503, { message: 'catálogo no simulado en este ensayo' });
   const ruta = url.pathname.replace('/rest/v1', '');
@@ -210,6 +220,16 @@ async function atenderRest(peticion, url) {
       if (metodo === 'DELETE' && ruta === '/vigilancia') {
         return filas(db, 'delete from vigilancia where plataforma_id=$1 returning plataforma_id', [eq('plataforma_id')]);
       }
+      if (metodo === 'POST' && ruta === '/rpc/publicar') {
+        return filas(db, 'select * from publicar($1, $2)', [cuerpo.p_texto, !!cuerpo.p_mostrar_nombre]);
+      }
+      if (metodo === 'POST' && ruta === '/rpc/mis_publicaciones') return filas(db, 'select * from mis_publicaciones()');
+      if (metodo === 'POST' && ruta === '/rpc/borrar_mi_publicacion') {
+        return (await filas(db, 'select borrar_mi_publicacion($1) r', [cuerpo.p_id]))[0].r;
+      }
+      if (metodo === 'POST' && ruta === '/rpc/denunciar_publicacion') {
+        return (await filas(db, 'select denunciar_publicacion($1, $2) r', [cuerpo.p_id, cuerpo.p_motivo]))[0].r;
+      }
       if (metodo === 'POST' && ruta === '/rpc/marcar_manual_descargado') {
         await db.query('select marcar_manual_descargado()');
         return null;
@@ -237,7 +257,8 @@ const jsCuentas = (() => {
   let js = fs.readFileSync(path.join(SITIO, 'assets', 'rwadar-20260820.js'), 'utf8');
   for (const [de, a] of [['const SERVICIOS_USUARIO_REMOTOS=false;', 'const SERVICIOS_USUARIO_REMOTOS=true;'],
     ['const CORREO_AUTH_E2E=false;', 'const CORREO_AUTH_E2E=true;'],
-    ["const MANUAL_BIENVENIDA='';", `const MANUAL_BIENVENIDA='${RUTA_MANUAL}';`]]) {
+    ["const MANUAL_BIENVENIDA='';", `const MANUAL_BIENVENIDA='${RUTA_MANUAL}';`],
+    ['const PUBLICACIONES_REMOTAS=false;', 'const PUBLICACIONES_REMOTAS=true;']]) {
     if (!js.includes(de)) throw new Error('no encuentro el interruptor ' + de);
     js = js.replace(de, a);
   }
@@ -476,6 +497,70 @@ const resto = await enCola(() => filas(db, `select
 paso('no queda rastro en la base de datos (cuenta, perfil y vigilancia)',
   resto[0].usuarios === 0 && resto[0].vigilancias === 0 && resto[0].perfiles === 0);
 await captura(pagina, '09-cuenta-borrada');
+
+/* 10 · comunidad: una publicación al día, sin enlaces, denuncias */
+const crearConfirmada = async (email) => {
+  await enCola(() => db.query('insert into auth.users(email) values ($1)', [email]));
+  claves.set(email, CLAVE);
+};
+await crearConfirmada('eva@ejemplo.test');
+await crearConfirmada('leo@ejemplo.test');
+const comunidad = await contexto({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+const pc = comunidad.pagina;
+const entrarComo = async (correo) => {
+  await pc.click('#comunidadEntrar');
+  await pc.waitForSelector('#cuentaCaja.on');
+  await pc.fill('#cCorreo', correo);
+  await pc.fill('#cClave', CLAVE);
+  await pc.click('#cuentaEnviar');
+  return aviso(pc, /Sesión iniciada/);
+};
+await pc.goto(WEB + '/', { waitUntil: 'networkidle' });
+paso('Inicio enseña la comunidad con sus normas, todavía vacía',
+  await pc.locator('#comunidad').isVisible() && /Normas:/.test(await texto(pc, '#comunidad')) &&
+  /Todavía no hay publicaciones/.test(await texto(pc, '#comunidadLista')) &&
+  !(await pc.locator('#comunidadProximamente').isVisible()));
+paso('sin cuenta invita a entrar y no enseña el formulario',
+  await pc.locator('#comunidadEntrar').isVisible() && !(await pc.locator('#comunidadForm').isVisible()));
+paso('se entra desde la propia comunidad', await entrarComo('eva@ejemplo.test'));
+paso('con cuenta aparece el formulario', await pc.locator('#comunidadForm').isVisible());
+await pc.fill('#comunidadTexto', 'Os recomiendo www.ganafacil.com para invertir');
+await pc.click('#comunidadPublicar');
+paso('un enlace se rechaza antes de enviarlo', /no pueden llevar enlaces/.test(await texto(pc, '#comunidadEstado')));
+await pc.fill('#comunidadTexto', 'Hoy he terminado la lección 7 y por fin entiendo cómo leer el radar.');
+await pc.click('#comunidadPublicar');
+await pc.waitForFunction(() => /Publicado/.test(document.getElementById('comunidadEstado').textContent));
+const lista = await texto(pc, '#comunidadLista');
+paso('se publica y aparece como «Miembro de RWAdar», con «Borrar» para quien la escribió',
+  /lección 7/.test(lista) && /Miembro de RWAdar/.test(lista) && /Borrar/.test(lista) && !/Denunciar/.test(lista));
+await pc.fill('#comunidadTexto', 'Una segunda publicación el mismo día no debería entrar.');
+await pc.click('#comunidadPublicar');
+await pc.waitForFunction(() => /Ya has publicado hoy/.test(document.getElementById('comunidadEstado').textContent))
+  .then(() => paso('la segunda del mismo día la rechaza la base de datos', true))
+  .catch(() => paso('la segunda del mismo día la rechaza la base de datos', false));
+await pc.locator('#comunidad').scrollIntoViewIfNeeded();
+await captura(pc, '10-comunidad');
+const [pub] = await enCola(() => filas(db, 'select id, usuario_id from publicaciones'));
+paso('en la base de datos queda una sola, a nombre de quien la escribió', !!pub);
+
+await comunidad.ctx.close();
+const otra = await contexto({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+const po = otra.pagina;
+await po.goto(WEB + '/', { waitUntil: 'networkidle' });
+paso('sin cuenta se lee la publicación, sin botones', /lección 7/.test(await texto(po, '#comunidadLista')) &&
+  await po.locator('#comunidadLista button').count() === 0);
+await po.click('#comunidadEntrar');
+await po.waitForSelector('#cuentaCaja.on');
+await po.fill('#cCorreo', 'leo@ejemplo.test');
+await po.fill('#cClave', CLAVE);
+await po.click('#cuentaEnviar');
+await aviso(po, /Sesión iniciada/);
+await po.waitForSelector('[data-comunidad-denunciar]');
+await po.click('[data-comunidad-denunciar]');
+paso('otra cuenta puede denunciarla', await aviso(po, /Denuncia enviada/));
+const [den] = await enCola(() => filas(db, 'select denuncias from publicaciones where id=$1', [pub.id]));
+paso('y la denuncia queda contada en la base de datos', den.denuncias === 1);
+await otra.ctx.close();
 
 paso('ningún error de página ni bloqueo de la CSP de producción', problemas.length === 0);
 problemas.forEach((p) => console.log('     · ' + p));
