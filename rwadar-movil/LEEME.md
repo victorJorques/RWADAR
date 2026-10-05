@@ -77,6 +77,26 @@ se registran únicamente en [`docs/INTERNO.md`](../docs/INTERNO.md).
 - La entrega push sigue apagada deliberadamente; seguir una plataforma no se
   presenta como garantía de recibir avisos.
 
+## Compilar desde GitHub (versión 1.2.0)
+
+La 1.2.0 trae RWAdar Academy, la barra Inicio · Buscar · Academy · Perfil,
+las ofertas guardadas y el catálogo que no desaparece al caducar. Se compila
+con el flujo manual **Compilar app Android** (`.github/workflows/compilar-app.yml`):
+pasa `npm test`, compila en EAS con el perfil elegido (`editorial` = APK
+firmado para la página de descargas; `production` = AAB para Google Play) y
+deja el archivo y su SHA-256 como artefacto del flujo durante 30 días.
+
+Necesita una vez el secreto `EXPO_TOKEN` (lo hace Víctor):
+
+1. expo.dev › icono de perfil › **Account settings** › **Access tokens** ›
+   **Create token**. Nombre: `RWAdar GitHub`. Copiar el valor (se ve una vez).
+2. GitHub › RWADAR › **Settings** › **Secrets and variables** › **Actions** ›
+   **New repository secret**. Name: `EXPO_TOKEN`; Secret: el valor › **Add secret**.
+
+Después, cualquiera con acceso al repositorio (Claude incluido) lo lanza desde
+*Actions › Compilar app Android › Run workflow*. Instalar el APK en un móvil
+real antes de subirlo a la página de descargas.
+
 ## Probarla ahora mismo
 
 ```bash

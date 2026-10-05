@@ -27,6 +27,9 @@ const OPINIONES_REMOTAS=false;
 const OPINIONES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&OPINIONES_REMOTAS;
 const AVISOS_CORREO_REMOTOS=false;
 const AVISOS_CORREO_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_CORREO_REMOTOS;
+/* Comunidad (db/27): una publicación al día por cuenta. Necesita las cuentas. */
+const PUBLICACIONES_REMOTAS=false;
+const PUBLICACIONES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&PUBLICACIONES_REMOTAS;
 function limpiarRetornoSinServiciosUsuario(){
  if(SERVICIOS_USUARIO_DISPONIBLES||typeof location==='undefined'||
     typeof history==='undefined'||typeof history.replaceState!=='function')return;
@@ -3802,6 +3805,9 @@ const Cuenta = (function(){
 
  /* --- estado del botón de la cabecera ----------------------------- */
  function pinta(){
+  /* La comunidad escucha este aviso para enseñar u ocultar el formulario. */
+  if(typeof document!=='undefined'&&document.dispatchEvent&&typeof CustomEvent==='function')
+   document.dispatchEvent(new CustomEvent('rwadar:sesion'));
   const b=$('btnCuenta'); if(!b) return;
   b.disabled=!SERVICIOS_USUARIO_DISPONIBLES;
   if(!SERVICIOS_USUARIO_DISPONIBLES){
@@ -3915,6 +3921,118 @@ const Cuenta = (function(){
          actualizarMovil:pintaMovil,hay:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada,
          uid:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada&&ses&&ses.uid,token:testigo};
 })();
+
+/* comunidad:inicio */
+/* =================================================================
+   COMUNIDAD · una publicación al día por cuenta (db/27)
+   -----------------------------------------------------------------
+   Las reglas las pone la base de datos (una al día, sin enlaces, tres
+   denuncias la ocultan); aquí solo se avisa antes para ahorrar un viaje.
+   La lectura es pública y nunca trae quién escribió cada publicación.
+   ================================================================= */
+const Comunidad=(function(){
+ const $=id=>document.getElementById(id);
+ let mias=new Set();
+ async function api(ruta,opc,conSesion){
+  if(!PUBLICACIONES_DISPONIBLES)throw new Error('Comunidad desactivada en esta versión');
+  const cab={apikey:CLAVE_PUB,'Content-Type':'application/json'};
+  if(conSesion){
+   const t=await Cuenta.token();
+   if(!t){const e=new Error('Entra en tu cuenta para continuar.');e.status=401;throw e;}
+   cab.Authorization='Bearer '+t;
+  }
+  let r;
+  try{r=await fetch(API+ruta,Object.assign({cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'},opc||{},{headers:cab}));}
+  catch(e){throw new Error('No se ha podido conectar. Comprueba la conexión.');}
+  const texto=await r.text();let j=null;try{j=texto?JSON.parse(texto):null}catch(e){}
+  if(!r.ok){const e=new Error((j&&typeof j==='object'&&j.message)||'No se ha podido completar. Inténtalo más tarde.');e.status=r.status;throw e;}
+  return j;
+ }
+ function cuando(iso){
+  const d=new Date(iso);if(Number.isNaN(d.getTime()))return '';
+  const hoy=new Date(),ayer=new Date(hoy);ayer.setDate(hoy.getDate()-1);
+  const hora=d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  if(d.toDateString()===hoy.toDateString())return 'hoy, '+hora;
+  if(d.toDateString()===ayer.toDateString())return 'ayer, '+hora;
+  return d.toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric'});
+ }
+ function estado(texto,bien){const p=$('comunidadEstado');if(p){p.textContent=texto||'';p.className='comunidad-estado'+(texto?(bien?' bien':' mal'):'');}}
+ function pintarLista(items){
+  const lista=$('comunidadLista');if(!lista)return;
+  const conCuenta=Cuenta.hay();
+  lista.innerHTML=items.length?items.map(p=>
+   '<li class="comunidad-item"><p class="comunidad-meta"><b>'+escHtml(p.autor)+'</b><span>'+escHtml(cuando(p.creada_el))+'</span></p>'+
+   '<p class="comunidad-texto">'+escHtml(p.texto)+'</p>'+
+   (conCuenta?(mias.has(p.id)
+     ?'<button type="button" class="comunidad-accion" data-comunidad-borrar="'+escHtml(p.id)+'">Borrar</button>'
+     :'<button type="button" class="comunidad-accion" data-comunidad-denunciar="'+escHtml(p.id)+'">Denunciar</button>'):'')+
+   '</li>').join('')
+   :'<li class="comunidad-vacia">Todavía no hay publicaciones. ¿Empiezas tú?</li>';
+ }
+ async function cargar(){
+  if(!PUBLICACIONES_DISPONIBLES)return;
+  try{
+   const items=await api('/publicaciones?select=id,autor,texto,creada_el&order=creada_el.desc&limit=30');
+   mias=new Set();
+   if(Cuenta.hay()){
+    try{mias=new Set(((await api('/rpc/mis_publicaciones',{method:'POST',body:'{}'},true))||[]).map(x=>x.id));}catch(e){}
+   }
+   pintarLista(Array.isArray(items)?items:[]);
+  }catch(e){const lista=$('comunidadLista');if(lista)lista.innerHTML='<li class="comunidad-vacia">No se han podido cargar las publicaciones.</li>';}
+ }
+ function pintarFormulario(){
+  if(!PUBLICACIONES_DISPONIBLES)return;
+  const hay=Cuenta.hay();
+  const f=$('comunidadForm'),entrar=$('comunidadEntrar');
+  if(f)f.hidden=!hay;
+  if(entrar){entrar.hidden=hay;entrar.disabled=false;}
+ }
+ async function publicar(e){
+  e.preventDefault();
+  const area=$('comunidadTexto'),boton=$('comunidadPublicar');
+  const texto=area.value.trim();
+  if(texto.length<10){estado('Escribe al menos 10 caracteres.');area.focus();return;}
+  if(/https?:\/\/|www\./i.test(texto)){estado('Las publicaciones no pueden llevar enlaces.');area.focus();return;}
+  boton.disabled=true;estado('');
+  try{
+   await api('/rpc/publicar',{method:'POST',body:JSON.stringify({p_texto:texto,p_mostrar_nombre:$('comunidadNombre').checked})},true);
+   area.value='';$('comunidadCuenta').textContent='0';
+   estado('Publicado. Mañana podrás volver a publicar.',true);
+   await cargar();
+  }catch(err){estado(err.message);}
+  finally{boton.disabled=false;}
+ }
+ function iniciar(){
+  if(!PUBLICACIONES_DISPONIBLES)return;
+  const caja=$('comunidad'),proxima=$('comunidadProximamente');
+  if(!caja)return;
+  caja.hidden=false;if(proxima)proxima.hidden=true;
+  $('comunidadForm').addEventListener('submit',publicar);
+  $('comunidadTexto').addEventListener('input',e=>{$('comunidadCuenta').textContent=String(e.target.value.length);});
+  $('comunidadLista').addEventListener('click',async e=>{
+   const borrar=e.target.closest&&e.target.closest('[data-comunidad-borrar]');
+   const denunciar=e.target.closest&&e.target.closest('[data-comunidad-denunciar]');
+   try{
+    if(borrar){
+     if(!confirm('¿Borrar tu publicación? No se puede deshacer.'))return;
+     await api('/rpc/borrar_mi_publicacion',{method:'POST',body:JSON.stringify({p_id:borrar.dataset.comunidadBorrar})},true);
+     avisar('Publicación borrada.');await cargar();
+    }else if(denunciar){
+     const motivo=prompt('¿Por qué la denuncias? (opcional: publicidad, estafa, insultos…)');
+     if(motivo===null)return;
+     await api('/rpc/denunciar_publicacion',{method:'POST',body:JSON.stringify({p_id:denunciar.dataset.comunidadDenunciar,p_motivo:motivo})},true);
+     denunciar.disabled=true;denunciar.textContent='Denunciada';
+     avisar('Denuncia enviada. Con tres denuncias se oculta hasta revisarla.');
+    }
+   }catch(err){avisar(err.message);}
+  });
+  document.addEventListener('rwadar:sesion',()=>{pintarFormulario();cargar();});
+  pintarFormulario();cargar();
+ }
+ if(typeof fetch!=='undefined'&&typeof location!=='undefined')iniciar();
+ return {cargar,pintarFormulario};
+})();
+/* comunidad:fin */
 
 /* =================================================================
    SHELL MÓVIL / PWA

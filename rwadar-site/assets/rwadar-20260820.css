@@ -1717,6 +1717,31 @@ body.detalle-local-abierto{overflow:hidden}
   .inicio-noticia-enlace,.inicio-noticia-red{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:4px;
     margin-right:14px;color:var(--senal);font-size:.86rem;font-weight:700;text-decoration:none}
 
+  /* Comunidad (solo con PUBLICACIONES_REMOTAS encendido). */
+  .comunidad[hidden],.comunidad-form[hidden],.comunidad-entrar[hidden],#comunidadProximamente[hidden]{display:none}
+  .comunidad-normas{margin:0 0 12px;padding:12px 14px;border:1px solid var(--linea);border-radius:14px;
+    background:var(--sup);color:var(--tx-2);font-size:.8rem;line-height:1.55}
+  .comunidad-entrar{width:100%;margin-top:0}
+  .comunidad-form{display:grid;gap:8px;padding:14px;background:var(--sup);border:1px solid var(--linea);border-radius:16px}
+  .comunidad-form label[for]{font-weight:700;font-size:.88rem}
+  .comunidad-form textarea{width:100%;min-height:104px;padding:12px;border:1px solid var(--linea-2);border-radius:12px;
+    background:var(--noche-2);color:var(--tx);font:inherit;font-size:.92rem;line-height:1.5;resize:vertical}
+  .comunidad-ayuda{margin:0;color:var(--tx-3);font-size:.72rem}
+  .comunidad-nombre{display:flex;gap:9px;align-items:flex-start;color:var(--tx-2);font-size:.8rem;line-height:1.45}
+  .comunidad-nombre input{width:20px;height:20px;margin:0;flex:none;accent-color:var(--senal)}
+  .comunidad-form .movil-boton-principal{width:100%}
+  .comunidad-estado{margin:10px 2px 0;font-size:.82rem;min-height:1em}
+  .comunidad-estado.bien{color:var(--senal)}
+  .comunidad-estado.mal{color:#FF8A80}
+  .comunidad-lista{display:grid;gap:10px;margin:12px 0 0;padding:0;list-style:none}
+  .comunidad-item{padding:14px;background:var(--sup);border:1px solid var(--linea);border-radius:16px}
+  .comunidad-meta{display:flex;justify-content:space-between;gap:10px;margin:0 0 6px;font-size:.78rem;color:var(--tx-3)}
+  .comunidad-meta b{color:var(--tx)}
+  .comunidad-texto{margin:0;color:var(--tx-2);font-size:.9rem;line-height:1.6;white-space:pre-line;overflow-wrap:anywhere}
+  .comunidad-accion{min-height:40px;margin-top:8px;padding:0 12px;border:1px solid var(--linea-2);border-radius:99px;
+    background:transparent;color:var(--tx-3);font-size:.74rem;cursor:pointer}
+  .comunidad-vacia{padding:16px;border:1px dashed var(--linea-2);border-radius:14px;color:var(--tx-3);font-size:.84rem;text-align:center}
+
   /* Academy: el bloque real de lecciones de la portada, a una columna. */
   .movil-academy-lecciones .academia-lecciones{margin-top:14px;padding:16px}
   .movil-academy-lecciones .academia-niveles{grid-template-columns:minmax(0,1fr)}

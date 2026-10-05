@@ -1,0 +1,93 @@
+name: Compilar app Android
+
+# Compilación MANUAL de la app con EAS (Expo). Nunca se lanza sola: solo con
+# «Run workflow» y eligiendo el perfil. Antes pasa todas las pruebas de la
+# app; si alguna falla, no compila. Guarda el APK/AAB como artefacto del
+# flujo para descargarlo o subirlo a la página de descargas.
+#
+# Necesita el secreto de repositorio EXPO_TOKEN (expo.dev › Account settings
+# › Access tokens). Ver rwadar-movil/LEEME.md, «Compilar desde GitHub».
+
+on:
+  workflow_dispatch:
+    inputs:
+      perfil:
+        description: 'Qué compilar'
+        required: true
+        default: editorial
+        type: choice
+        options: [editorial, production]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-compilar-app
+  cancel-in-progress: false
+
+jobs:
+  compilar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    defaults:
+      run:
+        working-directory: rwadar-movil
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        working-directory: .
+        run: |
+          echo "La compilación solo se lanza desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+
+      - name: Comprobar que existe la credencial de Expo
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "FALTA EL SECRETO EXPO_TOKEN en Settings › Secrets and variables › Actions."
+            exit 1
+          fi
+          echo "Credencial presente."
+
+      - name: Instalar dependencias (con el parche de seguridad de iOS)
+        run: npm ci
+
+      - name: Pruebas de la app
+        run: npm test
+
+      - name: Compilar en EAS (${{ inputs.perfil }})
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          npx --yes eas-cli@21.8.0 build --platform android --profile "${{ inputs.perfil }}" \
+            --non-interactive --wait --json > "$RUNNER_TEMP/build.json"
+          node -e "
+            const b = JSON.parse(require('fs').readFileSync(process.env.RUNNER_TEMP + '/build.json', 'utf8'))[0];
+            if (!b || b.status !== 'FINISHED' || !b.artifacts || !b.artifacts.buildUrl) {
+              console.error('La compilación no terminó bien:', JSON.stringify(b && { status: b.status, id: b.id }));
+              process.exit(1);
+            }
+            console.log('Versión', b.appVersion, 'build', b.appBuildVersion, '·', b.artifacts.buildUrl);
+            require('fs').writeFileSync(process.env.RUNNER_TEMP + '/url.txt', b.artifacts.buildUrl);
+          "
+          curl --fail --silent --show-error --location "$(cat "$RUNNER_TEMP/url.txt")" \
+            --output "$RUNNER_TEMP/rwadar-${{ inputs.perfil }}.${{ inputs.perfil == 'production' && 'aab' || 'apk' }}"
+          sha256sum "$RUNNER_TEMP"/rwadar-*.* | tee "$RUNNER_TEMP/SHA256.txt"
+
+      - name: Guardar el archivo compilado
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: rwadar-${{ inputs.perfil }}
+          path: |
+            ${{ runner.temp }}/rwadar-*.*
+            ${{ runner.temp }}/SHA256.txt
+          retention-days: 30

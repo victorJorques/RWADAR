@@ -6,6 +6,24 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de octubre de 2026 · Claude (3) · comunidad preparada y app lista para compilar
+
+- **Comunidad** (apagada, `PUBLICACIONES_REMOTAS=false`): `rwadar-app/db/27_comunidad.sql`
+  + `27_comunidad_cerrar.sql`. Una publicación por cuenta y día de España
+  (`unique (usuario_id, dia)`), 10–500 caracteres, sin enlaces (CHECK), autor
+  «Miembro de RWAdar» salvo que elija su nombre, lectura pública solo de
+  `id, autor, texto, creada_el`, escritura solo por RPC (`publicar`,
+  `mis_publicaciones`, `borrar_mi_publicacion`, `denunciar_publicacion`,
+  `moderar_publicacion`, `cola_publicaciones`), tres denuncias la ocultan.
+  Prueba `probar-comunidad.mjs` 30/30 (en `npm test`). Web: módulo
+  `Comunidad` (`comunidad:inicio/fin`) en Inicio, escucha el evento
+  `rwadar:sesion` que lanza `Cuenta.pinta()`. Ensayo en el navegador 48/48.
+  Moderación por SQL documentada en `docs/tareas/REABRIR-CUENTAS.md`.
+- **App 1.2.0** y flujo manual `.github/workflows/compilar-app.yml` (pruebas →
+  EAS → artefacto con SHA-256). Necesita el secreto `EXPO_TOKEN`
+  (`rwadar-movil/LEEME.md`, «Compilar desde GitHub»).
+- Pruebas: web 407, `rwadar-app` completo, móvil 104, tools y QR.
+
 ## 5 de octubre de 2026 · Claude (2) · nueva barra: Inicio · Buscar · Academy · Perfil
 
 **Rama:** `claude/zealous-shannon-endwcn` (reiniciada desde `main` tras unir

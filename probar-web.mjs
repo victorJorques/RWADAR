@@ -1471,7 +1471,8 @@ prueba('Inicio trae las noticias generadas, la comunidad como próximamente y po
   /<!--noticias:ini-->[\s\S]*class="inicio-noticias"[\s\S]*<!--noticias:fin-->/.test(panelInicioHTML) &&
   (panelInicioHTML.match(/class="inicio-noticia"/g) || []).length >= 1 &&
   /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/.test(panelInicioHTML) &&
-  !/<(?:textarea|input|form)\b/i.test(panelInicioHTML) &&
+  /* El único formulario es el de la comunidad, oculto hasta encenderla. */
+  !/<(?:textarea|input|form)\b/i.test(panelInicioHTML.replace(/<div class="comunidad" id="comunidad" hidden>[\s\S]*?<ol class="comunidad-lista"/, '')) &&
   ['metodo','fuera'].every(destino => new RegExp(`data-movil-ir=["']${destino}["']`).test(panelInicioHTML)) &&
   /data-movil-cambiar="buscar"/.test(panelInicioHTML) && /data-movil-cambiar="academy"/.test(panelInicioHTML));
 prueba('Academy mueve el bloque real de lecciones (sin copiarlo) y cuenta las leídas del navegador',
@@ -2092,6 +2093,12 @@ prueba('las cuentas se reabren por fases: opiniones, avisos por correo y manual 
   /const AVISOS_CORREO_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_CORREO_REMOTOS;/.test(js) &&
   /if\(!OPINIONES_DISPONIBLES\)throw new Error\('Opiniones desactivadas/.test(js) &&
   /OPINIONES_DISPONIBLES && perfil && perfil\.es_admin\) pintarModeracion\(\)/.test(js));
+prueba('la comunidad está preparada pero apagada: sin red y con «próximamente» a la vista',
+  /const PUBLICACIONES_REMOTAS=false;/.test(js) &&
+  /const PUBLICACIONES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&PUBLICACIONES_REMOTAS;/.test(js) &&
+  /if\(!PUBLICACIONES_DISPONIBLES\)throw new Error\('Comunidad desactivada en esta versión'\)/.test(js) &&
+  /<div class="comunidad" id="comunidad" hidden>/.test(html) && /id="comunidadProximamente"/.test(html) &&
+  /una publicación al día por cuenta, sin enlaces/.test(html));
 prueba('con las cuentas abiertas no se quedan botones bloqueados (fallos hallados en el ensayo del 5/10)',
   /\$\('cuentaEnviar'\)\.disabled=false;\$\('cuentaForm'\)\.removeAttribute\('aria-busy'\);/.test(js) &&
   /if\(accion\)\{accion\.disabled=false;/.test(js));

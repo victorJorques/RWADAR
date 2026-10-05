@@ -158,9 +158,41 @@ añadir antes del pie:
 3. Pruebas, renovar la aprobación en `estado.json`, publicar en `revision`
    para el paso 4 y, con el visto bueno, en producción.
 
+## Comunidad: una publicación al día (preparada, apagada)
+
+Cuando las cuentas funcionen, la comunidad se abre igual:
+
+1. Víctor: SQL Editor › pegar `rwadar-app/db/27_comunidad.sql` › Run.
+2. Claude: `PUBLICACIONES_REMOTAS=true`, privacidad (qué se publica, quién lo
+   ve, denuncias, cuánto se guarda) y publicar.
+
+Lo que impone la base de datos (no la pantalla): una por cuenta y día de
+España, 10–500 caracteres, sin enlaces, nombre solo si la persona lo elige,
+una denuncia por cuenta y tres la ocultan, borrar lo propio y todo se borra
+con la cuenta. Prueba: `node rwadar-app/probar-comunidad.mjs` (30/30) y el
+ensayo en el navegador (48/48 con todo lo de las cuentas).
+
+**Moderar** (hasta que haya un panel): en el SQL Editor,
+
+```sql
+-- lo denunciado u oculto
+select id, autor, texto, creada_el, estado, denuncias
+  from publicaciones where denuncias > 0 or estado = 'oculta'
+ order by denuncias desc;
+-- restaurar una que no merecía ocultarse
+update publicaciones set estado = 'visible', denuncias = 0 where id = '…';
+delete from denuncias_publicaciones where publicacion_id = '…';
+-- ocultar una a mano
+update publicaciones set estado = 'oculta' where id = '…';
+```
+
+Cerrar la comunidad sin borrar nada: `rwadar-app/db/27_comunidad_cerrar.sql`.
+
 ## Después (no es esta fase)
 
 - **App:** la app guarda los favoritos en el móvil. Sincronizarlos con la
   cuenta necesita pantallas de entrar y registrarse en la app y una versión
   nueva.
 - Opiniones, avisos por correo y push: cada uno con su migración y su prueba.
+- Comunidad en la app: hoy la anuncia como «próximamente»; leerla es fácil
+  (es pública), publicar necesita entrar con cuenta en la app.

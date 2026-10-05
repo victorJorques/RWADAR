@@ -1028,13 +1028,27 @@
 
     <section class="inicio-seccion" aria-labelledby="inicioComunidadTit">
       <h3 class="inicio-seccion-tit" id="inicioComunidadTit">Comunidad</h3>
-      <article class="movil-estado">
+      <article class="movil-estado" id="comunidadProximamente">
         <div class="movil-estado-cab">
           <span class="movil-estado-icono" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v10H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span>
           <div><p class="movil-mini-etiqueta">PRÓXIMAMENTE</p><h3>Publicaciones de la comunidad</h3></div>
         </div>
         <p>Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día. Antes publicaremos las normas de la comunidad.</p>
       </article>
+      <!-- Se muestra solo con PUBLICACIONES_REMOTAS encendido (db/27). -->
+      <div class="comunidad" id="comunidad" hidden>
+        <p class="comunidad-normas"><b>Normas:</b> una publicación al día por cuenta, sin enlaces, sin publicidad ni recomendaciones de inversión, y con respeto. Con tres denuncias una publicación se oculta hasta que la revisamos.</p>
+        <button class="movil-boton-secundario comunidad-entrar" type="button" id="comunidadEntrar" data-movil-action="cuenta" disabled>Entra para publicar</button>
+        <form class="comunidad-form" id="comunidadForm" novalidate hidden>
+          <label for="comunidadTexto">Tu publicación de hoy</label>
+          <textarea id="comunidadTexto" maxlength="500" rows="4" required aria-describedby="comunidadAyuda"></textarea>
+          <p class="comunidad-ayuda" id="comunidadAyuda"><span id="comunidadCuenta">0</span>/500 · entre 10 y 500 caracteres, sin enlaces.</p>
+          <label class="comunidad-nombre"><input type="checkbox" id="comunidadNombre"> Mostrar el nombre de mi perfil (si no, saldrá «Miembro de RWAdar»)</label>
+          <button class="movil-boton-principal" type="submit" id="comunidadPublicar">Publicar</button>
+        </form>
+        <p class="comunidad-estado" id="comunidadEstado" role="status"></p>
+        <ol class="comunidad-lista" id="comunidadLista" aria-live="polite"></ol>
+      </div>
     </section>
 
     <section class="movil-menu-grupo" aria-labelledby="inicioEmpezarTit">
