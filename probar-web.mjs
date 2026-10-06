@@ -1769,11 +1769,16 @@ prueba('el simulador real conserva URL HTTPS, las 26 plataformas y las 49 refere
   (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}">Doc\. /g) || []).length === 49);
 // Ejecutar el cliente entero, con un reloj y un DOM persistentes como los de
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
-function pestanaCatalogo() {
+const fechaLoteEmbebido = js.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
+if (!fechaLoteEmbebido) throw new Error('el JavaScript no incrusta verificado_lote_el');
+function pestanaCatalogo({ inicio } = {}) {
   const prefijo = publicador.slice(inicioSimulador, publicador.indexOf('vm.createContext(contexto);', inicioSimulador));
   const { contexto, nodo } = vm.runInNewContext(prefijo + '\n({contexto,nodo});', { URL, console });
   const nodos = new Map(), escuchas = new Map(), tiempos = [];
-  let instante = Date.parse('2026-09-30T12:00:00Z');
+  // Por defecto el reloj arranca el mismo día del lote incrustado: con una fecha
+  // fija, un lote nuevo quedaría «en el futuro» y la web (con razón) no lo
+  // cargaría. Las pruebas con fichas sintéticas fechadas fijan su propio inicio.
+  let instante = Date.parse(inicio ?? `${fechaLoteEmbebido}T12:00:00Z`);
   contexto.Date = class extends Date {
     constructor(...args) { super(...(args.length ? args : [instante])); }
     static now() { return instante; }
@@ -2024,7 +2029,10 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
 // REGRESION_TARJETAS_EDITORIALES: fixtures sintéticos, sin consultar ni editar
 // el catálogo real. Se comprueba el HTML generado, no solo CSS que lo esconda.
 {
+  // Fixtures fechados respecto al lote incrustado (el reloj arranca ese día):
+  // así no caducan ni quedan «en el futuro» cuando llega una revisión nueva.
   const p = pestanaCatalogo();
+  const dia = n => new Date(Date.parse(`${fechaLoteEmbebido}T00:00:00Z`) + n * 864e5).toISOString().slice(0, 10);
   const fuentes = ['https://proveedor.example.test/ficha', 'https://documentos.example.test/referencia'];
   const literal = 'Método publicado: rendimiento anual simple de referencia, antes de gastos e impuestos. ' +
     'La ventana documental no garantiza rentabilidad futura ni disponibilidad. REFERENCIA_INTEGRA_FINAL.';
@@ -2043,7 +2051,7 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     plataformaSlug:'proveedor-sintetico', categoria:'Inmobiliario', pais:'ES',
     resumen:'RESUMEN_COMPLETO_SOLO_EN_FICHA. Condiciones y contexto de la oferta sintética.',
     url:fuentes[0], urlMercado:'https://proveedor.example.test/mercado',
-    verificadaEl:'2026-09-30', vigenciaDias:7, estadoRevision:'actual', disponibleEs:true,
+    verificadaEl:dia(0), vigenciaDias:7, estadoRevision:'actual', disponibleEs:true,
     rentabilidad:{mostrada:'6,50 %', literal}, precio:{mostrada:'100 EUR', unidad},
     metricas:[
       {etiqueta:'Entrada mínima', valor:'AUXILIAR_ENTRADA_SOLO_EN_FICHA 100 EUR'},
@@ -2054,12 +2062,12 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     avisos:[{tono:'warn', texto:avisoAmpliado}, {tono:'stop', texto:avisoCritico}],
     fuentesActuales:fuentes,
     documentacion:{
-      revisadaEl:'2026-09-29', descripcion, fuentes,
+      revisadaEl:dia(-1), descripcion, fuentes,
       caracteristicas:[{etiqueta:'Derechos documentados', valor:'CARACTERISTICA_COMPLETA_SOLO_EN_FICHA'}],
       referencias:[{
         etiqueta:'Referencia económica histórica', valor:'DATO_DOCUMENTAL_COMPLETO 5,00 %',
         alcance:'Alcance documental íntegro: dato histórico con fecha, no una condición actual. ALCANCE_FINAL_INTEGRO.',
-        fechaDato:'2026-09-28', fechaConsulta:'2026-09-29', fuente:fuentes[1],
+        fechaDato:dia(-2), fechaConsulta:dia(-1), fuente:fuentes[1],
       }],
     },
   };
@@ -2118,7 +2126,7 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       tarjeta.includes(caso.estado) && tarjeta.includes('escaparate-estado-linea') &&
       tarjeta.includes('escaparate-aviso-bloqueo') && tarjeta.includes(avisoCritico));
     prueba(`tarjeta ${caso.nombre}: fecha documental y único botón Ver ficha con nombre accesible`,
-      /<time\b[^>]*datetime="2026-09-29"/.test(tarjeta) && tarjeta.includes(render.fecha) &&
+      new RegExp(`<time\\b[^>]*datetime="${dia(-1)}"`).test(tarjeta) && tarjeta.includes(render.fecha) &&
       botones.length === 1 && atributoHTML(botones[0][1], 'type') === 'button' &&
       atributoHTML(botones[0][1], 'data-oferta-detalle') === oferta.slug &&
       atributoHTML(botones[0][1], 'aria-label').startsWith('Ver ficha de ') &&
@@ -2133,7 +2141,7 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       /data-cerrar-detalle aria-label="Cerrar detalle"/.test(detalle) &&
       detalle.includes(descripcion) && detalle.includes(oferta.documentacion.caracteristicas[0].valor) &&
       oferta.documentacion.referencias.every(r => [r.etiqueta,r.valor,r.alcance].every(v=>detalle.includes(v))) &&
-      detalle.includes('28.09.2026') && detalle.includes('29.09.2026') &&
+      [dia(-2), dia(-1)].every(f => detalle.includes(f.split('-').reverse().join('.'))) &&
       detalle.includes(avisoAmpliado) && detalle.includes(avisoCritico) &&
       render.avisos.every(aviso => detalle.includes(aviso)) &&
       render.metricas.every(m => detalle.includes(m.etiqueta) && detalle.includes(m.valor)) &&
