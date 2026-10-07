@@ -23,7 +23,7 @@ consulta. Entrar en el radar es gratis para las plataformas.
 |---|---|
 | **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare). Se instala en el móvil como app. Última publicación: 6 de octubre, despliegue `50937958`, desde el ordenador de Víctor (`node rwadar-publicar.js --produccion`, su sesión de Wrangler). Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
 | **Catálogo** | Revisión del **6 de octubre** (lote `a0df3111`), vigente **hasta el 13 de octubre**: 26 plataformas en el radar, 4 descartadas con su fuente y 49 referencias de inversión (24 principales, 21 de mercado secundario y 4 en preparación). Detalle en [`CATALOGO-V2-2026-10-06.md`](CATALOGO-V2-2026-10-06.md). |
-| **App Android** | Versión 1.1.2, descargable desde GitHub ([RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)). Todavía no está en Google Play. |
+| **App Android** | **Versión 1.2.0** (código 12, misma firma), publicada el 7/10 en GitHub ([RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)); la web la ofrece en `/android`. Probada en emulador Android 15 ([run 37446968987](https://github.com/victorJorques/RWAdar-downloads/actions/runs/37446968987), flujo `android-smoke-120.yml`). Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |

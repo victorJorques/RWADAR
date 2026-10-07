@@ -6,6 +6,33 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 7 de octubre de 2026 · Claude (7) · catálogo del 06/10 en producción, web y app 1.2.0 publicadas
+
+- **Supabase:** Víctor pegó `aplicar-y-aprobar.sql` tres veces (SQL Editor).
+  Lote vigente **`a0df3111`** (06/10, hasta el 13/10). Sustituye a `36945ee9`
+  (cifra principal de mF-ONE y Spiko sin actualizar: el montador buscaba la
+  etiqueta en métricas ya cambiadas) y a `c0e20ca3` (texto de Spiko con
+  «observado el 30/09»). Cada corrección se probó en PGlite encima de los
+  lotes ya aplicados. Comprobado por REST anónimo: 26/49 y contrato de la app.
+- **Web:** despliegue de producción `b3fcc32f` desde el ordenador de Víctor;
+  `comprobar-publicado.mjs` 35/35 en `rwadar.pages.dev`; mF-ONE 7,58 %,
+  Spiko 2,16 % «observado el 06/10/2026», «Última revisión del registro:
+  06.10.2026». Sincronizar cambia JS y portada: dos rondas de commit +
+  aprobación en `estado.json`, como siempre.
+- **Pruebas:** `probar-web.mjs` tenía el reloj de la pestaña simulada fijo
+  en el 30/09 y fichas sintéticas de septiembre; ahora se fechan respecto al
+  lote incrustado (`fechaLoteEmbebido`, `pestanaCatalogo({ inicio })`).
+  Sin esto, cualquier lote nuevo rompía `npm test`.
+- **App 1.2.0, versionCode 12:** build EAS `99fd77d8` (la `6c3ed542` murió
+  por un fallo del servidor de Expo). APK 85 558 264 bytes, SHA-256
+  `87900ef2…b8e3ea`, certificado `f506dea7…` (el de siempre). Probada en
+  emulador Android 15 con el flujo nuevo `android-smoke-120.yml` del repo
+  `RWAdar-downloads` (run 37446968987: Inicio, Buscar 24/21/4, Spiko 2,16 %,
+  Academy 7 lecciones, Perfil; sin errores). Release `v1.2.0` marcada como
+  latest; `/android` lleva a ella y la descarga anónima coincide byte a byte.
+- `gh` instalado en el ordenador de Víctor (cuenta victorJorques, con
+  permiso `workflow`).
+
 ## 6 de octubre de 2026 · Claude (6) · revisión nueva del catálogo, app 1.2.0 compilando
 
 **Rama:** `claude/revision-catalogo-2026-10-06` (sale de `claude/publicar-2026-10-05`,
