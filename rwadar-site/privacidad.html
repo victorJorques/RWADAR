@@ -34,7 +34,7 @@
   <a class="volver" href="/">← Volver al radar</a>
 
   <h1>Privacidad</h1>
-  <p class="fecha">Versión revisada el <time datetime="2026-10-05">5 de octubre de 2026</time></p>
+  <p class="fecha">Versión revisada el <time datetime="2026-10-07">7 de octubre de 2026</time></p>
 
   <div class="resumen">
     <p><b>El resumen, por si no lees el resto.</b></p>
@@ -43,20 +43,23 @@
       de seguimiento, perfilado ni venta de datos. RWAdar no ofrece ahora contratación B2B
       ni espacios patrocinados. Si ese modelo se aprobara en el futuro, cualquier espacio
       comercial se identificaría y no seguiría inversiones individuales.</p>
-    <p>La versión editorial mantiene <b>en pausa las cuentas, las opiniones y el
-      seguimiento remoto</b>. No permite registrarse, iniciar sesión ni recuperar una cuenta.
-      La app nativa conserva favoritos nuevos solo en el dispositivo, y la web en el móvil
-      guarda las empresas y ofertas que marcas como favoritas solo en tu navegador.</p>
-    <p>Si usaste una versión anterior, puedes solicitar acceso, cambios, retirada de
-      consentimiento o borrado escribiendo a
-      <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a>.
-      La pausa de las funciones no equivale al borrado de los datos anteriores.</p>
+    <p>En la web puedes crear <b>una cuenta opcional</b> con tu correo y una contraseña
+      para guardar la lista de plataformas que vigilas. Solo te enviamos los correos
+      necesarios para confirmar la dirección y recuperar la contraseña. <b>Las opiniones,
+      los avisos por correo y los avisos push siguen en pausa.</b> La app nativa conserva
+      favoritos solo en el dispositivo, y la web en el móvil guarda las empresas y ofertas
+      que marcas como favoritas solo en tu navegador.</p>
+    <p>Puedes <b>borrar tu cuenta tú mismo</b> desde Perfil, en cualquier momento. Para
+      acceso, cambios, retirada de consentimiento o borrado de datos (también de versiones
+      anteriores) escribe a
+      <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a>.</p>
   </div>
 
   <div class="pendiente" role="note">
     <p><b>Alcance de esta versión:</b> radar editorial gratuito, con fuentes y fechas
-      de revisión. Las funciones de cuenta, opiniones y seguimiento remoto están en pausa.
-      RWAdar no ofrece
+      de revisión, con cuentas opcionales para guardar una lista de vigilancia (alta, entrada,
+      recuperación de la contraseña y borrado). Las opiniones, los avisos por correo y el push
+      están en pausa. RWAdar no ofrece
       actualmente contratación, facturación ni espacios B2B: la página para empresas recoge
       solo expresiones de interés sin efectos comerciales o contractuales. Esta declaración no
       acredita una transferencia de datos históricos ni que el modelo comercial esté aprobado.
@@ -130,7 +133,8 @@
         <td>Dirección IP al<br>actualizar el registro</td>
         <td>Las fichas públicas ya vienen incluidas en la página, y cuando hay red la web
           consulta las vistas públicas de Supabase para mostrar cambios posteriores a la
-          última publicación. Las funciones de cuenta de esta versión están desactivadas.</td>
+          última publicación. Si creas una cuenta o entras con ella, la web habla además con
+          el servicio de autenticación de Supabase (apartado 3).</td>
         <td>Supabase, la base de datos y autenticación</td>
       </tr>
       <tr>
@@ -140,11 +144,12 @@
         <td>Tu navegador</td>
       </tr>
       <tr>
-        <td>Enlace de cuenta<br>de una versión anterior</td>
-        <td>Esta versión no inicia ni renueva sesiones. Si abres un enlace antiguo de
-          autenticación, retira sus parámetros de cuenta del navegador sin canjearlos ni
-          guardarlos. La medición estadística se omite en esa visita.</td>
-        <td>Tu navegador; no se inicia una petición de autenticación por ese enlace</td>
+        <td>Sesión de tu<br>cuenta (si entras)</td>
+        <td>La sesión se guarda solo en la memoria de la pestaña abierta: no queda en el
+          almacenamiento del navegador y al cerrar la pestaña hay que volver a entrar. Los
+          enlaces de confirmación o recuperación que te enviamos se canjean una vez y se
+          retiran de la dirección. La medición estadística se omite en esas visitas.</td>
+        <td>Tu navegador y el servicio de autenticación de Supabase</td>
       </tr>
       <tr>
         <td>Copia sin conexión<br>de la aplicación web</td>
@@ -178,11 +183,10 @@
     al visitar la versión publicada y no permite reconstruir el tráfico anterior.
     Cloudflare también trata datos técnicos como alojamiento y CDN para entregar y proteger la web.</p>
 
-  <h2>3 · Datos de cuentas de versiones anteriores</h2>
-  <p>El radar se consulta sin cuenta. Esta versión no recoge nuevas altas ni permite
-    iniciar sesión, recuperar el acceso, modificar perfiles o guardar vigilancia remota.
-    Las categorías siguientes describen las funciones de versiones anteriores; su
-    inventario y conservación en el servidor están pendientes de comprobación.</p>
+  <h2>3 · Tu cuenta (opcional)</h2>
+  <p>El radar se consulta entero sin cuenta. Si la creas, sirve para guardar en el servidor
+    la lista de plataformas que vigilas y verla desde cualquier navegador. Hace falta
+    confirmar el correo antes de poder entrar. Estos son todos los datos de la cuenta:</p>
 
   <div class="tabla-caja">
   <table>
@@ -190,25 +194,33 @@
     <tbody>
       <tr>
         <td>Correo<br>electrónico</td>
-        <td>Identificación de la cuenta anterior y atención de solicitudes sobre ella.</td>
-        <td>Ejecución del servicio que has solicitado</td>
+        <td>Identificar tu cuenta, enviarte el correo para confirmarla y, si lo pides, el
+          enlace para poner una contraseña nueva. No se usa para publicidad ni boletines.</td>
+        <td>Ejecución del servicio que has solicitado (art. 6.1.b RGPD)</td>
       </tr>
       <tr>
         <td>Contraseña</td>
         <td>No se guarda tal cual: Supabase Auth conserva un resumen criptográfico no
-          reversible para comprobarla.</td>
+          reversible para comprobarla. Mínimo 12 caracteres.</td>
         <td>Ejecución del servicio</td>
       </tr>
       <tr>
-        <td>Nombre público<br>(opcional)</td>
-        <td>Nombre que se eligió para opiniones de versiones anteriores. La versión
-          editorial no carga ni publica esas opiniones.</td>
-        <td>Tu consentimiento</td>
+        <td>Nombre<br>(opcional)</td>
+        <td>Solo para saludarte en tu perfil. Hoy no se publica en ningún sitio. Puedes
+          dejarlo en blanco o cambiarlo.</td>
+        <td>Tu consentimiento, al escribirlo</td>
       </tr>
       <tr>
         <td>Plataformas<br>que vigilas</td>
-        <td>Conservar tu lista de plataformas vigiladas.</td>
+        <td>Conservar tu lista de plataformas vigiladas. Solo la ves tú.</td>
         <td>Ejecución del servicio</td>
+      </tr>
+      <tr>
+        <td>Datos técnicos<br>de acceso</td>
+        <td>Fecha de alta y de último acceso, y la dirección IP y el navegador desde los que
+          te das de alta o entras, en los registros de seguridad de Supabase. Sirven para
+          proteger la cuenta y evitar abusos.</td>
+        <td>Interés legítimo en la seguridad del servicio (art. 6.1.f RGPD)</td>
       </tr>
       <tr>
         <td>Consentimiento para<br>avisos por correo<br>(opcional)</td>
@@ -222,8 +234,11 @@
   </table>
   </div>
 
-  <p>Para gestionar esos datos o retirar un consentimiento anterior, utiliza el correo
-    del apartado 11. No es necesario volver a iniciar sesión para solicitar tus derechos.</p>
+  <p>Cada persona solo puede ver y cambiar sus propios datos; RWAdar no comparte tu
+    lista ni tu correo con las plataformas. Si tenías una cuenta de una versión anterior,
+    puedes volver a entrar con ella o pedir su borrado. Para gestionar tus datos o retirar
+    un consentimiento anterior, usa Perfil o el correo del apartado 11; no hace falta
+    iniciar sesión para solicitar tus derechos.</p>
 
   <h2>4 · Opiniones, denuncias y moderación</h2>
   <p>Estas funciones están en pausa: esta versión no consulta, publica, edita ni recibe
@@ -269,7 +284,8 @@
     espacio separado de los datos de versiones anteriores. El progreso de RWAdar Academy
     (lecciones leídas y aciertos de sus tests) se guarda igual, solo en el dispositivo. No lee, migra ni borra
     automáticamente esos datos anteriores. Los favoritos nuevos no se sincronizan entre
-    dispositivos ni representan inversiones. La web/PWA mantiene el seguimiento en pausa.</p>
+    dispositivos ni representan inversiones. La app todavía no tiene cuentas: la lista de
+    vigilancia con cuenta funciona en la web (apartado 3).</p>
   <p>Esta versión no crea una identidad remota de instalación, no solicita permiso de
     notificaciones, no obtiene ni registra tokens push y no conecta seguimiento remoto.
     La entrega automática está desactivada y no se ha verificado de extremo a extremo.
@@ -280,9 +296,11 @@
     La limpieza de instalaciones inactivas se describe en el apartado 9.</p>
 
   <h2>6 · Correos de servicio</h2>
-  <p>Las altas, el acceso y la recuperación de cuentas están en pausa en esta versión.
-    La web no recoge esas solicitudes ni envía peticiones de autenticación, incluidas
-    las procedentes de enlaces antiguos. El radar completo se consulta sin cuenta.</p>
+  <p>Si creas una cuenta te enviamos <b>un correo para confirmar la dirección</b>, y si
+    pides recuperar el acceso, <b>otro con un enlace para poner una contraseña nueva</b>.
+    Son los únicos correos que se envían. Salen del servicio de autenticación de Supabase
+    a través de una cuenta de Gmail de RWAdar (apartado 8). Ninguno te pedirá contraseñas,
+    datos bancarios ni claves.</p>
   <p>La entrega de correos por cambios del radar <b>todavía no está activa</b>. La preferencia
     anterior no activa envíos en la versión editorial. Puedes retirar cualquier
     consentimiento anterior escribiendo al correo de privacidad.</p>
@@ -367,8 +385,10 @@
       los metadatos y el contenido que esa persona decide enviar.</li>
     <li><b>Google / Gmail</b> — proveedor de la cuenta utilizada por el titular para los
       contactos profesionales de presentación y sus respuestas. Trata los mensajes,
-      direcciones y metadatos de ese intercambio. No se inserta Gmail ni un rastreador de
-      Google en el radar por este uso del correo. Consulta la
+      direcciones y metadatos de ese intercambio. Una cuenta de Gmail de RWAdar envía además
+      los correos de confirmación y de recuperación de la contraseña (apartado 6): para
+      entregarlos, Google trata tu dirección y el contenido de ese correo. No se inserta Gmail
+      ni un rastreador de Google en el radar por este uso del correo. Consulta la
       <a href="https://policies.google.com/privacy?hl=es" rel="noopener">política de privacidad de Google</a>.</li>
     <li><b>Brevo</b> — solo si se activa en el futuro el envío de alertas por correo;
       recibiría el correo, el nombre si existe y el contenido del aviso necesario para entregarlo.</li>
@@ -389,8 +409,10 @@
     se revisa por el canal del apartado 11. Cuando sea necesario conservar un dato para
     una reclamación, su acceso se limita a esa finalidad.</p>
   <ul>
-    <li><b>Cuenta, perfil y vigilancia anteriores:</b> su estado debe comprobarse al
-      atender las solicitudes de acceso, rectificación o supresión recibidas por correo.</li>
+    <li><b>Cuenta, perfil y vigilancia:</b> mientras la cuenta exista. Al borrarla desde
+      Perfil se eliminan en ese momento la cuenta de autenticación, el perfil y la lista de
+      vigilancia. Las copias de seguridad cifradas de la base se renuevan y caducan a los
+      35 días. Una alta sin confirmar no permite entrar; puedes pedir su borrado por correo.</li>
     <li><b>Opiniones y denuncias anteriores:</b> la versión editorial no las carga.
       Su retirada puede solicitarse por correo. La necesidad de conservar una denuncia
       se valora según su resolución y las posibles responsabilidades asociadas.
@@ -407,7 +429,8 @@
     <li><b>Consultas B2B por correo:</b> mientras se responden y, si no se abre una fase
       posterior aprobada, como máximo seis meses desde el último intercambio; después se
       eliminan salvo obligación o reclamación que exija conservar lo mínimo necesario.</li>
-    <li><b>Datos locales:</b> esta web no mantiene una sesión de cuenta. La preferencia
+    <li><b>Datos locales:</b> la sesión de cuenta vive solo en la memoria de la pestaña y
+      desaparece al cerrarla. La preferencia
       de sonido, los favoritos, el progreso de la Academy y la caché PWA pública permanecen hasta que
       elimines los datos del sitio o, en el caso de la caché, una versión nueva la sustituya.
       Los favoritos nuevos y el progreso de la Academy en la app nativa se
@@ -433,9 +456,10 @@
   </ul>
 
   <h2 id="derechos">11 · Borrado y tus derechos</h2>
-  <p>La cuenta y su panel de borrado están en pausa. Para solicitar la revisión o
-    supresión de datos anteriores, escribe al correo de privacidad. No hace falta crear
-    una nueva cuenta ni reactivar la anterior para presentar la solicitud.</p>
+  <p>Puedes <b>borrar tu cuenta tú mismo</b> desde Perfil: se eliminan en el momento la
+    cuenta, el perfil y la lista de vigilancia. Para cualquier otra solicitud, o para datos
+    de versiones anteriores, escribe al correo de privacidad. No hace falta crear una cuenta
+    ni entrar con ella para presentar la solicitud.</p>
   <p>Puedes pedir <b>acceso</b> a tus datos, su <b>rectificación</b>, su <b>supresión</b>,
     la <b>limitación</b> u <b>oposición</b> al tratamiento, y la <b>portabilidad</b> de lo
     que nos hayas dado. También puedes retirar tu consentimiento en cualquier momento, sin

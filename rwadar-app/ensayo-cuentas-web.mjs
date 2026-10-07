@@ -277,6 +277,7 @@ const jsCuentas = (() => {
     ['const CORREO_AUTH_E2E=false;', 'const CORREO_AUTH_E2E=true;'],
     ["const MANUAL_BIENVENIDA='';", `const MANUAL_BIENVENIDA='${RUTA_MANUAL}';`],
     ['const PUBLICACIONES_REMOTAS=false;', 'const PUBLICACIONES_REMOTAS=true;']]) {
+    if (js.includes(a)) continue; // ya encendido en lo publicado (cuentas, fase 1)
     if (!js.includes(de)) throw new Error('no encuentro el interruptor ' + de);
     js = js.replace(de, a);
   }

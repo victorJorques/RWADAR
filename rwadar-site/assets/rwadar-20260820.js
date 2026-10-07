@@ -16,7 +16,7 @@ const MODO_LOCAL_SEGURO=typeof location!=='undefined'&&
 /* El catálogo público no habilita cuentas. Esta capacidad pertenece al corte
    editorial y no se puede activar con un dominio, un enlace o almacenamiento.
    Es una guarda del cliente: no modifica los permisos del servidor. */
-const SERVICIOS_USUARIO_REMOTOS=false;
+const SERVICIOS_USUARIO_REMOTOS=true;
 const SERVICIOS_USUARIO_DISPONIBLES=SERVICIOS_USUARIO_REMOTOS&&!MODO_LOCAL_SEGURO;
 /* Las cuentas se reabren por fases (docs/tareas/REABRIR-CUENTAS.md). La
    fase 1 (db/26) abre perfil, vigilancia y baja; opiniones con su
@@ -3253,7 +3253,7 @@ const Cuenta = (function(){
     propio sigue apagado. Hasta que un alta y una recuperación lleguen de
     extremo a extremo, la interfaz no debe recoger datos para crear cuentas
     que la persona no podrá confirmar. Cambiar a true exige esa prueba real. */
- const CORREO_AUTH_E2E=false;
+ const CORREO_AUTH_E2E=true;
  /* Manual de bienvenida de Eric (docs/manual). Vacío: no se ofrece. Se
     enciende con su ruta estable (/descargas/como-usar-rwadar.pdf) cuando el
     PDF esté revisado y publicado; ver docs/manual/LEEME.md. */

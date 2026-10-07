@@ -701,6 +701,11 @@ for (const recurso of [rutaScriptApp, rutaAnalitica, estilos[0][1], '/assets/pri
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
 const js = lee('.' + rutaScriptApp);
+// Las cuentas (fase 1) están encendidas en lo publicado. Las pruebas del camino
+// cerrado se ejecutan sobre la misma web con los dos interruptores apagados, para
+// que sigan garantizando que, si se apagan, la web no pide ni envía ningún dato.
+const jsCerrado = js.replace('const SERVICIOS_USUARIO_REMOTOS=true;', 'const SERVICIOS_USUARIO_REMOTOS=false;')
+  .replace(' const CORREO_AUTH_E2E=true;', ' const CORREO_AUTH_E2E=false;');
 const css = lee('.' + estilos[0][1]);
 new Function(js);
 prueba('el JavaScript externo compila', true);
@@ -812,7 +817,7 @@ for (const direccion of [
   'https://preview.example/?cuentas=true&SERVICIOS_USUARIO_REMOTOS=true',
   'http://127.0.0.1:4173/',
 ]) {
-  const editorial = arnesServiciosEditoriales(js, direccion);
+  const editorial = arnesServiciosEditoriales(jsCerrado, direccion);
   for (const modo of ['entrar','registro','recuperar','nueva_clave']) editorial.Cuenta.abrir(modo);
   editorial.Cuenta.abrirGestion();
   editorial.Cuenta.pintarVigilar('Plataforma de prueba');
@@ -827,7 +832,7 @@ for (const direccion of [
     editorial.nodos.get('movilCuentaAccion').disabled === true &&
     /seguimiento está en pausa/.test(editorial.nodos.get('dwVigilar').innerHTML));
 }
-const redEditorial = arnesServiciosEditoriales(js, 'https://rwadar.pages.dev/');
+const redEditorial = arnesServiciosEditoriales(jsCerrado, 'https://rwadar.pages.dev/');
 for (const [nombre, argumentos] of [
   ['auth',['/token?grant_type=password',{email:'prueba@example.test',password:'solo-prueba'}]],
   ['rest',['/vigilancia',{method:'POST',body:'{}'}]],
@@ -842,14 +847,14 @@ for (const [direccion, salida] of [
   ['https://rwadar.pages.dev/?code=prueba&type=signup&sector=oro#metodo', '/?sector=oro#metodo'],
   ['https://rwadar.pages.dev/#error=access_denied&error_description=prueba', '/'],
 ]) {
-  const editorial = arnesServiciosEditoriales(js, direccion);
+  const editorial = arnesServiciosEditoriales(jsCerrado, direccion);
   prueba('un retorno antiguo se limpia sin iniciar sesión ni guardar o transmitir sus credenciales',
     editorial.historial.length === 1 && editorial.historial[0] === salida &&
     editorial.peticiones.length === 0 && editorial.Cuenta.hay() === false &&
     await editorial.Cuenta.token() === null);
 }
 prueba('la pausa no elimina anclas o filtros editoriales normales',
-  arnesServiciosEditoriales(js, 'https://rwadar.pages.dev/?sector=oro#metodo').historial.length === 0);
+  arnesServiciosEditoriales(jsCerrado, 'https://rwadar.pages.dev/?sector=oro#metodo').historial.length === 0);
 prueba('los accesos a cuenta nacen desactivados incluso antes de ejecutar JavaScript',
   /id="btnCuenta"[^>]*\bdisabled/.test(html) &&
   [...html.matchAll(/<button\b([^>]*data-movil-action="cuenta"[^>]*)>/g)]
@@ -2234,8 +2239,11 @@ prueba('la privacidad identifica la medición agregada, sus límites y su estado
   /Do Not Track o Global Privacy Control/.test(privacidad) && /no representan personas únicas/.test(privacidad) &&
   /no permite reconstruir el tráfico anterior/.test(privacidad) &&
   /Cloudflare Pages/.test(privacidad) && /cloudflare-customer-dpa/.test(privacidad));
-prueba('la privacidad explica ausencia de sesión, limpieza de enlaces y caché PWA sin tokens',
-  /no inicia ni renueva sesiones/.test(privacidad) && /sin canjearlos ni/.test(privacidad) &&
+prueba('la privacidad explica la sesión en memoria, la limpieza de enlaces y la caché PWA sin tokens',
+  /solo en la memoria de la pestaña abierta/.test(privacidadLineal) &&
+  /no queda en el\s+almacenamiento del navegador/.test(privacidad) &&
+  /se canjean una vez y se\s+retiran de la dirección/.test(privacidad) &&
+  /history\.replaceState\(null,'',location\.pathname\+location\.search\)/.test(js) &&
   /No se guardan respuestas de Supabase,[\s\S]*tokens de sesión/.test(privacidad));
 prueba('la privacidad describe favoritos locales y push cerrado sin prometer borrado histórico',
   /favoritos solo en el dispositivo/.test(privacidadLineal) &&
@@ -2254,13 +2262,19 @@ prueba('privacidad y UI permiten solicitar la retirada del consentimiento anteri
   /Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar/.test(html) &&
   /puedes retirarlo escribiendo a RWAdar@protonmail.com/.test(html) &&
   /Está desactivado por defecto[\s\S]*faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(js));
-prueba('privacidad pausa también el acceso existente y mantiene una vía de derechos por correo',
-  /Las altas, el acceso y la recuperación de cuentas están en pausa/.test(privacidadLineal) &&
-  /no recoge esas solicitudes ni envía peticiones de autenticación/.test(privacidadLineal) &&
+prueba('privacidad describe las cuentas de la fase 1, sus correos, la sesión y el borrado desde Perfil',
+  /Tu cuenta \(opcional\)/.test(privacidadLineal) &&
+  /correo para confirmar la dirección/.test(privacidadLineal) &&
+  /enlace para poner una contraseña nueva/.test(privacidadLineal) &&
+  /cuenta de Gmail de RWAdar/.test(privacidadLineal) &&
+  /memoria de la pestaña/.test(privacidadLineal) &&
+  /borrar tu cuenta tú mismo/.test(privacidadLineal) &&
+  /opiniones,\s+los avisos por correo y los avisos push\s+siguen en pausa/i.test(privacidadLineal) &&
   /id="derechos"/.test(privacidad) && /El titular verificará la identidad/.test(privacidadLineal) &&
-  !/cuentas existentes pueden seguir entrando|borrar la cuenta desde tu perfil/.test(privacidadLineal) &&
-  /const SERVICIOS_USUARIO_REMOTOS=false/.test(js) &&
-  /const CORREO_AUTH_E2E=false/.test(js) &&
+  !/Las altas, el acceso y la recuperación de cuentas están en pausa/.test(privacidadLineal) &&
+  /const SERVICIOS_USUARIO_REMOTOS=true;/.test(js) &&
+  / const CORREO_AUTH_E2E=true;/.test(js) && jsCerrado !== js &&
+  /const SERVICIOS_USUARIO_REMOTOS=false;/.test(jsCerrado) && / const CORREO_AUTH_E2E=false;/.test(jsCerrado) &&
   /solicitado==='registro'\?'registro_pausado'/.test(js) &&
   /solicitado==='recuperar'\?'recuperar_pausado'/.test(js) &&
   /no recogemos nuevas altas ni solicitudes de recuperación/.test(js) &&
