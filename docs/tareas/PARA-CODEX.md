@@ -6,6 +6,72 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 8 de octubre de 2026 · Claude (8) · cuentas fase 1: casi abiertas, falta que Gmail acepte la contraseña
+
+**Rama:** `claude/abrir-cuentas` (sale de `main` tras el PR #10). PR abierto
+para que lo revises. **La web pública NO tiene las cuentas encendidas**;
+solo la vista previa `https://revision.rwadar.pages.dev`.
+
+### Ya hecho y comprobado
+
+| Qué | Dónde / cómo se comprobó |
+|---|---|
+| Web: `SERVICIOS_USUARIO_REMOTOS=true` y `CORREO_AUTH_E2E=true`; opiniones, avisos por correo, comunidad, manual y Turnstile siguen apagados | `rwadar-site/assets/rwadar-20260820.js` |
+| Privacidad reescrita para cuentas abiertas (7/10/2026): apartado «Tu cuenta (opcional)», correos de confirmación/recuperación por una cuenta de Gmail de RWAdar, sesión solo en memoria, borrado desde Perfil, conservación | `rwadar-site/privacidad.html`, `sitemap.xml` |
+| Pruebas: el camino cerrado se sigue probando sobre la misma web con los interruptores apagados (`jsCerrado` en `probar-web.mjs`) | `npm test` en verde |
+| Ensayo E2E en Chrome real contra Supabase simulado (PGlite + 26): alta, confirmación, entrar, vigilar, recuperar, móvil, borrar, Turnstile | `node rwadar-app/ensayo-cuentas-web.mjs` → **61/61** (Playwright con `RWADAR_CHROMIUM` = Chrome instalado) |
+| Migración 26 + verificador en una transacción | `rwadar-app/db/26_abrir_cuentas_un_paso.sql`; probado en PGlite (dos veces) |
+| **Supabase producción:** 26 aplicada (SQL Editor, «Success», verificador sin excepción) | 07/10, 23:3x |
+| **Supabase Auth:** SMTP propio activado (remitente y usuario `rwadares@gmail.com`, nombre `RWAdar`, `smtp.gmail.com`, puerto 587); plantillas en español «Confirma tu cuenta de RWAdar» y «Recupera tu acceso a RWAdar» (texto de `REABRIR-CUENTAS.md`); **altas abiertas**; confirmación de correo obligatoria; contraseña mínima 12 (ya estaba); Redirect URLs: añadido `https://revision.rwadar.pages.dev/` | `GET /auth/v1/settings` → `disable_signup:false`, `mailer_autoconfirm:false` |
+| Vista previa con cuentas | despliegue `b8745f05`, alias `revision.rwadar.pages.dev`; `comprobar-publicado.mjs` 35/35; aprobación en `estado.json` (commit `e87141c`) |
+
+### Lo que falla ahora (bloqueante)
+
+Al crear una cuenta en la vista previa sale «Error sending confirmation
+email». En *Logs › Auth* de Supabase:
+1. Primer intento: `535 5.7.8 Username and Password not accepted` (credenciales).
+2. Último intento (08/10 00:02): `534 5.7.9 Application-specific password required`.
+   Es decir: la verificación en dos pasos de `rwadares@gmail.com` ya está
+   activa, pero en *SMTP Settings › Password* sigue la contraseña normal de
+   Gmail. Hay que generar una **contraseña de aplicación** en
+   https://myaccount.google.com/apppasswords (16 letras, **sin espacios**) y
+   pegarla ahí › *Save changes*. Esto solo lo puede hacer Víctor: ni Claude
+   ni Codex deben crear credenciales ni escribir contraseñas.
+
+Quedó una cuenta de prueba de Víctor **sin confirmar** en Auth › Users: al
+registrarse otra vez con el mismo correo se reenvía la confirmación; si no,
+borrarla desde ahí.
+
+### Lo que falta, en orden
+
+1. Víctor: contraseña de aplicación en Supabase (arriba).
+2. Prueba real en `https://revision.rwadar.pages.dev`: crear cuenta, recibir
+   «Confirma tu cuenta de RWAdar», confirmar, vigilar una plataforma, salir y
+   entrar, «He olvidado la contraseña», borrar la cuenta. Si un paso falla,
+   el motivo está en Supabase › Logs › Auth (abrir la fila y leer `error`).
+3. Publicar en producción desde la rama: `node rwadar-publicar.js --produccion`
+   (si sincroniza y ensucia JS/portada/sitemap: commit + nueva aprobación en
+   `estado.json` y repetir, como siempre) y comprobar con
+   `node .github/comprobar-publicado.mjs https://rwadar.pages.dev`.
+4. Supabase › URL Configuration: quitar `https://revision.rwadar.pages.dev/`
+   (y valorar quitar `https://rwadar.netlify.app/`, que es solo la página de
+   limpieza). Deben quedar solo los de `rwadar.pages.dev`.
+5. Unir el PR de `claude/abrir-cuentas` a `main`.
+6. Recomendado antes de anunciar cuentas: anti-robots Turnstile (sección
+   «Anti-robots» de `REABRIR-CUENTAS.md`: Víctor crea el widget y pega la
+   Secret Key en Supabase; la Site Key va al JS, CSP en `_headers` y
+   `rwadar-servir.js`, privacidad y pruebas).
+7. Gmail no está pensado para envíos masivos (unos cientos al día). A medio
+   plazo: dominio propio + Brevo (`REABRIR-CUENTAS.md`, opción B).
+
+### Otros pendientes que no son de cuentas
+
+- **El catálogo vence el 13/10** (lote `a0df3111`). Repetir la revisión antes
+  (`docs/CATALOGO-V2-2026-10-06.md`); si no, web y app muestran «Revisión
+  pendiente».
+- Modo de la sesión de Claude: aun fuera de «Auto», el filtro de Claude bloquea
+  pulsar «Run» en el SQL Editor de producción; Víctor tuvo que pulsarlo.
+
 ## 7 de octubre de 2026 · Claude (7) · catálogo del 06/10 en producción, web y app 1.2.0 publicadas
 
 - **Supabase:** Víctor pegó `aplicar-y-aprobar.sql` tres veces (SQL Editor).
