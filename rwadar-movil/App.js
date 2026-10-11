@@ -18,7 +18,10 @@ import {
   cargarSecundario, cargarExclusiones, proveedoresDeOfertas, textoBusquedaOferta,
   ofertasGuardadas, alternarOfertaGuardada,
 } from './lib/datos';
-import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './lib/modo-local';
+import {
+  MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E,
+} from './lib/modo-local';
+import { crearControladorCuentas } from './lib/cuentas';
 import { vigilarCaducidadCatalogo, programarRevisionDiaria } from './lib/catalogo-remoto';
 import {
   etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible,
@@ -29,6 +32,7 @@ import {
 import Explicador from './componentes/Explicador';
 import Academy from './componentes/Academy';
 import Inicio from './componentes/Inicio';
+import Cuenta from './componentes/Cuenta';
 import { LECCIONES } from './lib/academy-contenido';
 import Radar from './componentes/Radar';
 import Marca from './componentes/Marca';
@@ -113,7 +117,21 @@ export default function App() {
   const [procesandoAvisos, setProcesandoAvisos] = useState(false);
   const [borrandoDatos, setBorrandoDatos] = useState(false);
   const [slugAvisoPendiente, setSlugAvisoPendiente] = useState(null);
+  // Las cuentas no habilitan el UUID de instalaciones, push ni seguimiento
+  // antiguo. Su lista remota y los favoritos del dispositivo son distintos.
+  const [cuenta, setCuenta] = useState(null);
+  const [estadoCuenta, setEstadoCuenta] = useState(null);
   const { width: anchoPantalla } = useWindowDimensions();
+
+  useEffect(() => {
+    // Crear y liberar en el mismo efecto evita conservar un cliente del SDK
+    // al desmontar App y también soporta el doble setup de React StrictMode.
+    const controlador = crearControladorCuentas({ modoLocal: MODO_LOCAL,
+      cuentasRemotas: CUENTAS_REMOTAS, correoVerificado: CORREO_AUTH_E2E });
+    setCuenta(controlador);
+    const cancelarSuscripcion = controlador.suscribir(setEstadoCuenta);
+    return () => { cancelarSuscripcion(); controlador.destruir(); };
+  }, []);
 
   /* El `finally` no es adorno: si cualquiera de estas llamadas rechazara,
      `cargando` se quedaría en true y la pantalla de "Sintonizando el
@@ -710,6 +728,10 @@ export default function App() {
 
           {pestana === 'perfil' ? (
             <PantallaPerfil
+              cuenta={cuenta}
+              estadoCuenta={estadoCuenta}
+              plataformas={radar}
+              onAbrirEnlace={abrirEnlace}
               seguidas={seguidas}
               ofertasGuardadas={ofertasGuardadasVisibles}
               guardadasRetiradas={guardadas.length - ofertasGuardadasVisibles.length}
@@ -762,7 +784,7 @@ export default function App() {
           </SafeAreaProvider>
         </Modal>
 
-        <Privacidad visible={privacidad} onCerrar={() => setPrivacidad(false)}
+        <Privacidad visible={privacidad} onCerrar={() => setPrivacidad(false)} estadoCuenta={estadoCuenta}
           onBorrar={confirmarBorrado} borrando={borrandoDatos} />
       </SafeAreaView>
     </SafeAreaProvider>
@@ -869,9 +891,10 @@ function etiquetaEstadoAvisos(estado) {
   }
 }
 
-/* Perfil: la cuenta (cuando llegue a la app), lo guardado en este
-   dispositivo, los avisos y lo que antes estaba en «Más». */
+/* Perfil: cuenta opcional, vigilancia de la cuenta y favoritos locales.
+   El registro nunca se mezcla con el seguimiento de instalaciones antiguo. */
 function PantallaPerfil({
+  cuenta, estadoCuenta, plataformas = [], onAbrirEnlace,
   seguidas, ofertasGuardadas, guardadasRetiradas = 0, sinConexion, estadoAvisos, procesandoAvisos,
   refrescando, borrando, onActualizar, onAbrirEmpresa, onAbrirOferta, onExplorar, onActivarAvisos, onAjustes,
   onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar,
@@ -880,8 +903,11 @@ function PantallaPerfil({
   return (
     <ScrollView
       contentContainerStyle={e.masCuerpo}
+      keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag"
       refreshControl={<RefreshControl refreshing={refrescando} onRefresh={onActualizar} tintColor={C.senal} />}
     >
+      {cuenta ? <Cuenta controlador={cuenta} estado={estadoCuenta} plataformas={plataformas}
+        onAbrirEmpresa={onAbrirEmpresa} onAbrirEnlace={onAbrirEnlace} /> : (
       <View style={e.resumenDispositivo}>
         <View style={e.resumenMarca}><Marca tamano={48} /></View>
         <View style={{ flex: 1 }}>
@@ -900,6 +926,11 @@ function PantallaPerfil({
           <Text style={e.resumenNumeroEtiqueta}>GUARDADOS</Text>
         </View>
       </View>
+      )}
+
+      {estadoCuenta?.disponible ? <Text style={e.notaGuardadas}>
+        Los siguientes favoritos se guardan solo en este dispositivo. Son distintos de la lista de vigilancia de tu cuenta.
+      </Text> : null}
 
       <GrupoMenu titulo={`Empresas guardadas · ${seguidas.length}`}>
         {seguidas.length ? seguidas.map((p, i) => (
@@ -1305,7 +1336,7 @@ function PiePrivacidad({ onAbrir }) {
   );
 }
 
-function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
+function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onCerrar}>
       <SafeAreaProvider>
@@ -1321,6 +1352,20 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
             </Pressable>
           </View>
           <ScrollView contentContainerStyle={e.privacidadCuerpo}>
+            {!MODO_LOCAL && estadoCuenta?.disponible ? (
+              <>
+                <Text style={e.privacidadTit}>Cuenta opcional, la misma en web y app</Text>
+                <Text style={e.privacidadParrafo}>
+                  Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. RWAdar no guarda la contraseña en el dispositivo.
+                </Text>
+                <Text style={e.privacidadParrafo}>
+                  Tu lista de vigilancia de empresas se guarda en tu cuenta y es accesible desde la web y la app. No se envían los favoritos locales ni el progreso de Academy. La sesión vive solo en memoria: al cerrar la app tendrás que entrar de nuevo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.
+                </Text>
+                <Text style={e.privacidadParrafo}>
+                  Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil y la lista de vigilancia remota; los favoritos y el progreso locales se eliminan por separado con «Borrar datos del dispositivo».
+                </Text>
+              </>
+            ) : null}
             {MODO_LOCAL ? (
               <>
                 <Text style={e.privacidadTit}>Copia interna aislada</Text>
@@ -1342,7 +1387,8 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
               </>
             ) : USUARIO_LOCAL ? (
               <>
-                <Text style={e.privacidadTit}>Catálogo conectado, sin cuenta</Text>
+                <Text style={e.privacidadTit}>{estadoCuenta?.disponible
+                  ? 'Catálogo público, sin registro obligatorio' : 'Catálogo conectado, sin cuenta'}</Text>
                 <Text style={e.privacidadParrafo}>
                   La app consulta el catálogo público en Supabase. El proveedor de infraestructura recibe los datos técnicos de la conexión, como la dirección IP. Consultarlo no crea una cuenta ni un identificador de instalación de RWAdar.
                 </Text>
@@ -1350,7 +1396,8 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando }) {
                 <Text style={e.privacidadParrafo}>
                   Las empresas y ofertas guardadas (solo su identificador público) y el progreso de RWAdar Academy (lecciones leídas y aciertos del test) se guardan bajo claves rwadar.editorial.*. No se envían al servidor ni se crean operaciones pendientes de sincronización. La caché del catálogo permite consultar un lote válido sin conexión hasta su caducidad.
                 </Text>
-                <Text style={e.privacidadTit}>Servicios de usuario desactivados</Text>
+                <Text style={e.privacidadTit}>{estadoCuenta?.disponible
+                  ? 'Instalaciones y avisos desactivados' : 'Servicios de usuario desactivados'}</Text>
                 <Text style={e.privacidadParrafo}>
                   No se solicitan permisos push, obtienen tokens ni registran instalaciones. Cambiar de catálogo local a conectado no activa estos servicios.
                 </Text>

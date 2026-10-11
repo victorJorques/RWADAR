@@ -102,7 +102,7 @@ function arnesServiciosEditoriales(codigo, direccion) {
       let ses={access_token:'sesion-anterior',refresh_token:'renovacion-anterior',expira:Date.now()+3600000};
       ${funcion('async function auth(', 'function traduce(')}
       ${funcion('async function testigo(){', 'async function confirmarIdentidad(){')}
-      ${funcion('async function rest(', 'async function cargarMio(){')}
+      ${funcion('async function rest(', 'async function cargarMio(')}
       ${funcion('async function pide(', 'const idDe=')}
       return {auth,rest,pide,testigo};
     })();`, contexto);
@@ -132,7 +132,7 @@ function solicitarConHost(puerto, host) {
 }
 
 async function authRechazaJson2xxInvalido(codigo) {
-  const inicio = codigo.indexOf('async function auth(');
+  const inicio = codigo.indexOf('async function peticionCuenta(');
   const fin = codigo.indexOf('function traduce(', inicio);
   if (inicio < 0 || fin < 0) return false;
   const fuente = codigo.slice(inicio, fin);
@@ -257,7 +257,7 @@ async function operacionCuentaObsoletaNoMutaVista(codigo) {
   pruebaAlta.resolver({ id:'usuario-válido', email:'persona@example.test' });
   await pruebaAlta.ejecucion;
   return pruebaAlta.aperturas.length === 0 && pruebaAlta.entradas() === 0 &&
-    pruebaAlta.mensajes.length === 0 && pruebaAlta.limpiezas() === 1 &&
+    pruebaAlta.mensajes.length === 0 && pruebaAlta.limpiezas() === 0 &&
     pruebaAlta.nodos.get('cuentaEnviar')?.disabled === true;
 }
 
@@ -268,8 +268,10 @@ async function confirmarIdentidadLimpiaSesionAnteFallos(codigo) {
   const fuente = codigo.slice(inicio, fin);
   const ejecutar = async auth => {
     const fabrica = new Function('testigo', 'auth', `
-      let ses={access_token:'testigo'},versionSesion=1,identidadConfirmada=true,pintadas=0;
+      let ses={access_token:'testigo'},versionSesion=1,versionCuenta=1,identidadConfirmada=true,pintadas=0;
       const guarda=s=>{ses=s;versionSesion++;};
+      const vigente=inicio=>inicio===versionCuenta&&!!ses;
+      const correoValido=valor=>/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(valor);
       const pinta=()=>{pintadas++;};
       ${fuente}
       return {confirmarIdentidad,estado:()=>({ses,identidadConfirmada,pintadas})};
@@ -701,9 +703,9 @@ for (const recurso of [rutaScriptApp, rutaAnalitica, estilos[0][1], '/assets/pri
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
 const js = lee('.' + rutaScriptApp);
-// Las cuentas (fase 1) están encendidas en lo publicado. Las pruebas del camino
-// cerrado se ejecutan sobre la misma web con los dos interruptores apagados, para
-// que sigan garantizando que, si se apagan, la web no pide ni envía ningún dato.
+// El candidato abre las cuentas tras comprobar los correos reales de alta y
+// recuperación. También se prueba el cierre completo sobre el mismo código,
+// sin recoger ni enviar datos de cuentas en este ensayo aislado.
 const jsCerrado = js.replace('const SERVICIOS_USUARIO_REMOTOS=true;', 'const SERVICIOS_USUARIO_REMOTOS=false;')
   .replace(' const CORREO_AUTH_E2E=true;', ' const CORREO_AUTH_E2E=false;');
 const css = lee('.' + estilos[0][1]);
@@ -882,7 +884,7 @@ prueba('el cierre de cuentas conserva el lector de catálogo público y sus cuat
 prueba('la contraseña mínima es de 12 caracteres en HTML y JS',
   (html.match(/minlength="12"/g) || []).length === 2 && /clave\.length<12/.test(js));
 prueba('los testigos de sesión solo se guardan en memoria',
-  /const guarda=s=>\{ses=normalizaSesion\(s\)/.test(js) &&
+  /const guarda=\(s,mismaCuenta=false\)=>\{ses=normalizaSesion\(s\)/.test(js) &&
   !/localStorage\.(?:setItem|getItem)\([^)]*(?:access_token|refresh_token)/.test(js));
 prueba('la identidad se revalida contra Auth antes de usar la sesión', /auth\('\/user',null,\{metodo:'GET',token:tk\}\)/.test(js));
 prueba('la recuperación limpia el fragmento y abre cambio de contraseña',
@@ -981,7 +983,7 @@ prueba('alta y baja usan la RPC versionada; no escriben avisos_correo directamen
   !/rest\('\/perfiles[^']*',\{method:'PATCH',[\s\S]{0,180}avisos_correo/.test(js));
 prueba('la UX no cambia el estado mientras la RPC está pendiente y revierte ante fallo',
   /const anterior=correoConsentido,deseado=o\.checked;o\.disabled=true;/.test(js) &&
-  /o\.checked=anterior;/.test(js) && /finally\{o\.disabled=false;\}/.test(js) &&
+  /o\.checked=anterior;/.test(js) && /finally\{if\(vigente\(cuenta\)\)o\.disabled=false;\}/.test(js) &&
   /No se ha podido confirmar la retirada; la preferencia sigue activada/.test(js));
 
 for (const firma of ['/rpc/guardar_opinion','/rpc/borrar_mi_opinion','/rpc/denunciar_opinion',

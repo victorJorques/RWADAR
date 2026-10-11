@@ -13,6 +13,16 @@ condition = "AND"
 paths = ['''(^|/)rwadar-site/assets/analitica-20260927\.js$''']
 regexes = ['''^104ff4d825364641952c49aef4c94fb1$''']
 
+# El publicador copia el mismo beacon público en un asset con huella. Esta
+# excepción sigue limitada a ESE valor y a ESE nombre de recurso generado;
+# no permite claves administrativas, otros tokens ni otros archivos.
+[[allowlists]]
+description = "Copia versionada del mismo beacon público, generada por el publicador"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)rwadar-publicado/assets/analitica-20260927\.[0-9a-f]{12}\.js$''']
+regexes = ['''^104ff4d825364641952c49aef4c94fb1$''']
+
 [[rules]]
 id = "rwadar-supabase-personal-token"
 description = "Token personal administrativo de Supabase; no equivale a la clave publicable"

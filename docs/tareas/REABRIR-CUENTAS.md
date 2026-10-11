@@ -1,8 +1,68 @@
 # Reabrir las cuentas de RWAdar · qué falta y quién lo hace
 
+## Estado vigente · 11 de octubre de 2026 · Codex
+
+Las cuentas de la web pública siguen en pausa y el APK publicado continúa
+siendo el **1.2.0**, sin el panel nativo nuevo. No se ha desplegado el candidato.
+En la revisión, Víctor confirmó que **el correo de alta llega y su enlace
+funciona**, aunque llega a spam. También se mostró el perfil confirmado y
+funcionó cerrar sesión. Codex solicitó recuperación desde esa revisión: el
+correo **llegó a la bandeja de entrada**, con DKIM, SPF y DMARC correctos,
+comprobados solo mediante metadatos. No se leyeron cuerpo, enlace ni token.
+El cambio final de contraseña y la entrada posterior todavía no se han
+verificado; requieren que Víctor introduzca su contraseña directamente. No se
+considera terminado el recorrido por mostrar un mensaje de envío.
+
+La implementación de cuentas nativas y los refuerzos de la web están
+preparados en local. **El refuerzo de sesión ya está aplicado en Supabase** con
+permiso expreso del turno actual. La lectura posterior verificó RLS restrictivo,
+sesiones confirmadas y vigentes, exclusión de usuarios anónimos y esquema privado
+fuera de REST. El catálogo público sigue disponible: **26 plataformas y 49
+referencias; no está retirado**.
+
+La web candidata y la app nativa candidata **1.3.0** tienen encendidas solo las
+guardas de cuentas; las de servicios antiguos, instalaciones y push siguen
+apagadas. Víctor autorizó expresamente EAS Android y publicación en GitHub
+**sin cargos**. La compilación aún no se ha iniciado, mientras Codex comprueba
+la cuota. El candidato no se ha publicado en revisión ni producción, ni hay
+un APK nuevo publicado.
+
+La ejecución final de `npm test` con las guardas de cuentas activadas y la
+candidata nativa 1.3.0 finalizó correctamente: web 501, móvil 180 y SQL 196;
+QR y herramientas al día. Los ensayos finales de Chrome con servicios
+simulados pasaron 61 y 30 casos. La revisión independiente terminó sin bloqueos.
+Son pruebas locales, no un APK nuevo instalado ni una recuperación real
+terminada.
+
+El plan actualizado para **web y app**, pruebas y orden de publicación está
+en [`CUENTAS-WEB-MOVIL-2026-10-11.md`](CUENTAS-WEB-MOVIL-2026-10-11.md).
+Codex asume integración, configuración técnica, pruebas y publicación
+autorizada. Víctor solo introduce credenciales, abre sus enlaces, verifica su
+identidad y decide sobre las operaciones reservadas. No tiene tareas de código.
+Publicidad, pagos, opiniones, avisos y manual continúan apagados.
+
+**No ejecutar los pasos históricos de abajo como una receta vigente.** La
+migración `20261011074218_cuentas_sesion_confirmada.sql` se aplicó después de
+la 26 y se verificó en línea. Reaplicar 26 sustituiría funciones reforzadas:
+habría que volver a aplicar el refuerzo con autorización. No se ha publicado
+la web ni compilado o publicado una app nueva desde este trabajo.
+
+**Antecedente del correo, no estado actual:** el 11/10 a las 07:46 UTC Gmail
+rechazó el intento con SMTP 535. Después, Víctor confirmó la recepción y el
+enlace de alta. No recuperar contraseñas de historiales ni pedirlas en el chat.
+
+---
+
+## Plan histórico · 5 de octubre de 2026
+
 *5 de octubre de 2026 · Claude.* Fase 1: **crear cuenta, entrar, recuperar
 la contraseña, guardar la lista de vigilancia y borrar la cuenta.** Siguen
 cerrados, por decisión de Víctor: opiniones, avisos por correo y avisos push.
+
+**Todo el contenido que sigue pertenece a ese plan histórico.** Sus asignaciones
+a Víctor y sus estados de permisos, correo o publicación no son los vigentes.
+Para continuar se utiliza el plan del 11/10 enlazado arriba; Codex se encarga
+del trabajo técnico pendiente.
 
 ## Lo que ya está hecho (en el código, probado, sin tocar nada en línea)
 
