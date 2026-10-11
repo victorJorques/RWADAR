@@ -2,17 +2,17 @@
 
 App nativa en React Native con Expo (SDK 57).
 
-## Cuentas · candidato Android 1.3.0 del 11 de octubre de 2026
+## Cuentas · Android del 11 de octubre de 2026
 
 Se ha añadido un panel nativo para crear cuenta, confirmar correo, entrar,
 recuperar acceso, gestionar nombre y lista de vigilancia, salir y borrar la
 cuenta con contraseña recién comprobada y confirmación escrita. Usa la misma
 identidad y lista que la web; los favoritos locales siguen separados.
 
-`CUENTAS_REMOTAS=true` y `CORREO_AUTH_E2E=true` preparan el candidato autorizado
+`CUENTAS_REMOTAS=true` y `CORREO_AUTH_E2E=true` activan las cuentas opcionales
 tras comprobar un alta confirmada, acceso y cierre de sesión en la web, y la
 entrega real del correo de recuperación. El cambio final de contraseña y el
-APK instalado requieren comprobaciones aparte. No activar
+alta/inicio/baja real desde Android y un teléfono físico requieren comprobaciones aparte. No activar
 `SERVICIOS_USUARIO_REMOTOS`: esa guarda antigua protege instalaciones,
 sincronización histórica y push, que siguen apagados.
 
@@ -22,9 +22,11 @@ esquemas de URL ni permisos al sistema. El panel no anuncia notificaciones.
 
 `npm test` incluye las pruebas del motor con SDK real y transporte simulado,
 la interfaz, el desmontaje y los permisos del paquete. No equivale a una
-prueba de correo ni a instalar la app. La versión publicada sigue siendo la
-1.2.0 anterior a este panel hasta revisar y publicar el APK 1.3.0. Compilación
-EAS solo si hay cuota gratuita: no contratar ni aceptar cargos adicionales.
+prueba de correo ni a instalar la app. **Android 1.3.0/código13 ya está publicado**
+y su APK exacto superó instalación/navegación/formularios en emulador API35,
+firma y descarga pública anónima. **1.3.1** corrige un margen de la nota local
+y el singular de favoritos; todavía necesita su propio binario y QA.
+Compilación EAS solo si hay cuota gratuita: no contratar ni aceptar cargos adicionales.
 Plan y requisitos: [`CUENTAS-WEB-MOVIL-2026-10-11.md`](../docs/tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
 
 ## Corte editorial conectado · 28 de septiembre de 2026

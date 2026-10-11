@@ -666,7 +666,7 @@ jobs:
           # Completed job logs can take a little time to become downloadable.
           ready=NO
           for attempt in 1 2 3 4 5 6; do
-            if gh api "repos/$GITHUB_REPOSITORY/actions/jobs/$job_id/logs" > qa-job.log; then
+            if gh api --allow-escape-sequences "repos/$GITHUB_REPOSITORY/actions/jobs/$job_id/logs" > qa-job.log; then
               ready=SI
               break
             fi
@@ -675,7 +675,9 @@ jobs:
           test "$ready" = SI
           python3 - <<'PY'
           import base64, hashlib, io, json, os, pathlib, re, zipfile
-          log = pathlib.Path('qa-job.log').read_text(encoding='utf-8')
+          # GitHub concatenates log blocks with UTF-8 BOMs; these are transport,
+          # never base64 data. Exact size, sequence, SHA and ZIP CRC remain required.
+          log = pathlib.Path('qa-job.log').read_text(encoding='utf-8').replace('\ufeff', '')
           # Anchor after the optional GitHub ISO timestamp. Echoed script source
           # cannot be mistaken for emitted lines, and sequence/size/hash are exact.
           prefix = r'^(?:\d{4}-\d{2}-\d{2}T[^ ]+ )?'

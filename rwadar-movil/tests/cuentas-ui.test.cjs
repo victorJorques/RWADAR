@@ -296,6 +296,60 @@ test('App integra cuentas aparte de instalaciones, conserva favoritos y no activ
   assert.doesNotMatch(app, /cuenta\.registrar\(/, 'registrarse no ocurre al arrancar la app');
 });
 
+/* Renderiza las secciones y sus estilos reales sin arrancar App/Expo ni el
+   controlador. Detecta regresiones de separación que un SSR sin layout no ve. */
+function seccionesPerfil() {
+  const app = fs.readFileSync(path.join(RAIZ, 'App.js'), 'utf8');
+  const ast = babel.parseSync(app, { babelrc: false, configFile: false, parserOpts: { plugins: ['jsx'] } });
+  const funciones = ast.program.body.filter((n) => n.type === 'FunctionDeclaration'
+    && ['PantallaPerfil', 'Cabecera'].includes(n.id.name));
+  const estilos = ast.program.body.flatMap((n) => n.type === 'VariableDeclaration' ? n.declarations : [])
+    .find((n) => n.id.type === 'Identifier' && n.id.name === 'e');
+  assert.ok(estilos?.init?.arguments?.[0], 'falta StyleSheet.create de App');
+  const seleccion = babel.types.cloneNode(estilos, true);
+  seleccion.init.arguments[0].properties = seleccion.init.arguments[0].properties.filter((p) =>
+    ['notaFavoritosLocales', 'notaGuardadas', 'grupoSeccion'].includes(p.key?.name));
+  ast.program.body = [...funciones, babel.types.variableDeclaration('const', [seleccion])];
+  const js = babel.transformFromAstSync(ast, app, { babelrc: false, configFile: false, plugins: [jsx] }).code;
+  const entorno = {
+    React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
+    StyleSheet: { create: (s) => s }, T: tema.T, C: colores, MODO_LOCAL: false, USUARIO_LOCAL: true,
+  };
+  for (const nombre of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono',
+    'Cuenta', 'GrupoMenu', 'FilaMenu', 'PanelAvisos']) entorno[nombre] = nombre;
+  return new Function(...Object.keys(entorno), `${js}; return { PantallaPerfil, Cabecera, e };`)(...Object.values(entorno));
+}
+
+test('la nota después de Cuenta queda separada y no hereda el margen negativo de ofertas retiradas', () => {
+  const ui = seccionesPerfil();
+  const perfil = ui.PantallaPerfil({ cuenta: {}, estadoCuenta: { disponible: true },
+    seguidas: [], ofertasGuardadas: [], guardadasRetiradas: 1 });
+  const hijos = perfil.children.flat(Infinity).filter((n) => n && typeof n === 'object');
+  const posicionCuenta = hijos.findIndex((n) => n.type === 'Cuenta');
+  assert.ok(posicionCuenta >= 0);
+  const nota = hijos[posicionCuenta + 1];
+  assert.equal(nota.type, 'Text');
+  assert.match(texto(nota), /Los siguientes favoritos se guardan solo en este dispositivo/);
+  assert.equal(nota.props.style, ui.e.notaFavoritosLocales);
+  assert.equal(nota.props.style.marginTop, 16, 'la nota debe empezar debajo del borde de la tarjeta');
+  assert.equal(nota.props.style.marginBottom, 22);
+  assert.notEqual(nota.props.style, ui.e.notaGuardadas);
+  const historica = hijos.find((n) => n.type === 'Text' && texto(n).includes('Una oferta guardada'));
+  assert.equal(historica.props.style, ui.e.notaGuardadas);
+  assert.equal(historica.props.style.marginTop, -14);
+  assert.equal(ui.e.grupoSeccion.marginBottom, 25, 'el margen histórico compensa el negativo de la nota de retiradas');
+});
+
+test('la cabecera de Perfil distingue cero, un guardado y varios guardados', () => {
+  const ui = seccionesPerfil();
+  for (const [guardados, esperado] of [[0, 'Lo que guardas, avisos y privacidad'],
+    [1, '1 guardado en este dispositivo'], [2, '2 guardados en este dispositivo']]) {
+    const cabecera = ui.Cabecera({ pestana: 'perfil', guardados });
+    assert.ok(nodos(cabecera).some((n) => n.type === 'Text' && texto(n) === esperado), esperado);
+    assert.doesNotMatch(texto(cabecera), /1 guardados/);
+  }
+});
+
 test('el efecto de App libera el controlador y vuelve a crear uno sano al repetirse en StrictMode', () => {
   const app = fs.readFileSync(path.join(RAIZ, 'App.js'), 'utf8');
   const ast = babel.parseSync(app, { babelrc: false, configFile: false, parserOpts: { plugins: ['jsx'] } });

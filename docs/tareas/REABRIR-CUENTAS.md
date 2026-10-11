@@ -5,8 +5,10 @@
 **Las cuentas ya están activadas en la web pública desde el 11/10**, en
 `https://rwadar.pages.dev`. La publicación pasó **35/35** comprobaciones HTTP y
 **64/64** comparaciones de recursos por huella; se observaron alta, entrada y
-Perfil en el navegador de producción. El APK publicado en GitHub continúa
-siendo el **1.2.0**, sin el panel nativo nuevo.
+Perfil en el navegador de producción. **Android 1.3.0, código 13, también está
+publicado** en [GitHub](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.0),
+con cuentas opcionales. El flujo de QA y release terminó correctamente y la
+API anónima confirmó un lanzamiento final, no borrador ni prerelease.
 En la revisión, Víctor confirmó que **el correo de alta llega y su enlace
 funciona**, aunque llega a spam. También se mostró el perfil confirmado y
 funcionó cerrar sesión. Codex solicitó recuperación desde esa revisión: el
@@ -23,21 +25,47 @@ sesiones confirmadas y vigentes, exclusión de usuarios anónimos y esquema priv
 fuera de REST. El catálogo público sigue disponible: **26 plataformas y 49
 referencias; no está retirado**.
 
-La web publicada y el APK nativo candidato **1.3.0** tienen encendidas solo las
+La web publicada y el APK nativo publicado **1.3.0** tienen encendidas solo las
 guardas de cuentas; las de servicios antiguos, instalaciones y push siguen
 apagadas. Víctor autorizó expresamente EAS Android y publicación en GitHub
 **sin cargos**. El APK **1.3.0, código 13**, ya se compiló gratis y pasó la
 comprobación de firma y tamaño. EAS muestra uso **2/15** de la cuota gratuita,
-sin cargos; Expo Doctor pasó **21/21**. Falta ejecutar sus pruebas de uso antes
-de publicarlo en GitHub. Un paquete compilado y firmado no prueba por sí solo
-que sus cuentas funcionen en un Android instalado.
+sin cargos; Expo Doctor pasó **21/21**. **La QA de ejecución del mismo APK
+intacto pasó en un emulador API 35:** Inicio, búsqueda con 26 plataformas y 49
+referencias, Spiko, Academy con siete lecciones y una lección abierta, favorito
+conservado tras reiniciar y formularios de cuentas. Los campos de contraseña y
+confirmación estaban ocultos y vacíos; la entrada vacía se rechazó localmente.
+No se introdujeron contraseñas, enviaron correos ni crearon cuentas: **no es
+Auth E2E nativo ni una prueba en hardware físico**. El paso de release del
+primer flujo de QA se omitió deliberadamente. El nuevo flujo autorizado sí
+terminó con **QA y publicación exitosas**: versión 1.3.0 pública desde el
+**11/10 a las 09:17:18 UTC**. La API publica el APK, evidencia y sumas; no se
+modificó el APK probado. La descarga anónima local ya terminó correctamente:
+tamaño y huellas de APK y ZIP coinciden con la API y `SHA256SUMS.txt`, y
+`apksigner` volvió a confirmar la firma prevista. Se validaron las entradas
+del ZIP antes de extraerlo y se leyó el resultado completo de QA, que conserva
+sus límites de Auth E2E, SMTP y hardware físico.
+
+Codex revisó las seis capturas descargadas de Inicio, ofertas, Academy,
+Spiko, alta y recuperación. La revisión es acotada: un pequeño solape de la
+nota de favoritos con el formulario de recuperación motiva una revisión de
+acabado **1.3.1 en preparación, todavía no publicada**. La 1.3.0 pública y
+verificada sigue siendo el estado vigente.
 
 La ejecución final de `npm test` con las guardas de cuentas activadas y la
 candidata nativa 1.3.0 finalizó correctamente: web 501, móvil 180 y SQL 196;
 QR y herramientas al día. Los ensayos finales de Chrome con servicios
 simulados pasaron 61 y 30 casos. La revisión independiente terminó sin bloqueos.
-Son pruebas locales, no un APK nuevo instalado ni una recuperación real
-terminada.
+Son pruebas locales independientes de la QA del APK instalado en emulador;
+no acreditan la recuperación real terminada ni Auth E2E nativo.
+
+La auditoría de dependencias **no está limpia**: 23 avisos de paquetes
+(16 high y 7 moderate), derivados de tres advisories. El análisis de alcance
+no demostró una vía vulnerable en el APK actual para esos tres problemas;
+no garantiza que no existan otros. No se hicieron cambios de paquetes ni
+arreglos forzados para ocultar los avisos. Codex mantiene el seguimiento y
+prepara una actualización compatible. Detalle y límites en
+[`../VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md`](../VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md).
 
 El plan actualizado para **web y app**, pruebas y orden de publicación está
 en [`CUENTAS-WEB-MOVIL-2026-10-11.md`](CUENTAS-WEB-MOVIL-2026-10-11.md).
@@ -50,8 +78,11 @@ Publicidad, pagos, opiniones, comunidad, avisos y manual continúan apagados.
 migración `20261011074218_cuentas_sesion_confirmada.sql` se aplicó después de
 la 26 y se verificó en línea. Reaplicar 26 sustituiría funciones reforzadas:
 habría que volver a aplicar el refuerzo con autorización. La web ya se publicó
-y el APK nuevo se compiló; su prueba de ejecución y publicación siguen
-pendientes.
+y el APK nuevo se compiló, pasó su prueba de ejecución en emulador y se publicó
+en GitHub; su descarga pública, sumas y firma también se comprobaron.
+Quedan el flujo completo de cuentas nativas y la prueba en un teléfono físico;
+no se presentan como realizados. El cambio final de contraseña real también
+sigue pendiente, y la revisión de acabado 1.3.1 aún no está publicada.
 
 **Antecedente del correo, no estado actual:** el 11/10 a las 07:46 UTC Gmail
 rechazó el intento con SMTP 535. Después, Víctor confirmó la recepción y el

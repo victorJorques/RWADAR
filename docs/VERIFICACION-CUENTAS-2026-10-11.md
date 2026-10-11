@@ -129,15 +129,14 @@ El escaneo repetido terminó con código 0 y **ningún secreto detectado**.
 Estos ensayos no envían correos, no modifican usuarios reales y no demuestran
 por sí solos SMTP, funcionamiento en un dispositivo o tiendas.
 
-## Publicación y límites pendientes
+## Publicación y límites de la comprobación
 
-El candidato web activa acceso, alta y recuperación; mantiene las guardas de
-opiniones, avisos, comunidad y manual apagadas. Android candidato 1.3.0 activa
+La web publicada activa acceso, alta y recuperación; mantiene las guardas de
+opiniones, avisos, comunidad y manual apagadas. Android 1.3.0 activa
 solo `CUENTAS_REMOTAS` y `CORREO_AUTH_E2E`; el motor histórico permanece apagado.
-La cuenta EAS está en Free; se comprobaron 1 de 15 compilaciones Android
-utilizadas en octubre, sin sobrecostes ni complemento de pago. La compilación
-utilizará el perfil editorial, APK, credenciales existentes y sin OTA.
-El APK necesita su propia revisión antes de publicarse.
+La cuenta EAS está en Free; antes de compilar tenía 1 de 15 compilaciones Android
+utilizadas en octubre, sin sobrecostes ni complemento de pago. Se usó el perfil
+editorial, APK, credenciales existentes congeladas y sin OTA.
 
 Fuente revisada en `a213373af21ab009dffa0cb81bcee3384c6775c3`; manifiesto y
 traspaso en `3a0d9536d01c3613e8d79939cce9d9b40072f108`. La revisión web se
@@ -158,7 +157,8 @@ nativas **180/180**. La compilación EAS editorial gratuita se inició a las
 08:41 UTC, versión 1.3.0/código 13, commit real `3a0d9536d01c3613e8d79939cce9d9b40072f108`,
 credenciales existentes congeladas y solo 44 archivos móviles (661 KB).
 Ejecución: <https://expo.dev/accounts/trapis-team/projects/rwadar/builds/7523ec9a-79d9-4775-893e-50c00022f494>.
-Esto no demuestra todavía instalación ni publicación del APK.
+La compilación y las pruebas locales no sustituyen la instalación del APK exacto
+ni su posterior descarga desde el enlace público permanente.
 
 Producción web publicada con el publicador canónico (salida 0) en
 <https://4c7d38e5.rwadar.pages.dev>, principal <https://rwadar.pages.dev>.
@@ -179,7 +179,74 @@ Binario **85.622.388 bytes**, SHA-256
 `aapt` confirmó `com.rwadar.app`, 1.3.0/código 13, SDK mínimo 24/objetivo 36,
 exactamente cuatro permisos previstos, backup y OTA desactivados. Cuota EAS
 posterior: Free 2/15 Android, sobrecostes y facturación estimada cero.
-Todavía falta registrar instalación, ejecución y publicación del APK.
+El APK exacto pasó instalación y ejecución en un emulador Android API35:
+<https://github.com/victorJorques/RWAdar-downloads/actions/runs/38126514363>.
+Job `114431885819`, commit del flujo público `e2ffc88366ee3253f2d67b057eb9a8859484d97b`.
+Se comprobaron arranque, ausencia de caída/errores JS, navegación Inicio/Buscar/
+Academy/Perfil, catálogo completo 26/49, ficha de Spiko, favorito local que
+persistió después de reiniciar el proceso, siete lecciones y apertura/cierre
+de la primera, formularios de acceso/alta/recuperación/confirmación, contraseña
+enmascarada y validación de acceso vacío. No se introdujeron credenciales,
+aceptaron condiciones, visitaron enlaces de inversión ni escribieron datos remotos.
+
+El resultado marca expresamente `authEndToEndTested=false`, `smtpTested=false`
+y `physicalDevice=false`. La instalación/navegación y los formularios nativos
+están probados; un alta/inicio/baja real desde Android y un móvil físico no lo están.
+La captura nativa de alta se extrajo, comprobó y revisó visualmente: campos vacíos,
+condiciones desmarcadas y botones legales separados. Archivo fuera de Git:
+`rwadar-android-130-20261011/qa-38126514363/10-perfil-alta-sin-aceptacion.png`,
+180.287 bytes, SHA-256
+`1e44d5d5ade92fa5b74dc5ff25445a58e7e81de11af9dbe7e2a32f35452d1a76`.
+El lector visual de ofertas excedió su límite de exportación: no se presenta
+como prueba visual superada ni como fallo funcional de la app.
+
+El flujo usa un runner público estándar gratuito y evidencia acotada en sus
+logs, sin `upload-artifact`, cachés ni minutos privados. La repetición autorizada
+<https://github.com/victorJorques/RWAdar-downloads/actions/runs/38127611672>
+terminó con **éxito**: job QA `114435137044` y publicación `114435715230`,
+todos los pasos aprobados. Se repitió el QA del mismo binario, recuperó su
+evidencia exacta, creó una versión nueva en borrador sin sobrescribir las
+anteriores, comprobó los activos subidos y solo después hizo pública la versión.
+
+**Android 1.3.0 está publicado** desde las **09:17:18 UTC**:
+<https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.0>.
+La API pública confirmó que es la versión latest, no un borrador ni prerelease.
+El navegador anónimo mostró el título de esa versión y sus instrucciones.
+Codex descargó desde el enlace permanente, sin autenticación, el APK y la
+evidencia en `C:/Users/vcicr/Downloads/rwadar-android-130-publicado-20261011/`:
+
+- `RWAdar.apk`: **85.622.388 bytes**, misma huella
+  `0bc76f885a4dde467e428e0abb9eddb773092d36f9bc474227e487ce96dbda32`.
+  `apksigner` volvió a verificar v2, un firmante y el certificado previsto.
+- `rwadar-android-130-evidence.zip`: **6.658.600 bytes**, SHA-256
+  `d927d98f03472701f4acc2b7820494a67d41d0672f7086c0a58e70f01641ba6a`.
+  Coincide con `SHA256SUMS.txt` y la huella del activo en GitHub. Se validó la
+  lista acotada de entradas antes de extraer; el workflow comprobó además CRC.
+- `result.json`: instalación, arranque, navegación, 26/49, siete lecciones,
+  detalle documental, favorito persistente y formularios correctos. Mantiene
+  explícitamente las tres limitaciones Auth E2E/SMTP/dispositivo físico en false.
+
+Se revisaron visualmente las capturas descargadas de Inicio, ofertas, Academy,
+detalle Spiko, alta y recuperación. No se introdujeron datos ni credenciales.
+La APK es distribución directa firmada: **no supone publicación en Google Play
+ni en la App Store**. En iPhone está disponible la web.
+El commit público `f01dbc2` publicó y verificó; `6d4280e` volvió a dejar
+`PUBLICAR_RELEASE=NO` sin iniciar otro lanzamiento. El README público se
+actualizó en `d045b4c` para explicar cuentas opcionales y correos.
+
+## Dependencias: advertencias presentes, alcance revisado
+
+`npm audit --omit=dev --audit-level=high` terminó con código **1**: 23 avisos
+(16 altos, 7 moderados, ninguno crítico), propagados desde tres advisories.
+No es una auditoría limpia. Se evaluaron los caminos reales de `braces`,
+`node-forge` y `uuid` con dependencias finales, los 44 archivos de la compilación
+y un export local Android con 920 módulos/927 fuentes en su mapa.
+No se demostró un camino vulnerable alcanzable en este APK: los paquetes
+afectados son herramientas de compilación y las llamadas de UUID examinadas
+usan v4, no las variantes vulnerables. Eso no demuestra seguridad absoluta ni
+equivale a descompilar el bytecode Hermes del APK. No se forzó una actualización
+incompatible, cambió el binario ni ocultaron los avisos. Evaluación y límites:
+[`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md`](VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md).
 
 La entrega en spam del alta es un problema de entregabilidad, no resuelto
 porque un segundo mensaje llegue a INBOX. Un dominio de envío propio y un

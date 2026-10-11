@@ -126,7 +126,7 @@
     },
     "beta_segura_extremo_a_extremo": {
       "estado": "aprobado",
-      "detalle": "Corte web del 11/10 comprobado en la revisión publicada: 35 controles HTTP y los 64 archivos idénticos al artefacto aprobado; formularios de acceso, alta y recuperación y catálogo íntegro observados en navegador. Correos reales recibidos, perfil/salida observados y SQL aplicado/postverificado. Esto aprueba la publicación web, no afirma un cambio real de contraseña ni una baja real. Android 1.3.0 tiene compilación y QA de binario separados: no se publica hasta superar su propio control. Los informes anteriores describen versiones históricas.",
+      "detalle": "Corte web del 11/10 comprobado en la revisión publicada: 35 controles HTTP y los 64 archivos idénticos al artefacto aprobado; formularios de acceso, alta y recuperación y catálogo íntegro observados en navegador. Correos reales recibidos, perfil/salida observados y SQL aplicado/postverificado. Esto aprueba la publicación web, no afirma un cambio real de contraseña ni una baja real. Android 1.3.0 superó su QA de binario y descarga pública; la revisión de acabado 1.3.1 aún requiere sus propios controles. La revocación declarada del incidente anterior es evidencia histórica y no sustituye esta comprobación. Los informes anteriores describen versiones históricas.",
       "evidencias": [
         {
           "tipo": "prueba",

@@ -9,8 +9,12 @@ antigua de `Downloads` ni sus carpetas sin seguimiento de manual/descargas.
 11/10**, despliegue `4c7d38e5`. Pasó **35/35** comprobaciones HTTP y **64/64**
 comparaciones de recursos por SHA; se observaron los formularios de alta,
 entrada y Perfil en el navegador de producción. El APK **1.3.0, código 13**, se
-compiló con EAS sin cargos y pasó las comprobaciones de firma y tamaño. Todavía
-falta su prueba de ejecución y publicación en GitHub. No se ha enviado a tiendas
+compiló con EAS sin cargos, pasó las comprobaciones de firma y tamaño y la QA
+de ejecución del mismo APK intacto en emulador API 35. **Ya está publicado** en
+[GitHub, versión 1.3.0](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.0):
+el flujo iniciado mediante `f01dbc2`, en `codex/android-130-release`, terminó
+con éxito en QA y release; la API anónima confirma la publicación final.
+No se ha enviado a tiendas
 ni activado publicidad o cobros. El refuerzo SQL se aplicó con permiso expreso
 y se verificó después mediante consultas de lectura.
 
@@ -25,9 +29,11 @@ el cambio final de contraseña ni la entrada posterior con esa contraseña
 nueva. Víctor la introduce directamente, nunca en el chat. La recuperación
 real no se declara completada.
 El catálogo público sigue disponible, con **26 plataformas y 49 referencias**;
-no está retirado. El APK disponible continúa siendo el **1.2.0**, anterior a
-estos cambios. El APK nativo candidato **1.3.0** está compilado y su paquete
-está revisado, pero aún no se ha verificado mediante ejecución ni publicado.
+no está retirado. El APK disponible ya es el **1.3.0**, con estos cambios:
+compilado, revisado, probado en emulador y publicado. La descarga anónima local
+del release ya terminó correctamente: APK y evidencia coinciden con las sumas
+y metadatos públicos; la firma del APK descargado volvió a verificarse.
+Una revisión de acabado **1.3.1/código 14 está en preparación**, no publicada.
 
 ## Cambios integrados
 
@@ -68,16 +74,20 @@ permiten usar las cuentas. La recepción de confirmación ya
 está acreditada por Víctor; la recuperación real todavía no se considera
 completada. El valor del interruptor no es una prueba de recuperación por sí
 mismo; los flujos pendientes se comprueban sobre la versión realmente servida.
-La app candidata **1.3.0** tiene `CUENTAS_REMOTAS=true` y
+La app publicada **1.3.0** tiene `CUENTAS_REMOTAS=true` y
 `CORREO_AUTH_E2E=true` para comprobar estos mismos flujos. Su guarda antigua
-`SERVICIOS_USUARIO_REMOTOS=false` se conserva. Su APK está compilado, pero aún
-no existe una prueba de ejecución que acredite el funcionamiento nativo real.
+`SERVICIOS_USUARIO_REMOTOS=false` se conserva. Su APK está compilado y probado
+en emulador. La QA no introdujo credenciales ni completó Auth nativo; no
+equivale a una prueba en un teléfono físico.
 
 Víctor autorizó expresamente en este turno la compilación **Android con EAS**
 y publicación del APK verificado en **GitHub, sin cargos**. La compilación ya
 terminó dentro de la cuota gratuita: EAS registra **2/15**, **sin cargos**.
-Expo Doctor pasó **21/21**. La firma y el tamaño del APK se comprobaron; sigue
-pendiente su prueba de ejecución antes de publicarlo. Si otro paso exige un
+Expo Doctor pasó **21/21**. La firma, el tamaño y la ejecución del mismo APK
+en emulador se comprobaron, y la publicación en GitHub ya terminó con éxito.
+La descarga anónima del release y su comparación local también terminaron
+correctamente; esta evidencia corresponde a la 1.3.0, no a la revisión de
+acabado 1.3.1 en preparación. Si otro paso exige un
 cargo, esa autorización no permite aceptarlo.
 
 **No encender `SERVICIOS_USUARIO_REMOTOS` de la app**: protege la identidad
@@ -104,16 +114,23 @@ las cuentas. El catálogo público tampoco depende de estas compuertas.
    Cualquier cambio posterior exige pruebas y una aprobación nueva antes de
    republicar. No reciclar aprobaciones de hashes anteriores ni declarar
    terminado lo no comprobado.
-4. Conservar solo las guardas nativas de cuentas activadas en la candidata
-   1.3.0 ya compilada. Instalar el mismo APK cuya firma y tamaño se verificaron
-   y comprobar interfaz y flujos en Android antes de publicarlo en GitHub.
+4. Conservar solo las guardas nativas de cuentas activadas en la publicada
+   1.3.0, compilada y probada en emulador. La descarga anónima y la comparación
+   de APK, evidencia, sumas y firma ya están verificadas. Preparar la revisión
+   de acabado 1.3.1/código 14 y someter el nuevo APK a sus propias pruebas y
+   comprobaciones; no reutilizar como resultado suyo la QA de 1.3.0 ni darlo
+   por publicado antes de verificar su release y descarga.
    La autorización actual es **sin cargos**: si otro paso requiere pagar,
    detenerlo, no aceptar el coste. No presentar pruebas Node/SSR o verificación
-   del paquete como una instalación real; no publicar el binario sin esa QA.
-5. Mantener el enlace web público ya verificado y entregar el APK nuevo solo
-   después de su prueba de ejecución y publicación. La 1.2.0 existente no
-   incorpora estos cambios. Tiendas e iOS siguen siendo entregas
+   del paquete como una instalación real ni QA de formularios como Auth E2E.
+5. Entregar los enlaces de web y Android 1.3.0 públicos, con sus comprobaciones
+   y límites explícitos. La 1.2.0 queda como versión anterior sin el panel nuevo.
+   Tiendas e iOS siguen siendo entregas
    distintas, con sus requisitos de identidad y pruebas.
+6. Mantener visibles los avisos de dependencias y preparar una actualización
+   compatible del tooling. Revaluar el alcance antes de otra compilación,
+   activar OTA o cambiar el árbol runtime; no utilizar `audit fix --force`
+   ni rebajas de Expo como sustituto de una corrección validada.
 
 Codex asume toda integración, configuración no secreta, pruebas y publicación
 que se autoricen. A Víctor solo le corresponden credenciales/verificación de
@@ -138,16 +155,95 @@ La web publicada pasó **35/35** comprobaciones HTTP y **64/64** comparaciones
 de recursos por SHA. Las vistas de alta, entrada y Perfil se observaron en
 producción. El APK 1.3.0 pasó comprobaciones de firma y tamaño; Expo Doctor
 pasó **21/21**, y la compilación EAS se realizó sin cargos. Son controles
-distintos de la ejecución real del APK, que permanece pendiente.
+distintos de la QA real del APK instalado en emulador, descrita a continuación.
 
 Esas pruebas locales usan fixtures y no envían correos, no escriben en Supabase
 y no prueban ni la firma de los JWT reales ni los triggers internos de GoTrue.
 La aplicación y postlectura del refuerzo SQL, la confirmación de correo por
 Víctor, el perfil y la salida visibles, y los metadatos de entrega de recuperación
 son evidencias en línea distintas. No acreditan todavía una recuperación real
-completada ni un APK nuevo instalado.
-La comprobación móvil interactiva no llegó a completarse con Metro local:
-no se conserva ni se contabiliza como prueba un arnés no verificado.
+completada ni Auth E2E nativo.
+
+### QA de ejecución Android superada · mismo APK intacto
+
+Ejecución `38126514363`, trabajo `114431885819`: **PASS**. Se instaló el APK
+1.3.0, código 13, sin modificarlo, en un emulador **API 35**. Se comprobaron:
+
+- Inicio y búsqueda: **26 plataformas y 49 referencias**, y ficha de Spiko.
+- Academy: **siete lecciones publicadas** y apertura de una lección.
+- Favorito local conservado después de reiniciar la app.
+- Formularios de entrada, alta y recuperación; campos de contraseña y
+  confirmación ocultos y vacíos; validación local de entrada vacía.
+
+No se introdujeron contraseñas, enviaron correos, crearon cuentas ni aceptaron
+condiciones personales; no se usó hardware físico. La prueba **no acredita
+Auth E2E nativo**. En ese primer flujo, el paso de release quedó **SKIPPED**
+por la elección deliberada **NO**. El flujo posterior autorizado terminó con
+éxito y publicó el release; las comprobaciones de la API pública se registran
+por separado abajo. La QA no se confunde con Auth E2E nativo.
+
+**Antecedente local:** el intento anterior de comprobación móvil interactiva
+con Metro no se completó; no se conserva ni se contabiliza ese arnés no
+verificado. La QA válida de esta entrega es la del APK instalado descrita arriba.
+
+### Publicación Android confirmada · 11/10, 09:17:18 UTC
+
+Flujo público `38127611672`: trabajos de QA `114435137044` y release
+`114435715230`, ambos **completed/success**, con todos sus pasos correctos.
+La API anónima de `releases/latest` confirma **v1.3.0**, `draft=false`,
+`prerelease=false` y `published_at=2026-10-11T09:17:18Z`.
+Release final:
+[RWAdar 1.3.0](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.0).
+
+Activos descargados anónimamente y comparados con sus metadatos públicos:
+
+| Activo | Bytes | Huella pública y comparación local |
+|---|---:|---|
+| `RWAdar.apk` | 85.622.388 | `0bc76f885a4dde467e428e0abb9eddb773092d36f9bc474227e487ce96dbda32` |
+| `rwadar-android-130-evidence.zip` | 6.658.600 | `d927d98f03472701f4acc2b7820494a67d41d0672f7086c0a58e70f01641ba6a` |
+| `SHA256SUMS.txt` | 175 | Coincide con las huellas locales de APK y ZIP |
+
+La descarga anónima desde los enlaces permanentes terminó con **salida 0**, en
+`C:/Users/vcicr/Downloads/rwadar-android-130-publicado-20261011/`. El APK
+descargado es idéntico al probado; `apksigner` volvió a verificar firma v2,
+un firmante y el certificado previsto. La lista acotada de entradas del ZIP
+se validó antes de expandirlo en `qa/evidence/`; el flujo también comprobó CRC.
+Se leyó completo el `result.json` de `38127611672`, con instalación, navegación,
+catálogo, Academy, detalle, favorito persistente y formularios correctos.
+Conserva `authEndToEndTested=false`, `smtpTested=false` y `physicalDevice=false`:
+no acredita Auth nativo real, hardware físico ni cambio real de contraseña.
+
+Codex revisó visualmente las seis capturas descargadas de Inicio, ofertas,
+Academy, detalle Spiko, alta y recuperación, sin datos ni credenciales. Es una
+revisión acotada, no una afirmación de interfaz perfecta. Se detectó que la
+nota de favoritos invade unos 14 dp el borde del formulario de recuperación,
+por `marginTop: -14`; se prepara la revisión de acabado **1.3.1/código 14**,
+todavía no publicada. El resultado de 1.3.0 no se presenta como QA de ese
+nuevo binario.
+
+El commit público `6d4280e` dejó de nuevo `PUBLICAR_RELEASE=NO` sin iniciar
+otro lanzamiento; `d045b4c` actualizó el README público sobre las cuentas
+opcionales de 1.3.0. Google Play y App Store siguen fuera de esta publicación.
+
+### Dependencias: avisos presentes y alcance documentado
+
+Informe específico:
+[`../VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md`](../VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md).
+`npm audit --omit=dev --audit-level=high` **NO pasa**: **23** avisos de paquetes,
+**16 high**, **7 moderate**, cero critical. Son tres advisories base y sus
+dependencias propagadas, no 23 exploits independientes demostrados en la app.
+
+El análisis revisó braces, node-forge y uuid, sus consumidores y el inventario
+del runtime Android exportado en una copia aislada. No se demostró una vía
+vulnerable alcanzable en el APK actual para esos tres avisos. El inventario
+exportado no es una descompilación ni el mapa del Hermes del APK firmado;
+esa evidencia estática no garantiza ausencia de otros fallos, no sustituye
+la QA del binario y **no permite afirmar auditoría limpia**.
+
+OTA sigue apagado. No se cambió ningún paquete, lock, firma ni APK durante
+la revisión de dependencias. Queda actualizar tooling compatible y revaluar
+antes de otra compilación o de ampliar el runtime; no ocultar avisos mediante
+excepciones globales, cambios incompatibles ni `audit fix --force`.
 
 ## Antecedente histórico del correo · 11/10, 07:46 UTC
 

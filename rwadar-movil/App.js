@@ -814,7 +814,7 @@ function Cabecera({ pestana, vistaBuscar, total, ofertas, secundario, enCamino, 
     perfil: {
       etiqueta: 'TU ESPACIO',
       titulo: 'Perfil',
-      subtitulo: guardados ? `${guardados} guardados en este dispositivo` : 'Lo que guardas, avisos y privacidad',
+      subtitulo: guardados ? `${guardados} ${guardados === 1 ? 'guardado' : 'guardados'} en este dispositivo` : 'Lo que guardas, avisos y privacidad',
     },
   };
   const clave = pestana === 'buscar' ? (vistaBuscar === 'ofertas' ? 'ofertas' : 'radar') : pestana;
@@ -928,7 +928,7 @@ function PantallaPerfil({
       </View>
       )}
 
-      {estadoCuenta?.disponible ? <Text style={e.notaGuardadas}>
+      {estadoCuenta?.disponible ? <Text style={e.notaFavoritosLocales}>
         Los siguientes favoritos se guardan solo en este dispositivo. Son distintos de la lista de vigilancia de tu cuenta.
       </Text> : null}
 
@@ -1846,6 +1846,7 @@ const e = StyleSheet.create({
   resumenNumeroValor: { fontFamily: F.extra, fontSize: 27, lineHeight: 30, color: C.senal },
   resumenNumeroEtiqueta: { ...T.etiqueta, fontSize: 8, color: C.tx3, marginTop: 2 },
   grupoSeccion: { marginBottom: 25 },
+  notaFavoritosLocales: { ...T.menor, fontSize: 12, color: C.tx3, marginTop: 16, marginBottom: 22, paddingHorizontal: 4 },
   notaGuardadas: { ...T.menor, fontSize: 12, color: C.tx3, marginTop: -14, marginBottom: 22, paddingHorizontal: 4 },
   avisoProximo: {
     flexDirection: 'row', gap: 12, padding: 15, backgroundColor: C.sup, borderRadius: R.m,

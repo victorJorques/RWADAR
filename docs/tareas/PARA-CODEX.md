@@ -6,7 +6,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 11 de octubre de 2026 · Codex · cuentas web publicadas, Android en verificación
+## 11 de octubre de 2026 · Codex · cuentas web y Android publicadas; revisión de acabado
 
 Fuente en worktree `codex/cuentas-web-movil`; **no modificar la carpeta
 principal**, que está atrasada y conserva material de Academy sin seguimiento.
@@ -39,10 +39,24 @@ acceso/alta y Perfil observados en navegador. HTTP **35/35** y huellas
 
 **Android autorizado solo sin cargos:** EAS terminó 1.3.0/código 13,
 commit compilado `3a0d953`, 85.622.388 bytes. Firma y manifiesto comprobados
-localmente; instalación y ejecución del APK aún pendientes. Expo Doctor
+localmente; instalación y ejecución del APK exacto aprobadas en emulador API35. Expo Doctor
 **21/21** y pruebas **180/180** en copia aislada, nunca sobre las junctions
-principales. EAS Free: 2/15 usados y cargos cero. Pipeline público preparado
-para QA real antes de publicar. La APK pública anterior sigue siendo 1.2.0.
+principales. EAS Free: 2/15 usados y cargos cero. Publicación real
+<https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.0>, a las
+09:17:18 UTC, QA/release `38127611672` exitoso. La descarga anónima posterior
+coincide byte a byte con el APK ensayado y conserva la firma. Evidencia pública
+ZIP y sumas verificadas. Flujo publicado en `f01dbc2` y desarmado en `6d4280e`;
+README público actualizado en `d045b4c`. No hay publicación en las tiendas.
+
+La revisión visual posterior detectó una nota local que cruza el borde del
+panel de recuperación. Se corrige en **1.3.1**, todavía local: separación propia
+positiva, sin afectar la nota histórica de ofertas retiradas; cabecera singular.
+Dos regresiones nuevas, móvil **182/182** y Doctor **21/21** correctos. APK14
+necesita compilación/QA visual/publicación propios, no reutilizar la prueba13.
+[`VERIFICACION-ANDROID-1.3.1-2026-10-11.md`](../VERIFICACION-ANDROID-1.3.1-2026-10-11.md).
+La auditoría npm no es limpia: 23 avisos, evaluados sin vía vulnerable
+demostrada en APK13. No ocultarlos ni forzar downgrades incompatibles.
+[`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md`](../VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md).
 
 Publicidad, cobros, comisiones, opiniones, comunidad, avisos y manual siguen
 apagados. El manual se reserva a usuarios registrados: no publicar un PDF
