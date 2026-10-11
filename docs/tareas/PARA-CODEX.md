@@ -6,6 +6,48 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 11 de octubre de 2026 · Codex · cuentas web y Android, refuerzo real y publicación en curso
+
+Fuente en worktree `codex/cuentas-web-movil`; **no modificar la carpeta
+principal**, que está atrasada y conserva material de Academy sin seguimiento.
+Commit de contenido **`a213373`** (autor Codex): panel de cuentas Android
+1.3.0, aislamiento de sesiones y carreras web, transporte acotado y baja
+reautenticada, pruebas, privacidad y cuatro parches compatibles Expo SDK 57.
+
+**Verificado:** `npm test` final salida 0, web 501/móvil 180/SQL de sesión 196;
+Chrome aislado 61 y 30, revisión independiente 54 nativos/196 SQL/30 Chrome,
+sin otro bloqueo del núcleo. Gitleaks 8.30.1 limpio y `git diff --check` limpio.
+Los ensayos usan datos ficticios y no demuestran correo ni un APK instalado.
+
+**En línea:** Víctor introdujo personalmente la contraseña de aplicación de
+Gmail; confirmó recepción de alta y enlace válido (llegó a spam). Codex vio
+el perfil y comprobó salir. Recuperación pedida a las 08:14:18 UTC y recibida
+en INBOX, con DKIM/SPF/DMARC correctos, solo metadatos y sin leer el token.
+El cambio final real de contraseña todavía **no se ha realizado**.
+
+La migración `20261011074218_cuentas_sesion_confirmada.sql` **ya se aplicó**
+con permiso expreso y se verificó en producción. No reaplicar la 26 sin
+rehacer después este refuerzo. El catálogo sigue público (26/49 y 4
+descartes), lote del 6/10 vigente hasta el 13/10. El asesor da 0 ERROR,
+4 WARN y 3 INFO; límites documentados, no «seguridad absoluta».
+
+**Autorizado y en curso:** preview y producción web; Android EAS + GitHub
+solo sin cargos. Cuota EAS Free comprobada: 14 builds Android disponibles.
+Antes del APK se valida Expo Doctor en una copia aislada, nunca se instala
+sobre las junctions de dependencias de la carpeta principal. Aún no se
+afirma una publicación nueva ni QA del APK. La APK pública anterior es 1.2.0.
+
+Publicidad, cobros, comisiones, opiniones, comunidad, avisos y manual siguen
+apagados. El manual se reserva a usuarios registrados: no publicar un PDF
+estático como entrega. Codex asume configuración, código, pruebas y despliegue;
+Víctor solo introduce credenciales/identidad y autoriza operaciones reservadas.
+
+Continuar según [`CUENTAS-WEB-MOVIL-2026-10-11.md`](CUENTAS-WEB-MOVIL-2026-10-11.md).
+Evidencia en [`../VERIFICACION-CUENTAS-2026-10-11.md`](../VERIFICACION-CUENTAS-2026-10-11.md).
+Completar aquí el cierre de publicación y los commits de aprobación cuando
+estén comprobados, sin presentar preparación o simulaciones como producción.
+
+
 ## 8 de octubre de 2026 · Claude (8) · cuentas fase 1: casi abiertas, falta que Gmail acepte la contraseña
 
 **Rama:** `claude/abrir-cuentas` (sale de `main` tras el PR #10). PR abierto
