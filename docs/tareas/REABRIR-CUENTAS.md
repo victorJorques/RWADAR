@@ -2,8 +2,11 @@
 
 ## Estado vigente · 11 de octubre de 2026 · Codex
 
-Las cuentas de la web pública siguen en pausa y el APK publicado continúa
-siendo el **1.2.0**, sin el panel nativo nuevo. No se ha desplegado el candidato.
+**Las cuentas ya están activadas en la web pública desde el 11/10**, en
+`https://rwadar.pages.dev`. La publicación pasó **35/35** comprobaciones HTTP y
+**64/64** comparaciones de recursos por huella; se observaron alta, entrada y
+Perfil en el navegador de producción. El APK publicado en GitHub continúa
+siendo el **1.2.0**, sin el panel nativo nuevo.
 En la revisión, Víctor confirmó que **el correo de alta llega y su enlace
 funciona**, aunque llega a spam. También se mostró el perfil confirmado y
 funcionó cerrar sesión. Codex solicitó recuperación desde esa revisión: el
@@ -13,19 +16,21 @@ El cambio final de contraseña y la entrada posterior todavía no se han
 verificado; requieren que Víctor introduzca su contraseña directamente. No se
 considera terminado el recorrido por mostrar un mensaje de envío.
 
-La implementación de cuentas nativas y los refuerzos de la web están
-preparados en local. **El refuerzo de sesión ya está aplicado en Supabase** con
+El panel nativo nuevo está en el APK 1.3.0 ya compilado; los refuerzos de la
+web están publicados. **El refuerzo de sesión ya está aplicado en Supabase** con
 permiso expreso del turno actual. La lectura posterior verificó RLS restrictivo,
 sesiones confirmadas y vigentes, exclusión de usuarios anónimos y esquema privado
 fuera de REST. El catálogo público sigue disponible: **26 plataformas y 49
 referencias; no está retirado**.
 
-La web candidata y la app nativa candidata **1.3.0** tienen encendidas solo las
+La web publicada y el APK nativo candidato **1.3.0** tienen encendidas solo las
 guardas de cuentas; las de servicios antiguos, instalaciones y push siguen
 apagadas. Víctor autorizó expresamente EAS Android y publicación en GitHub
-**sin cargos**. La compilación aún no se ha iniciado, mientras Codex comprueba
-la cuota. El candidato no se ha publicado en revisión ni producción, ni hay
-un APK nuevo publicado.
+**sin cargos**. El APK **1.3.0, código 13**, ya se compiló gratis y pasó la
+comprobación de firma y tamaño. EAS muestra uso **2/15** de la cuota gratuita,
+sin cargos; Expo Doctor pasó **21/21**. Falta ejecutar sus pruebas de uso antes
+de publicarlo en GitHub. Un paquete compilado y firmado no prueba por sí solo
+que sus cuentas funcionen en un Android instalado.
 
 La ejecución final de `npm test` con las guardas de cuentas activadas y la
 candidata nativa 1.3.0 finalizó correctamente: web 501, móvil 180 y SQL 196;
@@ -39,13 +44,14 @@ en [`CUENTAS-WEB-MOVIL-2026-10-11.md`](CUENTAS-WEB-MOVIL-2026-10-11.md).
 Codex asume integración, configuración técnica, pruebas y publicación
 autorizada. Víctor solo introduce credenciales, abre sus enlaces, verifica su
 identidad y decide sobre las operaciones reservadas. No tiene tareas de código.
-Publicidad, pagos, opiniones, avisos y manual continúan apagados.
+Publicidad, pagos, opiniones, comunidad, avisos y manual continúan apagados.
 
 **No ejecutar los pasos históricos de abajo como una receta vigente.** La
 migración `20261011074218_cuentas_sesion_confirmada.sql` se aplicó después de
 la 26 y se verificó en línea. Reaplicar 26 sustituiría funciones reforzadas:
-habría que volver a aplicar el refuerzo con autorización. No se ha publicado
-la web ni compilado o publicado una app nueva desde este trabajo.
+habría que volver a aplicar el refuerzo con autorización. La web ya se publicó
+y el APK nuevo se compiló; su prueba de ejecución y publicación siguen
+pendientes.
 
 **Antecedente del correo, no estado actual:** el 11/10 a las 07:46 UTC Gmail
 rechazó el intento con SMTP 535. Después, Víctor confirmó la recepción y el

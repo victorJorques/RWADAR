@@ -6,7 +6,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 11 de octubre de 2026 · Codex · cuentas web y Android, refuerzo real y publicación en curso
+## 11 de octubre de 2026 · Codex · cuentas web publicadas, Android en verificación
 
 Fuente en worktree `codex/cuentas-web-movil`; **no modificar la carpeta
 principal**, que está atrasada y conserva material de Academy sin seguimiento.
@@ -31,11 +31,18 @@ rehacer después este refuerzo. El catálogo sigue público (26/49 y 4
 descartes), lote del 6/10 vigente hasta el 13/10. El asesor da 0 ERROR,
 4 WARN y 3 INFO; límites documentados, no «seguridad absoluta».
 
-**Autorizado y en curso:** preview y producción web; Android EAS + GitHub
-solo sin cargos. Cuota EAS Free comprobada: 14 builds Android disponibles.
-Antes del APK se valida Expo Doctor en una copia aislada, nunca se instala
-sobre las junctions de dependencias de la carpeta principal. Aún no se
-afirma una publicación nueva ni QA del APK. La APK pública anterior es 1.2.0.
+**Web publicada y comprobada:** revisión `d91d4e14`, producción `4c7d38e5`,
+<https://rwadar.pages.dev>. Las cuentas ya están abiertas; formularios de
+acceso/alta y Perfil observados en navegador. HTTP **35/35** y huellas
+**64/64** idénticas al artefacto aprobado. Aprobación y QA Android en
+`aa886d2`, después del manifiesto `3a0d953`. La fuente web es `a213373`.
+
+**Android autorizado solo sin cargos:** EAS terminó 1.3.0/código 13,
+commit compilado `3a0d953`, 85.622.388 bytes. Firma y manifiesto comprobados
+localmente; instalación y ejecución del APK aún pendientes. Expo Doctor
+**21/21** y pruebas **180/180** en copia aislada, nunca sobre las junctions
+principales. EAS Free: 2/15 usados y cargos cero. Pipeline público preparado
+para QA real antes de publicar. La APK pública anterior sigue siendo 1.2.0.
 
 Publicidad, cobros, comisiones, opiniones, comunidad, avisos y manual siguen
 apagados. El manual se reserva a usuarios registrados: no publicar un PDF

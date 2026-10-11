@@ -160,7 +160,26 @@ credenciales existentes congeladas y solo 44 archivos móviles (661 KB).
 Ejecución: <https://expo.dev/accounts/trapis-team/projects/rwadar/builds/7523ec9a-79d9-4775-893e-50c00022f494>.
 Esto no demuestra todavía instalación ni publicación del APK.
 
-Pendiente registrar producción web y el resultado real del APK firmado.
+Producción web publicada con el publicador canónico (salida 0) en
+<https://4c7d38e5.rwadar.pages.dev>, principal <https://rwadar.pages.dev>.
+Comprobación posterior del 11/10: **35/35 HTTP y 64/64 huellas idénticas**,
+misma caché `rwadar-v-40ce7fbf94590692` que la revisión aprobada. En el
+navegador se abrió Perfil → Entrar → Crear cuenta en la dirección principal;
+alta opcional/gratuita y confirmación obligatoria visibles. No se introdujeron
+credenciales ni se aceptaron condiciones. Captura del formulario público,
+sin datos personales, guardada en `rwadar-cuentas-publicadas-20261011/alta-web-publicada.jpg`
+fuera de Git. No se confunde este formulario visible con un segundo alta real.
+
+EAS terminó a las 08:48:41 UTC; descarga oficial:
+<https://expo.dev/artifacts/eas/Jh-m2xO1U1-ZWgqJsAxEJaKHpdvOdW01zhwOCyIhi-k.apk>.
+Binario **85.622.388 bytes**, SHA-256
+`0bc76f885a4dde467e428e0abb9eddb773092d36f9bc474227e487ce96dbda32`.
+`apksigner` verificó el APK intacto (un firmante, v2) con el mismo certificado
+`f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72`;
+`aapt` confirmó `com.rwadar.app`, 1.3.0/código 13, SDK mínimo 24/objetivo 36,
+exactamente cuatro permisos previstos, backup y OTA desactivados. Cuota EAS
+posterior: Free 2/15 Android, sobrecostes y facturación estimada cero.
+Todavía falta registrar instalación, ejecución y publicación del APK.
 
 La entrega en spam del alta es un problema de entregabilidad, no resuelto
 porque un segundo mensaje llegue a INBOX. Un dominio de envío propio y un

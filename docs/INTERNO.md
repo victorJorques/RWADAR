@@ -21,9 +21,9 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 | | Estado |
 |---|---|
-| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare); respondió correctamente el 11/10. Se instala en el móvil como app. Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. **Las cuentas de la web pública siguen en pausa.** Los cambios locales del 11/10 no se han publicado. |
+| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), **con las cuentas activadas desde el 11/10**. La publicación y sus recursos se comprobaron en línea; los formularios de alta, entrada y Perfil se observaron en el navegador de producción. Se instala en el móvil como app. Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
 | **Catálogo** | Revisión del **6 de octubre**, vigente **hasta el 13 de octubre**: 26 plataformas en el radar, 4 descartadas con su fuente y 49 referencias de inversión (24 principales, 21 de mercado secundario y 4 en preparación). La lectura en línea del 11/10 confirmó las 26 plataformas y 49 referencias; el catálogo público **no está retirado**. Detalle en [`CATALOGO-V2-2026-10-06.md`](CATALOGO-V2-2026-10-06.md). |
-| **App Android** | **Versión 1.2.0** (código 12, misma firma), publicada el 7/10 en GitHub ([RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)); la web la ofrece en `/android`. El traspaso registra prueba en emulador Android 15. No contiene el panel de cuentas nuevo del 11/10. La candidata **1.3.0** está preparada, no compilada ni publicada. Todavía no está en Google Play. |
+| **App Android** | Sigue publicada la **versión 1.2.0** (código 12) en GitHub ([RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)); la web la ofrece en `/android`. No contiene el panel de cuentas nuevo. El APK **1.3.0** (código 13) **ya está compilado sin cargos**, con firma y tamaño comprobados. Falta ejecutar sus pruebas de uso antes de publicarlo en GitHub. Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
@@ -31,7 +31,7 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
 | **Tipografía** | Arreglada el 2/10: la Geist incrustada no traía a-z, así que la web se veía con la letra del sistema. Ya es la completa. |
 
-**Cuentas:** la web pública todavía no permite usarlas. En la versión de
+**Cuentas:** ya están activadas en la web pública. En la versión de
 revisión, Víctor confirmó el 11/10 que recibió el correo de alta y que su
 enlace funciona. **Llega a spam**: la entrega debe mejorarse antes de anunciar
 las cuentas. Supabase permite las altas y exige confirmar el correo; esa
@@ -42,7 +42,7 @@ autenticidad correctas; no se leyeron su cuerpo ni su enlace. Falta que Víctor
 introduzca la nueva contraseña y verificar la entrada posterior: la recuperación
 real todavía no está completada.
 
-**Preparado en local el 11/10:** panel nativo de cuentas y refuerzos de la web
+**Cambios del 11/10:** panel nativo de cuentas y refuerzos de la web
 para evitar mezclar sesiones; registro, acceso, nombre, vigilancia, recuperación
 y baja con contraseña recién comprobada. Los favoritos locales no se convierten
 en vigilancia remota. La sesión nativa queda solo en memoria. La app no activa
@@ -51,11 +51,12 @@ Supabase con permiso expreso de Víctor**. La lectura posterior comprobó las
 políticas restrictivas de acceso, la sesión confirmada y vigente, la exclusión
 de usuarios anónimos y que el esquema privado no queda expuesto por REST.
 
-**Candidato activado para comprobarlo, no publicado:** la web y la app nativa
-1.3.0 tienen sus guardas de cuentas encendidas. Los servicios antiguos de
-instalaciones y push permanecen apagados. Víctor autorizó expresamente
-compilar Android con EAS y publicar en GitHub **sin cargos**. La compilación
-todavía no se ha iniciado: Codex está comprobando la cuota disponible.
+**Publicación y app:** la web está publicada con las guardas de cuentas
+encendidas. El APK nativo 1.3.0 también las lleva activadas, pero sigue pendiente
+de pruebas de ejecución y publicación. Los servicios antiguos de instalaciones
+y push permanecen apagados. Víctor autorizó EAS Android y GitHub **sin cargos**;
+la compilación se hizo dentro de la cuota gratuita. La comprobación de
+dependencias nativas pasó sus 21 controles.
 
 **Pruebas locales finales:** `npm test` terminó correctamente con las guardas
 de cuentas de web y app activadas y la candidata nativa 1.3.0: web 501
@@ -72,9 +73,10 @@ reservadas; no se le asignan cambios de código. Plan vigente:
 [`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
 La evidencia local y el diagnóstico real están en
 [`VERIFICACION-CUENTAS-2026-10-11.md`](VERIFICACION-CUENTAS-2026-10-11.md).
-No se ha publicado una web ni un APK nuevos desde este trabajo.
+La web nueva ya está publicada. El APK 1.3.0 está compilado y revisado, pero
+todavía no está publicado en GitHub ni verificado mediante su ejecución.
 
-**En pausa:** opiniones, avisos de cambios por correo y avisos push. Seguridad anterior:
+**En pausa:** opiniones, comunidad, avisos de cambios por correo y avisos push. Seguridad anterior:
 [`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
 Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
 [`manual/LEEME.md`](manual/LEEME.md).
@@ -102,14 +104,13 @@ dos fichas de prueba, pero nada conectado a la app.
    primera, del 2 de octubre, copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
    como explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-3. **Abrir las cuentas en web y app.** Completar el cambio de contraseña de
+3. **Completar la comprobación real de cuentas y entregar Android.** La web ya
+   está publicada con cuentas. Completar el cambio de contraseña de
    recuperación y la entrada posterior, mejorar la entrega del correo que
-   llega a spam y comprobar los flujos sobre la
-   versión candidata. El refuerzo de sesión ya está aplicado y verificado.
-   Renovar la aprobación, publicar primero revisión y después producción,
-   comprobar la cuota gratuita autorizada para EAS, compilar y probar el APK
-   candidato 1.3.0 antes de publicarlo en GitHub. Si exige un cargo, detener ese
-   paso; la autorización actual no permite pagarlo.
+   llega a spam y comprobar los flujos sobre la versión publicada. El refuerzo
+   de sesión ya está aplicado y verificado. Ejecutar las pruebas del mismo APK
+   1.3.0 ya compilado y, si pasan, publicarlo en GitHub dentro de la autorización
+   sin cargos. No confundir la revisión del paquete con una prueba de uso.
    Codex hace los pasos técnicos; el plan y las autorizaciones concretas
    están en [`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
 4. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte

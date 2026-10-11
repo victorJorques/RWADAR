@@ -2,16 +2,20 @@
 
 ## Resultado y ubicación
 
-Implementación local preparada sobre `claude/abrir-cuentas`, en la rama
+Implementación integrada sobre `claude/abrir-cuentas`, en la rama
 `codex/cuentas-web-movil` del worktree adjunto a este chat. No se tocó la copia
 antigua de `Downloads` ni sus carpetas sin seguimiento de manual/descargas.
-No se ha publicado la web candidata, compilado con EAS, enviado a tiendas
-ni activado publicidad o cobros. El refuerzo SQL sí se ha aplicado con permiso
-expreso y se ha verificado después mediante consultas de lectura.
+**La web ya está publicada con cuentas en `https://rwadar.pages.dev` desde el
+11/10**, despliegue `4c7d38e5`. Pasó **35/35** comprobaciones HTTP y **64/64**
+comparaciones de recursos por SHA; se observaron los formularios de alta,
+entrada y Perfil en el navegador de producción. El APK **1.3.0, código 13**, se
+compiló con EAS sin cargos y pasó las comprobaciones de firma y tamaño. Todavía
+falta su prueba de ejecución y publicación en GitHub. No se ha enviado a tiendas
+ni activado publicidad o cobros. El refuerzo SQL se aplicó con permiso expreso
+y se verificó después mediante consultas de lectura.
 
-La web pública responde, pero sigue con las cuentas pausadas. La revisión
-existente permite probar el registro. Supabase acepta altas y exige confirmar
-el correo. **Víctor confirmó que el correo de alta llega y que el enlace
+La web pública responde con las cuentas activadas. Supabase acepta altas y
+exige confirmar el correo. **Víctor confirmó que el correo de alta llega y que el enlace
 funciona; llega a spam.** Se mostró el perfil confirmado y cerrar sesión
 funcionó en la revisión existente. Codex solicitó la recuperación desde esa
 interfaz el **11/10 a las 08:14:18 UTC**. Los metadatos de Gmail confirman el
@@ -22,10 +26,10 @@ nueva. Víctor la introduce directamente, nunca en el chat. La recuperación
 real no se declara completada.
 El catálogo público sigue disponible, con **26 plataformas y 49 referencias**;
 no está retirado. El APK disponible continúa siendo el **1.2.0**, anterior a
-estos cambios. La versión nativa candidata **1.3.0** está preparada para
-compilar, pero aún no existe un APK nuevo verificado ni publicado.
+estos cambios. El APK nativo candidato **1.3.0** está compilado y su paquete
+está revisado, pero aún no se ha verificado mediante ejecución ni publicado.
 
-## Cambios preparados
+## Cambios integrados
 
 - Motor nativo con Supabase JS fijado a `2.112.1`, sesión solo en memoria y
   validación de usuario confirmado mediante `getUser()`. Panel de alta,
@@ -45,7 +49,7 @@ compilar, pero aún no existe un APK nuevo verificado ni publicado.
   los últimos cinco minutos y revoca todas las sesiones antes de borrar datos.
 - Privacidad actualizada para diferenciar cuentas, vigilancia y favoritos,
   las versiones nativas anteriores y la sesión nativa en memoria. Manual,
-  opiniones, avisos, instalación histórica, publicidad y cobros siguen apagados.
+  opiniones, comunidad, avisos, instalación histórica, publicidad y cobros siguen apagados.
 
 La migración aplicada es
 `rwadar-app/supabase/migrations/20261011074218_cuentas_sesion_confirmada.sql`.
@@ -59,33 +63,34 @@ históricos ni push.
 
 ## Compuertas, sin atajos
 
-En la web candidata `SERVICIOS_USUARIO_REMOTOS=true` y `CORREO_AUTH_E2E=true`
-permiten comprobar las cuentas en revisión. La recepción de confirmación ya
+En la web publicada `SERVICIOS_USUARIO_REMOTOS=true` y `CORREO_AUTH_E2E=true`
+permiten usar las cuentas. La recepción de confirmación ya
 está acreditada por Víctor; la recuperación real todavía no se considera
-completada. El valor del interruptor no es una prueba por sí mismo ni cambia
-la web publicada: producción sigue con las cuentas apagadas.
+completada. El valor del interruptor no es una prueba de recuperación por sí
+mismo; los flujos pendientes se comprueban sobre la versión realmente servida.
 La app candidata **1.3.0** tiene `CUENTAS_REMOTAS=true` y
 `CORREO_AUTH_E2E=true` para comprobar estos mismos flujos. Su guarda antigua
-`SERVICIOS_USUARIO_REMOTOS=false` se conserva. No existe todavía una app
-compilada e instalada que acredite la prueba real nativa.
+`SERVICIOS_USUARIO_REMOTOS=false` se conserva. Su APK está compilado, pero aún
+no existe una prueba de ejecución que acredite el funcionamiento nativo real.
 
 Víctor autorizó expresamente en este turno la compilación **Android con EAS**
-y publicación del APK verificado en **GitHub, sin cargos**. El build todavía
-no se ha iniciado mientras Codex comprueba plan y cuota. Si la operación exige
-un cargo, esa autorización no permite aceptarlo. Web candidata y APK siguen
-pendientes de sus controles y publicación.
+y publicación del APK verificado en **GitHub, sin cargos**. La compilación ya
+terminó dentro de la cuota gratuita: EAS registra **2/15**, **sin cargos**.
+Expo Doctor pasó **21/21**. La firma y el tamaño del APK se comprobaron; sigue
+pendiente su prueba de ejecución antes de publicarlo. Si otro paso exige un
+cargo, esa autorización no permite aceptarlo.
 
 **No encender `SERVICIOS_USUARIO_REMOTOS` de la app**: protege la identidad
 de instalación, sincronización y push antiguos. Las cuentas usan su guarda
-independiente. No activar opiniones, manual, publicidad ni cobros por abrir
+independiente. No activar opiniones, comunidad, manual, publicidad ni cobros por abrir
 las cuentas. El catálogo público tampoco depende de estas compuertas.
 
 ## Lo que hace Codex a continuación
 
-1. Completar la recuperación real en revisión: el correo ya está entregado;
+1. Completar la recuperación real: el correo ya está entregado;
    falta abrir su enlace, cambiar la contraseña y entrar con la nueva. Comprobar
    también alta sin confirmar bloqueada, entrada, vigilancia propia y salida
-   sobre la versión candidata. No basta un mensaje de envío exitoso. Víctor
+   sobre la versión publicada. No basta un mensaje de envío exitoso. Víctor
    introduce contraseñas y abre sus enlaces; Codex comprueba resultados y
    errores sin leer secretos. No borrar una cuenta real sin autorización de baja.
 2. Mejorar la entrega que llega a spam y conservar la confirmación obligatoria.
@@ -93,21 +98,21 @@ las cuentas. El catálogo público tampoco depende de estas compuertas.
    necesidad concreta y nueva autorización. Reejecutarla reemplaza funciones:
    en ese caso hay que reaplicar el refuerzo. Para cerrar, 25 sigue disponible
    y el refuerzo detecta sus ACL; para reabrir: 26 y luego refuerzo.
-3. Las pruebas finales de `npm test` y Chrome offline sobre las guardas
-   candidatas activadas ya han pasado. Con los flujos reales comprobados,
-   revisar privacidad y generar una aprobación nueva. La publicación web está
-   autorizada expresamente en este
-   turno, pero todavía no ejecutada: respetar la compuerta, publicar revisión,
-   comprobar lo servido y los flujos reales antes de producción. No reciclar
-   aprobaciones de hashes anteriores ni declarar terminado lo no comprobado.
+3. Mantener la verificación de la web pública ya desplegada y completar los
+   flujos reales pendientes sobre lo servido. Las pruebas finales locales,
+   HTTP y huellas han pasado; no sustituyen el cambio real de contraseña.
+   Cualquier cambio posterior exige pruebas y una aprobación nueva antes de
+   republicar. No reciclar aprobaciones de hashes anteriores ni declarar
+   terminado lo no comprobado.
 4. Conservar solo las guardas nativas de cuentas activadas en la candidata
-   1.3.0. Verificar paquete/firma/permisos y completar la comprobación de
-   plan/cuota de EAS; la autorización actual es **sin cargos**. Si requiere
-   pagar, detener ese paso, no aceptar el coste. Compilar,
-   instalar el mismo APK y comprobar interfaz y flujos en Android. No presentar
-   pruebas Node/SSR como una instalación real; no publicar un binario sin esa QA.
-5. Entregar el enlace público verificado y el APK nuevo verificado. La 1.2.0
-   existente no incorpora estos cambios. Tiendas e iOS siguen siendo entregas
+   1.3.0 ya compilada. Instalar el mismo APK cuya firma y tamaño se verificaron
+   y comprobar interfaz y flujos en Android antes de publicarlo en GitHub.
+   La autorización actual es **sin cargos**: si otro paso requiere pagar,
+   detenerlo, no aceptar el coste. No presentar pruebas Node/SSR o verificación
+   del paquete como una instalación real; no publicar el binario sin esa QA.
+5. Mantener el enlace web público ya verificado y entregar el APK nuevo solo
+   después de su prueba de ejecución y publicación. La 1.2.0 existente no
+   incorpora estos cambios. Tiendas e iOS siguen siendo entregas
    distintas, con sus requisitos de identidad y pruebas.
 
 Codex asume toda integración, configuración no secreta, pruebas y publicación
@@ -128,6 +133,12 @@ de sesión, callback, transporte y baja.
 La revisión independiente pasó **54/54** casos nativos, **196** SQL y **30**
 de Chrome, sin bloqueos. Estos resultados finales no son una prueba de
 instalación nativa ni de cambio real de contraseña.
+
+La web publicada pasó **35/35** comprobaciones HTTP y **64/64** comparaciones
+de recursos por SHA. Las vistas de alta, entrada y Perfil se observaron en
+producción. El APK 1.3.0 pasó comprobaciones de firma y tamaño; Expo Doctor
+pasó **21/21**, y la compilación EAS se realizó sin cargos. Son controles
+distintos de la ejecución real del APK, que permanece pendiente.
 
 Esas pruebas locales usan fixtures y no envían correos, no escriben en Supabase
 y no prueban ni la firma de los JWT reales ni los triggers internos de GoTrue.
