@@ -125,14 +125,14 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "en_progreso",
-      "detalle": "Candidato de cuentas del 11/10 revisado por dos agentes, con pruebas locales y Chrome aislado, correos de alta y recuperación recibidos y SQL aplicado/postverificado. Falta verificar la nueva revisión publicada antes de aprobar producción; el cambio final real de contraseña no está probado. Android 1.3.0 candidato necesita su compilación y QA propios. Los informes anteriores describen sus versiones históricas, no acreditan el candidato actual.",
+      "estado": "aprobado",
+      "detalle": "Corte web del 11/10 comprobado en la revisión publicada: 35 controles HTTP y los 64 archivos idénticos al artefacto aprobado; formularios de acceso, alta y recuperación y catálogo íntegro observados en navegador. Correos reales recibidos, perfil/salida observados y SQL aplicado/postverificado. Esto aprueba la publicación web, no afirma un cambio real de contraseña ni una baja real. Android 1.3.0 tiene compilación y QA de binario separados: no se publica hasta superar su propio control. Los informes anteriores describen versiones históricas.",
       "evidencias": [
         {
           "tipo": "prueba",
           "referencia": "docs/VERIFICACION-CUENTAS-2026-10-11.md",
           "verificadoEl": "2026-10-11",
-          "resumen": "Candidato: 501 web, 180 móvil y 196 SQL locales; Chrome aislado 61 y 30 casos. Alta real recibida/confirmada por el titular, perfil y salida observados; recuperación recibida en INBOX. Refuerzo SQL aplicado y permisos reales leídos. Pendiente QA de revisión publicada y APK; no se afirma un cambio real de contraseña."
+          "resumen": "Web aprobada: revisión pública comprobada por HTTP 35/35, huellas 64/64 y navegador con formularios y catálogo íntegro. Local: 501 web, 180 móvil, 196 SQL y Chrome 61+30. Alta real confirmada por el titular, perfil/salida observados y recuperación recibida. SQL aplicado/postverificado. El cambio real de contraseña, la baja real y el APK nuevo no se atribuyen a estas pruebas web."
         },
         {
           "tipo": "prueba",

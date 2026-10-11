@@ -139,9 +139,28 @@ utilizadas en octubre, sin sobrecostes ni complemento de pago. La compilación
 utilizará el perfil editorial, APK, credenciales existentes y sin OTA.
 El APK necesita su propia revisión antes de publicarse.
 
-Pendiente registrar aquí los commits, la revisión publicada, su comprobación
-y producción. Hasta entonces no se afirma
-que el candidato esté público ni que exista un APK nuevo publicado.
+Fuente revisada en `a213373af21ab009dffa0cb81bcee3384c6775c3`; manifiesto y
+traspaso en `3a0d9536d01c3613e8d79939cce9d9b40072f108`. La revisión web se
+publicó en <https://d91d4e14.rwadar.pages.dev>, alias
+<https://revision.rwadar.pages.dev>. A las 08:39 UTC pasó el comprobador HTTP
+**35/35** y se compararon por SHA-256 los **64/64 archivos públicos** con el
+artefacto local aprobado: todos idénticos y HTTP 200. Se observaron los
+formularios vacíos de acceso, alta y recuperación y el catálogo completo
+26/49 en navegador, sin enviar nuevas credenciales ni solicitudes. La anchura
+DOM observada fue 614 px, sin desbordamiento horizontal; la petición de
+viewport 390 px no se reflejó y no se contabiliza como prueba a 390 px. Se
+restauró el viewport. Los tamaños estrechos de los ensayos locales se
+mantienen separados de esta comprobación publicada.
+
+Android se validó también con sus dependencias finales en una carpeta
+aislada: instalación limpia de 567 paquetes, Expo Doctor **21/21** y pruebas
+nativas **180/180**. La compilación EAS editorial gratuita se inició a las
+08:41 UTC, versión 1.3.0/código 13, commit real `3a0d9536d01c3613e8d79939cce9d9b40072f108`,
+credenciales existentes congeladas y solo 44 archivos móviles (661 KB).
+Ejecución: <https://expo.dev/accounts/trapis-team/projects/rwadar/builds/7523ec9a-79d9-4775-893e-50c00022f494>.
+Esto no demuestra todavía instalación ni publicación del APK.
+
+Pendiente registrar producción web y el resultado real del APK firmado.
 
 La entrega en spam del alta es un problema de entregabilidad, no resuelto
 porque un segundo mensaje llegue a INBOX. Un dominio de envío propio y un
