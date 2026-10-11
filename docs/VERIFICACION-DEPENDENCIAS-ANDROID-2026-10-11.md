@@ -72,3 +72,20 @@ cuando exista una solución validable: braces y node-forge no anuncian aún
 versión corregida en los advisories consultados. No usar excepciones globales
 silenciosas. Revaluar antes de otra compilación o de activar OTA/cambiar
 el árbol runtime. La conclusión no sustituye al QA del binario ni al Auth E2E.
+
+## Revisión de acabado 1.3.1
+
+La fuente `53d4c33b4308098226714f61b66ee2017789823e` solo cambia App.js y
+app.json en la lista de 44 archivos móviles: margen de una nota, cabecera
+singular y versión. Package/lock, imports, controlador, transporte y OTA
+permanecen intactos. El export Android aislado/offline se repitió para esa
+fuente: **920 módulos, 927 fuentes/927 contenidos** y los mismos ocho grupos
+afectados ausentes del inventario; @expo/cli solo aporta metro-require/require.js.
+Mapa local SHA-256
+`89bd9c7f6916cee0d9e344fc3b2c05e86e5133de4731372e66082df2ee78f5e3`,
+evidencia en `C:/Users/vcicr/Downloads/rwadar-runtime-android-131-auditoria-20261011/ALCANCE-RUNTIME-131.md`.
+El mapa y las fuentes siguen únicamente en local. Esto extiende la evaluación
+estática al cambio de acabado, **no demuestra por sí solo identidad, firma ni
+ejecución del nuevo APK**. Se mantienen los 23 avisos sin una corrección
+compatible disponible y los límites anteriores. Pruebas del binario nuevo:
+[`VERIFICACION-ANDROID-1.3.1-2026-10-11.md`](VERIFICACION-ANDROID-1.3.1-2026-10-11.md).

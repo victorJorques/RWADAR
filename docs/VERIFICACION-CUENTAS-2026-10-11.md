@@ -234,6 +234,27 @@ El commit público `f01dbc2` publicó y verificó; `6d4280e` volvió a dejar
 `PUBLICAR_RELEASE=NO` sin iniciar otro lanzamiento. El README público se
 actualizó en `d045b4c` para explicar cuentas opcionales y correos.
 
+## Cierre de Android 1.3.1 y nueva comprobación web
+
+La versión vigente ya es **1.3.1/código14**, publicada a las 09:45:05 UTC:
+<https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1>.
+Fuente compilada `53d4c33b4308098226714f61b66ee2017789823e`; solo corrige
+la separación de la nota local y «1 guardado», sin cambiar el motor de cuentas
+ni las dependencias. Su QA y publicación propias, run `38129282799`,
+jobs `114440050549`/`114440579448`, terminaron con éxito. La descarga pública
+anónima del APK y ZIP coincide con las sumas; la firma volvió a comprobarse.
+La nota tiene separación nativa de **92 píxeles** y las cuatro capturas finales
+de cuentas se revisaron. Los resultados de APK13 se conservan como historial.
+Detalles, huellas y límites en
+[`VERIFICACION-ANDROID-1.3.1-2026-10-11.md`](VERIFICACION-ANDROID-1.3.1-2026-10-11.md).
+
+Pruebas locales finales con 1.3.1: `npm test` **código0**, web **501**, móvil
+**182**, SQL de sesión **196**, base/QR/herramientas correctos. La web pública
+no cambió con esta revisión Android; Codex repitió el comprobador HTTP y
+obtuvo otra vez **35/35**, además de la comparación de 64 archivos ya registrada.
+La confirmación/recuperación por correo sigue teniendo las mismas pruebas
+y límites: no se realizó un cambio real de contraseña ni Auth nativo real.
+
 ## Dependencias: advertencias presentes, alcance revisado
 
 `npm audit --omit=dev --audit-level=high` terminó con código **1**: 23 avisos

@@ -5,8 +5,8 @@
 **Las cuentas ya están activadas en la web pública desde el 11/10**, en
 `https://rwadar.pages.dev`. La publicación pasó **35/35** comprobaciones HTTP y
 **64/64** comparaciones de recursos por huella; se observaron alta, entrada y
-Perfil en el navegador de producción. **Android 1.3.0, código 13, también está
-publicado** en [GitHub](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.0),
+Perfil en el navegador de producción. **Android 1.3.1, código 14, también está
+publicado** en [GitHub](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1),
 con cuentas opcionales. El flujo de QA y release terminó correctamente y la
 API anónima confirmó un lanzamiento final, no borrador ni prerelease.
 En la revisión, Víctor confirmó que **el correo de alta llega y su enlace
@@ -18,42 +18,46 @@ El cambio final de contraseña y la entrada posterior todavía no se han
 verificado; requieren que Víctor introduzca su contraseña directamente. No se
 considera terminado el recorrido por mostrar un mensaje de envío.
 
-El panel nativo nuevo está en el APK 1.3.0 ya compilado; los refuerzos de la
+El panel nativo nuevo está en el APK 1.3.1 publicado; los refuerzos de la
 web están publicados. **El refuerzo de sesión ya está aplicado en Supabase** con
 permiso expreso del turno actual. La lectura posterior verificó RLS restrictivo,
 sesiones confirmadas y vigentes, exclusión de usuarios anónimos y esquema privado
 fuera de REST. El catálogo público sigue disponible: **26 plataformas y 49
 referencias; no está retirado**.
 
-La web publicada y el APK nativo publicado **1.3.0** tienen encendidas solo las
+La web publicada y el APK nativo publicado **1.3.1** tienen encendidas solo las
 guardas de cuentas; las de servicios antiguos, instalaciones y push siguen
 apagadas. Víctor autorizó expresamente EAS Android y publicación en GitHub
-**sin cargos**. El APK **1.3.0, código 13**, ya se compiló gratis y pasó la
-comprobación de firma y tamaño. EAS muestra uso **2/15** de la cuota gratuita,
-sin cargos; Expo Doctor pasó **21/21**. **La QA de ejecución del mismo APK
-intacto pasó en un emulador API 35:** Inicio, búsqueda con 26 plataformas y 49
+**sin cargos**. El APK **1.3.1, código 14**, se compiló gratis y pasó la
+comprobación de firma y tamaño. La cuota posterior de EAS es Android **3/15**
+y total **4/30**, sin cargos, exceso ni complementos; Expo Doctor pasó **21/21**.
+**La QA de ejecución del mismo APK intacto pasó en un emulador API 35:**
+Inicio, búsqueda con 26 plataformas y 49
 referencias, Spiko, Academy con siete lecciones y una lección abierta, favorito
-conservado tras reiniciar y formularios de cuentas. Los campos de contraseña y
-confirmación estaban ocultos y vacíos; la entrada vacía se rechazó localmente.
+conservado tras reiniciar y formularios de cuentas. Los campos estaban vacíos
+y las contraseñas enmascaradas; la entrada vacía se rechazó localmente.
 No se introdujeron contraseñas, enviaron correos ni crearon cuentas: **no es
-Auth E2E nativo ni una prueba en hardware físico**. El paso de release del
-primer flujo de QA se omitió deliberadamente. El nuevo flujo autorizado sí
-terminó con **QA y publicación exitosas**: versión 1.3.0 pública desde el
-**11/10 a las 09:17:18 UTC**. La API publica el APK, evidencia y sumas; no se
-modificó el APK probado. La descarga anónima local ya terminó correctamente:
+Auth E2E nativo ni una prueba en hardware físico**. El flujo de la 1.3.1
+terminó con **QA y publicación exitosas**: pública desde el
+**11/10 a las 09:45:05 UTC**, como última versión final. La API publica el APK,
+evidencia y sumas; no se modificó el APK probado. La descarga anónima local
+ya terminó correctamente:
 tamaño y huellas de APK y ZIP coinciden con la API y `SHA256SUMS.txt`, y
 `apksigner` volvió a confirmar la firma prevista. Se validaron las entradas
 del ZIP antes de extraerlo y se leyó el resultado completo de QA, que conserva
 sus límites de Auth E2E, SMTP y hardware físico.
 
-Codex revisó las seis capturas descargadas de Inicio, ofertas, Academy,
-Spiko, alta y recuperación. La revisión es acotada: un pequeño solape de la
-nota de favoritos con el formulario de recuperación motiva una revisión de
-acabado **1.3.1 en preparación, todavía no publicada**. La 1.3.0 pública y
-verificada sigue siendo el estado vigente.
+La revisión de las capturas de la **anterior 1.3.0** detectó un pequeño solape
+de la nota de favoritos con el formulario de recuperación. La **1.3.1 publicada**
+lo corrige, con separación positiva propia y cabecera singular. Su prueba
+geométrica midió **92 píxeles**, superando el mínimo de 40. Codex revisó sus
+capturas propias de recuperación, confirmación, alta y Perfil: nota fuera del
+borde y «1 guardado» correcto. No se reutiliza como prueba del nuevo binario
+la evidencia de 1.3.0; la revisión visual no es exhaustiva. Detalle específico:
+[`../VERIFICACION-ANDROID-1.3.1-2026-10-11.md`](../VERIFICACION-ANDROID-1.3.1-2026-10-11.md).
 
 La ejecución final de `npm test` con las guardas de cuentas activadas y la
-candidata nativa 1.3.0 finalizó correctamente: web 501, móvil 180 y SQL 196;
+versión nativa 1.3.1 finalizó correctamente: web 501, móvil 182 y SQL 196;
 QR y herramientas al día. Los ensayos finales de Chrome con servicios
 simulados pasaron 61 y 30 casos. La revisión independiente terminó sin bloqueos.
 Son pruebas locales independientes de la QA del APK instalado en emulador;
@@ -82,7 +86,7 @@ y el APK nuevo se compiló, pasó su prueba de ejecución en emulador y se publi
 en GitHub; su descarga pública, sumas y firma también se comprobaron.
 Quedan el flujo completo de cuentas nativas y la prueba en un teléfono físico;
 no se presentan como realizados. El cambio final de contraseña real también
-sigue pendiente, y la revisión de acabado 1.3.1 aún no está publicada.
+sigue pendiente; el acabado 1.3.1, su QA y su descarga pública ya están verificados.
 
 **Antecedente del correo, no estado actual:** el 11/10 a las 07:46 UTC Gmail
 rechazó el intento con SMTP 535. Después, Víctor confirmó la recepción y el

@@ -23,7 +23,7 @@ consulta. Entrar en el radar es gratis para las plataformas.
 |---|---|
 | **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), **con las cuentas activadas desde el 11/10**. La publicación y sus recursos se comprobaron en línea; los formularios de alta, entrada y Perfil se observaron en el navegador de producción. Se instala en el móvil como app. Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
 | **Catálogo** | Revisión del **6 de octubre**, vigente **hasta el 13 de octubre**: 26 plataformas en el radar, 4 descartadas con su fuente y 49 referencias de inversión (24 principales, 21 de mercado secundario y 4 en preparación). La lectura en línea del 11/10 confirmó las 26 plataformas y 49 referencias; el catálogo público **no está retirado**. Detalle en [`CATALOGO-V2-2026-10-06.md`](CATALOGO-V2-2026-10-06.md). |
-| **App Android** | **Versión 1.3.0** (código 13), **publicada el 11/10** en GitHub ([RWAdar 1.3.0](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.0)). Incluye las cuentas opcionales. Se compiló sin cargos y pasó las pruebas de uso del mismo APK en un emulador Android 15. La descarga pública sin autenticación coincide con el APK probado; su firma, tamaño, evidencia y sumas se verificaron. Es un lanzamiento final, no un borrador ni una versión preliminar. Todavía no está en Google Play. |
+| **App Android** | **Versión 1.3.1** (código 14), **publicada el 11/10** en GitHub ([RWAdar 1.3.1](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1)). Incluye las cuentas opcionales y corrige el acabado del Perfil. Se compiló sin cargos y pasó las pruebas de uso del mismo APK en un emulador Android 15. La descarga pública sin autenticación coincide con el APK probado; su firma, tamaño, evidencia y sumas se verificaron. Es un lanzamiento final, no un borrador ni una versión preliminar. Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
@@ -52,7 +52,7 @@ políticas restrictivas de acceso, la sesión confirmada y vigente, la exclusió
 de usuarios anónimos y que el esquema privado no queda expuesto por REST.
 
 **Publicación y app:** la web está publicada con las guardas de cuentas
-encendidas. El APK nativo 1.3.0 también las lleva activadas, pasó la prueba de
+encendidas. El APK nativo 1.3.1 también las lleva activadas, pasó la prueba de
 ejecución en emulador y **ya está publicado en GitHub**, con resultado real
 de QA y publicación exitoso. Los servicios antiguos de
 instalaciones y push permanecen apagados. Víctor autorizó EAS Android y GitHub **sin cargos**;
@@ -69,14 +69,14 @@ ni aplicar arreglos forzados. Informe:
 [`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md`](VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md).
 
 **Pruebas locales finales:** `npm test` terminó correctamente con las guardas
-de cuentas de web y app activadas y la candidata nativa 1.3.0: web 501
-comprobaciones, móvil 180 y SQL 196; QR y herramientas también al día. Los
+de cuentas de web y app activadas y la versión nativa 1.3.1: web 501
+comprobaciones, móvil 182 y SQL 196; QR y herramientas también al día. Los
 ensayos de cuentas en Chrome con servicios simulados pasaron 61 y 30 casos.
 La revisión independiente terminó sin bloqueos. Estas pruebas no demuestran
 por sí solas el cambio real de contraseña ni el funcionamiento de un APK nuevo
 instalado.
 
-**Prueba real del APK:** se instaló y ejecutó el mismo APK 1.3.0, sin modificarlo,
+**Prueba real del APK:** se instaló y ejecutó el mismo APK 1.3.1, sin modificarlo,
 en un emulador Android 15. Pasaron Inicio, búsqueda de las 26 plataformas y 49
 referencias, ficha de Spiko, las siete lecciones publicadas de Academy, apertura
 de una lección y favorito conservado tras reiniciar. También se comprobaron los
@@ -84,12 +84,15 @@ formularios de cuentas y su validación vacía, sin introducir contraseñas, cre
 cuentas ni enviar correos. **No es un flujo completo de Auth nativo ni una
 prueba en un teléfono físico.**
 
-**Revisión visual y acabado:** se revisaron las seis capturas descargadas de
-Inicio, ofertas, Academy, ficha de Spiko, alta y recuperación. Es una revisión
-acotada, no una garantía de interfaz perfecta. Se detectó un pequeño solape de
-la nota de favoritos con el formulario de recuperación. Codex está preparando
-una revisión de acabado **1.3.1**, todavía no publicada; la versión pública
-verificada sigue siendo la 1.3.0.
+**Revisión visual y acabado:** las capturas de la versión anterior 1.3.0
+permitieron detectar un pequeño solape de la nota de favoritos con el
+formulario de recuperación. La **1.3.1, código 14, ya está publicada y
+verificada**, con su propia QA y descarga. La separación medida fue de 92
+píxeles, por encima del mínimo de 40; las capturas de recuperación,
+confirmación, alta y Perfil mostraron la nota fuera del borde y «1 guardado»
+correcto. Es una revisión acotada, no una garantía de interfaz perfecta.
+La compilación quedó dentro de la cuota gratuita, sin sobrecostes ni servicios
+de pago añadidos.
 
 Codex es responsable de integrar, configurar y comprobar técnicamente los
 cambios, y de publicar dentro de las autorizaciones expresas. Víctor únicamente
@@ -98,7 +101,7 @@ reservadas; no se le asignan cambios de código. Plan vigente:
 [`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
 La evidencia local y el diagnóstico real están en
 [`VERIFICACION-CUENTAS-2026-10-11.md`](VERIFICACION-CUENTAS-2026-10-11.md).
-La web nueva y el APK 1.3.0 ya están publicados. La publicación Android está
+La web nueva y el APK 1.3.1 ya están publicados. La publicación Android está
 confirmada por el flujo exitoso, la API pública y la descarga anónima local:
 APK y evidencia coinciden con sus sumas y la firma del APK es válida.
 
@@ -130,14 +133,13 @@ dos fichas de prueba, pero nada conectado a la app.
    primera, del 2 de octubre, copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
    como explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-3. **Completar los flujos reales de cuentas y el acabado nativo.** La web y
-   Android 1.3.0 ya están publicados y sus descargas verificadas. Completar el cambio de contraseña de
+3. **Completar los flujos reales de cuentas.** La web y Android 1.3.1 ya están
+   publicados y sus descargas verificadas. Completar el cambio de contraseña de
    recuperación y la entrada posterior, mejorar la entrega del correo que
    llega a spam y comprobar los flujos sobre la versión publicada. El refuerzo
-   de sesión ya está aplicado y verificado. Preparar y probar la revisión de
-   acabado 1.3.1, sin darla por publicada antes de comprobar el nuevo APK y su
-   descarga pública. Quedan distintos
-   el uso de Auth nativo con credenciales reales
+   de sesión ya está aplicado y verificado, y el acabado del Perfil ya pasó
+   sus pruebas sobre el APK publicado. Quedan distintos el uso de Auth nativo
+   con credenciales reales
    y la comprobación en un teléfono físico; no presentarlos como hechos.
    Codex hace los pasos técnicos; el plan y las autorizaciones concretas
    están en [`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).

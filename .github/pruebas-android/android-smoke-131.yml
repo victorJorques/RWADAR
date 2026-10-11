@@ -38,9 +38,9 @@ concurrency:
 env:
   # Exact metadata of the final EAS APK verified locally by the coordinating agent.
   # If a retry increments the versionCode, stop: this workflow requires code14.
-  APK_URL: ${{ inputs.apk_url || 'PENDING_APPROVED_APK14' }}
-  APK_SHA256: ${{ inputs.apk_sha256 || 'PENDING_APPROVED_SHA256' }}
-  APK_BYTES: ${{ inputs.apk_bytes || 'PENDING_APPROVED_BYTES' }}
+  APK_URL: ${{ inputs.apk_url || 'https://expo.dev/artifacts/eas/anPjkJQG3PrtSwghAMRtXVxPSWb8q3ahqRS31z_xVVw.apk' }}
+  APK_SHA256: ${{ inputs.apk_sha256 || '6b137a5adcbcb0a9c4ced483846d612cef3f04fd5bb0865fa5ce36483a630d55' }}
+  APK_BYTES: ${{ inputs.apk_bytes || '85622508' }}
   PUBLICAR_RELEASE: ${{ inputs.publicar_release || 'NO' }}
   CERT_SHA256: f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72
   RELEASE_TAG: v1.3.1
@@ -735,6 +735,9 @@ jobs:
           python3 - <<'PY'
           import os, pathlib
           note = f"""RWAdar 1.3.1 · Android (versionCode 14)
+
+          Revisión de acabado: separa la nota de favoritos del panel de cuentas
+          y corrige la cabecera singular «1 guardado». No cambia el motor de cuentas.
 
           Catálogo público sin registro obligatorio: 26 plataformas y 49 referencias.
           Cuentas gratuitas y opcionales, compartidas con la web. La confirmación y

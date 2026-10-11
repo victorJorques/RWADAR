@@ -22,10 +22,13 @@ esquemas de URL ni permisos al sistema. El panel no anuncia notificaciones.
 
 `npm test` incluye las pruebas del motor con SDK real y transporte simulado,
 la interfaz, el desmontaje y los permisos del paquete. No equivale a una
-prueba de correo ni a instalar la app. **Android 1.3.0/código13 ya está publicado**
+prueba de correo ni a instalar la app. **Android 1.3.1/código14 está publicado**
 y su APK exacto superó instalación/navegación/formularios en emulador API35,
-firma y descarga pública anónima. **1.3.1** corrige un margen de la nota local
-y el singular de favoritos; todavía necesita su propio binario y QA.
+firma y descarga pública anónima. Corrige el margen de la nota local y el
+singular de favoritos; sus capturas propias también se revisaron.
+Descarga: <https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1>.
+No es publicación en las tiendas ni prueba de Auth nativo real o teléfono físico.
+Informe: [`VERIFICACION-ANDROID-1.3.1-2026-10-11.md`](../docs/VERIFICACION-ANDROID-1.3.1-2026-10-11.md).
 Compilación EAS solo si hay cuota gratuita: no contratar ni aceptar cargos adicionales.
 Plan y requisitos: [`CUENTAS-WEB-MOVIL-2026-10-11.md`](../docs/tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
 

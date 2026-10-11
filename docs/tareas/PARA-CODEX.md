@@ -6,15 +6,19 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 11 de octubre de 2026 · Codex · cuentas web y Android publicadas; revisión de acabado
+## 11 de octubre de 2026 · Codex · cierre publicado: cuentas web y Android 1.3.1
 
 Fuente en worktree `codex/cuentas-web-movil`; **no modificar la carpeta
 principal**, que está atrasada y conserva material de Academy sin seguimiento.
 Commit de contenido **`a213373`** (autor Codex): panel de cuentas Android
 1.3.0, aislamiento de sesiones y carreras web, transporte acotado y baja
 reautenticada, pruebas, privacidad y cuatro parches compatibles Expo SDK 57.
+Fuente Android final en **`53d4c33`**: separación propia positiva de la nota
+local, «1 guardado», versión 1.3.1 y dos regresiones; dependencias y motor de
+cuentas intactos. El cierre técnico/documental conserva este commit compilado
+y la huella web aprobada, sin regenerar ni volver a desplegar contenido web.
 
-**Verificado:** `npm test` final salida 0, web 501/móvil 180/SQL de sesión 196;
+**Verificado:** `npm test` final salida 0, web 501/móvil 182/SQL de sesión 196;
 Chrome aislado 61 y 30, revisión independiente 54 nativos/196 SQL/30 Chrome,
 sin otro bloqueo del núcleo. Gitleaks 8.30.1 limpio y `git diff --check` limpio.
 Los ensayos usan datos ficticios y no demuestran correo ni un APK instalado.
@@ -48,14 +52,27 @@ coincide byte a byte con el APK ensayado y conserva la firma. Evidencia pública
 ZIP y sumas verificadas. Flujo publicado en `f01dbc2` y desarmado en `6d4280e`;
 README público actualizado en `d045b4c`. No hay publicación en las tiendas.
 
-La revisión visual posterior detectó una nota local que cruza el borde del
-panel de recuperación. Se corrige en **1.3.1**, todavía local: separación propia
-positiva, sin afectar la nota histórica de ofertas retiradas; cabecera singular.
-Dos regresiones nuevas, móvil **182/182** y Doctor **21/21** correctos. APK14
-necesita compilación/QA visual/publicación propios, no reutilizar la prueba13.
+La revisión visual posterior detectó una nota local que cruzaba el borde del
+panel de recuperación. **Corregida, publicada y verificada en 1.3.1/código14**:
+<https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1>.
+EAS terminó a las 09:36:36 UTC, fuente `53d4c33`, APK **85.622.508 bytes**;
+cuota Free posterior Android **3/15**, total **4/30**, cero coste/exceso/addons.
+QA y release propias `38129282799`, jobs `114440050549`/`114440579448`,
+exitosas; publicación **09:45:05 UTC**, latest pública, no draft/prerelease.
+Descarga anónima posterior comprobada: APK y ZIP idénticos a sumas/evidencia,
+firma v2 válida y certificado anterior. Resultado propio: separación **92px**,
+navegación, catálogo, Academy, favorito persistente y formularios correctos.
+Cuatro capturas propias de cuentas revisadas por Codex y otro agente; nota
+fuera del borde, singular correcto, sin otro bloqueo visual observado.
+No atribuir al APK14 las pruebas históricas del13 ni declarar Auth real desde
+Android, SMTP nativo o teléfono físico. Commit público de lanzamiento
+`8c49368`; `2f44074` dejó `PUBLICAR_RELEASE=NO` con `[skip ci]`.
+El espejo privado queda en NO; plantilla auxiliar no utilizada retirada,
+recuperable en Git. Móvil **182/182** y Doctor **21/21** correctos.
 [`VERIFICACION-ANDROID-1.3.1-2026-10-11.md`](../VERIFICACION-ANDROID-1.3.1-2026-10-11.md).
 La auditoría npm no es limpia: 23 avisos, evaluados sin vía vulnerable
-demostrada en APK13. No ocultarlos ni forzar downgrades incompatibles.
+demostrada en el alcance analizado, con inventario estático adicional 1.3.1.
+No equivale a descompilar Hermes. No ocultarlos ni forzar downgrades incompatibles.
 [`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md`](../VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md).
 
 Publicidad, cobros, comisiones, opiniones, comunidad, avisos y manual siguen
@@ -65,8 +82,11 @@ Víctor solo introduce credenciales/identidad y autoriza operaciones reservadas.
 
 Continuar según [`CUENTAS-WEB-MOVIL-2026-10-11.md`](CUENTAS-WEB-MOVIL-2026-10-11.md).
 Evidencia en [`../VERIFICACION-CUENTAS-2026-10-11.md`](../VERIFICACION-CUENTAS-2026-10-11.md).
-Completar aquí el cierre de publicación y los commits de aprobación cuando
-estén comprobados, sin presentar preparación o simulaciones como producción.
+Publicación y descarga ya cerradas y comprobadas; queda mejorar entregabilidad
+del correo en spam, cambio real de contraseña y entrada posterior, prueba de
+Auth nativo con credenciales reales y teléfono físico. Son límites de evidencia,
+no tareas de código asignadas a Víctor. No activar monetización, manual ni
+tiendas sin cumplir sus requisitos separados. Repetición HTTP final: 35/35.
 
 
 ## 8 de octubre de 2026 · Claude (8) · cuentas fase 1: casi abiertas, falta que Gmail acepte la contraseña
