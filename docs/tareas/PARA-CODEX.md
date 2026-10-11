@@ -17,6 +17,9 @@ Fuente Android final en **`53d4c33`**: separación propia positiva de la nota
 local, «1 guardado», versión 1.3.1 y dos regresiones; dependencias y motor de
 cuentas intactos. El cierre técnico/documental conserva este commit compilado
 y la huella web aprobada, sin regenerar ni volver a desplegar contenido web.
+**Cierre guardado y sincronizado en `1148323`**: informes, manifiesto,
+documentación vigente y QA de APK14; auditor local posterior con árbol limpio,
+«LISTO PARA CORTE FINAL» y huellas de contenido/alcance idénticas a las aprobadas.
 
 **Verificado:** `npm test` final salida 0, web 501/móvil 182/SQL de sesión 196;
 Chrome aislado 61 y 30, revisión independiente 54 nativos/196 SQL/30 Chrome,
