@@ -990,7 +990,7 @@
         "conservaFechaCanonica": true,
         "estadoOperativo": {
           "estado": "observada",
-          "detalle": "La portada de midas.app se lee y mantiene su catálogo de productos; el folleto base de 17/07/2026 sigue incluyendo mTBILL. Las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
+          "detalle": "El índice oficial de productos de midas.app (llms.txt) mantiene su catálogo, con mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base de 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
           "fuentes": [
             {
               "id": "midas-mtbill",
@@ -1003,8 +1003,8 @@
             {
               "id": "midas-web",
               "tipo": "empresa",
-              "titulo": "Midas",
-              "url": "https://midas.app/",
+              "titulo": "Midas · índice oficial de productos (llms.txt)",
+              "url": "https://midas.app/llms.txt",
               "primaria": true,
               "consultadaEl": "2026-10-19"
             }
@@ -2070,7 +2070,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2127,7 +2127,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2183,7 +2183,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2240,7 +2240,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2284,7 +2284,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2328,7 +2328,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2372,7 +2372,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2416,7 +2416,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2460,7 +2460,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2504,7 +2504,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2548,7 +2548,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2592,7 +2592,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2636,7 +2636,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2686,7 +2686,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2736,7 +2736,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2793,7 +2793,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2854,7 +2854,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2902,7 +2902,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -2952,7 +2952,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3003,7 +3003,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3047,7 +3047,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3097,7 +3097,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3147,13 +3147,19 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
         },
         {
           "texto": "Hoy no hay inversión directa del emisor: solo negociación secundaria entre accionistas.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-10-19"
+        },
+        {
+          "texto": "El encabezado del último cruce (02/10/2026) y la tabla histórica del portal (última operación del 23/07/2026) no coinciden en la fecha. No se presenta como precio actual ejecutable.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3197,7 +3203,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3245,7 +3251,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3299,7 +3305,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3353,7 +3359,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3407,7 +3413,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3467,7 +3473,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3521,7 +3527,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3575,7 +3581,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3635,7 +3641,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3689,7 +3695,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3743,7 +3749,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3797,7 +3803,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3851,7 +3857,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3917,7 +3923,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -3971,7 +3977,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4031,7 +4037,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4085,7 +4091,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4145,7 +4151,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4199,7 +4205,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4259,7 +4265,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4313,7 +4319,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4367,7 +4373,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4423,7 +4429,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4472,7 +4478,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4521,7 +4527,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4570,7 +4576,7 @@
       ],
       "avisos": [
         {
-          "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-10-19"
@@ -4591,7 +4597,8 @@
       "estadoRevision": "no_verificable",
       "fuentesActuales": [
         "https://midas.app/mgloeuro",
-        "https://midas.app/products"
+        "https://midas.app/products",
+        "https://midas.app/llms.txt"
       ],
       "coleccion": "en_camino",
       "moneda": "EUR",

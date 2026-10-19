@@ -22,7 +22,7 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | | Estado |
 |---|---|
 | **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare). Se instala en el móvil como app. Última publicación: 6 de octubre, despliegue `50937958`, desde el ordenador de Víctor (`node rwadar-publicar.js --produccion`, su sesión de Wrangler). Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
-| **Catálogo** | En línea sigue la revisión del **6 de octubre** (lote `a0df3111`), caducada el 13 de octubre: la web y la app la enseñan con aviso y sin cifras. **La del 19 de octubre está preparada y probada, sin aplicar** (lote `f9876935`, vigente hasta el 26 de octubre): mismas 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 de mercado secundario y 4 en preparación), ya sin el documento de claude.ai como fuente. Detalle en [`CATALOGO-V2-2026-10-19.md`](CATALOGO-V2-2026-10-19.md). |
+| **Catálogo** | En línea sigue la revisión del **6 de octubre** (lote `a0df3111`), caducada el 13 de octubre: la web y la app la enseñan con aviso y sin cifras. **La del 19 de octubre está preparada y probada, sin aplicar** (lote `aa3aebce`, vigente hasta el 26 de octubre): mismas 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 de mercado secundario y 4 en preparación), ya sin el documento de claude.ai como fuente. Detalle en [`CATALOGO-V2-2026-10-19.md`](CATALOGO-V2-2026-10-19.md). |
 | **App Android** | **Versión 1.2.0** (código 12, misma firma), publicada el 7/10 en GitHub ([RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)); la web la ofrece en `/android`. Probada en emulador Android 15 ([run 37446968987](https://github.com/victorJorques/RWAdar-downloads/actions/runs/37446968987), flujo `android-smoke-120.yml`). Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
@@ -30,6 +30,14 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
 | **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
 | **Tipografía** | Arreglada el 2/10: la Geist incrustada no traía a-z, así que la web se veía con la letra del sistema. Ya es la completa. |
+
+**Ojo: `main` va por detrás de producción.** El 11/10 Codex publicó desde la
+rama `codex/cuentas-web-movil` (sin unir a `main`) la web con las cuentas
+abiertas, la app Android 1.3.1 y una migración de Supabase, y en Supabase hay
+un lote de catálogo del 11/10 (`966c230c`) cuya fuente no está en GitHub.
+Detalle en esa rama (`docs/tareas/PARA-CODEX.md`) y en
+[`CATALOGO-V2-2026-10-19.md`](CATALOGO-V2-2026-10-19.md). No publiques la web
+desde `main` hasta unir esa rama: quitaría las cuentas.
 
 **En pausa a propósito:** cuentas de usuario, opiniones, avisos por correo y
 avisos push. Las altas nuevas están cerradas. Los favoritos de la app se
@@ -62,8 +70,9 @@ dos fichas de prueba, pero nada conectado a la app.
    `rwadar-app/data/importaciones/catalogo-2026-10-19-v2/aplicar-y-aprobar.sql`
    en Supabase › SQL Editor › Run y después se publica la web como siempre
    (sincronizar, dos rondas de commit y aprobación, `--preview`,
-   `--produccion`). Vence el 26/10: para la siguiente, los pasos están en
-   [`tareas/REVISION-CATALOGO-2026-10-19.md`](tareas/REVISION-CATALOGO-2026-10-19.md).
+   `--produccion`), **desde la rama de Codex** que está en producción. Vence
+   el 26/10: la siguiente se hace con `npm run catalogo` (una sola orden; ver
+   [`RUNBOOK.md`](RUNBOOK.md#catálogo)).
    Si vence, la web y la app 1.2.0 avisan en lugar de vaciarse; la 1.1.2
    ocultaba las fichas.
 2. **Actualizar Postgres.** Las copias de seguridad ya están activas: la

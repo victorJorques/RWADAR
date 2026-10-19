@@ -2500,6 +2500,14 @@
         "fechaConsulta": "2026-10-19",
         "fuente": "https://shares.aktionariat.com/",
         "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+      },
+      {
+        "etiqueta": "Número de accionistas publicado · 19/10/2026",
+        "valor": "368",
+        "fechaDato": null,
+        "fechaConsulta": "2026-10-19",
+        "fuente": "https://shares.aktionariat.com/",
+        "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       }
     ]
   },
@@ -2616,6 +2624,14 @@
         "fechaConsulta": "2026-10-19",
         "fuente": "https://shares.bossinfo.com/",
         "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+      },
+      {
+        "etiqueta": "Número de accionistas publicado · 19/10/2026",
+        "valor": "155",
+        "fechaDato": null,
+        "fechaConsulta": "2026-10-19",
+        "fuente": "https://shares.bossinfo.com/",
+        "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       }
     ]
   },
@@ -2724,6 +2740,14 @@
       {
         "etiqueta": "Acciones tokenizadas · 19/10/2026",
         "valor": "436.909 WMKT de 1.050.000",
+        "fechaDato": null,
+        "fechaConsulta": "2026-10-19",
+        "fuente": "https://shares.wemakeit.com/",
+        "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+      },
+      {
+        "etiqueta": "Número de accionistas publicado · 19/10/2026",
+        "valor": "5.276",
         "fechaDato": null,
         "fechaConsulta": "2026-10-19",
         "fuente": "https://shares.wemakeit.com/",
@@ -2844,6 +2868,14 @@
         "fechaConsulta": "2026-10-19",
         "fuente": "https://shares.quitt.ch/",
         "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+      },
+      {
+        "etiqueta": "Número de accionistas publicado · 19/10/2026",
+        "valor": "227",
+        "fechaDato": null,
+        "fechaConsulta": "2026-10-19",
+        "fuente": "https://shares.quitt.ch/",
+        "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       }
     ]
   },
@@ -2960,6 +2992,14 @@
       {
         "etiqueta": "Acciones tokenizadas · 19/10/2026",
         "valor": "27.277 LENDS de 31.066",
+        "fechaDato": null,
+        "fechaConsulta": "2026-10-19",
+        "fuente": "https://shares.lend.ch/",
+        "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+      },
+      {
+        "etiqueta": "Número de accionistas publicado · 19/10/2026",
+        "valor": "286",
         "fechaDato": null,
         "fechaConsulta": "2026-10-19",
         "fuente": "https://shares.lend.ch/",
@@ -3964,7 +4004,8 @@
     "descripcion": "Producto de Midas denominado en euros. Su página de productos lo anuncia como la estrategia Global Diversified Alternative Debt de Fasanara en euros. Su rendimiento y sus condiciones quedan pendientes de comprobación.",
     "fuentes": [
       "https://midas.app/mgloeuro",
-      "https://midas.app/products"
+      "https://midas.app/products",
+      "https://midas.app/llms.txt"
     ],
     "caracteristicas": [
       {
@@ -3984,6 +4025,14 @@
         "fechaConsulta": "2026-10-19",
         "fuente": "https://midas.app/products",
         "alcance": "Texto visto en la página oficial de productos de Midas el 19/10/2026. No acredita apertura, rendimiento ni elegibilidad."
+      },
+      {
+        "etiqueta": "Descripción en el índice oficial de productos · 19/10/2026",
+        "valor": "«The mGLOeuro token provides EUR-denominated exposure to Fasanara Capital's Global Diversified Alternative Debt strategy, the same portfolio as mGLOBAL»",
+        "fechaDato": null,
+        "fechaConsulta": "2026-10-19",
+        "fuente": "https://midas.app/llms.txt",
+        "alcance": "Texto visto en el índice oficial de productos de Midas el 19/10/2026. No acredita apertura, rendimiento ni elegibilidad."
       }
     ]
   }

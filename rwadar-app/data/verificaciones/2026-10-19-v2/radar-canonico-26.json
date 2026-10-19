@@ -272,8 +272,8 @@
     {
       "id": "midas-web",
       "tipo": "empresa",
-      "titulo": "Midas",
-      "url": "https://midas.app/",
+      "titulo": "Midas · índice oficial de productos (llms.txt)",
+      "url": "https://midas.app/llms.txt",
       "primaria": true,
       "consultadaEl": "2026-10-19"
     },
@@ -1036,7 +1036,7 @@
       "fechaCanonicaConservada": "2026-07-26",
       "estadoOperativo": {
         "estado": "observada",
-        "detalle": "La portada de midas.app se lee y mantiene su catálogo de productos; el folleto base de 17/07/2026 sigue incluyendo mTBILL. Las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
+        "detalle": "El índice oficial de productos de midas.app (llms.txt) mantiene su catálogo, con mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base de 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
         "fuentes": [
           "midas-mtbill",
           "midas-web"

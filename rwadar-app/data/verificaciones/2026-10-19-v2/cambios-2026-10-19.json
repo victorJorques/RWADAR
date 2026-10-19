@@ -17,6 +17,10 @@
       "titulo": "FINRA · Funding portals we regulate (OpenDeal Portal LLC)",
       "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate"
     },
+    "midas-web": {
+      "titulo": "Midas · índice oficial de productos (llms.txt)",
+      "url": "https://midas.app/llms.txt"
+    },
     "paxg-occ": {
       "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf"
     }
@@ -102,7 +106,7 @@
     "midas": {
       "estadoOperativo": {
         "estado": "observada",
-        "detalle": "La portada de midas.app se lee y mantiene su catálogo de productos; el folleto base de 17/07/2026 sigue incluyendo mTBILL. Las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
+        "detalle": "El índice oficial de productos de midas.app (llms.txt) mantiene su catálogo, con mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base de 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
         "fuentes": [
           "midas-mtbill",
           "midas-web"
@@ -183,7 +187,7 @@
         ],
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -263,7 +267,7 @@
         ],
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -301,7 +305,7 @@
         ],
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -340,7 +344,7 @@
         ],
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -371,11 +375,12 @@
         "resumen": "Producto de Midas denominado en euros. Su página de productos lo anuncia como la estrategia Global Diversified Alternative Debt de Fasanara en euros. Su rendimiento y sus condiciones quedan pendientes de comprobación.",
         "fuentesActuales": [
           "https://midas.app/mgloeuro",
-          "https://midas.app/products"
+          "https://midas.app/products",
+          "https://midas.app/llms.txt"
         ],
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -399,6 +404,14 @@
           "fechaConsulta": "2026-10-19",
           "fuente": "https://midas.app/products",
           "alcance": "Texto visto en la página oficial de productos de Midas el 19/10/2026. No acredita apertura, rendimiento ni elegibilidad."
+        },
+        {
+          "etiqueta": "Descripción en el índice oficial de productos · 19/10/2026",
+          "valor": "«The mGLOeuro token provides EUR-denominated exposure to Fasanara Capital's Global Diversified Alternative Debt strategy, the same portfolio as mGLOBAL»",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-19",
+          "fuente": "https://midas.app/llms.txt",
+          "alcance": "Texto visto en el índice oficial de productos de Midas el 19/10/2026. No acredita apertura, rendimiento ni elegibilidad."
         }
       ]
     },
@@ -452,7 +465,15 @@
           "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "drautalresidenz-paternion": {
       "documentacion": {
@@ -512,7 +533,15 @@
           "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "vivienda-stallhofstra-e-28-gratwein": {
       "documentacion": {
@@ -572,7 +601,15 @@
           "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "fotovoltaica-cohotel": {
       "documentacion": {
@@ -624,7 +661,15 @@
           "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "apartamento-vacacional-hinterstoder-50": {
       "documentacion": {
@@ -684,7 +729,15 @@
           "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "vivienda-pluddemanngasse-101-graz": {
       "documentacion": {
@@ -744,7 +797,15 @@
           "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "local-de-estanco-klagenfurt": {
       "documentacion": {
@@ -804,7 +865,15 @@
           "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "vivienda-schwarzer-weg-18-graz": {
       "documentacion": {
@@ -864,7 +933,15 @@
           "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "terreno-con-arrendamiento-billa": {
       "documentacion": {
@@ -944,7 +1021,15 @@
           "fuente": "https://api.app.brickwise.at/api/v2/assets",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "vivienda-sonnleithnergasse-2-viena": {
       "documentacion": {
@@ -996,7 +1081,19 @@
           "fuente": "https://api.app.brickwise.at/api/v2/assets",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "La emisión primaria está agotada (0 participaciones disponibles); solo se puede comprar en el mercado secundario de Brickwise a precio de otros inversores.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
       "documentacion": {
@@ -1048,7 +1145,19 @@
           "fuente": "https://api.app.brickwise.at/api/v2/assets",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "La emisión primaria está agotada (0 participaciones disponibles); solo se puede comprar en el mercado secundario de Brickwise.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "randhartingergasse-9-viena": {
       "documentacion": {
@@ -1108,7 +1217,19 @@
           "fuente": "https://api.app.brickwise.at/api/v2/assets",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El precio de emisión (100,24 €) y el precio más bajo del mercado secundario (75 €) son muy distintos; comprueba en la app a qué precio compras realmente.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "spiko-letras-del-tesoro-euro": {
       "cifras": "comprobadas",
@@ -1129,6 +1250,12 @@
           {
             "etiqueta": "Rendimiento publicado · 30 días",
             "valor": "2,41 %"
+          }
+        ],
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
           }
         ]
       },
@@ -1407,13 +1534,25 @@
           "fuente": "https://www.prosegurcrypto.com/digital-gold",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El precio del oro puede bajar; el proveedor no garantiza rentabilidad ni valor fijo.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "casa-de-outeiro": {
       "cambios": {
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -1494,7 +1633,7 @@
         "resumen": "Bono tokenizado de IOD Applications en Alius Capital para anticipar cobros de facturas, con seguro de caución de hasta el 90 % según la plataforma. El 19/10/2026 la campaña estaba abierta y a punto de cerrar; las condiciones son las del documento de emisión.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -1678,8 +1817,24 @@
           "fechaConsulta": "2026-10-19",
           "fuente": "https://shares.aktionariat.com/",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 19/10/2026",
+          "valor": "368",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-19",
+          "fuente": "https://shares.aktionariat.com/",
+          "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "boss-info": {
       "documentacion": {
@@ -1726,14 +1881,34 @@
           "fechaConsulta": "2026-10-19",
           "fuente": "https://shares.bossinfo.com/",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 19/10/2026",
+          "valor": "155",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-19",
+          "fuente": "https://shares.bossinfo.com/",
+          "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "La página no enlaza el acuerdo de registro ni el de titular del token (ambos aparecen como «N/A»).",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "wemakeit": {
       "cambios": {
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -1848,10 +2023,34 @@
           "fechaConsulta": "2026-10-19",
           "fuente": "https://shares.wemakeit.com/",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 19/10/2026",
+          "valor": "5.276",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-19",
+          "fuente": "https://shares.wemakeit.com/",
+          "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
       ]
     },
     "servicehunter-quitt": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Hoy no hay inversión directa del emisor: solo negociación secundaria entre accionistas.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El encabezado del último cruce (02/10/2026) y la tabla histórica del portal (última operación del 23/07/2026) no coinciden en la fecha. No se presenta como precio actual ejecutable.",
+            "tono": "warn"
+          }
+        ]
+      },
       "documentacion": {
         "caracteristicas": [
           {
@@ -1892,6 +2091,14 @@
         {
           "etiqueta": "Acciones tokenizadas · 19/10/2026",
           "valor": "1.655.280 DQTS de 2.000.000",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-19",
+          "fuente": "https://shares.quitt.ch/",
+          "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 19/10/2026",
+          "valor": "227",
           "fechaDato": null,
           "fechaConsulta": "2026-10-19",
           "fuente": "https://shares.quitt.ch/",
@@ -1948,15 +2155,31 @@
           "fechaConsulta": "2026-10-19",
           "fuente": "https://shares.lend.ch/",
           "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 19/10/2026",
+          "valor": "286",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-19",
+          "fuente": "https://shares.lend.ch/",
+          "alcance": "Visto en la fuente oficial el 19/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      }
     },
     "hausera-proximas-ofertas": {
       "cambios": {
         "resumen": "Seguimiento de nuevas ofertas de Hausera. El 19/10/2026 anunciaba la preventa de Alicante 1 (desde ese día) y su oferta pública a partir del 26/10/2026; no había otra oportunidad abierta.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2035,14 +2258,26 @@
           "fuente": "https://www.reental.co/properties",
           "alcance": "Visto en la fuente oficial el 19/10/2026. El estado de obra o explotación no acredita que se pueda invertir."
         }
-      ]
+      ],
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Esta referencia está en seguimiento y no representa una oferta abierta.",
+            "tono": "neutro"
+          }
+        ]
+      }
     },
     "reental-secundario-miami-1": {
       "cambios": {
         "resumen": "Reventa entre inversores de tokens de Miami 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2078,7 +2313,7 @@
         "resumen": "Reventa entre inversores de tokens de Houston 2, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2114,7 +2349,7 @@
         "resumen": "Reventa entre inversores de tokens de Houston 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2150,7 +2385,7 @@
         "resumen": "Reventa entre inversores de tokens de San Antonio 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2173,7 +2408,7 @@
         "resumen": "Reventa entre inversores de tokens de Atlanta 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2209,7 +2444,7 @@
         "resumen": "Reventa entre inversores de tokens de Houston 3, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2245,7 +2480,7 @@
         "resumen": "Reventa entre inversores de tokens de Proyecto 100 (PRO-100), proyecto de Reental con activos en Yucatán, Dubái y Samaná, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2268,7 +2503,7 @@
         "resumen": "Reventa entre inversores de tokens de Miami 3, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2304,7 +2539,7 @@
         "resumen": "Reventa entre inversores de tokens de Granada 3, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2340,7 +2575,7 @@
         "resumen": "Reventa entre inversores de tokens de Carolina del Norte 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2376,7 +2611,7 @@
         "resumen": "Reventa entre inversores de tokens de Abu Dhabi 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2412,7 +2647,7 @@
         "resumen": "Reventa entre inversores de tokens de Rentas 3 (RET-3), cartera global de Reental que combina préstamos y activos inmobiliarios, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2439,7 +2674,7 @@
         "resumen": "Reventa entre inversores de tokens de Miami 2, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2475,7 +2710,7 @@
         "resumen": "Reventa entre inversores de tokens de Miami 5, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2498,7 +2733,7 @@
         "resumen": "Reventa entre inversores de tokens de Rentas 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2534,7 +2769,7 @@
         "resumen": "Reventa entre inversores de tokens de Dania Beach 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2574,7 +2809,7 @@
         "resumen": "Reventa entre inversores de tokens de Rentas 2, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2610,7 +2845,7 @@
         "resumen": "Reventa entre inversores de tokens de Pirineos 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2633,7 +2868,7 @@
         "resumen": "Reventa entre inversores de tokens de Levante 1, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2669,7 +2904,7 @@
         "resumen": "Reventa entre inversores de tokens de Opportunity 2, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {
@@ -2705,7 +2940,7 @@
         "resumen": "Reventa entre inversores de tokens de Málaga 6, en el mercado P2P de Reental. El precio pedido corresponde a la orden de cada vendedor y puede cambiar.",
         "avisos": [
           {
-            "texto": "Consulta las condiciones y riesgos del proveedor; el acceso depende de sus requisitos.",
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
             "tono": "warn"
           },
           {

@@ -236,10 +236,10 @@
       },
       {
         "id": "midas-web",
-        "url": "https://midas.app/",
+        "url": "https://midas.app/llms.txt",
         "accesible": true,
-        "urlAnterior": null,
-        "nota": "Portada legible (TVL total 698,84 M USD). La tabla de productos sale vacía desde esta conexión y las páginas de cada producto devuelven el desafío de Cloudflare."
+        "urlAnterior": "https://midas.app/",
+        "nota": "midas.app se leyó a las 08:37 UTC (TVL total 698,84 M USD) y después pasó a devolver el desafío de Cloudflare. Se usa el índice oficial https://midas.app/llms.txt (leído con petición directa): lista mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro."
       },
       {
         "id": "midas-mtbill",
@@ -584,7 +584,7 @@
       "midas": {
         "estadoOperativo": {
           "estado": "observada",
-          "detalle": "La portada de midas.app se lee y mantiene su catálogo de productos; el folleto base de 17/07/2026 sigue incluyendo mTBILL. Las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
+          "detalle": "El índice oficial de productos de midas.app (llms.txt) mantiene su catálogo, con mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base de 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
           "fuentes": [
             "midas-mtbill",
             "midas-web"
