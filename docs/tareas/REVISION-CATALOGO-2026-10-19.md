@@ -1,22 +1,28 @@
-# Revisión del catálogo de octubre (en curso)
+# Revisión del catálogo de octubre
 
 Petición de Víctor del 19/10/2026: renovar el catálogo, caducado desde el
 13/10 (lote del 06/10). Si continúas esta tarea en otra sesión, empieza aquí.
 
 ## Estado
 
-- Hecho, en esta rama: `rwadar-app/capturar-fuentes.mjs` (lee las fuentes en
-  Chromium), `rwadar-app/montar-revision.mjs` (monta el lote y el SQL) y
-  `rwadar-app/comprobar-revision.mjs` (lo prueba en PGlite sobre el lote que
-  está en producción). Ensayados con un lote de prueba, ya borrado.
-- **No se ha consultado ninguna fuente todavía:** la sesión del 19/10 no tenía
-  internet (el entorno solo dejaba salir a GitHub y npm).
-- Nada aplicado en Supabase ni publicado.
+- **19/10, segunda sesión (con internet): hecha y probada, sin aplicar.**
+  Lote `f9876935` (19/10, vigente hasta el 26/10). Fuentes y fichas
+  consultadas el 19/10; evidencia en
+  `rwadar-app/data/verificaciones/2026-10-19-v2/contraste-2026-10-19.json` y
+  resumen en `docs/CATALOGO-V2-2026-10-19.md`. Enlace de claude.ai retirado.
+- Falta lo de Víctor: pegar
+  `rwadar-app/data/importaciones/catalogo-2026-10-19-v2/aplicar-y-aprobar.sql`
+  en Supabase y publicar la web.
+- Para la próxima revisión, desde España o desde un navegador normal: Midas
+  bloquea las consultas automáticas desde la nube (mF-ONE y mTBILL quedaron sin
+  cifra), y la SEC, republic.com y la documentación legal de Backed también.
+  El generador de esta revisión no está en el repositorio: el archivo de
+  cambios es la fuente.
 
 ## Pasos
 
-1. `node rwadar-app/capturar-fuentes.mjs 2026-10-06 /ruta/capturas.json`
-   (126 URL: 72 fuentes del radar y los destinos de las 49 fichas).
+1. `node rwadar-app/capturar-fuentes.mjs <fecha anterior> /ruta/capturas.json`
+   (todas las fuentes del radar y los destinos de las 49 fichas de esa revisión).
 2. Repasar cada fuente frente a lo que dice el lote del 06/10
    (`rwadar-app/data/verificaciones/2026-10-06-v2/contraste-2026-10-06.json`
    tiene la nota de cada una) y cada ficha: cifras de las principales en su

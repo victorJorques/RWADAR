@@ -6,6 +6,33 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 19 de octubre de 2026 · Claude (8) · revisión del catálogo del 19/10, preparada sin aplicar
+
+**Rama:** `claude/revision-catalogo-2026-10-19`. **Nada aplicado en Supabase ni publicado.**
+
+- Herramientas nuevas (primera sesión del día, sin internet):
+  `rwadar-app/capturar-fuentes.mjs`, `montar-revision.mjs` y
+  `comprobar-revision.mjs`, para cualquier fecha. Estado y reglas en
+  `docs/tareas/REVISION-CATALOGO-2026-10-19.md`.
+- **Revisión del 19/10** (segunda sesión, con internet): lote `f9876935`,
+  vigente hasta el 26/10. 69 fuentes del radar y las 49 fichas consultadas el
+  19/10 desde la nube (salida en EE. UU.). Mismo manifiesto 26/49 (24/21/4).
+  Detalle en `docs/CATALOGO-V2-2026-10-19.md`; evidencia en
+  `rwadar-app/data/verificaciones/2026-10-19-v2/contraste-2026-10-19.json`.
+- **Retirado el documento de claude.ai** de las 49 fichas (205 referencias);
+  los textos que lo citaban se reescriben con la fuente oficial.
+- Midas bloquea la nube: mF-ONE y mTBILL pierden la cifra; las cuatro de Midas
+  quedan «no verificable» con aviso. Spiko 2,41 %. IOD Occasio, ya en campaña.
+- Pruebas: `comprobar-revision.mjs 2026-10-19` OK (aplicado dos veces sobre la
+  cadena de producción en PGlite). `npm test`: db, qr, móvil y herramientas en
+  verde; `test:web` falla hoy **también en `main`** porque el catálogo
+  incrustado en la web (06/10) caducó; con el reloj al 10/10, 501/501.
+- **Pendiente de Víctor:** pegar
+  `rwadar-app/data/importaciones/catalogo-2026-10-19-v2/aplicar-y-aprobar.sql`
+  en Supabase › SQL Editor › Run y publicar la web como el 06/10
+  (sincronizar, dos rondas de commit + aprobación en `estado.json`,
+  `--preview`, `--produccion`). Al sincronizar, `test:web` vuelve a verde.
+
 ## 7 de octubre de 2026 · Claude (7) · catálogo del 06/10 en producción, web y app 1.2.0 publicadas
 
 - **Supabase:** Víctor pegó `aplicar-y-aprobar.sql` tres veces (SQL Editor).

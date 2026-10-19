@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 6 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 19 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -22,7 +22,7 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | | Estado |
 |---|---|
 | **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare). Se instala en el móvil como app. Última publicación: 6 de octubre, despliegue `50937958`, desde el ordenador de Víctor (`node rwadar-publicar.js --produccion`, su sesión de Wrangler). Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
-| **Catálogo** | Revisión del **6 de octubre** (lote `a0df3111`), vigente **hasta el 13 de octubre**: 26 plataformas en el radar, 4 descartadas con su fuente y 49 referencias de inversión (24 principales, 21 de mercado secundario y 4 en preparación). Detalle en [`CATALOGO-V2-2026-10-06.md`](CATALOGO-V2-2026-10-06.md). |
+| **Catálogo** | En línea sigue la revisión del **6 de octubre** (lote `a0df3111`), caducada el 13 de octubre: la web y la app la enseñan con aviso y sin cifras. **La del 19 de octubre está preparada y probada, sin aplicar** (lote `f9876935`, vigente hasta el 26 de octubre): mismas 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 de mercado secundario y 4 en preparación), ya sin el documento de claude.ai como fuente. Detalle en [`CATALOGO-V2-2026-10-19.md`](CATALOGO-V2-2026-10-19.md). |
 | **App Android** | **Versión 1.2.0** (código 12, misma firma), publicada el 7/10 en GitHub ([RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)); la web la ofrece en `/android`. Probada en emulador Android 15 ([run 37446968987](https://github.com/victorJorques/RWAdar-downloads/actions/runs/37446968987), flujo `android-smoke-120.yml`). Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
@@ -58,11 +58,14 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-1. **Renovar la revisión del catálogo antes del 13 de octubre.** Cómo se hizo
-   la del 6/10 (comprobación de las 70 fuentes y las 49 fichas, SQL de un solo
-   paso que Víctor pega en Supabase, y republicar la web) está en
-   [`CATALOGO-V2-2026-10-06.md`](CATALOGO-V2-2026-10-06.md). Si vence, la web
-   y la app 1.2.0 avisan en lugar de vaciarse; la 1.1.2 ocultaba las fichas.
+1. **Publicar la revisión del catálogo del 19 de octubre.** Víctor pega
+   `rwadar-app/data/importaciones/catalogo-2026-10-19-v2/aplicar-y-aprobar.sql`
+   en Supabase › SQL Editor › Run y después se publica la web como siempre
+   (sincronizar, dos rondas de commit y aprobación, `--preview`,
+   `--produccion`). Vence el 26/10: para la siguiente, los pasos están en
+   [`tareas/REVISION-CATALOGO-2026-10-19.md`](tareas/REVISION-CATALOGO-2026-10-19.md).
+   Si vence, la web y la app 1.2.0 avisan en lugar de vaciarse; la 1.1.2
+   ocultaba las fichas.
 2. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
    primera, del 2 de octubre (run 36932444985), copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
@@ -86,7 +89,7 @@ dos fichas de prueba, pero nada conectado a la app.
 
 | Cuándo | Qué |
 |---|---|
-| **5 de octubre de 2026** | Vence la revisión del catálogo (la web avisa, no se vacía) |
+| **26 de octubre de 2026** | Vence la revisión del 19/10 si se aplica (la web avisa, no se vacía) |
 | Cada noche, 02:43 UTC | Copia de seguridad cifrada, guardada 35 días en GitHub |
 | Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días |
 | Agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |
