@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 11 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 19 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -22,7 +22,7 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | | Estado |
 |---|---|
 | **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), **con las cuentas activadas desde el 11/10**. La publicación y sus recursos se comprobaron en línea; los formularios de alta, entrada y Perfil se observaron en el navegador de producción. Se instala en el móvil como app. Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
-| **Catálogo** | Revisión del **6 de octubre**, vigente **hasta el 13 de octubre**: 26 plataformas en el radar, 4 descartadas con su fuente y 49 referencias de inversión (24 principales, 21 de mercado secundario y 4 en preparación). La lectura en línea del 11/10 confirmó las 26 plataformas y 49 referencias; el catálogo público **no está retirado**. Detalle en [`CATALOGO-V2-2026-10-06.md`](CATALOGO-V2-2026-10-06.md). |
+| **Catálogo** | En línea sigue el lote del 11/10 (`966c230c`, con fecha de lote 6 de octubre y fichas revisadas el 11/10), caducado el 13 de octubre; su fuente no está en Git: la web y la app la enseñan con aviso y sin cifras. **La del 19 de octubre está preparada y probada, sin aplicar** (lote `aa3aebce`, vigente hasta el 26 de octubre): mismas 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 de mercado secundario y 4 en preparación), ya sin el documento de claude.ai como fuente. Detalle en [`CATALOGO-V2-2026-10-19.md`](CATALOGO-V2-2026-10-19.md). |
 | **App Android** | **Versión 1.3.1** (código 14), **publicada el 11/10** en GitHub ([RWAdar 1.3.1](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1)). Incluye las cuentas opcionales y corrige el acabado del Perfil. Se compiló sin cargos y pasó las pruebas de uso del mismo APK en un emulador Android 15. La descarga pública sin autenticación coincide con el APK probado; su firma, tamaño, evidencia y sumas se verificaron. Es un lanzamiento final, no un borrador ni una versión preliminar. Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
@@ -41,6 +41,11 @@ por Codex **ya llegó a la bandeja de entrada**, con sus comprobaciones de
 autenticidad correctas; no se leyeron su cuerpo ni su enlace. Falta que Víctor
 introduzca la nueva contraseña y verificar la entrada posterior: la recuperación
 real todavía no está completada.
+
+**Esta rama une producción y el catálogo.** `claude/integracion-2026-10-19`
+parte de `codex/cuentas-web-movil` (lo publicado el 11/10) y le suma la
+revisión del 19/10 y la orden `npm run catalogo`. Al unirla a `main`, `main`
+vuelve a coincidir con producción.
 
 **Cambios del 11/10:** panel nativo de cuentas y refuerzos de la web
 para evitar mezclar sesiones; registro, acceso, nombre, vigilancia, recuperación
@@ -124,11 +129,15 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-1. **Renovar la revisión del catálogo antes del 13 de octubre.** Cómo se hizo
-   la del 6/10 (comprobación de las 70 fuentes y las 49 fichas, SQL de un solo
-   paso y republicación de la web) está en
-   [`CATALOGO-V2-2026-10-06.md`](CATALOGO-V2-2026-10-06.md). Si vence, la web
-   y la app 1.2.0 avisan en lugar de vaciarse; la 1.1.2 ocultaba las fichas.
+1. **Publicar la revisión del catálogo del 19 de octubre.** Víctor pega
+   `rwadar-app/data/importaciones/catalogo-2026-10-19-v2/aplicar-y-aprobar.sql`
+   en Supabase › SQL Editor › Run y después se publica la web como siempre
+   (sincronizar, dos rondas de commit y aprobación, `--preview`,
+   `--produccion`), desde esta rama (que incluye lo publicado por Codex). Vence
+   el 26/10: la siguiente se hace con `npm run catalogo` (una sola orden; ver
+   [`RUNBOOK.md`](RUNBOOK.md#catálogo)).
+   Si vence, la web y la app 1.2.0 avisan en lugar de vaciarse; la 1.1.2
+   ocultaba las fichas.
 2. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
    primera, del 2 de octubre, copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
@@ -163,7 +172,7 @@ dos fichas de prueba, pero nada conectado a la app.
 
 | Cuándo | Qué |
 |---|---|
-| **13 de octubre de 2026** | Vence la revisión del catálogo (la web avisa, no se vacía) |
+| **26 de octubre de 2026** | Vence la revisión del 19/10 si se aplica (la web avisa, no se vacía) |
 | Cada noche, 02:43 UTC | Copia de seguridad cifrada, guardada 35 días en GitHub |
 | Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días |
 | Agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |

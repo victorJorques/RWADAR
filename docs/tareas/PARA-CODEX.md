@@ -6,6 +6,63 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 19 de octubre de 2026 · Claude (9) · orden única del catálogo y revisión total
+
+**Rama:** `claude/revision-catalogo-2026-10-19` (PR #12). **Nada aplicado en Supabase ni publicado.**
+
+- **`npm run catalogo`** (`rwadar-app/actualizar-catalogo.mjs`): captura,
+  comprueba las 69 fuentes del radar contra `rwadar-app/data/comprobaciones-fuentes.json`
+  (reintenta una vez las que fallan), pone al día las 49 fichas con lo leído
+  (Brickwise app y API, Aktionariat y portales, Spiko, Prosegur, Alius,
+  Hausera, P2P de Reental, Midas), monta, prueba en PGlite y escribe
+  `informe-<fecha>.md`. Si falla una fuente del radar no monta nada (sale con 2).
+  Probada de punta a punta con captura real simulando el 20/10: 69/69, lote OK.
+- `capturar-fuentes.mjs`: hora de Madrid, PDF siempre con curl (dos
+  identidades, comprueba `%PDF`), segundo intento por HTTP (navegador y curl)
+  si hay bloqueo o 5xx, y paginación del P2P de Reental esperando a sus textos.
+- **Lote del 19/10 rehecho:** `aa3aebce` (antes `f9876935`). Fuente de la
+  portada de Midas → `midas.app/llms.txt` (la portada ya bloquea la nube);
+  aviso general con la redacción de producción («Referencia editorial
+  gratuita…»); aviso de quitt (encabezado y tabla no coinciden); número de
+  accionistas.
+- **Producción ≠ `main`:** Supabase tiene el lote `966c230c` (fichas del 11/10)
+  cuya fuente no está en GitHub, y la web/app publicadas salen de
+  `codex/cuentas-web-movil`, sin unir. El lote nuevo se probó también en una
+  copia de esa rama: `comprobar-revision` OK, `probar-web` 501/501 y la web
+  generada con las vistas que saldrán de Supabase se ve bien en Chromium
+  (19.10.2026, Spiko 2,41 %, sin cookies ni errores). **Publicar desde esa
+  rama**, no desde `main`.
+- Revisión total: web en producción 35/35 y base 2/2 en solo lectura; sin
+  cookies propias (la `__cf_bm` de Supabase no se guarda); cabeceras de
+  seguridad presentes; `/android` → última release; copias diarias correctas
+  hasta hoy; `npm audit` raíz y base 0, móvil 23 (los que Codex ya evaluó).
+
+## 19 de octubre de 2026 · Claude (8) · revisión del catálogo del 19/10, preparada sin aplicar
+
+**Rama:** `claude/revision-catalogo-2026-10-19`. **Nada aplicado en Supabase ni publicado.**
+
+- Herramientas nuevas (primera sesión del día, sin internet):
+  `rwadar-app/capturar-fuentes.mjs`, `montar-revision.mjs` y
+  `comprobar-revision.mjs`, para cualquier fecha. Estado y reglas en
+  `docs/tareas/REVISION-CATALOGO-2026-10-19.md`.
+- **Revisión del 19/10** (segunda sesión, con internet): lote `aa3aebce`,
+  vigente hasta el 26/10. 69 fuentes del radar y las 49 fichas consultadas el
+  19/10 desde la nube (salida en EE. UU.). Mismo manifiesto 26/49 (24/21/4).
+  Detalle en `docs/CATALOGO-V2-2026-10-19.md`; evidencia en
+  `rwadar-app/data/verificaciones/2026-10-19-v2/contraste-2026-10-19.json`.
+- **Retirado el documento de claude.ai** de las 49 fichas (205 referencias);
+  los textos que lo citaban se reescriben con la fuente oficial.
+- Midas bloquea la nube: mF-ONE y mTBILL pierden la cifra; las cuatro de Midas
+  quedan «no verificable» con aviso. Spiko 2,41 %. IOD Occasio, ya en campaña.
+- Pruebas: `comprobar-revision.mjs 2026-10-19` OK (aplicado dos veces sobre la
+  cadena de producción en PGlite). `npm test`: db, qr, móvil y herramientas en
+  verde; `test:web` falla hoy **también en `main`** porque el catálogo
+  incrustado en la web (06/10) caducó; con el reloj al 10/10, 501/501.
+- **Pendiente de Víctor:** pegar
+  `rwadar-app/data/importaciones/catalogo-2026-10-19-v2/aplicar-y-aprobar.sql`
+  en Supabase › SQL Editor › Run y publicar la web como el 06/10
+  (sincronizar, dos rondas de commit + aprobación en `estado.json`,
+  `--preview`, `--produccion`). Al sincronizar, `test:web` vuelve a verde.
 ## 11 de octubre de 2026 · Codex · cierre publicado: cuentas web y Android 1.3.1
 
 Fuente en worktree `codex/cuentas-web-movil`; **no modificar la carpeta
