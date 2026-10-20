@@ -246,8 +246,9 @@ paso('el fixture y el mapa estatico cubren exactamente las 52 imagenes',
 const directorioEditorial = path.dirname(RUTA_MANIFIESTO_EDITORIAL);
 const categoriasOfertas = new Set(todas.map((oferta) => oferta.categoria));
 const categoriasEditoriales = new Set(manifiestoEditorial.archivos.map((archivo) => archivo.categoria));
-paso('el manifiesto editorial v1 cubre exactamente las cuatro categorias del escaparate',
-  manifiestoEditorial.versionEsquema === 1
+paso('el manifiesto editorial v2 cubre exactamente las cuatro categorias del escaparate',
+  manifiestoEditorial.versionEsquema === 2
+  && Array.isArray(manifiestoEditorial.fichas)
   && manifiestoEditorial.etiquetaVisibleObligatoria === 'Ilustración editorial'
   && manifiestoEditorial.archivos.length === 4
   && categoriasEditoriales.size === 4
@@ -263,14 +264,25 @@ paso('los cuatro fallback editoriales conservan bytes, SHA-256 y dimensiones 640
       && archivo.ancho === 640 && archivo.alto === 440
       && archivo.alt.startsWith('Ilustración editorial ');
   }));
-paso('el directorio editorial y el mapa Metro usan una lista cerrada de cuatro activos', (() => {
-  const nombres = manifiestoEditorial.archivos.map((archivo) => archivo.archivo);
+paso('las ilustraciones por ficha conservan bytes, SHA-256 y dimensiones 960x660',
+  manifiestoEditorial.fichas.every((ficha) => {
+    const ruta = path.join(directorioEditorial, ficha.archivo);
+    const dimensiones = dimensionesWebp(ruta);
+    return ficha.archivo === `oferta-${ficha.slug}.webp`
+      && fs.statSync(ruta).size === ficha.bytes
+      && sha256(ruta) === ficha.hashSha256
+      && dimensiones.ancho === ficha.ancho && dimensiones.alto === ficha.alto
+      && ficha.ancho === 960 && ficha.alto === 660
+      && ficha.alt.startsWith('Ilustración editorial');
+  }));
+paso('el directorio editorial y el mapa Metro usan una lista cerrada: cuatro de categoría y las de cada ficha', (() => {
+  const nombres = [...manifiestoEditorial.archivos, ...manifiestoEditorial.fichas].map((archivo) => archivo.archivo);
   const encontrados = fs.readdirSync(directorioEditorial).sort();
   const esperados = ['manifest.json', ...nombres].sort();
   return JSON.stringify(encontrados) === JSON.stringify(esperados)
     && nombres.every((nombre) => mapaEditorial.includes(
       `require('../assets/ofertas-editoriales/${nombre}')`))
-    && (mapaEditorial.match(/\brequire\('\.\.\/assets\/ofertas-editoriales\/[^']+\.webp'\)/g) || []).length === 4;
+    && (mapaEditorial.match(/\brequire\('\.\.\/assets\/ofertas-editoriales\/[^']+\.webp'\)/g) || []).length === nombres.length;
 })());
 
 console.log(`\n${correctas} correctas, 0 fallidas`);

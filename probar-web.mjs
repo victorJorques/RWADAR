@@ -1711,13 +1711,23 @@ prueba('el paquete desplegable incluye las 26 portadas y su manifiesto de proced
   archivosPublicados.includes('plataformas/fuentes.json') &&
   rutasPortada.every(ruta => portadasPublicadas.includes(ruta.slice(1))));
 const editorialesPublicadas = archivosPublicados.filter(x=>x.startsWith('ofertas-editoriales/'));
-prueba('la salida incluye solo el manifiesto y los cuatro fallback editoriales validados',
-  editorialesPublicadas.length === 5 &&
+prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustraciones por ficha validadas',
+  activosEditoriales.fichas.length > 0 &&
+  editorialesPublicadas.length === 1 + 4 + activosEditoriales.fichas.length &&
   activosEditoriales.publicables.every((activo) => {
     const destino = path.join(publicado, ...activo.salida.split('/'));
     return editorialesPublicadas.includes(activo.salida) && fs.statSync(destino).size === activo.bytes &&
       crypto.createHash('sha256').update(fs.readFileSync(destino)).digest('hex') === activo.hashSha256;
   }));
+{
+  const conPropia = [...htmlPublicado.matchAll(
+    /<img src="\/ofertas-editoriales\/oferta-([a-z0-9-]+)\.webp" alt="Ilustración editorial[^"]*" data-respaldo="\/ofertas-editoriales\/[a-z-]+-rwadar\.webp"/g)]
+    .map(m => m[1]);
+  const detalles = new Set([...htmlPublicado.matchAll(/data-oferta-detalle="([a-z0-9-]+)"/g)].map(m => m[1]));
+  const esperadas = activosEditoriales.fichas.filter(f => detalles.has(f.slug)).map(f => f.slug);
+  prueba('las tarjetas pre-pintadas usan la ilustración de cada ficha, con la de su categoría de respaldo',
+    esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
+}
 prueba('HTML y service worker apuntan al mismo JavaScript versionado',
   htmlPublicado.includes(recursoJSPublicado) && swPublicado.includes(recursoJSPublicado));
 prueba('el worker publicado precachea los assets con huella que realmente usan ambas páginas',
@@ -2663,8 +2673,8 @@ try {
     manifiestoEditorialRespuesta.headers.get('x-content-type-options')==='nosniff' &&
     manifiestoEditorial.etiquetaVisibleObligatoria==='Ilustración editorial' &&
     manifiestoEditorial.archivos?.length===4);
-  let editorialesValidas = true;
-  for (const entrada of manifiestoEditorial.archivos) {
+  let editorialesValidas = (manifiestoEditorial.fichas?.length || 0) > 0;
+  for (const entrada of [...manifiestoEditorial.archivos, ...(manifiestoEditorial.fichas || [])]) {
     const respuesta = await fetch(`http://127.0.0.1:${puerto}/ofertas-editoriales/${entrada.archivo}`);
     const bytes = Buffer.from(await respuesta.arrayBuffer());
     const cabezaEditorial = await fetch(
@@ -2673,7 +2683,7 @@ try {
       respuesta.headers.get('content-type')==='image/webp' && bytes.length===entrada.bytes &&
       crypto.createHash('sha256').update(bytes).digest('hex')===entrada.hashSha256;
   }
-  prueba('los cuatro WebP editoriales se sirven por lista cerrada con bytes y SHA-256 exactos',
+  prueba('los WebP editoriales (categoría y ficha) se sirven por lista cerrada con bytes y SHA-256 exactos',
     editorialesValidas);
   const editorialNoListada = await fetch(
     `http://127.0.0.1:${puerto}/ofertas-editoriales/no-listada.webp`);

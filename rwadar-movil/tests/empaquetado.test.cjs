@@ -16,6 +16,7 @@ test('EAS incluye el proyecto móvil sin depender de separadores de directorio d
     'rwadar-movil/componentes', 'rwadar-movil/componentes/Ofertas.js',
     'rwadar-movil/assets', 'rwadar-movil/assets/icon.png',
     'rwadar-movil/assets/ofertas-editoriales/inmobiliario-rwadar.webp',
+    'rwadar-movil/assets/ofertas-editoriales/oferta-spiko-letras-del-tesoro-euro.webp',
     'rwadar-movil/fixtures', 'rwadar-movil/fixtures/imagenes-editoriales.js',
     'rwadar-movil/fixtures/escaparate-local.json']) {
     assert.equal(filtro.ignores(ruta), false, ruta);

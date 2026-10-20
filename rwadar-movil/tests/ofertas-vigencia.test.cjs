@@ -62,8 +62,10 @@ function cargarWeb(ahora) {
   const contexto = {
     Date: FechaControlada, URL, emiOrden: 'rent', emiBusquedaLocal: '', emiTipoLocal: 'todos', MODO_LOCAL_SEGURO: true,
     ESCAPARATE_LOCAL: { ofertas: [oferta], secundario: [] },
-    MANIFIESTO_EDITORIAL_LOCAL: { porCategoria: { Inmobiliario: { archivo: 'propia.webp', alt: 'Ilustración propia' } }, etiqueta: 'Ilustración editorial' },
+    MANIFIESTO_EDITORIAL_LOCAL: { porCategoria: { Inmobiliario: { archivo: 'propia.webp', alt: 'Ilustración propia' } },
+      porSlug: new Map(), etiqueta: 'Ilustración editorial' },
     EDITORIAL_OFERTA_POR_CATEGORIA: { Inmobiliario: { src: '/propia.webp', alt: 'Ilustración propia' } },
+    EDITORIAL_OFERTA_POR_SLUG: {},
     CATMETA: { Inmobiliario: {} }, catClase: () => '',
     // Botón «Guardar» de favoritos locales: vive fuera del fragmento cargado.
     botonGuardarOferta: () => '',
@@ -187,7 +189,8 @@ function componentesMoviles(ahora, simulacion = {}) {
     react: { createElement: crear, useState: (v) => [typeof v === 'function' ? v() : v, () => {}], useEffect() {}, ...simulacion.react },
     'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
-    '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null },
+    '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
+      imagenEditorialOferta: () => null },
     '../lib/datos': datosMoviles,
     '../lib/verificacion-local': movil,
     '../lib/tema': { C: {}, COLOR_CATEGORIA: {}, F: {}, R: {}, T: {}, UI: {}, iniciales: () => 'PR' },
@@ -546,7 +549,7 @@ function webV2Cliente(lote, ahora = new Date('2026-09-27T12:00:00Z')) {
   Object.assign(contexto, { MODO_LOCAL_SEGURO: false, ESCAPARATE_LOCAL: null,
     CATALOGO_EMBEBIDO_BLOQUEADO: false, CATALOGO_CADUCADO: false, CATALOGO_SIN_COMPROBAR: false,
     CATALOGO_RETIRADO: false, emiCat: '', emiOrden: 'rent' });
-  cargarFuncionesWeb(contexto, ['CATMETA', 'ACCESOS', 'TICKETS', 'EDITORIAL_OFERTA_POR_CATEGORIA',
+  cargarFuncionesWeb(contexto, ['CATMETA', 'ACCESOS', 'TICKETS', 'EDITORIAL_OFERTA_POR_CATEGORIA', 'EDITORIAL_OFERTA_POR_SLUG',
     'textoDato', 'numeroRemoto', 'booleanoOpcional', 'cifraCatalogoRemota',
     'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal', 'validarVerificacionLocal',
     'metadatosCatalogoV2', 'validarManifiestoCatalogoV2', 'edadLoteDias', 'validarRevisionCatalogo',
@@ -664,7 +667,9 @@ test('una recarga web V2 parcial conserva los tres grupos y el diálogo con avis
 test('la nueva categoría Crédito privado conserva ilustración propia en las dos interfaces', () => {
   const manifiesto = require('../assets/ofertas-editoriales/manifest.json');
   const mocks = { '../assets/ofertas-editoriales/manifest.json': manifiesto };
-  for (const entrada of manifiesto.archivos) mocks[`../assets/ofertas-editoriales/${entrada.archivo}`] = entrada.archivo;
+  for (const entrada of [...manifiesto.archivos, ...manifiesto.fichas]) {
+    mocks[`../assets/ofertas-editoriales/${entrada.archivo}`] = entrada.archivo;
+  }
   const imagenes = cargarModulo('fixtures/imagenes-editoriales.js', mocks);
   const editorial = imagenes.imagenEditorial('Crédito privado');
   assert.equal(editorial.archivo, 'capital-privado-rwadar.webp');
@@ -675,6 +680,40 @@ test('la nueva categoría Crédito privado conserva ilustración propia en las d
   const web = contexto.imagenOfertaLocal({ catalogo: true, categoria: 'Crédito privado' });
   assert.equal(web.src, '/ofertas-editoriales/'+editorial.archivo);
   assert.equal(web.alt, editorial.alt);
+});
+
+test('web y app eligen la misma ilustración de cada ficha y caen a la de su categoría', () => {
+  const manifiesto = require('../assets/ofertas-editoriales/manifest.json');
+  const mocks = { '../assets/ofertas-editoriales/manifest.json': manifiesto };
+  for (const entrada of [...manifiesto.archivos, ...manifiesto.fichas]) {
+    mocks[`../assets/ofertas-editoriales/${entrada.archivo}`] = entrada.archivo;
+  }
+  const imagenes = cargarModulo('fixtures/imagenes-editoriales.js', mocks);
+  const { contexto } = cargarWeb(ultimoDia);
+  cargarFuncionesWeb(contexto, ['EDITORIAL_OFERTA_POR_CATEGORIA', 'EDITORIAL_OFERTA_POR_SLUG']);
+  assert.ok(manifiesto.fichas.length > 0);
+  for (const ficha of manifiesto.fichas) {
+    const oferta = { catalogo: true, slug: ficha.slug, categoria: ficha.categoria };
+    const app = imagenes.imagenEditorialOferta(oferta);
+    const web = contexto.imagenOfertaLocal(oferta);
+    assert.equal(app.archivo, ficha.archivo, ficha.slug);
+    assert.equal(web.src, `/ofertas-editoriales/${ficha.archivo}`, ficha.slug);
+    assert.equal(web.alt, app.alt, ficha.slug);
+    assert.equal(web.alt, ficha.alt, ficha.slug);
+    assert.match(web.respaldo, /^\/ofertas-editoriales\/[a-z-]+-rwadar\.webp$/);
+  }
+  // Si la ficha cambia de categoría o no tiene ilustración, se usa la de su categoría.
+  const primera = manifiesto.fichas[0];
+  const otraCategoria = primera.categoria === 'Inmobiliario' ? 'Materias primas' : 'Inmobiliario';
+  const cambiada = { catalogo: true, slug: primera.slug, categoria: otraCategoria };
+  assert.equal(imagenes.imagenEditorialOferta(cambiada).archivo, imagenes.imagenEditorial(otraCategoria).archivo);
+  assert.equal(contexto.imagenOfertaLocal(cambiada).src,
+    vm.runInContext('EDITORIAL_OFERTA_POR_CATEGORIA', contexto)[otraCategoria].src);
+  for (const slug of ['ficha-nueva', 'constructor', '__proto__', 'toString']) {
+    const nueva = { catalogo: true, slug, categoria: 'Inmobiliario' };
+    assert.equal(imagenes.imagenEditorialOferta(nueva).archivo, 'inmobiliario-rwadar.webp', slug);
+    assert.equal(contexto.imagenOfertaLocal(nueva).src, '/ofertas-editoriales/inmobiliario-rwadar.webp', slug);
+  }
 });
 
 test('la entrega V2 real y versionada recorre 49 fichas, ambos clientes y el vencimiento de sus cifras', () => {

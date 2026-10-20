@@ -3,7 +3,7 @@ import {
   AppState, Image, Modal, Pressable, ScrollView, StyleSheet, Text, View,
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { ETIQUETA_EDITORIAL, imagenEditorial } from '../fixtures/imagenes-editoriales';
+import { ETIQUETA_EDITORIAL, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { vigenciaOferta } from '../lib/datos';
 import { documentacionOferta, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
@@ -99,7 +99,7 @@ function tonoVigencia(estado) {
 
 function ImagenOferta({ oferta, grande = false, decorativa = false, estilo }) {
   const [fallo, setFallo] = useState(false);
-  const editorial = imagenEditorial(oferta.categoria);
+  const editorial = imagenEditorialOferta(oferta);
   if (!editorial || fallo) {
     return (
       <View

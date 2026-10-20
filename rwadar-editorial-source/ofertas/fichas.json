@@ -1,0 +1,263 @@
+{
+ "versionEsquema": 1,
+ "revisadoEl": "2026-10-19",
+ "nota": "Una entrada por ficha. «concepto» completa la frase «Ilustración editorial de …». Las escenas están en escenas.mjs; los pasos y el lugar se comprueban contra la fuente de la ficha (sin cifras, marcas ni promesas).",
+ "fichas": [
+  {
+   "slug": "mf-one",
+   "escena": "cartera_credito",
+   "op": {},
+   "pasos": [
+    "Compras el token",
+    "Sigue crédito privado",
+    "Reembolsas a su precio"
+   ],
+   "concepto": "una cartera genérica de préstamos a empresas que sigue un token"
+  },
+  {
+   "slug": "mglo",
+   "escena": "credito",
+   "op": {},
+   "pasos": [
+    "Compras el token",
+    "Financia facturas pyme",
+    "Reembolsas o transfieres"
+   ],
+   "concepto": "unos préstamos con garantía de facturas de pequeñas empresas"
+  },
+  {
+   "slug": "mglobal",
+   "escena": "cartera_credito",
+   "op": {},
+   "pasos": [
+    "Compras el token",
+    "Crédito con garantía real",
+    "Reembolsas o transfieres"
+   ],
+   "concepto": "una cartera genérica de deuda con garantía de activos"
+  },
+  {
+   "slug": "mgloeuro",
+   "escena": "cartera_credito",
+   "op": {},
+   "pasos": [
+    "Anunciado, aún sin abrir",
+    "Misma cartera, en euros",
+    "Aún sin condiciones"
+   ],
+   "concepto": "una cartera genérica de deuda con garantía, anunciada en euros"
+  },
+  {
+   "slug": "mtbill",
+   "escena": "tesoro",
+   "op": {},
+   "lugar": "Estados Unidos",
+   "pasos": [
+    "Compras el token",
+    "Sigue letras del Tesoro",
+    "Pides el reembolso"
+   ],
+   "concepto": "un edificio institucional genérico y letras del Tesoro de corto plazo"
+  },
+  {
+   "slug": "spiko-letras-del-tesoro-euro",
+   "escena": "tesoro",
+   "op": {},
+   "lugar": "Zona euro",
+   "pasos": [
+    "Compras participaciones",
+    "El fondo compra letras",
+    "Pides el reembolso"
+   ],
+   "concepto": "un fondo monetario genérico que compra letras del Tesoro de la zona euro"
+  },
+  {
+   "slug": "prosegur-digital-gold",
+   "escena": "oro",
+   "op": {},
+   "lugar": "Custodia en España",
+   "pasos": [
+    "Compras gramos de oro",
+    "Se guarda en una cámara",
+    "Vendes y cobras en euros"
+   ],
+   "concepto": "unos lingotes genéricos de oro en una cámara acorazada"
+  },
+  {
+   "slug": "apartamento-vacacional-hinterstoder-50",
+   "escena": "chalet",
+   "op": {},
+   "lugar": "Hinterstoder · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "El apartamento se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un chalé genérico de montaña con apartamentos vacacionales"
+  },
+  {
+   "slug": "drautalresidenz-paternion",
+   "escena": "edificio",
+   "op": {
+    "pisos": 4,
+    "mat": "arena",
+    "semilla": 21
+   },
+   "lugar": "Paternion · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un edificio residencial genérico de pocas plantas"
+  },
+  {
+   "slug": "fotovoltaica-cohotel",
+   "escena": "solar",
+   "op": {
+    "sobre": "tejado"
+   },
+   "lugar": "Steyregg · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "Los paneles dan energía",
+    "Reparto del excedente"
+   ],
+   "concepto": "unos paneles solares en la cubierta de un edificio comercial genérico"
+  },
+  {
+   "slug": "fotovoltaica-greenpoint",
+   "escena": "solar",
+   "op": {
+    "sobre": "tejado"
+   },
+   "lugar": "Wiener Neustadt · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "Los paneles dan energía",
+    "Reparto del excedente"
+   ],
+   "concepto": "unos paneles solares en la cubierta de un edificio genérico"
+  },
+  {
+   "slug": "local-de-estanco-klagenfurt",
+   "escena": "local",
+   "op": {},
+   "lugar": "Klagenfurt · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "El local se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un local comercial genérico en planta baja"
+  },
+  {
+   "slug": "randhartingergasse-9-viena",
+   "escena": "edificio",
+   "op": {
+    "pisos": 6,
+    "mat": "blanco",
+    "semilla": 5
+   },
+   "lugar": "Viena · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un bloque de pisos urbano genérico"
+  },
+  {
+   "slug": "terreno-con-arrendamiento-billa",
+   "escena": "terreno",
+   "op": {},
+   "lugar": "Brückl · Austria",
+   "pasos": [
+    "Compras en la emisión",
+    "Un súper alquila el suelo",
+    "Reparto o venta futura"
+   ],
+   "concepto": "un solar genérico con un supermercado arrendado, sin marca"
+  },
+  {
+   "slug": "vivienda-pluddemanngasse-101-graz",
+   "escena": "edificio",
+   "op": {
+    "pisos": 5,
+    "mat": "piedra",
+    "semilla": 7
+   },
+   "lugar": "Graz · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un bloque de pisos genérico"
+  },
+  {
+   "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+   "escena": "edificio",
+   "op": {
+    "pisos": 4,
+    "mat": "blanco",
+    "semilla": 12
+   },
+   "lugar": "Wiener Neustadt · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un edificio residencial genérico"
+  },
+  {
+   "slug": "vivienda-schwarzer-weg-18-graz",
+   "escena": "edificio",
+   "op": {
+    "pisos": 3,
+    "mat": "arena",
+    "semilla": 31
+   },
+   "lugar": "Graz · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un edificio residencial genérico de tres alturas"
+  },
+  {
+   "slug": "vivienda-sonnleithnergasse-2-viena",
+   "escena": "edificio",
+   "op": {
+    "pisos": 7,
+    "mat": "piedra",
+    "semilla": 44
+   },
+   "lugar": "Viena · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un bloque de pisos urbano genérico"
+  },
+  {
+   "slug": "vivienda-stallhofstra-e-28-gratwein",
+   "escena": "edificio",
+   "op": {
+    "pisos": 3,
+    "mat": "blanco",
+    "semilla": 52
+   },
+   "lugar": "Gratwein · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un edificio residencial genérico de pocas plantas"
+  }
+ ]
+}

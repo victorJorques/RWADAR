@@ -32,7 +32,7 @@ const dependencias = ['CATMETA', 'urlHttps', 'textoDato', 'numeroRemoto',
   'booleanoOpcional', 'cifraCatalogoRemota', 'ofertaCatalogoRemota', 'fechaLocalValida',
   'fechaOfertaPublicaValida', 'validarRevisionCatalogo', 'validarLoteCatalogoRemoto',
   'metadatosCatalogoV2', 'validarManifiestoCatalogoV2',
-  'textoLocal', 'imagenOfertaLocal', 'ofertaLocalValida', 'documentacionOfertaLocal', 'EDITORIAL_OFERTA_POR_CATEGORIA',
+  'textoLocal', 'imagenOfertaLocal', 'ofertaLocalValida', 'documentacionOfertaLocal', 'EDITORIAL_OFERTA_POR_CATEGORIA', 'EDITORIAL_OFERTA_POR_SLUG',
   'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal',
   'validarVerificacionLocal', 'comprobarCatalogoEmbebido'];
 const lector = dependencias.map(nombre => {

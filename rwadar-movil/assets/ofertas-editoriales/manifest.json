@@ -1,5 +1,5 @@
 {
-  "versionEsquema": 1,
+  "versionEsquema": 2,
   "generadoEl": "2026-09-21",
   "herramienta": "OpenAI image_gen integrado",
   "modo": "generacion-sin-imagenes-de-terceros",
@@ -9,7 +9,8 @@
   "restriccionesGlobales": [
     "No presentar la ilustracion como fotografia del activo o del proveedor",
     "No ocultar la etiqueta visible Ilustración editorial",
-    "No incorporar logos, marcas, personas, texto, cifras ni promesas de rentabilidad",
+    "No incorporar logos, marcas, personas, cifras ni promesas de rentabilidad",
+    "Las ilustraciones por categoria no llevan texto; las de cada ficha solo llevan el lugar y tres pasos que explican la inversion, comprobados contra su fuente",
     "Sustituir por material autorizado si el proveedor aporta licencia escrita"
   ],
   "direccionVisual": "Render editorial 3D original, fondo grafito, anillos de radar y luz esmeralda RWAdar; composicion 16:10 preparada para recorte 640x440 y overlays HTML",
@@ -53,6 +54,372 @@
       "hashSha256": "5384573368ca62e4320e8d96f3d0bda98f8b82d57957d06518fbd0f0b1c6bcf9",
       "alt": "Ilustración editorial de una empresa genérica dividida en módulos de propiedad conectados",
       "promptFinal": "Ilustracion editorial original para participaciones de empresas privadas: estructura empresarial generica dividida en modulos de propiedad conectados, estetica RWAdar oscura y esmeralda, sin texto, logos, personas, tickers, graficos ni promesas de crecimiento."
+    }
+  ],
+  "fichasOrigen": {
+    "herramienta": "Dibujo vectorial propio de RWAdar (rwadar-editorial-source/ofertas): escenas isometricas en SVG, Geist y Chromium sin interfaz",
+    "modo": "generacion-sin-imagenes-de-terceros",
+    "usoPrevisto": "Una ilustracion por ficha que explica la inversion de un vistazo; si falta, se usa la de su categoria",
+    "direccionVisual": "Maqueta generica del activo sobre plataforma grafito con borde del color de la categoria y cubos de cristal como participaciones; a la izquierda, el lugar y tres pasos",
+    "comoSeRegenera": "node rwadar-editorial-source/ofertas/generar.mjs"
+  },
+  "fichas": [
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-apartamento-vacacional-hinterstoder-50.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 31058,
+      "hashSha256": "46abd495f5c4a364e3f1ad07a09ea0e00a629964f1906b9f16c33c39f001c118",
+      "alt": "Ilustración editorial de un chalé genérico de montaña con apartamentos vacacionales. compras participaciones; el apartamento se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un chalé genérico de montaña con apartamentos vacacionales",
+      "pasos": [
+        "Compras participaciones",
+        "El apartamento se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Hinterstoder · Austria",
+      "escena": "chalet",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-drautalresidenz-paternion.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 31120,
+      "hashSha256": "dc74b39a9918362a278393f556e9da1fbc5ff97cfc0866e6dea3afe2272e97dd",
+      "alt": "Ilustración editorial de un edificio residencial genérico de pocas plantas. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio residencial genérico de pocas plantas",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Paternion · Austria",
+      "escena": "edificio",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-fotovoltaica-cohotel.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 35094,
+      "hashSha256": "f9e6ab52ee0ade425897b0e51bc257014e598e0b717bd6a97a576465a2137f1c",
+      "alt": "Ilustración editorial de unos paneles solares en la cubierta de un edificio comercial genérico. compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.",
+      "concepto": "unos paneles solares en la cubierta de un edificio comercial genérico",
+      "pasos": [
+        "Compras participaciones",
+        "Los paneles dan energía",
+        "Reparto del excedente"
+      ],
+      "lugar": "Steyregg · Austria",
+      "escena": "solar",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-fotovoltaica-greenpoint.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 35520,
+      "hashSha256": "a981c601c132459a3fd352e57930236e4c2c73d597339ce5a36ecde7f06282f7",
+      "alt": "Ilustración editorial de unos paneles solares en la cubierta de un edificio genérico. compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.",
+      "concepto": "unos paneles solares en la cubierta de un edificio genérico",
+      "pasos": [
+        "Compras participaciones",
+        "Los paneles dan energía",
+        "Reparto del excedente"
+      ],
+      "lugar": "Wiener Neustadt · Austria",
+      "escena": "solar",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-local-de-estanco-klagenfurt.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 31008,
+      "hashSha256": "96d1831f690c5d64f6db4cda97a98e9c1ed3dea32579318c11aa1d9e8a1ed7f3",
+      "alt": "Ilustración editorial de un local comercial genérico en planta baja. compras participaciones; el local se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un local comercial genérico en planta baja",
+      "pasos": [
+        "Compras participaciones",
+        "El local se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Klagenfurt · Austria",
+      "escena": "local",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "mf-one",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-mf-one.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 27060,
+      "hashSha256": "7c8026f47061887bd89e64b5b0b742bbe9924a4e3981dfc96e059ff177e6f96f",
+      "alt": "Ilustración editorial de una cartera genérica de préstamos a empresas que sigue un token. compras el token; sigue crédito privado; reembolsas a su precio. No es una foto del activo real.",
+      "concepto": "una cartera genérica de préstamos a empresas que sigue un token",
+      "pasos": [
+        "Compras el token",
+        "Sigue crédito privado",
+        "Reembolsas a su precio"
+      ],
+      "escena": "cartera_credito",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "mglo",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-mglo.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 27554,
+      "hashSha256": "3cf83937be04dd0489f9c0aef76464c0a7e355d7f4940c91b86bc7ddc341cb95",
+      "alt": "Ilustración editorial de unos préstamos con garantía de facturas de pequeñas empresas. compras el token; financia facturas pyme; reembolsas o transfieres. No es una foto del activo real.",
+      "concepto": "unos préstamos con garantía de facturas de pequeñas empresas",
+      "pasos": [
+        "Compras el token",
+        "Financia facturas pyme",
+        "Reembolsas o transfieres"
+      ],
+      "escena": "credito",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "mglobal",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-mglobal.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 27852,
+      "hashSha256": "ff01a81fac3601427aa30a60bcac29888e2d5308ed1f19de343e6ca408ffa0f1",
+      "alt": "Ilustración editorial de una cartera genérica de deuda con garantía de activos. compras el token; crédito con garantía real; reembolsas o transfieres. No es una foto del activo real.",
+      "concepto": "una cartera genérica de deuda con garantía de activos",
+      "pasos": [
+        "Compras el token",
+        "Crédito con garantía real",
+        "Reembolsas o transfieres"
+      ],
+      "escena": "cartera_credito",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "mgloeuro",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-mgloeuro.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 27462,
+      "hashSha256": "cd4dd7a50c95fc6f242b4ce3dcad706d413b8eeed5c9fd2d980a762828735326",
+      "alt": "Ilustración editorial de una cartera genérica de deuda con garantía, anunciada en euros. anunciado, aún sin abrir; misma cartera, en euros; aún sin condiciones. No es una foto del activo real.",
+      "concepto": "una cartera genérica de deuda con garantía, anunciada en euros",
+      "pasos": [
+        "Anunciado, aún sin abrir",
+        "Misma cartera, en euros",
+        "Aún sin condiciones"
+      ],
+      "escena": "cartera_credito",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "mtbill",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-mtbill.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 27462,
+      "hashSha256": "e5fadb26d7571866f13cbcfa215726f0647370a16c74550549b72875e7c2b112",
+      "alt": "Ilustración editorial de un edificio institucional genérico y letras del Tesoro de corto plazo. compras el token; sigue letras del Tesoro; pides el reembolso. No es una foto del activo real.",
+      "concepto": "un edificio institucional genérico y letras del Tesoro de corto plazo",
+      "pasos": [
+        "Compras el token",
+        "Sigue letras del Tesoro",
+        "Pides el reembolso"
+      ],
+      "lugar": "Estados Unidos",
+      "escena": "tesoro",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "categoria": "Materias primas",
+      "archivo": "oferta-prosegur-digital-gold.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 30066,
+      "hashSha256": "1b281d2fa7e064d19379fe13a01e4479df9287319f7a9625f8ba3b9b9c4beb15",
+      "alt": "Ilustración editorial de unos lingotes genéricos de oro en una cámara acorazada. compras gramos de oro; se guarda en una cámara; vendes y cobras en euros. No es una foto del activo real.",
+      "concepto": "unos lingotes genéricos de oro en una cámara acorazada",
+      "pasos": [
+        "Compras gramos de oro",
+        "Se guarda en una cámara",
+        "Vendes y cobras en euros"
+      ],
+      "lugar": "Custodia en España",
+      "escena": "oro",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-randhartingergasse-9-viena.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 31522,
+      "hashSha256": "5d3653f0e0a3314de8489341bb3aff4394404464ea630742cda32dbe4476bf67",
+      "alt": "Ilustración editorial de un bloque de pisos urbano genérico. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un bloque de pisos urbano genérico",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Viena · Austria",
+      "escena": "edificio",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-spiko-letras-del-tesoro-euro.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 28002,
+      "hashSha256": "ea60c863207c4ea987e08b9875e102e32d6783b99d9569e06e35389b392c2484",
+      "alt": "Ilustración editorial de un fondo monetario genérico que compra letras del Tesoro de la zona euro. compras participaciones; el fondo compra letras; pides el reembolso. No es una foto del activo real.",
+      "concepto": "un fondo monetario genérico que compra letras del Tesoro de la zona euro",
+      "pasos": [
+        "Compras participaciones",
+        "El fondo compra letras",
+        "Pides el reembolso"
+      ],
+      "lugar": "Zona euro",
+      "escena": "tesoro",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-terreno-con-arrendamiento-billa.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 27036,
+      "hashSha256": "ec22aa29527e875d6eb490c08807397334b616888d3d2a636e908028c27b9dc0",
+      "alt": "Ilustración editorial de un solar genérico con un supermercado arrendado, sin marca. compras en la emisión; un súper alquila el suelo; reparto o venta futura. No es una foto del activo real.",
+      "concepto": "un solar genérico con un supermercado arrendado, sin marca",
+      "pasos": [
+        "Compras en la emisión",
+        "Un súper alquila el suelo",
+        "Reparto o venta futura"
+      ],
+      "lugar": "Brückl · Austria",
+      "escena": "terreno",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-pluddemanngasse-101-graz.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 31098,
+      "hashSha256": "9def6b22847f9029cab5e7fc97b21e91aabb2cd0ef8810c0925d5bdaf610be26",
+      "alt": "Ilustración editorial de un bloque de pisos genérico. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un bloque de pisos genérico",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Graz · Austria",
+      "escena": "edificio",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-pottendorfer-stra-e-62-wr-neustadt.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 31474,
+      "hashSha256": "2618cc8152b5cecccfa9da7cfc25372952e83ddb221a52e7477c4942114852fd",
+      "alt": "Ilustración editorial de un edificio residencial genérico. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio residencial genérico",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Wiener Neustadt · Austria",
+      "escena": "edificio",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-schwarzer-weg-18-graz.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 29970,
+      "hashSha256": "085e8acd6c449bf2c93394a6fb92eef81515ceb0eedb5c0e78ffeba3b28bc1ce",
+      "alt": "Ilustración editorial de un edificio residencial genérico de tres alturas. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio residencial genérico de tres alturas",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Graz · Austria",
+      "escena": "edificio",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-sonnleithnergasse-2-viena.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 32292,
+      "hashSha256": "ddfe12b436801edb3715d4a35123419a718bddc3b8537d883d551e209eb0b50b",
+      "alt": "Ilustración editorial de un bloque de pisos urbano genérico. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un bloque de pisos urbano genérico",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Viena · Austria",
+      "escena": "edificio",
+      "revisadoEl": "2026-10-19"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-stallhofstra-e-28-gratwein.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 30084,
+      "hashSha256": "e4759448391deed09852eaa1cf6d2a05610fa7e325d762f1bf3b78cd3e7fea6a",
+      "alt": "Ilustración editorial de un edificio residencial genérico de pocas plantas. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio residencial genérico de pocas plantas",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Gratwein · Austria",
+      "escena": "edificio",
+      "revisadoEl": "2026-10-19"
     }
   ]
 }

@@ -120,6 +120,11 @@ const EDITORIAL_OFERTA_POR_CATEGORIA={
  'Acciones y capital privado':{src:'/ofertas-editoriales/capital-privado-rwadar.webp',alt:'Ilustración editorial de acciones y capital privado tokenizados'},
  'Crédito privado':{src:'/ofertas-editoriales/capital-privado-rwadar.webp',alt:'Ilustración editorial financiera; no representa un activo concreto'}
 };
+/* Ilustración propia de cada ficha (explica la inversión en una imagen). Si
+   falta, o la ficha cambió de categoría, se usa la de su categoría. */
+/* fichas-editoriales:inicio (generado por rwadar-editorial-source/ofertas/generar.mjs) */
+const EDITORIAL_OFERTA_POR_SLUG=Object.freeze({"apartamento-vacacional-hinterstoder-50":{"src":"/ofertas-editoriales/oferta-apartamento-vacacional-hinterstoder-50.webp","alt":"Ilustración editorial de un chalé genérico de montaña con apartamentos vacacionales. compras participaciones; el apartamento se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario"},"drautalresidenz-paternion":{"src":"/ofertas-editoriales/oferta-drautalresidenz-paternion.webp","alt":"Ilustración editorial de un edificio residencial genérico de pocas plantas. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario"},"fotovoltaica-cohotel":{"src":"/ofertas-editoriales/oferta-fotovoltaica-cohotel.webp","alt":"Ilustración editorial de unos paneles solares en la cubierta de un edificio comercial genérico. compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.","categoria":"Inmobiliario"},"fotovoltaica-greenpoint":{"src":"/ofertas-editoriales/oferta-fotovoltaica-greenpoint.webp","alt":"Ilustración editorial de unos paneles solares en la cubierta de un edificio genérico. compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.","categoria":"Inmobiliario"},"local-de-estanco-klagenfurt":{"src":"/ofertas-editoriales/oferta-local-de-estanco-klagenfurt.webp","alt":"Ilustración editorial de un local comercial genérico en planta baja. compras participaciones; el local se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario"},"mf-one":{"src":"/ofertas-editoriales/oferta-mf-one.webp","alt":"Ilustración editorial de una cartera genérica de préstamos a empresas que sigue un token. compras el token; sigue crédito privado; reembolsas a su precio. No es una foto del activo real.","categoria":"Crédito privado"},"mglo":{"src":"/ofertas-editoriales/oferta-mglo.webp","alt":"Ilustración editorial de unos préstamos con garantía de facturas de pequeñas empresas. compras el token; financia facturas pyme; reembolsas o transfieres. No es una foto del activo real.","categoria":"Crédito privado"},"mglobal":{"src":"/ofertas-editoriales/oferta-mglobal.webp","alt":"Ilustración editorial de una cartera genérica de deuda con garantía de activos. compras el token; crédito con garantía real; reembolsas o transfieres. No es una foto del activo real.","categoria":"Crédito privado"},"mgloeuro":{"src":"/ofertas-editoriales/oferta-mgloeuro.webp","alt":"Ilustración editorial de una cartera genérica de deuda con garantía, anunciada en euros. anunciado, aún sin abrir; misma cartera, en euros; aún sin condiciones. No es una foto del activo real.","categoria":"Crédito privado"},"mtbill":{"src":"/ofertas-editoriales/oferta-mtbill.webp","alt":"Ilustración editorial de un edificio institucional genérico y letras del Tesoro de corto plazo. compras el token; sigue letras del Tesoro; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos"},"prosegur-digital-gold":{"src":"/ofertas-editoriales/oferta-prosegur-digital-gold.webp","alt":"Ilustración editorial de unos lingotes genéricos de oro en una cámara acorazada. compras gramos de oro; se guarda en una cámara; vendes y cobras en euros. No es una foto del activo real.","categoria":"Materias primas"},"randhartingergasse-9-viena":{"src":"/ofertas-editoriales/oferta-randhartingergasse-9-viena.webp","alt":"Ilustración editorial de un bloque de pisos urbano genérico. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario"},"spiko-letras-del-tesoro-euro":{"src":"/ofertas-editoriales/oferta-spiko-letras-del-tesoro-euro.webp","alt":"Ilustración editorial de un fondo monetario genérico que compra letras del Tesoro de la zona euro. compras participaciones; el fondo compra letras; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos"},"terreno-con-arrendamiento-billa":{"src":"/ofertas-editoriales/oferta-terreno-con-arrendamiento-billa.webp","alt":"Ilustración editorial de un solar genérico con un supermercado arrendado, sin marca. compras en la emisión; un súper alquila el suelo; reparto o venta futura. No es una foto del activo real.","categoria":"Inmobiliario"},"vivienda-pluddemanngasse-101-graz":{"src":"/ofertas-editoriales/oferta-vivienda-pluddemanngasse-101-graz.webp","alt":"Ilustración editorial de un bloque de pisos genérico. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario"},"vivienda-pottendorfer-stra-e-62-wr-neustadt":{"src":"/ofertas-editoriales/oferta-vivienda-pottendorfer-stra-e-62-wr-neustadt.webp","alt":"Ilustración editorial de un edificio residencial genérico. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario"},"vivienda-schwarzer-weg-18-graz":{"src":"/ofertas-editoriales/oferta-vivienda-schwarzer-weg-18-graz.webp","alt":"Ilustración editorial de un edificio residencial genérico de tres alturas. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario"},"vivienda-sonnleithnergasse-2-viena":{"src":"/ofertas-editoriales/oferta-vivienda-sonnleithnergasse-2-viena.webp","alt":"Ilustración editorial de un bloque de pisos urbano genérico. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario"},"vivienda-stallhofstra-e-28-gratwein":{"src":"/ofertas-editoriales/oferta-vivienda-stallhofstra-e-28-gratwein.webp","alt":"Ilustración editorial de un edificio residencial genérico de pocas plantas. compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario"}});
+/* fichas-editoriales:fin */
 
 const P=[
  {"version_esquema":2,"plataformas_esperadas":26,"ofertas_esperadas":49,"colecciones_esperadas":{"en_camino":4,"secundario":21,"principales":24},"verificado_lote_el":"2026-10-06","vigencia_lote_dias":7,"revisionId":"a0df3111-37c9-a767-f4d8-93c56095150b","slug":"addx","n":"ADDX","cat":"Acciones y capital privado","tipo":"Marketplace","reg":"Asia-Pacífico","cadenas":"Varias","ticket":"Alto","acceso":"Acreditado","web":"https://addx.co","aval":"Licencia de mercado reconocido del MAS de Singapur; accionistas de referencia: la bolsa SGX y el fondo estatal Temasek.","nota":"Fondos de capital riesgo y private equity troceados para inversores acreditados.","ver":"2026-07-26","verificacionLocal":{"acceso":{"estado":"confirmado_condicionado","detalle":"La propia empresa limita el alta a inversores acreditados o institucionales no estadounidenses.","fuentes":[{"id":"addx-acceso","url":"https://www.addx.co/en/inside-addx/","tipo":"empresa","titulo":"Inside ADDX","primaria":true,"consultadaEl":"2026-10-06"}]},"verificadoEl":"2026-10-06","alertasCriticas":[{"codigo":"no_minorista","detalle":"No presentar como acceso minorista general ni como disponible automáticamente en España.","fuentes":[{"id":"addx-acceso","url":"https://www.addx.co/en/inside-addx/","tipo":"empresa","titulo":"Inside ADDX","primaria":true,"consultadaEl":"2026-10-06"}]}],"estadoOperativo":{"estado":"observada","detalle":"La web mantiene alta y catálogo de oportunidades.","fuentes":[{"id":"addx-web","url":"https://addx.co/","tipo":"empresa","titulo":"ADDX","primaria":true,"consultadaEl":"2026-10-06"}]},"licenciaRegistro":{"estado":"confirmada_regulador","detalle":"ADDX Pte. Ltd. figura en el directorio de MAS como CMS licensee y recognised market operator.","fuentes":[{"id":"addx-mas","url":"https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD","tipo":"regulador","titulo":"MAS Financial Institutions Directory — ADDX Pte. Ltd.","primaria":true,"consultadaEl":"2026-10-06"}]},"conservaFechaCanonica":true}},
@@ -1842,13 +1847,30 @@ function numeroLocal(v,def){
 }
 function imagenOfertaLocal(o){
  if(o&&o.catalogo===true){const entrada=EDITORIAL_OFERTA_POR_CATEGORIA[o.categoria];
-  return entrada?{src:entrada.src,alt:entrada.alt,etiqueta:'Ilustración editorial'}:null;}
+  if(!entrada)return null;
+  const propia=Object.hasOwn(EDITORIAL_OFERTA_POR_SLUG,o.slug)?EDITORIAL_OFERTA_POR_SLUG[o.slug]:null;
+  return propia&&propia.categoria===o.categoria?
+   {src:propia.src,alt:propia.alt,etiqueta:'Ilustración editorial',respaldo:entrada.src}:
+   {src:entrada.src,alt:entrada.alt,etiqueta:'Ilustración editorial'};}
  const m=textoLocal(o&&o.imagen).match(/^ofertas\/([a-z0-9-]+\.webp)$/);
  if(!m||!MANIFIESTO_EDITORIAL_LOCAL)return null;
  const entrada=MANIFIESTO_EDITORIAL_LOCAL.porCategoria[o.categoria];
- return entrada?{src:'/ofertas-editoriales/'+entrada.archivo,
-  alt:entrada.alt,etiqueta:MANIFIESTO_EDITORIAL_LOCAL.etiqueta}:null;
+ if(!entrada)return null;
+ const propia=MANIFIESTO_EDITORIAL_LOCAL.porSlug.get(textoLocal(o.slug));
+ return propia&&propia.categoria===o.categoria?
+  {src:'/ofertas-editoriales/'+propia.archivo,alt:propia.alt,etiqueta:MANIFIESTO_EDITORIAL_LOCAL.etiqueta,
+   respaldo:'/ofertas-editoriales/'+entrada.archivo}:
+  {src:'/ofertas-editoriales/'+entrada.archivo,alt:entrada.alt,etiqueta:MANIFIESTO_EDITORIAL_LOCAL.etiqueta};
 }
+/* Si la ilustración propia no carga, la tarjeta pasa una sola vez a la de su
+   categoría. Se escucha en captura porque el error de <img> no burbujea, y
+   desde aquí porque la CSP no admite manejadores en el HTML. */
+const respaldoImagen=i=>i&&i.respaldo?' data-respaldo="'+escHtml(i.respaldo)+'"':'';
+if(typeof document!=='undefined'&&typeof document.addEventListener==='function')document.addEventListener('error',ev=>{
+ const img=ev.target;
+ if(!(img instanceof HTMLImageElement)||!img.dataset.respaldo)return;
+ const respaldo=img.dataset.respaldo;delete img.dataset.respaldo;img.src=respaldo;
+},true);
 function ofertaLocalValida(o){
  return o&&typeof o==='object'&&textoLocal(o.slug)&&textoLocal(o.titulo)&&
    textoLocal(o.plataformaNombre)&&textoLocal(o.categoria)&&urlHttps(o.url)&&
@@ -2010,7 +2032,7 @@ function tarjetaOfertaLocal(o,{secundario=false}={}){
   o.coleccion==='secundario'?'Liquidez no confirmada':estado.texto;
  const cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
  return '<article class="emi escaparate-oferta'+cat+(secundario?' escaparate-oferta-secundaria':'')+'">'+
-  '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'" loading="lazy" width="640" height="440">'+
+  '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" width="640" height="440">'+
    '<span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
    '<span class="escaparate-tipo">'+escHtml(o.coleccion==='en_camino'?'En camino':o.coleccion==='secundario'||secundario?'Secundario':tipo==='valor'?'Valor':'Rendimiento')+'</span></div>'+
   '<div class="escaparate-cuerpo">'+
@@ -2034,7 +2056,7 @@ function filaSecundariaLocal(o){
  const ultima=metricasOfertaLocal(o).find(x=>/ultima operacion/i.test(normalizaBuscaLocal(x.etiqueta)));
  const urlMercado=urlHttps(o.urlMercado),urlFicha=urlHttps(o.url),url=urlMercado||urlFicha;
  return '<article class="escaparate-sec-fila"><div class="escaparate-sec-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
-  escHtml(imagen.alt)+'" loading="lazy" width="640" height="440"><span class="escaparate-editorial escaparate-editorial-compacta" aria-hidden="true">'+
+  escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" width="640" height="440"><span class="escaparate-editorial escaparate-editorial-compacta" aria-hidden="true">'+
   escHtml(imagen.etiqueta)+'</span></div><div class="escaparate-sec-contenido">'+
   '<div class="escaparate-sec-meta"><b>'+escHtml(o.plataformaNombre)+'</b><span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
   '<h4>'+escHtml(o.titulo)+'</h4><div class="escaparate-sec-cifras"><span><b>'+escHtml(rentabilidad)+'</b><small>Rentabilidad ajustada</small></span>'+
@@ -2097,7 +2119,7 @@ function abrirDetalleOfertaLocal(slug){
   '<div><span>'+(o.coleccion==='en_camino'?'En camino':o.coleccion==='secundario'||secundario?'Mercado secundario':'Oferta principal')+'</span><h2 id="escaparateDetalleTitulo">'+escHtml(o.titulo)+'</h2></div>'+
   '<button type="button" data-cerrar-detalle aria-label="Cerrar detalle">×</button></header>'+
   '<div class="escaparate-dialogo-cuerpo"><div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
-   escHtml(imagen.alt)+'" width="960" height="540"><span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
+   escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540"><span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
    '<span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
   '<div class="escaparate-dialogo-identidad"><div><b>'+escHtml(o.plataformaNombre)+'</b><span>'+escHtml(o.categoria)+
    (o.pais?' · '+escHtml(o.pais):'')+'</span></div><div class="escaparate-dialogo-dato"><b>'+escHtml(claves.destacado.valor)+
@@ -2813,8 +2835,8 @@ function validarEscaparateLocal(d){
  return d;
 }
 function validarManifiestoEditorialLocal(m){
- if(!m||m.versionEsquema!==1||m.etiquetaVisibleObligatoria!=='Ilustración editorial'||
-    !Array.isArray(m.archivos)||m.archivos.length!==4)
+ if(!m||m.versionEsquema!==2||m.etiquetaVisibleObligatoria!=='Ilustración editorial'||
+    !Array.isArray(m.archivos)||m.archivos.length!==4||!Array.isArray(m.fichas))
   throw new Error('manifiesto editorial local fuera de contrato');
  const categorias=new Set(),archivos=new Set(),porCategoria={};
  for(const x of m.archivos){
@@ -2826,7 +2848,16 @@ function validarManifiestoEditorialLocal(m){
    throw new Error('entrada editorial local fuera de contrato');
   categorias.add(x.categoria);archivos.add(x.archivo);porCategoria[x.categoria]=x;
  }
- return {etiqueta:m.etiquetaVisibleObligatoria,porCategoria};
+ const porSlug=new Map();
+ for(const x of m.fichas){
+  const slug=textoLocal(x&&x.slug);
+  if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)||porSlug.has(slug)||!Object.hasOwn(CATMETA,x.categoria)||
+     x.archivo!=='oferta-'+slug+'.webp'||x.ancho!==960||x.alto!==660||!Number.isInteger(x.bytes)||x.bytes<=1024||
+     !/^[a-f0-9]{64}$/.test(x.hashSha256||'')||!textoLocal(x.alt).startsWith(m.etiquetaVisibleObligatoria+' '))
+   throw new Error('ficha editorial local fuera de contrato');
+  porSlug.set(slug,x);
+ }
+ return {etiqueta:m.etiquetaVisibleObligatoria,porCategoria,porSlug};
 }
 async function cargarEscaparateLocal(){
  if(!MODO_LOCAL_SEGURO)return false;
