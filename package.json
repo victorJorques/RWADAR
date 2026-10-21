@@ -7,10 +7,10 @@
     "catalogo": "node rwadar-app/actualizar-catalogo.mjs",
     "test": "npm run test:db && npm run test:web && npm run test:qr && npm run test:mobile && npm run test:tools",
     "test:db": "npm --prefix rwadar-app test",
-    "test:web": "node rwadar-publicar.js --local --sin-sincronizar && node probar-web.mjs",
+    "test:web": "node -r ./rwadar-app/reloj-catalogo.cjs rwadar-publicar.js --local --sin-sincronizar && node -r ./rwadar-app/reloj-catalogo.cjs probar-web.mjs",
     "test:qr": "node rwadar-qr/comprobar-qr.js",
     "test:mobile": "npm --prefix rwadar-movil test",
-    "test:tools": "node --check rwadar-arrancar.js && node --check .github/comprobar-publicado.mjs && node rwadar-academy.js --comprobar && node rwadar-noticias.js --comprobar && node --check rwadar-noticias.js && node --check rwadar-academy.js && node --check rwadar-publicar.js && node --check rwadar-publicacion-segura.js && node --check rwadar-capturar-portadas.mjs && node --check rwadar-app/sincronizar.js && node --check rwadar-adelgazar.js && node --check rwadar-servir.js && node --check rwadar-app/actualizar-catalogo.mjs && node --check rwadar-app/capturar-fuentes.mjs"
+    "test:tools": "node --check rwadar-arrancar.js && node --check .github/comprobar-publicado.mjs && node rwadar-academy.js --comprobar && node rwadar-noticias.js --comprobar && node --check rwadar-noticias.js && node --check rwadar-academy.js && node --check rwadar-publicar.js && node --check rwadar-publicacion-segura.js && node --check rwadar-capturar-portadas.mjs && node --check rwadar-app/sincronizar.js && node --check rwadar-adelgazar.js && node --check rwadar-servir.js && node --check rwadar-app/actualizar-catalogo.mjs && node --check rwadar-app/capturar-fuentes.mjs && node --check rwadar-app/reloj-catalogo.cjs && node rwadar-editorial-source/ofertas/generar.mjs --comprobar"
   },
   "license": "UNLICENSED",
   "devDependencies": {

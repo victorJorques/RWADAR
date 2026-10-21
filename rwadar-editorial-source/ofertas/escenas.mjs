@@ -19,6 +19,42 @@ function base(L, c, { w = 8, d = 8, losetas = [] } = {}) {
 // Cubos de participación: [x, y, z, tamaño].
 function cubos(L, c, lista) { for (const [x, y, z, t = .9] of lista) { L.capa(x + y + t + z * .01); L.cubo(x, y, z, t, c); } }
 function arboles(L, lista) { for (const [x, y, t = .9] of lista) { L.capa(x + y + .4); L.arbol(x, y, 0, t); } }
+// Palmera: tronco curvo con anillos y seis hojas.
+function palmera(L, x, y, t = 1) {
+  const [bx, by] = L.p(x, y, 0), [tx0, ty] = L.p(x, y, 2.6 * t), tx = tx0 + 10 * t;
+  const hojas = [[-62, -10], [-44, 18], [-10, 30], [26, 22], [56, -4], [8, -26]].map(([dx, dy], i) =>
+    `<path d="M${tx},${ty} Q${tx + dx * .5},${ty + dy * .2 - 26 * t} ${tx + dx * t},${ty + dy * t}" fill="none" stroke="${i % 2 ? '#5E9E52' : '#447C3E'}" stroke-width="${(9 * t).toFixed(1)}" stroke-linecap="round"/>`).join('');
+  L.crudo(`<ellipse cx="${bx}" cy="${by}" rx="${(16 * t).toFixed(1)}" ry="${(7 * t).toFixed(1)}" fill="#000" opacity=".35"/>` +
+    `<path d="M${bx},${by} Q${bx + 2},${(by + ty) / 2} ${tx},${ty}" fill="none" stroke="#7A5C3A" stroke-width="${(7 * t).toFixed(1)}" stroke-linecap="round"/>` +
+    `<path d="M${bx},${by} Q${bx + 2},${(by + ty) / 2} ${tx},${ty}" fill="none" stroke="#A88458" stroke-width="${(7 * t).toFixed(1)}" stroke-dasharray="2 9"/>` + hojas);
+}
+function palmeras(L, lista) { for (const [x, y, t = 1] of lista) { L.capa(x + y + .5); palmera(L, x, y, t); } }
+function vegetacion(L, op, lista) { if (op.palmeras) palmeras(L, lista.map(([x, y, t = .9]) => [x, y, t * 1.05])); else arboles(L, lista); }
+// Piscina sobre la plataforma.
+function piscina(L, x, y, w, d) {
+  L.capa(-49);
+  L.poli([[x, y, .02], [x + w, y, .02], [x + w, y + d, .02], [x, y + d, .02]], 'fill="#E8E2D6" stroke="rgba(255,255,255,.4)" stroke-width="1"');
+  L.poli([[x + .15, y + .15, .03], [x + w - .15, y + .15, .03], [x + w - .15, y + d - .15, .03], [x + .15, y + d - .15, .03]], 'fill="#3BA9CF"');
+  L.poli([[x + .3, y + .3, .04], [x + w * .55, y + .3, .04], [x + w * .35, y + d - .3, .04], [x + .3, y + d - .3, .04]], 'fill="#fff" opacity=".18"');
+}
+// Paisaje de fondo detrás de la plataforma: montaña, pirineo, colinas,
+// desierto, mar o ciudad.
+function fondo(L, tipo) {
+  if (!tipo) return;
+  L.capa(-200);
+  const monte = (x, y, h, col, nieve = true) => `<path d="M${x - h * .95},${y} L${x},${y - h} L${x + h * .95},${y} Z" fill="${col}"/>` +
+    (nieve ? `<path d="M${x - h * .26},${y - h * .73} L${x},${y - h} L${x + h * .26},${y - h * .73} L${x + h * .1},${y - h * .66} L${x - h * .05},${y - h * .72} L${x - h * .14},${y - h * .66} Z" fill="#F1EEE8"/>` : '');
+  if (tipo === 'montaña') L.crudo(monte(1100, 470, 290, '#2A2C30') + monte(870, 470, 220, '#34373C') + monte(1230, 470, 200, '#24262A'));
+  if (tipo === 'pirineo') L.crudo(monte(1110, 470, 250, '#263129') + monte(880, 470, 200, '#2E3A30', false) + monte(1240, 470, 180, '#222B24'));
+  if (tipo === 'colinas') L.crudo('<path d="M640,470 C760,380 860,400 960,430 C1060,360 1170,380 1280,420 L1280,470 Z" fill="#22352A"/><path d="M700,470 C820,420 920,440 1010,450 C1110,410 1200,430 1280,445 L1280,470 Z" fill="#2B4433"/>');
+  if (tipo === 'desierto') L.crudo('<path d="M640,470 C760,410 880,430 980,445 C1080,400 1180,415 1280,440 L1280,470 Z" fill="#5A4A36"/><path d="M700,470 C800,440 900,452 1000,458 C1100,436 1200,446 1280,456 L1280,470 Z" fill="#6E5A40"/>');
+  if (tipo === 'mar') L.crudo('<linearGradient id="marFundido" x1="0" x2="1"><stop offset="0" stop-color="#173847" stop-opacity="0"/><stop offset=".25" stop-color="#173847"/></linearGradient>' +
+    '<rect x="700" y="388" width="580" height="82" fill="url(#marFundido)"/><rect x="760" y="388" width="520" height="3" fill="#3E7E96"/>' +
+    [0, 1, 2, 3].map(i => `<path d="M${700 + i * 140},${412 + (i % 2) * 22} q20,-6 40,0 t40,0" fill="none" stroke="#5FA3BA" stroke-width="2.5" opacity=".6"/>`).join(''));
+  if (tipo === 'ciudad') L.crudo([[690, 90], [740, 150], [800, 110], [1140, 170], [1200, 120], [1240, 90]].map(([x, h], i) =>
+    `<rect x="${x}" y="${470 - h}" width="${38 + (i % 3) * 8}" height="${h}" fill="#1D1C1A"/>` +
+    Array.from({ length: Math.floor(h / 26) }, (_, k) => ((k + i) % 3 ? '' : `<rect x="${x + 10}" y="${470 - h + 12 + k * 26}" width="8" height="8" fill="#F3A945" opacity=".55"/>`)).join('')).join(''));
+}
 const CUBOS = [[-3.5, -3.4, 3.6], [2.6, -3.6, 4.8], [-3.8, 2.6, 2.4, .75]];
 
 // Bloque de pisos. op: pisos, mat, semilla.
@@ -38,6 +74,46 @@ function casita(L, x, y, w, d, m, t, { plantas = 1, luz = 1 } = {}) {
   L.ventanas('der', x, y, 0, w, d, h, { filas: plantas, cols: Math.max(1, Math.round(d / 1.6)), alto: .62 });
   L.tejado(x - .2, y - .2, h, w + .4, d + .4, Math.min(1.6, d * .45), t);
 }
+// Villa mediterránea o de costa: volúmenes blancos de cubierta plana,
+// terraza y grandes ventanales.
+function villaForma(L, x, y, m) {
+  L.caja(x, y, 0, 4.2, 3, 1.5, m);
+  L.ventanas('izq', x, y, 0, 4.2, 3, 1.5, { filas: 1, cols: 2, luz: () => true, alto: .95, margen: .4 });
+  L.ventanas('der', x, y, 0, 4.2, 3, 1.5, { filas: 1, cols: 2, luz: (f, k) => k === 1, alto: .9, margen: .4 });
+  L.caja(x + .6, y, 1.5, 2.8, 2.2, 1.35, m);
+  L.ventanas('izq', x + .6, y, 1.5, 2.8, 2.2, 1.35, { filas: 1, cols: 2, luz: (f, k) => k === 0, alto: .85, margen: .35 });
+  L.caja(x - .1, y - .1, 1.48, 4.4, 3.2, .1, MAT.grafito, { sombra: false });
+  L.caja(x + .5, y - .1, 2.83, 3, 2.4, .1, MAT.grafito, { sombra: false });
+}
+// Edificio de apartamentos bajo y ancho con balcones corridos.
+function condo(L, x, y, w, d, pisos, m, sem) {
+  const h = bloque(L, x, y, w, d, pisos, m, sem, { atico: false });
+  for (let i = 1; i <= pisos; i++) L.caja(x, y + d, i * 1.05 - .55, w, .35, .07, MAT.blanco, { sombra: false });
+  L.caja(x - .1, y - .1, h, w + .2, d + .2, .16, MAT.piedra, { sombra: false });
+  return h;
+}
+// Porche corrido delante de la fachada izquierda (casas de EE. UU.).
+function porche(L, x, y, w) {
+  L.caja(x, y, 0, w, .9, .12, MAT.madera, { sombra: false });
+  for (const k of [.15, w / 2 - .06, w - .27]) L.caja(x + k, y + .72, .12, .12, .12, 1.2, MAT.blanco, { sombra: false });
+  L.caja(x - .05, y, 1.32, w + .1, .95, .12, MAT.grafito, { sombra: false });
+}
+// Grúa de obra junto a un edificio en construcción.
+function grua(L, x, y, h, c) {
+  L.linea([x, y, 0], [x, y, h], `stroke="${c}" stroke-width="6"`);
+  L.linea([x - 3.4, y, h], [x + 1.2, y, h], `stroke="${c}" stroke-width="5"`);
+  L.linea([x, y, h + .9], [x - 3.4, y, h], `stroke="${c}" stroke-width="2"`);
+  L.linea([x, y, h + .9], [x + 1.2, y, h], `stroke="${c}" stroke-width="2"`);
+  L.linea([x - 2.4, y, h], [x - 2.4, y, h - 1.4], 'stroke="#B9B1A2" stroke-width="2"');
+  L.caja(x + .6, y - .25, h - .45, .6, .5, .45, MAT.grafito, { sombra: false });
+}
+// Hotel: bloque con marquesina de entrada y, si se pide, piscina.
+function hotelForma(L, x, y, w, d, pisos, m, op = {}) {
+  const h = bloque(L, x, y, w, d, pisos, m, 37, { atico: true });
+  L.caja(x + w * .3, y + d, 1.1, w * .4, .7, .12, MAT.grafito, { sombra: false });
+  for (const k of [.32, .66]) L.caja(x + w * k, y + d + .55, 0, .1, .1, 1.1, MAT.blanco, { sombra: false });
+  return h;
+}
 // Teléfono de pie con la app abierta: la pantalla mira al frente izquierdo.
 function telefono(L, x, y, c) {
   L.caja(x, y, 0, 1.3, .24, 2.3, MAT.grafito, { borde: 'rgba(255,255,255,.3)' });
@@ -48,35 +124,46 @@ function telefono(L, x, y, c) {
   L.poli(q(.25, .7, .5, .62), 'fill="#F7F5F0" opacity=".5"');
 }
 
-// Vivienda en un bloque de pisos (alquiler).
+// Vivienda en un bloque de pisos (alquiler). op: pisos, mat, semilla,
+// estilo='clasico' (zócalo, cornisa y mansarda, como un edificio antiguo de
+// ciudad), fondo, palmeras, piscina.
 export function edificio(c, op = {}) {
   const L = nuevo();
+  fondo(L, op.fondo);
   base(L, c);
-  L.capa(0); bloque(L, -2, -1.6, 4, 3.2, num(op.pisos, 6), mat(op.mat, MAT.piedra), num(op.semilla, 7));
-  arboles(L, [[-3, 2.5], [-1.1, 2.7], [2.8, 2.3], [3, .3]]);
+  const clasico = op.estilo === 'clasico';
+  L.capa(0); const h = bloque(L, -2, -1.6, 4, 3.2, num(op.pisos, 6), mat(op.mat, MAT.piedra), num(op.semilla, 7), { atico: !clasico });
+  if (clasico) {
+    L.caja(-2.18, -1.78, h - .02, 4.36, 3.56, .26, MAT.blanco);
+    L.tejado(-2.05, -1.65, h + .24, 4.1, 3.3, 1.1, MAT.pizarra);
+  }
+  if (op.piscina) piscina(L, 1.1, 2, 2.4, 1.4);
+  vegetacion(L, op, [[-3, 2.5], [-1.1, 2.7], [2.8, op.piscina ? 3.6 : 2.3], [3, .3]]);
   cubos(L, c, CUBOS);
   return L.svg();
 }
 // Torre residencial alta (apartamentos en ciudad).
 export function torre(c, op = {}) {
   const L = nuevo({ s: 36, dy: 40 });
+  fondo(L, op.fondo);
   base(L, c, { w: 8.4, d: 8.4 });
   L.capa(0); bloque(L, -1.6, -1.4, 3.2, 2.8, num(op.pisos, 8), mat(op.mat, MAT.blanco), num(op.semilla, 3));
   L.capa(2); L.caja(1.9, -1.2, 0, 1.6, 2.4, 1.2, MAT.grafito);
-  arboles(L, [[-3, 2.8, .8], [2.6, 3, .8], [-1, 3.2, .7]]);
-  if (op.palmeras) arboles(L, [[3.2, 1.2, 1.1], [-3.4, .8, 1.1]]);
+  if (op.piscina) piscina(L, 1.3, 1.8, 2.4, 1.5);
+  vegetacion(L, op, [[-3, 2.8, .8], [2.6, op.piscina ? 3.7 : 3, .8], [-1, 3.2, .7], [-3.4, .8, 1]]);
   cubos(L, c, [[-3.6, -3.6, 4.6], [2.8, -3.8, 6.4], [-3.9, 2.4, 2.6, .75]]);
   return L.svg();
 }
 // Casa unifamiliar con jardín. op: plantas, mat, tejado.
 export function casa(c, op = {}) {
   const L = nuevo({ s: 44, dy: 10 });
+  fondo(L, op.fondo);
   base(L, c, { w: 7.4, d: 7.4 });
   L.capa(-50); L.suelo(-3.2, 1.8, 6, 1.7, 'fill="#2F4A32" opacity=".75"');
   L.capa(0); casita(L, -2.4, -1.6, 4.4, 3.2, mat(op.mat, MAT.blanco), mat(op.tejado, MAT.pizarra), { plantas: num(op.plantas, 1) });
   L.caja(2.1, -1.2, 0, 1.2, 1.8, 1.1, MAT.grafito);
-  arboles(L, [[-3, 2.6], [2.9, 2.6, .8], [3, -.8, 1]]);
-  if (op.palmeras) arboles(L, [[-3.2, -1, 1.2], [1.4, 3, 1.1]]);
+  if (op.piscina) piscina(L, .5, 2.1, 2.2, 1.2);
+  vegetacion(L, op, [[-3, 2.6], [2.9, 2.6, .8], [3, -.8, 1], [-3.2, -1, 1]]);
   cubos(L, c, [[-3.4, -3.2, 3], [2.4, -3.4, 3.8], [3, 2.9, 1.8, .7]]);
   return L.svg();
 }
@@ -279,13 +366,23 @@ export function empresa(c, op = {}) {
 // Reventa entre inversores (mercado P2P): el activo y dos carteras que se
 // pasan una participación. op: activo=casa|edificio|torre|adosados|obra|cartera
 export function reventa(c, op = {}) {
-  const L = nuevo({ s: 38, dy: -10 });
-  base(L, c, { w: 8.4, d: 8.4 });
   const a = op.activo || 'casa';
+  // Los edificios altos se dibujan algo más pequeños para que quepan enteros.
+  const alto = ['torre', 'hotel'].includes(a) && (num(op.pisos, 6) > 6 || op.grua);
+  const L = nuevo({ s: alto ? 33 : 38, dy: alto ? 20 : -10 });
+  base(L, c, { w: 8.4, d: 8.4 });
+  fondo(L, op.fondo);
+  if (op.piscina) piscina(L, -3.6, -.6, 1.8, 1.6);
   L.capa(0);
-  if (a === 'edificio') bloque(L, -2, -2.4, 3.6, 3, 5, mat(op.mat, MAT.piedra), 17);
-  else if (a === 'torre') { bloque(L, -1.4, -2.4, 2.8, 2.6, 6, mat(op.mat, MAT.blanco), 19); }
-  else if (a === 'adosados') for (let i = 0; i < 3; i++) { L.capa(-3 + i * 2); casita(L, -3.2 + i * 2, -2.6, 1.8, 2.6, i === 1 ? MAT.blanco : mat(op.mat, MAT.arena), MAT.teja, { plantas: 2, luz: 0 }); }
+  if (a === 'edificio') bloque(L, -2, -2.4, 3.6, 3, num(op.pisos, 5), mat(op.mat, MAT.piedra), 17);
+  else if (a === 'villa') villaForma(L, -2.4, -2.6, mat(op.mat, MAT.blanco));
+  else if (a === 'condominio') condo(L, -2.6, -2.6, 4.6, 2.6, num(op.pisos, 3), mat(op.mat, MAT.blanco), 23);
+  else if (a === 'conjunto') for (const [x, y, w] of [[-3.4, -3.6, 2.6], [0, -3.8, 2.8], [-3.6, -.6, 2]]) { L.capa(x + y); condo(L, x, y, w, 2, num(op.pisos, 4), mat(op.mat, MAT.gris), 31 + x); }
+  else if (a === 'hotel') hotelForma(L, -2.2, -2.6, 4, 2.8, num(op.pisos, 6), mat(op.mat, MAT.arena), op);
+  else if (a === 'torre') {
+    const h = bloque(L, -1.4, -2.4, 2.8, 2.6, num(op.pisos, 6), mat(op.mat, MAT.blanco), 19, { atico: !op.grua });
+    if (op.grua) grua(L, 1.8, -2.8, h + .9, c);
+  } else if (a === 'adosados') for (let i = 0; i < 3; i++) { L.capa(-3 + i * 2); casita(L, -3.2 + i * 2, -2.6, 1.8, 2.6, i === 1 ? MAT.blanco : mat(op.mat, MAT.arena), mat(op.tejado, MAT.teja), { plantas: num(op.plantas, 2), luz: 0 }); }
   else if (a === 'obra') {
     L.caja(-2.2, -2.6, 0, 4, 3, 2.2, MAT.piedra);
     L.ventanas('izq', -2.2, -2.6, 0, 4, 3, 2.2, { filas: 2, cols: 3, alto: .6 });
@@ -299,9 +396,11 @@ export function reventa(c, op = {}) {
     const P = [[-3, -3, 3, MAT.blanco], [.2, -3.2, 2, MAT.arena], [-3.2, -.4, 1.6, MAT.piedra]];
     for (const [x, y, h, m] of P) { L.capa(x + y); L.caja(x, y, 0, 2.2, 2.2, h, m); L.ventanas('izq', x, y, 0, 2.2, 2.2, h, { filas: Math.round(h / 1), cols: 2, luz: luces(x * 5 + y + 60) }); }
     L.capa(0); casita(L, .2, -.4, 2.2, 2, MAT.blanco, MAT.teja);
-  } else casita(L, -2.4, -2.6, 4.2, 3, mat(op.mat, MAT.blanco), mat(op.tejado, MAT.pizarra), { plantas: num(op.plantas, 1) });
-  if (op.palmeras) arboles(L, [[3, -2.6, 1.2], [-3.6, .6, 1.2]]);
-  else arboles(L, [[3, -2.6, .9], [-3.6, .6, .9]]);
+  } else {
+    casita(L, -2.4, -2.6, 4.2, 3, mat(op.mat, MAT.blanco), mat(op.tejado, MAT.pizarra), { plantas: num(op.plantas, 1) });
+    if (op.porche) porche(L, -2.4, .4, 4.2);
+  }
+  vegetacion(L, op, [[3, -2.6, op.palmeras ? 1.1 : .9], [-3.6, op.piscina ? 1.4 : .6, op.palmeras ? 1.1 : .9]]);
   // dos inversores (sus teléfonos) que se pasan una participación
   L.capa(10); telefono(L, -3.9, 2.9, c); telefono(L, 2.5, 3.2, c);
   L.capa(11); L.arco([-2.7, 3.2, 2.5], [2.6, 3.4, 2.5], c, 1.6);
@@ -319,6 +418,60 @@ export function reforma(c, op = {}) {
   for (let z = 1; z <= 3; z++) { L.linea([2.2, -1.6, z * 1.15], [2.2, 1.2, z * 1.15], `stroke="${c}" stroke-width="3"`); L.caja(1.9, -1.6, z * 1.15, .6, 2.8, .08, MAT.madera, { sombra: false }); }
   L.capa(5); L.caja(-3.2, 2, 0, 1.4, 1, .6, MAT.arena); L.caja(-3, 2.2, .6, .9, .7, .4, MAT.arena);
   cubos(L, c, [[-3.4, -3.4, 3.6], [2.4, -3.4, 4.4]]);
+  return L.svg();
+}
+// Villa con piscina (costa). op: mat, fondo, palmeras.
+export function villa(c, op = {}) {
+  const L = nuevo({ s: 42 });
+  fondo(L, op.fondo);
+  base(L, c, { w: 7.6, d: 7.6 });
+  piscina(L, -1.4, 1.9, 3, 1.4);
+  L.capa(0); villaForma(L, -2.4, -2.2, mat(op.mat, MAT.blanco));
+  vegetacion(L, { palmeras: op.palmeras !== 0, ...op }, [[-3.2, 2.4, 1], [2.9, 2.6, 1], [2.9, -1.8, 1.1]]);
+  cubos(L, c, [[-3.4, -3.4, 3.4], [2.4, -3.5, 4.2], [3.1, 3.1, 1.6, .7]]);
+  return L.svg();
+}
+// Edificio de apartamentos bajo con balcones. op: pisos, mat, fondo, palmeras, piscina.
+export function condominio(c, op = {}) {
+  const L = nuevo({ s: 40 });
+  fondo(L, op.fondo);
+  base(L, c);
+  if (op.piscina) piscina(L, -1.2, 2, 2.8, 1.4);
+  L.capa(0); condo(L, -2.8, -2, 5.4, 3, num(op.pisos, 4), mat(op.mat, MAT.blanco), num(op.semilla, 29));
+  vegetacion(L, op, [[-3.4, 2.4], [2.9, 2.6], [3.2, -.2, 1]]);
+  cubos(L, c, CUBOS);
+  return L.svg();
+}
+// Bodega con viñedo en terrazas y casa de piedra (proyecto de vino y hotel rural).
+export function bodega(c, op = {}) {
+  const L = nuevo({ s: 40 });
+  fondo(L, op.fondo || 'colinas');
+  base(L, c);
+  // terrazas de viñedo escalonadas delante
+  for (let t = 0; t < 3; t++) {
+    const y = .6 + t * 1.1, z = .02 + (2 - t) * .22;
+    L.capa(-40 + t); L.caja(-3.9, y, 0, 7.8, 1.1, z, MAT.cesped, { sombra: false });
+    for (let k = 0; k < 9; k++) {
+      const [vx, vy] = L.p(-3.6 + k * .85, y + .55, z);
+      L.crudo(`<line x1="${vx}" y1="${vy}" x2="${vx}" y2="${vy - 14}" stroke="#5A4632" stroke-width="2.5"/><circle cx="${vx}" cy="${vy - 18}" r="8" fill="#3E6E3A"/><circle cx="${vx + 5}" cy="${vy - 12}" r="4" fill="#6B2E4A"/>`);
+    }
+  }
+  // casa solariega de piedra con tejado de pizarra y un torreón
+  L.capa(0);
+  L.caja(-2.6, -3.2, 0, 4.4, 2.8, 2.6, MAT.piedra);
+  L.ventanas('izq', -2.6, -3.2, 0, 4.4, 2.8, 2.6, { filas: 2, cols: 3, luz: (f, k) => f === 0 && k === 1, alto: .55 });
+  L.ventanas('der', -2.6, -3.2, 0, 4.4, 2.8, 2.6, { filas: 2, cols: 2, alto: .55 });
+  L.tejado(-2.8, -3.4, 2.6, 4.8, 3.2, 1.4, MAT.pizarra);
+  L.capa(1); L.caja(1.8, -3.2, 0, 1.4, 1.4, 4, MAT.piedra);
+  L.ventanas('izq', 1.8, -3.2, 0, 1.4, 1.4, 4, { filas: 3, cols: 1, luz: (f) => f === 1, alto: .5 });
+  L.tejadoY(1.7, -3.3, 4, 1.6, 1.6, .9, MAT.pizarra);
+  // barricas junto a la casa
+  for (let i = 0; i < 3; i++) {
+    const [bx, by] = L.p(-3.4 + i * .7, -.2, 0);
+    L.capa(-1 + i * .01);
+    L.crudo(`<rect x="${bx - 14}" y="${by - 26}" width="28" height="26" rx="6" fill="#7A5232"/><ellipse cx="${bx}" cy="${by - 26}" rx="14" ry="6" fill="#9A6A42"/><line x1="${bx - 14}" y1="${by - 18}" x2="${bx + 14}" y2="${by - 18}" stroke="#3A2A1A" stroke-width="2"/><line x1="${bx - 14}" y1="${by - 8}" x2="${bx + 14}" y2="${by - 8}" stroke="#3A2A1A" stroke-width="2"/>`);
+  }
+  cubos(L, c, [[-3.6, -3.7, 4.2], [3.3, -.6, 3.4, .75]]);
   return L.svg();
 }
 // Catálogo de próximas emisiones: varios inmuebles y una lupa.

@@ -127,8 +127,14 @@ async function trabajador() {
     } finally { await pagina.close().catch(() => {}); }
     if (necesitaOtroIntento(r)) {
       try {
-        // Unas webs solo responden a un navegador (Midas) y otras solo a curl (NYDFS).
-        const intentos = [UA, 'curl/8.5.0'].map(agente => { try { return leerHtml(url, agente); } catch { return null; } });
+        // Unas webs solo responden a un navegador (Midas) y otras solo a curl
+        // (NYDFS). Otras (REGAFI) cortan la conexión a ratos: hasta tres rondas.
+        let intentos = [];
+        for (let ronda = 0; ronda < 3; ronda++) {
+          if (ronda) execFileSync('sleep', [String(3 * ronda)]);
+          intentos = [UA, 'curl/8.5.0'].map(agente => { try { return leerHtml(url, agente); } catch { return null; } });
+          if (intentos.some(d => d && d.estado === 200 && !BLOQUEO.test(d.titulo))) break;
+        }
         const directa = intentos.find(d => d && d.estado === 200 && !BLOQUEO.test(d.titulo)) || intentos.find(Boolean);
         if (!directa) throw new Error('sin respuesta');
         if (directa.texto.startsWith('%PDF')) Object.assign(directa, { texto: leerPdf(url), titulo: '' });
@@ -144,6 +150,13 @@ async function trabajador() {
 }
 function guardar(r) {
   r.texto = (r.texto || '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').slice(0, 300000);
+  // Al repetir una captura del mismo día, un fallo no pisa una lectura buena.
+  const previa = resultado[r.url];
+  const buena = x => x && !x.error && (x.estado === 200 || x.estado === 'pdf') && (x.texto || '').length >= 200;
+  if (buena(previa) && !buena(r) && String(previa.consultada).slice(0, 10) === String(r.consultada).slice(0, 10)) {
+    console.log(`${String(r.estado ?? r.error).slice(0, 40).padEnd(10)}  (se conserva la lectura buena de antes)  ${r.url}`);
+    return;
+  }
   resultado[r.url] = r;
   console.log(`${String(r.estado ?? r.error).slice(0, 40).padEnd(10)} ${String(r.texto.length).padStart(7)}  ${r.url}`);
   fs.writeFileSync(salida, JSON.stringify(resultado, null, 1));

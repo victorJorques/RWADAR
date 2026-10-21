@@ -65,6 +65,25 @@
   },
   "fichas": [
     {
+      "slug": "aktionariat",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-aktionariat.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 26540,
+      "hashSha256": "d1bd4925312e7fd2e7271835bd9989258c3a2448b15a31cd8b72aa6a4c4ac0fd",
+      "alt": "Ilustración editorial de un edificio de oficinas genérico de una empresa suiza de tecnología, con su capital repartido en participaciones. compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas genérico de una empresa suiza de tecnología, con su capital repartido en participaciones",
+      "pasos": [
+        "Compras acciones",
+        "Eres accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Erlenbach · Suiza",
+      "escena": "empresa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
       "slug": "apartamento-vacacional-hinterstoder-50",
       "categoria": "Inmobiliario",
       "archivo": "oferta-apartamento-vacacional-hinterstoder-50.webp",
@@ -81,7 +100,45 @@
       ],
       "lugar": "Hinterstoder · Austria",
       "escena": "chalet",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "boss-info",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-boss-info.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 24874,
+      "hashSha256": "3645b1274cf13271f13e71afac9a434084d371e166bee649ed0098042f176b3e",
+      "alt": "Ilustración editorial de un edificio de oficinas genérico de una empresa suiza de informática, con su capital repartido en participaciones. compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas genérico de una empresa suiza de informática, con su capital repartido en participaciones",
+      "pasos": [
+        "Compras acciones",
+        "Eres accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Farnern · Suiza",
+      "escena": "empresa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-casa-de-outeiro.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 27064,
+      "hashSha256": "c984798f960ae510fca70bab8f072fe1880bf9c5d92dcb73a25cb150e79a7484",
+      "alt": "Ilustración editorial de una casa solariega de piedra con bodega y viñedo en terrazas. suscribes la ampliación; recibes tus acciones; socio de bodega y hotel. No es una foto del activo real.",
+      "concepto": "una casa solariega de piedra con bodega y viñedo en terrazas",
+      "pasos": [
+        "Suscribes la ampliación",
+        "Recibes tus acciones",
+        "Socio de bodega y hotel"
+      ],
+      "lugar": "Ribeira Sacra · Lugo",
+      "escena": "bodega",
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "drautalresidenz-paternion",
@@ -100,7 +157,7 @@
       ],
       "lugar": "Paternion · Austria",
       "escena": "edificio",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "fotovoltaica-cohotel",
@@ -119,7 +176,7 @@
       ],
       "lugar": "Steyregg · Austria",
       "escena": "solar",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "fotovoltaica-greenpoint",
@@ -138,7 +195,45 @@
       ],
       "lugar": "Wiener Neustadt · Austria",
       "escena": "solar",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-hausera-proximas-ofertas.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 28756,
+      "hashSha256": "b9fddbafa43a169050f12a2f022513219c906e50aa4bf7b23544ecc07135877d",
+      "alt": "Ilustración editorial de una casa genérica con andamio que se compra, se reforma y se vende. reservas en la preventa; se reforma y se vende; cobro tras la venta. No es una foto del activo real.",
+      "concepto": "una casa genérica con andamio que se compra, se reforma y se vende",
+      "pasos": [
+        "Reservas en la preventa",
+        "Se reforma y se vende",
+        "Cobro tras la venta"
+      ],
+      "lugar": "Alicante · España",
+      "escena": "reforma",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "iod-occasio",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-iod-occasio.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 29234,
+      "hashSha256": "47c61b18c58d1621fc8973c1296bcb3b64194f972f564ea97e9da47de64c8ac3",
+      "alt": "Ilustración editorial de una empresa genérica que adelanta el cobro de facturas, con contratos y un escudo de seguro. compras tokens del bono; se adelantan facturas; devolución al vencer. No es una foto del activo real.",
+      "concepto": "una empresa genérica que adelanta el cobro de facturas, con contratos y un escudo de seguro",
+      "pasos": [
+        "Compras tokens del bono",
+        "Se adelantan facturas",
+        "Devolución al vencer"
+      ],
+      "lugar": "Madrid · España",
+      "escena": "credito",
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "local-de-estanco-klagenfurt",
@@ -157,7 +252,7 @@
       ],
       "lugar": "Klagenfurt · Austria",
       "escena": "local",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "mf-one",
@@ -175,7 +270,7 @@
         "Reembolsas a su precio"
       ],
       "escena": "cartera_credito",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "mglo",
@@ -193,7 +288,7 @@
         "Reembolsas o transfieres"
       ],
       "escena": "credito",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "mglobal",
@@ -211,7 +306,7 @@
         "Reembolsas o transfieres"
       ],
       "escena": "cartera_credito",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "mgloeuro",
@@ -229,7 +324,7 @@
         "Aún sin condiciones"
       ],
       "escena": "cartera_credito",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "mtbill",
@@ -248,7 +343,7 @@
       ],
       "lugar": "Estados Unidos",
       "escena": "tesoro",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "prosegur-digital-gold",
@@ -267,7 +362,7 @@
       ],
       "lugar": "Custodia en España",
       "escena": "oro",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "randhartingergasse-9-viena",
@@ -286,7 +381,443 @@
       ],
       "lugar": "Viena · Austria",
       "escena": "edificio",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-emision-primaria",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-emision-primaria.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 26958,
+      "hashSha256": "d48704b2678f790b3956f59576072c4cccea0def7fb164454fce048841a476aa",
+      "alt": "Ilustración editorial de varios inmuebles genéricos distintos bajo una lupa: próximos proyectos aún sin emisión abierta. sigues los proyectos; se abre una emisión; compras al abrirse. No es una foto del activo real.",
+      "concepto": "varios inmuebles genéricos distintos bajo una lupa: próximos proyectos aún sin emisión abierta",
+      "pasos": [
+        "Sigues los proyectos",
+        "Se abre una emisión",
+        "Compras al abrirse"
+      ],
+      "escena": "catalogo",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-abu-dhabi-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-abu-dhabi-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 33194,
+      "hashSha256": "90dd2ddce98d56d36adcb65b23a6a94ca3bef8b3df255a6692177240189d0a3d",
+      "alt": "Ilustración editorial de un bloque de apartamentos genérico junto al agua, con piscina y palmeras, y dos teléfonos que se pasan una participación. compras a otro inversor; se alquilan a turistas; rentas y venta final. No es una foto del activo real.",
+      "concepto": "un bloque de apartamentos genérico junto al agua, con piscina y palmeras, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se alquilan a turistas",
+        "Rentas y venta final"
+      ],
+      "lugar": "Abu Dabi · Emiratos",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-atlanta-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-atlanta-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 28754,
+      "hashSha256": "eb9c59b458c35a4e7fe3cae0b930bd3c53b45c2b5c6e21c160e2dd4dd2381eb0",
+      "alt": "Ilustración editorial de una casa de madera genérica de dos plantas con porche, y dos teléfonos que se pasan una participación. compras a otro inversor; se alquila por cuartos; rentas o reventa. No es una foto del activo real.",
+      "concepto": "una casa de madera genérica de dos plantas con porche, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se alquila por cuartos",
+        "Rentas o reventa"
+      ],
+      "lugar": "Atlanta · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-carolina-del-norte-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-carolina-del-norte-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 33798,
+      "hashSha256": "f0456984b2f789b88fadfec849a416fcb14a42a08735de9a5e9fb1efc361736c",
+      "alt": "Ilustración editorial de un conjunto genérico de bloques de pisos de cuatro plantas, y dos teléfonos que se pasan una participación. compras a otro inversor; se construyen los pisos; cobro al vencimiento. No es una foto del activo real.",
+      "concepto": "un conjunto genérico de bloques de pisos de cuatro plantas, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se construyen los pisos",
+        "Cobro al vencimiento"
+      ],
+      "lugar": "Morrisville · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-dania-beach-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-dania-beach-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 30896,
+      "hashSha256": "d7569247d69eafc811047515d65813806201a88065ebe9f43cf1d8d5a55d75ed",
+      "alt": "Ilustración editorial de un hotel urbano genérico en el centro de una ciudad (el activo que sustituyó al de Dania Beach), y dos teléfonos que se pasan una participación. compras a otro inversor; el hotel se mejora; pagos trimestrales. No es una foto del activo real.",
+      "concepto": "un hotel urbano genérico en el centro de una ciudad (el activo que sustituyó al de Dania Beach), y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "El hotel se mejora",
+        "Pagos trimestrales"
+      ],
+      "lugar": "Austin · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-granada-3",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-granada-3.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 30520,
+      "hashSha256": "f0d91c465c9fe92617063774320ed221cbd1db742823b884d857164fe4f1318e",
+      "alt": "Ilustración editorial de un edificio urbano genérico de fachada blanca, y dos teléfonos que se pasan una participación. compras a otro inversor; se alquila por cuartos; rentas y venta final. No es una foto del activo real.",
+      "concepto": "un edificio urbano genérico de fachada blanca, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se alquila por cuartos",
+        "Rentas y venta final"
+      ],
+      "lugar": "Granada · España",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-houston-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-houston-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 28478,
+      "hashSha256": "dbec98306282026420386eed86f5d8da3593061471a6eea8f1102164ffa5b20b",
+      "alt": "Ilustración editorial de una casa genérica de dos plantas pintada de blanco, con piscina, y dos teléfonos que se pasan una participación. compras a otro inversor; se alquila a turistas; rentas o reventa. No es una foto del activo real.",
+      "concepto": "una casa genérica de dos plantas pintada de blanco, con piscina, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se alquila a turistas",
+        "Rentas o reventa"
+      ],
+      "lugar": "Houston · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-houston-2",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-houston-2.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 28314,
+      "hashSha256": "32476259bbb5436c62c48b94f8ae8e457c8446a14f65739db9ae5ca32bacb8c4",
+      "alt": "Ilustración editorial de una casa genérica de dos plantas con porche, y dos teléfonos que se pasan una participación. compras a otro inversor; la casa se alquila; rentas y venta final. No es una foto del activo real.",
+      "concepto": "una casa genérica de dos plantas con porche, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "La casa se alquila",
+        "Rentas y venta final"
+      ],
+      "lugar": "Houston · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-houston-3",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-houston-3.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 28976,
+      "hashSha256": "fe62f301f93a232441fe8c92f5e5dbe7498ab4eb4edf8415d44a55f54cab176c",
+      "alt": "Ilustración editorial de una hilera genérica de casas estrechas de tres plantas, y dos teléfonos que se pasan una participación. compras a otro inversor; la casa se alquila; rentas o reventa. No es una foto del activo real.",
+      "concepto": "una hilera genérica de casas estrechas de tres plantas, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "La casa se alquila",
+        "Rentas o reventa"
+      ],
+      "lugar": "Houston · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-levante-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-levante-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 30072,
+      "hashSha256": "f112274d6e1b12f159ce225461f63c43391777a3b8d1ea93ad1875d6ec9db39b",
+      "alt": "Ilustración editorial de una calle genérica de casas de dos plantas con tejado de teja, y dos teléfonos que se pasan una participación. compras a otro inversor; se presta al promotor; intereses y devolución. No es una foto del activo real.",
+      "concepto": "una calle genérica de casas de dos plantas con tejado de teja, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se presta al promotor",
+        "Intereses y devolución"
+      ],
+      "lugar": "Godelleta · España",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-malaga-6",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-malaga-6.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 30800,
+      "hashSha256": "3d014d81c62f5eedd469196b8249668bd5c2c48c36dd90b7fd6f7e798f76079f",
+      "alt": "Ilustración editorial de un bloque alto de pisos genérico de ladrillo, y dos teléfonos que se pasan una participación. compras a otro inversor; se alquila por cuartos; rentas o reventa. No es una foto del activo real.",
+      "concepto": "un bloque alto de pisos genérico de ladrillo, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se alquila por cuartos",
+        "Rentas o reventa"
+      ],
+      "lugar": "Málaga · España",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-miami-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-miami-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 30326,
+      "hashSha256": "0c762fd7f7c0c9ed183da31bafdaeaceac48cb619a2e0b050ded2c68c6d48750",
+      "alt": "Ilustración editorial de un edificio bajo de apartamentos blanco junto al mar, con palmeras, y dos teléfonos que se pasan una participación. compras a otro inversor; el piso se alquila; rentas o reventa. No es una foto del activo real.",
+      "concepto": "un edificio bajo de apartamentos blanco junto al mar, con palmeras, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "El piso se alquila",
+        "Rentas o reventa"
+      ],
+      "lugar": "Key Biscayne · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-miami-2",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-miami-2.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 29652,
+      "hashSha256": "52a1d0722bb1014d37b4c566cc4e6bfe205a941a3d829e54cd7a1a2c0b53d227",
+      "alt": "Ilustración editorial de una torre de apartamentos de cristal en obra, en el centro de una ciudad, y dos teléfonos que se pasan una participación. compras a otro inversor; se alquila al terminar; rentas o reventa. No es una foto del activo real.",
+      "concepto": "una torre de apartamentos de cristal en obra, en el centro de una ciudad, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se alquila al terminar",
+        "Rentas o reventa"
+      ],
+      "lugar": "Miami · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-miami-3",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-miami-3.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 29652,
+      "hashSha256": "52a1d0722bb1014d37b4c566cc4e6bfe205a941a3d829e54cd7a1a2c0b53d227",
+      "alt": "Ilustración editorial de una torre de apartamentos de cristal en obra, en el centro de una ciudad, y dos teléfonos que se pasan una participación. compras a otro inversor; se alquila al terminar; rentas o reventa. No es una foto del activo real.",
+      "concepto": "una torre de apartamentos de cristal en obra, en el centro de una ciudad, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se alquila al terminar",
+        "Rentas o reventa"
+      ],
+      "lugar": "Miami · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-miami-5",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-miami-5.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 29534,
+      "hashSha256": "845366360d2ccfc9340aebceef9366230b3852e83e1a30c3d02b1a817a26b461",
+      "alt": "Ilustración editorial de una villa blanca con piscina y palmeras que se reforma para venderla, y dos teléfonos que se pasan una participación. compras a otro inversor; la casa se reforma; cobro tras la venta. No es una foto del activo real.",
+      "concepto": "una villa blanca con piscina y palmeras que se reforma para venderla, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "La casa se reforma",
+        "Cobro tras la venta"
+      ],
+      "lugar": "Miami · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-opportunity-2",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-opportunity-2.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 29392,
+      "hashSha256": "e933b83728717e018e082f87958228f8995b31d483982dfd451cfa37df48e64a",
+      "alt": "Ilustración editorial de varios inmuebles genéricos de ciudad dentro de una cartera, y dos teléfonos que se pasan una participación. compras a otro inversor; se recuperan inmuebles; rentas o reventa. No es una foto del activo real.",
+      "concepto": "varios inmuebles genéricos de ciudad dentro de una cartera, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se recuperan inmuebles",
+        "Rentas o reventa"
+      ],
+      "lugar": "Sobre todo en España",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-pirineos-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-pirineos-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 30702,
+      "hashSha256": "1115ba21518e868587bd68428b62c6088648ba471c5a3864f6da74c536836041",
+      "alt": "Ilustración editorial de una casona de piedra con tejado de pizarra al pie de la montaña, y dos teléfonos que se pasan una participación. compras a otro inversor; la casona se reforma; cobro tras la venta. No es una foto del activo real.",
+      "concepto": "una casona de piedra con tejado de pizarra al pie de la montaña, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "La casona se reforma",
+        "Cobro tras la venta"
+      ],
+      "lugar": "Benasque · España",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-proyecto-100",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-proyecto-100.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 31494,
+      "hashSha256": "fe96e4e7d43b971815c6defc859803f4e4fe4ad064960942097d69d2fbe69bed",
+      "alt": "Ilustración editorial de una cartera genérica de proyectos junto al mar, y dos teléfonos que se pasan una participación. compras a otro inversor; se presta a promotores; pagos y devolución. No es una foto del activo real.",
+      "concepto": "una cartera genérica de proyectos junto al mar, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Se presta a promotores",
+        "Pagos y devolución"
+      ],
+      "lugar": "Yucatán · Dubái · Samaná",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-rentas-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-rentas-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 29120,
+      "hashSha256": "ee9be04e080dad5a23700328dce4c47af9325ce5eb6f2fe3bf0861923f962690",
+      "alt": "Ilustración editorial de una cartera genérica de pisos de alquiler en varios países, y dos teléfonos que se pasan una participación. compras a otro inversor; presta para alquileres; pagos y devolución. No es una foto del activo real.",
+      "concepto": "una cartera genérica de pisos de alquiler en varios países, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Presta para alquileres",
+        "Pagos y devolución"
+      ],
+      "lugar": "Varios países",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-rentas-2",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-rentas-2.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 30632,
+      "hashSha256": "b05e8bf8be505cb7a210c3fe36e2e07fdef214b81bc1d65c2e622d1a10245576",
+      "alt": "Ilustración editorial de una cartera genérica de viviendas y alojamientos turísticos, y dos teléfonos que se pasan una participación. compras a otro inversor; cartera de préstamos; pagos y devolución. No es una foto del activo real.",
+      "concepto": "una cartera genérica de viviendas y alojamientos turísticos, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Cartera de préstamos",
+        "Pagos y devolución"
+      ],
+      "lugar": "Varios países",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-rentas-3",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-rentas-3.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 29090,
+      "hashSha256": "1a3721123cae27e944e6a80e10cca3f4a9a7e570f0dd37d5c87544b2e2302eb4",
+      "alt": "Ilustración editorial de una cartera genérica de préstamos e inmuebles en obra y en alquiler, y dos teléfonos que se pasan una participación. compras a otro inversor; obras, alquiler y venta; pagos y devolución. No es una foto del activo real.",
+      "concepto": "una cartera genérica de préstamos e inmuebles en obra y en alquiler, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "Obras, alquiler y venta",
+        "Pagos y devolución"
+      ],
+      "lugar": "Varios países",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-san-antonio-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-san-antonio-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 31758,
+      "hashSha256": "384be8d41b1197d5f289a0e0f76f0b6bc4c6026482f002a484fe88fae9f49da6",
+      "alt": "Ilustración editorial de un gran hotel genérico de color arena con piscina y palmeras, y dos teléfonos que se pasan una participación. compras a otro inversor; el hotel se renueva; pagos y venta final. No es una foto del activo real.",
+      "concepto": "un gran hotel genérico de color arena con piscina y palmeras, y dos teléfonos que se pasan una participación",
+      "pasos": [
+        "Compras a otro inversor",
+        "El hotel se renueva",
+        "Pagos y venta final"
+      ],
+      "lugar": "San Antonio · EE. UU.",
+      "escena": "reventa",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "servicehunter-quitt",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-servicehunter-quitt.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 28224,
+      "hashSha256": "e9c7d0509caa3dc4039e97df3b9a80c2a9b9dab549fb8c6612fa3f6735b9be13",
+      "alt": "Ilustración editorial de un edificio de oficinas genérico de una empresa suiza de servicios para hogares, con su capital repartido en participaciones. compras a un accionista; pasas a ser accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas genérico de una empresa suiza de servicios para hogares, con su capital repartido en participaciones",
+      "pasos": [
+        "Compras a un accionista",
+        "Pasas a ser accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Zúrich · Suiza",
+      "escena": "empresa",
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "spiko-letras-del-tesoro-euro",
@@ -305,7 +836,26 @@
       ],
       "lugar": "Zona euro",
       "escena": "tesoro",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "switzerlend",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-switzerlend.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 27532,
+      "hashSha256": "85d4ec7e03d52cfe2ab61b7dca46d07b32caa16e37677a32d24477fc7198a049",
+      "alt": "Ilustración editorial de un edificio de oficinas genérico de una empresa suiza de préstamos, con su capital repartido en participaciones. compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas genérico de una empresa suiza de préstamos, con su capital repartido en participaciones",
+      "pasos": [
+        "Compras acciones",
+        "Eres accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Zúrich · Suiza",
+      "escena": "empresa",
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "terreno-con-arrendamiento-billa",
@@ -324,7 +874,7 @@
       ],
       "lugar": "Brückl · Austria",
       "escena": "terreno",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "vivienda-pluddemanngasse-101-graz",
@@ -343,7 +893,7 @@
       ],
       "lugar": "Graz · Austria",
       "escena": "edificio",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
@@ -362,7 +912,7 @@
       ],
       "lugar": "Wiener Neustadt · Austria",
       "escena": "edificio",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "vivienda-schwarzer-weg-18-graz",
@@ -381,7 +931,7 @@
       ],
       "lugar": "Graz · Austria",
       "escena": "edificio",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "vivienda-sonnleithnergasse-2-viena",
@@ -400,7 +950,7 @@
       ],
       "lugar": "Viena · Austria",
       "escena": "edificio",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
     },
     {
       "slug": "vivienda-stallhofstra-e-28-gratwein",
@@ -419,7 +969,26 @@
       ],
       "lugar": "Gratwein · Austria",
       "escena": "edificio",
-      "revisadoEl": "2026-10-19"
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "wemakeit",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-wemakeit.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 29446,
+      "hashSha256": "b9576396ec57cf64d78f046cc5cf202596005ded117b916e4dc9abd844e3c34b",
+      "alt": "Ilustración editorial de un edificio de oficinas genérico de una empresa suiza de micromecenazgo, con su capital repartido en participaciones. compras a un accionista; pasas a ser accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas genérico de una empresa suiza de micromecenazgo, con su capital repartido en participaciones",
+      "pasos": [
+        "Compras a un accionista",
+        "Pasas a ser accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Zúrich · Suiza",
+      "escena": "empresa",
+      "revisadoEl": "2026-10-20"
     }
   ]
 }

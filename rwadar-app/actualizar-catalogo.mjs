@@ -356,14 +356,18 @@ for (const [slug, U] of Object.entries(PORTALES)) {
   ponerReferencias(slug, refs);
   const dinamicos = [];
   const decia = esc[slug].avisos.map(a => a.texto).join(' ');
-  if (/acuerdo de registro/.test(decia)) {
+  if (/acuerdo de registro|acuerdos legales/.test(decia)) {
     if (/Registration Agreement N\/A/.test(t)) dinamicos.push(aviso('La página no enlaza el acuerdo de registro ni el de titular del token (ambos aparecen como «N/A»).'));
+    // Sin la sección no se puede decir que los enlace: se avisa de lo que se vio.
+    else if (!/Legal Documents/.test(t)) dinamicos.push(aviso(`El ${FES} la página no mostraba los acuerdos legales del token (registro y titular); consúltalos con el emisor.`));
     else informe.notas.push(`${esc[slug].titulo}: ya enlaza sus acuerdos; se quita el aviso.`);
   }
   if (/inversión directa del emisor/.test(decia)) {
     if (!conDirecta) {
       const cruces = operaciones.filter(o => o.tipo === 'Secondary Trade').slice(0, 2);
-      const fijado = precio?.[2] === 'Issuer Defined' ? ` El precio de ${numES(Number(precio[1]))} CHF lo fija el emisor y no es el de una operación real${cruces.length ? `: las últimas operaciones secundarias (${cruces.map(c => c.fecha).join(' y ')}) se cruzaron a ${cruces.map(c => numES(c.precio)).join(' y ')} ZCHF por acción` : ''}.` : '';
+      const fechas = [...new Set(cruces.map(c => c.fecha))];
+      const cuando = fechas.length === 1 && cruces.length > 1 ? `del ${fechas[0]}` : `(${fechas.join(' y ')})`;
+      const fijado = precio?.[2] === 'Issuer Defined' ? ` El precio de ${numES(Number(precio[1]))} CHF lo fija el emisor y no es el de una operación real${cruces.length ? `: las últimas operaciones secundarias ${cuando} se cruzaron a ${[...new Set(cruces.map(c => numES(c.precio)))].join(' y ')} ZCHF por acción` : ''}.` : '';
       dinamicos.push(aviso(`El ${FES} la página no ofrecía inversión directa del emisor: solo negociación secundaria entre accionistas.${fijado}`));
     } else informe.notas.push(`${esc[slug].titulo}: vuelve a ofrecer inversión directa del emisor; se quita el aviso.`);
   }

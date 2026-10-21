@@ -17,6 +17,10 @@ export const MAT = {
   pizarra: { top: '#5B5F66', izq: '#4A4E55', der: '#34373C' },
   madera: { top: '#A77B52', izq: '#8C6440', der: '#62452B' },
   cesped: { top: '#3F6B45', izq: '#2F5034', der: '#223A26' },
+  ladrillo: { top: '#B87A5E', izq: '#A0624A', der: '#704232' },
+  mostaza: { top: '#E2BC63', izq: '#C99C3E', der: '#8E6C2A' },
+  gris: { top: '#C9D0D6', izq: '#A7B1BA', der: '#737D86' },
+  cristal: { top: '#9DB4C8', izq: '#5F7F9C', der: '#3E566D' },
   base: { top: '#1A1917', izq: '#121110', der: '#0D0C0B' },
 };
 
