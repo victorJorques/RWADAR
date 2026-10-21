@@ -125,6 +125,7 @@ const EDITORIALES_POR_FICHA = new Map(MANIFIESTO_EDITORIAL.fichas.map((entrada) 
     alt: entrada.alt,
     etiqueta: MANIFIESTO_EDITORIAL.etiquetaVisibleObligatoria,
     hashSha256: entrada.hashSha256,
+    lugar: typeof entrada.lugar === 'string' ? entrada.lugar : '',
   })];
 }));
 if (EDITORIALES_POR_FICHA.size !== MANIFIESTO_EDITORIAL.fichas.length ||

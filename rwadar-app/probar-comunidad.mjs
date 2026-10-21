@@ -47,6 +47,7 @@ const segunda = await error(() => db.query(`select * from publicar('Otra publica
 paso('una segunda publicación el mismo día se rechaza con un mensaje claro', /Ya has publicado hoy/.test(segunda?.message || ''));
 await sesion(db);
 await db.query(`update publicaciones set dia = dia - 1 where usuario_id=$1`, [ana.id]);
+await db.query(`update cupos_publicacion set dia = dia - 1 where usuario_id=$1`, [ana.id]);
 await como(ana);
 const [manana] = await filas(db, `select * from publicar('Al día siguiente sí puedo volver a publicar algo.')`);
 paso('al día siguiente se puede volver a publicar, y sin nombre sale como «Miembro de RWAdar»',
@@ -86,6 +87,11 @@ await como(ana);
 const mias = await filas(db, 'select * from mis_publicaciones()');
 paso('cada cuenta ve las suyas para poder borrarlas', mias.length === 2);
 paso('y borra la suya', (await filas(db, 'select borrar_mi_publicacion($1) b', [manana.id]))[0].b === true);
+const trasBorrar = await error(() => db.query(`select * from publicar('Borro la de hoy y lo intento otra vez el mismo día.')`));
+paso('borrar la de hoy no libera el cupo del día', /Ya has publicado hoy/.test(trasBorrar?.message || ''));
+await sesion(db, null, 'anon');
+paso('las cuentas no ven ni tocan el registro de cupos', !!(await error(() => db.query('select * from cupos_publicacion'))));
+await como(ana);
 
 /* --- denunciar y moderar --------------------------------------------- */
 const propia = await error(() => db.query('select denunciar_publicacion($1)', [primera.id]));
@@ -100,6 +106,9 @@ await como(admin);
 await db.query('select denunciar_publicacion($1)', [primera.id]);
 await sesion(db, null, 'anon');
 paso('con la tercera denuncia se oculta sola', (await filas(db, 'select 1 from publicaciones where id=$1', [primera.id])).length === 0);
+await como(ana);
+paso('su autora no puede borrar la oculta antes de la moderación',
+  (await filas(db, 'select borrar_mi_publicacion($1) b', [primera.id]))[0].b === false);
 await como(luis);
 paso('quien no es administrador no ve la cola ni modera',
   !!(await error(() => db.query('select * from cola_publicaciones()'))) &&

@@ -565,7 +565,7 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
 
   assert.equal(app.extra.rwadar.pushDeliveryEnabled, false);
   assert.equal(app.runtimeVersion.policy, 'appVersion');
-  assert.equal(app.version, '1.3.1');
+  assert.equal(app.version, '1.3.2');
   assert.ok(app.updates.url.startsWith('https://u.expo.dev/'));
   assert.equal(app.updates.enabled, false, 'la build no descarga código de canales anteriores');
   assert.equal(app.android.allowBackup, false);

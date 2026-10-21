@@ -1,0 +1,85 @@
+name: Aplicar catálogo
+
+# Aplicación MANUAL de una revisión del catálogo en Supabase, la misma que
+# pegar `aplicar-y-aprobar.sql` en Supabase › SQL Editor › Run, pero desde
+# GitHub (sirve desde el móvil). Nunca se lanza sola: solo con «Run workflow»
+# y escribiendo la fecha de la revisión. Antes de aplicar hace una copia
+# cifrada de la base; el SQL va en una sola transacción y se deshace entero
+# si el lote no queda publicable. Al final lee de vuelta el lote aprobado.
+#
+# Usa los secretos de la copia de seguridad: SUPABASE_DB_URL y COPIA_CLAVE.
+
+on:
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: 'Fecha de la revisión (AAAA-MM-DD), p. ej. 2026-10-21'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-aplicar-catalogo
+  cancel-in-progress: false
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "El catálogo solo se aplica desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Comprobar la fecha y el archivo
+        env:
+          FECHA: ${{ inputs.fecha }}
+        run: |
+          set -euo pipefail
+          [[ "$FECHA" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || { echo "Fecha no válida: $FECHA"; exit 1; }
+          SQL="rwadar-app/data/importaciones/catalogo-${FECHA}-v2/aplicar-y-aprobar.sql"
+          test -f "$SQL" || { echo "No existe $SQL"; exit 1; }
+          echo "SQL=$SQL" >> "$GITHUB_ENV"
+
+      - name: Instalar psql y pg_dump 17 (misma versión que Supabase)
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Copia de seguridad antes de aplicar
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          COPIA_CLAVE: ${{ secrets.COPIA_CLAVE }}
+        run: bash rwadar-app/copia-seguridad.sh copia-antes-catalogo
+
+      - name: Guardar la copia 35 días
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: copia-antes-catalogo-${{ inputs.fecha }}-${{ github.run_number }}
+          path: copia-antes-catalogo/
+          retention-days: 35
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Aplicar y aprobar la revisión
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -q -f "$SQL"
+
+      - name: Leer el lote publicado
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -A -t -c \
+            "select left(row_to_json(r)::text, 600) from (select * from rwadar_catalogo.revisiones order by 1 desc limit 2) r"

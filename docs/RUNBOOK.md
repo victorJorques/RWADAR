@@ -93,6 +93,8 @@ sincronizan con Supabase y se paran si esa lectura deja cambios en Git.
 | Código QR | `node rwadar-qr/comprobar-qr.js` |
 | Web o publicador | `node rwadar-publicar.js --local --sin-sincronizar` y `node probar-web.mjs` |
 | Lecciones de la Academy | `node rwadar-academy.js` y después `npm run test:web` y `npm run test:mobile` |
+| Imágenes de las ofertas | `node rwadar-editorial-source/ofertas/generar.mjs` (ver su `README.md`) y `npm test` |
+| Imagen para redes (`og.png`) | `node rwadar-editorial-source/og.mjs` y `npm run test:web` |
 | Compuerta de publicación | `npm --prefix rwadar-app run test:relanzamiento` y `npm --prefix rwadar-app run auditar:relanzamiento` |
 | Varias cosas a la vez | `npm test` |
 

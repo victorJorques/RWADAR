@@ -67,7 +67,7 @@ h1 em{font-style:normal;color:var(--senal)}
 .ac-migas ol{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px;font-family:var(--mono);
  font-size:.72rem;letter-spacing:.06em;color:var(--tx-3)}
 .ac-migas li+li::before{content:'›';margin-right:6px;color:var(--tx-3)}
-.ac-migas a{color:var(--tx-2);text-decoration:none}
+.ac-migas a{color:var(--tx-2);text-decoration:none;display:inline-block;padding:5px 0}
 .ac-migas a:hover{color:var(--senal)}
 
 /* ---- cabecera de lección ---- */

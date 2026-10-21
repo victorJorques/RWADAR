@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 19 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 21 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -22,7 +22,8 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | | Estado |
 |---|---|
 | **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), **con las cuentas activadas desde el 11/10**. La publicación y sus recursos se comprobaron en línea; los formularios de alta, entrada y Perfil se observaron en el navegador de producción. Se instala en el móvil como app. Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
-| **Catálogo** | En línea sigue el lote del 11/10 (`966c230c`, con fecha de lote 6 de octubre y fichas revisadas el 11/10), caducado el 13 de octubre; su fuente no está en Git: la web y la app la enseñan con aviso y sin cifras. **La del 19 de octubre está preparada y probada, sin aplicar** (lote `aa3aebce`, vigente hasta el 26 de octubre): mismas 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 de mercado secundario y 4 en preparación), ya sin el documento de claude.ai como fuente. Detalle en [`CATALOGO-V2-2026-10-19.md`](CATALOGO-V2-2026-10-19.md). |
+| **Catálogo** | En línea sigue el lote del 11/10 (`966c230c`, con fecha de lote 6 de octubre y fichas revisadas el 11/10), caducado el 13 de octubre; su fuente no está en Git: la web y la app la enseñan con aviso y sin cifras. **La del 21 de octubre está preparada y probada, sin aplicar** (lote `c3b71e81`, vigente hasta el 28 de octubre; sustituye a las del 19 y el 20, que tampoco se aplicaron), hecha con `npm run catalogo`: mismas 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 de mercado secundario y 4 en preparación). Detalle en [`CATALOGO-V2-2026-10-21.md`](CATALOGO-V2-2026-10-21.md). |
+| **Imágenes de las ofertas** | Cada una de las 49 fichas tiene su imagen: una foto generada del activo, parecida al real según su fuente (sin marcas ni personas), con el lugar y tres pasos que explican la inversión. Etiqueta «Ilustración editorial» y texto alternativo que dice que es IA. En la rama de integración, sin publicar; la app las enseñará desde la próxima versión. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
 | **App Android** | **Versión 1.3.1** (código 14), **publicada el 11/10** en GitHub ([RWAdar 1.3.1](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1)). Incluye las cuentas opcionales y corrige el acabado del Perfil. Se compiló sin cargos y pasó las pruebas de uso del mismo APK en un emulador Android 15. La descarga pública sin autenticación coincide con el APK probado; su firma, tamaño, evidencia y sumas se verificaron. Es un lanzamiento final, no un borrador ni una versión preliminar. Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |

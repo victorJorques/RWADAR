@@ -1,5 +1,6 @@
-// Genera la ilustración propia de cada ficha a partir de fichas.json y deja
-// coherentes las cuatro cosas que dependen de ella:
+// Genera la ilustración propia de cada ficha a partir de fichas.json (texto)
+// y fotos.json (la foto generada que la ilustra; si no hay, la escena en SVG)
+// y deja coherentes las cuatro cosas que dependen de ella:
 //   1. rwadar-movil/assets/ofertas-editoriales/oferta-<slug>.webp (960×660)
 //   2. las entradas «fichas» de manifest.json (bytes, SHA-256, alt, pasos)
 //   3. el bloque EDITORIAL_OFERTA_POR_SLUG de rwadar-site/assets/rwadar-20260820.js
@@ -19,6 +20,7 @@ import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import * as ESCENAS from './escenas.mjs';
 import { pagina, W, H } from './plantilla.mjs';
+import { paginaFoto } from './plantilla-foto.mjs';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.resolve(AQUI, '..', '..');
@@ -33,6 +35,8 @@ const MANIFIESTO = path.join(DIR_ACTIVOS, 'manifest.json');
 const JS_WEB = path.join(RAIZ, 'rwadar-site', 'assets', 'rwadar-20260820.js');
 const FIXTURE_APP = path.join(RAIZ, 'rwadar-movil', 'fixtures', 'imagenes-editoriales.js');
 const FICHAS = path.join(AQUI, 'fichas.json');
+const FOTOS = path.join(AQUI, 'fotos.json');
+const DIR_FOTOS = path.join(AQUI, 'fotos');
 export const COLOR = Object.freeze({
   'Inmobiliario': '#F2B23C', 'Crédito privado': '#5B8CFF', 'Tesoro y fondos': '#32C9F5',
   'Acciones y capital privado': '#B583FF', 'Materias primas': '#FF8A5B', 'Infraestructura': '#9AA6BF',
@@ -71,12 +75,42 @@ function validar(spec, catalogo) {
     }
     if (!f.concepto) errores.push(`${f.slug}: falta el concepto (lo que explica la imagen)`);
   }
+  for (const [slug, foto] of Object.entries(fotos.fotos)) {
+    if (!vistos.has(slug)) errores.push(`fotos.json: ${slug} no está en fichas.json`);
+    if (!fotos.modelos[foto.modelo]) errores.push(`fotos.json: ${slug} usa un modelo sin describir (${foto.modelo})`);
+    if (!/^\d{1,3}% \d{1,3}%$/.test(foto.encuadre || '')) errores.push(`fotos.json: ${slug} necesita un encuadre «x% y%»`);
+    if (!foto.concepto || TEXTO_PROHIBIDO.test(foto.concepto)) errores.push(`fotos.json: ${slug} sin concepto o con cifra o promesa`);
+    if (!fs.existsSync(path.join(DIR_FOTOS, `${slug}.webp`))) errores.push(`fotos.json: falta la foto maestra fotos/${slug}.webp`);
+  }
+  for (const n of fs.existsSync(DIR_FOTOS) ? fs.readdirSync(DIR_FOTOS) : []) {
+    if (!fotos.fotos[n.replace(/\.webp$/, '')]) errores.push(`fotos/${n} no está en fotos.json`);
+  }
   const sinImagen = catalogo.ofertas.filter(o => !vistos.has(o.slug)).map(o => o.slug);
   return { errores, sinImagen, porSlug };
 }
 
-const altDe = f => `${ETIQUETA_OBLIGATORIA} de ${f.concepto}. ` +
+const altDe = (f, foto) => `${ETIQUETA_OBLIGATORIA} de ${foto ? foto.concepto : f.concepto}` +
+  `${foto ? ', imagen generada con IA' : ''}. Pasos: ` +
   `${f.pasos.map(p => p.charAt(0).toLowerCase() + p.slice(1)).join('; ')}. No es una foto del activo real.`;
+
+// Retoque de la foto maestra antes de ponerle el texto: recorte exacto a
+// 1280×880 en el encuadre pedido, un punto menos de saturación (los modelos
+// la exageran), tono algo más cálido y nitidez fina. La viñeta, el velo de
+// lectura y el grano los pone plantilla-foto.mjs.
+async function retocar(sharp, ruta, encuadre) {
+  const { width, height } = await sharp(ruta).metadata();
+  const [px, py] = encuadre.split(' ').map(v => Math.min(100, parseFloat(v)) / 100);
+  const k = Math.max(W / width, H / height);
+  const rw = Math.ceil(width * k), rh = Math.ceil(height * k);
+  const buf = await sharp(ruta).removeAlpha().resize(rw, rh, { kernel: 'lanczos3' })
+    .extract({ left: Math.round((rw - W) * px), top: Math.round((rh - H) * py), width: W, height: H })
+    .modulate({ saturation: 0.93 })
+    .recomb([[1.03, 0.01, 0], [0, 1, 0], [0, 0.01, 0.96]])
+    .linear(1.04, -4)
+    .sharpen({ sigma: 0.8, m1: 0.5, m2: 2 })
+    .jpeg({ quality: 95 }).toBuffer();
+  return `data:image/jpeg;base64,${buf.toString('base64')}`;
+}
 
 function reemplazarBloque(texto, inicio, fin, cuerpo, archivo) {
   const a = texto.indexOf(inicio), b = texto.indexOf(fin);
@@ -93,11 +127,12 @@ function cargarPlaywright() {
 }
 
 const spec = JSON.parse(fs.readFileSync(FICHAS, 'utf8'));
+const fotos = JSON.parse(fs.readFileSync(FOTOS, 'utf8'));
 const catalogo = catalogoVigente();
 const { errores, sinImagen, porSlug } = validar(spec, catalogo);
 if (errores.length) { console.error(errores.map(e => `ERROR ${e}`).join('\n')); process.exit(1); }
 if (sinImagen.length) console.warn(`AVISO: ${sinImagen.length} fichas sin ilustración propia (usan la de su categoría): ${sinImagen.join(', ')}`);
-console.log(`fichas.json: ${spec.fichas.length} fichas, catálogo ${catalogo.carpeta}`);
+console.log(`fichas.json: ${spec.fichas.length} fichas (${Object.keys(fotos.fotos).length} con foto), catálogo ${catalogo.carpeta}`);
 if (SOLO_COMPROBAR) process.exit(0);
 
 const sharp = require('sharp');
@@ -111,22 +146,27 @@ try {
   for (const f of spec.fichas) {
     const categoria = porSlug.get(f.slug).categoria;
     const color = COLOR[categoria];
-    await pag.setContent(pagina({ color, escena: c => ESCENAS[f.escena](c, f.op || {}), pasos: f.pasos, lugar: f.lugar }), { waitUntil: 'load' });
+    const foto = fotos.fotos[f.slug];
+    const html = foto
+      ? paginaFoto({ color, foto: await retocar(sharp, path.join(DIR_FOTOS, `${f.slug}.webp`), foto.encuadre), pasos: f.pasos, lugar: f.lugar })
+      : pagina({ color, escena: c => ESCENAS[f.escena](c, f.op || {}), pasos: f.pasos, lugar: f.lugar });
+    await pag.setContent(html, { waitUntil: 'load' });
     await pag.evaluate(() => document.fonts.ready);
     // Cada paso en una sola línea: si se parte, se sale de la franja visible.
     const altos = await pag.evaluate(() => [...document.querySelectorAll('.pasos li')].map(li => li.getBoundingClientRect().height));
     const largos = f.pasos.filter((_, i) => altos[i] > 64);
     if (largos.length) { noCaben.push(`${f.slug}: ${largos.join(' | ')}`); continue; }
     const png = await pag.screenshot({ type: 'png' });
-    const webp = await sharp(png).resize(FICHA_ANCHO, FICHA_ALTO).webp({ quality: 82, effort: 6 }).toBuffer();
+    const webp = await sharp(png).resize(FICHA_ANCHO, FICHA_ALTO, { kernel: 'lanczos3' }).webp({ quality: foto ? 80 : 82, effort: 6 }).toBuffer();
     if (webp.length > FICHA_BYTES_MAX) throw new Error(`${f.slug}: ${webp.length} bytes, más del tope`);
     const archivo = `oferta-${f.slug}.webp`;
     fs.writeFileSync(path.join(DIR_ACTIVOS, archivo), webp);
     entradas.push({
       slug: f.slug, categoria, archivo, ancho: FICHA_ANCHO, alto: FICHA_ALTO, bytes: webp.length,
       hashSha256: crypto.createHash('sha256').update(webp).digest('hex'),
-      alt: altDe(f), concepto: f.concepto, pasos: f.pasos, ...(f.lugar ? { lugar: f.lugar } : {}),
-      escena: f.escena, revisadoEl: spec.revisadoEl,
+      alt: altDe(f, foto), concepto: foto ? foto.concepto : f.concepto, pasos: f.pasos, ...(f.lugar ? { lugar: f.lugar } : {}),
+      ...(foto ? { origen: 'foto-generada', modelo: fotos.modelos[foto.modelo].nombre } : { origen: 'dibujo-propio', escena: f.escena }),
+      revisadoEl: spec.revisadoEl,
     });
     if (HOJA) miniaturas.push(await sharp(png).resize(640, 440).png().toBuffer());
   }
@@ -145,10 +185,18 @@ for (const n of fs.readdirSync(DIR_ACTIVOS)) {
 
 const manifiesto = JSON.parse(fs.readFileSync(MANIFIESTO, 'utf8'));
 manifiesto.versionEsquema = 2;
+manifiesto.fichasOrigen = {
+  herramienta: `Fotografias generadas con IA (${Object.values(fotos.modelos).map(m => m.nombre).join('; ')}), retocadas y rotuladas por RWAdar; si una ficha no tiene foto, dibujo vectorial propio`,
+  modo: 'generacion-sin-imagenes-de-terceros',
+  usoPrevisto: 'Una ilustracion por ficha que explica la inversion de un vistazo; si falta, se usa la de su categoria',
+  direccionVisual: 'Foto generica del activo, parecida al real segun su fuente oficial, sin marcas, rotulos ni personas; a la izquierda, sobre un velo oscuro, el lugar y tres pasos',
+  encargos: 'rwadar-editorial-source/ofertas/fotos.json (modelo, descripcion, semilla y encuadre de cada foto)',
+  comoSeRegenera: 'python rwadar-editorial-source/ofertas/fotografiar.py (fotos) y node rwadar-editorial-source/ofertas/generar.mjs (retoque y texto)',
+};
 manifiesto.fichas = entradas;
 fs.writeFileSync(MANIFIESTO, JSON.stringify(manifiesto, null, 2) + '\n');
 
-const web = Object.fromEntries(entradas.map(e => [e.slug, { src: `/ofertas-editoriales/${e.archivo}`, alt: e.alt, categoria: e.categoria }]));
+const web = Object.fromEntries(entradas.map(e => [e.slug, { src: `/ofertas-editoriales/${e.archivo}`, alt: e.alt, categoria: e.categoria, ...(e.lugar ? { lugar: e.lugar } : {}) }]));
 let js = fs.readFileSync(JS_WEB, 'utf8');
 js = reemplazarBloque(js, '/* fichas-editoriales:inicio', '/* fichas-editoriales:fin */',
   `const EDITORIAL_OFERTA_POR_SLUG=Object.freeze(${JSON.stringify(web).replace(/</g, '\\u003c')});\n`, 'el JS de la web');

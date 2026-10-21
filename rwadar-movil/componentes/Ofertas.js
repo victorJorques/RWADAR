@@ -152,8 +152,10 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
   const destacado = datoDestacado(oferta);
   const criticos = avisosCriticos(oferta);
   const primerCritico = criticos[0];
+  // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
+  const lugar = imagenEditorialOferta(oferta)?.lugar || '';
   const etiquetaAccesible = [
-    `Ver ficha de ${oferta.titulo}`, oferta.plataformaNombre,
+    `Ver ficha de ${oferta.titulo}`, oferta.plataformaNombre, lugar,
     ETIQUETA_EDITORIAL,
     oferta.patrocinada ? 'Contenido patrocinado; no altera el ranking' : null,
     `${destacado.etiqueta}: ${destacado.valor}`,
@@ -183,6 +185,12 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
         {oferta.patrocinada ? <Text style={e.patrocinada}>PATROCINADA</Text> : null}
         <Text style={e.titulo} numberOfLines={2}>{oferta.titulo}</Text>
         <Text style={e.plataforma} numberOfLines={1}>{oferta.plataformaNombre}</Text>
+        {lugar ? (
+          <View style={e.lugarFila}>
+            <Icono nombre="lugar" color={COLOR_CATEGORIA[oferta.categoria] || C.senal} tamano={14} />
+            <Text style={e.lugarTxt} numberOfLines={1}>{lugar}</Text>
+          </View>
+        ) : null}
         <View style={e.datosCompactos}>
           <View style={e.datoCompacto}>
             <Text style={e.datoEtiqueta}>{oferta.cifrasPendientes ? destacado.etiqueta : etiquetaDatoCompacta(oferta.tipo)}</Text>
@@ -510,6 +518,8 @@ const e = StyleSheet.create({
     borderRadius: R.pastilla, paddingHorizontal: 7, paddingVertical: 3, marginBottom: 7,
   },
   plataforma: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 12, lineHeight: 17, marginTop: 3 },
+  lugarFila: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 4 },
+  lugarTxt: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 12, lineHeight: 17, flexShrink: 1 },
   titulo: { ...T.ficha, color: C.tx, fontSize: 17, lineHeight: 21 },
   datosCompactos: {
     flexDirection: 'row', gap: 9, marginTop: 9, paddingTop: 8,

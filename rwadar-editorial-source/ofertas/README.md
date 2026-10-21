@@ -1,59 +1,78 @@
-# Ilustraciones por ficha
+# Imágenes por ficha
 
-Cada ficha del catálogo tiene su propia ilustración, `oferta-<slug>.webp`
+Cada ficha del catálogo tiene su propia imagen, `oferta-<slug>.webp`
 (960 × 660), que explica la inversión de un vistazo:
 
-- a la derecha, una maqueta isométrica **genérica** del activo, parecida al
-  real (tipo de edificio, plantas, materiales, entorno: palmeras, mar,
-  montaña, viñedo…), sobre una plataforma con el color de su categoría y con
-  cubos de cristal que representan las participaciones;
-- a la izquierda, el lugar y **tres pasos** muy cortos: qué haces, qué pasa y
-  cómo recibes o sales;
-- en las de mercado secundario, dos teléfonos que se pasan una participación.
+- de fondo, una **fotografía generada** del activo, parecida al real según su
+  fuente oficial (tipo de edificio, plantas, fachada, entorno: palmeras, mar,
+  montaña, viñedo…), retocada para que se vea como una foto de inmobiliaria
+  y no como un dibujo;
+- a la izquierda, sobre un velo oscuro, el lugar y **tres pasos** muy cortos:
+  qué haces, qué pasa y cómo recibes o sales.
 
-No son fotos ni renders del activo real: no tenemos derechos sobre las fotos
-de los emisores, y la web y la app ponen encima la etiqueta «Ilustración
-editorial». Si un emisor da licencia por escrito, se puede sustituir.
+No son fotos del activo real: no tenemos derechos sobre las fotos de los
+emisores. La web y la app ponen encima la etiqueta «Ilustración editorial» y
+el texto alternativo dice que la imagen está generada con IA y que no es una
+foto del activo real. Si un emisor da licencia por escrito, se puede
+sustituir.
+
+Si una ficha no tiene foto, `generar.mjs` usa su escena en SVG (el dibujo
+isométrico de antes); si la ficha no está en `fichas.json`, la web y la app
+usan la ilustración de su categoría.
 
 ## Reglas
 
-- Sin cifras, porcentajes ni símbolos de moneda; sin marcas ni logotipos; sin
-  personas; sin promesas («rentabilidad», «garantizado», «beneficio»…). Lo
-  comprueban `rwadar-ofertas-editoriales.js`, la app y las pruebas.
+- Sin cifras, porcentajes ni símbolos de moneda; sin marcas, rótulos ni
+  logotipos; sin personas; sin promesas («rentabilidad», «garantizado»,
+  «beneficio»…). Lo comprueban `rwadar-ofertas-editoriales.js`, la app y las
+  pruebas, y el modelo trabaja con una lista negativa (texto, logos, personas).
+- La foto se parece al activo según su fuente (y, cuando la hay, su foto
+  oficial, que solo se mira): un edificio ruinoso, en obra o de lujo cuando no
+  lo es engaña. Si una toma sale así, se repite con otra semilla.
 - Los pasos describen el mecanismo de **esa** inversión según su fuente y no
   dan por hecho lo que puede no ocurrir: en el secundario, «Compras si hay
   oferta» y «Reparto o reventa», nunca «te venden» o «cobras».
 - Cada paso cabe en una línea; si no, `generar.mjs` se para y dice cuál.
-- El texto y la escena salen de la fuente oficial de la ficha (y, cuando la
-  hay, de su foto oficial, que solo se mira). La revisión del 20/10/2026 está
-  en `docs/comercial/REVISION-IMAGENES-OFERTAS-2026-10-20.md`.
+- Las revisiones están en `docs/comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`.
 
 ## Archivos
 
-- `fichas.json`: una entrada por ficha: escena y opciones, lugar, pasos y
-  `concepto` (completa la frase «Ilustración editorial de …», que es el texto
-  alternativo).
-- `escenas.mjs`: las escenas (edificio, torre, casa, villa, condominio,
-  chalet, local, terreno, solar, hotel, bodega, tesoro, crédito, oro,
-  empresa, reventa, reforma, catálogo) y sus opciones.
-- `motor.mjs`: el dibujo isométrico en SVG (cajas, ventanas, tejados,
-  plataforma, cubos, árboles, monedas, hojas).
-- `plantilla.mjs`: la página de 1280 × 880 con las fuentes Geist de la web,
-  que se fotografía y se reduce a 960 × 660.
-- `generar.mjs`: dibuja todas, borra las que sobran y reescribe el
-  manifiesto, el bloque `EDITORIAL_OFERTA_POR_SLUG` de la web y los `require`
-  de la app.
+- `fichas.json`: el texto de cada ficha: lugar, pasos, `concepto` del dibujo
+  y la escena SVG de reserva.
+- `fotos.json`: el encargo de cada foto: modelo, descripción en inglés
+  (`prompt`), semilla, encuadre (posición x% y% del recorte, para dejar el
+  activo a la derecha) y `concepto` (completa «Ilustración editorial de …»,
+  el texto alternativo). Describe también los dos modelos usados.
+- `fotos/<slug>.webp`: la foto maestra tal como salió del modelo.
+- `fotografiar.py`: vuelve a generar las fotos maestras con el modelo
+  RealVisXL V5.0 Lightning (licencia CreativeML Open RAIL++-M) en el
+  ordenador, sin servicios de pago. Cinco se encargaron en Canva el 21/10
+  con la misma descripción; esas no se regeneran aquí.
+- `plantilla-foto.mjs`: la página de 1280 × 880 de las fotos: velo de
+  lectura, viñeta, grano fino y el texto con las fuentes Geist de la web.
+- `escenas.mjs`, `motor.mjs` y `plantilla.mjs`: el dibujo isométrico en SVG,
+  de reserva.
+- `generar.mjs`: retoca cada foto (recorte, color, nitidez), le pone el texto,
+  borra las que sobran y reescribe el manifiesto, el bloque
+  `EDITORIAL_OFERTA_POR_SLUG` de la web (con el lugar, que la tarjeta enseña
+  con su chincheta) y los `require` de la app.
 
 ## Cómo se regeneran
 
 ```
-node rwadar-editorial-source/ofertas/generar.mjs --comprobar   # solo valida fichas.json
-node rwadar-editorial-source/ofertas/generar.mjs                # dibuja las 49
+node rwadar-editorial-source/ofertas/generar.mjs --comprobar   # solo valida
+node rwadar-editorial-source/ofertas/generar.mjs                # monta las 49
 node rwadar-editorial-source/ofertas/generar.mjs --hoja=hoja.png   # y una hoja de contactos
 ```
 
 Necesita Playwright con Chromium (`RWADAR_CHROMIUM` indica el ejecutable si
 no es el de Playwright). Después, `npm test`.
+
+Para cambiar una foto: edita su `prompt` en `fotos.json` y
+`python rwadar-editorial-source/ofertas/fotografiar.py --solo=<slug> --semilla=<n>`
+(necesita `torch`, `diffusers`, `transformers`, `accelerate` y `pillow`; unos
+7 GB de modelo y dos minutos por foto con cuatro núcleos). Mira el resultado
+antes de montar.
 
 Si el catálogo trae una ficha nueva, hasta que se añada aquí usa la
 ilustración de su categoría: la web, la app y `npm run catalogo` lo avisan.

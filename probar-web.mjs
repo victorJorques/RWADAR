@@ -2499,7 +2499,9 @@ console.log('\n=== RWADAR ACADEMY ===');
       !/<style\b|\sstyle\s*=|\son[a-z]+\s*=/i.test(pagina) &&
       [...pagina.matchAll(/<script\b([^>]*)>/gi)].every(m => /\bsrc=|application\/ld\+json/.test(m[1])) &&
       pagina.includes(`<link rel="canonical" href="${canonica}">`) &&
-      pagina.includes(`<title>${l.titulo} · RWAdar Academy</title>`) &&
+      pagina.includes(`<title>${academyMod.tituloPestana(l.titulo)}</title>`) &&
+      academyMod.tituloPestana(l.titulo).length <= 65 &&
+      pagina.includes(`<meta property="og:title" content="${l.titulo}">`) &&
       articulo.datePublished === l.fechaPublicacion && articulo.dateModified === l.revisionLegal &&
       pagina.includes('/assets/academy-20261002.css') && pagina.includes('/assets/academy-20261002.js') &&
       pagina.includes(rutaAnalitica));
