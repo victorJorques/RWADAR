@@ -79,14 +79,40 @@ campos ingleses, Perfil seguía desplazado hasta los favoritos. Se añadió solo
 volver arriba y esperar el encabezado real antes de pulsar English. La cancelación
 quedó confirmada; no se cuenta como éxito ni exige otra compilación.
 
-El recorrido completo corregido, revisión visual y publicación se registran
-cuando terminen. Se mantiene el mismo APK, fuente, firma y código 18.
+El recorrido completo corregido usa el commit público
+`71c8742447ba4c09e1f1ca90b1fd6d43ca72d151`, ejecución `39801270298`,
+intento 1, job `119902298151`. Guion SHA-256
+`d77db19982ae006e5445c99a5ef67f4ca3dc156a10e19bcbb78cd2603f98e5a4`.
+Identidad, emulador y helper superados. El recorrido falló más adelante al
+buscar mGLO: el guion exigía una única coincidencia, pero la búsqueda inclusiva
+devuelve mGLO y mGLOBAL. La jerarquía y captura reales confirman input `mGLO`
+y contador `2 de 24 fichas · 49 en el catálogo`, con el destino exacto mGLO.
+Los módulos de normalización y búsqueda sobre el snapshot aprobado confirmaron
+independientemente las dos coincidencias y que `mGLO Midas` devuelve solo mGLO.
+El guion se corrigió exclusivamente con esa consulta, manteniendo contador uno,
+título exacto y todas las comprobaciones de costes y fechas.
+
+Log QA4 completo: 35.345.327 bytes, SHA-256
+`40e30a767f157dc610d23cfa81c0c820eb371132b256534ef6940acdfe6c92ee`.
+La primera transferencia se interrumpió; se completó con HTTP 206 y rango
+exacto, conservando el prefijo. ZIP: 25.075.666 bytes, SHA-256
+`975eb010892354dd8202b1f1e1c3c7c1164cf29c291516417bc281176f5e46c1`.
+Sus 32.651 fragmentos, END, CRC, 147 archivos, rutas y límites están comprobados.
+El manifiesto sigue siendo de fallo, sin `result.json` ni aptitud de publicación.
+Pasaron los tramos anteriores de radar, cinco imágenes, ambos grupos, lectura
+de Spiko y costes mF-ONE; no llegó a la revisión de idioma.
+
+La corrección del guion está en el commit privado `0e2adfa`, SHA-256
+`32588df38b63a6bf3371d1b3ed6ae50e639ab404a694178bc25d7d0685ac50a9`,
+y commit público `e11439d915a6a04b960ab59975f57ccfcc59a7b1`.
+El resultado completo, revisión visual y publicación se registran cuando
+terminen. Se mantiene el mismo APK, fuente, firma y código 18.
 
 ## Comprobaciones exigidas al binario nuevo
 
 Las plantillas de QA verifican instalación, versión, certificado histórico,
 catálogo completo, las cuatro pestañas y las cinco fotos de referencia. Exigen
-toques físicos en los 26 centros visibles del radar con eventos nativos,
+toques mediante ADB en los 26 centros visibles del radar con eventos nativos,
 lectura de título largo, fuentes y controles alcanzables en pantalla corta y
 escala de texto 1,5. El giro solicitado se documenta sin atribuir soporte
 horizontal a una app configurada en vertical.
