@@ -133,7 +133,7 @@ aprobación. Procedimiento en `tareas/CICLO-DIARIO-CATALOGO.md`.
 ## Pruebas y entregas
 
 Todos los componentes de la suite están comprobados sobre la fuente final:
-web 536/536, fichas y RSS 90/90, móvil 233/233, QR y herramientas correctos.
+web 543/543, fichas y RSS 90/90, móvil 233/233, QR y herramientas correctos.
 La ejecución integral registró 807 aserciones en 23 resúmenes numéricos,
 además de documentación y catálogo V2, antes de detenerse por una expectativa
 estática antigua sobre scripts de idiomas. Se conservaron los fallos y se
@@ -158,6 +158,23 @@ igualdad numérica absoluta cuando cambia la altura del texto.
 La QA del APK nuevo se registra con sus artefactos exactos. No se confunden
 perfiles simulados con usuarios humanos, pruebas de modelos con Android ni
 resultados locales con publicación.
+
+## Preview y publicación remotas
+
+Primera preview: `f0fe0e61`, alias `https://revision.rwadar.pages.dev`, desde
+main `dc895da`, con 206/206 recursos idénticos y 208/208 comprobaciones HTTP.
+La primera ejecución HTTP había contado incorrectamente los h1 con atributos;
+se corrigió solo el comprobador y se conservó su log fallido.
+
+La revisión en navegador de esta preview encontró un fallo real que el servidor
+local con fixture no mostraba: el buscador de ofertas permanecía oculto porque
+su inicialización dependía del modo interno. Se separó un helper público
+idempotente que activa únicamente el buscador, sin revelar avisos ni controles
+internos. La nueva regresión ejecuta el JS reducido de la publicación normal,
+sin API local, y busca Houston entre las referencias de reventa. Las 543
+comprobaciones finales incluyen filtros, orden, recarga pública y conservación
+de 26/49/4 ante HTTP 500 o un lote incompleto, con búsqueda activa. La nueva
+preview y su aprobación se registran después de comprobar este corte corregido.
 
 ## Vídeo revisado
 

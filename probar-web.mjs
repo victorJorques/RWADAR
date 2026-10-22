@@ -1869,7 +1869,7 @@ prueba('el simulador real conserva URL HTTPS, las 26 plataformas y las 49 refere
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
 const fechaLoteEmbebido = jsCatalogo.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
 if (!fechaLoteEmbebido) throw new Error('el JavaScript no incrusta verificado_lote_el');
-function pestanaCatalogo({ inicio } = {}) {
+function pestanaCatalogo({ inicio, codigo = js } = {}) {
   const prefijo = publicador.slice(inicioSimulador, publicador.indexOf('vm.createContext(contexto);', inicioSimulador));
   const { contexto, nodo } = vm.runInNewContext(prefijo + '\n({contexto,nodo});', { URL, console, require });
   const nodos = new Map(), escuchas = new Map(), tiempos = [];
@@ -1895,6 +1895,7 @@ function pestanaCatalogo({ inicio } = {}) {
         querySelector(s) { return id==='radarLee'&&['.rl-dato','.rl-vacio'].includes(s)?obtiene(id+s):null; },
         addEventListener(evento, fn) { const k=id+':'+evento;if(!escuchas.has(k))escuchas.set(k,[]);escuchas.get(k).push(fn); },
       });
+      if(['escaparateBusqueda','escaparateLocalAviso','emiTipoFiltros'].includes(id))el.hidden=true;
       nodos.set(id, el);
     }
     return nodos.get(id);
@@ -1910,7 +1911,7 @@ function pestanaCatalogo({ inicio } = {}) {
   vm.createContext(contexto);
   vm.runInContext(jsCatalogo, contexto);
   vm.runInContext(codigoFichaEditorial, contexto);
-  vm.runInContext(js, contexto, {timeout:20000});
+  vm.runInContext(codigo, contexto, {timeout:20000});
   return {contexto, obtiene, escuchas, tiempos, reloj(valor) { instante = Date.parse(valor); }};
 }
 // El servidor aislado devuelve la forma pública normalizada. Las pruebas
@@ -1921,6 +1922,45 @@ function snapshotLocalV2(contexto) {
 const cargaSnapshotLocalParaPruebas = js.slice(js.indexOf('async function cargarEscaparateLocal()'),
   js.indexOf('\nasync function alDia()',js.indexOf('async function cargarEscaparateLocal()')))
   .replace('if(!MODO_LOCAL_SEGURO)return false;','');
+{
+  const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto;
+  prueba('el JS público reducido activa Buscar sin fixture ni controles locales',
+    !p.obtiene('escaparateBusqueda').hidden&&p.obtiene('escaparateLocalAviso').hidden&&p.obtiene('emiTipoFiltros').hidden&&
+    vm.runInContext('!MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL===null&&P.length===26&&EMI.length===49&&FUERA.length===4',c)&&
+    (p.escuchas.get('emiBuscar:input')||[]).length===1);
+  p.obtiene('emiBuscar').value='Houston 3';p.escuchas.get('emiBuscar:input')[0]();
+  prueba('Buscar público reducido encuentra la ficha de reventa y cambia de colección',
+    p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="reental-secundario-houston-3"')&&
+    !p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="boss-info"')&&
+    vm.runInContext("emiColeccion==='secundario'&&emiBusquedaLocal==='Houston 3'",c));
+  vm.runInContext('activarBusquedaOfertas();activarBusquedaOfertas()',c);
+  prueba('reinicializar Buscar público no duplica eventos ni sustituye el catálogo',
+    (p.escuchas.get('emiBuscar:input')||[]).length===1&&
+    vm.runInContext('P.length===26&&EMI.length===49&&FUERA.length===4&&ESCAPARATE_LOCAL===null',c));
+  p.obtiene('emiBuscar').value='';p.escuchas.get('emiBuscar:input')[0]();
+  vm.runInContext("emiColeccion='principales'",c);
+  p.escuchas.get('emiFiltros:click')[0]({target:{closest:()=>({getAttribute:()=> 'Tesoro y fondos'})}});
+  p.obtiene('emiOrden').value='min';p.escuchas.get('emiOrden:change')[0]();
+  prueba('filtro y orden públicos reducidos funcionan con el catálogo íntegro sin fixture',
+    vm.runInContext("emiCat==='Tesoro y fondos'&&emiOrden==='min'&&P.length===26&&EMI.length===49&&FUERA.length===4",c)&&
+    p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="spiko-letras-del-tesoro-euro"')&&
+    !p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="boss-info"'));
+  const recarga=pestanaCatalogo({codigo:jsPublicado});
+  prueba('una carga nueva del JS público reducido vuelve a activar Buscar sin banner local',
+    !recarga.obtiene('escaparateBusqueda').hidden&&recarga.obtiene('escaparateLocalAviso').hidden&&
+    (recarga.escuchas.get('emiBuscar:input')||[]).length===1);
+}
+for(const fallo of ['incompleto','transporte']){
+  const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto;
+  const antes=vm.runInContext('JSON.stringify([P,EMI,FUERA])',c);
+  c.fetch=async()=>fallo==='incompleto'?{ok:true,status:200,json:async()=>[]}:{ok:false,status:500};
+  const error=await capturaError(vm.runInContext('alDia()',c));
+  p.obtiene('emiBuscar').value='Houston 3';p.escuchas.get('emiBuscar:input')[0]();
+  prueba('el JS público reducido conserva el lote completo y Buscar tras fallo '+fallo,Boolean(error)&&
+    antes===vm.runInContext('JSON.stringify([P,EMI,FUERA])',c)&&
+    !p.obtiene('escaparateBusqueda').hidden&&p.obtiene('escaparateLocalAviso').hidden&&
+    p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="reental-secundario-houston-3"'));
+}
 {
   const p=pestanaCatalogo();
   const puntos=[...p.obtiene('radarHero').innerHTML.matchAll(/<g class="blip"[^>]*data-x="([\d.]+)" data-y="([\d.]+)"/g)].map(x=>({x:Number(x[1]),y:Number(x[2])}));

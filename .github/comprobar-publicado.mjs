@@ -87,7 +87,7 @@ for (const nombre of paginasFichas) {
   const esHtml = nombre.endsWith('.html');
   ok(`ficha o novedades ${ruta} publicada`, pagina.estado === 200 && (esHtml
     ? pagina.texto.includes(`<link rel="canonical" href="https://rwadar.pages.dev${ruta}">`) &&
-      (pagina.texto.match(/<h1>/g) || []).length === 1 && /script-src 'self'/.test(pagina.cabeceras.get('content-security-policy') || '')
+      (pagina.texto.match(/<h1\b[^>]*>/g) || []).length === 1 && /script-src 'self'/.test(pagina.cabeceras.get('content-security-policy') || '')
     : pagina.texto.includes('<rss version="2.0"') && pagina.texto.includes('https://rwadar.pages.dev/')));
   if(esHtml){for(const m of pagina.texto.matchAll(/(?:href|src)="(\/assets\/(?:ficha-editorial|ficha-pagina|fichas|idioma(?:-en|-web)?)-20261022\.[0-9a-f]{12}\.(?:css|js))"/g)) assets.add(m[1]);
     ok(`interfaz de idiomas completa en ${ruta}`,(pagina.texto.match(/(?:href|src)="\/assets\/idioma(?:-en|-web)?-20261022\.[0-9a-f]{12}\.(?:css|js)"/g)||[]).length===4);}

@@ -2205,12 +2205,15 @@ function pintarFuenteLocal(){
   (u?' · <a href="'+escHtml(u)+'" target="_blank" rel="noopener nofollow">abrir artefacto original ↗</a>':'')+'<br>'+escHtml(f.aviso||'Instantánea interna; confirma cada dato en el origen.')+
   (f.uso?'<br><b>Uso:</b> '+escHtml(f.uso):'');
 }
-function activaControlesEscaparateLocal(v2=false){
- if(v2){const busqueda=document.getElementById('escaparateBusqueda');if(busqueda)busqueda.hidden=false;}
- else document.querySelectorAll('.solo-escaparate-local').forEach(x=>{x.hidden=false});
- const aviso=document.getElementById('escaparateLocalAviso');if(aviso)aviso.hidden=false;
+function activarBusquedaOfertas(){
+ const busqueda=document.getElementById('escaparateBusqueda');if(busqueda)busqueda.hidden=false;
  const busca=document.getElementById('emiBuscar');
  if(busca&&!busca.dataset.escaparateActivo){busca.dataset.escaparateActivo='1';busca.addEventListener('input',()=>{emiBusquedaLocal=busca.value.trim();pintarEmisiones()})}
+}
+function activaControlesEscaparateLocal(v2=false){
+ activarBusquedaOfertas();
+ if(!v2)document.querySelectorAll('.solo-escaparate-local').forEach(x=>{x.hidden=false});
+ const aviso=document.getElementById('escaparateLocalAviso');if(aviso)aviso.hidden=false;
  const tipos=document.getElementById('emiTipoFiltros');
  if(tipos&&!tipos.dataset.escaparateActivo){tipos.dataset.escaparateActivo='1';tipos.addEventListener('click',e=>{const b=e.target.closest('[data-emi-tipo]');if(!b)return;emiTipoLocal=b.dataset.emiTipo;pintarTiposOfertaLocal();pintarEmisiones()})}
  activarDetallesOfertas();
@@ -3051,6 +3054,7 @@ async function alDia(){
 
 /* Todo el contrato está inicializado antes del primer render, también cuando
    sincronizar.js ha embebido el nuevo lote. */
+activarBusquedaOfertas();
 if(!comprobarCatalogoEmbebido())pintarCierreCatalogo();
 pintarFiltrosEmision();pintarEmisiones();
 
