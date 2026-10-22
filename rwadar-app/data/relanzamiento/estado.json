@@ -149,9 +149,15 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "en_progreso",
-      "detalle": "Corte de interfaz del 22/10 y ES/EN en validación. La evidencia local y el vídeo de nueve perfiles simulados están separados de las futuras pruebas remotas de esta web y del APK 1.4.0. La publicación anterior de web y Android 1.3.2 sigue acreditada por las entradas históricas, sin reutilizarlas como aprobación del nuevo artefacto. La revocación declarada por el titular se conserva como evidencia histórica; no acredita por sí sola la validación del corte nuevo.",
+      "estado": "aprobado",
+      "detalle": "Corte web del 22/10 aprobado tras la cuarta preview pública: 208 controles HTTP, 206 recursos idénticos y Chrome a320/390/1440 con catálogo real, ES/EN, comparación y detalle sin recorte. La revocación declarada por el titular se conserva como evidencia histórica; no acredita por sí sola los flujos nuevos. El APK1.4.0 mantiene una compuerta independiente de QA y publicación; esta aprobación web no declara completada su prueba nativa, Auth real ni teléfono físico.",
       "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#preview-y-publicación-remotas",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Preview34208f87 del corte2c98d46:208/208HTTP,206/206recursos y Chrome público con catálogo real a320/390/1440. ES/EN persistente, buscador, favorito, foco tras repintado, detalle sin recorte y barra comparación0/2/3 con controles44px dentro. Cero errores observados; sin escrituras de cuentas. QA nativa1.4.0 separada y todavía pendiente."
+        },
         {
           "tipo": "prueba",
           "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md",

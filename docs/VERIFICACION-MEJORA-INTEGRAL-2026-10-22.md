@@ -183,8 +183,10 @@ estaba abierto un detalle. La lista repintada desconectaba su botón de origen y
 el cierre no devolvía el foco. Se añadió un retorno al control visible del mismo
 slug, conservando el origen vivo como prioridad y sin desplazar la página.
 Dos etiquetas inglesas y el aviso duplicado de documento original se corrigieron
-solo en el adaptador web. Las 545 regresiones finales incluyen la restauración
-de foco del JavaScript minificado. La tercera preview debe comprobar este corte.
+solo en el adaptador web. Las 545 regresiones incluyen la restauración
+de foco del JavaScript minificado. La tercera preview fue `08da41fd` y pasó
+208 controles HTTP y las 206 comparaciones de recursos. Su recorrido real
+detectó el botón de vaciar comparación fuera de pantalla a 320 px.
 
 Se amplió la lectura de las tarjetas web: título 20 px, datos de decisión 16 px,
 cifra 24 px y secundarios/fecha 14 px; tres columnas de unos 409 px a 1440,
@@ -193,6 +195,23 @@ inferencia incorrecta: `confirmada_documento_producto` se presenta como
 «Documentación de producto consultada», sin deducir que todos los productos
 tienen folleto aprobado. Cinco casos documentales y el registro específico de
 Spiko tienen regresiones propias. El detalle conserva sus fuentes y alcance.
+
+Se corrigió la barra de comparación: texto flexible y dos controles de al menos
+44 px, con columna reservada para vaciar a anchuras de hasta 420 px. Se ocultan
+solo las siglas decorativas. Fuente `2c98d468e41def6f13130fd6d8ac0dda09093d67`,
+aprobación en main `9d79f64`, huella de contenido
+`sha256:3bec194b459ffc57b841f8bd9b405ea866a4a1a1d1eec0e8c431b6915316e631`.
+La cuarta preview `34208f87` pasó **208/208 HTTP y 206/206 recursos idénticos**.
+Chrome real a 320, 390 y 1440 px pasó ES/EN, persistencia, favorito, búsqueda,
+foco tras repintar el origen, detalle sin recorte, un aviso de documento original
+y las comparaciones con cero, dos y tres selecciones en ambos idiomas. Comparar
+y vaciar quedan dentro de pantalla y miden al menos 44 px; clic real y teclado
+comprobados. Nueve scripts reducidos idénticos, 49 imágenes y las fuentes
+accesibles, cuatro páginas independientes con canonical y cita. Sin errores JS,
+consola o HTTP observados ni escrituras de cuentas. Evidencia:
+`rwadar-entrega-integral-20261022/qa-preview-real/resultados.json`,
+`http-preview-cuarta.log` y `recursos-preview.json`. El ensayo se hizo sobre el
+origen público con Supabase real de lectura, no sobre el fixture local.
 
 ## Vídeo revisado
 
