@@ -2,19 +2,25 @@
 /* =====================================================================
    RWAdar · subir el panel de control a Cloudflare (para los socios)
    ---------------------------------------------------------------------
-       npm.cmd run panel:nube               sube o actualiza el panel
-       npm.cmd run panel:nube -- --ensayo   lo prepara y empaqueta sin subir nada
+       npm.cmd run panel:nube                        sube o actualiza el panel
+       npm.cmd run panel:nube -- --ensayo            lo prepara y empaqueta sin subir nada
+       npm.cmd run panel:nube -- --enlace-nuevo=Eric anula el enlace de Eric y le hace otro
+       npm.cmd run panel:nube -- --enlaces-nuevos    anula todos los enlaces y hace otros
 
    Lee las claves de rwadar-panel/.env.local y:
      1. prepara nube/generado/ (página, tipografías y datos públicos),
      2. crea, si no existe, el almacén KV «rwadar-panel-almacen»,
-     3. sube el Worker «rwadar-panel» con la sesión de wrangler de Víctor,
-     4. guarda las claves como secretos del Worker (nunca en un archivo
-        que se suba: el temporal se borra al terminar),
-     5. apunta la dirección en datos/nube.json para el botón de WhatsApp.
+     3. hace (o conserva) un enlace personal por cada nombre de
+        PANEL_SOCIOS; en Cloudflare solo se guarda su huella,
+     4. sube el Worker «rwadar-panel» con la sesión de wrangler de Víctor
+        y un cron que cada hora apunta el uso de la app y las descargas,
+     5. guarda las claves como secretos del Worker (el temporal se borra),
+     6. apunta la dirección y los enlaces en datos/nube.json (Git lo
+        ignora) para que el panel del ordenador los mande por WhatsApp.
 
-   Sin TEAM_DOMAIN, POLICY_AUD y PANEL_SOCIOS el panel sube CERRADO:
-   enseña «todavía no está configurado» y no deja entrar a nadie.
+   Sin PANEL_SOCIOS el panel sube CERRADO y no deja entrar a nadie.
+   Con TEAM_DOMAIN y POLICY_AUD, en vez de enlaces se entra con
+   Cloudflare Access (correo + código) y PANEL_SOCIOS lleva correos.
    ===================================================================== */
 import fs from 'node:fs';
 import os from 'node:os';
@@ -33,8 +39,10 @@ const NOMBRE_WORKER = 'rwadar-panel';
 const TITULO_KV = 'rwadar-panel-almacen';
 /* La que admite wrangler 4.125.0 (la versión de rwadar-publicar.js): como mucho 2026-08-27. */
 const FECHA_COMPATIBILIDAD = '2026-08-20';
+const CRON_HORARIO = '5 * * * *';
 const DIR_NUBE = path.join(DIR_PANEL, 'nube');
 const DIR_GENERADO = path.join(DIR_NUBE, 'generado');
+const ARCHIVO_NUBE = path.join(DIR_PANEL, 'datos', 'nube.json');
 const DIR_FUENTES = path.join(DIR_PANEL, '..', 'rwadar-site', 'assets', 'fuentes');
 const FUENTES = /^(geist-normal|geist-mono-normal)-[0-9a-f]{12}\.woff2$/;
 const ENSAYO = process.argv.includes('--ensayo');
@@ -81,6 +89,20 @@ async function idAlmacen() {
   return id;
 }
 
+const nuevaLlave = () => crypto.randomBytes(32).toString('base64url');
+const huella = llave => crypto.createHash('sha256').update(llave).digest('hex');
+
+/* Conserva las llaves que ya existen (así nadie tiene que volver a
+   entrar) salvo las que se pidan nuevas, y quita las de quien ya no esté. */
+function prepararEnlaces(nombres, anteriores = {}, { todosNuevos = false, nuevoPara = null } = {}) {
+  const enlaces = {};
+  for (const nombre of nombres) {
+    const renovar = todosNuevos || (nuevoPara && nuevoPara.toLowerCase() === nombre.toLowerCase());
+    enlaces[nombre] = !renovar && anteriores[nombre] ? anteriores[nombre] : nuevaLlave();
+  }
+  return enlaces;
+}
+
 function escribirConfiguracion(kv) {
   const vars = {};
   if (claves.TEAM_DOMAIN) vars.TEAM_DOMAIN = claves.TEAM_DOMAIN.trim().replace(/\/$/, '');
@@ -94,6 +116,7 @@ function escribirConfiguracion(kv) {
     preview_urls: false,
     assets: { directory: './publico', binding: 'ASSETS', run_worker_first: true },
     kv_namespaces: [{ binding: 'ALMACEN', id: kv }],
+    triggers: { crons: [CRON_HORARIO] },
     vars,
     observability: { enabled: true },
   };
@@ -102,14 +125,16 @@ function escribirConfiguracion(kv) {
   return archivo;
 }
 
-async function subirSecretos(configuracion) {
+async function subirSecretos(configuracion, enlaces, secreto) {
   const secretos = {
     CLOUDFLARE_API_TOKEN: claves.CLOUDFLARE_API_TOKEN,
     SUPABASE_SECRET_KEY: claves.SUPABASE_SECRET_KEY,
+    SUPABASE_ACCESS_TOKEN: claves.SUPABASE_ACCESS_TOKEN,
     GITHUB_TOKEN: claves.GITHUB_TOKEN,
     PANEL_SOCIOS: claves.PANEL_SOCIOS,
-    /* Nueva en cada subida: las páginas abiertas tendrán que recargarse. */
-    PANEL_SECRETO: crypto.randomBytes(32).toString('hex'),
+    /* Solo las huellas: el Worker no guarda las llaves de los enlaces. */
+    PANEL_ENLACES: JSON.stringify(Object.fromEntries(Object.entries(enlaces).map(([n, llave]) => [n, huella(llave)]))),
+    PANEL_SECRETO: secreto,
   };
   for (const k of Object.keys(secretos)) if (!secretos[k]) delete secretos[k];
   const temporal = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-panel-')), 'secretos.json');
@@ -119,17 +144,17 @@ async function subirSecretos(configuracion) {
   } finally {
     fs.rmSync(path.dirname(temporal), { recursive: true, force: true });
   }
-  return Object.keys(secretos).filter(k => k !== 'PANEL_SECRETO');
+  return Object.keys(secretos).filter(k => !['PANEL_SECRETO', 'PANEL_ENLACES'].includes(k));
 }
 
 async function principal() {
-  const socios = String(claves.PANEL_SOCIOS || '').split(/[,;\s]+/).filter(s => s.includes('@'));
+  const nombres = [...new Set(String(claves.PANEL_SOCIOS || '').split(',').map(s => s.trim()).filter(Boolean))];
+  const conAccess = Boolean(claves.TEAM_DOMAIN && claves.POLICY_AUD);
   const faltan = [
     !claves.CLOUDFLARE_API_TOKEN && 'CLOUDFLARE_API_TOKEN (visitas y encender/apagar)',
     !claves.SUPABASE_SECRET_KEY && 'SUPABASE_SECRET_KEY (cuentas y catálogo)',
-    !socios.length && 'PANEL_SOCIOS (correos que pueden entrar)',
-    !claves.TEAM_DOMAIN && 'TEAM_DOMAIN (de Cloudflare Access)',
-    !claves.POLICY_AUD && 'POLICY_AUD (de Cloudflare Access)',
+    !claves.SUPABASE_ACCESS_TOKEN && 'SUPABASE_ACCESS_TOKEN (uso de la app; opcional)',
+    !nombres.length && 'PANEL_SOCIOS (los nombres de quien puede entrar, separados por comas)',
   ].filter(Boolean);
 
   prepararArchivos();
@@ -141,28 +166,32 @@ async function principal() {
     return;
   }
 
+  let anterior = {};
+  try { anterior = JSON.parse(fs.readFileSync(ARCHIVO_NUBE, 'utf8')); } catch { anterior = {}; }
+  const nuevoPara = process.argv.find(a => a.startsWith('--enlace-nuevo='))?.split('=')[1] || null;
+  const enlaces = conAccess ? {} : prepararEnlaces(nombres, anterior.enlaces, { todosNuevos: process.argv.includes('--enlaces-nuevos'), nuevoPara });
+  /* El secreto de las sesiones se conserva entre subidas: si cambiara,
+     todos tendrían que volver a abrir su enlace. */
+  const secreto = anterior.secreto || crypto.randomBytes(32).toString('hex');
+
   decir('Subiendo el panel a Cloudflare…');
   const salida = await wrangler(['deploy', '--config', configuracion]);
-  const url = salida.match(/https:\/\/rwadar-panel\.[a-z0-9-]+\.workers\.dev/)?.[0] || null;
-  const subidos = await subirSecretos(configuracion);
-  fs.mkdirSync(path.join(DIR_PANEL, 'datos'), { recursive: true });
-  fs.writeFileSync(path.join(DIR_PANEL, 'datos', 'nube.json'), JSON.stringify({ url, publicadoEl: new Date().toISOString() }, null, 2));
+  const url = salida.match(/https:\/\/rwadar-panel\.[a-z0-9-]+\.workers\.dev/)?.[0] || anterior.url || null;
+  const subidos = await subirSecretos(configuracion, enlaces, secreto);
+  fs.mkdirSync(path.dirname(ARCHIVO_NUBE), { recursive: true });
+  fs.writeFileSync(ARCHIVO_NUBE, JSON.stringify({ url, publicadoEl: new Date().toISOString(), secreto, enlaces }, null, 2), { mode: 0o600 });
 
   decir(`\nPanel subido${url ? `: ${url}` : ''}`);
-  decir(`Claves guardadas en Cloudflare: ${subidos.join(', ') || 'ninguna'}. Socios: ${socios.length}.`);
-  if (faltan.length) {
-    decir(`\nTodavía está CERRADO. Falta en rwadar-panel/.env.local:\n  - ${faltan.join('\n  - ')}`);
-    if (!claves.TEAM_DOMAIN || !claves.POLICY_AUD) {
-      decir('\nPara activar la puerta de entrada (una sola vez):');
-      decir('  1. dash.cloudflare.com › Workers & Pages › rwadar-panel › Settings › Domains & Routes.');
-      decir('  2. En «workers.dev» pulsa «Enable Cloudflare Access».');
-      decir('  3. Copia los dos datos de la ventana a .env.local: TEAM_DOMAIN=… y POLICY_AUD=…');
-      decir('  4. «Manage Cloudflare Access»: añade los correos de tus socios a la política.');
-      decir('  5. Vuelve a ejecutar: npm.cmd run panel:nube');
-    }
+  decir(`Claves guardadas en Cloudflare: ${subidos.join(', ') || 'ninguna'}.`);
+  if (!nombres.length) {
+    decir('\nTodavía está CERRADO: escribe en rwadar-panel/.env.local PANEL_SOCIOS=Víctor,Eric,Samuel y vuelve a ejecutar esto.');
+  } else if (conAccess) {
+    decir(`\nSe entra con Cloudflare Access (correo + código). Correos permitidos: ${nombres.length}.`);
   } else {
-    decir('\nListo. Manda el enlace a tus socios: entrarán con su correo y un código.');
+    decir(`\nEnlaces personales listos para: ${Object.keys(enlaces).join(', ')}.`);
+    decir('Ábrelos en el panel de tu ordenador › Ajustes › «Enviar por WhatsApp».');
   }
+  if (faltan.length) decir(`\nFalta en rwadar-panel/.env.local:\n  - ${faltan.join('\n  - ')}`);
 }
 
 /* Se puede importar (lo hace demo/nube-local.mjs) sin que se suba nada. */
@@ -170,4 +199,4 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   principal().catch(e => { process.stderr.write(`\nNo se pudo subir el panel.\n${e.message}\n`); process.exit(1); });
 }
 
-export { prepararArchivos, DIR_GENERADO, FECHA_COMPATIBILIDAD };
+export { prepararArchivos, prepararEnlaces, huella, DIR_GENERADO, FECHA_COMPATIBILIDAD, CRON_HORARIO };

@@ -16,6 +16,9 @@ function construirConfig(publicos, v, extra = {}) {
     supabase: (v('RWADAR_PANEL_SUPABASE') || publicos.supabaseAuth.replace(/\/auth\/v1$/, '')).replace(/\/$/, ''),
     clavePublica: publicos.clavePublica,
     claveSecreta: v('SUPABASE_SECRET_KEY') || v('SUPABASE_SERVICE_ROLE_KEY'),
+    /* API de administración de Supabase: solo para leer sus registros. */
+    supabaseApi: (v('RWADAR_PANEL_SUPABASE_API') || 'https://api.supabase.com').replace(/\/$/, ''),
+    supabaseAccessToken: v('SUPABASE_ACCESS_TOKEN'),
     cloudflareApi: v('RWADAR_PANEL_CLOUDFLARE_API') || 'https://api.cloudflare.com/client/v4',
     cloudflareToken: v('CLOUDFLARE_API_TOKEN'),
     cloudflareCuenta: v('CLOUDFLARE_ACCOUNT_ID') || CUENTA_CLOUDFLARE,

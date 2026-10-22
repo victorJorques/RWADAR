@@ -196,7 +196,17 @@ td.acciones .boton + .boton { margin-left: 6px; }
 .flujo-paso .cifra { font-family: var(--mono); font-size: 22px; letter-spacing: -.03em; margin-top: 4px; }
 .flujo-paso .parte { font-size: 12px; color: var(--tx-3); }
 
+/* ---------- Puerta del enlace personal ---------- */
+.puerta { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.puerta-caja { max-width: 26rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.puerta-caja .logo { align-items: center; padding: 0; margin-bottom: 18px; }
+.puerta-caja h1 { font-size: 26px; }
+.radar.quieto::after { animation: none; opacity: .15; }
+
 /* ---------- Ajustes ---------- */
+.socio { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 16px; align-items: center; padding: 12px 0; border-top: 1px solid var(--linea); }
+.socio strong { font-size: 15px; }
+.socio .botonera { margin-top: 0; }
 .compartir { background: radial-gradient(90% 120% at 100% 0%, rgba(37, 211, 102, .08), transparent 60%), var(--sup); }
 .enlace-nube { font-family: var(--mono); font-size: 15px; margin-bottom: 10px; overflow-wrap: anywhere; }
 .botonera { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }

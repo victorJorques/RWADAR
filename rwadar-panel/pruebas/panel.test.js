@@ -212,7 +212,33 @@ test('la app suma las descargas de APK sin contar las sumas de control', async (
   const p = await montar();
   try {
     const { datos } = await p.api('/api/app');
-    assert.equal(datos.ultima.version, 'v1.3.2');
-    assert.equal(datos.totalApk, 3 + 41 + 18 + 57 + 88 + 64 + 23);
+    assert.equal(datos.descargas.datos.ultima.version, 'v1.3.2');
+    assert.equal(datos.descargas.datos.totalApk, 3 + 41 + 18 + 57 + 88 + 64 + 23);
+  } finally { await p.cerrar(); }
+});
+
+test('el uso de la app sale hora a hora de los registros de Supabase y se apunta en el historial', async () => {
+  const p = await montar();
+  try {
+    const { datos } = await p.api('/api/app');
+    const uso = datos.uso.datos;
+    assert.equal(uso.serie.length, 24);
+    assert.equal(uso.serie.reduce((s, f) => s + f.app, 0), uso.app);
+    assert.ok(uso.app > 0 && uso.web > 0);
+    assert.ok(uso.serie.every((f, i) => i === 0 || Date.parse(f.hora) - Date.parse(uso.serie[i - 1].hora) === 3600000), 'horas seguidas');
+    const hoy = new Date().toISOString().slice(0, 10);
+    assert.ok(fs.existsSync(path.join(p.dirDatos, `uso-app-${hoy}.json`)));
+    assert.ok(fs.existsSync(path.join(p.dirDatos, `descargas-${hoy}.json`)));
+    assert.ok(datos.historial.diasConUso >= 1);
+    assert.equal(datos.historial.usoPorDia.length, 30);
+  } finally { await p.cerrar(); }
+});
+
+test('sin la clave de registros la app sale igual y explica qué falta', async () => {
+  const p = await montar({ SUPABASE_ACCESS_TOKEN: '' });
+  try {
+    const { datos } = await p.api('/api/app');
+    assert.equal(datos.uso.codigo, 'falta-credencial');
+    assert.ok(datos.descargas.datos.totalApk > 0);
   } finally { await p.cerrar(); }
 });

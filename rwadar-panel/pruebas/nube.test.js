@@ -45,7 +45,8 @@ function kvFalso() {
 const ASSETS = {
   async fetch(peticion) {
     const ruta = new URL(peticion.url).pathname;
-    const archivo = path.join(DIR_PUBLICO, ruta === '/' ? 'index.html' : ruta.slice(1));
+    /* Como Cloudflare: «/entrar» sirve entrar.html. */
+    const archivo = path.join(DIR_PUBLICO, ruta === '/' ? 'index.html' : path.extname(ruta) ? ruta.slice(1) : `${ruta.slice(1)}.html`);
     if (!archivo.startsWith(DIR_PUBLICO) || !fs.existsSync(archivo)) return new Response('no', { status: 404 });
     return new Response(fs.readFileSync(archivo), { headers: { 'Content-Type': archivo.endsWith('.css') ? 'text/css' : 'text/html' } });
   },
@@ -98,7 +99,8 @@ test('sin pase de Access no se ve nada, ni la página ni la API', async () => {
     assert.equal(pagina.status, 401);
     assert.match(await pagina.text(), /Cloudflare te pedirá tu correo/);
     assert.equal((await n.pedir('/api/cuentas')).status, 401);
-    assert.equal((await n.pedir('/panel.css')).status, 401);
+    assert.equal((await n.pedir('/vistas.js')).status, 401);
+    assert.equal((await n.pedir('/panel.css')).status, 200, 'el aspecto de la puerta sí es público');
   } finally { await n.cerrar(); }
 });
 
@@ -191,5 +193,113 @@ test('desde la nube se apaga volviendo a la página de mantenimiento ya subida',
     const encender = await victor.api('/api/web/encender', { metodo: 'POST', cuerpo: {} });
     assert.equal(encender.estado, 200, encender.error);
     assert.equal(n.estado.actual, anterior);
+  } finally { await n.cerrar(); }
+});
+
+/* ---------- Enlaces personales (sin cuentas ni códigos) ---------- */
+
+async function montarEnlaces() {
+  const { prepararEnlaces, huella } = await import('../nube/publicar.mjs');
+  const enlaces = prepararEnlaces(['Víctor', 'Eric']);
+  const { servidor, estado } = crearSimulador();
+  await new Promise(r => servidor.listen(0, '127.0.0.1', r));
+  const base = `http://127.0.0.1:${servidor.address().port}`;
+  const kv = kvFalso();
+  const env = {
+    ...entornoPanel(base),
+    PANEL_ENLACES: JSON.stringify(Object.fromEntries(Object.entries(enlaces).map(([n, llave]) => [n, huella(llave)]))),
+    PANEL_SECRETO: 'secreto-de-pruebas-enlaces',
+    ASSETS, ALMACEN: kv,
+  };
+  const { crearManejador } = await import('../nube/manejador.mjs');
+  const worker = crearManejador(leerPublicos());
+  const ORIGEN = 'https://rwadar-panel.ejemplo.workers.dev';
+  const pedir = (ruta, { metodo = 'GET', cuerpo, cookie, sesion, origen } = {}) => {
+    const cabeceras = {};
+    if (cookie) cabeceras.Cookie = cookie;
+    if (sesion) cabeceras['X-Panel-Token'] = sesion;
+    if (cuerpo) cabeceras['Content-Type'] = 'application/json';
+    if (origen) cabeceras.Origin = origen;
+    return worker.fetch(new Request(ORIGEN + ruta, { method: metodo, headers: cabeceras, body: cuerpo ? JSON.stringify(cuerpo) : undefined }), env);
+  };
+  const abrirEnlace = async llave => {
+    const r = await pedir('/api/entrar', { metodo: 'POST', cuerpo: { llave }, origen: ORIGEN });
+    const cookie = (r.headers.get('set-cookie') || '').split(';')[0];
+    return { r, cookie, setCookie: r.headers.get('set-cookie') || '' };
+  };
+  return { enlaces, estado, env, kv, worker, pedir, abrirEnlace, ORIGEN, cerrar: () => new Promise(r => servidor.close(r)) };
+}
+
+test('con su enlace un socio entra sin cuenta y queda dentro con una cookie segura', async () => {
+  const n = await montarEnlaces();
+  try {
+    const sinNada = await n.pedir('/');
+    assert.equal(sinNada.status, 401);
+    assert.match(await sinNada.text(), /enlace personal/);
+    const puerta = await n.pedir('/entrar');
+    assert.equal(puerta.status, 200, 'la puerta se ve sin haber entrado');
+    assert.match(await puerta.text(), /entrar\.js/);
+    assert.equal((await n.pedir('/vistas.js')).status, 401, 'el resto no');
+    const { r, cookie, setCookie } = await n.abrirEnlace(n.enlaces.Eric);
+    assert.equal(r.status, 200);
+    assert.equal((await r.json()).datos.quien, 'Eric');
+    assert.match(setCookie, /HttpOnly/);
+    assert.match(setCookie, /Secure/);
+    assert.match(setCookie, /SameSite=Strict/);
+    assert.ok(!setCookie.includes(n.enlaces.Eric), 'la llave no va en la cookie');
+    const html = await (await n.pedir('/', { cookie })).text();
+    const sesion = html.match(/name="panel-token" content="([0-9a-f]{64})"/)?.[1];
+    assert.ok(sesion);
+    const ajustes = await (await n.pedir('/api/ajustes', { cookie, sesion })).json();
+    assert.equal(ajustes.datos.quien, 'Eric');
+    assert.deepEqual(ajustes.datos.enlaces, [], 'en la nube nadie ve los enlaces de los demás');
+    const registro = await (await n.pedir('/api/registro', { cookie, sesion })).json();
+    assert.equal(registro.datos[0].accion, 'Entrar al panel con su enlace');
+    assert.equal(registro.datos[0].quien, 'Eric');
+  } finally { await n.cerrar(); }
+});
+
+test('un enlace falso, una cookie retocada o de otra web no entran', async () => {
+  const n = await montarEnlaces();
+  try {
+    assert.equal((await n.abrirEnlace('x'.repeat(43))).r.status, 403);
+    assert.equal((await n.abrirEnlace('corta')).r.status, 403);
+    const ajena = await n.pedir('/api/entrar', { metodo: 'POST', cuerpo: { llave: n.enlaces.Eric }, origen: 'https://atacante.example' });
+    assert.equal(ajena.status, 400);
+    const { cookie } = await n.abrirEnlace(n.enlaces.Eric);
+    const [nombre, expira, huellaCorta, firma] = cookie.split('=')[1].split('.');
+    const comoVictor = `rwadar_panel=${Buffer.from('Víctor').toString('base64url')}.${expira}.${huellaCorta}.${firma}`;
+    assert.equal((await n.pedir('/', { cookie: comoVictor })).status, 403, 'cambiar el nombre rompe la firma');
+    const alargada = `rwadar_panel=${nombre}.${Number(expira) + 999999}.${huellaCorta}.${firma}`;
+    assert.equal((await n.pedir('/', { cookie: alargada })).status, 403, 'alargar la caducidad también');
+  } finally { await n.cerrar(); }
+});
+
+test('anular el enlace de alguien le saca aunque ya hubiera entrado', async () => {
+  const n = await montarEnlaces();
+  try {
+    const { cookie } = await n.abrirEnlace(n.enlaces.Eric);
+    assert.equal((await n.pedir('/', { cookie })).status, 200);
+    const { huella } = await import('../nube/publicar.mjs');
+    n.env.PANEL_ENLACES = JSON.stringify({ 'Víctor': huella(n.enlaces['Víctor']), Eric: huella('llave-nueva-de-eric-'.repeat(3)) });
+    const fuera = await n.pedir('/', { cookie });
+    assert.equal(fuera.status, 403);
+    assert.match(await fuera.text(), /ya no funciona/);
+    assert.equal((await n.abrirEnlace(n.enlaces.Eric)).r.status, 403, 'el enlace viejo tampoco');
+    const victor = await n.abrirEnlace(n.enlaces['Víctor']);
+    assert.equal((await n.pedir('/', { cookie: victor.cookie })).status, 200, 'a los demás no les afecta');
+  } finally { await n.cerrar(); }
+});
+
+test('el cron de cada hora apunta el uso de la app y las descargas en KV', async () => {
+  const n = await montarEnlaces();
+  try {
+    const promesas = [];
+    await n.worker.scheduled({}, n.env, { waitUntil: p => promesas.push(p) });
+    const resultado = await Promise.all(promesas);
+    assert.deepEqual(resultado[0], { descargas: 'fulfilled', uso: 'fulfilled' });
+    const claves = [...n.kv.datos.keys()];
+    assert.ok(claves.some(k => k.startsWith('estado:uso-app-')));
+    assert.ok(claves.some(k => k.startsWith('estado:descargas-')));
   } finally { await n.cerrar(); }
 });

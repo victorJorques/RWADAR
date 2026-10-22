@@ -63,7 +63,7 @@ export async function resumen(raiz) {
     h('div', { class: 'rejilla kpis' },
       kpiDe(trafico, 'Visitas · 7 días', d => numero(d.visitas), d => `${numero(d.paginasVistas)} páginas vistas`),
       kpiDe(cuentas, 'Cuentas creadas', d => numero(d.resumen.total), d => `+${numero(d.resumen.nuevas7d)} esta semana`),
-      kpiDe(app, 'Descargas del APK', d => numero(d.totalApk), d => d.ultima ? `Última: ${d.ultima.version}` : 'Sin versión publicada'),
+      kpiDe(app, 'Aperturas de la app · 24 h', d => d.uso.datos ? numero(d.uso.datos.app) : '—', d => d.descargas.datos ? `${numero(d.descargas.datos.totalApk)} descargas del APK` : ''),
       kpiDe(cuentas, 'Activas · 30 días', d => numero(d.resumen.activas30d), d => `${numero(d.resumen.sinConfirmar)} sin confirmar`)),
     h('div', { class: 'rejilla dos' },
       h('section', { class: 'tarjeta' }, h('h2', {}, 'Cosas que corregir'),
@@ -214,27 +214,50 @@ function credencial(nombre, lista, pasos, nota) {
 
 const enlace = (texto, href) => h('a', { href, target: '_blank', rel: 'noopener noreferrer' }, texto);
 
-/* La tarjeta para compartir el panel con los socios por WhatsApp. */
+function copiar(texto, aviso) {
+  return async () => {
+    try { await navigator.clipboard.writeText(texto); tostada(aviso); } catch { tostada('No pude copiarlo: selecciónalo a mano.', { error: true }); }
+  };
+}
+
+/* La tarjeta para mandar a cada socio su enlace personal por WhatsApp.
+   Solo existe en el panel del ordenador de Víctor. */
 function tarjetaCompartir(a) {
   if (!a.urlNube) {
     return h('section', { class: 'tarjeta compartir' },
       h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Compartir el panel con tus socios'), etiquetaEstado('sin-datos', 'Sin subir')),
-      h('p', { class: 'nota' }, 'Este panel solo se abre en este ordenador. Para que Eric y Samuel entren desde su móvil con un enlace, hay que subir la versión compartida a Cloudflare. Cada uno entra con su correo y un código que le llega; solo pueden entrar los correos de tu lista.'),
+      h('p', { class: 'nota' }, 'Este panel solo se abre en este ordenador. Para que Eric y Samuel entren desde el móvil, hay que subir la versión compartida a Cloudflare. Cada uno recibe su enlace personal: lo abre y ya está dentro, sin cuentas ni contraseñas.'),
       h('ol', { class: 'pasos' },
-        h('li', {}, 'En el archivo de claves, escribe los correos detrás de ', h('code', {}, 'PANEL_SOCIOS='), ' separados por comas (el tuyo también).'),
-        h('li', {}, 'En la carpeta Downloads, ejecuta ', h('code', {}, 'npm.cmd run panel:nube'), ' y sigue lo que diga al terminar (activar Cloudflare Access, una sola vez).'),
-        h('li', {}, 'Vuelve aquí: aparecerá el botón para mandar el enlace por WhatsApp.')));
+        h('li', {}, 'En el archivo de claves, escribe los nombres detrás de ', h('code', {}, 'PANEL_SOCIOS='), ', separados por comas. Por ejemplo: ', h('code', {}, 'PANEL_SOCIOS=Víctor,Eric,Samuel'), '.'),
+        h('li', {}, 'En la carpeta Downloads, ejecuta ', h('code', {}, 'npm.cmd run panel:nube'), '.'),
+        h('li', {}, 'Vuelve aquí: aparecerá un botón de WhatsApp para cada uno.')));
   }
-  const mensaje = `Panel de control de RWAdar: ${a.urlNube}\nEntra con tu correo: te llegará un código para acceder.`;
+  const filas = a.enlaces.map(e => {
+    const mensaje = `Hola ${e.nombre}, este es tu enlace personal al panel de control de RWAdar:\n${e.url}\nÁbrelo y entrarás directamente. Es solo para ti: no lo reenvíes.`;
+    return h('div', { class: 'socio' },
+      h('div', {}, h('strong', {}, e.nombre), h('div', { class: 'nota' }, 'Enlace personal: quien lo tenga entra con tus mismos permisos')),
+      h('div', { class: 'botonera' },
+        h('a', { class: 'boton whatsapp pequeno', href: `https://wa.me/?text=${encodeURIComponent(mensaje)}`, target: '_blank', rel: 'noopener noreferrer' }, 'Enviar por WhatsApp'),
+        h('button', { class: 'boton secundario pequeno', onclick: copiar(e.url, `Enlace de ${e.nombre} copiado.`) }, 'Copiar')));
+  });
   return h('section', { class: 'tarjeta compartir' },
     h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Compartir el panel con tus socios'), etiquetaEstado('ok', 'En la nube')),
     h('p', { class: 'enlace-nube' }, enlace(a.urlNube, a.urlNube)),
-    h('p', { class: 'nota' }, 'Solo entran los correos de la lista PANEL_SOCIOS. Cada uno recibe un código en su correo al abrir el enlace. Todo lo que hagan queda en el Registro con su nombre.'),
-    h('div', { class: 'botonera' },
-      h('a', { class: 'boton whatsapp', href: `https://wa.me/?text=${encodeURIComponent(mensaje)}`, target: '_blank', rel: 'noopener noreferrer' }, 'Enviar por WhatsApp'),
-      h('button', { class: 'boton secundario', onclick: async () => {
-        try { await navigator.clipboard.writeText(a.urlNube); tostada('Enlace copiado.'); } catch { tostada('No pude copiarlo: selecciónalo a mano.', { error: true }); }
-      } }, 'Copiar enlace')));
+    filas.length ? h('div', {}, ...filas)
+      : h('p', { class: 'nota' }, 'Este panel se abre con Cloudflare Access (correo + código): manda la dirección de arriba.'),
+    h('p', { class: 'nota', style: 'margin-top:12px' }, 'Cada enlace es una llave. Si alguien pierde el móvil o reenvía el mensaje, anula su enlace con ',
+      h('code', {}, 'npm.cmd run panel:nube -- --enlace-nuevo=Nombre'), ' y mándale el nuevo. Todo lo que hagan queda en el Registro con su nombre.'));
+}
+
+/* En el panel compartido: quién ha entrado y cómo salir. */
+function tarjetaSesion(a) {
+  return h('section', { class: 'tarjeta' },
+    h('div', { class: 'tarjeta-cab' }, h('h2', {}, `Has entrado como ${a.quien}`), etiquetaEstado('ok', 'Dentro')),
+    h('p', { class: 'nota' }, 'Este móvil u ordenador queda dentro 90 días. Si es un aparato compartido, cierra la sesión al terminar.'),
+    h('div', { class: 'botonera' }, h('button', { class: 'boton secundario', onclick: async () => {
+      await fetch('/api/salir', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }).catch(() => {});
+      location.replace('/entrar');
+    } }, 'Cerrar sesión')));
 }
 
 export async function ajustes(raiz) {
@@ -242,9 +265,9 @@ export async function ajustes(raiz) {
   sesion.ajustes = a;
   if (a.modo === 'nube') {
     raiz.replaceChildren(
-      tarjetaCompartir(a),
+      tarjetaSesion(a),
       h('section', { class: 'tarjeta' }, h('h2', {}, 'Cómo funciona'),
-        h('p', { class: 'nota' }, `Has entrado como ${a.quien}. Este es el panel compartido: lo mismo que el del ordenador de Víctor, salvo la comprobación a fondo. Las claves están guardadas en Cloudflare y nunca llegan a tu navegador.`),
+        h('p', { class: 'nota' }, `Este es el panel compartido: lo mismo que el del ordenador de Víctor, salvo la comprobación a fondo. Las claves están guardadas en Cloudflare y nunca llegan a tu navegador.`),
         h('p', { class: 'nota', style: 'margin-top:8px' }, 'Para cambiar las claves o la lista de socios, Víctor edita su archivo de claves y vuelve a subir el panel con npm.cmd run panel:nube.')),
       h('section', { class: 'tarjeta' }, h('h2', {}, 'Qué está configurado'),
         h('div', { class: 'problemas' },
@@ -280,6 +303,11 @@ export async function ajustes(raiz) {
         'En «Secret keys» crea una llamada «panel-rwadar» y cópiala (empieza por sb_secret_).',
         ['En el archivo de claves, pégala detrás de ', h('code', {}, 'SUPABASE_SECRET_KEY='), '. Guarda.'],
       ], 'Es la llave maestra de la base: permite borrar cuentas. No la pegues en ningún chat ni la mandes por correo. Si algún día se escapa, bórrala en Supabase y crea otra.'),
+      credencial('Registros de Supabase (uso de la app)', a.credenciales.registros, [
+        ['Entra en ', enlace('Supabase › Account › Access Tokens', 'https://supabase.com/dashboard/account/tokens'), ' y crea un token llamado «panel-rwadar».'],
+        'Si te deja elegir permisos, marca solo la lectura de registros (analytics logs read).',
+        ['En el archivo de claves, pégalo detrás de ', h('code', {}, 'SUPABASE_ACCESS_TOKEN='), '. Guarda.'],
+      ], 'Sirve para contar cuántas veces se abre la app y la web cada hora. Solo se usa para leer registros.'),
       credencial('GitHub', true, [
         a.credenciales.github === 'gh' ? 'Se usa el programa gh, que ya tiene tu sesión iniciada en este PC.' : 'En modo demostración se usan datos simulados.',
         'Las descargas del APK se leen de RWAdar-downloads, que es público: no necesita clave.',

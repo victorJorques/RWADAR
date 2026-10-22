@@ -16,6 +16,23 @@ const crypto = require('crypto');
 
 const CLAVE_SECRETA = 'sb_secret_demo_no_es_real';
 const TOKEN_CLOUDFLARE = 'demo-token-cloudflare-no-es-real';
+const TOKEN_SUPABASE_API = 'demo-token-registros-no-es-real';
+
+/* Registros de Supabase: aperturas del catálogo por hora, más por la
+   tarde, con la app algo por debajo de la web. Mismo formato que
+   devuelve ClickHouse («2026-10-22 18:00:00»). */
+function registrosUso(desde, hasta) {
+  const HORA = 3600000;
+  const filas = [];
+  for (let t = Math.ceil(desde / HORA) * HORA; t < hasta; t += HORA) {
+    const h = new Date(t).getUTCHours();
+    const r = azar(Math.floor(t / HORA));
+    const curva = Math.max(0, Math.sin(((h - 6) / 24) * Math.PI * 2));
+    const app = Math.round(curva * 9 + r() * 4);
+    filas.push({ hora: new Date(t).toISOString().replace('T', ' ').slice(0, 19), app, web: Math.round(curva * 14 + r() * 6), conexiones_app: Math.max(0, app - Math.round(r() * 3)) });
+  }
+  return filas;
+}
 const DIA = 86400000;
 const MARCA = 'RWADAR-MANTENIMIENTO';
 
@@ -207,6 +224,13 @@ function crearSimulador(opciones = {}) {
       if (servicio === 'cloudflare') return cloudflare(req, res, url, ruta, cuerpo);
       if (servicio === 'github') return github(req, res, ruta);
       if (servicio === 'access' && ruta === '/cdn-cgi/access/certs') return enviar(res, 200, { keys: opciones.jwks || [] });
+      if (servicio === 'supabase-api' && ruta === '/v1/projects/simulado/analytics/endpoints/logs') {
+        if (req.headers.authorization !== `Bearer ${TOKEN_SUPABASE_API}`) return enviar(res, 401, { message: 'Unauthorized' });
+        const desde = Date.parse(url.searchParams.get('iso_timestamp_start')), hasta = Date.parse(url.searchParams.get('iso_timestamp_end'));
+        if (!(hasta > desde) || hasta - desde > 24 * 3600000) return enviar(res, 400, { message: 'Time range must be no more than 24 hours' });
+        if (!/FROM logs/.test(url.searchParams.get('sql') || '')) return enviar(res, 200, { result: [], error: 'Unknown table' });
+        return enviar(res, 200, { result: registrosUso(desde, hasta) });
+      }
       return enviar(res, 404, { message: 'servicio desconocido' });
     });
   });
@@ -223,6 +247,8 @@ function entornoPanel(base) {
     RWADAR_PANEL_GITHUB_API: `${base}/github`,
     RWADAR_PANEL_WRANGLER_JS: require('path').join(__dirname, 'wrangler-falso.js'),
     CLOUDFLARE_API_TOKEN: TOKEN_CLOUDFLARE,
+    RWADAR_PANEL_SUPABASE_API: `${base}/supabase-api`,
+    SUPABASE_ACCESS_TOKEN: TOKEN_SUPABASE_API,
     SUPABASE_SECRET_KEY: CLAVE_SECRETA,
   };
 }

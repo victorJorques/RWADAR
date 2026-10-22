@@ -14,6 +14,8 @@ const { crearCloudflare } = require('./cloudflare');
 const { crearGithub } = require('./github');
 const { crearInterruptorWeb } = require('./interruptor-web');
 const { crearSalud } = require('./salud');
+const { crearUsoApp } = require('./uso-app');
+const { anotarDescargas, anotarHoras, leerHistorial } = require('./historial-app');
 
 function crearApi({ config, almacen, extras = {} }) {
   const cache = crearCache();
@@ -22,7 +24,33 @@ function crearApi({ config, almacen, extras = {} }) {
   const github = crearGithub(config, { leerPrivado: extras.leerGithub });
   const interruptor = crearInterruptorWeb({ config, cloudflare, almacen, subirMantenimiento: extras.subirMantenimiento });
   const salud = crearSalud({ config, supabase, github, cloudflare });
+  const usoApp = crearUsoApp(config);
   let accionEnCurso = null;
+
+  const resultado = p => p.status === 'fulfilled'
+    ? { datos: p.value }
+    : { error: p.reason?.message || 'sin respuesta', codigo: p.reason?.codigo || 'error' };
+
+  /* Todo lo de la app de una vez. Lo que se lee se apunta en el
+     historial; si el historial falla, la sección sale igual. */
+  async function datosApp() {
+    const [descargas, uso] = await Promise.allSettled([github.descargasApp(), usoApp.ultimas24h()]);
+    try {
+      if (descargas.status === 'fulfilled') await anotarDescargas(almacen, descargas.value);
+      if (uso.status === 'fulfilled') await anotarHoras(almacen, uso.value.serie);
+    } catch { /* el historial es un extra */ }
+    const historial = await leerHistorial(almacen).catch(() => null);
+    return { descargas: resultado(descargas), uso: resultado(uso), historial };
+  }
+
+  /* La llama el cron del panel de la nube cada hora para que el historial
+     siga creciendo aunque nadie abra el panel. */
+  async function tareaHoraria() {
+    const [descargas, hora] = await Promise.allSettled([github.descargasApp(), usoApp.horaAnterior()]);
+    if (descargas.status === 'fulfilled') await anotarDescargas(almacen, descargas.value);
+    if (hora.status === 'fulfilled') await anotarHoras(almacen, [hora.value]);
+    return { descargas: descargas.status, uso: hora.status };
+  }
 
   const exigir = (condicion, mensaje) => { if (!condicion) throw new ErrorPanel(mensaje, { estado: 400 }); };
 
@@ -34,12 +62,15 @@ function crearApi({ config, almacen, extras = {} }) {
       /* Dirección para compartir con los socios: la propia en la nube; en
          el ordenador, la que apuntó nube/publicar.mjs al subirlo. */
       urlNube: config.modo === 'nube' ? url.origin : (await extras.urlNube?.()) || null,
+      /* Los enlaces personales solo los ve el panel del ordenador de Víctor. */
+      enlaces: config.modo === 'nube' ? [] : (await extras.enlaces?.()) || [],
       web: config.web,
       proyecto: config.proyecto,
       archivoEnv: extras.archivoEnv || null,
       credenciales: {
         cloudflare: Boolean(config.cloudflareToken),
         supabase: Boolean(config.claveSecreta),
+        registros: Boolean(config.supabaseAccessToken),
         github: extras.leerGithub ? 'gh' : config.githubToken ? 'token' : config.modoDemo ? 'simulado' : false,
       },
       puedeAFondo: Boolean(extras.aFondo),
@@ -53,7 +84,7 @@ function crearApi({ config, almacen, extras = {} }) {
       const periodo = url.searchParams.get('periodo') || '7d';
       return cache.obtener(`trafico:${periodo}`, 300, () => cloudflare.trafico(periodo));
     },
-    '/api/app': async () => cache.obtener('app', 300, () => github.descargasApp()),
+    '/api/app': async () => cache.obtener('app', 300, datosApp),
     '/api/cuentas': async () => cache.obtener('cuentas', 20, () => supabase.listarCuentas()),
     '/api/despliegues': async () => cache.obtener('despliegues', 30, () => cloudflare.desplieguesProduccion()),
     '/api/interruptores': async () => {
@@ -137,7 +168,7 @@ function crearApi({ config, almacen, extras = {} }) {
     }
   }
 
-  return { manejar };
+  return { manejar, tareaHoraria };
 }
 
 module.exports = { crearApi };

@@ -66,7 +66,17 @@ function extrasLocales(config) {
 function crearPanel(config = cargarConfig()) {
   const token = crypto.randomBytes(24).toString('hex');
   const almacen = crearAlmacenArchivos(config.dirDatos);
-  const extras = { ...extrasLocales(config), urlNube: async () => (await almacen.leer('nube'))?.url || null };
+  /* datos/nube.json lo escribe nube/publicar.mjs: dirección del panel
+     compartido y la llave de cada enlace personal (el secreto no sale). */
+  const extras = {
+    ...extrasLocales(config),
+    urlNube: async () => (await almacen.leer('nube'))?.url || null,
+    enlaces: async () => {
+      const nube = await almacen.leer('nube');
+      if (!nube?.url || !nube.enlaces) return [];
+      return Object.entries(nube.enlaces).map(([nombre, llave]) => ({ nombre, url: `${nube.url}/entrar#${llave}` }));
+    },
+  };
   const api = crearApi({ config, almacen, extras });
   const anfitriones = new Set([`127.0.0.1:${config.puerto}`, `localhost:${config.puerto}`]);
 

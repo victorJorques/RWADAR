@@ -1,6 +1,6 @@
 /* RWAdar · panel · vistas de datos: tráfico web, app y cuentas. */
 import { api, h, numero, fecha, haceCuanto, etiquetaEstado, bloqueError, confirmar, tostada } from './util.js';
-import { lineas, columnas, barras, SERIE_2 } from './graficos.js';
+import { lineas, columnas, barras, SERIE_1, SERIE_2 } from './graficos.js';
 import { puntosTrafico, SERIES_TRAFICO } from './vistas.js';
 
 const PERIODOS = [['24h', '24 horas'], ['7d', '7 días'], ['30d', '30 días']];
@@ -54,29 +54,62 @@ export async function trafico(raiz, recargar) {
   );
 }
 
+const horaCorta = iso => new Date(iso).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
+const diaCorto = f => new Date(`${f}T12:00:00Z`).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', timeZone: 'Europe/Madrid' });
+const SERIES_USO = [{ clave: 'app', nombre: 'Desde la app', color: SERIE_1 }, { clave: 'web', nombre: 'Desde la web', color: SERIE_2 }];
+
+function seccionUso(uso) {
+  if (uso.error) {
+    return h('section', { class: 'tarjeta' }, h('h2', {}, 'Uso de la app · últimas 24 horas'),
+      bloqueError({ message: uso.error, codigo: uso.codigo }),
+      h('p', { class: 'nota', style: 'margin-top:10px' }, 'Se mide contando en los registros de Supabase las veces que la app y la web cargan el catálogo. No hace falta cambiar la app.'));
+  }
+  const u = uso.datos;
+  const puntos = u.serie.map(f => ({ etiqueta: fecha(f.hora), corta: horaCorta(f.hora), valores: { app: f.app, web: f.web } }));
+  return h('section', { class: 'tarjeta' },
+    h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Veces que se abre el catálogo · por hora'), h('span', { class: 'nota' }, 'Últimas 24 horas, según los registros de Supabase')),
+    lineas(puntos, SERIES_USO));
+}
+
+function seccionHistorial(historial) {
+  if (!historial) return null;
+  const uso = historial.usoPorDia.map(d => ({ etiqueta: fecha(d.fecha, { hora: false }) + (d.horasApuntadas && d.horasApuntadas < 24 ? ` (${d.horasApuntadas} h apuntadas)` : d.app === null ? ' (sin apuntar)' : ''), corta: diaCorto(d.fecha), valor: d.app || 0 }));
+  const descargas = historial.descargasPorDia.map(d => ({ etiqueta: fecha(d.fecha, { hora: false }) + (d.nuevas === null ? ' (sin apuntar)' : ''), corta: diaCorto(d.fecha), valor: d.nuevas || 0 }));
+  const aviso = 'El panel lo va apuntando cada vez que se abre; el de la nube, además, cada hora. Los días sin apunte salen a cero.';
+  return h('div', { class: 'rejilla dos' },
+    h('section', { class: 'tarjeta' }, h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Aperturas desde la app · por día'), h('span', { class: 'nota' }, `${historial.diasConUso} días con datos`)),
+      historial.diasConUso ? columnas(uso, { nombre: 'Aperturas desde la app' }) : h('p', { class: 'vacio' }, 'Todavía no hay días apuntados.'), h('p', { class: 'nota' }, aviso)),
+    h('section', { class: 'tarjeta' }, h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Descargas del APK · por día'), h('span', { class: 'nota' }, `${historial.diasConDescargas} días con datos`)),
+      historial.diasConDescargas ? columnas(descargas, { nombre: 'Descargas', color: SERIE_2 }) : h('p', { class: 'vacio' }, 'Hacen falta dos días apuntados seguidos para saber las descargas de un día.'), h('p', { class: 'nota' }, aviso)));
+}
+
 export async function app(raiz) {
-  const [descargas, cuentas] = await Promise.allSettled([api('/api/app'), api('/api/cuentas')]);
-  if (descargas.status === 'rejected') { raiz.replaceChildren(bloqueError(descargas.reason)); return; }
-  const d = descargas.value;
-  const finales = d.versiones.filter(v => !v.previa);
+  const [datosApp, cuentas] = await Promise.allSettled([api('/api/app'), api('/api/cuentas')]);
+  if (datosApp.status === 'rejected') { raiz.replaceChildren(bloqueError(datosApp.reason)); return; }
+  const { descargas, uso, historial } = datosApp.value;
+  const d = descargas.datos;
+  const u = uso.datos;
   const c = cuentas.status === 'fulfilled' ? cuentas.value.resumen : null;
+  const total = u ? u.app + u.web : 0;
   raiz.replaceChildren(
     h('div', { class: 'rejilla kpis' },
-      kpi('Descargas del APK', numero(d.totalApk), 'Todas las versiones'),
-      kpi('Última versión', d.ultima?.version || '—', d.ultima ? `Publicada ${haceCuanto(d.ultima.publicada)}` : null),
-      kpi('Descargas de la última', numero(d.ultima?.descargasApk || 0)),
+      kpi('Aperturas desde la app · 24 h', u ? numero(u.app) : '—', u ? `${total ? Math.round((u.app / total) * 100) : 0} % del total` : 'Falta la clave de registros'),
+      kpi('Desde la web · 24 h', u ? numero(u.web) : '—', 'Cargas del catálogo en el navegador'),
+      kpi('Descargas del APK', d ? numero(d.totalApk) : '—', d?.ultima ? `Última: ${d.ultima.version} (${numero(d.ultima.descargasApk)})` : null),
       c ? kpi('Cuentas (web y app)', numero(c.total), `${numero(c.activas30d)} activas en 30 días`) : kpi('Cuentas (web y app)', '—', 'Falta la clave de Supabase')),
-    h('section', { class: 'tarjeta' }, h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Descargas por versión'), h('a', { href: 'https://github.com/victorJorques/RWAdar-downloads/releases', target: '_blank', rel: 'noopener noreferrer', class: 'nota' }, 'Abrir en GitHub')),
-      barras(finales.map(v => ({ nombre: v.version, valor: v.descargasApk, extra: fecha(v.publicada, { hora: false }) })), { unidad: 'descargas' })),
-    h('section', { class: 'tarjeta' }, h('h2', {}, 'Todas las versiones'), h('div', { class: 'tabla-caja' }, h('table', {},
-      h('thead', {}, h('tr', {}, h('th', {}, 'Versión'), h('th', {}, 'Publicada'), h('th', {}, 'Tipo'), h('th', {}, 'Descargas APK'), h('th', {}, ''))),
-      h('tbody', {}, ...d.versiones.map(v => h('tr', {},
-        h('td', {}, h('strong', {}, v.version)), h('td', { class: 'tenue' }, fecha(v.publicada)),
-        h('td', {}, v.previa ? etiquetaEstado('sin-datos', 'Prueba') : v === d.ultima ? etiquetaEstado('ok', 'Última') : 'Final'),
-        h('td', { class: 'num' }, v.tieneApk ? numero(v.descargasApk) : 'sin APK'),
-        h('td', { class: 'acciones' }, h('a', { href: v.url, target: '_blank', rel: 'noopener noreferrer' }, 'Abrir')))))))),
-    h('section', { class: 'tarjeta' }, h('h2', {}, 'Qué no se puede saber de la app'),
-      h('p', { class: 'nota' }, 'La app no mide cuánta gente la abre ni qué pantallas mira: es una decisión de privacidad. Una descarga no es una instalación (cuentan también nuestras pruebas y las descargas repetidas). Las cuentas son las mismas en la web y en la app, y Supabase no guarda desde cuál se creó cada una.')),
+    seccionUso(uso),
+    seccionHistorial(historial),
+    descargas.error ? bloqueError({ message: descargas.error }) : h('div', { class: 'rejilla dos' },
+      h('section', { class: 'tarjeta' }, h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Descargas por versión'), h('a', { href: 'https://github.com/victorJorques/RWAdar-downloads/releases', target: '_blank', rel: 'noopener noreferrer', class: 'nota' }, 'Abrir en GitHub')),
+        barras(d.versiones.filter(v => !v.previa).map(v => ({ nombre: v.version, valor: v.descargasApk, extra: fecha(v.publicada, { hora: false }) })), { unidad: 'descargas' })),
+      h('section', { class: 'tarjeta' }, h('h2', {}, 'Todas las versiones'), h('div', { class: 'tabla-caja' }, h('table', {},
+        h('thead', {}, h('tr', {}, h('th', {}, 'Versión'), h('th', {}, 'Publicada'), h('th', {}, 'Descargas'))),
+        h('tbody', {}, ...d.versiones.map(v => h('tr', {},
+          h('td', {}, h('a', { href: v.url, target: '_blank', rel: 'noopener noreferrer' }, v.version), v.previa ? h('span', { class: 'tenue' }, ' · prueba') : v === d.ultima ? h('span', { class: 'tenue' }, ' · última') : null),
+          h('td', { class: 'tenue' }, fecha(v.publicada, { hora: false })),
+          h('td', { class: 'num' }, v.tieneApk ? numero(v.descargasApk) : 'sin APK')))))))),
+    h('section', { class: 'tarjeta' }, h('h2', {}, 'Qué significan estas cifras'),
+      h('p', { class: 'nota' }, 'Una «apertura» es cada vez que la app (o la web) carga el catálogo; quien la abre tres veces cuenta tres. No se sabe quién es ni se guarda ninguna dirección. Una descarga del APK no es una instalación: cuentan también nuestras pruebas y las descargas repetidas. Las cuentas son las mismas en la web y en la app.')),
   );
 }
 
