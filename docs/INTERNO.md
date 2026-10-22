@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 21 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 22 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -21,10 +21,10 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 | | Estado |
 |---|---|
-| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), **con las cuentas activadas desde el 11/10**. La publicación y sus recursos se comprobaron en línea; los formularios de alta, entrada y Perfil se observaron en el navegador de producción. Se instala en el móvil como app. Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
-| **Catálogo** | En línea sigue el lote del 11/10 (`966c230c`, con fecha de lote 6 de octubre y fichas revisadas el 11/10), caducado el 13 de octubre; su fuente no está en Git: la web y la app la enseñan con aviso y sin cifras. **La del 21 de octubre está preparada y probada, sin aplicar** (lote `c3b71e81`, vigente hasta el 28 de octubre; sustituye a las del 19 y el 20, que tampoco se aplicaron), hecha con `npm run catalogo`: mismas 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 de mercado secundario y 4 en preparación). Detalle en [`CATALOGO-V2-2026-10-21.md`](CATALOGO-V2-2026-10-21.md). |
-| **Imágenes de las ofertas** | Cada una de las 49 fichas tiene su imagen: una foto generada del activo, parecida al real según su fuente (sin marcas ni personas), con el lugar y tres pasos que explican la inversión. Etiqueta «Ilustración editorial» y texto alternativo que dice que es IA. En la rama de integración, sin publicar; la app las enseñará desde la próxima versión. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
-| **App Android** | **Versión 1.3.1** (código 14), **publicada el 11/10** en GitHub ([RWAdar 1.3.1](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1)). Incluye las cuentas opcionales y corrige el acabado del Perfil. Se compiló sin cargos y pasó las pruebas de uso del mismo APK en un emulador Android 15. La descarga pública sin autenticación coincide con el APK probado; su firma, tamaño, evidencia y sumas se verificaron. Es un lanzamiento final, no un borrador ni una versión preliminar. Todavía no está en Google Play. |
+| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), actualizada el **22/10 desde main** con el catálogo del 21/10, las imágenes por ficha y las tarjetas nuevas. Preview y producción comprobadas por HTTP, comparación de todos sus recursos y navegador; revisión móvil y escritorio. Las cuentas opcionales siguen activadas y la Academy sigue disponible. Se instala en el móvil como app. |
+| **Catálogo** | **La revisión del 21 de octubre ya está aplicada y visible**, vigente hasta el **28 de octubre**. La lectura pública real del 22/10 y la web publicada confirman 26 plataformas, 4 descartadas y 49 referencias: 24 principales, 21 de mercado secundario y 4 en preparación. No se han cambiado las fechas de las fuentes. Detalle en [`CATALOGO-V2-2026-10-21.md`](CATALOGO-V2-2026-10-21.md) y [`VERIFICACION-PUBLICACION-2026-10-22.md`](VERIFICACION-PUBLICACION-2026-10-22.md). |
+| **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
+| **App Android** | **Versión 1.3.2** (código 16), **publicada el 22/10** en GitHub ([RWAdar 1.3.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.2)). Incluye las imágenes por ficha, lugares y tarjetas nuevas; conserva las cuentas opcionales y el acabado del Perfil. Se compiló dentro de la cuota gratuita y pasó las pruebas del mismo APK en un emulador Android 15 y la revisión de sus capturas. Descarga pública, firma, tamaño, evidencia y sumas comprobados; mantiene la firma de la 1.3.1. Es una versión final y la última disponible. Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
@@ -43,10 +43,11 @@ autenticidad correctas; no se leyeron su cuerpo ni su enlace. Falta que Víctor
 introduzca la nueva contraseña y verificar la entrada posterior: la recuperación
 real todavía no está completada.
 
-**Esta rama une producción y el catálogo.** `claude/integracion-2026-10-19`
-parte de `codex/cuentas-web-movil` (lo publicado el 11/10) y le suma la
-revisión del 19/10 y la orden `npm run catalogo`. Al unirla a `main`, `main`
-vuelve a coincidir con producción.
+**Main vuelve a contener la fuente publicada.** Incluye las cuentas del 11/10,
+la orden `npm run catalogo`, el catálogo del 21/10 y las imágenes por ficha.
+El 22/10 se sincronizó desde Supabase, se probó y se publicó la web desde esa
+rama, primero en preview y después en producción. Las pruebas y las huellas
+quedan en el informe de publicación con fecha.
 
 **Cambios del 11/10:** panel nativo de cuentas y refuerzos de la web
 para evitar mezclar sesiones; registro, acceso, nombre, vigilancia, recuperación
@@ -58,47 +59,49 @@ políticas restrictivas de acceso, la sesión confirmada y vigente, la exclusió
 de usuarios anónimos y que el esquema privado no queda expuesto por REST.
 
 **Publicación y app:** la web está publicada con las guardas de cuentas
-encendidas. El APK nativo 1.3.1 también las lleva activadas, pasó la prueba de
+encendidas. El APK nativo 1.3.2 también las lleva activadas, pasó la prueba de
 ejecución en emulador y **ya está publicado en GitHub**, con resultado real
 de QA y publicación exitoso. Los servicios antiguos de
 instalaciones y push permanecen apagados. Víctor autorizó EAS Android y GitHub **sin cargos**;
-la compilación se hizo dentro de la cuota gratuita. La comprobación de
-compatibilidad nativa pasó sus 21 controles; no es una auditoría de seguridad.
+la compilación se hizo dentro de la cuota gratuita. La compatibilidad y los
+avisos actuales de dependencias se describen a continuación.
 
-**Dependencias pendientes:** la auditoría de paquetes **no está limpia**:
-23 avisos, de ellos 16 altos y 7 moderados. El análisis de los tres problemas
-de origen y del runtime no demostró una vía vulnerable alcanzable en el APK
-actual; los avisos revisados corresponden a herramientas de compilación.
-Esto no garantiza ausencia de otros fallos. Codex debe mantenerlos visibles y
-actualizar las herramientas con pruebas de compatibilidad, sin rebajar Expo
-ni aplicar arreglos forzados. Informe:
-[`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md`](VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md).
+**Dependencias pendientes:** la auditoría de paquetes **no está limpia**.
+La consulta del 22/10 da 21 avisos móviles (17 altos y 4 moderados) y uno alto
+en la herramienta de imágenes de la raíz. Expo Doctor pasa 20 de 21 controles:
+recomienda seis parches posteriores del mismo SDK. La instalación coincide
+exactamente con el lock aprobado y es compatible con el mapa del SDK fijado.
+La revisión de las vías usadas no identificó un bloqueo concreto para esta
+entrega, pero no garantiza ausencia de vulnerabilidades ni sustituye la prueba
+del APK. Se mantienen visibles los avisos, sin downgrades forzados ni exclusiones
+para silenciar Doctor. Informe actual:
+[`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-22.md`](VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-22.md).
 
-**Pruebas locales finales:** `npm test` terminó correctamente con las guardas
-de cuentas de web y app activadas y la versión nativa 1.3.1: web 501
-comprobaciones, móvil 182 y SQL 196; QR y herramientas también al día. Los
-ensayos de cuentas en Chrome con servicios simulados pasaron 61 y 30 casos.
-La revisión independiente terminó sin bloqueos. Estas pruebas no demuestran
-por sí solas el cambio real de contraseña ni el funcionamiento de un APK nuevo
-instalado.
+**Pruebas locales del 22/10:** `npm test` completo terminó correctamente después
+de instalar las dependencias móviles desde el lock: web 502 comprobaciones,
+móvil 184 y base de datos, QR y herramientas correctos. Las 49 fichas tienen
+foto y la Academy está al día. La web en línea se comprobó por separado y la
+revisión independiente no encontró bloqueos visuales concretos. Estas pruebas
+no demuestran por sí solas el cambio real de contraseña ni un APK instalado.
 
-**Prueba real del APK:** se instaló y ejecutó el mismo APK 1.3.1, sin modificarlo,
+**Prueba real del APK del 22/10:** se instaló y ejecutó el mismo APK 1.3.2, sin modificarlo,
 en un emulador Android 15. Pasaron Inicio, búsqueda de las 26 plataformas y 49
 referencias, ficha de Spiko, las siete lecciones publicadas de Academy, apertura
 de una lección y favorito conservado tras reiniciar. También se comprobaron los
-formularios de cuentas y su validación vacía, sin introducir contraseñas, crear
+formularios de cuentas y su validación vacía, además de las imágenes y lugares
+de cinco ofertas, sin introducir contraseñas, crear
 cuentas ni enviar correos. **No es un flujo completo de Auth nativo ni una
 prueba en un teléfono físico.**
 
-**Revisión visual y acabado:** las capturas de la versión anterior 1.3.0
-permitieron detectar un pequeño solape de la nota de favoritos con el
-formulario de recuperación. La **1.3.1, código 14, ya está publicada y
-verificada**, con su propia QA y descarga. La separación medida fue de 92
-píxeles, por encima del mínimo de 40; las capturas de recuperación,
-confirmación, alta y Perfil mostraron la nota fuera del borde y «1 guardado»
-correcto. Es una revisión acotada, no una garantía de interfaz perfecta.
-La compilación quedó dentro de la cuota gratuita, sin sobrecostes ni servicios
-de pago añadidos.
+**Revisión visual y acabado:** las capturas propias de la 1.3.2 muestran las
+fotos, lugares y pasos legibles, con el rótulo editorial y sin solapes observados.
+Se conserva el arreglo del Perfil introducido en 1.3.1: la separación medida
+entre recuperación y nota de favoritos sigue siendo de 92 píxeles, por encima
+del mínimo de 40. Alta, confirmación y Perfil también se revisaron; el favorito
+siguió guardado después de reiniciar. La primera prueba de uso pasó pero su
+empaquetado de capturas superó el límite inicial; se amplió ese límite y se
+repitió correctamente el mismo APK, conservando toda la evidencia. No hubo
+una segunda compilación ni cargos añadidos.
 
 Codex es responsable de integrar, configurar y comprobar técnicamente los
 cambios, y de publicar dentro de las autorizaciones expresas. Víctor únicamente
@@ -107,9 +110,11 @@ reservadas; no se le asignan cambios de código. Plan vigente:
 [`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
 La evidencia local y el diagnóstico real están en
 [`VERIFICACION-CUENTAS-2026-10-11.md`](VERIFICACION-CUENTAS-2026-10-11.md).
-La web nueva y el APK 1.3.1 ya están publicados. La publicación Android está
+La web nueva y el APK 1.3.2 ya están publicados. La publicación Android está
 confirmada por el flujo exitoso, la API pública y la descarga anónima local:
-APK y evidencia coinciden con sus sumas y la firma del APK es válida.
+APK y evidencia coinciden con sus sumas y la firma del APK es válida. El detalle
+actual está en [`VERIFICACION-ANDROID-1.3.2-2026-10-22.md`](VERIFICACION-ANDROID-1.3.2-2026-10-22.md)
+y [`VERIFICACION-PUBLICACION-2026-10-22.md`](VERIFICACION-PUBLICACION-2026-10-22.md).
 
 **En pausa:** opiniones, comunidad, avisos de cambios por correo y avisos push. Seguridad anterior:
 [`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
@@ -130,20 +135,16 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-1. **Publicar la revisión del catálogo del 19 de octubre.** Víctor pega
-   `rwadar-app/data/importaciones/catalogo-2026-10-19-v2/aplicar-y-aprobar.sql`
-   en Supabase › SQL Editor › Run y después se publica la web como siempre
-   (sincronizar, dos rondas de commit y aprobación, `--preview`,
-   `--produccion`), desde esta rama (que incluye lo publicado por Codex). Vence
-   el 26/10: la siguiente se hace con `npm run catalogo` (una sola orden; ver
-   [`RUNBOOK.md`](RUNBOOK.md#catálogo)).
-   Si vence, la web y la app 1.2.0 avisan en lugar de vaciarse; la 1.1.2
-   ocultaba las fichas.
+1. **Renovar el catálogo antes del 28 de octubre.** El del 21/10 ya está
+   aplicado, sincronizado y publicado en la web. La próxima revisión se prepara
+   con `npm run catalogo`; aplicarla a Supabase y publicar requieren autorización
+   expresa para esas operaciones. Ver [`RUNBOOK.md`](RUNBOOK.md#catálogo).
+   Si vence, el catálogo completo sigue visible con aviso y sin cifras vencidas.
 2. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
    primera, del 2 de octubre, copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
    como explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-3. **Completar los flujos reales de cuentas.** La web y Android 1.3.1 ya están
+3. **Completar los flujos reales de cuentas.** La web y Android 1.3.2 ya están
    publicados y sus descargas verificadas. Completar el cambio de contraseña de
    recuperación y la entrada posterior, mejorar la entrega del correo que
    llega a spam y comprobar los flujos sobre la versión publicada. El refuerzo
@@ -173,7 +174,7 @@ dos fichas de prueba, pero nada conectado a la app.
 
 | Cuándo | Qué |
 |---|---|
-| **26 de octubre de 2026** | Vence la revisión del 19/10 si se aplica (la web avisa, no se vacía) |
+| **28 de octubre de 2026** | Vence la revisión del 21/10 ya publicada (la web avisa, no se vacía) |
 | Cada noche, 02:43 UTC | Copia de seguridad cifrada, guardada 35 días en GitHub |
 | Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días |
 | Agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |

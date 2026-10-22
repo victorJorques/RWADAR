@@ -11,7 +11,7 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Corte editorial del 21/10 solicitado expresamente por Víctor desde main. Preview publicada y comprobada el 22/10:35 controles HTTP y113 recursos idénticos, navegador en móvil y escritorio y formularios opcionales sin credenciales. Producción y Android1.3.2 se declaran solo tras sus verificaciones reales. Publicidad,cobros,comisiones,opiniones,avisos,comunidad y manual siguen apagados; no se afirma Auth nativo real ni teléfono físico.",
+  "nota": "Corte editorial del 21/10 publicado desde main por orden expresa de Víctor. Preview y producción comprobadas el 22/10: 35 controles HTTP y 113 recursos idénticos en cada una, además de navegador móvil y escritorio. Android 1.3.2/código 16 compilado, probado en emulador, revisado visualmente y publicado como última versión final; descarga pública anónima, firma y evidencia verificadas. Publicidad, cobros, comisiones, opiniones, avisos, comunidad y manual siguen apagados. No se afirma Auth nativo real ni prueba en teléfono físico.",
   "revisionAprobada": {
     "commit": "0a499695253bff1d0579399a226dd985f86ec5dc",
     "contenidoSha256": "sha256:61fa785a4dc697b96af53e31236babd1f4c668efb5b4057d800295a7feb45b8e",
@@ -144,8 +144,20 @@
     },
     "beta_segura_extremo_a_extremo": {
       "estado": "aprobado",
-      "detalle": "Corte web del 11/10 publicado y comprobado: 35 controles HTTP y los 64 archivos idénticos al artefacto aprobado; formularios de acceso, alta y recuperación y catálogo íntegro observados en navegador. Correos reales recibidos, perfil/salida observados y SQL aplicado/postverificado. Esto aprueba la publicación web, no afirma un cambio real de contraseña ni una baja real. Android 1.3.1 superó sus propios controles de binario, emulador, separación visual y descarga pública firmada; no se afirma Auth nativo real ni un teléfono físico. La revocación declarada del incidente anterior es evidencia histórica y no sustituye esta comprobación. Los informes anteriores describen versiones históricas.",
+      "detalle": "Corte web del 21/10 publicado el 22/10 desde main, con preview y producción comprobadas por 35 controles HTTP y 113 archivos idénticos en cada una; catálogo, imágenes, Academy y formularios opcionales observados en navegador. Android 1.3.2/código 16 superó sus propios controles de firma, instalación y uso en emulador, cinco fichas con fotos, separación visual de 92 px y capturas revisadas por agentes. Release final latest y descarga pública anónima coincidentes en APK, firma, tamaño, sumas y evidencia. No se afirma Auth nativo real, SMTP nativo, cambio real de contraseña, baja real ni teléfono físico. Las comprobaciones de cuentas del 11/10 y la revocación declarada del incidente anterior se conservan como históricas.",
       "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ANDROID-1.3.2-2026-10-22.md",
+          "verificadoEl": "2026-10-22",
+          "resumen": "APK exacto 1.3.2/código 16 instalado en emulador API 35: catálogo 26/49, cinco fotos editoriales, Academy, favorito persistente y cuatro formularios sin credenciales. Capturas propias revisadas; separación 92 px. Release final latest y descarga anónima con firma, tamaño, huellas y ZIP coincidentes. Coste estimado cero, controles de publicación devueltos a NO."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-PUBLICACION-2026-10-22.md#produccion-publicada-y-comprobada",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Producción real desde main: 35/35 HTTP y 113/113 recursos idénticos a la preview revisada, catálogo del 21/10 e imágenes visibles, navegador sin errores observados. /android redirige a la release final 1.3.2. No se modificó Supabase."
+        },
         {
           "tipo": "prueba",
           "referencia": "docs/VERIFICACION-PUBLICACION-2026-10-22.md#preview-publicada-y-comprobada",

@@ -6,6 +6,55 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 22 de octubre de 2026 · Codex · web desde main y Android 1.3.2 publicados
+
+**Rama:** `main` de `victorJorques/RWADAR`, privado. Víctor autorizó en el turno
+la preview, producción, EAS editorial y la distribución Android como 1.3.1.
+Se leyó primero la entrada del 21/10 y se hizo `git pull --ff-only origin main`.
+
+- **Web publicada:** <https://rwadar.pages.dev>. El catálogo del 21/10 ya estaba
+  aplicado por Víctor; se leyó y sincronizó sin escribir en Supabase. Snapshot
+  26 plataformas, 4 descartadas y 49 referencias (24/21/4), vigente hasta el
+  28/10. Las 49 fichas tienen su imagen nueva. El primer intento se detuvo por
+  snapshot modificado; se revisó y consolidó antes de publicar. Preview y
+  producción tienen 35/35 controles HTTP y 113/113 recursos idénticos.
+- **Commits fuente enviados:** `0a49969` (snapshot y preparación), `9f5ab61`
+  (huella aprobada) y `8821228` (preview y dependencias). Web y APK salen de
+  ese corte de main. El cierre documental y las copias inertes de workflows
+  están en el commit que contiene esta entrada; no cambian el binario entregado.
+- **Android final:** [RWAdar 1.3.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.2),
+  código **16**, perfil editorial. Una sola compilación EAS, misma firma que
+  1.3.1. Publicada como latest final el 22/10; APK, sumas y ZIP de evidencia
+  descargados sin autenticación y cotejados. `/android` lleva a 1.3.2.
+- **QA del APK:** ejecución `39701844100` exitosa con el binario exacto:
+  instalación, cuatro pestañas, catálogo, Academy, favorito tras reiniciar,
+  cinco fotos y formularios sin credenciales. Capturas propias revisadas por
+  tres agentes; separación de la nota de favoritos 92 px. La primera ejecución
+  pasó el uso pero falló por el límite inicial del ZIP; se amplió solo ese
+  límite y se repitió el mismo APK conservando todas las capturas.
+- **Publicación Android:** ejecución `39702655647` exitosa; commits públicos
+  `3b366a3` (QA definitiva), `77371f1` (publicación tras revisión) y `340a906`
+  (controles de publicación devueltos a `NO`, sin repetir Actions). El origen
+  privado no cambió de visibilidad. No se publicaron tiendas ni OTA.
+- **Pruebas y coste:** `npm ci` raíz y móvil; `npm test` completo correcto,
+  web 502/502, móvil 184/184, base/QR/herramientas correctos; compuerta final
+  51/51. Navegador real
+  móvil y escritorio y formularios observados sin envíos. EAS Free después:
+  Android 5/15, total 6/30, cero exceso, complementos y coste estimado.
+- **Avisos pendientes:** Expo Doctor 20/21 por seis parches recomendados;
+  `npm audit` conserva 21 avisos móviles y uno alto en raíz, cero críticos.
+  No se cambiaron locks ni se silenciaron avisos. Quedan Auth con credenciales
+  reales, recuperación efectiva, entrega de correo y teléfono físico;
+  no se atribuyen a la QA del emulador. Renovar catálogo antes del 28/10.
+- **Archivos locales preservados:** los tres archivos sin seguimiento del
+  manual están en `rwadar-respaldo-local-20261022/`, con manifiesto y SHA,
+  fuera de rutas publicables. La evidencia detallada queda en la carpeta
+  ignorada `rwadar-entrega-20261022/`; no restaurar el PDF al sitio público.
+
+Informes: [`VERIFICACION-PUBLICACION-2026-10-22.md`](../VERIFICACION-PUBLICACION-2026-10-22.md),
+[`VERIFICACION-ANDROID-1.3.2-2026-10-22.md`](../VERIFICACION-ANDROID-1.3.2-2026-10-22.md)
+y [`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-22.md`](../VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-22.md).
+
 ## 21 de octubre de 2026 · Claude (10) · catálogo del 21/10, fotos por ficha, revisión de la web y comunidad
 
 **Rama:** `claude/integracion-2026-10-19` (une lo publicado por Codex el 11/10 con todo lo del catálogo). **Nada aplicado en Supabase ni publicado.** Codex no ha subido nada desde el 11/10, así que no hay solapes.

@@ -43,6 +43,9 @@ las rutas publicables. No se publican ni se incorporan a Git.
   para el servidor local; no se cambiaron pruebas para conseguir el resultado.
 - `git diff --check` y escaneo proporcional de líneas añadidas: correctos,
   sin patrones de credenciales detectados.
+- Tras incorporar el cierre al manifiesto, `probar-auditoria-relanzamiento.mjs`:
+  **51 correctas, 0 fallidas**. Solo cambian documentos, evidencia del manifiesto
+  y copias inertes de workflows; no se repite la compilación ni el despliegue.
 
 Evidencia local en `rwadar-entrega-20261022/npm-test.log` y los informes JSON
 del mismo directorio. Las pruebas locales no acreditan producción ni un APK
@@ -88,8 +91,47 @@ Evidencia local: `http-preview.log`, `recursos-preview.json`,
 `preview-spiko-390.png`, `preview-recuperar-320.png` y
 `preview-escritorio.png` en `rwadar-entrega-20261022/`.
 
-## Estado pendiente al aprobar la preview
+## Producción publicada y comprobada
 
-Producción y el APK nuevo todavía están pendientes de su ejecución y
-verificación. Este apartado se actualizará con los resultados reales; no
-reutiliza como prueba los de la 1.3.1.
+Despliegue **`309687f0`**, desde `main` en **`8821228`**. El dominio canónico
+<https://rwadar.pages.dev> responde con el mismo corte revisado en preview:
+**35/35 controles HTTP** y **113/113 recursos idénticos**, incluidos el
+manifiesto PWA y el service worker. Git quedó limpio después de desplegar.
+
+En el navegador del dominio canónico se observaron el catálogo con fecha
+21.10.2026 y las imágenes nuevas cargadas, sin errores ni avisos de consola.
+La captura propia `produccion-escritorio.png` y los logs `http-produccion.log`
+y `recursos-produccion.json` quedan en la carpeta local de evidencia.
+
+La ruta `/android` devuelve 302 a la última release de GitHub. Antes de
+publicar la app nueva seguía apuntando correctamente a la 1.3.1.
+Después del lanzamiento Android se comprobó de nuevo: `/android` → 302 a
+latest → 302 a `v1.3.2` → 200.
+
+## Android 1.3.2 compilado
+
+Compilación EAS **`25cff9b2-8937-4d2a-a0f5-0f91bbc2b198`**, solicitada el
+22/10 a las **00:31:41 UTC**, versión **1.3.2**, código **16**, perfil
+`editorial`, fuente **`882122874e8d329b7c7b3969f1c5613880db38a3`**. Se emplean
+las credenciales de firma existentes con `--freeze-credentials`.
+
+La compilación terminó correctamente a las **00:39:19 UTC**. El APK tiene
+**88.777.561 bytes**, firma v2 válida y el mismo certificado que 1.3.1.
+Su SHA-256 es `998d0aed3b183b8f045c36e2772421da806e0e0996e5513de8549ccc13f3fdf9`.
+Incluye las 49 imágenes nuevas, idénticas por contenido a la fuente.
+
+La [QA 39701844100](https://github.com/victorJorques/RWAdar-downloads/actions/runs/39701844100)
+del mismo APK terminó con éxito, incluido su ZIP de evidencias. La primera
+ejecución pasó el uso pero falló al superar el límite inicial del ZIP; se
+repitió el mismo binario conservando todas las capturas y ampliando solo ese
+límite. La revisión visual y el cierre de publicación se detallan en
+[`VERIFICACION-ANDROID-1.3.2-2026-10-22.md`](VERIFICACION-ANDROID-1.3.2-2026-10-22.md).
+
+La [release final 1.3.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.2)
+quedó pública a las **00:56:18 UTC**, como latest, sin estado draft ni
+prerelease. La ejecución de publicación **39702655647** terminó con éxito.
+La descarga anónima local independiente confirmó a las **00:58:05 UTC** el
+APK exacto, su firma, las sumas y el ZIP de capturas de **13.679.319 bytes**.
+La compilación permaneció dentro del plan gratuito: Android 5/15, total 6/30,
+cero exceso, complementos o coste estimado. Los controles automáticos de
+publicación se devolvieron a `NO`.
