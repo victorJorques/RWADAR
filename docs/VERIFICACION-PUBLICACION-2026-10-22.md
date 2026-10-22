@@ -62,10 +62,34 @@ por el módulo de imágenes existen.
 
 Expo Doctor online actual pasa **20/21**, con seis recomendaciones de parches
 del mismo SDK. La auditoría npm conserva avisos: no es una auditoría limpia.
-La evaluación de alcance y compatibilidad se registra por separado.
+La evaluación actual de alcance y compatibilidad está en
+[`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-22.md`](VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-22.md).
 
-## Estado de publicación
+## Preview publicada y comprobada
 
-Al registrar esta preparación, la preview, producción y el APK nuevo todavía
-están pendientes de su ejecución y verificación. Este apartado se actualizará
-con los resultados reales; no reutiliza como prueba los de la 1.3.1.
+Despliegue **`a54fa4e3`**, desde `main` en `9f5ab61`, con contenido aprobado
+`0a49969`. Destinos: <https://a54fa4e3.rwadar.pages.dev> y
+<https://revision.rwadar.pages.dev>.
+
+- Comprobador HTTP oficial: **35/35**, salida 0.
+- Comparación SHA-256 y bytes: **113/113 recursos idénticos**, sin fallos.
+  `_headers` y `_redirects` son configuración de Pages, no recursos HTTP.
+- Navegador real: Inicio, Buscar, ficha de Outeiro y Spiko con foto propia,
+  rótulo editorial y alt IA; Spiko 2,40 % con fecha de fuente del 21/10.
+- Sin desbordamiento horizontal a 320, 390 y 1440 px. Búsqueda de Spiko
+  devuelve 1 de 26 plataformas. Índice Academy con siete lecciones abiertas.
+- Perfil y formularios de entrada, alta y recuperación observados sin
+  credenciales ni envío de correo. Comunidad y avisos permanecen próximos.
+- Consola observada sin errores ni avisos. Tres capturas propias revisadas
+  también por un segundo agente, sin bloqueos visuales concretos observados.
+- Git limpio después de sincronizar, construir y desplegar.
+
+Evidencia local: `http-preview.log`, `recursos-preview.json`,
+`preview-spiko-390.png`, `preview-recuperar-320.png` y
+`preview-escritorio.png` en `rwadar-entrega-20261022/`.
+
+## Estado pendiente al aprobar la preview
+
+Producción y el APK nuevo todavía están pendientes de su ejecución y
+verificación. Este apartado se actualizará con los resultados reales; no
+reutiliza como prueba los de la 1.3.1.
