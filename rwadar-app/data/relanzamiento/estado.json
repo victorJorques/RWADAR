@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-10-21",
+  "actualizadoEl": "2026-10-22",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Actualización del 21/10/2026 autorizada por Víctor: catálogo del 21/10 (lote c3b71e81), fotos de las 49 fichas, tarjetas al estilo Booking, revisión de 20 puntos de la web y app 1.3.2. Perfil editorial gratuito sin cambios; publicidad, cobros, comisiones, opiniones, avisos, comunidad y manual siguen desactivados. Anterior: Actualización web y Android publicada y comprobada el 11/10/2026, Android sin cargos adicionales. Corte editorial gratuito con catálogo público y cuentas opcionales. Refuerzo de sesiones aplicado y comprobado; correos reales de alta y recuperación recibidos. Android 1.3.1 instalado/probado en emulador, capturas revisadas y descarga pública con firma verificada. El cambio final real de contraseña, Auth nativo real y un teléfono físico siguen sin comprobarse; no se atribuyen a los ensayos locales. Publicidad, cobros, comisiones, opiniones, avisos y manual permanecen desactivados.",
+  "nota": "Publicación web y Android 1.3.2 solicitada expresamente por Víctor el 22/10/2026 desde main. Catálogo del 21/10 leído de Supabase y consolidado, 26 plataformas y 49 fichas con fotos editoriales. Pruebas finales de fuente correctas; preview y producción se verifican antes de declarar publicación. Perfil editorial gratuito sin cambios; publicidad, cobros, comisiones, opiniones, avisos, comunidad y manual siguen desactivados. No se afirma Auth nativo real ni teléfono físico.",
   "revisionAprobada": {
-    "commit": "911c0463be14779dcbe94b4b13f053bdcb2f2eef",
-    "contenidoSha256": "sha256:c72c7bf48baec89ce1f6cc436ccb81424be19a02c1b369f7bf178512aef83e71",
+    "commit": "0a499695253bff1d0579399a226dd985f86ec5dc",
+    "contenidoSha256": "sha256:61fa785a4dc697b96af53e31236babd1f4c668efb5b4057d800295a7feb45b8e",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
@@ -72,8 +72,20 @@
     },
     "catalogo_actual_y_citable": {
       "estado": "aprobado",
-      "detalle": "Lote del 6/10 vigente hasta el 13/10: 26 plataformas y 49 referencias documentadas, 24 principales, 21 secundarias y 4 en preparación. Lectura y sincronización públicas del 11/10 confirmaron el lote completo y que no está retirado; no renuevan las fechas de las fuentes. V1 conserva compatibilidad para APK anteriores. Al vencer, se conserva el catálogo completo con aviso y sin cifras vencidas, no se vacía.",
+      "detalle": "Lectura real del 22/10 confirma el lote del 21/10, vigente hasta el 28/10: 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 secundarias y 4 en preparación). Snapshot web sincronizado y probado. No se renuevan las fechas de las fuentes ni se modifica Supabase; al vencer se conserva el catálogo con aviso y sin cifras vencidas.",
       "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-PUBLICACION-2026-10-22.md#catalogo-y-preparacion-local",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Lectura pública real, snapshot 21/10,26/49/4 y correspondencia exacta49/49 de imágenes; npm test final502 web184 móvil, base/QR/herramientas correctos."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CATALOGO-V2-2026-10-21.md",
+          "verificadoEl": "2026-10-21",
+          "resumen": "Revisión documentada del catálogo del21/10 y sus fuentes, vigencia hasta28/10; la lectura posterior no cambia fechas de revisión."
+        },
         {
           "tipo": "prueba",
           "referencia": "docs/CATALOGO-V2-2026-10-06.md",
@@ -114,8 +126,14 @@
     },
     "derechos_de_imagen": {
       "estado": "aprobado",
-      "detalle": "Publicación de material generado propio, con procedencia y etiqueta. No se publican las52fotografías internas de terceros.",
+      "detalle": "Material editorial generado propio, procedencia y etiqueta. Incluye49 ilustraciones por ficha del contrato v2 y las4 ilustraciones de categoría; no se publican las fotografías internas de terceros.",
       "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md",
+          "verificadoEl": "2026-10-21",
+          "resumen": "Procedencia y revisión de las49 ilustraciones editoriales de fichas, rótulo editorial y texto alternativo IA; publicación de este corte solicitada expresamente por el titular."
+        },
         {
           "tipo": "documento",
           "referencia": "docs/comercial/REVISION-EDITORIAL-2026-09-27.md",
