@@ -17,21 +17,25 @@
    de golpe; el historial lo va guardando el panel de la nube cada hora.
    ===================================================================== */
 'use strict';
-const { ErrorPanel, FaltaCredencial, pedirJson } = require('./pedir');
+const { ErrorPanel, FaltaCredencial, pedir, mensajeRemoto } = require('./pedir');
 
 const REF = /^https:\/\/([a-z0-9]{20})\.supabase\.co$/;
 const HORA_MS = 3600000;
 
-const ES_APP = "(log_attributes['request.headers.x_client_info'] ILIKE '%react-native%' OR event_message ILIKE '%okhttp%')";
-const ES_WEB = `(NOT ${ES_APP} AND event_message ILIKE '%mozilla%')`;
-const IP = "log_attributes['request.headers.x_real_ip']";
+/* Comprobado contra la base real el 22/10/2026: la tabla es `logs`, la
+   fuente va en `source` y los detalles en el mapa `log_attributes`
+   (una clave que no existe devuelve texto vacío, no un error). */
+const AGENTE = "log_attributes['request.headers.user_agent']";
+const ES_APP = `(log_attributes['request.headers.x_client_info'] ILIKE '%react-native%' OR ${AGENTE} ILIKE 'okhttp%')`;
+const ES_WEB = `(NOT ${ES_APP} AND ${AGENTE} ILIKE 'mozilla%')`;
+const IP = "if(log_attributes['request.headers.cf_connecting_ip'] != '', log_attributes['request.headers.cf_connecting_ip'], log_attributes['request.headers.x_real_ip'])";
 
 const CONSULTA = `SELECT toStartOfHour(timestamp) AS hora,
   countIf(${ES_APP}) AS app,
   countIf(${ES_WEB}) AS web,
   uniqExactIf(${IP}, ${ES_APP} AND ${IP} != '') AS conexiones_app
 FROM logs
-WHERE source_name = 'edge_logs' AND event_message ILIKE '%/rest/v1/catalogo_publicacion%'
+WHERE source = 'edge_logs' AND log_attributes['request.path'] LIKE '%/rest/v1/catalogo_publicacion%'
 GROUP BY hora ORDER BY hora`;
 
 function isoMinuto(fecha) { return new Date(Math.floor(fecha.getTime() / 60000) * 60000).toISOString(); }
@@ -58,9 +62,12 @@ function crearUsoApp(config) {
   async function consultar(desde, hasta) {
     if (!config.supabaseAccessToken) throw new FaltaCredencial('Supabase (registros)', 'ver el uso de la app');
     const q = new URLSearchParams({ sql: CONSULTA, iso_timestamp_start: isoMinuto(desde), iso_timestamp_end: isoMinuto(hasta) });
-    const r = await pedirJson(`${config.supabaseApi}/v1/projects/${refProyecto()}/analytics/endpoints/logs?${q}`, {
+    const r = await pedir(`${config.supabaseApi}/v1/projects/${refProyecto()}/analytics/endpoints/logs?${q}`, {
       headers: { Authorization: `Bearer ${config.supabaseAccessToken}` },
     });
+    /* Supabase frena las consultas de registros seguidas. */
+    if (r.estado === 429) throw new ErrorPanel('Supabase pide esperar un minuto antes de volver a consultar sus registros', { estado: 503, codigo: 'espera' });
+    if (!r.ok) throw new ErrorPanel(`api.supabase.com respondió ${r.estado}: ${mensajeRemoto(r.datos, r.texto)}`, { estado: 502 });
     if (r.datos?.error) {
       const e = typeof r.datos.error === 'string' ? r.datos.error : r.datos.error.message || JSON.stringify(r.datos.error);
       throw new ErrorPanel(`Supabase no aceptó la consulta de registros: ${String(e).slice(0, 200)}`, { estado: 502 });

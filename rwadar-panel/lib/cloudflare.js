@@ -10,7 +10,7 @@
    El token necesita «Account Analytics: Read» y «Cloudflare Pages: Edit».
    ===================================================================== */
 'use strict';
-const { ErrorPanel, FaltaCredencial, pedirJson } = require('./pedir');
+const { ErrorPanel, FaltaCredencial, pedir, pedirJson, mensajeRemoto } = require('./pedir');
 
 const PERIODOS = Object.freeze({ '24h': 1, '7d': 7, '30d': 30 });
 const HEX = /^[0-9a-f]{32}$/i;
@@ -73,6 +73,14 @@ function serieCompleta(filas, { desde, hasta, porHora }) {
   return serie;
 }
 
+/* Cloudflare da el país como código («ES»): se enseña su nombre. */
+const REGIONES = (() => { try { return new Intl.DisplayNames(['es'], { type: 'region' }); } catch { return null; } })();
+function nombrePais(codigo) {
+  if (!codigo) return '(desconocido)';
+  if (!/^[A-Z]{2}$/.test(codigo) || !REGIONES) return codigo;
+  try { return REGIONES.of(codigo) || codigo; } catch { return codigo; }
+}
+
 function lista(filas, dim, nombrar = v => v || '(desconocido)') {
   return (filas || []).map(f => ({ nombre: nombrar(f.dimensions?.[dim]), visitas: f.sum?.visits || 0, paginas: f.count || 0 }));
 }
@@ -100,7 +108,15 @@ function crearCloudflare(config) {
   }
 
   async function api(ruta, { method = 'GET', para }) {
-    const r = await pedirJson(`${cuentaUrl}${ruta}`, { method, headers: cabeceras(para) });
+    const r = await pedir(`${cuentaUrl}${ruta}`, { method, headers: cabeceras(para) });
+    /* 401/403 con un token válido = le falta el permiso de Pages. */
+    if (r.estado === 401 || r.estado === 403) {
+      throw new ErrorPanel('Cloudflare no deja tocar los despliegues: al token le falta el permiso «Account · Cloudflare Pages · Edit»', {
+        estado: 502, codigo: 'permiso',
+        detalle: 'Edítalo en dash.cloudflare.com › Mi perfil › API Tokens › panel-rwadar › Edit y añade ese permiso. La clave no cambia: no hay que volver a pegarla.',
+      });
+    }
+    if (!r.ok) throw new ErrorPanel(`api.cloudflare.com respondió ${r.estado}: ${mensajeRemoto(r.datos, r.texto)}`, { estado: 502 });
     if (r.datos?.success === false) {
       throw new ErrorPanel(`Cloudflare: ${r.datos.errors?.[0]?.message || 'error sin detalle'}`, { estado: 502 });
     }
@@ -129,8 +145,10 @@ function crearCloudflare(config) {
       serie: serieCompleta(c.serie || [], { desde, hasta, porHora }),
       paginas: paginas.slice(0, 15),
       flujo: resumirFlujo(paginas),
-      procedencia: lista(c.procedencia, 'refererHost', v => v || 'Directo o sin dato'),
-      paises: lista(c.paises, 'countryName'),
+      /* Las páginas de la propia web no son «procedencia»: son gente moviéndose dentro. */
+      procedencia: lista(c.procedencia, 'refererHost', v => v || 'Directo o sin dato')
+        .filter(p => p.visitas > 0 && p.nombre !== new URL(config.web).host),
+      paises: lista(c.paises, 'countryName', nombrePais),
       dispositivos: lista(c.dispositivos, 'deviceType'),
       navegadores: lista(c.navegadores, 'userAgentBrowser'),
       sistemas: lista(c.sistemas, 'userAgentOS'),

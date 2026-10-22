@@ -121,7 +121,8 @@ function crearSalud({ config, supabase, github, cloudflare }) {
     const comprobaciones = await Promise.all(COMPROBACIONES.map(async c => {
       let resultado;
       try { resultado = await c.ejecutar(ctx); } catch (e) {
-        resultado = e instanceof FaltaCredencial ? r('sin-datos', e.message) : r('fallo', e.message, 'Puede ser un corte momentáneo: vuelve a comprobar en un minuto.');
+        resultado = e instanceof FaltaCredencial ? r('sin-datos', e.message)
+          : r('fallo', e.message, e.codigo === 'permiso' ? e.detalle : 'Puede ser un corte momentáneo: vuelve a comprobar en un minuto.');
       }
       return { id: c.id, area: c.area, nombre: c.nombre, ...resultado };
     }));
