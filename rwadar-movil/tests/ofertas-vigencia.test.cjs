@@ -548,7 +548,7 @@ function webV2Cliente(lote, ahora = new Date('2026-09-27T12:00:00Z')) {
   contexto.document.getElementById = id => id === 'escaparateDetalleLocal' ? dialogo : nodos[id];
   Object.assign(contexto, { MODO_LOCAL_SEGURO: false, ESCAPARATE_LOCAL: null,
     CATALOGO_EMBEBIDO_BLOQUEADO: false, CATALOGO_CADUCADO: false, CATALOGO_SIN_COMPROBAR: false,
-    CATALOGO_RETIRADO: false, emiCat: '', emiOrden: 'rent' });
+    CATALOGO_RETIRADO: false, emiCat: '', emiOrden: 'rent', emiColeccion: 'principales' });
   cargarFuncionesWeb(contexto, ['CATMETA', 'ACCESOS', 'TICKETS', 'EDITORIAL_OFERTA_POR_CATEGORIA', 'EDITORIAL_OFERTA_POR_SLUG',
     'textoDato', 'numeroRemoto', 'booleanoOpcional', 'cifraCatalogoRemota',
     'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal', 'validarVerificacionLocal',

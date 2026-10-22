@@ -1663,7 +1663,7 @@ const emisionValida=e=>e&&typeof e==='object'&&String(e.t||'').trim()&&
  String(e.pl||'').trim()&&Object.hasOwn(CATMETA,String(e.cat||''))&&urlHttps(e.url)&&
  /^\d{4}-\d{2}-\d{2}$/.test(String(e.ver||''));
 
-let emiOrden='cierra',emiCat='';
+let emiOrden='cierra',emiCat='',emiColeccion='principales';
 function emisionesVisibles(){
  const estados=new Set(['abierta','programada','en_estudio']);
  const actuales=EMI.filter(emisionValida).filter(e=>estados.has(e.est||'abierta')).filter(e=>{const d=diasHasta(e.cierra);return d===null||d>=0});
@@ -1722,9 +1722,16 @@ function pintarEmisiones(){
   const informacion=document.getElementById('emisInformacion');if(informacion)informacion.open=true;
   const estado=document.getElementById('movilOfertasEstado');
   if(estado){estado.textContent=visibles.length+' de '+principales.length+' principales';estado.classList.toggle('hay-ofertas',visibles.length>0)}
+  /* Como en la app: una pestaña por colección y se ve una cada vez. */
+  const cuantas=c=>catalogo.filter(o=>o.coleccion===c).length;
+  if(caja.dataset)caja.dataset.coleccion=emiColeccion;
+  const pestanas=document.getElementById('emiColecciones');
+  if(pestanas){pestanas.hidden=false;pestanas.innerHTML=
+   [['principales','Principales'],['secundario','Reventa'],['en_camino','Próximas']].map(([c,t])=>
+    '<button type="button" role="tab" data-emi-coleccion="'+c+'" class="'+(emiColeccion===c?'on':'')+'" aria-selected="'+(emiColeccion===c)+'">'+t+' <em>'+cuantas(c)+'</em></button>').join('');}
   caja.innerHTML='<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Comprueba las condiciones actuales con el emisor.</p></header>'+
-   (visibles.length?visibles.map(o=>tarjetaOfertaLocal(o)).join(''):
-   '<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>')+
+   '<div class="catalogo-principales">'+(visibles.length?visibles.map(o=>tarjetaOfertaLocal(o)).join(''):
+   '<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>')+'</div>'+
    seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino');
   return;
  }
@@ -1794,11 +1801,11 @@ function seccionReferenciasCatalogo(catalogo,coleccion){
  const todas=catalogo.filter(o=>o.coleccion===coleccion);
  const visibles=todas.filter(o=>(!emiCat||o.categoria===emiCat)&&coincideBusquedaOfertaLocal(o))
   .sort((a,b)=>a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||a.titulo.localeCompare(b.titulo,'es'));
- const titulo=coleccion==='secundario'?'Mercado secundario':'En camino';
+ const titulo=coleccion==='secundario'?'Reventa entre inversores':'Próximas ofertas';
  const alcance=coleccion==='secundario'
   ?'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
   :'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.';
- return '<details class="catalogo-referencias"><summary><h3>'+titulo+'</h3><span>'+visibles.length+' de '+todas.length+' referencias</span></summary>'+
+ return '<details class="catalogo-referencias" data-coleccion="'+coleccion+'"'+(emiColeccion===coleccion?' open':'')+'><summary><h3>'+titulo+'</h3><span>'+visibles.length+' de '+todas.length+' referencias</span></summary>'+
   '<p>'+alcance+' La ordenación financiera solo se aplica a las ofertas principales.</p><div class="emis-rejilla">'+
   (visibles.length?visibles.map(o=>tarjetaOfertaLocal(o)).join(''):'<p>Ninguna referencia coincide con la búsqueda y la categoría.</p>')+'</div></details>';
 }
@@ -1814,6 +1821,10 @@ function pintarFiltrosEmision(){
 (function mandosEmision(){
  activarDetallesOfertas();
  const filtros=document.getElementById('emiFiltros'),orden=document.getElementById('emiOrden');
+ const pestanasEmi=document.getElementById('emiColecciones');
+ if(pestanasEmi&&pestanasEmi.addEventListener)pestanasEmi.addEventListener('click',ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest('[data-emi-coleccion]');if(!b)return;
+  emiColeccion=b.getAttribute('data-emi-coleccion')||'principales';pintarEmisiones();
+  const nueva=pestanasEmi.querySelector('[data-emi-coleccion="'+emiColeccion+'"]');if(nueva&&nueva.focus)nueva.focus();});
  if(filtros&&filtros.addEventListener)filtros.addEventListener('click',ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest('[data-emi-cat]');if(!b)return;
   emiCat=b.getAttribute('data-emi-cat')||'';pintarFiltrosEmision();pintarEmisiones();if(typeof Sonido!=='undefined'&&Sonido.marcar)Sonido.marcar()});
  if(orden&&orden.addEventListener)orden.addEventListener('change',()=>{emiOrden=orden.value||'cierra';pintarEmisiones()});
@@ -4295,7 +4306,8 @@ const Movil = (function(){
  const detalles=new Map([
   ['presentacion',portadaTexto],['metodo',metodo],['fuera',fuera]
  ].filter(([,nodo])=>Boolean(nodo)));
- const ordenMovil=[emisiones,herramienta,barra,radarIntro,radarPortada,marcador,bannerAcademy,resultados,transparencia,academia,portadaTexto,portada].filter(Boolean);
+ const selectorBuscar=document.getElementById('movilBuscarSelector');
+ const ordenMovil=[selectorBuscar,emisiones,herramienta,barra,radarIntro,radarPortada,marcador,bannerAcademy,resultados,transparencia,academia,portadaTexto,portada].filter(Boolean);
  const movibles=[...ordenMovil,explicador,leccionesAcademy].filter(Boolean);
  const anclas=new Map();
  if(typeof document.createComment==='function')movibles.forEach((nodo,indice)=>{
@@ -4622,8 +4634,26 @@ const Movil = (function(){
    geometria();
   }
  }
+ /* Ofertas o plataformas dentro de Buscar (solo en el móvil). */
+ const DE_PLATAFORMAS=new Set(['tool','plataformasResultados','movilRadarIntro']);
+ function verEnBuscar(que){
+  document.body.dataset.movilBuscar=que;
+  if(selectorBuscar)selectorBuscar.querySelectorAll('[data-movil-buscar]').forEach(b=>{
+   const on=b.dataset.movilBuscar===que;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;
+  });
+ }
+ if(selectorBuscar)selectorBuscar.addEventListener('click',e=>{
+  const b=e.target.closest&&e.target.closest('[data-movil-buscar]');
+  if(!b)return;
+  verEnBuscar(b.dataset.movilBuscar);
+  window.scrollTo({top:0,behavior:'auto'});
+  geometria();
+ });
+ verEnBuscar(typeof location!=='undefined'&&DE_PLATAFORMAS.has((location.hash||'').slice(1))?'plataformas':'ofertas');
  function ir(destino,origen=null){
   cambiar('buscar',{arriba:false});
+  if(destino==='emisiones')verEnBuscar('ofertas');
+  else if(DE_PLATAFORMAS.has(destino))verEnBuscar('plataformas');
   if(detalles.has(destino)){
    requestAnimationFrame(()=>mostrarDetalle(destino,true,true,origen));
    return;
