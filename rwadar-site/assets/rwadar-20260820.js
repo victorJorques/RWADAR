@@ -1900,8 +1900,9 @@ function estadoVigenciaLocal(o,ahora=new Date()){
  if(base>hoyUTC)return {clase:'caducado',texto:'revisión futura no válida'};
  const resta=Math.floor((base+ttl*86400000-hoyUTC)/86400000);
  if(resta<0)return {clase:'caducado',texto:'cifras por actualizar'};
- if(o.permanente)return {clase:'permanente',texto:resta===0?'revisar hoy':'vigente '+resta+' d'};
- return {clase:'vigente',texto:resta===0?'revisar hoy':resta===1?'vigente 1 d':'vigente '+resta+' d'};
+ /* Mismas palabras que la app: dicen hasta cuándo valen las cifras. */
+ if(o.permanente)return {clase:'permanente',texto:resta===0?'cifras vigentes hasta hoy':'cifras vigentes '+resta+' d'};
+ return {clase:'vigente',texto:resta===0?'cifras vigentes hasta hoy':'cifras vigentes '+resta+' d'};
 }
 // La documentación tiene su propia fecha: no amplía el TTL de una cifra ni
 // confirma apertura. Mantener la semántica de validarDocumentacionOferta del
@@ -2034,6 +2035,17 @@ function clavesOfertaLocal(o,secundario){
 /* Como en los buscadores de viajes: dónde está el activo, con su chincheta. */
 const ICONO_LUGAR='<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
 const AVISO_GENERAL_OFERTA=/^Referencia editorial gratuita\b/;
+/* Lo primero que piden los usuarios en una tarjeta: quién supervisa la
+   plataforma. Sale del radar; sin promesas ni sellos que no consten. */
+const ICONO_SUPERVISOR='<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/></svg>';
+function supervisionOferta(o){
+ const p=(typeof P!=='undefined'&&Array.isArray(P)?P:[]).find(x=>x&&x.slug===o.plataformaSlug);
+ const estado=p&&p.verificacionLocal&&p.verificacionLocal.licenciaRegistro&&p.verificacionLocal.licenciaRegistro.estado;
+ if(estado==='confirmada_regulador')return {clase:'ok',texto:'Plataforma registrada ante su supervisor'};
+ if(estado==='confirmada_documento_producto')return {clase:'ok',texto:'Producto con folleto aprobado'};
+ if(p)return {clase:'pendiente',texto:'Registro de la plataforma por confirmar'};
+ return {clase:'pendiente',texto:'Plataforma aún no evaluada en el radar'};
+}
 function tarjetaOfertaLocal(o,{secundario=false}={}){
  const estado=estadoVigenciaLocal(o),tipo=tipoOfertaLocal(o),claves=clavesOfertaLocal(o,secundario);
  const documentacion=documentacionOfertaLocal(o);
@@ -2056,6 +2068,7 @@ function tarjetaOfertaLocal(o,{secundario=false}={}){
    (o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
    '<h3 class="emi-tit">'+escHtml(o.titulo)+'</h3><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
    (imagen&&imagen.lugar?'<p class="emi-lugar">'+ICONO_LUGAR+escHtml(imagen.lugar)+'</p>':'')+
+   (o=>'<p class="emi-supervision '+o.clase+'">'+ICONO_SUPERVISOR+escHtml(o.texto)+'</p>')(supervisionOferta(o))+
    '<div class="escaparate-dato-principal"><span>'+escHtml(claves.destacado.etiqueta)+'</span><b>'+escHtml(claves.destacado.valor)+'</b>'+
     (referencia?'<p class="escaparate-referencia">'+escHtml(referencia)+'</p>':'')+'</div>'+
    '<span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+

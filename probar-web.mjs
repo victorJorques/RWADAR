@@ -2089,8 +2089,8 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     },
   };
   const casos = [
-    {nombre:'rendimiento vigente', cambios:{}, estado:'vigente 7 d'},
-    {nombre:'valor vigente', cambios:{slug:'regresion-valor', tipo:'valor'}, estado:'vigente 7 d'},
+    {nombre:'rendimiento vigente', cambios:{}, estado:'cifras vigentes 7 d'},
+    {nombre:'valor vigente', cambios:{slug:'regresion-valor', tipo:'valor'}, estado:'cifras vigentes 7 d'},
     {nombre:'caducada con documentación reciente', cambios:{slug:'regresion-caducada', verificadaEl:'2026-09-01', vigenciaDias:1}, estado:'cifras por actualizar'},
     {nombre:'apertura no confirmada', cambios:{slug:'regresion-apertura', estadoRevision:'no_verificable'}, estado:'apertura no confirmada'},
     {nombre:'fuentes en conflicto', cambios:{slug:'regresion-conflicto', estadoRevision:'fuentes_en_conflicto'}, estado:'fuentes en conflicto'},
