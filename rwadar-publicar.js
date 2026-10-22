@@ -23,6 +23,8 @@ const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { comprobar: comprobarAcademy, paginasAcademy } = require('./rwadar-academy');
 const { comprobar: comprobarNoticias } = require('./rwadar-noticias');
+const { comprobar: comprobarFichas } = require('./rwadar-fichas');
+const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
@@ -43,7 +45,7 @@ const FILE = path.join(DIR, 'index.html');
 /* Todas las páginas HTML propias: pasan la misma CSP estricta y reciben los
    nombres versionados de los assets. */
 const PAGINAS_HTML = ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html',
-  ...PAGINAS_ACADEMY];
+  ...PAGINAS_ACADEMY, ...PAGINAS_FICHAS.filter(nombre => nombre.endsWith('.html'))];
 const SALIDA = path.join(__dirname, 'rwadar-publicado');
 const WRANGLER_VERSION = '4.125.0';
 const modos = ['--local', '--preview', '--produccion'].filter(x => process.argv.includes(x));
@@ -142,6 +144,10 @@ try {
   console.error('NOTICIAS BLOQUEADAS:', e.message);
   process.exit(2);
 }
+try {
+  const pendientes = comprobarFichas();
+  if (pendientes.length) throw new Error(`no están al día (ejecuta node rwadar-fichas.js): ${pendientes.join(', ')}`);
+} catch (e) { console.error('FICHAS BLOQUEADAS:', e.message); process.exit(2); }
 try { validarArbolPublicable(DIR); }
 catch (e) { console.error('ARBOL PUBLICABLE BLOQUEADO:', e.message); process.exit(2); }
 try { validarOrigenPublicable(DIR); }
@@ -239,6 +245,25 @@ if (!scriptFile.startsWith(path.resolve(DIR) + path.sep) || !fs.existsSync(scrip
   process.exit(1);
 }
 const script = fs.readFileSync(scriptFile, 'utf8');
+// La copia completa se carga como recurso clásico antes del comportamiento.
+// Su ruta es literal: no se ejecuta un archivo que el catálogo haya elegido.
+const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
+const indiceCatalogo = scriptsPropios.findIndex(s => s[1] === rutaCatalogo);
+const indiceHelper = scriptsPropios.findIndex(s => s[1] === '/assets/ficha-editorial-20261022.js');
+if (scriptsPropios.filter(s => s[1] === rutaCatalogo).length !== 1 ||
+    indiceCatalogo >= scriptsPropios.length - 1 || indiceCatalogo < 0 ||
+    indiceHelper <= indiceCatalogo || indiceHelper >= scriptsPropios.length - 1 ||
+    scriptsPropios.slice(indiceCatalogo).some(s => !/\bdefer\b/i.test(s[0]) || /\basync\b|\btype\s*=/i.test(s[0])) ||
+    JSON.stringify(scriptsPropios.slice(indiceHelper+1,-1).map(s=>s[1]))!==JSON.stringify([
+      '/assets/idioma-en-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js'])) {
+  console.error('ERROR: el snapshot único del catálogo debe cargar con defer antes del comportamiento.');
+  process.exit(1);
+}
+const scriptCatalogo = fs.readFileSync(path.join(DIR, rutaCatalogo.slice(1)), 'utf8');
+// Acorn interpreta solo datos literales y el contrato exige el lote íntegro.
+// La VM de pre-renderizado recibe exactamente esa misma copia ya validada.
+const { leerBloquesCatalogo, validarCatalogoSnapshot } = require('./rwadar-fichas');
+validarCatalogoSnapshot(leerBloquesCatalogo(scriptCatalogo));
 
 /* ---- 1b · ¿compila? -------------------------------------------------
    Un error de sintaxis no rompe el pre-renderizado: el simulador ejecuta
@@ -248,7 +273,7 @@ const script = fs.readFileSync(scriptFile, 'utf8');
    escritas en el HTML, así que el pre-renderizado parece correcto. Pasó.
    Comprobarlo aquí cuesta un milisegundo. */
 try {
-  new Function(script);
+  new Function(scriptCatalogo + '\n' + script);
 } catch (e) {
   console.error('ERROR DE SINTAXIS en el script de index.html: ' + e.message);
   console.error('No se toca el archivo ni se publica.');
@@ -291,6 +316,7 @@ const document = {
 };
 
 const contexto = {
+  RWAdarFichaEditorial: require('./rwadar-movil/lib/ficha-editorial'),
   document,
   console,
   Option: function(){},
@@ -318,6 +344,7 @@ contexto.globalThis = contexto;
 contexto.window.document = document;
 
 vm.createContext(contexto);
+vm.runInContext(scriptCatalogo, contexto, { timeout: 15000 });
 vm.runInContext(script, contexto, { timeout: 15000 });
 
 /* ---- 3 · comprobar que hay algo que inyectar ---- */
@@ -456,7 +483,7 @@ function construirSalida() {
        servirá. De este modo immutable nunca congela bytes bajo un nombre
        antiguo y un cambio de datos también cambia el JS. */
     const referencias = new Map();
-    for (const nombre of ARCHIVOS_PUBLICABLES.filter(x => x.startsWith('assets/'))) {
+    for (const nombre of ARCHIVOS_PUBLICABLES.filter(x => x.startsWith('assets/') && /\.(?:css|js)$/.test(x))) {
       const archivo = path.join(temporal, ...nombre.split('/'));
       const fuente = fs.readFileSync(archivo, 'utf8');
       let reducido;

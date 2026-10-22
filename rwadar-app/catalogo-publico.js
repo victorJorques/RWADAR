@@ -20,6 +20,7 @@ const {
   validarLotePublicoV2,
   COLECCIONES_OFERTA,
   MANIFIESTO_CATALOGO_V2,
+  LIMITES_CATALOGO_V2,
 } = require('../rwadar-movil/lib/contrato-catalogo');
 
 function cargarFuentesLocales(raiz = path.join(__dirname, '..'), { revision, versionEsquema = 1 } = {}) {
@@ -198,5 +199,6 @@ module.exports = {
   validarLotePublicoV2,
   validarManifiestoV2,
   MANIFIESTO_CATALOGO_V2,
+  LIMITES_CATALOGO_V2,
   normalizarManifiestoLocal,
 };

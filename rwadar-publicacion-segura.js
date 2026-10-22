@@ -4,6 +4,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
+const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 
 const SUPABASE_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co/auth/v1';
 const CLAVE_PUBLICA = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
@@ -72,10 +73,16 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-academy.js',
   'rwadar-noticias',
   'rwadar-noticias.js',
+  'rwadar-fichas.js',
+  'rwadar-fichas-manifiesto.js',
   'rwadar-adelgazar.js',
   'rwadar-app/sincronizar.js',
   'rwadar-app/catalogo-publico.js',
   'rwadar-movil/lib/contrato-catalogo.js',
+  'rwadar-movil/lib/ficha-editorial.js',
+  'rwadar-movil/lib/idioma.js',
+  'rwadar-movil/lib/idioma-en.js',
+  'rwadar-movil/scripts/copiar-idiomas-web.cjs',
   'rwadar-movil/assets/ofertas-editoriales',
   'rwadar-ofertas-editoriales.js',
   'rwadar-publicacion-segura.js',
@@ -105,13 +112,25 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   '_redirects',
   '404.html',
   ...PAGINAS_ACADEMY,
+  ...PAGINAS_FICHAS,
   'assets/academy-20261002.css',
   'assets/academy-20261002.js',
   'assets/analitica-20260927.js',
   'assets/error-20260820.css',
+  'assets/ficha-editorial-20261022.js',
+  'assets/ficha-pagina-20261022.js',
+  'assets/fichas-20261022.css',
+  'assets/fuentes/geist-normal-6ab67a4f11f1.woff2',
+  'assets/fuentes/geist-italic-0138eaff66cd.woff2',
+  'assets/fuentes/geist-mono-normal-7ead591194e0.woff2',
   'assets/privacidad-20260820.css',
   'assets/rwadar-20260820.css',
   'assets/rwadar-20260820.js',
+  'assets/catalogo-publico-20261022.js',
+  'assets/idioma-en-20261022.js',
+  'assets/idioma-20261022.js',
+  'assets/idioma-web-20261022.js',
+  'assets/idioma-20261022.css',
   'c9417d2d5003bb9a41fee63c7f5ec00f.txt',
   'google6b2e3e5f58b7e557.html',
   'icono-192.png',

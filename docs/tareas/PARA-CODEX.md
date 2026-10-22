@@ -6,6 +6,43 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 22 de octubre de 2026 · Codex · segunda revisión integral, idiomas y ciclo diario
+
+Trabajo posterior al cierre de la web y Android 1.3.2 descrito debajo. Se integró
+la reorganización de Claude y se atendió la ampliación pedida por Víctor. La
+publicación nueva se documenta por separado; no reutilizar la prueba de 1.3.2
+como si demostrase el APK 1.4.0.
+
+- **Fuente móvil:** `6735317` y `3af2033`, Android 1.4.0, fichas acotadas al área visible,
+  radar y sus toques corregidos, datos editoriales citables e idiomas ES/EN.
+  Suite final 233/233 y comprobación Expo/Metro correcta. El candidato de código
+  17 se canceló por una modificación durante la preparación del archivo; se
+  consolidó esa corrección y se inició el código 18 dentro de la cuota gratuita.
+  La QA y publicación se cierran con sus propios identificadores cuando terminen.
+- **Catálogo aplicado:** lote del 22/10, vigente hasta el 29/10, 26 plataformas,
+  49 referencias y 4 descartes. SQL editorial revisado, PGlite y lectura pública
+  posterior. IOD cerrado. Los nuevos detalles investigados en el informe de
+  condiciones no se aplicaron automáticamente como hechos acreditados.
+- **Web en integración:** segunda mitad de la reorganización, detalle sin
+  recorte, campos mínimo EUR/España/salida/costes, 49 páginas de oferta,
+  26 de plataforma, 4 de descarte, metodología, cambios y RSS. Snapshot
+  separado del comportamiento, helper común y fuentes WOFF2 reutilizadas.
+- **Vídeo local entregado:** evaluación grabada de la interfaz real mediante
+  nueve perfiles simulados, 45/45 tareas observables y reproducción completa
+  de la edición final. No es investigación con nueve personas reales.
+- **Tarea diaria activa:** «RWAdar · investigación y publicación diaria», a las
+  09:00 locales del PC por autorización expresa de Víctor; actualmente coincide
+  con España peninsular. Investigación documental profunda, decisión diaria
+  binaria, sin cola «en investigación», revisión independiente y publicación
+  editorial tras las compuertas. PC y aplicación deben estar encendidos.
+- **Seguridad:** comunidad OFF y su refuerzo probado localmente, sin aplicar
+  esa migración; callback de cuentas corregido. Turnstile, allowlist real de
+  Auth y los flujos con credenciales del titular siguen separados y pendientes.
+
+Detalle: [`VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md`](../VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md),
+[`CICLO-DIARIO-CATALOGO.md`](CICLO-DIARIO-CATALOGO.md) y los informes de
+condiciones y seguridad fechados el 22/10. No borrar informes anteriores.
+
 ## 22 de octubre de 2026 · Codex · web desde main y Android 1.3.2 publicados
 
 **Rama:** `main` de `victorJorques/RWADAR`, privado. Víctor autorizó en el turno

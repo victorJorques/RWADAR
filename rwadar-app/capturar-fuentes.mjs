@@ -45,8 +45,17 @@ function leerPdf(url) {
   try {
     for (const agente of [UA, 'curl/8.5.0']) {
       try { execFileSync('curl', ['-sSL', '--max-time', '60', '-A', agente, '-o', tmp, url]); } catch { continue; }
-      if (fs.existsSync(tmp) && fs.readFileSync(tmp).subarray(0, 4).toString() === '%PDF')
-        return execFileSync('pdftotext', ['-layout', tmp, '-'], { maxBuffer: 64 << 20 }).toString();
+      if (fs.existsSync(tmp) && fs.readFileSync(tmp).subarray(0, 4).toString() === '%PDF') {
+        try {
+          return execFileSync('pdftotext', ['-layout', tmp, '-'], { maxBuffer: 64 << 20 }).toString();
+        } catch (error) {
+          if (error.code !== 'ENOENT' || !process.env.RWADAR_PYTHON) throw error;
+          // Alternativa explícita para Windows: solo lee el PDF ya descargado.
+          return execFileSync(process.env.RWADAR_PYTHON, ['-c',
+            'import sys; from pypdf import PdfReader; print("\\n".join(p.extract_text() or "" for p in PdfReader(sys.argv[1]).pages))', tmp],
+          { maxBuffer: 64 << 20, env: { ...process.env, PYTHONIOENCODING: 'utf-8' } }).toString('utf8');
+        }
+      }
     }
     throw new Error('la respuesta no es un PDF');
   } finally { fs.rmSync(tmp, { force: true }); }
@@ -131,7 +140,7 @@ async function trabajador() {
         // (NYDFS). Otras (REGAFI) cortan la conexión a ratos: hasta tres rondas.
         let intentos = [];
         for (let ronda = 0; ronda < 3; ronda++) {
-          if (ronda) execFileSync('sleep', [String(3 * ronda)]);
+          if (ronda) await new Promise(resolve => setTimeout(resolve, 3000 * ronda));
           intentos = [UA, 'curl/8.5.0'].map(agente => { try { return leerHtml(url, agente); } catch { return null; } });
           if (intentos.some(d => d && d.estado === 200 && !BLOQUEO.test(d.titulo))) break;
         }

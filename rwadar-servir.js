@@ -10,7 +10,9 @@
 
    Abrir index.html con doble clic también funciona, pero desde file:// no se
    reproducen rutas, CSP ni service worker. Este servidor activa la revisión
-   aislada de loopback: usa el fixture local y no permite conectar a Supabase.
+   aislada de loopback: usa el snapshot publicable y no permite conectar a Supabase.
+   --lote=2026-10-22-v2 revisa un lote preparado sin aplicarlo al servidor.
+   El fixture antiguo solo se activa con --fixture-historico.
 
    Con el flag explícito --capturas acepta POST /guardar?n=algo.png y
    escribe el cuerpo junto a
@@ -21,13 +23,54 @@
    forma de VER lo que sale de la tarjeta gráfica.
    ===================================================================== */
 const http = require('http'), fs = require('fs'), path = require('path');
+const assert = require('node:assert/strict');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
+const { leerCatalogo, validarCatalogoSnapshot } = require('./rwadar-fichas');
+const { cargarFuentesLocales, construirSqlImportacion, MAX_VIGENCIA_DIAS } = require('./rwadar-app/catalogo-publico');
+const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 
 const DIR = path.join(__dirname, 'rwadar-site');
 const DIR_REAL = fs.realpathSync(DIR);
 const RAIZ = path.resolve(__dirname);
 const RAIZ_REAL = fs.realpathSync(RAIZ);
 const ESCAPARATE_LOCAL = path.join(RAIZ, 'rwadar-movil', 'fixtures', 'escaparate-local.json');
+const FIXTURE_HISTORICO = process.argv.includes('--fixture-historico');
+const argumentoLote = process.argv.find(x => x.startsWith('--lote='));
+const LOTE_LOCAL = argumentoLote ? argumentoLote.slice(7) : null;
+if (LOTE_LOCAL && !/^\d{4}-\d{2}-\d{2}-v2$/.test(LOTE_LOCAL)) throw new Error('Lote local no válido');
+if (LOTE_LOCAL && FIXTURE_HISTORICO) throw new Error('Elige un lote o el fixture histórico');
+
+function snapshotLocal({raiz = RAIZ, lote = LOTE_LOCAL} = {}) {
+  if (lote && !/^\d{4}-\d{2}-\d{2}-v2$/.test(lote)) throw new Error('Lote local no válido');
+  let datos = leerCatalogo(raiz);
+  if (lote) {
+    const fuentes = cargarFuentesLocales(raiz,{revision:lote.slice(0,10),versionEsquema:2});
+    const importacion = construirSqlImportacion(fuentes);
+    const {escaparate,manifiesto} = fuentes;
+    const revision = JSON.parse(fs.readFileSync(path.join(raiz,'rwadar-app/data/importaciones',
+      'catalogo-'+lote,'revision.json'),'utf8'));
+    assert(revision.versionEsquema===2 && revision.revisionId===importacion.revisionId &&
+      revision.hash===importacion.hash && revision.fechaRadar===fuentes.radar.verificadoEl &&
+      revision.plataformas===manifiesto.plataformasEsperadas && revision.ofertas===manifiesto.ofertasEsperadas,
+      'La identidad o los conteos del lote local no coinciden con su contenido');
+    const verificaciones = new Map(escaparate.plataformas.map(p=>[p.slug,p.verificacionLocal]));
+    assert.equal(datos.plataformas.length,manifiesto.plataformasEsperadas,
+      'El snapshot canónico no contiene todas las plataformas del lote local');
+    const metadatos = {version_esquema:2,plataformas_esperadas:manifiesto.plataformasEsperadas,
+      ofertas_esperadas:manifiesto.ofertasEsperadas,colecciones_esperadas:{...manifiesto.coleccionesEsperadas},
+      verificado_lote_el:revision.fechaRadar,vigencia_lote_dias:MAX_VIGENCIA_DIAS,revisionId:revision.revisionId};
+    const minimo = datos.manifiesto;
+    datos.plataformas = datos.plataformas.map(p=>{
+      if (!verificaciones.has(p.slug)) throw new Error('Plataforma ausente en el lote');
+      return {...p,...metadatos,verificacionLocal:verificaciones.get(p.slug)};
+    });
+    datos.ofertas = escaparate.ofertas.map(o=>({...o,...metadatos,catalogo:true}));
+    datos = validarCatalogoSnapshot(datos,{manifiesto:minimo});
+  }
+  return {versionEsquema:2,lote:lote || 'snapshot-publicable',preparado:Boolean(lote),
+    fuente:{url:'https://rwadar.pages.dev/',revision:datos.revision},manifiesto:datos.manifiesto,
+    plataformas:datos.plataformas,descartes:datos.fuera,ofertas:datos.ofertas};
+}
 const DIR_OFERTAS_LOCAL = path.join(RAIZ, 'rwadar-movil', 'assets', 'ofertas');
 const ACTIVOS_EDITORIALES = cargarActivosEditoriales(RAIZ);
 const EDITORIALES_LOCALES = new Map(ACTIVOS_EDITORIALES.publicables.map((entrada) => [
@@ -45,11 +88,12 @@ const LIMITE_CAPTURA = 8 * 1024 * 1024;
 const CAPTURAS = process.argv.includes('--capturas');
 const TIPO = {
   '.html': 'text/html; charset=utf-8', '.png': 'image/png', '.webp': 'image/webp',
-  '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml',
+  '.txt': 'text/plain; charset=utf-8', '.xml': 'application/rss+xml; charset=utf-8',
   '.json': 'application/json; charset=utf-8', '.csv': 'text/csv; charset=utf-8',
   '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
   '.mjs': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml',
   '.webmanifest': 'application/manifest+json; charset=utf-8',
+  '.woff2': 'font/woff2',
 };
 const CSP = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; " +
   "frame-ancestors 'none'; worker-src 'self'; manifest-src 'self'; script-src 'self'; style-src 'self'; " +
@@ -109,13 +153,13 @@ function sanearIndiceLocal(contenido) {
   html = reemplazarPrerender(html, 'outlist',
     '<div class="emis-vacio" role="status"><h3>Cargando exclusiones verificadas…</h3><p>No se muestran descartes anteriores mientras se valida la capa local.</p></div>');
   html = html
-    .replace(/<span class="n">38<\/span><span class="l">Analizadas<\/span>/,
+    .replace(/<span class="n">[^<]*<\/span><span class="l">Analizadas<\/span>/,
       '<span class="n">—</span><span class="l">Analizadas</span>')
-    .replace(/<span class="n oro" id="s1">26<\/span>/,
+    .replace(/<span class="n oro" id="s1">[^<]*<\/span>/,
       '<span class="n oro" id="s1">—</span>')
-    .replace(/<span class="n menta" id="s3">11<\/span>/,
+    .replace(/<span class="n menta" id="s3">[^<]*<\/span>/,
       '<span class="n menta" id="s3">—</span>')
-    .replace(/<span class="n coral" id="s4">4<\/span>/,
+    .replace(/<span class="n coral" id="s4">[^<]*<\/span>/,
       '<span class="n coral" id="s4">—</span>');
   return html;
 }
@@ -139,7 +183,7 @@ function servirIndiceLocal(req, res) {
   else res.end(contenido);
 }
 
-http.createServer((req, res) => {
+const servidor = http.createServer((req, res) => {
   /* Escuchar en loopback evita conexiones directas desde la LAN, pero no un
      Host arbitrario enviado a 127.0.0.1 (por ejemplo, mediante DNS rebinding).
      El origen de revisión es cerrado y siempre incluye el puerto no privilegiado. */
@@ -218,7 +262,17 @@ http.createServer((req, res) => {
      fuera de rwadar-site para que el publicador no pueda incluir por error
      ni los datos ni las imágenes entregadas para esta revisión interna. */
   if (p === '/__rwadar_local/escaparate.json') {
-    return servirLecturaLocal(req, res, ESCAPARATE_LOCAL, 'application/json; charset=utf-8');
+    if (FIXTURE_HISTORICO) return servirLecturaLocal(req, res, ESCAPARATE_LOCAL, 'application/json; charset=utf-8');
+    if (!['GET','HEAD'].includes(req.method)) {res.writeHead(405,{Allow:'GET, HEAD'});res.end();return;}
+    try {
+      const contenido = JSON.stringify(snapshotLocal());
+      res.writeHead(200,cabecerasSeguras('application/json; charset=utf-8'));
+      res.end(req.method==='HEAD' ? '' : contenido);
+    } catch {
+      res.writeHead(503,cabecerasSeguras('application/json; charset=utf-8'));
+      res.end('{"error":"lote local no disponible o incompleto"}');
+    }
+    return;
   }
   if (p.startsWith('/ofertas-editoriales/')) {
     const nombre = p.slice('/ofertas-editoriales/'.length);
@@ -314,6 +368,8 @@ http.createServer((req, res) => {
   if (p === '/privacidad') p = '/privacidad.html';
   if (p === '/transparencia-comercial') p = '/transparencia-comercial.html';
   if (p === '/para-empresas') p = '/para-empresas.html';
+  const paginaFicha = PAGINAS_FICHAS.find(nombre => nombre.endsWith('.html') && p === '/' + nombre.slice(0,-5));
+  if (paginaFicha) p = '/' + paginaFicha;
   const f = path.resolve(DIR, '.' + p);
   const dentro = f === path.resolve(DIR) || f.startsWith(path.resolve(DIR) + path.sep);
   if (!dentro || !fs.existsSync(f) || !fs.statSync(f).isFile()) {
@@ -325,4 +381,6 @@ http.createServer((req, res) => {
   }
   res.writeHead(200, cabecerasSeguras(TIPO[path.extname(f)] || 'application/octet-stream'));
   fs.createReadStream(f).pipe(res);
-}).listen(PUERTO, '127.0.0.1', () => console.log('RWAdar en http://localhost:' + PUERTO));
+});
+module.exports = {snapshotLocal,sanearIndiceLocal};
+if (require.main===module) servidor.listen(PUERTO, '127.0.0.1', () => console.log('RWAdar en http://localhost:' + PUERTO));

@@ -10,9 +10,12 @@
    publicadas den 404. Sale con código 1 si algo no cuadra.
    ===================================================================== */
 import { createRequire } from 'node:module';
+import crypto from 'node:crypto';
 
 const require = createRequire(import.meta.url);
 const academyMod = require('../rwadar-academy.js');
+const paginasFichas = require('../rwadar-fichas-manifiesto.js');
+const {ARCHIVOS_PUBLICABLES} = require('../rwadar-publicacion-segura.js');
 
 const base = String(process.argv[2] || '').replace(/\/$/, '');
 const prueba = process.env.RWADAR_COMPROBAR_LOCAL === '1' && /^http:\/\/127\.0\.0\.1:\d+$/.test(base);
@@ -78,6 +81,24 @@ ok('/academy redirige a /academy/', [301, 308].includes(sinBarra.estado) &&
   /\/academy\/$/.test(sinBarra.cabeceras.get('location') || ''));
 
 const assets = new Set();
+for (const nombre of paginasFichas) {
+  const ruta = '/' + (nombre.endsWith('.html') ? nombre.slice(0, -5) : nombre);
+  const pagina = await pedir(ruta);
+  const esHtml = nombre.endsWith('.html');
+  ok(`ficha o novedades ${ruta} publicada`, pagina.estado === 200 && (esHtml
+    ? pagina.texto.includes(`<link rel="canonical" href="https://rwadar.pages.dev${ruta}">`) &&
+      (pagina.texto.match(/<h1>/g) || []).length === 1 && /script-src 'self'/.test(pagina.cabeceras.get('content-security-policy') || '')
+    : pagina.texto.includes('<rss version="2.0"') && pagina.texto.includes('https://rwadar.pages.dev/')));
+  if(esHtml){for(const m of pagina.texto.matchAll(/(?:href|src)="(\/assets\/(?:ficha-editorial|ficha-pagina|fichas|idioma(?:-en|-web)?)-20261022\.[0-9a-f]{12}\.(?:css|js))"/g)) assets.add(m[1]);
+    ok(`interfaz de idiomas completa en ${ruta}`,(pagina.texto.match(/(?:href|src)="\/assets\/idioma(?:-en|-web)?-20261022\.[0-9a-f]{12}\.(?:css|js)"/g)||[]).length===4);}
+}
+for (const nombre of ARCHIVOS_PUBLICABLES.filter(n => n.endsWith('.woff2'))) {
+  const respuesta = await fetch(base + '/' + nombre, {cache:'no-store'});
+  const bytes = Buffer.from(await respuesta.arrayBuffer());
+  const huella = nombre.match(/-([0-9a-f]{12})\.woff2$/)?.[1];
+  ok(`tipografía íntegra ${nombre}`, respuesta.status === 200 && bytes.subarray(0,4).toString() === 'wOF2' &&
+    crypto.createHash('sha256').update(bytes).digest('hex').slice(0,12) === huella);
+}
 for (const l of publicadas) {
   const pagina = await pedir(`/academy/${l.slug}`);
   ok(`lección ${l.modulo} responde 200 con su contenido`,
@@ -87,9 +108,9 @@ for (const l of publicadas) {
     pagina.texto.includes(`Contenido revisado el <time datetime="${l.revisionLegal}">${fechaLarga(l.revisionLegal)}</time>`));
   ok(`lección ${l.modulo} aplica la CSP estricta`,
     /script-src 'self'/.test(pagina.cabeceras.get('content-security-policy') || ''));
-  for (const m of pagina.texto.matchAll(/(?:href|src)="(\/assets\/academy-20261002\.[0-9a-f]{12}\.(?:css|js))"/g)) assets.add(m[1]);
+  for (const m of pagina.texto.matchAll(/(?:href|src)="(\/assets\/(?:academy-20261002|idioma(?:-en|-web)?-20261022)\.[0-9a-f]{12}\.(?:css|js))"/g)) assets.add(m[1]);
 }
-ok('las lecciones usan la hoja y el script de la Academy con huella', assets.size === 2);
+ok('las lecciones y fichas usan sus hojas, scripts y cuatro recursos de idioma con huella', assets.size === 9);
 for (const ruta of assets) {
   const asset = await pedir(ruta);
   ok(`${ruta} responde 200`, asset.estado === 200 && asset.texto.length > 1000);

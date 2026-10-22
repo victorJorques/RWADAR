@@ -1,0 +1,265 @@
+# Ciclo diario del catálogo de RWAdar
+
+Vigente desde el 22 de octubre de 2026. Encargo de Víctor: investigar en
+profundidad las ofertas actuales y nuevas y publicar un catálogo de calidad
+con tarjeta e imagen editorial realista. El horario solicitado es **09:00 de
+España peninsular**. La tarea quedó **activa** el22/10 como «RWAdar · investigación
+y publicación diaria». Ante la limitación de la herramienta para fijar una zona,
+Víctor autorizó expresamente guardarla a las **09:00 de la hora local del PC**.
+La zona actual del equipo es Europe/Warsaw: coincide con Europe/Madrid, incluidos
+los cambios estacionales en las reglas consultadas. Si se cambia la zona del PC,
+hay que reajustar la tarea. Comprobar la hora de Madrid antes de iniciar el ciclo;
+no publicar fuera del horario acordado por un desajuste del programador.
+El PC y la aplicación deben seguir encendidos. No hay cuota de altas ni de
+cambios: un día sin novedades verificables puede terminar sin publicar.
+
+La decisión diaria por candidata es binaria: **admitida y publicada tras las
+compuertas**, o **no admitida y no publicada hoy**. No se crea una categoría ni
+estado público «en investigación», ni una cola editorial persistente de
+candidatas pendientes. Se conserva el expediente interno histórico para
+trazabilidad; mañana se investiga de nuevo desde fuentes vigentes y se decide
+de nuevo, sin arrastrar aprobaciones.
+
+La autorización recurrente abarca **datos del catálogo y publicación web**,
+incluidos el SQL editorial concreto revisado, preview y producción. No abarca
+cuentas, comunidad, políticas o funciones, credenciales, correo, pagos, EAS,
+OTA, tiendas, cambios de visibilidad ni activaciones de servicios. Una tarea
+que necesite esas operaciones se deja pendiente y se explica por separado.
+No ejecutar una migración general ni un `db push` como parte del ciclo.
+
+## 1. Preparar la revisión y leer lo publicado
+
+1. Leer `AGENTS.md`, la entrada vigente de `PARA-CODEX.md`, `INTERNO.md` y la
+   sección necesaria de `RUNBOOK.md`. Confirmar rama, cambios compartidos y
+   autorización. `git status --short --branch` antes y después de generadores.
+2. Leer, sin mutar, el lote público actual y su manifiesto: revisión, fecha,
+   cantidades y distribución por colecciones. Guardar esa identidad y la hora
+   como precondición del SQL. No suponer que Git describe lo que está en línea.
+3. Crear el expediente del día bajo
+   `rwadar-app/data/verificaciones/AAAA-MM-DD-v2/`. Conservar las fuentes de la
+   revisión anterior; nunca sobrescribir una fecha histórica para fingir una
+   consulta nueva. Registrar el inventario completo de fichas que se revisará.
+4. Conservar el catálogo público completo mientras se investiga. Un fallo de
+   red o una revisión caducada produce un aviso y oculta cifras vencidas; no
+   vacía tarjetas ni elimina plataformas. Una retirada necesita una fuente
+   citable y una decisión editorial explícita.
+
+## 2. Investigar cada oferta, también las ya publicadas
+
+La captura y las expresiones de `comprobaciones-fuentes.json` son una base de
+transporte y contraste. **69/69 fuentes correctas no demuestra una investigación
+en profundidad**. En el corte inicial hay 69 fuentes del radar; el inventario
+debe crecer con las fuentes necesarias para nuevas fichas. También hay que
+leer las fuentes particulares de todas las ofertas, documentos y registros.
+
+Cada ficha tiene un expediente por slug en `expedientes/`, con una matriz
+de evidencias que permite reconstruir cada afirmación publicada:
+
+| Campo o afirmación | Literal breve | Fuente primaria y localizador | Fecha del dato | Consulta | Alcance, límites y conflicto |
+|---|---|---|---|---|---|
+| Ejemplo: mínimo | Texto exacto imprescindible | URL HTTPS; documento, versión y página/sección | Fecha o «no consta» | Fecha y hora con zona | Moneda, clase, mercado, residencia y discrepancias |
+
+Registrar además el título del documento, emisor, entidad legal, jurisdicción,
+ISIN o identificador del producto cuando exista y el hash de los documentos
+conservados. No copiar documentos restringidos o datos personales al sitio.
+El literal se conserva corto; el texto de la tarjeta se redacta con sus límites.
+
+Para **cada oferta actual y cada candidata**:
+
+- Leer la ficha oficial completa y sus condiciones vigentes. Abrir el folleto,
+  KID/KIID, documento de emisión, términos de token y tarifas cuando apliquen.
+  Volver a comprobar versión y fechas del PDF relevante: una URL estable puede
+  servir un documento nuevo o antiguo. Guardar página y sección exactas.
+- Triangular la entidad que comercializa, el emisor, el vehículo, el token y
+  el derecho adquirido. Consultar directamente el registro regulador aplicable
+  y su alcance; una licencia de la entidad no acredita cualquier producto,
+  rentabilidad, distribución en España o protección del inversor.
+- Acreditar acceso desde España, restricciones y elegibilidad, mínimo y moneda,
+  comisiones de entrada/gestión/salida, custodia y titularidad, mecanismo de
+  salida, liquidez, plazos, estado de la emisión, agotamiento/cierre y riesgos.
+  Distinguir mercado primario, reventa y mera referencia documental.
+- Para precios y rendimiento: anotar fecha del dato y de consulta, base de
+  cálculo, plazo, divisa, clase, bruto/neto, histórico/objetivo/variable y fuente
+  que respalda exactamente la cifra. No deducir una cifra de una imagen ni
+  convertir una expectativa en rendimiento disponible.
+- Contrastar cambios y conflictos entre portada, contrato, folleto, API,
+  registro y documento del activo. Explicar la discrepancia; no elegir la
+  cifra más atractiva ni renovar su fecha por descargar otra página.
+- Si el script queda bloqueado, abrir la fuente con navegador y leerla. Si no
+  se puede acceder, registrar el bloqueo, el último dato realmente comprobado
+  y la incertidumbre. No marcar «consultada hoy» una fuente que no se leyó.
+  La portada, un buscador, un resumen de IA o una coincidencia de regex no
+  sustituyen el documento primario.
+
+Una candidata sin datos esenciales citables **no se admite ni se publica hoy**.
+Su expediente puede conservar la razón fechada de esa decisión, sin convertirse
+en una cola de publicación pendiente. Una ficha existente con datos no renovados conserva su
+información documental y avisos, pero pierde las cifras que ya no pueden
+sostenerse. No inventar una renovación completa porque el script terminó.
+
+Un agente distinto revisa el expediente y las fuentes de **cada alta y cada
+cambio crítico**: cifras, acceso, licencia, derecho/token, comisiones, custodia,
+salida y estado de apertura/cierre. Debe dejar su conclusión, hechos comprobados
+y bloqueos concretos. No basta con contar comprobaciones, pasar un porcentaje
+o declarar satisfacción sin evidencias.
+
+## 3. Preparar datos e imágenes completos
+
+La fuente de verdad pública es Supabase. Los datos se preparan en el expediente
+y el lote editorial; no se añaden manualmente al HTML ni a los arrays del JS.
+
+Como punto de partida de captura y preparación, desde la raíz:
+
+```powershell
+npm run catalogo -- --fecha=AAAA-MM-DD
+```
+
+Revisar el informe, contraste y cambios que produce. La salida del script no
+sustituye el expediente de la sección anterior ni autoriza por sí sola una
+publicación. Tras completar la investigación manual, volver a montar y probar
+el lote con las utilidades existentes:
+
+```powershell
+node rwadar-app/montar-revision.mjs AAAA-MM-DD
+node rwadar-app/comprobar-revision.mjs AAAA-MM-DD
+```
+
+Cada alta se incorpora al manifiesto editorial explícito
+`manifiesto-catalogo.json`, a las ofertas, documentación, fuentes e imágenes del
+mismo corte. El importador sigue validando cantidades y colecciones **exactas**;
+no deduce que un fichero truncado sea un nuevo catálogo. Comprobar que el
+generador toma la revisión deseada antes de ejecutarlo, especialmente si hay
+otras herramientas trabajando en la misma carpeta.
+
+Cada nueva ficha exige revisar y añadir su ruta literal exacta en
+`rwadar-fichas-manifiesto.js`. El generador y el publicador conservan esta lista
+cerrada: validar un lote mayor no autoriza automáticamente rutas nuevas.
+
+Para la imagen de cada alta o cambio visual:
+
+- Definir la escena a partir de las fuentes del activo y su lugar; producir una
+  ilustración realista sin marcas falsas, texto inventado ni promesas de valor.
+  No presentar una imagen generada como fotografía del activo.
+- Mantener `rwadar-editorial-source/ofertas/fichas.json`, `fotos.json` y la foto
+  maestra por slug. Generar mediante el flujo editorial documentado en su
+  `README.md`; conservar dimensiones, tamaños, SHA y manifiesto de salida.
+- Revisar personalmente la imagen nueva completa y el recorte de **tarjeta y
+  detalle**, en móvil y escritorio: activo/lugar coherentes, rótulo editorial,
+  texto legible, sin solapes ni errores visibles. Un segundo agente inspecciona
+  cada imagen nueva y los casos de conflicto. Corregir antes de publicar.
+- El texto alternativo opcional `documentacion.imagenEditorialAlt` admite
+  20–400 caracteres. El cliente añade la identificación de ilustración generada
+  con IA. Una oferta nueva usa únicamente la ruta editorial canónica
+  `https://rwadar.pages.dev/ofertas-editoriales/oferta-<slug>.webp`; no recibe
+  URLs de imagen arbitrarias de la API. Mantener los fallback de categoría.
+
+## 4. Revisar el SQL de forma independiente
+
+Una segunda revisión debe comparar `catalogo.sql`, `aplicar-y-aprobar.sql`,
+`revision.json`, fuentes y expedientes. Inventariar **todas** las sentencias y
+tablas afectadas, no solo buscar palabras en el texto del SQL.
+
+El lote diario solo puede insertar datos editoriales de la revisión nueva en
+`rwadar_catalogo` y aprobar esa revisión. Debe conservar el historial y el
+catálogo anterior. No puede modificar usuarios, Auth, RLS, ACL, funciones,
+esquema, capacidades, servicios ni credenciales. No incluir en este flujo la
+migración de comunidad preparada en el repositorio.
+
+Antes de aplicar:
+
+1. Probar en PGlite la carga inicial y repetida (idempotencia), completitud y
+   aprobación. La importación técnica sin aprobar conserva el lote público
+   anterior y solo la revisión
+   completa aprobada puede sustituirlo. Contrastar cantidades, colecciones,
+   slugs, documentación y cifras con el manifiesto y los expedientes.
+2. Registrar SHA-256 del SQL final y el inventario de mutaciones. Una edición
+   posterior invalida esa revisión y sus pruebas hasta repetirlas.
+3. Volver a leer la revisión pública inmediatamente antes de aplicar. Usar una
+   transacción con aislamiento serializable y una guarda que compare la
+   revisión anterior exacta. Si cambió por otra herramienta, detener ese lote,
+   reconciliar y volver a revisar; no aprobar sobre un estado supuesto.
+4. Aplicar exclusivamente los bytes revisados mediante el acceso autorizado,
+   sin recuperar tokens antiguos ni copiar claves a la documentación. Ante
+   error de transacción no continuar con una aprobación separada.
+5. Leer después, como público, las vistas V2: revisión, fechas, cantidades,
+   colecciones y cada dato crítico cambiado. El éxito local o del comando SQL
+   no acredita por sí solo el estado remoto. Guardar esta comprobación.
+
+La autorización recurrente de Víctor cubre este SQL de catálogo revisado. Una
+necesidad de ampliar el esquema o tocar otra área se presenta aparte.
+
+## 5. Comprobar web, clientes y publicar
+
+El contrato de lectores V2 admite ampliación explícita con
+`permitirAmpliacion:true`. Todas las filas deben declarar el mismo lote,
+fecha/vigencia y manifiesto, y sus cantidades reales deben coincidir. Límites
+del lector: **256 plataformas y 1000 ofertas**. El mínimo es el manifiesto del
+último lote completo aceptado, incluidas sus tres colecciones: no se admite
+pasar de 50 a 49 ni reducir una colección como efecto de un truncado. Una
+reducción o reclasificación deliberada necesita revisar expresamente el
+manifiesto y la compatibilidad de clientes, fuera del camino automático de altas.
+
+Las vistas V2 ya usan los conteos declarados y permiten que una oferta tenga
+un proveedor distinto de las 26 plataformas canónicas. Añadir una oferta no
+exige añadir su proveedor al radar ni cambiar la estructura SQL. Esto se prueba
+localmente con una revisión de 50 ofertas y proveedor nuevo; no equivale a
+haber aplicado o comprobado cualquier lote futuro en producción.
+
+```powershell
+node rwadar-app/sincronizar.js
+node rwadar-editorial-source/ofertas/generar.mjs --comprobar
+npm test
+npm --prefix rwadar-app run auditar:relanzamiento
+```
+
+El sincronizador valida el mínimo del snapshot anterior y escribe después de
+validar el lote completo. Ante una respuesta parcial conserva los archivos
+anteriores y devuelve error. No usar un manifiesto del candidato como mínimo
+si eso oculta que el catálogo público anterior era mayor.
+
+Revisar el diff completo, las fichas/portadas generadas, las rutas de cada alta
+y los snapshots. Actualizar las evidencias y el estado de aprobación del corte
+real conforme a la compuerta, sin inventar pruebas ni rebajar guardas. Consolidar
+los cambios revisados con autoría propia de la herramienta y sin secretos antes
+de desplegar: el publicador exige que la sincronización no deje diferencias.
+
+```powershell
+node rwadar-publicar.js --preview
+```
+
+Abrir la preview en navegador real de escritorio y móvil. Verificar el conjunto
+completo y especialmente altas/cambios: catálogo, filtros, tarjeta/detalle,
+fichas indexables, enlaces oficiales, imagen y rótulo, texto alternativo,
+metodología y aviso de vigencia. No iniciar sesión ni enviar formularios como
+parte de una comprobación pública. Si hay fallo, corregir, repetir las pruebas
+afectadas y revisar otra preview del mismo corte.
+
+Tras aprobar la preview y comprobar que el corte y el lote no cambiaron:
+
+```powershell
+node rwadar-publicar.js --produccion
+```
+
+Verificar las URLs públicas sin autenticación y contrastar recursos/contenido
+con el corte revisado. Conservar prueba HTTP y revisión visual de cada imagen
+nueva y de los cambios críticos. **Una publicación web no actualiza el APK
+instalado**: registrar qué versión móvil puede consumir el catálogo ampliado
+y sus imágenes; la app publicada anterior puede seguir con su último lote
+completo. El ciclo diario no compila ni publica una app.
+
+## 6. Cerrar con evidencia y decisiones del día
+
+Guardar un informe fechado con expedientes revisados, consultas/limitaciones,
+cambios aceptados y descartados, manifiesto, identidad del lote, SHA del SQL,
+revisor independiente, pruebas, comprobación remota, preview, producción y
+revisión de imágenes. Diferenciar «preparado», «probado localmente», «aplicado
+en Supabase» y «publicado y comprobado». Añadir el traspaso arriba de
+`PARA-CODEX.md`; mantener `INTERNO.md` en lenguaje llano, sin hashes ni IDs.
+
+Si falta una evidencia esencial, no hay acceso o falla una compuerta: conservar
+el último catálogo completo y cerrar cada candidata afectada como **no admitida
+y no publicada hoy**, indicando el motivo concreto en su expediente histórico.
+No dejarla «en investigación» ni con una aprobación pendiente para mañana.
+La siguiente ejecución vuelve a consultar las fuentes vigentes y toma una
+decisión nueva. La hora programada no convierte una investigación incompleta
+en una publicación válida.

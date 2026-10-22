@@ -94,11 +94,29 @@ paso('la ruta tiene canonical, sitemap, redirección, caché y soporte offline',
   && cabeceras.includes('/transparencia-comercial\n')
   && worker.includes("'/transparencia-comercial'"));
 
+const scriptsCsp = [
+  '<script src="/assets/analitica-20260927.js" defer></script>',
+  '<script src="/assets/idioma-en-20261022.js" defer></script>',
+  '<script src="/assets/idioma-20261022.js" defer></script>',
+  '<script src="/assets/idioma-web-20261022.js" defer></script>'
+];
+const scriptsExternosCerrados = html => {
+  const encontrados = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi)].map(m => m[0]);
+  return encontrados.length === scriptsCsp.length
+    && encontrados.every((s,i) => s === scriptsCsp[i])
+    && !/<script\b/i.test(scriptsCsp.reduce((resto,s) => resto.replace(s,''),html));
+};
 paso('el documento respeta la CSP sin estilos, scripts ni eventos inline',
   !/<style\b/i.test(pagina)
-  && !/<script\b/i.test(pagina.replace('<script src="/assets/analitica-20260927.js" defer></script>', ''))
+  && scriptsExternosCerrados(pagina)
   && !/\sstyle\s*=/i.test(pagina)
   && !/\son[a-z]+\s*=/i.test(pagina));
+
+paso('la lista CSP rechaza scripts inline, desconocidos, duplicados y async',
+  !scriptsExternosCerrados(pagina+'<script>alert(1)</script>')
+  && !scriptsExternosCerrados(pagina.replace(scriptsCsp[1],'<script src="/otro.js" defer></script>'))
+  && !scriptsExternosCerrados(pagina+scriptsCsp[1])
+  && !scriptsExternosCerrados(pagina.replace(scriptsCsp[1],scriptsCsp[1].replace(' defer',' async'))));
 
 paso('la publicación remota exige revisión y conserva los controles comerciales',
   /comprobarPreparacionRelanzamiento/.test(publicador) && /comprobarContenidoPerfilPublicacion/.test(publicador));

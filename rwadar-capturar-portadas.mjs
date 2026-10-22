@@ -5,12 +5,12 @@ import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
-import vm from 'node:vm';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 const RAIZ = path.dirname(fileURLToPath(import.meta.url));
-const FUENTE = path.join(RAIZ, 'rwadar-site', 'assets', 'rwadar-20260820.js');
+const { leerCatalogo } = createRequire(import.meta.url)('./rwadar-fichas');
 const SALIDA = path.join(RAIZ, 'rwadar-site', 'plataformas');
 const MANIFIESTO = path.join(SALIDA, 'fuentes.json');
 const FORZAR = process.argv.includes('--force');
@@ -521,14 +521,8 @@ async function convertirWebp(bytes, destino, carpetaTemporal, empresa) {
 }
 
 async function plataformas() {
-  const codigo = await fs.readFile(FUENTE, 'utf8');
-  const inicio = codigo.indexOf('const P=[');
-  const fin = codigo.indexOf('\n];', inicio);
-  if (inicio < 0 || fin < 0) throw new Error('no se pudo leer el registro P');
-  const expresion = codigo.slice(inicio + 'const P='.length, fin + 2);
-  const lista = vm.runInNewContext(expresion, Object.create(null), { timeout: 1_000 });
-  if (!Array.isArray(lista) || lista.length !== 26) throw new Error(`registro inesperado: ${lista?.length}`);
-  return lista;
+  // El lector interpreta únicamente literales y valida el lote íntegro V2.
+  return leerCatalogo(RAIZ).plataformas;
 }
 
 async function una(p, carpetaTemporal) {

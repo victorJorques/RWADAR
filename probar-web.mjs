@@ -13,7 +13,9 @@ const publicado = path.join(raiz, 'rwadar-publicado');
 const lee = nombre => fs.readFileSync(path.join(sitio, nombre), 'utf8');
 const require = createRequire(import.meta.url);
 const { adelgazarJS, sinComentariosJS } = require('./rwadar-adelgazar.js');
+const { leerBloquesCatalogo } = require('./rwadar-fichas.js');
 const {
+  ARCHIVOS_PUBLICABLES,
   ORIGEN_LEGADO,
   ORIGEN_PUBLICO,
   PROYECTO_CLOUDFLARE,
@@ -32,6 +34,7 @@ const {
 const { celdaCSV, ofertaPublica } = require('./rwadar-app/sincronizar.js');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales.js');
 const activosEditoriales = cargarActivosEditoriales(raiz);
+const codigoFichaEditorial = fs.readFileSync(path.join(raiz, 'rwadar-movil', 'lib', 'ficha-editorial.js'), 'utf8');
 const html = lee('index.html');
 const privacidad = lee('privacidad.html');
 const transparenciaComercial = lee('transparencia-comercial.html');
@@ -319,11 +322,7 @@ function marcadoEstricto(nombre, contenido) {
 }
 
 function arrayDe(codigo, nombre) {
-  const marca = `const ${nombre}=`;
-  const inicio = codigo.indexOf(marca);
-  const fin = codigo.indexOf('\n];', inicio);
-  if (inicio < 0 || fin < 0) throw new Error(`no se encuentra ${nombre}`);
-  return new Function(`return ${codigo.slice(inicio + marca.length, fin + 2)}`)();
+  return leerBloquesCatalogo(codigo)[{P:'plataformas',EMI:'ofertas',FUERA:'fuera'}[nombre]];
 }
 
 function arrayConstante(codigo, nombre) {
@@ -583,6 +582,8 @@ function renderEmisionHostil(codigo) {
   };
   contexto.globalThis = contexto;
   vm.createContext(contexto);
+  vm.runInContext(jsCatalogo, contexto);
+  vm.runInContext(codigoFichaEditorial, contexto);
   vm.runInContext(codigo, contexto, { timeout:15000 });
   // Inyectar después del arranque: el snapshot público ya no es una lista vacía.
   // Ejecutamos el render real sin alterar la fuente ni depender de su contenido.
@@ -593,7 +594,7 @@ function renderEmisionHostil(codigo) {
 function reparentadoEmisionesEsReversible(codigo) {
   const limpio = sinComentariosJS(codigo);
   return /function ordenarBuscar\(esMovil\)/.test(limpio) &&
-    /const ordenMovil=\[selectorBuscar,emisiones,herramienta,barra,radarIntro,radarPortada,marcador,bannerAcademy,resultados,transparencia,academia,portadaTexto,portada\]/.test(limpio) &&
+    /const ordenMovil=\[selectorBuscar,emisiones,herramienta,barra,radarIntro,radarPortada,marcador,resultados,transparencia,academia,portadaTexto,portada\]/.test(limpio) &&
     /ordenMovil\.forEach\(nodo=>panelBuscar\.insertBefore\(nodo,referencia\)\)/.test(limpio) &&
     /function restaurarEscritorio\(\)/.test(limpio) &&
     /ancla\.parentNode\.insertBefore\(nodo,ancla\.nextSibling\)/.test(limpio) &&
@@ -694,15 +695,18 @@ const scripts = [...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/
 const estilos = [...html.matchAll(/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhref=["']([^"']+)["'][^>]*>/gi)];
 const rutaScriptApp = '/assets/rwadar-20260820.js';
 const rutaAnalitica = '/assets/analitica-20260927.js';
-prueba('la analítica comprueba la URL antes del cliente Auth y ambos scripts usan defer',
-  scripts.length === 2 && scripts[0][1] === rutaAnalitica && scripts[1][1] === rutaScriptApp &&
-  scripts.every(script => /\bdefer\b/.test(script[0])));
+const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
+prueba('analítica, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
+  scripts.length === 7 && scripts[0][1] === rutaAnalitica && scripts[1][1] === rutaCatalogo && scripts[2][1] === '/assets/ficha-editorial-20261022.js' &&
+  scripts[3][1]==='/assets/idioma-en-20261022.js'&&scripts[4][1]==='/assets/idioma-20261022.js'&&scripts[5][1]==='/assets/idioma-web-20261022.js'&&scripts[6][1]===rutaScriptApp &&
+  scripts.every(script => /\bdefer\b/.test(script[0]) && !/\basync\b/.test(script[0])));
 prueba('la aplicación carga una hoja propia versionada',
-  estilos.length === 1 && estilos[0][1] === '/assets/rwadar-20260820.css');
-for (const recurso of [rutaScriptApp, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
+  estilos.length === 2 && estilos[0][1] === '/assets/rwadar-20260820.css'&&estilos[1][1]==='/assets/idioma-20261022.css');
+for (const recurso of [rutaScriptApp, rutaCatalogo, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
 const js = lee('.' + rutaScriptApp);
+const jsCatalogo = lee('.' + rutaCatalogo);
 // El candidato abre las cuentas tras comprobar los correos reales de alta y
 // recuperación. También se prueba el cierre completo sobre el mismo código,
 // sin recoger ni enviar datos de cuentas en este ensayo aislado.
@@ -722,8 +726,8 @@ const datosLd = JSON.parse(jsonLd[0][1]);
 prueba('el JSON-LD es JSON válido', true);
 prueba('la página y el conjunto de datos comparten la revisión actual',
   datosLd['@graph'].filter(x=>x.dateModified).every(x=>x.dateModified===
-    [...arrayDe(js,'P').map(p=>p.verificacionLocal?.verificadoEl || p.ver),
-     ...arrayDe(js,'EMI').map(o=>o.verificadaEl || o.ver)].filter(Boolean).sort().at(-1)));
+    [...arrayDe(jsCatalogo,'P').map(p=>p.verificacionLocal?.verificadoEl || p.ver),
+     ...arrayDe(jsCatalogo,'EMI').map(o=>o.verificadaEl || o.ver)].filter(Boolean).sort().at(-1)));
 const descripcion = (html.match(/<meta name="description" content="([^"]+)"/) || [])[1] || '';
 prueba('la meta description es precisa y tiene longitud útil para buscadores',
   descripcion.length >= 120 && descripcion.length <= 190 &&
@@ -733,11 +737,12 @@ prueba('la presentación no convierte presencia editorial en acceso minorista o 
   !/pasan el filtro|superan el filtro|aceptan dinero hoy|Abiertas a minoristas|solo entran plataformas con supervisor/.test(html) &&
   html.includes('no es exhaustivo ni un sello de aprobación') && html.includes('Categorías de activos'));
 prueba('las cifras de cabecera cuentan categorías, no supuestas ofertas abiertas a minoristas',
-  (js.match(/document\.getElementById\('s3'\)\.textContent=new Set\(P\.map\(p=>p\.cat\)\)\.size/g) || []).length === 3);
+  [...js.matchAll(/document\.getElementById\('s3'\)\.textContent=([^;\n]+)/g)].length>0&&
+  [...js.matchAll(/document\.getElementById\('s3'\)\.textContent=([^;\n]+)/g)].every(x=>x[1]==='new Set(P.map(p=>p.cat)).size'));
 prueba('la inversión se paga al proveedor y no a RWAdar',
   /La inversión y el pago se realizan directamente con la\s+empresa/.test(html) &&
   html.includes('no recibimos ni custodiamos el dinero de tu inversión'));
-const ultimaVerificacion = arrayDe(js, 'P').map(p=>p.verificacionLocal?.verificadoEl || p.ver).filter(Boolean).sort().at(-1);
+const ultimaVerificacion = arrayDe(jsCatalogo, 'P').map(p=>p.verificacionLocal?.verificadoEl || p.ver).filter(Boolean).sort().at(-1);
 const fechaPie = ultimaVerificacion.split('-').reverse().join('.');
 prueba('el HTML sin JavaScript contiene la revisión real derivada de los datos',
   html.includes(`<p id="pieRevision">Última revisión del registro: ${fechaPie}</p>`));
@@ -892,6 +897,41 @@ prueba('la recuperación limpia el fragmento y abre cambio de contraseña',
   /tipo==='recovery'\)abrir\('nueva_clave'\)/.test(js));
 prueba('la recuperación cambia la contraseña autenticada con PUT /user',
   /auth\('\/user',\{password:clave\},\{metodo:'PUT',token:tk\}\)/.test(js));
+{
+  const inicio = js.indexOf('function mensajeErrorRetorno(');
+  const fin = js.indexOf('function traduce(', inicio);
+  const errorRetorno = new Function(js.slice(inicio, fin) + '\nreturn mensajeErrorRetorno;')();
+  const mensajes = ['<script>roba()</script>', 'Contacta con banco-falso.example y comparte tu clave',
+    'invalid login — TU_CODIGO_PRIVADO', '__proto__'];
+  prueba('el error de un enlace no refleja HTML, instrucciones, secretos ni texto arbitrario',
+    mensajes.every(texto => {
+      const p = new URLSearchParams({error_description:texto, error:'desconocido'});
+      return errorRetorno(p) === 'No se ha podido validar el enlace. Solicita uno nuevo desde RWAdar.';
+    }) && /caducado/.test(errorRetorno(new URLSearchParams({error_code:'otp_expired',error_description:'texto ajeno'}))));
+  const callback = js.slice(js.indexOf('  const parametrosRetorno='), js.indexOf('\n }\n /* El pre-renderizado'));
+  const simular = new Function('URL', 'URLSearchParams', `return async function(url, inicial=null){
+    const location=new URL(url),history={replaceState(){}};
+    let ses=inicial,identidadConfirmada=false,versionCuenta=0,operacionCuenta=0,fichaAbierta=null;
+    let verificaciones=0;const mensajes=[],modos=[];
+    const pinta=()=>{},pintarVigilar=()=>{},abrirPerfil=()=>{},msj=t=>mensajes.push(t),aviso=t=>mensajes.push(t);
+    const abrir=modo=>modos.push(modo),guarda=s=>{ses=s;versionCuenta++;};
+    const confirmarIdentidad=async()=>{verificaciones++;ses={...ses,uid:'usuario-verificado',correo:'cuenta-verificada@example.test'};identidadConfirmada=true;return true;};
+    const cargarMio=async()=>true;
+    ${js.slice(inicio, fin)}
+    ${callback}
+    for(let i=0;i<5;i++)await Promise.resolve();
+    return {ses,modos,mensajes,verificaciones};
+  };`)(URL, URLSearchParams);
+  const adoptada = await simular('https://rwadar.pages.dev/#type=signup&access_token=prueba&email=cuenta-ajena@example.test');
+  prueba('un enlace verificado anuncia la identidad devuelta por Auth, nunca el correo del fragmento',
+    adoptada.verificaciones === 1 && adoptada.mensajes.some(t=>t.includes('cuenta-verificada@example.test')) &&
+    adoptada.mensajes.every(t=>!t.includes('cuenta-ajena@example.test')));
+  const anterior = {uid:'anterior',correo:'anterior@example.test',access_token:'anterior-sintetico'};
+  const conservada = await simular('https://rwadar.pages.dev/#type=recovery&access_token=otra-prueba', anterior);
+  prueba('un enlace recibido mientras hay otra sesión no la sustituye ni consulta sus datos',
+    conservada.verificaciones === 0 && conservada.ses === anterior &&
+    conservada.mensajes.some(t=>t.includes('Cierra la sesión')));
+}
 
 const inicioCuentaHTML = html.search(/<div\b[^>]*\bid=["']cuentaCaja["'][^>]*>/i);
 const finCuentaHTML = html.search(/<aside\b[^>]*\bid=["']perfilPanel["'][^>]*>/i);
@@ -995,7 +1035,8 @@ prueba('no hay escrituras directas a opiniones o denuncias',
 
 console.log('\n=== EMISIONES, PWA Y ADELGAZADO ===');
 for (const id of ['emisiones','emiFiltros','emiLista','emiOrden']) prueba(`existe el control ${id}`, ids.includes(id));
-prueba('las emisiones viven en el JavaScript externo, no en un script inline', /const EMI=\[/.test(js));
+prueba('las tres colecciones solo viven en el snapshot generado externo',
+  ['P','FUERA','EMI'].every(n => new RegExp('^const '+n+'=\\[','m').test(jsCatalogo) && !new RegExp('^const '+n+'=\\[','m').test(js)));
 prueba('el estado de emisiones también queda pre-renderizado para buscadores',
   /id="emiLista"><!--pre:ini-->[\s\S]+<!--pre:fin-->/.test(html));
 prueba('las tarjetas usan progress y clases, no estilos inline',
@@ -1269,7 +1310,26 @@ prueba('Escape, velo y ambos botones cierran la ficha y restauran el foco',
   /e\.key===['"]Escape['"]\)closeAll\(\)/.test(codigoPaneles) &&
   /dataset\.accion===['"]cerrar-panel['"]\)return closeAll\(\)/.test(jsSinComentarios) &&
   /focoPrevio=document\.activeElement/.test(codigoPaneles) &&
-  /document\.contains\(focoPrevio\)[\s\S]*?focoPrevio\.focus\(\)/.test(codigoPaneles));
+  /document\.contains\(focoPrevio\)[\s\S]*?focoPrevio\.focus\(\{preventScroll:true\}\)/.test(codigoPaneles));
+{
+  let desplazamiento = 640, foco = '';
+  const clases=()=>({add(){},remove(){}});
+  const origen={focus(opciones){foco='origen';if(!opciones?.preventScroll)desplazamiento=0;}};
+  const cuerpo={scrollTop:360};
+  const cierre={focus(opciones){foco='cerrar';if(!opciones?.preventScroll)desplazamiento=2000;}};
+  const panel={scrollTop:700,classList:clases(),removeAttribute(){},setAttribute(){},
+    querySelector:s=>s==='.cerrar'?cierre:cuerpo};
+  const document={activeElement:origen,body:{classList:clases()},contains:n=>n===origen,
+    querySelectorAll:()=>[],getElementById:id=>id==='ovl'?{classList:clases()}:panel,addEventListener(){}};
+  const history={state:null,pushState(state){this.state=state;},back(){}};
+  const api=new Function('document','window','history','location',codigoPaneles+';return {openPanel,cierraPanelVisual};')(
+    document,{addEventListener(){}},history,{href:'https://rwadar.example/'});
+  api.openPanel('drawer');
+  const abreDesdeArriba=panel.scrollTop===0&&cuerpo.scrollTop===0&&foco==='cerrar'&&desplazamiento===640;
+  api.cierraPanelVisual();
+  prueba('reabrir una ficha con scroll anterior empieza arriba y cerrar conserva posición y foco de la lista',
+    abreDesdeArriba&&foco==='origen'&&desplazamiento===640);
+}
 prueba('Atrás de Android o del navegador cierra la ficha antes de abandonar RWAdar',
   /history\.pushState\([\s\S]*?rwadarPanel:true/.test(codigoPaneles) &&
   /addEventListener\(['"]popstate['"][\s\S]*?cierraPanelVisual\(\)/.test(codigoPaneles) &&
@@ -1321,13 +1381,12 @@ prueba('volver a Buscar programa una medición nueva después de mostrar el pane
   /(?:dispatchEvent\([^)]*(?:resize|rwadar)|clientWidth|redimension|recalcular)/i.test(codigoNavMovil) &&
   /cv\.clientWidth/.test(jsSinComentarios) && /cv\.width\s*!==\s*w/.test(jsSinComentarios));
 const ordenMovil = selector => Number((declaracionesCSS(cssMovil, selector).join(';').match(/order\s*:\s*(\d+)/i) || [])[1] || 0);
-prueba('Buscar prioriza ofertas, búsqueda, radar animado, Academy y resultados',
+prueba('Buscar prioriza ofertas, búsqueda, radar animado y resultados',
   ordenMovil('#movilPanelRadar>.emis') === 1 &&
   ordenMovil('#movilPanelRadar>.tool') === 2 &&
   ordenMovil('#movilPanelRadar>.barra') === 3 &&
   ordenMovil('#movilPanelRadar>.movil-radar-intro') === 4 &&
   ordenMovil('#movilPanelRadar>.portada-radar') === 5 &&
-  ordenMovil('#movilPanelRadar>.movil-banner-explica') === 7 &&
   ordenMovil('#movilPanelRadar>#plataformasResultados') === 8 &&
   ordenMovil('#movilPanelRadar>.movil-transparencia') === 9 &&
   ordenMovil('#movilPanelRadar>.portada-txt') > 9);
@@ -1337,10 +1396,13 @@ prueba('Buscar mueve los mismos nodos y restaura su lugar al volver a escritorio
   /createComment\(['"]rwadar: posici[oó]n de escritorio ['"]\+indice\)/i.test(codigoShellMovil) &&
   /ordenMovil\.forEach/.test(codigoShellMovil) && /restaurarEscritorio/.test(codigoShellMovil) &&
   reparentadoEmisionesEsReversible(js));
-prueba('la portada móvil conserva un acceso táctil explícito a Academy y a la lección 3D',
-  /class="movil-banner-explica"[^>]*data-movil-action="academy"/.test(html) &&
-  /RWAdar Academy/.test(html) && /Abrir la lección 3D/.test(html) &&
-  /display\s*:\s*grid/i.test(declaracionesCSS(cssMovil, '.movil-banner-explica').join(';')));
+prueba('Academy reúne el aprendizaje sin repetir sus accesos en Buscar e Inicio',
+  !/id="movilAbrirAcademy"|id="inicioEmpezarTit"/.test(html) &&
+  /id="movilTabAcademy"/.test(html) && /Lección en 3D: qué es tokenizar/.test(html) &&
+  !/class="hdr-link" href="#explain"/.test(html));
+prueba('escritorio coloca ofertas y plataformas antes de la transparencia y Academy sin duplicar nodos',
+  /const ordenEscritorio=\[portada,emisiones,herramienta,barra,resultados,metodo,fuera,academia\]/.test(codigoShellMovil) &&
+  /ordenEscritorio\.forEach\(nodo=>panelBuscar\.appendChild\(nodo\)\)/.test(codigoShellMovil));
 prueba('los resultados móviles muestran seis fichas y conservan las 26 en el DOM',
   /id="plataformasResultados"/.test(html) &&
   /id="movilResultadosMas"[^>]*data-accion="alternar-resultados"[^>]*aria-controls="grid"/.test(html) &&
@@ -1397,7 +1459,7 @@ prueba('el buscador móvil es un panel principal y las fichas tienen un CTA prop
   /class="movil-busqueda-cab"/.test(html) && /Encuentra una plataforma/.test(html) &&
   /class="movil-ficha-abrir" data-abrir=/.test(js) &&
   /min-height\s*:\s*48px/i.test(declaracionesCSS(cssMovil, '.movil-ficha-abrir').join(';')));
-const plataformasFuente = arrayDe(js, 'P');
+const plataformasFuente = arrayDe(jsCatalogo, 'P');
 const slugPortada = valor => String(valor).normalize('NFD').replace(/[\u0300-\u036f]/g, '')
   .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const rutasPortada = plataformasFuente.map(p => `/plataformas/${slugPortada(p.n)}.webp`);
@@ -1475,6 +1537,11 @@ prueba('comparar restaura el foco al control visible tras reconstruir las fichas
   js.includes(`const boton=[...document.querySelectorAll('[data-comparar="'+i+'"]')]`) &&
   js.includes('.find(nodo=>nodo.getClientRects&&nodo.getClientRects().length);') &&
   js.includes('if(boton)boton.focus({preventScroll:true});'));
+prueba('la barra de comparación vacía queda oculta y fuera de interacción',
+  /visibility\s*:\s*hidden/i.test(declaracionesCSS(cssBase, '.cmpbar:not(.show)').join(';')) &&
+  /pointer-events\s*:\s*none/i.test(declaracionesCSS(cssBase, '.cmpbar:not(.show)').join(';')) &&
+  /visibility\s*:\s*visible/i.test(declaracionesCSS(cssBase, '.cmpbar.show').join(';')) &&
+  /pointer-events\s*:\s*auto/i.test(declaracionesCSS(cssBase, '.cmpbar.show').join(';')));
 prueba('las superficies nuevas solo aparecen dentro de la interfaz móvil',
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-banner-explica').join(';')) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-busqueda-cab').join(';')) &&
@@ -1488,13 +1555,13 @@ const panelHTML = id => {
 const panelInicioHTML = panelHTML('movilPanelInicio');
 const panelAcademyHTML = panelHTML('movilPanelAcademy');
 const panelPerfilHTML = panelHTML('movilPanelMas');
-prueba('Inicio trae las noticias generadas, la comunidad oculta mientras esté apagada y por dónde empezar',
+prueba('Inicio trae noticias y accesos al catálogo sin repetir el menú de aprendizaje y transparencia',
   /<!--noticias:ini-->[\s\S]*class="inicio-noticias"[\s\S]*<!--noticias:fin-->/.test(panelInicioHTML) &&
   (panelInicioHTML.match(/class="inicio-noticia"/g) || []).length >= 1 &&
   /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/.test(panelInicioHTML) &&
   /* El único formulario es el de la comunidad, oculto hasta encenderla. */
   !/<(?:textarea|input|form)\b/i.test(panelInicioHTML.replace(/<div class="comunidad" id="comunidad" hidden>[\s\S]*?<ol class="comunidad-lista"/, '')) &&
-  ['metodo','fuera'].every(destino => new RegExp(`data-movil-ir=["']${destino}["']`).test(panelInicioHTML)) &&
+  !/inicioEmpezarTit|data-movil-action="academy"|data-movil-ir="metodo"/.test(panelInicioHTML) &&
   /<section class="inicio-seccion" id="inicioComunidad"[^>]*\shidden>/.test(panelInicioHTML) &&
   /data-movil-ir="emisiones">Ver ofertas</.test(panelInicioHTML) && /data-movil-ir="tool">Ver plataformas</.test(panelInicioHTML));
 prueba('Academy mueve el bloque real de lecciones (sin copiarlo) y cuenta las leídas del navegador',
@@ -1537,7 +1604,7 @@ const inicioEmisionesHTML = html.indexOf('<section class="emis wrap" id="emision
 const finEmisionesHTML = html.indexOf('</section>', inicioEmisionesHTML);
 const emisionesHTML = inicioEmisionesHTML >= 0 && finEmisionesHTML > inicioEmisionesHTML
   ? html.slice(inicioEmisionesHTML, finEmisionesHTML + 10) : '';
-const emisionesFuente = arrayDe(js, 'EMI');
+const emisionesFuente = arrayDe(jsCatalogo, 'EMI');
 prueba('Buscar presenta emisiones comprobadas, no anuncios ni recomendaciones inventadas',
   /OFERTAS ESPECÍFICAS/.test(emisionesHTML) && /Referencias revisadas/.test(emisionesHTML) &&
   /Con origen, fecha y límites de la revisión/.test(emisionesHTML) &&
@@ -1564,7 +1631,7 @@ prueba('radar, fichas, comparador, método, descartes y 3D siguen en el único p
     .every(id => ids.includes(id)) &&
   /data-movil-action=["']academy["']/.test(html) &&
   ['metodo','fuera'].every(destino =>
-    new RegExp(`data-movil-ir=["']${destino}["']`).test(html)) &&
+    new RegExp(`data-movil-detalle=["']${destino}["']`).test(html)) &&
   /function ir\(destino,origen=null\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
 prueba('la barra no introduce manejadores inline ni atributos ejecutables',
   botonesNavMovil.every(b => !/\son[a-z]+\s*=|javascript\s*:/i.test(b[1])) &&
@@ -1614,7 +1681,7 @@ prueba('el snapshot V2 caducado se conserva con aviso y solo la orden expresa lo
   /catch\{refrescarVigenciaOfertas\(\)\}/.test(js));
 
 const armazon = arrayConstante(sw, 'ARMAZON');
-const recursosCriticos = ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', rutaScriptApp, rutaAnalitica, estilos[0][1],
+const recursosCriticos = ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', rutaScriptApp, rutaCatalogo, '/assets/ficha-editorial-20261022.js', rutaAnalitica, estilos[0][1],
   '/assets/privacidad-20260820.css', '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src),
   ...rutasPortada];
 const existeRutaArmazon = ruta => {
@@ -1670,10 +1737,12 @@ const casoReducido = sinComentariosJS(casoRegex);
 new Function(casoReducido);
 prueba('el adelgazador conserva regex con marcas de comentario', casoReducido === casoRegex);
 const jsReducido = adelgazarJS(js);
+const catalogoReducido = adelgazarJS(jsCatalogo);
+new Function(catalogoReducido + "\n" + jsReducido);
 new Function(jsReducido);
 prueba('el JavaScript adelgazado compila y pesa menos', jsReducido.length < js.length);
 for (const nombre of ['P','FUERA','EMI'])
-  prueba(`el adelgazado conserva exactamente ${nombre}`, JSON.stringify(arrayDe(js,nombre)) === JSON.stringify(arrayDe(jsReducido,nombre)));
+  prueba(`el adelgazado conserva exactamente ${nombre}`, JSON.stringify(arrayDe(jsCatalogo,nombre)) === JSON.stringify(arrayDe(catalogoReducido,nombre)));
 const htmlPublicado = fs.readFileSync(path.join(publicado, 'index.html'), 'utf8');
 const privacidadPublicada = fs.readFileSync(path.join(publicado, 'privacidad.html'), 'utf8');
 const transparenciaComercialPublicada = fs.readFileSync(
@@ -1682,6 +1751,15 @@ const paraEmpresasPublicada = fs.readFileSync(path.join(publicado, 'para-empresa
 const swPublicado = fs.readFileSync(path.join(publicado, 'sw.js'), 'utf8');
 const scriptsPublicados = [...htmlPublicado.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
 const recursoJSPublicado = scriptsPublicados.at(-1)?.[1] || '';
+const recursoCatalogoPublicado = scriptsPublicados.find(s => /\/catalogo-publico-20261022\./.test(s[1]))?.[1] || '';
+const catalogoPublicado = fs.readFileSync(path.join(publicado, '.' + recursoCatalogoPublicado), 'utf8');
+const huellaCatalogo = crypto.createHash('sha256').update(catalogoPublicado).digest('hex').slice(0, 12);
+prueba('el snapshot publicado único conserva los datos, su huella y el orden antes del comportamiento',
+  catalogoPublicado === catalogoReducido &&
+  scriptsPublicados.filter(s => /\/catalogo-publico-20261022\./.test(s[1])).length === 1 &&
+  recursoCatalogoPublicado === `/assets/catalogo-publico-20261022.${huellaCatalogo}.js` &&
+  scriptsPublicados.findIndex(s=>s[1]===recursoCatalogoPublicado) < scriptsPublicados.length-1 &&
+  ['P','FUERA','EMI'].every(n=>JSON.stringify(arrayDe(catalogoPublicado,n))===JSON.stringify(arrayDe(jsCatalogo,n))));
 const hojasPublicadas = [...new Set(
   [htmlPublicado, privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada].flatMap(documento =>
     [...documento.matchAll(/<link\b([^>]*)>/gi)]
@@ -1697,11 +1775,12 @@ prueba('el árbol generado existe y usa el JavaScript adelgazado con huella real
   jsPublicado === jsReducido &&
   new RegExp(`/assets/rwadar-20260820\\.${huellaJSIndependiente}\\.js$`).test(recursoJSPublicado));
 const archivosPublicados = listarArchivosRegulares(publicado);
-const assetsPublicados = archivosPublicados.filter(x=>x.startsWith('assets/'));
+const assetsPublicados = archivosPublicados.filter(x=>x.startsWith('assets/')&&/\.(css|js)$/.test(x));
+const codigoPublicable=ARCHIVOS_PUBLICABLES.filter(x=>x.startsWith('assets/')&&/\.(css|js)$/.test(x));
 const portadasPublicadas = archivosPublicados.filter(x=>/^plataformas\/.+\.webp$/.test(x));
-prueba('todo asset desplegable lleva su huella de contenido y no queda el nombre estable',
-  assetsPublicados.length === 7 && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
-  !archivosPublicados.some(x=>/^assets\/(?:error|privacidad|rwadar|analitica|academy)-\d{8}\.(?:css|js)$/.test(x)));
+prueba('todo JS/CSS desplegable lleva su huella de contenido y no queda el nombre estable',
+  assetsPublicados.length === codigoPublicable.length && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
+  !codigoPublicable.some(x=>archivosPublicados.includes(x)));
 const analiticaPublicada = scriptsPublicados.find(script => /\/analitica-/.test(script[1]))?.[1];
 prueba('la analítica se versiona en todas las páginas y el worker conserva solo el cargador propio',
   analiticaPublicada && [htmlPublicado, privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada]
@@ -1732,8 +1811,9 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
 prueba('HTML y service worker apuntan al mismo JavaScript versionado',
   htmlPublicado.includes(recursoJSPublicado) && swPublicado.includes(recursoJSPublicado));
 prueba('el worker publicado precachea los assets con huella que realmente usan ambas páginas',
-  recursoJSPublicado && hojasPublicadas.length === 2 &&
-  ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', recursoJSPublicado, ...hojasPublicadas,
+  recursoJSPublicado && hojasPublicadas.length === 3 &&
+  ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', recursoJSPublicado, recursoCatalogoPublicado,
+    ...scriptsPublicados.map(s=>s[1]), ...hojasPublicadas,
     '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src), ...rutasPortada]
     .every(ruta => armazonPublicado.includes(ruta)) &&
   armazonPublicado.length === new Set(armazonPublicado).size &&
@@ -1779,7 +1859,7 @@ const finSimulador = publicador.indexOf('/* ---- 3 · comprobar', inicioSimulado
 prueba('el simulador del generador se puede ensayar de forma aislada', inicioSimulador > 0 && finSimulador > inicioSimulador);
 const simulacionPublicador = vm.runInNewContext(
   publicador.slice(inicioSimulador, finSimulador) + '\n({capturado, contexto});',
-  { vm, script: js, URL, console }, { timeout: 20000 });
+  { vm, script: js, scriptCatalogo: jsCatalogo, URL, console, require }, { timeout: 20000 });
 prueba('el simulador real conserva URL HTTPS, las 26 plataformas y las 49 referencias documentadas',
   vm.runInContext("new URL('https://example.test/fuente').protocol", simulacionPublicador.contexto) === 'https:' &&
   (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === 26 &&
@@ -1787,11 +1867,11 @@ prueba('el simulador real conserva URL HTTPS, las 26 plataformas y las 49 refere
   (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}">Doc\. /g) || []).length === 49);
 // Ejecutar el cliente entero, con un reloj y un DOM persistentes como los de
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
-const fechaLoteEmbebido = js.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
+const fechaLoteEmbebido = jsCatalogo.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
 if (!fechaLoteEmbebido) throw new Error('el JavaScript no incrusta verificado_lote_el');
 function pestanaCatalogo({ inicio } = {}) {
   const prefijo = publicador.slice(inicioSimulador, publicador.indexOf('vm.createContext(contexto);', inicioSimulador));
-  const { contexto, nodo } = vm.runInNewContext(prefijo + '\n({contexto,nodo});', { URL, console });
+  const { contexto, nodo } = vm.runInNewContext(prefijo + '\n({contexto,nodo});', { URL, console, require });
   const nodos = new Map(), escuchas = new Map(), tiempos = [];
   // Por defecto el reloj arranca el mismo día del lote incrustado: con una fecha
   // fija, un lote nuevo quedaría «en el futuro» y la web (con razón) no lo
@@ -1828,8 +1908,116 @@ function pestanaCatalogo({ inicio } = {}) {
   contexto.location = {href:'https://rwadar.pages.dev/'};
   contexto.history = {state:null, pushState(state) { this.state=state; }, back() { this.state=null; }};
   vm.createContext(contexto);
+  vm.runInContext(jsCatalogo, contexto);
+  vm.runInContext(codigoFichaEditorial, contexto);
   vm.runInContext(js, contexto, {timeout:20000});
   return {contexto, obtiene, escuchas, tiempos, reloj(valor) { instante = Date.parse(valor); }};
+}
+// El servidor aislado devuelve la forma pública normalizada. Las pruebas
+// validan el lote completo antes de reemplazar las tres colecciones juntas.
+function snapshotLocalV2(contexto) {
+  return JSON.parse(vm.runInContext("JSON.stringify({versionEsquema:2,lote:'snapshot-publicable',preparado:false,plataformas:P,descartes:FUERA,ofertas:EMI,fuente:{url:'https://rwadar.pages.dev/',revision:P[0].verificado_lote_el}})", contexto));
+}
+const cargaSnapshotLocalParaPruebas = js.slice(js.indexOf('async function cargarEscaparateLocal()'),
+  js.indexOf('\nasync function alDia()',js.indexOf('async function cargarEscaparateLocal()')))
+  .replace('if(!MODO_LOCAL_SEGURO)return false;','');
+{
+  const p=pestanaCatalogo();
+  const puntos=[...p.obtiene('radarHero').innerHTML.matchAll(/<g class="blip"[^>]*data-x="([\d.]+)" data-y="([\d.]+)"/g)].map(x=>({x:Number(x[1]),y:Number(x[2])}));
+  // El círculo de selección mide9+0.6 de trazo; el halo llega a3.4x3.4.
+  prueba('las26plataformas quedan dentro del radar con punto, anillo y halo de hover/foco completos',
+    puntos.length===26&&puntos.every(({x,y})=>Math.hypot(x-200,y-200)+11.56+2<=140.1));
+  vm.runInContext('renderMatrix(P)',p.contexto);
+  prueba('la matriz conserva todas las plataformas y separa el acceso sin comprobar sin asignar permiso histórico',
+    (p.obtiene('matrix').innerHTML.match(/data-abrir=/g)||[]).length===26&&/<th>Sin comprobar<\/th>/.test(p.obtiene('matrix').innerHTML));
+  p.contexto.resumenPrueba={minimo:{texto:'No documentado en euros'},accesoEspana:{texto:'Sin comprobar'},salida:{texto:'No documentada'},
+    costes:{texto:'Gestión: 0,6 %; Éxito: 0 %',referencias:[
+      {etiqueta:'Gestión',valor:'0,6 %',fuente:'https://gestor.example/gestion',fechaConsulta:'2026-10-21',fechaDato:'2026-10-20'},
+      {etiqueta:'Éxito',valor:'0 %',fuente:'https://emisor.example/exito',fechaConsulta:'2026-10-22'}]}};
+  const costes=vm.runInContext('datosClaveOfertaHtml(resumenPrueba,true)',p.contexto);
+  prueba('varios costes mantienen cada fuente y consulta propias sin atribuirlos a un solo origen',
+    costes.includes('Gestión: 0,6 %; Éxito: 0 %')&&costes.includes('https://gestor.example/gestion')&&costes.includes('https://emisor.example/exito')&&
+    costes.includes('Consultada el 21.10.2026 · Dato del 20.10.2026')&&costes.includes('Consultada el 22.10.2026'));
+}
+{
+  const p=pestanaCatalogo(), c=p.contexto, llamadas=[];
+  c.snapshot=snapshotLocalV2(c);
+  vm.runInContext('globalThis.arraysAntes={plataformas:P,ofertas:EMI,descartes:FUERA};',c);
+  c.fetch=async(url,opciones)=>{llamadas.push({url,opciones});return {ok:true,json:async()=>
+    JSON.parse(JSON.stringify(url.includes('manifest.json')?activosEditoriales.manifiesto:c.snapshot))};};
+  const resultado=await vm.runInContext('('+cargaSnapshotLocalParaPruebas+')()',c);
+  prueba('snapshot local V2 muestra las 26/49/4 y las colecciones 24/21/4 con arrays de identidad conservada',resultado===true&&
+    vm.runInContext("P===arraysAntes.plataformas&&EMI===arraysAntes.ofertas&&FUERA===arraysAntes.descartes&&P.length===26&&EMI.length===49&&FUERA.length===4&&ESCAPARATE_LOCAL===null&&['principales','secundario','en_camino'].every((k,i)=>EMI.filter(o=>o.coleccion===k).length===[24,21,4][i])",c));
+  prueba('snapshot local V2 abre fichas normales y conserva las fechas y metadatos del lote',
+    vm.runInContext('Boolean(ofertaDetalleLocalPorSlug(EMI[0].slug))&&P[0].verificacionLocal.verificadoEl===snapshot.fuente.revision&&EMI.every(o=>o.version_esquema===2&&o.revisionId===P[0].revisionId)',c));
+  prueba('la carga aislada solo pide snapshot e imágenes editoriales con credenciales omitidas',
+    llamadas.length===2&&llamadas.every(x=>['/__rwadar_local/escaparate.json','/ofertas-editoriales/manifest.json'].includes(x.url)&&x.opciones.credentials==='omit'));
+}
+for(const [nombre,alterar] of [
+  ['lote incompleto',d=>d.ofertas.pop()],
+  ['slug duplicado',d=>d.ofertas[1].slug=d.ofertas[0].slug],
+  ['revisión mezclada',d=>d.ofertas[0].revisionId='00000000-0000-0000-0000-000000000001'],
+  ['fecha del manifiesto distinta',d=>d.fuente.revision='2026-01-01'],
+  ['fuente con credenciales',d=>d.ofertas[0].fuentesActuales=['https://usuario:clave@example.test/']],
+  ['cifra en secundario',d=>d.ofertas.find(o=>o.coleccion==='secundario').precio={mostrada:'100 EUR'}],
+  ['descarte sin fuente',d=>d.descartes[0].fuentes=[]],
+  ['fecha canónica imposible',d=>d.plataformas[0].ver='2026-02-30'],
+]){
+  const p=pestanaCatalogo(), c=p.contexto;
+  c.snapshot=snapshotLocalV2(c);alterar(c.snapshot);
+  const antes=vm.runInContext('JSON.stringify([P,EMI,FUERA])',c);
+  c.fetch=async url=>({ok:true,json:async()=>JSON.parse(JSON.stringify(url.includes('manifest.json')?activosEditoriales.manifiesto:c.snapshot))});
+  const error=await capturaError(vm.runInContext('('+cargaSnapshotLocalParaPruebas+')()',c));
+  prueba('snapshot local V2 rechaza '+nombre+' y conserva íntegra la última copia completa',Boolean(error)&&
+    antes===vm.runInContext('JSON.stringify([P,EMI,FUERA])',c));
+}
+{
+  const p=pestanaCatalogo(),c=p.contexto;
+  c.snapshot=snapshotLocalV2(c);
+  const antes=vm.runInContext('JSON.stringify([P,EMI,FUERA])',c),incompleto=JSON.parse(JSON.stringify(activosEditoriales.manifiesto));incompleto.fichas.pop();
+  c.fetch=async url=>({ok:true,json:async()=>url.includes('manifest.json')?incompleto:c.snapshot});
+  const error=await capturaError(vm.runInContext('('+cargaSnapshotLocalParaPruebas+')()',c));
+  prueba('un manifiesto de imágenes incompleto tampoco sustituye las colecciones anteriores',Boolean(error)&&antes===vm.runInContext('JSON.stringify([P,EMI,FUERA])',c));
+  c.snapshot=snapshotLocalV2(c);
+  const corte=new Date(Date.parse(`${fechaLoteEmbebido}T00:00:00Z`)+30*864e5).toISOString();p.reloj(corte);
+  c.fetch=async url=>({ok:true,json:async()=>url.includes('manifest.json')?activosEditoriales.manifiesto:c.snapshot});
+  await vm.runInContext('('+cargaSnapshotLocalParaPruebas+')()',c);
+  prueba('un snapshot completo envejecido sigue disponible con aviso y sin cifras vencidas',
+    vm.runInContext('P.length===26&&EMI.length===49&&CATALOGO_CADUCADO&&!CATALOGO_EMBEBIDO_BLOQUEADO',c)&&/cifras por actualizar/.test(p.obtiene('emiLista').innerHTML));
+}
+{
+  const p=pestanaCatalogo(), c=p.contexto;
+  const todo=vm.runInContext("tarjetasPorProveedorHtml(EMI.filter(o=>o.coleccion==='principales'))",c);
+  prueba('agrupar proveedores conserva cada referencia individual y el nombre común sin escoger un ticker',
+    (todo.match(/data-oferta-detalle=/g)||[]).length===24&&/Ver 12 referencias/.test(todo)&&/Ver 5 referencias/.test(todo)&&
+    /<summary><b>Aktionariat<\/b>/.test(todo)&&/Cada una conserva su fuente/.test(todo));
+  vm.runInContext("emiBusquedaLocal='Houston'",c);
+  const filtrado=vm.runInContext("tarjetasPorProveedorHtml(EMI.filter(o=>o.coleccion==='secundario'&&coincideBusquedaOfertaLocal(o)))",c);
+  prueba('una búsqueda exacta recupera fichas individuales sin encerrarlas en la agrupación',
+    !/class="ofertas-grupo"/.test(filtrado)&&/data-oferta-detalle=/.test(filtrado));
+  vm.runInContext("emiColeccion='principales';pintarEmisiones()",c);
+  prueba('buscar una referencia de reventa cambia a su colección y mantiene visible su ficha individual',
+    p.obtiene('emiLista').dataset.coleccion==='secundario'&&
+    /data-coleccion="secundario" open/.test(p.obtiene('emiLista').innerHTML)&&
+    /en reventa$/.test(p.obtiene('movilOfertasEstado').textContent));
+}
+{
+  const p=pestanaCatalogo(),c=p.contexto,ampliado=snapshotLocalV2(c);
+  const nueva={...ampliado.ofertas.find(o=>o.coleccion==='principales'),slug:'ampliacion-sintetica-validada'};
+  ampliado.ofertas.push(nueva);
+  [...ampliado.plataformas,...ampliado.ofertas].forEach(x=>{x.ofertas_esperadas=50;x.colecciones_esperadas={principales:25,secundario:21,en_camino:4};});
+  c.ampliado=ampliado;c.anterior=snapshotLocalV2(c);
+  prueba('el cliente acepta una ampliación 50+ solo con todas las filas y conteos de colección coherentes',
+    vm.runInContext('validarEscaparateLocalV2(ampliado).ofertas.length===50',c));
+  const incompleto=structuredClone(ampliado);incompleto.ofertas.pop();c.incompleto=incompleto;
+  prueba('la ampliación declarada no acepta una respuesta truncada al tamaño del lote anterior',
+    Boolean(await capturaError(Promise.resolve().then(()=>vm.runInContext('validarEscaparateLocalV2(incompleto)',c)))));
+  vm.runInContext('recordarManifiestoCatalogoV2(ampliado.plataformas)',c);
+  prueba('tras aceptar 50 referencias no se degrada a un lote de 49 en la misma pestaña',
+    Boolean(await capturaError(Promise.resolve().then(()=>vm.runInContext('validarEscaparateLocalV2(anterior)',c)))));
+  const exceso=structuredClone(ampliado);exceso.plataformas[0].ofertas_esperadas=1001;c.exceso=exceso;
+  prueba('la ampliación mantiene límites explícitos de tamaño y no admite metadatos aislados',
+    Boolean(await capturaError(Promise.resolve().then(()=>vm.runInContext('validarEscaparateLocalV2(exceso)',c)))));
 }
 for (const causa of ['medianoche','reactivacion','consulta-limitada']) {
   const p = pestanaCatalogo(), c = p.contexto;
@@ -1897,8 +2085,8 @@ for (const vacia of ['plataformas','ofertas']) {
     vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===26&&EMI.length===49',c));
 }
 prueba('las etiquetas públicas de ordenación describen los comparadores documentales reales',
-  /value="cierra">Frescura y revisión/.test(html) && /value="rent">Cifra de rentabilidad/.test(html) &&
-  /value="min">Entrada o precio/.test(html) && /value="az">Empresa y nombre/.test(html) &&
+  /value="cierra">Fuente y fecha/.test(html) && /value="rent">Cifra publicada por la plataforma/.test(html) &&
+  /value="min">Mínimo documentado en euros/.test(html) && /value="az">Empresa y nombre/.test(html) &&
   !/Lo que cierra antes|Más avanzada/.test(html));
 prueba('el publicador usa ComSpec en Windows y evita el EINVAL de ejecutar npx.cmd directamente',
   /process\.env\.ComSpec \|\| 'cmd\.exe'/.test(publicador) &&
@@ -1977,7 +2165,7 @@ prueba('todo remoto hace preflight Auth de solo lectura y falla cerrado',
   /mailer_autoconfirm !== false/.test(fs.readFileSync(path.join(raiz,'rwadar-publicacion-segura.js'),'utf8')));
 
 prueba('el sincronizador escribe los datos en el JS externo',
-  /const JS = path\.join\(SITIO, 'assets', 'rwadar-20260820\.js'\)/.test(sincronizador));
+  /const JS = path\.join\(SITIO, 'assets', 'catalogo-publico-20261022\.js'\)/.test(sincronizador));
 prueba('radar, descartes y emisiones se consultan juntos y fallan cerrados',
   /Promise\.all\(\[/.test(sincronizador) && !/let emisiones\s*=\s*\[\]/.test(sincronizador));
 prueba('el sincronizador neutraliza <, > y separadores Unicode',
@@ -2169,7 +2357,7 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     const urlsEsperadas = [...new Set([...fuentes, oferta.url, ...(oferta.tipo==='secundario'?[oferta.urlMercado]:[])])];
     prueba(`ficha ${caso.nombre}: las fuentes y enlaces completos permanecen fuera de la tarjeta`,
       urlsEsperadas.every(url=>enlaces.some(a=>atributoHTML(a,'href')===url)) &&
-      enlaces.every(a=>atributoHTML(a,'target')==='_blank' &&
+      enlaces.every(a=>/^\/ofertas\/[a-z0-9-]+$/.test(atributoHTML(a,'href')||'') || atributoHTML(a,'target')==='_blank' &&
         /\bnoopener\b/.test(atributoHTML(a,'rel')) && /\bnofollow\b/.test(atributoHTML(a,'rel'))) &&
       (oferta.tipo!=='secundario' || detalle.includes('Abrir mercado ↗') && detalle.includes('Ficha oficial')));
     prueba(`ficha ${caso.nombre}: los nombres accesibles conservan la etiqueta visible de cada enlace`,
@@ -2221,8 +2409,19 @@ prueba('cada tarjeta compacta conserva la información completa en un diálogo a
 prueba('el secundario conserva dianas táctiles y microtexto legible en móvil',
   /\.escaparate-sec-enlaces a,\.escaparate-sec-enlaces button\{min-height:40px/.test(css) &&
   /\.escaparate-sec-cifras small\{[^}]*font:600 \.6rem/.test(css));
-prueba('el orden de menor entrada contempla las métricas Desde además del precio',
-  /find\(x=>\/\^desde\\s\/i\.test\(x\)\)/.test(js) && /min:\(a,b\)=>entrada\(a\)-entrada\(b\)/.test(js));
+{
+  const p=pestanaCatalogo(), c=p.contexto;
+  const slugs=vm.runInContext(`(()=>{
+    const fuente='https://proveedor.example.test/ficha',base={...EMI.find(o=>o.coleccion==='principales'),
+      estadoRevision:'actual',verificadaEl:P[0].verificado_lote_el,vigenciaDias:7,
+      documentacion:{revisadaEl:P[0].verificado_lote_el,fuentes:[fuente],referencias:[]}};
+    const minimo={...base,slug:'minimo-documentado',precio:{mostrada:'9000 EUR'},documentacion:{...base.documentacion,
+      referencias:[{etiqueta:'Entrada mínima',valor:'200 EUR',fechaConsulta:P[0].verificado_lote_el,fuente}]}};
+    const token={...base,slug:'precio-token',precio:{mostrada:'1 EUR'}};
+    emiOrden='min';return ordenarOfertasLocales([token,minimo]).map(o=>o.slug).join(',');
+  })()`,c);
+  prueba('ordenar por mínimo usa euros documentados y no convierte precio por token en entrada mínima',slugs==='minimo-documentado,precio-token');
+}
 prueba('servidor, worker y CDN tratan las portadas como imágenes estáticas propias',
   /'\.webp': 'image\/webp'/.test(servidor) &&
   /url\.pathname\.startsWith\('\/plataformas\/'\)/.test(sw) &&
@@ -2334,7 +2533,6 @@ const fechaTransparenciaSEO = transparenciaComercial.match(/datetime=["'](\d{4}-
 prueba('la web publicada no cita documentos privados de claude.ai como fuente',
   !/claude\.ai\/code\/artifact/i.test(js) && !/claude\.ai\/code\/artifact/i.test(html));
 prueba('sitemap conserva por ruta las fechas reales del radar y de cada política',
-  [...fechasSitemap.keys()].filter(url => !url.startsWith(`${ORIGEN_PUBLICO}/academy/`)).length === 3 &&
   Boolean(fechaRadarSEO && fechaPrivacidadSEO && fechaTransparenciaSEO) &&
   fechasSitemap.get(`${ORIGEN_PUBLICO}/`) === fechaRadarSEO &&
   fechasSitemap.get(`${ORIGEN_PUBLICO}/privacidad`) === fechaPrivacidadSEO &&
@@ -2351,7 +2549,8 @@ prueba('todo el SEO absoluto usa el origen canónico de Cloudflare',
   lee('robots.txt').includes(`${ORIGEN_PUBLICO}/sitemap.xml`) &&
   (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev/g) || []).length ===
     (lee('sitemap.xml').match(/<loc>/g) || []).length &&
-  (lee('sitemap.xml').match(/https:\/\/rwadar\.pages\.dev\/(?!academy\/)/g) || []).length === 3 &&
+  require('./rwadar-fichas-manifiesto').filter(r=>r.endsWith('.html')).every(r=>
+    fechasSitemap.has(`${ORIGEN_PUBLICO}/${r.slice(0,-5)}`)) &&
   validarOrigenPublicable(sitio) === ORIGEN_PUBLICO);
 prueba('el auditor compara lo publicado con el árbol adelgazado y rechaza analítica inyectada',
   /path\.join\(PUBLICADO, 'index\.html'\)/.test(arrancador) &&
@@ -2611,13 +2810,14 @@ console.log('\n=== RWADAR ACADEMY ===');
   prueba('toda función que aún no existe se anuncia como «próximamente» en el texto',
     sinProximamente.length === 0);
   const cssPortada = lee('assets/rwadar-20260820.css');
-  const fuentesDe = css => [...css.matchAll(/font-family:'(Geist(?: Mono)?)';font-style:(\w+)[^}]*?base64,([A-Za-z0-9+/=]+)\)/g)]
-    .map(m => ({ familia: m[1], estilo: m[2], bytes: Buffer.from(m[3], 'base64') }));
+  const fuentesDe = css => [...css.matchAll(/font-family:'(Geist(?: Mono)?)';font-style:(\w+)[^}]*?src:url\(\/assets\/fuentes\/([a-z0-9-]+\.woff2)\)/g)]
+    .map(m => ({ familia: m[1], estilo: m[2], bytes: fs.readFileSync(path.join(raiz, 'rwadar-site/assets/fuentes', m[3])) }));
   const fuentesPortada = fuentesDe(cssPortada), fuentesAcademy = fuentesDe(lee('assets/academy-20261002.css'));
-  prueba('la Geist incrustada es la completa para español, no el recorte sin a-z',
+  prueba('las fuentes locales conservan la Geist completa para español, sin base64 duplicada',
     fuentesPortada.length === 2 && fuentesAcademy.length === 3 &&
     [...fuentesPortada, ...fuentesAcademy].every(f => f.bytes.subarray(0, 4).toString('latin1') === 'wOF2' && f.bytes.length > 15000) &&
     fuentesAcademy.some(f => f.estilo === 'italic') &&
+    !/data:font[^;]*;base64/.test(cssPortada + lee('assets/academy-20261002.css')) &&
     !(cssPortada + lee('assets/academy-20261002.css')).includes('d09GMgABAAAAAECAABQAAAAAjngAAEALAAEAA'));
   prueba('la cabecera compacta móvil no monta el título sobre la marca',
     /\.movil-cabecera\{display:grid;grid-template-columns:minmax\(max-content,1fr\) minmax\(0,auto\) minmax\(max-content,1fr\);\s*column-gap:10px/.test(cssPortada) &&
@@ -2654,20 +2854,26 @@ try {
   prueba('la respuesta local aplica CSP estricta y permite el worker propio',
     !/unsafe-inline|unsafe-eval/.test(cspLocal) && /worker-src 'self'/.test(cspLocal) &&
     /connect-src 'self'(?:;|$)/.test(cspLocal) && !/supabase/i.test(cspLocal));
+  const recursoCatalogoLocal = await fetch(`http://127.0.0.1:${puerto}${rutaCatalogo}`);
+  prueba('el snapshot separado se sirve completo como JavaScript propio con nosniff',
+    recursoCatalogoLocal.status===200 && /(?:javascript)/.test(recursoCatalogoLocal.headers.get('content-type') || '') &&
+    recursoCatalogoLocal.headers.get('x-content-type-options')==='nosniff' &&
+    await recursoCatalogoLocal.text()===jsCatalogo);
   const escaparateRespuesta = await fetch(`http://127.0.0.1:${puerto}/__rwadar_local/escaparate.json`);
   const escaparate = await escaparateRespuesta.json();
-  prueba('el endpoint local entrega el escaparate completo sin caché',
+  prueba('el endpoint local entrega por defecto el snapshot publicable V2 completo sin caché',
     escaparateRespuesta.status===200 && escaparateRespuesta.headers.get('cache-control')==='no-store' &&
-    escaparate.ofertas?.length===28 && escaparate.secundario?.length===24 &&
-    escaparate.exclusionesOfertas?.length===15);
-  const imagenNombre = escaparate.ofertas[0].imagen.replace(/^ofertas\//,'');
-  const imagenRespuesta = await fetch(`http://127.0.0.1:${puerto}/__rwadar_local/ofertas/${imagenNombre}`);
+    escaparate.versionEsquema===2 && escaparate.lote==='snapshot-publicable'&&escaparate.preparado===false&&
+    escaparate.plataformas?.length===26&&escaparate.ofertas?.length===49&&escaparate.descartes?.length===4&&
+    escaparate.ofertas.every(o=>o.revisionId===escaparate.plataformas[0].revisionId)&&!escaparate.secundario&&!escaparate.exclusionesOfertas);
+  const imagenNombre = activosEditoriales.fichas[0].archivo;
+  const imagenRespuesta = await fetch(`http://127.0.0.1:${puerto}/ofertas-editoriales/${imagenNombre}`);
   const imagenBytes = Buffer.from(await imagenRespuesta.arrayBuffer());
   prueba('las imágenes locales son WebP propias y se entregan con nosniff',
     imagenRespuesta.status===200 && imagenRespuesta.headers.get('content-type')==='image/webp' &&
     imagenRespuesta.headers.get('x-content-type-options')==='nosniff' &&
     imagenBytes.subarray(0,4).toString('ascii')==='RIFF' && imagenBytes.subarray(8,12).toString('ascii')==='WEBP');
-  const cabeza = await fetch(`http://127.0.0.1:${puerto}/__rwadar_local/ofertas/${imagenNombre}`, {method:'HEAD'});
+  const cabeza = await fetch(`http://127.0.0.1:${puerto}/ofertas-editoriales/${imagenNombre}`, {method:'HEAD'});
   prueba('los activos locales aceptan HEAD sin abrir métodos de escritura', cabeza.status===200);
   const manifiestoEditorialRespuesta = await fetch(
     `http://127.0.0.1:${puerto}/ofertas-editoriales/manifest.json`);
@@ -2724,6 +2930,17 @@ try {
     academyPendiente.status===404);
 } finally {
   proceso.kill();
+}
+{
+  const puertoHistorico=puerto+1;
+  const historico=spawn(process.execPath,['rwadar-servir.js',`--puerto=${puertoHistorico}`,'--fixture-historico'],{cwd:raiz,stdio:'ignore'});
+  try{
+    let respuesta;const limite=Date.now()+5000;
+    while(Date.now()<limite){try{respuesta=await fetch(`http://127.0.0.1:${puertoHistorico}/__rwadar_local/escaparate.json`);break}catch{await new Promise(r=>setTimeout(r,50))}}
+    const d=respuesta&&await respuesta.json();
+    prueba('el fixture histórico solo se conserva bajo su flag explícito',respuesta?.status===200&&d.versionEsquema===1&&
+      d.ofertas?.length===28&&d.secundario?.length===24&&d.exclusionesOfertas?.length===15);
+  }finally{historico.kill()}
 }
 
 console.log(`\n${correctas} correctas, 0 fallidas`);

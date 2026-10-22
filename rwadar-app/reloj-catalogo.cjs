@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const JS = path.join(__dirname, '..', 'rwadar-site', 'assets', 'rwadar-20260820.js');
+const JS = path.join(__dirname, '..', 'rwadar-site', 'assets', 'catalogo-publico-20261022.js');
 const fuente = fs.readFileSync(JS, 'utf8');
 const lote = fuente.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/);
 const vigencia = Number((fuente.match(/"vigencia_lote_dias":(\d+)/) || [])[1] || 7);

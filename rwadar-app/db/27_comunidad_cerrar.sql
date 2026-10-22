@@ -7,6 +7,15 @@
 -- =====================================================================
 begin;
 revoke all on public.publicaciones, public.denuncias_publicaciones from public, anon, authenticated;
+revoke all on public.cupos_publicacion from public, anon, authenticated;
+do $privadas$
+begin
+  if exists(select 1 from pg_namespace where nspname='rwadar_comunidad_privada') then
+    revoke all on all functions in schema rwadar_comunidad_privada from public,anon,authenticated;
+    revoke all on schema rwadar_comunidad_privada from public,anon,authenticated;
+  end if;
+end
+$privadas$;
 do $cerrar$
 declare f regprocedure;
 begin

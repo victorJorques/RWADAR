@@ -1,0 +1,190 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const {construirSalidas,comprobar,esc,enlace,leerCatalogo,leerBloquesCatalogo,
+  validarCatalogoSnapshot,validarRutasCatalogo}=require('./rwadar-fichas');
+const {snapshotLocal,sanearIndiceLocal}=require('./rwadar-servir');
+const {cargarFuentesLocales,construirSqlImportacion}=require('./rwadar-app/catalogo-publico');
+const permitidas=require('./rwadar-fichas-manifiesto');
+const {ARCHIVOS_PUBLICABLES}=require('./rwadar-publicacion-segura');
+const raiz=__dirname;
+const catalogo=leerCatalogo();
+const salidas=construirSalidas();
+let pruebas=0;
+function verificar(nombre,fn){fn();pruebas++;console.log('OK '+nombre);}
+verificar('fichas completas del manifiesto y tres destinos de método/novedades en lista cerrada',()=>{
+  assert.equal(permitidas.filter(n=>n.startsWith('ofertas/')).length,catalogo.manifiesto.ofertasEsperadas);
+  assert.equal(permitidas.filter(n=>n.startsWith('plataformas/')).length,catalogo.manifiesto.plataformasEsperadas);
+  assert.equal(permitidas.filter(n=>n.startsWith('fuera-del-radar/')).length,catalogo.fuera.length);
+  assert(permitidas.every(n=>ARCHIVOS_PUBLICABLES.includes(n)));
+  assert.deepEqual(comprobar(),[]);
+});
+verificar('snapshot expandido requiere datos completos y revisión de cada ruta nueva',()=>{
+  const ampliado=structuredClone(catalogo);
+  ampliado.ofertas.push({...structuredClone(ampliado.ofertas.find(o=>o.coleccion==='principales')),
+    slug:'prueba-nueva-oferta',titulo:'Nueva referencia sintética para pruebas'});
+  ampliado.plataformas.push({...structuredClone(ampliado.plataformas[0]),
+    slug:'prueba-nueva-plataforma',n:'Nueva plataforma sintética'});
+  for(const fila of [...ampliado.plataformas,...ampliado.ofertas]){
+    fila.ofertas_esperadas++;fila.plataformas_esperadas++;fila.colecciones_esperadas.principales++;
+  }
+  const completo=validarCatalogoSnapshot(ampliado);
+  assert.equal(completo.ofertas.length,catalogo.manifiesto.ofertasEsperadas+1);
+  assert.equal(completo.plataformas.length,catalogo.manifiesto.plataformasEsperadas+1);
+  assert.throws(()=>construirSalidas({catalogo:completo}),/manifiesto cerrado/);
+  const revisadas=[...permitidas,'ofertas/prueba-nueva-oferta.html','plataformas/prueba-nueva-plataforma.html'];
+  validarRutasCatalogo(completo,revisadas);
+  const salidaAmpliada=construirSalidas({catalogo:completo,paginasPermitidas:revisadas});
+  assert(salidaAmpliada.has('ofertas/prueba-nueva-oferta.html'));
+  assert(salidaAmpliada.has('plataformas/prueba-nueva-plataforma.html'));
+  assert(salidaAmpliada.get('sitemap.xml').includes('/ofertas/prueba-nueva-oferta</loc>'));
+  assert.throws(()=>validarRutasCatalogo(completo,[...revisadas,'../archivo-privado.html']),/no válido/);
+  for(const alterar of [
+    c=>{c.ofertas.pop();},c=>{c.plataformas.pop();},
+    c=>{c.ofertas.at(-1).ofertas_esperadas--;},
+    c=>{c.ofertas.at(-1).revisionId='00000000-0000-0000-0000-000000000000';},
+    c=>{c.ofertas.at(-1).documentacion=null;},
+    c=>{c.ofertas.at(-1).url='javascript:alert(1)';},
+  ]){const incompleto=structuredClone(ampliado);alterar(incompleto);assert.throws(()=>validarCatalogoSnapshot(incompleto));}
+  assert.throws(()=>validarCatalogoSnapshot(catalogo,{manifiesto:completo.manifiesto}),/reduce/);
+});
+verificar('el lector estático no ejecuta expresiones ni acepta propiedades activas del catálogo',()=>{
+  for(const p of ['(()=>{throw Error("no ejecutar");})()','{get n(){throw Error("no ejecutar");}}','{...secreto}']){
+    assert.throws(()=>leerBloquesCatalogo('const P=['+p+'];const EMI=[];const FUERA=[];'),
+      /El catálogo/,p);
+  }
+  assert.deepEqual(leerBloquesCatalogo('const P=[{n:"dato"}]; const EMI=[]; const FUERA=[];'),
+    {plataformas:[{n:'dato'}],ofertas:[],fuera:[]});
+  for(const codigo of [
+    'const P=[];const EMI=[];const FUERA=[];throw Error("no ejecutar");',
+    'let P=[];const EMI=[];const FUERA=[];',
+    'const P=[{n:"a",n:"b"}];const EMI=[];const FUERA=[];',
+    'const P=[];const EMI=[];const FUERA=[];const EXTRA=[];',
+    'const P=[];const EMI=[];',
+  ]) assert.throws(()=>leerBloquesCatalogo(codigo));
+});
+verificar('servidor preparado crece con manifiesto cerrado y rechaza truncados o identidad falsa',()=>{
+  const baseTemporal=path.join(raiz,'rwadar-entrega-20261022');
+  fs.mkdirSync(baseTemporal,{recursive:true});
+  const temporal=fs.mkdtempSync(path.join(baseTemporal,'fichas-'));
+  try{
+    const fecha=catalogo.revision,lote=fecha+'-v2';
+    const carpeta=path.join(temporal,'rwadar-app/data/verificaciones',lote);
+    const importaciones=path.join(temporal,'rwadar-app/data/importaciones','catalogo-'+lote);
+    fs.mkdirSync(carpeta,{recursive:true});fs.mkdirSync(importaciones,{recursive:true});
+    fs.mkdirSync(path.join(temporal,'rwadar-site/assets'),{recursive:true});
+    fs.writeFileSync(path.join(temporal,'rwadar-site/assets/catalogo-publico-20261022.js'),
+      'const P='+JSON.stringify(catalogo.plataformas)+';const EMI='+JSON.stringify(catalogo.ofertas)+';const FUERA='+JSON.stringify(catalogo.fuera)+';');
+    const fuentes=cargarFuentesLocales(raiz,{revision:fecha,versionEsquema:2});
+    const nueva={...structuredClone(fuentes.escaparate.ofertas.find(o=>o.coleccion==='principales')),
+      slug:'prueba-nueva-oferta',titulo:'Nueva referencia sintética para pruebas'};
+    fuentes.escaparate.ofertas.push(nueva);fuentes.manifiesto.ofertasEsperadas++;
+    fuentes.manifiesto.coleccionesEsperadas.principales++;
+    const identidad=construirSqlImportacion(fuentes);
+    const revision={versionEsquema:2,revisionId:identidad.revisionId,hash:identidad.hash,fechaRadar:fuentes.radar.verificadoEl,
+      plataformas:fuentes.manifiesto.plataformasEsperadas,ofertas:fuentes.manifiesto.ofertasEsperadas};
+    const documentos=Object.fromEntries(fuentes.escaparate.ofertas.map(o=>[o.slug,o.documentacion]));
+    const escribir=(nombre,valor)=>fs.writeFileSync(path.join(carpeta,nombre),JSON.stringify(valor));
+    const guardarRevision=valor=>fs.writeFileSync(path.join(importaciones,'revision.json'),JSON.stringify(valor));
+    escribir('radar-canonico-26.json',fuentes.radar);
+    escribir('escaparate-publicacion.json',fuentes.escaparate);
+    escribir('documentacion-ofertas.json',documentos);
+    escribir('manifiesto-catalogo.json',{version_esquema:2,plataformas_esperadas:fuentes.manifiesto.plataformasEsperadas,
+      ofertas_esperadas:fuentes.manifiesto.ofertasEsperadas,colecciones_esperadas:fuentes.manifiesto.coleccionesEsperadas});
+    guardarRevision(revision);
+    const preparado=snapshotLocal({raiz:temporal,lote});
+    assert.equal(preparado.ofertas.length,catalogo.ofertas.length+1);
+    assert(preparado.preparado);
+    assert(preparado.plataformas.concat(preparado.ofertas).every(f=>f.ofertas_esperadas===preparado.ofertas.length));
+    fuentes.escaparate.ofertas.pop();escribir('escaparate-publicacion.json',fuentes.escaparate);
+    assert.throws(()=>snapshotLocal({raiz:temporal,lote}));
+    fuentes.escaparate.ofertas.push(nueva);escribir('escaparate-publicacion.json',fuentes.escaparate);
+    delete documentos[nueva.slug];escribir('documentacion-ofertas.json',documentos);
+    assert.throws(()=>snapshotLocal({raiz:temporal,lote}));
+    documentos[nueva.slug]=nueva.documentacion;escribir('documentacion-ofertas.json',documentos);
+    guardarRevision({...revision,hash:'0'.repeat(64)});
+    assert.throws(()=>snapshotLocal({raiz:temporal,lote}),/identidad/);
+    assert.throws(()=>snapshotLocal({raiz:temporal,lote:'../'+lote}),/no válido/);
+  }finally{
+    assert(path.resolve(temporal).startsWith(path.resolve(baseTemporal)+path.sep) && path.basename(temporal).startsWith('fichas-'));
+    fs.rmSync(temporal,{recursive:true,force:true});
+  }
+});
+verificar('marcadores del servidor no conservan contadores antiguos al crecer',()=>{
+  const html='<div id="grid"><!--pre:ini-->viejo<!--pre:fin--></div><div id="outlist"><!--pre:ini-->viejo<!--pre:fin--></div>'+
+    '<span class="n">57</span><span class="l">Analizadas</span><span class="n oro" id="s1">27</span>'+
+    '<span class="n menta" id="s3">19</span><span class="n coral" id="s4">8</span>';
+  const saneado=sanearIndiceLocal(html);
+  assert(!/>57<|>27<|>19<|>8</.test(saneado));assert.equal((saneado.match(/>—</g)||[]).length,4);
+});
+for(const [nombre,contenido] of salidas){
+  if(!nombre.endsWith('.html')) continue;
+  verificar(nombre+' tiene canonical propio, un h1 y metadatos sin venta',()=>{
+    const ruta='/'+nombre.slice(0,-5);
+    assert(contenido.includes('<link rel="canonical" href="https://rwadar.pages.dev'+ruta+'">'));
+    const titulos=[...contenido.matchAll(/<h1\b([^>]*)>/g)];
+    assert.equal(titulos.length,1);
+    if(contenido.includes('data-ficha-consulta')){
+      assert(titulos[0][1].includes('data-idioma-fuente="es"'));
+      assert(titulos[0][1].includes('lang="es"'));
+      assert(titulos[0][1].includes('translate="no"'));
+    }
+    const titulo=contenido.match(/<title>(.*?)<\/title>/s)[1];
+    assert(titulo.length<=65,nombre+' título');
+    assert(contenido.match(/name="description" content="([^"]*)"/)[1].length<=200,nombre+' descripción escapada');
+    assert(!/<style\b|\sstyle\s*=|\son\w+\s*=/i.test(contenido));
+    for(const match of contenido.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){
+      if(/src=/.test(match[1])) continue;
+      assert(/application\/ld\+json/.test(match[1]));
+      const ld=JSON.parse(match[2]);
+      assert.equal(ld['@type'],'WebPage');
+      assert(!/"@type":"(?:Offer|Product|AggregateRating)"|"price"/.test(match[2]));
+      assert.equal(ld.url,'https://rwadar.pages.dev'+ruta);
+    }
+    assert(!/https?:\/\/claude\.ai/.test(contenido));
+  });
+}
+verificar('importes no aparecen como condiciones vigentes sin ejecutar la guarda actual',()=>{
+  const pagina=salidas.get('ofertas/spiko-letras-del-tesoro-euro.html');
+  assert(/data-campo="minimo"[^>]*>Consulta la fuente/.test(pagina));
+  assert(/data-campo="accesoEspana"[^>]*>Sin comprobar desde España/.test(pagina));
+  for(const campo of ['minimo','accesoEspana','costes','salida']){
+    const atributos=pagina.match(new RegExp('<(?:dd|p)\\b([^>]*data-campo="'+campo+'"[^>]*)>'))?.[1] || '';
+    assert(atributos.includes('data-idioma-fuente="es"'));
+    assert(atributos.includes('lang="es"'));
+    assert(atributos.includes('translate="no"'));
+  }
+  assert(pagina.includes('La fecha del dato puede ser anterior'));
+  assert(pagina.includes('No es una fotografía del activo real'));
+});
+verificar('la ficha abierta reevalúa la caducidad al volver y sin HTML de la fuente',()=>{
+  const codigo=fs.readFileSync(path.join(raiz,'rwadar-site/assets/ficha-pagina-20261022.js'),'utf8');
+  const campos=Object.fromEntries(['minimo','accesoEspana','salida','costes','estado'].map(n=>[n,{textContent:'',appendChild(){}}]));
+  const oferta=leerCatalogo().ofertas.find(o=>o.slug==='spiko-letras-del-tesoro-euro');
+  const pagina={dataset:{oferta:JSON.stringify(oferta)},querySelector:selector=>campos[selector.match(/"([^"]+)"/)[1]]};
+  let volver,intervalo,reloj=new Date('2026-10-21T12:00:00Z');
+  const api=require('./rwadar-movil/lib/ficha-editorial');
+  const contexto={globalThis:{RWAdarFichaEditorial:{resumenOferta:o=>api.resumenOferta(o,[],reloj)}},
+    document:{hidden:false,querySelector:()=>pagina,createElement:()=>({}),addEventListener:(e,fn)=>{if(e==='visibilitychange')volver=fn;}},
+    window:{setInterval:fn=>{intervalo=fn;}}};
+  vm.runInNewContext(codigo,contexto,{timeout:1000});
+  assert.equal(typeof volver,'function');assert.equal(typeof intervalo,'function');
+  reloj=new Date('2026-11-01T12:00:00Z');volver();
+  assert.match(campos.minimo.textContent,/Sin mínimo vigente/);
+  assert.match(campos.estado.textContent,/cifras ocultas/);
+  assert(!codigo.includes('innerHTML'));
+});
+verificar('escape y enlaces bloquean inyección, credenciales y artefactos privados',()=>{
+  assert.equal(esc('<img src=x onerror="x">'), '&lt;img src=x onerror=&quot;x&quot;&gt;');
+  for(const u of ['javascript:alert(1)','https://u:p@example.com','https://claude.ai/code/artifact/x'])assert.equal(enlace(u),null);
+});
+verificar('RSS enlaza noticias estables y el sitemap contiene todas las fichas',()=>{
+  const rss=salidas.get('novedades.xml'),mapa=salidas.get('sitemap.xml');
+  assert(rss.startsWith('<?xml'));assert(rss.includes('<rss version="2.0">'));
+  const guids=[...rss.matchAll(/<guid isPermaLink="true">(.*?)<\/guid>/g)].map(m=>m[1]);
+  assert(guids.length>=3);assert.equal(guids.length,new Set(guids).size);
+  for(const p of permitidas.filter(n=>n.endsWith('.html')))assert(mapa.includes('<loc>https://rwadar.pages.dev/'+p.slice(0,-5)+'</loc>'));
+});
+console.log(pruebas+' verificaciones de páginas y RSS correctas');

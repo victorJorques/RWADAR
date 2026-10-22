@@ -27,7 +27,7 @@ console.log('=== UI DE VERIFICACIÓN LOCAL ===');
 paso('la portada no promete aprobación, apertura universal ni acceso minorista',
   !/pasan el filtro|superan el filtro|aceptan dinero hoy|solo entran plataformas con supervisor|Abiertas a minoristas|cumple los cuatro criterios/i.test(indice) &&
   indice.includes('Categorías de activos') && indice.includes('no es exhaustivo ni un sello de aprobación') &&
-  (web.match(/document\.getElementById\('s3'\)\.textContent=new Set\(P\.map\(p=>p\.cat\)\)\.size/g) || []).length === 3);
+  /document\.getElementById\('s3'\)\.textContent=new Set\(P\.map\(p=>p\.cat\)\)\.size/.test(web));
 paso('web y explicador móvil distinguen el pago al proveedor de los ingresos de RWAdar',
   /La inversión y el pago se realizan directamente con la\s+empresa/.test(indice) &&
   indice.includes('no recibimos ni custodiamos el dinero de tu inversión') &&
@@ -55,11 +55,14 @@ paso('la web valida el overlay antes de adjuntarlo al modelo visible',
   && web.includes("d.plataformas.map(plataformaDesdeEscaparate)")
   && web.includes("verificación local ausente, desactualizada o no conservadora"));
 
-paso('la carga web falla cerrada sin volver al radar canónico antiguo',
-  web.includes('P.length=0;compare=[];render();')
-  && web.indexOf('P.length=0;compare=[];render();')
-    < web.indexOf("fetch('/__rwadar_local/escaparate.json'")
-  && web.includes('El radar queda oculto: falta una verificación local completa y vigente.')
+const cargaLocal = web.slice(web.indexOf('async function cargarEscaparateLocal(){'),
+  web.indexOf('\nasync function alDia('));
+paso('una revisión local incompleta conserva la copia completa sin contactar producción',
+  web.includes('Se conserva la última copia completa del catálogo.')
+  && !/P\.length=0|EMI\.length=0|P\.splice/.test(cargaLocal.slice(0,
+    cargaLocal.indexOf("fetch('/__rwadar_local/escaparate.json'")))
+  && cargaLocal.indexOf('validarEscaparateLocalV2(recibido)') < cargaLocal.indexOf('P.splice(')
+  && !/fetch\((?:API|SUPABASE)/.test(cargaLocal)
   && !web.includes('Se mantiene el radar incluido en la fuente'));
 
 paso('las fichas y el detalle muestran fecha, tres estados y alertas críticas',

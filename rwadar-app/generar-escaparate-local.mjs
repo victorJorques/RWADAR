@@ -1,12 +1,12 @@
 import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const { aplicarRevalidacion } = require('./revalidar-escaparate-local.js');
+const { leerBloquesCatalogo } = require('../rwadar-fichas');
 const SOLO_DATOS = process.argv.includes('--solo-datos');
 let sharp;
 try {
@@ -26,7 +26,7 @@ const ACTIVOS = path.join(MOVIL, 'assets', 'ofertas');
 const ARCHIVO_FIXTURE = path.join(MOVIL, 'fixtures', 'escaparate-local.json');
 const ARCHIVO_MANIFIESTO = path.join(MOVIL, 'fixtures', 'fuentes-imagenes.json');
 const ARCHIVO_MAPA = path.join(MOVIL, 'fixtures', 'imagenes-ofertas.js');
-const ARCHIVO_RADAR = path.join(RAIZ, 'rwadar-site', 'assets', 'rwadar-20260820.js');
+const ARCHIVO_RADAR = path.join(RAIZ, 'rwadar-site', 'assets', 'catalogo-publico-20261022.js');
 const ARCHIVO_ACTUALIZACIONES = path.join(
   AQUI, 'data', 'verificaciones', '2026-09-21', 'actualizaciones-escaparate-local.json');
 const ARCHIVO_VERIFICACION_RADAR = path.join(
@@ -106,40 +106,6 @@ function slugificar(valor) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
-}
-
-function extraerArrayLiteral(codigo, nombre) {
-  const coincidencia = new RegExp(`\\bconst\\s+${nombre}\\s*=\\s*\\[`).exec(codigo);
-  asegurar(coincidencia, `No se encontro const ${nombre} en ${ARCHIVO_RADAR}`);
-  const inicio = coincidencia.index + coincidencia[0].lastIndexOf('[');
-  let profundidad = 0;
-  let comilla = null;
-  let escapado = false;
-
-  for (let i = inicio; i < codigo.length; i += 1) {
-    const caracter = codigo[i];
-    if (comilla) {
-      if (escapado) escapado = false;
-      else if (caracter === '\\') escapado = true;
-      else if (caracter === comilla) comilla = null;
-      continue;
-    }
-    if (caracter === '"' || caracter === "'" || caracter === '`') {
-      comilla = caracter;
-    } else if (caracter === '[') {
-      profundidad += 1;
-    } else if (caracter === ']') {
-      profundidad -= 1;
-      if (profundidad === 0) return codigo.slice(inicio, i + 1);
-    }
-  }
-  throw new Error(`El array ${nombre} no termina correctamente`);
-}
-
-function leerArrayDatos(codigo, nombre) {
-  const literal = extraerArrayLiteral(codigo, nombre);
-  const valor = vm.runInNewContext(`(${literal})`, Object.create(null), { timeout: 1_000 });
-  return JSON.parse(JSON.stringify(valor));
 }
 
 function validarVerificacionRadar(datos, registro) {
@@ -530,8 +496,7 @@ async function principal() {
   asegurar(artefacto.imageFiles.length === 52, 'El artefacto debe contener 52 imagenes');
   asegurar(catalogo.source.url === artefacto.sourceUrl, 'Las URL de fuente no coinciden');
 
-  const datosP = leerArrayDatos(codigoRadar, 'P');
-  const datosFuera = leerArrayDatos(codigoRadar, 'FUERA');
+  const {plataformas: datosP, fuera: datosFuera} = leerBloquesCatalogo(codigoRadar);
   asegurar(datosP.length === 26, 'La fuente web debe contener 26 plataformas');
   asegurar(datosFuera.length === 4, 'La fuente web debe contener 4 descartes');
 

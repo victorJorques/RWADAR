@@ -665,10 +665,14 @@ function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg
 ${extraMeta}<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${ICONO}">
 <link rel="stylesheet" href="${CSS}">
+<link rel="stylesheet" href="/assets/idioma-20261022.css">
 <script type="application/ld+json">
 ${JSON.stringify(jsonLd)}
 </script>
 <script src="${ANALITICA}" defer></script>
+<script src="/assets/idioma-en-20261022.js" defer></script>
+<script src="/assets/idioma-20261022.js" defer></script>
+<script src="/assets/idioma-web-20261022.js" defer></script>
 <script src="${JS}" defer></script>
 </head>`;
 }
@@ -694,7 +698,7 @@ function barraSuperior(activa) {
       <a href="/#metodo">Método</a>
     </nav>
   </div>
-</header>`;
+</header><div data-selector-idioma></div>`;
 }
 
 function pieHtml() {

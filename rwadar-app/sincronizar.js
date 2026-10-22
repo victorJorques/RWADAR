@@ -2,7 +2,7 @@
    RWAdar · sincroniza la web con la base de datos
    ---------------------------------------------------------------------
    Lee el contenido desde Supabase y reescribe los arrays P, FUERA y EMI
-   dentro del JavaScript externo versionado de la web.
+   dentro del snapshot externo del catálogo, separado del comportamiento.
 
    Por qué así y no leyendo desde el navegador: si la página pidiera los
    datos al cargar, el robot de Google volvería a encontrarla vacía y
@@ -12,18 +12,21 @@
    ===================================================================== */
 const fs = require('fs');
 const path = require('path');
+const { parse } = require('acorn');
+const { leerBloquesCatalogo } = require('../rwadar-fichas');
 const {
   CUENTA_PLATAFORMAS,
   CUENTA_OFERTAS,
   validarLotePublico,
   validarLotePublicoV2,
   MANIFIESTO_CATALOGO_V2,
+  LIMITES_CATALOGO_V2,
 } = require('./catalogo-publico.js');
 
 const URL_BASE = 'https://exgpmjpaaebyoolpwced.supabase.co/rest/v1';
 const CLAVE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const SITIO = path.join(__dirname, '..', 'rwadar-site');
-const JS = path.join(SITIO, 'assets', 'rwadar-20260820.js');
+const JS = path.join(SITIO, 'assets', 'catalogo-publico-20261022.js');
 const CSV = path.join(SITIO, 'rwadar.csv');
 
 async function pedir(ruta, fetchFn = globalThis.fetch) {
@@ -144,6 +147,33 @@ function ofertaPublica(o) {
   return x;
 }
 
+// Solo se leen los literales JSON emitidos por este sincronizador. Acorn
+// localiza sus límites sin ejecutar JavaScript, ni siquiera el resto de la web.
+function manifiestoMinimoFuente(script, manifiesto, hoy) {
+  const ast = parse(script, { ecmaVersion: 'latest' });
+  const leer = nombre => {
+    const declaraciones = ast.body.filter(n => n.type === 'VariableDeclaration')
+      .flatMap(n => n.declarations).filter(n => n.id.type === 'Identifier' && n.id.name === nombre);
+    if (declaraciones.length !== 1 || declaraciones[0].init?.type !== 'ArrayExpression') {
+      throw new Error(`no encuentro el literal único ${nombre} del catálogo anterior`);
+    }
+    const nodo = declaraciones[0].init;
+    return JSON.parse(script.slice(nodo.start, nodo.end).replace(/,\s*\]$/, ']'));
+  };
+  const plataformas = leer('P');
+  const ofertas = leer('EMI');
+  if (![...plataformas, ...ofertas].some(f => f?.version_esquema === 2)) return manifiesto;
+  const resultado = validarLotePublicoV2(
+    plataformas.map(p => ({ ...p, nombre: p.n, revision_id: p.revisionId,
+      verificacion_local: p.verificacionLocal })),
+    ofertas.map(o => ({ ...o, revision_id: o.revisionId, plataforma_slug: o.plataformaSlug,
+      plataforma_nombre: o.plataformaNombre, verificada_el: o.verificadaEl, vigencia_dias: o.vigenciaDias,
+      estado_revision: o.estadoRevision, fuentes_actuales: o.fuentesActuales,
+      disponible_es: o.disponibleEs })),
+    { hoy, manifiesto, permitirAmpliacion: true, permitirCaducado: true });
+  return resultado.manifiesto;
+}
+
 async function main({
   fetchFn = globalThis.fetch,
   jsPath = JS,
@@ -151,14 +181,21 @@ async function main({
   hoy = new Date(),
   versionEsquema = 1,
   manifiesto,
+  permitirAmpliacion = false,
 } = {}) {
   if (![1, 2].includes(versionEsquema)) throw new Error('versión de catálogo desconocida');
+  let script = fs.readFileSync(jsPath, 'utf8');
+  leerBloquesCatalogo(script);
+  let manifiestoValidado = versionEsquema === 2 && permitirAmpliacion
+    ? manifiestoMinimoFuente(script, manifiesto, hoy) : manifiesto;
   const sufijo = versionEsquema === 2 ? '_v2' : '';
+  const limitePlataformas = versionEsquema === 2 ? `&limit=${LIMITES_CATALOGO_V2.plataformas + 1}` : '';
+  const limiteOfertas = versionEsquema === 2 ? `&limit=${LIMITES_CATALOGO_V2.ofertas + 1}` : '';
   const [radar, fuera, emisiones] = await Promise.all([
-    pedir(`catalogo_plataformas_publicas${sufijo}?select=*`, fetchFn),
+    pedir(`catalogo_plataformas_publicas${sufijo}?select=*${limitePlataformas}`, fetchFn),
     pedir('plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,' +
       'fuentes(url,titulo)&order=nombre', fetchFn),
-    pedir(`catalogo_ofertas_publicas${sufijo}?select=*`, fetchFn),
+    pedir(`catalogo_ofertas_publicas${sufijo}?select=*${limiteOfertas}`, fetchFn),
   ]);
 
   if (!Array.isArray(fuera) || fuera.length !== 4) {
@@ -167,7 +204,9 @@ async function main({
   if (versionEsquema === 2) {
     // Siempre disponible salvo orden expresa (1/10/2026): un lote completo y
     // caducado se puede publicar; la web lo enseña con el aviso de revisión.
-    const lote = validarLotePublicoV2(radar, emisiones, { hoy, manifiesto, permitirCaducado: true });
+    const lote = validarLotePublicoV2(radar, emisiones, { hoy, manifiesto: manifiestoValidado,
+      permitirAmpliacion, permitirCaducado: true });
+    manifiestoValidado = lote.manifiesto;
     if (lote.caducado) {
       console.warn(`AVISO: la revisión del catálogo (${lote.fecha}) está caducada. Se publica con el aviso de revisión pendiente.`);
     }
@@ -175,8 +214,8 @@ async function main({
   else validarLotePublico(radar, emisiones, { hoy });
   const plataformas = radar.map(plataformaPublica);
   const ofertas = emisiones.map(ofertaPublica);
-  if (plataformas.length !== (versionEsquema === 2 ? manifiesto.plataformasEsperadas : CUENTA_PLATAFORMAS) ||
-    ofertas.length !== (versionEsquema === 2 ? manifiesto.ofertasEsperadas : CUENTA_OFERTAS)) {
+  if (plataformas.length !== (versionEsquema === 2 ? manifiestoValidado.plataformasEsperadas : CUENTA_PLATAFORMAS) ||
+    ofertas.length !== (versionEsquema === 2 ? manifiestoValidado.ofertasEsperadas : CUENTA_OFERTAS)) {
     throw new Error('el lote cambió durante la normalización');
   }
 
@@ -190,14 +229,14 @@ async function main({
            `fuentes:[${fuentes}]},`;
   }).join('\n');
 
-  let script = fs.readFileSync(jsPath, 'utf8');
-
   const sustituir = (nombre, cuerpo) => {
-    const ini = script.indexOf(`const ${nombre}=[`);
-    if (ini < 0) throw new Error(`no encuentro el array ${nombre}`);
-    const fin = script.indexOf('\n];', ini);
-    if (fin < 0) throw new Error(`no encuentro el cierre de ${nombre}`);
-    script = script.slice(0, ini) + `const ${nombre}=[\n${cuerpo}` + script.slice(fin);
+    const declaraciones = parse(script, {ecmaVersion:'latest'}).body
+      .filter(n => n.type==='VariableDeclaration').flatMap(n=>n.declarations)
+      .filter(n => n.id.type==='Identifier' && n.id.name===nombre);
+    if (declaraciones.length!==1 || declaraciones[0].init?.type!=='ArrayExpression')
+      throw new Error(`no encuentro el array único ${nombre}`);
+    const nodo = declaraciones[0].init;
+    script = script.slice(0, nodo.start) + `[\n${cuerpo}\n]` + script.slice(nodo.end);
   };
 
   const E = ofertas.map(e => ` ${jsonSeguro(e)},`).join('\n');
@@ -209,6 +248,7 @@ async function main({
   /* No sustituimos el archivo hasta haber generado y validado los tres
      bloques completos. Si el proceso cae antes, la fuente anterior queda. */
   new Function(script);
+  leerBloquesCatalogo(script);
   escribirAtomico(jsPath, script);
 
   /* El mismo CSV que descarga el botón de la página, pero como archivo de
@@ -243,9 +283,10 @@ module.exports = {
   plataformaPublica,
   ofertaPublica,
   metadatosRevision,
+  manifiestoMinimoFuente,
   sincronizar: main,
 };
 if (require.main === module) {
-  main({ versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2 })
+  main({ versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true })
     .catch(e => { console.error('ERROR:', e.message); process.exit(1); });
 }

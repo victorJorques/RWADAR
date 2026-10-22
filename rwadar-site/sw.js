@@ -29,9 +29,9 @@
 
 const VERSION = 'rwadar-v20260921-tarjetas-local-6';
 
-/* El armazón mínimo para que la aplicación abra sin red. Los datos no
-   están aquí: la página los pide a Supabase al cargar y se repinta sola,
-   y el HTML ya trae las fichas pre-renderizadas para poder leerse. */
+/* El armazón mínimo para abrir sin red incluye la última copia completa
+   derivada de Supabase y su helper. Se instala junto al comportamiento y
+   al HTML pre-renderizado: una descarga incompleta conserva la anterior. */
 const ARMAZON = [
   '/',
   '/privacidad',
@@ -39,6 +39,12 @@ const ARMAZON = [
   '/para-empresas',
   '/assets/rwadar-20260820.css',
   '/assets/rwadar-20260820.js',
+  '/assets/catalogo-publico-20261022.js',
+  '/assets/ficha-editorial-20261022.js',
+  '/assets/idioma-en-20261022.js',
+  '/assets/idioma-20261022.js',
+  '/assets/idioma-web-20261022.js',
+  '/assets/idioma-20261022.css',
   '/assets/analitica-20260927.js',
   '/assets/privacidad-20260820.css',
   '/plataformas/addx.webp',

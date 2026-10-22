@@ -112,7 +112,7 @@ const cumple = f => { const texto = plano(f.url); return !!texto && (COMPROBACIO
 const reintentar = [...new Set(radar.fuentes.filter(f => !cumple(f)).map(f => f.url))];
 if (reintentar.length && !hayBandera('sin-capturar')) {
   console.log(`   Reintentando ${reintentar.length} fuente(s) dentro de 30 s: ${reintentar.join(' ')}`);
-  execFileSync('sleep', ['30']);
+  await new Promise(resolve => setTimeout(resolve, 30000));
   execFileSync(process.execPath, [path.join(APP, 'capturar-fuentes.mjs'), DESDE, CAPTURAS, `--solo=${reintentar.join(',')}`], { stdio: 'inherit' });
   CAP = JSON.parse(fs.readFileSync(CAPTURAS, 'utf8'));
 }
@@ -526,8 +526,8 @@ fs.mkdirSync(carpeta, { recursive: true });
 const cambios = {
   desde: DESDE,
   alcance: `Revisión editorial de fuentes primarias del ${FES}: las ${radar.fuentes.length} fuentes del radar se volvieron a consultar y siguen diciendo lo que respaldan. No acredita onboarding, oferta abierta ni rentabilidad.`,
-  notaOrigen: `Revisión del ${FES}: fuentes del radar y de las 49 fichas consultadas de nuevo con rwadar-app/actualizar-catalogo.mjs. Las cifras se renuevan solo donde se vieron en la fuente oficial ese día.`,
-  notaActualizacion: `Comprobación del ${FES} de destinos, fuentes y cifras de las 49 fichas.`,
+  notaOrigen: `Revisión del ${FES}: fuentes del radar y de las ${Object.keys(esc).length} fichas consultadas de nuevo con rwadar-app/actualizar-catalogo.mjs. Las cifras se renuevan solo donde se vieron en la fuente oficial ese día.`,
+  notaActualizacion: `Comprobación del ${FES} de destinos, fuentes y cifras de las ${Object.keys(esc).length} fichas.`,
   referenciaAprobacion: `Revisión del ${FES} (actualizar-catalogo.mjs); aprobada por Víctor`,
   ofertas: fichas,
 };

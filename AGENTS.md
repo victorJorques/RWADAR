@@ -20,6 +20,26 @@ Lo de `docs/archive/` es histórico y no describe el estado vigente.
 - Compilar o publicar la app: `eas build`, `eas update`, `eas submit`.
 - Cambiar la visibilidad del repositorio, borrar hosting o rotar credenciales.
 
+**Excepción recurrente autorizada por Víctor el 22/10/2026:** el ciclo diario
+de las **09:00 de `Europe/Madrid`** puede investigar las ofertas y, después de
+las revisiones y compuertas de
+[`CICLO-DIARIO-CATALOGO.md`](docs/tareas/CICLO-DIARIO-CATALOGO.md), aplicar
+exclusivamente el SQL editorial del catálogo revisado y publicar su web
+(`--preview` y `--produccion`). No necesita renovar ese permiso cada día.
+Esta excepción no autoriza cuentas, comunidad, Auth, RLS/ACL, funciones,
+migraciones de esquema, credenciales, correos, pagos, builds/OTA/tiendas,
+visibilidad ni otras operaciones. Cada candidata se admite y publica tras las
+compuertas, o no se admite ni publica ese día; no se mantiene una cola ni un
+estado público «en investigación». Al día siguiente se investiga de nuevo
+desde fuentes vigentes, sin arrastrar una aprobación anterior. El catálogo
+completo ya publicado se conserva.
+
+La tarea está activa en Tareas programadas. Por limitación del programador,
+Víctor autorizó guardarla a las09:00 locales del PC, cuya zona actual coincide
+con España peninsular. Si cambia esa zona, reajustar el horario; comprobar Madrid
+al inicio antes de investigar o publicar. El equipo y la aplicación deben estar
+encendidos. El procedimiento diario contiene el detalle y los límites.
+
 ## Límites de seguridad
 
 - La web y la app en local apuntan al Supabase de producción y pueden escribir

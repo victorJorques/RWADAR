@@ -8,8 +8,8 @@ import { baseCompleta, filas, sesion } from './pruebas-soporte.mjs';
 
 const require = createRequire(import.meta.url);
 const { cargarFuentesLocales, construirSqlImportacion, validarLotePublico, validarLotePublicoV2,
-  MANIFIESTO_CATALOGO_V2, normalizarManifiestoLocal } = require('./catalogo-publico.js');
-const { sincronizar } = require('./sincronizar.js');
+  MANIFIESTO_CATALOGO_V2, LIMITES_CATALOGO_V2, normalizarManifiestoLocal } = require('./catalogo-publico.js');
+const { sincronizar, manifiestoMinimoFuente } = require('./sincronizar.js');
 const legado = cargarFuentesLocales('..', { revision: '2026-09-30' });
 const v2 = structuredClone(legado);
 v2.manifiesto = structuredClone(MANIFIESTO_CATALOGO_V2);
@@ -26,6 +26,16 @@ for (const [coleccion, cantidad] of [['secundario', 21], ['en_camino', 4]]) {
 }
 const importacionV1 = construirSqlImportacion(legado);
 const importacionV2 = construirSqlImportacion(v2);
+const fuenteAmpliada = structuredClone(v2);
+fuenteAmpliada.manifiesto.ofertasEsperadas++;
+fuenteAmpliada.manifiesto.coleccionesEsperadas.principales++;
+fuenteAmpliada.escaparate.ofertas.push({ ...structuredClone(v2.escaparate.ofertas[0]),
+  slug: 'oferta-nueva-proveedor-nuevo', plataformaSlug: 'proveedor-nuevo', plataformaNombre: 'Proveedor nuevo',
+  documentacion: { ...structuredClone(v2.escaparate.ofertas[0].documentacion),
+    imagenEditorialAlt: 'Edificio residencial ilustrado en su entorno urbano.' } });
+assert.throws(() => construirSqlImportacion({ ...fuenteAmpliada, manifiesto: MANIFIESTO_CATALOGO_V2 }),
+  /incompletas/, 'el importador sigue exigiendo el manifiesto editorial explícito actualizado');
+const importacionAmpliada = construirSqlImportacion(fuenteAmpliada);
 assert.deepEqual(normalizarManifiestoLocal({ version_esquema: 2, plataformas_esperadas: 26,
   ofertas_esperadas: 49, colecciones_esperadas: { principales: 24, secundario: 21, en_camino: 4 } }),
 MANIFIESTO_CATALOGO_V2);
@@ -131,17 +141,67 @@ try {
   assert.throws(() => validarLotePublicoV2(plataformas, ofertas), /manifiesto/);
   assert.throws(() => validarLotePublicoV2(plataformas, ofertas, { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: '2099-01-01' }), /caducada/);
 
+  const ampliado = structuredClone({ plataformas, ofertas });
+  ampliado.ofertas.push({ ...structuredClone(ofertas[0]), slug: 'oferta-nueva-proveedor-nuevo',
+    plataforma_slug: 'proveedor-nuevo', plataforma_nombre: 'Proveedor nuevo' });
+  for (const fila of [...ampliado.plataformas, ...ampliado.ofertas]) {
+    fila.ofertas_esperadas = 50; fila.colecciones_esperadas.principales = 25;
+  }
+  const validarAmpliacion = (lote, manifiesto = MANIFIESTO_CATALOGO_V2) =>
+    validarLotePublicoV2(lote.plataformas, lote.ofertas, { manifiesto, permitirAmpliacion: true });
+  assert.throws(() => validarLotePublicoV2(ampliado.plataformas, ampliado.ofertas,
+    { manifiesto: MANIFIESTO_CATALOGO_V2 }), /incompletas/, 'no se amplía por defecto');
+  const resultadoAmpliado = validarAmpliacion(ampliado);
+  assert.equal(resultadoAmpliado.ofertasEsperadas, 50);
+  assert.deepEqual(resultadoAmpliado.manifiesto, fuenteAmpliada.manifiesto);
+  assert.throws(() => validarAmpliacion({ plataformas, ofertas }, resultadoAmpliado.manifiesto), /reduce/);
+  for (const alterar of [
+    lote => { lote.ofertas.pop(); },
+    lote => { lote.plataformas.pop(); },
+    lote => { lote.ofertas[49].ofertas_esperadas = 49; },
+    lote => { lote.ofertas[49].revision_id = '00000000-0000-0000-0000-000000000000'; },
+    lote => { lote.plataformas[25].colecciones_esperadas.secundario--; },
+    lote => { lote.ofertas[49].documentacion.imagenEditorialAlt = 'Corto'; },
+    lote => { for (const f of [...lote.plataformas, ...lote.ofertas]) {
+      f.colecciones_esperadas.principales++; f.colecciones_esperadas.secundario--;
+    } lote.ofertas.find(o => o.coleccion === 'secundario').coleccion = 'principales'; },
+    lote => { for (const f of [...lote.plataformas, ...lote.ofertas]) {
+      f.ofertas_esperadas = LIMITES_CATALOGO_V2.ofertas + 1;
+      f.colecciones_esperadas.principales = LIMITES_CATALOGO_V2.ofertas - 24;
+    } },
+    lote => { lote.plataformas = Array(LIMITES_CATALOGO_V2.plataformas + 1).fill(lote.plataformas[0]); },
+    lote => { lote.ofertas = Array(LIMITES_CATALOGO_V2.ofertas + 1).fill(lote.ofertas[0]); },
+  ]) {
+    const invalido = structuredClone(ampliado); alterar(invalido);
+    assert.throws(() => validarAmpliacion(invalido), 'una ampliación conserva todas las guardas');
+  }
+  resultadoAmpliado.manifiesto.coleccionesEsperadas.principales = 999;
+  assert.equal(ampliado.plataformas[0].colecciones_esperadas.principales, 25,
+    'el manifiesto devuelto no comparte objetos con el transporte');
+  const maximo = structuredClone(ampliado);
+  for (let i = maximo.ofertas.length; i < LIMITES_CATALOGO_V2.ofertas; i++) {
+    maximo.ofertas.push({ ...structuredClone(ofertas[0]), slug: `prueba-maximo-${i}` });
+  }
+  for (const f of [...maximo.plataformas, ...maximo.ofertas]) {
+    f.ofertas_esperadas = LIMITES_CATALOGO_V2.ofertas;
+    f.colecciones_esperadas.principales = LIMITES_CATALOGO_V2.ofertas - 25;
+  }
+  assert.equal(validarAmpliacion(maximo).ofertasEsperadas, 1000, 'el techo del lector también es completo');
+
   const jsPath = path.join(temporal, 'sitio.js');
   fs.writeFileSync(jsPath, 'const P=[\n\n];\nconst FUERA=[\n\n];\nconst EMI=[\n\n];\n');
   const descartes = Array.from({ length: 4 }, (_, i) => ({ nombre: `Descarte ${i}`,
     etiqueta_descarte: 'Sin evidencia', motivo_descarte: 'Descarte documentado en ensayo sintético.',
     fuentes: [{ url: `https://example.test/${i}`, titulo: `Fuente ${i}` }] }));
+  descartes[0].motivo_descarte += ' Texto literal const EMI=[ que no identifica una declaración.';
   const fetchFn = async url => ({ ok: true, json: async () => url.includes('catalogo_plataformas_publicas_v2')
     ? plataformas : url.includes('catalogo_ofertas_publicas_v2') ? ofertas : descartes });
   await sincronizar({ jsPath, csvPath: path.join(temporal, 'sitio.csv'), fetchFn,
     versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2 });
-  const transporte = JSON.parse(JSON.stringify(vm.runInNewContext(fs.readFileSync(jsPath, 'utf8') + '\n({P,EMI});')));
+  const transporte = JSON.parse(JSON.stringify(vm.runInNewContext(fs.readFileSync(jsPath, 'utf8') + '\n({P,EMI,FUERA});')));
   assert.equal(transporte.P.length, 26); assert.equal(transporte.EMI.length, 49);
+  assert.equal(transporte.FUERA[0].why, descartes[0].motivo_descarte,
+    'las marcas de declaración dentro de datos nunca dirigen la sustitución AST');
   assert(transporte.P.concat(transporte.EMI).every(f => f.version_esquema === 2 && f.ofertas_esperadas === 49 &&
     f.colecciones_esperadas.secundario === 21 && f.vigencia_lote_dias === 7));
   const antes = fs.readFileSync(jsPath, 'utf8');
@@ -150,6 +210,19 @@ try {
       url.includes('catalogo_ofertas_publicas_v2') ? ofertas.slice(1) : url.includes('catalogo_plataformas_publicas_v2')
         ? plataformas : descartes }) }));
   assert.equal(fs.readFileSync(jsPath, 'utf8'), antes, 'la sincronización rechazada conserva el archivo anterior');
+  await sincronizar({ jsPath, csvPath: path.join(temporal, 'sitio.csv'), versionEsquema: 2,
+    manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true,
+    fetchFn: async url => ({ ok: true, json: async () => url.includes('catalogo_ofertas_publicas_v2')
+      ? ampliado.ofertas : url.includes('catalogo_plataformas_publicas_v2') ? ampliado.plataformas : descartes }) });
+  const antes50 = fs.readFileSync(jsPath, 'utf8');
+  const csvAntes50 = fs.readFileSync(path.join(temporal, 'sitio.csv'), 'utf8');
+  assert.equal(manifiestoMinimoFuente(antes50, MANIFIESTO_CATALOGO_V2).ofertasEsperadas, 50);
+  await assert.rejects(sincronizar({ jsPath, csvPath: path.join(temporal, 'sitio.csv'), fetchFn,
+    versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true }), /reduce/);
+  assert.equal(fs.readFileSync(jsPath, 'utf8'), antes50, 'un lote anterior de49 no reemplaza el de50');
+  assert.equal(fs.readFileSync(path.join(temporal, 'sitio.csv'), 'utf8'), csvAntes50);
+  assert.throws(() => manifiestoMinimoFuente('const P=[(()=>{throw Error("no ejecutar");})()]; const EMI=[];',
+    MANIFIESTO_CATALOGO_V2), /JSON|Unexpected token/);
 
   const vacio = async () => {
     for (const rol of ['anon', 'authenticated']) {
@@ -198,7 +271,23 @@ try {
   assert.equal((await filas(db, 'select estado from rwadar_catalogo.revisiones where id=$1', [importacionDurable.revisionId]))[0].estado,
     'borrador', 'la entrega durable se importa sin aprobar');
   await vacio();
-  console.log('Catálogo V2: manifiesto, 49 colecciones, RLS/invoker, V1, transporte y cierre sin fallback verificados.');
+  // La vista y el esquema existentes admiten la oferta50 y un proveedor nuevo
+  // sin migraciones ni cambios del radar canónico, solo con el manifiesto50.
+  await db.exec(importacionAmpliada.sql);
+  await db.query('update rwadar_catalogo.revisiones set verificado_el=current_date where id=$1', [importacionAmpliada.revisionId]);
+  await db.query('update rwadar_catalogo.fuentes set consultada_el=current_date where revision_id=$1', [importacionAmpliada.revisionId]);
+  await db.query('update rwadar_catalogo.ofertas set verificada_el=current_date where revision_id=$1', [importacionAmpliada.revisionId]);
+  await aprobar(importacionAmpliada.revisionId, 2);
+  await sesion(db, null, 'anon');
+  const plataformas50 = api(await filas(db, 'select * from public.catalogo_plataformas_publicas_v2'));
+  const ofertas50 = api(await filas(db, 'select * from public.catalogo_ofertas_publicas_v2'));
+  assert.equal(plataformas50.length, 26); assert.equal(ofertas50.length, 50);
+  assert(ofertas50.some(o => o.plataforma_slug === 'proveedor-nuevo'));
+  assert.deepEqual(validarAmpliacion({ plataformas: plataformas50, ofertas: ofertas50 }).manifiesto,
+    fuenteAmpliada.manifiesto);
+  assert.equal((await filas(db, 'select * from public.catalogo_ofertas_publicas')).length, 28,
+    'la ampliaciónV2 no altera el manifiesto V1');
+  console.log('Catálogo V2: manifiesto estricto, expansión50/1000, no retroceso, RLS/invoker, V1 y transporte atómico verificados.');
 }
 finally {
   await db.close();
