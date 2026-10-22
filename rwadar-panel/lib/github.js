@@ -29,7 +29,11 @@ function crearGithub(config, { leerPrivado } = {}) {
   };
 
   async function descargasApp() {
-    const r = await pedirJson(`${config.githubApi}/repos/${config.repoDescargas}/releases?per_page=100`, { headers: CABECERAS });
+    /* Sin clave GitHub deja 60 consultas por hora y por dirección; desde
+       Cloudflare esa dirección la comparten muchos y se agota. Con
+       GITHUB_TOKEN el límite es propio. */
+    const cabeceras = config.githubToken ? { ...CABECERAS, Authorization: `Bearer ${config.githubToken}` } : CABECERAS;
+    const r = await pedirJson(`${config.githubApi}/repos/${config.repoDescargas}/releases?per_page=100`, { headers: cabeceras });
     const versiones = (Array.isArray(r.datos) ? r.datos : [])
       .filter(v => !v.draft)
       .map(v => {
