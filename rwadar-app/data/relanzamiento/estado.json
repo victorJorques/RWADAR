@@ -13,8 +13,8 @@
   "comisionVariableSobreInversion": false,
   "nota": "Nueva revisión editorial del 22/10 aplicada y leída en Supabase. Interfaz reorganizada, fichas permanentes, RSS y selector español/inglés en validación previa a publicar. La web y Android 1.3.2 ya publicados conservan su evidencia histórica; no acredita el APK 1.4.0 todavía. Publicidad, cobros, comisiones, opiniones, avisos, comunidad y manual siguen apagados. No se afirma Auth nativo real ni teléfono físico.",
   "revisionAprobada": {
-    "commit": "0a499695253bff1d0579399a226dd985f86ec5dc",
-    "contenidoSha256": "sha256:61fa785a4dc697b96af53e31236babd1f4c668efb5b4057d800295a7feb45b8e",
+    "commit": "ab61990b852a90b82ae10af424737e88b16be263",
+    "contenidoSha256": "sha256:7c4ed6e1783345467a3856be0569644942dacb1a0b048e643e5f384086e1db60",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
