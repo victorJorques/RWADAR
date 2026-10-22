@@ -998,8 +998,8 @@
       <div><p class="movil-mini-etiqueta">REGISTRO INDEPENDIENTE</p><h3>Plataformas de tokenización, con la fuente al lado</h3><p>Quién está en el radar, qué ofertas documentamos y quién se ha quedado fuera, y por qué.</p></div>
     </article>
     <div class="inicio-atajos">
-      <button class="movil-boton-principal" type="button" data-movil-cambiar="buscar">Buscar empresas y ofertas</button>
-      <button class="movil-boton-secundario" type="button" data-movil-cambiar="academy">Aprender en la Academy</button>
+      <button class="movil-boton-principal" type="button" data-movil-ir="emisiones">Ver ofertas</button>
+      <button class="movil-boton-secundario" type="button" data-movil-ir="tool">Ver plataformas</button>
     </div>
 
     <section class="inicio-seccion" aria-labelledby="inicioNoticiasTit">
@@ -1007,19 +1007,19 @@
     <!--noticias:ini-->
     <ol class="inicio-noticias" aria-label="Noticias de RWAdar">
       <li>
+        <article class="inicio-noticia" aria-labelledby="noticia-catalogo-2026-10-21">
+          <p class="inicio-noticia-meta"><span class="inicio-etiqueta">Ofertas</span><time datetime="2026-10-21">21 oct 2026</time></p>
+          <h4 id="noticia-catalogo-2026-10-21">49 ofertas revisadas, ahora con imagen propia</h4>
+          <p>Volvimos a leer las 49 referencias en sus fuentes oficiales. Cada ficha estrena una imagen que explica en tres pasos en qué consiste, y la tarjeta dice dónde está el activo y si su plataforma consta ante un supervisor. Las imágenes son ilustraciones, no fotos del activo.</p>
+          <a class="inicio-noticia-enlace" href="#emisiones" data-movil-ir="emisiones">Ver las ofertas <span aria-hidden="true">→</span></a>
+        </article>
+      </li>
+      <li>
         <article class="inicio-noticia" aria-labelledby="noticia-academy-abierta">
           <p class="inicio-noticia-meta"><span class="inicio-etiqueta">Academy</span><time datetime="2026-10-05">5 oct 2026</time></p>
           <h4 id="noticia-academy-abierta">RWAdar Academy ya está abierta</h4>
           <p>Siete lecciones gratuitas, de qué significa tokenizar un activo a cómo leer el radar. Cada una trae un resumen de 30 segundos, un test corto y la fecha de su revisión legal.</p>
           <a class="inicio-noticia-enlace" href="/academy/">Abrir la Academy <span aria-hidden="true">→</span></a>
-        </article>
-      </li>
-      <li>
-        <article class="inicio-noticia" aria-labelledby="noticia-ofertas-documentadas-2026-09-30">
-          <p class="inicio-noticia-meta"><span class="inicio-etiqueta">Ofertas</span><time datetime="2026-09-30">30 sept 2026</time></p>
-          <h4 id="noticia-ofertas-documentadas-2026-09-30">49 referencias de inversión documentadas</h4>
-          <p>24 ofertas principales, 21 de mercado secundario y 4 en preparación, cada una con su fuente. Una referencia no es una recomendación: comprueba siempre los datos en la web del emisor.</p>
-          <a class="inicio-noticia-enlace" href="#emisiones" data-movil-ir="emisiones">Ver las ofertas <span aria-hidden="true">→</span></a>
         </article>
       </li>
       <li>
@@ -1034,7 +1034,7 @@
     <!--noticias:fin-->
     </section>
 
-    <section class="inicio-seccion" aria-labelledby="inicioComunidadTit">
+    <section class="inicio-seccion" id="inicioComunidad" aria-labelledby="inicioComunidadTit" hidden>
       <h3 class="inicio-seccion-tit" id="inicioComunidadTit">Comunidad</h3>
       <article class="movil-estado" id="comunidadProximamente">
         <div class="movil-estado-cab">

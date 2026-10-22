@@ -4260,6 +4260,7 @@ const Comunidad=(function(){
   const caja=$('comunidad'),proxima=$('comunidadProximamente');
   if(!caja)return;
   caja.hidden=false;if(proxima)proxima.hidden=true;
+  const seccionComunidad=$('inicioComunidad');if(seccionComunidad)seccionComunidad.hidden=false;
   $('comunidadForm').addEventListener('submit',publicar);
   $('comunidadTexto').addEventListener('input',e=>{$('comunidadCuenta').textContent=String(e.target.value.length);});
   $('comunidadLista').addEventListener('click',async e=>{

@@ -1488,14 +1488,15 @@ const panelHTML = id => {
 const panelInicioHTML = panelHTML('movilPanelInicio');
 const panelAcademyHTML = panelHTML('movilPanelAcademy');
 const panelPerfilHTML = panelHTML('movilPanelMas');
-prueba('Inicio trae las noticias generadas, la comunidad como próximamente y por dónde empezar',
+prueba('Inicio trae las noticias generadas, la comunidad oculta mientras esté apagada y por dónde empezar',
   /<!--noticias:ini-->[\s\S]*class="inicio-noticias"[\s\S]*<!--noticias:fin-->/.test(panelInicioHTML) &&
   (panelInicioHTML.match(/class="inicio-noticia"/g) || []).length >= 1 &&
   /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/.test(panelInicioHTML) &&
   /* El único formulario es el de la comunidad, oculto hasta encenderla. */
   !/<(?:textarea|input|form)\b/i.test(panelInicioHTML.replace(/<div class="comunidad" id="comunidad" hidden>[\s\S]*?<ol class="comunidad-lista"/, '')) &&
   ['metodo','fuera'].every(destino => new RegExp(`data-movil-ir=["']${destino}["']`).test(panelInicioHTML)) &&
-  /data-movil-cambiar="buscar"/.test(panelInicioHTML) && /data-movil-cambiar="academy"/.test(panelInicioHTML));
+  /<section class="inicio-seccion" id="inicioComunidad"[^>]*\shidden>/.test(panelInicioHTML) &&
+  /data-movil-ir="emisiones">Ver ofertas</.test(panelInicioHTML) && /data-movil-ir="tool">Ver plataformas</.test(panelInicioHTML));
 prueba('Academy mueve el bloque real de lecciones (sin copiarlo) y cuenta las leídas del navegador',
   /id="movilAcademyLecciones"/.test(panelAcademyHTML) &&
   !/class="academia-lecciones"/.test(panelAcademyHTML) &&

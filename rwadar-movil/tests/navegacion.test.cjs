@@ -80,7 +80,7 @@ test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => 
   assert.match(datos, /PROGRESO_ACADEMY,\s*OFERTAS_GUARDADAS,\s*\];/);
 });
 
-test('Inicio muestra las mismas noticias que la web y anuncia la comunidad sin simularla', () => {
+test('Inicio muestra las mismas noticias que la web y no enseña la comunidad mientras esté apagada', () => {
   const inicio = leer('componentes', 'Inicio.js');
   const noticias = leer('lib', 'noticias-contenido.js');
   assert.match(noticias, /GENERADO por rwadar-noticias\.js/);

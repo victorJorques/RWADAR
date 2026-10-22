@@ -7,6 +7,8 @@ import { DESTINOS_NOTICIAS, NOTICIAS } from '../lib/noticias-contenido';
 import { C, E, F, R, T, UI } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
+const COMUNIDAD_ABIERTA = false;
+
 /* ---------------------------------------------------------------------
    Inicio: lo que cuenta RWAdar (rwadar-noticias/noticias.json, el mismo
    archivo que la web), los cambios de lo que sigues cuando existan, los
@@ -80,6 +82,9 @@ export default function Inicio({
         })}
       </View>
 
+      {/* Sin cuentas no hay comunidad: el bloque no se enseña hasta que se
+          encienda, para no llenar Inicio de «próximamente». */}
+      {COMUNIDAD_ABIERTA ? (
       <View style={e.seccion}>
         <Text style={e.seccionTit} accessibilityRole="header">Comunidad</Text>
         <View style={e.proximamente}>
@@ -94,6 +99,7 @@ export default function Inicio({
           </View>
         </View>
       </View>
+      ) : null}
 
       {descartes.length ? (
         <View style={e.seccion}>
