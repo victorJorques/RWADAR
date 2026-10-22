@@ -9,7 +9,9 @@ Víctor autorizó expresamente guardarla a las **09:00 de la hora local del PC**
 La zona actual del equipo es Europe/Warsaw: coincide con Europe/Madrid, incluidos
 los cambios estacionales en las reglas consultadas. Si se cambia la zona del PC,
 hay que reajustar la tarea. Comprobar la hora de Madrid antes de iniciar el ciclo;
-no publicar fuera del horario acordado por un desajuste del programador.
+no iniciar antes por un desajuste del programador. **Las 09:00 son la hora de
+inicio de la investigación, no una hora límite para terminar o publicar.**
+Las comprobaciones y la publicación se realizan cuando concluyan las compuertas.
 El PC y la aplicación deben seguir encendidos. No hay cuota de altas ni de
 cambios: un día sin novedades verificables puede terminar sin publicar.
 
@@ -153,7 +155,103 @@ Para la imagen de cada alta o cambio visual:
   `https://rwadar.pages.dev/ofertas-editoriales/oferta-<slug>.webp`; no recibe
   URLs de imagen arbitrarias de la API. Mantener los fallback de categoría.
 
-## 4. Revisar el SQL de forma independiente
+## 4. Publicar y comprobar las imágenes antes de activar el SQL
+
+Una fila aprobada aparece inmediatamente en las vistas públicas y los clientes
+pueden aceptarla antes de desplegar la web. Por eso **no ejecutar todavía
+`aplicar-y-aprobar.sql`**. Una imagen preparada en disco, una preview o un HEAD
+no prueban que la URL canónica de producción entregue esa imagen.
+
+Primera preparación, una sola vez: publicar por el publicador normal (preview,
+revisión y producción, con sincronización) el soporte web de altas canónicas y
+de enlaces estáticos limitados al snapshot desplegado, conservando el lote
+público anterior. No utilizar la precarga para introducir ese JavaScript.
+Hasta comprobar ese despliegue no está operativo el ciclo ampliado.
+
+Además, antes de admitir más de 49 ofertas, `releases/latest` de
+`RWAdar-downloads` debe señalar **Android 1.4.0 o posterior**, con el APK, las
+sumas y su evidencia de QA publicados y revisados. La herramienta comprueba la
+release pública y las identidades SHA-256 de esos recursos. La versión 1.3.2
+no supera esta guarda: una instalación limpia no puede aceptar el lote de 50.
+Mientras latest siga en 1.3.2, conservar 49 y no activar altas. Esto no autoriza
+compilar ni publicar una app dentro de la tarea diaria.
+
+Ejecutar el ciclo bajo **exclusión de despliegues y rollbacks**: ninguna otra
+herramienta debe publicar, precargar ni volver a una producción anterior desde
+el sellado hasta el cierre. El sello registra el ID del despliegue de producción;
+la herramienta lo contrasta antes de precargar y compara luego el ID de su
+propio despliegue antes de verificar y activar SQL. Un cambio observado detiene
+el proceso. Usa el API canónico si ya tiene credenciales vigentes en el proceso;
+en otro caso utiliza Wrangler 4.125.0 con su sesión OAuth actual, sin leer
+archivos de credenciales ni solicitar tokens nuevos. La salida JSON de Wrangler
+identifica el último despliegue de producción terminado, **no prueba por sí sola
+el destino canónico tras un rollback externo**. Si hay duda o no se puede
+garantizar la exclusión, detenerse y comprobar `canonical_deployment` mediante
+el API antes de continuar. Los chequeos de identidad no son una transacción
+atómica con Cloudflare y SQL.
+
+Antes de los generadores de cada lote, conservar en una carpeta de evidencia
+`rwadar-entrega-<fecha>/base-diaria/artefacto` una copia del artefacto de la
+última producción comprobada, incluidos `_headers` y `_redirects`. No copiar
+un build de la candidata. Con el árbol limpio y la revisión vigente aprobada:
+
+```powershell
+node rwadar-precargar-imagenes.js --sellar --base=rwadar-entrega-<fecha>/base-diaria
+```
+
+El sellado contrasta por GET todos los recursos públicos con
+`https://rwadar.pages.dev`, exige el comportamiento web aprobado actual y
+guarda el inventario SHA-256 cerrado en `sello.json`. Un build que aún no esté
+en producción falla esa comparación. La configuración se compara además con
+la fuente aprobada. No sobrescribir el sello ni regenerar dentro de esa copia.
+
+Preparar las WebP nuevas en
+`rwadar-editorial-source/ofertas/precargas/<id-lote>/oferta-<slug>.webp` y añadir
+un lote literal a `precargas/manifest.json`. Cada lote declara `id`,
+`baseSha256` (del sello), `revisionAnterior` pública exacta, dos `revisores`
+distintos y `imagenes`. Cada imagen declara `slug`, `archivo` literal completo,
+`bytes`, `sha256`, `ancho:960`, `alto:660` y `alt` editorial de 20–400 caracteres.
+Las imágenes deben pasar la revisión propia y la independiente de tarjeta y
+detalle; copiar una imagen ajena a la candidata para superar el hash no cumple
+esa revisión. Los nombres, cantidades y hashes son revisables en Git. No se
+aceptan enlaces, archivos extra, rutas arbitrarias ni sustituciones de imágenes
+ya publicadas. No hace falta reconstruir el APK para este paso.
+
+Consolidar estos archivos y la aprobación del contenido concreto antes de la
+precarga; las mismas compuertas Git, legales y de publicación se mantienen:
+
+```powershell
+node rwadar-precargar-imagenes.js --comprobar --base=rwadar-entrega-<fecha>/base-diaria --lote=<id-lote>
+node rwadar-precargar-imagenes.js --produccion --base=rwadar-entrega-<fecha>/base-diaria --lote=<id-lote>
+node rwadar-precargar-imagenes.js --verificar --base=rwadar-entrega-<fecha>/base-diaria --lote=<id-lote>
+```
+
+La precarga publica exclusivamente la base sellada más las WebP del lote:
+HTML, JavaScript, CSS, service worker y configuración conservan todos sus
+bytes. Su salida queda en evidencia separada, sin sustituir `rwadar-publicado`.
+Verifica el catálogo público completo con el sincronizador en un directorio
+temporal, exige que aún coincida con la revisión anterior y comprueba de nuevo
+los recursos de producción tras desplegar. Nunca usa ni habilita un
+`--sin-sincronizar` remoto. Repetir la verificación inmediatamente antes de
+activar SQL y adjuntar su evidencia al inventario del SQL. Si cambia el lote
+público, la base o una imagen, detenerse y revisar otra vez.
+
+Sólo después de GET 200, MIME WebP, bytes y SHA exactos de **cada imagen nueva**
+y revisión visual de esas URLs públicas se puede ejecutar la activación SQL.
+Un fallo anterior deja las candidatas **no admitidas y no publicadas hoy**; las
+imágenes precargadas no son fichas admitidas ni aparecen en el catálogo anterior.
+Nunca borrar ni sustituir precargas en un reintento. El publicador normal
+incluye también las imágenes de este registro para conservarlas tras el
+despliegue definitivo.
+
+No hay rollback automático de esta herramienta. Ni siquiera antes de activar
+SQL se puede restaurar una base por suposiciones: cualquier recuperación manual
+necesita comprobar que la revisión pública sigue siendo exactamente la anterior
+y que producción sigue siendo el ID de **nuestra** precarga. Si otra herramienta
+publicó entre medias, detenerse y reconciliar sus recursos. Después de activar
+SQL, conservar siempre el lote nuevo y las imágenes; reparar hacia delante.
+
+## 5. Revisar el SQL de forma independiente
 
 Una segunda revisión debe comparar `catalogo.sql`, `aplicar-y-aprobar.sql`,
 `revision.json`, fuentes y expedientes. Inventariar **todas** las sentencias y
@@ -178,7 +276,9 @@ Antes de aplicar:
    transacción con aislamiento serializable y una guarda que compare la
    revisión anterior exacta. Si cambió por otra herramienta, detener ese lote,
    reconciliar y volver a revisar; no aprobar sobre un estado supuesto.
-4. Aplicar exclusivamente los bytes revisados mediante el acceso autorizado,
+4. Comprobar otra vez la evidencia de precarga y las imágenes canónicas en
+   producción, con el catálogo público todavía en la revisión anterior.
+   Aplicar exclusivamente los bytes revisados mediante el acceso autorizado,
    sin recuperar tokens antiguos ni copiar claves a la documentación. Ante
    error de transacción no continuar con una aprobación separada.
 5. Leer después, como público, las vistas V2: revisión, fechas, cantidades,
@@ -188,7 +288,7 @@ Antes de aplicar:
 La autorización recurrente de Víctor cubre este SQL de catálogo revisado. Una
 necesidad de ampliar el esquema o tocar otra área se presenta aparte.
 
-## 5. Comprobar web, clientes y publicar
+## 6. Comprobar web, clientes y publicar
 
 El contrato de lectores V2 admite ampliación explícita con
 `permitirAmpliacion:true`. Todas las filas deben declarar el mismo lote,
@@ -247,7 +347,7 @@ instalado**: registrar qué versión móvil puede consumir el catálogo ampliado
 y sus imágenes; la app publicada anterior puede seguir con su último lote
 completo. El ciclo diario no compila ni publica una app.
 
-## 6. Cerrar con evidencia y decisiones del día
+## 7. Cerrar con evidencia y decisiones del día
 
 Guardar un informe fechado con expedientes revisados, consultas/limitaciones,
 cambios aceptados y descartados, manifiesto, identidad del lote, SHA del SQL,
@@ -256,10 +356,22 @@ revisión de imágenes. Diferenciar «preparado», «probado localmente», «apl
 en Supabase» y «publicado y comprobado». Añadir el traspaso arriba de
 `PARA-CODEX.md`; mantener `INTERNO.md` en lenguaje llano, sin hashes ni IDs.
 
-Si falta una evidencia esencial, no hay acceso o falla una compuerta: conservar
-el último catálogo completo y cerrar cada candidata afectada como **no admitida
-y no publicada hoy**, indicando el motivo concreto en su expediente histórico.
+Si falta una evidencia esencial, no hay acceso o falla una compuerta **antes de
+activar SQL**: conservar el último catálogo completo y cerrar cada candidata
+afectada como **no admitida y no publicada hoy**, indicando el motivo concreto
+en su expediente histórico.
 No dejarla «en investigación» ni con una aprobación pendiente para mañana.
 La siguiente ejecución vuelve a consultar las fuentes vigentes y toma una
 decisión nueva. La hora programada no convierte una investigación incompleta
 en una publicación válida.
+
+**Después de activar SQL**, el lote nuevo ya es público. Si falla la preview o
+el despliegue definitivo, conservar ese lote completo (por ejemplo, 50 o más
+ofertas) y todas las imágenes precargadas. No volver a 49, no borrar imágenes
+ni retirar el catálogo para fingir una decisión de no admisión. Registrar el
+incidente y reparar hacia delante hasta comprobar el despliegue definitivo.
+Los clientes compatibles continúan mostrando las nuevas tarjetas con la imagen
+canónica precargada y su diálogo; el enlace a una página estática nueva sólo
+aparece cuando esa página pertenece al snapshot desplegado. Cerrar el día con
+el estado real y la evidencia del incidente; no declarar el despliegue final
+completado hasta verificarlo.

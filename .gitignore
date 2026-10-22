@@ -40,6 +40,8 @@
 !/rwadar-arrancar.js
 !/rwadar-capturar-portadas.mjs
 !/rwadar-publicar.js
+!/rwadar-precargar-imagenes.js
+!/probar-precarga.cjs
 !/rwadar-publicacion-segura.js
 !/rwadar-ofertas-editoriales.js
 !/rwadar-adelgazar.js

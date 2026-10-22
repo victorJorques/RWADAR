@@ -21,6 +21,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
+const { cargarRegistro: cargarPrecargas, unirActivos } = require('./rwadar-precargar-imagenes');
 const { comprobar: comprobarAcademy, paginasAcademy } = require('./rwadar-academy');
 const { comprobar: comprobarNoticias } = require('./rwadar-noticias');
 const { comprobar: comprobarFichas } = require('./rwadar-fichas');
@@ -155,6 +156,9 @@ catch (e) { console.error('ORIGEN PUBLICO BLOQUEADO:', e.message); process.exit(
 let activosEditoriales;
 try { activosEditoriales = cargarActivosEditoriales(__dirname); }
 catch (e) { console.error('ACTIVOS EDITORIALES BLOQUEADOS:', e.message); process.exit(2); }
+try { activosEditoriales = { ...activosEditoriales,
+  publicables: unirActivos(activosEditoriales.publicables, cargarPrecargas(__dirname).publicables) }; }
+catch (e) { console.error('PRECARGAS EDITORIALES BLOQUEADAS:', e.message); process.exit(2); }
 if (remoto && activosEditoriales.manifiesto.estadoUso !== 'aprobado-para-publicacion') {
   console.error('PUBLICACION REMOTA BLOQUEADA: las ilustraciones editoriales siguen pendientes de aprobación legal.');
   process.exit(2);

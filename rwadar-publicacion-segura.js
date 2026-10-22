@@ -87,6 +87,8 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-ofertas-editoriales.js',
   'rwadar-publicacion-segura.js',
   'rwadar-publicar.js',
+  'rwadar-precargar-imagenes.js',
+  'rwadar-editorial-source/ofertas/precargas',
 ]);
 
 /* Lista cerrada del único árbol que puede llegar al artefacto desplegable.

@@ -1789,12 +1789,19 @@ function numeroLocal(v,def){
  const n=t?Number(t[0]):NaN;return Number.isFinite(n)?n:def;
 }
 function imagenOfertaLocal(o){
- if(o&&o.catalogo===true){const entrada=EDITORIAL_OFERTA_POR_CATEGORIA[o.categoria];
-  if(!entrada)return null;
+ if(o&&o.catalogo===true){
+  if(typeof o.slug!=='string'||o.slug.length>160||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o.slug))return null;
+  const entrada=EDITORIAL_OFERTA_POR_CATEGORIA[o.categoria]||
+   {src:EDITORIAL_OFERTA_POR_CATEGORIA['Acciones y capital privado'].src,alt:'Ilustración editorial financiera; no representa un activo concreto'};
   const propia=Object.hasOwn(EDITORIAL_OFERTA_POR_SLUG,o.slug)?EDITORIAL_OFERTA_POR_SLUG[o.slug]:null;
   return propia&&propia.categoria===o.categoria?
    {src:propia.src,alt:propia.alt,etiqueta:'Ilustración editorial',respaldo:entrada.src,lugar:textoLocal(propia.lugar)}:
-   {src:entrada.src,alt:entrada.alt,etiqueta:'Ilustración editorial'};}
+   {src:'/ofertas-editoriales/oferta-'+o.slug+'.webp',
+    alt:'Ilustración editorial generada con IA; no es fotografía del activo. '+
+     (typeof o.documentacion?.imagenEditorialAlt==='string'&&o.documentacion.imagenEditorialAlt.trim().length>=20&&
+      o.documentacion.imagenEditorialAlt.trim().length<=400&&!/[\u0000-\u001f\u007f]/.test(o.documentacion.imagenEditorialAlt)
+       ?o.documentacion.imagenEditorialAlt.trim():textoLocal(o.titulo)),
+    respaldo:entrada.src,etiqueta:'Ilustración editorial'};}
  const m=textoLocal(o&&o.imagen).match(/^ofertas\/([a-z0-9-]+\.webp)$/);
  if(!m||!MANIFIESTO_EDITORIAL_LOCAL)return null;
  const entrada=MANIFIESTO_EDITORIAL_LOCAL.porCategoria[o.categoria];
@@ -1982,11 +1989,19 @@ function resumenEditorialOferta(o){
  return {minimo:{texto:'No documentado en euros'},accesoEspana:{texto:'Sin comprobar desde España'},
   salida:{texto:'Salida no documentada'},costes:{texto:'Costes no documentados'},fechas:{revisadaEl:o.verificadaEl}};
 }
+/* El snapshot del arranque y sus páginas pasan la misma lista cerrada durante
+   el build. Una ampliación recibida por alDia todavía no tiene página estática;
+   conserva su diálogo, sin ofrecer un enlace que respondería 404. */
+const RUTAS_FICHAS_DESPLEGADAS=new Set([
+ ...P.map(p=>'/plataformas/'+p.slug),...EMI.map(o=>'/ofertas/'+o.slug)
+]);
 function rutaFichaPublica(tipo,slug){
- return ['ofertas','plataformas'].includes(tipo)&&typeof slug==='string'&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)
+ const ruta=['ofertas','plataformas'].includes(tipo)&&typeof slug==='string'&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)
   ?'/'+tipo+'/'+slug:'';
+ return RUTAS_FICHAS_DESPLEGADAS.has(ruta)?ruta:'';
 }
 function enlaceFichaPublicaHtml(ruta){
+ if(!ruta)return '';
  return '<div class="ficha-permanente"><a href="'+escHtml(ruta)+'" aria-label="Ficha completa">Ficha completa</a>'+
   '<button type="button" data-copiar-ficha="'+escHtml(ruta)+'">Copiar enlace</button></div>';
 }
