@@ -1,0 +1,47 @@
+import React, {useEffect,useState} from 'react';
+import * as Native from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {C,F,R,UI} from '../lib/tema';
+import * as idioma from '../lib/idioma';
+import {crearPrimitivasIdioma} from '../lib/idioma-nativo';
+
+const primitivas=crearPrimitivasIdioma(React,Native,idioma);
+export const {Text,Pressable,View,Image,TextInput,ScrollView,Alert,useIdioma}=primitivas;
+export function FuenteOriginal({children,idiomaOriginal='es-ES',style,aviso=true}){
+  const actual=useIdioma();
+  return <Native.View>
+    {aviso&&actual==='en'?<Native.Text style={e.aviso}>Original source text ({idiomaOriginal.startsWith('es')?'Spanish':idiomaOriginal.startsWith('en')?'English':idiomaOriginal})</Native.Text>:null}
+    {children!=null?<Native.Text style={style} accessibilityLanguage={idiomaOriginal}>{children}</Native.Text>:null}
+  </Native.View>;
+}
+let carga;
+export function SelectorIdioma(){
+  const actual=useIdioma();
+  const [error,setError]=useState(false);
+  useEffect(()=>{if(!carga)carga=idioma.cargarIdioma(AsyncStorage);},[]);
+  async function elegir(valor){
+    setError(false);
+    try{await idioma.cambiarIdioma(valor);}catch{setError(true);}
+  }
+  return <Native.View style={e.contenedor}>
+    <Native.View style={e.fila} accessibilityRole="radiogroup"
+      accessibilityLabel={idioma.traducir('Elige idioma')}>
+      {['es','en'].map(valor=><Native.Pressable key={valor} onPress={()=>elegir(valor)}
+        accessibilityRole="radio" accessibilityState={{checked:actual===valor}}
+        accessibilityLabel={valor==='es'?'Español':'English'}
+        style={({pressed})=>[e.boton,actual===valor&&e.activo,pressed&&e.pulsado]}>
+        <Native.Text style={[e.texto,actual===valor&&e.textoActivo]}>{valor==='es'?'Español':'English'}</Native.Text>
+      </Native.Pressable>)}
+    </Native.View>
+    {error?<Text accessibilityRole="alert" style={e.aviso}>No se pudo guardar el idioma. Puedes seguir usándolo durante esta sesión.</Text>:null}
+  </Native.View>;
+}
+const e=Native.StyleSheet.create({
+  contenedor:{paddingHorizontal:16,paddingVertical:4,backgroundColor:C.noche2},
+  fila:{flexDirection:'row',alignSelf:'flex-end',gap:4,flexWrap:'wrap'},
+  boton:{minWidth:80,minHeight:UI.tactil||44,justifyContent:'center',alignItems:'center',
+    paddingHorizontal:12,borderRadius:R.pastilla||24,borderWidth:1,borderColor:C.linea},
+  activo:{backgroundColor:C.senal,borderColor:C.senal},pulsado:{opacity:.72},
+  texto:{fontFamily:F.media,fontSize:14,lineHeight:20,color:C.tx2},
+  textoActivo:{color:C.noche,fontFamily:F.semi},aviso:{color:C.tx2,fontSize:13,lineHeight:19},
+});

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import {
-  Animated, Easing, Pressable, StyleSheet, Text, useWindowDimensions, View,
-} from 'react-native';
+import { Animated, Easing, StyleSheet, useWindowDimensions } from 'react-native';
+import { Pressable, Text, View, useIdioma } from './Idioma';
+import { traducir } from '../lib/idioma';
 import Svg, {
   Circle, Defs, G, Line, Path, RadialGradient, Stop, Text as SvgText,
 } from 'react-native-svg';
@@ -11,8 +11,9 @@ import { etiquetaEstadoVerificacionLocal } from '../lib/verificacion-local';
 /* ---------------------------------------------------------------------
    El radar de portada
    ---------------------------------------------------------------------
-   Portado de `rwadar-site/index.html` (`function pintarRadar`), con LAS
-   MISMAS CIFRAS. No son decorativas y no se tocan sin volver a medir:
+   Portado de `rwadar-site/index.html` (`function pintarRadar`). El ángulo
+   y los anillos tienen significado; el contorno completo del punto se
+   mantiene dentro del perímetro incluso al aplicar el escalón radial:
 
      · la apertura del sector no pasa de 56° o algún punto se sale de su
        sector y parece de otra categoría;
@@ -33,8 +34,12 @@ import { etiquetaEstadoVerificacionLocal } from '../lib/verificacion-local';
 
 const LADO = 340;
 const CX = 170, CY = 170, RMAX = 119;
+const RADIO_PUNTO = 4.2, RADIO_HALO = 8, TRAZO_HALO = 1, MARGEN_PUNTO = 2;
+const RADIO_CENTRO_MAX = RMAX - RADIO_HALO - TRAZO_HALO / 2 - MARGEN_PUNTO;
+export const GEOMETRIA_RADAR = Object.freeze({cx:CX,cy:CY,radio:RMAX,
+  radioPunto:RADIO_PUNTO,radioHalo:RADIO_HALO,trazoHalo:TRAZO_HALO,margen:MARGEN_PUNTO});
 const VUELTA = 8000;              // lo que tarda el barrido en dar la vuelta
-const TAMANO_DIANA = 44;           // mínimo táctil recomendado en iOS y Android
+const TAMANO_DIANA = 44;           // caja nominal; las cajas se pueden solapar
 const RADIO_ACCESO = { Minorista: 0.40, Acreditado: 0.60, Empresas: 0.76, Institucional: 0.90 };
 const CORTO = {
   'Inmobiliario': 'Inmuebles', 'Crédito privado': 'Crédito', 'Tesoro y fondos': 'Tesoro',
@@ -50,7 +55,49 @@ const pol = (ang, rad) => [
   CY + Math.sin((ang * Math.PI) / 180) * rad,
 ];
 
+export function puntosRadar(datos = []) {
+  const cats = Object.keys(COLOR_CATEGORIA);
+  return datos.map((p) => {
+    const ci = Math.max(0, cats.indexOf(p.categoria));
+    const mismaCat = datos.filter((x) => x.categoria === p.categoria);
+    const k = mismaCat.indexOf(p);
+    const ang = -90 + ci * 60 + (((k + 0.5) / Math.max(mismaCat.length, 1)) - 0.5) * 56;
+    const accesoRadar = p.verificacionLocal?.acceso?.estado === 'no_verificable' ? '__no_verificable' : p.acceso;
+    const base = accesoRadar === '__no_verificable' ? 0.98 : (RADIO_ACCESO[accesoRadar] ?? 0.7);
+    const mismos = datos.filter(x => x.categoria === p.categoria &&
+      (x.verificacionLocal?.acceso?.estado === 'no_verificable' ? '__no_verificable' : x.acceso) === accesoRadar);
+    const kk = mismos.indexOf(p);
+    const escalon = mismos.length > 1 ? ((kk / (mismos.length - 1)) - 0.5) * 0.115 : 0;
+    // El perímetro incluye el halo y su trazo, no solo el centro. El acceso
+    // desconocido permanece fuera de los anillos comprobados, dentro del radar.
+    const radio = Math.max(0, Math.min(RADIO_CENTRO_MAX, RMAX * (base + escalon)));
+    const [x,y] = pol(ang,radio);
+    return {p,x,y,color:COLOR_CATEGORIA[p.categoria] || C.tx3};
+  });
+}
+
+export function resolverPuntoRadar(puntos, puntoReceptor, evento, escala) {
+  const tacto = evento?.nativeEvent;
+  // Pressability entrega los clics de accesibilidad/teclado sin una secuencia
+  // táctil. En ese caso se abre exactamente el botón que se anunció.
+  if (evento?.type === 'click' || !Array.isArray(tacto?.changedTouches) || !tacto.changedTouches.length ||
+      !Number.isFinite(tacto.locationX) || !Number.isFinite(tacto.locationY) ||
+      !Number.isFinite(escala) || escala <= 0) return puntoReceptor.p;
+  // PressEvent.locationX/Y son relativos al Pressable receptor. Recuperamos
+  // la posición del toque en el viewBox, aunque lo haya recibido otra caja
+  // superpuesta, y elegimos el centro visible más cercano.
+  const x = puntoReceptor.x + (tacto.locationX - TAMANO_DIANA / 2) / escala;
+  const y = puntoReceptor.y + (tacto.locationY - TAMANO_DIANA / 2) / escala;
+  let elegido = puntoReceptor, distancia = Infinity;
+  for (const punto of puntos) {
+    const d = Math.hypot(punto.x-x,punto.y-y);
+    if (d < distancia) { elegido = punto; distancia = d; }
+  }
+  return elegido.p;
+}
+
 export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
+  const idiomaActual=useIdioma();
   const giro = useRef(new Animated.Value(0)).current;
   const [leido, setLeido] = useState(null);
   const cats = Object.keys(COLOR_CATEGORIA);
@@ -62,10 +109,11 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
      ancho más vendido en España— se comía el borde derecho. Y el radar no
      es una ilustración, es el producto.
 
-     Las cuentas de los puntos NO cambian: el SVG ya tenía viewBox, así que
-     todo sigue calculándose en el espacio de 340 y solo cambia el tamaño
-     al que se pinta. Las dianas sí se colocan a escala, pero conservan sus
-     34 px: el dedo necesita su diana entera aunque el dibujo mengüe. */
+     Las coordenadas siguen calculándose en el espacio de 340 del viewBox
+     y solo cambia el tamaño
+     al que se pinta. Las cajas nominales conservan 44 dp; al solaparse no
+     representan 44 dp exclusivos. El toque se resuelve por centro cercano
+     y la lista ofrece una alternativa grande y accesible. */
   const { width: ancho } = useWindowDimensions();
   const lado = Math.max(240, Math.min(LADO, ancho - 34));
   const k = lado / LADO;
@@ -80,29 +128,7 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
     return () => bucle.stop();
   }, [giro]);
 
-  /* Colocación de los puntos: mismo cálculo que la web, punto por punto. */
-  const puntos = useMemo(() => (datos || []).map((p) => {
-    const ci = Math.max(0, cats.indexOf(p.categoria));
-    const mismaCat = datos.filter((x) => x.categoria === p.categoria);
-    const k = mismaCat.indexOf(p);
-    const ang = -90 + ci * 60 + (((k + 0.5) / Math.max(mismaCat.length, 1)) - 0.5) * 56;
-
-    const accesoRadar = p.verificacionLocal?.acceso?.estado === 'no_verificable'
-      ? '__no_verificable' : p.acceso;
-    /* Un acceso no verificable no conserva el anillo histórico de
-       «Minorista»: se lleva al perímetro para que el gráfico no convierta
-       una clasificación contradicha en un hecho visual. */
-    const base = accesoRadar === '__no_verificable'
-      ? 0.98 : (RADIO_ACCESO[accesoRadar] != null ? RADIO_ACCESO[accesoRadar] : 0.7);
-    const mismos = datos.filter((x) => x.categoria === p.categoria &&
-      (x.verificacionLocal?.acceso?.estado === 'no_verificable'
-        ? '__no_verificable' : x.acceso) === accesoRadar);
-    const kk = mismos.indexOf(p);
-    const escalon = mismos.length > 1 ? ((kk / (mismos.length - 1)) - 0.5) * 0.115 : 0;
-
-    const [x, y] = pol(ang, RMAX * (base + escalon));
-    return { p, x, y, color: COLOR_CATEGORIA[p.categoria] || C.tx3 };
-  }), [datos]);
+  const puntos = useMemo(() => puntosRadar(datos || []), [datos]);
 
   const rotacion = giro.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
 
@@ -141,17 +167,17 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
               <SvgText key={c} x={tx} y={ty} fill={COLOR_CATEGORIA[c]}
                 fontSize={9.5} fontFamily={F.mono} textAnchor="middle"
                 opacity={categoriaActiva && categoriaActiva !== c ? 0.35 : 1}>
-                {(CORTO[c] || c).toUpperCase()}
+                {traducir(CORTO[c] || c).toUpperCase()}
               </SvgText>
             );
           })}
 
           {puntos.map(({ p, x, y, color }) => (
             <G key={p.slug}>
-              <Circle cx={x} cy={y} r={8} fill="none" stroke={color} strokeWidth={1} opacity={0.30} />
+              <Circle cx={x} cy={y} r={RADIO_HALO} fill="none" stroke={color} strokeWidth={TRAZO_HALO} opacity={0.30} />
               {/* El borde oscuro separa dos puntos que se rocen: sin él, dos
                   colores contiguos se funden en una mancha. */}
-              <Circle cx={x} cy={y} r={4.2} fill={color} stroke={C.noche} strokeWidth={1.3}
+              <Circle cx={x} cy={y} r={RADIO_PUNTO} fill={color} stroke={C.noche} strokeWidth={1.3}
                 opacity={categoriaActiva && categoriaActiva !== p.categoria ? 0.25 : 1} />
             </G>
           ))}
@@ -183,19 +209,28 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
           </Svg>
         </Animated.View>
 
-        {/* Las zonas pulsables van encima, como vistas: en un móvil el dedo
-            necesita 44 px de diana y el punto mide 8. */}
-        {puntos.map(({ p, x, y }) => (
+        {/* Las cajas pueden solaparse: el receptor nativo no decide qué
+            plataforma abrir. La posición real del toque decide el centro. */}
+        {puntos.map((punto) => (
           <Pressable
-            key={p.slug}
-            onPressIn={() => setLeido(p)}
-            onPress={() => onAbrir(p)}
+            key={punto.p.slug}
+            onPressIn={(evento) => setLeido(resolverPuntoRadar(puntos,punto,evento,k))}
+            onPress={(evento) => {
+              const elegido = resolverPuntoRadar(puntos,punto,evento,k);
+              // Evidencia nativa local: no posición del usuario ni identificador,
+              // solo destinos públicos y forma del evento; no se envía a red.
+              console.info('RWADAR_RADAR_TOUCH',JSON.stringify({eventType:evento?.type || 'unknown',
+                changedTouches:Array.isArray(evento?.nativeEvent?.changedTouches) ? evento.nativeEvent.changedTouches.length : 0,
+                receiverSlug:punto.p.slug,selectedSlug:elegido.slug,selectedName:elegido.nombre}));
+              onAbrir(elegido);
+            }}
             style={[e.diana, {
-              left: x * k - TAMANO_DIANA / 2,
-              top: y * k - TAMANO_DIANA / 2,
+              left: punto.x * k - TAMANO_DIANA / 2,
+              top: punto.y * k - TAMANO_DIANA / 2,
             }]}
             accessibilityRole="button"
-            accessibilityLabel={`${p.nombre}. ${p.categoria}. Estado de acceso: ${accesoLegible(p)}. Abrir ficha.`} />
+            noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'}
+            accessibilityLabel={`${punto.p.nombre}. ${traducir(punto.p.categoria)}. ${traducir('Estado de acceso:')} ${traducir(accesoLegible(punto.p))}. ${traducir('Abrir ficha.')}`} />
         ))}
       </View>
 
@@ -213,7 +248,8 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
         ) : (
           <Text style={e.lecturaVacia}>
             Toca un punto para ver qué plataforma es. El ángulo es el tipo de activo;
-            la distancia al centro, a quién deja entrar.
+            la distancia al centro, a quién deja entrar. El perímetro no confirma acceso.
+            También puedes elegir una plataforma en la lista que sigue.
           </Text>
         )}
       </View>

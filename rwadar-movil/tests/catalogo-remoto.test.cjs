@@ -76,6 +76,20 @@ function entorno({ lote = lotePrueba(), cache, fallo, ahora = AHORA, orden = [{ 
   return { lector, mapa, llamadas, escrituras, estado, almacenamiento };
 }
 
+function ampliarLote(lote = lotePrueba(), {plataforma = false} = {}) {
+  const ampliado = structuredClone(lote);
+  if (plataforma) ampliado.plataformas.push({...structuredClone(lote.plataformas[0]),slug:'plataforma-diaria-nueva',
+    nombre:'Plataforma diaria nueva',plataforma_id:'99999999-0000-4000-8000-000000000001'});
+  else ampliado.ofertas.push({...structuredClone(lote.ofertas[0]),slug:'oferta-diaria-nueva',
+    titulo:'Referencia diaria nueva',imagen:'https://arbitraria.example/no-debe-usarse.png',
+    documentacion:{...structuredClone(lote.ofertas[0].documentacion),imagenEditorialAlt:'Escena ilustrada del activo de la referencia diaria.'}});
+  const metadata = {version_esquema:2,plataformas_esperadas:ampliado.plataformas.length,
+    ofertas_esperadas:ampliado.ofertas.length,colecciones_esperadas:Object.fromEntries(['principales','secundario','en_camino']
+      .map(c=>[c,ampliado.ofertas.filter(o=>o.coleccion===c).length]))};
+  for (const fila of [...ampliado.plataformas,...ampliado.ofertas]) Object.assign(fila,structuredClone(metadata));
+  return ampliado;
+}
+
 test('móvil e importador usan exactamente el mismo contrato de revisión', () => {
   assert.equal(require('../../rwadar-app/catalogo-publico').validarLotePublico,
     contrato.validarLotePublico);
@@ -97,8 +111,8 @@ test('el lector trae 26/49 por las vistas V2 y guarda un único lote, sin escrit
   assert.ok(r.ofertas.every(o => !Object.hasOwn(o, 'imagen')));
   assert.deepEqual(e.escrituras, [CACHE_CATALOGO]);
   assert.deepEqual(e.llamadas, [
-    ['from', 'catalogo_plataformas_publicas_v2'], ['select', '*'], ['limit', 27],
-    ['from', 'catalogo_ofertas_publicas_v2'], ['select', '*'], ['limit', 50],
+    ['from', 'catalogo_plataformas_publicas_v2'], ['select', '*'], ['limit', contrato.LIMITES_CATALOGO_V2.plataformas + 1],
+    ['from', 'catalogo_ofertas_publicas_v2'], ['select', '*'], ['limit', contrato.LIMITES_CATALOGO_V2.ofertas + 1],
     ['from', 'catalogo_publicacion'], ['select', 'retirado,motivo'], ['limit', 1],
   ]);
 });
@@ -108,6 +122,48 @@ test('dos consumidores simultáneos comparten una sola carga', async () => {
   const [uno, dos] = await Promise.all([e.lector.cargar(), e.lector.cargar()]);
   assert.equal(uno, dos);
   assert.equal(e.llamadas.filter(([m]) => m === 'from').length, 3);
+});
+
+test('el mismo binario acepta 50 ofertas completas, conserva el alt editorial y nunca copia una URL de imagen arbitraria', async () => {
+  const lote = ampliarLote();
+  const e = entorno({lote,cache:lotePrueba()});
+  const r = await e.lector.cargar();
+  assert.equal(r.error,null); assert.equal(r.deCache,false);
+  assert.equal(r.ofertas.length,50); assert.equal(r.ofertasEsperadas,50);
+  assert.deepEqual(r.coleccionesEsperadas,{principales:25,secundario:21,en_camino:4});
+  const nueva = r.ofertas.find(o=>o.slug==='oferta-diaria-nueva');
+  assert.equal(nueva.documentacion.imagenEditorialAlt,lote.ofertas.at(-1).documentacion.imagenEditorialAlt);
+  assert.equal(Object.hasOwn(nueva,'imagen'),false);
+  assert.equal(JSON.parse(e.mapa.get(CACHE_CATALOGO)).ofertas.length,50);
+  e.estado.fallo = new Error('offline');
+  assert.equal((await e.lector.cargar()).ofertas.length,50);
+  assert.equal((await e.lector.cargar({soloCache:true})).ofertas.length,50);
+});
+
+test('la expansión de plataformas exige un lote íntegro y funciona sin cambiar los conteos del binario', async () => {
+  const lote = ampliarLote(lotePrueba(),{plataforma:true});
+  const e = entorno({lote}); const r = await e.lector.cargar();
+  assert.equal(r.error,null); assert.equal(r.plataformas.length,27); assert.equal(r.ofertas.length,49);
+  assert.equal(r.plataformasEsperadas,27);
+  assert.equal(r.plataformas.at(-1).slug,'plataforma-diaria-nueva');
+});
+
+test('ni una recarga ni un reinicio vuelven de 50 a 49 y una respuesta truncada conserva las 50 guardadas', async () => {
+  const ampliado = ampliarLote();
+  const menor = lotePrueba();
+  const truncado = structuredClone(ampliado); truncado.ofertas.pop();
+  const mezclado = structuredClone(ampliado); mezclado.ofertas[0].ofertas_esperadas = 49;
+  const e = entorno({lote:ampliado});
+  assert.equal((await e.lector.cargar()).ofertas.length,50);
+  for(const lote of [menor,truncado,mezclado]) {
+    e.estado.lote = lote;
+    const r = await e.lector.cargar();
+    assert.equal(r.ofertas.length,50); assert.equal(r.deCache,true); assert.ok(r.error);
+    assert.equal(JSON.parse(e.mapa.get(CACHE_CATALOGO)).ofertas.length,50);
+    const reinicio = entorno({lote,cache:ampliado});
+    const despues = await reinicio.lector.cargar();
+    assert.equal(despues.ofertas.length,50); assert.equal(despues.deCache,true); assert.ok(despues.error);
+  }
 });
 
 test('la copia sin conexión conserva su fecha real, sigue disponible al caducar y no lee cachés antiguas', async () => {

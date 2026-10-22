@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {
-  AppState, Image, Modal, Pressable, ScrollView, StyleSheet, Text, View,
-} from 'react-native';
+import { AppState, Modal, StyleSheet } from 'react-native';
+import { Image, Pressable, ScrollView, Text, View, FuenteOriginal, useIdioma } from './Idioma';
+import { traducir } from '../lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { ETIQUETA_EDITORIAL, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
-import { vigenciaOferta } from '../lib/datos';
-import { documentacionOferta, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
+import { ETIQUETA_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
+import { proveedoresDeOfertas, vigenciaOferta } from '../lib/datos';
+import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
+import { resumenOferta } from '../lib/ficha-editorial';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 import { Icono } from './Navegacion';
 
@@ -41,15 +42,16 @@ function datoDestacado(oferta) {
     return {
       etiqueta: 'RENTABILIDAD PUBLICADA',
       valor: oferta.rentabilidad?.mostrada || oferta.rentabilidad?.literal || 'No publicada',
+      original: Boolean(oferta.rentabilidad?.mostrada || oferta.rentabilidad?.literal),
       referencia: oferta.rentabilidad?.literal || '',
     };
   }
   if (oferta.tipo === 'valor') {
-    return { etiqueta: 'PRECIO DE REFERENCIA', valor: oferta.precio?.mostrado || 'Consultar fuente',
+    return { etiqueta: 'PRECIO DE REFERENCIA', valor: oferta.precio?.mostrado || 'Consultar fuente', original: Boolean(oferta.precio?.mostrado),
       referencia: oferta.precio?.unidad || '' };
   }
   const valor = [oferta.precio?.mostrado, oferta.precio?.unidad].filter(Boolean).join(' / ');
-  return { etiqueta: 'PRECIO EN SECUNDARIO', valor: valor || 'Consultar mercado' };
+  return { etiqueta: 'PRECIO EN SECUNDARIO', valor: valor || 'Consultar mercado', original:Boolean(valor) };
 }
 
 function rentabilidadSecundaria(oferta) {
@@ -87,6 +89,71 @@ function tipoVisible(tipo, coleccion) {
   return 'RENDIMIENTO';
 }
 
+// El orden nunca usa importe, rentabilidad, patrocinio ni un perfil personal.
+// Conserva el orden editorial de origen entre referencias del mismo estado.
+export function ordenarOfertasLectura(ofertas, ahora = new Date()) {
+  const prioridad = oferta => {
+    const resumen = resumenOferta(oferta, [], ahora);
+    if (resumen.cifrasVigentes) return 0;
+    if (oferta.estadoRevision === 'fuentes_en_conflicto') return 3;
+    return resumen.vencida ? 2 : 1;
+  };
+  return ofertas.map((oferta, indice) => ({oferta, indice, prioridad: prioridad(oferta)}))
+    .sort((a, b) => a.prioridad - b.prioridad || a.indice - b.indice).map(fila => fila.oferta);
+}
+
+export function agruparOfertasLectura(ofertas, agrupar = true) {
+  const nombres = new Map(proveedoresDeOfertas(ofertas).map(p => [p.slug,p.nombre]));
+  const porProveedor = new Map();
+  for (const oferta of ofertas) {
+    if (!oferta.plataformaSlug) continue;
+    if (!porProveedor.has(oferta.plataformaSlug)) porProveedor.set(oferta.plataformaSlug, []);
+    porProveedor.get(oferta.plataformaSlug).push(oferta);
+  }
+  const emitidos = new Set();
+  return ofertas.flatMap(oferta => {
+    const grupo = porProveedor.get(oferta.plataformaSlug);
+    if (!agrupar || !grupo || grupo.length < 2) return [{tipo:'oferta', slug:`${oferta.tipo}:${oferta.slug}`, oferta}];
+    if (emitidos.has(oferta.plataformaSlug)) return [];
+    emitidos.add(oferta.plataformaSlug);
+    return [{tipo:'grupo',slug:`grupo:${oferta.plataformaSlug}`,proveedorSlug:oferta.plataformaSlug,
+      proveedorNombre:nombres.get(oferta.plataformaSlug) || oferta.plataformaNombre,ofertas:grupo}];
+  });
+}
+
+export function FichaGrupoOfertas({grupo, onAbrir}) {
+  useIdioma();
+  const n = grupo.ofertas.length;
+  return (
+    <Pressable onPress={onAbrir} style={({pressed}) => [e.ficha, pressed && e.pulsado]}
+      accessibilityRole="button" accessibilityLabel={`${grupo.proveedorNombre}: ver ${n} referencias`}
+      accessibilityHint="Abre todas las fichas del proveedor dentro de esta colección">
+      <View style={e.cuerpoGrupo}>
+        <Text style={e.datoEtiqueta}>REFERENCIAS DEL MISMO PROVEEDOR</Text>
+        <Text noTraducir idiomaOriginal="es-ES" style={e.titulo}>{grupo.proveedorNombre}</Text>
+        <Text style={e.grupoNumero}>{n} referencias</Text>
+        <Text style={e.referencia}>Cada ficha conserva su fuente, fecha, mínimo publicado, acceso desde España y condiciones de salida. No se ha confirmado que puedas contratar todas.</Text>
+        <Text style={e.abrirGrupo}>Ver {n} referencias →</Text>
+      </View>
+    </Pressable>
+  );
+}
+
+function registroProveedor(plataforma, ahora) {
+  const verificacion = plataforma?.verificacionLocal;
+  const registro = verificacion?.licenciaRegistro;
+  const fecha = verificacion?.verificadoEl;
+  const dia = /^\d{4}-\d{2}-\d{2}$/.test(fecha || '') ? new Date(`${fecha}T00:00:00Z`) : null;
+  if (!dia || !Number.isFinite(dia.getTime()) || dia.toISOString().slice(0, 10) !== fecha || dia > ahora ||
+      !registro?.estado || !Array.isArray(registro.fuentes) || !registro.fuentes.length ||
+      !registro.fuentes.every(f => {
+        try { const u = new URL(f.url); return u.protocol === 'https:' && !u.username && !u.password && f.primaria === true && f.consultadaEl === fecha; }
+        catch { return false; }
+      })) return null;
+  return {texto:etiquetaEstadoVerificacionLocal(registro.estado),detalle:registro.detalle,
+    fecha,fuentes:registro.fuentes.map(f => f.url)};
+}
+
 function etiquetaDatoCompacta(tipo) {
   if (tipo === 'secundario') return 'PRECIO';
   if (tipo === 'valor') return 'PRECIO REF.';
@@ -101,10 +168,32 @@ function tonoVigencia(estado) {
   return null;
 }
 
-function ImagenOferta({ oferta, grande = false, decorativa = false, estilo }) {
-  const [fallo, setFallo] = useState(false);
-  const editorial = imagenEditorialOferta(oferta);
-  if (!editorial || fallo) {
+export function imagenesParaOferta(oferta) {
+  const local = imagenEditorialOferta(oferta);
+  const propia = local?.archivo === `oferta-${oferta?.slug}.webp`;
+  const categoria = imagenEditorial(oferta?.categoria);
+  const fallback = categoria || {...imagenEditorial('Acciones y capital privado'),
+    alt:'Ilustración editorial financiera; no representa un activo concreto'};
+  if (propia) return {principal:local, fallback};
+  const slug = oferta?.slug;
+  if (oferta?.catalogo !== true || typeof slug !== 'string' || slug.length > 160 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+    return {principal:local || fallback, fallback:null};
+  }
+  const literal = oferta.documentacion?.imagenEditorialAlt;
+  const descripcion = typeof literal === 'string' && literal.trim().length >= 20 && literal.trim().length <= 400 &&
+    !/[\u0000-\u001f\u007f]/.test(literal) ? literal.trim() : String(oferta.titulo || 'esta referencia');
+  return {principal:{fuente:{uri:`https://rwadar.pages.dev/ofertas-editoriales/oferta-${slug}.webp`},
+    archivo:`oferta-${slug}.webp`,remota:true,
+    etiqueta:'Ilustración editorial · IA',
+    alt:`Ilustración editorial generada con IA; no es fotografía del activo. ${descripcion}`},fallback:local || fallback};
+}
+
+export function ImagenOferta({ oferta, grande = false, decorativa = false, estilo }) {
+  const [fallo, setFallo] = useState(0);
+  useEffect(() => { setFallo(0); }, [oferta.slug, oferta.revisionId]);
+  const opciones = imagenesParaOferta(oferta);
+  const editorial = fallo === 0 ? opciones.principal : fallo === 1 ? opciones.fallback : null;
+  if (!editorial?.fuente) {
     return (
       <View
         style={[e.imagen, grande && e.imagenGrande, estilo, e.imagenFallback, e.imagenEditorialMarco,
@@ -112,6 +201,7 @@ function ImagenOferta({ oferta, grande = false, decorativa = false, estilo }) {
         accessible={!decorativa}
         importantForAccessibility={decorativa ? 'no-hide-descendants' : 'auto'}
         accessibilityRole={decorativa ? undefined : 'image'}
+        noTraducir idiomaOriginal="es-ES"
         accessibilityLabel={decorativa ? undefined : `Sin ${ETIQUETA_EDITORIAL.toLocaleLowerCase('es')} disponible para ${oferta.titulo}`}
       >
         <Text style={e.imagenFallbackTxt}>{iniciales(oferta.plataformaNombre || oferta.titulo)}</Text>
@@ -127,13 +217,14 @@ function ImagenOferta({ oferta, grande = false, decorativa = false, estilo }) {
       accessible={!decorativa}
       importantForAccessibility={decorativa ? 'no-hide-descendants' : 'auto'}
       accessibilityRole={decorativa ? undefined : 'image'}
+      noTraducir idiomaOriginal="es-ES"
       accessibilityLabel={decorativa ? undefined : editorial.alt}
     >
       <Image
         source={editorial.fuente}
         style={e.imagenEditorial}
         resizeMode="cover"
-        onError={() => setFallo(true)}
+        onError={() => setFallo(fallo === 0 && opciones.fallback ? 1 : 2)}
         accessible={false}
         importantForAccessibility="no"
       />
@@ -148,7 +239,8 @@ function ImagenOferta({ oferta, grande = false, decorativa = false, estilo }) {
   );
 }
 
-export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
+export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
+  const idiomaActual = useIdioma();
   const ahora = useFechaOferta();
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
@@ -156,18 +248,31 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
   const destacado = datoDestacado(oferta);
   const criticos = avisosCriticos(oferta);
   const primerCritico = criticos[0];
+  const resumen = resumenOferta(ofertaOriginal, [], ahora);
+  const registro = registroProveedor(plataforma, ahora);
+  const datosParaDecidir = [
+    ['Mínimo publicado en euros', resumen.minimo],
+    ['Acceso desde España', resumen.accesoEspana],
+    ['Cómo recuperar el dinero', resumen.salida],
+  ];
+  const fechaProcedencia = resumen.fechas.comprobadaEl
+    ? `Fuente consultada ${fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)}`
+    : documentacion ? `Revisión documental ${fechaVerificacionLocalVisible(documentacion.fecha)}`
+      : 'Sin consulta de fuente fechada';
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
   const lugar = imagenEditorialOferta(oferta)?.lugar || '';
   const etiquetaAccesible = [
-    `Ver ficha de ${oferta.titulo}`, oferta.plataformaNombre, lugar,
-    ETIQUETA_EDITORIAL,
-    oferta.patrocinada ? 'Contenido patrocinado; no altera el ranking' : null,
-    `${destacado.etiqueta}: ${destacado.valor}`,
+    `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar,
+    traducir(ETIQUETA_EDITORIAL),
+    oferta.patrocinada ? traducir('Contenido patrocinado; no altera el ranking') : null,
+    `${traducir(destacado.etiqueta)}: ${destacado.original ? destacado.valor : traducir(destacado.valor)}`,
     destacado.referencia,
-    documentacion?.etiqueta,
-    vigencia.etiqueta,
+    ...datosParaDecidir.map(([etiqueta, dato]) => `${traducir(etiqueta)}: ${dato.fuente || dato.referencias?.length ? dato.texto : traducir(dato.texto)}`),
+    traducir(fechaProcedencia),
+    `${traducir('Registro del proveedor:')} ${registro ? `${traducir(registro.texto)}; ${traducir('revisado el')} ${fechaVerificacionLocalVisible(registro.fecha)}` : traducir('no documentado en el radar')}. ${traducir('No acredita esta oferta')}`,
+    traducir(resumen.estado.texto),
     primerCritico
-      ? `${primerCritico.tono === 'stop' ? 'Aviso bloqueante' : 'Precaución'}: ${primerCritico.texto}`
+      ? `${traducir(primerCritico.tono === 'stop' ? 'Aviso bloqueante' : 'Precaución')}: ${primerCritico.texto}`
       : null,
     criticos.length > 1 ? `${criticos.length - 1} avisos adicionales en el detalle` : null,
   ].filter(Boolean).join('. ');
@@ -176,8 +281,9 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
       onPress={onAbrir}
       style={({ pressed }) => [e.ficha, pressed && e.pulsado]}
       accessibilityRole="button"
+      noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'}
       accessibilityLabel={etiquetaAccesible}
-      accessibilityHint="Abre la ficha completa de la oferta"
+      accessibilityHint={traducir('Abre la ficha completa de la oferta')}
     >
       <View style={e.imagenFicha}>
         <ImagenOferta oferta={oferta} decorativa estilo={e.imagenEnFicha} />
@@ -187,24 +293,35 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
       </View>
       <View style={e.cuerpoFicha}>
         {oferta.patrocinada ? <Text style={e.patrocinada}>PATROCINADA</Text> : null}
-        <Text style={e.titulo} numberOfLines={2}>{oferta.titulo}</Text>
-        <Text style={e.plataforma} numberOfLines={1}>{oferta.plataformaNombre}</Text>
+        <Text noTraducir idiomaOriginal="es-ES" style={e.titulo} numberOfLines={2}>{oferta.titulo}</Text>
+        <Text noTraducir idiomaOriginal="es-ES" style={e.plataforma} numberOfLines={1}>{oferta.plataformaNombre}</Text>
         {lugar ? (
           <View style={e.lugarFila}>
             <Icono nombre="lugar" color={COLOR_CATEGORIA[oferta.categoria] || C.senal} tamano={14} />
-            <Text style={e.lugarTxt} numberOfLines={1}>{lugar}</Text>
+            <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt} numberOfLines={1}>{lugar}</Text>
           </View>
         ) : null}
         <View style={e.datosCompactos}>
           <View style={e.datoCompacto}>
             <Text style={e.datoEtiqueta}>{oferta.cifrasPendientes ? destacado.etiqueta : etiquetaDatoCompacta(oferta.tipo)}</Text>
-            <Text style={e.datoValor}>{destacado.valor}</Text>
+            <Text noTraducir={Boolean(destacado.original)} idiomaOriginal="es-ES" style={e.datoValor}>{destacado.valor}</Text>
           </View>
         </View>
         {/* Una cifra conserva su ventana/unidad completa. La compactación
             elimina bloques duplicados, nunca la condición de una cifra. */}
-        {destacado.referencia ? <Text style={e.referencia}>{destacado.referencia}</Text> : null}
-        <Text style={[e.estadoFicha, tonoVigencia(vigencia.estado)]}>{vigencia.etiqueta}</Text>
+        {destacado.referencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.referencia}>{destacado.referencia}</Text> : null}
+        <View style={e.decisionTarjeta}>
+          {datosParaDecidir.map(([etiqueta, dato]) => (
+            <View key={etiqueta} style={e.decisionFila}>
+              <Text style={e.decisionEtiqueta}>{etiqueta}</Text>
+              <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.decisionValor}>{dato.texto}</Text>
+              {dato.unidadDocumentada ? <Text style={e.referencia}>Unidad en la fuente: <Text noTraducir idiomaOriginal="es-ES">{dato.unidadDocumentada}</Text></Text> : null}
+              {dato.consultadaEl ? <Text style={e.referencia}>Consulta: {fechaVerificacionLocalVisible(dato.consultadaEl)}</Text> : null}
+            </View>
+          ))}
+        </View>
+        <Text style={[e.estadoFicha, tonoVigencia(vigencia.estado)]}>{resumen.estado.texto}</Text>
+        <Text style={e.referencia}>Registro del proveedor: {registro ? `${registro.texto} · revisión ${fechaVerificacionLocalVisible(registro.fecha)}` : 'no documentado en el radar'}. No acredita esta oferta.</Text>
         {primerCritico ? (
           <View style={[
             e.avisoFicha,
@@ -214,14 +331,14 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
               e.avisoFichaTxt,
               primerCritico.tono === 'stop' ? e.avisoTxtStop : e.avisoTxtWarn,
             ]}>
-              {primerCritico.tono === 'stop' ? 'IMPORTANTE' : 'ATENCIÓN'} · {primerCritico.texto}
+              {primerCritico.tono === 'stop' ? 'IMPORTANTE' : 'ATENCIÓN'} · <Text noTraducir idiomaOriginal="es-ES">{primerCritico.texto}</Text>
               {criticos.length > 1 ? ` · ${criticos.length - 1} más en la ficha` : ''}
             </Text>
           </View>
         ) : null}
         <View style={e.pieFicha}>
           <Text style={e.fechaFicha}>
-            {documentacion ? `Doc. ${fechaVerificacionLocalVisible(documentacion.fecha)}` : 'Fecha sin verificar'}
+            {fechaProcedencia}
           </Text>
           <Text style={e.abrirFicha}>Ver ficha →</Text>
         </View>
@@ -230,18 +347,19 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir }) {
   );
 }
 
-function FilaMetrica({ etiqueta, valor }) {
+function FilaMetrica({ etiqueta, valor, original=false, etiquetaOriginal=false }) {
   return (
     <View style={e.filaMetrica}>
-      <Text style={e.metricaEtiqueta}>{etiqueta}</Text>
-      <Text style={e.metricaValor}>{valor}</Text>
+      <Text noTraducir={etiquetaOriginal} idiomaOriginal="es-ES" style={e.metricaEtiqueta}>{etiqueta}</Text>
+      <Text noTraducir={original} idiomaOriginal="es-ES" style={e.metricaValor}>{valor}</Text>
     </View>
   );
 }
 
 export function DetalleOferta({
-  oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataformaCanonica, guardada = false, onGuardar,
+  oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataformaCanonica, plataforma, guardada = false, onGuardar,
 }) {
+  const idiomaActual=useIdioma();
   const ahora = useFechaOferta();
   if (!ofertaOriginal) return null;
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
@@ -250,56 +368,84 @@ export function DetalleOferta({
   const destacado = datoDestacado(oferta);
   const rentabilidadSec = rentabilidadSecundaria(oferta);
   const cifraVencida = oferta.cifrasPendientes;
+  const resumen = resumenOferta(ofertaOriginal, [], ahora);
+  const registro = registroProveedor(plataforma, ahora);
+  const datosParaDecidir = [
+    ['Mínimo publicado en euros', resumen.minimo],
+    ['Acceso desde España', resumen.accesoEspana],
+    ['Cómo recuperar el dinero', resumen.salida],
+    ['Costes publicados', resumen.costes],
+  ];
   const enlacePrincipal = oferta.tipo === 'secundario'
     ? (oferta.urlMercado || oferta.url) : oferta.url;
+  const fuentesAdicionales = documentacion
+    ? [...new Set([...documentacion.fuentes, ...documentacion.referencias.map(r => r.fuente),
+      ...(registro?.fuentes || []), oferta.url].filter(Boolean))].filter(url => url !== enlacePrincipal)
+    : registro?.fuentes || [];
   return (
-    <Modal visible animationType="slide" onRequestClose={onCerrar}>
-      <SafeAreaProvider>
-        <SafeAreaView style={e.modal} edges={['top', 'bottom']}>
+    <Modal visible animationType="slide" presentationStyle="fullScreen"
+      statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={onCerrar}>
+      <SafeAreaProvider style={e.modal}>
+        <SafeAreaView style={e.modal} edges={['top', 'right', 'bottom', 'left']} accessibilityViewIsModal>
           <View style={e.cabeceraModal}>
-            <View style={{ flex: 1 }}>
-              <Text style={e.supra}>{oferta.coleccion && oferta.coleccion !== 'principales' ? 'REFERENCIA' : 'OFERTA'} · {tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
-              <Text style={e.modalTitulo} numberOfLines={2}>{oferta.titulo}</Text>
-            </View>
+            <Text style={e.cabeceraEtiqueta}>Ficha de la oferta</Text>
             {/* Guardar no es invertir: solo la deja a mano en Perfil, en este dispositivo. */}
             {onGuardar ? (
               <Pressable onPress={onGuardar} style={({ pressed }) => [e.cerrar, guardada && e.guardarOn, pressed && e.pulsado]}
                 accessibilityRole="button" accessibilityState={{ selected: guardada }}
-                accessibilityLabel={guardada ? `Quitar ${oferta.titulo} de guardadas` : `Guardar ${oferta.titulo} en Perfil`}
+                noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'}
+                accessibilityLabel={guardada ? `${traducir('Quitar')} ${oferta.titulo} ${traducir('de guardadas')}` : `${traducir('Guardar')} ${oferta.titulo} ${traducir('en Perfil')}`}
                 hitSlop={10}>
                 <Icono nombre={guardada ? 'guardada' : 'guardar'} color={C.senal} tamano={22} />
               </Pressable>
             ) : null}
             <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]}
-              accessibilityRole="button" accessibilityLabel={`Cerrar ${oferta.titulo}`} hitSlop={10}>
+              accessibilityRole="button" noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'} accessibilityLabel={`${traducir('Cerrar')} ${oferta.titulo}`} hitSlop={10}>
               <Text style={e.cerrarTxt}>✕</Text>
             </Pressable>
           </View>
-          <ScrollView contentContainerStyle={e.modalCuerpo}>
+          <ScrollView key={oferta.slug} style={e.modalDesplazamiento}
+            contentContainerStyle={e.modalCuerpo} contentInsetAdjustmentBehavior="never">
+            <Text style={e.supra}>{oferta.coleccion && oferta.coleccion !== 'principales' ? 'REFERENCIA' : 'OFERTA'} · {tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
+            <FuenteOriginal idiomaOriginal="es-ES" />
+            <Text noTraducir idiomaOriginal="es-ES" style={e.modalTitulo} accessibilityRole="header">{oferta.titulo}</Text>
             <ImagenOferta oferta={oferta} grande />
             <View style={e.proveedorCaja}>
-              <Text style={e.proveedorNombre}>{oferta.plataformaNombre}</Text>
+              <Text noTraducir idiomaOriginal="es-ES" style={e.proveedorNombre}>{oferta.plataformaNombre}</Text>
               <Text style={e.proveedorMeta}>
-                {[oferta.categoria, oferta.pais].filter(Boolean).join(' · ')}
+                {oferta.categoria}<Text noTraducir idiomaOriginal="es-ES">{oferta.pais ? ` · ${oferta.pais}` : ''}</Text>
               </Text>
-              {documentacion ? <Text style={e.referencia}>{documentacion.etiqueta}</Text> : null}
               <Text style={[e.proveedorEstado, !plataformaCanonica && e.proveedorSolo]}>
                 {plataformaCanonica
-                  ? 'Plataforma incluida también en el radar canónico'
-                  : 'Proveedor solo del escaparate · no admite seguimiento'}
+                  ? 'Proveedor incluido también en el radar'
+                  : 'Proveedor de esta referencia · no está en el radar'}
               </Text>
-              <Text style={[e.disponibilidad, oferta.disponibleEs === false && e.disponibilidadNo]}>
-                {oferta.disponibleEs === true
-                  ? 'Disponible desde España en la fecha verificada'
-                  : oferta.disponibleEs === false
-                    ? 'No disponible desde España en la fecha verificada'
-                    : 'Disponibilidad desde España sin comprobar'}
-              </Text>
+              {registro ? <><Text style={e.referencia}>Registro del proveedor · revisión {fechaVerificacionLocalVisible(registro.fecha)}</Text><FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.referencia}>{registro.detalle}</FuenteOriginal><Text style={e.referencia}>Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.</Text></> : null}
               {oferta.patrocinada ? (
                 <Text style={e.patrocinioAviso}>
                   Patrocinada. Consulta la relación comercial en la ficha; no altera el ranking ni implica recomendación.
                 </Text>
               ) : null}
+            </View>
+
+            <View style={e.documentacion}>
+              <Text style={e.avisosTitulo}>EN TRES FRASES</Text>
+              {documentacion?.descripcion || oferta.resumen ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{documentacion?.descripcion || oferta.resumen}</FuenteOriginal> : <Text style={e.estadoTexto}>La fuente no aporta una descripción comprobable en esta ficha.</Text>}
+              <Text style={e.referencia}>Lo ofrece <Text noTraducir idiomaOriginal="es-ES">{oferta.plataformaNombre || 'el proveedor indicado en la fuente'}</Text>.</Text>
+              <Text style={e.referencia}><Text noTraducir={Boolean(resumen.salida.fuente)} idiomaOriginal="es-ES">{resumen.salida.texto}</Text>. La disponibilidad de salida no está garantizada.</Text>
+            </View>
+            <Text style={e.avisosTitulo}>¿QUIÉN PUEDE ACCEDER Y EN QUÉ CONDICIONES?</Text>
+            <View style={e.tabla}>
+              {datosParaDecidir.map(([etiqueta, dato]) => (
+                <View key={etiqueta} style={e.filaMetrica}>
+                  <Text style={e.metricaEtiqueta}>{etiqueta}</Text>
+                  <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.metricaValor}>{dato.texto}</Text>
+                  {dato.unidadDocumentada ? <Text style={e.referencia}>Unidad publicada: <Text noTraducir idiomaOriginal="es-ES">{dato.unidadDocumentada}</Text>; no se ha convertido a euros.</Text> : null}
+                  {dato.referencias?.length ? dato.referencias.map((ref, indice) => (
+                    <Text key={`${ref.fuente}-${indice}`} style={e.referencia}>{ref.etiqueta}: fuente consultada el {fechaVerificacionLocalVisible(ref.fechaConsulta)} · {dominioFuente(ref.fuente)}{ref.fechaDato ? ` · dato del ${fechaVerificacionLocalVisible(ref.fechaDato)}` : ''}</Text>
+                  )) : dato.consultadaEl ? <Text style={e.referencia}>Fuente consultada el {fechaVerificacionLocalVisible(dato.consultadaEl)} · {dominioFuente(dato.fuente)}</Text> : null}
+                </View>
+              ))}
             </View>
 
             <View style={[e.estadoCaja, cifraVencida && e.estadoCajaVencida]}>
@@ -323,35 +469,40 @@ export function DetalleOferta({
 
             {documentacion?.descripcion ? (
               <View style={e.documentacion}>
-                <Text style={e.avisosTitulo}>FICHA DOCUMENTADA · {fechaVerificacionLocalVisible(documentacion.fecha)}</Text>
-                <Text style={e.estadoTexto}>{documentacion.descripcion}</Text>
+                <Text style={e.avisosTitulo}>CARACTERÍSTICAS DOCUMENTADAS</Text>
                 {documentacion.caracteristicas.length ? (
                   <View style={[e.tabla, e.tablaDocumental]}>
                     {documentacion.caracteristicas.map((caracteristica, indice) => (
-                      <FilaMetrica key={`documentacion-${indice}`} {...caracteristica} />
+                      <FilaMetrica key={`documentacion-${indice}`} {...caracteristica} original etiquetaOriginal />
                     ))}
                   </View>
                 ) : null}
               </View>
             ) : null}
 
-            {oferta.resumen ? <Text style={e.parrafo}>{oferta.resumen}</Text> : null}
+            <View style={e.documentacion}>
+              <Text style={e.avisosTitulo}>FECHAS DE ESTA FICHA</Text>
+              <Text style={e.referencia}>Revisión del catálogo: {resumen.fechas.revisadaEl ? fechaVerificacionLocalVisible(resumen.fechas.revisadaEl) : 'sin fecha válida'}</Text>
+              <Text style={e.referencia}>Última consulta citada: {resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl) : 'no documentada'}</Text>
+              <Text style={e.referencia}>Fecha del dato en esa referencia: {resumen.fechas.fechaDato ? fechaVerificacionLocalVisible(resumen.fechas.fechaDato) : 'no indicada por la fuente'}</Text>
+              <Text style={e.referencia}>Revisar el catálogo no vuelve a comprobar las cifras antiguas. Cada referencia conserva su consulta original debajo.</Text>
+            </View>
             <View style={e.destacado}>
               <Text style={e.datoEtiqueta}>{destacado.etiqueta}</Text>
-              <Text style={e.destacadoValor}>{destacado.valor}</Text>
-              {destacado.referencia ? <Text style={e.referencia}>{destacado.referencia}</Text> : null}
+              <Text noTraducir={Boolean(destacado.original)} idiomaOriginal="es-ES" style={e.destacadoValor}>{destacado.valor}</Text>
+              {destacado.referencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.referencia}>{destacado.referencia}</Text> : null}
             </View>
             {rentabilidadSec ? (
               <View style={e.destacadoSecundario}>
                 <Text style={e.datoEtiqueta}>RENTABILIDAD AJUSTADA / PUBLICADA</Text>
-                <Text style={e.destacadoValor}>{rentabilidadSec}</Text>
+                <Text noTraducir idiomaOriginal="es-ES" style={e.destacadoValor}>{rentabilidadSec}</Text>
               </View>
             ) : null}
 
             {oferta.metricas.length ? (
               <View style={e.tabla}>
                 {oferta.metricas.map((metrica, indice) => (
-                  <FilaMetrica key={`${metrica.etiqueta}-${indice}`} {...metrica} />
+                  <FilaMetrica key={`${metrica.etiqueta}-${indice}`} {...metrica} original etiquetaOriginal />
                 ))}
               </View>
             ) : null}
@@ -364,18 +515,14 @@ export function DetalleOferta({
                 </Text>
                 {documentacion.referencias.map((referencia, indice) => (
                   <View style={e.referenciaDocumental} key={`referencia-${indice}`}>
-                    <Text style={e.datoEtiqueta}>{referencia.etiqueta}</Text>
-                    <Text style={e.datoValor}>{referencia.valor}</Text>
+                    <Text noTraducir idiomaOriginal="es-ES" style={e.datoEtiqueta}>{referencia.etiqueta}</Text>
+                    <Text noTraducir idiomaOriginal="es-ES" style={e.datoValor}>{referencia.valor}</Text>
                     <Text style={e.referencia}>
                       Fecha del dato: {referencia.fechaDato ? fechaVerificacionLocalVisible(referencia.fechaDato) : 'no indicada en la fuente'}
                     </Text>
                     <Text style={e.referencia}>Consultado el {fechaVerificacionLocalVisible(referencia.fechaConsulta)}</Text>
-                    <Text style={e.referencia}>{referencia.alcance}</Text>
-                    <Pressable onPress={() => onAbrirEnlace(referencia.fuente)}
-                      style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
-                      accessibilityRole="link" accessibilityLabel={`Ver fuente · ${dominioFuente(referencia.fuente)} de ${referencia.etiqueta}: ${referencia.fuente}`}>
-                      <Text style={e.enlaceSecundarioTxt}>Ver fuente · {dominioFuente(referencia.fuente)} ↗</Text>
-                    </Pressable>
+                    <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.referencia}>{referencia.alcance}</FuenteOriginal>
+                    <Text style={e.referencia}>Fuente: {dominioFuente(referencia.fuente)} · enlace al final de la ficha</Text>
                   </View>
                 ))}
               </View>
@@ -391,39 +538,41 @@ export function DetalleOferta({
                     aviso.tono === 'warn' && e.avisoFilaWarn,
                     aviso.tono === 'ok' && e.avisoFilaOk,
                   ]}>
-                    <Text style={[
+                    <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={[
                       e.aviso,
                       aviso.tono === 'stop' && e.avisoTxtStop,
                       aviso.tono === 'warn' && e.avisoTxtWarn,
                       aviso.tono === 'ok' && e.avisoTxtOk,
-                    ]}>• {aviso.texto}</Text>
+                    ]}>• {aviso.texto}</FuenteOriginal>
                   </View>
                 ))}
               </View>
             ) : null}
 
+            <View style={e.avisos}>
+              <Text style={e.avisosTitulo}>ANTES DE IR A LA FUENTE</Text>
+              <FilaMetrica etiqueta="¿Puedo perder dinero?" valor="Sí. Puedes perder parte o toda la inversión; una cifra publicada no garantiza el resultado." />
+              <FilaMetrica etiqueta="¿Puedo vender cuando quiera?" valor={resumen.salida.texto} original={Boolean(resumen.salida.fuente)} />
+              <FilaMetrica etiqueta="¿Quién custodia el activo?" original={Boolean(documentacion?.caracteristicas.find(c => /custodio|responsable de custodia/i.test(c.etiqueta))?.valor)} valor={documentacion?.caracteristicas.find(c => /custodio|responsable de custodia/i.test(c.etiqueta))?.valor || 'No consta en esta ficha. Compruébalo en la fuente.'} />
+              <FilaMetrica etiqueta="¿Quién supervisa esta oferta?" original={Boolean(documentacion?.caracteristicas.find(c => /supervisor|regulador/i.test(c.etiqueta))?.valor)} valor={documentacion?.caracteristicas.find(c => /supervisor|regulador/i.test(c.etiqueta))?.valor || 'No consta en esta ficha. Un registro de la plataforma no acredita cada oferta.'} />
+            </View>
+            <Text style={e.riesgoSalida}>Puedes perder dinero. RWAdar no vende ni asesora.</Text>
             <Pressable
               onPress={() => enlacePrincipal && onAbrirEnlace(enlacePrincipal)}
               disabled={!enlacePrincipal}
               style={({ pressed }) => [e.enlace, !enlacePrincipal && e.deshabilitado, pressed && e.pulsado]}
               accessibilityRole="link"
+              noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'} accessibilityLabel={`${traducir('Ver en la fuente ·')} ${oferta.plataformaNombre}: ${enlacePrincipal || traducir('enlace no documentado')}`}
               accessibilityState={{ disabled: !enlacePrincipal }}
             >
               <Text style={e.enlaceTxt}>
-                {cifraVencida ? 'Consultar fuente' : oferta.tipo === 'secundario' ? 'Ver mercado' : 'Ver oferta'} en {oferta.plataformaNombre} ↗
+                Ver en la fuente · <Text noTraducir idiomaOriginal="es-ES">{oferta.plataformaNombre}</Text> ↗
               </Text>
             </Pressable>
-            {oferta.tipo === 'secundario' && oferta.url && oferta.url !== enlacePrincipal ? (
-              <Pressable onPress={() => onAbrirEnlace(oferta.url)}
-                style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
-                accessibilityRole="link">
-                <Text style={e.enlaceSecundarioTxt}>Abrir ficha oficial ↗</Text>
-              </Pressable>
-            ) : null}
-            {documentacion ? (
+            {fuentesAdicionales.length ? (
               <View>
-                <Text style={e.avisosTitulo}>FUENTES CONSULTADAS · {documentacion.fecha}</Text>
-                {documentacion.fuentes.map((url, indice) => (
+                <Text style={e.avisosTitulo}>OTRAS FUENTES CONSULTADAS</Text>
+                {fuentesAdicionales.map((url, indice) => (
                   <Pressable key={url} onPress={() => onAbrirEnlace(url)}
                     style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
                     accessibilityRole="link" accessibilityLabel={`Ver fuente ${indice + 1} · ${dominioFuente(url)}: ${url}`}>
@@ -503,7 +652,7 @@ const e = StyleSheet.create({
   },
   imagenFicha: { width: '100%', aspectRatio: 2, position: 'relative', backgroundColor: C.sup3 },
   imagenEnFicha: { height: '100%' },
-  imagenGrande: { height: 220, borderRadius: R.ficha },
+  imagenGrande: { aspectRatio: 960 / 660, borderRadius: R.ficha },
   imagenFallback: { alignItems: 'center', justifyContent: 'center' },
   imagenFallbackTxt: { fontFamily: F.extra, fontSize: 34, color: C.noche },
   tipoPastilla: {
@@ -512,51 +661,60 @@ const e = StyleSheet.create({
     paddingHorizontal: 7, paddingVertical: 4,
   },
   tipoPastillaTxt: { ...T.etiqueta, color: C.tx, fontSize: 11 },
-  estadoFicha: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 12, lineHeight: 17, marginTop: 8 },
+  estadoFicha: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 14, lineHeight: 21, marginTop: 8 },
   vigenciaOk: { color: C.senal, borderColor: C.senal34 },
   vigenciaProxima: { color: '#F2B23C', borderColor: '#665126' },
   vigenciaVencida: { color: C.coral, borderColor: C.coral32 },
   cuerpoFicha: { padding: 12 },
+  cuerpoGrupo: { padding: 18, gap: 10 },
+  grupoNumero: { ...T.dato, fontSize: 20, lineHeight: 27, color: C.tx },
+  abrirGrupo: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 14, lineHeight: 20, marginTop: 8 },
   patrocinada: {
     ...T.etiqueta, alignSelf: 'flex-start', color: C.noche, backgroundColor: C.senal,
     borderRadius: R.pastilla, paddingHorizontal: 7, paddingVertical: 3, marginBottom: 7,
   },
-  plataforma: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 12, lineHeight: 17, marginTop: 3 },
+  plataforma: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 14, lineHeight: 21, marginTop: 3 },
   lugarFila: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 4 },
-  lugarTxt: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 12, lineHeight: 17, flexShrink: 1 },
-  titulo: { ...T.ficha, color: C.tx, fontSize: 17, lineHeight: 21 },
+  lugarTxt: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 14, lineHeight: 21, flexShrink: 1 },
+  titulo: { ...T.ficha, color: C.tx, fontSize: 20, lineHeight: 26 },
   datosCompactos: {
     flexDirection: 'row', gap: 9, marginTop: 9, paddingTop: 8,
     borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2,
   },
   datoCompacto: { flex: 1, minWidth: 0 },
+  decisionTarjeta: { marginTop: 10, gap: 8 },
+  decisionFila: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, paddingTop: 8 },
+  decisionEtiqueta: { ...T.menor, fontSize: 14, lineHeight: 21, color: C.tx2 },
+  decisionValor: { ...T.menor, fontFamily: F.media, fontSize: 15, lineHeight: 23, color: C.tx },
   pieFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginTop: 10 },
-  fechaFicha: { ...T.menor, color: C.tx2, fontSize: 12, lineHeight: 17 },
-  abrirFicha: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 12, lineHeight: 17 },
+  fechaFicha: { ...T.menor, color: C.tx2, fontSize: 13, lineHeight: 20 },
+  abrirFicha: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 14, lineHeight: 21 },
   avisoFicha: {
     borderWidth: 1, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 5, marginTop: 8,
   },
   avisoFichaStop: { backgroundColor: C.coral10, borderColor: C.coral32 },
   avisoFichaWarn: { backgroundColor: '#2B2416', borderColor: '#6F592B' },
-  avisoFichaTxt: { ...T.menor, fontFamily: F.media, fontSize: 12, lineHeight: 17 },
+  avisoFichaTxt: { ...T.menor, fontFamily: F.media, fontSize: 14, lineHeight: 21 },
   avisoTxtStop: { color: C.coral },
   avisoTxtWarn: { color: '#F2B23C' },
   avisoTxtOk: { color: C.senal },
   datoEtiqueta: { ...T.etiqueta, color: C.tx2, fontSize: 11.5, lineHeight: 16, marginBottom: 4 },
-  datoValor: { ...T.dato, color: C.tx, fontSize: 17, lineHeight: 22 },
+  datoValor: { ...T.dato, color: C.tx, fontSize: 20, lineHeight: 27 },
   modal: { flex: 1, backgroundColor: C.noche },
   cabeceraModal: {
-    flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingHorizontal: 18,
+    flexDirection: 'row', alignItems: 'center', flexShrink: 0, gap: 12, paddingHorizontal: 16,
     paddingVertical: 14, backgroundColor: C.noche2, borderBottomWidth: 1, borderBottomColor: C.linea,
   },
+  cabeceraEtiqueta: { ...T.menor, color: C.tx2, flex: 1, minWidth: 0 },
   supra: { ...T.etiqueta, color: C.senal, marginBottom: 5 },
-  modalTitulo: { ...T.ficha, color: C.tx, fontSize: 19 },
+  modalTitulo: { ...T.ficha, color: C.tx, fontSize: 22, lineHeight: 29, marginBottom: 16 },
   guardarOn: { backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34 },
   cerrar: {
-    width: UI.tactil, height: UI.tactil, alignItems: 'center', justifyContent: 'center',
+    width: UI.tactil, height: UI.tactil, flexShrink: 0, alignItems: 'center', justifyContent: 'center',
     borderRadius: R.pastilla, backgroundColor: C.sup2,
   },
   cerrarTxt: { color: C.tx, fontSize: 18 },
+  modalDesplazamiento: { flex: 1, minHeight: 0 },
   modalCuerpo: { padding: 16, paddingBottom: 34 },
   proveedorCaja: { paddingVertical: 16, borderBottomWidth: 1, borderBottomColor: C.linea },
   proveedorNombre: { ...T.ficha, color: C.tx },
@@ -575,7 +733,7 @@ const e = StyleSheet.create({
   referenciaDocumental: { backgroundColor: C.sup2, borderRadius: R.m, padding: 13, marginTop: 12 },
   parrafo: { ...T.cuerpo, color: C.tx, marginVertical: 18 },
   destacado: { backgroundColor: C.sup2, borderRadius: R.m, padding: 15, marginBottom: 14 },
-  referencia: { ...T.menor, color: C.tx2, fontSize: 12, lineHeight: 18, marginTop: 5 },
+  referencia: { ...T.menor, color: C.tx2, fontSize: 14, lineHeight: 21, marginTop: 5 },
   destacadoSecundario: {
     backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34,
     borderRadius: R.m, padding: 15, marginBottom: 14,
@@ -589,6 +747,7 @@ const e = StyleSheet.create({
   metricaEtiqueta: { ...T.menor, fontFamily: F.media, color: C.tx2 },
   metricaValor: { ...T.cuerpo, color: C.tx, lineHeight: 21 },
   avisos: { backgroundColor: C.sup, borderRadius: R.m, padding: 14, marginTop: 14 },
+  riesgoSalida: { ...T.menor, color: '#F2B23C', fontSize: 13, lineHeight: 19, marginTop: 18 },
   avisosTitulo: { ...T.etiqueta, color: '#F2B23C', marginBottom: 8 },
   avisoFila: {
     borderWidth: 1, borderColor: C.linea2, borderRadius: R.s,

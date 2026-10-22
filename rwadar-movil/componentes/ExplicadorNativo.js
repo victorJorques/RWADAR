@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
-import { Animated, Easing, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Animated, Easing, StyleSheet } from 'react-native';
+import { Pressable, ScrollView, Text, View } from './Idioma';
 import { C, T, R, F } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 

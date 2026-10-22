@@ -6,6 +6,7 @@ const Module = require('node:module');
 const babel = require('@babel/core');
 const commonjs = require('@babel/plugin-transform-modules-commonjs');
 const jsx = require('@babel/plugin-transform-react-jsx');
+const {soporteIdioma}=require('./soporte-idioma.cjs');
 
 const RAIZ = path.resolve(__dirname, '..');
 const ARCHIVO = path.join(RAIZ, 'componentes', 'Cuenta.js');
@@ -18,6 +19,7 @@ function cargar(react, nativo) {
   const original = Module._load;
   const extension = Module._extensions['.js'];
   Module._load = function (pedido, padre, principal) {
+    if (pedido === './Idioma' && padre.filename === ARCHIVO) return soporteIdioma(react,nativo);
     if (pedido === 'react') return react;
     if (pedido === 'react-native') return nativo;
     if (pedido === '../lib/tema' && padre.filename === ARCHIVO) return tema;
@@ -210,6 +212,14 @@ test('editar nombre y actualizar la lista tienen acciones reales y explícitas',
   p.campo('Nombre (opcional)', 'Ana Local'); await p.pulsar('Guardar nombre');
   assert.deepEqual(p.llamadas.find(([n]) => n === 'guardarPerfil')[1], { nombre: 'Ana Local' });
   await p.pulsar('Actualizar mi lista'); assert.ok(p.llamadas.some(([n]) => n === 'refrescar'));
+});
+
+test('un nombre de usuario que coincide con un rótulo y su correo conservan contenido original',()=>{
+  const p=pantalla({...autenticada,perfil:{...autenticada.perfil,nombre:'Inicio'},usuario:{...autenticada.usuario,correo:'Inicio@ejemplo.test'}});
+  for(const literal of ['Inicio','Inicio@ejemplo.test']) {
+    const node=nodos(p.pintar()).find(n=>n.type==='Text'&&texto(n)===literal);
+    assert.equal(node?.props.noTraducir,true,literal);
+  }
 });
 
 test('borrar cuenta exige contraseña nueva en pantalla y BORRAR; cancelar no da la baja', async () => {

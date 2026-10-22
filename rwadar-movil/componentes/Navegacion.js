@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Pressable, Text, View } from './Idioma';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Line, Path, Rect } from 'react-native-svg';
 import { C, F, UI } from '../lib/tema';
@@ -176,7 +177,7 @@ export default function Navegacion({ activa, guardados = 0, novedades = 0, onCam
                 </View>
               ) : null}
             </View>
-            <Text style={[e.etiqueta, seleccionada && e.etiquetaOn]} numberOfLines={1}>
+            <Text style={[e.etiqueta, seleccionada && e.etiquetaOn]}>
               {etiqueta}
             </Text>
           </Pressable>
@@ -203,6 +204,6 @@ const e = StyleSheet.create({
     borderWidth: 1.5, borderColor: C.noche2, alignItems: 'center', justifyContent: 'center',
   },
   insigniaTxt: { color: C.tx, fontFamily: F.negrita, fontSize: 8.5, lineHeight: 11 },
-  etiqueta: { color: C.tx3, fontFamily: F.media, fontSize: 11.5, lineHeight: 15 },
+  etiqueta: { color: C.tx3, fontFamily: F.media, fontSize: 13, lineHeight: 18, textAlign: 'center', paddingHorizontal: 3 },
   etiquetaOn: { color: C.senal, fontFamily: F.semi },
 });

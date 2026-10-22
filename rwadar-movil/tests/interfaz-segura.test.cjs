@@ -6,6 +6,7 @@ const Module = require('node:module');
 const babel = require('@babel/core');
 const commonjs = require('@babel/plugin-transform-modules-commonjs');
 const jsx = require('@babel/plugin-transform-react-jsx');
+const {soporteIdioma}=require('./soporte-idioma.cjs');
 
 const RAIZ = path.resolve(__dirname, '..');
 
@@ -15,6 +16,7 @@ function cargar(ruta, mocks = {}, { jsx: transformaJsx = false } = {}) {
   const jsOriginal = Module._extensions['.js'];
 
   Module._load = function (pedido, padre, esPrincipal) {
+    if (pedido === './Idioma') return soporteIdioma(mocks.react,mocks['react-native']);
     if (Object.hasOwn(mocks, pedido)) return mocks[pedido];
     return cargarOriginal.call(this, pedido, padre, esPrincipal);
   };
@@ -40,13 +42,14 @@ function cargar(ruta, mocks = {}, { jsx: transformaJsx = false } = {}) {
   }
 }
 
-test('las dianas del radar miden al menos 44 y la leyenda expone el filtro', () => {
+test('las cajas nominales del radar miden al menos 44 y la leyenda expone el filtro', () => {
   const codigo = fs.readFileSync(path.join(RAIZ, 'componentes', 'Radar.js'), 'utf8');
   const tamano = Number(codigo.match(/const TAMANO_DIANA = (\d+)/)?.[1]);
 
   assert.ok(tamano >= 44, `la diana mide ${tamano || 0}, se esperaban al menos 44`);
-  assert.match(codigo, /left: x \* k - TAMANO_DIANA \/ 2/);
-  assert.match(codigo, /top: y \* k - TAMANO_DIANA \/ 2/);
+  assert.match(codigo, /left: punto\.x \* k - TAMANO_DIANA \/ 2/);
+  assert.match(codigo, /top: punto\.y \* k - TAMANO_DIANA \/ 2/);
+  assert.match(codigo, /resolverPuntoRadar\(puntos,\s*punto,\s*evento,\s*k\)/);
   assert.match(codigo, /width: TAMANO_DIANA, height: TAMANO_DIANA/);
   assert.match(codigo, /accessibilityState=\{\{ selected: categoriaActiva === c \}\}/);
   assert.match(codigo, /Filtro activo\. Quitar filtro\./);

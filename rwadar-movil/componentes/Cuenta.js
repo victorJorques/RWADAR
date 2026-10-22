@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  ActivityIndicator, Keyboard, KeyboardAvoidingView, Platform, Pressable,
-  StyleSheet, Text, TextInput, View,
-} from 'react-native';
+import { ActivityIndicator, Keyboard, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
+import { Pressable, Text, TextInput, View } from './Idioma';
 import { C, F, R, T, UI } from '../lib/tema';
 
 const PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
@@ -173,8 +171,8 @@ export default function Cuenta({ controlador, estado, plataformas = [], onAbrirE
 
       {autenticada && vista !== 'borrar' ? (
         <>
-          <Text style={s.nombre}>{estado.perfil?.nombre || 'Miembro de RWAdar'}</Text>
-          <Text style={s.parrafo} selectable>{estado.usuario.correo}</Text>
+          <Text noTraducir={Boolean(estado.perfil?.nombre)} idiomaOriginal="es-ES" style={s.nombre}>{estado.perfil?.nombre || 'Miembro de RWAdar'}</Text>
+          <Text noTraducir idiomaOriginal="es-ES" style={s.parrafo} selectable>{estado.usuario.correo}</Text>
           <Text style={s.nota}>La misma cuenta funciona en la web y en la app. Al cerrar la app tendrás que entrar de nuevo: la sesión no se guarda en el dispositivo.</Text>
           {editarNombre ? (
             <View style={s.bloque}>
@@ -201,7 +199,7 @@ export default function Cuenta({ controlador, estado, plataformas = [], onAbrirE
                 <Pressable onPress={() => empresa && onAbrirEmpresa(empresa)} disabled={!empresa}
                   accessibilityRole="button" accessibilityLabel={`Ver ${p.nombre}`}
                   accessibilityState={{ disabled: !empresa }} style={s.empresa}>
-                  <Text style={s.empresaNombre}>{p.nombre}</Text>
+                  <Text noTraducir idiomaOriginal="es-ES" style={s.empresaNombre}>{p.nombre}</Text>
                   <Text style={s.nota}>{empresa ? 'Ver ficha' : 'No está en el catálogo actual'}</Text>
                 </Pressable>
                 <Boton texto={`Quitar ${p.nombre}`} secundario deshabilitado={bloqueado}

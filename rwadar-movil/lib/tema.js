@@ -92,12 +92,12 @@ export const F = {
 export const T = {
   titular:   { fontFamily: F.extra,   fontSize: 27, letterSpacing: -0.85, lineHeight: 31 },
   seccion:   { fontFamily: F.extra,   fontSize: 21, letterSpacing: -0.62, lineHeight: 25 },
-  ficha:     { fontFamily: F.negrita, fontSize: 17, letterSpacing: -0.38, lineHeight: 21 },
-  cuerpo:    { fontFamily: F.regular, fontSize: 14.5, letterSpacing: -0.1, lineHeight: 21 },
-  cuerpoFte: { fontFamily: F.media,   fontSize: 14.5, letterSpacing: -0.1, lineHeight: 21 },
-  menor:     { fontFamily: F.regular, fontSize: 13, letterSpacing: -0.05, lineHeight: 19 },
-  dato:      { fontFamily: F.mono,    fontSize: 11.5, letterSpacing: 0.4 },
-  etiqueta:  { fontFamily: F.mono,    fontSize: 10.5, letterSpacing: 1.1 },
+  ficha:     { fontFamily: F.negrita, fontSize: 20, letterSpacing: -0.38, lineHeight: 26 },
+  cuerpo:    { fontFamily: F.regular, fontSize: 16, letterSpacing: -0.1, lineHeight: 24 },
+  cuerpoFte: { fontFamily: F.media,   fontSize: 16, letterSpacing: -0.1, lineHeight: 24 },
+  menor:     { fontFamily: F.regular, fontSize: 14, letterSpacing: -0.05, lineHeight: 21 },
+  dato:      { fontFamily: F.mono,    fontSize: 13, letterSpacing: 0.4, lineHeight: 19 },
+  etiqueta:  { fontFamily: F.mono,    fontSize: 12, letterSpacing: 1.1, lineHeight: 18 },
 };
 
 /* ---------------------------------------------------------------------

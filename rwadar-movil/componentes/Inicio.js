@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { RefreshControl, StyleSheet } from 'react-native';
+import { Pressable, ScrollView, Text, View } from './Idioma';
 
 import Marca from './Marca';
 import { Icono } from './Navegacion';

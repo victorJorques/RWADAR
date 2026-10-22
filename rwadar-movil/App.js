@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
-import {
-  ActivityIndicator, Alert, AppState, FlatList, Linking, Modal, Pressable, RefreshControl,
-  ScrollView, StatusBar, StyleSheet, Text, TextInput, useWindowDimensions, View,
-} from 'react-native';
+import { ActivityIndicator, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
+import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal } from './componentes/Idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
   useFonts, Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
@@ -38,7 +36,8 @@ import Radar from './componentes/Radar';
 import Marca from './componentes/Marca';
 import Navegacion, { Icono } from './componentes/Navegacion';
 import {
-  DetalleOferta, ExclusionesOfertas, FichaOferta,
+  DetalleOferta, ExclusionesOfertas, FichaOferta, FichaGrupoOfertas,
+  agruparOfertasLectura, ordenarOfertasLectura,
 } from './componentes/Ofertas';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
@@ -103,6 +102,7 @@ export default function App() {
   const [grupoOfertas, setGrupoOfertas] = useState('principales');
   const [tipoOferta, setTipoOferta] = useState('');
   const [proveedorOferta, setProveedorOferta] = useState('');
+  const [grupoProveedorAbierto, setGrupoProveedorAbierto] = useState('');
   const [filtrosOfertasAbiertos, setFiltrosOfertasAbiertos] = useState(false);
   const [abierta, setAbierta] = useState(null);
   const [ofertaAbierta, setOfertaAbierta] = useState(null);
@@ -300,11 +300,11 @@ export default function App() {
   ), [ofertasDelGrupo]);
   const ofertasVisibles = useMemo(() => {
     const q = busquedaOfertas.trim().toLocaleLowerCase('es');
-    return ofertasDelGrupo.filter((oferta) => {
+    return ordenarOfertasLectura(ofertasDelGrupo.filter((oferta) => {
       if (tipoOferta && oferta.tipo !== tipoOferta) return false;
       if (proveedorOferta && oferta.plataformaSlug !== proveedorOferta) return false;
       return !q || textoBusquedaOferta(oferta).includes(q);
-    });
+    }));
   }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta]);
   const columnasOfertas = anchoPantalla >= 1120 ? 3 : anchoPantalla >= 720 ? 2 : 1;
   const separacionOfertas = 12;
@@ -312,10 +312,13 @@ export default function App() {
     - (separacionOfertas * (columnasOfertas - 1))) / columnasOfertas;
   const filtrosOfertasActivos = Number(!!tipoOferta) + Number(!!proveedorOferta);
   const hayRestriccionesOfertas = !!(busquedaOfertas || tipoOferta || proveedorOferta);
+  const filasOfertas = useMemo(() => agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas),
+    [ofertasVisibles, hayRestriccionesOfertas]);
 
   const seleccionarGrupoOfertas = (grupo) => {
     tacto.eleccion();
     setGrupoOfertas(grupo);
+    setGrupoProveedorAbierto('');
     setProveedorOferta('');
     if (grupo !== 'principales') setTipoOferta('');
   };
@@ -479,6 +482,8 @@ export default function App() {
           />
         ) : null}
 
+        <SelectorIdioma />
+
         {MODO_LOCAL ? <BannerModoLocal /> : null}
 
         {estadoDatos ? (
@@ -597,9 +602,9 @@ export default function App() {
 
           {pestana === 'buscar' && vistaBuscar === 'ofertas' ? (
             <FlatList
-              key={`ofertas-${columnasOfertas}`}
-              data={ofertasVisibles}
-              keyExtractor={(oferta) => `${oferta.tipo}:${oferta.slug}`}
+              key={`ofertas-${columnasOfertas}-${grupoOfertas}-${grupoProveedorAbierto || 'lista'}`}
+              data={filasOfertas}
+              keyExtractor={(fila) => fila.slug}
               numColumns={columnasOfertas}
               columnWrapperStyle={columnasOfertas > 1 ? e.filaOfertas : null}
               contentContainerStyle={e.lista}
@@ -624,6 +629,17 @@ export default function App() {
                     : grupoOfertas === 'en_camino'
                       ? 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'
                       : 'Referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.'}</Text>
+                  <Text style={e.resultadoCompacto}>Primero las referencias con cifras comprobables; después, las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades. Agrupamos las repetidas por proveedor; al buscar se muestran las fichas individuales.</Text>
+                  {grupoProveedorAbierto ? (
+                    <View>
+                      <Text style={e.resultadoCompacto}>Referencias de {proveedoresOferta.find(p => p.slug === grupoProveedorAbierto)?.nombre || 'este proveedor'}. La búsqueda se aplica a este grupo.</Text>
+                      <Pressable onPress={() => { setProveedorOferta(''); setGrupoProveedorAbierto(''); }}
+                        style={({pressed}) => [e.botonBorde, pressed && e.pulsadoSuave]}
+                        accessibilityRole="button" accessibilityLabel="Volver a la colección completa de ofertas">
+                        <Text style={e.botonBordeTxt}>← Volver a la colección</Text>
+                      </Pressable>
+                    </View>
+                  ) : null}
                   <View style={e.panelBusquedaOfertas}>
                     <View style={[e.busquedaFila, e.busquedaFilaOfertas]}>
                       <Icono nombre="buscar" color={C.tx2} tamano={23} />
@@ -638,7 +654,7 @@ export default function App() {
                       />
                       {hayRestriccionesOfertas ? (
                         <Pressable
-                          onPress={() => { setBusquedaOfertas(''); setTipoOferta(''); setProveedorOferta(''); }}
+                          onPress={() => { setBusquedaOfertas(''); setTipoOferta(''); setProveedorOferta(''); setGrupoProveedorAbierto(''); }}
                           style={({ pressed }) => [e.limpiar, pressed && e.pulsadoSuave]}
                           accessibilityRole="button"
                           accessibilityLabel="Limpiar búsqueda y filtros de ofertas"
@@ -650,7 +666,7 @@ export default function App() {
                     </View>
                     <View style={e.barraFiltrosOfertas}>
                       <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
-                        {ofertasVisibles.length} {ofertasVisibles.length === 1 ? 'ficha' : 'fichas'}
+                        {ofertasVisibles.length} de {ofertasDelGrupo.length} {ofertasDelGrupo.length === 1 ? 'ficha' : 'fichas'} · {todasOfertas.length} en el catálogo
                       </Text>
                       <Pressable
                         onPress={() => setFiltrosOfertasAbiertos((abiertos) => !abiertos)}
@@ -688,11 +704,12 @@ export default function App() {
                       <ScrollView horizontal showsHorizontalScrollIndicator={false}
                         style={e.chipsOfertas} contentContainerStyle={e.chipsContenidoCompacto}>
                         <Chip texto="Todos" activo={!proveedorOferta}
-                          onPress={() => { tacto.eleccion(); setProveedorOferta(''); }} />
+                          onPress={() => { tacto.eleccion(); setProveedorOferta(''); setGrupoProveedorAbierto(''); }} />
                         {proveedoresOferta.map((proveedor) => (
                           <Chip key={proveedor.slug} texto={proveedor.nombre} activo={proveedorOferta === proveedor.slug}
                             onPress={() => {
                               tacto.eleccion();
+                              setGrupoProveedorAbierto('');
                               setProveedorOferta(proveedorOferta === proveedor.slug ? '' : proveedor.slug);
                             }} />
                         ))}
@@ -703,7 +720,12 @@ export default function App() {
               }
               renderItem={({ item }) => (
                 <View style={{ width: columnasOfertas > 1 ? anchoCeldaOferta : '100%' }}>
-                  <FichaOferta oferta={item} onAbrir={() => { tacto.abrir(); setOfertaAbierta(item); }} />
+                  {item.tipo === 'grupo'
+                    ? <FichaGrupoOfertas grupo={item} onAbrir={() => {
+                      tacto.abrir(); setProveedorOferta(item.proveedorSlug); setGrupoProveedorAbierto(item.proveedorSlug);
+                    }} />
+                    : <FichaOferta oferta={item.oferta} plataforma={radar.find(p => p.slug === item.oferta.plataformaSlug)}
+                      onAbrir={() => { tacto.abrir(); setOfertaAbierta(item.oferta); }} />}
                 </View>
               )}
               ListEmptyComponent={
@@ -711,7 +733,7 @@ export default function App() {
                   texto={todasOfertas.length ? 'No hay ofertas que coincidan con esos filtros.'
                     : 'No hay un catálogo de ofertas vigente disponible. Desliza hacia abajo para reintentar.'}
                   sePuedeLimpiar={todasOfertas.length > 0 && !!(busquedaOfertas || tipoOferta || proveedorOferta)}
-                  onLimpiar={() => { setBusquedaOfertas(''); setTipoOferta(''); setProveedorOferta(''); }}
+                  onLimpiar={() => { setBusquedaOfertas(''); setTipoOferta(''); setProveedorOferta(''); setGrupoProveedorAbierto(''); }}
                 />
               }
               ListFooterComponent={<ExclusionesOfertas datos={exclusionesOfertas} onAbrirEnlace={abrirEnlace} />}
@@ -774,6 +796,7 @@ export default function App() {
           onCerrar={() => { tacto.eleccion(); setOfertaAbierta(null); }}
           onAbrirEnlace={abrirEnlace}
           plataformaCanonica={!!ofertaAbierta && radar.some((p) => p.slug === ofertaAbierta.plataformaSlug)}
+          plataforma={ofertaAbierta && radar.find(p => p.slug === ofertaAbierta.plataformaSlug)}
           guardada={!!ofertaAbierta && guardadas.includes(ofertaAbierta.slug)}
           onGuardar={() => ofertaAbierta && alternarGuardada(ofertaAbierta)}
         />
@@ -1147,7 +1170,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
               <Text style={[e.verLocalCampoEstado, atencion && e.verLocalCampoEstadoAtencion]}>
                 {etiquetaEstadoVerificacionLocal(campo.estado)}
               </Text>
-              {!compacta ? <Text style={e.verLocalDetalle}>{campo.detalle}</Text> : null}
+              {!compacta ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.verLocalDetalle}>{campo.detalle}</FuenteOriginal> : null}
             </View>
           );
         })}
@@ -1156,7 +1179,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
         {(verificacion.alertasCriticas || []).map((alerta) => (
           <View key={alerta.codigo} style={e.verLocalAlerta}>
             <Text style={e.verLocalAlertaTitulo}>ALERTA CRÍTICA</Text>
-            <Text style={e.verLocalAlertaTexto} numberOfLines={compacta ? 3 : undefined}>
+            <Text noTraducir idiomaOriginal="es-ES" style={e.verLocalAlertaTexto} numberOfLines={compacta ? 3 : undefined}>
               {alerta.detalle}
             </Text>
           </View>
@@ -1195,7 +1218,7 @@ function Ficha({ p, sigue, onAbrir, onSeguir, deshabilitado }) {
           <Text style={e.monoTxt}>{iniciales(p.nombre)}</Text>
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={e.fichaNombre}>{p.nombre}</Text>
+          <Text noTraducir idiomaOriginal="es-ES" style={e.fichaNombre}>{p.nombre}</Text>
           <Text style={e.fichaSub}>{p.actor} · {p.region}</Text>
         </View>
         <Icono nombre="flecha" color={C.tx3} tamano={18} />
@@ -1511,31 +1534,35 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
       ['Quién puede entrar', p.acceso], ['Importe de entrada', p.ticket],
       ['Cadenas', p.cadenas]];
   return (
-    <Modal visible animationType="slide" onRequestClose={onCerrar}>
-      <SafeAreaProvider>
-        <SafeAreaView style={e.pantalla} edges={['top', 'bottom']}>
+    <Modal visible animationType="slide" presentationStyle="fullScreen"
+      statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={onCerrar}>
+      <SafeAreaProvider style={e.pantalla}>
+        <SafeAreaView style={e.pantalla} edges={['top', 'right', 'bottom', 'left']} accessibilityViewIsModal>
           <View style={e.detCab}>
             <View style={[e.mono, e.monoGrande, { backgroundColor: COLOR_CATEGORIA[p.categoria] || C.sup3 }]}>
               <Text style={[e.monoTxt, { fontSize: 18 }]}>{iniciales(p.nombre)}</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={e.detNombre}>{p.nombre}</Text>
-              <Text style={e.fichaSub}>{p.categoria}</Text>
+              <Text style={e.fichaSub}>Ficha de la plataforma</Text>
             </View>
             <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]} hitSlop={10}
               accessibilityRole="button" accessibilityLabel={`Cerrar ficha de ${p.nombre}`}>
               <Text style={e.cerrarTxt}>✕</Text>
             </Pressable>
           </View>
-          <ScrollView contentContainerStyle={e.detCuerpo}>
+          <ScrollView key={p.slug} style={e.detDesplazamiento}
+            contentContainerStyle={e.detCuerpo} contentInsetAdjustmentBehavior="never">
+            <FuenteOriginal idiomaOriginal="es-ES" />
+            <Text noTraducir idiomaOriginal="es-ES" style={e.detNombre} accessibilityRole="header">{p.nombre}</Text>
+            <Text style={e.detCategoria}>{p.categoria}</Text>
             {verificacion ? (
               <PanelVerificacionLocal verificacion={verificacion} />
             ) : (
               <>
                 <Text style={e.detEtiqueta}>POR QUÉ ESTÁ EN EL RADAR</Text>
-                <View style={e.aval}><Text style={e.avalTxt}>{p.aval}</Text></View>
+                <View style={e.aval}><FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.avalTxt}>{p.aval}</FuenteOriginal></View>
                 <Text style={e.detEtiqueta}>QUÉ HACE</Text>
-                <Text style={e.detParrafo}>{p.nota}</Text>
+                <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.detParrafo}>{p.nota}</FuenteOriginal>
               </>
             )}
             <Text style={e.detEtiqueta}>FICHA</Text>
@@ -1543,7 +1570,7 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
               {filasFicha.map(([k, v]) => (
                 <View key={k} style={e.filaTabla}>
                   <Text style={e.filaClave}>{k}</Text>
-                  <Text style={e.filaValor}>{v}</Text>
+                  <Text noTraducir idiomaOriginal="es-ES" style={e.filaValor}>{v}</Text>
                 </View>
               ))}
             </View>
@@ -1902,15 +1929,17 @@ const e = StyleSheet.create({
   piePrivacidadTxt: { ...T.menor, fontFamily: F.semi, color: C.senal, textDecorationLine: 'underline' },
 
   detCab: {
-    flexDirection: 'row', alignItems: 'center', gap: 12, padding: 18,
+    flexDirection: 'row', alignItems: 'center', flexShrink: 0, gap: 12, padding: 16,
     borderBottomWidth: 1, borderBottomColor: C.linea, backgroundColor: C.noche2,
   },
-  detNombre: { ...T.seccion, color: C.tx },
+  detNombre: { ...T.seccion, color: C.tx, lineHeight: 29 },
+  detCategoria: { ...T.menor, color: C.tx2, marginTop: 6 },
   cerrar: {
-    width: 34, height: 34, borderRadius: 17, backgroundColor: C.sup2,
+    width: UI.tactil, height: UI.tactil, flexShrink: 0, borderRadius: R.pastilla, backgroundColor: C.sup2,
     borderWidth: 1, borderColor: C.linea, alignItems: 'center', justifyContent: 'center',
   },
   cerrarTxt: { fontFamily: F.media, fontSize: 15, color: C.tx2 },
+  detDesplazamiento: { flex: 1, minHeight: 0 },
   detCuerpo: { padding: 18, paddingBottom: 40 },
   detEtiqueta: { ...T.etiqueta, color: C.tx2, marginTop: 20, marginBottom: 8 },
   detParrafo: { ...T.cuerpo, fontSize: 15, lineHeight: 23, color: C.tx },

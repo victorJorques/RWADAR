@@ -6,6 +6,7 @@ const vm = require('node:vm');
 const babel = require('@babel/core');
 const commonjs = require('@babel/plugin-transform-modules-commonjs');
 const jsx = require('@babel/plugin-transform-react-jsx');
+const {soporteIdioma}=require('./soporte-idioma.cjs');
 
 const RAIZ = path.resolve(__dirname, '..');
 function cargarModulo(ruta, mocks = {}, contexto = {}) {
@@ -15,6 +16,8 @@ function cargarModulo(ruta, mocks = {}, contexto = {}) {
   }).code;
   const modulo = { exports: {} };
   new Function('module', 'exports', 'require', ...Object.keys(contexto), codigo)(modulo, modulo.exports, (nombre) => {
+    if (nombre === './Idioma') return soporteIdioma(mocks.react,mocks['react-native']);
+    if (nombre === '../lib/idioma') return require('../lib/idioma');
     assert.ok(Object.hasOwn(mocks, nombre), `Dependencia inesperada: ${nombre}`);
     return mocks[nombre];
   }, ...Object.values(contexto));
@@ -67,6 +70,7 @@ function cargarWeb(ahora) {
     EDITORIAL_OFERTA_POR_CATEGORIA: { Inmobiliario: { src: '/propia.webp', alt: 'Ilustración propia' } },
     EDITORIAL_OFERTA_POR_SLUG: {},
     CATMETA: { Inmobiliario: {} }, catClase: () => '',
+    RWAdarFichaEditorial: require('../lib/ficha-editorial'),
     // Botón «Guardar» de favoritos locales: vive fuera del fragmento cargado.
     botonGuardarOferta: () => '',
     escHtml: (v) => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),
@@ -189,6 +193,7 @@ function componentesMoviles(ahora, simulacion = {}) {
     react: { createElement: crear, useState: (v) => [typeof v === 'function' ? v() : v, () => {}], useEffect() {}, ...simulacion.react },
     'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
+    '../lib/ficha-editorial': require('../lib/ficha-editorial'),
     '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
       imagenEditorialOferta: () => null },
     '../lib/datos': datosMoviles,
@@ -270,7 +275,8 @@ test('el detalle conserva acceso a fuentes fechadas cuando retira las cifras', (
   const fuente = 'https://example.test/fuente-oficial';
   const detalle = componentes.DetalleOferta({ oferta: { ...oferta, fuentesActuales: [fuente] } });
   const texto = textoRenderizado(detalle);
-  assert.match(texto, /FUENTES CONSULTADAS ·\s*2026-09-21/);
+  assert.match(texto, /OTRAS FUENTES CONSULTADAS/);
+  assert.match(texto, /Revisión del catálogo:\s*21\/09\/2026/);
   assert.ok(texto.includes(fuente));
   assert.match(texto, /contratación y el pago se realizan directamente con el proveedor/);
   assert.doesNotMatch(texto, centinelas);
@@ -296,7 +302,7 @@ test('una referencia del 27 de septiembre conserva su revisión documental el d�
     assert.equal(sanitizada.disponibleEs, null);
     for (const render of [componentes.FichaOferta, componentes.DetalleOferta]) {
       const texto = textoRenderizado(render({ oferta: dato }));
-      assert.match(texto, /Referencia documentada · 27\/09\/2026/);
+      assert.match(texto, /(?:Revisión documental|Revisión del catálogo:)\s*27\/09\/2026/);
       assert.match(texto, /Consultar emisor/);
       assert.match(texto, /La inversión puede perder valor/);
       assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo|Disponible desde España/);
@@ -304,7 +310,7 @@ test('una referencia del 27 de septiembre conserva su revisión documental el d�
     }
     const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
     assert.ok(detalle.includes(fuente));
-    assert.match(detalle, /Disponibilidad desde España sin comprobar/);
+    assert.match(detalle, /Sin comprobar desde España/);
     if (estadoRevision === 'no_verificable') assert.match(detalle, /Apertura no confirmada/);
     if (estadoRevision === 'fuentes_en_conflicto') assert.match(detalle, /Fuentes oficiales en conflicto/);
     assert.deepEqual(dato, original);
@@ -321,7 +327,7 @@ test('el sello documental exige fuentes HTTPS y una fecha real no futura, inclus
   ]) {
     const sinEvidencia = { ...dato, ...cambio };
     assert.equal(movil.documentacionOferta(sinEvidencia, ahora), null);
-    assert.doesNotMatch(textoRenderizado(componentesMoviles(ahora).FichaOferta({ oferta: sinEvidencia })), /Referencia documentada/);
+    assert.doesNotMatch(textoRenderizado(componentesMoviles(ahora).FichaOferta({ oferta: sinEvidencia })), /Revisión documental|Fuente consultada/);
   }
 });
 
@@ -343,11 +349,13 @@ test('la ficha documental y sus referencias históricas sobreviven al TTL sin pr
   assert.deepEqual(vista.documentacion, documentacion);
   const componentes = componentesMoviles(ahora);
   const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: dato }));
-  assert.match(tarjeta, /Referencia documentada · 30\/09\/2026/);
+  assert.match(tarjeta, /Fuente consultada 27\/09\/2026/);
+  assert.doesNotMatch(tarjeta, /Fuente consultada 30\/09\/2026/);
   assert.match(tarjeta, /Consultar emisor/);
   assert.doesNotMatch(tarjeta, /54,20|97,13|9876|1234|4455/);
   const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
-  for (const esperado of ['FICHA DOCUMENTADA', documentacion.descripcion, 'Inmobiliario residencial',
+  assert.match(detalle, /Revisión del catálogo:\s*30\/09\/2026/);
+  for (const esperado of ['CARACTERÍSTICAS DOCUMENTADAS', documentacion.descripcion, 'Inmobiliario residencial',
     'REFERENCIAS FECHADAS', 'No son precios actuales', '54,20 CHF', '26/09/2026',
     '27/09/2026', documentacion.referencias[0].alcance, fuente]) assert.ok(detalle.includes(esperado), esperado);
   assert.doesNotMatch(detalle, centinelas);
@@ -405,12 +413,15 @@ test('las 28 fichas reales conservan documentación y referencias fechadas en we
     const tarjetaWeb = contexto.tarjetaOfertaLocal(o);
     const tarjetaMovil = textoRenderizado(componentes.FichaOferta({ oferta: o }));
     for (const tarjeta of [tarjetaWeb, tarjetaMovil]) {
-      assert.match(tarjeta, /Doc\./);
       assert.match(tarjeta, /Consultar emisor/);
       assert.doesNotMatch(tarjeta, /Pendiente de revisión/);
     }
+    assert.match(tarjetaWeb, /Doc\./);
     assert.ok(tarjetaWeb.includes(`datetime="${doc.revisadaEl}"`), o.slug);
-    assert.ok(tarjetaMovil.includes(movil.fechaVerificacionLocalVisible(doc.revisadaEl)), o.slug);
+    const ultimaConsulta = doc.referencias.map(r => r.fechaConsulta).sort().at(-1);
+    assert.ok(tarjetaMovil.includes(ultimaConsulta
+      ? `Fuente consultada ${movil.fechaVerificacionLocalVisible(ultimaConsulta)}`
+      : `Revisión documental ${movil.fechaVerificacionLocalVisible(doc.revisadaEl)}`), o.slug);
     assert.ok(tarjetaWeb.includes('data-oferta-detalle="'+o.slug+'"'));
     assert.equal(contexto.ofertaDetalleLocalPorSlug(o.slug), o);
     contexto.abrirDetalleOfertaLocal(o.slug);
@@ -552,7 +563,8 @@ function webV2Cliente(lote, ahora = new Date('2026-09-27T12:00:00Z')) {
   cargarFuncionesWeb(contexto, ['CATMETA', 'ACCESOS', 'TICKETS', 'EDITORIAL_OFERTA_POR_CATEGORIA', 'EDITORIAL_OFERTA_POR_SLUG',
     'textoDato', 'numeroRemoto', 'booleanoOpcional', 'cifraCatalogoRemota',
     'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal', 'validarVerificacionLocal',
-    'metadatosCatalogoV2', 'validarManifiestoCatalogoV2', 'edadLoteDias', 'validarRevisionCatalogo',
+    'MANIFIESTO_CATALOGO_V2_ACEPTADO', 'metadatosCatalogoV2', 'validarManifiestoCatalogoV2',
+    'recordarManifiestoCatalogoV2', 'edadLoteDias', 'validarRevisionCatalogo',
     'fechaOfertaPublicaValida', 'ofertaCatalogoRemota', 'plataformaRemota', 'plataformaCatalogoRemota',
     'validarLoteCatalogoRemotoV2', 'comprobarCatalogoEmbebido', 'textoAvisoCatalogo', 'textoPieRevision',
     'pintarAvisoCatalogo', 'pintarEmisiones', 'seccionReferenciasCatalogo']);

@@ -74,7 +74,7 @@ test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => 
   assert.match(codigo, /\{USUARIO_LOCAL \? \(\s*<View style=\{e\.avisoProximo\}>/);
   assert.match(codigo, /guardada=\{!!ofertaAbierta && guardadas\.includes\(ofertaAbierta\.slug\)\}/);
   const ofertas = leer('componentes', 'Ofertas.js');
-  assert.match(ofertas, /accessibilityLabel=\{guardada \? `Quitar \$\{oferta\.titulo\} de guardadas` : `Guardar \$\{oferta\.titulo\} en Perfil`\}/);
+  assert.match(ofertas, /accessibilityLabel=\{guardada \? `\$\{traducir\('Quitar'\)\} \$\{oferta\.titulo\} \$\{traducir\('de guardadas'\)\}` : `\$\{traducir\('Guardar'\)\} \$\{oferta\.titulo\} \$\{traducir\('en Perfil'\)\}`\}/);
   const datos = leer('lib', 'datos.js');
   assert.match(datos, /const OFERTAS_GUARDADAS = `\$\{PREFIJO\}ofertas\.guardadas\.v1`;/);
   assert.match(datos, /PROGRESO_ACADEMY,\s*OFERTAS_GUARDADAS,\s*\];/);
@@ -123,7 +123,7 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   assert.match(componente, /\{editorial\.etiqueta\}/);
   assert.match(componente, /accessibilityLabel=\{decorativa \? undefined : editorial\.alt\}/);
   assert.doesNotMatch(componente, /oferta\.imagenAlt/);
-  assert.match(componente, /Proveedor solo del escaparate · no admite seguimiento/);
+  assert.match(componente, /Proveedor de esta referencia · no está en el radar/);
   assert.match(componente, /La referencia sigue documentada; ha vencido la actualización de sus cifras/);
   assert.doesNotMatch(componente, /Producto activo/);
   assert.match(componente, /permanente-vencida/);
@@ -134,9 +134,9 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   assert.match(componente, /RENTABILIDAD AJUSTADA \/ PUBLICADA/);
   assert.match(componente, /PATROCINADA/);
   assert.match(componente, /Patrocinada\. Consulta la relación comercial en la ficha; no altera el ranking/);
-  assert.match(componente, /Ver oferta'\} en \{oferta\.plataformaNombre\}/);
+  assert.match(componente, /Ver en la fuente · <Text noTraducir idiomaOriginal="es-ES">\{oferta\.plataformaNombre\}/);
   assert.match(componente, /RWAdar no cobra comisión al inversor/);
-  assert.match(componente, /Disponibilidad desde España sin comprobar/);
+  assert.match(componente, /\['Acceso desde España', resumen\.accesoEspana\]/);
   assert.match(componente, /item\.alcance/);
   assert.doesNotMatch(componente, /alternarSeguimiento|onSeguir|Seguir esta plataforma/);
 });
@@ -159,7 +159,7 @@ test('ofertas separa tres colecciones y adapta una, dos o tres columnas al ancho
   assert.match(app, /accessibilityState=\{\{ selected: activo \}\}/);
   assert.match(app, /const \{ width: anchoPantalla \} = useWindowDimensions\(\)/);
   assert.match(app, /const columnasOfertas = anchoPantalla >= 1120 \? 3 : anchoPantalla >= 720 \? 2 : 1;/);
-  assert.match(app, /key=\{`ofertas-\$\{columnasOfertas\}`\}/);
+  assert.match(app, /key=\{`ofertas-\$\{columnasOfertas\}-\$\{grupoOfertas\}-\$\{grupoProveedorAbierto \|\| 'lista'\}`\}/);
   assert.match(app, /numColumns=\{columnasOfertas\}/);
   assert.match(app, /columnWrapperStyle=\{columnasOfertas > 1 \? e\.filaOfertas : null\}/);
   assert.match(app, /width: columnasOfertas > 1 \? anchoCeldaOferta : '100%'/);
@@ -190,12 +190,13 @@ test('la ficha compacta prioriza imagen y una parada accesible, y las exclusione
   assert.doesNotMatch(imagen, /accessibilityElementsHidden/);
   assert.equal((imagen.match(/importantForAccessibility=\{decorativa \? 'no-hide-descendants' : 'auto'\}/g) || []).length, 2);
   assert.match(ficha, /<ImagenOferta oferta=\{oferta\} decorativa estilo=\{e\.imagenEnFicha\} \/>/);
-  assert.match(ficha, /accessibilityHint="Abre la ficha completa de la oferta"/);
+  assert.match(ficha, /accessibilityHint=\{traducir\('Abre la ficha completa de la oferta'\)\}/);
   assert.doesNotMatch(ficha, /oferta\.resumen|documentacion\.descripcion|rentabilidadSecundaria\(|VER →|criticos\.slice\(0, 2\)/);
   assert.match(ficha, /numberOfLines=\{2\}>\{oferta\.titulo\}/);
   assert.match(ficha, /const primerCritico = criticos\[0\]/);
   assert.match(ficha, /aspectRatio|imagenFicha/);
-  assert.match(ficha, /Doc\. \$\{fechaVerificacionLocalVisible\(documentacion\.fecha\)\}/);
+  assert.match(ficha, /Fuente consultada \$\{fechaVerificacionLocalVisible\(resumen\.fechas\.comprobadaEl\)\}/);
+  assert.match(ficha, /Revisión documental \$\{fechaVerificacionLocalVisible\(documentacion\.fecha\)\}/);
   assert.match(ficha, /Ver ficha →/);
   assert.doesNotMatch(ficha, /vigenciaSobreImagen|datoCompactoSecundario/);
   assert.match(detalle, /<ImagenOferta oferta=\{oferta\} grande \/>/);

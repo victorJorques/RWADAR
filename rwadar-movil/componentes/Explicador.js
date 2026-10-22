@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet } from 'react-native';
+import { Pressable, Text, View } from './Idioma';
 import { WebView } from 'react-native-webview';
 import ExplicadorNativo from './ExplicadorNativo';
 import { C, T, F, R } from '../lib/tema';

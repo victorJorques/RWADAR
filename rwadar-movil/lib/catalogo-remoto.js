@@ -1,7 +1,7 @@
 'use strict';
 
 const { validarLotePublico, validarLotePublicoV2, MANIFIESTO_CATALOGO_V2, MAX_VIGENCIA_DIAS,
-  esFecha } = require('./contrato-catalogo');
+  LIMITES_CATALOGO_V2, esFecha } = require('./contrato-catalogo');
 
 // Una sola entrada: nunca combinar el radar antiguo con ofertas de otra revisión.
 const CACHE_CATALOGO = 'rwadar.cache.catalogo.v2';
@@ -16,10 +16,10 @@ function adaptarCatalogo(lote, ahora) {
 // El catálogo se publica siempre salvo orden expresa de retirada (Víctor,
 // 1/10/2026): un lote completo y vencido se acepta con `caducado: true` y sus
 // cifras vencidas se ocultan oferta a oferta en adaptarFilas.
-function adaptarCatalogoV2(lote, ahora) {
+function adaptarCatalogoV2(lote, ahora, { manifiestoMinimo = MANIFIESTO_CATALOGO_V2 } = {}) {
   if (lote?.version !== 2) throw new Error('Versión de caché de catálogo no válida');
   const revision = validarLotePublicoV2(lote.plataformas, lote.ofertas,
-    { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: ahora, permitirCaducado: true });
+    { manifiesto: manifiestoMinimo, hoy: ahora, permitirCaducado: true, permitirAmpliacion: true });
   return adaptarFilas(lote, revision, ahora);
 }
 
@@ -72,6 +72,21 @@ function adaptarFilas(lote, revision, ahora) {
 function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new Date() }) {
   let enCurso = null;
   let cacheDescartada = false;
+  let minimoCargado = false;
+  let manifiestoMinimo = MANIFIESTO_CATALOGO_V2;
+  function conservarMinimo(adaptado) {
+    manifiestoMinimo = adaptado.manifiesto;
+  }
+  async function prepararMinimo() {
+    if (minimoCargado) return;
+    minimoCargado = true;
+    // Una app reiniciada también recuerda el último lote completo. Nunca
+    // acepta una respuesta más corta solo porque volvió a arrancar el binario.
+    try {
+      const raw = await almacenamiento.getItem(CACHE_CATALOGO);
+      if (raw) conservarMinimo(adaptarCatalogoV2(JSON.parse(raw), ahora(), {manifiestoMinimo}));
+    } catch { /* Una copia no verificable no cambia el mínimo del binario. */ }
+  }
   const vacio = (error, extra = {}) => ({ plataformas: [], ofertas: [], deCache: false,
     error, revisionId: null, ...extra });
   const SIN_COMPROBAR = 'No hemos podido comprobar la revisión más reciente';
@@ -85,19 +100,22 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
     try {
       const raw = await almacenamiento.getItem(CACHE_CATALOGO);
       if (!raw) return vacio(error || 'No hay un catálogo guardado');
-      return { ...adaptarCatalogoV2(JSON.parse(raw), ahora()), deCache: true, error };
+      const adaptado = adaptarCatalogoV2(JSON.parse(raw), ahora(), {manifiestoMinimo});
+      conservarMinimo(adaptado);
+      return { ...adaptado, deCache: true, error };
     } catch {
       await descartarCache();
       return vacio(error || 'La copia guardada no es verificable');
     }
   }
   async function desdeRed() {
+    await prepararMinimo();
     let respuestas;
     try {
       const sb = clientePublico();
       const resultados = await Promise.allSettled([
-        sb.from('catalogo_plataformas_publicas_v2').select('*').limit(MANIFIESTO_CATALOGO_V2.plataformasEsperadas + 1),
-        sb.from('catalogo_ofertas_publicas_v2').select('*').limit(MANIFIESTO_CATALOGO_V2.ofertasEsperadas + 1),
+        sb.from('catalogo_plataformas_publicas_v2').select('*').limit(LIMITES_CATALOGO_V2.plataformas + 1),
+        sb.from('catalogo_ofertas_publicas_v2').select('*').limit(LIMITES_CATALOGO_V2.ofertas + 1),
         sb.from('catalogo_publicacion').select('retirado,motivo').limit(1),
       ]);
       respuestas = resultados.map(r => r.status === 'fulfilled' ? r.value
@@ -115,11 +133,8 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
     // Una vista vacía, incompleta, un error de permisos o un lote que no
     // supera el contrato ya no retiran nada: se conserva la última copia
     // completa guardada y se avisa de que no se pudo comprobar la más reciente.
-    const cantidades = [MANIFIESTO_CATALOGO_V2.plataformasEsperadas,
-      MANIFIESTO_CATALOGO_V2.ofertasEsperadas];
     const catalogo = respuestas.slice(0, 2);
-    if (catalogo.some((r, i) => !r?.error &&
-        (!Array.isArray(r?.data) || r.data.length !== cantidades[i]))) {
+    if (catalogo.some(r => !r?.error && !Array.isArray(r?.data))) {
       return desdeCache(SIN_COMPROBAR);
     }
     if (catalogo.some(r => r?.error)) {
@@ -129,10 +144,11 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
     const lote = { version: 2, plataformas: respuestas[0]?.data, ofertas: respuestas[1]?.data };
     let adaptado;
     try {
-      adaptado = adaptarCatalogoV2(lote, ahora());
+      adaptado = adaptarCatalogoV2(lote, ahora(), {manifiestoMinimo});
     } catch {
       return desdeCache(SIN_COMPROBAR);
     }
+    conservarMinimo(adaptado);
     try {
       await almacenamiento.setItem(CACHE_CATALOGO, JSON.stringify(lote));
       cacheDescartada = false;

@@ -8,6 +8,9 @@ const COLECCIONES_OFERTA = Object.freeze(['principales', 'secundario', 'en_camin
 const MANIFIESTO_CATALOGO_V2 = Object.freeze({ versionEsquema: 2,
   plataformasEsperadas: 26, ofertasEsperadas: 49,
   coleccionesEsperadas: Object.freeze({ principales: 24, secundario: 21, en_camino: 4 }) });
+// Techo de los lectores, independiente del manifiesto editorial cerrado del
+// importador. Permite crecer sin confundir el límite REST con un lote completo.
+const LIMITES_CATALOGO_V2 = Object.freeze({ plataformas: 256, ofertas: 1000 });
 const MAX_VIGENCIA_DIAS = 7;
 const ESTADOS_OPERATIVOS = new Set(['observada', 'no_verificable']);
 const ESTADOS_LICENCIA = new Set([
@@ -109,6 +112,10 @@ function validarDocumentacionOferta(documentacion, contexto, { hoy = new Date() 
     `${contexto}: fecha documental inválida o futura`);
   asegurar(esTexto(documentacion.descripcion, 20, 6000),
     `${contexto}: descripción documental incompleta`);
+  if (Object.hasOwn(documentacion, 'imagenEditorialAlt')) {
+    asegurar(esTexto(documentacion.imagenEditorialAlt, 20, 400),
+      `${contexto}: descripción de imagen editorial inválida`);
+  }
   asegurar(Array.isArray(documentacion.fuentes) && documentacion.fuentes.length > 0 &&
     documentacion.fuentes.every(esHttps) &&
     new Set(documentacion.fuentes).size === documentacion.fuentes.length,
@@ -239,8 +246,30 @@ function validarManifiestoV2(manifiesto) {
 // permitirCaducado: el catálogo se publica siempre salvo orden expresa de
 // retirada (decisión del 1/10/2026). Un lote completo y vencido se acepta
 // marcado con `caducado`; uno futuro, incompleto o mezclado sigue fallando.
-function validarLotePublicoV2(plataformas, ofertas, { manifiesto, hoy = new Date(), permitirCaducado = false } = {}) {
+function validarLotePublicoV2(plataformas, ofertas, {
+  manifiesto, hoy = new Date(), permitirCaducado = false, permitirAmpliacion = false,
+} = {}) {
   validarManifiestoV2(manifiesto);
+  if (permitirAmpliacion) {
+    asegurar(Array.isArray(plataformas) && plataformas.length > 0 &&
+      plataformas.length <= LIMITES_CATALOGO_V2.plataformas &&
+      Array.isArray(ofertas) && ofertas.length > 0 && ofertas.length <= LIMITES_CATALOGO_V2.ofertas,
+      'V2: el lote supera los límites del lector o está vacío');
+    const cabecera = plataformas[0];
+    const candidato = validarManifiestoV2({ versionEsquema: cabecera?.version_esquema,
+      plataformasEsperadas: cabecera?.plataformas_esperadas, ofertasEsperadas: cabecera?.ofertas_esperadas,
+      coleccionesEsperadas: cabecera?.colecciones_esperadas });
+    asegurar(candidato.plataformasEsperadas <= LIMITES_CATALOGO_V2.plataformas &&
+      candidato.ofertasEsperadas <= LIMITES_CATALOGO_V2.ofertas,
+      'V2: el manifiesto supera los límites del lector');
+    asegurar(candidato.plataformasEsperadas >= manifiesto.plataformasEsperadas &&
+      candidato.ofertasEsperadas >= manifiesto.ofertasEsperadas &&
+      COLECCIONES_OFERTA.every(c => candidato.coleccionesEsperadas[c] >= manifiesto.coleccionesEsperadas[c]),
+      'V2: el lote reduce el último manifiesto completo');
+    // El candidato solo fija las cantidades esperadas. Las guardas siguientes
+    // comprueban todas las filas, sus datos y la totalidad de cada colección.
+    manifiesto = candidato;
+  }
   asegurar(Array.isArray(plataformas) && plataformas.length === manifiesto.plataformasEsperadas,
     'V2: plataformas incompletas respecto al manifiesto');
   asegurar(Array.isArray(ofertas) && ofertas.length === manifiesto.ofertasEsperadas,
@@ -297,7 +326,10 @@ function validarLotePublicoV2(plataformas, ofertas, { manifiesto, hoy = new Date
     }
   });
   return { fecha, edadDias: edad, vigenciaDias: vigencia, caducado, revisionId: [...revisiones][0], versionEsquema: 2,
-    coleccionesEsperadas: { ...manifiesto.coleccionesEsperadas } };
+    plataformasEsperadas: manifiesto.plataformasEsperadas, ofertasEsperadas: manifiesto.ofertasEsperadas,
+    coleccionesEsperadas: { ...manifiesto.coleccionesEsperadas },
+    manifiesto: { versionEsquema: 2, plataformasEsperadas: manifiesto.plataformasEsperadas,
+      ofertasEsperadas: manifiesto.ofertasEsperadas, coleccionesEsperadas: { ...manifiesto.coleccionesEsperadas } } };
 }
 
 module.exports = {
@@ -305,6 +337,7 @@ module.exports = {
   CUENTA_OFERTAS,
   COLECCIONES_OFERTA,
   MANIFIESTO_CATALOGO_V2,
+  LIMITES_CATALOGO_V2,
   MAX_VIGENCIA_DIAS,
   CATEGORIAS,
   esFecha,
