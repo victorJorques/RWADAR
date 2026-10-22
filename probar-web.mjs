@@ -2330,6 +2330,8 @@ const fechasSitemap = new Map([...lee('sitemap.xml').matchAll(
 const fechaRadarSEO = html.match(/"dateModified":"(\d{4}-\d{2}-\d{2})"/)?.[1];
 const fechaPrivacidadSEO = privacidad.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
 const fechaTransparenciaSEO = transparenciaComercial.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
+prueba('la web publicada no cita documentos privados de claude.ai como fuente',
+  !/claude\.ai\/code\/artifact/i.test(js) && !/claude\.ai\/code\/artifact/i.test(html));
 prueba('sitemap conserva por ruta las fechas reales del radar y de cada política',
   [...fechasSitemap.keys()].filter(url => !url.startsWith(`${ORIGEN_PUBLICO}/academy/`)).length === 3 &&
   Boolean(fechaRadarSEO && fechaPrivacidadSEO && fechaTransparenciaSEO) &&
