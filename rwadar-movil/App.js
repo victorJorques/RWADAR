@@ -83,7 +83,7 @@ export default function App() {
 
   /* Cuatro pestañas: inicio · buscar (empresas u ofertas) · academy · perfil. */
   const [pestana, setPestana] = useState('inicio');
-  const [vistaBuscar, setVistaBuscar] = useState('empresas');
+  const [vistaBuscar, setVistaBuscar] = useState('ofertas');
   const [guardadas, setGuardadas] = useState([]);
   const [radar, setRadar] = useState([]);
   const [fuera, setFuera] = useState([]);
@@ -611,17 +611,19 @@ export default function App() {
                     accessibilityLabel="Seleccionar grupo de ofertas">
                     <SegmentoOferta texto={`Principales ${ofertas.length}`} activo={grupoOfertas === 'principales'}
                       onPress={() => seleccionarGrupoOfertas('principales')} />
-                    <SegmentoOferta texto={`Secundario ${secundario.length}`} activo={grupoOfertas === 'secundario'}
+                    <SegmentoOferta texto={`Reventa ${secundario.length}`} activo={grupoOfertas === 'secundario'}
                       onPress={() => seleccionarGrupoOfertas('secundario')} />
                     {MODO_LOCAL ? <SegmentoOferta texto="Todo" activo={grupoOfertas === 'todo'}
                       onPress={() => seleccionarGrupoOfertas('todo')} />
-                      : <SegmentoOferta texto={`En camino ${enCamino.length}`} activo={grupoOfertas === 'en_camino'}
+                      : <SegmentoOferta texto={`Próximas ${enCamino.length}`} activo={grupoOfertas === 'en_camino'}
                         onPress={() => seleccionarGrupoOfertas('en_camino')} />}
                   </View>
-                  {grupoOfertas === 'secundario' || grupoOfertas === 'en_camino'
-                    ? <Text style={e.resultadoCompacto}>{grupoOfertas === 'secundario'
-                      ? 'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
-                      : 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'}</Text> : null}
+                  {/* Un solo aviso para todo el grupo, en vez de repetirlo en cada tarjeta. */}
+                  <Text style={e.resultadoCompacto}>{grupoOfertas === 'secundario'
+                    ? 'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
+                    : grupoOfertas === 'en_camino'
+                      ? 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'
+                      : 'Referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.'}</Text>
                   <View style={e.panelBusquedaOfertas}>
                     <View style={[e.busquedaFila, e.busquedaFilaOfertas]}>
                       <Icono nombre="buscar" color={C.tx2} tamano={23} />
@@ -932,7 +934,7 @@ function PantallaPerfil({
         Los siguientes favoritos se guardan solo en este dispositivo. Son distintos de la lista de vigilancia de tu cuenta.
       </Text> : null}
 
-      <GrupoMenu titulo={`Empresas guardadas · ${seguidas.length}`}>
+      <GrupoMenu titulo={`Plataformas guardadas · ${seguidas.length}`}>
         {seguidas.length ? seguidas.map((p, i) => (
           <FilaMenu key={p.slug} icono="radar" titulo={p.nombre}
             subtitulo={[p.categoria, p.region].filter(Boolean).join(' · ')}
@@ -1081,13 +1083,14 @@ function Chip({ texto, color, activo, onPress }) {
   );
 }
 
-/* Buscar: todas las empresas del radar o todas las ofertas documentadas. */
+/* Buscar: primero las ofertas documentadas, como en la web; después las
+   plataformas del radar (internamente, «empresas»). */
 function SelectorBuscar({ vista, empresas, ofertas, onCambiar }) {
   return (
     <View style={[e.selectorOfertas, e.selectorBuscar]} accessibilityRole="tablist"
-      accessibilityLabel="Buscar empresas u ofertas">
-      <SegmentoOferta texto={`Empresas ${empresas}`} activo={vista === 'empresas'} onPress={() => onCambiar('empresas')} />
+      accessibilityLabel="Buscar ofertas o plataformas">
       <SegmentoOferta texto={`Ofertas ${ofertas}`} activo={vista === 'ofertas'} onPress={() => onCambiar('ofertas')} />
+      <SegmentoOferta texto={`Plataformas ${empresas}`} activo={vista === 'empresas'} onPress={() => onCambiar('empresas')} />
     </View>
   );
 }

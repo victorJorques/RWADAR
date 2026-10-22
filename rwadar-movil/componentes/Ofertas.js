@@ -60,8 +60,12 @@ function rentabilidadSecundaria(oferta) {
   ].filter(Boolean))].join(' · ');
 }
 
+// El aviso general (igual en todas las fichas) no ocupa la tarjeta: va una vez
+// encima de la lista y entero en el detalle.
+const AVISO_GENERAL = /^Referencia editorial gratuita\b/;
 function avisosCriticos(oferta) {
   return (oferta?.avisos || [])
+    .filter((aviso) => !AVISO_GENERAL.test(String(aviso?.texto || '')))
     .filter((aviso) => (aviso.tono === 'warn' || aviso.tono === 'stop')
       && (!aviso.esAntiguedad || aviso.tono === 'stop'))
     .sort((a, b) => Number(b.tono === 'stop') - Number(a.tono === 'stop'));

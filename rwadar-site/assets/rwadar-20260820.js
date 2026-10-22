@@ -1729,7 +1729,7 @@ function pintarEmisiones(){
   if(pestanas){pestanas.hidden=false;pestanas.innerHTML=
    [['principales','Principales'],['secundario','Reventa'],['en_camino','Próximas']].map(([c,t])=>
     '<button type="button" role="tab" data-emi-coleccion="'+c+'" class="'+(emiColeccion===c?'on':'')+'" aria-selected="'+(emiColeccion===c)+'">'+t+' <em>'+cuantas(c)+'</em></button>').join('');}
-  caja.innerHTML='<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Comprueba las condiciones actuales con el emisor.</p></header>'+
+  caja.innerHTML='<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.</p></header>'+
    '<div class="catalogo-principales">'+(visibles.length?visibles.map(o=>tarjetaOfertaLocal(o)).join(''):
    '<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>')+'</div>'+
    seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino');
@@ -2033,11 +2033,14 @@ function clavesOfertaLocal(o,secundario){
 }
 /* Como en los buscadores de viajes: dónde está el activo, con su chincheta. */
 const ICONO_LUGAR='<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
+const AVISO_GENERAL_OFERTA=/^Referencia editorial gratuita\b/;
 function tarjetaOfertaLocal(o,{secundario=false}={}){
  const estado=estadoVigenciaLocal(o),tipo=tipoOfertaLocal(o),claves=clavesOfertaLocal(o,secundario);
  const documentacion=documentacionOfertaLocal(o);
  const referencia=estado.clase==='caducado'?'':textoLocal(tipo==='rendimiento'?o.rentabilidad&&o.rentabilidad.literal:o.precio&&o.precio.unidad);
- const avisos=avisosOfertaLocal(o),imagen=imagenOfertaLocal(o);
+ /* El aviso general (igual en todas) va una vez encima de la lista; la
+    tarjeta enseña el propio de esa oferta. */
+ const avisos=avisosOfertaLocal(o).filter(t=>!AVISO_GENERAL_OFERTA.test(t)),imagen=imagenOfertaLocal(o);
  const bloqueo=(Array.isArray(o.avisos)?o.avisos:[]).find(x=>x&&x.tono==='stop');
  const avisoPrincipal=bloqueo?textoLocal(bloqueo.texto):avisos[0];
  const fechaRevision=documentacion?documentacion.revisadaEl:o.verificadaEl;

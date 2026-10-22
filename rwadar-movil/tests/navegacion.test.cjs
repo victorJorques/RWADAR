@@ -68,7 +68,7 @@ test('el rediseño conserva radar, ofertas, 3D, detalle, descartes, avisos y pri
 
 test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => {
   const codigo = leer('App.js');
-  assert.match(codigo, /Empresas guardadas · \$\{seguidas\.length\}/);
+  assert.match(codigo, /Plataformas guardadas · \$\{seguidas\.length\}/);
   assert.match(codigo, /Ofertas guardadas · \$\{ofertasGuardadas\.length\}/);
   assert.match(codigo, /Los avisos llegarán próximamente a la app con las nuevas actualizaciones\./);
   assert.match(codigo, /\{USUARIO_LOCAL \? \(\s*<View style=\{e\.avisoProximo\}>/);
