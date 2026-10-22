@@ -133,7 +133,7 @@ aprobación. Procedimiento en `tareas/CICLO-DIARIO-CATALOGO.md`.
 ## Pruebas y entregas
 
 Todos los componentes de la suite están comprobados sobre la fuente final:
-web 543/543, fichas y RSS 90/90, móvil 233/233, QR y herramientas correctos.
+web 545/545, fichas y RSS 90/90, móvil 233/233, QR y herramientas correctos.
 La ejecución integral registró 807 aserciones en 23 resúmenes numéricos,
 además de documentación y catálogo V2, antes de detenerse por una expectativa
 estática antigua sobre scripts de idiomas. Se conservaron los fallos y se
@@ -174,7 +174,17 @@ internos. La nueva regresión ejecuta el JS reducido de la publicación normal,
 sin API local, y busca Houston entre las referencias de reventa. Las 543
 comprobaciones finales incluyen filtros, orden, recarga pública y conservación
 de 26/49/4 ante HTTP 500 o un lote incompleto, con búsqueda activa. La nueva
-preview y su aprobación se registran después de comprobar este corte corregido.
+preview corregida fue `8a75b926`, nuevamente con 208/208 controles HTTP y 206/206
+recursos idénticos.
+
+El segundo recorrido real permitió usar el buscador. También observó el refresco
+público normal de URL canónicas —por ejemplo, añadir la barra final— mientras
+estaba abierto un detalle. La lista repintada desconectaba su botón de origen y
+el cierre no devolvía el foco. Se añadió un retorno al control visible del mismo
+slug, conservando el origen vivo como prioridad y sin desplazar la página.
+Dos etiquetas inglesas y el aviso duplicado de documento original se corrigieron
+solo en el adaptador web. Las 545 regresiones finales incluyen la restauración
+de foco del JavaScript minificado. La tercera preview debe comprobar este corte.
 
 ## Vídeo revisado
 

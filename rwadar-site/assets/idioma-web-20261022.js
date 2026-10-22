@@ -8,6 +8,7 @@
   // Etiquetas propias de las páginas de consulta, separadas del catálogo y
   // del motor compartido ya congelado para el APK.
   const uiConsulta={
+    'Cerrar detalle':'Close offer details','Oferta principal':'Primary offer',
     'Qué es y quién lo ofrece':'What it is and who provides it','Proveedor':'Provider',
     'Tipo de activo':'Asset type','Supervisión de la plataforma':'Platform supervision',
     'Consultar ficha de plataforma':'View platform details','Cómo se recupera el dinero':'How you can exit',
@@ -95,7 +96,9 @@
   function marcarFuente(fuente){
     if(!fuente.lang)fuente.lang=fuente.dataset.idiomaFuente||'es';
     fuente.setAttribute('translate','no');
-    const superficie=fuente.closest(superficies)||fuente;
+    const dialogo=fuente.closest('.escaparate-dialogo');
+    const superficie=(dialogo&&dialogo.querySelector('.escaparate-dialogo-cuerpo'))||fuente.closest(superficies)||fuente;
+    if(superficie!==fuente)fuente.removeAttribute('data-idioma-fuente-etiqueta');
     if(idioma.obtenerIdioma()==='en'){
       const etiqueta='Original source text ('+(fuente.lang.startsWith('es')?'Spanish':fuente.lang.startsWith('en')?'English':fuente.lang)+')';
       superficie.setAttribute('data-idioma-fuente-etiqueta',etiqueta);

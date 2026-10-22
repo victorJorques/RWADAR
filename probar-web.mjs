@@ -1962,6 +1962,23 @@ for(const fallo of ['incompleto','transporte']){
     p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="reental-secundario-houston-3"'));
 }
 {
+  const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto,focos=[];
+  const boton=(slug,visible=true)=>({dataset:{ofertaDetalle:slug},getClientRects:()=>visible?[{}]:[],focus:opciones=>focos.push({slug,opciones})});
+  const slug='spiko-letras-del-tesoro-euro',vivo=boton('origen-vivo'),nuevo=boton(slug);
+  const consultaAnterior=c.document.querySelectorAll;
+  c.document.querySelectorAll=selector=>selector==='[data-oferta-detalle],[data-perfil-oferta]'
+    ?[boton('otra-oferta'),boton(slug,false),nuevo]:consultaAnterior(selector);
+  c.document.contains=n=>n===vivo;
+  c.dialogoPrueba={rwadarOrigen:boton(slug),getAttribute:()=>slug};
+  vm.runInContext('restaurarFocoOfertaLocal(dialogoPrueba)',c);
+  prueba('cerrar una ficha pública repintada devuelve foco al botón visible del mismo slug sin desplazar',
+    focos.length===1&&focos[0].slug===slug&&focos[0].opciones.preventScroll===true&&c.dialogoPrueba.rwadarOrigen===null);
+  c.dialogoPrueba.rwadarOrigen=vivo;
+  vm.runInContext('restaurarFocoOfertaLocal(dialogoPrueba)',c);
+  prueba('cerrar la ficha mantiene primero el origen vivo aunque exista otro botón del mismo slug',
+    focos.length===2&&focos[1].slug==='origen-vivo'&&focos[1].opciones.preventScroll===true);
+}
+{
   const p=pestanaCatalogo();
   const puntos=[...p.obtiene('radarHero').innerHTML.matchAll(/<g class="blip"[^>]*data-x="([\d.]+)" data-y="([\d.]+)"/g)].map(x=>({x:Number(x[1]),y:Number(x[2])}));
   // El círculo de selección mide9+0.6 de trazo; el halo llega a3.4x3.4.

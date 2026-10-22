@@ -2092,6 +2092,14 @@ function activarDetallesOfertas(){
   const b=e.target&&e.target.closest&&e.target.closest('[data-oferta-detalle]');if(b)abrirDetalleOfertaLocal(b.dataset.ofertaDetalle);
  })}
 }
+function restaurarFocoOfertaLocal(d){
+ const origen=d.rwadarOrigen;d.rwadarOrigen=null;
+ const slug=d.getAttribute('data-oferta-slug');
+ const destino=origen&&document.contains(origen)?origen:
+  [...document.querySelectorAll('[data-oferta-detalle],[data-perfil-oferta]')].find(n=>
+   (n.dataset.ofertaDetalle||n.dataset.perfilOferta)===slug&&n.getClientRects&&n.getClientRects().length);
+ if(destino)destino.focus({preventScroll:true});
+}
 function dialogoOfertaLocal(){
  let d=document.getElementById('escaparateDetalleLocal');
  if(d)return d;
@@ -2104,8 +2112,7 @@ function dialogoOfertaLocal(){
  });
  d.addEventListener('close',()=>{
   document.body.classList.remove('detalle-local-abierto');
-  const origen=d.rwadarOrigen;d.rwadarOrigen=null;
-  if(origen&&document.contains(origen))origen.focus({preventScroll:true});
+  restaurarFocoOfertaLocal(d);
  });
  document.body.appendChild(d);return d;
 }

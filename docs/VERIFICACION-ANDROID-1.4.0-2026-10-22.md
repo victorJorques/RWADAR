@@ -28,8 +28,22 @@ a las 02:09:08 UTC. Una revisión independiente cotejó los 98 archivos admitido
 por `.easignore` (4.696.006 bytes) contra los blobs de su commit: cero diferencias,
 faltantes, archivos inesperados o enlaces. Esto acredita la fuente local congelada;
 no se presenta como una comprobación criptográfica del archivo remoto de EAS.
-Su identidad final, revisión del binario,
-QA y publicación se registrarán únicamente tras terminar y comprobarse.
+El build terminó a las 02:17:06 UTC. La descarga local requirió ocho rangos
+HTTP 206, con offsets y total comprobados, por la lentitud de la transferencia
+completa. La concatenación tiene 88.898.873 bytes y SHA-256
+`350276ec8ed734801d86f5c739596e0e16bea4c6757a97b69b2737a67a7ce3d9`.
+Una comprobación independiente en el runner público, ejecución `39711939041`,
+obtuvo la misma identidad y firma. No ejecutó el recorrido nativo ni publicó.
+
+El binario local supera apksigner v2 con un único firmante y el certificado
+histórico `f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72`.
+Aapt confirma paquete, 1.4.0/código 18, SDK 24/36 y los cuatro permisos previstos.
+Backup y OTA siguen apagados, sin activación explícita de debug o cleartext.
+El ZIP pasa CRC en sus 1.349 entradas y conserva 49/49 imágenes idénticas.
+
+La QA del APK exacto se inició en la ejecución `39712140320`, intento 1,
+commit público `c81322c336086798a140634e71fa3aea92c7c442`. Su resultado,
+evidencia, revisión visual y publicación continúan pendientes hasta completarse.
 
 ## Comprobaciones exigidas al binario nuevo
 
