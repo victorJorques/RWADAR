@@ -172,13 +172,13 @@ async function atenderAuth(peticion, url) {
   }
   if (ruta === '/user') {
     const uid = uidDe(peticion);
-    const [usuario] = uid ? await enCola(() => filas(db, 'select id, email from auth.users where id=$1', [uid])) : [];
+    const [usuario] = uid ? await enCola(() => filas(db, 'select id, email, email_confirmed_at from auth.users where id=$1', [uid])) : [];
     if (!usuario) return json(401, { msg: 'invalid JWT' });
     if (peticion.method() === 'PUT') {
       if (String(cuerpo.password || '').length < 12) return json(422, { msg: 'Password should be at least 12 characters' });
       claves.set(usuario.email, cuerpo.password);
     }
-    return json(200, { id: usuario.id, email: usuario.email });
+    return json(200, { id: usuario.id, email: usuario.email, email_confirmed_at: usuario.email_confirmed_at, is_anonymous: false });
   }
   if (ruta === '/recover') {
     const usuario = await usuarioPorCorreo(cuerpo.email);
@@ -277,6 +277,7 @@ const jsCuentas = (() => {
     ['const CORREO_AUTH_E2E=false;', 'const CORREO_AUTH_E2E=true;'],
     ["const MANUAL_BIENVENIDA='';", `const MANUAL_BIENVENIDA='${RUTA_MANUAL}';`],
     ['const PUBLICACIONES_REMOTAS=false;', 'const PUBLICACIONES_REMOTAS=true;']]) {
+    if (js.includes(a)) continue; // ya encendido en lo publicado (cuentas, fase 1)
     if (!js.includes(de)) throw new Error('no encuentro el interruptor ' + de);
     js = js.replace(de, a);
   }
@@ -549,6 +550,10 @@ await movil.ctx.close();
 await pagina.click('#btnCuenta');
 await pagina.waitForSelector('#perfilPanel.show');
 await pagina.click('#pfBorrar');
+await pagina.waitForSelector('#cuentaCaja.on');
+await pagina.fill('#cClave', CLAVE_NUEVA);
+await pagina.fill('#cClave2', 'BORRAR');
+await pagina.click('#cuentaEnviar');
 paso('«Borrar mi cuenta» confirma el borrado', await aviso(pagina, /Cuenta y datos asociados borrados/));
 const resto = await enCola(() => filas(db, `select
   (select count(*)::int from auth.users where email=$1) usuarios,

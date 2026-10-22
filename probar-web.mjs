@@ -102,7 +102,7 @@ function arnesServiciosEditoriales(codigo, direccion) {
       let ses={access_token:'sesion-anterior',refresh_token:'renovacion-anterior',expira:Date.now()+3600000};
       ${funcion('async function auth(', 'function traduce(')}
       ${funcion('async function testigo(){', 'async function confirmarIdentidad(){')}
-      ${funcion('async function rest(', 'async function cargarMio(){')}
+      ${funcion('async function rest(', 'async function cargarMio(')}
       ${funcion('async function pide(', 'const idDe=')}
       return {auth,rest,pide,testigo};
     })();`, contexto);
@@ -132,7 +132,7 @@ function solicitarConHost(puerto, host) {
 }
 
 async function authRechazaJson2xxInvalido(codigo) {
-  const inicio = codigo.indexOf('async function auth(');
+  const inicio = codigo.indexOf('async function peticionCuenta(');
   const fin = codigo.indexOf('function traduce(', inicio);
   if (inicio < 0 || fin < 0) return false;
   const fuente = codigo.slice(inicio, fin);
@@ -257,7 +257,7 @@ async function operacionCuentaObsoletaNoMutaVista(codigo) {
   pruebaAlta.resolver({ id:'usuario-válido', email:'persona@example.test' });
   await pruebaAlta.ejecucion;
   return pruebaAlta.aperturas.length === 0 && pruebaAlta.entradas() === 0 &&
-    pruebaAlta.mensajes.length === 0 && pruebaAlta.limpiezas() === 1 &&
+    pruebaAlta.mensajes.length === 0 && pruebaAlta.limpiezas() === 0 &&
     pruebaAlta.nodos.get('cuentaEnviar')?.disabled === true;
 }
 
@@ -268,8 +268,10 @@ async function confirmarIdentidadLimpiaSesionAnteFallos(codigo) {
   const fuente = codigo.slice(inicio, fin);
   const ejecutar = async auth => {
     const fabrica = new Function('testigo', 'auth', `
-      let ses={access_token:'testigo'},versionSesion=1,identidadConfirmada=true,pintadas=0;
+      let ses={access_token:'testigo'},versionSesion=1,versionCuenta=1,identidadConfirmada=true,pintadas=0;
       const guarda=s=>{ses=s;versionSesion++;};
+      const vigente=inicio=>inicio===versionCuenta&&!!ses;
+      const correoValido=valor=>/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(valor);
       const pinta=()=>{pintadas++;};
       ${fuente}
       return {confirmarIdentidad,estado:()=>({ses,identidadConfirmada,pintadas})};
@@ -701,6 +703,11 @@ for (const recurso of [rutaScriptApp, rutaAnalitica, estilos[0][1], '/assets/pri
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
 const js = lee('.' + rutaScriptApp);
+// El candidato abre las cuentas tras comprobar los correos reales de alta y
+// recuperación. También se prueba el cierre completo sobre el mismo código,
+// sin recoger ni enviar datos de cuentas en este ensayo aislado.
+const jsCerrado = js.replace('const SERVICIOS_USUARIO_REMOTOS=true;', 'const SERVICIOS_USUARIO_REMOTOS=false;')
+  .replace(' const CORREO_AUTH_E2E=true;', ' const CORREO_AUTH_E2E=false;');
 const css = lee('.' + estilos[0][1]);
 new Function(js);
 prueba('el JavaScript externo compila', true);
@@ -812,7 +819,7 @@ for (const direccion of [
   'https://preview.example/?cuentas=true&SERVICIOS_USUARIO_REMOTOS=true',
   'http://127.0.0.1:4173/',
 ]) {
-  const editorial = arnesServiciosEditoriales(js, direccion);
+  const editorial = arnesServiciosEditoriales(jsCerrado, direccion);
   for (const modo of ['entrar','registro','recuperar','nueva_clave']) editorial.Cuenta.abrir(modo);
   editorial.Cuenta.abrirGestion();
   editorial.Cuenta.pintarVigilar('Plataforma de prueba');
@@ -827,7 +834,7 @@ for (const direccion of [
     editorial.nodos.get('movilCuentaAccion').disabled === true &&
     /seguimiento está en pausa/.test(editorial.nodos.get('dwVigilar').innerHTML));
 }
-const redEditorial = arnesServiciosEditoriales(js, 'https://rwadar.pages.dev/');
+const redEditorial = arnesServiciosEditoriales(jsCerrado, 'https://rwadar.pages.dev/');
 for (const [nombre, argumentos] of [
   ['auth',['/token?grant_type=password',{email:'prueba@example.test',password:'solo-prueba'}]],
   ['rest',['/vigilancia',{method:'POST',body:'{}'}]],
@@ -842,14 +849,14 @@ for (const [direccion, salida] of [
   ['https://rwadar.pages.dev/?code=prueba&type=signup&sector=oro#metodo', '/?sector=oro#metodo'],
   ['https://rwadar.pages.dev/#error=access_denied&error_description=prueba', '/'],
 ]) {
-  const editorial = arnesServiciosEditoriales(js, direccion);
+  const editorial = arnesServiciosEditoriales(jsCerrado, direccion);
   prueba('un retorno antiguo se limpia sin iniciar sesión ni guardar o transmitir sus credenciales',
     editorial.historial.length === 1 && editorial.historial[0] === salida &&
     editorial.peticiones.length === 0 && editorial.Cuenta.hay() === false &&
     await editorial.Cuenta.token() === null);
 }
 prueba('la pausa no elimina anclas o filtros editoriales normales',
-  arnesServiciosEditoriales(js, 'https://rwadar.pages.dev/?sector=oro#metodo').historial.length === 0);
+  arnesServiciosEditoriales(jsCerrado, 'https://rwadar.pages.dev/?sector=oro#metodo').historial.length === 0);
 prueba('los accesos a cuenta nacen desactivados incluso antes de ejecutar JavaScript',
   /id="btnCuenta"[^>]*\bdisabled/.test(html) &&
   [...html.matchAll(/<button\b([^>]*data-movil-action="cuenta"[^>]*)>/g)]
@@ -877,7 +884,7 @@ prueba('el cierre de cuentas conserva el lector de catálogo público y sus cuat
 prueba('la contraseña mínima es de 12 caracteres en HTML y JS',
   (html.match(/minlength="12"/g) || []).length === 2 && /clave\.length<12/.test(js));
 prueba('los testigos de sesión solo se guardan en memoria',
-  /const guarda=s=>\{ses=normalizaSesion\(s\)/.test(js) &&
+  /const guarda=\(s,mismaCuenta=false\)=>\{ses=normalizaSesion\(s\)/.test(js) &&
   !/localStorage\.(?:setItem|getItem)\([^)]*(?:access_token|refresh_token)/.test(js));
 prueba('la identidad se revalida contra Auth antes de usar la sesión', /auth\('\/user',null,\{metodo:'GET',token:tk\}\)/.test(js));
 prueba('la recuperación limpia el fragmento y abre cambio de contraseña',
@@ -976,7 +983,7 @@ prueba('alta y baja usan la RPC versionada; no escriben avisos_correo directamen
   !/rest\('\/perfiles[^']*',\{method:'PATCH',[\s\S]{0,180}avisos_correo/.test(js));
 prueba('la UX no cambia el estado mientras la RPC está pendiente y revierte ante fallo',
   /const anterior=correoConsentido,deseado=o\.checked;o\.disabled=true;/.test(js) &&
-  /o\.checked=anterior;/.test(js) && /finally\{o\.disabled=false;\}/.test(js) &&
+  /o\.checked=anterior;/.test(js) && /finally\{if\(vigente\(cuenta\)\)o\.disabled=false;\}/.test(js) &&
   /No se ha podido confirmar la retirada; la preferencia sigue activada/.test(js));
 
 for (const firma of ['/rpc/guardar_opinion','/rpc/borrar_mi_opinion','/rpc/denunciar_opinion',
@@ -1704,13 +1711,23 @@ prueba('el paquete desplegable incluye las 26 portadas y su manifiesto de proced
   archivosPublicados.includes('plataformas/fuentes.json') &&
   rutasPortada.every(ruta => portadasPublicadas.includes(ruta.slice(1))));
 const editorialesPublicadas = archivosPublicados.filter(x=>x.startsWith('ofertas-editoriales/'));
-prueba('la salida incluye solo el manifiesto y los cuatro fallback editoriales validados',
-  editorialesPublicadas.length === 5 &&
+prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustraciones por ficha validadas',
+  activosEditoriales.fichas.length > 0 &&
+  editorialesPublicadas.length === 1 + 4 + activosEditoriales.fichas.length &&
   activosEditoriales.publicables.every((activo) => {
     const destino = path.join(publicado, ...activo.salida.split('/'));
     return editorialesPublicadas.includes(activo.salida) && fs.statSync(destino).size === activo.bytes &&
       crypto.createHash('sha256').update(fs.readFileSync(destino)).digest('hex') === activo.hashSha256;
   }));
+{
+  const conPropia = [...htmlPublicado.matchAll(
+    /<img src="\/ofertas-editoriales\/oferta-([a-z0-9-]+)\.webp" alt="Ilustración editorial[^"]*" data-respaldo="\/ofertas-editoriales\/[a-z-]+-rwadar\.webp"/g)]
+    .map(m => m[1]);
+  const detalles = new Set([...htmlPublicado.matchAll(/data-oferta-detalle="([a-z0-9-]+)"/g)].map(m => m[1]));
+  const esperadas = activosEditoriales.fichas.filter(f => detalles.has(f.slug)).map(f => f.slug);
+  prueba('las tarjetas pre-pintadas usan la ilustración de cada ficha, con la de su categoría de respaldo',
+    esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
+}
 prueba('HTML y service worker apuntan al mismo JavaScript versionado',
   htmlPublicado.includes(recursoJSPublicado) && swPublicado.includes(recursoJSPublicado));
 prueba('el worker publicado precachea los assets con huella que realmente usan ambas páginas',
@@ -2234,8 +2251,11 @@ prueba('la privacidad identifica la medición agregada, sus límites y su estado
   /Do Not Track o Global Privacy Control/.test(privacidad) && /no representan personas únicas/.test(privacidad) &&
   /no permite reconstruir el tráfico anterior/.test(privacidad) &&
   /Cloudflare Pages/.test(privacidad) && /cloudflare-customer-dpa/.test(privacidad));
-prueba('la privacidad explica ausencia de sesión, limpieza de enlaces y caché PWA sin tokens',
-  /no inicia ni renueva sesiones/.test(privacidad) && /sin canjearlos ni/.test(privacidad) &&
+prueba('la privacidad explica la sesión en memoria, la limpieza de enlaces y la caché PWA sin tokens',
+  /solo en la memoria de la pestaña abierta/.test(privacidadLineal) &&
+  /no queda en el\s+almacenamiento del navegador/.test(privacidad) &&
+  /se canjean una vez y se\s+retiran de la dirección/.test(privacidad) &&
+  /history\.replaceState\(null,'',location\.pathname\+location\.search\)/.test(js) &&
   /No se guardan respuestas de Supabase,[\s\S]*tokens de sesión/.test(privacidad));
 prueba('la privacidad describe favoritos locales y push cerrado sin prometer borrado histórico',
   /favoritos solo en el dispositivo/.test(privacidadLineal) &&
@@ -2254,13 +2274,19 @@ prueba('privacidad y UI permiten solicitar la retirada del consentimiento anteri
   /Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar/.test(html) &&
   /puedes retirarlo escribiendo a RWAdar@protonmail.com/.test(html) &&
   /Está desactivado por defecto[\s\S]*faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(js));
-prueba('privacidad pausa también el acceso existente y mantiene una vía de derechos por correo',
-  /Las altas, el acceso y la recuperación de cuentas están en pausa/.test(privacidadLineal) &&
-  /no recoge esas solicitudes ni envía peticiones de autenticación/.test(privacidadLineal) &&
+prueba('privacidad describe las cuentas de la fase 1, sus correos, la sesión y el borrado desde Perfil',
+  /Tu cuenta \(opcional\)/.test(privacidadLineal) &&
+  /correo para confirmar la dirección/.test(privacidadLineal) &&
+  /enlace para poner una contraseña nueva/.test(privacidadLineal) &&
+  /cuenta de Gmail de RWAdar/.test(privacidadLineal) &&
+  /memoria de la pestaña/.test(privacidadLineal) &&
+  /borrar tu cuenta tú mismo/.test(privacidadLineal) &&
+  /opiniones,\s+los avisos por correo y los avisos push\s+siguen en pausa/i.test(privacidadLineal) &&
   /id="derechos"/.test(privacidad) && /El titular verificará la identidad/.test(privacidadLineal) &&
-  !/cuentas existentes pueden seguir entrando|borrar la cuenta desde tu perfil/.test(privacidadLineal) &&
-  /const SERVICIOS_USUARIO_REMOTOS=false/.test(js) &&
-  /const CORREO_AUTH_E2E=false/.test(js) &&
+  !/Las altas, el acceso y la recuperación de cuentas están en pausa/.test(privacidadLineal) &&
+  /const SERVICIOS_USUARIO_REMOTOS=true;/.test(js) &&
+  / const CORREO_AUTH_E2E=true;/.test(js) && jsCerrado !== js &&
+  /const SERVICIOS_USUARIO_REMOTOS=false;/.test(jsCerrado) && / const CORREO_AUTH_E2E=false;/.test(jsCerrado) &&
   /solicitado==='registro'\?'registro_pausado'/.test(js) &&
   /solicitado==='recuperar'\?'recuperar_pausado'/.test(js) &&
   /no recogemos nuevas altas ni solicitudes de recuperación/.test(js) &&
@@ -2473,7 +2499,9 @@ console.log('\n=== RWADAR ACADEMY ===');
       !/<style\b|\sstyle\s*=|\son[a-z]+\s*=/i.test(pagina) &&
       [...pagina.matchAll(/<script\b([^>]*)>/gi)].every(m => /\bsrc=|application\/ld\+json/.test(m[1])) &&
       pagina.includes(`<link rel="canonical" href="${canonica}">`) &&
-      pagina.includes(`<title>${l.titulo} · RWAdar Academy</title>`) &&
+      pagina.includes(`<title>${academyMod.tituloPestana(l.titulo)}</title>`) &&
+      academyMod.tituloPestana(l.titulo).length <= 65 &&
+      pagina.includes(`<meta property="og:title" content="${l.titulo}">`) &&
       articulo.datePublished === l.fechaPublicacion && articulo.dateModified === l.revisionLegal &&
       pagina.includes('/assets/academy-20261002.css') && pagina.includes('/assets/academy-20261002.js') &&
       pagina.includes(rutaAnalitica));
@@ -2647,8 +2675,8 @@ try {
     manifiestoEditorialRespuesta.headers.get('x-content-type-options')==='nosniff' &&
     manifiestoEditorial.etiquetaVisibleObligatoria==='Ilustración editorial' &&
     manifiestoEditorial.archivos?.length===4);
-  let editorialesValidas = true;
-  for (const entrada of manifiestoEditorial.archivos) {
+  let editorialesValidas = (manifiestoEditorial.fichas?.length || 0) > 0;
+  for (const entrada of [...manifiestoEditorial.archivos, ...(manifiestoEditorial.fichas || [])]) {
     const respuesta = await fetch(`http://127.0.0.1:${puerto}/ofertas-editoriales/${entrada.archivo}`);
     const bytes = Buffer.from(await respuesta.arrayBuffer());
     const cabezaEditorial = await fetch(
@@ -2657,7 +2685,7 @@ try {
       respuesta.headers.get('content-type')==='image/webp' && bytes.length===entrada.bytes &&
       crypto.createHash('sha256').update(bytes).digest('hex')===entrada.hashSha256;
   }
-  prueba('los cuatro WebP editoriales se sirven por lista cerrada con bytes y SHA-256 exactos',
+  prueba('los WebP editoriales (categoría y ficha) se sirven por lista cerrada con bytes y SHA-256 exactos',
     editorialesValidas);
   const editorialNoListada = await fetch(
     `http://127.0.0.1:${puerto}/ofertas-editoriales/no-listada.webp`);

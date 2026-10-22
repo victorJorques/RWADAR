@@ -13,7 +13,10 @@ no se presupone un servicio humano de vigilancia permanente tras cerrar el chat.
    derechos y alcance editorial que producción. Solo permite la beta en curso si
    tiene evidencia previa. No omite los otros controles ni admite monetización.
 4. Verificar preview con HTTP y navegador: cabeceras, rutas, catálogo, fuentes,
-   filtros, búsqueda, visuales, ausencia de cuentas y funcionamiento PWA.
+   filtros, búsqueda, visuales y funcionamiento PWA. Desde el corte de cuentas
+   del 11/10, comprobar además acceso/alta/recuperación opcionales y las funciones
+   que deben seguir apagadas. Separar entrega de correo, cambio de contraseña
+   real y ensayos aislados; una comprobación HTTP no los sustituye.
 5. Documentar beta aprobada, actualizar únicamente manifiesto/evidencia y crear
    commit. `node rwadar-publicar.js --produccion` exige todos los controles.
 6. Comprobar dominio canónico y recursos tras desplegar. La publicación no queda

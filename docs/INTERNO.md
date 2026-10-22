@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 6 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 21 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -21,9 +21,10 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 | | Estado |
 |---|---|
-| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare). Se instala en el móvil como app. Última publicación: 6 de octubre, despliegue `50937958`, desde el ordenador de Víctor (`node rwadar-publicar.js --produccion`, su sesión de Wrangler). Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
-| **Catálogo** | Revisión del **6 de octubre** (lote `a0df3111`), vigente **hasta el 13 de octubre**: 26 plataformas en el radar, 4 descartadas con su fuente y 49 referencias de inversión (24 principales, 21 de mercado secundario y 4 en preparación). Detalle en [`CATALOGO-V2-2026-10-06.md`](CATALOGO-V2-2026-10-06.md). |
-| **App Android** | **Versión 1.2.0** (código 12, misma firma), publicada el 7/10 en GitHub ([RWAdar-downloads](https://github.com/victorJorques/RWAdar-downloads/releases/latest)); la web la ofrece en `/android`. Probada en emulador Android 15 ([run 37446968987](https://github.com/victorJorques/RWAdar-downloads/actions/runs/37446968987), flujo `android-smoke-120.yml`). Todavía no está en Google Play. |
+| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), **con las cuentas activadas desde el 11/10**. La publicación y sus recursos se comprobaron en línea; los formularios de alta, entrada y Perfil se observaron en el navegador de producción. Se instala en el móvil como app. Incluye la Academy, la barra Inicio · Buscar · Academy · Perfil y las tarjetas nuevas. |
+| **Catálogo** | En línea sigue el lote del 11/10 (`966c230c`, con fecha de lote 6 de octubre y fichas revisadas el 11/10), caducado el 13 de octubre; su fuente no está en Git: la web y la app la enseñan con aviso y sin cifras. **La del 21 de octubre está preparada y probada, sin aplicar** (lote `c3b71e81`, vigente hasta el 28 de octubre; sustituye a las del 19 y el 20, que tampoco se aplicaron), hecha con `npm run catalogo`: mismas 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 de mercado secundario y 4 en preparación). Detalle en [`CATALOGO-V2-2026-10-21.md`](CATALOGO-V2-2026-10-21.md). |
+| **Imágenes de las ofertas** | Cada una de las 49 fichas tiene su imagen: una foto generada del activo, parecida al real según su fuente (sin marcas ni personas), con el lugar y tres pasos que explican la inversión. Etiqueta «Ilustración editorial» y texto alternativo que dice que es IA. En la rama de integración, sin publicar; la app las enseñará desde la próxima versión. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
+| **App Android** | **Versión 1.3.1** (código 14), **publicada el 11/10** en GitHub ([RWAdar 1.3.1](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1)). Incluye las cuentas opcionales y corrige el acabado del Perfil. Se compiló sin cargos y pasó las pruebas de uso del mismo APK en un emulador Android 15. La descarga pública sin autenticación coincide con el APK probado; su firma, tamaño, evidencia y sumas se verificaron. Es un lanzamiento final, no un borrador ni una versión preliminar. Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
@@ -31,15 +32,86 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
 | **Tipografía** | Arreglada el 2/10: la Geist incrustada no traía a-z, así que la web se veía con la letra del sistema. Ya es la completa. |
 
-**En pausa a propósito:** cuentas de usuario, opiniones, avisos por correo y
-avisos push. Las altas nuevas están cerradas. Los favoritos de la app se
-guardan solo en el móvil.
+**Cuentas:** ya están activadas en la web pública. En la versión de
+revisión, Víctor confirmó el 11/10 que recibió el correo de alta y que su
+enlace funciona. **Llega a spam**: la entrega debe mejorarse antes de anunciar
+las cuentas. Supabase permite las altas y exige confirmar el correo; esa
+confirmación se mantiene obligatoria. El perfil confirmado se mostró y cerrar
+sesión funcionó en la revisión existente. El correo de recuperación solicitado
+por Codex **ya llegó a la bandeja de entrada**, con sus comprobaciones de
+autenticidad correctas; no se leyeron su cuerpo ni su enlace. Falta que Víctor
+introduzca la nueva contraseña y verificar la entrada posterior: la recuperación
+real todavía no está completada.
 
-**Cuentas, fase 1 (5/10): preparadas y probadas, sin abrir.** Crear cuenta,
-entrar, recuperar contraseña, lista de vigilancia y borrar la cuenta.
-Opiniones y avisos siguen cerrados. Faltan los pasos de Víctor en Supabase
-(remitente de correo, ajustes de Auth y la migración 26):
-[`tareas/REABRIR-CUENTAS.md`](tareas/REABRIR-CUENTAS.md). Seguridad revisada:
+**Esta rama une producción y el catálogo.** `claude/integracion-2026-10-19`
+parte de `codex/cuentas-web-movil` (lo publicado el 11/10) y le suma la
+revisión del 19/10 y la orden `npm run catalogo`. Al unirla a `main`, `main`
+vuelve a coincidir con producción.
+
+**Cambios del 11/10:** panel nativo de cuentas y refuerzos de la web
+para evitar mezclar sesiones; registro, acceso, nombre, vigilancia, recuperación
+y baja con contraseña recién comprobada. Los favoritos locales no se convierten
+en vigilancia remota. La sesión nativa queda solo en memoria. La app no activa
+instalaciones históricas ni push. El refuerzo de sesión **ya se aplicó en
+Supabase con permiso expreso de Víctor**. La lectura posterior comprobó las
+políticas restrictivas de acceso, la sesión confirmada y vigente, la exclusión
+de usuarios anónimos y que el esquema privado no queda expuesto por REST.
+
+**Publicación y app:** la web está publicada con las guardas de cuentas
+encendidas. El APK nativo 1.3.1 también las lleva activadas, pasó la prueba de
+ejecución en emulador y **ya está publicado en GitHub**, con resultado real
+de QA y publicación exitoso. Los servicios antiguos de
+instalaciones y push permanecen apagados. Víctor autorizó EAS Android y GitHub **sin cargos**;
+la compilación se hizo dentro de la cuota gratuita. La comprobación de
+compatibilidad nativa pasó sus 21 controles; no es una auditoría de seguridad.
+
+**Dependencias pendientes:** la auditoría de paquetes **no está limpia**:
+23 avisos, de ellos 16 altos y 7 moderados. El análisis de los tres problemas
+de origen y del runtime no demostró una vía vulnerable alcanzable en el APK
+actual; los avisos revisados corresponden a herramientas de compilación.
+Esto no garantiza ausencia de otros fallos. Codex debe mantenerlos visibles y
+actualizar las herramientas con pruebas de compatibilidad, sin rebajar Expo
+ni aplicar arreglos forzados. Informe:
+[`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md`](VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md).
+
+**Pruebas locales finales:** `npm test` terminó correctamente con las guardas
+de cuentas de web y app activadas y la versión nativa 1.3.1: web 501
+comprobaciones, móvil 182 y SQL 196; QR y herramientas también al día. Los
+ensayos de cuentas en Chrome con servicios simulados pasaron 61 y 30 casos.
+La revisión independiente terminó sin bloqueos. Estas pruebas no demuestran
+por sí solas el cambio real de contraseña ni el funcionamiento de un APK nuevo
+instalado.
+
+**Prueba real del APK:** se instaló y ejecutó el mismo APK 1.3.1, sin modificarlo,
+en un emulador Android 15. Pasaron Inicio, búsqueda de las 26 plataformas y 49
+referencias, ficha de Spiko, las siete lecciones publicadas de Academy, apertura
+de una lección y favorito conservado tras reiniciar. También se comprobaron los
+formularios de cuentas y su validación vacía, sin introducir contraseñas, crear
+cuentas ni enviar correos. **No es un flujo completo de Auth nativo ni una
+prueba en un teléfono físico.**
+
+**Revisión visual y acabado:** las capturas de la versión anterior 1.3.0
+permitieron detectar un pequeño solape de la nota de favoritos con el
+formulario de recuperación. La **1.3.1, código 14, ya está publicada y
+verificada**, con su propia QA y descarga. La separación medida fue de 92
+píxeles, por encima del mínimo de 40; las capturas de recuperación,
+confirmación, alta y Perfil mostraron la nota fuera del borde y «1 guardado»
+correcto. Es una revisión acotada, no una garantía de interfaz perfecta.
+La compilación quedó dentro de la cuota gratuita, sin sobrecostes ni servicios
+de pago añadidos.
+
+Codex es responsable de integrar, configurar y comprobar técnicamente los
+cambios, y de publicar dentro de las autorizaciones expresas. Víctor únicamente
+introduce sus credenciales, verifica su identidad y autoriza las operaciones
+reservadas; no se le asignan cambios de código. Plan vigente:
+[`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
+La evidencia local y el diagnóstico real están en
+[`VERIFICACION-CUENTAS-2026-10-11.md`](VERIFICACION-CUENTAS-2026-10-11.md).
+La web nueva y el APK 1.3.1 ya están publicados. La publicación Android está
+confirmada por el flujo exitoso, la API pública y la descarga anónima local:
+APK y evidencia coinciden con sus sumas y la firma del APK es válida.
+
+**En pausa:** opiniones, comunidad, avisos de cambios por correo y avisos push. Seguridad anterior:
 [`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
 Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
 [`manual/LEEME.md`](manual/LEEME.md).
@@ -58,17 +130,29 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-1. **Renovar la revisión del catálogo antes del 13 de octubre.** Cómo se hizo
-   la del 6/10 (comprobación de las 70 fuentes y las 49 fichas, SQL de un solo
-   paso que Víctor pega en Supabase, y republicar la web) está en
-   [`CATALOGO-V2-2026-10-06.md`](CATALOGO-V2-2026-10-06.md). Si vence, la web
-   y la app 1.2.0 avisan en lugar de vaciarse; la 1.1.2 ocultaba las fichas.
+1. **Publicar la revisión del catálogo del 19 de octubre.** Víctor pega
+   `rwadar-app/data/importaciones/catalogo-2026-10-19-v2/aplicar-y-aprobar.sql`
+   en Supabase › SQL Editor › Run y después se publica la web como siempre
+   (sincronizar, dos rondas de commit y aprobación, `--preview`,
+   `--produccion`), desde esta rama (que incluye lo publicado por Codex). Vence
+   el 26/10: la siguiente se hace con `npm run catalogo` (una sola orden; ver
+   [`RUNBOOK.md`](RUNBOOK.md#catálogo)).
+   Si vence, la web y la app 1.2.0 avisan en lugar de vaciarse; la 1.1.2
+   ocultaba las fichas.
 2. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
-   primera, del 2 de octubre (run 36932444985), copió 52 tablas y se comprobó
+   primera, del 2 de octubre, copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
    como explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-3. **Abrir las cuentas** cuando Víctor haga sus pasos en Supabase
-   ([`tareas/REABRIR-CUENTAS.md`](tareas/REABRIR-CUENTAS.md)).
+3. **Completar los flujos reales de cuentas.** La web y Android 1.3.1 ya están
+   publicados y sus descargas verificadas. Completar el cambio de contraseña de
+   recuperación y la entrada posterior, mejorar la entrega del correo que
+   llega a spam y comprobar los flujos sobre la versión publicada. El refuerzo
+   de sesión ya está aplicado y verificado, y el acabado del Perfil ya pasó
+   sus pruebas sobre el APK publicado. Quedan distintos el uso de Auth nativo
+   con credenciales reales
+   y la comprobación en un teléfono físico; no presentarlos como hechos.
+   Codex hace los pasos técnicos; el plan y las autorizaciones concretas
+   están en [`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
 4. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte
    pendiente sobre el alta como persona física. Hasta que respondan, no se paga
    ni se rellena nada. El paquete para Google Play (AAB 1.1.2, icono, cabecera y
@@ -79,6 +163,9 @@ dos fichas de prueba, pero nada conectado a la app.
    Falta probar la app en un simulador o un iPhone de verdad antes de enviarla.
 7. **Ingresos:** decidir con un abogado cómo se puede cobrar a las
    plataformas. El veredicto editorial no se vende nunca.
+8. **Dependencias de compilación:** corregir los avisos con versiones compatibles
+   verificadas y revaluarlos antes de otra compilación o de activar actualizaciones
+   remotas. No presentar el análisis de alcance como una auditoría limpia.
 
 ---
 
@@ -86,7 +173,7 @@ dos fichas de prueba, pero nada conectado a la app.
 
 | Cuándo | Qué |
 |---|---|
-| **5 de octubre de 2026** | Vence la revisión del catálogo (la web avisa, no se vacía) |
+| **26 de octubre de 2026** | Vence la revisión del 19/10 si se aplica (la web avisa, no se vacía) |
 | Cada noche, 02:43 UTC | Copia de seguridad cifrada, guardada 35 días en GitHub |
 | Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días |
 | Agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |
@@ -99,7 +186,7 @@ dos fichas de prueba, pero nada conectado a la app.
 |---|---|
 | **Víctor** (titular) | Decide; cuentas de tiendas, pagos, contratos y todo lo que exija identidad. Solo él autoriza publicar o tocar la base en línea. |
 | **Eric Almiñana y Samuel Rodriguez** | Corresponsables junto a Víctor (ver [`../SECURITY.md`](../SECURITY.md)). |
-| **Codex (ChatGPT)** | Integrador: publicación, catálogo, tiendas y app. |
+| **Codex (ChatGPT)** | Responsable de la integración técnica, configuración, pruebas y publicación autorizada de web y app; también del trabajo técnico de catálogo y tiendas. |
 | **Claude** | Seguridad, copias de seguridad, revisiones y documentación. |
 
 Cada herramienta firma sus commits con su propio nombre (ver

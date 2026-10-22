@@ -17,6 +17,12 @@ export const MODO_LOCAL = MODO_DATOS !== 'catalogo-editorial';
    Esta compuerta de cliente no sustituye permisos ni RLS en el servidor. */
 export const SERVICIOS_USUARIO_REMOTOS = false;
 
+/* Candidato Android 1.3.0 autorizado el 11/10: alta confirmada y entrega de
+   recuperación comprobadas en la web. El APK necesita su propia revisión.
+   Estas cuentas no habilitan instalación, push, opiniones, avisos ni cobros. */
+export const CUENTAS_REMOTAS = true;
+export const CORREO_AUTH_E2E = true;
+
 export function modoLocalActivo() {
   return MODO_LOCAL === true;
 }

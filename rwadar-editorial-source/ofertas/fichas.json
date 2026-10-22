@@ -1,0 +1,734 @@
+{
+ "versionEsquema": 1,
+ "revisadoEl": "2026-10-20",
+ "nota": "Una entrada por ficha. «concepto» completa la frase «Ilustración editorial de …». Las escenas están en escenas.mjs; los pasos y el lugar se comprueban contra la fuente de la ficha (sin cifras, marcas ni promesas).",
+ "fichas": [
+  {
+   "slug": "mf-one",
+   "escena": "cartera_credito",
+   "op": {},
+   "pasos": [
+    "Compras el token",
+    "Sigue crédito privado",
+    "Reembolsas a su precio"
+   ],
+   "concepto": "una cartera genérica de préstamos a empresas que sigue un token"
+  },
+  {
+   "slug": "mglo",
+   "escena": "credito",
+   "op": {},
+   "pasos": [
+    "Compras el token",
+    "Financia facturas pyme",
+    "Reembolsas o transfieres"
+   ],
+   "concepto": "unos préstamos con garantía de facturas de pequeñas empresas"
+  },
+  {
+   "slug": "mglobal",
+   "escena": "cartera_credito",
+   "op": {},
+   "pasos": [
+    "Compras el token",
+    "Crédito con garantía real",
+    "Reembolsas o transfieres"
+   ],
+   "concepto": "una cartera genérica de deuda con garantía de activos"
+  },
+  {
+   "slug": "fotovoltaica-greenpoint",
+   "escena": "solar",
+   "op": {
+    "sobre": "tejado"
+   },
+   "lugar": "Wiener Neustadt · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "Los paneles dan energía",
+    "Reparto del excedente"
+   ],
+   "concepto": "unos paneles solares en la cubierta de un edificio genérico"
+  },
+  {
+   "slug": "drautalresidenz-paternion",
+   "escena": "edificio",
+   "op": {
+    "pisos": 4,
+    "mat": "arena",
+    "semilla": 21
+   },
+   "lugar": "Paternion · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un edificio residencial genérico de pocas plantas"
+  },
+  {
+   "slug": "terreno-con-arrendamiento-billa",
+   "escena": "terreno",
+   "op": {},
+   "lugar": "Brückl · Austria",
+   "pasos": [
+    "Compras en la emisión",
+    "Un súper alquila el suelo",
+    "Reparto o venta futura"
+   ],
+   "concepto": "un solar genérico con un supermercado arrendado, sin marca"
+  },
+  {
+   "slug": "vivienda-stallhofstra-e-28-gratwein",
+   "escena": "edificio",
+   "op": {
+    "pisos": 3,
+    "mat": "blanco",
+    "semilla": 52
+   },
+   "lugar": "Gratwein · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un edificio residencial genérico de pocas plantas"
+  },
+  {
+   "slug": "fotovoltaica-cohotel",
+   "escena": "solar",
+   "op": {
+    "sobre": "tejado"
+   },
+   "lugar": "Steyregg · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "Los paneles dan energía",
+    "Reparto del excedente"
+   ],
+   "concepto": "unos paneles solares en la cubierta de un edificio comercial genérico"
+  },
+  {
+   "slug": "apartamento-vacacional-hinterstoder-50",
+   "escena": "chalet",
+   "op": {},
+   "lugar": "Hinterstoder · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "El apartamento se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un chalé genérico de montaña con apartamentos vacacionales"
+  },
+  {
+   "slug": "vivienda-pluddemanngasse-101-graz",
+   "escena": "edificio",
+   "op": {
+    "pisos": 5,
+    "mat": "piedra",
+    "semilla": 7
+   },
+   "lugar": "Graz · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un bloque de pisos genérico"
+  },
+  {
+   "slug": "local-de-estanco-klagenfurt",
+   "escena": "local",
+   "op": {},
+   "lugar": "Klagenfurt · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "El local se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un local comercial genérico en planta baja"
+  },
+  {
+   "slug": "vivienda-schwarzer-weg-18-graz",
+   "escena": "edificio",
+   "op": {
+    "pisos": 3,
+    "mat": "arena",
+    "semilla": 31
+   },
+   "lugar": "Graz · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un edificio residencial genérico de tres alturas"
+  },
+  {
+   "slug": "vivienda-sonnleithnergasse-2-viena",
+   "escena": "edificio",
+   "op": {
+    "pisos": 7,
+    "mat": "piedra",
+    "semilla": 44
+   },
+   "lugar": "Viena · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un bloque de pisos urbano genérico"
+  },
+  {
+   "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+   "escena": "edificio",
+   "op": {
+    "pisos": 4,
+    "mat": "blanco",
+    "semilla": 12
+   },
+   "lugar": "Wiener Neustadt · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un edificio residencial genérico"
+  },
+  {
+   "slug": "mtbill",
+   "escena": "tesoro",
+   "op": {},
+   "lugar": "Estados Unidos",
+   "pasos": [
+    "Compras el token",
+    "Sigue letras del Tesoro",
+    "Pides el reembolso"
+   ],
+   "concepto": "un edificio institucional genérico y letras del Tesoro de corto plazo"
+  },
+  {
+   "slug": "randhartingergasse-9-viena",
+   "escena": "edificio",
+   "op": {
+    "pisos": 6,
+    "mat": "blanco",
+    "semilla": 5
+   },
+   "lugar": "Viena · Austria",
+   "pasos": [
+    "Compras participaciones",
+    "La vivienda se alquila",
+    "Reparto o venta en la app"
+   ],
+   "concepto": "un bloque de pisos urbano genérico"
+  },
+  {
+   "slug": "spiko-letras-del-tesoro-euro",
+   "escena": "tesoro",
+   "op": {},
+   "lugar": "Zona euro",
+   "pasos": [
+    "Compras participaciones",
+    "El fondo compra letras",
+    "Pides el reembolso"
+   ],
+   "concepto": "un fondo monetario genérico que compra letras del Tesoro de la zona euro"
+  },
+  {
+   "slug": "prosegur-digital-gold",
+   "escena": "oro",
+   "op": {},
+   "lugar": "Custodia en España",
+   "pasos": [
+    "Compras gramos de oro",
+    "Se guarda en una cámara",
+    "Vendes y cobras en euros"
+   ],
+   "concepto": "unos lingotes genéricos de oro en una cámara acorazada"
+  },
+  {
+   "slug": "casa-de-outeiro",
+   "escena": "bodega",
+   "op": {},
+   "lugar": "Ribeira Sacra · Lugo",
+   "pasos": [
+    "Suscribes la ampliación",
+    "Recibes tus acciones",
+    "Socio de bodega y hotel"
+   ],
+   "concepto": "una casa solariega de piedra con bodega y viñedo en terrazas"
+  },
+  {
+   "slug": "aktionariat",
+   "escena": "empresa",
+   "op": {
+    "forma": "oficina"
+   },
+   "pasos": [
+    "Compras acciones",
+    "Eres accionista",
+    "Reventa entre socios"
+   ],
+   "lugar": "Erlenbach · Suiza",
+   "concepto": "un edificio de oficinas genérico de una empresa suiza de tecnología, con su capital repartido en participaciones"
+  },
+  {
+   "slug": "boss-info",
+   "escena": "empresa",
+   "op": {
+    "forma": "nave"
+   },
+   "pasos": [
+    "Compras acciones",
+    "Eres accionista",
+    "Reventa entre socios"
+   ],
+   "lugar": "Farnern · Suiza",
+   "concepto": "un edificio de oficinas genérico de una empresa suiza de informática, con su capital repartido en participaciones"
+  },
+  {
+   "slug": "wemakeit",
+   "escena": "empresa",
+   "op": {
+    "forma": "torre"
+   },
+   "pasos": [
+    "Compras a un accionista",
+    "Pasas a ser accionista",
+    "Reventa entre socios"
+   ],
+   "lugar": "Zúrich · Suiza",
+   "concepto": "un edificio de oficinas genérico de una empresa suiza de micromecenazgo, con su capital repartido en participaciones"
+  },
+  {
+   "slug": "servicehunter-quitt",
+   "escena": "empresa",
+   "op": {
+    "forma": "oficina"
+   },
+   "pasos": [
+    "Compras a un accionista",
+    "Pasas a ser accionista",
+    "Reventa entre socios"
+   ],
+   "lugar": "Zúrich · Suiza",
+   "concepto": "un edificio de oficinas genérico de una empresa suiza de servicios para hogares, con su capital repartido en participaciones"
+  },
+  {
+   "slug": "switzerlend",
+   "escena": "empresa",
+   "op": {
+    "forma": "torre"
+   },
+   "pasos": [
+    "Compras acciones",
+    "Eres accionista",
+    "Reventa entre socios"
+   ],
+   "lugar": "Zúrich · Suiza",
+   "concepto": "un edificio de oficinas genérico de una empresa suiza de préstamos, con su capital repartido en participaciones"
+  },
+  {
+   "slug": "reental-secundario-miami-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "condominio",
+    "pisos": 3,
+    "mat": "blanco",
+    "palmeras": 1,
+    "fondo": "mar"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "El piso se alquila",
+    "Reparto o reventa"
+   ],
+   "concepto": "un edificio bajo de apartamentos blanco junto al mar, con palmeras, y dos teléfonos que se pasan una participación",
+   "lugar": "Key Biscayne · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-houston-2",
+   "escena": "reventa",
+   "op": {
+    "activo": "casa",
+    "plantas": 2,
+    "mat": "arena",
+    "tejado": "grafito",
+    "porche": 1
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "La casa se alquila",
+    "Reparto y venta final"
+   ],
+   "concepto": "una casa genérica de dos plantas con porche, y dos teléfonos que se pasan una participación",
+   "lugar": "Houston · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-houston-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "casa",
+    "plantas": 2,
+    "mat": "blanco",
+    "tejado": "grafito",
+    "piscina": 1
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se alquila a turistas",
+    "Reparto o reventa"
+   ],
+   "concepto": "una casa genérica de dos plantas pintada de blanco, con piscina, y dos teléfonos que se pasan una participación",
+   "lugar": "Houston · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-san-antonio-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "hotel",
+    "pisos": 7,
+    "mat": "arena",
+    "palmeras": 1,
+    "piscina": 1
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "El hotel se renueva",
+    "Reparto o reventa"
+   ],
+   "concepto": "un gran hotel genérico de color arena con piscina y palmeras, y dos teléfonos que se pasan una participación",
+   "lugar": "San Antonio · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-atlanta-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "casa",
+    "plantas": 2,
+    "mat": "mostaza",
+    "tejado": "grafito",
+    "porche": 1
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se alquila por cuartos",
+    "Reparto o reventa"
+   ],
+   "concepto": "una casa de madera genérica de dos plantas con porche, y dos teléfonos que se pasan una participación",
+   "lugar": "Atlanta · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-houston-3",
+   "escena": "reventa",
+   "op": {
+    "activo": "adosados",
+    "plantas": 3,
+    "mat": "arena",
+    "tejado": "grafito"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "La casa se alquila",
+    "Reparto o reventa"
+   ],
+   "concepto": "una hilera genérica de casas estrechas de tres plantas, y dos teléfonos que se pasan una participación",
+   "lugar": "Houston · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-proyecto-100",
+   "escena": "reventa",
+   "op": {
+    "activo": "cartera",
+    "palmeras": 1,
+    "fondo": "colinas"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se presta para obras",
+    "Reparto o reventa"
+   ],
+   "concepto": "una cartera de proyectos en obra entre colinas y palmeras y dos teléfonos que se pasan una participación",
+   "lugar": "Yucatán · Dubái · Samaná"
+  },
+  {
+   "slug": "reental-secundario-miami-3",
+   "escena": "reventa",
+   "op": {
+    "activo": "torre",
+    "mat": "cristal",
+    "grua": 1,
+    "fondo": "ciudad",
+    "pisos": 7
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se alquila al acabar",
+    "Reparto o reventa"
+   ],
+   "concepto": "una torre de apartamentos de cristal en obra entre rascacielos y dos teléfonos que se pasan una participación",
+   "lugar": "Miami · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-granada-3",
+   "escena": "reventa",
+   "op": {
+    "activo": "edificio",
+    "pisos": 4,
+    "mat": "blanco"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se alquila por cuartos",
+    "Reparto y venta final"
+   ],
+   "concepto": "un edificio urbano genérico de fachada blanca, y dos teléfonos que se pasan una participación",
+   "lugar": "Granada · España"
+  },
+  {
+   "slug": "reental-secundario-carolina-del-norte-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "conjunto",
+    "pisos": 4,
+    "mat": "gris"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se construyen los pisos",
+    "Cobro al vencimiento"
+   ],
+   "concepto": "un conjunto genérico de bloques de pisos de cuatro plantas, y dos teléfonos que se pasan una participación",
+   "lugar": "Morrisville · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-abu-dhabi-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "condominio",
+    "pisos": 5,
+    "mat": "blanco",
+    "palmeras": 1,
+    "piscina": 1,
+    "fondo": "mar"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se alquilan a turistas",
+    "Reparto y venta final"
+   ],
+   "concepto": "un bloque de apartamentos genérico junto al agua, con piscina y palmeras, y dos teléfonos que se pasan una participación",
+   "lugar": "Abu Dabi · Emiratos"
+  },
+  {
+   "slug": "reental-secundario-rentas-3",
+   "escena": "reventa",
+   "op": {
+    "activo": "cartera"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Financia obras y pisos",
+    "Reparto o reventa"
+   ],
+   "concepto": "una cartera genérica de préstamos e inmuebles en obra y en alquiler, y dos teléfonos que se pasan una participación",
+   "lugar": "Varios países"
+  },
+  {
+   "slug": "reental-secundario-miami-2",
+   "escena": "reventa",
+   "op": {
+    "activo": "torre",
+    "mat": "cristal",
+    "grua": 1,
+    "fondo": "mar",
+    "pisos": 7
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se alquila al acabar",
+    "Reparto o reventa"
+   ],
+   "concepto": "una torre de apartamentos de cristal en obra frente a la bahía y dos teléfonos que se pasan una participación",
+   "lugar": "Miami · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-miami-5",
+   "escena": "reventa",
+   "op": {
+    "activo": "villa",
+    "palmeras": 1,
+    "piscina": 1
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "La casa se reforma",
+    "Reparto tras la venta"
+   ],
+   "concepto": "una casa blanca de dos plantas con piscina y palmeras tal como quedaría tras la reforma y dos teléfonos que se pasan una participación",
+   "lugar": "Miami · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-rentas-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "cartera",
+    "fondo": "colinas"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se presta y se alquila",
+    "Reparto o reventa"
+   ],
+   "concepto": "varios inmuebles de alquiler ante colinas verdes y dos teléfonos que se pasan una participación",
+   "lugar": "Varios países"
+  },
+  {
+   "slug": "reental-secundario-dania-beach-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "hotel",
+    "pisos": 5,
+    "mat": "arena",
+    "fondo": "ciudad"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "El hotel se mejora",
+    "Pagos trimestrales"
+   ],
+   "concepto": "un hotel urbano genérico en el centro de una ciudad (el activo que sustituyó al de Dania Beach), y dos teléfonos que se pasan una participación",
+   "lugar": "Austin · EE. UU."
+  },
+  {
+   "slug": "reental-secundario-rentas-2",
+   "escena": "reventa",
+   "op": {
+    "activo": "cartera",
+    "palmeras": 1,
+    "fondo": "mar"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se presta a proyectos",
+    "Reparto o reventa"
+   ],
+   "concepto": "varios inmuebles junto al mar, con palmeras y dos teléfonos que se pasan una participación",
+   "lugar": "Varios países"
+  },
+  {
+   "slug": "reental-secundario-pirineos-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "casa",
+    "plantas": 3,
+    "mat": "piedra",
+    "tejado": "pizarra",
+    "fondo": "montaña"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "La casona se reforma",
+    "Reparto tras la venta"
+   ],
+   "concepto": "una casona de piedra con tejado de pizarra al pie de la montaña, y dos teléfonos que se pasan una participación",
+   "lugar": "Benasque · España"
+  },
+  {
+   "slug": "reental-secundario-levante-1",
+   "escena": "reventa",
+   "op": {
+    "activo": "adosados",
+    "plantas": 2,
+    "mat": "gris",
+    "tejado": "teja"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se presta al promotor",
+    "Intereses y devolución"
+   ],
+   "concepto": "una calle genérica de casas de dos plantas con tejado de teja, y dos teléfonos que se pasan una participación",
+   "lugar": "Godelleta · España"
+  },
+  {
+   "slug": "reental-secundario-opportunity-2",
+   "escena": "reventa",
+   "op": {
+    "activo": "cartera",
+    "fondo": "ciudad"
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se recuperan inmuebles",
+    "Reparto o reventa"
+   ],
+   "concepto": "varios inmuebles de ciudad dentro de una cartera y dos teléfonos que se pasan una participación",
+   "lugar": "Sobre todo en España"
+  },
+  {
+   "slug": "reental-secundario-malaga-6",
+   "escena": "reventa",
+   "op": {
+    "activo": "torre",
+    "mat": "ladrillo",
+    "pisos": 6
+   },
+   "pasos": [
+    "Compras si hay oferta",
+    "Se alquila por cuartos",
+    "Reparto o reventa"
+   ],
+   "concepto": "un bloque alto de pisos genérico de ladrillo, y dos teléfonos que se pasan una participación",
+   "lugar": "Málaga · España"
+  },
+  {
+   "slug": "iod-occasio",
+   "escena": "credito",
+   "op": {},
+   "lugar": "Madrid · España",
+   "pasos": [
+    "Compras tokens del bono",
+    "Se adelantan facturas",
+    "Devolución al vencer"
+   ],
+   "concepto": "una empresa genérica que adelanta el cobro de facturas, con contratos y un escudo de seguro"
+  },
+  {
+   "slug": "reental-emision-primaria",
+   "escena": "catalogo",
+   "op": {},
+   "pasos": [
+    "Sigues los proyectos",
+    "Se abre una emisión",
+    "Compras al abrirse"
+   ],
+   "concepto": "varios inmuebles genéricos distintos bajo una lupa: próximos proyectos aún sin emisión abierta"
+  },
+  {
+   "slug": "hausera-proximas-ofertas",
+   "escena": "reforma",
+   "op": {},
+   "lugar": "Alicante · España",
+   "pasos": [
+    "Reservas en la preventa",
+    "Se reforma y se vende",
+    "Cobro tras la venta"
+   ],
+   "concepto": "una casa genérica con andamio que se compra, se reforma y se vende"
+  },
+  {
+   "slug": "mgloeuro",
+   "escena": "cartera_credito",
+   "op": {},
+   "pasos": [
+    "Anunciado, aún sin abrir",
+    "Misma cartera, en euros",
+    "Aún sin condiciones"
+   ],
+   "concepto": "una cartera genérica de deuda con garantía, anunciada en euros"
+  }
+ ]
+}

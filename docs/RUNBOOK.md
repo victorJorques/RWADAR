@@ -93,6 +93,8 @@ sincronizan con Supabase y se paran si esa lectura deja cambios en Git.
 | Código QR | `node rwadar-qr/comprobar-qr.js` |
 | Web o publicador | `node rwadar-publicar.js --local --sin-sincronizar` y `node probar-web.mjs` |
 | Lecciones de la Academy | `node rwadar-academy.js` y después `npm run test:web` y `npm run test:mobile` |
+| Imágenes de las ofertas | `node rwadar-editorial-source/ofertas/generar.mjs` (ver su `README.md`) y `npm test` |
+| Imagen para redes (`og.png`) | `node rwadar-editorial-source/og.mjs` y `npm run test:web` |
 | Compuerta de publicación | `npm --prefix rwadar-app run test:relanzamiento` y `npm --prefix rwadar-app run auditar:relanzamiento` |
 | Varias cosas a la vez | `npm test` |
 
@@ -137,6 +139,23 @@ móviles de verdad se comprueban aparte.
 El catálogo se carga en Supabase con los importadores, nunca a mano en la web.
 Guía: [`comercial/RUNBOOK-CATALOGO-SUPABASE.md`](comercial/RUNBOOK-CATALOGO-SUPABASE.md).
 Cada revisión dura como mucho 7 días: renuévala antes de que venza.
+
+**Renovarla con una sola orden** (lee de internet y escribe archivos locales;
+no toca Supabase ni publica):
+
+```powershell
+npm run catalogo
+```
+
+Vuelve a leer las fuentes del radar y las 49 fichas, comprueba que cada
+fuente sigue diciendo lo que respalda (`rwadar-app/data/comprobaciones-fuentes.json`),
+pone al día cada ficha con lo leído ese día (una cifra que no se puede leer se
+quita y la ficha lleva aviso), monta el lote, lo prueba en PGlite y deja un
+informe en `rwadar-app/data/verificaciones/<fecha>-v2/informe-<fecha>.md`. Si
+una fuente del radar falla, se para sin montar nada y dice cuál revisar a mano.
+Después, Víctor pega `aplicar-y-aprobar.sql` en Supabase y se publica la web.
+Desde un ordenador en España se leen más fuentes que desde la nube (Midas
+bloquea las consultas automáticas desde fuera).
 
 **Siempre disponible.** Si la revisión vence o no se puede comprobar, la web y
 la app siguen enseñando la última copia completa con un aviso de «revisión

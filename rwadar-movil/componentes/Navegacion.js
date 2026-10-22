@@ -23,6 +23,12 @@ export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
           <Circle cx="16.8" cy="14.8" r="1" fill={color} stroke="none" />
         </>
       ) : null}
+      {nombre === 'lugar' ? (
+        <>
+          <Path d="M12 21s-6.5-6.3-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.7 12 21 12 21z" {...comun} />
+          <Circle cx="12" cy="9.8" r="2.3" {...comun} />
+        </>
+      ) : null}
       {nombre === 'siguiendo' ? (
         <>
           <Path d="M6.5 3.5h11v17l-5.5-3.4-5.5 3.4z" {...comun} />

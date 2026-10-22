@@ -11,10 +11,12 @@ test('EAS incluye el proyecto móvil sin depender de separadores de directorio d
   for (const ruta of ['rwadar-movil', 'rwadar-movil/App.js', 'rwadar-movil/app.json',
     'rwadar-movil/package.json', 'rwadar-movil/package-lock.json', 'rwadar-movil/eas.json',
     'rwadar-movil/index.js', 'rwadar-movil/lib', 'rwadar-movil/lib/modo-local.js',
+    'rwadar-movil/lib/cuentas.js', 'rwadar-movil/componentes/Cuenta.js',
     'rwadar-movil/scripts/parchear-expo-uuidv5.cjs',
     'rwadar-movil/componentes', 'rwadar-movil/componentes/Ofertas.js',
     'rwadar-movil/assets', 'rwadar-movil/assets/icon.png',
     'rwadar-movil/assets/ofertas-editoriales/inmobiliario-rwadar.webp',
+    'rwadar-movil/assets/ofertas-editoriales/oferta-spiko-letras-del-tesoro-euro.webp',
     'rwadar-movil/fixtures', 'rwadar-movil/fixtures/imagenes-editoriales.js',
     'rwadar-movil/fixtures/escaparate-local.json']) {
     assert.equal(filtro.ignores(ruta), false, ruta);

@@ -1,0 +1,367 @@
+{
+ "versionEsquema": 2,
+ "nota": "Encargo de la fotografía generada de cada ficha: el activo genérico parecido al real según su fuente oficial, sin marcas, rótulos ni personas. «concepto» completa el texto alternativo; «encuadre» es la posición (x% y%) del recorte a 1280×880, para dejar el activo a la derecha. Las fotos maestras están en fotos/<slug>.webp; fotografiar.py las vuelve a generar con el modelo, y generar.mjs las retoca y les pone el texto.",
+ "modelos": {
+  "realvisxl": {
+   "nombre": "RealVisXL V5.0 Lightning (SG161222)",
+   "licencia": "CreativeML Open RAIL++-M",
+   "fuente": "https://huggingface.co/SG161222/RealVisXL_V5.0_Lightning",
+   "ajustes": {
+    "ancho": 1344,
+    "alto": 768,
+    "pasos": 6,
+    "cfg": 1.5,
+    "muestreador": "DPM++ SDE Karras",
+    "precision": "bfloat16 en CPU"
+   },
+   "estilo": "RAW photo, professional architectural photography, natural light, realistic, sharp focus, highly detailed",
+   "negativo": "cartoon, illustration, drawing, painting, anime, 3d render, cgi, toy, miniature, text, watermark, logo, signage, letters, people, person, crowd, blurry, lowres, deformed, distorted, oversaturated, fisheye, frame"
+  },
+  "canva": {
+   "nombre": "Canva, generación de imágenes (21/10/2026)",
+   "licencia": "Condiciones de uso de Canva para contenido generado",
+   "tamano": "1536x1024",
+   "estilo": "photorealistic architectural photograph, premium real-estate photography, shot on a full-frame camera with a 24mm lens, natural colors, high dynamic range, the subject placed in the right half of the frame, calm darker sky and soft shadow on the left third of the frame, no people, no text, no lettering, no signs, no logos, no watermark"
+  }
+ },
+ "fotos": {
+  "mf-one": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "unas torres de oficinas de un distrito financiero europeo, como imagen de una cartera de préstamos a empresas",
+   "prompt": "modern glass office towers in a European financial district at blue hour, offices softly lit, evening sky reflections, trees on a quiet plaza"
+  },
+  "mglo": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "el muelle de carga de un almacén de distribución, como imagen de préstamos con garantía de facturas de pequeñas empresas",
+   "prompt": "loading dock of a distribution warehouse at dusk, pallets of boxed goods, warm work lights, open delivery bays, clean concrete yard"
+  },
+  "mglobal": {
+   "modelo": "realvisxl",
+   "semilla": 1,
+   "encuadre": "70% 55%",
+   "concepto": "una terminal portuaria de contenedores, como imagen de una cartera de deuda con garantía de activos",
+   "prompt": "container port terminal at blue hour, stacked shipping containers, gantry cranes, warm lights reflecting on wet asphalt, calm harbour water"
+  },
+  "fotovoltaica-greenpoint": {
+   "modelo": "canva",
+   "encuadre": "70% 55%",
+   "concepto": "unos paneles solares en la cubierta de un edificio de oficinas de una ciudad austriaca",
+   "prompt": "Rows of solar panels on the gravel flat roof of a three-storey office building in a small Austrian town, rooftops and church spire in the distance, late afternoon light"
+  },
+  "drautalresidenz-paternion": {
+   "modelo": "canva",
+   "encuadre": "70% 55%",
+   "concepto": "un edificio residencial de pocas plantas con jardín ante montañas de Carintia, parecido al real",
+   "prompt": "A long three-storey residential complex with white facades, wooden balconies and dark grey pitched roofs around a landscaped garden courtyard with lawns and conifers, green forested Carinthian mountains behind, golden hour"
+  },
+  "terreno-con-arrendamiento-billa": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un supermercado sin marca en su propio solar en un valle de Carintia, visto desde el aire",
+   "prompt": "aerial view of a modern single-storey supermarket building with a large parking lot on its own plot in a small green valley town in Carinthia, Austria, forested hills, soft morning light"
+  },
+  "vivienda-stallhofstra-e-28-gratwein": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio residencial de dos plantas ante colinas boscosas de Estiria, parecido al real",
+   "prompt": "two-storey beige residential building with balconies and a neat lawn in a small Austrian town, green wooded hills behind, soft evening light"
+  },
+  "fotovoltaica-cohotel": {
+   "modelo": "canva",
+   "encuadre": "70% 55%",
+   "concepto": "unos paneles solares en la cubierta plana de un edificio comercial austriaco",
+   "prompt": "Long rows of solar panels on the flat roof of a commercial building in an Austrian business park, low warm sunset light, other industrial buildings and green trees in the distance"
+  },
+  "apartamento-vacacional-hinterstoder-50": {
+   "modelo": "canva",
+   "encuadre": "72% 55%",
+   "concepto": "un complejo de apartamentos vacacionales de madera en un valle alpino austriaco, parecido al real",
+   "prompt": "An alpine aparthotel of three-to-four-storey chalet-style buildings with warm larch wood facades, balconies and gabled roofs, in an Austrian Alpine valley village, snowy steep limestone mountains behind, winter dusk with warm lights in the windows"
+  },
+  "vivienda-pluddemanngasse-101-graz": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un bloque de pisos moderno de fachada blanca en Graz, parecido al real",
+   "prompt": "modern four-storey apartment building in Graz, white rendered facade, dark slate-clad ground floor, large windows and balconies, blue hour, warm light in some flats, quiet street"
+  },
+  "local-de-estanco-klagenfurt": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio de viviendas con un pequeño local comercial en planta baja, en una esquina de una ciudad austriaca",
+   "prompt": "modern four-storey mixed-use building in Klagenfurt, ground-floor shop arcade behind slender white columns, apartments with long white balconies above, small corner shop softly lit, quiet street at dusk"
+  },
+  "vivienda-schwarzer-weg-18-graz": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio residencial moderno de tres alturas con terrazas en Graz, parecido al real",
+   "prompt": "modern cubic three-storey apartment building with white and soft peach facades, large terraces, tall cypress hedges, quiet residential street in Graz, golden hour"
+  },
+  "vivienda-sonnleithnergasse-2-viena": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un gran conjunto residencial blanco con patio arbolado en Viena, parecido al real",
+   "prompt": "large white nine-storey residential housing estate in Vienna with many balconies, mature leafy trees in a green courtyard, blue hour, warm lit windows"
+  },
+  "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio de viviendas blanco y gris en una esquina de Wiener Neustadt, parecido al real",
+   "prompt": "three-storey white and grey residential building with ribbon windows and a glass stairwell on a street corner in a small Austrian city, dusk, warm interior lights"
+  },
+  "mtbill": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio institucional neoclásico genérico, como imagen de las letras del Tesoro de Estados Unidos",
+   "prompt": "neoclassical government building with tall stone columns and a pediment at blue hour, warmly floodlit facade, wide stone steps, no flags"
+  },
+  "randhartingergasse-9-viena": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un ático reformado con terraza sobre un edificio clásico de Viena, parecido al real",
+   "prompt": "renovated rooftop attic apartment with a small terrace and flower boxes on top of a classic Viennese apartment building, view over Vienna rooftops at dusk, warm lights"
+  },
+  "spiko-letras-del-tesoro-euro": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio ministerial neoclásico genérico, como imagen de un fondo que compra letras del Tesoro de la zona euro",
+   "prompt": "European neoclassical ministry building with pale limestone facade, tall windows and colonnade, floodlit at blue hour, wide empty square, no flags"
+  },
+  "prosegur-digital-gold": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "unos lingotes de oro sin marcas en una cámara acorazada",
+   "prompt": "stacks of polished plain gold bars inside a high-security bank vault, heavy round steel vault door ajar, warm dramatic light, dark polished floor"
+  },
+  "casa-de-outeiro": {
+   "modelo": "realvisxl",
+   "semilla": 23,
+   "encuadre": "70% 55%",
+   "concepto": "una casa solariega de piedra restaurada entre viñedos en terrazas sobre un cañón fluvial de la Ribeira Sacra, parecida a la real",
+   "prompt": "beautifully restored old granite stone manor house with dark slate roof and wooden balcony among neat terraced vineyards above a deep river canyon, Ribeira Sacra, Galicia, golden hour, autumn"
+  },
+  "aktionariat": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio de oficinas moderno a orillas del lago de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+   "prompt": "modern Swiss office building with glass and timber facade on the shore of Lake Zurich at dusk, warm office lights, calm lake reflections"
+  },
+  "boss-info": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un pequeño edificio de oficinas en un pueblo suizo al pie del Jura, como imagen de una empresa suiza con su capital repartido en acciones",
+   "prompt": "small modern two-storey office building in a Swiss countryside village at the foot of the Jura hills, warm lights at dusk, tidy car park, green fields"
+  },
+  "wemakeit": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un antiguo edificio industrial de ladrillo convertido en oficinas en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+   "prompt": "converted red brick industrial building with large steel-framed windows warmly lit, creative studio offices, Zurich West, dusk"
+  },
+  "servicehunter-quitt": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio de oficinas contemporáneo en una calle de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+   "prompt": "contemporary office building with light stone facade and large windows on a residential street in Zurich, warm lights at blue hour"
+  },
+  "switzerlend": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio de oficinas de cristal y piedra en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+   "prompt": "sleek modern office building of glass and light stone in the Zurich business district at blue hour, offices lit, wide pavement"
+  },
+  "reental-secundario-miami-1": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio bajo de apartamentos blanco con palmeras junto a la playa de Key Biscayne, parecido al real",
+   "prompt": "white three-storey 1960s low-rise apartment building near the beach on Key Biscayne, Florida, palm trees, tidy entrance, blue hour, warm lit windows"
+  },
+  "reental-secundario-houston-2": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "una casa reformada de dos plantas con fachada de tablas color crema en Houston, parecida a la real",
+   "prompt": "renovated two-storey house with cream clapboard siding, dark trim, low grey roof, stone-faced garage wing and a big shade tree, Houston, Texas, golden hour"
+  },
+  "reental-secundario-houston-1": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "una casa de dos plantas de ladrillo pintado de blanco con piscina en Houston, parecida a la real",
+   "prompt": "two-storey house of white painted brick with dark grey shingle gable roof, blue front door, backyard pool behind a wooden fence, Houston, Texas, blue hour"
+  },
+  "reental-secundario-san-antonio-1": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un gran hotel de color arena con piscina y palmeras en San Antonio, parecido al real",
+   "prompt": "thirteen-storey 1980s hotel tower with sand-coloured facade and vertical blue glass strips, outdoor swimming pool with palm trees in front, San Antonio, Texas, blue hour"
+  },
+  "reental-secundario-atlanta-1": {
+   "modelo": "canva",
+   "encuadre": "80% 55%",
+   "concepto": "una casa de madera de dos plantas color mostaza con porche en Atlanta, parecida a la real",
+   "prompt": "A renovated two-story American wooden house with mustard-yellow clapboard siding, crisp white window trim, a full-width front porch with white columns and white railings, dark charcoal gable roof with a small attic window, mature deciduous trees and a tidy lawn, quiet residential street in Atlanta, Georgia, warm interior lights glowing in the windows at blue hour"
+  },
+  "reental-secundario-houston-3": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "una hilera de casas estrechas de tres plantas con garaje en Houston, parecida a la real",
+   "prompt": "row of narrow three-storey modern townhouses with ground-floor garages, iron balconies with glass doors, light rendered facades, big trees, Houston, Texas, golden hour"
+  },
+  "reental-secundario-proyecto-100": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "unas villas entre selva tropical con piscina sobre el mar, como imagen de una cartera de proyectos en obra",
+   "prompt": "luxury eco-resort villas with thatched timber roofs in lush tropical jungle on a hillside, infinity pool overlooking the Caribbean sea, golden hour"
+  },
+  "reental-secundario-miami-3": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "una torre residencial de cristal en obra entre los rascacielos de Miami, parecida a la real",
+   "prompt": "tall blue glass residential tower under construction with a tower crane in the downtown Miami skyline at sunset, pool deck on the podium, warm reflections"
+  },
+  "reental-secundario-granada-3": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio clásico de fachada blanca con balcones de hierro en el centro de Granada, parecido al real",
+   "prompt": "classic four-storey building with white facade, wrought-iron balconies and tall windows on a quiet street in central Granada, Spain, warm evening light"
+  },
+  "reental-secundario-carolina-del-norte-1": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un conjunto nuevo de bloques de pisos de cuatro plantas en Carolina del Norte, parecido al real",
+   "prompt": "new apartment community of four-storey buildings with light grey and white siding, beige stone pilasters, dark gable roofs, flowering trees, North Carolina, soft afternoon light"
+  },
+  "reental-secundario-abu-dhabi-1": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un bloque de apartamentos blanco junto a un canal en la isla de Yas, en Abu Dabi, parecido al real",
+   "prompt": "contemporary mid-rise residential building with white facades and balconies on a canal waterfront on Yas Island, Abu Dhabi, palm-lined promenade and pool, blue hour"
+  },
+  "reental-secundario-rentas-3": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "una promoción de viviendas en obra junto a otras ya terminadas, como imagen de una cartera de préstamos e inmuebles",
+   "prompt": "new residential development under construction with a tower crane next to completed modern apartment buildings, warm golden hour light"
+  },
+  "reental-secundario-miami-2": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "una torre residencial de cristal en obra frente a la bahía de Miami, parecida a la real",
+   "prompt": "tall residential skyscraper with blue glass and a light stone podium with vertical gardens, top floors under construction with a tower crane, downtown Miami by Biscayne Bay, blue hour"
+  },
+  "reental-secundario-miami-5": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "una villa blanca de dos plantas con piscina y palmeras tal como quedaría tras la reforma, parecida a la real",
+   "prompt": "renovated white two-storey Mediterranean style villa with arched loggias, private swimming pool and palm trees on a large lawn in Miami, dusk, warm lights"
+  },
+  "reental-secundario-rentas-1": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "unos edificios bajos de alquiler entre colinas verdes, como imagen de una cartera de préstamos e inmuebles en alquiler",
+   "prompt": "modern low-rise rental apartment buildings with balconies among green trees on gentle green hills, warm lights at dusk"
+  },
+  "reental-secundario-dania-beach-1": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un hotel urbano de pocas plantas en el centro de Austin, el activo que sustituyó al de Dania Beach",
+   "prompt": "five-storey 1960s boutique hotel with cream facade, open exterior corridors and entrance canopy in downtown Austin, Texas, state capitol dome in the distance, dusk"
+  },
+  "reental-secundario-rentas-2": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "unos apartamentos blancos junto a una playa con palmeras, como imagen de una cartera de préstamos a proyectos",
+   "prompt": "low-rise white seaside apartment buildings with balconies, palm trees and a pool beside a sandy beach, warm evening light"
+  },
+  "reental-secundario-pirineos-1": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "una casona de piedra con tejado de pizarra en una plaza de un pueblo del Pirineo, parecida a la real",
+   "prompt": "old three-storey stone mansion with dark slate roof, wooden shutters and iron balconies on a cobbled square of a Pyrenees mountain village, snowy peaks behind, dusk"
+  },
+  "reental-secundario-levante-1": {
+   "modelo": "realvisxl",
+   "semilla": 23,
+   "encuadre": "70% 55%",
+   "concepto": "una calle de casas nuevas de dos plantas con tejado de teja cerca de Valencia, parecida a la real",
+   "prompt": "street view of new two-storey detached family houses with blue-grey facades, white window mouldings, terracotta tile roofs, white pergolas, gardens and pine trees near Valencia, Spain, golden hour"
+  },
+  "reental-secundario-opportunity-2": {
+   "modelo": "realvisxl",
+   "semilla": 23,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio de viviendas a medio terminar en una ciudad española, como imagen de una cartera de inmuebles que se recuperan",
+   "prompt": "modern residential apartment building nearing completion in a Spanish city, clean white and terracotta facade, balconies, a tower crane beside it, neighbouring apartment blocks, golden hour"
+  },
+  "reental-secundario-malaga-6": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un bloque alto de pisos de ladrillo en un barrio de Málaga, parecido al real",
+   "prompt": "tall red-brick residential tower block with aluminium windows and small balconies in a Malaga neighbourhood, neighbouring blocks, warm evening light"
+  },
+  "iod-occasio": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio de oficinas de cristal en Madrid, como imagen de una empresa que adelanta el cobro de facturas",
+   "prompt": "modern glass office building in the Madrid business district at blue hour, offices lit, wide tree-lined avenue"
+  },
+  "reental-emision-primaria": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio de viviendas mediterráneo con palmeras, como imagen de los próximos proyectos aún sin emisión abierta",
+   "prompt": "modern Mediterranean apartment building with balconies and palm trees beside a sunny residential street with new homes, golden hour"
+  },
+  "hausera-proximas-ofertas": {
+   "modelo": "realvisxl",
+   "semilla": 31,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio de viviendas mediterráneo recién reformado en Alicante, como imagen de una casa que se compra, se reforma y se vende",
+   "prompt": "freshly renovated bright white Mediterranean apartment building with new balconies and wooden shutters, palm trees on a sunny street in Alicante, Spain, golden hour"
+  },
+  "mgloeuro": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un parque logístico europeo, como imagen de una cartera de deuda con garantía anunciada en euros",
+   "prompt": "modern European logistics park at dusk, large white warehouses, lit office block, landscaped verges, clear evening sky"
+  }
+ }
+}

@@ -2,6 +2,36 @@
 
 App nativa en React Native con Expo (SDK 57).
 
+## Cuentas · Android del 11 de octubre de 2026
+
+Se ha añadido un panel nativo para crear cuenta, confirmar correo, entrar,
+recuperar acceso, gestionar nombre y lista de vigilancia, salir y borrar la
+cuenta con contraseña recién comprobada y confirmación escrita. Usa la misma
+identidad y lista que la web; los favoritos locales siguen separados.
+
+`CUENTAS_REMOTAS=true` y `CORREO_AUTH_E2E=true` activan las cuentas opcionales
+tras comprobar un alta confirmada, acceso y cierre de sesión en la web, y la
+entrega real del correo de recuperación. El cambio final de contraseña y el
+alta/inicio/baja real desde Android y un teléfono físico requieren comprobaciones aparte. No activar
+`SERVICIOS_USUARIO_REMOTOS`: esa guarda antigua protege instalaciones,
+sincronización histórica y push, que siguen apagados.
+
+La sesión del SDK se guarda solo en memoria; no se persiste en AsyncStorage.
+Confirmación y recuperación enlazan a la web oficial, sin añadir nuevos
+esquemas de URL ni permisos al sistema. El panel no anuncia notificaciones.
+
+`npm test` incluye las pruebas del motor con SDK real y transporte simulado,
+la interfaz, el desmontaje y los permisos del paquete. No equivale a una
+prueba de correo ni a instalar la app. **Android 1.3.1/código14 está publicado**
+y su APK exacto superó instalación/navegación/formularios en emulador API35,
+firma y descarga pública anónima. Corrige el margen de la nota local y el
+singular de favoritos; sus capturas propias también se revisaron.
+Descarga: <https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1>.
+No es publicación en las tiendas ni prueba de Auth nativo real o teléfono físico.
+Informe: [`VERIFICACION-ANDROID-1.3.1-2026-10-11.md`](../docs/VERIFICACION-ANDROID-1.3.1-2026-10-11.md).
+Compilación EAS solo si hay cuota gratuita: no contratar ni aceptar cargos adicionales.
+Plan y requisitos: [`CUENTAS-WEB-MOVIL-2026-10-11.md`](../docs/tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
+
 ## Corte editorial conectado · 28 de septiembre de 2026
 
 Esta copia usa `catalogo-editorial`: consulta las dos vistas verificadas de
@@ -11,7 +41,7 @@ cualquier instalación anterior. Un catálogo retirado o vencido no se sustituye
 por el fixture interno. El estado de distribución se registra en `docs/INTERNO.md`.
 
 El catálogo y los servicios remotos de usuario tienen compuertas separadas.
-`SERVICIOS_USUARIO_REMOTOS = false` mantiene desactivados identidad, sincronización
+`SERVICIOS_USUARIO_REMOTOS = false` mantiene desactivados instalación, sincronización
 y push con el catálogo conectado. En este perfil
 editorial los favoritos usan `rwadar.editorial.*`: no se leen ni migran claves
 `rwadar.*` de instalaciones anteriores y no se generan reintentos. El borrado
@@ -123,7 +153,7 @@ REST; cambiar el código requiere una nueva build revisada. También desactiva
 la copia Android a Google Drive y bloquea permisos de notificaciones,
 micrófono, almacenamiento externo, superposición de pantalla, arranque,
 biometría, recepción push y contadores OEM que este alcance no necesita.
-La identidad de runtime usa la política oficial `appVersion` (`1.1.0`), ya que
+La identidad de runtime usa la política oficial `appVersion` (`1.3.0`), ya que
 se distribuye el binario completo sin OTA. El primer intento con `fingerprint`
 fue rechazado por una discrepancia entre la huella local y la del constructor;
 no se usa ninguna bandera para omitir la comprobación. Reactivar OTA exigiría

@@ -6,6 +6,226 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 21 de octubre de 2026 · Claude (10) · catálogo del 21/10, fotos por ficha, revisión de la web y comunidad
+
+**Rama:** `claude/integracion-2026-10-19` (une lo publicado por Codex el 11/10 con todo lo del catálogo). **Nada aplicado en Supabase ni publicado.** Codex no ha subido nada desde el 11/10, así que no hay solapes.
+
+- **Catálogo:** lotes del 20/10 (`504bee7d`) y **21/10 (`c3b71e81`, vigente hasta el 28/10)** con `npm run catalogo`; 69/69 fuentes, PGlite OK dos veces. Vale el del 21/10. Detalle: `docs/CATALOGO-V2-2026-10-21.md`.
+- **Imágenes por ficha (contrato editorial v2):** las 49 fichas tienen foto generada del activo (44 con RealVisXL V5.0 Lightning en la sesión, 5 con Canva), retocada y con lugar y tres pasos. Fuente en `rwadar-editorial-source/ofertas/` (`fotos.json`, `fotos/`, `fotografiar.py`, `generar.mjs`). La app las enseña desde su próxima versión: **hace falta 1.3.2 (número y EAS son tuyos)**. Revisión: `docs/comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`.
+- **Tarjetas al estilo Booking:** web: «Guardar» sobre la foto (solo móvil, 44 px), lugar con chincheta, tarjeta entera abre la ficha (el control sigue siendo «Ver ficha»), aviso no bloqueante a dos líneas. App: lugar con icono `lugar` en `FichaOferta`.
+- **Revisión de 20 puntos de la web:** títulos de la Academy ≤ 65 caracteres (`tituloPestana`, el `og:title` conserva el completo), descripción del índice ≤ 160, objetivos táctiles del pie y migas ≥ 24 px, `og.png` rehecho con `rwadar-editorial-source/og.mjs` (decía `rwadar.netlify.app` y «26 pasan el filtro»; 639 → 75 KB).
+- **Comunidad (27, preparada y sin aplicar):** se podía saltar «una al día» publicando, borrando y volviendo a publicar, y borrar una oculta por denuncias. Ahora el cupo vive en `cupos_publicacion` (no se libera al borrar) y la oculta no la borra su autor. `probar-comunidad.mjs` 33/33. Se editó `27_comunidad.sql` directamente porque **no está aplicada**: si alguien la aplicó, hace falta una migración aparte.
+- **Pendiente de seguridad para Víctor/Codex** (revisión de solo lectura, sin verificar del todo): activar Turnstile (las altas y recuperaciones agotan los 30 correos/hora); dejar en Supabase solo `https://rwadar.pages.dev/` como URL de redirección; valorar en la comunidad comprobar `sesion_confirmada()`, filtrar enlaces también en `autor` y que tres cuentas nuevas no basten para ocultar; en la web, no pintar el `error_description` crudo y avisar con qué correo se entra al adoptar una sesión del enlace.
+
+## 19 de octubre de 2026 · Claude (9) · orden única del catálogo y revisión total
+
+**Rama:** `claude/revision-catalogo-2026-10-19` (PR #12). **Nada aplicado en Supabase ni publicado.**
+
+- **`npm run catalogo`** (`rwadar-app/actualizar-catalogo.mjs`): captura,
+  comprueba las 69 fuentes del radar contra `rwadar-app/data/comprobaciones-fuentes.json`
+  (reintenta una vez las que fallan), pone al día las 49 fichas con lo leído
+  (Brickwise app y API, Aktionariat y portales, Spiko, Prosegur, Alius,
+  Hausera, P2P de Reental, Midas), monta, prueba en PGlite y escribe
+  `informe-<fecha>.md`. Si falla una fuente del radar no monta nada (sale con 2).
+  Probada de punta a punta con captura real simulando el 20/10: 69/69, lote OK.
+- `capturar-fuentes.mjs`: hora de Madrid, PDF siempre con curl (dos
+  identidades, comprueba `%PDF`), segundo intento por HTTP (navegador y curl)
+  si hay bloqueo o 5xx, y paginación del P2P de Reental esperando a sus textos.
+- **Lote del 19/10 rehecho:** `aa3aebce` (antes `f9876935`). Fuente de la
+  portada de Midas → `midas.app/llms.txt` (la portada ya bloquea la nube);
+  aviso general con la redacción de producción («Referencia editorial
+  gratuita…»); aviso de quitt (encabezado y tabla no coinciden); número de
+  accionistas.
+- **Producción ≠ `main`:** Supabase tiene el lote `966c230c` (fichas del 11/10)
+  cuya fuente no está en GitHub, y la web/app publicadas salen de
+  `codex/cuentas-web-movil`, sin unir. El lote nuevo se probó también en una
+  copia de esa rama: `comprobar-revision` OK, `probar-web` 501/501 y la web
+  generada con las vistas que saldrán de Supabase se ve bien en Chromium
+  (19.10.2026, Spiko 2,41 %, sin cookies ni errores). **Publicar desde esa
+  rama**, no desde `main`.
+- Revisión total: web en producción 35/35 y base 2/2 en solo lectura; sin
+  cookies propias (la `__cf_bm` de Supabase no se guarda); cabeceras de
+  seguridad presentes; `/android` → última release; copias diarias correctas
+  hasta hoy; `npm audit` raíz y base 0, móvil 23 (los que Codex ya evaluó).
+
+## 19 de octubre de 2026 · Claude (8) · revisión del catálogo del 19/10, preparada sin aplicar
+
+**Rama:** `claude/revision-catalogo-2026-10-19`. **Nada aplicado en Supabase ni publicado.**
+
+- Herramientas nuevas (primera sesión del día, sin internet):
+  `rwadar-app/capturar-fuentes.mjs`, `montar-revision.mjs` y
+  `comprobar-revision.mjs`, para cualquier fecha. Estado y reglas en
+  `docs/tareas/REVISION-CATALOGO-2026-10-19.md`.
+- **Revisión del 19/10** (segunda sesión, con internet): lote `aa3aebce`,
+  vigente hasta el 26/10. 69 fuentes del radar y las 49 fichas consultadas el
+  19/10 desde la nube (salida en EE. UU.). Mismo manifiesto 26/49 (24/21/4).
+  Detalle en `docs/CATALOGO-V2-2026-10-19.md`; evidencia en
+  `rwadar-app/data/verificaciones/2026-10-19-v2/contraste-2026-10-19.json`.
+- **Retirado el documento de claude.ai** de las 49 fichas (205 referencias);
+  los textos que lo citaban se reescriben con la fuente oficial.
+- Midas bloquea la nube: mF-ONE y mTBILL pierden la cifra; las cuatro de Midas
+  quedan «no verificable» con aviso. Spiko 2,41 %. IOD Occasio, ya en campaña.
+- Pruebas: `comprobar-revision.mjs 2026-10-19` OK (aplicado dos veces sobre la
+  cadena de producción en PGlite). `npm test`: db, qr, móvil y herramientas en
+  verde; `test:web` falla hoy **también en `main`** porque el catálogo
+  incrustado en la web (06/10) caducó; con el reloj al 10/10, 501/501.
+- **Pendiente de Víctor:** pegar
+  `rwadar-app/data/importaciones/catalogo-2026-10-19-v2/aplicar-y-aprobar.sql`
+  en Supabase › SQL Editor › Run y publicar la web como el 06/10
+  (sincronizar, dos rondas de commit + aprobación en `estado.json`,
+  `--preview`, `--produccion`). Al sincronizar, `test:web` vuelve a verde.
+## 11 de octubre de 2026 · Codex · cierre publicado: cuentas web y Android 1.3.1
+
+Fuente en worktree `codex/cuentas-web-movil`; **no modificar la carpeta
+principal**, que está atrasada y conserva material de Academy sin seguimiento.
+Commit de contenido **`a213373`** (autor Codex): panel de cuentas Android
+1.3.0, aislamiento de sesiones y carreras web, transporte acotado y baja
+reautenticada, pruebas, privacidad y cuatro parches compatibles Expo SDK 57.
+Fuente Android final en **`53d4c33`**: separación propia positiva de la nota
+local, «1 guardado», versión 1.3.1 y dos regresiones; dependencias y motor de
+cuentas intactos. El cierre técnico/documental conserva este commit compilado
+y la huella web aprobada, sin regenerar ni volver a desplegar contenido web.
+**Cierre guardado y sincronizado en `1148323`**: informes, manifiesto,
+documentación vigente y QA de APK14; auditor local posterior con árbol limpio,
+«LISTO PARA CORTE FINAL» y huellas de contenido/alcance idénticas a las aprobadas.
+
+**Verificado:** `npm test` final salida 0, web 501/móvil 182/SQL de sesión 196;
+Chrome aislado 61 y 30, revisión independiente 54 nativos/196 SQL/30 Chrome,
+sin otro bloqueo del núcleo. Gitleaks 8.30.1 limpio y `git diff --check` limpio.
+Los ensayos usan datos ficticios y no demuestran correo ni un APK instalado.
+
+**En línea:** Víctor introdujo personalmente la contraseña de aplicación de
+Gmail; confirmó recepción de alta y enlace válido (llegó a spam). Codex vio
+el perfil y comprobó salir. Recuperación pedida a las 08:14:18 UTC y recibida
+en INBOX, con DKIM/SPF/DMARC correctos, solo metadatos y sin leer el token.
+El cambio final real de contraseña todavía **no se ha realizado**.
+
+La migración `20261011074218_cuentas_sesion_confirmada.sql` **ya se aplicó**
+con permiso expreso y se verificó en producción. No reaplicar la 26 sin
+rehacer después este refuerzo. El catálogo sigue público (26/49 y 4
+descartes), lote del 6/10 vigente hasta el 13/10. El asesor da 0 ERROR,
+4 WARN y 3 INFO; límites documentados, no «seguridad absoluta».
+
+**Web publicada y comprobada:** revisión `d91d4e14`, producción `4c7d38e5`,
+<https://rwadar.pages.dev>. Las cuentas ya están abiertas; formularios de
+acceso/alta y Perfil observados en navegador. HTTP **35/35** y huellas
+**64/64** idénticas al artefacto aprobado. Aprobación y QA Android en
+`aa886d2`, después del manifiesto `3a0d953`. La fuente web es `a213373`.
+
+**Android autorizado solo sin cargos:** EAS terminó 1.3.0/código 13,
+commit compilado `3a0d953`, 85.622.388 bytes. Firma y manifiesto comprobados
+localmente; instalación y ejecución del APK exacto aprobadas en emulador API35. Expo Doctor
+**21/21** y pruebas **180/180** en copia aislada, nunca sobre las junctions
+principales. EAS Free: 2/15 usados y cargos cero. Publicación real
+<https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.0>, a las
+09:17:18 UTC, QA/release `38127611672` exitoso. La descarga anónima posterior
+coincide byte a byte con el APK ensayado y conserva la firma. Evidencia pública
+ZIP y sumas verificadas. Flujo publicado en `f01dbc2` y desarmado en `6d4280e`;
+README público actualizado en `d045b4c`. No hay publicación en las tiendas.
+
+La revisión visual posterior detectó una nota local que cruzaba el borde del
+panel de recuperación. **Corregida, publicada y verificada en 1.3.1/código14**:
+<https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.1>.
+EAS terminó a las 09:36:36 UTC, fuente `53d4c33`, APK **85.622.508 bytes**;
+cuota Free posterior Android **3/15**, total **4/30**, cero coste/exceso/addons.
+QA y release propias `38129282799`, jobs `114440050549`/`114440579448`,
+exitosas; publicación **09:45:05 UTC**, latest pública, no draft/prerelease.
+Descarga anónima posterior comprobada: APK y ZIP idénticos a sumas/evidencia,
+firma v2 válida y certificado anterior. Resultado propio: separación **92px**,
+navegación, catálogo, Academy, favorito persistente y formularios correctos.
+Cuatro capturas propias de cuentas revisadas por Codex y otro agente; nota
+fuera del borde, singular correcto, sin otro bloqueo visual observado.
+No atribuir al APK14 las pruebas históricas del13 ni declarar Auth real desde
+Android, SMTP nativo o teléfono físico. Commit público de lanzamiento
+`8c49368`; `2f44074` dejó `PUBLICAR_RELEASE=NO` con `[skip ci]`.
+El espejo privado queda en NO; plantilla auxiliar no utilizada retirada,
+recuperable en Git. Móvil **182/182** y Doctor **21/21** correctos.
+[`VERIFICACION-ANDROID-1.3.1-2026-10-11.md`](../VERIFICACION-ANDROID-1.3.1-2026-10-11.md).
+La auditoría npm no es limpia: 23 avisos, evaluados sin vía vulnerable
+demostrada en el alcance analizado, con inventario estático adicional 1.3.1.
+No equivale a descompilar Hermes. No ocultarlos ni forzar downgrades incompatibles.
+[`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md`](../VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-11.md).
+
+Publicidad, cobros, comisiones, opiniones, comunidad, avisos y manual siguen
+apagados. El manual se reserva a usuarios registrados: no publicar un PDF
+estático como entrega. Codex asume configuración, código, pruebas y despliegue;
+Víctor solo introduce credenciales/identidad y autoriza operaciones reservadas.
+
+Continuar según [`CUENTAS-WEB-MOVIL-2026-10-11.md`](CUENTAS-WEB-MOVIL-2026-10-11.md).
+Evidencia en [`../VERIFICACION-CUENTAS-2026-10-11.md`](../VERIFICACION-CUENTAS-2026-10-11.md).
+Publicación y descarga ya cerradas y comprobadas; queda mejorar entregabilidad
+del correo en spam, cambio real de contraseña y entrada posterior, prueba de
+Auth nativo con credenciales reales y teléfono físico. Son límites de evidencia,
+no tareas de código asignadas a Víctor. No activar monetización, manual ni
+tiendas sin cumplir sus requisitos separados. Repetición HTTP final: 35/35.
+
+
+## 8 de octubre de 2026 · Claude (8) · cuentas fase 1: casi abiertas, falta que Gmail acepte la contraseña
+
+**Rama:** `claude/abrir-cuentas` (sale de `main` tras el PR #10). PR abierto
+para que lo revises. **La web pública NO tiene las cuentas encendidas**;
+solo la vista previa `https://revision.rwadar.pages.dev`.
+
+### Ya hecho y comprobado
+
+| Qué | Dónde / cómo se comprobó |
+|---|---|
+| Web: `SERVICIOS_USUARIO_REMOTOS=true` y `CORREO_AUTH_E2E=true`; opiniones, avisos por correo, comunidad, manual y Turnstile siguen apagados | `rwadar-site/assets/rwadar-20260820.js` |
+| Privacidad reescrita para cuentas abiertas (7/10/2026): apartado «Tu cuenta (opcional)», correos de confirmación/recuperación por una cuenta de Gmail de RWAdar, sesión solo en memoria, borrado desde Perfil, conservación | `rwadar-site/privacidad.html`, `sitemap.xml` |
+| Pruebas: el camino cerrado se sigue probando sobre la misma web con los interruptores apagados (`jsCerrado` en `probar-web.mjs`) | `npm test` en verde |
+| Ensayo E2E en Chrome real contra Supabase simulado (PGlite + 26): alta, confirmación, entrar, vigilar, recuperar, móvil, borrar, Turnstile | `node rwadar-app/ensayo-cuentas-web.mjs` → **61/61** (Playwright con `RWADAR_CHROMIUM` = Chrome instalado) |
+| Migración 26 + verificador en una transacción | `rwadar-app/db/26_abrir_cuentas_un_paso.sql`; probado en PGlite (dos veces) |
+| **Supabase producción:** 26 aplicada (SQL Editor, «Success», verificador sin excepción) | 07/10, 23:3x |
+| **Supabase Auth:** SMTP propio activado (remitente y usuario `rwadares@gmail.com`, nombre `RWAdar`, `smtp.gmail.com`, puerto 587); plantillas en español «Confirma tu cuenta de RWAdar» y «Recupera tu acceso a RWAdar» (texto de `REABRIR-CUENTAS.md`); **altas abiertas**; confirmación de correo obligatoria; contraseña mínima 12 (ya estaba); Redirect URLs: añadido `https://revision.rwadar.pages.dev/` | `GET /auth/v1/settings` → `disable_signup:false`, `mailer_autoconfirm:false` |
+| Vista previa con cuentas | despliegue `b8745f05`, alias `revision.rwadar.pages.dev`; `comprobar-publicado.mjs` 35/35; aprobación en `estado.json` (commit `e87141c`) |
+
+### Lo que falla ahora (bloqueante)
+
+Al crear una cuenta en la vista previa sale «Error sending confirmation
+email». En *Logs › Auth* de Supabase:
+1. Primer intento: `535 5.7.8 Username and Password not accepted` (credenciales).
+2. Último intento (08/10 00:02): `534 5.7.9 Application-specific password required`.
+   Es decir: la verificación en dos pasos de `rwadares@gmail.com` ya está
+   activa, pero en *SMTP Settings › Password* sigue la contraseña normal de
+   Gmail. Hay que generar una **contraseña de aplicación** en
+   https://myaccount.google.com/apppasswords (16 letras, **sin espacios**) y
+   pegarla ahí › *Save changes*. Esto solo lo puede hacer Víctor: ni Claude
+   ni Codex deben crear credenciales ni escribir contraseñas.
+
+Quedó una cuenta de prueba de Víctor **sin confirmar** en Auth › Users: al
+registrarse otra vez con el mismo correo se reenvía la confirmación; si no,
+borrarla desde ahí.
+
+### Lo que falta, en orden
+
+1. Víctor: contraseña de aplicación en Supabase (arriba).
+2. Prueba real en `https://revision.rwadar.pages.dev`: crear cuenta, recibir
+   «Confirma tu cuenta de RWAdar», confirmar, vigilar una plataforma, salir y
+   entrar, «He olvidado la contraseña», borrar la cuenta. Si un paso falla,
+   el motivo está en Supabase › Logs › Auth (abrir la fila y leer `error`).
+3. Publicar en producción desde la rama: `node rwadar-publicar.js --produccion`
+   (si sincroniza y ensucia JS/portada/sitemap: commit + nueva aprobación en
+   `estado.json` y repetir, como siempre) y comprobar con
+   `node .github/comprobar-publicado.mjs https://rwadar.pages.dev`.
+4. Supabase › URL Configuration: quitar `https://revision.rwadar.pages.dev/`
+   (y valorar quitar `https://rwadar.netlify.app/`, que es solo la página de
+   limpieza). Deben quedar solo los de `rwadar.pages.dev`.
+5. Unir el PR de `claude/abrir-cuentas` a `main`.
+6. Recomendado antes de anunciar cuentas: anti-robots Turnstile (sección
+   «Anti-robots» de `REABRIR-CUENTAS.md`: Víctor crea el widget y pega la
+   Secret Key en Supabase; la Site Key va al JS, CSP en `_headers` y
+   `rwadar-servir.js`, privacidad y pruebas).
+7. Gmail no está pensado para envíos masivos (unos cientos al día). A medio
+   plazo: dominio propio + Brevo (`REABRIR-CUENTAS.md`, opción B).
+
+### Otros pendientes que no son de cuentas
+
+- **El catálogo vence el 13/10** (lote `a0df3111`). Repetir la revisión antes
+  (`docs/CATALOGO-V2-2026-10-06.md`); si no, web y app muestran «Revisión
+  pendiente».
+- Modo de la sesión de Claude: aun fuera de «Auto», el filtro de Claude bloquea
+  pulsar «Run» en el SQL Editor de producción; Víctor tuvo que pulsarlo.
+
 ## 7 de octubre de 2026 · Claude (7) · catálogo del 06/10 en producción, web y app 1.2.0 publicadas
 
 - **Supabase:** Víctor pegó `aplicar-y-aprobar.sql` tres veces (SQL Editor).

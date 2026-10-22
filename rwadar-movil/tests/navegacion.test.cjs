@@ -91,7 +91,7 @@ test('Inicio muestra las mismas noticias que la web y anuncia la comunidad sin s
   for (const n of fuente.noticias) assert.ok(noticias.includes(n.titulo), `falta la noticia ${n.id} en la app`);
 });
 
-test('las 52 imágenes originales se conservan y la interfaz prefiere cuatro fallbacks editoriales', () => {
+test('las 52 imágenes originales se conservan y la interfaz usa la ilustración de cada ficha o la de su categoría', () => {
   const fixture = JSON.parse(leer('fixtures', 'escaparate-local.json'));
   const imagenes = leer('fixtures', 'imagenes-ofertas.js');
   const editoriales = leer('fixtures', 'imagenes-editoriales.js');
@@ -110,10 +110,15 @@ test('las 52 imágenes originales se conservan y la interfaz prefiere cuatro fal
     assert.match(imagenes, new RegExp(`"${oferta.slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
   }
   assert.equal(manifiesto.etiquetaVisibleObligatoria, 'Ilustración editorial');
-  assert.equal(requiresEditoriales.length, 4);
+  assert.equal(manifiesto.versionEsquema, 2);
+  assert.equal(requiresEditoriales.length, 4 + manifiesto.fichas.length);
+  for (const ficha of manifiesto.fichas) {
+    assert.equal(editoriales.split(`require('../assets/ofertas-editoriales/${ficha.archivo}')`).length, 2,
+      `la app empaqueta una sola vez ${ficha.archivo}`);
+  }
   assert.deepEqual(new Set(manifiesto.archivos.map((x) => x.categoria)),
     new Set(ofertas.map((x) => x.categoria)));
-  assert.match(componente, /imagenEditorial\(oferta\.categoria\)/);
+  assert.match(componente, /imagenEditorialOferta\(oferta\)/);
   assert.doesNotMatch(componente, /imagenes-ofertas|imagenOferta\(oferta\.slug\)/);
   assert.match(componente, /\{editorial\.etiqueta\}/);
   assert.match(componente, /accessibilityLabel=\{decorativa \? undefined : editorial\.alt\}/);
@@ -226,4 +231,28 @@ test('la nueva interfaz no introduce identidad ni funciones ficticias de la refe
     assert.equal(codigo.includes(ajeno), false, `se introdujo texto ajeno: ${ajeno}`);
   }
   assert.match(codigo, /Las cuentas llegarán próximamente a la app con las nuevas actualizaciones/);
+});
+
+test('las ilustraciones por ficha son de su categoría y no llevan cifras ni promesas', () => {
+  const manifiesto = JSON.parse(leer('assets', 'ofertas-editoriales', 'manifest.json'));
+  const base = path.join(RAIZ, '..', 'rwadar-app', 'data', 'verificaciones');
+  const ultima = fs.readdirSync(base).filter((n) => /^\d{4}-\d{2}-\d{2}-v2$/.test(n)).sort()
+    .reverse().find((n) => fs.existsSync(path.join(base, n, 'escaparate-publicacion.json')));
+  const catalogo = JSON.parse(fs.readFileSync(path.join(base, ultima, 'escaparate-publicacion.json'), 'utf8')).ofertas;
+  const porSlug = new Map(manifiesto.fichas.map((x) => [x.slug, x]));
+  // Una ficha nueva sin ilustración usa la de su categoría: se avisa, no se bloquea.
+  const sinIlustracion = catalogo.filter((oferta) => !porSlug.has(oferta.slug)).map((oferta) => oferta.slug);
+  if (sinIlustracion.length) console.warn(`fichas sin ilustración propia: ${sinIlustracion.join(', ')}`);
+  for (const oferta of catalogo.filter((x) => porSlug.has(x.slug))) {
+    assert.equal(porSlug.get(oferta.slug).categoria, oferta.categoria, oferta.slug);
+  }
+  const prohibido = /[0-9%€$£]|rentab|garantiz|benefici|gananci|retorno|asegurad|sin riesgo/i;
+  for (const ficha of manifiesto.fichas) {
+    assert.equal(ficha.archivo, `oferta-${ficha.slug}.webp`);
+    assert.ok(fs.existsSync(path.join(RAIZ, 'assets', 'ofertas-editoriales', ficha.archivo)), ficha.archivo);
+    assert.ok(ficha.alt.startsWith('Ilustración editorial'), ficha.slug);
+    for (const texto of [ficha.alt, ficha.lugar || '', ...ficha.pasos]) {
+      assert.doesNotMatch(texto, prohibido, `${ficha.slug}: «${texto}»`);
+    }
+  }
 });

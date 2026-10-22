@@ -1,5 +1,5 @@
 {
-  "versionEsquema": 1,
+  "versionEsquema": 2,
   "generadoEl": "2026-09-21",
   "herramienta": "OpenAI image_gen integrado",
   "modo": "generacion-sin-imagenes-de-terceros",
@@ -9,7 +9,8 @@
   "restriccionesGlobales": [
     "No presentar la ilustracion como fotografia del activo o del proveedor",
     "No ocultar la etiqueta visible Ilustración editorial",
-    "No incorporar logos, marcas, personas, texto, cifras ni promesas de rentabilidad",
+    "No incorporar logos, marcas, personas, cifras ni promesas de rentabilidad",
+    "Las ilustraciones por categoria no llevan texto; las de cada ficha solo llevan el lugar y tres pasos que explican la inversion, comprobados contra su fuente",
     "Sustituir por material autorizado si el proveedor aporta licencia escrita"
   ],
   "direccionVisual": "Render editorial 3D original, fondo grafito, anillos de radar y luz esmeralda RWAdar; composicion 16:10 preparada para recorte 640x440 y overlays HTML",
@@ -53,6 +54,991 @@
       "hashSha256": "5384573368ca62e4320e8d96f3d0bda98f8b82d57957d06518fbd0f0b1c6bcf9",
       "alt": "Ilustración editorial de una empresa genérica dividida en módulos de propiedad conectados",
       "promptFinal": "Ilustracion editorial original para participaciones de empresas privadas: estructura empresarial generica dividida en modulos de propiedad conectados, estetica RWAdar oscura y esmeralda, sin texto, logos, personas, tickers, graficos ni promesas de crecimiento."
+    }
+  ],
+  "fichasOrigen": {
+    "herramienta": "Fotografias generadas con IA (RealVisXL V5.0 Lightning (SG161222); Canva, generación de imágenes (21/10/2026)), retocadas y rotuladas por RWAdar; si una ficha no tiene foto, dibujo vectorial propio",
+    "modo": "generacion-sin-imagenes-de-terceros",
+    "usoPrevisto": "Una ilustracion por ficha que explica la inversion de un vistazo; si falta, se usa la de su categoria",
+    "direccionVisual": "Foto generica del activo, parecida al real segun su fuente oficial, sin marcas, rotulos ni personas; a la izquierda, sobre un velo oscuro, el lugar y tres pasos",
+    "encargos": "rwadar-editorial-source/ofertas/fotos.json (modelo, descripcion, semilla y encuadre de cada foto)",
+    "comoSeRegenera": "python rwadar-editorial-source/ofertas/fotografiar.py (fotos) y node rwadar-editorial-source/ofertas/generar.mjs (retoque y texto)"
+  },
+  "fichas": [
+    {
+      "slug": "aktionariat",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-aktionariat.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 66118,
+      "hashSha256": "fba8276ae85f496ec2ac963ceb6d5efe3a3cb219d07f094621d2ad087c98cd8a",
+      "alt": "Ilustración editorial de un edificio de oficinas moderno a orillas del lago de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas moderno a orillas del lago de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+      "pasos": [
+        "Compras acciones",
+        "Eres accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Erlenbach · Suiza",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-apartamento-vacacional-hinterstoder-50.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 71648,
+      "hashSha256": "096581c56c2ab598bfb9f6ac074820ab75d0ac3a67f62f6b2bd58a96319ca38f",
+      "alt": "Ilustración editorial de un complejo de apartamentos vacacionales de madera en un valle alpino austriaco, parecido al real, imagen generada con IA. Pasos: compras participaciones; el apartamento se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un complejo de apartamentos vacacionales de madera en un valle alpino austriaco, parecido al real",
+      "pasos": [
+        "Compras participaciones",
+        "El apartamento se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Hinterstoder · Austria",
+      "origen": "foto-generada",
+      "modelo": "Canva, generación de imágenes (21/10/2026)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "boss-info",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-boss-info.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 43046,
+      "hashSha256": "eefb6294c388d35509076d588ce5a0ec80ad0451862b9e2b89aa7169da0a0389",
+      "alt": "Ilustración editorial de un pequeño edificio de oficinas en un pueblo suizo al pie del Jura, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un pequeño edificio de oficinas en un pueblo suizo al pie del Jura, como imagen de una empresa suiza con su capital repartido en acciones",
+      "pasos": [
+        "Compras acciones",
+        "Eres accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Farnern · Suiza",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-casa-de-outeiro.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 76464,
+      "hashSha256": "ba40a863620ae5e7846068e3a3d3f909caaca976aaf784c560235db228026952",
+      "alt": "Ilustración editorial de una casa solariega de piedra restaurada entre viñedos en terrazas sobre un cañón fluvial de la Ribeira Sacra, parecida a la real, imagen generada con IA. Pasos: suscribes la ampliación; recibes tus acciones; socio de bodega y hotel. No es una foto del activo real.",
+      "concepto": "una casa solariega de piedra restaurada entre viñedos en terrazas sobre un cañón fluvial de la Ribeira Sacra, parecida a la real",
+      "pasos": [
+        "Suscribes la ampliación",
+        "Recibes tus acciones",
+        "Socio de bodega y hotel"
+      ],
+      "lugar": "Ribeira Sacra · Lugo",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-drautalresidenz-paternion.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 58670,
+      "hashSha256": "56b68f826356e8c99b93ee8902b3b434220431fcc1aa70237369c5b22e34841b",
+      "alt": "Ilustración editorial de un edificio residencial de pocas plantas con jardín ante montañas de Carintia, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio residencial de pocas plantas con jardín ante montañas de Carintia, parecido al real",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Paternion · Austria",
+      "origen": "foto-generada",
+      "modelo": "Canva, generación de imágenes (21/10/2026)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-fotovoltaica-cohotel.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 35060,
+      "hashSha256": "2676899be75ecb64f3872450a5c15bb0902144ce3c558ebbc706f8ef64aa985b",
+      "alt": "Ilustración editorial de unos paneles solares en la cubierta plana de un edificio comercial austriaco, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.",
+      "concepto": "unos paneles solares en la cubierta plana de un edificio comercial austriaco",
+      "pasos": [
+        "Compras participaciones",
+        "Los paneles dan energía",
+        "Reparto del excedente"
+      ],
+      "lugar": "Steyregg · Austria",
+      "origen": "foto-generada",
+      "modelo": "Canva, generación de imágenes (21/10/2026)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-fotovoltaica-greenpoint.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 42470,
+      "hashSha256": "46b1085be2730803e83c478bbc6261ed9dfee391a94e4983470b1e7dffcd3a72",
+      "alt": "Ilustración editorial de unos paneles solares en la cubierta de un edificio de oficinas de una ciudad austriaca, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.",
+      "concepto": "unos paneles solares en la cubierta de un edificio de oficinas de una ciudad austriaca",
+      "pasos": [
+        "Compras participaciones",
+        "Los paneles dan energía",
+        "Reparto del excedente"
+      ],
+      "lugar": "Wiener Neustadt · Austria",
+      "origen": "foto-generada",
+      "modelo": "Canva, generación de imágenes (21/10/2026)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-hausera-proximas-ofertas.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 62086,
+      "hashSha256": "455f0ce616cf7f7c883096624dc164f9f761d3d57de56226d7a3639d1796111b",
+      "alt": "Ilustración editorial de un edificio de viviendas mediterráneo recién reformado en Alicante, como imagen de una casa que se compra, se reforma y se vende, imagen generada con IA. Pasos: reservas en la preventa; se reforma y se vende; cobro tras la venta. No es una foto del activo real.",
+      "concepto": "un edificio de viviendas mediterráneo recién reformado en Alicante, como imagen de una casa que se compra, se reforma y se vende",
+      "pasos": [
+        "Reservas en la preventa",
+        "Se reforma y se vende",
+        "Cobro tras la venta"
+      ],
+      "lugar": "Alicante · España",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "iod-occasio",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-iod-occasio.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 69368,
+      "hashSha256": "b0959bf7b237aec15dc1fbda23319989b82f53fe3fa23d213ea55b3095889669",
+      "alt": "Ilustración editorial de un edificio de oficinas de cristal en Madrid, como imagen de una empresa que adelanta el cobro de facturas, imagen generada con IA. Pasos: compras tokens del bono; se adelantan facturas; devolución al vencer. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas de cristal en Madrid, como imagen de una empresa que adelanta el cobro de facturas",
+      "pasos": [
+        "Compras tokens del bono",
+        "Se adelantan facturas",
+        "Devolución al vencer"
+      ],
+      "lugar": "Madrid · España",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-local-de-estanco-klagenfurt.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 58604,
+      "hashSha256": "3072a97b0d8898bbae6e9a699210ebf7c90ecca6ab642a884670db9e7c230198",
+      "alt": "Ilustración editorial de un edificio de viviendas con un pequeño local comercial en planta baja, en una esquina de una ciudad austriaca, imagen generada con IA. Pasos: compras participaciones; el local se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio de viviendas con un pequeño local comercial en planta baja, en una esquina de una ciudad austriaca",
+      "pasos": [
+        "Compras participaciones",
+        "El local se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Klagenfurt · Austria",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "mf-one",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-mf-one.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 72732,
+      "hashSha256": "dc97cb8bca4ec476f7a58f1a68556eff44299a09fd9c4e2e2b35f1b80f678175",
+      "alt": "Ilustración editorial de unas torres de oficinas de un distrito financiero europeo, como imagen de una cartera de préstamos a empresas, imagen generada con IA. Pasos: compras el token; sigue crédito privado; reembolsas a su precio. No es una foto del activo real.",
+      "concepto": "unas torres de oficinas de un distrito financiero europeo, como imagen de una cartera de préstamos a empresas",
+      "pasos": [
+        "Compras el token",
+        "Sigue crédito privado",
+        "Reembolsas a su precio"
+      ],
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "mglo",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-mglo.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 49326,
+      "hashSha256": "7c308994bb30d7cc7cf9f0dfade0eabbc39cac8e0e7cfce4f8d1b150aae1659e",
+      "alt": "Ilustración editorial de el muelle de carga de un almacén de distribución, como imagen de préstamos con garantía de facturas de pequeñas empresas, imagen generada con IA. Pasos: compras el token; financia facturas pyme; reembolsas o transfieres. No es una foto del activo real.",
+      "concepto": "el muelle de carga de un almacén de distribución, como imagen de préstamos con garantía de facturas de pequeñas empresas",
+      "pasos": [
+        "Compras el token",
+        "Financia facturas pyme",
+        "Reembolsas o transfieres"
+      ],
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "mglobal",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-mglobal.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 51478,
+      "hashSha256": "40927e53e1238dcd3bb8b32b6b05caa2a3a7c4f35f2059b914621e955a6e94c5",
+      "alt": "Ilustración editorial de una terminal portuaria de contenedores, como imagen de una cartera de deuda con garantía de activos, imagen generada con IA. Pasos: compras el token; crédito con garantía real; reembolsas o transfieres. No es una foto del activo real.",
+      "concepto": "una terminal portuaria de contenedores, como imagen de una cartera de deuda con garantía de activos",
+      "pasos": [
+        "Compras el token",
+        "Crédito con garantía real",
+        "Reembolsas o transfieres"
+      ],
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "mgloeuro",
+      "categoria": "Crédito privado",
+      "archivo": "oferta-mgloeuro.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 34966,
+      "hashSha256": "caf2e4591b07e0f082d9896bbf88d6fe81e5acf1fec87b163bf0a5c1406f040e",
+      "alt": "Ilustración editorial de un parque logístico europeo, como imagen de una cartera de deuda con garantía anunciada en euros, imagen generada con IA. Pasos: anunciado, aún sin abrir; misma cartera, en euros; aún sin condiciones. No es una foto del activo real.",
+      "concepto": "un parque logístico europeo, como imagen de una cartera de deuda con garantía anunciada en euros",
+      "pasos": [
+        "Anunciado, aún sin abrir",
+        "Misma cartera, en euros",
+        "Aún sin condiciones"
+      ],
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "mtbill",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-mtbill.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 41512,
+      "hashSha256": "7337326d1d234482f88fc42f12241ce3e74d635bea4efd80dc3a66639e5afd09",
+      "alt": "Ilustración editorial de un edificio institucional neoclásico genérico, como imagen de las letras del Tesoro de Estados Unidos, imagen generada con IA. Pasos: compras el token; sigue letras del Tesoro; pides el reembolso. No es una foto del activo real.",
+      "concepto": "un edificio institucional neoclásico genérico, como imagen de las letras del Tesoro de Estados Unidos",
+      "pasos": [
+        "Compras el token",
+        "Sigue letras del Tesoro",
+        "Pides el reembolso"
+      ],
+      "lugar": "Estados Unidos",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "categoria": "Materias primas",
+      "archivo": "oferta-prosegur-digital-gold.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 64062,
+      "hashSha256": "1eef9d20a89baa866aa01657019f03ef1ecb65171c3ea072caaf12babf12d0b0",
+      "alt": "Ilustración editorial de unos lingotes de oro sin marcas en una cámara acorazada, imagen generada con IA. Pasos: compras gramos de oro; se guarda en una cámara; vendes y cobras en euros. No es una foto del activo real.",
+      "concepto": "unos lingotes de oro sin marcas en una cámara acorazada",
+      "pasos": [
+        "Compras gramos de oro",
+        "Se guarda en una cámara",
+        "Vendes y cobras en euros"
+      ],
+      "lugar": "Custodia en España",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-randhartingergasse-9-viena.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 52508,
+      "hashSha256": "9deb3f7da6c66ab337ef97ad3a8706da6e6fdbe21abc60bce2d3a81908447ff8",
+      "alt": "Ilustración editorial de un ático reformado con terraza sobre un edificio clásico de Viena, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un ático reformado con terraza sobre un edificio clásico de Viena, parecido al real",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Viena · Austria",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-emision-primaria",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-emision-primaria.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 63602,
+      "hashSha256": "58c9a20136371c0e118acc691fdb49738569e1eae793fff95b7bd8a79ec5a5ad",
+      "alt": "Ilustración editorial de un edificio de viviendas mediterráneo con palmeras, como imagen de los próximos proyectos aún sin emisión abierta, imagen generada con IA. Pasos: sigues los proyectos; se abre una emisión; compras al abrirse. No es una foto del activo real.",
+      "concepto": "un edificio de viviendas mediterráneo con palmeras, como imagen de los próximos proyectos aún sin emisión abierta",
+      "pasos": [
+        "Sigues los proyectos",
+        "Se abre una emisión",
+        "Compras al abrirse"
+      ],
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-abu-dhabi-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-abu-dhabi-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 59404,
+      "hashSha256": "a829faa3481d90c39da73e922074cf5ab98b544cc9f9255574eea872b5d9c83d",
+      "alt": "Ilustración editorial de un bloque de apartamentos blanco junto a un canal en la isla de Yas, en Abu Dabi, parecido al real, imagen generada con IA. Pasos: compras si hay oferta; se alquilan a turistas; reparto y venta final. No es una foto del activo real.",
+      "concepto": "un bloque de apartamentos blanco junto a un canal en la isla de Yas, en Abu Dabi, parecido al real",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se alquilan a turistas",
+        "Reparto y venta final"
+      ],
+      "lugar": "Abu Dabi · Emiratos",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-atlanta-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-atlanta-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 46366,
+      "hashSha256": "f90e1b7e877b42cfd2630c653f29c333ed112c2efb5639ff27fc39d3a9bc615b",
+      "alt": "Ilustración editorial de una casa de madera de dos plantas color mostaza con porche en Atlanta, parecida a la real, imagen generada con IA. Pasos: compras si hay oferta; se alquila por cuartos; reparto o reventa. No es una foto del activo real.",
+      "concepto": "una casa de madera de dos plantas color mostaza con porche en Atlanta, parecida a la real",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se alquila por cuartos",
+        "Reparto o reventa"
+      ],
+      "lugar": "Atlanta · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "Canva, generación de imágenes (21/10/2026)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-carolina-del-norte-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-carolina-del-norte-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 90006,
+      "hashSha256": "9509ae2b070eda395ecdb40b02fe7ed110181ed3ac4d9720528695de3b9de05c",
+      "alt": "Ilustración editorial de un conjunto nuevo de bloques de pisos de cuatro plantas en Carolina del Norte, parecido al real, imagen generada con IA. Pasos: compras si hay oferta; se construyen los pisos; cobro al vencimiento. No es una foto del activo real.",
+      "concepto": "un conjunto nuevo de bloques de pisos de cuatro plantas en Carolina del Norte, parecido al real",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se construyen los pisos",
+        "Cobro al vencimiento"
+      ],
+      "lugar": "Morrisville · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-dania-beach-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-dania-beach-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 59916,
+      "hashSha256": "0ed52073dc2069bc8edf49bd1a33865850e7e1e5627f2cffc6c704fc4abf636d",
+      "alt": "Ilustración editorial de un hotel urbano de pocas plantas en el centro de Austin, el activo que sustituyó al de Dania Beach, imagen generada con IA. Pasos: compras si hay oferta; el hotel se mejora; pagos trimestrales. No es una foto del activo real.",
+      "concepto": "un hotel urbano de pocas plantas en el centro de Austin, el activo que sustituyó al de Dania Beach",
+      "pasos": [
+        "Compras si hay oferta",
+        "El hotel se mejora",
+        "Pagos trimestrales"
+      ],
+      "lugar": "Austin · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-granada-3",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-granada-3.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 74198,
+      "hashSha256": "7c4362c77faacea6d8cf50f5a19a6e8d85eb21aea498aebfb04d8aeab4266bd3",
+      "alt": "Ilustración editorial de un edificio clásico de fachada blanca con balcones de hierro en el centro de Granada, parecido al real, imagen generada con IA. Pasos: compras si hay oferta; se alquila por cuartos; reparto y venta final. No es una foto del activo real.",
+      "concepto": "un edificio clásico de fachada blanca con balcones de hierro en el centro de Granada, parecido al real",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se alquila por cuartos",
+        "Reparto y venta final"
+      ],
+      "lugar": "Granada · España",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-houston-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-houston-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 53704,
+      "hashSha256": "0671c6d9f717fa39f31714f59b79ee93e48fa314b6385f5a5f3052f9d7ae9ff6",
+      "alt": "Ilustración editorial de una casa de dos plantas de ladrillo pintado de blanco con piscina en Houston, parecida a la real, imagen generada con IA. Pasos: compras si hay oferta; se alquila a turistas; reparto o reventa. No es una foto del activo real.",
+      "concepto": "una casa de dos plantas de ladrillo pintado de blanco con piscina en Houston, parecida a la real",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se alquila a turistas",
+        "Reparto o reventa"
+      ],
+      "lugar": "Houston · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-houston-2",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-houston-2.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 85534,
+      "hashSha256": "418a646995c2b589772bd48a1ce18ccf157963fc85ca5e3eff90b5db8b339b54",
+      "alt": "Ilustración editorial de una casa reformada de dos plantas con fachada de tablas color crema en Houston, parecida a la real, imagen generada con IA. Pasos: compras si hay oferta; la casa se alquila; reparto y venta final. No es una foto del activo real.",
+      "concepto": "una casa reformada de dos plantas con fachada de tablas color crema en Houston, parecida a la real",
+      "pasos": [
+        "Compras si hay oferta",
+        "La casa se alquila",
+        "Reparto y venta final"
+      ],
+      "lugar": "Houston · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-houston-3",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-houston-3.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 79930,
+      "hashSha256": "80064cb8dcd295822529894d45a19a12b6843daee53ea57cf947626ce9ac71e2",
+      "alt": "Ilustración editorial de una hilera de casas estrechas de tres plantas con garaje en Houston, parecida a la real, imagen generada con IA. Pasos: compras si hay oferta; la casa se alquila; reparto o reventa. No es una foto del activo real.",
+      "concepto": "una hilera de casas estrechas de tres plantas con garaje en Houston, parecida a la real",
+      "pasos": [
+        "Compras si hay oferta",
+        "La casa se alquila",
+        "Reparto o reventa"
+      ],
+      "lugar": "Houston · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-levante-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-levante-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 62000,
+      "hashSha256": "d4d064c424aef6cfb2881c905b226ff71f0db5c7fefaedfd1d372d0b0a8d42a9",
+      "alt": "Ilustración editorial de una calle de casas nuevas de dos plantas con tejado de teja cerca de Valencia, parecida a la real, imagen generada con IA. Pasos: compras si hay oferta; se presta al promotor; intereses y devolución. No es una foto del activo real.",
+      "concepto": "una calle de casas nuevas de dos plantas con tejado de teja cerca de Valencia, parecida a la real",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se presta al promotor",
+        "Intereses y devolución"
+      ],
+      "lugar": "Godelleta · España",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-malaga-6",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-malaga-6.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 69548,
+      "hashSha256": "1d49671033060b4d215900f18f5ac94103cb71f21f225bc46b5f4c569c233649",
+      "alt": "Ilustración editorial de un bloque alto de pisos de ladrillo en un barrio de Málaga, parecido al real, imagen generada con IA. Pasos: compras si hay oferta; se alquila por cuartos; reparto o reventa. No es una foto del activo real.",
+      "concepto": "un bloque alto de pisos de ladrillo en un barrio de Málaga, parecido al real",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se alquila por cuartos",
+        "Reparto o reventa"
+      ],
+      "lugar": "Málaga · España",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-miami-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-miami-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 60724,
+      "hashSha256": "6f4e0633e9d4c6af9c025ba6cba33f3582d80bc5f3ed127ed19f942bbad1f61c",
+      "alt": "Ilustración editorial de un edificio bajo de apartamentos blanco con palmeras junto a la playa de Key Biscayne, parecido al real, imagen generada con IA. Pasos: compras si hay oferta; el piso se alquila; reparto o reventa. No es una foto del activo real.",
+      "concepto": "un edificio bajo de apartamentos blanco con palmeras junto a la playa de Key Biscayne, parecido al real",
+      "pasos": [
+        "Compras si hay oferta",
+        "El piso se alquila",
+        "Reparto o reventa"
+      ],
+      "lugar": "Key Biscayne · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-miami-2",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-miami-2.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 94928,
+      "hashSha256": "a2a7ce2c8834e9406a7ed4e09dabd710166753bc9f7176a4c85a3eb2bd1eb1b2",
+      "alt": "Ilustración editorial de una torre residencial de cristal en obra frente a la bahía de Miami, parecida a la real, imagen generada con IA. Pasos: compras si hay oferta; se alquila al acabar; reparto o reventa. No es una foto del activo real.",
+      "concepto": "una torre residencial de cristal en obra frente a la bahía de Miami, parecida a la real",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se alquila al acabar",
+        "Reparto o reventa"
+      ],
+      "lugar": "Miami · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-miami-3",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-miami-3.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 48754,
+      "hashSha256": "4e42766fc38f78029c868f5d6bed7c3db3db27bd3f4f8f8ba414ecb966ece163",
+      "alt": "Ilustración editorial de una torre residencial de cristal en obra entre los rascacielos de Miami, parecida a la real, imagen generada con IA. Pasos: compras si hay oferta; se alquila al acabar; reparto o reventa. No es una foto del activo real.",
+      "concepto": "una torre residencial de cristal en obra entre los rascacielos de Miami, parecida a la real",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se alquila al acabar",
+        "Reparto o reventa"
+      ],
+      "lugar": "Miami · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-miami-5",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-miami-5.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 68964,
+      "hashSha256": "820c91a4ddcbaa7f65c113e41bef65bf4eff67050cd6da93ca8f2f9231566976",
+      "alt": "Ilustración editorial de una villa blanca de dos plantas con piscina y palmeras tal como quedaría tras la reforma, parecida a la real, imagen generada con IA. Pasos: compras si hay oferta; la casa se reforma; reparto tras la venta. No es una foto del activo real.",
+      "concepto": "una villa blanca de dos plantas con piscina y palmeras tal como quedaría tras la reforma, parecida a la real",
+      "pasos": [
+        "Compras si hay oferta",
+        "La casa se reforma",
+        "Reparto tras la venta"
+      ],
+      "lugar": "Miami · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-opportunity-2",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-opportunity-2.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 61404,
+      "hashSha256": "acf387e755cfe077c0cd6930bfe705f9d675b37fbf00b22d16d0ad84301f99b9",
+      "alt": "Ilustración editorial de un edificio de viviendas a medio terminar en una ciudad española, como imagen de una cartera de inmuebles que se recuperan, imagen generada con IA. Pasos: compras si hay oferta; se recuperan inmuebles; reparto o reventa. No es una foto del activo real.",
+      "concepto": "un edificio de viviendas a medio terminar en una ciudad española, como imagen de una cartera de inmuebles que se recuperan",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se recuperan inmuebles",
+        "Reparto o reventa"
+      ],
+      "lugar": "Sobre todo en España",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-pirineos-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-pirineos-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 66368,
+      "hashSha256": "e5c0c74da090faf49484c2eb2b8765b9ed15c46f962c267faecc246194780ddd",
+      "alt": "Ilustración editorial de una casona de piedra con tejado de pizarra en una plaza de un pueblo del Pirineo, parecida a la real, imagen generada con IA. Pasos: compras si hay oferta; la casona se reforma; reparto tras la venta. No es una foto del activo real.",
+      "concepto": "una casona de piedra con tejado de pizarra en una plaza de un pueblo del Pirineo, parecida a la real",
+      "pasos": [
+        "Compras si hay oferta",
+        "La casona se reforma",
+        "Reparto tras la venta"
+      ],
+      "lugar": "Benasque · España",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-proyecto-100",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-proyecto-100.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 73586,
+      "hashSha256": "c103a7eab315d6bb64f107ea2ecff6217fb02d354c6edb6b9797499cca79f384",
+      "alt": "Ilustración editorial de unas villas entre selva tropical con piscina sobre el mar, como imagen de una cartera de proyectos en obra, imagen generada con IA. Pasos: compras si hay oferta; se presta para obras; reparto o reventa. No es una foto del activo real.",
+      "concepto": "unas villas entre selva tropical con piscina sobre el mar, como imagen de una cartera de proyectos en obra",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se presta para obras",
+        "Reparto o reventa"
+      ],
+      "lugar": "Yucatán · Dubái · Samaná",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-rentas-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-rentas-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 71270,
+      "hashSha256": "8d1daff4fa37dd5768e9304fb0caf40d2c48f3df4d0babea4da0c357190c7568",
+      "alt": "Ilustración editorial de unos edificios bajos de alquiler entre colinas verdes, como imagen de una cartera de préstamos e inmuebles en alquiler, imagen generada con IA. Pasos: compras si hay oferta; se presta y se alquila; reparto o reventa. No es una foto del activo real.",
+      "concepto": "unos edificios bajos de alquiler entre colinas verdes, como imagen de una cartera de préstamos e inmuebles en alquiler",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se presta y se alquila",
+        "Reparto o reventa"
+      ],
+      "lugar": "Varios países",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-rentas-2",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-rentas-2.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 75868,
+      "hashSha256": "7ec7206862167eb6a8e630cfc93dbaa370eb2f187f4a5592bd3610899614582a",
+      "alt": "Ilustración editorial de unos apartamentos blancos junto a una playa con palmeras, como imagen de una cartera de préstamos a proyectos, imagen generada con IA. Pasos: compras si hay oferta; se presta a proyectos; reparto o reventa. No es una foto del activo real.",
+      "concepto": "unos apartamentos blancos junto a una playa con palmeras, como imagen de una cartera de préstamos a proyectos",
+      "pasos": [
+        "Compras si hay oferta",
+        "Se presta a proyectos",
+        "Reparto o reventa"
+      ],
+      "lugar": "Varios países",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-rentas-3",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-rentas-3.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 59868,
+      "hashSha256": "6ea97ced81e72784555c2f634ad5bcd09f64e840be1ce79b511b7180e9c1fed4",
+      "alt": "Ilustración editorial de una promoción de viviendas en obra junto a otras ya terminadas, como imagen de una cartera de préstamos e inmuebles, imagen generada con IA. Pasos: compras si hay oferta; financia obras y pisos; reparto o reventa. No es una foto del activo real.",
+      "concepto": "una promoción de viviendas en obra junto a otras ya terminadas, como imagen de una cartera de préstamos e inmuebles",
+      "pasos": [
+        "Compras si hay oferta",
+        "Financia obras y pisos",
+        "Reparto o reventa"
+      ],
+      "lugar": "Varios países",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "reental-secundario-san-antonio-1",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-reental-secundario-san-antonio-1.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 54070,
+      "hashSha256": "b38f4eed604372e14f3bd19862153da415461ee4374bf9ad45e7b4a43f4cb164",
+      "alt": "Ilustración editorial de un gran hotel de color arena con piscina y palmeras en San Antonio, parecido al real, imagen generada con IA. Pasos: compras si hay oferta; el hotel se renueva; reparto o reventa. No es una foto del activo real.",
+      "concepto": "un gran hotel de color arena con piscina y palmeras en San Antonio, parecido al real",
+      "pasos": [
+        "Compras si hay oferta",
+        "El hotel se renueva",
+        "Reparto o reventa"
+      ],
+      "lugar": "San Antonio · EE. UU.",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "servicehunter-quitt",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-servicehunter-quitt.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 55938,
+      "hashSha256": "728425617b4226dabdf0670c20ba1d15dd614a5626a4a90e9f966792c126c71d",
+      "alt": "Ilustración editorial de un edificio de oficinas contemporáneo en una calle de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras a un accionista; pasas a ser accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas contemporáneo en una calle de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+      "pasos": [
+        "Compras a un accionista",
+        "Pasas a ser accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Zúrich · Suiza",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-spiko-letras-del-tesoro-euro.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 44674,
+      "hashSha256": "36765508129b9a90475ffcca024f56c767ac21ed06d048f2cd0d8a3c8aac8eca",
+      "alt": "Ilustración editorial de un edificio ministerial neoclásico genérico, como imagen de un fondo que compra letras del Tesoro de la zona euro, imagen generada con IA. Pasos: compras participaciones; el fondo compra letras; pides el reembolso. No es una foto del activo real.",
+      "concepto": "un edificio ministerial neoclásico genérico, como imagen de un fondo que compra letras del Tesoro de la zona euro",
+      "pasos": [
+        "Compras participaciones",
+        "El fondo compra letras",
+        "Pides el reembolso"
+      ],
+      "lugar": "Zona euro",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "switzerlend",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-switzerlend.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 60752,
+      "hashSha256": "fd3b7d9e489eb7f7b81d8438bb9f093dce6fd4d27b128499ea8119fe97c94594",
+      "alt": "Ilustración editorial de un edificio de oficinas de cristal y piedra en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un edificio de oficinas de cristal y piedra en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+      "pasos": [
+        "Compras acciones",
+        "Eres accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Zúrich · Suiza",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-terreno-con-arrendamiento-billa.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 86094,
+      "hashSha256": "a27447e69016501a25d25b37b411d25b3d815daf2bab2248b19a64f02499b32b",
+      "alt": "Ilustración editorial de un supermercado sin marca en su propio solar en un valle de Carintia, visto desde el aire, imagen generada con IA. Pasos: compras en la emisión; un súper alquila el suelo; reparto o venta futura. No es una foto del activo real.",
+      "concepto": "un supermercado sin marca en su propio solar en un valle de Carintia, visto desde el aire",
+      "pasos": [
+        "Compras en la emisión",
+        "Un súper alquila el suelo",
+        "Reparto o venta futura"
+      ],
+      "lugar": "Brückl · Austria",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-pluddemanngasse-101-graz.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 57236,
+      "hashSha256": "68ffb11a12c2924e4712e05aa0becb93e42506dfeb891ce54bf7c5057dd13507",
+      "alt": "Ilustración editorial de un bloque de pisos moderno de fachada blanca en Graz, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un bloque de pisos moderno de fachada blanca en Graz, parecido al real",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Graz · Austria",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-pottendorfer-stra-e-62-wr-neustadt.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 45228,
+      "hashSha256": "dd90f1d52a7742c4a131d9fffe528450ea3a34052d82487b65e35135af39d7ae",
+      "alt": "Ilustración editorial de un edificio de viviendas blanco y gris en una esquina de Wiener Neustadt, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio de viviendas blanco y gris en una esquina de Wiener Neustadt, parecido al real",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Wiener Neustadt · Austria",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-schwarzer-weg-18-graz.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 67808,
+      "hashSha256": "4b938a75099b59e849f76443ecbbd2dcffbd0e6969c029ff9d3b212c2e452f70",
+      "alt": "Ilustración editorial de un edificio residencial moderno de tres alturas con terrazas en Graz, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio residencial moderno de tres alturas con terrazas en Graz, parecido al real",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Graz · Austria",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-sonnleithnergasse-2-viena.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 88962,
+      "hashSha256": "d588ca9b84844f6cc729a9ebdac4ca23fe77a518ca283e9fe8d59d3417f90ace",
+      "alt": "Ilustración editorial de un gran conjunto residencial blanco con patio arbolado en Viena, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un gran conjunto residencial blanco con patio arbolado en Viena, parecido al real",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Viena · Austria",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "categoria": "Inmobiliario",
+      "archivo": "oferta-vivienda-stallhofstra-e-28-gratwein.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 77928,
+      "hashSha256": "3f6355db0b63f7c97b25fe1e28ec31760af2ef49f52ab7b3a9c7f81cf717f3f6",
+      "alt": "Ilustración editorial de un edificio residencial de dos plantas ante colinas boscosas de Estiria, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.",
+      "concepto": "un edificio residencial de dos plantas ante colinas boscosas de Estiria, parecido al real",
+      "pasos": [
+        "Compras participaciones",
+        "La vivienda se alquila",
+        "Reparto o venta en la app"
+      ],
+      "lugar": "Gratwein · Austria",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
+    },
+    {
+      "slug": "wemakeit",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-wemakeit.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 69858,
+      "hashSha256": "ef7e8e3cde4029d179350f2c75eab9b7f72e2ffd64c84562a50198d2dd41fdf7",
+      "alt": "Ilustración editorial de un antiguo edificio industrial de ladrillo convertido en oficinas en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras a un accionista; pasas a ser accionista; reventa entre socios. No es una foto del activo real.",
+      "concepto": "un antiguo edificio industrial de ladrillo convertido en oficinas en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones",
+      "pasos": [
+        "Compras a un accionista",
+        "Pasas a ser accionista",
+        "Reventa entre socios"
+      ],
+      "lugar": "Zúrich · Suiza",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-10-20"
     }
   ]
 }

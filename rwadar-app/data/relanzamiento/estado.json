@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-09-30",
+  "actualizadoEl": "2026-10-21",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Lanzamiento público expresamente autorizado. Corte editorial gratuito con catálogo real de solo lectura, identidad completa, imágenes propias y analítica agregada web. Publicidad y cobros permanecen desactivados hasta completar la configuración y revisión comercial.",
+  "nota": "Actualización del 21/10/2026 autorizada por Víctor: catálogo del 21/10 (lote c3b71e81), fotos de las 49 fichas, tarjetas al estilo Booking, revisión de 20 puntos de la web y app 1.3.2. Perfil editorial gratuito sin cambios; publicidad, cobros, comisiones, opiniones, avisos, comunidad y manual siguen desactivados. Anterior: Actualización web y Android publicada y comprobada el 11/10/2026, Android sin cargos adicionales. Corte editorial gratuito con catálogo público y cuentas opcionales. Refuerzo de sesiones aplicado y comprobado; correos reales de alta y recuperación recibidos. Android 1.3.1 instalado/probado en emulador, capturas revisadas y descarga pública con firma verificada. El cambio final real de contraseña, Auth nativo real y un teléfono físico siguen sin comprobarse; no se atribuyen a los ensayos locales. Publicidad, cobros, comisiones, opiniones, avisos y manual permanecen desactivados.",
   "revisionAprobada": {
-    "commit": "70aa5396e08033242e0dfdbe0fb62699ae2964a6",
-    "contenidoSha256": "sha256:14e703f0d5233e1f0ebe1b6f69a80210d3b2183a4092da94a7cfb9643b154f28",
+    "commit": "911c0463be14779dcbe94b4b13f053bdcb2f2eef",
+    "contenidoSha256": "sha256:c72c7bf48baec89ce1f6cc436ccb81424be19a02c1b369f7bf178512aef83e71",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
@@ -44,8 +44,14 @@
     },
     "aviso_legal_y_condiciones": {
       "estado": "aprobado",
-      "detalle": "Titular identificado y política alineada con el servidor: usuarios pausados, nuevas altas cerradas, catálogo público de solo lectura y canal de derechos por correo.",
+      "detalle": "Titular identificado. Privacidad actualizada para las cuentas opcionales web y Android: correo confirmado, nombre opcional, vigilancia propia, sesión solo en memoria, correos de acceso y baja reautenticada. Catálogo público de solo lectura; opiniones, avisos, publicidad, cobros y manual apagados. Revisión interna, no dictamen jurídico externo.",
       "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/VERIFICACION-CUENTAS-2026-10-11.md#implementacion-y-pruebas-locales",
+          "verificadoEl": "2026-10-11",
+          "resumen": "Privacidad del 11/10 describe web y Android, sesión en memoria y baja con contraseña reciente. No permite inversión, custodia, anuncios, opiniones, avisos ni una descarga pública del manual. Las verificaciones reales y sus límites se separan de los ensayos locales."
+        },
         {
           "tipo": "documento",
           "referencia": "rwadar-site/privacidad.html#aviso-legal",
@@ -66,8 +72,20 @@
     },
     "catalogo_actual_y_citable": {
       "estado": "aprobado",
-      "detalle": "V2 final 06abe207-0b5d-9918-5c48-ca647c013bd5 aprobada a las 10:37:51 UTC: 26 plataformas y 49 referencias documentadas, 24 principales, 21 secundarias y 4 en preparación. SQL anon y REST real completos; fuentes activas sin localizadores rotos. V1 a8360ce0 compatible26/28 con cifras y fechas intactas. Radar28/09 vigente hasta05/10 inclusive.",
+      "detalle": "Lote del 6/10 vigente hasta el 13/10: 26 plataformas y 49 referencias documentadas, 24 principales, 21 secundarias y 4 en preparación. Lectura y sincronización públicas del 11/10 confirmaron el lote completo y que no está retirado; no renuevan las fechas de las fuentes. V1 conserva compatibilidad para APK anteriores. Al vencer, se conserva el catálogo completo con aviso y sin cifras vencidas, no se vacía.",
       "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CATALOGO-V2-2026-10-06.md",
+          "verificadoEl": "2026-10-06",
+          "resumen": "Informe del lote editorial vigente del 6/10, con revisión de fuentes y fichas y vigencia hasta el 13/10. No se reutiliza como una comprobación nueva del 11/10."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-CUENTAS-2026-10-11.md#comprobaciones-reales-en-linea",
+          "verificadoEl": "2026-10-11",
+          "resumen": "Lectura de catálogo y sincronización real sin escrituras: 26 plataformas, 4 descartes y 49 referencias V2. Publicación no retirada, fechas del lote conservadas y catálogo siempre disponible salvo orden expresa."
+        },
         {
           "tipo": "fuente-primaria",
           "referencia": "rwadar-app/data/verificaciones/2026-09-28/revision-fuentes.json",
@@ -108,8 +126,20 @@
     },
     "beta_segura_extremo_a_extremo": {
       "estado": "aprobado",
-      "detalle": "Producción final78977d11 y dominio canónico comprobados:54/54 recursos,49 referencias26 radar, fuentes corregidas, ordenación y diálogos móvil320/390px sin desbordar ni errores de consola observados. Revisión coordinada cubre los49diálogos, filtros,búsqueda, academia,calculadora y legal. npm test341web84móvil; diez regresiones caducidad/fallo parcial. APK10 instalado en Android API35,run36703760962 PASS, publicado y descargado anónimamente con bytes,checksum,firma y latest idénticos; límites del emulador y renderer registrados. Revocación declarada y evidencia histórica separadas.",
+      "detalle": "Corte web del 11/10 publicado y comprobado: 35 controles HTTP y los 64 archivos idénticos al artefacto aprobado; formularios de acceso, alta y recuperación y catálogo íntegro observados en navegador. Correos reales recibidos, perfil/salida observados y SQL aplicado/postverificado. Esto aprueba la publicación web, no afirma un cambio real de contraseña ni una baja real. Android 1.3.1 superó sus propios controles de binario, emulador, separación visual y descarga pública firmada; no se afirma Auth nativo real ni un teléfono físico. La revocación declarada del incidente anterior es evidencia histórica y no sustituye esta comprobación. Los informes anteriores describen versiones históricas.",
       "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ANDROID-1.3.1-2026-10-11.md",
+          "verificadoEl": "2026-10-11",
+          "resumen": "APK exacto 1.3.1/código14 instalado y ejecutado en emulador API35: catálogo 26/49, navegación, Academy, favorito persistente y formularios sin credenciales. Separación nativa 92px y capturas revisadas. Release pública y descarga anónima coincidentes en firma, tamaño y huellas. Pruebas locales finales 501 web/182 móvil/196 SQL. No Auth nativo real, SMTP nativo ni dispositivo físico."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-CUENTAS-2026-10-11.md",
+          "verificadoEl": "2026-10-11",
+          "resumen": "Web aprobada: revisión pública comprobada por HTTP 35/35, huellas 64/64 y navegador con formularios y catálogo íntegro. Local: 501 web, 180 móvil, 196 SQL y Chrome 61+30. Alta real confirmada por el titular, perfil/salida observados y recuperación recibida. SQL aplicado/postverificado. El cambio real de contraseña, la baja real y el APK nuevo no se atribuyen a estas pruebas web."
+        },
         {
           "tipo": "prueba",
           "referencia": "docs/VERIFICACION-WEB-2026-09-28.md",

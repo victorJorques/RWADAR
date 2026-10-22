@@ -1,0 +1,704 @@
+{
+  "fecha": "2026-10-19",
+  "metodo": "Consulta del 19/10/2026 (08:30–09:00 UTC) desde la sesión en la nube de Claude Code, con salida a internet en EE. UU. (Ohio). Chromium sin ventana y sin iniciar sesión ni aceptar nada (rwadar-app/capturar-fuentes.mjs); los PDF, con pdftotext; las fechas de Brickwise y Aktionariat, con la zona horaria de Madrid. Donde el navegador recibió el desafío de Cloudflare o un 502 se repitió con una petición HTTP directa. Algunas webs bloquean esta conexión (Midas, republic.com, la SEC, la documentación legal de Backed): se indica en cada caso.",
+  "plataformas": {
+    "fuentes": [
+      {
+        "id": "addx-web",
+        "url": "https://addx.co/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Web activa: alta, oportunidades por plazo y rendimiento; «Licensed by MAS»."
+      },
+      {
+        "id": "addx-acceso",
+        "url": "https://www.addx.co/en/inside-addx/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "«ADDX is open to all non-U.S. accredited and institutional investors»; licencia y regulación de MAS."
+      },
+      {
+        "id": "addx-mas",
+        "url": "https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Directorio MAS (actualizado el 16/10/2026): ADDX PTE. LTD., Capital Markets Services Licensee, Exempt Financial Adviser y Recognised Market Operator."
+      },
+      {
+        "id": "archax-web",
+        "url": "https://archax.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Grupo regulado en Reino Unido y UE; servicios por entidades regionales (UK con FCA, Europa en España, US «coming soon»)."
+      },
+      {
+        "id": "archax-permisos",
+        "url": "https://uk.archax.com/regulatory-permissions",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Permisos de Archax UK: registro de la FCA, entre otros, el de la 5.ª Directiva de blanqueo."
+      },
+      {
+        "id": "archax-cnmv",
+        "url": "https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Listado CNMV de sociedades y agencias de valores: ARCHAX MARKETS EUROPE, S.V., S.A., registro 289 de 08/08/2019, Calle Pinar 5, Madrid."
+      },
+      {
+        "id": "archax-eu",
+        "url": "https://eu.archax.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "«All services are currently in pre-launch preparation»: MTF, intermediación, custodia y tokenización «Pre-launch»; OTC «Coming Soon» pendiente de MiCA; clientes profesionales e institucionales; «Register Interest»."
+      },
+      {
+        "id": "artex-web",
+        "url": "https://www.artexgm.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Portada: MTF de arte regulado por la FMA de Liechtenstein. /equities muestra una sola cotización (Bacon, «Three studies for Portrait of George Dyer») con último precio 67 €, volumen 4, máximo 70 € y mínimo 50 €; mejor compra y venta «undefined €». /trading-participants lista miembros y brokers (ABN Neuflize, Aurel BGC, Pictet, Bordier, CACEIS…)."
+      },
+      {
+        "id": "artex-lb",
+        "url": "https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Banco de Lituania: ARTEX Global Markets AG, código 307407, Liechtenstein (Triesen), empresa de servicios de inversión del EEE sin sucursal: recepción y transmisión de órdenes y negociación por cuenta propia."
+      },
+      {
+        "id": "backed-web",
+        "url": "https://backed.fi/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "xStocks visibles (SPYx, COINx, NVDAx, TSLAx) con rendimiento a 1 año; enlace a xStocks.fi y al panel."
+      },
+      {
+        "id": "xstocks-legal",
+        "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Certificados tracker de Backed Assets (JE) Limited (JFSC); folleto base aprobado por la FMA y pasaportable en el EEE para distribuidores licenciados; final terms por producto; no se ofrecen en EE. UU. ni a U.S. Persons."
+      },
+      {
+        "id": "blocksquare-web",
+        "url": "https://blocksquare.io/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Oferta B2B (protocolo, marca blanca, «Contact sales»); «Regulation: Available soon». El apartado de noticias no muestra entradas fechadas."
+      },
+      {
+        "id": "blocksquare-terms",
+        "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Plantilla para socios certificados (CP_COMPANY): KYC y sanciones (ONU, UE, Reino Unido, OFAC); jurisdicción y regulador en blanco; el operador no es entidad financiera."
+      },
+      {
+        "id": "centrifuge-web",
+        "url": "https://centrifuge.io/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Portada: «open infrastructure for onchain asset management», 1.8B+ TVL, 1768 activos."
+      },
+      {
+        "id": "centrifuge-terms",
+        "url": "https://centrifuge.io/terms",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "«Neither Centrifuge nor any affiliated entity is licensed in your jurisdiction»; pools «unregulated»; acceso restringible a inversores sofisticados, acreditados o cualificados tras onboarding."
+      },
+      {
+        "id": "courtyard-web",
+        "url": "https://courtyard.io/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Packs y coleccionables físicos «Vaulted and insured» y marketplace activos."
+      },
+      {
+        "id": "courtyard-terms",
+        "url": "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Courtyard Inc. (Delaware); no garantiza disponibilidad ni reventa; restricciones por sanciones."
+      },
+      {
+        "id": "figure-web",
+        "url": "https://figure.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "HELOC, refinanciación, DSCR y préstamo con garantía cripto; enlaza a Figure Markets."
+      },
+      {
+        "id": "figure-open",
+        "url": "https://www.figuremarkets.com/disclosures/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Página de divulgaciones legible: Figure Securities, Inc. (Form CRS, ATS), Figure Payments Corporation y Figure Markets Ireland por separado."
+      },
+      {
+        "id": "figure-finra",
+        "url": "https://files.brokercheck.finra.org/firm/firm_307093.pdf",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "BrokerCheck ©2026: FIGURE SECURITIES, INC., CRD 307093, SEC 8-70478; no suspendida; opera un ATS."
+      },
+      {
+        "id": "fireblocks-web",
+        "url": "https://fireblocks.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Infraestructura de activos digitales y stablecoins para empresas (2.500 empresas)."
+      },
+      {
+        "id": "fireblocks-trust",
+        "url": "https://www.fireblocks.com/trustco",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Fireblocks Trust Company: custodia cualificada para instituciones."
+      },
+      {
+        "id": "nydfs-virtual",
+        "url": "https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Leída con petición HTTP directa (el navegador recibe el desafío de Cloudflare): «Fireblocks Trust Company, LLC · Limited Purpose Trust Charter · 2024-08»."
+      },
+      {
+        "id": "franklin-benji",
+        "url": "https://digitalassets.franklintempleton.com/benji/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Benji: FOBXX tokenizado (1 acción = 1 BENJI), app para particulares y portal institucional; redes Stellar, Polygon y otras."
+      },
+      {
+        "id": "franklin-prospectus",
+        "url": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Folleto de 1/08/2026 (9001 P 08/26): app Benji e Institutional Web Portal, mínimo de 20 USD en Stellar hasta 5.000.000 USD en Ethereum; el fondo no está registrado ni autorizado para distribuirse en ningún país de la UE/EEE."
+      },
+      {
+        "id": "inx-web",
+        "url": "https://inx.co/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "INX One activo, con «Republic offerings» y negociación de activos tokenizados."
+      },
+      {
+        "id": "inx-finra",
+        "url": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "BrokerCheck ©2026: INX SECURITIES, LLC, CRD 162182, SEC 8-69058; no suspendida; ATS."
+      },
+      {
+        "id": "inx-disclosure",
+        "url": "https://inx.co/funds-availability-disclosure",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "INX Securities, LLC; saldos en BMO Harris Bank; vías de financiación para usuarios de EE. UU. y de fuera."
+      },
+      {
+        "id": "lofty-web",
+        "url": "https://lofty.ai/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Marketplace de participaciones de inmuebles de EE. UU. activo."
+      },
+      {
+        "id": "lofty-terms",
+        "url": "https://www.lofty.ai/terms",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Actualizados el 1/05/2026: «We are not registered with the U.S. Securities and Exchange Commission as a national securities exchange or in any other capacity»."
+      },
+      {
+        "id": "maple-web",
+        "url": "https://maple.finance/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Productos syrup «open to global investors (non-US)» y crédito institucional; syrupUSDG en Ethereum y Robinhood Chain."
+      },
+      {
+        "id": "maple-terms",
+        "url": "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Términos de la interfaz syrupUSDC/USDT/USDG (Syrup Ltd.): no registrada ante ningún regulador; jurisdicciones prohibidas, entre ellas EE. UU."
+      },
+      {
+        "id": "maple-institutional",
+        "url": "https://maple.finance/earn/maple-institutional",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Préstamos garantizados institucionales: AUM 858 M USD, APY neto 5,4 %."
+      },
+      {
+        "id": "midas-web",
+        "url": "https://midas.app/llms.txt",
+        "accesible": true,
+        "urlAnterior": "https://midas.app/",
+        "nota": "midas.app se leyó a las 08:37 UTC (TVL total 698,84 M USD) y después pasó a devolver el desafío de Cloudflare. Se usa el índice oficial https://midas.app/llms.txt (leído con petición directa): lista mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro."
+      },
+      {
+        "id": "midas-mtbill",
+        "url": "https://www.mfsa.mt/wp-content/uploads/2026/07/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2026.pdf",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Folleto base aprobado por la FMA el 17/07/2026, válido hasta el 17/07/2027; mTBILL (CH1371002986) en la lista de productos."
+      },
+      {
+        "id": "midas-old-prospectus",
+        "url": "https://www.mfsa.mt/wp-content/uploads/2024/11/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2024.pdf",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Folleto base del 17/07/2024 aprobado por la FMA (vencido); se conserva como antecedente."
+      },
+      {
+        "id": "ondo-web",
+        "url": "https://ondo.finance/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Ondo Stocks, USDY y OUSG con «Not Available in US»; USDY y Ondo Stocks solo para inversores cualificados o profesionales en varias jurisdicciones."
+      },
+      {
+        "id": "ondo-usdy-access",
+        "url": "https://docs.ondo.finance/general-access-products/usdy/eligibility",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Tabla de elegibilidad: en el EEE, «Professional Client» (MiFID II) o «Qualified Investor»."
+      },
+      {
+        "id": "openeden-web",
+        "url": "https://openeden.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Portada legible: TBILL 294,78 M USD, USDO 15,26 M USD, HYBOND 5,00 M USD."
+      },
+      {
+        "id": "openeden-intro",
+        "url": "https://docs.openeden.com/tbill/introduction",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Emisor de TBILL: «registered professional fund» regulado por la BVI FSC."
+      },
+      {
+        "id": "openeden-onboarding",
+        "url": "https://docs.openeden.com/tbill/investor-onboarding",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "«The TBILL Vault is a permissioned protocol»: Professional Investors BVI (SIBA) y Accredited Investors de EE. UU."
+      },
+      {
+        "id": "paxg-web",
+        "url": "https://paxos.com/paxgold",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Ficha PAXG (redirige a /pax-gold): oro LBMA en Londres, canje por lingotes Good Delivery, regulada por la OCC; «PAXG is currently unavailable in the EU»."
+      },
+      {
+        "id": "paxg-nydfs",
+        "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Leída con petición HTTP directa: nota del 5/09/2019, el NYDFS autoriza PAX Gold de Paxos Trust Company LLC."
+      },
+      {
+        "id": "reental-web",
+        "url": "https://reental.co/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Portada activa con proyectos y acceso."
+      },
+      {
+        "id": "reental-faq",
+        "url": "https://www.reental.co/en/faqs",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "«Any adult user can register and invest after passing the KYC»; residentes fiscales en EE. UU. deben ser inversores acreditados."
+      },
+      {
+        "id": "reental-emision",
+        "url": "https://www.reental.co/en/corporate/reental-lanza-la-primera-emision-de-un-security-token-inmobiliario-en-espana-autorizado-por-la-cnmv",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Primera emisión de security token inmobiliario autorizada por la CNMV (ERIR Ursus-3 Capital)."
+      },
+      {
+        "id": "republic-web",
+        "url": "https://help.republic.com/en/",
+        "accesible": true,
+        "urlAnterior": "https://republic.com/raise",
+        "nota": "republic.com devuelve «Sorry, you have been blocked» de Cloudflare a navegador y a petición directa. Se usa el centro de ayuda oficial de Republic Europe (help.republic.com): guías de alta, exploración de oportunidades, páginas de campaña e inversión."
+      },
+      {
+        "id": "republic-entities",
+        "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate",
+        "accesible": true,
+        "urlAnterior": "https://republic.com/help/which-entities-comprise-republic-s-family-of-companies",
+        "nota": "La página de entidades de republic.com está bloqueada. Se usa la lista de FINRA de funding portals: «OpenDeal Portal LLC, SEC File No.: 7-167, Other Name(s): Republic, https://republic.co; https://republic.com»."
+      },
+      {
+        "id": "republic-finra",
+        "url": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "BrokerCheck ©2026: OPENDEAL BROKER LLC, CRD 291387, SEC 8-70055; SEC y FINRA desde el 02/10/2018; 51 estados y territorios; no suspendida."
+      },
+      {
+        "id": "securitize-web",
+        "url": "https://securitize.io/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Portada legible: acciones de EE. UU. en cadena, ARK Venture Fund tokenizado, alta e inicio de sesión."
+      },
+      {
+        "id": "securitize-finra",
+        "url": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "BrokerCheck ©2026: SECURITIZE MARKETS, LLC, CRD 283256, SEC 8-69743; no suspendida; ATS."
+      },
+      {
+        "id": "spiko-web",
+        "url": "https://spiko.io/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "«Our flagship products are UCITS approved by the French regulatory authorities. Spiko is a MiFID-authorized investment firm»."
+      },
+      {
+        "id": "spiko-access",
+        "url": "https://www.spiko.io/use-cases/web3",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Fondos para empresas de activos digitales; Spiko Finance con licencia ACPR 19183 y registro ORIAS 23008251; fondos en CACEIS Bank. Ya no trae la frase sobre inversores no profesionales."
+      },
+      {
+        "id": "spiko-amf",
+        "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "API pública de GECO (AMF): SPIKO EU T-BILLS MONEY MARKET FUND, OPCVM, estado «Vivant», «Tous souscripteurs»."
+      },
+      {
+        "id": "superstate-web",
+        "url": "https://superstate.co/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "superstate.co redirige a superstate.com: FundOS y activos tokenizados."
+      },
+      {
+        "id": "superstate-ustb",
+        "url": "https://superstate.com/assets/ustb",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "USTB = Invesco Short Duration US Government Securities Fund; «Accredited Investors and Qualified Purchasers»; «not registered as an investment company»; AUM 824,5 M USD a 15/10/2026."
+      },
+      {
+        "id": "swarm-web",
+        "url": "https://docs.swarm.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Documentación oficial legible (docs.swarm.com); FAQ: onboarding con KYC/AML y «we don't have a license to transfer real underlying stocks»."
+      },
+      {
+        "id": "swarm-terms",
+        "url": "https://docs.swarm.com/about/terms/tos",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Términos de Swarm Capital GmbH como contraparte; tribunales de Berlín; sin licencia ni regulador citados."
+      },
+      {
+        "id": "taurus-web",
+        "url": "https://taurushq.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Pie: Taurus SA, securities firm de FINMA; Taurus Europe, licencia MiFID de la CySEC (465/26); «TDX is an organized trading facility operated by Taurus SA, not a stock exchange»."
+      },
+      {
+        "id": "taurus-disclosure",
+        "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Taurus SA autorizada y supervisada por FINMA; T-DX OTF; clientes minoristas, profesionales e institucionales; execution-only."
+      },
+      {
+        "id": "taurus-finma",
+        "url": "https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Lista FINMA «Authorised banks and securities firms» generada el 19.10.2026: «Taurus SA, Genève, Securities firm». El navegador recibió un 502; se leyó con petición directa."
+      },
+      {
+        "id": "tokeny-web",
+        "url": "https://tokeny.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Plataforma T-REX y estándar ERC-3643."
+      },
+      {
+        "id": "tokeny-terms",
+        "url": "https://tokeny.com/general-terms-of-service/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Última actualización 12/03/2025: servicios «solely to professional clients, not consumers»."
+      },
+      {
+        "id": "tzero-web",
+        "url": "https://tzero.com/",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Leída en el segundo intento: agente de transferencias registrado en la SEC; acceso mediante socios (Lynq, Eddid Securities USA)."
+      },
+      {
+        "id": "tzero-company",
+        "url": "https://tzero.com/company",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "Leída en el segundo intento: tZERO Securities, LLC (broker-dealer y ATS), tZERO Digital Asset Securities, LLC (custodio), agente de transferencias, tZERO Capital Partners, LLC (Utah) e introducing broker ante la CFTC/NFA."
+      },
+      {
+        "id": "tzero-finra",
+        "url": "https://files.brokercheck.finra.org/firm/firm_123421.pdf",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "BrokerCheck ©2026: TZERO SECURITIES, LLC, CRD 123421, SEC 8-65585; no suspendida; ATS; 1 evento regulatorio."
+      },
+      {
+        "id": "paxg-occ",
+        "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+        "accesible": true,
+        "urlAnterior": "https://www.occ.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+        "nota": "La URL anterior en occ.gov redirige ahora a la portada; la misma lista está en occ.treas.gov: «Trust Banks Active As of 9/30/2026», Paxos Trust Company, National Association, charter 25379."
+      },
+      {
+        "id": "spiko-regafi",
+        "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=siren%3D%22980659585%22",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "REGAFI: Spiko Finance, SIREN 980659585, CIB 19183 desde el 15/12/2025, empresa de inversión."
+      },
+      {
+        "id": "spiko-regafi-pasaporte-es",
+        "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+        "accesible": true,
+        "urlAnterior": null,
+        "nota": "REGAFI: pasaporte de libre prestación de servicios hacia España desde el 08/01/2026."
+      },
+      {
+        "id": "backed-legal",
+        "url": "https://assets.backed.fi/legal-documentation",
+        "accesible": false,
+        "retirada": true,
+        "nota": "Desde esta conexión (salida a internet en EE. UU.) redirige a assets.backed.fi/geoblock, «Access Restricted»: Backed bloquea a visitantes de EE. UU. Se retira; xstocks-legal, del mismo emisor, respalda lo mismo."
+      },
+      {
+        "id": "franklin-sec",
+        "url": "https://www.sec.gov/Archives/edgar/data/1786958/000174177325002737/c485bpos.htm",
+        "accesible": false,
+        "retirada": true,
+        "nota": "La SEC exige declarar una dirección de correo de contacto en cada consulta automatizada y devuelve 403 sin ella; no se envió ninguna. Se retira; el folleto oficial de 1/08/2026 respalda la ficha."
+      },
+      {
+        "id": "superstate-sec",
+        "url": "https://www.sec.gov/Archives/edgar/data/1982577/000110465925042142/tm2513524d1_n1a.htm",
+        "accesible": false,
+        "retirada": true,
+        "nota": "Mismo bloqueo de la SEC. Se retira; la ficha oficial de USTB respalda la licencia y el acceso."
+      }
+    ],
+    "cambios": {
+      "backed-finance": {
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web muestra xStocks y documentación de producto vigente.",
+          "fuentes": [
+            "backed-web",
+            "xstocks-legal"
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_documento_producto",
+          "detalle": "La documentación de xStocks describe certificados de Backed Assets (JE) Limited emitidos bajo un folleto base aprobado por la FMA de Liechtenstein y pasaportable en el EEE; no acredita que Backed sea una plataforma de inversión licenciada en España.",
+          "fuentes": [
+            "xstocks-legal"
+          ]
+        }
+      },
+      "franklin-templeton": {
+        "licenciaRegistro": {
+          "estado": "confirmada_documento_producto",
+          "detalle": "El folleto de 1 de agosto de 2026 (9001 P 08/26) identifica Franklin OnChain U.S. Government Money Fund (FOBXX), de Franklin Templeton Trust, y advierte que la SEC no ha aprobado ni desaprobado los valores. No confirma distribución en España.",
+          "fuentes": [
+            "franklin-prospectus"
+          ]
+        }
+      },
+      "superstate": {
+        "licenciaRegistro": {
+          "estado": "confirmada_documento_producto",
+          "detalle": "La ficha actual identifica USTB como Invesco Short Duration US Government Securities Fund, con Invesco Advisers como gestor y Superstate Services como agente de transferencias, y dice que el fondo no está registrado como sociedad de inversión. No hay aprobación ni aval de un regulador.",
+          "fuentes": [
+            "superstate-ustb"
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "solo_cualificados",
+            "detalle": "No omitir la doble elegibilidad ni confundir filing/registro con aprobación o garantía.",
+            "fuentes": [
+              "superstate-ustb"
+            ]
+          }
+        ]
+      },
+      "republic": {
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "republic.com bloquea las consultas automatizadas. El centro de ayuda oficial de Republic Europe sigue guiando el alta, la exploración de oportunidades y la inversión en campañas.",
+          "fuentes": [
+            "republic-web"
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "FINRA mantiene a OpenDeal Broker LLC (CRD 291387) registrada y sin suspensión, y a OpenDeal Portal LLC (nombre comercial Republic) en su lista de funding portals (SEC 7-167). Cada registro corresponde a una entidad concreta del grupo.",
+          "fuentes": [
+            "republic-finra",
+            "republic-entities"
+          ]
+        }
+      },
+      "pax-gold": {
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "Paxos Trust Company, National Association figura en la lista OCC de trust banks activos a 30/09/2026 (charter 25379). La autorización NYDFS de PAX Gold es un antecedente de 2019, no la única evidencia del estado actual.",
+          "fuentes": [
+            "paxg-occ",
+            "paxg-nydfs",
+            "paxg-web"
+          ]
+        }
+      },
+      "midas": {
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "El índice oficial de productos de midas.app (llms.txt) mantiene su catálogo, con mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base de 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
+          "fuentes": [
+            "midas-mtbill",
+            "midas-web"
+          ]
+        }
+      },
+      "artex-global-markets": {
+        "estadoOperativo": {
+          "estado": "no_verificable",
+          "detalle": "La portada se lee con JavaScript: ARTEX se presenta como MTF de arte regulado por la FMA de Liechtenstein. Su página de valores muestra una sola cotización (un tríptico de Francis Bacon) con último precio de 67 € y volumen 4, pero sin mejor oferta de compra ni de venta ni fecha de la operación, así que no se confirma negociación activa.",
+          "fuentes": [
+            "artex-web"
+          ]
+        }
+      },
+      "blocksquare": {
+        "estadoOperativo": {
+          "estado": "no_verificable",
+          "detalle": "La portada, que requiere JavaScript, presenta una oferta B2B: protocolo de tokenización inmobiliaria y plataforma de marca blanca con contacto comercial. El apartado de noticias no muestra entradas fechadas, así que no se confirma actividad actual ni portales vivos.",
+          "fuentes": [
+            "blocksquare-web"
+          ]
+        }
+      },
+      "securitize": {
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La portada ya se lee: presenta inversiones tokenizadas (acciones de EE. UU. en cadena y fondos como ARK Venture Fund) con alta y acceso. No se comprobó una oferta concreta abierta; el registro de Securitize Markets se comprueba por separado.",
+          "fuentes": [
+            "securitize-web",
+            "securitize-finra"
+          ]
+        }
+      },
+      "spiko": {
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No se comprobó en la CNMV la comercialización del fondo en España ni se hizo el onboarding.",
+          "fuentes": [
+            "spiko-web",
+            "spiko-amf",
+            "spiko-regafi-pasaporte-es"
+          ]
+        }
+      },
+      "openeden": {
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La portada muestra TBILL, USDO y HYBOND con sus volúmenes, y la documentación oficial de TBILL y su proceso de onboarding es legible.",
+          "fuentes": [
+            "openeden-web",
+            "openeden-intro",
+            "openeden-onboarding"
+          ]
+        }
+      },
+      "taurus": {
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web presenta custodia, tokenización y trading para instituciones. Su pie indica que Taurus SA tiene licencia de securities firm de FINMA, que Taurus Europe tiene licencia MiFID de la CySEC (465/26) y que TDX es una OTF operada por Taurus SA, no una bolsa.",
+          "fuentes": [
+            "taurus-web"
+          ]
+        }
+      }
+    }
+  },
+  "p2pReental": {
+    "fuente": "https://p2p.rnt.finance/",
+    "consultadaEl": "2026-10-19",
+    "metodo": "Chromium sin ventana, las 3 páginas del listado público sin conectar cartera.",
+    "conOfertas": [
+      "Abu Dhabi 1",
+      "Arizona 1",
+      "Atlanta 1",
+      "Bacalar 1",
+      "Bacalar 2",
+      "Bacalar 3",
+      "Caribe 1",
+      "Caribe 2",
+      "Carolina del Norte 1",
+      "Dania Beach 1",
+      "Granada 3",
+      "Houston 1",
+      "Houston 2",
+      "Houston 3",
+      "Index 1",
+      "Jacksonville 1",
+      "Levante 1",
+      "Levante 2",
+      "Marbella 1",
+      "Miami 1",
+      "Miami 2",
+      "Miami 3",
+      "Málaga 5",
+      "Opportunity 2",
+      "Punta Cana 5",
+      "Punta Cana 6",
+      "Rentas 1",
+      "Rentas 2",
+      "Samaná 2",
+      "Valencia 14",
+      "Yucatán 2"
+    ]
+  },
+  "ofertas": {
+    "midas": "midas.app/mfone se leyó a las 08:37 UTC (TVL 65,93 M USD, precio 1,1303 USD, comisiones 0,6 % y 0 %, emisor Midas Software GmbH, gestor Fasanara, «Exempt offer») pero sin la cifra de APY: el texto pasa de «APY 1 7D 30D» a «PRICE». mglo, mglobal, mtbill, mgloeuro y docs.midas.app devolvieron el desafío de Cloudflare («Un momento…») en todos los intentos, también con navegador con ventana virtual. Por eso mF-ONE y mTBILL pierden la cifra y las cuatro pasan a «no verificable» con aviso. mGLOeuro se apoya en el anuncio de la página de productos.",
+    "brickwise": "Las 12 fichas siguen en app.brickwise.at/desktopWeb/marketplace («Handel aktiv»); BILLA está en «Neue Objekte» con 6.342 de 6.404 participaciones disponibles según la API. Valores de tarjeta y de API en las referencias del 19/10/2026 de cada ficha. La próxima distribución pasa del 15/10 al 15/11/2026.",
+    "spiko": "data.spiko.io/eutbl: 30D YIELD 2,41 % (antes 2,16 %), NAV 1,0611 EUR (18/10/2026), AUM 570,00 M EUR, mínimo 1 EUR, comisión 0,25 %.",
+    "prosegur": "Compra mínima 1 gramo, sin tarifas de custodia, liquidación en menos de 24 horas y auditorías mensuales: sin cambios.",
+    "alius": "Casa de Outeiro: 25 € por token, mínimo 2.000 €, 44.640 de 128.800 tokens, 1.116.000 € recaudados, 12 días restantes. IOD Occasio pasa de «En estudio» a campaña abierta: bono al 12 % a 12 meses, 100 € por token, 107.500 de 120.000 € y 4 días restantes. Sigue en la colección «en preparación» porque la app exige 4 fichas en ella; el aviso dice que la campaña está abierta.",
+    "aktionariat": "Aktionariat: inversión directa a 7,25 CHF (última, 14/10/2026), último cruce secundario 6,25 CHF (30/09). Boss Info: 6,70 CHF (28/09). wemakeit: 8,38 CHF fijado por el emisor, solo secundario; operaciones del 07 y 08/10 a 0,50 y 0,80 ZCHF. quitt: 8 CHF (02/10), solo secundario. Switzerlend: 68,01 CHF (07/10, inversión directa).",
+    "hausera": "Preventa de Alicante 1 desde el 19/10/2026, oferta pública el 26/10/2026; 4.037.000 €, 15 meses, 12,00 % anualizado previsto.",
+    "reental": "Las 21 fichas del inmueble siguen publicadas en reental.co. En el P2P, 15 de 21 con órdenes de venta; sin órdenes: San Antonio 1, Proyecto 100, Rentas 3, Miami 5, Pirineos 1 y Málaga 6. Levante 1 vuelve a tener órdenes.",
+    "enlaceClaude": "Se retira de las 49 fichas el documento de claude.ai del 30/09/2026 (retirarFuentes) con sus referencias; los textos que citaban «el artefacto» se reescriben con lo leído hoy en la fuente oficial."
+  }
+}

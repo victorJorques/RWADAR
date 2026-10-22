@@ -1,0 +1,2922 @@
+{
+  "desde": "2026-10-19",
+  "alcance": "Revisión editorial de fuentes primarias del 20/10/2026: las 69 fuentes del radar se volvieron a consultar y siguen diciendo lo que respaldan. No acredita onboarding, oferta abierta ni rentabilidad.",
+  "notaOrigen": "Revisión del 20/10/2026: fuentes del radar y de las 49 fichas consultadas de nuevo con rwadar-app/actualizar-catalogo.mjs. Las cifras se renuevan solo donde se vieron en la fuente oficial ese día.",
+  "notaActualizacion": "Comprobación del 20/10/2026 de destinos, fuentes y cifras de las 49 fichas.",
+  "referenciaAprobacion": "Revisión del 20/10/2026 (actualizar-catalogo.mjs); aprobada por Víctor",
+  "ofertas": {
+    "fotovoltaica-greenpoint": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribución anual esperada · 20/10/2026",
+          "valor": "6,11 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por participación · 20/10/2026",
+          "valor": "desde 100,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo · 20/10/2026",
+          "valor": "hasta el 31/12/2038",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribuciones esperadas desde · 20/10/2026",
+          "valor": "15/02/2024",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "100 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "6,11 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J32 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura. Localizador histórico https://app.brickwise.at/desktopWeb/asset/AT0000A38J32/details (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "drautalresidenz-paternion": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribución anual esperada · 20/10/2026",
+          "valor": "4,83 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por participación · 20/10/2026",
+          "valor": "desde 67,80 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo · 20/10/2026",
+          "valor": "indefinido",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Próxima distribución esperada · 20/10/2026",
+          "valor": "15/11/2026",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "55 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "5,96 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2YPQ0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "terreno-con-arrendamiento-billa": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Entrada mínima · 20/10/2026",
+          "valor": "1.000,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribución anual esperada · 20/10/2026",
+          "valor": "5,07 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo · 20/10/2026",
+          "valor": "indefinido",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribuciones esperadas desde · 20/10/2026",
+          "valor": "15/07/2026",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Participaciones disponibles en emisión (API) · 20/10/2026",
+          "valor": "6.342 de 6.404",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio de emisión por participación (API) · 20/10/2026",
+          "valor": "100,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "caracteristicas": [
+          {
+            "etiqueta": "Proveedor",
+            "valor": "Brickwise"
+          },
+          {
+            "etiqueta": "Moneda del documento",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Entrada mínima",
+            "valor": "Precio por participación y suscripción mínima son distintos: el 20/10/2026 la app de Brickwise pedía una inversión mínima de 1.000,00 EUR y su API daba 100,00 EUR como precio de emisión por participación."
+          },
+          {
+            "etiqueta": "Consulta del activo",
+            "valor": "El enlace abre el mercado del proveedor. Busca Betriebsgrundstück mit langfristigem BILLA-Mietvertrag (ISIN AT0000A3SE89) y confirma su disponibilidad y condiciones con Brickwise."
+          }
+        ],
+        "referencias": [
+          {
+            "etiqueta": "Inversión mínima anunciada",
+            "valor": "1.000 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Importe mínimo total anunciado en la tarjeta individual, no precio por participación. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "5,07 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A3SE89 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribución anual esperada · 20/10/2026",
+          "valor": "4,19 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por participación · 20/10/2026",
+          "valor": "desde 68,60 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo · 20/10/2026",
+          "valor": "indefinido",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Próxima distribución esperada · 20/10/2026",
+          "valor": "15/11/2026",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "65 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "4,42 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCD0 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "fotovoltaica-cohotel": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribución anual esperada · 20/10/2026",
+          "valor": "5,57 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por participación · 20/10/2026",
+          "valor": "desde 110,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo · 20/10/2026",
+          "valor": "hasta el 31/12/2038",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribuciones esperadas desde · 20/10/2026",
+          "valor": "15/02/2024",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "110 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "5,57 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A38J40 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribución anual esperada · 20/10/2026",
+          "valor": "4,84 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por participación · 20/10/2026",
+          "valor": "desde 72,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo · 20/10/2026",
+          "valor": "indefinido",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Próxima distribución esperada · 20/10/2026",
+          "valor": "15/11/2026",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "75 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "4,65 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A31KP7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribución anual esperada · 20/10/2026",
+          "valor": "3,76 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por participación · 20/10/2026",
+          "valor": "desde 80,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo · 20/10/2026",
+          "valor": "indefinido",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Próxima distribución esperada · 20/10/2026",
+          "valor": "15/11/2026",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "84 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "3,58 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2RAH5 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "local-de-estanco-klagenfurt": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribución anual esperada · 20/10/2026",
+          "valor": "3,46 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por participación · 20/10/2026",
+          "valor": "desde 95,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo · 20/10/2026",
+          "valor": "indefinido",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Próxima distribución esperada · 20/10/2026",
+          "valor": "15/11/2026",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "95 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "3,46 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2U5V3 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Distribución anual esperada · 20/10/2026",
+          "valor": "3,37 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por participación · 20/10/2026",
+          "valor": "desde 71,90 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo · 20/10/2026",
+          "valor": "indefinido",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Próxima distribución esperada · 20/10/2026",
+          "valor": "15/11/2026",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "70 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "3,46 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2WCE8 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "La emisión primaria está agotada (0 participaciones disponibles); solo se puede comprar en el mercado secundario de Brickwise a precio de otros inversores.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://www.brickwise.at/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 20/10/2026",
+          "valor": "3,52 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Participaciones disponibles en emisión (API) · 20/10/2026",
+          "valor": "0 de 2.350",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio más bajo en mercado secundario (API) · 20/10/2026",
+          "valor": "75,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "75 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "3,42 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2T4D7 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "La emisión primaria está agotada (0 participaciones disponibles); solo se puede comprar en el mercado secundario de Brickwise a precio de otros inversores.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://www.brickwise.at/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 20/10/2026",
+          "valor": "4,22 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Participaciones disponibles en emisión (API) · 20/10/2026",
+          "valor": "0 de 1.410",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio más bajo en mercado secundario (API) · 20/10/2026",
+          "valor": "80,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "80 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "3,80 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A324B4 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "randhartingergasse-9-viena": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El precio de emisión (100,24 €) y el precio más bajo del mercado secundario (75,00 €) son muy distintos; comprueba en la app a qué precio compras realmente.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://www.brickwise.at/marketplace",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 20/10/2026",
+          "valor": "2,47 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Participaciones disponibles en emisión (API) · 20/10/2026",
+          "valor": "374 de 2.670",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio de emisión por participación (API) · 20/10/2026",
+          "valor": "100,24 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio más bajo en mercado secundario (API) · 20/10/2026",
+          "valor": "75,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://api.app.brickwise.at/api/v2/assets",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Precio desde anunciado",
+            "valor": "60 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Precio desde anunciado en la tarjeta individual. La tarjeta no fecha el cálculo; no acredita precio ejecutable ni disponibilidad actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Distribución anual prevista anunciada",
+            "valor": "3,09 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Estimación declarada por la tarjeta individual, sin fecha de cálculo publicada. No es rentabilidad garantizada, realizada ni revalidada a la fecha actual. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Mercado público de Brickwise",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://app.brickwise.at/mobileWeb/asset/AT0000A2ZT84 (consulta original 2026-09-27); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          }
+        ]
+      }
+    },
+    "mf-one": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Los rendimientos son variables. El proveedor advierte que los plazos de reembolso son indicativos.",
+            "tono": "warn"
+          },
+          {
+            "texto": "No se pudo comprobar en la fuente oficial el 20/10/2026: Midas bloquea las consultas automáticas desde fuera de un navegador de uso normal. RWAdar no publica su rendimiento hasta poder leerlo allí.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Descripción en el índice oficial de productos · 20/10/2026",
+          "valor": "«The mF-ONE token provides on-chain exposure to Fasanara's yield strategies backed by off-chain assets and on-chain liquidity.»",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://midas.app/llms.txt",
+          "alcance": "Texto visto en el índice oficial de productos de Midas el 20/10/2026. No acredita apertura, rendimiento ni elegibilidad."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "APY observado",
+            "valor": "7,51 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-21",
+            "fuente": "https://midas.app/mfone",
+            "alcance": "Instantánea indicativa y variable observada el 21/09/2026; la fuente no establece aquí una fecha de cálculo independiente. No se pudo revalidar en la consulta del 27/09/2026 y no representa rendimiento actual ni garantizado."
+          },
+          {
+            "etiqueta": "Comisión publicada · Gestión",
+            "valor": "0,60 % anual sobre AUM",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-21",
+            "fuente": "https://midas.app/mfone",
+            "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+          },
+          {
+            "etiqueta": "Comisión publicada · Performance",
+            "valor": "0 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-21",
+            "fuente": "https://midas.app/mfone",
+            "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+          },
+          {
+            "etiqueta": "Rendimiento publicado en Midas",
+            "valor": "7,50 % · 7D APY",
+            "fuente": "https://midas.app/products",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "APY ilustrativo de los últimos siete días; variable y no garantizado. Observado el 30/09; la fecha de consulta no transforma ese periodo en rentabilidad actual garantizada."
+          },
+          {
+            "etiqueta": "TVL publicado en Midas",
+            "valor": "$65.63M",
+            "fuente": "https://midas.app/products",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "TVL mostrado al consultar el catálogo el 30/09/2026; no es una cifra de liquidez disponible para ejecutar una orden."
+          }
+        ]
+      }
+    },
+    "mglo": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Los rendimientos son variables. El proveedor advierte que los plazos de reembolso son indicativos.",
+            "tono": "warn"
+          },
+          {
+            "texto": "No se pudo comprobar en la fuente oficial el 20/10/2026: Midas bloquea las consultas automáticas desde fuera de un navegador de uso normal. El 06/10/2026 la página indicaba «MINTING CLOSED» y una próxima ventana de emisión hacia el 21–29 de octubre.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Descripción en el índice oficial de productos · 20/10/2026",
+          "valor": "«The mGLO token provides exposure to Fasanara's Global Fund, which follows an asset-backed lending strategy investing primarily in trade receivables and digital invoices bought from SMEs.»",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://midas.app/llms.txt",
+          "alcance": "Texto visto en el índice oficial de productos de Midas el 20/10/2026. No acredita apertura, rendimiento ni elegibilidad."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Rendimiento publicado en Midas",
+            "valor": "7,01 % · August 1-31",
+            "fuente": "https://midas.app/products",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Periodo publicado: 1–31 de agosto; dato histórico. Observado el 30/09; la fecha de consulta no transforma ese periodo en rentabilidad actual garantizada."
+          },
+          {
+            "etiqueta": "TVL publicado en Midas",
+            "valor": "$119.02M",
+            "fuente": "https://midas.app/products",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "TVL mostrado al consultar el catálogo el 30/09/2026; no es una cifra de liquidez disponible para ejecutar una orden."
+          }
+        ]
+      }
+    },
+    "mglobal": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Los rendimientos son variables. El proveedor advierte que los plazos de reembolso son indicativos.",
+            "tono": "warn"
+          },
+          {
+            "texto": "No se pudo comprobar en la fuente oficial el 20/10/2026: Midas bloquea las consultas automáticas desde fuera de un navegador de uso normal. El 06/10/2026 la página indicaba «MINTING CLOSED», una próxima ventana hacia el 21–29 de octubre y que invertir, reembolsar y transferir solo estaba disponible para direcciones en lista blanca.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Descripción en el índice oficial de productos · 20/10/2026",
+          "valor": "«The mGLOBAL token provides onchain, liquid access to Fasanara's Global Diversified Alternative Debt Fund strategy.»",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://midas.app/llms.txt",
+          "alcance": "Texto visto en el índice oficial de productos de Midas el 20/10/2026. No acredita apertura, rendimiento ni elegibilidad."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Rendimiento histórico publicado",
+            "valor": "6,65 % · periodo 1–31 de julio",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-21",
+            "fuente": "https://midas.app/mglobal",
+            "alcance": "La revisión del 21/09/2026 identifica expresamente un periodo histórico de julio. No es un rendimiento de septiembre ni se ha revalidado; se conserva sin inferir una fecha completa del dato."
+          },
+          {
+            "etiqueta": "Comisión publicada · Gestión",
+            "valor": "0,40 % anual sobre AUM",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-21",
+            "fuente": "https://midas.app/mglobal",
+            "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+          },
+          {
+            "etiqueta": "Rendimiento publicado en Midas",
+            "valor": "6,65 % · August 1-31",
+            "fuente": "https://midas.app/products",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Periodo publicado: 1–31 de agosto; dato histórico. Observado el 30/09; la fecha de consulta no transforma ese periodo en rentabilidad actual garantizada."
+          },
+          {
+            "etiqueta": "TVL publicado en Midas",
+            "valor": "$34.06M",
+            "fuente": "https://midas.app/products",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "TVL mostrado al consultar el catálogo el 30/09/2026; no es una cifra de liquidez disponible para ejecutar una orden."
+          }
+        ]
+      }
+    },
+    "mtbill": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Los rendimientos son variables. El proveedor advierte que los plazos de reembolso son indicativos.",
+            "tono": "warn"
+          },
+          {
+            "texto": "No se pudo comprobar en la fuente oficial el 20/10/2026: Midas bloquea las consultas automáticas desde fuera de un navegador de uso normal. RWAdar no publica su rendimiento hasta poder leerlo allí.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Descripción en el índice oficial de productos · 20/10/2026",
+          "valor": "«The mTBILL token tracks the performance of short-dated US Treasury Bills, making it an ideal alternative for any stablecoin use case.»",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://midas.app/llms.txt",
+          "alcance": "Texto visto en el índice oficial de productos de Midas el 20/10/2026. No acredita apertura, rendimiento ni elegibilidad."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "APY observado",
+            "valor": "3,41 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-21",
+            "fuente": "https://midas.app/mtbill",
+            "alcance": "Instantánea indicativa y variable observada el 21/09/2026; la fuente no establece aquí una fecha de cálculo independiente. No se pudo revalidar en la consulta del 27/09/2026 y no representa rendimiento actual ni garantizado."
+          },
+          {
+            "etiqueta": "Comisión publicada · Gestión",
+            "valor": "0 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-21",
+            "fuente": "https://midas.app/mtbill",
+            "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+          },
+          {
+            "etiqueta": "Comisión publicada · Performance",
+            "valor": "5 % sobre el rendimiento",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-21",
+            "fuente": "https://midas.app/mtbill",
+            "alcance": "Condición económica observada en la revisión del 21/09/2026. No revalidada el 27/09/2026; consultar condiciones vigentes y elegibilidad directamente con Midas."
+          },
+          {
+            "etiqueta": "Rendimiento publicado en Midas",
+            "valor": "3,42 % · 7D APY",
+            "fuente": "https://midas.app/products",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "APY ilustrativo de los últimos siete días; variable y no garantizado. Observado el 30/09; la fecha de consulta no transforma ese periodo en rentabilidad actual garantizada."
+          },
+          {
+            "etiqueta": "TVL publicado en Midas",
+            "valor": "$76.36M",
+            "fuente": "https://midas.app/products",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "TVL mostrado al consultar el catálogo el 30/09/2026; no es una cifra de liquidez disponible para ejecutar una orden."
+          }
+        ]
+      }
+    },
+    "mgloeuro": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Esta referencia está en seguimiento y no representa una oferta abierta.",
+            "tono": "neutro"
+          },
+          {
+            "texto": "No se pudo abrir su página el 20/10/2026 (Midas bloquea las consultas automáticas); solo se comprobó que Midas lo sigue anunciando.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Descripción en el índice oficial de productos · 20/10/2026",
+          "valor": "«The mGLOeuro token provides EUR-denominated exposure to Fasanara Capital's Global Diversified Alternative Debt strategy, the same portfolio as mGLOBAL: short-duration, investment-grade asset-backed credit sourced from…»",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://midas.app/llms.txt",
+          "alcance": "Texto visto en el índice oficial de productos de Midas el 20/10/2026. No acredita apertura, rendimiento ni elegibilidad."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Anuncio en la página de productos · 19/10/2026",
+            "valor": "«Introducing mGLOeuro: Fasanara's Global Diversified Alternative Debt strategy, now in euro»",
+            "fechaDato": null,
+            "fechaConsulta": "2026-10-19",
+            "fuente": "https://midas.app/products",
+            "alcance": "Texto visto en la página oficial de productos de Midas el 19/10/2026. No acredita apertura, rendimiento ni elegibilidad."
+          },
+          {
+            "etiqueta": "Descripción en el índice oficial de productos · 19/10/2026",
+            "valor": "«The mGLOeuro token provides EUR-denominated exposure to Fasanara Capital's Global Diversified Alternative Debt strategy, the same portfolio as mGLOBAL»",
+            "fechaDato": null,
+            "fechaConsulta": "2026-10-19",
+            "fuente": "https://midas.app/llms.txt",
+            "alcance": "Texto visto en el índice oficial de productos de Midas el 19/10/2026. No acredita apertura, rendimiento ni elegibilidad."
+          }
+        ]
+      }
+    },
+    "spiko-letras-del-tesoro-euro": {
+      "cambios": {
+        "estadoRevision": "actual",
+        "rentabilidad": {
+          "mostrada": "2,43 %",
+          "literal": "Rendimiento anualizado a 30 días observado el 20/10/2026; variable y no garantizado."
+        },
+        "metricas": [
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Suscripción inicial publicada",
+            "valor": "1 EUR"
+          },
+          {
+            "etiqueta": "Rendimiento publicado · 30 días",
+            "valor": "2,43 %"
+          }
+        ],
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Rendimiento publicado · 30 días · 20/10/2026",
+          "valor": "2,43 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://data.spiko.io/eutbl/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Suscripción inicial publicada · 20/10/2026",
+          "valor": "1 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://data.spiko.io/eutbl/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://data.spiko.io/eutbl/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Comisión de gestión · 20/10/2026",
+          "valor": "0,25 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://data.spiko.io/eutbl/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Valor liquidativo · 20/10/2026",
+          "valor": "1,0612 EUR (19/10/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://data.spiko.io/eutbl/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Patrimonio gestionado · 20/10/2026",
+          "valor": "466,95 M EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://data.spiko.io/eutbl/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "cifras": "comprobadas",
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Rendimiento anualizado a 30 días observado",
+            "valor": "2,17 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://data.spiko.io/eutbl/",
+            "alcance": "Dato leído el 30/09/2026. La página no fecha por separado el cálculo del rendimiento; no se le atribuye la fecha del NAV. Rendimiento variable, no garantizado ni ejecutable."
+          },
+          {
+            "etiqueta": "Último NAV publicado",
+            "valor": "1,0597 EUR",
+            "fechaDato": "2026-09-28",
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://data.spiko.io/eutbl/",
+            "alcance": "La fuente fecha expresamente este valor liquidativo el 28/09/2026; la consulta del 30/09/2026 no transforma el dato en un NAV de ese día."
+          },
+          {
+            "etiqueta": "Suscripción inicial mínima publicada",
+            "valor": "1 EUR",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://data.spiko.io/eutbl/",
+            "alcance": "Condición mostrada durante la consulta; no prueba acceso específico desde España ni aceptación de una suscripción. Confirmar condiciones con el proveedor."
+          },
+          {
+            "etiqueta": "Gestión publicada",
+            "valor": "0,25 %",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://data.spiko.io/eutbl/",
+            "alcance": "La ficha de producto describe esta comisión como anual. Condición observada; no se inventa una fecha de entrada en vigor."
+          },
+          {
+            "etiqueta": "Rendimiento anualizado a 30 días",
+            "valor": "2,17 %",
+            "fuente": "https://data.spiko.io/eutbl/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Observado en el panel de la clase EUR el 30/09/2026. No es una garantía de rentabilidad."
+          },
+          {
+            "etiqueta": "NAV publicado",
+            "valor": "1,0597 EUR",
+            "fuente": "https://data.spiko.io/eutbl/",
+            "fechaDato": "2026-09-28",
+            "fechaConsulta": "2026-09-30",
+            "alcance": "La fuente fecha el último NAV el 28/09/2026; esa fecha no fecha por sí sola los otros indicadores del panel."
+          },
+          {
+            "etiqueta": "Suscripción inicial mínima",
+            "valor": "1 EUR",
+            "fuente": "https://data.spiko.io/eutbl/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Observación en la fuente pública del proveedor el 30/09/2026. No acredita ejecución, elegibilidad individual ni un resultado garantizado."
+          },
+          {
+            "etiqueta": "Gestión publicada",
+            "valor": "0,25 %",
+            "fuente": "https://data.spiko.io/eutbl/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Observación en la fuente pública del proveedor el 30/09/2026. No acredita ejecución, elegibilidad individual ni un resultado garantizado."
+          }
+        ]
+      }
+    },
+    "prosegur-digital-gold": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El precio del oro puede bajar; el proveedor no garantiza rentabilidad ni valor fijo.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://www.prosegurcrypto.com/digital-gold",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Compra mínima publicada · 20/10/2026",
+          "valor": "1 gramo",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://www.prosegurcrypto.com/digital-gold",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Custodia publicada · 20/10/2026",
+          "valor": "Sin tarifas de custodia según el proveedor",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://www.prosegurcrypto.com/digital-gold",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Liquidación publicada · 20/10/2026",
+          "valor": "Menos de 24 horas según el proveedor",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://www.prosegurcrypto.com/digital-gold",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Auditorías publicadas · 20/10/2026",
+          "valor": "Mensuales y certificadas según el proveedor",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://www.prosegurcrypto.com/digital-gold",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Unidad descrita",
+            "valor": "1 gramo de oro físico por token",
+            "fuente": "https://www.prosegurcrypto.com/digital-gold",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Información de la tabla comercial del proveedor consultada el 30/09/2026. No es comprobación independiente del servicio ni garantía del precio o de ejecución."
+          },
+          {
+            "etiqueta": "Compra mínima publicada",
+            "valor": "1 gramo",
+            "fuente": "https://www.prosegurcrypto.com/digital-gold",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Información de la tabla comercial del proveedor consultada el 30/09/2026. No es comprobación independiente del servicio ni garantía del precio o de ejecución."
+          },
+          {
+            "etiqueta": "Custodia publicada",
+            "valor": "Sin tarifas de custodia según el proveedor",
+            "fuente": "https://www.prosegurcrypto.com/digital-gold",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Información de la tabla comercial del proveedor consultada el 30/09/2026. No es comprobación independiente del servicio ni garantía del precio o de ejecución."
+          },
+          {
+            "etiqueta": "Liquidación publicada",
+            "valor": "Menos de 24 horas según el proveedor",
+            "fuente": "https://www.prosegurcrypto.com/digital-gold",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Información de la tabla comercial del proveedor consultada el 30/09/2026. No es comprobación independiente del servicio ni garantía del precio o de ejecución."
+          },
+          {
+            "etiqueta": "Auditorías publicadas",
+            "valor": "Mensuales y certificadas según el proveedor",
+            "fuente": "https://www.prosegurcrypto.com/digital-gold",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Información de la tabla comercial del proveedor consultada el 30/09/2026. No es comprobación independiente del servicio ni garantía del precio o de ejecución."
+          }
+        ]
+      }
+    },
+    "aktionariat": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.aktionariat.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Última operación publicada · 20/10/2026",
+          "valor": "7,25 CHF (14/10/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.aktionariat.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Última inversión directa del emisor · 20/10/2026",
+          "valor": "7,25 ZCHF (14/10/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.aktionariat.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Último cruce secundario · 20/10/2026",
+          "valor": "6,25 ZCHF (30/09/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.aktionariat.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Capitalización publicada · 20/10/2026",
+          "valor": "12.927.925 CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.aktionariat.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 20/10/2026",
+          "valor": "368",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.aktionariat.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Acciones tokenizadas · 20/10/2026",
+          "valor": "800.000 DAKS de 1.800.000",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.aktionariat.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Último cruce publicado",
+            "valor": "6,25 CHF",
+            "fechaDato": "2026-09-22",
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://shares.aktionariat.com/",
+            "alcance": "La página sigue mostrando el cruce del 22/09/2026 a las 20:21. No es una cotización de ejecución garantizada ni prueba de liquidez actual."
+          },
+          {
+            "etiqueta": "Último cruce publicado",
+            "valor": "6,25 CHF",
+            "fuente": "https://shares.aktionariat.com/",
+            "fechaDato": "2026-09-22",
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Último cruce fechado por el portal. No es un precio ejecutable hoy ni el precio de emisión directa."
+          }
+        ]
+      }
+    },
+    "boss-info": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 la página no mostraba los acuerdos legales del token (registro y titular); consúltalos con el emisor.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.bossinfo.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Última operación publicada · 20/10/2026",
+          "valor": "6,70 CHF (28/09/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.bossinfo.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Último cruce secundario · 20/10/2026",
+          "valor": "6,70 ZCHF (28/09/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.bossinfo.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Capitalización publicada · 20/10/2026",
+          "valor": "71.280.824 CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.bossinfo.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 20/10/2026",
+          "valor": "155",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.bossinfo.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Acciones tokenizadas · 20/10/2026",
+          "valor": "10.650.100 BOSS",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.bossinfo.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Último cruce documentado",
+            "valor": "8,44 CHF",
+            "fechaDato": "2026-08-29",
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://shares.bossinfo.com/",
+            "alcance": "La revisión del 27/09/2026 seguía mostrando esta operación de agosto. Referencia histórica, no cotización ejecutable ni prueba de liquidez."
+          },
+          {
+            "etiqueta": "Último cruce publicado",
+            "valor": "6,70 CHF",
+            "fuente": "https://shares.bossinfo.com/",
+            "fechaDato": "2026-09-28",
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Último cruce publicado a las 11:32, sin zona horaria indicada en esta lectura. No confirma un precio ejecutable hoy ni el precio de venta directa."
+          },
+          {
+            "etiqueta": "Accionistas publicados",
+            "valor": "155",
+            "fuente": "https://shares.bossinfo.com/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Observación en la fuente pública del proveedor el 30/09/2026. No acredita ejecución, elegibilidad individual ni un resultado garantizado."
+          },
+          {
+            "etiqueta": "Acciones tokenizadas publicadas",
+            "valor": "10.650.100 BOSS",
+            "fuente": "https://shares.bossinfo.com/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Observación en la fuente pública del proveedor el 30/09/2026. No acredita ejecución, elegibilidad individual ni un resultado garantizado."
+          }
+        ]
+      }
+    },
+    "wemakeit": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 la página no ofrecía inversión directa del emisor: solo negociación secundaria entre accionistas. El precio de 8,38 CHF lo fija el emisor y no es el de una operación real: las últimas operaciones secundarias del 20/10/2026 se cruzaron a 0,80 ZCHF por acción.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.wemakeit.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Valor fijado por el emisor · 20/10/2026",
+          "valor": "8,38 CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.wemakeit.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Último cruce secundario · 20/10/2026",
+          "valor": "0,80 ZCHF (20/10/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.wemakeit.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Capitalización publicada · 20/10/2026",
+          "valor": "8.285.823 CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.wemakeit.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 20/10/2026",
+          "valor": "5.276",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.wemakeit.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Acciones tokenizadas · 20/10/2026",
+          "valor": "436.909 WMKT de 1.050.000",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.wemakeit.com/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Valor definido por el emisor",
+            "valor": "8,38 CHF",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://shares.wemakeit.com/",
+            "alcance": "La fuente lo identifica como valor definido por el emisor, no como último cruce. No se conoce aquí una fecha de cálculo independiente ni se garantiza ejecución."
+          },
+          {
+            "etiqueta": "Valor definido por el emisor",
+            "valor": "8,38 CHF",
+            "fuente": "https://shares.wemakeit.com/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "El portal lo etiqueta Issuer Defined. No es el precio de una operación real."
+          }
+        ]
+      }
+    },
+    "servicehunter-quitt": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 la página no ofrecía inversión directa del emisor: solo negociación secundaria entre accionistas.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El encabezado del último cruce (02/10/2026) y la tabla histórica del portal (última operación del 23/07/2026) no coinciden en la fecha. No se presenta como precio actual ejecutable.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.quitt.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Última operación publicada · 20/10/2026",
+          "valor": "8,00 CHF (02/10/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.quitt.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Último cruce secundario · 20/10/2026",
+          "valor": "8,00 ZCHF (23/07/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.quitt.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Capitalización publicada · 20/10/2026",
+          "valor": "15.981.432 CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.quitt.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 20/10/2026",
+          "valor": "227",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.quitt.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Acciones tokenizadas · 20/10/2026",
+          "valor": "1.655.280 DQTS de 2.000.000",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.quitt.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Último cruce documentado",
+            "valor": "8,00 CHF",
+            "fechaDato": "2026-07-23",
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://shares.quitt.ch/",
+            "alcance": "Operación de julio que continuaba mostrada en la consulta del 27/09/2026. No acredita precio ejecutable ni liquidez actual."
+          },
+          {
+            "etiqueta": "Último cruce publicado",
+            "valor": "8,00 CHF",
+            "fuente": "https://shares.quitt.ch/",
+            "fechaDato": "2026-07-23",
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Último cruce publicado a las 15:19, sin zona horaria indicada en esta lectura. No confirma un precio ejecutable hoy ni el precio de venta directa."
+          },
+          {
+            "etiqueta": "Accionistas publicados",
+            "valor": "227",
+            "fuente": "https://shares.quitt.ch/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Observación en la fuente pública del proveedor el 30/09/2026. No acredita ejecución, elegibilidad individual ni un resultado garantizado."
+          },
+          {
+            "etiqueta": "Acciones tokenizadas publicadas",
+            "valor": "1.655.280 DQTS",
+            "fuente": "https://shares.quitt.ch/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Observación en la fuente pública del proveedor el 30/09/2026. No acredita ejecución, elegibilidad individual ni un resultado garantizado."
+          }
+        ]
+      }
+    },
+    "switzerlend": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.lend.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Última operación publicada · 20/10/2026",
+          "valor": "68,01 CHF (07/10/2026)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.lend.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Capitalización publicada (toda la empresa) · 20/10/2026",
+          "valor": "48.409.858 CHF",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.lend.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Número de accionistas publicado · 20/10/2026",
+          "valor": "286",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.lend.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Acciones tokenizadas · 20/10/2026",
+          "valor": "27.277 LENDS de 31.066",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://shares.lend.ch/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Último cruce documentado",
+            "valor": "68,01 CHF",
+            "fechaDato": "2026-09-25",
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://shares.lend.ch/",
+            "alcance": "Última operación mostrada durante la revisión del 27/09/2026. Referencia histórica; no se garantiza ejecución ni liquidez actual."
+          },
+          {
+            "etiqueta": "Último cruce publicado",
+            "valor": "68,01 CHF",
+            "fuente": "https://shares.lend.ch/",
+            "fechaDato": "2026-09-25",
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Último cruce publicado a las 13:32, sin zona horaria indicada en esta lectura. No confirma un precio ejecutable hoy ni el precio de venta directa."
+          },
+          {
+            "etiqueta": "Accionistas publicados",
+            "valor": "285",
+            "fuente": "https://shares.lend.ch/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Observación en la fuente pública del proveedor el 30/09/2026. No acredita ejecución, elegibilidad individual ni un resultado garantizado."
+          },
+          {
+            "etiqueta": "Acciones tokenizadas publicadas",
+            "valor": "27.277 LENDS · clase C1",
+            "fuente": "https://shares.lend.ch/",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "alcance": "Observación en la fuente pública del proveedor el 30/09/2026. No acredita ejecución, elegibilidad individual ni un resultado garantizado."
+          }
+        ]
+      }
+    },
+    "casa-de-outeiro": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Según el emisor, la emisión de capital está abierta solo hasta el 31/10; el 20/10/2026 Alius Capital mostraba 11 días restantes. Después puede cerrarse.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Moneda · 20/10/2026",
+          "valor": "EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://casadeouteiro.com/emision-capital/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Entrada mínima · 20/10/2026",
+          "valor": "2.000 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/casa-de-outeiro",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por token · 20/10/2026",
+          "valor": "25,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/casa-de-outeiro",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo de la emisión · 20/10/2026",
+          "valor": "hasta el 31/10",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://casadeouteiro.com/emision-capital/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Días restantes de campaña · 20/10/2026",
+          "valor": "11",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/casa-de-outeiro",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Recaudado · 20/10/2026",
+          "valor": "1.116.000 EUR de 3.220.000 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/casa-de-outeiro",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": [
+          {
+            "etiqueta": "Entrada total anunciada",
+            "valor": "Desde 2.000 EUR",
+            "fechaDato": "2026-09-17",
+            "fechaConsulta": "2026-09-27",
+            "fuente": "https://casadeouteiro.com/emision-capital/",
+            "alcance": "Mínimo total anunciado en la página del emisor, que muestra actualización del 17/09/2026. No confirma el antiguo precio unitario de 25 EUR, número de acciones ni disponibilidad actual."
+          }
+        ],
+        "caracteristicas": [
+          {
+            "etiqueta": "Proveedor",
+            "valor": "Alius Capital"
+          },
+          {
+            "etiqueta": "Moneda del documento",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Entrada mínima",
+            "valor": "El 20/10/2026 Alius Capital publicaba 25 EUR por token y una inversión mínima de 2.000 EUR."
+          }
+        ]
+      }
+    },
+    "iod-occasio": {
+      "cambios": {
+        "resumen": "Bono tokenizado de IOD Applications en Alius Capital para anticipar cobros de facturas, con seguro de caución de hasta el 90 % según la plataforma. El 20/10/2026 la campaña estaba abierta (3 días restantes); las condiciones son las del documento de emisión.",
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 la campaña figuraba abierta en Alius Capital con 3 días restantes; puede cerrarse o llenarse en cualquier momento. RWAdar no la recomienda: lee el documento de emisión.",
+            "tono": "neutro"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Tipo de producto · 20/10/2026",
+          "valor": "Bono",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/iodo1",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Interés anual publicado · 20/10/2026",
+          "valor": "12 %",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/iodo1",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Plazo de devolución · 20/10/2026",
+          "valor": "12 meses",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/iodo1",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio por token · 20/10/2026",
+          "valor": "100,00 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/iodo1",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Recaudado · 20/10/2026",
+          "valor": "118.600 EUR de 120.000 EUR (1.186 de 1.200 tokens)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/iodo1",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Días restantes de campaña · 20/10/2026",
+          "valor": "3",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://aliuscap.com/projects/iodo1",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "descripcion": "Bono tokenizado de IOD Applications en Alius Capital para anticipar cobros de facturas, con seguro de caución de hasta el 90 % según la plataforma. El 20/10/2026 la campaña estaba abierta (3 días restantes); las condiciones son las del documento de emisión.",
+        "caracteristicas": [
+          {
+            "etiqueta": "Estado",
+            "valor": "Campaña abierta el 20/10/2026 (3 días restantes)"
+          },
+          {
+            "etiqueta": "Moneda indicada",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Proveedor",
+            "valor": "Alius Capital (proveedor de financiación participativa supervisado por la CNMV)"
+          }
+        ],
+        "referencias": []
+      }
+    },
+    "hausera-proximas-ofertas": {
+      "cambios": {
+        "resumen": "Seguimiento de nuevas ofertas de Hausera. El 20/10/2026 anunciaba la preventa de Alicante 1 (preventa desde el 19/10/2026, oferta pública desde el 26/10/2026).",
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Esta referencia está en seguimiento y no representa una oferta abierta: una preventa no es la oferta pública.",
+            "tono": "neutro"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Próxima oportunidad anunciada · 20/10/2026",
+          "valor": "Alicante 1 · preventa",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://hausera.io/oportunidades/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Importe a financiar anunciado · 20/10/2026",
+          "valor": "4.037.000 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://hausera.io/oportunidades/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Calendario anunciado · 20/10/2026",
+          "valor": "preventa 19/10/2026 · oferta pública 26/10/2026 · fin previsto 26/01/2028",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://hausera.io/oportunidades/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Rentabilidad anualizada anunciada · 20/10/2026",
+          "valor": "12,00 % (15,00 % sobre la inversión en 15 meses)",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://hausera.io/oportunidades/",
+          "alcance": "Rentabilidad prevista que anuncia el promotor el 20/10/2026. No es rentabilidad garantizada ni realizada."
+        },
+        {
+          "etiqueta": "Historial publicado · 20/10/2026",
+          "valor": "40 operaciones, 23 terminadas, 118 M EUR financiados",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://hausera.io/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "descripcion": "Seguimiento de nuevas ofertas de Hausera. El 20/10/2026 anunciaba la preventa de Alicante 1 (preventa desde el 19/10/2026, oferta pública desde el 26/10/2026).",
+        "caracteristicas": [
+          {
+            "etiqueta": "Estado",
+            "valor": "Alicante 1: preventa el 20/10/2026; oferta pública desde el 26/10/2026"
+          },
+          {
+            "etiqueta": "Moneda indicada",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Consulta del activo",
+            "valor": "El enlace abre la plataforma inmobiliaria Hausera. Sus próximas ofertas y condiciones deben consultarse directamente con el proveedor."
+          }
+        ],
+        "referencias": [
+          {
+            "etiqueta": "Destino de consulta comprobado",
+            "valor": "Plataforma inmobiliaria Hausera",
+            "fechaDato": null,
+            "fechaConsulta": "2026-09-30",
+            "fuente": "https://hausera.io/",
+            "alcance": "Destino público del proveedor comprobado el30/09/2026. No renueva cifras económicas ni acredita una oferta abierta o ejecutable. Localizador histórico https://www.hausera.com/ (consulta original 2026-09-28); destino de consulta actualizado 30/09/2026, no revalida cifra, disponibilidad ni apertura."
+          },
+          {
+            "etiqueta": "Rentabilidad anualizada anunciada · 19/10/2026",
+            "valor": "12,00 % (15,00 % sobre la inversión en 15 meses)",
+            "fechaDato": null,
+            "fechaConsulta": "2026-10-19",
+            "fuente": "https://hausera.io/oportunidades/",
+            "alcance": "Rentabilidad prevista que anuncia el promotor el 19/10/2026. No es rentabilidad garantizada ni realizada."
+          }
+        ]
+      }
+    },
+    "reental-emision-primaria": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Esta referencia está en seguimiento y no representa una oferta abierta.",
+            "tono": "neutro"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Catálogo de inmuebles · 20/10/2026",
+          "valor": "Fichas con estado «En reforma», «En explotación», «Financiado» o «Cerrado»; no indica cuáles admiten inversión nueva",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://www.reental.co/properties",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. El estado de obra o explotación no acredita que se pueda invertir."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-miami-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 el listado público del mercado P2P de Reental no mostraba órdenes de venta de este token; puede haberlas más adelante.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": []
+    },
+    "reental-secundario-houston-2": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "3 órdenes · 9,51 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "99,00–100,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-houston-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "7 órdenes · 70,34 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "100,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-san-antonio-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 el listado público del mercado P2P de Reental no mostraba órdenes de venta de este token; puede haberlas más adelante.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": []
+    },
+    "reental-secundario-atlanta-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "9 órdenes · 49,4 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "92,50–100,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-houston-3": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "8 órdenes · 75,06 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "97,00–100,10",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-proyecto-100": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 el listado público del mercado P2P de Reental no mostraba órdenes de venta de este token; puede haberlas más adelante.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": []
+    },
+    "reental-secundario-miami-3": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "1 orden · 1 token",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "129,75",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-granada-3": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "4 órdenes · 24,79 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "112,00–117,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-carolina-del-norte-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "2 órdenes · 4,53 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "105,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-abu-dhabi-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "2 órdenes · 28,99 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "103,00–105,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-rentas-3": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Rentas 3 no es un único inmueble: es una cartera que incluye préstamos, con un perfil de riesgo distinto al de una vivienda alquilada.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 el listado público del mercado P2P de Reental no mostraba órdenes de venta de este token; puede haberlas más adelante.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": []
+    },
+    "reental-secundario-miami-2": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "1 orden · 6,57 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "145,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-miami-5": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 el listado público del mercado P2P de Reental no mostraba órdenes de venta de este token; puede haberlas más adelante.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": []
+    },
+    "reental-secundario-rentas-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "2 órdenes · 13,59 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "115,00–121,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-dania-beach-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Reental indica que el activo subyacente de Dania Beach 1 se sustituyó el 15/4/2026 por Austin 1 (AUS-1) y que se requiere la validación expresa de cada inversor para ratificar su participación en el nuevo vehículo.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "1 orden · 5 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "107,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-rentas-2": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "1 orden · 8,65 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "121,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-pirineos-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 el listado público del mercado P2P de Reental no mostraba órdenes de venta de este token; puede haberlas más adelante.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": []
+    },
+    "reental-secundario-levante-1": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 el listado público del mercado P2P de Reental no mostraba órdenes de venta de este token; puede haberlas más adelante.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": []
+    },
+    "reental-secundario-opportunity-2": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": [
+        {
+          "etiqueta": "Órdenes de venta en el P2P · 20/10/2026",
+          "valor": "2 órdenes · 24,64 tokens",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        },
+        {
+          "etiqueta": "Precio pedido por token en el P2P · 20/10/2026",
+          "valor": "116,00–117,00",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-20",
+          "fuente": "https://p2p.rnt.finance/",
+          "alcance": "Visto en la fuente oficial el 20/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
+        }
+      ],
+      "documentacion": {
+        "referencias": []
+      }
+    },
+    "reental-secundario-malaga-6": {
+      "cambios": {
+        "avisos": [
+          {
+            "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+            "tono": "warn"
+          },
+          {
+            "texto": "Una orden de venta no garantiza ejecución ni liquidez, y el precio pedido lo fija cada vendedor. El rendimiento anunciado por Reental no incluye necesariamente el retorno de capital.",
+            "tono": "warn"
+          },
+          {
+            "texto": "El 20/10/2026 el listado público del mercado P2P de Reental no mostraba órdenes de venta de este token; puede haberlas más adelante.",
+            "tono": "warn"
+          }
+        ]
+      },
+      "referencias": []
+    }
+  }
+}

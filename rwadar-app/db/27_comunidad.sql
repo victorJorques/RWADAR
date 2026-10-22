@@ -49,6 +49,15 @@ create table if not exists public.publicaciones (
 create index if not exists publicaciones_recientes on public.publicaciones (creada_el desc)
   where estado = 'visible';
 
+-- El cupo de «una al día» vive aparte: borrar la publicación no lo libera.
+create table if not exists public.cupos_publicacion (
+  usuario_id  uuid not null references public.perfiles(id) on delete cascade,
+  dia         date not null,
+  primary key (usuario_id, dia)
+);
+alter table public.cupos_publicacion enable row level security;
+revoke all on public.cupos_publicacion from public, anon, authenticated;
+
 create table if not exists public.denuncias_publicaciones (
   publicacion_id uuid not null references public.publicaciones(id) on delete cascade,
   usuario_id     uuid not null references public.perfiles(id) on delete cascade,
@@ -86,6 +95,8 @@ begin
     raise exception using errcode = '42501', message = 'Tu cuenta no tiene perfil.';
   end if;
   begin
+    insert into cupos_publicacion (usuario_id, dia)
+      values (yo, (now() at time zone 'Europe/Madrid')::date);
     return query
       insert into publicaciones as n (usuario_id, autor, texto)
       values (yo,
@@ -116,7 +127,9 @@ create or replace function public.mis_publicaciones()
 create or replace function public.borrar_mi_publicacion(p_id uuid) returns boolean
   language sql security definer set search_path = public, pg_temp as $$
     with borrada as (
-      delete from publicaciones p where p.id = p_id and p.usuario_id = auth.uid() returning 1
+      -- Una oculta por denuncias espera a moderación: su autor no la borra.
+      delete from publicaciones p
+       where p.id = p_id and p.usuario_id = auth.uid() and p.estado = 'visible' returning 1
     ) select exists (select 1 from borrada)
   $$;
 

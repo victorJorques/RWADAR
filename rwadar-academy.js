@@ -627,7 +627,21 @@ function asignarIds(bloques) {
   return indice;
 }
 
-function cabeceraHtml({ titulo, descripcion, canonica, tipoOg, jsonLd, extraMeta = '' }) {
+// Los buscadores cortan el título de la pestaña hacia los 60 caracteres: si el
+// de la lección no cabe con el sufijo, se queda la parte antes de los dos
+// puntos. La cabecera de la página y las tarjetas al compartir llevan el
+// título completo.
+const TITULO_PESTANA_MAX = 65;
+function tituloPestana(titulo) {
+  const sufijo = ' · RWAdar Academy';
+  const corto = titulo.split(':')[0].trim();
+  for (const t of [titulo + sufijo, titulo, corto + sufijo, corto]) {
+    if (t.length <= TITULO_PESTANA_MAX) return t;
+  }
+  return titulo;
+}
+
+function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg, jsonLd, extraMeta = '' }) {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -643,7 +657,7 @@ function cabeceraHtml({ titulo, descripcion, canonica, tipoOg, jsonLd, extraMeta
 <meta property="og:locale" content="es_ES">
 <meta property="og:type" content="${tipoOg}">
 <meta property="og:url" content="${esc(canonica)}">
-<meta property="og:title" content="${esc(titulo)}">
+<meta property="og:title" content="${esc(tituloOg)}">
 <meta property="og:description" content="${esc(descripcion)}">
 <meta property="og:image" content="${ORIGEN}/og.png">
 <meta property="og:image:width" content="1200">
@@ -773,7 +787,8 @@ function paginaLeccion(academy, l) {
   };
 
   return `${cabeceraHtml({
-    titulo: `${l.titulo} · RWAdar Academy`,
+    titulo: tituloPestana(l.titulo),
+    tituloOg: l.titulo,
     descripcion: l.resumen,
     canonica,
     tipoOg: 'article',
@@ -931,7 +946,7 @@ function paginaIndice(academy) {
 
   return `${cabeceraHtml({
     titulo: 'RWAdar Academy · Aprende a tokenizar sin promesas',
-    descripcion: 'Lecciones gratuitas sobre tokenización de activos reales: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores. Con test y fecha de revisión legal.',
+    descripcion: 'Lecciones gratuitas sobre tokenización de activos reales: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores.',
     canonica,
     tipoOg: 'website',
     jsonLd,
@@ -1133,7 +1148,7 @@ function avisosRevision(academy, hoy = new Date()) {
 
 module.exports = {
   ORIGEN, CSS, JS, cargarAcademy, construirSalidas, paginasAcademy, comprobar, generar,
-  parsearInline, parsearBloques, textoPlano, avisosRevision, ErrorAcademy,
+  parsearInline, parsearBloques, textoPlano, avisosRevision, ErrorAcademy, tituloPestana,
 };
 
 if (require.main === module) {
