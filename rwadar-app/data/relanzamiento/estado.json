@@ -154,7 +154,7 @@
       "evidencias": [
         {
           "tipo": "documento",
-          "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#preview-y-publicación-remotas",
+          "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#producción-integral-comprobada",
           "verificadoEl": "2026-10-22",
           "resumen": "Producción e764634c desde main08b18a4:208/208HTTP,206/206recursos idénticos a la preview y Chrome real a320/390/1440. ES/EN, persistencia, búsqueda, favorito, modal y comparación0/2/3 con controles44px dentro. Cero errores observados y sin escrituras. Android1.4.0 continúa con compuerta independiente."
         },

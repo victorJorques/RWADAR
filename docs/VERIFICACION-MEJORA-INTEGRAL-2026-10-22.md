@@ -213,6 +213,8 @@ consola o HTTP observados ni escrituras de cuentas. Evidencia:
 `http-preview-cuarta.log` y `recursos-preview.json`. El ensayo se hizo sobre el
 origen público con Supabase real de lectura, no sobre el fixture local.
 
+### Producción integral comprobada
+
 Producción se publicó desde main `08b18a4`, despliegue `e764634c`, en
 <https://rwadar.pages.dev>. Pasó **208/208 HTTP y 206/206 recursos idénticos**
 al artefacto aprobado. Una comparación adicional entre las respuestas de
