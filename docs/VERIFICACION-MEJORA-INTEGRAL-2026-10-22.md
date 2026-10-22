@@ -133,7 +133,7 @@ aprobación. Procedimiento en `tareas/CICLO-DIARIO-CATALOGO.md`.
 ## Pruebas y entregas
 
 Todos los componentes de la suite están comprobados sobre la fuente final:
-web 545/545, fichas y RSS 90/90, móvil 233/233, QR y herramientas correctos.
+web 551/551, fichas y RSS 90/90, móvil 233/233, QR y herramientas correctos.
 La ejecución integral registró 807 aserciones en 23 resúmenes numéricos,
 además de documentación y catálogo V2, antes de detenerse por una expectativa
 estática antigua sobre scripts de idiomas. Se conservaron los fallos y se
@@ -185,6 +185,14 @@ slug, conservando el origen vivo como prioridad y sin desplazar la página.
 Dos etiquetas inglesas y el aviso duplicado de documento original se corrigieron
 solo en el adaptador web. Las 545 regresiones finales incluyen la restauración
 de foco del JavaScript minificado. La tercera preview debe comprobar este corte.
+
+Se amplió la lectura de las tarjetas web: título 20 px, datos de decisión 16 px,
+cifra 24 px y secundarios/fecha 14 px; tres columnas de unos 409 px a 1440,
+sin desbordamiento en la comprobación de 320 y 1440. También se eliminó una
+inferencia incorrecta: `confirmada_documento_producto` se presenta como
+«Documentación de producto consultada», sin deducir que todos los productos
+tienen folleto aprobado. Cinco casos documentales y el registro específico de
+Spiko tienen regresiones propias. El detalle conserva sus fuentes y alcance.
 
 ## Vídeo revisado
 

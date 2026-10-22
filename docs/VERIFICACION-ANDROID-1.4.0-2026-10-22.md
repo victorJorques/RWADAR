@@ -43,7 +43,16 @@ El ZIP pasa CRC en sus 1.349 entradas y conserva 49/49 imágenes idénticas.
 
 La QA del APK exacto se inició en la ejecución `39712140320`, intento 1,
 commit público `c81322c336086798a140634e71fa3aea92c7c442`. Su resultado,
-evidencia, revisión visual y publicación continúan pendientes hasta completarse.
+falló antes de comenzar los 26 toques: el guion esperaba una noticia de Inicio
+tras reducir la pantalla a 320 dp y buscaba el radar sin entrar en Buscar y
+Plataformas. El ZIP diagnóstico, conservado y marcado no apto para publicar,
+no contiene el instante exacto del fallo pequeño porque finally ya restauró
+la pantalla. No se atribuyen a ese ensayo los 26 toques ni la QA completa.
+
+Se corrigió solo el guion, manteniendo APK y criterios: navegación observada,
+esperas por pestañas fijas y captura del fallo antes de restaurar. La nueva
+ejecución usa el commit público `be47022624f3ff7fc07c23b1ada09ccc93e901f4`.
+Su resultado, revisión visual y publicación se registran cuando terminen.
 
 ## Comprobaciones exigidas al binario nuevo
 

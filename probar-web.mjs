@@ -1979,6 +1979,17 @@ for(const fallo of ['incompleto','transporte']){
     focos.length===2&&focos[1].slug==='origen-vivo'&&focos[1].opciones.preventScroll===true);
 }
 {
+  const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto;
+  for(const slug of ['backed-finance','franklin-templeton','midas','openeden','superstate']){
+    c.slugSupervision=slug;
+    const etiqueta=vm.runInContext('supervisionOferta({plataformaSlug:slugSupervision}).texto',c);
+    prueba(slug+' conserva consulta documental sin atribuir aprobación genérica del producto',
+      etiqueta==='Documentación de producto consultada'&&!/aprobad|aval|garant/i.test(etiqueta));
+  }
+  prueba('Spiko conserva el registro de plataforma ante su supervisor sin atribuirlo a un producto',
+    vm.runInContext("supervisionOferta({plataformaSlug:'spiko'}).texto==='Plataforma registrada ante su supervisor'",c));
+}
+{
   const p=pestanaCatalogo();
   const puntos=[...p.obtiene('radarHero').innerHTML.matchAll(/<g class="blip"[^>]*data-x="([\d.]+)" data-y="([\d.]+)"/g)].map(x=>({x:Number(x[1]),y:Number(x[2])}));
   // El círculo de selección mide9+0.6 de trazo; el halo llega a3.4x3.4.

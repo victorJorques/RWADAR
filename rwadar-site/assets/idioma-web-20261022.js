@@ -9,6 +9,10 @@
   // del motor compartido ya congelado para el APK.
   const uiConsulta={
     'Cerrar detalle':'Close offer details','Oferta principal':'Primary offer',
+    'Documentación de producto consultada':'Product documentation reviewed',
+    'Plataforma registrada ante su supervisor':'Platform registered with its supervisor',
+    'Registro de la plataforma por confirmar':'Platform registration unconfirmed',
+    'Plataforma aún no evaluada en el radar':'Platform not yet assessed on the radar',
     'Qué es y quién lo ofrece':'What it is and who provides it','Proveedor':'Provider',
     'Tipo de activo':'Asset type','Supervisión de la plataforma':'Platform supervision',
     'Consultar ficha de plataforma':'View platform details','Cómo se recupera el dinero':'How you can exit',
@@ -26,7 +30,7 @@
   // Solo cambia la interfaz. Datos, citas, nombres y texto documental no
   // pasan por el diccionario aunque coincidan con una etiqueta como Inicio.
   const originales=[
-    '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar','#emiLista .emi-supervision',
+    '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar',
     '#emiLista .escaparate-dato-principal b','#emiLista .escaparate-referencia','#emiLista .escaparate-aviso-compacto',
     '.escaparate-datos-clave dd:has(a)','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
     '.escaparate-dialogo-identidad','.escaparate-dialogo-resumen','.escaparate-documentacion-caracteristicas',

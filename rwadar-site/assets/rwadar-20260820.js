@@ -1971,7 +1971,7 @@ function supervisionOferta(o){
  const p=(typeof P!=='undefined'&&Array.isArray(P)?P:[]).find(x=>x&&x.slug===o.plataformaSlug);
  const estado=p&&p.verificacionLocal&&p.verificacionLocal.licenciaRegistro&&p.verificacionLocal.licenciaRegistro.estado;
  if(estado==='confirmada_regulador')return {clase:'ok',texto:'Plataforma registrada ante su supervisor'};
- if(estado==='confirmada_documento_producto')return {clase:'ok',texto:'Producto con folleto aprobado'};
+ if(estado==='confirmada_documento_producto')return {clase:'ok',texto:'Documentación de producto consultada'};
  if(p)return {clase:'pendiente',texto:'Registro de la plataforma por confirmar'};
  return {clase:'pendiente',texto:'Plataforma aún no evaluada en el radar'};
 }
