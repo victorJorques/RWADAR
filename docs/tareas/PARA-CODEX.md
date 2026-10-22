@@ -23,10 +23,16 @@ como si demostrase el APK 1.4.0.
   49 referencias y 4 descartes. SQL editorial revisado, PGlite y lectura pública
   posterior. IOD cerrado. Los nuevos detalles investigados en el informe de
   condiciones no se aplicaron automáticamente como hechos acreditados.
-- **Web en integración:** segunda mitad de la reorganización, detalle sin
+- **Web publicada y comprobada:** segunda mitad de la reorganización, detalle sin
   recorte, campos mínimo EUR/España/salida/costes, 49 páginas de oferta,
   26 de plataforma, 4 de descarte, metodología, cambios y RSS. Snapshot
   separado del comportamiento, helper común y fuentes WOFF2 reutilizadas.
+  Fuente integrada en `ab61990`, correcciones públicas `386f86f`, `da2ae49`,
+  `f0a413a` y comparación móvil `2c98d46`. Cuarta preview aprobada y producción
+  desde `08b18a4`: 208/208 HTTP, 206/206 recursos idénticos y Chrome real a
+  320/390/1440, ES/EN, persistencia, búsqueda, foco y comparación. Suite web
+  final 551/0 y 90 comprobaciones de páginas; cobertura transversal completada
+  por áreas en logs preservados, sin atribuir un único `npm test` final exitoso.
 - **Vídeo local entregado:** evaluación grabada de la interfaz real mediante
   nueve perfiles simulados, 45/45 tareas observables y reproducción completa
   de la edición final. No es investigación con nueve personas reales.

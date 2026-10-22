@@ -213,6 +213,24 @@ consola o HTTP observados ni escrituras de cuentas. Evidencia:
 `http-preview-cuarta.log` y `recursos-preview.json`. El ensayo se hizo sobre el
 origen público con Supabase real de lectura, no sobre el fixture local.
 
+Producción se publicó desde main `08b18a4`, despliegue `e764634c`, en
+<https://rwadar.pages.dev>. Pasó **208/208 HTTP y 206/206 recursos idénticos**
+al artefacto aprobado. Una comparación adicional entre las respuestas de
+preview y producción confirma **206/206 archivos con la misma SHA-256**,
+incluidas las páginas, los scripts, las ilustraciones y las tipografías.
+Evidencias: `http-produccion-integral.log`, `recursos-produccion.json` y
+`preview-produccion-identidad.json` en la carpeta de entrega. El recorrido
+final de Chrome sobre producción también pasó: tres anchos, español/inglés y
+persistencia tras recargar, favorito, búsqueda, cierre y foco tras repintado,
+barra con cero/dos/tres selecciones, controles de 44 px dentro de pantalla,
+clic real y teclado, 49 imágenes, fuentes, scripts y páginas independientes.
+`qa-produccion-real/resultados.json` acredita el origen real, sin fixture,
+con cero errores de JavaScript o HTTP y sin escrituras de cuentas. El arnés
+bloqueó nueve POST de la analítica Cloudflare RUM, que produjeron nueve mensajes
+de consola `ERR_FAILED` esperados por ese bloqueo. Ninguno era de Auth/Supabase;
+no se atribuye «consola sin mensajes» a esta prueba de producción. La preview
+sin RUM sí tuvo consola limpia. No se cambió la analítica del producto.
+
 ## Vídeo revisado
 
 Entrega: `rwadar-entrega-integral-20261022/RWAdar-evaluacion-nueve-perfiles.mp4`, 154,32segundos,1600×1080,H.264a25fps,nuevecapítulos;22.909.224bytes. SHA-256 `765335a2f91b06040ade42758dc59f65b6544b95e9b6d466d0052ce86081d050`. Rótulos de perfil, tarea y criterios; viewport móvil centrado sin cambiar su contenido ni secuencia. Se conserva el MP4 continuo original y su WebM, con el registro de todas las iteraciones. Decodificación completa sin errores y revisión visual de los nueve capítulos, más cuatro fotogramas de la edición final. No tiene voz ni personas reales. Resultado45/45 de tareas observables; no satisfacción humana.

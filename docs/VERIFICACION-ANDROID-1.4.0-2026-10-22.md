@@ -51,8 +51,36 @@ la pantalla. No se atribuyen a ese ensayo los 26 toques ni la QA completa.
 
 Se corrigió solo el guion, manteniendo APK y criterios: navegación observada,
 esperas por pestañas fijas y captura del fallo antes de restaurar. La nueva
-ejecución usa el commit público `be47022624f3ff7fc07c23b1ada09ccc93e901f4`.
-Su resultado, revisión visual y publicación se registran cuando terminen.
+ejecución usó el commit público `be47022624f3ff7fc07c23b1ada09ccc93e901f4`,
+ejecución `39713012474`. Pasaron los 26 centros reales y las cinco fotos,
+pero el guion falló al recuperar el selector Reventa tras volver del grupo
+Brickwise. La jerarquía y captura reales muestran ScrollView entre Y877 y
+Y2117; el gesto para subir empezaba en Y768, sobre la cabecera fija. Esto
+no acredita un defecto de la lista ni una QA completa aprobada.
+
+La evidencia diagnóstica contiene 112 archivos. Log: 24.943.336 bytes,
+SHA-256 `0f8e5bc9b941c72ba007a02bd2af514bbbc9c70d32c6d38f6655237a3d559dd1`.
+ZIP: 17.680.072 bytes,
+SHA-256 `8e09c1e708ca157fac10dce09fce142c812e8ecfc5c4163aa3ab84071fa257ae`.
+Se verificaron chunks, CRC, rutas, límites y ausencia de enlaces. Su manifiesto
+mantiene `FAILURE_DIAGNOSTIC_ONLY`, `approved:false`, `releaseEligible:false`.
+El JSON parcial del radar contiene 26 destinos propios y `changedTouches >= 1`
+en todos; ocho toques corrigen un receptor superpuesto a otra plataforma.
+Ese resultado parcial no habilita la publicación.
+
+Se cambió únicamente el guion para observar el único viewport vertical nativo
+activo y situar ambos extremos de cada gesto dentro de sus límites. La revisión
+independiente comprobó XML/PNG reales, AST, gestos y rechazo sin viewport o con
+ambigüedad. Se conserva un JSON de la geometría; no hay fallback por porcentaje
+de pantalla ni cambios de los 26 centros, destinos, conteos o identidad.
+El ensayo `39800029449`, commit público `870042152ad7a3f152fb743edd19526dea0abe80`,
+se canceló al confirmar otra precondición del guion: antes de inspeccionar los
+campos ingleses, Perfil seguía desplazado hasta los favoritos. Se añadió solo
+volver arriba y esperar el encabezado real antes de pulsar English. La cancelación
+quedó confirmada; no se cuenta como éxito ni exige otra compilación.
+
+El recorrido completo corregido, revisión visual y publicación se registran
+cuando terminen. Se mantiene el mismo APK, fuente, firma y código 18.
 
 ## Comprobaciones exigidas al binario nuevo
 

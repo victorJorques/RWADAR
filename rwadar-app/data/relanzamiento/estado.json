@@ -11,7 +11,7 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Nueva revisión editorial del 22/10 aplicada y leída en Supabase. Interfaz reorganizada, fichas permanentes, RSS y selector español/inglés en validación previa a publicar. La web y Android 1.3.2 ya publicados conservan su evidencia histórica; no acredita el APK 1.4.0 todavía. Publicidad, cobros, comisiones, opiniones, avisos, comunidad y manual siguen apagados. No se afirma Auth nativo real ni teléfono físico.",
+  "nota": "Corte web del22/10 publicado desde main y comprobado en producción: catálogo actualizado, reorganización, fichas permanentes, RSS y selector español/inglés. Android1.3.2 sigue público; APK1.4.0/código18 compilado y firmado en QA nativa independiente, todavía sin publicar. Publicidad, cobros, comisiones, opiniones, avisos, comunidad y manual siguen apagados. No se afirma Auth nativo real ni teléfono físico.",
   "revisionAprobada": {
     "commit": "2c98d468e41def6f13130fd6d8ac0dda09093d67",
     "contenidoSha256": "sha256:3bec194b459ffc57b841f8bd9b405ea866a4a1a1d1eec0e8c431b6915316e631",
@@ -152,6 +152,12 @@
       "estado": "aprobado",
       "detalle": "Corte web del 22/10 aprobado tras la cuarta preview pública: 208 controles HTTP, 206 recursos idénticos y Chrome a320/390/1440 con catálogo real, ES/EN, comparación y detalle sin recorte. La revocación declarada por el titular se conserva como evidencia histórica; no acredita por sí sola los flujos nuevos. El APK1.4.0 mantiene una compuerta independiente de QA y publicación; esta aprobación web no declara completada su prueba nativa, Auth real ni teléfono físico.",
       "evidencias": [
+        {
+          "tipo": "documento",
+          "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#preview-y-publicación-remotas",
+          "verificadoEl": "2026-10-22",
+          "resumen": "Producción e764634c desde main08b18a4:208/208HTTP,206/206recursos idénticos a la preview y Chrome real a320/390/1440. ES/EN, persistencia, búsqueda, favorito, modal y comparación0/2/3 con controles44px dentro. Cero errores observados y sin escrituras. Android1.4.0 continúa con compuerta independiente."
+        },
         {
           "tipo": "documento",
           "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#preview-y-publicación-remotas",

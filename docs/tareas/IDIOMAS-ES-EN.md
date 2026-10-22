@@ -71,3 +71,10 @@ La revisión de integración debe comprobar también:
 4. Controles y lector de pantalla con la misma lengua y nombres originales.
 5. 320/390/768/1440 px y tamaño de letra del sistema aumentado.
 6. Fuentes, figuras, nombres, URLs y campos del usuario idénticos al original.
+
+Limitación identificada en el corte móvil congelado para 1.4.0: los encabezados
+dinámicos «Ofertas guardadas · N» y «Plataformas guardadas · N» permanecen en
+español. Son interfaz pendiente de completar, no documentos financieros.
+No afecta a selección, persistencia, datos ni controles. Añadir plantillas
+explícitas y regresión en la siguiente modificación del motor; no atribuir a
+este APK una traducción exhaustiva de cada encabezado.

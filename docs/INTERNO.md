@@ -21,8 +21,8 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 | | Estado |
 |---|---|
-| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), actualizada el **22/10 desde main** con el catálogo del 21/10, las imágenes por ficha y las tarjetas nuevas. Preview y producción comprobadas por HTTP, comparación de todos sus recursos y navegador; revisión móvil y escritorio. Las cuentas opcionales siguen activadas y la Academy sigue disponible. Se instala en el móvil como app. |
-| **Catálogo** | **La revisión del22deoctubre ya está aplicada en Supabase**, vigente hasta el **29deoctubre**:26plataformas,4descartadas y49referencias (24principales,21reventa,4documentales enpreparación). IOD figura cerrado; cifras nuevas solo cuando se observaron en su fuente. La interfaz nueva se está validando antes de publicarla. Ver [`VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md`](VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md). |
+| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), actualizada el **22/10 desde main** con el catálogo del 22/10, la reorganización, fichas sin recorte, comparación móvil, páginas permanentes, RSS e interfaz español/inglés. Preview y producción superaron HTTP, comparación de todos los recursos y recorrido real de navegador móvil y escritorio. Las cuentas opcionales y Academy siguen disponibles. |
+| **Catálogo** | **La revisión del 22 de octubre ya está aplicada en Supabase**, vigente hasta el **29 de octubre**: 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 reventa, 4 documentales en preparación). IOD figura cerrado; cifras nuevas solo cuando se observaron en su fuente. Los campos de acceso desde España permanecen sin confirmar cuando falta evidencia específica. Ver [`VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md`](VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md). |
 | **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
 | **App Android** | **Versión 1.3.2** (código 16), **publicada el 22/10** en GitHub ([RWAdar 1.3.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.2)). Incluye las imágenes por ficha, lugares y tarjetas nuevas; conserva las cuentas opcionales y el acabado del Perfil. Se compiló dentro de la cuota gratuita y pasó las pruebas del mismo APK en un emulador Android 15 y la revisión de sus capturas. Descarga pública, firma, tamaño, evidencia y sumas comprobados; mantiene la firma de la 1.3.1. Es una versión final y la última disponible. Todavía no está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
@@ -30,7 +30,7 @@ consulta. Entrar en el radar es gratis para las plataformas.
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
 | **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
-| **Tipografía** | Geist completa para español. En la nueva interfaz las fuentes se reutilizan como archivos locales y la app aumenta el tamaño de lectura y navegación; su publicación se acredita por separado. |
+| **Tipografía** | Geist completa para español. La web publicada reutiliza los archivos locales: títulos de tarjeta de 20 px, datos de decisión de 16 px y secundarios de 14 px. El candidato Android también aumenta el tamaño de lectura y navegación; su comprobación se acredita por separado. |
 
 **Cuentas:** ya están activadas en la web pública. En la versión de
 revisión, Víctor confirmó el 11/10 que recibió el correo de alta y que su
@@ -43,11 +43,21 @@ autenticidad correctas; no se leyeron su cuerpo ni su enlace. Falta que Víctor
 introduzca la nueva contraseña y verificar la entrada posterior: la recuperación
 real todavía no está completada.
 
-**Main vuelve a contener la fuente publicada.** Incluye las cuentas del 11/10,
-la orden `npm run catalogo`, el catálogo del 21/10 y las imágenes por ficha.
-El 22/10 se sincronizó desde Supabase, se probó y se publicó la web desde esa
-rama, primero en preview y después en producción. Las pruebas y las huellas
-quedan en el informe de publicación con fecha.
+**Main contiene la fuente publicada.** Incluye las cuentas del 11/10,
+la orden `npm run catalogo`, el catálogo del 22/10, las imágenes por ficha y
+la reorganización con páginas propias e idiomas. Primero se comprobó la preview
+pública y después se publicó producción. Las pruebas y las huellas quedan en
+el informe de mejora integral con fecha. El vídeo de nueve perfiles simulados
+está entregado en local y reproducido completo; no es una prueba con personas.
+
+**Ciclo diario:** tarea activa a las **09:00 locales del PC**, por autorización
+expresa del titular; su zona actual coincide con España peninsular. Investiga
+las ofertas publicadas y busca nuevas con documentos primarios, contraste y
+revisión independiente. Cada candidata se publica con tarjeta e ilustración
+editorial si pasa las compuertas, o no se admite ese día. No existe cola pública
+«en investigación». El PC y la aplicación deben estar encendidos; si cambia
+la zona del equipo hay que reajustar el horario. Procedimiento:
+[`tareas/CICLO-DIARIO-CATALOGO.md`](tareas/CICLO-DIARIO-CATALOGO.md).
 
 **Cambios del 11/10:** panel nativo de cuentas y refuerzos de la web
 para evitar mezclar sesiones; registro, acceso, nombre, vigilancia, recuperación
