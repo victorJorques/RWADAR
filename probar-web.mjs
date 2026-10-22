@@ -593,7 +593,7 @@ function renderEmisionHostil(codigo) {
 function reparentadoEmisionesEsReversible(codigo) {
   const limpio = sinComentariosJS(codigo);
   return /function ordenarBuscar\(esMovil\)/.test(limpio) &&
-    /const ordenMovil=\[emisiones,herramienta,barra,radarIntro,radarPortada,marcador,bannerAcademy,resultados,transparencia,academia,portadaTexto,portada\]/.test(limpio) &&
+    /const ordenMovil=\[selectorBuscar,emisiones,herramienta,barra,radarIntro,radarPortada,marcador,bannerAcademy,resultados,transparencia,academia,portadaTexto,portada\]/.test(limpio) &&
     /ordenMovil\.forEach\(nodo=>panelBuscar\.insertBefore\(nodo,referencia\)\)/.test(limpio) &&
     /function restaurarEscritorio\(\)/.test(limpio) &&
     /ancla\.parentNode\.insertBefore\(nodo,ancla\.nextSibling\)/.test(limpio) &&
@@ -1488,14 +1488,15 @@ const panelHTML = id => {
 const panelInicioHTML = panelHTML('movilPanelInicio');
 const panelAcademyHTML = panelHTML('movilPanelAcademy');
 const panelPerfilHTML = panelHTML('movilPanelMas');
-prueba('Inicio trae las noticias generadas, la comunidad como próximamente y por dónde empezar',
+prueba('Inicio trae las noticias generadas, la comunidad oculta mientras esté apagada y por dónde empezar',
   /<!--noticias:ini-->[\s\S]*class="inicio-noticias"[\s\S]*<!--noticias:fin-->/.test(panelInicioHTML) &&
   (panelInicioHTML.match(/class="inicio-noticia"/g) || []).length >= 1 &&
   /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/.test(panelInicioHTML) &&
   /* El único formulario es el de la comunidad, oculto hasta encenderla. */
   !/<(?:textarea|input|form)\b/i.test(panelInicioHTML.replace(/<div class="comunidad" id="comunidad" hidden>[\s\S]*?<ol class="comunidad-lista"/, '')) &&
   ['metodo','fuera'].every(destino => new RegExp(`data-movil-ir=["']${destino}["']`).test(panelInicioHTML)) &&
-  /data-movil-cambiar="buscar"/.test(panelInicioHTML) && /data-movil-cambiar="academy"/.test(panelInicioHTML));
+  /<section class="inicio-seccion" id="inicioComunidad"[^>]*\shidden>/.test(panelInicioHTML) &&
+  /data-movil-ir="emisiones">Ver ofertas</.test(panelInicioHTML) && /data-movil-ir="tool">Ver plataformas</.test(panelInicioHTML));
 prueba('Academy mueve el bloque real de lecciones (sin copiarlo) y cuenta las leídas del navegador',
   /id="movilAcademyLecciones"/.test(panelAcademyHTML) &&
   !/class="academia-lecciones"/.test(panelAcademyHTML) &&
@@ -2089,8 +2090,8 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     },
   };
   const casos = [
-    {nombre:'rendimiento vigente', cambios:{}, estado:'vigente 7 d'},
-    {nombre:'valor vigente', cambios:{slug:'regresion-valor', tipo:'valor'}, estado:'vigente 7 d'},
+    {nombre:'rendimiento vigente', cambios:{}, estado:'cifras vigentes 7 d'},
+    {nombre:'valor vigente', cambios:{slug:'regresion-valor', tipo:'valor'}, estado:'cifras vigentes 7 d'},
     {nombre:'caducada con documentación reciente', cambios:{slug:'regresion-caducada', verificadaEl:'2026-09-01', vigenciaDias:1}, estado:'cifras por actualizar'},
     {nombre:'apertura no confirmada', cambios:{slug:'regresion-apertura', estadoRevision:'no_verificable'}, estado:'apertura no confirmada'},
     {nombre:'fuentes en conflicto', cambios:{slug:'regresion-conflicto', estadoRevision:'fuentes_en_conflicto'}, estado:'fuentes en conflicto'},
@@ -2330,6 +2331,8 @@ const fechasSitemap = new Map([...lee('sitemap.xml').matchAll(
 const fechaRadarSEO = html.match(/"dateModified":"(\d{4}-\d{2}-\d{2})"/)?.[1];
 const fechaPrivacidadSEO = privacidad.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
 const fechaTransparenciaSEO = transparenciaComercial.match(/datetime=["'](\d{4}-\d{2}-\d{2})["']/)?.[1];
+prueba('la web publicada no cita documentos privados de claude.ai como fuente',
+  !/claude\.ai\/code\/artifact/i.test(js) && !/claude\.ai\/code\/artifact/i.test(html));
 prueba('sitemap conserva por ruta las fechas reales del radar y de cada política',
   [...fechasSitemap.keys()].filter(url => !url.startsWith(`${ORIGEN_PUBLICO}/academy/`)).length === 3 &&
   Boolean(fechaRadarSEO && fechaPrivacidadSEO && fechaTransparenciaSEO) &&

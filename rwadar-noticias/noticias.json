@@ -3,20 +3,20 @@
   "nota": "Noticias de RWAdar para Inicio (web en el móvil y app). La más reciente arriba. Después de editar: node rwadar-noticias.js. Si la noticia se publicó también en una red social, añade \"red\": {\"nombre\": \"LinkedIn\", \"url\": \"https://…\"}.",
   "noticias": [
     {
+      "id": "catalogo-2026-10-21",
+      "fecha": "2026-10-21",
+      "etiqueta": "Ofertas",
+      "titulo": "49 ofertas revisadas, ahora con imagen propia",
+      "texto": "Volvimos a leer las 49 referencias en sus fuentes oficiales. Cada ficha estrena una imagen que explica en tres pasos en qué consiste, y la tarjeta dice dónde está el activo y si su plataforma consta ante un supervisor. Las imágenes son ilustraciones, no fotos del activo.",
+      "destino": "ofertas"
+    },
+    {
       "id": "academy-abierta",
       "fecha": "2026-10-05",
       "etiqueta": "Academy",
       "titulo": "RWAdar Academy ya está abierta",
       "texto": "Siete lecciones gratuitas, de qué significa tokenizar un activo a cómo leer el radar. Cada una trae un resumen de 30 segundos, un test corto y la fecha de su revisión legal.",
       "destino": "academy"
-    },
-    {
-      "id": "ofertas-documentadas-2026-09-30",
-      "fecha": "2026-09-30",
-      "etiqueta": "Ofertas",
-      "titulo": "49 referencias de inversión documentadas",
-      "texto": "24 ofertas principales, 21 de mercado secundario y 4 en preparación, cada una con su fuente. Una referencia no es una recomendación: comprueba siempre los datos en la web del emisor.",
-      "destino": "ofertas"
     },
     {
       "id": "radar-revisado-2026-09-28",

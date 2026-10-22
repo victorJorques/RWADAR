@@ -68,7 +68,7 @@ test('el rediseño conserva radar, ofertas, 3D, detalle, descartes, avisos y pri
 
 test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => {
   const codigo = leer('App.js');
-  assert.match(codigo, /Empresas guardadas · \$\{seguidas\.length\}/);
+  assert.match(codigo, /Plataformas guardadas · \$\{seguidas\.length\}/);
   assert.match(codigo, /Ofertas guardadas · \$\{ofertasGuardadas\.length\}/);
   assert.match(codigo, /Los avisos llegarán próximamente a la app con las nuevas actualizaciones\./);
   assert.match(codigo, /\{USUARIO_LOCAL \? \(\s*<View style=\{e\.avisoProximo\}>/);
@@ -80,7 +80,7 @@ test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => 
   assert.match(datos, /PROGRESO_ACADEMY,\s*OFERTAS_GUARDADAS,\s*\];/);
 });
 
-test('Inicio muestra las mismas noticias que la web y anuncia la comunidad sin simularla', () => {
+test('Inicio muestra las mismas noticias que la web y no enseña la comunidad mientras esté apagada', () => {
   const inicio = leer('componentes', 'Inicio.js');
   const noticias = leer('lib', 'noticias-contenido.js');
   assert.match(noticias, /GENERADO por rwadar-noticias\.js/);
