@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="panel-token" content="__TOKEN__">
+<title>RWAdar · Panel de control</title>
+<link rel="icon" href="/icono.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/panel.css">
+<script type="module" src="/panel.js"></script>
+</head>
+<body>
+<div class="demo" id="aviso-demo" hidden>
+  <strong>Datos simulados.</strong> Estás en el modo de demostración: nada de lo que ves ni de lo que pulses es real.
+</div>
+<div class="marco">
+  <aside class="lateral">
+    <div class="logo"><span class="logo-marca">RW<b>A</b>dar</span><span class="logo-sub">Panel de control</span></div>
+    <nav class="menu" id="menu" aria-label="Secciones">
+      <a href="#resumen" data-vista="resumen">Resumen</a>
+      <a href="#interruptores" data-vista="interruptores">Interruptores</a>
+      <a href="#salud" data-vista="salud">Salud <span class="punto" id="punto-salud" aria-hidden="true"></span></a>
+      <a href="#trafico" data-vista="trafico">Tráfico web</a>
+      <a href="#app" data-vista="app">App</a>
+      <a href="#cuentas" data-vista="cuentas">Cuentas</a>
+      <a href="#registro" data-vista="registro">Registro</a>
+      <a href="#ajustes" data-vista="ajustes">Ajustes</a>
+    </nav>
+    <div class="lateral-pie" id="lateral-pie"></div>
+  </aside>
+  <main class="principal">
+    <header class="cabecera">
+      <div>
+        <h1 id="titulo">Resumen</h1>
+        <p class="subtitulo" id="subtitulo"></p>
+      </div>
+      <div class="cabecera-acciones">
+        <span class="actualizado" id="actualizado" aria-live="polite"></span>
+        <button type="button" class="boton secundario" id="recargar">Actualizar</button>
+      </div>
+    </header>
+    <section id="vista" class="vista" aria-live="polite"></section>
+  </main>
+</div>
+<div class="tostada" id="tostada" role="status" hidden></div>
+<dialog id="dialogo" class="dialogo">
+  <form method="dialog" id="dialogo-form">
+    <h2 id="dialogo-titulo"></h2>
+    <div id="dialogo-cuerpo"></div>
+    <p class="dialogo-error" id="dialogo-error" role="alert"></p>
+    <div class="dialogo-botones">
+      <button type="button" class="boton secundario" id="dialogo-cancelar">Cancelar</button>
+      <button type="submit" class="boton" id="dialogo-aceptar">Aceptar</button>
+    </div>
+  </form>
+</dialog>
+</body>
+</html>
