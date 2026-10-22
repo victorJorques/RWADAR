@@ -29,6 +29,9 @@ test('las URL y correos embebidos son inmutables en etiquetas traducidas',()=>{
 test('documentos sin traducción completa no sufren sustituciones parciales',()=>{
   const s='Condición de Inmobiliario: exige una inversión de 1.000,50 EUR; el contrato original prevalece.';
   assert.equal(idioma.ingles(s),s);
+  const formato='  Nota original:\nInmobiliario  y  1.000,50 EUR\n';
+  assert.equal(idioma.ingles(formato),formato);
+  assert.equal(idioma.ingles('Cerrar Juan  Carlos'),'Close Juan  Carlos');
   const fuente=idioma.fuenteOriginal(s);
   assert.equal(fuente.texto,s);assert.equal(fuente.idioma,'es');assert.equal(fuente.esOriginal,true);
 });

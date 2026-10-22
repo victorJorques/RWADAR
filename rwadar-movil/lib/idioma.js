@@ -17,9 +17,9 @@
   const destinos=texto=>texto.match(/https?:\/\/[^\s<>"']+|mailto:[^\s<>"']+|[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9](?:[A-Z0-9.-]*[A-Z0-9])?\.[A-Z]{2,}/gi)||[];
   function ingles(texto,profundidad=0){
     if(typeof texto!=='string'||!texto||/^(?:https?:\/\/|mailto:|rwadar\.|sb_|#[a-f0-9]{3,8}$)/i.test(texto))return texto;
-    const limpio=normalizar(texto);
+    const literal=texto.trim(),limpio=normalizar(texto);
     if(!limpio)return texto;
-    const anterior=profundidad===0?cache.get(limpio):undefined;
+    const anterior=profundidad===0?cache.get(literal):undefined;
     let resultado=anterior;
     if(resultado===undefined){
       resultado=mapa.get(limpio)||mayusculas.get(limpio);
@@ -55,14 +55,14 @@
           [/^(.+?)\. Filtrar plataformas de esta categoría\.$/,(m,n)=>t(n)+'. Filter platforms by this category.'],
           [/^(\d+) seleccionadas?$/,(m,n)=>n+' selected'],
         ];
-        for(const [patron,reemplazo]of patrones)if(patron.test(limpio)){resultado=limpio.replace(patron,reemplazo);break;}
+        for(const [patron,reemplazo]of patrones)if(patron.test(literal)){resultado=literal.replace(patron,reemplazo);break;}
       }
       // Solo frases completas revisadas o plantillas explícitas de interfaz.
       // Nunca sustituir palabras sueltas dentro de documentos o nombres.
-      if(resultado===undefined)resultado=limpio;
-      const origenes=destinos(limpio),salidas=destinos(resultado);
-      if(origenes.length!==salidas.length||origenes.some((s,i)=>s!==salidas[i]))resultado=limpio;
-      if(profundidad===0){if(cache.size>5000)cache.clear();cache.set(limpio,resultado);}
+      if(resultado===undefined)resultado=literal;
+      const origenes=destinos(literal),salidas=destinos(resultado);
+      if(origenes.length!==salidas.length||origenes.some((s,i)=>s!==salidas[i]))resultado=literal;
+      if(profundidad===0){if(cache.size>5000)cache.clear();cache.set(literal,resultado);}
     }
     return (texto.match(/^\s*/)?.[0]||'')+resultado+(texto.match(/\s*$/)?.[0]||'');
   }
