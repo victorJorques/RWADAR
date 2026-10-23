@@ -44,6 +44,9 @@ for(const [nombre,codigo] of [['fuente',fs.readFileSync(path.join(raiz,'rwadar-s
     assert.equal(api.rutaFichaPublica('plataformas','spiko'),'/plataformas/spiko');
   });
 }
+// La precarga solo acepta bases dentro de una carpeta rwadar-entrega-*; en un
+// clon limpio (GitHub) esa carpeta de evidencia ignorada todavía no existe.
+fs.mkdirSync(path.join(raiz,'rwadar-entrega-integral-20261022'),{recursive:true});
 const temporal=fs.mkdtempSync(path.join(raiz,'rwadar-entrega-integral-20261022/precarga-test-'));
 const dirRegistro=path.join(temporal,'rwadar-editorial-source/ofertas/precargas');
 fs.mkdirSync(path.join(dirRegistro,'lote-prueba'),{recursive:true});

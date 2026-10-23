@@ -71,6 +71,8 @@ function cargarWeb(ahora) {
     EDITORIAL_OFERTA_POR_SLUG: {},
     CATMETA: { Inmobiliario: {} }, catClase: () => '',
     RWAdarFichaEditorial: require('../lib/ficha-editorial'),
+    // Plataformas y ofertas del arranque: el fragmento las usa para sus rutas desplegadas.
+    P: [], EMI: [],
     // Botón «Guardar» de favoritos locales: vive fuera del fragmento cargado.
     botonGuardarOferta: () => '',
     escHtml: (v) => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),
@@ -689,9 +691,12 @@ test('la nueva categoría Crédito privado conserva ilustración propia en las d
   assert.match(editorial.alt, /no representa un activo concreto/);
   const { contexto } = cargarWeb(ultimoDia);
   cargarFuncionesWeb(contexto, ['EDITORIAL_OFERTA_POR_CATEGORIA']);
-  const web = contexto.imagenOfertaLocal({ catalogo: true, categoria: 'Crédito privado' });
-  assert.equal(web.src, '/ofertas-editoriales/'+editorial.archivo);
-  assert.equal(web.alt, editorial.alt);
+  // La web pide primero la ilustración propia de la ficha y deja la de su
+  // categoría, la misma que usa la app, como respaldo si aún no existe.
+  const web = contexto.imagenOfertaLocal({ catalogo: true, slug: 'credito-nuevo', categoria: 'Crédito privado', titulo: 'Crédito nuevo' });
+  assert.equal(web.src, '/ofertas-editoriales/oferta-credito-nuevo.webp');
+  assert.equal(web.respaldo, '/ofertas-editoriales/'+editorial.archivo);
+  assert.match(web.alt, /Ilustración editorial/);
 });
 
 test('web y app eligen la misma ilustración de cada ficha y caen a la de su categoría', () => {
@@ -714,17 +719,27 @@ test('web y app eligen la misma ilustración de cada ficha y caen a la de su cat
     assert.equal(web.alt, ficha.alt, ficha.slug);
     assert.match(web.respaldo, /^\/ofertas-editoriales\/[a-z-]+-rwadar\.webp$/);
   }
-  // Si la ficha cambia de categoría o no tiene ilustración, se usa la de su categoría.
+  // Si la ficha cambia de categoría o no tiene ilustración, la app usa la de su
+  // categoría; la web pide la propia por slug y deja esa misma como respaldo.
   const primera = manifiesto.fichas[0];
   const otraCategoria = primera.categoria === 'Inmobiliario' ? 'Materias primas' : 'Inmobiliario';
   const cambiada = { catalogo: true, slug: primera.slug, categoria: otraCategoria };
   assert.equal(imagenes.imagenEditorialOferta(cambiada).archivo, imagenes.imagenEditorial(otraCategoria).archivo);
-  assert.equal(contexto.imagenOfertaLocal(cambiada).src,
-    vm.runInContext('EDITORIAL_OFERTA_POR_CATEGORIA', contexto)[otraCategoria].src);
-  for (const slug of ['ficha-nueva', 'constructor', '__proto__', 'toString']) {
+  const webCambiada = contexto.imagenOfertaLocal(cambiada);
+  assert.equal(webCambiada.src, `/ofertas-editoriales/oferta-${primera.slug}.webp`);
+  assert.equal(webCambiada.respaldo, vm.runInContext('EDITORIAL_OFERTA_POR_CATEGORIA', contexto)[otraCategoria].src);
+  for (const slug of ['ficha-nueva', 'constructor']) {
     const nueva = { catalogo: true, slug, categoria: 'Inmobiliario' };
     assert.equal(imagenes.imagenEditorialOferta(nueva).archivo, 'inmobiliario-rwadar.webp', slug);
-    assert.equal(contexto.imagenOfertaLocal(nueva).src, '/ofertas-editoriales/inmobiliario-rwadar.webp', slug);
+    const web = contexto.imagenOfertaLocal(nueva);
+    assert.equal(web.src, `/ofertas-editoriales/oferta-${slug}.webp`, slug);
+    assert.equal(web.respaldo, '/ofertas-editoriales/inmobiliario-rwadar.webp', slug);
+  }
+  // Un slug que no es una ruta válida no pide ninguna imagen en la web.
+  for (const slug of ['__proto__', 'toString']) {
+    const nueva = { catalogo: true, slug, categoria: 'Inmobiliario' };
+    assert.equal(imagenes.imagenEditorialOferta(nueva).archivo, 'inmobiliario-rwadar.webp', slug);
+    assert.equal(contexto.imagenOfertaLocal(nueva), null, slug);
   }
 });
 
