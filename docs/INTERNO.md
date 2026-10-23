@@ -145,16 +145,22 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-1. **Renovar el catálogo antes del 28 de octubre.** El del 21/10 ya está
+1. **Actualizar Node.js en el PC antes de la tarea diaria.** El 21/10 Node
+   corrigió fallos graves (código remoto por Brotli, nombres de certificados
+   TLS y los certificados comprometidos de eMudhra). GitHub ya usa la versión
+   corregida (22.23.4). En el PC, `node rwadar-node-seguro.js` dice si la que
+   hay vale; si no, el ciclo diario se para sin publicar hasta actualizarla.
+   La web es estática en Cloudflare y RWAdar no usa Render ni PHP.
+2. **Renovar el catálogo antes del 28 de octubre.** El del 21/10 ya está
    aplicado, sincronizado y publicado en la web. La próxima revisión se prepara
    con `npm run catalogo`; aplicarla a Supabase y publicar requieren autorización
    expresa para esas operaciones. Ver [`RUNBOOK.md`](RUNBOOK.md#catálogo).
    Si vence, el catálogo completo sigue visible con aviso y sin cifras vencidas.
-2. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
+3. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
    primera, del 2 de octubre, copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
    como explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-3. **Completar los flujos reales de cuentas.** La web y Android 1.3.2 ya están
+4. **Completar los flujos reales de cuentas.** La web y Android 1.3.2 ya están
    publicados y sus descargas verificadas. Completar el cambio de contraseña de
    recuperación y la entrada posterior, mejorar la entrega del correo que
    llega a spam y comprobar los flujos sobre la versión publicada. El refuerzo
@@ -164,17 +170,17 @@ dos fichas de prueba, pero nada conectado a la app.
    y la comprobación en un teléfono físico; no presentarlos como hechos.
    Codex hace los pasos técnicos; el plan y las autorizaciones concretas
    están en [`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
-4. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte
+5. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte
    pendiente sobre el alta como persona física. Hasta que respondan, no se paga
    ni se rellena nada. El paquete para Google Play (AAB 1.1.2, icono, cabecera y
    capturas) ya está preparado.
-5. **Dominio propio** (unos 12 € al año). Da seriedad y permite un correo
+6. **Dominio propio** (unos 12 € al año). Da seriedad y permite un correo
    propio.
-6. **iPhone:** el fallo de memoria de una librería de Expo ya está corregido.
+7. **iPhone:** el fallo de memoria de una librería de Expo ya está corregido.
    Falta probar la app en un simulador o un iPhone de verdad antes de enviarla.
-7. **Ingresos:** decidir con un abogado cómo se puede cobrar a las
+8. **Ingresos:** decidir con un abogado cómo se puede cobrar a las
    plataformas. El veredicto editorial no se vende nunca.
-8. **Dependencias de compilación:** corregir los avisos con versiones compatibles
+9. **Dependencias de compilación:** corregir los avisos con versiones compatibles
    verificadas y revaluarlos antes de otra compilación o de activar actualizaciones
    remotas. No presentar el análisis de alcance como una auditoría limpia.
 

@@ -6,6 +6,47 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 23 de octubre de 2026 · Claude · parche de seguridad de Node.js (aviso de Render)
+
+**Rama:** `claude/node-seguro-2026-10-23`. Nada publicado, nada tocado en Supabase.
+
+- **Origen:** correo auténtico de Render (`no-reply@render.com`) sobre el aviso de
+  Node.js del 21/10 (Brotli con ejecución remota, saltos de la comprobación de
+  nombre TLS y certificados comprometidos de eMudhra; corregido en 22.23.4,
+  24.22.1 y 26.12.1) y PHP2Shell. RWAdar no usa Render ni PHP: la web es
+  estática en Cloudflare Pages. Lo afectado es Node en GitHub Actions y en el PC.
+- **Cambios:** `rwadar-node-seguro.js` (comprueba la versión y explica cómo
+  actualizar; `--comprobar` prueba 16 versiones); los flujos `ci`, `publicar` y
+  `compilar-app` fijan `node-version: 22.23.4` (antes `22`, que podía usar el
+  Node anterior en caché del runner) y lo comprueban antes de usar la red;
+  `test:tools` incluye la tabla; el ciclo diario lo ejecuta en su paso 1 y,
+  si falla, no investiga, no aplica SQL ni publica.
+- **No toqué** `rwadar-publicar.js` ni `rwadar-precargar-imagenes.js`: están en
+  `RUTAS_CONTENIDO_APROBADO` y cambiarlos invalidaría la huella aprobada.
+- **Pruebas con Node 22.23.4** (descargado y cotejado con `SHASUMS256.txt`):
+  base, catálogo, web 551/551, 90 páginas, precarga 29/29 (con una carpeta
+  temporal, ver abajo), QR y `test:tools` incluidos. La comprobación para con
+  v22.22.0 (salida 2 y mensaje) y deja pasar v22.23.4.
+- **`main` ya estaba en rojo antes de esto** (Verificación de `1a0643d`), por dos
+  pruebas que dejó `de7f2b1`, no por Node (con v22.22.0 fallan igual):
+  1. `probar-precarga.cjs:47` crea su temporal dentro de
+     `rwadar-entrega-integral-20261022/`, carpeta ignorada que solo existe en el
+     PC → `ENOENT` en GitHub. Propuesta: crearla con `os.tmpdir()` o
+     `fs.mkdirSync(..., { recursive: true })` antes.
+  2. 18 de 233 pruebas móviles (`ofertas-vigencia.test.cjs` y vecinas):
+     `P is not defined`. El trozo de `rwadar-site/assets/rwadar-20260820.js`
+     que evalúan usa `...P.map(p=>'/plataformas/'+p.slug)` sin la guarda
+     `typeof P!=='undefined'` de la línea anterior. Propuesta: añadir `P: []`
+     al contexto de `cargarWeb` en la prueba (no toca contenido aprobado).
+- **Pendiente para Víctor:** actualizar Node en el PC a la última de su rama
+  (`node --version`; instalador en `https://nodejs.org/dist/latest-v22.x/` o
+  `latest-v24.x/`) **antes de unir esta rama**, o el ciclo diario se parará.
+  Después, `node rwadar-node-seguro.js` debe decir que lleva el parche.
+  Navegadores y Android reciben la retirada de eMudhra con sus propias
+  actualizaciones; no hace falta compilar la app.
+
+---
+
 ## 22 de octubre de 2026 · Codex · segunda revisión integral, idiomas y ciclo diario
 
 Trabajo posterior al cierre de la web y Android 1.3.2 descrito debajo. Se integró
