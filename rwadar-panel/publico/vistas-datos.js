@@ -70,6 +70,8 @@ function seccionUso(uso) {
   const puntos = u.serie.map(f => ({ etiqueta: fecha(f.hora), corta: horaCorta(f.hora), valores: { app: f.app, web: f.web } }));
   return h('section', { class: 'tarjeta' },
     h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Veces que se abre el catálogo · por hora'), h('span', { class: 'nota' }, 'Últimas 24 horas, según los registros de Supabase')),
+    /* Supabase no contestó: se enseña lo apuntado cada hora y se avisa. */
+    u.desdeHistorial ? h('div', { class: 'falta-clave', style: 'margin-bottom:12px' }, `Supabase no ha contestado ahora: estas cifras son las que el panel apuntó (${u.horasApuntadas} de 24 horas). Se pondrán al día solas.`) : null,
     lineas(puntos, SERIES_USO));
 }
 

@@ -274,6 +274,19 @@ test('el uso de la app sale hora a hora de los registros de Supabase y se apunta
   } finally { await p.cerrar(); }
 });
 
+test('si Supabase no contesta, el uso de la app sale de lo apuntado y lo avisa', async () => {
+  const p = await montar();
+  try {
+    await p.api('/api/app'); // la primera vez se apuntan las 24 horas
+    const p2 = await montar({ RWADAR_PANEL_SUPABASE_API: 'http://127.0.0.1:9/no-contesta', RWADAR_PANEL_DATOS: p.dirDatos });
+    const { datos } = await p2.api('/api/app');
+    assert.equal(datos.uso.datos.desdeHistorial, true);
+    assert.ok(datos.uso.datos.horasApuntadas >= 23);
+    assert.match(datos.uso.aviso, /no se pudo conectar|no respondió/);
+    await p2.cerrar();
+  } finally { await p.cerrar(); }
+});
+
 test('sin la clave de registros la app sale igual y explica qué falta', async () => {
   const p = await montar({ SUPABASE_ACCESS_TOKEN: '' });
   try {

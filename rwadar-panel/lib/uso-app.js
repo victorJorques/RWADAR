@@ -62,8 +62,9 @@ function crearUsoApp(config) {
   async function consultar(desde, hasta) {
     if (!config.supabaseAccessToken) throw new FaltaCredencial('Supabase (registros)', 'ver el uso de la app');
     const q = new URLSearchParams({ sql: CONSULTA, iso_timestamp_start: isoMinuto(desde), iso_timestamp_end: isoMinuto(hasta) });
+    /* Suele tardar 2-3 s, pero a veces Supabase va lento: 25 s de margen. */
     const r = await pedir(`${config.supabaseApi}/v1/projects/${refProyecto()}/analytics/endpoints/logs?${q}`, {
-      headers: { Authorization: `Bearer ${config.supabaseAccessToken}` },
+      headers: { Authorization: `Bearer ${config.supabaseAccessToken}` }, espera: 25000,
     });
     /* Supabase frena las consultas de registros seguidas. */
     if (r.estado === 429) throw new ErrorPanel('Supabase pide esperar un minuto antes de volver a consultar sus registros', { estado: 503, codigo: 'espera' });

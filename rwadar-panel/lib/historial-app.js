@@ -59,4 +59,24 @@ async function leerHistorial(almacen, dias = 30, ahora = new Date()) {
   };
 }
 
-module.exports = { anotarDescargas, anotarHoras, leerHistorial };
+/* Si Supabase no contesta, las últimas 24 horas salen de lo apuntado
+   (el panel de la nube apunta cada hora). Devuelve null si no hay nada. */
+async function ultimas24hApuntadas(almacen, ahora = new Date()) {
+  const HORA_MS = 3600000;
+  const fin = Math.floor(new Date(ahora).getTime() / HORA_MS) * HORA_MS;
+  const dias = [...new Set([dia(fin - 24 * HORA_MS), dia(fin)])];
+  const docs = Object.fromEntries(await Promise.all(dias.map(async d => [d, await almacen.leer(`uso-app-${d}`)])));
+  const serie = [];
+  let apuntadas = 0;
+  for (let t = fin - 23 * HORA_MS; t <= fin; t += HORA_MS) {
+    const hora = new Date(t).toISOString();
+    const h = docs[hora.slice(0, 10)]?.horas?.[hora.slice(11, 13)];
+    if (h) apuntadas++;
+    serie.push({ hora, app: h?.app || 0, web: h?.web || 0, conexionesApp: h?.conexionesApp || 0 });
+  }
+  if (!apuntadas) return null;
+  const suma = clave => serie.reduce((s, f) => s + f[clave], 0);
+  return { serie, app: suma('app'), web: suma('web'), conexionesApp: Math.max(0, ...serie.map(f => f.conexionesApp)), desdeHistorial: true, horasApuntadas: apuntadas };
+}
+
+module.exports = { anotarDescargas, anotarHoras, leerHistorial, ultimas24hApuntadas };

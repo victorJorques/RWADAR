@@ -19,7 +19,7 @@ const { crearGithub } = require('./github');
 const { estadoWeb } = require('./estado-web');
 const { crearSalud } = require('./salud');
 const { crearUsoApp } = require('./uso-app');
-const { anotarDescargas, anotarHoras, leerHistorial } = require('./historial-app');
+const { anotarDescargas, anotarHoras, leerHistorial, ultimas24hApuntadas } = require('./historial-app');
 
 function crearApi({ config, almacen, extras = {} }) {
   const cache = crearCache();
@@ -43,7 +43,12 @@ function crearApi({ config, almacen, extras = {} }) {
       if (uso.status === 'fulfilled') await anotarHoras(almacen, uso.value.serie);
     } catch { /* el historial es un extra */ }
     const historial = await leerHistorial(almacen).catch(() => null);
-    return { descargas: resultado(descargas), uso: resultado(uso), historial };
+    let usoFinal = resultado(uso);
+    if (uso.status === 'rejected' && uso.reason?.codigo !== 'falta-credencial') {
+      const apuntado = await ultimas24hApuntadas(almacen).catch(() => null);
+      if (apuntado) usoFinal = { datos: apuntado, aviso: uso.reason?.message || 'Supabase no respondió' };
+    }
+    return { descargas: resultado(descargas), uso: usoFinal, historial };
   }
 
   /* Visitas exactas por día. Cloudflare solo cuenta visita a visita los
