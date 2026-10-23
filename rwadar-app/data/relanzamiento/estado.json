@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Candidato de revisión con acceso obligatorio, tutorial de cuatro pasos dentro de Academy y mejoras de lectura. Catálogo vigente22/10; lote23/10 y SQL28 sin aplicar. Android1.4.0/código19 terminado, sin publicar. Preview inicial revisada; corregido enlace de condiciones. Faltan cuenta y correo reales y QA nativa autenticada.",
+  "nota": "Preview con acceso obligatorio y tutorial Academy. Fallo fetch Workers corregido y probado en runtime real. Lote editorial23/10 autorizado y aplicado; conserva26/49 y fechas generales22/10. SQL28 autorizado, todavía sin activar. APK19 terminado, validación autenticada pendiente; producción anterior continúa.",
   "revisionAprobada": {
-    "commit": "3f9ce53b9541d6e2b6045e71923d3cc2daabcf87",
-    "contenidoSha256": "sha256:e28988a0ba77201148b77309e562c799bbe50bc12653aaa1732d4e476fb729b8",
+    "commit": "c4ee93c421879f0cc7650fb957c63030746c9aac",
+    "contenidoSha256": "sha256:9352edb9e5544123c118662677da8e3be143c38ece6566e00d9123764053f131",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
