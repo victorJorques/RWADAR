@@ -21,6 +21,11 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
   Node anterior en caché del runner) y lo comprueban antes de usar la red;
   `test:tools` incluye la tabla; el ciclo diario lo ejecuta en su paso 1 y,
   si falla, sigue igual pero avisa a Víctor al principio del resumen.
+- **EAS:** la imagen de Android de SDK 57 trae Node 22.23.1 (vulnerable), así
+  que los cuatro perfiles de `rwadar-movil/eas.json` fijan `"node": "22.23.4"`.
+  Solo afecta a la próxima compilación (la app no lleva Node dentro y
+  `runtimeVersion` es `appVersion`); no se ejecutó EAS. Si esa compilación
+  falla al instalar Node, mirar el registro «Spin up build environment».
 - **No toqué** `rwadar-publicar.js` ni `rwadar-precargar-imagenes.js`: están en
   `RUTAS_CONTENIDO_APROBADO` y cambiarlos invalidaría la huella aprobada.
 - **Pruebas con Node 22.23.4** (descargado y cotejado con `SHASUMS256.txt`):

@@ -145,10 +145,10 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
-1. **Actualizar Node.js en el PC antes de la tarea diaria.** El 21/10 Node
-   corrigió fallos graves (código remoto por Brotli, nombres de certificados
-   TLS y los certificados comprometidos de eMudhra). GitHub ya usa la versión
-   corregida (22.23.4). En el PC, `node rwadar-node-seguro.js` dice si la que
+1. **Actualizar Node.js en el PC.** El 21/10 Node corrigió fallos graves
+   (código remoto por Brotli, nombres de certificados TLS y los certificados
+   comprometidos de eMudhra). GitHub y las compilaciones de EAS ya usan la
+   versión corregida (22.23.4). En el PC, `node rwadar-node-seguro.js` dice si la que
    hay vale; si no, el ciclo diario sigue y avisa de que hay que actualizarla.
    La web es estática en Cloudflare y RWAdar no usa Render ni PHP.
 2. **Renovar el catálogo antes del 28 de octubre.** El del 21/10 ya está
