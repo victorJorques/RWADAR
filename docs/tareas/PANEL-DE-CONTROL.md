@@ -27,10 +27,13 @@ por WhatsApp sin que tengan que hacerse cuenta. Manual de uso:
 
 ## Qué hace
 
-Salud (11 comprobaciones), visitas de Web Analytics, uso de la app (aperturas
-del catálogo leídas de los registros de Supabase), descargas del APK, cuentas
-(confirmar, bloquear, borrar) y registro con quién hizo cada cosa. **No apaga
-ni enciende la web**: Víctor lo decidió el 22/10; cuando haga falta os lo pide.
+Salud (15 comprobaciones), visitas de Web Analytics y velocidad real (LCP,
+INP y CLS por móvil y ordenador), uso de la app (aperturas del catálogo leídas
+de los registros de Supabase), descargas del APK, cuentas (confirmar, bloquear,
+borrar) con el estado de sus correos, catálogo y Academy por dentro, lo que
+caduca y lo gastado de cada plan gratis, y registro con quién hizo cada cosa.
+**No apaga ni enciende la web**: Víctor lo decidió el 22/10; cuando haga falta
+os lo pide.
 
 ## Lo comprobado contra producción
 
@@ -45,6 +48,21 @@ ni enciende la web**: Víctor lo decidió el 22/10; cuando haga falta os lo pide
 - La sesión antigua de `wrangler` solo tenía Pages; se rehízo `wrangler login`.
   La fecha de compatibilidad del Worker no puede pasar de 2026-08-27 con
   wrangler 4.125.0.
+- **La web no mide las fichas de oferta y plataforma.** `assets/analitica-*.js`
+  solo carga el beacon de Web Analytics en portada, Academy y páginas legales
+  (`spa: false`); las fichas abiertas dentro de la portada tampoco cambian de
+  ruta. Saber qué fichas se miran o qué clics van a cada plataforma exige un
+  cambio en la web; `lib/contenido.js` cruzará las rutas `/ofertas/…` solas si
+  algún día aparecen.
+- Uso de los planes: `workersInvocationsAdaptive` y `kvOperationsAdaptiveGroups`
+  por GraphQL (token con *Account Analytics: Read*); Supabase da
+  `/v1/projects/{ref}/analytics/endpoints/usage.api-counts?interval=7day`,
+  `/health` y el plan en `/v1/organizations/{slug}`. La facturación de GitHub
+  (`/users/{user}/settings/billing/usage`) no la deja leer el token fino (403):
+  los minutos se cuentan con los trabajos de cada ejecución. La app se compila
+  con EAS (Expo, 15 compilaciones Android al mes gratis) lanzado desde GitHub.
+- En la nube cada visita tiene **50 consultas externas** como mucho; la salud
+  completa gasta unas 32.
 
 ## Pendiente (decisión de Víctor)
 
@@ -57,5 +75,6 @@ ni enciende la web**: Víctor lo decidió el 22/10; cuando haga falta os lo pide
 
 ## Pruebas
 
-`npm run test:panel`: 36/36 (contra el simulador `rwadar-panel/demo/simulador.js`).
-Recorrido completo con datos reales en el panel local y en el de la nube el 23/10.
+`npm run test:panel`: 45/45 (contra el simulador `rwadar-panel/demo/simulador.js`
+y `demo/simulador-extra.js`). Recorrido completo con datos reales en el panel
+local y en el de la nube el 23/10.
