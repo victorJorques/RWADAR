@@ -114,3 +114,79 @@ test('los archivos de la página no tienen errores de sintaxis', () => {
     assert.doesNotThrow(() => execFileSync(process.execPath, ['--check', copia], { stdio: 'pipe' }), archivo);
   }
 });
+
+test('la caché junta las peticiones que llegan a la vez y no guarda los errores', async () => {
+  const { crearCache } = require('../lib/pedir');
+  const cache = crearCache();
+  let veces = 0;
+  const lento = () => new Promise(r => setTimeout(() => r(++veces), 20));
+  const [a, b] = await Promise.all([cache.obtener('x', 60, lento), cache.obtener('x', 60, lento)]);
+  assert.deepEqual([a, b, veces], [1, 1, 1]);
+  await assert.rejects(cache.obtener('y', 60, () => { throw new Error('caído'); }));
+  assert.equal(await cache.obtener('y', 60, () => 'vuelve'), 'vuelve');
+});
+
+test('los correos cuentan altas, confirmaciones y cuentas atascadas de los últimos 30 días', () => {
+  const { resumirCuentas, CONSULTA } = require('../lib/correos');
+  const ahora = Date.parse('2026-10-23T12:00:00Z');
+  const hace = h => new Date(ahora - h * 3600000).toISOString();
+  const cuentas = [
+    { confirmada: true, correoAltaEnviado: hace(48), confirmadaEl: hace(47.9), correoRecuperacionEnviado: hace(5) },
+    { confirmada: true, correoAltaEnviado: hace(30), confirmadaEl: hace(29.5) },
+    { confirmada: false, correoAltaEnviado: hace(30) },
+    { confirmada: false, correoAltaEnviado: hace(3) },
+    { confirmada: false, correoAltaEnviado: hace(24 * 40) },
+  ];
+  assert.deepEqual(resumirCuentas(cuentas, ahora), {
+    altas30d: 4, confirmadas30d: 2, sinConfirmar24h: 1, recuperaciones30d: 1,
+    minutosHastaConfirmar: 30, ultimoEnviado: hace(3),
+  });
+  assert.match(CONSULTA, /source = 'auth_logs'/);
+  assert.doesNotMatch(CONSULTA, /email|remote_addr/, 'la consulta no pide direcciones');
+});
+
+test('las fechas avisan a 14 días, el catálogo a 2, y lo caducado es fallo', () => {
+  const { entrada, AVISO_CATALOGO_DIAS } = require('../lib/fechas');
+  const ahora = Date.parse('2026-10-23T12:00:00Z');
+  const en = dias => new Date(ahora + dias * 86400000).toISOString();
+  assert.equal(entrada('x', 'X', en(20), '', ahora).estado, 'ok');
+  assert.equal(entrada('x', 'X', en(10), '', ahora).estado, 'aviso');
+  assert.equal(entrada('x', 'X', en(-1), '', ahora).estado, 'fallo');
+  assert.equal(entrada('c', 'Catálogo', en(6), '', ahora, AVISO_CATALOGO_DIAS).estado, 'ok');
+  assert.equal(entrada('c', 'Catálogo', en(1.5), '', ahora, AVISO_CATALOGO_DIAS).estado, 'aviso');
+  assert.equal(entrada('x', 'X', null, '', ahora).estado, 'sin-datos');
+});
+
+test('un medidor del plan gratis avisa al 80 % y falla al llegar al tope', () => {
+  const { medidor } = require('../lib/planes');
+  assert.equal(medidor('m', 79, 100).estado, 'ok');
+  assert.equal(medidor('m', 80, 100).estado, 'aviso');
+  assert.equal(medidor('m', 1000, 1000).estado, 'fallo');
+  assert.equal(medidor('m', 108, 100000).porcentaje, 0.1);
+});
+
+test('el catálogo por dentro junta rutas iguales, lee Academy y separa lo que nadie abrió', () => {
+  const { rutaLimpia, vistasPorRuta, leccionesDeAcademy, descartesDelMapa, cruzar, inventario } = require('../lib/contenido');
+  assert.equal(rutaLimpia('/ofertas/abc.html?x=1'), '/ofertas/abc');
+  assert.equal(rutaLimpia('/academy/'), '/academy');
+  assert.equal(rutaLimpia('/'), '/');
+  const vistas = vistasPorRuta([{ nombre: '/academy/uno', paginas: 3, visitas: 1 }, { nombre: '/academy/uno.html', paginas: 2, visitas: 1 }]);
+  assert.deepEqual(vistas.get('/academy/uno'), { paginas: 5, visitas: 2 });
+  const html = '<a class="ac-tarjeta" href="/academy/uno"><span class="ac-tarjeta-tit">Uno &amp; más</span></a>'
+    + '<a class="ac-tarjeta" href="/academy/dos"><span class="ac-tarjeta-tit">Dos</span></a>'
+    + '<article class="ac-tarjeta"><span class="ac-tarjeta-tit">Pronto</span></article>';
+  const lecciones = leccionesDeAcademy(html);
+  assert.deepEqual(lecciones, [{ slug: 'uno', nombre: 'Uno & más' }, { slug: 'dos', nombre: 'Dos' }]);
+  const c = cruzar(lecciones, '/academy', vistas);
+  assert.deepEqual([c.abiertas, c.vistas, c.lista[0].slug, c.nadie], [1, 5, 'uno', ['Dos']]);
+  assert.deepEqual(descartesDelMapa('<loc>https://w/fuera-del-radar/realt</loc><loc>https://w/ofertas/x</loc>'), [{ slug: 'realt', nombre: 'Realt' }]);
+  const ahora = Date.parse('2026-10-23T12:00:00Z');
+  const inv = inventario({
+    plataformas: [{ slug: 'a', nombre: 'A', categoria: 'Inmobiliario', verificadaEl: '2026-07-26' }, { slug: 'b', nombre: 'B', categoria: 'Inmobiliario', verificadaEl: '2026-10-20' }],
+    ofertas: [{ slug: 'o1', nombre: 'O1', tipo: 'valor', categoria: 'Inmobiliario', plataforma: 'a', verificadaEl: '2026-10-22' }],
+  }, ahora);
+  assert.deepEqual(inv.plataformas.sinOfertas, ['B']);
+  assert.equal(inv.plataformas.sinRevisarMasDe60, 1);
+  assert.deepEqual(inv.plataformas.conMasOfertas, [{ nombre: 'A', n: 1, conFicha: true }]);
+  assert.deepEqual(inv.ofertas.porTipo, [{ nombre: 'Precio de referencia', n: 1 }]);
+});

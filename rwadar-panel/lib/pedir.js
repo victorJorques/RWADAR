@@ -62,16 +62,26 @@ async function pedirJson(url, opciones = {}) {
   return r;
 }
 
-/* Memoria corta para no pedir 20 veces lo mismo al cambiar de pestaña. */
+/* Memoria corta para no pedir 20 veces lo mismo al cambiar de pestaña.
+   Si dos piden lo mismo a la vez, el segundo espera al primero. Los
+   errores no se guardan. */
 function crearCache() {
   const valores = new Map();
   return {
     async obtener(clave, segundos, producir) {
       const guardado = valores.get(clave);
       if (guardado && guardado.hasta > Date.now()) return guardado.valor;
-      const valor = await producir();
-      valores.set(clave, { valor, hasta: Date.now() + segundos * 1000 });
-      return valor;
+      const enCurso = Promise.resolve().then(producir);
+      const entrada = { valor: enCurso, hasta: Infinity };
+      valores.set(clave, entrada);
+      try {
+        const valor = await enCurso;
+        if (valores.get(clave) === entrada) valores.set(clave, { valor, hasta: Date.now() + segundos * 1000 });
+        return valor;
+      } catch (e) {
+        if (valores.get(clave) === entrada) valores.delete(clave);
+        throw e;
+      }
     },
     olvidar(prefijo) {
       for (const clave of valores.keys()) if (clave.startsWith(prefijo)) valores.delete(clave);

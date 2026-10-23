@@ -77,7 +77,39 @@ function crearGithub(config, { leerPrivado } = {}) {
     return [...ultimas.values()].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
   }
 
-  return { descargasApp, tareasAutomaticas };
+  /* Todas las ejecuciones del repositorio privado desde un día (AAAA-MM-DD). */
+  async function ejecucionesDesde(dia) {
+    const todas = [];
+    for (let pagina = 1; pagina <= 10; pagina++) {
+      const datos = await leer(`/repos/${config.repoFuente}/actions/runs?created=${encodeURIComponent(`>=${dia}`)}&per_page=100&page=${pagina}`);
+      const lote = datos?.workflow_runs || [];
+      todas.push(...lote);
+      if (lote.length < 100) break;
+    }
+    return todas.map(run => ({
+      id: run.id,
+      nombre: run.name || 'Sin nombre',
+      ruta: run.path || '',
+      terminada: run.status === 'completed',
+      resultado: run.conclusion || null,
+      inicio: run.run_started_at || run.created_at,
+      fin: run.updated_at,
+    }));
+  }
+
+  /* Minutos que GitHub cobra de una ejecución: cada trabajo por separado,
+     redondeado al minuto hacia arriba; Windows cuenta doble y macOS por diez. */
+  async function minutosDe(id) {
+    const datos = await leer(`/repos/${config.repoFuente}/actions/runs/${Number(id)}/jobs?filter=all&per_page=100`);
+    return (datos?.jobs || []).reduce((suma, t) => {
+      if (!t.started_at || !t.completed_at) return suma;
+      const etiquetas = (t.labels || []).join(' ').toLowerCase();
+      const por = etiquetas.includes('macos') ? 10 : etiquetas.includes('windows') ? 2 : 1;
+      return suma + Math.ceil(Math.max(0, new Date(t.completed_at) - new Date(t.started_at)) / 60000) * por;
+    }, 0);
+  }
+
+  return { descargasApp, tareasAutomaticas, ejecucionesDesde, minutosDe };
 }
 
 module.exports = { crearGithub };

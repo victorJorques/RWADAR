@@ -31,7 +31,7 @@ const DIR_FUENTES = path.join(__dirname, '..', 'rwadar-site', 'assets', 'fuentes
 const MAX_CUERPO = 16 * 1024;
 const QUIEN_LOCAL = 'ordenador de Víctor';
 const TIPOS = Object.freeze({ '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml' });
-const ESTATICOS = new Set(['/panel.css', '/panel.js', '/util.js', '/vistas.js', '/vistas-datos.js', '/graficos.js', '/icono.svg']);
+const ESTATICOS = new Set(['/panel.css', '/panel.js', '/util.js', '/vistas.js', '/vistas-datos.js', '/vistas-catalogo.js', '/vistas-limites.js', '/graficos.js', '/icono.svg']);
 const FUENTES = /^\/fuentes\/(geist-normal-[0-9a-f]{12}|geist-mono-normal-[0-9a-f]{12})\.woff2$/;
 const SEGURIDAD = Object.freeze({
   'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",

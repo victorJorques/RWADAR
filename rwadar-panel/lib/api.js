@@ -20,14 +20,33 @@ const { estadoWeb } = require('./estado-web');
 const { crearSalud } = require('./salud');
 const { crearUsoApp } = require('./uso-app');
 const { anotarDescargas, anotarHoras, leerHistorial, ultimas24hApuntadas } = require('./historial-app');
+const { crearCorreos } = require('./correos');
+const { crearFechas } = require('./fechas');
+const { crearVelocidad } = require('./velocidad');
+const { crearPlanes } = require('./planes');
+const { crearContenido } = require('./contenido');
 
 function crearApi({ config, almacen, extras = {} }) {
   const cache = crearCache();
   const supabase = crearSupabase(config);
   const cloudflare = crearCloudflare(config);
   const github = crearGithub(config, { leerPrivado: extras.leerGithub });
-  const salud = crearSalud({ config, supabase, github });
   const usoApp = crearUsoApp(config);
+  const cuentas = () => cache.obtener('cuentas', 20, () => supabase.listarCuentas());
+  const vigencia = () => cache.obtener('vigencia', 60, () => supabase.vigenciaCatalogo());
+  const correos = crearCorreos(config, { listarCuentas: cuentas });
+  const fechas = crearFechas(config, { vigenciaCatalogo: vigencia });
+  const velocidad = crearVelocidad(config);
+  const planes = crearPlanes({ config, almacen, github, cuentas });
+  const contenido = crearContenido({ config, trafico: periodo => traficoCompleto(periodo) });
+  /* Lo que también mira la salud: se comparte la caché con sus secciones. */
+  const leidos = {
+    correos: () => cache.obtener('correos', 300, () => correos.resumen()),
+    fechas: () => cache.obtener('fechas', 900, () => fechas.lista()),
+    velocidad: () => cache.obtener('velocidad', 1800, () => velocidad.ultimos7Dias()),
+    planes: () => cache.obtener('planes', 600, () => planes.resumen()),
+  };
+  const salud = crearSalud({ config, supabase, github, leidos });
   let accionEnCurso = null;
 
   const resultado = p => p.status === 'fulfilled'
@@ -86,11 +105,11 @@ function crearApi({ config, almacen, extras = {} }) {
   /* La llama el cron del panel de la nube cada hora para que el historial
      siga creciendo aunque nadie abra el panel. */
   async function tareaHoraria() {
-    const [descargas, hora, visitas] = await Promise.allSettled([github.descargasApp(), usoApp.horaAnterior(), cloudflare.trafico('7d')]);
+    const [descargas, hora, visitas, minutos] = await Promise.allSettled([github.descargasApp(), usoApp.horaAnterior(), cloudflare.trafico('7d'), planes.apuntarMinutos()]);
     if (descargas.status === 'fulfilled') await anotarDescargas(almacen, descargas.value);
     if (hora.status === 'fulfilled') await anotarHoras(almacen, [hora.value]);
     if (visitas.status === 'fulfilled') await anotarVisitas(visitas.value);
-    return { descargas: descargas.status, uso: hora.status, visitas: visitas.status };
+    return { descargas: descargas.status, uso: hora.status, visitas: visitas.status, minutos: minutos.status };
   }
 
   const exigir = (condicion, mensaje) => { if (!condicion) throw new ErrorPanel(mensaje, { estado: 400 }); };
@@ -123,10 +142,22 @@ function crearApi({ config, almacen, extras = {} }) {
     },
     '/api/trafico': async url => {
       const periodo = url.searchParams.get('periodo') || '7d';
-      return traficoCompleto(periodo);
+      /* La lista completa de páginas solo la usa el panel por dentro. */
+      const { paginasTodas, ...trafico } = await traficoCompleto(periodo);
+      return trafico;
     },
+    '/api/velocidad': async () => leidos.velocidad(),
     '/api/app': async () => cache.obtener('app', 300, datosApp),
-    '/api/cuentas': async () => cache.obtener('cuentas', 20, () => supabase.listarCuentas()),
+    '/api/cuentas': async () => cuentas(),
+    '/api/correos': async () => leidos.correos(),
+    '/api/limites': async () => {
+      const [lista, uso] = await Promise.allSettled([leidos.fechas(), leidos.planes()]);
+      return { fechas: resultado(lista), planes: resultado(uso) };
+    },
+    '/api/contenido': async url => {
+      const periodo = url.searchParams.get('periodo') === '7d' ? '7d' : '30d';
+      return cache.obtener(`contenido:${periodo}`, 300, () => contenido.resumen(periodo));
+    },
     '/api/interruptores': async () => {
       const [web, catalogo, permiso] = await Promise.allSettled([
         estadoWeb(config), supabase.estadoCatalogo(),

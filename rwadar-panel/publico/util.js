@@ -40,7 +40,23 @@ export function h(etiqueta, props = {}, ...hijos) {
   return el;
 }
 
+/* Rellena una caja como h(): aplana listas y se salta lo vacío. Con
+   replaceChildren a secas, un null sale escrito como «null». */
+export function poner(caja, ...hijos) {
+  caja.replaceChildren(...hijos.flat(Infinity).filter(x => x !== null && x !== undefined && x !== false));
+}
+
 export const numero = n => new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1 }).format(Number(n) || 0);
+
+export function kpi(etiqueta, valor, extra) {
+  return h('div', { class: 'kpi' }, h('span', { class: 'kpi-etiqueta' }, etiqueta), h('span', { class: 'kpi-valor' }, valor), extra ? h('span', { class: 'kpi-extra' }, extra) : null);
+}
+
+/* Botones de «elige uno» (periodo, filtro…). */
+export function segmentos(opciones, actual, alElegir, etiqueta = 'Periodo') {
+  return h('div', { class: 'segmentos', role: 'group', 'aria-label': etiqueta }, ...opciones.map(([valor, texto]) =>
+    h('button', { type: 'button', 'aria-pressed': String(valor === actual), onclick: () => alElegir(valor) }, texto)));
+}
 
 export function fecha(iso, { hora = true } = {}) {
   if (!iso) return '—';

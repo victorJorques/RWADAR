@@ -41,7 +41,7 @@ claves** se abre con el Bloc de notas y vienen los pasos.
 | `CLOUDFLARE_API_TOKEN` | Ver las visitas de la web | dash.cloudflare.com › Mi perfil › API Tokens › Create Custom Token. Permiso: *Account · Account Analytics · Read*. Empieza por `cfut_` (la «Global API Key», `cfk_`, no vale) |
 | `GITHUB_TOKEN` | Descargas del APK y copia de seguridad en el panel de la nube (desde Cloudflare, GitHub corta las consultas sin clave) | github.com › Settings › Developer settings › Fine-grained tokens: solo los repositorios RWADAR y RWAdar-downloads, *Actions: Read-only* y *Contents: Read-only* |
 | `SUPABASE_SECRET_KEY` | Ver y gestionar las cuentas, retirar el catálogo | Supabase › Project Settings › API Keys › Secret keys (empieza por `sb_secret_`) |
-| `SUPABASE_ACCESS_TOKEN` | Contar cuántas veces se abre la app y la web cada hora | Supabase › Account › Access Tokens (empieza por `sbp_`). Si deja elegir permisos, solo lectura de registros |
+| `SUPABASE_ACCESS_TOKEN` | Contar cuántas veces se abre la app y la web cada hora, los correos de las cuentas y el plan de Supabase | Supabase › Account › Access Tokens (empieza por `sbp_`). Si deja elegir permisos, solo lectura de registros, del proyecto y de su configuración de Auth |
 
 Después de guardar, cierra la ventana negra y vuelve a abrir el panel.
 
@@ -94,14 +94,18 @@ para ver qué pasa con un enlace que no vale).
     leen la orden `catalogo_publicacion.retirado` de Supabase). Pide un motivo.
     Necesita que la base dé a la clave secreta permiso sobre esa tabla; si no
     lo tiene, el panel lo dice en vez de enseñar el botón.
-- **Salud:** once comprobaciones (portada, cabeceras, páginas clave, enlace
+- **Salud:** quince comprobaciones (portada, cabeceras, páginas clave, enlace
   Android, última versión, base de datos, servicio de cuentas, catálogo visible
-  y al día, copia de seguridad nocturna y tareas de GitHub),
+  y al día, copia de seguridad nocturna, tareas de GitHub, correos de alta y
+  contraseña, fechas que caducan, velocidad para la gente y planes gratis),
   cada una con qué hacer si falla. *Comprobación a fondo* (solo en tu
   ordenador) lanza `.github/comprobar-publicado.mjs`.
 - **Tráfico web:** visitas y páginas vistas (24 h, 7 o 30 días), por dónde se
   mueve la gente (secciones), fichas más vistas, de dónde llega, países,
-  dispositivos, navegadores y sistemas. Sin bots.
+  dispositivos, navegadores y sistemas. Sin bots. Y la **velocidad real** de
+  la última semana en móvil y en ordenador (lo que tarda en verse lo principal,
+  en reaccionar al tocar y si la página salta), con los umbrales de Google; con
+  menos de 10 visitas medidas no se pone nota.
 - **App:** cuántas veces se abre el catálogo desde la app y desde la web, hora
   a hora en las últimas 24 horas y por día después (se cuenta en los registros
   de Supabase: no hace falta cambiar la app ni se guarda quién es nadie);
@@ -109,7 +113,23 @@ para ver qué pasa con un enlace que no vale).
 - **Cuentas:** todas las cuentas (web y app son las mismas), altas por día,
   buscador, filtros y CSV. Por cuenta: *Confirmar* el correo a mano,
   *Bloquear/Desbloquear* y *Borrar* (hay que escribir su correo; borra también
-  su perfil, su vigilancia y sus avisos).
+  su perfil, su vigilancia y sus avisos). Arriba, los **correos**: de dónde
+  salen, cuántas altas se confirman y cuánto tardan, cuentas que llevan más de
+  un día sin confirmar (correo perdido o en spam) y los errores de envío de las
+  últimas 24 horas, sin enseñar ninguna dirección.
+- **Catálogo y Academy:** lo publicado por categoría, acceso y región, cuántas
+  ofertas tiene cada proveedor, plataformas sin ofertas y cuánto hace que se
+  verificó cada cosa (aviso a los 60 días). Lecciones de Academy más leídas y
+  las que nadie abre, y las fichas «fuera del radar». La web **no mide** qué
+  fichas de oferta o plataforma se abren (solo carga la analítica en portada,
+  Academy y páginas legales: `assets/analitica-*.js`); si algún día lo hace,
+  el panel las cruza solo.
+- **Límites y fechas:** lo que caduca (revisión del catálogo, `security.txt`,
+  claves de GitHub y Cloudflare del panel) y lo gastado de cada plan gratis:
+  Workers y almacén KV de Cloudflare (por día), Supabase (plan, salud, último
+  uso: un proyecto gratis se pausa a los 7 días sin uso), minutos de GitHub
+  Actions del mes (exactos por trabajo; se apuntan en `minutos-AAAA-MM`) y
+  compilaciones de Android en Expo lanzadas desde GitHub (15 al mes).
 - **Registro:** todo lo que se ha cambiado desde el panel, con fecha, quién y
   resultado. En tu ordenador, en `rwadar-panel/datos/registro.jsonl` (fuera de
   Git); en la nube, en Cloudflare KV.
@@ -141,6 +161,15 @@ para ver qué pasa con un enlace que no vale).
 - `lib/uso-app.js` cuenta las aperturas del catálogo en los registros de
   Supabase (API de administración, ClickHouse, como mucho 24 h por consulta) y
   `lib/historial-app.js` las apunta por día junto a las descargas.
+- `lib/correos.js`, `fechas.js`, `velocidad.js`, `planes.js` y `contenido.js`
+  alimentan Cuentas › Correos, Límites y fechas, Tráfico › Velocidad y Catálogo
+  y Academy. `api.js` guarda sus resultados un rato (`leidos`) y la salud usa
+  esa misma copia. De la configuración de Auth de Supabase solo se leen campos
+  que no son secretos (nunca la contraseña del correo).
+- En la nube cada visita puede hacer **50 consultas a fuera** como mucho
+  (plan gratis de Workers); la salud completa gasta unas 32. Por eso los
+  minutos exactos de GitHub se cuentan de 5 en 5 al abrir el panel y de 30
+  en 30 en la tarea de cada hora.
 - `nube/` es el Worker: `manejador.mjs` (entrada, puerta, sesión y cron de cada
   hora), `acceso.mjs` (enlaces personales o Cloudflare Access), `almacen-kv.mjs`
   y `publicar.mjs` (la subida). `nube/generado/` lo crea la subida y Git lo

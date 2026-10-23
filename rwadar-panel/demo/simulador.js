@@ -14,6 +14,7 @@
 'use strict';
 const http = require('http');
 const crypto = require('crypto');
+const extra = require('./simulador-extra');
 
 const CLAVE_SECRETA = 'sb_secret_demo_no_es_real';
 const TOKEN_CLOUDFLARE = 'demo-token-cloudflare-no-es-real';
@@ -56,6 +57,8 @@ function datosIniciales(ahora = Date.now()) {
     cuentas.push({
       id: crypto.randomUUID(), email: `${nombre}${i > 19 ? i : ''}@example.com`, created_at: new Date(creada).toISOString(),
       last_sign_in_at: entro ? new Date(entro).toISOString() : null,
+      confirmation_sent_at: new Date(creada).toISOString(),
+      recovery_sent_at: i % 9 === 4 ? new Date(creada + 5 * DIA < ahora ? creada + 5 * DIA : creada).toISOString() : null,
       email_confirmed_at: confirmada ? new Date(creada + 600000).toISOString() : null,
       banned_until: i === 7 ? new Date(ahora + 3650 * DIA).toISOString() : null,
       app_metadata: { provider: 'email' }, user_metadata: { nombre: r() > 0.4 ? nombre[0].toUpperCase() + nombre.slice(1) : undefined },
@@ -65,7 +68,7 @@ function datosIniciales(ahora = Date.now()) {
   /* webCaida: las pruebas la ponen a true para ver qué dice la salud. */
   /* Interruptores para las pruebas: web caída, base sin permiso sobre el
      catálogo (como producción el 22/10) y GitHub cortando sin clave. */
-  return { cuentas, webCaida: false, sinPermisoCatalogo: false, githubLimitado: false, retirado: false, motivo: null, actualizado: new Date(ahora - 5 * DIA).toISOString(), ahora };
+  return { cuentas, webCaida: false, sinPermisoCatalogo: false, githubLimitado: false, correoRoto: false, retirado: false, motivo: null, actualizado: new Date(ahora - 5 * DIA).toISOString(), ahora };
 }
 
 function analitica(query, ahora) {
@@ -107,10 +110,7 @@ function versiones(ahora) {
 }
 
 function tareas(ahora) {
-  return { workflow_runs: [['Copia de seguridad', 'success', 0.3, 'schedule'], ['Compilar app', 'failure', 1.6, 'workflow_dispatch'], ['CI', 'success', 0.9, 'push'],
-    ['Publicar web', 'success', 1.1, 'workflow_dispatch'], ['Copia de seguridad', 'success', 1.3, 'schedule'], ['Aplicar catálogo', 'success', 2, 'workflow_dispatch']]
-    .map(([name, conclusion, dias, event], i) => ({ id: i + 1, name, status: 'completed', conclusion, event, head_branch: 'main', run_started_at: new Date(ahora - dias * DIA).toISOString(),
-      html_url: `https://github.com/victorJorques/RWADAR/actions/runs/${1000 + i}` })) };
+  return { total_count: 7, workflow_runs: extra.ejecuciones(ahora) };
 }
 
 /* opciones.jwks: claves públicas que servirá como si fuera Cloudflare
@@ -130,6 +130,11 @@ function crearSimulador(opciones = {}) {
       return res.end('<h1>No disponible</h1>');
     }
     if (ruta === '/android') { res.writeHead(302, { Location: 'https://github.com/victorJorques/RWAdar-downloads/releases/latest' }); return res.end(); }
+    const texto = { '/academy/': extra.paginaAcademy(), '/sitemap.xml': extra.mapaWeb('https://rwadar.pages.dev'), '/.well-known/security.txt': extra.securityTxt(estado.ahora) }[ruta];
+    if (texto) {
+      res.writeHead(200, { 'Content-Type': 'text/html', 'Content-Security-Policy': "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com", 'Strict-Transport-Security': 'max-age=31536000' });
+      return res.end(texto);
+    }
     if (['/', '/academy/', '/privacidad', '/metodologia', '/sitemap.xml', '/novedades.xml', '/sw.js', '/manifest.webmanifest'].includes(ruta)) {
       res.writeHead(200, { 'Content-Type': 'text/html', 'Content-Security-Policy': "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com", 'Strict-Transport-Security': 'max-age=31536000' });
       return res.end('<!doctype html><title>RWAdar</title>');
@@ -142,9 +147,7 @@ function crearSimulador(opciones = {}) {
     if (ruta === '/auth/v1/health') return enviar(res, 200, { name: 'GoTrue', version: 'demo' });
     if (ruta === '/rest/v1/catalogo_publicacion' && req.method === 'GET') return enviar(res, 200, [{ retirado: estado.retirado, motivo: estado.motivo, actualizado_el: estado.actualizado }]);
     if (/^\/rest\/v1\/catalogo_(plataformas|ofertas)_publicas_v2$/.test(ruta)) {
-      const n = ruta.includes('plataformas') ? 26 : 49;
-      const verificado = new Date(estado.ahora - 0.5 * DIA).toISOString().slice(0, 10);
-      return enviar(res, 200, Array.from({ length: n }, () => ({ verificado_lote_el: verificado, vigencia_lote_dias: 7, plataformas_esperadas: 26, ofertas_esperadas: 49 })));
+      return enviar(res, 200, extra.catalogoPublico(ruta.includes('plataformas') ? 'plataformas' : 'ofertas', PLATAFORMAS, OFERTAS, estado.ahora));
     }
     if (!secreta(req)) return enviar(res, 401, { message: 'Invalid API key' });
     if (ruta === '/rest/v1/catalogo_publicacion' && req.method === 'PATCH') {
@@ -177,7 +180,14 @@ function crearSimulador(opciones = {}) {
 
   function cloudflare(req, res, url, ruta, cuerpo) {
     if (!cf(req)) return enviar(res, 403, { success: false, errors: [{ code: 10000, message: 'Authentication error' }] });
-    if (ruta === '/graphql') return enviar(res, 200, analitica(String(cuerpo.query || ''), Date.now()));
+    if (ruta === '/graphql') {
+      const query = String(cuerpo.query || '');
+      if (query.includes('rumWebVitalsEventsAdaptiveGroups')) return enviar(res, 200, extra.velocidadCf());
+      if (query.includes('workersInvocationsAdaptive')) return enviar(res, 200, extra.usoCf());
+      return enviar(res, 200, analitica(query, Date.now()));
+    }
+    /* La clave del simulador no tiene fecha de caducidad, como la real. */
+    if (ruta === '/user/tokens/verify') return enviar(res, 200, { success: true, result: { id: 'demo', status: 'active' } });
     return enviar(res, 404, { success: false, errors: [{ message: 'no existe' }] });
   }
 
@@ -185,6 +195,12 @@ function crearSimulador(opciones = {}) {
     if (estado.githubLimitado && !req.headers.authorization) return enviar(res, 403, { message: 'API rate limit exceeded for 104.22.136.70.' });
     if (ruta === '/repos/victorJorques/RWAdar-downloads/releases') return enviar(res, 200, versiones(estado.ahora));
     if (ruta === '/repos/victorJorques/RWADAR/actions/runs') return enviar(res, 200, tareas(estado.ahora));
+    const trabajos = ruta.match(/^\/repos\/victorJorques\/RWADAR\/actions\/runs\/(\d+)\/jobs$/);
+    if (trabajos) return enviar(res, 200, extra.trabajos(trabajos[1], estado.ahora) || { total_count: 0, jobs: [] });
+    if (ruta === '/rate_limit') {
+      const caduca = req.headers.authorization ? { 'github-authentication-token-expiration': new Date(estado.ahora + 40 * DIA).toISOString().replace('T', ' ').slice(0, 19) + ' UTC' } : {};
+      return enviar(res, 200, { resources: {} }, caduca);
+    }
     return enviar(res, 404, { message: 'Not Found' });
   }
 
@@ -202,12 +218,18 @@ function crearSimulador(opciones = {}) {
       if (servicio === 'cloudflare') return cloudflare(req, res, url, ruta, cuerpo);
       if (servicio === 'github') return github(req, res, ruta);
       if (servicio === 'access' && ruta === '/cdn-cgi/access/certs') return enviar(res, 200, { keys: opciones.jwks || [] });
+      if (servicio === 'supabase-api' && req.headers.authorization !== `Bearer ${TOKEN_SUPABASE_API}`) return enviar(res, 401, { message: 'Unauthorized' });
       if (servicio === 'supabase-api' && ruta === '/v1/projects/simulado/analytics/endpoints/logs') {
-        if (req.headers.authorization !== `Bearer ${TOKEN_SUPABASE_API}`) return enviar(res, 401, { message: 'Unauthorized' });
         const desde = Date.parse(url.searchParams.get('iso_timestamp_start')), hasta = Date.parse(url.searchParams.get('iso_timestamp_end'));
         if (!(hasta > desde) || hasta - desde > 24 * 3600000) return enviar(res, 400, { message: 'Time range must be no more than 24 hours' });
-        if (!/FROM logs/.test(url.searchParams.get('sql') || '')) return enviar(res, 200, { result: [], error: 'Unknown table' });
+        const sql = url.searchParams.get('sql') || '';
+        if (!/FROM logs/.test(sql)) return enviar(res, 200, { result: [], error: 'Unknown table' });
+        if (sql.includes("'auth_logs'")) return enviar(res, 200, extra.registrosCorreo(estado.correoRoto));
         return enviar(res, 200, { result: registrosUso(desde, hasta) });
+      }
+      if (servicio === 'supabase-api') {
+        const respuesta = extra.supabaseApi(ruta, estado.ahora);
+        return respuesta ? enviar(res, 200, respuesta) : enviar(res, 404, { message: 'Cannot GET ' + ruta });
       }
       return enviar(res, 404, { message: 'servicio desconocido' });
     });

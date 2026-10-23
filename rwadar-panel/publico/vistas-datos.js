@@ -1,18 +1,43 @@
 /* RWAdar · panel · vistas de datos: tráfico web, app y cuentas. */
-import { api, h, numero, fecha, haceCuanto, etiquetaEstado, bloqueError, confirmar, tostada } from './util.js';
+import { api, h, poner, kpi, segmentos, numero, fecha, haceCuanto, etiquetaEstado, bloqueError, confirmar, tostada } from './util.js';
 import { lineas, columnas, barras, SERIE_1, SERIE_2 } from './graficos.js';
 import { puntosTrafico, SERIES_TRAFICO } from './vistas.js';
 
 const PERIODOS = [['24h', '24 horas'], ['7d', '7 días'], ['30d', '30 días']];
 let periodo = '7d';
 
-function kpi(etiqueta, valor, extra) {
-  return h('div', { class: 'kpi' }, h('span', { class: 'kpi-etiqueta' }, etiqueta), h('span', { class: 'kpi-valor' }, valor), extra ? h('span', { class: 'kpi-extra' }, extra) : null);
+/* ---------- Velocidad real ---------- */
+const NOTA_VELOCIDAD = { ok: 'Bien', aviso: 'Mejorable', fallo: 'Lenta', 'sin-datos': 'Sin datos' };
+const segundos = ms => ms === null ? '—' : ms < 1000 ? `${numero(ms)} ms` : `${numero(Math.round(ms / 100) / 10)} s`;
+const METRICAS_VELOCIDAD = [
+  ['lcp', 'Se ve lo principal', segundos, 'Bien si tarda menos de 2,5 s'],
+  ['inp', 'Reacciona al tocar', segundos, 'Bien si tarda menos de 200 ms'],
+  ['cls', 'No salta al cargar', v => v === null ? '—' : numero(v), 'Bien si se queda por debajo de 0,1'],
+];
+
+function columnaVelocidad(nombre, a, minimo) {
+  const pocas = a.muestras < minimo;
+  return h('div', { class: 'velocidad-col' },
+    h('div', { class: 'velocidad-cab' }, h('strong', {}, nombre), h('span', { class: 'nota' }, `${numero(a.muestras)} visitas medidas${pocas ? ' · pocas: orientativo' : ''}`)),
+    ...METRICAS_VELOCIDAD.map(([clave, texto, formato, meta]) => {
+      /* Con pocas visitas no se da nota: un solo visitante lento lo estropea todo. */
+      const estado = pocas ? 'sin-datos' : a.notas[clave];
+      return h('div', { class: 'metrica' },
+        h('div', {}, h('div', {}, texto), h('div', { class: 'nota' }, meta)),
+        h('span', { class: 'metrica-valor num' }, formato(a[clave])),
+        etiquetaEstado(estado, pocas && a[clave] !== null ? 'Sin nota' : NOTA_VELOCIDAD[estado]));
+    }),
+    h('div', { class: 'metrica' }, h('div', {}, h('div', {}, 'Carga completa'), h('div', { class: 'nota' }, 'La visita típica (la mitad tarda menos)')),
+      h('span', { class: 'metrica-valor num' }, segundos(a.cargaMediana)), h('span', {})));
 }
 
-function segmentos(opciones, actual, alElegir) {
-  return h('div', { class: 'segmentos', role: 'group', 'aria-label': 'Periodo' }, ...opciones.map(([valor, texto]) =>
-    h('button', { type: 'button', 'aria-pressed': String(valor === actual), onclick: () => alElegir(valor) }, texto)));
+function tarjetaVelocidad(v) {
+  const cab = h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Velocidad real · últimos 7 días'),
+    h('span', { class: 'nota' }, 'Lo que tarda a la gente de verdad: 3 de cada 4 visitas van igual o más rápido'));
+  if (v.status === 'rejected') return h('section', { class: 'tarjeta' }, cab, bloqueError(v.reason));
+  const d = v.value;
+  return h('section', { class: 'tarjeta' }, cab, h('div', { class: 'rejilla dos velocidad' },
+    columnaVelocidad('En el móvil', d.movil, d.minimoMuestras), columnaVelocidad('En el ordenador', d.ordenador, d.minimoMuestras)));
 }
 
 const porcentaje = (parte, total) => total ? `${Math.round((parte / total) * 100)} %` : '0 %';
@@ -22,10 +47,11 @@ export async function trafico(raiz, recargar) {
   const cambiar = valor => { periodo = valor; recargar(); };
   const cabecera = h('div', { class: 'filtros' }, segmentos(PERIODOS, periodo, cambiar),
     h('span', { class: 'nota' }, 'Sin bots · sin cookies · «visita» es una llegada desde fuera, no una persona'));
-  let t;
-  try { t = await api(`/api/trafico?periodo=${periodo}`); } catch (e) { raiz.replaceChildren(cabecera, bloqueError(e)); return; }
+  const [traf, velocidad] = await Promise.allSettled([api(`/api/trafico?periodo=${periodo}`), api('/api/velocidad')]);
+  if (traf.status === 'rejected') { poner(raiz, cabecera, bloqueError(traf.reason), tarjetaVelocidad(velocidad)); return; }
+  const t = traf.value;
   const total = t.flujo.secciones.reduce((s, x) => s + x.paginas, 0);
-  raiz.replaceChildren(
+  poner(raiz, 
     cabecera,
     /* Cloudflare guarda las visitas de hace más de una semana solo como muestra. */
     t.estimado ? h('div', { class: 'falta-clave' }, `Cifras aproximadas: de lo que pasó hace más de 7 días, Cloudflare solo guarda una muestra (1 de cada 10 visitas). El panel apunta cada día las visitas exactas, así que esto se irá corrigiendo solo: ahora ${t.diasExactos ?? 0} de ${t.serie.length} días son exactos.`) : null,
@@ -35,6 +61,7 @@ export async function trafico(raiz, recargar) {
       kpi('Páginas por visita', numero(t.paginasPorVisita), 'Cuánto se mueve cada visita'),
       kpi('Llegan de fuera', numero(t.procedencia.filter(p => p.nombre !== 'Directo o sin dato').reduce((s, p) => s + p.visitas, 0)), 'Visitas con web de procedencia')),
     h('section', { class: 'tarjeta' }, h('h2', {}, t.porHora ? 'Visitas por hora' : 'Visitas por día'), lineas(puntosTrafico(t), SERIES_TRAFICO)),
+    tarjetaVelocidad(velocidad),
     h('section', { class: 'tarjeta' },
       h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Por dónde se mueve la gente'), h('span', { class: 'nota' }, 'Páginas vistas por sección de la web')),
       t.flujo.secciones.length ? h('div', { class: 'flujo' }, ...t.flujo.secciones.map(s => h('div', { class: 'flujo-paso' },
@@ -89,13 +116,13 @@ function seccionHistorial(historial) {
 
 export async function app(raiz) {
   const [datosApp, cuentas] = await Promise.allSettled([api('/api/app'), api('/api/cuentas')]);
-  if (datosApp.status === 'rejected') { raiz.replaceChildren(bloqueError(datosApp.reason)); return; }
+  if (datosApp.status === 'rejected') { poner(raiz, bloqueError(datosApp.reason)); return; }
   const { descargas, uso, historial } = datosApp.value;
   const d = descargas.datos;
   const u = uso.datos;
   const c = cuentas.status === 'fulfilled' ? cuentas.value.resumen : null;
   const total = u ? u.app + u.web : 0;
-  raiz.replaceChildren(
+  poner(raiz, 
     h('div', { class: 'rejilla kpis' },
       kpi('Aperturas desde la app · 24 h', u ? numero(u.app) : '—', u ? `${total ? Math.round((u.app / total) * 100) : 0} % del total` : 'Falta la clave de registros'),
       kpi('Desde la web · 24 h', u ? numero(u.web) : '—', 'Cargas del catálogo en el navegador'),
@@ -176,9 +203,38 @@ function estadoCuenta(c) {
   return c.confirmada ? etiquetaEstado('ok', 'Confirmada') : etiquetaEstado('aviso', 'Sin confirmar');
 }
 
+/* ---------- Correos de las cuentas ---------- */
+const minutos = m => m === null ? '—' : m < 60 ? `${numero(m)} min` : m < 2880 ? `${numero(Math.round(m / 60))} h` : `${numero(Math.round(m / 1440))} días`;
+
+function tarjetaCorreos(c) {
+  const cab = h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Correos de alta y de contraseña'), h('span', { class: 'nota' }, '¿Salen y llegan?'));
+  if (c.status === 'rejected') return h('section', { class: 'tarjeta' }, cab, bloqueError(c.reason));
+  const { cuentas: cu, registros: reg, remitente: rem } = c.value;
+  const r = rem.datos;
+  const d = cu.datos;
+  const g = reg.datos;
+  const parte = x => x.error ? h('div', { class: 'falta-clave' }, x.codigo === 'falta-credencial' ? x.error.replace(' Mira la pestaña Ajustes.', '') : `No pude leerlo: ${x.error}`) : null;
+  return h('section', { class: 'tarjeta' }, cab,
+    r ? h('p', { class: 'remitente' }, 'Salen de ', h('strong', {}, r.servidor), r.nombre ? [' como «', h('strong', {}, r.nombre), '»'] : null,
+      r.limiteHora ? ` · hasta ${numero(r.limiteHora)} por hora` : '', r.confirmacionObligatoria ? ' · hay que confirmar el correo para entrar' : ' · se entra sin confirmar el correo',
+      r.altasAbiertas ? '' : ' · las altas están cerradas') : parte(rem),
+    d ? h('div', { class: 'mini-cifras' },
+      h('div', {}, h('span', {}, 'Altas · 30 días'), h('strong', { class: 'num' }, numero(d.altas30d))),
+      h('div', {}, h('span', {}, 'Confirmadas'), h('strong', { class: 'num' }, numero(d.confirmadas30d))),
+      h('div', { class: d.sinConfirmar24h ? 'aviso' : '' }, h('span', {}, 'Sin confirmar tras 1 día'), h('strong', { class: 'num' }, numero(d.sinConfirmar24h))),
+      h('div', {}, h('span', {}, 'Tardan en confirmar'), h('strong', { class: 'num' }, minutos(d.minutosHastaConfirmar))),
+      h('div', {}, h('span', {}, 'Recuperar contraseña · 30 días'), h('strong', { class: 'num' }, numero(d.recuperaciones30d))),
+      h('div', {}, h('span', {}, 'Último correo enviado'), h('strong', {}, haceCuanto(d.ultimoEnviado)))) : parte(cu),
+    g ? h('p', { class: 'nota' }, `Últimas 24 horas: ${numero(g.altas)} altas · ${numero(g.reenvios)} reenvíos · ${numero(g.recuperaciones)} recuperaciones · `,
+      h('strong', { class: g.errores ? 'texto-fallo' : '' }, `${numero(g.errores)} errores`), g.frenadas ? ` · ${numero(g.frenadas)} frenados por el límite por hora` : '') : parte(reg),
+    g?.ultimosErrores.length ? h('ul', { class: 'lista-errores' }, ...g.ultimosErrores.map(e => h('li', {}, h('span', { class: 'num' }, `${numero(e.veces)}×`), ' ', e.mensaje))) : null,
+    h('p', { class: 'nota' }, 'Si alguien no confirma en un día, lo normal es que el correo no le llegara o acabara en spam. Las direcciones no salen aquí.'));
+}
+
 export async function cuentas(raiz, recargar) {
-  let datos;
-  try { datos = await api('/api/cuentas'); } catch (e) { raiz.replaceChildren(bloqueError(e)); return; }
+  const [lista, correos] = await Promise.allSettled([api('/api/cuentas'), api('/api/correos')]);
+  if (lista.status === 'rejected') { poner(raiz, bloqueError(lista.reason), tarjetaCorreos(correos)); return; }
+  const datos = lista.value;
   const r = datos.resumen;
   const cuerpoTabla = h('tbody', {});
   const contador = h('span', { class: 'nota' });
@@ -205,12 +261,14 @@ export async function cuentas(raiz, recargar) {
     const dia = new Date(`${d.fecha}T12:00:00Z`);
     return { etiqueta: fecha(dia, { hora: false }), corta: dia.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }), valor: d.altas };
   });
-  raiz.replaceChildren(
+  poner(raiz, 
     h('div', { class: 'rejilla kpis' },
       kpi('Cuentas', numero(r.total)), kpi('Confirmadas', numero(r.confirmadas), `${numero(r.sinConfirmar)} sin confirmar`),
       kpi('Nuevas · 7 días', numero(r.nuevas7d), `${numero(r.nuevas30d)} en 30 días`), kpi('Activas · 30 días', numero(r.activas30d), 'Han entrado este mes'),
       kpi('Bloqueadas', numero(r.bloqueadas))),
-    h('section', { class: 'tarjeta' }, h('h2', {}, 'Altas por día · últimos 30 días'), columnas(altas, { nombre: 'Altas' })),
+    h('div', { class: 'rejilla dos' },
+      h('section', { class: 'tarjeta' }, h('h2', {}, 'Altas por día · últimos 30 días'), columnas(altas, { nombre: 'Altas' })),
+      tarjetaCorreos(correos)),
     h('section', { class: 'tarjeta' },
       h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Todas las cuentas'), contador),
       h('div', { class: 'filtros' }, buscador, h('div', { class: 'segmentos', role: 'group', 'aria-label': 'Filtrar' }, ...botonesFiltro),

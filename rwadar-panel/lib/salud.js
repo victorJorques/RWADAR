@@ -8,6 +8,10 @@
    Solo usa fetch: corre igual en el ordenador y dentro de Cloudflare.
    La comprobación «a fondo», que necesita el repositorio, está aparte
    en a-fondo.js y solo existe en el panel del ordenador.
+
+   Correos, fechas, velocidad y planes llegan ya leídos (`leidos`) desde
+   api.js, que los guarda un rato: así la salud no repite consultas que
+   también hacen sus secciones.
    ===================================================================== */
 'use strict';
 const { FaltaCredencial, pedir } = require('./pedir');
@@ -16,11 +20,14 @@ const LENTA_MS = 3000;
 const COPIA_MAX_HORAS = 36;
 const PAGINAS_CLAVE = ['/academy/', '/privacidad', '/metodologia', '/sitemap.xml', '/novedades.xml', '/sw.js', '/manifest.webmanifest'];
 const ORDEN = { fallo: 0, aviso: 1, 'sin-datos': 2, ok: 3 };
+const METRICAS = { lcp: 'tarda en verse lo principal', inp: 'tarda en reaccionar al tocar', cls: 'la página salta al cargar' };
+const APARATOS = { movil: 'móvil', ordenador: 'ordenador' };
+const segundos = ms => `${(ms / 1000).toFixed(1).replace('.', ',')} s`;
 
 const fechaCorta = iso => iso ? new Date(iso).toLocaleString('es-ES', { timeZone: 'Europe/Madrid', dateStyle: 'medium', timeStyle: 'short' }) : '—';
 const r = (estado, detalle, arreglo = null) => ({ estado, detalle, arreglo });
 
-function crearSalud({ config, supabase, github }) {
+function crearSalud({ config, supabase, github, leidos = null }) {
   const COMPROBACIONES = [
     { id: 'web', area: 'Web', nombre: 'La portada responde', ejecutar: async ctx => {
       const p = await ctx.portada();
@@ -94,6 +101,65 @@ function crearSalud({ config, supabase, github }) {
     } },
   ];
 
+  const EXTRA = !leidos ? [] : [
+    { id: 'correos', area: 'Cuentas', nombre: 'Correos de alta y contraseña', ejecutar: async () => {
+      const c = await leidos.correos();
+      const reg = c.registros.datos;
+      const cu = c.cuentas.datos;
+      if (reg?.errores) {
+        const primero = reg.ultimosErrores[0] ? `: «${reg.ultimosErrores[0].mensaje}»` : '';
+        return r('fallo', `${reg.errores} error(es) al enviar correos en 24 h${primero}`, 'Si habla de 534 o de autenticación, la contraseña de aplicación de Gmail ya no vale: crea otra y pégala en Supabase › Authentication › SMTP.');
+      }
+      if (reg?.frenadas) return r('aviso', `Supabase frenó ${reg.frenadas} correo(s) en 24 h por pasar del límite por hora`, 'Si se repite, sube el límite en Supabase › Authentication › Rate limits.');
+      if (cu?.sinConfirmar24h) return r('aviso', `${cu.sinConfirmar24h} cuenta(s) nueva(s) llevan más de un día sin confirmar el correo`, 'Puede que no les llegara o que esté en spam. Si sabes que el correo es suyo, confírmala a mano en Cuentas.');
+      if (!reg && !cu) return r('sin-datos', c.registros.error || c.cuentas.error || 'Sin datos');
+      return r('ok', reg ? `Sin errores en 24 h · ${reg.altas} alta(s) y ${reg.recuperaciones} recuperación(es)` : 'Ninguna cuenta nueva sin confirmar');
+    } },
+    { id: 'fechas', area: 'Mantenimiento', nombre: 'Fechas que caducan', ejecutar: async () => {
+      /* El catálogo ya lo vigila «Revisión al día». */
+      const lista = (await leidos.fechas()).filter(f => f.id !== 'catalogo');
+      const peor = lista.find(f => f.estado === 'fallo') || lista.find(f => f.estado === 'aviso');
+      if (peor) {
+        const cuando = peor.diasRestantes < 0 ? `caducó hace ${-peor.diasRestantes} días` : `caduca en ${peor.diasRestantes} días`;
+        return r(peor.estado, `${peor.nombre}: ${cuando}`, peor.que);
+      }
+      const proxima = lista.find(f => f.diasRestantes !== null);
+      return r('ok', proxima ? `Lo próximo: ${proxima.nombre.toLowerCase()}, dentro de ${proxima.diasRestantes} días` : 'Nada caduca pronto');
+    } },
+    { id: 'velocidad', area: 'Web', nombre: 'Velocidad para la gente', ejecutar: async () => {
+      const v = await leidos.velocidad();
+      const malas = [];
+      for (const [clave, aparato] of Object.entries(APARATOS)) {
+        if (v[clave].muestras < v.minimoMuestras) continue;
+        for (const [m, texto] of Object.entries(METRICAS)) {
+          if (['aviso', 'fallo'].includes(v[clave].notas[m])) malas.push(`en ${aparato} ${texto}`);
+        }
+      }
+      if (malas.length) return r('aviso', `Esta semana ${malas.join('; ')}`, 'Mira Tráfico web › Velocidad real. Si se repite, pídele a Claude o a Codex que lo revisen.');
+      const medido = v.movil.muestras >= v.minimoMuestras ? ['móvil', v.movil] : v.ordenador.muestras >= v.minimoMuestras ? ['ordenador', v.ordenador] : null;
+      if (!medido || medido[1].lcp === null) return r('sin-datos', 'Pocas visitas medidas esta semana para saberlo');
+      return r('ok', `Lo principal se ve en ${segundos(medido[1].lcp)} (${medido[0]})`);
+    } },
+    { id: 'planes', area: 'Mantenimiento', nombre: 'Planes gratis', ejecutar: async () => {
+      const { servicios } = await leidos.planes();
+      const vivos = servicios.filter(s => !s.error);
+      if (!vivos.length) return r('sin-datos', servicios[0]?.error || 'Sin datos');
+      const supa = vivos.find(s => s.servicio === 'Supabase');
+      if (supa && ['aviso', 'fallo'].includes(supa.pausaEstado)) {
+        return r(supa.pausaEstado, `Supabase lleva ${supa.diasSinUso} días sin uso: a los 7 pausa el proyecto`, 'Abre la web o la app para que vuelva a tener actividad.');
+      }
+      const medidores = vivos.flatMap(s => (s.medidores || []).map(m => ({ ...m, servicio: s.servicio })))
+        .sort((a, b) => (b.porcentaje ?? 0) - (a.porcentaje ?? 0));
+      const peor = medidores.find(m => m.estado !== 'ok');
+      if (peor) {
+        return r(peor.estado, `${peor.servicio}: ${peor.nombre.toLowerCase()} al ${peor.porcentaje} %`,
+          peor.estado === 'fallo' ? 'Se ha llegado al tope del plan gratis: mira Límites y fechas para ver qué deja de funcionar.' : 'Va cerca del tope del plan gratis: mira Límites y fechas.');
+      }
+      const mayor = medidores[0];
+      return r('ok', mayor ? `Lo más gastado: ${mayor.servicio}, ${mayor.nombre.toLowerCase()} al ${mayor.porcentaje} %` : 'Sin datos de uso');
+    } },
+  ];
+
   function contexto() {
     const una = f => { let p; return () => (p ??= f()); };
     return {
@@ -106,7 +172,7 @@ function crearSalud({ config, supabase, github }) {
 
   async function comprobar() {
     const ctx = contexto();
-    const comprobaciones = await Promise.all(COMPROBACIONES.map(async c => {
+    const comprobaciones = await Promise.all([...COMPROBACIONES, ...EXTRA].map(async c => {
       let resultado;
       try { resultado = await c.ejecutar(ctx); } catch (e) {
         resultado = e instanceof FaltaCredencial ? r('sin-datos', e.message)

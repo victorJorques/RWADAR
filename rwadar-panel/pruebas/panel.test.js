@@ -52,7 +52,7 @@ test('la página lleva la sesión, una CSP estricta y no se deja cargar en un ma
     assert.match(res.headers.get('content-security-policy'), /script-src 'self';/);
     assert.equal(res.headers.get('x-frame-options'), 'DENY');
     assert.ok(html.includes(p.panel.token) && !html.includes('__TOKEN__'));
-    for (const archivo of ['/panel.js', '/util.js', '/vistas.js', '/vistas-datos.js', '/graficos.js', '/panel.css']) {
+    for (const archivo of ['/panel.js', '/util.js', '/vistas.js', '/vistas-datos.js', '/vistas-catalogo.js', '/vistas-limites.js', '/graficos.js', '/panel.css']) {
       assert.equal((await fetch(p.url + archivo)).status, 200, archivo);
     }
     assert.equal((await fetch(`${p.url}/../.env.local`)).status, 404);
@@ -293,5 +293,85 @@ test('sin la clave de registros la app sale igual y explica qué falta', async (
     const { datos } = await p.api('/api/app');
     assert.equal(datos.uso.codigo, 'falta-credencial');
     assert.ok(datos.descargas.datos.totalApk > 0);
+  } finally { await p.cerrar(); }
+});
+
+test('los correos dicen de dónde salen y cuántos, y un fallo de envío es fallo sin enseñar direcciones', async () => {
+  const p = await montar();
+  try {
+    let { datos } = await p.api('/api/correos');
+    assert.equal(datos.remitente.datos.servidor, 'smtp.example.com');
+    assert.equal(datos.remitente.datos.limiteHora, 30);
+    assert.equal(datos.registros.datos.altas, 3);
+    assert.equal(datos.registros.datos.errores, 0);
+    assert.ok(datos.cuentas.datos.altas30d > 0);
+    const p2 = await montar();
+    p2.estado.correoRoto = true;
+    ({ datos } = await p2.api('/api/correos'));
+    assert.equal(datos.registros.datos.errores, 2);
+    assert.match(datos.registros.datos.ultimosErrores[0].mensaje, /535 .*<correo>/);
+    assert.doesNotMatch(JSON.stringify(datos.registros), /@example\.com/);
+    const correos = (await p2.api('/api/salud')).datos.comprobaciones.find(c => c.id === 'correos');
+    assert.equal(correos.estado, 'fallo');
+    assert.match(correos.arreglo, /Gmail/);
+    await p2.cerrar();
+  } finally { await p.cerrar(); }
+});
+
+test('límites y fechas: lo que caduca y los minutos exactos de GitHub, apuntados para no repetir', async () => {
+  const p = await montar();
+  try {
+    const { datos } = await p.api('/api/limites');
+    const fechas = Object.fromEntries(datos.fechas.datos.map(f => [f.id, f]));
+    assert.equal(fechas.security.estado, 'ok');
+    assert.ok(fechas.security.diasRestantes >= 199 && fechas.security.diasRestantes <= 201);
+    assert.equal(fechas.cloudflare.que, 'No caduca.');
+    assert.equal(fechas.catalogo.estado, 'ok');
+    const servicios = Object.fromEntries(datos.planes.datos.servicios.map(s => [s.servicio, s]));
+    assert.equal(servicios.Cloudflare.medidores[0].usado, 1840);
+    assert.equal(servicios.Cloudflare.medidores[2].limite, 1000, 'escrituras del almacén: 1.000 al día');
+    assert.equal(servicios.Supabase.plan, 'Gratis');
+    assert.equal(servicios.Supabase.pausaEstado, 'ok');
+    const gh = servicios['GitHub Actions'];
+    assert.equal(gh.pendientesDeContar, 0);
+    assert.ok(gh.medidores[0].usado >= 33, 'cada trabajo se redondea al minuto hacia arriba');
+    assert.equal(gh.medidores[0].aproximado, false);
+    const expo = servicios['Expo (compilar la app)'].medidores[0];
+    assert.deepEqual([expo.usado, expo.limite, expo.detalle], [2, 15, '1 salieron bien']);
+    assert.match(fs.readdirSync(p.dirDatos).join(' '), /minutos-/);
+  } finally { await p.cerrar(); }
+});
+
+test('catálogo y Academy por dentro: inventario, lecturas y lo que nadie abre', async () => {
+  const p = await montar();
+  try {
+    const { datos } = await p.api('/api/contenido?periodo=30d');
+    assert.equal(datos.catalogo.plataformas.total, 26);
+    assert.equal(datos.catalogo.ofertas.total, 49);
+    assert.equal(datos.catalogo.plataformas.sinOfertas.length, 22);
+    assert.equal(datos.catalogo.plataformas.sinRevisarMasDe60, 20);
+    assert.equal(datos.academy.total, 4);
+    assert.equal(datos.academy.lista[0].slug, 'que-es-tokenizar');
+    assert.ok(datos.academy.lista[0].paginas > 0);
+    assert.equal(datos.academy.nadie.length, 3);
+    assert.deepEqual(datos.descartes, ['Toucan Protocol', 'Goldfinch', 'Realt']);
+    assert.equal(datos.fichasMedidas, true, 'el simulador sí mide fichas: se cruzan solas');
+    assert.ok(datos.vistasFichas.ofertas.lista[0].paginas > 0);
+  } finally { await p.cerrar(); }
+});
+
+test('la velocidad separa móvil y ordenador y la salud la vigila', async () => {
+  const p = await montar();
+  try {
+    const { datos } = await p.api('/api/velocidad');
+    assert.deepEqual([datos.movil.lcp, datos.movil.notas.lcp, datos.movil.inp], [1840, 'ok', 168]);
+    assert.deepEqual([datos.ordenador.cls, datos.ordenador.notas.cls], [0.13, 'aviso']);
+    const salud = (await p.api('/api/salud')).datos.comprobaciones;
+    const v = salud.find(c => c.id === 'velocidad');
+    assert.equal(v.estado, 'aviso');
+    assert.match(v.detalle, /ordenador la página salta/);
+    for (const id of ['correos', 'fechas', 'planes']) assert.ok(salud.some(c => c.id === id), id);
+    const t = (await p.api('/api/trafico?periodo=7d')).datos;
+    assert.equal('paginasTodas' in t, false, 'la lista completa no viaja al navegador');
   } finally { await p.cerrar(); }
 });

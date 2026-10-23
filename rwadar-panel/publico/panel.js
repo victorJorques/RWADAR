@@ -1,9 +1,11 @@
 /* RWAdar · panel · arranque y navegación entre secciones.
    La sección vive en la dirección (#cuentas…) para que «Actualizar» y
    volver atrás del navegador funcionen como se espera. */
-import { api, h, bloqueError, haceCuanto, sesion } from './util.js';
+import { api, h, poner, bloqueError, haceCuanto, sesion } from './util.js';
 import * as control from './vistas.js';
 import * as datos from './vistas-datos.js';
+import { contenido } from './vistas-catalogo.js';
+import { limites } from './vistas-limites.js';
 
 const REFRESCO_MS = 2 * 60 * 1000;
 const VISTAS = {
@@ -12,7 +14,9 @@ const VISTAS = {
   salud: ['Salud', 'Qué funciona, qué no y qué hacer.', control.salud],
   trafico: ['Tráfico web', 'Visitas de rwadar.pages.dev según Cloudflare Web Analytics.', datos.trafico],
   app: ['App', 'Descargas de la app Android y lo que se puede saber de ella.', datos.app],
-  cuentas: ['Cuentas', 'Las cuentas creadas en la web y en la app, y qué hacer con ellas.', datos.cuentas],
+  cuentas: ['Cuentas', 'Las cuentas creadas en la web y en la app, sus correos y qué hacer con ellas.', datos.cuentas],
+  contenido: ['Catálogo y Academy', 'Qué hay publicado, qué lleva tiempo sin revisar y qué lee la gente.', contenido],
+  limites: ['Límites y fechas', 'Lo que caduca y lo que queda de cada plan gratis.', limites],
   registro: ['Registro', 'Todo lo que se ha cambiado desde este panel.', control.registro],
   ajustes: ['Ajustes', 'Las claves que necesita el panel y cómo conseguirlas.', control.ajustes],
 };
@@ -63,7 +67,7 @@ async function arrancar() {
     sesion.ajustes = a;
     document.getElementById('aviso-demo').hidden = !a.modoDemo;
     const faltan = [!a.credenciales.cloudflare && 'Cloudflare', !a.credenciales.supabase && 'Supabase'].filter(Boolean);
-    document.getElementById('lateral-pie').replaceChildren(
+    poner(document.getElementById('lateral-pie'), 
       h('span', {}, a.modoDemo ? 'Modo demostración' : a.modo === 'nube' ? 'Panel compartido' : 'Panel de este ordenador'),
       a.modo === 'nube' ? h('span', { class: 'correo' }, a.quien) : null,
       h('span', {}, faltan.length ? `Falta la clave de ${faltan.join(' y ')}` : 'Todas las claves configuradas'));

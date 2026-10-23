@@ -171,6 +171,8 @@ function crearCloudflare(config) {
       visitas, paginasVistas: vistas, paginasPorVisita: visitas ? Math.round((vistas / visitas) * 10) / 10 : 0,
       serie: serieCompleta(c.serie || [], { desde, hasta, porHora }),
       paginas: paginas.slice(0, 15),
+      /* Todas, para cruzarlas con el catálogo y Academy (no viajan al navegador). */
+      paginasTodas: paginas,
       flujo: resumirFlujo(paginas),
       /* Las páginas de la propia web no son «procedencia»: son gente moviéndose dentro. */
       procedencia: lista(c.procedencia, 'refererHost', v => v || 'Directo o sin dato')

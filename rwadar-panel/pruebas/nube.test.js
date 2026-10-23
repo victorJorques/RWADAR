@@ -289,7 +289,8 @@ test('el cron de cada hora apunta el uso de la app y las descargas en KV', async
     const promesas = [];
     await n.worker.scheduled({}, n.env, { waitUntil: p => promesas.push(p) });
     const resultado = await Promise.all(promesas);
-    assert.deepEqual(resultado[0], { descargas: 'fulfilled', uso: 'fulfilled', visitas: 'fulfilled' });
+    assert.deepEqual(resultado[0], { descargas: 'fulfilled', uso: 'fulfilled', visitas: 'fulfilled', minutos: 'fulfilled' });
+    assert.ok([...n.kv.datos.keys()].some(k => k.startsWith('estado:minutos-')), 'los minutos de GitHub se apuntan cada hora');
     const claves = [...n.kv.datos.keys()];
     assert.ok(claves.some(k => k.startsWith('estado:uso-app-')));
     assert.ok(claves.some(k => k.startsWith('estado:descargas-')));

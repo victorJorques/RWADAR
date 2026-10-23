@@ -1,7 +1,7 @@
 /* RWAdar · panel · vistas de control: resumen, interruptores, salud,
    registro y ajustes. Las de datos (tráfico, app, cuentas) están en
    vistas-datos.js. */
-import { api, h, numero, fecha, haceCuanto, etiquetaEstado, bloqueError, confirmar, tostada, sesion } from './util.js';
+import { api, h, poner, kpi, numero, fecha, haceCuanto, etiquetaEstado, bloqueError, confirmar, tostada, sesion } from './util.js';
 import { lineas, SERIE_1, SERIE_2 } from './graficos.js';
 
 const resultado = p => p.status === 'fulfilled' ? { datos: p.value } : { error: p.reason };
@@ -23,10 +23,6 @@ export function puntosTrafico(trafico) {
 }
 
 export const SERIES_TRAFICO = [{ clave: 'visitas', nombre: 'Visitas', color: SERIE_1 }, { clave: 'paginas', nombre: 'Páginas vistas', color: SERIE_2 }];
-
-function kpi(etiqueta, valor, extra) {
-  return h('div', { class: 'kpi' }, h('span', { class: 'kpi-etiqueta' }, etiqueta), h('span', { class: 'kpi-valor' }, valor), extra ? h('span', { class: 'kpi-extra' }, extra) : null);
-}
 
 function kpiDe(r, etiqueta, valor, extra) {
   if (r.error) return h('div', { class: 'kpi' }, h('span', { class: 'kpi-etiqueta' }, etiqueta), bloqueError(r.error));
@@ -53,7 +49,7 @@ export async function resumen(raiz) {
   const catalogo = inter.datos?.catalogo;
   const global = salud.datos?.global || 'aviso';
   const [titulo, sub] = salud.datos ? textoGlobal(salud.datos) : ['Sin datos de salud', salud.error?.message || ''];
-  raiz.replaceChildren(
+  poner(raiz, 
     h('section', { class: `pulso-global ${global}` },
       h('div', { class: 'radar', 'aria-hidden': 'true' }),
       h('div', {}, h('h2', {}, titulo), h('p', {}, sub, salud.datos ? ` Comprobado ${haceCuanto(salud.datos.comprobado)}.` : '')),
@@ -125,7 +121,7 @@ function tarjetaCatalogo(datos, recargar) {
 
 export async function interruptores(raiz, recargar) {
   const datos = await api('/api/interruptores');
-  raiz.replaceChildren(h('div', { class: 'rejilla dos' }, tarjetaWeb(datos), tarjetaCatalogo(datos, recargar)));
+  poner(raiz, h('div', { class: 'rejilla dos' }, tarjetaWeb(datos), tarjetaCatalogo(datos, recargar)));
 }
 
 export async function salud(raiz, recargar, { fresco = false } = {}) {
@@ -137,14 +133,14 @@ export async function salud(raiz, recargar, { fresco = false } = {}) {
     botonFondo.textContent = 'Comprobando página a página…';
     try {
       const r = await api('/api/salud/a-fondo', { metodo: 'POST', cuerpo: {} });
-      aFondo.replaceChildren(!r.disponible ? h('p', { class: 'nota' }, r.motivo)
+      poner(aFondo, !r.disponible ? h('p', { class: 'nota' }, r.motivo)
         : r.fallos.length ? h('div', { class: 'problemas' }, h('p', {}, `${r.correctas} controles correctos y ${r.fallos.length} con diferencias:`), ...r.fallos.map(f => h('div', { class: 'problema aviso' }, etiquetaEstado('aviso'), h('h3', {}, f))))
           : h('div', { class: 'todo-bien' }, etiquetaEstado('ok'), `Los ${r.correctas} controles de la web publicada son correctos.`));
-    } catch (e) { aFondo.replaceChildren(bloqueError(e)); }
+    } catch (e) { poner(aFondo, bloqueError(e)); }
     botonFondo.removeAttribute('aria-busy');
     botonFondo.textContent = 'Comprobación a fondo';
   } }, 'Comprobación a fondo');
-  raiz.replaceChildren(
+  poner(raiz, 
     h('section', { class: `pulso-global ${datos.global}` }, h('div', { class: 'radar', 'aria-hidden': 'true' }),
       h('div', {}, h('h2', {}, titulo), h('p', {}, `${sub} Comprobado ${fecha(datos.comprobado)}.`)),
       h('div', { class: 'interruptores-mini' }, h('button', { class: 'boton', onclick: () => recargar({ fresco: true }) }, 'Comprobar ahora'))),
@@ -171,7 +167,7 @@ export async function salud(raiz, recargar, { fresco = false } = {}) {
 export async function registro(raiz) {
   const entradas = await api('/api/registro');
   const nube = sesion.ajustes?.modo === 'nube';
-  raiz.replaceChildren(h('section', { class: 'tarjeta' },
+  poner(raiz, h('section', { class: 'tarjeta' },
     h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Lo que se ha hecho desde el panel'),
       h('span', { class: 'nota' }, nube ? 'Se guarda en Cloudflare, con el correo de quien lo hizo' : 'Se guarda en rwadar-panel/datos/registro.jsonl, solo en este PC')),
     entradas.length ? h('div', { class: 'tabla-caja' }, h('table', {},
@@ -241,7 +237,7 @@ export async function ajustes(raiz) {
   const a = await api('/api/ajustes');
   sesion.ajustes = a;
   if (a.modo === 'nube') {
-    raiz.replaceChildren(
+    poner(raiz, 
       tarjetaSesion(a),
       h('section', { class: 'tarjeta' }, h('h2', {}, 'Cómo funciona'),
         h('p', { class: 'nota' }, `Este es el panel compartido: lo mismo que el del ordenador de Víctor, salvo la comprobación a fondo. Las claves están guardadas en Cloudflare y nunca llegan a tu navegador.`),
@@ -255,7 +251,7 @@ export async function ajustes(raiz) {
     return;
   }
   const archivo = h('code', {}, a.archivoEnv);
-  raiz.replaceChildren(
+  poner(raiz, 
     tarjetaCompartir(a),
     h('section', { class: 'tarjeta' }, h('h2', {}, 'Cómo funciona'),
       h('p', { class: 'nota' }, 'Este panel solo se abre en este ordenador. Las claves se guardan en ', archivo,
