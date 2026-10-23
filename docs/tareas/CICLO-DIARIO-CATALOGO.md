@@ -34,6 +34,10 @@ No ejecutar una migración general ni un `db push` como parte del ciclo.
 1. Leer `AGENTS.md`, la entrada vigente de `PARA-CODEX.md`, `INTERNO.md` y la
    sección necesaria de `RUNBOOK.md`. Confirmar rama, cambios compartidos y
    autorización. `git status --short --branch` antes y después de generadores.
+   Ejecutar `node rwadar-node-seguro.js`. Si no confirma el parche de
+   seguridad de Node del 21/10/2026, el ciclo sigue igual, pero el resumen del
+   día empieza avisando a Víctor de que actualice Node, con el mensaje que
+   muestra.
 2. Leer, sin mutar, el lote público actual y su manifiesto: revisión, fecha,
    cantidades y distribución por colecciones. Guardar esa identidad y la hora
    como precondición del SQL. No suponer que Git describe lo que está en línea.
