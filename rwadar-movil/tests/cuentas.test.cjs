@@ -26,6 +26,7 @@ function entorno(opciones = {}) {
         return exito({ user: datos.accesoUser || datos.user, session: { access_token: 'token-solo-prueba' } }); },
       async signUp(cuerpo) { llamadas.push(['registrar', cuerpo]); return datos.falloAlta || exito({ user: datos.user, session: datos.sesionAlta || null }); },
       async getUser() { llamadas.push(['getUser']); return datos.getUser ? datos.getUser() : datos.falloUser || exito({ user: datos.user }); },
+      async getSession() { return exito({ session: { access_token: datos.token || 'cabecera.cuenta.prueba' } }); },
       async resend(cuerpo) { llamadas.push(['reenviar', cuerpo]); return exito({}); },
       async resetPasswordForEmail(correo, opciones) { llamadas.push(['recuperar', correo, opciones]); return exito({}); },
       async signOut(cuerpo) { llamadas.push(['salir', cuerpo]); return datos.signOut ? datos.signOut() : exito({}); },
@@ -70,6 +71,43 @@ function entorno(opciones = {}) {
     correoVerificado: true, cliente, plazoMs: 100, ...opciones.controlador });
   return { controlador, cliente, llamadas, datos };
 }
+
+test('clienteCatalogo exige cuenta confirmada y perfil propio de la sesión actual', async () => {
+  const e = entorno();
+  await assert.rejects(e.controlador.clienteCatalogo());
+  await e.controlador.entrar(entrada);
+  assert.equal(await e.controlador.clienteCatalogo(), e.cliente);
+  e.datos.perfil = null;
+  await assert.rejects(e.controlador.clienteCatalogo());
+  assert.equal(e.controlador.estado().usuario, null);
+});
+
+test('clienteCatalogo de A que termina después no purga la sesión B', async () => {
+  const e = entorno(); await e.controlador.entrar(entrada);
+  const p = pendiente(); e.datos.getUser = () => p.promesa;
+  const antigua = e.controlador.clienteCatalogo();
+  await e.controlador.salir(); e.datos.getUser = null;
+  e.datos.user = { ...e.datos.user, id: OTRO }; e.datos.perfil = { id: OTRO, nombre: 'B' };
+  await e.controlador.entrar(entrada);
+  p.resolver({ data: { user: { id: UID, email: CORREO, email_confirmed_at: '2026-10-11T08:00:00Z' } }, error: null });
+  await assert.rejects(antigua);
+  assert.equal(e.controlador.estado().usuario.id, OTRO);
+});
+test('refrescar cierra la cuenta si no puede corroborar el perfil protegido', async () => {
+  const e=entorno();await e.controlador.entrar(entrada);
+  e.datos.fallo={status:503,message:'Base temporalmente no disponible'};
+  assert.equal((await e.controlador.refrescar()).ok,false);
+  assert.equal(e.controlador.estado().usuario,null);
+});
+test('accesoTutorial entrega cabecera solo al endpoint fijo tras corroborar cuenta',async()=>{
+  const e=entorno();await assert.rejects(e.controlador.accesoTutorial());
+  await e.controlador.entrar(entrada);
+  const acceso=await e.controlador.accesoTutorial();
+  assert.equal(acceso.uri,'https://rwadar.pages.dev/api/acceso/tutorial');
+  assert.deepEqual(acceso.headers,{Authorization:'Bearer cabecera.cuenta.prueba'});
+  assert.ok(!acceso.uri.includes('cabecera'));
+  e.datos.perfil=null;await assert.rejects(e.controlador.accesoTutorial());
+});
 
 test('cuentas locales/cerradas nunca crean un cliente ni llaman a Auth', async () => {
   for (const opciones of [{}, { modoLocal: true, cuentasRemotas: true, correoVerificado: true },

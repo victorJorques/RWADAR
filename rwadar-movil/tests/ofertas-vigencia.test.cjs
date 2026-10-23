@@ -18,6 +18,7 @@ function cargarModulo(ruta, mocks = {}, contexto = {}) {
   new Function('module', 'exports', 'require', ...Object.keys(contexto), codigo)(modulo, modulo.exports, (nombre) => {
     if (nombre === './Idioma') return soporteIdioma(mocks.react,mocks['react-native']);
     if (nombre === '../lib/idioma') return require('../lib/idioma');
+    if (nombre === './acceso-obligatorio') return require('../lib/acceso-obligatorio');
     assert.ok(Object.hasOwn(mocks, nombre), `Dependencia inesperada: ${nombre}`);
     return mocks[nombre];
   }, ...Object.values(contexto));
@@ -63,6 +64,7 @@ function cargarWeb(ahora) {
     setAttribute(nombre, valor) { atributos[nombre] = valor; }, getAttribute(nombre) { return atributos[nombre]; },
     removeAttribute(nombre) { delete atributos[nombre]; } };
   const contexto = {
+    P: [], EMI: [],
     Date: FechaControlada, URL, emiOrden: 'rent', emiBusquedaLocal: '', emiTipoLocal: 'todos', MODO_LOCAL_SEGURO: true,
     ESCAPARATE_LOCAL: { ofertas: [oferta], secundario: [] },
     MANIFIESTO_EDITORIAL_LOCAL: { porCategoria: { Inmobiliario: { archivo: 'propia.webp', alt: 'Ilustración propia' } },
@@ -77,6 +79,12 @@ function cargarWeb(ahora) {
     fechaES: (v) => v, urlHttps: (v) => /^https:\/\//.test(v || '') ? v : '',
     document: { getElementById: () => dialogo, body: { classList: { add() {}, remove() {} } } },
   };
+  // The transport is mocked, while the real catalog normalizers stay under test.
+  contexto.window = { RWADAR_ACCESO: { catalogo: async (tabla, consulta) => {
+    const respuesta = await contexto.fetch(contexto.API + '/' + tabla + '?' + consulta);
+    if (!respuesta.ok) throw new Error('HTTP ' + respuesta.status);
+    return respuesta.json();
+  } } };
   vm.createContext(contexto);
   vm.runInContext(codigo.slice(inicio, fin), contexto);
   return { contexto, dialogo };
@@ -191,7 +199,7 @@ function componentesMoviles(ahora, simulacion = {}) {
   }
   return cargarModulo('componentes/Ofertas.js', {
     react: { createElement: crear, useState: (v) => [typeof v === 'function' ? v() : v, () => {}], useEffect() {}, ...simulacion.react },
-    'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
+    'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), Animated: {View:'AnimatedView'}, StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
     '../lib/ficha-editorial': require('../lib/ficha-editorial'),
     '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
@@ -200,6 +208,7 @@ function componentesMoviles(ahora, simulacion = {}) {
     '../lib/verificacion-local': movil,
     '../lib/tema': { C: {}, COLOR_CATEGORIA: {}, F: {}, R: {}, T: {}, UI: {}, iniciales: () => 'PR' },
     './Navegacion': { Icono: 'Icono' },
+    './useTransicionFicha': { default: (_visible, cerrar) => ({ cerrar, estilo: {} }), __esModule: true },
   }, { Date: FechaControlada, setTimeout: simulacion.setTimeout || (() => 1), clearTimeout: simulacion.clearTimeout || (() => {}) });
 }
 
@@ -689,9 +698,11 @@ test('la nueva categoría Crédito privado conserva ilustración propia en las d
   assert.match(editorial.alt, /no representa un activo concreto/);
   const { contexto } = cargarWeb(ultimoDia);
   cargarFuncionesWeb(contexto, ['EDITORIAL_OFERTA_POR_CATEGORIA']);
-  const web = contexto.imagenOfertaLocal({ catalogo: true, categoria: 'Crédito privado' });
-  assert.equal(web.src, '/ofertas-editoriales/'+editorial.archivo);
-  assert.equal(web.alt, editorial.alt);
+  const web = contexto.imagenOfertaLocal({ catalogo: true, slug: 'credito-privado-prueba', categoria: 'Crédito privado' });
+  assert.equal(web.src, '/ofertas-editoriales/oferta-credito-privado-prueba.webp');
+  assert.equal(web.respaldo, '/ofertas-editoriales/'+editorial.archivo);
+  assert.match(web.alt, /generada con IA; no es fotografía del activo/);
+  assert.equal(vm.runInContext('EDITORIAL_OFERTA_POR_CATEGORIA', contexto)['Crédito privado'].alt, editorial.alt);
 });
 
 test('web y app eligen la misma ilustración de cada ficha y caen a la de su categoría', () => {
@@ -724,7 +735,12 @@ test('web y app eligen la misma ilustración de cada ficha y caen a la de su cat
   for (const slug of ['ficha-nueva', 'constructor', '__proto__', 'toString']) {
     const nueva = { catalogo: true, slug, categoria: 'Inmobiliario' };
     assert.equal(imagenes.imagenEditorialOferta(nueva).archivo, 'inmobiliario-rwadar.webp', slug);
-    assert.equal(contexto.imagenOfertaLocal(nueva).src, '/ofertas-editoriales/inmobiliario-rwadar.webp', slug);
+    const web = contexto.imagenOfertaLocal(nueva);
+    if (/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+      assert.equal(web.src, '/ofertas-editoriales/oferta-'+slug+'.webp', slug);
+      assert.equal(web.respaldo, '/ofertas-editoriales/inmobiliario-rwadar.webp', slug);
+      assert.match(web.alt, /generada con IA; no es fotografía del activo/);
+    } else assert.equal(web, null, slug);
   }
 });
 

@@ -65,7 +65,7 @@ function entorno({ movil = false, sinLeccion = false } = {}) {
     dispatchEvent(evento) { for (const fn of eventos.get(evento.type) || []) fn(); },
     requestAnimationFrame: fn => fn(),
   };
-  const contexto = vm.createContext({ document, window, Event: class { constructor(type) { this.type = type; } } });
+  const contexto = vm.createContext({ document, window, location: { pathname: '/' }, Event: class { constructor(type) { this.type = type; } } });
   return { todos, document, window, eventos, mensajes, pasos, desplazamientos,
     body, panel, academy, contenedor, leccion, escena, canvas, emisiones, cabecera, nav, contenidoAcademy,
     ejecutar: () => vm.runInContext(script, contexto, { timeout: 1000 }),

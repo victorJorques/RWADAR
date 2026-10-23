@@ -403,7 +403,7 @@ test('privacidad con cuentas abiertas describe memoria, baja y favoritos sin dec
   for (const nombre of ['Modal', 'SafeAreaProvider', 'SafeAreaView', 'View', 'Text', 'ScrollView', 'Pressable', 'ActivityIndicator']) entorno[nombre] = nombre;
   const Privacidad = new Function(...Object.keys(entorno), `${js};return Privacidad;`)(...Object.values(entorno));
   const copia = texto(Privacidad({ estadoCuenta: { disponible: true } }));
-  assert.match(copia, /Cuenta opcional, la misma en web y app/);
+  assert.match(copia, /Cuenta confirmada para entrar en web y app/);
   assert.match(copia, /sesión vive solo en memoria/);
   assert.match(copia, /contraseña y escribiendo BORRAR/);
   assert.match(copia, /No se envían los favoritos locales ni el progreso/);

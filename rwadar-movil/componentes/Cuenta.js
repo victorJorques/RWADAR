@@ -142,7 +142,7 @@ export default function Cuenta({ controlador, estado, plataformas = [], onAbrirE
         <Text style={s.kicker}>TU CUENTA</Text>
         <Text style={s.titulo} accessibilityRole="header">Cuentas en preparación</Text>
         <Text style={s.parrafo}>
-          El registro se abrirá cuando la confirmación por correo esté comprobada. Puedes explorar RWAdar y guardar favoritos en este dispositivo sin cuenta.
+          El acceso requiere una cuenta confirmada. Ahora no podemos preparar la conexión: inténtalo de nuevo más tarde.
         </Text>
       </View>
     );
@@ -258,10 +258,10 @@ export default function Cuenta({ controlador, estado, plataformas = [], onAbrirE
       ) : (
         <>
           <Text style={s.parrafo}>{vista === 'alta'
-            ? 'Gratis y opcional. Guarda tu lista de vigilancia y consúltala también en la web.'
+            ? 'Tu cuenta es gratuita. Confirma el correo para entrar en RWAdar y guardar tu lista de vigilancia.'
             : vista === 'recuperar'
               ? 'Te enviaremos un enlace para elegir una contraseña nueva en la web. Después vuelve y entra en la app.'
-              : 'Usa el mismo correo y contraseña que en la web. No necesitas una cuenta para explorar el catálogo.'}</Text>
+              : 'Entra con el mismo correo y contraseña que en la web para acceder a RWAdar.'}</Text>
           <Campo etiqueta="Correo" value={correo} onChangeText={setCorreo} keyboardType="email-address"
             autoCapitalize="none" autoCorrect={false} autoComplete="email" textContentType="emailAddress"
             maxLength={254} editable={!bloqueado} returnKeyType={vista === 'recuperar' ? 'send' : 'next'}

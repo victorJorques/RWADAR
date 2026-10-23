@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppState, Modal, StyleSheet } from 'react-native';
+import { Animated, AppState, Modal, StyleSheet } from 'react-native';
 import { Image, Pressable, ScrollView, Text, View, FuenteOriginal, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -9,6 +9,7 @@ import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacion
 import { resumenOferta } from '../lib/ficha-editorial';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 import { Icono } from './Navegacion';
+import useTransicionFicha from './useTransicionFicha';
 
 function useFechaOferta() {
   const [ahora, setAhora] = useState(() => new Date());
@@ -358,9 +359,11 @@ function FilaMetrica({ etiqueta, valor, original=false, etiquetaOriginal=false }
 
 export function DetalleOferta({
   oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataformaCanonica, plataforma, guardada = false, onGuardar,
+  onRegistrarInversion,
 }) {
   const idiomaActual=useIdioma();
   const ahora = useFechaOferta();
+  const transicion = useTransicionFicha(Boolean(ofertaOriginal), onCerrar);
   if (!ofertaOriginal) return null;
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
@@ -383,9 +386,10 @@ export function DetalleOferta({
       ...(registro?.fuentes || []), oferta.url].filter(Boolean))].filter(url => url !== enlacePrincipal)
     : registro?.fuentes || [];
   return (
-    <Modal visible animationType="slide" presentationStyle="fullScreen"
-      statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={onCerrar}>
+    <Modal visible animationType="none" presentationStyle="fullScreen"
+      statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={transicion.cerrar}>
       <SafeAreaProvider style={e.modal}>
+        <Animated.View style={[e.modal, transicion.estilo]}>
         <SafeAreaView style={e.modal} edges={['top', 'right', 'bottom', 'left']} accessibilityViewIsModal>
           <View style={e.cabeceraModal}>
             <Text style={e.cabeceraEtiqueta}>Ficha de la oferta</Text>
@@ -399,7 +403,7 @@ export function DetalleOferta({
                 <Icono nombre={guardada ? 'guardada' : 'guardar'} color={C.senal} tamano={22} />
               </Pressable>
             ) : null}
-            <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]}
+            <Pressable onPress={transicion.cerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]}
               accessibilityRole="button" noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'} accessibilityLabel={`${traducir('Cerrar')} ${oferta.titulo}`} hitSlop={10}>
               <Text style={e.cerrarTxt}>✕</Text>
             </Pressable>
@@ -420,7 +424,6 @@ export function DetalleOferta({
                   ? 'Proveedor incluido también en el radar'
                   : 'Proveedor de esta referencia · no está en el radar'}
               </Text>
-              {registro ? <><Text style={e.referencia}>Registro del proveedor · revisión {fechaVerificacionLocalVisible(registro.fecha)}</Text><FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.referencia}>{registro.detalle}</FuenteOriginal><Text style={e.referencia}>Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.</Text></> : null}
               {oferta.patrocinada ? (
                 <Text style={e.patrocinioAviso}>
                   Patrocinada. Consulta la relación comercial en la ficha; no altera el ranking ni implica recomendación.
@@ -428,12 +431,7 @@ export function DetalleOferta({
               ) : null}
             </View>
 
-            <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>EN TRES FRASES</Text>
-              {documentacion?.descripcion || oferta.resumen ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{documentacion?.descripcion || oferta.resumen}</FuenteOriginal> : <Text style={e.estadoTexto}>La fuente no aporta una descripción comprobable en esta ficha.</Text>}
-              <Text style={e.referencia}>Lo ofrece <Text noTraducir idiomaOriginal="es-ES">{oferta.plataformaNombre || 'el proveedor indicado en la fuente'}</Text>.</Text>
-              <Text style={e.referencia}><Text noTraducir={Boolean(resumen.salida.fuente)} idiomaOriginal="es-ES">{resumen.salida.texto}</Text>. La disponibilidad de salida no está garantizada.</Text>
-            </View>
+            <Text style={e.riesgoSalida}>Puedes perder dinero. RWAdar no vende ni asesora.</Text>
             <Text style={e.avisosTitulo}>¿QUIÉN PUEDE ACCEDER Y EN QUÉ CONDICIONES?</Text>
             <View style={e.tabla}>
               {datosParaDecidir.map(([etiqueta, dato]) => (
@@ -447,6 +445,17 @@ export function DetalleOferta({
                 </View>
               ))}
             </View>
+
+            <View style={e.documentacion}>
+              <Text style={e.avisosTitulo}>EN TRES FRASES</Text>
+              {documentacion?.descripcion || oferta.resumen ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{documentacion?.descripcion || oferta.resumen}</FuenteOriginal> : <Text style={e.estadoTexto}>La fuente no aporta una descripción comprobable en esta ficha.</Text>}
+              <Text style={e.referencia}>La disponibilidad de salida no está garantizada.</Text>
+            </View>
+            {registro ? <View style={e.documentacion}>
+              <Text style={e.avisosTitulo}>Registro del proveedor · revisión {fechaVerificacionLocalVisible(registro.fecha)}</Text>
+              <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{registro.detalle}</FuenteOriginal>
+              <Text style={e.referencia}>Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.</Text>
+            </View> : null}
 
             <View style={[e.estadoCaja, cifraVencida && e.estadoCajaVencida]}>
               <Text style={[e.estadoTitulo, tonoVigencia(vigencia.estado)]}>{vigencia.etiqueta}</Text>
@@ -569,6 +578,11 @@ export function DetalleOferta({
                 Ver en la fuente · <Text noTraducir idiomaOriginal="es-ES">{oferta.plataformaNombre}</Text> ↗
               </Text>
             </Pressable>
+            {onRegistrarInversion ? <Pressable onPress={onRegistrarInversion}
+              style={({ pressed }) => [e.registrarInversion, pressed && e.pulsado]}
+              accessibilityRole="button" accessibilityLabel={`Registrar inversión en ${oferta.titulo}`}>
+              <Text style={e.enlaceSecundarioTxt}>Registrar inversión</Text>
+            </Pressable> : null}
             {fuentesAdicionales.length ? (
               <View>
                 <Text style={e.avisosTitulo}>OTRAS FUENTES CONSULTADAS</Text>
@@ -586,6 +600,7 @@ export function DetalleOferta({
             </Text>
           </ScrollView>
         </SafeAreaView>
+        </Animated.View>
       </SafeAreaProvider>
     </Modal>
   );
@@ -701,6 +716,7 @@ const e = StyleSheet.create({
   datoEtiqueta: { ...T.etiqueta, color: C.tx2, fontSize: 11.5, lineHeight: 16, marginBottom: 4 },
   datoValor: { ...T.dato, color: C.tx, fontSize: 20, lineHeight: 27 },
   modal: { flex: 1, backgroundColor: C.noche },
+  registrarInversion: { minHeight: UI.tactil, justifyContent: 'center', alignItems: 'center', marginTop: 10, padding: 12, borderWidth: 1, borderColor: C.linea2, borderRadius: R.s },
   cabeceraModal: {
     flexDirection: 'row', alignItems: 'center', flexShrink: 0, gap: 12, paddingHorizontal: 16,
     paddingVertical: 14, backgroundColor: C.noche2, borderBottomWidth: 1, borderBottomColor: C.linea,

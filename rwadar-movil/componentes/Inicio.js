@@ -40,10 +40,6 @@ export default function Inicio({
         accessibilityRole="button">
         <Text style={e.ctaTxt}>Buscar empresas y ofertas</Text>
       </Pressable>
-      <Pressable onPress={() => onDestino('academy')} style={({ pressed }) => [e.ctaBorde, pressed && e.pulsado]}
-        accessibilityRole="button">
-        <Text style={e.ctaBordeTxt}>Aprender en la Academy</Text>
-      </Pressable>
 
       {cambios.length ? (
         <View style={e.seccion}>
@@ -154,11 +150,6 @@ const e = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center', paddingHorizontal: 18,
   },
   ctaTxt: { ...T.cuerpoFte, fontFamily: F.negrita, fontSize: 15.5, color: C.noche },
-  ctaBorde: {
-    minHeight: UI.boton, borderRadius: R.s, borderWidth: 1, borderColor: C.linea2, backgroundColor: C.sup2,
-    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 18, marginTop: 9,
-  },
-  ctaBordeTxt: { ...T.cuerpoFte, fontFamily: F.negrita, fontSize: 15, color: C.tx },
   seccion: { marginTop: 26 },
   seccionTit: { ...T.seccion, fontSize: 19, color: C.tx, marginBottom: 10 },
   noticia: {

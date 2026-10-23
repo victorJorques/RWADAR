@@ -218,6 +218,34 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
   }
   const acciones = {
     estado,
+    async accesoTutorial() {
+      const cliente = await acciones.clienteCatalogo(), uid = vista.usuario?.id;
+      const actual = () => {
+        if (destruido || clienteActual !== cliente || !uid || vista.usuario?.id !== uid) throw fallo('sin_sesion');
+      };
+      const sesion = (await pedir(cliente.auth.getSession(), actual))?.session;
+      const token = sesion?.access_token;
+      if (typeof token !== 'string' || token.length > 3800 || !/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(token)) throw fallo('sin_sesion');
+      actual();
+      return { uri: 'https://rwadar.pages.dev/api/acceso/tutorial', headers: { Authorization: 'Bearer ' + token } };
+    },
+    async clienteCatalogo() {
+      const cliente = clienteActual, uid = vista.usuario?.id;
+      const actual = () => {
+        if (destruido || !cliente || clienteActual !== cliente || vista.usuario?.id !== uid) throw fallo('sin_sesion');
+      };
+      try {
+        actual();
+        await identidad(cliente, actual, uid);
+        await datosPropios(cliente, { id: uid }, actual);
+        actual();
+        return cliente;
+      } catch (error) {
+        // Never purge a newer account when an older request finishes late.
+        if (clienteActual === cliente && vista.usuario?.id === uid) purgar();
+        throw error;
+      }
+    },
     suscribir(oyente) {
       if (typeof oyente !== 'function') throw new TypeError('La suscripción necesita una función.');
       if (!destruido) { oyentes.add(oyente); oyente(estado()); }
@@ -266,9 +294,13 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
     },
     refrescar() {
       return ejecutar('refrescar', async actual => {
-        const { cliente, usuario } = await accesoActual(actual);
-        const propios = await datosPropios(cliente, usuario, actual);
-        pintar({ usuario, ...propios });
+        try {
+          const { cliente, usuario } = await accesoActual(actual);
+          const propios = await datosPropios(cliente, usuario, actual);
+          pintar({ usuario, ...propios });
+        } catch (error) {
+          actual(); purgar(); throw error;
+        }
       });
     },
     guardarPerfil({ nombre } = {}) {

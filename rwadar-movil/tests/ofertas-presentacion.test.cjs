@@ -22,6 +22,7 @@ function modulo(ruta, mocks, contexto = {}) {
   new Function('module', 'exports', 'require', ...Object.keys(contexto), codigo)(salida, salida.exports, dependencia => {
     if (dependencia === './Idioma') return soporteIdioma(mocks.react,mocks['react-native']);
     if (dependencia === '../lib/idioma') return require('../lib/idioma');
+    if (dependencia === './acceso-obligatorio') return require('../lib/acceso-obligatorio');
     assert.ok(Object.hasOwn(mocks, dependencia), `Dependencia inesperada: ${dependencia}`);
     return mocks[dependencia];
   }, ...Object.values(contexto));
@@ -49,6 +50,7 @@ function componentes(ahora = AHORA, opciones = {}) {
     react: { createElement: crear, useState: opciones.useState || (valor => [typeof valor === 'function' ? valor() : valor, () => {}]),
       useEffect: opciones.useEffect || (() => {}) },
     'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map(nombre => [nombre, nombre])),
+      Animated: { View: 'AnimatedView' },
       AppState: {}, StyleSheet: { hairlineWidth: 1, create(valor) { Object.assign(estilos, valor); return valor; } } },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
     '../fixtures/imagenes-editoriales': opciones.imagenes || { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
@@ -58,6 +60,7 @@ function componentes(ahora = AHORA, opciones = {}) {
     '../lib/ficha-editorial': require('../lib/ficha-editorial'),
     '../lib/tema': { C: {}, COLOR_CATEGORIA: {}, F: { media: 'Media', semi: 'Semi' }, R: {}, T: {}, UI: { tactil: 44, boton: 48 }, iniciales: () => 'PR' },
     './Navegacion': { Icono: 'Icono' },
+    './useTransicionFicha': { default: (_visible, cerrar) => ({ cerrar, estilo: {} }), __esModule: true },
   }, { Date: Reloj, setTimeout: () => 1, clearTimeout() {} });
   return { ...render, estilos };
 }
@@ -226,6 +229,38 @@ test('registro del proveedor conserva fuente y fecha sin acreditar la oferta ni 
   assert.deepEqual(abiertos,['https://regulador.example/registro']);
   plataforma.verificacionLocal.licenciaRegistro.fuentes[0].url = 'https://secreto@regulador.example/registro';
   assert.doesNotMatch(textoVisible(ui.FichaOferta({oferta:dato(),plataforma})),/Registro confirmado/);
+});
+
+test('el detalle muestra las cuatro condiciones antes de la explicación larga y conserva riesgos y fuentes', () => {
+  const ui = componentes();
+  const oferta = dato();
+  const registro = 'Detalle extenso del registro del proveedor, conservado íntegramente.';
+  const plataforma = { verificacionLocal: { verificadoEl: '2026-09-21', licenciaRegistro: {
+    estado: 'confirmada_regulador', detalle: registro,
+    fuentes: [{ url: 'https://regulador.example/registro', consultadaEl: '2026-09-21', primaria: true }],
+  } } };
+  const detalle = ui.DetalleOferta({ oferta, plataforma });
+  const texto = textoVisible(detalle);
+  for (const condicion of ['Mínimo publicado en euros', 'Acceso desde España', 'Cómo recuperar el dinero', 'Costes publicados']) {
+    assert.ok(texto.indexOf(condicion) >= 0 && texto.indexOf(condicion) < texto.indexOf(registro), condicion);
+    assert.ok(texto.indexOf(condicion) < texto.indexOf('EN TRES FRASES'), condicion);
+  }
+  assert.ok(texto.includes(registro));
+  assert.ok(texto.indexOf('Puedes perder dinero') < texto.indexOf('Mínimo publicado en euros'));
+  assert.ok(texto.includes('No consta en esta ficha. Un registro de la plataforma no acredita cada oferta.'));
+  assert.ok(nodos(detalle).some(n => n.props?.accessibilityLabel?.includes('https://regulador.example/registro')));
+});
+
+test('registrar inversión es una acción manual secundaria y mantiene una sola salida principal a la fuente', () => {
+  const ui = componentes(); let registros = 0;
+  const detalle = ui.DetalleOferta({ oferta: dato(), onRegistrarInversion: () => registros++ });
+  const registrar = nodos(detalle).find(n => n.props?.accessibilityLabel?.startsWith('Registrar inversión en '));
+  assert.ok(registrar); assert.equal(registrar.props.accessibilityRole, 'button');
+  assert.equal(registros, 0, 'abrir la ficha no registra una inversión');
+  registrar.props.onPress(); assert.equal(registros, 1);
+  const principales = nodos(detalle).filter(n => n.props?.accessibilityRole === 'link'
+    && n.props.accessibilityLabel?.startsWith('Ver en la fuente ·'));
+  assert.equal(principales.length, 1);
 });
 
 test('agrupar repetidas mantiene todas las referencias y la búsqueda permite abrir una coincidencia exacta', () => {
@@ -429,8 +464,8 @@ test('la ficha de plataforma también deja el nombre completo en un scroll acota
   const crear = (tipo, props, ...children) => ({tipo, props, children});
   const e = {};
   const nombres = ['Modal','SafeAreaProvider','SafeAreaView','View','Text','Pressable','ScrollView','FuenteOriginal'];
-  const fn = new Function('React',...nombres,'e','C','COLOR_CATEGORIA','iniciales', code + '; return Detalle;');
-  const Detalle = fn({createElement:crear},...nombres,e,{},{},()=> 'PR');
+  const fn = new Function('React',...nombres,'e','C','COLOR_CATEGORIA','iniciales','Animated','useTransicionFicha', code + '; return Detalle;');
+  const Detalle = fn({createElement:crear},...nombres,e,{},{},()=> 'PR', {View:'AnimatedView'},(_visible,cerrar)=>({cerrar,estilo:{}}));
   const p = {slug:'plataforma-larga',nombre:'Nombre completo de plataforma '.repeat(9),categoria:'Inmobiliario'};
   let cerrado = false;
   const arbol = Detalle({p,onCerrar:()=>{cerrado=true;}});

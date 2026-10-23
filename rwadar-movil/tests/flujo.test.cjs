@@ -8,6 +8,7 @@ const commonjs = require('@babel/plugin-transform-modules-commonjs');
 
 const RAIZ = path.resolve(__dirname, '..');
 const LIB = path.join(RAIZ, 'lib') + path.sep;
+const CUENTA_PRUEBA = '11111111-1111-4111-8111-111111111111';
 const MODO_INTERNO = {
   MODO_LOCAL: true,
   SERVICIOS_USUARIO_REMOTOS: false,
@@ -54,7 +55,12 @@ function cargar(ruta, mocks = {}) {
 
   delete require.cache[absoluto];
   try {
-    return require(absoluto);
+    const modulo = require(absoluto);
+    if (ruta === 'lib/datos.js' && mocks['datos.js:./modo-local']?.MODO_LOCAL === false) {
+      // Unit fixture only: current-session validation has its own controller/SQL tests.
+      modulo.configurarAccesoCatalogo(CUENTA_PRUEBA, async () => mocks['datos.js:./supabase'].clientePublico());
+    }
+    return modulo;
   } finally {
     Module._load = cargarOriginal;
     Module._extensions['.js'] = jsOriginal;
@@ -70,6 +76,7 @@ function almacenamientoInicial(valores = {}) {
     async getItem(clave) { llamadas.push(['getItem', clave]); return datos.has(clave) ? datos.get(clave) : null; },
     async setItem(clave, valor) { llamadas.push(['setItem', clave]); datos.set(clave, valor); },
     async removeItem(clave) { llamadas.push(['removeItem', clave]); datos.delete(clave); },
+    async getAllKeys() { return [...datos.keys()]; },
     async multiSet(pares) {
       llamadas.push(['multiSet', pares.map(([clave]) => clave)]);
       for (const [clave, valor] of pares) datos.set(clave, valor);
@@ -118,7 +125,7 @@ test('un error de Supabase deja el seguimiento local marcado como pendiente', as
   const resultado = await datos.alternarSeguimiento('alpha', 'plataforma-1');
   assert.equal(resultado.sincronizado, false);
   assert.deepEqual(resultado.lista, ['alpha']);
-  assert.deepEqual(JSON.parse(almacenamiento.datos.get('rwadar.seguimiento.pendiente')), [
+  assert.deepEqual(JSON.parse(almacenamiento.datos.get('rwadar.seguimiento.pendiente:' + CUENTA_PRUEBA)), [
     { slug: 'alpha', plataformaId: 'plataforma-1', seguir: true },
   ]);
   assert.ok(eventos.some(([metodo]) => metodo === 'throwOnError'));
@@ -659,8 +666,8 @@ test('el catálogo conectado no habilita seguimiento remoto ni consume datos his
     assert.deepEqual(await datos.alternarSeguimiento('nueva', 'id-nueva'), {
       lista: ['nueva'], sincronizado: true, local: true, error: null,
     });
-    assert.equal(almacenamiento.datos.get('rwadar.editorial.siguiendo'), '["nueva"]');
-    assert.equal(almacenamiento.datos.has('rwadar.editorial.seguimiento.pendiente'), false);
+    assert.equal(almacenamiento.datos.get('rwadar.editorial.siguiendo:' + CUENTA_PRUEBA), '["nueva"]');
+    assert.equal(almacenamiento.datos.has('rwadar.editorial.seguimiento.pendiente:' + CUENTA_PRUEBA), false);
     assert.deepEqual(await datos.novedades(['nueva']), { datos: [], local: true, error: null });
     assert.deepEqual(await datos.sincronizarSeguimientoPendiente(), {
       sincronizados: 0, pendientes: 0, errores: [], local: true,
@@ -673,6 +680,7 @@ test('el catálogo conectado no habilita seguimiento remoto ni consume datos his
     assert.deepEqual(Object.fromEntries(almacenamiento.datos), anteriores);
     const clavesTocadas = almacenamiento.llamadas.flatMap(([, claves]) => Array.isArray(claves) ? claves : [claves]);
     assert.ok(clavesTocadas.every((clave) => clave.startsWith('rwadar.editorial.') ||
+      clave === 'rwadar.cache.catalogo.v2:' + CUENTA_PRUEBA ||
       ['rwadar.cache.catalogo.v1', 'rwadar.cache.catalogo.v2'].includes(clave)));
   }
 });

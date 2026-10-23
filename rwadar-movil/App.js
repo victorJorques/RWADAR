@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
-import { ActivityIndicator, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
+import { ActivityIndicator, Animated, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
 import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal } from './componentes/Idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -11,7 +11,7 @@ import { GeistMono_500Medium } from '@expo-google-fonts/geist-mono';
 import { C, COLOR_CATEGORIA, iniciales, T, E, R, F, UI } from './lib/tema';
 import { tacto } from './lib/tacto';
 import {
-  cargarCatalogo, cargarFuera, siguiendo, alternarSeguimiento, novedades,
+  cargarCatalogo, cargarFuera, siguiendo, alternarSeguimiento, novedades, configurarAccesoCatalogo,
   sincronizarSeguimientoPendiente, borrarDatosDispositivo,
   cargarSecundario, cargarExclusiones, proveedoresDeOfertas, textoBusquedaOferta,
   ofertasGuardadas, alternarOfertaGuardada,
@@ -20,6 +20,8 @@ import {
   MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E,
 } from './lib/modo-local';
 import { crearControladorCuentas } from './lib/cuentas';
+import { cuentaAdmitida } from './lib/acceso-obligatorio';
+import AccesoObligatorio from './componentes/AccesoObligatorio';
 import { vigilarCaducidadCatalogo, programarRevisionDiaria } from './lib/catalogo-remoto';
 import {
   etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible,
@@ -35,6 +37,8 @@ import { LECCIONES } from './lib/academy-contenido';
 import Radar from './componentes/Radar';
 import Marca from './componentes/Marca';
 import Navegacion, { Icono } from './componentes/Navegacion';
+import useTransicionFicha from './componentes/useTransicionFicha';
+import MisInversiones from './componentes/MisInversiones';
 import {
   DetalleOferta, ExclusionesOfertas, FichaOferta, FichaGrupoOfertas,
   agruparOfertasLectura, ordenarOfertasLectura,
@@ -104,8 +108,10 @@ export default function App() {
   const [proveedorOferta, setProveedorOferta] = useState('');
   const [grupoProveedorAbierto, setGrupoProveedorAbierto] = useState('');
   const [filtrosOfertasAbiertos, setFiltrosOfertasAbiertos] = useState(false);
+  const [criteriosOfertasAbiertos, setCriteriosOfertasAbiertos] = useState(false);
   const [abierta, setAbierta] = useState(null);
   const [ofertaAbierta, setOfertaAbierta] = useState(null);
+  const [inversionInicial, setInversionInicial] = useState(null);
   const [explicando, setExplicando] = useState(false);
   // Pestaña Academy: '' muestra la lista de lecciones; un slug, esa lección.
   const [leccion, setLeccion] = useState('');
@@ -121,6 +127,8 @@ export default function App() {
   // antiguo. Su lista remota y los favoritos del dispositivo son distintos.
   const [cuenta, setCuenta] = useState(null);
   const [estadoCuenta, setEstadoCuenta] = useState(null);
+  const [revisionCartera, setRevisionCartera] = useState(0);
+  const usuarioAdmitido = cuentaAdmitida(estadoCuenta) ? estadoCuenta.usuario.id : null;
   const { width: anchoPantalla } = useWindowDimensions();
 
   useEffect(() => {
@@ -139,6 +147,16 @@ export default function App() {
      copia local, así que salir de la pantalla de carga es SIEMPRE lo
      correcto: peor que una lista corta es una app que no arranca. */
   const traer = useCallback(async () => {
+    if (!usuarioAdmitido || !cuenta) {
+      configurarAccesoCatalogo(null);
+      setCargando(false);
+      return false;
+    }
+    configurarAccesoCatalogo(usuarioAdmitido, async () => {
+      const cliente = await cuenta.clienteCatalogo();
+      if (cuenta.estado().usuario?.id !== usuarioAdmitido) throw new Error('La cuenta ha cambiado');
+      return cliente;
+    });
     try {
       const escaparate = MODO_LOCAL ? [
         cargarSecundario(), cargarExclusiones(),
@@ -149,6 +167,7 @@ export default function App() {
       const [catalogo, f, mercado, exclusiones, s] = await Promise.all([
         cargarCatalogo(), cargarFuera(), ...escaparate, siguiendo(),
       ]);
+      if (cuenta.estado().usuario?.id !== usuarioAdmitido) return false;
       const principales = MODO_LOCAL ? catalogo.ofertas
         : catalogo.ofertas.filter(o => o.coleccion === 'principales');
       const referenciasSecundarias = MODO_LOCAL ? mercado.datos
@@ -169,6 +188,7 @@ export default function App() {
         novedades(s),
         sincronizarSeguimientoPendiente(),
       ]);
+      if (cuenta.estado().usuario?.id !== usuarioAdmitido) return false;
       setAvisos(n.datos);
 
       const mensajes = [];
@@ -192,22 +212,44 @@ export default function App() {
       setEstadoDatos(mensajes.join(' '));
       return !catalogo.error && !catalogo.deCache && !f.deCache;
     } catch {
+      if (cuenta.estado().usuario?.id !== usuarioAdmitido) return false;
       setRadar([]); setOfertas([]); setSecundario([]); setEnCamino([]); setFuera([]);
       setExclusionesOfertas([]); setAbierta(null); setOfertaAbierta(null);
       setFechaCatalogo(null);
       setEstadoDatos('No se pudo cargar un catálogo verificable. Desliza hacia abajo para reintentar.');
       return false;
     } finally {
-      setCargando(false);
+      if (cuenta.estado().usuario?.id === usuarioAdmitido) setCargando(false);
     }
-  }, []);
+  }, [usuarioAdmitido, cuenta]);
 
   useEffect(() => { traer(); }, [traer]);
+  useEffect(() => {
+    if (!usuarioAdmitido) {
+      configurarAccesoCatalogo(null);
+      setRadar([]); setOfertas([]); setSecundario([]); setEnCamino([]); setFuera([]);
+      setGuardadas([]); setSigo([]);
+      setAbierta(null); setOfertaAbierta(null); setInversionInicial(null);
+      setExplicando(false);
+      setPrivacidad(false); setLeccion(''); setPestana('inicio');
+      return;
+    }
+    // Remote identity + guarded profile revalidated whenever the app returns.
+    const volver = AppState.addEventListener('change', estado => {
+      if (estado === 'active') cuenta.refrescar();
+    });
+    const reloj = setInterval(() => cuenta.refrescar(), 60000);
+    return () => { volver.remove(); clearInterval(reloj); };
+  }, [usuarioAdmitido, cuenta]);
+  const obtenerAccesoTutorial = useCallback(() => cuenta.accesoTutorial(), [cuenta]);
+  const cerrarTutorial = useCallback(() => {
+    setExplicando(false); setPestana('academy'); setLeccion('');
+  }, []);
   useEffect(() => {
     let vivo = true;
     ofertasGuardadas().then((lista) => { if (vivo) setGuardadas(lista); });
     return () => { vivo = false; };
-  }, []);
+  }, [usuarioAdmitido]);
   useEffect(() => {
     if (MODO_LOCAL || !fechaCatalogo) return;
     // Al vencer, el catálogo no se borra: se vuelve a cargar y queda marcado
@@ -367,7 +409,7 @@ export default function App() {
       MODO_LOCAL
         ? 'Se eliminarán únicamente los seguimientos y cachés del escaparate local. No se contactará con Supabase.'
         : USUARIO_LOCAL
-          ? 'Se borrarán las empresas y ofertas guardadas en esta versión editorial, el progreso de la Academy y la caché del catálogo en este dispositivo. No se borran datos de versiones anteriores ni del servidor.'
+          ? 'Se borrarán las empresas y ofertas guardadas, las inversiones registradas de todas las cuentas en este dispositivo, el progreso de la Academy y las cachés del catálogo. No se borran datos del servidor.'
         : 'Se eliminarán de Supabase esta instalación, su token push y todos sus seguimientos, además de las cachés locales. No se puede deshacer.',
       [
         { text: 'Cancelar', style: 'cancel' },
@@ -378,11 +420,12 @@ export default function App() {
             setBorrandoDatos(true);
             try {
               await borrarDatosDispositivo();
+              setRevisionCartera(actual => actual + 1);
               setRadar([]); setFuera([]); setOfertas([]); setSecundario([]); setEnCamino([]);
               setExclusionesOfertas([]); setSigo([]); setAvisos([]); setGuardadas([]);
               setEstadoDatos(MODO_LOCAL
                 ? 'Datos locales borrados. Actualiza para volver a cargar el escaparate incluido en esta copia.'
-                : 'Datos borrados. Actualiza para descargar de nuevo el catálogo público.');
+                : 'Datos borrados. Actualiza para consultar de nuevo el catálogo con tu cuenta.');
               setEstadoAccion('');
               setEstadoAvisos(MODO_LOCAL
                 ? { ok: false, estado: 'local', local: true }
@@ -391,7 +434,7 @@ export default function App() {
               setPrivacidad(false);
               Alert.alert('Datos borrados', MODO_LOCAL
                 ? 'Se han eliminado los seguimientos y cachés de esta copia local.'
-                : USUARIO_LOCAL ? 'Se han eliminado los guardados editoriales, el progreso de la Academy y la caché del catálogo de este dispositivo. No se han modificado datos anteriores ni del servidor.'
+                : USUARIO_LOCAL ? 'Se han eliminado los guardados, las inversiones registradas, el progreso de la Academy y las cachés del catálogo de este dispositivo. No se han modificado datos del servidor.'
                 : 'La instalación no volverá a identificarse hasta que uses seguimiento o avisos.');
             } catch {
               Alert.alert(
@@ -452,6 +495,12 @@ export default function App() {
     setPestana(id);
   };
 
+  if (fuentesListas && !usuarioAdmitido) {
+    return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
+      <AccesoObligatorio controlador={cuenta} estado={estadoCuenta} onAbrirEnlace={abrirEnlace} />
+    </SafeAreaProvider>;
+  }
+
   if (!fuentesListas || cargando) {
     return (
       <SafeAreaProvider>
@@ -462,6 +511,12 @@ export default function App() {
       </SafeAreaProvider>
     );
   }
+
+  const avisoCatalogo = estadoDatos ? (
+    <Text style={e.estadoGlobal} accessibilityRole="alert" accessibilityLiveRegion="polite">
+      {estadoDatos}
+    </Text>
+  ) : null;
 
   return (
     <SafeAreaProvider>
@@ -486,11 +541,9 @@ export default function App() {
 
         {MODO_LOCAL ? <BannerModoLocal /> : null}
 
-        {estadoDatos ? (
-          <Text style={e.estadoGlobal} accessibilityRole="alert" accessibilityLiveRegion="polite">
-            {estadoDatos}
-          </Text>
-        ) : null}
+        {/* En Buscar, el aviso se desplaza con el catálogo para no consumir
+            todo el espacio de lectura con una fuente grande. */}
+        {pestana !== 'buscar' ? avisoCatalogo : null}
         {estadoAccion ? (
           <Text style={e.estadoPendiente} accessibilityRole="alert" accessibilityLiveRegion="polite">
             {estadoAccion}
@@ -528,6 +581,7 @@ export default function App() {
               refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
               ListHeaderComponent={
                 <View>
+                  {avisoCatalogo}
                   {/* El radar sigue siendo el producto y conserva toda su
                       animación, lectura, puntos y filtros. */}
                   <Radar
@@ -612,6 +666,7 @@ export default function App() {
               refreshControl={<RefreshControl refreshing={refrescando} onRefresh={refrescar} tintColor={C.senal} />}
               ListHeaderComponent={
                 <View style={e.panelOfertasCompacto}>
+                  {avisoCatalogo}
                   <View style={e.selectorOfertas} accessibilityRole="tablist"
                     accessibilityLabel="Seleccionar grupo de ofertas">
                     <SegmentoOferta texto={`Principales ${ofertas.length}`} activo={grupoOfertas === 'principales'}
@@ -629,7 +684,14 @@ export default function App() {
                     : grupoOfertas === 'en_camino'
                       ? 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'
                       : 'Referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.'}</Text>
-                  <Text style={e.resultadoCompacto}>Primero las referencias con cifras comprobables; después, las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades. Agrupamos las repetidas por proveedor; al buscar se muestran las fichas individuales.</Text>
+                  <Pressable onPress={() => setCriteriosOfertasAbiertos(actual => !actual)}
+                    style={({ pressed }) => [e.criteriosOrden, pressed && e.pulsadoSuave]}
+                    accessibilityRole="button" accessibilityLabel="¿Cómo ordenamos?"
+                    accessibilityState={{ expanded: criteriosOfertasAbiertos }}>
+                    <Text style={e.botonBordeTxt}>¿Cómo ordenamos?</Text>
+                    <Text style={e.botonBordeTxt} accessible={false}>{criteriosOfertasAbiertos ? '−' : '+'}</Text>
+                  </Pressable>
+                  {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>Primero las referencias con cifras comprobables; después, las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades. Agrupamos las repetidas por proveedor; al buscar se muestran las fichas individuales.</Text> : null}
                   {grupoProveedorAbierto ? (
                     <View>
                       <Text style={e.resultadoCompacto}>Referencias de {proveedoresOferta.find(p => p.slug === grupoProveedorAbierto)?.nombre || 'este proveedor'}. La búsqueda se aplica a este grupo.</Text>
@@ -752,6 +814,7 @@ export default function App() {
 
           {pestana === 'perfil' ? (
             <PantallaPerfil
+              key={`${usuarioAdmitido}:${revisionCartera}`}
               cuenta={cuenta}
               estadoCuenta={estadoCuenta}
               plataformas={radar}
@@ -775,6 +838,8 @@ export default function App() {
               onPolitica={() => abrirEnlace(URL_PRIVACIDAD)}
               onContacto={() => abrirEnlace('mailto:RWAdar@protonmail.com')}
               onBorrar={confirmarBorrado}
+              inversionInicial={inversionInicial}
+              onConsumirInversion={() => setInversionInicial(null)}
             />
           ) : null}
         </View>
@@ -799,12 +864,17 @@ export default function App() {
           plataforma={ofertaAbierta && radar.find(p => p.slug === ofertaAbierta.plataformaSlug)}
           guardada={!!ofertaAbierta && guardadas.includes(ofertaAbierta.slug)}
           onGuardar={() => ofertaAbierta && alternarGuardada(ofertaAbierta)}
+          onRegistrarInversion={() => {
+            if (!ofertaAbierta) return;
+            setInversionInicial(ofertaAbierta); setOfertaAbierta(null); setPestana('perfil');
+          }}
         />
 
-        <Modal visible={explicando} animationType="slide" onRequestClose={() => setExplicando(false)}>
+        <Modal visible={explicando} animationType="slide" onRequestClose={cerrarTutorial}>
           <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: C.noche }} edges={['top', 'bottom']}>
-              <Explicador onCerrar={() => setExplicando(false)} />
+              {explicando && <Explicador onCerrar={cerrarTutorial} obtenerAcceso={obtenerAccesoTutorial}
+                onPrimeraLeccion={() => { cerrarTutorial(); setLeccion('que-significa-tokenizar-un-activo'); }} />}
             </SafeAreaView>
           </SafeAreaProvider>
         </Modal>
@@ -922,7 +992,7 @@ function PantallaPerfil({
   cuenta, estadoCuenta, plataformas = [], onAbrirEnlace,
   seguidas, ofertasGuardadas, guardadasRetiradas = 0, sinConexion, estadoAvisos, procesandoAvisos,
   refrescando, borrando, onActualizar, onAbrirEmpresa, onAbrirOferta, onExplorar, onActivarAvisos, onAjustes,
-  onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar,
+  onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar, inversionInicial, onConsumirInversion,
 }) {
   const total = seguidas.length + ofertasGuardadas.length;
   return (
@@ -931,6 +1001,10 @@ function PantallaPerfil({
       keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag"
       refreshControl={<RefreshControl refreshing={refrescando} onRefresh={onActualizar} tintColor={C.senal} />}
     >
+      {estadoCuenta?.estado === 'autenticada' && estadoCuenta.usuario?.id ? (
+        <MisInversiones usuarioId={estadoCuenta.usuario.id} ofertaInicial={inversionInicial}
+          onConsumirOferta={onConsumirInversion} />
+      ) : null}
       {cuenta ? <Cuenta controlador={cuenta} estado={estadoCuenta} plataformas={plataformas}
         onAbrirEmpresa={onAbrirEmpresa} onAbrirEnlace={onAbrirEnlace} /> : (
       <View style={e.resumenDispositivo}>
@@ -1380,7 +1454,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
           <ScrollView contentContainerStyle={e.privacidadCuerpo}>
             {!MODO_LOCAL && estadoCuenta?.disponible ? (
               <>
-                <Text style={e.privacidadTit}>Cuenta opcional, la misma en web y app</Text>
+                <Text style={e.privacidadTit}>Cuenta confirmada para entrar en web y app</Text>
                 <Text style={e.privacidadParrafo}>
                   Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. RWAdar no guarda la contraseña en el dispositivo.
                 </Text>
@@ -1388,7 +1462,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
                   Tu lista de vigilancia de empresas se guarda en tu cuenta y es accesible desde la web y la app. No se envían los favoritos locales ni el progreso de Academy. La sesión vive solo en memoria: al cerrar la app tendrás que entrar de nuevo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.
                 </Text>
                 <Text style={e.privacidadParrafo}>
-                  Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil y la lista de vigilancia remota; los favoritos y el progreso locales se eliminan por separado con «Borrar datos del dispositivo».
+                  Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil y la lista de vigilancia remota; los favoritos, las inversiones registradas de todas las cuentas en este dispositivo y el progreso local se eliminan por separado con «Borrar datos del dispositivo».
                 </Text>
               </>
             ) : null}
@@ -1413,14 +1487,16 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
               </>
             ) : USUARIO_LOCAL ? (
               <>
-                <Text style={e.privacidadTit}>{estadoCuenta?.disponible
-                  ? 'Catálogo público, sin registro obligatorio' : 'Catálogo conectado, sin cuenta'}</Text>
+                <Text style={e.privacidadTit}>Catálogo con cuenta confirmada</Text>
                 <Text style={e.privacidadParrafo}>
-                  La app consulta el catálogo público en Supabase. El proveedor de infraestructura recibe los datos técnicos de la conexión, como la dirección IP. Consultarlo no crea una cuenta ni un identificador de instalación de RWAdar.
+                  Para consultar el catálogo necesitas registrarte, confirmar el correo e iniciar sesión. Supabase verifica la cuenta y la sesión antes de entregar los datos; el proveedor recibe datos técnicos de la conexión, como la dirección IP. No se crea un identificador de instalación para consultar el catálogo.
                 </Text>
                 <Text style={e.privacidadTit}>Favoritos en este dispositivo</Text>
                 <Text style={e.privacidadParrafo}>
-                  Las empresas y ofertas guardadas (solo su identificador público) y el progreso de RWAdar Academy (lecciones leídas y aciertos del test) se guardan bajo claves rwadar.editorial.*. No se envían al servidor ni se crean operaciones pendientes de sincronización. La caché del catálogo permite consultar un lote válido sin conexión hasta su caducidad.
+                  Las empresas y ofertas guardadas (solo su identificador público) y el progreso de RWAdar Academy (lecciones leídas y aciertos del test) se guardan bajo claves rwadar.editorial.* separadas por cuenta. No se envían al servidor ni se crean operaciones pendientes de sincronización. Las inversiones registradas y sus cálculos se guardan únicamente en este dispositivo, separadas por cuenta; no se sincronizan ni representan compras realizadas por RWAdar.
+                </Text>
+                <Text style={e.privacidadParrafo}>
+                  La caché del catálogo también se separa por cuenta. Antes de leerla se necesita conexión para verificar la sesión actual; no permite entrar sin conexión. Si no puede actualizarse una copia completa, se conserva la anterior tras verificar la sesión y se avisa de su fecha. Las cifras vencidas se ocultan.
                 </Text>
                 <Text style={e.privacidadTit}>{estadoCuenta?.disponible
                   ? 'Instalaciones y avisos desactivados' : 'Servicios de usuario desactivados'}</Text>
@@ -1429,14 +1505,14 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
                 </Text>
                 <Text style={e.privacidadTit}>Borrado limitado a esta versión</Text>
                 <Text style={e.privacidadParrafo}>
-                  El botón elimina las empresas y ofertas guardadas, el progreso de la Academy y la caché del catálogo de este dispositivo. No lee ni modifica identificadores o seguimientos de versiones anteriores y no elimina datos del servidor. Para solicitar acceso o borrado de datos históricos, usa «Contactar sobre mis datos».
+                  El botón elimina las empresas y ofertas guardadas, las inversiones registradas de todas las cuentas en este dispositivo, el progreso de la Academy y las cachés del catálogo. No modifica identificadores o seguimientos de versiones anteriores ni elimina datos del servidor. Para solicitar acceso o borrado de datos históricos, usa «Contactar sobre mis datos».
                 </Text>
               </>
             ) : (
               <>
-                <Text style={e.privacidadTit}>Consulta sin cuenta</Text>
+                <Text style={e.privacidadTit}>Acceso con cuenta confirmada</Text>
                 <Text style={e.privacidadParrafo}>
-                  Puedes consultar el catálogo público y los descartes documentados sin crear una cuenta, dar tu nombre o facilitar tu correo.
+                  Para consultar el catálogo y los descartes documentados necesitas una cuenta con el correo confirmado y una sesión vigente comprobada con Supabase.
                 </Text>
                 <Text style={e.privacidadTit}>Identificador y seguimiento</Text>
                 <Text style={e.privacidadParrafo}>
@@ -1448,7 +1524,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
                 </Text>
                 <Text style={e.privacidadTit}>Datos locales y terceros</Text>
                 <Text style={e.privacidadParrafo}>
-                  El catálogo, la fecha de sincronización, tu lista y el progreso de la Academy se guardan localmente para funcionar sin conexión. Supabase presta la base de datos y Expo los servicios de token push y actualización.
+                  El catálogo, la fecha de sincronización, tu lista y el progreso de la Academy se guardan localmente por cuenta; leer la caché requiere conexión y verificar la sesión actual. La cartera de inversiones registradas permanece en el dispositivo y no se sincroniza. Supabase presta la base de datos y Expo los servicios que se habiliten expresamente.
                 </Text>
                 <Text style={e.privacidadTit}>Control de borrado</Text>
                 <Text style={e.privacidadParrafo}>
@@ -1526,6 +1602,7 @@ function Descartadas({ fuera }) {
 }
 
 function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
+  const transicion = useTransicionFicha(Boolean(p), onCerrar);
   if (!p) return null;
   const verificacion = p.verificacionLocal;
   const filasFicha = verificacion
@@ -1534,9 +1611,10 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
       ['Quién puede entrar', p.acceso], ['Importe de entrada', p.ticket],
       ['Cadenas', p.cadenas]];
   return (
-    <Modal visible animationType="slide" presentationStyle="fullScreen"
-      statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={onCerrar}>
+    <Modal visible animationType="none" presentationStyle="fullScreen"
+      statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={transicion.cerrar}>
       <SafeAreaProvider style={e.pantalla}>
+        <Animated.View style={[e.pantalla, transicion.estilo]}>
         <SafeAreaView style={e.pantalla} edges={['top', 'right', 'bottom', 'left']} accessibilityViewIsModal>
           <View style={e.detCab}>
             <View style={[e.mono, e.monoGrande, { backgroundColor: COLOR_CATEGORIA[p.categoria] || C.sup3 }]}>
@@ -1545,7 +1623,7 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
             <View style={{ flex: 1 }}>
               <Text style={e.fichaSub}>Ficha de la plataforma</Text>
             </View>
-            <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]} hitSlop={10}
+            <Pressable onPress={transicion.cerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]} hitSlop={10}
               accessibilityRole="button" accessibilityLabel={`Cerrar ficha de ${p.nombre}`}>
               <Text style={e.cerrarTxt}>✕</Text>
             </Pressable>
@@ -1594,12 +1672,14 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
             </Text>
           </ScrollView>
         </SafeAreaView>
+        </Animated.View>
       </SafeAreaProvider>
     </Modal>
   );
 }
 
 const e = StyleSheet.create({
+  criteriosOrden: { minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 8, marginBottom: 4 },
   pantalla: { flex: 1, backgroundColor: C.noche },
   centro: { alignItems: 'center', justifyContent: 'center' },
   cargandoTxt: { ...T.cuerpo, marginTop: 14, color: C.tx2 },
