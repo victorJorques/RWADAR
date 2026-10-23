@@ -1,0 +1,113 @@
+{
+  "expedienteFecha": "2026-10-23",
+  "consultadaUtc": "2026-10-23T19:28:30.150118+00:00",
+  "fechaDato": null,
+  "slugExistente": "hausera-proximas-ofertas",
+  "tipoPropuesta": "correccion_documental_de_referencia_existente",
+  "aplicada": false,
+  "sqlAutorizadoPorEsteExpediente": false,
+  "publicacionAprobadaPorEsteExpediente": false,
+  "requiereRevisionIndependiente": true,
+  "decisionCandidataNueva": {
+    "nombre": "Alicante 2",
+    "admitirHoy": false,
+    "motivo": "El anuncio no acredita apertura ni documentación contractual suficiente para dar de alta una oferta nueva. No crear ficha, imagen o cola pública para completar después."
+  },
+  "cambiosPropuestos": {
+    "conservarSlugYReferenciaCompletaExistentes": true,
+    "conservarColeccionExistente": "en_camino",
+    "notaEditorial": "En la consulta del 23/10/2026, Hausera anunciaba Alicante 2 como próximo proyecto. Ese anuncio no acredita que haya abierto una emisión ni que se pueda contratar. Se conserva esta referencia general; las condiciones concretas requieren su documento de emisión.",
+    "sustituirAfirmacionAntigua": "No mantener como vigente la afirmación del 22/10 de que todavía no hay proyectos anunciados.",
+    "rentabilidad": null,
+    "plazoEjecutable": null,
+    "minimoIndividualEUR": null,
+    "disponibleDesdeEspana": null,
+    "costeTotalConfirmado": null,
+    "fechas": {
+      "consulta": "2026-10-23",
+      "fechaDocumentoDeEmision": null,
+      "fechaDatoDeRentabilidad": null,
+      "fechaApertura": null,
+      "fechaCierre": null
+    },
+    "avisos": [
+      "El operador digital HOLDTX SPAIN, S.L. no identifica por sí mismo al emisor de Alicante 2; éste debe constar en la documentación de cada emisión.",
+      "Una preventa puede ser una manifestación de interés sin compra ni asignación garantizadas. La participación requiere documentación, verificaciones y formalización aplicables.",
+      "Los términos advierten posible pérdida de capital y restricciones de transmisión. No presentan el mercado secundario como garantía universal de salida.",
+      "Las proyecciones comerciales no acreditan una rentabilidad futura ni un plazo contractual de devolución."
+    ]
+  },
+  "matrizAfirmaciones": [
+    {
+      "id": "anuncio-actual",
+      "estado": "observado",
+      "afirmacion": "La portada y la página de proyectos muestran Alicante 2 con estado PRÓXIMAMENTE.",
+      "fechaDato": null,
+      "consultadaEl": "2026-10-23",
+      "fuentes": ["https://hausera.io/", "https://hausera.io/oportunidades/"],
+      "copias": ["portada.txt", "ofertas.txt"],
+      "alcance": "Actualizar la nota de la referencia existente; no acreditar apertura o capacidad de suscribir."
+    },
+    {
+      "id": "minimo-segun-modalidad",
+      "estado": "alcances_distintos_no_extrapolables",
+      "afirmacion": "La FAQ de portada indica 100 EUR en general; la página de oportunidades cotizadas indica participaciones de 1000 EUR.",
+      "fechaDato": null,
+      "consultadaEl": "2026-10-23",
+      "fuentes": ["https://hausera.io/", "https://hausera.io/mercado-secundario/"],
+      "copias": ["portada.txt", "cotizadas.txt"],
+      "alcance": "Ninguno se asigna como mínimo de Alicante 2 sin identificar modalidad y documento de emisión."
+    },
+    {
+      "id": "costes-contextuales",
+      "estado": "documentado_solo_para_modalidad",
+      "afirmacion": "Hausera afirma no cobrar por invertir. En cotizadas informa de alta externa de Portfolio: 3 EUR particular o 18 EUR empresa, una vez, vinculada a FOGAIN; mantenimiento sin coste según esa página.",
+      "fechaDato": null,
+      "consultadaEl": "2026-10-23",
+      "fuentes": ["https://hausera.io/mercado-secundario/"],
+      "copias": ["cotizadas.txt"],
+      "alcance": "No equivale a coste total universal cero ni garantiza capital, precio o rentabilidad; no aplicar a cualquier proyecto histórico o nuevo. No se han revisado las tarifas contractuales completas de Portfolio."
+    },
+    {
+      "id": "espana-admision",
+      "estado": "desconocido",
+      "afirmacion": "Las fuentes revisadas no contienen una admisión explícita por residencia en España para Alicante 2.",
+      "fechaDato": null,
+      "consultadaEl": "2026-10-23",
+      "fuentes": ["https://hausera.io/faq/", "https://hausera.io/terms/"],
+      "copias": ["faq.txt", "terminos.txt"],
+      "alcance": "No inferir admisión por idioma, domicilio del operador, localización del activo o referencia genérica a inversores particulares."
+    },
+    {
+      "id": "verificacion-perfil",
+      "estado": "documentado_como_requisito",
+      "afirmacion": "La FAQ exige identificación y cuestionario. Las cotizadas añaden cuenta de Portfolio y verificación propia.",
+      "fechaDato": null,
+      "consultadaEl": "2026-10-23",
+      "fuentes": ["https://hausera.io/faq/", "https://hausera.io/mercado-secundario/"],
+      "copias": ["faq.txt", "cotizadas.txt"],
+      "alcance": "Se documentan requisitos; no se abrió una cuenta ni se probó la aceptación de un residente."
+    },
+    {
+      "id": "liquidez-y-formalizacion",
+      "estado": "riesgo_documentado_condicion_especifica_desconocida",
+      "afirmacion": "Los términos distinguen oportunidades cotizadas y no cotizadas y remiten las condiciones económicas y de transmisión a cada emisión.",
+      "fechaDato": null,
+      "consultadaEl": "2026-10-23",
+      "fuentes": ["https://hausera.io/terms/"],
+      "copias": ["terminos.txt"],
+      "secciones": ["3", "4.3", "5.7", "6.2", "6.4", "6.6", "6.7", "7", "11"],
+      "alcance": "No afirmar contratación actual, plazo de devolución ni liquidez inmediata para Alicante 2."
+    }
+  ],
+  "exclusionesDelCambio": [
+    "No trasladar cifras comerciales de ROI/TIR a rentabilidad vigente de la referencia general.",
+    "No usar los meses anunciados como vencimiento contractual.",
+    "No cambiar acceso desde España a confirmado.",
+    "No afirmar que Hausera sea una empresa de servicios de inversión por citar una infraestructura externa.",
+    "No usar predemo.hausera.io ni una oferta simulada como fuente.",
+    "No crear una oferta nueva ni renovar aprobación para otro ciclo."
+  ],
+  "manifiestoFuentes": "fuentes-manifiesto.json",
+  "notaFechas": "Las páginas no muestran fecha específica del dato o versión legal en lo revisado: fechaDato=null. Last-Modified HTTP no fecha las condiciones económicas. Consulta nueva no rejuvenece proyecciones anteriores."
+}

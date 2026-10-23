@@ -1,0 +1,207 @@
+[
+  {
+    "archivo": "accionistas-documentos-exa.md",
+    "bytes": 158,
+    "sha256": "d56ce2e847a88dbc477261631f163d19438a00064791057540f359fec9b5255f"
+  },
+  {
+    "archivo": "accionistas-documentos-leidos-exa.md",
+    "bytes": 71104,
+    "sha256": "988955c8595511d81f247b1e6b13e7cc55521efa10f0c62ff41e96fb6a5ed037"
+  },
+  {
+    "archivo": "casa-api-publica-filtrada.json",
+    "bytes": 40406,
+    "sha256": "8a91012133c668253e0bcece0e0b2634ebeb6e613a5860c21e5b661362fcb509"
+  },
+  {
+    "archivo": "casa-documentos-registros-spiko-exa.md",
+    "bytes": 54186,
+    "sha256": "995a4b3989473f075cff57afaad3a53c2249f9053f12ed70bc64aca2f632328f"
+  },
+  {
+    "archivo": "casa-navegador.txt",
+    "bytes": 8134,
+    "sha256": "c732ae77dd00806eed8072497932ae6b8d0144c9d67e7d9ea3d19de70ddfdf69"
+  },
+  {
+    "archivo": "documentos-hashes.json",
+    "bytes": 763,
+    "sha256": "b2d2739ade618dd7fe08606041a5858541bd93dc41fac5d0cbe5b42fe320d888"
+  },
+  {
+    "archivo": "emisores-browser.json",
+    "bytes": 30816,
+    "sha256": "820c49222779f6c5062211ab19dcc06401b5b1d71555fbfe67e46bf856061db8"
+  },
+  {
+    "archivo": "fuentes-spiko-alius-exa.json",
+    "bytes": 138912,
+    "sha256": "cbeb602d7f993259471b03fff7a7223ef9bab7390973d29190f600937768a92c"
+  },
+  {
+    "archivo": "inventario-49.json",
+    "bytes": 26505,
+    "sha256": "d0a388a4b380fa584a0a43467572c806ac4ec62ad1d0017bed34e7c1b9db4615"
+  },
+  {
+    "archivo": "iod-aktionariat-documentos-exa.md",
+    "bytes": 46347,
+    "sha256": "5f53601d33afc3205ba1ac779d4c225ac27fdee9729845994ec6e72a72824ee5"
+  },
+  {
+    "archivo": "iod-navegador.txt",
+    "bytes": 5579,
+    "sha256": "a1716c51cfe9d85b04f37afa5a3f16ae149552651de13befd1bfd2c91ec1a7c8"
+  },
+  {
+    "archivo": "LEEME.md",
+    "bytes": 5381,
+    "sha256": "c52a8c83d959824b64494c78e1a58f963c9ab28520319829f8e0d004dde3539f"
+  },
+  {
+    "archivo": "matriz-cobertura.json",
+    "bytes": 7173,
+    "sha256": "5b6be5adeb59067ea96e967cdc256b619f3f2f358d7f3c5e8fd36c00f5ad8e38"
+  },
+  {
+    "archivo": "mfone-browser.json",
+    "bytes": 10479,
+    "sha256": "74f05541d40bc2250264d5c35309afa950ca55fb5b3388418380b21d19eca834"
+  },
+  {
+    "archivo": "midas-legales-exa.md",
+    "bytes": 65277,
+    "sha256": "c026eebe58a9d43eff49cc8236aa5d0422ae8e19b2f1c7016cfae29631031afa"
+  },
+  {
+    "archivo": "midas-mtbill-prosegur-aktionariat-legal-exa.md",
+    "bytes": 24225,
+    "sha256": "282985e006d170e552d3acacc7441afc9e8449bba2fb48718df8268cac834680"
+  },
+  {
+    "archivo": "mtbill-documentos-exa.md",
+    "bytes": 142305,
+    "sha256": "28e36621292d31e10cb3c3bb7c57a8dfea5dd803fcfe53b697f7bd9b7757e0d1"
+  },
+  {
+    "archivo": "nuevas-fuentes-exa.md",
+    "bytes": 2254,
+    "sha256": "f54792cb2a057ff524f456d8c966705e91fc7b1d06930987082544ee068674c8"
+  },
+  {
+    "archivo": "nuevas-no-admitidas.json",
+    "bytes": 1560,
+    "sha256": "4a30471426da6e6c608b0b215af342c90586f917c8010d60f59f8e9f5fb96a17"
+  },
+  {
+    "archivo": "propuestas-para-revision.json",
+    "bytes": 3127,
+    "sha256": "d4d889e22fe0b4b199efcf194b7b7b49629e752bddbe9b6106aa00ba96f830cc"
+  },
+  {
+    "archivo": "prosegur-app-home.json",
+    "bytes": 1302,
+    "sha256": "eaa3e74b70d0cf2b7789b9a486d715c473862db31ef1b7c20e160881666165a8"
+  },
+  {
+    "archivo": "prosegur-condiciones-browser.json",
+    "bytes": 74721,
+    "sha256": "77d42a940e58e85b93516bd5dc285e6b6ff3c314033a4d0f62ae9c2389034a75"
+  },
+  {
+    "archivo": "prosegur-elegibilidad-exa.md",
+    "bytes": 14421,
+    "sha256": "78af54a186ef3f92fbaab0f9bb3acf140335ff1dbcebe21ae3755a08f506cbdd"
+  },
+  {
+    "archivo": "registros-suiza-exa.md",
+    "bytes": 2336,
+    "sha256": "7d45ebb1d78b8b41eb3371d2c63ba7c2174373b4351de46b056217a0979e7251"
+  },
+  {
+    "archivo": "spiko-data-directo.json",
+    "bytes": 1832,
+    "sha256": "4494362986d2e6986dc36ba8b2476f9deddba5dd3fcd2ea253875f1f63407ed3"
+  },
+  {
+    "archivo": "spiko-pdfs-exa.md",
+    "bytes": 266160,
+    "sha256": "f2e9a4eacbbd7a4e79e9cf95cc2ea628f3f47fbdc39083ef1689d641fea6c6e7"
+  },
+  {
+    "archivo": "spiko-web-directa.json",
+    "bytes": 8455,
+    "sha256": "efb32c2c717fa5238b0e8e6ad63c6d76da0627404345227dc9d32fbe1486cd2f"
+  },
+  {
+    "archivo": "expedientes/aktionariat.json",
+    "bytes": 6242,
+    "sha256": "d8cee4c4cd95016d3c76368ed22fef35744e1e87113b2249834fc16c8328df89"
+  },
+  {
+    "archivo": "expedientes/boss-info.json",
+    "bytes": 6279,
+    "sha256": "d7f87b46f122eb30e1761f33a2326ad6e22d93dc9700a533c602c3af4552f9ed"
+  },
+  {
+    "archivo": "expedientes/casa-de-outeiro.json",
+    "bytes": 7454,
+    "sha256": "0ea65060f89c917064ca5dcdab6cf45e3229cdefaf649546645126ae7a5477cc"
+  },
+  {
+    "archivo": "expedientes/iod-occasio.json",
+    "bytes": 8181,
+    "sha256": "ac86252829b8089027157e29dfe0ae86497c4754a8176bb0759658acb77abeeb"
+  },
+  {
+    "archivo": "expedientes/mf-one.json",
+    "bytes": 5926,
+    "sha256": "ec49b80e42a0668b6b3439d939508296a4c47f933fc87e847728f10e10161436"
+  },
+  {
+    "archivo": "expedientes/mglo.json",
+    "bytes": 6636,
+    "sha256": "5d7687a3aedc5c589edf8f87e4df9f47a59ae8784b51183b0b9557d70963200c"
+  },
+  {
+    "archivo": "expedientes/mglobal.json",
+    "bytes": 6643,
+    "sha256": "5bd22e483900000d2cac5721ba85d1c0a542998934a4850901ab0c98092f0c0e"
+  },
+  {
+    "archivo": "expedientes/mgloeuro.json",
+    "bytes": 6669,
+    "sha256": "178c4cba80c94db89b98c6fbf25a876bccc29d6a717873277f86ed33ff15bfdf"
+  },
+  {
+    "archivo": "expedientes/mtbill.json",
+    "bytes": 9176,
+    "sha256": "ae3f9f7125608eacb4bc3d5aeeea392023c634442c659196b2b8fbbf6b8a9683"
+  },
+  {
+    "archivo": "expedientes/prosegur-digital-gold.json",
+    "bytes": 8234,
+    "sha256": "999942a0530b8f4086067dcfb67c91de2ca5c247fb44123e837cedb48d0af5ae"
+  },
+  {
+    "archivo": "expedientes/servicehunter-quitt.json",
+    "bytes": 6271,
+    "sha256": "4d3f7c119dc4544f6f7cc20b3cba52ff1d884300fc8f6532d3ffdea533a6de06"
+  },
+  {
+    "archivo": "expedientes/spiko-letras-del-tesoro-euro.json",
+    "bytes": 7982,
+    "sha256": "82cd08682efcbafc035e61cf09ba3a6f77748c7ae9624d0da46052f2e8fbe6d0"
+  },
+  {
+    "archivo": "expedientes/switzerlend.json",
+    "bytes": 6176,
+    "sha256": "9ac69a72ad95c4f093ba8bf92dfb3e2e770ac12139555ce6ee1d46d8cff30659"
+  },
+  {
+    "archivo": "expedientes/wemakeit.json",
+    "bytes": 6299,
+    "sha256": "02cc616d68d827f6b47c42b53dde309ff324f496049671b3ff552d98331f38df"
+  }
+]

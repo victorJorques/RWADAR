@@ -69,6 +69,8 @@ function huellaAlcancePublicacion(estado) {
    estas rutas puede haber cambiado desde entonces. */
 const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-site',
+  'rwadar-acceso',
+  'functions',
   'rwadar-academy',
   'rwadar-academy.js',
   'rwadar-noticias',
@@ -113,9 +115,13 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   '_headers',
   '_redirects',
   '404.html',
+  'acceso.html',
   ...PAGINAS_ACADEMY,
   ...PAGINAS_FICHAS,
   'assets/academy-20261002.css',
+  'assets/acceso.css',
+  'assets/acceso.js',
+  'assets/acceso-privado.js',
   'assets/academy-20261002.js',
   'assets/analitica-20260927.js',
   'assets/error-20260820.css',

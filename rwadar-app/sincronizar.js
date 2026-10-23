@@ -287,6 +287,11 @@ module.exports = {
   sincronizar: main,
 };
 if (require.main === module) {
-  main({ versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true })
+  // Before activating SQL 28, the existing publication can still be read
+  // anonymously. Afterwards its HTTP denial stops synchronization atomically;
+  // no local snapshot is substituted and a confirmed editorial session is needed.
+  require('../rwadar-acceso/lectura-editorial.cjs').crearLecturaEditorial(process.env.RWADAR_CATALOGO_ACCESS_TOKEN,
+    { permitirPublicaActual: true })
+    .then(fetchFn => main({ fetchFn, versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true }))
     .catch(e => { console.error('ERROR:', e.message); process.exit(1); });
 }

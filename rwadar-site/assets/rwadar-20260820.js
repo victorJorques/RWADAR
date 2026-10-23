@@ -56,27 +56,33 @@ function limpiarRetornoSinServiciosUsuario(){
 const Favoritos=(function(){
  const CLAVE='rwadar.favoritos.v1',MAX=200;
  const oyentes=new Set();
- let datos={empresas:[],ofertas:[]};
+ let datos={empresas:[],ofertas:[]},identidad=null;
+ const uid=()=>typeof window!=='undefined'&&window.RWADAR_ACCESO?.usuario()?.id||null;
+ const claveCuenta=()=>{const id=uid();return id?CLAVE+':'+id:null;};
  const limpia=lista=>Array.isArray(lista)
   ?[...new Set(lista.filter(x=>typeof x==='string'&&x.length>0&&x.length<=160))].slice(0,MAX):[];
  function leer(){
   try{
-   const j=JSON.parse(localStorage.getItem(CLAVE)||'null');
+   identidad=uid();const clave=claveCuenta();
+   const j=JSON.parse(clave?localStorage.getItem(clave)||'null':'null');
    datos=j&&typeof j==='object'?{empresas:limpia(j.empresas),ofertas:limpia(j.ofertas)}:{empresas:[],ofertas:[]};
   }catch(e){datos={empresas:[],ofertas:[]};}
  }
  function avisarCambio(){oyentes.forEach(f=>{try{f();}catch(e){}});}
- function guardar(){try{localStorage.setItem(CLAVE,JSON.stringify(datos));}catch(e){}}
+ function guardar(){try{const clave=claveCuenta();if(clave)localStorage.setItem(clave,JSON.stringify(datos));}catch(e){}}
  function alternar(tipo,clave){
+  if(uid()!==identidad)leer();if(!uid())return false;
   if(!Object.hasOwn(datos,tipo)||typeof clave!=='string'||!clave)return false;
   const i=datos[tipo].indexOf(clave);
   if(i>=0)datos[tipo].splice(i,1);else datos[tipo]=[clave,...datos[tipo]].slice(0,MAX);
   guardar();avisarCambio();return i<0;
  }
- function borrar(){datos={empresas:[],ofertas:[]};try{localStorage.removeItem(CLAVE);}catch(e){}avisarCambio();}
+ function borrar(){datos={empresas:[],ofertas:[]};try{const clave=claveCuenta();if(clave)localStorage.removeItem(clave);}catch(e){}avisarCambio();}
  if(typeof localStorage!=='undefined')leer();
  if(typeof window!=='undefined'&&window.addEventListener)
-  window.addEventListener('storage',e=>{if(e.key===CLAVE){leer();avisarCambio();}});
+  window.addEventListener('storage',e=>{if(e.key===claveCuenta()){leer();avisarCambio();}});
+ if(typeof document!=='undefined'&&document.addEventListener)
+  document.addEventListener('rwadar:sesion',()=>{leer();avisarCambio();});
  return {
   tiene:(tipo,clave)=>Object.hasOwn(datos,tipo)&&datos[tipo].includes(clave),
   lista:tipo=>Object.hasOwn(datos,tipo)?datos[tipo].slice():[],
@@ -180,7 +186,10 @@ const MARK=`
  <circle class="eco" cx="82" cy="76" r="2.9"/></g>`;
 document.querySelectorAll('svg.mk').forEach(s=>{s.innerHTML=MARK});
 
-const irA=id=>{const el=document.getElementById(id); if(el&&el.scrollIntoView) el.scrollIntoView()};
+const irA=id=>{
+ if(id==='explain'&&typeof Movil!=='undefined'&&Movil.tutorial&&Movil.tutorial(document.activeElement))return;
+ const el=document.getElementById(id);if(el&&el.scrollIntoView)el.scrollIntoView();
+};
 
 /* =================================================================
    EL DIBUJO · 127 fichas hexagonales
@@ -895,10 +904,17 @@ let paso=0, reloj=null;
 const menos=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function irPaso(i,manual){
+  if(!Number.isInteger(i)||i<0||i>=ROTULOS.length)return;
   paso=i;
   colocar(i);
   const rot=document.getElementById('exRot');
   if(rot) rot.textContent=ROTULOS[i];
+  const anterior=document.getElementById('exAnterior'),siguiente=document.getElementById('exSiguiente');
+  const progreso=document.getElementById('exProgreso'),final=document.getElementById('exFinal');
+  if(anterior)anterior.disabled=i===0;
+  if(siguiente)siguiente.disabled=i===ROTULOS.length-1;
+  if(progreso)progreso.textContent=`Paso ${i+1} de ${ROTULOS.length}`;
+  if(final)final.hidden=i!==ROTULOS.length-1;
   document.querySelectorAll('.paso').forEach((d,k)=>{
    const activa=k===i;d.classList.toggle('on',activa);d.setAttribute('aria-pressed',activa?'true':'false');
   });
@@ -912,11 +928,20 @@ function irPaso(i,manual){
 function reiniciarPasosAutomaticos(){
   const l=document.getElementById('exSteps'); if(!l) return;
   if(reloj){clearInterval(reloj);reloj=null;}
-  if(menos){l.classList.remove('auto');return;}
-  l.classList.add('auto');
-  reloj=setInterval(()=>irPaso((paso+1)%4),5000);
+  l.classList.remove('auto');
+  irPaso(0,false);
 }
 reiniciarPasosAutomaticos();
+document.getElementById('exAnterior')?.addEventListener('click',()=>irPaso(paso-1,true));
+document.getElementById('exSiguiente')?.addEventListener('click',()=>irPaso(paso+1,true));
+document.getElementById('exVolverAcademy')?.addEventListener('click',()=>{
+ if(window.ReactNativeWebView){window.ReactNativeWebView.postMessage('rwadar:tutorial-finalizado');return;}
+ if(typeof Movil!=='undefined'&&Movil.volverAcademy&&Movil.volverAcademy())return;
+ document.getElementById('academyTit')?.scrollIntoView({block:'start'});
+});
+document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
+ if(window.ReactNativeWebView){event.preventDefault();window.ReactNativeWebView.postMessage('rwadar:tutorial-primera-leccion');}
+});
 
 /* =================================================================
    LA CALCULADORA DEL EXPLICADOR
@@ -1794,6 +1819,7 @@ function imagenOfertaLocal(o){
   const entrada=EDITORIAL_OFERTA_POR_CATEGORIA[o.categoria]||
    {src:EDITORIAL_OFERTA_POR_CATEGORIA['Acciones y capital privado'].src,alt:'Ilustración editorial financiera; no representa un activo concreto'};
   const propia=Object.hasOwn(EDITORIAL_OFERTA_POR_SLUG,o.slug)?EDITORIAL_OFERTA_POR_SLUG[o.slug]:null;
+  if(propia&&propia.categoria!==o.categoria)return {src:entrada.src,alt:entrada.alt,etiqueta:'Ilustración editorial'};
   return propia&&propia.categoria===o.categoria?
    {src:propia.src,alt:propia.alt,etiqueta:'Ilustración editorial',respaldo:entrada.src,lugar:textoLocal(propia.lugar)}:
    {src:'/ofertas-editoriales/oferta-'+o.slug+'.webp',
@@ -3007,8 +3033,10 @@ async function cargarEscaparateLocal(){
 async function alDia(){
  if(typeof MODO_LOCAL_SEGURO!=='undefined'&&MODO_LOCAL_SEGURO)throw new Error('Supabase está bloqueado en el modo local seguro');
  const cab={apikey:CLAVE_PUB};
- const pide=u=>fetch(API+u,{headers:cab,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'})
-   .then(r=>r.ok?r.json():Promise.reject(new Error('HTTP '+r.status)));
+ const pide=u=>{
+   if(!window.RWADAR_ACCESO)throw new Error('Falta la pasarela de acceso');
+   const [tabla,consulta='']=u.slice(1).split('?');return window.RWADAR_ACCESO.catalogo(tabla,consulta);
+ };
   const respuestas=await Promise.allSettled([
     pide('/catalogo_plataformas_publicas_v2?select=*'),
     pide('/plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)&order=nombre'),
@@ -3182,6 +3210,7 @@ const Opiniones=(function(){
 
  async function pide(ruta,opc){
   if(!OPINIONES_DISPONIBLES)throw new Error('Opiniones desactivadas en esta versión editorial');
+  if(window.RWADAR_ACCESO)return window.RWADAR_ACCESO.datos(ruta,opc);
   const cfg=Object.assign({cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'},opc||{});
   cfg.headers=Object.assign({apikey:CLAVE_PUB},(opc&&opc.headers)||{});
   const r=await fetch(REST+ruta,cfg);
@@ -3381,11 +3410,12 @@ function perfilDesdeRespuestaCorreo(base,fila,esperado){
    que hace especial a esta página —un archivo, cero dependencias— a
    cambio de ahorrar unas cuantas llamadas a fetch.
 
-   La cuenta NO es un muro: el registro se lee entero sin ella. Sirve
-   para guardar vigilancia y para publicar o gestionar una opinión. La
+   La cuenta confirmada da acceso al registro, a la vigilancia y a la opinión. La
    entrega de avisos por correo se activará solo cuando esté configurada.
    ================================================================= */
 const Cuenta = (function(){
+ const servidor=typeof window!=='undefined'&&window.RWADAR_ACCESO;
+ const usuarioServidor=u=>({id:u.id,email:u.correo,email_confirmed_at:u.correoConfirmadoEl,is_anonymous:false});
  const AUTH='https://exgpmjpaaebyoolpwced.supabase.co/auth/v1';
  /* Correos reales comprobados el 11/10/2026: alta recibida y confirmada por
     su titular; recuperación recibida en su buzón. Confirm email sigue
@@ -3457,6 +3487,15 @@ const Cuenta = (function(){
  /* --- la API de autenticación ------------------------------------ */
  async function auth(ruta,cuerpo,opc){
   if(!SERVICIOS_USUARIO_DISPONIBLES)throw new Error('Cuentas desactivadas en esta versión editorial');
+  if(servidor){
+   if(ruta==='/user'&&(!opc||opc.metodo==='GET'))return usuarioServidor(await servidor.verificar());
+   if(ruta==='/token?grant_type=password'){
+    const u=await servidor.reautenticar(cuerpo&&cuerpo.password);
+    return {access_token:'sesion-http-only',user:usuarioServidor(u),expires_in:3600};
+   }
+   if(ruta.startsWith('/logout'))return servidor.salir();
+   throw new Error('Gestiona el acceso desde la página de tu cuenta.');
+  }
   let r,t;
   try{
    const respuesta=await peticionCuenta(AUTH+ruta,{method:(opc&&opc.metodo)||'POST',
@@ -3567,6 +3606,10 @@ const Cuenta = (function(){
  async function testigo(){
   if(!SERVICIOS_USUARIO_DISPONIBLES)return null;
   if(!ses) return null;
+  if(servidor){
+   const u=await servidor.verificar();if(!ses||u.id!==ses.uid)return null;
+   return 'sesion-http-only';
+  }
   if(ses.expira && Date.now() < ses.expira-60000) return ses.access_token;
   if(!ses.refresh_token){guarda(null);identidadConfirmada=false;pinta();return null;}
   if(renovacion&&cuentaRenovacion===versionCuenta)return renovacion;
@@ -3615,6 +3658,7 @@ const Cuenta = (function(){
   if(!SERVICIOS_USUARIO_DISPONIBLES)throw new Error('Datos de cuenta desactivados en esta versión editorial');
   if(cuenta===undefined)cuenta=versionCuenta;
   if(!vigente(cuenta))throw cancelada();
+  if(servidor){const j=await servidor.datos(ruta,opc);if(!vigente(cuenta))throw cancelada();return j;}
   const tk=await testigo();if(!tk){const e=new Error('La sesión ha caducado. Vuelve a entrar.');e.status=401;throw e;}
   if(!vigente(cuenta))throw cancelada();
   const cfg=Object.assign({cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'},opc||{});
@@ -3758,6 +3802,9 @@ const Cuenta = (function(){
   e.hidden=false;
  }
  function abrir(m,motivo){
+  if(servidor&&['entrar','registro','recuperar'].includes(m||'entrar')){
+   location.assign('/acceso?volver='+encodeURIComponent(location.pathname));return;
+  }
   if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Puedes consultar todo el radar sin registrarte.');return;}
   const solicitado=m||'entrar';
   modo=!CORREO_AUTH_E2E&&solicitado==='registro'?'registro_pausado':
@@ -4123,6 +4170,7 @@ const Cuenta = (function(){
   const tk=ses&&ses.access_token;
   operacionCuenta++;
   guarda(null);identidadConfirmada=false;perfil=null;vigiladas=new Map();cerrarPanelPerfil();pinta();
+  if(servidor){await servidor.salir();return;}
   if(fichaAbierta) pintarVigilar(fichaAbierta);
   const cuenta=versionCuenta;
   aviso('Has salido de esta pestaña. Comprobando el cierre en el servidor…');
@@ -4224,6 +4272,16 @@ const Cuenta = (function(){
     parametrosRetorno.has('error')||parametrosRetorno.has('error_code')||parametrosRetorno.has('error_description')));
   pinta();
 
+  if(servidor){
+   servidor.verificar().then(async u=>{
+    guarda({access_token:'sesion-http-only',uid:u.id,correo:u.correo,expira:0});
+    identidadConfirmada=true;
+    if(!await cargarMio()){await servidor.salir();return;}
+    pinta();if(fichaAbierta)pintarVigilar(fichaAbierta);
+   }).catch(()=>{});
+   return;
+  }
+
   /* Confirmación de correo y recuperación usan un fragmento para que los
      testigos no viajen al servidor ni queden en su registro de accesos. */
   if(retorno){
@@ -4289,6 +4347,7 @@ const Comunidad=(function(){
  let mias=new Set();
  async function api(ruta,opc,conSesion){
   if(!PUBLICACIONES_DISPONIBLES)throw new Error('Comunidad desactivada en esta versión');
+  if(window.RWADAR_ACCESO)return window.RWADAR_ACCESO.datos(ruta,opc);
   const cab={apikey:CLAVE_PUB,'Content-Type':'application/json'};
   if(conSesion){
    const t=await Cuenta.token();
@@ -4403,6 +4462,7 @@ const Movil = (function(){
  const paneles=new Map([...document.querySelectorAll('[data-movil-panel]')]
   .map(p=>[p.dataset.movilPanel,p]));
  const panelBuscar=paneles.get('buscar');
+ const panelAcademy=paneles.get('academy');
  const emisiones=document.getElementById('emisiones');
  const portada=document.querySelector('#movilPanelRadar>.portada');
  const portadaTexto=document.querySelector('.portada-txt');
@@ -4504,6 +4564,7 @@ const Movil = (function(){
    if(leccionesAcademy&&contenedorAcademy&&leccionesAcademy.parentNode!==contenedorAcademy)
     contenedorAcademy.appendChild(leccionesAcademy);
    if(academia)academia.hidden=!academyAbierta;
+   if(academyAbierta&&panelAcademy)panelAcademy.appendChild(academia);
    const informacion=document.getElementById('emisInformacion');
    if(informacion)informacion.open=!emisiones||!emisiones.classList.contains('sin-emisiones');
   }else{
@@ -4514,6 +4575,7 @@ const Movil = (function(){
    if(academia)academia.hidden=false;
    const informacion=document.getElementById('emisInformacion');if(informacion)informacion.open=true;
    panelBuscar.classList.remove('movil-academy-abierta','movil-detalle-abierto');
+   if(panelAcademy)panelAcademy.classList.remove('movil-academy-abierta');
   }
  }
  function cabeceraAcademy(){
@@ -4527,10 +4589,11 @@ const Movil = (function(){
   if(panelBuscar)panelBuscar.classList.remove('movil-academy-abierta');
   if(academia)academia.hidden=true;
   document.querySelectorAll('[data-movil-action="academy"]').forEach(b=>b.setAttribute('aria-expanded','false'));
-  cabecera('buscar');
+  if(panelAcademy)panelAcademy.classList.remove('movil-academy-abierta');
+  cabecera('academy');
   window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   const origen=academyOrigen;academyOrigen=null;
-  if(enfocar)devolverFoco(origen,document.getElementById('q')||document.getElementById('movilTabRadar'));
+  if(enfocar)devolverFoco(origen,document.getElementById('movilTabAcademy'));
  }
  function mostrarAcademy(mostrar,enfocar=true,gestionarHistorial=true,origen=null){
   if(!media.matches||!academia||!panelBuscar)return;
@@ -4538,7 +4601,7 @@ const Movil = (function(){
    if(!academyAbierta){
     academyOrigen=origen||document.activeElement;
     academyAbierta=true;academia.hidden=false;
-    panelBuscar.classList.add('movil-academy-abierta');
+    if(panelAcademy){panelAcademy.appendChild(academia);panelAcademy.classList.add('movil-academy-abierta');}
     document.querySelectorAll('[data-movil-action="academy"]').forEach(b=>b.setAttribute('aria-expanded','true'));
     cabeceraAcademy();
     /* La lección se abre siempre por el principio. El temporizador puede
@@ -4573,7 +4636,7 @@ const Movil = (function(){
    history.state.rwadarAvisos===true;
   if(detalleAbierto)cerrarDetalleVisual(false);
   if(vistaAvisos&&!vistaAvisos.hidden){avisosHistorial=false;mostrarAvisos(false,false,false);}
-  cambiar('buscar',{arriba:false});
+  cambiar('academy',{arriba:false});
   if((sustituyeDetalle||sustituyeAvisos)&&typeof history!=='undefined'&&history.replaceState){
    const estado={...estadoBaseSubvista(),rwadarAcademy:true};
    history.replaceState(estado,'',location.href);
@@ -4707,10 +4770,11 @@ const Movil = (function(){
    .map(a=>a.getAttribute('href').replace('/academy/','')).filter(Boolean);
   let leidas=0;
   try{
-   const j=JSON.parse(localStorage.getItem('rwadar.academy.v1')||'null');
+   const uid=window.RWADAR_ACCESO?.usuario()?.id;
+   const j=JSON.parse(uid?localStorage.getItem('rwadar.academy.v1:'+uid)||'null':'null');
    if(j&&Array.isArray(j.leidas))leidas=slugs.filter(x=>j.leidas.includes(x)).length;
   }catch(e){}
-  titulo.textContent=slugs.length?leidas+' de '+slugs.length+' lecciones leídas':'Lecciones gratuitas, sin registro';
+  titulo.textContent=slugs.length?leidas+' de '+slugs.length+' lecciones leídas':'Aprende gratis con tu cuenta';
  }
  Favoritos.alCambiar(pintarPerfil);
  function cambiar(id,opciones){
@@ -4773,6 +4837,7 @@ const Movil = (function(){
  });
  verEnBuscar(typeof location!=='undefined'&&DE_PLATAFORMAS.has((location.hash||'').slice(1))?'plataformas':'ofertas');
  function ir(destino,origen=null){
+  if(destino==='explain'){abrirAcademyDesde(origen);return;}
   cambiar('buscar',{arriba:false});
   if(destino==='emisiones')verEnBuscar('ofertas');
   else if(DE_PLATAFORMAS.has(destino))verEnBuscar('plataformas');
@@ -4882,8 +4947,8 @@ const Movil = (function(){
   }else if(estado.rwadarAcademy===true){
    if(!academyAbierta){
     if(detalleAbierto)cerrarDetalleVisual(false);
-    cambiar('buscar',{arriba:false});
-    mostrarAcademy(true,enfocar,false,document.getElementById('movilAbrirAcademy'));academyHistorial=true;
+    cambiar('academy',{arriba:false});
+    mostrarAcademy(true,enfocar,false,document.getElementById('movilTabAcademy'));academyHistorial=true;
    }
   }else{
    if(detalleAbierto)cerrarDetalleVisual(enfocar);
@@ -4918,7 +4983,12 @@ const Movil = (function(){
   if(media.matches){reconciliarEstadoSubvista(false);if(activa==='buscar')geometria();}
  });
  adaptar();
- return {cambiar:cambiar};
+ if(typeof location!=='undefined'&&location.hash==='#explain')abrirAcademyDesde(document.getElementById('movilTabAcademy'));
+ window.addEventListener('hashchange',()=>{if(location.hash==='#explain')abrirAcademyDesde(document.activeElement);});
+ return {cambiar:cambiar,
+  tutorial(origen){if(!media.matches)return false;abrirAcademyDesde(origen);return true;},
+  volverAcademy(){if(!media.matches)return false;mostrarAcademy(false);return true;}
+ };
 })();
 
 /* Una sola delegación sustituye todos los atributos onclick/onkeydown.

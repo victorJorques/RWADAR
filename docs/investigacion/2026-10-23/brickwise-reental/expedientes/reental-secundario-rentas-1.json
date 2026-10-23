@@ -1,0 +1,91 @@
+{
+  "slug": "reental-secundario-rentas-1",
+  "title": "Rentas 1",
+  "provider": "reental",
+  "existingCollection": "secundario",
+  "previousVerificationDate": "2026-10-22",
+  "investigacionCompleta": false,
+  "revisionIndependiente": false,
+  "aprobacionPublicacion": false,
+  "decision": "Conservar la referencia documental existente; no renovar toda su fecha ni sus cifras con esta captura",
+  "newCandidate": false,
+  "claims": [
+    {
+      "field": "estado_etiqueta_web",
+      "assertion": [
+        "Financiado"
+      ],
+      "source": "https://www.reental.co/properties/1787856322980-e1042bfc-0830-4e36-9a5a-bd37b59ddeca-rentas-1",
+      "locator": "Etiqueta CMS sin clase w-condition-invisible",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La etiqueta del proyecto no acredita apertura de una emisión ni existencia de una orden P2P.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "precio_token_referencia",
+      "assertion": "100 €",
+      "source": "https://www.reental.co/properties/1787856322980-e1042bfc-0830-4e36-9a5a-bd37b59ddeca-rentas-1",
+      "locator": "Precio del Token; símbolos ocultos del CMS excluidos",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "Precio nominal o de referencia del proyecto. No es precio ejecutable ni mínimo de compra del mercado secundario.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "minimo_euros",
+      "assertion": "No acreditado para una compra actual de esta referencia",
+      "source": "https://www.reental.co/properties/1787856322980-e1042bfc-0830-4e36-9a5a-bd37b59ddeca-rentas-1",
+      "locator": "Precio del token; contrato específico pendiente",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La FAQ general habla de 100 euros/dólares. No convertir USD en EUR.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "espana",
+      "assertion": "No confirmado por contrato específico ni por admisión de un comprador",
+      "source": "https://www.reental.co/faqs",
+      "locator": "Quién puede invertir; registro/KYC; documento específico",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La regla general de KYC/AML no es un pasaporte para todos los tokens.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "salida",
+      "assertion": "La FAQ contempla venta directa a un tercero admitido por la plataforma",
+      "source": "https://www.reental.co/faqs",
+      "locator": "¿Puedo vender mi token?",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "No garantiza comprador, plazo, liquidez ni precio. Deben leerse las restricciones del acuerdo específico.",
+      "status": "evidencia_observada_sin_aprobacion"
+    }
+  ],
+  "unresolved": [
+    "Leer los acuerdos, whitepaper y anexos de esta referencia y acreditar emisor/vehículo/registro y alcance.",
+    "No renovadas rentabilidades: la página muestra proyecciones sin fecha suficiente del cálculo actual.",
+    "Faltan costes, plazo de salida, restricciones de cesión y acceso español específicos; no completar con otra emisión."
+  ],
+  "primaryPage": {
+    "url": "https://www.reental.co/properties/1787856322980-e1042bfc-0830-4e36-9a5a-bd37b59ddeca-rentas-1",
+    "file": "reental-secundario-rentas-1.html",
+    "reviewedInDepth": false,
+    "consultedAt": "2026-10-23T19:07:54.664777+00:00",
+    "http": 200,
+    "finalUrl": "https://www.reental.co/properties/1787856322980-e1042bfc-0830-4e36-9a5a-bd37b59ddeca-rentas-1",
+    "dateHeader": "Fri, 23 Oct 2026 19:07:55 GMT",
+    "lastModified": "Fri, 23 Oct 2026 19:07:55 GMT",
+    "bytes": 114234,
+    "sha256": "f400965a5e93fec4fa8f275894014991737b79567503ee9431bfb265d292c5ca"
+  },
+  "pdfLinksDiscovered": [
+    "https://d23t4e7dm0xzj0.cloudfront.net/RET-1/docs-es/1759913045539_rentas_1_ret_1_dossier_comercial.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/RET-1/docs-es/1759833569402_rentas_1_llc_acuerdo_de_suscripcion.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/RET-1/docs-es/1759913042418_esp_whitelist_rentas_1.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/RET-1/docs-en/1759910106318_rentas_1_ret_1_dossier_comercial.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/RET-1/docs-en/1759833571986_rentas_1_llc_subscription_agreement.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/RET-1/docs-en/1759836108312_eng_whitepaper_ret_1.pdf"
+  ]
+}

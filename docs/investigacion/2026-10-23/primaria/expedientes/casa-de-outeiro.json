@@ -1,0 +1,155 @@
+{
+  "slug": "casa-de-outeiro",
+  "proveedor": "Alius Capital",
+  "emisor": "Casa de Outeiro Bodega y Viñedos S.A. (los documentos aún describen constitución pendiente)",
+  "identificador": "9598007MF0DK0DLQJ78000001613",
+  "jurisdiccion": "ES",
+  "moneda": "EUR",
+  "documento": "FDFv4 firmado24/06/2026; AnexosI/II y campaña pública",
+  "alcanceLectura": "FDF completo y AnexoI/II leídos hoy; campaña/navegador y campos públicos de API; términos Alius. No se verificaron constitución/ERIR definitivas ni todos los estatutos.",
+  "profundidad": "documental_con_conflictos",
+  "claims": [
+    {
+      "campo": "estado",
+      "dato": "Campaña abierta visible,8días restantes y fecha31/10/2026.",
+      "fuentePrimaria": "https://aliuscap.com/projects/casa-de-outeiro",
+      "localizador": "Encabezado; API campaign.end_date",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Observación de campaña, no contratación ni fondos disponibles garantizados.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimoEUR",
+      "dato": 2000,
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+      "localizador": "§3 /p.4",
+      "fechaDato": "2026-06-24",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "80acciones×25EUR, corroborado por campaña y AnexoII. No confundir25EURacción con mínimo.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "derecho",
+      "dato": "Acciones ordinarias nominativas tokenizadas de la sociedad, un token por acción.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+      "localizador": "§3",
+      "fechaDato": "2026-06-24",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No participación directa registral en cada inmueble.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "dato": "Sujeta a estatutos, pacto y contraparte; documentación contiene restricción inicial y liberación gradual.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+      "localizador": "§5 /pp.5–6",
+      "fechaDato": "2026-06-24",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Conflicto2027/2026; no fecha libre de bloqueo inequívoca. FAQs prevén recompras2028/2030condicionadas, no garantía.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "costes",
+      "dato": "Sin coste del proyecto según FDF; costes de canal según términos generales.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+      "localizador": "§6 /p.6",
+      "fechaDato": "2026-06-24",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No coste total0; membresía opcional separada de inversión.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "custodia",
+      "dato": "Entrega de tokens tras inscripción ERIR; AnexoI reconoce trámites y borradores pendientes.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/264",
+      "localizador": "AnexoI apartados3–6",
+      "fechaDato": "2026-06-24",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No se verificó inscripción concreta ni formalización definitiva.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "dato": null,
+      "fuentePrimaria": "https://aliuscap.com/general-terms",
+      "localizador": "Habilitación del inversor",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No inferir admisión residencial de activo español, idioma o domicilio del emisor.",
+      "estado": "no_acreditado"
+    },
+    {
+      "campo": "supervision",
+      "dato": "Información básica distingue autorización de plataforma de aprobación/supervisión de proyectos.",
+      "fuentePrimaria": "https://aliuscap.com/basic-information-for-clients/",
+      "localizador": "§§1–2",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Registro independiente delegado a root; oferta no aprobada por CNMV.",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "conflictos": [
+    "FDF y AnexoII dicen restricción hasta2027 y compromiso hasta2026: no corregir errata por cuenta propia.",
+    "FAQs actuales añaden ventanas de recompra2028/2030 y fondo2032 condicionados; no equivalen a derecho garantizado.",
+    "FDF mantiene sociedad en constitución y entrega pendienteERIR."
+  ],
+  "propuestas": [
+    "Añadir mínimo2000EUR con FDF fechado24/06 y consulta23/10.",
+    "Actualizar aviso8días/31/10desde fuente actual; mejor fecha límite sin contador permanente.",
+    "Mantener España desconocido y salida condicionada, sin prometer liquidez."
+  ],
+  "schemaVersion": 1,
+  "ciclo": "2026-10-23",
+  "consulta": {
+    "inicioUtc": "2026-10-23T18:57:56Z",
+    "finUtc": "2026-10-23T19:09:16Z",
+    "zonaPresentacion": "Europe/Madrid",
+    "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+  },
+  "requiereRevisionIndependiente": true,
+  "aplicado": false,
+  "publicado": false,
+  "decisionNuevaAlta": "no_es_alta_ficha_existente"
+}

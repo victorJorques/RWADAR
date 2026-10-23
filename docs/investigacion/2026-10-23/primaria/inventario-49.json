@@ -1,0 +1,690 @@
+[
+  {
+    "slug": "mf-one",
+    "titulo": "mF-ONE",
+    "proveedor": "Midas",
+    "coleccion": "principales",
+    "url": "https://midas.app/mfone",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "actual",
+    "fuentesAnteriores": [
+      "https://midas.app/mfone",
+      "https://midas.app/products",
+      "https://docs.midas.app/legal/eligibility-and-compliance"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "mglo",
+    "titulo": "mGLO",
+    "proveedor": "Midas",
+    "coleccion": "principales",
+    "url": "https://midas.app/mglo",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "actual",
+    "fuentesAnteriores": [
+      "https://midas.app/mglo",
+      "https://midas.app/products"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "mglobal",
+    "titulo": "mGLOBAL",
+    "proveedor": "Midas",
+    "coleccion": "principales",
+    "url": "https://midas.app/mglobal",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://midas.app/mglobal",
+      "https://midas.app/products",
+      "https://docs.midas.app/legal/eligibility-and-compliance"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "fotovoltaica-greenpoint",
+    "titulo": "Fotovoltaica GreenPoint",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "drautalresidenz-paternion",
+    "titulo": "Drautalresidenz · Paternion",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "terreno-con-arrendamiento-billa",
+    "titulo": "Terreno con arrendamiento BILLA",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "vivienda-stallhofstra-e-28-gratwein",
+    "titulo": "Vivienda · Stallhofstraße 28, Gratwein",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "fotovoltaica-cohotel",
+    "titulo": "Fotovoltaica Cohotel",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "apartamento-vacacional-hinterstoder-50",
+    "titulo": "Apartamento vacacional · Hinterstoder 50",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "vivienda-pluddemanngasse-101-graz",
+    "titulo": "Vivienda · Plüddemanngasse 101, Graz",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "local-de-estanco-klagenfurt",
+    "titulo": "Local de estanco · Klagenfurt",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "vivienda-schwarzer-weg-18-graz",
+    "titulo": "Vivienda · Schwarzer Weg 18, Graz",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "vivienda-sonnleithnergasse-2-viena",
+    "titulo": "Vivienda · Sonnleithnergasse 2, Viena",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+    "titulo": "Vivienda · Pottendorfer Straße 62, Wr. Neustadt",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "mtbill",
+    "titulo": "mTBILL",
+    "proveedor": "Midas",
+    "coleccion": "principales",
+    "url": "https://midas.app/mtbill",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://midas.app/mtbill",
+      "https://midas.app/products",
+      "https://docs.midas.app/legal/eligibility-and-compliance"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "randhartingergasse-9-viena",
+    "titulo": "Randhartingergasse 9, Viena",
+    "proveedor": "Brickwise",
+    "coleccion": "principales",
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://www.brickwise.at/marketplace"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "spiko-letras-del-tesoro-euro",
+    "titulo": "Spiko Letras del Tesoro Euro",
+    "proveedor": "Spiko",
+    "coleccion": "principales",
+    "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "actual",
+    "fuentesAnteriores": [
+      "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+      "https://data.spiko.io/eutbl/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "prosegur-digital-gold",
+    "titulo": "Prosegur Digital Gold",
+    "proveedor": "Prosegur Crypto",
+    "coleccion": "principales",
+    "url": "https://www.prosegurcrypto.com/digital-gold",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "actual",
+    "fuentesAnteriores": [
+      "https://www.prosegurcrypto.com/digital-gold",
+      "https://prosegurdigitalgold.com/transparency"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "casa-de-outeiro",
+    "titulo": "Casa de Outeiro",
+    "proveedor": "Alius Capital",
+    "coleccion": "principales",
+    "url": "https://aliuscap.com/invest/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://aliuscap.com/invest/",
+      "https://casadeouteiro.com/emision-capital/",
+      "https://aliuscap.com/projects/casa-de-outeiro"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "aktionariat",
+    "titulo": "Aktionariat",
+    "proveedor": "Aktionariat · DAKS",
+    "coleccion": "principales",
+    "url": "https://shares.aktionariat.com",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "actual",
+    "fuentesAnteriores": [
+      "https://shares.aktionariat.com",
+      "https://shares.aktionariat.com/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "boss-info",
+    "titulo": "Boss Info",
+    "proveedor": "Aktionariat · BOSS",
+    "coleccion": "principales",
+    "url": "https://shares.bossinfo.com",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "actual",
+    "fuentesAnteriores": [
+      "https://shares.bossinfo.com",
+      "https://shares.bossinfo.com/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "wemakeit",
+    "titulo": "wemakeit",
+    "proveedor": "Aktionariat · WMKT",
+    "coleccion": "principales",
+    "url": "https://shares.wemakeit.com",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "fuentes_en_conflicto",
+    "fuentesAnteriores": [
+      "https://shares.wemakeit.com",
+      "https://shares.wemakeit.com/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "servicehunter-quitt",
+    "titulo": "ServiceHunter · quitt",
+    "proveedor": "Aktionariat · DQTS",
+    "coleccion": "principales",
+    "url": "https://shares.quitt.ch",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "actual",
+    "fuentesAnteriores": [
+      "https://shares.quitt.ch",
+      "https://shares.quitt.ch/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "switzerlend",
+    "titulo": "Switzerlend",
+    "proveedor": "Aktionariat · LENDS",
+    "coleccion": "principales",
+    "url": "https://shares.lend.ch",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "actual",
+    "fuentesAnteriores": [
+      "https://shares.lend.ch",
+      "https://shares.lend.ch/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-miami-1",
+    "titulo": "Miami 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787866211976-3b2d048e-a885-4915-a0bd-d228f55669f8-miami-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-houston-2",
+    "titulo": "Houston 2",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787860261558-32021c80-5bc7-437f-a3ab-46491aa68f1c-houston-2",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-houston-1",
+    "titulo": "Houston 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787860996401-df29d003-1e5d-4b61-b4e4-ecd4fe23c3a6-houston-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-san-antonio-1",
+    "titulo": "San Antonio 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787853287296-05055284-03bb-44ac-8ecb-c7969c05fcda-san-antonio-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-atlanta-1",
+    "titulo": "Atlanta 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787859836487-31a111a4-88e6-4942-a299-02d96d0c6a3c-atlanta-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-houston-3",
+    "titulo": "Houston 3",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787859843516-25fd8701-69a9-4e39-ab20-28b8414b7228-houston-3",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-proyecto-100",
+    "titulo": "Proyecto 100",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787856383323-4dd13b10-c2ac-434e-86d7-c4f8c87c10ee-proyecto-100",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-miami-3",
+    "titulo": "Miami 3",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787863904813-d4526acf-f44b-47ea-84be-13360b89fdf0-miami-3",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-granada-3",
+    "titulo": "Granada 3",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787858322699-6ae8ab8c-bd98-4cb8-934b-426d08565080-granada-3",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-carolina-del-norte-1",
+    "titulo": "Carolina del Norte 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787852371029-7af3abf7-654e-4603-8f13-7febae6d1ebc-carolina-del-norte-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-abu-dhabi-1",
+    "titulo": "Abu Dhabi 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787855475218-87f4dc55-7908-40fe-af98-5b0df656d676-abu-dhabi-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-rentas-3",
+    "titulo": "Rentas 3",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1788424803785-5ee312c8-8c80-40ec-84c9-eff7c31dfb73-rentas-3",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-miami-2",
+    "titulo": "Miami 2",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787864202186-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-miami-5",
+    "titulo": "Miami 5",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787852371041-91af96a4-088a-43b0-8f1b-870fb1990f70-miami-5",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-rentas-1",
+    "titulo": "Rentas 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787856322980-e1042bfc-0830-4e36-9a5a-bd37b59ddeca-rentas-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-dania-beach-1",
+    "titulo": "Dania Beach 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787857589693-447dad95-1362-49ac-b603-effd274a5eed-dania-beach-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-rentas-2",
+    "titulo": "Rentas 2",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787855172059-168248bf-3f35-4ba9-8021-f9a95c23583a-rentas-2",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-pirineos-1",
+    "titulo": "Pirineos 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1789120829529-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-levante-1",
+    "titulo": "Levante 1",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787857107976-e599d341-daf3-4b04-8dde-652fd27586ca-levante-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-opportunity-2",
+    "titulo": "Opportunity 2",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1788186156723-effc8261-b6e5-4bcb-bc9b-0cc8a3669786-opportunity-2",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-secundario-malaga-6",
+    "titulo": "Málaga 6",
+    "proveedor": "Reental",
+    "coleccion": "secundario",
+    "url": "https://p2p.rnt.finance/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties/1787863663698-79ac0eff-2c25-46d8-877f-61b289829810-malaga-6",
+      "https://p2p.rnt.finance/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "iod-occasio",
+    "titulo": "IOD Occasio",
+    "proveedor": "Alius Capital",
+    "coleccion": "en_camino",
+    "url": "https://aliuscap.com/projects/iodo1",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://aliuscap.com/projects/iodo1"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "reental-emision-primaria",
+    "titulo": "Emisión primaria de Reental",
+    "proveedor": "Reental",
+    "coleccion": "en_camino",
+    "url": "https://www.reental.co/properties",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://www.reental.co/properties"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "hausera-proximas-ofertas",
+    "titulo": "Hausera · próximas ofertas",
+    "proveedor": "Hausera",
+    "coleccion": "en_camino",
+    "url": "https://hausera.io/",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://hausera.io/"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  },
+  {
+    "slug": "mgloeuro",
+    "titulo": "mGLOeuro",
+    "proveedor": "Midas",
+    "coleccion": "en_camino",
+    "url": "https://midas.app/mgloeuro",
+    "fechaRevisionAnterior": "2026-10-22",
+    "estadoAnterior": "no_verificable",
+    "fuentesAnteriores": [
+      "https://midas.app/mgloeuro",
+      "https://midas.app/products",
+      "https://midas.app/llms.txt"
+    ],
+    "nota": "Inventario, no renovación: expediente por afirmación y revisión independiente requeridos."
+  }
+]

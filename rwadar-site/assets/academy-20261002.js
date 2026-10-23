@@ -1,8 +1,8 @@
 /* =====================================================================
    RWAdar Academy · test de cada lección y progreso del alumno
    ---------------------------------------------------------------------
-   Sin cuentas y sin servidor: el progreso (lecciones leídas y tests
-   hechos) vive solo en el localStorage de este navegador. Si el
+   Con una cuenta confirmada: el progreso (lecciones leídas y tests
+   hechos) vive en el localStorage de este navegador separado por cuenta. Si el
    navegador no deja guardar (modo privado, almacenamiento bloqueado),
    la lección se lee igual y el test funciona; solo se oculta el botón
    de «Marcar como leída» para no prometer algo que no se cumplirá.
@@ -10,9 +10,11 @@
    La página funciona sin este script: el índice se despliega y cada
    respuesta del test se puede abrir con «Ver respuesta».
    ===================================================================== */
-(() => {
+(async () => {
   'use strict';
-  const CLAVE = 'rwadar.academy.v1';
+  let cuenta;
+  try { cuenta=await window.RWADAR_ACCESO.verificar(); } catch (_) { return; }
+  const CLAVE = 'rwadar.academy.v1:' + cuenta.id;
   const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
   const vacio = () => ({ leidas: [], tests: {} });
 

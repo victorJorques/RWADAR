@@ -1,0 +1,32 @@
+{
+  "ciclo": "2026-10-23",
+  "nuevasAdmitidas": 0,
+  "decisionBinaria": true,
+  "sinColaPendiente": true,
+  "consulta": {
+    "fecha": "2026-10-23",
+    "intervaloUtc": [
+      "2026-10-23T19:12:54Z",
+      "2026-10-23T19:13:07Z"
+    ]
+  },
+  "candidatas": [
+    {
+      "slugInterno": "mwin",
+      "url": "https://midas.app/mwin",
+      "decision": "no_admitida_hoy",
+      "fuenteLeida": "Ficha primaria completa del producto",
+      "hechos": "Cartera de crédito Wellington, compartimento Aureum; YTW5,66% fechado22/10; gestión0,40%, rendimiento0% según ficha.",
+      "razon": "No se acreditaron en este ciclo todas las condiciones finales/KID/registros, acceso desde España, mínimoEUR y salida particular. No hay ilustración propia inspeccionada ni revisión independiente de alta. No confundir YTW con APY ni precio131278,52USD con mínimo."
+    },
+    {
+      "slugInterno": "mre",
+      "url": "https://midas.app/mre",
+      "decision": "no_admitida_hoy",
+      "fuenteLeida": "Ficha primaria, contenido parcial disponible",
+      "hechos": "Descripción de estrategia catastrophe bonds vinculada a MembersCap.",
+      "razon": "La ficha leída no aporta expediente contractual/regulatorio y condiciones esenciales suficientes. La afirmación promocional de capital protegido no está respaldada por documentación independiente leída. Sin alta ni imagen."
+    }
+  ],
+  "nota": "Solo expediente interno fechado de decisiones negativas. No genera estado público ni cola de candidatas para mañana; un nuevo ciclo investiga fuentes de nuevo."
+}

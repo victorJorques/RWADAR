@@ -1,0 +1,300 @@
+{
+  "source": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,investments,images,campaign_progress,declared_interest_users_count",
+  "id": 71,
+  "title": "Casa de Outeiro",
+  "campaignStatus": "CAMPAIGN",
+  "campaign": {
+    "id": 61,
+    "tenant_id": 3,
+    "issuance_id": 71,
+    "negotiation_phase": "PRIMARY",
+    "target_amount": "3220000.00",
+    "coinvestment_offline": null,
+    "start_date": "2026-07-01",
+    "end_date": "2026-10-31",
+    "duration": 129,
+    "extend_days": null,
+    "active": 1,
+    "created_time": "2025-09-25 14:41:02",
+    "updated_time": "2026-07-01 15:58:38",
+    "deleted_time": null
+  },
+  "campaignProgress": {
+    "booked": 1693350,
+    "invested": 1121000,
+    "supply": 128800,
+    "invested_tokens": 44840
+  },
+  "documents": [
+    {
+      "id": 264,
+      "title": "Anexo I y Anexo II Casa de Outeiro.pdf",
+      "description": "Anexo I y Anexo II",
+      "updated": "2026-10-13 16:10:38"
+    },
+    {
+      "id": 263,
+      "title": "26_06_24_Ficha Datos Fundamentales Inversión-capital Casa de Outeiro_v4_signed.pdf",
+      "description": "Ficha de datos fundamentales de la emisión Casa de Outeiro",
+      "updated": "2026-10-13 16:10:40"
+    },
+    {
+      "id": 262,
+      "title": "SOLICITUD-AL-REGISTRO-MERCANTIL-DE-LUGO-DE-NOMBRAMIENTO-DE-EXPERTO-INDEPENDIENTE-2_signed.pdf",
+      "description": "Solicitud nombramiento experto",
+      "updated": "2026-10-13 16:10:42"
+    },
+    {
+      "id": 260,
+      "title": "Proyecciones Casa de Outeiro (3).pdf",
+      "description": "Proyecciones Casa de Outeiro",
+      "updated": "2026-10-13 16:10:44"
+    },
+    {
+      "id": 259,
+      "title": "Informe-valoracion-Terrazas-de-Outeiro-SL-–-Vinedos-instalaciones-y-edificaciones-–-12-05-2026.pdf",
+      "description": "Valoración Terrazas de Outeiro SL",
+      "updated": "2026-07-15 13:08:44"
+    },
+    {
+      "id": 258,
+      "title": "Informe-valoracion-Vinedos-de-Outeiro-SL-12-05-2026.pdf",
+      "description": "Valoración Viñedos de Outeiro SL",
+      "updated": "2026-07-15 13:08:44"
+    },
+    {
+      "id": 257,
+      "title": "Certificacion-negativa-denominacion-social-–-Casa-de-Outeiro-Bodega-y-Vinedos-SA-–-RMC-–-02-01-2026.pdf",
+      "description": "Reserva de denominación SA",
+      "updated": "2026-07-15 13:08:45"
+    },
+    {
+      "id": 256,
+      "title": "CARTA-FUNDACIONAL-DE-CASA-DE-OUTEIRO.pdf",
+      "description": "Carta Fundacional Casa de Outeiro",
+      "updated": "2026-07-15 13:08:45"
+    },
+    {
+      "id": 255,
+      "title": "CONTRATO-DE-MEMBRESIA-DE-CASA-DE-OUTEIRO.pdf",
+      "description": "Contrato de Membresía Casa de Outeiro",
+      "updated": "2026-07-15 13:08:47"
+    },
+    {
+      "id": 254,
+      "title": "CONSTITUCION SA ESTATUTOS.pdf",
+      "description": "Borrador de Estatutos SA",
+      "updated": "2026-07-15 13:08:48"
+    },
+    {
+      "id": 253,
+      "title": "9 AUMENTO CAPITAL CASA OUTEIRO.pdf",
+      "description": "Borrador de Ampliación de Capital SA",
+      "updated": "2026-07-15 13:08:48"
+    },
+    {
+      "id": 252,
+      "title": "CONSTITUCION SA ESTATUTOS.pdf",
+      "description": "Borrador de Constitución SA",
+      "updated": "2026-07-15 13:08:49"
+    }
+  ],
+  "extraFields": [
+    {
+      "id": 974,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "richtext",
+      "name": "process",
+      "label": "Proceso",
+      "extra": null,
+      "suffix": null,
+      "value": "<p class=\"ql-align-justify\"><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">INFORMACIÓN SOBRE EL PROCESO DE INVERSIÓN</strong></p><p class=\"ql-align-justify\"><br></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Plazo para alcanzar el objetivo de la financiación:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;hasta completar suscripción, con fecha límite el 31/10/2026.</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Consecuencias si no se alcanza el importa mínimo de la financiación dentro del plazo el objetivo de captación de fondos:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;se cancelará la financiación participativa y se reembolsarán las aportaciones a los inversores. Los inversores no incurrirán en ningún gasto.</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Recursos comprometidos por el promotor:&nbsp;</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">con anterioridad al proceso de financiación participativa, los accionistas de Casa de Outeiro ha realizado aportaciones no dinerarias por importe de 1.704.030,00 €. Asimismo, se reserva el derecho de acudir a la financiación participativa en el transcurso de la misma, en cuyo caso, se publicará el porcentaje de su participación sobre la financiación total obtenida.</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Asignación de tokens en caso de sobredemanda:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;los valores se asignarán por orden de suscripción hasta consumir la oferta disponible.</span></li></ol><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\"><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">FASES DEL PROCESO DE INVERSIÓN</strong></p><p class=\"ql-align-justify\"><br></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178); background-color: rgb(255, 255, 255);\">FASE 1. Pre-campaña:</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">&nbsp;los inversores pudieron expresar su interés en el proyecto para disponer de acceso prioritario cuando se abriera la oferta de inversión. Esta fase finalizó el </span><strong style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">24/06/2026</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">.</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178); background-color: rgb(255, 255, 255);\">FASE 2. Campaña privada:</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">&nbsp;entre el </span><strong style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">24/06/2026 y el 30/06/2026</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">, los inversores que habían expresado previamente su interés pudieron suscribir la oferta, formalizar los correspondientes acuerdos y realizar sus desembolsos. Los fondos permanecieron retenidos hasta la formalización de la operación.</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178); background-color: rgb(255, 255, 255);\">FASE 3. Campaña abierta al público en general:</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">&nbsp;desde el </span><strong style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">01/07/2026 hasta el 31/10/2026</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">, cualquier inversor puede suscribir la oferta, formalizar los correspondientes acuerdos y realizar su desembolso. Los fondos permanecerán retenidos hasta que la operación quede formalizada, momento en el que serán transferidos al Promotor.</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178); background-color: rgb(255, 255, 255);\">FASE 4. Formalización:</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">&nbsp;una vez cerrada la campaña, se procederá a la formalización notarial y a la inscripción de la ampliación de capital en el Registro Mercantil. Posteriormente, se presentará ante la CNMV la documentación correspondiente a la entidad responsable de la administración de la inscripción y registro de los valores (ERIR). Este proceso está previsto en un </span><strong style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">plazo máximo de 7 días tras el cierre de la campaña.</strong></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178); background-color: rgb(255, 255, 255);\">FASE 5. Entrega de los tokens a los inversores:&nbsp;</strong><span style=\"color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);\">una vez completados los trámites correspondientes ante la CNMV, los tokens se entregarán a los inversores en sus respectivas carteras digitales o&nbsp;</span><em style=\"color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);\">wallets</em><span style=\"color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);\">. La entrega está prevista aproximadamente en el </span><strong style=\"color: rgb(34, 34, 34); background-color: rgb(255, 255, 255);\">plazo de un mes desde la presentación de la documentación ante la CNMV.</strong></li></ol><p><br></p>",
+      "active": 1,
+      "created_time": "2026-07-31 18:13:21",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 936,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "richtext",
+      "name": "proposal",
+      "label": "Propuesta",
+      "extra": null,
+      "suffix": null,
+      "value": "<p><strong style=\"color: rgb(0, 71, 178);\">INFORMACIÓN SOBRE EL PROMOTOR</strong></p><p><br></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Promotor:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">&nbsp;</span><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">Casa de Outeiro Bodega y Viñedos, S.A (España), sociedad en proceso de constitución (\"la Sociedad\" o \"el Promotor\")</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Forma Jurídica:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;Sociedad Anónima (S.A.)</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Titularidad:&nbsp;</strong>Tourgalia Gestión, S.L. ostenta el 43,49% del capital de la Sociedad; Investimentos de Capitais Reunidos, S.L., el 36,91%; SolQuiroga, S.L., el 14,08%; Sonia Noemí Álvarez Blanco, el 5,34%; y Juan Luis Vázquez Rodríguez, el 0,18%.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Administradores solidarios y directores:</strong><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">Juan Luis Vázquez Rodríguez y Sonia Noemí Álvarez Blanco</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Datos de contacto:&nbsp;</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">Juan Luis Vázquez Rodríguez - jlvazquez@casadeouteiro.com</span></li></ol><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">INFORMACIÓN SOBRE EL PROYECTO</strong></p><p><br></p><p><strong>Casa de Outeiro Bodega y Viñedos, S.A</strong>. nace como la sociedad matriz destinada a integrar bajo una misma estructura los activos y el negocio del proyecto. Esta integración se realizará mediante la aportación de las participaciones de <strong>Terrazas de Outeiro, S.L. y Viñedos de Outeiro, S.L.</strong>, sociedades que conforman el negocio actual de la bodega.</p><p><br></p><p>El proyecto incorpora activos tangibles e intangibles ya existentes: una finca de más de 30 hectáreas en la Ribeira Sacra, viñedos en producción, las ruinas de la histórica Casa de Outeiro, existencias de vino, maquinaria, cartera de clientes, marca, conocimiento técnico y una actividad vitivinícola consolidada.</p><p><br></p><p>Sobre esta base patrimonial se desarrollará un destino vinculado al vino, la hospitalidad, la gastronomía, el bienestar, la longevidad, las experiencias y el territorio.</p><p><br></p><p>El plan contempla la recuperación de La Casa y la construcción de un hotel boutique de 8 habitaciones, con una propuesta arquitectónica firmada por A-cero; una nueva bodega; cuevas y espacios privados vinculados a La Comunidad; un Asador; un salón de eventos; un centro de bienestar y longevidad y un programa propio concebido específicamente para este territorio; jardines y piscina; espacios al aire libre; miradores; experiencias enoturísticas; barco privado; helipuerto y otros servicios asociados al proyecto.</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\"><strong style=\"color: rgb(0, 71, 178);\">INFORMACIÓN SOBRE LA OFERTA DE INVERSIÓN</strong></p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\"><strong><em>Una inversión patrimonial, empresarial y territorial con liquidez programada</em></strong></p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">Casa de Outeiro está construyendo una plataforma de activos singulares con capacidad de crear valor patrimonial, operativo y estratégico durante décadas.</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">La inversión permite participar en una compañía propietaria de un viñedo de aproximadamente 30 hectáreas, una bodega, una marca vinícola en crecimiento y un futuro complejo enoturístico y hotelero diseñado para convertirse en uno de los proyectos de referencia de la Ribeira Sacra y del Geoparque Mundial UNESCO Montañas do Courel.</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">Se trata de una inversión en propiedad real: acciones de la empresa, con escritura notarial e inscripción en el Registro Mercantil, emitidas a través de una plataforma regulada por la Comisión Nacional del Mercado de Valores (CNMV).</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">Para abordar el proyecto, se plantea una <strong>ampliación de capital </strong>mediante la emisión de<strong> acciones tokenizadas </strong>de Casa de Outeiro Bodega y Viñedos S.A., cuyas características principales se resumen a continuación:</p><p class=\"ql-align-justify\"><br></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178); background-color: rgb(255, 255, 255);\">Identificador de la oferta:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">9598007MF0DK0DLQJ78000001613</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Nombre del token:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;Casa de Outeiro (CdO)</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178); background-color: rgb(255, 255, 255);\">Instrumento financiero:</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">&nbsp;Acciones representadas mediante tecnologías de registro distribuido </span><strong style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">(1 acción = 1 token)</strong></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Objetivo de financiación:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;3.220.000€ (128.800 tokens)</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Importe mínimo de financiación requerido:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;2.000.000€ (80.000 tokens)</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Valoración pre-money:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;4.260.075€</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178); background-color: rgb(255, 255, 255);\">% de la sociedad a la venta:</strong><span style=\"color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);\">&nbsp;43%</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Precio de suscripción:&nbsp;</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">25€ / token</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Aportación mínima:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;2.000€ (80 tokens)</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Custodia y entrega a los inversores de los tokens:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;actuará como ERIR a los efectos previstos en la LMVSI de 17 de marzo de 2023 la sociedad TOKEN CITY EUROPEAN EXCHANGE A.V. Los tokens representativos de los valores negociables emitidos serán entregados a las billeteras de los inversores, las cuales serán habilitadas por Alius Capital, tras la inscripción en CNMV de la ERIR de la emisión.</span></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"background-color: rgb(255, 255, 255); color: rgb(0, 71, 178);\">Transmisibilidad:</strong><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">&nbsp;tokens libremente transmisibles de manera progresiva conforme a la información publicada en el Dossier Plan de Negocios en la pestaña \"Documentos\".</span></li></ol><p class=\"ql-align-justify\"><br></p><p><strong style=\"color: rgb(0, 71, 178);\">¿QUÉ OBTIENEN LOS INVERSORES?</strong></p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\"><strong>Casa de Outeiro combina la seguridad de una inversión respaldada por activos tangibles con el potencial de crecimiento de un proyecto diferencial en uno de los destinos vitivinícolas con mayor proyección de España, ofreciendo a los inversores la oportunidad de participar desde las primeras fases de creación de valor.</strong></p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">La inversión en Casa de Outeiro reúne cuatro componentes estratégicos:</p><p class=\"ql-align-justify\"><br></p><p><span style=\"color: rgba(0, 0, 0, 0.9); background-color: rgb(255, 255, 255);\">🏡 </span><strong style=\"color: rgb(0, 71, 178);\">Valor patrimonial</strong></p><p><br></p><p>Co-propiedad de terrenos, viñedo, inmuebles, instalaciones, equipamientos y negocio enoturístico.</p><p><br></p><p><strong style=\"color: rgb(0, 102, 204);\">💶 </strong><strong style=\"color: rgb(0, 71, 178);\">Valor empresarial</strong></p><p><br></p><p>Participación en los beneficios generados por el vino, el hotel, la gastronomía, el enoturismo, los eventos y las experiencias.</p><p><br></p><p><strong style=\"color: rgb(0, 102, 204);\">🍷 </strong><strong style=\"color: rgb(0, 71, 178);\">Valor de pertenencia y acceso a servicios exclusivos</strong></p><p><br></p><p>Acceso a una comunidad limitada, experiencias privadas, producto exclusivo y una vinculación real con uno de los proyectos territoriales más singulares de Galicia.</p><p><br></p><p><strong style=\"color: rgb(0, 102, 204);\">💎 </strong><strong style=\"color: rgb(0, 71, 178);\">Valor de plataforma</strong></p><p><br></p><p>Posibilidad de que Casa de Outeiro evolucione hacia una plataforma de activos singulares vinculados al territorio, el lujo, la arquitectura y la economía de la experiencia.</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">Al participar en la ampliación de capital tokenizada, los inversores acceden a una oportunidad respaldada por activos reales y con potencial de revalorización:</p><p class=\"ql-align-justify\"><br></p><ol><li data-list=\"bullet\" class=\"ql-align-justify\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178);\">Participación accionarial:</strong><span style=\"color: rgb(0, 71, 178);\"> </span>acceso al <strong>43% del capital de la sociedad matriz</strong>, propietaria de todos los activos del proyecto (finca, viñedos, bodega, hotel y resto de infraestructuras).</li><li data-list=\"bullet\" class=\"ql-align-justify\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178);\">Revalorización del activo y del negocio:</strong><strong style=\"color: rgb(0, 102, 204);\"> </strong>inversión en un activo patrimonial singular e irrepetible, cuyo valor se verá impulsado por el desarrollo de un <strong>Hotel Experiencial de 8 habitaciones </strong>y el crecimiento del negocio enoturístico. Modelo de negocio escalable, que será replicado en otros territorios y países, creando una cadena de establecimientos y comunidades a nivel nacional e internacional.&nbsp;</li><li data-list=\"bullet\" class=\"ql-align-justify\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178);\">Cobro de dividendos:</strong><span style=\"color: rgb(0, 71, 178);\"> </span><strong>dividendos anuales crecientes</strong>, desde el 6,7% en 2030 hasta el 16,9% en 2041 (con primeros repartos desde 2028).</li><li data-list=\"bullet\" class=\"ql-align-justify\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178);\">Acceso exclusivo a productos y servicios:</strong><span style=\"color: rgb(0, 71, 178);\"> </span>planes de membresía reservados <strong>solo para los accionistas</strong>: cada año recibes vino elaborado en exclusiva para los socios, noches incluidas en el hotel con prioridad de reserva, botellas envejeciendo a tu nombre en las cuevas de la bodega y espacios privados para tus propios encuentros y celebraciones. En el nivel de membresía Circular, por ejemplo, estos beneficios están valorados en 3.280€ anuales, frente a una cuota de socio de 400€.</li><li data-list=\"bullet\" class=\"ql-align-justify\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178);\">Liquidez progresiva: </strong>los tokens representan <strong>acciones transmisibles</strong>, con un calendario de liberación gradual desde el primer año, ofreciendo una vía potencial de desinversión y fomentando la revalorización por escasez.</li><li data-list=\"bullet\" class=\"ql-align-justify\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178);\">Plan de recompra:</strong><strong style=\"color: rgb(0, 102, 204);\">&nbsp;</strong>se prevé, asimismo, destinar parte de la tesorería del negocio a <strong>recompra a los inversores</strong>.</li><li data-list=\"bullet\" class=\"ql-align-justify\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong style=\"color: rgb(0, 71, 178);\">Sinergias en La Comunidad:</strong><span style=\"color: rgb(0, 71, 178);\"> </span>acceso a un ecosistema sinérgico de inversores y negocios.&nbsp;</li></ol><p><br></p><p>Casa de Outeiro no propone únicamente financiar la construcción de una bodega o de un hotel. Propone participar desde el inicio en la creación de un activo irrepetible, con vocación de permanencia, generación de rentas y creación de valor durante generaciones. </p><p><br></p><p>A modo de síntesis, la siguiente tabla reúne las principales magnitudes de rentabilidad estimada para el inversor: por revalorización de las acciones, por dividendos y por los beneficios de la comunidad de socios.  A modo de síntesis, la siguiente tabla reúne las principales magnitudes de rentabilidad estimada para el inversor: por revalorización de las acciones, por dividendos y por los beneficios de la comunidad de socios.</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\"><img src=\"http://saas-api.token-city.com/v2/storage/web/upload/3/pfp/project/71/17840269823gFaCkiVexBBEzg5Zr68rte_6a56176610d860.56547781.png\"></p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">Ver el detalle financiero de la oferta a inversores en el documento <strong style=\"color: rgb(0, 71, 178);\">\"TESIS DE INVERSIÓN\" en el pestaña de Documentos</strong>.</p>",
+      "active": 1,
+      "created_time": "2026-07-06 17:18:14",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 935,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "richtext",
+      "name": "faqs",
+      "label": "FAQs",
+      "extra": null,
+      "suffix": null,
+      "value": "<p><strong style=\"color: rgb(0, 71, 178);\">¿QUÉ REPRESENTA EL TOKEN EXACTAMENTE, A NIVEL LEGAL?</strong></p><p><br></p><p><strong>1 TOKEN = 1 ACCIÓN de Casa de Outeiro Bodega y Viñedos, S.A.</strong></p><p><br></p><p>Los inversores participan en una ampliación de capital, adquiriendo acciones tokenizadas de Casa de Outeiro Bodega y Viñedos, S.A, propietaria del 100% de los activos, del negocio actual y del crecimiento futuro, con una valoración pre-money de la empresa de 4,26 millones de euros y una valoración post-money de 7,66 millones de euros.</p><p><br></p><p>Los inversores de la emisión tokenizada aportan aproximadamente 3,22 millones de euros y acceden, en conjunto, a alrededor del 43% del capital económico de la sociedad.</p><p><br></p><p>El capital captado se destina a completar el desarrollo arquitectónico, hotelero, enoturístico y productivo de Casa de Outeiro.</p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">¿LAS ACCIONES TOKENIZADAS SE VAN A REVALORIZAR?</strong></p><p><br></p><p>El plan de negocio contempla la puesta en marcha integral del complejo en 2030 y proyecta las siguientes magnitudes financieras de referencia respecto a la revalorización:</p><p><br></p><p><img src=\"http://saas-api.token-city.com/v2/storage/web/upload/3/pfp/project/71/1784029343qbBML88NI8y38WDbu4U3rte_6a56209fa6c884.26624972.png\"></p><p><br></p><p>El salto entre la valoración de entrada y las valoraciones estimadas de 2030 y 2034 responde a los siguientes factores:</p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">Restauración y puesta en valor del activo</strong></p><p><br></p><p>La valoración de entrada (7,66 M€ post-money) corresponde, sustancialmente, al valor patrimonial de la finca, el viñedo, el proyecto arquitectónico y el plan de desarrollo empresarial antes de completarse la reforma. Al finalizar la obra desaparece gran parte de la incertidumbre de ejecución y el activo queda terminado y en condiciones de generar ingresos. Por lo tanto, el valor en 2030 recoge la revalorización de las acciones por el desarrollo del proyecto arquitectónico y del negocio enoturístico, sin generación de caja, pero con un activo ya terminado y en condiciones de explotación. </p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">Explotación del negocio</strong></p><p><br></p><p>Una vez se inicia la explotación del negocio enoturístico, la valoración estimada sobre la empresa en marcha — tanto por descuento de flujos de caja como por múltiplos de EBITDA—, incorpora las ganancias crecientes de la actividad empresarial. </p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">Posicionamiento exclusivo</strong></p><p><br></p><p>El proyecto se sitúa en un segmento en expansión — enoturismo y agroturismo premium— en la Ribeira Sacra, con escasa competencia directa en su categoría y con el atractivo adicional del Geoparque Mundial UNESCO Montañas do Courel.</p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">¿PUEDO VENDER MIS ACCIONES TOKENIZADAS?</strong></p><p><br></p><p>Casa de Outeiro incorpora una estrategia de liquidez progresiva basada en cinco mecanismos complementarios:</p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">Ventana extraordinaria de liquidez en 2028</strong></p><p><br></p><p>La sociedad prevé optimizar su estructura de pasivo una vez ejecutada la obra, lo que le permitirá el acceso a financiación ajena, en su caso con garantías reales, en condiciones financieras muy favorables. Una parte limitada de dicha financiación podrá destinarse a una ofertade recompra de acciones, con un fondo objetivo inicial de hasta 800.000 euros.</p><p><br></p><p>La Directiva podrá estudiar una oferta de adquisición a un precio determinado conforme a una valoración independiente y a la estructura financiera de la sociedad, evitando fijar una expectativa concreta. Dicha recompra estará condicionada a la obtención de la financiación, a la tasación del activo, a la situación de tesorería y a los límites legales aplicables. En línea con las prácticas habituales en este tipo de operaciones, la oferta de recompra podrá incorporar un descuento sobre la valoración de referencia, que compensa el sacrificio de liquidez que asume la sociedad. La oferta se realizará de forma transparente y, en caso de exceso de solicitudes, mediante un sistema de prorrateo.</p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">Nueva ventana de liquidez en 2030</strong></p><p><br></p><p>Una vez finalizado y abierto el complejo, la sociedad prevé habilitar una segunda ventanade recompra. El precio se determinará a partir de una valoración independiente de Casa de Outeiro, aplicando, en su caso, un descuento razonable sobre el valor de referencia, siguiendo la misma lógica señalada en el apartado anterior.</p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">Fondo anual de recompra</strong></p><p><br></p><p>Desde 2032, el Consejo de Administración propondrá anualmente la dotación de un fondo de liquidez vinculado al flujo de caja libre generado por la compañía. El objetivo será permitir salidas parciales y ordenadas sin comprometer la estabilidad financiera del proyecto.</p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">Transmisión entre inversores</strong></p><p><br></p><p>La transmisión de acciones entre los propios inversores de Casa de Outeiro estará libre desde el primer día. Para la venta a terceros, no accionistas, el porcentaje de capital social susceptible de transmitirse libremente se irá liberalizando progresivamente, respetando las estipulaciones del pacto de socios. La compañía facilitará la conexión entre compradores y vendedores, si bien no podrá garantizar la existencia de contrapartida. </p><p>&nbsp;</p><p><strong style=\"color: rgb(0, 71, 178);\">Operaciones corporativas</strong></p><p><br></p><p>La creación de una plataforma de activos singulares abre, a medio y largo plazo, otras alternativas de liquidez como la entrada de un inversor institucional, la incorporación de un socio hotelero o patrimonial, la venta parcial de alguna unidad de negocio, la refinanciación de los activos, la integración en un vehículo de inversión de mayor dimensión o la venta total o parcial de la compañía.</p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">¿LA EMPRESA TIENE PREVISTO PAGAR DIVIDENDOS?</strong></p><p><br></p><p>Casa de Outeiro pretende combinar revalorización y generación de rentas. La política de dividendos será progresiva y estará subordinada a la terminación del proyecto y al mantenimiento de una tesorería adecuada. Como referencia se establecen las siguientes fases:</p><p><br></p><p><strong>Fase Inicial:</strong> Hasta un 30% del beneficio neto durante los primeros años de explotación.</p><p><strong>Fase de Consolidación: </strong>Entre un 35% y un 40% durante dicha etapa.</p><p><strong>Fase de Madurez: </strong>Hasta un 50% en la fase de madurez total del negocio.</p><p><br></p><p>A modo ilustrativo, sobre la base del plan de negocio vigente, la rentabilidad por dividendo sobre el precio de emisión podría evolucionar desde aproximadamente un 6,7% en 2030 hasta cerca de un 16,9% en 2041, con los primeros repartos ya previstos desde 2028 gracias a la actividad previa a la apertura del complejo hotelero. Estas cifras son estimaciones basadas en el plan de negocio y no constituyen una rentabilidad garantizada.</p><p><br></p><p>El objetivo es alcanzar una rentabilidad recurrente por dividendos, además de la revalorización de las acciones.</p><p><br></p><p><img src=\"http://saas-api.token-city.com/v2/storage/web/upload/3/pfp/project/71/1784029344oSInKhWBcBGDofTCRVuYrte_6a5620a00b1da4.22135227.png\"></p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\">¿QUÉ BENEFICIOS ME APORTA FORMAR PARTE DE LA COMUNIDAD?</strong></p><p><br></p><p class=\"ql-align-justify\"><span style=\"color: rgb(42, 42, 42);\">Casa de Outeiro no es solo una inversión financiera: es también el acceso a una comunidad limitada de propietarios, con beneficios y experiencias reservados en exclusiva para los accionistas. Cada año, los socios reciben vino elaborado en exclusiva para la comunidad, noches de hotel incluidas con prioridad de reserva, botellas envejeciendo a su nombre en las cuevas de la bodega y acceso a espacios privados para encuentros y celebraciones de los socios.</span></p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\"><span style=\"color: rgb(42, 42, 42);\">Estos beneficios se organizan en distintos niveles de membresía, opcionales, cuyo valor anual estimado supera ampliamente el coste de la cuota correspondiente:</span></p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\"><img src=\"http://saas-api.token-city.com/v2/storage/web/upload/3/pfp/project/71/1784029344pczPsrb2JrRaktPmVVFxrte_6a5620a0464036.23503277.png\"></p><p><br></p><p><br></p>",
+      "active": 1,
+      "created_time": "2026-07-06 17:18:14",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 934,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "richtext",
+      "name": "updates",
+      "label": "Actualizaciones",
+      "extra": null,
+      "suffix": null,
+      "value": "<p><strong style=\"color: rgb(0, 71, 178);\"><u>21/07/2026</u></strong>: WEBINAR Q&amp;A, para resolver dudas de los inversores. Ver vídeo del encuentro en: <a href=\"https://www.youtube.com/watch?v=tHkqFTb5S50\" rel=\"noopener noreferrer\" target=\"_blank\">https://www.youtube.com/watch?v=tHkqFTb5S50</a></p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\"><u>14/07/2026</u></strong>: Artículo en ABC, \"<a href=\"https://www.abc.es/economia/casa-outeiro-innovacion-inversion-privada-revitalizar-medio-20260713170528-nt.html\" rel=\"noopener noreferrer\" target=\"_blank\">Casa de Outeiro: innovación e inversión privada para revitalizar el medio rural, crear empleo y recuperar patrimonio</a>\".</p><p><br></p><p><strong style=\"color: rgb(0, 71, 178);\"><u>01/07/2026</u></strong>: Lanzamiento de la Oferta Pública</p><p><br></p><p><br></p>",
+      "active": 1,
+      "created_time": "2026-07-06 17:18:14",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 897,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "text",
+      "name": "capital_for_sale",
+      "label": "% capital a la venta",
+      "extra": null,
+      "suffix": null,
+      "value": "43%",
+      "active": 1,
+      "created_time": "2026-06-24 07:49:30",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 896,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "text",
+      "name": "pre_investment_valuation",
+      "label": "Valoración Pre-Money",
+      "extra": null,
+      "suffix": null,
+      "value": "4,26M€",
+      "active": 1,
+      "created_time": "2026-06-24 07:49:30",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 299,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "text",
+      "name": "minimum_investment",
+      "label": "Inversión mínima",
+      "extra": null,
+      "suffix": null,
+      "value": "2000 €",
+      "active": 1,
+      "created_time": "2025-11-21 18:13:27",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 298,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "text",
+      "name": "appraised_value",
+      "label": "Tasación",
+      "extra": null,
+      "suffix": null,
+      "value": null,
+      "active": 1,
+      "created_time": "2025-11-21 18:13:27",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 297,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "text",
+      "name": "collateral",
+      "label": "Garantía",
+      "extra": null,
+      "suffix": null,
+      "value": null,
+      "active": 1,
+      "created_time": "2025-11-21 18:13:27",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 296,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "text",
+      "name": "installments",
+      "label": "Cuotas",
+      "extra": null,
+      "suffix": null,
+      "value": null,
+      "active": 1,
+      "created_time": "2025-11-21 18:13:27",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 295,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "text",
+      "name": "loan_term",
+      "label": "Plazo de devolución",
+      "extra": null,
+      "suffix": null,
+      "value": null,
+      "active": 1,
+      "created_time": "2025-11-21 18:13:27",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 294,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "text",
+      "name": "annual_interest_rate",
+      "label": "Interés anual",
+      "extra": null,
+      "suffix": null,
+      "value": null,
+      "active": 1,
+      "created_time": "2025-11-21 18:13:27",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    },
+    {
+      "id": 271,
+      "tenant_id": 3,
+      "issuance_id": 71,
+      "type": "text",
+      "name": "location",
+      "label": "Localización",
+      "extra": null,
+      "suffix": null,
+      "value": "Ribeira Sacra, España",
+      "active": 1,
+      "created_time": "2025-09-19 14:36:21",
+      "updated_time": "2026-10-13 16:10:17",
+      "deleted_time": null
+    }
+  ],
+  "fechaConsulta": "2026-10-23"
+}

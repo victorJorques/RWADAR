@@ -26,6 +26,8 @@
 
 # El sitio publicable y las herramientas que lo construyen
 !/rwadar-site/
+!/rwadar-acceso/
+!/functions/
 !/rwadar-academy/
 !/rwadar-academy.js
 !/rwadar-noticias/

@@ -1,0 +1,239 @@
+{
+  "version": 1,
+  "fecha": "2026-10-23",
+  "consulta": {
+    "inicioUtc": "2026-10-23T18:57:56Z",
+    "finUtc": "2026-10-23T19:09:16Z",
+    "zonaPresentacion": "Europe/Madrid",
+    "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+  },
+  "fuenteInventario": "inventario-49.json",
+  "inventarioTotal": 49,
+  "expedientesDeEsteAgente": 14,
+  "completadoSinBloqueos": 0,
+  "expedientes": [
+    {
+      "slug": "iod-occasio",
+      "archivo": "expedientes/iod-occasio.json",
+      "profundidad": "documental_con_registro_delegado",
+      "conflictos": [
+        "Fecha apertura08/10documental frente13/10anuncio; no altera cierre real.",
+        "Precio/token100EUR no acredita mínimo de orden."
+      ],
+      "camposRespaldados": [
+        "estado",
+        "fechas",
+        "salida",
+        "costes",
+        "rentabilidad",
+        "seguro",
+        "supervision"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "archivo": "expedientes/casa-de-outeiro.json",
+      "profundidad": "documental_con_conflictos",
+      "conflictos": [
+        "FDF y AnexoII dicen restricción hasta2027 y compromiso hasta2026: no corregir errata por cuenta propia.",
+        "FAQs actuales añaden ventanas de recompra2028/2030 y fondo2032 condicionados; no equivalen a derecho garantizado.",
+        "FDF mantiene sociedad en constitución y entrega pendienteERIR."
+      ],
+      "camposRespaldados": [
+        "estado",
+        "minimoEUR",
+        "derecho",
+        "salida",
+        "costes",
+        "custodia",
+        "supervision"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "archivo": "expedientes/spiko-letras-del-tesoro-euro.json",
+      "profundidad": "documental_y_registros_con_bloqueo_de_frescura",
+      "conflictos": [
+        "PortaldatafechaNAV25/10futura respecto consulta23/10.",
+        "Portadamarketing31dfrentedata30d, Exacachésdifieren:2,41/2,35/2,39.",
+        "Coste efectivoKID vs barèmecontractual requieren presentación separada."
+      ],
+      "camposRespaldados": [
+        "minimoEUR",
+        "salida",
+        "salida_instantanea",
+        "costes",
+        "accesoEspana",
+        "supervision",
+        "riesgo"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "archivo": "expedientes/prosegur-digital-gold.json",
+      "profundidad": "documental_con_conflicto_comercial",
+      "conflictos": [
+        "Marketing liquidezsinrestricciones/<24h frentecontrato1–7días+suspensión.",
+        "Marketing mínimosmárgenes frentecontrato4%compra/6%venta.",
+        "1gramo no es mínimoEURfijo."
+      ],
+      "camposRespaldados": [
+        "derecho",
+        "salida",
+        "liquidez",
+        "costes",
+        "custodia",
+        "accesoEspana",
+        "supervision",
+        "rentabilidad"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "mf-one",
+      "archivo": "expedientes/mf-one.json",
+      "profundidad": "parcial_no_renovacion_integral",
+      "conflictos": [],
+      "camposRespaldados": [
+        "emisor",
+        "costes",
+        "salida"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "mglo",
+      "archivo": "expedientes/mglo.json",
+      "profundidad": "parcial_no_renovacion_integral",
+      "conflictos": [],
+      "camposRespaldados": [
+        "emisor",
+        "costes",
+        "salida",
+        "ventana"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "mglobal",
+      "archivo": "expedientes/mglobal.json",
+      "profundidad": "parcial_no_renovacion_integral",
+      "conflictos": [],
+      "camposRespaldados": [
+        "emisor",
+        "costes",
+        "salida",
+        "ventana"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "mtbill",
+      "archivo": "expedientes/mtbill.json",
+      "profundidad": "documental_con_conflictos_y_registro_faltante",
+      "conflictos": [
+        "Gate yholdbackdivergenFT/KIDmismafecha:25%/5%frente15%/50%.",
+        "KIDreembolsoestándarsincomisión,FTredemptionfeeshasta0,05%.",
+        "Folletogenérico noes autorización/calidadmTBILL;falta registroindependiente."
+      ],
+      "camposRespaldados": [
+        "emisor",
+        "costes",
+        "salida",
+        "accesoEspana_documentado",
+        "derecho",
+        "costes_documentados"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "mgloeuro",
+      "archivo": "expedientes/mgloeuro.json",
+      "profundidad": "parcial_no_renovacion_integral",
+      "conflictos": [],
+      "camposRespaldados": [
+        "emisor",
+        "costes",
+        "salida",
+        "ventana"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "aktionariat",
+      "archivo": "expedientes/aktionariat.json",
+      "profundidad": "parcial_registro_y_condiciones_comerciales_no_completos",
+      "conflictos": [],
+      "camposRespaldados": [
+        "derecho",
+        "precio_historico",
+        "salida"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "boss-info",
+      "archivo": "expedientes/boss-info.json",
+      "profundidad": "parcial_registro_y_condiciones_comerciales_no_completos",
+      "conflictos": [
+        "Nofueronlocalizadosacuerdosregistrales/detenencia enportal."
+      ],
+      "camposRespaldados": [
+        "derecho",
+        "precio_historico",
+        "salida"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "wemakeit",
+      "archivo": "expedientes/wemakeit.json",
+      "profundidad": "parcial_registro_y_condiciones_comerciales_no_completos",
+      "conflictos": [
+        "PrecioIssuerDefined8,38CHFfrentetrades0,80ZCHF20/10; no compararlossinexplicarbases."
+      ],
+      "camposRespaldados": [
+        "derecho",
+        "precio_historico",
+        "salida"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "servicehunter-quitt",
+      "archivo": "expedientes/servicehunter-quitt.json",
+      "profundidad": "parcial_registro_y_condiciones_comerciales_no_completos",
+      "conflictos": [
+        "Cardúltimatransacción2/10,tablaúltimo23/07: no afirmarprecioactual."
+      ],
+      "camposRespaldados": [
+        "derecho",
+        "precio_historico",
+        "salida"
+      ],
+      "requiereRevisionIndependiente": true
+    },
+    {
+      "slug": "switzerlend",
+      "archivo": "expedientes/switzerlend.json",
+      "profundidad": "parcial_registro_y_condiciones_comerciales_no_completos",
+      "conflictos": [],
+      "camposRespaldados": [
+        "derecho",
+        "precio_historico",
+        "salida"
+      ],
+      "requiereRevisionIndependiente": true
+    }
+  ],
+  "otrosBloques": {
+    "brickwise": 12,
+    "reental": 22,
+    "hausera": 1
+  },
+  "altasNuevasAdmitidas": 0,
+  "nota": "Matriz de afirmaciones, no certificado de49ofertas profundamente validadas. Algunos documentos/registrosfaltan y algunosdatosconflictúan."
+}

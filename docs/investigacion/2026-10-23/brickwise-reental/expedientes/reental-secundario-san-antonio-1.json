@@ -1,0 +1,93 @@
+{
+  "slug": "reental-secundario-san-antonio-1",
+  "title": "San Antonio 1",
+  "provider": "reental",
+  "existingCollection": "secundario",
+  "previousVerificationDate": "2026-10-22",
+  "investigacionCompleta": false,
+  "revisionIndependiente": false,
+  "aprobacionPublicacion": false,
+  "decision": "Conservar la referencia documental existente; no renovar toda su fecha ni sus cifras con esta captura",
+  "newCandidate": false,
+  "claims": [
+    {
+      "field": "estado_etiqueta_web",
+      "assertion": [
+        "Financiado"
+      ],
+      "source": "https://www.reental.co/properties/1787853287296-05055284-03bb-44ac-8ecb-c7969c05fcda-san-antonio-1",
+      "locator": "Etiqueta CMS sin clase w-condition-invisible",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La etiqueta del proyecto no acredita apertura de una emisión ni existencia de una orden P2P.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "precio_token_referencia",
+      "assertion": "100 $",
+      "source": "https://www.reental.co/properties/1787853287296-05055284-03bb-44ac-8ecb-c7969c05fcda-san-antonio-1",
+      "locator": "Precio del Token; símbolos ocultos del CMS excluidos",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "Precio nominal o de referencia del proyecto. No es precio ejecutable ni mínimo de compra del mercado secundario.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "minimo_euros",
+      "assertion": "No acreditado para una compra actual de esta referencia",
+      "source": "https://www.reental.co/properties/1787853287296-05055284-03bb-44ac-8ecb-c7969c05fcda-san-antonio-1",
+      "locator": "Precio del token; contrato específico pendiente",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La FAQ general habla de 100 euros/dólares. No convertir USD en EUR.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "espana",
+      "assertion": "No confirmado por contrato específico ni por admisión de un comprador",
+      "source": "https://www.reental.co/faqs",
+      "locator": "Quién puede invertir; registro/KYC; documento específico",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La regla general de KYC/AML no es un pasaporte para todos los tokens.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "salida",
+      "assertion": "La FAQ contempla venta directa a un tercero admitido por la plataforma",
+      "source": "https://www.reental.co/faqs",
+      "locator": "¿Puedo vender mi token?",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "No garantiza comprador, plazo, liquidez ni precio. Deben leerse las restricciones del acuerdo específico.",
+      "status": "evidencia_observada_sin_aprobacion"
+    }
+  ],
+  "unresolved": [
+    "Leer los acuerdos, whitepaper y anexos de esta referencia y acreditar emisor/vehículo/registro y alcance.",
+    "No renovadas rentabilidades: la página muestra proyecciones sin fecha suficiente del cálculo actual.",
+    "Faltan costes, plazo de salida, restricciones de cesión y acceso español específicos; no completar con otra emisión."
+  ],
+  "primaryPage": {
+    "url": "https://www.reental.co/properties/1787853287296-05055284-03bb-44ac-8ecb-c7969c05fcda-san-antonio-1",
+    "file": "reental-secundario-san-antonio-1.html",
+    "reviewedInDepth": false,
+    "consultedAt": "2026-10-23T19:07:54.061661+00:00",
+    "http": 200,
+    "finalUrl": "https://www.reental.co/properties/1787853287296-05055284-03bb-44ac-8ecb-c7969c05fcda-san-antonio-1",
+    "dateHeader": "Fri, 23 Oct 2026 19:07:54 GMT",
+    "lastModified": "Fri, 23 Oct 2026 02:23:34 GMT",
+    "bytes": 118750,
+    "sha256": "0aa3938cbf4a5efed4068abe98541905df9cbe7e1509b6224edf5c1f4357e927"
+  },
+  "pdfLinksDiscovered": [
+    "https://d23t4e7dm0xzj0.cloudfront.net/SAT-1/docs-es/1778832022127_sat_1_dossier_comercial.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/SAT-1/docs-es/1779877939503_certificado_emision_de_tokens_spv_12.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/SAT-1/docs-es/1778146291214_sat_1_llc_acuerdo_de_suscripcion.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/SAT-1/docs-es/1779104887696_whitepaper_san_antonio_1_esp.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/SAT-1/docs-en/1778832025278_sat_1_dossier_comercial.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/SAT-1/docs-en/1779877942274_certificado_emision_de_tokens_spv_12.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/SAT-1/docs-en/1778146294565_sat_1_llc_subscription_agreement.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/SAT-1/docs-en/1779104891119_whitepaper_san_antonio_eng.pdf"
+  ]
+}

@@ -306,6 +306,12 @@ a.ac-tarjeta:hover{border-color:var(--senal);color:var(--tx);transform:translate
  border:1px solid var(--senal-30);color:var(--senal);font-family:var(--mono);font-weight:700}
 .ac-extra h2{font-size:1.2rem;font-weight:750;letter-spacing:-.02em;margin-bottom:6px}
 .ac-extra p{color:var(--tx-2);font-size:.95rem;margin-bottom:12px}
+.ac-tutorial{max-width:none;margin:24px 0;background:linear-gradient(135deg,var(--senal-10),var(--sup) 72%);border-color:var(--senal-30)}
+.ac-tutorial h2{font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.18;max-width:25ch}
+.ac-tutorial .ac-sobrelinea{color:var(--senal);font-size:.65rem;margin-bottom:9px}
+.ac-tutorial .ac-tutorial-pasos{color:var(--senal-cl);font-size:.86rem;margin:16px 0}
+.ac-tutorial .ac-accion{min-height:48px;display:inline-flex;align-items:center;gap:12px}
+.ac-tutorial .ac-tutorial-alternativa{font-size:.82rem;margin:12px 0 0}
 .ac-nota{font-size:.86rem;color:var(--tx-3);max-width:70ch;margin:0 0 30px}
 .ac-portada .ac-legal{margin-bottom:56px;max-width:860px}
 

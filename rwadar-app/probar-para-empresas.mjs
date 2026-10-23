@@ -135,9 +135,11 @@ paso('el árbol publicable y el servidor local incluyen la página de forma expl
   && servidor.includes("p === '/para-empresas'")
   && servidor.includes("p = '/para-empresas.html'"));
 
-paso('la PWA incluye la ruta y renueva la caché tras el endurecimiento',
-  worker.includes("'/para-empresas'")
-  && /const VERSION = 'rwadar-v20260921-tarjetas-local-6';/.test(worker));
+paso('la PWA elimina sus copias antiguas y no sirve la página desde caché',
+  /nombre\.startsWith\('rwadar-v'\)/.test(worker)
+  && /caches\.delete\(nombre\)/.test(worker)
+  && /ventana\.navigate\(ventana\.url\)/.test(worker)
+  && !/addEventListener\(\s*['"]fetch['"]|caches\.open\(|cache\.(?:put|addAll|match)\(/.test(worker));
 
 const scriptsCsp = [
   '<script src="/assets/analitica-20260927.js" defer></script>',

@@ -1,0 +1,15 @@
+{
+  "url": "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+  "file": "contrato-AT0000A3SE89.pdf",
+  "reviewedInDepth": false,
+  "consultedAt": "2026-10-23T19:07:52.756443+00:00",
+  "http": 200,
+  "finalUrl": "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+  "dateHeader": "Fri, 23 Oct 2026 19:07:53 GMT",
+  "lastModified": "Fri, 20 Feb 2026 16:52:49 GMT",
+  "bytes": 143516,
+  "sha256": "56b3147d497082b01b573f51680655540365f95e43a64065ad4e8de8a000b533",
+  "pages": 17,
+  "extractedCharacters": 60129,
+  "extractedTextSha256": "b1d5aa04cc2bed032b51ba60b8d89eac530fa657b34172c666e80452bbf0a888"
+}

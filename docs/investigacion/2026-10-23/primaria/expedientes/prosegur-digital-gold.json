@@ -1,0 +1,170 @@
+{
+  "slug": "prosegur-digital-gold",
+  "proveedor": "Prosegur Crypto",
+  "emisor": "PROSEGUR CUSTODIA DE ACTIVOS DIGITALES S.L.U., CIFB88610126",
+  "identificador": "TokenERC1155;1token=1gramo",
+  "jurisdiccion": "ES",
+  "moneda": "EUR pararesidenteEEEsegúncontrato",
+  "documento": "Términos y condiciones generales ProsegurGold08/07/2026",
+  "alcanceLectura": "Contrato completo público leído en app sin login/aceptación; campaña marketing, tabla comparativa, cotizaciónspot y precio venta app contrastados. No auditoría de reservas/pólizas ni expediente regulador individual.",
+  "profundidad": "documental_con_conflicto_comercial",
+  "claims": [
+    {
+      "campo": "minimoEUR",
+      "dato": null,
+      "fuentePrimaria": "https://www.prosegurcrypto.com/digital-gold",
+      "localizador": "Tabla comparativa Compra mínima",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Mínimo1gramo. Spot114,65EUR/g y compra119,40EURobservados no son mínimo contractual en euros; no convertir por nuestra cuenta.",
+      "estado": "no_acreditado"
+    },
+    {
+      "campo": "derecho",
+      "dato": "Cantidad equivalente de oro físico segregado en inventario fungible; no lingote individual por número de serie.",
+      "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "§§1,2.1,2.4",
+      "fechaDato": "2026-07-08",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Respaldo ysegregación son obligaciones contractuales; no comprobación física independiente.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "dato": "Únicamente recompra por Prosegur; no venta/transferencia a terceros.",
+      "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "Aviso inicial y§§2.2,6",
+      "fechaDato": "2026-07-08",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Recompra puede suspenderse y tener límitesdiarios/mensuales§6.7.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "liquidez",
+      "dato": "Procesamiento normal aproximado1–7días hábiles, con excepciones y plazos bancarios.",
+      "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "§6.4",
+      "fechaDato": "2026-07-08",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Portada«menos24h» no refleja todos los términos; no prometerinstantaneidad.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "costes",
+      "dato": "CompraLBMA+4%;ventaLBMA−6%; gastosbancarios/pagos/cambio adicionales.",
+      "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "§§5.3–5.5,6.2,6.5",
+      "fechaDato": "2026-07-08",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Cuadro susceptible de modificación y cotización confirmada porproveedor. Custodia sin tarifas no equivale a coste total0.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "custodia",
+      "dato": "Custodia Prosegur o designados; retiro físico posible con1000tokensyverificación, recogidaMadrid y gastoscliente.",
+      "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "§§2.4,4",
+      "fechaDato": "2026-07-08",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No entrega de gramo suelto; no derecho a exigir recompra del lingote ya entregado.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "dato": "Contrato español contempla residentesEEEliquidadosEUR y KYCconDNI/NIE/pasaporte;admisiónsujeta avalidación.",
+      "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "§§3,5.5,14",
+      "fechaDato": "2026-07-08",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No prueba de alta individual; no cambiar disponibleEs=trueporidioma ospot.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "supervision",
+      "dato": "Contrato declara producto no financiero/nosecuritytokenysin supervisiónreguladorfinanciero para comercialización.",
+      "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "Advertencias y§2.2",
+      "fechaDato": "2026-07-08",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No extender autorizaciónMinosSecurities a este oro; no dictamen jurídico independiente.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "rentabilidad",
+      "dato": null,
+      "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "Avisoinicial y§2.5",
+      "fechaDato": "2026-07-08",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Cotizaciónoro variable, posiblepérdida; noAPY niinterés.",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "conflictos": [
+    "Marketing liquidezsinrestricciones/<24h frentecontrato1–7días+suspensión.",
+    "Marketing mínimosmárgenes frentecontrato4%compra/6%venta.",
+    "1gramo no es mínimoEURfijo."
+  ],
+  "propuestas": [
+    "Actualizar costes con spread4%/6%, fuente contractualversion08/07consulta23/10.",
+    "Actualizar salida:recompraexclusiva,1–7díashábilesaprox+suspensión; no liquidezgarantizada.",
+    "MantenermínimoEURsincomprobar,sinconvertirspot/preciocompra."
+  ],
+  "schemaVersion": 1,
+  "ciclo": "2026-10-23",
+  "consulta": {
+    "inicioUtc": "2026-10-23T18:57:56Z",
+    "finUtc": "2026-10-23T19:09:16Z",
+    "zonaPresentacion": "Europe/Madrid",
+    "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+  },
+  "requiereRevisionIndependiente": true,
+  "aplicado": false,
+  "publicado": false,
+  "decisionNuevaAlta": "no_es_alta_ficha_existente"
+}

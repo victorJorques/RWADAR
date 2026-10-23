@@ -1,0 +1,168 @@
+{
+  "slug": "iod-occasio",
+  "proveedor": "Alius Capital",
+  "emisor": "IOD APPLICATIONS S.L.",
+  "identificador": "9598007MF0DK0DLQJ78000001616",
+  "jurisdiccion": "ES",
+  "documento": "Ficha de datos fundamentales IOD Occasio, 28/09/2026",
+  "moneda": "EUR",
+  "alcanceLectura": "Campaña completa visible, documento FDF completo, términos generales Alius, información básica; registro Alius delegado a root.",
+  "profundidad": "documental_con_registro_delegado",
+  "claims": [
+    {
+      "campo": "estado",
+      "dato": "Campaña cerrada: 1.200 tokens vendidos de 1.200; 120.000 EUR de 120.000; botón de inversión deshabilitado.",
+      "fuentePrimaria": "https://aliuscap.com/projects/iodo1",
+      "localizador": "Encabezado, captación y botón Invertir",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Estado observado en navegador; no implica bono amortizado ni devolución ya cobrada.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "fechas",
+      "dato": "Documento fija apertura08/10, cierre al completar suscripción y límite23/10 ampliable un mes.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+      "localizador": "Portada y §§2–3",
+      "fechaDato": "2026-09-28",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Prevalece estado cerrado observado sobre tratar23/10 como apertura garantizada. Anuncio comercial13/10 diferente a apertura documental08/10.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimoEUR",
+      "dato": null,
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+      "localizador": "§3 precio de suscripción",
+      "fechaDato": "2026-09-28",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "100 EUR es precio por token. Documento leído no distingue inequívocamente mínimo de orden; no transformarlo en ticket mínimo.",
+      "estado": "no_acreditado"
+    },
+    {
+      "campo": "salida",
+      "dato": "Vencimiento12meses desde fin del desembolso; pago único principal+intereses al día siguiente. Reventa depende de contraparte.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+      "localizador": "§3 y riesgo de iliquidez§4",
+      "fechaDato": "2026-09-28",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No liquidez instantánea ni calendario vencimiento fechado sin cierre/desembolso real acreditado.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "costes",
+      "dato": "FDF declara ausencia de coste del proyecto para inversor; gastos de canales generales no quedan anulados.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+      "localizador": "§5",
+      "fechaDato": "2026-09-28",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Leer con términos Alius, costes bancarios/tarjeta. No afirmar cero costes de cualquier canal.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "rentabilidad",
+      "dato": "12%anual contractual del bono histórico; no es oferta disponible.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+      "localizador": "Portada y§3",
+      "fechaDato": "2026-09-28",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No publicar como rendimiento actual ni seguro.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "seguro",
+      "dato": "Cobertura de facturas hasta90% condicionada a póliza, contraparte y exclusiones.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+      "localizador": "§4 riesgo de contraparte del seguro",
+      "fechaDato": "2026-09-28",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No garantía90%al inversor; existe pérdida parcial/total.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "dato": null,
+      "fuentePrimaria": "https://aliuscap.com/general-terms",
+      "localizador": "Habilitación e identificación del inversor",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No fuente inequívoca de residencia española para producto concreto; conservar desconocido.",
+      "estado": "no_acreditado"
+    },
+    {
+      "campo": "supervision",
+      "dato": "FDF distingue plataforma registrada de oferta no aprobada por CNMV.",
+      "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+      "localizador": "Advertencias iniciales",
+      "fechaDato": "2026-09-28",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Registro de plataforma pendiente del contraste independiente delegado; no atribuir aprobación al bono.",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "conflictos": [
+    "Fecha apertura08/10documental frente13/10anuncio; no altera cierre real.",
+    "Precio/token100EUR no acredita mínimo de orden."
+  ],
+  "propuestas": [
+    "Conservar referencia completa y condición cerrada, consulta23/10; no reabrir ni mostrar12%comoactual.",
+    "Actualizar texto fechado22/10solo con nueva observación de cierre23/10."
+  ],
+  "schemaVersion": 1,
+  "ciclo": "2026-10-23",
+  "consulta": {
+    "inicioUtc": "2026-10-23T18:57:56Z",
+    "finUtc": "2026-10-23T19:09:16Z",
+    "zonaPresentacion": "Europe/Madrid",
+    "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+  },
+  "requiereRevisionIndependiente": true,
+  "aplicado": false,
+  "publicado": false,
+  "decisionNuevaAlta": "no_es_alta_ficha_existente"
+}

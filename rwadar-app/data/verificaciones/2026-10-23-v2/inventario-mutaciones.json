@@ -1,0 +1,144 @@
+{
+  "generadoEl": "2026-10-23T19:35:48.083Z",
+  "alcance": "Artefactos de la entrega local, no aplicación remota",
+  "revision": {
+    "versionEsquema": 2,
+    "revisionId": "c406fa37-a1d3-281c-117a-95819762cfcf",
+    "hash": "c406fa37a1d3281c117a95819762cfcf793f0fdb1210ac39b6114355ead88af3",
+    "revisionAnterior": "349df4ef-97a2-db57-841f-a2f5114a6837",
+    "revisionAnteriorComprobadaEnRemoto": false,
+    "fechaEntregaDocumental": "2026-10-23",
+    "fechaRadar": "2026-10-22",
+    "plataformas": 26,
+    "ofertas": 49,
+    "colecciones": {
+      "principales": 24,
+      "secundario": 21,
+      "en_camino": 4
+    },
+    "referenciasNuevas": 4,
+    "ofertasConDocumentacionNueva": 3,
+    "nuevasAltas": 0,
+    "estado": "borrador",
+    "revisionIndependienteSQL": false,
+    "aplicadoEnRemoto": false,
+    "publicacionWeb": false
+  },
+  "archivos": [
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/cambios-2026-10-23.json",
+      "bytes": 6358,
+      "sha256": "2729ca45023bf8b25bf7b448f056c965a7d6f7e61134eb64923530d4a8049d11"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/comprobar-lote-parcial.mjs",
+      "bytes": 9636,
+      "sha256": "83f4c891ac3b8aa3be533f6b7c82dccc2ac0ce7ec77cd9301c1180607b7d86af"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/contraste-2026-10-23.json",
+      "bytes": 3294,
+      "sha256": "7fe3900766e4682c3281c2ae590b2fd9abb529cec74910bfd6480c69ef60f899"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/documentacion-ofertas.json",
+      "bytes": 157226,
+      "sha256": "b81149507dc646be889c449ba76deacd12b35d0b64b9733f8548cd81864dfe35"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/escaparate-publicacion.json",
+      "bytes": 173575,
+      "sha256": "c75c6fb54e7654d5840ef7f2564b0d6d7279df0daf63456addae4a962db6b985"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/INFORME-2026-10-23.md",
+      "bytes": 6313,
+      "sha256": "8c54b87ebf828a52bacb759fa28c1d62dbe8f16c1efcf4b3ad9a99b7af9857f0"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/inventariar-lote.mjs",
+      "bytes": 2363,
+      "sha256": "3f00541c3c7193d6254bdaf93c39a7037a0569be3038cbbd81de881208ed1992"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/manifiesto-catalogo.json",
+      "bytes": 183,
+      "sha256": "83903588f09d0bfec6d394e65b5b1ccfe56f076df1271df28e1ee3b0ad38a55d"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/preparar-lote-parcial.mjs",
+      "bytes": 8024,
+      "sha256": "d85f5b67beb46ba91ecff45da4aef36c07ccf0f2f29f02cb075f29ef90053932"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/pruebas-locales.json",
+      "bytes": 12786,
+      "sha256": "8ff4b96105205ed2066ed6b621860a43f1be9e8a4bbc8513889e1f766bf548b6"
+    },
+    {
+      "archivo": "rwadar-app/data/verificaciones/2026-10-23-v2/radar-canonico-26.json",
+      "bytes": 53787,
+      "sha256": "ec89490909f592bab17dfc859d9a7eaa9cfbe2891e3ae40f3c4d3086e96e9eb6"
+    },
+    {
+      "archivo": "rwadar-app/data/importaciones/catalogo-2026-10-23-v2/aplicar-y-aprobar.sql",
+      "bytes": 304033,
+      "sha256": "07cca22348b83cf942c13839bd5f0e1a04c586b71d249edb4cc7ec2f08c261b1"
+    },
+    {
+      "archivo": "rwadar-app/data/importaciones/catalogo-2026-10-23-v2/catalogo.sql",
+      "bytes": 301548,
+      "sha256": "d8617406b11926a11bf75b2dbebe29216952b65aa38d6b14d2fecaf2851236a9"
+    },
+    {
+      "archivo": "rwadar-app/data/importaciones/catalogo-2026-10-23-v2/revision.json",
+      "bytes": 667,
+      "sha256": "92d5b93d56d8428b035f4314e0963be13dfdbf6b3053999d895d2f09edc425f8"
+    }
+  ],
+  "insumos": [
+    {
+      "archivo": "docs/investigacion/2026-10-23/primaria/propuestas-para-revision.json",
+      "bytes": 3127,
+      "sha256": "d4d889e22fe0b4b199efcf194b7b7b49629e752bddbe9b6106aa00ba96f830cc"
+    },
+    {
+      "archivo": "docs/investigacion/2026-10-23/revision-independiente/REVISION-IOD-OUTEIRO-SPIKO.md",
+      "bytes": 15380,
+      "sha256": "05667b09ae2d1b84abce69231b547b614fc6689905537bfc80d7366aac150605"
+    },
+    {
+      "archivo": "rwadar-movil/assets/ofertas-editoriales/manifest.json",
+      "bytes": 52458,
+      "sha256": "7d8f6959a0fe0cdb7c59b33a452788030b714bea5f6f07e9fe58a552ad91cec1"
+    },
+    {
+      "archivo": "rwadar-app/catalogo-publico.js",
+      "bytes": 13238,
+      "sha256": "381818a5b5418dc430c0fd3dfbe2f5d8b005ba9fb924cd1a390a1cb985e9e93c"
+    },
+    {
+      "archivo": "rwadar-movil/lib/contrato-catalogo.js",
+      "bytes": 19847,
+      "sha256": "6b6d978665654d302342f92b823c226d6017b4857f254b63b396d8b8f88d1447"
+    }
+  ],
+  "sentenciasMutantesDirectasPorTabla": {
+    "insert into rwadar_catalogo.revisiones": 1,
+    "insert into rwadar_catalogo.fuentes": 69,
+    "insert into rwadar_catalogo.plataformas": 26,
+    "insert into rwadar_catalogo.plataforma_fuentes": 109,
+    "insert into rwadar_catalogo.alertas": 26,
+    "insert into rwadar_catalogo.alerta_fuentes": 36,
+    "insert into rwadar_catalogo.ofertas": 49,
+    "update rwadar_catalogo.revisiones": 1
+  },
+  "efectosDeTriggersExistentes": [
+    "rwadar_catalogo.publicacion_v2",
+    "public.catalogo_publicacion"
+  ],
+  "sinBorradosNiDDL": true,
+  "revisionIndependienteSQL": false,
+  "aplicadoRemoto": false,
+  "publicacionWeb": false
+}

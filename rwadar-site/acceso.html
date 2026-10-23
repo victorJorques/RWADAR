@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Accede a RWAdar</title>
+  <link rel="stylesheet" href="/assets/acceso.css">
+  <script defer src="/assets/acceso.js"></script>
+</head>
+<body>
+<main class="acceso">
+  <p class="marca">RWAdar</p>
+  <h1 id="titulo">Tu radar, con tu cuenta</h1>
+  <p>Ofertas con fuentes. Riesgos a la vista. Aprende a leerlas con Academy y guarda lo que te interesa.</p>
+  <p class="estado" id="estado" role="status" aria-live="polite"></p>
+  <form id="formulario">
+    <label>Correo<input id="correo" name="email" type="email" maxlength="254" autocomplete="username" required></label>
+    <label id="campo-nombre" hidden>Nombre (opcional)<input id="nombre" name="nombre" maxlength="60" autocomplete="nickname"></label>
+    <label id="campo-clave">Contraseña<input id="clave" name="password" type="password" maxlength="256" autocomplete="current-password" required></label>
+    <label id="campo-condiciones" hidden class="consentimiento"><input id="condiciones" type="checkbox">Acepto las <a href="/privacidad#condiciones">condiciones</a> y he leído la <a href="/privacidad">privacidad</a>.</label>
+    <button id="enviar" type="submit">Entrar</button>
+  </form>
+  <div class="acciones" id="acciones">
+    <button type="button" data-vista="entrar">Ya tengo cuenta</button>
+    <button type="button" data-vista="registrar">Crear cuenta gratis</button>
+    <button type="button" data-vista="recuperar">He olvidado mi contraseña</button>
+    <button type="button" data-vista="reenviar">Reenviar confirmación</button>
+  </div>
+  <section id="identidad" hidden aria-labelledby="titulo-identidad">
+    <h2 id="titulo-identidad">Comprueba tu cuenta</h2>
+    <p id="correo-enlace"></p>
+    <button id="adoptar" type="button">Continuar con esta cuenta</button>
+  </section>
+  <p class="nota">Confirma tu correo antes de entrar. Las contraseñas se comprueban en Supabase y no se guardan en este dispositivo. RWAdar informa: no recibe tu dinero ni ejecuta inversiones.</p>
+  <section class="beneficios" aria-labelledby="beneficios-titulo">
+    <h2 id="beneficios-titulo">Activos reales, más claros.</h2>
+    <ul>
+      <li><b>Encuentra lo relevante.</b> Mínimo, acceso desde España y salida, cuando están documentados.</li>
+      <li><b>Entiende lo que ves.</b> Un tutorial 3D en cuatro pasos y lecciones para seguir aprendiendo.</li>
+      <li><b>Llévalo contigo.</b> La web y la app Android comparten el radar y tu cuenta.</li>
+    </ul>
+    <a href="https://github.com/victorJorques/RWAdar-downloads/releases/latest" target="_blank" rel="noopener">Ver la app para Android ↗</a>
+  </section>
+  <footer><a href="/privacidad">Privacidad</a><a href="/privacidad#condiciones">Condiciones</a><a href="/privacidad#aviso-legal">Aviso legal</a></footer>
+</main>
+</body>
+</html>

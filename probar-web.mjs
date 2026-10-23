@@ -49,6 +49,7 @@ const estadoRelanzamiento = JSON.parse(fs.readFileSync(
 const capturadorPortadas = fs.readFileSync(path.join(raiz, 'rwadar-capturar-portadas.mjs'), 'utf8');
 const sincronizador = fs.readFileSync(path.join(raiz, 'rwadar-app', 'sincronizar.js'), 'utf8');
 const servidor = fs.readFileSync(path.join(raiz, 'rwadar-servir.js'), 'utf8');
+const servidorAcceso = fs.readFileSync(path.join(raiz, 'rwadar-acceso', 'servidor.mjs'), 'utf8');
 const arrancador = fs.readFileSync(path.join(raiz, 'rwadar-arrancar.js'), 'utf8');
 const documentos = ['AGENTS.md','CLAUDE.md','docs/INTERNO.md','docs/RUNBOOK.md']
   .map(n=>fs.readFileSync(path.join(raiz,n),'utf8')).join('\n');
@@ -140,6 +141,8 @@ async function authRechazaJson2xxInvalido(codigo) {
   if (inicio < 0 || fin < 0) return false;
   const fuente = codigo.slice(inicio, fin);
   const fabrica = new Function('fetch', 'CLAVE_PUB', `
+    // Regresión del transporte Auth anterior, elegido explícitamente.
+    const servidor=false;
     const AUTH='https://auth.invalid';
     const SERVICIOS_USUARIO_DISPONIBLES=true;
     const traduce=mensaje=>mensaje;
@@ -152,6 +155,61 @@ async function authRechazaJson2xxInvalido(codigo) {
   }), 'sb_publishable_prueba');
   const error = await capturaError(auth('/signup', { email:'persona@example.test' }));
   return /respuesta de autenticaci[oó]n no es v[aá]lida/i.test(error?.message || '');
+}
+
+async function authUsaPasarelaSinCredenciales(codigo) {
+  const inicio = codigo.indexOf('async function auth(');
+  const fin = codigo.indexOf('function traduce(', inicio);
+  const adaptador = codigo.slice(codigo.indexOf('const usuarioServidor='), codigo.indexOf(" const AUTH=", codigo.indexOf('const usuarioServidor=')));
+  if (inicio < 0 || fin < 0 || !adaptador.startsWith('const usuarioServidor=')) return false;
+  const llamadas = [];
+  let peticionesDirectas = 0;
+  const usuario = {id:'cuenta-prueba',correo:'persona@example.test',correoConfirmadoEl:'2026-10-23T10:00:00Z'};
+  const pasarela = {
+    async verificar(){llamadas.push(['verificar']);return usuario;},
+    async reautenticar(clave){llamadas.push(['reautenticar',clave]);return usuario;},
+    async salir(){llamadas.push(['salir']);},
+  };
+  const crear = new Function('servidor', 'fetch', `
+    const SERVICIOS_USUARIO_DISPONIBLES=true;
+    ${adaptador}
+    ${codigo.slice(inicio, fin)}
+    return auth;
+  `);
+  const auth = crear(pasarela, async()=>{peticionesDirectas++;throw new Error('No se permite Auth directo');});
+  const identidad = await auth('/user', null, {metodo:'GET'});
+  const entrada = await auth('/token?grant_type=password', {email:'ignorado@example.test',password:'solo-prueba-local'});
+  await auth('/logout');
+  const cerrada = await capturaError(auth('/signup', {email:'persona@example.test'}));
+  const errorServidor = Object.assign(new Error('Sesión no disponible'), {status:401});
+  pasarela.verificar = async()=>{throw errorServidor;};
+  const fallo = await capturaError(auth('/user', null, {metodo:'GET'}));
+  return identidad.id === usuario.id && identidad.email === usuario.correo &&
+    identidad.email_confirmed_at === usuario.correoConfirmadoEl && entrada.user.id === usuario.id &&
+    entrada.access_token === 'sesion-http-only' && llamadas.length === 3 &&
+    llamadas[1][1] === 'solo-prueba-local' && peticionesDirectas === 0 &&
+    /página de tu cuenta/.test(cerrada?.message || '') && fallo === errorServidor && fallo.status === 401;
+}
+
+async function transporteAuthConservaEstadoYTimeout(codigo) {
+  const inicio=codigo.indexOf('async function peticionCuenta('),fin=codigo.indexOf('function traduce(',inicio);
+  const crear=new Function('fetch','setTimeout','clearTimeout',`
+    const servidor=false,AUTH='https://auth.invalid',CLAVE_PUB='publicable-prueba',SERVICIOS_USUARIO_DISPONIBLES=true;
+    const traduce=t=>t;
+    ${codigo.slice(inicio,fin)}
+    return {auth,peticionCuenta};
+  `);
+  const estados=[];
+  for(const status of [401,503]){
+    const api=crear(async()=>({ok:false,status,text:async()=>JSON.stringify({message:'Error controlado',code:'prueba_http'})}),setTimeout,clearTimeout);
+    const error=await capturaError(api.auth('/user',null,{metodo:'GET'}));
+    estados.push(error?.status===status&&error.code==='prueba_http');
+  }
+  let abortada=false,limpiado=false;
+  const api=crear(async(_url,opciones)=>{opciones.signal.addEventListener('abort',()=>{abortada=true;});return new Promise(()=>{});},
+    fn=>{queueMicrotask(fn);return 1;},()=>{limpiado=true;});
+  const error=await capturaError(api.peticionCuenta('https://auth.invalid/user',{}));
+  return estados.every(Boolean)&&abortada&&limpiado&&/tardado demasiado/.test(error?.message||'');
 }
 
 function nodoCuentaPrueba(id, valores) {
@@ -192,6 +250,7 @@ function estadoPendienteOcultaFormulario(codigo) {
   const fabrica = new Function('$', 'document', 'matchMedia', 'setTimeout', 'clearTimeout',
     'fondo', 'closeAll', 'msj', `
       const CORREO_AUTH_E2E=true;
+      const servidor=false; // Estado pendiente del formulario conservado, sin BFF.
       const SERVICIOS_USUARIO_DISPONIBLES=true;
       const OPINIONES_DISPONIBLES=false,MANUAL_BIENVENIDA='';
       let modo='entrar',correoPendiente='persona@example.test',operacionCuenta=0,
@@ -230,6 +289,7 @@ function arnesEnvioRegistro(codigo) {
   const fabrica = new Function('$', 'auth', 'abrir', 'entrarCon', 'testigo',
     'limpiaErroresCuenta', 'msj', 'limpiaSecretos', 'errorCuenta', 'correoValido', 'location', `
       const CORREO_AUTH_E2E=true;
+      const servidor=false; // Registro heredado aislado; ninguna llamada de red real.
       const SERVICIOS_USUARIO_DISPONIBLES=true;
       let modo='registro',operacionCuenta=0,correoPendiente='';
       const conAntiRobots=async cuerpo=>cuerpo,quitaAntiRobots=()=>{};
@@ -309,6 +369,83 @@ function pruebaInstalacionAtomica(codigo) {
   let instalacion;
   escuchas.install({ waitUntil(promesa){ instalacion = promesa; } });
   return capturaError(instalacion).then(error => Boolean(error) && saltos === 0);
+}
+
+// Ejecuta el trabajador que retira el modo offline, sin red ni almacenamiento real.
+async function probarRetiradaOffline(codigo) {
+  const escuchas = {}, borradas = [], navegadas = [];
+  let saltos = 0, reclamos = 0, consultas = 0, abiertas = 0;
+  const contexto = {
+    self: {
+      addEventListener(tipo, fn){ escuchas[tipo] = fn; },
+      async skipWaiting(){ saltos++; },
+      clients: {
+        async claim(){ reclamos++; },
+        async matchAll(opciones){
+          if(opciones.type !== 'window' || opciones.includeUncontrolled !== true) throw new Error('clientes incompletos');
+          consultas++;
+          return [
+            {url:'https://rwadar.example/', async navigate(url){ navegadas.push(url); }},
+            {url:'https://rwadar.example/radar', async navigate(url){ navegadas.push(url); throw new Error('ventana cerrada'); }},
+          ];
+        },
+      },
+    },
+    caches: {
+      async keys(){ return ['rwadar-v-antigua', 'rwadar-v-anterior', 'otra-aplicacion']; },
+      async delete(nombre){ borradas.push(nombre); return true; },
+      async open(){ abiertas++; throw new Error('No se permite abrir caché'); },
+    },
+    fetch(){ throw new Error('El worker no debe interceptar ni pedir datos'); },
+  };
+  vm.createContext(contexto);
+  vm.runInContext(codigo, contexto);
+  let instalacion, activacion;
+  escuchas.install({waitUntil(p){instalacion=p;}});
+  await instalacion;
+  escuchas.activate({waitUntil(p){activacion=p;}});
+  await activacion;
+  return saltos === 1 && reclamos === 1 && consultas === 1 && abiertas === 0 &&
+    JSON.stringify(borradas.sort()) === JSON.stringify(['rwadar-v-antigua','rwadar-v-anterior'].sort()) &&
+    navegadas.length === 2 && !Object.hasOwn(escuchas,'fetch');
+}
+
+function tutorialManualRespetaPasos(codigo) {
+  const inicio=codigo.indexOf('const ROTULOS='),fin=codigo.indexOf("document.getElementById('exVolverAcademy')",inicio);
+  if(inicio<0||fin<inicio)return false;
+  const bloque=codigo.slice(inicio,fin);
+  if(/setInterval\s*\(/.test(bloque))return false;
+  for(const reducir of [false,true]){
+    const nodos=new Map(),sonidos=[],cancelados=[],posiciones=[];
+    const nodo=id=>{
+      if(!nodos.has(id))nodos.set(id,{disabled:false,hidden:true,textContent:'',eventos:{},
+        classList:{remove(){},toggle(){}},setAttribute(){},
+        addEventListener(tipo,fn){this.eventos[tipo]=fn;}});
+      return nodos.get(id);
+    };
+    const contexto={document:{getElementById:nodo,querySelectorAll:()=>[0,1,2,3].map(n=>nodo('paso-'+n))},
+      window:{matchMedia:()=>({matches:reducir})},escenaVisible:true,
+      colocar:i=>posiciones.push(i),Sonido:{paso:i=>sonidos.push(i)},
+      clearInterval:id=>cancelados.push(id),setInterval(){throw new Error('El tutorial debe ser manual');}};
+    vm.createContext(contexto);
+    vm.runInContext(bloque+`;globalThis.guia={irPaso,reiniciar:reiniciarPasosAutomaticos,
+      paso:()=>paso,reloj:v=>{reloj=v;}};`,contexto);
+    const guia=contexto.guia,anterior=nodo('exAnterior'),siguiente=nodo('exSiguiente');
+    const estado=(i,final)=>guia.paso()===i&&anterior.disabled===(i===0)&&siguiente.disabled===(i===3)&&
+      nodo('exProgreso').textContent===`Paso ${i+1} de 4`&&nodo('exFinal').hidden===!final;
+    if(!estado(0,false)||sonidos.length!==0)return false;
+    for(const valor of [-1,4,0.5,null,'1',NaN])guia.irPaso(valor,true);
+    if(!estado(0,false)||posiciones.length!==1||sonidos.length!==0)return false;
+    for(let i=1;i<=3;i++){siguiente.eventos.click();if(!estado(i,i===3))return false;}
+    if(sonidos.length!==3)return false;
+    siguiente.eventos.click();if(!estado(3,true)||sonidos.length!==3)return false;
+    anterior.eventos.click();if(!estado(2,false)||sonidos.length!==4)return false;
+    guia.reloj(42);guia.reiniciar();
+    if(!estado(0,false)||cancelados.length!==1||cancelados[0]!==42||sonidos.length!==4)return false;
+    contexto.escenaVisible=false;siguiente.eventos.click();
+    if(!estado(1,false)||sonidos.length!==4)return false;
+  }
+  return true;
 }
 
 function marcadoEstricto(nombre, contenido) {
@@ -696,9 +833,9 @@ const estilos = [...html.matchAll(/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhr
 const rutaScriptApp = '/assets/rwadar-20260820.js';
 const rutaAnalitica = '/assets/analitica-20260927.js';
 const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
-prueba('analítica, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
-  scripts.length === 7 && scripts[0][1] === rutaAnalitica && scripts[1][1] === rutaCatalogo && scripts[2][1] === '/assets/ficha-editorial-20261022.js' &&
-  scripts[3][1]==='/assets/idioma-en-20261022.js'&&scripts[4][1]==='/assets/idioma-20261022.js'&&scripts[5][1]==='/assets/idioma-web-20261022.js'&&scripts[6][1]===rutaScriptApp &&
+prueba('acceso, analítica, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
+  JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaAnalitica, '/assets/acceso-privado.js', rutaCatalogo,
+    '/assets/ficha-editorial-20261022.js','/assets/idioma-en-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js',rutaScriptApp]) &&
   scripts.every(script => /\bdefer\b/.test(script[0]) && !/\basync\b/.test(script[0])));
 prueba('la aplicación carga una hoja propia versionada',
   estilos.length === 2 && estilos[0][1] === '/assets/rwadar-20260820.css'&&estilos[1][1]==='/assets/idioma-20261022.css');
@@ -869,28 +1006,35 @@ prueba('los accesos a cuenta nacen desactivados incluso antes de ejecutar JavaSc
 const inicioLectorPublico = js.indexOf('async function alDia(){');
 const finLectorPublico = js.indexOf('\n}\n', inicioLectorPublico);
 const lecturasEditoriales = [];
-const lectorPublico = new Function('fetch', `
+let lecturasDirectasEditoriales = 0;
+const lectorPublico = new Function('window', 'fetch', `
   const MODO_LOCAL_SEGURO=false,SERVICIOS_USUARIO_REMOTOS=false,SERVICIOS_USUARIO_DISPONIBLES=false;
   const API='https://catalogo.invalid/rest/v1',CLAVE_PUB='publicable-prueba';
   ${js.slice(inicioLectorPublico, finLectorPublico + 2)}
   return alDia;
-`)(async direccion => {lecturasEditoriales.push(direccion);return {ok:false,status:503};});
+`)({RWADAR_ACCESO:{catalogo:async(tabla,consulta)=>{
+  lecturasEditoriales.push('/'+tabla+'?'+consulta);
+  throw Object.assign(new Error('HTTP 503 de la pasarela simulada'),{status:503});
+}}}, async()=>{lecturasDirectasEditoriales++;throw new Error('No se permite acceso directo al catálogo');});
 await capturaError(lectorPublico());
-prueba('el cierre de cuentas conserva el lector de catálogo público y sus cuatro consultas anónimas',
-  lecturasEditoriales.length === 4 &&
+prueba('el lector conserva sus cuatro consultas por la pasarela autenticada, sin acceso directo',
+  lecturasEditoriales.length === 4 && lecturasDirectasEditoriales === 0 &&
   lecturasEditoriales.some(u => u.includes('/catalogo_publicacion?select=retirado,motivo')) &&
   lecturasEditoriales.some(u => u.includes('/catalogo_plataformas_publicas_v2?')) &&
   lecturasEditoriales.some(u => u.includes('/catalogo_ofertas_publicas_v2?')) &&
   lecturasEditoriales.some(u => u.includes('/plataformas?estado=eq.descartada&')));
 
 /* Las siguientes regresiones prueban el código de cuenta conservado para una
-   futura reapertura. Sus arneses habilitan la capacidad de forma explícita;
-   el código distribuido sigue usando la capacidad false comprobada arriba. */
+   su transporte anterior. Sus arneses eligen servidor=false explícitamente;
+   el candidato usa la pasarela, comprobada por separado sin credenciales. */
 prueba('la contraseña mínima es de 12 caracteres en HTML y JS',
   (html.match(/minlength="12"/g) || []).length === 2 && /clave\.length<12/.test(js));
-prueba('los testigos de sesión solo se guardan en memoria',
+prueba('la cuenta no persiste tokens en localStorage y el servidor usa cookie protegida',
   /const guarda=\(s,mismaCuenta=false\)=>\{ses=normalizaSesion\(s\)/.test(js) &&
-  !/localStorage\.(?:setItem|getItem)\([^)]*(?:access_token|refresh_token)/.test(js));
+  !/localStorage\.(?:setItem|getItem)\([^)]*(?:access_token|refresh_token)/.test(js) &&
+  /const servidor=typeof window!=='undefined'&&window\.RWADAR_ACCESO/.test(js) &&
+  /; Path=\/; HttpOnly; Secure; SameSite=Lax/.test(servidorAcceso) &&
+  /Max-Age=0/.test(servidorAcceso));
 prueba('la identidad se revalida contra Auth antes de usar la sesión', /auth\('\/user',null,\{metodo:'GET',token:tk\}\)/.test(js));
 prueba('la recuperación limpia el fragmento y abre cambio de contraseña',
   /history\.replaceState\(null,'',location\.pathname\+location\.search\)/.test(js) &&
@@ -911,6 +1055,7 @@ prueba('la recuperación cambia la contraseña autenticada con PUT /user',
   const callback = js.slice(js.indexOf('  const parametrosRetorno='), js.indexOf('\n }\n /* El pre-renderizado'));
   const simular = new Function('URL', 'URLSearchParams', `return async function(url, inicial=null){
     const location=new URL(url),history={replaceState(){}};
+    const servidor=false; // Retorno heredado, sin adoptar una cookie de sesión.
     let ses=inicial,identidadConfirmada=false,versionCuenta=0,operacionCuenta=0,fichaAbierta=null;
     let verificaciones=0;const mensajes=[],modos=[];
     const pinta=()=>{},pintarVigilar=()=>{},abrirPerfil=()=>{},msj=t=>mensajes.push(t),aviso=t=>mensajes.push(t);
@@ -952,6 +1097,10 @@ prueba('abrir una confirmación pendiente oculta el formulario y borra las contr
   estadoPendienteOcultaFormulario(js));
 prueba('Auth rechaza una respuesta 2xx cuyo cuerpo no sea JSON válido',
   await authRechazaJson2xxInvalido(js));
+prueba('Auth usa la pasarela verificada sin tokens reales ni peticiones directas y conserva el estado HTTP',
+  await authUsaPasarelaSinCredenciales(js));
+prueba('el transporte Auth conservado propaga 401/503 y aborta el timeout sin dejar el reloj pendiente',
+  await transporteAuthConservaEstadoYTimeout(js));
 prueba('un signup sin usuario raíz válido nunca se presenta como alta aceptada',
   await altaSinUsuarioValidoFallaCerrada(js));
 prueba('el reenvío de confirmación usa /resend con type signup y no promete entrega',
@@ -1409,18 +1558,21 @@ prueba('los resultados móviles muestran seis fichas y conservan las 26 en el DO
   /#grid:not\(\.movil-resultados-abiertos\)>\.ficha:nth-child\(n\+7\)/.test(cssMovil) &&
   /LIMITE_MOVIL_RESULTADOS=6/.test(jsSinComentarios) &&
   /filtrando\|\|S2\.view!==['"]grid['"]/.test(jsSinComentarios));
-prueba('Academy es una subvista de Buscar sin vídeos ni canvas inventados',
+prueba('Academy ofrece el tutorial guiado manual sin vídeos ni canvas inventados',
   /id="academy"[^>]*aria-labelledby="academyTit"/.test(html) &&
   /data-movil-action="cerrar-academy"/.test(html) &&
-  /Todavía no hay vídeos/.test(html) && !/<video\b|<iframe\b/i.test(html) &&
+  /Academy · Tutorial guiado · 4 pasos/.test(html) && !/<video\b|<iframe\b/i.test(html) &&
+  /data-ir="explain">Empezar tutorial 3D/.test(html) &&
   /<!--academy:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy:fin-->/.test(html) &&
   (html.match(/\bid=["'](?:explain|scene|gl)["']/g) || []).length === 3 &&
   /academyLeccion\.appendChild\(explicador\)/.test(jsSinComentarios) &&
   /rwadarAcademy/.test(jsSinComentarios));
-prueba('Academy vuelve al primer paso y reinicia su ciclo completo al abrirse',
+prueba('Academy abre en el primer paso y el tutorial avanza solo con sus controles manuales',
   /irPaso\(0,false\);\s*if\(typeof reiniciarPasosAutomaticos===['"]function['"]\)reiniciarPasosAutomaticos\(\)/
     .test(jsSinComentarios) &&
-  /function reiniciarPasosAutomaticos\(\)[\s\S]*?clearInterval\(reloj\)[\s\S]*?setInterval\(\(\)=>irPaso/.test(jsSinComentarios));
+  /function reiniciarPasosAutomaticos\(\)\{[^}]*if\(reloj\)\{clearInterval\(reloj\);reloj=null;\}/.test(jsSinComentarios) &&
+  ['exAnterior','exSiguiente','exProgreso','exFinal'].every(id=>html.includes(`id="${id}"`)) &&
+  tutorialManualRespetaPasos(js));
 prueba('la información extensa de Buscar usa detalle progresivo sin perder contenido',
   /id="movilTransparencia"/.test(html) &&
   ['presentacion','metodo','fuera'].every(id =>
@@ -1435,7 +1587,8 @@ prueba('Atrás y Adelante restauran las tres subvistas sin mezclar estados',
     new RegExp(`delete estado\\.${marca}`).test(codigoShellMovil)) &&
   /function reconciliarEstadoSubvista\(enfocar=true\)/.test(codigoShellMovil) &&
   /mostrarDetalle\([^;]+enfocar,false,origen\)/.test(codigoShellMovil) &&
-  /mostrarAcademy\(true,enfocar,false,document\.getElementById\(['"]movilAbrirAcademy['"]\)\)/.test(codigoShellMovil) &&
+  /mostrarAcademy\(true,enfocar,false,document\.getElementById\(['"]movilTabAcademy['"]\)\)/.test(codigoShellMovil) &&
+  /cambiar\('academy',\{arriba:false\}\)/.test(codigoShellMovil) &&
   /mostrarAvisos\(true,enfocar,false\)/.test(codigoShellMovil) &&
   /pageshow[\s\S]*?!e\.persisted\|\|media\.matches!==modoMovilPrevio[\s\S]*?reconciliarEstadoSubvista\(false\)/.test(codigoShellMovil));
 prueba('el cierre devuelve el foco a un control que también queda dentro de pantalla',
@@ -1564,20 +1717,22 @@ prueba('Inicio trae noticias y accesos al catálogo sin repetir el menú de apre
   !/inicioEmpezarTit|data-movil-action="academy"|data-movil-ir="metodo"/.test(panelInicioHTML) &&
   /<section class="inicio-seccion" id="inicioComunidad"[^>]*\shidden>/.test(panelInicioHTML) &&
   /data-movil-ir="emisiones">Ver ofertas</.test(panelInicioHTML) && /data-movil-ir="tool">Ver plataformas</.test(panelInicioHTML));
-prueba('Academy mueve el bloque real de lecciones (sin copiarlo) y cuenta las leídas del navegador',
+prueba('Academy mueve el bloque real de lecciones y cuenta solo el progreso local de la cuenta',
   /id="movilAcademyLecciones"/.test(panelAcademyHTML) &&
   !/class="academia-lecciones"/.test(panelAcademyHTML) &&
   /const leccionesAcademy=document\.querySelector\('\.academia-lecciones'\);/.test(js) &&
   /const movibles=\[\.\.\.ordenMovil,explicador,leccionesAcademy\]\.filter\(Boolean\);/.test(js) &&
   /contenedorAcademy\.appendChild\(leccionesAcademy\)/.test(js) &&
-  /localStorage\.getItem\('rwadar\.academy\.v1'\)/.test(js));
-prueba('Perfil guarda empresas y ofertas solo en este navegador y lo explica',
+  /const uid=window\.RWADAR_ACCESO\?\.usuario\(\)\?\.id/.test(js) &&
+  /localStorage\.getItem\('rwadar\.academy\.v1:'\+uid\)/.test(js));
+prueba('Perfil conserva favoritos locales separados por cuenta y explica su alcance',
   /id="perfilEmpresas"[^>]*aria-live="polite"[^>]*hidden/.test(panelPerfilHTML) &&
   /id="perfilOfertas"[^>]*aria-live="polite"[^>]*hidden/.test(panelPerfilHTML) &&
-  /lo que guardas se queda en este navegador/.test(panelPerfilHTML) &&
+  /Los favoritos se quedan en este navegador, separados por cuenta\./.test(panelPerfilHTML) &&
   /Guardar no es invertir: RWAdar no mueve dinero\./.test(panelPerfilHTML) &&
   /const CLAVE='rwadar\.favoritos\.v1'/.test(js) &&
-  /localStorage\.setItem\(CLAVE,JSON\.stringify\(datos\)\)/.test(js) &&
+  /const claveCuenta=\(\)=>\{const id=uid\(\);return id\?CLAVE\+':'\+id:null;\}/.test(js) &&
+  /localStorage\.setItem\(clave,JSON\.stringify\(datos\)\)/.test(js) &&
   /class="movil-seguida/.test(js) && /escHtml\(p\.n\)/.test(js) &&
   /data-guardar-oferta="'\+escHtml\(o\.slug\)\+'"/.test(js) &&
   /data-movil-action="borrar-guardados"/.test(panelPerfilHTML) &&
@@ -1585,7 +1740,7 @@ prueba('Perfil guarda empresas y ofertas solo en este navegador y lo explica',
 prueba('guardar solo existe en el móvil, donde está Perfil',
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.fav-local').join(';')) &&
   /display\s*:\s*inline-flex/i.test(declaracionesCSS(cssMovil, '.escaparate-guardar.fav-local').join(';')) &&
-  /function ir\(destino,origen=null\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
+  /function ir\(destino,origen=null\)\{\s*if\(destino==='explain'\)\{abrirAcademyDesde\(origen\);return;\}\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
 prueba('Avisos se anuncia en Perfil como próximamente y nunca es una pestaña',
   /Los avisos llegarán próximamente a la app con las nuevas actualizaciones\./.test(panelPerfilHTML) &&
   !/id=["']movilVistaAvisos["']/.test(html) &&
@@ -1626,13 +1781,14 @@ prueba('el escritorio recupera emisiones en su posición editorial y no muestra 
   /paneles\.forEach\(\(panel,nombre\)=>\{panel\.hidden=nombre!==['"]buscar['"]/.test(codigoShellMovil) &&
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.movil-ofertas-intro').join(';')) &&
   !/display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.emis').join(';')));
-prueba('radar, fichas, comparador, método, descartes y 3D siguen en el único panel Buscar',
+prueba('radar, fichas, comparador, método y descartes quedan en Buscar; el tutorial 3D abre Academy',
   ['radarHero','tool','grid','cmpbar','explain','scene','gl','metodo','fuera']
     .every(id => ids.includes(id)) &&
-  /data-movil-action=["']academy["']/.test(html) &&
+  /data-ir=["']explain["']/.test(html) &&
   ['metodo','fuera'].every(destino =>
     new RegExp(`data-movil-detalle=["']${destino}["']`).test(html)) &&
-  /function ir\(destino,origen=null\)\{\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
+  /function ir\(destino,origen=null\)\{\s*if\(destino==='explain'\)\{abrirAcademyDesde\(origen\);return;\}\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil) &&
+  /academyLeccion\.appendChild\(explicador\)/.test(js));
 prueba('la barra no introduce manejadores inline ni atributos ejecutables',
   botonesNavMovil.every(b => !/\son[a-z]+\s*=|javascript\s*:/i.test(b[1])) &&
   !/\son[a-z]+\s*=|javascript\s*:/i.test(navMovil?.[0] || ''));
@@ -1657,15 +1813,17 @@ prueba('el manifest es instalable y tiene iconos 192, 512 y maskable',
   manifest.icons.some(i=>i.purpose==='maskable'));
 prueba('el service worker se registra solo bajo HTTP(S)',
   /trabajador\.register\('\/sw\.js'/.test(js) && /\^https\?:\$/.test(js));
-prueba('el service worker fuente identifica la entrega móvil actual',
-  /const VERSION\s*=\s*['"]rwadar-v20260921-tarjetas-local-6['"]/.test(sw));
-prueba('el precache crítico se instala de forma atómica',
-  /await c\.addAll\(ARMAZON\)/.test(sw) && !/\.add\(u\)\.catch/.test(sw) && await pruebaInstalacionAtomica(sw));
-prueba('cada navegación se guarda bajo su propia ruta',
-  /const clave = url\.pathname/.test(sw) && /cache\.put\(clave, res\.clone\(\)\)/.test(sw) &&
-  !/cache\.put\('\/', res\.clone\(\)\)/.test(sw));
-prueba('solo se cachean recursos estáticos públicos del mismo origen',
-  /url\.origin !== self\.location\.origin/.test(sw) && /esEstaticoPublico/.test(sw));
+prueba('el service worker fuente identifica la retirada del modo offline',
+  /const VERSION\s*=\s*['"]rwadar-vacceso-obligatorio-20261023['"]/.test(sw));
+prueba('el worker elimina copias RWAdar y recarga todas las ventanas sin abrir cachés ni red',
+  await probarRetiradaOffline(sw));
+prueba('el ensayo rechaza reintroducir fetch o conservar las copias de RWAdar',
+  !(await probarRetiradaOffline(sw + "\nself.addEventListener('fetch',()=>{});")) &&
+  !(await probarRetiradaOffline(sw.replace('caches.delete(nombre)', 'Promise.resolve(true)'))));
+prueba('la limpieza de RWAdar no puede borrar cachés de otra aplicación',
+  !(await probarRetiradaOffline(sw.replace(".filter(nombre => nombre.startsWith('rwadar-v'))", ''))));
+prueba('ninguna navegación ni dato de cuenta puede volver por el worker offline',
+  !/addEventListener\(\s*['"]fetch['"]|caches\.open\(|cache\.(?:put|addAll|match)\(/.test(sw));
 prueba('el catálogo remoto exige vistas V2 y manifiesto completo, sin volver a V1',
   /catalogo_plataformas_publicas_v2\?select=\*/.test(js) &&
   /catalogo_ofertas_publicas_v2\?select=\*/.test(js) &&
@@ -1680,7 +1838,6 @@ prueba('el snapshot V2 caducado se conserva con aviso y solo la orden expresa lo
   /orden\.retirado===true\)\{\n\s+P\.length=0;EMI\.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true;CATALOGO_RETIRADO=true/.test(js) &&
   /catch\{refrescarVigenciaOfertas\(\)\}/.test(js));
 
-const armazon = arrayConstante(sw, 'ARMAZON');
 const recursosCriticos = ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', rutaScriptApp, rutaCatalogo, '/assets/ficha-editorial-20261022.js', rutaAnalitica, estilos[0][1],
   '/assets/privacidad-20260820.css', '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src),
   ...rutasPortada];
@@ -1691,15 +1848,10 @@ const existeRutaArmazon = ruta => {
   if (ruta === '/para-empresas') return fs.existsSync(path.join(sitio, 'para-empresas.html'));
   return fs.existsSync(path.join(sitio, ...ruta.slice(1).split('/')));
 };
-prueba('el armazón PWA contiene una sola vez toda la interfaz crítica que declara la portada',
-  armazon.length === new Set(armazon).size && recursosCriticos.every(ruta => armazon.includes(ruta)) &&
-  armazon.every(ruta => /^\/(?:[^?#]*)$/.test(ruta) && existeRutaArmazon(ruta)));
-prueba('las 26 portadas forman parte del precache de la primera instalación',
-  armazon.filter(ruta => /^\/plataformas\/.+\.webp$/.test(ruta)).length === 26 &&
-  rutasPortada.every(ruta => armazon.includes(ruta)));
-prueba('el armazón no persiste el worker, APIs, sesiones ni respuestas dinámicas',
-  !armazon.includes('/sw.js') &&
-  armazon.every(ruta => !/(?:supabase|\/auth\/|\/rest\/|access_token|refresh_token|rwadar\.csv)/i.test(ruta)));
+prueba('la interfaz crítica sigue existiendo sin precache ni fallback offline',
+  recursosCriticos.every(ruta => existeRutaArmazon(ruta)) && !/\bARMAZON\b/.test(sw));
+prueba('las 26 portadas siguen disponibles sin quedar guardadas por el worker',
+  rutasPortada.length === 26 && rutasPortada.every(existeRutaArmazon) && !/cache\.put\(/.test(sw));
 prueba('la PWA es standalone de forma estándar además de declarar compatibilidad Apple',
   manifest.id === '/' && manifest.scope === '/' && manifest.start_url === '/' &&
   manifest.display === 'standalone' && manifest.display_override?.includes('standalone') &&
@@ -1709,16 +1861,6 @@ const colorTema = (html.match(/<meta\s+name=["']theme-color["']\s+content=["']([
 prueba('portada y manifest comparten los colores de arranque para evitar destellos al instalar',
   colorTema.toLowerCase() === manifest.theme_color.toLowerCase() &&
   manifest.background_color.toLowerCase() === manifest.theme_color.toLowerCase());
-prueba('activar una entrega elimina cachés anteriores y toma control de los clientes',
-  await pruebaActivacionCache(sw));
-const primeraActivacion = await pruebaActivacionSinMigracion(sw, false);
-const clienteRecargado = await pruebaActivacionSinMigracion(sw, true);
-prueba('la primera instalación no navega clientes si no había otra caché RWAdar',
-  primeraActivacion.consultas === 0 && primeraActivacion.navegaciones === 0);
-prueba('la migración no duplica la recarga si controllerchange ya renovó el documento',
-  clienteRecargado.consultas === 2 && clienteRecargado.navegaciones === 0);
-prueba('un fallo al escribir caché nunca sustituye navegación ni assets recibidos de la red',
-  await pruebaRedConCacheRota(sw));
 const actualizacionControlada = await pruebaActualizacionPWACliente(js, true);
 const primeraInstalacion = await pruebaActualizacionPWACliente(js, false);
 prueba('la PWA consulta el worker sin caché al cargar, reanudarse y volver a primer plano',
@@ -1729,8 +1871,8 @@ prueba('un cambio de controlador recarga una sola vez una PWA ya instalada',
   actualizacionControlada.escuchaCambio && actualizacionControlada.recargas === 1);
 prueba('la primera instalación no provoca una recarga ni puede entrar en bucle',
   primeraInstalacion.recargas === 0);
-prueba('la navegación sigue siendo red primero y solo cae a caché ante un fallo',
-  /if \(req\.mode === 'navigate'\)[\s\S]*?try \{\s*const res = await fetch\(req\);[\s\S]*?catch \(_\) \{\s*return \(await cache\.match\(clave\)\)/.test(sw));
+prueba('el worker no instala una ruta alternativa que evite comprobar la sesión en servidor',
+  !/respondWith|fetch\(/.test(sw));
 
 const casoRegex = 'function f(c){return /[/*]/.test(c)}';
 const casoReducido = sinComentariosJS(casoRegex);
@@ -1765,7 +1907,6 @@ const hojasPublicadas = [...new Set(
     [...documento.matchAll(/<link\b([^>]*)>/gi)]
       .filter(link => (atributoHTML(link[1], 'rel') || '').toLowerCase().split(/\s+/).includes('stylesheet'))
       .map(link => atributoHTML(link[1], 'href'))))];
-const armazonPublicado = arrayConstante(swPublicado, 'ARMAZON');
 const rutaJSPublicado = path.join(publicado, '.' + recursoJSPublicado);
 const jsPublicado = fs.readFileSync(rutaJSPublicado, 'utf8');
 const huellaJSIndependiente = crypto.createHash('sha256').update(jsPublicado).digest('hex').slice(0, 12);
@@ -1782,10 +1923,10 @@ prueba('todo JS/CSS desplegable lleva su huella de contenido y no queda el nombr
   assetsPublicados.length === codigoPublicable.length && assetsPublicados.every(x=>/\.[a-f0-9]{12}\.(?:css|js)$/.test(x)) &&
   !codigoPublicable.some(x=>archivosPublicados.includes(x)));
 const analiticaPublicada = scriptsPublicados.find(script => /\/analitica-/.test(script[1]))?.[1];
-prueba('la analítica se versiona en todas las páginas y el worker conserva solo el cargador propio',
+prueba('la analítica se versiona en todas las páginas y el worker no la persiste',
   analiticaPublicada && [htmlPublicado, privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada]
-    .every(pagina => pagina.includes(analiticaPublicada)) && armazonPublicado.includes(analiticaPublicada) &&
-  !armazonPublicado.some(ruta => /cloudflareinsights/.test(ruta)));
+    .every(pagina => pagina.includes(analiticaPublicada)) &&
+  !/caches\.open\(|cache\.(?:put|addAll|match)\(|cloudflareinsights/.test(swPublicado));
 prueba('el paquete desplegable incluye las 26 portadas y su manifiesto de procedencia',
   portadasPublicadas.length === 26 &&
   archivosPublicados.includes('plataformas/fuentes.json') &&
@@ -1808,16 +1949,15 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
   prueba('las tarjetas pre-pintadas usan la ilustración de cada ficha, con la de su categoría de respaldo',
     esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
 }
-prueba('HTML y service worker apuntan al mismo JavaScript versionado',
-  htmlPublicado.includes(recursoJSPublicado) && swPublicado.includes(recursoJSPublicado));
-prueba('el worker publicado precachea los assets con huella que realmente usan ambas páginas',
+prueba('HTML conserva sus recursos con huella sin depender de un precache del worker',
   recursoJSPublicado && hojasPublicadas.length === 3 &&
-  ['/', '/privacidad', '/transparencia-comercial', '/para-empresas', recursoJSPublicado, recursoCatalogoPublicado,
+  [recursoJSPublicado, recursoCatalogoPublicado,
     ...scriptsPublicados.map(s=>s[1]), ...hojasPublicadas,
     '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src), ...rutasPortada]
-    .every(ruta => armazonPublicado.includes(ruta)) &&
-  armazonPublicado.length === new Set(armazonPublicado).size &&
-  !armazonPublicado.some(ruta => /^\/assets\/(?:privacidad|rwadar)-20260820\.(?:css|js)$/.test(ruta)));
+    .every(ruta => fs.existsSync(path.join(publicado, '.' + ruta))) &&
+  !/\bARMAZON\b|addEventListener\(\s*['"]fetch['"]/.test(swPublicado));
+prueba('el worker generado conserva la retirada efectiva de cachés y no deja copias offline',
+  await probarRetiradaOffline(swPublicado));
 
 const artefactosVersion = [...archivosPublicados].sort();
 const hashVersionIndependiente = crypto.createHash('sha256');
@@ -1908,6 +2048,17 @@ function pestanaCatalogo({ inicio, codigo = js } = {}) {
   contexto.setTimeout = (fn, demora) => { tiempos.push({fn,demora}); return tiempos.length; };
   contexto.location = {href:'https://rwadar.pages.dev/'};
   contexto.history = {state:null, pushState(state) { this.state=state; }, back() { this.state=null; }};
+  // Solo transporte de prueba: las respuestas HTTP siguen siendo las que cada
+  // caso configura en contexto.fetch. No se simulan cookies ni credenciales.
+  contexto.window.RWADAR_ACCESO = {
+    usuario:()=>null,
+    async verificar(){throw Object.assign(new Error('Sin sesión en este fixture'),{status:401});},
+    async catalogo(tabla,consulta){
+      const respuesta = await contexto.fetch('/__pasarela_catalogo_prueba/'+tabla+'?'+consulta);
+      if (!respuesta.ok) throw Object.assign(new Error('HTTP '+respuesta.status),{status:respuesta.status});
+      return respuesta.json();
+    },
+  };
   vm.createContext(contexto);
   vm.runInContext(jsCatalogo, contexto);
   vm.runInContext(codigoFichaEditorial, contexto);
@@ -2490,9 +2641,11 @@ prueba('el secundario conserva dianas táctiles y microtexto legible en móvil',
   })()`,c);
   prueba('ordenar por mínimo usa euros documentados y no convierte precio por token en entrada mínima',slugs==='minimo-documentado,precio-token');
 }
-prueba('servidor, worker y CDN tratan las portadas como imágenes estáticas propias',
+prueba('las portadas propias pasan por el worker autenticado y el SW no las conserva en caché',
   /'\.webp': 'image\/webp'/.test(servidor) &&
-  /url\.pathname\.startsWith\('\/plataformas\/'\)/.test(sw) &&
+  /crearAccesoServidor/.test(fs.readFileSync(path.join(raiz,'functions','_middleware.js'),'utf8')) &&
+  /headers\.set\('Cache-Control', 'private, no-store'\)/.test(servidorAcceso) &&
+  !/addEventListener\(['"]fetch['"]|caches\.open\(/.test(sw) &&
   /\/plataformas\/\*[\s\S]{0,120}max-age=0, must-revalidate/.test(headers));
 
 console.log('\n=== PRIVACIDAD, ÍNDICE Y BLOQUEOS ===');
@@ -2519,12 +2672,13 @@ prueba('la privacidad identifica la medición agregada, sus límites y su estado
   /Do Not Track o Global Privacy Control/.test(privacidad) && /no representan personas únicas/.test(privacidad) &&
   /no permite reconstruir el tráfico anterior/.test(privacidad) &&
   /Cloudflare Pages/.test(privacidad) && /cloudflare-customer-dpa/.test(privacidad));
-prueba('la privacidad explica la sesión en memoria, la limpieza de enlaces y la caché PWA sin tokens',
-  /solo en la memoria de la pestaña abierta/.test(privacidadLineal) &&
-  /no queda en el\s+almacenamiento del navegador/.test(privacidad) &&
+prueba('la privacidad explica cookie necesaria, enlaces limpios y retirada de las copias PWA',
+  /cookie de sesión necesaria, protegida con HttpOnly, Secure y SameSite/.test(privacidadLineal) &&
+  /el JavaScript no puede leerla/.test(privacidadLineal) &&
+  /Deja de autorizar al caducar o cerrar sesión/.test(privacidadLineal) &&
   /se canjean una vez y se\s+retiran de la dirección/.test(privacidad) &&
   /history\.replaceState\(null,'',location\.pathname\+location\.search\)/.test(js) &&
-  /No se guardan respuestas de Supabase,[\s\S]*tokens de sesión/.test(privacidad));
+  /elimina la antigua caché PWA/.test(privacidadLineal));
 prueba('la privacidad describe favoritos locales y push cerrado sin prometer borrado histórico',
   /favoritos solo en el dispositivo/.test(privacidadLineal) &&
   /no obtiene ni registra tokens push/.test(privacidadLineal) &&
@@ -2542,12 +2696,12 @@ prueba('privacidad y UI permiten solicitar la retirada del consentimiento anteri
   /Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar/.test(html) &&
   /puedes retirarlo escribiendo a RWAdar@protonmail.com/.test(html) &&
   /Está desactivado por defecto[\s\S]*faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(js));
-prueba('privacidad describe las cuentas de la fase 1, sus correos, la sesión y el borrado desde Perfil',
-  /Tu cuenta \(opcional\)/.test(privacidadLineal) &&
+prueba('privacidad exige cuenta confirmada y conserva correos, sesión y borrado desde Perfil',
+  /Necesitas una cuenta con el correo confirmado para acceder al radar/.test(privacidadLineal) &&
   /correo para confirmar la dirección/.test(privacidadLineal) &&
   /enlace para poner una contraseña nueva/.test(privacidadLineal) &&
   /cuenta de Gmail de RWAdar/.test(privacidadLineal) &&
-  /memoria de la pestaña/.test(privacidadLineal) &&
+  /cookie de sesión necesaria/.test(privacidadLineal) &&
   /borrar tu cuenta tú mismo/.test(privacidadLineal) &&
   /opiniones,\s+los avisos por correo y los avisos push\s+siguen en pausa/i.test(privacidadLineal) &&
   /id="derechos"/.test(privacidad) && /El titular verificará la identidad/.test(privacidadLineal) &&
@@ -2847,8 +3001,9 @@ console.log('\n=== RWADAR ACADEMY ===');
   prueba('las URL limpias de la Academy no se quedan en caché del CDN',
     /\/academy\/\*\n\s+Cache-Control: public, max-age=0, must-revalidate/.test(headers));
   const codigoAcademy = lee('assets/academy-20261002.js');
-  prueba('el progreso vive solo en localStorage, protegido y sin innerHTML ni red',
-    /const CLAVE = 'rwadar\.academy\.v1'/.test(codigoAcademy) &&
+  prueba('el progreso es local y separado por cuenta tras verificar la sesión, sin enviar resultados',
+    /const CLAVE = 'rwadar\.academy\.v1:' \+ cuenta\.id/.test(codigoAcademy) &&
+    /await window\.RWADAR_ACCESO\.verificar\(\)/.test(codigoAcademy) &&
     (codigoAcademy.match(/try \{/g) || []).length >= 3 &&
     !/innerHTML|fetch\(|XMLHttpRequest|sendBeacon|document\.cookie/.test(codigoAcademy));
   prueba('el publicado reescribe los assets de la Academy con su huella',

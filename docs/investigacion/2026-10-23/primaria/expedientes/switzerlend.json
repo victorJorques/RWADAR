@@ -1,0 +1,135 @@
+{
+  "slug": "switzerlend",
+  "proveedor": "Aktionariat",
+  "emisor": "Switzerlend AG",
+  "identificador": "CHE-456.445.646 / LENDS",
+  "jurisdiccion": "CH",
+  "moneda": "CHF/ZCHF",
+  "documento": "TokenShareholderAgreementLENDS",
+  "alcanceLectura": "Página completaenChrome, advertencias/mercados ydocumentosenlazadosdisponibles; condicionesAktionariat leídas. Registro cantonal consultado porExapero devolviócontenedor,noextractocompleto. Noauditoríaonchain niadmisiónresidencialEspaña.",
+  "profundidad": "parcial_registro_y_condiciones_comerciales_no_completos",
+  "claims": [
+    {
+      "campo": "derecho",
+      "dato": "Acciones tokenizadas del emisor; derechos societarios requieren inscripciónregistroaccionistas.",
+      "fuentePrimaria": "https://shares.lend.ch",
+      "localizador": "TokenOverview yRegistrationAgreement",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Registros ycondicionesparticularesrequierencontraste completo; tokenwrappersDAKS/DQTS/LENDStienenderechosarrastrepropios.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "precio_historico",
+      "dato": "68,01CHF,últimatransacción07/10/2026",
+      "fuentePrimaria": "https://shares.lend.ch",
+      "localizador": "TokenOverview yAllTrades",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No es precioejecutableactual,mínimoEURniAPY; conservarfechaúltimatransacción/definidoemisor.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimoEUR",
+      "dato": null,
+      "fuentePrimaria": "https://shares.lend.ch",
+      "localizador": "Portal completo",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "PrecioCHF/ZCHFporacción no equivale amínimoEUR; no conversión.",
+      "estado": "no_acreditado"
+    },
+    {
+      "campo": "accesoEspana",
+      "dato": null,
+      "fuentePrimaria": "https://www.aktionariat.com/terms-of-service",
+      "localizador": "§1 yrestriccionesleyresidencia",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Serviciosmayores18yjurisdicciónlegal no confirmanadmisiónresidenteEspaña productoindividual.",
+      "estado": "no_acreditado"
+    },
+    {
+      "campo": "salida",
+      "dato": "Transmisión a contraparte vía mercado; no garantía decomprador,recompra o precio.",
+      "fuentePrimaria": "https://shares.lend.ch",
+      "localizador": "SecondaryTrading yTerms delpie",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Liquidaciónatómica describeintercambiono disponibilidaddecompradores; sujetosacuerdosysmartcontracts.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "costes",
+      "dato": "Operador puede cobrartarifatradesygasEthereum; no tarifacompletacuantificadaverificada.",
+      "fuentePrimaria": "https://shares.lend.ch",
+      "localizador": "PieTerms ycondicionesAktionariat§2",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No afirmar0% por appgratuita; pendiente tarifaporproducto.",
+      "estado": "parcial"
+    },
+    {
+      "campo": "supervision",
+      "dato": "Pie declara facilitynocomercial sin supervisiónprudencial ysinproteccionesdevenue supervisado.",
+      "fuentePrimaria": "https://shares.lend.ch",
+      "localizador": "SecondaryTrading delpie",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Afirmaciónexplícitadelproveedor,noconfirmaciónindependienteregulatoria; registromercantil no eslicenciafinanciera.",
+      "estado": "parcial"
+    }
+  ],
+  "conflictos": [],
+  "propuestas": [
+    "Conservarreferenciaconincertidumbreyprecioshistóricosfechados; no renovaciónintegralcomoverificadoactual.",
+    "MantenermínimoEUR yEspaña sinconfirmar; nodatosdeotros4emisoresporusarmisma tecnología."
+  ],
+  "schemaVersion": 1,
+  "ciclo": "2026-10-23",
+  "consulta": {
+    "inicioUtc": "2026-10-23T18:57:56Z",
+    "finUtc": "2026-10-23T19:09:16Z",
+    "zonaPresentacion": "Europe/Madrid",
+    "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+  },
+  "requiereRevisionIndependiente": true,
+  "aplicado": false,
+  "publicado": false,
+  "decisionNuevaAlta": "no_es_alta_ficha_existente"
+}

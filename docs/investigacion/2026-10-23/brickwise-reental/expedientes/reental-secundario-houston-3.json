@@ -1,0 +1,91 @@
+{
+  "slug": "reental-secundario-houston-3",
+  "title": "Houston 3",
+  "provider": "reental",
+  "existingCollection": "secundario",
+  "previousVerificationDate": "2026-10-22",
+  "investigacionCompleta": false,
+  "revisionIndependiente": false,
+  "aprobacionPublicacion": false,
+  "decision": "Conservar la referencia documental existente; no renovar toda su fecha ni sus cifras con esta captura",
+  "newCandidate": false,
+  "claims": [
+    {
+      "field": "estado_etiqueta_web",
+      "assertion": [
+        "Financiado"
+      ],
+      "source": "https://www.reental.co/properties/1787859843516-25fd8701-69a9-4e39-ab20-28b8414b7228-houston-3",
+      "locator": "Etiqueta CMS sin clase w-condition-invisible",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La etiqueta del proyecto no acredita apertura de una emisión ni existencia de una orden P2P.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "precio_token_referencia",
+      "assertion": "100 $",
+      "source": "https://www.reental.co/properties/1787859843516-25fd8701-69a9-4e39-ab20-28b8414b7228-houston-3",
+      "locator": "Precio del Token; símbolos ocultos del CMS excluidos",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "Precio nominal o de referencia del proyecto. No es precio ejecutable ni mínimo de compra del mercado secundario.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "minimo_euros",
+      "assertion": "No acreditado para una compra actual de esta referencia",
+      "source": "https://www.reental.co/properties/1787859843516-25fd8701-69a9-4e39-ab20-28b8414b7228-houston-3",
+      "locator": "Precio del token; contrato específico pendiente",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La FAQ general habla de 100 euros/dólares. No convertir USD en EUR.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "espana",
+      "assertion": "No confirmado por contrato específico ni por admisión de un comprador",
+      "source": "https://www.reental.co/faqs",
+      "locator": "Quién puede invertir; registro/KYC; documento específico",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La regla general de KYC/AML no es un pasaporte para todos los tokens.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "salida",
+      "assertion": "La FAQ contempla venta directa a un tercero admitido por la plataforma",
+      "source": "https://www.reental.co/faqs",
+      "locator": "¿Puedo vender mi token?",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "No garantiza comprador, plazo, liquidez ni precio. Deben leerse las restricciones del acuerdo específico.",
+      "status": "evidencia_observada_sin_aprobacion"
+    }
+  ],
+  "unresolved": [
+    "Leer los acuerdos, whitepaper y anexos de esta referencia y acreditar emisor/vehículo/registro y alcance.",
+    "No renovadas rentabilidades: la página muestra proyecciones sin fecha suficiente del cálculo actual.",
+    "Faltan costes, plazo de salida, restricciones de cesión y acceso español específicos; no completar con otra emisión."
+  ],
+  "primaryPage": {
+    "url": "https://www.reental.co/properties/1787859843516-25fd8701-69a9-4e39-ab20-28b8414b7228-houston-3",
+    "file": "reental-secundario-houston-3.html",
+    "reviewedInDepth": false,
+    "consultedAt": "2026-10-23T19:07:54.061661+00:00",
+    "http": 200,
+    "finalUrl": "https://www.reental.co/properties/1787859843516-25fd8701-69a9-4e39-ab20-28b8414b7228-houston-3",
+    "dateHeader": "Fri, 23 Oct 2026 19:07:54 GMT",
+    "lastModified": "Fri, 23 Oct 2026 19:07:54 GMT",
+    "bytes": 114299,
+    "sha256": "ceae71e837e387ad4a2287f144dbca21bd10e6c96349beab93f08b41d91cf4ca"
+  },
+  "pdfLinksDiscovered": [
+    "https://d23t4e7dm0xzj0.cloudfront.net/HOU-3/docs-es/1739800668011_houston_3_dossier_comercial.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/HOU-3/docs-es/1739800667129_acuerdo_de_subscripcion_de_serie_reental_hou_3.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/HOU-3/docs-es/1739789930889_memo_hou_3_esp.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/HOU-3/docs-en/1739800677128_houston_3_dossier_comercial.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/HOU-3/docs-en/1739800676093_subscription_agreement_reental_hou_3.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/HOU-3/docs-en/1739789933909_memo_hou_3_eng.pdf"
+  ]
+}

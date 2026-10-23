@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 22 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 23 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -18,6 +18,17 @@ consulta. Entrar en el radar es gratis para las plataformas.
 ---
 
 ## Qué está funcionando hoy
+
+**Entrega nueva en preparación:** Víctor pidió cuenta confirmada obligatoria
+en web y app, una cartera manual local y presentar el 3D como tutorial de cuatro
+pasos dentro de Academy. La fuente está implementada y tiene pruebas locales;
+la compilación Android corregida está en curso. El APK anterior falló una prueba
+real con letra grande. No se han activado estos cambios en producción ni aplicado
+los permisos nuevos de Supabase. La web y la app públicas siguen siendo las que
+describe la tabla. La investigación permanece pausada para inicio manual; el
+ciclo expresamente solicitado hoy solo preparó correcciones documentales revisadas,
+sin altas nuevas ni renovación de las fechas de las demás referencias.
+Detalle en [el cierre local](CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md).
 
 | | Estado |
 |---|---|
@@ -50,13 +61,15 @@ pública y después se publicó producción. Las pruebas y las huellas quedan en
 el informe de mejora integral con fecha. El vídeo de nueve perfiles simulados
 está entregado en local y reproducido completo; no es una prueba con personas.
 
-**Ciclo diario:** tarea activa a las **09:00 locales del PC**, por autorización
-expresa del titular; su zona actual coincide con España peninsular. Investiga
-las ofertas publicadas y busca nuevas con documentos primarios, contraste y
-revisión independiente. Cada candidata se publica con tarjeta e ilustración
-editorial si pasa las compuertas, o no se admite ese día. No existe cola pública
-«en investigación». El PC y la aplicación deben estar encendidos; si cambia
-la zona del equipo hay que reajustar el horario. Procedimiento:
+**Investigación del catálogo:** tarea preparada y **PAUSADA, con inicio manual**.
+Víctor debe pulsar **Ejecutar** o pedir **«haz la investigación»** para abrir un
+solo ciclo; la programación anterior no inicia trabajo ni autoriza futuras
+ejecuciones. Investiga las ofertas publicadas y busca nuevas con documentos
+primarios, contraste y revisión independiente. Cada candidata se publica con
+tarjeta e ilustración editorial si pasa las compuertas y existe permiso expreso
+para SQL y publicación de ese ciclo, o no se admite ese día. No existe cola
+pública «en investigación» ni autorización recurrente autónoma. Se conserva el
+catálogo completo publicado. Procedimiento:
 [`tareas/CICLO-DIARIO-CATALOGO.md`](tareas/CICLO-DIARIO-CATALOGO.md).
 
 **Cambios del 11/10:** panel nativo de cuentas y refuerzos de la web
@@ -223,6 +236,7 @@ Cada herramienta firma sus commits con su propio nombre (ver
 | `rwadar-movil/` | App de Android e iPhone (Expo) |
 | `rwadar-qr/` | Código QR de la tarjeta |
 | `rwadar-limpieza/` | Página que desinstala la PWA antigua de Netlify: se conserva |
+| `rwadar-panel/` | Panel de control: encender/apagar web y catálogo, salud, visitas, descargas y cuentas. En el ordenador (`npm run panel`) o compartido con los socios en <https://rwadar-panel.victorjorquesgranero.workers.dev> (subido el 22/10 con permiso de Víctor; se entra con enlace personal). Ver su `LEEME.md` |
 | `rwadar-version-codex/` | Copia rescatada de la versión de agosto: no se edita |
 | `docs/` | Esta documentación |
 

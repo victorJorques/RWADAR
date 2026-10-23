@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "ciclo": "2026-10-23",
+  "soloPropuestas": true,
+  "requiereRevisionIndependiente": true,
+  "noAutorizaSQLPorSiSolo": true,
+  "cambios": [
+    {
+      "slug": "casa-de-outeiro",
+      "campo": "referencias",
+      "etiqueta": "Mínimo de suscripción publicado",
+      "valor": "2.000 EUR (80 acciones de 25 EUR)",
+      "fechaDato": "2026-06-24",
+      "fechaConsulta": "2026-10-23",
+      "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+      "localizador": "FDF v4, §3/p.4",
+      "alcance": "Ticket total. Campaña observada abierta hasta31/10; no acredita admisión individual desde España. Acciones con limitaciones de transmisión y contraparte."
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencias",
+      "etiqueta": "Costes publicados de compra y venta",
+      "valor": "Compra: LBMA +4%; venta: LBMA −6%",
+      "fechaDato": "2026-07-08",
+      "fechaConsulta": "2026-10-23",
+      "fuente": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "Términos generales §5.4",
+      "alcance": "Cuadro contractual susceptible de cambio; confirmar cotización del proveedor. Gastos bancarios, cambio y proveedores de pago pueden añadirse. Custodia sin tarifa no significa coste total cero."
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "campo": "referencias",
+      "etiqueta": "Salida y plazo contractual publicados",
+      "valor": "Solo recompra por Prosegur; procesamiento normal aproximado de1a7días hábiles",
+      "fechaDato": "2026-07-08",
+      "fechaConsulta": "2026-10-23",
+      "fuente": "https://app.prosegurdigitalgold.com/#/terms-service",
+      "localizador": "Advertencias y §§6.1–6.7",
+      "alcance": "Sin venta a terceros. Admite suspensión, límites y retrasos bancarios; no garantizar liquidez inmediata. La portada comercial anuncia menos de24h: se conserva el conflicto y se prioriza la limitación contractual."
+    },
+    {
+      "slug": "iod-occasio",
+      "campo": "referencias",
+      "etiqueta": "Estado de la campaña observado",
+      "valor": "Cerrada;120.000EUR recaudados de120.000EUR",
+      "fechaDato": null,
+      "fechaConsulta": "2026-10-23",
+      "fuente": "https://aliuscap.com/projects/iodo1",
+      "localizador": "Encabezado, avance de campaña y botón Invertir deshabilitado",
+      "alcance": "Observación de estado, no fecha de amortización ni pago del bono. FDF28/09 fijó cierre al completar suscripción o límite23/10; no reabrir la campaña por la fecha."
+    }
+  ],
+  "exclusiones": [
+    "No renovar la fecha del catálogo entero por estas cuatro referencias.",
+    "No actualizar rendimiento/AUM/NAV de Spiko: hay fecha de NAV futura25/10 y conflictos de fuente/período.",
+    "No actualizar límites de salida de mTBILL: conflictoFT/KID25%/5% frente15%/50%.",
+    "No copiar mínimos EUR ni admisión España entre productos o proveedores.",
+    "No cambiar estado de revisión integral aactual donde solo se acreditó una afirmación.",
+    "No descartar plataformas ni vaciar o reducir las49fichas."
+  ]
+}

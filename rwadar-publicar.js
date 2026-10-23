@@ -26,6 +26,8 @@ const { comprobar: comprobarAcademy, paginasAcademy } = require('./rwadar-academ
 const { comprobar: comprobarNoticias } = require('./rwadar-noticias');
 const { comprobar: comprobarFichas } = require('./rwadar-fichas');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
+const { construirWorker, RUTAS: RUTAS_ACCESO } = require('./rwadar-acceso/compilar.cjs');
+const { exigirCatalogoPrivado } = require('./rwadar-acceso/comprobar-produccion.cjs');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
@@ -45,7 +47,7 @@ const DIR = path.join(__dirname, 'rwadar-site');
 const FILE = path.join(DIR, 'index.html');
 /* Todas las páginas HTML propias: pasan la misma CSP estricta y reciben los
    nombres versionados de los assets. */
-const PAGINAS_HTML = ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html',
+const PAGINAS_HTML = ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html', 'acceso.html',
   ...PAGINAS_ACADEMY, ...PAGINAS_FICHAS.filter(nombre => nombre.endsWith('.html'))];
 const SALIDA = path.join(__dirname, 'rwadar-publicado');
 const WRANGLER_VERSION = '4.125.0';
@@ -175,6 +177,14 @@ if (remoto) {
     console.error('PUBLICACION REMOTA BLOQUEADA: configuración de Auth insegura o no verificable.');
     console.error(e.message);
     process.exit(2);
+  }
+}
+
+if (produccion) {
+  try { await exigirCatalogoPrivado(); }
+  catch (e) {
+    console.error('PUBLICACIÓN BLOQUEADA: falta comprobar el acceso obligatorio del catálogo en Supabase.');
+    console.error(e.message); process.exit(2);
   }
 }
 
@@ -473,6 +483,15 @@ function construirSalida() {
       const destino = path.join(temporal, ...nombre.split('/'));
       fs.mkdirSync(path.dirname(destino), { recursive: true });
       fs.copyFileSync(origen, destino);
+      if (PAGINAS_HTML.includes(nombre) && !['acceso.html', 'privacidad.html', 'transparencia-comercial.html'].includes(nombre)) {
+        let pagina = fs.readFileSync(destino, 'utf8');
+        if (!pagina.includes('/assets/acceso-privado.js')) {
+          if (!/<head(?:\s[^>]*)?>/i.test(pagina)) throw new Error(`Falta head en ${nombre}`);
+          pagina = pagina.replace(/<head(?:\s[^>]*)?>/i,
+            '$&\n<script defer src="/assets/acceso-privado.js"></script>');
+          fs.writeFileSync(destino, pagina, 'utf8');
+        }
+      }
     }
     /* Las cuatro ilustraciones viven en una fuente única compartida con
        Expo. Se copian una a una desde el manifiesto validado; nunca se copia
@@ -512,9 +531,14 @@ function construirSalida() {
       fs.writeFileSync(archivo, reescribirReferencias(fs.readFileSync(archivo, 'utf8')), 'utf8');
     }
 
+    // All generated pages, exports and assets pass through the same gate.
+    fs.writeFileSync(path.join(temporal, '_worker.js'), construirWorker(), 'utf8');
+    fs.writeFileSync(path.join(temporal, '_routes.json'), JSON.stringify(RUTAS_ACCESO) + '\n', 'utf8');
+
     const salidaEsperada = [
       ...ARCHIVOS_PUBLICABLES.map(nombre => referencias.get('/' + nombre)?.slice(1) || nombre),
       ...activosEditoriales.publicables.map(activo => activo.salida),
+      '_worker.js', '_routes.json',
     ].sort();
 
     /* VERSION representa todo el artefacto, no una fecha escrita a mano. El

@@ -1,0 +1,83 @@
+{
+  "slug": "reental-emision-primaria",
+  "title": "Emisión primaria de Reental",
+  "provider": "reental",
+  "existingCollection": "en_camino",
+  "previousVerificationDate": "2026-10-22",
+  "investigacionCompleta": false,
+  "revisionIndependiente": false,
+  "aprobacionPublicacion": false,
+  "decision": "Conservar la referencia documental existente; no renovar toda su fecha ni sus cifras con esta captura",
+  "newCandidate": false,
+  "claims": [
+    {
+      "field": "alcance_pagina",
+      "assertion": "Catálogo general; no identifica una emisión concreta abierta",
+      "source": "https://www.reental.co/properties",
+      "locator": "Listado de oportunidades y filtros de varios proyectos",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "No sumar estados de diferentes tarjetas ni presentar sus filtros como estado de esta referencia genérica.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "minimo_euros",
+      "assertion": "No acreditado para una compra actual de esta referencia",
+      "source": "https://www.reental.co/properties",
+      "locator": "Precio del token; contrato específico pendiente",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La FAQ general habla de 100 euros/dólares. No convertir USD en EUR.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "espana",
+      "assertion": "No confirmado por contrato específico ni por admisión de un comprador",
+      "source": "https://www.reental.co/faqs",
+      "locator": "Quién puede invertir; registro/KYC; documento específico",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La regla general de KYC/AML no es un pasaporte para todos los tokens.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "salida",
+      "assertion": "La FAQ contempla venta directa a un tercero admitido por la plataforma",
+      "source": "https://www.reental.co/faqs",
+      "locator": "¿Puedo vender mi token?",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "No garantiza comprador, plazo, liquidez ni precio. Deben leerse las restricciones del acuerdo específico.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "conflicto_minimo_general",
+      "assertion": "El listado anuncia inversión desde 500 EUR, mientras la FAQ general indica un token de 100 euros/dólares",
+      "source": "https://www.reental.co/properties",
+      "locator": "Texto posterior al listado: oportunidades inmobiliarias desde 500 EUR",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "No resolver aplicando una cifra universal a todas las ofertas; comprobar contrato y canal de cada producto.",
+      "status": "evidencia_observada_sin_aprobacion"
+    }
+  ],
+  "unresolved": [
+    "Leer los acuerdos, whitepaper y anexos de esta referencia y acreditar emisor/vehículo/registro y alcance.",
+    "No renovadas rentabilidades: la página muestra proyecciones sin fecha suficiente del cálculo actual.",
+    "Faltan costes, plazo de salida, restricciones de cesión y acceso español específicos; no completar con otra emisión."
+  ],
+  "primaryPage": {
+    "url": "https://www.reental.co/properties",
+    "file": "reental-emision-primaria.html",
+    "reviewedInDepth": false,
+    "consultedAt": "2026-10-23T19:07:55.152131+00:00",
+    "http": 200,
+    "finalUrl": "https://www.reental.co/properties",
+    "dateHeader": "Fri, 23 Oct 2026 19:07:55 GMT",
+    "lastModified": "Thu, 22 Oct 2026 10:13:53 GMT",
+    "bytes": 195490,
+    "sha256": "17c6c1e90a75424fb091e087f9b1d5fcb7033478e247771ffd0f73e9b338089c"
+  },
+  "pdfLinksDiscovered": [],
+  "notASpecificIssuance": true
+}

@@ -6,6 +6,70 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 23 de octubre de 2026 · Codex · acceso obligatorio, cartera y tutorial Academy
+
+Se trabajó en la rama aislada codex/cierre-android-140-20261023 sin tocar el
+main compartido ni el panel de Claude. Fuente Android consolidada en
+`1ecf7e7aa8941400d6ad954680cd6deb89107c42`: acceso obligatorio, cartera manual
+local por cuenta, fichas más legibles, aviso desplazable y tutorial de cuatro
+pasos dentro de Academy. El APK18 falló de verdad con fuente1,5/lista de altura0;
+no reutilizarlo ni reanudar su workflow desactivado como release. Víctor autorizó
+una compilación corregida gratuita, iniciada como1.4.0/código19 y todavía en curso.
+
+Web: entrada/registro/recuperación, Worker sobre todas las rutas, cookie protegida,
+progreso/favoritos UUID, limpieza de caché PWA y tutorial guiado. 549 comprobaciones
+web locales al final del recolector sin fallos; 33 de acceso, incluyendo Worker
+compilado, sesión, esquema real26/49, reversión y bloqueo de producción si la base
+sigue admitiendo anónimos. La pasada móvil inicial223PASS tuvo11 fallos resueltos
+con repeticiones dirigidas; los módulos antes bloqueados arrancaron22+18 casos.
+QR y herramientas aprobados. No presentar npm test interrumpido como ejecución
+monolítica exitosa. Informe: [cierre local](../CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md).
+
+El ciclo manual de hoy preparó cuatro referencias en tres fichas, sin nuevas
+altas ni rejuvenecer las otras fechas. SQL editorial revisado independientemente;
+SQL28 de acceso y reversión probados y sin aplicar. Se solicitó permiso literal
+para sus comprobaciones y aplicación: la revisión automática rechazó antes una
+consulta de solo lectura por la regla de AGENTS.md. No ejecutar por silencio.
+La tarea de investigación está PAUSADA; nunca reactivar el horario.
+
+Pendientes: autorización SQL, cuenta/buzón controlados para alta-confirmación y
+recuperación reales, QA del APK19 y publicación tras compuertas. Los originales
+de los dos vídeos siguen sin enlaces recuperables; no atribuirles revisión.
+Los ayudantes entregaron cada área y están detenidos, sin trabajo abierto.
+
+---
+
+
+## 23 de octubre de 2026 · Codex · revisión de pendientes e investigación manual
+
+Víctor pidió contrastar la lista completa, reutilizar el APK 1.4.0 y evitar
+repetir pruebas. Tres ayudantes recibieron áreas separadas: web/catálogo,
+Android y seguridad/vídeo. Sus revisiones de evidencias no ejecutaron nuevas
+baterías ni operaciones remotas. La matriz está en
+[`../REVISION-PENDIENTES-2026-10-23.md`](../REVISION-PENDIENTES-2026-10-23.md).
+La web integral tiene comprobación de producción del 22/10; eso no se presenta
+como una nueva inspección remota del 23/10. GitHub sí se consultó el 23/10:
+la última versión pública sigue siendo **1.3.2**. El APK **1.4.0/código 18**
+ya está compilado; falta cerrar las fases nativas pendientes antes de publicarlo.
+
+**Corrección efectiva del programador:** la tarea existente se actualizó a
+«RWAdar · investigación profunda bajo demanda», con estado **PAUSED**,
+comprobado después en su configuración guardada. Solo se inicia al pulsar
+**Ejecutar** o con una orden expresa de Víctor; cada inicio corresponde a un
+solo ciclo y no reactiva el horario. Investigar no concede por sí solo permiso
+para SQL remoto o publicación web. Esta entrada sustituye las referencias a
+«ACTIVA a las 09:00» de los traspasos históricos inferiores. No se investigó
+ni se publicó catálogo durante esta revisión.
+
+Quedan parciales la investigación documental de las 49 ofertas, el plan 5S y
+la revisión exhaustiva de textos. Comunidad sigue apagada: sus refuerzos
+adicionales tienen pruebas locales, pero la migración no está aplicada.
+Turnstile, allowlist de Auth y pruebas reales de cuentas/dispositivo mantienen
+sus pendientes documentados. El vídeo local usa nueve perfiles simulados:
+45 tareas observables no acreditan satisfacción humana del 90 %.
+
+---
+
 ## 23 de octubre de 2026 · Claude · parche de seguridad de Node.js (aviso de Render)
 
 **Rama:** `claude/node-seguro-2026-10-23`. Nada publicado, nada tocado en Supabase.
