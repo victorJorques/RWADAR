@@ -165,3 +165,14 @@ Tres pruebas nuevas enfocadas aprobaron: el puente rechaza cookie sola y token
 en URL, rechaza sesión revocada y el controlador nativo entrega el acceso al
 único endpoint después de corroborar la cuenta. JSX y diff comprobados. Falta
 la prueba real en WebView con la cuenta controlada; no se ha compilado otro APK.
+
+## Integración posterior del coordinador
+
+Worker avanzado y rutas/* integrados; bootstrap en todas las páginas protegidas,
+limpieza PWA, cabeceras de seguridad y sincronización editorial preparados.
+Se preserva la CSP estricta del intercambio del tutorial. Recursos legales
+exactos (idiomas, fuentes, analítica y CSS) públicos; catálogo y fotos protegidos.
+Prueba de integración test:acceso:33/33, sin NODE_PATH externo, incluyendo el
+esquema real del repositorio. La web completó549 comprobaciones locales.
+Servidor final SHA-256: `8f4fc68be2b4875b41dd23367145dc740adecbb3d6e81fc7131f6598f85deeeb`. El SQL28 mantiene su huella anterior.
+Estos resultados no acreditan alta/correo/recuperación reales ni SQL aplicado.

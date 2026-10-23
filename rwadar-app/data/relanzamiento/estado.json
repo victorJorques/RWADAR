@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-10-22",
+  "actualizadoEl": "2026-10-23",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Corte web del22/10 publicado desde main y comprobado en producción: catálogo actualizado, reorganización, fichas permanentes, RSS y selector español/inglés. Android1.3.2 sigue público; APK1.4.0/código18 compilado y firmado en QA nativa independiente, todavía sin publicar. Publicidad, cobros, comisiones, opiniones, avisos, comunidad y manual siguen apagados. No se afirma Auth nativo real ni teléfono físico.",
+  "nota": "Candidato de revisión con acceso obligatorio, tutorial de cuatro pasos dentro de Academy y mejoras de lectura. El catálogo publicado sigue fechado22/10; el lote documental23/10 y SQL28 no se han aplicado. Android1.4.0/código19 se compila una sola vez y no está publicado. La producción anterior continúa; falta prueba real de cuentas, correo y APK nuevo.",
   "revisionAprobada": {
-    "commit": "de7f2b182b45fdb27bc0b9d85b2158fb7420d8e3",
-    "contenidoSha256": "sha256:62aaf0695e1b4aa6873b3d844426e59d8726b95330ba95bde8f891cb9d8ae320",
+    "commit": "f3cfb1a5af6935c1577dfceca8ee63c36d767536",
+    "contenidoSha256": "sha256:f25e70ad5e1515cb7974243767de6ddf97d5fae7f8e239435107adc667315ee5",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
@@ -44,7 +44,7 @@
     },
     "aviso_legal_y_condiciones": {
       "estado": "aprobado",
-      "detalle": "Titular identificado. Privacidad actualizada para las cuentas opcionales web y Android: correo confirmado, nombre opcional, vigilancia propia, sesión solo en memoria, correos de acceso y baja reautenticada. Catálogo público de solo lectura; opiniones, avisos, publicidad, cobros y manual apagados. Revisión interna, no dictamen jurídico externo.",
+      "detalle": "Identidad y alcance editorial gratuito conservados. Privacidad adaptada funcionalmente a cuenta confirmada obligatoria, cookie web HttpOnly, sesión Android en memoria, datos locales por cuenta y cartera manual sin sincronización. Revisión interna, sin dictamen jurídico externo ni habilitación comercial.",
       "evidencias": [
         {
           "tipo": "documento",
@@ -57,6 +57,12 @@
           "referencia": "rwadar-site/privacidad.html#aviso-legal",
           "verificadoEl": "2026-09-27",
           "resumen": "Datos declarados por el titular completos, finalidades y proveedores descritos, criterios de conservación y proceso diario de180días comprobado en metadatos."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "docs/CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md#web-y-acceso",
+          "verificadoEl": "2026-10-23",
+          "resumen": "La política describe el flujo implementado, la cookie necesaria, el acceso por cuenta y la retirada de la caché PWA. La publicación está pendiente; no acredita pruebas reales de correo."
         }
       ]
     },
@@ -150,7 +156,7 @@
     },
     "beta_segura_extremo_a_extremo": {
       "estado": "en_progreso",
-      "detalle": "Soporte de precarga editorial y altas con imagen propia revisado localmente y pendiente de preview pública del nuevo corte. La producción anterior sigue acreditada por su evidencia. La revocación declarada por el titular se conserva como evidencia histórica; esta etapa no acredita el APK1.4.0 ni Auth nativo real.",
+      "detalle": "Candidato con cuentas obligatorias y tutorial Academy. Pruebas locales web549 y acceso33, esquema real26/49 y reversión; navegador local390/1440. Pendiente preview pública, alta-confirmación-recuperación reales, SQL28 autorizado y QA del APK19. Solo se prepara preview; la producción sigue bloqueada.",
       "evidencias": [
         {
           "tipo": "documento",
@@ -241,6 +247,12 @@
           "referencia": "docs/VERIFICACION-ANDROID-2026-09-30.md",
           "verificadoEl": "2026-09-30",
           "resumen": "APK1.1.2/código10 publicado a las10:50:52UTC y descargado sin autenticación a las10:52:17UTC; misma huella y certificado que el binario ensayado. Distribución directa y emulador, sin atribuir tiendas ni dispositivo físico."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md#evidencia-local-y-limites",
+          "verificadoEl": "2026-10-23",
+          "resumen": "Corte f3cfb1a revisado localmente. Worker completo, sesión confirmada, aislamiento por usuario, lectura editorial, bloqueo de producción si Supabase admite anónimos y tutorial manual. No es prueba E2E remota ni aprobación del APK."
         }
       ]
     },
