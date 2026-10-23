@@ -36,10 +36,13 @@ tratarlos como autorización actual.
 
 Actualización posterior a esta matriz: la continuación del APK18 confirmó un
 defecto real de altura de lista con fuente grande. Víctor autorizó una única
-compilación corregida; ya está iniciada como1.4.0/código19. Se incorporaron
+compilación corregida; ya terminó como1.4.0/código19. Se incorporaron
 lectura más clara, cartera local, cuenta obligatoria y tutorial de cuatro pasos
 dentro de Academy. El ciclo manual del23/10 produjo un lote documental parcial
-revisado, todavía sin aplicar. Los cambios nuevos no están publicados.
+revisado, todavía sin aplicar. La web nueva está en preview revisada, con una
+corrección puntual posterior del enlace a condiciones. No está en producción.
+El APK19 tiene identidad e imágenes comprobadas y QA anónima en ejecución;
+las pruebas autenticadas y la release siguen pendientes.
 
 El estado detallado y los límites vigentes están en
 [CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md](CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md).

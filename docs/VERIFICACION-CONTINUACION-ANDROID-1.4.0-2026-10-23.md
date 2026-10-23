@@ -67,6 +67,11 @@ ni se corrige cambiando una tolerancia del ensayo. Su workflow se desactivó.
 Víctor autorizó después una única compilación corregida gratuita. Con sus nuevas
 peticiones de cuenta obligatoria, cartera local y tutorial en Academy, se inició
 1.4.0/código19 en EAS, identificador `215e184c-2856-408f-9323-ed285f41b3ed`,
-desde `1ecf7e7aa8941400d6ad954680cd6deb89107c42`. El estado observado es en curso;
-no hay release1.4.0 acreditada. La app pública sigue siendo1.3.2.
+desde `1ecf7e7aa8941400d6ad954680cd6deb89107c42`. Terminó correctamente a20:33:31UTC.
+El APK descargado tiene88.961.445bytes y SHA-256
+`f384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624`.
+CRC del ZIP y49 imágenes exactas comprobados. La ejecución acotada
+`40022139423` ya aprobó identidad, firma y permisos y comprueba el acceso anónimo
+en emulador; no contiene trabajo de release ni sustituye la QA autenticada.
+No hay release1.4.0 acreditada. La app pública sigue siendo1.3.2.
 Ver [el cierre de implementación](CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md).

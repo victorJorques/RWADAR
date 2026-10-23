@@ -73,12 +73,15 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
     if (env.SUPABASE_URL !== ORIGEN_AUTH || !/^sb_publishable_[A-Za-z0-9_-]+$/.test(env.SUPABASE_PUBLISHABLE_KEY || '')) throw new Error('configuracion_pendiente');
     const abort = new AbortController(); const timer = setTimeout(() => abort.abort(), plazoMs);
     try {
-      const result = await fetchImpl(ORIGEN_AUTH + path, { method, redirect: 'error', cache: 'no-store',
+      // Workers implements follow/manual, not redirect:'error'. Manual plus
+      // an explicit 3xx rejection prevents forwarding credentials elsewhere.
+      const result = await fetchImpl(ORIGEN_AUTH + path, { method, redirect: 'manual', cache: 'no-store',
         signal: abort.signal, headers: { apikey: env.SUPABASE_PUBLISHABLE_KEY,
           ...(token ? { Authorization: 'Bearer ' + token } : {}),
           ...(data ? { 'Content-Type': 'application/json' } : {}),
           ...(representacion ? { Prefer: 'return=representation' } : {}) },
         ...(data ? { body: JSON.stringify(data) } : {}) });
+      if (result.status >= 300 && result.status < 400) throw new Error('redireccion_no_permitida');
       if (Number(result.headers.get('content-length')) > maxBytes) throw new Error('respuesta_excesiva');
       const reader = result.body?.getReader(); let text = '';
       if (reader) {

@@ -3,6 +3,26 @@
 Este documento distingue código, pruebas locales, compilación y publicación.
 La web y la app públicas anteriores no se han sustituido por este corte.
 
+Actualización posterior: Víctor autorizó expresamente ambos cambios SQL y sus
+comprobaciones. El lote editorial se aplicó a21:19UTC: revisión destino aprobada,
+26/49 completos, catálogo sin retirar y las siete tablas anteriores idénticas
+por recuento y huella. Evidencia: [aplicación remota](investigacion/2026-10-23/aplicacion-supabase-editorial.json).
+SQL28 queda autorizado pero se reserva para activar junto a la web verificada.
+No se ha aplicado aún. La investigación por horario sigue pausada.
+
+Víctor detectó un fallo real al probar el acceso de preview. El runtime de
+Cloudflare rechazaba `fetch` con `redirect:error` antes de llegar a GoTrue.
+Se corrigió a manual con rechazo expreso de3xx: dos pruebas enfocadas y el
+runtime real workerd/Miniflare aprobaron. La fecha de compatibilidad real de
+Pages es2026-08-25; cache:no-store no era la causa. Se prepara el despliegue de
+esa corrección con el snapshot editorial nuevo, sin cambiar el APK19.
+
+La QA anónima40022139423 falló antes de abrir la app por un broadcast protegido
+del arnés. Su ZIP verificable se conservó. Corregido solo el arnés,40023081613
+aprobó firma, paquete, imágenes, aislamiento y el recorrido estándar. Falló al
+esperar el título de alta con fuente1,5; PNG/XML pendientes de diagnóstico.
+Ninguno de estos fallos se convierte en aprobación20/20 ni release.
+
 ## Android
 
 El APK 1.4.0/código18 existente no es publicable. La continuación selectiva
@@ -34,10 +54,20 @@ el móvil y `.easignore`, sin web, SQL, documentos, secretos ni dependencias.
 Node22.23.4 portable verificado; no se cambió la instalación global del PC.
 EAS informó planFree, Android6/15 antes de iniciar, sin extras ni cargos previstos.
 
-Compilación iniciada una sola vez: `215e184c-2856-408f-9323-ed285f41b3ed`,
+Compilación ejecutada una sola vez: `215e184c-2856-408f-9323-ed285f41b3ed`,
 versión1.4.0/código19, perfil editorial, conservando las credenciales existentes.
-El estado observado después fue `IN_PROGRESS`. No significa APK terminado,
-validación nativa aprobada ni release pública. Android pública comprobada:1.3.2.
+Terminó correctamente el23/10 a20:33:31UTC. El APK descargado tiene88.961.445bytes,
+SHA-256 `f384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624`.
+Su ZIP supera CRC y conserva las49 imágenes exactas por tamaño y SHA-256.
+La comprobación de firma, paquete y permisos del trabajo nativo ya pasó; el
+recorrido anónimo del emulador se registra aparte. APK terminado no equivale a
+QA autenticada aprobada ni release pública. Android pública comprobada:1.3.2.
+
+Artefacto oficial: https://expo.dev/artifacts/eas/ps1t8bkceKeqVg-GqL4xlO_WOE82UljB9HIfikVxRzw.apk
+QA acotada: https://github.com/victorJorques/RWAdar-downloads/actions/runs/40022139423
+Fuente de QA pública: `a67c6e28d5d519fdd3d773a37a7a51ab644fe3c6`.
+Es una ejecución manual sin trabajo de release: fija el binario exacto, bloquea
+red al introducir el correo inválido y declara pendientes las pruebas autenticadas.
 
 ## Web y acceso
 
@@ -69,6 +99,30 @@ además comprobar que ambas vistas V2 deniegan la lectura anónima.
 El acceso obligatorio cambia el objetivo SEO anterior: las fichas, el sitemap
 y el RSS dejan de ser públicos/indexables sin sesión. La orden actual de Víctor
 prevalece; no se retira ni vacía el catálogo para implantarlo.
+
+## Preview publicada y comprobada
+
+Preview inicial: https://a35c7792.rwadar.pages.dev ; alias de revisión habitual.
+El navegador real aprobó entrada, registro y recuperación a390px y1440px sin
+desbordamiento ni excepciones. La revisión independiente HTTP comprobó diez
+rutas protegidas: HTML303 al acceso, API/JS/CSS/imagen/CSV/sitemap/RSS401,
+`private, no-store` y CSP. El canario de consulta no se propagó en la redirección.
+Acceso, legales, sus recursos y el limpiador PWA siguieron disponibles.
+
+La revisión encontró el ancla de condiciones inexistente. Se corrigió únicamente
+ese atributo en `3f9ce53b9541d6e2b6045e71923d3cc2daabcf87` y se actualizó la
+preview: https://648eaf1f.rwadar.pages.dev (https://revision.rwadar.pages.dev).
+La comprobación dirigida de esta última confirma condiciones200 con ancla y CSP,
+y portada303 a `/acceso?volver=%2F` para navegación HTML. No se repitió la batería
+anterior por ese cambio de un atributo. Caché generada: `rwadar-v-dce99b841d416f0b`.
+Contenido aprobado: `sha256:e28988a0ba77201148b77309e562c799bbe50bc12653aaa1732d4e476fb729b8`.
+
+Evidencias locales fuera del repositorio: `preview-acceso-http.json`,
+`acceso-ui-preview.json`, capturas móvil/escritorio y `preview-condiciones-final.json`
+en la carpeta de entrega. Esto no acredita alta, correo ni recuperación reales;
+se solicitó ese recorrido con un buzón controlado. SQL remoto y producción nuevos
+siguen sin ejecutar. La protección del Worker no cambia todavía los permisos
+anónimos directos de Supabase; para eso está preparado el SQL28.
 
 ## Evidencia local y límites
 
@@ -107,9 +161,10 @@ las fechas/vigencias económicas anteriores. Cero altas nuevas. No se arrastran
 aprobaciones ni se inventan mínimosEUR o acceso individual desde España.
 
 El SQL editorial y el SQL28 de acceso son operaciones distintas, preparadas y
-probadas. No se han aplicado en remoto. Una consulta de solo lectura fue rechazada
+probadas. Al inicio no estaban aplicadas. Una consulta de solo lectura fue rechazada
 por revisión automática porque AGENTS.md exige permiso expreso para SQL remoto;
-se solicitó autorización concreta para estos cambios y comprobaciones.
+se solicitó autorización concreta para estos cambios y comprobaciones. Víctor
+la concedió después y se aplicó el editorial; SQL28 espera la activación web.
 
 Los dos vídeos originales siguen sin URL recuperable; Víctor indicó que no los
 tiene a mano. No se afirma haberlos revisado. El vídeo local de nueve perfiles

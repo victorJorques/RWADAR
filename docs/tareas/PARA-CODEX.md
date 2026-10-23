@@ -14,7 +14,10 @@ main compartido ni el panel de Claude. Fuente Android consolidada en
 local por cuenta, fichas más legibles, aviso desplazable y tutorial de cuatro
 pasos dentro de Academy. El APK18 falló de verdad con fuente1,5/lista de altura0;
 no reutilizarlo ni reanudar su workflow desactivado como release. Víctor autorizó
-una compilación corregida gratuita, iniciada como1.4.0/código19 y todavía en curso.
+una compilación corregida gratuita, terminada como1.4.0/código19. APK de88.961.445
+bytes, SHA-256 `f384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624`.
+CRC y49 imágenes exactas aprobados. La QA anónima `40022139423` aprobó firma,
+paquete y permisos y recorre los formularios; no autoriza la release.
 
 Web: entrada/registro/recuperación, Worker sobre todas las rutas, cookie protegida,
 progreso/favoritos UUID, limpieza de caché PWA y tutorial guiado. 549 comprobaciones
@@ -22,18 +25,33 @@ web locales al final del recolector sin fallos; 33 de acceso, incluyendo Worker
 compilado, sesión, esquema real26/49, reversión y bloqueo de producción si la base
 sigue admitiendo anónimos. La pasada móvil inicial223PASS tuvo11 fallos resueltos
 con repeticiones dirigidas; los módulos antes bloqueados arrancaron22+18 casos.
-QR y herramientas aprobados. No presentar npm test interrumpido como ejecución
+QR y herramientas aprobados. Web integrada en `f3cfb1a`, manifiesto `ea64ca2`,
+plantilla QA inerte `9c1f2ec`; ancla legal corregida en `3f9ce53`.
+Preview final: https://648eaf1f.rwadar.pages.dev y https://revision.rwadar.pages.dev.
+Navegador real390/1440 y revisión independiente HTTP de diez rutas protegidas
+aprobados; el único hallazgo fue el ancla de condiciones, corregida y comprobada
+en la preview final. Supabase continúa con sus permisos anteriores: SQL28 pendiente.
+No presentar npm test interrumpido como ejecución
 monolítica exitosa. Informe: [cierre local](../CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md).
 
 El ciclo manual de hoy preparó cuatro referencias en tres fichas, sin nuevas
 altas ni rejuvenecer las otras fechas. SQL editorial revisado independientemente;
-SQL28 de acceso y reversión probados y sin aplicar. Se solicitó permiso literal
+SQL28 de acceso y reversión probados. Se solicitó permiso literal
 para sus comprobaciones y aplicación: la revisión automática rechazó antes una
 consulta de solo lectura por la regla de AGENTS.md. No ejecutar por silencio.
+Víctor autorizó ambos cambios: el editorial quedó aplicado a21:19UTC con26/49,
+retirado=false y las siete tablas anteriores idénticas por huella. Evidencia en
+docs/investigacion/2026-10-23/aplicacion-supabase-editorial.json. SQL28 aún no
+se aplica: coordinarlo con la web verificada. No renovar las fechas generales.
 La tarea de investigación está PAUSADA; nunca reactivar el horario.
 
-Pendientes: autorización SQL, cuenta/buzón controlados para alta-confirmación y
-recuperación reales, QA del APK19 y publicación tras compuertas. Los originales
+El usuario probó acceso y encontró fallo genérico. Diagnóstico en runtime
+Cloudflare: redirect:error no implementado, antes deGoTrue. Parche manual+
+rechazo3xx comprobado en workerd y dos pruebas enfocadas. Publicar en preview
+antes de pedir otro intento. No cambiar Auth ni crear usuarios de prueba.
+
+Pendientes: activar SQL28 junto a web verificada, cuenta/buzón controlados para alta-confirmación y
+recuperación reales, QA autenticada del APK19 y publicación tras compuertas. Los originales
 de los dos vídeos siguen sin enlaces recuperables; no atribuirles revisión.
 Los ayudantes entregaron cada área y están detenidos, sin trabajo abierto.
 

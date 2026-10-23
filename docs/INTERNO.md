@@ -22,12 +22,18 @@ consulta. Entrar en el radar es gratis para las plataformas.
 **Entrega nueva en preparación:** Víctor pidió cuenta confirmada obligatoria
 en web y app, una cartera manual local y presentar el 3D como tutorial de cuatro
 pasos dentro de Academy. La fuente está implementada y tiene pruebas locales;
-la compilación Android corregida está en curso. El APK anterior falló una prueba
-real con letra grande. No se han activado estos cambios en producción ni aplicado
+la compilación Android corregida ha terminado y se comprueba en emulador. La web
+nueva está en la preview de revisión: entrada, registro y recuperación comprobados
+en móvil y escritorio, con rutas protegidas sin sesión. El APK anterior falló una
+prueba real con letra grande. No se han activado estos cambios en producción ni aplicado
 los permisos nuevos de Supabase. La web y la app públicas siguen siendo las que
 describe la tabla. La investigación permanece pausada para inicio manual; el
 ciclo expresamente solicitado hoy solo preparó correcciones documentales revisadas,
-sin altas nuevas ni renovación de las fechas de las demás referencias.
+sin altas nuevas ni renovación de las fechas de las demás referencias. Víctor
+autorizó después los cambios SQL: las correcciones documentales ya están aplicadas
+en Supabase conservando el catálogo completo y la revisión anterior. Los permisos
+de acceso nuevos esperan a la activación web. Se corrigió también un fallo real
+del Worker que impedía iniciar sesión; está preparado para la preview.
 Detalle en [el cierre local](CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md).
 
 | | Estado |

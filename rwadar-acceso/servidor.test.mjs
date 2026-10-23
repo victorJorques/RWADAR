@@ -141,3 +141,21 @@ test('tutorial nativo rechaza la sesión revocada sin adoptar cookie',async()=>{
   const e=entorno({profile:[]});const r=await e.run('/api/acceso/tutorial',{authorization:'Bearer '+TOKEN});
   assert.equal(r.status,401);assert.equal(r.headers.get('set-cookie'),null);
 });
+test('login usa redirect manual compatible con Workers y conserva la comprobación de sesión',async()=>{
+  const calls=[];
+  const e=entorno({fetch:async(url,init)=>{
+    calls.push(url);assert.equal(init.redirect,'manual');
+    if(url.includes('/token?'))return Response.json({access_token:TOKEN});
+    if(url.includes('/auth/v1/user'))return Response.json({id:UID,email:'cuenta@ejemplo.test',email_confirmed_at:'2026-10-23T10:00:00Z',is_anonymous:false});
+    if(url.includes('/mi_perfil?'))return Response.json([{id:UID}]);
+    throw new Error('Ruta inesperada');
+  }});
+  const r=await e.run('/api/acceso/entrar',{method:'POST',data:{correo:'cuenta@ejemplo.test',clave:'solo-prueba-sin-red'}});
+  assert.equal(r.status,200);assert.equal(calls.length,3);assert.ok(r.headers.get('set-cookie').includes('HttpOnly'));
+});
+test('una redirección del proveedor se rechaza sin seguir Location ni adoptar sesión',async()=>{
+  const e=entorno({fetch:async()=>new Response(null,{status:302,headers:{Location:'https://ajeno.example.invalid'}})});
+  const r=await e.run('/api/acceso/entrar',{method:'POST',data:{correo:'cuenta@ejemplo.test',clave:'solo-prueba-sin-red'}});
+  assert.equal(r.status,401);assert.equal(r.headers.get('set-cookie'),null);assert.equal(e.calls.length,1);
+  assert.ok(e.calls[0].url.startsWith(ENV.SUPABASE_URL+'/auth/v1/token?'));
+});

@@ -1,0 +1,116 @@
+{
+  "fecha": "2026-10-23",
+  "autorizacion": "Víctor: Sí, autorizo ambos cambios y sus comprobaciones SQL",
+  "proyecto": "exgpmjpaaebyoolpwced",
+  "archivo": "rwadar-app/data/importaciones/catalogo-2026-10-23-v2/aplicar-y-aprobar.sql",
+  "sha256": "07cca22348b83cf942c13839bd5f0e1a04c586b71d249edb4cc7ec2f08c261b1",
+  "primerIntento": "Error del conector Invalid or expired requestState; consulta posterior confirmó revisión destino inexistente y puntero anterior. Reintento del mismo archivo completado.",
+  "conservacionAnterior": {
+    "antes": [
+      {
+        "tabla": "revisiones",
+        "filas": 1,
+        "huella": "9eb0a921785403baebebeeedd3a80635"
+      },
+      {
+        "tabla": "fuentes",
+        "filas": 69,
+        "huella": "696380982972aa231e39ce95ead5e710"
+      },
+      {
+        "tabla": "plataformas",
+        "filas": 26,
+        "huella": "b15009da12b2a88924f081a771e1e24e"
+      },
+      {
+        "tabla": "plataforma_fuentes",
+        "filas": 109,
+        "huella": "1cefc86f88b3832c3ff9deca2c0e14eb"
+      },
+      {
+        "tabla": "alertas",
+        "filas": 26,
+        "huella": "3093d54b83ef387aec029ca06b4cf68e"
+      },
+      {
+        "tabla": "alerta_fuentes",
+        "filas": 36,
+        "huella": "a2e41a345096f6058dd5b5700beee669"
+      },
+      {
+        "tabla": "ofertas",
+        "filas": 49,
+        "huella": "42bdf736b1995ad2936c64431cc82e67"
+      }
+    ],
+    "despues": [
+      {
+        "tabla": "revisiones",
+        "filas": 1,
+        "huella": "9eb0a921785403baebebeeedd3a80635"
+      },
+      {
+        "tabla": "fuentes",
+        "filas": 69,
+        "huella": "696380982972aa231e39ce95ead5e710"
+      },
+      {
+        "tabla": "plataformas",
+        "filas": 26,
+        "huella": "b15009da12b2a88924f081a771e1e24e"
+      },
+      {
+        "tabla": "plataforma_fuentes",
+        "filas": 109,
+        "huella": "1cefc86f88b3832c3ff9deca2c0e14eb"
+      },
+      {
+        "tabla": "alertas",
+        "filas": 26,
+        "huella": "3093d54b83ef387aec029ca06b4cf68e"
+      },
+      {
+        "tabla": "alerta_fuentes",
+        "filas": 36,
+        "huella": "a2e41a345096f6058dd5b5700beee669"
+      },
+      {
+        "tabla": "ofertas",
+        "filas": 49,
+        "huella": "42bdf736b1995ad2936c64431cc82e67"
+      }
+    ],
+    "identicos": true
+  },
+  "estado": [
+    {
+      "comprobacion": {
+        "ofertas": 49,
+        "retirado": false,
+        "plataformas": 26,
+        "fuentes_destino": 69,
+        "revision_actual": "c406fa37-a1d3-281c-117a-95819762cfcf",
+        "revision_destino": {
+          "id": "c406fa37-a1d3-281c-117a-95819762cfcf",
+          "estado": "aprobada",
+          "origen": "Revisión editorial de fuentes primarias del 22/10/2026: las 69 fuentes del radar se volvieron a consultar y siguen diciendo lo que respaldan. No acredita onboarding, oferta abierta ni rentabilidad.",
+          "creada_el": "2026-10-23T21:19:24.778487+00:00",
+          "aprobada_el": "2026-10-23T21:19:24.778487+00:00",
+          "verificado_el": "2026-10-22",
+          "vigencia_dias": 7,
+          "version_esquema": 2,
+          "contenido_sha256": "c406fa37a1d3281c117a95819762cfcf793f0fdb1210ac39b6114355ead88af3",
+          "ofertas_esperadas": 49,
+          "aprobada_referencia": "Entrega documental parcial 23/10: cuatro referencias; radar y vigencias anteriores conservados. Aplicación sujeta a autorización y revisión independiente externa.",
+          "colecciones_esperadas": {
+            "en_camino": 4,
+            "secundario": 21,
+            "principales": 24
+          },
+          "plataformas_esperadas": 26
+        }
+      }
+    }
+  ],
+  "alcance": "Cuatro referencias documentales en tres fichas; no revisión profunda global ni nuevas altas. SQL28 todavía sin activar."
+}
