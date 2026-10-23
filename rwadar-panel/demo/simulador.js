@@ -2,9 +2,10 @@
    RWAdar · panel · simulador de servicios
    ---------------------------------------------------------------------
    Imita, en un solo servidor local, lo que el panel habla con fuera:
-     /web         rwadar.pages.dev (portada, rutas, /android, mantenimiento)
+     /web         rwadar.pages.dev (portada, rutas, /android)
      /supabase    REST y Auth (incluida la API de administrador)
-     /cloudflare  GraphQL de Web Analytics y despliegues de Pages
+     /supabase-api  registros de Supabase (uso de la app)
+     /cloudflare  GraphQL de Web Analytics
      /github      versiones de RWAdar-downloads y tareas de Actions
    Lo usan las pruebas y `npm run panel:demo`. Exige las mismas claves
    que el servicio real para que las pruebas cacen un panel que se las
@@ -34,7 +35,6 @@ function registrosUso(desde, hasta) {
   return filas;
 }
 const DIA = 86400000;
-const MARCA = 'RWADAR-MANTENIMIENTO';
 
 function azar(semilla) {
   let a = semilla >>> 0;
@@ -62,13 +62,10 @@ function datosIniciales(ahora = Date.now()) {
       is_anonymous: false,
     });
   }
-  const despliegues = [0, 1, 2, 3].map(i => ({
-    id: crypto.randomUUID(), short_id: crypto.randomBytes(4).toString('hex'), created_on: new Date(ahora - (i * 2 + 0.3) * DIA).toISOString(),
-    environment: 'production', latest_stage: { status: i === 2 ? 'failure' : 'success' },
-    deployment_trigger: { metadata: { commit_message: ['Publicar catálogo del 22/10', 'Revisión integral de la web', 'Revisión integral (reintento)', 'Fichas sin recorte'][i] } },
-    url: `https://${crypto.randomBytes(4).toString('hex')}.rwadar.pages.dev`,
-  }));
-  return { cuentas, despliegues, actual: despliegues[0].id, retirado: false, motivo: null, actualizado: new Date(ahora - 5 * DIA).toISOString(), ahora };
+  /* webCaida: las pruebas la ponen a true para ver qué dice la salud. */
+  /* Interruptores para las pruebas: web caída, base sin permiso sobre el
+     catálogo (como producción el 22/10) y GitHub cortando sin clave. */
+  return { cuentas, webCaida: false, sinPermisoCatalogo: false, githubLimitado: false, retirado: false, motivo: null, actualizado: new Date(ahora - 5 * DIA).toISOString(), ahora };
 }
 
 function analitica(query, ahora) {
@@ -126,12 +123,11 @@ function crearSimulador(opciones = {}) {
   };
   const secreta = req => req.headers.apikey === CLAVE_SECRETA;
   const cf = req => req.headers.authorization === `Bearer ${TOKEN_CLOUDFLARE}`;
-  const mantenimiento = () => estado.despliegues.find(d => d.id === estado.actual)?.deployment_trigger.metadata.commit_message === MARCA;
 
   function web(req, res, ruta) {
-    if (mantenimiento() && ruta !== '/android') {
-      res.writeHead(503, { 'Content-Type': 'text/html', 'Retry-After': '3600', 'X-Rwadar-Mantenimiento': 'si' });
-      return res.end('<h1>Estamos haciendo mantenimiento</h1>');
+    if (estado.webCaida && ruta !== '/android') {
+      res.writeHead(503, { 'Content-Type': 'text/html' });
+      return res.end('<h1>No disponible</h1>');
     }
     if (ruta === '/android') { res.writeHead(302, { Location: 'https://github.com/victorJorques/RWAdar-downloads/releases/latest' }); return res.end(); }
     if (['/', '/academy/', '/privacidad', '/metodologia', '/sitemap.xml', '/novedades.xml', '/sw.js', '/manifest.webmanifest'].includes(ruta)) {
@@ -152,6 +148,8 @@ function crearSimulador(opciones = {}) {
     }
     if (!secreta(req)) return enviar(res, 401, { message: 'Invalid API key' });
     if (ruta === '/rest/v1/catalogo_publicacion' && req.method === 'PATCH') {
+      if (estado.sinPermisoCatalogo) return enviar(res, 403, { code: '42501', message: 'permission denied for table catalogo_publicacion' });
+      if (url.searchParams.get('unica') === 'eq.false') return enviar(res, 200, []);
       if (url.searchParams.get('unica') !== 'eq.true') return enviar(res, 400, { message: 'falta el filtro' });
       Object.assign(estado, { retirado: cuerpo.retirado === true, motivo: cuerpo.motivo ?? null, actualizado: cuerpo.actualizado_el });
       return enviar(res, 200, [{ unica: true, retirado: estado.retirado, motivo: estado.motivo }]);
@@ -180,31 +178,11 @@ function crearSimulador(opciones = {}) {
   function cloudflare(req, res, url, ruta, cuerpo) {
     if (!cf(req)) return enviar(res, 403, { success: false, errors: [{ code: 10000, message: 'Authentication error' }] });
     if (ruta === '/graphql') return enviar(res, 200, analitica(String(cuerpo.query || ''), Date.now()));
-    if (ruta === '/__wrangler') {
-      const d = { id: crypto.randomUUID(), short_id: crypto.randomBytes(4).toString('hex'), created_on: new Date().toISOString(), environment: 'production',
-        latest_stage: { status: 'success' }, deployment_trigger: { metadata: { commit_message: String(cuerpo.mensaje || '') } }, url: 'https://mantenimiento.rwadar.pages.dev' };
-      estado.despliegues.unshift(d);
-      estado.actual = d.id;
-      return enviar(res, 200, { success: true, result: d });
-    }
-    if (/^\/accounts\/[0-9a-f]{32}\/pages\/projects\/rwadar$/.test(ruta)) {
-      return enviar(res, 200, { success: true, result: { name: 'rwadar', canonical_deployment: estado.despliegues.find(d => d.id === estado.actual) } });
-    }
-    if (/^\/accounts\/[0-9a-f]{32}\/pages\/projects\/rwadar\/deployments$/.test(ruta)) {
-      const por = Number(url.searchParams.get('per_page') || 25), pagina = Number(url.searchParams.get('page') || 1);
-      return enviar(res, 200, { success: true, result: estado.despliegues.slice((pagina - 1) * por, pagina * por) });
-    }
-    const vuelta = ruta.match(/^\/accounts\/[0-9a-f]{32}\/pages\/projects\/rwadar\/deployments\/([0-9a-f-]+)\/rollback$/);
-    if (vuelta && req.method === 'POST') {
-      const d = estado.despliegues.find(x => x.id === vuelta[1]);
-      if (!d) return enviar(res, 404, { success: false, errors: [{ message: 'Deployment not found' }] });
-      estado.actual = d.id;
-      return enviar(res, 200, { success: true, result: d });
-    }
     return enviar(res, 404, { success: false, errors: [{ message: 'no existe' }] });
   }
 
   function github(req, res, ruta) {
+    if (estado.githubLimitado && !req.headers.authorization) return enviar(res, 403, { message: 'API rate limit exceeded for 104.22.136.70.' });
     if (ruta === '/repos/victorJorques/RWAdar-downloads/releases') return enviar(res, 200, versiones(estado.ahora));
     if (ruta === '/repos/victorJorques/RWADAR/actions/runs') return enviar(res, 200, tareas(estado.ahora));
     return enviar(res, 404, { message: 'Not Found' });
@@ -245,7 +223,6 @@ function entornoPanel(base) {
     RWADAR_PANEL_SUPABASE: `${base}/supabase`,
     RWADAR_PANEL_CLOUDFLARE_API: `${base}/cloudflare`,
     RWADAR_PANEL_GITHUB_API: `${base}/github`,
-    RWADAR_PANEL_WRANGLER_JS: require('path').join(__dirname, 'wrangler-falso.js'),
     CLOUDFLARE_API_TOKEN: TOKEN_CLOUDFLARE,
     RWADAR_PANEL_SUPABASE_API: `${base}/supabase-api`,
     SUPABASE_ACCESS_TOKEN: TOKEN_SUPABASE_API,
@@ -253,4 +230,4 @@ function entornoPanel(base) {
   };
 }
 
-module.exports = { crearSimulador, entornoPanel, CLAVE_SECRETA, TOKEN_CLOUDFLARE, MARCA };
+module.exports = { crearSimulador, entornoPanel, CLAVE_SECRETA, TOKEN_CLOUDFLARE };

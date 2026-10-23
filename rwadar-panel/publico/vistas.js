@@ -74,34 +74,17 @@ export async function resumen(raiz) {
   return salud.datos?.global;
 }
 
-function tarjetaWeb(datos, recargar) {
+/* Solo el estado: el panel no apaga la web (Víctor se lo pide a Claude o a Codex). */
+function tarjetaWeb(datos) {
   const web = datos.web;
   if (web.error) return h('section', { class: 'tarjeta' }, h('h2', {}, 'La web'), bloqueError({ message: `No pude comprobar la web: ${web.error}` }));
-  const apagada = web.enMantenimiento;
-  const boton = apagada
-    ? h('button', { class: 'boton', disabled: !datos.puedeApagar, onclick: () => confirmar({
-      titulo: 'Encender la web',
-      texto: ['Cloudflare volverá a poner en producción el despliegue que había antes de apagarla. Tarda unos segundos.'],
-      aceptar: 'Encender', esperando: 'Encendiendo…',
-      accion: () => api('/api/web/encender', { metodo: 'POST', cuerpo: {} }),
-    }).then(r => { if (r) { tostada('Web encendida. Puede tardar un minuto en verse en todos los sitios.'); recargar(); } }) }, 'Encender la web')
-    : h('button', { class: 'boton peligro', disabled: !datos.puedeApagar, onclick: () => confirmar({
-      titulo: '¿Apagar la web?',
-      texto: ['Quien entre en rwadar.pages.dev verá «Estamos haciendo mantenimiento». La app y el enlace de descarga siguen funcionando.',
-        'Subir la página de mantenimiento tarda alrededor de un minuto. Podrás encenderla de nuevo desde aquí.'],
-      campos: [{ nombre: 'confirmacion', etiqueta: 'Escribe APAGAR para confirmar', ejemplo: 'APAGAR' }],
-      aceptar: 'Apagar la web', peligro: true, esperando: 'Subiendo mantenimiento…',
-      accion: v => { if (v.confirmacion !== 'APAGAR') throw new Error('Escribe APAGAR en mayúsculas'); return api('/api/web/apagar', { metodo: 'POST', cuerpo: v }); },
-    }).then(r => { if (r) { tostada('Web apagada: ya se ve la página de mantenimiento.'); recargar(); } }) }, 'Apagar la web');
   return h('section', { class: 'tarjeta interruptor' },
     h('div', {},
       h('p', { class: 'nota' }, 'La web · rwadar.pages.dev'),
-      h('div', { class: 'interruptor-estado' }, h('span', { class: `luz ${apagada ? 'apagada' : 'encendida'}` }),
-        h('strong', {}, apagada ? 'Apagada (mantenimiento)' : web.encendida ? 'Encendida' : `Con problemas (${web.estadoHttp})`)),
-      h('p', { class: 'nota' }, apagada && web.guardado ? `Apagada ${haceCuanto(web.guardado.apagadaEl)} · volverá al despliegue ${web.guardado.anterior.corto}` : `Responde ${web.estadoHttp} en ${web.ms} ms`)),
-    boton,
-    h('p', { class: 'explica' }, 'Apagar sube a Cloudflare una página de «Volvemos enseguida» en lugar de la web (con el código 503, que Google entiende como una pausa). Encender vuelve exactamente a la web que había, sin publicar nada nuevo.'),
-    datos.puedeApagar ? null : h('p', { class: 'requisito' }, 'Necesita la clave de Cloudflare. ', h('a', { href: '#ajustes' }, 'Cómo configurarla')));
+      h('div', { class: 'interruptor-estado' }, h('span', { class: `luz ${web.encendida ? 'encendida' : 'apagada'}` }),
+        h('strong', {}, web.encendida ? 'Encendida' : `No responde bien (${web.estadoHttp})`)),
+      h('p', { class: 'nota' }, `Responde ${web.estadoHttp} en ${web.ms} ms`)),
+    h('p', { class: 'explica' }, 'Para apagarla o encenderla, pídeselo a Claude o a Codex.'));
 }
 
 function tarjetaCatalogo(datos, recargar) {
@@ -131,24 +114,18 @@ function tarjetaCatalogo(datos, recargar) {
       h('p', { class: 'nota' }, 'El catálogo · en la web y en la app'),
       h('div', { class: 'interruptor-estado' }, h('span', { class: `luz ${c.retirado ? 'apagada' : 'encendida'}` }), h('strong', {}, c.retirado ? 'Retirado' : 'Visible')),
       h('p', { class: 'nota' }, c.retirado ? `Motivo: ${c.motivo || 'sin motivo'} · ${fecha(c.actualizadoEl)}` : `Última orden: ${fecha(c.actualizadoEl)}`)),
-    boton,
+    /* Sin permiso no se enseña un botón que daría error: se explica qué falta. */
+    datos.puedeRetirar ? boton : null,
     h('p', { class: 'explica' }, 'La web y la app consultan esta orden en Supabase cada vez que cargan el catálogo. Retirarlo lo oculta en las dos a la vez, sin publicar nada.'),
-    datos.puedeRetirar ? null : h('p', { class: 'requisito' }, 'Necesita la clave secreta de Supabase. ', h('a', { href: '#ajustes' }, 'Cómo configurarla')));
+    datos.puedeRetirar ? null
+      : datos.motivoRetirar === 'falta-clave'
+        ? h('p', { class: 'requisito' }, 'Para retirarlo desde aquí hace falta la clave secreta de Supabase. ', h('a', { href: '#ajustes' }, 'Cómo configurarla'))
+        : h('p', { class: 'requisito' }, 'Para retirarlo desde aquí falta un permiso en la base de datos. Mientras tanto, pídeselo a Claude o a Codex.'));
 }
 
 export async function interruptores(raiz, recargar) {
-  const [datos, despliegues] = (await Promise.allSettled([api('/api/interruptores'), api('/api/despliegues')])).map(resultado);
-  if (datos.error) { raiz.replaceChildren(bloqueError(datos.error)); return; }
-  raiz.replaceChildren(
-    h('div', { class: 'rejilla dos' }, tarjetaWeb(datos.datos, recargar), tarjetaCatalogo(datos.datos, recargar)),
-    h('section', { class: 'tarjeta' }, h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Despliegues de la web en producción'), h('span', { class: 'nota' }, 'Cloudflare Pages · los más recientes primero')),
-      despliegues.error ? bloqueError(despliegues.error) : h('div', { class: 'tabla-caja' }, h('table', {},
-        h('thead', {}, h('tr', {}, h('th', {}, 'Cuándo'), h('th', {}, 'Despliegue'), h('th', {}, 'Resultado'), h('th', {}, 'Qué era'))),
-        h('tbody', {}, ...despliegues.datos.map(d => h('tr', {},
-          h('td', {}, fecha(d.creado)), h('td', { class: 'num' }, d.corto),
-          h('td', {}, etiquetaEstado(d.estado === 'success' ? 'ok' : d.estado === 'failure' ? 'fallo' : 'sin-datos', d.estado === 'success' ? 'Correcto' : d.estado === 'failure' ? 'Falló' : d.estado)),
-          h('td', { class: 'tenue' }, d.mensaje.includes('RWADAR-MANTENIMIENTO') ? 'Página de mantenimiento (apagado desde el panel)' : d.mensaje.split('\n')[0] || '—'))))))),
-  );
+  const datos = await api('/api/interruptores');
+  raiz.replaceChildren(h('div', { class: 'rejilla dos' }, tarjetaWeb(datos), tarjetaCatalogo(datos, recargar)));
 }
 
 export async function salud(raiz, recargar, { fresco = false } = {}) {
@@ -271,7 +248,7 @@ export async function ajustes(raiz) {
         h('p', { class: 'nota', style: 'margin-top:8px' }, 'Para cambiar las claves o la lista de socios, Víctor edita su archivo de claves y vuelve a subir el panel con npm.cmd run panel:nube.')),
       h('section', { class: 'tarjeta' }, h('h2', {}, 'Qué está configurado'),
         h('div', { class: 'problemas' },
-          h('div', { class: 'problema' }, etiquetaEstado(a.credenciales.cloudflare ? 'ok' : 'aviso', a.credenciales.cloudflare ? 'Sí' : 'Falta'), h('h3', {}, 'Cloudflare: visitas y encender/apagar')),
+          h('div', { class: 'problema' }, etiquetaEstado(a.credenciales.cloudflare ? 'ok' : 'aviso', a.credenciales.cloudflare ? 'Sí' : 'Falta'), h('h3', {}, 'Cloudflare: visitas de la web')),
           h('div', { class: 'problema' }, etiquetaEstado(a.credenciales.supabase ? 'ok' : 'aviso', a.credenciales.supabase ? 'Sí' : 'Falta'), h('h3', {}, 'Supabase: cuentas y catálogo')),
           h('div', { class: 'problema' }, etiquetaEstado(a.credenciales.github ? 'ok' : 'sin-datos', a.credenciales.github ? 'Sí' : 'Opcional'), h('h3', {}, 'GitHub: tareas automáticas')))),
     );
@@ -294,10 +271,10 @@ export async function ajustes(raiz) {
       credencial('Clave de Cloudflare', a.credenciales.cloudflare, [
         ['Entra en ', enlace('dash.cloudflare.com › Mi perfil › API Tokens', 'https://dash.cloudflare.com/profile/api-tokens'), ' y pulsa «Create Token».'],
         'Al final elige «Create Custom Token».',
-        'Permisos: «Account · Cloudflare Pages · Edit» y «Account · Account Analytics · Read».',
+        'Permiso: «Account · Account Analytics · Read» (no hace falta ninguno más).',
         'En «Account Resources» elige tu cuenta. Crea el token y cópialo (solo se ve una vez).',
         ['Pulsa «Abrir el archivo de claves» (arriba) y pégalo detrás de ', h('code', {}, 'CLOUDFLARE_API_TOKEN='), '. Guarda.'],
-      ], 'Sirve para ver las visitas, la lista de despliegues y para apagar y encender la web.'),
+      ], 'Sirve para ver las visitas de la web. Ojo: es un token nuevo (empieza por cfut_), no la «Global API Key» (cfk_).'),
       credencial('Clave secreta de Supabase', a.credenciales.supabase, [
         ['Entra en ', enlace('Supabase › Project Settings › API Keys', 'https://supabase.com/dashboard/project/exgpmjpaaebyoolpwced/settings/api-keys'), '.'],
         'En «Secret keys» crea una llamada «panel-rwadar» y cópiala (empieza por sb_secret_).',

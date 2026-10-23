@@ -27,8 +27,10 @@ export async function trafico(raiz, recargar) {
   const total = t.flujo.secciones.reduce((s, x) => s + x.paginas, 0);
   raiz.replaceChildren(
     cabecera,
+    /* Cloudflare guarda las visitas de hace más de una semana solo como muestra. */
+    t.estimado ? h('div', { class: 'falta-clave' }, `Cifras aproximadas: de lo que pasó hace más de 7 días, Cloudflare solo guarda una muestra (1 de cada 10 visitas). El panel apunta cada día las visitas exactas, así que esto se irá corrigiendo solo: ahora ${t.diasExactos ?? 0} de ${t.serie.length} días son exactos.`) : null,
     h('div', { class: 'rejilla kpis' },
-      kpi('Visitas', numero(t.visitas), `${fecha(t.desde, { hora: t.porHora })} – ${fecha(t.hasta, { hora: t.porHora })}`),
+      kpi(t.estimado ? 'Visitas (aprox.)' : 'Visitas', numero(t.visitas), `${fecha(t.desde, { hora: t.porHora })} – ${fecha(t.hasta, { hora: t.porHora })}`),
       kpi('Páginas vistas', numero(t.paginasVistas)),
       kpi('Páginas por visita', numero(t.paginasPorVisita), 'Cuánto se mueve cada visita'),
       kpi('Llegan de fuera', numero(t.procedencia.filter(p => p.nombre !== 'Directo o sin dato').reduce((s, p) => s + p.visitas, 0)), 'Visitas con web de procedencia')),
@@ -186,7 +188,7 @@ export async function cuentas(raiz, recargar) {
       h('td', { class: 'tenue', 'data-etiqueta': 'Alta' }, fecha(c.creada)),
       h('td', { class: 'tenue', 'data-etiqueta': 'Última entrada' }, c.ultimaEntrada ? haceCuanto(c.ultimaEntrada) : 'nunca'),
       h('td', {}, estadoCuenta(c)),
-      h('td', { class: 'num', 'data-etiqueta': 'Vigila' }, numero(c.vigiladas)),
+      datos.perfilesLeidos ? h('td', { class: 'num', 'data-etiqueta': 'Vigila' }, numero(c.vigiladas)) : null,
       accionesCuenta(c, recargar))) : [h('tr', {}, h('td', { colspan: 6, class: 'vacio' }, 'Ninguna cuenta coincide.'))]));
   };
   const botonesFiltro = FILTROS.map(([valor, texto]) => h('button', { type: 'button', 'aria-pressed': String(filtro.tipo === valor), onclick: ev => {
@@ -212,8 +214,8 @@ export async function cuentas(raiz, recargar) {
       h('div', { class: 'filtros' }, buscador, h('div', { class: 'segmentos', role: 'group', 'aria-label': 'Filtrar' }, ...botonesFiltro),
         h('button', { class: 'boton secundario', onclick: () => exportarCsv(datos.cuentas.filter(pasaFiltro)) }, 'Descargar CSV')),
       h('div', { class: 'tabla-caja caja-cuentas' }, h('table', { class: 'tabla-cuentas' },
-        h('thead', {}, h('tr', {}, h('th', {}, 'Cuenta'), h('th', {}, 'Alta'), h('th', {}, 'Última entrada'), h('th', {}, 'Estado'), h('th', {}, 'Vigila'), h('th', {}, ''))),
+        h('thead', {}, h('tr', {}, h('th', {}, 'Cuenta'), h('th', {}, 'Alta'), h('th', {}, 'Última entrada'), h('th', {}, 'Estado'), datos.perfilesLeidos ? h('th', {}, 'Vigila') : null, h('th', {}, ''))),
         cuerpoTabla)),
-      datos.perfilesLeidos ? null : h('p', { class: 'nota', style: 'margin-top:10px' }, 'No pude leer los perfiles: faltan los nombres y la vigilancia.')),
+      datos.perfilesLeidos ? null : h('p', { class: 'nota', style: 'margin-top:10px' }, 'La base protege los nombres y las listas de vigilancia de cada cuenta, así que aquí solo sale el correo. Borrar, bloquear y confirmar funcionan igual.')),
   );
 }

@@ -20,8 +20,6 @@ simulador.listen(0, '127.0.0.1', () => {
     RWADAR_PANEL_PUERTO: String(PUERTO_DEMO),
     RWADAR_PANEL_DATOS: path.join(__dirname, '..', 'datos-demo'),
   };
-  /* El wrangler falso lee la dirección del simulador de su entorno. */
-  Object.assign(process.env, { RWADAR_PANEL_CLOUDFLARE_API: entorno.RWADAR_PANEL_CLOUDFLARE_API });
   const config = cargarConfig(entorno, path.join(__dirname, 'no-existe.env'));
   const { servidor } = crearPanel(config);
   servidor.listen(config.puerto, '127.0.0.1', () => {

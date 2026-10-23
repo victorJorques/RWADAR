@@ -23,7 +23,6 @@ const { cargarConfig, ARCHIVO_ENV } = require('./lib/config');
 const { ErrorPanel } = require('./lib/pedir');
 const { crearApi } = require('./lib/api');
 const { crearAlmacenArchivos } = require('./lib/almacen-archivos');
-const { crearSubidaMantenimiento } = require('./lib/wrangler');
 const { leerConGh } = require('./lib/gh-cli');
 const { crearAFondo } = require('./lib/a-fondo');
 
@@ -53,9 +52,8 @@ function abrirArchivoClaves() {
 }
 
 function extrasLocales(config) {
-  if (config.modoDemo) return { subirMantenimiento: crearSubidaMantenimiento(config), archivoEnv: ARCHIVO_ENV };
+  if (config.modoDemo) return { archivoEnv: ARCHIVO_ENV };
   return {
-    subirMantenimiento: crearSubidaMantenimiento(config),
     leerGithub: config.githubPorCli ? leerConGh : undefined,
     aFondo: crearAFondo(config),
     abrirClaves: abrirArchivoClaves,

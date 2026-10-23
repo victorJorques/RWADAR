@@ -1,7 +1,8 @@
 # RWAdar · panel de control
 
-Un panel para controlar la web y la app de RWAdar: encender y apagar, ver si
-algo falla, ver las visitas y gestionar las cuentas. Hay dos formas de usarlo:
+Un panel para vigilar la web y la app de RWAdar: ver si algo falla, ver las
+visitas y el uso de la app, y gestionar las cuentas. No apaga la web: cuando
+haga falta, Víctor se lo pide a Claude o a Codex. Hay dos formas de usarlo:
 
 - **En tu ordenador**, solo para ti (doble clic y listo).
 - **Compartido en Cloudflare**, con un enlace personal que mandas por WhatsApp
@@ -37,7 +38,8 @@ claves** se abre con el Bloc de notas y vienen los pasos.
 
 | Clave | Para qué | Dónde se saca |
 |---|---|---|
-| `CLOUDFLARE_API_TOKEN` | Ver las visitas, los despliegues y apagar/encender la web | dash.cloudflare.com › Mi perfil › API Tokens › Create Custom Token. Permisos: *Account · Cloudflare Pages · Edit* y *Account · Account Analytics · Read* |
+| `CLOUDFLARE_API_TOKEN` | Ver las visitas de la web | dash.cloudflare.com › Mi perfil › API Tokens › Create Custom Token. Permiso: *Account · Account Analytics · Read*. Empieza por `cfut_` (la «Global API Key», `cfk_`, no vale) |
+| `GITHUB_TOKEN` | Descargas del APK y copia de seguridad en el panel de la nube (desde Cloudflare, GitHub corta las consultas sin clave) | github.com › Settings › Developer settings › Fine-grained tokens: solo los repositorios RWADAR y RWAdar-downloads, *Actions: Read-only* y *Contents: Read-only* |
 | `SUPABASE_SECRET_KEY` | Ver y gestionar las cuentas, retirar el catálogo | Supabase › Project Settings › API Keys › Secret keys (empieza por `sb_secret_`) |
 | `SUPABASE_ACCESS_TOKEN` | Contar cuántas veces se abre la app y la web cada hora | Supabase › Account › Access Tokens (empieza por `sbp_`). Si deja elegir permisos, solo lectura de registros |
 
@@ -58,10 +60,6 @@ Cada socio tiene **su propio enlace**. Lo abre una vez y ese móvil queda dentro
    hace un enlace para cada nombre.
 3. Abre el panel de tu ordenador › **Ajustes**: hay un botón **Enviar por
    WhatsApp** para cada socio, con su enlace y un mensaje.
-4. **Apaga la web una vez desde el panel de tu ordenador** y vuelve a
-   encenderla (un minuto). Así la página de mantenimiento queda subida en
-   Cloudflare y desde entonces se puede apagar y encender desde el móvil, en
-   segundos. Sin ese paso, el panel compartido lo explica y no apaga.
 
 **Cada enlace es una llave:** quien lo tenga entra con tus mismos permisos.
 Si alguien pierde el móvil o reenvía el mensaje, anula su enlace y mándale otro:
@@ -91,16 +89,14 @@ para ver qué pasa con un enlace que no vale).
 
 - **Resumen:** el estado general, las cosas que corregir y las cifras de la semana.
 - **Interruptores:**
-  - **Web.** *Apagar* pone en producción una página de «Estamos haciendo
-    mantenimiento» (código 503, que Google entiende como pausa). El enlace
-    `/android` sigue llevando al APK. *Encender* vuelve exactamente al
-    despliegue que había, sin publicar nada nuevo. Si mientras estaba apagada
-    alguien publicó una web nueva, *Encender* no la pisa.
+  - **Web.** Solo dice si está encendida. Para apagarla, se pide a Claude o a Codex.
   - **Catálogo.** *Retirar* lo oculta a la vez en la web y en la app (las dos
     leen la orden `catalogo_publicacion.retirado` de Supabase). Pide un motivo.
-- **Salud:** doce comprobaciones (portada, cabeceras, páginas clave, enlace
+    Necesita que la base dé a la clave secreta permiso sobre esa tabla; si no
+    lo tiene, el panel lo dice en vez de enseñar el botón.
+- **Salud:** once comprobaciones (portada, cabeceras, páginas clave, enlace
   Android, última versión, base de datos, servicio de cuentas, catálogo visible
-  y al día, copia de seguridad nocturna, tareas de GitHub y último despliegue),
+  y al día, copia de seguridad nocturna y tareas de GitHub),
   cada una con qué hacer si falla. *Comprobación a fondo* (solo en tu
   ordenador) lanza `.github/comprobar-publicado.mjs`.
 - **Tráfico web:** visitas y páginas vistas (24 h, 7 o 30 días), por dónde se
@@ -132,16 +128,16 @@ para ver qué pasa con un enlace que no vale).
   a esa persona al momento. Sin enlaces configurados, no abre (falla cerrado).
   Las direcciones de vista previa están desactivadas.
 - Las claves nunca llegan al navegador.
-- Lo que no tiene vuelta atrás pide escribir una palabra (APAGAR, RETIRAR o el
-  correo de la cuenta) y queda en el registro, salga bien o mal.
-- Una acción a la vez: un doble clic no apaga la web dos veces.
+- Lo que no tiene vuelta atrás pide escribir una palabra (RETIRAR o el correo
+  de la cuenta) y queda en el registro, salga bien o mal.
+- Una acción a la vez: un doble clic no hace la misma cosa dos veces.
 
 ## Para quien toque el código
 
 - `lib/` es común a los dos paneles: `api.js` (todas las rutas), Supabase,
-  Cloudflare, GitHub, salud e interruptor. No usa nada de Node salvo
-  `config.js`, `almacen-archivos.js`, `wrangler.js`, `gh-cli.js` y `a-fondo.js`,
-  que solo carga `servidor.js` (el panel del ordenador).
+  Cloudflare, GitHub, salud y estado de la web. No usa nada de Node salvo
+  `config.js`, `almacen-archivos.js`, `gh-cli.js` y `a-fondo.js`, que solo carga
+  `servidor.js` (el panel del ordenador); `wrangler.js` lo usan la subida y la demo.
 - `lib/uso-app.js` cuenta las aperturas del catálogo en los registros de
   Supabase (API de administración, ClickHouse, como mucho 24 h por consulta) y
   `lib/historial-app.js` las apunta por día junto a las descargas.
@@ -150,7 +146,6 @@ para ver qué pasa con un enlace que no vale).
   y `publicar.mjs` (la subida). `nube/generado/` lo crea la subida y Git lo
   ignora; `datos/nube.json` guarda las llaves de los enlaces (fuera de Git).
 - `publico/` es la página (sin librerías; gráficos en SVG), la misma en los dos.
-- `mantenimiento/` es lo que se sube al apagar (`index.html` + `_worker.js`).
 - `demo/simulador.js` imita Cloudflare, Supabase, GitHub, la web y Access; lo
   usan las demos y las pruebas.
 - Pruebas: `npm.cmd run test:panel` (también dentro de `npm test`). Ensayo de

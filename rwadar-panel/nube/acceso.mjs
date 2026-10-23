@@ -87,10 +87,21 @@ export async function entrarConLlave(llave, env, ahora = Date.now()) {
   const dueno = enlaces.find(([, h]) => iguales(h, huella));
   if (!dueno) return { ok: false, estado: 403, motivo: 'Ese enlace no es válido o ya no funciona. Pídele a Víctor que te mande el tuyo otra vez.' };
   const [quien] = dueno;
+  return { ok: true, quien, cookie: await cookiePara(quien, huella, env, ahora) };
+}
+
+async function cookiePara(quien, huella, env, ahora) {
   const expira = Math.floor(ahora / 1000) + DURACION_S;
   const cuerpo = `${aB64url(quien)}.${expira}.${huella.slice(0, 16)}`;
   const valor = `${cuerpo}.${await hmac(env.PANEL_SECRETO, cuerpo)}`;
-  return { ok: true, quien, cookie: `${COOKIE}=${valor}; Path=/; Max-Age=${DURACION_S}; HttpOnly; Secure; SameSite=Strict` };
+  return `${COOKIE}=${valor}; Path=/; Max-Age=${DURACION_S}; HttpOnly; Secure; SameSite=Strict`;
+}
+
+/* Cada vez que alguien abre el panel su sesión vuelve a durar 90 días:
+   mientras lo use, nunca tiene que volver a abrir el enlace. */
+export async function renovarSesion(acceso, env, ahora = Date.now()) {
+  if (!acceso?.huella) return null;
+  return cookiePara(acceso.quien, acceso.huella, env, ahora);
 }
 
 export const cookieSalir = () => `${COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Strict`;
@@ -110,7 +121,7 @@ async function verificarCookie(request, env, ahora) {
   if (!actual || !iguales(actual[1].slice(0, 16), huella)) {
     return { ok: false, estado: 403, motivo: 'Tu enlace ya no funciona. Pídele a Víctor uno nuevo.' };
   }
-  return { ok: true, quien };
+  return { ok: true, quien, huella: actual[1] };
 }
 
 /* ---------- Cloudflare Access ---------- */

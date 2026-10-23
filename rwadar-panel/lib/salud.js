@@ -11,7 +11,6 @@
    ===================================================================== */
 'use strict';
 const { FaltaCredencial, pedir } = require('./pedir');
-const { CABECERA } = require('./constantes');
 
 const LENTA_MS = 3000;
 const COPIA_MAX_HORAS = 36;
@@ -21,27 +20,26 @@ const ORDEN = { fallo: 0, aviso: 1, 'sin-datos': 2, ok: 3 };
 const fechaCorta = iso => iso ? new Date(iso).toLocaleString('es-ES', { timeZone: 'Europe/Madrid', dateStyle: 'medium', timeStyle: 'short' }) : '—';
 const r = (estado, detalle, arreglo = null) => ({ estado, detalle, arreglo });
 
-function crearSalud({ config, supabase, github, cloudflare }) {
+function crearSalud({ config, supabase, github }) {
   const COMPROBACIONES = [
     { id: 'web', area: 'Web', nombre: 'La portada responde', ejecutar: async ctx => {
       const p = await ctx.portada();
-      if (p.mantenimiento) return r('aviso', 'Apagada desde el panel: se ve la página de mantenimiento', 'Enciéndela en Interruptores cuando quieras.');
-      if (!p.ok) return r('fallo', `La portada responde ${p.estado}`, 'Mira «Último despliegue». Si falló, en Interruptores puedes volver al anterior.');
+      if (!p.ok) return r('fallo', `La portada responde ${p.estado}`, 'Si no la habéis apagado a propósito, pídele a Claude o a Codex que miren el último despliegue.');
       if (p.ms > LENTA_MS) return r('aviso', `Tarda ${(p.ms / 1000).toFixed(1)} s en responder`, 'Si se repite, revisa el estado de Cloudflare.');
       return r('ok', `Responde en ${p.ms} ms`);
     } },
     { id: 'seguridad', area: 'Web', nombre: 'Cabeceras de seguridad', ejecutar: async ctx => {
       const p = await ctx.portada();
-      if (p.mantenimiento) return r('sin-datos', 'La web está apagada');
+      if (!p.ok) return r('sin-datos', 'La portada no responde');
       const csp = p.cabeceras.get('content-security-policy') || '';
       const faltan = [!/script-src 'self'/.test(csp) && 'CSP estricta', !p.cabeceras.get('strict-transport-security') && 'HSTS'].filter(Boolean);
       return faltan.length ? r('fallo', `Falta: ${faltan.join(', ')}`, 'Revisa rwadar-site/_headers y vuelve a publicar.') : r('ok', 'CSP estricta y HSTS presentes');
     } },
     { id: 'paginas', area: 'Web', nombre: 'Páginas clave', ejecutar: async ctx => {
-      if ((await ctx.portada()).mantenimiento) return r('sin-datos', 'La web está apagada');
+      if (!(await ctx.portada()).ok) return r('sin-datos', 'La portada no responde');
       const respuestas = await Promise.all(PAGINAS_CLAVE.map(async ruta => [ruta, await pedir(config.web + ruta)]));
       const malas = respuestas.filter(([, x]) => !x.ok).map(([ruta, x]) => `${ruta} (${x.estado})`);
-      return malas.length ? r('fallo', `No cargan: ${malas.join(', ')}`, 'Vuelve a publicar la web o vuelve al despliegue anterior.') : r('ok', `${PAGINAS_CLAVE.length} de ${PAGINAS_CLAVE.length} cargan`);
+      return malas.length ? r('fallo', `No cargan: ${malas.join(', ')}`, 'Pídele a Claude o a Codex que vuelvan a publicar la web.') : r('ok', `${PAGINAS_CLAVE.length} de ${PAGINAS_CLAVE.length} cargan`);
     } },
     { id: 'android', area: 'App', nombre: 'Enlace de descarga Android', ejecutar: async () => {
       const x = await pedir(`${config.web}/android`, { redirect: 'manual' });
@@ -94,22 +92,12 @@ function crearSalud({ config, supabase, github, cloudflare }) {
         ? r('aviso', `Última ejecución fallida: ${fallidas.map(t => t.nombre).join(', ')}`, 'Míralas en Salud › Tareas automáticas y ábrelas en GitHub para ver el motivo.')
         : r('ok', 'Ninguna con la última ejecución fallida');
     } },
-    { id: 'despliegue', area: 'Web', nombre: 'Último despliegue en Cloudflare', ejecutar: async () => {
-      const [ultimo] = await cloudflare.desplieguesProduccion();
-      if (!ultimo) return r('aviso', 'Cloudflare no devuelve despliegues de producción');
-      return ultimo.estado === 'failure'
-        ? r('fallo', `Falló el ${fechaCorta(ultimo.creado)}`, 'La web sigue con el anterior. Repite la publicación cuando sepas el motivo.')
-        : r('ok', `${ultimo.corto} · ${fechaCorta(ultimo.creado)} · ${ultimo.estado}`);
-    } },
   ];
 
   function contexto() {
     const una = f => { let p; return () => (p ??= f()); };
     return {
-      portada: una(async () => {
-        const x = await pedir(`${config.web}/`, { redirect: 'manual' });
-        return { ...x, mantenimiento: x.cabeceras.get(CABECERA) === 'si' };
-      }),
+      portada: una(() => pedir(`${config.web}/`, { redirect: 'manual' })),
       catalogo: una(() => supabase.estadoCatalogo()),
       app: una(() => github.descargasApp()),
       tareas: una(() => github.tareasAutomaticas()),

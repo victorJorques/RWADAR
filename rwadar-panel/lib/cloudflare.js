@@ -1,13 +1,12 @@
 /* =====================================================================
-   RWAdar · panel · Cloudflare: visitas de la web y despliegues
+   RWAdar · panel · Cloudflare: visitas de la web
    ---------------------------------------------------------------------
    Visitas: Web Analytics (sin cookies) por la API GraphQL, conjunto
    rumPageloadEventsAdaptiveGroups, sin bots. «Visita» es una llegada
    desde fuera; «página vista» es cada carga. No son personas.
 
-   Despliegues: la API de Pages, para saber qué está en producción y
-   volver a un despliegue anterior (así se enciende la web otra vez).
-   El token necesita «Account Analytics: Read» y «Cloudflare Pages: Edit».
+   El token solo necesita «Account Analytics: Read». El panel ya no
+   apaga ni enciende la web (decisión de Víctor del 22/10/2026).
    ===================================================================== */
 'use strict';
 const { ErrorPanel, FaltaCredencial, pedir, pedirJson, mensajeRemoto } = require('./pedir');
@@ -44,7 +43,7 @@ function consultaTrafico({ cuenta, sitio, desde, hasta, porHora }) {
   return `query {
   viewer {
     accounts(filter: {accountTag: "${cuenta}"}) {
-      total: rumPageloadEventsAdaptiveGroups(filter: ${filtro}, limit: 1) { count sum { visits } }
+      total: rumPageloadEventsAdaptiveGroups(filter: ${filtro}, limit: 1) { count sum { visits } avg { sampleInterval } }
       ${grupo('serie', 1000, `${tiempo}_ASC`, tiempo)}
       ${grupo('paginas', 300, 'count_DESC', 'requestPath')}
       ${grupo('procedencia', 15, 'sum_visits_DESC', 'refererHost')}
@@ -81,6 +80,46 @@ function nombrePais(codigo) {
   try { return REGIONES.of(codigo) || codigo; } catch { return codigo; }
 }
 
+/* Cloudflare cuenta visita a visita hasta 7 días; en periodos más largos
+   apunta 1 de cada 10 y multiplica (comprobado el 23/10/2026: con pocas
+   visitas eso da cifras falsas). Así que un periodo largo se pide en
+   trozos de 7 días como mucho y se suman. */
+const VENTANA_MS = 7 * 86400000;
+
+function ventanas(desde, hasta) {
+  const lista = [];
+  for (let inicio = desde.getTime(); inicio < hasta.getTime(); inicio += VENTANA_MS) {
+    const fin = Math.min(inicio + VENTANA_MS, hasta.getTime());
+    /* Un segundo antes del siguiente trozo, para no contar dos veces el borde. */
+    lista.push({ desde: new Date(inicio), hasta: new Date(fin === hasta.getTime() ? fin : fin - 1000) });
+  }
+  return lista;
+}
+
+/* Junta los resultados de varios trozos sumando por cada dimensión. */
+function unirTrozos(trozos) {
+  const sumar = filas => {
+    const porClave = new Map();
+    for (const f of filas) {
+      const clave = JSON.stringify(f.dimensions || {});
+      const actual = porClave.get(clave) || { count: 0, sum: { visits: 0 }, dimensions: f.dimensions };
+      porClave.set(clave, { ...actual, count: actual.count + (f.count || 0), sum: { visits: actual.sum.visits + (f.sum?.visits || 0) } });
+    }
+    return [...porClave.values()].sort((a, b) => b.sum.visits - a.sum.visits || b.count - a.count);
+  };
+  const unido = {};
+  for (const alias of ['serie', 'paginas', 'procedencia', 'paises', 'dispositivos', 'navegadores', 'sistemas']) {
+    unido[alias] = sumar(trozos.flatMap(t => t[alias] || []));
+  }
+  const totales = trozos.map(t => t.total?.[0] || {});
+  unido.total = [{
+    count: totales.reduce((s, t) => s + (t.count || 0), 0),
+    sum: { visits: totales.reduce((s, t) => s + (t.sum?.visits || 0), 0) },
+    avg: { sampleInterval: Math.max(1, ...totales.map(t => t.avg?.sampleInterval || 1)) },
+  }];
+  return unido;
+}
+
 function lista(filas, dim, nombrar = v => v || '(desconocido)') {
   return (filas || []).map(f => ({ nombre: nombrar(f.dimensions?.[dim]), visitas: f.sum?.visits || 0, paginas: f.count || 0 }));
 }
@@ -100,27 +139,9 @@ function resumirFlujo(paginas) {
 }
 
 function crearCloudflare(config) {
-  const cuentaUrl = `${config.cloudflareApi}/accounts/${config.cloudflareCuenta}`;
-
   function cabeceras(para) {
     if (!config.cloudflareToken) throw new FaltaCredencial('Cloudflare', para);
     return { Authorization: `Bearer ${config.cloudflareToken}` };
-  }
-
-  async function api(ruta, { method = 'GET', para }) {
-    const r = await pedir(`${cuentaUrl}${ruta}`, { method, headers: cabeceras(para) });
-    /* 401/403 con un token válido = le falta el permiso de Pages. */
-    if (r.estado === 401 || r.estado === 403) {
-      throw new ErrorPanel('Cloudflare no deja tocar los despliegues: al token le falta el permiso «Account · Cloudflare Pages · Edit»', {
-        estado: 502, codigo: 'permiso',
-        detalle: 'Edítalo en dash.cloudflare.com › Mi perfil › API Tokens › panel-rwadar › Edit y añade ese permiso. La clave no cambia: no hay que volver a pegarla.',
-      });
-    }
-    if (!r.ok) throw new ErrorPanel(`api.cloudflare.com respondió ${r.estado}: ${mensajeRemoto(r.datos, r.texto)}`, { estado: 502 });
-    if (r.datos?.success === false) {
-      throw new ErrorPanel(`Cloudflare: ${r.datos.errors?.[0]?.message || 'error sin detalle'}`, { estado: 502 });
-    }
-    return r.datos?.result;
   }
 
   async function trafico(periodo = '7d', ahora = new Date()) {
@@ -129,18 +150,24 @@ function crearCloudflare(config) {
     const porHora = dias === 1;
     const hasta = new Date(ahora);
     const desde = new Date(hasta.getTime() - dias * 86400000);
-    const query = consultaTrafico({ cuenta: config.cloudflareCuenta, sitio: config.sitioAnalitica, desde, hasta, porHora });
-    const r = await pedirJson(`${config.cloudflareApi}/graphql`, {
-      method: 'POST', headers: cabeceras('leer las visitas de la web'), cuerpo: { query },
-    });
-    if (r.datos?.errors?.length) throw new ErrorPanel(`Cloudflare: ${r.datos.errors[0].message}`, { estado: 502 });
-    const c = r.datos?.data?.viewer?.accounts?.[0];
-    if (!c) throw new ErrorPanel('Cloudflare no devolvió la cuenta: revisa CLOUDFLARE_ACCOUNT_ID', { estado: 502 });
+    const consultar = async v => {
+      const query = consultaTrafico({ cuenta: config.cloudflareCuenta, sitio: config.sitioAnalitica, desde: v.desde, hasta: v.hasta, porHora });
+      const r = await pedirJson(`${config.cloudflareApi}/graphql`, {
+        method: 'POST', headers: cabeceras('leer las visitas de la web'), cuerpo: { query },
+      });
+      if (r.datos?.errors?.length) throw new ErrorPanel(`Cloudflare: ${r.datos.errors[0].message}`, { estado: 502 });
+      const cuenta = r.datos?.data?.viewer?.accounts?.[0];
+      if (!cuenta) throw new ErrorPanel('Cloudflare no devolvió la cuenta: revisa CLOUDFLARE_ACCOUNT_ID', { estado: 502 });
+      return cuenta;
+    };
+    const c = unirTrozos(await Promise.all(ventanas(desde, hasta).map(consultar)));
     const paginas = lista(c.paginas, 'requestPath', v => v || '/');
     const visitas = c.total?.[0]?.sum?.visits || 0;
     const vistas = c.total?.[0]?.count || 0;
     return {
       periodo, porHora, desde: isoSinMs(desde), hasta: isoSinMs(hasta),
+      /* Si aun así Cloudflare muestreó, las cifras son estimadas: se avisa. */
+      estimado: (c.total[0].avg?.sampleInterval || 1) > 1,
       visitas, paginasVistas: vistas, paginasPorVisita: visitas ? Math.round((vistas / visitas) * 10) / 10 : 0,
       serie: serieCompleta(c.serie || [], { desde, hasta, porHora }),
       paginas: paginas.slice(0, 15),
@@ -155,47 +182,7 @@ function crearCloudflare(config) {
     };
   }
 
-  const resumirDespliegue = d => ({
-    id: d.id,
-    corto: d.short_id || String(d.id).slice(0, 8),
-    creado: d.created_on,
-    estado: d.latest_stage?.status || 'desconocido',
-    mensaje: d.deployment_trigger?.metadata?.commit_message || '',
-    url: d.url,
-  });
-
-  async function desplieguesProduccion(pagina = 1) {
-    const result = await api(`/pages/projects/${config.proyecto}/deployments?env=production&per_page=15&page=${pagina}`,
-      { para: 'ver los despliegues de la web' });
-    return (Array.isArray(result) ? result : []).map(resumirDespliegue);
-  }
-
-  /* El despliegue que Cloudflare sirve ahora mismo en producción. Tras
-     una vuelta atrás no tiene por qué ser el más reciente de la lista. */
-  async function produccionActual() {
-    const proyecto = await api(`/pages/projects/${config.proyecto}`, { para: 'ver qué está publicado' });
-    return proyecto?.canonical_deployment ? resumirDespliegue(proyecto.canonical_deployment) : null;
-  }
-
-  /* La página de mantenimiento ya subida alguna vez (puede estar atrás
-     en la lista si después se ha publicado mucho). */
-  async function buscarMantenimiento(marca, paginas = 10) {
-    for (let pagina = 1; pagina <= paginas; pagina++) {
-      const lista = await desplieguesProduccion(pagina);
-      const encontrado = lista.find(d => d.estado === 'success' && d.mensaje.includes(marca));
-      if (encontrado || lista.length < 15) return encontrado || null;
-    }
-    return null;
-  }
-
-  async function volverA(id) {
-    if (!/^[0-9a-f-]{8,64}$/i.test(String(id))) throw new ErrorPanel('Despliegue no válido', { estado: 400 });
-    const d = await api(`/pages/projects/${config.proyecto}/deployments/${id}/rollback`,
-      { method: 'POST', para: 'encender la web' });
-    return { id: d?.id || id, url: d?.url || null };
-  }
-
-  return { trafico, desplieguesProduccion, produccionActual, buscarMantenimiento, volverA };
+  return { trafico };
 }
 
-module.exports = { crearCloudflare, seccionDe, serieCompleta, resumirFlujo, consultaTrafico, PERIODOS };
+module.exports = { crearCloudflare, seccionDe, serieCompleta, resumirFlujo, consultaTrafico, ventanas, unirTrozos, PERIODOS };

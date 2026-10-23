@@ -56,11 +56,8 @@ function cargarConfig(env = process.env, archivoEnv = ARCHIVO_ENV) {
   const v = clave => String(env[clave] ?? local[clave] ?? '').trim();
   return construirConfig(leerPublicos(), v, {
     puerto: Number(v('RWADAR_PANEL_PUERTO')) || PUERTO_POR_DEFECTO,
-    /* Solo pruebas y demostración: sustituyen a wrangler y a gh. */
-    wranglerFalso: v('RWADAR_PANEL_WRANGLER_JS'),
     githubPorCli: !v('RWADAR_PANEL_GITHUB_API') && !v('GITHUB_TOKEN'),
     dirDatos: v('RWADAR_PANEL_DATOS') || path.join(DIR_PANEL, 'datos'),
-    dirMantenimiento: path.join(DIR_PANEL, 'mantenimiento'),
     raiz: RAIZ,
   });
 }

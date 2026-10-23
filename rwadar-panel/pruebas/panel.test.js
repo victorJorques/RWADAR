@@ -28,8 +28,6 @@ async function montar(extra = {}) {
   const puerto = await puertoLibre();
   const dirDatos = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-panel-'));
   const entorno = { ...entornoPanel(base), RWADAR_PANEL_PUERTO: String(puerto), RWADAR_PANEL_DATOS: dirDatos, ...extra };
-  process.env.RWADAR_PANEL_CLOUDFLARE_API = entorno.RWADAR_PANEL_CLOUDFLARE_API;
-  process.env.RWADAR_WRANGLER_ESPERA_MS = '10';
   const panel = crearPanel(cargarConfig(entorno, SIN_ENV));
   await new Promise(r => panel.servidor.listen(puerto, '127.0.0.1', r));
   const url = `http://127.0.0.1:${puerto}`;
@@ -70,58 +68,83 @@ test('la API rechaza peticiones sin sesión, de otro host o de otra web', async 
         res => resolver(res.statusCode));
     });
     assert.equal(rebinding, 421);
-    const ajena = await p.api('/api/web/apagar', { metodo: 'POST', cuerpo: { confirmacion: 'APAGAR' }, cabeceras: { Origin: 'https://atacante.example' } });
+    const ajena = await p.api('/api/catalogo', { metodo: 'POST', cuerpo: { retirado: true, motivo: 'ataque', confirmacion: 'RETIRAR' }, cabeceras: { Origin: 'https://atacante.example' } });
     assert.equal(ajena.estado, 400);
-    assert.equal(p.estado.despliegues.length, 4, 'no se ha desplegado nada');
+    assert.equal(p.estado.retirado, false, 'no se ha cambiado nada');
   } finally { await p.cerrar(); }
 });
 
-test('apagar sube el mantenimiento y encender vuelve exactamente al despliegue anterior', async () => {
+test('el panel no apaga la web: solo dice si está encendida', async () => {
   const p = await montar();
   try {
-    const anterior = p.estado.actual;
-    assert.equal((await p.api('/api/web/apagar', { metodo: 'POST', cuerpo: { confirmacion: 'apagar' } })).estado, 400);
-    const apagar = await p.api('/api/web/apagar', { metodo: 'POST', cuerpo: { confirmacion: 'APAGAR' } });
-    assert.equal(apagar.estado, 200, apagar.error);
-    assert.equal(apagar.datos.anterior.id, anterior);
-    assert.equal(apagar.datos.via, 'subida', 'la primera vez se sube con wrangler');
-    const apagada = await p.api('/api/interruptores');
-    assert.equal(apagada.datos.web.enMantenimiento, true);
-    assert.equal(apagada.datos.web.guardado.anterior.id, anterior);
-    assert.equal((await p.api('/api/web/apagar', { metodo: 'POST', cuerpo: { confirmacion: 'APAGAR' } })).estado, 409, 'no se apaga dos veces');
-    const salud = await p.api('/api/salud?fresco=1');
-    assert.equal(salud.datos.comprobaciones.find(c => c.id === 'web').estado, 'aviso');
-    const encender = await p.api('/api/web/encender', { metodo: 'POST', cuerpo: {} });
-    assert.equal(encender.estado, 200, encender.error);
-    assert.equal(p.estado.actual, anterior);
-    assert.equal((await p.api('/api/interruptores')).datos.web.encendida, true);
-    assert.ok(!fs.existsSync(path.join(p.dirDatos, 'estado-web.json')));
-    assert.equal((await p.api('/api/web/encender', { metodo: 'POST', cuerpo: {} })).estado, 409, 'encendida no se toca');
-    assert.equal(p.estado.actual, anterior);
-    const registro = (await p.api('/api/registro')).datos;
-    assert.deepEqual(registro.map(e => [e.accion, e.resultado]).slice(0, 4),
-      [['Encender la web', 'error'], ['Encender la web', 'hecho'], ['Apagar la web', 'error'], ['Apagar la web', 'hecho']]);
-    assert.equal(registro[0].quien, 'ordenador de Víctor');
-    /* La segunda vez ya existe la página de mantenimiento: se vuelve a ella
-       sin subir nada (así se puede apagar también desde la nube). */
-    const desplieguesAntes = p.estado.despliegues.length;
-    const otra = await p.api('/api/web/apagar', { metodo: 'POST', cuerpo: { confirmacion: 'APAGAR' } });
-    assert.equal(otra.datos.via, 'vuelta');
-    assert.equal(p.estado.despliegues.length, desplieguesAntes);
-    assert.equal((await p.api('/api/interruptores')).datos.web.enMantenimiento, true);
-    await p.api('/api/web/encender', { metodo: 'POST', cuerpo: {} });
-    assert.equal(p.estado.actual, anterior);
+    for (const ruta of ['/api/web/apagar', '/api/web/encender']) {
+      assert.equal((await p.api(ruta, { metodo: 'POST', cuerpo: { confirmacion: 'APAGAR' } })).estado, 404, ruta);
+    }
+    assert.equal((await p.api('/api/despliegues')).estado, 404);
+    const { datos } = await p.api('/api/interruptores');
+    assert.equal(datos.web.encendida, true);
+    assert.equal(datos.web.estadoHttp, 200);
+    assert.equal('puedeApagar' in datos, false);
   } finally { await p.cerrar(); }
 });
 
-test('sin la clave de Cloudflare no deja apagar y lo explica', async () => {
+test('si la web se cae, la salud lo marca como fallo y dice a quién avisar', async () => {
+  const p = await montar();
+  try {
+    p.estado.webCaida = true;
+    const { datos } = await p.api('/api/salud?fresco=1');
+    const web = datos.comprobaciones.find(c => c.id === 'web');
+    assert.equal(web.estado, 'fallo');
+    assert.match(web.detalle, /503/);
+    assert.match(web.arreglo, /Claude o a Codex/);
+    assert.equal(datos.comprobaciones.find(c => c.id === 'paginas').estado, 'sin-datos');
+    assert.equal(datos.global, 'fallo');
+    assert.equal((await p.api('/api/interruptores')).datos.web.encendida, false);
+  } finally { await p.cerrar(); }
+});
+
+test('sin la clave de Cloudflare las visitas explican qué falta y lo demás sigue', async () => {
   const p = await montar({ CLOUDFLARE_API_TOKEN: '' });
   try {
-    const r = await p.api('/api/web/apagar', { metodo: 'POST', cuerpo: { confirmacion: 'APAGAR' } });
-    assert.equal(r.estado, 409);
-    assert.equal(r.codigo, 'falta-credencial');
     assert.equal((await p.api('/api/trafico?periodo=7d')).codigo, 'falta-credencial');
-    assert.equal((await p.api('/api/interruptores')).datos.puedeApagar, false);
+    const { datos } = await p.api('/api/salud');
+    assert.ok(!datos.comprobaciones.some(c => c.id === 'despliegue'), 'ya no hay comprobación de despliegues');
+    assert.equal(datos.comprobaciones.find(c => c.id === 'web').estado, 'ok');
+  } finally { await p.cerrar(); }
+});
+
+test('retirar el catálogo solo se ofrece si la base da permiso de verdad', async () => {
+  const p = await montar();
+  try {
+    let d = (await p.api('/api/interruptores')).datos;
+    assert.equal(d.puedeRetirar, true);
+    assert.equal(p.estado.retirado, false, 'la comprobación no cambia nada');
+    /* Otro panel, con la base sin permiso (el permiso se recuerda 10 min). */
+    const p2 = await montar();
+    p2.estado.sinPermisoCatalogo = true;
+    d = (await p2.api('/api/interruptores')).datos;
+    assert.equal(d.puedeRetirar, false);
+    assert.equal(d.motivoRetirar, 'sin-permiso');
+    await p2.cerrar();
+    const sinClave = await montar({ SUPABASE_SECRET_KEY: '' });
+    assert.equal((await sinClave.api('/api/interruptores')).datos.motivoRetirar, 'falta-clave');
+    await sinClave.cerrar();
+  } finally { await p.cerrar(); }
+});
+
+test('si GitHub corta las consultas sin clave, las descargas dicen qué clave falta', async () => {
+  const p = await montar();
+  try {
+    p.estado.githubLimitado = true;
+    const { datos } = await p.api('/api/app');
+    assert.equal(datos.descargas.codigo, 'falta-credencial');
+    assert.match(datos.descargas.error, /GitHub/);
+    const salud = (await p.api('/api/salud?fresco=1')).datos;
+    assert.equal(salud.comprobaciones.find(c => c.id === 'app').estado, 'sin-datos');
+    const conClave = await montar({ GITHUB_TOKEN: 'demo-token-github' });
+    conClave.estado.githubLimitado = true;
+    assert.ok((await conClave.api('/api/app')).datos.descargas.datos.totalApk > 0, 'con clave sí responde');
+    await conClave.cerrar();
   } finally { await p.cerrar(); }
 });
 
@@ -205,6 +228,23 @@ test('el tráfico rellena los días sin visitas y agrupa el flujo por secciones'
     assert.equal(t24.porHora, true);
     assert.ok(t24.serie.length >= 24 && t24.serie.length <= 25);
     assert.equal((await p.api('/api/trafico?periodo=1año')).estado, 400);
+  } finally { await p.cerrar(); }
+});
+
+test('los 30 días usan las visitas exactas apuntadas en vez de la estimación', async () => {
+  const p = await montar();
+  try {
+    const t7 = (await p.api('/api/trafico?periodo=7d')).datos;
+    const hoy = t7.serie.at(-1).momento;
+    const apuntado = JSON.parse(fs.readFileSync(path.join(p.dirDatos, `visitas-${hoy}.json`), 'utf8'));
+    assert.equal(apuntado.visitas, t7.serie.at(-1).visitas, 'se apuntan los días exactos');
+    /* Un día viejo apuntado a mano: los 30 días deben usarlo tal cual. */
+    const viejo = new Date(Date.now() - 20 * 86400000).toISOString().slice(0, 10);
+    fs.writeFileSync(path.join(p.dirDatos, `visitas-${viejo}.json`), JSON.stringify({ visitas: 777, paginas: 999 }));
+    const t30 = (await p.api('/api/trafico?periodo=30d')).datos;
+    assert.equal(t30.serie.find(x => x.momento === viejo).visitas, 777);
+    assert.equal(t30.visitas, t30.serie.reduce((s, x) => s + x.visitas, 0), 'el total es la suma de los días');
+    assert.ok(t30.diasExactos >= 9);
   } finally { await p.cerrar(); }
 });
 

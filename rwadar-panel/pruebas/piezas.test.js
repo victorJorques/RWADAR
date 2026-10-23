@@ -53,6 +53,22 @@ test('la serie rellena con ceros los días que Cloudflare no devuelve', () => {
   assert.deepEqual(serie.map(p => [p.momento, p.visitas]), [['2026-10-15', 0], ['2026-10-16', 4], ['2026-10-17', 0], ['2026-10-18', 0]]);
 });
 
+test('los periodos largos se piden en trozos de 7 días y se suman sin contar dos veces', () => {
+  const { ventanas, unirTrozos } = require('../lib/cloudflare');
+  const hasta = new Date('2026-10-23T12:00:00Z');
+  const v = ventanas(new Date(hasta.getTime() - 30 * 86400000), hasta);
+  assert.equal(v.length, 5);
+  assert.ok(v.every(x => x.hasta - x.desde <= 7 * 86400000));
+  assert.ok(v.slice(1).every((x, i) => x.desde.getTime() > v[i].hasta.getTime()), 'los trozos no se pisan');
+  assert.equal(v.at(-1).hasta.getTime(), hasta.getTime());
+  const trozo = (visitas, pais) => ({ total: [{ count: visitas * 2, sum: { visits: visitas }, avg: { sampleInterval: 1 } }],
+    serie: [{ count: visitas, sum: { visits: visitas }, dimensions: { date: '2026-10-16' } }], paises: [{ count: visitas, sum: { visits: visitas }, dimensions: { countryName: pais } }] });
+  const u = unirTrozos([trozo(3, 'ES'), trozo(4, 'ES'), trozo(1, 'US')]);
+  assert.equal(u.total[0].sum.visits, 8);
+  assert.equal(u.serie[0].sum.visits, 8, 'el mismo día partido en dos trozos se suma');
+  assert.deepEqual(u.paises.map(x => [x.dimensions.countryName, x.sum.visits]), [['ES', 7], ['US', 1]]);
+});
+
 test('la consulta de visitas excluye bots y no acepta identificadores inventados', () => {
   const q = consultaTrafico({ cuenta: 'a'.repeat(32), sitio: 'b'.repeat(32), desde: new Date(0), hasta: new Date(86400000), porHora: false });
   assert.match(q, /\{bot: 0\}/);
@@ -75,37 +91,16 @@ test('el almacén guarda estados y un registro en orden que sobrevive a una lín
   await assert.rejects(() => a.guardar('../fuera', {}));
 });
 
-test('la página de mantenimiento responde 503 con su marca y deja pasar /android', async () => {
-  /* Se carga como módulo desde su texto: así Node no avisa de que la
-     carpeta no declara "type": "module" (y no se sube un package.json a Cloudflare). */
-  const codigo = fs.readFileSync(path.join(__dirname, '..', 'mantenimiento', '_worker.js'), 'utf8');
-  const { default: trabajador } = await import(`data:text/javascript,${encodeURIComponent(codigo)}`);
-  const html = fs.readFileSync(path.join(__dirname, '..', 'mantenimiento', 'index.html'), 'utf8');
-  const env = { ASSETS: { fetch: async peticion => (new URL(peticion.url).pathname === '/' ? new Response(html) : new Response('', { status: 404 })) } };
-  const portada = await trabajador.fetch(new Request('https://rwadar.pages.dev/'), env);
-  assert.equal(portada.status, 503);
-  assert.equal(portada.headers.get('retry-after'), '3600');
-  assert.equal(portada.headers.get('x-rwadar-mantenimiento'), 'si');
-  assert.match(await portada.text(), /Estamos haciendo mantenimiento/);
-  const ficha = await trabajador.fetch(new Request('https://rwadar.pages.dev/ofertas/x'), env);
-  assert.equal(ficha.status, 503);
-  assert.match(await ficha.text(), /Estamos haciendo mantenimiento/);
-  const android = await trabajador.fetch(new Request('https://rwadar.pages.dev/android'), env);
-  assert.equal(android.status, 302);
-  assert.match(android.headers.get('location'), /RWAdar-downloads\/releases\/latest$/);
-});
-
-test('el apagado llama a wrangler igual que rwadar-publicar.js', () => {
+test('wrangler se lanza igual que en rwadar-publicar.js', () => {
   const { comandoWrangler } = require('../lib/wrangler');
-  const config = { versionWrangler: '4.125.0', wranglerFalso: '' };
-  const [cmd, args] = comandoWrangler(config, ['pages', 'deploy', 'x', '--branch', 'main']);
+  const [cmd, args] = comandoWrangler({ versionWrangler: '4.125.0' }, ['deploy', '--config', 'x.json']);
   if (process.platform === 'win32') {
     assert.match(cmd, /cmd.exe$/i);
     assert.deepEqual(args.slice(0, 6), ['/d', '/s', '/c', 'npx.cmd', '--yes', 'wrangler@4.125.0']);
   } else {
     assert.equal(cmd, 'npx');
   }
-  assert.deepEqual(args.slice(-5), ['pages', 'deploy', 'x', '--branch', 'main']);
+  assert.deepEqual(args.slice(-3), ['deploy', '--config', 'x.json']);
 });
 
 test('los archivos de la página no tienen errores de sintaxis', () => {

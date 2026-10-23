@@ -59,7 +59,7 @@ const vars = {
    PANEL_ENLACES llegaría con barras invertidas y no se podría leer). */
 fs.writeFileSync(path.join(DIR_DEMO, '.dev.vars'), Object.entries(vars).map(([k, v]) => `${k}='${v}'`).join('\n'));
 
-const [cmd, argv] = comandoWrangler({ versionWrangler: leerPublicos().versionWrangler, wranglerFalso: '' },
+const [cmd, argv] = comandoWrangler({ versionWrangler: leerPublicos().versionWrangler },
   ['dev', '--config', path.join(DIR_DEMO, 'wrangler.json'), '--port', String(PUERTO), '--ip', '127.0.0.1', '--local']);
 const hijo = spawn(cmd, argv, { cwd: DIR_DEMO, stdio: 'inherit', windowsHide: true });
 process.stdout.write(`\nPanel de la nube (DEMOSTRACIÓN local, enlaces de mentira)\n  Como Víctor:  http://127.0.0.1:${PUERTO_ENTRADA}/?como=victor\n  Como Eric:    http://127.0.0.1:${PUERTO_ENTRADA}/?como=eric\n  Enlace falso: http://127.0.0.1:${PUERTO_ENTRADA}/?como=intruso\n\n`);

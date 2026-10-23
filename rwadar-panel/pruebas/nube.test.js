@@ -8,7 +8,7 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
 const { webcrypto } = require('crypto');
-const { crearSimulador, entornoPanel, MARCA } = require('../demo/simulador');
+const { crearSimulador, entornoPanel } = require('../demo/simulador');
 const { leerPublicos } = require('../lib/config');
 
 const { subtle } = webcrypto;
@@ -173,29 +173,6 @@ test('lo que hace un socio queda en el registro con su correo', async () => {
   } finally { await n.cerrar(); }
 });
 
-test('desde la nube se apaga volviendo a la página de mantenimiento ya subida', async () => {
-  const n = await montar();
-  try {
-    const victor = await n.entrar('victor@example.com');
-    const primera = await victor.api('/api/web/apagar', { metodo: 'POST', cuerpo: { confirmacion: 'APAGAR' } });
-    assert.equal(primera.estado, 409, 'sin mantenimiento subido no puede (no hay wrangler en la nube)');
-    assert.match(primera.error, /primera vez/);
-    assert.equal(await n.kv.get('estado:estado-web'), null, 'no deja estado a medias');
-    /* Como si el panel del ordenador ya la hubiera subido alguna vez. */
-    const anterior = n.estado.actual;
-    n.estado.despliegues.splice(2, 0, { id: '11111111-2222-3333-4444-555555555555', short_id: 'abcd1234', created_on: new Date(Date.now() - 86400000).toISOString(),
-      environment: 'production', latest_stage: { status: 'success' }, deployment_trigger: { metadata: { commit_message: MARCA } }, url: 'https://m.rwadar.pages.dev' });
-    const apagar = await victor.api('/api/web/apagar', { metodo: 'POST', cuerpo: { confirmacion: 'APAGAR' } });
-    assert.equal(apagar.estado, 200, apagar.error);
-    assert.equal(apagar.datos.via, 'vuelta');
-    assert.equal((await n.kv.get('estado:estado-web', 'json')).quien, 'victor@example.com');
-    assert.equal((await victor.api('/api/interruptores')).datos.web.enMantenimiento, true);
-    const encender = await victor.api('/api/web/encender', { metodo: 'POST', cuerpo: {} });
-    assert.equal(encender.estado, 200, encender.error);
-    assert.equal(n.estado.actual, anterior);
-  } finally { await n.cerrar(); }
-});
-
 /* ---------- Enlaces personales (sin cuentas ni códigos) ---------- */
 
 async function montarEnlaces() {
@@ -291,15 +268,31 @@ test('anular el enlace de alguien le saca aunque ya hubiera entrado', async () =
   } finally { await n.cerrar(); }
 });
 
+test('la sesión se renueva sola al abrir el panel: el mismo enlace vale para siempre', async () => {
+  const n2 = await montarEnlaces();
+  try {
+    const { cookie } = await n2.abrirEnlace(n2.enlaces.Eric);
+    const r = await n2.pedir('/', { cookie });
+    assert.equal(r.status, 200);
+    const renovada = r.headers.get('set-cookie') || '';
+    assert.match(renovada, /^rwadar_panel=/);
+    assert.match(renovada, /Max-Age=7776000/);
+    assert.match(renovada, /HttpOnly/);
+    assert.equal((await n2.pedir('/', { cookie: renovada.split(';')[0] })).status, 200, 'la renovada vale');
+    assert.equal((await n2.abrirEnlace(n2.enlaces.Eric)).r.status, 200, 'y el enlace de siempre sigue valiendo');
+  } finally { await n2.cerrar(); }
+});
+
 test('el cron de cada hora apunta el uso de la app y las descargas en KV', async () => {
   const n = await montarEnlaces();
   try {
     const promesas = [];
     await n.worker.scheduled({}, n.env, { waitUntil: p => promesas.push(p) });
     const resultado = await Promise.all(promesas);
-    assert.deepEqual(resultado[0], { descargas: 'fulfilled', uso: 'fulfilled' });
+    assert.deepEqual(resultado[0], { descargas: 'fulfilled', uso: 'fulfilled', visitas: 'fulfilled' });
     const claves = [...n.kv.datos.keys()];
     assert.ok(claves.some(k => k.startsWith('estado:uso-app-')));
     assert.ok(claves.some(k => k.startsWith('estado:descargas-')));
+    assert.ok(claves.some(k => k.startsWith('estado:visitas-')), 'también las visitas exactas del día');
   } finally { await n.cerrar(); }
 });

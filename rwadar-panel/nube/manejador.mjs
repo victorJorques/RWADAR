@@ -9,13 +9,12 @@
      · el estado y el registro viven en KV (ALMACEN),
      · el registro apunta quién hace cada cosa,
      · cada hora apunta el uso de la app y las descargas (cron).
-   No puede lanzar wrangler ni gh: apagar funciona volviendo a la página
-   de mantenimiento ya subida (la primera vez se sube desde el ordenador)
-   y las tareas de GitHub se leen con GITHUB_TOKEN si existe.
+   No puede lanzar gh: las tareas de GitHub y las descargas se leen con
+   GITHUB_TOKEN si existe. No apaga la web (tampoco el panel del ordenador).
    ===================================================================== */
 import { crearApi } from '../lib/api.js';
 import { construirConfig } from '../lib/config-base.js';
-import { verificarAcceso, entrarConLlave, cookieSalir, firmaSesion, iguales, modoAcceso } from './acceso.mjs';
+import { verificarAcceso, entrarConLlave, renovarSesion, cookieSalir, firmaSesion, iguales, modoAcceso } from './acceso.mjs';
 import { crearAlmacenKv } from './almacen-kv.mjs';
 
 const MAX_CUERPO = 16 * 1024;
@@ -112,7 +111,9 @@ export function crearManejador(publicos) {
       if (metodo !== 'GET' && metodo !== 'HEAD') return respuesta({ ok: false, error: 'Método no permitido' }, 405);
       if (url.pathname === '/' || url.pathname === '/index.html') {
         const html = await (await env.ASSETS.fetch(new Request(new URL('/', url)))).text();
-        return respuesta(html.replace('__TOKEN__', sesion), 200, 'text/html; charset=utf-8');
+        /* Al abrir el panel la sesión vuelve a durar 90 días (con enlaces). */
+        const renovada = await renovarSesion(acceso, env);
+        return respuesta(html.replace('__TOKEN__', sesion), 200, 'text/html; charset=utf-8', renovada ? { 'Set-Cookie': renovada } : {});
       }
       return recurso(env, request, url.pathname);
     }

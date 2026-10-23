@@ -88,6 +88,18 @@ function crearSupabase(config) {
     return { retirado: r.datos[0].retirado === true, motivo: r.datos[0].motivo || null };
   }
 
+  /* ¿Deja la base cambiar la orden del catálogo? Se prueba con un filtro
+     que no coincide con ninguna fila (la única es unica=true): no cambia
+     nada, pero la base comprueba el permiso igual. */
+  async function puedeCambiarCatalogo() {
+    if (!config.claveSecreta) return { puede: false, motivo: 'falta-clave' };
+    const r = await pedir(`${rest}/catalogo_publicacion?unica=eq.false`, {
+      method: 'PATCH', headers: { ...secreta('comprobar el permiso del catálogo'), Prefer: 'return=minimal' }, cuerpo: { motivo: null },
+    });
+    if (r.ok) return { puede: true, motivo: null };
+    return { puede: false, motivo: r.estado === 401 || r.estado === 403 ? 'sin-permiso' : `error-${r.estado}` };
+  }
+
   async function usuariosAuth(cabeceras) {
     const todos = [];
     for (let pagina = 1; pagina <= MAX_PAGINAS; pagina++) {
@@ -151,7 +163,7 @@ function crearSupabase(config) {
     return { id, correo: r.datos?.email || null };
   }
 
-  return { estadoCatalogo, vigenciaCatalogo, saludAuth, cambiarCatalogo, listarCuentas, borrarCuenta, bloquearCuenta, confirmarCuenta };
+  return { estadoCatalogo, vigenciaCatalogo, saludAuth, cambiarCatalogo, puedeCambiarCatalogo, listarCuentas, borrarCuenta, bloquearCuenta, confirmarCuenta };
 }
 
 function normalizar(u, perfil, vigiladas, ahora) {

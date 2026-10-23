@@ -8,7 +8,7 @@ import * as datos from './vistas-datos.js';
 const REFRESCO_MS = 2 * 60 * 1000;
 const VISTAS = {
   resumen: ['Resumen', 'Cómo está todo de un vistazo.', control.resumen],
-  interruptores: ['Interruptores', 'Encender y apagar la web y el catálogo.', control.interruptores],
+  interruptores: ['Interruptores', 'Si la web está encendida y si el catálogo se ve.', control.interruptores],
   salud: ['Salud', 'Qué funciona, qué no y qué hacer.', control.salud],
   trafico: ['Tráfico web', 'Visitas de rwadar.pages.dev según Cloudflare Web Analytics.', datos.trafico],
   app: ['App', 'Descargas de la app Android y lo que se puede saber de ella.', datos.app],
@@ -83,7 +83,9 @@ setInterval(() => {
 }, 30000);
 setInterval(() => {
   if (document.hidden || document.getElementById('dialogo').open) return;
-  if (['resumen', 'interruptores', 'salud'].includes(actual())) pintar({ silencioso: true });
+  /* Todas las secciones se refrescan solas, salvo mientras se escribe. */
+  if (document.activeElement?.matches('input, textarea')) return;
+  pintar({ silencioso: true });
 }, REFRESCO_MS);
 
 arrancar();

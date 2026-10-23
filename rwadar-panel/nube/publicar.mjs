@@ -53,7 +53,7 @@ const publicos = leerPublicos();
 const decir = texto => process.stdout.write(`${texto}\n`);
 
 function wrangler(args) {
-  const [cmd, argv] = comandoWrangler({ versionWrangler: publicos.versionWrangler, wranglerFalso: '' }, args);
+  const [cmd, argv] = comandoWrangler({ versionWrangler: publicos.versionWrangler }, args);
   /* Se sube con la sesión de wrangler de Víctor, no con el token del
      panel (ese solo puede tocar Pages y leer visitas). */
   const env = { ...process.env, CLOUDFLARE_ACCOUNT_ID: claves.CLOUDFLARE_ACCOUNT_ID || CUENTA_CLOUDFLARE };

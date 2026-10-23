@@ -33,7 +33,13 @@ function crearGithub(config, { leerPrivado } = {}) {
        Cloudflare esa dirección la comparten muchos y se agota. Con
        GITHUB_TOKEN el límite es propio. */
     const cabeceras = config.githubToken ? { ...CABECERAS, Authorization: `Bearer ${config.githubToken}` } : CABECERAS;
-    const r = await pedirJson(`${config.githubApi}/repos/${config.repoDescargas}/releases?per_page=100`, { headers: cabeceras });
+    let r;
+    try {
+      r = await pedirJson(`${config.githubApi}/repos/${config.repoDescargas}/releases?per_page=100`, { headers: cabeceras });
+    } catch (e) {
+      if (!config.githubToken && /rate limit/i.test(e.message)) throw new FaltaCredencial('GitHub', 'ver las descargas (GitHub corta las consultas sin clave)');
+      throw e;
+    }
     const versiones = (Array.isArray(r.datos) ? r.datos : [])
       .filter(v => !v.draft)
       .map(v => {

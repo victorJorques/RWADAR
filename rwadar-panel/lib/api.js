@@ -3,16 +3,20 @@
    ---------------------------------------------------------------------
    Recibe una petición ya autenticada (el servidor de cada sitio se
    encarga de quién puede entrar) y devuelve { estado, cuerpo }.
-   Lo que solo existe en el ordenador (subir el mantenimiento con
-   wrangler, leer GitHub con gh, la comprobación a fondo, abrir el
-   archivo de claves) llega en `extras`; en la nube no está.
+   Lo que solo existe en el ordenador (leer GitHub con gh, la
+   comprobación a fondo, abrir el archivo de claves) llega en `extras`;
+   en la nube no está.
+
+   No hay botón para apagar la web: Víctor lo decidió el 22/10/2026
+   (cuando quiera apagarla, se lo pide a Claude o a Codex). El panel
+   solo enseña si está encendida.
    ===================================================================== */
 'use strict';
 const { ErrorPanel, crearCache } = require('./pedir');
 const { crearSupabase } = require('./supabase');
 const { crearCloudflare } = require('./cloudflare');
 const { crearGithub } = require('./github');
-const { crearInterruptorWeb } = require('./interruptor-web');
+const { estadoWeb } = require('./estado-web');
 const { crearSalud } = require('./salud');
 const { crearUsoApp } = require('./uso-app');
 const { anotarDescargas, anotarHoras, leerHistorial } = require('./historial-app');
@@ -22,8 +26,7 @@ function crearApi({ config, almacen, extras = {} }) {
   const supabase = crearSupabase(config);
   const cloudflare = crearCloudflare(config);
   const github = crearGithub(config, { leerPrivado: extras.leerGithub });
-  const interruptor = crearInterruptorWeb({ config, cloudflare, almacen, subirMantenimiento: extras.subirMantenimiento });
-  const salud = crearSalud({ config, supabase, github, cloudflare });
+  const salud = crearSalud({ config, supabase, github });
   const usoApp = crearUsoApp(config);
   let accionEnCurso = null;
 
@@ -43,13 +46,46 @@ function crearApi({ config, almacen, extras = {} }) {
     return { descargas: resultado(descargas), uso: resultado(uso), historial };
   }
 
+  /* Visitas exactas por día. Cloudflare solo cuenta visita a visita los
+     últimos 7 días; el panel las apunta (visitas-AAAA-MM-DD) para que
+     después los 30 días usen la cifra exacta y no su estimación. Solo se
+     escribe si cambia, para no gastar escrituras de KV. */
+  async function anotarVisitas(trafico7d) {
+    for (const p of trafico7d.serie) {
+      const clave = `visitas-${p.momento}`;
+      const antes = await almacen.leer(clave);
+      if (antes?.visitas !== p.visitas || antes?.paginas !== p.paginas) await almacen.guardar(clave, { visitas: p.visitas, paginas: p.paginas });
+    }
+  }
+
+  const traficoDe = periodo => cache.obtener(`trafico:${periodo}`, 300, () => cloudflare.trafico(periodo));
+
+  async function traficoCompleto(periodo) {
+    const t = await traficoDe(periodo);
+    if (periodo === '24h') return t;
+    const t7 = periodo === '7d' ? t : await traficoDe('7d');
+    await anotarVisitas(t7).catch(() => {});
+    if (periodo !== '30d') return t;
+    const exactos = await Promise.all(t.serie.map(p => almacen.leer(`visitas-${p.momento}`).catch(() => null)));
+    const serie = t.serie.map((p, i) => exactos[i] ? { ...p, visitas: exactos[i].visitas, paginas: exactos[i].paginas } : p);
+    const diasExactos = exactos.filter(Boolean).length;
+    const visitas = serie.reduce((s, p) => s + p.visitas, 0);
+    const paginasVistas = serie.reduce((s, p) => s + p.paginas, 0);
+    return {
+      ...t, serie, visitas, paginasVistas, diasExactos,
+      paginasPorVisita: visitas ? Math.round((paginasVistas / visitas) * 10) / 10 : 0,
+      estimado: t.estimado && diasExactos < serie.length,
+    };
+  }
+
   /* La llama el cron del panel de la nube cada hora para que el historial
      siga creciendo aunque nadie abra el panel. */
   async function tareaHoraria() {
-    const [descargas, hora] = await Promise.allSettled([github.descargasApp(), usoApp.horaAnterior()]);
+    const [descargas, hora, visitas] = await Promise.allSettled([github.descargasApp(), usoApp.horaAnterior(), cloudflare.trafico('7d')]);
     if (descargas.status === 'fulfilled') await anotarDescargas(almacen, descargas.value);
     if (hora.status === 'fulfilled') await anotarHoras(almacen, [hora.value]);
-    return { descargas: descargas.status, uso: hora.status };
+    if (visitas.status === 'fulfilled') await anotarVisitas(visitas.value);
+    return { descargas: descargas.status, uso: hora.status, visitas: visitas.status };
   }
 
   const exigir = (condicion, mensaje) => { if (!condicion) throw new ErrorPanel(mensaje, { estado: 400 }); };
@@ -82,15 +118,18 @@ function crearApi({ config, almacen, extras = {} }) {
     },
     '/api/trafico': async url => {
       const periodo = url.searchParams.get('periodo') || '7d';
-      return cache.obtener(`trafico:${periodo}`, 300, () => cloudflare.trafico(periodo));
+      return traficoCompleto(periodo);
     },
     '/api/app': async () => cache.obtener('app', 300, datosApp),
     '/api/cuentas': async () => cache.obtener('cuentas', 20, () => supabase.listarCuentas()),
-    '/api/despliegues': async () => cache.obtener('despliegues', 30, () => cloudflare.desplieguesProduccion()),
     '/api/interruptores': async () => {
-      const [web, catalogo] = await Promise.allSettled([interruptor.estado(), supabase.estadoCatalogo()]);
+      const [web, catalogo, permiso] = await Promise.allSettled([
+        estadoWeb(config), supabase.estadoCatalogo(),
+        cache.obtener('permiso-catalogo', 600, () => supabase.puedeCambiarCatalogo()),
+      ]);
       const leer = x => x.status === 'fulfilled' ? x.value : { error: x.reason?.message || 'sin respuesta' };
-      return { web: leer(web), catalogo: leer(catalogo), puedeApagar: Boolean(config.cloudflareToken), puedeRetirar: Boolean(config.claveSecreta) };
+      const p = permiso.status === 'fulfilled' ? permiso.value : { puede: false, motivo: 'error' };
+      return { web: leer(web), catalogo: leer(catalogo), puedeRetirar: p.puede, motivoRetirar: p.motivo };
     },
     '/api/registro': async () => almacen.registro(),
   };
@@ -99,11 +138,6 @@ function crearApi({ config, almacen, extras = {} }) {
      en la propia página y queda en el registro, salga bien o mal, con
      quién la hizo. */
   const ACCIONES = [
-    [/^\/api\/web\/apagar$/, 'Apagar la web', async (_, c, quien) => {
-      exigir(c.confirmacion === 'APAGAR', 'Escribe APAGAR para confirmar');
-      return { objetivo: config.web, resultado: await interruptor.apagar({ quien }) };
-    }],
-    [/^\/api\/web\/encender$/, 'Encender la web', async () => ({ objetivo: config.web, resultado: await interruptor.encender() })],
     [/^\/api\/catalogo$/, 'Cambiar visibilidad del catálogo', async (_, c) => {
       if (c.retirado) exigir(c.confirmacion === 'RETIRAR', 'Escribe RETIRAR para confirmar');
       const resultado = await supabase.cambiarCatalogo({ retirado: c.retirado === true, motivo: c.motivo });
