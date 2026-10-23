@@ -149,7 +149,7 @@ dos fichas de prueba, pero nada conectado a la app.
    corrigió fallos graves (código remoto por Brotli, nombres de certificados
    TLS y los certificados comprometidos de eMudhra). GitHub ya usa la versión
    corregida (22.23.4). En el PC, `node rwadar-node-seguro.js` dice si la que
-   hay vale; si no, el ciclo diario se para sin publicar hasta actualizarla.
+   hay vale; si no, el ciclo diario sigue y avisa de que hay que actualizarla.
    La web es estática en Cloudflare y RWAdar no usa Render ni PHP.
 2. **Renovar el catálogo antes del 28 de octubre.** El del 21/10 ya está
    aplicado, sincronizado y publicado en la web. La próxima revisión se prepara

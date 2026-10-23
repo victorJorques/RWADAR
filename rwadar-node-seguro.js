@@ -8,9 +8,9 @@
    eMudhra. Aviso oficial:
    https://nodejs.org/en/blog/vulnerability/october-2026-security-releases
 
-   Los flujos de GitHub que publican, compilan o prueban, y el ciclo diario
-   del PC, lo ejecutan antes de usar la red: con un Node anterior se paran.
-   No hay bandera ni variable que lo salte: se actualiza Node. (No se llama
+   Los flujos de GitHub que publican, compilan o prueban lo ejecutan antes
+   de usar la red: con un Node anterior se paran. El ciclo diario del PC lo
+   ejecuta al empezar y, si falla, avisa a Víctor sin detenerse. (No se llama
    desde rwadar-publicar.js porque cambiarlo invalidaría la huella aprobada
    de la publicación.)
 
