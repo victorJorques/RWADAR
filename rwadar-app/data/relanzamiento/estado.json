@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Candidato de revisión con acceso obligatorio, tutorial de cuatro pasos dentro de Academy y mejoras de lectura. El catálogo publicado sigue fechado22/10; el lote documental23/10 y SQL28 no se han aplicado. Android1.4.0/código19 se compila una sola vez y no está publicado. La producción anterior continúa; falta prueba real de cuentas, correo y APK nuevo.",
+  "nota": "Candidato de revisión con acceso obligatorio, tutorial de cuatro pasos dentro de Academy y mejoras de lectura. Catálogo vigente22/10; lote23/10 y SQL28 sin aplicar. Android1.4.0/código19 terminado, sin publicar. Preview inicial revisada; corregido enlace de condiciones. Faltan cuenta y correo reales y QA nativa autenticada.",
   "revisionAprobada": {
-    "commit": "f3cfb1a5af6935c1577dfceca8ee63c36d767536",
-    "contenidoSha256": "sha256:f25e70ad5e1515cb7974243767de6ddf97d5fae7f8e239435107adc667315ee5",
+    "commit": "3f9ce53b9541d6e2b6045e71923d3cc2daabcf87",
+    "contenidoSha256": "sha256:e28988a0ba77201148b77309e562c799bbe50bc12653aaa1732d4e476fb729b8",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
