@@ -19,30 +19,28 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 ## Qué está funcionando hoy
 
-**Entrega nueva en preparación:** Víctor pidió cuenta confirmada obligatoria
-en web y app. El correo de recuperación ya se recibió y validó una vez; se
-aclara el alta repetida y se corrige la vuelta de los correos a la preview para
-terminar allí el acceso. [Verificación de correo](VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md).
-El resto de la entrega añade cuenta confirmada
-en web y app, una cartera manual local y presentar el 3D como tutorial de cuatro
-pasos dentro de Academy. La fuente está implementada y tiene pruebas locales;
-la compilación Android corregida ha terminado y se comprueba en emulador. La web
-nueva está en la preview de revisión: entrada, registro y recuperación comprobados
-en móvil y escritorio, con rutas protegidas sin sesión. El APK anterior falló una
-prueba real con letra grande. No se han activado estos cambios en producción ni aplicado
-los permisos nuevos de Supabase. La web y la app públicas siguen siendo las que
-describe la tabla. La investigación permanece pausada para inicio manual; el
-ciclo expresamente solicitado hoy solo preparó correcciones documentales revisadas,
-sin altas nuevas ni renovación de las fechas de las demás referencias. Víctor
-autorizó después los cambios SQL: las correcciones documentales ya están aplicadas
-en Supabase conservando el catálogo completo y la revisión anterior. Los permisos
-de acceso nuevos esperan a la activación web. Se corrigió también un fallo real
-del Worker que impedía iniciar sesión; está preparado para la preview.
-Detalle en [el cierre local](CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md).
+**Web nueva publicada el 24 de octubre:** ya exige cuenta confirmada y muestra
+una pantalla de acceso con el radar de tokenización y el estilo de la app,
+revisada en móvil y escritorio. El alta de una cuenta de prueba se confirmó por
+correo real y se comprobaron sesión, catálogo y cierre. También se observó la
+cuenta del titular abierta en Chrome. La recuperación llega al formulario para
+elegir contraseña; no se afirma haberla guardado por el titular.
+
+Los permisos de Supabase ya acompañan ese acceso: se conservan completas las
+26 plataformas y 49 referencias. Las correcciones documentales del 23 están
+aplicadas; las fechas generales siguen siendo las de su revisión real. La
+investigación permanece pausada y solo se inicia a petición de Víctor.
+
+Android 1.4.0 corregido ya está compilado y subido como borrador de descarga,
+sin repetir la compilación. Falta terminar la comprobación nativa autenticada:
+el login funcionó, pero el arnés falló al cambiar de tamaño y se corrigió. No
+se publica el APK mientras falte esa revisión. La última versión Android
+pública sigue siendo la indicada en la tabla. Detalle en la
+[verificación de correo y Android](VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md).
 
 | | Estado |
 |---|---|
-| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), actualizada el **22/10 desde main** con el catálogo del 22/10, la reorganización, fichas sin recorte, comparación móvil, páginas permanentes, RSS e interfaz español/inglés. Preview y producción superaron HTTP, comparación de todos los recursos y recorrido real de navegador móvil y escritorio. Las cuentas opcionales y Academy siguen disponibles. |
+| **Web** | Publicada en **https://rwadar.pages.dev** (Cloudflare), actualizada el **24/10** desde la rama aislada revisada. Cuenta confirmada obligatoria, acceso con radar, registro y recuperación; conserva catálogo, fichas, comparación, páginas permanentes, RSS e idiomas. Acceso real en preview y nuevo diseño móvil/escritorio comprobados; producción supera la denegación anónima y la comparación de los recursos públicos de acceso. |
 | **Catálogo** | **La revisión del 22 de octubre ya está aplicada en Supabase**, vigente hasta el **29 de octubre**: 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 reventa, 4 documentales en preparación). IOD figura cerrado; cifras nuevas solo cuando se observaron en su fuente. Los campos de acceso desde España permanecen sin confirmar cuando falta evidencia específica. Ver [`VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md`](VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md). |
 | **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
 | **App Android** | **Versión 1.3.2** (código 16), **publicada el 22/10** en GitHub ([RWAdar 1.3.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.2)). Incluye las imágenes por ficha, lugares y tarjetas nuevas; conserva las cuentas opcionales y el acabado del Perfil. Se compiló dentro de la cuota gratuita y pasó las pruebas del mismo APK en un emulador Android 15 y la revisión de sus capturas. Descarga pública, firma, tamaño, evidencia y sumas comprobados; mantiene la firma de la 1.3.1. Es una versión final y la última disponible. Todavía no está en Google Play. |

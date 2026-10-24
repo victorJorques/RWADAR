@@ -6,6 +6,38 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 24 de octubre de 2026 · Codex · web con cuenta y radar publicada
+
+Producción real: https://414005a7.rwadar.pages.dev y https://rwadar.pages.dev.
+Preview revisada: https://2b48b963.rwadar.pages.dev/acceso. Fuente visual en
+46f38a0; aprobación web en9f7ea9f. El titular autorizó expresamente esta
+producción después de que la revisión automática distinguiera app y web.
+SQL28 aplicado con autorización:24 relaciones protegidas,26 plataformas,
+49 referencias,retirado=false y SELECT anónimo denegado. No se alteraron filas
+ni fechas del catálogo. Once comprobaciones dirigidas de producción aprobadas,
+incluida identidad de los recursos de acceso. Investigación PAUSADA.
+
+APK19 inmutable y con la misma firma, sin nueva compilación. Subido como borrador
+v1.4.0 conRWAdar.apk ySHA256SUMS.txt; no es una release pública ni cambia latest.
+Run privado40121753928 aprobó99peticionesweb/3páginas/87recursos y falló después
+por importjson del arnés. Run40122469905 reutilizó esePASS y confirmó login,
+pero falló en reauth al redimensionar. Corregido en2496686; UTF8 de etiquetas
+restaurado y contrastado en2e6e96f antes de otra ejecución. Nunca atribuir20/20
+ni publicar por estos resultados parciales. Víctor autorizó una última
+ejecución≤9min:40123408614 falló en login_confirmed al perder la ventana de la
+app. El XML final muestra Launcher/QuickSearchBox y ninguna ventana deRWAdar;
+no determina si lo causó un gesto del arnés, cierre del proceso o cambio de
+foco. Se detuvo conforme al acuerdo: no hay más ejecuciones ni release. Los
+ayudantes han terminado.
+
+La cuentaQA temporal se confirmó con un único correo. Limpieza terminada:
+wrapper19417 salió con0, inhabilitación reversible comprobada, cero sesiones
+restantes y los dos secretos temporales eliminados. No
+guardar enlaces de confirmación, JWT ni passwords. Fuentes y resultados en
+[verificación24/10](../VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md).
+
+---
+
 ## 24 de octubre de 2026 · Codex · correo y validación del mismo APK
 
 Continúa en la rama aislada, sin tocar el main compartido. El alta que parecía

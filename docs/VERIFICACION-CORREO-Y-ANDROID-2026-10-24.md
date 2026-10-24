@@ -112,3 +112,54 @@ el radar. Solo cambian HTML/CSS: Geist local, verde de RWAdar, radar ilustrativo
 con categorías genéricas y barrido que respeta reducción de movimiento,
 escritorio en dos columnas y composición móvil. Se conservan los 19 IDs y
 controles. Construcción local correcta; falta inspeccionar la nueva preview.
+
+## Producción web y cierre del ciclo
+
+La preview2b48b963 se inspeccionó en navegador a390×844 y1440×900: radar
+ilustrativo visible, formulario legible y sin controles nuevos ni cambios de
+AuthJS. Se conservan las capturas en la carpeta de entrega, fuera de Git.
+El titular autorizó expresamente publicar esta web después del rechazo de la
+revisión automática que distinguía la autorización Android de la web.
+
+SQL28 se aplicó mediante migración catalogo_cuenta_confirmada_20261024.
+Huella del SQL autorizado:
+998320cd7808ee91a00c0b4537a928b371e9bad4d3bc678a5d77183fc3ae2950.
+La comprobación posterior obtuvo24 relaciones protegidas,26 plataformas,
+49 referencias,retirado=false ySELECT anónimo denegado en ambas vistasV2.
+No modifica filas, fechas ni puntero del catálogo.
+
+El publicador terminó con0 y devolvió https://414005a7.rwadar.pages.dev;
+https://rwadar.pages.dev muestra la misma entrega. Once comprobaciones dirigidas
+de producción aprobadas en VERIFICACION-ACCESO-PRODUCCION-2026-10-24.json:
+HTML de acceso conradar, tres recursos públicos idénticos al artefacto aprobado,
+redirecciónHTML al acceso y denegaciónAPI sin cuenta. La primera expectativa
+de redirección se corrigió para enviar Accept:text/html; sin esa cabecera el
+401 anterior ya denegaba correctamente el acceso. No fue un fallo del Worker.
+
+El APK exacto se subió como borradorv1.4.0: RWAdar.apk ySHA256SUMS.txt.
+GitHub confirma88.961.445bytes y el digestf384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624.
+isDraft=true; no se alteró latest ni se publicó1.4.0.
+
+La continuación40122469905 confirmó login, pero falló durante el cambio de
+tamaño. Sus originales se conservan: ZIP173.250bytes,
+SHA28211daed814fc0f7af1df414b7a2ddd6bcb2179a64db9617a61b7eab23914df.
+Se corrigieron las reautenticaciones redundantes y la restauración del arnés;
+antes de otro lanzamiento se detectó y reparó una conversión incorrecta deUTF8.
+Todos los literales noASCII originales quedaron contrastados con el código
+anterior y ambos módulos compilan. No se cambió la fuente de la app ni elAPK.
+
+Víctor autorizó una última comprobación≤9min y pidió dejar elAPK sin publicar
+si fallaba. Run40123408614 terminó en fallo en login_confirmed, con
+«Login left the app window; no scroll or submit was attempted». El XML final
+muestra com.android.launcher3 ycom.android.quicksearchbox, sin ventanaRWAdar.
+No se determina la causa del cambio de ventana; no se atribuye a un defecto
+confirmado de la app ni se aprueban los criterios sin observar. ZIP12.022bytes,
+SHAbe939a2ace43e1e26198ceb3751fb1468f698bcc61bc04fff64e9adb97efeb97.
+full20PointQA=false yreleaseApproved=false. Se detuvieron las pruebas: no se
+publica, no se compila de nuevo y no se pide otra ejecución en este cierre.
+
+La limpieza terminó con0: inhabilitación reversible de la cuentaQA propia,
+cierre global de sus sesiones y eliminación verificada deRWADAR_QA_EMAIL y
+RWADAR_QA_PASSWORD. Una consulta independiente confirmó la cuenta inhabilitada
+y cero sesiones restantes. La cuenta del titular no se modificó. Todos los
+ayudantes terminaron sus tareas, sin vigilancia abierta. InvestigaciónPAUSADA.
