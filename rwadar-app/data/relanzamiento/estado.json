@@ -11,9 +11,9 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Preview: alta repetida aclarada y correos de preview vuelven a revision. Recepción SMTP real y primera verificación OTP acreditadas24/10; contraseña y acceso final del titular pendientes. MismoAPK19 en validación; SQL28 autorizado sin activar; lote editorial23 aplicado conservando26/49 y fechas generales.",
+  "nota": "Web editorial con acceso por cuenta comprobado en preview: alta confirmada real, cookie y catálogo26/49, cierre que invalida sesión y recuperación hasta nueva contraseña. Diseño con radar revisado390/1440. SQL28 autorizado, activación coordinada con producción. Android19 conserva su compuerta nativa independiente.",
   "revisionAprobada": {
-    "commit": "46f38a0b0d8178b05a37a67b57a843b425915c03",
+    "commit": "a243bf3b01665d1f189097d6dabdb9da68e140fe",
     "contenidoSha256": "sha256:63270660655147d53d85f7ffb50c54f5dc581093336ebc681ed33ad6c70add4f",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
@@ -155,9 +155,15 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "en_progreso",
-      "detalle": "Candidato con cuentas obligatorias y tutorial Academy. Pruebas locales web549 y acceso33, esquema real26/49 y reversión; navegador local390/1440. Pendiente preview pública, alta-confirmación-recuperación reales, SQL28 autorizado y QA del APK19. Solo se prepara preview; la producción sigue bloqueada.",
+      "estado": "aprobado",
+      "detalle": "Beta web editorial comprobada: cuenta temporal confirmada por correo real, loginBFF, cookie protegida, tres páginas y87 recursos, catálogo26/49, tutorialBearer y revocación local. Recuperación del titular llega al formulario nuevo; sesión de su cuenta observada en producción anterior. Nuevo diseño HTML/CSS revisado390/1440 sin cambiar controles. Producción exigeSQL28 y comprobación anónima denegada. Android19 sigue pendiente de QA nativa y no queda aprobado por esta compuerta web.",
       "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md#acceso-real-de-la-preview-y-continuación-nativa",
+          "verificadoEl": "2026-10-24",
+          "resumen": "Run privado40121753928: paso web aprobado99peticiones/3páginas/87recursos,26/49 y logoutreal. Su fallo posterior NameError del arnés nativo se conserva y no apruebaAPK. Diseño radar depreview2b48b963 inspeccionado390/1440;19IDsintactos."
+        },
         {
           "tipo": "documento",
           "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#producción-integral-comprobada",
