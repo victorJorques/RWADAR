@@ -8,7 +8,7 @@ OUT = pathlib.Path('evidence-private')
 OUT.mkdir(exist_ok=True)
 SHA = 'f384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624'
 SOURCE = '1ecf7e7aa8941400d6ad954680cd6deb89107c42'
-TITLE = 'Vivienda Â· Pottendorfer StraÃŸe 62, Wr. Neustadt'
+TITLE = 'Vivienda · Pottendorfer Straße 62, Wr. Neustadt'
 QA_NAME = 'QA_APK19_LOCAL_' + os.environ.get('GITHUB_RUN_ID', 'PREPARATION_ONLY')
 report = {'scope':'private-confirmed-account-ui-only', 'status':'not-started',
           'apkSha256':SHA, 'apkBytes':88961445, 'version':'1.4.0', 'versionCode':19,
@@ -82,7 +82,7 @@ def login_confirmed(language='es'):
     if not authenticated_ui(root,language):
         ui.wait_ui('Sign in to your account' if english else 'Entra en tu cuenta',timeout=30)
         field('Email' if english else 'Correo',os.environ['RWADAR_QA_EMAIL'])
-        field('Password' if english else 'ContraseÃ±a',os.environ['RWADAR_QA_PASSWORD'],secret=True)
+        field('Password' if english else 'Contraseña',os.environ['RWADAR_QA_PASSWORD'],secret=True)
         root=ui.dump()
         if not authenticated_ui(root,language):
             label='Sign in' if english else 'Entrar'
@@ -113,8 +113,8 @@ def check_visible_box(root, label, starts=False):
 
 def catalog_and_detail():
     click('Buscar')
-    ui.wait_ui('49 en el catÃ¡logo',timeout=40)
-    for label in ('Mostrar principales 24','Mostrar reventa 21','Mostrar prÃ³ximas 4'):
+    ui.wait_ui('49 en el catálogo',timeout=40)
+    for label in ('Mostrar principales 24','Mostrar reventa 21','Mostrar próximas 4'):
         locate(label)
     root = ui.dump()
     lists = [n for n in root.iter('node') if n.get('class') in
@@ -125,7 +125,7 @@ def catalog_and_detail():
         b = list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
         require(len(b) == 4 and b[2] > b[0] and b[3] > b[1], 'Catalog native list has zero height')
     capture('01-catalog49-list')
-    field('Buscar ofertas por nombre, proveedor, paÃ­s o mÃ©trica','Pottendorfer')
+    field('Buscar ofertas por nombre, proveedor, país o métrica','Pottendorfer')
     root = ui.wait_ui('1 de 24 fichas',timeout=20)
     root = locate('Ver ficha de ' + TITLE,True)
     row_bounds = check_visible_box(root,'Ver ficha de ' + TITLE,True)
@@ -137,14 +137,14 @@ def catalog_and_detail():
     report['checks']['fullTitleAndPersistentControls']=True
     capture('03-detail-font15')
     # Reach the source CTA, but never activate the provider link.
-    locate('Ver en la fuente Â·',True)
+    locate('Ver en la fuente ·',True)
     capture('04-detail-source-reachable')
     click('Cerrar ' + TITLE)
-    ui.wait_ui('49 en el catÃ¡logo',timeout=15)
+    ui.wait_ui('49 en el catálogo',timeout=15)
     click('Ver ficha de ' + TITLE,True)
     ui.wait_ui('Cerrar ' + TITLE,timeout=15)
     ui.adb('shell','input','keyevent','KEYCODE_BACK')
-    root = ui.wait_ui('49 en el catÃ¡logo',timeout=15)
+    root = ui.wait_ui('49 en el catálogo',timeout=15)
     require('Cerrar ' + TITLE not in ui.visible_text(root), 'Android Back did not close detail')
     report['checks']['catalog49AndList'] = {'total':49,'main':24,'resale':21,'upcoming':4,
                                             'resultCardBounds':row_bounds,'nativeListNonzero':True}
@@ -154,8 +154,8 @@ def catalog_and_detail():
 
 def tutorial():
     click('Academy')
-    click('LecciÃ³n 1:',True)
-    ui.wait_ui('LecciÃ³n 1 de','Volver a las lecciones',timeout=20)
+    click('Lección 1:',True)
+    ui.wait_ui('Lección 1 de','Volver a las lecciones',timeout=20)
     capture('18-academy-real-lesson')
     click('Volver a las lecciones')
     ui.wait_ui('Empezar tutorial 3D',timeout=20)
@@ -171,7 +171,7 @@ def tutorial():
         steps.append(step)
         # No automatic timers or JS injection: each transition is a real UI press.
         if step < 4:
-            click('Siguiente â†’')
+            click('Siguiente →')
     click('Volver a Academy')
     ui.wait_ui('Empezar tutorial 3D',timeout=20)
     capture('06-academy-return')
@@ -199,20 +199,20 @@ def money(label, expected):
 
 def portfolio():
     click('Perfil')
-    click('Registrar inversiÃ³n')
-    field('Nombre de la inversiÃ³n',QA_NAME)
+    click('Registrar inversión')
+    field('Nombre de la inversión',QA_NAME)
     click('EUR')
     field('Cantidad de unidades','2')
     field('Precio pagado por unidad','50')
-    field('ComisiÃ³n (0 si no hubo)','0')
+    field('Comisión (0 si no hubo)','0')
     click('Guardar movimiento')
     ui.wait_ui('Movimiento guardado.',timeout=15)
     report['checks']['localPurchase'] = {'name':QA_NAME,'units':2,'unitPrice':50,'commission':0,'currency':'EUR'}
-    click('Actualizar precio Â· ' + QA_NAME)
+    click('Actualizar precio · ' + QA_NAME)
     field('Precio actual por unidad','60')
     click('Guardar precio')
     ui.wait_ui('Precio y fecha guardados.',timeout=15)
-    click('AÃ±adir movimiento Â· ' + QA_NAME)
+    click('Añadir movimiento · ' + QA_NAME)
     click('Cobro')
     field('Importe cobrado','5')
     click('Guardar movimiento')
@@ -225,8 +225,8 @@ def portfolio():
     report['checks']['localValuationPaymentAndCalculation'] = {'contributed':100,'value':120,
         'received':5,'costs':0,'result':25,'nonAnnualizedPercent':25,'currency':'EUR'}
     click('Movimientos de ' + QA_NAME)
-    click('Eliminar inversiÃ³n Â· ' + QA_NAME)
-    root = ui.wait_ui('Eliminar inversiÃ³n',QA_NAME,timeout=10)
+    click('Eliminar inversión · ' + QA_NAME)
+    root = ui.wait_ui('Eliminar inversión',QA_NAME,timeout=10)
     # This exact QA-only name is the sole destructive target, on the disposable device.
     require(QA_NAME.startswith('QA_APK19_LOCAL_'), 'Local deletion target is not QA')
     # Android can render native Alert labels in capitals. Match only its exact
@@ -237,22 +237,22 @@ def portfolio():
     b = list(map(int,re.findall(r'-?\d+',candidates[0].get('bounds',''))))
     require(len(b) == 4 and b[0] < b[2] and b[1] < b[3], 'Invalid native QA deletion button')
     ui.adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2))
-    root = ui.wait_ui('InversiÃ³n eliminada.',timeout=15)
+    root = ui.wait_ui('Inversión eliminada.',timeout=15)
     require(QA_NAME not in ui.visible_text(root), 'QA investment still visible after deletion')
     report['localQADataRemoved'] = True
     capture('08-local-qa-deleted')
 
 
 def sign_out():
-    click('Cerrar sesiÃ³n')
+    click('Cerrar sesión')
     root = ui.wait_ui('Tu radar, con tu cuenta','Entra en tu cuenta',timeout=25)
-    blocked = ('Inicio','Buscar','Academy','Perfil','Mis inversiones','49 en el catÃ¡logo')
+    blocked = ('Inicio','Buscar','Academy','Perfil','Mis inversiones','49 en el catálogo')
     require(not any(value in ui.visible_text(root).splitlines() for value in blocked),
             'Catalog or local portfolio remains available after sign out')
     ui.adb('shell','input','keyevent','KEYCODE_BACK')
     ui.adb('shell','am','start','-W','-n','com.rwadar.app/.MainActivity')
     root = ui.wait_ui('Entra en tu cuenta',timeout=15)
-    require('49 en el catÃ¡logo' not in ui.visible_text(root), 'Back/reopen bypassed access after sign out')
+    require('49 en el catálogo' not in ui.visible_text(root), 'Back/reopen bypassed access after sign out')
     capture('09-signed-out-blocked')
     report['checks']['signOutBlocksCatalogAndLocalPortfolio'] = True
 
