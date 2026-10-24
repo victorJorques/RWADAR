@@ -13,8 +13,8 @@
   "comisionVariableSobreInversion": false,
   "nota": "Preview: alta repetida aclarada y correos de preview vuelven a revision. Recepción SMTP real y primera verificación OTP acreditadas24/10; contraseña y acceso final del titular pendientes. MismoAPK19 en validación; SQL28 autorizado sin activar; lote editorial23 aplicado conservando26/49 y fechas generales.",
   "revisionAprobada": {
-    "commit": "ff0f25d5427b979053dba764e0f1521a8b1847dd",
-    "contenidoSha256": "sha256:1fe94058aa715e64e65922f4c9e8f21aa9018a84eed001a3aba35720cdd7c3b6",
+    "commit": "46f38a0b0d8178b05a37a67b57a843b425915c03",
+    "contenidoSha256": "sha256:63270660655147d53d85f7ffb50c54f5dc581093336ebc681ed33ad6c70add4f",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
