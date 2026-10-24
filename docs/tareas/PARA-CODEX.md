@@ -6,6 +6,24 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 24 de octubre de 2026 · Codex · correo y validación del mismo APK
+
+Continúa en la rama aislada, sin tocar el main compartido. El alta que parecía
+no enviar correo era repetida. Se comprobó recepción real de recuperación;
+el primer enlace validó y el segundo intento reutilizó elOTP. Se corrige el
+retorno de preview a revision, evitando producción antigua, y se aclara cómo
+continuar tras alta200 sin revelar existencia de cuentas. Tres casos nuevos
+dirigidos aprobados, sin repetir33/549. No guardar contraseñas ni enlacesOTP.
+
+APK19 se reutiliza: QA40027041965 falló al desplazar sobre Nombre; se conservan
+sus originales y fallo. El arnés usa ahora márgenes libres observados y la
+continuación40119180570 comprueba solo fuente1,5/giro/excepciones. Aún no hay
+aprobación autenticada ni release. SQL28 autorizado, reservado para la activación
+web; lote editorial23 aplicado con26/49. [Verificación24/10](../VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md).
+La investigación sigue PAUSADA; no iniciar otro ciclo por horario.
+
+---
+
 ## 23 de octubre de 2026 · Codex · acceso obligatorio, cartera y tutorial Academy
 
 Se trabajó en la rama aislada codex/cierre-android-140-20261023 sin tocar el

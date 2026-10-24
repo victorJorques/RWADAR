@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 23 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 24 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -20,6 +20,10 @@ consulta. Entrar en el radar es gratis para las plataformas.
 ## Qué está funcionando hoy
 
 **Entrega nueva en preparación:** Víctor pidió cuenta confirmada obligatoria
+en web y app. El correo de recuperación ya se recibió y validó una vez; se
+aclara el alta repetida y se corrige la vuelta de los correos a la preview para
+terminar allí el acceso. [Verificación de correo](VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md).
+El resto de la entrega añade cuenta confirmada
 en web y app, una cartera manual local y presentar el 3D como tutorial de cuatro
 pasos dentro de Academy. La fuente está implementada y tiene pruebas locales;
 la compilación Android corregida ha terminado y se comprueba en emulador. La web

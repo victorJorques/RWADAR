@@ -21,6 +21,13 @@ export function retornoSeguro(value, origin) {
   } catch { return '/'; }
 }
 
+function destinoCorreo(origin) {
+  // Both roots are already allowed by Auth. Never copy an arbitrary request
+  // origin into an account email or return a temporary deployment hostname.
+  return /^https:\/\/(?:revision|[a-f0-9]{8})\.rwadar\.pages\.dev$/.test(origin)
+    ? 'https://revision.rwadar.pages.dev/' : 'https://rwadar.pages.dev/';
+}
+
 function respuesta(data, status = 200, headers = {}) {
   return new Response(JSON.stringify(data), { status, headers: {
     'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'private, no-store',
@@ -199,14 +206,14 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
           if (data.aceptaCondiciones !== true) throw new Error('condiciones');
           const name = typeof data.nombre === 'string' ? data.nombre.trim() : '';
           if (name.length > 60 || /[\u0000-\u001f\u007f]/.test(name)) throw new Error('nombre_invalido');
-          await api(env, '/auth/v1/signup?redirect_to=' + encodeURIComponent('https://rwadar.pages.dev/'),
+          await api(env, '/auth/v1/signup?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)),
             { method: 'POST', data: { email: correo(data.correo), password: clave(data.clave, true), data: { nombre: name } } });
           // Signup never opens the catalog, even if remote autoconfirm is misconfigured.
-          return respuesta({ confirmarCorreo: true, mensaje: 'Si el registro se ha completado, recibirás un enlace. Confirma tu correo y después entra.' });
+          return respuesta({ confirmarCorreo: true, mensaje: 'Si la cuenta es nueva, recibirás un enlace para confirmar el correo antes de entrar. Si ya tenías cuenta, entra con tu contraseña o recupérala.' });
         }
         if (path === '/api/acceso/recuperar' || path === '/api/acceso/reenviar') {
           await api(env, '/auth/v1/' + (path.endsWith('recuperar') ? 'recover' : 'resend') +
-            '?redirect_to=' + encodeURIComponent('https://rwadar.pages.dev/'), { method: 'POST',
+            '?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)), { method: 'POST',
               data: { email: correo(data.correo), ...(path.endsWith('reenviar') ? { type: 'signup' } : {}) } });
           return respuesta({ mensaje: 'Si hay una cuenta con ese correo, recibirás el enlace. Revisa también el correo no deseado.' });
         }

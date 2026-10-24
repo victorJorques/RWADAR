@@ -14,6 +14,12 @@
   <h1 id="titulo">Tu radar, con tu cuenta</h1>
   <p>Ofertas con fuentes. Riesgos a la vista. Aprende a leerlas con Academy y guarda lo que te interesa.</p>
   <p class="estado" id="estado" role="status" aria-live="polite"></p>
+  <section id="siguiente-alta" hidden aria-label="Cómo continuar con tu cuenta">
+    <div class="acciones">
+      <button id="entrar-tras-alta" type="button" data-vista="entrar">Entrar con mi cuenta</button>
+      <button type="button" data-vista="recuperar">Recuperar mi contraseña</button>
+    </div>
+  </section>
   <form id="formulario">
     <label>Correo<input id="correo" name="email" type="email" maxlength="254" autocomplete="username" required></label>
     <label id="campo-nombre" hidden>Nombre (opcional)<input id="nombre" name="nombre" maxlength="60" autocomplete="nickname"></label>

@@ -7,6 +7,7 @@
   function mensaje(texto) { $('estado').textContent = texto; }
   function cambiar(siguiente) {
     vista = siguiente; $('clave').value = ''; $('condiciones').checked = false;
+    $('siguiente-alta').hidden = true; $('acciones').hidden = false; form.hidden = false;
     const alta = vista === 'registrar', nueva = vista === 'nueva-clave';
     $('campo-nombre').hidden = !alta; $('campo-condiciones').hidden = !alta;
     $('campo-clave').hidden = !['entrar', 'registrar', 'nueva-clave'].includes(vista);
@@ -61,7 +62,14 @@
       await terminarCierre();
       const result = await api(vista, data);
       if (result.autenticada) regresar();
-      else { if (vista === 'nueva-clave') { enlace = null; cambiar('entrar'); } mensaje(result.mensaje || 'Revisa tu correo para confirmar la cuenta.'); }
+      else {
+        if (vista === 'nueva-clave') { enlace = null; cambiar('entrar'); }
+        mensaje(result.mensaje || 'Revisa tu correo para confirmar la cuenta.');
+        if (vista === 'registrar') {
+          form.hidden = true; $('acciones').hidden = true; $('siguiente-alta').hidden = false;
+          $('entrar-tras-alta').focus();
+        }
+      }
     } catch (error) { mensaje(error.name === 'AbortError' ? 'La conexión tarda demasiado. Inténtalo de nuevo.' : error.message); }
     finally { data.clave = ''; ocupado = false; $('enviar').disabled = false; }
   });
