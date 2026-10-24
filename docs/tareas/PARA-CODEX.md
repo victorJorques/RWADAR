@@ -6,6 +6,31 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 24 de octubre de 2026 · Codex · revisión integral y compatibilidad pendiente
+
+Se revisó la entrega desde `9d51f8b`, con tres ayudantes de lectura y cierre
+acotado. No cambió la fuente del producto. Se corrigieron contradicciones del
+estado vigente y se añadió la [revisión integral](../REVISION-INTEGRAL-2026-10-24.md).
+GitHub consultado: latest sigue en1.3.2 y1.4.0 es draft. La última QA Android
+fallida conserva todas sus evidencias y no se repite.
+
+Hallazgo prioritario por código:1.3.2 consulta con cliente anónimo separado de
+Perfil; SQL28 ya impide esa sincronización. Con caché válida conserva la copia;
+sin ella el lector devuelve listas vacías. Falta observación actual en dispositivo.
+El panel de Claude usa también lectura anónima y rutas web ahora protegidas;
+necesita adaptación, sin tocar su WIP. Main aún no contiene la web publicada.
+
+Solo se hicieron cuatro lecturas HTTP nuevas: robots200; sitemap/RSS401;
+fichaHTML303 al acceso. No se repitieron11/99 ni baterías locales. Automatización
+leída PAUSED; no se inicia investigación. Cartera sigue manual/local, investigación
+49 incompleta, recuperación del titular sin guardado acreditado, seguridad y
+vídeos con los límites del informe. Los tres ayudantes han terminado.
+
+Los cambios de esta entrada son documentales, en el commit que la incorpora.
+No hay SQL, correos, cuentas nuevas, builds, otra ejecución nativa ni despliegues.
+
+---
+
 ## 24 de octubre de 2026 · Codex · web con cuenta y radar publicada
 
 Producción real: https://414005a7.rwadar.pages.dev y https://rwadar.pages.dev.

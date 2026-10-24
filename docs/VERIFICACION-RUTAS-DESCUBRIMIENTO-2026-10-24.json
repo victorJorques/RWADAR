@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-10-24T19:13:37.711Z",
+  "scope": "Four previously unverified public discovery routes; no login, SMTP, catalogue mutation or deployment.",
+  "checks": [
+    {
+      "route": "/robots.txt",
+      "accept": "*/*",
+      "status": 200,
+      "location": null,
+      "contentType": "text/plain; charset=utf-8",
+      "bodyBytes": 70,
+      "robotsSitemapDeclared": true,
+      "sessionRequired": false
+    },
+    {
+      "route": "/sitemap.xml",
+      "accept": "*/*",
+      "status": 401,
+      "location": null,
+      "contentType": "application/json; charset=utf-8",
+      "bodyBytes": 28,
+      "sessionRequired": true
+    },
+    {
+      "route": "/novedades.xml",
+      "accept": "*/*",
+      "status": 401,
+      "location": null,
+      "contentType": "application/json; charset=utf-8",
+      "bodyBytes": 28,
+      "sessionRequired": true
+    },
+    {
+      "route": "/ofertas/wemakeit",
+      "accept": "text/html",
+      "status": 303,
+      "location": "/acceso?volver=%2Fofertas%2Fwemakeit",
+      "contentType": null,
+      "bodyBytes": 0,
+      "sessionRequired": true
+    }
+  ]
+}
