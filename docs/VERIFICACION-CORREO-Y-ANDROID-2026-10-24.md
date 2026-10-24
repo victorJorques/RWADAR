@@ -88,3 +88,27 @@ y la QA autenticada pendiente con una cuenta real confirmada.
 SQL28 sigue autorizado, sin activar hasta coordinarlo con la web verificada.
 El lote editorial23 ya está aplicado con26/49 y revisión anterior intacta.
 Investigación pausada para inicio manual; no se inició otro ciclo.
+
+## Acceso real de la preview y continuación nativa
+
+La ejecución privada 40121753928 aprobó el acceso real de la preview con la
+cuenta temporal confirmada: 99 peticiones, tres páginas, 87 recursos, 26
+plataformas y 49 referencias, cookie protegida, tutorial con Bearer y cierre
+local que invalida la cookie anterior. Su informe saneado conserva la huella
+fb15292bb142a902260781be434c2a436ac289795664f153c75ab9e85304637c.
+El ZIP privado completo tiene 11.486 bytes y huella
+48027132a4e57cdb82d8ebdb8d7280bafb6631deb3e1b965d13a95a97819ca05.
+
+El recorrido nativo se detuvo a los nueve segundos, antes de aprobar ningún
+criterio, por un import de json ausente en el arnés. Se reprodujo con XML
+real y ADB simulado y se corrigió ese import. El chequeo estático de los tres
+módulos no encontró más globales sin definir. Se añade diagnóstico de archivo,
+línea y función sin datos de sesión. La continuación conserva el PASS web y
+los baselines del mismo APK; no vuelve a enviarse el correo ni a ejecutarse
+la prueba de preview. La autorización de esa continuación se solicita aparte.
+
+Víctor pidió después elevar el diseño de acceso al nivel de la app y mostrar
+el radar. Solo cambian HTML/CSS: Geist local, verde de RWAdar, radar ilustrativo
+con categorías genéricas y barrido que respeta reducción de movimiento,
+escritorio en dos columnas y composición móvil. Se conservan los 19 IDs y
+controles. Construcción local correcta; falta inspeccionar la nueva preview.

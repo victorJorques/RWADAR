@@ -53,15 +53,20 @@ jobs:
           printf '%s  .github/qa-android-authenticated-140/baseline-c19-guest-continuation.json\n' 4aee7315d605006a9bc8da668c5b18dce7084f5ccc3adc61990b058951aef3c1 | sha256sum --check
           # Same immutable APK: signature/photos/standard guest phases are reused, never repeated.
           printf '%s  .github/qa-android-authenticated-140/baseline-c19-guest.json\n' 842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59 | sha256sum --check
-      - name: Prepare the fixed secure Node runtime without installing project dependencies
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: 22.23.4
-      - name: Confirm real preview account access before the native pending criteria
-        env:
-          RWADAR_QA_EMAIL: ${{ secrets.RWADAR_QA_EMAIL }}
-          RWADAR_QA_PASSWORD: ${{ secrets.RWADAR_QA_PASSWORD }}
-        run: node .github/qa-android-authenticated-140/verificar-web-qa.cjs
+      - name: Reuse completed preview account QA 40121753928 without repeating it
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          source=pathlib.Path('.github/qa-android-authenticated-140/baseline-web-preview-40121753928.json')
+          data=source.read_bytes()
+          assert hashlib.sha256(data).hexdigest()=='fb15292bb142a902260781be434c2a436ac289795664f153c75ab9e85304637c'
+          report=json.loads(data)
+          assert report['status']=='passed-scoped-only' and report['counts']['requests']==99
+          pathlib.Path('evidence-private/web-preview-result.json').write_bytes(data)
+          print('Reused completed preview QA; no HTTP requests and no email sent')
+          PY
       - name: Prepare official Android emulator on an ephemeral runner
         shell: bash
         run: |

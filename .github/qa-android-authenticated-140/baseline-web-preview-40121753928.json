@@ -1,0 +1,748 @@
+{
+  "scope": "web-authenticated-qa-only",
+  "modo": "preview",
+  "origen": "https://revision.rwadar.pages.dev",
+  "startedAt": "2026-10-24T18:40:32.219Z",
+  "status": "passed-scoped-only",
+  "checks": [
+    {
+      "name": "anonimo_raiz_bloqueada",
+      "passed": true,
+      "path": "/",
+      "status": 303
+    },
+    {
+      "name": "anonimo_catalogo_bloqueado",
+      "passed": true,
+      "path": "/api/acceso/catalogo/catalogo_ofertas_publicas_v2",
+      "status": 401
+    },
+    {
+      "name": "entrada_qa",
+      "passed": true,
+      "path": "/api/acceso/entrar",
+      "status": 200
+    },
+    {
+      "name": "jwt_tutorial_formato",
+      "passed": true
+    },
+    {
+      "name": "cookie_protegida",
+      "passed": true,
+      "flags": {
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": true,
+        "path": true,
+        "sinDomain": true
+      }
+    },
+    {
+      "name": "entrada_uuid",
+      "passed": true
+    },
+    {
+      "name": "sesion_uuid",
+      "passed": true,
+      "path": "/api/acceso/sesion",
+      "status": 200
+    },
+    {
+      "name": "misma_cuenta_tutorial_y_bff",
+      "passed": true
+    },
+    {
+      "name": "pagina_privada",
+      "passed": true,
+      "path": "/",
+      "status": 200,
+      "bytes": 255736
+    },
+    {
+      "name": "pagina_privada",
+      "passed": true,
+      "path": "/academy/",
+      "status": 200,
+      "bytes": 16860
+    },
+    {
+      "name": "pagina_privada",
+      "passed": true,
+      "path": "/academy/que-significa-tokenizar-un-activo",
+      "status": 200,
+      "bytes": 27778
+    },
+    {
+      "name": "recursos_observados_acotados",
+      "passed": true,
+      "count": 87
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/idioma-20261022.5e3f8e3094f5.css",
+      "status": 200,
+      "bytes": 1023
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/rwadar-20260820.bf1099af5479.css",
+      "status": 200,
+      "bytes": 157860
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-prosegur-digital-gold.webp",
+      "status": 200,
+      "bytes": 64062
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-aktionariat.webp",
+      "status": 200,
+      "bytes": 66118
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-casa-de-outeiro.webp",
+      "status": 200,
+      "bytes": 76464
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-boss-info.webp",
+      "status": 200,
+      "bytes": 43046
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-switzerlend.webp",
+      "status": 200,
+      "bytes": 60752
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-servicehunter-quitt.webp",
+      "status": 200,
+      "bytes": 55938
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-wemakeit.webp",
+      "status": 200,
+      "bytes": 69858
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-apartamento-vacacional-hinterstoder-50.webp",
+      "status": 200,
+      "bytes": 71648
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-fotovoltaica-cohotel.webp",
+      "status": 200,
+      "bytes": 35060
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-drautalresidenz-paternion.webp",
+      "status": 200,
+      "bytes": 58670
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-randhartingergasse-9-viena.webp",
+      "status": 200,
+      "bytes": 52508
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-local-de-estanco-klagenfurt.webp",
+      "status": 200,
+      "bytes": 58604
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-vivienda-pluddemanngasse-101-graz.webp",
+      "status": 200,
+      "bytes": 57236
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-terreno-con-arrendamiento-billa.webp",
+      "status": 200,
+      "bytes": 86094
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-fotovoltaica-greenpoint.webp",
+      "status": 200,
+      "bytes": 42470
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-vivienda-pottendorfer-stra-e-62-wr-neustadt.webp",
+      "status": 200,
+      "bytes": 45228
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-mglo.webp",
+      "status": 200,
+      "bytes": 49326
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-vivienda-sonnleithnergasse-2-viena.webp",
+      "status": 200,
+      "bytes": 88962
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-vivienda-schwarzer-weg-18-graz.webp",
+      "status": 200,
+      "bytes": 67808
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-vivienda-stallhofstra-e-28-gratwein.webp",
+      "status": 200,
+      "bytes": 77928
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-mf-one.webp",
+      "status": 200,
+      "bytes": 72732
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-mglobal.webp",
+      "status": 200,
+      "bytes": 51478
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-spiko-letras-del-tesoro-euro.webp",
+      "status": 200,
+      "bytes": 44674
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-mtbill.webp",
+      "status": 200,
+      "bytes": 41512
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-abu-dhabi-1.webp",
+      "status": 200,
+      "bytes": 59404
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-atlanta-1.webp",
+      "status": 200,
+      "bytes": 46366
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-dania-beach-1.webp",
+      "status": 200,
+      "bytes": 59916
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-carolina-del-norte-1.webp",
+      "status": 200,
+      "bytes": 90006
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-levante-1.webp",
+      "status": 200,
+      "bytes": 62000
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-granada-3.webp",
+      "status": 200,
+      "bytes": 74198
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-houston-1.webp",
+      "status": 200,
+      "bytes": 53704
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-houston-3.webp",
+      "status": 200,
+      "bytes": 79930
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-houston-2.webp",
+      "status": 200,
+      "bytes": 85534
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-malaga-6.webp",
+      "status": 200,
+      "bytes": 69548
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-opportunity-2.webp",
+      "status": 200,
+      "bytes": 61404
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-miami-5.webp",
+      "status": 200,
+      "bytes": 68964
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-miami-3.webp",
+      "status": 200,
+      "bytes": 48754
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-miami-1.webp",
+      "status": 200,
+      "bytes": 60724
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-pirineos-1.webp",
+      "status": 200,
+      "bytes": 66368
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-miami-2.webp",
+      "status": 200,
+      "bytes": 94928
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-rentas-3.webp",
+      "status": 200,
+      "bytes": 59868
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-rentas-2.webp",
+      "status": 200,
+      "bytes": 75868
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-san-antonio-1.webp",
+      "status": 200,
+      "bytes": 54070
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-rentas-1.webp",
+      "status": 200,
+      "bytes": 71270
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-iod-occasio.webp",
+      "status": 200,
+      "bytes": 69368
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-secundario-proyecto-100.webp",
+      "status": 200,
+      "bytes": 73586
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/addx.webp",
+      "status": 200,
+      "bytes": 56574
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/artex-global-markets.webp",
+      "status": 200,
+      "bytes": 39130
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/archax.webp",
+      "status": 200,
+      "bytes": 55248
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-reental-emision-primaria.webp",
+      "status": 200,
+      "bytes": 63602
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-mgloeuro.webp",
+      "status": 200,
+      "bytes": 34966
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/ofertas-editoriales/oferta-hausera-proximas-ofertas.webp",
+      "status": 200,
+      "bytes": 62086
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/courtyard.webp",
+      "status": 200,
+      "bytes": 75278
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/blocksquare.webp",
+      "status": 200,
+      "bytes": 94004
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/fireblocks.webp",
+      "status": 200,
+      "bytes": 64436
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/backed-finance.webp",
+      "status": 200,
+      "bytes": 70532
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/centrifuge.webp",
+      "status": 200,
+      "bytes": 71728
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/figure.webp",
+      "status": 200,
+      "bytes": 111296
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/midas.webp",
+      "status": 200,
+      "bytes": 52578
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/inx.webp",
+      "status": 200,
+      "bytes": 36410
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/lofty.webp",
+      "status": 200,
+      "bytes": 52678
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/franklin-templeton.webp",
+      "status": 200,
+      "bytes": 48614
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/ondo-finance.webp",
+      "status": 200,
+      "bytes": 75482
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/maple-finance.webp",
+      "status": 200,
+      "bytes": 72174
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/securitize.webp",
+      "status": 200,
+      "bytes": 35030
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/spiko.webp",
+      "status": 200,
+      "bytes": 59178
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/openeden.webp",
+      "status": 200,
+      "bytes": 51134
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/reental.webp",
+      "status": 200,
+      "bytes": 111998
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/pax-gold.webp",
+      "status": 200,
+      "bytes": 48476
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/republic.webp",
+      "status": 200,
+      "bytes": 54814
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/analitica-20260927.d4f2cbc905c4.js",
+      "status": 200,
+      "bytes": 1312
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/tokeny.webp",
+      "status": 200,
+      "bytes": 38944
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/superstate.webp",
+      "status": 200,
+      "bytes": 33906
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/tzero.webp",
+      "status": 200,
+      "bytes": 63066
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/taurus.webp",
+      "status": 200,
+      "bytes": 51150
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/plataformas/swarm.webp",
+      "status": 200,
+      "bytes": 53570
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/idioma-20261022.9634a5547e41.js",
+      "status": 200,
+      "bytes": 6684
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/idioma-web-20261022.3faff3331807.js",
+      "status": 200,
+      "bytes": 10992
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/idioma-en-20261022.48938a837072.js",
+      "status": 200,
+      "bytes": 92895
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/ficha-editorial-20261022.e9e820b29715.js",
+      "status": 200,
+      "bytes": 8576
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/acceso-privado.049343878bf0.js",
+      "status": 200,
+      "bytes": 4146
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/catalogo-publico-20261022.d65430b1d14a.js",
+      "status": 200,
+      "bytes": 277626
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/academy-20261002.a9d92bd4a563.js",
+      "status": 200,
+      "bytes": 6946
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/rwadar-20260820.1450c64927af.js",
+      "status": 200,
+      "bytes": 277270
+    },
+    {
+      "name": "recurso_html",
+      "passed": true,
+      "path": "/assets/academy-20261002.a0c1045a8595.css",
+      "status": 200,
+      "bytes": 21835
+    },
+    {
+      "name": "conteo_catalogo_plataformas_publicas_v2",
+      "passed": true,
+      "path": "/api/acceso/catalogo/catalogo_plataformas_publicas_v2",
+      "status": 200,
+      "count": 26,
+      "expected": 26
+    },
+    {
+      "name": "conteo_catalogo_ofertas_publicas_v2",
+      "passed": true,
+      "path": "/api/acceso/catalogo/catalogo_ofertas_publicas_v2",
+      "status": 200,
+      "count": 49,
+      "expected": 49
+    },
+    {
+      "name": "tutorial_bearer_html",
+      "passed": true,
+      "path": "/api/acceso/tutorial",
+      "status": 200
+    },
+    {
+      "name": "tutorial_cookie_protegida",
+      "passed": true,
+      "flags": {
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": true,
+        "path": true,
+        "sinDomain": true
+      }
+    },
+    {
+      "name": "logout_solo_sesion_bff",
+      "passed": true,
+      "path": "/api/acceso/salir",
+      "status": 200,
+      "scope": "local-fresh-bff-session"
+    },
+    {
+      "name": "cookie_revocada_no_abre_raiz",
+      "passed": true,
+      "path": "/",
+      "status": 303
+    }
+  ],
+  "counts": {
+    "requests": 99,
+    "bytesRead": 5832434,
+    "pages": 3,
+    "assets": 87
+  },
+  "credentialsRecorded": false,
+  "mailSent": false,
+  "authenticatedAndroidQA": false,
+  "releaseApproved": false,
+  "durationMs": 18771
+}

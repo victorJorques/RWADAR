@@ -304,6 +304,20 @@ def timeout_handler(*_):
     raise TimeoutError('Private scoped QA reached its bounded time limit')
 
 
+def safe_exception_diagnostic(error):
+    # Read code metadata only: never locals, argv, exception args or source text.
+    result={'exceptionName':type(error).__name__,'frames':[]}
+    frame=error.__traceback__
+    while frame is not None:
+        code=frame.tb_frame.f_code
+        result['frames'].append({'file':pathlib.Path(code.co_filename).name,
+                                 'line':frame.tb_lineno,'function':code.co_name})
+        frame=frame.tb_next
+    if isinstance(error,NameError) and isinstance(error.name,str) and re.fullmatch(r'[A-Za-z_][A-Za-z0-9_]*',error.name):
+        result['undefinedName']=error.name
+    return result
+
+
 if __name__ == '__main__':
     exit_code = 1
     try:
@@ -315,7 +329,10 @@ if __name__ == '__main__':
         # Never stringify CalledProcessError/TimeoutExpired: they contain argv.
         report['status'] = 'failed'
         report['failureType'] = type(error).__name__
+        report['diagnostic'] = safe_exception_diagnostic(error)
         report['failure'] = ui.sanitize(str(error)) if isinstance(error,(AssertionError,TimeoutError)) else 'Details withheld to protect credentials'
+        if 'undefinedName' in report['diagnostic']:
+            report['failure']='Undefined static identifier: '+report['diagnostic']['undefinedName']
         if ui.CAPTURE_ALLOWED:
             ui.capture_failure('failure-authenticated-private')
     finally:

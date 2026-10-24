@@ -1,7 +1,7 @@
 """Native snapshot/scroll wrappers reused from the reviewed APK19 harness.
 Private evidence only; the product APK is never modified.
 """
-import os, pathlib, re, struct, subprocess, time, xml.etree.ElementTree as ET
+import json, os, pathlib, re, struct, subprocess, time, xml.etree.ElementTree as ET
 out = pathlib.Path('evidence-private')
 out.mkdir(exist_ok=True)
 scroll_gestures = []
