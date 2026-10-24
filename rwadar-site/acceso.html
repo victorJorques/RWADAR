@@ -5,14 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>Accede a RWAdar</title>
+  <link rel="preload" href="/assets/fuentes/geist-normal-6ab67a4f11f1.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/acceso.css">
   <script defer src="/assets/acceso.js"></script>
 </head>
 <body>
 <main class="acceso">
-  <p class="marca">RWAdar</p>
+  <header class="cabecera">
+    <p class="marca">RWAdar<span aria-hidden="true"></span></p>
+    <p class="cabecera-nota">Tu cuenta gratuita</p>
+  </header>
+  <section class="beneficios" aria-labelledby="beneficios-titulo">
+    <p class="ceja">Tokenización de activos reales</p>
+    <h2 id="beneficios-titulo">Tu radar.<br><span>Más claridad.</span></h2>
+    <div class="radar-visual" role="img" aria-label="Radar de tokenización de activos: inmuebles, crédito y materias primas. Ilustración de categorías, sin ofertas ni datos en directo.">
+      <span class="radar-orbita orbita-uno"></span><span class="radar-orbita orbita-dos"></span><span class="radar-orbita orbita-tres"></span>
+      <span class="radar-eje eje-horizontal"></span><span class="radar-eje eje-vertical"></span><span class="radar-scan"></span>
+      <span class="radar-centro"></span><span class="radar-punto punto-uno"></span><span class="radar-punto punto-dos"></span><span class="radar-punto punto-tres"></span>
+      <span class="radar-tipo tipo-uno">Inmuebles</span><span class="radar-tipo tipo-dos">Crédito</span><span class="radar-tipo tipo-tres">Materias primas</span>
+    </div>
+    <p class="presentacion">Explora el radar, aprende con Academy y guarda lo que te interesa en un mismo lugar.</p>
+    <ul>
+      <li><span class="numero" aria-hidden="true">01</span><div><b>Encuentra lo relevante</b><p>Mínimo, acceso y salida, con la fuente al lado.</p></div></li>
+      <li><span class="numero" aria-hidden="true">02</span><div><b>Aprende a leerlo</b><p>Un tutorial en cuatro pasos y lecciones de Academy.</p></div></li>
+      <li><span class="numero" aria-hidden="true">03</span><div><b>Llévalo contigo</b><p>El mismo radar y tu cuenta en la web y Android.</p></div></li>
+    </ul>
+    <a href="https://github.com/victorJorques/RWAdar-downloads/releases/latest" target="_blank" rel="noopener">Descubre la app para Android <span aria-hidden="true">↗</span></a>
+    <p class="independiente">RWAdar informa: no recibe tu dinero ni ejecuta inversiones.</p>
+  </section>
+  <section class="panel-acceso" aria-labelledby="titulo">
+  <p class="ceja">Tu espacio en RWAdar</p>
   <h1 id="titulo">Tu radar, con tu cuenta</h1>
-  <p>Ofertas con fuentes. Riesgos a la vista. Aprende a leerlas con Academy y guarda lo que te interesa.</p>
+  <p class="introduccion">Una cuenta para la web y la app. Gratis.</p>
   <p class="estado" id="estado" role="status" aria-live="polite"></p>
   <section id="siguiente-alta" hidden aria-label="Cómo continuar con tu cuenta">
     <div class="acciones">
@@ -38,15 +62,7 @@
     <p id="correo-enlace"></p>
     <button id="adoptar" type="button">Continuar con esta cuenta</button>
   </section>
-  <p class="nota">Confirma tu correo antes de entrar. Las contraseñas se comprueban en Supabase y no se guardan en este dispositivo. RWAdar informa: no recibe tu dinero ni ejecuta inversiones.</p>
-  <section class="beneficios" aria-labelledby="beneficios-titulo">
-    <h2 id="beneficios-titulo">Activos reales, más claros.</h2>
-    <ul>
-      <li><b>Encuentra lo relevante.</b> Mínimo, acceso desde España y salida, cuando están documentados.</li>
-      <li><b>Entiende lo que ves.</b> Un tutorial 3D en cuatro pasos y lecciones para seguir aprendiendo.</li>
-      <li><b>Llévalo contigo.</b> La web y la app Android comparten el radar y tu cuenta.</li>
-    </ul>
-    <a href="https://github.com/victorJorques/RWAdar-downloads/releases/latest" target="_blank" rel="noopener">Ver la app para Android ↗</a>
+  <p class="nota">Confirma tu correo antes de entrar. Tu contraseña no se guarda en este dispositivo.</p>
   </section>
   <footer><a href="/privacidad">Privacidad</a><a href="/privacidad#condiciones">Condiciones</a><a href="/privacidad#aviso-legal">Aviso legal</a></footer>
 </main>
