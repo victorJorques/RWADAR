@@ -19,6 +19,10 @@ const fs = require('fs');
 const vm = require('vm');
 const path = require('path');
 const { execFileSync } = require('child_process');
+/* La sesión editorial solo la recibe el sincronizador. No se hereda en
+   Wrangler, npx ni otros procesos posteriores de publicación. */
+const entornoSincronizacion = { ...process.env };
+delete process.env.RWADAR_CATALOGO_ACCESS_TOKEN;
 const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { cargarRegistro: cargarPrecargas, unirActivos } = require('./rwadar-precargar-imagenes');
@@ -192,14 +196,14 @@ if (produccion) {
 if (!sinSincronizar) {
   try {
     execFileSync('node', [path.join(__dirname, 'rwadar-app', 'sincronizar.js')],
-      { stdio: 'inherit' });
+      { stdio: 'inherit', env: entornoSincronizacion });
   } catch (e) {
     console.error('No se pudo sincronizar con Supabase. No se publica nada.');
     console.error(remoto
       ? '(un destino remoto no permite omitir la sincronización)'
       : '(usa --sin-sincronizar para saltarte este paso a propósito en local)');
     process.exit(1);
-  }
+  } finally { delete entornoSincronizacion.RWADAR_CATALOGO_ACCESS_TOKEN; }
 }
 
 /* La sincronización remota solo puede confirmar que el snapshot aprobado ya

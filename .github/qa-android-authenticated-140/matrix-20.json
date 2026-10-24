@@ -1,0 +1,224 @@
+{
+  "apkVersionCode": 19,
+  "full20PointQA": false,
+  "releaseApproved": false,
+  "sourceHeadSha": "1ecf7e7aa8941400d6ad954680cd6deb89107c42",
+  "sourceEvidence": "Local source checks recorded separately; source-only never means native PASS.",
+  "baseline": {
+    "runId": 40023081613,
+    "jobId": 120652334625,
+    "historicalStatus": "failed",
+    "reused": [
+      "photos49",
+      "packageIdentity",
+      "standard"
+    ],
+    "reportSha256": "842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59"
+  },
+  "points": [
+    {
+      "id": "01",
+      "point": "Identidad, firma, instalaciÃ³n y arranque del APK exacto",
+      "status": "reused-observation-awaiting-root-review",
+      "note": "Paquete, firma e instalaciÃ³n del mismo APK; no se repiten. Arranque y login observados de nuevo solo como preparaciÃ³n autenticada.",
+      "newChecksRequired": []
+    },
+    {
+      "id": "02",
+      "point": "Cuatro pestaÃ±as ES/EN y selecciÃ³n de idioma persistente tras reinicio",
+      "status": "pending-single-authenticated-run",
+      "note": "Cuatro pestañas ES/EN, contraste documental de importes/unidades/fechas/URL y persistencia del idioma tras reinicio con relogin real.",
+      "newChecksRequired": [
+        "languagesAndFavoritePersistence"
+      ]
+    },
+    {
+      "id": "03",
+      "point": "Conteos Ã­ntegros y 26 centros reales del radar abren su plataforma a 320dp",
+      "status": "pending-single-authenticated-run",
+      "note": "Conteos49 y los26 centros reales a320dp; no hereda evidencias de APK18.",
+      "newChecksRequired": [
+        "catalog49AndList",
+        "radar26Centers320dp"
+      ]
+    },
+    {
+      "id": "04",
+      "point": "Tarjeta con mÃ­nimo EUR, EspaÃ±a, salida y cifra contextualizada",
+      "status": "pending-single-authenticated-run",
+      "note": "Cinco tarjetas nativas con mínimo/España/salida y cifra contextualizada o consulta al emisor si su vigencia venció.",
+      "newChecksRequired": [
+        "nativeCardDecisionFacts"
+      ]
+    },
+    {
+      "id": "05",
+      "point": "TÃ­tulo largo completo bajo controles persistentes",
+      "status": "pending-single-authenticated-run",
+      "note": "Título largo y controles persistentes: geometría nativa y captura nueva.",
+      "newChecksRequired": [
+        "fullTitleAndPersistentControls"
+      ]
+    },
+    {
+      "id": "06",
+      "point": "AtrÃ¡s de Android cierra la ficha",
+      "status": "pending-single-authenticated-run",
+      "note": "AtrÃ¡s de Android debe cerrar la ficha real del APK19.",
+      "newChecksRequired": [
+        "detailFont15CloseAndBack"
+      ]
+    },
+    {
+      "id": "07",
+      "point": "Grupo Brickwise abre y vuelve conservando conteos",
+      "status": "pending-single-authenticated-run",
+      "note": "Brickwise12 principales: entrada, conteo y vuelta conservando49.",
+      "newChecksRequired": [
+        "providerGroups"
+      ]
+    },
+    {
+      "id": "08",
+      "point": "Grupo Reental abre y vuelve conservando conteos",
+      "status": "pending-single-authenticated-run",
+      "note": "Reental21 reventa: entrada, conteo y vuelta conservando49.",
+      "newChecksRequired": [
+        "providerGroups"
+      ]
+    },
+    {
+      "id": "09",
+      "point": "BÃºsqueda exacta accede a fichas individuales",
+      "status": "pending-single-authenticated-run",
+      "note": "BÃºsqueda exacta Pottendorfer y apertura de ficha real.",
+      "newChecksRequired": [
+        "catalog49AndList"
+      ]
+    },
+    {
+      "id": "10",
+      "point": "RevisiÃ³n, consulta y fecha del dato separadas",
+      "status": "pending-single-authenticated-run",
+      "note": "Una única lectura completa ES de Spiko registra las tres fechas separadas.",
+      "newChecksRequired": [
+        "datesSeparated"
+      ]
+    },
+    {
+      "id": "11",
+      "point": "Referencias histÃ³ricas contextualizadas",
+      "status": "pending-single-authenticated-run",
+      "note": "La misma lectura exige referencias fechadas y su advertencia de que no son precios actuales.",
+      "newChecksRequired": [
+        "historicalReferences"
+      ]
+    },
+    {
+      "id": "12",
+      "point": "Cuatro preguntas de riesgo accesibles antes del enlace",
+      "status": "pending-single-authenticated-run",
+      "note": "La misma lectura observa las cuatro preguntas antes del CTA.",
+      "newChecksRequired": [
+        "fourRisksBeforeSingleCta"
+      ]
+    },
+    {
+      "id": "13",
+      "point": "Un CTA principal de fuente al final de la ficha",
+      "status": "pending-single-authenticated-run",
+      "note": "La misma lectura exige exactamente un CTA principal nativo, sin abrirlo.",
+      "newChecksRequired": [
+        "fourRisksBeforeSingleCta"
+      ]
+    },
+    {
+      "id": "14",
+      "point": "Cinco ilustraciones especÃ­ficas con alt y capturas",
+      "status": "pending-single-authenticated-run",
+      "note": "Cinco imágenes con alt exacto y capturas; no repite el hash de49 recursos.",
+      "newChecksRequired": [
+        "fiveNativeImagesAndAlt"
+      ]
+    },
+    {
+      "id": "15",
+      "point": "Escala de texto 1.5 y pantalla corta alcanzan cierre y fuente",
+      "status": "pending-single-authenticated-run",
+      "note": "Solo falta la ficha autenticada1.5/cierre/fuente; los formularios guest1.5 ya se conservan del run40119180570.",
+      "newChecksRequired": [
+        "detailFont15CloseAndBack"
+      ]
+    },
+    {
+      "id": "16",
+      "point": "PolÃ­tica de giro y dimensiones reales documentadas",
+      "status": "reused-observation-awaiting-root-review",
+      "note": "Run40119180570: informe acotado passed-scoped-only y pantalla900x1600 con bloqueo portrait; workflow/job globales CANCELLED, no se convierten en success.",
+      "newChecksRequired": []
+    },
+    {
+      "id": "17",
+      "point": "Academy y una lecciÃ³n real navegables",
+      "status": "pending-single-authenticated-run",
+      "note": "Lección1 real y regreso; tutorial web manual4pasos y regreso.",
+      "newChecksRequired": [
+        "academyLesson",
+        "academyTutorialManual4Steps"
+      ]
+    },
+    {
+      "id": "18",
+      "point": "Favorito local persiste tras reiniciar el proceso",
+      "status": "pending-single-authenticated-run",
+      "note": "Favorito local de oferta persiste tras reinicio y relogin, ES/EN; se retira la modificación QA al terminar.",
+      "newChecksRequired": [
+        "languagesAndFavoritePersistence"
+      ]
+    },
+    {
+      "id": "19",
+      "point": "Formularios accesibles sin credenciales ni consentimientos",
+      "status": "reused-observation-awaiting-root-review",
+      "note": "Formularios estándar baseline40023081613 y fuente1.5/giro run40119180570 se conservan, sin volver a recorrerlos.",
+      "newChecksRequired": []
+    },
+    {
+      "id": "20",
+      "point": "Proceso vivo y sin excepciones Android/JavaScript registradas",
+      "status": "pending-single-authenticated-run",
+      "note": "Proceso y logcat Android/JS se comprueban en esta ejecuciÃ³n privada.",
+      "newChecksRequired": [
+        "noRuntimeException"
+      ]
+    }
+  ],
+  "additionalNewAreas": [
+    "confirmedAccountLogin",
+    "academyTutorialManual4Steps",
+    "localPurchase",
+    "localValuationPaymentAndCalculation",
+    "localQADataRemoved",
+    "signOutBlocksCatalogAndLocalPortfolio"
+  ],
+  "guestContinuation": {
+    "runId": 40119180570,
+    "workflowConclusion": "cancelled",
+    "jobConclusion": "cancelled",
+    "reportStatus": "passed-scoped-only",
+    "zipSha256": "217f5357a212beedb0e0a9f49006b1c3eda6905696e61936027e3591054959e8",
+    "reportSha256": "4aee7315d605006a9bc8da668c5b18dce7084f5ccc3adc61990b058951aef3c1",
+    "reusedChecks": [
+      "font15",
+      "rotationAttempt",
+      "noRuntimeException"
+    ],
+    "actualDisplay": [
+      900,
+      1600
+    ],
+    "actualLandscape": false
+  },
+  "aggregationOwner": "Root only after actual results, exact APK identity, all20 criteria and visual review pass. A prepared check is never PASS.",
+  "scopeNote": "Only APK19 missing native criteria; no global source audit. Keep all49 references and accept correctly hidden expired amounts as consultation conditions."
+}

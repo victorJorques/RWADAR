@@ -1,0 +1,523 @@
+{
+  "scope": "anonymous-access-and-package-only",
+  "sourceHeadSha": "1ecf7e7aa8941400d6ad954680cd6deb89107c42",
+  "easBuildId": "215e184c-2856-408f-9323-ed285f41b3ed",
+  "apkSha256": "f384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624",
+  "apkBytes": 88961445,
+  "version": "1.4.0",
+  "versionCode": 19,
+  "status": "passed-scoped-only",
+  "checks": {
+    "photos49": [
+      {
+        "slug": "aktionariat",
+        "sha256": "fba8276ae85f496ec2ac963ceb6d5efe3a3cb219d07f094621d2ad087c98cd8a",
+        "bytes": 66118,
+        "apkEntry": "res/Tk.webp"
+      },
+      {
+        "slug": "apartamento-vacacional-hinterstoder-50",
+        "sha256": "096581c56c2ab598bfb9f6ac074820ab75d0ac3a67f62f6b2bd58a96319ca38f",
+        "bytes": 71648,
+        "apkEntry": "res/Af.webp"
+      },
+      {
+        "slug": "boss-info",
+        "sha256": "eefb6294c388d35509076d588ce5a0ec80ad0451862b9e2b89aa7169da0a0389",
+        "bytes": 43046,
+        "apkEntry": "res/-E.webp"
+      },
+      {
+        "slug": "casa-de-outeiro",
+        "sha256": "ba40a863620ae5e7846068e3a3d3f909caaca976aaf784c560235db228026952",
+        "bytes": 76464,
+        "apkEntry": "res/d4.webp"
+      },
+      {
+        "slug": "drautalresidenz-paternion",
+        "sha256": "56b68f826356e8c99b93ee8902b3b434220431fcc1aa70237369c5b22e34841b",
+        "bytes": 58670,
+        "apkEntry": "res/4Q.webp"
+      },
+      {
+        "slug": "fotovoltaica-cohotel",
+        "sha256": "2676899be75ecb64f3872450a5c15bb0902144ce3c558ebbc706f8ef64aa985b",
+        "bytes": 35060,
+        "apkEntry": "res/Pk.webp"
+      },
+      {
+        "slug": "fotovoltaica-greenpoint",
+        "sha256": "46b1085be2730803e83c478bbc6261ed9dfee391a94e4983470b1e7dffcd3a72",
+        "bytes": 42470,
+        "apkEntry": "res/jx.webp"
+      },
+      {
+        "slug": "hausera-proximas-ofertas",
+        "sha256": "455f0ce616cf7f7c883096624dc164f9f761d3d57de56226d7a3639d1796111b",
+        "bytes": 62086,
+        "apkEntry": "res/Fp.webp"
+      },
+      {
+        "slug": "iod-occasio",
+        "sha256": "b0959bf7b237aec15dc1fbda23319989b82f53fe3fa23d213ea55b3095889669",
+        "bytes": 69368,
+        "apkEntry": "res/3v.webp"
+      },
+      {
+        "slug": "local-de-estanco-klagenfurt",
+        "sha256": "3072a97b0d8898bbae6e9a699210ebf7c90ecca6ab642a884670db9e7c230198",
+        "bytes": 58604,
+        "apkEntry": "res/kl.webp"
+      },
+      {
+        "slug": "mf-one",
+        "sha256": "dc97cb8bca4ec476f7a58f1a68556eff44299a09fd9c4e2e2b35f1b80f678175",
+        "bytes": 72732,
+        "apkEntry": "res/q6.webp"
+      },
+      {
+        "slug": "mglo",
+        "sha256": "7c308994bb30d7cc7cf9f0dfade0eabbc39cac8e0e7cfce4f8d1b150aae1659e",
+        "bytes": 49326,
+        "apkEntry": "res/Ov.webp"
+      },
+      {
+        "slug": "mglobal",
+        "sha256": "40927e53e1238dcd3bb8b32b6b05caa2a3a7c4f35f2059b914621e955a6e94c5",
+        "bytes": 51478,
+        "apkEntry": "res/XZ.webp"
+      },
+      {
+        "slug": "mgloeuro",
+        "sha256": "caf2e4591b07e0f082d9896bbf88d6fe81e5acf1fec87b163bf0a5c1406f040e",
+        "bytes": 34966,
+        "apkEntry": "res/e0.webp"
+      },
+      {
+        "slug": "mtbill",
+        "sha256": "7337326d1d234482f88fc42f12241ce3e74d635bea4efd80dc3a66639e5afd09",
+        "bytes": 41512,
+        "apkEntry": "res/op.webp"
+      },
+      {
+        "slug": "prosegur-digital-gold",
+        "sha256": "1eef9d20a89baa866aa01657019f03ef1ecb65171c3ea072caaf12babf12d0b0",
+        "bytes": 64062,
+        "apkEntry": "res/pO.webp"
+      },
+      {
+        "slug": "randhartingergasse-9-viena",
+        "sha256": "9deb3f7da6c66ab337ef97ad3a8706da6e6fdbe21abc60bce2d3a81908447ff8",
+        "bytes": 52508,
+        "apkEntry": "res/9d.webp"
+      },
+      {
+        "slug": "reental-emision-primaria",
+        "sha256": "58c9a20136371c0e118acc691fdb49738569e1eae793fff95b7bd8a79ec5a5ad",
+        "bytes": 63602,
+        "apkEntry": "res/Sj.webp"
+      },
+      {
+        "slug": "reental-secundario-abu-dhabi-1",
+        "sha256": "a829faa3481d90c39da73e922074cf5ab98b544cc9f9255574eea872b5d9c83d",
+        "bytes": 59404,
+        "apkEntry": "res/nS.webp"
+      },
+      {
+        "slug": "reental-secundario-atlanta-1",
+        "sha256": "f90e1b7e877b42cfd2630c653f29c333ed112c2efb5639ff27fc39d3a9bc615b",
+        "bytes": 46366,
+        "apkEntry": "res/Hw.webp"
+      },
+      {
+        "slug": "reental-secundario-carolina-del-norte-1",
+        "sha256": "9509ae2b070eda395ecdb40b02fe7ed110181ed3ac4d9720528695de3b9de05c",
+        "bytes": 90006,
+        "apkEntry": "res/aZ.webp"
+      },
+      {
+        "slug": "reental-secundario-dania-beach-1",
+        "sha256": "0ed52073dc2069bc8edf49bd1a33865850e7e1e5627f2cffc6c704fc4abf636d",
+        "bytes": 59916,
+        "apkEntry": "res/aD.webp"
+      },
+      {
+        "slug": "reental-secundario-granada-3",
+        "sha256": "7c4362c77faacea6d8cf50f5a19a6e8d85eb21aea498aebfb04d8aeab4266bd3",
+        "bytes": 74198,
+        "apkEntry": "res/xt.webp"
+      },
+      {
+        "slug": "reental-secundario-houston-1",
+        "sha256": "0671c6d9f717fa39f31714f59b79ee93e48fa314b6385f5a5f3052f9d7ae9ff6",
+        "bytes": 53704,
+        "apkEntry": "res/Hj.webp"
+      },
+      {
+        "slug": "reental-secundario-houston-2",
+        "sha256": "418a646995c2b589772bd48a1ce18ccf157963fc85ca5e3eff90b5db8b339b54",
+        "bytes": 85534,
+        "apkEntry": "res/2h.webp"
+      },
+      {
+        "slug": "reental-secundario-houston-3",
+        "sha256": "80064cb8dcd295822529894d45a19a12b6843daee53ea57cf947626ce9ac71e2",
+        "bytes": 79930,
+        "apkEntry": "res/WE.webp"
+      },
+      {
+        "slug": "reental-secundario-levante-1",
+        "sha256": "d4d064c424aef6cfb2881c905b226ff71f0db5c7fefaedfd1d372d0b0a8d42a9",
+        "bytes": 62000,
+        "apkEntry": "res/IV.webp"
+      },
+      {
+        "slug": "reental-secundario-malaga-6",
+        "sha256": "1d49671033060b4d215900f18f5ac94103cb71f21f225bc46b5f4c569c233649",
+        "bytes": 69548,
+        "apkEntry": "res/Gl.webp"
+      },
+      {
+        "slug": "reental-secundario-miami-1",
+        "sha256": "6f4e0633e9d4c6af9c025ba6cba33f3582d80bc5f3ed127ed19f942bbad1f61c",
+        "bytes": 60724,
+        "apkEntry": "res/OZ.webp"
+      },
+      {
+        "slug": "reental-secundario-miami-2",
+        "sha256": "a2a7ce2c8834e9406a7ed4e09dabd710166753bc9f7176a4c85a3eb2bd1eb1b2",
+        "bytes": 94928,
+        "apkEntry": "res/wm.webp"
+      },
+      {
+        "slug": "reental-secundario-miami-3",
+        "sha256": "4e42766fc38f78029c868f5d6bed7c3db3db27bd3f4f8f8ba414ecb966ece163",
+        "bytes": 48754,
+        "apkEntry": "res/rj.webp"
+      },
+      {
+        "slug": "reental-secundario-miami-5",
+        "sha256": "820c91a4ddcbaa7f65c113e41bef65bf4eff67050cd6da93ca8f2f9231566976",
+        "bytes": 68964,
+        "apkEntry": "res/ir.webp"
+      },
+      {
+        "slug": "reental-secundario-opportunity-2",
+        "sha256": "acf387e755cfe077c0cd6930bfe705f9d675b37fbf00b22d16d0ad84301f99b9",
+        "bytes": 61404,
+        "apkEntry": "res/DY.webp"
+      },
+      {
+        "slug": "reental-secundario-pirineos-1",
+        "sha256": "e5c0c74da090faf49484c2eb2b8765b9ed15c46f962c267faecc246194780ddd",
+        "bytes": 66368,
+        "apkEntry": "res/I5.webp"
+      },
+      {
+        "slug": "reental-secundario-proyecto-100",
+        "sha256": "c103a7eab315d6bb64f107ea2ecff6217fb02d354c6edb6b9797499cca79f384",
+        "bytes": 73586,
+        "apkEntry": "res/5P.webp"
+      },
+      {
+        "slug": "reental-secundario-rentas-1",
+        "sha256": "8d1daff4fa37dd5768e9304fb0caf40d2c48f3df4d0babea4da0c357190c7568",
+        "bytes": 71270,
+        "apkEntry": "res/kj.webp"
+      },
+      {
+        "slug": "reental-secundario-rentas-2",
+        "sha256": "7ec7206862167eb6a8e630cfc93dbaa370eb2f187f4a5592bd3610899614582a",
+        "bytes": 75868,
+        "apkEntry": "res/rb.webp"
+      },
+      {
+        "slug": "reental-secundario-rentas-3",
+        "sha256": "6ea97ced81e72784555c2f634ad5bcd09f64e840be1ce79b511b7180e9c1fed4",
+        "bytes": 59868,
+        "apkEntry": "res/Az.webp"
+      },
+      {
+        "slug": "reental-secundario-san-antonio-1",
+        "sha256": "b38f4eed604372e14f3bd19862153da415461ee4374bf9ad45e7b4a43f4cb164",
+        "bytes": 54070,
+        "apkEntry": "res/pA.webp"
+      },
+      {
+        "slug": "servicehunter-quitt",
+        "sha256": "728425617b4226dabdf0670c20ba1d15dd614a5626a4a90e9f966792c126c71d",
+        "bytes": 55938,
+        "apkEntry": "res/NC.webp"
+      },
+      {
+        "slug": "spiko-letras-del-tesoro-euro",
+        "sha256": "36765508129b9a90475ffcca024f56c767ac21ed06d048f2cd0d8a3c8aac8eca",
+        "bytes": 44674,
+        "apkEntry": "res/jS.webp"
+      },
+      {
+        "slug": "switzerlend",
+        "sha256": "fd3b7d9e489eb7f7b81d8438bb9f093dce6fd4d27b128499ea8119fe97c94594",
+        "bytes": 60752,
+        "apkEntry": "res/rx.webp"
+      },
+      {
+        "slug": "terreno-con-arrendamiento-billa",
+        "sha256": "a27447e69016501a25d25b37b411d25b3d815daf2bab2248b19a64f02499b32b",
+        "bytes": 86094,
+        "apkEntry": "res/md.webp"
+      },
+      {
+        "slug": "vivienda-pluddemanngasse-101-graz",
+        "sha256": "68ffb11a12c2924e4712e05aa0becb93e42506dfeb891ce54bf7c5057dd13507",
+        "bytes": 57236,
+        "apkEntry": "res/j7.webp"
+      },
+      {
+        "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+        "sha256": "dd90f1d52a7742c4a131d9fffe528450ea3a34052d82487b65e35135af39d7ae",
+        "bytes": 45228,
+        "apkEntry": "res/AZ.webp"
+      },
+      {
+        "slug": "vivienda-schwarzer-weg-18-graz",
+        "sha256": "4b938a75099b59e849f76443ecbbd2dcffbd0e6969c029ff9d3b212c2e452f70",
+        "bytes": 67808,
+        "apkEntry": "res/pS.webp"
+      },
+      {
+        "slug": "vivienda-sonnleithnergasse-2-viena",
+        "sha256": "d588ca9b84844f6cc729a9ebdac4ca23fe77a518ca283e9fe8d59d3417f90ace",
+        "bytes": 88962,
+        "apkEntry": "res/X5.webp"
+      },
+      {
+        "slug": "vivienda-stallhofstra-e-28-gratwein",
+        "sha256": "3f6355db0b63f7c97b25fe1e28ec31760af2ef49f52ab7b3a9c7f81cf717f3f6",
+        "bytes": 77928,
+        "apkEntry": "res/Xi.webp"
+      },
+      {
+        "slug": "wemakeit",
+        "sha256": "ef7e8e3cde4029d179350f2c75eab9b7f72e2ffd64c84562a50198d2dd41fdf7",
+        "bytes": 69858,
+        "apkEntry": "res/Qm.webp"
+      }
+    ],
+    "packageIdentity": true,
+    "standard": {
+      "controlsReachable": true,
+      "catalogAbsent": true,
+      "signup12CharacterLabel": true,
+      "invalidEmailLocallyChecked": true,
+      "recoveryNotSubmitted": true
+    },
+    "networkBlockedBeforeForms": {
+      "airplane": "enabled",
+      "wifi": "0",
+      "mobileData": "0",
+      "noActiveDefaultNetwork": true
+    },
+    "font15": {
+      "controlsReachable": true,
+      "catalogAbsent": true,
+      "signup12CharacterLabel": true,
+      "invalidEmailLocallyChecked": false,
+      "recoveryNotSubmitted": true
+    },
+    "rotationAttempt": {
+      "controlsReachable": true,
+      "catalogAbsent": true,
+      "signup12CharacterLabel": true,
+      "invalidEmailLocallyChecked": false,
+      "recoveryNotSubmitted": true,
+      "actualDisplay": [
+        900,
+        1600
+      ],
+      "actualLandscape": false,
+      "declaredOrientationPolicy": "portrait",
+      "note": "Portrait-locked output does not certify a landscape layout."
+    },
+    "noRuntimeException": true
+  },
+  "authenticatedCatalogQA": "pending-real-confirmed-account",
+  "full20PointQA": false,
+  "releaseApproved": false,
+  "formNetwork": "blocked-airplane-mode",
+  "baselineProvenance": {
+    "runId": 40023081613,
+    "jobId": 120652334625,
+    "headSha": "7a9db834a040c605df1de44f220620178fd0ffcf",
+    "attempt": 1,
+    "zipSha256": "c3fac4990bdbccab570b1a12049d48b4e1cdbe96cd34fe071a83a4904627f80d",
+    "zipBytes": 1085225,
+    "reportSha256": "842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59",
+    "historicalStatus": "failed",
+    "historicalFailure": "Native UI did not visibly show: Crea tu cuenta",
+    "reusedChecks": [
+      "photos49",
+      "packageIdentity",
+      "standard"
+    ],
+    "files": [
+      {
+        "file": "baseline-01-standard-alta.png",
+        "bytes": 178189,
+        "sha256": "77ac0690c203d8bc0521268637809ebaa4687375ef4bc7492328034fd5c1ad37"
+      },
+      {
+        "file": "baseline-01-standard-alta.xml",
+        "bytes": 8798,
+        "sha256": "1782001560c14386a575a1eb6f1c3d7a5453d3dd66aafb579042da94117e3cab"
+      },
+      {
+        "file": "baseline-01-standard-entrar.png",
+        "bytes": 182249,
+        "sha256": "5eb225648cdf535e83cb60529df2fb3633d4e0b0a62acdc45302f73e10622407"
+      },
+      {
+        "file": "baseline-01-standard-entrar.xml",
+        "bytes": 7042,
+        "sha256": "94fa7949e9317104cb3bd9d07bea88eb5ee8c56e1a8fcd23f16ada1cd4f1603e"
+      },
+      {
+        "file": "baseline-01-standard-error-local.png",
+        "bytes": 208610,
+        "sha256": "4514c239e25ef58f7f4191e126c16874209f3913c3bf3cf312835271c9460588"
+      },
+      {
+        "file": "baseline-01-standard-error-local.xml",
+        "bytes": 9061,
+        "sha256": "09b4e8fc65b46c83aabc7f996614c3d0c53ddcd17b01add81f441ffbe977be65"
+      },
+      {
+        "file": "baseline-01-standard-recuperar-sin-envio.png",
+        "bytes": 175601,
+        "sha256": "e3b969e59c51c7d33075fd6ed2a564726b52630d65d5ae8e7c34c88266cfa49a"
+      },
+      {
+        "file": "baseline-01-standard-recuperar-sin-envio.xml",
+        "bytes": 5670,
+        "sha256": "a37e9c7e2ce2801aec84bf8e9fb06653d424154cf390b2cef961b5c655156dec"
+      },
+      {
+        "file": "baseline-02-font15-entrar.png",
+        "bytes": 114254,
+        "sha256": "b5423d638431d3829e771cebd0f279f4a9feb90c26c26de56472e42d30628650"
+      },
+      {
+        "file": "baseline-02-font15-entrar.xml",
+        "bytes": 7015,
+        "sha256": "9e9c915a4c3c4b212c031aa968a0891d81eb2e527c85e83d98df5624167ac7ab"
+      },
+      {
+        "file": "baseline-anonymous-access-result.json",
+        "bytes": 11038,
+        "sha256": "842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59"
+      },
+      {
+        "file": "baseline-avds.txt",
+        "bytes": 13,
+        "sha256": "84eb267c0d98ebbbbcde4f3a2a7b53836c3bf3f455c69680b6d97d72edba35ee"
+      },
+      {
+        "file": "baseline-emulator.log",
+        "bytes": 8830,
+        "sha256": "fd0dd47e96f4aef243003637eca1c6042852956ef7d545eee5b465285d011e69"
+      },
+      {
+        "file": "baseline-failure-anonymous-access.png",
+        "bytes": 128315,
+        "sha256": "af43885ac44ff65c8c234d7a1954abcf83daf3f6bebb5608ad784a4d45ecb1a6"
+      },
+      {
+        "file": "baseline-failure-anonymous-access.xml",
+        "bytes": 8785,
+        "sha256": "f7e2957d3a3ad4d5cf6cdd0c23774f7f0c7f26b49eb6983be969981aceeba59c"
+      },
+      {
+        "file": "baseline-failure-traceback.txt",
+        "bytes": 714,
+        "sha256": "5a8f6761e72c7452d6d11ecd26c6a9c269def9e777d1b4285c3f7be75355c58f"
+      },
+      {
+        "file": "baseline-final-errors.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "baseline-final-state.png",
+        "bytes": 183179,
+        "sha256": "35497d8dc5c863a90fbe57c45afbfbaf35931e31dc4664f3e6b031e8d59d365a"
+      },
+      {
+        "file": "baseline-latest-ui-instrumentation.txt",
+        "bytes": 8901,
+        "sha256": "53ad27111aa1c4bc305e88ce94558e5a3360a3c6abb59b4314c85334b1775906"
+      },
+      {
+        "file": "baseline-latest-ui.xml",
+        "bytes": 8841,
+        "sha256": "43db02d08981ac74a25f4c908d2a2ea941227c90818925985afdb28fa6554157"
+      },
+      {
+        "file": "baseline-manifest.txt",
+        "bytes": 20850,
+        "sha256": "a3289c4240a50692f7912fb5147a56f35c468c60cd21bd277a7e6ade48ccc462"
+      },
+      {
+        "file": "baseline-native-scroll-gestures.json",
+        "bytes": 12155,
+        "sha256": "2a504c1eb5e71a38e152ac5bb37a4b7b30ed47cbaac778a9e07f1fedd01a7c0d"
+      },
+      {
+        "file": "baseline-network-blocked.json",
+        "bytes": 97,
+        "sha256": "6023bfb2dbf773255a5b806197c6939244f2b417a17eaf27d81182bd7d09be4d"
+      },
+      {
+        "file": "baseline-package.txt",
+        "bytes": 4722,
+        "sha256": "65dd748d7dd381ca1f29662e57c502aec225bd933cc236f75146503d64ad772d"
+      },
+      {
+        "file": "baseline-signature.txt",
+        "bytes": 947,
+        "sha256": "927dfcab21b898635619e73e99822470fec07227a1febdd4984624768fad5845"
+      },
+      {
+        "file": "baseline-unexpected-permissions.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "baseline-webview-errors.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "baseline-webview-provider.txt",
+        "bytes": 574,
+        "sha256": "e5a249e2bd68318cd0f76dca611492e2fad05ad5a9ab0e455b296e0870ec153d"
+      }
+    ]
+  },
+  "checkProvenance": {
+    "photos49": {
+      "origin": "baseline",
+      "runId": 40023081613,
+      "reportSha256": "842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59"
+    },
+    "packageIdentity": {
+      "origin": "baseline",
+      "runId": 40023081613,
+      "reportSha256": "842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59"
+    },
+    "standard": {
+      "origin": "baseline",
+      "runId": 40023081613,
+      "reportSha256": "842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59"
+    }
+  }
+}

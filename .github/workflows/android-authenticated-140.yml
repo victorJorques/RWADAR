@@ -1,0 +1,219 @@
+# PRIVATE QA ONLY. Push registers this workflow but skips the job.
+name: RWAdar APK19 private authenticated scoped QA
+run-name: APK19 private confirmed-account scoped QA; never release
+on:
+  push:
+    branches: [codex/android-140-auth-qa]
+  workflow_dispatch:
+    inputs:
+      confirmed_test_account:
+        description: Write CONFIRMED_TEST_ACCOUNT only after preparing a dedicated confirmed QA account
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: rwadar-apk19-private-auth-qa
+  cancel-in-progress: false
+env:
+  APK_URL: https://expo.dev/artifacts/eas/ps1t8bkceKeqVg-GqL4xlO_WOE82UljB9HIfikVxRzw.apk
+  APK_SHA256: f384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624
+  APK_BYTES: '88961445'
+  SOURCE_HEAD_SHA: 1ecf7e7aa8941400d6ad954680cd6deb89107c42
+  PUBLICAR_RELEASE: 'NO'
+jobs:
+  android-authenticated:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.repository.private == true }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Checkout private isolated QA branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, same pinned runner action
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Require private repository, manual launch and exact APK19
+        env:
+          GH_TOKEN: ${{ github.token }}
+          QA_ACCOUNT_ACK: ${{ inputs.confirmed_test_account }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = victorJorques/RWADAR
+          test "$GITHUB_REF" = refs/heads/codex/android-140-auth-qa
+          test "$GITHUB_EVENT_NAME" = workflow_dispatch
+          test "$QA_ACCOUNT_ACK" = CONFIRMED_TEST_ACCOUNT
+          test "$PUBLICAR_RELEASE" = NO
+          test "$(gh api repos/victorJorques/RWADAR --jq .private)" = true
+          mkdir -p evidence-private
+          curl --fail --location --proto '=https' --proto-redir '=https' --max-time 90 --retry 0 "$APK_URL" -o rwadar.apk
+          test "$(stat -c '%s' rwadar.apk)" = "$APK_BYTES"
+          printf '%s  rwadar.apk\n' "$APK_SHA256" | sha256sum --check
+          printf '%s  .github/qa-android-authenticated-140/baseline-c19-guest-continuation.json\n' 4aee7315d605006a9bc8da668c5b18dce7084f5ccc3adc61990b058951aef3c1 | sha256sum --check
+          # Same immutable APK: signature/photos/standard guest phases are reused, never repeated.
+          printf '%s  .github/qa-android-authenticated-140/baseline-c19-guest.json\n' 842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59 | sha256sum --check
+      - name: Prepare the fixed secure Node runtime without installing project dependencies
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22.23.4
+      - name: Confirm real preview account access before the native pending criteria
+        env:
+          RWADAR_QA_EMAIL: ${{ secrets.RWADAR_QA_EMAIL }}
+          RWADAR_QA_PASSWORD: ${{ secrets.RWADAR_QA_PASSWORD }}
+        run: node .github/qa-android-authenticated-140/verificar-web-qa.cjs
+      - name: Prepare official Android emulator on an ephemeral runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+          printf '%s\n' "$ANDROID_HOME/platform-tools" "$ANDROID_HOME/emulator" >> "$GITHUB_PATH"
+          export ANDROID_USER_HOME="$RUNNER_TEMP/rwadar-android"
+          export ANDROID_AVD_HOME="$ANDROID_USER_HOME/avd"
+          mkdir -p "$ANDROID_AVD_HOME"
+          printf 'ANDROID_USER_HOME=%s\nANDROID_AVD_HOME=%s\n' "$ANDROID_USER_HOME" "$ANDROID_AVD_HOME" >> "$GITHUB_ENV"
+          test -c /dev/kvm
+          # Narrow grant on this disposable runner only; no account permission changes.
+          if ! test -r /dev/kvm || ! test -w /dev/kvm; then
+            sudo setfacl -m "u:$(id -un):rw" /dev/kvm
+          fi
+          # Uses the runner's existing accepted SDK licences. Never auto-accept new terms.
+          timeout 150 "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'platform-tools' 'platforms;android-35' 'emulator' 'system-images;android-35;default;x86_64' < /dev/null
+          command -v adb
+          printf 'no\n' | "$ANDROID_HOME/cmdline-tools/latest/bin/avdmanager" create avd -n rwadar_smoke -k 'system-images;android-35;default;x86_64' --device pixel_6 --path "$ANDROID_AVD_HOME/rwadar_smoke.avd"
+          "$ANDROID_HOME/emulator/emulator" -list-avds | tee evidence-private/avds.txt
+          grep -Fx 'rwadar_smoke' evidence-private/avds.txt
+          "$ANDROID_HOME/emulator/emulator" -avd rwadar_smoke -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -accel on -memory 2048 > evidence-private/emulator.log 2>&1 &
+          timeout 90 adb wait-for-device
+          timeout 90 bash -c 'until [[ "$(adb shell getprop sys.boot_completed | tr -d "\r")" == 1 ]]; do sleep 2; done'
+          adb shell input keyevent KEYCODE_WAKEUP
+          adb shell wm dismiss-keyguard
+          adb shell settings put global window_animation_scale 0
+          adb shell settings put global transition_animation_scale 0
+          adb shell settings put global animator_duration_scale 0
+          adb install --no-streaming rwadar.apk
+      - name: Compile a disposable UI snapshot test harness, never modify the product APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Stock uiautomator dump waits for idle and can leave a stale file on animated screens.
+          # Use the documented Instrumentation/UiAutomation APIs to read the current tree directly.
+          # This helper has no activity, network permission, product code, credentials or private key.
+          mkdir -p ui-helper/classes ui-helper/dex
+          python3 - <<'PY'
+          from pathlib import Path
+          Path('ui-helper/AndroidManifest.xml').write_text('''<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.rwadar.smoketest">
+            <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="35"/>
+            <application android:label="RWAdar CI snapshot" android:allowBackup="false"/>
+            <instrumentation android:name="com.rwadar.smoketest.DumpRunner" android:targetPackage="com.rwadar.smoketest"/>
+          </manifest>''', encoding='utf-8')
+          Path('ui-helper/DumpRunner.java').write_text(r'''package com.rwadar.smoketest;
+          import android.app.Instrumentation;
+          import android.app.UiAutomation;
+          import android.graphics.Rect;
+          import android.os.Bundle;
+          import android.os.SystemClock;
+          import android.util.Xml;
+          import android.view.accessibility.AccessibilityNodeInfo;
+          import java.io.StringWriter;
+          import org.xmlpull.v1.XmlSerializer;
+          public final class DumpRunner extends Instrumentation {
+            @Override public void onCreate(Bundle args) { super.onCreate(args); start(); }
+            private static String value(CharSequence value) { return value == null ? "" : value.toString(); }
+            private static void node(XmlSerializer xml, AccessibilityNodeInfo info, int depth) throws Exception {
+              if (depth > 100) throw new IllegalStateException("Hierarchy too deep");
+              Rect bounds = new Rect(); info.getBoundsInScreen(bounds);
+              xml.startTag(null, "node");
+              xml.attribute(null, "text", value(info.getText()));
+              xml.attribute(null, "content-desc", value(info.getContentDescription()));
+              xml.attribute(null, "package", value(info.getPackageName()));
+              xml.attribute(null, "class", value(info.getClassName()));
+              xml.attribute(null, "clickable", Boolean.toString(info.isClickable()));
+              xml.attribute(null, "enabled", Boolean.toString(info.isEnabled()));
+              xml.attribute(null, "password", Boolean.toString(info.isPassword()));
+              xml.attribute(null, "checkable", Boolean.toString(info.isCheckable()));
+              xml.attribute(null, "checked", Boolean.toString(info.isChecked()));
+              xml.attribute(null, "visible", Boolean.toString(info.isVisibleToUser()));
+              xml.attribute(null, "bounds", "["+bounds.left+","+bounds.top+"]["+bounds.right+","+bounds.bottom+"]");
+              for (int i=0; i<info.getChildCount(); i++) {
+                AccessibilityNodeInfo child = info.getChild(i);
+                if (child != null) { node(xml, child, depth+1); child.recycle(); }
+              }
+              xml.endTag(null, "node");
+            }
+            @Override public void onStart() {
+              Bundle result = new Bundle();
+              try {
+                UiAutomation automation = getUiAutomation();
+                AccessibilityNodeInfo root = null;
+                long deadline = SystemClock.uptimeMillis()+5000;
+                while (root == null && SystemClock.uptimeMillis() < deadline) {
+                  root = automation.getRootInActiveWindow();
+                  if (root == null) SystemClock.sleep(100);
+                }
+                if (root == null) throw new IllegalStateException("No active UI root");
+                StringWriter writer = new StringWriter(); XmlSerializer xml = Xml.newSerializer();
+                xml.setOutput(writer); xml.startDocument("UTF-8", true);
+                xml.startTag(null, "hierarchy"); node(xml, root, 0); xml.endTag(null, "hierarchy");
+                xml.endDocument(); root.recycle();
+                result.putString("rwadar_ui", writer.toString()); finish(-1, result);
+              } catch (Throwable error) {
+                result.putString("rwadar_error", error.toString()); finish(1, result);
+              }
+            }
+          }''', encoding='utf-8')
+          PY
+          ANDROID_JAR="$ANDROID_HOME/platforms/android-35/android.jar"
+          BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
+          javac --release 8 -classpath "$ANDROID_JAR" -d ui-helper/classes ui-helper/DumpRunner.java
+          "$BUILD_TOOLS/d8" --lib "$ANDROID_JAR" --min-api 24 --output ui-helper/dex ui-helper/classes/com/rwadar/smoketest/DumpRunner.class
+          "$BUILD_TOOLS/aapt" package -f -M ui-helper/AndroidManifest.xml -I "$ANDROID_JAR" -F ui-helper/unsigned.apk
+          zip -j ui-helper/unsigned.apk ui-helper/dex/classes.dex
+          "$BUILD_TOOLS/zipalign" -f 4 ui-helper/unsigned.apk ui-helper/aligned.apk
+          keytool -genkeypair -keystore ui-helper/ephemeral.jks -storepass android -keypass android -alias test -dname 'CN=Disposable CI test only' -keyalg RSA -validity 1 -noprompt
+          "$BUILD_TOOLS/apksigner" sign --ks ui-helper/ephemeral.jks --ks-pass pass:android --key-pass pass:android --out ui-helper/test.apk ui-helper/aligned.apk
+          adb install --no-streaming ui-helper/test.apk
+      - name: Only new authenticated UI areas; account secrets never printed
+        env:
+          RWADAR_QA_EMAIL: ${{ secrets.RWADAR_QA_EMAIL }}
+          RWADAR_QA_PASSWORD: ${{ secrets.RWADAR_QA_PASSWORD }}
+          QA_ACCOUNT_ACK: ${{ inputs.confirmed_test_account }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 .github/qa-android-authenticated-140/android-authenticated-140.py
+      - name: Always discard the disposable device and its local QA data
+        if: always()
+        shell: bash
+        run: |
+          if command -v adb >/dev/null 2>&1; then
+            adb shell pm clear com.rwadar.app >/dev/null 2>&1 || true
+            adb emu kill >/dev/null 2>&1 || true
+          fi
+      - name: Bounded evidence only in PRIVATE job logs; no Actions artifact storage
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = victorJorques/RWADAR
+          python3 - <<'PY'
+          import base64, hashlib, io, pathlib, re, zipfile
+          folder=pathlib.Path('evidence-private')
+          files=[]; total=0
+          for path in sorted(folder.glob('*')):
+              if not path.is_file() or path.is_symlink(): continue
+              assert re.fullmatch(r'[A-Za-z0-9_.-]+',path.name)
+              assert path.suffix in {'.png','.xml','.json','.txt','.log'}
+              data=path.read_bytes()
+              if path.suffix=='.log': data=data[-65536:]
+              assert len(data)<=4*1024*1024
+              total+=len(data); assert total<=48*1024*1024
+              files.append((path.name,data))
+          buffer=io.BytesIO()
+          with zipfile.ZipFile(buffer,'w',zipfile.ZIP_DEFLATED) as archive:
+              for name,data in files: archive.writestr('evidence-private/'+name,data)
+          payload=buffer.getvalue(); assert len(payload)<=16*1024*1024
+          chunks=[base64.b64encode(payload[i:i+576]).decode() for i in range(0,len(payload),576)]
+          print('RWADAR_PRIVATE_QA_ZIP_META',hashlib.sha256(payload).hexdigest(),len(payload),len(chunks))
+          for index,chunk in enumerate(chunks): print('RWADAR_PRIVATE_QA_ZIP_DATA',f'{index:06d}',chunk)
+          PY
