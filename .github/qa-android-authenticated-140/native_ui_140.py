@@ -86,13 +86,40 @@ def sanitize(value):
     return re.sub(r'eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+','[REDACTED_JWT]',value)
 
 def adb(*args, timeout=20):
+    started=time.monotonic();status='error'
+    operation='adb-input' if args[:2]==('shell','input') else 'adb-window' if args[:3]==('shell','dumpsys','window') else 'adb-logcat' if args[:1]==('logcat',) else 'adb-other'
     try:
-        result = subprocess.run(['adb',*args],check=False,capture_output=True,timeout=timeout)
-    except (subprocess.SubprocessError,OSError):
-        raise RuntimeError('Native command failed; sensitive details withheld') from None
-    if result.returncode:
-        raise RuntimeError('Native command returned failure; sensitive details withheld') from None
-    return result.stdout.decode('utf-8',errors='replace')
+        try:
+            result = subprocess.run(['adb',*args],check=False,capture_output=True,timeout=timeout)
+        except (subprocess.SubprocessError,OSError):
+            raise RuntimeError('Native command failed; sensitive details withheld') from None
+        if result.returncode:
+            raise RuntimeError('Native command returned failure; sensitive details withheld') from None
+        status='ok'
+        return result.stdout.decode('utf-8',errors='replace')
+    finally:
+        record_timing(operation,started,status)
+
+
+class QaDeadlineExceeded(BaseException):
+    # A hard global deadline must escape socket/OS/subprocess retries and also
+    # diagnostic "except Exception" blocks. Only main's BaseException handles it.
+    pass
+
+
+_TIMING_COUNT=0
+def record_timing(operation,started,status='ok'):
+    global _TIMING_COUNT
+    if _TIMING_COUNT>=5000:return
+    _TIMING_COUNT+=1
+    assert operation in ('adb-input','adb-window','adb-logcat','adb-other','snapshot','snapshot-root','snapshot-tree')
+    try:
+        with out.joinpath('operation-timings.jsonl').open('a',encoding='utf-8') as target:
+            target.write(json.dumps({'operation':operation,'elapsedMs':round((time.monotonic()-started)*1000),
+                                     'status':status})+'\n')
+    except OSError:
+        pass
+
 
 class TransientSnapshotError(Exception):
     pass
@@ -163,6 +190,12 @@ def read_snapshot_response(stream, nonce):
     raw_xml=None
     root=ET.fromstring(xml)
     assert root.tag=='hierarchy', 'Invalid fresh snapshot root'
+    metrics=root.find('snapshot-metrics')
+    if metrics is not None:
+        for attribute,operation in (('root-ms','snapshot-root'),('tree-ms','snapshot-tree')):
+            value=metrics.get(attribute,'')
+            if re.fullmatch(r'\d{1,7}',value):
+                record_timing(operation,time.monotonic()-int(value)/1000)
     return root,xml
 
 
@@ -172,11 +205,16 @@ def dump_once(timeout=30):
     _SNAPSHOT_SEQUENCE += 1
     assert _SNAPSHOT_SEQUENCE < 10**8, 'Snapshot sequence exceeds bounded cycle'
     nonce=str(secrets.randbelow(10**20))+str(_SNAPSHOT_SEQUENCE).zfill(8)
-    with socket.create_connection(('127.0.0.1',_SNAPSHOT_PORT),timeout=timeout) as channel:
-        channel.settimeout(timeout)
-        channel.sendall((nonce+'\n').encode('ascii'))
-        with channel.makefile('rb') as stream:
-            root,xml=read_snapshot_response(stream,nonce)
+    started=time.monotonic();status='error'
+    try:
+        with socket.create_connection(('127.0.0.1',_SNAPSHOT_PORT),timeout=timeout) as channel:
+            channel.settimeout(timeout)
+            channel.sendall((nonce+'\n').encode('ascii'))
+            with channel.makefile('rb') as stream:
+                root,xml=read_snapshot_response(stream,nonce)
+        status='ok'
+    finally:
+        record_timing('snapshot',started,status)
     if CAPTURE_ALLOWED:
         out.joinpath('latest-ui.xml').write_text(xml,encoding='utf-8')
     return root

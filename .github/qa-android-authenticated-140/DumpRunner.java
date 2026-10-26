@@ -58,6 +58,7 @@ public final class DumpRunner extends Instrumentation {
             socket.setSoTimeout(10000);
             String nonce=request(socket.getInputStream());
             // Android35 runner supports clearCache; no cached root may answer a new request.
+            long requestStarted=SystemClock.uptimeMillis();
             automation.clearCache();
             AccessibilityNodeInfo root=null;
             long deadline=SystemClock.uptimeMillis()+1500;
@@ -66,12 +67,17 @@ public final class DumpRunner extends Instrumentation {
               if(root!=null && !root.refresh()) { root.recycle(); root=null; }
               if(root==null) SystemClock.sleep(50);
             }
+            long rootReady=SystemClock.uptimeMillis();
             byte[] payload=new byte[0];
             if(root!=null) {
               try {
                 StringWriter writer=new StringWriter(); XmlSerializer xml=Xml.newSerializer();
                 xml.setOutput(writer); xml.startDocument("UTF-8",true);
-                xml.startTag(null,"hierarchy"); node(xml,root,0); xml.endTag(null,"hierarchy");
+                xml.startTag(null,"hierarchy"); node(xml,root,0);
+                xml.startTag(null,"snapshot-metrics");
+                xml.attribute(null,"root-ms",Long.toString(rootReady-requestStarted));
+                xml.attribute(null,"tree-ms",Long.toString(SystemClock.uptimeMillis()-rootReady));
+                xml.endTag(null,"snapshot-metrics"); xml.endTag(null,"hierarchy");
                 xml.endDocument(); payload=writer.toString().getBytes("UTF-8");
                 if(payload.length>8*1024*1024) throw new IOException("Snapshot too large");
               } finally { root.recycle(); }

@@ -347,7 +347,13 @@ def main():
 
 
 def timeout_handler(*_):
-    raise TimeoutError('Private scoped QA reached its bounded time limit')
+    # Persist before unwinding device cleanup, diagnostics, or failure capture.
+    report['status']='failed'
+    report['failureType']='QaDeadlineExceeded'
+    report['failure']='Private scoped QA reached its hard1800second limit'
+    report['hardDeadlineExceeded']=True
+    OUT.joinpath('authenticated-result.json').write_text(ui.sanitize(json.dumps(report,indent=2,ensure_ascii=False)),encoding='utf-8')
+    raise ui.QaDeadlineExceeded('Private scoped QA reached its hard1800second limit')
 
 
 def safe_exception_diagnostic(error):
@@ -370,7 +376,7 @@ if __name__ == '__main__':
     exit_code = 1
     try:
         signal.signal(signal.SIGALRM,timeout_handler)
-        signal.alarm(600)
+        signal.alarm(1800)
         main()
         exit_code = 0
     except BaseException as error:
@@ -378,11 +384,14 @@ if __name__ == '__main__':
         report['status'] = 'failed'
         report['failureType'] = type(error).__name__
         report['diagnostic'] = safe_exception_diagnostic(error)
-        report['deviceDiagnostic'] = ui.safe_device_diagnostic()
-        report['failure'] = ui.sanitize(str(error)) if isinstance(error,(AssertionError,TimeoutError)) else 'Details withheld to protect credentials'
+        hard_deadline=isinstance(error,ui.QaDeadlineExceeded)
+        report['deviceDiagnostic'] = {'skippedAtHardDeadline':True} if hard_deadline else ui.safe_device_diagnostic()
+        report['failure'] = ui.sanitize(str(error)) if isinstance(error,(AssertionError,TimeoutError,ui.QaDeadlineExceeded)) else 'Details withheld to protect credentials'
         if 'undefinedName' in report['diagnostic']:
             report['failure']='Undefined static identifier: '+report['diagnostic']['undefinedName']
-        if ui.CAPTURE_ALLOWED:
+        # Durable failure always precedes optional slow diagnostic captures.
+        OUT.joinpath('authenticated-result.json').write_text(ui.sanitize(json.dumps(report,indent=2,ensure_ascii=False)),encoding='utf-8')
+        if ui.CAPTURE_ALLOWED and not hard_deadline:
             ui.capture_failure('failure-authenticated-private')
     finally:
         signal.alarm(0)
