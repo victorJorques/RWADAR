@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "status": "not-ready",
+  "status": "ready",
   "version": "1.4.0",
   "versionCode": 20,
   "package": "com.rwadar.app",
   "sourceHeadSha": "7c64b6c15a826ddb3189c8ab195b4fa36201ca51",
   "baselineSourceHeadSha": "1ecf7e7aa8941400d6ad954680cd6deb89107c42",
   "certificateSha256": "f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72",
-  "apkUrl": null,
-  "apkSha256": null,
-  "apkBytes": null,
-  "easBuildId": null
+  "apkUrl": "https://expo.dev/artifacts/eas/2-Cat0kxZwf6fZRSg2PCBU4UMeMBSk-3aR3MLTn-Z-M.apk",
+  "apkSha256": "c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614",
+  "apkBytes": 88961845,
+  "easBuildId": "24546ab7-9015-4886-a91c-ab3a57a230cb"
 }
