@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-10-24",
+  "actualizadoEl": "2026-10-26",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Web editorial con acceso por cuenta comprobado en preview: alta confirmada real, cookie y catálogo26/49, cierre que invalida sesión y recuperación hasta nueva contraseña. Diseño con radar revisado390/1440. SQL28 autorizado, activación coordinada con producción. Android19 conserva su compuerta nativa independiente.",
+  "nota": "Consulta web pública por orden del titular; cuenta para funciones personales. SQL28 revertido con autorización, catálogo26/49 intacto. Worker/bridge y cierre pendiente corregidos;37pruebas dirigidas y generación local aprobadas. Preview nueva en curso; Android19 mantiene su validación independiente.",
   "revisionAprobada": {
-    "commit": "a243bf3b01665d1f189097d6dabdb9da68e140fe",
-    "contenidoSha256": "sha256:63270660655147d53d85f7ffb50c54f5dc581093336ebc681ed33ad6c70add4f",
+    "commit": "093ec474fcbd6738fb9e2c665f35e1f4dd6212f9",
+    "contenidoSha256": "sha256:c8bab5edcd64c97ed69175917ad6b955db1a5a429433b7c38b1578c70a4149ea",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
@@ -44,7 +44,7 @@
     },
     "aviso_legal_y_condiciones": {
       "estado": "aprobado",
-      "detalle": "Identidad y alcance editorial gratuito conservados. Privacidad adaptada funcionalmente a cuenta confirmada obligatoria, cookie web HttpOnly, sesión Android en memoria, datos locales por cuenta y cartera manual sin sincronización. Revisión interna, sin dictamen jurídico externo ni habilitación comercial.",
+      "detalle": "Privacidad describe consulta web pública, funciones personales por cuenta, cookie HttpOnly y acceso nativo del APK19 por cuenta. Se conserva identidad y alcance editorial gratuito; no habilita intermediación ni monetización.",
       "evidencias": [
         {
           "tipo": "documento",
@@ -155,8 +155,8 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "aprobado",
-      "detalle": "Beta web editorial comprobada: cuenta temporal confirmada por correo real, loginBFF, cookie protegida, tres páginas y87 recursos, catálogo26/49, tutorialBearer y revocación local. Recuperación del titular llega al formulario nuevo; sesión de su cuenta observada en producción anterior. Nuevo diseño HTML/CSS revisado390/1440 sin cambiar controles. Producción exigeSQL28 y comprobación anónima denegada. Android19 sigue pendiente de QA nativa y no queda aprobado por esta compuerta web.",
+      "estado": "en_progreso",
+      "detalle": "Cambio acotado a lectura pública y serialización del cierre pendiente.37pruebas dirigidas y generación local aprobadas; conserva como antecedentes reales las verificaciones anteriores. Falta verificar la nueva preview antes de producción. No aprueba el APK19.",
       "evidencias": [
         {
           "tipo": "prueba",
@@ -259,6 +259,12 @@
           "referencia": "docs/CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md#evidencia-local-y-limites",
           "verificadoEl": "2026-10-23",
           "resumen": "Corte f3cfb1a revisado localmente. Worker completo, sesión confirmada, aislamiento por usuario, lectura editorial, bloqueo de producción si Supabase admite anónimos y tutorial manual. No es prueba E2E remota ni aprobación del APK."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ACCESO-PUBLICO-2026-10-26.md",
+          "verificadoEl": "2026-10-26",
+          "resumen": "Preparación local con34controles de Worker/bridge/gate y3casos dirigidos de login. ReversiónSQL28 aplicada con26/49conservados. La nueva preview aún no se atribuye como aprobada."
         }
       ]
     },
