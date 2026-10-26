@@ -10,6 +10,14 @@ const URL_CUENTAS = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const CLAVE_PUBLICABLE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const PLAZO_CUENTAS = 8000;
 const MAX_RESPUESTA = 128 * 1024;
+// El lote documentado completo supera el límite de una respuesta de cuentas.
+// Solo estas dos lecturas de catálogo admiten un cuerpo y plazo mayores.
+const MAX_RESPUESTA_CATALOGO = 2 * 1024 * 1024;
+const PLAZO_CATALOGO = 15000;
+const LECTURAS_CATALOGO = new Set([
+  '/rest/v1/catalogo_plataformas_publicas_v2',
+  '/rest/v1/catalogo_ofertas_publicas_v2',
+]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 let instanciaCliente = 0;
 
@@ -59,6 +67,10 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
   return async function transporte(url, opciones = {}) {
     const destino = new URL(typeof url === 'string' ? url : url.url);
     if (destino.origin !== URL_CUENTAS || !/^\/(auth|rest)\/v1\//.test(destino.pathname)) throw fallo('destino_invalido');
+    const metodo = String(opciones.method || (typeof url === 'object' && url.method) || 'GET').toUpperCase();
+    const catalogo = metodo === 'GET' && !destino.username && !destino.password && LECTURAS_CATALOGO.has(destino.pathname);
+    const maxRespuesta = catalogo ? MAX_RESPUESTA_CATALOGO : MAX_RESPUESTA;
+    const plazo = catalogo ? PLAZO_CATALOGO : plazoMs;
     const corte = new AbortController();
     const abortar = () => corte.abort();
     if (opciones.signal?.aborted) corte.abort();
@@ -71,7 +83,7 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
             redirect: 'error', credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer' });
           if (respuesta.url && new URL(respuesta.url).origin !== URL_CUENTAS) throw fallo('destino_invalido');
           const longitud = Number(respuesta.headers.get('content-length'));
-          if (Number.isFinite(longitud) && longitud > MAX_RESPUESTA) throw fallo('respuesta_excesiva');
+          if (Number.isFinite(longitud) && longitud > maxRespuesta) throw fallo('respuesta_excesiva');
           let cuerpo;
           if (respuesta.body?.getReader && typeof TextDecoder === 'function') {
             const lector = respuesta.body.getReader(), partes = [];
@@ -81,7 +93,7 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
                 const { value, done } = await lector.read();
                 if (done) break;
                 recibidos += value.byteLength;
-                if (recibidos > MAX_RESPUESTA) {
+                if (recibidos > maxRespuesta) {
                   lector.cancel().catch(() => {});
                   throw fallo('respuesta_excesiva');
                 }
@@ -94,11 +106,11 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
             cuerpo = new TextDecoder().decode(unidos);
           } else cuerpo = await respuesta.text();
           const bytes = typeof TextEncoder === 'function' ? new TextEncoder().encode(cuerpo).length : cuerpo.length * 3;
-          if (bytes > MAX_RESPUESTA) throw fallo('respuesta_excesiva');
+          if (bytes > maxRespuesta) throw fallo('respuesta_excesiva');
           return new Response([204, 205, 304].includes(respuesta.status) ? null : cuerpo,
             { status: respuesta.status, statusText: respuesta.statusText, headers: respuesta.headers });
         })(),
-        new Promise((_, rechazar) => { reloj = setTimeout(() => { corte.abort(); rechazar(fallo('plazo')); }, plazoMs); }),
+        new Promise((_, rechazar) => { reloj = setTimeout(() => { corte.abort(); rechazar(fallo('plazo')); }, plazo); }),
       ]);
     } finally {
       clearTimeout(reloj);
@@ -384,4 +396,4 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
 }
 
 module.exports = { crearControladorCuentas, crearClienteCuentas, crearTransporteCuentas,
-  REDIRECT_CUENTAS, PLAZO_CUENTAS, MAX_RESPUESTA, mensajeError };
+  REDIRECT_CUENTAS, PLAZO_CUENTAS, MAX_RESPUESTA, MAX_RESPUESTA_CATALOGO, PLAZO_CATALOGO, mensajeError };

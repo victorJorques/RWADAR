@@ -6,6 +6,17 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 26 de octubre de 2026 · Codex · defecto real del catálogo Android corregido
+
+APK19 entra con la cuentaQA, pero rechaza el catálogo real por tamaño y muestra0/0.
+Arreglo mínimo en cuentas.js: soloGET de dos vistas V2 permite2MiB/15s;
+Auth/privados conservan128KiB/8s.28pruebas nuevas+64regresiones pasan;
+revisión independiente aprobada y contrato real26/49 correcto. NuevoAPKpendiente;
+no publicar el19. Investigación pausada. [Informe breve](../VERIFICACION-CORRECCION-CATALOGO-ANDROID-2026-10-26.md).
+Cambios en el commit que incorpora esta entrada. Main compartido no se toca.
+
+---
+
 ## 26 de octubre de 2026 · Codex · web pública publicada; Android sigue pendiente
 
 Web publicada en https://rwadar.pages.dev (despliegue

@@ -32,10 +32,10 @@ Con permiso de Víctor se restauró la lectura pública de Supabase: siguen las
 Esto restaura el contrato de lectura de Android 1.3.2; no se ha vuelto a probar
 en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 
-Android 1.4.0 reutiliza el APK compilado y sigue en borrador. Las dos
-continuaciones del 26/10 se detuvieron por el arnés; la revisión nativa completa
-y la publicación siguen pendientes. Detalle en la
-[verificación del 26/10](VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
+Android 1.4.0 sigue en borrador. Se confirmó el acceso en el APK existente,
+pero un límite de tamaño impide cargar el catálogo completo. La corrección mínima
+ya está revisada y probada en local; necesita un APK corregido antes de publicar.
+Detalle en la [verificación breve del catálogo Android](VERIFICACION-CORRECCION-CATALOGO-ANDROID-2026-10-26.md).
 
 | | Estado |
 |---|---|
