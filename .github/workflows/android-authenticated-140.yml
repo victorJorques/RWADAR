@@ -26,7 +26,7 @@ jobs:
   android-authenticated:
     if: ${{ github.event_name == 'workflow_dispatch' && github.event.repository.private == true }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 9
+    timeout-minutes: 12
     steps:
       - name: Checkout private isolated QA branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, same pinned runner action
@@ -135,6 +135,7 @@ jobs:
               xml.attribute(null, "class", value(info.getClassName()));
               xml.attribute(null, "clickable", Boolean.toString(info.isClickable()));
               xml.attribute(null, "enabled", Boolean.toString(info.isEnabled()));
+              xml.attribute(null, "focused", Boolean.toString(info.isFocused()));
               xml.attribute(null, "password", Boolean.toString(info.isPassword()));
               xml.attribute(null, "checkable", Boolean.toString(info.isCheckable()));
               xml.attribute(null, "checked", Boolean.toString(info.isChecked()));

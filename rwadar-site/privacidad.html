@@ -40,7 +40,7 @@
 
   <div class="resumen">
     <p><b>El resumen, por si no lees el resto.</b></p>
-    <p>Para consultar RWAdar <b>necesitas una cuenta gratuita con el correo confirmado</b>. La conexión implica
+    <p>Puedes <b>consultar la web de RWAdar sin registrarte</b>. Necesitas una cuenta gratuita con el correo confirmado para guardar y gestionar tus inversiones. La conexión implica
       los datos técnicos descritos en el apartado 2. No hay cookies
       de seguimiento, perfilado ni venta de datos. RWAdar no ofrece ahora contratación B2B
       ni espacios patrocinados. Si ese modelo se aprobara en el futuro, cualquier espacio
@@ -61,7 +61,7 @@
 
   <div class="pendiente" role="note">
     <p><b>Alcance de esta versión:</b> radar editorial gratuito, con fuentes y fechas
-      de revisión. La cuenta permite acceder y guardar una lista de vigilancia (alta, entrada,
+      de revisión. La cuenta permite guardar una lista de vigilancia y acceder a las funciones personales (alta, entrada,
       recuperación de la contraseña y borrado). Las opiniones, los avisos por correo y el push
       están en pausa. RWAdar no ofrece
       actualmente contratación, facturación ni espacios B2B: la página para empresas recoge
@@ -135,8 +135,8 @@
       </tr>
       <tr>
         <td>Dirección IP al<br>actualizar el registro</td>
-        <td>La web verifica tu cuenta a través de Cloudflare antes de entregar las fichas.
-          Cloudflare consulta Supabase con tu sesión para autenticación y datos del catálogo.
+        <td>La web sirve las fichas y consulta el catálogo público sin exigir una cuenta.
+          Cloudflare verifica tu sesión con Supabase al acceder a tus datos y funciones personales.
           La app Android consulta Supabase con su sesión confirmada (apartado 3).</td>
         <td>Supabase, la base de datos y autenticación</td>
       </tr>
@@ -189,7 +189,7 @@
     Cloudflare también trata datos técnicos como alojamiento y CDN para entregar y proteger la web.</p>
 
   <h2>3 · Tu cuenta</h2>
-  <p>Necesitas una cuenta con el correo confirmado para acceder al radar. También sirve para guardar en el servidor
+  <p>La consulta de la web es pública. Necesitas una cuenta con el correo confirmado para las funciones personales y guardar en el servidor
     la lista de plataformas que vigilas y verla desde la web o una versión de la app
     con las cuentas habilitadas. Perfil indica su disponibilidad. Hace falta
     confirmar el correo antes de poder entrar. Estos son todos los datos de la cuenta:</p>
@@ -498,9 +498,9 @@
 
   <section aria-labelledby="reporte-seguridad">
   <h2 id="reporte-seguridad">13 · Seguridad y reporte de vulnerabilidades</h2>
-  <p>El destino público utiliza HTTPS. Para acceder al catálogo, la web y la app requieren
-    una sesión vigente y un correo confirmado. Los permisos del servidor limitan la lectura
-    a esas cuentas y ocultan las revisiones no aprobadas. Las contraseñas las gestiona
+  <p>El destino público utiliza HTTPS. El catálogo publicado puede consultarse sin cuenta en la web. La app 1.4.0 exige
+    entrar con una cuenta confirmada. Las funciones personales requieren una sesión vigente;
+    sus permisos no permiten acceder a los datos de otra cuenta. Las revisiones no aprobadas permanecen ocultas. Las contraseñas las gestiona
     Supabase Auth. Las funciones de comunidad y avisos permanecen en pausa.</p>
   <p>Ningún sistema es infalible. Para reportar de forma responsable una vulnerabilidad o
     exposición, escribe a <a href="mailto:RWAdar@protonmail.com?subject=Reporte%20de%20seguridad%20RWAdar">RWAdar@protonmail.com</a>.

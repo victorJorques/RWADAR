@@ -107,8 +107,10 @@ def radar_center_checks():
         assert len(points) == expected_counts['plataformas'], 'Need every actual radar point visible before centre taps'
         assert len({p['name'] for p in points}) == len(points), 'Radar point names must be unique'
         screen('00-radar-320dp-centros',root)
+        current = root
         for index,point in enumerate(points):
-            current = dump()
+            # The scan/previous close already supplied a fresh radar tree; no
+            # UI-changing action intervenes before reading the next bounds.
             _,bounds = find_node(current,point['label'])
             centre = [(bounds[0]+bounds[2])//2,(bounds[1]+bounds[3])//2]
             adb('shell','input','tap',*map(str,centre))
@@ -134,7 +136,7 @@ def radar_center_checks():
             assert event['eventType'] != 'click', 'This test must use physical pointer input rather than an accessibility click'
             reports.append({'name':point['name'],'centre':centre,'bounds':bounds,'event':event,'openedOwnPlatform':True})
             tap_observed(current,'Cerrar ficha de ' + point['name'])
-            wait_ui(point['label'])
+            current = wait_ui(point['label'], absent=('Cerrar ficha de ' + point['name'],))
         out.joinpath('radar-native-centres.json').write_text(json.dumps({'display':[width,height],
             'densityDpi':480,'widthDp':320,'points':reports,
             'scope':'Exact visible centres, not 44dp exclusive touch regions or TalkBack traversal'},indent=2),encoding='utf-8')
@@ -205,8 +207,9 @@ def search(root, query):
         root = wait_ui('Ofertas específicas')
     root = reach_control('Buscar ofertas por nombre, proveedor, país o métrica')
     tap_observed(root, 'Buscar ofertas por nombre, proveedor, país o métrica')
+    ui.wait_editable('Buscar ofertas por nombre, proveedor, país o métrica')
     adb('shell', 'input', 'text', query.replace(' ', '%s'))
-    adb('shell', 'input', 'keyevent', 'KEYCODE_BACK')
+    ui.dismiss_keyboard_if_visible()
     return wait_ui(query, '1 de ')
 
 

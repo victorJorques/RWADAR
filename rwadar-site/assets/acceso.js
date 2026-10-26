@@ -2,7 +2,7 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const form = $('formulario'); let vista = 'entrar', ocupado = false, enlace = null;
-  let cierrePendiente = sessionStorage.getItem('rwadar.cierre.pendiente') === 'si';
+  let cierrePendiente = sessionStorage.getItem('rwadar.cierre.pendiente') === 'si', cierreEnCurso = null;
   const textos = { entrar: 'Entrar', registrar: 'Crear cuenta gratis', recuperar: 'Enviar enlace de recuperación', reenviar: 'Reenviar confirmación', 'nueva-clave': 'Guardar nueva contraseña' };
   function mensaje(texto) { $('estado').textContent = texto; }
   function cambiar(siguiente) {
@@ -35,8 +35,13 @@
   }
   async function terminarCierre() {
     if (!cierrePendiente) return;
-    await api('salir', {});
-    sessionStorage.removeItem('rwadar.cierre.pendiente'); cierrePendiente = false;
+    // A delayed logout response must finish before a new login sets its cookie.
+    // Page startup, form submission and email adoption share the same request.
+    if (!cierreEnCurso) cierreEnCurso = (async () => {
+      await api('salir', {});
+      sessionStorage.removeItem('rwadar.cierre.pendiente'); cierrePendiente = false;
+    })().finally(() => { cierreEnCurso = null; });
+    await cierreEnCurso;
   }
   function regresar() {
     const value = new URLSearchParams(location.search).get('volver') || '/';

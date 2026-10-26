@@ -1,16 +1,8 @@
-// Authorization for Pages Functions. No passwords, tokens or user data are logged.
+// Public reading and private account API. No passwords, tokens or user data are logged.
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ORIGEN_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const COOKIE = '__Host-rwadar-acceso';
 const MAX_BODY = 16 * 1024;
-const PUBLICAS = new Set(['/acceso', '/acceso.html', '/privacidad', '/privacidad.html',
-  '/condiciones', '/condiciones.html', '/aviso-legal', '/aviso-legal.html',
-  '/transparencia-comercial', '/transparencia-comercial.html', '/robots.txt', '/favicon.ico',
-  '/assets/acceso.js', '/assets/acceso.css', '/sw.js',
-  '/assets/privacidad-20260820.css', '/assets/idioma-20261022.css',
-  '/assets/analitica-20260927.js', '/assets/idioma-en-20261022.js', '/assets/idioma-20261022.js', '/assets/idioma-web-20261022.js',
-  '/assets/fuentes/geist-normal-6ab67a4f11f1.woff2', '/assets/fuentes/geist-italic-0138eaff66cd.woff2',
-  '/assets/fuentes/geist-mono-normal-7ead591194e0.woff2']);
 
 export function retornoSeguro(value, origin) {
   if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//') || /[\\\r\n\u0000]/.test(value)) return '/';
@@ -126,7 +118,10 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
       // Host-only cookies plus strict Origin and JSON prevent login/logout CSRF.
       if (request.headers.get('origin') !== url.origin || request.headers.get('sec-fetch-site') === 'cross-site') return respuesta({ error: 'origen_no_permitido' }, 403);
     }
-    if (!endpoint && (PUBLICAS.has(path) || /^\/assets\/(?:acceso\.[a-f0-9]{8,64}\.(?:js|css)|(?:privacidad-20260820|idioma-20261022)\.[a-f0-9]{8,64}\.css|(?:analitica-20260927|idioma-en-20261022|idioma-20261022|idioma-web-20261022)\.[a-f0-9]{8,64}\.js)$/.test(path))) return context.next();
+    // The catalog, Academy, sources, RSS and SEO pages are public. Only the
+    // closed account API handles identity and private data. ASSETS cannot write.
+    if (!endpoint) return path.startsWith('/api/')
+      ? respuesta({ error: 'ruta_no_permitida' }, 404) : context.next();
     if (endpoint && !recursoCatalogo && !['/api/acceso/sesion', '/api/acceso/entrar', '/api/acceso/registrar',
       '/api/acceso/recuperar', '/api/acceso/reenviar', '/api/acceso/inspeccionar',
       '/api/acceso/adoptar', '/api/acceso/nueva-clave', '/api/acceso/salir', '/api/acceso/datos', '/api/acceso/reautenticar', '/api/acceso/tutorial'].includes(path)) return respuesta({ error: 'ruta_no_permitida' }, 404);
@@ -148,13 +143,13 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
       }
       if (recursoCatalogo) {
         if (request.method !== 'GET') return respuesta({ error: 'metodo_no_permitido' }, 405);
-        const token = leerCookie(request); await verificar(env, token);
+        // Public GET never forwards a cookie or a user token to the catalog.
         const parameters = new URLSearchParams(url.search);
         for (const key of parameters.keys()) if (!['select', 'limit', 'order', 'estado', 'slug', 'nombre'].includes(key)) throw new Error('solicitud_invalida');
         const limit = parameters.get('limit') || '1001';
         if (!/^[0-9]{1,4}$/.test(limit) || Number(limit) < 1 || Number(limit) > 1001) throw new Error('solicitud_invalida');
         parameters.set('limit', limit);
-        const data = await api(env, '/rest/v1/' + recursoCatalogo[1] + '?' + parameters, { token, maxBytes: 8 * 1024 * 1024 });
+        const data = await api(env, '/rest/v1/' + recursoCatalogo[1] + '?' + parameters, { maxBytes: 8 * 1024 * 1024 });
         return respuesta(data);
       }
       if (endpoint && path !== '/api/acceso/sesion' && request.method !== 'POST') return respuesta({ error: 'metodo_no_permitido' }, 405);
@@ -208,7 +203,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
           if (name.length > 60 || /[\u0000-\u001f\u007f]/.test(name)) throw new Error('nombre_invalido');
           await api(env, '/auth/v1/signup?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)),
             { method: 'POST', data: { email: correo(data.correo), password: clave(data.clave, true), data: { nombre: name } } });
-          // Signup never opens the catalog, even if remote autoconfirm is misconfigured.
+          // Signup never grants account access, even if remote autoconfirm is misconfigured.
           return respuesta({ confirmarCorreo: true, mensaje: 'Si la cuenta es nueva, recibirás un enlace para confirmar el correo antes de entrar. Si ya tenías cuenta, entra con tu contraseña o recupérala.' });
         }
         if (path === '/api/acceso/recuperar' || path === '/api/acceso/reenviar') {
@@ -227,20 +222,9 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
         throw new Error('solicitud_invalida');
       }
       const user = await verificar(env, leerCookie(request));
-      if (path === '/api/acceso/sesion') return respuesta({ autenticada: true, usuario: user });
-      const response = await context.next(); const headers = new Headers(response.headers);
-      headers.set('Cache-Control', 'private, no-store'); headers.set('Vary', 'Cookie');
-      headers.set('X-Robots-Tag', 'noindex, nofollow');
-      return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+      return respuesta({ autenticada: true, usuario: user });
     } catch (error) {
       if (error.message === 'configuracion_pendiente') return respuesta({ error: 'configuracion_pendiente' }, 503);
-      if (!endpoint) {
-        // Redirect HTML navigation; scripts/JSON/images receive an actual denial.
-        if ((request.headers.get('accept') || '').includes('text/html')) return new Response(null, { status: 303,
-          headers: { Location: '/acceso?volver=' + encodeURIComponent(retornoSeguro(path, url.origin)),
-            'Cache-Control': 'private, no-store', 'X-Robots-Tag': 'noindex, nofollow' } });
-        return respuesta({ error: 'sesion_necesaria' }, 401);
-      }
       const code = ['correo_invalido', 'clave_corta', 'clave_vacia', 'condiciones', 'nombre_invalido', 'solicitud_invalida', 'solicitud_excesiva'].includes(error.message) ? error.message : 'sesion_necesaria';
       // An old failed request must not erase a newer account's cookie.
       return respuesta({ error: code }, error.status === 429 ? 429 : code === 'sesion_necesaria' ? 401 : 400);

@@ -21,19 +21,34 @@ function entorno(options = {}) {
     if(authorization)headers.authorization=authorization;
     if (method === 'POST') Object.assign(headers, { origin, 'content-type': 'application/json' });
     return server.atender({ env, request: new Request(ORIGIN + path, { method, headers, ...(data ? { body: JSON.stringify(data) } : {}) }),
-      next: async () => { served++; return new Response('CATALOGO PRIVADO', { headers: { 'Cache-Control': 'public,max-age=31536000' } }); } });
+      next: async () => { served++; return new Response('CATALOGO PUBLICO', { headers: { 'Cache-Control': 'public,max-age=31536000' } }); } });
   }
   return { run, calls, served: () => served };
 }
-test('sin sesión no entrega HTML, snapshot, fotos, RSS ni rutas SEO', async () => {
+test('sin registro entrega catálogo, Academy, fotos, RSS y SEO sin consultar Auth', async () => {
   const e = entorno();
-  for (const path of ['/', '/ofertas-editoriales/spiko/', '/assets/catalogo-publico.js', '/novedades.xml', '/sitemap.xml', '/ofertas-editoriales/spiko.webp']) {
-    const response = await e.run(path); assert.equal(response.status, 401); assert.equal(e.served(), 0);
-    assert.ok(!(await response.text()).includes('CATALOGO PRIVADO'));
+  const paths = ['/', '/academy/', '/ofertas-editoriales/spiko/', '/assets/catalogo-publico.js', '/novedades.xml', '/sitemap.xml', '/ofertas-editoriales/spiko.webp'];
+  for (const token of [undefined, TOKEN]) for (const path of paths) {
+    for (const method of ['GET', 'HEAD']) {
+      const response = await e.run(path, { method, token });
+      assert.equal(response.status, 200);
+      assert.equal(response.headers.get('location'), null);
+      assert.equal(response.headers.get('x-robots-tag'), null);
+    }
   }
+  assert.equal(e.served(), paths.length * 4);
   assert.equal(e.calls.length, 0);
-  const html = await e.run('/ofertas-editoriales/spiko', { accept: 'text/html' });
-  assert.equal(html.status, 303); assert.ok(html.headers.get('location').startsWith('/acceso?volver='));
+});
+test('sin cuenta no accede a sesión, datos privados, reautenticación ni API ajena', async () => {
+  const e = entorno();
+  assert.equal((await e.run('/api/acceso/sesion')).status, 401);
+  for (const path of ['/api/acceso/datos', '/api/acceso/reautenticar']) {
+    const response = await e.run(path, { method: 'POST', data: { ruta: '/mi_perfil', clave: 'prueba' } });
+    assert.equal(response.status, 401); assert.equal(response.headers.get('set-cookie'), null);
+  }
+  assert.equal((await e.run('/api/ajena')).status, 404);
+  assert.equal((await e.run('/', { method: 'POST', data: {} })).status, 405);
+  assert.equal(e.calls.length, 0); assert.equal(e.served(), 0);
 });
 test('acceso, su JS/CSS versionado y legales quedan públicos', async () => {
   const e = entorno();
@@ -42,28 +57,28 @@ test('acceso, su JS/CSS versionado y legales quedan públicos', async () => {
   }
   assert.equal(e.calls.length, 0);
 });
-test('JWT confirmado pero sesión revocada no sirve catálogo', async () => {
-  const e = entorno({ profile: [] }); const response = await e.run('/', { token: TOKEN });
+test('JWT confirmado pero sesión revocada no abre la cuenta', async () => {
+  const e = entorno({ profile: [] }); const response = await e.run('/api/acceso/sesion', { token: TOKEN });
   assert.equal(response.status, 401); assert.equal(e.served(), 0);
   assert.equal(e.calls.length, 2); assert.ok(e.calls[1].url.includes('/mi_perfil?'));
 });
 test('correo sin confirmar y usuario anónimo no acceden', async () => {
   for (const user of [{ id: UID, email: 'a@b.test', is_anonymous: true, email_confirmed_at: '2026-10-23T00:00:00Z' },
     { id: UID, email: 'a@b.test', is_anonymous: false }]) {
-    const e = entorno({ user }); assert.equal((await e.run('/', { token: TOKEN })).status, 401);
+    const e = entorno({ user }); assert.equal((await e.run('/api/acceso/sesion', { token: TOKEN })).status, 401);
     assert.equal(e.served(), 0); assert.equal(e.calls.length, 1);
   }
 });
 test('perfil de otra persona se rechaza aunque GoTrue valide token', async () => {
   const e = entorno({ profile: [{ id: '22222222-2222-4222-8222-222222222222' }] });
-  assert.equal((await e.run('/', { token: TOKEN })).status, 401); assert.equal(e.served(), 0);
+  assert.equal((await e.run('/api/acceso/sesion', { token: TOKEN })).status, 401); assert.equal(e.served(), 0);
 });
-test('sesión confirmada y vigente sirve privado/no-store/noindex', async () => {
-  const e = entorno(); const response = await e.run('/assets/catalogo-publico.js', { token: TOKEN });
-  assert.equal(response.status, 200); assert.equal(await response.text(), 'CATALOGO PRIVADO');
+test('sesión confirmada y vigente responde privado/no-store sin reflejar tokens', async () => {
+  const e = entorno(); const response = await e.run('/api/acceso/sesion', { token: TOKEN });
+  assert.equal(response.status, 200); assert.equal((await response.json()).usuario.id, UID);
   assert.equal(response.headers.get('cache-control'), 'private, no-store');
   assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow');
-  assert.equal(response.headers.get('vary'), 'Cookie');
+  assert.equal(e.served(), 0);
 });
 test('Origin cruzado no envía claves a GoTrue ni crea cookies', async () => {
   const e = entorno(); const response = await e.run('/api/acceso/entrar', { method: 'POST',
@@ -98,18 +113,21 @@ test('retorno no permite redirecciones externas, barras inversas ni Auth recursi
   for (const value of ['https://atacante.test', '//atacante.test', '/\\atacante.test', '/api/acceso/entrar', '/acceso', '/acceso.html', '/x\r\nLocation:evil']) assert.equal(retornoSeguro(value, ORIGIN), '/');
   assert.equal(retornoSeguro('/ofertas-editoriales/spiko?access_token=no#no', ORIGIN), '/ofertas-editoriales/spiko');
 });
-test('proxy catálogo usa la sesión verificada, limita consultas y nunca devuelve el token', async () => {
+test('proxy público solo lee los cuatro recursos del catálogo sin reenviar sesión', async () => {
   const e=entorno({fetch:async (url,init)=>{
-    if(url.includes('/auth/v1/user'))return Response.json({id:UID,email:'a@b.test',email_confirmed_at:'2026-10-23T10:00:00Z'});
-    if(url.includes('/mi_perfil?'))return Response.json([{id:UID}]);
-    assert.equal(init.headers.Authorization,'Bearer '+TOKEN);
-    return Response.json([{slug:'oferta-probada'}]);
+    assert.equal(init.method,'GET');assert.equal(init.headers.Authorization,undefined);
+    assert.ok(url.includes('/rest/v1/'));return Response.json([{slug:'oferta-probada'}]);
   }});
-  const r=await e.run('/api/acceso/catalogo/catalogo_ofertas_publicas_v2?select=*&limit=49',{token:TOKEN});
-  assert.equal(r.status,200);assert.deepEqual(await r.json(),[{slug:'oferta-probada'}]);
-  assert.equal(e.calls.length,3);
-  assert.equal((await e.run('/api/acceso/catalogo/catalogo_ofertas_publicas_v2?limit=1002',{token:TOKEN})).status,400);
-  assert.equal((await e.run('/api/acceso/catalogo/perfiles',{token:TOKEN})).status,404);
+  for(const tabla of ['catalogo_ofertas_publicas_v2','catalogo_plataformas_publicas_v2','catalogo_publicacion','plataformas']) {
+    const r=await e.run('/api/acceso/catalogo/'+tabla+'?select=*&limit=49',{token:TOKEN});
+    assert.equal(r.status,200);assert.deepEqual(await r.json(),[{slug:'oferta-probada'}]);
+  }
+  assert.equal(e.calls.length,4);
+  assert.equal((await e.run('/api/acceso/catalogo/catalogo_ofertas_publicas_v2?limit=1002')).status,400);
+  assert.equal((await e.run('/api/acceso/catalogo/catalogo_ofertas_publicas_v2?usuario_id=eq.otra')).status,400);
+  assert.equal((await e.run('/api/acceso/catalogo/perfiles')).status,404);
+  assert.equal((await e.run('/api/acceso/catalogo/plataformas',{method:'POST',data:{}})).status,405);
+  assert.equal(e.calls.length,4);
 });
 test('pasarela de cuenta rechaza rutas, métodos y RPC ajenos y no borra otra cookie en un fallo',async()=>{
   const e=entorno();

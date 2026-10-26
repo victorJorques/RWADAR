@@ -100,6 +100,7 @@ if(typeof document!=='undefined'&&document.addEventListener&&typeof fetch!=='und
   const b=e.target&&e.target.closest&&e.target.closest('[data-guardar-oferta]');
   if(!b)return;
   e.preventDefault();
+  if(window.RWADAR_ACCESO&&!window.RWADAR_ACCESO.usuario()){window.RWADAR_ACCESO.entrar();return;}
   const slug=b.dataset.guardarOferta,ahora=Favoritos.alternar('ofertas',slug);
   document.querySelectorAll('[data-guardar-oferta]').forEach(x=>{
    if(x.dataset.guardarOferta!==slug||x.closest('#perfilOfertas'))return;
@@ -4226,7 +4227,7 @@ const Cuenta = (function(){
   if(titulo){if(identidadConfirmada&&ses){titulo.setAttribute('translate','no');titulo.setAttribute('lang','es');}else{titulo.removeAttribute('translate');titulo.removeAttribute('lang');}}
   if(texto)texto.textContent=identidadConfirmada
    ?(cantidad?cantidad+(cantidad===1?' plataforma vigilada':' plataformas vigiladas')+' en tu cuenta.':'Todavía no vigilas ninguna plataforma desde tu cuenta.')
-   :'Entra o crea una cuenta para guardar tu lista de vigilancia entre dispositivos.';
+   :'Explora el radar sin registrarte. Para guardar y gestionar tus inversiones, entra en tu cuenta.';
   /* El HTML nace con el botón desactivado (pausa); al abrir cuentas hay que
      habilitarlo aquí o en el móvil no habría forma de entrar. */
   if(accion){accion.disabled=false;accion.textContent=identidadConfirmada?'Abrir mi cuenta':'Entrar o crear cuenta';}

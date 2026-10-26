@@ -4,21 +4,21 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const { construirWorker, RUTAS } = require('./compilar.cjs');
 
-test('el artefacto ejecuta el gate también para exportaciones y páginas generadas', async () => {
+test('el artefacto sirve lectura pública de exportaciones y páginas generadas', async () => {
   const worker = (await import('data:text/javascript;base64,' + Buffer.from(construirWorker()).toString('base64'))).default;
   let servidos = 0;
   const assets = { ASSETS: { fetch: async () => { servidos++; return new Response('contenido'); } } };
   const ctx = { waitUntil() {} };
   for (const ruta of ['/', '/ofertas/casa-de-outeiro/', '/rwadar.csv', '/assets/catalogo-publico-20261022.js']) {
     const response = await worker.fetch(new Request('https://rwadar.pages.dev' + ruta), assets, ctx);
-    assert.equal(response.status, 401, ruta);
+    assert.equal(response.status, 200, ruta);
     assert.equal(response.headers.get('x-frame-options'), 'DENY');
-    assert.equal(servidos, 0, ruta);
+    assert.equal(response.headers.get('x-robots-tag'), null, ruta);
   }
   const publico = await worker.fetch(new Request('https://rwadar.pages.dev/acceso'), assets, ctx);
   assert.equal(publico.status, 200);
   assert.match(publico.headers.get('content-security-policy'), /frame-ancestors 'none'/);
-  assert.equal(servidos, 1);
+  assert.equal(servidos, 5);
   assert.deepEqual(RUTAS, { version: 1, include: ['/*'], exclude: [] });
 });
 
@@ -27,7 +27,7 @@ test('la compilación es determinista y no acepta un servidor con dependencias n
   assert.throws(() => construirWorker('no-existe'), /ENOENT/);
 });
 
-test('la salida compilada permite los recursos legales y mantiene protegido el catálogo', async () => {
+test('la salida compilada permite recursos legales y lectura del catálogo', async () => {
   const worker = (await import('data:text/javascript;base64,' + Buffer.from(construirWorker()).toString('base64'))).default;
   let llamadas = 0;
   const env = { ASSETS: { fetch: async () => { llamadas++; return new Response('legal'); } } };
@@ -36,8 +36,8 @@ test('la salida compilada permite los recursos legales y mantiene protegido el c
     assert.equal((await worker.fetch(new Request('https://rwadar.pages.dev' + ruta), env, { waitUntil() {} })).status, 200);
   }
   assert.equal(llamadas, 5);
-  assert.equal((await worker.fetch(new Request('https://rwadar.pages.dev/assets/catalogo-publico-20261022.123456789abc.js'), env, { waitUntil() {} })).status, 401);
-  assert.equal(llamadas, 5);
+  assert.equal((await worker.fetch(new Request('https://rwadar.pages.dev/assets/catalogo-publico-20261022.123456789abc.js'), env, { waitUntil() {} })).status, 200);
+  assert.equal(llamadas, 6);
 });
 
 test('la salida compilada conserva la CSP estricta del intercambio nativo y no refleja su token', async () => {

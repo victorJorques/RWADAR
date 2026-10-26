@@ -6,6 +6,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 26 de octubre de 2026 · Codex · web pública y cierre del mismo APK
+
+Por nueva orden expresa: web legible sin registro, cuenta para funciones personales
+y cierre/publicación del APK19 existente. Investigación sigue PAUSADA.
+SQL28 revertido con autorización específica:26/49conservados y lectura pública
+restaurada; perfiles/vigilancia mantienenRLS. Worker y bridge públicos, login
+serializado para evitar doble logout;34+3pruebas dirigidas aprobadas. Se conservan
+los baselines APK19 y99/11 anteriores. Sin nueva compilación ni cambio móvil.
+El arnés incorpora foco/IME actuales, cierre observado del radar y menos snapshots;
+14simulaciones dirigidas. Estado de despliegue y QA aún pendientes en el
+[informe26/10](../VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
+Los commits que incorporan esta entrada contienen la fuente preparada y su
+aprobación separada; no integrar el main compartido con WIP de otras herramientas.
+
+---
+
 ## 24 de octubre de 2026 · Codex · revisión integral y compatibilidad pendiente
 
 Se revisó la entrega desde `9d51f8b`, con tres ayudantes de lectura y cierre

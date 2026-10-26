@@ -31,7 +31,7 @@ const { comprobar: comprobarNoticias } = require('./rwadar-noticias');
 const { comprobar: comprobarFichas } = require('./rwadar-fichas');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const { construirWorker, RUTAS: RUTAS_ACCESO } = require('./rwadar-acceso/compilar.cjs');
-const { exigirCatalogoPrivado } = require('./rwadar-acceso/comprobar-produccion.cjs');
+const { exigirCatalogoPublico } = require('./rwadar-acceso/comprobar-produccion.cjs');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
@@ -184,10 +184,10 @@ if (remoto) {
   }
 }
 
-if (produccion) {
-  try { await exigirCatalogoPrivado(); }
+if (remoto) {
+  try { await exigirCatalogoPublico(); }
   catch (e) {
-    console.error('PUBLICACIÓN BLOQUEADA: falta comprobar el acceso obligatorio del catálogo en Supabase.');
+    console.error('PUBLICACIÓN BLOQUEADA: falta comprobar la lectura pública del catálogo en Supabase.');
     console.error(e.message); process.exit(2);
   }
 }

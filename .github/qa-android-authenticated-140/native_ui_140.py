@@ -6,6 +6,8 @@ out = pathlib.Path('evidence-private')
 out.mkdir(exist_ok=True)
 scroll_gestures = []
 CAPTURE_ALLOWED = False
+APP_PACKAGE = 'com.rwadar.app'
+LAST_KEYBOARD_DIAGNOSTIC = {}
 _SECRET_VALUES = tuple(v for v in (os.environ.get('RWADAR_QA_EMAIL'),os.environ.get('RWADAR_QA_PASSWORD')) if v)
 
 def sanitize(value):
@@ -29,14 +31,16 @@ class TransientSnapshotError(Exception):
 
 def dump_once(timeout=30):
     raw = sanitize(adb('shell', 'am', 'instrument', '-w', '-r', 'com.rwadar.smoketest/.DumpRunner', timeout=timeout))
-    out.joinpath('latest-ui-instrumentation.txt').write_text(raw, encoding='utf-8')
+    if CAPTURE_ALLOWED:
+        out.joinpath('latest-ui-instrumentation.txt').write_text(raw, encoding='utf-8')
     marker = 'INSTRUMENTATION_RESULT: rwadar_ui='
     if marker not in raw and 'No active UI root' in raw:
         raise TransientSnapshotError('UiAutomation has no active root during a window transition')
-    assert marker in raw, 'Fresh UI snapshot failed: ' + raw[-1200:]
+    assert marker in raw, 'Fresh UI snapshot failed; raw details withheld'
     xml = raw.split(marker, 1)[1].split('\nINSTRUMENTATION_', 1)[0].strip()
     root = ET.fromstring(xml)
-    out.joinpath('latest-ui.xml').write_text(xml, encoding='utf-8')
+    if CAPTURE_ALLOWED:
+        out.joinpath('latest-ui.xml').write_text(xml, encoding='utf-8')
     return root
 
 
@@ -58,12 +62,13 @@ def visible_text(root):
     return '\n'.join(value for node in root.iter('node') if node.get('visible') != 'false' for value in [node.get('text', ''), node.get('content-desc', '')] if value)
 
 
-def wait_ui(*texts, timeout=75):
+def wait_ui(*texts, timeout=75, absent=()):
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
         try:
             root = dump(timeout=min(30, max(.1, deadline - time.monotonic())))
-            if all(text in visible_text(root) for text in texts):
+            visible = visible_text(root)
+            if all(text in visible for text in texts) and not any(text in visible for text in absent):
                 return root
         except (subprocess.SubprocessError, ET.ParseError, TransientSnapshotError) as error:
             with out.joinpath('snapshot-errors.log').open('a', encoding='utf-8') as log:
@@ -72,17 +77,108 @@ def wait_ui(*texts, timeout=75):
     raise AssertionError('Native UI did not visibly show: ' + ', '.join(texts))
 
 
+def parse_window_state(raw):
+    # Only current WindowManager metadata is accepted. InputMethod history and
+    # mInputShown are deliberately excluded: either can outlive the actual IME.
+    focus = re.search(r'^\s*mCurrentFocus=Window\{[^\r\n}]*\bu\d+\s+([A-Za-z][A-Za-z0-9_.]*)/', raw, re.M)
+    package = focus.group(1) if focus else None
+    windows = re.split(r'(?m)^\s*Window #\d+ ', raw)[1:]
+    ime_visible = any(re.match(r'Window\{[^\r\n}]*\bInputMethod\}:', block)
+                      and re.search(r'\bmHasSurface=true\b', block)
+                      and re.search(r'\bisOnScreen=true\b', block)
+                      for block in windows)
+    return {'focusPackage':package, 'appFocused':package == APP_PACKAGE,
+            'imeWindowVisible':bool(ime_visible)}
+
+
+def window_state():
+    return parse_window_state(adb('shell','dumpsys','window','windows',timeout=5))
+
+
+def wait_editable(label, secret=False, timeout=12):
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        try:
+            root = dump(timeout=min(5, max(.1, deadline - time.monotonic())))
+        except (ET.ParseError, TransientSnapshotError):
+            time.sleep(.15)
+            continue
+        nodes = [n for n in root.iter('node') if n.get('package') == APP_PACKAGE
+                 and n.get('class') == 'android.widget.EditText'
+                 and n.get('content-desc') == label and n.get('visible') != 'false'
+                 and n.get('enabled') != 'false' and n.get('focused') == 'true']
+        if len(nodes) == 1:
+            bounds = list(map(int,re.findall(r'-?\d+',nodes[0].get('bounds',''))))
+            if len(bounds) == 4 and bounds[0] < bounds[2] and bounds[1] < bounds[3]:
+                assert not secret or nodes[0].get('password') == 'true', 'Password field must be masked'
+                assert window_state()['appFocused'], 'Native input requires the current app window focus'
+                return root
+        time.sleep(.15)
+    raise AssertionError('Native editable did not acquire visible focus')
+
+
+def dismiss_keyboard_if_visible():
+    global LAST_KEYBOARD_DIAGNOSTIC
+    state = window_state()
+    LAST_KEYBOARD_DIAGNOSTIC = dict(state, action='no-back-without-visible-ime')
+    assert state['appFocused'], 'Native input left the app window'
+    if not state['imeWindowVisible']:
+        return
+    # A single Back is allowed only with current app focus and a surfaced,
+    # on-screen IME window. Never repeat Back based on a stale global flag.
+    LAST_KEYBOARD_DIAGNOSTIC['action'] = 'single-back-for-visible-ime'
+    adb('shell','input','keyevent','KEYCODE_BACK')
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline:
+        state = window_state()
+        LAST_KEYBOARD_DIAGNOSTIC['after'] = state
+        if state['focusPackage'] is None:
+            # Window transitions may briefly have no focus. Read only until
+            # RWAdar regains it; a real different package still fails below.
+            time.sleep(.1)
+            continue
+        assert state['appFocused'], 'App window focus lost after keyboard dismissal'
+        if not state['imeWindowVisible']:
+            return
+        time.sleep(.1)
+    raise AssertionError('Visible keyboard did not dismiss after one Back')
+
+
+def safe_device_diagnostic():
+    # Raw dumpsys/logcat, UI values and exception arguments never leave memory.
+    result = {'lastKeyboard':LAST_KEYBOARD_DIAGNOSTIC.copy()}
+    try:
+        result['window'] = window_state()
+    except Exception as error:
+        result['windowReadFailure'] = type(error).__name__
+    try:
+        process = subprocess.run(['adb','shell','pidof',APP_PACKAGE],
+                                 check=False,capture_output=True,timeout=5)
+        if process.returncode == 0 and re.fullmatch(rb'\d+(?:\s+\d+)*',process.stdout.strip()):
+            result['appProcessAlive'] = True
+        elif process.returncode == 1 and not process.stdout.strip() and not process.stderr.strip():
+            result['appProcessAlive'] = False
+        else:
+            result['processReadFailure'] = 'UnrecognizedProcessResult'
+    except Exception as error:
+        # A missing PID does not by itself prove a crash. Never expose argv.
+        result['processReadFailure'] = type(error).__name__
+    return result
+
+
 def screen(name, root=None):
-    image = subprocess.run(['adb', 'exec-out', 'screencap', '-p'], check=True, capture_output=True, timeout=20).stdout
-    assert image.startswith(b'\x89PNG'), 'Screenshot must be a real PNG'
     if not CAPTURE_ALLOWED:
         return
+    image = subprocess.run(['adb', 'exec-out', 'screencap', '-p'], check=True, capture_output=True, timeout=20).stdout
+    assert image.startswith(b'\x89PNG'), 'Screenshot must be a real PNG'
     out.joinpath(name + '.png').write_bytes(image)
     if root is not None:
         out.joinpath(name + '.xml').write_text(ET.tostring(root, encoding='unicode'), encoding='utf-8')
 
 
 def capture_failure(name):
+    if not CAPTURE_ALLOWED:
+        return
     # Capture the failing viewport before finally restores display/font settings.
     # Keep the original assertion if either diagnostic operation also fails.
     for kind, operation in [('png', lambda: screen(name)),

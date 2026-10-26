@@ -51,14 +51,13 @@ def field(label, value, secret=False):
     if secret:
         require(nodes[0].get('password') == 'true', 'Password field must be masked')
     click(label)
+    ui.wait_editable(label, secret=secret)
     # The wrapper suppresses subprocess args/stdout/stderr in every error path.
     # shlex.quote prevents Android's shell from interpreting credential characters.
     ui.adb('shell','input','keycombination','113','29')
     ui.adb('shell','input','keyevent','KEYCODE_DEL')
     ui.adb('shell','input','text',shlex.quote(value.replace(' ','%s')))
-    ime=ui.adb('shell','dumpsys','input_method')
-    if re.search(r'\b(?:mInputShown|mIsInputViewShown|isInputViewShown)=true\b',ime):
-        ui.adb('shell','input','keyevent','KEYCODE_BACK')
+    ui.dismiss_keyboard_if_visible()
     time.sleep(.15)
 
 
@@ -353,7 +352,7 @@ if __name__ == '__main__':
     exit_code = 1
     try:
         signal.signal(signal.SIGALRM,timeout_handler)
-        signal.alarm(360)
+        signal.alarm(540)
         main()
         exit_code = 0
     except BaseException as error:
@@ -361,6 +360,7 @@ if __name__ == '__main__':
         report['status'] = 'failed'
         report['failureType'] = type(error).__name__
         report['diagnostic'] = safe_exception_diagnostic(error)
+        report['deviceDiagnostic'] = ui.safe_device_diagnostic()
         report['failure'] = ui.sanitize(str(error)) if isinstance(error,(AssertionError,TimeoutError)) else 'Details withheld to protect credentials'
         if 'undefinedName' in report['diagnostic']:
             report['failure']='Undefined static identifier: '+report['diagnostic']['undefinedName']

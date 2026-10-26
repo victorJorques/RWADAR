@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 24 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 26 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -18,6 +18,14 @@ consulta. Entrar en el radar es gratis para las plataformas.
 ---
 
 ## Qué está funcionando hoy
+
+**Cambio en curso del 26 de octubre:** Víctor vuelve a pedir consulta pública
+sin registro y cuenta para funciones personales. La lectura pública en Supabase
+ya está restaurada con las ofertas conservadas. La corrección web está preparada
+y probada; todavía pendiente de verificación en preview y publicación.
+La app nueva mantiene su APK existente, con validación nativa pendiente.
+El estado del 24/10 que aparece a continuación es la situación publicada anterior.
+Detalle en la [verificación del 26/10](VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
 
 **Web nueva publicada el 24 de octubre:** ya exige cuenta confirmada y muestra
 una pantalla de acceso con el radar de tokenización y el estilo de la app,
