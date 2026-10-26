@@ -6,6 +6,32 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 26 de octubre de 2026 · Codex · web pública publicada; Android sigue pendiente
+
+Web publicada en https://rwadar.pages.dev (despliegue
+https://f0ec3606.rwadar.pages.dev), después de la preview
+https://99d594e3.rwadar.pages.dev. Consulta sin registro y cuenta para funciones
+personales; corregido el doble cierre que podía borrar la sesión recién abierta.
+37 pruebas locales dirigidas, 16 comprobaciones HTTP en preview y otras 16 en
+producción; login, sesión y logout reales pasaron en ambos entornos. No se
+repite la inspección visual anterior: la nueva del 26/10 quedó bloqueada porque
+Computer Use no pudo verificar la URL del navegador.
+
+SQL28 revertido con permiso: 26 plataformas y 49 referencias conservadas,
+lectura pública restaurada y RLS de perfiles/vigilancia mantenida. Se restaura
+el contrato de sincronización de 1.3.2, sin nueva prueba en dispositivo.
+Investigación PAUSADA; sin nuevas ofertas ni fechas rejuvenecidas.
+
+Fuente y aprobación en `093ec47`, `9cfe70e`, `f2915dc`; arnés en `6c9373c`.
+Android 1.4.0/código 19 sigue como draft: mismo APK y baselines conservados,
+sin nueva compilación. Las dos continuaciones del 26/10 suman 312 segundos y
+fallaron en el arnés; no acreditan 20/20 ni autorizan afirmar publicación.
+Cierre nativo, limpieza de QA y publicación si pasa siguen pendientes.
+[Informe vigente](../VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
+No integrar ni sobrescribir el main compartido con WIP de otras herramientas.
+
+---
+
 ## 26 de octubre de 2026 · Codex · web pública y cierre del mismo APK
 
 Por nueva orden expresa: web legible sin registro, cuenta para funciones personales

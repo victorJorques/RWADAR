@@ -83,3 +83,26 @@ Android40299768822 terminófallo: el campo estaba enfocado, proceso vivo y tecla
 visible, pero la lectura de foco devolviónull. SuZIPprivado SHA-256
 78cec889582bfc59ecf68a99691556a8def0a0c971b889724c93595b0f683e7c
 queda conservado sin atribuir aprobación ni publicar evidencia privada.
+
+
+## Producción pública comprobada el 26/10
+
+Publicación autorizada realizada en https://rwadar.pages.dev, despliegue
+https://f0ec3606.rwadar.pages.dev, desde la fuente aprobada en f2915dc.
+Dieciséis comprobaciones HTTP de producción aprobadas, sin repetir las de preview:
+consulta anónima, Academy, ficha, sitemap/RSS, identidad de JS/CSS de acceso,
+catálogo26/49, protecciones de datos personales y redirección Android a latest.
+La cuenta temporal QA realizó también login, sesión, cookie protegida y logout
+real en producción; la cookie anterior quedó denegada. No se repitió el correo.
+
+Registros conservados en VERIFICACION-ACCESO-PUBLICO-PRODUCCION-2026-10-26.json
+y VERIFICACION-LECTURA-PUBLICA-SQL-2026-10-26.json. No hubo nueva investigación
+ni nuevas fechas editoriales. La limitación visual anterior sigue vigente.
+
+Segunda continuación Android40301318223 falló en36segundos de recorrido al
+capturar el campo nativo de contraseña. Proceso de RWAdar vivo y foco en su
+ventana; no acredita fallo del producto ni aprobación nativa. ZIP privado
+SHA-256707abe68d61afafe4b5ec2626fc8ba2f10319d5546aa1f615d0cd87c8c0efbe5.
+Las dos ejecuciones suman151+161=312segundos de runner. Una continuación final
+de hasta6minutos conservará el total máximo en672segundos, dentro de los720
+autorizados. No se cambia el APK ni se repiten fases aprobadas.

@@ -19,64 +19,49 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 ## Qué está funcionando hoy
 
-**Cambio en curso del 26 de octubre:** Víctor vuelve a pedir consulta pública
-sin registro y cuenta para funciones personales. La lectura pública en Supabase
-ya está restaurada con las ofertas conservadas. La corrección web está preparada
-y probada; todavía pendiente de verificación en preview y publicación.
-La app nueva mantiene su APK existente, con validación nativa pendiente.
-El estado del 24/10 que aparece a continuación es la situación publicada anterior.
-Detalle en la [verificación del 26/10](VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
+**Web publicada el 26 de octubre:** el catálogo, las fichas y Academy se pueden
+consultar sin registro. La cuenta confirmada se pide para guardar y usar funciones
+personales. Se corrigió una carrera del inicio de sesión que podía cerrar la
+sesión recién abierta. Pasaron 37 pruebas locales dirigidas, 16 comprobaciones
+HTTP en preview y otras 16 en producción; entrada, sesión y salida reales con
+la cuenta de QA también funcionaron en ambos entornos. La nueva inspección visual
+no pudo completarse: Computer Use se detuvo al no poder verificar la URL.
 
-**Web nueva publicada el 24 de octubre:** ya exige cuenta confirmada y muestra
-una pantalla de acceso con el radar de tokenización y el estilo de la app,
-revisada en móvil y escritorio. El alta de una cuenta de prueba se confirmó por
-correo real y se comprobaron sesión, catálogo y cierre. También se observó la
-cuenta del titular abierta en Chrome. La recuperación llega al formulario para
-elegir contraseña; no se afirma haberla guardado por el titular.
+Con permiso de Víctor se restauró la lectura pública de Supabase: siguen las
+26 plataformas y 49 referencias y las protecciones de perfiles y vigilancia.
+Esto restaura el contrato de lectura de Android 1.3.2; no se ha vuelto a probar
+en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 
-Los permisos de Supabase ya acompañan ese acceso: se conservan completas las
-26 plataformas y 49 referencias. Las correcciones documentales del 23 están
-aplicadas; las fechas generales siguen siendo las de su revisión real. La
-investigación permanece pausada y solo se inicia a petición de Víctor.
-
-Android 1.4.0 corregido está compilado y subido como borrador de descarga,
-sin repetir la compilación. La última comprobación autorizada volvió a detenerse
-fuera de la ventana de la app; no se ha aprobado la revisión nativa completa.
-Se detuvo conforme al acuerdo de Víctor y no se publicó. La descarga pública
-anterior usa un lector anónimo que los permisos nuevos ya deniegan: no incorpora
-la actualización necesaria para consultar el catálogo con una cuenta. Este
-impacto se comprobó en su código, sin volver a ejecutar el APK antiguo.
-Detalle y prioridades en la [revisión integral del 24/10](REVISION-INTEGRAL-2026-10-24.md) y la
-[verificación de correo y Android](VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md).
+Android 1.4.0 reutiliza el APK compilado y sigue en borrador. Las dos
+continuaciones del 26/10 se detuvieron por el arnés; la revisión nativa completa
+y la publicación siguen pendientes. Detalle en la
+[verificación del 26/10](VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
 
 | | Estado |
 |---|---|
-| **Web** | Publicada en **https://rwadar.pages.dev** (Cloudflare), actualizada el **24/10** desde la rama aislada revisada. Cuenta confirmada obligatoria, acceso con radar, registro y recuperación; conserva catálogo, fichas, comparación, páginas permanentes, RSS e idiomas. Acceso real en preview y nuevo diseño móvil/escritorio comprobados; producción supera la denegación anónima y la comparación de los recursos públicos de acceso. |
+| **Web** | Publicada en **https://rwadar.pages.dev**, actualizada el **26/10** desde la rama aislada. Consulta pública; cuenta para funciones personales. Login, sesión y salida comprobados con la cuenta de QA. Se conservan el radar del acceso, registro, recuperación, comparación e idiomas. |
 | **Catálogo** | **La revisión del 22 de octubre ya está aplicada en Supabase**, vigente hasta el **29 de octubre**: 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 reventa, 4 documentales en preparación). IOD figura cerrado; cifras nuevas solo cuando se observaron en su fuente. Los campos de acceso desde España permanecen sin confirmar cuando falta evidencia específica. Ver [`VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md`](VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md). |
 | **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
-| **App Android** | **Versión 1.3.2** (código 16), publicada el 22/10 en GitHub ([RWAdar 1.3.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.2)), todavía última descarga final. Su lector anónimo no puede sincronizar tras el cierre de permisos del 24/10; las pruebas antiguas preceden a ese cambio. Según el código, conserva una caché válida si existe y, si no existe, devuelve listas vacías. Falta observar el efecto en un dispositivo actual. **1.4.0/código 19 sigue en borrador**, con validación nativa pendiente. Firma e imágenes comprobadas; no está en Google Play. |
+| **App Android** | **[Versión 1.3.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.2)**, publicada el 22/10, sigue siendo la última descarga final. Restaurada la lectura pública que usa su sincronización, sin repetir la prueba en dispositivo. **1.4.0 sigue en borrador**, con validación nativa pendiente; se conserva el mismo APK, su firma y sus imágenes verificadas. No está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
-| **Google y RSS** | El acceso obligatorio protege las fichas, el sitemap y el RSS. No están disponibles para rastreadores ni lectores externos sin sesión; no se presenta la indexación histórica como estado actual de esas páginas. Quedan textos antiguos que prometen RSS sin cuenta, identificados en la revisión integral. |
+| **Google y RSS** | Fichas, sitemap y RSS vuelven a estar disponibles sin sesión. Sus respuestas públicas se comprobaron el 26/10; esto no acredita que Google ya haya vuelto a indexarlas. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
 | **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
 | **Tipografía** | Geist completa para español. La web publicada reutiliza los archivos locales: títulos de tarjeta de 20 px, datos de decisión de 16 px y secundarios de 14 px. El candidato Android también aumenta el tamaño de lectura y navegación; su comprobación se acredita por separado. |
 
-**Cuentas:** la web exige confirmar el correo. El alta real de la cuenta temporal
-de prueba, su confirmación, sesión y cierre están comprobados. El correo de
-recuperación del titular llegó a la bandeja de entrada y su enlace correcto
-abrió el formulario de contraseña; falta que el titular guarde la contraseña
-y se acredite la entrada posterior. Las incidencias antiguas de spam no prueban
-que los correos actuales estén llegando a spam. La cuenta temporal de prueba
-quedó inhabilitada, sin sesiones y con sus secretos eliminados.
+**Cuentas:** consultar la web no requiere cuenta. Las funciones personales sí
+requieren una cuenta confirmada. Se comprobaron entrada, sesión y cierre en
+preview y producción. El alta y la recepción de recuperación reales ya se
+acreditaron el 24/10; no se atribuye al titular un guardado de contraseña que
+no se observó. La limpieza de la cuenta temporal se documenta por cada ciclo de QA.
 
-**La fuente web publicada el 24/10 está en la rama aislada y aún no está integrada
-en main.** La carpeta principal conserva cambios de otras herramientas; no se
+**La fuente web publicada el 26/10 está en la rama aislada y aún no está integrada
+en main.** La carpeta principal conserva cambios de otras herramientas y no se
 ha sobrescrito su trabajo. Hay que integrar la entrega antes de volver a publicar
-desde allí y adaptar el panel al acceso obligatorio. Las pruebas y las huellas
-quedan en los informes con fecha. El vídeo de nueve perfiles simulados está
-entregado en local y reproducido completo; no es una prueba con personas ni una
-evaluación de todos los cambios posteriores.
+desde allí. Las pruebas y las huellas quedan en los informes con fecha. El vídeo
+de nueve perfiles simulados está entregado en local y reproducido completo; no
+es una prueba con personas ni una evaluación de todos los cambios posteriores.
 
 **Investigación del catálogo:** tarea preparada y **PAUSADA, con inicio manual**.
 Víctor debe pulsar **Ejecutar** o pedir **«haz la investigación»** para abrir un
@@ -98,8 +83,8 @@ Supabase con permiso expreso de Víctor**. La lectura posterior comprobó las
 políticas restrictivas de acceso, la sesión confirmada y vigente, la exclusión
 de usuarios anónimos y que el esquema privado no queda expuesto por REST.
 
-**Publicación y app:** la web está publicada con las guardas de cuentas
-encendidas. El APK nativo 1.3.2 también las lleva activadas, pasó la prueba de
+**Publicación y app:** la web es pública; las funciones personales conservan
+las guardas de cuentas. El APK nativo 1.3.2 también las lleva activadas, pasó la prueba de
 ejecución en emulador y **ya está publicado en GitHub**, con resultado real
 de QA y publicación exitoso. Los servicios antiguos de
 instalaciones y push permanecen apagados. Víctor autorizó EAS Android y GitHub **sin cargos**;

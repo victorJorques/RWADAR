@@ -286,6 +286,7 @@ def main():
             'QA email must use the supported ASCII input alphabet')
     require(re.fullmatch(r'[A-Za-z0-9_\-]{20,120}',password) is not None,
             'QA password must use the supported 20+ character ASCII input alphabet')
+    ui.start_snapshot_bridge()
     ui.adb('logcat','-c')
     catalog.RADAR_RESTORE={'density':ui.adb('shell','wm','density'),
                            'size':ui.adb('shell','wm','size'),
@@ -337,6 +338,8 @@ def timeout_handler(*_):
 def safe_exception_diagnostic(error):
     # Read code metadata only: never locals, argv, exception args or source text.
     result={'exceptionName':type(error).__name__,'frames':[]}
+    context=error.__cause__ if error.__cause__ is not None else error.__context__
+    if context is not None: result['contextExceptionName']=type(context).__name__
     frame=error.__traceback__
     while frame is not None:
         code=frame.tb_frame.f_code
@@ -352,7 +355,7 @@ if __name__ == '__main__':
     exit_code = 1
     try:
         signal.signal(signal.SIGALRM,timeout_handler)
-        signal.alarm(390)
+        signal.alarm(210)
         main()
         exit_code = 0
     except BaseException as error:
@@ -368,6 +371,9 @@ if __name__ == '__main__':
             ui.capture_failure('failure-authenticated-private')
     finally:
         signal.alarm(0)
+        try: ui.stop_snapshot_bridge()
+        except Exception as error:
+            report['snapshotCleanupFailure']=type(error).__name__
         matrix = json.loads(ROOT.joinpath('matrix-20.json').read_text())
         for point in matrix['points']:
             required = point.get('newChecksRequired',[])

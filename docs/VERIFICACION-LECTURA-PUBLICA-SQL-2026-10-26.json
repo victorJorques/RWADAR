@@ -1,0 +1,167 @@
+{
+  "checkedOn": "2026-10-26",
+  "authorization": "Explicit user approval for SQL28 reversal and verified web publication",
+  "reviewedSqlSha256": "85ae53e6793dcbeb2865b1058aa0b385bed1008ae622a3e1c68bd60335b13c83",
+  "migration": "catalogo_lectura_publica_20261026",
+  "before": [
+    {
+      "platforms": 26,
+      "offers": 49,
+      "withdrawn": false,
+      "anonymous_platforms_select": false,
+      "anonymous_offers_select": false
+    }
+  ],
+  "aclInventory": [
+    {
+      "access_backup": {
+        "acl_rows": 24,
+        "relations": [
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "public.cambios_estado"
+          },
+          {
+            "kind": "v",
+            "applied": true,
+            "relation": "public.catalogo_ofertas_publicas"
+          },
+          {
+            "kind": "v",
+            "applied": true,
+            "relation": "public.catalogo_ofertas_publicas_v2"
+          },
+          {
+            "kind": "v",
+            "applied": true,
+            "relation": "public.catalogo_plataformas_publicas"
+          },
+          {
+            "kind": "v",
+            "applied": true,
+            "relation": "public.catalogo_plataformas_publicas_v2"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "public.catalogo_publicacion"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "public.categorias"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "public.emisiones"
+          },
+          {
+            "kind": "v",
+            "applied": true,
+            "relation": "public.emisiones_publicas"
+          },
+          {
+            "kind": "v",
+            "applied": true,
+            "relation": "public.emisiones_rancias"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "public.fuentes"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "public.plataformas"
+          },
+          {
+            "kind": "v",
+            "applied": true,
+            "relation": "public.radar_publico"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "public.regiones"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "rwadar_catalogo.alerta_fuentes"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "rwadar_catalogo.alertas"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "rwadar_catalogo.fuentes"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "rwadar_catalogo.ofertas"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "rwadar_catalogo.plataforma_fuentes"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "rwadar_catalogo.plataformas"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "rwadar_catalogo.publicacion_v2"
+          },
+          {
+            "kind": "v",
+            "applied": true,
+            "relation": "rwadar_catalogo.revision_publicable"
+          },
+          {
+            "kind": "v",
+            "applied": true,
+            "relation": "rwadar_catalogo.revision_publicable_v2"
+          },
+          {
+            "kind": "r",
+            "applied": true,
+            "relation": "rwadar_catalogo.revisiones"
+          }
+        ],
+        "applied_rows": 24
+      }
+    }
+  ],
+  "after": [
+    {
+      "result": {
+        "offers": 49,
+        "platforms": 26,
+        "withdrawn": false,
+        "account_rls": [
+          {
+            "rls": true,
+            "table": "perfiles"
+          },
+          {
+            "rls": true,
+            "table": "vigilancia"
+          }
+        ],
+        "anonymous_offers_select": true,
+        "anonymous_platforms_select": true,
+        "remaining_catalogue_account_locks": 0
+      }
+    }
+  ]
+}

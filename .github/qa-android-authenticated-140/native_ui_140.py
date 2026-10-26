@@ -1,7 +1,7 @@
 """Native snapshot/scroll wrappers reused from the reviewed APK19 harness.
 Private evidence only; the product APK is never modified.
 """
-import json, os, pathlib, re, struct, subprocess, time, xml.etree.ElementTree as ET
+import json, os, pathlib, re, secrets, socket, struct, subprocess, time, xml.etree.ElementTree as ET
 out = pathlib.Path('evidence-private')
 out.mkdir(exist_ok=True)
 scroll_gestures = []
@@ -29,18 +29,79 @@ class TransientSnapshotError(Exception):
     pass
 
 
+_SNAPSHOT_PROCESS = None
+_SNAPSHOT_PORT = None
+_SNAPSHOT_SEQUENCE = 0
+
+
+def start_snapshot_bridge():
+    global _SNAPSHOT_PROCESS, _SNAPSHOT_PORT
+    assert _SNAPSHOT_PROCESS is None, 'Snapshot helper already started'
+    raw = adb('forward','tcp:0','localabstract:rwadar_qa_snapshot_140').strip()
+    assert re.fullmatch(r'\d{1,5}',raw) and 0 < int(raw) < 65536, 'Invalid loopback port'
+    _SNAPSHOT_PORT = int(raw)
+    _SNAPSHOT_PROCESS = subprocess.Popen(
+        ['adb','shell','am','instrument','-w','-r','com.rwadar.smoketest/.DumpRunner'],
+        stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    deadline = time.monotonic()+12
+    while time.monotonic()<deadline:
+        if _SNAPSHOT_PROCESS.poll() is not None:
+            raise RuntimeError('Read-only snapshot helper exited during startup')
+        try:
+            return dump_once(timeout=min(2,max(.1,deadline-time.monotonic())))
+        except (OSError,EOFError,TransientSnapshotError):
+            time.sleep(.1)
+    raise TimeoutError('Read-only snapshot helper did not start')
+
+
+def stop_snapshot_bridge():
+    global _SNAPSHOT_PROCESS, _SNAPSHOT_PORT
+    # No UI or credential data are written by the helper. Force-stop closes
+    # UiAutomation/AF_UNIX; removing only our forward closes loopback exposure.
+    try:
+        adb('shell','am','force-stop','com.rwadar.smoketest',timeout=5)
+    finally:
+        if _SNAPSHOT_PORT is not None:
+            try: adb('forward','--remove','tcp:'+str(_SNAPSHOT_PORT),timeout=5)
+            finally: _SNAPSHOT_PORT=None
+        if _SNAPSHOT_PROCESS is not None:
+            _SNAPSHOT_PROCESS.terminate()
+            try: _SNAPSHOT_PROCESS.wait(timeout=3)
+            except subprocess.TimeoutExpired: _SNAPSHOT_PROCESS.kill()
+            _SNAPSHOT_PROCESS=None
+
+
+def read_snapshot_response(stream, nonce):
+    # Per-connection request ID and bounded exact read prevent stale snapshots,
+    # truncated XML, unbounded payloads and reuse of an earlier successful root.
+    echoed = stream.readline(32)
+    assert echoed == (nonce+'\n').encode('ascii'), 'Fresh snapshot nonce mismatch'
+    length = stream.readline(12)
+    assert re.fullmatch(rb'(?:0|[1-9]\d{0,7})\n',length), 'Invalid snapshot size'
+    count=int(length)
+    assert count<=8*1024*1024, 'Snapshot exceeds bounded size'
+    if count==0: raise TransientSnapshotError('No current active UI root')
+    payload=stream.read(count)
+    if len(payload)!=count: raise EOFError('Incomplete fresh snapshot')
+    xml=sanitize(payload.decode('utf-8'))
+    root=ET.fromstring(xml)
+    assert root.tag=='hierarchy', 'Invalid fresh snapshot root'
+    return root,xml
+
+
 def dump_once(timeout=30):
-    raw = sanitize(adb('shell', 'am', 'instrument', '-w', '-r', 'com.rwadar.smoketest/.DumpRunner', timeout=timeout))
+    global _SNAPSHOT_SEQUENCE
+    assert _SNAPSHOT_PORT is not None, 'Read-only snapshot helper is not running'
+    _SNAPSHOT_SEQUENCE += 1
+    assert _SNAPSHOT_SEQUENCE < 10**8, 'Snapshot sequence exceeds bounded cycle'
+    nonce=str(secrets.randbelow(10**20))+str(_SNAPSHOT_SEQUENCE).zfill(8)
+    with socket.create_connection(('127.0.0.1',_SNAPSHOT_PORT),timeout=timeout) as channel:
+        channel.settimeout(timeout)
+        channel.sendall((nonce+'\n').encode('ascii'))
+        with channel.makefile('rb') as stream:
+            root,xml=read_snapshot_response(stream,nonce)
     if CAPTURE_ALLOWED:
-        out.joinpath('latest-ui-instrumentation.txt').write_text(raw, encoding='utf-8')
-    marker = 'INSTRUMENTATION_RESULT: rwadar_ui='
-    if marker not in raw and 'No active UI root' in raw:
-        raise TransientSnapshotError('UiAutomation has no active root during a window transition')
-    assert marker in raw, 'Fresh UI snapshot failed; raw details withheld'
-    xml = raw.split(marker, 1)[1].split('\nINSTRUMENTATION_', 1)[0].strip()
-    root = ET.fromstring(xml)
-    if CAPTURE_ALLOWED:
-        out.joinpath('latest-ui.xml').write_text(xml, encoding='utf-8')
+        out.joinpath('latest-ui.xml').write_text(xml,encoding='utf-8')
     return root
 
 
@@ -49,7 +110,7 @@ def dump(timeout=30):
     while True:
         try:
             return dump_once(timeout=max(.1, deadline - time.monotonic()))
-        except TransientSnapshotError as error:
+        except (TransientSnapshotError, socket.timeout, EOFError) as error:
             with out.joinpath('snapshot-errors.log').open('a', encoding='utf-8') as log:
                 log.write(str(error) + '\n')
             remaining = deadline - time.monotonic()
