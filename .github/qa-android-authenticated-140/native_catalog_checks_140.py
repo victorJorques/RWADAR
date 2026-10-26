@@ -572,75 +572,70 @@ def _completed_brickwise():
     return dict(expected),{'runId': 40399378362, 'originalStatus': 'failed', 'originalFailurePhase': 'provider-groups', 'harnessHeadSha': '79067a648642698ac0f45faa19b092b61c7b3675', 'checkpointsSha256': '4ec914b68458c3705837b309672524341be37b969b86b79c449be6204a95dcf4', 'zipSha256': '166af75ce935f491d67cac158c9468cc06c3c30c2f9c8cc0c66152977ca3f8b5', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'reusedProvider': 'Brickwise', 'reusedReferences': 12, 'newProvider': 'Reental', 'newReferences': 21, 'brickwiseObservationPerformedInThisRun': False, 'reentalObservationPerformedInThisRun': True, 'inheritedFlagsReferToOriginalRun': True, 'providerGroupScopeOnly': True}
 
 
+def _completed_post_font():
+    from candidate_140 import load_candidate
+    candidate=load_candidate()
+    def pinned(filename,digest):
+        raw=pathlib.Path(__file__).resolve().parent.joinpath(filename).read_bytes()
+        assert hashlib.sha256(raw).hexdigest()==digest, 'Completed post-font baseline identity mismatch'
+        return json.loads(raw)
+    previous=pinned('baseline-c20-post-font-complete-40403843475-result.json','e50ff7e3a8d46f1fd8d7206cc882d9b24167c730f7383d2b86358f797a91dd36')
+    checkpoints=pinned('baseline-c20-post-font-complete-40403843475-checkpoints.json','9a8a3b010ab40f04a02f79cde535b0723d4f606928f2b7a1d43e834c99badd7f')
+    spanish=pinned('baseline-c20-spiko-es-witnesses-40403843475.json','4d0cdb496b65d31757457615da98224daa0c5b1f69d28947eb9a9e4e72724616')
+    assert previous['status']=='failed' and previous['phase']=='languages'
+    for data in (previous,checkpoints,spanish):
+        assert data['full20PointQA'] is False and data['releaseApproved'] is False
+        assert all(data[key]==candidate[key] for key in ('apkSha256','apkBytes','versionCode','sourceHeadSha'))
+    assert checkpoints['runId']=='40403843475' and checkpoints['harnessHeadSha']=='a7d0497f66803048c52d6ce2e7f62eba2de1d87b'
+    assert spanish['runId']==40403843475 and spanish['sourceKind']=='saved-xml-visible-text-witnesses-only'
+    assert spanish['unsavedTraversalFramesReconstructed'] is False and len(spanish['witnesses'])==len(spanish['visibleTexts'])==7
+    checks=previous['checks'];criteria=checkpoints['criteria']
+    assert criteria['providerGroups']['status']=='validated-scope-only'
+    assert criteria['providerGroups']['details']['groups']==checks['providerGroups']
+    assert [item['provider'] for item in checks['providerGroups']]==['Brickwise','Reental']
+    assert [item['references'] for item in checks['providerGroups']]==[12,21] and all(item['returned'] is True for item in checks['providerGroups'])
+    doc=criteria['documentaryAndFiveImages']
+    assert doc['status']=='validated-scope-only'
+    assert doc['details']['cardSlugs']==[card['slug'] for card in checks['nativeCardDecisionFacts']]
+    assert len(checks['nativeCardDecisionFacts'])==5 and all(card['decisionFacts'] is True for card in checks['nativeCardDecisionFacts'])
+    assert all(checks[key] is True for key in ('fiveNativeImagesAndAlt','datesSeparated','historicalReferences'))
+    assert doc['details']['fourRisksBeforeSingleCta']==checks['fourRisksBeforeSingleCta']
+    return previous,checkpoints,spanish
+
+
 def groups_pending():
     global PROVIDER_GROUP_REUSE_METADATA
-    brickwise,metadata=_completed_brickwise()
-    open_offer_catalog()
-    result=[brickwise,group_roundtrip('Reental','secundario','11-reental')]
-    assert [item['references'] for item in result] == [12,21], 'Published provider group counts changed'
-    PROVIDER_GROUP_REUSE_METADATA=metadata
-    _checkpoint('providerGroups','validated-scope-only',{'groups':result,'reuseMetadata':metadata})
-    out.joinpath('provider-groups-reuse-metadata.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
+    previous,_,_=_completed_post_font()
+    PROVIDER_GROUP_REUSE_METADATA={'runId': 40403843475, 'originalStatus': 'failed', 'originalFailurePhase': 'languages', 'harnessHeadSha': 'a7d0497f66803048c52d6ce2e7f62eba2de1d87b', 'resultSha256': 'e50ff7e3a8d46f1fd8d7206cc882d9b24167c730f7383d2b86358f797a91dd36', 'checkpointsSha256': '9a8a3b010ab40f04a02f79cde535b0723d4f606928f2b7a1d43e834c99badd7f', 'zipSha256': '1b51f86ecff868988229522e21f79ad8858a79f54baafd727147d19edc6fb6ef', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'observationPerformedInThisRun': False, 'inheritedFlagsReferToOriginalRun': True, 'providerGroupsScopeOnly': True, 'reusedProviders': ['Brickwise', 'Reental'], 'reusedReferences': [12, 21], 'originalProviderGroupsReuseMetadata': {'runId': 40399378362, 'originalStatus': 'failed', 'originalFailurePhase': 'provider-groups', 'harnessHeadSha': '79067a648642698ac0f45faa19b092b61c7b3675', 'checkpointsSha256': '4ec914b68458c3705837b309672524341be37b969b86b79c449be6204a95dcf4', 'zipSha256': '166af75ce935f491d67cac158c9468cc06c3c30c2f9c8cc0c66152977ca3f8b5', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'reusedProvider': 'Brickwise', 'reusedReferences': 12, 'newProvider': 'Reental', 'newReferences': 21, 'brickwiseObservationPerformedInThisRun': False, 'reentalObservationPerformedInThisRun': True, 'inheritedFlagsReferToOriginalRun': True, 'providerGroupScopeOnly': True}}
+    result=previous['checks']['providerGroups']
+    _checkpoint('providerGroups','reused-validated-scope-only',{'groups':result,'reuseMetadata':PROVIDER_GROUP_REUSE_METADATA})
+    out.joinpath('provider-groups-reuse-metadata.json').write_text(json.dumps(PROVIDER_GROUP_REUSE_METADATA,indent=2),encoding='utf-8')
     return result
 
 
+DOCUMENTARY_REUSE_METADATA=None
+
 def documentary_and_five_images():
-    """One ES traversal supplies dates/history/risks/CTA and the first photo."""
-    risks=['¿Puedo perder dinero?','¿Puedo vender cuando quiera?',
-           '¿Quién custodia el activo?','¿Quién supervisa esta oferta?']
-    audit={'risks':{},'primary':{},'maxPrimaryInOneViewport':0,'viewport':0}
-    def inspect(root):
-        index=audit['viewport']; audit['viewport']+=1
-        primary=[]
-        for order,node in enumerate(root.iter('node')):
-            if node.get('visible') == 'false': continue
-            text=node.get('text',''); desc=node.get('content-desc','')
-            for risk in risks:
-                if text == risk or desc == risk: audit['risks'].setdefault(risk,[index,order])
-            if desc.startswith('Ver en la fuente ·'):
-                primary.append(desc); audit['primary'].setdefault(desc,[index,order])
-        audit['maxPrimaryInOneViewport']=max(audit['maxPrimaryInOneViewport'],len(primary))
-    card_reports=[]
-    for index,sample in enumerate(editorial_samples):
-        open_collection(sample['group'])
-        root=search(dump(),sample['query'])
-        root=reach_control('Ver ficha de '+sample['title'],starts=True)
-        card,_=find_node(root,'Ver ficha de '+sample['title'],starts=True)
-        label=card.get('content-desc','')
-        for part in ('Mínimo publicado en euros:','Acceso desde España:','Cómo recuperar el dinero:'):
-            assert part in label, 'Missing decision fact in native offer card'
-        assert sample['location'] in label, 'Native card lost the offer location'
-        # Expired price/rate is intentionally hidden. A consultation condition is
-        # acceptable; never demand a fresh amount from an expired reference.
-        assert re.search(r'\d[\d.,]*\s*(?:EUR|USD|CHF|€|%)',label) or re.search(r'consult|no documentad|sin comprobar',label,re.I)
-        screen('12-card-%02d' % index,root)
-        tap_observed(root,'Ver ficha de '+sample['title'],starts=True)
-        editorial_detail(sample,'13-image-%02d' % index)
-        card_reports.append({'slug':sample['slug'],'decisionFacts':True,'editorialAlt':sample['alt'],
-                             'expiredAmountsMayBeHidden':True})
-        if index == 0:
-            scroll_top()
-            document_detail('14-spiko-es',sample['title'],[
-                'Revisión del catálogo:','Última consulta citada:','Fecha del dato en esa referencia:',
-                'REFERENCIAS FECHADAS','No son precios actuales','FR001400ODL1',*risks,'Ver en la fuente'],
-                inspect=inspect,scan_to_end=True)
-            assert len(audit['risks'])==4 and len(audit['primary'])==1, 'Need four risks and exactly one primary source CTA'
-            assert audit['maxPrimaryInOneViewport']==1, 'Duplicate primary source CTA in a native viewport'
-            first_cta=min(audit['primary'].values())
-            assert all(position <= first_cta for position in audit['risks'].values()), 'Risks must precede the source CTA'
-            LOCATE('Guardar '+sample['title']+' en Perfil')
-            CLICK('Guardar '+sample['title']+' en Perfil')
-            wait_ui('Quitar '+sample['title']+' de guardadas')
-        CLICK('Cerrar '+sample['title'])
-        wait_ui('Ofertas específicas')
-    assert len(editorial_checked)==5 and len(set(editorial_checked))==5
-    out.joinpath('documentary-risk-cta.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2),encoding='utf-8')
-    out.joinpath('five-native-images.json').write_text(json.dumps(card_reports,ensure_ascii=False,indent=2),encoding='utf-8')
-    _checkpoint('documentaryAndFiveImages','validated-scope-only',{'cardSlugs':[x['slug'] for x in card_reports],
-        'fiveNativeImagesAndAlt':True,'datesSeparated':True,'historicalReferencesContextualized':True,
-        'fourRisksBeforeSingleCta':audit})
-    return {'cards':card_reports,'riskAndCta':audit,'historicalReferencesContextualized':True,
-            'datesSeparated':True,'favoritePrepared':'Spiko Letras del Tesoro Euro'}
+    global DOCUMENTARY_REUSE_METADATA
+    previous,_,spanish=_completed_post_font()
+    checks=previous['checks']
+    # Only saved original XML witnesses are inherited; no missing frames invented.
+    traversals['14-spiko-es']=spanish['visibleTexts']
+    # Fresh device: prepare the local favourite with real UI, without redoing photos/documentary traversal.
+    title='Spiko Letras del Tesoro Euro'
+    open_offer_catalog();open_collection('principales')
+    open_observed_offer('Spiko',title)
+    CLICK('Guardar '+title+' en Perfil')
+    root=wait_ui('Quitar '+title+' de guardadas')
+    screen('14-spiko-favorite-prepared-current-run',root)
+    CLICK('Cerrar '+title);wait_ui('Ofertas específicas')
+    DOCUMENTARY_REUSE_METADATA={'runId': 40403843475, 'originalStatus': 'failed', 'originalFailurePhase': 'languages', 'harnessHeadSha': 'a7d0497f66803048c52d6ce2e7f62eba2de1d87b', 'resultSha256': 'e50ff7e3a8d46f1fd8d7206cc882d9b24167c730f7383d2b86358f797a91dd36', 'checkpointsSha256': '9a8a3b010ab40f04a02f79cde535b0723d4f606928f2b7a1d43e834c99badd7f', 'zipSha256': '1b51f86ecff868988229522e21f79ad8858a79f54baafd727147d19edc6fb6ef', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'observationPerformedInThisRun': False, 'inheritedFlagsReferToOriginalRun': True, 'documentaryAndFiveImagesScopeOnly': True, 'spanishBaselineSha256': '4d0cdb496b65d31757457615da98224daa0c5b1f69d28947eb9a9e4e72724616', 'spanishBaselineKind': 'saved-xml-visible-text-witnesses-only', 'unsavedTraversalFramesReconstructed': False, 'favoritePreparedInThisRun': True}
+    _checkpoint('documentaryAndFiveImages','reused-validated-scope-only',{'reuseMetadata':DOCUMENTARY_REUSE_METADATA})
+    _checkpoint('favoritePreparedForLanguageContinuation','validated-scope-only',{'title':title,'preparedByCurrentNativeUi':True})
+    out.joinpath('documentary-reuse-metadata.json').write_text(json.dumps(DOCUMENTARY_REUSE_METADATA,indent=2),encoding='utf-8')
+    return {'cards':checks['nativeCardDecisionFacts'],'riskAndCta':checks['fourRisksBeforeSingleCta'],
+            'historicalReferencesContextualized':checks['historicalReferences'],
+            'datesSeparated':checks['datesSeparated'],'favoritePrepared':title}
 
 
 def languages_and_favorite():
@@ -651,9 +646,13 @@ def languages_and_favorite():
     assert find_node(root,'English')[0].get('checked') == 'true'
     adb('shell','am','force-stop','com.rwadar.app')
     adb('shell','am','start','-W','-n','com.rwadar.app/.MainActivity')
-    root=wait_ui('Sign in to your account','English')
-    assert find_node(root,'English')[0].get('checked') == 'true', 'English selection did not persist'
-    REAUTHENTICATE('en')
+    # A fresh process starts with the Spanish gate. SelectorIdioma hydrates
+    # the stored preference only after admission mounts the authenticated shell.
+    wait_ui('Entra en tu cuenta')
+    REAUTHENTICATE('en',gate_language='es')
+    root=wait_ui('Home','Search','Academy','Profile','English')
+    assert find_node(root,'English')[0].get('checked') == 'true', 'English selection did not persist after relogin'
+    screen('15-english-selector-after-relogin',root)
     CLICK('Profile')
     root=LOCATE(title+'.',True)
     screen('15-english-favorite-after-restart',root)
@@ -675,9 +674,11 @@ def languages_and_favorite():
     wait_ui('Inicio','Buscar','Academy','Perfil')
     adb('shell','am','force-stop','com.rwadar.app')
     adb('shell','am','start','-W','-n','com.rwadar.app/.MainActivity')
-    root=wait_ui('Entra en tu cuenta','Español')
-    assert find_node(root,'Español')[0].get('checked') == 'true', 'Spanish selection did not persist'
-    REAUTHENTICATE('es')
+    wait_ui('Entra en tu cuenta')
+    REAUTHENTICATE('es',gate_language='es')
+    root=wait_ui('Inicio','Buscar','Academy','Perfil','Español')
+    assert find_node(root,'Español')[0].get('checked') == 'true', 'Spanish selection did not persist after relogin'
+    screen('17-spanish-selector-after-relogin',root)
     CLICK('Perfil'); root=LOCATE(title+'.',True)
     screen('17-spanish-favorite-after-restart',root)
     CLICK(title+'.',True)
@@ -685,7 +686,8 @@ def languages_and_favorite():
     CLICK('Quitar '+title+' de guardadas')
     wait_ui('Guardar '+title+' en Perfil')
     CLICK('Cerrar '+title)
-    result={'englishTabs':True,'spanishTabs':True,'englishPersistedAfterRestart':True,
+    result={'restartGateLanguage':'es','persistenceObservationScope':'selector-after-native-relogin',
+            'englishTabs':True,'spanishTabs':True,'englishPersistedAfterRestart':True,
             'spanishPersistedAfterRestart':True,'favoritePersistedAcrossRestartAndRelogin':True,
             'qaFavoriteRemoved':True,'amountsAndUnitsUnchanged':True,'sourceDatesUnchanged':True,
             'sourceUrlsUnchanged':True,'emptyFinancialTokenSetAllowedWhenBothLocalesHideExpiredAmounts':True,

@@ -113,19 +113,21 @@ def require_login_inputs():
             'Login password verification failed; submit was not attempted')
 
 
-def login_confirmed(language='es'):
+def login_confirmed(language='es', gate_language=None):
     # Resizes/restarts can race an already completed admission. Four authenticated
     # tabs are success; never search for another Entrar button on Home/Launcher.
     ui.CAPTURE_ALLOWED=False
     english=language=='en'
+    # The current gate precedes locale hydration; session tabs may use another locale.
+    gate_english=(gate_language or language)=='en'
     root=ui.dump()
     if not authenticated_ui(root,language):
-        ui.wait_ui('Sign in to your account' if english else 'Entra en tu cuenta',timeout=30)
-        field('Email' if english else 'Correo',os.environ['RWADAR_QA_EMAIL'])
-        field('Password' if english else 'Contraseña',os.environ['RWADAR_QA_PASSWORD'],secret=True)
+        ui.wait_ui('Sign in to your account' if gate_english else 'Entra en tu cuenta',timeout=30)
+        field('Email' if gate_english else 'Correo',os.environ['RWADAR_QA_EMAIL'])
+        field('Password' if gate_english else 'Contraseña',os.environ['RWADAR_QA_PASSWORD'],secret=True)
         root=ui.dump()
         if not authenticated_ui(root,language):
-            label='Sign in' if english else 'Entrar'
+            label='Sign in' if gate_english else 'Entrar'
             try:
                 ui.find_node(root,label)
             except AssertionError:
@@ -438,6 +440,7 @@ def main():
     report['providerGroupsReuseMetadata']=catalog.PROVIDER_GROUP_REUSE_METADATA
     note_phase('documentary-details')
     documentary=catalog.documentary_and_five_images()
+    report['documentaryReuseMetadata']=catalog.DOCUMENTARY_REUSE_METADATA
     report['checks']['nativeCardDecisionFacts']=documentary['cards']
     report['checks']['fiveNativeImagesAndAlt']=True
     report['checks']['datesSeparated']=documentary['datesSeparated']
