@@ -6,6 +6,19 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 26 de octubre de 2026 · Codex · cierre Android en curso, sin otra compilación
+
+La 1.4.0 corregida ya está compilada como APK20. No volver a compilar por fallos
+del comprobador. Pasan 92 pruebas locales, firma y 49 recursos, acceso, radar26,
+catálogo49, ficha con letra1.5 (título, X, Atrás y fuente) y grupo Brickwise12.
+Faltan Reental21, contenido/idiomas, Academy, cartera y cierre de sesión.
+La descarga final sigue en1.3.2; el draft1.4.0 conserva el APK19 y no debe publicarse así.
+Fuente móvil en7c64b6c; arnés y pruebas conservadas hasta a501a3d, en rama aislada.
+Investigación PAUSADA. [Estado breve](../VERIFICACION-ANDROID-140-CIERRE-2026-10-26.md).
+No sobrescribir el main compartido con cambios de otras herramientas.
+
+---
+
 ## 26 de octubre de 2026 · Codex · defecto real del catálogo Android corregido
 
 APK19 entra con la cuentaQA, pero rechaza el catálogo real por tamaño y muestra0/0.
