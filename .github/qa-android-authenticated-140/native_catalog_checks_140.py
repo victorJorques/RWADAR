@@ -121,6 +121,13 @@ def reach_catalog_total(english=False,root=None):
             assert attempt==0, 'Loaded catalog counter is absent from its header'
             ui.scroll_top();root=dump(timeout=5);continue
         assert len(nodes)==1, 'Catalog counter is ambiguous'
+        # This passive text may align exactly with an observed viewport edge.
+        # Editable focus retains its separate, strict inset requirement.
+        _,box=ui.observed_scroll_viewport(root,(width,height),ancestor_of=nodes[0])
+        bounds=list(map(int,re.findall(r'-?\d+',nodes[0].get('bounds',''))))
+        if (nodes[0].get('visible')=='true' and len(bounds)==4
+                and box[0]<=bounds[0]<bounds[2]<=box[2]
+                and box[1]<=bounds[1]<bounds[3]<=box[3]):return root
         _,_,forward=ui.editable_scroll_direction(root,nodes[0],width,height)
         if forward is None:return root
         assert attempt<5, 'Catalog counter did not enter the bounded observed viewport'
