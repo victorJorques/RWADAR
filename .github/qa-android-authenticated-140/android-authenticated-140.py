@@ -20,7 +20,7 @@ report = {'scope':'private-confirmed-account-ui-only', 'status':'not-started',
           'noPostsNoPaymentsNoEmailsNoSQL':True, 'localQADataRemoved':False}
 
 
-PHASES=frozenset(('initial-login','radar','large-font-detail','provider-groups','documentary-details','languages','tutorial','portfolio','logout'))
+PHASES=frozenset(('initial-login','radar-reuse','large-font-detail','provider-groups','documentary-details','languages','tutorial','portfolio','logout'))
 
 
 def note_phase(name):
@@ -286,6 +286,54 @@ def sign_out():
     report['checks']['signOutBlocksCatalogAndLocalPortfolio'] = True
 
 
+def reuse_completed_radar():
+    def pinned(filename,digest):
+        raw=ROOT.joinpath(filename).read_bytes()
+        require(hashlib.sha256(raw).hexdigest()==digest,'Completed radar baseline identity mismatch')
+        return json.loads(raw)
+    previous=pinned('baseline-c20-radar-complete-40384575403-result.json','04df2f7b238489c301a37f236a70c77307163adcde16060da79dffb31d03e087')
+    checkpoints=pinned('baseline-c20-radar-complete-40384575403-checkpoints.json','11135c1f27868fdbf7efe65decd65cf2147aedda9066c2dfb6c93241efa7baba')
+    manifest=pinned('baseline-c20-radar-complete-40384575403-manifest.json','3d6cfa1f2a7bf2e18cd98e727ecb706cbb6d176a69e629ebd99d44c1ea9ed5f3')
+    require(previous['status']=='failed' and previous['phase']=='large-font-detail'
+            and previous['full20PointQA'] is False and previous['releaseApproved'] is False,
+            'Historical overall failure must remain failed')
+    require(manifest['runId']==40384575403 and manifest['jobId']==121789341836
+            and manifest['harnessHeadSha']=='02ccdeb5d1ccd3ec1baeb8af3dfe1e0fa8481032',
+            'Unexpected original completed radar observation')
+    for data in (previous,checkpoints,manifest):
+        require(data['apkSha256']==SHA and data['apkBytes']==CANDIDATE['apkBytes']
+                and data['versionCode']==20 and data['sourceHeadSha']==SOURCE,
+                'Completed radar does not bind the exact unchanged APK20/source')
+    radar=previous['checks']['radar26Centers320dp']
+    checkpoint=checkpoints['criteria']['radar26Centers320dp']
+    require(checkpoint['status']=='validated-scope-only' and checkpoint['details']['summary']==radar,
+            'Completed radar durable checkpoint is missing')
+    require(radar['checked'] is True and radar['count']==26 and radar['widthDp']==320
+            and radar['inferredCount']==21 and radar['directCount']==5
+            and radar['all26NamesObservedInCurrentRun'] is True
+            and radar['changedTouchesPresent'] is True and radar['allVisibleCentresOpenOwnPlatform'] is True,
+            'Original radar26 criterion is incomplete')
+    direct=checkpoint['details']['directObservations'];inferred=checkpoint['details']['inferredObservations']
+    require(len(direct)==5 and [p['index'] for p in direct]==[21,22,23,24,25] and len(inferred)==21,
+            'Original completed radar needs21 inferred and5 direct observations')
+    for point in direct:
+        event=point['event']
+        require(event['selectedName']==point['name'] and type(event['changedTouches']) is int
+                and event['changedTouches']>=1 and event['eventType']!='click'
+                and point['openedOwnPlatform'] is True and point['closedAndReturned'] is True,
+                'Original direct native radar event was not validated')
+    require(set(radar['currentObservedNames'])=={p['name'] for p in direct}|{p['platformName'] for p in inferred}
+            and len(set(radar['currentObservedNames']))==26,'Original current-name coverage is incomplete')
+    metadata={'runId':40384575403,'jobId':121789341836,'originalStatus':'failed',
+        'originalFailurePhase':'large-font-detail','resultSha256':manifest['resultSha256'],
+        'checkpointsSha256':manifest['checkpointsSha256'],'manifestSha256':'3d6cfa1f2a7bf2e18cd98e727ecb706cbb6d176a69e629ebd99d44c1ea9ed5f3',
+        'apkSha256':SHA,'sourceHeadSha':SOURCE,'observationPerformedInThisRun':False,
+        'inheritedFlagsReferToOriginalRun':True,'radarScopeOnly':True,'priorInferredCount':21,'originalDirectCount':5}
+    report['radarReuseMetadata']=metadata
+    OUT.joinpath('radar-reuse-metadata.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
+    return radar
+
+
 def main():
     require(os.environ.get('GITHUB_REPOSITORY') == 'victorJorques/RWADAR','Private repository required')
     require(os.environ.get('QA_ACCOUNT_ACK') == 'CONFIRMED_TEST_ACCOUNT','Confirmed disposable test account acknowledgement required')
@@ -329,11 +377,6 @@ def main():
             'QA password must use the supported 20+ character ASCII input alphabet')
     ui.start_snapshot_bridge()
     ui.adb('logcat','-c')
-    catalog.RADAR_RESTORE={'density':ui.adb('shell','wm','density'),
-                           'size':ui.adb('shell','wm','size'),
-                           'font':ui.adb('shell','settings','get','system','font_scale').strip()}
-    ui.adb('shell','wm','density','480')
-    ui.adb('shell','wm','size','960x1920')
     ui.adb('shell','settings','put','system','font_scale','1.0')
     ui.adb('shell','am','start','-W','-n','com.rwadar.app/.MainActivity')
     email = password = None
@@ -342,8 +385,8 @@ def main():
     report['status'] = 'running'
     catalog.REAUTHENTICATE=login_confirmed
     catalog.CLICK=click; catalog.FIELD=field; catalog.LOCATE=locate
-    note_phase('radar')
-    report['checks']['radar26Centers320dp']=catalog.radar_center_checks()
+    note_phase('radar-reuse')
+    report['checks']['radar26Centers320dp']=reuse_completed_radar()
     note_phase('large-font-detail')
     ui.adb('shell','settings','put','system','font_scale','1.5')
     ui.adb('shell','wm','size','900x1600')

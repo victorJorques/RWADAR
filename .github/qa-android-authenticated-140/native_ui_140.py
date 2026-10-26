@@ -295,19 +295,31 @@ def editable_metadata(root):
     return result
 
 
+def observed_scroll_viewport(root,dimensions=None,ancestor_of=None):
+    # Android ScrollView is vertical; HorizontalScrollView is a different class.
+    # Recycler/WebView nested scrollers are excluded by an observed outer scroll
+    # ancestor, not by width/height guesses that reject legitimate short lists.
+    kinds=('android.widget.ScrollView','androidx.recyclerview.widget.RecyclerView','android.webkit.WebView')
+    parents={child:parent for parent in root.iter() for child in parent}
+    candidates={}
+    for node in root.iter('node'):
+        if node.get('visible')=='false' or node.get('class') not in kinds:continue
+        if ancestor_of is not None and not any(child is ancestor_of for child in node.iter('node')):continue
+        box=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
+        if len(box)!=4 or not (0<=box[0]<box[2] and 0<=box[1]<box[3] and box[3]-box[1]>=80):continue
+        if dimensions is not None and not (box[2]<=dimensions[0] and box[3]<=dimensions[1]):continue
+        candidates[node]=box
+    outer=[]
+    for node,box in candidates.items():
+        parent=parents.get(node)
+        while parent is not None and parent not in candidates:parent=parents.get(parent)
+        if parent is None:outer.append((node,box))
+    assert len(outer)==1, 'Need one fully observed outer vertical scroll viewport'
+    return outer[0]
+
+
 def editable_scroll_direction(root,node,width,height):
-    viewports=[]
-    for viewport in root.iter('node'):
-        if viewport.get('class') not in ('android.widget.ScrollView','androidx.recyclerview.widget.RecyclerView') or viewport.get('visible')=='false':
-            continue
-        if not any(child is node for child in viewport.iter('node')):
-            continue
-        box=list(map(int,re.findall(r'-?\d+',viewport.get('bounds',''))))
-        if len(box)==4 and 0<=box[0]<box[2]<=width and 0<=box[1]<box[3]<=height and box[3]-box[1]>=max(80,(box[2]-box[0])//2):
-            viewports.append((viewport,box))
-    assert len(viewports)==1, 'Need one fully observed vertical native scroll ancestor for the field'
-    viewport,box=viewports[0]
-    assert any(child is node for child in viewport.iter('node')), 'Native field is outside the observed ScrollView'
+    viewport,box=observed_scroll_viewport(root,(width,height),ancestor_of=node)
     bounds=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
     assert len(bounds)==4 and box[0]<=bounds[0]<bounds[2]<=box[2], 'Native field horizontal bounds are ambiguous'
     if box[1]<bounds[1]<bounds[3]<box[3] and node.get('visible')!='false':
@@ -480,19 +492,7 @@ def scroll_trajectories(root, dimensions, forward):
     # Pure geometry: keep the whole vertical path in an observed content margin.
     # In particular, a swipe starting inside EditText can be consumed by that field.
     width, height = dimensions
-    regions = []
-    for node in root.iter('node'):
-        if node.get('visible') == 'false' or node.get('class') not in (
-                'android.widget.ScrollView', 'androidx.recyclerview.widget.RecyclerView', 'android.webkit.WebView'):
-            continue
-        bounds = list(map(int, re.findall(r'-?\d+', node.get('bounds', ''))))
-        if len(bounds) != 4:
-            continue
-        left, top, right, bottom = bounds
-        if 0 <= left < right <= width and 0 <= top < bottom <= height and bottom-top >= max(80,(right-left)//2):
-            regions.append((node, bounds))
-    assert len(regions) == 1, 'Need one unambiguous visible vertical native scroll viewport'
-    viewport, bounds = regions[0]
+    viewport,bounds=observed_scroll_viewport(root,dimensions)
     left, top, right, bottom = bounds
     low = top + int((bottom-top)*.16)
     high = top + int((bottom-top)*.84)
@@ -585,13 +585,7 @@ def reach_control(label, starts=False):
 def scroll_position(root):
     # Observe actual scroll content, never status bars, fixed navigation, input
     # values, clocks, or Radar's continuously rotating SVG descendant bounds.
-    viewports=[]
-    for node in root.iter('node'):
-        if node.get('visible')=='false' or node.get('class') not in ('android.widget.ScrollView','androidx.recyclerview.widget.RecyclerView','android.webkit.WebView'):continue
-        box=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
-        if len(box)==4 and 0<=box[0]<box[2] and 0<=box[1]<box[3] and box[3]-box[1]>=max(80,(box[2]-box[0])//2):viewports.append((node,box))
-    assert len(viewports)==1, 'Need one observed vertical viewport to establish scroll progress'
-    viewport,box=viewports[0]
+    viewport,box=observed_scroll_viewport(root)
     anchors=[]
     for node in viewport.iter('node'):
         kind=node.get('class','')
