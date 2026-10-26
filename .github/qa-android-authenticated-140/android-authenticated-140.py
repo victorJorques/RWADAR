@@ -1,17 +1,20 @@
-"""Private, scoped APK19 UI QA. No account creation, email, SQL or release."""
+"""Private, scoped ready-candidate APK20 UI QA. No account creation, email, SQL or release."""
 import hashlib, json, os, pathlib, re, shlex, signal, sys, time
 import native_ui_140 as ui
 import native_catalog_checks_140 as catalog
+from candidate_140 import load_candidate, OLD_SHA
 
 ROOT = pathlib.Path(__file__).resolve().parent
 OUT = pathlib.Path('evidence-private')
 OUT.mkdir(exist_ok=True)
-SHA = 'f384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624'
-SOURCE = '1ecf7e7aa8941400d6ad954680cd6deb89107c42'
+CANDIDATE=load_candidate()
+SHA=CANDIDATE['apkSha256']
+SOURCE=CANDIDATE['sourceHeadSha']
 TITLE = 'Vivienda · Pottendorfer Straße 62, Wr. Neustadt'
-QA_NAME = 'QA_APK19_LOCAL_' + os.environ.get('GITHUB_RUN_ID', 'PREPARATION_ONLY')
+QA_NAME = 'QA_APK20_LOCAL_' + os.environ.get('GITHUB_RUN_ID', 'PREPARATION_ONLY')
 report = {'scope':'private-confirmed-account-ui-only', 'status':'not-started',
-          'apkSha256':SHA, 'apkBytes':88961445, 'version':'1.4.0', 'versionCode':19,
+          'apkSha256':SHA, 'apkBytes':CANDIDATE['apkBytes'], 'version':'1.4.0', 'versionCode':20,
+          'certificateSha256':CANDIDATE['certificateSha256'],'easBuildId':CANDIDATE['easBuildId'],
           'sourceHeadSha':SOURCE, 'checks':{}, 'full20PointQA':False,
           'releaseApproved':False, 'visualReviewCompleted':False,
           'noPostsNoPaymentsNoEmailsNoSQL':True, 'localQADataRemoved':False}
@@ -229,7 +232,7 @@ def portfolio():
     click('Eliminar inversión · ' + QA_NAME)
     root = ui.wait_ui('Eliminar inversión',QA_NAME,timeout=10)
     # This exact QA-only name is the sole destructive target, on the disposable device.
-    require(QA_NAME.startswith('QA_APK19_LOCAL_'), 'Local deletion target is not QA')
+    require(QA_NAME.startswith('QA_APK20_LOCAL_'), 'Local deletion target is not QA')
     # Android can render native Alert labels in capitals. Match only its exact
     # destructive label after the dialog above has named our own QA record.
     candidates = [n for n in root.iter('node') if n.get('class') == 'android.widget.Button'
@@ -263,25 +266,36 @@ def main():
     require(os.environ.get('QA_ACCOUNT_ACK') == 'CONFIRMED_TEST_ACCOUNT','Confirmed disposable test account acknowledgement required')
     require(os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch','Manual dispatch required')
     apk = pathlib.Path('rwadar.apk')
-    require(apk.stat().st_size == 88961445 and hashlib.file_digest(apk.open('rb'),'sha256').hexdigest() == SHA,
-            'Exact APK19 identity mismatch')
+    require(apk.stat().st_size == CANDIDATE['apkBytes'] and hashlib.file_digest(apk.open('rb'),'sha256').hexdigest() == SHA,
+            'Exact ready APK20 candidate identity mismatch')
     baseline = json.loads(ROOT.joinpath('baseline-c19-guest.json').read_text())
-    require(baseline['apkSha256'] == SHA and baseline['versionCode'] == 19,'Baseline is not APK19')
+    require(baseline['apkSha256'] == OLD_SHA and baseline['versionCode'] == 19,'Baseline is not APK19')
+    identity=json.loads(OUT.joinpath('candidate-package-identity.json').read_text())
+    require(identity['status']=='verified-native-package-only' and identity['apkSha256']==SHA
+            and identity['apkBytes']==CANDIDATE['apkBytes'] and identity['versionCode']==20
+            and identity['certificateSha256']==CANDIDATE['certificateSha256']
+            and identity['sourceHeadSha']==SOURCE and len(identity['photos49'])==49,
+            'New candidate package identity gate was not completed before install')
+    report['checks']['candidatePackageIdentity']=True
+    report['candidateIdentity']=identity
+    report['sourceReuseProvenance']=identity['sourceProvenance']
     report['reusedBaseline'] = {'runId':40023081613,'jobId':120652334625,
         'reportSha256':'842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59',
-        'checks':['photos49','packageIdentity','standard'],'historicalStatus':'failed'}
+        'checks':['standard'],'historicalStatus':'failed','historicalVersionCode':19,
+        'historicalApkSha256':OLD_SHA,'reuseBasis':'Guest UI only: Git-proven identical UI/assets/deps/config; no APK19 identity transferred'}
     continuation_bytes=ROOT.joinpath('baseline-c19-guest-continuation.json').read_bytes()
     require(hashlib.sha256(continuation_bytes).hexdigest()=='4aee7315d605006a9bc8da668c5b18dce7084f5ccc3adc61990b058951aef3c1',
             'Guest continuation report identity mismatch')
     continuation=json.loads(continuation_bytes)
-    require(continuation['status']=='passed-scoped-only' and continuation['apkSha256']==SHA,
-            'Guest continuation is not scoped passed on this APK19')
+    require(continuation['status']=='passed-scoped-only' and continuation['apkSha256']==OLD_SHA,
+            'Historical guest continuation is not scoped passed on APK19')
     report['reusedGuestContinuation']={'runId':40119180570,'workflowConclusion':'cancelled',
         'jobConclusion':'cancelled','reportStatus':'passed-scoped-only',
         'zipSha256':'217f5357a212beedb0e0a9f49006b1c3eda6905696e61936027e3591054959e8',
         'reportSha256':'4aee7315d605006a9bc8da668c5b18dce7084f5ccc3adc61990b058951aef3c1',
         'reusedChecks':['font15','rotationAttempt','noRuntimeException'],
-        'scope':'Guest forms only; cancellation is preserved and is not a green workflow'}
+        'scope':'Historical APK19 guest forms only; Git-proven same UI/assets/deps/config on candidate20. Transport changed; cancellation stays cancelled',
+        'historicalApkSha256':OLD_SHA,'historicalVersionCode':19}
     email = os.environ['RWADAR_QA_EMAIL']
     password = os.environ['RWADAR_QA_PASSWORD']
     require(re.fullmatch(r'[A-Za-z0-9_.+\-]+@[A-Za-z0-9.\-]+',email) is not None,

@@ -1,27 +1,30 @@
 {
-  "apkVersionCode": 19,
+  "apkVersionCode": 20,
   "full20PointQA": false,
   "releaseApproved": false,
-  "sourceHeadSha": "1ecf7e7aa8941400d6ad954680cd6deb89107c42",
+  "sourceHeadSha": "7c64b6c15a826ddb3189c8ab195b4fa36201ca51",
   "sourceEvidence": "Local source checks recorded separately; source-only never means native PASS.",
   "baseline": {
     "runId": 40023081613,
     "jobId": 120652334625,
     "historicalStatus": "failed",
     "reused": [
-      "photos49",
-      "packageIdentity",
       "standard"
     ],
-    "reportSha256": "842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59"
+    "reportSha256": "842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59",
+    "historicalVersionCode": 19,
+    "reuseBasis": "Guest UI only, conditional on strict Git diff proving unchanged UI/assets/dependencies/app configuration; transport changed."
   },
   "points": [
     {
       "id": "01",
       "point": "Identidad, firma, instalaciÃ³n y arranque del APK exacto",
-      "status": "reused-observation-awaiting-root-review",
-      "note": "Paquete, firma e instalaciÃ³n del mismo APK; no se repiten. Arranque y login observados de nuevo solo como preparaciÃ³n autenticada.",
-      "newChecksRequired": []
+      "status": "pending-candidate20-native-package-gate-and-root-review",
+      "note": "Candidate20 package/code/certificate and49 asset hashes verified before install; APK19 identity is not transferred. Guest19 UI evidence remains historical.",
+      "newChecksRequired": [
+        "candidatePackageIdentity",
+        "confirmedAccountLogin"
+      ]
     },
     {
       "id": "02",
@@ -220,5 +223,5 @@
     "actualLandscape": false
   },
   "aggregationOwner": "Root only after actual results, exact APK identity, all20 criteria and visual review pass. A prepared check is never PASS.",
-  "scopeNote": "Only APK19 missing native criteria; no global source audit. Keep all49 references and accept correctly hidden expired amounts as consultation conditions."
+  "scopeNote": "Candidate20 pending native criteria unchanged. Historical APK19 guest UI only is reused under Git provenance; failed/cancelled global results are preserved. Full review and release require root aggregation."
 }

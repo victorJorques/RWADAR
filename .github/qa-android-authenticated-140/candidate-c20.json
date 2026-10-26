@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "status": "not-ready",
+  "version": "1.4.0",
+  "versionCode": 20,
+  "package": "com.rwadar.app",
+  "sourceHeadSha": "7c64b6c15a826ddb3189c8ab195b4fa36201ca51",
+  "baselineSourceHeadSha": "1ecf7e7aa8941400d6ad954680cd6deb89107c42",
+  "certificateSha256": "f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72",
+  "apkUrl": null,
+  "apkSha256": null,
+  "apkBytes": null,
+  "easBuildId": null
+}

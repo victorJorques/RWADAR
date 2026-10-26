@@ -1,6 +1,6 @@
 # PRIVATE QA ONLY. Push registers this workflow but skips the job.
-name: RWAdar APK19 private authenticated scoped QA
-run-name: APK19 private confirmed-account scoped QA; never release
+name: RWAdar APK20 private authenticated scoped QA
+run-name: APK20 private confirmed-account scoped QA; never release
 on:
   push:
     branches: [codex/android-140-auth-qa]
@@ -14,13 +14,9 @@ permissions:
   contents: read
   actions: read
 concurrency:
-  group: rwadar-apk19-private-auth-qa
+  group: rwadar-apk20-private-auth-qa
   cancel-in-progress: false
 env:
-  APK_URL: https://expo.dev/artifacts/eas/ps1t8bkceKeqVg-GqL4xlO_WOE82UljB9HIfikVxRzw.apk
-  APK_SHA256: f384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624
-  APK_BYTES: '88961445'
-  SOURCE_HEAD_SHA: 1ecf7e7aa8941400d6ad954680cd6deb89107c42
   PUBLICAR_RELEASE: 'NO'
 jobs:
   android-authenticated:
@@ -33,7 +29,8 @@ jobs:
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
-      - name: Require private repository, manual launch and exact APK19
+          fetch-depth: 1
+      - name: Require private repository, manual launch and ready frozen APK20 candidate
         env:
           GH_TOKEN: ${{ github.token }}
           QA_ACCOUNT_ACK: ${{ inputs.confirmed_test_account }}
@@ -46,12 +43,17 @@ jobs:
           test "$QA_ACCOUNT_ACK" = CONFIRMED_TEST_ACCOUNT
           test "$PUBLICAR_RELEASE" = NO
           test "$(gh api repos/victorJorques/RWADAR --jq .private)" = true
+          python3 .github/qa-android-authenticated-140/candidate_140.py prepare
+      - name: Download only the validated ready candidate and preserve historical baselines
+        shell: bash
+        run: |
+          set -euo pipefail
           mkdir -p evidence-private
           curl --fail --location --proto '=https' --proto-redir '=https' --max-time 90 --retry 0 "$APK_URL" -o rwadar.apk
           test "$(stat -c '%s' rwadar.apk)" = "$APK_BYTES"
           printf '%s  rwadar.apk\n' "$APK_SHA256" | sha256sum --check
           printf '%s  .github/qa-android-authenticated-140/baseline-c19-guest-continuation.json\n' 4aee7315d605006a9bc8da668c5b18dce7084f5ccc3adc61990b058951aef3c1 | sha256sum --check
-          # Same immutable APK: signature/photos/standard guest phases are reused, never repeated.
+          # APK19 guest evidence stays historical; new identity/assets are independently verified below.
           printf '%s  .github/qa-android-authenticated-140/baseline-c19-guest.json\n' 842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59 | sha256sum --check
       - name: Reuse completed preview account QA 40121753928 without repeating it
         shell: bash
@@ -96,6 +98,7 @@ jobs:
           adb shell settings put global window_animation_scale 0
           adb shell settings put global transition_animation_scale 0
           adb shell settings put global animator_duration_scale 0
+          python3 .github/qa-android-authenticated-140/candidate_140.py identity rwadar.apk
           adb install --no-streaming rwadar.apk
       - name: Compile a disposable UI snapshot test harness, never modify the product APK
         shell: bash
