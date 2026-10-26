@@ -344,7 +344,15 @@ def search(root, query):
     ui.focus_exact_editable('Buscar ofertas por nombre, proveedor, país o métrica')
     adb('shell', 'input', 'text', query.replace(' ', '%s'))
     ui.dismiss_keyboard_if_visible()
-    return wait_ui(query, '1 de ')
+    # The query and result counter occupy different viewport positions. Verify
+    # the actual native EditText value, then observe the counter separately.
+    root=dump()
+    inputs=[node for node in root.iter('node') if node.get('package')=='com.rwadar.app'
+            and node.get('class')=='android.widget.EditText'
+            and node.get('content-desc')=='Buscar ofertas por nombre, proveedor, país o métrica']
+    assert len(inputs)==1 and inputs[0].get('text')==query, 'Observed native search field does not contain the exact query'
+    reach_catalog_total(root=root)
+    return wait_ui('1 de ')
 
 
 def open_collection(collection):
@@ -385,9 +393,14 @@ def group_roundtrip(provider, collection, prefix):
     size = int(match[1])
     screen(prefix + '-grupo', root)
     tap_observed(root, label, starts=True)
-    root = wait_ui('Volver a la colección', 'Referencias de ' + provider)
-    assert re.search(r'\b' + str(size) + r' de \d+ fichas', visible_text(root)), 'Group count must count its individual offers'
+    # A group keeps its list offset. Its banner precedes search and the
+    # counter, so observe each required element at its own scroll position.
+    scroll_top()
+    root=reach_control('Referencias de '+provider,starts=True)
     screen(prefix + '-abierto', root)
+    root=reach_catalog_total(root=root)
+    assert re.search(r'\b' + str(size) + r' de \d+ fichas', visible_text(root)), 'Group count must count its individual offers'
+    root=LOCATE('Volver a la colección completa de ofertas')
     tap_observed(root, 'Volver a la colección completa de ofertas')
     root = wait_ui('Ofertas específicas')
     root=reach_catalog_total(root=root)

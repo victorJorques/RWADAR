@@ -155,16 +155,26 @@ jobs:
           python3 - <<'PY'
           import base64, hashlib, io, pathlib, re, zipfile
           folder=pathlib.Path('evidence-private')
-          files=[]; total=0
+          files=[]; total=0; rejected=[]
           for path in sorted(folder.glob('*')):
-              if not path.is_file() or path.is_symlink(): continue
-              assert re.fullmatch(r'[A-Za-z0-9_.-]+',path.name)
-              assert path.suffix in {'.png','.xml','.json','.txt','.log'}
+              if path.is_symlink() or not path.is_file():
+                  rejected.append('NONREGULAR_ENTRY'); continue
+              if not re.fullmatch(r'[A-Za-z0-9_.-]+',path.name):
+                  rejected.append('UNSAFE_ENTRY_NAME'); continue
+              if path.suffix not in {'.png','.xml','.json','.txt','.log'}:
+                  rejected.append('UNAPPROVED_SUFFIX'); continue
               data=path.read_bytes()
               if path.suffix=='.log': data=data[-65536:]
               assert len(data)<=4*1024*1024
               total+=len(data); assert total<=48*1024*1024
               files.append((path.name,data))
+          if rejected:
+              # Static reason codes only: never export unknown data or arbitrary filenames.
+              diagnostic=('{\"status\":\"failed\",\"reason\":\"unapproved-evidence-excluded\",\"excludedCount\":'+str(len(rejected))+',\"reasonCodes\":'+str(sorted(set(rejected))).replace("'",'\"')+'}\n').encode()
+              assert len(diagnostic)<=4*1024*1024
+              total+=len(diagnostic); assert total<=48*1024*1024
+              assert not any(name=='evidence-export-diagnostic.json' for name,_ in files)
+              files.append(('evidence-export-diagnostic.json',diagnostic))
           buffer=io.BytesIO()
           with zipfile.ZipFile(buffer,'w',zipfile.ZIP_DEFLATED) as archive:
               for name,data in files: archive.writestr('evidence-private/'+name,data)
@@ -172,4 +182,8 @@ jobs:
           chunks=[base64.b64encode(payload[i:i+576]).decode() for i in range(0,len(payload),576)]
           print('RWADAR_PRIVATE_QA_ZIP_META',hashlib.sha256(payload).hexdigest(),len(payload),len(chunks))
           for index,chunk in enumerate(chunks): print('RWADAR_PRIVATE_QA_ZIP_DATA',f'{index:06d}',chunk)
+
+          if rejected:
+              print('RWADAR_PRIVATE_QA_EXPORT_ERROR UNAPPROVED_ENTRIES_EXCLUDED',len(rejected))
+              raise SystemExit(2)
           PY

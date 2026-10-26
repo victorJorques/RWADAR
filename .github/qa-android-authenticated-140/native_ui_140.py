@@ -114,7 +114,7 @@ def record_timing(operation,started,status='ok'):
     _TIMING_COUNT+=1
     assert operation in ('adb-input','adb-window','adb-logcat','adb-other','snapshot','snapshot-root','snapshot-tree')
     try:
-        with out.joinpath('operation-timings.jsonl').open('a',encoding='utf-8') as target:
+        with out.joinpath('operation-timings.log').open('a',encoding='utf-8') as target:
             target.write(json.dumps({'operation':operation,'elapsedMs':round((time.monotonic()-started)*1000),
                                      'status':status})+'\n')
     except OSError:

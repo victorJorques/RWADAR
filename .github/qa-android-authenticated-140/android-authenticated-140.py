@@ -1,5 +1,5 @@
 """Private, scoped ready-candidate APK20 UI QA. No account creation, email, SQL or release."""
-import hashlib, json, os, pathlib, re, shlex, signal, sys, time
+import base64, hashlib, json, os, pathlib, re, shlex, signal, sys, time
 import native_ui_140 as ui
 import native_catalog_checks_140 as catalog
 from candidate_140 import load_candidate, OLD_SHA
@@ -18,6 +18,31 @@ report = {'scope':'private-confirmed-account-ui-only', 'status':'not-started',
           'sourceHeadSha':SOURCE, 'checks':{}, 'full20PointQA':False,
           'releaseApproved':False, 'visualReviewCompleted':False,
           'noPostsNoPaymentsNoEmailsNoSQL':True, 'localQADataRemoved':False}
+
+
+PHASES=frozenset(('initial-login','radar','large-font-detail','provider-groups','documentary-details','languages','tutorial','portfolio','logout'))
+
+
+def note_phase(name):
+    assert name in PHASES, 'Unexpected static QA phase'
+    report['phase']=name
+    print('RWADAR_QA_PHASE '+json.dumps({'phase':name}),flush=True)
+
+
+def emit_result_backup():
+    # Exact bounded final JSON is backed up independently of the ZIP exporter.
+    # It was already private evidence; sanitize again before any log emission.
+    path=OUT.joinpath('authenticated-result.json')
+    raw=ui.sanitize(path.read_text(encoding='utf-8')).encode('utf-8')
+    path.write_bytes(raw)
+    digest=hashlib.sha256(raw).hexdigest()
+    if len(raw)>256*1024:
+        print('RWADAR_PRIVATE_QA_RESULT_OMITTED '+json.dumps({'bytes':len(raw),'sha256':digest,'reason':'bounded-backup-size'}),flush=True)
+        return
+    chunks=[base64.b64encode(raw[i:i+576]).decode('ascii') for i in range(0,len(raw),576)]
+    print('RWADAR_PRIVATE_QA_RESULT_META',digest,len(raw),len(chunks),flush=True)
+    for index,chunk in enumerate(chunks):
+        print('RWADAR_PRIVATE_QA_RESULT_DATA',f'{index:06d}',chunk,flush=True)
 
 
 def require(condition, message):
@@ -129,6 +154,7 @@ def catalog_and_detail():
         require(len(b) == 4 and b[2] > b[0] and b[3] > b[1], 'Catalog native list has zero height')
     capture('01-catalog49-list')
     field('Buscar ofertas por nombre, proveedor, país o métrica','Pottendorfer')
+    catalog.reach_catalog_total()
     root = ui.wait_ui('1 de 24 fichas',timeout=20)
     root = locate('Ver ficha de ' + TITLE,True)
     row_bounds = check_visible_box(root,'Ver ficha de ' + TITLE,True)
@@ -311,11 +337,14 @@ def main():
     ui.adb('shell','settings','put','system','font_scale','1.0')
     ui.adb('shell','am','start','-W','-n','com.rwadar.app/.MainActivity')
     email = password = None
+    note_phase('initial-login')
     login_confirmed('es')
     report['status'] = 'running'
     catalog.REAUTHENTICATE=login_confirmed
     catalog.CLICK=click; catalog.FIELD=field; catalog.LOCATE=locate
+    note_phase('radar')
     report['checks']['radar26Centers320dp']=catalog.radar_center_checks()
+    note_phase('large-font-detail')
     ui.adb('shell','settings','put','system','font_scale','1.5')
     ui.adb('shell','wm','size','900x1600')
     login_confirmed('es')
@@ -327,16 +356,22 @@ def main():
     ui.adb('shell','wm','size','reset')
     login_confirmed('es')
     ui.wait_ui('Inicio','Buscar','Academy','Perfil',timeout=20)
+    note_phase('provider-groups')
     report['checks']['providerGroups']=catalog.groups_pending()
+    note_phase('documentary-details')
     documentary=catalog.documentary_and_five_images()
     report['checks']['nativeCardDecisionFacts']=documentary['cards']
     report['checks']['fiveNativeImagesAndAlt']=True
     report['checks']['datesSeparated']=documentary['datesSeparated']
     report['checks']['historicalReferences']=documentary['historicalReferencesContextualized']
     report['checks']['fourRisksBeforeSingleCta']=documentary['riskAndCta']
+    note_phase('languages')
     report['checks']['languagesAndFavoritePersistence']=catalog.languages_and_favorite()
+    note_phase('tutorial')
     tutorial()
+    note_phase('portfolio')
     portfolio()
+    note_phase('logout')
     sign_out()
     errors = ui.sanitize(ui.adb('logcat','-d','-v','threadtime','AndroidRuntime:E','ReactNativeJS:E','*:S'))
     OUT.joinpath('runtime-errors-private.log').write_text(errors[-65536:],encoding='utf-8')
@@ -384,6 +419,10 @@ if __name__ == '__main__':
         report['status'] = 'failed'
         report['failureType'] = type(error).__name__
         report['diagnostic'] = safe_exception_diagnostic(error)
+        # Only static error metadata is logged before any slow device diagnosis.
+        print('RWADAR_QA_FAILURE '+json.dumps({'phase':report.get('phase','not-started'),
+            'failureType':type(error).__name__,'diagnostic':report['diagnostic'],
+            'messageCode':'hard-deadline' if isinstance(error,ui.QaDeadlineExceeded) else 'assertion-failed' if isinstance(error,AssertionError) else 'unexpected-exception'}),flush=True)
         hard_deadline=isinstance(error,ui.QaDeadlineExceeded)
         report['deviceDiagnostic'] = {'skippedAtHardDeadline':True} if hard_deadline else ui.safe_device_diagnostic()
         report['failure'] = ui.sanitize(str(error)) if isinstance(error,(AssertionError,TimeoutError,ui.QaDeadlineExceeded)) else 'Details withheld to protect credentials'
@@ -406,6 +445,9 @@ if __name__ == '__main__':
         matrix['full20PointQA'] = False
         OUT.joinpath('matrix-20-result.json').write_text(json.dumps(matrix,indent=2,ensure_ascii=False),encoding='utf-8')
         OUT.joinpath('authenticated-result.json').write_text(ui.sanitize(json.dumps(report,indent=2,ensure_ascii=False)),encoding='utf-8')
+        try: emit_result_backup()
+        except Exception as error:
+            print('RWADAR_PRIVATE_QA_RESULT_BACKUP_ERROR '+json.dumps({'exceptionName':type(error).__name__}),flush=True)
         # Machine summary contains no account identifiers, values or exception args.
         print(json.dumps({'status':report['status'],'full20PointQA':False,'releaseApproved':False,
                           'localQADataRemoved':report['localQADataRemoved']}))
