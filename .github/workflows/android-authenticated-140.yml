@@ -98,7 +98,7 @@ jobs:
           adb shell settings put global window_animation_scale 0
           adb shell settings put global transition_animation_scale 0
           adb shell settings put global animator_duration_scale 0
-          python3 .github/qa-android-authenticated-140/candidate_140.py identity rwadar.apk
+          python3 .github/qa-android-authenticated-140/candidate_140.py reuse-identity rwadar.apk
           adb install --no-streaming rwadar.apk
       - name: Compile a disposable UI snapshot test harness, never modify the product APK
         shell: bash

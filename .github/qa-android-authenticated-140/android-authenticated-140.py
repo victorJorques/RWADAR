@@ -143,11 +143,11 @@ def catalog_and_detail():
     locate('Ver en la fuente ·',True)
     capture('04-detail-source-reachable')
     click('Cerrar ' + TITLE)
-    ui.wait_ui('49 en el catálogo',timeout=15)
+    catalog.reach_catalog_total()
     click('Ver ficha de ' + TITLE,True)
     ui.wait_ui('Cerrar ' + TITLE,timeout=15)
     ui.adb('shell','input','keyevent','KEYCODE_BACK')
-    root = ui.wait_ui('49 en el catálogo',timeout=15)
+    root = catalog.reach_catalog_total()
     require('Cerrar ' + TITLE not in ui.visible_text(root), 'Android Back did not close detail')
     report['checks']['catalog49AndList'] = {'total':49,'main':24,'resale':21,'upcoming':4,
                                             'resultCardBounds':row_bounds,'nativeListNonzero':True}

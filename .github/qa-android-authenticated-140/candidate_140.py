@@ -118,9 +118,49 @@ def verify_identity(apk):
     pathlib.Path('evidence-private/candidate-package-identity.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print('Candidate c20 package, certificate and all49 asset contents verified before install')
 
+C20_PACKAGE_REPORT='3c7ad874262b9dfd648252b0809d654aa3b6b4878db3e25f8eb9613eaef59fea'
+C20_IMMUTABLE_APK='c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614'
+
+def reuse_identity(apk):
+    # Only completed package/signature/49-assets observations are reused. The
+    # original workflow failed later in UI and stays failed; it is never release QA.
+    c=load_candidate();apk=pathlib.Path(apk)
+    assert c['apkSha256']==C20_IMMUTABLE_APK and c['apkBytes']==88961845
+    assert c['easBuildId']=='24546ab7-9015-4886-a91c-ab3a57a230cb'
+    assert apk.stat().st_size==c['apkBytes']
+    with apk.open('rb') as stream:
+        assert hashlib.file_digest(stream,'sha256').hexdigest()==c['apkSha256']
+    raw=ROOT.joinpath('baseline-c20-package-40373551753.json').read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==C20_PACKAGE_REPORT,'Exact private package proof identity mismatch'
+    report=json.loads(raw)
+    assert report['status']=='verified-native-package-only'
+    assert all(report.get(k)==c[k] for k in ('apkSha256','apkBytes','version','versionCode','package','certificateSha256','sourceHeadSha','easBuildId'))
+    assert report['minSdkVersion']==24 and report['blockedPermissionsAbsent'] is True and report['blockedPermissionsChecked']==27
+    baseline_raw=ROOT.joinpath('baseline-c19-guest.json').read_bytes()
+    assert hashlib.sha256(baseline_raw).hexdigest()==BASE_REPORT
+    original=json.loads(baseline_raw)['checks']['photos49'];photos=report['photos49']
+    assert len(photos)==49 and len({p['sha256'] for p in photos})==49
+    assert {(p['slug'],p['sha256'],p['bytes']) for p in photos}=={(p['slug'],p['sha256'],p['bytes']) for p in original}
+    current=json.loads(pathlib.Path('evidence-private/candidate-source-provenance.json').read_text())
+    assert report['sourceProvenance']==current,'Current frozen-source provenance differs from the verified package proof'
+    out=pathlib.Path('evidence-private')
+    # Exact bytes preserve the pinned proof. No signature tools or archive asset
+    # scans are rerun. A freshly downloaded matching APK is still installed below.
+    out.joinpath('candidate-package-identity.json').write_bytes(raw)
+    reuse={'scope':'same-APK20-package-signature-assets-only','runId':40373551753,
+           'jobId':121750402352,'historicalWorkflowConclusion':'failure',
+           'packageObservationStatus':'verified-native-package-only',
+           'reportSha256':C20_PACKAGE_REPORT,'apkSha256':c['apkSha256'],
+           'apkBytes':c['apkBytes'],'sourceHeadSha':SOURCE,
+           'freshDownloadHashMatched':True,'signatureAndAssetsRepeated':False,
+           'authenticatedUiReused':False,'releaseApproved':False}
+    out.joinpath('candidate-package-identity-reuse.json').write_text(json.dumps(reuse,indent=2),encoding='utf-8')
+    print('Reused exact completed APK20 package/signature/49-assets proof; fresh APK hash matched; previous UI failure preserved')
+
 if __name__=='__main__':
     assert os.environ.get('GITHUB_REPOSITORY')=='victorJorques/RWADAR'
     assert os.environ.get('GITHUB_EVENT_NAME')=='workflow_dispatch'
     if sys.argv[1:]==['prepare']:prepare()
     elif len(sys.argv)==3 and sys.argv[1]=='identity':verify_identity(sys.argv[2])
+    elif len(sys.argv)==3 and sys.argv[1]=='reuse-identity':reuse_identity(sys.argv[2])
     else:raise AssertionError('Unsupported candidate gate action')

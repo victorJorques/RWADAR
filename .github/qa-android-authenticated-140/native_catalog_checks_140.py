@@ -62,6 +62,28 @@ editorial_samples = [
   }
 ]
 
+def reach_catalog_total(english=False,root=None):
+    # The counter is inside FlatList's scrollable header, below selectors and
+    # explanatory copy. Being loaded never implies being in the viewport.
+    target='49 in the catalogue' if english else '49 en el catálogo'
+    width,height=display_size()
+    root=root if root is not None else dump(timeout=5)
+    for attempt in range(6):
+        nodes=[n for n in root.iter('node') if target in n.get('text','') or target in n.get('content-desc','')]
+        if not nodes:
+            # Its source position is the list header; return there using only
+            # observed free-margin geometry, never a guessed swipe coordinate.
+            assert attempt==0, 'Loaded catalog counter is absent from its header'
+            ui.scroll_top();root=dump(timeout=5);continue
+        assert len(nodes)==1, 'Catalog counter is ambiguous'
+        _,_,forward=ui.editable_scroll_direction(root,nodes[0],width,height)
+        if forward is None:return root
+        assert attempt<5, 'Catalog counter did not enter the bounded observed viewport'
+        root,moved=ui.scroll_step(forward,root)
+        assert moved, 'Observed scroll made no progress toward the catalog counter'
+    raise AssertionError('Catalog counter not fully observed')
+
+
 def open_offer_catalog(english=False):
     # Selecting Search preserves its last inner view. Set both navigation levels
     # explicitly, including after an Activity recreation that returned to Home.
@@ -71,11 +93,13 @@ def open_offer_catalog(english=False):
     offers='Show offers' if english else 'Mostrar ofertas'
     root=wait_ui(offers)
     tap_observed(root,offers,starts=True)
-    return wait_ui('49 in the catalogue' if english else '49 en el catálogo',timeout=40)
+    wait_ui('Show offers 49' if english else 'Mostrar ofertas 49',timeout=40)
+    return reach_catalog_total(english)
 
 
 def open_platform_radar(english=False):
     open_offer_catalog(english)
+    ui.scroll_top()
     platforms='Show platforms' if english else 'Mostrar plataformas'
     root=wait_ui(platforms)
     tap_observed(root,platforms,starts=True)
@@ -268,6 +292,7 @@ def group_roundtrip(provider, collection, prefix):
     screen(prefix + '-abierto', root)
     tap_observed(root, 'Volver a la colección completa de ofertas')
     root = wait_ui('Ofertas específicas')
+    root=reach_catalog_total(root=root)
     assert str(sum(collections.values())) + ' en el catálogo' in visible_text(root), 'Total catalog count must remain visible'
     root = reach_control(label, starts=True)
     screen(prefix + '-vuelta', root)
