@@ -75,6 +75,10 @@ def read_snapshot_response(stream, nonce):
     # Per-connection request ID and bounded exact read prevent stale snapshots,
     # truncated XML, unbounded payloads and reuse of an earlier successful root.
     echoed = stream.readline(32)
+    # adb forward can accept before the device abstract socket has bound.
+    # Empty EOF is a startup/transport transition, not a valid stale response.
+    if echoed == b'':
+        raise EOFError('Snapshot transport closed before its response')
     assert echoed == (nonce+'\n').encode('ascii'), 'Fresh snapshot nonce mismatch'
     length = stream.readline(12)
     assert re.fullmatch(rb'(?:0|[1-9]\d{0,7})\n',length), 'Invalid snapshot size'

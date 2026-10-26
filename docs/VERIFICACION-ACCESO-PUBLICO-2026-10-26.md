@@ -106,3 +106,23 @@ SHA-256707abe68d61afafe4b5ec2626fc8ba2f10319d5546aa1f615d0cd87c8c0efbe5.
 Las dos ejecuciones suman151+161=312segundos de runner. Una continuación final
 de hasta6minutos conservará el total máximo en672segundos, dentro de los720
 autorizados. No se cambia el APK ni se repiten fases aprobadas.
+
+
+## Conexión del capturador: fallo conservado y corrección local
+
+Run40351124379, job121671136909, fuente1c2743b:130segundos de runner;
+Java del helper compiló y el recorrido se detuvo en1segundo antes de credenciales.
+Error: Fresh snapshot nonce mismatch. Sin checks nativos aprobados ni datos
+personales capturados. ZIP privadoSHA-256:
+19e4219736af2e7be6f211163fde3b3588a2ca1f220d46c2228a7d09439c31e1.
+
+Se corrigió el EOF inicial de adb forward: si el dispositivo aún no ha enlazado
+el socket, la respuesta vacía es transitoria. Una respuesta no vacía con nonce
+distinto sigue denegada. Prueba de transporte local real: primer socket cierra
+sin respuesta, el segundo devuelve la raíz fresca; aprobado en0,14segundos.
+No demuestra Android. No hay modificación del APK ni reducción de criterios.
+
+Tiempo consumido26/10:151+161+130=442segundos (7min22s) de runner. Quedan278
+de los720autorizados. Otra ejecución de6min eleva el máximo a802segundos
+(13min22s) y requiere ampliar el límite antes de lanzarla. No se ejecutará
+un recorrido recortado a105segundos que no permite verificar lo pendiente.

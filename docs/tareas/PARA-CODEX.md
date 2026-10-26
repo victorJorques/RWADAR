@@ -24,8 +24,10 @@ Investigación PAUSADA; sin nuevas ofertas ni fechas rejuvenecidas.
 
 Fuente y aprobación en `093ec47`, `9cfe70e`, `f2915dc`; arnés en `6c9373c`.
 Android 1.4.0/código 19 sigue como draft: mismo APK y baselines conservados,
-sin nueva compilación. Las dos continuaciones del 26/10 suman 312 segundos y
+sin nueva compilación. Las tres continuaciones del 26/10 suman 442 segundos y
 fallaron en el arnés; no acreditan 20/20 ni autorizan afirmar publicación.
+El EOF de arranque del capturador ya está corregido y probado con un socket
+local real; ampliar el límite es requisito para otra ejecución completa.
 Cierre nativo, limpieza de QA y publicación si pasa siguen pendientes.
 [Informe vigente](../VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
 No integrar ni sobrescribir el main compartido con WIP de otras herramientas.
