@@ -425,6 +425,7 @@ def assert_modal_top(root, title, prefix):
 
 
 def group_roundtrip(provider, collection, prefix):
+    assert provider in ('Brickwise','Reental') and collection in ('principales','secundario'), 'Static provider-group scope required'
     open_collection(collection)
     label = provider + ': ver '
     root = reach_control(label, starts=True)
@@ -432,23 +433,102 @@ def group_roundtrip(provider, collection, prefix):
     match = re.fullmatch(re.escape(provider) + r': ver (\d+) referencias', node.get('content-desc', ''))
     assert match and 2 <= int(match[1]) <= 1000
     size = int(match[1])
+    back_label='Volver a la colección completa de ofertas'
+    clear_label='Limpiar búsqueda y filtros de ofertas'
+
+    def state(current):
+        loaded_values=[value for n in current.iter('node')
+                       for value in (n.get('text',''),n.get('content-desc','')) if value]
+        visible_values=[value for n in current.iter('node') if n.get('visible')!='false'
+                        for value in (n.get('text',''),n.get('content-desc','')) if value]
+        cards=[value for value in visible_values if value.startswith('Ver ficha de ')]
+        # Loaded markers prove transition state only. Count and return controls
+        # still require their separate physical observations before scoped PASS.
+        return {'heading':any(value.startswith('Referencias de '+provider+'.') for value in loaded_values),
+                'back':back_label in loaded_values,'filter':clear_label in loaded_values,
+                'group':any(value.startswith(label) for value in visible_values),
+                'loadedGroup':any(value.startswith(label) for value in loaded_values),
+                'individualCards':bool(cards),'providerCards':bool(cards) and all(provider in value for value in cards),
+                'count':bool(re.search(r'\b'+str(size)+r' de \d+ fichas','\n'.join(loaded_values)))}
+
+    initial=state(root)
+    diagnostic={'provider':provider,'markerScope':'loaded-state-only','observations':[]}
+    target=out.joinpath('group-transition-'+provider+'.json')
+    def observe(current):
+        observed=state(current)
+        observed['newFilter']=observed['filter'] and not initial['filter']
+        observed['complete']=(observed['heading'] or observed['back']
+            or (observed['newFilter'] and not observed['group'] and observed['providerCards'] and observed['count']))
+        diagnostic['observations'].append(observed)
+        target.write_text(json.dumps(diagnostic,indent=2),encoding='utf-8')
+        return observed
+
     screen(prefix + '-grupo', root)
-    tap_observed(root, label, starts=True)
-    # A group keeps its list offset. Its banner precedes search and the
-    # counter, so observe each required element at its own scroll position.
-    scroll_top()
-    root=reach_control('Referencias de '+provider,starts=True)
+    opened=False;partial_seen=False;observed=observe(root)
+    for attempt in range(2):
+        if attempt:
+            assert not partial_seen and observed['group'], 'Group transition is partial or ambiguous; no second tap was attempted'
+            _,previous_bounds=find_node(root,label,starts=True)
+            time.sleep(.35)
+            root=dump(timeout=5)
+            observed=observe(root)
+            if observed['complete']:
+                opened=True;break
+            assert not observed['individualCards'] and not observed['newFilter'], 'Group transition appeared before retry; no second tap was attempted'
+            _,current_bounds=find_node(root,label,starts=True)
+            assert current_bounds==previous_bounds, 'Group layout did not stabilize before bounded retry'
+        node,bounds=find_node(root,label,starts=True)
+        width,height=display_size()
+        assert (node.get('visible')=='true' and node.get('enabled')!='false'
+                and 0<=bounds[0]<bounds[2]<=width and 0<=bounds[1]<bounds[3]<=height), 'Provider group is not fully observed before native tap'
+        tap_observed(root,label,starts=True)
+        for poll in range(8):
+            time.sleep(.3)
+            root=dump(timeout=5)
+            observed=observe(root)
+            if poll==0:screen(prefix+'-posttap-'+str(attempt+1),root)
+            partial_seen=partial_seen or observed['individualCards'] or observed['newFilter']
+            if observed['complete']:
+                opened=True;break
+        if opened:break
+        if partial_seen or not observed['group']:break
+    if not opened:
+        screen(prefix+'-transition-unconfirmed',root)
+        raise AssertionError('Provider group transition was not confirmed before scrolling')
+    # The remounted FlatList must expose its new state before any navigation.
+    # Individual cards alone prevent a retap but never confer a scoped PASS.
     screen(prefix + '-abierto', root)
     root=reach_catalog_total(root=root)
     assert re.search(r'\b' + str(size) + r' de \d+ fichas', visible_text(root)), 'Group count must count its individual offers'
-    root=LOCATE('Volver a la colección completa de ofertas')
-    tap_observed(root, 'Volver a la colección completa de ofertas')
-    root = wait_ui('Ofertas específicas')
+    # Source-defined equivalent reset is allowed only for a proven new provider
+    # restriction with provider cards and count; a generic clear button is insufficient.
+    return_label=back_label if observed['back'] or observed['heading'] else clear_label
+    root=LOCATE(return_label)
+    tap_observed(root,return_label)
+    diagnostic['returnObservations']=[]
+    returned=False
+    for poll in range(8):
+        time.sleep(.3)
+        root=dump(timeout=5)
+        return_state=state(root)
+        diagnostic['returnObservations'].append(return_state)
+        target.write_text(json.dumps(diagnostic,indent=2),encoding='utf-8')
+        if poll==0:screen(prefix+'-postreturn',root)
+        if return_state['loadedGroup'] and not return_state['filter']:
+            returned=True;break
+    if not returned:
+        screen(prefix+'-return-transition-unconfirmed',root)
+        raise AssertionError('Provider group return state was not confirmed before scrolling')
+    collection_label=('Mostrar principales ' if collection=='principales' else 'Mostrar reventa ')+str(expected_counts[collection])
+    tabs=[n for n in root.iter('node') if collection_label in (n.get('text',''),n.get('content-desc',''))]
+    assert len(tabs)==1 and tabs[0].get('selected')=='true', 'Returning from provider group must preserve the selected collection'
     root=reach_catalog_total(root=root)
     assert str(sum(collections.values())) + ' en el catálogo' in visible_text(root), 'Total catalog count must remain visible'
     root = reach_control(label, starts=True)
     screen(prefix + '-vuelta', root)
-    result={'provider':provider,'collection':collection,'references':size,'returned':True}
+    result={'provider':provider,'collection':collection,'references':size,'returned':True,
+            'returnControlUsed':'group-back' if return_label==back_label else 'clear-filters',
+            'transitionMarker':'group-state' if observed['back'] or observed['heading'] else 'new-provider-filter-and-cards'}
     _checkpoint('providerGroup.'+provider,'validated-scope-only',result)
     return result
 
