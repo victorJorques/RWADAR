@@ -91,10 +91,16 @@ def login_confirmed(language='es'):
                     require(any(n.get('package')=='com.rwadar.app' for n in root.iter('node')),
                             'Login left the app window; no scroll or submit was attempted')
                     root=locate(label)
+                    ui.remember_login_submit(root,label)
                     ui.tap_observed(root,label)
             else:
+                ui.remember_login_submit(root,label)
                 ui.tap_observed(root,label)
-        ui.wait_ui(*(('Home','Search','Academy','Profile') if english else ('Inicio','Buscar','Academy','Perfil')),timeout=40)
+        try:
+            ui.wait_ui(*(('Home','Search','Academy','Profile') if english else ('Inicio','Buscar','Academy','Perfil')),timeout=40)
+        except Exception:
+            report['loginDiagnostic']=ui.safe_login_diagnostic()
+            raise
     ui.CAPTURE_ALLOWED=True
     report['checks']['confirmedAccountLogin']=True
 

@@ -16,6 +16,69 @@ EDITABLE_LABELS = frozenset((
     'Comisión (0 si no hubo)','Precio actual por unidad','Importe cobrado'))
 _SECRET_VALUES = tuple(v for v in (os.environ.get('RWADAR_QA_EMAIL'),os.environ.get('RWADAR_QA_PASSWORD')) if v)
 
+LAST_LOGIN_INPUT_DIAGNOSTIC = []
+LAST_LOGIN_SUBMIT_DIAGNOSTIC = None
+LOGIN_MESSAGE_CODES = {'Escribe un correo válido.': 'invalid-email', 'Escribe tu contraseña.': 'empty-password', 'El correo o la contraseña no son correctos.': 'invalid-credentials', 'Confirma tu correo antes de entrar. Puedes pedir otro enlace.': 'email-not-confirmed', 'La sesión no se ha podido verificar. Vuelve a entrar.': 'session-unverified', 'No se ha podido comprobar el acceso. Inténtalo en la web oficial.': 'captcha-failed', 'Has hecho varios intentos. Espera un momento antes de repetir.': 'rate-limited', 'La conexión tarda demasiado. Comprueba tu red y vuelve a intentarlo.': 'request-timeout', 'No se ha podido completar la operación. Inténtalo de nuevo más tarde.': 'generic-error', 'No se pudo completar la operación. Comprueba la conexión e inténtalo de nuevo.': 'operation-error', 'Espera a que termine la operación anterior.': 'busy', 'Las cuentas todavía no están abiertas en esta versión.': 'accounts-closed', 'Ya has entrado. Tu vigilancia se guarda con esta cuenta.': 'login-success', 'Enter a valid email address.': 'invalid-email', 'Enter your password.': 'empty-password', 'The email or password is incorrect.': 'invalid-credentials', 'Confirm your email before signing in. You can request another link.': 'email-not-confirmed', 'Could not verify your session. Sign in again.': 'session-unverified', 'Could not verify access. Try on the official website.': 'captcha-failed', 'You have made several attempts. Wait a moment before trying again.': 'rate-limited', 'The connection is taking too long. Check your network and try again.': 'request-timeout', 'Could not complete the action. Try again later.': 'generic-error', 'Could not complete the action. Check your connection and try again.': 'operation-error', 'Wait for the previous action to finish.': 'busy', 'Accounts are not open in this version yet.': 'accounts-closed', 'You are signed in. Your watchlist is saved with this account.': 'login-success'}
+
+
+def inspect_login_input_values(raw_xml):
+    global LAST_LOGIN_INPUT_DIAGNOSTIC
+    # Raw UI values exist only in this stack frame, before the normal sanitizer.
+    # Persist booleans/lengths only; never values, prefixes, hashes or exception args.
+    root=ET.fromstring(raw_xml)
+    fields=[]
+    targets={'Correo':'RWADAR_QA_EMAIL','Email':'RWADAR_QA_EMAIL',
+             'Contraseña':'RWADAR_QA_PASSWORD','Password':'RWADAR_QA_PASSWORD'}
+    for node in root.iter('node'):
+        label=node.get('content-desc','')
+        if node.get('package')!=APP_PACKAGE or node.get('class')!='android.widget.EditText' or label not in targets:
+            continue
+        value=node.get('text',''); expected=os.environ.get(targets[label])
+        mask_only=bool(value) and all(c in '\u2022\u25cf*\u00b7' for c in value)
+        fields.append({'field':'password' if targets[label].endswith('PASSWORD') else 'email',
+                       'empty':not bool(value),'visibleLength':len(value),
+                       'passwordMasked':node.get('password')=='true','maskOnly':mask_only,
+                       'expectedValueMatch':None if expected is None or mask_only else value==expected,
+                       'expectedLengthMatch':None if expected is None else len(value)==len(expected)})
+    LAST_LOGIN_INPUT_DIAGNOSTIC=fields
+
+
+def login_control_metadata(node):
+    classes={'android.view.View','android.view.ViewGroup','android.widget.Button','android.widget.TextView'}
+    bounds=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
+    return {'class':node.get('class') if node.get('class') in classes else 'other',
+            'clickable':node.get('clickable')=='true','enabled':node.get('enabled')!='false',
+            'bounds':bounds if len(bounds)==4 else None}
+
+
+def remember_login_submit(root,label):
+    global LAST_LOGIN_SUBMIT_DIAGNOSTIC
+    assert label in ('Entrar','Sign in'), 'Unexpected login submit label'
+    node,_=find_node(root,label)
+    LAST_LOGIN_SUBMIT_DIAGNOSTIC=login_control_metadata(node)
+
+
+def safe_login_diagnostic():
+    result={'inputFields':LAST_LOGIN_INPUT_DIAGNOSTIC.copy(),
+            'selectedSubmitControl':LAST_LOGIN_SUBMIT_DIAGNOSTIC}
+    try:
+        root=dump(timeout=3)
+        result['inputFields']=LAST_LOGIN_INPUT_DIAGNOSTIC.copy()
+        codes=set();controls=[]
+        for node in root.iter('node'):
+            if node.get('visible')=='false':continue
+            values=(node.get('text',''),node.get('content-desc',''))
+            for value in values:
+                if value in LOGIN_MESSAGE_CODES:codes.add(LOGIN_MESSAGE_CODES[value])
+            if any(value in ('Entrar','Sign in') for value in values):
+                controls.append(login_control_metadata(node))
+        result['messageCodes']=sorted(codes)
+        result['submitControls']=controls
+    except Exception as error:
+        result['snapshotErrorClass']=type(error).__name__
+    return result
+
+
 def sanitize(value):
     for secret in _SECRET_VALUES:
         value = value.replace(secret,'[REDACTED]')
@@ -93,7 +156,11 @@ def read_snapshot_response(stream, nonce):
     if count==0: raise TransientSnapshotError('No current active UI root')
     payload=stream.read(count)
     if len(payload)!=count: raise EOFError('Incomplete fresh snapshot')
-    xml=sanitize(payload.decode('utf-8'))
+    raw_xml=payload.decode('utf-8')
+    if not CAPTURE_ALLOWED:
+        inspect_login_input_values(raw_xml)
+    xml=sanitize(raw_xml)
+    raw_xml=None
     root=ET.fromstring(xml)
     assert root.tag=='hierarchy', 'Invalid fresh snapshot root'
     return root,xml
