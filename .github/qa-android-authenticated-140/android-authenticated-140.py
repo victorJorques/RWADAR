@@ -80,7 +80,7 @@ def field(label, value, secret=False):
     # shlex.quote prevents Android's shell from interpreting credential characters.
     ui.adb('shell','input','keycombination','113','29')
     ui.adb('shell','input','keyevent','KEYCODE_DEL')
-    ui.adb('shell','input','text',shlex.quote(value.replace(' ','%s')))
+    ui.type_text_observed(value)
     ui.dismiss_keyboard_if_visible()
     time.sleep(.15)
 
@@ -353,6 +353,28 @@ def reuse_completed_radar():
     return radar
 
 
+def reuse_completed_font15():
+    raw=ROOT.joinpath('baseline-c20-font15-complete-40396305477-result.json').read_bytes()
+    require(hashlib.sha256(raw).hexdigest()=='935912194be2cd8020996858e47bd1336e54c6658b649c432d0df41445302a74','Completed font1.5 baseline identity mismatch')
+    previous=json.loads(raw)
+    require(previous['status']=='failed' and previous['phase']=='large-font-detail'
+            and previous['full20PointQA'] is False and previous['releaseApproved'] is False,
+            'Historical font1.5 overall failure must remain failed')
+    require(previous['apkSha256']==SHA and previous['apkBytes']==CANDIDATE['apkBytes']
+            and previous['versionCode']==20 and previous['sourceHeadSha']==SOURCE,
+            'Completed font1.5 does not bind the exact unchanged APK20/source')
+    checks=previous['checks'];detail=checks['detailFont15CloseAndBack'];catalogue=checks['catalog49AndList']
+    require(checks['fullTitleAndPersistentControls'] is True,'Completed long-title geometry missing')
+    require(all(catalogue.get(key)==value for key,value in [('total',49),('main',24),('resale',21),('upcoming',4)])
+            and catalogue.get('nativeListNonzero') is True,'Completed catalogue49 proof missing')
+    require(detail.get('fontScale')=='1.5' and all(detail.get(key) is True for key in ('close','androidBack','sourceReachableNotOpened')),
+            'Completed font1.5 close/back/source proof missing')
+    metadata={'runId': 40396305477, 'jobId': 121830148685, 'originalStatus': 'failed', 'originalFailurePhase': 'large-font-detail', 'harnessHeadSha': '618490ef88832c4f96777bd0c9145cc71d49fbd2', 'resultSha256': '935912194be2cd8020996858e47bd1336e54c6658b649c432d0df41445302a74', 'zipSha256': 'b978e3e1d7262d47d6106871fbfaadd4a2823fcca1174c45a20b37b73a6d7100', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'observationPerformedInThisRun': False, 'inheritedFlagsReferToOriginalRun': True, 'font15ScopeOnly': True, 'reusedChecks': ['fullTitleAndPersistentControls', 'catalog49AndList', 'detailFont15CloseAndBack']}
+    report['font15ReuseMetadata']=metadata
+    OUT.joinpath('font15-reuse-metadata.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
+    return {key:checks[key] for key in metadata['reusedChecks']}
+
+
 def main():
     require(os.environ.get('GITHUB_REPOSITORY') == 'victorJorques/RWADAR','Private repository required')
     require(os.environ.get('QA_ACCOUNT_ACK') == 'CONFIRMED_TEST_ACCOUNT','Confirmed disposable test account acknowledgement required')
@@ -431,13 +453,9 @@ def main():
             OUT.joinpath('radar-cleanup-errors.json').write_text(json.dumps(cleanup_errors),encoding='utf-8')
             if not original_error_active: raise RuntimeError('Radar display restoration failed; sensitive details withheld')
     note_phase('large-font-detail')
-    ui.adb('shell','settings','put','system','font_scale','1.5')
-    ui.adb('shell','wm','size','900x1600')
-    login_confirmed('es')
-    catalog_and_detail()
-    # Font1.5 guest/giro is already reused, and authenticated detail1.5 is now
-    # complete. The remaining new criteria use the normal display; do not turn
-    # their long headers into another font1.5 battery or repeat the guest run.
+    # Exact completed scope reused from failed run40396305477; no font1.5 detail repeated.
+    report['checks'].update(reuse_completed_font15())
+    # All remaining native areas resume on the normal display with fresh login.
     ui.adb('shell','settings','put','system','font_scale','1.0')
     ui.adb('shell','wm','size','reset')
     login_confirmed('es')

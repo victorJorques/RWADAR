@@ -1,7 +1,7 @@
 """Native snapshot/scroll wrappers reused from the reviewed APK19 harness.
 Private evidence only; the product APK is never modified.
 """
-import json, os, pathlib, re, secrets, socket, struct, subprocess, time, xml.etree.ElementTree as ET
+import json, os, pathlib, re, secrets, shlex, socket, struct, subprocess, time, xml.etree.ElementTree as ET
 out = pathlib.Path('evidence-private')
 out.mkdir(exist_ok=True)
 scroll_gestures = []
@@ -99,6 +99,18 @@ def adb(*args, timeout=20):
         return result.stdout.decode('utf-8',errors='replace')
     finally:
         record_timing(operation,started,status)
+
+
+def type_text_observed(value):
+    # Real native key input gives controlled React fields time to accept each key.
+    # The existing adb wrapper withholds argv and subprocess output on failures.
+    assert isinstance(value,str) and len(value)<=254, 'Native text input exceeds the supported bounded scope'
+    assert all(32<=ord(character)<=126 for character in value), 'Native text input requires printable ASCII'
+    time.sleep(.1)
+    for character in value:
+        adb('shell','input','text',shlex.quote('%s' if character==' ' else character))
+        time.sleep(.09)
+    time.sleep(.2)
 
 
 class QaDeadlineExceeded(BaseException):

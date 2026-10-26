@@ -349,7 +349,7 @@ def search(root, query):
         root = wait_ui('Ofertas específicas')
     root = reach_control('Buscar ofertas por nombre, proveedor, país o métrica')
     ui.focus_exact_editable('Buscar ofertas por nombre, proveedor, país o métrica')
-    adb('shell', 'input', 'text', query.replace(' ', '%s'))
+    ui.type_text_observed(query)
     ui.dismiss_keyboard_if_visible()
     # The query and result counter occupy different viewport positions. Verify
     # the actual native EditText value, then observe the counter separately.
