@@ -116,8 +116,7 @@ def check_visible_box(root, label, starts=False):
 
 
 def catalog_and_detail():
-    click('Buscar')
-    ui.wait_ui('49 en el catálogo',timeout=40)
+    catalog.open_offer_catalog()
     for label in ('Mostrar principales 24','Mostrar reventa 21','Mostrar próximas 4'):
         locate(label)
     root = ui.dump()
@@ -319,14 +318,14 @@ def main():
     report['checks']['radar26Centers320dp']=catalog.radar_center_checks()
     ui.adb('shell','settings','put','system','font_scale','1.5')
     ui.adb('shell','wm','size','900x1600')
+    login_confirmed('es')
     catalog_and_detail()
     # Font1.5 guest/giro is already reused, and authenticated detail1.5 is now
     # complete. The remaining new criteria use the normal display; do not turn
     # their long headers into another font1.5 battery or repeat the guest run.
     ui.adb('shell','settings','put','system','font_scale','1.0')
     ui.adb('shell','wm','size','reset')
-    if 'Entra en tu cuenta' in ui.visible_text(ui.dump()):
-        login_confirmed('es')
+    login_confirmed('es')
     ui.wait_ui('Inicio','Buscar','Academy','Perfil',timeout=20)
     report['checks']['providerGroups']=catalog.groups_pending()
     documentary=catalog.documentary_and_five_images()
@@ -371,7 +370,7 @@ if __name__ == '__main__':
     exit_code = 1
     try:
         signal.signal(signal.SIGALRM,timeout_handler)
-        signal.alarm(270)
+        signal.alarm(600)
         main()
         exit_code = 0
     except BaseException as error:

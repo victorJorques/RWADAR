@@ -62,15 +62,24 @@ editorial_samples = [
   }
 ]
 
+def open_offer_catalog(english=False):
+    # Selecting Search preserves its last inner view. Set both navigation levels
+    # explicitly, including after an Activity recreation that returned to Home.
+    labels=('Home','Search','Profile') if english else ('Inicio','Buscar','Perfil')
+    root=wait_ui(*labels)
+    tap_observed(root,'Search' if english else 'Buscar')
+    offers='Show offers' if english else 'Mostrar ofertas'
+    root=wait_ui(offers)
+    tap_observed(root,offers,starts=True)
+    return wait_ui('49 in the catalogue' if english else '49 en el catálogo',timeout=40)
+
+
 def open_platform_radar(english=False):
-    # Every process restart opens Home; Search defaults to offers. Enter both
-    # observed navigation levels explicitly before looking for radar points.
-    labels = ('Home', 'Search', 'Profile') if english else ('Inicio', 'Buscar', 'Perfil')
-    root = wait_ui(*labels)
-    tap_observed(root, 'Search' if english else 'Buscar')
-    platforms = 'Show platforms' if english else 'Mostrar plataformas'
-    root = wait_ui(platforms)
-    tap_observed(root, platforms, starts=True)
+    open_offer_catalog(english)
+    platforms='Show platforms' if english else 'Mostrar plataformas'
+    root=wait_ui(platforms)
+    tap_observed(root,platforms,starts=True)
+    wait_ui('26 platforms' if english else '26 plataformas',timeout=40)
     return wait_ui('Explore documented information' if english else 'Explora lo verificado')
 
 
@@ -85,61 +94,65 @@ def radar_center_checks():
         assert display_size()==(960,1920), 'Main must configure320dp before the first authenticated launch'
         assert float(adb('shell','settings','get','system','font_scale').strip())==1.0
         open_platform_radar()
-        for _ in range(12):
-            root = dump()
-            points = []
-            width,height = display_size()
-            for node in root.iter('node'):
-                label = node.get('content-desc','')
-                if node.get('visible') == 'false' or '. Estado de acceso: ' not in label or not label.endswith('. Abrir ficha.'):
-                    continue
-                bounds = list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
-                if len(bounds) == 4 and 0 <= bounds[0] < bounds[2] <= width and 0 <= bounds[1] < bounds[3] <= height:
-                    name = label.split('. Estado de acceso: ',1)[0].rsplit('. ',1)[0]
-                    points.append({'name':name,'label':label,'bounds':bounds})
-            if len(points) == expected_counts['plataformas']:
-                break
-            # Small observed drags cannot skip the complete graph on a short
-            # display. All 26 actual bounds must still be visible together.
-            adb('shell','input','swipe',str(width//2),str(int(height*.65)),
-                str(width//2),str(int(height*.53)),'450')
-            time.sleep(.5)
-        assert len(points) == expected_counts['plataformas'], 'Need every actual radar point visible before centre taps'
-        assert len({p['name'] for p in points}) == len(points), 'Radar point names must be unique'
-        screen('00-radar-320dp-centros',root)
-        current = root
-        for index,point in enumerate(points):
-            # The scan/previous close already supplied a fresh radar tree; no
-            # UI-changing action intervenes before reading the next bounds.
-            _,bounds = find_node(current,point['label'])
-            centre = [(bounds[0]+bounds[2])//2,(bounds[1]+bounds[3])//2]
+        ui.scroll_top()
+        current=dump()
+        width,height=display_size()
+        visited=set()
+        for step in range(52):
+            viewports=[]
+            for node in current.iter('node'):
+                if node.get('class') not in ('android.widget.ScrollView','androidx.recyclerview.widget.RecyclerView') or node.get('visible')=='false':continue
+                box=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
+                if len(box)==4 and 0<=box[0]<box[2]<=width and 0<=box[1]<box[3]<=height and box[3]-box[1]>=max(80,(box[2]-box[0])//2):viewports.append((node,box))
+            assert len(viewports)==1, 'Need one observed vertical radar viewport'
+            viewport,viewbox=viewports[0]
+            points=[]
+            for node in viewport.iter('node'):
+                label=node.get('content-desc','')
+                if node.get('visible')=='false' or '. Estado de acceso: ' not in label or not label.endswith('. Abrir ficha.'):continue
+                bounds=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
+                # Native bounds are clipped by ScrollView. A full44dp box at
+                #480dpi is132px; its centre is trustworthy only when unclipped.
+                if len(bounds)!=4 or not (viewbox[0]<=bounds[0]<bounds[2]<=viewbox[2] and viewbox[1]<=bounds[1]<bounds[3]<=viewbox[3]):continue
+                if not (131<=bounds[2]-bounds[0]<=133 and 131<=bounds[3]-bounds[1]<=133):continue
+                name=label.split('. Estado de acceso: ',1)[0].rsplit('. ',1)[0]
+                if name not in visited:points.append({'name':name,'label':label,'bounds':bounds})
+            if not points:
+                assert len(visited)<expected_counts['plataformas']
+                current,moved=ui.scroll_step(True,current)
+                assert moved, 'Reached end of radar viewport before observing all26 complete point boxes'
+                continue
+            point=points[0];bounds=point['bounds']
+            centre=[(bounds[0]+bounds[2])//2,(bounds[1]+bounds[3])//2]
             adb('shell','input','tap',*map(str,centre))
-            current = wait_ui('Cerrar ficha de ' + point['name'],timeout=30)
+            current=wait_ui('Cerrar ficha de '+point['name'],timeout=30)
             find_node(current,point['name'])
+            index=len(reports)
             out.joinpath('00-radar-centro-%02d.xml' % index).write_text(ET.tostring(current,encoding='unicode'),encoding='utf-8')
-            if index in (0,13,25): screen('00-radar-centro-%02d' % index,current)
-            log = adb('logcat','-d','-v','raw','ReactNativeJS:I','*:S')
-            events = []
+            if index in (0,13,25):screen('00-radar-centro-%02d' % index,current)
+            log=adb('logcat','-d','-v','raw','ReactNativeJS:I','*:S')
+            events=[]
             for line in log.splitlines():
-                if 'RWADAR_RADAR_TOUCH' not in line:
-                    continue
-                match = re.search(r'(\{.*\})',line)
+                if 'RWADAR_RADAR_TOUCH' not in line:continue
+                match=re.search(r'(\{.*\})',line)
                 if match:
-                    try:
-                        events.append(json.loads(match[1]))
-                    except json.JSONDecodeError:
-                        pass
+                    try:events.append(json.loads(match[1]))
+                    except json.JSONDecodeError:pass
             assert events, 'Actual release must expose the local native event-shape evidence'
-            event = events[-1]
-            assert event['selectedName'] == point['name'], 'The observed visible centre must open its own platform'
-            assert type(event['changedTouches']) is int and event['changedTouches'] >= 1, 'Android onPress must carry a real end-event touch sequence'
-            assert event['eventType'] != 'click', 'This test must use physical pointer input rather than an accessibility click'
-            reports.append({'name':point['name'],'centre':centre,'bounds':bounds,'event':event,'openedOwnPlatform':True})
-            tap_observed(current,'Cerrar ficha de ' + point['name'])
-            current = wait_ui(point['label'], absent=('Cerrar ficha de ' + point['name'],))
+            event=events[-1]
+            assert event['selectedName']==point['name'], 'Observed centre must open its own platform'
+            assert type(event['changedTouches']) is int and event['changedTouches']>=1, 'Android onPress must carry a real end-event touch sequence'
+            assert event['eventType']!='click', 'Requires physical pointer input, not accessibility click'
+            assert point['name'] not in visited
+            visited.add(point['name'])
+            reports.append({'name':point['name'],'centre':centre,'bounds':bounds,'viewportBounds':viewbox,'event':event,'openedOwnPlatform':True})
+            tap_observed(current,'Cerrar ficha de '+point['name'])
+            current=wait_ui(point['label'],absent=('Cerrar ficha de '+point['name'],))
+            if len(visited)==expected_counts['plataformas']:break
+        assert len(reports)==26 and len(visited)==26, 'Need exactly26 unique observed real centre taps'
         out.joinpath('radar-native-centres.json').write_text(json.dumps({'display':[width,height],
             'densityDpi':480,'widthDp':320,'points':reports,
-            'scope':'Exact visible centres, not 44dp exclusive touch regions or TalkBack traversal'},indent=2),encoding='utf-8')
+            'simultaneousVisibilityRequired':False,'scope':'26 unique exact centres observed across safe scroll positions; not exclusive44dp regions or TalkBack traversal'},indent=2),encoding='utf-8')
     except Exception:
         capture_failure('00-radar-320dp-failure')
         raise
@@ -284,6 +297,7 @@ def editorial_detail(sample, prefix):
 
 
 def groups_pending():
+    open_offer_catalog()
     result=[group_roundtrip('Brickwise','principales','10-brickwise'),
             group_roundtrip('Reental','secundario','11-reental')]
     assert [item['references'] for item in result] == [12,21], 'Published provider group counts changed'
