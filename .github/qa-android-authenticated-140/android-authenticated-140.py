@@ -96,6 +96,23 @@ def authenticated_ui(root, language='es'):
     return all(label in values for label in labels)
 
 
+def require_login_inputs():
+    # The bridge compares RAW values in memory before sanitizing the UI tree.
+    # Only this bounded boolean metadata may authorize the observed submit.
+    fields=ui.LAST_LOGIN_INPUT_DIAGNOSTIC
+    report['loginInputVerification']={'inputFields':list(fields)}
+    email=[item for item in fields if item.get('field')=='email']
+    password=[item for item in fields if item.get('field')=='password']
+    require(len(fields)==2 and len(email)==1 and len(password)==1,
+            'Login input verification is incomplete; submit was not attempted')
+    require(email[0].get('expectedValueMatch') is True,
+            'Login email verification failed; submit was not attempted')
+    require(password[0].get('expectedValueMatch') is True
+            or (password[0].get('maskOnly') is True
+                and password[0].get('expectedLengthMatch') is True),
+            'Login password verification failed; submit was not attempted')
+
+
 def login_confirmed(language='es'):
     # Resizes/restarts can race an already completed admission. Four authenticated
     # tabs are success; never search for another Entrar button on Home/Launcher.
@@ -120,9 +137,11 @@ def login_confirmed(language='es'):
                             'Login left the app window; no scroll or submit was attempted')
                     root=locate(label)
                     ui.remember_login_submit(root,label)
+                    require_login_inputs()
                     ui.tap_observed(root,label)
             else:
                 ui.remember_login_submit(root,label)
+                require_login_inputs()
                 ui.tap_observed(root,label)
         try:
             ui.wait_ui(*(('Home','Search','Academy','Profile') if english else ('Inicio','Buscar','Academy','Perfil')),timeout=40)
@@ -377,6 +396,11 @@ def main():
             'QA password must use the supported 20+ character ASCII input alphabet')
     ui.start_snapshot_bridge()
     ui.adb('logcat','-c')
+    catalog.RADAR_RESTORE={'density':ui.adb('shell','wm','density'),
+                           'size':ui.adb('shell','wm','size'),
+                           'font':ui.adb('shell','settings','get','system','font_scale').strip()}
+    ui.adb('shell','wm','density','480')
+    ui.adb('shell','wm','size','960x1920')
     ui.adb('shell','settings','put','system','font_scale','1.0')
     ui.adb('shell','am','start','-W','-n','com.rwadar.app/.MainActivity')
     email = password = None
@@ -386,7 +410,26 @@ def main():
     catalog.REAUTHENTICATE=login_confirmed
     catalog.CLICK=click; catalog.FIELD=field; catalog.LOCATE=locate
     note_phase('radar-reuse')
-    report['checks']['radar26Centers320dp']=reuse_completed_radar()
+    try:
+        report['checks']['radar26Centers320dp']=reuse_completed_radar()
+    finally:
+        # Preserve the proven320dp login, then reproduce radar's former cleanup.
+        # Reusing evidence performs no radar taps and retains the original result.
+        original_error_active=sys.exc_info()[0] is not None
+        prior=catalog.RADAR_RESTORE
+        density=re.search(r'Override density:\s*(\d+)',prior['density'])
+        size=re.search(r'Override size:\s*(\d+x\d+)',prior['size'])
+        prior_font=prior['font']
+        cleanup_errors=[]
+        commands=[('shell','wm','density',density[1] if density else 'reset'),
+                  ('shell','wm','size',size[1] if size else 'reset'),
+                  ('shell','settings','put','system','font_scale',prior_font if prior_font not in ('','null') else '1.0')]
+        for command in commands:
+            try: ui.adb(*command)
+            except Exception as error: cleanup_errors.append(type(error).__name__)
+        if cleanup_errors:
+            OUT.joinpath('radar-cleanup-errors.json').write_text(json.dumps(cleanup_errors),encoding='utf-8')
+            if not original_error_active: raise RuntimeError('Radar display restoration failed; sensitive details withheld')
     note_phase('large-font-detail')
     ui.adb('shell','settings','put','system','font_scale','1.5')
     ui.adb('shell','wm','size','900x1600')
