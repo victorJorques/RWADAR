@@ -44,14 +44,10 @@ def click(label, starts=False):
 
 
 def field(label, value, secret=False):
-    root = locate(label)
-    nodes = [n for n in root.iter('node') if n.get('class') == 'android.widget.EditText'
-             and n.get('content-desc') == label and n.get('visible') != 'false']
-    require(len(nodes) == 1, 'Need one observed native field')
-    if secret:
-        require(nodes[0].get('password') == 'true', 'Password field must be masked')
-    click(label)
-    ui.wait_editable(label, secret=secret)
+    locate(label)
+    # Campo has a visible Text label and a distinct EditText with the same label.
+    # Generic click(label) may select the Text; never repeat that ambiguous lookup.
+    ui.focus_exact_editable(label,secret=secret)
     # The wrapper suppresses subprocess args/stdout/stderr in every error path.
     # shlex.quote prevents Android's shell from interpreting credential characters.
     ui.adb('shell','input','keycombination','113','29')
