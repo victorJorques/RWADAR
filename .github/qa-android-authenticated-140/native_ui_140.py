@@ -558,9 +558,11 @@ def scroll_step(forward, root):
     return root, False
 
 
+MAX_SCROLL_OBSERVATIONS=64
+
 def scroll_top():
     root = dump()
-    for _ in range(12):
+    for _ in range(MAX_SCROLL_OBSERVATIONS):
         root, moved = scroll_step(forward=False, root=root)
         if not moved:
             return
@@ -570,7 +572,7 @@ def scroll_top():
 
 def reach_control(label, starts=False):
     root = dump()
-    for _ in range(14):
+    for _ in range(MAX_SCROLL_OBSERVATIONS):
         try:
             find_node(root, label, starts=starts)
             return root
