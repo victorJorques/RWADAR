@@ -92,7 +92,12 @@ def parse_window_state(raw):
 
 
 def window_state():
-    return parse_window_state(adb('shell','dumpsys','window','windows',timeout=5))
+    # Android 15 prints mCurrentFocus in DisplayContent.dump, outside the
+    # windows subcommand. Read both current sections; a full dump also includes
+    # historical last-ANR state before them, which must not authorize input.
+    displays = adb('shell','dumpsys','window','displays',timeout=5)
+    windows = adb('shell','dumpsys','window','windows',timeout=5)
+    return parse_window_state(displays + '\n' + windows)
 
 
 def wait_editable(label, secret=False, timeout=12):

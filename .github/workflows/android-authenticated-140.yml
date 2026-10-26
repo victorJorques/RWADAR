@@ -26,7 +26,7 @@ jobs:
   android-authenticated:
     if: ${{ github.event_name == 'workflow_dispatch' && github.event.repository.private == true }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    timeout-minutes: 9
     steps:
       - name: Checkout private isolated QA branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, same pinned runner action
