@@ -56,3 +56,30 @@ ni repetir firma/imágenes/formularios/web anteriores.
 
 Estado previo a despliegue y continuación: aún no se aprueba la nueva preview,
 producción ni la release1.4.0 en este informe. Se completará con resultados reales.
+
+## Preview observada y límites
+
+Preview26/10: https://99d594e3.rwadar.pages.dev, aliasrevision.rwadar.pages.dev.
+Dieciséis controles HTTP aprobados: páginas públicas, catálogo anónimo26/49,
+sitemap/RSS, JS/CSS de acceso idénticos al artefacto, API personal denegada,
+perfiles/vigilancia sin datos anónimos y/android a latest. Se conserva el registro
+de14controles previos y se completan solo los2faltantes tras corregir el comprobador:
+vigilancia no tiene columnaid; elHTTP400 no era exposición de datos.
+El noindex del dominio de preview es intencional; solo producción exige indexación.
+
+La misma cuentaQA confirmada realizó loginBFF real, verificación de cookie, sesión,
+logout local y rechazo posterior de esa cookie. Sin alta ni correo. Los tres
+casos nuevos del frontend verifican además la carrera de cierres pendientes.
+No se atribuye la causa al titular ni se afirma que haya guardado su contraseña.
+
+El controlador del navegador no respondió. Computer Use se detuvo por no poder
+identificar de forma fiable laURL actual; no se hizo más interacción de navegador.
+No hay nueva captura visual del26/10. Se conserva la revisión visual del acceso
+24/10 a390/1440 para el CSS que no cambia, con límite explícito para el texto nuevo.
+Se aprueba la entrega web acotada por fuente revisada y comprobación realHTTP/Auth;
+esto no aprueba Android19 ni una revisión visual nueva.
+
+Android40299768822 terminófallo: el campo estaba enfocado, proceso vivo y teclado
+visible, pero la lectura de foco devolviónull. SuZIPprivado SHA-256
+78cec889582bfc59ecf68a99691556a8def0a0c971b889724c93595b0f683e7c
+queda conservado sin atribuir aprobación ni publicar evidencia privada.

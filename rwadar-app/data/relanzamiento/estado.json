@@ -11,7 +11,7 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Consulta web pública por orden del titular; cuenta para funciones personales. SQL28 revertido con autorización, catálogo26/49 intacto. Worker/bridge y cierre pendiente corregidos;37pruebas dirigidas y generación local aprobadas. Preview nueva en curso; Android19 mantiene su validación independiente.",
+  "nota": "Consulta web pública por orden y autorización expresa del titular. Catálogo26/49 intacto y permisos públicos restaurados. Preview99d594e3:16controlesHTTP y login/sesión/logout propios reales aprobados;37pruebas dirigidas. Sin nueva revisión visual por bloqueo del controlador; CSS de acceso sin cambios. Android19 no queda aprobado por la compuerta web.",
   "revisionAprobada": {
     "commit": "093ec474fcbd6738fb9e2c665f35e1f4dd6212f9",
     "contenidoSha256": "sha256:c8bab5edcd64c97ed69175917ad6b955db1a5a429433b7c38b1578c70a4149ea",
@@ -155,8 +155,8 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "en_progreso",
-      "detalle": "Cambio acotado a lectura pública y serialización del cierre pendiente.37pruebas dirigidas y generación local aprobadas; conserva como antecedentes reales las verificaciones anteriores. Falta verificar la nueva preview antes de producción. No aprueba el APK19.",
+      "estado": "aprobado",
+      "detalle": "Preview99d594e3 comprobada: lectura pública,26/49,SEO/RSS,privados denegados y recursos exactos. Login propio real, cookie, sesión y logout aprobados;frontend con3regresiones de doble cierre. CSS conserva revisión previa; el controlador visual26/10 no pudo completar. Android19 sigue pendiente y separado.",
       "evidencias": [
         {
           "tipo": "prueba",
@@ -264,7 +264,7 @@
           "tipo": "prueba",
           "referencia": "docs/VERIFICACION-ACCESO-PUBLICO-2026-10-26.md",
           "verificadoEl": "2026-10-26",
-          "resumen": "Preparación local con34controles de Worker/bridge/gate y3casos dirigidos de login. ReversiónSQL28 aplicada con26/49conservados. La nueva preview aún no se atribuye como aprobada."
+          "resumen": "Preview99d594e3:16controlesHTTP y4pasos realesAuth con cuentaQA existente, además de37pruebas dirigidas. Lectura pública26/49 y privados denegados. CSS sin cambios; nueva captura visual no disponible. Sin aprobación APK19."
         }
       ]
     },
