@@ -190,26 +190,58 @@ def editable_metadata(root):
     return result
 
 
+def editable_scroll_direction(root,node,width,height):
+    viewports=[]
+    for viewport in root.iter('node'):
+        if viewport.get('class') not in ('android.widget.ScrollView','androidx.recyclerview.widget.RecyclerView') or viewport.get('visible')=='false':
+            continue
+        if not any(child is node for child in viewport.iter('node')):
+            continue
+        box=list(map(int,re.findall(r'-?\d+',viewport.get('bounds',''))))
+        if len(box)==4 and 0<=box[0]<box[2]<=width and 0<=box[1]<box[3]<=height and box[3]-box[1]>=max(80,(box[2]-box[0])//2):
+            viewports.append((viewport,box))
+    assert len(viewports)==1, 'Need one fully observed vertical native scroll ancestor for the field'
+    viewport,box=viewports[0]
+    assert any(child is node for child in viewport.iter('node')), 'Native field is outside the observed ScrollView'
+    bounds=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
+    assert len(bounds)==4 and box[0]<=bounds[0]<bounds[2]<=box[2], 'Native field horizontal bounds are ambiguous'
+    if box[1]<bounds[1]<bounds[3]<box[3] and node.get('visible')!='false':
+        return box,bounds,None
+    # Accessibility clips off-screen fields to the viewport, sometimes yielding
+    # inverted vertical bounds. Their edge relative to this real viewport still
+    # establishes direction, but never authorizes a tap on the clipped rectangle.
+    if bounds[1]>=box[3] or (box[1]<=bounds[1] and bounds[3]>=box[3]):
+        return box,bounds,True
+    if bounds[3]<=box[1] or (bounds[1]<=box[1] and bounds[3]<=box[3]):
+        return box,bounds,False
+    raise AssertionError('Native field clipping has no unambiguous scroll direction')
+
+
 def focus_exact_editable(label, secret=False):
     global LAST_EDITABLE_DIAGNOSTIC
     assert label in EDITABLE_LABELS, 'Native field label is outside the static QA whitelist'
-    # Get dimensions before the final tree. The selected node, rather than a
-    # label Text or its ancestor, supplies the sole coordinate for this tap.
+    LAST_EDITABLE_DIAGNOSTIC={'targetLabel':label,'scrolls':[]}
     width,height=display_size()
     root=dump()
-    LAST_EDITABLE_DIAGNOSTIC={'targetLabel':label,'beforeTap':editable_metadata(root)}
-    nodes=[n for n in root.iter('node') if n.get('package')==APP_PACKAGE
-           and n.get('class')=='android.widget.EditText'
-           and n.get('content-desc')==label and n.get('visible')!='false'
-           and n.get('enabled')!='false']
-    assert len(nodes)==1, 'Need exactly one visible enabled native EditText'
-    node=nodes[0]
-    bounds=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
-    assert len(bounds)==4 and 0<=bounds[0]<bounds[2]<=width and 0<=bounds[1]<bounds[3]<=height, 'Native EditText must be fully inside the display'
-    assert not secret or node.get('password')=='true', 'Password field must be masked'
-    assert window_state()['appFocused'], 'Native field tap requires current app focus'
-    adb('shell','input','tap',str((bounds[0]+bounds[2])//2),str((bounds[1]+bounds[3])//2))
-    return wait_editable(label,secret=secret)
+    for attempt in range(6):
+        LAST_EDITABLE_DIAGNOSTIC['beforeTap']=editable_metadata(root)
+        nodes=[n for n in root.iter('node') if n.get('package')==APP_PACKAGE
+               and n.get('class')=='android.widget.EditText'
+               and n.get('content-desc')==label and n.get('enabled')!='false']
+        assert len(nodes)==1, 'Need exactly one enabled native EditText'
+        node=nodes[0]
+        assert not secret or node.get('password')=='true', 'Password field must be masked'
+        viewport,bounds,forward=editable_scroll_direction(root,node,width,height)
+        assert window_state()['appFocused'], 'Native field interaction requires current app focus'
+        if forward is None:
+            adb('shell','input','tap',str((bounds[0]+bounds[2])//2),str((bounds[1]+bounds[3])//2))
+            return wait_editable(label,secret=secret)
+        assert attempt<5, 'Native EditText did not become fully visible within the bounded scrolls'
+        LAST_EDITABLE_DIAGNOSTIC['scrolls'].append({'viewportBounds':viewport,'fieldBounds':bounds,'forward':forward})
+        # Existing observed free-margin geometry is the only authorized gesture.
+        # scroll_step returns a fresh tree and never stores field values.
+        root,moved=scroll_step(forward,root)
+        assert moved, 'Observed native field scroll made no progress'
 
 
 def wait_editable(label, secret=False, timeout=12):
