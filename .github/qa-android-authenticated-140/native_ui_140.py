@@ -545,5 +545,27 @@ def reach_control(label, starts=False):
 
 
 def scroll_position(root):
-    return tuple((node.get('class',''),node.get('bounds',''),node.get('text',''),node.get('content-desc',''))
-                 for node in root.iter('node') if node.get('visible') != 'false')
+    # Observe actual scroll content, never status bars, fixed navigation, input
+    # values, clocks, or Radar's continuously rotating SVG descendant bounds.
+    viewports=[]
+    for node in root.iter('node'):
+        if node.get('visible')=='false' or node.get('class') not in ('android.widget.ScrollView','androidx.recyclerview.widget.RecyclerView','android.webkit.WebView'):continue
+        box=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
+        if len(box)==4 and 0<=box[0]<box[2] and 0<=box[1]<box[3] and box[3]-box[1]>=max(80,(box[2]-box[0])//2):viewports.append((node,box))
+    assert len(viewports)==1, 'Need one observed vertical viewport to establish scroll progress'
+    viewport,box=viewports[0]
+    anchors=[]
+    for node in viewport.iter('node'):
+        kind=node.get('class','')
+        if node is viewport or node.get('visible')=='false' or kind.startswith('com.horcrux.svg.') or kind in ('android.widget.TextClock','android.widget.AnalogClock'):continue
+        desc=node.get('content-desc','')
+        semantic=kind in ('android.widget.TextView','android.widget.EditText','android.widget.Button','android.widget.ImageView') or bool(desc) or bool(node.get('text'))
+        if not semantic:continue
+        bounds=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
+        if len(bounds)!=4 or not (box[0]<=bounds[0]<bounds[2]<=box[2] and box[1]<=bounds[1]<bounds[3]<=box[3]):continue
+        # Stable accessible controls distinguish virtualized rows occupying the
+        # same coordinates. Editable values never establish progress.
+        identity=desc if kind=='android.widget.EditText' else (desc or node.get('text',''))
+        anchors.append((kind,identity,tuple(bounds)))
+    assert anchors, 'No stable observed content anchors for scroll progress'
+    return tuple(sorted(anchors))
