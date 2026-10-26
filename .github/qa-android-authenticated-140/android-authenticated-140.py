@@ -418,11 +418,6 @@ def main():
             'QA password must use the supported 20+ character ASCII input alphabet')
     ui.start_snapshot_bridge()
     ui.adb('logcat','-c')
-    catalog.RADAR_RESTORE={'density':ui.adb('shell','wm','density'),
-                           'size':ui.adb('shell','wm','size'),
-                           'font':ui.adb('shell','settings','get','system','font_scale').strip()}
-    ui.adb('shell','wm','density','480')
-    ui.adb('shell','wm','size','960x1920')
     ui.adb('shell','settings','put','system','font_scale','1.0')
     ui.adb('shell','am','start','-W','-n','com.rwadar.app/.MainActivity')
     email = password = None
@@ -432,33 +427,11 @@ def main():
     catalog.REAUTHENTICATE=login_confirmed
     catalog.CLICK=click; catalog.FIELD=field; catalog.LOCATE=locate
     note_phase('radar-reuse')
-    try:
-        report['checks']['radar26Centers320dp']=reuse_completed_radar()
-    finally:
-        # Preserve the proven320dp login, then reproduce radar's former cleanup.
-        # Reusing evidence performs no radar taps and retains the original result.
-        original_error_active=sys.exc_info()[0] is not None
-        prior=catalog.RADAR_RESTORE
-        density=re.search(r'Override density:\s*(\d+)',prior['density'])
-        size=re.search(r'Override size:\s*(\d+x\d+)',prior['size'])
-        prior_font=prior['font']
-        cleanup_errors=[]
-        commands=[('shell','wm','density',density[1] if density else 'reset'),
-                  ('shell','wm','size',size[1] if size else 'reset'),
-                  ('shell','settings','put','system','font_scale',prior_font if prior_font not in ('','null') else '1.0')]
-        for command in commands:
-            try: ui.adb(*command)
-            except Exception as error: cleanup_errors.append(type(error).__name__)
-        if cleanup_errors:
-            OUT.joinpath('radar-cleanup-errors.json').write_text(json.dumps(cleanup_errors),encoding='utf-8')
-            if not original_error_active: raise RuntimeError('Radar display restoration failed; sensitive details withheld')
+    report['checks']['radar26Centers320dp']=reuse_completed_radar()
     note_phase('large-font-detail')
     # Exact completed scope reused from failed run40396305477; no font1.5 detail repeated.
     report['checks'].update(reuse_completed_font15())
-    # All remaining native areas resume on the normal display with fresh login.
-    ui.adb('shell','settings','put','system','font_scale','1.0')
-    ui.adb('shell','wm','size','reset')
-    login_confirmed('es')
+    # Continue in this same normal-display Activity and authenticated session.
     ui.wait_ui('Inicio','Buscar','Academy','Perfil',timeout=20)
     note_phase('provider-groups')
     report['checks']['providerGroups']=catalog.groups_pending()

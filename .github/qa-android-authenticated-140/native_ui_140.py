@@ -350,9 +350,11 @@ def focus_exact_editable(label, secret=False):
     global LAST_EDITABLE_DIAGNOSTIC
     assert label in EDITABLE_LABELS, 'Native field label is outside the static QA whitelist'
     LAST_EDITABLE_DIAGNOSTIC={'targetLabel':label,'scrolls':[]}
-    width,height=display_size()
     root=dump()
     for attempt in range(6):
+        # Measure after each fresh dump, including trees returned by scrolling.
+        width,height=display_size()
+        LAST_EDITABLE_DIAGNOSTIC['displayDimensions']=[width,height]
         LAST_EDITABLE_DIAGNOSTIC['beforeTap']=editable_metadata(root)
         nodes=[n for n in root.iter('node') if n.get('package')==APP_PACKAGE
                and n.get('class')=='android.widget.EditText'
@@ -360,6 +362,16 @@ def focus_exact_editable(label, secret=False):
         assert len(nodes)==1, 'Need exactly one enabled native EditText'
         node=nodes[0]
         assert not secret or node.get('password')=='true', 'Password field must be masked'
+        # Keep structural geometry even when viewport validation fails.
+        # Never record UI text or unrestricted accessibility labels here.
+        scroll_viewports=[]
+        for candidate in root.iter('node'):
+            kind=candidate.get('class')
+            if kind not in ('android.widget.ScrollView','androidx.recyclerview.widget.RecyclerView','android.webkit.WebView'):continue
+            candidate_bounds=list(map(int,re.findall(r'-?\d+',candidate.get('bounds',''))))
+            scroll_viewports.append({'kind':kind,'bounds':candidate_bounds if len(candidate_bounds)==4 else None,
+                                     'visible':candidate.get('visible')=='true'})
+        LAST_EDITABLE_DIAGNOSTIC['scrollViewports']=scroll_viewports
         viewport,bounds,forward=editable_scroll_direction(root,node,width,height)
         assert window_state()['appFocused'], 'Native field interaction requires current app focus'
         if forward is None:
