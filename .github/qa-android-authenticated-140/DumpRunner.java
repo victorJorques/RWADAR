@@ -29,6 +29,10 @@ public final class DumpRunner extends Instrumentation {
     xml.attribute(null,"password",Boolean.toString(info.isPassword()));
     xml.attribute(null,"checkable",Boolean.toString(info.isCheckable()));
     xml.attribute(null,"checked",Boolean.toString(info.isChecked()));
+    xml.attribute(null,"selected",Boolean.toString(info.isSelected()));
+    xml.attribute(null,"scrollable",Boolean.toString(info.isScrollable()));
+    xml.attribute(null,"can-scroll-forward",Boolean.toString((info.getActions() & AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)!=0));
+    xml.attribute(null,"can-scroll-backward",Boolean.toString((info.getActions() & AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD)!=0));
     xml.attribute(null,"visible",Boolean.toString(info.isVisibleToUser()));
     xml.attribute(null,"bounds","["+b.left+","+b.top+"]["+b.right+","+b.bottom+"]");
     for(int i=0;i<info.getChildCount();i++) {

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "runId": "40399378362",
+  "apkSha256": "c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614",
+  "apkBytes": 88961845,
+  "versionCode": 20,
+  "sourceHeadSha": "7c64b6c15a826ddb3189c8ab195b4fa36201ca51",
+  "harnessHeadSha": "79067a648642698ac0f45faa19b092b61c7b3675",
+  "criteria": {
+    "providerGroup.Brickwise": {
+      "status": "validated-scope-only",
+      "details": {
+        "provider": "Brickwise",
+        "collection": "principales",
+        "references": 12,
+        "returned": true
+      }
+    }
+  },
+  "full20PointQA": false,
+  "releaseApproved": false
+}

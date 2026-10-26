@@ -587,6 +587,12 @@ MAX_SCROLL_OBSERVATIONS=64
 def scroll_top():
     root = dump()
     for _ in range(MAX_SCROLL_OBSERVATIONS):
+        viewport,_=observed_scroll_viewport(root)
+        # Explicit native actions prove the top edge without pulling to refresh.
+        # Missing capability attributes retain the existing observed-progress fallback.
+        if (viewport.get('scrollable')=='true'
+                and viewport.get('can-scroll-forward')=='true'
+                and viewport.get('can-scroll-backward')=='false'):return
         root, moved = scroll_step(forward=False, root=root)
         if not moved:
             return

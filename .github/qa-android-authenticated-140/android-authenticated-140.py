@@ -435,6 +435,7 @@ def main():
     ui.wait_ui('Inicio','Buscar','Academy','Perfil',timeout=20)
     note_phase('provider-groups')
     report['checks']['providerGroups']=catalog.groups_pending()
+    report['providerGroupsReuseMetadata']=catalog.PROVIDER_GROUP_REUSE_METADATA
     note_phase('documentary-details')
     documentary=catalog.documentary_and_five_images()
     report['checks']['nativeCardDecisionFacts']=documentary['cards']

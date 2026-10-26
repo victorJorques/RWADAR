@@ -363,6 +363,7 @@ def search(root, query):
 
 
 def open_collection(collection):
+    assert collection in ('principales','secundario'), 'Collection must use a static supported selector'
     scroll_top()
     root = dump()
     try:
@@ -374,8 +375,41 @@ def open_collection(collection):
         time.sleep(.5)
     label = ('Mostrar principales ' if collection == 'principales' else 'Mostrar reventa ') + str(expected_counts[collection])
     root = reach_control(label)
-    tap_observed(root, label)
-    return wait_ui('Ofertas específicas')
+    diagnostic={'selector':label,'attempts':[]}
+    target=out.joinpath('collection-selector-'+collection+'.json')
+
+    def observe(current):
+        node,bounds=find_node(current,label)
+        selected=node.get('selected')
+        return node,{'bounds':bounds,'selected':True if selected=='true' else False if selected=='false' else None}
+
+    previous_after=None
+    for attempt in range(2):
+        node,before=observe(root)
+        observation={'before':before}
+        diagnostic['attempts'].append(observation)
+        target.write_text(json.dumps(diagnostic,indent=2),encoding='utf-8')
+        if before['selected'] is True:return root
+        assert before['selected'] is False, 'Collection selector does not expose its selected state'
+        width,height=display_size()
+        bounds=before['bounds']
+        assert (node.get('visible')=='true' and node.get('enabled')!='false'
+                and 0<=bounds[0]<bounds[2]<=width and 0<=bounds[1]<bounds[3]<=height), 'Collection selector is not fully visible and enabled'
+        if previous_after is not None:
+            assert bounds==previous_after['bounds'], 'Collection selector layout did not stabilize before bounded retry'
+        tap_observed(root,label)
+        time.sleep(.35)
+        root=dump()
+        _,after=observe(root)
+        observation['after']=after
+        target.write_text(json.dumps(diagnostic,indent=2),encoding='utf-8')
+        if after['selected'] is True:return root
+        previous_after=after
+        if attempt==0:
+            # A second fresh tree must retain the same valid geometry before retry.
+            time.sleep(.35)
+            root=dump()
+    raise AssertionError('Collection selector was not selected after the bounded native taps')
 
 
 def assert_modal_top(root, title, prefix):
@@ -441,12 +475,32 @@ def editorial_detail(sample, prefix):
     return root
 
 
+PROVIDER_GROUP_REUSE_METADATA=None
+
+def _completed_brickwise():
+    from candidate_140 import load_candidate
+    candidate=load_candidate()
+    raw=pathlib.Path(__file__).resolve().parent.joinpath('baseline-c20-brickwise-complete-40399378362-checkpoints.json').read_bytes()
+    assert hashlib.sha256(raw).hexdigest()=='4ec914b68458c3705837b309672524341be37b969b86b79c449be6204a95dcf4', 'Completed Brickwise checkpoint identity mismatch'
+    previous=json.loads(raw)
+    assert previous['runId']=='40399378362' and previous['harnessHeadSha']=='79067a648642698ac0f45faa19b092b61c7b3675'
+    assert previous['full20PointQA'] is False and previous['releaseApproved'] is False
+    assert all(previous[key]==candidate[key] for key in ('apkSha256','apkBytes','versionCode','sourceHeadSha'))
+    checkpoint=previous['criteria']['providerGroup.Brickwise']
+    expected={'provider':'Brickwise','collection':'principales','references':12,'returned':True}
+    assert checkpoint['status']=='validated-scope-only' and checkpoint['details']==expected, 'Completed Brickwise round trip missing'
+    return dict(expected),{'runId': 40399378362, 'originalStatus': 'failed', 'originalFailurePhase': 'provider-groups', 'harnessHeadSha': '79067a648642698ac0f45faa19b092b61c7b3675', 'checkpointsSha256': '4ec914b68458c3705837b309672524341be37b969b86b79c449be6204a95dcf4', 'zipSha256': '166af75ce935f491d67cac158c9468cc06c3c30c2f9c8cc0c66152977ca3f8b5', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'reusedProvider': 'Brickwise', 'reusedReferences': 12, 'newProvider': 'Reental', 'newReferences': 21, 'brickwiseObservationPerformedInThisRun': False, 'reentalObservationPerformedInThisRun': True, 'inheritedFlagsReferToOriginalRun': True, 'providerGroupScopeOnly': True}
+
+
 def groups_pending():
+    global PROVIDER_GROUP_REUSE_METADATA
+    brickwise,metadata=_completed_brickwise()
     open_offer_catalog()
-    result=[group_roundtrip('Brickwise','principales','10-brickwise'),
-            group_roundtrip('Reental','secundario','11-reental')]
+    result=[brickwise,group_roundtrip('Reental','secundario','11-reental')]
     assert [item['references'] for item in result] == [12,21], 'Published provider group counts changed'
-    _checkpoint('providerGroups','validated-scope-only',{'groups':result})
+    PROVIDER_GROUP_REUSE_METADATA=metadata
+    _checkpoint('providerGroups','validated-scope-only',{'groups':result,'reuseMetadata':metadata})
+    out.joinpath('provider-groups-reuse-metadata.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
     return result
 
 
