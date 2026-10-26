@@ -657,7 +657,8 @@ def languages_and_favorite():
     root=LOCATE(title+'.',True)
     screen('15-english-favorite-after-restart',root)
     CLICK(title+'.',True)
-    wait_ui('Close '+title,'Remove '+title+' from saved items')
+    # DetalleOferta translates these fragments separately and sets noTraducir.
+    wait_ui('Close '+title,'Quitar '+title+' from saved offers')
     scroll_top()
     required=['Original source text (Spanish)','DATES FOR THIS ENTRY','DATED REFERENCES',
               'Could I lose money?','Can I sell whenever I want?','Who holds the asset?',
