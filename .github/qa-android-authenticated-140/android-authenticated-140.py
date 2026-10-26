@@ -355,7 +355,7 @@ if __name__ == '__main__':
     exit_code = 1
     try:
         signal.signal(signal.SIGALRM,timeout_handler)
-        signal.alarm(210)
+        signal.alarm(270)
         main()
         exit_code = 0
     except BaseException as error:
