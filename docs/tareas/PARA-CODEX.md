@@ -6,6 +6,12 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 27 de octubre de 2026 · Codex · mapa preparado para preview
+
+Mapa en Buscar, 26 ubicaciones documentadas y consulta pública. Fuente e1923c297dfd17924fd1a9cd2fee9d8b217f62d5. Pasan web549, fichas/RSS90, acceso55, mapa10 y precarga31. Falta comprobación visual HTTPS y producción; no anunciar publicación aún. [Informe breve](../VERIFICACION-MAPA-2026-10-27.md). App: idiomas/favorito y lección completados; faltan tutorial, cartera y salida. APK20 sin recompilar. Investigación pausada; main compartido intacto.
+
+---
+
 ## 26 de octubre de 2026 · Codex · cierre Android en curso, sin otra compilación
 
 La 1.4.0 corregida ya está compilada como APK20. No volver a compilar por fallos

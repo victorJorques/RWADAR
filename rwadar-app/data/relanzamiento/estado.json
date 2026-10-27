@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-10-26",
+  "actualizadoEl": "2026-10-27",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Consulta web pública por orden y autorización expresa del titular. Catálogo26/49 intacto y permisos públicos restaurados. Preview99d594e3:16controlesHTTP y login/sesión/logout propios reales aprobados;37pruebas dirigidas. Sin nueva revisión visual por bloqueo del controlador; CSS de acceso sin cambios. Android19 no queda aprobado por la compuerta web.",
+  "nota": "Publicación web y mapa autorizados expresamente por Víctor el27/10. Mapa local revisado:26ubicacionesdocumentadas, catálogo49intacto; consulta pública y cuenta para funciones personales. Pruebasweb549/fichas90/acceso55/mapa10/precarga31. PreviewHTTPSyvisualantesdeproducción. No investigación nueva ni aprobación de Android por esta compuerta.",
   "revisionAprobada": {
-    "commit": "093ec474fcbd6738fb9e2c665f35e1f4dd6212f9",
-    "contenidoSha256": "sha256:c8bab5edcd64c97ed69175917ad6b955db1a5a429433b7c38b1578c70a4149ea",
+    "commit": "e1923c297dfd17924fd1a9cd2fee9d8b217f62d5",
+    "contenidoSha256": "sha256:194c6b7989e0ebac82abf33650284361ba3fe934062295dfcb5b4bc37fe1ca23",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
@@ -265,6 +265,12 @@
           "referencia": "docs/VERIFICACION-ACCESO-PUBLICO-2026-10-26.md",
           "verificadoEl": "2026-10-26",
           "resumen": "Preview99d594e3:16controlesHTTP y4pasos realesAuth con cuentaQA existente, además de37pruebas dirigidas. Lectura pública26/49 y privados denegados. CSS sin cambios; nueva captura visual no disponible. Sin aprobación APK19."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-MAPA-2026-10-27.md",
+          "verificadoEl": "2026-10-27",
+          "resumen": "Mapa local revisado y pruebas web549, páginas90, acceso55, mapa10 y precarga31. Consulta pública conservada; geolocalización sólo por botón. La inspección HTTPS se registra antes de producción. No aprueba Android."
         }
       ]
     },
