@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Víctor reitera expresamente publicar producción el27/10 después de conocer el bloqueo del control visual. Fuente e1923c297dfd17924fd1a9cd2fee9d8b217f62d5 revisada; preview3fbac666 desplegada y8comprobacionesHTTPSaprobadas. Web549/fichas90/acceso55/mapa10/precarga31 aprobadas;26ubicacionesdocumentadas unidas alcatálogo49conservado. Inspección visual no acreditada: ComputerUse no pudo verificar laURL. Se publica por el publicador normal con todas sus guardas, sin eludir controles del navegador. No investigación nueva ni aprobación Android.",
+  "nota": "Víctor autoriza cerrar y publicar app1.4.0 yweb. Corrección mínima del bridge para conservar la sesión nativa al abrir el tutorial;3 regresiones reales e independiente aprobadas. APK20 intacto; no se aprueba su release hasta pasar tutorial/cartera/salida. Mapa26ycatálogo49 conservados, sin investigar ni rejuvenecerfechas. Visual web no acreditada por controlador; se verifica previewHTTPSantesdeproducción.",
   "revisionAprobada": {
-    "commit": "e1923c297dfd17924fd1a9cd2fee9d8b217f62d5",
-    "contenidoSha256": "sha256:194c6b7989e0ebac82abf33650284361ba3fe934062295dfcb5b4bc37fe1ca23",
+    "commit": "502eb880bcfd7457c9f0b1115c7a7d718c45504d",
+    "contenidoSha256": "sha256:8a5a701691b3352b260da75cecbaccb0d40d32602c92dd9ee6d35a5705ccdfb1",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
@@ -271,6 +271,12 @@
           "referencia": "docs/VERIFICACION-MAPA-2026-10-27.md",
           "verificadoEl": "2026-10-27",
           "resumen": "Mapa local revisado: web549,páginas90,acceso55,mapa10,precarga31. Preview3fbac666 y8controlesHTTPS reales aprobados; fuentes,26coordenadas,49ofertas,cincoassetsversionados yfrontera401privada correctos. Revisión visual no acreditada por bloqueo del controlador. Publicación de producción reiterada expresamente por Víctor. No aprueba Android."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-SESION-TUTORIAL-2026-10-27.md",
+          "verificadoEl": "2026-10-27",
+          "resumen": "Tres regresiones del código real aprobadas y revisión independiente. La sesión se conserva ante opciones nulas y el401 sigue rechazado. APK intacto; validación nativa aún pendiente."
         }
       ]
     },
