@@ -8,14 +8,14 @@ const CONFIGURACION_PUBLICA = Object.freeze({
   SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n',
 });
 const CABECERAS_SEGURIDAD = Object.freeze({
-  'Content-Security-Policy': "default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; worker-src 'self'; manifest-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self' data:; img-src 'self' data:; media-src 'none'; connect-src 'self' https://exgpmjpaaebyoolpwced.supabase.co https://cloudflareinsights.com; form-action 'none'; upgrade-insecure-requests",
+  'Content-Security-Policy': "default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; worker-src 'self'; manifest-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; font-src 'self' data:; img-src 'self' data: https://tile.openstreetmap.org; media-src 'none'; connect-src 'self' https://exgpmjpaaebyoolpwced.supabase.co https://cloudflareinsights.com; form-action 'none'; upgrade-insecure-requests",
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
   'Referrer-Policy': 'no-referrer',
   'Strict-Transport-Security': 'max-age=31536000',
   'Cross-Origin-Opener-Policy': 'same-origin',
   'Cross-Origin-Resource-Policy': 'same-origin',
-  'Permissions-Policy': 'accelerometer=(), autoplay=(), browsing-topics=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
+  'Permissions-Policy': 'accelerometer=(), autoplay=(), browsing-topics=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
 });
 
 function construirWorker(raiz = __dirname) {

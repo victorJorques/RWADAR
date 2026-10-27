@@ -3,7 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { request as solicitarHttp } from 'node:http';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 import { spawn, spawnSync } from 'node:child_process';
 
@@ -833,12 +833,14 @@ const estilos = [...html.matchAll(/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhr
 const rutaScriptApp = '/assets/rwadar-20260820.js';
 const rutaAnalitica = '/assets/analitica-20260927.js';
 const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
-prueba('acceso, analítica, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
-  JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaAnalitica, '/assets/acceso-privado.js', rutaCatalogo,
+prueba('acceso, analítica, mapa, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
+  JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaAnalitica, '/assets/acceso-privado.js',
+    '/assets/mapa-buscar-util-20261027.js','/assets/mapa-buscar-20261027.js',rutaCatalogo,
     '/assets/ficha-editorial-20261022.js','/assets/idioma-en-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js',rutaScriptApp]) &&
   scripts.every(script => /\bdefer\b/.test(script[0]) && !/\basync\b/.test(script[0])));
 prueba('la aplicación carga una hoja propia versionada',
-  estilos.length === 2 && estilos[0][1] === '/assets/rwadar-20260820.css'&&estilos[1][1]==='/assets/idioma-20261022.css');
+  JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
+    '/assets/rwadar-20260820.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css']));
 for (const recurso of [rutaScriptApp, rutaCatalogo, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
@@ -1950,7 +1952,8 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
     esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
 }
 prueba('HTML conserva sus recursos con huella sin depender de un precache del worker',
-  recursoJSPublicado && hojasPublicadas.length === 3 &&
+  recursoJSPublicado && hojasPublicadas.length === 4 &&
+  hojasPublicadas.filter(ruta => /\/mapa-buscar-20261027\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   [recursoJSPublicado, recursoCatalogoPublicado,
     ...scriptsPublicados.map(s=>s[1]), ...hojasPublicadas,
     '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src), ...rutasPortada]
@@ -2009,14 +2012,18 @@ prueba('el simulador real conserva URL HTTPS, las 26 plataformas y las 49 refere
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
 const fechaLoteEmbebido = jsCatalogo.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
 if (!fechaLoteEmbebido) throw new Error('el JavaScript no incrusta verificado_lote_el');
+// Las correcciones individuales pueden ser posteriores al lote sin renovarlo.
+// El reloj inicial debe alcanzarlas; la validación real sigue rechazando
+// fechas posteriores al margen documental del lote y futuros explícitos.
+const fechaInicioCatalogo = [fechaLoteEmbebido, ...arrayDe(jsCatalogo,'EMI').flatMap(o=>[o.verificadaEl,o.documentacion?.revisadaEl])]
+  .filter(fecha=>/^\d{4}-\d{2}-\d{2}$/.test(fecha||'')).sort().at(-1);
 function pestanaCatalogo({ inicio, codigo = js } = {}) {
   const prefijo = publicador.slice(inicioSimulador, publicador.indexOf('vm.createContext(contexto);', inicioSimulador));
   const { contexto, nodo } = vm.runInNewContext(prefijo + '\n({contexto,nodo});', { URL, console, require });
   const nodos = new Map(), escuchas = new Map(), tiempos = [];
-  // Por defecto el reloj arranca el mismo día del lote incrustado: con una fecha
-  // fija, un lote nuevo quedaría «en el futuro» y la web (con razón) no lo
-  // cargaría. Las pruebas con fichas sintéticas fechadas fijan su propio inicio.
-  let instante = Date.parse(inicio ?? `${fechaLoteEmbebido}T12:00:00Z`);
+  // El reloj inicial alcanza la última corrección individual del snapshot.
+  // No modifica la fecha editorial del lote ni los inicios explícitos.
+  let instante = Date.parse(inicio ?? `${fechaInicioCatalogo}T12:00:00Z`);
   contexto.Date = class extends Date {
     constructor(...args) { super(...(args.length ? args : [instante])); }
     static now() { return instante; }
@@ -2454,10 +2461,10 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
 // REGRESION_TARJETAS_EDITORIALES: fixtures sintéticos, sin consultar ni editar
 // el catálogo real. Se comprueba el HTML generado, no solo CSS que lo esconda.
 {
-  // Fixtures fechados respecto al lote incrustado (el reloj arranca ese día):
+  // Fixtures fechados respecto al inicio del reloj de esta pestaña:
   // así no caducan ni quedan «en el futuro» cuando llega una revisión nueva.
   const p = pestanaCatalogo();
-  const dia = n => new Date(Date.parse(`${fechaLoteEmbebido}T00:00:00Z`) + n * 864e5).toISOString().slice(0, 10);
+  const dia = n => new Date(Date.parse(`${fechaInicioCatalogo}T00:00:00Z`) + n * 864e5).toISOString().slice(0, 10);
   const fuentes = ['https://proveedor.example.test/ficha', 'https://documentos.example.test/referencia'];
   const literal = 'Método publicado: rendimiento anual simple de referencia, antes de gastos e impuestos. ' +
     'La ventana documental no garantiza rentabilidad futura ni disponibilidad. REFERENCIA_INTEGRA_FINAL.';
@@ -2641,12 +2648,22 @@ prueba('el secundario conserva dianas táctiles y microtexto legible en móvil',
   })()`,c);
   prueba('ordenar por mínimo usa euros documentados y no convierte precio por token en entrada mínima',slugs==='minimo-documentado,precio-token');
 }
-prueba('las portadas propias pasan por el worker autenticado y el SW no las conserva en caché',
-  /'\.webp': 'image\/webp'/.test(servidor) &&
-  /crearAccesoServidor/.test(fs.readFileSync(path.join(raiz,'functions','_middleware.js'),'utf8')) &&
-  /headers\.set\('Cache-Control', 'private, no-store'\)/.test(servidorAcceso) &&
-  !/addEventListener\(['"]fetch['"]|caches\.open\(/.test(sw) &&
-  /\/plataformas\/\*[\s\S]{0,120}max-age=0, must-revalidate/.test(headers));
+{
+  const { crearAccesoServidor } = await import(pathToFileURL(path.join(raiz,'rwadar-acceso','servidor.mjs')).href);
+  let llamadasAuth=0, entregasPublicas=0;
+  const acceso=crearAccesoServidor({fetchImpl:async()=>{llamadasAuth++;throw new Error('No debe contactar Auth sin sesión');}});
+  const portada=await acceso.atender({request:new Request('https://rwadar.pages.dev/plataformas/spiko.webp'),env:{},
+    next:async()=>{entregasPublicas++;return new Response('portada-publica',{status:200});}});
+  const cuenta=await acceso.atender({request:new Request('https://rwadar.pages.dev/api/acceso/sesion'),env:{},
+    next:async()=>{throw new Error('La sesión no debe delegarse a ASSETS');}});
+  prueba('las portadas son públicas por el worker; la sesión sigue protegida y el SW no guarda copias',
+    /'\.webp': 'image\/webp'/.test(servidor) &&
+    /crearAccesoServidor/.test(fs.readFileSync(path.join(raiz,'functions','_middleware.js'),'utf8')) &&
+    portada.status===200&&(await portada.text())==='portada-publica'&&entregasPublicas===1&&llamadasAuth===0&&
+    cuenta.status===401&&cuenta.headers.get('cache-control')==='private, no-store'&&
+    !/addEventListener\(['"]fetch['"]|caches\.open\(/.test(sw) &&
+    /\/plataformas\/\*[\s\S]{0,120}max-age=0, must-revalidate/.test(headers));
+}
 
 console.log('\n=== PRIVACIDAD, ÍNDICE Y BLOQUEOS ===');
 prueba('la privacidad identifica al titular y documenta el alcance editorial',
@@ -2696,8 +2713,9 @@ prueba('privacidad y UI permiten solicitar la retirada del consentimiento anteri
   /Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar/.test(html) &&
   /puedes retirarlo escribiendo a RWAdar@protonmail.com/.test(html) &&
   /Está desactivado por defecto[\s\S]*faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(js));
-prueba('privacidad exige cuenta confirmada y conserva correos, sesión y borrado desde Perfil',
-  /Necesitas una cuenta con el correo confirmado para acceder al radar/.test(privacidadLineal) &&
+prueba('privacidad distingue consulta pública y cuenta confirmada para funciones personales, conservando correos, sesión y borrado',
+  /La consulta de la web es pública/.test(privacidadLineal) &&
+  /Necesitas una cuenta con el correo confirmado para las funciones personales/.test(privacidadLineal) &&
   /correo para confirmar la dirección/.test(privacidadLineal) &&
   /enlace para poner una contraseña nueva/.test(privacidadLineal) &&
   /cuenta de Gmail de RWAdar/.test(privacidadLineal) &&

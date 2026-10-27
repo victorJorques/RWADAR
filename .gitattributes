@@ -8,3 +8,5 @@
 *.ico binary
 *.woff binary
 *.woff2 binary
+/rwadar-site/assets/leaflet-1.9.4.css -text whitespace=cr-at-eol
+/rwadar-site/assets/leaflet-1.9.4.js -text whitespace=cr-at-eol
