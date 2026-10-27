@@ -80,3 +80,70 @@ test('cambio de cuenta en otra pestaña borra la interfaz anterior antes de cont
   await new Promise(resolve=>setImmediate(resolve));uid='cuenta-b';
   await assert.rejects(e.bridge.verificar());assert.equal(e.bridge.usuario(),null);assert.ok(e.borrados()>0);
 });
+
+test('regresion tutorial: datos null y undefined conservan GET privado', async () => {
+  const llamadas=[];
+  const e=entornoBridge(async(path,opciones)=>{
+    llamadas.push({path,opciones});
+    return {ok:true,json:async()=>path.endsWith('/sesion')
+      ? {autenticada:true,usuario:{id:'cuenta-a'}} : [{id:'cuenta-a'}]};
+  });
+  await new Promise(resolve=>setImmediate(resolve));
+  for (const opciones of [null,undefined]) {
+    assert.equal((await e.bridge.datos('/mi_perfil?select=*',opciones))[0].id,'cuenta-a');
+    const llamada=llamadas.at(-1);
+    assert.equal(llamada.path,'/api/acceso/datos');
+    assert.equal(llamada.opciones.credentials,'same-origin');
+    assert.deepEqual(JSON.parse(llamada.opciones.body),{ruta:'/mi_perfil?select=*',metodo:'GET'});
+  }
+  assert.equal(llamadas.some(llamada=>llamada.path.endsWith('/salir')),false);
+  assert.equal(e.bridge.usuario().id,'cuenta-a');
+});
+
+test('regresion tutorial: arranque Cuenta real conserva la sesion adoptada', async () => {
+  const llamadas=[],nodos=new Map();
+  function nodo(id) {
+    if(!nodos.has(id))nodos.set(id,{addEventListener(){},setAttribute(){},removeAttribute(){},
+      classList:{contains:()=>false,add(){},remove(){}}});
+    return nodos.get(id);
+  }
+  const context=vm.createContext({window:{addEventListener(){}},
+    document:{getElementById:nodo,addEventListener(){},documentElement:{replaceChildren(){throw new Error('No debe borrar una cuenta valida');}}},
+    location:{hash:'',pathname:'/',search:'',replace(){throw new Error('No debe navegar al arrancar');},assign(){throw new Error('No debe pedir acceso');}},
+    sessionStorage:{getItem:()=>null,setItem(){},removeItem(){}},
+    setInterval(){},URLSearchParams,SERVICIOS_USUARIO_DISPONIBLES:true,OPINIONES_DISPONIBLES:false,
+    fetch:async(path,opciones)=>{
+      llamadas.push({path,opciones});
+      if(path.endsWith('/sesion'))return {ok:true,json:async()=>({autenticada:true,usuario:{id:'cuenta-a',correo:'qa@ejemplo.test',correoConfirmadoEl:'2026-10-27T00:00:00Z'}})};
+      if(path.endsWith('/salir'))return {ok:true,json:async()=>({cerrado:true})};
+      assert.equal(path,'/api/acceso/datos');
+      const {ruta,metodo}=JSON.parse(opciones.body);assert.equal(metodo,'GET');
+      const datos=ruta.startsWith('/mi_perfil?')?[{id:'cuenta-a',nombre:'Prueba local'}]:[];
+      return {ok:true,json:async()=>datos};
+    }});
+  vm.runInContext(bridge,context);
+  const consentimiento=web.slice(web.indexOf("const VERSION_CONSENTIMIENTO_CORREO="),web.indexOf('/* correo-consentimiento:fin */'));
+  const cuenta=web.slice(web.indexOf('const Cuenta = (function(){'),web.indexOf('/* comunidad:inicio */'));
+  vm.runInContext(consentimiento+'\n'+cuenta+'\nglobalThis.cuentaPrueba=Cuenta;',context);
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(context.cuentaPrueba.hay(),true);
+  assert.equal(context.window.RWADAR_ACCESO.usuario().id,'cuenta-a');
+  assert.equal(llamadas.some(llamada=>llamada.path.endsWith('/salir')),false);
+  const lecturas=llamadas.filter(llamada=>llamada.path==='/api/acceso/datos').map(llamada=>JSON.parse(llamada.opciones.body).ruta);
+  assert.ok(lecturas.includes('/mi_perfil?select=*'));
+  assert.ok(lecturas.includes('/vigilancia?select=plataforma_id,plataformas(nombre)'));
+});
+
+test('regresion tutorial: datos null con 401 borra la cuenta y mantiene el rechazo', async () => {
+  const llamadas=[];
+  const e=entornoBridge(async(path,opciones)=>{
+    llamadas.push({path,opciones});
+    if(path.endsWith('/sesion'))return {ok:true,json:async()=>({autenticada:true,usuario:{id:'cuenta-a'}})};
+    return {ok:false,status:401,json:async()=>({error:'sesion_necesaria'})};
+  });
+  await new Promise(resolve=>setImmediate(resolve));
+  await assert.rejects(e.bridge.datos('/mi_perfil?select=*',null),error=>error.status===401);
+  assert.equal(e.bridge.usuario(),null);assert.ok(e.borrados()>0);
+  assert.ok(e.destinos.includes('/'));assert.ok(e.destinos.some(path=>path.startsWith('/acceso?volver=')));
+  assert.equal(llamadas.some(llamada=>llamada.path.endsWith('/salir')),false);
+});

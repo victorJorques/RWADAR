@@ -55,6 +55,7 @@
     }
   }
   async function datos(ruta, opciones = {}) {
+    if (opciones === null || opciones === undefined) opciones = {};
     try { await verificar(); } catch (error) { entrar(); throw error; }
     const response = await fetch('/api/acceso/datos', { method: 'POST', credentials: 'same-origin', cache: 'no-store', redirect: 'error',
       headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ruta, metodo: opciones.method || 'GET',
