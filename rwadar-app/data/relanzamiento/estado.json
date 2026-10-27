@@ -11,7 +11,7 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Publicación web y mapa autorizados expresamente por Víctor el27/10. Mapa local revisado:26ubicacionesdocumentadas, catálogo49intacto; consulta pública y cuenta para funciones personales. Pruebasweb549/fichas90/acceso55/mapa10/precarga31. PreviewHTTPSyvisualantesdeproducción. No investigación nueva ni aprobación de Android por esta compuerta.",
+  "nota": "Víctor reitera expresamente publicar producción el27/10 después de conocer el bloqueo del control visual. Fuente e1923c297dfd17924fd1a9cd2fee9d8b217f62d5 revisada; preview3fbac666 desplegada y8comprobacionesHTTPSaprobadas. Web549/fichas90/acceso55/mapa10/precarga31 aprobadas;26ubicacionesdocumentadas unidas alcatálogo49conservado. Inspección visual no acreditada: ComputerUse no pudo verificar laURL. Se publica por el publicador normal con todas sus guardas, sin eludir controles del navegador. No investigación nueva ni aprobación Android.",
   "revisionAprobada": {
     "commit": "e1923c297dfd17924fd1a9cd2fee9d8b217f62d5",
     "contenidoSha256": "sha256:194c6b7989e0ebac82abf33650284361ba3fe934062295dfcb5b4bc37fe1ca23",
@@ -270,7 +270,7 @@
           "tipo": "prueba",
           "referencia": "docs/VERIFICACION-MAPA-2026-10-27.md",
           "verificadoEl": "2026-10-27",
-          "resumen": "Mapa local revisado y pruebas web549, páginas90, acceso55, mapa10 y precarga31. Consulta pública conservada; geolocalización sólo por botón. La inspección HTTPS se registra antes de producción. No aprueba Android."
+          "resumen": "Mapa local revisado: web549,páginas90,acceso55,mapa10,precarga31. Preview3fbac666 y8controlesHTTPS reales aprobados; fuentes,26coordenadas,49ofertas,cincoassetsversionados yfrontera401privada correctos. Revisión visual no acreditada por bloqueo del controlador. Publicación de producción reiterada expresamente por Víctor. No aprueba Android."
         }
       ]
     },
