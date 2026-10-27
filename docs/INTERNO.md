@@ -19,6 +19,8 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 ## Qué está funcionando hoy
 
+El mapa de activos está preparado dentro de Buscar, con 26 ubicaciones documentadas y permiso opcional de ubicación. La preview y sus recursos HTTPS pasan las comprobaciones; su revisión visual quedó bloqueada por el controlador del navegador. Esta versión del mapa todavía no se ha promovido a producción.
+
 **Web publicada el 26 de octubre:** el catálogo, las fichas y Academy se pueden
 consultar sin registro. La cuenta confirmada se pide para guardar y usar funciones
 personales. Se corrigió una carrera del inicio de sesión que podía cerrar la

@@ -6,9 +6,9 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 27 de octubre de 2026 · Codex · mapa preparado para preview
+## 27 de octubre de 2026 · Codex · mapa en preview; control visual bloqueado
 
-Mapa en Buscar, 26 ubicaciones documentadas y consulta pública. Fuente e1923c297dfd17924fd1a9cd2fee9d8b217f62d5. Pasan web549, fichas/RSS90, acceso55, mapa10 y precarga31. Falta comprobación visual HTTPS y producción; no anunciar publicación aún. [Informe breve](../VERIFICACION-MAPA-2026-10-27.md). App: idiomas/favorito y lección completados; faltan tutorial, cartera y salida. APK20 sin recompilar. Investigación pausada; main compartido intacto.
+Mapa en Buscar, 26 ubicaciones documentadas y consulta pública. Fuente e1923c297dfd17924fd1a9cd2fee9d8b217f62d5. Pasan web549, fichas/RSS90, acceso55, mapa10 y precarga31. Preview https://3fbac666.rwadar.pages.dev desplegada y 8controlesHTTP aprobados. El control visual se detuvo al no poder verificar la URL de Chrome. Producción no promovida; no volver a desplegar preview ni repetir pruebas locales que pasan. Falta revisión visual y producción. [Informe breve](../VERIFICACION-MAPA-2026-10-27.md). App: idiomas/favorito57/57 y lección completados en40562598549; falló después por lectura temprana del tutorial aún cargando. PatchLF preparado en W/android-tutorial-continuation-40562598549.patch, sin aplicar. Generador público W/generar-qa-publica-c20-language-reuse-27.propuesto.py. Faltan tutorial, cartera y salida. CuentaQA limpiada al cierre del turno. APK20 sin recompilar. Investigación pausada; main compartido intacto.
 
 ---
 
