@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Víctor autoriza cerrar y publicar app1.4.0 yweb. Corrección mínima del bridge para conservar la sesión nativa al abrir el tutorial;3 regresiones reales e independiente aprobadas. APK20 intacto; no se aprueba su release hasta pasar tutorial/cartera/salida. Mapa26ycatálogo49 conservados, sin investigar ni rejuvenecerfechas. Visual web no acreditada por controlador; se verifica previewHTTPSantesdeproducción.",
+  "nota": "Víctor autoriza terminar y publicar la app 1.4.0 y la web. Se conserva el APK20 y las pruebas aprobadas. El tutorial incorpora continuación web fija sin redirección HTTP ni tokens en URL, y separa su contenido público de los disparadores automáticos del perfil. Los métodos privados siguen verificando la cuenta. Pruebas dirigidas y revisión independiente documentadas. La release Android exige todavía superar tutorial, cartera y salida. Mapa y catálogo completos conservados; investigación pausada y sin cambiar fechas. La inspección visual web no quedó acreditada por el controlador; preview HTTPS antes de producción.",
   "revisionAprobada": {
-    "commit": "502eb880bcfd7457c9f0b1115c7a7d718c45504d",
-    "contenidoSha256": "sha256:8a5a701691b3352b260da75cecbaccb0d40d32602c92dd9ee6d35a5705ccdfb1",
+    "commit": "fbcc0d9bc00a3daedd974af6ee27491bbaf993eb",
+    "contenidoSha256": "sha256:97807b5bccedc21f09a10a5e41fca4f43a981d953ae6e6a346a33061755efa5b",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
