@@ -735,21 +735,13 @@ def documentary_and_five_images():
     checks=previous['checks']
     # Only saved original XML witnesses are inherited; no missing frames invented.
     traversals['14-spiko-es']=spanish['visibleTexts']
-    # Fresh device: prepare the local favourite with real UI, without redoing photos/documentary traversal.
-    title='Spiko Letras del Tesoro Euro'
-    open_offer_catalog();open_collection('principales')
-    open_observed_offer('Spiko',title)
-    CLICK('Guardar '+title+' en Perfil')
-    root=wait_ui('Quitar '+title+' de guardadas')
-    screen('14-spiko-favorite-prepared-current-run',root)
-    CLICK('Cerrar '+title);wait_ui('Ofertas específicas')
-    DOCUMENTARY_REUSE_METADATA={'runId': 40403843475, 'originalStatus': 'failed', 'originalFailurePhase': 'languages', 'harnessHeadSha': 'a7d0497f66803048c52d6ce2e7f62eba2de1d87b', 'resultSha256': 'e50ff7e3a8d46f1fd8d7206cc882d9b24167c730f7383d2b86358f797a91dd36', 'checkpointsSha256': '9a8a3b010ab40f04a02f79cde535b0723d4f606928f2b7a1d43e834c99badd7f', 'zipSha256': '1b51f86ecff868988229522e21f79ad8858a79f54baafd727147d19edc6fb6ef', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'observationPerformedInThisRun': False, 'inheritedFlagsReferToOriginalRun': True, 'documentaryAndFiveImagesScopeOnly': True, 'spanishBaselineSha256': '4d0cdb496b65d31757457615da98224daa0c5b1f69d28947eb9a9e4e72724616', 'spanishBaselineKind': 'saved-xml-visible-text-witnesses-only', 'unsavedTraversalFramesReconstructed': False, 'favoritePreparedInThisRun': True}
+    # Languages/favourite passed in40562598549; no new local favourite is needed.
+    DOCUMENTARY_REUSE_METADATA={'runId': 40403843475, 'originalStatus': 'failed', 'originalFailurePhase': 'languages', 'harnessHeadSha': 'a7d0497f66803048c52d6ce2e7f62eba2de1d87b', 'resultSha256': 'e50ff7e3a8d46f1fd8d7206cc882d9b24167c730f7383d2b86358f797a91dd36', 'checkpointsSha256': '9a8a3b010ab40f04a02f79cde535b0723d4f606928f2b7a1d43e834c99badd7f', 'zipSha256': '1b51f86ecff868988229522e21f79ad8858a79f54baafd727147d19edc6fb6ef', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'observationPerformedInThisRun': False, 'inheritedFlagsReferToOriginalRun': True, 'documentaryAndFiveImagesScopeOnly': True, 'spanishBaselineSha256': '4d0cdb496b65d31757457615da98224daa0c5b1f69d28947eb9a9e4e72724616', 'spanishBaselineKind': 'saved-xml-visible-text-witnesses-only', 'unsavedTraversalFramesReconstructed': False, 'favoritePreparedInThisRun': False}
     _checkpoint('documentaryAndFiveImages','reused-validated-scope-only',{'reuseMetadata':DOCUMENTARY_REUSE_METADATA})
-    _checkpoint('favoritePreparedForLanguageContinuation','validated-scope-only',{'title':title,'preparedByCurrentNativeUi':True})
     out.joinpath('documentary-reuse-metadata.json').write_text(json.dumps(DOCUMENTARY_REUSE_METADATA,indent=2),encoding='utf-8')
     return {'cards':checks['nativeCardDecisionFacts'],'riskAndCta':checks['fourRisksBeforeSingleCta'],
             'historicalReferencesContextualized':checks['historicalReferences'],
-            'datesSeparated':checks['datesSeparated'],'favoritePrepared':title}
+            'datesSeparated':checks['datesSeparated'],'favoritePrepared':False}
 
 
 def languages_and_favorite():

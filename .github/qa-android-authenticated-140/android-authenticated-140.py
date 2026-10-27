@@ -202,21 +202,75 @@ def catalog_and_detail():
                                                   'androidBack':True,'sourceReachableNotOpened':True}
 
 
+
+LANGUAGE_REUSE_META={'runId': 40562598549, 'jobId': 122395343247, 'originalStatus': 'failed', 'originalFailurePhase': 'tutorial', 'harnessHeadSha': 'f05332c2a639a30011283e8882674b27f6b98e81', 'resultSha256': '9781d5be0b2aa0d4b281f4feef5568306082971d081891ed47146daf3b14afd9', 'checkpointsSha256': '753d06760ab9219b78c22ea72a06a34565cba826e29c4cd8e6595717a23b01b4', 'zipSha256': '765246ea7530c56587ccc4fc282eb5f6b19492c0cd3c2930d44d2a48ea0cef6b', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'observationPerformedInThisRun': False, 'inheritedFlagsReferToOriginalRun': True, 'languageReportSha256': 'ee1e0f5008d01bd49f49529a5445d527bbbce8efa30a70b2f9a42216f0072e98', 'invariantObservationsSha256': '701bf811aa3e554f37329a650ca2f14012ade6155ad87a2bb09dcdd5030be20b', 'languagesAndFavoritePersistenceScopeOnly': True, 'reusedChecks': ['languagesAndFavoritePersistence']}
+ACADEMY_LESSON_REUSE_META={'runId': 40562598549, 'jobId': 122395343247, 'originalStatus': 'failed', 'originalFailurePhase': 'tutorial', 'harnessHeadSha': 'f05332c2a639a30011283e8882674b27f6b98e81', 'resultSha256': '9781d5be0b2aa0d4b281f4feef5568306082971d081891ed47146daf3b14afd9', 'checkpointsSha256': '753d06760ab9219b78c22ea72a06a34565cba826e29c4cd8e6595717a23b01b4', 'zipSha256': '765246ea7530c56587ccc4fc282eb5f6b19492c0cd3c2930d44d2a48ea0cef6b', 'apkSha256': 'c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614', 'sourceHeadSha': '7c64b6c15a826ddb3189c8ab195b4fa36201ca51', 'observationPerformedInThisRun': False, 'inheritedFlagsReferToOriginalRun': True, 'lessonXmlSha256': '6f087b7b8a2f57dde37a0eb62c40454201bb5707a83c09c52a2bb0fecbb966b0', 'academyLessonScopeOnly': True, 'reusedChecks': ['academyLesson']}
+
+def reuse_completed_languages_and_lesson():
+    def pinned(label,digest):
+        raw=ROOT.joinpath('baseline-c20-languages-complete-40562598549-'+label+'.json').read_bytes()
+        require(hashlib.sha256(raw).hexdigest()==digest,'Completed language evidence identity mismatch')
+        return json.loads(raw)
+    previous=pinned('result',LANGUAGE_REUSE_META['resultSha256'])
+    checkpoints=pinned('checkpoints',LANGUAGE_REUSE_META['checkpointsSha256'])
+    language=pinned('language',LANGUAGE_REUSE_META['languageReportSha256'])
+    observations=pinned('observations',LANGUAGE_REUSE_META['invariantObservationsSha256'])
+    require(previous['status']=='failed' and previous['phase']=='tutorial' and previous['full20PointQA'] is False and previous['releaseApproved'] is False,'Original tutorial failure must stay failed')
+    require(all(all(data[key]==CANDIDATE[key] for key in ('apkSha256','apkBytes','versionCode','sourceHeadSha')) for data in (previous,checkpoints)),'Language evidence belongs to another candidate')
+    require(checkpoints['runId']=='40562598549' and checkpoints['harnessHeadSha']==LANGUAGE_REUSE_META['harnessHeadSha'],'Completed language run provenance mismatch')
+    require(previous['checks']['languagesAndFavoritePersistence']==language and language['invariantObservations']==observations,'Language report is not its original exact observation')
+    require(language['invariantObservationsSha256']==LANGUAGE_REUSE_META['invariantObservationsSha256'],'Language observation digest mismatch')
+    require(all(language[key] is True for key in ('englishTabs','spanishTabs','englishPersistedAfterRestart','spanishPersistedAfterRestart','favoritePersistedAcrossRestartAndRelogin','qaFavoriteRemoved','amountsAndUnitsUnchanged','sourceDatesUnchanged','sourceUrlsUnchanged','physicalInvariantCoverageComplete')),'Completed language criterion is incomplete')
+    for locale,count in (('es',38),('en',39)):
+        scan=observations[locale]
+        catalog.assert_language_invariant_coverage(scan)
+        require(len(scan['signature'])==57 and len(scan['frames'])==count and scan['signatureSha256']=='a89c73e0a749b6bd4371b0dbf107121d8ba3538aa76cc89d9cd0f9bb7343b2d5','Completed language physical coverage differs')
+    catalog.assert_language_invariant_equality(observations['es'],observations['en'])
+    require(checkpoints['criteria']['languagesAndFavoritePersistence']['status']=='validated-scope-only','Completed language checkpoint missing')
+    lesson=ROOT.joinpath('baseline-c20-academy-lesson-40562598549.xml').read_bytes()
+    require(hashlib.sha256(lesson).hexdigest()==ACADEMY_LESSON_REUSE_META['lessonXmlSha256'] and previous['checks']['academyLesson'] is True,'Completed Academy lesson evidence mismatch')
+    report['languageReuseMetadata']=LANGUAGE_REUSE_META
+    report['academyLessonReuseMetadata']=ACADEMY_LESSON_REUSE_META
+    return {'languagesAndFavoritePersistence':language,'academyLesson':True}
+
+
+def tutorial_content_ready(root,dimensions):
+    def box(node,outer):
+        b=list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
+        return (node.get('visible')=='true' and len(b)==4 and outer[0]<=b[0]<b[2]<=outer[2] and outer[1]<=b[1]<b[3]<=outer[3])
+    display=[0,0,*dimensions]
+    if any(node.get('text')=='Levantando el edificio…' and box(node,display) for node in root.iter('node')):return False
+    for view in root.iter('node'):
+        if view.get('class')!='android.webkit.WebView' or not box(view,display):continue
+        bounds=list(map(int,re.findall(r'-?\d+',view.get('bounds',''))))
+        if any(node.get('text','').casefold() in ('1 · entero','paso 1 de 4') and box(node,bounds) for node in view.iter('node')):return True
+    return False
+
+
+def wait_tutorial_content():
+    deadline=time.monotonic()+60
+    while time.monotonic()<deadline:
+        root=ui.dump()
+        if tutorial_content_ready(root,ui.display_size()):return root
+        time.sleep(.5)
+    capture('05-tutorial-not-physically-ready')
+    raise AssertionError('Real web tutorial never became physically ready; loading or offscreen DOM is not step1')
+
+
 def tutorial():
     click('Academy')
-    click('Lección 1:',True)
-    ui.wait_ui('Lección 1 de','Volver a las lecciones',timeout=20)
-    capture('18-academy-real-lesson')
-    click('Volver a las lecciones')
     ui.wait_ui('Empezar tutorial 3D',timeout=20)
-    report['checks']['academyLesson']=True
     click('Empezar tutorial 3D')
-    root = ui.wait_ui('Paso 1 de 4',timeout=35)
+    root = wait_tutorial_content()
     require(any(n.get('class') == 'android.webkit.WebView' for n in root.iter('node')),
             'Expected the real authenticated web tutorial; native fallback is not certified')
     steps = []
     for step in range(1,5):
         root = ui.wait_ui('Paso ' + str(step) + ' de 4',timeout=15)
+        control='Siguiente →' if step<4 else 'Volver a Academy'
+        root=locate(control)
+        check_visible_box(root,'Paso ' + str(step) + ' de 4')
+        check_visible_box(root,control)
         capture('05-tutorial-step-' + str(step))
         steps.append(step)
         # No automatic timers or JS injection: each transition is a real UI press.
@@ -447,7 +501,8 @@ def main():
     report['checks']['historicalReferences']=documentary['historicalReferencesContextualized']
     report['checks']['fourRisksBeforeSingleCta']=documentary['riskAndCta']
     note_phase('languages')
-    report['checks']['languagesAndFavoritePersistence']=catalog.languages_and_favorite()
+    report['checks'].update(reuse_completed_languages_and_lesson())
+    OUT.joinpath('authenticated-result.json').write_text(ui.sanitize(json.dumps(report,indent=2,ensure_ascii=False)),encoding='utf-8')
     note_phase('tutorial')
     tutorial()
     note_phase('portfolio')
