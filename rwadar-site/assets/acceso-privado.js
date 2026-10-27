@@ -74,9 +74,13 @@
     usuario = result.usuario; return { ...usuario };
   }
   window.RWADAR_ACCESO = Object.freeze({ verificar, catalogo, datos, reautenticar, salir, entrar, usuario: () => usuario && { ...usuario } });
-  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') verificar().catch(() => {}); });
-  window.addEventListener('pageshow', () => verificar().catch(() => {}));
-  setInterval(() => verificar().catch(() => {}), 60000);
-  if (sessionStorage.getItem('rwadar.cierre.pendiente') === 'si') salir().catch(() => {});
-  else verificar().catch(() => {});
+  // El tutorial nativo es publico; los metodos privados siguen verificando al usarse.
+  const tutorialNativoPublico = !!window.ReactNativeWebView && location.pathname === '/' && location.hash === '#explain';
+  if (!tutorialNativoPublico) {
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') verificar().catch(() => {}); });
+    window.addEventListener('pageshow', () => verificar().catch(() => {}));
+    setInterval(() => verificar().catch(() => {}), 60000);
+    if (sessionStorage.getItem('rwadar.cierre.pendiente') === 'si') salir().catch(() => {});
+    else verificar().catch(() => {});
+  }
 })();

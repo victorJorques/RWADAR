@@ -147,3 +147,48 @@ test('regresion tutorial: datos null con 401 borra la cuenta y mantiene el recha
   assert.ok(e.destinos.includes('/'));assert.ok(e.destinos.some(path=>path.startsWith('/acceso?volver=')));
   assert.equal(llamadas.some(llamada=>llamada.path.endsWith('/salir')),false);
 });
+
+test('tutorial publico nativo no inicia cuenta y datos explicito sigue exigiendo sesion', async () => {
+  const llamadas=[],destinos=[],eventosVentana=new Map(),eventosDocumento=new Map(),intervalos=[],nodos=new Map();
+  const registrar=(mapa,tipo,handler)=>mapa.set(tipo,[...(mapa.get(tipo)||[]),handler]);
+  function nodo(id) {
+    if(!nodos.has(id))nodos.set(id,{addEventListener(){},setAttribute(){},removeAttribute(){},
+      classList:{contains:()=>false,add(){},remove(){}}});
+    return nodos.get(id);
+  }
+  const context=vm.createContext({
+    window:{ReactNativeWebView:{postMessage(){}},addEventListener:(tipo,handler)=>registrar(eventosVentana,tipo,handler)},
+    document:{visibilityState:'visible',getElementById:nodo,
+      addEventListener:(tipo,handler)=>registrar(eventosDocumento,tipo,handler),
+      documentElement:{replaceChildren(){throw new Error('El tutorial publico no debe borrar su DOM');}}},
+    location:{hash:'#explain',pathname:'/',search:'',replace:path=>destinos.push(path),assign:path=>destinos.push(path)},
+    sessionStorage:{getItem:()=>null,setItem(){},removeItem(){}},
+    setInterval:handler=>intervalos.push(handler),URLSearchParams,
+    SERVICIOS_USUARIO_DISPONIBLES:true,OPINIONES_DISPONIBLES:false,
+    fetch:async(path,opciones)=>{llamadas.push({path,opciones});return {ok:false,status:401};}
+  });
+  vm.runInContext(bridge,context);
+  const consentimiento=web.slice(web.indexOf('const VERSION_CONSENTIMIENTO_CORREO='),web.indexOf('/* correo-consentimiento:fin */'));
+  const cuenta=web.slice(web.indexOf('const Cuenta = (function(){'),web.indexOf('/* comunidad:inicio */'));
+  vm.runInContext(consentimiento+'\n'+cuenta+'\nglobalThis.cuentaPrueba=Cuenta;',context);
+  await new Promise(resolve=>setImmediate(resolve));
+  for(const handler of eventosVentana.get('pageshow')||[])handler();
+  for(const handler of eventosDocumento.get('visibilitychange')||[])handler();
+  for(const handler of intervalos)handler();
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(llamadas.length,0);
+  assert.equal(intervalos.length,0);
+  assert.equal(eventosVentana.has('pageshow'),false);
+  assert.equal(eventosDocumento.has('visibilitychange'),false);
+  assert.equal(context.window.RWADAR_ACCESO.usuario(),null);
+  assert.equal(context.cuentaPrueba.hay(),false);
+  assert.equal(context.cuentaPrueba.uid(),false);
+  assert.deepEqual(destinos,[]);
+  await assert.rejects(context.window.RWADAR_ACCESO.datos('/mi_perfil?select=*',null));
+  assert.deepEqual(llamadas.map(llamada=>llamada.path),['/api/acceso/sesion']);
+  assert.equal(llamadas[0].opciones.credentials,'same-origin');
+  assert.equal(llamadas[0].opciones.cache,'no-store');
+  assert.equal(llamadas[0].opciones.redirect,'error');
+  assert.equal(context.window.RWADAR_ACCESO.usuario(),null);
+  assert.ok(destinos.some(path=>path.startsWith('/acceso?volver=')));
+});

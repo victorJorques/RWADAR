@@ -53,7 +53,7 @@ test('la salida compilada conserva la CSP estricta del intercambio nativo y no r
   const response = await worker.fetch(new Request('https://rwadar.pages.dev/api/acceso/tutorial',
     { headers: { Authorization: 'Bearer ' + token } }), {}, { waitUntil() {} });
   assert.equal(response.status, 200);
-  assert.match(response.headers.get('content-security-policy'), /default-src 'none'/);
+  assert.equal(response.headers.get('content-security-policy'), "default-src 'none'; script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'");
   assert.match(response.headers.get('set-cookie'), /HttpOnly; Secure; SameSite=Lax/);
   assert.equal((await response.text()).includes(token), false);
 });

@@ -124,8 +124,15 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
       ? respuesta({ error: 'ruta_no_permitida' }, 404) : context.next();
     if (endpoint && !recursoCatalogo && !['/api/acceso/sesion', '/api/acceso/entrar', '/api/acceso/registrar',
       '/api/acceso/recuperar', '/api/acceso/reenviar', '/api/acceso/inspeccionar',
-      '/api/acceso/adoptar', '/api/acceso/nueva-clave', '/api/acceso/salir', '/api/acceso/datos', '/api/acceso/reautenticar', '/api/acceso/tutorial'].includes(path)) return respuesta({ error: 'ruta_no_permitida' }, 404);
+      '/api/acceso/adoptar', '/api/acceso/nueva-clave', '/api/acceso/salir', '/api/acceso/datos', '/api/acceso/reautenticar', '/api/acceso/tutorial', '/api/acceso/tutorial-continuar.js'].includes(path)) return respuesta({ error: 'ruta_no_permitida' }, 404);
     try {
+      if (path === '/api/acceso/tutorial-continuar.js') {
+        if (request.method !== 'GET') return respuesta({ error: 'metodo_no_permitido' }, 405);
+        if (url.search || request.headers.get('sec-fetch-site') === 'cross-site') return respuesta({ error: 'solicitud_invalida' }, 400);
+        return new Response("(function () { 'use strict'; if (location.pathname !== '/api/acceso/tutorial') return; location.replace('/#explain'); })();", { status: 200, headers: {
+          'Content-Type': 'application/javascript; charset=utf-8', 'X-Content-Type-Options': 'nosniff',
+          'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer', 'X-Robots-Tag': 'noindex, nofollow' } });
+      }
       if (path === '/api/acceso/tutorial') {
         if (request.method !== 'GET') return respuesta({ error: 'metodo_no_permitido' }, 405);
         if (url.search || request.headers.get('sec-fetch-site') === 'cross-site') return respuesta({ error: 'solicitud_invalida' }, 400);
@@ -134,10 +141,10 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
         if (!authorization.startsWith('Bearer ')) throw new Error('sin_sesion');
         const token = authorization.slice(7); await verificar(env, token);
         // No HTTP redirect: some WebViews forward Authorization on same-origin
-        // redirects. Native switches source to /#explain without headers after load.
-        return new Response('<!doctype html><html lang="es"><meta charset="utf-8"><title>Abriendo tutorial de Academy</title></html>', { status: 200, headers: {
+        // redirects. The fixed script and native onLoadEnd both continue to /#explain.
+        return new Response('<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Abriendo tutorial de Academy</title><body><p>Abriendo el tutorial de Academy.</p><a href="/#explain">Continuar al tutorial</a><script src="/api/acceso/tutorial-continuar.js" defer></script></body></html>', { status: 200, headers: {
           'Content-Type': 'text/html; charset=utf-8', 'Set-Cookie': cookie(token),
-          'Content-Security-Policy': "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+          'Content-Security-Policy': "default-src 'none'; script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
           'Cache-Control': 'private, no-store', 'X-Robots-Tag': 'noindex, nofollow',
           'Referrer-Policy': 'no-referrer' } });
       }

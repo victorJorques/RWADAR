@@ -4240,6 +4240,7 @@ const Cuenta = (function(){
 
  /* --- arranque ---------------------------------------------------- */
  function iniciar(){
+  if(typeof window!=='undefined'&&window.ReactNativeWebView&&typeof location!=='undefined'&&location.pathname==='/'&&location.hash==='#explain')return;
   if(!SERVICIOS_USUARIO_DISPONIBLES)return;
   const b=$('btnCuenta'); if(!b) return;          /* en el pre-renderizado no hay DOM */
   b.addEventListener('click',()=>identidadConfirmada?abrirPerfil():abrir('entrar'));
