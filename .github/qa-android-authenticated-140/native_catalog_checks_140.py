@@ -334,6 +334,120 @@ def document_detail(prefix, title, required, forbidden=(), inspect=None, scan_to
     raise AssertionError('Missing visible documentary evidence: ' + ', '.join(sorted(remaining)))
 
 
+# Language parity has its own complete ES/EN observations. A mounted node is
+# inventory, never proof that its text was physically visible during the scan.
+_LANGUAGE_SCANS = {}
+_LANGUAGE_URL = re.compile(r'https?://[^\s<>"\x27]+')
+_LANGUAGE_DATE = re.compile(r'\b\d{2}/\d{2}/\d{4}\b|\b\d{4}-\d{2}-\d{2}\b')
+_LANGUAGE_NUMBER = r'(?<![\w.,])\d+(?:[.,]\d+)*(?![\w.,])'
+_LANGUAGE_UNIT = r'(?:EUR|USD|CHF|GBP|€|%)'
+_LANGUAGE_SPACE = r'[^\S\r\n]*'
+_LANGUAGE_AMOUNT = re.compile(
+    _LANGUAGE_NUMBER + _LANGUAGE_SPACE + r'(?:[kKmMbB]' + _LANGUAGE_SPACE + r')?' + _LANGUAGE_UNIT + r'(?!\w)'
+    + r'|(?<!\w)(?:EUR|USD|CHF|GBP|€)' + _LANGUAGE_SPACE + _LANGUAGE_NUMBER)
+
+
+def language_field_invariants(value):
+    # Keep field boundaries, exact decimal spelling, units, multiplicity and URL
+    # bytes. A percent escape in a URL and a date beside an EUR label are not money.
+    urls = _LANGUAGE_URL.findall(value)
+    without_urls = _LANGUAGE_URL.sub(' ', value)
+    dates = _LANGUAGE_DATE.findall(without_urls)
+    without_dates = _LANGUAGE_DATE.sub(' ', without_urls)
+    amounts = [re.sub(r'\s+', ' ', item).strip() for item in _LANGUAGE_AMOUNT.findall(without_dates)]
+    units = re.findall(r'(?<!\w)(?:EUR|USD|CHF|GBP|€)(?!\w)', without_dates)
+    return {'amounts': amounts, 'dates': dates, 'urls': urls, 'units': units}
+
+
+def language_frame_invariants(viewport, bounds):
+    signature, physically_visible = [], []
+    for node in viewport.iter('node'):
+        box = list(map(int, re.findall(r'-?\d+', node.get('bounds', ''))))
+        # Snapshot bounds are clipped at the viewport. Strict interior bounds
+        # reject a 7px sliver of NAV text as well as invisible mounted content.
+        inside = (node.get('visible') == 'true' and len(box) == 4
+                  and bounds[0] <= box[0] < box[2] <= bounds[2]
+                  and bounds[1] < box[1] < box[3] < bounds[3])
+        for attribute in ('text', 'content-desc'):
+            invariants = language_field_invariants(node.get(attribute, ''))
+            if any(invariants.values()):
+                if inside:
+                    physically_visible.append(len(signature))
+                signature.append(invariants)
+    return signature, physically_visible
+
+
+def assert_language_invariant_coverage(scan):
+    assert scan['signature'], 'Language scan has no invariant-bearing native fields'
+    missing = sorted(set(range(len(scan['signature']))) - set(scan['physicallyVisibleFieldIndexes']))
+    assert not missing, 'Language scan lacks physically visible invariant fields: ' + str(missing)
+    assert scan['reachedNativeBottom'] is True, 'Language scan did not prove the native bottom'
+
+
+def assert_language_invariant_equality(spanish, english):
+    assert_language_invariant_coverage(spanish)
+    assert_language_invariant_coverage(english)
+    assert spanish['signature'] == english['signature'], 'Language switch changed amounts, units, dates, destinations or their field order/multiplicity'
+
+
+def _language_scroll_step(root):
+    before = ui.scroll_position(root)
+    paths = ui.scroll_trajectories(root, display_size(), True)
+    for path in paths:
+        # A slow quarter-viewport swipe avoids skipping short historical values.
+        start = path['start']; end = [start[0], start[1] - max(1, (path['bounds'][3] - path['bounds'][1]) // 4)]
+        adb('shell', 'input', 'swipe', str(start[0]), str(start[1]), str(end[0]), str(end[1]), '900')
+        time.sleep(.4)
+        after = dump()
+        if ui.scroll_position(after) != before:
+            return after
+    raise AssertionError('Language scan stalled before the observed native bottom')
+
+
+def capture_language_detail(prefix, title, required, language):
+    root = wait_ui(('Close ' if language == 'en' else 'Cerrar ') + title)
+    scan = {'schemaVersion': 1, 'scope': 'new-native-ES-EN-field-parity-with-physical-coverage',
+            'language': language, 'signature': [], 'physicallyVisibleFieldIndexes': [],
+            'reachedNativeBottom': False, 'frames': [], 'full20PointQA': False, 'releaseApproved': False}
+    _LANGUAGE_SCANS[language] = scan
+    observed, seen, remaining = [], set(), set(required)
+    for index in range(80):
+        viewport, bounds = ui.observed_scroll_viewport(root)
+        signature, visible = language_frame_invariants(viewport, bounds)
+        raw = ET.tostring(root, encoding='utf-8')
+        filename = prefix + '-%02d.xml' % index
+        out.joinpath(filename).write_bytes(raw)
+        signature_sha = hashlib.sha256(json.dumps(signature, ensure_ascii=False, separators=(',', ':')).encode('utf-8')).hexdigest()
+        frame = {'filename': filename, 'xmlSha256': hashlib.sha256(raw).hexdigest(),
+                 'signatureSha256': signature_sha, 'physicallyVisibleFieldIndexes': visible,
+                 'viewportBounds': bounds, 'nativeCanScrollForward': viewport.get('can-scroll-forward')}
+        scan['frames'].append(frame)
+        if not scan['signature']:
+            scan['signature'] = signature
+            scan['signatureSha256'] = signature_sha
+        elif signature != scan['signature']:
+            frame['changedSignature'] = signature
+        seen.update(visible)
+        scan['physicallyVisibleFieldIndexes'] = sorted(seen)
+        scan['reachedNativeBottom'] = viewport.get('can-scroll-forward') == 'false'
+        # Persist even an incomplete/different signature before assertions.
+        out.joinpath('language-invariant-observations.json').write_text(json.dumps(_LANGUAGE_SCANS, ensure_ascii=False, indent=2), encoding='utf-8')
+        assert signature == scan['signature'], 'Mounted native invariant fields changed during ' + language + ' scan'
+        text = visible_text(root); observed.append(text)
+        newly = {item for item in remaining if item in text}
+        if newly or index == 0:
+            screen(prefix + '-%02d' % index, root)
+        remaining -= newly
+        if scan['reachedNativeBottom']:
+            assert not remaining, 'Missing visible language interface evidence: ' + ', '.join(sorted(remaining))
+            assert_language_invariant_coverage(scan)
+            traversals[prefix] = observed
+            screen(prefix + '-complete', root)
+            return scan
+        root = _language_scroll_step(root)
+    raise AssertionError('Language scan exceeded its bounded physical coverage traversal')
+
+
 def search(root, query):
     # Reset through the actual accessible native control; do not rely
     # on a stale tree, keyboard shortcuts, or an unobserved coordinate.
@@ -641,6 +755,13 @@ def documentary_and_five_images():
 def languages_and_favorite():
     """Only the missing ES/EN and local persistence criteria; real relogin after restart."""
     title='Spiko Letras del Tesoro Euro'
+    # The saved ES documentary frames remain historical evidence only. The
+    # unfinished language criterion observes complete invariant fields afresh.
+    open_observed_offer('Spiko',title)
+    scroll_top()
+    spanish_scan=capture_language_detail('14-spiko-es-language',title,
+        ['FECHAS DE ESTA FICHA','REFERENCIAS FECHADAS','FR001400ODL1','Ver en la fuente'],'es')
+    CLICK('Cerrar '+title)
     CLICK('Perfil'); CLICK('English')
     root=wait_ui('Home','Search','Academy','Profile')
     assert find_node(root,'English')[0].get('checked') == 'true'
@@ -663,14 +784,8 @@ def languages_and_favorite():
     required=['Original source text (Spanish)','DATES FOR THIS ENTRY','DATED REFERENCES',
               'Could I lose money?','Can I sell whenever I want?','Who holds the asset?',
               'Who supervises this offer?','FR001400ODL1','View at source']
-    document_detail('16-spiko-en',title,required,scan_to_end=True,language='en')
-    spanish='\n'.join(traversals['14-spiko-es']); english='\n'.join(traversals['16-spiko-en'])
-    tokens=lambda text:set(re.findall(r'[0-9][0-9.,]*\s*(?:EUR|USD|CHF|GBP|€|%)|(?:EUR|USD|CHF|GBP|€)\s*[0-9][0-9.,]*',text))
-    dates=lambda text:set(re.findall(r'\b\d{2}/\d{2}/\d{4}\b|\b\d{4}-\d{2}-\d{2}\b',text))
-    urls=lambda text:set(re.findall(r'https://[^\s<>]+',text))
-    assert tokens(spanish)==tokens(english), 'Language switch changed observed amounts or units'
-    assert dates(spanish) and dates(spanish)==dates(english), 'Language switch changed observed source dates'
-    assert urls(spanish) and urls(spanish)==urls(english), 'Language switch changed observed source destinations'
+    english_scan=capture_language_detail('16-spiko-en',title,required,'en')
+    assert_language_invariant_equality(spanish_scan,english_scan)
     CLICK('Close '+title); CLICK('Español')
     wait_ui('Inicio','Buscar','Academy','Perfil')
     adb('shell','am','force-stop','com.rwadar.app')
@@ -691,8 +806,10 @@ def languages_and_favorite():
             'englishTabs':True,'spanishTabs':True,'englishPersistedAfterRestart':True,
             'spanishPersistedAfterRestart':True,'favoritePersistedAcrossRestartAndRelogin':True,
             'qaFavoriteRemoved':True,'amountsAndUnitsUnchanged':True,'sourceDatesUnchanged':True,
-            'sourceUrlsUnchanged':True,'emptyFinancialTokenSetAllowedWhenBothLocalesHideExpiredAmounts':True,
-            'spanish':traversals['14-spiko-es'],'english':traversals['16-spiko-en']}
+            'sourceUrlsUnchanged':True,'physicalInvariantCoverageComplete':True,
+            'invariantObservations':_LANGUAGE_SCANS,
+            'invariantObservationsSha256':hashlib.sha256(out.joinpath('language-invariant-observations.json').read_bytes()).hexdigest(),
+            'spanish':traversals['14-spiko-es-language'],'english':traversals['16-spiko-en']}
     out.joinpath('language-and-favorite.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
     _checkpoint('languagesAndFavoritePersistence','validated-scope-only',{k:v for k,v in result.items() if type(v) is bool})
     return result
