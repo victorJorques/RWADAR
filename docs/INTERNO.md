@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 26 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 27 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -19,9 +19,9 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 ## Qué está funcionando hoy
 
-El mapa de activos está preparado dentro de Buscar, con 26 ubicaciones documentadas y permiso opcional de ubicación. La preview y sus recursos HTTPS pasan las comprobaciones; su revisión visual quedó bloqueada por el controlador del navegador. Esta versión del mapa todavía no se ha promovido a producción.
+El mapa de activos ya está publicado dentro de Buscar, con Lista/Mapa, 26 fichas ubicadas y permiso opcional de ubicación. Conserva las 49 referencias del catálogo y señala las ubicaciones aproximadas. La preview y producción pasan las comprobaciones HTTPS; dos lecturas independientes corroboran los archivos publicados. La revisión visual no quedó acreditada porque el controlador no pudo verificar la URL de Chrome.
 
-**Web publicada el 26 de octubre:** el catálogo, las fichas y Academy se pueden
+**Web actualizada el 27 de octubre; acceso corregido el 26:** el catálogo, las fichas y Academy se pueden
 consultar sin registro. La cuenta confirmada se pide para guardar y usar funciones
 personales. Se corrigió una carrera del inicio de sesión que podía cerrar la
 sesión recién abierta. Pasaron 37 pruebas locales dirigidas, 16 comprobaciones
@@ -42,7 +42,7 @@ La última descarga final sigue siendo 1.3.2. Se reutilizan el APK y las pruebas
 
 | | Estado |
 |---|---|
-| **Web** | Publicada en **https://rwadar.pages.dev**, actualizada el **26/10** desde la rama aislada. Consulta pública; cuenta para funciones personales. Login, sesión y salida comprobados con la cuenta de QA. Se conservan el radar del acceso, registro, recuperación, comparación e idiomas. |
+| **Web** | Publicada en **https://rwadar.pages.dev**, actualizada el **27/10** desde la rama aislada, con mapa de activos en Buscar. Consulta pública; cuenta para funciones personales. Login, sesión y salida comprobados con la cuenta de QA. Se conservan el radar del acceso, registro, recuperación, comparación e idiomas. |
 | **Catálogo** | **La revisión del 22 de octubre ya está aplicada en Supabase**, vigente hasta el **29 de octubre**: 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 reventa, 4 documentales en preparación). IOD figura cerrado; cifras nuevas solo cuando se observaron en su fuente. Los campos de acceso desde España permanecen sin confirmar cuando falta evidencia específica. Ver [`VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md`](VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md). |
 | **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
 | **App Android** | **[Versión 1.3.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.2)**, publicada el 22/10, sigue siendo la última descarga final. Restaurada la lectura pública que usa su sincronización, sin repetir la prueba en dispositivo. **1.4.0 sigue en borrador**, con validación nativa pendiente; se conserva el mismo APK, su firma y sus imágenes verificadas. No está en Google Play. |
