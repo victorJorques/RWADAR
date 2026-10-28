@@ -96,3 +96,6 @@ x.png
 .DS_Store
 Thumbs.db
 !/.easignore
+
+# Caché local de los comprobadores Python, sin código publicable.
+__pycache__/
