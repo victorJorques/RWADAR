@@ -401,6 +401,7 @@ def wait_editable(label, secret=False, timeout=12):
     if LAST_EDITABLE_DIAGNOSTIC.get('targetLabel')!=label:
         LAST_EDITABLE_DIAGNOSTIC={'targetLabel':label if label in EDITABLE_LABELS else 'other-editable'}
     deadline = time.monotonic() + timeout
+    occluding_keyboard_dismissed = False
     while time.monotonic() < deadline:
         try:
             root = dump(timeout=min(5, max(.1, deadline - time.monotonic())))
@@ -410,9 +411,19 @@ def wait_editable(label, secret=False, timeout=12):
         LAST_EDITABLE_DIAGNOSTIC['afterTap']=editable_metadata(root)
         nodes = [n for n in root.iter('node') if n.get('package') == APP_PACKAGE
                  and n.get('class') == 'android.widget.EditText'
-                 and n.get('content-desc') == label and n.get('visible') != 'false'
+                 and n.get('content-desc') == label
                  and n.get('enabled') != 'false' and n.get('focused') == 'true']
         if len(nodes) == 1:
+            # A correctly focused field can be covered by the newly opened IME.
+            # Close only a currently surfaced, on-screen keyboard; never send
+            # an unguarded Back or type into an occluded editable.
+            if nodes[0].get('visible') == 'false':
+                state = window_state()
+                if state['appFocused'] and state['imeWindowVisible'] and not occluding_keyboard_dismissed:
+                    dismiss_keyboard_if_visible()
+                    occluding_keyboard_dismissed = True
+                time.sleep(.15)
+                continue
             bounds = list(map(int,re.findall(r'-?\d+',nodes[0].get('bounds',''))))
             if len(bounds) == 4 and bounds[0] < bounds[2] and bounds[1] < bounds[3]:
                 assert not secret or nodes[0].get('password') == 'true', 'Password field must be masked'
