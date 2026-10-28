@@ -6,6 +6,7 @@ def load(names,scope):
     def require(value,message):
         if not value:raise AssertionError(message)
     scope.update(require=require,re=re)
+    if 'ui' in scope:scope.setdefault('scroll_top_ready',scope['ui'].scroll_top)
     exec(compile(ast.Module(body=nodes,type_ignores=[]),'run.py','exec'),scope)
     return scope
 

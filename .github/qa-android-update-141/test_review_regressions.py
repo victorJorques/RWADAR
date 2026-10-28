@@ -34,7 +34,7 @@ class ReviewRegressions(unittest.TestCase):
                 self.position += 1
                 return self.dump(), True
         ui = UI(); original = ui.inspect_login_input_values
-        scope = functions(['exact_qa_account'], {'ui': ui, 'click': lambda label: None, 'visible': lambda n: True})
+        scope = functions(['exact_qa_account'], {'ui': ui, 'scroll_top_ready': ui.scroll_top, 'click': lambda label: None, 'visible': lambda n: True})
         with patch.dict(os.environ, {'RWADAR_QA_EMAIL': 'qa@example.invalid'}): scope['exact_qa_account']()
         self.assertEqual(ui.tops, 2); self.assertEqual(ui.position, 0)
         self.assertIs(ui.inspect_login_input_values, original); self.assertTrue(ui.CAPTURE_ALLOWED)
@@ -65,7 +65,7 @@ class ReviewRegressions(unittest.TestCase):
             def adb(self, *args): events.append(('adb', args))
             def scroll_top(self): events.append(('top',))
             def visible_text(self, root): return 'Tu resumen '+qa
-        scope = functions(['remove_qa_position'], {'ui': UI(), 'QA_NAME': qa, 'created': True, 'report': {},
+        scope = functions(['remove_qa_position'], {'ui': UI(), 'scroll_top_ready': lambda: events.append(('top',)), 'QA_NAME': qa, 'created': True, 'report': {},
             'reopen': lambda: events.append(('reopen',)),
             'exact_qa_account': lambda: events.append(('identity',)),
             'click': lambda label: events.append(('click', label)),

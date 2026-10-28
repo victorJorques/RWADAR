@@ -46,6 +46,10 @@ async function waitChromePort(profile,chrome,report,{readFile=fsp.readFile.bind(
   }
   report.chromeStartup=diagnosis();throw Error('chrome_start_failed');
 }
+function mainAccountReady(document,window,expectedId){
+  const button=document.getElementById('btnCuenta');
+  return window.RWADAR_ACCESO?.usuario()?.id===expectedId&&!!button&&button.disabled===false&&button.getAttribute('aria-label')==='Mis inversiones y mi cuenta';
+}
 class CDP{
   constructor(socket,onEvent=()=>{}){
     this.socket=socket;this.id=0;this.pending=new Map();
@@ -87,7 +91,7 @@ async function run(env=process.env){
     phase('wait-home-return');await wait(`location.origin===${JSON.stringify(ORIGIN)}&&location.pathname==='/'`);
     report.checks.formReturnedHome=true;
     phase('verify-browser-cookie-session');let session=await cdp.evaluate(sessionExpression);report.checks.browserCookieSession=session.status===200&&session.same;if(!report.checks.browserCookieSession)throw Error('browser_cookie_session_failed');
-    phase('wait-main-account-ready');await wait(`window.RWADAR_ACCESO?.usuario()?.id===${JSON.stringify(UID)}&&!!document.getElementById('btnCuenta')`);
+    phase('wait-main-account-ready');await wait('('+mainAccountReady.toString()+')(document,window,'+JSON.stringify(UID)+')');
     phase('click-open-investments');await cdp.evaluate(`document.getElementById('btnCuenta').click();true`);
     phase('wait-investments-panel');await wait(`document.getElementById('perfilPanel')?.classList.contains('show')&&document.getElementById('perfilCuerpo')?.textContent.includes('Mis inversiones')`);
     report.checks.investmentsPanelOpened=true;
@@ -107,5 +111,5 @@ async function run(env=process.env){
   }
   return report;
 }
-module.exports={CDP,statusOnly,requireQa,runtimeExceptionOnly,domState,waitChromePort,run};
+module.exports={CDP,statusOnly,requireQa,runtimeExceptionOnly,domState,waitChromePort,mainAccountReady,run};
 if(require.main===module)run().then(report=>{fs.mkdirSync('evidence-private',{recursive:true});fs.writeFileSync('evidence-private/web-chrome-141-result.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));if(report.status!=='passed')process.exitCode=1;}).catch(()=>{console.log('{"status":"failed","failureCode":"safe_cleanup_failed"}');process.exitCode=1;});

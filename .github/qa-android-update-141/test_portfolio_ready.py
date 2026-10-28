@@ -9,7 +9,7 @@ def load(ui, clock, locate):
     assert len(functions)==1
     def require(value,message):
         if not value:raise AssertionError(message)
-    scope={'ui':ui,'time':clock,'locate':locate,'require':require}
+    scope={'ui':ui,'time':clock,'locate':locate,'require':require,'scroll_top_ready':ui.scroll_top}
     exec(compile(ast.Module(body=functions,type_ignores=[]),'real-portfolio-wait','exec'),scope)
     return scope['wait_empty_portfolio_ready']
 

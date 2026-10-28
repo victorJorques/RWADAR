@@ -131,6 +131,31 @@ def launch():
 def reopen():
     ui.adb('shell','am','force-stop',ui.APP_PACKAGE); launch()
 
+def wait_scroll_viewport(timeout=12):
+    """Read-only readiness: gestures remain based on an actual observed viewport."""
+    end=time.monotonic()+timeout
+    while time.monotonic()<end:
+        root=ui.dump(timeout=min(3,max(.1,end-time.monotonic())))
+        try:
+            ui.observed_scroll_viewport(root,ui.display_size())
+            return root
+        except AssertionError as error:
+            if str(error)!='Need one fully observed outer vertical scroll viewport':raise
+        time.sleep(min(.5,max(0,end-time.monotonic())))
+    raise AssertionError('Native scroll viewport did not become observable within deadline')
+
+def scroll_top_ready(timeout=12):
+    end=time.monotonic()+timeout
+    while time.monotonic()<end:
+        wait_scroll_viewport(timeout=max(.1,end-time.monotonic()))
+        try:
+            ui.scroll_top()
+            return
+        except AssertionError as error:
+            if str(error)!='Need one fully observed outer vertical scroll viewport':raise
+        time.sleep(min(.5,max(0,end-time.monotonic())))
+    raise AssertionError('Native scroll viewport did not stay observable within deadline')
+
 def exact_qa_account():
     click('Perfil'); old=ui.inspect_login_input_values; allowed=ui.CAPTURE_ALLOWED; matches=[]
     def inspect(raw):
@@ -138,9 +163,13 @@ def exact_qa_account():
         matches[:] = [sum(1 for n in tree.iter('node') if n.get('package')==ui.APP_PACKAGE and n.get('text')==os.environ['RWADAR_QA_EMAIL'] and n.get('visible')!='false' and visible(n))]
     try:
         ui.CAPTURE_ALLOWED=False; ui.inspect_login_input_values=inspect
-        # Cuenta is below MisInversiones. Never search the sanitized tree for
-        # its redacted email, and never persist a raw account snapshot.
-        ui.scroll_top()
+        # Check the visible raw identity first. Loading may temporarily remove
+        # the outer ScrollView even while the account email is fully visible.
+        matches.clear();root=ui.dump()
+        require(matches in ([0],[1]),'QA account is not uniquely observed')
+        if matches==[1]:return
+        # Only scroll if identity is not already observed, and only with proof.
+        scroll_top_ready()
         for _ in range(20):
             matches.clear(); root=ui.dump()
             require(matches in ([0],[1]),'QA account is not uniquely observed')
@@ -150,7 +179,7 @@ def exact_qa_account():
         require(matches==[1],'Visible account must be exactly the dedicated QA account')
     finally:
         ui.inspect_login_input_values=old; ui.CAPTURE_ALLOWED=allowed
-    ui.scroll_top()
+    scroll_top_ready()
 
 def wait_offline_default_network():
     end=time.monotonic()+10
@@ -183,7 +212,7 @@ def datum_value(root,label,expected,section):
     return True
 
 def observe_datum(label,expected,section):
-    ui.scroll_top()
+    scroll_top_ready()
     for _ in range(20):
         root=ui.dump()
         try:
@@ -193,7 +222,7 @@ def observe_datum(label,expected,section):
 
 def wait_mutation_confirmation(message,timeout=25,phase_name=None):
     # Mutation messages live above the form/list, not at the current scroll.
-    ui.scroll_top()
+    scroll_top_ready()
     failed=False
     try:root=ui.wait_ui(message,timeout=timeout)
     except AssertionError:
@@ -219,7 +248,7 @@ def remove_qa_position():
     # A successful RPC with a lost response may leave the old form on screen.
     # Reload the cloud document before locating this run's sole deletion target.
     reopen(); ui.wait_ui('Perfil',timeout=30); exact_qa_account()
-    click('Perfil');ui.scroll_top()
+    click('Perfil');scroll_top_ready()
     loaded=ui.wait_ui('Tu resumen',timeout=30,absent=('Cargando mis inversiones',))
     if 'Sin compras' in ui.visible_text(loaded) and qa_fixture_absent(loaded):
         created=False;report['qaPortfolioRemoved']=True;report['qaFixtureAlreadyAbsentAfterReload']=True;persist();return
@@ -236,7 +265,7 @@ def remove_qa_position():
 def wait_empty_portfolio_ready(timeout=30):
     """Observe completed cloud loading before searching/pressing the form control."""
     end=time.monotonic()+timeout
-    ui.scroll_top()
+    scroll_top_ready()
     while time.monotonic()<end:
         root=ui.dump(timeout=min(8,max(.1,end-time.monotonic())))
         text=ui.visible_text(root)
