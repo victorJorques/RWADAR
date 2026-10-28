@@ -85,12 +85,30 @@ def exact_qa_account():
     click('Perfil'); old=ui.inspect_login_input_values; allowed=ui.CAPTURE_ALLOWED; matches=[]
     def inspect(raw):
         old(raw); tree=ET.fromstring(raw)
-        matches.append(sum(1 for n in tree.iter('node') if n.get('package')==ui.APP_PACKAGE and n.get('text')==os.environ['RWADAR_QA_EMAIL'] and n.get('visible')!='false'))
+        matches[:] = [sum(1 for n in tree.iter('node') if n.get('package')==ui.APP_PACKAGE and n.get('text')==os.environ['RWADAR_QA_EMAIL'] and n.get('visible')!='false' and visible(n))]
     try:
-        ui.CAPTURE_ALLOWED=False; ui.inspect_login_input_values=inspect; ui.dump()
+        ui.CAPTURE_ALLOWED=False; ui.inspect_login_input_values=inspect
+        # Cuenta is below MisInversiones. Never search the sanitized tree for
+        # its redacted email, and never persist a raw account snapshot.
+        ui.scroll_top()
+        for _ in range(20):
+            matches.clear(); root=ui.dump()
+            require(matches in ([0],[1]),'QA account is not uniquely observed')
+            if matches==[1]: break
+            _,moved=ui.scroll_step(True,root)
+            if not moved: break
+        require(matches==[1],'Visible account must be exactly the dedicated QA account')
     finally:
         ui.inspect_login_input_values=old; ui.CAPTURE_ALLOWED=allowed
-    require(matches==[1],'Visible account must be exactly the dedicated QA account')
+    ui.scroll_top()
+
+def wait_offline_default_network():
+    end=time.monotonic()+10
+    while True:
+        offline=ui.adb('shell','dumpsys','connectivity')
+        if re.search(r'Active default network:\s*(?:none|null)\b',offline,re.I): return
+        require(time.monotonic()<end,'Observe no default Android network before claiming offline')
+        time.sleep(.5)
 
 def datum_value(root,label,expected,section):
     """Scope duplicated summary/detail labels to a real UI ancestor containing its own heading."""
@@ -126,6 +144,9 @@ def observe_datum(label,expected,section):
 def remove_qa_position():
     global created
     require(QA_NAME.startswith('QA_APK23_CLOUD_'),'Deletion target is not the fixture')
+    # A successful RPC with a lost response may leave the old form on screen.
+    # Reload the cloud document before locating this run's sole deletion target.
+    reopen(); ui.wait_ui('Perfil',timeout=30); exact_qa_account()
     click('Perfil'); click('Movimientos de '+QA_NAME); click('Eliminar inversión · '+QA_NAME)
     root=ui.wait_ui('Eliminar inversión',QA_NAME,timeout=12)
     nodes=[n for n in root.iter('node') if n.get('class')=='android.widget.Button' and n.get('text','').casefold()=='eliminar' and n.get('visible')!='false']
@@ -193,8 +214,7 @@ def main():
     complete('apk22ReplacedBy23WithoutUninstall',{'package':c['package'],'sameSigningCertificate':True,'dataNotClearedBeforeUpdate':True})
     ui.adb('shell','cmd','connectivity','airplane-mode','enable')
     ui.adb('shell','svc','wifi','disable');ui.adb('shell','svc','data','disable')
-    offline=ui.adb('shell','dumpsys','connectivity')
-    require(re.search(r'Active default network:\s*(?:none|null)\b',offline,re.I),'Observe no default Android network before claiming offline')
+    wait_offline_default_network()
     launch();end=time.monotonic()+25
     while time.monotonic()<end:
         root=ui.dump(timeout=8);text=ui.visible_text(root)
@@ -202,7 +222,9 @@ def main():
         time.sleep(.5)
     require(authenticated_ui(root) or 'Reintentar sesión guardada' in text,'Offline embedded launch must retain account state or its explicit retry')
     require('Entra en tu cuenta' not in text,'Offline launch unexpectedly lost the saved session')
-    capture('141-offline-embedded-session-retained'); complete('offlineEmbeddedStartsWithoutLogout',{'observedNativeUI':True,'otaDeliveryObserved':False})
+    capture('141-offline-embedded-session-retained'); complete('offlineEmbeddedStartsWithoutLogout',{
+        'observedNativeUI':True,'privateAccessObserved':authenticated_ui(root),
+        'storedSessionRetryObserved':'Reintentar sesión guardada' in text,'otaDeliveryObserved':False})
     ui.adb('shell','cmd','connectivity','airplane-mode','disable')
     ui.adb('shell','svc','wifi','enable');ui.adb('shell','svc','data','enable')
     if 'Reintentar sesión guardada' in text:click('Reintentar sesión guardada')
