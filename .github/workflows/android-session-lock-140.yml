@@ -111,6 +111,8 @@ jobs:
           "$BUILD_TOOLS/apksigner" sign --ks ui-helper/ephemeral.jks --ks-pass pass:android --key-pass pass:android --out ui-helper/test.apk ui-helper/aligned.apk
           adb install --no-streaming ui-helper/test.apk
       - name: Prepare official Ubuntu OCR and check a real emulator screenshot
+        # Tutorial is now reused from the actual root review; do not repeat its engine smoke.
+        if: ${{ false }}
         shell: bash
         run: |
           set -euo pipefail

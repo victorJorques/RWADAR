@@ -310,17 +310,17 @@ def portfolio():
     field('Precio pagado por unidad','50')
     field('Comisión (0 si no hubo)','0')
     click('Guardar movimiento')
-    ui.wait_ui('Movimiento guardado.',timeout=15)
+    locate('Movimiento guardado.')
     report['checks']['localPurchase'] = {'name':QA_NAME,'units':2,'unitPrice':50,'commission':0,'currency':'EUR'}
     click('Actualizar precio · ' + QA_NAME)
     field('Precio actual por unidad','60')
     click('Guardar precio')
-    ui.wait_ui('Precio y fecha guardados.',timeout=15)
+    locate('Precio y fecha guardados.')
     click('Añadir movimiento · ' + QA_NAME)
     click('Cobro')
     field('Importe cobrado','5')
     click('Guardar movimiento')
-    ui.wait_ui('Movimiento guardado.',timeout=15)
+    locate('Movimiento guardado.')
     for label,expected in (('Aportado','100,00 EUR'),('Valor actual','120,00 EUR'),
                            ('Cobrado','5,00 EUR'),('Costes registrados','0,00 EUR'),
                            ('Resultado','25,00 EUR'),('Resultado sin anualizar','25,00 %')):
