@@ -571,10 +571,10 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
   const modoLocal = fs.readFileSync(path.join(RAIZ, 'lib', 'modo-local.js'), 'utf8');
 
   assert.equal(app.extra.rwadar.pushDeliveryEnabled, false);
-  assert.equal(app.runtimeVersion.policy, 'appVersion');
-  assert.equal(app.version, '1.4.0');
+  assert.equal(app.runtimeVersion.policy, 'nativeVersion');
+  assert.equal(app.version, '1.4.1');
   assert.ok(app.updates.url.startsWith('https://u.expo.dev/'));
-  assert.equal(app.updates.enabled, false, 'la build no descarga código de canales anteriores');
+  assert.equal(app.updates.enabled, true, 'las actualizaciones compatibles se descargan sin reiniciar la pantalla');
   assert.equal(app.android.allowBackup, false);
   for (const permiso of [
     'android.permission.POST_NOTIFICATIONS',
@@ -614,7 +614,7 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
   }
   assert.ok(app.plugins.some(p => Array.isArray(p) && p[0] === 'expo-local-authentication'));
   assert.equal(eas.build.editorial.android.buildType, 'apk');
-  assert.equal(eas.build.editorial.channel, 'editorial');
+  assert.equal(eas.build.editorial.channel, 'production');
   assert.equal(eas.build.editorial.distribution, 'internal');
   assert.doesNotMatch(app.description, /26 verificadas/);
   assert.ok(app.plugins.some((p) => Array.isArray(p) && p[0] === 'expo-secure-store'));

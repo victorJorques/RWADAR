@@ -24,6 +24,7 @@ import { cuentaAdmitida } from './lib/acceso-obligatorio';
 import AccesoObligatorio from './componentes/AccesoObligatorio';
 import BloqueoApp from './componentes/BloqueoApp';
 import { useBloqueoApp } from './lib/desbloqueo-app';
+import { useActualizacionesApp } from './lib/actualizaciones-app';
 import { vigilarCaducidadCatalogo, programarRevisionDiaria } from './lib/catalogo-remoto';
 import {
   etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible,
@@ -41,6 +42,7 @@ import Marca from './componentes/Marca';
 import Navegacion, { Icono } from './componentes/Navegacion';
 import useTransicionFicha from './componentes/useTransicionFicha';
 import MisInversiones from './componentes/MisInversiones';
+import { crearCarteraCuenta } from './lib/cartera-cuenta';
 import {
   DetalleOferta, ExclusionesOfertas, FichaOferta, FichaGrupoOfertas,
   agruparOfertasLectura, ordenarOfertasLectura,
@@ -83,6 +85,7 @@ async function abrirAjustes() {
 }
 
 export default function App() {
+  useActualizacionesApp();
   const [fuentesListas] = useFonts({
     Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
     Geist_700Bold, Geist_800ExtraBold, GeistMono_500Medium,
@@ -1074,6 +1077,15 @@ function PantallaPerfil({
   onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar, inversionInicial, onConsumirInversion,
 }) {
   const total = seguidas.length + ofertasGuardadas.length;
+  const usuarioCartera = estadoCuenta?.estado === 'autenticada' ? estadoCuenta.usuario?.id : null;
+  const [carteraRemota, setCarteraRemota] = useState(null);
+  const carteraCuenta = carteraRemota?.usuarioId === usuarioCartera ? carteraRemota.adaptador : null;
+  useEffect(() => {
+    if (!cuenta || !usuarioCartera) { setCarteraRemota(null); return; }
+    const adaptador = crearCarteraCuenta({ cuenta, usuarioId: usuarioCartera });
+    setCarteraRemota({ usuarioId: usuarioCartera, adaptador });
+    return () => adaptador.destruir();
+  }, [cuenta, usuarioCartera]);
   return (
     <ScrollView
       contentContainerStyle={e.masCuerpo}
@@ -1081,8 +1093,9 @@ function PantallaPerfil({
       refreshControl={<RefreshControl refreshing={refrescando} onRefresh={onActualizar} tintColor={C.senal} />}
     >
       {estadoCuenta?.estado === 'autenticada' && estadoCuenta.usuario?.id ? (
-        <MisInversiones usuarioId={estadoCuenta.usuario.id} ofertaInicial={inversionInicial}
-          onConsumirOferta={onConsumirInversion} />
+        cuenta && !carteraCuenta ? <ActivityIndicator color={C.senal} accessibilityLabel="Preparando mis inversiones" /> :
+          <MisInversiones usuarioId={estadoCuenta.usuario.id} ofertaInicial={inversionInicial}
+            onConsumirOferta={onConsumirInversion} cargar={carteraCuenta?.cargar} guardar={carteraCuenta?.guardar} />
       ) : null}
       {cuenta ? <Cuenta controlador={cuenta} estado={estadoCuenta} seguridad={seguridad} plataformas={plataformas}
         onAbrirEmpresa={onAbrirEmpresa} onAbrirEnlace={onAbrirEnlace} /> : (
@@ -1538,10 +1551,16 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
                   Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. RWAdar no guarda la contraseña en el dispositivo.
                 </Text>
                 <Text style={e.privacidadParrafo}>
-                  Tu lista de vigilancia de empresas se guarda en tu cuenta y es accesible desde la web y la app. No se envían los favoritos locales ni el progreso de Academy. La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.
+                  Tu lista de vigilancia y tu registro manual de inversiones se guardan de forma privada en Supabase, asociados a tu cuenta, para consultarlos y modificarlos desde la web y la app con cartera sincronizada. El registro incluye los nombres y proveedores que escribas, moneda, compras, ventas, cobros, gastos y valoraciones con sus cantidades, precios, comisiones y fechas. RWAdar no conecta con tus proveedores ni importa compras o precios automáticamente. No se envían los favoritos locales ni el progreso de Academy.
                 </Text>
                 <Text style={e.privacidadParrafo}>
-                  Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil y la lista de vigilancia remota; los favoritos, las inversiones registradas de todas las cuentas en este dispositivo y el progreso local se eliminan por separado con «Borrar datos del dispositivo».
+                  La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.
+                </Text>
+                <Text style={e.privacidadParrafo}>
+                  La copia de inversiones de una versión anterior se conserva en este dispositivo. No se sube automáticamente: solo puedes importarla con tu confirmación cuando el registro de la cuenta está vacío. Importarla no borra la copia local ni combina o sustituye inversiones que ya estén en tu cuenta.
+                </Text>
+                <Text style={e.privacidadParrafo}>
+                  Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil, la lista de vigilancia y el registro remoto de inversiones. Borrar una inversión desde la cartera guarda el registro de cuenta sin ella. Los favoritos, las copias locales anteriores de inversiones de todas las cuentas y el progreso local se eliminan por separado con «Borrar datos del dispositivo»; ese botón no elimina inversiones de tu cuenta.
                 </Text>
               </>
             ) : null}
@@ -1572,7 +1591,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
                 </Text>
                 <Text style={e.privacidadTit}>Favoritos en este dispositivo</Text>
                 <Text style={e.privacidadParrafo}>
-                  Las empresas y ofertas guardadas (solo su identificador público) y el progreso de RWAdar Academy (lecciones leídas y aciertos del test) se guardan bajo claves rwadar.editorial.* separadas por cuenta. No se envían al servidor ni se crean operaciones pendientes de sincronización. Las inversiones registradas y sus cálculos se guardan únicamente en este dispositivo, separadas por cuenta; no se sincronizan ni representan compras realizadas por RWAdar.
+                  Las empresas y ofertas guardadas (solo su identificador público) y el progreso de RWAdar Academy (lecciones leídas y aciertos del test) se guardan bajo claves rwadar.editorial.* separadas por cuenta. No se envían al servidor ni se crean operaciones pendientes de sincronización. Las copias de inversiones de versiones anteriores permanecen en el dispositivo hasta que las borres; el registro nuevo de cuenta se guarda por separado en Supabase.
                 </Text>
                 <Text style={e.privacidadParrafo}>
                   La caché del catálogo también se separa por cuenta. Antes de leerla se necesita conexión para verificar la sesión actual; no permite entrar sin conexión. Si no puede actualizarse una copia completa, se conserva la anterior tras verificar la sesión y se avisa de su fecha. Las cifras vencidas se ocultan.
@@ -1603,7 +1622,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
                 </Text>
                 <Text style={e.privacidadTit}>Datos locales y terceros</Text>
                 <Text style={e.privacidadParrafo}>
-                  El catálogo, la fecha de sincronización, tu lista y el progreso de la Academy se guardan localmente por cuenta; leer la caché requiere conexión y verificar la sesión actual. La cartera de inversiones registradas permanece en el dispositivo y no se sincroniza. Supabase presta la base de datos y Expo los servicios que se habiliten expresamente.
+                  El catálogo, la fecha de sincronización, tu lista y el progreso de la Academy se guardan localmente por cuenta; leer la caché requiere conexión y verificar la sesión actual. El registro manual de inversiones de cuenta se guarda de forma privada en Supabase para usarlo en la web y la app. Las copias locales anteriores se conservan hasta que las borres y solo se importan con tu confirmación. Supabase presta la base de datos y Expo los servicios que se habiliten expresamente.
                 </Text>
                 <Text style={e.privacidadTit}>Control de borrado</Text>
                 <Text style={e.privacidadParrafo}>

@@ -19,12 +19,23 @@ const CABECERAS_SEGURIDAD = Object.freeze({
 });
 
 function construirWorker(raiz = __dirname) {
-  const servidor = fs.readFileSync(path.join(raiz, 'servidor.mjs'), 'utf8');
+  const importCartera = "import { crearCarteraServidor } from './cartera-servidor.mjs';";
+  const original = fs.readFileSync(path.join(raiz, 'servidor.mjs'), 'utf8');
+  if (original.split(importCartera).length !== 2) throw new Error('Falta la integración explícita de cartera.');
+  const servidor = original.replace(importCartera, '');
+  const modelo = fs.readFileSync(path.join(raiz, '../rwadar-movil/lib/cartera.js'), 'utf8');
+  if (/\brequire\s*\(|\bimport\b\s*(?:\(|[{*'"\w])/.test(modelo)) throw new Error('El motor de cartera debe ser autónomo.');
+  const importModelo = "import carteraModelo from '../rwadar-movil/lib/cartera.js';";
+  const carteraOriginal = fs.readFileSync(path.join(raiz, 'cartera-servidor.mjs'), 'utf8');
+  if (carteraOriginal.split(importModelo).length !== 2) throw new Error('Falta el motor canónico de cartera.');
+  const cartera = carteraOriginal.replace(importModelo, '');
+  if (/\bimport\b\s*(?:\(|[{*'"\w])/.test(cartera)) throw new Error('La cartera no admite dependencias implícitas.');
   // New dependencies require an explicit bundling decision.
   if (/\bimport\s*(?:\(|[{*'"\w])/.test(servidor) || /\bexport\s+default\b/.test(servidor)) {
     throw new Error('El servidor de acceso debe ser autónomo sin export default.');
   }
-  return servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
+  return 'const carteraModelo = (() => { const module = { exports: {} };\n' + modelo + '\nreturn module.exports; })();\n' + cartera + '\n' +
+    servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
     'const cabecerasRWAdar = Object.freeze(' + JSON.stringify(CABECERAS_SEGURIDAD) + ');\n' +
     'const accesoRWAdar = crearAccesoServidor();\n' +
     'export default { async fetch(request, env, executionCtx) {\n' +

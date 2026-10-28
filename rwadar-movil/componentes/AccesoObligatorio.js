@@ -10,7 +10,7 @@ export default function AccesoObligatorio({ controlador, estado, onAbrirEnlace }
     <ScrollView contentContainerStyle={s.contenido} keyboardShouldPersistTaps="handled">
       <Text style={s.marca}>RWAdar</Text>
       <Text accessibilityRole="header" style={s.titulo}>Tu radar, con tu cuenta</Text>
-      <Text style={s.descripcion}>Entra o crea una cuenta gratuita para consultar las ofertas y registrar tus inversiones. Confirma tu correo antes de entrar.</Text>
+      <Text style={s.descripcion}>Entra o crea una cuenta gratuita. En «Mis inversiones» puedes registrar lo que compraste, sus valoraciones y lo cobrado, y ver tu resultado en la web y la app con tu cuenta. El registro es manual. Confirma tu correo antes de entrar.</Text>
       {controlador && estado ? <Cuenta controlador={controlador} estado={estado}
         plataformas={[]} onAbrirEnlace={onAbrirEnlace} /> :
         <View accessibilityRole="progressbar"><ActivityIndicator color={C.tx} /><Text style={s.descripcion}>Preparando el acceso…</Text></View>}

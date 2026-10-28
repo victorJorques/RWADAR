@@ -100,16 +100,16 @@ function dato(cambios = {}) {
   };
 }
 
-test('tarjeta móvil prioriza nombre/proveedor, cuatro datos y la consulta de fuente sin repetir el documento', () => {
+test('tarjeta móvil prioriza nombre/proveedor, tres datos y la consulta de fuente sin repetir el documento', () => {
   const ui = componentes();
   const oferta = dato();
   const tarjeta = ui.FichaOferta({ oferta });
   const visible = textoVisible(tarjeta);
   const textos = nodos(tarjeta).filter(nodo => nodo.tipo === 'Text').map(textoVisible);
   assert.ok(textos.indexOf(oferta.titulo) < textos.indexOf(oferta.plataformaNombre));
-  for (const esperado of [oferta.titulo, oferta.plataformaNombre, '7,50 %', 'Fuente consultada 30/09/2026',
-    'Mínimo publicado en euros', 'Acceso desde España', 'Cómo recuperar el dinero', 'Ver ficha →']) assert.ok(visible.includes(esperado), esperado);
-  for (const fuera of [oferta.documentacion.descripcion, 'Referencia documentada', '999 EUR', '123 CHF', oferta.resumen, 'RENT. AJUSTADA']) {
+  for (const esperado of [oferta.titulo, oferta.plataformaNombre, 'Fuente consultada 30/09/2026',
+    'Mínimo (EUR)', 'España', 'Salida', 'Ver ficha →']) assert.ok(visible.includes(esperado), esperado);
+  for (const fuera of ['7,50 %', oferta.rentabilidad.literal, oferta.documentacion.descripcion, 'Referencia documentada', '999 EUR', '123 CHF', oferta.resumen, 'RENT. AJUSTADA']) {
     assert.ok(!visible.includes(fuera), `bloque largo reapareció en la tarjeta: ${fuera}`);
   }
   assert.ok(tarjeta.props.accessibilityLabel.includes('Fuente consultada 30/09/2026'));
@@ -186,16 +186,20 @@ test('una revisión diaria nueva reintenta la imagen y no mantiene para siempre 
   assert.match(nodos(arbol).find(n=>n.tipo==='Image').props.source.uri,/oferta-nueva-referencia-diaria\.webp$/);
 });
 
-test('ventana/unidad vigente queda íntegra, visible y sin truncar junto a su única cifra', () => {
+test('ventana/unidad vigente queda íntegra en la ficha junto a su cifra, sin recargar la tarjeta', () => {
   const ui = componentes();
   for (const oferta of [dato(), dato({ tipo: 'valor', rentabilidad: null,
     precio: { mostrado: '5 CHF', unidad: 'Última operación 30-09-2026; no es un precio ejecutable.' } })]) {
     const tarjeta = ui.FichaOferta({ oferta });
     const referencia = oferta.tipo === 'valor' ? oferta.precio.unidad : oferta.rentabilidad.literal;
-    const nodo = nodos(tarjeta).find(elemento => elemento.tipo === 'Text' && textoVisible(elemento) === referencia);
+    assert.ok(!textoVisible(tarjeta).includes(referencia));
+    assert.ok(!tarjeta.props.accessibilityLabel.includes(referencia));
+    const detalle = ui.DetalleOferta({ oferta });
+    const nodo = nodos(detalle).find(elemento => elemento.tipo === 'Text' && textoVisible(elemento) === referencia);
     assert.ok(nodo);
     assert.equal(nodo.props.numberOfLines, undefined);
-    assert.ok(tarjeta.props.accessibilityLabel.includes(referencia));
+    assert.ok(textoVisible(detalle).includes(referencia));
+    assert.ok(textoVisible(detalle).includes(oferta.tipo === 'valor' ? oferta.precio.mostrado : oferta.rentabilidad.mostrada));
   }
 });
 
@@ -206,11 +210,14 @@ test('la tarjeta muestra un mínimo en euros solo desde una referencia fechada, 
   const tarjeta = componentes().FichaOferta({oferta});
   const texto = textoVisible(tarjeta);
   assert.match(texto,/1000 €/);
-  assert.match(texto,/Consulta:\s*29\/09\/2026/);
-  assert.match(texto,/Sin comprobar desde España/);
-  assert.match(texto,/Salida no documentada/);
+  assert.match(texto,/Fuente consultada 30\/09\/2026/);
+  const detalle = textoVisible(componentes().DetalleOferta({oferta}));
+  assert.match(detalle,/Fuente consultada el\s+29\/09\/2026/);
+  assert.match(detalle,/Fecha del dato:\s+28\/09\/2026/);
+  assert.match(texto,/Sin confirmar/);
+  assert.match(texto,/Sin documentar/);
   assert.doesNotMatch(texto,/999 EUR|Disponible desde España/);
-  assert.match(tarjeta.props.accessibilityLabel,/Mínimo publicado en euros: 1000 €/);
+  assert.match(tarjeta.props.accessibilityLabel,/Mínimo \(EUR\): 1000 €/);
 });
 
 test('registro del proveedor conserva fuente y fecha sin acreditar la oferta ni acceso desde España', () => {
@@ -219,16 +226,17 @@ test('registro del proveedor conserva fuente y fecha sin acreditar la oferta ni 
     fuentes:[{url:'https://regulador.example/registro',consultadaEl:'2026-09-21',primaria:true}]}}};
   const ui = componentes();
   const tarjeta = textoVisible(ui.FichaOferta({oferta:dato(),plataforma}));
-  assert.match(tarjeta,/Registro confirmado · revisión 21\/09\/2026/);
-  assert.match(tarjeta,/No acredita esta oferta/);
-  assert.match(tarjeta,/Sin comprobar desde España/);
+  assert.doesNotMatch(tarjeta,/Registro confirmado/);
+  assert.match(tarjeta,/España Sin confirmar/);
   const abiertos = [];
   const detalle = ui.DetalleOferta({oferta:dato(),plataforma,onAbrirEnlace:url=>abiertos.push(url)});
+  assert.match(textoVisible(detalle),/Registro del proveedor ·\s+Registro confirmado\s+· revisión\s+21\/09\/2026/);
   assert.match(textoVisible(detalle),/Este registro no acredita la supervisión ni la apertura de esta oferta/);
+  assert.match(textoVisible(detalle),/Sin comprobar desde España/);
   nodos(detalle).find(n=>n.props?.accessibilityLabel?.includes('https://regulador.example/registro')).props.onPress();
   assert.deepEqual(abiertos,['https://regulador.example/registro']);
   plataforma.verificacionLocal.licenciaRegistro.fuentes[0].url = 'https://secreto@regulador.example/registro';
-  assert.doesNotMatch(textoVisible(ui.FichaOferta({oferta:dato(),plataforma})),/Registro confirmado/);
+  assert.doesNotMatch(textoVisible(ui.DetalleOferta({oferta:dato(),plataforma})),/Registro confirmado/);
 });
 
 test('el detalle muestra las cuatro condiciones antes de la explicación larga y conserva riesgos y fuentes', () => {
@@ -317,7 +325,7 @@ test('datos vencidos y colecciones documentales no regresan al simplificar la ta
       assert.doesNotMatch(texto, /7,50|999 EUR|123 CHF|APY ilustrativo/);
     }
     assert.ok(textoVisible(tarjeta).includes('Fuente consultada 30/09/2026'));
-    assert.match(textoVisible(tarjeta), /Consultar emisor|Consultar fuente/);
+    assert.match(textoVisible(tarjeta), /cifras ocultas|disponibilidad sin confirmar|apertura sin confirmar/);
     assert.deepEqual(oferta, original);
   }
 });
@@ -340,10 +348,16 @@ test('patrocinio y aviso bloqueante principal permanecen visibles y sin elipsis'
 });
 
 test('un warning relevante no desaparece si no hay stop y tampoco se trunca', () => {
-  const tarjeta = componentes().FichaOferta({ oferta: dato() });
-  const aviso = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes('La inversión puede perder valor'));
+  const warning = 'La inversión puede perder valor. La salida depende de que haya compradores y no tiene liquidez garantizada.';
+  const tarjeta = componentes().FichaOferta({ oferta: dato({ avisos: [
+    { tono: 'warn', texto: warning }, { tono: 'warn', texto: 'Las comisiones reducen el resultado.' },
+  ] }) });
+  const aviso = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes(warning));
   assert.ok(aviso);
   assert.equal(aviso.props.numberOfLines, undefined);
+  assert.match(textoVisible(tarjeta), /1 más en la ficha/);
+  assert.doesNotMatch(textoVisible(tarjeta), /Avisos y condiciones en la ficha completa/);
+  assert.ok(tarjeta.props.accessibilityLabel.includes(warning));
   assert.match(tarjeta.props.accessibilityLabel, /Precaución/);
 });
 
@@ -485,7 +499,7 @@ test('ES/EN marca títulos, valores y citas originales sin cambiar datos y muest
   const oferta=dato({titulo:'Crédito privado',plataformaNombre:'Inmobiliario'});
   const original=JSON.stringify(oferta);
   const tarjeta=ui.FichaOferta({oferta});
-  for(const literal of [oferta.titulo,oferta.plataformaNombre,'7,50 %']) {
+  for(const literal of [oferta.titulo,oferta.plataformaNombre]) {
     const node=nodos(tarjeta).find(n=>n.tipo==='Text'&&textoVisible(n)===literal);
     assert.equal(node?.props.noTraducir,true,literal);
     assert.equal(node.props.idiomaOriginal,'es-ES');
@@ -494,7 +508,7 @@ test('ES/EN marca títulos, valores y citas originales sin cambiar datos y muest
   const sources=nodos(detalle).filter(n=>n.tipo==='FuenteOriginal');
   assert.equal(sources.filter(n=>n.props.aviso!==false).length,1,'un único aviso, sin repetirlo por dato');
   assert.ok(sources.some(n=>textoVisible(n)===oferta.documentacion.descripcion&&n.props.aviso===false));
-  for(const literal of ['123 CHF históricos','Característica documental completa']) {
+  for(const literal of ['7,50 %',oferta.rentabilidad.literal,'123 CHF históricos','Característica documental completa']) {
     const node=nodos(detalle).find(n=>n.tipo==='Text'&&textoVisible(n)===literal);
     assert.equal(node?.props.noTraducir,true,literal);
   }

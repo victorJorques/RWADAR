@@ -6,6 +6,12 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 28 de octubre de 2026 · Codex · actualización1.4.1 preparada
+
+SQL29 privado autorizado y aplicado, RLS/ACL comprobadas. Corregida carrera real de renovación de sesión; tarjetas simplificadas sin perder avisos; Mis inversiones de cuenta en web/app y privacidad actualizada. PróximoAPK1.4.1/código23 activa Updates compatible y deberá reemplazar22 sin desinstalar. Fuente y pruebas en el commit de esta entrada. Compilación, comprobación nativa y publicación nuevas pendientes;1.4.0 sigue pública. [Detalle breve](../VERIFICACION-ACTUALIZACION-141-2026-10-28.md). InvestigaciónPAUSADA, main compartido intacto.
+
+---
+
 ## 28 de octubre de 2026 · Codex · Android 1.4.0 publicado y cierre de QA
 
 Android1.4.0/código22 ya publicado en https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.0. Descarga pública real, firma y SHA comprobados; web pública actualizada el28/10 en https://rwadar.pages.dev. Fuente móvil c663e35; arnés final 3c18055. Se conservan siete pruebas reales de sesión/PIN del mismo APK y las pruebas equivalentes anteriores; tutorial4pasos aprobado por revisión directa de capturas; cartera y cierre final aprobados. CuentaQA inhabilitada, sesiones revocadas y dos secretos retirados. Sin más builds por fallos del capturador. Investigación PAUSADA. Main compartido intacto. [Detalle breve](../VERIFICACION-ACCESO-PERSISTENTE-2026-10-28.md).

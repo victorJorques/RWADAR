@@ -16,6 +16,8 @@ function componentes(local, capacidad) {
   const entorno = {
     MODO_LOCAL: local, USUARIO_LOCAL: local || capacidad !== true,
     React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
+    useState: inicial => [typeof inicial === 'function' ? inicial() : inicial, () => {}],
+    useEffect() {},
     e: {}, C: {}, URL_PRIVACIDAD: 'https://example.test/privacidad', abrirEnlace() {},
   };
   for (const nombre of ['View', 'Text', 'Pressable', 'Icono', 'Marca', 'ActivityIndicator', 'Modal', 'SafeAreaProvider', 'SafeAreaView', 'ScrollView',

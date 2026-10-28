@@ -236,6 +236,15 @@
         <td>Ejecución del servicio</td>
       </tr>
       <tr>
+        <td>Registro manual<br>de inversiones</td>
+        <td>Los nombres de inversión y proveedor que escribas, moneda, cantidades, precios,
+          comisiones, compras, ventas, cobros, gastos y valoraciones con sus fechas. Se guardan
+          de forma privada en Supabase, asociados a tu cuenta, para consultarlos y modificarlos
+          desde la web y las versiones de la app con cartera sincronizada. No son datos obtenidos
+          de tus proveedores ni confirman una inversión real.</td>
+        <td>Ejecución del servicio que solicitas (art. 6.1.b RGPD)</td>
+      </tr>
+      <tr>
         <td>Datos técnicos<br>de acceso</td>
         <td>Fecha de alta y de último acceso, y la dirección IP y el navegador desde los que
           te das de alta o entras, en los registros de seguridad de Supabase. Sirven para
@@ -255,7 +264,7 @@
   </div>
 
   <p>Cada persona solo puede ver y cambiar sus propios datos; RWAdar no comparte tu
-    lista ni tu correo con las plataformas. Si tenías una cuenta de una versión anterior,
+    lista, tu registro de inversiones ni tu correo con las plataformas. Si tenías una cuenta de una versión anterior,
     puedes volver a entrar con ella o pedir su borrado. Para gestionar tus datos o retirar
     un consentimiento anterior, usa Perfil o el correo del apartado 11; no hace falta
     iniciar sesión para solicitar tus derechos.</p>
@@ -300,13 +309,21 @@
     apartado 1. Aporta solo los datos necesarios para identificar la solicitud.</p>
 
   <h2>5 · Aplicación móvil y avisos push</h2>
-  <p><b>Mis inversiones:</b> puedes anotar compras, cantidad, precio, comisiones, ventas,
-    cobros y valoraciones manuales. Se guardan solo en este dispositivo, separadas por
-    cuenta. No se sincronizan ni se recuperan al reinstalar. Puedes borrarlas desde la
-    cartera o con «Borrar datos del dispositivo». RWAdar no confirma que hayas invertido
-    en un proveedor, no conecta con sus cuentas y no recibe tu dinero. El resultado depende
-    de tus anotaciones y de la fecha de la valoración: no es una rentabilidad garantizada
-    ni una cotización en tiempo real. No sumamos monedas distintas sin un cambio documentado.</p>
+  <p><b>Mis inversiones:</b> es un registro manual privado de tu cuenta. La web y las versiones
+    de la app con cartera sincronizada guardan en Supabase las anotaciones descritas en el
+    apartado 3, para que puedas verlas y modificarlas con la misma cuenta. RWAdar no conecta
+    con las cuentas de los proveedores, no importa compras ni precios automáticamente, no
+    confirma que hayas invertido y no recibe tu dinero. El resultado depende de tus
+    anotaciones y de la fecha de la valoración: no es una rentabilidad garantizada ni una
+    cotización en tiempo real. Las monedas se mantienen separadas, sin conversión automática.</p>
+  <p>Las versiones anteriores de Android conservan su registro solo en el dispositivo.
+    La versión con sincronización no lo sube automáticamente: si tu registro de cuenta está
+    vacío, puedes confirmar su importación. La copia anterior del dispositivo se conserva
+    después de importar; no se combina ni sustituye automáticamente un registro de cuenta
+    que ya tenga inversiones. Borrar una inversión desde la cartera actualiza el registro
+    de la cuenta sin esa inversión. «Borrar datos del dispositivo» elimina las copias locales
+    y no borra el registro remoto; la copia local anterior se elimina por separado. No
+    incluyas documentos bancarios, contraseñas ni información de otras personas.</p>
   <p>La app nativa editorial guarda los nuevos favoritos solo en el dispositivo (las empresas y ofertas que guardas), en un
     espacio separado de los datos de versiones anteriores. El progreso de RWAdar Academy
     (lecciones leídas y aciertos de sus tests) se guarda igual, solo en el dispositivo. No lee, migra ni borra
@@ -440,9 +457,11 @@
     se revisa por el canal del apartado 11. Cuando sea necesario conservar un dato para
     una reclamación, su acceso se limita a esa finalidad.</p>
   <ul>
-    <li><b>Cuenta, perfil y vigilancia:</b> mientras la cuenta exista. Al borrarla desde
-      Perfil se eliminan en ese momento la cuenta de autenticación, el perfil y la lista de
-      vigilancia. Las copias de seguridad cifradas de la base se renuevan y caducan a los
+    <li><b>Cuenta, perfil, vigilancia y registro de inversiones:</b> mientras la cuenta
+      exista o hasta que elimines las inversiones desde la cartera. Al borrar la cuenta
+      desde Perfil se eliminan la cuenta de autenticación, el perfil, la lista de vigilancia
+      y el registro remoto de inversiones. Esto no elimina las copias locales de tus
+      dispositivos. Las copias de seguridad cifradas de la base se renuevan y caducan a los
       35 días. Una alta sin confirmar no permite entrar; puedes pedir su borrado por correo.</li>
     <li><b>Opiniones y denuncias anteriores:</b> la versión editorial no las carga.
       Su retirada puede solicitarse por correo. La necesidad de conservar una denuncia
@@ -466,7 +485,9 @@
       elimines los datos del sitio. Esta versión elimina la antigua caché PWA al actualizarse.
       Los favoritos nuevos y el progreso de la Academy en la app nativa se
       conservan en el dispositivo hasta que los retires o borres sus datos locales.
-      Eso no borra registros remotos de versiones anteriores.</li>
+      Lo mismo ocurre con las copias de inversiones de versiones anteriores: importar una
+      copia a tu cuenta no la elimina del dispositivo. Borrar datos locales no borra el
+      registro de inversiones de tu cuenta ni otros registros remotos.</li>
   </ul>
 
   <h2>10 · Lo que no se hace</h2>

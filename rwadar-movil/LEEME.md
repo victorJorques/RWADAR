@@ -147,7 +147,7 @@ La `.easignore` de la raíz solo admite el código móvil y sus activos necesari
 excluye otros proyectos, documentos, fotografías internas y credenciales.
 `tests/empaquetado.test.cjs` cubre esa frontera, también para rutas de Windows.
 
-El corte desactiva `updates.enabled`: el APK ejecuta su código incluido y no
+**Histórico del corte 1.3.0, sin OTA:** ese corte desactivaba `updates.enabled`; el APK ejecutaba su código incluido y no
 recupera JavaScript de los canales históricos. El catálogo se actualiza por
 REST; cambiar el código requiere una nueva build revisada. También desactiva
 la copia Android a Google Drive y bloquea permisos de notificaciones,
@@ -292,19 +292,58 @@ RWAdar no recibe dinero de inversión ni cobra comisiones en este corte.
 
 ## Actualizaciones actuales e histórico de EAS
 
-**Corte actual:** `updates.enabled=false` y runtime por `appVersion`.
-El código se actualiza mediante un binario nuevo revisado; los datos públicos
-se actualizan por las vistas REST del catálogo, con sus controles de vigencia.
+**Preparado para el siguiente APK 1.4.1/código23:** Updates habilitado, runtime
+oficial `nativeVersion` que resuelve Android `1.4.1(23)`, canal `production`
+y entorno `production`. EAS usa `appVersionSource=local` y
+`autoIncrement=false`: el código nativo se elige e incrementa explícitamente
+para cada nuevo binario. El perfil `editorial` sigue generando APK para GitHub;
+`production` conserva AAB y no implica una publicación en Google Play.
+La configuración local no demuestra que ese APK se haya compilado o entregado.
+
+**APK 1.4.0 ya publicado:** contiene Updates desactivado. Hace falta instalar
+una vez el APK nuevo con el mismo paquete y firma para recibir futuras OTA.
+Después, JavaScript y activos compatibles se descargan automáticamente sin
+interrumpir la pantalla abierta y se usan en el siguiente arranque en frío.
+Volver desde segundo plano conserva los formularios. El arranque no espera a
+la red; quedan disponibles el bundle incluido y la recuperación de Expo.
+No se instalan APK en silencio ni se añaden permisos de instalación.
+El catálogo conserva su actualización independiente por las vistas REST.
+
+Antes de publicar una OTA, usar el commit completo de la fuente del APK real:
+
+```powershell
+node scripts/comprobar-ota-compatible.cjs --base COMMIT_COMPLETO_DEL_APK
+```
+
+El guard solo lee Git local. Rechaza cambios en dependencias, lock,
+configuración, plugins, scripts nativos e iconos referenciados, incluidos
+archivos nuevos sin seguimiento. Un resultado correcto solo acredita esta
+compatibilidad local; cada publicación OTA sigue requiriendo autorización
+expresa de Víctor. Módulos nativos, permisos o cambios de SDK/configuración
+exigen otro binario con otro código. Conservar la fuente del APK para no
+confundir su runtime con el de una compilación futura.
+
+Antes de la primera OTA, comprobar en el APK nuevo canal `production`,
+runtime `1.4.1(23)`, Updates activo, arranque sin conexión y aplicación en la
+siguiente apertura sin perder datos. Comprobar el plan y la cuota de EAS antes
+de una operación. El plan Free no genera cargos por exceso; no contratar un
+plan ni activar la firma EAS de extremo a extremo, que es de pago, sin permiso.
+La firma del APK es independiente y se conserva.
 
 **Solo como evidencia histórica:** la OTA de agosto usaba `fingerprint` y
-el canal `preview`, compatible con APK 4; AAB 5 usaba el canal `production`.
-No instalar esos binarios, no seguir ese flujo y no activar OTA para la
-entrega editorial actual.
+el canal `preview`, compatible con APK4; AAB5 usaba `production`. El intento
+posterior de fingerprint con una discrepancia entre local y constructor queda
+como antecedente: no se omite ninguna verificación ni se reutilizan aquellos
+binarios o actualizaciones. La preparación actual usa `nativeVersion`.
 
-Ni una configuración presente ni un comando escrito prueban que una OTA o un
-push se hayan entregado. Antes de cambiar la bandera operativa hay que probar
-en un dispositivo real: permiso contextual, registro, envío, recibo, retirada
-de tokens inválidos, borrado y recuperación ante fallo.
+Una configuración o un comando escrito no demuestra una OTA recibida. Los
+avisos push siguen desactivados; activarlos requiere su revisión independiente
+de permisos, registro, envío, recepción y retirada de tokens.
+
+Fuentes: [Updates SDK57](https://docs.expo.dev/versions/v57.0.0/sdk/updates/),
+[versiones locales y limitaciones](https://docs.expo.dev/build-reference/app-versions/),
+[descarga y siguiente arranque](https://docs.expo.dev/eas-update/download-updates/),
+[plan Free](https://expo.dev/pricing) y [facturación](https://docs.expo.dev/billing/faq/).
 
 ## Verificación local y avisos de dependencias
 

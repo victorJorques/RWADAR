@@ -5,7 +5,7 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "test": "node probar-db.mjs && node probar-cuentas.mjs && node probar-reabrir-cuentas.mjs && node probar-cuentas-sesion-confirmada.mjs && node probar-comunidad.mjs && node probar-opiniones.mjs && node probar-moderacion.mjs && node probar-seguridad.mjs && node probar-acl.mjs && node probar-push.mjs && node probar-correo.mjs && node probar-emisiones.mjs && node probar-cierre-22.mjs && node probar-instaladores.mjs && node probar-smoke-remoto-estatico.mjs && node probar-app-movil-estatico.mjs && node probar-escaparate-local.mjs && node probar-radar-canonico-local.mjs && node probar-verificacion-local-ui.mjs && node probar-verificaciones-oficiales-reental.mjs && node probar-importacion.mjs && node probar-catalogo-publico.mjs && node probar-documentacion-ofertas.mjs && node probar-catalogo-v2.mjs && node probar-catalogo-siempre-disponible.mjs && node probar-transparencia-comercial.mjs && node probar-para-empresas.mjs && node probar-cobro-seguro.mjs && node probar-auditoria-relanzamiento.mjs && node probar-verificacion.mjs",
+    "test": "node probar-db.mjs && node probar-cuentas.mjs && node probar-reabrir-cuentas.mjs && node probar-cuentas-sesion-confirmada.mjs && node probar-comunidad.mjs && node probar-opiniones.mjs && node probar-moderacion.mjs && node probar-seguridad.mjs && node probar-acl.mjs && node probar-push.mjs && node probar-correo.mjs && node probar-emisiones.mjs && node probar-cierre-22.mjs && node probar-instaladores.mjs && node probar-smoke-remoto-estatico.mjs && node probar-app-movil-estatico.mjs && node probar-escaparate-local.mjs && node probar-radar-canonico-local.mjs && node probar-verificacion-local-ui.mjs && node probar-verificaciones-oficiales-reental.mjs && node probar-importacion.mjs && node probar-catalogo-publico.mjs && node probar-documentacion-ofertas.mjs && node probar-catalogo-v2.mjs && node probar-catalogo-siempre-disponible.mjs && node probar-transparencia-comercial.mjs && node probar-para-empresas.mjs && node probar-cobro-seguro.mjs && node probar-auditoria-relanzamiento.mjs && node probar-verificacion.mjs && node probar-cartera-cuenta.mjs",
     "test:registro": "node probar-db.mjs",
     "test:cuentas": "node probar-cuentas.mjs && node probar-reabrir-cuentas.mjs && node probar-cuentas-sesion-confirmada.mjs && node probar-comunidad.mjs",
     "test:seguridad": "node probar-seguridad.mjs && node probar-acl.mjs && node probar-cierre-22.mjs && node probar-cuentas-sesion-confirmada.mjs && node probar-verificacion.mjs",
@@ -30,7 +30,8 @@
     "test:historico-16": "node probar-reparacion.mjs",
     "volcar": "node volcar-seed.js",
     "sincronizar": "node sincronizar.js",
-    "test:catalogo-v2": "node probar-catalogo-v2.mjs"
+    "test:catalogo-v2": "node probar-catalogo-v2.mjs",
+    "test:cartera": "node probar-cartera-cuenta.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {

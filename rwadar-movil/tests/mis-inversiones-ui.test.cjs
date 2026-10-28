@@ -126,7 +126,7 @@ test('los fallos de carga o escritura no confirman movimientos ni borran los reg
   assert.equal(a.control('Registrar inversión').props.disabled, true); assert.match(a.texto, /No se sobrescribirá/);
   const b = await cargar({ posiciones: [posicion()], falloGuardar: true });
   b.pulsar('Actualizar precio · Mi inversión'); b.campo('Precio actual por unidad', '12'); b.pulsar('Guardar precio'); await tick(); b.render();
-  assert.equal(b.guardados.length, 0); assert.match(b.texto, /el cambio no se ha confirmado/);
+  assert.equal(b.guardados.length, 0); assert.match(b.texto, /No se pudo confirmar el guardado/); assert.match(b.texto, /Tus registros anteriores se conservan/);
   assert.match(b.texto, /Mi inversión/); assert.ok(b.control('Guardar precio'));
 });
 

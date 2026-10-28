@@ -1,4 +1,5 @@
 // Public reading and private account API. No passwords, tokens or user data are logged.
+import { crearCarteraServidor } from './cartera-servidor.mjs';
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ORIGEN_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const COOKIE = '__Host-rwadar-acceso';
@@ -38,7 +39,8 @@ function tokenValido(token) {
   return typeof token === 'string' && token.length <= 3800 && /^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(token);
 }
 async function cuerpoJSON(request) {
-  if (!(request.headers.get('content-type') || '').startsWith('application/json')) throw new Error('solicitud_invalida');
+  const tipo = (request.headers.get('content-type') || '').split(';', 1)[0].trim().toLowerCase();
+  if (tipo !== 'application/json') throw new Error('solicitud_invalida');
   const declared = Number(request.headers.get('content-length'));
   if (declared > MAX_BODY) throw new Error('solicitud_excesiva');
   const reader = request.body?.getReader();
@@ -54,7 +56,9 @@ async function cuerpoJSON(request) {
   } finally { reader.releaseLock(); }
   const bytes = new Uint8Array(size); let at = 0;
   for (const chunk of chunks) { bytes.set(chunk, at); at += chunk.length; }
-  const data = JSON.parse(new TextDecoder().decode(bytes));
+  let data;
+  try { data = JSON.parse(new TextDecoder().decode(bytes)); }
+  catch { throw new Error('solicitud_invalida'); }
   if (!data || Array.isArray(data) || typeof data !== 'object') throw new Error('solicitud_invalida');
   return data;
 }
@@ -81,6 +85,15 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
           ...(representacion ? { Prefer: 'return=representation' } : {}) },
         ...(data ? { body: JSON.stringify(data) } : {}) });
       if (result.status >= 300 && result.status < 400) throw new Error('redireccion_no_permitida');
+      // A provider's HTML/non-JSON rejection must retain its HTTP status.
+      // Do not reflect its body or headers containing account information.
+      if (!result.ok) {
+        const error = new Error('auth_rechazado'); error.status = result.status;
+        const retry = result.headers.get('retry-after') || '';
+        error.reintentarTras = /^[0-9]{1,6}$/.test(retry) && Number(retry) >= 1 && Number(retry) <= 86400 ? retry : '60';
+        if (result.body) await result.body.cancel().catch(() => {});
+        throw error;
+      }
       if (Number(result.headers.get('content-length')) > maxBytes) throw new Error('respuesta_excesiva');
       const reader = result.body?.getReader(); let text = '';
       if (reader) {
@@ -92,8 +105,10 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
       } else text = await result.text();
       if (new TextEncoder().encode(text).length > maxBytes) throw new Error('respuesta_excesiva');
       const body = text ? JSON.parse(text) : null;
-      if (!result.ok) { const error = new Error('auth_rechazado'); error.status = result.status; throw error; }
       return body;
+    } catch (error) {
+      if (error.message === 'auth_rechazado' || error.message === 'redireccion_no_permitida') throw error;
+      throw new Error('servicio_no_disponible');
     } finally { clearTimeout(timer); }
   }
   async function verificar(env, token) {
@@ -108,6 +123,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
     if (!Array.isArray(profile) || profile.length !== 1 || profile[0].id !== user.id) throw new Error('sin_sesion');
     return { id: user.id, correo: email, correoConfirmadoEl: user.email_confirmed_at };
   }
+  const atenderCartera = crearCarteraServidor({ api, verificar, leerCookie, respuesta });
   async function atender(context) {
     const { request, env } = context; const url = new URL(request.url);
     const path = url.pathname.replace(/\/$/, '') || '/';
@@ -122,6 +138,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
     // closed account API handles identity and private data. ASSETS cannot write.
     if (!endpoint) return path.startsWith('/api/')
       ? respuesta({ error: 'ruta_no_permitida' }, 404) : context.next();
+    if (path === '/api/acceso/cartera') return atenderCartera({ request, env });
     if (endpoint && !recursoCatalogo && !['/api/acceso/sesion', '/api/acceso/entrar', '/api/acceso/registrar',
       '/api/acceso/recuperar', '/api/acceso/reenviar', '/api/acceso/inspeccionar',
       '/api/acceso/adoptar', '/api/acceso/nueva-clave', '/api/acceso/salir', '/api/acceso/datos', '/api/acceso/reautenticar', '/api/acceso/tutorial', '/api/acceso/tutorial-continuar.js'].includes(path)) return respuesta({ error: 'ruta_no_permitida' }, 404);
@@ -232,9 +249,13 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
       return respuesta({ autenticada: true, usuario: user });
     } catch (error) {
       if (error.message === 'configuracion_pendiente') return respuesta({ error: 'configuracion_pendiente' }, 503);
+      if (error.status === 429) return respuesta({ error: 'intentos_excedidos' }, 429,
+        { 'Retry-After': error.reintentarTras || '60' });
+      if (error.message === 'servicio_no_disponible' || error.status >= 500)
+        return respuesta({ error: 'servicio_no_disponible' }, 503, { 'Retry-After': '30' });
       const code = ['correo_invalido', 'clave_corta', 'clave_vacia', 'condiciones', 'nombre_invalido', 'solicitud_invalida', 'solicitud_excesiva'].includes(error.message) ? error.message : 'sesion_necesaria';
       // An old failed request must not erase a newer account's cookie.
-      return respuesta({ error: code }, error.status === 429 ? 429 : code === 'sesion_necesaria' ? 401 : 400);
+      return respuesta({ error: code }, code === 'sesion_necesaria' ? 401 : 400);
     }
   }
   return { atender, verificar };

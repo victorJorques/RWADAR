@@ -836,11 +836,11 @@ const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
 prueba('acceso, analítica, mapa, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
   JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaAnalitica, '/assets/acceso-privado.js',
     '/assets/mapa-buscar-util-20261027.js','/assets/mapa-buscar-20261027.js',rutaCatalogo,
-    '/assets/ficha-editorial-20261022.js','/assets/idioma-en-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js',rutaScriptApp]) &&
+    '/assets/ficha-editorial-20261022.js','/assets/idioma-en-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js','/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js',rutaScriptApp]) &&
   scripts.every(script => /\bdefer\b/.test(script[0]) && !/\basync\b/.test(script[0])));
-prueba('la aplicación carga una hoja propia versionada',
+prueba('las cuatro hojas propias versionadas cargan en el orden declarado',
   JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
-    '/assets/rwadar-20260820.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css']));
+    '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css']));
 for (const recurso of [rutaScriptApp, rutaCatalogo, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
@@ -1952,7 +1952,7 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
     esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
 }
 prueba('HTML conserva sus recursos con huella sin depender de un precache del worker',
-  recursoJSPublicado && hojasPublicadas.length === 4 &&
+  recursoJSPublicado && hojasPublicadas.length === 5 &&
   hojasPublicadas.filter(ruta => /\/mapa-buscar-20261027\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   [recursoJSPublicado, recursoCatalogoPublicado,
     ...scriptsPublicados.map(s=>s[1]), ...hojasPublicadas,
@@ -2539,15 +2539,16 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       todosBotones.filter(b => atributoHTML(b[1], 'data-guardar-oferta') === oferta.slug &&
         /\bfav-local\b/.test(atributoHTML(b[1], 'class') || '')).length === 1);
     prueba(`tarjeta ${caso.nombre}: fixture válido y documento largo aceptado`, render.valida && render.docValida);
-    prueba(`tarjeta ${caso.nombre}: imagen, título, proveedor y un solo dato siguen el orden de lectura`,
+    prueba(`tarjeta ${caso.nombre}: imagen, título, proveedor y tres datos siguen el orden de lectura`,
       /<img\b[^>]*alt="[^"]+"[^>]*loading="lazy"[^>]*width="\d+"[^>]*height="\d+"/.test(tarjeta) &&
       tarjeta.indexOf('escaparate-imagen') < tarjeta.indexOf('escaparate-cuerpo') &&
       cuerpo.includes('<h3 class="emi-tit">'+render.titulo+'</h3>') &&
       cuerpo.includes('<div class="emi-donde"><b>'+render.proveedor+'</b></div>') &&
       cuerpo.indexOf('<h3') < cuerpo.indexOf('class="emi-donde"') &&
-      cuerpo.indexOf('class="emi-donde"') < cuerpo.indexOf('class="escaparate-dato-principal"') &&
-      (cuerpo.match(/class="escaparate-dato-principal"/g)||[]).length === 1 &&
-      !/escaparate-destacado/.test(tarjeta));
+      cuerpo.indexOf('class="emi-donde"') < cuerpo.indexOf('class="escaparate-datos-clave"') &&
+      (cuerpo.match(/class="escaparate-datos-clave"/g)||[]).length === 1 &&
+      ['Mínimo (EUR)','España','Salida'].every(etiqueta=>cuerpo.includes('<dt>'+etiqueta+'</dt>')) &&
+      !/escaparate-destacado|escaparate-dato-principal/.test(tarjeta));
     prueba(`tarjeta ${caso.nombre}: no contiene documento, descripción, métricas auxiliares ni enlaces externos`,
       !/<a\b|catalogo-descripcion|escaparate-metrica|escaparate-disponibilidad/.test(tarjeta) &&
       !['DOCUMENTO_LARGO_SOLO_EN_FICHA','DOCUMENTO_FINAL_INTEGRO','RESUMEN_COMPLETO_SOLO_EN_FICHA',
@@ -2565,9 +2566,9 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       atributoHTML(botones[0][1], 'aria-label').includes(render.titulo) &&
       atributoHTML(botones[0][1], 'aria-label').includes(render.proveedor) &&
       /Ver ficha/.test(botones[0][2]));
-    prueba(`tarjeta ${caso.nombre}: la referencia de cifra vigente no se trunca ni revive cifras caducadas`,
-      render.vigente ? tarjeta.includes(render.referencia) && detalle.includes(render.referencia) :
-      !tarjeta.includes(literal) && !tarjeta.includes(unidad) && !/6,50 %|100 EUR/.test(tarjeta));
+    prueba(`tarjeta y ficha ${caso.nombre}: cifras y contexto van completos al detalle y no reviven si caducan`,
+      !tarjeta.includes(literal) && !tarjeta.includes(unidad) && !/6,50 %|100 EUR/.test(tarjeta) &&
+      (render.vigente ? detalle.includes(render.referencia) : !detalle.includes(literal) && !detalle.includes(unidad)));
     prueba(`ficha ${caso.nombre}: abre y conserva documento, características, referencias y avisos completos`,
       render.abierto && /<h2 id="escaparateDetalleTitulo">/.test(detalle) &&
       /data-cerrar-detalle aria-label="Cerrar detalle"/.test(detalle) &&
@@ -2592,6 +2593,15 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
         return atributoHTML(m[1], 'aria-label').startsWith(visible);
       }));
   }
+  const warnCompleto = 'Liquidez condicionada: la venta depende de encontrar una contraparte. '.repeat(3)+'WARN_FINAL_INTEGRO.';
+  const warnSecundario = 'Segunda advertencia documentada que permanece en la ficha.';
+  const avisoSinStop = {...base,slug:'regresion-warn-integro',avisos:[{tono:'warn',texto:warnCompleto},{tono:'warn',texto:warnSecundario}]};
+  vm.runInContext('EMI.push('+JSON.stringify(avisoSinStop)+');',p.contexto);
+  const renderWarn = vm.runInContext(`(() => {const tarjeta=tarjetaOfertaLocal(EMI[EMI.length-1]);abrirDetalleOfertaLocal('regresion-warn-integro');return {tarjeta,detalle:document.getElementById('escaparateDetalleLocal').innerHTML};})()`,p.contexto);
+  prueba('la tarjeta conserva el primer warn íntegro, cuenta los restantes y mantiene todos en el detalle',
+    renderWarn.tarjeta.includes(warnCompleto) && renderWarn.tarjeta.includes(' · 1 más en la ficha') &&
+    !renderWarn.tarjeta.includes('Avisos y condiciones en la ficha completa.') &&
+    renderWarn.detalle.includes(warnCompleto) && renderWarn.detalle.includes(warnSecundario));
   prueba('las tarjetas editoriales no convierten los datos documentales en un ranking',
     !/Ordenar por puntuaci[oó]n/.test(js));
   const reglasImagen = declaracionesCSS(cssBase, '.escaparate-imagen');

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "status": "pending",
+  "version": "1.4.1",
+  "versionCode": 23,
+  "package": "com.rwadar.app",
+  "sourceHeadSha": null,
+  "certificateSha256": "f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72",
+  "apkUrl": null,
+  "apkSha256": null,
+  "apkBytes": null,
+  "easBuildId": null,
+  "easStatus": "PENDING"
+}

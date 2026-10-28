@@ -37,6 +37,8 @@ en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 **Android 1.4.0 ya está publicado** en la página de descargas. Conserva la sesión de forma segura entre arranques y permite activar el desbloqueo del teléfono desde Perfil. Se comprobaron el PIN del sistema, la cancelación sin mostrar contenido, el tutorial real de cuatro pasos, los cálculos de cartera y el cierre que impide recuperar la cuenta. Huella y cara dependen del hardware compatible; la prueba de dispositivo usó PIN Android. La cartera es un registro manual y no actualiza precios de intermediarios. La cuenta temporal y sus secretos quedaron limpiados.
 [Detalle de validación](VERIFICACION-ACCESO-PERSISTENTE-2026-10-28.md).
 
+**Actualización siguiente preparada:** una corrección de renovación de sesión, tarjetas más breves y el resumen Mis inversiones compartido entre web y app. La cartera privada ya está aplicada con permiso de Víctor y conserva únicamente registros manuales. El siguienteAPK activará las mejoras automáticas compatibles y debe instalarse sobre el actual, sin desinstalarlo. Todavía faltan la compilación y las pruebas del binario nuevo; la descarga pública sigue siendo la versión anterior. [Detalle](VERIFICACION-ACTUALIZACION-141-2026-10-28.md).
+
 **Seguridad web comprobada hoy:** cabeceras, cookies y controles de acceso/sesión están aplicados. La comunidad permanece apagada. Turnstile, el control adicional de abuso y algunos ajustes de los paneles aún no están acreditados; no se presentan como terminados. [Detalle breve](SEGURIDAD-WEB-REVISION-2026-10-28.md).
 
 | | Estado |

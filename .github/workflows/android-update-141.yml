@@ -1,0 +1,184 @@
+# PRIVATE directed QA. A push only registers this file; no product build/release/OTA.
+name: RWAdar Android1.4.1 private in-place update and cloud portfolio QA
+run-name: APK22 to23 directed native QA; no release or OTA publication
+on:
+  push:
+    branches: [codex/android-140-auth-qa]
+  workflow_dispatch:
+    inputs:
+      confirmed_test_account:
+        description: CONFIRMED_TEST_ACCOUNT for an empty dedicated confirmed QA account
+        required: true
+        type: string
+      qa_user_id:
+        description: Exact existing dedicated QA UUID verified by the account helper
+        required: true
+        type: string
+      qa_marker:
+        description: Existing QA ownership marker verified by the account helper
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: rwadar-android141-directed-qa
+  cancel-in-progress: false
+env:
+  PUBLICAR_RELEASE: 'NO'
+jobs:
+  android-update-141:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.repository.private == true }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout frozen private QA source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Fail locally while candidate pending; no credentials exposed to this step
+        env:
+          QA_ACCOUNT_ACK: ${{ inputs.confirmed_test_account }}
+          QA_USER_ID: ${{ inputs.qa_user_id }}
+          QA_ACCOUNT_MARKER: ${{ inputs.qa_marker }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = victorJorques/RWADAR
+          test "$GITHUB_REF" = refs/heads/codex/android-140-auth-qa
+          test "$PUBLICAR_RELEASE" = NO
+          python3 .github/qa-android-update-141/gate.py prepare
+      - name: Download only frozen baseline22 and actual finished candidate23
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence-private
+          curl --fail --location --proto '=https' --proto-redir '=https' --max-time 90 --retry 0 "$BASELINE_APK_URL" -o baseline22.apk
+          test "$(stat -c '%s' baseline22.apk)" = "$BASELINE_APK_BYTES"
+          printf '%s  baseline22.apk\n' "$BASELINE_APK_SHA256" | sha256sum --check
+          curl --fail --location --proto '=https' --proto-redir '=https' --max-time 90 --retry 0 "$APK_URL" -o rwadar.apk
+          test "$(stat -c '%s' rwadar.apk)" = "$APK_BYTES"
+          printf '%s  rwadar.apk\n' "$APK_SHA256" | sha256sum --check
+      - name: Prepare official Android emulator on an ephemeral runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+          printf '%s\n' "$ANDROID_HOME/platform-tools" "$ANDROID_HOME/emulator" >> "$GITHUB_PATH"
+          export ANDROID_USER_HOME="$RUNNER_TEMP/rwadar-android"
+          export ANDROID_AVD_HOME="$ANDROID_USER_HOME/avd"
+          mkdir -p "$ANDROID_AVD_HOME"
+          printf 'ANDROID_USER_HOME=%s\nANDROID_AVD_HOME=%s\n' "$ANDROID_USER_HOME" "$ANDROID_AVD_HOME" >> "$GITHUB_ENV"
+          test -c /dev/kvm
+          # Narrow grant on this disposable runner only; no account permission changes.
+          if ! test -r /dev/kvm || ! test -w /dev/kvm; then
+            sudo setfacl -m "u:$(id -un):rw" /dev/kvm
+          fi
+          # Uses the runner's existing accepted SDK licences. Never auto-accept new terms.
+          timeout 150 "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'platform-tools' 'platforms;android-35' 'emulator' 'system-images;android-35;default;x86_64' < /dev/null
+          command -v adb
+          printf 'no\n' | "$ANDROID_HOME/cmdline-tools/latest/bin/avdmanager" create avd -n rwadar_smoke -k 'system-images;android-35;default;x86_64' --device pixel_6 --path "$ANDROID_AVD_HOME/rwadar_smoke.avd"
+          "$ANDROID_HOME/emulator/emulator" -list-avds | tee evidence-private/avds.txt
+          grep -Fx 'rwadar_smoke' evidence-private/avds.txt
+          "$ANDROID_HOME/emulator/emulator" -avd rwadar_smoke -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -accel on -memory 2048 > evidence-private/emulator.log 2>&1 &
+          timeout 90 adb wait-for-device
+          timeout 90 bash -c 'until [[ "$(adb shell getprop sys.boot_completed | tr -d "\r")" == 1 ]]; do sleep 2; done'
+          adb shell input keyevent KEYCODE_WAKEUP
+          adb shell wm dismiss-keyguard
+          adb shell settings put global window_animation_scale 0
+          adb shell settings put global transition_animation_scale 0
+          adb shell settings put global animator_duration_scale 0
+          python3 .github/qa-android-update-141/gate.py baseline-identity baseline22.apk
+          python3 .github/qa-android-update-141/gate.py identity rwadar.apk
+          adb install --no-streaming baseline22.apk
+      - name: Compile a disposable UI snapshot test harness, never modify the product APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Stock uiautomator dump waits for idle and can leave a stale file on animated screens.
+          # Use the documented Instrumentation/UiAutomation APIs to read the current tree directly.
+          # This helper has no activity, network permission, product code, credentials or private key.
+          mkdir -p ui-helper/classes ui-helper/dex
+          python3 - <<'PY'
+          from pathlib import Path
+          Path('ui-helper/AndroidManifest.xml').write_text('''<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.rwadar.smoketest">
+            <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="35"/>
+            <application android:label="RWAdar CI snapshot" android:allowBackup="false"/>
+            <instrumentation android:name="com.rwadar.smoketest.DumpRunner" android:targetPackage="com.rwadar.smoketest"/>
+          </manifest>''', encoding='utf-8')
+          PY
+          cp .github/qa-android-authenticated-140/DumpRunner.java ui-helper/DumpRunner.java
+          ANDROID_JAR="$ANDROID_HOME/platforms/android-35/android.jar"
+          BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
+          javac --release 8 -classpath "$ANDROID_JAR" -d ui-helper/classes ui-helper/DumpRunner.java
+          "$BUILD_TOOLS/d8" --lib "$ANDROID_JAR" --min-api 24 --output ui-helper/dex ui-helper/classes/com/rwadar/smoketest/DumpRunner.class
+          "$BUILD_TOOLS/aapt" package -f -M ui-helper/AndroidManifest.xml -I "$ANDROID_JAR" -F ui-helper/unsigned.apk
+          zip -j ui-helper/unsigned.apk ui-helper/dex/classes.dex
+          "$BUILD_TOOLS/zipalign" -f 4 ui-helper/unsigned.apk ui-helper/aligned.apk
+          keytool -genkeypair -keystore ui-helper/ephemeral.jks -storepass android -keypass android -alias test -dname 'CN=Disposable CI test only' -keyalg RSA -validity 1 -noprompt
+          "$BUILD_TOOLS/apksigner" sign --ks ui-helper/ephemeral.jks --ks-pass pass:android --key-pass pass:android --out ui-helper/test.apk ui-helper/aligned.apk
+          adb install --no-streaming ui-helper/test.apk
+      - name: Directed in-place replacement, session, cloud QA portfolio, detail and logout
+        env:
+          RWADAR_QA_EMAIL: ${{ secrets.RWADAR_QA_EMAIL }}
+          RWADAR_QA_PASSWORD: ${{ secrets.RWADAR_QA_PASSWORD }}
+          QA_ACCOUNT_ACK: ${{ inputs.confirmed_test_account }}
+          QA_USER_ID: ${{ inputs.qa_user_id }}
+          QA_ACCOUNT_MARKER: ${{ inputs.qa_marker }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 .github/qa-android-update-141/run.py
+      - name: Always discard the disposable device and its local QA data
+        if: always()
+        shell: bash
+        run: |
+          if command -v adb >/dev/null 2>&1; then
+            adb shell am force-stop com.rwadar.smoketest >/dev/null 2>&1 || true
+            adb forward --remove-all >/dev/null 2>&1 || true
+            adb shell pm clear com.rwadar.app >/dev/null 2>&1 || true
+            adb emu kill >/dev/null 2>&1 || true
+          fi
+      - name: Bounded evidence only in PRIVATE job logs; no Actions artifact storage
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = victorJorques/RWADAR
+          python3 - <<'PY'
+          import base64, hashlib, io, pathlib, re, zipfile
+          folder=pathlib.Path('evidence-private')
+          files=[]; total=0; rejected=[]
+          for path in sorted(folder.glob('*')):
+              if path.is_symlink() or not path.is_file():
+                  rejected.append('NONREGULAR_ENTRY'); continue
+              if not re.fullmatch(r'[A-Za-z0-9_.-]+',path.name):
+                  rejected.append('UNSAFE_ENTRY_NAME'); continue
+              if path.suffix not in {'.png','.xml','.json','.txt','.log'}:
+                  rejected.append('UNAPPROVED_SUFFIX'); continue
+              data=path.read_bytes()
+              if path.suffix=='.log': data=data[-65536:]
+              assert len(data)<=4*1024*1024
+              total+=len(data); assert total<=48*1024*1024
+              files.append((path.name,data))
+          if rejected:
+              # Static reason codes only: never export unknown data or arbitrary filenames.
+              diagnostic=('{\"status\":\"failed\",\"reason\":\"unapproved-evidence-excluded\",\"excludedCount\":'+str(len(rejected))+',\"reasonCodes\":'+str(sorted(set(rejected))).replace("'",'\"')+'}\n').encode()
+              assert len(diagnostic)<=4*1024*1024
+              total+=len(diagnostic); assert total<=48*1024*1024
+              assert not any(name=='evidence-export-diagnostic.json' for name,_ in files)
+              files.append(('evidence-export-diagnostic.json',diagnostic))
+          buffer=io.BytesIO()
+          with zipfile.ZipFile(buffer,'w',zipfile.ZIP_DEFLATED) as archive:
+              for name,data in files: archive.writestr('evidence-private/'+name,data)
+          payload=buffer.getvalue(); assert len(payload)<=16*1024*1024
+          chunks=[base64.b64encode(payload[i:i+576]).decode() for i in range(0,len(payload),576)]
+          print('RWADAR_PRIVATE_QA_ZIP_META',hashlib.sha256(payload).hexdigest(),len(payload),len(chunks))
+          for index,chunk in enumerate(chunks): print('RWADAR_PRIVATE_QA_ZIP_DATA',f'{index:06d}',chunk)
+
+          if rejected:
+              print('RWADAR_PRIVATE_QA_EXPORT_ERROR UNAPPROVED_ENTRIES_EXCLUDED',len(rejected))
+              raise SystemExit(2)
+          PY

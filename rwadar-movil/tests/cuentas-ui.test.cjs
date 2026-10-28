@@ -323,6 +323,8 @@ function seccionesPerfil() {
   const js = babel.transformFromAstSync(ast, app, { babelrc: false, configFile: false, plugins: [jsx] }).code;
   const entorno = {
     React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
+    useState: inicial => [typeof inicial === 'function' ? inicial() : inicial, () => {}],
+    useEffect() {},
     StyleSheet: { create: (s) => s }, T: tema.T, C: colores, MODO_LOCAL: false, USUARIO_LOCAL: true,
   };
   for (const nombre of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono',

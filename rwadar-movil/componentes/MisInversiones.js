@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import { Alert, Pressable, ScrollView, Text, TextInput, View } from './Idioma';
-import { MONEDAS, crearPosicion, anadirMovimiento, fijarValoracion, resumirPosicion, fechaHoy } from '../lib/cartera';
+import { MONEDAS, crearPosicion, anadirMovimiento, fijarValoracion, resumirPosicion, resumirCartera, fechaHoy } from '../lib/cartera';
 import { cargarCartera, guardarCartera } from '../lib/cartera-local';
 import { C, F, R, T, UI } from '../lib/tema';
 
@@ -35,7 +35,7 @@ function Campo({ etiqueta, valor, onChangeText, decimal: esDecimal = false, ...p
 
 function Dato({ etiqueta, valor, destacado = false }) {
   return <View style={e.dato}><Text style={e.etiqueta}>{etiqueta}</Text>
-    <Text noTraducir style={[e.valor, destacado && e.valorPrincipal]}>{valor}</Text></View>;
+    <Text noTraducir={/\d/.test(String(valor))} style={[e.valor, destacado && e.valorPrincipal]}>{valor}</Text></View>;
 }
 
 export default function MisInversiones(props) {
@@ -44,7 +44,7 @@ export default function MisInversiones(props) {
   return <CarteraUsuario key={props.usuarioId} {...props} />;
 }
 
-export function CarteraUsuario({ usuarioId, ofertaInicial = null, onConsumirOferta }) {
+export function CarteraUsuario({ usuarioId, ofertaInicial = null, onConsumirOferta, cargar: cargarCuenta, guardar: guardarCuenta }) {
   const [posiciones, setPosiciones] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [cargaCorrecta, setCargaCorrecta] = useState(false);
@@ -53,18 +53,29 @@ export function CarteraUsuario({ usuarioId, ofertaInicial = null, onConsumirOfer
   const [error, setError] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [guardando, setGuardando] = useState(false);
+  const [version, setVersion] = useState(null);
+  const [copiaLocal, setCopiaLocal] = useState([]);
   const vivo = useRef(true), escritura = useRef(false);
+  const generacion = useRef(0);
+  const sincronizada = typeof cargarCuenta === 'function' && typeof guardarCuenta === 'function';
 
   useEffect(() => {
     vivo.current = true;
-    cargarCartera(usuarioId).then(datos => {
-      if (!vivo.current) return;
-      setPosiciones(datos); setCargaCorrecta(true);
+    const estaCarga = ++generacion.current;
+    const vigente = () => vivo.current && generacion.current === estaCarga;
+    const controlador = new AbortController();
+    setCargando(true); setCargaCorrecta(false); setPosiciones([]); setCopiaLocal([]); setVersion(null);
+    setError(''); setMensaje(''); setGuardando(false); escritura.current = false;
+    const carga = sincronizada ? cargarCuenta({ signal: controlador.signal }) : cargarCartera(usuarioId).then(posiciones => ({ posiciones, version: null }));
+    carga.then(datos => {
+      if (!vigente()) return;
+      setPosiciones(datos.posiciones); setVersion(datos.version); setCargaCorrecta(true);
     }).catch(() => {
-      if (vivo.current) setError('No se pudieron leer tus inversiones. No se sobrescribirá lo guardado. Vuelve a abrir Perfil para reintentar.');
-    }).finally(() => { if (vivo.current) setCargando(false); });
-    return () => { vivo.current = false; };
-  }, [usuarioId]);
+      if (vigente()) setError('No se pudieron leer tus inversiones. No se sobrescribirá lo guardado. Vuelve a abrir Perfil para reintentar. La copia anterior de este dispositivo se conserva.');
+    }).finally(() => { if (vigente()) setCargando(false); });
+    if (sincronizada) cargarCartera(usuarioId).then(datos => { if (vigente()) setCopiaLocal(datos); }).catch(() => {});
+    return () => { vivo.current = false; generacion.current += 1; controlador.abort(); };
+  }, [usuarioId, sincronizada, cargarCuenta]);
 
   useEffect(() => {
     if (!ofertaInicial) return;
@@ -73,16 +84,18 @@ export function CarteraUsuario({ usuarioId, ofertaInicial = null, onConsumirOfer
   }, [ofertaInicial, onConsumirOferta]);
 
   async function persistir(siguientes, texto) {
-    if (!cargaCorrecta || escritura.current) return;
+    if (!vivo.current || !cargaCorrecta || escritura.current) return;
     escritura.current = true; setGuardando(true); setError('');
+    const estaEscritura = generacion.current;
+    const vigente = () => vivo.current && generacion.current === estaEscritura;
     try {
-      await guardarCartera(usuarioId, siguientes);
-      if (vivo.current) { setPosiciones(siguientes); setFormulario(null); setMensaje(texto); }
+      const confirmada = sincronizada ? await guardarCuenta(siguientes, version) :
+        (await guardarCartera(usuarioId, siguientes), { posiciones: siguientes, version: null });
+      if (vigente()) { setPosiciones(confirmada.posiciones); setVersion(confirmada.version); setFormulario(null); setMensaje(texto); }
     } catch {
-      if (vivo.current) setError('No se pudo guardar. Tus registros anteriores se conservan; el cambio no se ha confirmado.');
+      if (vigente()) setError('No se pudo confirmar el guardado. Tus registros anteriores se conservan. Si los editaste en otro dispositivo, vuelve a abrir Perfil antes de reintentarlo.');
     } finally {
-      escritura.current = false;
-      if (vivo.current) setGuardando(false);
+      if (vigente()) { escritura.current = false; setGuardando(false); }
     }
   }
 
@@ -118,22 +131,59 @@ export function CarteraUsuario({ usuarioId, ofertaInicial = null, onConsumirOfer
   }
 
   function eliminar(posicion) {
-    Alert.alert('Eliminar inversión', `Se eliminarán «${posicion.nombre}» y sus movimientos de este dispositivo.`, [
+    Alert.alert('Eliminar inversión', `Se eliminarán «${posicion.nombre}» y sus movimientos ${sincronizada ? 'de tu cuenta. La copia local anterior se conserva.' : 'de este dispositivo.'}`, [
       { text: 'Cancelar', style: 'cancel' },
       { text: 'Eliminar', style: 'destructive', onPress: () => persistir(posiciones.filter(p => p.id !== posicion.id), 'Inversión eliminada.') },
     ]);
   }
 
+  function importarCopiaLocal() {
+    if (!sincronizada || posiciones.length || !copiaLocal.length || !cargaCorrecta || guardando) return;
+    Alert.alert('Importar copia local', 'Se copiarán a tu cuenta las inversiones registradas en este dispositivo. La cuenta está vacía. La copia local se conserva y no se combinará con otras inversiones automáticamente.', [
+      { text: 'Cancelar', style: 'cancel' },
+      { text: 'Importar a mi cuenta', onPress: () => persistir(copiaLocal, 'Copia local importada a tu cuenta. La copia del dispositivo se conserva.') },
+    ]);
+  }
+
   const bloqueado = cargando || !cargaCorrecta || guardando;
   const f = formulario;
+  const resumen = cargaCorrecta ? resumirCartera(posiciones) : [];
   return <View style={e.seccion}>
     <Text style={e.titulo} accessibilityRole="header">Mis inversiones</Text>
-    <Text style={e.nota}>Registro manual, solo en este dispositivo: se pierde al desinstalar o borrar sus datos. No consulta tus compras en los proveedores.</Text>
+    <Text style={e.nota}>{sincronizada
+      ? 'Registro manual de tu cuenta, compartido con la web. RWAdar no consulta proveedores ni actualiza precios automáticamente.'
+      : 'Registro manual, solo en este dispositivo: se pierde al desinstalar o borrar sus datos. No consulta tus compras en los proveedores.'}</Text>
     {cargando ? <ActivityIndicator color={C.senal} accessibilityLabel="Cargando mis inversiones" /> : null}
     {error ? <Text style={e.error} accessibilityRole="alert" accessibilityLiveRegion="assertive">{error}</Text> : null}
     {mensaje ? <Text style={e.mensaje} accessibilityLiveRegion="polite">{mensaje}</Text> : null}
+    {!cargando && cargaCorrecta ? <View style={e.resumen}>
+      <Text style={e.subtitulo} accessibilityRole="header">Tu resumen</Text>
+      {resumen.length ? resumen.map(grupo => <View key={grupo.moneda}>
+        <Text noTraducir style={e.unidades}>{grupo.moneda}</Text>
+        <View style={e.rejilla}>
+          <Dato etiqueta="Invertido" valor={importeVisible(grupo.aportadoCentimos, grupo.moneda)} />
+          <Dato etiqueta="Valor registrado" valor={importeVisible(grupo.valorActualCentimos, grupo.moneda)} destacado />
+          <Dato etiqueta="Cobrado" valor={importeVisible(grupo.cobradoCentimos, grupo.moneda)} />
+          <Dato etiqueta="Resultado" valor={importeVisible(grupo.resultadoCentimos, grupo.moneda)} destacado />
+        </View>
+        {grupo.pendientesValoracion ? <Text style={e.aviso}>Faltan valoraciones: el valor total y el resultado se mostrarán cuando añadas los precios y sus fechas.</Text> : null}
+      </View>) : <View style={e.rejilla}>
+        <Dato etiqueta="Invertido" valor="Sin compras" />
+        <Dato etiqueta="Valor registrado" valor="Sin valoración" />
+        <Dato etiqueta="Cobrado" valor="Sin movimientos" />
+        <Dato etiqueta="Resultado" valor="Sin valoración" />
+      </View>}
+      <Text style={e.nota}>Invertido incluye compras, comisiones y gastos. Cobrado incluye ventas y cobros. Se mantienen las monedas separadas y solo se usan tus datos manuales.</Text>
+    </View> : null}
 
     {!f ? <Boton texto="Registrar inversión" onPress={() => iniciar('alta')} disabled={bloqueado} /> : null}
+    {sincronizada && copiaLocal.length ? <View style={e.resumen}>
+      <Text style={e.subtitulo}>Tu copia anterior se conserva</Text>
+      <Text style={e.nota}>{posiciones.length
+        ? 'Hay inversiones anteriores guardadas en este dispositivo. No se han combinado ni sustituido las de tu cuenta.'
+        : 'Hay inversiones anteriores en este dispositivo. Puedes copiarlas a tu cuenta con tu confirmación.'}</Text>
+      {!posiciones.length ? <Boton texto="Importar copia local a mi cuenta" secundario onPress={importarCopiaLocal} disabled={cargando || !cargaCorrecta || guardando} /> : null}
+    </View> : null}
     {!cargando && !posiciones.length && !f ? <Text style={e.vacio}>Añade lo que compraste y lo que pagaste. El resultado aparecerá cuando registres una valoración.</Text> : null}
 
     {f ? <View style={e.formulario}>
@@ -219,6 +269,7 @@ const e = StyleSheet.create({
   nota: { ...T.menor, color: C.tx2, marginVertical: 5 }, vacio: { ...T.cuerpo, color: C.tx2, marginVertical: 12 },
   unidades: { ...T.cuerpoFte, color: C.senal, marginTop: 8 },
   tarjeta: { padding: 16, backgroundColor: C.sup, borderRadius: R.m, borderWidth: 1, borderColor: C.linea, marginTop: 14 },
+  resumen: { padding: 16, backgroundColor: C.sup2, borderRadius: R.m, borderWidth: 1, borderColor: C.senal34, marginTop: 12 },
   rejilla: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12, rowGap: 16, marginVertical: 18 },
   dato: { flexBasis: '45%', flexGrow: 1, minWidth: 100 }, etiqueta: { ...T.menor, color: C.tx2, marginBottom: 4 },
   valor: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx }, valorPrincipal: { fontSize: 20, lineHeight: 27 },

@@ -240,21 +240,25 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
   );
 }
 
+function datoBreveTarjeta(campo) {
+  const breve = { 'No documentado en euros': 'No verificado', 'Sin mínimo vigente en euros': 'No verificado',
+    'Sin comprobar desde España': 'Sin confirmar', 'Salida no documentada': 'Sin documentar' };
+  return { ...campo, texto: breve[campo.texto] || campo.texto };
+}
+
 export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
   const idiomaActual = useIdioma();
   const ahora = useFechaOferta();
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
   const vigencia = vigenciaOferta(oferta, ahora);
-  const destacado = datoDestacado(oferta);
   const criticos = avisosCriticos(oferta);
   const primerCritico = criticos[0];
   const resumen = resumenOferta(ofertaOriginal, [], ahora);
-  const registro = registroProveedor(plataforma, ahora);
   const datosParaDecidir = [
-    ['Mínimo publicado en euros', resumen.minimo],
-    ['Acceso desde España', resumen.accesoEspana],
-    ['Cómo recuperar el dinero', resumen.salida],
+    ['Mínimo (EUR)', datoBreveTarjeta(resumen.minimo)],
+    ['España', datoBreveTarjeta(resumen.accesoEspana)],
+    ['Salida', datoBreveTarjeta(resumen.salida)],
   ];
   const fechaProcedencia = resumen.fechas.comprobadaEl
     ? `Fuente consultada ${fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)}`
@@ -266,11 +270,8 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
     `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar,
     traducir(ETIQUETA_EDITORIAL),
     oferta.patrocinada ? traducir('Contenido patrocinado; no altera el ranking') : null,
-    `${traducir(destacado.etiqueta)}: ${destacado.original ? destacado.valor : traducir(destacado.valor)}`,
-    destacado.referencia,
     ...datosParaDecidir.map(([etiqueta, dato]) => `${traducir(etiqueta)}: ${dato.fuente || dato.referencias?.length ? dato.texto : traducir(dato.texto)}`),
     traducir(fechaProcedencia),
-    `${traducir('Registro del proveedor:')} ${registro ? `${traducir(registro.texto)}; ${traducir('revisado el')} ${fechaVerificacionLocalVisible(registro.fecha)}` : traducir('no documentado en el radar')}. ${traducir('No acredita esta oferta')}`,
     traducir(resumen.estado.texto),
     primerCritico
       ? `${traducir(primerCritico.tono === 'stop' ? 'Aviso bloqueante' : 'Precaución')}: ${primerCritico.texto}`
@@ -302,27 +303,16 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
             <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt} numberOfLines={1}>{lugar}</Text>
           </View>
         ) : null}
-        <View style={e.datosCompactos}>
-          <View style={e.datoCompacto}>
-            <Text style={e.datoEtiqueta}>{oferta.cifrasPendientes ? destacado.etiqueta : etiquetaDatoCompacta(oferta.tipo)}</Text>
-            <Text noTraducir={Boolean(destacado.original)} idiomaOriginal="es-ES" style={e.datoValor}>{destacado.valor}</Text>
-          </View>
-        </View>
-        {/* Una cifra conserva su ventana/unidad completa. La compactación
-            elimina bloques duplicados, nunca la condición de una cifra. */}
-        {destacado.referencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.referencia}>{destacado.referencia}</Text> : null}
         <View style={e.decisionTarjeta}>
           {datosParaDecidir.map(([etiqueta, dato]) => (
             <View key={etiqueta} style={e.decisionFila}>
               <Text style={e.decisionEtiqueta}>{etiqueta}</Text>
               <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.decisionValor}>{dato.texto}</Text>
               {dato.unidadDocumentada ? <Text style={e.referencia}>Unidad en la fuente: <Text noTraducir idiomaOriginal="es-ES">{dato.unidadDocumentada}</Text></Text> : null}
-              {dato.consultadaEl ? <Text style={e.referencia}>Consulta: {fechaVerificacionLocalVisible(dato.consultadaEl)}</Text> : null}
             </View>
           ))}
         </View>
         <Text style={[e.estadoFicha, tonoVigencia(vigencia.estado)]}>{resumen.estado.texto}</Text>
-        <Text style={e.referencia}>Registro del proveedor: {registro ? `${registro.texto} · revisión ${fechaVerificacionLocalVisible(registro.fecha)}` : 'no documentado en el radar'}. No acredita esta oferta.</Text>
         {primerCritico ? (
           <View style={[
             e.avisoFicha,
@@ -452,7 +442,7 @@ export function DetalleOferta({
               <Text style={e.referencia}>La disponibilidad de salida no está garantizada.</Text>
             </View>
             {registro ? <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>Registro del proveedor · revisión {fechaVerificacionLocalVisible(registro.fecha)}</Text>
+              <Text style={e.avisosTitulo}>Registro del proveedor · {registro.texto} · revisión {fechaVerificacionLocalVisible(registro.fecha)}</Text>
               <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{registro.detalle}</FuenteOriginal>
               <Text style={e.referencia}>Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.</Text>
             </View> : null}
@@ -699,8 +689,8 @@ const e = StyleSheet.create({
   datoCompacto: { flex: 1, minWidth: 0 },
   decisionTarjeta: { marginTop: 10, gap: 8 },
   decisionFila: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, paddingTop: 8 },
-  decisionEtiqueta: { ...T.menor, fontSize: 14, lineHeight: 21, color: C.tx2 },
-  decisionValor: { ...T.menor, fontFamily: F.media, fontSize: 15, lineHeight: 23, color: C.tx },
+  decisionEtiqueta: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2 },
+  decisionValor: { ...T.menor, fontFamily: F.semi, fontSize: 16, lineHeight: 24, color: C.tx },
   pieFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginTop: 10 },
   fechaFicha: { ...T.menor, color: C.tx2, fontSize: 13, lineHeight: 20 },
   abrirFicha: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 14, lineHeight: 21 },

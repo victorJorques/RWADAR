@@ -10,6 +10,7 @@ const URL_CUENTAS = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const CLAVE_PUBLICABLE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const PLAZO_CUENTAS = 8000;
 const MAX_RESPUESTA = 128 * 1024;
+const MAX_RESPUESTA_CARTERA = 2 * 1024 * 1024;
 // El lote documentado completo supera el límite de una respuesta de cuentas.
 // Solo estas dos lecturas de catálogo admiten un cuerpo y plazo mayores.
 const MAX_RESPUESTA_CATALOGO = 2 * 1024 * 1024;
@@ -70,7 +71,9 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
     if (destino.origin !== URL_CUENTAS || !/^\/(auth|rest)\/v1\//.test(destino.pathname)) throw fallo('destino_invalido');
     const metodo = String(opciones.method || (typeof url === 'object' && url.method) || 'GET').toUpperCase();
     const catalogo = metodo === 'GET' && !destino.username && !destino.password && LECTURAS_CATALOGO.has(destino.pathname);
-    const maxRespuesta = catalogo ? MAX_RESPUESTA_CATALOGO : MAX_RESPUESTA;
+    const cartera = !destino.username && !destino.password && ((metodo === 'GET' && destino.pathname === '/rest/v1/mi_cartera')
+      || (metodo === 'POST' && destino.pathname === '/rest/v1/rpc/guardar_mi_cartera'));
+    const maxRespuesta = cartera ? MAX_RESPUESTA_CARTERA : catalogo ? MAX_RESPUESTA_CATALOGO : MAX_RESPUESTA;
     const plazo = catalogo ? PLAZO_CATALOGO : plazoMs;
     const corte = new AbortController();
     const abortar = () => corte.abort();
@@ -133,7 +136,7 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
   cliente: clientePrueba, crearCliente = crearClienteCuentas, plazoMs = PLAZO_CUENTAS,
   almacenSesion = crearAlmacenSesion() } = {}) {
   const disponible = modoLocal === false && cuentasRemotas === true && correoVerificado === true;
-  let revision = 0, destruido = false, clienteActual = null, suscripcionSesion = null, restauracion = null;
+  let revision = 0, revisionToken = 0, destruido = false, clienteActual = null, suscripcionSesion = null, restauracion = null;
   const oyentes = new Set(), clientesTemporales = new Set();
   let vista = { disponible, estado: disponible ? 'sin-sesion' : 'pausa', usuario: null, perfil: null,
     vigiladas: [], procesando: false, accion: null, error: null, mensaje: null };
@@ -211,7 +214,17 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
     return cliente;
   }
   async function identidad(cliente, actual, esperada) {
-    const usuario = (await pedir(cliente.auth.getUser(), actual))?.user;
+    const tokenInicial = revisionToken;
+    let respuesta;
+    try { respuesta = await pedir(cliente.auth.getUser(), actual); }
+    catch (error) {
+      // Una respuesta del JWT anterior puede llegar después de TOKEN_REFRESHED.
+      // Comprobar una vez el JWT nuevo antes de borrar una sesión ya renovada.
+      if (tokenInicial === revisionToken || clienteActual !== cliente || !esperada ||
+          vista.usuario?.id !== esperada || (error?.status !== 401 && error?.code !== 'bad_jwt')) throw error;
+      respuesta = await pedir(cliente.auth.getUser(), actual);
+    }
+    const usuario = respuesta?.user;
     if (!usuario || !UUID.test(usuario.id) || (esperada && usuario.id !== esperada) || usuario.is_anonymous === true) throw fallo('identidad_invalida');
     if (!usuario.email || !usuario.email_confirmed_at || !Number.isFinite(Date.parse(usuario.email_confirmed_at))) throw fallo('correo_no_confirmado');
     return { id: usuario.id, correo: correoValido(usuario.email) };
@@ -257,6 +270,7 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
     const resultado = cliente.auth.onAuthStateChange?.((evento, session) => {
       if (destruido || clienteActual !== cliente || vista.usuario?.id !== uid) return;
       if (evento === 'TOKEN_REFRESHED' && session?.user?.id === uid) {
+        revisionToken++;
         try {
           almacenSesion.guardar(registro(session, uid), () => !destruido && clienteActual === cliente && vista.usuario?.id === uid)
             .catch(() => { if (!destruido && clienteActual === cliente) pintar({ error: mensajeError(fallo('almacen_sesion')) }); });
