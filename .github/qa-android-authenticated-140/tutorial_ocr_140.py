@@ -56,7 +56,32 @@ def phrases(words,text):
                   'words':[{'text':w['text'],'box':w['box'],'confidence':w['confidence']} for w in selected]})
     return found
 
-def step_and_control(words,step):
+def green_button_box(png_bytes,progress_box):
+    from PIL import Image
+    image=Image.open(io.BytesIO(png_bytes)).convert('RGB');width,height=image.size
+    assert len(progress_box)==4 and 0<=progress_box[0]<progress_box[2]<=width and 0<=progress_box[1]<progress_box[3]<=height
+    pixels=image.load();green=set()
+    for y in range(progress_box[3],height):
+        for x in range(width):
+            r,g,b=pixels[x,y]
+            if r<=80 and g>=180 and 80<=b<=200 and g-b>=35:green.add(y*width+x)
+    candidates=[]
+    while green:
+        point=green.pop();stack=[point];area=0;x0=width;y0=height;x1=y1=0
+        while stack:
+            point=stack.pop();x=point%width;y=point//width;area+=1
+            x0=min(x0,x);y0=min(y0,y);x1=max(x1,x+1);y1=max(y1,y+1)
+            neighbours=[point-width,point+width]
+            if x>0:neighbours.append(point-1)
+            if x+1<width:neighbours.append(point+1)
+            for neighbour in neighbours:
+                if neighbour in green:green.remove(neighbour);stack.append(neighbour)
+        bw,bh=x1-x0,y1-y0
+        if (bw>=width*.18 and bh>=height*.02 and 2<=bw/bh<=12 and area/(bw*bh)>=.60
+                and x0>0 and x1<width and y1<height):candidates.append([x0,y0,x1,y1])
+    return candidates[0] if len(candidates)==1 else None
+
+def step_and_control(words,step,png_bytes=None):
     assert step in (1,2,3,4)
     progress=phrases(words,'Paso '+str(step)+' de 4')
     if len(progress)!=1:return None
@@ -65,8 +90,12 @@ def step_and_control(words,step):
     # progress indicator cannot authorize a tap. Ambiguity always fails closed.
     height=progress[0]['box'][3]-progress[0]['box'][1]
     control=[c for c in control if c['box'][1]>=progress[0]['box'][1]-height]
-    if len(control)!=1:return None
-    return {'step':step,'progress':progress[0],'control':control[0]}
+    if len(control)==1:return {'step':step,'progress':progress[0],'control':control[0]}
+    if control or step==4 or png_bytes is None:return None
+    box=green_button_box(png_bytes,progress[0]['box'])
+    if box is None:return None
+    return {'step':step,'progress':progress[0],'control':{'box':box,'confidence':None,'words':[],
+      'controlObservationMethod':'green-pixels-below-ocr-progress','rootLabelReviewRequired':True}}
 
 def ocr_image(image,output_tsv,timeout=15,sanitize=lambda value:value):
     image=pathlib.Path(image);output_tsv=pathlib.Path(output_tsv);data=image.read_bytes();size=dimensions(data)
@@ -122,7 +151,7 @@ def run_tutorial(ui,click,report,source_file):
     for expected in (1,2,3,4):
         deadline=time.monotonic()+95;recognized=None
         while time.monotonic()<deadline:
-            shot=fresh(ui);recognized=step_and_control(shot['words'],expected)
+            shot=fresh(ui);recognized=step_and_control(shot['words'],expected,shot['bytes'])
             if recognized:break
             seen_other=any(phrases(shot['words'],'Paso '+str(n)+' de 4') for n in (1,2,3,4) if n!=expected)
             if seen_other:time.sleep(.4);continue  # Never assume the last press advanced.
@@ -133,7 +162,12 @@ def run_tutorial(ui,click,report,source_file):
         evidence=save_observation(ui,shot,'05-tutorial-step-'+str(expected))
         box=recognized['control']['box'];x=(box[0]+box[2])//2;y=(box[1]+box[3])//2
         evidence.update(step=recognized['step'],control='Siguiente →' if expected<4 else 'Volver a Academy',box=box,tap=[x,y],
-          confidence=recognized['control']['confidence'],progressBox=recognized['progress']['box'],foregroundVerified=True)
+          confidence=recognized['control']['confidence'],progressBox=recognized['progress']['box'],foregroundVerified=True,
+          progressConfidence=recognized['progress']['confidence'],
+          controlObservationMethod=recognized['control'].get('controlObservationMethod','tesseract-tsv-observed-words'))
+        if recognized['control'].get('rootLabelReviewRequired'):evidence['rootLabelReviewRequired']=True
+        if observed and observed[-1]['controlObservationMethod']=='green-pixels-below-ocr-progress':
+            observed[-1].update(counterAfterPress=recognized['step'],counterAfterPressScreenshot=evidence['screenshot'],counterAfterPressSha256=evidence['sha256'])
         observed.append(evidence)
         report['tutorialOcrProgress']={'rendererEvidence':renderer,'observedPresses':list(observed),'scrollGestures':scrolls}
         ui.adb('shell','input','tap',str(x),str(y));time.sleep(.5)
@@ -146,8 +180,10 @@ def run_tutorial(ui,click,report,source_file):
         time.sleep(.4)
     assert returned,'Native Academy return was not observed by OCR'
     report['tutorialOcrActive']=False;ui.wait_ui('Empezar tutorial 3D',timeout=25)
+    assert all(p.get('counterAfterPress')==p['step']+1 for p in observed if p['controlObservationMethod']=='green-pixels-below-ocr-progress'),'Visual next-button press did not produce its observed next counter'
+    used_pixels=any(p['controlObservationMethod']=='green-pixels-below-ocr-progress' for p in observed)
     report['checks']['academyTutorialManual4Steps']={'steps':[p['step'] for p in observed],'returned':True,'actualWebView':True,
-      'fallbackAccepted':False,'observationMethod':METHOD,'nativeXmlUsedForSteps':False,'freshScreenshots':True,
+      'fallbackAccepted':False,'observationMethod':'real-device-screenshot-green-pixels-and-ocr-progress' if used_pixels else METHOD,'nativeXmlUsedForSteps':False,'freshScreenshots':True,
       'rendererEvidence':renderer,'observedPresses':observed,'returnEvidence':returned,'scrollGestures':scrolls,'minimumConfidence':MIN_CONFIDENCE,
       'webViewIdentityBasis':'frozen compiled WebView component, recognized first scene, and required root visual review'}
     for name in ('ocr-working.png','ocr-working.tsv.txt'):

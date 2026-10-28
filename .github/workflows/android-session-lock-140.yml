@@ -121,14 +121,19 @@ jobs:
             languages="$(timeout 10 tesseract --list-langs 2>/dev/null)"
             if ! grep -Fxq eng <<< "$languages" || ! grep -Fxq spa <<< "$languages"; then needs_ocr=1; fi
           fi
-          if [[ "$needs_ocr" == 1 ]]; then
+          packages=()
+          if [[ "$needs_ocr" == 1 ]]; then packages+=(tesseract-ocr tesseract-ocr-eng tesseract-ocr-spa); fi
+          if ! python3 -c "from PIL import Image" >/dev/null 2>&1; then packages+=(python3-pil); fi
+          if (( ${#packages[@]} )); then
             # Distribution packages only, inside this disposable Ubuntu runner.
             timeout 180 sudo apt-get update -qq
-            timeout 180 sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-eng tesseract-ocr-spa
+            timeout 180 sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${packages[@]}"
           fi
           command -v tesseract
           python3 - <<'PY'
           import hashlib,json,pathlib,re,struct,subprocess,sys,time
+          import PIL
+          from PIL import Image
           out=pathlib.Path('evidence-private');out.mkdir(exist_ok=True)
           def command(args,timeout=20):
               return subprocess.run(args,check=True,capture_output=True,timeout=timeout)
@@ -163,6 +168,7 @@ jobs:
               if time.monotonic()<deadline:time.sleep(min(.4,remaining()))
           assert ready,'OCR did not observe a legitimate readable Settings screenshot within15s'
           (out/'ocr-engine.json').write_text(json.dumps({'engine':'tesseract','version':version,'languages':['eng','spa'],
+              'pixelEngine':'Pillow','pixelEngineVersion':PIL.__version__,
               'smokeImageSource':'adb-exec-out-screencap-of-foreground-Android-Settings',
               'smokeScreenshotSha256':hashlib.sha256(png).hexdigest(),'width':width,'height':height,
               'doesNotCertifyTutorialOrWebView':True},indent=2)+'\n',encoding='utf-8')
