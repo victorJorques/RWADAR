@@ -285,20 +285,22 @@ def tutorial():
 
 def money(label, expected):
     root = locate(label)
-    try:
-        ui.find_node(root,expected)
-    except AssertionError:
-        root = ui.reach_control(expected)
-    values = [n.get('text','').replace('\u00a0',' ').strip() for n in root.iter('node')
-              if n.get('visible') != 'false' and n.get('text')]
-    candidates = []
-    for index,value in enumerate(values):
-        if value == label:
-            following = [v for v in values[index+1:index+4]
-                         if re.fullmatch(r'-?[0-9.,]+ (?:EUR|%)',v)]
-            if following:
-                candidates.append(following[0])
-    require(candidates == [expected], 'Portfolio calculation mismatch for ' + label)
+    boxes=lambda n:list(map(int,re.findall(r'-?\d+',n.get('bounds',''))))
+    labels=[n for n in root.iter('node') if n.get('visible')!='false' and n.get('text','').strip()==label]
+    require(len(labels)==1,'Need one observed portfolio label')
+    left,top,right,bottom=boxes(labels[0]);pairs=[]
+    for node in root.iter('node'):
+        value=node.get('text','').replace('\u00a0',' ').strip()
+        if node.get('visible')=='false' or not re.fullmatch(r'-?[0-9.,]+ (?:EUR|%)',value):continue
+        bound=boxes(node)
+        if len(bound)!=4:continue
+        x0,y0,x1,y1=bound
+        overlap=min(right,x1)-max(left,x0)
+        if y0>=bottom and y0-bottom<=max(160,4*(bottom-top)) and overlap>=.7*min(right-left,x1-x0):
+            pairs.append((y0-bottom,value))
+    require(bool(pairs),'No visible value below its portfolio label')
+    gap=min(item[0] for item in pairs)
+    require([value for distance,value in pairs if distance==gap]==[expected],'Portfolio value differs in its observed column for '+label)
 
 
 def portfolio():
