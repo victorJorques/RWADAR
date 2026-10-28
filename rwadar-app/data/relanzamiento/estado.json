@@ -156,7 +156,7 @@
     },
     "beta_segura_extremo_a_extremo": {
       "estado": "aprobado",
-      "detalle": "Preview99d594e3 comprobada: lectura pública,26/49,SEO/RSS,privados denegados y recursos exactos. Login propio real, cookie, sesión y logout aprobados;frontend con3regresiones de doble cierre. CSS conserva revisión previa; el controlador visual26/10 no pudo completar. Android19 sigue pendiente y separado.",
+      "detalle": "Preview99d594e3 comprobada: lectura pública,26/49,SEO/RSS,privados denegados y recursos exactos. Login propio real, cookie, sesión y logout aprobados;frontend con3regresiones de doble cierre. CSS conserva revisión previa; el controlador visual26/10 no pudo completar. Android19 sigue pendiente y separado. La revocación declarada por el titular se conserva como antecedente documentado; no acredita una auditoría histórica completa ni valida el nuevo APK.",
       "evidencias": [
         {
           "tipo": "prueba",

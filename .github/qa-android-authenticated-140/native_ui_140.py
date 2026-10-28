@@ -142,16 +142,17 @@ _SNAPSHOT_PORT = None
 _SNAPSHOT_SEQUENCE = 0
 
 
-def start_snapshot_bridge():
+def start_snapshot_bridge(timeout=12):
     global _SNAPSHOT_PROCESS, _SNAPSHOT_PORT
     assert _SNAPSHOT_PROCESS is None, 'Snapshot helper already started'
-    raw = adb('forward','tcp:0','localabstract:rwadar_qa_snapshot_140').strip()
+    deadline = time.monotonic()+timeout
+    raw = adb('forward','tcp:0','localabstract:rwadar_qa_snapshot_140',
+              timeout=min(5, max(.1, deadline-time.monotonic()))).strip()
     assert re.fullmatch(r'\d{1,5}',raw) and 0 < int(raw) < 65536, 'Invalid loopback port'
     _SNAPSHOT_PORT = int(raw)
     _SNAPSHOT_PROCESS = subprocess.Popen(
         ['adb','shell','am','instrument','-w','-r','com.rwadar.smoketest/.DumpRunner'],
         stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    deadline = time.monotonic()+12
     while time.monotonic()<deadline:
         if _SNAPSHOT_PROCESS.poll() is not None:
             raise RuntimeError('Read-only snapshot helper exited during startup')
@@ -234,15 +235,25 @@ def dump_once(timeout=30):
 
 def dump(timeout=30):
     deadline = time.monotonic() + timeout
+    helper_restarted = False
     while True:
         try:
-            return dump_once(timeout=max(.1, deadline - time.monotonic()))
+            return dump_once(timeout=min(8, max(.1, deadline - time.monotonic())))
         except (TransientSnapshotError, socket.timeout, EOFError) as error:
             with out.joinpath('snapshot-errors.log').open('a', encoding='utf-8') as log:
                 log.write(str(error) + '\n')
             remaining = deadline - time.monotonic()
             if remaining <= 0:
                 raise
+            if isinstance(error, socket.timeout) and not helper_restarted and remaining > 12:
+                # Only the disposable read-only helper is restarted. A timed-out
+                # serial tree walk must never make later requests reuse old XML.
+                helper_restarted = True
+                stop_snapshot_bridge()
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise error
+                return start_snapshot_bridge(timeout=min(12, remaining))
             time.sleep(min(2, remaining))
 
 

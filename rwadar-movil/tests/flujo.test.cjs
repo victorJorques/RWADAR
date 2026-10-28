@@ -580,8 +580,6 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
     'android.permission.POST_NOTIFICATIONS',
     'android.permission.SYSTEM_ALERT_WINDOW',
     'android.permission.RECEIVE_BOOT_COMPLETED',
-    'android.permission.USE_BIOMETRIC',
-    'android.permission.USE_FINGERPRINT',
     'android.permission.WAKE_LOCK',
     'com.google.android.c2dm.permission.RECEIVE',
     'com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE',
@@ -610,6 +608,11 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
     assert.ok(!app.android.blockedPermissions.includes(permiso),
       `Se conserva la capacidad necesaria o protección interna ${permiso}`);
   }
+  for (const permiso of ['android.permission.USE_BIOMETRIC', 'android.permission.USE_FINGERPRINT']) {
+    assert.ok(app.android.permissions.includes(permiso));
+    assert.ok(!app.android.blockedPermissions.includes(permiso));
+  }
+  assert.ok(app.plugins.some(p => Array.isArray(p) && p[0] === 'expo-local-authentication'));
   assert.equal(eas.build.editorial.android.buildType, 'apk');
   assert.equal(eas.build.editorial.channel, 'editorial');
   assert.equal(eas.build.editorial.distribution, 'internal');

@@ -164,7 +164,7 @@
         <td>Sesión de tu<br>cuenta</td>
         <td>La web utiliza una cookie de sesión necesaria, protegida con HttpOnly, Secure y
           SameSite: el JavaScript no puede leerla. Deja de autorizar al caducar o cerrar sesión.
-          No se guarda tu contraseña. En Android, la sesión se conserva solo en memoria.
+          No se guarda tu contraseña. En Android 1.4.0, la sesión se conserva de forma segura en el dispositivo hasta que cierres sesión o deje de ser válida.
           Los
           enlaces de confirmación o recuperación que te enviamos se canjean una vez y se
           retiran de la dirección. La medición estadística se omite en esas visitas.</td>
@@ -314,9 +314,7 @@
     dispositivos ni representan inversiones. No se convierten automáticamente en una
     lista de vigilancia de cuenta.</p>
   <p>Las versiones con cuentas habilitadas permiten entrar con la misma cuenta que en
-    la web y consultar o cambiar tu lista de vigilancia (apartado 3). La sesión se conserva
-    solo en memoria, no en el almacenamiento del dispositivo: al cerrar por completo la app
-    hay que volver a entrar. Los enlaces de confirmación y recuperación se abren en la web
+    la web y consultar o cambiar tu lista de vigilancia (apartado 3). Desde Android 1.4.0, un token de renovación se guarda cifrado mediante el almacenamiento seguro del sistema, sin guardar tu contraseña, el perfil ni la lista de vigilancia en ese registro. La sesión se recupera y comprueba al abrir la app, hasta que cierres sesión o el servicio la invalide. Puedes activar en Perfil el desbloqueo con la seguridad del móvil: huella, reconocimiento facial compatible o PIN del sistema. La comprobación la hace el sistema operativo; RWAdar no recibe ni guarda datos biométricos ni el código del dispositivo. Los enlaces de confirmación y recuperación se abren en la web
     oficial; después puedes volver a entrar en la app. Las versiones anteriores sin cuentas
     conservan únicamente sus funciones editoriales y favoritas locales.</p>
   <p>Esta versión no crea una identidad remota de instalación, no solicita permiso de

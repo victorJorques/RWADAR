@@ -15,7 +15,8 @@ import org.xmlpull.v1.XmlSerializer;
 public final class DumpRunner extends Instrumentation {
   @Override public void onCreate(Bundle args) { super.onCreate(args); start(); }
   private static String value(CharSequence v) { return v==null ? "" : v.toString(); }
-  private static void node(XmlSerializer xml, AccessibilityNodeInfo info, int depth) throws Exception {
+  private static void node(XmlSerializer xml, AccessibilityNodeInfo info, int depth, long deadline) throws Exception {
+    if(SystemClock.uptimeMillis()>=deadline) throw new IOException("Fresh snapshot budget exceeded");
     if(depth>100) throw new IllegalStateException("Hierarchy too deep");
     Rect b=new Rect(); info.getBoundsInScreen(b);
     xml.startTag(null,"node");
@@ -36,8 +37,9 @@ public final class DumpRunner extends Instrumentation {
     xml.attribute(null,"visible",Boolean.toString(info.isVisibleToUser()));
     xml.attribute(null,"bounds","["+b.left+","+b.top+"]["+b.right+","+b.bottom+"]");
     for(int i=0;i<info.getChildCount();i++) {
+      if(SystemClock.uptimeMillis()>=deadline) throw new IOException("Fresh snapshot budget exceeded");
       AccessibilityNodeInfo child=info.getChild(i);
-      if(child!=null) { try { node(xml,child,depth+1); } finally { child.recycle(); } }
+      if(child!=null) { try { node(xml,child,depth+1,deadline); } finally { child.recycle(); } }
     }
     xml.endTag(null,"node");
   }
@@ -64,11 +66,12 @@ public final class DumpRunner extends Instrumentation {
             // Android35 runner supports clearCache; no cached root may answer a new request.
             long requestStarted=SystemClock.uptimeMillis();
             automation.clearCache();
+            long snapshotDeadline=requestStarted+8000;
             AccessibilityNodeInfo root=null;
             long deadline=SystemClock.uptimeMillis()+1500;
             while(root==null && SystemClock.uptimeMillis()<deadline) {
               root=automation.getRootInActiveWindow();
-              if(root!=null && !root.refresh()) { root.recycle(); root=null; }
+              // clearCache + getRootInActiveWindow already requested a fresh root.
               if(root==null) SystemClock.sleep(50);
             }
             long rootReady=SystemClock.uptimeMillis();
@@ -77,7 +80,7 @@ public final class DumpRunner extends Instrumentation {
               try {
                 StringWriter writer=new StringWriter(); XmlSerializer xml=Xml.newSerializer();
                 xml.setOutput(writer); xml.startDocument("UTF-8",true);
-                xml.startTag(null,"hierarchy"); node(xml,root,0);
+                xml.startTag(null,"hierarchy"); node(xml,root,0,snapshotDeadline);
                 xml.startTag(null,"snapshot-metrics");
                 xml.attribute(null,"root-ms",Long.toString(rootReady-requestStarted));
                 xml.attribute(null,"tree-ms",Long.toString(SystemClock.uptimeMillis()-rootReady));

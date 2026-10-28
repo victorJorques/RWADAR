@@ -43,10 +43,10 @@ test('el panel editorial no ofrece activación aunque reciba un estado push anti
 test('privacidad editorial describe conexión y borrado limitado, sin prometer borrado histórico', () => {
   const ui = componentes(false, false);
   const visible = texto(ui.Privacidad({ visible: true }));
-  assert.match(visible, /Catálogo conectado, sin cuenta/);
+  assert.match(visible, /Catálogo con cuenta confirmada/);
   assert.match(visible, /dirección IP/);
   assert.match(visible, /rwadar\.editorial\.\*/);
-  assert.match(visible, /no elimina datos del servidor/);
+  assert.match(visible, /(?:no|ni) elimina datos del servidor/);
   assert.match(visible, /datos históricos/);
   assert.doesNotMatch(visible, /La app solo genera un UUID|Primero se exige confirmación remota/);
 });

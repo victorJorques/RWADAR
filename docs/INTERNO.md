@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 27 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 28 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -34,11 +34,11 @@ Con permiso de Víctor se restauró la lectura pública de Supabase: siguen las
 Esto restaura el contrato de lectura de Android 1.3.2; no se ha vuelto a probar
 en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 
-Android 1.4.0 ya tiene una compilación corregida que carga el catálogo completo.
-Han pasado acceso, radar, 49 referencias y ficha con letra grande, X, Atrás y fuente.
-Quedan comprobaciones de grupos y funciones personales antes de publicarla.
-La última descarga final sigue siendo 1.3.2. Se reutilizan el APK y las pruebas aprobadas.
-[Estado breve del cierre](VERIFICACION-ANDROID-140-CIERRE-2026-10-26.md).
+Android 1.4.0 incorpora ahora, por nueva petición, sesión segura entre arranques y
+una opción de desbloqueo con la seguridad del móvil. Está implementada y con pruebas
+locales; falta compilar y comprobar la nueva entrega. La descarga final sigue en 1.3.2.
+El tutorial web ya carga en Android; su capturador debe terminar los pasos pendientes.
+[Estado breve](VERIFICACION-ACCESO-PERSISTENTE-2026-10-28.md).
 
 | | Estado |
 |---|---|

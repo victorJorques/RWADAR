@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useCallback } from 'react';
+import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { ActivityIndicator, Animated, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
 import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal } from './componentes/Idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -22,6 +22,8 @@ import {
 import { crearControladorCuentas } from './lib/cuentas';
 import { cuentaAdmitida } from './lib/acceso-obligatorio';
 import AccesoObligatorio from './componentes/AccesoObligatorio';
+import BloqueoApp from './componentes/BloqueoApp';
+import { useBloqueoApp } from './lib/desbloqueo-app';
 import { vigilarCaducidadCatalogo, programarRevisionDiaria } from './lib/catalogo-remoto';
 import {
   etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible,
@@ -128,7 +130,39 @@ export default function App() {
   const [cuenta, setCuenta] = useState(null);
   const [estadoCuenta, setEstadoCuenta] = useState(null);
   const [revisionCartera, setRevisionCartera] = useState(0);
+  const [restaurandoAcceso, setRestaurandoAcceso] = useState(!USUARIO_LOCAL);
+  const [errorRestauracion, setErrorRestauracion] = useState('');
+  const controladorActual = useRef(null);
   const usuarioAdmitido = cuentaAdmitida(estadoCuenta) ? estadoCuenta.usuario.id : null;
+  const seguridad = useBloqueoApp({ usuarioId: USUARIO_LOCAL ? null : usuarioAdmitido });
+  const restaurarAcceso = useCallback(async (controlador) => {
+    if (USUARIO_LOCAL || !controlador || controladorActual.current !== controlador) return;
+    setRestaurandoAcceso(true); setErrorRestauracion('');
+    try {
+      const resultado = await controlador.restaurar();
+      if (controladorActual.current === controlador && resultado?.ok === false) {
+        setErrorRestauracion(resultado.error || 'No se pudo comprobar tu sesión guardada. Reinténtalo cuando tengas conexión.');
+      }
+      return resultado;
+    } catch {
+      if (controladorActual.current === controlador) {
+        setErrorRestauracion('No se pudo comprobar tu sesión guardada. Reinténtalo cuando tengas conexión.');
+      }
+      return { ok: false };
+    } finally {
+      if (controladorActual.current === controlador) setRestaurandoAcceso(false);
+    }
+  }, []);
+  const cerrarAcceso = useCallback(async () => {
+    if (!cuenta || controladorActual.current !== cuenta) return;
+    setRestaurandoAcceso(true);
+    try { await cuenta.salir(); }
+    finally {
+      if (controladorActual.current === cuenta) {
+        setErrorRestauracion(''); setRestaurandoAcceso(false);
+      }
+    }
+  }, [cuenta]);
   const { width: anchoPantalla } = useWindowDimensions();
 
   useEffect(() => {
@@ -136,9 +170,14 @@ export default function App() {
     // al desmontar App y también soporta el doble setup de React StrictMode.
     const controlador = crearControladorCuentas({ modoLocal: MODO_LOCAL,
       cuentasRemotas: CUENTAS_REMOTAS, correoVerificado: CORREO_AUTH_E2E });
+    controladorActual.current = controlador;
     setCuenta(controlador);
     const cancelarSuscripcion = controlador.suscribir(setEstadoCuenta);
-    return () => { cancelarSuscripcion(); controlador.destruir(); };
+    if (!USUARIO_LOCAL) restaurarAcceso(controlador);
+    return () => {
+      if (controladorActual.current === controlador) controladorActual.current = null;
+      cancelarSuscripcion(); controlador.destruir();
+    };
   }, []);
 
   /* El `finally` no es adorno: si cualquiera de estas llamadas rechazara,
@@ -235,11 +274,16 @@ export default function App() {
       return;
     }
     // Remote identity + guarded profile revalidated whenever the app returns.
+    let activa = AppState.currentState === 'active';
+    if (activa) cuenta.reanudar();
+    else cuenta.suspender();
     const volver = AppState.addEventListener('change', estado => {
-      if (estado === 'active') cuenta.refrescar();
+      activa = estado === 'active';
+      if (activa) { cuenta.reanudar(); cuenta.refrescar(); }
+      else cuenta.suspender();
     });
-    const reloj = setInterval(() => cuenta.refrescar(), 60000);
-    return () => { volver.remove(); clearInterval(reloj); };
+    const reloj = setInterval(() => { if (activa) cuenta.refrescar(); }, 60000);
+    return () => { volver.remove(); clearInterval(reloj); cuenta.suspender(); };
   }, [usuarioAdmitido, cuenta]);
   const obtenerAccesoTutorial = useCallback(() => cuenta.accesoTutorial(), [cuenta]);
   const cerrarTutorial = useCallback(() => {
@@ -494,6 +538,20 @@ export default function App() {
     tacto.eleccion();
     setPestana(id);
   };
+
+  if (!USUARIO_LOCAL && (restaurandoAcceso || estadoCuenta?.estado === 'restaurando' || errorRestauracion)) {
+    return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
+      <PreparandoAcceso ocupado={restaurandoAcceso || estadoCuenta?.estado === 'restaurando'}
+        mensaje={errorRestauracion} onReintentar={() => restaurarAcceso(cuenta)} onSalir={cerrarAcceso} />
+    </SafeAreaProvider>;
+  }
+
+  if (!USUARIO_LOCAL && usuarioAdmitido && (seguridad.preparando || seguridad.bloqueado)) {
+    return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
+      <BloqueoApp preparando={seguridad.preparando} ocupado={seguridad.ocupado}
+        mensaje={seguridad.mensaje} onDesbloquear={seguridad.desbloquear} onSalir={cerrarAcceso} />
+    </SafeAreaProvider>;
+  }
 
   if (fuentesListas && !usuarioAdmitido) {
     return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
@@ -817,6 +875,7 @@ export default function App() {
               key={`${usuarioAdmitido}:${revisionCartera}`}
               cuenta={cuenta}
               estadoCuenta={estadoCuenta}
+              seguridad={USUARIO_LOCAL ? null : seguridad}
               plataformas={radar}
               onAbrirEnlace={abrirEnlace}
               seguidas={seguidas}
@@ -986,10 +1045,28 @@ function etiquetaEstadoAvisos(estado) {
   }
 }
 
+function PreparandoAcceso({ ocupado, mensaje, onReintentar, onSalir }) {
+  return <SafeAreaView style={[e.pantalla, e.centro, { padding: 24, gap: 18 }]} edges={['top', 'bottom']}>
+    {ocupado ? <ActivityIndicator size="large" color={C.senal} /> : null}
+    <Text style={e.cargandoTxt} accessibilityRole="header">{ocupado ? 'Preparando tu acceso…' : 'Comprueba tu conexión'}</Text>
+    {mensaje ? <Text style={e.cargandoTxt} accessibilityRole="alert" accessibilityLiveRegion="polite">{mensaje}</Text> : null}
+    {!ocupado ? <>
+      <Pressable accessibilityRole="button" accessibilityLabel="Reintentar sesión guardada"
+        onPress={onReintentar} style={[e.ctaBorde, { minHeight: 48 }]}>
+        <Text style={e.ctaBordeTxt}>Reintentar sesión guardada</Text>
+      </Pressable>
+      <Pressable accessibilityRole="button" accessibilityLabel="Cerrar sesión guardada"
+        onPress={onSalir} style={[e.ctaBorde, { minHeight: 48 }]}>
+        <Text style={e.ctaBordeTxt}>Cerrar sesión guardada</Text>
+      </Pressable>
+    </> : null}
+  </SafeAreaView>;
+}
+
 /* Perfil: cuenta opcional, vigilancia de la cuenta y favoritos locales.
    El registro nunca se mezcla con el seguimiento de instalaciones antiguo. */
 function PantallaPerfil({
-  cuenta, estadoCuenta, plataformas = [], onAbrirEnlace,
+  cuenta, estadoCuenta, seguridad, plataformas = [], onAbrirEnlace,
   seguidas, ofertasGuardadas, guardadasRetiradas = 0, sinConexion, estadoAvisos, procesandoAvisos,
   refrescando, borrando, onActualizar, onAbrirEmpresa, onAbrirOferta, onExplorar, onActivarAvisos, onAjustes,
   onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar, inversionInicial, onConsumirInversion,
@@ -1005,7 +1082,7 @@ function PantallaPerfil({
         <MisInversiones usuarioId={estadoCuenta.usuario.id} ofertaInicial={inversionInicial}
           onConsumirOferta={onConsumirInversion} />
       ) : null}
-      {cuenta ? <Cuenta controlador={cuenta} estado={estadoCuenta} plataformas={plataformas}
+      {cuenta ? <Cuenta controlador={cuenta} estado={estadoCuenta} seguridad={seguridad} plataformas={plataformas}
         onAbrirEmpresa={onAbrirEmpresa} onAbrirEnlace={onAbrirEnlace} /> : (
       <View style={e.resumenDispositivo}>
         <View style={e.resumenMarca}><Marca tamano={48} /></View>
@@ -1454,12 +1531,12 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
           <ScrollView contentContainerStyle={e.privacidadCuerpo}>
             {!MODO_LOCAL && estadoCuenta?.disponible ? (
               <>
-                <Text style={e.privacidadTit}>Cuenta confirmada para entrar en web y app</Text>
+                <Text style={e.privacidadTit}>Tu cuenta en la app y funciones personales de la web</Text>
                 <Text style={e.privacidadParrafo}>
                   Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. RWAdar no guarda la contraseña en el dispositivo.
                 </Text>
                 <Text style={e.privacidadParrafo}>
-                  Tu lista de vigilancia de empresas se guarda en tu cuenta y es accesible desde la web y la app. No se envían los favoritos locales ni el progreso de Academy. La sesión vive solo en memoria: al cerrar la app tendrás que entrar de nuevo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.
+                  Tu lista de vigilancia de empresas se guarda en tu cuenta y es accesible desde la web y la app. No se envían los favoritos locales ni el progreso de Academy. La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.
                 </Text>
                 <Text style={e.privacidadParrafo}>
                   Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil y la lista de vigilancia remota; los favoritos, las inversiones registradas de todas las cuentas en este dispositivo y el progreso local se eliminan por separado con «Borrar datos del dispositivo».

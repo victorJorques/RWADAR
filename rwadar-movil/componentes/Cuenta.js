@@ -59,7 +59,7 @@ function Campo({ etiqueta, referencia, ...props }) {
   );
 }
 
-export default function Cuenta({ controlador, estado, plataformas = [], onAbrirEmpresa, onAbrirEnlace }) {
+export default function Cuenta({ controlador, estado, seguridad, plataformas = [], onAbrirEmpresa, onAbrirEnlace }) {
   const [vista, setVista] = useState('entrar');
   const [correo, setCorreo] = useState('');
   const [clave, setClave] = useState('');
@@ -173,7 +173,7 @@ export default function Cuenta({ controlador, estado, plataformas = [], onAbrirE
         <>
           <Text noTraducir={Boolean(estado.perfil?.nombre)} idiomaOriginal="es-ES" style={s.nombre}>{estado.perfil?.nombre || 'Miembro de RWAdar'}</Text>
           <Text noTraducir idiomaOriginal="es-ES" style={s.parrafo} selectable>{estado.usuario.correo}</Text>
-          <Text style={s.nota}>La misma cuenta funciona en la web y en la app. Al cerrar la app tendrás que entrar de nuevo: la sesión no se guarda en el dispositivo.</Text>
+          <Text style={s.nota}>La misma cuenta funciona en la web y en la app. Tu sesión se guarda de forma segura en este dispositivo. Puedes cerrarla cuando quieras y añadir el desbloqueo con la seguridad del móvil.</Text>
           {editarNombre ? (
             <View style={s.bloque}>
               <Campo etiqueta="Nombre (opcional)" value={nombre} onChangeText={setNombre}
@@ -188,6 +188,22 @@ export default function Cuenta({ controlador, estado, plataformas = [], onAbrirE
             </View>
           ) : <Boton texto="Editar nombre" secundario deshabilitado={bloqueado}
             onPress={() => { setNombre(estado.perfil?.nombre || ''); setEditarNombre(true); setErrorLocal(''); }} />}
+
+          {seguridad ? <View style={s.bloque}>
+            <Pressable accessibilityRole="switch" accessibilityLabel="Desbloquear con la seguridad del móvil"
+              accessibilityState={{ checked: seguridad.activado === true,
+                disabled: bloqueado || seguridad.preparando || seguridad.ocupado, busy: seguridad.ocupado === true }}
+              disabled={bloqueado || seguridad.preparando || seguridad.ocupado}
+              onPress={() => seguridad.activar(!seguridad.activado)}
+              style={({ pressed }) => [s.aceptacion, pressed && s.pulsado]}>
+              <View style={[s.casilla, seguridad.activado && s.casillaMarcada]}>
+                {seguridad.activado ? <Text style={s.marca}>✓</Text> : null}
+              </View>
+              <Text style={s.aceptacionTexto}>Desbloquear con la seguridad del móvil</Text>
+            </Pressable>
+            <Text style={s.nota}>Usa la huella, el reconocimiento facial o el PIN que ya tengas en el móvil. RWAdar no crea ni guarda un PIN.</Text>
+            {seguridad.mensaje ? <Text style={s.nota} accessibilityLiveRegion="polite">{seguridad.mensaje}</Text> : null}
+          </View> : null}
 
           <View style={s.divisor} />
           <Text style={s.subtitulo} accessibilityRole="header">Lista de vigilancia · {vigiladas.length}</Text>
