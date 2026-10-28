@@ -1,0 +1,77 @@
+'use strict';
+// Ubuntu CI only. No dependencies, manual Cookie headers, screenshots or secrets in output.
+const fs=require('node:fs'),fsp=fs.promises,path=require('node:path'),os=require('node:os'),cp=require('node:child_process');
+const ORIGIN='https://rwadar.pages.dev',UID='8871c88e-b0af-415b-9346-dcceb182c2ac',MARKER='ba8cb4645588067ff77ef11a';
+const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+function requireQa(env){
+  if(env.QA_ACCOUNT_ACK!=='CONFIRMED_TEST_ACCOUNT'||env.QA_USER_ID!==UID||env.QA_ACCOUNT_MARKER!==MARKER||
+     env.RWADAR_QA_EMAIL!==`vcicrack+rwadar-qa-${MARKER}@gmail.com`||typeof env.RWADAR_QA_PASSWORD!=='string'||env.RWADAR_QA_PASSWORD.length<12)throw Error('qa_identity_rejected');
+}
+function statusOnly(event){
+  if(event.method!=='Network.responseReceived')return null;
+  try {const u=new URL(event.params.response.url),status=event.params.response.status;
+    return u.origin===ORIGIN&&['/api/acceso/entrar','/api/acceso/sesion','/api/acceso/salir'].includes(u.pathname)&&Number.isInteger(status)?{route:u.pathname.split('/').at(-1),status}:null;
+  }catch{return null;}
+}
+class CDP{
+  constructor(socket,onEvent=()=>{}){
+    this.socket=socket;this.id=0;this.pending=new Map();
+    socket.addEventListener('message',event=>{
+      let message;try{message=JSON.parse(String(event.data));}catch{return;}
+      if(!message.id){onEvent(message);return;}const pending=this.pending.get(message.id);if(!pending)return;
+      this.pending.delete(message.id);clearTimeout(pending.timer);message.error?pending.reject(Error('cdp_command_failed')):pending.resolve(message.result);
+    });
+    const stop=()=>{for(const p of this.pending.values()){clearTimeout(p.timer);p.reject(Error('cdp_disconnected'));}this.pending.clear();};
+    socket.addEventListener('close',stop);socket.addEventListener('error',stop);
+  }
+  call(method,params={}){return new Promise((resolve,reject)=>{const id=++this.id,timer=setTimeout(()=>{this.pending.delete(id);reject(Error('cdp_timeout'));},8000);
+    this.pending.set(id,{resolve,reject,timer});try{this.socket.send(JSON.stringify({id,method,params}));}catch{clearTimeout(timer);this.pending.delete(id);reject(Error('cdp_send_failed'));}});}
+  async evaluate(expression){const result=await this.call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(result.exceptionDetails)throw Error('page_evaluation_failed');return result.result?.value;}
+}
+async function run(env=process.env){
+  const report={status:'failed',realChrome:false,credentialsRecorded:false,manualCookieHeaders:false,httpStatuses:[],checks:{},logoutLocal:false};
+  let chrome,socket,cdp,profile;const deadline=Date.now()+120000;
+  try{
+    requireQa(env);if(process.platform!=='linux'||Number(process.versions.node.split('.')[0])!==22)throw Error('linux_node22_required');
+    profile=await fsp.mkdtemp(path.join(os.tmpdir(),'rwadar-chrome-qa-'));
+    chrome=cp.spawn('/usr/bin/google-chrome',['--headless=new','--no-sandbox','--disable-dev-shm-usage','--disable-background-networking','--disable-sync','--no-first-run','--no-default-browser-check',`--user-data-dir=${profile}`,'--remote-debugging-address=127.0.0.1','--remote-debugging-port=0','about:blank'],{stdio:'ignore'});
+    chrome.on('error',()=>{});let port;
+    for(let i=0;i<40;i++){try{port=Number((await fsp.readFile(path.join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]);if(Number.isInteger(port)&&port>0&&port<65536)break;}catch{}await pause(250);}
+    if(!port)throw Error('chrome_start_failed');
+    const list=await fetch(`http://127.0.0.1:${port}/json/list`,{signal:AbortSignal.timeout(4000)}).then(r=>r.json());
+    const endpoint=list.find(t=>t.type==='page'&&t.url==='about:blank')?.webSocketDebuggerUrl;
+    if(typeof endpoint!=='string'||!endpoint.startsWith(`ws://127.0.0.1:${port}/devtools/page/`))throw Error('loopback_cdp_required');
+    socket=new WebSocket(endpoint);await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('cdp_open_timeout')),4000);socket.addEventListener('open',()=>{clearTimeout(timer);resolve();},{once:true});socket.addEventListener('error',()=>{clearTimeout(timer);reject(Error('cdp_open_failed'));},{once:true});});
+    cdp=new CDP(socket,event=>{const result=statusOnly(event);if(result&&report.httpStatuses.length<128)report.httpStatuses.push(result);});
+    await cdp.call('Page.enable');await cdp.call('Runtime.enable');await cdp.call('Network.enable');report.realChrome=true;
+    async function wait(expression,limit=30000){const end=Math.min(deadline,Date.now()+limit);while(Date.now()<end){try{if(await cdp.evaluate(expression))return;}catch{}await pause(200);}throw Error('browser_observation_timeout');}
+    const sessionExpression=`(async()=>{if(location.origin!==${JSON.stringify(ORIGIN)})return {status:0,same:false};const r=await fetch('/api/acceso/sesion',{credentials:'same-origin',cache:'no-store',redirect:'error'});let j={};try{j=await r.json();}catch{}return {status:r.status,same:j.autenticada===true&&j.usuario?.id===${JSON.stringify(UID)}};})()`;
+    await cdp.call('Page.navigate',{url:ORIGIN+'/acceso?volver=%2F'});
+    await wait(`location.origin===${JSON.stringify(ORIGIN)}&&document.readyState==='complete'&&!!document.getElementById('formulario')&&!!document.getElementById('correo')`);
+    let credentials={email:env.RWADAR_QA_EMAIL,password:env.RWADAR_QA_PASSWORD};
+    await cdp.evaluate(`(()=>{const d=${JSON.stringify(credentials)};const e=document.getElementById('correo'),p=document.getElementById('clave');e.value=d.email;p.value=d.password;e.dispatchEvent(new Event('input',{bubbles:true}));p.dispatchEvent(new Event('input',{bubbles:true}));document.getElementById('formulario').requestSubmit();return true;})()`);credentials=null;
+    await wait(`location.origin===${JSON.stringify(ORIGIN)}&&location.pathname==='/'`);
+    report.checks.formReturnedHome=true;
+    let session=await cdp.evaluate(sessionExpression);report.checks.browserCookieSession=session.status===200&&session.same;if(!report.checks.browserCookieSession)throw Error('browser_cookie_session_failed');
+    await wait(`window.RWADAR_ACCESO?.usuario()?.id===${JSON.stringify(UID)}&&!!document.getElementById('btnCuenta')`);
+    await cdp.evaluate(`document.getElementById('btnCuenta').click();true`);
+    await wait(`document.getElementById('perfilPanel')?.classList.contains('show')&&document.getElementById('perfilCuerpo')?.textContent.includes('Mis inversiones')`);
+    report.checks.investmentsPanelOpened=true;
+    const beforeReload=await cdp.evaluate('performance.timeOrigin');await cdp.call('Page.reload',{ignoreCache:true});
+    await wait(`performance.timeOrigin!==${JSON.stringify(beforeReload)}&&window.RWADAR_ACCESO?.usuario()?.id===${JSON.stringify(UID)}`);
+    session=await cdp.evaluate(sessionExpression);report.checks.reloadRetainsAccount=session.status===200&&session.same;
+    report.checks.loginHttp200=report.httpStatuses.some(s=>s.route==='entrar'&&s.status===200);
+    if(Object.values(report.checks).some(value=>value!==true))throw Error('browser_check_failed');
+    report.status='passed';
+  }catch(error){report.failureCode=['qa_identity_rejected','linux_node22_required','chrome_start_failed','loopback_cdp_required','cdp_open_timeout','cdp_open_failed','cdp_timeout','cdp_disconnected','cdp_command_failed','cdp_send_failed','page_evaluation_failed','browser_observation_timeout','browser_cookie_session_failed','browser_check_failed'].includes(error.message)?error.message:'browser_check_failed';}
+  finally{
+    if(cdp){try{const result=await cdp.evaluate(`(async()=>{if(location.origin!==${JSON.stringify(ORIGIN)})return {ok:false};document.querySelectorAll('input[type=password]').forEach(p=>p.value='');const r=await fetch('/api/acceso/salir',{method:'POST',credentials:'same-origin',cache:'no-store',redirect:'error',headers:{'Content-Type':'application/json'},body:'{}'});const j=await r.json();return {ok:r.status===200&&j.cerrado===true&&j.cierreRemoto===true};})()`);report.logoutLocal=result?.ok===true;}catch{}}
+    if(socket)try{socket.close();}catch{}
+    if(chrome&&chrome.exitCode===null){chrome.kill('SIGTERM');await Promise.race([new Promise(resolve=>chrome.once('exit',resolve)),pause(2000)]);if(chrome.exitCode===null){chrome.kill('SIGKILL');await pause(250);}}
+    if(profile){const parent=await fsp.realpath(os.tmpdir()),resolved=await fsp.realpath(profile);if(path.dirname(resolved)!==parent||!path.basename(resolved).startsWith('rwadar-chrome-qa-'))throw Error('temporary_profile_cleanup_rejected');await fsp.rm(resolved,{recursive:true,force:true});}
+    if(report.status==='passed'&&!report.logoutLocal){report.status='failed';report.failureCode='local_logout_not_confirmed';}
+  }
+  return report;
+}
+module.exports={CDP,statusOnly,requireQa,run};
+if(require.main===module)run().then(report=>{fs.mkdirSync('evidence-private',{recursive:true});fs.writeFileSync('evidence-private/web-chrome-141-result.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));if(report.status!=='passed')process.exitCode=1;}).catch(()=>{console.log('{"status":"failed","failureCode":"safe_cleanup_failed"}');process.exitCode=1;});
