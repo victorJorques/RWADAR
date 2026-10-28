@@ -211,6 +211,32 @@ def reuse_completed_session_scope(candidate, result_path=None, manifest_path=Non
       'identity':manifest['identity'],'sessionAndPinRepeatedInCurrentRun':False,'originalTutorialStillFailed':True}
     return {key:True for key in SESSION_SCOPE_CHECKS},metadata
 
+def reuse_completed_tutorial_scope(candidate):
+    raw=(ROOT/'baseline-c22-tutorial-40706016555-result.json').read_bytes()
+    certificate=(ROOT/'baseline-c22-tutorial-40706016555-root-review.json').read_bytes()
+    raw_sha='d72e6f71b64ff08f4126d1b44a42c09c061e004bec66e3273bc5cb3f1d4f7ced'
+    certificate_sha='0eac049c5d8c6841b5b25eac02ca1a8c52cc87e7318af11e3da37e97d3a496c6'
+    archive_sha='c46e72c6dda69087fcf0f6f7c0051fc85d42f8db0623b2315661a080b9f86020'
+    assert hashlib.sha256(raw).hexdigest()==raw_sha and hashlib.sha256(certificate).hexdigest()==certificate_sha,'Original manual tutorial evidence changed'
+    old=json.loads(raw);cert=json.loads(certificate)
+    assert old['status']=='failed' and old['phase']=='tutorial' and old['full20PointQA'] is False and old['releaseApproved'] is False,'Original tutorial workflow remains globally failed'
+    identity=('version','versionCode','package','apkSha256','apkBytes','sourceHeadSha','easBuildId','certificateSha256')
+    assert candidate.get('status')=='ready' and candidate['versionCode']==22 and all(old[k]==candidate[k] for k in identity),'Manual tutorial evidence belongs to another APK/source'
+    assert cert['runId']==40706016555 and cert['scope']=='root-manually-validated-tutorial-only' and cert['reviewedBy']=='Codex root'
+    assert cert['apkSha256']==candidate['apkSha256'] and cert['sourceHeadSha']==candidate['sourceHeadSha'] and cert['rawReportSha256']==raw_sha and cert['archiveSha256']==archive_sha
+    assert cert['originalStatus']=='failed' and cert['originalFailurePhase']=='tutorial' and cert['globalRunApproved'] is False and cert['portfolioAndLogoutNotYetValidated'] is True
+    assert cert['observedSteps']==[1,2,3,4] and cert['nextLabelsObserved']==[1,2,3]
+    assert all(cert[k] is True for k in ('rendered3dObserved','nativeHeaderAndCloseObserved','returnControlObserved','returnedToNativeAcademyObserved','sessionRetainedAndNativeTabsObserved'))
+    assert len(cert['captures'])==7 and all(x['observed'] is True for x in cert['captures'])
+    check={**old['tutorialOcrProgress'],'steps':[1,2,3,4],'returned':True,'actualWebView':True,'fallbackAccepted':False,
+      'observationMethod':'root-direct-original-run','observationsInCurrentRun':False,'originalRunId':40706016555,
+      'rootReviewCertificateSha256':certificate_sha,'rootVisualReviewRequired':False,'rootVisualReviewCompleted':True,
+      'nativeXmlUsedForSteps':False,'freshScreenshots':False,'screenshotsWereFreshInOriginalRun':True}
+    metadata={'runId':40706016555,'originalStatus':'failed','originalFailurePhase':'tutorial','method':'root-direct-original-run',
+      'rawReportSha256':raw_sha,'certificateSha256':certificate_sha,'archiveSha256':archive_sha,
+      'observationsInCurrentRun':False,'observedInCurrentRun':False,'rootCertificate':cert,'identity':{k:candidate[k] for k in identity}}
+    return check,metadata
+
 def main():
     require(os.environ.get('GITHUB_REPOSITORY')=='victorJorques/RWADAR' and os.environ.get('GITHUB_EVENT_NAME')=='workflow_dispatch','Private manual QA required')
     require(os.environ.get('QA_ACCOUNT_ACK')=='CONFIRMED_TEST_ACCOUNT','Existing confirmed QA account required')
@@ -231,7 +257,8 @@ def main():
     report['scope']='current-apk-pending-flows-with-completed-session-scope-reused'
     (OUT/'completed-session-reuse-metadata.json').write_text(json.dumps(reuse,indent=2),encoding='utf-8')
     persist()
-    note_phase('tutorial');tutorial();persist()
+    tutorial_check,tutorial_reuse=reuse_completed_tutorial_scope(c)
+    report['checks']['academyTutorialManual4Steps']=tutorial_check;report['completedTutorialManualReuse']=tutorial_reuse;persist()
     note_phase('portfolio');portfolio();persist();require(report['localQADataRemoved'] is True,'Own local QA row cleanup required before logout')
     note_phase('logout');logout_persisted()
     errors=ui.sanitize(ui.adb('logcat','-d','-v','threadtime','AndroidRuntime:E','ReactNativeJS:E','*:S'))
