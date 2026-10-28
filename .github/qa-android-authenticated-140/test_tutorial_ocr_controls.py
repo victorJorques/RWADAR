@@ -1,3 +1,4 @@
+import pathlib
 """Parser fixtures only. These TSV rows are unit inputs, never device QA evidence."""
 import unittest
 from tutorial_ocr_140 import parse_tsv,step_and_control,phrases,MIN_CONFIDENCE
@@ -26,5 +27,13 @@ class OcrControls(unittest.TestCase):
         with self.assertRaises(AssertionError):parse_tsv(HEAD+row('Siguiente',10,-20),(1080,2400))
         words=parse_tsv(HEAD+row('1',40,800,width=20)+row('·',70,800,width=10)+row('ENTERO',100,800,width=130),(1080,2400))
         self.assertEqual(len(phrases(words,'1 Entero')),1)
+
+    def test_actual_sparse_ocr_blocks_from_original_failed_run(self):
+        raw=pathlib.Path(__file__).with_name('baseline-c22-tutorial-visible-40690297971.tsv.txt').read_text(encoding='utf-8')
+        words=parse_tsv(raw,(1080,2400))
+        self.assertEqual(len(phrases(words,'Academy Tutorial 3D')),1)
+        self.assertEqual(len(phrases(words,'Entero')),1)
+        self.assertEqual(phrases(words,'1 Entero'),[])  # Never invent the digit OCR did not read.
+        self.assertIsNone(step_and_control(words,1))  # Progress/button are still below the viewport.
 
 if __name__=='__main__':unittest.main()

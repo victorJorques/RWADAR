@@ -30,9 +30,21 @@ def parse_tsv(text,size):
     return words
 
 def phrases(words,text):
-    target=normalized(text);lines={};found=[]
-    for word in words:lines.setdefault(word['line'],[]).append(word)
-    for row in lines.values():
+    target=normalized(text);lines=[];found=[]
+    # Sparse OCR can split one rendered line into separate blocks. Join only
+    # words whose observed vertical boxes agree, keeping the exact text match.
+    for word in sorted(words,key=lambda w:(w['box'][1],w['box'][0])):
+        b=word['box'];height=b[3]-b[1];centre=(b[1]+b[3])/2
+        matches=[]
+        for row in lines:
+            anchor=row[0]['box'];other_height=anchor[3]-anchor[1]
+            overlap=min(b[3],anchor[3])-max(b[1],anchor[1])
+            if overlap>=.65*min(height,other_height) and abs(centre-(anchor[1]+anchor[3])/2)<=.35*max(height,other_height):
+                matches.append(row)
+        assert len(matches)<=1,'Ambiguous physical OCR line'
+        if matches:matches[0].append(word)
+        else:lines.append([word])
+    for row in lines:
         row.sort(key=lambda w:w['box'][0])
         for start in range(len(row)):
             for end in range(start+1,min(len(row),start+6)+1):
@@ -100,10 +112,10 @@ def run_tutorial(ui,click,report,source_file):
     deadline=time.monotonic()+65;renderer=None
     while time.monotonic()<deadline:
         shot=fresh(ui)
-        if len(phrases(shot['words'],'1 Entero'))==1 and phrases(shot['words'],'Academy Tutorial 3D'):
+        if len(phrases(shot['words'],'Entero'))==1 and phrases(shot['words'],'Academy Tutorial 3D'):
             renderer=save_observation(ui,shot,'05-tutorial-webview-real');break
         time.sleep(.5)
-    assert renderer,'Actual first scene badge and native tutorial header were not recognized'
+    assert renderer,'Actual Entero scene label and native tutorial header were not recognized'
     renderer.update(kind='compiled-webview-first-scene',sourceFile='rwadar-movil/componentes/Explicador.js',
       sourceSha256=hashlib.sha256(component).hexdigest(),rootVisualReviewRequired=True)
     observed=[];scrolls=0
