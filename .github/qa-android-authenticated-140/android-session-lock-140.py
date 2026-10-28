@@ -38,6 +38,12 @@ def load_flow_helpers():
     for name in ('dump','display_size'):globals()[name]=getattr(ui,name)
 load_flow_helpers()
 
+# Only the native Academy entry and observed return use UIA. All WebView
+# step observations and presses come from fresh real PNG/TSV OCR evidence.
+def tutorial():
+    from tutorial_ocr_140 import run_tutorial
+    return run_tutorial(ui,click,report,ROOT.parent.parent/'rwadar-movil/componentes/Explicador.js')
+
 def persist():
     OUT.joinpath('authenticated-result.json').write_text(ui.sanitize(json.dumps(report,indent=2,ensure_ascii=False)),encoding='utf-8')
 
@@ -243,7 +249,9 @@ if __name__=='__main__':
     except BaseException as error:
         report['status']='failed';report['diagnostic']=safe_exception_diagnostic(error);report['failureType']=type(error).__name__;persist()
         print('RWADAR_QA_FAILURE '+json.dumps({'phase':report['phase'],'diagnostic':report['diagnostic']}),flush=True)
-        if ui.CAPTURE_ALLOWED and not isinstance(error,ui.QaDeadlineExceeded):ui.capture_failure('failure-c21-private')
+        if ui.CAPTURE_ALLOWED and not isinstance(error,ui.QaDeadlineExceeded):
+            if report.get('tutorialOcrActive'):ui.screen('failure-c21-private')
+            else:ui.capture_failure('failure-c21-private')
     finally:
         signal.alarm(0)
         try:ui.stop_snapshot_bridge()
