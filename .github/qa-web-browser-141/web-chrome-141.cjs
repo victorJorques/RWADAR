@@ -36,6 +36,16 @@ function domState(document,window,expectedId){
   try{state.headingtextpresent=!!document.getElementById('perfilCuerpo')?.textContent.includes('Mis inversiones');}catch{}
   return state;
 }
+async function waitChromePort(profile,chrome,report,{readFile=fsp.readFile.bind(fsp),now=Date.now,sleep=pause,spawnFailed=()=>false}={}){
+  const deadline=now()+30000;
+  const diagnosis=()=>({exitCode:Number.isInteger(chrome.exitCode)?chrome.exitCode:null,signal:typeof chrome.signalCode==='string'&&/^SIG[A-Z0-9]{1,16}$/.test(chrome.signalCode)?chrome.signalCode:null});
+  while(now()<deadline){
+    if(spawnFailed()||chrome.exitCode!=null||chrome.signalCode!=null){report.chromeStartup=diagnosis();throw Error('chrome_exited_before_cdp');}
+    try{const port=Number((await readFile(path.join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]);if(Number.isInteger(port)&&port>0&&port<65536)return port;}catch{}
+    await sleep(Math.min(250,Math.max(0,deadline-now())));
+  }
+  report.chromeStartup=diagnosis();throw Error('chrome_start_failed');
+}
 class CDP{
   constructor(socket,onEvent=()=>{}){
     this.socket=socket;this.id=0;this.pending=new Map();
@@ -58,10 +68,10 @@ async function run(env=process.env){
   try{
     phase('validate-qa-and-runtime');requireQa(env);if(process.platform!=='linux'||Number(process.versions.node.split('.')[0])!==22)throw Error('linux_node22_required');
     profile=await fsp.mkdtemp(path.join(os.tmpdir(),'rwadar-chrome-qa-'));
-    chrome=cp.spawn('/usr/bin/google-chrome',['--headless=new','--no-sandbox','--disable-dev-shm-usage','--disable-background-networking','--disable-sync','--no-first-run','--no-default-browser-check',`--user-data-dir=${profile}`,'--remote-debugging-address=127.0.0.1','--remote-debugging-port=0','about:blank'],{stdio:'ignore'});
-    chrome.on('error',()=>{});let port;
-    for(let i=0;i<40;i++){try{port=Number((await fsp.readFile(path.join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]);if(Number.isInteger(port)&&port>0&&port<65536)break;}catch{}await pause(250);}
-    if(!port)throw Error('chrome_start_failed');
+    phase('start-chrome');chrome=cp.spawn('/usr/bin/google-chrome',['--headless=new','--disable-gpu','--no-sandbox','--disable-dev-shm-usage','--disable-background-networking','--disable-sync','--no-first-run','--no-default-browser-check',`--user-data-dir=${profile}`,'--remote-debugging-address=127.0.0.1','--remote-debugging-port=0','about:blank'],{stdio:'ignore'});
+    let spawnFailed=false;chrome.on('error',()=>{spawnFailed=true;});
+    phase('wait-chrome-devtools-port');const port=await waitChromePort(profile,chrome,report,{spawnFailed:()=>spawnFailed});
+    phase('connect-loopback-cdp');
     const list=await fetch(`http://127.0.0.1:${port}/json/list`,{signal:AbortSignal.timeout(4000)}).then(r=>r.json());
     const endpoint=list.find(t=>t.type==='page'&&t.url==='about:blank')?.webSocketDebuggerUrl;
     if(typeof endpoint!=='string'||!endpoint.startsWith(`ws://127.0.0.1:${port}/devtools/page/`))throw Error('loopback_cdp_required');
@@ -87,7 +97,7 @@ async function run(env=process.env){
     report.checks.loginHttp200=report.httpStatuses.some(s=>s.route==='entrar'&&s.status===200);
     if(Object.values(report.checks).some(value=>value!==true))throw Error('browser_check_failed');
     phase('completed');report.status='passed';
-  }catch(error){report.failedPhase=report.phase;report.failureCode=['qa_identity_rejected','linux_node22_required','chrome_start_failed','loopback_cdp_required','cdp_open_timeout','cdp_open_failed','cdp_timeout','cdp_disconnected','cdp_command_failed','cdp_send_failed','page_evaluation_failed','browser_observation_timeout','browser_cookie_session_failed','browser_check_failed'].includes(error.message)?error.message:'browser_check_failed';if(cdp){try{report.domDiagnostics=await cdp.evaluate('('+domState.toString()+')(document,window,'+JSON.stringify(UID)+')');report.domDiagnosticsAvailable=true;}catch{report.domDiagnosticsAvailable=false;}}}
+  }catch(error){report.failedPhase=report.phase;report.failureCode=['qa_identity_rejected','linux_node22_required','chrome_start_failed','chrome_exited_before_cdp','loopback_cdp_required','cdp_open_timeout','cdp_open_failed','cdp_timeout','cdp_disconnected','cdp_command_failed','cdp_send_failed','page_evaluation_failed','browser_observation_timeout','browser_cookie_session_failed','browser_check_failed'].includes(error.message)?error.message:'browser_check_failed';if(cdp){try{report.domDiagnostics=await cdp.evaluate('('+domState.toString()+')(document,window,'+JSON.stringify(UID)+')');report.domDiagnosticsAvailable=true;}catch{report.domDiagnosticsAvailable=false;}}}
   finally{
     if(cdp){try{const result=await cdp.evaluate(`(async()=>{if(location.origin!==${JSON.stringify(ORIGIN)})return {ok:false};document.querySelectorAll('input[type=password]').forEach(p=>p.value='');const r=await fetch('/api/acceso/salir',{method:'POST',credentials:'same-origin',cache:'no-store',redirect:'error',headers:{'Content-Type':'application/json'},body:'{}'});const j=await r.json();return {ok:r.status===200&&j.cerrado===true&&j.cierreRemoto===true};})()`);report.logoutLocal=result?.ok===true;}catch{}}
     if(socket)try{socket.close();}catch{}
@@ -97,5 +107,5 @@ async function run(env=process.env){
   }
   return report;
 }
-module.exports={CDP,statusOnly,requireQa,runtimeExceptionOnly,domState,run};
+module.exports={CDP,statusOnly,requireQa,runtimeExceptionOnly,domState,waitChromePort,run};
 if(require.main===module)run().then(report=>{fs.mkdirSync('evidence-private',{recursive:true});fs.writeFileSync('evidence-private/web-chrome-141-result.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));if(report.status!=='passed')process.exitCode=1;}).catch(()=>{console.log('{"status":"failed","failureCode":"safe_cleanup_failed"}');process.exitCode=1;});
