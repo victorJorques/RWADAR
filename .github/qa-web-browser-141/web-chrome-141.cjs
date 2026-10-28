@@ -10,8 +10,30 @@ function requireQa(env){
 function statusOnly(event){
   if(event.method!=='Network.responseReceived')return null;
   try {const u=new URL(event.params.response.url),status=event.params.response.status;
-    return u.origin===ORIGIN&&['/api/acceso/entrar','/api/acceso/sesion','/api/acceso/salir'].includes(u.pathname)&&Number.isInteger(status)?{route:u.pathname.split('/').at(-1),status}:null;
+    return u.origin===ORIGIN&&['/api/acceso/entrar','/api/acceso/sesion','/api/acceso/salir','/api/acceso/datos'].includes(u.pathname)&&Number.isInteger(status)?{route:u.pathname.split('/').at(-1),status}:null;
   }catch{return null;}
+}
+function runtimeExceptionOnly(event,secrets=[]){
+  if(event?.method!=='Runtime.exceptionThrown')return null;
+  const raw=event.params?.exceptionDetails?.exception?.description;
+  if(typeof raw!=='string')return null;
+  const line=raw.split('\n',1)[0].slice(0,512);
+  let match=/^ReferenceError: ([A-Za-z_$][A-Za-z0-9_$]{0,63}) is not defined$/.exec(line);
+  if(match){const identifier=secrets.some(s=>s&&match[1].includes(s))?'redacted':match[1];return {type:'ReferenceError',identifier};}
+  match=/^ReferenceError: Cannot access '([A-Za-z_$][A-Za-z0-9_$]{0,63})' before initialization$/.exec(line);
+  if(match){const identifier=secrets.some(s=>s&&match[1].includes(s))?'redacted':match[1];return {type:'ReferenceError',identifier,beforeInitialization:true};}
+  match=/^TypeError: Cannot read properties of (null|undefined) \(reading '([A-Za-z_$][A-Za-z0-9_$]{0,63})'\)$/.exec(line);
+  if(match){const property=secrets.some(s=>s&&match[2].includes(s))?'redacted':match[2];return {type:'TypeError',receiver:match[1],property};}
+  return null;
+}
+function domState(document,window,expectedId){
+  const state={bridgeMatchesQA:false,buttonPresent:false,buttonEnabled:false,panelShow:false,pfInversionesexists:false,headingtextpresent:false};
+  try{state.bridgeMatchesQA=window.RWADAR_ACCESO?.usuario()?.id===expectedId;}catch{}
+  try{const button=document.getElementById('btnCuenta');state.buttonPresent=!!button;state.buttonEnabled=!!button&&!button.disabled;}catch{}
+  try{state.panelShow=!!document.getElementById('perfilPanel')?.classList.contains('show');}catch{}
+  try{state.pfInversionesexists=!!document.getElementById('pfInversiones');}catch{}
+  try{state.headingtextpresent=!!document.getElementById('perfilCuerpo')?.textContent.includes('Mis inversiones');}catch{}
+  return state;
 }
 class CDP{
   constructor(socket,onEvent=()=>{}){
@@ -29,10 +51,11 @@ class CDP{
   async evaluate(expression){const result=await this.call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(result.exceptionDetails)throw Error('page_evaluation_failed');return result.result?.value;}
 }
 async function run(env=process.env){
-  const report={status:'failed',realChrome:false,credentialsRecorded:false,manualCookieHeaders:false,httpStatuses:[],checks:{},logoutLocal:false};
+  const report={status:'failed',realChrome:false,credentialsRecorded:false,manualCookieHeaders:false,httpStatuses:[],runtimeErrors:[],checks:{},logoutLocal:false};
   let chrome,socket,cdp,profile;const deadline=Date.now()+120000;
+  const phase=name=>{report.phase=name;};
   try{
-    requireQa(env);if(process.platform!=='linux'||Number(process.versions.node.split('.')[0])!==22)throw Error('linux_node22_required');
+    phase('validate-qa-and-runtime');requireQa(env);if(process.platform!=='linux'||Number(process.versions.node.split('.')[0])!==22)throw Error('linux_node22_required');
     profile=await fsp.mkdtemp(path.join(os.tmpdir(),'rwadar-chrome-qa-'));
     chrome=cp.spawn('/usr/bin/google-chrome',['--headless=new','--no-sandbox','--disable-dev-shm-usage','--disable-background-networking','--disable-sync','--no-first-run','--no-default-browser-check',`--user-data-dir=${profile}`,'--remote-debugging-address=127.0.0.1','--remote-debugging-port=0','about:blank'],{stdio:'ignore'});
     chrome.on('error',()=>{});let port;
@@ -42,28 +65,28 @@ async function run(env=process.env){
     const endpoint=list.find(t=>t.type==='page'&&t.url==='about:blank')?.webSocketDebuggerUrl;
     if(typeof endpoint!=='string'||!endpoint.startsWith(`ws://127.0.0.1:${port}/devtools/page/`))throw Error('loopback_cdp_required');
     socket=new WebSocket(endpoint);await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('cdp_open_timeout')),4000);socket.addEventListener('open',()=>{clearTimeout(timer);resolve();},{once:true});socket.addEventListener('error',()=>{clearTimeout(timer);reject(Error('cdp_open_failed'));},{once:true});});
-    cdp=new CDP(socket,event=>{const result=statusOnly(event);if(result&&report.httpStatuses.length<128)report.httpStatuses.push(result);});
+    cdp=new CDP(socket,event=>{const result=statusOnly(event);if(result&&report.httpStatuses.length<128)report.httpStatuses.push(result);const error=runtimeExceptionOnly(event,[env.RWADAR_QA_EMAIL,env.RWADAR_QA_PASSWORD]);if(error&&report.runtimeErrors.length<16)report.runtimeErrors.push(error);});
     await cdp.call('Page.enable');await cdp.call('Runtime.enable');await cdp.call('Network.enable');report.realChrome=true;
     async function wait(expression,limit=30000){const end=Math.min(deadline,Date.now()+limit);while(Date.now()<end){try{if(await cdp.evaluate(expression))return;}catch{}await pause(200);}throw Error('browser_observation_timeout');}
     const sessionExpression=`(async()=>{if(location.origin!==${JSON.stringify(ORIGIN)})return {status:0,same:false};const r=await fetch('/api/acceso/sesion',{credentials:'same-origin',cache:'no-store',redirect:'error'});let j={};try{j=await r.json();}catch{}return {status:r.status,same:j.autenticada===true&&j.usuario?.id===${JSON.stringify(UID)}};})()`;
-    await cdp.call('Page.navigate',{url:ORIGIN+'/acceso?volver=%2F'});
-    await wait(`location.origin===${JSON.stringify(ORIGIN)}&&document.readyState==='complete'&&!!document.getElementById('formulario')&&!!document.getElementById('correo')`);
-    let credentials={email:env.RWADAR_QA_EMAIL,password:env.RWADAR_QA_PASSWORD};
+    phase('open-access-form');await cdp.call('Page.navigate',{url:ORIGIN+'/acceso?volver=%2F'});
+    phase('wait-access-form');await wait(`location.origin===${JSON.stringify(ORIGIN)}&&document.readyState==='complete'&&!!document.getElementById('formulario')&&!!document.getElementById('correo')`);
+    phase('submit-login-form');let credentials={email:env.RWADAR_QA_EMAIL,password:env.RWADAR_QA_PASSWORD};
     await cdp.evaluate(`(()=>{const d=${JSON.stringify(credentials)};const e=document.getElementById('correo'),p=document.getElementById('clave');e.value=d.email;p.value=d.password;e.dispatchEvent(new Event('input',{bubbles:true}));p.dispatchEvent(new Event('input',{bubbles:true}));document.getElementById('formulario').requestSubmit();return true;})()`);credentials=null;
-    await wait(`location.origin===${JSON.stringify(ORIGIN)}&&location.pathname==='/'`);
+    phase('wait-home-return');await wait(`location.origin===${JSON.stringify(ORIGIN)}&&location.pathname==='/'`);
     report.checks.formReturnedHome=true;
-    let session=await cdp.evaluate(sessionExpression);report.checks.browserCookieSession=session.status===200&&session.same;if(!report.checks.browserCookieSession)throw Error('browser_cookie_session_failed');
-    await wait(`window.RWADAR_ACCESO?.usuario()?.id===${JSON.stringify(UID)}&&!!document.getElementById('btnCuenta')`);
-    await cdp.evaluate(`document.getElementById('btnCuenta').click();true`);
-    await wait(`document.getElementById('perfilPanel')?.classList.contains('show')&&document.getElementById('perfilCuerpo')?.textContent.includes('Mis inversiones')`);
+    phase('verify-browser-cookie-session');let session=await cdp.evaluate(sessionExpression);report.checks.browserCookieSession=session.status===200&&session.same;if(!report.checks.browserCookieSession)throw Error('browser_cookie_session_failed');
+    phase('wait-main-account-ready');await wait(`window.RWADAR_ACCESO?.usuario()?.id===${JSON.stringify(UID)}&&!!document.getElementById('btnCuenta')`);
+    phase('click-open-investments');await cdp.evaluate(`document.getElementById('btnCuenta').click();true`);
+    phase('wait-investments-panel');await wait(`document.getElementById('perfilPanel')?.classList.contains('show')&&document.getElementById('perfilCuerpo')?.textContent.includes('Mis inversiones')`);
     report.checks.investmentsPanelOpened=true;
-    const beforeReload=await cdp.evaluate('performance.timeOrigin');await cdp.call('Page.reload',{ignoreCache:true});
-    await wait(`performance.timeOrigin!==${JSON.stringify(beforeReload)}&&window.RWADAR_ACCESO?.usuario()?.id===${JSON.stringify(UID)}`);
-    session=await cdp.evaluate(sessionExpression);report.checks.reloadRetainsAccount=session.status===200&&session.same;
+    phase('reload-home');const beforeReload=await cdp.evaluate('performance.timeOrigin');await cdp.call('Page.reload',{ignoreCache:true});
+    phase('wait-reloaded-account');await wait(`performance.timeOrigin!==${JSON.stringify(beforeReload)}&&window.RWADAR_ACCESO?.usuario()?.id===${JSON.stringify(UID)}`);
+    phase('verify-reloaded-cookie-session');session=await cdp.evaluate(sessionExpression);report.checks.reloadRetainsAccount=session.status===200&&session.same;
     report.checks.loginHttp200=report.httpStatuses.some(s=>s.route==='entrar'&&s.status===200);
     if(Object.values(report.checks).some(value=>value!==true))throw Error('browser_check_failed');
-    report.status='passed';
-  }catch(error){report.failureCode=['qa_identity_rejected','linux_node22_required','chrome_start_failed','loopback_cdp_required','cdp_open_timeout','cdp_open_failed','cdp_timeout','cdp_disconnected','cdp_command_failed','cdp_send_failed','page_evaluation_failed','browser_observation_timeout','browser_cookie_session_failed','browser_check_failed'].includes(error.message)?error.message:'browser_check_failed';}
+    phase('completed');report.status='passed';
+  }catch(error){report.failedPhase=report.phase;report.failureCode=['qa_identity_rejected','linux_node22_required','chrome_start_failed','loopback_cdp_required','cdp_open_timeout','cdp_open_failed','cdp_timeout','cdp_disconnected','cdp_command_failed','cdp_send_failed','page_evaluation_failed','browser_observation_timeout','browser_cookie_session_failed','browser_check_failed'].includes(error.message)?error.message:'browser_check_failed';if(cdp){try{report.domDiagnostics=await cdp.evaluate('('+domState.toString()+')(document,window,'+JSON.stringify(UID)+')');report.domDiagnosticsAvailable=true;}catch{report.domDiagnosticsAvailable=false;}}}
   finally{
     if(cdp){try{const result=await cdp.evaluate(`(async()=>{if(location.origin!==${JSON.stringify(ORIGIN)})return {ok:false};document.querySelectorAll('input[type=password]').forEach(p=>p.value='');const r=await fetch('/api/acceso/salir',{method:'POST',credentials:'same-origin',cache:'no-store',redirect:'error',headers:{'Content-Type':'application/json'},body:'{}'});const j=await r.json();return {ok:r.status===200&&j.cerrado===true&&j.cierreRemoto===true};})()`);report.logoutLocal=result?.ok===true;}catch{}}
     if(socket)try{socket.close();}catch{}
@@ -73,5 +96,5 @@ async function run(env=process.env){
   }
   return report;
 }
-module.exports={CDP,statusOnly,requireQa,run};
+module.exports={CDP,statusOnly,requireQa,runtimeExceptionOnly,domState,run};
 if(require.main===module)run().then(report=>{fs.mkdirSync('evidence-private',{recursive:true});fs.writeFileSync('evidence-private/web-chrome-141-result.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));if(report.status!=='passed')process.exitCode=1;}).catch(()=>{console.log('{"status":"failed","failureCode":"safe_cleanup_failed"}');process.exitCode=1;});
