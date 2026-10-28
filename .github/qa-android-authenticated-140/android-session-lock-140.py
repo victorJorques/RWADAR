@@ -175,6 +175,36 @@ def logout_persisted():
     require(not any(value in ui.visible_text(root).splitlines() for value in ('Inicio','Buscar','Academy','Perfil','Mis inversiones','49 en el catálogo')),'Logout exposed private content')
     capture('c21-logout-reopen-requires-login');complete('logoutClearsStoredSessionAndReopenRequiresLogin')
 
+
+SESSION_SCOPE_CHECKS = ('forceStopRestoresSameAccountWithoutPassword', 'enableRequiresActualAndroidPin', 'cancelKeepsPrivateContentHidden', 'validAndroidPinUnlocksSameAccount', 'forceStopKeepsOptionalLock', 'disableRequiresActualAndroidPin', 'disabledLockStillRestoresVerifiedSession')
+SESSION_SCOPE_RESULT_SHA = '973fe692c2d02cbd41454a38bcc25831ba75b5faf0966d0ffd8634e1a07c5222'
+SESSION_SCOPE_MANIFEST_SHA = '6f52ca9f3e511e190fb9df49f6b46ad3747858ebb7c170fac02b35f9be05a770'
+
+def reuse_completed_session_scope(candidate, result_path=None, manifest_path=None):
+    assert candidate.get('status')=='ready','Current frozen candidate must remain ready'
+    raw=(pathlib.Path(result_path) if result_path else ROOT/'baseline-c22-session-40682735526-result.json').read_bytes()
+    manifest_raw=(pathlib.Path(manifest_path) if manifest_path else ROOT/'baseline-c22-session-40682735526.json').read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==SESSION_SCOPE_RESULT_SHA,'Completed session raw report identity changed'
+    assert hashlib.sha256(manifest_raw).hexdigest()==SESSION_SCOPE_MANIFEST_SHA,'Completed session evidence manifest changed'
+    old=json.loads(raw);manifest=json.loads(manifest_raw)
+    assert old['status']=='failed' and old['phase']=='tutorial' and old['full20PointQA'] is False and old['releaseApproved'] is False,'Original global tutorial failure must remain failed'
+    assert manifest['runId']==40682735526 and manifest['originalStatus']=='failed' and manifest['originalFailurePhase']=='tutorial'
+    assert manifest['rawReportSha256']==SESSION_SCOPE_RESULT_SHA and manifest['reusedChecks']==list(SESSION_SCOPE_CHECKS)
+    identity=('version','versionCode','package','apkSha256','apkBytes','sourceHeadSha','easBuildId','certificateSha256')
+    assert candidate['versionCode']==22 and all(old[k]==candidate[k]==manifest['identity'][k] for k in identity),'Completed session evidence belongs to another APK/source'
+    assert all(old['checks'].get(key) is True for key in SESSION_SCOPE_CHECKS),'Completed original session scope is incomplete'
+    assert manifest['observationPerformedInThisRun'] is False and manifest['inheritedFlagsReferToOriginalRun'] is True
+    assert manifest['postReopenCaptureSaved'] is False and manifest['captureNamesAreOriginal'] is True
+    assert len(manifest['captures'])==26 and all(item['runId']==40682735526
+      and re.fullmatch(r'c21-[a-z0-9-]+\.(?:png|xml)',item['file']) and re.fullmatch(r'[a-f0-9]{64}',item['sha256'])
+      and type(item['bytes']) is int and item['bytes']>0 for item in manifest['captures']),'Original capture references are incomplete'
+    metadata={'runId':40682735526,'harnessHeadSha':manifest['harnessHeadSha'],'originalStatus':'failed','originalFailurePhase':'tutorial',
+      'rawReportSha256':SESSION_SCOPE_RESULT_SHA,'manifestSha256':SESSION_SCOPE_MANIFEST_SHA,'archiveSha256':manifest['archiveSha256'],
+      'reusedChecks':list(SESSION_SCOPE_CHECKS),'observationPerformedInThisRun':False,'inheritedFlagsReferToOriginalRun':True,
+      'postReopenCaptureSaved':False,'postReopenEvidence':manifest['postReopenEvidence'],'captures':manifest['captures'],
+      'identity':manifest['identity'],'sessionAndPinRepeatedInCurrentRun':False,'originalTutorialStillFailed':True}
+    return {key:True for key in SESSION_SCOPE_CHECKS},metadata
+
 def main():
     require(os.environ.get('GITHUB_REPOSITORY')=='victorJorques/RWADAR' and os.environ.get('GITHUB_EVENT_NAME')=='workflow_dispatch','Private manual QA required')
     require(os.environ.get('QA_ACCOUNT_ACK')=='CONFIRMED_TEST_ACCOUNT','Existing confirmed QA account required')
@@ -188,7 +218,13 @@ def main():
     ui.start_snapshot_bridge();ui.adb('logcat','-c')
     ui.adb('shell','am','start','-W','-n',ui.APP_PACKAGE+'/.MainActivity')
     note_phase('initial-login');login_confirmed();capture('c21-login-success')
-    note_phase('catalog-counts');catalog_counts();session_and_lock()
+    note_phase('catalog-counts');catalog_counts()
+    inherited,reuse=reuse_completed_session_scope(c)
+    report['checks'].update(inherited)
+    report['completedSessionScopeReuse']=reuse
+    report['scope']='current-apk-pending-flows-with-completed-session-scope-reused'
+    (OUT/'completed-session-reuse-metadata.json').write_text(json.dumps(reuse,indent=2),encoding='utf-8')
+    persist()
     note_phase('tutorial');tutorial();persist()
     note_phase('portfolio');portfolio();persist();require(report['localQADataRemoved'] is True,'Own local QA row cleanup required before logout')
     note_phase('logout');logout_persisted()

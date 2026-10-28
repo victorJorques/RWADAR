@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "scope": "completed-seven-session-and-system-PIN-checks-only",
+  "runId": 40682735526,
+  "harnessHeadSha": "fb3095ca25f31682be441a395a56bc742bc816ce",
+  "originalStatus": "failed",
+  "originalFailurePhase": "tutorial",
+  "identity": {
+    "version": "1.4.0",
+    "versionCode": 22,
+    "package": "com.rwadar.app",
+    "apkSha256": "61771a44ba73d0adf6b0b8d8a5dd3520713e0dda6ad695af2b5c1247d5ceb4c6",
+    "apkBytes": 89135130,
+    "sourceHeadSha": "c663e3571396c917d5ba2f8365d8fb47e308fe8e",
+    "easBuildId": "c0594e09-6d16-41e7-9b00-43ee7d78ff4b",
+    "certificateSha256": "f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72"
+  },
+  "rawReportFile": "baseline-c22-session-40682735526-result.json",
+  "rawReportSha256": "973fe692c2d02cbd41454a38bcc25831ba75b5faf0966d0ffd8634e1a07c5222",
+  "archiveSha256": "2e2df7cbf66f03ab83133db08fc03a984897a666d5fc56567598925516e67c36",
+  "reusedChecks": [
+    "forceStopRestoresSameAccountWithoutPassword",
+    "enableRequiresActualAndroidPin",
+    "cancelKeepsPrivateContentHidden",
+    "validAndroidPinUnlocksSameAccount",
+    "forceStopKeepsOptionalLock",
+    "disableRequiresActualAndroidPin",
+    "disabledLockStillRestoresVerifiedSession"
+  ],
+  "captures": [
+    {
+      "runId": 40682735526,
+      "file": "c21-default-security-off.png",
+      "sha256": "8a1c18c46c1d676143dc1a91d475d73f01013732f033bfed4ec8c4eb5ed36464",
+      "bytes": 290016,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-default-security-off.xml",
+      "sha256": "a422e4f8eb0de1e5b88e368e24721dae711f2d53ebe6f91d0da17cd5daf2f9d8",
+      "bytes": 72090,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-session-restored.png",
+      "sha256": "189415f6e7798ed4bce7ab5e6dbd73c1ade427e2b8acbe09ae5ae40df7b65421",
+      "bytes": 293713,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-session-restored.xml",
+      "sha256": "c26b2355f6f768f192250b70e307f938ee9ad88327dc85fa8dcacc2dacddbb57",
+      "bytes": 72090,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-enable.png",
+      "sha256": "a54a44ae25faa11f9a960ffd82a0a4dd83e61003cc2a05c8cac8ba288ff9f1a3",
+      "bytes": 21868,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-enable.xml",
+      "sha256": "b7ef64cb150d6cabafe43d02a896dd35a7da7569f20f252592b4d8b45d544513",
+      "bytes": 4822,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-security-enabled.png",
+      "sha256": "762483c4701df56c12377b7e1fddf402392677c37649e1565a49bd7c24d9771a",
+      "bytes": 294418,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-security-enabled.xml",
+      "sha256": "8f8c82ffa840a6bef91ee9e7f851615ac406f67d7f0c9f0e7d87ee5206aa5bc2",
+      "bytes": 72416,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-background-hidden.png",
+      "sha256": "ef2e5d9bff981c4667346f0ba09c6339e52ddb1bdbc58a4be2d0cb8a8c074369",
+      "bytes": 117415,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-background-hidden.xml",
+      "sha256": "c707c102987c541076728f3fa5155a6d219c30f8c81e763042bb63e9864ebca3",
+      "bytes": 6515,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-cancel.png",
+      "sha256": "a54a44ae25faa11f9a960ffd82a0a4dd83e61003cc2a05c8cac8ba288ff9f1a3",
+      "bytes": 21868,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-cancel.xml",
+      "sha256": "e61e9e8cd062692758c2bb0dd57f8d32b29dc7d92f4765529eb51fe2a24f5443",
+      "bytes": 4822,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-cancel-remains-locked.png",
+      "sha256": "df38c8f67548716218f67317a031268d408e3d567a25a4aaba41408a8d8884bd",
+      "bytes": 143232,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-cancel-remains-locked.xml",
+      "sha256": "20def9432ce29ab5941e409fbb93e697e8afc08ab4cf72e380461dd3d6088f10",
+      "bytes": 6911,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-unlock-after-cancel.png",
+      "sha256": "a54a44ae25faa11f9a960ffd82a0a4dd83e61003cc2a05c8cac8ba288ff9f1a3",
+      "bytes": 21868,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-unlock-after-cancel.xml",
+      "sha256": "b5384e527ffbb2745aa38459208949aa26a221c117620f8a7e69a5fffe704599",
+      "bytes": 4822,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-valid-pin-unlocked.png",
+      "sha256": "a52150a64282490bd673befca29ae84ca4ce5e97f7a4f12bba62d47e7c7ce970",
+      "bytes": 262840,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-valid-pin-unlocked.xml",
+      "sha256": "2cb8870e85b2d9a521a2dbad7e43f486ff9609ff1da0128a187fe14ed3a459e6",
+      "bytes": 72443,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-force-stop-still-locked.png",
+      "sha256": "da09a64cd7cf733d4036aebd9a1c1065acd57fe21b5468682743d210041d1583",
+      "bytes": 117897,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-force-stop-still-locked.xml",
+      "sha256": "3ae0895da4a3e34c2a0bff58e3ecb0e299185c7bf2cf1187ee614d875456dcfa",
+      "bytes": 6516,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-unlock-after-force-stop.png",
+      "sha256": "a4e4dfe02dcee72e154ce4cff3e3166c5d7147881d2bf2b10eae4115778a13e0",
+      "bytes": 22609,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-unlock-after-force-stop.xml",
+      "sha256": "c1ea2c9ade4e4ee33b77191cc7411d67b7657cc506986982b4facd4a55c845e8",
+      "bytes": 4822,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-disable.png",
+      "sha256": "3970e2d6c101b72878f063cef69de82bfd6d84d3261f129ba41fb4e34e95d36c",
+      "bytes": 22674,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-system-pin-disable.xml",
+      "sha256": "e19c22b9b54beb515408cd6064bfb8b566da6cf5e08cf0c78a2b846c30eb0fe0",
+      "bytes": 4822,
+      "kind": "xml"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-security-disabled.png",
+      "sha256": "6bc93ee4c2197195d99cfecb203c3eb8c927cbba8cf91d399755fb10b740a36a",
+      "bytes": 274420,
+      "kind": "png"
+    },
+    {
+      "runId": 40682735526,
+      "file": "c21-security-disabled.xml",
+      "sha256": "68e7c67985c4f787daf4fcf5dba91b1bb638c3114e9dd36f9c6fbc0ea85f1f9a",
+      "bytes": 72090,
+      "kind": "xml"
+    }
+  ],
+  "postReopenCaptureSaved": false,
+  "postReopenCaptureCheck": "disabledLockStillRestoresVerifiedSession",
+  "postReopenEvidence": "Completed original assertion and subsequent tutorial control flow; no saved post-reopen screenshot is claimed.",
+  "captureNamesAreOriginal": true,
+  "captureFilenamePrefixDoesNotIdentifyApkVersion": true,
+  "originalPackageReport": {
+    "file": "candidate-current-package.json",
+    "sha256": "f1ae24e7077b33977302bddad9991ff60fea907cadf031a1d22761a896e58f68"
+  },
+  "originalSourceReport": {
+    "file": "candidate-current-source.json",
+    "sha256": "b158dabacf4783d17056029f379a250fbec81aebd055eb4e6bc8b6a5d6d299f5"
+  },
+  "observationPerformedInThisRun": false,
+  "inheritedFlagsReferToOriginalRun": true,
+  "rootVisualReviewCompleted": false,
+  "tutorialPassed": false,
+  "portfolioPassed": false,
+  "logoutPassed": false,
+  "full20PointQA": false,
+  "releaseApproved": false
+}

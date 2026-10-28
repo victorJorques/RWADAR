@@ -142,7 +142,7 @@ _SNAPSHOT_PORT = None
 _SNAPSHOT_SEQUENCE = 0
 
 
-def start_snapshot_bridge(timeout=12):
+def start_snapshot_bridge(timeout=25):
     global _SNAPSHOT_PROCESS, _SNAPSHOT_PORT
     assert _SNAPSHOT_PROCESS is None, 'Snapshot helper already started'
     deadline = time.monotonic()+timeout
@@ -253,7 +253,7 @@ def dump(timeout=30):
                 remaining = deadline - time.monotonic()
                 if remaining <= 0:
                     raise error
-                return start_snapshot_bridge(timeout=min(12, remaining))
+                return start_snapshot_bridge(timeout=min(20, remaining))
             time.sleep(min(2, remaining))
 
 

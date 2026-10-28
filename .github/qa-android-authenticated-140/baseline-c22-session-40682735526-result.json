@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "scope": "current-apk-session-system-credential-and-pending-flows",
+  "status": "failed",
+  "phase": "tutorial",
+  "checks": {
+    "freshCandidatePackageSignatureAnd49Assets": true,
+    "confirmedAccountLogin": true,
+    "currentCatalogueVisible": {
+      "platforms": 26,
+      "offers": 49,
+      "fullRadarTraversalRepeated": false
+    },
+    "forceStopRestoresSameAccountWithoutPassword": true,
+    "enableRequiresActualAndroidPin": true,
+    "cancelKeepsPrivateContentHidden": true,
+    "validAndroidPinUnlocksSameAccount": true,
+    "forceStopKeepsOptionalLock": true,
+    "disableRequiresActualAndroidPin": true,
+    "disabledLockStillRestoresVerifiedSession": true
+  },
+  "full20PointQA": false,
+  "releaseApproved": false,
+  "visualReviewCompleted": false,
+  "localQADataRemoved": false,
+  "noPostsNoPaymentsNoEmailsNoSQL": true,
+  "biometricHardwareNotTested": true,
+  "historicalScopes": {
+    "apk20": [
+      "radar26",
+      "groups",
+      "detail-font15",
+      "five-images-and-documentary-facts",
+      "ES-EN57-fields",
+      "Academy-lesson"
+    ],
+    "observationPerformedInThisRun": false,
+    "historicalPackageIdentityReused": false,
+    "automaticCandidateCompatibilityClaim": false
+  },
+  "version": "1.4.0",
+  "versionCode": 22,
+  "package": "com.rwadar.app",
+  "apkSha256": "61771a44ba73d0adf6b0b8d8a5dd3520713e0dda6ad695af2b5c1247d5ceb4c6",
+  "apkBytes": 89135130,
+  "sourceHeadSha": "c663e3571396c917d5ba2f8365d8fb47e308fe8e",
+  "certificateSha256": "f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72",
+  "easBuildId": "c0594e09-6d16-41e7-9b00-43ee7d78ff4b",
+  "loginInputVerification": {
+    "inputFields": [
+      {
+        "field": "email",
+        "empty": false,
+        "visibleLength": 53,
+        "passwordMasked": false,
+        "maskOnly": false,
+        "expectedValueMatch": true,
+        "expectedLengthMatch": true
+      },
+      {
+        "field": "password",
+        "empty": false,
+        "visibleLength": 47,
+        "passwordMasked": true,
+        "maskOnly": true,
+        "expectedValueMatch": null,
+        "expectedLengthMatch": true
+      }
+    ]
+  },
+  "diagnostic": {
+    "exceptionName": "TimeoutError",
+    "frames": [
+      {
+        "file": "android-session-lock-140.py",
+        "line": 206,
+        "function": "<module>"
+      },
+      {
+        "file": "android-session-lock-140.py",
+        "line": 192,
+        "function": "main"
+      },
+      {
+        "file": "android-authenticated-140.py",
+        "line": 264,
+        "function": "tutorial"
+      },
+      {
+        "file": "android-authenticated-140.py",
+        "line": 253,
+        "function": "wait_tutorial_content"
+      },
+      {
+        "file": "native_ui_140.py",
+        "line": 256,
+        "function": "dump"
+      },
+      {
+        "file": "native_ui_140.py",
+        "line": 163,
+        "function": "start_snapshot_bridge"
+      }
+    ],
+    "contextExceptionName": "TimeoutError"
+  },
+  "failureType": "TimeoutError"
+}

@@ -1,13 +1,17 @@
 package com.rwadar.smoketest;
 import android.app.Instrumentation;
 import android.app.UiAutomation;
+import android.accessibilityservice.AccessibilityServiceInfo;
 import android.graphics.Rect;
 import android.net.LocalServerSocket;
 import android.net.LocalSocket;
 import android.os.Bundle;
+import android.os.Build;
 import android.os.SystemClock;
 import android.util.Xml;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityWindowInfo;
+import java.util.List;
 import java.io.*;
 import org.xmlpull.v1.XmlSerializer;
 
@@ -15,6 +19,18 @@ import org.xmlpull.v1.XmlSerializer;
 public final class DumpRunner extends Instrumentation {
   @Override public void onCreate(Bundle args) { super.onCreate(args); start(); }
   private static String value(CharSequence v) { return v==null ? "" : v.toString(); }
+  private static AccessibilityNodeInfo currentRoot(UiAutomation automation) {
+    if(Build.VERSION.SDK_INT<33) return automation.getRootInActiveWindow();
+    List<AccessibilityWindowInfo> windows=automation.getWindows();
+    try {
+      for(AccessibilityWindowInfo window:windows) {
+        if(window.isActive()) return window.getRoot(0);
+      }
+      return null;
+    } finally {
+      for(AccessibilityWindowInfo window:windows) window.recycle();
+    }
+  }
   private static void node(XmlSerializer xml, AccessibilityNodeInfo info, int depth, long deadline) throws Exception {
     if(SystemClock.uptimeMillis()>=deadline) throw new IOException("Fresh snapshot budget exceeded");
     if(depth>100) throw new IllegalStateException("Hierarchy too deep");
@@ -38,7 +54,7 @@ public final class DumpRunner extends Instrumentation {
     xml.attribute(null,"bounds","["+b.left+","+b.top+"]["+b.right+","+b.bottom+"]");
     for(int i=0;i<info.getChildCount();i++) {
       if(SystemClock.uptimeMillis()>=deadline) throw new IOException("Fresh snapshot budget exceeded");
-      AccessibilityNodeInfo child=info.getChild(i);
+      AccessibilityNodeInfo child=Build.VERSION.SDK_INT>=33 ? info.getChild(i,0) : info.getChild(i);
       if(child!=null) { try { node(xml,child,depth+1,deadline); } finally { child.recycle(); } }
     }
     xml.endTag(null,"node");
@@ -55,6 +71,10 @@ public final class DumpRunner extends Instrumentation {
   @Override public void onStart() {
     try {
       UiAutomation automation=getUiAutomation();
+      AccessibilityServiceInfo service=automation.getServiceInfo();
+      if(service==null) throw new IllegalStateException("Accessibility service unavailable");
+      service.flags|=AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS;
+      automation.setServiceInfo(service);
       // AF_UNIX abstract socket: adb alone forwards to runner loopback. Nothing is persisted.
       LocalServerSocket server=new LocalServerSocket("rwadar_qa_snapshot_140");
       try {
@@ -70,8 +90,8 @@ public final class DumpRunner extends Instrumentation {
             AccessibilityNodeInfo root=null;
             long deadline=SystemClock.uptimeMillis()+1500;
             while(root==null && SystemClock.uptimeMillis()<deadline) {
-              root=automation.getRootInActiveWindow();
-              // clearCache + getRootInActiveWindow already requested a fresh root.
+              root=currentRoot(automation);
+              // Fresh active-window root and individual children use zero prefetch on API33+.
               if(root==null) SystemClock.sleep(50);
             }
             long rootReady=SystemClock.uptimeMillis();
