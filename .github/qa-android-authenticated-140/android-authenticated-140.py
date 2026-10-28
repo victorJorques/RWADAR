@@ -343,7 +343,7 @@ def portfolio():
     b = list(map(int,re.findall(r'-?\d+',candidates[0].get('bounds',''))))
     require(len(b) == 4 and b[0] < b[2] and b[1] < b[3], 'Invalid native QA deletion button')
     ui.adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2))
-    root = ui.wait_ui('Inversión eliminada.',timeout=15)
+    root = locate('Inversión eliminada.')
     require(QA_NAME not in ui.visible_text(root), 'QA investment still visible after deletion')
     report['localQADataRemoved'] = True
     capture('08-local-qa-deleted')
