@@ -237,7 +237,7 @@ def main():
     errors=ui.sanitize(ui.adb('logcat','-d','-v','threadtime','AndroidRuntime:E','ReactNativeJS:E','*:S'))
     (OUT/'runtime-errors-private.log').write_text(errors[-65536:],encoding='utf-8')
     require(not re.search(r'FATAL EXCEPTION|ReactNativeJS.*(?:TypeError|ReferenceError|Invariant Violation|Error:)',errors),'Native or JavaScript runtime exception')
-    complete('noRuntimeException');report['status']='passed-scoped-only';persist()
+    complete('noRuntimeException');report['status']='passed-assisted-only';report['rootVisualReviewRequired']=True;persist()
 
 def deadline(*_):
     report.update(status='failed',failureType='QaDeadlineExceeded',hardDeadlineExceeded=True);persist()
@@ -249,6 +249,14 @@ if __name__=='__main__':
     except BaseException as error:
         report['status']='failed';report['diagnostic']=safe_exception_diagnostic(error);report['failureType']=type(error).__name__;persist()
         print('RWADAR_QA_FAILURE '+json.dumps({'phase':report['phase'],'diagnostic':report['diagnostic']}),flush=True)
+        if not isinstance(error,ui.QaDeadlineExceeded):
+            try:
+                runtime=ui.sanitize(ui.adb('logcat','-d','-v','threadtime','-t','2000',
+                  'AndroidRuntime:E','ReactNativeJS:E','ReactNative:E','chromium:I','cr_WebView:E','*:S',timeout=8))
+                (OUT/'failure-runtime-private.log').write_bytes(runtime.encode('utf-8')[-65536:].decode('utf-8',errors='ignore').encode('utf-8'))
+                report['failureRuntimeDiagnostic']={'file':'failure-runtime-private.log','maxBytes':65536,'sanitized':True}
+            except Exception as diagnostic_error:
+                report['failureRuntimeDiagnostic']={'errorClass':type(diagnostic_error).__name__}
         if ui.CAPTURE_ALLOWED and not isinstance(error,ui.QaDeadlineExceeded):
             if report.get('tutorialOcrActive'):ui.screen('failure-c21-private')
             else:ui.capture_failure('failure-c21-private')

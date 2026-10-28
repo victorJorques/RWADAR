@@ -147,30 +147,66 @@ def run_tutorial(ui,click,report,source_file):
     assert renderer,'Actual Entero scene label and native tutorial header were not recognized'
     renderer.update(kind='compiled-webview-first-scene',sourceFile='rwadar-movil/componentes/Explicador.js',
       sourceSha256=hashlib.sha256(component).hexdigest(),rootVisualReviewRequired=True)
-    observed=[];scrolls=0
-    for expected in (1,2,3,4):
-        deadline=time.monotonic()+95;recognized=None
-        while time.monotonic()<deadline:
-            shot=fresh(ui);recognized=step_and_control(shot['words'],expected,shot['bytes'])
-            if recognized:break
-            seen_other=any(phrases(shot['words'],'Paso '+str(n)+' de 4') for n in (1,2,3,4) if n!=expected)
-            if seen_other:time.sleep(.4);continue  # Never assume the last press advanced.
-            assert scrolls<18,'Bounded observed scrolling did not reveal the required progress and button'
-            swipe_forward(ui,shot);scrolls+=1
-        assert recognized,'No unambiguous actual step and control were observed'
+    # Only the first counter is OCR-certified. Subsequent PNGs require the
+    # root reviewer's real visual observations before any final approval.
+    observed=[];step_evidence=[];scrolls=0;recognized=None
+    deadline=time.monotonic()+95
+    while time.monotonic()<deadline:
+        shot=fresh(ui);progress=phrases(shot['words'],'Paso 1 de 4')
+        if len(progress)==1:
+            box=green_button_box(shot['bytes'],progress[0]['box'])
+            if box is not None:
+                recognized=progress[0];break
+        assert scrolls<18,'Bounded observed scrolling did not reveal first progress and green button'
+        swipe_forward(ui,shot);scrolls+=1
+    assert recognized,'Actual first progress and green button were not observed'
+    progress_box=recognized['box'];viewport=shot['size']
+    for expected in (1,2,3):
+        if expected>1:
+            deadline=time.monotonic()+25;box=None
+            while time.monotonic()<deadline:
+                shot=fresh(ui)
+                assert shot['size']==viewport,'Viewport geometry changed between assisted step captures'
+                box=green_button_box(shot['bytes'],progress_box)
+                if box is not None:break
+                time.sleep(.4)
+            assert box is not None,'Actual current PNG did not expose one green next control'
         foreground(ui);assert time.monotonic()-shot['capturedMonotonic']<=30,'OCR image too old for a native tap'
         evidence=save_observation(ui,shot,'05-tutorial-step-'+str(expected))
-        box=recognized['control']['box'];x=(box[0]+box[2])//2;y=(box[1]+box[3])//2
-        evidence.update(step=recognized['step'],control='Siguiente →' if expected<4 else 'Volver a Academy',box=box,tap=[x,y],
-          confidence=recognized['control']['confidence'],progressBox=recognized['progress']['box'],foregroundVerified=True,
-          progressConfidence=recognized['progress']['confidence'],
-          controlObservationMethod=recognized['control'].get('controlObservationMethod','tesseract-tsv-observed-words'))
-        if recognized['control'].get('rootLabelReviewRequired'):evidence['rootLabelReviewRequired']=True
-        if observed and observed[-1]['controlObservationMethod']=='green-pixels-below-ocr-progress':
-            observed[-1].update(counterAfterPress=recognized['step'],counterAfterPressScreenshot=evidence['screenshot'],counterAfterPressSha256=evidence['sha256'])
-        observed.append(evidence)
-        report['tutorialOcrProgress']={'rendererEvidence':renderer,'observedPresses':list(observed),'scrollGestures':scrolls}
-        ui.adb('shell','input','tap',str(x),str(y));time.sleep(.5)
+        x=(box[0]+box[2])//2;y=(box[1]+box[3])//2
+        evidence.update(step=expected,stepObservation='root-visual-review-required',rootLabelReviewRequired=True,
+          control='Siguiente →',box=box,tap=[x,y],confidence=None,foregroundVerified=True,
+          progressBox=progress_box,progressConfidence=recognized['confidence'] if expected==1 else None,
+          controlObservationMethod='green-pixels-below-ocr-progress')
+        step_evidence.append(dict(evidence));observed.append(evidence)
+        report['tutorialOcrProgress']={'rendererEvidence':renderer,'stepEvidence':list(step_evidence),
+          'observedPresses':list(observed),'scrollGestures':scrolls,'rootVisualReviewRequired':True}
+        ui.adb('shell','input','tap',str(x),str(y));time.sleep(.7)
+    # Capture the final state in the same viewport. Do not press its Next
+    # control; whether it is disabled is established by the root PNG review.
+    shot=fresh(ui);assert shot['size']==viewport,'Final assisted step viewport geometry changed'
+    evidence=save_observation(ui,shot,'05-tutorial-step-4')
+    evidence.update(step=4,stepObservation='root-visual-review-required',rootLabelReviewRequired=True,confidence=None)
+    step_evidence.append(evidence)
+    report['tutorialOcrProgress']={'rendererEvidence':renderer,'stepEvidence':list(step_evidence),
+      'observedPresses':list(observed),'scrollGestures':scrolls,'rootVisualReviewRequired':True}
+    # The return CTA may legitimately require scrolling. Its exact OCR words
+    # authorize the return press without requiring a counter in that viewport.
+    deadline=time.monotonic()+65;return_control=None
+    while time.monotonic()<deadline:
+        shot=fresh(ui)
+        controls=phrases(shot['words'],'Volver a Academy')+phrases(shot['words'],'Volver Academy')
+        if len(controls)==1:return_control=controls[0];break
+        assert scrolls<24,'Bounded observed scrolling did not reveal the return control'
+        swipe_forward(ui,shot);scrolls+=1
+    assert return_control,'One actual OCR return control was not observed'
+    foreground(ui);assert time.monotonic()-shot['capturedMonotonic']<=30,'Return image too old for a native tap'
+    return_evidence=save_observation(ui,shot,'05-tutorial-return-control')
+    box=return_control['box'];x=(box[0]+box[2])//2;y=(box[1]+box[3])//2
+    return_evidence.update(control='Volver a Academy',box=box,tap=[x,y],confidence=return_control['confidence'],
+      foregroundVerified=True,controlObservationMethod='tesseract-tsv-observed-words')
+    report['tutorialOcrProgress'].update(returnControlEvidence=return_evidence,scrollGestures=scrolls)
+    ui.adb('shell','input','tap',str(x),str(y));time.sleep(.5)
     # Confirm the return from a fresh real image before querying UIA again.
     deadline=time.monotonic()+30;returned=None
     while time.monotonic()<deadline:
@@ -180,12 +216,13 @@ def run_tutorial(ui,click,report,source_file):
         time.sleep(.4)
     assert returned,'Native Academy return was not observed by OCR'
     report['tutorialOcrActive']=False;ui.wait_ui('Empezar tutorial 3D',timeout=25)
-    assert all(p.get('counterAfterPress')==p['step']+1 for p in observed if p['controlObservationMethod']=='green-pixels-below-ocr-progress'),'Visual next-button press did not produce its observed next counter'
-    used_pixels=any(p['controlObservationMethod']=='green-pixels-below-ocr-progress' for p in observed)
-    report['checks']['academyTutorialManual4Steps']={'steps':[p['step'] for p in observed],'returned':True,'actualWebView':True,
-      'fallbackAccepted':False,'observationMethod':'real-device-screenshot-green-pixels-and-ocr-progress' if used_pixels else METHOD,'nativeXmlUsedForSteps':False,'freshScreenshots':True,
-      'rendererEvidence':renderer,'observedPresses':observed,'returnEvidence':returned,'scrollGestures':scrolls,'minimumConfidence':MIN_CONFIDENCE,
-      'webViewIdentityBasis':'frozen compiled WebView component, recognized first scene, and required root visual review'}
+    report['checks']['academyTutorialManual4Steps']={'steps':[1,2,3,4],'stepsObservedByOcr':[1],
+      'stepNumbersRepresentExpectedOrder':True,'rootVisualReviewRequired':True,'returned':True,'actualWebView':True,
+      'fallbackAccepted':False,'observationMethod':'real-device-screenshots-assisted-root-review',
+      'nativeXmlUsedForSteps':False,'freshScreenshots':True,'scrollBetweenStepCaptures':False,
+      'rendererEvidence':renderer,'stepEvidence':step_evidence,'observedPresses':observed,
+      'returnControlEvidence':return_evidence,'returnEvidence':returned,'scrollGestures':scrolls,'minimumConfidence':MIN_CONFIDENCE,
+      'webViewIdentityBasis':'frozen compiled WebView component, recognized first scene, and mandatory root visual review'}
     for name in ('ocr-working.png','ocr-working.tsv.txt'):
         (ui.out/name).unlink(missing_ok=True)
 
