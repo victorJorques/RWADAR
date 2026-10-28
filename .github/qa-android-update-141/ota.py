@@ -72,11 +72,34 @@ def parse_database(connection,meta):
     return {'updateId':str(uuid.UUID(bytes=ident)),'runtimeVersion':runtime,'status':status,
       'successfulLaunchCount':successful,'failedLaunchCount':failed,'launchAssetPresent':asset is not None}
 
-def prepare_device(ui):
-    assert ui.adb('shell','getprop','ro.kernel.qemu').strip()=='1'
-    assert ui.adb('shell','getprop','ro.build.type').strip()=='userdebug','Root restricted to disposable userdebug emulator'
-    ui.adb('root');ui.adb('wait-for-device',timeout=20)
-    assert ui.adb('shell','id','-u').strip()=='0','Emulator adbd root required for own DB read'
+def prepare_device(ui,timeout=25):
+    # Only transport recovery around this disposable adbd restart. No UI retry.
+    end=time.monotonic()+timeout
+    def phase(name):
+        print('RWADAR_ADB_ROOT_PHASE '+name,flush=True)
+    def command(name,*args):
+        phase(name)
+        remaining=end-time.monotonic()
+        assert remaining>0,'Disposable emulator adbd root preparation deadline'
+        return ui.adb(*args,timeout=min(4,remaining))
+    assert command('verify-emulator','shell','getprop','ro.kernel.qemu').strip()=='1','Disposable emulator required'
+    assert command('verify-userdebug','shell','getprop','ro.build.type').strip()=='userdebug','Root restricted to disposable userdebug emulator'
+    try:
+        command('request-root','root')
+    except RuntimeError:
+        # Some adbd versions disconnect before the root request returns. A real
+        # device reconnect and uid0 are still mandatory; this is not approval.
+        phase('root-request-transport-unsettled')
+    while time.monotonic()<end:
+        try:
+            state=command('read-device-state','get-state').strip()
+            if state=='device' and command('read-root-uid','shell','id','-u').strip()=='0':
+                phase('root-ready')
+                return
+        except RuntimeError:
+            phase('adbd-awaiting-reconnect')
+        time.sleep(min(.5,max(0,end-time.monotonic())))
+    raise AssertionError('Disposable emulator adbd did not reconnect as root within deadline')
 
 def read_stopped_db(ui,meta):
     ui.adb('shell','am','force-stop','com.rwadar.app')
