@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-10-28",
+  "actualizadoEl": "2026-10-29",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Víctor autoriza continuar el cierre y corregir también el acceso web. Fuente revisada: sesión válida conservada ante errores de perfil/vigilancia, reintento y espera de restauración. Dieciocho controles dirigidos y generación local26/49 correctos; el BFF real pasa con la cuentaQA. Se conserva la revisión visual previa de fichas y el catálogo completo, sin investigación nueva ni cambios de fechas. Se publica primero preview y después producción si se comprueba el recurso. Android1.4.1/código23 ya compilado, con validación y publicación independientes. Sin monetización ni cambios de Auth o SQL.",
+  "nota": "Víctor pide continuar y corregir el retorno al acceso en Chrome/Safari. Segunda corrección revisada: preservar identidad ante503/red sin permitir operaciones privadas no verificadas y confirmar la sesión del navegador antes de regresar.37 controles dirigidos y generación local26/49 correctos; los rechazos reales siguen retirando el acceso. Informe VERIFICACION-ACCESO-WEB-2026-10-29.md. Preview y comprobación antes de producción; todavía no se atribuye éxito a la cuenta del titular. Mismo APK23 compilado, con validación independiente. Catálogo completo y fechas conservados; investigación pausada. Sin monetización, SQL ni cambios de configuración Auth.",
   "revisionAprobada": {
-    "commit": "3d92004f723bf47eb0d006a5ddd81a5d9cb674d7",
-    "contenidoSha256": "sha256:fd1d7f5b022cc24f1793c0d313ef6ddf4e4fe90c66de6e3c2baffd69f8c27f76",
+    "commit": "4d4e592705e9063d0b88d081a0c864c9a05e11f5",
+    "contenidoSha256": "sha256:698442ae81334a7b20235b2fe594aa448248b0f1a974240c4f923f6c3dd8d776",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
