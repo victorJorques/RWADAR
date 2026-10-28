@@ -72,6 +72,41 @@ def verify_auth_qa_identity():
 def bounds(node):
     return list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
 
+def production_bff_same_fixture():
+    from decimal import Decimal
+    require_qa_identity(os.environ,require_email=True)
+    origin='https://rwadar.pages.dev'; cookie=''; uid=os.environ['QA_USER_ID']
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self,*args,**kwargs): return None
+    opener=urllib.request.build_opener(NoRedirect())
+    def web(route,method='GET',data=None):
+        require((route,method) in (('entrar','POST'),('sesion','GET'),('cartera','GET'),('salir','POST')),'Fixed QA BFF routes only')
+        headers={'Origin':origin,'Content-Type':'application/json','X-RWAdar-Usuario':uid,**({'Cookie':cookie} if cookie else {})}
+        req=urllib.request.Request(origin+'/api/acceso/'+route,data=None if data is None else json.dumps(data).encode(),headers=headers,method=method)
+        try:
+            with opener.open(req,timeout=10) as r:
+                require(r.status==200,'QA BFF request rejected'); raw=r.read(128*1024+1)
+                require(len(raw)<=128*1024,'QA BFF response exceeds cap')
+                return json.loads(raw),r.headers
+        except Exception: raise RuntimeError('QA BFF request failed; sensitive response withheld') from None
+    try:
+        login,headers=web('entrar','POST',{'correo':os.environ['RWADAR_QA_EMAIL'],'clave':os.environ['RWADAR_QA_PASSWORD']})
+        cookies=headers.get_all('Set-Cookie') or []; require(len(cookies)==1,'One QA host cookie required')
+        match=re.fullmatch(r'(__Host-rwadar-acceso=[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+); Path=/; HttpOnly; Secure; SameSite=Lax',cookies[0])
+        require(match,'QA host cookie invalid'); cookie=match.group(1)
+        session,_=web('sesion'); require(all(d.get('autenticada') is True and d.get('usuario',{}).get('id')==uid for d in (login,session)),'QA BFF identity mismatch')
+        doc,_=web('cartera'); require(type(doc.get('version')) is int and doc['version']>0 and len(doc.get('posiciones',[]))==1,'One saved QA fixture required')
+        p=doc['posiciones'][0]; require(p.get('nombre')==QA_NAME and p.get('moneda')=='EUR','QA fixture identity mismatch')
+        require(p.get('valoracion',{}).get('origen')=='manual' and Decimal(p['valoracion']['precio'])==Decimal('1.1'),'QA manual valuation mismatch')
+        moves=p.get('movimientos',[]); require(len(moves)==2 and {m.get('tipo') for m in moves}=={'compra','cobro'},'QA movements mismatch')
+        buy=next(m for m in moves if m['tipo']=='compra'); income=next(m for m in moves if m['tipo']=='cobro')
+        require((Decimal(buy['cantidad']),Decimal(buy['precio']),Decimal(buy['comision']),Decimal(income['importe']))==(Decimal('2'),Decimal('1'),Decimal('0'),Decimal('0.1')),'QA purchase or income mismatch')
+    finally:
+        if cookie:
+            closed,_=web('salir','POST',{}); cookie=''
+            require(closed.get('cerrado') is True and closed.get('cierreRemoto') is True,'QA web local logout not confirmed')
+    return {'productionBffObserved':True,'sameExpectedAccount':True,'sameUniqueName':True,'sameCurrency':True,'samePurchase':True,'sameManualPrice':True,'sameIncome':True,'webLocalLogoutConfirmed':True}
+
 def visible(node):
     b=bounds(node); w,h=ui.display_size()
     return node.get('visible')!='false' and len(b)==4 and 0<=b[0]<b[2]<=w and 0<=b[1]<b[3]<=h
@@ -169,8 +204,10 @@ def portfolio():
     created=True; click('Guardar movimiento'); locate('Movimiento guardado.'); capture('141-cloud-purchase')
     click('Actualizar precio · '+QA_NAME); field('Precio actual por unidad','1.1'); click('Guardar precio'); locate('Precio y fecha guardados.')
     click('Añadir movimiento · '+QA_NAME); click('Cobro'); field('Importe cobrado','0.1'); click('Guardar movimiento'); locate('Movimiento guardado.')
+    web_proof=production_bff_same_fixture()
     ota_proof=ota.prove_cold_launch(ui,OTA,reopen,exact_qa_account)
     locate(QA_NAME)  # Same single cloud fixture must survive the successful OTA launch.
+    complete('productionBffReadsSameNativeFixture',{**web_proof,'nativeSessionAndFixturePreservedAfterWebLogout':True})
     report['otaDeliveryObserved']=True;ota_proof['sameQaPortfolioSurvives']=True
     complete('actualOtaDownloadedAndColdLaunched',ota_proof)
     complete('cloudPortfolioSurvivesColdReload',{'qaName':QA_NAME,'observation':'native row after cold restart and source-backed cloud read','independentRemoteQuery':False})
