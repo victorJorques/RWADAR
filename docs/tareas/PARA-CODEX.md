@@ -6,6 +6,12 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 28 de octubre de 2026 · Codex · web con cartera publicada; Android1.4.1 en cola
+
+Producción https://rwadar.pages.dev actualizada (despliegue89a6801d): tarjetas claras, avisos íntegros y Mis inversiones. SQL29 privado aplicado con permiso;24controles públicos pasan. Previewmóvil/escritorio y CSS final comprobados con sus límites en [detalle](../VERIFICACION-ACTUALIZACION-141-2026-10-28.md). Android1.4.1/código23 está en cola gratuita, fuente c1f7106; no volver a compilar. Arnés dirigido preparado para actualizar22sin desinstalar, cartera privada y unaOTAcompatible del mismo móvil; aún no hay aprobación ni publicación de1.4.1. CuentaQA sigue limpiada: no se ha reactivado este ciclo. InvestigaciónPAUSADA, main compartido intacto.
+
+---
+
 ## 28 de octubre de 2026 · Codex · actualización1.4.1 preparada
 
 SQL29 privado autorizado y aplicado, RLS/ACL comprobadas. Corregida carrera real de renovación de sesión; tarjetas simplificadas sin perder avisos; Mis inversiones de cuenta en web/app y privacidad actualizada. PróximoAPK1.4.1/código23 activa Updates compatible y deberá reemplazar22 sin desinstalar. Fuente y pruebas en el commit de esta entrada. Compilación, comprobación nativa y publicación nuevas pendientes;1.4.0 sigue pública. [Detalle breve](../VERIFICACION-ACTUALIZACION-141-2026-10-28.md). InvestigaciónPAUSADA, main compartido intacto.

@@ -4,6 +4,7 @@ Old PIN/tutorial/catalog scopes remain historical. Credentials never enter evide
 """
 import ast, json, os, pathlib, re, shlex, signal, sys, time, xml.etree.ElementTree as ET
 import urllib.request
+import ota
 from gate import ROOT, OLD, load_candidate, require_qa_identity, validate_auth_qa_user
 sys.path.insert(0,str(OLD))
 import native_ui_140 as ui
@@ -168,7 +169,10 @@ def portfolio():
     created=True; click('Guardar movimiento'); locate('Movimiento guardado.'); capture('141-cloud-purchase')
     click('Actualizar precio · '+QA_NAME); field('Precio actual por unidad','1.1'); click('Guardar precio'); locate('Precio y fecha guardados.')
     click('Añadir movimiento · '+QA_NAME); click('Cobro'); field('Importe cobrado','0.1'); click('Guardar movimiento'); locate('Movimiento guardado.')
-    reopen(); ui.wait_ui('Perfil',timeout=35); exact_qa_account(); locate(QA_NAME)
+    ota_proof=ota.prove_cold_launch(ui,OTA,reopen,exact_qa_account)
+    locate(QA_NAME)  # Same single cloud fixture must survive the successful OTA launch.
+    report['otaDeliveryObserved']=True;ota_proof['sameQaPortfolioSurvives']=True
+    complete('actualOtaDownloadedAndColdLaunched',ota_proof)
     complete('cloudPortfolioSurvivesColdReload',{'qaName':QA_NAME,'observation':'native row after cold restart and source-backed cloud read','independentRemoteQuery':False})
     for section, expected in (('Tu resumen',[('Invertido','2,00 EUR'),('Valor registrado','2,20 EUR'),('Cobrado','0,10 EUR'),('Resultado','0,30 EUR')]),
                               (QA_NAME,[('Aportado','2,00 EUR'),('Valor actual','2,20 EUR'),('Cobrado','0,10 EUR'),('Resultado','0,30 EUR'),('Resultado sin anualizar','15,00 %')])):
@@ -200,11 +204,14 @@ def detail_font():
     finally: ui.adb('shell','settings','put','system','font_scale','1.0')
 
 def main():
+    global OTA
+    OTA=ota.load_ota(load_candidate())  # Must precede account credentials/API calls.
     c=load_candidate(); require(os.environ.get('QA_ACCOUNT_ACK')=='CONFIRMED_TEST_ACCOUNT','Dedicated QA acknowledgement required')
     require_qa_identity(os.environ,require_email=True)
     require(os.environ.get('RWADAR_QA_EMAIL') and os.environ.get('RWADAR_QA_PASSWORD'),'QA env credentials required')
     verify_auth_qa_identity()
     require(ui.adb('shell','getprop','ro.kernel.qemu').strip()=='1','Disposable emulator only')
+    ota.prepare_device(ui)
     report['status']='running'; persist(); ui.start_snapshot_bridge(); launch(); login_confirmed(); exact_qa_account()
     complete('baseline22ConfirmedAccountLogin')
     ui.adb('shell','am','force-stop',ui.APP_PACKAGE)
@@ -225,9 +232,10 @@ def main():
     capture('141-offline-embedded-session-retained'); complete('offlineEmbeddedStartsWithoutLogout',{
         'observedNativeUI':True,'privateAccessObserved':authenticated_ui(root),
         'storedSessionRetryObserved':'Reintentar sesión guardada' in text,'otaDeliveryObserved':False})
+    ota.assert_not_downloaded(ui,OTA)
     ui.adb('shell','cmd','connectivity','airplane-mode','disable')
     ui.adb('shell','svc','wifi','enable');ui.adb('shell','svc','data','enable')
-    if 'Reintentar sesión guardada' in text:click('Reintentar sesión guardada')
+    launch()  # Own DB absence snapshot stopped the process; restore normally online.
     ui.wait_ui('Inicio','Buscar','Academy','Perfil',timeout=40); exact_qa_account()
     for tab in ('Buscar','Academy','Perfil'):
         click(tab); require(authenticated_ui(ui.dump()),'Navigation must preserve authenticated tabs'); capture('141-nav-'+tab.lower())

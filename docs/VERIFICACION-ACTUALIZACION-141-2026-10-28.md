@@ -15,3 +15,5 @@ Revisión independiente de SQL/API, aislamiento entre cuentas, cartera y avisos.
 Seguridad pendiente ajena a este corte: CAPTCHA coordinado web/nativo y ajustes del panel; no se declara completado ni se activa uno que impida entrar al APK existente. Comunidad permanece apagada.
 
 Preview real fdade885: revisión directa escritorio1442×732 y móvil390×844, ficha Casa de Outeiro con título y X visibles y cierre correcto. Detectado recorte CSS a dos líneas del aviso de tarjeta; retirado antes de producción. Texto antiguo del modal corregido: cuenta opcional. Falta verificar la preview corregida. El navegador aislado local falló DNS; no se le atribuyen comprobaciones.
+
+Web publicada en producción: https://rwadar.pages.dev (despliegue89a6801d),24controlesHTTPS aprobados. Previewcorregidaceba1ccf con HTML/CSS exactos; CSS final en navegador local390px muestra el aviso íntegro (clientHeight=scrollHeight=96px, overflowvisible, lineClampnone). La revisión directa previa de ficha móvil/escritorio sigue válida: no cambió el diálogo. Queda prueba autenticada del BFF de cartera con nuestra cuentaQA al abrir el ciclo del APK.

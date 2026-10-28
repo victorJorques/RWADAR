@@ -51,6 +51,8 @@ def load_candidate(path=None):
 
 def prepare():
     c = load_candidate()  # Deliberately first: no network, account or env output while pending.
+    from ota import load_ota
+    load_ota(c)  # A real same-source published Android OTA is also required first.
     assert os.environ['GITHUB_REPOSITORY'] == 'victorJorques/RWADAR'
     assert os.environ['GITHUB_EVENT_NAME'] == 'workflow_dispatch'
     assert os.environ['QA_ACCOUNT_ACK'] == 'CONFIRMED_TEST_ACCOUNT'
