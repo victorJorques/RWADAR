@@ -193,11 +193,29 @@ def remove_qa_position():
     require(QA_NAME not in ui.visible_text(root),'Own cloud QA fixture still present after reload')
     created=False; report['qaPortfolioRemoved']=True; persist(); capture('141-qa-cloud-cleaned')
 
+def wait_empty_portfolio_ready(timeout=30):
+    """Observe completed cloud loading before searching/pressing the form control."""
+    end=time.monotonic()+timeout
+    ui.scroll_top()
+    while time.monotonic()<end:
+        root=ui.dump(timeout=min(8,max(.1,end-time.monotonic())))
+        text=ui.visible_text(root)
+        require('No se pudieron leer tus inversiones.' not in text,'Cloud portfolio reported a real loading error')
+        require('Entra en tu cuenta' not in text,'Cloud portfolio lost its authenticated account')
+        if 'Cargando mis inversiones' not in text and 'Tu resumen' in text and 'Sin compras' in text:
+            # Only after the summary exists may scrolling seek the control.
+            root=locate('Registrar inversión')
+            button,_=ui.find_node(root,'Registrar inversión')
+            if button.get('enabled')!='false': return root
+        time.sleep(.5)
+    raise AssertionError('Cloud portfolio did not become empty and ready within the bounded wait')
+
+
 def portfolio():
     global created
     click('Perfil'); root=locate('Registro manual de tu cuenta, compartido con la web.',starts=True)
     require('Registro manual de tu cuenta, compartido con la web.' in ui.visible_text(root),'Cloud portfolio contract must be visible')
-    locate('Sin compras'); click('Registrar inversión')
+    wait_empty_portfolio_ready(); click('Registrar inversión')
     field('Nombre de la inversión',QA_NAME); click('EUR')
     field('Cantidad de unidades','2'); field('Precio pagado por unidad','1'); field('Comisión (0 si no hubo)','0')
     # Mark intent before submit so finally also attempts cleanup after an ambiguous network result.
