@@ -101,7 +101,7 @@ def prepare_device(ui,timeout=25):
         time.sleep(min(.5,max(0,end-time.monotonic())))
     raise AssertionError('Disposable emulator adbd did not reconnect as root within deadline')
 
-def read_stopped_db(ui,meta):
+def read_stopped_db(ui,meta,allow_initial_missing=False):
     ui.adb('shell','am','force-stop','com.rwadar.app')
     # The stopped process cannot change DB/WAL between these two exact-path reads.
     with tempfile.TemporaryDirectory(prefix='rwadar-updates-only-',dir=os.environ.get('RUNNER_TEMP') or os.getcwd()) as folder:
@@ -109,6 +109,8 @@ def read_stopped_db(ui,meta):
             path=DB+suffix
             exists=subprocess.run(['adb','shell','test','-f',path],capture_output=True,timeout=8)
             if exists.returncode:
+                assert exists.returncode==1 and not exists.stderr.strip(),'Own Updates DB existence check failed'
+                if suffix=='' and allow_initial_missing:return None
                 assert suffix=='-wal','Own Updates DB missing';continue
             data=subprocess.run(['adb','exec-out','cat',path],check=True,capture_output=True,timeout=15).stdout
             assert len(data)<=limit and (data or suffix=='-wal'),'Bounded own DB read required'

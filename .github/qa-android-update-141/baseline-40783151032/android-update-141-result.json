@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "scope": "apk22-to-apk23-directed-update",
+  "status": "failed",
+  "checks": {
+    "exactExistingQaAuthUserVerified": {
+      "fourIdentityFieldsMatch": true,
+      "emailConfirmed": true,
+      "authUserEndpointObserved": true,
+      "shortQaApiSessionRevoked": true
+    },
+    "confirmedAccountLogin": true,
+    "baseline22ConfirmedAccountLogin": true,
+    "apk22ReplacedBy23WithoutUninstall": {
+      "package": "com.rwadar.app",
+      "sameSigningCertificate": true,
+      "dataNotClearedBeforeUpdate": true
+    },
+    "offlineEmbeddedStartsWithoutLogout": {
+      "observedNativeUI": true,
+      "privateAccessObserved": false,
+      "storedSessionRetryObserved": true,
+      "otaDeliveryObserved": false
+    },
+    "navigationForegroundAndColdLaunchPreserveSameAccount": true
+  },
+  "releaseApproved": false,
+  "full20PointQA": false,
+  "visualReviewCompleted": false,
+  "qaPortfolioRemoved": false,
+  "otaPublished": false,
+  "otaDeliveryObserved": false,
+  "repeatedHistoricalScopes": [],
+  "loginInputVerification": {
+    "inputFields": [
+      {
+        "field": "email",
+        "empty": false,
+        "visibleLength": 53,
+        "passwordMasked": false,
+        "maskOnly": false,
+        "expectedValueMatch": true,
+        "expectedLengthMatch": true
+      },
+      {
+        "field": "password",
+        "empty": false,
+        "visibleLength": 47,
+        "passwordMasked": true,
+        "maskOnly": true,
+        "expectedValueMatch": null,
+        "expectedLengthMatch": true
+      }
+    ]
+  },
+  "errorClass": "AssertionError"
+}

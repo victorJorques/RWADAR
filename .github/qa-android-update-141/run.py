@@ -4,13 +4,14 @@ Old PIN/tutorial/catalog scopes remain historical. Credentials never enter evide
 """
 import ast, json, os, pathlib, re, shlex, signal, sys, time, xml.etree.ElementTree as ET
 import urllib.request
+from reuse import load_reused_native_evidence, validate_package
 import ota
 from gate import ROOT, OLD, load_candidate, require_qa_identity, validate_auth_qa_user
 sys.path.insert(0,str(OLD))
 import native_ui_140 as ui
 OUT = pathlib.Path('evidence-private')
 QA_NAME = 'QA_APK23_CLOUD_' + os.environ.get('GITHUB_RUN_ID','LOCAL_TEST')
-report = {'schemaVersion':1,'scope':'apk22-to-apk23-directed-update','status':'not-started','checks':{},
+report = {'schemaVersion':1,'scope':'apk23-portfolio-ota-detail-logout-continuation','status':'not-started','checks':{},
           'releaseApproved':False,'full20PointQA':False,'visualReviewCompleted':False,
           'qaPortfolioRemoved':False,'otaPublished':False,'otaDeliveryObserved':False,
           'repeatedHistoricalScopes':[]}
@@ -22,6 +23,19 @@ def persist():
 
 def complete(name, value=True):
     report['checks'][name] = value; persist()
+
+def phase(name):
+    require(re.fullmatch(r'[a-z0-9-]{1,64}',name),'Static harness phase required')
+    report['phase']=name;persist();print('RWADAR_DIRECTED_PHASE '+name,flush=True)
+
+def error_location(error):
+    allowed={'run.py','ota.py','gate.py','reuse.py','native_ui_140.py','android-authenticated-140.py'}
+    result=[];frame=error.__traceback__
+    while frame:
+        filename=pathlib.Path(frame.tb_frame.f_code.co_filename).name
+        if filename in allowed:result.append({'filename':filename,'line':frame.tb_lineno})
+        frame=frame.tb_next
+    return result[-12:]
 
 def load_helpers():
     wanted = ('require','locate','click','field','capture','authenticated_ui','require_login_inputs','login_confirmed')
@@ -215,27 +229,29 @@ def portfolio():
     global created
     click('Perfil'); root=locate('Registro manual de tu cuenta, compartido con la web.',starts=True)
     require('Registro manual de tu cuenta, compartido con la web.' in ui.visible_text(root),'Cloud portfolio contract must be visible')
-    wait_empty_portfolio_ready(); click('Registrar inversión')
+    phase('wait-cloud-portfolio-ready');wait_empty_portfolio_ready()
+    phase('register-qa-purchase');click('Registrar inversión')
     field('Nombre de la inversión',QA_NAME); click('EUR')
     field('Cantidad de unidades','2'); field('Precio pagado por unidad','1'); field('Comisión (0 si no hubo)','0')
     # Mark intent before submit so finally also attempts cleanup after an ambiguous network result.
     created=True; click('Guardar movimiento'); locate('Movimiento guardado.'); capture('141-cloud-purchase')
-    click('Actualizar precio · '+QA_NAME); field('Precio actual por unidad','1.1'); click('Guardar precio'); locate('Precio y fecha guardados.')
-    click('Añadir movimiento · '+QA_NAME); click('Cobro'); field('Importe cobrado','0.1'); click('Guardar movimiento'); locate('Movimiento guardado.')
-    web_proof=production_bff_same_fixture()
-    ota_proof=ota.prove_cold_launch(ui,OTA,reopen,exact_qa_account)
+    phase('record-manual-price');click('Actualizar precio · '+QA_NAME); field('Precio actual por unidad','1.1'); click('Guardar precio'); locate('Precio y fecha guardados.')
+    phase('record-qa-income');click('Añadir movimiento · '+QA_NAME); click('Cobro'); field('Importe cobrado','0.1'); click('Guardar movimiento'); locate('Movimiento guardado.')
+    phase('production-bff-same-fixture');web_proof=production_bff_same_fixture()
+    phase('observe-real-ota-cold-launch');ota_proof=ota.prove_cold_launch(ui,OTA,reopen,exact_qa_account)
     locate(QA_NAME)  # Same single cloud fixture must survive the successful OTA launch.
     complete('productionBffReadsSameNativeFixture',{**web_proof,'nativeSessionAndFixturePreservedAfterWebLogout':True})
     report['otaDeliveryObserved']=True;ota_proof['sameQaPortfolioSurvives']=True
     complete('actualOtaDownloadedAndColdLaunched',ota_proof)
     complete('cloudPortfolioSurvivesColdReload',{'qaName':QA_NAME,'observation':'native row after cold restart and source-backed cloud read','independentRemoteQuery':False})
+    phase('observe-portfolio-labels-and-values')
     for section, expected in (('Tu resumen',[('Invertido','2,00 EUR'),('Valor registrado','2,20 EUR'),('Cobrado','0,10 EUR'),('Resultado','0,30 EUR')]),
                               (QA_NAME,[('Aportado','2,00 EUR'),('Valor actual','2,20 EUR'),('Cobrado','0,10 EUR'),('Resultado','0,30 EUR'),('Resultado sin anualizar','15,00 %')])):
         for i,(label,value) in enumerate(expected):
             root=observe_datum(label,value,section)
             ui.screen('141-'+('summary' if section=='Tu resumen' else 'position')+'-'+str(i),root)
     complete('manualPurchaseValuationIncomeResult',{'units':2,'unitPrice':1,'valuationUnitPrice':1.1,'received':0.1,'invested':2,'value':2.2,'result':0.3,'percent':15,'currency':'EUR'})
-    remove_qa_position()
+    phase('remove-own-qa-fixture');remove_qa_position()
 
 def detail_font():
     ui.adb('shell','settings','put','system','font_scale','1.5')
@@ -260,47 +276,37 @@ def detail_font():
 
 def main():
     global OTA
-    OTA=ota.load_ota(load_candidate())  # Must precede account credentials/API calls.
-    c=load_candidate(); require(os.environ.get('QA_ACCOUNT_ACK')=='CONFIRMED_TEST_ACCOUNT','Dedicated QA acknowledgement required')
+    phase('candidate-and-history-gates')
+    c=load_candidate();OTA=ota.load_ota(c)  # Includes exact mobile-tree compatibility before account access.
+    report['reusedNativeEvidence']=load_reused_native_evidence(c);persist()
+    require(os.environ.get('QA_ACCOUNT_ACK')=='CONFIRMED_TEST_ACCOUNT','Dedicated QA acknowledgement required')
     require_qa_identity(os.environ,require_email=True)
     require(os.environ.get('RWADAR_QA_EMAIL') and os.environ.get('RWADAR_QA_PASSWORD'),'QA env credentials required')
-    verify_auth_qa_identity()
-    require(ui.adb('shell','getprop','ro.kernel.qemu').strip()=='1','Disposable emulator only')
-    ota.prepare_device(ui)
-    report['status']='running'; persist(); ui.start_snapshot_bridge(); launch(); login_confirmed(); exact_qa_account()
-    complete('baseline22ConfirmedAccountLogin')
+    phase('verify-existing-qa-auth');verify_auth_qa_identity()
+    phase('prepare-disposable-adbd');ota.prepare_device(ui)
+    report['status']='running';persist()
+    phase('install-candidate23-before-login')
     ui.adb('shell','am','force-stop',ui.APP_PACKAGE)
-    ui.adb('install','--no-streaming','-r','rwadar.apk',timeout=90)  # Never uninstall/clear before this update.
+    ui.adb('install','--no-streaming','-r','rwadar.apk',timeout=90)
+    phase('verify-current-package23')
     installed=ui.adb('shell','dumpsys','package',ui.APP_PACKAGE)
-    require(re.search(r'\bversionCode=23\b',installed) and re.search(r'\bversionName=1\.4\.1\b',installed),'Actual replacement package must be23/1.4.1')
-    complete('apk22ReplacedBy23WithoutUninstall',{'package':c['package'],'sameSigningCertificate':True,'dataNotClearedBeforeUpdate':True})
-    ui.adb('shell','cmd','connectivity','airplane-mode','enable')
-    ui.adb('shell','svc','wifi','disable');ui.adb('shell','svc','data','disable')
-    wait_offline_default_network()
-    launch();end=time.monotonic()+25
-    while time.monotonic()<end:
-        root=ui.dump(timeout=8);text=ui.visible_text(root)
-        if authenticated_ui(root) or 'Reintentar sesión guardada' in text:break
-        time.sleep(.5)
-    require(authenticated_ui(root) or 'Reintentar sesión guardada' in text,'Offline embedded launch must retain account state or its explicit retry')
-    require('Entra en tu cuenta' not in text,'Offline launch unexpectedly lost the saved session')
-    capture('141-offline-embedded-session-retained'); complete('offlineEmbeddedStartsWithoutLogout',{
-        'observedNativeUI':True,'privateAccessObserved':authenticated_ui(root),
-        'storedSessionRetryObserved':'Reintentar sesión guardada' in text,'otaDeliveryObserved':False})
-    ota.assert_not_downloaded(ui,OTA)
-    ui.adb('shell','cmd','connectivity','airplane-mode','disable')
-    ui.adb('shell','svc','wifi','enable');ui.adb('shell','svc','data','enable')
-    launch()  # Own DB absence snapshot stopped the process; restore normally online.
-    ui.wait_ui('Inicio','Buscar','Academy','Perfil',timeout=40); exact_qa_account()
-    for tab in ('Buscar','Academy','Perfil'):
-        click(tab); require(authenticated_ui(ui.dump()),'Navigation must preserve authenticated tabs'); capture('141-nav-'+tab.lower())
-    ui.adb('shell','input','keyevent','KEYCODE_HOME');launch();ui.wait_ui('Perfil',timeout=25);exact_qa_account()
-    reopen();ui.wait_ui('Perfil',timeout=35);exact_qa_account();complete('navigationForegroundAndColdLaunchPreserveSameAccount')
-    portfolio();detail_font();click('Perfil');click('Cerrar sesión');ui.wait_ui('Entra en tu cuenta',timeout=25)
-    reopen();root=ui.wait_ui('Entra en tu cuenta',timeout=25)
+    require(re.search(r'\bversionCode=23\b',installed) and re.search(r'\bversionName=1\.4\.1\b',installed),'Actual continuation package must be23/1.4.1')
+    actual=validate_package(c,json.loads((OUT/'candidate-141-package.json').read_text(encoding='utf-8')))
+    complete('candidate23PackageAndSourceVerified',{'versionCode':23,'version':'1.4.1','sourceHeadSha':c['sourceHeadSha'],'apkSha256':c['apkSha256'],'actualNativeIdentityVerified':actual['actualNativeIdentityVerified']})
+    phase('observe-ota-absence-before-first-candidate-launch')
+    require(ota.read_stopped_db(ui,OTA,allow_initial_missing=True) is None,'The expected OTA must be absent before the first candidate launch')
+    complete('otaAbsentBeforeFirstCandidateLaunch',True)
+    phase('start-private-snapshot-bridge');ui.start_snapshot_bridge()
+    phase('login-candidate23');launch();login_confirmed()
+    phase('verify-visible-qa-account');exact_qa_account();complete('candidate23ConfirmedAccountLogin')
+    phase('cloud-portfolio');portfolio()
+    phase('large-font-detail');detail_font()
+    phase('explicit-logout');click('Perfil');click('Cerrar sesión');ui.wait_ui('Entra en tu cuenta',timeout=25)
+    phase('cold-relaunch-after-logout');reopen();root=ui.wait_ui('Entra en tu cuenta',timeout=25)
     require(not authenticated_ui(root) and QA_NAME not in ui.visible_text(root),'Logout/relaunch must deny personal access')
     ui.CAPTURE_ALLOWED=True;capture('141-logout-relaunch-denied');complete('logoutRelaunchDeniesPersonalAccess')
-    report['status']='passed-directed-technical-qa';persist()
+    phase('continuation-completed');report['status']='passed-directed-technical-qa';persist()
+
 
 def deadline(*_): raise ui.QaDeadlineExceeded('Directed QA deadline')
 
@@ -308,7 +314,9 @@ if __name__=='__main__':
     signal.signal(signal.SIGALRM,deadline);signal.alarm(540)
     try: main()
     except BaseException as error:
-        report['status']='failed';report['errorClass']=type(error).__name__;persist();ui.capture_failure('141-failure')
+        report['status']='failed';report['errorClass']=type(error).__name__;report['errorLocation']=error_location(error);persist()
+        try:ui.capture_failure('141-failure')
+        except BaseException:pass
     finally:
         signal.alarm(60)  # Bounded best-effort own-row cleanup even after the main deadline.
         try:
@@ -316,7 +324,7 @@ if __name__=='__main__':
             ui.adb('shell','svc','wifi','enable');ui.adb('shell','svc','data','enable')
             if created: remove_qa_position()
         except BaseException as error:
-            report['cleanupErrorClass']=type(error).__name__;report['qaPortfolioRemoved']=False;persist()
+            report['cleanupErrorClass']=type(error).__name__;report['cleanupErrorLocation']=error_location(error);report['qaPortfolioRemoved']=False;persist()
         try:ui.stop_snapshot_bridge()
         except BaseException:pass
         signal.alarm(0)
