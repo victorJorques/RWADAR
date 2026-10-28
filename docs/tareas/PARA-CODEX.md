@@ -6,6 +6,12 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 29 de octubre de 2026 · Codex · retorno al acceso web reproducido
+
+Víctor confirma que el primer arreglo no basta. Corregidos errores transitorios del puente y comprobación de la sesión del navegador antes de regresar;37 controles dirigidos y generación local26/49 aprobados. Fuente en el commit de esta entrada; nueva preview y producción pendientes. [Detalle breve](../VERIFICACION-ACCESO-WEB-2026-10-29.md). APK23 conservado, recorrido40785078896 en curso; no recompilar. InvestigaciónPAUSADA, main compartido intacto.
+
+---
+
 ## 28 de octubre de 2026 · Codex · cierre reanudado y corrección del bucle web
 
 APK1.4.1/código23 terminado, sin otra compilación; OTA compatible preparada y recorrido nativo40783151032 en curso. El arnés de recursos se corrigió en7945f62. Web: corregidos cierre por fallo secundario y clic prematuro durante restauración;18 pruebas dirigidas pasan y generación local26/49 correcta. Cambios web en el commit que contiene esta entrada; preview y producción pendientes. BFF de producción comprobado de nuevo con nuestra cuentaQA. [Detalle](../VERIFICACION-ACTUALIZACION-141-2026-10-28.md). InvestigaciónPAUSADA; main compartido intacto.

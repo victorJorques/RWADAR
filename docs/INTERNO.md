@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 28 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 29 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -18,6 +18,8 @@ consulta. Entrar en el radar es gratis para las plataformas.
 ---
 
 ## Qué está funcionando hoy
+
+**Acceso web en revisión:** Víctor sigue observando un retorno al acceso. Se ha reproducido y corregido otro cierre ante fallos temporales y se confirma la sesión del navegador antes de regresar. Las pruebas dirigidas pasan; todavía no se presenta el caso de su cuenta como resuelto. [Detalle](VERIFICACION-ACCESO-WEB-2026-10-29.md).
 
 El mapa de activos ya está publicado dentro de Buscar, con Lista/Mapa, 26 fichas ubicadas y permiso opcional de ubicación. Conserva las 49 referencias del catálogo y señala las ubicaciones aproximadas. La preview y producción pasan las comprobaciones HTTPS; dos lecturas independientes corroboran los archivos publicados. La revisión visual no quedó acreditada porque el controlador no pudo verificar la URL de Chrome.
 

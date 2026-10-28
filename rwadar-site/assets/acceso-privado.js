@@ -17,19 +17,38 @@
       location.replace(location.pathname + location.search);
     }
   }
+  function errorTemporal(status = 0) {
+    const error = new Error('No se pudo comprobar tu sesión ahora. Reintenta en unos instantes; conservamos tu sesión.');
+    error.reintentable = true; error.status = status; return error;
+  }
   async function verificar() {
     if (comprobando) return comprobando;
     comprobando = (async () => {
       if (sessionStorage.getItem('rwadar.cierre.pendiente') === 'si') throw new Error('Confirma el cierre antes de entrar.');
-      const response = await fetch('/api/acceso/sesion', { credentials: 'same-origin', cache: 'no-store', redirect: 'error' });
-      if (!response.ok) throw new Error('Entra para gestionar tu cuenta.');
-      const estado = await response.json();
-      if (!estado.autenticada || !estado.usuario?.id) throw new Error('Sesión no válida.');
+      let response;
+      try { response = await fetch('/api/acceso/sesion', { credentials: 'same-origin', cache: 'no-store', redirect: 'error' }); }
+      catch (_) { throw errorTemporal(); }
+      if (!response.ok) {
+        if (response.status === 401 || response.status === 403) throw new Error('Entra para gestionar tu cuenta.');
+        throw errorTemporal(response.status);
+      }
+      let estado;
+      try { estado = await response.json(); }
+      catch (error) {
+        if (error.name === 'SyntaxError') throw new Error('Respuesta de sesión no válida.');
+        throw errorTemporal();
+      }
+      if (estado?.autenticada !== true || typeof estado.usuario?.id !== 'string' || !estado.usuario.id) throw new Error('Sesión no válida.');
       if (usuario && usuario.id !== estado.usuario.id) {
         throw new Error('La cuenta ha cambiado. Vuelve a entrar.');
       }
       usuario = estado.usuario; return { ...usuario };
-    })().catch(error => { limpiarCuenta(); throw error; }).finally(() => { comprobando = null; });
+    })().catch(error => {
+      // A failed verification blocks the pending operation without discarding
+      // the last confirmed identity. Definitive rejection still erases it.
+      if (error.reintentable !== true) limpiarCuenta();
+      throw error;
+    }).finally(() => { comprobando = null; });
     return comprobando;
   }
   async function catalogo(tabla, consulta = '') {
@@ -56,11 +75,17 @@
   }
   async function datos(ruta, opciones = {}) {
     if (opciones === null || opciones === undefined) opciones = {};
-    try { await verificar(); } catch (error) { entrar(); throw error; }
-    const response = await fetch('/api/acceso/datos', { method: 'POST', credentials: 'same-origin', cache: 'no-store', redirect: 'error',
-      headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ruta, metodo: opciones.method || 'GET',
-        ...(opciones.body ? { cuerpo: JSON.parse(opciones.body) } : {}) }) });
-    if (response.status === 401) { limpiarCuenta(); entrar(); }
+    try { await verificar(); } catch (error) { if (error.reintentable !== true) entrar(); throw error; }
+    let response;
+    try {
+      response = await fetch('/api/acceso/datos', { method: 'POST', credentials: 'same-origin', cache: 'no-store', redirect: 'error',
+        headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ruta, metodo: opciones.method || 'GET',
+          ...(opciones.body ? { cuerpo: JSON.parse(opciones.body) } : {}) }) });
+    } catch (_) { throw errorTemporal(); }
+    if (response.status === 401 || response.status === 403) {
+      limpiarCuenta(); entrar(); const error = new Error('Entra para gestionar tu cuenta.'); error.status = response.status; throw error;
+    }
+    if (response.status === 429 || response.status >= 500) throw errorTemporal(response.status);
     const value = await response.json();
     if (!response.ok) { const error = new Error('No se ha podido completar la operación con tu cuenta.'); error.status = response.status; throw error; }
     return value;

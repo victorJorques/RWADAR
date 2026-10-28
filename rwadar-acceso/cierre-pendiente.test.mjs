@@ -33,6 +33,11 @@ function formulario(responder, { hash = '' } = {}) {
     history: { replaceState() {} }, URL, URLSearchParams, AbortController, setTimeout: () => 0, clearTimeout() {},
     fetch: async (ruta, opciones) => {
       peticiones.push(ruta);
+      if (ruta.endsWith('/sesion')) {
+        assert.equal(opciones.method, 'GET');
+        assert.equal(opciones.credentials, 'same-origin');
+        assert.equal(opciones.cache, 'no-store');
+      }
       return responder(ruta, opciones);
     },
   });
@@ -48,13 +53,13 @@ function enviar(e) {
 
 test('Entrar espera el único cierre pendiente antes de crear la sesión nueva', async () => {
   const cierre = diferida();
-  const e = formulario(ruta => ruta.endsWith('/salir') ? cierre.promesa : Response.json({ autenticada: true }));
+  const e = formulario(ruta => ruta.endsWith('/salir') ? cierre.promesa : Response.json({ autenticada: true, usuario: { id: '11111111-1111-4111-8111-111111111111' } }));
   const entrada = enviar(e);
   assert.deepEqual(e.peticiones, ['/api/acceso/salir'], 'Carga y formulario deben compartir el cierre en curso');
   assert.deepEqual(e.destinos, [], 'No navega mientras el cierre puede borrar la cookie');
   cierre.resolver(Response.json({ cerrado: true }));
   await entrada;
-  assert.deepEqual(e.peticiones, ['/api/acceso/salir', '/api/acceso/entrar']);
+  assert.deepEqual(e.peticiones, ['/api/acceso/salir', '/api/acceso/entrar', '/api/acceso/sesion']);
   assert.deepEqual(e.destinos, ['/']);
   assert.equal(e.storage.has('rwadar.cierre.pendiente'), false);
 });
@@ -63,7 +68,7 @@ test('un cierre fallido impide entrar y permite un nuevo intento ordenado', asyn
   const cierre = diferida(); let intentos = 0;
   const e = formulario(ruta => {
     if (ruta.endsWith('/salir')) return ++intentos === 1 ? cierre.promesa : Response.json({ cerrado: true });
-    return Response.json({ autenticada: true });
+    return Response.json({ autenticada: true, usuario: { id: '11111111-1111-4111-8111-111111111111' } });
   });
   const entrada = enviar(e);
   cierre.resolver(Response.json({ error: 'sin_red' }, { status: 503 }));
@@ -73,7 +78,7 @@ test('un cierre fallido impide entrar y permite un nuevo intento ordenado', asyn
   assert.equal(e.storage.get('rwadar.cierre.pendiente'), 'si');
   assert.equal(e.elemento('enviar').disabled, false);
   await enviar(e);
-  assert.deepEqual(e.peticiones, ['/api/acceso/salir', '/api/acceso/salir', '/api/acceso/entrar']);
+  assert.deepEqual(e.peticiones, ['/api/acceso/salir', '/api/acceso/salir', '/api/acceso/entrar', '/api/acceso/sesion']);
   assert.deepEqual(e.destinos, ['/']);
 });
 
@@ -82,7 +87,7 @@ test('confirmar un enlace también espera el cierre compartido antes de adoptar 
   const e = formulario(ruta => {
     if (ruta.endsWith('/salir')) return cierre.promesa;
     if (ruta.endsWith('/inspeccionar')) return Response.json({ usuario: { correo: 'cuenta@example.test' } });
-    return Response.json({ autenticada: true });
+    return Response.json({ autenticada: true, usuario: { id: '11111111-1111-4111-8111-111111111111' } });
   }, { hash: '#access_token=solo.prueba.token&type=signup' });
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(e.elemento('identidad').hidden, false);
@@ -92,6 +97,6 @@ test('confirmar un enlace también espera el cierre compartido antes de adoptar 
   cierre.resolver(Response.json({ cerrado: true }));
   await adopcion;
   assert.deepEqual(e.peticiones.filter(ruta => !ruta.endsWith('/inspeccionar')),
-    ['/api/acceso/salir', '/api/acceso/adoptar']);
+    ['/api/acceso/salir', '/api/acceso/adoptar', '/api/acceso/sesion']);
   assert.deepEqual(e.destinos, ['/']);
 });

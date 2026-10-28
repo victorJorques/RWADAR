@@ -33,6 +33,31 @@
       return result;
     } finally { clearTimeout(reloj); }
   }
+  function errorSesion(codigo) {
+    const error = new Error(codigo === 'S401'
+      ? 'No se ha confirmado la sesión en este navegador. Vuelve a entrar. Código S401.'
+      : codigo === 'S503'
+        ? 'El servicio no ha podido comprobar tu sesión. Inténtalo de nuevo. Código S503.'
+        : codigo === 'SID'
+          ? 'La sesión no coincide con la cuenta que intentas abrir. Vuelve a entrar. Código SID.'
+          : 'No se pudo comprobar tu sesión. Revisa la conexión e inténtalo de nuevo. Código SRED.');
+    error.comprobacionSesion = true; return error;
+  }
+  async function confirmarSesion(resultado) {
+    const uid = resultado?.usuario?.id;
+    if (resultado?.autenticada !== true || typeof uid !== 'string' || !uid) throw errorSesion('SID');
+    const abortar = new AbortController(); const reloj = setTimeout(() => abortar.abort(), 10000);
+    try {
+      const response = await fetch('/api/acceso/sesion', { method: 'GET', credentials: 'same-origin',
+        cache: 'no-store', redirect: 'error', signal: abortar.signal, headers: { Accept: 'application/json' } });
+      if (!response.ok) throw errorSesion(response.status === 401 ? 'S401' : response.status === 503 ? 'S503' : 'SRED');
+      const sesion = await response.json();
+      if (sesion?.autenticada !== true || sesion?.usuario?.id !== uid) throw errorSesion('SID');
+    } catch (error) {
+      if (error.comprobacionSesion) throw error;
+      throw errorSesion('SRED');
+    } finally { clearTimeout(reloj); }
+  }
   async function terminarCierre() {
     if (!cierrePendiente) return;
     // A delayed logout response must finish before a new login sets its cookie.
@@ -66,7 +91,7 @@
     try {
       await terminarCierre();
       const result = await api(vista, data);
-      if (result.autenticada) regresar();
+      if (result.autenticada) { await confirmarSesion(result); regresar(); }
       else {
         if (vista === 'nueva-clave') { enlace = null; cambiar('entrar'); }
         mensaje(result.mensaje || 'Revisa tu correo para confirmar la cuenta.');
@@ -82,7 +107,7 @@
     if (!enlace || ocupado) return;
     if (enlace.tipo === 'recovery') { form.hidden = false; $('identidad').hidden = true; cambiar('nueva-clave'); return; }
     ocupado = true; $('adoptar').disabled = true;
-    try { await terminarCierre(); await api('adoptar', { access_token: enlace.access_token, confirmarIdentidad: true }); enlace = null; regresar(); }
+    try { await terminarCierre(); const result = await api('adoptar', { access_token: enlace.access_token, confirmarIdentidad: true }); await confirmarSesion(result); enlace = null; regresar(); }
     catch (error) { mensaje(error.message); }
     finally { ocupado = false; $('adoptar').disabled = false; }
   });

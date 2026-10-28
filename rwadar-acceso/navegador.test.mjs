@@ -60,9 +60,9 @@ test('gestionar datos como invitado pide cuenta y no inicia una escritura',async
   assert.ok(llamadas.every(path=>path==='/api/acceso/sesion'));
   assert.equal(e.borrados(),0);assert.ok(e.destinos[0].startsWith('/acceso?volver='));
 });
-test('sesión perdida u offline tras autenticación borra datos de cuenta y vuelve al catálogo',async()=>{
+test('rechazo 401 vigente tras autenticación borra datos de cuenta y vuelve al catálogo',async()=>{
   let valido=true;
-  const e=entornoBridge(async()=>{if(!valido)throw new Error('offline');return {ok:true,json:async()=>({autenticada:true,usuario:{id:'cuenta-a'}})};});
+  const e=entornoBridge(async()=>valido?{ok:true,json:async()=>({autenticada:true,usuario:{id:'cuenta-a'}})}:{ok:false,status:401});
   await new Promise(resolve=>setImmediate(resolve));valido=false;
   await assert.rejects(e.bridge.verificar());assert.equal(e.bridge.usuario(),null);assert.ok(e.borrados()>0);
   assert.deepEqual(e.destinos,['/']);
