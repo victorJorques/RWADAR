@@ -13,3 +13,5 @@ Pruebas conservadas por área: DB completa incluida SQL29(24); web550; fichas/RS
 Revisión independiente de SQL/API, aislamiento entre cuentas, cartera y avisos. Comprobado planFree EAS con cinco buildsAndroid disponibles y estimación0 antes de preparar compilación. Investigación pausada, catálogo49 y fechas sin cambios. Sin modificar main compartido.
 
 Seguridad pendiente ajena a este corte: CAPTCHA coordinado web/nativo y ajustes del panel; no se declara completado ni se activa uno que impida entrar al APK existente. Comunidad permanece apagada.
+
+Preview real fdade885: revisión directa escritorio1442×732 y móvil390×844, ficha Casa de Outeiro con título y X visibles y cierre correcto. Detectado recorte CSS a dos líneas del aviso de tarjeta; retirado antes de producción. Texto antiguo del modal corregido: cuenta opcional. Falta verificar la preview corregida. El navegador aislado local falló DNS; no se le atribuyen comprobaciones.
