@@ -13,7 +13,7 @@
   "comisionVariableSobreInversion": false,
   "nota": "Víctor pide corregir el acceso móvil, conservar la cuenta hasta cerrar sesión y ofrecer huella, reconocimiento facial compatible o PIN del sistema. Fuente revisada con almacenamiento seguro, errores transitorios sin expulsión, vigilancia separada y desbloqueo opcional. Regresión y exportación Android aprobadas; cuota gratuita comprobada. Se autoriza publicar la web y la app tras sus compuertas; la nueva compilación y prueba nativa todavía están pendientes. Sin monetización, SQL ni investigación. El catálogo y sus fechas se conservan.",
   "revisionAprobada": {
-    "commit": "b3c94354c3725645f246df7f15f07379822a6ad8",
+    "commit": "e231d07beaff123d9cb32e04e6cfbee7018f9192",
     "contenidoSha256": "sha256:ffbdf355947ff462c740a58309022681f1af27b81fef867d6beb0aac81236afd",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
