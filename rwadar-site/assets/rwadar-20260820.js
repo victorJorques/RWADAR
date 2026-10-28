@@ -3438,7 +3438,8 @@ const Cuenta = (function(){
  const TURNSTILE_SITEKEY='';
  let ses=null, perfil=null, vigiladas=new Map(), modo='entrar', fichaAbierta=null,
      identidadConfirmada=false,versionSesion=0,versionCuenta=0,renovacion=null,cuentaRenovacion=-1,focoCuenta=null,
-     correoPendiente='',operacionCuenta=0,temporizadorReenvio=null,cuentaHistorial=false,bajaPendiente=null;
+     correoPendiente='',operacionCuenta=0,temporizadorReenvio=null,cuentaHistorial=false,bajaPendiente=null,
+     restauracionCuenta=null,datosCuentaError=false;
 
  const $=id=>document.getElementById(id);
  function normalizaSesion(s){
@@ -3453,7 +3454,7 @@ const Cuenta = (function(){
  /* Los tokens se conservan solo en memoria. Una recarga exige volver a entrar,
     pero reduce la exposición: ninguna sesión queda persistida en localStorage. */
  const guarda=(s,mismaCuenta=false)=>{ses=normalizaSesion(s);versionSesion++;
-  if(!mismaCuenta){versionCuenta++;identidadConfirmada=false;perfil=null;vigiladas=new Map();}
+  if(!mismaCuenta){versionCuenta++;identidadConfirmada=false;perfil=null;vigiladas=new Map();datosCuentaError=false;}
  };
  const vigente=inicio=>inicio===versionCuenta&&!!ses;
  function cancelada(){const e=new Error('La cuenta ha cambiado. Vuelve a intentarlo.');e.code='cuenta_cancelada';return e;}
@@ -3690,10 +3691,19 @@ const Cuenta = (function(){
    }
    const v=await rest('/vigilancia?select=plataforma_id,plataformas(nombre)',null,cuenta);
    if(!vigente(cuenta)||ses.uid!==uid||!Array.isArray(v))return false;
-   perfil=propio;
+   if(servidor&&servidor.usuario()?.id!==uid)throw cancelada();
+   perfil=propio;datosCuentaError=false;
    vigiladas=new Map((v||[]).map(x=>[x.plataformas&&x.plataformas.nombre,x.plataforma_id]));
    return true;
-  }catch(e){if(vigente(cuenta)){perfil=null;vigiladas=new Map();}return false;}
+  }catch(e){
+   if(vigente(cuenta)){
+    perfil=null;vigiladas=new Map();datosCuentaError=true;
+    // A secondary read failure must not revoke a valid server session.
+    // The bridge independently clears its identity on a real Auth rejection.
+    if(servidor&&servidor.usuario()?.id!==uid){guarda(null);identidadConfirmada=false;}
+   }
+   return false;
+  }
  }
 
  /* --- vigilar / dejar de vigilar --------------------------------- */
@@ -3805,6 +3815,7 @@ const Cuenta = (function(){
  }
  function abrir(m,motivo){
   if(servidor&&['entrar','registro','recuperar'].includes(m||'entrar')){
+   if(restauracionCuenta){abrirGestion();return;}
    location.assign('/acceso?volver='+encodeURIComponent(location.pathname));return;
   }
   if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Puedes consultar todo el radar sin registrarte.');return;}
@@ -4042,6 +4053,7 @@ const Cuenta = (function(){
   c.innerHTML=
    '<div class="perfil-cab"><div class="perfil-ini" translate="no">'+esc(nom.slice(0,1))+'</div>'+
    '<div><div class="quien" translate="no">'+esc(nom)+'</div><div class="correo" translate="no">'+esc(ses.correo||'')+'</div></div></div>'+
+   (datosCuentaError?'<p class="perfil-nota" role="status">No se pudieron cargar los datos de tu cuenta. Tu sesión sigue abierta. <button id="pfReintentarCuenta" type="button">Reintentar datos de cuenta</button></p>':'')+
    '<div id="pfInversiones"></div>'+
    '<details class="perfil-opciones"><summary>Cuenta y plataformas vigiladas</summary>'+
    '<div class="perfil-cifras">'+
@@ -4086,6 +4098,10 @@ const Cuenta = (function(){
   }catch(_){
    contenedorInversiones.innerHTML='<h3>Mis inversiones</h3><p class="perfil-nota">No se pudo abrir el registro. Cierra y vuelve a abrir tu cuenta para reintentar. Tus datos se conservan.</p>';
   }
+  const reintentar=$('pfReintentarCuenta');if(reintentar)reintentar.addEventListener('click',async()=>{
+   reintentar.disabled=true;await cargarMio(cuenta);
+   if(vigente(cuenta)&&identidadConfirmada){pinta();abrirPerfil(true);}
+  });
   c.querySelectorAll('.vig-lista button').forEach(b=>b.addEventListener('click',async()=>{
    const nombre=b.dataset.q;b.disabled=true;await alternar(nombre);if(vigente(cuenta))abrirPerfil(true);
   }));
@@ -4248,8 +4264,9 @@ const Cuenta = (function(){
      habilitarlo aquí o en el móvil no habría forma de entrar. */
   if(accion){accion.disabled=false;accion.textContent=identidadConfirmada?'Ver mis inversiones':'Entrar o crear cuenta';}
  }
- function abrirGestion(){
+ async function abrirGestion(){
   if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Para gestionar datos anteriores, escribe a RWAdar@protonmail.com.');return;}
+  if(restauracionCuenta){avisar('Comprobando tu sesión…');await restauracionCuenta;}
   if(identidadConfirmada&&ses)abrirPerfil();
   else abrir('entrar','Entra o crea una cuenta gratuita para registrar tus compras, valoraciones y cobros y consultar tu resultado.');
  }
@@ -4259,7 +4276,7 @@ const Cuenta = (function(){
   if(typeof window!=='undefined'&&window.ReactNativeWebView&&typeof location!=='undefined'&&location.pathname==='/'&&location.hash==='#explain')return;
   if(!SERVICIOS_USUARIO_DISPONIBLES)return;
   const b=$('btnCuenta'); if(!b) return;          /* en el pre-renderizado no hay DOM */
-  b.addEventListener('click',()=>identidadConfirmada?abrirPerfil():abrir('entrar'));
+  b.addEventListener('click',()=>abrirGestion());
   $('cuentaX').addEventListener('click',cerrar);
   $('velo').addEventListener('click',()=>{cerrar();cerrarPanelPerfil();});
   $('perfilX').addEventListener('click',cerrarPanelPerfil);
@@ -4291,12 +4308,12 @@ const Cuenta = (function(){
   pinta();
 
   if(servidor){
-   servidor.verificar().then(async u=>{
+   restauracionCuenta=servidor.verificar().then(async u=>{
     guarda({access_token:'sesion-http-only',uid:u.id,correo:u.correo,expira:0});
     identidadConfirmada=true;
-    if(!await cargarMio()){await servidor.salir();return;}
+    await cargarMio();
     pinta();if(fichaAbierta)pintarVigilar(fichaAbierta);
-   }).catch(()=>{});
+   }).catch(()=>{}).finally(()=>{restauracionCuenta=null;});
    return;
   }
 

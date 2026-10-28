@@ -6,6 +6,12 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 28 de octubre de 2026 · Codex · cierre reanudado y corrección del bucle web
+
+APK1.4.1/código23 terminado, sin otra compilación; OTA compatible preparada y recorrido nativo40783151032 en curso. El arnés de recursos se corrigió en7945f62. Web: corregidos cierre por fallo secundario y clic prematuro durante restauración;18 pruebas dirigidas pasan y generación local26/49 correcta. Cambios web en el commit que contiene esta entrada; preview y producción pendientes. BFF de producción comprobado de nuevo con nuestra cuentaQA. [Detalle](../VERIFICACION-ACTUALIZACION-141-2026-10-28.md). InvestigaciónPAUSADA; main compartido intacto.
+
+---
+
 ## 28 de octubre de 2026 · Codex · web con cartera publicada; Android1.4.1 en cola
 
 Producción https://rwadar.pages.dev actualizada (despliegue89a6801d): tarjetas claras, avisos íntegros y Mis inversiones. SQL29 privado aplicado con permiso;24controles públicos pasan. Previewmóvil/escritorio y CSS final comprobados con sus límites en [detalle](../VERIFICACION-ACTUALIZACION-141-2026-10-28.md). Android1.4.1/código23 está en cola gratuita, fuente c1f7106; no volver a compilar. Arnés dirigido preparado para actualizar22sin desinstalar, cartera privada y unaOTAcompatible del mismo móvil; aún no hay aprobación ni publicación de1.4.1. CuentaQA sigue limpiada: no se ha reactivado este ciclo. InvestigaciónPAUSADA, main compartido intacto.
