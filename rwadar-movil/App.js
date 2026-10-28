@@ -49,6 +49,8 @@ import {
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
 const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
 const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
+// Las cuentas son independientes del seguimiento y los avisos de instalaciones.
+const CUENTA_REMOTA_ACTIVA = MODO_LOCAL === false && CUENTAS_REMOTAS === true && CORREO_AUTH_E2E === true;
 
 async function abrirEnlace(url) {
   const valor = String(url || '').trim();
@@ -130,13 +132,13 @@ export default function App() {
   const [cuenta, setCuenta] = useState(null);
   const [estadoCuenta, setEstadoCuenta] = useState(null);
   const [revisionCartera, setRevisionCartera] = useState(0);
-  const [restaurandoAcceso, setRestaurandoAcceso] = useState(!USUARIO_LOCAL);
+  const [restaurandoAcceso, setRestaurandoAcceso] = useState(CUENTA_REMOTA_ACTIVA);
   const [errorRestauracion, setErrorRestauracion] = useState('');
   const controladorActual = useRef(null);
   const usuarioAdmitido = cuentaAdmitida(estadoCuenta) ? estadoCuenta.usuario.id : null;
-  const seguridad = useBloqueoApp({ usuarioId: USUARIO_LOCAL ? null : usuarioAdmitido });
+  const seguridad = useBloqueoApp({ usuarioId: CUENTA_REMOTA_ACTIVA ? usuarioAdmitido : null });
   const restaurarAcceso = useCallback(async (controlador) => {
-    if (USUARIO_LOCAL || !controlador || controladorActual.current !== controlador) return;
+    if (!CUENTA_REMOTA_ACTIVA || !controlador || controladorActual.current !== controlador) return;
     setRestaurandoAcceso(true); setErrorRestauracion('');
     try {
       const resultado = await controlador.restaurar();
@@ -173,7 +175,7 @@ export default function App() {
     controladorActual.current = controlador;
     setCuenta(controlador);
     const cancelarSuscripcion = controlador.suscribir(setEstadoCuenta);
-    if (!USUARIO_LOCAL) restaurarAcceso(controlador);
+    if (CUENTA_REMOTA_ACTIVA) restaurarAcceso(controlador);
     return () => {
       if (controladorActual.current === controlador) controladorActual.current = null;
       cancelarSuscripcion(); controlador.destruir();
@@ -539,14 +541,14 @@ export default function App() {
     setPestana(id);
   };
 
-  if (!USUARIO_LOCAL && (restaurandoAcceso || estadoCuenta?.estado === 'restaurando' || errorRestauracion)) {
+  if (CUENTA_REMOTA_ACTIVA && (restaurandoAcceso || estadoCuenta?.estado === 'restaurando' || errorRestauracion)) {
     return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
       <PreparandoAcceso ocupado={restaurandoAcceso || estadoCuenta?.estado === 'restaurando'}
         mensaje={errorRestauracion} onReintentar={() => restaurarAcceso(cuenta)} onSalir={cerrarAcceso} />
     </SafeAreaProvider>;
   }
 
-  if (!USUARIO_LOCAL && usuarioAdmitido && (seguridad.preparando || seguridad.bloqueado)) {
+  if (CUENTA_REMOTA_ACTIVA && usuarioAdmitido && (seguridad.preparando || seguridad.bloqueado)) {
     return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
       <BloqueoApp preparando={seguridad.preparando} ocupado={seguridad.ocupado}
         mensaje={seguridad.mensaje} onDesbloquear={seguridad.desbloquear} onSalir={cerrarAcceso} />
@@ -875,7 +877,7 @@ export default function App() {
               key={`${usuarioAdmitido}:${revisionCartera}`}
               cuenta={cuenta}
               estadoCuenta={estadoCuenta}
-              seguridad={USUARIO_LOCAL ? null : seguridad}
+              seguridad={CUENTA_REMOTA_ACTIVA ? seguridad : null}
               plataformas={radar}
               onAbrirEnlace={abrirEnlace}
               seguidas={seguidas}

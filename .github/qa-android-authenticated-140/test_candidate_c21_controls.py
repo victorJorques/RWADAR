@@ -1,5 +1,5 @@
 """Offline fixture controls only. No adb, SDK, credentials, account or network call."""
-import importlib.util,json,pathlib,sys,tempfile,unittest,xml.etree.ElementTree as ET
+import importlib.util,io,json,pathlib,sys,tempfile,unittest,xml.etree.ElementTree as ET
 from unittest import mock
 ROOT=pathlib.Path(__file__).resolve().parent
 sys.path.insert(0,str(ROOT))
@@ -14,8 +14,40 @@ def tree(nodes):
 
 class CandidateControls(unittest.TestCase):
     def test_not_ready_rejected_before_source_or_network(self):
-        with mock.patch.object(gate,'git',side_effect=AssertionError('Offline test forbids git/network')):
-            with self.assertRaisesRegex(AssertionError,'not ready'):gate.load_candidate()
+        current=json.loads((ROOT/'candidate-current.json').read_text(encoding='utf-8'))
+        self.assertEqual(current['versionCode'],22);self.assertEqual(current['status'],'not-ready')
+        for key in ('sourceHeadSha','baselineSourceHeadSha','certificateSha256','apkUrl','apkSha256','apkBytes','easBuildId'):
+            self.assertIsNone(current[key])
+        with mock.patch.object(gate,'git',side_effect=AssertionError('Offline test forbids git/network')), \
+                mock.patch.object(gate.subprocess,'run',side_effect=AssertionError('Offline test forbids subprocess/network')):
+            with self.assertRaisesRegex(AssertionError,'not ready'):gate.prepare()
+
+
+    def test_current22_requires_own_manifest_source_hash_and_signature(self):
+        historical=(ROOT/'candidate-c21.json').read_bytes()
+        c=json.loads(historical)
+        c.update(status='ready',versionCode=22,sourceHeadSha='2'*40,apkSha256='3'*64,
+          apkUrl='https://expo.dev/artifacts/eas/fixture-only-current22.apk',apkBytes=64*1024*1024,
+          easBuildId='22222222-3333-4444-5555-666666666666')
+        with tempfile.TemporaryDirectory(dir=ROOT) as folder:
+            file=pathlib.Path(folder)/'current-fixture.json';file.write_text(json.dumps(c),encoding='utf-8')
+            validated=gate.load_candidate(file);self.assertEqual(validated['versionCode'],22)
+            for key,value in [('versionCode',True),('versionCode',20),('sourceHeadSha',None),('apkSha256',None),('certificateSha256','0'*64)]:
+                file.write_text(json.dumps({**c,key:value}),encoding='utf-8')
+                with self.assertRaises(AssertionError):gate.load_candidate(file)
+        signature='Signer #1 certificate SHA-256 digest: '+gate.CERT+'\nVerified using v2 scheme (APK Signature Scheme v2): true\n'
+        manifest="package: name='com.rwadar.app' versionCode='22' versionName='1.4.0'\nsdkVersion:'24'\n"
+        gate.check_native_metadata(validated,signature,manifest)
+        with self.assertRaises(AssertionError):gate.check_native_metadata(validated,signature,manifest.replace("versionCode='22'","versionCode='21'"))
+        with self.assertRaises(AssertionError):gate.check_native_metadata(validated,signature.replace(gate.CERT,'0'*64),manifest)
+        fake=mock.MagicMock();fake.stat.return_value=mock.Mock(st_size=c['apkBytes']);fake.open.return_value=io.BytesIO(b'offline fixture, not an APK')
+        with mock.patch.object(gate,'load_candidate',return_value=validated),mock.patch.object(gate.pathlib,'Path',return_value=fake), \
+                mock.patch.object(gate,'command',side_effect=AssertionError('Native tools must not run after a wrong hash')):
+            with self.assertRaises(AssertionError):gate.identity('fixture.apk')
+        with mock.patch.object(gate,'git',return_value='rwadar-movil/App.js') as checked:
+            with self.assertRaises(AssertionError):gate.source_guard(validated)
+            checked.assert_called_once_with('diff','--name-only',validated['sourceHeadSha'],'HEAD','--','rwadar-movil')
+        self.assertEqual((ROOT/'candidate-c21.json').read_bytes(),historical)
 
     def test_ready_schema_rejects_foreign_url_or_missing_identity(self):
         c=json.loads((ROOT/'candidate-c21.json').read_text(encoding='utf-8'))

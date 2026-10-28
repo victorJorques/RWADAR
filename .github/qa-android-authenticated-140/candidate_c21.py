@@ -1,14 +1,14 @@
-"""Fresh APK21 identity gate. Read-only, except private evidence/GITHUB_ENV files."""
+"""Fresh current-APK identity gate. Read-only, except private evidence/GITHUB_ENV files."""
 import base64,hashlib,json,os,pathlib,re,subprocess,sys,zipfile
 ROOT=pathlib.Path(__file__).resolve().parent
 CERT='f506dea70ad644184161542d583455d2ad849c4dea3fffa0469c9ca400f58b72'
 ASSET_MANIFEST_SHA='842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59'
 
 def load_candidate(file=None):
-    c=json.loads((pathlib.Path(file) if file else ROOT/'candidate-c21.json').read_text(encoding='utf-8'))
+    c=json.loads((pathlib.Path(file) if file else ROOT/'candidate-current.json').read_text(encoding='utf-8'))
     assert set(c)=={'schemaVersion','status','version','versionCode','package','sourceHeadSha','baselineSourceHeadSha','certificateSha256','apkUrl','apkSha256','apkBytes','easBuildId'},'Candidate schema mismatch'
-    assert type(c['schemaVersion']) is int and c['schemaVersion']==1 and c['status']=='ready','APK21 not ready: actual finished build identity is required'
-    assert c['version']=='1.4.0' and type(c['versionCode']) is int and c['versionCode']==21 and c['package']=='com.rwadar.app'
+    assert type(c['schemaVersion']) is int and c['schemaVersion']==1 and c['status']=='ready','Current APK not ready: actual finished build identity is required'
+    assert c['version']=='1.4.0' and type(c['versionCode']) is int and c['versionCode']>=21 and c['package']=='com.rwadar.app'
     assert isinstance(c['sourceHeadSha'],str) and re.fullmatch(r'[a-f0-9]{40}',c['sourceHeadSha'])
     assert isinstance(c['baselineSourceHeadSha'],str) and re.fullmatch(r'[a-f0-9]{40}',c['baselineSourceHeadSha'])
     assert c['certificateSha256']==CERT,'Existing signing identity must be preserved'
@@ -41,26 +41,30 @@ def prepare():
         assert p.returncode==0,'Unable to read frozen candidate source'
     finally:env.pop('GIT_CONFIG_VALUE_0',None);token=None
     proof=source_guard(c);out=pathlib.Path('evidence-private');out.mkdir(exist_ok=True)
-    (out/'candidate-c21-source.json').write_text(json.dumps(proof,indent=2),encoding='utf-8')
+    (out/'candidate-current-source.json').write_text(json.dumps(proof,indent=2),encoding='utf-8')
     assert os.environ.get('GITHUB_ENV')
     with open(os.environ['GITHUB_ENV'],'a',encoding='utf-8') as target:
         for key,value in [('APK_URL',c['apkUrl']),('APK_SHA256',c['apkSha256']),('APK_BYTES',c['apkBytes'])]:target.write(key+'='+str(value)+'\n')
-    print('Frozen APK21 source checked; no build, account or publication action')
+    print('Frozen current-APK source checked; no build, account or publication action')
 
 def command(*args):
     return subprocess.run(list(map(str,args)),check=True,capture_output=True,timeout=40).stdout.decode('utf-8',errors='strict')
+
+def check_native_metadata(c, signature, badging):
+    # Version comes only from the fully validated current-candidate file.
+    assert re.findall(r'^Signer #\d+ certificate SHA-256 digest: ([0-9a-f]{64})$',signature,re.M)==[CERT]
+    assert 'Verified using v2 scheme (APK Signature Scheme v2): true' in signature
+    match=re.search(r"^package: name='([^']+)' versionCode='([^']+)' versionName='([^']+)'",badging,re.M)
+    assert match and match.groups()==(c['package'],str(c['versionCode']),c['version']),'Actual current-APK native identity mismatch'
+    assert re.search(r"^sdkVersion:'24'$",badging,re.M),'Unexpected minSdk'
 
 def identity(apk):
     c=load_candidate();apk=pathlib.Path(apk);assert apk.stat().st_size==c['apkBytes']
     with apk.open('rb') as stream:assert hashlib.file_digest(stream,'sha256').hexdigest()==c['apkSha256']
     tools=pathlib.Path(os.environ['ANDROID_HOME'])/'build-tools/36.0.0'
     signature=command(tools/'apksigner','verify','--verbose','--print-certs',apk)
-    assert re.findall(r'^Signer #\d+ certificate SHA-256 digest: ([0-9a-f]{64})$',signature,re.M)==[CERT]
-    assert 'Verified using v2 scheme (APK Signature Scheme v2): true' in signature
     badging=command(tools/'aapt','dump','badging',apk)
-    match=re.search(r"^package: name='([^']+)' versionCode='([^']+)' versionName='([^']+)'",badging,re.M)
-    assert match and match.groups()==('com.rwadar.app','21','1.4.0'),'Actual APK21 native identity mismatch'
-    assert re.search(r"^sdkVersion:'24'$",badging,re.M),'Unexpected minSdk'
+    check_native_metadata(c,signature,badging)
     config=json.loads(git('show',c['sourceHeadSha']+':rwadar-movil/app.json'))
     blocked=config['expo']['android']['blockedPermissions'];assert isinstance(blocked,list) and blocked
     permissions=set(re.findall(r"^uses-permission(?:-sdk-\d+)?: name='([^']+)'",command(tools/'aapt','dump','permissions',apk),re.M))
@@ -78,8 +82,8 @@ def identity(apk):
             assert info.file_size<=16*1024*1024;scanned+=info.file_size;assert scanned<=128*1024*1024
             data=archive.read(info);digest=hashlib.sha256(data).hexdigest()
             if digest in expected:assert len(data)==expected[digest]['bytes'];matches.setdefault(digest,info.filename)
-    assert set(matches)==set(expected),'APK21 lacks a declared editorial image'
-    proof=json.loads(pathlib.Path('evidence-private/candidate-c21-source.json').read_text(encoding='utf-8'))
+    assert set(matches)==set(expected),'Current APK lacks a declared editorial image'
+    proof=json.loads(pathlib.Path('evidence-private/candidate-current-source.json').read_text(encoding='utf-8'))
     assert proof['sourceHeadSha']==c['sourceHeadSha'] and proof['workingMobileTreeMatchesCandidateSource'] is True
     report={'status':'verified-native-package-only',**{k:c[k] for k in ('apkSha256','apkBytes','version','versionCode','package','certificateSha256','sourceHeadSha','easBuildId')},
       'minSdkVersion':24,'blockedPermissionsAbsent':True,'systemBiometricPermission':True,'systemFingerprintPermission':True,
@@ -87,8 +91,8 @@ def identity(apk):
       'assetManifestExpectedHashesOnly':ASSET_MANIFEST_SHA,'all49AssetsFreshlyScannedInThisApk':True,
       'photos49':[{'slug':p['slug'],'sha256':p['sha256'],'bytes':p['bytes'],'apkEntry':matches[p['sha256']]} for p in photos],
       'authenticatedUiPassed':False,'releaseApproved':False}
-    pathlib.Path('evidence-private/candidate-c21-package.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
-    print('Fresh APK21 package, signature, permissions and49asset byte contents verified')
+    pathlib.Path('evidence-private/candidate-current-package.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    print('Fresh current-APK package, signature, permissions and49asset byte contents verified')
 
 if __name__=='__main__':
     assert os.environ.get('GITHUB_REPOSITORY')=='victorJorques/RWADAR' and os.environ.get('GITHUB_EVENT_NAME')=='workflow_dispatch'

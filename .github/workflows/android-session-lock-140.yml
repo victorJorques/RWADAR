@@ -1,6 +1,6 @@
 # PRIVATE QA ONLY. Push registers this workflow but skips the job.
-name: RWAdar APK21 private session and system lock QA
-run-name: APK21 session restoration and real emulator PIN; never release
+name: RWAdar current APK private session and system lock QA
+run-name: Current APK session restoration and real emulator PIN; never release
 on:
   push:
     branches: [codex/android-140-auth-qa]
@@ -30,7 +30,7 @@ jobs:
           ref: ${{ github.sha }}
           persist-credentials: false
           fetch-depth: 1
-      - name: Require private repository, manual launch and ready frozen APK21 candidate
+      - name: Require private repository, manual launch and ready frozen current-APK candidate
         env:
           GH_TOKEN: ${{ github.token }}
           QA_ACCOUNT_ACK: ${{ inputs.confirmed_test_account }}

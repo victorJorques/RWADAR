@@ -1,4 +1,4 @@
-"""Fresh APK21 scoped UI QA: persisted session, real Android PIN, pending tutorial/portfolio.
+"""Fresh current-APK scoped UI QA: persisted session, real Android PIN, pending tutorial/portfolio.
 No signup, email, SQL, build, payment, OTA or release. Historical scopes never become new observations.
 """
 import ast,base64,hashlib,json,os,pathlib,re,shlex,signal,sys,time,xml.etree.ElementTree as ET
@@ -10,11 +10,11 @@ DEVICE_PIN='421963'  # Disposable emulator fixture only; never a user's secret.
 SYSTEM_PACKAGES=frozenset(('com.android.settings','com.android.systemui','android'))
 SWITCH='Desbloquear con la seguridad del móvil'
 QA_NAME='QA_APK21_LOCAL_'+os.environ.get('GITHUB_RUN_ID','PREPARATION_ONLY')
-report={'schemaVersion':1,'scope':'apk21-session-system-credential-and-pending-flows','status':'not-started','phase':'not-started',
+report={'schemaVersion':1,'scope':'current-apk-session-system-credential-and-pending-flows','status':'not-started','phase':'not-started',
   'checks':{},'full20PointQA':False,'releaseApproved':False,'visualReviewCompleted':False,'localQADataRemoved':False,
   'noPostsNoPaymentsNoEmailsNoSQL':True,'biometricHardwareNotTested':True,
   'historicalScopes':{'apk20':['radar26','groups','detail-font15','five-images-and-documentary-facts','ES-EN57-fields','Academy-lesson'],
-    'observationPerformedInThisRun':False,'historicalPackageIdentityReused':False,'automaticC21CompatibilityClaim':False}}
+    'observationPerformedInThisRun':False,'historicalPackageIdentityReused':False,'automaticCandidateCompatibilityClaim':False}}
 PHASES=frozenset(('initial-login','catalog-counts','persistent-session','device-lock','tutorial','portfolio','logout'))
 
 # Reuse only the already reviewed UI-flow function definitions. Crucially, do not
@@ -172,9 +172,9 @@ def main():
     require(os.environ.get('QA_ACCOUNT_ACK')=='CONFIRMED_TEST_ACCOUNT','Existing confirmed QA account required')
     require(bool(os.environ.get('RWADAR_QA_EMAIL')) and bool(os.environ.get('RWADAR_QA_PASSWORD')),'Two current QA secrets required')
     c=load_candidate();report.update({k:c[k] for k in ('version','versionCode','package','apkSha256','apkBytes','sourceHeadSha','certificateSha256','easBuildId')})
-    identity=json.loads((OUT/'candidate-c21-package.json').read_text(encoding='utf-8'))
+    identity=json.loads((OUT/'candidate-current-package.json').read_text(encoding='utf-8'))
     require(identity['status']=='verified-native-package-only' and all(identity[k]==c[k] for k in ('versionCode','apkSha256','apkBytes','sourceHeadSha','certificateSha256'))
-      and identity['all49AssetsFreshlyScannedInThisApk'] is True and identity['historicalApkIdentityReused'] is False,'Fresh APK21 package verification required')
+      and identity['all49AssetsFreshlyScannedInThisApk'] is True and identity['historicalApkIdentityReused'] is False,'Fresh current-APK package verification required')
     with pathlib.Path('rwadar.apk').open('rb') as stream:require(hashlib.file_digest(stream,'sha256').hexdigest()==c['apkSha256'],'Installed artifact source hash mismatch')
     complete('freshCandidatePackageSignatureAnd49Assets');ui._SECRET_VALUES=(*ui._SECRET_VALUES,DEVICE_PIN)
     ui.start_snapshot_bridge();ui.adb('logcat','-c')
@@ -191,7 +191,7 @@ def main():
 
 def deadline(*_):
     report.update(status='failed',failureType='QaDeadlineExceeded',hardDeadlineExceeded=True);persist()
-    raise ui.QaDeadlineExceeded('APK21 scoped QA reached its hard1800second limit')
+    raise ui.QaDeadlineExceeded('Current APK scoped QA reached its hard1800second limit')
 
 if __name__=='__main__':
     exit_code=1
