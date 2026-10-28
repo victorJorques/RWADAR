@@ -61,16 +61,24 @@ def system_pin_fields(root,size):
       and n.get('class')=='android.widget.EditText' and n.get('password')=='true' and n.get('enabled')!='false' and valid_box(n,size)]
 
 def switch_node(root,expected=None):
-    n,b=ui.find_node(root,SWITCH)
-    require(n.get('checkable')=='true','Security option must expose a real checked state')
+    # A transient TextView can share the label while the actual Switch is busy.
+    nodes=[n for n in root.iter('node') if n.get('visible')!='false' and n.get('checkable')=='true'
+      and any(n.get(k,'')==SWITCH for k in ('text','content-desc'))]
+    require(len(nodes)==1,'Security option must expose one real checked control')
+    n=nodes[0];bounds=list(map(int,re.findall(r'-?\d+',n.get('bounds',''))))
+    require(len(bounds)==4 and 0<=bounds[0]<bounds[2] and 0<=bounds[1]<bounds[3],'Security option has no current bounds')
     if expected is not None:require(n.get('checked')==str(expected).lower(),'Security option state differs from its verified result')
     return n
 
 def wait_switch(expected,timeout=20):
     deadline=time.monotonic()+timeout
     while time.monotonic()<deadline:
-        root=locate(SWITCH);node=switch_node(root)
-        if node.get('enabled')!='false' and node.get('checked')==str(expected).lower():return root
+        try:
+            root=locate(SWITCH);node=switch_node(root)
+            if node.get('enabled')!='false' and node.get('checked')==str(expected).lower():return root
+        except AssertionError:
+            # A label or disabled intermediate frame is not PASS and is not final.
+            pass
         time.sleep(.3)
     raise AssertionError('Security option did not reach its expected native checked state')
 

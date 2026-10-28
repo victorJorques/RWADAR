@@ -73,6 +73,21 @@ class CandidateControls(unittest.TestCase):
         root.find('node').set('checkable','false')
         with self.assertRaises(AssertionError):smoke.switch_node(root,False)
 
+    def test_switch_transition_ignores_text_label_and_waits_for_actual_checked_control(self):
+        label={'text':smoke.SWITCH,'class':'android.widget.TextView','checkable':'false','clickable':'false'}
+        switch={'content-desc':smoke.SWITCH,'class':'android.widget.Switch','checkable':'true','checked':'true','clickable':'false'}
+        only_label=tree([label])
+        disabled=tree([label,{**switch,'enabled':'false'}])
+        ready=tree([label,{**switch,'enabled':'true'}])
+        with self.assertRaises(AssertionError):smoke.switch_node(only_label)
+        self.assertEqual(smoke.switch_node(ready,True).get('class'),'android.widget.Switch')
+        with self.assertRaises(AssertionError):smoke.switch_node(ready,False)
+        with mock.patch.object(smoke,'locate',side_effect=[only_label,disabled,ready]) as lookup, \
+                mock.patch.object(smoke.time,'sleep'), \
+                mock.patch.object(smoke.ui,'find_node',side_effect=AssertionError('Generic text selection is not a native checked-state proof')):
+            self.assertIs(smoke.wait_switch(True),ready)
+            self.assertEqual(lookup.call_count,3)
+
     def test_cancelled_lock_rejects_login_or_private_content(self):
         locked=[{'text':'Tu radar está protegido'}];smoke.private_hidden(tree(locked))
         for private in ('Inicio','Buscar','Academy','Perfil','Mis inversiones','Tu perfil','Registrar inversión','49 en el catálogo','Entra en tu cuenta'):
