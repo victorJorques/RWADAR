@@ -64,7 +64,7 @@ def green_button_box(png_bytes,progress_box):
     for y in range(progress_box[3],height):
         for x in range(width):
             r,g,b=pixels[x,y]
-            if r<=80 and g>=180 and 80<=b<=200 and g-b>=35:green.add(y*width+x)
+            if r<=140 and g>=180 and 80<=b<=220 and g-r>=60 and g-b>=25:green.add(y*width+x)
     candidates=[]
     while green:
         point=green.pop();stack=[point];area=0;x0=width;y0=height;x1=y1=0
