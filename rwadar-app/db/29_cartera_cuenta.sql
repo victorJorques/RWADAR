@@ -43,7 +43,7 @@ begin
     if p->'valoracion' <> 'null'::jsonb then
       if jsonb_typeof(p->'valoracion') is distinct from 'object'
          or not (p->'valoracion' ?& array['precio','fecha','origen'])
-         or p->'valoracion' - array['precio','fecha','origen'] <> '{}'::jsonb
+         or (p->'valoracion') - array['precio','fecha','origen'] <> '{}'::jsonb
          or p->'valoracion'->>'origen' is distinct from 'manual'
          or jsonb_typeof(p->'valoracion'->'precio') is distinct from 'string'
          or p->'valoracion'->>'precio' !~ '^\d{1,13}(\.\d{1,6})?$'

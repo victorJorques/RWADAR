@@ -1,9 +1,10 @@
 'use strict';
 // Ubuntu CI only. No dependencies, manual Cookie headers, screenshots or secrets in output.
 const fs=require('node:fs'),fsp=fs.promises,path=require('node:path'),os=require('node:os'),cp=require('node:child_process');
-const ORIGIN='https://rwadar.pages.dev',UID='8871c88e-b0af-415b-9346-dcceb182c2ac',MARKER='ba8cb4645588067ff77ef11a';
+const ORIGIN=process.env.RWADAR_QA_WEB_ORIGIN||'https://rwadar.pages.dev',UID='8871c88e-b0af-415b-9346-dcceb182c2ac',MARKER='ba8cb4645588067ff77ef11a';
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 function requireQa(env){
+  if(!['https://rwadar.pages.dev','https://revision.rwadar.pages.dev'].includes(ORIGIN))throw Error('qa_identity_rejected');
   if(env.QA_ACCOUNT_ACK!=='CONFIRMED_TEST_ACCOUNT'||env.QA_USER_ID!==UID||env.QA_ACCOUNT_MARKER!==MARKER||
      env.RWADAR_QA_EMAIL!==`vcicrack+rwadar-qa-${MARKER}@gmail.com`||typeof env.RWADAR_QA_PASSWORD!=='string'||env.RWADAR_QA_PASSWORD.length<12)throw Error('qa_identity_rejected');
 }
@@ -51,7 +52,7 @@ class CDP{
   async evaluate(expression){const result=await this.call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(result.exceptionDetails)throw Error('page_evaluation_failed');return result.result?.value;}
 }
 async function run(env=process.env){
-  const report={status:'failed',realChrome:false,credentialsRecorded:false,manualCookieHeaders:false,httpStatuses:[],runtimeErrors:[],checks:{},logoutLocal:false};
+  const report={status:'failed',origin:ORIGIN,realChrome:false,credentialsRecorded:false,manualCookieHeaders:false,httpStatuses:[],runtimeErrors:[],checks:{},logoutLocal:false};
   let chrome,socket,cdp,profile;const deadline=Date.now()+120000;
   const phase=name=>{report.phase=name;};
   try{

@@ -79,5 +79,28 @@ try {
  await db.query('delete from auth.users where id=$1',[ANA]);
  const restantes=(await db.query('select usuario_id from rwadar_cuentas_privadas.carteras')).rows;
  assert.deepEqual(restantes,[{usuario_id:LUIS}]);paso('baja de cuenta borra solo su documento por cascada');
+ // Regresión: la compra sin valoración no cubría la rama JSONB no nula.
+ // Se recrea solo la identidad sintética ya borrada; no se toca ninguna cuenta real.
+ await db.query('insert into auth.users values($1,$2,false)',[ANA,'2026-10-01T00:00:00Z']);
+ await db.query('insert into auth.sessions(id,user_id) values($1,$2)',[SA,ANA]);
+ await jwt(ANA,SA);
+ const modelo=require(path.join(repo,'rwadar-movil/lib/cartera.js')), hoy=modelo.fechaHoy();
+ let posicion=modelo.crearPosicion({id:'regresion-valoracion',nombre:'Compra local',moneda:'EUR'},hoy);
+ posicion=modelo.anadirMovimiento(posicion,{id:'compra',tipo:'compra',fecha:hoy,cantidad:'2',precio:'1',comision:'0'},hoy);
+ const compra=JSON.parse(modelo.serializarCartera([posicion]));
+ const valorada=JSON.parse(modelo.serializarCartera([modelo.fijarValoracion(posicion,{precio:'1.1',fecha:hoy},hoy)]));
+ assert.equal((await guardar(compra,0)).rows[0].dato.version,1);paso('compra canónica2@1 con valoración nula aceptada');
+ assert.equal((await guardar(valorada,1)).rows[0].dato.version,2);
+ assert.deepEqual((await leer()).rows[0].documento,valorada);paso('valoración manual no nula1.1 aceptada y leída sin cambios');
+ const extra=structuredClone(valorada);extra.posiciones[0].valoracion.extra='no permitido';
+ await rechaza(()=>guardar(extra,2),'22023');paso('valoración con clave extra rechazada');
+ const tipo=structuredClone(valorada);tipo.posiciones[0].valoracion.precio=1.1;
+ await rechaza(()=>guardar(tipo,2),'22023');paso('precio numérico no canónico rechazado');
+ const escalar=structuredClone(valorada);escalar.posiciones[0].valoracion='no válido';
+ await rechaza(()=>guardar(escalar,2),'22023');
+ assert.equal((await leer()).rows[0].version,2);assert.deepEqual((await leer()).rows[0].documento,valorada);
+ paso('valoración escalar rechazada y fallos conservan documento y versión');
+ assert.equal((await guardar(compra,2)).rows[0].dato.version,3);
+ assert.equal((await leer()).rows[0].documento.posiciones[0].valoracion,null);paso('volver a valoración nula sigue admitido');
  console.log(`${pasadas} comprobaciones SQL correctas, sin red`);
 } finally {await db.close();}

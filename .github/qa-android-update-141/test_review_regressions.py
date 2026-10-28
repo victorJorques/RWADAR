@@ -63,13 +63,17 @@ class ReviewRegressions(unittest.TestCase):
                     return ET.fromstring('<hierarchy><node class="android.widget.Button" text="Eliminar" visible="true" bounds="[1,1][3,3]"/></hierarchy>')
                 return ET.fromstring('<hierarchy/>')
             def adb(self, *args): events.append(('adb', args))
-            def visible_text(self, root): return 'Sin compras'
+            def scroll_top(self): events.append(('top',))
+            def visible_text(self, root): return 'Tu resumen '+qa
         scope = functions(['remove_qa_position'], {'ui': UI(), 'QA_NAME': qa, 'created': True, 'report': {},
             'reopen': lambda: events.append(('reopen',)),
             'exact_qa_account': lambda: events.append(('identity',)),
             'click': lambda label: events.append(('click', label)),
             'bounds': lambda node: [1,1,3,3], 'visible': lambda node: True,
-            'locate': lambda label: ET.fromstring('<hierarchy/>'), 'persist': lambda: None, 'capture': lambda name: None})
+            'locate': lambda label: ET.fromstring('<hierarchy/>'), 'persist': lambda: None, 'capture': lambda name: None,
+            'qa_fixture_absent': lambda root: True,
+            'wait_mutation_confirmation': lambda message,**kw: events.append(('confirm',message)),
+            'wait_empty_portfolio_ready': lambda: ET.fromstring('<hierarchy/>')})
         scope['remove_qa_position']()
         self.assertEqual(events[:2], [('reopen',), ('identity',)])
         self.assertIn(('click', 'Movimientos de '+qa), events)

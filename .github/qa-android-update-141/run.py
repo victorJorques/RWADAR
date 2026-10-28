@@ -191,20 +191,46 @@ def observe_datum(label,expected,section):
         except AssertionError: ui.scroll_step(True,root)
     raise AssertionError('No uniquely observed portfolio datum in required section')
 
+def wait_mutation_confirmation(message,timeout=25,phase_name=None):
+    # Mutation messages live above the form/list, not at the current scroll.
+    ui.scroll_top()
+    failed=False
+    try:root=ui.wait_ui(message,timeout=timeout)
+    except AssertionError:
+        failed=True;root=ui.dump(timeout=8)
+    prefix='No se pudo confirmar el guardado.'
+    errors=[n for n in root.iter('node') if n.get('text','').startswith(prefix)]
+    observation={'successVisible':message in ui.visible_text(root),
+      'saveErrorPresent':bool(errors),'saveErrorVisible':any(n.get('visible')!='false' for n in errors)}
+    current=phase_name or report.get('phase','unknown')
+    require(re.fullmatch(r'[a-z0-9-]{1,64}',current),'Static mutation phase required')
+    report.setdefault('mutationObservations',{})[current]=observation;persist()
+    if failed or errors or not observation['successVisible']:
+        report['mutationFailureCode']='portfolio-save-rejected' if errors else 'mutation-confirmation-not-observed';persist()
+        raise AssertionError('Portfolio mutation confirmation failed; see static phase diagnosis')
+    return root
+
+def qa_fixture_absent(root):
+    return not any(QA_NAME in n.get('text','') or QA_NAME in n.get('content-desc','') for n in root.iter('node'))
+
 def remove_qa_position():
     global created
     require(QA_NAME.startswith('QA_APK23_CLOUD_'),'Deletion target is not the fixture')
     # A successful RPC with a lost response may leave the old form on screen.
     # Reload the cloud document before locating this run's sole deletion target.
     reopen(); ui.wait_ui('Perfil',timeout=30); exact_qa_account()
-    click('Perfil'); click('Movimientos de '+QA_NAME); click('Eliminar inversión · '+QA_NAME)
+    click('Perfil');ui.scroll_top()
+    loaded=ui.wait_ui('Tu resumen',timeout=30,absent=('Cargando mis inversiones',))
+    if 'Sin compras' in ui.visible_text(loaded) and qa_fixture_absent(loaded):
+        created=False;report['qaPortfolioRemoved']=True;report['qaFixtureAlreadyAbsentAfterReload']=True;persist();return
+    click('Movimientos de '+QA_NAME); click('Eliminar inversión · '+QA_NAME)
     root=ui.wait_ui('Eliminar inversión',QA_NAME,timeout=12)
     nodes=[n for n in root.iter('node') if n.get('class')=='android.widget.Button' and n.get('text','').casefold()=='eliminar' and n.get('visible')!='false']
     require(len(nodes)==1 and visible(nodes[0]),'Unique QA-only Android deletion confirmation required')
     b=bounds(nodes[0]); ui.adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2))
-    ui.wait_ui('Inversión eliminada.',timeout=20)
-    reopen(); ui.wait_ui('Perfil',timeout=30); click('Perfil'); root=locate('Registrar inversión')
-    require(QA_NAME not in ui.visible_text(root),'Own cloud QA fixture still present after reload')
+    wait_mutation_confirmation('Inversión eliminada.',timeout=20,phase_name='cleanup-confirm-deletion')
+    reopen(); ui.wait_ui('Perfil',timeout=30); click('Perfil');root=wait_empty_portfolio_ready()
+    require(qa_fixture_absent(root),'Own cloud QA fixture still present after reload')
     created=False; report['qaPortfolioRemoved']=True; persist(); capture('141-qa-cloud-cleaned')
 
 def wait_empty_portfolio_ready(timeout=30):
@@ -234,9 +260,9 @@ def portfolio():
     field('Nombre de la inversión',QA_NAME); click('EUR')
     field('Cantidad de unidades','2'); field('Precio pagado por unidad','1'); field('Comisión (0 si no hubo)','0')
     # Mark intent before submit so finally also attempts cleanup after an ambiguous network result.
-    created=True; click('Guardar movimiento'); locate('Movimiento guardado.'); capture('141-cloud-purchase')
-    phase('record-manual-price');click('Actualizar precio · '+QA_NAME); field('Precio actual por unidad','1.1'); click('Guardar precio'); locate('Precio y fecha guardados.')
-    phase('record-qa-income');click('Añadir movimiento · '+QA_NAME); click('Cobro'); field('Importe cobrado','0.1'); click('Guardar movimiento'); locate('Movimiento guardado.')
+    created=True; click('Guardar movimiento'); wait_mutation_confirmation('Movimiento guardado.'); capture('141-cloud-purchase')
+    phase('record-manual-price');click('Actualizar precio · '+QA_NAME); field('Precio actual por unidad','1.1'); click('Guardar precio'); wait_mutation_confirmation('Precio y fecha guardados.')
+    phase('record-qa-income');click('Añadir movimiento · '+QA_NAME); click('Cobro'); field('Importe cobrado','0.1'); click('Guardar movimiento'); wait_mutation_confirmation('Movimiento guardado.')
     phase('production-bff-same-fixture');web_proof=production_bff_same_fixture()
     phase('observe-real-ota-cold-launch');ota_proof=ota.prove_cold_launch(ui,OTA,reopen,exact_qa_account)
     locate(QA_NAME)  # Same single cloud fixture must survive the successful OTA launch.

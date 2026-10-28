@@ -211,8 +211,16 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
             query.set('limit', limit);
           }
           if (data.cuerpo !== undefined && (!data.cuerpo || typeof data.cuerpo !== 'object' || Array.isArray(data.cuerpo))) throw new Error('solicitud_invalida');
-          const result = await api(env, '/rest/v1/' + resource + (query.size ? '?' + query : ''),
-            { token, method, data: method === 'GET' ? undefined : data.cuerpo || {}, representacion: true });
+          let result;
+          try {
+            result = await api(env, '/rest/v1/' + resource + (query.size ? '?' + query : ''),
+              { token, method, data: method === 'GET' ? undefined : data.cuerpo || {}, representacion: true });
+          } catch (error) {
+            // Identity was already verified. A resource's refusal is not logout.
+            // Keep its status while withholding all provider details and data.
+            if ([400, 403, 404, 409].includes(error.status)) return respuesta({ error: 'operacion_rechazada' }, error.status);
+            throw error;
+          }
           return respuesta(result == null ? [] : result);
         }
         if (path === '/api/acceso/entrar') {

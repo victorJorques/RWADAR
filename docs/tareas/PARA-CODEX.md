@@ -6,6 +6,12 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 29 de octubre de 2026 · Codex · causas reales de acceso y valoración corregidas
+
+Chrome reproduce sesión200 seguida de rechazo secundario convertido en401: corregidos BFF/cliente y consulta innecesaria de avisos;65 pruebas pasan. Reparado el validador SQL29 previamente autorizado mediante una pareja de paréntesis, con guarda;30 pruebasPGlite,8 independientes y comprobación remota positiva, sin ampliar permisos. Nueva preview/producción pendientes. Android23 conserva instalación y sesión acreditadas; se comprueba solo cartera/OTA/ficha/salida. [Detalle y reversión](../VERIFICACION-ACCESO-WEB-2026-10-29.md). InvestigaciónPAUSADA; main compartido intacto. Cambios en el commit que contiene esta entrada.
+
+---
+
 ## 29 de octubre de 2026 · Codex · retorno al acceso web reproducido
 
 Víctor confirma que el primer arreglo no basta. Corregidos errores transitorios del puente y comprobación de la sesión del navegador antes de regresar;37 controles dirigidos y generación local26/49 aprobados. Fuente en el commit de esta entrada; nueva preview y producción pendientes. [Detalle breve](../VERIFICACION-ACCESO-WEB-2026-10-29.md). APK23 conservado, recorrido40785078896 en curso; no recompilar. InvestigaciónPAUSADA, main compartido intacto.

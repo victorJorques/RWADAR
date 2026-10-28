@@ -82,11 +82,14 @@
         headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ruta, metodo: opciones.method || 'GET',
           ...(opciones.body ? { cuerpo: JSON.parse(opciones.body) } : {}) }) });
     } catch (_) { throw errorTemporal(); }
-    if (response.status === 401 || response.status === 403) {
+    if (response.status === 401) {
       limpiarCuenta(); entrar(); const error = new Error('Entra para gestionar tu cuenta.'); error.status = response.status; throw error;
     }
     if (response.status === 429 || response.status >= 500) throw errorTemporal(response.status);
     const value = await response.json();
+    if (!response.ok && value?.error === 'sesion_necesaria') {
+      limpiarCuenta(); entrar(); const error = new Error('Entra para gestionar tu cuenta.'); error.status = response.status; throw error;
+    }
     if (!response.ok) { const error = new Error('No se ha podido completar la operación con tu cuenta.'); error.status = response.status; throw error; }
     return value;
   }

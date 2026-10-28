@@ -1,11 +1,17 @@
 # PRIVATE manual browser QA only. Push registers the workflow; it never runs QA.
 name: RWAdar web private Chrome session QA
-run-name: Production Chrome login, cookie session and reload; no publication
+run-name: Chrome login, cookie session and reload; no publication
 on:
   push:
     branches: [codex/android-140-auth-qa]
   workflow_dispatch:
     inputs:
+      entorno:
+        description: Fixed RWAdar deployment to check
+        required: true
+        default: preview
+        type: choice
+        options: [preview, produccion]
       confirmed_test_account:
         description: CONFIRMED_TEST_ACCOUNT for the existing dedicated confirmed QA account
         required: true
@@ -64,8 +70,9 @@ jobs:
           test -n "$node_path"
           test "$("$node_path" -p 'process.versions.node.split(".")[0]')" = 22
           printf 'RWADAR_NODE=%s\n' "$node_path" >> "$GITHUB_ENV"
-      - name: Real Chrome production session and reload with local logout and profile cleanup
+      - name: Real Chrome session and reload with local logout and profile cleanup
         env:
+          RWADAR_QA_WEB_ORIGIN: ${{ inputs.entorno == 'preview' && 'https://revision.rwadar.pages.dev' || 'https://rwadar.pages.dev' }}
           RWADAR_QA_EMAIL: ${{ secrets.RWADAR_QA_EMAIL }}
           RWADAR_QA_PASSWORD: ${{ secrets.RWADAR_QA_PASSWORD }}
           QA_ACCOUNT_ACK: ${{ inputs.confirmed_test_account }}

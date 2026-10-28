@@ -10,7 +10,7 @@ const cuenta=web.slice(web.indexOf('const Cuenta = (function(){'),web.indexOf('/
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 function deferred(){let resolve;const promise=new Promise(ok=>{resolve=ok;});return {promise,resolve};}
 
-function entorno({failRoute='',network=false,pending=null,revokeAfter=Infinity}={}){
+function entorno({failRoute='',network=false,pending=null,revokeAfter=Infinity,avisos=false}={}){
   const calls=[],destinations=[],panels=[],notices=[],nodes=new Map();let fail=!!failRoute,sessionCalls=0,erased=0;
   function node(id){
     if(!nodes.has(id))nodes.set(id,{innerHTML:'',value:'',handlers:new Map(),
@@ -22,7 +22,7 @@ function entorno({failRoute='',network=false,pending=null,revokeAfter=Infinity}=
     document:{getElementById:node,addEventListener(){},documentElement:{replaceChildren(){erased++;}}},
     location:{hash:'',pathname:'/',search:'',replace:path=>destinations.push(path),assign:path=>destinations.push(path)},
     sessionStorage:{getItem:()=>null,setItem(){},removeItem(){}},setInterval(){},URLSearchParams,
-    SERVICIOS_USUARIO_DISPONIBLES:true,OPINIONES_DISPONIBLES:false,AVISOS_CORREO_DISPONIBLES:false,
+    SERVICIOS_USUARIO_DISPONIBLES:true,OPINIONES_DISPONIBLES:false,AVISOS_CORREO_DISPONIBLES:avisos,
     openPanel:id=>panels.push(id),closeAll(){},avisar:text=>notices.push(text),
     fetch:async(path,options)=>{
       calls.push({path,options});
@@ -80,4 +80,15 @@ test('rechazo Auth vigente durante carga sí elimina la identidad y el acceso pr
   assert.equal(e.context.cuentaPrueba.hay(),false);
   assert.ok(e.erased()>0);assert.ok(e.destinations.some(path=>path.startsWith('/acceso?volver=')));
   assert.equal(e.calls.some(c=>c.path.endsWith('/salir')),false,'An already revoked identity needs no logout mutation');
+});
+
+test('avisos apagados no consulta preferencias y conserva el acceso a la cuenta',async()=>{
+  const disabled=entorno({avisos:false});await tick();
+  assert.equal(disabled.context.cuentaPrueba.hay(),true);
+  const routes=disabled.calls.filter(c=>c.path.endsWith('/datos')).map(c=>JSON.parse(c.options.body).ruta);
+  assert.ok(routes.some(r=>r.startsWith('/mi_perfil?')));assert.ok(routes.some(r=>r.startsWith('/vigilancia?')));
+  assert.equal(routes.some(r=>r.startsWith('/perfiles?')),false);
+  assert.deepEqual(disabled.destinations,[]);
+  const enabled=entorno({avisos:true});await tick();
+  assert.ok(enabled.calls.filter(c=>c.path.endsWith('/datos')).some(c=>JSON.parse(c.options.body).ruta.startsWith('/perfiles?')));
 });

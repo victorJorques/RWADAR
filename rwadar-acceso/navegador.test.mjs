@@ -111,7 +111,7 @@ test('regresion tutorial: arranque Cuenta real conserva la sesion adoptada', asy
     document:{getElementById:nodo,addEventListener(){},documentElement:{replaceChildren(){throw new Error('No debe borrar una cuenta valida');}}},
     location:{hash:'',pathname:'/',search:'',replace(){throw new Error('No debe navegar al arrancar');},assign(){throw new Error('No debe pedir acceso');}},
     sessionStorage:{getItem:()=>null,setItem(){},removeItem(){}},
-    setInterval(){},URLSearchParams,SERVICIOS_USUARIO_DISPONIBLES:true,OPINIONES_DISPONIBLES:false,
+    setInterval(){},URLSearchParams,SERVICIOS_USUARIO_DISPONIBLES:true,OPINIONES_DISPONIBLES:false,AVISOS_CORREO_DISPONIBLES:false,
     fetch:async(path,opciones)=>{
       llamadas.push({path,opciones});
       if(path.endsWith('/sesion'))return {ok:true,json:async()=>({autenticada:true,usuario:{id:'cuenta-a',correo:'qa@ejemplo.test',correoConfirmadoEl:'2026-10-27T00:00:00Z'}})};

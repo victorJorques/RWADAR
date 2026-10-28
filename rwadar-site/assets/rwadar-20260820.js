@@ -3682,11 +3682,13 @@ const Cuenta = (function(){
    if(!Array.isArray(p)||!propio||propio.id!==uid)throw new Error('No se ha podido cargar tu perfil.');
    if(propio){
     let preferencia=null;
-    try{
-     const filas=await rest('/perfiles?select=avisos_correo,avisos_correo_aceptado_el,avisos_correo_version&id=eq.'+
-       encodeURIComponent(uid),null,cuenta);
-     preferencia=(filas&&filas[0])||null;
-    }catch(e){}
+    if(AVISOS_CORREO_DISPONIBLES){
+     try{
+      const filas=await rest('/perfiles?select=avisos_correo,avisos_correo_aceptado_el,avisos_correo_version&id=eq.'+
+        encodeURIComponent(uid),null,cuenta);
+      preferencia=(filas&&filas[0])||null;
+     }catch(e){}
+    }
     propio=perfilConCorreoSeguro(propio,preferencia);
    }
    const v=await rest('/vigilancia?select=plataforma_id,plataformas(nombre)',null,cuenta);
