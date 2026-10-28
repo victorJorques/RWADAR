@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Víctor pide continuar y corregir el retorno al acceso en Chrome/Safari. Segunda corrección revisada: preservar identidad ante503/red sin permitir operaciones privadas no verificadas y confirmar la sesión del navegador antes de regresar.37 controles dirigidos y generación local26/49 correctos; los rechazos reales siguen retirando el acceso. Informe VERIFICACION-ACCESO-WEB-2026-10-29.md. Preview y comprobación antes de producción; todavía no se atribuye éxito a la cuenta del titular. Mismo APK23 compilado, con validación independiente. Catálogo completo y fechas conservados; investigación pausada. Sin monetización, SQL ni cambios de configuración Auth.",
+  "nota": "Continuación expresa: corregido el rechazo de un recurso secundario que Chrome demostró convertido en cierre de sesión. BFF distingue error de operación y Auth; no se consultan avisos apagados.65 pruebas del área aprobadas y generación26/49. SQL29 reparado solo en el validador mediante dos paréntesis:30 controlesPGlite,8 independientes y SELECT remoto positivo; RLS/ACL conservados. Preview y Chrome real antes de producción. Mismo APK23, cierre nativo separado y sin recompilar. Investigación pausada, catálogo y fechas conservados, sin monetización. Detalle VERIFICACION-ACCESO-WEB-2026-10-29.md.",
   "revisionAprobada": {
-    "commit": "4d4e592705e9063d0b88d081a0c864c9a05e11f5",
-    "contenidoSha256": "sha256:698442ae81334a7b20235b2fe594aa448248b0f1a974240c4f923f6c3dd8d776",
+    "commit": "b961d9d3c3334467094da929f81f17a6dd505f0c",
+    "contenidoSha256": "sha256:e4dd6df1e023392ec7aec182a777b6ef570daf37d7ce692430d173bdee8d85aa",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
