@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Víctor pide corregir la sesión móvil, simplificar las tarjetas, mostrar Mis inversiones en web y app y activar actualizaciones compatibles sin desinstalar. SQL29 privado autorizado expresamente y aplicado con RLS/ACL comprobadas. Revisión independiente y regresión por áreas aprobadas; la app1.4.1 está en compilación y aún no se publica. Se aprueba la fuente web revisada para preview y producción tras su comprobación. Catálogo completo y fechas conservados; investigación pausada. Sin monetización. La revisión directa de preview confirmó ficha y cierre en390px/escritorio; se retira el recorte CSS del aviso material y se aclara el modal de cuenta opcional.",
+  "nota": "Víctor pide corregir la sesión móvil, simplificar las tarjetas, mostrar Mis inversiones en web y app y activar actualizaciones compatibles sin desinstalar. SQL29 privado autorizado expresamente y aplicado con RLS/ACL comprobadas. Revisión independiente y regresión por áreas aprobadas; la app1.4.1 está en compilación y aún no se publica. Se aprueba la fuente web revisada para preview y producción tras su comprobación. Catálogo completo y fechas conservados; investigación pausada. Sin monetización. La revisión directa de preview confirmó ficha y cierre en390px/escritorio; se retira el recorte CSS del aviso material y se aclara el modal de cuenta opcional. Continuación expresa de Víctor: corregir también el retorno al acceso web. Revisión del cierre por fallos secundarios y del clic durante restauración,18 controles dirigidos y generación local26/49 correctos. El BFF real conserva su comprobación; no se atribuye una inspección visual nueva al controlador que no respondió. Esta fuente pasa primero por preview y solo después a producción. APK23 ya compilado, QA nativa y publicación independientes.",
   "revisionAprobada": {
-    "commit": "71ecd37758dd8a8805c2814e0acb939bdeeb9fbb",
-    "contenidoSha256": "sha256:5086b9771e8f0f541616722bfc409d632c6f6ce3593a4a9e36d1b3ccaca67e77",
+    "commit": "3d92004f723bf47eb0d006a5ddd81a5d9cb674d7",
+    "contenidoSha256": "sha256:fd1d7f5b022cc24f1793c0d313ef6ddf4e4fe90c66de6e3c2baffd69f8c27f76",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
