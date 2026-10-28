@@ -38,6 +38,10 @@ class Controls(unittest.TestCase):
           'expo.modules.updates.UPDATES_CONFIGURATION_REQUEST_HEADERS_KEY':json.dumps(json.dumps({'expo-channel-name':'production'},separators=(',',':')))}
         xml='\n'.join('  E: meta-data (line=1)\n    A: android:name(0x01010003)='+json.dumps(k)+'\n    A: android:value(0x01010024)='+v for k,v in data.items())
         resources='  resource 0x7f120001 com.rwadar.app:string/expo_runtime_version: t=0x03\n    (string8) "1.4.1(23)"\n'
+        unrelated='  E: meta-data (line=1)\n    A: android:name(0x01010003)="unrelated.notification.icon"\n    A: android:value(0x01010024)=@0x7f080001\n'
+        xml=unrelated+xml
+        with self.assertRaises(AssertionError):gate.check_updates(xml,'')
+        with self.assertRaises(AssertionError):gate.check_updates(xml.replace('production','preview'),resources)
         proof=gate.check_updates(xml,resources)
         self.assertTrue(proof['enabled']);self.assertFalse(proof['otaDeliveryObserved'])
         with self.assertRaises(AssertionError):gate.check_updates(xml.replace('0xffffffff','0x0'),resources)

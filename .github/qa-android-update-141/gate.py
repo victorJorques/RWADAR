@@ -82,12 +82,22 @@ def string_resources(resources):
 
 def manifest_metadata(xml, resources=''):
     # aapt xmltree represents each Android meta-data element as one name/value pair.
+    # Android also permits drawable/XML/int references in unrelated metadata.
+    # Only these four Updates fields are consumed and must resolve as strings
+    # (or the exact native boolean representation for ENABLED).
+    required = {
+        'expo.modules.updates.ENABLED',
+        'expo.modules.updates.EXPO_RUNTIME_VERSION',
+        'expo.modules.updates.EXPO_UPDATE_URL',
+        'expo.modules.updates.UPDATES_CONFIGURATION_REQUEST_HEADERS_KEY',
+    }
     records = {}
     for block in re.split(r'(?m)^\s*E: meta-data ', xml)[1:]:
         block = re.split(r'(?m)^\s*E: ', block)[0]
         name = re.search(r'A: android:name\([^)]*\)="([^"]+)"', block)
         value = re.search(r'A: android:value\([^)]*\)=(.*)', block)
         if not name or not value: continue
+        if name.group(1) not in required: continue
         raw = value.group(1)
         raw = raw.strip()
         if raw.startswith('"'):
