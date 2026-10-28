@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Víctor pide corregir la sesión móvil, simplificar las tarjetas, mostrar Mis inversiones en web y app y activar actualizaciones compatibles sin desinstalar. SQL29 privado autorizado expresamente y aplicado con RLS/ACL comprobadas. Revisión independiente y regresión por áreas aprobadas; la app1.4.1 está en compilación y aún no se publica. Se aprueba la fuente web revisada para preview y producción tras su comprobación. Catálogo completo y fechas conservados; investigación pausada. Sin monetización.",
+  "nota": "Víctor pide corregir la sesión móvil, simplificar las tarjetas, mostrar Mis inversiones en web y app y activar actualizaciones compatibles sin desinstalar. SQL29 privado autorizado expresamente y aplicado con RLS/ACL comprobadas. Revisión independiente y regresión por áreas aprobadas; la app1.4.1 está en compilación y aún no se publica. Se aprueba la fuente web revisada para preview y producción tras su comprobación. Catálogo completo y fechas conservados; investigación pausada. Sin monetización. La revisión directa de preview confirmó ficha y cierre en390px/escritorio; se retira el recorte CSS del aviso material y se aclara el modal de cuenta opcional.",
   "revisionAprobada": {
-    "commit": "c1f7106a49e988ca1dde214f0e75b7fe7d4d2719",
-    "contenidoSha256": "sha256:4dcafa9a0380ddbb98981fff87f3ec492f8ff45d1a06ffb5a3b02b222bd55e1e",
+    "commit": "71ecd37758dd8a8805c2814e0acb939bdeeb9fbb",
+    "contenidoSha256": "sha256:5086b9771e8f0f541616722bfc409d632c6f6ce3593a4a9e36d1b3ccaca67e77",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
