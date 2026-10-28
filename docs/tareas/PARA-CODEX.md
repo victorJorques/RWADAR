@@ -6,6 +6,12 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 28 de octubre de 2026 · Codex · APK22 compilado, cierre asistido en curso
+
+APK1.4.0/código22 compilado desde c663e35. Identidad, firma,49imágenes, entrada y siete pruebas reales de sesión/PIN aprobadas; se conservan sus evidencias. Los intentos siguientes fallan en el lector del tutorial: no equivalen a defectos demostrados de la app ni a aprobación final. Arnés9848c75 usa capturas consecutivas para revisión directa de los cuatro pasos, cartera y salida, sin recompilar. La descarga final aún es1.3.2. Web pública actualizada el28/10. [Seguridad verificada y pendientes](../SEGURIDAD-WEB-REVISION-2026-10-28.md). Investigación pausada; main compartido intacto.
+
+---
+
 ## 28 de octubre de 2026 · Codex · acceso móvil persistente y bloqueo opcional
 
 Víctor informa fallo de entrada móvil y pide conservar sesión y desbloquear con huella/cara/PIN. Se prepara APK nuevo sin repetir pruebas equivalentes: refresh seguro, restauración, errores de red sin expulsión y vigilancia separada del acceso; opción única en Perfil. Cuentas52 y UI8 criterios dirigidos aprobados; PIN Android y build pendientes. El tutorial web ya está corregido y publicado (502eb88/fbcc0d9, producción d2ad2a83): la última captura nativa muestra 3D; falló el capturador, no acredita cuatro pasos. La QA anterior quedó limpiada el 28/10. [Estado breve](../VERIFICACION-ACCESO-PERSISTENTE-2026-10-28.md). No iniciar investigación ni compilar de nuevo por fallos del arnés. Main compartido intacto.

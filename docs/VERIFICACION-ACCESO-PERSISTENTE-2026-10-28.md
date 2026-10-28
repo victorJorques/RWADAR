@@ -1,5 +1,7 @@
 # Acceso persistente y desbloqueo · 28 de octubre de 2026
 
+Estado vigente: APK22 compilado y congelado en c663e35, firma y49imágenes comprobadas; entrada, catálogo26/49 y siete pruebas de sesión/PIN aprobadas en40682735526. Arnés9848c75 en40704169693 para cierre asistido de tutorial, cartera y logout. Android1.4.0 aún no publicado; última final1.3.2. Los fallos globales anteriores se conservan y no se convierten en aprobados.
+
 Por nueva petición de Víctor se prepara otro APK 1.4.0: el APK20 no puede incorporar persistencia ni autenticación del dispositivo sin recompilar. Se conservan sus evidencias por el alcance que siga siendo equivalente.
 
 - Solo refresh token y UUID en SecureStore, clave fija y registro ASCII acotado; nunca contraseña ni biometría.
