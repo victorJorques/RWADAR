@@ -66,6 +66,42 @@ test('el rediseño conserva radar, ofertas, 3D, detalle, descartes, avisos y pri
   assert.match(codigo, /\{!MODO_LOCAL \? \(/);
 });
 
+test('el aviso de catálogo se desplaza dentro de las listas de Buscar sin ocultarlo ni truncarlo', () => {
+  const ast = require('@babel/core').parseSync(leer('App.js'), {
+    babelrc: false, configFile: false, sourceType: 'module', parserOpts: { plugins: ['jsx'] },
+  });
+  const nodos = [];
+  function recorrer(nodo, padres = []) {
+    if (!nodo || typeof nodo !== 'object') return;
+    if (Array.isArray(nodo)) { for (const hijo of nodo) recorrer(hijo, padres); return; }
+    if (nodo.type) nodos.push({ nodo, padres });
+    for (const [clave, hijo] of Object.entries(nodo)) {
+      if (!['loc', 'start', 'end', 'extra'].includes(clave)) recorrer(hijo, [...padres, nodo]);
+    }
+  }
+  recorrer(ast);
+  const declaracion = nodos.find(({ nodo }) => nodo.type === 'VariableDeclarator' && nodo.id.name === 'avisoCatalogo')?.nodo;
+  assert.ok(declaracion, 'el aviso debe poder incluirse en el contenido desplazable');
+  assert.equal(declaracion.init.test.name, 'estadoDatos');
+  const alerta = declaracion.init.consequent.openingElement;
+  assert.ok(alerta.attributes.some((a) => a.name?.name === 'accessibilityRole' && a.value.value === 'alert'));
+  assert.ok(alerta.attributes.some((a) => a.name?.name === 'accessibilityLiveRegion' && a.value.value === 'polite'));
+  assert.ok(!alerta.attributes.some((a) => ['numberOfLines', 'ellipsizeMode'].includes(a.name?.name)),
+    'el aviso completo debe seguir siendo legible con texto grande');
+  const referencias = nodos.filter(({ nodo, padres }) => nodo.type === 'Identifier' && nodo.name === 'avisoCatalogo'
+    && padres.at(-1)?.type !== 'VariableDeclarator');
+  const enListas = referencias.filter(({ padres }) => padres.some((p) => p.type === 'JSXAttribute'
+    && p.name.name === 'ListHeaderComponent'));
+  assert.equal(enListas.length, 2, 'ofertas y plataformas deben incluir el aviso dentro de su propia lista');
+  assert.ok(enListas.every(({ padres }) => padres.some((p) => p.type === 'JSXElement'
+    && p.openingElement.name.name === 'FlatList')));
+  const fijo = referencias.filter((r) => !enListas.includes(r));
+  assert.equal(fijo.length, 1);
+  const condicion = fijo[0].padres.findLast((p) => p.type === 'ConditionalExpression')?.test;
+  assert.equal(condicion?.operator, '!=='); assert.equal(condicion?.left.name, 'pestana');
+  assert.equal(condicion?.right.value, 'buscar', 'Buscar no debe reservar altura fija para el aviso');
+});
+
 test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => {
   const codigo = leer('App.js');
   assert.match(codigo, /Plataformas guardadas · \$\{seguidas\.length\}/);

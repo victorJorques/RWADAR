@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-10-24T18:56:58.672Z",
+  "origin": "https://rwadar.pages.dev",
+  "status": "passed",
+  "checks": [
+    {
+      "path": "/acceso",
+      "status": 200,
+      "radarVisibleInMarkup": true
+    },
+    {
+      "path": "/assets/fuentes/geist-normal-6ab67a4f11f1.woff2",
+      "status": 200,
+      "bytes": 21668,
+      "sha256": "6ab67a4f11f195be01fe47430b6fd8ff0ffd107705af0c02d7b83e41b3c2d2ff",
+      "matchesApprovedArtifact": true
+    },
+    {
+      "path": "/assets/acceso.34b6caa72256.js",
+      "status": 200,
+      "bytes": 6537,
+      "sha256": "34b6caa7225619106f89634deeb9a65faaa509c71da0ea2c151884529207df61",
+      "matchesApprovedArtifact": true
+    },
+    {
+      "path": "/assets/acceso.1208f526784c.css",
+      "status": 200,
+      "bytes": 9951,
+      "sha256": "1208f526784cc5a45fa7e592f6fa73fd0412558216362afb2227ca76d5af03c4",
+      "matchesApprovedArtifact": true
+    },
+    {
+      "path": "/",
+      "status": 303,
+      "loginRedirect": true
+    },
+    {
+      "path": "/academy/",
+      "status": 303,
+      "loginRedirect": true
+    },
+    {
+      "path": "/android",
+      "status": 303,
+      "loginRedirect": true
+    },
+    {
+      "path": "/api/acceso/sesion",
+      "status": 401,
+      "anonymousDenied": true
+    },
+    {
+      "path": "/api/acceso/tutorial",
+      "status": 401,
+      "anonymousDenied": true
+    },
+    {
+      "path": "/api/acceso/catalogo/catalogo_plataformas_publicas_v2",
+      "status": 401,
+      "anonymousDenied": true
+    },
+    {
+      "path": "/api/acceso/catalogo/catalogo_ofertas_publicas_v2",
+      "status": 401,
+      "anonymousDenied": true
+    }
+  ]
+}

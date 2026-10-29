@@ -36,17 +36,17 @@
   <a class="volver" href="/">← Volver al radar</a>
 
   <h1>Privacidad</h1>
-  <p class="fecha">Versión revisada el <time datetime="2026-10-11">11 de octubre de 2026</time></p>
+  <p class="fecha">Versión revisada el <time datetime="2026-10-23">23 de octubre de 2026</time></p>
 
   <div class="resumen">
     <p><b>El resumen, por si no lees el resto.</b></p>
-    <p>Para consultar el registro <b>no hace falta crear una cuenta</b>. La conexión implica
+    <p>Puedes <b>consultar la web de RWAdar sin registrarte</b>. Necesitas una cuenta gratuita con el correo confirmado para guardar y gestionar tus inversiones. La conexión implica
       los datos técnicos descritos en el apartado 2. No hay cookies
       de seguimiento, perfilado ni venta de datos. RWAdar no ofrece ahora contratación B2B
       ni espacios patrocinados. Si ese modelo se aprobara en el futuro, cualquier espacio
       comercial se identificaría y no seguiría inversiones individuales.</p>
-    <p>En las versiones que indiquen que las cuentas están disponibles puedes crear
-      <b>una cuenta opcional</b> con tu correo y una contraseña
+    <p>Puedes crear
+      <b>tu cuenta</b> con tu correo y una contraseña
       para guardar la lista de plataformas que vigilas. Solo te enviamos los correos
       necesarios para confirmar la dirección y recuperar la contraseña. <b>Las opiniones,
       los avisos por correo y los avisos push siguen en pausa.</b> La lista de vigilancia
@@ -61,7 +61,7 @@
 
   <div class="pendiente" role="note">
     <p><b>Alcance de esta versión:</b> radar editorial gratuito, con fuentes y fechas
-      de revisión. Cuando las cuentas estén habilitadas, permiten guardar una lista de vigilancia (alta, entrada,
+      de revisión. La cuenta permite guardar una lista de vigilancia y acceder a las funciones personales (alta, entrada,
       recuperación de la contraseña y borrado). Las opiniones, los avisos por correo y el push
       están en pausa. RWAdar no ofrece
       actualmente contratación, facturación ni espacios B2B: la página para empresas recoge
@@ -95,7 +95,7 @@
     identifica al prestador conforme al artículo 10 de la Ley 34/2002. Las solicitudes
     relacionadas con tratamientos anteriores se atienden a través del mismo correo;
     identificar al titular del relanzamiento no extingue las obligaciones anteriores.</p>
-  <h3>Condiciones de consulta del radar</h3>
+  <h3 id="condiciones">Condiciones de consulta del radar</h3>
   <p>Consultar el radar y aparecer en una ficha editorial es gratuito. La inclusión
     no exige contratar publicidad, no acredita un acuerdo con el emisor y no garantiza
     rentabilidad, liquidez o recuperación del capital. No cobramos actualmente una
@@ -119,6 +119,20 @@
   <p>Estas condiciones no excluyen los derechos ni las responsabilidades que resulten
     obligatorios conforme a la legislación aplicable.</p>
 
+  <h3 id="mapa-ubicacion">Mapa y ubicación opcional</h3>
+  <p>El mapa de Buscar se conecta a OpenStreetMap solo cuando pulsas «Cargar mapa».
+    OpenStreetMap recibe tu dirección IP, el origen de RWAdar y la zona del mapa que
+    visualizas para servir las imágenes cartográficas. Mover o ampliar el mapa carga
+    las imágenes de esa zona. Puedes consultar su
+    <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer">política de privacidad</a>.
+    La búsqueda por localidad, país o dirección documentada se realiza en tu navegador.</p>
+  <p>«Usar mi ubicación» es opcional y solicita el permiso del navegador únicamente
+    al pulsarlo. La posición se usa una vez en memoria para centrar el mapa y ordenar
+    por distancia; RWAdar no la recibe, no la guarda en tu cuenta ni en el almacenamiento
+    del navegador. Puedes quitarla con «Quitar ubicación»; se descarta al cerrar o
+    recargar la página. Al centrar el mapa cerca de ti, las imágenes solicitadas a
+    OpenStreetMap permiten inferir la zona que estás viendo.</p>
+
   <h2>2 · Qué se trata cuando solo visitas la web</h2>
   <p>Aunque no te registres, visitar cualquier web implica que unos servidores reciben
     ciertos datos técnicos. Esto es lo que ocurre aquí, sin adornos:</p>
@@ -135,10 +149,9 @@
       </tr>
       <tr>
         <td>Dirección IP al<br>actualizar el registro</td>
-        <td>Las fichas públicas ya vienen incluidas en la página, y cuando hay red la web
-          consulta las vistas públicas de Supabase para mostrar cambios posteriores a la
-          última publicación. Si creas una cuenta o entras con ella, la web habla además con
-          el servicio de autenticación de Supabase (apartado 3).</td>
+        <td>La web sirve las fichas y consulta el catálogo público sin exigir una cuenta.
+          Cloudflare verifica tu sesión con Supabase al acceder a tus datos y funciones personales.
+          La app Android consulta Supabase con su sesión confirmada (apartado 3).</td>
         <td>Supabase, la base de datos y autenticación</td>
       </tr>
       <tr>
@@ -148,29 +161,31 @@
         <td>Tu navegador</td>
       </tr>
       <tr>
-        <td>Sesión de tu<br>cuenta (si entras)</td>
-        <td>La sesión se guarda solo en la memoria de la pestaña abierta: no queda en el
-          almacenamiento del navegador y al cerrar la pestaña hay que volver a entrar. Los
+        <td>Sesión de tu<br>cuenta</td>
+        <td>La web utiliza una cookie de sesión necesaria, protegida con HttpOnly, Secure y
+          SameSite: el JavaScript no puede leerla. Deja de autorizar al caducar o cerrar sesión.
+          No se guarda tu contraseña. En Android 1.4.0, la sesión se conserva de forma segura en el dispositivo hasta que cierres sesión o deje de ser válida.
+          Los
           enlaces de confirmación o recuperación que te enviamos se canjean una vez y se
           retiran de la dirección. La medición estadística se omite en esas visitas.</td>
-        <td>Tu navegador y el servicio de autenticación de Supabase</td>
+        <td>Tu navegador, Cloudflare y el servicio de autenticación de Supabase</td>
       </tr>
       <tr>
-        <td>Copia sin conexión<br>de la aplicación web</td>
-        <td>Si el navegador admite la instalación PWA, guarda páginas y recursos públicos
-          de RWAdar para poder abrirlos sin cobertura. No se guardan respuestas de Supabase,
-          tokens de sesión ni datos de cuenta en esa caché.</td>
+        <td>Instalaciones anteriores<br>de la aplicación web</td>
+        <td>Al actualizarse el trabajador de la web, se eliminan las copias antiguas de RWAdar.
+          Esta versión no almacena páginas ni catálogo para consultarlos sin conexión:
+          requiere verificar la sesión por red.</td>
         <td>Almacenamiento Cache Storage de tu navegador</td>
       </tr>
     </tbody>
   </table>
   </div>
 
-  <p><b>El código propio de esta web no crea cookies.</b> Usa el almacenamiento local solo
+  <p><b>La web usa la cookie necesaria para mantener tu sesión.</b> Usa el almacenamiento local
     para recordar el sonido, las empresas y ofertas que guardas en favoritos desde el móvil
     (solo su nombre o identificador público) y, en RWAdar Academy, qué lecciones has marcado
     como leídas y cuántas preguntas acertaste en sus tests; nada de eso sale de tu navegador
-    ni se envía a RWAdar. Puedes borrar los favoritos desde Perfil. Usa Cache Storage para la copia PWA pública. No incluye publicidad,
+    ni se envía a RWAdar. Puedes borrar los favoritos desde Perfil. No guarda una copia PWA del catálogo. No incluye publicidad,
     píxeles sociales ni analítica de seguimiento entre sitios. No se utiliza Zaraz.</p>
   <p><b>Estadísticas de la web/PWA:</b> esta versión incluye
     Cloudflare Web Analytics solo en <span class="codigo">rwadar.pages.dev</span>.
@@ -187,8 +202,8 @@
     al visitar la versión publicada y no permite reconstruir el tráfico anterior.
     Cloudflare también trata datos técnicos como alojamiento y CDN para entregar y proteger la web.</p>
 
-  <h2>3 · Tu cuenta (opcional)</h2>
-  <p>El radar se consulta entero sin cuenta. Si la creas, sirve para guardar en el servidor
+  <h2>3 · Tu cuenta</h2>
+  <p>La consulta de la web es pública. Necesitas una cuenta con el correo confirmado para las funciones personales y guardar en el servidor
     la lista de plataformas que vigilas y verla desde la web o una versión de la app
     con las cuentas habilitadas. Perfil indica su disponibilidad. Hace falta
     confirmar el correo antes de poder entrar. Estos son todos los datos de la cuenta:</p>
@@ -221,6 +236,15 @@
         <td>Ejecución del servicio</td>
       </tr>
       <tr>
+        <td>Registro manual<br>de inversiones</td>
+        <td>Los nombres de inversión y proveedor que escribas, moneda, cantidades, precios,
+          comisiones, compras, ventas, cobros, gastos y valoraciones con sus fechas. Se guardan
+          de forma privada en Supabase, asociados a tu cuenta, para consultarlos y modificarlos
+          desde la web y las versiones de la app con cartera sincronizada. No son datos obtenidos
+          de tus proveedores ni confirman una inversión real.</td>
+        <td>Ejecución del servicio que solicitas (art. 6.1.b RGPD)</td>
+      </tr>
+      <tr>
         <td>Datos técnicos<br>de acceso</td>
         <td>Fecha de alta y de último acceso, y la dirección IP y el navegador desde los que
           te das de alta o entras, en los registros de seguridad de Supabase. Sirven para
@@ -240,7 +264,7 @@
   </div>
 
   <p>Cada persona solo puede ver y cambiar sus propios datos; RWAdar no comparte tu
-    lista ni tu correo con las plataformas. Si tenías una cuenta de una versión anterior,
+    lista, tu registro de inversiones ni tu correo con las plataformas. Si tenías una cuenta de una versión anterior,
     puedes volver a entrar con ella o pedir su borrado. Para gestionar tus datos o retirar
     un consentimiento anterior, usa Perfil o el correo del apartado 11; no hace falta
     iniciar sesión para solicitar tus derechos.</p>
@@ -285,6 +309,21 @@
     apartado 1. Aporta solo los datos necesarios para identificar la solicitud.</p>
 
   <h2>5 · Aplicación móvil y avisos push</h2>
+  <p><b>Mis inversiones:</b> es un registro manual privado de tu cuenta. La web y las versiones
+    de la app con cartera sincronizada guardan en Supabase las anotaciones descritas en el
+    apartado 3, para que puedas verlas y modificarlas con la misma cuenta. RWAdar no conecta
+    con las cuentas de los proveedores, no importa compras ni precios automáticamente, no
+    confirma que hayas invertido y no recibe tu dinero. El resultado depende de tus
+    anotaciones y de la fecha de la valoración: no es una rentabilidad garantizada ni una
+    cotización en tiempo real. Las monedas se mantienen separadas, sin conversión automática.</p>
+  <p>Las versiones anteriores de Android conservan su registro solo en el dispositivo.
+    La versión con sincronización no lo sube automáticamente: si tu registro de cuenta está
+    vacío, puedes confirmar su importación. La copia anterior del dispositivo se conserva
+    después de importar; no se combina ni sustituye automáticamente un registro de cuenta
+    que ya tenga inversiones. Borrar una inversión desde la cartera actualiza el registro
+    de la cuenta sin esa inversión. «Borrar datos del dispositivo» elimina las copias locales
+    y no borra el registro remoto; la copia local anterior se elimina por separado. No
+    incluyas documentos bancarios, contraseñas ni información de otras personas.</p>
   <p>La app nativa editorial guarda los nuevos favoritos solo en el dispositivo (las empresas y ofertas que guardas), en un
     espacio separado de los datos de versiones anteriores. El progreso de RWAdar Academy
     (lecciones leídas y aciertos de sus tests) se guarda igual, solo en el dispositivo. No lee, migra ni borra
@@ -292,9 +331,7 @@
     dispositivos ni representan inversiones. No se convierten automáticamente en una
     lista de vigilancia de cuenta.</p>
   <p>Las versiones con cuentas habilitadas permiten entrar con la misma cuenta que en
-    la web y consultar o cambiar tu lista de vigilancia (apartado 3). La sesión se conserva
-    solo en memoria, no en el almacenamiento del dispositivo: al cerrar por completo la app
-    hay que volver a entrar. Los enlaces de confirmación y recuperación se abren en la web
+    la web y consultar o cambiar tu lista de vigilancia (apartado 3). Desde Android 1.4.0, un token de renovación se guarda cifrado mediante el almacenamiento seguro del sistema, sin guardar tu contraseña, el perfil ni la lista de vigilancia en ese registro. La sesión se recupera y comprueba al abrir la app, hasta que cierres sesión o el servicio la invalide. Puedes activar en Perfil el desbloqueo con la seguridad del móvil: huella, reconocimiento facial compatible o PIN del sistema. La comprobación la hace el sistema operativo; RWAdar no recibe ni guarda datos biométricos ni el código del dispositivo. Los enlaces de confirmación y recuperación se abren en la web
     oficial; después puedes volver a entrar en la app. Las versiones anteriores sin cuentas
     conservan únicamente sus funciones editoriales y favoritas locales.</p>
   <p>Esta versión no crea una identidad remota de instalación, no solicita permiso de
@@ -403,9 +440,17 @@
       <a href="https://policies.google.com/privacy?hl=es" rel="noopener">política de privacidad de Google</a>.</li>
     <li><b>Brevo</b> — solo si se activa en el futuro el envío de alertas por correo;
       recibiría el correo, el nombre si existe y el contenido del aviso necesario para entregarlo.</li>
-    <li><b>Expo y los servicios push de Apple o Google</b> — posibles proveedores de
-      avisos futuros. La versión editorial no solicita permiso ni registra tokens.
+    <li><b>Expo y los servicios push de Apple o Google</b> — desde Android 1.4.1, Expo entrega
+      las mejoras compatibles de la app: al abrirla recibe la IP, la plataforma, la versión
+      instalada y un identificador aleatorio de esa instalación, nunca tu cuenta ni tus datos.
+      Son también posibles proveedores de avisos
+      futuros; la versión editorial no solicita permiso ni registra tokens.
       Los términos de Expo incorporan SCC y contemplan el EU-U.S. Data Privacy Framework.</li>
+    <li><b>GitHub</b> — aloja la página de descargas de la app Android. Al abrirse, la app
+      consulta allí si hay una versión nueva y GitHub recibe la IP y datos técnicos de la
+      conexión, nunca tu cuenta ni tus datos. El archivo de la versión nueva solo se descarga
+      cuando pulsas «Actualizar». Consulta la
+      <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">declaración de privacidad de GitHub</a>.</li>
   </ul>
   <p>Algunos proveedores o subencargados pueden tratar datos fuera del Espacio Económico
     Europeo. Para Cloudflare, Netlify, Supabase y Expo se han identificado los mecanismos
@@ -420,9 +465,11 @@
     se revisa por el canal del apartado 11. Cuando sea necesario conservar un dato para
     una reclamación, su acceso se limita a esa finalidad.</p>
   <ul>
-    <li><b>Cuenta, perfil y vigilancia:</b> mientras la cuenta exista. Al borrarla desde
-      Perfil se eliminan en ese momento la cuenta de autenticación, el perfil y la lista de
-      vigilancia. Las copias de seguridad cifradas de la base se renuevan y caducan a los
+    <li><b>Cuenta, perfil, vigilancia y registro de inversiones:</b> mientras la cuenta
+      exista o hasta que elimines las inversiones desde la cartera. Al borrar la cuenta
+      desde Perfil se eliminan la cuenta de autenticación, el perfil, la lista de vigilancia
+      y el registro remoto de inversiones. Esto no elimina las copias locales de tus
+      dispositivos. Las copias de seguridad cifradas de la base se renuevan y caducan a los
       35 días. Una alta sin confirmar no permite entrar; puedes pedir su borrado por correo.</li>
     <li><b>Opiniones y denuncias anteriores:</b> la versión editorial no las carga.
       Su retirada puede solicitarse por correo. La necesidad de conservar una denuncia
@@ -440,13 +487,15 @@
     <li><b>Consultas B2B por correo:</b> mientras se responden y, si no se abre una fase
       posterior aprobada, como máximo seis meses desde el último intercambio; después se
       eliminan salvo obligación o reclamación que exija conservar lo mínimo necesario.</li>
-    <li><b>Datos locales:</b> la sesión de cuenta vive solo en la memoria de la pestaña y
-      desaparece al cerrarla. La preferencia
-      de sonido, los favoritos, el progreso de la Academy y la caché PWA pública permanecen hasta que
-      elimines los datos del sitio o, en el caso de la caché, una versión nueva la sustituya.
+    <li><b>Datos locales:</b> la sesión web usa una cookie necesaria; se invalida al caducar
+      o cerrar sesión. La preferencia
+      de sonido, los favoritos y el progreso de la Academy permanecen hasta que
+      elimines los datos del sitio. Esta versión elimina la antigua caché PWA al actualizarse.
       Los favoritos nuevos y el progreso de la Academy en la app nativa se
       conservan en el dispositivo hasta que los retires o borres sus datos locales.
-      Eso no borra registros remotos de versiones anteriores.</li>
+      Lo mismo ocurre con las copias de inversiones de versiones anteriores: importar una
+      copia a tu cuenta no la elimina del dispositivo. Borrar datos locales no borra el
+      registro de inversiones de tu cuenta ni otros registros remotos.</li>
   </ul>
 
   <h2>10 · Lo que no se hace</h2>
@@ -490,11 +539,10 @@
 
   <section aria-labelledby="reporte-seguridad">
   <h2 id="reporte-seguridad">13 · Seguridad y reporte de vulnerabilidades</h2>
-  <p>El destino público utiliza HTTPS. Las funciones de usuario están cerradas en la web,
-    en la app nativa y en los permisos de acceso a sus datos del servidor. El catálogo
-    editorial tiene acceso público de solo lectura y oculta las revisiones no aprobadas.
-    Las contraseñas de cuentas anteriores
-    las gestiona Supabase Auth.</p>
+  <p>El destino público utiliza HTTPS. El catálogo publicado puede consultarse sin cuenta en la web. La app 1.4.0 exige
+    entrar con una cuenta confirmada. Las funciones personales requieren una sesión vigente;
+    sus permisos no permiten acceder a los datos de otra cuenta. Las revisiones no aprobadas permanecen ocultas. Las contraseñas las gestiona
+    Supabase Auth. Las funciones de comunidad y avisos permanecen en pausa.</p>
   <p>Ningún sistema es infalible. Para reportar de forma responsable una vulnerabilidad o
     exposición, escribe a <a href="mailto:RWAdar@protonmail.com?subject=Reporte%20de%20seguridad%20RWAdar">RWAdar@protonmail.com</a>.
     Incluye la URL o componente afectado, pasos reproducibles, impacto observado y la fecha;

@@ -877,7 +877,7 @@ ${htmlBloques(cuerpo, ctx)}
 
       <div class="ac-marcar" data-academy-marcar-caja hidden>
         <button type="button" class="ac-boton-leida" data-academy-marcar aria-pressed="false">Marcar como leída</button>
-        <p>Se guarda solo en este navegador. No hay cuentas.</p>
+        <p>Progreso de tu cuenta guardado solo en este navegador, sin sincronización entre dispositivos.</p>
       </div>
 
       <nav class="ac-paginacion" aria-label="Otras lecciones">
@@ -962,7 +962,18 @@ ${barraSuperior('academy')}
   <header class="ac-portada-cab">
     <p class="ac-sobrelinea">RWAdar Academy</p>
     <h1>Entiende la tokenización <em>antes</em> de decidir</h1>
-    <p class="ac-entradilla">${academy.lecciones.length} lecciones en ${academy.niveles.length} niveles. Cada nivel responde a una sola pregunta. Se leen gratis y sin registro, empiezan con un resumen de 30 segundos y terminan con un test corto.</p>
+    <p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. ${academy.lecciones.length} lecciones gratuitas en ${academy.niveles.length} niveles, con un resumen de 30 segundos y un test corto.</p>
+    <section class="ac-extra ac-tutorial" aria-labelledby="extraTit">
+      <span class="ac-extra-icono" aria-hidden="true">3D</span>
+      <div>
+        <p class="ac-sobrelinea">Academy · Tutorial guiado</p>
+        <h2 id="extraTit">Mira cómo se tokeniza un edificio</h2>
+        <p>El edificio sigue entero. Sus derechos se representan en participaciones que pueden cambiar de titular.</p>
+        <p class="ac-tutorial-pasos">Activo → Participaciones → Titulares → Transmisión</p>
+        <a class="ac-accion" href="/#explain">Empezar tutorial 3D <span aria-hidden="true">→</span></a>
+        <p class="ac-tutorial-alternativa">Cuatro pasos, también en texto. A tu ritmo.</p>
+      </div>
+    </section>
     <div class="ac-progreso" data-academy-progreso hidden>
       <progress max="${visibles.length}" value="0" aria-labelledby="progresoTxt"></progress>
       <p id="progresoTxt"><b data-academy-progreso-n>0</b> de ${visibles.length} lecciones leídas en este navegador</p>
@@ -974,16 +985,7 @@ ${barraSuperior('academy')}
 
     ${niveles}
 
-  <aside class="ac-extra" aria-labelledby="extraTit">
-    <span class="ac-extra-icono" aria-hidden="true">3D</span>
-    <div>
-      <h2 id="extraTit">¿Prefieres verlo antes de leerlo?</h2>
-      <p>La portada de RWAdar tiene una explicación interactiva en cuatro pasos: un activo que se parte, titulares que cambian y el edificio que sigue en su sitio.</p>
-      <a class="ac-accion" href="/#explain">Abrir la explicación 3D <span aria-hidden="true">→</span></a>
-    </div>
-  </aside>
-
-  <p class="ac-nota">Tu progreso (lecciones leídas y tests hechos) se guarda solo en este navegador: no hay cuentas y no se envía a RWAdar. Si cambias de dispositivo, empieza de cero.</p>
+  <p class="ac-nota">Accedes con tu cuenta. Tu progreso (lecciones leídas y tests hechos) se guarda solo en este navegador, separado por cuenta; no se sincroniza entre dispositivos. Borrar los datos del navegador también lo borra.</p>
 
   ${htmlAvisoLegal(academy, null, ctx)}
 </main>
@@ -1015,7 +1017,7 @@ function bloquePortada(academy) {
     <div class="academia-lecciones-cab">
       <p class="etiq">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</p>
       <h3 id="academiaLeccionesTit">${academy.lecciones.length} lecciones en ${academy.niveles.length} niveles</h3>
-      <p>Cada nivel responde a una pregunta. Se leen gratis y sin registro, con un resumen de 30 segundos, un test corto y la fecha de su última revisión legal.</p>
+      <p>Cada nivel responde a una pregunta. Accede gratis con tu cuenta: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>
     </div>
     <div class="academia-niveles">
     ${niveles}

@@ -139,8 +139,26 @@ function Indice({ progreso, onAbrirLeccion, onExplicar }) {
       <Text style={e.sobrelinea}>{LECCIONES.length} LECCIONES · {NIVELES.length} NIVELES</Text>
       <Text style={e.titular}>Entiende la tokenización antes de decidir</Text>
       <Text style={e.entradilla}>
-        Cada nivel responde a una sola pregunta. Las lecciones empiezan con un resumen de 30 segundos y terminan con un test corto.
+        Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida.
       </Text>
+
+      <Pressable onPress={() => { tacto.abrir(); onExplicar(); }}
+        style={({ pressed }) => [e.extra, pressed && e.pulsado]}
+        accessibilityRole="button" accessibilityLabel="Empezar tutorial 3D"
+        accessibilityHint="Tutorial de Academy en cuatro pasos, también explicados en texto">
+        <View style={e.extraCab}>
+          <View style={e.extraIcono}><Text style={e.extraIconoTxt}>3D</Text></View>
+          <Text style={e.extraEtiqueta}>ACADEMY · TUTORIAL GUIADO</Text>
+        </View>
+        <Text style={e.extraTit}>Mira cómo se tokeniza un edificio</Text>
+        <Text style={e.extraSub}>El edificio sigue entero. Sus derechos se representan en participaciones que pueden cambiar de titular.</Text>
+        <Text style={e.extraPasos}>Activo → Participaciones → Titulares → Transmisión</Text>
+        <View style={e.extraAccion}>
+          <Text style={e.extraAccionTxt}>Empezar tutorial 3D</Text>
+          <Icono nombre="flecha" color={C.noche} tamano={18} />
+        </View>
+        <Text style={e.extraAlternativa}>Cuatro pasos, también en texto. A tu ritmo.</Text>
+      </Pressable>
 
       <View style={e.progreso} accessible accessibilityLabel={`${leidas} de ${PUBLICADAS.length} lecciones leídas en este dispositivo`}>
         <View style={e.progresoBarra}>
@@ -149,17 +167,6 @@ function Indice({ progreso, onAbrirLeccion, onExplicar }) {
         </View>
         <Text style={e.progresoTxt}><Text style={e.negrita}>{leidas}</Text> de {PUBLICADAS.length} leídas en este dispositivo</Text>
       </View>
-
-      <Pressable onPress={() => { tacto.abrir(); onExplicar(); }}
-        style={({ pressed }) => [e.extra, pressed && e.pulsado]}
-        accessibilityRole="button" accessibilityLabel="Abrir la explicación animada en 3D">
-        <View style={e.extraIcono}><Text style={e.extraIconoTxt}>3D</Text></View>
-        <View style={{ flex: 1 }}>
-          <Text style={e.extraTit}>¿Prefieres verlo antes de leerlo?</Text>
-          <Text style={e.extraSub}>La explicación animada en cuatro pasos</Text>
-        </View>
-        <Icono nombre="flecha" color={C.tx3} tamano={18} />
-      </Pressable>
 
       {NIVELES.map((n, k) => {
         const lecciones = LECCIONES.filter((l) => l.nivel === n.id);
@@ -176,7 +183,7 @@ function Indice({ progreso, onAbrirLeccion, onExplicar }) {
       })}
 
       <Text style={e.nota}>
-        Tu progreso se guarda solo en este dispositivo: no hay cuentas y no se envía a RWAdar. «Borrar datos del dispositivo» también lo borra.
+        Accedes con tu cuenta. Tu progreso se guarda solo en este dispositivo, separado por cuenta; no se sincroniza. «Borrar datos del dispositivo» también lo borra.
       </Text>
       <AvisoLegal />
     </View>
@@ -581,13 +588,19 @@ const e = StyleSheet.create({
   progresoTxt: { ...T.menor, color: C.tx2 },
 
   extra: {
-    flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.ficha, padding: 14, marginBottom: 8, minHeight: 72,
+    backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34,
+    borderRadius: R.ficha, padding: 18, marginBottom: 18,
   },
+  extraCab: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
   extraIcono: { width: 44, height: 44, borderRadius: R.s, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center' },
   extraIconoTxt: { fontFamily: F.mono, fontSize: 13, color: C.noche },
-  extraTit: { ...T.ficha, fontSize: 15, color: C.tx },
-  extraSub: { ...T.menor, fontSize: 12, color: C.tx2, marginTop: 2 },
+  extraEtiqueta: { ...T.etiqueta, flex: 1, color: C.senal },
+  extraTit: { ...T.seccion, color: C.tx, marginBottom: 8 },
+  extraSub: { ...T.cuerpo, color: C.tx2 },
+  extraPasos: { ...T.menor, color: C.senalCl, marginTop: 14, marginBottom: 16 },
+  extraAccion: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, minHeight: 48, padding: 12, backgroundColor: C.senal, borderRadius: R.s },
+  extraAccionTxt: { ...T.cuerpoFte, color: C.noche, flexShrink: 1 },
+  extraAlternativa: { ...T.menor, color: C.tx2, marginTop: 10 },
 
   nivel: { marginTop: 26 },
   nivelTit: { ...T.seccion, color: C.tx },

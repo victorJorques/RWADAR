@@ -87,12 +87,14 @@ paso('la página forma parte del árbol local publicable y de sus validaciones',
   && /const PAGINAS_HTML = \[[^\]]*'transparencia-comercial\.html'/.test(publicador)
   && (publicador.match(/PAGINAS_HTML/g)?.length || 0) >= 4);
 
-paso('la ruta tiene canonical, sitemap, redirección, caché y soporte offline',
+paso('la ruta conserva canonical, sitemap y redirección; el worker no ofrece una copia offline',
   pagina.includes('href="https://rwadar.pages.dev/transparencia-comercial"')
   && sitemap.includes('<loc>https://rwadar.pages.dev/transparencia-comercial</loc>')
   && redirecciones.includes('/transparencia-comercial.html  /transparencia-comercial   301')
   && cabeceras.includes('/transparencia-comercial\n')
-  && worker.includes("'/transparencia-comercial'"));
+  && /nombre\.startsWith\('rwadar-v'\)/.test(worker)
+  && /caches\.delete\(nombre\)/.test(worker)
+  && !/addEventListener\(\s*['"]fetch['"]|caches\.open\(|cache\.(?:put|addAll|match)\(/.test(worker));
 
 const scriptsCsp = [
   '<script src="/assets/analitica-20260927.js" defer></script>',

@@ -8,3 +8,7 @@
 *.ico binary
 *.woff binary
 *.woff2 binary
+/rwadar-site/assets/leaflet-1.9.4.css -text whitespace=cr-at-eol
+/rwadar-site/assets/leaflet-1.9.4.js -text whitespace=cr-at-eol
+/.github/qa-android-authenticated-140/baseline-c22-tutorial-40706016555-root-review.json -text
+/.github/qa-android-authenticated-140/baseline-c22-tutorial-40706016555-result.json -text

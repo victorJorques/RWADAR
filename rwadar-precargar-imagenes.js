@@ -11,7 +11,9 @@ const {dimensionesWebp, FICHA_ANCHO, FICHA_ALTO, FICHA_BYTES_MAX, TEXTO_PROHIBID
 const {leerBloquesCatalogo, validarCatalogoSnapshot} = require('./rwadar-fichas');
 const {sincronizar} = require('./rwadar-app/sincronizar');
 const {adelgazarJS} = require('./rwadar-adelgazar');
+const {construirWorker, RUTAS: RUTAS_ACCESO} = require('./rwadar-acceso/compilar.cjs');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
+const ARTEFACTOS_ACCESO = Object.freeze(['_worker.js','_routes.json']);
 const RAIZ = __dirname;
 const REGISTRO = 'rwadar-editorial-source/ofertas/precargas/manifest.json';
 const ORIGEN = 'https://rwadar.pages.dev';
@@ -93,7 +95,7 @@ function comprobarCompuertas() {
   return seguridad.comprobarRevisionGitPublicable({raiz:RAIZ,manifiesto});
 }
 function rutasBaseObligatorias(base, excluirLote) {
-  const reales=seguridad.listarArchivosRegulares(base), rutas=[];
+  const reales=seguridad.listarArchivosRegulares(base), rutas=[...ARTEFACTOS_ACCESO];
   const fichasActuales=new Set(PAGINAS_FICHAS);
   for(const nombre of seguridad.ARCHIVOS_PUBLICABLES.filter(n=>!fichasActuales.has(n))) {
     if(/^assets\/.+\.(?:js|css)$/.test(nombre)) {
@@ -141,15 +143,20 @@ function validarBase(base, sello, {excluirLote}={}) {
     assert(rutaValida(a.ruta)&&!rutas.has(a.ruta)&&Number.isSafeInteger(a.bytes)&&a.bytes>=0&&shaValida(a.sha256),'Inventario inválido');
     rutas.add(a.ruta);
     const original=a.ruta.replace(/\.[a-f0-9]{12}(\.(?:js|css))$/,'$1');
-    assert(seguridad.ARCHIVOS_PUBLICABLES.includes(original)||/^ofertas-editoriales\/(?:manifest\.json|[a-z0-9-]+\.webp)$/.test(a.ruta),'Archivo base fuera de la lista cerrada');
+    assert(seguridad.ARCHIVOS_PUBLICABLES.includes(original)||ARTEFACTOS_ACCESO.includes(a.ruta)||/^ofertas-editoriales\/(?:manifest\.json|[a-z0-9-]+\.webp)$/.test(a.ruta),'Archivo base fuera de la lista cerrada');
   }
-  for(const esencial of ['index.html','sw.js','_headers','_redirects']) assert(rutas.has(esencial),'Base incompleta');
+  for(const esencial of ['index.html','sw.js','_headers','_redirects',...ARTEFACTOS_ACCESO]) assert(rutas.has(esencial),'Base incompleta');
   const obligatorias=rutasBaseObligatorias(base,excluirLote);
   seguridad.validarArbolPublicable(base,obligatorias);
   assert.deepEqual([...rutas].sort(),obligatorias,'El sello omite o añade recursos frente al catálogo y las listas cerradas');
   assert.deepEqual(inventario(base),sello.archivos,'La base cambió después del sellado');
   assert(sello.sha256===huellaInventario(sello.archivos),'Sello no coincide');
   for(const config of ['_headers','_redirects']) assert(fs.readFileSync(path.join(base,config)).equals(fs.readFileSync(path.join(RAIZ,'rwadar-site',config))),'Configuración distinta de la fuente aprobada');
+  // Estos dos archivos los genera el publicador: no basta con que un sello
+  // recalculado acepte otros bytes, otro BFF o una exclusión de sus rutas.
+  const accesoEsperado={'_worker.js':construirWorker(),'_routes.json':JSON.stringify(RUTAS_ACCESO)+'\n'};
+  for(const nombre of ARTEFACTOS_ACCESO) assert(fs.readFileSync(archivoSeguro(base,nombre)).equals(Buffer.from(accesoEsperado[nombre],'utf8')),
+    'Artefacto de acceso distinto de la fuente aprobada: '+nombre);
   seguridad.validarOrigenPublicable(base);
   return sello;
 }
@@ -162,7 +169,7 @@ async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch) {
   await Promise.all(Array.from({length:4},async()=>{
     while(posicion<archivos.length) {
       const a=archivos[posicion++];
-      if(['_headers','_redirects'].includes(a.ruta))continue;
+      if(['_headers','_redirects',...ARTEFACTOS_ACCESO].includes(a.ruta))continue;
       const ruta='/'+a.ruta.replace(/(^|\/)index\.html$/,'$1').replace(/\.html$/,'');
       const r=await fetchFn(ORIGEN+ruta,{method:'GET',cache:'no-store',credentials:'omit',redirect:'error',signal:AbortSignal.timeout(45000)});
       assert(r.status===200,`HTTP ${r.status} para ${ruta}`);

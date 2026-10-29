@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import { Pressable, Text, View } from './Idioma';
 import { WebView } from 'react-native-webview';
@@ -26,9 +26,9 @@ import { MODO_LOCAL } from '../lib/modo-local';
    revisión de cada tienda sigue pendiente: usar este módulo web no
    acredita aprobación. Los servicios remotos y push están desactivados.
 
-   SIN CONEXIÓN NO HAY WEB, y la app promete funcionar sin conexión. Por
-   eso el explicador nativo no se borra: es lo que se enseña cuando esto
-   no carga. Se ve peor, pero se ve.
+   La sesión nativa se comprueba antes de abrir el tutorial. El servidor
+   adopta el JWT recibido solo en cabecera y crea su cookie HttpOnly. Sin
+   conexión el 3D no carga; el tutorial nativo conserva la explicación.
    --------------------------------------------------------------------- */
 
 const PAGINA = 'https://rwadar.pages.dev/#explain';
@@ -51,6 +51,8 @@ export function esOrigenRWAdar(valor) {
    empieza oculta. No clonamos ni movemos el canvas: conserva sus eventos. */
 const SOLO_EL_EXPLICADOR = `
   (function(){
+    if (location.pathname === '/api/acceso/tutorial') return;
+    if (typeof location !== 'undefined' && location.pathname === '/api/acceso/tutorial') return;
     if (document.documentElement.hasAttribute('data-rwadar-explicador-activo')) return;
     var atributo = 'data-rwadar-explicador-ruta';
     var anteriores = [], rutaAnterior = [];
@@ -120,10 +122,21 @@ const SOLO_EL_EXPLICADOR = `
   true;
 `;
 
-export default function Explicador({ onCerrar }) {
+export default function Explicador({ onCerrar, obtenerAcceso, onPrimeraLeccion }) {
   const [cargando, setCargando] = useState(true);
   const [fallo, setFallo] = useState(false);
+  const [acceso, setAcceso] = useState(null);
   const web = useRef(null);
+  useEffect(() => {
+    let vivo = true;
+    if (MODO_LOCAL) return () => { vivo = false; };
+    Promise.resolve().then(() => obtenerAcceso()).then(value => {
+      if (value?.uri !== 'https://rwadar.pages.dev/api/acceso/tutorial' ||
+        !/^Bearer [A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(value?.headers?.Authorization || '')) throw new Error('Acceso no válido');
+      if (vivo) setAcceso(value);
+    }).catch(() => { if (vivo) setFallo(true); });
+    return () => { vivo = false; };
+  }, [obtenerAcceso]);
 
   /* La copia interna no intenta abrir la antigua dirección pública. */
   if (MODO_LOCAL || fallo) return <ExplicadorNativo onCerrar={onCerrar} />;
@@ -132,8 +145,8 @@ export default function Explicador({ onCerrar }) {
     <View style={e.pantalla}>
       <View style={e.cabecera}>
         <View style={{ flex: 1 }}>
-          <Text style={e.arriba}>CÓMO FUNCIONA</Text>
-          <Text style={e.titulo}>¿Qué es tokenizar un activo?</Text>
+          <Text style={e.arriba}>ACADEMY · TUTORIAL 3D</Text>
+          <Text style={e.titulo}>Aprende a tokenizar un activo</Text>
         </View>
         <Pressable onPress={onCerrar} hitSlop={12}
           style={({ pressed }) => [e.cerrar, pressed && { opacity: 0.6 }]}
@@ -143,14 +156,22 @@ export default function Explicador({ onCerrar }) {
       </View>
 
       <View style={{ flex: 1 }}>
-        <WebView
+        {acceso && <WebView
           ref={web}
-          source={{ uri: PAGINA }}
+          source={acceso}
           injectedJavaScript={SOLO_EL_EXPLICADOR}
           onMessage={(evento) => {
             if (evento?.nativeEvent?.data === 'rwadar:explicador-no-disponible') setFallo(true);
+            if (evento?.nativeEvent?.data === 'rwadar:tutorial-finalizado') onCerrar();
+            if (evento?.nativeEvent?.data === 'rwadar:tutorial-primera-leccion') onPrimeraLeccion?.();
           }}
-          onLoadEnd={() => setCargando(false)}
+          onLoadEnd={(evento) => {
+            if (evento?.nativeEvent?.url === 'https://rwadar.pages.dev/api/acceso/tutorial' && acceso.headers) {
+              // Cookie is now installed in this WebView. No Authorization on the page request.
+              setAcceso({ uri: PAGINA }); return;
+            }
+            setCargando(false);
+          }}
           onError={() => setFallo(true)}
           onHttpError={() => setFallo(true)}
           startInLoadingState={false}
@@ -158,7 +179,11 @@ export default function Explicador({ onCerrar }) {
           /* Que no se pueda navegar fuera del explicador: cualquier enlace
              a otra dirección se ignora en vez de convertir la app en un
              navegador. */
-          onShouldStartLoadWithRequest={(r) => esOrigenRWAdar(r?.url)}
+          onShouldStartLoadWithRequest={(r) => {
+            if (!esOrigenRWAdar(r?.url)) return false;
+            const destino = new URL(r.url);
+            return !destino.search && ['/', '/api/acceso/tutorial'].includes(destino.pathname);
+          }}
           allowsBackForwardNavigationGestures={false}
           scrollEnabled
           bounces={false}
@@ -168,7 +193,10 @@ export default function Explicador({ onCerrar }) {
           androidLayerType="hardware"
           javaScriptEnabled
           domStorageEnabled
-        />
+          incognito
+          cacheEnabled={false}
+          cacheMode="LOAD_NO_CACHE"
+        />}
         {cargando && (
           <View style={e.cargando}>
             <ActivityIndicator size="large" color={C.senal} />

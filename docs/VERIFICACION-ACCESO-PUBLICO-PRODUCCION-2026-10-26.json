@@ -1,0 +1,106 @@
+{
+  "checkedAt": "2026-10-26T09:38:50.290Z",
+  "origin": "https://rwadar.pages.dev",
+  "phase": "produccion",
+  "checks": [
+    {
+      "route": "/",
+      "status": 200,
+      "bytes": 255736,
+      "public": true,
+      "robots": null
+    },
+    {
+      "route": "/acceso",
+      "status": 200,
+      "bytes": 4873,
+      "public": true,
+      "robots": null
+    },
+    {
+      "route": "/academy/",
+      "status": 200,
+      "bytes": 16860,
+      "public": true,
+      "robots": null
+    },
+    {
+      "route": "/ofertas/wemakeit",
+      "status": 200,
+      "bytes": 16822,
+      "public": true,
+      "robots": null
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "bytes": 10717,
+      "public": true,
+      "robots": null
+    },
+    {
+      "route": "/novedades.xml",
+      "status": 200,
+      "bytes": 2224,
+      "public": true,
+      "robots": null
+    },
+    {
+      "route": "/privacidad",
+      "status": 200,
+      "bytes": 35395,
+      "public": true,
+      "robots": null
+    },
+    {
+      "route": "/assets/acceso.1208f526784c.css",
+      "status": 200,
+      "sha256": "1208f526784cc5a45fa7e592f6fa73fd0412558216362afb2227ca76d5af03c4",
+      "matchesApprovedArtifact": true
+    },
+    {
+      "route": "/assets/acceso.b669546f1d20.js",
+      "status": 200,
+      "sha256": "b669546f1d208f1ac946faa82d7c9ed292f8c44bd2b9a3e033d334f9b5e51c6e",
+      "matchesApprovedArtifact": true
+    },
+    {
+      "route": "/api/acceso/catalogo/catalogo_plataformas_publicas_v2?select=slug",
+      "status": 200,
+      "rows": 26,
+      "anonymous": true
+    },
+    {
+      "route": "/api/acceso/catalogo/catalogo_ofertas_publicas_v2?select=slug",
+      "status": 200,
+      "rows": 49,
+      "anonymous": true
+    },
+    {
+      "route": "/api/acceso/sesion",
+      "status": 401,
+      "private": true
+    },
+    {
+      "route": "/api/acceso/datos",
+      "status": 401,
+      "anonymousDenied": true
+    },
+    {
+      "resource": "Supabase/perfiles",
+      "status": 401,
+      "noPrivateRowsExposed": true
+    },
+    {
+      "resource": "Supabase/vigilancia",
+      "status": 401,
+      "noPrivateRowsExposed": true
+    },
+    {
+      "route": "/android",
+      "status": 302,
+      "destination": "https://github.com/victorJorques/RWAdar-downloads/releases/latest"
+    }
+  ],
+  "status": "passed"
+}

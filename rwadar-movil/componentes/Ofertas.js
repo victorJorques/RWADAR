@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppState, Modal, StyleSheet } from 'react-native';
+import { Animated, AppState, Modal, StyleSheet } from 'react-native';
 import { Image, Pressable, ScrollView, Text, View, FuenteOriginal, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -9,6 +9,7 @@ import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacion
 import { resumenOferta } from '../lib/ficha-editorial';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 import { Icono } from './Navegacion';
+import useTransicionFicha from './useTransicionFicha';
 
 function useFechaOferta() {
   const [ahora, setAhora] = useState(() => new Date());
@@ -239,21 +240,25 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
   );
 }
 
+function datoBreveTarjeta(campo) {
+  const breve = { 'No documentado en euros': 'No verificado', 'Sin mínimo vigente en euros': 'No verificado',
+    'Sin comprobar desde España': 'Sin confirmar', 'Salida no documentada': 'Sin documentar' };
+  return { ...campo, texto: breve[campo.texto] || campo.texto };
+}
+
 export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
   const idiomaActual = useIdioma();
   const ahora = useFechaOferta();
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
   const vigencia = vigenciaOferta(oferta, ahora);
-  const destacado = datoDestacado(oferta);
   const criticos = avisosCriticos(oferta);
   const primerCritico = criticos[0];
   const resumen = resumenOferta(ofertaOriginal, [], ahora);
-  const registro = registroProveedor(plataforma, ahora);
   const datosParaDecidir = [
-    ['Mínimo publicado en euros', resumen.minimo],
-    ['Acceso desde España', resumen.accesoEspana],
-    ['Cómo recuperar el dinero', resumen.salida],
+    ['Mínimo (EUR)', datoBreveTarjeta(resumen.minimo)],
+    ['España', datoBreveTarjeta(resumen.accesoEspana)],
+    ['Salida', datoBreveTarjeta(resumen.salida)],
   ];
   const fechaProcedencia = resumen.fechas.comprobadaEl
     ? `Fuente consultada ${fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)}`
@@ -265,11 +270,8 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
     `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar,
     traducir(ETIQUETA_EDITORIAL),
     oferta.patrocinada ? traducir('Contenido patrocinado; no altera el ranking') : null,
-    `${traducir(destacado.etiqueta)}: ${destacado.original ? destacado.valor : traducir(destacado.valor)}`,
-    destacado.referencia,
     ...datosParaDecidir.map(([etiqueta, dato]) => `${traducir(etiqueta)}: ${dato.fuente || dato.referencias?.length ? dato.texto : traducir(dato.texto)}`),
     traducir(fechaProcedencia),
-    `${traducir('Registro del proveedor:')} ${registro ? `${traducir(registro.texto)}; ${traducir('revisado el')} ${fechaVerificacionLocalVisible(registro.fecha)}` : traducir('no documentado en el radar')}. ${traducir('No acredita esta oferta')}`,
     traducir(resumen.estado.texto),
     primerCritico
       ? `${traducir(primerCritico.tono === 'stop' ? 'Aviso bloqueante' : 'Precaución')}: ${primerCritico.texto}`
@@ -301,27 +303,16 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
             <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt} numberOfLines={1}>{lugar}</Text>
           </View>
         ) : null}
-        <View style={e.datosCompactos}>
-          <View style={e.datoCompacto}>
-            <Text style={e.datoEtiqueta}>{oferta.cifrasPendientes ? destacado.etiqueta : etiquetaDatoCompacta(oferta.tipo)}</Text>
-            <Text noTraducir={Boolean(destacado.original)} idiomaOriginal="es-ES" style={e.datoValor}>{destacado.valor}</Text>
-          </View>
-        </View>
-        {/* Una cifra conserva su ventana/unidad completa. La compactación
-            elimina bloques duplicados, nunca la condición de una cifra. */}
-        {destacado.referencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.referencia}>{destacado.referencia}</Text> : null}
         <View style={e.decisionTarjeta}>
           {datosParaDecidir.map(([etiqueta, dato]) => (
             <View key={etiqueta} style={e.decisionFila}>
               <Text style={e.decisionEtiqueta}>{etiqueta}</Text>
               <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.decisionValor}>{dato.texto}</Text>
               {dato.unidadDocumentada ? <Text style={e.referencia}>Unidad en la fuente: <Text noTraducir idiomaOriginal="es-ES">{dato.unidadDocumentada}</Text></Text> : null}
-              {dato.consultadaEl ? <Text style={e.referencia}>Consulta: {fechaVerificacionLocalVisible(dato.consultadaEl)}</Text> : null}
             </View>
           ))}
         </View>
         <Text style={[e.estadoFicha, tonoVigencia(vigencia.estado)]}>{resumen.estado.texto}</Text>
-        <Text style={e.referencia}>Registro del proveedor: {registro ? `${registro.texto} · revisión ${fechaVerificacionLocalVisible(registro.fecha)}` : 'no documentado en el radar'}. No acredita esta oferta.</Text>
         {primerCritico ? (
           <View style={[
             e.avisoFicha,
@@ -358,9 +349,11 @@ function FilaMetrica({ etiqueta, valor, original=false, etiquetaOriginal=false }
 
 export function DetalleOferta({
   oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataformaCanonica, plataforma, guardada = false, onGuardar,
+  onRegistrarInversion,
 }) {
   const idiomaActual=useIdioma();
   const ahora = useFechaOferta();
+  const transicion = useTransicionFicha(Boolean(ofertaOriginal), onCerrar);
   if (!ofertaOriginal) return null;
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
@@ -383,9 +376,10 @@ export function DetalleOferta({
       ...(registro?.fuentes || []), oferta.url].filter(Boolean))].filter(url => url !== enlacePrincipal)
     : registro?.fuentes || [];
   return (
-    <Modal visible animationType="slide" presentationStyle="fullScreen"
-      statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={onCerrar}>
+    <Modal visible animationType="none" presentationStyle="fullScreen"
+      statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={transicion.cerrar}>
       <SafeAreaProvider style={e.modal}>
+        <Animated.View style={[e.modal, transicion.estilo]}>
         <SafeAreaView style={e.modal} edges={['top', 'right', 'bottom', 'left']} accessibilityViewIsModal>
           <View style={e.cabeceraModal}>
             <Text style={e.cabeceraEtiqueta}>Ficha de la oferta</Text>
@@ -399,7 +393,7 @@ export function DetalleOferta({
                 <Icono nombre={guardada ? 'guardada' : 'guardar'} color={C.senal} tamano={22} />
               </Pressable>
             ) : null}
-            <Pressable onPress={onCerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]}
+            <Pressable onPress={transicion.cerrar} style={({ pressed }) => [e.cerrar, pressed && e.pulsado]}
               accessibilityRole="button" noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'} accessibilityLabel={`${traducir('Cerrar')} ${oferta.titulo}`} hitSlop={10}>
               <Text style={e.cerrarTxt}>✕</Text>
             </Pressable>
@@ -420,7 +414,6 @@ export function DetalleOferta({
                   ? 'Proveedor incluido también en el radar'
                   : 'Proveedor de esta referencia · no está en el radar'}
               </Text>
-              {registro ? <><Text style={e.referencia}>Registro del proveedor · revisión {fechaVerificacionLocalVisible(registro.fecha)}</Text><FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.referencia}>{registro.detalle}</FuenteOriginal><Text style={e.referencia}>Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.</Text></> : null}
               {oferta.patrocinada ? (
                 <Text style={e.patrocinioAviso}>
                   Patrocinada. Consulta la relación comercial en la ficha; no altera el ranking ni implica recomendación.
@@ -428,12 +421,7 @@ export function DetalleOferta({
               ) : null}
             </View>
 
-            <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>EN TRES FRASES</Text>
-              {documentacion?.descripcion || oferta.resumen ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{documentacion?.descripcion || oferta.resumen}</FuenteOriginal> : <Text style={e.estadoTexto}>La fuente no aporta una descripción comprobable en esta ficha.</Text>}
-              <Text style={e.referencia}>Lo ofrece <Text noTraducir idiomaOriginal="es-ES">{oferta.plataformaNombre || 'el proveedor indicado en la fuente'}</Text>.</Text>
-              <Text style={e.referencia}><Text noTraducir={Boolean(resumen.salida.fuente)} idiomaOriginal="es-ES">{resumen.salida.texto}</Text>. La disponibilidad de salida no está garantizada.</Text>
-            </View>
+            <Text style={e.riesgoSalida}>Puedes perder dinero. RWAdar no vende ni asesora.</Text>
             <Text style={e.avisosTitulo}>¿QUIÉN PUEDE ACCEDER Y EN QUÉ CONDICIONES?</Text>
             <View style={e.tabla}>
               {datosParaDecidir.map(([etiqueta, dato]) => (
@@ -447,6 +435,17 @@ export function DetalleOferta({
                 </View>
               ))}
             </View>
+
+            <View style={e.documentacion}>
+              <Text style={e.avisosTitulo}>EN TRES FRASES</Text>
+              {documentacion?.descripcion || oferta.resumen ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{documentacion?.descripcion || oferta.resumen}</FuenteOriginal> : <Text style={e.estadoTexto}>La fuente no aporta una descripción comprobable en esta ficha.</Text>}
+              <Text style={e.referencia}>La disponibilidad de salida no está garantizada.</Text>
+            </View>
+            {registro ? <View style={e.documentacion}>
+              <Text style={e.avisosTitulo}>Registro del proveedor · {registro.texto} · revisión {fechaVerificacionLocalVisible(registro.fecha)}</Text>
+              <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{registro.detalle}</FuenteOriginal>
+              <Text style={e.referencia}>Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.</Text>
+            </View> : null}
 
             <View style={[e.estadoCaja, cifraVencida && e.estadoCajaVencida]}>
               <Text style={[e.estadoTitulo, tonoVigencia(vigencia.estado)]}>{vigencia.etiqueta}</Text>
@@ -569,6 +568,11 @@ export function DetalleOferta({
                 Ver en la fuente · <Text noTraducir idiomaOriginal="es-ES">{oferta.plataformaNombre}</Text> ↗
               </Text>
             </Pressable>
+            {onRegistrarInversion ? <Pressable onPress={onRegistrarInversion}
+              style={({ pressed }) => [e.registrarInversion, pressed && e.pulsado]}
+              accessibilityRole="button" accessibilityLabel={`Registrar inversión en ${oferta.titulo}`}>
+              <Text style={e.enlaceSecundarioTxt}>Registrar inversión</Text>
+            </Pressable> : null}
             {fuentesAdicionales.length ? (
               <View>
                 <Text style={e.avisosTitulo}>OTRAS FUENTES CONSULTADAS</Text>
@@ -586,6 +590,7 @@ export function DetalleOferta({
             </Text>
           </ScrollView>
         </SafeAreaView>
+        </Animated.View>
       </SafeAreaProvider>
     </Modal>
   );
@@ -684,8 +689,8 @@ const e = StyleSheet.create({
   datoCompacto: { flex: 1, minWidth: 0 },
   decisionTarjeta: { marginTop: 10, gap: 8 },
   decisionFila: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, paddingTop: 8 },
-  decisionEtiqueta: { ...T.menor, fontSize: 14, lineHeight: 21, color: C.tx2 },
-  decisionValor: { ...T.menor, fontFamily: F.media, fontSize: 15, lineHeight: 23, color: C.tx },
+  decisionEtiqueta: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2 },
+  decisionValor: { ...T.menor, fontFamily: F.semi, fontSize: 16, lineHeight: 24, color: C.tx },
   pieFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginTop: 10 },
   fechaFicha: { ...T.menor, color: C.tx2, fontSize: 13, lineHeight: 20 },
   abrirFicha: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 14, lineHeight: 21 },
@@ -701,6 +706,7 @@ const e = StyleSheet.create({
   datoEtiqueta: { ...T.etiqueta, color: C.tx2, fontSize: 11.5, lineHeight: 16, marginBottom: 4 },
   datoValor: { ...T.dato, color: C.tx, fontSize: 20, lineHeight: 27 },
   modal: { flex: 1, backgroundColor: C.noche },
+  registrarInversion: { minHeight: UI.tactil, justifyContent: 'center', alignItems: 'center', marginTop: 10, padding: 12, borderWidth: 1, borderColor: C.linea2, borderRadius: R.s },
   cabeceraModal: {
     flexDirection: 'row', alignItems: 'center', flexShrink: 0, gap: 12, paddingHorizontal: 16,
     paddingVertical: 14, backgroundColor: C.noche2, borderBottomWidth: 1, borderBottomColor: C.linea,

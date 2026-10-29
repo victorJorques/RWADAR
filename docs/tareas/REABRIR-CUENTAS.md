@@ -221,6 +221,27 @@ todo el mundo. Necesita la clave de Cloudflare en GitHub
 
 ## Anti-robots: que nadie use el alta para mandar correos en masa
 
+**Aviso de compatibilidad del 28/10/2026: no ejecutar el procedimiento
+antiguo de esta sección con Android 1.4.0/código 22 publicado.** El APK
+envía la entrada con contraseña, el registro, el reenvío y la recuperación
+directamente a Supabase, sin token CAPTCHA. Activar la protección global de
+Auth rechazaría esas operaciones. La renovación de una sesión existente no
+demuestra que sea posible volver a entrar después de cerrarla.
+
+El formulario web vigente usa el BFF de `rwadar-acceso/servidor.mjs` y
+`rwadar-site/assets/acceso.js`; cambiar solo la `TURNSTILE_SITEKEY` del
+JavaScript anterior no integra este acceso. Validar Turnstile únicamente en
+el BFF, con CAPTCHA global desactivado, protege sus formularios pero permite
+eludirlo llamando directamente a Supabase: no cierra la protección de Auth.
+
+El texto y los pasos siguientes se conservan como antecedente y no autorizan
+activaciones. La protección completa requiere adaptar y coordinar web y
+clientes móviles antes de habilitarla; no se debe romper el APK publicado
+para darla por terminada. El estado real de CAPTCHA y los límites de Auth
+debe comprobarse en la configuración vigente. Hasta entonces, este refuerzo
+sigue pendiente; no se habilitan WAF, servicios nuevos ni cambios de Auth
+por este aviso.
+
 La web ya lo tiene hecho y probado, pero **apagado**. Encendido, crear cuenta,
 entrar y pedir correos pasan antes por Cloudflare Turnstile (gratis). Casi
 nunca pide nada a la persona: solo enseña una casilla si sospecha. La web

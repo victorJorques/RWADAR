@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "scope": "root-manually-validated-tutorial-only",
+  "runId": 40706016555,
+  "apkSha256": "61771a44ba73d0adf6b0b8d8a5dd3520713e0dda6ad695af2b5c1247d5ceb4c6",
+  "sourceHeadSha": "c663e3571396c917d5ba2f8365d8fb47e308fe8e",
+  "reviewedBy": "Codex root",
+  "reviewedAt": "2026-10-28T14:36:24.754007+00:00",
+  "originalStatus": "failed",
+  "originalFailurePhase": "tutorial",
+  "originalFailureReason": "OCR failed to recognize the black-on-green native Academy return button; actual returned Academy is directly visible.",
+  "rawReportSha256": "d72e6f71b64ff08f4126d1b44a42c09c061e004bec66e3273bc5cb3f1d4f7ced",
+  "archiveSha256": "c46e72c6dda69087fcf0f6f7c0051fc85d42f8db0623b2315661a080b9f86020",
+  "observedSteps": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "nextLabelsObserved": [
+    1,
+    2,
+    3
+  ],
+  "rendered3dObserved": true,
+  "nativeHeaderAndCloseObserved": true,
+  "returnControlObserved": true,
+  "returnedToNativeAcademyObserved": true,
+  "sessionRetainedAndNativeTabsObserved": true,
+  "globalRunApproved": false,
+  "portfolioAndLogoutNotYetValidated": true,
+  "captures": [
+    {
+      "file": "05-tutorial-webview-real.png",
+      "sha256": "231af13867d066446f43c7ad824ec1d0aebc013aaabcf00ee898356a21b2532b",
+      "bytes": 396074,
+      "observed": true
+    },
+    {
+      "file": "05-tutorial-step-1.png",
+      "sha256": "ce19cafb0bdfaaabbb3ae21f30609a4964af8827558ea60e81812f5cf93379e9",
+      "bytes": 340037,
+      "observed": true,
+      "observedStep": 1,
+      "observedNextLabel": true
+    },
+    {
+      "file": "05-tutorial-step-2.png",
+      "sha256": "61a9a15742b432a6cec58f1e9a116d0903034fbd0c455e19708a382dc42d3b4f",
+      "bytes": 373595,
+      "observed": true,
+      "observedStep": 2,
+      "observedNextLabel": true
+    },
+    {
+      "file": "05-tutorial-step-3.png",
+      "sha256": "faeb78a08049256b586379bccdf213c8edb2c97db85ff6d0c2d1dda6eac824dd",
+      "bytes": 400616,
+      "observed": true,
+      "observedStep": 3,
+      "observedNextLabel": true
+    },
+    {
+      "file": "05-tutorial-step-4.png",
+      "sha256": "db4cdc9b56dc170f6d33ce575c23ca63fead05e5f7b807c5275d3e405c3db0e3",
+      "bytes": 366647,
+      "observed": true,
+      "observedStep": 4,
+      "observedNextLabel": false
+    },
+    {
+      "file": "05-tutorial-return-control.png",
+      "sha256": "6b153bb6aa62007dd86e810f5b319312d0933f72218f7f06449e045024992645",
+      "bytes": 381251,
+      "observed": true
+    },
+    {
+      "file": "ocr-working.png",
+      "sha256": "6489eb01984800449fe63b0b97449fd91fc231165e81a9b40dad3fca6f065f54",
+      "bytes": 246969,
+      "observed": true,
+      "observation": "Native Academy returned: Lecciones, Empezar tutorial 3D and all four native tabs physically visible."
+    }
+  ]
+}

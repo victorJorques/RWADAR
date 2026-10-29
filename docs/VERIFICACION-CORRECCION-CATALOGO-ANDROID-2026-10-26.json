@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-26T16:27:52.163Z",
+  "status": "reproduced-real-defect",
+  "publicHttpStatus": 200,
+  "offerCount": 49,
+  "responseBytes": 208717,
+  "apk19ResponseLimitBytes": 131072,
+  "actualTransportError": "respuesta_excesiva",
+  "payloadSha256": "d21067dd66dada0b54695f5fd4a130a37848c41e24342eb2a56f37a1c9ce8060",
+  "noRemoteWrites": true,
+  "noCatalogueResearch": true,
+  "oldSourceCommit": "1ecf7e7aa8941400d6ad954680cd6deb89107c42",
+  "oldVersionCode": 19,
+  "correctedSourceNormalizedSha256": "3d1898d59e72e0949987d036f94071b1ee23a717a69b683fd4152134dade5186",
+  "targetedNewTests": {
+    "pass": 28,
+    "fail": 0,
+    "skip": 0
+  },
+  "regressionTests": {
+    "pass": 64,
+    "fail": 0,
+    "note": "63 initial passes plus the sole SDK case completed with the existing pinned dependency path"
+  },
+  "realMobileContract": {
+    "platforms": 26,
+    "offers": 49,
+    "passed": true
+  },
+  "independentSourceReview": "approved",
+  "oldApkPublishable": false,
+  "newApkNativeProof": false
+}

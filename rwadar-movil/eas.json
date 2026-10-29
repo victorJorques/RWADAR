@@ -1,7 +1,7 @@
 {
   "cli": {
     "version": ">=21.0.0 <22.0.0",
-    "appVersionSource": "remote"
+    "appVersionSource": "local"
   },
   "build": {
     "development": {
@@ -21,19 +21,21 @@
     "editorial": {
       "node": "22.23.4",
       "distribution": "internal",
-      "autoIncrement": true,
+      "autoIncrement": false,
       "android": {
         "buildType": "apk"
       },
-      "channel": "editorial"
+      "channel": "production",
+      "environment": "production"
     },
     "production": {
       "node": "22.23.4",
-      "autoIncrement": true,
+      "autoIncrement": false,
       "android": {
         "buildType": "app-bundle"
       },
-      "channel": "production"
+      "channel": "production",
+      "environment": "production"
     }
   },
   "submit": {

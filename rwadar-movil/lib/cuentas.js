@@ -1,15 +1,24 @@
 'use strict';
 
-/* Motor de cuentas, separado del catálogo y del seguimiento por instalación.
-   La sesión vive solo en la instancia del SDK: no usa AsyncStorage, Keychain,
-   cookies ni URLs de entrada. Confirmación y recuperación abren la web oficial;
-   una vez terminado ese paso, la persona vuelve a entrar en la app. */
+/* El SDK mantiene el acceso en memoria. Solo el refresh token y su UUID se
+   guardan cifrados en SecureStore para restaurar tras reiniciar. Nunca se guarda
+   la contraseña. Confirmación y recuperación siguen en la web oficial. */
+const { crearAlmacenSesion } = require('./almacen-sesion');
 const REDIRECT_CUENTAS = 'https://rwadar.pages.dev/';
 const URL_CUENTAS = 'https://exgpmjpaaebyoolpwced.supabase.co';
 // Clave publicable, igual que la del lector de catálogo. No es una credencial.
 const CLAVE_PUBLICABLE = 'sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n';
 const PLAZO_CUENTAS = 8000;
 const MAX_RESPUESTA = 128 * 1024;
+const MAX_RESPUESTA_CARTERA = 2 * 1024 * 1024;
+// El lote documentado completo supera el límite de una respuesta de cuentas.
+// Solo estas dos lecturas de catálogo admiten un cuerpo y plazo mayores.
+const MAX_RESPUESTA_CATALOGO = 2 * 1024 * 1024;
+const PLAZO_CATALOGO = 15000;
+const LECTURAS_CATALOGO = new Set([
+  '/rest/v1/catalogo_plataformas_publicas_v2',
+  '/rest/v1/catalogo_ofertas_publicas_v2',
+]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 let instanciaCliente = 0;
 
@@ -35,6 +44,7 @@ function mensajeError(error) {
   if (codigo === 'captcha_failed') return 'No se ha podido comprobar el acceso. Inténtalo en la web oficial.';
   if (error?.status === 429 || /rate_limit/.test(codigo || '')) return 'Has hecho varios intentos. Espera un momento antes de repetir.';
   if (codigo === 'plazo' || error?.name === 'AbortError') return 'La conexión tarda demasiado. Comprueba tu red y vuelve a intentarlo.';
+  if (codigo === 'almacen_sesion') return 'No se pudo guardar o cerrar la sesión en el almacenamiento seguro del dispositivo. Inténtalo de nuevo.';
   if (codigo === 'plataforma_invalida') return 'No se ha podido identificar esa plataforma. Prueba a actualizar el radar.';
   // No mostrar mensajes arbitrarios del servidor, datos de la cuenta o tokens.
   return 'No se ha podido completar la operación. Inténtalo de nuevo más tarde.';
@@ -59,6 +69,12 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
   return async function transporte(url, opciones = {}) {
     const destino = new URL(typeof url === 'string' ? url : url.url);
     if (destino.origin !== URL_CUENTAS || !/^\/(auth|rest)\/v1\//.test(destino.pathname)) throw fallo('destino_invalido');
+    const metodo = String(opciones.method || (typeof url === 'object' && url.method) || 'GET').toUpperCase();
+    const catalogo = metodo === 'GET' && !destino.username && !destino.password && LECTURAS_CATALOGO.has(destino.pathname);
+    const cartera = !destino.username && !destino.password && ((metodo === 'GET' && destino.pathname === '/rest/v1/mi_cartera')
+      || (metodo === 'POST' && destino.pathname === '/rest/v1/rpc/guardar_mi_cartera'));
+    const maxRespuesta = cartera ? MAX_RESPUESTA_CARTERA : catalogo ? MAX_RESPUESTA_CATALOGO : MAX_RESPUESTA;
+    const plazo = catalogo ? PLAZO_CATALOGO : plazoMs;
     const corte = new AbortController();
     const abortar = () => corte.abort();
     if (opciones.signal?.aborted) corte.abort();
@@ -71,7 +87,7 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
             redirect: 'error', credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer' });
           if (respuesta.url && new URL(respuesta.url).origin !== URL_CUENTAS) throw fallo('destino_invalido');
           const longitud = Number(respuesta.headers.get('content-length'));
-          if (Number.isFinite(longitud) && longitud > MAX_RESPUESTA) throw fallo('respuesta_excesiva');
+          if (Number.isFinite(longitud) && longitud > maxRespuesta) throw fallo('respuesta_excesiva');
           let cuerpo;
           if (respuesta.body?.getReader && typeof TextDecoder === 'function') {
             const lector = respuesta.body.getReader(), partes = [];
@@ -81,7 +97,7 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
                 const { value, done } = await lector.read();
                 if (done) break;
                 recibidos += value.byteLength;
-                if (recibidos > MAX_RESPUESTA) {
+                if (recibidos > maxRespuesta) {
                   lector.cancel().catch(() => {});
                   throw fallo('respuesta_excesiva');
                 }
@@ -94,11 +110,11 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
             cuerpo = new TextDecoder().decode(unidos);
           } else cuerpo = await respuesta.text();
           const bytes = typeof TextEncoder === 'function' ? new TextEncoder().encode(cuerpo).length : cuerpo.length * 3;
-          if (bytes > MAX_RESPUESTA) throw fallo('respuesta_excesiva');
+          if (bytes > maxRespuesta) throw fallo('respuesta_excesiva');
           return new Response([204, 205, 304].includes(respuesta.status) ? null : cuerpo,
             { status: respuesta.status, statusText: respuesta.statusText, headers: respuesta.headers });
         })(),
-        new Promise((_, rechazar) => { reloj = setTimeout(() => { corte.abort(); rechazar(fallo('plazo')); }, plazoMs); }),
+        new Promise((_, rechazar) => { reloj = setTimeout(() => { corte.abort(); rechazar(fallo('plazo')); }, plazo); }),
       ]);
     } finally {
       clearTimeout(reloj);
@@ -107,19 +123,20 @@ function crearTransporteCuentas({ fetchImpl = (...args) => fetch(...args), plazo
   };
 }
 
-function crearClienteCuentas({ fetchImpl, plazoMs = PLAZO_CUENTAS, createClient: fabrica } = {}) {
+function crearClienteCuentas({ fetchImpl, plazoMs = PLAZO_CUENTAS, createClient: fabrica, mantenerSesion = false } = {}) {
   const crear = fabrica || require('@supabase/supabase-js').createClient;
   return crear(URL_CUENTAS, CLAVE_PUBLICABLE, {
-    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false, flowType: 'implicit',
+    auth: { persistSession: false, autoRefreshToken: mantenerSesion, detectSessionInUrl: false, flowType: 'implicit',
       storageKey: `rwadar.cuenta.memoria.${++instanciaCliente}` },
     global: { fetch: crearTransporteCuentas({ fetchImpl, plazoMs }) },
   });
 }
 
 function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, correoVerificado = false,
-  cliente: clientePrueba, crearCliente = crearClienteCuentas, plazoMs = PLAZO_CUENTAS } = {}) {
+  cliente: clientePrueba, crearCliente = crearClienteCuentas, plazoMs = PLAZO_CUENTAS,
+  almacenSesion = crearAlmacenSesion() } = {}) {
   const disponible = modoLocal === false && cuentasRemotas === true && correoVerificado === true;
-  let revision = 0, destruido = false, clienteActual = null;
+  let revision = 0, revisionToken = 0, destruido = false, clienteActual = null, suscripcionSesion = null, restauracion = null;
   const oyentes = new Set(), clientesTemporales = new Set();
   let vista = { disponible, estado: disponible ? 'sin-sesion' : 'pausa', usuario: null, perfil: null,
     vigiladas: [], procesando: false, accion: null, error: null, mensaje: null };
@@ -132,6 +149,7 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
     for (const oyente of oyentes) { try { oyente(estado()); } catch (_) { /* Un componente no rompe el motor. */ } }
   }
   function purgar() {
+    suscripcionSesion?.unsubscribe?.(); suscripcionSesion = null;
     const anterior = clienteActual;
     clienteActual = null;
     liberarCliente(anterior);
@@ -176,7 +194,11 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
       return { ok: true, ...resultado };
     } catch (error) {
       if (inicio !== revision || destruido || error?.code === 'cancelada') return { ok: false, cancelada: true };
-      if (nueva || ['sin_sesion', 'identidad_invalida', 'correo_no_confirmado'].includes(error?.code) || error?.status === 401) purgar();
+      if (sesionInvalida(error)) {
+        if (!nueva) await borrarGuardada();
+        purgar();
+      } else if (nueva) purgar();
+      else if (accion === 'restaurar') pintar({ estado: 'sin-sesion', usuario: null, perfil: null, vigiladas: [] });
       const mensaje = mensajeError(error);
       pintar({ error: mensaje, ...(['email_not_confirmed', 'correo_no_confirmado'].includes(error?.code)
         ? { estado: 'confirmacion' } : {}) });
@@ -186,15 +208,23 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
       if (inicio === revision && !destruido) pintar({ procesando: false, accion: null });
     }
   }
-  function clienteNuevo() {
-    const cliente = clientePrueba || crearCliente({ plazoMs });
+  function clienteNuevo({ principal = false } = {}) {
+    const cliente = clientePrueba || crearCliente({ plazoMs, mantenerSesion: principal });
     clientesTemporales.add({ cliente, revision });
     return cliente;
   }
   async function identidad(cliente, actual, esperada) {
-    let usuario;
-    try { usuario = (await pedir(cliente.auth.getUser(), actual))?.user; }
-    catch (error) { actual(); purgar(); throw error; }
+    const tokenInicial = revisionToken;
+    let respuesta;
+    try { respuesta = await pedir(cliente.auth.getUser(), actual); }
+    catch (error) {
+      // Una respuesta del JWT anterior puede llegar después de TOKEN_REFRESHED.
+      // Comprobar una vez el JWT nuevo antes de borrar una sesión ya renovada.
+      if (tokenInicial === revisionToken || clienteActual !== cliente || !esperada ||
+          vista.usuario?.id !== esperada || (error?.status !== 401 && error?.code !== 'bad_jwt')) throw error;
+      respuesta = await pedir(cliente.auth.getUser(), actual);
+    }
+    const usuario = respuesta?.user;
     if (!usuario || !UUID.test(usuario.id) || (esperada && usuario.id !== esperada) || usuario.is_anonymous === true) throw fallo('identidad_invalida');
     if (!usuario.email || !usuario.email_confirmed_at || !Number.isFinite(Date.parse(usuario.email_confirmed_at))) throw fallo('correo_no_confirmado');
     return { id: usuario.id, correo: correoValido(usuario.email) };
@@ -202,12 +232,54 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
   async function datosPropios(cliente, usuario, actual) {
     const perfiles = await pedir(cliente.from('mi_perfil').select('id,nombre').eq('id', usuario.id).limit(1), actual);
     if (!Array.isArray(perfiles) || perfiles.length !== 1 || perfiles[0].id !== usuario.id) throw fallo('identidad_invalida');
-    const vigiladas = await pedir(cliente.from('vigilancia').select('usuario_id,plataforma_id,plataformas(nombre)')
-      .eq('usuario_id', usuario.id).limit(1000), actual);
-    if (!Array.isArray(vigiladas) || vigiladas.some(fila => fila.usuario_id !== usuario.id || !UUID.test(fila.plataforma_id)
-      || typeof fila.plataformas?.nombre !== 'string')) throw fallo('identidad_invalida');
-    return { perfil: { id: usuario.id, nombre: nombreValido(perfiles[0].nombre, true) },
-      vigiladas: vigiladas.map(fila => ({ id: fila.plataforma_id, nombre: fila.plataformas.nombre })) };
+    let vigiladas = [], avisoVigilancia = null;
+    try {
+      const filas = await pedir(cliente.from('vigilancia').select('usuario_id,plataforma_id,plataformas(nombre)')
+        .eq('usuario_id', usuario.id).limit(1000), actual);
+      if (!Array.isArray(filas) || filas.some(fila => fila.usuario_id !== usuario.id || !UUID.test(fila.plataforma_id)
+        || typeof fila.plataformas?.nombre !== 'string')) throw fallo('vigilancia_no_disponible');
+      vigiladas = filas.map(fila => ({ id: fila.plataforma_id, nombre: fila.plataformas.nombre }));
+    } catch (error) {
+      actual(); if (sesionInvalida(error)) throw error;
+      avisoVigilancia = 'Has entrado, pero no se pudo cargar tu vigilancia. Vuelve a actualizarla.';
+    }
+    return { perfil: { id: usuario.id, nombre: nombreValido(perfiles[0].nombre, true) }, vigiladas, avisoVigilancia };
+  }
+  function sesionInvalida(error) {
+    return error?.status === 401 || ['sin_sesion', 'identidad_invalida', 'correo_no_confirmado',
+      'email_not_confirmed', 'refresh_token_not_found', 'refresh_token_already_used',
+      'session_not_found', 'user_not_found', 'user_banned', 'bad_jwt', 'invalid_grant'].includes(error?.code);
+  }
+  async function borrarGuardada() {
+    try { await almacenSesion.borrar(); }
+    catch (_) { pintar({ error: mensajeError(fallo('almacen_sesion')) }); }
+  }
+  function registro(session, usuarioId) {
+    if (!session?.refresh_token) throw fallo('sin_sesion');
+    return { usuarioId, refreshToken: session.refresh_token };
+  }
+  async function guardarSesion(session, usuarioId, actual) {
+    actual();
+    await almacenSesion.guardar(registro(session, usuarioId), () => {
+      try { actual(); return true; } catch (_) { return false; }
+    });
+    actual();
+  }
+  function observarSesion(cliente, uid) {
+    suscripcionSesion?.unsubscribe?.();
+    const resultado = cliente.auth.onAuthStateChange?.((evento, session) => {
+      if (destruido || clienteActual !== cliente || vista.usuario?.id !== uid) return;
+      if (evento === 'TOKEN_REFRESHED' && session?.user?.id === uid) {
+        revisionToken++;
+        try {
+          almacenSesion.guardar(registro(session, uid), () => !destruido && clienteActual === cliente && vista.usuario?.id === uid)
+            .catch(() => { if (!destruido && clienteActual === cliente) pintar({ error: mensajeError(fallo('almacen_sesion')) }); });
+        } catch (_) { pintar({ error: mensajeError(fallo('almacen_sesion')) }); }
+      } else if (evento === 'SIGNED_OUT') {
+        purgar(); borrarGuardada();
+      }
+    });
+    suscripcionSesion = resultado?.data?.subscription || null;
   }
   async function accesoActual(actual) {
     const cliente = clienteActual, uid = vista.usuario?.id;
@@ -218,6 +290,63 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
   }
   const acciones = {
     estado,
+    restaurar() {
+      if (restauracion) return restauracion;
+      if (!disponible || destruido || vista.usuario || vista.procesando) return Promise.resolve({ ok: !destruido, restaurada: false });
+      pintar({ estado: 'restaurando' });
+      restauracion = ejecutar('restaurar', async actual => {
+        const guardada = await almacenSesion.leer(); actual();
+        if (!guardada) { pintar({ estado: 'sin-sesion' }); return { restaurada: false }; }
+        const cliente = clienteNuevo({ principal: true });
+        // Persist the rotated refresh before cancellation checks: a component
+        // teardown must not strand an otherwise valid stored session. CAS stops
+        // a late response from undoing an explicit logout or account change.
+        const acceso = await pedir(cliente.auth.refreshSession({ refresh_token: guardada.refreshToken }), () => {});
+        if (!acceso?.session?.access_token || acceso.user?.id !== guardada.usuarioId) throw fallo('identidad_invalida');
+        const conservada = await almacenSesion.reemplazar(guardada, registro(acceso.session, guardada.usuarioId));
+        actual();
+        if (!conservada) { pintar({ estado: 'sin-sesion' }); return { restaurada: false }; }
+        const usuario = await identidad(cliente, actual, guardada.usuarioId);
+        const propios = await datosPropios(cliente, usuario, actual); actual();
+        clienteActual = cliente;
+        observarSesion(cliente, usuario.id);
+        pintar({ estado: 'autenticada', usuario, ...propios, mensaje: propios.avisoVigilancia });
+        return { restaurada: true };
+      }).finally(() => { restauracion = null; });
+      return restauracion;
+    },
+    suspender() { clienteActual?.auth?.stopAutoRefresh?.(); },
+    reanudar() { clienteActual?.auth?.startAutoRefresh?.(); },
+    async accesoTutorial() {
+      const cliente = await acciones.clienteCatalogo(), uid = vista.usuario?.id;
+      const actual = () => {
+        if (destruido || clienteActual !== cliente || !uid || vista.usuario?.id !== uid) throw fallo('sin_sesion');
+      };
+      const sesion = (await pedir(cliente.auth.getSession(), actual))?.session;
+      const token = sesion?.access_token;
+      if (typeof token !== 'string' || token.length > 3800 || !/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(token)) throw fallo('sin_sesion');
+      actual();
+      return { uri: 'https://rwadar.pages.dev/api/acceso/tutorial', headers: { Authorization: 'Bearer ' + token } };
+    },
+    async clienteCatalogo() {
+      const cliente = clienteActual, uid = vista.usuario?.id;
+      const actual = () => {
+        if (destruido || !cliente || clienteActual !== cliente || vista.usuario?.id !== uid) throw fallo('sin_sesion');
+      };
+      try {
+        actual();
+        await identidad(cliente, actual, uid);
+        await datosPropios(cliente, { id: uid }, actual);
+        actual();
+        return cliente;
+      } catch (error) {
+        // Never purge a newer account when an older request finishes late.
+        if (clienteActual === cliente && vista.usuario?.id === uid && sesionInvalida(error)) {
+          await borrarGuardada(); purgar();
+        }
+        throw error;
+      }
+    },
     suscribir(oyente) {
       if (typeof oyente !== 'function') throw new TypeError('La suscripción necesita una función.');
       if (!destruido) { oyentes.add(oyente); oyente(estado()); }
@@ -240,14 +369,16 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
       return ejecutar('entrar', async actual => {
         const email = correoValido(correo);
         if (typeof clave !== 'string' || !clave || clave.length > 256) throw fallo('clave_vacia');
-        const cliente = clienteNuevo();
+        const cliente = clienteNuevo({ principal: true });
         const acceso = await pedir(cliente.auth.signInWithPassword({ email, password: clave }), actual);
         if (!acceso?.session?.access_token) throw fallo('sin_sesion');
         const usuario = await identidad(cliente, actual, acceso.user?.id);
         const propios = await datosPropios(cliente, usuario, actual);
         actual();
+        await guardarSesion(acceso.session, usuario.id, actual);
         clienteActual = cliente;
-        pintar({ estado: 'autenticada', usuario, ...propios, mensaje: 'Ya has entrado. Tu vigilancia se guarda con esta cuenta.' });
+        observarSesion(cliente, usuario.id);
+        pintar({ estado: 'autenticada', usuario, ...propios, mensaje: propios.avisoVigilancia || 'Ya has entrado. La sesión se conserva hasta que la cierres.' });
       }, { nueva: true });
     },
     reenviar({ correo } = {}) {
@@ -266,9 +397,15 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
     },
     refrescar() {
       return ejecutar('refrescar', async actual => {
-        const { cliente, usuario } = await accesoActual(actual);
-        const propios = await datosPropios(cliente, usuario, actual);
-        pintar({ usuario, ...propios });
+        try {
+          const { cliente, usuario } = await accesoActual(actual);
+          const propios = await datosPropios(cliente, usuario, actual);
+          const session = (await pedir(cliente.auth.getSession(), actual))?.session;
+          await guardarSesion(session, usuario.id, actual);
+          pintar({ usuario, ...propios, mensaje: propios.avisoVigilancia });
+        } catch (error) {
+          actual(); throw error;
+        }
       });
     },
     guardarPerfil({ nombre } = {}) {
@@ -298,21 +435,27 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
     },
     async salir() {
       if (destruido) return { ok: true };
-      const anterior = clienteActual;
-      ++revision;
+      const anterior = clienteActual, inicio = ++revision;
       purgar();
-      pintar({ procesando: false, accion: null, error: null, mensaje: 'Has salido. La sesión no se conserva en el dispositivo.' });
-      if (!disponible || !anterior) return { ok: true };
-      const inicio = revision;
-      try { await pedir(anterior.auth.signOut({ scope: 'local' }), contexto(inicio)); return { ok: true }; }
-      catch (error) {
+      pintar({ procesando: false, accion: null, error: null, mensaje: null });
+      if (!disponible) return { ok: true };
+      const remoto = anterior ? pedir(anterior.auth.signOut({ scope: 'local' }), contexto(inicio))
+        .then(() => null, error => error) : Promise.resolve(null);
+      try { await almacenSesion.borrar(); }
+      catch (_) {
+        await remoto;
         if (revision !== inicio || destruido) return { ok: false, cancelada: true };
-        // La memoria local se borra incluso sin cobertura. No afirmar que se ha
-        // revocado en el servidor si el envío de logout no quedó confirmado.
-        const mensaje = 'Has salido de este dispositivo, pero no se pudo confirmar el cierre remoto. Vuelve a conectarte para entrar de nuevo.';
-        pintar({ error: mensaje });
-        return { ok: false, error: mensaje };
+        const error = mensajeError(fallo('almacen_sesion')); pintar({ error });
+        return { ok: false, error };
       }
+      const errorRemoto = await remoto;
+      if (revision !== inicio || destruido) return { ok: false, cancelada: true };
+      if (errorRemoto) {
+        const error = 'Has salido de este dispositivo, pero no se pudo confirmar el cierre remoto. Vuelve a conectarte para entrar de nuevo.';
+        pintar({ error }); return { ok: false, error };
+      }
+      pintar({ mensaje: 'Has salido. La sesión guardada se ha eliminado del dispositivo.' });
+      return { ok: true };
     },
     borrarCuenta({ clave, confirmacion } = {}) {
       return ejecutar('borrar', async actual => {
@@ -327,6 +470,7 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
         await identidad(cliente, actual, original.id);
         actual();
         await pedir(cliente.rpc('borrar_mi_cuenta'), actual);
+        await almacenSesion.borrar();
         purgar();
         pintar({ mensaje: 'Tu cuenta y su lista de vigilancia se han borrado. Los favoritos locales se conservan hasta que los borres desde Perfil.' });
       });
@@ -352,4 +496,4 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
 }
 
 module.exports = { crearControladorCuentas, crearClienteCuentas, crearTransporteCuentas,
-  REDIRECT_CUENTAS, PLAZO_CUENTAS, MAX_RESPUESTA, mensajeError };
+  REDIRECT_CUENTAS, PLAZO_CUENTAS, MAX_RESPUESTA, MAX_RESPUESTA_CATALOGO, PLAZO_CATALOGO, mensajeError };

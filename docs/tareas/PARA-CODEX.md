@@ -6,6 +6,377 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 30 de octubre de 2026 · Claude · secretos QA retirados y rama unida a main
+
+Con permiso expreso de Víctor («haz ambos arreglos»):
+
+- **Secretos QA retirados** de GitHub: `RWADAR_QA_EMAIL` y
+  `RWADAR_QA_PASSWORD`. Quedan `COPIA_CLAVE` y `SUPABASE_DB_URL`. Tus flujos
+  `android-*`/`web-chrome-141` los necesitan: créalos solo para cada ejecución
+  y retíralos al terminar. La cuenta QA de Supabase no se ha tocado (puede
+  seguir habilitada).
+- **PR #15**: esta rama a `main` por avance directo, sin perder nada de `main`.
+  El escáner de secretos daba 23 falsos positivos en tus archivos (tokenId de
+  Brickwise, enlaces PDF de mTBILL, JWT de prueba, clave publicable). Ahora hay
+  excepciones acotadas en `rwadar-app/gitleaks.toml` (`25410a2`), comprobadas
+  con gitleaks 8.30.1 y un canario que sigue detectando 3 de 3. **Si añades
+  fuentes de investigación con IDs o enlaces firmados, el escáner volverá a
+  pararse**: tapa el valor o añade una excepción igual de estrecha.
+- Desde ahora trabaja sobre `main` actualizado. La carpeta `Downloads` sigue en
+  el `main` antiguo con tu trabajo sin commitear: guárdalo en una rama propia
+  antes de traerte `main`.
+
+---
+
+## 29 de octubre de 2026 · Claude · botón «Actualizar» enviado por OTA a la 1.4.1
+
+Víctor pidió que la app se actualice con un botón, sin desinstalar. Hecho y
+publicado con su permiso expreso («Sí, envíalo»):
+
+- **OTA** `01a189a8-1c8d-781a-aaa1-4591b88c277f` (grupo `a9306bfa…`), canal
+  `production`, Android, runtime `1.4.1(23)`, desde `ae36f05`. Guard
+  `comprobar-ota-compatible.cjs --base c1f7106` correcto; sin permisos nuevos.
+- **Qué hace** (`b32ef29`): mejora ya descargada → aviso «Aplicar» (reinicia
+  solo al pulsar). Versión Android nueva → «Actualizar» descarga el APK tras
+  confirmar. El aviso sale bajo la cabecera y en acceso, error de restauración
+  y desbloqueo. Perfil › «Versión de la app» comprueba a mano.
+- **Cada versión Android nueva debe subir `version-android.json`** a su
+  release, con la forma exacta de `rwadar-movil/LEEME.md`. Ya está subido a
+  v1.4.1 (código 23). Sin él, la app no avisa de APK nuevos.
+- **Web** `1778479b`: privacidad con Expo y GitHub; sello en `ae36f05`;
+  `comprobar-publicado.mjs` 208/208.
+- `npm test` completo en verde; revisión independiente sin CRITICAL/HIGH y
+  sus 7 avisos menores aplicados. No hay prueba en un móvil real todavía:
+  Víctor lo verá en Perfil tras abrir la app dos veces.
+
+Commits subidos a `origin/codex/claridad-cartera-sesion-141-20261028`
+(sin unir a `main`). Siguen pendientes los secretos QA y unir esta rama a
+`main`.
+
+---
+
+## 29 de octubre de 2026 · Claude · web y Android 1.4.1 publicadas; cierre de esta entrega
+
+Tu sesión del 22/10 se cortó a las 00:44 UTC sin cerrar. Víctor pidió terminar
+y publicar. Hecho, con su permiso expreso en el chat:
+
+- **Web en producción**: `node rwadar-publicar.js --produccion` desde esta rama
+  (despliegue `a83ea0bd`, caché `rwadar-v-ef591c2273229df5`, idéntico a la
+  preview `revision`). `sw.js` de producción = local; `comprobar-publicado.mjs`
+  208/208. **Víctor entró con su cuenta en la preview y se queda dentro**:
+  el retorno al acceso está resuelto.
+- **`npm test` completo en verde** (Node 22.23.4, EXIT 0). Se paraba en
+  `probar-para-empresas.mjs`, que seguía exigiendo `ventana.navigate()` en el
+  service worker; ahora exige `claim()` y ausencia de navegación (`d8c185e`).
+  Ese commit incluye tu arreglo de reloj AMR que estaba sin guardar.
+- **Android 1.4.1/código 23 publicado como Latest** en
+  https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.1
+  (APK `33663d48…`, descarga pública con la misma huella; `/android` lleva a
+  ella). README de descargas actualizado (`66113346`). QA-1.4.1.json recoge
+  las ejecuciones 40783151032 y 40795909732: actualización sobre 22 sin
+  desinstalar, misma firma, sesión, cartera en la nube leída por la web y OTA
+  descargada y lanzada. La 40795909732 falló **en el comprobador**: la captura
+  del fallo muestra la cartera correcta (2,00 / 2,20 / 0,10 / 0,30 / 15 %).
+  Cierre de sesión no se repitió en 23: su código no cambia desde 22.
+
+**Pendiente, sin tocar por falta de permiso:** los secretos `RWADAR_QA_EMAIL` y
+`RWADAR_QA_PASSWORD` siguen en el repo desde las 00:41 y la cuenta QA puede
+seguir habilitada en Supabase. Esta rama va 116 commits por delante de `main`
+y producción sale de ella: falta unirla. No relances QA nativa de 1.4.1 ni
+compiles otra vez: está publicada.
+
+---
+
+## 29 de octubre de 2026 · Codex · recarga bloqueante aislada y corregida
+
+Chrome real anónimo se bloquea con el trabajador y responde con 49 tarjetas al bloquear solo ese trabajador; WebGL no es la causa aislada. Quitada navegación de ventanas dentro de la activación, sin cambiar cachés privadas ni sesión. Dos pruebas y revisión independiente pasan; comprobación web y preview pendientes. `npm test` se detuvo antes en una prueba de sesión/baja y no se declara aprobado. APK23 sin recompilar; investigación pausada. [Detalle](../VERIFICACION-SW-ACCESO-2026-10-29.md). Fuente en el commit de esta entrada.
+
+---
+## 29 de octubre de 2026 · Codex · causas reales de acceso y valoración corregidas
+
+Chrome reproduce sesión200 seguida de rechazo secundario convertido en401: corregidos BFF/cliente y consulta innecesaria de avisos;65 pruebas pasan. Reparado el validador SQL29 previamente autorizado mediante una pareja de paréntesis, con guarda;30 pruebasPGlite,8 independientes y comprobación remota positiva, sin ampliar permisos. Nueva preview/producción pendientes. Android23 conserva instalación y sesión acreditadas; se comprueba solo cartera/OTA/ficha/salida. [Detalle y reversión](../VERIFICACION-ACCESO-WEB-2026-10-29.md). InvestigaciónPAUSADA; main compartido intacto. Cambios en el commit que contiene esta entrada.
+
+---
+
+## 29 de octubre de 2026 · Codex · retorno al acceso web reproducido
+
+Víctor confirma que el primer arreglo no basta. Corregidos errores transitorios del puente y comprobación de la sesión del navegador antes de regresar;37 controles dirigidos y generación local26/49 aprobados. Fuente en el commit de esta entrada; nueva preview y producción pendientes. [Detalle breve](../VERIFICACION-ACCESO-WEB-2026-10-29.md). APK23 conservado, recorrido40785078896 en curso; no recompilar. InvestigaciónPAUSADA, main compartido intacto.
+
+---
+
+## 28 de octubre de 2026 · Codex · cierre reanudado y corrección del bucle web
+
+APK1.4.1/código23 terminado, sin otra compilación; OTA compatible preparada y recorrido nativo40783151032 en curso. El arnés de recursos se corrigió en7945f62. Web: corregidos cierre por fallo secundario y clic prematuro durante restauración;18 pruebas dirigidas pasan y generación local26/49 correcta. Cambios web en el commit que contiene esta entrada; preview y producción pendientes. BFF de producción comprobado de nuevo con nuestra cuentaQA. [Detalle](../VERIFICACION-ACTUALIZACION-141-2026-10-28.md). InvestigaciónPAUSADA; main compartido intacto.
+
+---
+
+## 28 de octubre de 2026 · Codex · web con cartera publicada; Android1.4.1 en cola
+
+Producción https://rwadar.pages.dev actualizada (despliegue89a6801d): tarjetas claras, avisos íntegros y Mis inversiones. SQL29 privado aplicado con permiso;24controles públicos pasan. Previewmóvil/escritorio y CSS final comprobados con sus límites en [detalle](../VERIFICACION-ACTUALIZACION-141-2026-10-28.md). Android1.4.1/código23 está en cola gratuita, fuente c1f7106; no volver a compilar. Arnés dirigido preparado para actualizar22sin desinstalar, cartera privada y unaOTAcompatible del mismo móvil; aún no hay aprobación ni publicación de1.4.1. CuentaQA sigue limpiada: no se ha reactivado este ciclo. InvestigaciónPAUSADA, main compartido intacto.
+
+---
+
+## 28 de octubre de 2026 · Codex · actualización1.4.1 preparada
+
+SQL29 privado autorizado y aplicado, RLS/ACL comprobadas. Corregida carrera real de renovación de sesión; tarjetas simplificadas sin perder avisos; Mis inversiones de cuenta en web/app y privacidad actualizada. PróximoAPK1.4.1/código23 activa Updates compatible y deberá reemplazar22 sin desinstalar. Fuente y pruebas en el commit de esta entrada. Compilación, comprobación nativa y publicación nuevas pendientes;1.4.0 sigue pública. [Detalle breve](../VERIFICACION-ACTUALIZACION-141-2026-10-28.md). InvestigaciónPAUSADA, main compartido intacto.
+
+---
+
+## 28 de octubre de 2026 · Codex · Android 1.4.0 publicado y cierre de QA
+
+Android1.4.0/código22 ya publicado en https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.0. Descarga pública real, firma y SHA comprobados; web pública actualizada el28/10 en https://rwadar.pages.dev. Fuente móvil c663e35; arnés final 3c18055. Se conservan siete pruebas reales de sesión/PIN del mismo APK y las pruebas equivalentes anteriores; tutorial4pasos aprobado por revisión directa de capturas; cartera y cierre final aprobados. CuentaQA inhabilitada, sesiones revocadas y dos secretos retirados. Sin más builds por fallos del capturador. Investigación PAUSADA. Main compartido intacto. [Detalle breve](../VERIFICACION-ACCESO-PERSISTENTE-2026-10-28.md).
+
+---
+
+## 28 de octubre de 2026 · Codex · APK22 compilado, cierre asistido en curso
+
+APK1.4.0/código22 compilado desde c663e35. Identidad, firma,49imágenes, entrada y siete pruebas reales de sesión/PIN aprobadas; se conservan sus evidencias. Los intentos siguientes fallan en el lector del tutorial: no equivalen a defectos demostrados de la app ni a aprobación final. Arnés9848c75 usa capturas consecutivas para revisión directa de los cuatro pasos, cartera y salida, sin recompilar. La descarga final aún es1.3.2. Web pública actualizada el28/10. [Seguridad verificada y pendientes](../SEGURIDAD-WEB-REVISION-2026-10-28.md). Investigación pausada; main compartido intacto.
+
+---
+
+## 28 de octubre de 2026 · Codex · acceso móvil persistente y bloqueo opcional
+
+Víctor informa fallo de entrada móvil y pide conservar sesión y desbloquear con huella/cara/PIN. Se prepara APK nuevo sin repetir pruebas equivalentes: refresh seguro, restauración, errores de red sin expulsión y vigilancia separada del acceso; opción única en Perfil. Cuentas52 y UI8 criterios dirigidos aprobados; PIN Android y build pendientes. El tutorial web ya está corregido y publicado (502eb88/fbcc0d9, producción d2ad2a83): la última captura nativa muestra 3D; falló el capturador, no acredita cuatro pasos. La QA anterior quedó limpiada el 28/10. [Estado breve](../VERIFICACION-ACCESO-PERSISTENTE-2026-10-28.md). No iniciar investigación ni compilar de nuevo por fallos del arnés. Main compartido intacto.
+
+---
+
+## 27 de octubre de 2026 · Codex · mapa publicado en producción
+
+Web publicada en https://rwadar.pages.dev con Buscar → Lista/Mapa, 26 fichas geográficas (24 puntos, 4 aproximadas) y catálogo49 conservado. Fuente e1923c297dfd17924fd1a9cd2fee9d8b217f62d5; autorización y publicación registradas en552845c. Deployment https://0d881a1d.rwadar.pages.dev;8 controles HTTPS en producción y2 GET independientes con bytes exactos aprobados. Se reutilizan web549/fichas90/acceso55/mapa10/precarga31; no repetir. La revisión visual no quedó acreditada por el controlador. [Informe](../VERIFICACION-MAPA-2026-10-27.md). Android1.4.0 sigue pendiente, con APK20 y pruebas conservadas; no está publicado. CuentaQA limpiada. Investigación pausada. Main compartido intacto; fuente en rama aislada.
+
+---
+
+## 27 de octubre de 2026 · Codex · mapa en preview; control visual bloqueado
+
+Mapa en Buscar, 26 ubicaciones documentadas y consulta pública. Fuente e1923c297dfd17924fd1a9cd2fee9d8b217f62d5. Pasan web549, fichas/RSS90, acceso55, mapa10 y precarga31. Preview https://3fbac666.rwadar.pages.dev desplegada y 8controlesHTTP aprobados. El control visual se detuvo al no poder verificar la URL de Chrome. Producción no promovida; no volver a desplegar preview ni repetir pruebas locales que pasan. Falta revisión visual y producción. [Informe breve](../VERIFICACION-MAPA-2026-10-27.md). App: idiomas/favorito57/57 y lección completados en40562598549; falló después por lectura temprana del tutorial aún cargando. PatchLF preparado en W/android-tutorial-continuation-40562598549.patch, sin aplicar. Generador público W/generar-qa-publica-c20-language-reuse-27.propuesto.py. Faltan tutorial, cartera y salida. CuentaQA limpiada al cierre del turno. APK20 sin recompilar. Investigación pausada; main compartido intacto.
+
+---
+
+## 26 de octubre de 2026 · Codex · cierre Android en curso, sin otra compilación
+
+La 1.4.0 corregida ya está compilada como APK20. No volver a compilar por fallos
+del comprobador. Pasan 92 pruebas locales, firma y 49 recursos, acceso, radar26,
+catálogo49, ficha con letra1.5 (título, X, Atrás y fuente) y grupo Brickwise12.
+Faltan Reental21, contenido/idiomas, Academy, cartera y cierre de sesión.
+La descarga final sigue en1.3.2; el draft1.4.0 conserva el APK19 y no debe publicarse así.
+Fuente móvil en7c64b6c; arnés y pruebas conservadas hasta a501a3d, en rama aislada.
+Investigación PAUSADA. [Estado breve](../VERIFICACION-ANDROID-140-CIERRE-2026-10-26.md).
+No sobrescribir el main compartido con cambios de otras herramientas.
+
+---
+
+## 26 de octubre de 2026 · Codex · defecto real del catálogo Android corregido
+
+APK19 entra con la cuentaQA, pero rechaza el catálogo real por tamaño y muestra0/0.
+Arreglo mínimo en cuentas.js: soloGET de dos vistas V2 permite2MiB/15s;
+Auth/privados conservan128KiB/8s.28pruebas nuevas+64regresiones pasan;
+revisión independiente aprobada y contrato real26/49 correcto. NuevoAPKpendiente;
+no publicar el19. Investigación pausada. [Informe breve](../VERIFICACION-CORRECCION-CATALOGO-ANDROID-2026-10-26.md).
+Cambios en el commit que incorpora esta entrada. Main compartido no se toca.
+
+---
+
+## 26 de octubre de 2026 · Codex · web pública publicada; Android sigue pendiente
+
+Web publicada en https://rwadar.pages.dev (despliegue
+https://f0ec3606.rwadar.pages.dev), después de la preview
+https://99d594e3.rwadar.pages.dev. Consulta sin registro y cuenta para funciones
+personales; corregido el doble cierre que podía borrar la sesión recién abierta.
+37 pruebas locales dirigidas, 16 comprobaciones HTTP en preview y otras 16 en
+producción; login, sesión y logout reales pasaron en ambos entornos. No se
+repite la inspección visual anterior: la nueva del 26/10 quedó bloqueada porque
+Computer Use no pudo verificar la URL del navegador.
+
+SQL28 revertido con permiso: 26 plataformas y 49 referencias conservadas,
+lectura pública restaurada y RLS de perfiles/vigilancia mantenida. Se restaura
+el contrato de sincronización de 1.3.2, sin nueva prueba en dispositivo.
+Investigación PAUSADA; sin nuevas ofertas ni fechas rejuvenecidas.
+
+Fuente y aprobación en `093ec47`, `9cfe70e`, `f2915dc`; arnés en `6c9373c`.
+Android 1.4.0/código 19 sigue como draft: mismo APK y baselines conservados,
+sin nueva compilación. Las tres continuaciones del 26/10 suman 442 segundos y
+fallaron en el arnés; no acreditan 20/20 ni autorizan afirmar publicación.
+El EOF de arranque del capturador ya está corregido y probado con un socket
+local real; ampliar el límite es requisito para otra ejecución completa.
+Cierre nativo, limpieza de QA y publicación si pasa siguen pendientes.
+[Informe vigente](../VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
+No integrar ni sobrescribir el main compartido con WIP de otras herramientas.
+
+---
+
+## 26 de octubre de 2026 · Codex · web pública y cierre del mismo APK
+
+Por nueva orden expresa: web legible sin registro, cuenta para funciones personales
+y cierre/publicación del APK19 existente. Investigación sigue PAUSADA.
+SQL28 revertido con autorización específica:26/49conservados y lectura pública
+restaurada; perfiles/vigilancia mantienenRLS. Worker y bridge públicos, login
+serializado para evitar doble logout;34+3pruebas dirigidas aprobadas. Se conservan
+los baselines APK19 y99/11 anteriores. Sin nueva compilación ni cambio móvil.
+El arnés incorpora foco/IME actuales, cierre observado del radar y menos snapshots;
+14simulaciones dirigidas. Estado de despliegue y QA aún pendientes en el
+[informe26/10](../VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
+Los commits que incorporan esta entrada contienen la fuente preparada y su
+aprobación separada; no integrar el main compartido con WIP de otras herramientas.
+
+---
+
+## 24 de octubre de 2026 · Codex · revisión integral y compatibilidad pendiente
+
+Se revisó la entrega desde `9d51f8b`, con tres ayudantes de lectura y cierre
+acotado. No cambió la fuente del producto. Se corrigieron contradicciones del
+estado vigente y se añadió la [revisión integral](../REVISION-INTEGRAL-2026-10-24.md).
+GitHub consultado: latest sigue en1.3.2 y1.4.0 es draft. La última QA Android
+fallida conserva todas sus evidencias y no se repite.
+
+Hallazgo prioritario por código:1.3.2 consulta con cliente anónimo separado de
+Perfil; SQL28 ya impide esa sincronización. Con caché válida conserva la copia;
+sin ella el lector devuelve listas vacías. Falta observación actual en dispositivo.
+El panel de Claude usa también lectura anónima y rutas web ahora protegidas;
+necesita adaptación, sin tocar su WIP. Main aún no contiene la web publicada.
+
+Solo se hicieron cuatro lecturas HTTP nuevas: robots200; sitemap/RSS401;
+fichaHTML303 al acceso. No se repitieron11/99 ni baterías locales. Automatización
+leída PAUSED; no se inicia investigación. Cartera sigue manual/local, investigación
+49 incompleta, recuperación del titular sin guardado acreditado, seguridad y
+vídeos con los límites del informe. Los tres ayudantes han terminado.
+
+Los cambios de esta entrada son documentales, en el commit que la incorpora.
+No hay SQL, correos, cuentas nuevas, builds, otra ejecución nativa ni despliegues.
+
+---
+
+## 24 de octubre de 2026 · Codex · web con cuenta y radar publicada
+
+Producción real: https://414005a7.rwadar.pages.dev y https://rwadar.pages.dev.
+Preview revisada: https://2b48b963.rwadar.pages.dev/acceso. Fuente visual en
+46f38a0; aprobación web en9f7ea9f. El titular autorizó expresamente esta
+producción después de que la revisión automática distinguiera app y web.
+SQL28 aplicado con autorización:24 relaciones protegidas,26 plataformas,
+49 referencias,retirado=false y SELECT anónimo denegado. No se alteraron filas
+ni fechas del catálogo. Once comprobaciones dirigidas de producción aprobadas,
+incluida identidad de los recursos de acceso. Investigación PAUSADA.
+
+APK19 inmutable y con la misma firma, sin nueva compilación. Subido como borrador
+v1.4.0 conRWAdar.apk ySHA256SUMS.txt; no es una release pública ni cambia latest.
+Run privado40121753928 aprobó99peticionesweb/3páginas/87recursos y falló después
+por importjson del arnés. Run40122469905 reutilizó esePASS y confirmó login,
+pero falló en reauth al redimensionar. Corregido en2496686; UTF8 de etiquetas
+restaurado y contrastado en2e6e96f antes de otra ejecución. Nunca atribuir20/20
+ni publicar por estos resultados parciales. Víctor autorizó una última
+ejecución≤9min:40123408614 falló en login_confirmed al perder la ventana de la
+app. El XML final muestra Launcher/QuickSearchBox y ninguna ventana deRWAdar;
+no determina si lo causó un gesto del arnés, cierre del proceso o cambio de
+foco. Se detuvo conforme al acuerdo: no hay más ejecuciones ni release. Los
+ayudantes han terminado.
+
+La cuentaQA temporal se confirmó con un único correo. Limpieza terminada:
+wrapper19417 salió con0, inhabilitación reversible comprobada, cero sesiones
+restantes y los dos secretos temporales eliminados. No
+guardar enlaces de confirmación, JWT ni passwords. Fuentes y resultados en
+[verificación24/10](../VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md).
+
+---
+
+## 24 de octubre de 2026 · Codex · correo y validación del mismo APK
+
+Continúa en la rama aislada, sin tocar el main compartido. El alta que parecía
+no enviar correo era repetida. Se comprobó recepción real de recuperación;
+el primer enlace validó y el segundo intento reutilizó elOTP. Se corrige el
+retorno de preview a revision, evitando producción antigua, y se aclara cómo
+continuar tras alta200 sin revelar existencia de cuentas. Tres casos nuevos
+dirigidos aprobados, sin repetir33/549. No guardar contraseñas ni enlacesOTP.
+
+APK19 se reutiliza: QA40027041965 falló al desplazar sobre Nombre; se conservan
+sus originales y fallo. El arnés usa ahora márgenes libres observados y la
+continuación40119180570 comprueba solo fuente1,5/giro/excepciones. Aún no hay
+aprobación autenticada ni release. SQL28 autorizado, reservado para la activación
+web; lote editorial23 aplicado con26/49. [Verificación24/10](../VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md).
+La investigación sigue PAUSADA; no iniciar otro ciclo por horario.
+
+---
+
+## 23 de octubre de 2026 · Codex · acceso obligatorio, cartera y tutorial Academy
+
+Se trabajó en la rama aislada codex/cierre-android-140-20261023 sin tocar el
+main compartido ni el panel de Claude. Fuente Android consolidada en
+`1ecf7e7aa8941400d6ad954680cd6deb89107c42`: acceso obligatorio, cartera manual
+local por cuenta, fichas más legibles, aviso desplazable y tutorial de cuatro
+pasos dentro de Academy. El APK18 falló de verdad con fuente1,5/lista de altura0;
+no reutilizarlo ni reanudar su workflow desactivado como release. Víctor autorizó
+una compilación corregida gratuita, terminada como1.4.0/código19. APK de88.961.445
+bytes, SHA-256 `f384a20017e09a4bc0650a0be82231b29acf6abd9629e1075442d458bd277624`.
+CRC y49 imágenes exactas aprobados. La QA anónima `40022139423` aprobó firma,
+paquete y permisos y recorre los formularios; no autoriza la release.
+
+Web: entrada/registro/recuperación, Worker sobre todas las rutas, cookie protegida,
+progreso/favoritos UUID, limpieza de caché PWA y tutorial guiado. 549 comprobaciones
+web locales al final del recolector sin fallos; 33 de acceso, incluyendo Worker
+compilado, sesión, esquema real26/49, reversión y bloqueo de producción si la base
+sigue admitiendo anónimos. La pasada móvil inicial223PASS tuvo11 fallos resueltos
+con repeticiones dirigidas; los módulos antes bloqueados arrancaron22+18 casos.
+QR y herramientas aprobados. Web integrada en `f3cfb1a`, manifiesto `ea64ca2`,
+plantilla QA inerte `9c1f2ec`; ancla legal corregida en `3f9ce53`.
+Preview final: https://648eaf1f.rwadar.pages.dev y https://revision.rwadar.pages.dev.
+Navegador real390/1440 y revisión independiente HTTP de diez rutas protegidas
+aprobados; el único hallazgo fue el ancla de condiciones, corregida y comprobada
+en la preview final. Supabase continúa con sus permisos anteriores: SQL28 pendiente.
+No presentar npm test interrumpido como ejecución
+monolítica exitosa. Informe: [cierre local](../CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md).
+
+El ciclo manual de hoy preparó cuatro referencias en tres fichas, sin nuevas
+altas ni rejuvenecer las otras fechas. SQL editorial revisado independientemente;
+SQL28 de acceso y reversión probados. Se solicitó permiso literal
+para sus comprobaciones y aplicación: la revisión automática rechazó antes una
+consulta de solo lectura por la regla de AGENTS.md. No ejecutar por silencio.
+Víctor autorizó ambos cambios: el editorial quedó aplicado a21:19UTC con26/49,
+retirado=false y las siete tablas anteriores idénticas por huella. Evidencia en
+docs/investigacion/2026-10-23/aplicacion-supabase-editorial.json. SQL28 aún no
+se aplica: coordinarlo con la web verificada. No renovar las fechas generales.
+La tarea de investigación está PAUSADA; nunca reactivar el horario.
+
+El usuario probó acceso y encontró fallo genérico. Diagnóstico en runtime
+Cloudflare: redirect:error no implementado, antes deGoTrue. Parche manual+
+rechazo3xx comprobado en workerd y dos pruebas enfocadas. Publicar en preview
+antes de pedir otro intento. No cambiar Auth ni crear usuarios de prueba.
+
+Pendientes: activar SQL28 junto a web verificada, cuenta/buzón controlados para alta-confirmación y
+recuperación reales, QA autenticada del APK19 y publicación tras compuertas. Los originales
+de los dos vídeos siguen sin enlaces recuperables; no atribuirles revisión.
+Los ayudantes entregaron cada área y están detenidos, sin trabajo abierto.
+
+---
+
+
+## 23 de octubre de 2026 · Codex · revisión de pendientes e investigación manual
+
+Víctor pidió contrastar la lista completa, reutilizar el APK 1.4.0 y evitar
+repetir pruebas. Tres ayudantes recibieron áreas separadas: web/catálogo,
+Android y seguridad/vídeo. Sus revisiones de evidencias no ejecutaron nuevas
+baterías ni operaciones remotas. La matriz está en
+[`../REVISION-PENDIENTES-2026-10-23.md`](../REVISION-PENDIENTES-2026-10-23.md).
+La web integral tiene comprobación de producción del 22/10; eso no se presenta
+como una nueva inspección remota del 23/10. GitHub sí se consultó el 23/10:
+la última versión pública sigue siendo **1.3.2**. El APK **1.4.0/código 18**
+ya está compilado; falta cerrar las fases nativas pendientes antes de publicarlo.
+
+**Corrección efectiva del programador:** la tarea existente se actualizó a
+«RWAdar · investigación profunda bajo demanda», con estado **PAUSED**,
+comprobado después en su configuración guardada. Solo se inicia al pulsar
+**Ejecutar** o con una orden expresa de Víctor; cada inicio corresponde a un
+solo ciclo y no reactiva el horario. Investigar no concede por sí solo permiso
+para SQL remoto o publicación web. Esta entrada sustituye las referencias a
+«ACTIVA a las 09:00» de los traspasos históricos inferiores. No se investigó
+ni se publicó catálogo durante esta revisión.
+
+Quedan parciales la investigación documental de las 49 ofertas, el plan 5S y
+la revisión exhaustiva de textos. Comunidad sigue apagada: sus refuerzos
+adicionales tienen pruebas locales, pero la migración no está aplicada.
+Turnstile, allowlist de Auth y pruebas reales de cuentas/dispositivo mantienen
+sus pendientes documentados. El vídeo local usa nueve perfiles simulados:
+45 tareas observables no acreditan satisfacción humana del 90 %.
+
+---
+
 ## 23 de octubre de 2026 · Claude · parche de seguridad de Node.js (aviso de Render)
 
 **Rama:** `claude/node-seguro-2026-10-23`. Nada publicado, nada tocado en Supabase.

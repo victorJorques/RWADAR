@@ -1,0 +1,199 @@
+{
+  "desde": "2026-10-22",
+  "tipo": "entrega_documental_parcial",
+  "alcance": "Cuatro referencias documentales nuevas del 23/10 en tres ofertas. Radar del 22/10, fechas individuales, cifras, avisos y vigencias anteriores conservados.",
+  "referenciaAprobacion": "Lote local pendiente de revisión independiente del SQL y autorización de aplicación. No acredita revisión integral de las 49 ofertas.",
+  "propuestasFuente": "docs/investigacion/2026-10-23/primaria/propuestas-para-revision.json",
+  "propuestasSha256": "d4d889e22fe0b4b199efcf194b7b7b49629e752bddbe9b6106aa00ba96f830cc",
+  "nuevasAltas": 0,
+  "ofertas": {
+    "mf-one": {
+      "noRevisada": true
+    },
+    "mglo": {
+      "noRevisada": true
+    },
+    "mglobal": {
+      "noRevisada": true
+    },
+    "fotovoltaica-greenpoint": {
+      "noRevisada": true
+    },
+    "drautalresidenz-paternion": {
+      "noRevisada": true
+    },
+    "terreno-con-arrendamiento-billa": {
+      "noRevisada": true
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "noRevisada": true
+    },
+    "fotovoltaica-cohotel": {
+      "noRevisada": true
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "noRevisada": true
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "noRevisada": true
+    },
+    "local-de-estanco-klagenfurt": {
+      "noRevisada": true
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "noRevisada": true
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "noRevisada": true
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "noRevisada": true
+    },
+    "mtbill": {
+      "noRevisada": true
+    },
+    "randhartingergasse-9-viena": {
+      "noRevisada": true
+    },
+    "spiko-letras-del-tesoro-euro": {
+      "noRevisada": true
+    },
+    "prosegur-digital-gold": {
+      "noRevisada": true,
+      "referencias": [
+        {
+          "etiqueta": "Costes publicados de compra y venta",
+          "valor": "Compra: LBMA +4%; venta: LBMA −6%",
+          "fechaDato": "2026-07-08",
+          "fechaConsulta": "2026-10-23",
+          "fuente": "https://app.prosegurdigitalgold.com/#/terms-service",
+          "alcance": "Cuadro contractual susceptible de cambio; confirmar cotización del proveedor. Gastos bancarios, cambio y proveedores de pago pueden añadirse. Custodia sin tarifa no significa coste total cero. Localizador: Términos generales §5.4."
+        },
+        {
+          "etiqueta": "Salida y plazo contractual publicados",
+          "valor": "Solo recompra por Prosegur; procesamiento normal aproximado de 1 a 7 días hábiles",
+          "fechaDato": "2026-07-08",
+          "fechaConsulta": "2026-10-23",
+          "fuente": "https://app.prosegurdigitalgold.com/#/terms-service",
+          "alcance": "Sin venta a terceros. Admite suspensión, límites y retrasos bancarios; no garantizar liquidez inmediata. La portada comercial anuncia menos de 24 h: se conserva el conflicto y se prioriza la limitación contractual. Localizador: Advertencias y §§6.1–6.7."
+        }
+      ],
+      "entregaDocumentalEl": "2026-10-23"
+    },
+    "casa-de-outeiro": {
+      "noRevisada": true,
+      "referencias": [
+        {
+          "etiqueta": "Mínimo de suscripción publicado",
+          "valor": "2.000 EUR (80 acciones de 25 EUR)",
+          "fechaDato": "2026-06-24",
+          "fechaConsulta": "2026-10-23",
+          "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+          "alcance": "Ticket total. Campaña observada abierta hasta el 31/10; no acredita admisión individual desde España. Acciones con limitaciones de transmisión y contraparte. Localizador: FDF v4, §3/p.4."
+        }
+      ],
+      "entregaDocumentalEl": "2026-10-23"
+    },
+    "aktionariat": {
+      "noRevisada": true
+    },
+    "boss-info": {
+      "noRevisada": true
+    },
+    "wemakeit": {
+      "noRevisada": true
+    },
+    "servicehunter-quitt": {
+      "noRevisada": true
+    },
+    "switzerlend": {
+      "noRevisada": true
+    },
+    "reental-secundario-miami-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-houston-2": {
+      "noRevisada": true
+    },
+    "reental-secundario-houston-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-san-antonio-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-atlanta-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-houston-3": {
+      "noRevisada": true
+    },
+    "reental-secundario-proyecto-100": {
+      "noRevisada": true
+    },
+    "reental-secundario-miami-3": {
+      "noRevisada": true
+    },
+    "reental-secundario-granada-3": {
+      "noRevisada": true
+    },
+    "reental-secundario-carolina-del-norte-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-abu-dhabi-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-rentas-3": {
+      "noRevisada": true
+    },
+    "reental-secundario-miami-2": {
+      "noRevisada": true
+    },
+    "reental-secundario-miami-5": {
+      "noRevisada": true
+    },
+    "reental-secundario-rentas-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-dania-beach-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-rentas-2": {
+      "noRevisada": true
+    },
+    "reental-secundario-pirineos-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-levante-1": {
+      "noRevisada": true
+    },
+    "reental-secundario-opportunity-2": {
+      "noRevisada": true
+    },
+    "reental-secundario-malaga-6": {
+      "noRevisada": true
+    },
+    "iod-occasio": {
+      "noRevisada": true,
+      "referencias": [
+        {
+          "etiqueta": "Estado de la campaña observado",
+          "valor": "Cerrada; 120.000 EUR recaudados de 120.000 EUR",
+          "fechaDato": null,
+          "fechaConsulta": "2026-10-23",
+          "fuente": "https://aliuscap.com/projects/iodo1",
+          "alcance": "Observación de estado, no fecha de amortización ni pago del bono. La FDF del 28/09 fijó cierre al completar suscripción o límite del 23/10; no reabrir la campaña por la fecha. Localizador: Encabezado, avance de campaña y botón Invertir deshabilitado."
+        }
+      ],
+      "entregaDocumentalEl": "2026-10-23"
+    },
+    "reental-emision-primaria": {
+      "noRevisada": true
+    },
+    "hausera-proximas-ofertas": {
+      "noRevisada": true
+    },
+    "mgloeuro": {
+      "noRevisada": true
+    }
+  }
+}

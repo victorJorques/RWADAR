@@ -18,6 +18,7 @@ function cargarModulo(ruta, mocks = {}, contexto = {}) {
   new Function('module', 'exports', 'require', ...Object.keys(contexto), codigo)(modulo, modulo.exports, (nombre) => {
     if (nombre === './Idioma') return soporteIdioma(mocks.react,mocks['react-native']);
     if (nombre === '../lib/idioma') return require('../lib/idioma');
+    if (nombre === './acceso-obligatorio') return require('../lib/acceso-obligatorio');
     assert.ok(Object.hasOwn(mocks, nombre), `Dependencia inesperada: ${nombre}`);
     return mocks[nombre];
   }, ...Object.values(contexto));
@@ -63,6 +64,7 @@ function cargarWeb(ahora) {
     setAttribute(nombre, valor) { atributos[nombre] = valor; }, getAttribute(nombre) { return atributos[nombre]; },
     removeAttribute(nombre) { delete atributos[nombre]; } };
   const contexto = {
+    P: [], EMI: [],
     Date: FechaControlada, URL, emiOrden: 'rent', emiBusquedaLocal: '', emiTipoLocal: 'todos', MODO_LOCAL_SEGURO: true,
     ESCAPARATE_LOCAL: { ofertas: [oferta], secundario: [] },
     MANIFIESTO_EDITORIAL_LOCAL: { porCategoria: { Inmobiliario: { archivo: 'propia.webp', alt: 'Ilustración propia' } },
@@ -77,6 +79,12 @@ function cargarWeb(ahora) {
     fechaES: (v) => v, urlHttps: (v) => /^https:\/\//.test(v || '') ? v : '',
     document: { getElementById: () => dialogo, body: { classList: { add() {}, remove() {} } } },
   };
+  // The transport is mocked, while the real catalog normalizers stay under test.
+  contexto.window = { RWADAR_ACCESO: { catalogo: async (tabla, consulta) => {
+    const respuesta = await contexto.fetch(contexto.API + '/' + tabla + '?' + consulta);
+    if (!respuesta.ok) throw new Error('HTTP ' + respuesta.status);
+    return respuesta.json();
+  } } };
   vm.createContext(contexto);
   vm.runInContext(codigo.slice(inicio, fin), contexto);
   return { contexto, dialogo };
@@ -104,10 +112,11 @@ test('web y móvil conservan el último día completo y retiran cifras al siguie
     assert.equal(webCaducada.estadoVigenciaLocal(dato).clase, 'caducado');
     assert.equal(movil.cifrasOfertaVigentes(dato, ultimoDia), true);
     assert.equal(movil.cifrasOfertaVigentes(dato, caducada), false);
-    assert.match(webVigente.tarjetaOfertaLocal(dato), /97,13/);
+    assert.doesNotMatch(webVigente.tarjetaOfertaLocal(dato), centinelas);
+    assert.match(webVigente.tarjetaOfertaLocal(dato), /cifras vigentes hasta hoy/);
     assert.match(webVigente.tarjetaOfertaLocal(dato), /aria-label="Ver ficha de Oferta de prueba en Proveedor"/);
     assert.doesNotMatch(webCaducada.tarjetaOfertaLocal(dato), centinelas);
-    assert.match(webCaducada.tarjetaOfertaLocal(dato), /Consultar emisor/);
+    assert.match(webCaducada.tarjetaOfertaLocal(dato), /escaparate-estado-linea caducado/);
     assert.match(webCaducada.tarjetaOfertaLocal(dato), /aria-label="Ver ficha de Oferta de prueba en Proveedor"/);
     for (const vista of [vistaVigente, vistaCaducada]) {
       vista.contexto.ESCAPARATE_LOCAL = { ofertas: [dato], secundario: [] };
@@ -164,6 +173,7 @@ test('una web abierta revisa las cifras a medianoche sin depender de una respues
     const { contexto } = cargarWeb(reloj);
     let html = '', temporizador;
     contexto.MODO_LOCAL_SEGURO = modoLocal;
+    contexto.EMI = [{ ...oferta, catalogo: true }];
     contexto.comprobarCatalogoEmbebido = () => true;
     contexto.pintarFiltrosEmision = () => {};
     contexto.pintarEmisiones = contexto.pintarEscaparateLocal = () => { html = contexto.tarjetaOfertaLocal(oferta); };
@@ -174,12 +184,16 @@ test('una web abierta revisa las cifras a medianoche sin depender de una respues
     assert.ok(inicio > 0 && fin > inicio);
     vm.runInContext(codigo.slice(inicio, fin), contexto);
     contexto.refrescarVigenciaOfertas();
-    assert.match(html, /97,13/);
+    assert.match(html, /cifras vigentes hasta hoy/);
+    contexto.abrirDetalleOfertaLocal(oferta.slug);
+    assert.match(contexto.document.getElementById().innerHTML, /97,13/);
     contexto.programarRevisionVigenciaOfertas();
     reloj.setTime(caducada.getTime());
     temporizador();
     assert.doesNotMatch(html, centinelas);
-    assert.match(html, /Consultar emisor/);
+    assert.match(html, /escaparate-estado-linea caducado/);
+    contexto.abrirDetalleOfertaLocal(oferta.slug);
+    assert.doesNotMatch(contexto.document.getElementById().innerHTML, centinelas);
   }
 });
 
@@ -191,7 +205,7 @@ function componentesMoviles(ahora, simulacion = {}) {
   }
   return cargarModulo('componentes/Ofertas.js', {
     react: { createElement: crear, useState: (v) => [typeof v === 'function' ? v() : v, () => {}], useEffect() {}, ...simulacion.react },
-    'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
+    'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), Animated: {View:'AnimatedView'}, StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
     '../lib/ficha-editorial': require('../lib/ficha-editorial'),
     '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
@@ -200,6 +214,7 @@ function componentesMoviles(ahora, simulacion = {}) {
     '../lib/verificacion-local': movil,
     '../lib/tema': { C: {}, COLOR_CATEGORIA: {}, F: {}, R: {}, T: {}, UI: {}, iniciales: () => 'PR' },
     './Navegacion': { Icono: 'Icono' },
+    './useTransicionFicha': { default: (_visible, cerrar) => ({ cerrar, estilo: {} }), __esModule: true },
   }, { Date: FechaControlada, setTimeout: simulacion.setTimeout || (() => 1), clearTimeout: simulacion.clearTimeout || (() => {}) });
 }
 
@@ -219,13 +234,14 @@ test('tarjeta, accesibilidad y detalle móvil ocultan precio/yield vencidos sin 
     for (const render of [componentes.FichaOferta, componentes.DetalleOferta]) {
       const texto = textoRenderizado(render({ oferta: dato }));
       assert.doesNotMatch(texto, centinelas);
-      assert.match(texto, /Consultar emisor/);
+      assert.match(texto, render === componentes.FichaOferta ? /cifras ocultas/ : /Consultar emisor/);
       assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo/);
     }
   }
   assert.deepEqual(oferta, original);
   const vigente = componentesMoviles(ultimoDia);
-  assert.match(textoRenderizado(vigente.FichaOferta({ oferta })), /97,13/);
+  assert.doesNotMatch(textoRenderizado(vigente.FichaOferta({ oferta })), centinelas);
+  assert.match(textoRenderizado(vigente.DetalleOferta({ oferta })), /97,13/);
 });
 
 test('una app abierta retira las cifras al cambiar de día y al volver de suspensión', () => {
@@ -240,16 +256,19 @@ test('una app abierta retira las cifras al cambiar de día y al volver de suspen
       AppState: { addEventListener(nombre, fn) { assert.equal(nombre, 'change'); reactivar = fn; return { remove() { retiroEscucha = true; } }; } },
       setTimeout(fn, espera) { assert.ok(espera > 0 && espera <= 86400100); temporizador = fn; return 1; },
     });
-    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /97,13/);
+    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Datos con fuente y fecha/);
+    assert.match(textoRenderizado(componentes.DetalleOferta({ oferta })), /97,13/);
     reloj.setTime(caducada.getTime());
     if (evento === 'medianoche') temporizador(); else reactivar('active');
     assert.doesNotMatch(textoRenderizado(componentes.FichaOferta({ oferta })), centinelas);
+    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /cifras ocultas/);
+    assert.doesNotMatch(textoRenderizado(componentes.DetalleOferta({ oferta })), centinelas);
     limpiar();
     assert.equal(retiroEscucha, true);
   }
 });
 
-test('tarjetas web y móvil muestran la ventana o referencia junto a una cifra vigente', () => {
+test('las fichas web y móvil muestran la referencia junto a la cifra vigente que se omite en tarjetas', () => {
   const { contexto } = cargarWeb(ultimoDia);
   const componentes = componentesMoviles(ultimoDia);
   for (const dato of [
@@ -257,15 +276,20 @@ test('tarjetas web y móvil muestran la ventana o referencia junto a una cifra v
     { ...oferta, tipo: 'valor', precio: { mostrado: '5 CHF', unidad: 'Última operación 20-09-2026; no es un precio ejecutable.' } },
   ]) {
     const referencia = dato.tipo === 'valor' ? dato.precio.unidad : dato.rentabilidad.literal;
-    assert.ok(contexto.tarjetaOfertaLocal(dato).includes(`<p class="escaparate-referencia">${referencia}</p>`));
+    assert.ok(!contexto.tarjetaOfertaLocal(dato).includes(referencia));
+    contexto.ESCAPARATE_LOCAL = { ofertas: [dato], secundario: [] };
+    contexto.abrirDetalleOfertaLocal(dato.slug);
+    assert.ok(contexto.document.getElementById().innerHTML.includes(referencia));
     const tarjeta = componentes.FichaOferta({ oferta: dato });
-    assert.ok(textoRenderizado(tarjeta).includes(referencia));
+    assert.ok(!textoRenderizado(tarjeta).includes(referencia));
+    const detalle = componentes.DetalleOferta({ oferta: dato });
+    assert.ok(textoRenderizado(detalle).includes(referencia));
     const nodos = [];
     const recorrer = n => {
       if (Array.isArray(n)) return n.forEach(recorrer);
       if (n && typeof n === 'object') { nodos.push(n); recorrer(n.children); }
     };
-    recorrer(tarjeta);
+    recorrer(detalle);
     assert.ok(nodos.some(n => n.type === 'Text' && n.children.includes(referencia) && !n.props.numberOfLines));
   }
 });
@@ -303,7 +327,9 @@ test('una referencia del 27 de septiembre conserva su revisión documental el d�
     for (const render of [componentes.FichaOferta, componentes.DetalleOferta]) {
       const texto = textoRenderizado(render({ oferta: dato }));
       assert.match(texto, /(?:Revisión documental|Revisión del catálogo:)\s*27\/09\/2026/);
-      assert.match(texto, /Consultar emisor/);
+      assert.match(texto, render === componentes.FichaOferta
+        ? estadoRevision === 'fuentes_en_conflicto' ? /Las fuentes no coinciden/ : /cifras ocultas/
+        : /Consultar emisor/);
       assert.match(texto, /La inversión puede perder valor/);
       assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo|Disponible desde España/);
       assert.doesNotMatch(texto, centinelas);
@@ -351,7 +377,7 @@ test('la ficha documental y sus referencias históricas sobreviven al TTL sin pr
   const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: dato }));
   assert.match(tarjeta, /Fuente consultada 27\/09\/2026/);
   assert.doesNotMatch(tarjeta, /Fuente consultada 30\/09\/2026/);
-  assert.match(tarjeta, /Consultar emisor/);
+  assert.match(tarjeta, /cifras ocultas/);
   assert.doesNotMatch(tarjeta, /54,20|97,13|9876|1234|4455/);
   const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
   assert.match(detalle, /Revisión del catálogo:\s*30\/09\/2026/);
@@ -413,7 +439,8 @@ test('las 28 fichas reales conservan documentación y referencias fechadas en we
     const tarjetaWeb = contexto.tarjetaOfertaLocal(o);
     const tarjetaMovil = textoRenderizado(componentes.FichaOferta({ oferta: o }));
     for (const tarjeta of [tarjetaWeb, tarjetaMovil]) {
-      assert.match(tarjeta, /Consultar emisor/);
+      assert.match(tarjeta, /No verificado/);
+      assert.match(tarjeta, /Sin confirmar/);
       assert.doesNotMatch(tarjeta, /Pendiente de revisión/);
     }
     assert.match(tarjetaWeb, /Doc\./);
@@ -594,7 +621,7 @@ test('V2 recorre REST y normalizadores hasta tres grupos web y detalles document
     assert.equal(dialogo.open, true); assert.match(dialogo.innerHTML, /9043 CHF/);
     assert.match(dialogo.innerHTML, /2026-09-20/); assert.match(dialogo.innerHTML, /2026-09-27/);
     const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: o }));
-    assert.match(tarjeta, /REFERENCIA DOCUMENTAL/); assert.doesNotMatch(tarjeta, /9043 CHF/);
+    assert.match(tarjeta, o.coleccion === 'secundario' ? /Referencia de reventa · disponibilidad sin confirmar/ : /Anuncio documentado · apertura sin confirmar/); assert.doesNotMatch(tarjeta, /9043 CHF/);
     assert.match(textoRenderizado(componentes.DetalleOferta({ oferta: o })), /9043 CHF/);
   }
 });
@@ -689,9 +716,11 @@ test('la nueva categoría Crédito privado conserva ilustración propia en las d
   assert.match(editorial.alt, /no representa un activo concreto/);
   const { contexto } = cargarWeb(ultimoDia);
   cargarFuncionesWeb(contexto, ['EDITORIAL_OFERTA_POR_CATEGORIA']);
-  const web = contexto.imagenOfertaLocal({ catalogo: true, categoria: 'Crédito privado' });
-  assert.equal(web.src, '/ofertas-editoriales/'+editorial.archivo);
-  assert.equal(web.alt, editorial.alt);
+  const web = contexto.imagenOfertaLocal({ catalogo: true, slug: 'credito-privado-prueba', categoria: 'Crédito privado' });
+  assert.equal(web.src, '/ofertas-editoriales/oferta-credito-privado-prueba.webp');
+  assert.equal(web.respaldo, '/ofertas-editoriales/'+editorial.archivo);
+  assert.match(web.alt, /generada con IA; no es fotografía del activo/);
+  assert.equal(vm.runInContext('EDITORIAL_OFERTA_POR_CATEGORIA', contexto)['Crédito privado'].alt, editorial.alt);
 });
 
 test('web y app eligen la misma ilustración de cada ficha y caen a la de su categoría', () => {
@@ -724,7 +753,12 @@ test('web y app eligen la misma ilustración de cada ficha y caen a la de su cat
   for (const slug of ['ficha-nueva', 'constructor', '__proto__', 'toString']) {
     const nueva = { catalogo: true, slug, categoria: 'Inmobiliario' };
     assert.equal(imagenes.imagenEditorialOferta(nueva).archivo, 'inmobiliario-rwadar.webp', slug);
-    assert.equal(contexto.imagenOfertaLocal(nueva).src, '/ofertas-editoriales/inmobiliario-rwadar.webp', slug);
+    const web = contexto.imagenOfertaLocal(nueva);
+    if (/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+      assert.equal(web.src, '/ofertas-editoriales/oferta-'+slug+'.webp', slug);
+      assert.equal(web.respaldo, '/ofertas-editoriales/inmobiliario-rwadar.webp', slug);
+      assert.match(web.alt, /generada con IA; no es fotografía del activo/);
+    } else assert.equal(web, null, slug);
   }
 });
 

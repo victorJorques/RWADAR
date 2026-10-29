@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-10-22",
+  "actualizadoEl": "2026-10-29",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Corte web del22/10 publicado desde main y comprobado en producción: catálogo actualizado, reorganización, fichas permanentes, RSS y selector español/inglés. Android1.3.2 sigue público; APK1.4.0/código18 compilado y firmado en QA nativa independiente, todavía sin publicar. Publicidad, cobros, comisiones, opiniones, avisos, comunidad y manual siguen apagados. No se afirma Auth nativo real ni teléfono físico.",
+  "nota": "Claude, 29/10: privacidad web añade qué reciben Expo (mejoras OTA de Android 1.4.1) y GitHub (consulta de versión nueva del botón Actualizar). Sin otros cambios de la web; producción a83ea0bd ya tenía el acceso corregido que Víctor confirmó con su cuenta. npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "de7f2b182b45fdb27bc0b9d85b2158fb7420d8e3",
-    "contenidoSha256": "sha256:62aaf0695e1b4aa6873b3d844426e59d8726b95330ba95bde8f891cb9d8ae320",
+    "commit": "b32ef298b35737763ac45070190494f0f046fbfc",
+    "contenidoSha256": "sha256:ce405631f6be0c2f70e75cb2617b587c95ece3afa7419b207c458d42a692e01e",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
@@ -44,7 +44,7 @@
     },
     "aviso_legal_y_condiciones": {
       "estado": "aprobado",
-      "detalle": "Titular identificado. Privacidad actualizada para las cuentas opcionales web y Android: correo confirmado, nombre opcional, vigilancia propia, sesión solo en memoria, correos de acceso y baja reautenticada. Catálogo público de solo lectura; opiniones, avisos, publicidad, cobros y manual apagados. Revisión interna, no dictamen jurídico externo.",
+      "detalle": "Privacidad actualizada para registro manual privado de inversiones compartido en Supabase, sin compras ni cotizaciones automáticas de proveedores. Conserva consulta pública, identidad y alcance editorial gratuito.",
       "evidencias": [
         {
           "tipo": "documento",
@@ -57,6 +57,18 @@
           "referencia": "rwadar-site/privacidad.html#aviso-legal",
           "verificadoEl": "2026-09-27",
           "resumen": "Datos declarados por el titular completos, finalidades y proveedores descritos, criterios de conservación y proceso diario de180días comprobado en metadatos."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "docs/CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md#web-y-acceso",
+          "verificadoEl": "2026-10-23",
+          "resumen": "La política describe el flujo implementado, la cookie necesaria, el acceso por cuenta y la retirada de la caché PWA. La publicación está pendiente; no acredita pruebas reales de correo."
+        },
+        {
+          "tipo": "documento",
+          "referencia": "docs/VERIFICACION-ACTUALIZACION-141-2026-10-28.md",
+          "verificadoEl": "2026-10-28",
+          "resumen": "Revisión de cartera privada y privacidad, aislamiento de cuentas y controles dirigidos. APK nuevo pendiente de validación propia."
         }
       ]
     },
@@ -149,9 +161,15 @@
       ]
     },
     "beta_segura_extremo_a_extremo": {
-      "estado": "en_progreso",
-      "detalle": "Soporte de precarga editorial y altas con imagen propia revisado localmente y pendiente de preview pública del nuevo corte. La producción anterior sigue acreditada por su evidencia. La revocación declarada por el titular se conserva como evidencia histórica; esta etapa no acredita el APK1.4.0 ni Auth nativo real.",
+      "estado": "aprobado",
+      "detalle": "Preview99d594e3 comprobada: lectura pública,26/49,SEO/RSS,privados denegados y recursos exactos. Login propio real, cookie, sesión y logout aprobados;frontend con3regresiones de doble cierre. CSS conserva revisión previa; el controlador visual26/10 no pudo completar. Android19 sigue pendiente y separado. La revocación declarada por el titular se conserva como antecedente documentado; no acredita una auditoría histórica completa ni valida el nuevo APK.",
       "evidencias": [
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-CORREO-Y-ANDROID-2026-10-24.md#acceso-real-de-la-preview-y-continuación-nativa",
+          "verificadoEl": "2026-10-24",
+          "resumen": "Run privado40121753928: paso web aprobado99peticiones/3páginas/87recursos,26/49 y logoutreal. Su fallo posterior NameError del arnés nativo se conserva y no apruebaAPK. Diseño radar depreview2b48b963 inspeccionado390/1440;19IDsintactos."
+        },
         {
           "tipo": "documento",
           "referencia": "docs/VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md#producción-integral-comprobada",
@@ -241,6 +259,30 @@
           "referencia": "docs/VERIFICACION-ANDROID-2026-09-30.md",
           "verificadoEl": "2026-09-30",
           "resumen": "APK1.1.2/código10 publicado a las10:50:52UTC y descargado sin autenticación a las10:52:17UTC; misma huella y certificado que el binario ensayado. Distribución directa y emulador, sin atribuir tiendas ni dispositivo físico."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/CIERRE-LOCAL-1.4.0-Y-ACCESO-2026-10-23.md#evidencia-local-y-limites",
+          "verificadoEl": "2026-10-23",
+          "resumen": "Corte f3cfb1a revisado localmente. Worker completo, sesión confirmada, aislamiento por usuario, lectura editorial, bloqueo de producción si Supabase admite anónimos y tutorial manual. No es prueba E2E remota ni aprobación del APK."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-ACCESO-PUBLICO-2026-10-26.md",
+          "verificadoEl": "2026-10-26",
+          "resumen": "Preview99d594e3:16controlesHTTP y4pasos realesAuth con cuentaQA existente, además de37pruebas dirigidas. Lectura pública26/49 y privados denegados. CSS sin cambios; nueva captura visual no disponible. Sin aprobación APK19."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-MAPA-2026-10-27.md",
+          "verificadoEl": "2026-10-27",
+          "resumen": "Mapa local revisado: web549,páginas90,acceso55,mapa10,precarga31. Preview3fbac666 y8controlesHTTPS reales aprobados; fuentes,26coordenadas,49ofertas,cincoassetsversionados yfrontera401privada correctos. Revisión visual no acreditada por bloqueo del controlador. Publicación de producción reiterada expresamente por Víctor. No aprueba Android."
+        },
+        {
+          "tipo": "prueba",
+          "referencia": "docs/VERIFICACION-SESION-TUTORIAL-2026-10-27.md",
+          "verificadoEl": "2026-10-27",
+          "resumen": "Tres regresiones del código real aprobadas y revisión independiente. La sesión se conserva ante opciones nulas y el401 sigue rechazado. APK intacto; validación nativa aún pendiente."
         }
       ]
     },

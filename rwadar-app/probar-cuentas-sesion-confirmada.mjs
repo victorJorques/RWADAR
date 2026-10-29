@@ -270,29 +270,36 @@ try {
 
   const sesionesAntes = await cuenta(db, 'select count(*)::int n from auth.sessions where user_id=$1', [ana.id]);
   for (const desfase of [-299, 20, 30]) {
-    await conJwt(ana.id, SID_ANA, { amr: [{ method: 'password', timestamp: await epoch() + desfase }] });
+    // now() queda fijo durante el caso: los límites AMR no dependen de la
+    // velocidad del equipo ni del tiempo empleado por los casos anteriores.
     await db.exec('begin');
     let permitido = true;
-    try { await db.query('select public.borrar_mi_cuenta()'); } catch { permitido = false; }
+    try {
+      await conJwt(ana.id, SID_ANA, { amr: [{ method: 'password', timestamp: await epoch() + desfase }] });
+      await db.query('select public.borrar_mi_cuenta()');
+    } catch { permitido = false; }
     finally { await db.exec('rollback'); }
     paso(`AMR contraseña con desfase ${desfase}s está dentro de la ventana permitida`, permitido);
     await sesion(db);
   }
-  const marca = await epoch();
-  for (const [titulo, amr] of [
-    ['recuperación sin contraseña', [{ method: 'recovery', timestamp: marca }]],
-    ['OTP en vez de contraseña', [{ method: 'otp', timestamp: marca }]],
-    ['contraseña comprobada hace más de cinco minutos', [{ method: 'password', timestamp: marca - 310 }]],
-    ['AMR ausente', null], ['AMR objeto en vez de lista', { method: 'password', timestamp: marca }],
-    ['fecha AMR inválida', [{ method: 'password', timestamp: 'invalid' }]],
-    ['fecha AMR desmesurada', [{ method: 'password', timestamp: '99999999999999999999' }]],
-    ['fecha AMR futura de 60 segundos', [{ method: 'password', timestamp: marca + 60 }]],
-    ['fecha AMR futura superior a tolerancia', [{ method: 'password', timestamp: marca + 31 }]],
-    ['fecha AMR negativa', [{ method: 'password', timestamp: -100 }]],
+  for (const [titulo, crearAmr] of [
+    ['recuperación sin contraseña', marca => [{ method: 'recovery', timestamp: marca }]],
+    ['OTP en vez de contraseña', marca => [{ method: 'otp', timestamp: marca }]],
+    ['contraseña comprobada hace más de cinco minutos', marca => [{ method: 'password', timestamp: marca - 310 }]],
+    ['AMR ausente', () => null], ['AMR objeto en vez de lista', marca => ({ method: 'password', timestamp: marca })],
+    ['fecha AMR inválida', () => [{ method: 'password', timestamp: 'invalid' }]],
+    ['fecha AMR desmesurada', () => [{ method: 'password', timestamp: '99999999999999999999' }]],
+    ['fecha AMR futura de 60 segundos', marca => [{ method: 'password', timestamp: marca + 60 }]],
+    ['fecha AMR futura superior a tolerancia', marca => [{ method: 'password', timestamp: marca + 31 }]],
+    ['fecha AMR negativa', () => [{ method: 'password', timestamp: -100 }]],
   ]) {
-    await conJwt(ana.id, SID_ANA, { amr });
-    paso(`${titulo}: la lectura propia sigue permitida, no el borrado`, await confirmada()
-      && await denegado(() => db.query('select public.borrar_mi_cuenta()')));
+    await db.exec('begin');
+    try {
+      const amr = crearAmr(await epoch());
+      await conJwt(ana.id, SID_ANA, { amr });
+      paso(`${titulo}: la lectura propia sigue permitida, no el borrado`, await confirmada()
+        && await denegado(() => db.query('select public.borrar_mi_cuenta()')));
+    } finally { await db.exec('rollback'); }
     await sesion(db);
     paso(`${titulo}: no deja borrado parcial`, await cuenta(db, 'select count(*)::int n from auth.users where id=$1', [ana.id]) === 1
       && await cuenta(db, 'select count(*)::int n from auth.sessions where user_id=$1', [ana.id]) === sesionesAntes);

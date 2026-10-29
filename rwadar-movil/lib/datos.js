@@ -4,6 +4,7 @@ import { exigirModoLocal, MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './modo-l
 import { validarRadarLocal, revisionTemporalOferta, ofertaConCifrasVigentes } from './verificacion-local';
 import { CACHE_CATALOGO, crearLectorCatalogo } from './catalogo-remoto';
 import { normalizarProgreso, progresoVacio } from './academy-progreso';
+import { clavesPrivadasDispositivo } from './acceso-obligatorio';
 
 /* Supabase no se importa al evaluar este módulo. En modo interno ni siquiera
    se ejecuta su archivo, de modo que cargar la app no puede crear un cliente
@@ -51,11 +52,37 @@ const CLAVES_LOCALES = [
 if (!MODO_LOCAL) CLAVES_LOCALES.push(CACHE_CATALOGO, 'rwadar.cache.catalogo.v1');
 
 let lectorCatalogo = null;
-function cargarCatalogoRemoto(opciones) {
+let accesoCatalogo = null;
+const DATOS_PERSONALES = new Set([CACHE_SIGO, CACHE_PENDIENTES, PROGRESO_ACADEMY, OFERTAS_GUARDADAS]);
+function claveAlmacenamiento(clave) {
+  if (MODO_LOCAL || !DATOS_PERSONALES.has(clave)) return clave;
+  return accesoCatalogo ? clave + ':' + accesoCatalogo.usuarioId : null;
+}
+export function configurarAccesoCatalogo(usuarioId, obtenerCliente) {
+  if (!usuarioId || typeof obtenerCliente !== 'function') {
+    accesoCatalogo = null; lectorCatalogo = null; return;
+  }
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(usuarioId)) throw new Error('Identidad de catálogo no válida');
+  if (accesoCatalogo?.usuarioId !== usuarioId) {
+    lectorCatalogo = null;
+    accesoCatalogo = { usuarioId, obtenerCliente };
+  } else accesoCatalogo.obtenerCliente = obtenerCliente;
+}
+async function cargarCatalogoRemoto(opciones) {
   if (MODO_LOCAL) throw new Error('El catálogo remoto está bloqueado en modo local');
+  if (!accesoCatalogo) throw new Error('Se necesita una cuenta confirmada para consultar el catálogo');
+  const acceso = accesoCatalogo;
+  // Even a cache-only request requires the current verified account. Never
+  // import the old anonymous cache into another person's account.
+  await acceso.obtenerCliente();
+  if (accesoCatalogo !== acceso) throw new Error('La cuenta ha cambiado');
   if (!lectorCatalogo) lectorCatalogo = crearLectorCatalogo({
-    almacenamiento: AsyncStorage,
-    clientePublico: () => supabaseRemoto().clientePublico(),
+    almacenamiento: {
+      getItem: key => AsyncStorage.getItem(key + ':' + acceso.usuarioId),
+      setItem: (key, value) => AsyncStorage.setItem(key + ':' + acceso.usuarioId, value),
+      removeItem: key => AsyncStorage.removeItem(key + ':' + acceso.usuarioId),
+    },
+    clientePublico: acceso.obtenerCliente,
   });
   return lectorCatalogo.cargar(opciones);
 }
@@ -82,12 +109,18 @@ export const CLAVES_MODO_LOCAL = Object.freeze({
    Consulta sin conexión
    --------------------------------------------------------------------- */
 async function guardar(clave, datos) {
-  await AsyncStorage.setItem(clave, JSON.stringify(datos));
+  const destino = claveAlmacenamiento(clave);
+  if (!destino) throw new Error('Entra para guardar tus datos');
+  await AsyncStorage.setItem(destino, JSON.stringify(datos));
 }
 
 async function leer(clave) {
   try {
-    const s = await AsyncStorage.getItem(clave);
+    const destino = claveAlmacenamiento(clave);
+    if (!destino) return null;
+    const cuenta = accesoCatalogo;
+    const s = await AsyncStorage.getItem(destino);
+    if (!MODO_LOCAL && DATOS_PERSONALES.has(clave) && cuenta !== accesoCatalogo) return null;
     return s ? JSON.parse(s) : null;
   } catch {
     return null;
@@ -112,6 +145,7 @@ export async function cargarRadar({ soloCache = false } = {}) {
 }
 
 export async function cargarFuera({ soloCache = false } = {}) {
+  if (!MODO_LOCAL && !accesoCatalogo) return { datos: [], deCache: false, error: 'Entra para consultar el catálogo' };
   const cacheado = await leer(CACHE_FUERA);
   if (MODO_LOCAL) {
     const datos = escaparateLocal().descartes || [];
@@ -120,8 +154,7 @@ export async function cargarFuera({ soloCache = false } = {}) {
     return { datos, deCache: false, local: true, error: null };
   }
   try {
-    const { clientePublico } = supabaseRemoto();
-    const sb = clientePublico();
+    const sb = await accesoCatalogo.obtenerCliente();
     const { data } = await sb
       .from('plataformas')
       .select('slug,nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)')
@@ -351,7 +384,9 @@ async function quitarPendiente(slug) {
 export async function alternarSeguimiento(slug, plataformaId) {
   if (!slug || !plataformaId) throw new Error('La plataforma no tiene un identificador válido');
 
+  const cuenta = accesoCatalogo;
   const actual = await siguiendo();
+  if (!MODO_LOCAL && (!cuenta || cuenta !== accesoCatalogo)) throw new Error('La cuenta ha cambiado');
   const seguir = !actual.includes(slug);
   const nuevo = seguir ? [...actual, slug] : actual.filter((s) => s !== slug);
 
@@ -367,8 +402,8 @@ export async function alternarSeguimiento(slug, plataformaId) {
      funcionar sin red, pero nunca presenta el servidor como sincronizado si
      Supabase rechazó o no confirmó la operación. */
   await AsyncStorage.multiSet([
-    [CACHE_SIGO, JSON.stringify(nuevo)],
-    [CACHE_PENDIENTES, JSON.stringify([...pendientes, operacion])],
+    [claveAlmacenamiento(CACHE_SIGO), JSON.stringify(nuevo)],
+    [claveAlmacenamiento(CACHE_PENDIENTES), JSON.stringify([...pendientes, operacion])],
   ]);
 
   try {
@@ -410,8 +445,11 @@ export async function sincronizarSeguimientoPendiente() {
 /* Borrado remoto primero: si Supabase falla, se conserva la identidad local
    para poder reintentar y no dejar una fila remota inaccesible. */
 export async function borrarDatosDispositivo() {
+  const todas = await AsyncStorage.getAllKeys();
+  const clavesCuenta = clavesPrivadasDispositivo(todas);
   if (USUARIO_LOCAL) {
-    await AsyncStorage.multiRemove(CLAVES_LOCALES);
+    await AsyncStorage.multiRemove([...CLAVES_LOCALES, ...clavesCuenta]);
+    lectorCatalogo = null;
     return { ok: true, local: true };
   }
   const { borrarIdInstalacionLocal, clienteDispositivo, idInstalacionExistente } = supabaseRemoto();
@@ -427,7 +465,8 @@ export async function borrarDatosDispositivo() {
   }
 
   await borrarIdInstalacionLocal();
-  await AsyncStorage.multiRemove(CLAVES_LOCALES);
+  await AsyncStorage.multiRemove([...CLAVES_LOCALES, ...clavesCuenta]);
+  lectorCatalogo = null;
   return { ok: true };
 }
 
@@ -448,7 +487,9 @@ export async function ofertasGuardadas() {
 
 export async function alternarOfertaGuardada(slug) {
   if (typeof slug !== 'string' || !slug) throw new Error('La oferta no tiene un identificador válido');
+  const cuenta = accesoCatalogo;
   const actual = await ofertasGuardadas();
+  if (!MODO_LOCAL && (!cuenta || cuenta !== accesoCatalogo)) throw new Error('La cuenta ha cambiado');
   const nueva = actual.includes(slug)
     ? actual.filter((s) => s !== slug)
     : [slug, ...actual].slice(0, MAX_GUARDADAS);
@@ -461,7 +502,10 @@ export async function alternarOfertaGuardada(slug) {
    la Academy se lee igual aunque no se pueda recordar nada. */
 export async function leerProgresoAcademy(slugsValidos = null) {
   try {
-    const guardado = await AsyncStorage.getItem(PROGRESO_ACADEMY);
+    const cuenta = accesoCatalogo, destino = claveAlmacenamiento(PROGRESO_ACADEMY);
+    if (!destino) return progresoVacio();
+    const guardado = await AsyncStorage.getItem(destino);
+    if (!MODO_LOCAL && cuenta !== accesoCatalogo) return progresoVacio();
     return normalizarProgreso(guardado ? JSON.parse(guardado) : null, slugsValidos);
   } catch {
     return progresoVacio();
@@ -470,7 +514,7 @@ export async function leerProgresoAcademy(slugsValidos = null) {
 
 export async function guardarProgresoAcademy(progreso) {
   const limpio = normalizarProgreso(progreso);
-  await AsyncStorage.setItem(PROGRESO_ACADEMY, JSON.stringify(limpio));
+  await guardar(PROGRESO_ACADEMY, limpio);
   return limpio;
 }
 

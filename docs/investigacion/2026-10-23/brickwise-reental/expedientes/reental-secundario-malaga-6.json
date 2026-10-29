@@ -1,0 +1,89 @@
+{
+  "slug": "reental-secundario-malaga-6",
+  "title": "Málaga 6",
+  "provider": "reental",
+  "existingCollection": "secundario",
+  "previousVerificationDate": "2026-10-22",
+  "investigacionCompleta": false,
+  "revisionIndependiente": false,
+  "aprobacionPublicacion": false,
+  "decision": "Conservar la referencia documental existente; no renovar toda su fecha ni sus cifras con esta captura",
+  "newCandidate": false,
+  "claims": [
+    {
+      "field": "estado_etiqueta_web",
+      "assertion": [
+        "Financiado"
+      ],
+      "source": "https://www.reental.co/properties/1787863663698-79ac0eff-2c25-46d8-877f-61b289829810-malaga-6",
+      "locator": "Etiqueta CMS sin clase w-condition-invisible",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La etiqueta del proyecto no acredita apertura de una emisión ni existencia de una orden P2P.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "precio_token_referencia",
+      "assertion": "100 €",
+      "source": "https://www.reental.co/properties/1787863663698-79ac0eff-2c25-46d8-877f-61b289829810-malaga-6",
+      "locator": "Precio del Token; símbolos ocultos del CMS excluidos",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "Precio nominal o de referencia del proyecto. No es precio ejecutable ni mínimo de compra del mercado secundario.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "minimo_euros",
+      "assertion": "No acreditado para una compra actual de esta referencia",
+      "source": "https://www.reental.co/properties/1787863663698-79ac0eff-2c25-46d8-877f-61b289829810-malaga-6",
+      "locator": "Precio del token; contrato específico pendiente",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La FAQ general habla de 100 euros/dólares. No convertir USD en EUR.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "espana",
+      "assertion": "No confirmado por contrato específico ni por admisión de un comprador",
+      "source": "https://www.reental.co/faqs",
+      "locator": "Quién puede invertir; registro/KYC; documento específico",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "La regla general de KYC/AML no es un pasaporte para todos los tokens.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "salida",
+      "assertion": "La FAQ contempla venta directa a un tercero admitido por la plataforma",
+      "source": "https://www.reental.co/faqs",
+      "locator": "¿Puedo vender mi token?",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "No garantiza comprador, plazo, liquidez ni precio. Deben leerse las restricciones del acuerdo específico.",
+      "status": "evidencia_observada_sin_aprobacion"
+    }
+  ],
+  "unresolved": [
+    "Leer los acuerdos, whitepaper y anexos de esta referencia y acreditar emisor/vehículo/registro y alcance.",
+    "No renovadas rentabilidades: la página muestra proyecciones sin fecha suficiente del cálculo actual.",
+    "Faltan costes, plazo de salida, restricciones de cesión y acceso español específicos; no completar con otra emisión."
+  ],
+  "primaryPage": {
+    "url": "https://www.reental.co/properties/1787863663698-79ac0eff-2c25-46d8-877f-61b289829810-malaga-6",
+    "file": "reental-secundario-malaga-6.html",
+    "reviewedInDepth": false,
+    "consultedAt": "2026-10-23T19:07:55.149772+00:00",
+    "http": 200,
+    "finalUrl": "https://www.reental.co/properties/1787863663698-79ac0eff-2c25-46d8-877f-61b289829810-malaga-6",
+    "dateHeader": "Fri, 23 Oct 2026 19:07:55 GMT",
+    "lastModified": "Thu, 22 Oct 2026 14:17:23 GMT",
+    "bytes": 111967,
+    "sha256": "f0f046ff0f9a9ea20704210c8c00cf36e8f84a97b3b2f30474d8fa2475e80d3a"
+  },
+  "pdfLinksDiscovered": [
+    "https://d23t4e7dm0xzj0.cloudfront.net/MLG-6/docs-es/1706556757606_acuerdo_suscripcion_mlg_6.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/MLG-6/docs-es/1727806161125_whitepaper_mlg_6.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/MLG-6/docs-en/1706556761223_acuerdo_suscripcion_mlg_6_eng.pdf",
+    "https://d23t4e7dm0xzj0.cloudfront.net/MLG-6/docs-en/1706556787110_whitepaper_mlg_6_eng.pdf"
+  ]
+}

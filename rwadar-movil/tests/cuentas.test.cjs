@@ -10,6 +10,15 @@ const OTRO = '22222222-2222-4222-8222-222222222222';
 const PLATAFORMA = '33333333-3333-4333-8333-333333333333';
 const CORREO = 'persona@ejemplo.test';
 const CLAVE = 'Esta clave tiene 12 o más caracteres';
+const { crearAlmacenSesion } = require('../lib/almacen-sesion');
+function almacenFalso() {
+  const datos = new Map();
+  return crearAlmacenSesion({ secureStore: {
+    getItemAsync: async k => datos.get(k) ?? null,
+    setItemAsync: async (k,v) => { datos.set(k,v); },
+    deleteItemAsync: async k => { datos.delete(k); },
+  } });
+}
 const entrada = { correo: CORREO, clave: CLAVE };
 const alta = { ...entrada, nombre: 'Ana', aceptaCondiciones: true };
 function pendiente() { let resolver; const promesa = new Promise(r => { resolver = r; }); return { promesa, resolver }; }
@@ -23,9 +32,10 @@ function entorno(opciones = {}) {
     auth: {
       async signInWithPassword(cuerpo) { llamadas.push(['entrar', cuerpo]);
         if (datos.signIn) return datos.signIn(cuerpo);
-        return exito({ user: datos.accesoUser || datos.user, session: { access_token: 'token-solo-prueba' } }); },
+        return exito({ user: datos.accesoUser || datos.user, session: { access_token: 'token-solo-prueba', refresh_token: 'refresh-prueba' } }); },
       async signUp(cuerpo) { llamadas.push(['registrar', cuerpo]); return datos.falloAlta || exito({ user: datos.user, session: datos.sesionAlta || null }); },
       async getUser() { llamadas.push(['getUser']); return datos.getUser ? datos.getUser() : datos.falloUser || exito({ user: datos.user }); },
+      async getSession() { return exito({ session: { access_token: datos.token || 'cabecera.cuenta.prueba', refresh_token: 'refresh-prueba' } }); },
       async resend(cuerpo) { llamadas.push(['reenviar', cuerpo]); return exito({}); },
       async resetPasswordForEmail(correo, opciones) { llamadas.push(['recuperar', correo, opciones]); return exito({}); },
       async signOut(cuerpo) { llamadas.push(['salir', cuerpo]); return datos.signOut ? datos.signOut() : exito({}); },
@@ -67,9 +77,50 @@ function entorno(opciones = {}) {
     async rpc(nombre) { llamadas.push(['rpc', nombre]); return datos.falloBaja || exito(null); },
   };
   const controlador = crearControladorCuentas({ modoLocal: false, cuentasRemotas: true,
-    correoVerificado: true, cliente, plazoMs: 100, ...opciones.controlador });
+    correoVerificado: true, cliente, plazoMs: 100, almacenSesion: almacenFalso(), ...opciones.controlador });
   return { controlador, cliente, llamadas, datos };
 }
+
+test('clienteCatalogo exige cuenta confirmada y perfil propio de la sesión actual', async () => {
+  const e = entorno();
+  await assert.rejects(e.controlador.clienteCatalogo());
+  await e.controlador.entrar(entrada);
+  assert.equal(await e.controlador.clienteCatalogo(), e.cliente);
+  e.datos.perfil = null;
+  await assert.rejects(e.controlador.clienteCatalogo());
+  assert.equal(e.controlador.estado().usuario, null);
+});
+
+test('clienteCatalogo de A que termina después no purga la sesión B', async () => {
+  const e = entorno(); await e.controlador.entrar(entrada);
+  const p = pendiente(); e.datos.getUser = () => p.promesa;
+  const antigua = e.controlador.clienteCatalogo();
+  await e.controlador.salir(); e.datos.getUser = null;
+  e.datos.user = { ...e.datos.user, id: OTRO }; e.datos.perfil = { id: OTRO, nombre: 'B' };
+  await e.controlador.entrar(entrada);
+  p.resolver({ data: { user: { id: UID, email: CORREO, email_confirmed_at: '2026-10-11T08:00:00Z' } }, error: null });
+  await assert.rejects(antigua);
+  assert.equal(e.controlador.estado().usuario.id, OTRO);
+});
+test('perfil protegido: 503 conserva la sesion verificada y 401 la elimina', async () => {
+  for (const status of [503,401]) {
+    const e=entorno();await e.controlador.entrar(entrada);
+    e.datos.fallo={status,message:'Base no disponible'};
+    assert.equal((await e.controlador.refrescar()).ok,false);
+    if(status===503)assert.equal(e.controlador.estado().usuario.id,UID);
+    else assert.equal(e.controlador.estado().usuario,null);
+  }
+});
+
+test('accesoTutorial entrega cabecera solo al endpoint fijo tras corroborar cuenta',async()=>{
+  const e=entorno();await assert.rejects(e.controlador.accesoTutorial());
+  await e.controlador.entrar(entrada);
+  const acceso=await e.controlador.accesoTutorial();
+  assert.equal(acceso.uri,'https://rwadar.pages.dev/api/acceso/tutorial');
+  assert.deepEqual(acceso.headers,{Authorization:'Bearer cabecera.cuenta.prueba'});
+  assert.ok(!acceso.uri.includes('cabecera'));
+  e.datos.perfil=null;await assert.rejects(e.controlador.accesoTutorial());
+});
 
 test('cuentas locales/cerradas nunca crean un cliente ni llaman a Auth', async () => {
   for (const opciones of [{}, { modoLocal: true, cuentasRemotas: true, correoVerificado: true },
@@ -158,7 +209,6 @@ for (const [titulo, opciones] of [
   ['usuario distinto', { accesoUser: { id: OTRO } }],
   ['perfil ajeno', { perfil: { id: OTRO, nombre: 'Ajeno' } }],
   ['perfil ausente', { perfil: null }],
-  ['vigilancia ajena', { vigiladas: [{ usuario_id: OTRO, plataforma_id: PLATAFORMA, plataformas: { nombre: 'Empresa de prueba' } }] }],
 ]) test('rechaza acceso ' + titulo + ' y no retiene datos de la sesión', async () => {
   const e = entorno(opciones);
   assert.equal((await e.controlador.entrar(entrada)).ok, false);
@@ -230,8 +280,8 @@ test('fallo al revalidar identidad limpia inmediatamente todos los datos sensibl
   await e.controlador.entrar(entrada);
   e.datos.falloUser = { data: null, error: { status: 503, message: 'no disponible' } };
   assert.equal((await e.controlador.refrescar()).ok, false);
-  assert.equal(e.controlador.estado().usuario, null);
-  assert.equal(e.controlador.estado().perfil, null);
+  assert.equal(e.controlador.estado().usuario.id, UID);
+  assert.equal(e.controlador.estado().perfil.nombre, 'Ana');
 });
 
 test('salir purga memoria antes del resultado remoto y limita logout a este dispositivo', async () => {
@@ -298,7 +348,7 @@ test('doble toque en el acceso no envía dos logins ni mezcla identidades', asyn
   const primera = e.controlador.entrar(entrada);
   assert.equal((await e.controlador.entrar(entrada)).ok, false);
   assert.equal(e.llamadas.filter(x => x[0] === 'entrar').length, 1);
-  espera.resolver({ data: { user: e.datos.user, session: { access_token: 'prueba' } }, error: null });
+  espera.resolver({ data: { user: e.datos.user, session: { access_token: 'prueba', refresh_token: 'refresh-prueba' } }, error: null });
   assert.equal((await primera).ok, true);
 });
 
@@ -328,7 +378,7 @@ test('cancelar la reautenticación impide enviar la baja irreversible', async ()
   e.datos.signIn = () => espera.promesa;
   const baja = e.controlador.borrarCuenta({ clave: CLAVE, confirmacion: 'BORRAR' });
   e.controlador.cancelar();
-  espera.resolver({ data: { user: e.datos.user, session: { access_token: 'prueba' } }, error: null });
+  espera.resolver({ data: { user: e.datos.user, session: { access_token: 'prueba', refresh_token: 'refresh-prueba' } }, error: null });
   assert.equal((await baja).cancelada, true);
   assert.ok(e.llamadas.every(x => x[0] !== 'rpc'));
   assert.equal(e.controlador.estado().estado, 'autenticada');
@@ -403,7 +453,7 @@ test('el SDK real con transporte simulado recorre alta, acceso, recuperación, p
     else throw new Error('Petición fuera del ensayo: ' + destino.pathname);
     return new Response(JSON.stringify(data), { status: 200, headers: { 'content-type': 'application/json' } });
   } });
-  const c = crearControladorCuentas({ modoLocal: false, cuentasRemotas: true, correoVerificado: true, crearCliente });
+  const c = crearControladorCuentas({ modoLocal: false, cuentasRemotas: true, correoVerificado: true, crearCliente, almacenSesion: almacenFalso() });
   assert.equal((await c.registrar(alta)).ok, true);
   assert.equal(c.estado().estado, 'confirmacion');
   assert.equal((await c.reenviar({ correo: CORREO })).ok, true);

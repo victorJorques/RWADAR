@@ -44,7 +44,8 @@ for(const [nombre,codigo] of [['fuente',fs.readFileSync(path.join(raiz,'rwadar-s
     assert.equal(api.rutaFichaPublica('plataformas','spiko'),'/plataformas/spiko');
   });
 }
-const temporal=fs.mkdtempSync(path.join(raiz,'rwadar-entrega-integral-20261022/precarga-test-'));
+const raizTemporal=fs.realpathSync(require('node:os').tmpdir());
+const temporal=fs.mkdtempSync(path.join(raizTemporal,'rwadar-precarga-test-'));
 const dirRegistro=path.join(temporal,'rwadar-editorial-source/ofertas/precargas');
 fs.mkdirSync(path.join(dirRegistro,'lote-prueba'),{recursive:true});
 const base=path.join(temporal,'base');
@@ -70,6 +71,26 @@ prueba('archivo extra no puede viajar por compartir carpeta/extensión',()=>{
   const extra=path.join(dirRegistro,'extra.webp');fs.writeFileSync(extra,'extra');assert.throws(()=>cargarRegistro(temporal));fs.unlinkSync(extra);
 });
 prueba('base sellada valida el árbol completo incluida configuración',()=>assert.equal(validarBase(base,sello).sha256,sello.sha256));
+prueba('Worker o rutas alterados siguen bloqueados aunque se recalcule el sello',()=>{
+  const recalcular=()=>{const archivos=inventario(base);return {...sello,archivos,sha256:huellaInventario(archivos)};};
+  for(const nombre of ['_worker.js','_routes.json']){
+    const p=path.join(base,nombre),original=fs.readFileSync(p);
+    try{
+      fs.writeFileSync(p,nombre==='_worker.js'?Buffer.concat([original,Buffer.from('\n// BFF sustituido\n')]):
+        JSON.stringify({version:1,include:['/*'],exclude:['/api/acceso/*']})+'\n');
+      assert.throws(()=>validarBase(base,recalcular()),/Artefacto de acceso distinto/);
+      fs.unlinkSync(p);assert.throws(()=>validarBase(base,recalcular()),/Base incompleta/);
+    }finally{fs.writeFileSync(p,original);}
+  }
+});
+prueba('los dos artefactos obligatorios no permiten incorporar otro JS con un sello nuevo',()=>{
+  const p=path.join(base,'_worker-extra.js');
+  try{
+    fs.writeFileSync(p,'export default {fetch(){return new Response("sustituido")}};');
+    const archivos=inventario(base),falso={...sello,archivos,sha256:huellaInventario(archivos)};
+    assert.throws(()=>validarBase(base,falso),/fuera de la lista cerrada/);
+  }finally{fs.unlinkSync(p);}
+});
 prueba('mutar HTML, JS o configuración invalida el sello',()=>{
   for(const a of archivos.filter(a=>['index.html','_headers','_redirects','sw.js'].includes(a.ruta)||/assets\/rwadar-20260820\./.test(a.ruta))) {
     const p=path.join(base,a.ruta), original=fs.readFileSync(p);fs.appendFileSync(p,' ');assert.throws(()=>validarBase(base,sello));fs.writeFileSync(p,original);
@@ -127,13 +148,17 @@ prueba('flags de bypass remoto o destinos arbitrarios fallan antes de red',()=>{
   let visitas=0;
   await verificarHTTP(base,archivos,async url=>{
     visitas++;const ruta=new URL(url).pathname;
+    assert(!['/_headers','/_redirects','/_worker.js','/_routes.json'].includes(ruta),'No solicita configuración privada de Pages');
     const a=archivos.find(a=>'/'+a.ruta.replace(/(^|\/)index\.html$/,'$1').replace(/\.html$/,'')===ruta);
     return new Response(fs.readFileSync(path.join(base,a.ruta)),{status:200,headers:{'content-type':a.ruta.endsWith('.webp')?'image/webp':'application/octet-stream'}});
   });
-  prueba('GET verifica todos los recursos públicos y omite solo configuración inaccesible',()=>assert.equal(visitas,archivos.length-2));
+  prueba('GET verifica todos los recursos públicos y omite solo los cuatro archivos de configuración inaccesibles',()=>assert.equal(visitas,archivos.length-4));
   await assert.rejects(()=>verificarHTTP(base,[foto],async()=>new Response('HTML disfrazado',{status:200,headers:{'content-type':'text/html'}})));
   prueba('HTTP 200 con bytes incorrectos no acredita una imagen propia',()=>{});
   await assert.rejects(()=>verificarHTTP(base,[foto],async()=>new Response(fs.readFileSync(path.join(base,foto.ruta)),{status:200,headers:{'content-type':'text/html'}})));
   prueba('WebP con MIME HTML también falla cerrada',()=>{});
   console.log(`\n${correctas} pruebas de precarga correctas; sin SQL ni red remota.`);
-})().catch(e=>{console.error(e);process.exitCode=1;});
+})().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>{
+  if(path.dirname(temporal)!==raizTemporal||!path.basename(temporal).startsWith('rwadar-precarga-test-'))throw new Error('Ruta temporal de prueba rechazada');
+  fs.rmSync(temporal,{recursive:true,force:true});
+});

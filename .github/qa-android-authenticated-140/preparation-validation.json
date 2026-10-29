@@ -1,0 +1,70 @@
+{
+  "preparedOnly": true,
+  "emulatorRun": false,
+  "buildRun": false,
+  "pushRun": false,
+  "dispatchRun": false,
+  "pythonSyntaxFiles": 3,
+  "workflowEmbeddedPythonBlocks": 2,
+  "yamlStructuralChecks": "passed; full YAML parse still required because no YAML parser is installed",
+  "manualAndPrivateGuards": true,
+  "runnerMinutesMax": 12,
+  "scriptMinutesMax": 8,
+  "estimatedSingleRunMinutes": "9-11",
+  "criteriaCount": 20,
+  "criteriaReused": [
+    "01",
+    "16",
+    "19"
+  ],
+  "allPendingCriteriaMappedToDefinedChecks": true,
+  "noAPK18BaselineImported": true,
+  "guestContinuationWorkflowConclusion": "cancelled",
+  "guestContinuationReportStatus": "passed-scoped-only",
+  "full20PointQA": false,
+  "files": [
+    {
+      "file": "android-authenticated-140.py",
+      "bytes": 17189,
+      "sha256": "ae2dec61a2ae62428eb1bd23986c68214e4ee17574d4ddf5bd61ea7817b32ada"
+    },
+    {
+      "file": "native_ui_140.py",
+      "bytes": 11099,
+      "sha256": "bc406afb17a9617160c80d03989973072e35365e48a1ad00e6ec9496c208234b"
+    },
+    {
+      "file": "native_catalog_checks_140.py",
+      "bytes": 21573,
+      "sha256": "42608e6e759534ff359599be64563a89dee3e019dc5f8aaf1b1a37a0e8dfb201"
+    },
+    {
+      "file": "android-authenticated-140.yml",
+      "bytes": 12829,
+      "sha256": "7f5eb818df0483790c0574f3a88a2eb571c61825f92f1f0cb83e1c7a15277b19"
+    },
+    {
+      "file": "baseline-c19-guest.json",
+      "bytes": 11038,
+      "sha256": "842b1960939bb78ee297c00478f676d8657385a5bc6f0265d2397e619738ca59"
+    },
+    {
+      "file": "baseline-c19-guest-continuation.json",
+      "bytes": 17673,
+      "sha256": "4aee7315d605006a9bc8da668c5b18dce7084f5ccc3adc61990b058951aef3c1"
+    },
+    {
+      "file": "matrix-20.json",
+      "bytes": 8422,
+      "sha256": "7c3f2e82da6390578bebbdf66e75f178605f30796694b855ab683314f32154d0"
+    },
+    {
+      "file": "CONDICIONES.md",
+      "bytes": 5016,
+      "sha256": "54bf5f8adf5a265e109c8b1fccb995cdd257ba678d09961328800ca4b5fe5cb8"
+    }
+  ],
+  "externalCoordinationFilesExcluded": [
+    "cuenta-qa-temporal.cjs"
+  ]
+}

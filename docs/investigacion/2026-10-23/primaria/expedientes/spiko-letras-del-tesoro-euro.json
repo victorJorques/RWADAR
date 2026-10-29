@@ -1,0 +1,155 @@
+{
+  "slug": "spiko-letras-del-tesoro-euro",
+  "proveedor": "Spiko",
+  "emisor": "SPIKO SICAV / subfondo Spiko EU T-Bills Money Market Fund",
+  "identificador": "FR001400ODL1",
+  "jurisdiccion": "FR",
+  "moneda": "EUR",
+  "documento": "KID01/09/2026 y prospecto01/09/2026; Terms2.2cuerpo30/06 actualizado20/10",
+  "alcanceLectura": "KID completo, apartados propios del subfondoEUR del prospecto, políticas geográficas y condiciones de suscripción/reembolso; CNMV,AMF y pasaporteREGAFI. Portales directos y Exa contrastados.",
+  "profundidad": "documental_y_registros_con_bloqueo_de_frescura",
+  "claims": [
+    {
+      "campo": "minimoEUR",
+      "dato": 1,
+      "fuentePrimaria": "https://www.twentyfirstcapital.com/admin/backend/api/documents/parts/53/2026-09-01__spiko-sicav---prospectus-vfr-20260901.pdf",
+      "localizador": "Tabla claseEUR FR001400ODL1 /p.36",
+      "fechaDato": "2026-09-01",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Suscripción inicial/posterior y mínimo de reembolso según tabla; no precio por participación.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "dato": "Corte11:30París, siguiente día hábil después del corte, valor liquidativo y posible gate10%.",
+      "fuentePrimaria": "https://www.twentyfirstcapital.com/admin/backend/api/documents/parts/53/2026-10-16__dic-priips-eutbl-ven---01092026.pdf",
+      "localizador": "pp.1,3",
+      "fechaDato": "2026-09-01",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No equiparar recepción/ejecución/liquidación; pueden limitarse reembolsos por circunstancias excepcionales.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida_instantanea",
+      "dato": "Servicio distinto sujeto a elegibilidad, saldo máximo y suspensión.",
+      "fuentePrimaria": "https://support.spiko.io/hc/en-us/articles/45293573063057-Terms-of-Use",
+      "localizador": "§§12.1–12.3",
+      "fechaDato": "2026-06-30",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No garantiza instantaneidad; diferencia deNAVposterior no se devuelve al cliente.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "costes",
+      "dato": "KID0,25%anual se basa en costes efectivos del año anterior; prospecto barème0,30%+otrosserviciosmáx0,10%.",
+      "fuentePrimaria": "https://www.twentyfirstcapital.com/admin/backend/api/documents/parts/53/2026-10-16__dic-priips-eutbl-ven---01092026.pdf",
+      "localizador": "p.3; contrastar prospectop.37",
+      "fechaDato": "2026-09-01",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No sumar/publicar0,40%como coste cobrado ni presentar0,25%como techo de todo gasto. DLT/recuperaciónwallet separados.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "dato": "Política geográfica admite países salvo lista; España no figura y se exige cuenta validada/KYC.",
+      "fuentePrimaria": "https://support.spiko.io/hc/en-us/articles/45293337468177-Geographic-Restrictions",
+      "localizador": "Lista de exclusiones y Terms§9.3",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Admisión geográfica condicionada; no demuestra alta individual ni aceptación por cualquier canal. Mantener disponibleEs=null hasta revisión.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "supervision",
+      "dato": "CNMV2380alta30/01/2026; AMFacciónEUR FR001400ODL1viva; REGAFIpasaporteEspañaA1/C3desde08/01/2026.",
+      "fuentePrimaria": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?lang=en&nif=N0401205J",
+      "localizador": "Datos generales;AMFc79399;REGAFI751211",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Distinguir registrofondo,autorizaciónservicios,comercializador y clase. No aprobación de retorno.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "rendimiento_actual",
+      "dato": null,
+      "fuentePrimaria": "https://data.spiko.io/eutbl/",
+      "localizador": "Dashboard directo frente webmarketing y Exa",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Exa2,35%30d/NAV22oct;marketingcache2,41%; navegador2,39%31d y data2,39%30d/NAV25oct(futuro23oct). No resolver por elegir cifra más reciente.",
+      "estado": "conflicto_bloqueante"
+    },
+    {
+      "campo": "riesgo",
+      "dato": "Capital no garantizado, riesgoKID1/7, horizonte recomendado1semana.",
+      "fuentePrimaria": "https://www.twentyfirstcapital.com/admin/backend/api/documents/parts/53/2026-10-16__dic-priips-eutbl-ven---01092026.pdf",
+      "localizador": "pp.1–2",
+      "fechaDato": "2026-09-01",
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No confundir riesgoKIDbajo con garantía, depósito o rentabilidad fija.",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "conflictos": [
+    "PortaldatafechaNAV25/10futura respecto consulta23/10.",
+    "Portadamarketing31dfrentedata30d, Exacachésdifieren:2,41/2,35/2,39.",
+    "Coste efectivoKID vs barèmecontractual requieren presentación separada."
+  ],
+  "propuestas": [
+    "Conservar mínimo1EUR y añadir salida bien acotada con fuentes documentales.",
+    "No renovar/APY/AUM/NAV23/10; ocultar cifra vencida o mostrar solo histórica fechada y explícita hasta resolver.",
+    "Conservar todas las fuentes ydisponibleEsdesconocido."
+  ],
+  "schemaVersion": 1,
+  "ciclo": "2026-10-23",
+  "consulta": {
+    "inicioUtc": "2026-10-23T18:57:56Z",
+    "finUtc": "2026-10-23T19:09:16Z",
+    "zonaPresentacion": "Europe/Madrid",
+    "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+  },
+  "requiereRevisionIndependiente": true,
+  "aplicado": false,
+  "publicado": false,
+  "decisionNuevaAlta": "no_es_alta_ficha_existente"
+}

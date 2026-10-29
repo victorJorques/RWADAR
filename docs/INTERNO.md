@@ -1,6 +1,6 @@
 # RWAdar · cómo está el proyecto
 
-*Actualizado el 22 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 29 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -19,44 +19,65 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 ## Qué está funcionando hoy
 
+**Acceso web en revisión:** Víctor sigue observando un retorno al acceso. Se ha reproducido y corregido otro cierre ante fallos temporales y se confirma la sesión del navegador antes de regresar. Las pruebas dirigidas pasan; todavía no se presenta el caso de su cuenta como resuelto. [Detalle](VERIFICACION-ACCESO-WEB-2026-10-29.md).
+
+El mapa de activos ya está publicado dentro de Buscar, con Lista/Mapa, 26 fichas ubicadas y permiso opcional de ubicación. Conserva las 49 referencias del catálogo y señala las ubicaciones aproximadas. La preview y producción pasan las comprobaciones HTTPS; dos lecturas independientes corroboran los archivos publicados. La revisión visual no quedó acreditada porque el controlador no pudo verificar la URL de Chrome.
+
+**Web actualizada el 28 de octubre; consulta pública y acceso corregido:** el catálogo, las fichas y Academy se pueden
+consultar sin registro. La cuenta confirmada se pide para guardar y usar funciones
+personales. Se corrigió una carrera del inicio de sesión que podía cerrar la
+sesión recién abierta. Pasaron 37 pruebas locales dirigidas, 16 comprobaciones
+HTTP en preview y otras 16 en producción; entrada, sesión y salida reales con
+la cuenta de QA también funcionaron en ambos entornos. La nueva inspección visual
+no pudo completarse: Computer Use se detuvo al no poder verificar la URL.
+
+Con permiso de Víctor se restauró la lectura pública de Supabase: siguen las
+26 plataformas y 49 referencias y las protecciones de perfiles y vigilancia.
+Esto restaura el contrato de lectura de Android 1.3.2; no se ha vuelto a probar
+en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
+
+**Android 1.4.0 ya está publicado** en la página de descargas. Conserva la sesión de forma segura entre arranques y permite activar el desbloqueo del teléfono desde Perfil. Se comprobaron el PIN del sistema, la cancelación sin mostrar contenido, el tutorial real de cuatro pasos, los cálculos de cartera y el cierre que impide recuperar la cuenta. Huella y cara dependen del hardware compatible; la prueba de dispositivo usó PIN Android. La cartera es un registro manual y no actualiza precios de intermediarios. La cuenta temporal y sus secretos quedaron limpiados.
+[Detalle de validación](VERIFICACION-ACCESO-PERSISTENTE-2026-10-28.md).
+
+**Web y cartera renovadas:** la web pública ya muestra tarjetas más claras, avisos completos y Mis inversiones en la cuenta. La cartera privada de Supabase está aplicada con permiso de Víctor; sus movimientos y precios son manuales. Las comprobaciones públicas de producción pasan. Android1.4.1 ya está compilado: corrige la renovación de sesión y prepara las mejoras automáticas compatibles. Se está comprobando el mismo APK, sin recompilar. Se instalará sobre la versión actual, sin desinstalarla. Faltan las pruebas del binario y su publicación; la descarga estable continúa en1.4.0. [Detalle](VERIFICACION-ACTUALIZACION-141-2026-10-28.md).
+
+**Seguridad web comprobada hoy:** cabeceras, cookies y controles de acceso/sesión están aplicados. La comunidad permanece apagada. Turnstile, el control adicional de abuso y algunos ajustes de los paneles aún no están acreditados; no se presentan como terminados. [Detalle breve](SEGURIDAD-WEB-REVISION-2026-10-28.md).
+
 | | Estado |
 |---|---|
-| **Web** | Pública en **https://rwadar.pages.dev** (Cloudflare), actualizada el **22/10 desde main** con el catálogo del 22/10, la reorganización, fichas sin recorte, comparación móvil, páginas permanentes, RSS e interfaz español/inglés. Preview y producción superaron HTTP, comparación de todos los recursos y recorrido real de navegador móvil y escritorio. Las cuentas opcionales y Academy siguen disponibles. |
+| **Web** | Publicada en **https://rwadar.pages.dev**, actualizada el **28/10** desde la rama aislada, con mapa de activos en Buscar. Consulta pública; cuenta para funciones personales. Login, sesión y salida comprobados con la cuenta de QA. Se conservan el radar del acceso, registro, recuperación, comparación e idiomas. |
 | **Catálogo** | **La revisión del 22 de octubre ya está aplicada en Supabase**, vigente hasta el **29 de octubre**: 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 reventa, 4 documentales en preparación). IOD figura cerrado; cifras nuevas solo cuando se observaron en su fuente. Los campos de acceso desde España permanecen sin confirmar cuando falta evidencia específica. Ver [`VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md`](VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md). |
 | **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
-| **App Android** | **Versión 1.3.2** (código 16), **publicada el 22/10** en GitHub ([RWAdar 1.3.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.3.2)). Incluye las imágenes por ficha, lugares y tarjetas nuevas; conserva las cuentas opcionales y el acabado del Perfil. Se compiló dentro de la cuota gratuita y pasó las pruebas del mismo APK en un emulador Android 15 y la revisión de sus capturas. Descarga pública, firma, tamaño, evidencia y sumas comprobados; mantiene la firma de la 1.3.1. Es una versión final y la última disponible. Todavía no está en Google Play. |
+| **App Android** | **[Versión 1.4.0](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.0)** publicada. Descarga pública, firma y contenido comprobados. Sesión persistente y desbloqueo opcional desde Perfil; catálogo completo, Academy y cartera manual validados. No está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
-| **Google** | La portada ya aparece indexada. El mapa del sitio sigue pendiente de que Google lo lea. |
+| **Google y RSS** | Fichas, sitemap y RSS vuelven a estar disponibles sin sesión. Sus respuestas públicas se comprobaron el 26/10; esto no acredita que Google ya haya vuelto a indexarlas. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
 | **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
 | **Tipografía** | Geist completa para español. La web publicada reutiliza los archivos locales: títulos de tarjeta de 20 px, datos de decisión de 16 px y secundarios de 14 px. El candidato Android también aumenta el tamaño de lectura y navegación; su comprobación se acredita por separado. |
 
-**Cuentas:** ya están activadas en la web pública. En la versión de
-revisión, Víctor confirmó el 11/10 que recibió el correo de alta y que su
-enlace funciona. **Llega a spam**: la entrega debe mejorarse antes de anunciar
-las cuentas. Supabase permite las altas y exige confirmar el correo; esa
-confirmación se mantiene obligatoria. El perfil confirmado se mostró y cerrar
-sesión funcionó en la revisión existente. El correo de recuperación solicitado
-por Codex **ya llegó a la bandeja de entrada**, con sus comprobaciones de
-autenticidad correctas; no se leyeron su cuerpo ni su enlace. Falta que Víctor
-introduzca la nueva contraseña y verificar la entrada posterior: la recuperación
-real todavía no está completada.
+**Cuentas:** consultar la web no requiere cuenta. Las funciones personales sí
+requieren una cuenta confirmada. Se comprobaron entrada, sesión y cierre en
+preview y producción. El alta y la recepción de recuperación reales ya se
+acreditaron el 24/10; no se atribuye al titular un guardado de contraseña que
+no se observó. La limpieza de la cuenta temporal se documenta por cada ciclo de QA.
 
-**Main contiene la fuente publicada.** Incluye las cuentas del 11/10,
-la orden `npm run catalogo`, el catálogo del 22/10, las imágenes por ficha y
-la reorganización con páginas propias e idiomas. Primero se comprobó la preview
-pública y después se publicó producción. Las pruebas y las huellas quedan en
-el informe de mejora integral con fecha. El vídeo de nueve perfiles simulados
-está entregado en local y reproducido completo; no es una prueba con personas.
+**La fuente web publicada el 26/10 está en la rama aislada y aún no está integrada
+en main.** La carpeta principal conserva cambios de otras herramientas y no se
+ha sobrescrito su trabajo. Hay que integrar la entrega antes de volver a publicar
+desde allí. Las pruebas y las huellas quedan en los informes con fecha. El vídeo
+de nueve perfiles simulados está entregado en local y reproducido completo; no
+es una prueba con personas ni una evaluación de todos los cambios posteriores.
 
-**Ciclo diario:** tarea activa a las **09:00 locales del PC**, por autorización
-expresa del titular; su zona actual coincide con España peninsular. Investiga
-las ofertas publicadas y busca nuevas con documentos primarios, contraste y
-revisión independiente. Cada candidata se publica con tarjeta e ilustración
-editorial si pasa las compuertas, o no se admite ese día. No existe cola pública
-«en investigación». El PC y la aplicación deben estar encendidos; si cambia
-la zona del equipo hay que reajustar el horario. Procedimiento:
+**Investigación del catálogo:** tarea preparada y **PAUSADA, con inicio manual**.
+Víctor debe pulsar **Ejecutar** o pedir **«haz la investigación»** para abrir un
+solo ciclo; la programación anterior no inicia trabajo ni autoriza futuras
+ejecuciones. Investiga las ofertas publicadas y busca nuevas con documentos
+primarios, contraste y revisión independiente. Cada candidata se publica con
+tarjeta e ilustración editorial si pasa las compuertas y existe permiso expreso
+para SQL y publicación de ese ciclo, o no se admite ese día. No existe cola
+pública «en investigación» ni autorización recurrente autónoma. Se conserva el
+catálogo completo publicado. Procedimiento:
 [`tareas/CICLO-DIARIO-CATALOGO.md`](tareas/CICLO-DIARIO-CATALOGO.md).
 
 **Cambios del 11/10:** panel nativo de cuentas y refuerzos de la web
@@ -68,8 +89,8 @@ Supabase con permiso expreso de Víctor**. La lectura posterior comprobó las
 políticas restrictivas de acceso, la sesión confirmada y vigente, la exclusión
 de usuarios anónimos y que el esquema privado no queda expuesto por REST.
 
-**Publicación y app:** la web está publicada con las guardas de cuentas
-encendidas. El APK nativo 1.3.2 también las lleva activadas, pasó la prueba de
+**Publicación y app:** la web es pública; las funciones personales conservan
+las guardas de cuentas. El APK nativo 1.3.2 también las lleva activadas, pasó la prueba de
 ejecución en emulador y **ya está publicado en GitHub**, con resultado real
 de QA y publicación exitoso. Los servicios antiguos de
 instalaciones y push permanecen apagados. Víctor autorizó EAS Android y GitHub **sin cargos**;
@@ -145,14 +166,21 @@ dos fichas de prueba, pero nada conectado a la app.
 
 ## Lo que falta, por orden
 
+La prioridad actual es resolver la compatibilidad de la descarga Android pública,
+cerrar la validación de la app nueva e integrar la web ya publicada en main.
+La lista completa de brechas y el alcance de cada prueba están en la
+[revisión integral del 24/10](REVISION-INTEGRAL-2026-10-24.md).
+Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
+
 1. **Actualizar Node.js en el PC.** El 21/10 Node corrigió fallos graves
    (código remoto por Brotli, nombres de certificados TLS y los certificados
    comprometidos de eMudhra). GitHub y las compilaciones de EAS ya usan la
    versión corregida (22.23.4). En el PC, `node rwadar-node-seguro.js` dice si la que
-   hay vale; si no, el ciclo diario sigue y avisa de que hay que actualizarla.
-   La web es estática en Cloudflare y RWAdar no usa Render ni PHP.
-2. **Renovar el catálogo antes del 28 de octubre.** El del 21/10 ya está
-   aplicado, sincronizado y publicado en la web. La próxima revisión se prepara
+    hay vale. Para esta entrega se usa un runtime portable corregido; no se ha
+    actualizado la instalación global del PC. La investigación permanece manual.
+2. **Renovar el catálogo antes de que venza su revisión el 29 de octubre.** La
+    revisión general es del 22/10, con correcciones documentales parciales del 23.
+    La próxima investigación solo empieza por orden manual de Víctor; se prepara
    con `npm run catalogo`; aplicarla a Supabase y publicar requieren autorización
    expresa para esas operaciones. Ver [`RUNBOOK.md`](RUNBOOK.md#catálogo).
    Si vence, el catálogo completo sigue visible con aviso y sin cifras vencidas.
@@ -190,7 +218,7 @@ dos fichas de prueba, pero nada conectado a la app.
 
 | Cuándo | Qué |
 |---|---|
-| **28 de octubre de 2026** | Vence la revisión del 21/10 ya publicada (la web avisa, no se vacía) |
+| **29 de octubre de 2026** | Vence la revisión general del 22/10; las correcciones parciales no la rejuvenecen. Se conserva completa con aviso y sin cifras vencidas. |
 | Cada noche, 02:43 UTC | Copia de seguridad cifrada, guardada 35 días en GitHub |
 | Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días |
 | Agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |
@@ -223,6 +251,7 @@ Cada herramienta firma sus commits con su propio nombre (ver
 | `rwadar-movil/` | App de Android e iPhone (Expo) |
 | `rwadar-qr/` | Código QR de la tarjeta |
 | `rwadar-limpieza/` | Página que desinstala la PWA antigua de Netlify: se conserva |
+| `rwadar-panel/` | Panel de control: encender/apagar web y catálogo, salud, visitas, descargas y cuentas. En el ordenador (`npm run panel`) o compartido con los socios en <https://rwadar-panel.victorjorquesgranero.workers.dev> (subido el 22/10 con permiso de Víctor; se entra con enlace personal). Ver su `LEEME.md` |
 | `rwadar-version-codex/` | Copia rescatada de la versión de agosto: no se edita |
 | `docs/` | Esta documentación |
 

@@ -112,7 +112,7 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
     await prepararMinimo();
     let respuestas;
     try {
-      const sb = clientePublico();
+      const sb = await clientePublico();
       const resultados = await Promise.allSettled([
         sb.from('catalogo_plataformas_publicas_v2').select('*').limit(LIMITES_CATALOGO_V2.plataformas + 1),
         sb.from('catalogo_ofertas_publicas_v2').select('*').limit(LIMITES_CATALOGO_V2.ofertas + 1),

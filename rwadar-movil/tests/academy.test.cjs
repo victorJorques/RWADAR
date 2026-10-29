@@ -121,7 +121,7 @@ test('el progreso vive en el dispositivo y se borra con «Borrar datos del dispo
   assert.match(datos, /CACHE_EXCLUSIONES, CACHE_FECHA, CACHE_SIGO, CACHE_PENDIENTES, PROGRESO_ACADEMY,/);
   assert.match(datos, /export async function leerProgresoAcademy/);
   const app = leer('App.js');
-  assert.match(app, /el progreso de la Academy y la caché del catálogo en este dispositivo/);
+  assert.match(app, /las inversiones registradas de todas las cuentas en este dispositivo, el progreso de la Academy y las cachés del catálogo/);
   assert.match(app, /progreso de RWAdar Academy \(lecciones leídas y aciertos del test\)/);
   const componente = leer('componentes', 'Academy.js');
   assert.doesNotMatch(componente, /supabase|fetch\(|Linking/);

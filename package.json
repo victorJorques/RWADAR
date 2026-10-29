@@ -5,7 +5,8 @@
   "description": "Registro, web, base de datos y aplicación móvil de RWAdar",
   "scripts": {
     "catalogo": "node rwadar-app/actualizar-catalogo.mjs",
-    "test": "npm run test:db && npm run test:web && npm run test:qr && npm run test:mobile && npm run test:tools",
+    "test": "npm run test:db && npm run test:web && npm run test:qr && npm run test:mobile && npm run test:tools && npm run test:acceso",
+    "test:acceso": "node --test rwadar-acceso/*.test.mjs",
     "test:db": "npm --prefix rwadar-app test",
     "test:web": "node rwadar-fichas.js && node -r ./rwadar-app/reloj-catalogo.cjs rwadar-publicar.js --local --sin-sincronizar && node -r ./rwadar-app/reloj-catalogo.cjs probar-web.mjs && node probar-fichas.cjs && node probar-precarga.cjs",
     "test:qr": "node rwadar-qr/comprobar-qr.js",

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "status": "ready",
+  "platform": "android",
+  "updateId": "01a183c5-0390-7a94-8e96-b65ccd40b6c8",
+  "groupId": "d89c8c53-cff1-4e50-a09c-9235c501ea19",
+  "runtimeVersion": "1.4.1(23)",
+  "channel": "production",
+  "apkSourceHeadSha": "c1f7106a49e988ca1dde214f0e75b7fe7d4d2719",
+  "otaSourceHeadSha": "4e911c513b3f80636ab685e52fdb13932de32c06",
+  "mobileSourceIdentical": true,
+  "workingMobileTreeClean": true,
+  "easGitCommitHash": "4e911c513b3f80636ab685e52fdb13932de32c06",
+  "publishedAt": "2026-10-28T18:28:09.232Z"
+}

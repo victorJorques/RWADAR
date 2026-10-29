@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "runId": "40384575403",
+  "apkSha256": "c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614",
+  "apkBytes": 88961845,
+  "versionCode": 20,
+  "sourceHeadSha": "7c64b6c15a826ddb3189c8ab195b4fa36201ca51",
+  "harnessHeadSha": "02ccdeb5d1ccd3ec1baeb8af3dfe1e0fa8481032",
+  "criteria": {
+    "radar26Centers320dp": {
+      "status": "validated-scope-only",
+      "details": {
+        "summary": {
+          "checked": true,
+          "count": 26,
+          "widthDp": 320,
+          "changedTouchesPresent": true,
+          "allVisibleCentresOpenOwnPlatform": true,
+          "exclusive44DpRegionsTested": false,
+          "inferredCount": 21,
+          "directCount": 5,
+          "all26NamesObservedInCurrentRun": true,
+          "currentObservedNames": [
+            "ADDX",
+            "ARTEX Global Markets",
+            "Archax",
+            "Backed Finance",
+            "Blocksquare",
+            "Centrifuge",
+            "Courtyard",
+            "Figure",
+            "Fireblocks",
+            "Franklin Templeton",
+            "INX",
+            "Lofty",
+            "Maple Finance",
+            "Midas",
+            "Ondo Finance",
+            "OpenEden",
+            "Pax Gold",
+            "Reental",
+            "Republic",
+            "Securitize",
+            "Spiko",
+            "Superstate",
+            "Swarm",
+            "Taurus",
+            "Tokeny",
+            "tZERO"
+          ],
+          "priorManifestSha256": "6c84d3f90648bb66b1f3bb824ee5fcf8d9a0416d9d83679a13f7ab4ca7feccee",
+          "priorRunId": 40377929429,
+          "priorHistoricalOutcome": "interrupted-timeout",
+          "inferenceScope": "Prior21 assertion observations inferred from pinned code and next-iteration XML;5 direct fresh observations; no prior coordinate/event values invented"
+        },
+        "inferredObservations": [
+          {
+            "index": 0,
+            "platformName": "Blocksquare",
+            "modalXmlSha256": "cb328ac1b1281412566a3c9b53386d5915c8a6b18bee4ea32cfe4578299ffb93",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 1,
+            "platformName": "Lofty",
+            "modalXmlSha256": "d8dd5af519aab217bfe25c32c8ccb64282c83fd887d14a77adc4386bd19660fa",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 2,
+            "platformName": "Taurus",
+            "modalXmlSha256": "af87760c95b8ecfb36ed82c765b2fe6205dbfa9ac8cc407758e9beb2b88d8f80",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 3,
+            "platformName": "Tokeny",
+            "modalXmlSha256": "8948779d1630844cf73b6d358f071bb10620b4c28f9fc725bc88f58a28c4d7f3",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 4,
+            "platformName": "Reental",
+            "modalXmlSha256": "c8b2109d335f2443e7726793feda95223a9c46bca5c94606e1eaf37798d4156a",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 5,
+            "platformName": "Centrifuge",
+            "modalXmlSha256": "5b6de6227b87e32905195031bab232e931a0987d288d6e582c410d05b680e02e",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 6,
+            "platformName": "Fireblocks",
+            "modalXmlSha256": "dd967da10a416f98bb2fa73b3e3c16685a7a324c05c86f300195939d2bd6dacd",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 7,
+            "platformName": "Figure",
+            "modalXmlSha256": "a70f8cb144057995fd460e253029f42f3f39331a93cdf2b8e2c8879aa3a04549",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 8,
+            "platformName": "Franklin Templeton",
+            "modalXmlSha256": "dae6d342e1d91843c2bbdfb98e8a991207b5822887ee42c83dad69c39b2b3537",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 9,
+            "platformName": "Maple Finance",
+            "modalXmlSha256": "ac83943de6b13e3e4630294e72b7235866af3ea186ff96d81d14d4e40cb534a9",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 10,
+            "platformName": "Pax Gold",
+            "modalXmlSha256": "11518de23dad6e1cf291297d29c22824cc27820445441ab38ba21abbb5a98fdc",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 11,
+            "platformName": "Courtyard",
+            "modalXmlSha256": "2ec3d3abb76b8352092c2098e0ea6a09352519a3eb852d0e96b14833c060c8ee",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 12,
+            "platformName": "ARTEX Global Markets",
+            "modalXmlSha256": "8ba39fbe5933d48c788a030b54c30b561d059f4e240e885bed0b35a651e59217",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 13,
+            "platformName": "Backed Finance",
+            "modalXmlSha256": "fdbdce7ff7337c2b7bea7d1091049d6f2d204bfb8b6ec12d13b83e65f08862a7",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 14,
+            "platformName": "Ondo Finance",
+            "modalXmlSha256": "6452a940fa9b6fca8df39fd7c4fda723a509d6bc63582327402bffe11e3e1010",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 15,
+            "platformName": "Midas",
+            "modalXmlSha256": "3787d5c33aaba39cea1f59b907a98b0974d8b98d553abeb48bf4aa281fc0d5a2",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 16,
+            "platformName": "tZERO",
+            "modalXmlSha256": "cd753092c9b1b1ba853bf8a496331c7b5b2c60fb5df68b6cd532acb7563f1183",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 17,
+            "platformName": "Swarm",
+            "modalXmlSha256": "e0cb46148495dfe57fc969b2f25928235e10d6bde2573850d4ce6ce5431bd789",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 18,
+            "platformName": "Republic",
+            "modalXmlSha256": "a3c15b712959ac474cb353e685b18b2a29093a0c8a2e5ae1494e7682e028868f",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 19,
+            "platformName": "INX",
+            "modalXmlSha256": "e718a35485617d4ca872ef6152cb2721e494f90dc543c1bde24c0ba8c2b80015",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          },
+          {
+            "index": 20,
+            "platformName": "ADDX",
+            "modalXmlSha256": "b6d4bfb100188efbdd9159ffeb34a94550cb8c44f126a0aa41be33ca2d06aba9",
+            "evidenceKind": "inferred-from-pinned-control-flow-and-next-iteration-witness",
+            "assertionsInferred": [
+              "observed-unclipped-point-centre-calculated-and-ADB-tapped",
+              "matching-platform-opened",
+              "selectedName-matched",
+              "changedTouches-at-least-one",
+              "eventType-not-click",
+              "name-unique",
+              "modal-closed-and-point-returned"
+            ],
+            "originalCentreValuesRetained": false,
+            "originalEventPayloadRetained": false
+          }
+        ],
+        "directObservations": [
+          {
+            "index": 21,
+            "name": "Archax",
+            "centre": [
+              554,
+              1390
+            ],
+            "bounds": [
+              488,
+              1324,
+              620,
+              1456
+            ],
+            "viewportBounds": [
+              0,
+              955,
+              960,
+              1595
+            ],
+            "event": {
+              "selectedName": "Archax",
+              "changedTouches": 1,
+              "eventType": "unknown"
+            },
+            "openedOwnPlatform": true,
+            "closedAndReturned": true,
+            "modalXml": "00-radar-centro-21.xml",
+            "modalXmlSha256": "7e13ffc51f2c82d111073f108da5d47ce42190aff74bab0d8b2d54df651a0fd6"
+          },
+          {
+            "index": 22,
+            "name": "Superstate",
+            "centre": [
+              596,
+              1290
+            ],
+            "bounds": [
+              530,
+              1224,
+              662,
+              1356
+            ],
+            "viewportBounds": [
+              0,
+              955,
+              960,
+              1595
+            ],
+            "event": {
+              "selectedName": "Superstate",
+              "changedTouches": 1,
+              "eventType": "unknown"
+            },
+            "openedOwnPlatform": true,
+            "closedAndReturned": true,
+            "modalXml": "00-radar-centro-22.xml",
+            "modalXmlSha256": "5355ea1880fb62f075bef16302c095211ffb067a0bcdf514f62709630880ce8f"
+          },
+          {
+            "index": 23,
+            "name": "Spiko",
+            "centre": [
+              639,
+              1294
+            ],
+            "bounds": [
+              573,
+              1228,
+              705,
+              1360
+            ],
+            "viewportBounds": [
+              0,
+              955,
+              960,
+              1595
+            ],
+            "event": {
+              "selectedName": "Spiko",
+              "changedTouches": 1,
+              "eventType": "unknown"
+            },
+            "openedOwnPlatform": true,
+            "closedAndReturned": true,
+            "modalXml": "00-radar-centro-23.xml",
+            "modalXmlSha256": "8e1115f674796dee07e69390406e1ee67863c22a09b5c3321b33d316ea7c24d2"
+          },
+          {
+            "index": 24,
+            "name": "Securitize",
+            "centre": [
+              696,
+              1299
+            ],
+            "bounds": [
+              630,
+              1233,
+              762,
+              1365
+            ],
+            "viewportBounds": [
+              0,
+              955,
+              960,
+              1595
+            ],
+            "event": {
+              "selectedName": "Securitize",
+              "changedTouches": 1,
+              "eventType": "unknown"
+            },
+            "openedOwnPlatform": true,
+            "closedAndReturned": true,
+            "modalXml": "00-radar-centro-24.xml",
+            "modalXmlSha256": "543db3a2abc5c406f4c4d3c54d20eadd9008ffa09d1437376bc3aea219ff905c"
+          },
+          {
+            "index": 25,
+            "name": "OpenEden",
+            "centre": [
+              714,
+              1265
+            ],
+            "bounds": [
+              648,
+              1199,
+              780,
+              1331
+            ],
+            "viewportBounds": [
+              0,
+              955,
+              960,
+              1595
+            ],
+            "event": {
+              "selectedName": "OpenEden",
+              "changedTouches": 1,
+              "eventType": "unknown"
+            },
+            "openedOwnPlatform": true,
+            "closedAndReturned": true,
+            "modalXml": "00-radar-centro-25.xml",
+            "modalXmlSha256": "c968baf5d4122f14b348ccda9c64c7301658d1727fe92218a07e56d0b7ed8e0c"
+          }
+        ]
+      }
+    }
+  },
+  "full20PointQA": false,
+  "releaseApproved": false
+}

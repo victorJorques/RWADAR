@@ -47,7 +47,7 @@ function texto(arbol) { return nodos(arbol).filter((n) => typeof n === 'string')
 
 /* Ejecuta los handlers de la pantalla real con hooks aislados. No arranca
    Expo, el SDK de Supabase, almacenamiento, permisos ni ninguna conexión. */
-function pantalla(inicial = {}, acciones = {}) {
+function pantalla(inicial = {}, acciones = {}, seguridad) {
   const slots = []; const efectos = []; const pendientes = [];
   let indice = 0; let cambiado = false; let arbol;
   const llamadas = [];
@@ -99,7 +99,7 @@ function pantalla(inicial = {}, acciones = {}) {
   function pintar() {
     for (let vueltas = 0; vueltas < 6; vueltas++) {
       indice = 0; cambiado = false;
-      arbol = cuenta.default({ controlador, estado: snapshot, plataformas,
+      arbol = cuenta.default({ controlador, estado: snapshot, plataformas, seguridad,
         onAbrirEmpresa: (p) => llamadas.push(['abrir', p.slug]), onAbrirEnlace: (url) => llamadas.push(['enlace', url]) });
       while (pendientes.length) pendientes.shift()();
       if (!cambiado) return arbol;
@@ -312,7 +312,7 @@ function seccionesPerfil() {
   const app = fs.readFileSync(path.join(RAIZ, 'App.js'), 'utf8');
   const ast = babel.parseSync(app, { babelrc: false, configFile: false, parserOpts: { plugins: ['jsx'] } });
   const funciones = ast.program.body.filter((n) => n.type === 'FunctionDeclaration'
-    && ['PantallaPerfil', 'Cabecera'].includes(n.id.name));
+    && ['PantallaPerfil', 'Cabecera', 'PreparandoAcceso'].includes(n.id.name));
   const estilos = ast.program.body.flatMap((n) => n.type === 'VariableDeclaration' ? n.declarations : [])
     .find((n) => n.id.type === 'Identifier' && n.id.name === 'e');
   assert.ok(estilos?.init?.arguments?.[0], 'falta StyleSheet.create de App');
@@ -323,11 +323,13 @@ function seccionesPerfil() {
   const js = babel.transformFromAstSync(ast, app, { babelrc: false, configFile: false, plugins: [jsx] }).code;
   const entorno = {
     React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
+    useState: inicial => [typeof inicial === 'function' ? inicial() : inicial, () => {}],
+    useEffect() {},
     StyleSheet: { create: (s) => s }, T: tema.T, C: colores, MODO_LOCAL: false, USUARIO_LOCAL: true,
   };
   for (const nombre of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono',
-    'Cuenta', 'GrupoMenu', 'FilaMenu', 'PanelAvisos']) entorno[nombre] = nombre;
-  return new Function(...Object.keys(entorno), `${js}; return { PantallaPerfil, Cabecera, e };`)(...Object.values(entorno));
+    'Cuenta', 'GrupoMenu', 'FilaMenu', 'PanelAvisos', 'SafeAreaView', 'ActivityIndicator']) entorno[nombre] = nombre;
+  return new Function(...Object.keys(entorno), `${js}; return { PantallaPerfil, Cabecera, PreparandoAcceso, e };`)(...Object.values(entorno));
 }
 
 test('la nota después de Cuenta queda separada y no hereda el margen negativo de ofertas retiradas', () => {
@@ -374,16 +376,18 @@ test('el efecto de App libera el controlador y vuelve a crear uno sano al repeti
   const js = babel.transformFromAstSync(babel.types.file(babel.types.program([
     babel.types.expressionStatement(efecto),
   ])), null, { babelrc: false, configFile: false }).code;
-  const controladores = [], visibles = [];
+  const controladores = [], visibles = [], orden = [], controladorActual = { current: null };
   const crear = new Function('crearControladorCuentas', 'setCuenta', 'setEstadoCuenta', 'MODO_LOCAL',
-    'CUENTAS_REMOTAS', 'CORREO_AUTH_E2E', `return (${js.replace(/;\s*$/, '')});`);
+    'CUENTAS_REMOTAS', 'CORREO_AUTH_E2E', 'controladorActual', 'restaurarAcceso', 'CUENTA_REMOTA_ACTIVA', `return (${js.replace(/;\s*$/, '')});`);
   const setup = crear((flags) => {
     const c = { flags, destruido: false, desuscrito: false,
-      suscribir(fn) { fn({ disponible: true }); return () => { c.desuscrito = true; }; },
+      suscribir(fn) { orden.push('suscribir'); fn({ disponible: true }); return () => { c.desuscrito = true; }; },
       destruir() { c.destruido = true; },
     };
     controladores.push(c); return c;
-  }, (c) => visibles.push(c), () => {}, false, true, true);
+  }, (c) => visibles.push(c), () => {}, false, true, true, controladorActual, (c) => {
+    assert.equal(controladorActual.current, c); orden.push('restaurar');
+  }, true);
   const limpiarPrimero = setup(); limpiarPrimero();
   const limpiarSegundo = setup();
   assert.equal(controladores.length, 2);
@@ -391,9 +395,11 @@ test('el efecto de App libera el controlador y vuelve a crear uno sano al repeti
   assert.equal(controladores[1].destruido, false); assert.equal(visibles[1], controladores[1]);
   assert.deepEqual(controladores[1].flags, { modoLocal: false, cuentasRemotas: true, correoVerificado: true });
   limpiarSegundo(); assert.equal(controladores[1].destruido, true);
+  assert.equal(controladorActual.current, null);
+  assert.deepEqual(orden, ['suscribir', 'restaurar', 'suscribir', 'restaurar']);
 });
 
-test('privacidad con cuentas abiertas describe memoria, baja y favoritos sin decir que Auth está cerrado', () => {
+test('privacidad con cuentas abiertas describe sesión segura, desbloqueo, baja y favoritos', () => {
   const app = fs.readFileSync(path.join(RAIZ, 'App.js'), 'utf8');
   const ast = babel.parseSync(app, { babelrc: false, configFile: false, parserOpts: { plugins: ['jsx'] } });
   ast.program.body = ast.program.body.filter((n) => n.type === 'FunctionDeclaration' && n.id.name === 'Privacidad');
@@ -403,10 +409,161 @@ test('privacidad con cuentas abiertas describe memoria, baja y favoritos sin dec
   for (const nombre of ['Modal', 'SafeAreaProvider', 'SafeAreaView', 'View', 'Text', 'ScrollView', 'Pressable', 'ActivityIndicator']) entorno[nombre] = nombre;
   const Privacidad = new Function(...Object.keys(entorno), `${js};return Privacidad;`)(...Object.values(entorno));
   const copia = texto(Privacidad({ estadoCuenta: { disponible: true } }));
-  assert.match(copia, /Cuenta opcional, la misma en web y app/);
-  assert.match(copia, /sesión vive solo en memoria/);
+  assert.match(copia, /Tu cuenta en la app y funciones personales de la web/);
+  assert.match(copia, /sesión se guarda en el almacenamiento seguro del móvil/);
+  assert.match(copia, /huella, reconocimiento facial o el PIN del sistema/);
+  assert.match(copia, /Cerrar sesión elimina el acceso guardado/);
+  assert.doesNotMatch(copia, /sesión vive solo en memoria|tendrás que entrar de nuevo/);
   assert.match(copia, /contraseña y escribiendo BORRAR/);
   assert.match(copia, /No se envían los favoritos locales ni el progreso/);
   assert.match(copia, /Instalaciones y avisos desactivados/);
   assert.doesNotMatch(copia, /Catálogo conectado, sin cuenta|Servicios de usuario desactivados|La app solo genera un UUID/);
+});
+
+
+test('perfil ofrece una sola opción de seguridad del móvil, refleja su estado y espera al sistema', async () => {
+  const cambios=[];
+  const seguridad={activado:false,preparando:false,ocupado:false,mensaje:'',
+    activar:async(valor)=>{cambios.push(valor);seguridad.activado=valor;return {ok:true};}};
+  const p=pantalla(autenticada,{},seguridad);
+  const etiqueta='Desbloquear con la seguridad del móvil';
+  assert.equal(nodos(p.pintar()).filter(n=>n.props?.accessibilityRole==='switch').length,1);
+  assert.equal(p.boton(etiqueta).props.accessibilityState.checked,false);
+  assert.match(p.texto(),/PIN que ya tengas en el móvil/);
+  assert.match(p.texto(),/RWAdar no crea ni guarda un PIN/);
+  assert.match(p.texto(),/sesión se guarda de forma segura/);
+  assert.equal(nodos(p.pintar()).filter(n=>n.type==='TextInput').length,0);
+  await p.pulsar(etiqueta);
+  assert.deepEqual(cambios,[true]);
+  assert.equal(p.boton(etiqueta).props.accessibilityState.checked,true);
+  seguridad.ocupado=true;
+  assert.equal(p.boton(etiqueta).props.disabled,true);
+  assert.equal(p.boton(etiqueta).props.accessibilityState.busy,true);
+  seguridad.ocupado=false;
+  await p.pulsar(etiqueta);
+  assert.deepEqual(cambios,[true,false]);
+  assert.equal(p.boton(etiqueta).props.accessibilityState.checked,false);
+  p.limpiar();
+});
+
+test('preparación de acceso no muestra login ni datos y permite reintentar sin cerrar la sesión guardada', () => {
+  const {PreparandoAcceso}=seccionesPerfil(),acciones=[];
+  const props={onReintentar:()=>acciones.push('reintentar'),onSalir:()=>acciones.push('salir')};
+  const preparando=PreparandoAcceso({...props,ocupado:true});
+  assert.match(texto(preparando),/Preparando tu acceso/);
+  assert.equal(nodos(preparando).filter(n=>n.type==='Pressable'||n.type==='TextInput').length,0);
+  const error=PreparandoAcceso({...props,ocupado:false,mensaje:'Comprueba la conexión para recuperar tu sesión.'});
+  const botones=nodos(error).filter(n=>n.type==='Pressable');
+  assert.deepEqual(botones.map(n=>n.props.accessibilityLabel),['Reintentar sesión guardada','Cerrar sesión guardada']);
+  botones[0].props.onPress();assert.deepEqual(acciones,['reintentar']);
+  botones[1].props.onPress();assert.deepEqual(acciones,['reintentar','salir']);
+  assert.equal(nodos(error).filter(n=>n.type==='TextInput').length,0);
+});
+
+function restauracionApp(controlador,cuentaRemotaActiva=true) {
+  const app=fs.readFileSync(path.join(RAIZ,'App.js'),'utf8');
+  const ast=babel.parseSync(app,{babelrc:false,configFile:false,parserOpts:{plugins:['jsx']}});
+  let callback;
+  babel.traverse(ast,{VariableDeclarator(ruta){if(ruta.node.id.name==='restaurarAcceso')callback=ruta.node.init.arguments[0];}});
+  assert.ok(callback,'Debe usarse la restauración real del controlador');
+  const js=babel.transformFromAstSync(babel.types.file(babel.types.program([babel.types.expressionStatement(callback)])),null,
+    {babelrc:false,configFile:false}).code;
+  const referencia={current:controlador},ocupado=[],errores=[];
+  const restaurar=new Function('CUENTA_REMOTA_ACTIVA','controladorActual','setRestaurandoAcceso','setErrorRestauracion',
+    `return (${js.replace(/;\s*$/,'')});`)(cuentaRemotaActiva,referencia,v=>ocupado.push(v),v=>errores.push(v));
+  return {restaurar,referencia,ocupado,errores};
+}
+
+test('restauración inicial conserva el guardado ante un fallo y permite reintentar; un resultado viejo no cambia la pantalla', async () => {
+  let llamadas=0,resolver;
+  const controlador={restaurar:async()=>++llamadas===1?{ok:false,error:'Sin conexión'}:{ok:true,restaurada:true}};
+  const p=restauracionApp(controlador);
+  await p.restaurar(controlador);
+  assert.deepEqual(p.ocupado,[true,false]);assert.deepEqual(p.errores,['','Sin conexión']);
+  await p.restaurar(controlador);
+  assert.equal(llamadas,2);assert.deepEqual(p.errores,['','Sin conexión','']);
+  const antiguo={restaurar:()=>new Promise(resolve=>{resolver=resolve;})},q=restauracionApp(antiguo);
+  const pendiente=q.restaurar(antiguo);q.referencia.current={};resolver({ok:false,error:'Resultado anterior'});await pendiente;
+  assert.deepEqual(q.ocupado,[true]);assert.deepEqual(q.errores,['']);
+  const local=restauracionApp(controlador,false);await local.restaurar(controlador);
+  assert.deepEqual(local.ocupado,[]);assert.equal(llamadas,2);
+});
+
+
+test('AppState mantiene la sesión pero suspende renovaciones y consultas fuera de primer plano', () => {
+  const app=fs.readFileSync(path.join(RAIZ,'App.js'),'utf8');
+  const ast=babel.parseSync(app,{babelrc:false,configFile:false,parserOpts:{plugins:['jsx']}});
+  let callback;
+  babel.traverse(ast,{CallExpression(ruta){if(ruta.node.callee.name==='useEffect'
+    && app.slice(ruta.node.start,ruta.node.end).includes('let activa = AppState.currentState'))callback=ruta.node.arguments[0];}});
+  assert.ok(callback);
+  const js=babel.transformFromAstSync(babel.types.file(babel.types.program([babel.types.expressionStatement(callback)])),null,
+    {babelrc:false,configFile:false}).code;
+  const acciones=[];let cambiar,tick;
+  const cuenta={reanudar:()=>acciones.push('reanudar'),suspender:()=>acciones.push('suspender'),refrescar:()=>acciones.push('refrescar')};
+  const appState={currentState:'background',addEventListener(tipo,fn){assert.equal(tipo,'change');cambiar=fn;return {remove:()=>acciones.push('retirar-listener')};}};
+  const setup=new Function('usuarioAdmitido','cuenta','AppState','setInterval','clearInterval',
+    `return (${js.replace(/;\s*$/,'')});`)('usuario-verificado',cuenta,appState,
+      (fn,ms)=>{assert.equal(ms,60000);tick=fn;return 1;},id=>{assert.equal(id,1);acciones.push('retirar-reloj');});
+  const limpiar=setup();tick();assert.deepEqual(acciones,['suspender']);
+  cambiar('active');tick();assert.deepEqual(acciones,['suspender','reanudar','refrescar','refrescar']);
+  cambiar('background');tick();assert.equal(acciones.at(-1),'suspender');
+  assert.equal(acciones.filter(a=>a==='refrescar').length,2);
+  limpiar();assert.deepEqual(acciones.slice(-3),['retirar-listener','retirar-reloj','suspender']);
+});
+
+
+test('producción real mantiene restauración, bloqueo y seguridad de Perfil con seguimiento legado apagado', async () => {
+  const fuenteModo=fs.readFileSync(path.join(RAIZ,'lib/modo-local.js'),'utf8');
+  const moduloModo={exports:{}};
+  const codigoModo=babel.transformSync(fuenteModo,{babelrc:false,configFile:false,plugins:[commonjs]}).code;
+  new Function('module','exports',codigoModo)(moduloModo,moduloModo.exports);
+  const flags=moduloModo.exports;
+  assert.deepEqual([flags.MODO_LOCAL,flags.SERVICIOS_USUARIO_REMOTOS,flags.CUENTAS_REMOTAS,flags.CORREO_AUTH_E2E],
+    [false,false,true,true],'Este caso debe cubrir la configuración publicada real');
+  const app=fs.readFileSync(path.join(RAIZ,'App.js'),'utf8');
+  const ast=babel.parseSync(app,{babelrc:false,configFile:false,parserOpts:{plugins:['jsx']}});
+  const nombres=new Set(['USUARIO_LOCAL','CUENTA_REMOTA_ACTIVA']);
+  const constantes=ast.program.body.filter(n=>n.type==='VariableDeclaration')
+    .flatMap(n=>n.declarations).filter(n=>n.id.type==='Identifier'&&nombres.has(n.id.name));
+  assert.ok(constantes.some(n=>n.id.name==='USUARIO_LOCAL'));
+  const codigoConstantes=babel.transformFromAstSync(babel.types.file(babel.types.program([
+    babel.types.variableDeclaration('const',constantes.map(n=>babel.types.cloneNode(n,true))),
+  ])),null,{babelrc:false,configFile:false}).code;
+  const valores=new Function(...Object.keys(flags),codigoConstantes+';return {'+constantes.map(n=>n.id.name).join(',')+'};')(...Object.values(flags));
+  assert.equal(valores.USUARIO_LOCAL,true,'El seguimiento de instalaciones debe seguir desactivado');
+  let setup,restaurar,hook,propPerfil;
+  babel.traverse(ast,{
+    CallExpression(ruta){if(ruta.node.callee.name==='useEffect'
+      && app.slice(ruta.node.start,ruta.node.end).includes('const controlador = crearControladorCuentas'))setup=ruta.node.arguments[0];},
+    VariableDeclarator(ruta){
+      if(ruta.node.id.name==='restaurarAcceso')restaurar=ruta.node.init.arguments[0];
+      if(ruta.node.id.name==='seguridad')hook=ruta.node.init;
+    },
+    JSXOpeningElement(ruta){if(ruta.node.name.name==='PantallaPerfil')
+      propPerfil=ruta.node.attributes.find(n=>n.type==='JSXAttribute'&&n.name.name==='seguridad')?.value?.expression;},
+  });
+  assert.ok(setup&&restaurar&&hook&&propPerfil,'Falta una conexión real del flujo de cuentas');
+  function evaluar(expresion,entorno){
+    const js=babel.transformFromAstSync(babel.types.file(babel.types.program([babel.types.expressionStatement(babel.types.cloneNode(expresion,true))])),
+      null,{babelrc:false,configFile:false}).code;
+    return new Function(...Object.keys(entorno),`return (${js.replace(/;\s*$/,'')});`)(...Object.values(entorno));
+  }
+  const usuarioId='11111111-2222-3333-4444-555555555555',orden=[],referencia={current:null};
+  const controlador={suscribir(fn){orden.push('suscribir');fn({disponible:true});return()=>{};},
+    restaurar:async()=>{orden.push('restaurar');return {ok:true,restaurada:true};},destruir(){}};
+  const seguridad={activado:true,bloqueado:true,preparando:false};
+  let argumentoBloqueo;
+  const entorno={...flags,...valores,controladorActual:referencia,setRestaurandoAcceso(){},setErrorRestauracion(){},
+    crearControladorCuentas:()=>controlador,setCuenta(){},setEstadoCuenta(){},usuarioAdmitido:usuarioId,
+    useBloqueoApp:(argumento)=>{argumentoBloqueo=argumento;return seguridad;},seguridad};
+  entorno.restaurarAcceso=evaluar(restaurar,entorno);
+  const limpiar=evaluar(setup,entorno)();
+  try {
+    await Promise.resolve();await Promise.resolve();
+    assert.deepEqual(orden,['suscribir','restaurar'],'La restauración remota se omitió por la bandera del seguimiento legado');
+    assert.equal(evaluar(hook,entorno),seguridad);
+    assert.equal(argumentoBloqueo.usuarioId,usuarioId,'El bloqueo debe recibir el UUID autenticado');
+    assert.equal(evaluar(propPerfil,entorno),seguridad,'Perfil debe recibir la opción de seguridad del móvil');
+  } finally {limpiar();}
 });

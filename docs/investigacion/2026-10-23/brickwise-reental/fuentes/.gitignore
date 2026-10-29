@@ -1,0 +1,6 @@
+# Originals are available locally for independent review. Keep source URLs,
+# versions, page locators and SHA-256 metadata in the private dossier.
+*.pdf
+*.html
+*.pdf.txt
+*.png

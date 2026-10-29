@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "runId": "40403843475",
+  "apkSha256": "c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614",
+  "apkBytes": 88961845,
+  "versionCode": 20,
+  "sourceHeadSha": "7c64b6c15a826ddb3189c8ab195b4fa36201ca51",
+  "harnessHeadSha": "a7d0497f66803048c52d6ce2e7f62eba2de1d87b",
+  "criteria": {
+    "providerGroup.Reental": {
+      "status": "validated-scope-only",
+      "details": {
+        "provider": "Reental",
+        "collection": "secundario",
+        "references": 21,
+        "returned": true,
+        "returnControlUsed": "group-back",
+        "transitionMarker": "group-state"
+      }
+    },
+    "providerGroups": {
+      "status": "validated-scope-only",
+      "details": {
+        "groups": [
+          {
+            "provider": "Brickwise",
+            "collection": "principales",
+            "references": 12,
+            "returned": true
+          },
+          {
+            "provider": "Reental",
+            "collection": "secundario",
+            "references": 21,
+            "returned": true,
+            "returnControlUsed": "group-back",
+            "transitionMarker": "group-state"
+          }
+        ],
+        "reuseMetadata": {
+          "runId": 40399378362,
+          "originalStatus": "failed",
+          "originalFailurePhase": "provider-groups",
+          "harnessHeadSha": "79067a648642698ac0f45faa19b092b61c7b3675",
+          "checkpointsSha256": "4ec914b68458c3705837b309672524341be37b969b86b79c449be6204a95dcf4",
+          "zipSha256": "166af75ce935f491d67cac158c9468cc06c3c30c2f9c8cc0c66152977ca3f8b5",
+          "apkSha256": "c20a45889c7eccdf0ac9cfb4fd18345a09c64e05b130a8af4b44177fb2e7e614",
+          "sourceHeadSha": "7c64b6c15a826ddb3189c8ab195b4fa36201ca51",
+          "reusedProvider": "Brickwise",
+          "reusedReferences": 12,
+          "newProvider": "Reental",
+          "newReferences": 21,
+          "brickwiseObservationPerformedInThisRun": false,
+          "reentalObservationPerformedInThisRun": true,
+          "inheritedFlagsReferToOriginalRun": true,
+          "providerGroupScopeOnly": true
+        }
+      }
+    },
+    "documentaryAndFiveImages": {
+      "status": "validated-scope-only",
+      "details": {
+        "cardSlugs": [
+          "spiko-letras-del-tesoro-euro",
+          "casa-de-outeiro",
+          "prosegur-digital-gold",
+          "fotovoltaica-greenpoint",
+          "reental-secundario-houston-3"
+        ],
+        "fiveNativeImagesAndAlt": true,
+        "datesSeparated": true,
+        "historicalReferencesContextualized": true,
+        "fourRisksBeforeSingleCta": {
+          "risks": {
+            "¿Puedo perder dinero?": [
+              12,
+              187
+            ],
+            "¿Puedo vender cuando quiera?": [
+              12,
+              190
+            ],
+            "¿Quién custodia el activo?": [
+              13,
+              193
+            ],
+            "¿Quién supervisa esta oferta?": [
+              13,
+              196
+            ]
+          },
+          "primary": {
+            "Ver en la fuente · Spiko: https://www.spiko.io/es/spiko-letras-del-tesoro-euro": [
+              13,
+              199
+            ]
+          },
+          "maxPrimaryInOneViewport": 1,
+          "viewport": 15
+        }
+      }
+    }
+  },
+  "full20PointQA": false,
+  "releaseApproved": false
+}

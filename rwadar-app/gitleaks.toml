@@ -23,6 +23,43 @@ condition = "AND"
 paths = ['''(^|/)rwadar-publicado/assets/analitica-20260927\.[0-9a-f]{12}\.js$''']
 regexes = ['''^104ff4d825364641952c49aef4c94fb1$''']
 
+# Clave publicable de Supabase: está hecha para el navegador y ya viaja en la
+# app (rwadar-movil/lib/cuentas.js). Solo ESTE valor en ESTE archivo; las
+# claves sb_secret_ y sbp_ siguen bloqueadas por sus reglas propias.
+[[allowlists]]
+description = "Clave publicable de Supabase en el compilador del acceso"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)rwadar-acceso/compilar\.cjs$''']
+regexes = ['''^sb_publishable_IjVAwxotgiimcVqI3Nnn3Q_dk7UOB5n$''']
+
+# Tokens inventados de las pruebas del acceso: {"test / {} / «firma» y
+# {"alg":"HS256"} / {"sub":"1"} / «prueba». No los firma ninguna clave real.
+[[allowlists]]
+description = "JWT ficticios de las pruebas del acceso"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)rwadar-acceso/[a-z0-9-]+\.test\.mjs$''']
+regexes = ['''^eyJ0ZXN0\.e30\.ZmlybWE$''', '''^eyJhbGciOiJIUzI1NiJ9\.eyJzdWIiOiIxIn0\.prueba$''']
+
+# Fuente pública de Brickwise: sus «tokenId» son direcciones de la cadena de
+# bloques (base58), visibles para cualquiera. Solo ESE archivo y ESA forma.
+[[allowlists]]
+description = "Direcciones públicas de tokens en la fuente de Brickwise"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)docs/investigacion/2026-10-23/brickwise-reental/fuentes/brickwise-assets-api-directa\.json$''']
+regexes = ['''^[1-9A-HJ-NP-Za-km-z]{32,44}$''']
+
+# Fuente pública de mTBILL: los enlaces a sus PDF llevan el token de descarga
+# pública que pone su propia web. Solo ESE archivo y ESA forma (UUID).
+[[allowlists]]
+description = "Enlaces públicos a documentos de mTBILL"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)docs/investigacion/2026-10-23/primaria/mtbill-documentos-exa\.md$''']
+regexes = ['''^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$''']
+
 [[rules]]
 id = "rwadar-supabase-personal-token"
 description = "Token personal administrativo de Supabase; no equivale a la clave publicable"

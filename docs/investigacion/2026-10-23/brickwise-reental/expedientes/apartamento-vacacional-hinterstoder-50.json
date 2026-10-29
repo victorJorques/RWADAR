@@ -1,0 +1,122 @@
+{
+  "slug": "apartamento-vacacional-hinterstoder-50",
+  "title": "Apartamento vacacional · Hinterstoder 50",
+  "provider": "brickwise",
+  "existingCollection": "principales",
+  "previousVerificationDate": "2026-10-22",
+  "investigacionCompleta": false,
+  "revisionIndependiente": false,
+  "aprobacionPublicacion": false,
+  "decision": "Conservar la referencia documental existente; no renovar toda su fecha ni sus cifras con esta captura",
+  "newCandidate": false,
+  "claims": [
+    {
+      "field": "identidad",
+      "assertion": "Ferien-Appartement, Hinterstoder 50; ISIN AT0000A31KP7",
+      "source": "https://api.app.brickwise.at/api/v2/assets",
+      "locator": "Objeto con id=AT0000A31KP7",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "Identificador cotejado con contrato y KID guardados; la API no prueba titularidad registral actual.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "estado_api",
+      "assertion": "secondary",
+      "source": "https://api.app.brickwise.at/api/v2/assets",
+      "locator": "stage; availableBricks",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "stage y existencias son datos distintos; no prueba orden ejecutable. updatedAt=2026-10-11T03:53:11.555Z",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "precio_reventa_api",
+      "assertion": "72 EUR",
+      "source": "https://api.app.brickwise.at/api/v2/assets",
+      "locator": "lowestOfferPrice",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "Precio mínimo publicado por la API; no es mínimo de inversión ni precio de una ejecución garantizada. Fecha del cálculo no indicada.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "minimo_euros",
+      "assertion": "No renovado como mínimo actual de compra en reventa",
+      "source": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+      "locator": "§2.1 Mindestzeichnungsbetrag y fechas originales de suscripción",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "Los importes contractuales históricos no equivalen automáticamente al mínimo actual de reventa.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "cuenta_espana",
+      "assertion": "La FAQ admite cuentas de residentes en el EEE; oferta concreta desde España sin confirmar",
+      "source": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+      "locator": "Respuesta principal; condiciones particulares §4 y §13",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "Abrir cuenta no prueba autorización para distribuir todos los productos ni supera KYC/idoneidad.",
+      "status": "evidencia_observada_sin_aprobacion"
+    },
+    {
+      "field": "coste_plataforma",
+      "assertion": "1,5 % por transacción a comprador y vendedor",
+      "source": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+      "locator": "Página 1 Vermittlungsgebühr",
+      "dataDate": "No consta",
+      "consultedOn": "2026-10-23",
+      "scopeAndConflicts": "Documento servido con Last-Modified 01/04/2023. No sumar mecánicamente costes medios del producto ni sustituir el KID individual.",
+      "status": "evidencia_observada_sin_aprobacion"
+    }
+  ],
+  "unresolved": [
+    "Registro BaFin individual y alcance actual no acreditados con la mera declaración del intermediario.",
+    "Revisar íntegramente las reglas particulares del KID/contrato, su versión y los conflictos entre ambos.",
+    "No acreditados: vigencia efectiva de garantías registrales, comprador, precio de ejecución y admisión específica desde España."
+  ],
+  "isin": "AT0000A31KP7",
+  "apiObservation": {
+    "title": "Ferien-Appartement, Hinterstoder 50",
+    "stage": "secondary",
+    "updatedAt": "2026-10-11T03:53:11.555Z",
+    "availableBricks": 0,
+    "availableBricksSecondary": 255,
+    "lowestOfferPrice": 72,
+    "issuingSharePrice": 100.2,
+    "rentalReturn": 3.63
+  },
+  "documents": [
+    {
+      "url": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+      "file": "contrato-AT0000A31KP7.pdf",
+      "reviewedInDepth": false,
+      "consultedAt": "2026-10-23T19:07:49.506165+00:00",
+      "http": 200,
+      "finalUrl": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+      "dateHeader": "Fri, 23 Oct 2026 19:07:50 GMT",
+      "lastModified": "Tue, 06 Dec 2022 14:35:19 GMT",
+      "bytes": 247203,
+      "sha256": "d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693",
+      "pages": 21,
+      "extractedCharacters": 52538,
+      "extractedTextSha256": "d4ad638e39cf1f5c8fcd5443f371a87da7214e605e1f1223d2b610994e331295"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Basisinformationsblatt.pdf",
+      "file": "kid-AT0000A31KP7.pdf",
+      "reviewedInDepth": false,
+      "consultedAt": "2026-10-23T19:07:49.936183+00:00",
+      "http": 200,
+      "finalUrl": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Basisinformationsblatt.pdf",
+      "dateHeader": "Fri, 23 Oct 2026 19:07:50 GMT",
+      "lastModified": "Tue, 02 Jan 2024 11:42:02 GMT",
+      "bytes": 139587,
+      "sha256": "ce890eafd16419c444a3da4b2f291a735583c367ccf77a7a52237f01a79c917d",
+      "pages": 3,
+      "extractedCharacters": 17436,
+      "extractedTextSha256": "2d140c08e9d3d0074e1170ac7af28f9bea61bff77ed8786a41c70ae6c7fe2dc9"
+    }
+  ]
+}

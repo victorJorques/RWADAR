@@ -1,0 +1,338 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-10-23T19:32:44.147Z",
+  "revisionId": "c406fa37-a1d3-281c-117a-95819762cfcf",
+  "hash": "c406fa37a1d3281c117a95819762cfcf793f0fdb1210ac39b6114355ead88af3",
+  "revisionAnterior": "349df4ef-97a2-db57-841f-a2f5114a6837",
+  "resultado": "correcto",
+  "contratosCompartidosWebApp": true,
+  "plataformas": 26,
+  "ofertas": 49,
+  "colecciones": {
+    "principales": 24,
+    "secundario": 21,
+    "en_camino": 4
+  },
+  "referenciasNuevas": 4,
+  "nuevasAltas": 0,
+  "fechaRadar": "2026-10-22",
+  "caducaSinRenovacionEl": "2026-10-30",
+  "pruebas": [
+    "identidad SQL/fuentes",
+    "copia literal radar/ofertas/manifiesto",
+    "solo cuatro referencias y fechas documentales de tres fichas",
+    "49 imágenes sin modificación verificadas SHA/bytes",
+    "solo siete tablas editoriales en SQL",
+    "borrador invisible",
+    "aplicar dos veces sin cambios",
+    "conservación completa siete tablas anteriores",
+    "salida pública financiera/fechas idéntica",
+    "26/49 y 24/21/4 contratos compartidos",
+    "caducidad original 29/10 inclusive; copia completa con aviso después",
+    "rechazo revisión anterior incorrecta con rollback",
+    "rechazo lote incompleto con rollback"
+  ],
+  "inventarioImagenes": {
+    "manifiesto": "rwadar-movil/assets/ofertas-editoriales/manifest.json",
+    "sha256Manifiesto": "7d8f6959a0fe0cdb7c59b33a452788030b714bea5f6f07e9fe58a552ad91cec1",
+    "archivos": [
+      {
+        "slug": "aktionariat",
+        "archivo": "oferta-aktionariat.webp",
+        "bytes": 66118,
+        "sha256": "fba8276ae85f496ec2ac963ceb6d5efe3a3cb219d07f094621d2ad087c98cd8a"
+      },
+      {
+        "slug": "apartamento-vacacional-hinterstoder-50",
+        "archivo": "oferta-apartamento-vacacional-hinterstoder-50.webp",
+        "bytes": 71648,
+        "sha256": "096581c56c2ab598bfb9f6ac074820ab75d0ac3a67f62f6b2bd58a96319ca38f"
+      },
+      {
+        "slug": "boss-info",
+        "archivo": "oferta-boss-info.webp",
+        "bytes": 43046,
+        "sha256": "eefb6294c388d35509076d588ce5a0ec80ad0451862b9e2b89aa7169da0a0389"
+      },
+      {
+        "slug": "casa-de-outeiro",
+        "archivo": "oferta-casa-de-outeiro.webp",
+        "bytes": 76464,
+        "sha256": "ba40a863620ae5e7846068e3a3d3f909caaca976aaf784c560235db228026952"
+      },
+      {
+        "slug": "drautalresidenz-paternion",
+        "archivo": "oferta-drautalresidenz-paternion.webp",
+        "bytes": 58670,
+        "sha256": "56b68f826356e8c99b93ee8902b3b434220431fcc1aa70237369c5b22e34841b"
+      },
+      {
+        "slug": "fotovoltaica-cohotel",
+        "archivo": "oferta-fotovoltaica-cohotel.webp",
+        "bytes": 35060,
+        "sha256": "2676899be75ecb64f3872450a5c15bb0902144ce3c558ebbc706f8ef64aa985b"
+      },
+      {
+        "slug": "fotovoltaica-greenpoint",
+        "archivo": "oferta-fotovoltaica-greenpoint.webp",
+        "bytes": 42470,
+        "sha256": "46b1085be2730803e83c478bbc6261ed9dfee391a94e4983470b1e7dffcd3a72"
+      },
+      {
+        "slug": "hausera-proximas-ofertas",
+        "archivo": "oferta-hausera-proximas-ofertas.webp",
+        "bytes": 62086,
+        "sha256": "455f0ce616cf7f7c883096624dc164f9f761d3d57de56226d7a3639d1796111b"
+      },
+      {
+        "slug": "iod-occasio",
+        "archivo": "oferta-iod-occasio.webp",
+        "bytes": 69368,
+        "sha256": "b0959bf7b237aec15dc1fbda23319989b82f53fe3fa23d213ea55b3095889669"
+      },
+      {
+        "slug": "local-de-estanco-klagenfurt",
+        "archivo": "oferta-local-de-estanco-klagenfurt.webp",
+        "bytes": 58604,
+        "sha256": "3072a97b0d8898bbae6e9a699210ebf7c90ecca6ab642a884670db9e7c230198"
+      },
+      {
+        "slug": "mf-one",
+        "archivo": "oferta-mf-one.webp",
+        "bytes": 72732,
+        "sha256": "dc97cb8bca4ec476f7a58f1a68556eff44299a09fd9c4e2e2b35f1b80f678175"
+      },
+      {
+        "slug": "mglo",
+        "archivo": "oferta-mglo.webp",
+        "bytes": 49326,
+        "sha256": "7c308994bb30d7cc7cf9f0dfade0eabbc39cac8e0e7cfce4f8d1b150aae1659e"
+      },
+      {
+        "slug": "mglobal",
+        "archivo": "oferta-mglobal.webp",
+        "bytes": 51478,
+        "sha256": "40927e53e1238dcd3bb8b32b6b05caa2a3a7c4f35f2059b914621e955a6e94c5"
+      },
+      {
+        "slug": "mgloeuro",
+        "archivo": "oferta-mgloeuro.webp",
+        "bytes": 34966,
+        "sha256": "caf2e4591b07e0f082d9896bbf88d6fe81e5acf1fec87b163bf0a5c1406f040e"
+      },
+      {
+        "slug": "mtbill",
+        "archivo": "oferta-mtbill.webp",
+        "bytes": 41512,
+        "sha256": "7337326d1d234482f88fc42f12241ce3e74d635bea4efd80dc3a66639e5afd09"
+      },
+      {
+        "slug": "prosegur-digital-gold",
+        "archivo": "oferta-prosegur-digital-gold.webp",
+        "bytes": 64062,
+        "sha256": "1eef9d20a89baa866aa01657019f03ef1ecb65171c3ea072caaf12babf12d0b0"
+      },
+      {
+        "slug": "randhartingergasse-9-viena",
+        "archivo": "oferta-randhartingergasse-9-viena.webp",
+        "bytes": 52508,
+        "sha256": "9deb3f7da6c66ab337ef97ad3a8706da6e6fdbe21abc60bce2d3a81908447ff8"
+      },
+      {
+        "slug": "reental-emision-primaria",
+        "archivo": "oferta-reental-emision-primaria.webp",
+        "bytes": 63602,
+        "sha256": "58c9a20136371c0e118acc691fdb49738569e1eae793fff95b7bd8a79ec5a5ad"
+      },
+      {
+        "slug": "reental-secundario-abu-dhabi-1",
+        "archivo": "oferta-reental-secundario-abu-dhabi-1.webp",
+        "bytes": 59404,
+        "sha256": "a829faa3481d90c39da73e922074cf5ab98b544cc9f9255574eea872b5d9c83d"
+      },
+      {
+        "slug": "reental-secundario-atlanta-1",
+        "archivo": "oferta-reental-secundario-atlanta-1.webp",
+        "bytes": 46366,
+        "sha256": "f90e1b7e877b42cfd2630c653f29c333ed112c2efb5639ff27fc39d3a9bc615b"
+      },
+      {
+        "slug": "reental-secundario-carolina-del-norte-1",
+        "archivo": "oferta-reental-secundario-carolina-del-norte-1.webp",
+        "bytes": 90006,
+        "sha256": "9509ae2b070eda395ecdb40b02fe7ed110181ed3ac4d9720528695de3b9de05c"
+      },
+      {
+        "slug": "reental-secundario-dania-beach-1",
+        "archivo": "oferta-reental-secundario-dania-beach-1.webp",
+        "bytes": 59916,
+        "sha256": "0ed52073dc2069bc8edf49bd1a33865850e7e1e5627f2cffc6c704fc4abf636d"
+      },
+      {
+        "slug": "reental-secundario-granada-3",
+        "archivo": "oferta-reental-secundario-granada-3.webp",
+        "bytes": 74198,
+        "sha256": "7c4362c77faacea6d8cf50f5a19a6e8d85eb21aea498aebfb04d8aeab4266bd3"
+      },
+      {
+        "slug": "reental-secundario-houston-1",
+        "archivo": "oferta-reental-secundario-houston-1.webp",
+        "bytes": 53704,
+        "sha256": "0671c6d9f717fa39f31714f59b79ee93e48fa314b6385f5a5f3052f9d7ae9ff6"
+      },
+      {
+        "slug": "reental-secundario-houston-2",
+        "archivo": "oferta-reental-secundario-houston-2.webp",
+        "bytes": 85534,
+        "sha256": "418a646995c2b589772bd48a1ce18ccf157963fc85ca5e3eff90b5db8b339b54"
+      },
+      {
+        "slug": "reental-secundario-houston-3",
+        "archivo": "oferta-reental-secundario-houston-3.webp",
+        "bytes": 79930,
+        "sha256": "80064cb8dcd295822529894d45a19a12b6843daee53ea57cf947626ce9ac71e2"
+      },
+      {
+        "slug": "reental-secundario-levante-1",
+        "archivo": "oferta-reental-secundario-levante-1.webp",
+        "bytes": 62000,
+        "sha256": "d4d064c424aef6cfb2881c905b226ff71f0db5c7fefaedfd1d372d0b0a8d42a9"
+      },
+      {
+        "slug": "reental-secundario-malaga-6",
+        "archivo": "oferta-reental-secundario-malaga-6.webp",
+        "bytes": 69548,
+        "sha256": "1d49671033060b4d215900f18f5ac94103cb71f21f225bc46b5f4c569c233649"
+      },
+      {
+        "slug": "reental-secundario-miami-1",
+        "archivo": "oferta-reental-secundario-miami-1.webp",
+        "bytes": 60724,
+        "sha256": "6f4e0633e9d4c6af9c025ba6cba33f3582d80bc5f3ed127ed19f942bbad1f61c"
+      },
+      {
+        "slug": "reental-secundario-miami-2",
+        "archivo": "oferta-reental-secundario-miami-2.webp",
+        "bytes": 94928,
+        "sha256": "a2a7ce2c8834e9406a7ed4e09dabd710166753bc9f7176a4c85a3eb2bd1eb1b2"
+      },
+      {
+        "slug": "reental-secundario-miami-3",
+        "archivo": "oferta-reental-secundario-miami-3.webp",
+        "bytes": 48754,
+        "sha256": "4e42766fc38f78029c868f5d6bed7c3db3db27bd3f4f8f8ba414ecb966ece163"
+      },
+      {
+        "slug": "reental-secundario-miami-5",
+        "archivo": "oferta-reental-secundario-miami-5.webp",
+        "bytes": 68964,
+        "sha256": "820c91a4ddcbaa7f65c113e41bef65bf4eff67050cd6da93ca8f2f9231566976"
+      },
+      {
+        "slug": "reental-secundario-opportunity-2",
+        "archivo": "oferta-reental-secundario-opportunity-2.webp",
+        "bytes": 61404,
+        "sha256": "acf387e755cfe077c0cd6930bfe705f9d675b37fbf00b22d16d0ad84301f99b9"
+      },
+      {
+        "slug": "reental-secundario-pirineos-1",
+        "archivo": "oferta-reental-secundario-pirineos-1.webp",
+        "bytes": 66368,
+        "sha256": "e5c0c74da090faf49484c2eb2b8765b9ed15c46f962c267faecc246194780ddd"
+      },
+      {
+        "slug": "reental-secundario-proyecto-100",
+        "archivo": "oferta-reental-secundario-proyecto-100.webp",
+        "bytes": 73586,
+        "sha256": "c103a7eab315d6bb64f107ea2ecff6217fb02d354c6edb6b9797499cca79f384"
+      },
+      {
+        "slug": "reental-secundario-rentas-1",
+        "archivo": "oferta-reental-secundario-rentas-1.webp",
+        "bytes": 71270,
+        "sha256": "8d1daff4fa37dd5768e9304fb0caf40d2c48f3df4d0babea4da0c357190c7568"
+      },
+      {
+        "slug": "reental-secundario-rentas-2",
+        "archivo": "oferta-reental-secundario-rentas-2.webp",
+        "bytes": 75868,
+        "sha256": "7ec7206862167eb6a8e630cfc93dbaa370eb2f187f4a5592bd3610899614582a"
+      },
+      {
+        "slug": "reental-secundario-rentas-3",
+        "archivo": "oferta-reental-secundario-rentas-3.webp",
+        "bytes": 59868,
+        "sha256": "6ea97ced81e72784555c2f634ad5bcd09f64e840be1ce79b511b7180e9c1fed4"
+      },
+      {
+        "slug": "reental-secundario-san-antonio-1",
+        "archivo": "oferta-reental-secundario-san-antonio-1.webp",
+        "bytes": 54070,
+        "sha256": "b38f4eed604372e14f3bd19862153da415461ee4374bf9ad45e7b4a43f4cb164"
+      },
+      {
+        "slug": "servicehunter-quitt",
+        "archivo": "oferta-servicehunter-quitt.webp",
+        "bytes": 55938,
+        "sha256": "728425617b4226dabdf0670c20ba1d15dd614a5626a4a90e9f966792c126c71d"
+      },
+      {
+        "slug": "spiko-letras-del-tesoro-euro",
+        "archivo": "oferta-spiko-letras-del-tesoro-euro.webp",
+        "bytes": 44674,
+        "sha256": "36765508129b9a90475ffcca024f56c767ac21ed06d048f2cd0d8a3c8aac8eca"
+      },
+      {
+        "slug": "switzerlend",
+        "archivo": "oferta-switzerlend.webp",
+        "bytes": 60752,
+        "sha256": "fd3b7d9e489eb7f7b81d8438bb9f093dce6fd4d27b128499ea8119fe97c94594"
+      },
+      {
+        "slug": "terreno-con-arrendamiento-billa",
+        "archivo": "oferta-terreno-con-arrendamiento-billa.webp",
+        "bytes": 86094,
+        "sha256": "a27447e69016501a25d25b37b411d25b3d815daf2bab2248b19a64f02499b32b"
+      },
+      {
+        "slug": "vivienda-pluddemanngasse-101-graz",
+        "archivo": "oferta-vivienda-pluddemanngasse-101-graz.webp",
+        "bytes": 57236,
+        "sha256": "68ffb11a12c2924e4712e05aa0becb93e42506dfeb891ce54bf7c5057dd13507"
+      },
+      {
+        "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+        "archivo": "oferta-vivienda-pottendorfer-stra-e-62-wr-neustadt.webp",
+        "bytes": 45228,
+        "sha256": "dd90f1d52a7742c4a131d9fffe528450ea3a34052d82487b65e35135af39d7ae"
+      },
+      {
+        "slug": "vivienda-schwarzer-weg-18-graz",
+        "archivo": "oferta-vivienda-schwarzer-weg-18-graz.webp",
+        "bytes": 67808,
+        "sha256": "4b938a75099b59e849f76443ecbbd2dcffbd0e6969c029ff9d3b212c2e452f70"
+      },
+      {
+        "slug": "vivienda-sonnleithnergasse-2-viena",
+        "archivo": "oferta-vivienda-sonnleithnergasse-2-viena.webp",
+        "bytes": 88962,
+        "sha256": "d588ca9b84844f6cc729a9ebdac4ca23fe77a518ca283e9fe8d59d3417f90ace"
+      },
+      {
+        "slug": "vivienda-stallhofstra-e-28-gratwein",
+        "archivo": "oferta-vivienda-stallhofstra-e-28-gratwein.webp",
+        "bytes": 77928,
+        "sha256": "3f6355db0b63f7c97b25fe1e28ec31760af2ef49f52ab7b3a9c7f81cf717f3f6"
+      },
+      {
+        "slug": "wemakeit",
+        "archivo": "oferta-wemakeit.webp",
+        "bytes": 69858,
+        "sha256": "ef7e8e3cde4029d179350f2c75eab9b7f72e2ffd64c84562a50198d2dd41fdf7"
+      }
+    ]
+  },
+  "aplicadoRemoto": false,
+  "publicadoWeb": false,
+  "revisionIndependienteSQL": false
+}

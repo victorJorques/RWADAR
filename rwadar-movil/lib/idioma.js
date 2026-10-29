@@ -26,6 +26,17 @@
       if(resultado===undefined&&profundidad<3){
         const t=s=>ingles(s,profundidad+1);
         const patrones=[
+          [/^(Ofertas guardadas|Plataformas guardadas) · (\d+)$/,(m,tipo,n)=>(tipo==='Ofertas guardadas'?'Saved offers':'Saved platforms')+' · '+n],
+          [/^Lección (\d+) de (\d+)$/,(m,n,total)=>'Lesson '+n+' of '+total],
+          [/^Ver (\d+) exclusiones$/,(m,n)=>'View '+n+' exclusions'],
+          [/^(\d+) guardad[oa]s? en este dispositivo$/,(m,n)=>n+' saved on this device'],
+          [/^Información comprobada el (\d{2}\/\d{2}\/\d{4})\.$/,(m,f)=>'Information checked on '+f+'.'],
+          [/^· (\d+) más en la ficha$/,(m,n)=>'· '+n+' more in the full details'],
+          [/^Movimientos y fechas · (\d+)$/,(m,n)=>'Transactions and dates · '+n],
+          [/^(Añadir movimiento|Actualizar precio|Eliminar inversión) · (.+)$/,(m,accion,n)=>({'Añadir movimiento':'Add transaction','Actualizar precio':'Update price','Eliminar inversión':'Delete investment'}[accion])+' · '+n],
+          [/^Se eliminarán «(.+)» y sus movimientos de tu cuenta\. La copia local anterior se conserva\.$/,(m,n)=>'«'+n+'» and its transactions will be deleted from your account. The previous local copy is kept.'],
+          [/^Se eliminarán «(.+)» y sus movimientos de este dispositivo\.$/,(m,n)=>'«'+n+'» and its transactions will be deleted from this device.'],
+
           [/^Fuente consultada (\d{2}\/\d{2}\/\d{4})$/,(m,f)=>'Source checked on '+f],
           [/^Revisión documental (\d{2}\/\d{2}\/\d{4})$/,(m,f)=>'Documentary review '+f],
           [/^Próximas (\d+)$/,(m,n)=>'Upcoming '+n],

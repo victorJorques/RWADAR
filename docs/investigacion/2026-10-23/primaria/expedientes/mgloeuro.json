@@ -1,0 +1,150 @@
+{
+  "slug": "mgloeuro",
+  "proveedor": "Midas",
+  "emisor": "Aureum Securitisation Fund (mGLOeuro)",
+  "identificador": null,
+  "jurisdiccion": "LU",
+  "moneda": "EUR",
+  "documento": "Ficha producto+Terms+LegalStructure+Eligibility leídas; docslegalesespecíficas incompletas",
+  "alcanceLectura": "Ficha primaria completa Exa; mFONEtambiénnavegador. Condicionesgenéricasalemanasnoextendidas automáticamente a compartimentosLU. No localizados/conciliadostodosdocumentosespecíficos.",
+  "profundidad": "parcial_no_renovacion_integral",
+  "claims": [
+    {
+      "campo": "emisor",
+      "dato": "Aureum Securitisation Fund,compartimentomGLOeuro",
+      "fuentePrimaria": "https://midas.app/mgloeuro",
+      "localizador": "Issuer",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No extrapolar segregación Luxemburgo al emisor alemán; productos distintos pese a mismo gestor.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimoEUR",
+      "dato": null,
+      "fuentePrimaria": "https://midas.app/mgloeuro",
+      "localizador": "Ficha y documentación del producto",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Precio100000EURno equivale a mínimo de inversión; no convertirlo en ticket.",
+      "estado": "no_acreditado"
+    },
+    {
+      "campo": "accesoEspana",
+      "dato": null,
+      "fuentePrimaria": "https://docs.midas.app/legal/eligibility-and-compliance",
+      "localizador": "Eligibility y documentación particular",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "AvisogeneralwebincluyeSpainpara información, no basta para elegibilidad de producto, KYC, whitelist y categoría.",
+      "estado": "no_acreditado"
+    },
+    {
+      "campo": "costes",
+      "dato": "No cifra visible en ficha leída",
+      "fuentePrimaria": "https://midas.app/mgloeuro",
+      "localizador": "Fee structure",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No extrapolar tarifaUSD a claseEUR.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "dato": "Capacidad inmediata sujeta a disponibilidad y recargas; redemption estándar con fondos apartados porgestor y posiblesdemoras.",
+      "fuentePrimaria": "https://midas.app/mgloeuro",
+      "localizador": "Liquidity & Transferability y nota3",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No garantía de plazo, contraparte o precio. mGLOBAL exige direccioneswhitelisted.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "rendimiento_actual",
+      "dato": null,
+      "fuentePrimaria": "https://midas.app/mgloeuro",
+      "localizador": "APY y período",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No renovarAPYsi no hubo dato inequívoco y completo. APY7dilustrativo,no12meses ni garantía.",
+      "estado": "no_renovado"
+    },
+    {
+      "campo": "supervision",
+      "dato": "Ofertaexenta para productoscrédito; mTBILLofertapúblicasegúndocumentos.",
+      "fuentePrimaria": "https://midas.app/mgloeuro",
+      "localizador": "Issuer y advertencias",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "No se completóconsultaFMA/ESMAindependiente de registro hoy para esteproducto; no marcar autorizaciónverificada.",
+      "estado": "parcial"
+    },
+    {
+      "campo": "ventana",
+      "dato": "Mintingopen,ventana mostrada hasta28octubre.",
+      "fuentePrimaria": "https://midas.app/mgloeuro",
+      "localizador": "InvestmentCycle",
+      "fechaDato": null,
+      "consulta": {
+        "inicioUtc": "2026-10-23T18:57:56Z",
+        "finUtc": "2026-10-23T19:09:16Z",
+        "zonaPresentacion": "Europe/Madrid",
+        "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+      },
+      "alcanceYLimites": "Es ventana mintingdescrita; no contrato individual aceptado ni garantía de oferta minoristaEspaña.",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "conflictos": [],
+  "propuestas": [
+    "Conservar ficha y fuentes; no rejuvenecer todas las fechas ni APY por leer fichaactual.",
+    "Añadir únicamente condiciones individualmente acreditadas, con su limitación yrevisiónindependiente."
+  ],
+  "schemaVersion": 1,
+  "ciclo": "2026-10-23",
+  "consulta": {
+    "inicioUtc": "2026-10-23T18:57:56Z",
+    "finUtc": "2026-10-23T19:09:16Z",
+    "zonaPresentacion": "Europe/Madrid",
+    "nota": "Intervalo de lectura real de esta investigación. No es fecha del dato ni renovación de todas las afirmaciones."
+  },
+  "requiereRevisionIndependiente": true,
+  "aplicado": false,
+  "publicado": false,
+  "decisionNuevaAlta": "no_es_alta_ficha_existente"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "passed-local-transport-test",
+  "checks": [
+    "empty response is transient EOF",
+    "nonempty stale nonce still fails closed",
+    "actual start_snapshot_bridge retries real loopback EOF",
+    "second real connection supplies fresh root",
+    "two unique request sequence values",
+    "all sockets closed; no external endpoints or files with UI"
+  ],
+  "transport": "127.0.0.1 ephemeral port",
+  "serverEvents": [
+    "closed first connection after request without response",
+    "second connection returned matching fresh response"
+  ],
+  "elapsedSeconds": 0.14,
+  "androidObserved": false,
+  "productModified": false,
+  "remoteOperation": false
+}

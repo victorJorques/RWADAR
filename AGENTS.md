@@ -20,25 +20,25 @@ Lo de `docs/archive/` es histórico y no describe el estado vigente.
 - Compilar o publicar la app: `eas build`, `eas update`, `eas submit`.
 - Cambiar la visibilidad del repositorio, borrar hosting o rotar credenciales.
 
-**Excepción recurrente autorizada por Víctor el 22/10/2026:** el ciclo diario
-de las **09:00 de `Europe/Madrid`** puede investigar las ofertas y, después de
-las revisiones y compuertas de
-[`CICLO-DIARIO-CATALOGO.md`](docs/tareas/CICLO-DIARIO-CATALOGO.md), aplicar
-exclusivamente el SQL editorial del catálogo revisado y publicar su web
-(`--preview` y `--produccion`). No necesita renovar ese permiso cada día.
-Esta excepción no autoriza cuentas, comunidad, Auth, RLS/ACL, funciones,
-migraciones de esquema, credenciales, correos, pagos, builds/OTA/tiendas,
-visibilidad ni otras operaciones. Cada candidata se admite y publica tras las
-compuertas, o no se admite ni publica ese día; no se mantiene una cola ni un
-estado público «en investigación». Al día siguiente se investiga de nuevo
-desde fuentes vigentes, sin arrastrar una aprobación anterior. El catálogo
-completo ya publicado se conserva.
+**Investigación del catálogo: inicio manual.** Por indicación de Víctor del
+22/10/2026, la tarea queda preparada y **PAUSADA**. Sólo se inicia cuando Víctor
+pulsa **Ejecutar** o pide **«haz la investigación»**. No se ejecuta por horario
+ni existe autorización recurrente para iniciar investigaciones, aplicar SQL o
+publicar por cuenta propia. Cada inicio manual corresponde a un solo ciclo;
+no reactiva la programación ni autoriza futuras ejecuciones.
+Esta indicación sustituye el modo automático anterior descrito en los informes
+y traspasos fechados del 22/10.
 
-La tarea está activa en Tareas programadas. Por limitación del programador,
-Víctor autorizó guardarla a las09:00 locales del PC, cuya zona actual coincide
-con España peninsular. Si cambia esa zona, reajustar el horario; comprobar Madrid
-al inicio antes de investigar o publicar. El equipo y la aplicación deben estar
-encendidos. El procedimiento diario contiene el detalle y los límites.
+Seguir la investigación profunda, la revisión independiente y las compuertas de
+[`CICLO-DIARIO-CATALOGO.md`](docs/tareas/CICLO-DIARIO-CATALOGO.md). Para SQL
+remoto o publicación web, comprobar el permiso expreso de Víctor para ese ciclo;
+iniciar la investigación no elimina los límites anteriores. No incluye cuentas,
+comunidad, Auth, RLS/ACL, funciones, migraciones de esquema, credenciales,
+correos, pagos, builds/OTA/tiendas, visibilidad ni otras operaciones.
+Cada candidata se admite y publica tras las compuertas y con autorización, o no
+se admite ni publica ese día; no se mantiene una cola ni un estado público
+«en investigación». En otro inicio manual se consultan de nuevo las fuentes,
+sin arrastrar aprobaciones. El catálogo completo ya publicado se conserva.
 
 ## Límites de seguridad
 

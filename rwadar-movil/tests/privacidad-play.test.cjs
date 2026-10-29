@@ -33,7 +33,9 @@ function scriptsSolicitados(href) {
 test('el explicador nativo conserva el fragmento que excluye su carga inicial de analítica web', () => {
   assert.equal(pagina, 'https://rwadar.pages.dev/#explain',
     'Cambiar la URL requiere revisar la declaración de datos de la WebView');
-  assert.match(explicador, /source=\{\{ uri: PAGINA \}\}/u);
+  assert.match(explicador, /source=\{acceso\}/u);
+  assert.match(explicador, /setAcceso\(\{ uri: PAGINA \}\)/u);
+  assert.equal(scriptsSolicitados('https://rwadar.pages.dev/api/acceso/tutorial').length, 0);
   assert.equal(scriptsSolicitados(pagina).length, 0);
 });
 
