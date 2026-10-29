@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-10-28",
+  "actualizadoEl": "2026-10-29",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Continuación expresa: corregido el rechazo de un recurso secundario que Chrome demostró convertido en cierre de sesión. BFF distingue error de operación y Auth; no se consultan avisos apagados.65 pruebas del área aprobadas y generación26/49. SQL29 reparado solo en el validador mediante dos paréntesis:30 controlesPGlite,8 independientes y SELECT remoto positivo; RLS/ACL conservados. Preview y Chrome real antes de producción. Mismo APK23, cierre nativo separado y sin recompilar. Investigación pausada, catálogo y fechas conservados, sin monetización. Detalle VERIFICACION-ACCESO-WEB-2026-10-29.md.",
+  "nota": "Continuación expresa: SW activa sin navegar ni esperar a sus ventanas; aislado en Chrome real anónimo al bloquear solo el trabajador. WebGL no es la causa aislada. Conserva cachés propias, claim y consulta pública. Dos pruebas SW y revisión independiente aprobadas; web550, fichas90 y precarga31 pasan. Conserva65 controles BFF y SQL29 reparado con30PGlite+8independientes, sin ampliar permisos. npmtest completo se detuvo antes en una prueba de sesión/baja, no se declara aprobado. Preview normal y Chrome real antes de producción. APK23 sin recompilar; investigación pausada y datos/fechas conservados. Detalle VERIFICACION-SW-ACCESO-2026-10-29.md.",
   "revisionAprobada": {
-    "commit": "b961d9d3c3334467094da929f81f17a6dd505f0c",
-    "contenidoSha256": "sha256:e4dd6df1e023392ec7aec182a777b6ef570daf37d7ce692430d173bdee8d85aa",
+    "commit": "d936f6f13eb6b3c50bd02f0cb7097e0ec7120375",
+    "contenidoSha256": "sha256:a482e6e233a7b858bbb6858a32d3dac52261e0f2844ccb65771acada45168374",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
