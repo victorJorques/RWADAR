@@ -1,33 +1,34 @@
-# Ciclo diario del catálogo de RWAdar
+# Investigación del catálogo de RWAdar · inicio manual
 
 Vigente desde el 22 de octubre de 2026. Encargo de Víctor: investigar en
 profundidad las ofertas actuales y nuevas y publicar un catálogo de calidad
-con tarjeta e imagen editorial realista. El horario solicitado es **09:00 de
-España peninsular**. La tarea quedó **activa** el22/10 como «RWAdar · investigación
-y publicación diaria». Ante la limitación de la herramienta para fijar una zona,
-Víctor autorizó expresamente guardarla a las **09:00 de la hora local del PC**.
-La zona actual del equipo es Europe/Warsaw: coincide con Europe/Madrid, incluidos
-los cambios estacionales en las reglas consultadas. Si se cambia la zona del PC,
-hay que reajustar la tarea. Comprobar la hora de Madrid antes de iniciar el ciclo;
-no iniciar antes por un desajuste del programador. **Las 09:00 son la hora de
-inicio de la investigación, no una hora límite para terminar o publicar.**
-Las comprobaciones y la publicación se realizan cuando concluyan las compuertas.
-El PC y la aplicación deben seguir encendidos. No hay cuota de altas ni de
-cambios: un día sin novedades verificables puede terminar sin publicar.
+con tarjeta e imagen editorial realista. Por su indicación posterior del mismo
+día, la tarea queda **preparada y PAUSADA, con inicio manual**: Víctor debe
+pulsar **Ejecutar** o pedir **«haz la investigación»**. La programación anterior
+de las 09:00 deja de iniciar trabajo por sí sola. No reactivar la tarea ni
+programar otra ejecución sin una nueva indicación expresa.
+
+Cada inicio manual abre un solo ciclo. Investigar con profundidad y completar
+las revisiones sin una hora límite artificial. Las comprobaciones y cualquier
+publicación autorizada se realizan cuando concluyan las compuertas. No hay
+cuota de altas ni de cambios: una investigación sin novedades verificables
+puede terminar sin publicar.
 
 La decisión diaria por candidata es binaria: **admitida y publicada tras las
 compuertas**, o **no admitida y no publicada hoy**. No se crea una categoría ni
 estado público «en investigación», ni una cola editorial persistente de
 candidatas pendientes. Se conserva el expediente interno histórico para
-trazabilidad; mañana se investiga de nuevo desde fuentes vigentes y se decide
-de nuevo, sin arrastrar aprobaciones.
+trazabilidad; en el siguiente inicio manual se investiga de nuevo desde fuentes
+vigentes y se decide de nuevo, sin arrastrar aprobaciones.
 
-La autorización recurrente abarca **datos del catálogo y publicación web**,
-incluidos el SQL editorial concreto revisado, preview y producción. No abarca
-cuentas, comunidad, políticas o funciones, credenciales, correo, pagos, EAS,
-OTA, tiendas, cambios de visibilidad ni activaciones de servicios. Una tarea
-que necesite esas operaciones se deja pendiente y se explica por separado.
-No ejecutar una migración general ni un `db push` como parte del ciclo.
+El inicio manual habilita la investigación de ese ciclo; **no concede una
+autorización recurrente autónoma**. Antes de aplicar SQL editorial remoto o
+publicar preview y producción, comprobar el permiso expreso de Víctor para esa
+ejecución, además de las revisiones y compuertas. No abarca cuentas, comunidad,
+políticas o funciones, credenciales, correo, pagos, EAS, OTA, tiendas, cambios
+de visibilidad ni activaciones de servicios. Una tarea que necesite esas
+operaciones se deja pendiente y se explica por separado. No ejecutar una
+migración general ni un `db push` como parte del ciclo.
 
 ## 1. Preparar la revisión y leer lo publicado
 
@@ -285,8 +286,8 @@ Antes de aplicar:
    colecciones y cada dato crítico cambiado. El éxito local o del comando SQL
    no acredita por sí solo el estado remoto. Guardar esta comprobación.
 
-La autorización recurrente de Víctor cubre este SQL de catálogo revisado. Una
-necesidad de ampliar el esquema o tocar otra área se presenta aparte.
+El SQL de catálogo revisado requiere el permiso expreso de Víctor para ese
+ciclo. Una necesidad de ampliar el esquema o tocar otra área se presenta aparte.
 
 ## 6. Comprobar web, clientes y publicar
 
@@ -297,7 +298,7 @@ del lector: **256 plataformas y 1000 ofertas**. El mínimo es el manifiesto del
 último lote completo aceptado, incluidas sus tres colecciones: no se admite
 pasar de 50 a 49 ni reducir una colección como efecto de un truncado. Una
 reducción o reclasificación deliberada necesita revisar expresamente el
-manifiesto y la compatibilidad de clientes, fuera del camino automático de altas.
+manifiesto y la compatibilidad de clientes, fuera del camino de ampliación.
 
 Las vistas V2 ya usan los conteos declarados y permiten que una oferta tenga
 un proveedor distinto de las 26 plataformas canónicas. Añadir una oferta no
@@ -361,9 +362,9 @@ activar SQL**: conservar el último catálogo completo y cerrar cada candidata
 afectada como **no admitida y no publicada hoy**, indicando el motivo concreto
 en su expediente histórico.
 No dejarla «en investigación» ni con una aprobación pendiente para mañana.
-La siguiente ejecución vuelve a consultar las fuentes vigentes y toma una
-decisión nueva. La hora programada no convierte una investigación incompleta
-en una publicación válida.
+La siguiente ejecución manual vuelve a consultar las fuentes vigentes y toma
+una decisión nueva. El inicio manual no convierte una investigación incompleta
+en una publicación válida ni autoriza otra ejecución por horario.
 
 **Después de activar SQL**, el lote nuevo ya es público. Si falla la preview o
 el despliegue definitivo, conservar ese lote completo (por ejemplo, 50 o más

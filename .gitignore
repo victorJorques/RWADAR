@@ -46,6 +46,7 @@
 !/rwadar-ofertas-editoriales.js
 !/rwadar-adelgazar.js
 !/rwadar-servir.js
+!/rwadar-panel/
 !/rwadar-banco-de-sonidos.html
 !/rwadar-qr/
 !/rwadar-limpieza/
@@ -55,6 +56,10 @@
 !/CLAUDE.md
 
 # Dentro de esas carpetas, lo que nunca se versiona
+# (el registro del panel de control lleva correos de cuentas reales)
+rwadar-panel/datos/
+rwadar-panel/datos-demo/
+rwadar-panel/nube/generado/
 node_modules/
 .expo/
 dist/

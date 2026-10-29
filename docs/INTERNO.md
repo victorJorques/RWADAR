@@ -1,5 +1,28 @@
 # RWAdar · cómo está el proyecto
 
+**Material promocional local del 28 de octubre:** tras el rechazo del corte
+de veintiséis segundos, hay una nueva propuesta de veintiocho, inspirada en
+la referencia visual que aportó Víctor. Incluye rodaje real nuevo con la app
+integrada en la pantalla del móvil, un recorrido espacial por funciones,
+una oferta de Casa de Outeiro y la portada web actual. La música es distinta
+y no hay locución. Las capturas proceden del código real en navegador,
+sin cambios del producto; no son una prueba del APK. Entrega local sin
+publicar, pendiente de valoración creativa.
+[Vídeo y comprobaciones](VERIFICACION-ANUNCIO-DESCUBRE-2026-10-28.md).
+Los anuncios anteriores rechazados se conservan como historial.
+
+**Estado vigente comprobado el 24 de octubre:** la web con radar y cuenta
+confirmada ya está publicada. La fuente está en la entrega aislada y todavía
+no se ha integrado en main. Android 1.4.0 sigue en borrador; la última prueba
+autorizada no completó su validación. La descarga pública anterior tiene una
+incompatibilidad de sincronización con los nuevos permisos del catálogo,
+identificada en su código. La investigación sigue pausada para inicio manual.
+
+La [revisión integral actual](../rwadar-entrega-integral-20261022/integracion-140/docs/REVISION-INTEGRAL-2026-10-24.md)
+y el [estado de la entrega](tareas/ESTADO-CODEX-2026-10-24.md) prevalecen sobre
+los apartados siguientes del 22/10, conservados mientras se integra el trabajo
+compartido de esta carpeta. No publicar desde este main sin integrar la entrega.
+
 *Actualizado el 22 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
@@ -50,13 +73,15 @@ pública y después se publicó producción. Las pruebas y las huellas quedan en
 el informe de mejora integral con fecha. El vídeo de nueve perfiles simulados
 está entregado en local y reproducido completo; no es una prueba con personas.
 
-**Ciclo diario:** tarea activa a las **09:00 locales del PC**, por autorización
-expresa del titular; su zona actual coincide con España peninsular. Investiga
-las ofertas publicadas y busca nuevas con documentos primarios, contraste y
-revisión independiente. Cada candidata se publica con tarjeta e ilustración
-editorial si pasa las compuertas, o no se admite ese día. No existe cola pública
-«en investigación». El PC y la aplicación deben estar encendidos; si cambia
-la zona del equipo hay que reajustar el horario. Procedimiento:
+**Investigación del catálogo:** tarea preparada y **PAUSADA, con inicio manual**.
+Víctor debe pulsar **Ejecutar** o pedir **«haz la investigación»** para abrir un
+solo ciclo; la programación anterior no inicia trabajo ni autoriza futuras
+ejecuciones. Investiga las ofertas publicadas y busca nuevas con documentos
+primarios, contraste y revisión independiente. Cada candidata se publica con
+tarjeta e ilustración editorial si pasa las compuertas y existe permiso expreso
+para SQL y publicación de ese ciclo, o no se admite ese día. No existe cola
+pública «en investigación» ni autorización recurrente autónoma. Se conserva el
+catálogo completo publicado. Procedimiento:
 [`tareas/CICLO-DIARIO-CATALOGO.md`](tareas/CICLO-DIARIO-CATALOGO.md).
 
 **Cambios del 11/10:** panel nativo de cuentas y refuerzos de la web
@@ -217,6 +242,7 @@ Cada herramienta firma sus commits con su propio nombre (ver
 | `rwadar-movil/` | App de Android e iPhone (Expo) |
 | `rwadar-qr/` | Código QR de la tarjeta |
 | `rwadar-limpieza/` | Página que desinstala la PWA antigua de Netlify: se conserva |
+| `rwadar-panel/` | Panel de control: encender/apagar web y catálogo, salud, visitas, descargas y cuentas. En el ordenador (`npm run panel`) o compartido con los socios en <https://rwadar-panel.victorjorquesgranero.workers.dev> (subido el 22/10 con permiso de Víctor; se entra con enlace personal). Ver su `LEEME.md` |
 | `rwadar-version-codex/` | Copia rescatada de la versión de agosto: no se edita |
 | `docs/` | Esta documentación |
 

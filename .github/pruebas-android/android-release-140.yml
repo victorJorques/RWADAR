@@ -173,6 +173,44 @@ jobs:
               assert sum(f.file_size for f in files) <= 64 * 1024 * 1024 and all(f.file_size <= 4 * 1024 * 1024 for f in files)
               assert archive.testzip() is None, 'ZIP CRC failure'
               result = json.loads(archive.read('evidence/result.json'))
+              contents = {entry.filename:archive.read(entry) for entry in files}
+          def require(condition, message):
+              assert condition, message
+          SAFE_ENTRY = re.compile(r'evidence/[A-Za-z0-9_.-]+\.(?:png|xml|json|txt|log)')
+          # Completed phases are reused from one immutable failed run, never relabelled.
+          provenance = result.get("baselineProvenance")
+          require(isinstance(provenance, dict), "Selective continuation provenance is missing")
+          require(provenance == json.loads(contents["evidence/baseline-provenance.json"]), "Embedded provenance differs")
+          require(provenance.get("mode") == "selective-continuation" and provenance.get("schemaVersion") == 1, "Wrong continuation mode")
+          origin = provenance["baseline"]
+          require(origin["runId"] == 39812931682 and origin["runAttempt"] == 1 and origin["jobId"] == 119943744862, "Wrong baseline execution")
+          require(origin["headSha"] == "40f926f8ff4eeb3c99293b16a9c9a5dad9740c69", "Wrong baseline commit")
+          require(origin["status"] == "completed" and origin["conclusion"] == "failure" and provenance["baselineFailedRunIsNotSuccessfulQa"] is True, "Historical failure must remain a failure")
+          require(str(result["runId"]) != str(origin["runId"]), "Continuation requires its own successful execution")
+          archive = provenance["archive"]
+          require(archive["sha256"] == "497e69dae6ca957347e5f3887072e5c2374d9ad31063448d3b889732394a982a" and archive["bytes"] == 26986584 and archive["files"] == 159, "Wrong baseline archive")
+          require(archive["crcVerified"] is True and archive["safePathsVerified"] is True, "Baseline ZIP checks missing")
+          apk = provenance["apk"]
+          for key, result_key in (("sha256","apkSha256"),("bytes","apkBytes"),("certificateSha256","certificateSha256"),("sourceCommit","sourceCommit"),("easBuildId","easBuildId")):
+              require(apk[key] == result[result_key], "Baseline and continuation APK identities differ")
+          reused = ["03","04","05","06","07","08","09","10","11","12","13","14"]
+          pending = ["01","02","15","16","17","18","19","20"]
+          require(provenance["reusedCheckIds"] == reused and provenance["continuationCheckIds"] == pending, "Wrong phase partition")
+          for point in result["nativeChecks20"]:
+              expected_origin = "baseline-39812931682" if point["id"] in reused else "current-continuation"
+              require(point.get("evidenceOrigin") == expected_origin, "Per-point evidence origin differs")
+          inventory = provenance["inventory"]
+          require(len(inventory) == 159 and len({entry["storedPath"] for entry in inventory}) == 159, "Incomplete baseline inventory")
+          for entry in inventory:
+              original = entry["originalPath"]
+              require(bool(SAFE_ENTRY.fullmatch(original)), "Unsafe original baseline path")
+              require(entry["storedPath"] == "evidence/baseline-" + original.split("/")[1], "Baseline path mapping differs")
+              data = contents[entry["storedPath"]]
+              require(len(data) == entry["bytes"] and hashlib.sha256(data).hexdigest() == entry["sha256"], "Reused evidence bytes changed")
+          paths = {entry["storedPath"] for entry in inventory}
+          require(set(provenance["phaseEvidence"]) == set(reused), "Missing per-phase provenance")
+          for references in provenance["phaseEvidence"].values():
+              require(bool(references) and all("evidence/" + name in paths for name in references), "Phase evidence is missing")
           assert result['version'] == '1.4.0' and result['versionCode'] == 18
           assert result['apkSha256'] == os.environ['APK_SHA256'] and result['apkBytes'] == int(os.environ['APK_BYTES'])
           assert result['certificateSha256'] == os.environ['CERT_SHA256']
@@ -259,6 +297,9 @@ jobs:
           llegar sin recompilar: se mantienen límites y controles de integridad.
           Las imágenes son ilustraciones editoriales; no son fotografías del activo real.
           Las capturas del APK exacto y sus veinte puntos se revisaron antes de publicar.
+          La validación conserva fases comprobadas de la ejecución 39812931682,
+          que terminó con fallo de guion; su ZIP y sus capturas quedan identificados
+          e intactos. Una continuación separada completa solo los criterios pendientes.
 
           Catálogo público sin registro obligatorio, con conteos visibles por colección.
           Cuentas gratuitas y opcionales, compartidas con la web. La confirmación y
