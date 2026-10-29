@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Continuación expresa: SW activa sin navegar ni esperar a sus ventanas; aislado en Chrome real anónimo al bloquear solo el trabajador. WebGL no es la causa aislada. Conserva cachés propias, claim y consulta pública. Dos pruebas SW y revisión independiente aprobadas; web550, fichas90 y precarga31 pasan. Conserva65 controles BFF y SQL29 reparado con30PGlite+8independientes, sin ampliar permisos. npmtest completo se detuvo antes en una prueba de sesión/baja, no se declara aprobado. Preview normal y Chrome real antes de producción. APK23 sin recompilar; investigación pausada y datos/fechas conservados. Detalle VERIFICACION-SW-ACCESO-2026-10-29.md.",
+  "nota": "Claude, 29/10: privacidad web añade qué reciben Expo (mejoras OTA de Android 1.4.1) y GitHub (consulta de versión nueva del botón Actualizar). Sin otros cambios de la web; producción a83ea0bd ya tenía el acceso corregido que Víctor confirmó con su cuenta. npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "d936f6f13eb6b3c50bd02f0cb7097e0ec7120375",
-    "contenidoSha256": "sha256:a482e6e233a7b858bbb6858a32d3dac52261e0f2844ccb65771acada45168374",
+    "commit": "b32ef298b35737763ac45070190494f0f046fbfc",
+    "contenidoSha256": "sha256:ce405631f6be0c2f70e75cb2617b587c95ece3afa7419b207c458d42a692e01e",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
