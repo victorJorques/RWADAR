@@ -61,6 +61,18 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p evidence-private
+          node22_path=''
+          shopt -s nullglob
+          for candidate in "$RUNNER_TOOL_CACHE"/node/22.*/x64/bin/node; do
+            if test -x "$candidate" && test "$("$candidate" -p 'process.versions.node.split(".")[0]')" = 22; then
+              node22_path="$candidate"
+              break
+            fi
+          done
+          test -n "$node22_path"
+          node22_dir=$(dirname "$node22_path")
+          printf '%s\n' "$node22_dir" >> "$GITHUB_PATH"
+          export PATH="$node22_dir:$PATH"
           node --version
           node .github/qa-android-update-141/production-bff-native-fixture.cjs --preflight | tee evidence-private/preflight-bff-node.json
       - name: Download only frozen baseline22 and actual finished candidate23
