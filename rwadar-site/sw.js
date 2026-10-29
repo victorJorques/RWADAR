@@ -1,6 +1,7 @@
-/* RWAdar requiere sesión. Sustituye el antiguo modo sin red: borra sus
-   copias y nunca almacena páginas ni datos de una cuenta. Se sirve sin
-   sesión para actualizar las instalaciones anteriores. */
+/* La consulta es pública; la cuenta protege los datos privados. Sustituye
+   el antiguo modo sin red: borra solo sus copias y no almacena páginas ni
+   datos de cuenta. La página gestiona la recarga al cambiar el controlador;
+   la activación no navega clientes ni espera una navegación. */
 const VERSION = 'rwadar-vacceso-obligatorio-20261023';
 self.addEventListener('install', event => {
   event.waitUntil(self.skipWaiting());
@@ -10,10 +11,6 @@ self.addEventListener('activate', event => {
     const anteriores = (await caches.keys()).filter(nombre => nombre.startsWith('rwadar-v'));
     await Promise.all(anteriores.map(nombre => caches.delete(nombre)));
     await self.clients.claim();
-    const ventanas = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    await Promise.all(ventanas.map(async ventana => {
-      try { await ventana.navigate(ventana.url); } catch (_) { /* la próxima visita verificará la sesión */ }
-    }));
   })());
 });
-// Sin manejador fetch: cada solicitud verifica la sesión en el servidor.
+// Sin manejador fetch: consulta pública y comprobación de cuenta en sus endpoints.

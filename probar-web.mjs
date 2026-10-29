@@ -405,9 +405,9 @@ async function probarRetiradaOffline(codigo) {
   await instalacion;
   escuchas.activate({waitUntil(p){activacion=p;}});
   await activacion;
-  return saltos === 1 && reclamos === 1 && consultas === 1 && abiertas === 0 &&
+  return saltos === 1 && reclamos === 1 && consultas === 0 && abiertas === 0 &&
     JSON.stringify(borradas.sort()) === JSON.stringify(['rwadar-v-antigua','rwadar-v-anterior'].sort()) &&
-    navegadas.length === 2 && !Object.hasOwn(escuchas,'fetch');
+    navegadas.length === 0 && !Object.hasOwn(escuchas,'fetch');
 }
 
 function tutorialManualRespetaPasos(codigo) {
@@ -1817,7 +1817,7 @@ prueba('el service worker se registra solo bajo HTTP(S)',
   /trabajador\.register\('\/sw\.js'/.test(js) && /\^https\?:\$/.test(js));
 prueba('el service worker fuente identifica la retirada del modo offline',
   /const VERSION\s*=\s*['"]rwadar-vacceso-obligatorio-20261023['"]/.test(sw));
-prueba('el worker elimina copias RWAdar y recarga todas las ventanas sin abrir cachés ni red',
+prueba('el worker elimina copias RWAdar y activa sin navegar ventanas ni abrir cachés ni red',
   await probarRetiradaOffline(sw));
 prueba('el ensayo rechaza reintroducir fetch o conservar las copias de RWAdar',
   !(await probarRetiradaOffline(sw + "\nself.addEventListener('fetch',()=>{});")) &&

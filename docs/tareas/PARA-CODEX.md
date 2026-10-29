@@ -6,6 +6,11 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 29 de octubre de 2026 · Codex · recarga bloqueante aislada y corregida
+
+Chrome real anónimo se bloquea con el trabajador y responde con 49 tarjetas al bloquear solo ese trabajador; WebGL no es la causa aislada. Quitada navegación de ventanas dentro de la activación, sin cambiar cachés privadas ni sesión. Dos pruebas y revisión independiente pasan; comprobación web y preview pendientes. `npm test` se detuvo antes en una prueba de sesión/baja y no se declara aprobado. APK23 sin recompilar; investigación pausada. [Detalle](../VERIFICACION-SW-ACCESO-2026-10-29.md). Fuente en el commit de esta entrada.
+
+---
 ## 29 de octubre de 2026 · Codex · causas reales de acceso y valoración corregidas
 
 Chrome reproduce sesión200 seguida de rechazo secundario convertido en401: corregidos BFF/cliente y consulta innecesaria de avisos;65 pruebas pasan. Reparado el validador SQL29 previamente autorizado mediante una pareja de paréntesis, con guarda;30 pruebasPGlite,8 independientes y comprobación remota positiva, sin ampliar permisos. Nueva preview/producción pendientes. Android23 conserva instalación y sesión acreditadas; se comprueba solo cartera/OTA/ficha/salida. [Detalle y reversión](../VERIFICACION-ACCESO-WEB-2026-10-29.md). InvestigaciónPAUSADA; main compartido intacto. Cambios en el commit que contiene esta entrada.
