@@ -5,8 +5,10 @@ import { ScrollView, Text, View } from './Idioma';
 import Cuenta from './Cuenta';
 import { C, F } from '../lib/tema';
 
-export default function AccesoObligatorio({ controlador, estado, onAbrirEnlace }) {
+export default function AccesoObligatorio({ controlador, estado, onAbrirEnlace, aviso = null }) {
+  // «aviso»: una versión nueva puede ser justo la que arregla el acceso.
   return <SafeAreaView style={s.pagina} edges={['top', 'right', 'bottom', 'left']}>
+    {aviso}
     <ScrollView contentContainerStyle={s.contenido} keyboardShouldPersistTaps="handled">
       <Text style={s.marca}>RWAdar</Text>
       <Text accessibilityRole="header" style={s.titulo}>Tu radar, con tu cuenta</Text>

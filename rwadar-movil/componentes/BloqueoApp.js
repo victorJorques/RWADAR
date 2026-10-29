@@ -6,9 +6,11 @@ import { C, F, T } from '../lib/tema';
 import * as idioma from '../lib/idioma';
 
 export default function BloqueoApp({ preparando = false, ocupado = false,
-  mensaje = '', onDesbloquear, onSalir }) {
+  mensaje = '', onDesbloquear, onSalir, aviso = null }) {
   const esperando = preparando || ocupado;
+  // «aviso» solo anuncia una actualización; no muestra datos de la cuenta.
   return <SafeAreaView style={s.pagina} edges={['top', 'right', 'bottom', 'left']}>
+    {aviso}
     <ScrollView contentContainerStyle={s.contenido}>
       <Text style={s.marca}>RWAdar</Text>
       <Text accessibilityRole="header" style={s.titulo}>Tu radar está protegido</Text>

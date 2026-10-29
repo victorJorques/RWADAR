@@ -309,6 +309,23 @@ la red; quedan disponibles el bundle incluido y la recuperación de Expo.
 No se instalan APK en silencio ni se añaden permisos de instalación.
 El catálogo conserva su actualización independiente por las vistas REST.
 
+**Botón «Actualizar» (29/10/2026, por OTA a la 1.4.1):** si hay una mejora ya
+descargada, un aviso bajo la cabecera (y en la pantalla de acceso) ofrece
+«Aplicar», que reinicia solo al pulsar. Al abrir, la app lee
+`releases/latest/download/version-android.json` de RWAdar-downloads; si su
+`versionCode` supera al instalado, ofrece descargar el APK, que Android
+instala encima sin desinstalar. Perfil › «Versión de la app» comprueba ambas
+cosas a mano. **Cada versión Android nueva debe subir su
+`version-android.json` a la release**, con esta forma exacta (la app rechaza
+cualquier otra URL o versión):
+
+```json
+{"plataforma":"android","version":"1.4.2","versionCode":24,"apk":"https://github.com/victorJorques/RWAdar-downloads/releases/download/v1.4.2/RWAdar.apk"}
+```
+
+Sin ese archivo en la última release, la app no avisa de versiones nuevas;
+las mejoras por OTA siguen llegando igual.
+
 Antes de publicar una OTA, usar el commit completo de la fuente del APK real:
 
 ```powershell

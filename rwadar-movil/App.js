@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { ActivityIndicator, Animated, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
-import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal } from './componentes/Idioma';
+import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal, useIdioma } from './componentes/Idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
   useFonts, Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
@@ -24,7 +24,8 @@ import { cuentaAdmitida } from './lib/acceso-obligatorio';
 import AccesoObligatorio from './componentes/AccesoObligatorio';
 import BloqueoApp from './componentes/BloqueoApp';
 import { useBloqueoApp } from './lib/desbloqueo-app';
-import { useActualizacionesApp } from './lib/actualizaciones-app';
+import { useActualizacionesApp, useEstadoActualizaciones, textosActualizacion } from './lib/actualizaciones-app';
+import AvisoActualizacion from './componentes/AvisoActualizacion';
 import { vigilarCaducidadCatalogo, programarRevisionDiaria } from './lib/catalogo-remoto';
 import {
   etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible,
@@ -86,6 +87,9 @@ async function abrirAjustes() {
 
 export default function App() {
   useActualizacionesApp();
+  const actualizacion = useEstadoActualizaciones();
+  const idioma = useIdioma();
+  const [avisoActualizacionOculto, setAvisoActualizacionOculto] = useState(null);
   const [fuentesListas] = useFonts({
     Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
     Geist_700Bold, Geist_800ExtraBold, GeistMono_500Medium,
@@ -543,24 +547,49 @@ export default function App() {
     tacto.eleccion();
     setPestana(id);
   };
+  // Mejora descargada: reinicia al pulsar. Versión nueva: descarga el APK, que
+  // Android instala encima sin desinstalar. Sin nada pendiente: comprueba.
+  const actualizarApp = async () => {
+    const { resumen } = actualizacion;
+    const textos = textosActualizacion(resumen, { idioma });
+    tacto.eleccion();
+    if (resumen.tipo === 'mejora') {
+      if (!(await actualizacion.aplicarMejora())) Alert.alert(textos.falloTitulo, textos.fallo);
+    } else if (resumen.tipo === 'version') {
+      Alert.alert(textos.titulo, textos.confirmar, [
+        { text: textos.cancelar, style: 'cancel' },
+        { text: textos.aceptar, onPress: () => abrirEnlace(resumen.apk) },
+      ]);
+    } else {
+      actualizacion.comprobar();
+    }
+  };
+  const claveAvisoActualizacion = actualizacion.resumen.tipo === 'version'
+    ? `version-${actualizacion.resumen.versionCode}` : actualizacion.resumen.tipo;
+  const avisoActualizacion = avisoActualizacionOculto !== claveAvisoActualizacion ? (
+    <AvisoActualizacion resumen={actualizacion.resumen} onActualizar={actualizarApp}
+      onOcultar={() => setAvisoActualizacionOculto(claveAvisoActualizacion)} />
+  ) : null;
 
   if (CUENTA_REMOTA_ACTIVA && (restaurandoAcceso || estadoCuenta?.estado === 'restaurando' || errorRestauracion)) {
     return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
       <PreparandoAcceso ocupado={restaurandoAcceso || estadoCuenta?.estado === 'restaurando'}
-        mensaje={errorRestauracion} onReintentar={() => restaurarAcceso(cuenta)} onSalir={cerrarAcceso} />
+        mensaje={errorRestauracion} onReintentar={() => restaurarAcceso(cuenta)} onSalir={cerrarAcceso}
+        aviso={avisoActualizacion} />
     </SafeAreaProvider>;
   }
 
   if (CUENTA_REMOTA_ACTIVA && usuarioAdmitido && (seguridad.preparando || seguridad.bloqueado)) {
     return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
       <BloqueoApp preparando={seguridad.preparando} ocupado={seguridad.ocupado}
-        mensaje={seguridad.mensaje} onDesbloquear={seguridad.desbloquear} onSalir={cerrarAcceso} />
+        mensaje={seguridad.mensaje} onDesbloquear={seguridad.desbloquear} onSalir={cerrarAcceso}
+        aviso={avisoActualizacion} />
     </SafeAreaProvider>;
   }
 
   if (fuentesListas && !usuarioAdmitido) {
     return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
-      <AccesoObligatorio controlador={cuenta} estado={estadoCuenta} onAbrirEnlace={abrirEnlace} />
+      <AccesoObligatorio controlador={cuenta} estado={estadoCuenta} onAbrirEnlace={abrirEnlace} aviso={avisoActualizacion} />
     </SafeAreaProvider>;
   }
 
@@ -603,6 +632,8 @@ export default function App() {
         <SelectorIdioma />
 
         {MODO_LOCAL ? <BannerModoLocal /> : null}
+
+        {avisoActualizacion}
 
         {/* En Buscar, el aviso se desplaza con el catálogo para no consumir
             todo el espacio de lectura con una fuente grande. */}
@@ -904,6 +935,11 @@ export default function App() {
               onBorrar={confirmarBorrado}
               inversionInicial={inversionInicial}
               onConsumirInversion={() => setInversionInicial(null)}
+              idioma={idioma}
+              textosVersion={actualizacion.activo ? textosActualizacion(actualizacion.resumen,
+                { idioma, versionInstalada: actualizacion.versionInstalada }) : null}
+              comprobandoVersion={actualizacion.resumen.tipo === 'comprobando'}
+              onActualizarApp={actualizarApp}
             />
           ) : null}
         </View>
@@ -943,7 +979,7 @@ export default function App() {
           </SafeAreaProvider>
         </Modal>
 
-        <Privacidad visible={privacidad} onCerrar={() => setPrivacidad(false)} estadoCuenta={estadoCuenta}
+        <Privacidad visible={privacidad} onCerrar={() => setPrivacidad(false)} estadoCuenta={estadoCuenta} idioma={idioma}
           onBorrar={confirmarBorrado} borrando={borrandoDatos} />
       </SafeAreaView>
     </SafeAreaProvider>
@@ -1050,8 +1086,9 @@ function etiquetaEstadoAvisos(estado) {
   }
 }
 
-function PreparandoAcceso({ ocupado, mensaje, onReintentar, onSalir }) {
+function PreparandoAcceso({ ocupado, mensaje, onReintentar, onSalir, aviso = null }) {
   return <SafeAreaView style={[e.pantalla, e.centro, { padding: 24, gap: 18 }]} edges={['top', 'bottom']}>
+    {aviso}
     {ocupado ? <ActivityIndicator size="large" color={C.senal} /> : null}
     <Text style={e.cargandoTxt} accessibilityRole="header">{ocupado ? 'Preparando tu acceso…' : 'Comprueba tu conexión'}</Text>
     {mensaje ? <Text style={e.cargandoTxt} accessibilityRole="alert" accessibilityLiveRegion="polite">{mensaje}</Text> : null}
@@ -1075,6 +1112,7 @@ function PantallaPerfil({
   seguidas, ofertasGuardadas, guardadasRetiradas = 0, sinConexion, estadoAvisos, procesandoAvisos,
   refrescando, borrando, onActualizar, onAbrirEmpresa, onAbrirOferta, onExplorar, onActivarAvisos, onAjustes,
   onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar, inversionInicial, onConsumirInversion,
+  idioma, textosVersion, comprobandoVersion, onActualizarApp,
 }) {
   const total = seguidas.length + ofertasGuardadas.length;
   const usuarioCartera = estadoCuenta?.estado === 'autenticada' ? estadoCuenta.usuario?.id : null;
@@ -1185,6 +1223,19 @@ function PantallaPerfil({
           ultima
         />
       </GrupoMenu>
+
+      {textosVersion ? (
+        <GrupoMenu titulo={idioma === 'en' ? 'App version' : 'Versión de la app'}>
+          <FilaMenu
+            icono="actualizar"
+            titulo={textosVersion.titulo}
+            subtitulo={textosVersion.detalle}
+            onPress={onActualizarApp}
+            cargando={comprobandoVersion}
+            ultima
+          />
+        </GrupoMenu>
+      ) : null}
 
       <GrupoMenu titulo="Privacidad y datos">
         <FilaMenu
@@ -1528,7 +1579,7 @@ function PiePrivacidad({ onAbrir }) {
   );
 }
 
-function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
+function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idioma }) {
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onCerrar}>
       <SafeAreaProvider>
@@ -1630,6 +1681,22 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta }) {
                 </Text>
               </>
             )}
+
+            {!MODO_LOCAL ? (idioma === 'en' ? (
+              <>
+                <Text noTraducir idiomaOriginal="en" style={e.privacidadTit}>App updates</Text>
+                <Text noTraducir idiomaOriginal="en" style={e.privacidadParrafo}>
+                  When it opens, the app downloads compatible improvements from Expo and asks the RWAdar download page on GitHub whether there is a new Android version. Expo receives your IP address, the platform, the installed version and a random identifier for this installation; GitHub receives your IP address and technical connection data. Neither receives your account or your data. A new version is only downloaded when you tap «Update».
+                </Text>
+              </>
+            ) : (
+              <>
+                <Text noTraducir style={e.privacidadTit}>Actualizaciones de la app</Text>
+                <Text noTraducir style={e.privacidadParrafo}>
+                  Al abrirse, la app descarga de Expo las mejoras compatibles y pregunta a la página de descargas de RWAdar en GitHub si hay una versión Android nueva. Expo recibe tu IP, la plataforma, la versión instalada y un identificador aleatorio de esta instalación; GitHub recibe tu IP y datos técnicos de la conexión. Ninguno recibe tu cuenta ni tus datos. Una versión nueva solo se descarga cuando pulsas «Actualizar».
+                </Text>
+              </>
+            )) : null}
 
             <Text style={e.privacidadTit}>Transparencia comercial</Text>
             <Text style={e.privacidadParrafo}>
