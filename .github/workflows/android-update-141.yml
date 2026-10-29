@@ -50,6 +50,19 @@ jobs:
           test "$GITHUB_REF" = refs/heads/codex/android-140-auth-qa
           test "$PUBLICAR_RELEASE" = NO
           python3 .github/qa-android-update-141/gate.py prepare
+      - name: Cheap Node22 BFF login session and local logout before downloads or emulator
+        env:
+          RWADAR_QA_EMAIL: ${{ secrets.RWADAR_QA_EMAIL }}
+          RWADAR_QA_PASSWORD: ${{ secrets.RWADAR_QA_PASSWORD }}
+          QA_ACCOUNT_ACK: ${{ inputs.confirmed_test_account }}
+          QA_USER_ID: ${{ inputs.qa_user_id }}
+          QA_ACCOUNT_MARKER: ${{ inputs.qa_marker }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence-private
+          node --version
+          node .github/qa-android-update-141/production-bff-native-fixture.cjs --preflight | tee evidence-private/preflight-bff-node.json
       - name: Download only frozen baseline22 and actual finished candidate23
         shell: bash
         run: |

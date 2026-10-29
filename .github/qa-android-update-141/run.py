@@ -105,44 +105,30 @@ def bff_failure_only(route,error):
 
 
 def production_bff_same_fixture():
-    from decimal import Decimal
+    import subprocess
     require_qa_identity(os.environ,require_email=True)
-    origin='https://rwadar.pages.dev'; cookie=''; uid=os.environ['QA_USER_ID']
-    class NoRedirect(urllib.request.HTTPRedirectHandler):
-        def redirect_request(self,*args,**kwargs): return None
-    opener=urllib.request.build_opener(NoRedirect())
-    def web(route,method='GET',data=None):
-        require((route,method) in (('entrar','POST'),('sesion','GET'),('cartera','GET'),('salir','POST')),'Fixed QA BFF routes only')
-        headers={'Origin':origin,'Content-Type':'application/json','X-RWAdar-Usuario':uid,**({'Cookie':cookie} if cookie else {})}
-        req=urllib.request.Request(origin+'/api/acceso/'+route,data=None if data is None else json.dumps(data).encode(),headers=headers,method=method)
-        try:
-            with opener.open(req,timeout=10) as r:
-                require(r.status==200,'QA BFF request rejected'); raw=r.read(128*1024+1)
-                require(len(raw)<=128*1024,'QA BFF response exceeds cap')
-                return json.loads(raw),r.headers
-        except (urllib.error.HTTPError,urllib.error.URLError,TimeoutError) as error:
-            diagnosis=bff_failure_only(route,error)
-            if diagnosis is not None:
-                report.setdefault('bffFailure',diagnosis);persist()
-            raise RuntimeError('QA BFF request failed; sensitive response withheld') from None
-        except Exception: raise RuntimeError('QA BFF request failed; sensitive response withheld') from None
-    try:
-        login,headers=web('entrar','POST',{'correo':os.environ['RWADAR_QA_EMAIL'],'clave':os.environ['RWADAR_QA_PASSWORD']})
-        cookies=headers.get_all('Set-Cookie') or []; require(len(cookies)==1,'One QA host cookie required')
-        match=re.fullmatch(r'(__Host-rwadar-acceso=[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+); Path=/; HttpOnly; Secure; SameSite=Lax',cookies[0])
-        require(match,'QA host cookie invalid'); cookie=match.group(1)
-        session,_=web('sesion'); require(all(d.get('autenticada') is True and d.get('usuario',{}).get('id')==uid for d in (login,session)),'QA BFF identity mismatch')
-        doc,_=web('cartera'); require(type(doc.get('version')) is int and doc['version']>0 and len(doc.get('posiciones',[]))==1,'One saved QA fixture required')
-        p=doc['posiciones'][0]; require(p.get('nombre')==QA_NAME and p.get('moneda')=='EUR','QA fixture identity mismatch')
-        require(p.get('valoracion',{}).get('origen')=='manual' and Decimal(p['valoracion']['precio'])==Decimal('1.1'),'QA manual valuation mismatch')
-        moves=p.get('movimientos',[]); require(len(moves)==2 and {m.get('tipo') for m in moves}=={'compra','cobro'},'QA movements mismatch')
-        buy=next(m for m in moves if m['tipo']=='compra'); income=next(m for m in moves if m['tipo']=='cobro')
-        require((Decimal(buy['cantidad']),Decimal(buy['precio']),Decimal(buy['comision']),Decimal(income['importe']))==(Decimal('2'),Decimal('1'),Decimal('0'),Decimal('0.1')),'QA purchase or income mismatch')
-    finally:
-        if cookie:
-            closed,_=web('salir','POST',{}); cookie=''
-            require(closed.get('cerrado') is True and closed.get('cierreRemoto') is True,'QA web local logout not confirmed')
-    return {'productionBffObserved':True,'sameExpectedAccount':True,'sameUniqueName':True,'sameCurrency':True,'samePurchase':True,'sameManualPrice':True,'sameIncome':True,'webLocalLogoutConfirmed':True}
+    # Credentials remain in the inherited environment, never command arguments.
+    result=subprocess.run(['node',str(ROOT/'production-bff-native-fixture.cjs')],capture_output=True,timeout=55,check=False)
+    require(len(result.stdout)<=16384,'Bounded Node BFF result required')
+    try:value=json.loads(result.stdout)
+    except (ValueError,UnicodeError):raise RuntimeError('Node BFF verification failed; details withheld') from None
+    require(isinstance(value,dict) and set(value)<= {'status','proof','failure','cleanupConfirmed'},'Node BFF result shape rejected')
+    if value.get('status')!='passed' or result.returncode!=0:
+        failure=value.get('failure',{})
+        if isinstance(failure,dict) and failure.get('route') in ('entrar','sesion','cartera','salir') and failure.get('kind') in ('http','connection','validation'):
+            diagnosis={'route':failure['route'],'kind':failure['kind']}
+            if type(failure.get('status')) is int and 100<=failure['status']<=599:diagnosis['status']=failure['status']
+            report['bffFailure']=diagnosis;persist()
+        raise RuntimeError('Node BFF verification failed; sensitive response withheld')
+    keys={'productionBffObserved','sameExpectedAccount','sameUniqueName','sameCurrency','samePurchase','sameManualPrice','sameIncome','webLocalLogoutConfirmed'}
+    proof=value.get('proof')
+    require(value.get('cleanupConfirmed') is True and isinstance(proof,dict) and set(proof)==keys and all(v is True for v in proof.values()),'Node BFF proof rejected')
+    return proof
+
+def wait_saved_portfolio_after_cold_launch():
+    scroll_top_ready()
+    return ui.wait_ui('Tu resumen',timeout=30,absent=('Cargando mis inversiones',))
+
 
 def visible(node):
     b=bounds(node); w,h=ui.display_size()
@@ -317,6 +303,7 @@ def portfolio():
     phase('record-qa-income');click('Añadir movimiento · '+QA_NAME); click('Cobro'); field('Importe cobrado','0.1'); click('Guardar movimiento'); wait_mutation_confirmation('Movimiento guardado.')
     phase('production-bff-same-fixture');web_proof=production_bff_same_fixture()
     phase('observe-real-ota-cold-launch');ota_proof=ota.prove_cold_launch(ui,OTA,reopen,exact_qa_account)
+    wait_saved_portfolio_after_cold_launch()
     locate(QA_NAME)  # Same single cloud fixture must survive the successful OTA launch.
     complete('productionBffReadsSameNativeFixture',{**web_proof,'nativeSessionAndFixturePreservedAfterWebLogout':True})
     report['otaDeliveryObserved']=True;ota_proof['sameQaPortfolioSurvives']=True
