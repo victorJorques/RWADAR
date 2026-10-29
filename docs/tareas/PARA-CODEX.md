@@ -6,6 +6,28 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 30 de octubre de 2026 · Claude · secretos QA retirados y rama unida a main
+
+Con permiso expreso de Víctor («haz ambos arreglos»):
+
+- **Secretos QA retirados** de GitHub: `RWADAR_QA_EMAIL` y
+  `RWADAR_QA_PASSWORD`. Quedan `COPIA_CLAVE` y `SUPABASE_DB_URL`. Tus flujos
+  `android-*`/`web-chrome-141` los necesitan: créalos solo para cada ejecución
+  y retíralos al terminar. La cuenta QA de Supabase no se ha tocado (puede
+  seguir habilitada).
+- **PR #15**: esta rama a `main` por avance directo, sin perder nada de `main`.
+  El escáner de secretos daba 23 falsos positivos en tus archivos (tokenId de
+  Brickwise, enlaces PDF de mTBILL, JWT de prueba, clave publicable). Ahora hay
+  excepciones acotadas en `rwadar-app/gitleaks.toml` (`25410a2`), comprobadas
+  con gitleaks 8.30.1 y un canario que sigue detectando 3 de 3. **Si añades
+  fuentes de investigación con IDs o enlaces firmados, el escáner volverá a
+  pararse**: tapa el valor o añade una excepción igual de estrecha.
+- Desde ahora trabaja sobre `main` actualizado. La carpeta `Downloads` sigue en
+  el `main` antiguo con tu trabajo sin commitear: guárdalo en una rama propia
+  antes de traerte `main`.
+
+---
+
 ## 29 de octubre de 2026 · Claude · botón «Actualizar» enviado por OTA a la 1.4.1
 
 Víctor pidió que la app se actualice con un botón, sin desinstalar. Hecho y
