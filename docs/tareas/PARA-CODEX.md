@@ -27,8 +27,9 @@ publicado con su permiso expreso («Sí, envíalo»):
   sus 7 avisos menores aplicados. No hay prueba en un móvil real todavía:
   Víctor lo verá en Perfil tras abrir la app dos veces.
 
-Commits solo locales (sin push). Siguen pendientes los secretos QA y unir
-esta rama a `main`.
+Commits subidos a `origin/codex/claridad-cartera-sesion-141-20261028`
+(sin unir a `main`). Siguen pendientes los secretos QA y unir esta rama a
+`main`.
 
 ---
 
