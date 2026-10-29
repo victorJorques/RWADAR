@@ -138,7 +138,10 @@ paso('el árbol publicable y el servidor local incluyen la página de forma expl
 paso('la PWA elimina sus copias antiguas y no sirve la página desde caché',
   /nombre\.startsWith\('rwadar-v'\)/.test(worker)
   && /caches\.delete\(nombre\)/.test(worker)
-  && /ventana\.navigate\(ventana\.url\)/.test(worker)
+  // La página recarga al cambiar el controlador; navegar ventanas desde la
+  // activación dejaba la web bloqueada en Chrome (29/10).
+  && /self\.clients\.claim\(\)/.test(worker)
+  && !/\.navigate\(|clients\.matchAll\(/.test(worker)
   && !/addEventListener\(\s*['"]fetch['"]|caches\.open\(|cache\.(?:put|addAll|match)\(/.test(worker));
 
 const scriptsCsp = [
