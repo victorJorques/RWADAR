@@ -50,6 +50,36 @@ function mainAccountReady(document,window,expectedId){
   const button=document.getElementById('btnCuenta');
   return window.RWADAR_ACCESO?.usuario()?.id===expectedId&&!!button&&button.disabled===false&&button.getAttribute('aria-label')==='Mis inversiones y mi cuenta';
 }
+function cpuFramesOnly(profile,secrets=[]){
+  if(!profile||!Array.isArray(profile.nodes))return [];
+  const sensitive=secrets.filter(s=>typeof s==='string'&&s.length>0);
+  const counts=new Map();
+  if(Array.isArray(profile.samples))for(const id of profile.samples.slice(0,250000)){
+    if(Number.isSafeInteger(id)&&id>0)counts.set(id,(counts.get(id)||0)+1);
+  }
+  const frames=[];
+  for(const node of profile.nodes.slice(0,20000)){
+    const frame=node?.callFrame;
+    if(!frame||typeof frame.url!=='string'||frame.url.length>512||typeof frame.functionName!=='string')continue;
+    if(sensitive.some(secret=>frame.url.includes(secret)||frame.functionName.includes(secret)))continue;
+    let url;try{url=new URL(frame.url);}catch{continue;}
+    if(url.origin!==ORIGIN||url.username||url.password||url.search||url.hash||
+       !/^\/assets\/[A-Za-z0-9_-]{1,100}(?:\.[a-f0-9]{12})?\.js$/.test(url.pathname))continue;
+    const name=frame.functionName===''?'anonymous':frame.functionName;
+    if(!/^[A-Za-z_$][A-Za-z0-9_$]{0,63}$/.test(name)||!Number.isSafeInteger(frame.lineNumber)||frame.lineNumber<0||frame.lineNumber>10000000)continue;
+    const hits=Number.isSafeInteger(node.hitCount)&&node.hitCount>0?node.hitCount:counts.get(node.id)||0;
+    if(!Number.isSafeInteger(hits)||hits<1)continue;
+    frames.push({function:name,line:frame.lineNumber+1,hits});
+  }
+  return frames.sort((a,b)=>b.hits-a.hits||a.line-b.line||a.function.localeCompare(b.function)).slice(0,6);
+}
+async function cpuDiagnosticOnly(cdp,report,secrets=[]){
+  report.cpuProfileAvailable=false;
+  // CDP.call enforces its existing eight-second deadline. Raw CPU samples,
+  // call frames, script URLs and source are never written or logged.
+  try{const result=await cdp.call('Profiler.stop');report.cpuHotFrames=cpuFramesOnly(result.profile,secrets);report.cpuProfileAvailable=true;}
+  catch{report.cpuHotFrames=[];}
+}
 class CDP{
   constructor(socket,onEvent=()=>{}){
     this.socket=socket;this.id=0;this.pending=new Map();
@@ -67,7 +97,7 @@ class CDP{
 }
 async function run(env=process.env){
   const report={status:'failed',origin:ORIGIN,realChrome:false,credentialsRecorded:false,manualCookieHeaders:false,httpStatuses:[],runtimeErrors:[],checks:{},logoutLocal:false};
-  let chrome,socket,cdp,profile;const deadline=Date.now()+120000;
+  let chrome,socket,cdp,profile,cpuProfiling=false;const deadline=Date.now()+120000;
   const phase=name=>{report.phase=name;};
   try{
     phase('validate-qa-and-runtime');requireQa(env);if(process.platform!=='linux'||Number(process.versions.node.split('.')[0])!==22)throw Error('linux_node22_required');
@@ -82,6 +112,7 @@ async function run(env=process.env){
     socket=new WebSocket(endpoint);await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('cdp_open_timeout')),4000);socket.addEventListener('open',()=>{clearTimeout(timer);resolve();},{once:true});socket.addEventListener('error',()=>{clearTimeout(timer);reject(Error('cdp_open_failed'));},{once:true});});
     cdp=new CDP(socket,event=>{const result=statusOnly(event);if(result&&report.httpStatuses.length<128)report.httpStatuses.push(result);const error=runtimeExceptionOnly(event,[env.RWADAR_QA_EMAIL,env.RWADAR_QA_PASSWORD]);if(error&&report.runtimeErrors.length<16)report.runtimeErrors.push(error);});
     await cdp.call('Page.enable');await cdp.call('Runtime.enable');await cdp.call('Network.enable');report.realChrome=true;
+    phase('start-cpu-profiler');await cdp.call('Profiler.enable');await cdp.call('Profiler.setSamplingInterval',{interval:1000});await cdp.call('Profiler.start');cpuProfiling=true;
     async function wait(expression,limit=30000){const end=Math.min(deadline,Date.now()+limit);while(Date.now()<end){try{if(await cdp.evaluate(expression))return;}catch{}await pause(200);}throw Error('browser_observation_timeout');}
     const sessionExpression=`(async()=>{if(location.origin!==${JSON.stringify(ORIGIN)})return {status:0,same:false};const r=await fetch('/api/acceso/sesion',{credentials:'same-origin',cache:'no-store',redirect:'error'});let j={};try{j=await r.json();}catch{}return {status:r.status,same:j.autenticada===true&&j.usuario?.id===${JSON.stringify(UID)}};})()`;
     phase('open-access-form');await cdp.call('Page.navigate',{url:ORIGIN+'/acceso?volver=%2F'});
@@ -101,8 +132,9 @@ async function run(env=process.env){
     report.checks.loginHttp200=report.httpStatuses.some(s=>s.route==='entrar'&&s.status===200);
     if(Object.values(report.checks).some(value=>value!==true))throw Error('browser_check_failed');
     phase('completed');report.status='passed';
-  }catch(error){report.failedPhase=report.phase;report.failureCode=['qa_identity_rejected','linux_node22_required','chrome_start_failed','chrome_exited_before_cdp','loopback_cdp_required','cdp_open_timeout','cdp_open_failed','cdp_timeout','cdp_disconnected','cdp_command_failed','cdp_send_failed','page_evaluation_failed','browser_observation_timeout','browser_cookie_session_failed','browser_check_failed'].includes(error.message)?error.message:'browser_check_failed';if(cdp){try{report.domDiagnostics=await cdp.evaluate('('+domState.toString()+')(document,window,'+JSON.stringify(UID)+')');report.domDiagnosticsAvailable=true;}catch{report.domDiagnosticsAvailable=false;}}}
+  }catch(error){report.status='failed';report.failedPhase=report.phase;report.failureCode=['qa_identity_rejected','linux_node22_required','chrome_start_failed','chrome_exited_before_cdp','loopback_cdp_required','cdp_open_timeout','cdp_open_failed','cdp_timeout','cdp_disconnected','cdp_command_failed','cdp_send_failed','page_evaluation_failed','browser_observation_timeout','browser_cookie_session_failed','browser_check_failed'].includes(error.message)?error.message:'browser_check_failed';if(cdp&&cpuProfiling){cpuProfiling=false;await cpuDiagnosticOnly(cdp,report,[env.RWADAR_QA_EMAIL,env.RWADAR_QA_PASSWORD]);}if(cdp){try{report.domDiagnostics=await cdp.evaluate('('+domState.toString()+')(document,window,'+JSON.stringify(UID)+')');report.domDiagnosticsAvailable=true;}catch{report.domDiagnosticsAvailable=false;}}}
   finally{
+    if(cdp&&cpuProfiling){cpuProfiling=false;try{await cdp.call('Profiler.stop');}catch{}}
     if(cdp){try{const result=await cdp.evaluate(`(async()=>{if(location.origin!==${JSON.stringify(ORIGIN)})return {ok:false};document.querySelectorAll('input[type=password]').forEach(p=>p.value='');const r=await fetch('/api/acceso/salir',{method:'POST',credentials:'same-origin',cache:'no-store',redirect:'error',headers:{'Content-Type':'application/json'},body:'{}'});const j=await r.json();return {ok:r.status===200&&j.cerrado===true&&j.cierreRemoto===true};})()`);report.logoutLocal=result?.ok===true;}catch{}}
     if(socket)try{socket.close();}catch{}
     if(chrome&&chrome.exitCode===null){chrome.kill('SIGTERM');await Promise.race([new Promise(resolve=>chrome.once('exit',resolve)),pause(2000)]);if(chrome.exitCode===null){chrome.kill('SIGKILL');await pause(250);}}
@@ -111,5 +143,5 @@ async function run(env=process.env){
   }
   return report;
 }
-module.exports={CDP,statusOnly,requireQa,runtimeExceptionOnly,domState,waitChromePort,mainAccountReady,run};
+module.exports={CDP,statusOnly,requireQa,runtimeExceptionOnly,domState,waitChromePort,mainAccountReady,cpuFramesOnly,cpuDiagnosticOnly,run};
 if(require.main===module)run().then(report=>{fs.mkdirSync('evidence-private',{recursive:true});fs.writeFileSync('evidence-private/web-chrome-141-result.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));if(report.status!=='passed')process.exitCode=1;}).catch(()=>{console.log('{"status":"failed","failureCode":"safe_cleanup_failed"}');process.exitCode=1;});

@@ -70,6 +70,19 @@ jobs:
           test -n "$node_path"
           test "$("$node_path" -p 'process.versions.node.split(".")[0]')" = 22
           printf 'RWADAR_NODE=%s\n' "$node_path" >> "$GITHUB_ENV"
+      - name: One fixed production Python BFF probe; never blocks Chrome diagnosis
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          RWADAR_QA_EMAIL: ${{ secrets.RWADAR_QA_EMAIL }}
+          RWADAR_QA_PASSWORD: ${{ secrets.RWADAR_QA_PASSWORD }}
+          QA_ACCOUNT_ACK: ${{ inputs.confirmed_test_account }}
+          QA_USER_ID: ${{ inputs.qa_user_id }}
+          QA_ACCOUNT_MARKER: ${{ inputs.qa_marker }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B .github/qa-web-browser-141/python-bff-141.py
       - name: Real Chrome session and reload with local logout and profile cleanup
         env:
           RWADAR_QA_WEB_ORIGIN: ${{ inputs.entorno == 'preview' && 'https://revision.rwadar.pages.dev' || 'https://rwadar.pages.dev' }}
@@ -89,8 +102,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          report=evidence-private/web-chrome-141-result.json
-          if test -f "$report"; then
-            test "$(stat -c '%s' "$report")" -le 32768
-            cat "$report"
-          fi
+          for report in evidence-private/python-bff-141-result.json evidence-private/web-chrome-141-result.json; do
+            if test -f "$report"; then
+              test "$(stat -c '%s' "$report")" -le 32768
+              cat "$report"
+            fi
+          done

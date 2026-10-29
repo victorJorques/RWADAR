@@ -3,7 +3,7 @@
 Old PIN/tutorial/catalog scopes remain historical. Credentials never enter evidence.
 """
 import ast, json, os, pathlib, re, shlex, signal, sys, time, xml.etree.ElementTree as ET
-import urllib.request
+import urllib.request, urllib.error, socket, ssl
 from reuse import load_reused_native_evidence, validate_package
 import ota
 from gate import ROOT, OLD, load_candidate, require_qa_identity, validate_auth_qa_user
@@ -86,6 +86,24 @@ def verify_auth_qa_identity():
 def bounds(node):
     return list(map(int,re.findall(r'-?\d+',node.get('bounds',''))))
 
+def bff_failure_only(route,error):
+    # No response body, arbitrary error text, URL, cookie or header is retained.
+    if route not in ('entrar','sesion','cartera','salir'): return None
+    if isinstance(error,urllib.error.HTTPError):
+        if type(error.code) is not int or not 100<=error.code<=599: return None
+        result={'route':route,'kind':'http','status':error.code}
+        retry=error.headers.get('Retry-After') if error.headers else None
+        if isinstance(retry,str) and re.fullmatch(r'[0-9]{1,5}',retry) and int(retry)<=86400:
+            result['retryAfter']=int(retry)
+        return result
+    if isinstance(error,urllib.error.URLError):
+        reason=error.reason
+        kind='timeout' if isinstance(reason,TimeoutError) else 'ssl' if isinstance(reason,ssl.SSLError) else 'connection' if isinstance(reason,(ConnectionError,socket.gaierror)) else 'other'
+        return {'route':route,'kind':'url','reasonClass':kind}
+    if isinstance(error,TimeoutError): return {'route':route,'kind':'timeout','reasonClass':'timeout'}
+    return None
+
+
 def production_bff_same_fixture():
     from decimal import Decimal
     require_qa_identity(os.environ,require_email=True)
@@ -102,6 +120,11 @@ def production_bff_same_fixture():
                 require(r.status==200,'QA BFF request rejected'); raw=r.read(128*1024+1)
                 require(len(raw)<=128*1024,'QA BFF response exceeds cap')
                 return json.loads(raw),r.headers
+        except (urllib.error.HTTPError,urllib.error.URLError,TimeoutError) as error:
+            diagnosis=bff_failure_only(route,error)
+            if diagnosis is not None:
+                report.setdefault('bffFailure',diagnosis);persist()
+            raise RuntimeError('QA BFF request failed; sensitive response withheld') from None
         except Exception: raise RuntimeError('QA BFF request failed; sensitive response withheld') from None
     try:
         login,headers=web('entrar','POST',{'correo':os.environ['RWADAR_QA_EMAIL'],'clave':os.environ['RWADAR_QA_PASSWORD']})
