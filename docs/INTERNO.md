@@ -1,5 +1,16 @@
 # RWAdar · cómo está el proyecto
 
+**Material promocional local del 28 de octubre:** tras el rechazo del corte
+de veintiséis segundos, hay una nueva propuesta de veintiocho, inspirada en
+la referencia visual que aportó Víctor. Incluye rodaje real nuevo con la app
+integrada en la pantalla del móvil, un recorrido espacial por funciones,
+una oferta de Casa de Outeiro y la portada web actual. La música es distinta
+y no hay locución. Las capturas proceden del código real en navegador,
+sin cambios del producto; no son una prueba del APK. Entrega local sin
+publicar, pendiente de valoración creativa.
+[Vídeo y comprobaciones](VERIFICACION-ANUNCIO-DESCUBRE-2026-10-28.md).
+Los anuncios anteriores rechazados se conservan como historial.
+
 *Actualizado el 29 de octubre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).

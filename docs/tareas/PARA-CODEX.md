@@ -140,6 +140,53 @@ Víctor informa fallo de entrada móvil y pide conservar sesión y desbloquear c
 
 ---
 
+## 28 de octubre de 2026 · Codex · nueva pieza «Ahora sabes dónde mirar»
+
+Víctor rechazó «Hay más» y aportó una referencia de motion design. Nueva
+propuesta de 28 s/25 fps en `rwadar-descubre-2026-10-28/output/`, con copia
+ligera y reproductor. Rodaje real nuevo con app auténtica integrada en la
+pantalla mediante tracking/perspectiva, escenario 3D, búsqueda, oferta limpia
+Casa de Outeiro/Alius Capital y web actual. Música distinta: Gimme that Groove!,
+Michael Ramir C.; no reutiliza temas/stems anteriores y no contiene locución.
+[Informe](../VERIFICACION-ANUNCIO-DESCUBRE-2026-10-28.md).
+
+Exportaciones descodificadas completas, 700 fotogramas/28 s, BT.709 y audio
+verificados; setecientos hashes de píxeles main/picture iguales. Reproducción
+silenciada del SHA definitivo completa, sin saltos. Correcciones visuales de
+paneles, búsqueda y etiqueta editorial. No se presume aceptación creativa.
+Capturas nuevas de Expo Web a 860 × 1790; adquisición 9–12 fps reales,
+conformada a 25 respetando tiempos, sin interpolación inventada. No es APK.
+Servidor temporal cerrado, producto sin cambios. Música para publicidad
+online, no emisión de TV/radio. Sin commit, push, publicación, SQL, catálogo
+nuevo, cuentas, build/OTA o créditos de generación. WIP compartido conservado.
+
+---
+
+## 28 de octubre de 2026 · Codex · anuncio rehecho con personas reales
+
+Nueva propuesta local de 26 s en
+`rwadar-spot-reboot-2026-10-27/output/rwadar-hay-mas-1080p.mp4`, con copia
+ligera y reproductor. Sustituye el corte de treinta segundos que Víctor
+rechazó. Rodaje humano licenciado de la misma actriz con móvil y portátil,
+radar auténtico, selección real de Spiko en Expo Web, modelo educativo WebGL
+real y una oferta de Spiko en alta resolución. Se retiró toda locución
+generada. La web aparece como contexto de portátil, mención y URL, sin captura
+de su interfaz. [Informe](../VERIFICACION-REBOOT-RWADAR-2026-10-28.md).
+
+Dos exportaciones: descodificación completa, 624 fotogramas/24 fps/26 s,
+BT.709 completo y AAC final dentro del objetivo. Reproducción del SHA final
+completa, silenciada, sin errores ni pérdidas. Revisión visual muestreada
+independiente y corrección de recortes, fuentes y párrafos ampliados.
+Investigación documental de referentes con fuentes primarias; no se afirma
+haber visionado sus spots. Calidad creativa pendiente de valorar por Víctor.
+
+Sin commit ni push, créditos adicionales, publicación, SQL, catálogo nuevo,
+cuentas, cambios de producto o build/OTA. Se conserva el WIP compartido.
+Las capturas Expo Web no acreditan un APK. La música permite publicidad
+online, pero no emisión de televisión/radio.
+
+---
+
 ## 27 de octubre de 2026 · Codex · mapa publicado en producción
 
 Web publicada en https://rwadar.pages.dev con Buscar → Lista/Mapa, 26 fichas geográficas (24 puntos, 4 aproximadas) y catálogo49 conservado. Fuente e1923c297dfd17924fd1a9cd2fee9d8b217f62d5; autorización y publicación registradas en552845c. Deployment https://0d881a1d.rwadar.pages.dev;8 controles HTTPS en producción y2 GET independientes con bytes exactos aprobados. Se reutilizan web549/fichas90/acceso55/mapa10/precarga31; no repetir. La revisión visual no quedó acreditada por el controlador. [Informe](../VERIFICACION-MAPA-2026-10-27.md). Android1.4.0 sigue pendiente, con APK20 y pruebas conservadas; no está publicado. CuentaQA limpiada. Investigación pausada. Main compartido intacto; fuente en rama aislada.
@@ -149,6 +196,39 @@ Web publicada en https://rwadar.pages.dev con Buscar → Lista/Mapa, 26 fichas g
 ## 27 de octubre de 2026 · Codex · mapa en preview; control visual bloqueado
 
 Mapa en Buscar, 26 ubicaciones documentadas y consulta pública. Fuente e1923c297dfd17924fd1a9cd2fee9d8b217f62d5. Pasan web549, fichas/RSS90, acceso55, mapa10 y precarga31. Preview https://3fbac666.rwadar.pages.dev desplegada y 8controlesHTTP aprobados. El control visual se detuvo al no poder verificar la URL de Chrome. Producción no promovida; no volver a desplegar preview ni repetir pruebas locales que pasan. Falta revisión visual y producción. [Informe breve](../VERIFICACION-MAPA-2026-10-27.md). App: idiomas/favorito57/57 y lección completados en40562598549; falló después por lectura temprana del tutorial aún cargando. PatchLF preparado en W/android-tutorial-continuation-40562598549.patch, sin aplicar. Generador público W/generar-qa-publica-c20-language-reuse-27.propuesto.py. Faltan tutorial, cartera y salida. CuentaQA limpiada al cierre del turno. APK20 sin recompilar. Investigación pausada; main compartido intacto.
+
+---
+
+## 27 de octubre de 2026 · Codex · anuncio centrado en app y web, con navegación
+
+Víctor pidió rehacer el anuncio: aspecto de spot televisivo, app/web como
+protagonistas, mensaje aspiracional y voz de España. Rechazó Elvira por
+robótica e Ines por acento latino; ambas quedan fuera del corte vigente.
+La nueva revisión de **30 s** está en
+`rwadar-comercial-valencia-v2-2026-10-27/output/rwadar-mas-cerca-app-y-web-1080p.mp4`,
+con copia ligera y reproductor. [Informe](../VERIFICACION-ANUNCIO-APP-WEB-2026-10-27.md).
+
+UI durante 20,708 s, incluidos 14 s seleccionados de navegación real del
+código React Native en **Expo Web**: buscar Casa, abrir Outeiro, recorrer la
+ficha, cerrarla y volver al radar. Catálogo público real, cuatro GET 200;
+sin mocks, cuentas, favoritos, mutaciones ni cambios de fuente/dependencias.
+No se presenta como captura del APK. El servidor temporal quedó cerrado.
+La web se capturó el 27/10; las imágenes nativas de apoyo son del 22/10.
+Avisos y rótulos editoriales preservados. Cierre acordado:
+«La inversión en activos tokenizados no está exenta de riesgos».
+
+Dos copias descodificadas completas; 720 fotogramas, 24 fps, Full HD. AAC final
+idéntico al máster director comprobado: −14,22 LUFS y −1,17 dBTP. Reproducción
+completa de 30 s en Chrome aislado en silencio, sin pérdida de fotogramas ni
+errores; revisión visual independiente muestreada sin bloqueantes. La nueva
+voz se dirigió como narradora de Madrid y el guion se transcribió completo;
+estas mediciones no certifican acento ni interpretación por escucha humana.
+
+Esta revisión consumió 53,25 créditos: total acumulado 615,95 de los 650
+autorizados, sin compras ni cambios de plan. Sin commit, push, publicación,
+SQL, catálogo nuevo, cuentas, build/OTA ni cambios del producto. Se conserva
+el WIP compartido. Falta la valoración creativa de Víctor de la revisión
+entregada; no se afirma que haya aceptado la voz ni el resultado.
 
 ---
 
@@ -217,6 +297,54 @@ El arnés incorpora foco/IME actuales, cierre observado del radar y menos snapsh
 [informe26/10](../VERIFICACION-ACCESO-PUBLICO-2026-10-26.md).
 Los commits que incorporan esta entrada contienen la fuente preparada y su
 aprobación separada; no integrar el main compartido con WIP de otras herramientas.
+
+---
+
+## 26 de octubre de 2026 · Codex · anuncio cinematográfico Valencia terminado
+
+Víctor rechazó la primera animación y después sustituyó el concepto por un
+spot con mujer, coche de lujo, Valencia nocturna, edificio aspiracional y
+cierre en casa con pijama y perro. **La entrega principal ahora es el anuncio
+de 34 s** en `rwadar-comercial-valencia-2026-10-26/output/`, con copia para
+compartir y portada. [Verificación](../VERIFICACION-ANUNCIO-VALENCIA-2026-10-26.md).
+
+Cinco planos fotorrealistas y voz generados; pantalla auténtica integrada
+en perspectiva, música licenciada para web/redes, foley, color y mezcla.
+13 controles técnicos aprobados, 816 fotogramas descodificados, AAC final
+−14,0 LUFS / −1,2 dBTP. Revisión visual muestreada del archivo completo.
+No se afirma escucha humana ni funcionamiento nativo actual: las pantallas
+proceden de la QA del 22/10. Edificio/precio ficticios, sin compra inventada
+ni rentabilidad garantizada dentro de RWAdar.
+
+Autorización expresa de 650 créditos Higgsfield; consumo real 562,70, sin
+compras, cambio de plan ni reintentos. Se mantiene todo local sin publicar
+web, app o redes. Sin commit y sin cambios del producto; se conserva el WIP.
+Las animaciones anteriores quedan como material secundario, no como el spot
+solicitado. No queda trabajo de producción requerido para entregar este MP4.
+
+---
+
+## 26 de octubre de 2026 · Codex · vídeo promocional «Sigue la fuente»
+
+Víctor pidió una pieza de animación como la referencia adjunta, con edición,
+postproducción y motivos para usar la app. Entrega local terminada en
+`rwadar-promo-2026-10-26/`: MP4 principal de 24 s, vertical 1080 × 1920 a
+60 fps, copia ligera, portada, reproductor y fuentes editables. Animación 3D,
+música y efectos originales; tres agentes apoyaron sonido, recursos y revisión.
+Sin commit de esta sesión y sin publicar.
+
+La [verificación del vídeo](../VERIFICACION-VIDEO-PROMOCIONAL-2026-10-26.md)
+registra 14 comprobaciones técnicas aprobadas, 1.440 fotogramas descodificados,
+−14,1 LUFS / −1,7 dBTP en el AAC final, revisión visual muestreada y fuentes.
+Las pantallas auténticas son de la QA aprobada del APK 1.3.2 del **22/10**;
+no son capturas actuales ni una nueva validación nativa. Se conservan sus
+rótulos editoriales. El intento de captura nueva se cerró por bloqueo del
+navegador y no se presenta como completado.
+
+Pendiente solo la decisión editorial de Víctor de usar/publicar el vídeo;
+la entrega local no autoriza difusión. No hay nueva investigación, SQL,
+build/OTA, cambios del producto ni pruebas nativas. Se preservó el trabajo
+compartido anterior. No se afirma escucha humana ni reproducción del usuario.
 
 ---
 
@@ -295,6 +423,28 @@ La investigación sigue PAUSADA; no iniciar otro ciclo por horario.
 
 ---
 
+## 24 de octubre de 2026 · Codex · revisión integral de la entrega actual
+
+La [revisión integral](../../rwadar-entrega-integral-20261022/integracion-140/docs/REVISION-INTEGRAL-2026-10-24.md)
+está en el checkout aislado `rwadar-entrega-integral-20261022/integracion-140`,
+rama `codex/cierre-android-140-20261023`. Revisión guardada localmente en8f4e9dc,
+sin push. Base revisada:9d51f8b. Cambios de esta
+sesión: informe, evidencia de cuatro rutas nuevas y corrección del estado vigente;
+sin cambios del producto. Se preservan los cambios compartidos de esta carpeta.
+
+Web24/10 publicada; main remoto aún no la integra. GitHub confirma latest1.3.2
+y1.4.0draft. El lector anónimo del APK132 no puede sincronizar tras SQL28 y el
+panel también necesita adaptar su lectura del catálogo y rutas protegidas.
+No hay observación nueva en dispositivo132. El APK19 conserva QA pendiente y
+se mantiene detenido tras el último fallo autorizado. Tres ayudantes revisaron
+áreas separadas y han terminado; no se repitieron tests aprobados.
+
+InvestigaciónPAUSED, solo manual. Sin SQL, correo, cuentas nuevas, builds,
+otra ejecución nativa ni publicación durante la revisión. El traspaso completo
+de esta entrega está en el PARA-CODEX del checkout aislado.
+
+---
+
 ## 23 de octubre de 2026 · Codex · acceso obligatorio, cartera y tutorial Academy
 
 Se trabajó en la rama aislada codex/cierre-android-140-20261023 sin tocar el
@@ -346,6 +496,36 @@ Los ayudantes entregaron cada área y están detenidos, sin trabajo abierto.
 
 ---
 
+
+## 23 de octubre de 2026 · Claude · panel: correos, fechas, velocidad, planes y catálogo
+
+Víctor eligió seis añadidos para el panel (`rwadar-panel/`, rama
+`claude/panel-control`). Todo es **de solo lectura**; no se tocó la web, la
+app ni la base:
+
+- **Cuentas › Correos** (`lib/correos.js`): remitente y límite por hora (de
+  la configuración de Auth, **solo campos no secretos**), altas confirmadas y
+  cuánto tardan, cuentas >24 h sin confirmar, y errores de envío de 24 h en
+  `auth_logs` con correos e IP tapados.
+- **Límites y fechas** (`lib/fechas.js`, `lib/planes.js`): caducidad del
+  catálogo, `security.txt` (22/08/2027) y claves del panel; uso de Workers y
+  KV de Cloudflare por día, Supabase (plan, salud, último uso), minutos de
+  GitHub Actions del mes exactos por trabajo (13 % el 23/10) y compilaciones
+  de Expo lanzadas desde GitHub (1 de 15).
+- **Tráfico › Velocidad real** (`lib/velocidad.js`): LCP, INP y CLS p75 de 7
+  días por móvil/ordenador; sin nota con menos de 10 visitas medidas.
+- **Catálogo y Academy** (`lib/contenido.js`): inventario de lo publicado y
+  lecciones más leídas. **Ojo:** la web solo carga la analítica en portada,
+  Academy y legales (`assets/analitica-*.js`), así que **no se sabe qué
+  fichas de oferta/plataforma se abren**. Medirlo (y los clics «Ir a la
+  plataforma») es un cambio de la web propuesto aparte; el panel lo cruzará
+  solo si aparecen rutas `/ofertas/…` en Web Analytics.
+- Hallazgos para revisar: las **26 plataformas** llevan 76–89 días sin
+  verificar; **23 de 26** no tienen ninguna oferta y hay ofertas de
+  proveedores sin ficha de plataforma (Aktionariat · BOSS, Midas, Alius…).
+- Salud pasa de 11 a 14 comprobaciones. Pruebas: `npm run test:panel` 45/45.
+
+---
 
 ## 23 de octubre de 2026 · Codex · revisión de pendientes e investigación manual
 
@@ -428,6 +608,105 @@ sus pendientes documentados. El vídeo local usa nueve perfiles simulados:
   actualizaciones; no hace falta compilar la app.
 
 ---
+
+## 22 de octubre de 2026 · Claude · panel de control (`rwadar-panel/`)
+
+Víctor pidió un panel para controlarlo todo y compartirlo con sus socios por
+WhatsApp, entrando solo con un enlace. **Commits en la rama local
+`claude/panel-control`** (no subida a GitHub, no unida a `main`); en la carpeta
+de trabajo los mismos archivos siguen sin seguimiento sobre `main`, junto a los
+cambios sin subir de Codex en `AGENTS.md` y `docs/`, que no se han tocado.
+**No se ha publicado nada ni se ha tocado Supabase ni Cloudflare**: todo se
+probó contra un simulador local (`rwadar-panel/demo/simulador.js`).
+
+- **23/10 (cierre):** rama `claude/panel-control` subida a GitHub (7 commits, sin unir a `main`; no lanza ningún flujo). Traspaso completo en `docs/tareas/PANEL-DE-CONTROL.md` de esa rama.
+- **23/10 (tarde):** `GITHUB_TOKEN` fino de solo lectura (RWADAR y
+  RWAdar-downloads; comprobado que no ve Calix) subido al Worker: la nube ya
+  ve copia de seguridad, tareas y descargas. El uso de la app tiene 25 s de
+  margen y, si Supabase no contesta, sale de lo apuntado cada hora. Recorrido
+  final en la nube: todo correcto salvo el aviso real de Actions (Compilar
+  app Android, Publicar web, Verificación). Pruebas 36/36.
+- **23/10:** Víctor decidió que el panel **no apague la web** (cuando haga
+  falta os lo pide a vosotros): quitados el botón, la página de
+  mantenimiento y los despliegues de Pages (rama, commit `e174ccb`). Panel
+  subido de nuevo con los mismos enlaces (huellas comprobadas). Cloudflare
+  solo cuenta exacto los últimos 7 días (más allá muestrea 1/10): el panel
+  apunta cada día las visitas exactas en KV. Retirar el catálogo solo se
+  ofrece si la base da permiso (hoy no: 42501). Pruebas 35/35 y recorrido
+  completo con datos reales, local y nube.
+- **Estado al cierre (22/10, noche):** Víctor puso sus claves y dio permiso
+  expreso para subirlo. Worker `rwadar-panel` subido a
+  <https://rwadar-panel.victorjorquesgranero.workers.dev> con KV
+  `rwadar-panel-almacen` y cron horario. Se renovó `wrangler login` (la sesión
+  anterior solo tenía Pages; ahora tiene los permisos por defecto). Comprobado
+  desde fuera: sin enlace 401, enlace falso 403, enlace real entra; salud,
+  visitas, cuentas (9) y uso de la app (95 app / 81 web en 24 h) con datos
+  reales. Rama con 4 commits (`f2441b3` y el de GitHub). **Pendiente de
+  Víctor:** permiso «Cloudflare Pages · Edit» en el token del panel (sin él
+  no hay encender/apagar), un `GITHUB_TOKEN` de solo lectura (desde Cloudflare
+  GitHub limita las consultas sin clave) y decidir si se da a `service_role`
+  `SELECT, UPDATE` en `catalogo_publicacion` (hoy el botón de retirar el
+  catálogo da 42501; también `perfiles` y `vigilancia` están cerradas).
+- **Segunda tanda:** datos de la app (aperturas del catálogo desde la app y la
+  web por hora, leídas de los registros de Supabase con `SUPABASE_ACCESS_TOKEN`;
+  historial por día y descargas por día) y entrada por **enlace personal** sin
+  cuentas (llave tras `#`, cookie firmada 90 días, solo huellas en el Worker,
+  anulable por persona). Cloudflare Access queda como opción. Cron horario en
+  el Worker. Pruebas 31/31.
+- **Sin comprobar contra producción (además de lo de abajo):** la consulta
+  ClickHouse a `logs` (`source_name`, `log_attributes[...]`) y el formato de
+  `event_message`; la doc de Supabase no es del todo coherente.
+
+- **Qué hace:** encender/apagar la web (sube una página de mantenimiento 503 y
+  vuelve al despliegue anterior con la API de Pages), retirar/mostrar el
+  catálogo (`catalogo_publicacion.retirado`), salud con doce comprobaciones y
+  qué hacer, visitas de Web Analytics (GraphQL `rumPageloadEventsAdaptiveGroups`),
+  descargas del APK por versión, cuentas (listar, confirmar, bloquear, borrar
+  con el correo escrito) y registro de acciones con quién las hizo.
+- **Dos modos:** `npm run panel` (local, 127.0.0.1, sesión por arranque) y el
+  Worker `rwadar-panel` en Cloudflare detrás de Cloudflare Access + lista
+  `PANEL_SOCIOS`, con verificación propia del JWT (falla cerrado).
+  Detalle y pasos en `rwadar-panel/LEEME.md`.
+- **Toca fuera de la carpeta:** `.gitignore` (readmite `rwadar-panel/`,
+  ignora `datos/`, `datos-demo/` y `nube/generado/`) y `package.json`
+  (`panel`, `panel:demo`, `panel:nube`, `panel:nube:demo`, `test:panel`, y
+  `test:panel` dentro de `npm test`). No toca `rwadar-site/` ni ninguna ruta
+  con huella aprobada.
+- **Pruebas:** `npm run test:panel` 25/25; `npm run test:tools` correcto;
+  `npm run panel:nube -- --ensayo` empaqueta el Worker con wrangler 4.125.0
+  (62 KB, sin módulos de Node ni claves); el Worker se ejecutó en `wrangler dev`
+  con Access simulado y se recorrió en el navegador (socio, intruso, móvil).
+- **Sin comprobar contra producción:** los nombres de campos de la consulta
+  GraphQL de visitas, la vuelta atrás de Pages, la API de administrador de
+  Supabase y el PATCH del catálogo con la clave secreta. Se verán la primera
+  vez que Víctor abra el panel con sus claves.
+- **Pendiente de Víctor:** crear el token de Cloudflare y la clave secreta de
+  Supabase, rellenar `PANEL_SOCIOS`, ejecutar `npm run panel:nube`, activar
+  Access en el Worker y apagar/encender una vez desde el ordenador para dejar
+  subida la página de mantenimiento.
+
+---
+
+## 22 de octubre de 2026 · Codex · cierre de reintentos por consumo
+
+Víctor ha reprochado el consumo desproporcionado. Se detuvieron los agentes y
+las revisiones delegadas; no lanzar más reintentos por iniciativa automática.
+La web integral está publicada en `rwadar.pages.dev` (e764634c) y comprobada.
+Android público sigue en 1.3.2. El APK 1.4.0/código18 está compilado, pero sus
+ensayos no han cerrado correctamente: **no está aprobado ni publicado**.
+Último ensayo: 39812931682, head público40f926f, fallo en el recorrido;
+la descarga diagnóstica no equivale a una QA superada.
+
+El soporte de precarga está en `de7f2b1`, aprobado para preview en `b3deb41`;
+`1a0643d` separa referencias documentales duplicadas. Preview `b0fa07a6`
+publicada, sin comprobación remota final ni producción de ese soporte.
+Pruebas locales:551web+90fichas+29precarga; no repetirlas sin un cambio o fallo.
+La tarea diaria sigue ACTIVA a09:00localPC, pero las altas nuevas están
+bloqueadas hasta publicar/verificar la compatibilidad web y Android>=1.4.0.
+No se aplicó SQL nuevo durante este cierre. Revisar workingtree y
+`rwadar-entrega-integral-20261022/CONTINUACION.md` antes de retomar; conservar
+el catálogo completo y la versión pública. Falta cerrar también la lectura
+canónica de Cloudflare mediante su autenticación vigente y el texto del horario.
 
 ## 22 de octubre de 2026 · Codex · segunda revisión integral, idiomas y ciclo diario
 
