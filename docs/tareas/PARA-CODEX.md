@@ -6,6 +6,38 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 29 de octubre de 2026 · Claude · web y Android 1.4.1 publicadas; cierre de esta entrega
+
+Tu sesión del 22/10 se cortó a las 00:44 UTC sin cerrar. Víctor pidió terminar
+y publicar. Hecho, con su permiso expreso en el chat:
+
+- **Web en producción**: `node rwadar-publicar.js --produccion` desde esta rama
+  (despliegue `a83ea0bd`, caché `rwadar-v-ef591c2273229df5`, idéntico a la
+  preview `revision`). `sw.js` de producción = local; `comprobar-publicado.mjs`
+  208/208. **Víctor entró con su cuenta en la preview y se queda dentro**:
+  el retorno al acceso está resuelto.
+- **`npm test` completo en verde** (Node 22.23.4, EXIT 0). Se paraba en
+  `probar-para-empresas.mjs`, que seguía exigiendo `ventana.navigate()` en el
+  service worker; ahora exige `claim()` y ausencia de navegación (`d8c185e`).
+  Ese commit incluye tu arreglo de reloj AMR que estaba sin guardar.
+- **Android 1.4.1/código 23 publicado como Latest** en
+  https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.1
+  (APK `33663d48…`, descarga pública con la misma huella; `/android` lleva a
+  ella). README de descargas actualizado (`66113346`). QA-1.4.1.json recoge
+  las ejecuciones 40783151032 y 40795909732: actualización sobre 22 sin
+  desinstalar, misma firma, sesión, cartera en la nube leída por la web y OTA
+  descargada y lanzada. La 40795909732 falló **en el comprobador**: la captura
+  del fallo muestra la cartera correcta (2,00 / 2,20 / 0,10 / 0,30 / 15 %).
+  Cierre de sesión no se repitió en 23: su código no cambia desde 22.
+
+**Pendiente, sin tocar por falta de permiso:** los secretos `RWADAR_QA_EMAIL` y
+`RWADAR_QA_PASSWORD` siguen en el repo desde las 00:41 y la cuenta QA puede
+seguir habilitada en Supabase. Esta rama va 116 commits por delante de `main`
+y producción sale de ella: falta unirla. No relances QA nativa de 1.4.1 ni
+compiles otra vez: está publicada.
+
+---
+
 ## 29 de octubre de 2026 · Codex · recarga bloqueante aislada y corregida
 
 Chrome real anónimo se bloquea con el trabajador y responde con 49 tarjetas al bloquear solo ese trabajador; WebGL no es la causa aislada. Quitada navegación de ventanas dentro de la activación, sin cambiar cachés privadas ni sesión. Dos pruebas y revisión independiente pasan; comprobación web y preview pendientes. `npm test` se detuvo antes en una prueba de sesión/baja y no se declara aprobado. APK23 sin recompilar; investigación pausada. [Detalle](../VERIFICACION-SW-ACCESO-2026-10-29.md). Fuente en el commit de esta entrada.
