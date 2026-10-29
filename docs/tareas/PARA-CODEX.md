@@ -6,6 +6,32 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 29 de octubre de 2026 · Claude · botón «Actualizar» enviado por OTA a la 1.4.1
+
+Víctor pidió que la app se actualice con un botón, sin desinstalar. Hecho y
+publicado con su permiso expreso («Sí, envíalo»):
+
+- **OTA** `01a189a8-1c8d-781a-aaa1-4591b88c277f` (grupo `a9306bfa…`), canal
+  `production`, Android, runtime `1.4.1(23)`, desde `ae36f05`. Guard
+  `comprobar-ota-compatible.cjs --base c1f7106` correcto; sin permisos nuevos.
+- **Qué hace** (`b32ef29`): mejora ya descargada → aviso «Aplicar» (reinicia
+  solo al pulsar). Versión Android nueva → «Actualizar» descarga el APK tras
+  confirmar. El aviso sale bajo la cabecera y en acceso, error de restauración
+  y desbloqueo. Perfil › «Versión de la app» comprueba a mano.
+- **Cada versión Android nueva debe subir `version-android.json`** a su
+  release, con la forma exacta de `rwadar-movil/LEEME.md`. Ya está subido a
+  v1.4.1 (código 23). Sin él, la app no avisa de APK nuevos.
+- **Web** `1778479b`: privacidad con Expo y GitHub; sello en `ae36f05`;
+  `comprobar-publicado.mjs` 208/208.
+- `npm test` completo en verde; revisión independiente sin CRITICAL/HIGH y
+  sus 7 avisos menores aplicados. No hay prueba en un móvil real todavía:
+  Víctor lo verá en Perfil tras abrir la app dos veces.
+
+Commits solo locales (sin push). Siguen pendientes los secretos QA y unir
+esta rama a `main`.
+
+---
+
 ## 29 de octubre de 2026 · Claude · web y Android 1.4.1 publicadas; cierre de esta entrega
 
 Tu sesión del 22/10 se cortó a las 00:44 UTC sin cerrar. Víctor pidió terminar
