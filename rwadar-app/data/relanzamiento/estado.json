@@ -13,8 +13,8 @@
   "comisionVariableSobreInversion": false,
   "nota": "Claude, 30/10: en iPhone y iPad los enlaces a /android abren instrucciones para añadir RWAdar a la pantalla de inicio (es/en); en Android y escritorio no cambia nada. Probado simulando iPhone. Las pruebas PGlite usan UTC. npm test completo en verde. El publicador acepta el pie «pendiente de renovar» del catálogo caducado, el mismo que ya ve el navegador.",
   "revisionAprobada": {
-    "commit": "8779c79ccde3363cd6617521ada6014bf87609de",
-    "contenidoSha256": "sha256:18adc8a88658c1f7e38a628a60a31b1ca1080af80e75b91985f5e5e4058353ae",
+    "commit": "85d9ee3ab4b95cd1ca24087467417dbab3db7ca5",
+    "contenidoSha256": "sha256:d54220268c3513f2bc2ff6cb355c5c68d0de82b92e462e6b974a06b329bfba97",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
