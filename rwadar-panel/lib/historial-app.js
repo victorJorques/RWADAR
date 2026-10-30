@@ -13,9 +13,14 @@
 const DIA_MS = 86400000;
 const dia = fecha => new Date(fecha).toISOString().slice(0, 10);
 
+/* Solo se escribe si algo cambió: el plan gratis de KV da 1.000 escrituras
+   al día y el panel abierto refresca cada pocos minutos. */
 async function anotarDescargas(almacen, descargas, ahora = new Date()) {
+  const clave = `descargas-${dia(ahora)}`;
   const porVersion = Object.fromEntries(descargas.versiones.map(v => [v.version, v.descargasApk]));
-  await almacen.guardar(`descargas-${dia(ahora)}`, { total: descargas.totalApk, porVersion, apuntado: new Date(ahora).toISOString() });
+  const antes = await almacen.leer(clave);
+  if (antes?.total === descargas.totalApk && JSON.stringify(antes.porVersion) === JSON.stringify(porVersion)) return;
+  await almacen.guardar(clave, { total: descargas.totalApk, porVersion, apuntado: new Date(ahora).toISOString() });
 }
 
 async function anotarHoras(almacen, filas) {
@@ -26,9 +31,10 @@ async function anotarHoras(almacen, filas) {
     porDia.get(d).push(f);
   }
   for (const [d, horas] of porDia) {
-    const actual = (await almacen.leer(`uso-app-${d}`)) || { horas: {} };
-    for (const f of horas) actual.horas[f.hora.slice(11, 13)] = { app: f.app, web: f.web, conexionesApp: f.conexionesApp };
-    await almacen.guardar(`uso-app-${d}`, actual);
+    const antes = (await almacen.leer(`uso-app-${d}`)) || { horas: {} };
+    const nuevas = Object.fromEntries(horas.map(f => [f.hora.slice(11, 13), { app: f.app, web: f.web, pasarela: f.pasarela || 0, conexionesApp: f.conexionesApp }]));
+    const despues = { ...antes, horas: { ...antes.horas, ...nuevas } };
+    if (JSON.stringify(despues.horas) !== JSON.stringify(antes.horas)) await almacen.guardar(`uso-app-${d}`, despues);
   }
 }
 
@@ -47,9 +53,10 @@ async function leerHistorial(almacen, dias = 30, ahora = new Date()) {
   }
   const usoPorDia = fechas.slice(1).map((f, i) => {
     const horas = Object.values(uso[i + 1]?.horas || {});
+    const suma = clave => horas.reduce((s, h) => s + (h[clave] || 0), 0);
     return horas.length
-      ? { fecha: f, app: horas.reduce((s, h) => s + h.app, 0), web: horas.reduce((s, h) => s + h.web, 0), horasApuntadas: horas.length }
-      : { fecha: f, app: null, web: null, horasApuntadas: 0 };
+      ? { fecha: f, app: suma('app'), web: suma('web'), pasarela: suma('pasarela'), horasApuntadas: horas.length }
+      : { fecha: f, app: null, web: null, pasarela: null, horasApuntadas: 0 };
   });
   return {
     descargasPorDia,
@@ -72,11 +79,11 @@ async function ultimas24hApuntadas(almacen, ahora = new Date()) {
     const hora = new Date(t).toISOString();
     const h = docs[hora.slice(0, 10)]?.horas?.[hora.slice(11, 13)];
     if (h) apuntadas++;
-    serie.push({ hora, app: h?.app || 0, web: h?.web || 0, conexionesApp: h?.conexionesApp || 0 });
+    serie.push({ hora, app: h?.app || 0, web: h?.web || 0, pasarela: h?.pasarela || 0, conexionesApp: h?.conexionesApp || 0 });
   }
   if (!apuntadas) return null;
   const suma = clave => serie.reduce((s, f) => s + f[clave], 0);
-  return { serie, app: suma('app'), web: suma('web'), conexionesApp: Math.max(0, ...serie.map(f => f.conexionesApp)), desdeHistorial: true, horasApuntadas: apuntadas };
+  return { serie, app: suma('app'), web: suma('web'), pasarela: suma('pasarela'), conexionesApp: Math.max(0, ...serie.map(f => f.conexionesApp)), desdeHistorial: true, horasApuntadas: apuntadas };
 }
 
 module.exports = { anotarDescargas, anotarHoras, leerHistorial, ultimas24hApuntadas };

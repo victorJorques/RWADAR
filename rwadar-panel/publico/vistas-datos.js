@@ -41,7 +41,11 @@ function tarjetaVelocidad(v) {
 }
 
 const porcentaje = (parte, total) => total ? `${Math.round((parte / total) * 100)} %` : '0 %';
-const ficha = ruta => decodeURIComponent(ruta.split('/').filter(Boolean)[1] || ruta).replace(/[-_]/g, ' ');
+/* La ruta la escribe quien visita: «/ofertas/%zz» no se puede descodificar y no debe tumbar la sección. */
+const ficha = ruta => {
+  const trozo = ruta.split('/').filter(Boolean)[1] || ruta;
+  try { return decodeURIComponent(trozo).replace(/[-_]/g, ' '); } catch { return trozo; }
+};
 
 export async function trafico(raiz, recargar) {
   const cambiar = valor => { periodo = valor; recargar(); };
@@ -85,7 +89,12 @@ export async function trafico(raiz, recargar) {
 
 const horaCorta = iso => new Date(iso).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
 const diaCorto = f => new Date(`${f}T12:00:00Z`).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', timeZone: 'Europe/Madrid' });
-const SERIES_USO = [{ clave: 'app', nombre: 'Desde la app', color: SERIE_1 }, { clave: 'web', nombre: 'Desde la web', color: SERIE_2 }];
+const SERIE_3 = '#d19a2a';
+const SERIES_USO = [{ clave: 'app', nombre: 'Desde la app', color: SERIE_1 }, { clave: 'web', nombre: 'Desde la web', color: SERIE_2 },
+  { clave: 'pasarela', nombre: 'Por la pasarela (app o web)', color: SERIE_3 }];
+/* Todas las cargas del catálogo, se sepa o no de dónde vienen. */
+export const cargasTotales = u => (u.app || 0) + (u.web || 0) + (u.pasarela || 0);
+const NOTA_PASARELA = 'Desde la versión 1.4.1 la web (y la app) piden el catálogo a través de rwadar.pages.dev, y Supabase ya no ve si es la app o la web: esas cargas salen juntas como «pasarela». Para volver a separarlas hay que tocar esa pasarela de la web.';
 
 function seccionUso(uso) {
   if (uso.error) {
@@ -94,22 +103,23 @@ function seccionUso(uso) {
       h('p', { class: 'nota', style: 'margin-top:10px' }, 'Se mide contando en los registros de Supabase las veces que la app y la web cargan el catálogo. No hace falta cambiar la app.'));
   }
   const u = uso.datos;
-  const puntos = u.serie.map(f => ({ etiqueta: fecha(f.hora), corta: horaCorta(f.hora), valores: { app: f.app, web: f.web } }));
+  const puntos = u.serie.map(f => ({ etiqueta: fecha(f.hora), corta: horaCorta(f.hora), valores: { app: f.app, web: f.web, pasarela: f.pasarela || 0 } }));
   return h('section', { class: 'tarjeta' },
     h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Veces que se abre el catálogo · por hora'), h('span', { class: 'nota' }, 'Últimas 24 horas, según los registros de Supabase')),
     /* Supabase no contestó: se enseña lo apuntado cada hora y se avisa. */
     u.desdeHistorial ? h('div', { class: 'falta-clave', style: 'margin-bottom:12px' }, `Supabase no ha contestado ahora: estas cifras son las que el panel apuntó (${u.horasApuntadas} de 24 horas). Se pondrán al día solas.`) : null,
-    lineas(puntos, SERIES_USO));
+    lineas(puntos, SERIES_USO),
+    u.pasarela ? h('p', { class: 'nota', style: 'margin-top:10px' }, NOTA_PASARELA) : null);
 }
 
 function seccionHistorial(historial) {
   if (!historial) return null;
-  const uso = historial.usoPorDia.map(d => ({ etiqueta: fecha(d.fecha, { hora: false }) + (d.horasApuntadas && d.horasApuntadas < 24 ? ` (${d.horasApuntadas} h apuntadas)` : d.app === null ? ' (sin apuntar)' : ''), corta: diaCorto(d.fecha), valor: d.app || 0 }));
+  const uso = historial.usoPorDia.map(d => ({ etiqueta: fecha(d.fecha, { hora: false }) + (d.horasApuntadas && d.horasApuntadas < 24 ? ` (${d.horasApuntadas} h apuntadas)` : d.app === null ? ' (sin apuntar)' : ''), corta: diaCorto(d.fecha), valor: cargasTotales(d) }));
   const descargas = historial.descargasPorDia.map(d => ({ etiqueta: fecha(d.fecha, { hora: false }) + (d.nuevas === null ? ' (sin apuntar)' : ''), corta: diaCorto(d.fecha), valor: d.nuevas || 0 }));
   const aviso = 'El panel lo va apuntando cada vez que se abre; el de la nube, además, cada hora. Los días sin apunte salen a cero.';
   return h('div', { class: 'rejilla dos' },
-    h('section', { class: 'tarjeta' }, h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Aperturas desde la app · por día'), h('span', { class: 'nota' }, `${historial.diasConUso} días con datos`)),
-      historial.diasConUso ? columnas(uso, { nombre: 'Aperturas desde la app' }) : h('p', { class: 'vacio' }, 'Todavía no hay días apuntados.'), h('p', { class: 'nota' }, aviso)),
+    h('section', { class: 'tarjeta' }, h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Cargas del catálogo (app y web) · por día'), h('span', { class: 'nota' }, `${historial.diasConUso} días con datos`)),
+      historial.diasConUso ? columnas(uso, { nombre: 'Cargas del catálogo' }) : h('p', { class: 'vacio' }, 'Todavía no hay días apuntados.'), h('p', { class: 'nota' }, aviso)),
     h('section', { class: 'tarjeta' }, h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Descargas del APK · por día'), h('span', { class: 'nota' }, `${historial.diasConDescargas} días con datos`)),
       historial.diasConDescargas ? columnas(descargas, { nombre: 'Descargas', color: SERIE_2 }) : h('p', { class: 'vacio' }, 'Hacen falta dos días apuntados seguidos para saber las descargas de un día.'), h('p', { class: 'nota' }, aviso)));
 }
@@ -121,11 +131,10 @@ export async function app(raiz) {
   const d = descargas.datos;
   const u = uso.datos;
   const c = cuentas.status === 'fulfilled' ? cuentas.value.resumen : null;
-  const total = u ? u.app + u.web : 0;
-  poner(raiz, 
+  poner(raiz,
     h('div', { class: 'rejilla kpis' },
-      kpi('Aperturas desde la app · 24 h', u ? numero(u.app) : '—', u ? `${total ? Math.round((u.app / total) * 100) : 0} % del total` : 'Falta la clave de registros'),
-      kpi('Desde la web · 24 h', u ? numero(u.web) : '—', 'Cargas del catálogo en el navegador'),
+      kpi('Cargas del catálogo · 24 h', u ? numero(cargasTotales(u)) : '—',
+        u ? `${numero(u.app)} app · ${numero(u.web)} web${u.pasarela ? ` · ${numero(u.pasarela)} sin distinguir` : ''}` : 'Falta la clave de registros'),
       kpi('Descargas del APK', d ? numero(d.totalApk) : '—', d?.ultima ? `Última: ${d.ultima.version} (${numero(d.ultima.descargasApk)})` : null),
       c ? kpi('Cuentas (web y app)', numero(c.total), `${numero(c.activas30d)} activas en 30 días`) : kpi('Cuentas (web y app)', '—', 'Falta la clave de Supabase')),
     seccionUso(uso),
@@ -221,7 +230,7 @@ function tarjetaCorreos(c) {
     d ? h('div', { class: 'mini-cifras' },
       h('div', {}, h('span', {}, 'Altas · 30 días'), h('strong', { class: 'num' }, numero(d.altas30d))),
       h('div', {}, h('span', {}, 'Confirmadas'), h('strong', { class: 'num' }, numero(d.confirmadas30d))),
-      h('div', { class: d.sinConfirmar24h ? 'aviso' : '' }, h('span', {}, 'Sin confirmar tras 1 día'), h('strong', { class: 'num' }, numero(d.sinConfirmar24h))),
+      h('div', { class: d.sinConfirmar24h ? 'aviso' : '' }, h('span', {}, 'Altas de esta semana sin confirmar tras 1 día'), h('strong', { class: 'num' }, numero(d.sinConfirmar24h))),
       h('div', {}, h('span', {}, 'Tardan en confirmar'), h('strong', { class: 'num' }, minutos(d.minutosHastaConfirmar))),
       h('div', {}, h('span', {}, 'Recuperar contraseña · 30 días'), h('strong', { class: 'num' }, numero(d.recuperaciones30d))),
       h('div', {}, h('span', {}, 'Último correo enviado'), h('strong', {}, haceCuanto(d.ultimoEnviado)))) : parte(cu),

@@ -30,9 +30,15 @@ const ES_APP = `(log_attributes['request.headers.x_client_info'] ILIKE '%react-n
 const ES_WEB = `(NOT ${ES_APP} AND ${AGENTE} ILIKE 'mozilla%')`;
 const IP = "if(log_attributes['request.headers.cf_connecting_ip'] != '', log_attributes['request.headers.cf_connecting_ip'], log_attributes['request.headers.x_real_ip'])";
 
+/* Desde la 1.4.1 (29/10/2026) la web, y con ella la app, piden el catálogo
+   a través de rwadar.pages.dev (/api/acceso/catalogo/…, rwadar-acceso/
+   servidor.mjs), que llama a Supabase sin agente: esas cargas llegan con el
+   agente vacío y ya no se sabe si son de la app o de la web («pasarela»).
+   El propio panel pide con agente «node» y no cuenta en ninguna. */
 const CONSULTA = `SELECT toStartOfHour(timestamp) AS hora,
   countIf(${ES_APP}) AS app,
   countIf(${ES_WEB}) AS web,
+  countIf(${AGENTE} = '') AS pasarela,
   uniqExactIf(${IP}, ${ES_APP} AND ${IP} != '') AS conexiones_app
 FROM logs
 WHERE source = 'edge_logs' AND log_attributes['request.path'] LIKE '%/rest/v1/catalogo_publicacion%'
@@ -77,6 +83,7 @@ function crearUsoApp(config) {
       hora: new Date(Math.floor(aFecha(f.hora).getTime() / HORA_MS) * HORA_MS).toISOString(),
       app: Number(f.app) || 0,
       web: Number(f.web) || 0,
+      pasarela: Number(f.pasarela) || 0,
       conexionesApp: Number(f.conexiones_app) || 0,
     }));
   }
@@ -89,10 +96,10 @@ function crearUsoApp(config) {
     const serie = [];
     for (let t = Math.floor(desde.getTime() / HORA_MS) * HORA_MS + HORA_MS; t <= hasta.getTime(); t += HORA_MS) {
       const hora = new Date(t).toISOString();
-      serie.push(filas.get(hora) || { hora, app: 0, web: 0, conexionesApp: 0 });
+      serie.push(filas.get(hora) || { hora, app: 0, web: 0, pasarela: 0, conexionesApp: 0 });
     }
-    const suma = clave => serie.reduce((s, f) => s + f[clave], 0);
-    return { serie, app: suma('app'), web: suma('web'), conexionesApp: Math.max(0, ...serie.map(f => f.conexionesApp)) };
+    const suma = clave => serie.reduce((s, f) => s + (f[clave] || 0), 0);
+    return { serie, app: suma('app'), web: suma('web'), pasarela: suma('pasarela'), conexionesApp: Math.max(0, ...serie.map(f => f.conexionesApp)) };
   }
 
   /* La hora que acaba de terminar, para el historial (la llama el
@@ -101,7 +108,7 @@ function crearUsoApp(config) {
     const fin = new Date(Math.floor(ahora.getTime() / HORA_MS) * HORA_MS);
     const inicio = new Date(fin.getTime() - HORA_MS);
     const [fila] = await consultar(inicio, fin);
-    return fila || { hora: inicio.toISOString(), app: 0, web: 0, conexionesApp: 0 };
+    return fila || { hora: inicio.toISOString(), app: 0, web: 0, pasarela: 0, conexionesApp: 0 };
   }
 
   return { ultimas24h, horaAnterior };

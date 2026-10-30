@@ -135,14 +135,51 @@ test('los correos cuentan altas, confirmaciones y cuentas atascadas de los últi
     { confirmada: true, correoAltaEnviado: hace(30), confirmadaEl: hace(29.5) },
     { confirmada: false, correoAltaEnviado: hace(30) },
     { confirmada: false, correoAltaEnviado: hace(3) },
+    { confirmada: false, correoAltaEnviado: hace(24 * 10) },
     { confirmada: false, correoAltaEnviado: hace(24 * 40) },
   ];
   assert.deepEqual(resumirCuentas(cuentas, ahora), {
-    altas30d: 4, confirmadas30d: 2, sinConfirmar24h: 1, recuperaciones30d: 1,
+    altas30d: 5, confirmadas30d: 2, sinConfirmar24h: 1, recuperaciones30d: 1,
     minutosHastaConfirmar: 30, ultimoEnviado: hace(3),
-  });
+  }, 'atascada es la de 30 horas; la de 10 días ya no avisa');
   assert.match(CONSULTA, /source = 'auth_logs'/);
-  assert.doesNotMatch(CONSULTA, /email|remote_addr/, 'la consulta no pide direcciones');
+  assert.match(CONSULTA, /LIKE '%smtp%'/, 'de otras rutas solo cuentan los errores de correo');
+  assert.doesNotMatch(CONSULTA, /email'|remote_addr/, 'la consulta no pide direcciones');
+});
+
+test('los errores de correo se enseñan sin direcciones ni IP, pero con sus horas', () => {
+  const { tapar, aFecha } = require('../lib/correos');
+  assert.equal(tapar('535 not accepted for josé@ejemplo.es at 18:00:00'), '535 not accepted for <correo> at 18:00:00');
+  assert.equal(tapar('user ana%40example.com from 2a01:4f8:c0c:1::1 and 10.0.0.1'), 'user <correo> from <ip> and <ip>');
+  assert.equal(aFecha('2026-10-23 18:00:00').toISOString(), '2026-10-23T18:00:00.000Z');
+  assert.equal(aFecha(1761242400000000).toISOString(), '2025-10-23T18:00:00.000Z', 'microsegundos');
+});
+
+test('una clave del panel que ya no vale es fallo, y una que no se pudo mirar no se esconde', () => {
+  const { entradaClave, diasHasta } = require('../lib/fechas');
+  const ahora = Date.parse('2026-10-23T12:00:00Z');
+  assert.equal(entradaClave('g', 'G', { noVale: true }, 'Crea otra.', ahora).estado, 'fallo');
+  assert.equal(entradaClave('g', 'G', null, '', ahora).estado, 'sin-datos');
+  assert.equal(entradaClave('g', 'G', { sinCaducidad: true }, '', ahora).que, 'No caduca.');
+  assert.equal(entradaClave('g', 'G', { fecha: '2026-10-30T12:00:00Z' }, '', ahora).estado, 'aviso');
+  assert.equal(diasHasta('2026-10-23T10:00:00Z', ahora), -1, 'caducada hace dos horas: -1, no «-0»');
+  assert.equal(diasHasta('2026-10-23T14:00:00Z', ahora), 1);
+});
+
+test('el historial de la app solo escribe si algo cambió', async () => {
+  const { anotarDescargas, anotarHoras } = require('../lib/historial-app');
+  const datos = new Map();
+  let escrituras = 0;
+  const almacen = { leer: async k => datos.get(k) ?? null, guardar: async (k, v) => { escrituras++; datos.set(k, JSON.parse(JSON.stringify(v))); } };
+  const descargas = { totalApk: 17, versiones: [{ version: 'v1', descargasApk: 17 }] };
+  const horas = [{ hora: '2026-10-23 18:00:00', app: 3, web: 2, conexionesApp: 1 }];
+  for (let i = 0; i < 3; i++) {
+    await anotarDescargas(almacen, descargas, new Date('2026-10-23T19:00:00Z'));
+    await anotarHoras(almacen, horas);
+  }
+  assert.equal(escrituras, 2, 'tres vueltas iguales: una escritura de cada');
+  await anotarHoras(almacen, [{ ...horas[0], app: 4 }]);
+  assert.equal(escrituras, 3);
 });
 
 test('las fechas avisan a 14 días, el catálogo a 2, y lo caducado es fallo', () => {

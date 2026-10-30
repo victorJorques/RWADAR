@@ -59,7 +59,7 @@ export async function resumen(raiz) {
     h('div', { class: 'rejilla kpis' },
       kpiDe(trafico, 'Visitas · 7 días', d => numero(d.visitas), d => `${numero(d.paginasVistas)} páginas vistas`),
       kpiDe(cuentas, 'Cuentas creadas', d => numero(d.resumen.total), d => `+${numero(d.resumen.nuevas7d)} esta semana`),
-      kpiDe(app, 'Aperturas de la app · 24 h', d => d.uso.datos ? numero(d.uso.datos.app) : '—', d => d.descargas.datos ? `${numero(d.descargas.datos.totalApk)} descargas del APK` : ''),
+      kpiDe(app, 'Cargas del catálogo · 24 h', d => d.uso.datos ? numero((d.uso.datos.app || 0) + (d.uso.datos.web || 0) + (d.uso.datos.pasarela || 0)) : '—', d => d.descargas.datos ? `App y web · ${numero(d.descargas.datos.totalApk)} descargas del APK` : 'App y web'),
       kpiDe(cuentas, 'Activas · 30 días', d => numero(d.resumen.activas30d), d => `${numero(d.resumen.sinConfirmar)} sin confirmar`)),
     h('div', { class: 'rejilla dos' },
       h('section', { class: 'tarjeta' }, h('h2', {}, 'Cosas que corregir'),

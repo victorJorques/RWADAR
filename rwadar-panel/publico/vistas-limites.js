@@ -4,19 +4,22 @@ import { api, h, poner, numero, fecha, etiquetaEstado, bloqueError } from './uti
 import { columnas } from './graficos.js';
 
 const NOTA_FECHA = { ok: 'Bien', aviso: 'Pronto', fallo: 'Caducado', 'sin-datos': 'Sin datos' };
+const NO_VALE = 'No vale';
+
+const dias = n => `${numero(n)} ${n === 1 ? 'día' : 'días'}`;
 
 function cuandoCaduca(f) {
-  if (f.diasRestantes === null) return f.fecha ? fecha(f.fecha, { hora: false }) : f.que;
-  if (f.diasRestantes < 0) return `Caducó hace ${numero(-f.diasRestantes)} días (${fecha(f.fecha, { hora: false })})`;
+  if (f.diasRestantes === null) return { ok: 'No caduca', fallo: 'Ya no vale', 'sin-datos': 'No se pudo comprobar' }[f.estado] || '—';
+  if (f.diasRestantes < 0) return `Caducó hace ${dias(-f.diasRestantes)} (${fecha(f.fecha, { hora: false })})`;
   if (f.diasRestantes === 0) return `Caduca hoy (${fecha(f.fecha, { hora: false })})`;
-  return `Quedan ${numero(f.diasRestantes)} días · ${fecha(f.fecha, { hora: false })}`;
+  return `Quedan ${dias(f.diasRestantes)} · ${fecha(f.fecha, { hora: false })}`;
 }
 
 function tarjetaFechas(r) {
   const cab = h('div', { class: 'tarjeta-cab' }, h('h2', {}, 'Fechas que caducan'), h('span', { class: 'nota' }, 'Avisa 14 días antes (el catálogo, que se renueva cada semana, 2)'));
   if (r.error) return h('section', { class: 'tarjeta' }, cab, bloqueError({ message: r.error, codigo: r.codigo }));
   return h('section', { class: 'tarjeta' }, cab, h('div', { class: 'lista-fechas' }, ...r.datos.map(f => h('div', { class: `fecha-fila ${f.estado}` },
-    etiquetaEstado(f.estado, NOTA_FECHA[f.estado]),
+    etiquetaEstado(f.estado, f.estado === 'fallo' && f.diasRestantes === null ? NO_VALE : NOTA_FECHA[f.estado]),
     h('div', {}, h('strong', {}, f.nombre), h('div', { class: 'nota' }, cuandoCaduca(f))),
     f.estado === 'ok' && f.diasRestantes === null ? null : h('p', { class: 'que-hacer' }, f.que)))));
 }

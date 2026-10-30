@@ -39,12 +39,13 @@ function crearApi({ config, almacen, extras = {} }) {
   const velocidad = crearVelocidad(config);
   const planes = crearPlanes({ config, almacen, github, cuentas });
   const contenido = crearContenido({ config, trafico: periodo => traficoCompleto(periodo) });
-  /* Lo que también mira la salud: se comparte la caché con sus secciones. */
+  /* Lo que también mira la salud: se comparte la caché con sus secciones.
+     Si una parte no contestó, se guarda solo un minuto para reintentarla. */
   const leidos = {
-    correos: () => cache.obtener('correos', 300, () => correos.resumen()),
-    fechas: () => cache.obtener('fechas', 900, () => fechas.lista()),
+    correos: () => cache.obtener('correos', c => (c.registros.error || c.cuentas.error ? 60 : 300), () => correos.resumen()),
+    fechas: () => cache.obtener('fechas', l => (l.some(f => f.estado === 'sin-datos') ? 60 : 900), () => fechas.lista()),
     velocidad: () => cache.obtener('velocidad', 1800, () => velocidad.ultimos7Dias()),
-    planes: () => cache.obtener('planes', 600, () => planes.resumen()),
+    planes: () => cache.obtener('planes', p => (p.servicios.some(s => s.error) ? 60 : 600), () => planes.resumen()),
   };
   const salud = crearSalud({ config, supabase, github, leidos });
   let accionEnCurso = null;
@@ -73,12 +74,16 @@ function crearApi({ config, almacen, extras = {} }) {
   /* Visitas exactas por día. Cloudflare solo cuenta visita a visita los
      últimos 7 días; el panel las apunta (visitas-AAAA-MM-DD) para que
      después los 30 días usen la cifra exacta y no su estimación. Solo se
-     escribe si cambia, para no gastar escrituras de KV. */
+     escribe si cambia, para no gastar escrituras de KV.
+     El primer día de la ventana empieza a media jornada (está incompleto):
+     no se apunta, y una cifra ya apuntada nunca se rebaja. */
   async function anotarVisitas(trafico7d) {
-    for (const p of trafico7d.serie) {
+    for (const p of trafico7d.serie.slice(1)) {
       const clave = `visitas-${p.momento}`;
       const antes = await almacen.leer(clave);
-      if (antes?.visitas !== p.visitas || antes?.paginas !== p.paginas) await almacen.guardar(clave, { visitas: p.visitas, paginas: p.paginas });
+      const visitas = Math.max(p.visitas, antes?.visitas || 0);
+      const paginas = Math.max(p.paginas, antes?.paginas || 0);
+      if (antes?.visitas !== visitas || antes?.paginas !== paginas) await almacen.guardar(clave, { visitas, paginas });
     }
   }
 
@@ -137,7 +142,8 @@ function crearApi({ config, almacen, extras = {} }) {
       puedeAbrirClaves: Boolean(extras.abrirClaves),
     }),
     '/api/salud': async url => {
-      if (url.searchParams.get('fresco') === '1') cache.olvidar('salud');
+      /* «Comprobar ahora» vuelve a mirarlo todo menos la velocidad, que es de toda la semana. */
+      if (url.searchParams.get('fresco') === '1') for (const clave of ['salud', 'correos', 'fechas', 'planes']) cache.olvidar(clave);
       return cache.obtener('salud', 60, () => salud.comprobar());
     },
     '/api/trafico': async url => {

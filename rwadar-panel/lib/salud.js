@@ -22,7 +22,9 @@ const PAGINAS_CLAVE = ['/academy/', '/privacidad', '/metodologia', '/sitemap.xml
 const ORDEN = { fallo: 0, aviso: 1, 'sin-datos': 2, ok: 3 };
 const METRICAS = { lcp: 'tarda en verse lo principal', inp: 'tarda en reaccionar al tocar', cls: 'la página salta al cargar' };
 const APARATOS = { movil: 'móvil', ordenador: 'ordenador' };
+const ERROR_CORREO_RECIENTE_H = 6;
 const segundos = ms => `${(ms / 1000).toFixed(1).replace('.', ',')} s`;
+const porCiento = n => `${String(n).replace('.', ',')} %`;
 
 const fechaCorta = iso => iso ? new Date(iso).toLocaleString('es-ES', { timeZone: 'Europe/Madrid', dateStyle: 'medium', timeStyle: 'short' }) : '—';
 const r = (estado, detalle, arreglo = null) => ({ estado, detalle, arreglo });
@@ -108,19 +110,27 @@ function crearSalud({ config, supabase, github, leidos = null }) {
       const cu = c.cuentas.datos;
       if (reg?.errores) {
         const primero = reg.ultimosErrores[0] ? `: «${reg.ultimosErrores[0].mensaje}»` : '';
-        return r('fallo', `${reg.errores} error(es) al enviar correos en 24 h${primero}`, 'Si habla de 534 o de autenticación, la contraseña de aplicación de Gmail ya no vale: crea otra y pégala en Supabase › Authentication › SMTP.');
+        /* Un error de hace horas que no se ha repetido es aviso; uno reciente, fallo. */
+        const horas = reg.ultimoError ? (Date.now() - new Date(reg.ultimoError).getTime()) / 3600000 : 0;
+        const cuando = reg.ultimoError ? ` (el último, ${horas < 1 ? 'hace menos de una hora' : `hace ${Math.round(horas)} h`})` : '';
+        return r(horas <= ERROR_CORREO_RECIENTE_H ? 'fallo' : 'aviso', `${reg.errores} error(es) al enviar correos en 24 h${cuando}${primero}`,
+          'Si habla de 534, 535 o de autenticación, la contraseña de aplicación de Gmail ya no vale: crea otra y pégala en Supabase › Authentication › SMTP.');
       }
       if (reg?.frenadas) return r('aviso', `Supabase frenó ${reg.frenadas} correo(s) en 24 h por pasar del límite por hora`, 'Si se repite, sube el límite en Supabase › Authentication › Rate limits.');
-      if (cu?.sinConfirmar24h) return r('aviso', `${cu.sinConfirmar24h} cuenta(s) nueva(s) llevan más de un día sin confirmar el correo`, 'Puede que no les llegara o que esté en spam. Si sabes que el correo es suyo, confírmala a mano en Cuentas.');
-      if (!reg && !cu) return r('sin-datos', c.registros.error || c.cuentas.error || 'Sin datos');
-      return r('ok', reg ? `Sin errores en 24 h · ${reg.altas} alta(s) y ${reg.recuperaciones} recuperación(es)` : 'Ninguna cuenta nueva sin confirmar');
+      if (cu?.sinConfirmar24h) return r('aviso', `${cu.sinConfirmar24h} alta(s) de esta semana llevan más de un día sin confirmar el correo`, 'Puede que no les llegara o que esté en spam. Si sabes que el correo es suyo, confírmala a mano en Cuentas.');
+      /* Sin los registros no se puede decir que los correos salen bien. */
+      if (!reg) return r('sin-datos', `No pude leer los registros de Supabase: ${c.registros.error}`);
+      return r('ok', `Sin errores en 24 h · ${reg.altas} alta(s) y ${reg.recuperaciones} recuperación(es)`);
     } },
     { id: 'fechas', area: 'Mantenimiento', nombre: 'Fechas que caducan', ejecutar: async () => {
       /* El catálogo ya lo vigila «Revisión al día». */
       const lista = (await leidos.fechas()).filter(f => f.id !== 'catalogo');
       const peor = lista.find(f => f.estado === 'fallo') || lista.find(f => f.estado === 'aviso');
       if (peor) {
-        const cuando = peor.diasRestantes < 0 ? `caducó hace ${-peor.diasRestantes} días` : `caduca en ${peor.diasRestantes} días`;
+        const dias = n => `${n} ${n === 1 ? 'día' : 'días'}`;
+        const cuando = peor.diasRestantes === null ? 'ya no vale'
+          : peor.diasRestantes < 0 ? `caducó hace ${dias(-peor.diasRestantes)}`
+            : peor.diasRestantes === 0 ? 'caduca hoy' : `caduca en ${dias(peor.diasRestantes)}`;
         return r(peor.estado, `${peor.nombre}: ${cuando}`, peor.que);
       }
       const proxima = lista.find(f => f.diasRestantes !== null);
@@ -152,11 +162,11 @@ function crearSalud({ config, supabase, github, leidos = null }) {
         .sort((a, b) => (b.porcentaje ?? 0) - (a.porcentaje ?? 0));
       const peor = medidores.find(m => m.estado !== 'ok');
       if (peor) {
-        return r(peor.estado, `${peor.servicio}: ${peor.nombre.toLowerCase()} al ${peor.porcentaje} %`,
+        return r(peor.estado, `${peor.servicio}: ${peor.nombre.toLowerCase()} al ${porCiento(peor.porcentaje)}`,
           peor.estado === 'fallo' ? 'Se ha llegado al tope del plan gratis: mira Límites y fechas para ver qué deja de funcionar.' : 'Va cerca del tope del plan gratis: mira Límites y fechas.');
       }
       const mayor = medidores[0];
-      return r('ok', mayor ? `Lo más gastado: ${mayor.servicio}, ${mayor.nombre.toLowerCase()} al ${mayor.porcentaje} %` : 'Sin datos de uso');
+      return r('ok', mayor ? `Lo más gastado: ${mayor.servicio}, ${mayor.nombre.toLowerCase()} al ${porCiento(mayor.porcentaje)}` : 'Sin datos de uso');
     } },
   ];
 

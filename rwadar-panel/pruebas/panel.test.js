@@ -244,7 +244,21 @@ test('los 30 días usan las visitas exactas apuntadas en vez de la estimación',
     const t30 = (await p.api('/api/trafico?periodo=30d')).datos;
     assert.equal(t30.serie.find(x => x.momento === viejo).visitas, 777);
     assert.equal(t30.visitas, t30.serie.reduce((s, x) => s + x.visitas, 0), 'el total es la suma de los días');
-    assert.ok(t30.diasExactos >= 9);
+    assert.ok(t30.diasExactos >= 8);
+  } finally { await p.cerrar(); }
+});
+
+test('el primer día de la semana, que va a medias, no se apunta, y lo apuntado nunca baja', async () => {
+  const p = await montar();
+  try {
+    const t7 = (await p.api('/api/trafico?periodo=7d')).datos;
+    const primero = t7.serie[0].momento;
+    const segundo = t7.serie[1].momento;
+    assert.equal(fs.existsSync(path.join(p.dirDatos, `visitas-${primero}.json`)), false, 'el día a medias no se guarda');
+    const archivo = path.join(p.dirDatos, `visitas-${segundo}.json`);
+    fs.writeFileSync(archivo, JSON.stringify({ visitas: 5000, paginas: 9000 }));
+    await p.api('/api/trafico?periodo=7d');
+    assert.deepEqual(JSON.parse(fs.readFileSync(archivo, 'utf8')), { visitas: 5000, paginas: 9000 }, 'una cifra más alta ya apuntada se respeta');
   } finally { await p.cerrar(); }
 });
 
@@ -265,6 +279,9 @@ test('el uso de la app sale hora a hora de los registros de Supabase y se apunta
     assert.equal(uso.serie.length, 24);
     assert.equal(uso.serie.reduce((s, f) => s + f.app, 0), uso.app);
     assert.ok(uso.app > 0 && uso.web > 0);
+    assert.ok(uso.pasarela > 0, 'las cargas por la pasarela de la web (sin agente) también cuentan');
+    assert.equal(uso.serie.reduce((s, f) => s + f.pasarela, 0), uso.pasarela);
+    assert.ok(datos.historial.usoPorDia.some(d => d.pasarela > 0), 'y se apuntan por día');
     assert.ok(uso.serie.every((f, i) => i === 0 || Date.parse(f.hora) - Date.parse(uso.serie[i - 1].hora) === 3600000), 'horas seguidas');
     const hoy = new Date().toISOString().slice(0, 10);
     assert.ok(fs.existsSync(path.join(p.dirDatos, `uso-app-${hoy}.json`)));

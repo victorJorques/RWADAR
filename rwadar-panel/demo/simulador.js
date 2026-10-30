@@ -31,7 +31,8 @@ function registrosUso(desde, hasta) {
     const r = azar(Math.floor(t / HORA));
     const curva = Math.max(0, Math.sin(((h - 6) / 24) * Math.PI * 2));
     const app = Math.round(curva * 9 + r() * 4);
-    filas.push({ hora: new Date(t).toISOString().replace('T', ' ').slice(0, 19), app, web: Math.round(curva * 14 + r() * 6), conexiones_app: Math.max(0, app - Math.round(r() * 3)) });
+    /* «pasarela»: cargas que llegan por /api/acceso de la web, sin saber si son app o web. */
+    filas.push({ hora: new Date(t).toISOString().replace('T', ' ').slice(0, 19), app, web: Math.round(curva * 14 + r() * 6), pasarela: Math.round(curva * 6), conexiones_app: Math.max(0, app - Math.round(r() * 3)) });
   }
   return filas;
 }

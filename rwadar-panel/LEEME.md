@@ -108,7 +108,11 @@ para ver qué pasa con un enlace que no vale).
   menos de 10 visitas medidas no se pone nota.
 - **App:** cuántas veces se abre el catálogo desde la app y desde la web, hora
   a hora en las últimas 24 horas y por día después (se cuenta en los registros
-  de Supabase: no hace falta cambiar la app ni se guarda quién es nadie);
+  de Supabase: no hace falta cambiar la app ni se guarda quién es nadie).
+  Desde la 1.4.1 (29/10/2026) la web y la app piden el catálogo por la
+  pasarela de rwadar.pages.dev (`/api/acceso/catalogo/…`), que llama a
+  Supabase sin agente: esas cargas salen como «pasarela (app o web)». Para
+  volver a separarlas, la pasarela tendría que reenviar de quién viene;
   descargas del APK por versión y por día. Una descarga no es una instalación.
 - **Cuentas:** todas las cuentas (web y app son las mismas), altas por día,
   buscador, filtros y CSV. Por cuenta: *Confirmar* el correo a mano,

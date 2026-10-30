@@ -55,10 +55,12 @@ function crearSupabase(config) {
     if (!primera) return { plataformas: 0, ofertas: 0, plataformasEsperadas: null, ofertasEsperadas: null, caducaEl: null, diasRestantes: null };
     const verificado = new Date(primera.verificado_lote_el);
     const caduca = new Date(verificado.getTime() + Number(primera.vigencia_lote_dias || 0) * DIA_MS);
+    const ms = caduca.getTime() - ahora;
     return {
       verificadoEl: primera.verificado_lote_el,
       caducaEl: caduca.toISOString().slice(0, 10),
-      diasRestantes: Math.ceil((caduca.getTime() - ahora) / DIA_MS),
+      /* Hacia abajo si ya pasó: recién caducado es -1, no un «-0» que pasa por vigente. */
+      diasRestantes: ms < 0 ? Math.floor(ms / DIA_MS) : Math.ceil(ms / DIA_MS),
       plataformas: plataformas.length,
       ofertas: ofertas.length,
       plataformasEsperadas: primera.plataformas_esperadas ?? null,

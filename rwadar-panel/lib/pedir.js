@@ -64,7 +64,7 @@ async function pedirJson(url, opciones = {}) {
 
 /* Memoria corta para no pedir 20 veces lo mismo al cambiar de pestaña.
    Si dos piden lo mismo a la vez, el segundo espera al primero. Los
-   errores no se guardan. */
+   errores no se guardan. `segundos` puede depender del resultado. */
 function crearCache() {
   const valores = new Map();
   return {
@@ -76,7 +76,8 @@ function crearCache() {
       valores.set(clave, entrada);
       try {
         const valor = await enCurso;
-        if (valores.get(clave) === entrada) valores.set(clave, { valor, hasta: Date.now() + segundos * 1000 });
+        const duracion = typeof segundos === 'function' ? segundos(valor) : segundos;
+        if (valores.get(clave) === entrada) valores.set(clave, { valor, hasta: Date.now() + duracion * 1000 });
         return valor;
       } catch (e) {
         if (valores.get(clave) === entrada) valores.delete(clave);
