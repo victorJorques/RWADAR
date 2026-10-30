@@ -2430,6 +2430,9 @@ prueba('el publicador pre-renderiza también el escaparate de emisiones',
   /inyectar\(html, 'emiLista', capturado\.emiLista\)/.test(publicador));
 prueba('el publicador captura y escribe la revisión derivada en el HTML',
   /capturadoTexto\.pieRevision/.test(publicador) && /marcaPie/.test(publicador));
+prueba('con el catálogo caducado el publicador acepta el mismo aviso que ve el navegador',
+  publicador.includes('\\d{4}( · pendiente de renovar)?$/.test(pieRevision)') &&
+  js.includes("' · pendiente de renovar'"));
 
 prueba('el servidor escucha solo en loopback', /\.listen\(PUERTO, '127\.0\.0\.1'/.test(servidor));
 prueba('guardar capturas requiere flag, origen local, PNG y límite',
