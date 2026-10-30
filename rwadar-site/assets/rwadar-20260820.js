@@ -5053,6 +5053,73 @@ document.addEventListener('click',e=>{
  if(b.dataset.accion==='descargar-csv')return downloadCSV();
 });
 
+/* En iPhone y iPad el APK de Android no se puede instalar. Los enlaces a
+   /android explican cómo añadir la web a la pantalla de inicio: queda como
+   una app y siempre en su última versión. Ya instalada, no se ofrece. */
+(function instalarEnIphone(){
+ if(typeof navigator==='undefined'||typeof document==='undefined')return;
+ const ios=/iPhone|iPad|iPod/.test(navigator.userAgent||'')||
+  (navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ if(!ios)return;
+ const enlaces=()=>[...document.querySelectorAll('a[href="/android"]')];
+ const instalada=navigator.standalone===true||
+  (typeof matchMedia==='function'&&matchMedia('(display-mode: standalone)').matches);
+ if(instalada){enlaces().forEach(a=>{a.style.display='none';});return;}
+ const textos=()=>document.documentElement.lang==='en'?{
+  enlace:'RWAdar on your iPhone',icono:'Add RWAdar to your home screen',etiqueta:'RWAdar on iPhone',
+  titulo:'Keep it like an app, with nothing to download',cerrar:'Close',
+  intro:'On iPhone you do not need to install anything: the website <b>is</b> the app and it is always up to date.',
+  pasos:['Tap the <b>Share</b> button (a square with an arrow pointing up). In Safari it is at the bottom; in Chrome, at the top right.',
+   'Choose <b>«Add to Home Screen»</b>. If you do not see it, scroll the list up.',
+   'Tap <b>Add</b>. The RWAdar icon appears next to your apps.'],
+  final:'It opens full screen, keeps your session and always shows the latest version.',
+  nota:'The Android app is downloaded separately and does not work on iPhone.'
+ }:{
+  enlace:'RWAdar en tu iPhone',icono:'Añadir RWAdar a la pantalla de inicio',etiqueta:'RWAdar en iPhone',
+  titulo:'Tenla como una app, sin descargar nada',cerrar:'Cerrar',
+  intro:'En iPhone no hace falta instalar nada: la web <b>es</b> la app y siempre está actualizada.',
+  pasos:['Pulsa el botón <b>Compartir</b> (un cuadrado con una flecha hacia arriba). En Safari está abajo; en Chrome, arriba a la derecha.',
+   'Elige <b>«Añadir a pantalla de inicio»</b>. Si no lo ves, desliza la lista hacia arriba.',
+   'Pulsa <b>Añadir</b>. El icono de RWAdar aparece junto a tus apps.'],
+  final:'Se abre a pantalla completa, conserva tu sesión y siempre muestra la última versión.',
+  nota:'La app para Android se descarga aparte y no funciona en iPhone.'
+ };
+ function etiquetar(){
+  const t=textos();
+  enlaces().forEach(a=>{
+   a.setAttribute('translate','no');
+   if(a.classList.contains('movil-descarga'))a.setAttribute('aria-label',t.icono);
+   else a.textContent=t.enlace;
+  });
+ }
+ function abrir(origen){
+  const t=textos();
+  let d=document.getElementById('instalarIphone');
+  if(!d){
+   d=document.createElement('dialog');
+   d.id='instalarIphone';d.className='escaparate-dialogo instalar-iphone';
+   d.setAttribute('aria-labelledby','instalarIphoneTitulo');d.setAttribute('translate','no');
+   d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-cerrar-iphone]'))d.close();});
+   d.addEventListener('close',()=>{if(d._origen&&document.contains(d._origen))d._origen.focus({preventScroll:true});});
+   document.body.appendChild(d);
+  }
+  d._origen=origen;
+  d.innerHTML='<div class="escaparate-dialogo-marco"><header class="escaparate-dialogo-cab"><div><span>'+t.etiqueta+
+   '</span><h2 id="instalarIphoneTitulo">'+t.titulo+'</h2></div><button type="button" data-cerrar-iphone aria-label="'+t.cerrar+
+   '">×</button></header><div class="instalar-iphone-cuerpo"><p>'+t.intro+'</p><ol>'+t.pasos.map(p=>'<li>'+p+'</li>').join('')+
+   '</ol><p>'+t.final+'</p><p class="instalar-iphone-nota">'+t.nota+'</p></div></div>';
+  if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');}
+  const cerrar=d.querySelector('[data-cerrar-iphone]');if(cerrar)cerrar.focus({preventScroll:true});
+ }
+ etiquetar();
+ new MutationObserver(etiquetar).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+ document.addEventListener('click',e=>{
+  const a=e.target.closest&&e.target.closest('a[href="/android"]');
+  if(!a)return;
+  e.preventDefault();e.stopImmediatePropagation();abrir(a);
+ },true);
+})();
+
 /* El trabajador solo se registra en HTTP(S), nunca durante el pre-render ni
    al abrir el archivo directamente. `updateViaCache:none` y update() evitan
    que iOS reanude durante horas un trabajador ya superado. Cuando cambia el

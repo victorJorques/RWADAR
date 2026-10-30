@@ -1174,6 +1174,14 @@ body.detalle-local-abierto{overflow:hidden}
 .escaparate-dialogo-cab button{flex:none;width:44px;height:44px;border:1px solid var(--linea-2);border-radius:99px;
   background:var(--sup-2);color:var(--tx);font-size:1.35rem;line-height:1;cursor:pointer}
 .escaparate-dialogo-cab button:hover{border-color:var(--senal-30);color:var(--senal)}
+/* iPhone: instrucciones breves para añadir RWAdar a la pantalla de inicio. */
+.escaparate-dialogo.instalar-iphone{height:fit-content;max-width:520px}
+.instalar-iphone .escaparate-dialogo-marco{height:auto}
+.instalar-iphone-cuerpo{padding:16px 18px 20px;overflow-y:auto;line-height:1.55}
+.instalar-iphone-cuerpo p{margin:0 0 12px}
+.instalar-iphone-cuerpo ol{margin:0 0 14px;padding-left:1.3em;display:grid;gap:10px}
+.instalar-iphone-cuerpo b{color:var(--senal)}
+.instalar-iphone-nota{color:var(--tx-2);font-size:.86rem}
 .escaparate-dialogo-cuerpo{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:16px}
 .escaparate-dialogo-imagen{position:relative;aspect-ratio:16/7;overflow:hidden;border-radius:13px;background:var(--noche-2)}
 .escaparate-dialogo-imagen img{display:block;width:100%;height:100%;object-fit:cover}

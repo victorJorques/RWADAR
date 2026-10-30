@@ -6,6 +6,26 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 30 de octubre de 2026 · Claude · web en iPhone, cuenta QA baneada y pruebas en UTC
+
+- **Víctor usa iPhone**, así que en su móvil RWAdar es la web. En iPhone/iPad
+  los enlaces a `/android` (icono de descarga de la cabecera móvil, «App
+  Android») abren ahora instrucciones para «Añadir a pantalla de inicio»
+  (es/en) en vez del APK. Ya instalada (`standalone`), se ocultan. Android y
+  escritorio no cambian. Bloque `instalarEnIphone` en `rwadar-20260820.js`;
+  estilos `.instalar-iphone` en la hoja principal.
+- **Pruebas PGlite en UTC** (`rwadar-app/pruebas-soporte.mjs`): entre las 00:00
+  y la 01:00 de España, `current_date` iba un día por delante y las pruebas del
+  catálogo fallaban con revisiones «del futuro».
+- **Cuenta QA** `8871c88e…` baneada de forma reversible (`ban_duration
+  876000h`, como tus cierres). Seguía activa desde tu última ejecución. Para
+  reactivarla: PUT `{"ban_duration":"none"}` con la clave del panel.
+- Tu trabajo sin commitear de `Downloads` está en `main` (PR #16) y `Downloads`
+  ya está en `main`. Lo del panel (scripts y `.gitignore`) sigue en
+  `claude/panel-control`.
+
+---
+
 ## 30 de octubre de 2026 · Claude · secretos QA retirados y rama unida a main
 
 Con permiso expreso de Víctor («haz ambos arreglos»):

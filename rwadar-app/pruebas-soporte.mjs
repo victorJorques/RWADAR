@@ -103,6 +103,10 @@ export const leerMigracion = sqlMigracion;
 
 export const baseConMigraciones = async (migraciones = MIGRACIONES) => {
   const db = await new PGlite();
+  // Supabase y los lectores web y móvil fechan en UTC. Con la zona local,
+  // entre la medianoche española y la de UTC current_date iba un día por
+  // delante y las pruebas del catálogo veían revisiones «del futuro».
+  await db.exec("set time zone 'UTC'");
   await preparaSupabase(db);
   for (const nombre of migraciones) {
     await db.exec(sqlMigracion(nombre));
