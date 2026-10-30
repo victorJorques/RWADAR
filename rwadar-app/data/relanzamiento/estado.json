@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 30/10: en iPhone y iPad los enlaces a /android abren instrucciones para añadir RWAdar a la pantalla de inicio (es/en); en Android y escritorio no cambia nada. Probado simulando iPhone. Las pruebas PGlite usan UTC. npm test completo en verde.",
+  "nota": "Claude, 30/10: en iPhone y iPad los enlaces a /android abren instrucciones para añadir RWAdar a la pantalla de inicio (es/en); en Android y escritorio no cambia nada. Probado simulando iPhone. Las pruebas PGlite usan UTC. npm test completo en verde. El publicador acepta el pie «pendiente de renovar» del catálogo caducado, el mismo que ya ve el navegador.",
   "revisionAprobada": {
-    "commit": "b06c4fc4808049b7e1c011f0e987f928355c8fc3",
-    "contenidoSha256": "sha256:6a5a40d9b72a2a6346cab6a66df3aa38f54e6a0d41b695a33768673463d92da4",
+    "commit": "8779c79ccde3363cd6617521ada6014bf87609de",
+    "contenidoSha256": "sha256:18adc8a88658c1f7e38a628a60a31b1ca1080af80e75b91985f5e5e4058353ae",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
