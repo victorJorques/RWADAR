@@ -3493,7 +3493,7 @@ const Cuenta = (function(){
   if(servidor){
    if(ruta==='/user'&&(!opc||opc.metodo==='GET'))return usuarioServidor(await servidor.verificar());
    if(ruta==='/token?grant_type=password'){
-    const u=await servidor.reautenticar(cuerpo&&cuerpo.password);
+    const u=await servidor.reautenticar(cuerpo&&cuerpo.password,cuerpo&&cuerpo.gotrue_meta_security&&cuerpo.gotrue_meta_security.captcha_token);
     return {access_token:'sesion-http-only',user:usuarioServidor(u),expires_in:3600};
    }
    if(ruta.startsWith('/logout'))return servidor.salir();

@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-10-30",
+  "actualizadoEl": "2026-11-01",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 30/10: en iPhone y iPad los enlaces a /android abren instrucciones para añadir RWAdar a la pantalla de inicio (es/en); en Android y escritorio no cambia nada. Probado simulando iPhone. Las pruebas PGlite usan UTC. npm test completo en verde. El publicador acepta el pie «pendiente de renovar» del catálogo caducado, el mismo que ya ve el navegador.",
+  "nota": "Claude, 01/11: límite de intentos en el servidor de cuentas (por visitante: 30 entradas y 10 envíos de correo cada 10 minutos) y casilla anti-robots de Cloudflare preparada pero apagada (sin clave no carga nada ni cambia la CSP). Revisado por Codex en GitHub (código y seguridad, sin hallazgos) y por dos revisiones independientes; npm test en verde con Node 22.23.4. Sello y publicación autorizados expresamente por Víctor el 01/11.",
   "revisionAprobada": {
-    "commit": "85d9ee3ab4b95cd1ca24087467417dbab3db7ca5",
-    "contenidoSha256": "sha256:d54220268c3513f2bc2ff6cb355c5c68d0de82b92e462e6b974a06b329bfba97",
+    "commit": "7ff6537f4f635c8fc06f97749be4e2191b178773",
+    "contenidoSha256": "sha256:ede3fd47e841d7f5513a62dc0fabf0ded327a2427fb86403ceb0b5397d29f195",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

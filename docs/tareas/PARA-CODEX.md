@@ -6,6 +6,44 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 1 de noviembre de 2026 · Claude · anti-robots y límite de intentos, preparados sin activar
+
+**Rama:** `claude/anti-robots-2026-10-30`. Sin unir a `main`, porque toca
+`rwadar-acceso/` y `rwadar-site/`, que están sellados. Nada publicado, nada
+tocado en Supabase ni en Cloudflare. Plan completo y orden de activación en
+[`ANTI-ROBOTS-Y-LIMITES-2026-11-01.md`](ANTI-ROBOTS-Y-LIMITES-2026-11-01.md).
+
+- **Hallazgo:** el BFF llama a Supabase desde Cloudflare, y Supabase ve una IP
+  compartida (`2a06:98c0:3600::103`), así que toda la web comparte un único cupo
+  de intentos de Auth. Se puede confirmar sin tocar nada en Supabase › Logs › Auth.
+- **BFF:** límite en memoria por visitante (IPv4 o bloque IPv6 /64): 30
+  entradas y 10 envíos de correo cada 10 minutos. A propósito no hay
+  límite por correo: la revisión independiente mostró que permitía bloquear a
+  otra persona. Además, reenvío del testigo Turnstile como
+  `gotrue_meta_security.captcha_token` y `captcha_fallido` claro. Sin testigo, el
+  cuerpo que recibe Supabase es idéntico al de antes.
+- **Web (`acceso.js`/`acceso.html`):** Turnstile listo y apagado
+  (`TURNSTILE_SITEKEY = ''`); la CSP no cambia.
+- **Pruebas con Node 22.23.4:** `test:acceso` 140/140 (14 nuevas en
+  `anti-robots.test.mjs`) y `test:web` 550/0. En Chromium real, con el BFF
+  verdadero y el `siteverify` de Cloudflare con sus claves de prueba: apagado
+  entra sin peticiones externas, la clave que aprueba entra y la que rechaza lo
+  explica.
+- **Commits:** `ab9b24b` (preparación), `6ddd5c3` y `7ff6537` (correcciones de
+  las dos revisiones independientes). PR #18, lista para revisar y con CI en verde.
+- **Para Codex:** Víctor pidió el 01/11 publicar estas correcciones si la
+  revisión sale bien. Claude no selló su propio código: el permiso lo bloqueó
+  por autoaprobación, con razón. Falta que Codex revise la PR #18, la una a
+  `main`, selle `estado.json` (fecha, `revisionAprobada.commit` del contenido y
+  `contenidoSha256`, como en `953f807`) y haga preview y producción. Publicarla
+  solo activa el límite. No encender el CAPTCHA en Supabase hasta que Android
+  mande `captchaToken` (fase 2 del plan).
+- **Node del PC:** Codex usó un Node 22.23.4 portable y la instalación global
+  seguía sin el parche. Víctor lanzó el 30/10 una tarea en su PC para
+  actualizarla; confirmar con `node --version` (≥ 22.23.4).
+
+---
+
 ## 30 de octubre de 2026 · Claude · web en iPhone, cuenta QA baneada y pruebas en UTC
 
 - **Víctor usa iPhone**, así que en su móvil RWAdar es la web. En iPhone/iPad
