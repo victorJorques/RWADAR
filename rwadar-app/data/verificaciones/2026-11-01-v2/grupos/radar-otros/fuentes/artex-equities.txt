@@ -1,0 +1,138 @@
+URL: https://www.artexgm.com/equities
+FINAL: https://www.artexgm.com/equities
+CONSULTADO: 2026-11-01T13:11:55Z
+HTTP: 200
+
+This website uses cookies
+We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
+Consent Selection
+Necessary
+Preferences
+Statistics
+Marketing
+Show details
+Allow all
+Allow selection
+Deny
+ABOUT
+OUR COMPANY
+ARTEX MTF
+NEWS
+MARKET
+NOTICES
+VCM HISTORY
+TRADE
+TRADING INFORMATION
+TRADING PARTICIPANTS
+PRODUCT
+EQUITIES
+SELL ART
+HOW TO LIST
+CONTACT
+Order by : Date of issue
+FRANCIS BACON (1909-1992)
+Three studies for Portrait of George Dyer |
+Painted in 1963
+In three parts: 35.5 x 30.5 cm each
+26.42%
+Volume
+4 180
+High price
+70 €
+Low price
+50 €
+YEAR TO DATE
+TODAY
+7 DAYS
+1 MONTH
+6 MONTHS
+1 YEAR
+MAX
+€
+$
+SUMMARY
+Market Capitalisation
+Total value of the issuer's outstanding shares, calculated by multiplying the current market price per share by the total number of shares in issue
+undefined €
+Last Traded Price
+It's the last execution price, independent of the market's trading phase.
+67 €
+Best Bid
+Present best limit price on the buy side of the order book.
+undefined €
+Best Ask
+Present best limit price on the sell side of the order book.
+undefined €
+Opening Price
+Opening price will be price determined at the close of the opening auction. If no price is determined in the opening auction, we then refer to the close closing price of the previous auction and if no price is made at the end of the closing auction, we then refer to the closing price or the last traded price (LTP) for the of the previous trading session
+: undefined €
+Previous Closing Price
+Closing pric will be the execution price in the closing price and become the next day's reference price. If there are no trades during the auction, then the closing priceis the LTP during continuous trading. If there are no trades during the day, the closing price is the previous day's closing price.
+: undefined €
+SECURITY
+ISSUER WEBSITE
+Date of Admission
+Date of admission represents the day when the security was listed for trading on our MTF.
+3/8/2024
+3:50:00 PM CET
+Type of Security
+Type of security representsthe classificationof the listed shares and thus their legal ranking, e.g to right of return on capital or voting power.
+Ordinary Class B Shares
+Number of Shares Admitted to Trading
+Number of shares admitted to trading represents the volume of shares listed and eligible for trading.
+412 000
+Symbol
+Symbol: The ARTEX MTF's ticker symbol of the security
+BAC1EU
+ISIN
+ISIN: the international Security identifier No.
+LU2583605592
+Trading Currency
+Trading currency represents the currency of the order limits and execution prices.
+EUR
+LATEST TRADES
+TODAY TRADES
+
+Select a painting from the list to see more details.
+
+Subscribe
+
+==== LINKS ====
+https://www.cookiebot.com/en/what-is-behind-powered-by-cookiebot/?utm_source=banner_cb&utm_medium=referral&utm_content=v2 | 
+https://www.artexgm.com/equities# | Consent
+https://www.artexgm.com/equities# | Details
+https://www.artexgm.com/equities# | [#IABV2SETTINGS#]
+https://www.artexgm.com/equities# | About
+https://www.artexgm.com/equities# | Show details
+https://www.artexgm.com/equities# | Cookiebot1
+https://www.cookiebot.com/goto/privacy-policy/ | Learn more about this provider
+https://www.artexgm.com/equities# | Google2
+https://business.safety.google/privacy/ | Learn more about this provider
+https://www.artexgm.com/equities# | Matomo1
+https://matomo.org/privacy-policy/ | Learn more about this provider
+https://www.artexgm.com/equities# | Vimeo2
+https://vimeo.com/privacy | Learn more about this provider
+https://www.artexgm.com/equities# | Matomo2
+https://www.artexgm.com/equities# | Vimeo6
+https://www.artexgm.com/equities# | Cross-domain consent[#BULK_CONSENT_DOMAINS_COUNT#]
+https://www.cookiebot.com/ | Cookiebot
+https://www.artexgm.com/ | 
+https://www.artexgm.com/our-company | OUR COMPANY
+https://www.artexgm.com/artex-mtf | ARTEX MTF
+https://www.artexgm.com/news | NEWS
+https://www.artexgm.com/notices | NOTICES
+https://www.artexgm.com/vcm | VCM HISTORY
+https://www.artexgm.com/trading-information | TRADING INFORMATION
+https://www.artexgm.com/trading-participants | TRADING PARTICIPANTS
+https://www.artexgm.com/equities | EQUITIES
+https://www.artexgm.com/how-to-list | HOW TO LIST
+https://www.artexgm.com/contact | CONTACT
+https://www.artshare002.com/ | ISSUER WEBSITE
+https://mailchi.mp/artexgm/subscribe | Subscribe
+https://www.artexgm.com/equities# | Change your consent
+https://www.artexgm.com/equities# | Withdraw your consent
+https://www.artexgm.com/equities# | Do not sell or share my personal information
+https://vimeo.com/privacy | Vimeo
+https://www.cookiebot.com/goto/privacy-policy/ | Cookiebot
+https://matomo.org/privacy-policy/ | Matomo
+https://business.safety.google/privacy/ | Google

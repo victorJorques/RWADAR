@@ -1,0 +1,362 @@
+URL: https://www.artexgm.com/trading-participants
+FINAL: https://www.artexgm.com/trading-participants
+CONSULTADO: 2026-11-01T13:12:21Z
+HTTP: 200
+
+This website uses cookies
+We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
+Consent Selection
+Necessary
+Preferences
+Statistics
+Marketing
+Show details
+Allow all
+Allow selection
+Deny
+ABOUT
+OUR COMPANY
+ARTEX MTF
+NEWS
+MARKET
+NOTICES
+VCM HISTORY
+TRADE
+TRADING INFORMATION
+TRADING PARTICIPANTS
+PRODUCT
+EQUITIES
+SELL ART
+HOW TO LIST
+CONTACT
+TRADING PARTICIPANTS
+
+Participant Contact Directory: Find essential contact details for trading counterparties on our MTF.
+
+Members and Execution Brokers*
+ABN Neuflize
+EXECUTION BROKER
+ADDRESS
+121 BOULEVARD HAUSSMANN
+75008, PARIS,
+FRANCE
+TEL
++331 56 21 70 00
+SITE
+WWW.NEUFLIZEOBC.FR/FR
+Aurel BGC
+EXECUTION BROKER
+ADDRESS
+15 RUE VIVIENNE
+75002, PARIS,
+FRANCE
+TEL
++331 53 89 53 89
+SITE
+WWW.AUREL-BGC.COM/FR
+Banque Hottinguer
+EXECUTION BROKER
+ADDRESS
+63, RUE DE LA VICTOIRE
+75009 PARIS,
+FRANCE
+TEL
++331 47 23 90 48
+SITE
+WWW.BANQUE-HOTTINGUER.COM
+Banque Pictet & Cie SA
+EXECUTION BROKER
+ADDRESS
+ROUTE DES ACACIAS 60 1211 GENEVA 73,
+SWITZERLAND
+TEL
++41 58 323 23 23
+SITE
+WWW.PICTET.COM/FR
+Bordier & Cie
+EXECUTION BROKER
+ADDRESS
+RUE RATH 16
+CH-1204, GENÈVE,
+SWITZERLAND
+TEL
++41 58 258 00 00
+SITE
+WWW.BORDIER.COM
+CACEIS SA
+GENERAL CLEARING MEMBER
+ADDRESS
+89 RUE GABRIEL PÉRI
+92120, MONTROUGE,
+FRANCE
+SITE
+WWW.CACEIS.COM
+CA Indosuez Wealth Management
+EXECUTION BROKER
+ADDRESS
+17, RUE DU DOCTEUR
+LANCEREAUX
+75008, PARIS,
+FRANCE
+TEL
++33 01 40 75 62 62
+SITE
+WWW.CA-INDOSUEZ.COM
+EFG Bank von Ernst
+EXECUTION BROKER
+ADDRESS
+AEULESTRASSE 30, 9490 VADUZ,
+LIECHTENSTEIN
+TEL
++423 265 53 53
+SITE
+WWW.EFGBANKVONERNST.COM
+Equita SIM S.P.A
+EXECUTION BROKER
+ADDRESS
+VIA FILIPPO TURATI, 9
+20121 MILAN
+ITALY
+
+TEL
++39 02 6204 1
+SITE
+WWW.EQUITA.EU
+HSBC Trinkaus & Burkhardt GMBH
+EXECUTION BROKER
+ADDRESS
+HANSAALLEE 3,
+40549, DÜSSELDORF,
+GERMANY
+TEL
++44 (0)20 7991 8888
+SITE
+WWW.HSBC.DE
+Helvetische Bank AG
+MARKET MAKER
+ADDRESS
+SEEFELDSTRASSE 215
+8008, ZÜRICH,
+SWITZERLAND
+TEL
++41 44 204 56 00
+SITE
+WWW.HELVETISCHEBANK.CH
+InCore Bank AG
+DIRECT MEMBER
+ADDRESS
+WIESENSTRASSE 17
+CH-8952 SCHLIEREN, ZÜRICH,
+SWITZERLAND
+TEL
++41 44 403 93 00
+SITE
+WWW.INCOREBANK.CH
+Kepler Cheuvreux SA
+DIRECT MEMBER
+ADDRESS
+112 AVENUE KLÉBER
+75116, PARIS,
+FRANCE
+TEL
++33 1 23 45 67 89
+SITE
+WWW.KEPLERCHEUVREUX.COM/EN
+LGT Bank Ltd.
+EXECUTION BROKER
+ADDRESS
+HERRENGASSE 12
+9490, VADUZ,
+LIECHTENSTEIN
+TEL
+00423 235 11 22
+SITE
+WWW.LGT.COM
+Otto M. Schröder Bank
+EXECUTION BROKER
+ADDRESS
+AXEL-SPRINGER-PLATZ 3
+20355, HAMBURG,
+GERMANY
+TEL
++49 40 359280
+SITE
+WWW.SCHROEDERBANK.DE
+Societe Generale Private Banking
+EXECUTION BROKER
+ADDRESS
+17 COURS VALMY
+92043 PARIS
+LA DÉFENSE 7
+FRANCE
+TEL
++33 (0)1 42 14 20 00
+SITE
+WWW.PRIVATEBANKING.SOCIETEGENERALE.COM
+VP Bank AG
+EXECUTION BROKER
+ADDRESS
+AEULESTRASSE 6
+9490, VADUZ,
+LIECHTENSTEIN
+TEL
++423 235 66 55
+SITE
+WWW.VPBANK.COM
+Zeus Capital
+EXECUTION BROKER
+ADDRESS
+125 OLD BROAD STREET
+LONDON, EC2N 1AR,
+UNITED KINGDOM
+TEL
++44 20 38295000
+SITE
+ZEUSCAPITAL.CO.UK
+*Execution Brokers are regulated banks and brokerage firms who act as agents to process buy or sell orders on behalf of their clients through the connected members of the MTF. Execution Brokers may also participate in the initial offering and distribution in upcoming listing of issuers to be admitted onto the ARTEX GM.
+Advisors
+Advocatur Seeger, Frick und Partner AG
+LEGAL ADVISOR
+ADDRESS
+LANDSTRASSE 81
+9494, SCHAAN,
+LIECHTENSTEIN
+TEL
++423 265 22 22
+SITE
+WWW.SFPLEX.LI
+Charles Russell Speechlys SCS
+LEGAL ADVISOR
+ADDRESS
+2, RUE JEAN MONNET
+L-2180, LUXEMBOURG,
+GRAND DUCHY OF LUXEMBOURG
+TEL
++352 26 48 68 00
+SITE
+WWW.CHARLESRUSSELLSPEECHLYS.COM
+MLL Meyerlustenberger Lachenal Froriep Ltd
+COMPLIANCE ADVISOR
+ADDRESS
+SCHIFFBAUSTRASSE 2
+PO BOX 8031, ZÜRICH,
+SWITZERLAND
+TEL
++41 58 552 08 00
+SITE
+MLL-LEGAL.COM
+R.C.P International
+TRADING ADVISOR
+ADDRESS
+1-3 MOUNT STREET,
+LONDON, W1K 3NB,
+UNITED KINGDOM
+TEL
++44 203 900 2888
+Agents
+ARTEX Services AG
+CORPORATE AGENT
+ADDRESS
+WUHRSTRASSE 6
+9490, VADUZ,
+LIECHTENSTEIN
+REYL & Cie Ltd
+PAYING AGENT
+ADDRESS
+RUE DU RHÔNE 62
+CH-1204, GENEVA,
+SWITZERLAND
+Vistra Luxembourg Sàrl
+REGISTRAR
+ADDRESS
+16 RUE E. RUPPERT
+L-2453, LUXEMBOURG,
+RCSL NUMBER B142021
+
+OUR COMPANY
+MTF
+TRADING INFORMATION
+COMPLIANCE
+HOW TO LIST
+NEWS
+CONTACT
+FAQ
+PARIS
+229 RUE SAINT-HONORE 75001, FRANCE
+LUXEMBOURG
+14-16 AVENUE PASTEUR L-2310, LUXEMBOURG
+VADUZ
+WUHRSTRASSE 6, 9490, LIECHTENSTEIN
+© ARTEX 2020 - 2026
+Privacy NoticeTerms and Conditions
+contact@artexgm.com
+Subscribe
+
+==== LINKS ====
+https://www.cookiebot.com/en/what-is-behind-powered-by-cookiebot/?utm_source=banner_cb&utm_medium=referral&utm_content=v2 | 
+https://www.artexgm.com/trading-participants# | Consent
+https://www.artexgm.com/trading-participants# | Details
+https://www.artexgm.com/trading-participants# | [#IABV2SETTINGS#]
+https://www.artexgm.com/trading-participants# | About
+https://www.artexgm.com/trading-participants# | Show details
+https://www.artexgm.com/trading-participants# | Cookiebot1
+https://www.cookiebot.com/goto/privacy-policy/ | Learn more about this provider
+https://www.artexgm.com/trading-participants# | Google2
+https://business.safety.google/privacy/ | Learn more about this provider
+https://www.artexgm.com/trading-participants# | Matomo1
+https://matomo.org/privacy-policy/ | Learn more about this provider
+https://www.artexgm.com/trading-participants# | Vimeo2
+https://vimeo.com/privacy | Learn more about this provider
+https://www.artexgm.com/trading-participants# | Matomo2
+https://www.artexgm.com/trading-participants# | Vimeo6
+https://www.artexgm.com/trading-participants# | Cross-domain consent[#BULK_CONSENT_DOMAINS_COUNT#]
+https://www.cookiebot.com/ | Cookiebot
+https://www.artexgm.com/ | 
+https://www.artexgm.com/our-company | OUR COMPANY
+https://www.artexgm.com/artex-mtf | ARTEX MTF
+https://www.artexgm.com/news | NEWS
+https://www.artexgm.com/notices | NOTICES
+https://www.artexgm.com/vcm | VCM HISTORY
+https://www.artexgm.com/trading-information | TRADING INFORMATION
+https://www.artexgm.com/trading-participants | TRADING PARTICIPANTS
+https://www.artexgm.com/equities | EQUITIES
+https://www.artexgm.com/how-to-list | HOW TO LIST
+https://www.artexgm.com/contact | CONTACT
+https://www.neuflizeobc.fr/fr/index.html | WWW.NEUFLIZEOBC.FR/FR
+https://www.aurel-bgc.com/fr/ | WWW.AUREL-BGC.COM/FR
+https://www.banque-hottinguer.com/ | WWW.BANQUE-HOTTINGUER.COM
+https://www.pictet.com/fr/fr | WWW.PICTET.COM/FR
+https://www.bordier.com/ | WWW.BORDIER.COM
+http://www.caceis.com/ | WWW.CACEIS.COM
+https://www.ca-indosuez.com/ | WWW.CA-INDOSUEZ.COM
+https://www.efgbankvonernst.com/ | WWW.EFGBANKVONERNST.COM
+https://www.equita.eu/it | WWW.EQUITA.EU
+https://www.hsbc.de/ | WWW.HSBC.DE
+https://www.helvetischebank.ch/ | WWW.HELVETISCHEBANK.CH
+https://www.incorebank.ch/ | WWW.INCOREBANK.CH
+https://www.keplercheuvreux.com/en/ | WWW.KEPLERCHEUVREUX.COM/EN
+http://www.lgt.com/ | WWW.LGT.COM
+https://www.schroederbank.de/home.html | WWW.SCHROEDERBANK.DE
+https://www.privatebanking.societegenerale.com/ | WWW.PRIVATEBANKING.SOCIETEGENERALE.COM
+https://www.vpbank.com/de | WWW.VPBANK.COM
+https://zeuscapital.co.uk/ | ZEUSCAPITAL.CO.UK
+https://www.sfplex.li/ | WWW.SFPLEX.LI
+https://www.charlesrussellspeechlys.com/ | WWW.CHARLESRUSSELLSPEECHLYS.COM
+https://mll-legal.com/ | MLL-LEGAL.COM
+https://www.artexgm.com/artex-mtf | MTF
+https://www.artexgm.com/compliance | COMPLIANCE
+https://www.artexgm.com/faq | FAQ
+https://www.artexgm.com/privacy-notice | Privacy Notice
+https://www.artexgm.com/terms-and-conditions | Terms and Conditions
+mailto:contact@artexgm.com | contact@artexgm.com
+https://www.linkedin.com/company/artexgm/ | 
+https://www.instagram.com/artexglobalmarkets/ | 
+https://www.facebook.com/artexglobalmarkets/ | 
+https://mailchi.mp/artexgm/subscribe | Subscribe
+https://www.artexgm.com/trading-participants# | Change your consent
+https://www.artexgm.com/trading-participants# | Withdraw your consent
+https://www.artexgm.com/trading-participants# | Do not sell or share my personal information
+https://vimeo.com/privacy | Vimeo
+https://www.cookiebot.com/goto/privacy-policy/ | Cookiebot
+https://matomo.org/privacy-policy/ | Matomo
+https://business.safety.google/privacy/ | Google

@@ -1,0 +1,90 @@
+[
+ {
+  "url": "https://backed.fi/",
+  "archivo": "fuentes/backed-home.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:05Z",
+  "bytes": 53820,
+  "sha256": "7cc49761d1991802869ce3a290358e9311bf721dbbf14115f7826b8e0ddf58d6"
+ },
+ {
+  "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+  "archivo": "fuentes/xstocks-legal-overview.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:06Z",
+  "bytes": 357802,
+  "sha256": "896fa6e0e18d7f12cc9695e1a31a9cf0d8130801d582e59183420f9bcf41920a"
+ },
+ {
+  "url": "https://backed.fi/legal",
+  "archivo": "fuentes/backed-legal.html",
+  "http": 404,
+  "consultadoUtc": "2026-11-01T13:11:06Z",
+  "bytes": 5501,
+  "sha256": "5f1bfeb3e2ffc7162b9cdc41f3f821b42282af056c0ec7d69478674ccee1d234"
+ },
+ {
+  "url": "https://backed.fi/products",
+  "archivo": "fuentes/backed-products.html",
+  "http": 404,
+  "consultadoUtc": "2026-11-01T13:11:07Z",
+  "bytes": 5501,
+  "sha256": "5f1bfeb3e2ffc7162b9cdc41f3f821b42282af056c0ec7d69478674ccee1d234"
+ },
+ {
+  "url": "https://assets.backed.fi/legal-documentation",
+  "archivo": "fuentes/backed-legal-documentation.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:19Z",
+  "bytes": 10606,
+  "sha256": "e767d67458a8c22c84c170d20ace2f6f755118b66528d1e63a7f7cdac2bd17d6"
+ },
+ {
+  "url": "https://www.backedassets.fi/legal-documentation",
+  "archivo": "fuentes/backedassets-legal-documentation.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:19Z",
+  "bytes": 10606,
+  "sha256": "9fd7b6a945279eaf8ef7a4af74c8ee2ba4666e7cc111b95976acbe3bdb32809d"
+ },
+ {
+  "url": "https://defi.backed.fi/",
+  "archivo": "fuentes/backed-defi-dashboard.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:20Z",
+  "bytes": 526,
+  "sha256": "90b713333b9c2e56e324bfd4fe3b4786989f06641b6c2d8626754a566d171a22"
+ },
+ {
+  "url": "https://assets.backed.fi/",
+  "archivo": "fuentes/backed-assets-home.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:21Z",
+  "bytes": 10606,
+  "sha256": "f891396b697f4b0f1f9d98d2b207f8c6b0c96af4133fba31514afa7e26f63f17"
+ },
+ {
+  "url": "https://www.mfsa.mt/wp-content/uploads/2026/08/Backed-Assets-JE-Limited-Certificate-of-Approval-of-a-Supplement-dated-04-August-2026.pdf",
+  "archivo": "fuentes/backed-mfsa-cert-supp-2026-08-04.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:38Z",
+  "bytes": 320779,
+  "sha256": "6f53214d8f0ce549178fa99904ad2bb4c882bd2ebd8028aab338d959777fb090"
+ },
+ {
+  "url": "https://www.asfromania.ro/uploads/articole/attachments/6a018e00def77510639131.pdf",
+  "archivo": "fuentes/backed-asf-ro-6a018e.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:38Z",
+  "bytes": 385188,
+  "sha256": "be143057ec2b2cd4a5275a8bccdad28689c8a8504006e9f4f7369b6816d664fe"
+ },
+ {
+  "url": "https://asfromania.ro/uploads/articole/attachments/69830a5f6af8a943824136.pdf",
+  "archivo": "fuentes/backed-asf-ro-69830a.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:40Z",
+  "bytes": 357869,
+  "sha256": "7d670ae656b015dddec7cc49065aed193c6a342deb30257a074099b75ece659d"
+ }
+]

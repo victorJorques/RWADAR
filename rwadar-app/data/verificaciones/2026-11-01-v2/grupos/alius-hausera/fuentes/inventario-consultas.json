@@ -1,0 +1,63 @@
+[
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T13:11:23Z",
+  "bytes": 48180,
+  "sha256": "b5327de2895e957988a6aadd13d190c2a73030004d5ab70f421b71b22a97f8c0"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T13:12:26Z",
+  "bytes": 48606,
+  "sha256": "00af0e4d7007f03c0455d9b8f526effb030fc50d91c7973203247edf799c13c5",
+  "nota": "Solo expansiones públicas de campaña (sin investments)"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+  "archivo": "casa-fdf-v5-2026-10-30.pdf",
+  "http": 200,
+  "contentType": "application/pdf",
+  "consultadoUtc": "2026-11-01T13:12:38Z",
+  "bytes": 429084,
+  "sha256": "147cd9729caaf06be2afe5d894303c964bac2be0777116006399f81d800e0de3"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/264",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/264",
+  "archivo": "casa-anexos-v3-2026-10-30.pdf",
+  "http": 200,
+  "contentType": "application/pdf",
+  "consultadoUtc": "2026-11-01T13:12:39Z",
+  "bytes": 391427,
+  "sha256": "332e32c27aabd763e1607c1ebd91a17d00b569cb2bf2019d3d11e1fcc79e976b"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T13:12:41Z",
+  "bytes": 32513,
+  "sha256": "3ec67c48c55af62f0a3769e31d5fd989850a6b001b94c48f85754169d19fb741"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/data",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/data",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T13:12:41Z",
+  "bytes": 4170,
+  "sha256": "8a2fc44769fb8883ab1948b394f10689a53f6bcf6e01365100a8c7013d5c7db6"
+ }
+]
