@@ -29,9 +29,15 @@ tocado en Supabase ni en Cloudflare. Plan completo y orden de activación en
   verdadero y el `siteverify` de Cloudflare con sus claves de prueba: apagado
   entra sin peticiones externas, la clave que aprueba entra y la que rechaza lo
   explica.
-- **Para Codex:** revisar la rama. Si se acepta, generar la huella aprobada y
-  hacer preview y producción con permiso de Víctor. No encender el CAPTCHA en
-  Supabase hasta que Android mande `captchaToken` (fase 2 del plan).
+- **Commits:** `ab9b24b` (preparación), `6ddd5c3` y `7ff6537` (correcciones de
+  las dos revisiones independientes). PR #18, lista para revisar y con CI en verde.
+- **Para Codex:** Víctor pidió el 01/11 publicar estas correcciones si la
+  revisión sale bien. Claude no selló su propio código: el permiso lo bloqueó
+  por autoaprobación, con razón. Falta que Codex revise la PR #18, la una a
+  `main`, selle `estado.json` (fecha, `revisionAprobada.commit` del contenido y
+  `contenidoSha256`, como en `953f807`) y haga preview y producción. Publicarla
+  solo activa el límite. No encender el CAPTCHA en Supabase hasta que Android
+  mande `captchaToken` (fase 2 del plan).
 - **Node del PC:** Codex usó un Node 22.23.4 portable y la instalación global
   seguía sin el parche. Víctor lanzó el 30/10 una tarea en su PC para
   actualizarla; confirmar con `node --version` (≥ 22.23.4).
