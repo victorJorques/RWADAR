@@ -6,11 +6,13 @@ const COOKIE = '__Host-rwadar-acceso';
 const MAX_BODY = 16 * 1024;
 // Supabase limits Auth by client IP, but every request from this server reaches
 // it from the same shared Cloudflare address: one client could exhaust the quota
-// for every web visitor. These best-effort limits live in this isolate's memory
-// and are keyed by the visitor's IP and a hash of the email. [maximum, seconds]
+// for every web visitor. This best-effort limit lives in this isolate's memory,
+// is keyed by the visitor (IPv4 address or IPv6 /64) and, like Supabase, counts
+// every request that reaches Auth. There is deliberately no per-email limit:
+// anyone could use it to lock a stranger out. [maximum, seconds]
 const LIMITES = Object.freeze({
-  clave: Object.freeze({ ip: [20, 600], correo: [10, 900] }), // password attempts; per email, failures only
-  envio: Object.freeze({ ip: [6, 600], correo: [3, 900] }), // each request sends an email
+  clave: Object.freeze([30, 600]), // password attempts
+  envio: Object.freeze([5, 3600]), // each request can send an email
 });
 const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso/reautenticar': 'clave',
   '/api/acceso/registrar': 'envio', '/api/acceso/recuperar': 'envio', '/api/acceso/reenviar': 'envio' });
@@ -87,38 +89,40 @@ function seguridad(data) {
   if (typeof data.captcha !== 'string' || !/^[\x21-\x7e]{1,2048}$/.test(data.captcha)) throw new Error('solicitud_invalida');
   return { gotrue_meta_security: { captcha_token: data.captcha } };
 }
-function ipCliente(request) {
-  const ip = request.headers.get('cf-connecting-ip') || '';
-  return ip.length <= 45 && /^[0-9A-Fa-f:.]+$/.test(ip) ? ip : '';
-}
-async function huellaCorreo(value) {
-  const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value.toLowerCase()));
-  return [...new Uint8Array(bytes)].map(b => b.toString(16).padStart(2, '0')).join('');
+// The visitor's IPv4 address, or the /64 prefix of an IPv6 address: a single
+// connection usually owns a whole /64 and could rotate addresses to reset counts.
+function visitante(request) {
+  const ip = (request.headers.get('cf-connecting-ip') || '').toLowerCase();
+  const v4 = ip.match(/^(?:::ffff:)?((?:\d{1,3}\.){3}\d{1,3})$/);
+  if (v4) return v4[1];
+  if (ip.length > 39 || !/^[0-9a-f:]+$/.test(ip) || ip.split('::').length > 2) return '';
+  const [izquierda, derecha = null] = ip.split('::');
+  const a = izquierda ? izquierda.split(':') : [], b = derecha ? derecha.split(':') : [];
+  if (derecha === null ? a.length !== 8 : a.length + b.length > 7) return '';
+  const grupos = [...a, ...Array(8 - a.length - b.length).fill('0'), ...b];
+  if (!grupos.every(g => /^[0-9a-f]{1,4}$/.test(g))) return '';
+  return grupos.slice(0, 4).map(g => g.replace(/^0+(?=.)/, '')).join(':') + '::/64';
 }
 function crearLimitador(ahora, maxClaves = 10000) {
   const cubos = new Map();
-  function vigente(key) {
-    const cubo = cubos.get(key);
-    if (cubo && cubo.hasta <= ahora()) { cubos.delete(key); return null; }
-    return cubo || null;
-  }
   return {
-    // Seconds left while a key is at its limit; 0 when it may continue.
-    espera(key, [maximo]) {
-      const cubo = vigente(key);
-      return cubo && cubo.cuenta >= maximo ? Math.max(1, Math.ceil((cubo.hasta - ahora()) / 1000)) : 0;
-    },
-    anotar(key, [, segundos]) {
-      let cubo = vigente(key);
+    // Counts one request. Returns the seconds to wait if the key is over its
+    // limit (that request is not counted), or 0 when it may continue.
+    reservar(key, [maximo, segundos]) {
+      const t = ahora(); let cubo = cubos.get(key);
+      if (cubo && cubo.hasta <= t) { cubos.delete(key); cubo = null; }
+      if (cubo && cubo.cuenta >= maximo) return Math.max(1, Math.ceil((cubo.hasta - t) / 1000));
       if (!cubo) {
-        // Fixed windows are created in time order: the oldest go first.
-        for (const antigua of cubos.keys()) { if (cubos.size < maxClaves) break; cubos.delete(antigua); }
-        cubo = { cuenta: 0, hasta: ahora() + segundos * 1000 }; cubos.set(key, cubo);
+        if (cubos.size >= maxClaves) {
+          for (const [k, c] of cubos) if (c.hasta <= t) cubos.delete(k);
+          // Still full only under a very wide attack: drop the oldest windows.
+          for (const k of cubos.keys()) { if (cubos.size < maxClaves) break; cubos.delete(k); }
+        }
+        cubo = { cuenta: 0, hasta: t + segundos * 1000 }; cubos.set(key, cubo);
       }
       cubo.cuenta++;
+      return 0;
     },
-    descontar(key) { const cubo = vigente(key); if (cubo && cubo.cuenta > 0) cubo.cuenta--; },
-    olvidar(key) { cubos.delete(key); },
   };
 }
 
@@ -184,41 +188,13 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
     if (!Array.isArray(profile) || profile.length !== 1 || profile[0].id !== user.id) throw new Error('sin_sesion');
     return { id: user.id, correo: email, correoConfirmadoEl: user.email_confirmed_at };
   }
-  async function clavesLimite(path, request, email) {
-    const grupo = GRUPO_LIMITE[path], ip = ipCliente(request);
+  // Throws 429 while this visitor is over the limit of the route's group.
+  function reservarIntento(path, request) {
+    const grupo = GRUPO_LIMITE[path], quien = visitante(request);
     // Without a visitor IP (local runs) there is no shared bucket to protect.
-    return { ip: [ip ? grupo + ':ip:' + ip : '', LIMITES[grupo].ip],
-      correo: [grupo + ':correo:' + await huellaCorreo(email), LIMITES[grupo].correo] };
-  }
-  function frenar(...claves) {
-    let espera = 0;
-    for (const [key, limite] of claves) if (key) espera = Math.max(espera, limitador.espera(key, limite));
+    if (!quien) return;
+    const espera = limitador.reservar(grupo + ':' + quien, LIMITES[grupo]);
     if (espera) { const error = new Error('intentos_excedidos'); error.status = 429; error.reintentarTras = String(espera); throw error; }
-  }
-  async function contarEnvio(path, request, email) {
-    const limite = await clavesLimite(path, request, email);
-    frenar(limite.ip, limite.correo);
-    if (limite.ip[0]) limitador.anotar(...limite.ip);
-    limitador.anotar(...limite.correo);
-  }
-  async function sesionConClave(env, path, request, email, data) {
-    const password = clave(data.clave), extra = seguridad(data);
-    const limite = await clavesLimite(path, request, email);
-    frenar(limite.ip, limite.correo);
-    if (limite.ip[0]) limitador.anotar(...limite.ip);
-    // Counted before asking Auth so parallel guesses cannot all slip through.
-    limitador.anotar(...limite.correo);
-    let session;
-    try {
-      session = await api(env, '/auth/v1/token?grant_type=password', { method: 'POST', data: { email, password, ...extra } });
-    } catch (error) {
-      // Only wrong credentials stay counted against the email, so a CAPTCHA
-      // or service failure never locks its owner out.
-      if (error.status !== 400 || error.captcha) limitador.descontar(limite.correo[0]);
-      throw error;
-    }
-    limitador.olvidar(limite.correo[0]);
-    return session;
   }
   const atenderCartera = crearCarteraServidor({ api, verificar, leerCookie, respuesta });
   async function atender(context) {
@@ -283,7 +259,10 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
         const data = await cuerpoJSON(request);
         if (path === '/api/acceso/reautenticar') {
           const current = await verificar(env, leerCookie(request));
-          const session = await sesionConClave(env, path, request, current.correo, data);
+          const password = clave(data.clave), extra = seguridad(data);
+          reservarIntento(path, request);
+          const session = await api(env, '/auth/v1/token?grant_type=password', { method: 'POST',
+            data: { email: current.correo, password, ...extra } });
           const user = await verificar(env, session?.access_token);
           if (user.id !== current.id) throw new Error('sin_sesion');
           return respuesta({ autenticada: true, usuario: user }, 200, { 'Set-Cookie': cookie(session.access_token) });
@@ -320,7 +299,10 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           return respuesta(result == null ? [] : result);
         }
         if (path === '/api/acceso/entrar') {
-          const session = await sesionConClave(env, path, request, correo(data.correo), data);
+          const email = correo(data.correo), password = clave(data.clave), extra = seguridad(data);
+          reservarIntento(path, request);
+          const session = await api(env, '/auth/v1/token?grant_type=password', { method: 'POST',
+            data: { email, password, ...extra } });
           const user = await verificar(env, session?.access_token);
           return respuesta({ autenticada: true, usuario: user }, 200, { 'Set-Cookie': cookie(session.access_token) });
         }
@@ -329,7 +311,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           const name = typeof data.nombre === 'string' ? data.nombre.trim() : '';
           if (name.length > 60 || /[\u0000-\u001f\u007f]/.test(name)) throw new Error('nombre_invalido');
           const email = correo(data.correo), password = clave(data.clave, true), extra = seguridad(data);
-          await contarEnvio(path, request, email);
+          reservarIntento(path, request);
           await api(env, '/auth/v1/signup?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)),
             { method: 'POST', data: { email, password, data: { nombre: name }, ...extra } });
           // Signup never grants account access, even if remote autoconfirm is misconfigured.
@@ -337,7 +319,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
         }
         if (path === '/api/acceso/recuperar' || path === '/api/acceso/reenviar') {
           const email = correo(data.correo), extra = seguridad(data);
-          await contarEnvio(path, request, email);
+          reservarIntento(path, request);
           await api(env, '/auth/v1/' + (path.endsWith('recuperar') ? 'recover' : 'resend') +
             '?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)), { method: 'POST',
               data: { email, ...(path.endsWith('reenviar') ? { type: 'signup' } : {}), ...extra } });

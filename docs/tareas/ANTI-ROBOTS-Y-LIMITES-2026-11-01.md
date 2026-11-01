@@ -39,19 +39,22 @@ intentos de entrada reales.
 
 **BFF (`rwadar-acceso/servidor.mjs`):**
 
-- Límite propio, en la memoria de cada instancia de Cloudflare, por la IP real
-  del visitante (`CF-Connecting-IP`) y por una huella SHA-256 del correo. El
-  correo nunca se guarda en claro.
+- Límite propio, en la memoria de cada instancia de Cloudflare, **por
+  visitante**: su IPv4 (`CF-Connecting-IP`) o, en IPv6, su bloque /64 completo.
+  Así nadie lo reinicia cambiando de dirección dentro de su bloque. Cuenta cada
+  petición que llega a Supabase, como hace Supabase; las mal escritas no cuentan.
 
-  | Qué | Por IP | Por correo |
-  |---|---|---|
-  | Entrar y reautenticar (contraseña) | 20 cada 10 min | 10 **fallos** cada 15 min; acertar reinicia |
-  | Alta, recuperar y reenviar (envían correo) | 6 cada 10 min | 3 cada 15 min |
+  | Qué | Por visitante |
+  |---|---|
+  | Entrar y reautenticar (contraseña) | 30 cada 10 min |
+  | Alta, recuperar y reenviar (pueden enviar correo) | 5 cada hora |
 
   Al pasarse, devuelve 429 `intentos_excedidos` con `Retry-After`, sin llegar a
-  Supabase. Un fallo de CAPTCHA o una caída de Supabase no cuentan contra el
-  dueño de la cuenta. Sin IP del visitante (ensayos locales) no se crea un cupo
-  común.
+  Supabase. Sin IP del visitante (ensayos locales) no se crea un cupo común.
+- **A propósito no hay límite por correo.** La revisión independiente del 1/11
+  mostró que cualquiera podría usarlo para dejar a otra persona sin entrar
+  (10 claves falsas de su correo) y que apenas protege: un atacante puede llamar
+  a Supabase directamente, sin pasar por la web.
 - Si el formulario manda `captcha`, se valida (texto imprimible, hasta 2048
   caracteres) y se reenvía una sola vez a Supabase como
   `gotrue_meta_security.captcha_token`. Sin `captcha`, Supabase recibe
@@ -71,10 +74,11 @@ intentos de entrada reales.
 
 **Pruebas (Node 22.23.4):**
 
-- `npm run test:acceso`: 138/138, 12 nuevas en
-  `rwadar-acceso/anti-robots.test.mjs` (cuerpos sin cambios, reenvío del
-  testigo, testigos malformados, CAPTCHA fallido, límites por IP y por correo,
-  intentos simultáneos y caída de Auth).
+- `npm run test:acceso`: 139/139, 13 nuevas en
+  `rwadar-acceso/anti-robots.test.mjs`: cuerpos sin cambios, reenvío del
+  testigo, testigos malformados, CAPTCHA fallido, cupo por visitante, bloque
+  IPv6 /64, IPv4 escrita como IPv6, que nadie pueda bloquear a otra persona,
+  datos mal escritos e intentos simultáneos.
 - `npm run test:web`: 550/0, 90 páginas, precarga 31.
 - Chromium real con el BFF verdadero y un Supabase simulado que valida con el
   `siteverify` real de Cloudflare, usando sus [claves de prueba](https://developers.cloudflare.com/turnstile/troubleshooting/testing/):
@@ -110,6 +114,9 @@ Cada fase necesita permiso expreso de Víctor en su turno.
    `rwadar-acceso/compilar.cjs` (`CABECERAS_SEGURIDAD`) y `rwadar-servir.js`:
    - `script-src` añade `https://challenges.cloudflare.com`;
    - `frame-src 'none'` pasa a `frame-src https://challenges.cloudflare.com`;
+   - `rwadar-site/assets/acceso-privado.js` (`reautenticar`, que usa el JS
+     principal para acciones delicadas como borrar la cuenta) también debe pedir
+     el testigo y mandarlo como `captcha`; el BFF ya lo reenvía;
    - ajustar las pruebas de CSP de `probar-web.mjs`;
    - añadir el texto de privacidad de `REABRIR-CUENTAS.md`;
    - aprobar, preview, prueba y producción.
@@ -124,13 +131,14 @@ de `servidor.mjs`.
 ## Límites conocidos y opciones
 
 - El límite vive en la memoria de cada instancia de Cloudflare. Es aproximado:
-  frena a quien insiste desde una IP, no a una red grande de máquinas. Para eso
-  están el CAPTCHA y los límites propios de Supabase.
+  frena a quien insiste desde una conexión, no a una red grande de máquinas.
+  Para eso están el CAPTCHA y los límites propios de Supabase.
+- Detrás de una IP compartida (oficina, universidad, operador móvil), 30
+  entradas en 10 minutos se reparten entre todos. Con el volumen actual de
+  RWAdar no se espera.
 - Pages no admite el *binding* de Rate Limiting de Workers
   ([bindings de Pages](https://developers.cloudflare.com/pages/functions/bindings/)).
   Un límite global exacto exigiría un Worker aparte con Durable Objects. No
   parece necesario con el volumen actual.
-- Quien pruebe 10 contraseñas de un correo bloquea **solo la entrada web** de esa
-  cuenta durante 15 minutos. La app y la recuperación siguen funcionando.
 - No se recomienda poner una clave secreta de Supabase en el BFF solo para
   reenviar la IP: daría al BFF acceso por encima de RLS.
