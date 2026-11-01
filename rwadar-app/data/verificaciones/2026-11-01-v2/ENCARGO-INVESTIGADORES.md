@@ -139,3 +139,53 @@ en español llano: qué revisaste, qué cambia en cada oferta publicada (con
 fuente), qué candidatas nuevas propones admitir y por qué, cuáles no y por qué,
 bloqueos y conflictos. Tu respuesta final al coordinador: un resumen breve de
 lo mismo (máx. 400 palabras) con la lista de slugs y decisión.
+
+## Enfoque de Víctor para los clientes (añadido el 01/11, 14:57 UTC)
+
+Víctor pide pensar en **nuestros clientes: el inversor particular común en
+España**. Queremos ofertas que, al verlas, hagan pensar «uau, qué ofertas tiene
+esta plataforma», que le ahorren horas de búsqueda y que le den la confianza
+suficiente para invertir de verdad. La confianza se gana así:
+
+- **Se puede comprar de verdad desde España**, hoy, como particular (no solo
+  acreditados o institucionales), con KYC normal.
+- **Entrada asequible** (mínimo bajo y claro) y **moneda** indicada.
+- **Entidad regulada y verificable** en el registro del supervisor, con nombre
+  exacto, y sin advertencias de la CNMV.
+- **Documentos claros** (folleto, KID en español si existe, términos) y una
+  **cifra real y reciente** con su fuente y su base (nunca inventada ni inflada).
+- **Salida explicada**: cómo y cuándo se recupera el dinero, con sus límites.
+- **Riesgos dichos con claridad.**
+
+Consecuencias para tu trabajo:
+
+1. Prioriza la profundidad en las ofertas que mejor cumplen lo anterior. Mejor
+   pocas ofertas excelentes y documentadas que muchas dudosas.
+2. En las publicadas, señala las que hoy restan confianza (cerradas,
+   desaparecidas, sin datos verificables durante semanas, solo acreditados) y
+   propón `retirar_propuesta` o agruparlas, con fuente y motivo. La retirada
+   solo la decide Víctor.
+3. Rellena las **métricas que ahorran tiempo** al cliente en `propuestaTarjeta.metricas`
+   (p. ej. «Mínimo», «Supervisor», «Reembolso», «Comisión de gestión»,
+   «Rentabilidad publicada · base y fecha»), siempre con su claim respaldado.
+4. Añade al expediente un bloque interno (no se publica, no es una puntuación
+   ni una recomendación al cliente) para que el coordinador seleccione:
+
+```json
+"prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "si | no | no_confirmado",
+  "minimoEntrada": "texto con moneda o null",
+  "supervisorVerificado": "nombre del supervisor y registro, o null",
+  "documentacionClara": "si | parcial | no",
+  "salidaExplicada": "si | parcial | no",
+  "cifraRecienteVerificada": "si | no",
+  "porQueDestaca": "una frase factual, sin adjetivos promocionales",
+  "porQueNo": "una frase con lo que falla, si algo falla"
+}
+```
+
+5. La tarjeta sigue sin promesas ni superlativos: lo que impresiona es el dato
+   comprobado («Desde 1 €», «Supervisado por la AMF», «Reembolso diario»), no el
+   adjetivo. No ordenamos ni elegimos por rentabilidad.
+6. **Guarda cada expediente en cuanto lo termines** (no al final): la sesión
+   anterior se cortó por límite de uso y se perdió trabajo no guardado.

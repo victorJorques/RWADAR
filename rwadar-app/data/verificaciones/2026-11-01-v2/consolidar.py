@@ -100,7 +100,12 @@ def validar(exp, publicadas):
                             and str(c.get('consultadoUtc', '')).startswith(('2026-11-01', '2026-11-02'))]
                 if not respaldo:
                     errores.append('rentabilidad mostrada sin claim de rentabilidad respaldado hoy')
+    if decision in ('admitir_propuesta', 'actualizar', 'mantener') and not exp.get('prioridadEditorial'):
+        avisos.append('falta prioridadEditorial (enfoque cliente)')
     if decision == 'admitir_propuesta':
+        prio = exp.get('prioridadEditorial') or {}
+        if prio.get('compraDesdeEspanaComoParticular') != 'si':
+            avisos.append('candidata sin compra confirmada desde España como particular')
         for nombre in ('entidadYPermisos', 'actividadYFecha', 'accesoYCondiciones'):
             if (crit.get(nombre) or {}).get('veredicto') in ('no_cumple', 'no_verificable'):
                 errores.append(f'se propone admitir con {nombre} = {crit[nombre]["veredicto"]}')
@@ -138,6 +143,7 @@ def main():
             'coleccion': t.get('coleccion'), 'categoria': t.get('categoria'),
             'rentabilidad': (t.get('rentabilidad') or {}).get('mostrada'),
             'criterios': {k: (v or {}).get('veredicto') for k, v in (exp.get('criterios') or {}).items()},
+            'prioridadEditorial': exp.get('prioridadEditorial'),
             'cambiosCriticos': sum(1 for c in exp.get('cambiosRespectoPublicado') or [] if c.get('critico')),
             'claims': len(exp.get('claims') or []), 'errores': len(errores),
         })
