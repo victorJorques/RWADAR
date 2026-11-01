@@ -7,6 +7,7 @@ const UID = '11111111-1111-4111-8111-111111111111';
 const TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIn0.prueba';
 const ENV = { SUPABASE_URL: 'https://exgpmjpaaebyoolpwced.supabase.co', SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_prueba' };
 const CAPTCHA = 'XXXX.DUMMY.TOKEN.XXXX';
+const VENTANA = 600;
 
 // Auth answers with `respuestaToken` to password logins; everything else succeeds.
 function entorno({ respuestaToken = () => Response.json({ access_token: TOKEN }) } = {}) {
@@ -130,15 +131,15 @@ test('nadie puede bloquear la entrada de otra persona probando claves de su corr
 
 test('los correos de alta, recuperación y reenvío tienen su propio cupo por visitante', async () => {
   const e = entorno();
-  const acciones = ['registrar', 'recuperar', 'reenviar', 'recuperar', 'registrar'];
+  const acciones = ['registrar', 'recuperar', 'reenviar', 'recuperar', 'registrar', 'reenviar', 'recuperar', 'registrar', 'reenviar', 'recuperar'];
   for (const [i, accion] of acciones.entries()) {
     const data = { correo: `envio${i}@ejemplo.test`, clave: 'clave-de-doce!', aceptaCondiciones: true };
     assert.equal((await e.run(accion, data, { ip: '203.0.113.20' })).status, 200);
   }
   const frenada = await e.run('reenviar', { correo: 'otra@ejemplo.test' }, { ip: '203.0.113.20' });
   assert.equal(frenada.status, 429);
-  assert.equal(frenada.headers.get('retry-after'), '3600');
-  assert.equal(e.aAuth(/\/(signup|recover|resend)\?/), 5, 'solo los permitidos piden un correo a Auth');
+  assert.equal(frenada.headers.get('retry-after'), '600');
+  assert.equal(e.aAuth(/\/(signup|recover|resend)\?/), 10, 'solo los permitidos piden un correo a Auth');
   // El cupo de correos no gasta el de entrar.
   assert.equal((await e.run('entrar', { correo: 'cuenta@ejemplo.test', clave: 'una-clave' }, { ip: '203.0.113.20' })).status, 200);
 });
@@ -172,4 +173,21 @@ test('sin IP del visitante (ensayo local) o con una IP inventada no se crea un c
   for (const ip of ['', 'no-es-una-ip <script>', '1:2:3:4:5:6:7:8:9', '999']) {
     for (let i = 0; i < 35; i++) assert.equal((await entrarMal(e, i, ip)).status, 401);
   }
+});
+
+test('con la memoria llena, el límite sigue frenando y no recorre todas las entradas', async () => {
+  const e = entorno({ respuestaToken: claveIncorrecta });
+  for (let i = 0; i < 30; i++) await entrarMal(e, i, '203.0.113.99');
+  // Ten thousand other visitors arrive later in the same window.
+  e.avanzar(60);
+  const inicio = performance.now();
+  for (let i = 0; i < 10000; i++) assert.equal((await entrarMal(e, i, `10.${i >> 16 & 255}.${i >> 8 & 255}.${i & 255}`)).status, 401);
+  for (let i = 0; i < 2000; i++) assert.equal((await entrarMal(e, i, `2001:db8:${i.toString(16)}::1`)).status, 401);
+  assert.equal((await entrarMal(e, 99, '203.0.113.99')).status, 401, 'la ventana más antigua se suelta al llenarse');
+  assert.ok(performance.now() - inicio < 20000, 'sin recorridos completos por cada visitante nuevo');
+  // A newer visitor that reaches its limit is still held back.
+  for (let i = 0; i < 30; i++) await entrarMal(e, i, '198.51.100.250');
+  assert.equal((await entrarMal(e, 99, '198.51.100.250')).status, 429);
+  e.avanzar(VENTANA + 1);
+  assert.equal((await entrarMal(e, 99, '198.51.100.250')).status, 401);
 });

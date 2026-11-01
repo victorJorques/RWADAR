@@ -47,7 +47,7 @@ intentos de entrada reales.
   | Qué | Por visitante |
   |---|---|
   | Entrar y reautenticar (contraseña) | 30 cada 10 min |
-  | Alta, recuperar y reenviar (pueden enviar correo) | 5 cada hora |
+  | Alta, recuperar y reenviar (pueden enviar correo) | 10 cada 10 min |
 
   Al pasarse, devuelve 429 `intentos_excedidos` con `Retry-After`, sin llegar a
   Supabase. Sin IP del visitante (ensayos locales) no se crea un cupo común.
@@ -74,11 +74,13 @@ intentos de entrada reales.
 
 **Pruebas (Node 22.23.4):**
 
-- `npm run test:acceso`: 139/139, 13 nuevas en
+- `npm run test:acceso`: 140/140, 14 nuevas en
   `rwadar-acceso/anti-robots.test.mjs`: cuerpos sin cambios, reenvío del
   testigo, testigos malformados, CAPTCHA fallido, cupo por visitante, bloque
   IPv6 /64, IPv4 escrita como IPv6, que nadie pueda bloquear a otra persona,
-  datos mal escritos e intentos simultáneos.
+  datos mal escritos, intentos simultáneos y memoria llena (12.000 visitantes).
+- Dos revisiones independientes del código (1/11). Lo que señalaron está
+  corregido o descrito en «Límites conocidos».
 - `npm run test:web`: 550/0, 90 páginas, precarga 31.
 - Chromium real con el BFF verdadero y un Supabase simulado que valida con el
   `siteverify` real de Cloudflare, usando sus [claves de prueba](https://developers.cloudflare.com/turnstile/troubleshooting/testing/):
@@ -114,9 +116,9 @@ Cada fase necesita permiso expreso de Víctor en su turno.
    `rwadar-acceso/compilar.cjs` (`CABECERAS_SEGURIDAD`) y `rwadar-servir.js`:
    - `script-src` añade `https://challenges.cloudflare.com`;
    - `frame-src 'none'` pasa a `frame-src https://challenges.cloudflare.com`;
-   - `rwadar-site/assets/acceso-privado.js` (`reautenticar`, que usa el JS
-     principal para acciones delicadas como borrar la cuenta) también debe pedir
-     el testigo y mandarlo como `captcha`; el BFF ya lo reenvía;
+   - `reautenticar` (acciones delicadas, como borrar la cuenta) ya reenvía el
+     testigo del JS principal a través de `acceso-privado.js` y del BFF: basta
+     con que ese JS tenga también su `TURNSTILE_SITEKEY`;
    - ajustar las pruebas de CSP de `probar-web.mjs`;
    - añadir el texto de privacidad de `REABRIR-CUENTAS.md`;
    - aprobar, preview, prueba y producción.
@@ -133,9 +135,18 @@ de `servidor.mjs`.
 - El límite vive en la memoria de cada instancia de Cloudflare. Es aproximado:
   frena a quien insiste desde una conexión, no a una red grande de máquinas.
   Para eso están el CAPTCHA y los límites propios de Supabase.
-- Detrás de una IP compartida (oficina, universidad, operador móvil), 30
-  entradas en 10 minutos se reparten entre todos. Con el volumen actual de
-  RWAdar no se espera.
+- Quien controle **muchas** direcciones (varios bloques IPv6 o varias IPv4)
+  puede repartir sus intentos y seguir agotando el cupo compartido de Supabase.
+  El límite frena el caso sencillo de una sola conexión. La protección completa
+  llega con el CAPTCHA encendido; una alternativa sería pasar la IP real a
+  Supabase, que no se recomienda (ver abajo).
+- La ventana es fija de 10 minutos: alrededor del cambio de ventana, una
+  conexión puede llegar al doble del cupo durante unos segundos.
+- Sin `CF-Connecting-IP` no hay límite. Cloudflare la pone siempre en las
+  visitas reales; solo falta en los ensayos locales.
+- Detrás de una IP compartida (oficina, universidad, operador móvil), los cupos
+  se reparten entre todos. Con el volumen actual de RWAdar no se espera que se
+  noten.
 - Pages no admite el *binding* de Rate Limiting de Workers
   ([bindings de Pages](https://developers.cloudflare.com/pages/functions/bindings/)).
   Un límite global exacto exigiría un Worker aparte con Durable Objects. No

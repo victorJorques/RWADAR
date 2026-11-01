@@ -17,14 +17,14 @@ tocado en Supabase ni en Cloudflare. Plan completo y orden de activación en
   compartida (`2a06:98c0:3600::103`), así que toda la web comparte un único cupo
   de intentos de Auth. Se puede confirmar sin tocar nada en Supabase › Logs › Auth.
 - **BFF:** límite en memoria por visitante (IPv4 o bloque IPv6 /64): 30
-  entradas cada 10 minutos y 5 envíos de correo por hora. A propósito no hay
+  entradas y 10 envíos de correo cada 10 minutos. A propósito no hay
   límite por correo: la revisión independiente mostró que permitía bloquear a
   otra persona. Además, reenvío del testigo Turnstile como
   `gotrue_meta_security.captcha_token` y `captcha_fallido` claro. Sin testigo, el
   cuerpo que recibe Supabase es idéntico al de antes.
 - **Web (`acceso.js`/`acceso.html`):** Turnstile listo y apagado
   (`TURNSTILE_SITEKEY = ''`); la CSP no cambia.
-- **Pruebas con Node 22.23.4:** `test:acceso` 139/139 (13 nuevas en
+- **Pruebas con Node 22.23.4:** `test:acceso` 140/140 (14 nuevas en
   `anti-robots.test.mjs`) y `test:web` 550/0. En Chromium real, con el BFF
   verdadero y el `siteverify` de Cloudflare con sus claves de prueba: apagado
   entra sin peticiones externas, la clave que aprueba entra y la que rechaza lo

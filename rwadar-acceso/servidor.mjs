@@ -9,11 +9,9 @@ const MAX_BODY = 16 * 1024;
 // for every web visitor. This best-effort limit lives in this isolate's memory,
 // is keyed by the visitor (IPv4 address or IPv6 /64) and, like Supabase, counts
 // every request that reaches Auth. There is deliberately no per-email limit:
-// anyone could use it to lock a stranger out. [maximum, seconds]
-const LIMITES = Object.freeze({
-  clave: Object.freeze([30, 600]), // password attempts
-  envio: Object.freeze([5, 3600]), // each request can send an email
-});
+// anyone could use it to lock a stranger out. Maximum per window:
+const LIMITES = Object.freeze({ clave: 30, envio: 10 }); // password attempts; requests that can send an email
+const VENTANA_S = 600;
 const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso/reautenticar': 'clave',
   '/api/acceso/registrar': 'envio', '/api/acceso/recuperar': 'envio', '/api/acceso/reenviar': 'envio' });
 
@@ -108,17 +106,15 @@ function crearLimitador(ahora, maxClaves = 10000) {
   return {
     // Counts one request. Returns the seconds to wait if the key is over its
     // limit (that request is not counted), or 0 when it may continue.
-    reservar(key, [maximo, segundos]) {
+    reservar(key, maximo) {
       const t = ahora(); let cubo = cubos.get(key);
       if (cubo && cubo.hasta <= t) { cubos.delete(key); cubo = null; }
       if (cubo && cubo.cuenta >= maximo) return Math.max(1, Math.ceil((cubo.hasta - t) / 1000));
       if (!cubo) {
-        if (cubos.size >= maxClaves) {
-          for (const [k, c] of cubos) if (c.hasta <= t) cubos.delete(k);
-          // Still full only under a very wide attack: drop the oldest windows.
-          for (const k of cubos.keys()) { if (cubos.size < maxClaves) break; cubos.delete(k); }
-        }
-        cubo = { cuenta: 0, hasta: t + segundos * 1000 }; cubos.set(key, cubo);
+        // Every window lasts VENTANA_S, so the Map's order is expiry order:
+        // expired entries sit at the front, then the oldest live one.
+        for (const [k, c] of cubos) { if (c.hasta > t && cubos.size < maxClaves) break; cubos.delete(k); }
+        cubo = { cuenta: 0, hasta: t + VENTANA_S * 1000 }; cubos.set(key, cubo);
       }
       cubo.cuenta++;
       return 0;

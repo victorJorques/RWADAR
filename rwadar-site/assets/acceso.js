@@ -10,7 +10,7 @@
   // docs/tareas/ANTI-ROBOTS-Y-LIMITES-2026-11-01.md, or Android sign-in breaks.
   const TURNSTILE_SITEKEY = '';
   const CON_ROBOT = ['entrar', 'registrar', 'recuperar', 'reenviar'];
-  let cargaTurnstile = null, widget = null;
+  let cargaTurnstile = null, widget = null, turnoRobot = 0;
   function mensaje(texto) { $('estado').textContent = texto; }
   function cargarTurnstile() {
     if (window.turnstile) return Promise.resolve(window.turnstile);
@@ -29,13 +29,15 @@
     let ts;
     try { ts = await cargarTurnstile(); }
     catch { throw new Error('No se ha podido cargar la comprobación anti-robots. Revisa la conexión o permite este sitio en tu bloqueador y vuelve a intentarlo.'); }
-    const caja = $('robot');
+    const caja = $('robot'), turno = ++turnoRobot;
     if (widget !== null) { try { ts.remove(widget); } catch { /* already removed */ } widget = null; }
     caja.hidden = false;
     return new Promise((ok, mal) => {
       let reloj = null;
-      const fin = (accion, valor) => { clearTimeout(reloj); caja.hidden = true; accion(valor); };
-      const falla = () => fin(mal, new Error('No hemos podido comprobar que no eres un robot. Vuelve a intentarlo.'));
+      // A late callback from an earlier check must not settle or hide this one.
+      const fin = (accion, valor) => { if (turno !== turnoRobot) return; turnoRobot++; clearTimeout(reloj); caja.hidden = true; accion(valor); };
+      // Returning true tells Turnstile the error was handled here.
+      const falla = () => { fin(mal, new Error('No hemos podido comprobar que no eres un robot. Vuelve a intentarlo.')); return true; };
       reloj = setTimeout(falla, 120000);
       try {
         widget = ts.render(caja, { sitekey: TURNSTILE_SITEKEY, language: 'es', appearance: 'interaction-only',

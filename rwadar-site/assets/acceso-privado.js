@@ -93,10 +93,11 @@
     if (!response.ok) { const error = new Error('No se ha podido completar la operación con tu cuenta.'); error.status = response.status; throw error; }
     return value;
   }
-  async function reautenticar(clave) {
+  // captcha: the page's Turnstile token, forwarded to Auth once its CAPTCHA is on.
+  async function reautenticar(clave, captcha) {
     await verificar();
     const response = await fetch('/api/acceso/reautenticar', { method: 'POST', credentials: 'same-origin', cache: 'no-store', redirect: 'error',
-      headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ clave }) });
+      headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(captcha ? { clave, captcha } : { clave }) });
     const result = await response.json();
     if (!response.ok || !result.autenticada || result.usuario?.id !== usuario?.id) throw new Error('No se pudo confirmar tu contraseña.');
     usuario = result.usuario; return { ...usuario };
