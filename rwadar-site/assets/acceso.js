@@ -4,7 +4,45 @@
   const form = $('formulario'); let vista = 'entrar', ocupado = false, enlace = null;
   let cierrePendiente = sessionStorage.getItem('rwadar.cierre.pendiente') === 'si', cierreEnCurso = null;
   const textos = { entrar: 'Entrar', registrar: 'Crear cuenta gratis', recuperar: 'Enviar enlace de recuperación', reenviar: 'Reenviar confirmación', 'nueva-clave': 'Guardar nueva contraseña' };
+  // Cloudflare Turnstile before each request that tests a password or sends an
+  // email. Empty: off and nothing external loads. Turning it on also needs the
+  // CSP, the privacy text and Auth's CAPTCHA switch, in the order given in
+  // docs/tareas/ANTI-ROBOTS-Y-LIMITES-2026-11-01.md, or Android sign-in breaks.
+  const TURNSTILE_SITEKEY = '';
+  const CON_ROBOT = ['entrar', 'registrar', 'recuperar', 'reenviar'];
+  let cargaTurnstile = null, widget = null;
   function mensaje(texto) { $('estado').textContent = texto; }
+  function cargarTurnstile() {
+    if (window.turnstile) return Promise.resolve(window.turnstile);
+    if (!cargaTurnstile) cargaTurnstile = new Promise((ok, mal) => {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; script.async = true;
+      const falla = () => { cargaTurnstile = null; script.remove(); mal(new Error('turnstile')); };
+      script.onload = () => window.turnstile ? ok(window.turnstile) : falla();
+      script.onerror = falla;
+      document.head.appendChild(script);
+    });
+    return cargaTurnstile;
+  }
+  // Each request gets a fresh token: Turnstile tokens are single-use.
+  async function comprobarRobot() {
+    let ts;
+    try { ts = await cargarTurnstile(); }
+    catch { throw new Error('No se ha podido cargar la comprobación anti-robots. Revisa la conexión o permite este sitio en tu bloqueador y vuelve a intentarlo.'); }
+    const caja = $('robot');
+    if (widget !== null) { try { ts.remove(widget); } catch { /* already removed */ } widget = null; }
+    caja.hidden = false;
+    return new Promise((ok, mal) => {
+      let reloj = null;
+      const fin = (accion, valor) => { clearTimeout(reloj); caja.hidden = true; accion(valor); };
+      const falla = () => fin(mal, new Error('No hemos podido comprobar que no eres un robot. Vuelve a intentarlo.'));
+      reloj = setTimeout(falla, 120000);
+      try {
+        widget = ts.render(caja, { sitekey: TURNSTILE_SITEKEY, language: 'es', appearance: 'interaction-only',
+          callback: token => fin(ok, token), 'error-callback': falla, 'expired-callback': falla, 'timeout-callback': falla });
+      } catch { falla(); }
+    });
+  }
   function cambiar(siguiente) {
     vista = siguiente; $('clave').value = ''; $('condiciones').checked = false;
     $('siguiente-alta').hidden = true; $('acciones').hidden = false; form.hidden = false;
@@ -26,7 +64,8 @@
       const result = await response.json();
       if (!response.ok) {
         const mensajes = { correo_invalido: 'Escribe un correo válido.', clave_corta: 'Usa una contraseña de al menos 12 caracteres.',
-          condiciones: 'Acepta las condiciones y la privacidad para registrarte.', configuracion_pendiente: 'El acceso todavía necesita configuración. Inténtalo más tarde.' };
+          condiciones: 'Acepta las condiciones y la privacidad para registrarte.', configuracion_pendiente: 'El acceso todavía necesita configuración. Inténtalo más tarde.',
+          captcha_fallido: 'No hemos podido comprobar que no eres un robot. Vuelve a intentarlo.' };
         throw new Error(response.status === 429 ? 'Has hecho varios intentos. Espera antes de repetir.' :
           mensajes[result.error] || 'No se pudo comprobar el acceso. Revisa tus datos o solicita otro enlace.');
       }
@@ -90,6 +129,7 @@
     $('clave').value = ''; ocupado = true; $('enviar').disabled = true;
     try {
       await terminarCierre();
+      if (TURNSTILE_SITEKEY && CON_ROBOT.includes(vista)) data.captcha = await comprobarRobot();
       const result = await api(vista, data);
       if (result.autenticada) { await confirmarSesion(result); regresar(); }
       else {

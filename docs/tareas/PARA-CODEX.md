@@ -6,6 +6,35 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 1 de noviembre de 2026 · Claude · anti-robots y límite de intentos, preparados sin activar
+
+**Rama:** `claude/anti-robots-2026-10-30`. Sin unir a `main`, porque toca
+`rwadar-acceso/` y `rwadar-site/`, que están sellados. Nada publicado, nada
+tocado en Supabase ni en Cloudflare. Plan completo y orden de activación en
+[`ANTI-ROBOTS-Y-LIMITES-2026-11-01.md`](ANTI-ROBOTS-Y-LIMITES-2026-11-01.md).
+
+- **Hallazgo:** el BFF llama a Supabase desde Cloudflare, y Supabase ve una IP
+  compartida (`2a06:98c0:3600::103`), así que toda la web comparte un único cupo
+  de intentos de Auth. Se puede confirmar sin tocar nada en Supabase › Logs › Auth.
+- **BFF:** límite en memoria por IP real y por huella del correo; reenvío del
+  testigo Turnstile como `gotrue_meta_security.captcha_token`; `captcha_fallido`
+  claro. Sin testigo, el cuerpo que recibe Supabase es idéntico al de antes.
+- **Web (`acceso.js`/`acceso.html`):** Turnstile listo y apagado
+  (`TURNSTILE_SITEKEY = ''`); la CSP no cambia.
+- **Pruebas con Node 22.23.4:** `test:acceso` 138/138 (12 nuevas en
+  `anti-robots.test.mjs`) y `test:web` 550/0. En Chromium real, con el BFF
+  verdadero y el `siteverify` de Cloudflare con sus claves de prueba: apagado
+  entra sin peticiones externas, la clave que aprueba entra y la que rechaza lo
+  explica.
+- **Para Codex:** revisar la rama. Si se acepta, generar la huella aprobada y
+  hacer preview y producción con permiso de Víctor. No encender el CAPTCHA en
+  Supabase hasta que Android mande `captchaToken` (fase 2 del plan).
+- **Node del PC:** Codex usó un Node 22.23.4 portable y la instalación global
+  seguía sin el parche. Víctor lanzó el 30/10 una tarea en su PC para
+  actualizarla; confirmar con `node --version` (≥ 22.23.4).
+
+---
+
 ## 30 de octubre de 2026 · Claude · web en iPhone, cuenta QA baneada y pruebas en UTC
 
 - **Víctor usa iPhone**, así que en su móvil RWAdar es la web. En iPhone/iPad

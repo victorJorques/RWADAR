@@ -4,6 +4,16 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ORIGEN_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const COOKIE = '__Host-rwadar-acceso';
 const MAX_BODY = 16 * 1024;
+// Supabase limits Auth by client IP, but every request from this server reaches
+// it from the same shared Cloudflare address: one client could exhaust the quota
+// for every web visitor. These best-effort limits live in this isolate's memory
+// and are keyed by the visitor's IP and a hash of the email. [maximum, seconds]
+const LIMITES = Object.freeze({
+  clave: Object.freeze({ ip: [20, 600], correo: [10, 900] }), // password attempts; per email, failures only
+  envio: Object.freeze({ ip: [6, 600], correo: [3, 900] }), // each request sends an email
+});
+const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso/reautenticar': 'clave',
+  '/api/acceso/registrar': 'envio', '/api/acceso/recuperar': 'envio', '/api/acceso/reenviar': 'envio' });
 
 export function retornoSeguro(value, origin) {
   if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//') || /[\\\r\n\u0000]/.test(value)) return '/';
@@ -70,8 +80,64 @@ function clave(value, nueva = false) {
   if (typeof value !== 'string' || value.length > 256 || value.length < (nueva ? 12 : 1)) throw new Error(nueva ? 'clave_corta' : 'clave_vacia');
   return value;
 }
+// Optional Cloudflare Turnstile token from the form, forwarded once to Auth.
+// Auth validates it when CAPTCHA protection is on; this server never consumes it.
+function seguridad(data) {
+  if (data.captcha === undefined) return {};
+  if (typeof data.captcha !== 'string' || !/^[\x21-\x7e]{1,2048}$/.test(data.captcha)) throw new Error('solicitud_invalida');
+  return { gotrue_meta_security: { captcha_token: data.captcha } };
+}
+function ipCliente(request) {
+  const ip = request.headers.get('cf-connecting-ip') || '';
+  return ip.length <= 45 && /^[0-9A-Fa-f:.]+$/.test(ip) ? ip : '';
+}
+async function huellaCorreo(value) {
+  const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value.toLowerCase()));
+  return [...new Uint8Array(bytes)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+function crearLimitador(ahora, maxClaves = 10000) {
+  const cubos = new Map();
+  function vigente(key) {
+    const cubo = cubos.get(key);
+    if (cubo && cubo.hasta <= ahora()) { cubos.delete(key); return null; }
+    return cubo || null;
+  }
+  return {
+    // Seconds left while a key is at its limit; 0 when it may continue.
+    espera(key, [maximo]) {
+      const cubo = vigente(key);
+      return cubo && cubo.cuenta >= maximo ? Math.max(1, Math.ceil((cubo.hasta - ahora()) / 1000)) : 0;
+    },
+    anotar(key, [, segundos]) {
+      let cubo = vigente(key);
+      if (!cubo) {
+        // Fixed windows are created in time order: the oldest go first.
+        for (const antigua of cubos.keys()) { if (cubos.size < maxClaves) break; cubos.delete(antigua); }
+        cubo = { cuenta: 0, hasta: ahora() + segundos * 1000 }; cubos.set(key, cubo);
+      }
+      cubo.cuenta++;
+    },
+    descontar(key) { const cubo = vigente(key); if (cubo && cubo.cuenta > 0) cubo.cuenta--; },
+    olvidar(key) { cubos.delete(key); },
+  };
+}
 
-export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) {
+async function leerTexto(result, maxBytes) {
+  if (Number(result.headers.get('content-length')) > maxBytes) throw new Error('respuesta_excesiva');
+  const reader = result.body?.getReader(); let text = '';
+  if (reader) {
+    let size = 0; const decoder = new TextDecoder();
+    try { while (true) { const part = await reader.read(); if (part.done) break;
+      size += part.value.byteLength; if (size > maxBytes) { await reader.cancel(); throw new Error('respuesta_excesiva'); }
+      text += decoder.decode(part.value, { stream: true }); } text += decoder.decode();
+    } finally { reader.releaseLock(); }
+  } else text = await result.text();
+  if (new TextEncoder().encode(text).length > maxBytes) throw new Error('respuesta_excesiva');
+  return text;
+}
+
+export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora = Date.now } = {}) {
+  const limitador = crearLimitador(ahora);
   async function api(env, path, { token, method = 'GET', data, maxBytes = 128 * 1024, representacion = false } = {}) {
     if (env.SUPABASE_URL !== ORIGEN_AUTH || !/^sb_publishable_[A-Za-z0-9_-]+$/.test(env.SUPABASE_PUBLISHABLE_KEY || '')) throw new Error('configuracion_pendiente');
     const abort = new AbortController(); const timer = setTimeout(() => abort.abort(), plazoMs);
@@ -91,19 +157,14 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
         const error = new Error('auth_rechazado'); error.status = result.status;
         const retry = result.headers.get('retry-after') || '';
         error.reintentarTras = /^[0-9]{1,6}$/.test(retry) && Number(retry) >= 1 && Number(retry) <= 86400 ? retry : '60';
+        // Only a CAPTCHA refusal's error code is read; the rest is discarded.
+        if (result.status === 400) {
+          try { error.captcha = JSON.parse(await leerTexto(result, 4096))?.error_code === 'captcha_failed'; } catch { /* no detail */ }
+        }
         if (result.body) await result.body.cancel().catch(() => {});
         throw error;
       }
-      if (Number(result.headers.get('content-length')) > maxBytes) throw new Error('respuesta_excesiva');
-      const reader = result.body?.getReader(); let text = '';
-      if (reader) {
-        let size = 0; const decoder = new TextDecoder();
-        try { while (true) { const part = await reader.read(); if (part.done) break;
-          size += part.value.byteLength; if (size > maxBytes) { await reader.cancel(); throw new Error('respuesta_excesiva'); }
-          text += decoder.decode(part.value, { stream: true }); } text += decoder.decode();
-        } finally { reader.releaseLock(); }
-      } else text = await result.text();
-      if (new TextEncoder().encode(text).length > maxBytes) throw new Error('respuesta_excesiva');
+      const text = await leerTexto(result, maxBytes);
       const body = text ? JSON.parse(text) : null;
       return body;
     } catch (error) {
@@ -122,6 +183,42 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
     const profile = await api(env, '/rest/v1/mi_perfil?select=id&id=eq.' + user.id + '&limit=1', { token });
     if (!Array.isArray(profile) || profile.length !== 1 || profile[0].id !== user.id) throw new Error('sin_sesion');
     return { id: user.id, correo: email, correoConfirmadoEl: user.email_confirmed_at };
+  }
+  async function clavesLimite(path, request, email) {
+    const grupo = GRUPO_LIMITE[path], ip = ipCliente(request);
+    // Without a visitor IP (local runs) there is no shared bucket to protect.
+    return { ip: [ip ? grupo + ':ip:' + ip : '', LIMITES[grupo].ip],
+      correo: [grupo + ':correo:' + await huellaCorreo(email), LIMITES[grupo].correo] };
+  }
+  function frenar(...claves) {
+    let espera = 0;
+    for (const [key, limite] of claves) if (key) espera = Math.max(espera, limitador.espera(key, limite));
+    if (espera) { const error = new Error('intentos_excedidos'); error.status = 429; error.reintentarTras = String(espera); throw error; }
+  }
+  async function contarEnvio(path, request, email) {
+    const limite = await clavesLimite(path, request, email);
+    frenar(limite.ip, limite.correo);
+    if (limite.ip[0]) limitador.anotar(...limite.ip);
+    limitador.anotar(...limite.correo);
+  }
+  async function sesionConClave(env, path, request, email, data) {
+    const password = clave(data.clave), extra = seguridad(data);
+    const limite = await clavesLimite(path, request, email);
+    frenar(limite.ip, limite.correo);
+    if (limite.ip[0]) limitador.anotar(...limite.ip);
+    // Counted before asking Auth so parallel guesses cannot all slip through.
+    limitador.anotar(...limite.correo);
+    let session;
+    try {
+      session = await api(env, '/auth/v1/token?grant_type=password', { method: 'POST', data: { email, password, ...extra } });
+    } catch (error) {
+      // Only wrong credentials stay counted against the email, so a CAPTCHA
+      // or service failure never locks its owner out.
+      if (error.status !== 400 || error.captcha) limitador.descontar(limite.correo[0]);
+      throw error;
+    }
+    limitador.olvidar(limite.correo[0]);
+    return session;
   }
   const atenderCartera = crearCarteraServidor({ api, verificar, leerCookie, respuesta });
   async function atender(context) {
@@ -186,8 +283,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
         const data = await cuerpoJSON(request);
         if (path === '/api/acceso/reautenticar') {
           const current = await verificar(env, leerCookie(request));
-          const session = await api(env, '/auth/v1/token?grant_type=password', { method: 'POST',
-            data: { email: current.correo, password: clave(data.clave) } });
+          const session = await sesionConClave(env, path, request, current.correo, data);
           const user = await verificar(env, session?.access_token);
           if (user.id !== current.id) throw new Error('sin_sesion');
           return respuesta({ autenticada: true, usuario: user }, 200, { 'Set-Cookie': cookie(session.access_token) });
@@ -224,8 +320,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
           return respuesta(result == null ? [] : result);
         }
         if (path === '/api/acceso/entrar') {
-          const session = await api(env, '/auth/v1/token?grant_type=password', { method: 'POST',
-            data: { email: correo(data.correo), password: clave(data.clave) } });
+          const session = await sesionConClave(env, path, request, correo(data.correo), data);
           const user = await verificar(env, session?.access_token);
           return respuesta({ autenticada: true, usuario: user }, 200, { 'Set-Cookie': cookie(session.access_token) });
         }
@@ -233,15 +328,19 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
           if (data.aceptaCondiciones !== true) throw new Error('condiciones');
           const name = typeof data.nombre === 'string' ? data.nombre.trim() : '';
           if (name.length > 60 || /[\u0000-\u001f\u007f]/.test(name)) throw new Error('nombre_invalido');
+          const email = correo(data.correo), password = clave(data.clave, true), extra = seguridad(data);
+          await contarEnvio(path, request, email);
           await api(env, '/auth/v1/signup?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)),
-            { method: 'POST', data: { email: correo(data.correo), password: clave(data.clave, true), data: { nombre: name } } });
+            { method: 'POST', data: { email, password, data: { nombre: name }, ...extra } });
           // Signup never grants account access, even if remote autoconfirm is misconfigured.
           return respuesta({ confirmarCorreo: true, mensaje: 'Si la cuenta es nueva, recibirás un enlace para confirmar el correo antes de entrar. Si ya tenías cuenta, entra con tu contraseña o recupérala.' });
         }
         if (path === '/api/acceso/recuperar' || path === '/api/acceso/reenviar') {
+          const email = correo(data.correo), extra = seguridad(data);
+          await contarEnvio(path, request, email);
           await api(env, '/auth/v1/' + (path.endsWith('recuperar') ? 'recover' : 'resend') +
             '?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)), { method: 'POST',
-              data: { email: correo(data.correo), ...(path.endsWith('reenviar') ? { type: 'signup' } : {}) } });
+              data: { email, ...(path.endsWith('reenviar') ? { type: 'signup' } : {}), ...extra } });
           return respuesta({ mensaje: 'Si hay una cuenta con ese correo, recibirás el enlace. Revisa también el correo no deseado.' });
         }
         const user = await verificar(env, data.access_token);
@@ -257,6 +356,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000 } = {}) 
       return respuesta({ autenticada: true, usuario: user });
     } catch (error) {
       if (error.message === 'configuracion_pendiente') return respuesta({ error: 'configuracion_pendiente' }, 503);
+      if (error.captcha === true) return respuesta({ error: 'captcha_fallido' }, 400);
       if (error.status === 429) return respuesta({ error: 'intentos_excedidos' }, 429,
         { 'Retry-After': error.reintentarTras || '60' });
       if (error.message === 'servicio_no_disponible' || error.status >= 500)
