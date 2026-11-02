@@ -253,3 +253,67 @@ Editorial (lo decide Víctor): con riesgo 7/7 y emisor no supervisado,
 - No leí las condiciones generales de Alius (plazo máximo de 6 meses citado en
   el expediente) ni la inscripción de la ERIR de la emisión en la CNMV.
 
+---
+
+## 5. hausera-proximas-ofertas · **aprobada_con_cambios**
+
+### Hechos comprobados por mí
+
+| Hecho | Fuente | Hora UTC | Lo que vi |
+|---|---|---|---|
+| Alicante 2 anunciada | `https://hausera.io/oportunidades/` (Chromium) | 2026-11-02T16:34:10Z | «Alicante 2 · PRÓXIMA OPORTUNIDAD · Preventa: 04/11/2026 09:00h · 01 DÍA 16 HORAS 25 MINUTOS · CRV · Importe a financiar: 5.196.000€ · Inicio de preventa: 04/11/2026 · Inicio de oferta pública: 11/11/2026 · Inicio de proyecto: 11/11/2026 · Fin previsto de proyecto: 11/07/2028 · Duración (meses): 20 · Rentabilidad sobre inversión: 22,00% · Rentabilidad anualizada: 13,20%». En el texto renderizado hoy no aparece la tarjeta «PREVENTA: 11/11/2026» que citaba el expediente. |
+| Sin página ni documento de la emisión | `https://hausera.io/oportunidades/alicante-2/` y `https://hausera.io/alicante-2/` | 2026-11-02T16:34:49Z | 404 en ambas; el HTML de la portada (`curl`, 2026-11-02T16:34:28Z) no contiene enlace a documento de emisión de Alicante 2. |
+| Entidad y naturaleza | `https://hausera.io/terms/` (Chromium) | 2026-11-02T16:34:18Z | «Denominación: HOLDTX SPAIN, S.L. … Nombre Comercial HAUSERA · NIF B67708032 · Registro Mercantil de Murcia» · «no una entidad de intermediación financiera ni una empresa de servicios de inversión. La participación … se formaliza directamente entre el Inversor y la sociedad Emisora (SPV)» · «"Preventa": … manifestación de interés no vinculante, sin que ello constituya actividad de colocación … ni garantía de asignación» · «La existencia de mercado secundario no está garantizada» · «posible pérdida total o parcial del capital invertido». Releído hoy (el expediente usaba la copia del 23/10). |
+| Registro CNMV | `https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es` | 2026-11-02T16:34:51Z | 27 proveedores listados (incluye «ADVENTUREES CAPITAL PFP», control positivo); ni «HOLDTX» ni «HAUSERA». |
+| Coste y público | `https://hausera.io/faq/` (Chromium) | 2026-11-02T16:35:19Z | «No, Hausera no cobra nada a los usuarios por invertir en la plataforma» · «dirigida a todo tipo de inversores: minoristas, profesionales e institucionales». |
+
+### Discrepancias
+
+- La nota publicada del 22/10 («no anunciaba ninguna oportunidad») es falsa
+  hoy: el cambio es necesario.
+- El conflicto 04/11 frente a 11/11 de la preventa que registró el expediente
+  no se reproduce en mi lectura; las fechas que veo son coherentes: preventa
+  04/11, oferta pública 11/11.
+- La métrica «Supervisor: Operador no supervisado por la CNMV (según sus
+  términos)» atribuye a los términos algo que no dicen: los términos dicen que
+  no es ESI ni intermediario; que no está en la CNMV lo dice el registro.
+- Las cifras de 22 % / 13,20 % no van a la tarjeta (bien: son previsiones sin
+  documento de emisión).
+- La tarjeta caduca por diseño el 04/11 (preventa) y el 11/11 (oferta).
+
+### Cambios obligatorios en la tarjeta
+
+1. Métrica «Supervisor»: **«Ninguno: HOLDTX SPAIN no figura en el registro de
+   plataformas de financiación participativa de la CNMV y declara no ser
+   empresa de servicios de inversión»** (o más corto: «No registrada en la
+   CNMV»).
+2. Añadir aviso: **«Puedes perder todo o parte del dinero; no hay mercado
+   secundario garantizado.»** (términos §6.7).
+3. Revisar la tarjeta de nuevo el 04/11 y el 11/11/2026; sin documento de
+   emisión no se publica mínimo, plazo ni rentabilidad.
+
+Editorial (lo decide Víctor): es la única de las cinco cuyo operador no tiene
+registro en ningún supervisor; con el criterio de confianza del 01/11 es la
+primera candidata a retirar. Mantenerla en `en_camino` con estos avisos es
+aceptable.
+
+### Bloqueos
+
+- Documento de emisión de Alicante 2 no publicado (no hay página del proyecto).
+- No consulté el registro de Portfolio Stock Exchange (no afecta a Alicante 2).
+
+---
+
+## Resumen
+
+| Oferta | Veredicto | Lo esencial |
+|---|---|---|
+| spiko-letras-del-tesoro-euro | aprobada_con_cambios | 2,35 % (31 días, 30/10) exacto hoy, pero se recalcula a las 18:00 UTC del 02/11; «Comisión de gestión» → «Gastos corrientes»; CNMV registra la comercialización, no supervisa el fondo. |
+| prosegur-digital-gold | aprobada_con_cambios | Contrato confirmado (+4 % / −6 %, 1–7 días hábiles aprox., producto no supervisado); MiCA solo cubre custodia/RTO/transferencia; corregir «segregado», coste en llano (~10 %). |
+| mtbill | aprobada_con_cambios | ESMA FTWS-1420 pasaportado a España, KID 7/7, conflicto 25 %/5 % vs 15 %/50 % confirmado; falta aviso de patrimonio negativo y pérdida total; valor por token hoy 1,0769 USD (02/11). |
+| casa-de-outeiro | aprobada_con_cambios | FDF v5 (31/03/2027) frente a campaña con fin 31/10 sin actualizar; 1.121.000 € de 2.000.000 €; no mostrar como abierta, añadir «no verificada por la CNMV» y salida real (2,5 %/año). |
+| hausera-proximas-ofertas | aprobada_con_cambios | Alicante 2: preventa 04/11, oferta 11/11, sin documento ni página; HOLDTX no está en la CNMV; corregir atribución de «Supervisor» y añadir aviso de pérdida. |
+
+Ninguna se rechaza: en las cinco el cambio crítico del expediente se sostiene
+en la fuente primaria releída hoy; los cambios pedidos corrigen precisión y
+avisos, no el sentido de la actualización.
