@@ -1,0 +1,247 @@
+{
+  "slug": "kraken-xstocks",
+  "tipoExpediente": "candidata",
+  "grupo": "nuevas-fuera-radar",
+  "proveedor": "Kraken (UE)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "Payward Europe Digital Solutions (CY) Limited (antes I.F. Greenfields Wealth Ltd), HE 356603",
+  "emisor": "Backed Assets (JE) Limited (Jersey)",
+  "vehiculo": "Certificados de deuda tokenizados (xStocks) emitidos bajo el folleto base de Backed",
+  "token": "xStocks (p. ej. AAPLx, TSLAx) en 10 redes, entre ellas Solana, Ethereum y BNB Chain",
+  "derechoAdquirido": "Título de deuda tokenizado del emisor que replica el precio de una acción o ETF de EE. UU., respaldado 1:1 según el comercializador; sin voto ni derecho sobre la acción",
+  "jurisdiccion": "CY",
+  "identificador": "CySEC 342/17 (comercializador); ISIN por xStock en las Final Terms (no leídas)",
+  "moneda": "USD (precio); compra con fiat en el EEE",
+  "documentos": [
+    {
+      "titulo": "Página xStocks de Kraken UE (FAQ, en español)",
+      "url": "https://eu.kraken.com/xstocks",
+      "versionOFecha": "consultada 2026-11-01",
+      "paginas": null,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Risk Disclosure · Payward Europe Digital Solutions (CY) Limited",
+      "url": "https://eu.kraken.com/legal/risk-disclosure",
+      "versionOFecha": "Updated: 27 January 2026",
+      "paginas": null,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Artículo de soporte «xStocks availability»",
+      "url": "https://support.kraken.com/articles/xstocks-availability",
+      "versionOFecha": "_updatedAt 2026-02-05 (metadato)",
+      "paginas": null,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Base Prospectus y Final Terms de xStocks (Backed)",
+      "url": "https://assets.backed.fi/legal-documentation",
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CySEC",
+      "entidad": "Payward Europe Digital Solutions (CY) Limited (ex I.F. Greenfields Wealth Ltd)",
+      "numero": "Licencia 342/17 (13/11/2017)",
+      "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+      "alcance": "Empresa de servicios de inversión chipriota; dominio aprobado eu.kraken.com; España figura en su lista de pasaporte",
+      "consultadoUtc": "2026-11-01T15:10:27Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "PAYWARD EUROPE DIGITAL SOLUTIONS (CY) LIMITED",
+      "numero": "4474 (05/01/2018)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+      "alcance": "ESI del EEE en libre prestación en España",
+      "consultadoUtc": "2026-11-01T15:01:04Z"
+    }
+  ],
+  "advertenciasReguladores": [],
+  "claims": [
+    {
+      "campo": "accesoEspana",
+      "literal": "Los xStocks están disponibles para clientes de PEDSL-CY ubicados en la UE que hayan completado con éxito la evaluación de idoneidad obligatoria o que sean inversores profesionales.",
+      "dato": "minoristas UE con test superado",
+      "fuentePrimaria": "https://eu.kraken.com/xstocks",
+      "localizador": "FAQ «¿Quién puede comprar xStocks?»",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:08:20Z",
+      "alcanceYLimites": "La página dice «idoneidad»; el soporte habla de «questionnaire». España figura en el pasaporte CySEC y PEDSL está en la CNMV (nº 4474)",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "If you are based in the EEA, you must complete and pass a questionnaire before gaining access to xStocks trading. Once approved, EEA clients can buy, sell, and convert xStocks using fiat only through kraken.com.",
+      "dato": "EEE: solo fiat, solo web/app Kraken (no Kraken Pro ni API, salvo «Convert»)",
+      "fuentePrimaria": "https://support.kraken.com/articles/xstocks-availability",
+      "localizador": "support.kraken.com xstocks-availability",
+      "fechaDato": "2026-02-05",
+      "consultadoUtc": "2026-11-01T15:07:12Z",
+      "alcanceYLimites": "El mismo artículo atribuye la oferta global a Payward Digital Solutions Ltd. (Bermudas); para la UE la página eu.kraken.com nombra a PEDSL-CY",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Los xStocks permiten a los clientes comprar acciones fraccionadas de activos con una inversión de tan solo 1 EUR.",
+      "dato": "1 EUR",
+      "fuentePrimaria": "https://eu.kraken.com/xstocks",
+      "localizador": "FAQ «¿Cuál es la inversión mínima?»",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:08:20Z",
+      "alcanceYLimites": "Fracciones",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "No existen comisiones de trading si se compran xStocks con USD en Kraken. Se aplicarán comisiones de trading por compra instantánea estándares cuando se compren xStocks con otros activos. Para bloquear un precio, se debe incluir un spread",
+      "dato": "0 con USD; con otros activos, comisión de compra instantánea + diferencial (importe no publicado aquí)",
+      "fuentePrimaria": "https://eu.kraken.com/xstocks",
+      "localizador": "FAQ «¿Hay comisiones de trading?»",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:08:20Z",
+      "alcanceYLimites": "Las comisiones del emisor están en el folleto base (no leído); el riesgo dice «All investments in xStocks are subject to fees»",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "puedes abandonar tu posición cuando quieras. En Kraken, elige el xStock de tu cartera y toca «Vender»... También puedes retirar tus xStocks a un monedero compatible y operar con ellos, o canjearlos",
+      "dato": "venta en Kraken 24/5, retirada a wallet propia o reembolso con Backed (con comisión adicional según la página global)",
+      "fuentePrimaria": "https://eu.kraken.com/xstocks",
+      "localizador": "FAQ «¿Puedo revender mis xStocks?» y «¿Puedo retirar xStocks...?»",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:08:20Z",
+      "alcanceYLimites": "Riesgo de liquidez reconocido en la divulgación de riesgos",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "xStocks are debt securities in tokenised format ... Holders of xStocks have no voting rights, dividend or distribution entitlements, or legal claims to the Underlying Security",
+      "dato": "título de deuda; riesgo de crédito de Backed y de PEDSL",
+      "fuentePrimaria": "https://eu.kraken.com/legal/risk-disclosure",
+      "localizador": "Risk Disclosure, apartado xStocks (Updated 27 January 2026)",
+      "fechaDato": "2026-01-27",
+      "consultadoUtc": "2026-11-01T15:10:13Z",
+      "alcanceYLimites": "Conflicto menor: la FAQ dice que los dividendos se reinvierten en más tokens; la divulgación dice que no hay derecho a dividendos",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "estado",
+      "literal": "Kraken ofrece acceso a más de 130 acciones y ETF de EE. UU., incluidos nombres como Tesla (TSLAx), Apple (AAPLx)",
+      "dato": "abierta, 130+ subyacentes",
+      "fuentePrimaria": "https://eu.kraken.com/xstocks",
+      "localizador": "FAQ «¿Qué acciones y ETF están disponibles?»",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:08:20Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Payward Europe Digital Solutions (CY) Limited (\"PEDSL\") provides xStocks in Europe ... regulated by the Cyprus Securities and Exchange Commission (CySEC), licence no. 342/17",
+      "dato": "PEDSL comercializa en la UE desde el 10/09/2025",
+      "fuentePrimaria": "https://blog.kraken.com/product/xstocks/now-available-to-eu-clients",
+      "localizador": "blog Kraken, 10 Sep 2025 (leído vía WebFetch; curl devolvió 429)",
+      "fechaDato": "2025-09-10",
+      "consultadoUtc": "2026-11-01T15:08:30Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "PEDSL-CY con licencia CySEC 342/17, pasaporte a España e inscrita en la CNMV (4474). Emisor Backed Assets (JE) fuera de la UE; su folleto base no se pudo leer (bloqueo geográfico) y no se verificó aquí la notificación a la CNMV."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Página UE activa el 01/11/2026 con más de 130 xStocks."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Minoristas UE tras cuestionario; en el EEE solo con fiat y en kraken.com. Desde 1 €. Sin comisión con USD; con otros activos se aplica comisión de compra instantánea más diferencial."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Riesgo de crédito del emisor y del intermediario, liquidez, tecnología. Discrepancia sobre dividendos entre FAQ y divulgación de riesgos."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": {
+    "titulo": "xStocks en Kraken: acciones de EE. UU. tokenizadas",
+    "categoria": "Acciones y capital privado",
+    "pais": "CY",
+    "tipo": "valor",
+    "coleccion": "secundario",
+    "resumen": "Certificados tokenizados de Backed que replican más de 130 acciones y ETF de EE. UU.; se compran en Kraken UE y pueden retirarse a una wallet propia.",
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Mínimo",
+        "valor": "Desde 1 €"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "CySEC 342/17 · CNMV libre prestación nº 4474"
+      },
+      {
+        "etiqueta": "Comisión",
+        "valor": "0 con USD; con otros activos, compra instantánea + diferencial"
+      },
+      {
+        "etiqueta": "Salida",
+        "valor": "Venta en Kraken 24/5 o retirada a wallet"
+      }
+    ],
+    "avisos": [
+      "No eres accionista: es un título de deuda de Backed Assets (JE).",
+      "Riesgo de crédito del emisor y del intermediario.",
+      "En el EEE requiere superar un cuestionario y operar con fiat.",
+      "Folleto base pendiente de lectura en esta revisión."
+    ],
+    "url": "https://eu.kraken.com/xstocks",
+    "fuentesActuales": [
+      "https://eu.kraken.com/xstocks",
+      "https://eu.kraken.com/legal/risk-disclosure",
+      "https://support.kraken.com/articles/xstocks-availability",
+      "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+      "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474"
+    ],
+    "lugar": "Nicosia · Chipre",
+    "pasos": [
+      "Pasas el cuestionario",
+      "Compras con euros",
+      "Vendes o retiras"
+    ],
+    "concepto": "fichas digitales con siluetas de rascacielos financieros que viajan entre una pantalla y una cartera de mano"
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "1 EUR",
+    "supervisorVerificado": "CySEC licencia 342/17 · CNMV ESI EEE libre prestación nº 4474",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Distribuidor MiFID con pasaporte a España, desde 1 € y token que se puede sacar a una wallet propia.",
+    "porQueNo": "El folleto base de Backed no se pudo leer desde aquí (bloqueo geográfico) y la comisión con euros no está cuantificada en la página."
+  },
+  "decision": "admitir_propuesta",
+  "motivoDecision": "Entidad MiFID verificable en CySEC y CNMV, oferta abierta a minoristas UE con test, mínimo de 1 €, salida explicada y riesgos documentados. Condicionada a contrastar el folleto base y las Final Terms con el expediente de Backed Finance (grupo del radar) antes de publicar.",
+  "bloqueos": [
+    "assets.backed.fi/legal-documentation devuelve «Access Restricted» desde la IP de consulta (EE. UU.); folleto base no leído",
+    "blog.kraken.com devolvió 429 a curl; leído con WebFetch"
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:06:34Z",
+    "finUtc": "2026-11-01T15:10:27Z"
+  }
+}

@@ -1,0 +1,208 @@
+{
+ "location": {
+  "coordinates": {
+   "lat": 48.1804794,
+   "lng": 16.3633806
+  },
+  "countryCode": "AUT",
+  "city": "Wien",
+  "postalCode": "1100",
+  "address": "Sonnleithnergasse 2, Top 247",
+  "staircase": 0,
+  "floor": 7,
+  "door": "247"
+ },
+ "propertyDetails": {
+  "features": [
+   {
+    "id": "93564d4f-5a24-4cbe-afe4-a17f3629a582",
+    "ENG": "Built-in kitchen",
+    "DEU": "Einbauküche",
+    "createdAt": "2022-11-23T09:27:39.858Z",
+    "updatedAt": "2022-11-23T09:27:39.858Z"
+   },
+   {
+    "id": "4c46ff0d-382c-4d6f-bdd3-dc4a6d60cec1",
+    "ENG": "Cellar compartment",
+    "DEU": "Kellerabteil",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   },
+   {
+    "id": "439810f0-173c-4a56-a04f-5e646b82985a",
+    "ENG": "Parquet flooring",
+    "DEU": "Parkettboden",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   },
+   {
+    "id": "4c46ff0d-382c-4d6f-bdd4-dc4a6d60cec1",
+    "ENG": "Elevator",
+    "DEU": "Lift",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   }
+  ],
+  "numberOfRooms": 2.5,
+  "size": 46.57,
+  "buildingYear": "",
+  "buildingCondition": "new",
+  "propertyType": "flat",
+  "heatingType": "district",
+  "carbonEmission": 6.17,
+  "energyEmission": 94.27,
+  "constructionStatus": "stock",
+  "highlights": [],
+  "plots": []
+ },
+ "id": "AT0000A2T4D7",
+ "tokenId": "EikNS1JmZ8MhqarhXbh96BVMtf6NNWbRVHedaKiPZCra",
+ "rentalDetails": {
+  "contractType": "closed",
+  "monthlyDistributionDate": 15,
+  "rentalIncome": {
+   "$numberDecimal": "7497.00"
+  },
+  "rentalSurplus": {
+   "$numberDecimal": "6033.42"
+  },
+  "rentalReturn": {
+   "$numberDecimal": "3.21"
+  },
+  "managementFee": {
+   "$numberDecimal": "420.00"
+  },
+  "propertyManagementFee": 0,
+  "liquidityReserve": {
+   "$numberDecimal": "1043.58"
+  },
+  "additionalManagementCosts": [],
+  "occupancyRate": 98.33,
+  "plannedFirstRentalIncomeDate": "2023-12-14T23:00:00.000Z",
+  "contractEndDate": "2026-11-29T17:00:00.000Z",
+  "contractStartDate": "2023-11-06T17:00:00.000Z"
+ },
+ "investmentDetails": {
+  "stage": "secondary",
+  "sharePrice": {
+   "$numberDecimal": "80.00"
+  },
+  "availableBricks": 0,
+  "totalBricks": 2350,
+  "ISIN": "AT0000A2T4D7",
+  "spv": {
+   "id": "9caa1554-7570-4536-86e7-4bb4b81a67ff",
+   "address": {
+    "street": "Eßlinggasse 2",
+    "postCode": "1010",
+    "city": "Wien",
+    "countryCode": "AUT"
+   },
+   "owner": "Brickwise Real Estate GmbH",
+   "email": "realestate@brickwise.at",
+   "taxNumber": "FN 549469 v",
+   "companyPurpose": "Halten, Verwalten und Vermieten von Immobilien",
+   "companyName": "Brick Sagarmatha Gmbh & Co KG",
+   "partnerId": "brickwise",
+   "dseDocumentSrc": "https://cdn.brickwise.at/bd2e98e8-3861-436f-887a-a8708cb26c24.pdf"
+  },
+  "issueStartDate": "",
+  "issueEndDate": "",
+  "issueFundingFloor": 0,
+  "securityType": "participationRightEquity",
+  "debtComponent": "",
+  "debtStartDate": "",
+  "debtAmount": 0,
+  "debtInterest": 0,
+  "issuingCompany": "",
+  "landRegisterMortgageStatusText": "Grundbücherlich besicherter Genussschein",
+  "appraisalFirm": "Herman Hilft",
+  "expertRating": 4,
+  "landRegisterMortgageDescription": "Die Absicherung erfolgt über ein im Grundbuch eingetragenes Kollektivpfandrecht zugunsten der Inhaber:innen der tokenisierten Wertpapiere in Höhe des Ausgabepreises (Nominale) der tokenisierten Wertpapiere. Der Antrag auf Einverleibung des Pfandrechts im Grundbuch wird von der Emittentin unmittelbar nach Erwerb der Immobilie gestellt. Die Eintragung kann jedoch mehrere Wochen in Anspruch nehmen, wodurch sich unmittelbar nach der Emission ein entsprechender Zeitraum ergeben kann, in dem das Pfandrecht noch nicht im Grundbuch eingetragen ist.",
+  "forumActive": true,
+  "isAllowedDomicile": [],
+  "isAllowedPlz": [],
+  "preparedCashFlowTable": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableStressScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableOptimisticScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  }
+ },
+ "descriptions": {
+  "title": "Wohnung, Sonnleithnergasse 2, Wien 10.",
+  "propertySellingPoints": "Eine möblierte und voll ausgestattete Kochnische komplettieren diese, ideal für die Vermietung und Veranlagung konzipierte Wohnung.",
+  "propertyHighlight": "Central Park und Hyde Park waren gestern - darfs eine Wohnung am Waldmüllerpark sein?",
+  "propertyDetails": "Die Wohnung ist perfekt für Singles oder Pärchen aufgeteilt und besteht aus einem Wohn- und Esszimmer, einem Schlafzimmer, einer Kochnische, einem Badezimmer mit Toilette und einem praktischen Abstellraum. Ein Kellerabteil ist der Wohnung ebenfalls zugeordnet.",
+  "locationDetails": "Die nahegelegene Gudrun- und Quellenstraße bieten eine weitreichende und qualitative hohe Auswahl an Geschäften des täglichen Bedarfs und Gastronomiebetrieben sowie eine Vielzahl an Freizeit- und Erholungsmöglichkeiten, das wären z.B. der Waldmüllerpark sowie einige Grünanlagen, die in wenigen Gehminuten erreichbar sind. \nÖffentlich gelangt man von der Wohnung rasch in das Stadtzentrum mit der Buslinie 14a - Station Pilgramgasse U4 oder Reumannplatz U1. Perfekte Nähe zum Matzleinsdorfer Platz sowie zur Straßenbahnlinie 18.",
+  "districtDetails": "Favoriten, der 10. Bezirk, ist der bevölkerungsreichste Bezirk Wiens und liegt im Süden der Stadt. Der Bezirk zeichnet sich durch die öffentliche Anbindung sowohl an das U-bahnnetz, das S-Bahnnetz, als auch den regionalen und internationalen Bahnverkehr aus. Einige Highlights in der Nähe sind das Amalienbad, der berühmte Eissalon Tichy, das Hotal Schani, die Therme Wien, die Brotfabrik, der Wienerberg Teich und natürlich Gartenschank im Alten Stadl ;)",
+  "cityDetails": "Wien, die Hauptstadt Österreichs, liegt im Osten des Landes an der Donau. Ihr künstlerisches und intellektuelles Erbe wurde von Bewohnern wie Mozart, Beethoven und Sigmund Freud geprägt. Die Stadt ist auch bekannt für ihre kaiserlichen Paläste wie das Schloss Schönbrunn, die Sommerresidenz der Habsburger.",
+  "rentalDetails": "Der aktuelle Mietvertrag wurde zum 30. September 2023 gekündigt. Die Investor:innen haben beschlossen, eine neue Küche einzubauen, was nun umgesetzt wird. Derzeit wird ein Nachmieter gesucht, der ab Dezember einziehen kann.",
+  "propertyQuote": "Ideale Aufteilung für Pärchen sowie Singles und perfekte Anbindung an den öffentlichen Verkehr",
+  "investmentDetails": "Als Investor:in kannst du dich am Kauf der hier beschriebenen Immobilien beteiligen. Dazu wird das Anlageprodukt so strukturiert, dass du einer Zweckgesellschaft Kapital in Form von eigenkapitalähnlichen Genussrechten zur Verfügung stellst.\nWir weisen darauf hin, dass die Geschäftsführung der Emittentin durch die Komplementär-GmbH erfolgt. Aufgrund dessen kann es unter Umständen zu Interessenskonflikten kommen, die direkte oder indirekte wirtschaftliche Vorteile für die Emittentin zur Folge haben können. ",
+  "securityDetails": "",
+  "nomenclature": {
+   "expectedYieldDisclaimer": [
+    {
+     "lang": "deu",
+     "value": "Die erwartete Rendite berechnet sich auf Basis des Netto-Mietüberschusses über die im Mietvertrag vereinbarte Nettomiete und kommt jeweils nur zur Auszahlung, wenn der/die Mieter:in diese bezahlt hat."
+    }
+   ],
+   "liquidityReserve": [],
+   "managementFee": [],
+   "rentalIncome": [],
+   "rentalIncomeTitle": [
+    {
+     "lang": "deu",
+     "value": "Einnahmen p.a."
+    }
+   ],
+   "total": [],
+   "documents": {
+    "energyCertificate": [],
+    "expertProtocol": [],
+    "investmentBasicInformation": [],
+    "investmentConditions": [],
+    "investmentInformation": [],
+    "landRegister": [],
+    "rentalAgreement": [],
+    "utilityReport": [],
+    "plantList": []
+   }
+  }
+ },
+ "images": "[omitido]",
+ "documents": {
+  "investmentBasicInformation": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+  "investmentInformation": "https://cdn.brickwise.at/c372686c-443c-445b-9747-a87cdc8844de.pdf",
+  "investmentConditions": "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+  "rentalAgreement": "https://cdn.brickwise.at/b30d97d1-3827-4e5f-b576-6af596fbe87f.pdf",
+  "expertProtocol": "https://cdn.brickwise.at/cf0e498d-5c35-4307-af97-498a465d9d72.pdf",
+  "landRegister": "https://cdn.brickwise.at/7638a872-ee59-4c36-b653-68f73ea0caf2.pdf",
+  "energyCertificate": "https://cdn.brickwise.at/86eef611-b5d2-4a1e-a373-b5a0aa796591.pdf",
+  "utilityReport": "https://cdn.brickwise.at/38841224-6bbf-4fde-9cbe-ef98dcdc993c.pdf",
+  "additionalDocuments": [],
+  "additionalInvestmentDocuments": [
+   {
+    "name": "Rücktrittsbelehrung",
+    "src": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf",
+    "signed": false
+   }
+  ]
+ },
+ "partnerId": "brickwise",
+ "updatedAt": "2026-10-31T09:59:34.450Z",
+ "type": "realEstate",
+ "isMIFID": true,
+ "onlyPrimary": false,
+ "preorderEnabled": false,
+ "useSerialNumber": false,
+ "investorSettings": {},
+ "loanInformation": {}
+}

@@ -1,0 +1,9 @@
+# Copias binarias y HTML completos de las fuentes: se conservan en disco
+# durante el ciclo, con su SHA-256 en cada inventario-consultas. En Git van
+# los textos extraídos (.txt), las capturas JSON y los expedientes.
+grupos/**/*.pdf
+grupos/**/*.html
+grupos/**/*.htm
+grupos/**/*.png
+grupos/**/*.jpg
+grupos/**/*.bin

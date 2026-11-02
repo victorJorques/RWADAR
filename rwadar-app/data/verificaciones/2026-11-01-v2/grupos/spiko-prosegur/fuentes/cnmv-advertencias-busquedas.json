@@ -1,0 +1,44 @@
+[
+ {
+  "term": "Spiko",
+  "consultadoUtc": "2026-11-01T15:06:53Z",
+  "input": {
+   "id": "ctl00_ContentPrincipal_wNombreEntidad_txtDenominacion",
+   "name": "ctl00$ContentPrincipal$wNombreEntidad$txtDenominacion",
+   "ph": "Denominación de la entidad"
+  },
+  "button": {
+   "id": "ctl00_ContentPrincipal_btnBuscar",
+   "v": "Buscar"
+  },
+  "snippet": "nicio > Advertencias (entidades no autorizadas y otras entidades) > Buscador de entidades advertidas\nListado de entidades advertidas\n\nCriterios de consulta: por tipo No autorizadas, de nombre Spiko.\n\nNo hay datos disponibles.\n\nMapa web\nNota legal\nPolítica de cookies\nProtección de datos\nAccesibilidad\nX\n@CNMV_MEDIOS\nX\n@CNMV_IP\nX\n@CNMV_IFI\nInstagram\nLinkedIn\nYouTube\nRSS"
+ },
+ {
+  "term": "Twenty First Capital",
+  "consultadoUtc": "2026-11-01T15:07:00Z",
+  "input": {
+   "id": "ctl00_ContentPrincipal_wNombreEntidad_txtDenominacion",
+   "name": "ctl00$ContentPrincipal$wNombreEntidad$txtDenominacion",
+   "ph": "Denominación de la entidad"
+  },
+  "button": {
+   "id": "ctl00_ContentPrincipal_btnBuscar",
+   "v": "Buscar"
+  },
+  "snippet": "ncias (entidades no autorizadas y otras entidades) > Buscador de entidades advertidas\nListado de entidades advertidas\n\nCriterios de consulta: por tipo No autorizadas, de nombre Twenty First Capital.\n\nNo hay datos disponibles.\n\nMapa web\nNota legal\nPolítica de cookies\nProtección de datos\nAccesibilidad\nX\n@CNMV_MEDIOS\nX\n@CNMV_IP\nX\n@CNMV_IFI\nInstagram\nLinkedIn\nYouTube\nRSS"
+ },
+ {
+  "term": "Prosegur",
+  "consultadoUtc": "2026-11-01T15:07:43Z",
+  "input": {
+   "id": "ctl00_ContentPrincipal_wNombreEntidad_txtDenominacion",
+   "name": "ctl00$ContentPrincipal$wNombreEntidad$txtDenominacion",
+   "ph": "Denominación de la entidad"
+  },
+  "button": {
+   "id": "ctl00_ContentPrincipal_btnBuscar",
+   "v": "Buscar"
+  },
+  "snippet": "io > Advertencias (entidades no autorizadas y otras entidades) > Buscador de entidades advertidas\nListado de entidades advertidas\n\nCriterios de consulta: por tipo No autorizadas, de nombre Prosegur.\n\nNo hay datos disponibles.\n\nMapa web\nNota legal\nPolítica de cookies\nProtección de datos\nAccesibilidad\nX\n@CNMV_MEDIOS\nX\n@CNMV_IP\nX\n@CNMV_IFI\nInstagram\nLinkedIn\nYouTube\nRSS"
+ }
+]

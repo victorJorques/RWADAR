@@ -1,0 +1,197 @@
+{
+ "location": {
+  "coordinates": {
+   "lat": 47.0606074,
+   "lng": 15.4690202
+  },
+  "countryCode": "AUT",
+  "city": "Graz",
+  "postalCode": "8010",
+  "address": "Plüddemanngasse 101, Top 4",
+  "staircase": 0,
+  "floor": 2,
+  "door": "4"
+ },
+ "propertyDetails": {
+  "features": [
+   {
+    "id": "4c46ff0d-382c-4d6f-bdd3-dc4a6d60cec1",
+    "ENG": "Cellar compartment",
+    "DEU": "Kellerabteil",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   },
+   {
+    "id": "4c46ff0d-382c-4d6f-bdd4-dc4a6d60cec1",
+    "ENG": "Elevator",
+    "DEU": "Lift",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   },
+   {
+    "id": "93564d4f-5a24-4cbe-afe4-a17f3629a582",
+    "ENG": "Built-in kitchen",
+    "DEU": "Einbauküche",
+    "createdAt": "2022-11-23T09:27:39.858Z",
+    "updatedAt": "2022-11-23T09:27:39.858Z"
+   }
+  ],
+  "numberOfRooms": 1.5,
+  "size": 26.18,
+  "buildingYear": "",
+  "propertyType": "flat",
+  "heatingType": "district",
+  "carbonEmission": 2.7,
+  "energyEmission": 36.5,
+  "buildingCondition": "new",
+  "constructionStatus": "stock",
+  "highlights": [],
+  "plots": []
+ },
+ "id": "AT0000A2RAH5",
+ "tokenId": "GupTM6Xko1NUpNXbQZZ5TQNeP2owrfSvund4t2hSZY7a",
+ "rentalDetails": {
+  "contractType": "closed",
+  "contractEndDate": "2021-05-10T22:00:00.000Z",
+  "occupancyRate": 97.2,
+  "monthlyDistributionDate": 15,
+  "rentalIncome": {
+   "$numberDecimal": "3747.72"
+  },
+  "rentalSurplus": {
+   "$numberDecimal": "3007.72"
+  },
+  "rentalReturn": {
+   "$numberDecimal": "3.96"
+  },
+  "managementFee": {
+   "$numberDecimal": "420.00"
+  },
+  "propertyManagementFee": 0,
+  "liquidityReserve": {
+   "$numberDecimal": "320.00"
+  },
+  "additionalManagementCosts": []
+ },
+ "investmentDetails": {
+  "stage": "secondary",
+  "sharePrice": {
+   "$numberDecimal": "76.00"
+  },
+  "availableBricks": 0,
+  "totalBricks": 1000,
+  "expertRating": 5,
+  "ISIN": "AT0000A2RAH5",
+  "spv": {
+   "id": "c36dbb6a-3ad9-451a-b738-937a696de2ac",
+   "address": {
+    "street": "Jakoministrasse 17",
+    "postCode": "8010",
+    "city": "Graz",
+    "countryCode": "AUT"
+   },
+   "owner": "Brickwise Real Estate GmbH",
+   "email": "realestate@brickwise.at",
+   "taxNumber": "FN 538538 v",
+   "companyPurpose": "Vermietung einer Immobilie",
+   "companyName": "Brickone GmbH & Co KG",
+   "partnerId": "brickwise",
+   "dseDocumentSrc": "https://cdn.brickwise.at/0e033e41-fe55-4ff6-b81a-a284088824f6.pdf"
+  },
+  "issueStartDate": "",
+  "issueEndDate": "",
+  "issueFundingFloor": 0,
+  "securityType": "participationRightEquity",
+  "debtComponent": "",
+  "debtStartDate": "",
+  "debtAmount": 0,
+  "debtInterest": 0,
+  "issuingCompany": "",
+  "landRegisterMortgageStatusText": "Grundbücherlich besicherter Genussschein",
+  "landRegisterMortgageDescription": "Die Absicherung erfolgt über ein im Grundbuch eingetragenes Kollektivpfandrecht zugunsten der Inhaber:innen der tokenisierten Wertpapiere in Höhe des Ausgabepreises (Nominale) der tokenisierten Wertpapiere. Der Antrag auf Einverleibung des Pfandrechts im Grundbuch wird von der Emittentin unmittelbar nach Erwerb der Immobilie gestellt. Die Eintragung kann jedoch mehrere Wochen in Anspruch nehmen, wodurch sich unmittelbar nach der Emission ein entsprechender Zeitraum ergeben kann, in dem das Pfandrecht noch nicht im Grundbuch eingetragen ist.",
+  "forumActive": true,
+  "isAllowedDomicile": [],
+  "isAllowedPlz": [],
+  "preparedCashFlowTable": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableStressScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableOptimisticScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  }
+ },
+ "descriptions": {
+  "title": "Wohnung, Plüddemanngasse 101, Graz",
+  "propertySellingPoints": "Der Haupteingang mit Zugang zum Stiegenhaus, mit Liftanlage, erfolgt über eine Eingangstür direkt vom Gehsteig, über welchen man die Garagen Parkplätze im EG, den Fahrradraum und die Müllplätze erreicht. Ein behindertengerechter Aufzug verbindet alle Geschosse barrierefrei.",
+  "propertyHighlight": "In dieser Wohnung lebt Paul. Paul studiert Software Engineering. Paul sieht auch ziemlich gut aus ;)",
+  "propertyDetails": "Die Wohnung befindet sich in einem 2016 errichteten Gebäude, das ideal an die Bedürfnisse von Studierenden angepasst ist. Die Wohnung gliedert sich in einen Vorraum, ein möbliertes Badezimmer mit Dusche und WC, sowie eine gemütliche Wohn- Schlafraum mit angrenzendem Essbereich und einer hochwertigen Tischlerküche.",
+  "locationDetails": "Die Wohnung liegt zentrumsnahe im schönen Wohnbezirk St. Peter in Graz. Graz ist die zweitgrößte Stadt Österreichs, und doch ist das Stadtbild auf engsten Raum sehr abwechslungsreich. Historische Bauten aus dem Mittelalter stehen neben futuristischer Architektur, und was wie ein heilloses Durcheinander klingt, gibt der Stadt ihr ganz besonderes Flair.",
+  "districtDetails": "Graz ist also nicht nur schön anzuschauen, sondern bietet auch Lebensqualität.",
+  "cityDetails": "Zwei Auszeichnungen beschreiben Graz besonders gut: Die UNESCO befand die Altstadt als „den besterhaltenen Stadtkern Mitteleuropas“ und erklärte sie 1999 zum Weltkulturerbe. Österreich erhob Graz 2008 zur „Genusshauptstadt“.",
+  "rentalDetails": "Das aktuelle Mietverhältnis begann am 01.08.2020 und wurde auf die Dauer von 4 Jahren abgeschlossen. Es endet somit am 31.07.2024 ohne dass es einer gesonderten Aufkündigung bedarf.",
+  "investmentDetails": "Als Investor:in kannst du dich am Kauf der hier beschriebenen Immobilien beteiligen. Dazu wird das Anlageprodukt so strukturiert, dass du einer Zweckgesellschaft Kapital in Form von eigenkapitalähnlichen Genussrechten zur Verfügung stellst.Als Investor:in profitierst du von den monatlich ausgeschütteten Mieteinnahmen (abzüglich Kosten und Gebühren). Du kannst deine digitalen Anteile jederzeit flexibel über unseren Marktplatz verkaufen, und so von einer möglichen Wertsteigerung der Immobilie profitieren.\nWir weisen darauf hin, dass die Geschäftsführung der Emittentin durch die Komplementär-GmbH erfolgt. Aufgrund dessen kann es unter Umständen zu Interessenskonflikten kommen, die direkte oder indirekte wirtschaftliche Vorteile für die Emittentin zur Folge haben können.",
+  "propertyQuote": "Die Wohnung ist ideal an die Bedürfnisse von Studierenden angepasst.",
+  "securityDetails": "",
+  "nomenclature": {
+   "expectedYieldDisclaimer": [
+    {
+     "lang": "deu",
+     "value": "Die erwartete Rendite berechnet sich auf Basis des Netto-Mietüberschusses über die im Mietvertrag vereinbarte Nettomiete und kommt jeweils nur zur Auszahlung, wenn der/die Mieter:in diese bezahlt hat."
+    }
+   ],
+   "liquidityReserve": [],
+   "managementFee": [],
+   "rentalIncome": [],
+   "rentalIncomeTitle": [
+    {
+     "lang": "deu",
+     "value": "Einnahmen p.a."
+    }
+   ],
+   "total": [],
+   "documents": {
+    "energyCertificate": [],
+    "expertProtocol": [],
+    "investmentBasicInformation": [],
+    "investmentConditions": [],
+    "investmentInformation": [],
+    "landRegister": [],
+    "rentalAgreement": [],
+    "utilityReport": [],
+    "plantList": []
+   }
+  }
+ },
+ "images": "[omitido]",
+ "documents": {
+  "investmentBasicInformation": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+  "investmentInformation": "https://cdn.brickwise.at/1aec57d6-3aa3-473a-ae33-2a0fbdf4a1c5.pdf",
+  "investmentConditions": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+  "rentalAgreement": "https://cdn.brickwise.at/cc26ff7b-7ca7-4d94-a83f-b9e178b9cce5.pdf",
+  "expertProtocol": "https://cdn.brickwise.at/4ac55fb1-51b4-4ed0-a0a2-e19966ec0662.pdf",
+  "landRegister": "https://cdn.brickwise.at/59219d7f-fbcb-422b-a3ea-6560bfaadfd6.pdf",
+  "utilityReport": "https://cdn.brickwise.at/364b1580-9430-4077-9653-4e2d2c228be3.pdf",
+  "additionalDocuments": [],
+  "additionalInvestmentDocuments": [
+   {
+    "name": "Rücktrittsbelehrung",
+    "src": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf",
+    "signed": false
+   }
+  ]
+ },
+ "partnerId": "brickwise",
+ "updatedAt": "2026-08-28T11:06:27.349Z",
+ "type": "realEstate",
+ "isMIFID": true,
+ "onlyPrimary": false,
+ "preorderEnabled": false,
+ "useSerialNumber": false,
+ "investorSettings": {},
+ "loanInformation": {}
+}

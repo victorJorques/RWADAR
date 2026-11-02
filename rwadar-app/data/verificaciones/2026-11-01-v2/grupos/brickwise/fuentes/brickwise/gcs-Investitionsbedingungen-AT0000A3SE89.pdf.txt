@@ -1,0 +1,1583 @@
+
+
+=== PAGE 1 ===
+
+INVESTITIONSBEDINGUNGEN
+FÜR
+TOKENISIERTE WERTPAPIERE
+ISIN: AT0000A3SE89
+DER 
+BRICK QOGIR GMBH & CO KG
+STAND: 16.02.2026
+
+=== PAGE 2 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 2  / 17
+INHALTSVERZEICHNIS
+PUNKT SEITE
+1. Präambel................................................................................................................3
+2. Wesentliche Merkmale der tokenisierten Wertpapiere ................................................3
+3. Ausgabe, Stückelung und Tokenisierung der Wertpapiere ..........................................4
+4. Zeichnung und Erwerb Tokenisierter Wertpapiere......................................................5
+5. Ausschüttung und Verlustbeteiligung ........................................................................6
+6. Mitsprache bei der Verwaltung der Immobilie............................................................8
+7. Eigenverwaltung der tokenisierten Wertpapiere .......................................................11
+8. Keine Eigentumsrechte, kein Treuhandsverhältnis, keine Gesellschafterrechte, keine
+Nachschusspflicht..................................................................................................11
+9. Squeeze-out..........................................................................................................12
+10. Laufzeit und Beendigung der Wertpapiere, Kündigungsrechte...................................12
+11. Veräusserung der Immobilie...................................................................................14
+12. Bestellung und Löschung des Pfandrechts ...............................................................14
+13. Übertragbarkeit der tokenisierten Wertpapiere ........................................................15
+14. Ausgabe weiterer Wertpapiere und sonstiger Rechte................................................16
+15. Mitteilungen und Nachrichten.................................................................................16
+16. Steuern und sonstige Kosten..................................................................................16
+17. Schlussbestimmungen ...........................................................................................16
+
+=== PAGE 3 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 3  / 17
+1. PRÄAMBEL
+1.1 Die Emittentin beabsichtigt die Ausgabe
+tokenisierter Wertpapiere, welche dem In-
+haber Rechte in Bezug auf Erträge aus der
+Vermietung bzw. Verwertung der Immobilie
+gemäß diesen Investitionsbedingungen
+einräumen.
+1.2 Die Emittentin beabsichtigt, die in Ziffer 2.1
+näher bezeichnete Immobilie zu erwerben.
+Zu diesem Zweck hat die Emittentin der
+Verkäuferin ein rechtsverbindliches Kaufan-
+bot gestellt, welches von der Verkäuferin
+angenommen wurde, wobei der entspre-
+chende Kaufvertrag nach Erreichen der Min-
+destfinanzierungsschwelle abzuschließen ist.
+1.3 Der Erlös der gegenständlichen Emission
+wird ausschließlich für die in Ziffer 2.2 ange-
+führten Zahlungen verwendet.
+1.4 Der Erwerb der Immobilie durch die Emitten-
+tin wird zur Gänze aus dem Erlös der gegen-
+ständlichen Emission finanziert. 
+1.5 Der Erwerb der Immobilie erfolgt unter Ein-
+bindung eines Treuhänders, wobei eine
+Auszahlung des Emissionserlöses durch den
+Treuhänder an den Verkäufer gemäß der
+abzuschließenden Treuhandvereinbarung
+erst erfolgen darf, wenn der Erwerb des
+unbelasteten Eigentums an der Immobilie
+durch die Emittentin sichergestellt ist.
+1.6 Die Forderungen des Investors aus den aus-
+gegebenen Wertpapieren werden in Höhe
+des Ausgabepreises grundbücherlich durch
+ein Pfandrecht besichert. Der Antrag auf
+grundbücherliche Einverleibung des Pfand-
+rechts wird unmittelbar nach Erwerb der
+Immobilie gestellt. Die Eintragung kann
+mehrere Wochen in Anspruch nehmen, wor-
+aus sich nach der Emission ein entsprechen-
+der Zeitraum ergeben kann, in dem das
+Pfandrecht noch nicht im Grundbuch einge-
+tragen ist.
+1.7 Der Unternehmensgegenstand der Emitten-
+tin umfasst folgende Tätigkeit(en): An- und
+Verkauf und die Verwaltung von Immobilien
+sowie die damit im Zusammenhang stehen-
+den Geschäfte. Die Emittentin hat es gegen-
+über dem Investor zu unterlassen, einen
+anderen Unternehmensgegenstand zu
+verfolgen.
+2. WESENTLICHE MERKMALE DER TOKE-
+NISIERTEN WERTPAPIERE
+2.1 Diese tokenisierten Wertpapiere werden
+ausschließlich auf Basis dieser Investitions-
+bedingungen ausgegeben, deren wesentli-
+che Eigenschaften nachstehend zusammen-
+gefasst sind. Soweit die nachfolgend ange-
+führten Begriffe in diesen Investitionsbedin-
+gungen verwendet werden, haben sie fol-
+gende Bedeutung:
+Emittentin: Brick Qogir GmbH & Co KG, FN
+549470w, Marxergasse 24/2/EG, 1030 Wien
+Wertpapiere: Tokenisierte Wertpapiere
+Wertpapierart: Genussscheine
+Tokenbezeichnung/ISIN: AT0000A3SE89
+Art der Tokenisierung: Jeder Token ver-
+mittelt anteilig Miteigentum an einer physi-
+schen Sammelurkunde (Ziffern 3.1-3.2).
+Verwaltung der Token: Eigenverantwort-
+lich durch den Investor (Ziffer 7).
+Marktplatz: Brickwise App
+Blockchain-Netzwerk: Brickprotocol
+Immobilie: B-LNr. 1, Anteil 1/1, EZ 317, KG
+74102 Brückl, 10.-Oktober-Straße 2, 9371
+Brückl.
+Gesamtnennbetrag: EUR 640.400,00
+Stückelung / Gesamtzahl der tokeni-
+sierten Wertpapiere: 6.404 Stück tokeni-
+sierte Wertpapiere
+Ausgabepreis: EUR 100,00
+Ausschüttungen: Monatliche Ausschüt-
+tung des Netto-Mietüberschusses (Ziffer 5.1)
+und einmalige Ausschüttung anlässlich der
+Veräußerung der Immobilie (Ziffer 5.10).
+Geplante erste monatliche Ausschüttung des
+Netto-Mietüberschusses: Im nächsten Ka-
+lendermonat nach dem Ausgabetag.
+Anteil an den Netto-Mieteinnahmen,
+der der Emittentin zusteht: 3%
+Einmalige Liquiditätsrücklage: 0% des
+Gesamtnennbetrags
+Monatliche Liquiditätsrücklage im
+Zeitpunkt der Emission: 1,23% der mo-
+natlichen Netto-Mieteinnahmen (Ziffer 5.5)
+
+=== PAGE 4 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 4  / 17
+Maximale monatliche Liquiditätsrück-
+lage im Zeitpunkt der Emission:  1,5%
+der monatlichen Netto-Mieteinnahmen (Zif-
+fer 5.5)
+Zeichnungsfrist: 3 Monate ab dem Tag der
+Veröffentlichung des Angebots
+Ausgabetag: Der Tag, an dem die Emitten-
+tin erstmals tokenisierte Wertpapiere an
+einen Investor transferiert.
+Mindestausgabemenge: 5.000
+Mindestzeichnungsbetrag: EUR 1.000,00
+Ordentliche Kündigung:  Ja, erstmals
+nach Ablauf der ersten ordentlichen Kündi-
+gungsperiode, sodann nach Ablauf jeder
+weiteren ordentlichen Kündigungsperiode;
+Kündigungsfrist jeweils 30 Tage. Zu den
+Details siehe Ziffer 10.2.
+Erste ordentliche Kündigungsperiode:
+5 Jahre
+Weitere ordentliche
+Kündigungsperiode: 1 Jahr(e)
+Außerordentliche Kündigung: Durch die
+Emittentin gemäß Ziffer 10.3 (insb. bei Kün-
+digung tokenisierter Wertpapiere durch ei-
+nen oder mehrere Investoren); durch den
+Investor gemäß Ziffer 10.4 ff (jedoch keine
+außerordentliche Kündigung bei Wegfall der
+Handelbarkeit der tokenisierten
+Wertpapiere).
+Übertragbarkeit: Ja (siehe zu den Details
+Ziffer 13).
+Investorenpfandrecht (grundbücherli-
+che Sicherheit):  Ja, ein Kollektivpfand-
+recht nach dem Kuratorengesetz 1874 zu
+einem Festbetrag in Höhe des Gesamtnenn-
+betrags zugunsten der Investoren wird nach
+Eintragung des Eigentumsrechts der Emit-
+tentin in das Grundbuch beantragt. Die Ein-
+tragung und Löschung erfolgt durch einen
+gemeinsamen Vertreter gemäß § 15a Kura-
+torengesetz 1874 (siehe zu den Details Ziffer
+12).
+Gemeinsamer Vertreter:  Mag. Florian
+Stiglitz, Rechtsanwalt, Tigergasse 3/20,
+1080 Wien, ausschließlich für die Eintragung
+und Löschung des Investorenpfandrechts.
+Squeeze-out: Ja, sofern ein Investor zu-
+mindest 90% aller tokenisierten Wertpapiere
+hält, kann er von den übrigen Investoren
+den Verkauf ihrer tokenisierten Wertpapiere
+an ihn verlangen.
+2.2 Der Gesamtnennbetrag wird für die in der
+nachstehenden Kalkulation angegeben Posi-
+tionen bzw. Zahlungen verwendet:
+Rückführung Immobilienkredit EUR 0,00
+Kaufpreis EUR 550.000,00
+Summe (= 
+Finanzierungsbetrag)
+EUR 550.000,00
+Grunderwerbsteuer EUR 19.250,00
+Eintragungsgebühr Eigentum 
+Grundbuch
+EUR 6.050,00
+Kosten der Transaktionsab-
+wicklung (Kaufvertragserrich-
+tung, Treuhandabwicklung, 
+Eingabegebühren, Beglaubi-
+gungen, Barauslagen)
+EUR 9.400,80
+Maklerhonorar EUR 0,00
+Vermarktungskosten EUR 26.311,54
+Rechts- und Steuerberatung 
+(Strukturierung)
+EUR 8.770,51
+Einmalige Liquiditätsrücklage EUR 0,00
+Eintragungsgebühr 
+Investorenpfandrecht
+EUR 7.690,00
+Honorar gemeinsamer 
+Vertreter, Eingabegebühren, 
+Barauslagen
+EUR 3.228,80
+Software-Lizenz Brickwise IT 
+Services GmbH
+EUR 9.606,00
+Rundungsbetrag EUR 92,35
+Gesamtnennbetrag EUR 640.400,00
+3. AUSGABE, STÜCKELUNG UND TOKE-
+NISIERUNG DER WERTPAPIERE
+3.1 Die Emittentin begibt die Wertpapiere zum
+Gesamtnennbetrag und mit einer Stückelung
+gemäß diesen Investitionsbedingungen. Die
+Ausgabe erfolgt durch Ausstellung einer
+einzigen physischen Sammelurkunde über
+sämtliche Wertpapiere (die " tokenisierten
+Wertpapiere") durch die Emittentin. Ein
+Anspruch des Investors auf Ausstellung
+einzelner Urkunden besteht nicht.
+3.2 Die von der Emittentin ausgegebenen Wert-
+papiere werden in Form von Tokens digitali-
+siert. Token sind digitale (Wert-)Einheiten in
+Form eines Datensatzes, die aufgrund eines
+Protokolls in einer Blockchain ausschließlich
+von der Emittentin erstellt und an den Inve-
+stor übertragen werden. Die Tokenisierung
+erfolgt durch Einräumung eines Miteigen-
+tumsanteils im Umfang von 1/Gesamtzahl
+der tokenisierten Wertpapiere je Token an
+der Sammelurkunde durch die Emittentin an
+den jeweiligen Token-Inhaber durch Über-
+
+=== PAGE 5 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 5  / 17
+tragung des jeweiligen Tokens in den Ac-
+count des Investors.
+3.3 Um tokenisierte Wertpapiere zu erwerben
+und zu übernehmen, benötigt der Investor
+einen Account am Marktplatz. Sämtliche
+Rechte des Investors gegenüber der Emit-
+tentin knüpfen sich an die rechtmäßig er-
+worbene anteilige Miteigentümerschaft an
+der Sammelurkunde, welche der Emittentin
+ausschließlich durch die Inhaberschaft über
+den jeweiligen Token nachgewiesen wird.
+Der Investor gilt als Inhaber eines Tokens,
+solange sich dieser im Account des Investors
+befindet.
+3.4 Die Emittentin ist berechtigt, die verwendete
+Blockchain-Technologie und/oder das ver-
+wendete Blockchain-Netzwerk jederzeit zu
+wechseln, sofern dadurch für den Investor
+keine nicht bloß unerheblichen rechtlichen
+oder wirtschaftlichen Nachteile entstehen.
+Sollte ein Wechsel der verwendeten Block-
+chain-Technologie und/oder des verwende-
+ten Blockchain-Netzwerks mit nicht bloß
+unerheblichen rechtlichen oder wirtschaftli-
+chen Nachteilen für den Investor verbunden
+sein, so wird die Emittentin den Investor
+hierüber vorab informieren. Ist der Investor
+mit dem Wechsel des Blockchain-Netzwerks
+aufgrund der ihm dadurch entstehenden
+rechtlichen oder wirtschaftlichen Nachteile
+nicht einverstanden, kann er das Rechtsver-
+hältnis zur Emittentin gemäß Ziffer 10.4
+dieser Investitionsbedingungen außerordent-
+lich kündigen. Dieses Recht zur außerordent-
+liche Kündigung besteht jedoch nicht, wenn
+dem Wechsel des Blockchain-Netzwerks im
+Wege einer Abstimmung gemäß den Be-
+stimmungen des Punktes 6.1 die Zustim-
+mung erteilt worden ist.
+4. ZEICHNUNG UND ERWERB TOKENI-
+SIERTER WERTPAPIERE
+4.1 Die Ausgabe von tokenisierten Wertpapieren
+erfolgt im Rahmen mehrerer öffentlicher
+Angebote mit einem Gesamtgegenwert von
+weniger als EUR 2.000.000,00 innerhalb von
+12 Monaten in der Europäischen Union und
+daher unter Inanspruchnahme der Ausnah-
+me von der kapitalmarktrechtlichen
+Prospektpflicht.
+4.2 Jede natürliche und jede juristische Person
+kann am Marktplatz tokenisierte Wertpapiere
+durch Zeichnung und Annahme durch die
+Emittentin erwerben. Die Zeichnung ist ein
+Angebot des Investors zum Kauf und zum
+Erwerb tokenisierter Wertpapiere im ge-
+zeichneten Ausmaß unter Einbeziehung und
+Geltung dieser Investitionsbedingungen. Der
+Investor hat ab dem Zeitpunkt der Zeich-
+nung eine vorvertragliche Bedenkzeit von 4
+(vier) Tagen, während der er seine Zeich-
+nung ohne Begründung und ohne Vertrags-
+strafe jederzeit widerrufen kann. Im Fall des
+wirksamen Widerrufs erhält der Investor den
+bezahlten Investitionsbetrag abzugsfrei
+zurückerstattet.
+4.3 Die tokenisierten Wertpapiere können nur
+während der Zeichnungsfrist gezeichnet
+werden. Die Emittentin behält sich das Recht
+vor, die Zeichnungsfrist um einen Zeitraum
+zu verlängern, dessen Dauer höchstens dem
+dreifachen der ursprünglichen Zeichnungs-
+frist entspricht.
+4.4 Der kleinstmögliche Zeichnungsbetrag ist
+der Mindestzeichnungsbetrag. Die Zeich-
+nung kann nur zum Mindestzeichnungsbe-
+trag oder zu einem über dem Mindestzeich-
+nungsbetrag liegenden Vielfachen des Aus-
+gabepreises je tokenisiertem Wertpapier
+erfolgen.
+4.5 Die Zeichnung erfolgt durch den Klick auf
+den Button „Kauf signieren“ auf der Emissi-
+onsplattform der Emittentin, infolgedessen
+der Zeichnungsbetrag am Zahlungskonto
+des Investors bis zur Ausgabe der tokenisier-
+ten Wertpapiere oder alternativ bis zur Ab-
+lehnung der Zeichnung reserviert und ge-
+sperrt wird.
+4.6 Die rechtswirksame Zeichnung tokenisierter
+Wertpapiere setzt voraus, dass
+(a) sich der Investor am Marktplatz regi-
+striert und einen Account zur eigenver-
+antwortlichen Verwahrung seiner toke-
+nisierten Wertpapiere auf der Block-
+chain erstellt (hat),
+(b) die Person des Investors über den
+Marktplatz durch Erhebung und Prü-
+fung der gesetzlich geforderten Anga-
+ben identifiziert wurde („Know Your
+Customer“) und die notwendigen In-
+formationen und Identifikationsnach-
+weise (z.B. Reisepass oder Personal-
+ausweis) an die Emittentin übermittelt
+wurden; und
+
+=== PAGE 6 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 6  / 17
+(c) der Emittentin die Bestätigung vorliegt,
+dass der jeweilige Zeichnungsbetrag
+vom Zahlungskonto des Investors auf
+das Konto der Emittentin überwiesen
+werden kann.
+4.7 Die Annahme der Zeichnung des Investors
+erfolgt dadurch, dass die Emittentin einen
+Token generiert, welcher einen Miteigen-
+tumsanteil an der Sammelurkunde gemäß
+Ziffern 3.1-3.2 repräsentiert, und die dem
+Investor zustehenden Token auf dessen
+Account transferiert. Die Emittentin kann die
+Zeichnung des Investors jederzeit anneh-
+men, sobald angebotene tokenisierte Wert-
+papiere im Ausmaß der Mindestausgabe-
+menge (oder darüber) gezeichnet wurden
+und zuvor für einen allenfalls verbleibenden
+Kapitalbedarf (das ist die Differenz zwischen
+Gesamtnennbetrag und Mindestausgabe-
+menge) eine anderweitige Finanzierungs-
+quelle sichergestellt wurde, welche die An-
+sprüche des Investors gemäß Ziffer 5  dieser
+Investitionsbedingungen bei ordnungsge-
+mäßem Gang der Geschäfte voraussichtlich
+nicht beeinträchtigt. Die Emittentin wird die
+Zeichnung des Investors jedenfalls ohne
+unnötige Verzögerung annehmen, sobald
+sämtliche angebotenen tokenisierten Wert-
+papiere gezeichnet wurden. 
+4.8 Sobald die Emittentin dem Investor die von
+ihm gezeichneten tokenisierten Wertpapiere
+auf seinen Account übertragen hat, wird der
+Zeichnungsbetrag automatisch vom Zah-
+lungskonto des Investors auf das Konto der
+Emittentin überwiesen.
+4.9 Sofern die Emittentin die Zeichnung nicht
+binnen zwei (2) Wochen nach Zeichnung
+sämtlicher tokenisierten Wertpapiere ange-
+nommen hat, kann der Investor die Zeich-
+nung ohne Angabe von Gründen
+zurückziehen.
+4.10 Die Emittentin ist nicht verpflichtet, die
+Zeichnung des Investors anzunehmen, wenn
+4.10.1 innerhalb der Zeichnungsfrist tokenisierte
+Wertpapiere nicht im Umfang der Mindest-
+ausgabemenge gezeichnet wurden;
+4.10.2 zwar die Mindestausgabemenge erreicht,
+nicht aber sämtliche angebotenen tokenisier-
+ten Wertpapiere gezeichnet wurden, und für
+einen verbleibenden Kapitalbedarf (das ist
+die Differenz zwischen Gesamtnennbetrag
+und Mindestausgabemenge) keine ander-
+weitige Finanzierungsquelle sichergestellt
+wurde, welche die Ansprüche des Investors
+gemäß Ziffer 5  dieser Investitionsbedingun-
+gen bei ordnungsgemäßem Gang der Ge-
+schäfte voraussichtlich nicht beeinträchtigt;
+4.10.3 der Erwerb der tokenisierten Wertpapiere zu
+rechtswidrigen Zwecken erfolgen sollte;
+4.10.4 der Investor nicht zum Erwerb tokenisierter
+Wertpapiere berechtigt ist;
+4.10.5 die Emittentin nicht berechtigt ist, tokenisier-
+te Wertpapiere an den Investor zu
+verkaufen.
+4.11 Sofern nicht tokenisierte Wertpapiere im
+Ausmaß der Mindestausgabemenge inner-
+halb der Zeichnungsfrist gezeichnet wurden
+oder wenn der Investor seine Zeichnung im
+Einklang mit diesen Investitionsbedingungen
+berechtigt zurückzieht, wird der am Zah-
+lungskonto des Investors reservierte Zeich-
+nungsbetrag wieder freigegeben bzw. ein
+bereits bezahlter Zeichnungsbetrag binnen
+10 (zehn) Bankarbeitstagen auf das Zah-
+lungskonto des Investors zurücküberwiesen.
+4.12 Der Investor ist neben der Zahlung des
+Zeichnungsbetrags zu keinen weiteren Zah-
+lungen an die Emittentin verpflichtet, insbe-
+sondere nicht zu Nachschüssen aus oder im
+Zusammenhang mit den tokenisierten
+Wertpapieren.
+5. AUSSCHÜTTUNG UND 
+VERLUSTBETEILIGUNG
+5.1 Der Investor erhält je Kalendermonat vorbe-
+haltlich der Regelungen der Ziffer 5.9 und
+der Ziffer 10 eine Ausschüttung, deren Höhe
+sich am Netto-Mietüberschuss je Kalender-
+monat bemisst und sich wie folgt berechnet:
+Netto-Mietüberschuss je Kalendermonat / (Gesamt-
+zahl der tokenisierten Wertpapiere * Anzahl der vom
+Investor im Zeitpunkt der Ausschüttung gehaltenen 
+Wertpapiere)
+Soweit der Netto-Mietüberschuss negativ ist
+(der " Netto-Mietfehlbetrag"), besteht
+keine Nachschusspflicht für den Investor.
+5.2 Der „Netto-Mietüberschuss je Kalende-
+monat“ berechnet sich wie folgt: Netto-
+Kaltmieteinnahmen je Kalendermonat - 1/12
+der jährlichen Kreditrate inkl. Zinsen für die
+Finanzierung des Restkaufpreises - Kosten
+der Bewirtschaftung der Immobilie je Kalen-
+
+=== PAGE 7 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 7  / 17
+dermonat - Anteil an den Netto-Mieteinnah-
+men, der der Emittentin zusteht - monatliche
+Liquiditätsrücklage.
+5.3 Die " Netto-Kaltmieteinnahmen" der
+Immobilie ist die vom Mieter bezahlte Brut-
+tomiete abzüglich allenfalls anfallender Ne-
+benkosten(-vorauszahlung/-nachzahlung) 
+und gegebenenfalls anfallender Umsatzsteu-
+er. Nebenkosten sind alle nach dem an-
+wendbaren Recht auf den Mieter umlagefä-
+higen Betriebskosten.
+5.4 Die " Kosten der Bewirtschaftung der
+Immobilie" setzen sich zusammen wie
+folgt:
+5.4.1 Hausverwaltungskosten, soweit diese nicht
+von den Mietern der Immobilie getragen
+werden; hierunter fallen insbesondere:
+(a) nach dem Gesetz vom Vermieter zu
+tragende Kosten;
+(b) Kosten der
+Garagenstellplatzverwaltung;
+(c) Kosten für die Miet- und
+Objektverwaltung;
+(d) Kosten der
+Sondereigentumsverwaltung;
+(e) Kosten im Zusammenhang mit Mieter-
+wechseln, insbesondere Maklerkosten;
+(f) Kosten für FF&E (Furniture, Fixture and
+Equipment);
+(g) Grundsteuer;
+(h) Instandhaltungsrücklage;
+(i) Tourismusabgabe;
+5.4.2 Verwaltungsaufwand der Emittentin aus der
+Beauftragung Dritter; hierunter fallen insbe-
+sondere Kosten für Rechts- oder Steuerbera-
+tung; von Dritten in Rechnung gestellte Ko-
+sten und Gebühren im Zusammenhang mit
+der Verwaltung der Emittentin;
+5.4.3 Instandhaltungs- und Instandsetzungsko-
+sten für die Immobilie (soweit nicht fremdfi-
+nanziert) sowie Zins- und Tilgungszahlungen
+im Fall der (teilweisen) Fremdfinanzierung;
+5.4.4 Sofern die Kosten der Bewirtschaftung der
+Immobilie nicht monatlich (sondern z.B.
+quartalsmäßig, halbjährlich oder jährlich)
+anfallen, werden sie gleichmäßig auf jene
+Monate verteilt, für die sie angefallen bzw.
+bestimmt sind.
+5.5 Der Anteil an den Netto-Mieteinnahmen, der
+der Emittentin zusteht (siehe zur Höhe Ziffer
+2.1) ist ein Teil der monatlichen Netto-Miet-
+einnahmen, der bei der Emittentin verbleibt
+und/oder (gegebenenfalls teilweise) für die
+Bezahlung eines monatlichen Entgelts für die
+Beauftragung Dritter verwendet wird, für (i)
+die Besorgung der Sub-Verwaltung der Im-
+mobilie im Einklang mit diesen Investitions-
+bedingungen, den vom Investor beschlosse-
+nen Verwaltungsmaßnahmen, den jeweils
+anwendbaren gesetzlichen Bestimmungen
+und den für die Emittentin rechtsverbindli-
+chen Verträgen sowie (ii) für die Durchfüh-
+rung zwingend notwendiger Maßnahmen
+(z.B. bei Gefahr im Verzug).
+5.6 Die Liquiditätsrücklagen (siehe zur Höhe
+Ziffer 2.2), bestehend aus der einmaligen
+und der monatlichen Liquiditätsrücklage,
+sind eine von der Emittentin für die Deckung
+der Kosten gemäß Ziffer 5.4 sowie für son-
+stige Kosten im Zusammenhang mit der
+Verwaltung der Immobilie gebildete
+Reserve.
+5.7 Die monatliche Ausschüttung wird für jeden
+Kalendermonat gesondert festgestellt und
+an den Investor ausbezahlt. Die Feststellung
+der monatlichen Ausschüttung erfolgt bin-
+nen 3 (drei) Wochen nach Ablauf eines Ka-
+lendermonats. Die Ausschüttung wird binnen
+7 (sieben) Bankarbeitstagen ab Feststellung
+an den Investor zur Auszahlung gebracht. 
+5.8 Der Investor nimmt insoweit am Verlust aus
+der Bewirtschaftung der Immobilie teil, als
+ein etwaiger Netto-Mietfehlbetrag mit Netto-
+Mietüberschüssen der Folgemonate solange
+verrechnet wird, bis der negative Saldo aus-
+geglichen ist (der "Verlustausgleich").
+5.9 Die Jahresendabrechnung und die Feststel-
+lung eines etwaigen zusätzlichen Ausschüt-
+tungsbetrags oder eines etwaigen Netto-
+Mietfehlbetrages aus der Bewirtschaftung
+der Immobilie erfolgt binnen 8 (acht) Wo-
+chen nach Ablauf eines Kalenderjahres. Ein
+etwaiger zusätzlicher Ausschüttungsbetrag,
+welcher sich im Zuge der Jahresendabrech-
+nung der Bewirtschaftung der Immobilie
+ergibt, gelangt binnen 7 (sieben) Bankar-
+beitstagen ab Feststellung an den Investor
+zur Auszahlung. Ein etwaiger Netto-Miet-
+fehlbetrag, welcher sich im Zuge der Jahres-
+endabrechnung der Bewirtschaftung der
+
+=== PAGE 8 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 8  / 17
+Immobilie ergibt, wird gemäß Ziffer 5.8
+ausgeglichen.
+5.10 Im Falle einer Veräußerung der Immobilie
+hat der Investor nach vollständigem Ab-
+schluss der Veräußerung einen " Ausschüt-
+tungsanspruch anlässlich der Veräuße-
+rung der Immobilie ", der sich wie folgt
+berechnet:
+(Verkaufspreis der Immobilie - Kosten der Transak-
+tionsabwicklung - allenfalls anfallende Steuern auf 
+Ebene der Emittentin + vorhandene Liquiditätsrück-
+lage - Verbindlichkeiten aus Finanzierungen in 
+Bezug auf die Immobilie - ein noch nicht gemäß 
+Ziffer 5.8 ausgeglichener Netto-Mietfehlbetrag) / 
+(Gesamtzahl der tokenisierten Wertpapiere * Anzahl
+der vom Investor im Zeitpunkt der Ausschüttung 
+gehaltenen tokenisierten Wertpapiere)
+(a) Die " Kosten der Transaktion-
+abwicklung" sind sämtliche Kosten, 
+die bei der Emittentin im Zusammen-
+hang der Veräußerung der Immobilie
+anfallen, insbesondere: Notargebühren
+(z.B. Beglaubigungen), Treuhandge-
+bühren, Kosten der Rechtsberatung,
+Gerichtsgebühren, Maklerkosten, und
+Kosten des gemeinsamen Vertreters
+gemäß Kuratorengesetz 1874.
+(b) Die "Steuern auf Ebene der Emi-
+tentin" sind sämtliche Steuern, die im 
+Zusammenhang mit der Veräußerung
+der Immobilie anfallen, insb. Ertrag-
+steuern (z.B. Immobilien-Ertragsteuer,
+Körperschaftssteuer) und Verkehrs-
+steuern (z.B. Umsatzsteuer,
+Grunderwerbsteuer)
+(c) Der Ausschüttungsanspruch anlässlich
+der Veräußerung der Immobilie ist
+innerhalb von 2 (zwei) Monaten nach
+Eingang des Veräußerungspreises bei
+der Emittentin zur Auszahlung auf das
+Zahlungskonto des Investors fällig.
+5.11 Eine gegebenenfalls von der Emittentin für
+den Investor abzuführende Abzugssteuer
+(z.B. Kapitalertragsteuer) wird gesondert
+vom jeweiligen Ausschüttungsbetrag gemäß
+Ziffer 5.1 bzw. 5.10 in Abzug gebracht.
+5.12 Abgesehen von den in dieser Ziffer 5  ge-
+nannten Ansprüchen bestehen keine Aus-
+schüttungsansprüche zugunsten des
+Investors.
+6. MITSPRACHE BEI DER VERWALTUNG 
+DER IMMOBILIE
+6.1 Die Emittentin wird für die Durchführung
+folgender Maßnahmen, sofern sie sich auf
+die Immobilie beziehen, die Zustimmung der
+Investoren einholen, wobei die Zustimmung
+mit der einfachen Mehrheit der abgegebenen
+Stimmen der Investoren erteilt wird:
+(a) Beauftragung von Dienstleistern zur
+Instandsetzung (z.B. Renovierung)
+oder Umbau der Immobilie sowie Aus-
+übung der Rechte aus dem
+Vertragsverhältnis;
+(b) dingliche Belastung der Immobilie so-
+wie Änderung und Löschung von dingli-
+chen Lasten;
+(c) Abstimmungen im Zuge der ordentli-
+chen Hausverwaltung;
+(d) Löschung des Kollektivpfandrechts iSd
+Ziffer 12;
+(e) Subverwaltung der Immobilie und Be-
+auftragung von Dienstleistern in diesem
+Zusammenhang (z.B. Handwerker,
+Subverwaltung, Hausverwaltung) sowie
+Ausübung der Rechte aus dem
+Vertragsverhältnis;
+(f) Abschluss und Beendigung von
+Mietverträgen.
+Eine einfache Mehrheit ist erreicht, wenn ein
+Vorschlag mehr als die Hälfte der gültig ab-
+gegebenen Stimmen auf sich vereinigt. Er-
+forderlich ist sohin, dass die Zahl der gülti-
+gen JA-Stimmen die der gültigen NEIN-
+Stimmen um wenigstens eine übertrifft.
+6.2 Beabsichtigt die Emittentin die Veräußerung
+der Immobilie, wird sie hierfür die Zustim-
+mung der Investoren (Einwilligung) einho-
+len. Die Zustimmung der Investoren zur
+Veräußerung kann nur erteilt werden, wenn
+zumindest 90% (neunzig Prozent) der toke-
+nisierten Wertpapiere im Zeitpunkt des Vo-
+tings in einer Hand vereinigt sind - also vom
+selben Investor gehalten werden - und alle
+Investoren der Veräußerung zustimmen. Im
+Übrigen darf die Veräußerung der Immobilie
+jedenfalls erfolgen, sofern
+(a) anders als durch die Veräußerung der
+Immobilie ein Netto-Mietfehlbetrag aus
+der Bewirtschaftung der Immobilie
+nicht innerhalb von 3 (drei) Monaten ab
+
+=== PAGE 9 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 9  / 17
+dem erstmaligen Auftreten beseitigt
+werden kann; oder
+(b) aufgrund der weiteren Bewirtschaftung
+der Immobilie bei der Emittentin min-
+destens ein Insolvenzeröffnungsgrund
+entstehen würde; oder
+(c) die Emittentin gesetzlich oder aufgrund
+rechtskräftiger behördlicher oder ge-
+richtlicher Anordnung zur Veräußerung
+der Immobilie verpflichtet ist; oder
+(d) über das Vermögen der Emittentin ein
+Insolvenzverfahren eröffnet worden ist.
+6.3 Die Emittentin stellt dem Investor auf einer
+permanent verfügbaren Online-Plattform,
+auf die der Investor über den Marktplatz
+zugreifen kann, alle für die Wertentwicklung
+der Immobilie sowie alle für die Beschluss-
+fassungen nach dieser Ziffer 6 notwendigen
+und verfügbaren Unterlagen und Informa-
+tionen (soweit rechtlich notwendig teilweise
+geschwärzt) im Rahmen des ordnungsge-
+mäßen Geschäftsgangs zur Verfügung. Dazu
+zählen insbesondere nachstehende Unterla-
+gen und Informationen:
+(a) Aufstellungen und Abrechnungen über
+die Kosten der Bewirtschaftung der
+Immobilie, sofern diese durch die Emit-
+tentin und aufgrund dieser Investiti-
+onsbedingungen wirtschaftlich durch
+den Investor zu tragen sind;
+(b) Abrechnungen zu Betriebskosten und
+Rücklagen, die von der Emittentin zu
+tragen sind;
+(c) Informationen und vertragliche Unter-
+lagen über den Abschluss, die Ände-
+rung und die Beendigung von Mietver-
+trägen und sonstigen Verträgen im
+Zusammenhang mit der Immobilie;
+(d) Informationen und vertragliche Unter-
+lagen über Finanzierungen;
+(e) Informationen sowie vertragliche und
+behördliche Unterlagen über wertrele-
+vante Veränderungen an der
+Immobilie.
+6.4 Die Abstimmungsergebnisse binden die
+Emittentin lediglich schuldrechtlich (d.h.
+ausschließlich im Verhältnis zu den Investo-
+ren) und nur unter den folgenden
+Voraussetzungen:
+(a) die Kosten für die Durchführung der
+jeweiligen Maßnahmen sind durch die
+bestehende Liquiditätsrücklage gedeckt
+oder zu marktüblichen Konditionen
+finanzierbar und die Tilgungen sowie
+Finanzierungskosten sind jedenfalls
+durch künftige Einnahmen aus der
+Bewirtschaftung der Immobilie ge-
+deckt; und
+(b) die Durchführung der Maßnahme führt
+nicht zur Gefahr eines Netto-Mietfehl-
+betrages aus der Bewirtschaftung der
+Immobilie; und 
+(c) die Durchführung der Maßnahme führt
+nicht zu einem oder mehreren Insol-
+venzeröffnungsgründen; und
+(d) es stehen der Durchführung der Maß-
+nahme keine anderen zwingenden
+rechtlichen oder tatsächlichen Gründe
+entgegen (z.B. Gefahr im Verzug, Un-
+möglichkeit, potenzielle Gesetzwidrig-
+keit, potenzieller Verstoß gegen beste-
+hende Verträge, deren Vertragspartei
+die Emittentin ist).
+6.5 Nach fristgerechtem und formgültigem Ab-
+schluss des Votings und sofern die vorste-
+henden Voraussetzungen vorliegen, wird die
+Emittentin jene Maßnahme bzw. jene Maß-
+nahmen, die eine Zustimmung erhalten ha-
+ben, unverzüglich, spätestens innerhalb von
+10 (zehn) Werktagen, umsetzen und/oder
+die notwendigen Erklärungen abgeben,
+sofern dem nicht die in Ziffer 6.4 genannten
+oder sonst zwingende tatsächliche oder
+rechtliche Gründe entgegenstehen.
+6.6 Eine wirksame Zustimmung kann nur im
+Rahmen einer Abstimmung über die in den
+Ziffern 6.1-6.2 genannten Maßnahmen 
+(„Voting“) erfolgen. Jeder Investor ist zur
+Teilnahme an allen Votings unter den nach-
+folgenden Bedingungen berechtigt. 
+6.7 Das Voting wird ausschließlich über das Vo-
+ting-Verfahren auf der Plattform der Emit-
+tentin, die über den Marktplatz aufgerufen
+werden kann, abgehalten. Dieses Voting-
+Verfahren erfolgt ausschließlich nach den
+folgenden Regeln:
+6.7.1 Steht eine Entscheidung über eine der vor-
+genannten Maßnahmen an, wird die Emit-
+tentin unverzüglich ein Voting abhalten.
+6.7.2 Die Emittentin wird den Investoren eine
+angemessene Anzahl an unter kaufmänni-
+schen Gesichtspunkten unter Wahrung der
+
+=== PAGE 10 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 10 / 17
+Sorgfalt eines ordentlichen Kaufmanns an-
+gemessenen (d.h. geeigneten) Vorschlägen
+zur Abstimmung bereitstellen. Sofern mög-
+lich, werden mindestens drei Vorschläge zur
+Abstimmung bereitgestellt. Die Emittentin ist
+zur Abgabe einer Beschlussempfehlung be-
+rechtigt; eine Pflicht zur Abgabe einer Emp-
+fehlung besteht jedoch nicht.
+6.7.3 Sobald ein Voting gestartet wurde, erhält der
+Investor eine Push-Nachricht über die Platt-
+form der Emittentin, die über den Marktplatz
+aufgerufen werden kann, sowie eine E-Mail
+mit einem entsprechenden Hinweis.
+6.7.4 Votings werden zumindest 48 Stunden vor
+dem Beginn des Voting-Zeitraums angekün-
+digt. Im Fall eines Votings über eine in Ziffer
+6.2 ausdrücklich genannte Maßnahme wird
+das Voting 1 (eine) Woche vor Beginn des
+Voting-Zeitraums angekündigt.
+6.7.5 Der Investor hat ab dem Start des Votings 72
+Stunden Zeit, um am Voting teilzunehmen,
+d.h. die auf die von ihm gehaltenen Token
+entfallenden Stimmen abzugeben.
+6.7.6 Der Investor erhält die Möglichkeit, im Ein-
+klang mit Ziffer 6.12 selbst einen beschluss-
+fähigen Vorschlag zur Abstimmung (der
+" Gegenvorschlag") zu stellen.
+6.7.7 Der Investor kann hinsichtlich der Vorschlä-
+ge, die zur Abstimmung gebracht werden,
+einem bestimmten Vorschlag zustimmen
+("JA-Stimme") oder sich seiner Stimme
+enthalten (" Enthaltung") oder einen be-
+stimmten Vorschlag ablehnen (" NEIN-
+Stimme").
+6.7.8 Der Investor kann seine Entscheidung inner-
+halb des Voting-Zeitraums jederzeit ändern.
+6.7.9 Jedes tokenisierte Wertpapier gewährt dem
+Investor eine Stimme. Hält die Emittentin
+und/oder eine mit ihr im Sinne des § 189a
+Z 8 UGB (direkt oder indirekt, mittelbar oder
+unmittelbar) verbundene juristische und/o-
+der natürliche Person und/oder ein Famili-
+enmitglied einer der vorerwähnten Personen
+oder ein Treuhänder für eine der vorerwähn-
+ten Personen tokenisierte Wertpapiere, so
+steht jeder dieser Personen unabhängig von
+der Anzahl der von Ihnen gehaltenen tokeni-
+sierten Wertpapiere nur eine Stimme zu.
+Werden mehrere tokenisierte Wertpapiere
+von unterschiedlichen Personen für eine der
+vorerwähnten Personen gehalten und sind
+diese daher wirtschaftlich einer der vorer-
+wähnten Personen zuzuordnen, steht dieser
+Person ebenfalls nur eine Stimme zu. Allen
+vorerwähnten Personen zusammen stehen
+jedoch keinesfalls mehr als 50% der gesam-
+ten verfügbaren Stimmen zu. Familienmit-
+glieder im Sinne dieser Ziffer 6.7.9 sind fol-
+gende Personen: Ehepartner, Lebensgefähr-
+ten, Kinder, Verwandte in direkter Linie,
+Geschwister.
+6.8 Eine wirksame Zustimmung zu einer Voting-
+Option gilt als erteilt, wenn die für die betref-
+fende Maßnahme erforderliche Mehrheit der
+gültig abgegebenen JA-Stimmen am Ende
+des Voting-Zeitraums vorliegt. Nicht abge-
+gebene Stimmen und Enthaltungen bleiben
+bei der Feststellung der erforderlichen Mehr-
+heit der abgegebenen Stimmen unberück-
+sichtigt, wobei die Anzahl der abgegebenen
+Stimmen der Summe von JA-Stimmen und
+NEIN-Stimmen je Vorschlag entspricht. Bei
+einem Voting nach Ziffer 6.10 („Stichwahl“)
+gilt dies auch für Stimmenthaltungen. Eine
+nachträgliche Stimmabgabe ist
+ausgeschlossen.
+6.9 Verfügt ein Investor über mehr als 50% aller
+tokenisierten Wertpapiere, so ist für die
+wirksame Zustimmung zu Maßnahmen ge-
+mäß den Ziffern 6.1-6.2, für die dieser Inve-
+stor abgestimmt hat, auch die Zustimmung
+der einfachen Mehrheit all jener Investoren,
+die sich an der Abstimmung beteiligt haben,
+(„Kopfmehrheit“) erforderlich.
+6.10 Stehen bei einem Voting mehr als 2 (zwei)
+Voting-Vorschläge zur Auswahl und erreicht
+keine der Voting-Vorschläge die für eine
+wirksame Zustimmung erforderliche Mehr-
+heit, so wird zwischen den beiden Voting-
+Vorschlägen mit den meisten JA-Stimmen
+nach Maßgabe dieser Ziffer 6  (ausgenom-
+men sind die Ziffern 6.7.6 und 6.12) ein
+neuerliches Voting durchgeführt („-
+Stichwahl“).
+6.11 Wird keine Stimme abgegeben oder herrscht
+(gegebenenfalls nach einer Stichwahl)
+Stimmengleichheit für mehrere Voting-Vor-
+schläge, so gilt jenem Voting-Vorschlag die
+Zustimmung erteilt, der der Beschlussemp-
+fehlung der Emittentin entspricht oder –
+sofern keine Beschlussempfehlung abgege-
+ben ist oder auf die Beschlussempfehlung
+keine oder weniger Stimme entfallen - der
+
+=== PAGE 11 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 11 / 17
+Vorschlag, der von der Emittentin nachträg-
+lich empfohlen wird.
+6.12 Der Investor hat das Recht, über die Platt-
+form der Emittentin, die über den Marktplatz
+aufgerufen werden kann, ein eigenes Voting
+mit eigenen Vorschlägen zu den Maßnahmen
+gemäß den Ziffern 6.1-6.2 nach dem in Ziffer
+6.7 festgelegten Voting-Verfahren und unter
+Beifügung der hierfür erforderlichen Unter-
+lagen im Wege des hierfür vorgesehen elek-
+tronischen Formulars unter Unterbreitung
+eines beschlussfähigen Vorschlags anzusto-
+ßen. Der Investor hat weiters das Recht, im
+Rahmen eines anderweitig stattfindenden
+Votings eigene Vorschläge (" Gegenvo-
+schlag") zur Abstimmung im Rahmen des 
+Votings gemäß Ziffer 6.7 zu unterbreiten.
+Der Investor hat diese Option spätestens 24
+(vierundzwanzig) Stunden vor dem ange-
+kündigten Start des Votings unter Beifügung
+der hierfür erforderlichen Unterlagen im
+Wege des hierfür vorgesehen elektronischen
+Formulars bekanntzugeben. Ein eigenes
+Voting oder ein Gegenvorschlag wird zum
+Voting zugelassen, sobald sie (i) von minde-
+stens 10% der gesamten verfügbaren Stim-
+men sowie (ii) von mindestens 10% sämtli-
+cher Investoren, sofern vorhanden jedoch
+mindestens 2 (zwei) weiteren Investoren,
+mittels Voting unterstützt wird. 
+6.13 Zur Abstimmung der Investoren untereinan-
+der sowie zur Kontaktaufnahme und Kom-
+munikation mit der Emittentin stellt die Emit-
+tentin den Investoren über die Plattform der
+Emittentin, die über den Marktplatz aufgeru-
+fen werden kann, dauerhaft (unterbre-
+chungslos) ein gemeinsames elektronisches,
+nicht moderiertes Forum bereit, welchem
+nur Investoren beitreten und sich frei zu
+allen gewünschten Themen per elektroni-
+scher Textnachricht äußern sowie auch Da-
+teien (z.B. Worddokumente, pdf -Dateien)
+bereitstellen können. Eine jede derartige
+Kommunikation ist für sämtliche anderen
+Investoren sichtbar. Überdies können die
+Investoren in diesem Forum im Rahmen
+eines elektronischen Abstimmungsprozesses
+ihre Zustimmung, Ablehnung oder Stimm-
+enthaltung zu einem von einem Investor
+angestoßenen Voting oder zu einem Gegen-
+vorschlag abgeben.
+7. EIGENVERWALTUNG DER TOKENI-
+SIERTEN WERTPAPIERE
+7.1 Die Token, welche einen Miteigentumsanteil
+an der Sammelurkunde gemäß Ziffern 3.1-
+3.2 repräsentieren, sind auf dem Blockchain-
+Netzwerk gespeichert. Der Investor verwal-
+tet diese selbständig und eigenverantwort-
+lich und kann nur über sie verfügen, wenn er
+vollumfänglichen Zugang zu seinem Account
+hat. Ein solcher Account ist zwingend erfor-
+derlich, um die tokenisierten Wertpapiere zu
+halten und zu handeln sowie um Auszahlun-
+gen auf die tokenisierten Wertpapiere zu
+erhalten. Weder die Emittentin noch andere
+Personen übernehmen die Verwaltung oder
+Verwahrung der tokenisierten Wertpapiere.
+8. KEINE EIGENTUMSRECHTE, KEIN 
+TREUHANDSVERHÄLTNIS, KEINE GE-
+SELLSCHAFTERRECHTE, KEINE 
+NACHSCHUSSPFLICHT
+8.1 Diese Investitionsbedingungen gewähren
+dem Investor keine unmittelbaren und/oder
+- mit Ausnahme der zu bestellenden Sicher-
+heit - keine dinglichen Rechte an der Immo-
+bilie, insbesondere keine Eigentums- und
+eigentumsähnlichen Rechte. Die Emittentin
+ist des Weiteren nicht Treuhänderin hinsicht-
+lich der Immobilie. Der Investor hat nicht das
+Recht, anlässlich der Veräußerung der Im-
+mobilie oder der Kündigung der Wertpapiere
+oder aus irgendeinem sonstigen Anlass die
+Immobilie, einen Miteigentumsanteil an der
+Immobilie oder sonstige Anteile an der Im-
+mobilie zu erhalten oder sonstige unmittel-
+bare oder dingliche Rechte an der Immobilie
+zu begründen, mit Ausnahme der Sicherheit.
+8.2 Diese Investitionsbedingungen begründen
+keine Gesellschafterrechte und/oder kein
+Gesellschaftsverhältnis und kein Recht an
+der Mitwirkung an der Geschäftsführung der
+Emittentin. Dies gilt auch für etwaige
+Rechtsnachfolger der Emittentin. Die Inve-
+storen sind nicht dazu berechtigt, an Be-
+schlussfassungen der Anteilseigner der Emit-
+tentin in irgendeiner Form teilzunehmen
+und/oder mitzuwirken und/oder über Be-
+schlüsse informiert zu werden. Der Investor
+hat gegenüber der Geschäftsführung keine
+Weisungsrechte, Einsichtsrechte in die Ge-
+schäftsbücher der Emittentin oder gesell-
+schaftsrechtlichen Informations- oder
+Stimmrechte.
+
+=== PAGE 12 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 12 / 17
+8.3 Der Investor hat kein Recht auf Umwandlung
+seiner tokenisierten Wertpapiere in einen
+Gesellschaftsanteil an der Emittentin.
+8.4 Es ist nicht ausgeschlossen, dass die Emit-
+tentin ihre Firma ändert, in eine andere Ge-
+sellschaftsform umgewandelt wird oder dass
+die Gesellschaftsanteile an der Gesellschaft
+übertragen werden; solche Maßnahmen
+haben keine Auswirkungen auf den Bestand
+der Wertpapiere. Der Investor hat diesbe-
+züglich keine Informations- oder Mitbestim-
+mungsrechte. Die Regelungen der Sätze 1
+und 2 gelten sinngemäß für den Fall, dass
+die Emittentin an einer Strukturänderung im
+Sinne des Umgründungssteuergesetzes
+beteiligt ist.
+8.5 Den Investor trifft keine Nachschusspflicht
+im Hinblick auf Verbindlichkeiten der Emit-
+tentin aus oder im Zusammenhang mit dem
+Erwerb, der Verwaltung, der Bewirtschaf-
+tung oder der Veräußerung der Immobilie.
+Ein Verlustausgleich stellt keinen Nach-
+schuss im Sinne des Satz 1 dar.
+9. SQUEEZE-OUT
+9.1 Sofern ein Investor 90,00% oder mehr aller
+ausgegebenen tokenisierten Wertpapiere
+hält (der „ Hauptinvestor“), kann der
+Hauptinvestor ein Squeeze-out-Verfahren
+einleiten. Die Einleitung des Squeeze-out-
+Verfahrens kann auch über die Plattform der
+Emittentin, die über den Marktplatz aufgeru-
+fen werden kann, durch entsprechende Be-
+tätigung des Squeeze-out-Buttons erfolgen,
+welcher einem Investor im Falle des Vorlie-
+gens der notwendigen Voraussetzungen
+angezeigt wird. Der Hauptinvestor hat
+dem/den verbleibenden Investor/en einen
+Kaufpreis anzubieten, der zumindest 10%
+(zehn Prozent) über dem gewichteten Mittel
+aus dem Durchschnittspreis der betreffen-
+den tokenisierten Wertpapiere der letzten 12
+(zwölf) Monate und dem Durchschnittspreis
+der betreffenden tokenisierten Wertpapiere
+der letzten 90 (neunzig) Tage liegt (wenn die
+betreffenden tokenisierten Wertpapiere
+innerhalb der letzten 90 (neunzig) Tage nicht
+gehandelt wurden, ist nur Durchschnittspreis
+der letzten 12 (zwölf) Monate heranzuzie-
+hen). 
+9.2 Sofern der Hauptinvestor oder zumindest
+einer der verbleibenden Investoren mit der
+Berechnung des Verkaufspreises nach dieser
+Methode nicht einverstanden ist, kann er auf
+eigene Kosten ein Gutachten eines unab-
+hängigen Sachverständigen oder einer un-
+abhängigen Sachverständigengesellschaft
+über den Verkehrswert der zu verkaufenden
+tokenisierten Wertpapiere einholen. Der/Die
+Sachverständige ist durch den Landespräsi-
+denten der Kammer der Steuerberater und
+Wirtschaftsprüfer für Wien zu bestellen. Hat
+der Hauptinvestor ein solches  Gutachten
+eingeholt, so hat er seinem Kaufangebot den
+vom Sachverständigen ermittelten Ver-
+kehrswert seiner tokenisierten Wertpapiere
+zugrunde zu legen. Hat/haben ein/mehrere
+verbleibende/r Investoren ein solches Gut-
+achten eingeholt, so hat der Hauptinvestor
+nur gegenüber diesem/diesen Investor/en
+seinem Kaufangebot den auf diese Weise
+ermittelten Verkehrswert zugrunde zu legen.
+Die verbleibenden Investoren sind verpflich-
+tet, dieses Kaufangebot des Hauptinvestors
+anzunehmen. Die Kosten des Squeeze-out-
+Verfahrens trägt in jedem Fall zur Gänze der
+Hauptinvestor.
+10. LAUFZEIT UND BEENDIGUNG DER 
+WERTPAPIERE, KÜNDIGUNGSRECHTE
+10.1 Die Laufzeit der tokenisierten Wertpapiere
+ist unbestimmt. Die tokenisierten Wertpapie-
+re haben keinen Endfälligkeitstag.
+10.2 Sowohl der Investor als auch die Emittentin
+sind berechtigt, die tokenisierten Wertpapie-
+re erstmalig nach Ablauf der ersten ordentli-
+chen Kündigungsperiode gerechnet ab dem
+Ausgabetag und sodann nach Ablauf jeder
+weiteren ordentlichen Kündigungsperiode
+ordentlich zu kündigen, wobei die Emittentin
+nur alle, jedoch nicht einzelne oder mehrere,
+begebenen Wertpapiere kündigen kann. Die
+Kündigungsfrist beträgt 30 (dreißig) Tage ab
+dem Ablauf einer ordentlichen Kündigung-
+periode. Im Fall einer ordentlichen Kündi-
+gung durch die Emittentin ist diese zur Ver-
+äußerung der Immobilie verpflichtet.
+10.3 Das Recht der Emittentin zur außerordentli-
+chen Kündigung aus wichtigem Grund bleibt
+von den Regelungen der Ziffer 10.2 unbe-
+rührt. Ein wichtiger Grund, der die Emittentin
+zur außerordentlichen Kündigung berechtigt,
+ist insbesondere dann gegeben, wenn
+
+=== PAGE 13 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 13 / 17
+(a) ein Investor ein oder mehrere tokeni-
+sierte(s) Wertpapier(e) rechtswirksam,
+also entweder im Einklang mit diesen
+Investitionsbedingungen oder sonst auf
+Grundlage der anwendbaren gesetzli-
+chen Bestimmungen, kündigt und die-
+se(s) tokenisierte(n) Wertpapier(e)
+nicht nach den Bestimmungen der Zif-
+fern 10.5-10.7 (oder anderweitig) ver-
+kauft werden, oder 
+(b) wenn der Vertrag über den Erwerb der
+Immobilie - gleich aus welchem Grund
+- rückabgewickelt wird. 
+Im Fall (a) kann die Emittentin das Rechts-
+verhältnis zum Investor unter Einhaltung
+einer Kündigungsfrist von 6 (sechs) Monaten
+zum 31.12. eines jeden Kalenderjahres
+(Kündigungstermin) außerordentlich kündi-
+gen. Die Emittentin ist im Fall einer Kündi-
+gung infolge des Falles (a) zur Veräußerung
+der Immobilie verpflichtet. Der Investor hat
+diesfalls einen Anspruch gemäß Ziffer 10.8.
+Im Fall (b) kann die Emittentin die Kündi-
+gung ohne Einhaltung einer Frist vorneh-
+men. Diesfalls gilt Ziffer 10.8 nicht, sondern
+erhält der Investor den bezahlten Ausgabe-
+preis abzüglich allenfalls angefallener
+Rückabwicklungskosten.
+10.4 Das Recht des Investors zur Erklärung der
+außerordentlichen Kündigung des Rechts-
+verhältnisses zur Emittentin bleibt hiervon
+unberührt. Ein wichtiger Grund, der den
+Investor jedenfalls zur Erklärung der außer-
+ordentlichen Kündigung berechtigt, ist der
+Wechsel des Blockchain-Netzwerks (Ziffer
+3.4), wenn dem Investor dadurch nicht bloß
+unerhebliche rechtliche oder wirtschaftliche
+Nachteile entstanden sind und keine Zu-
+stimmung gemäß dem Verfahren nach Punkt
+6.1 erteilt worden ist. In einem solchen Fall
+kann der Investor tokenisierte Wertpapiere
+unter Einhaltung einer Kündigungsfrist von
+30 (dreißig) Tagen ab dem Tag der Durch-
+führung des Wechsels der Blockchain-Tech-
+nologie und/oder des Blockchain-Netzwerks
+außerordentlich kündigen. Für alle anderen
+wichtigen Gründe gilt, dass der Investor die
+außerordentliche Kündigung erst wirksam
+erklären kann, nachdem er die Emittentin zur
+Erfüllung der aus seiner Sicht verletzten
+Verpflichtung unter Einräumung einer Frist
+von zumindest 14 (vierzehn) Tagen aufge-
+fordert und die Emittentin die Verletzung
+ihrer Verpflichtung nicht binnen der gesetz-
+ten Frist eingestellt hat. 
+10.5 Gleichzeitig mit der Erklärung seiner ordent-
+lichen Kündigung (Ziffer 10.2) bzw. der au-
+ßerordentlichen Kündigung (Ziffer 10.4) hat
+der Investor die von der Kündigung erfass-
+ten tokenisierten Wertpapiere am Marktplatz
+sowie auf jedem anderen von der Emittentin
+namhaft gemachten Marktplatz, der den
+Handel mit den betreffenden tokenisierten
+Wertpapieren ermöglicht, und jedem von der
+Emittentin namhaft gemachten Dritten zum
+Verkauf Zug-um-Zug gegen Zahlung des
+Kaufpreises anzubieten.
+10.6 Der beim Verkauf gemäß Ziffer 10.5 angebo-
+tene Verkaufspreis darf nicht über dem ge-
+wichteten Mittel aus dem Durchschnittspreis
+der betreffenden tokenisierten Wertpapiere
+der letzten 12 (zwölf) Monate und dem
+Durchschnittspreis der betreffenden tokeni-
+sierten Wertpapiere der letzten 90 (neunzig)
+Tage liegen (wenn die betreffenden tokeni-
+sierten Wertpapiere innerhalb der letzten 90
+(neunzig) Tage nicht gehandelt wurden, ist
+nur Durchschnittspreis der letzten 12 (zwölf)
+Monate heranzuziehen). Sofern der Investor
+mit der Berechnung des Verkaufspreises
+nach dieser Methode nicht einverstanden ist,
+kann er auf eigene Kosten ein Gutachten
+eines unabhängigen Sachverständigen im
+Sinne der Ziffer 9.2 über den Verkehrswert
+der zu verkaufenden tokenisierten Wertpa-
+piere einholen. Diesfalls hat der Investor
+seinem Verkaufsangebot den vom Sachver-
+ständigen ermittelten Verkehrswert seiner
+tokenisierten Wertpapiere zugrunde zu
+legen.
+10.7 Soweit die betreffenden tokenisierten Wert-
+papiere auf Basis eines Angebots iSd Ziffer
+10.5 verkauft werden, ist die Erklärung der
+ordentlichen Kündigung (Ziffer 10.2) bzw.
+der außerordentlichen Kündigung (Ziffer
+10.4) des Investors unwirksam und die Kün-
+digung wird nicht wirksam. Soweit die be-
+treffenden tokenisierten Wertpapiere nicht
+innerhalb eines Zeitraums von 3 (drei) Mona-
+ten ab dem Angebot der jeweiligen tokeni-
+sierten Wertpapiere zu einem Preis im Ein-
+klang mit Ziffer 10.6 verkauft werden und die
+Emittentin die tokenisierten Wertpapiere
+nicht selbst kündigt und die Veräußerung der
+Immobilie veranlasst (Ziffer 10.3(a)), wird
+die Kündigung mit Ablauf des letzten Tages
+des vorerwähnten Zeitraums von 3 (drei
+Monaten) wirksam und erhält der Investor
+von der Emittentin Zug-um-Zug gegen Her-
+ausgabe der betreffenden tokenisierten
+Wertpapiere ein Beendigungsguthaben,
+
+=== PAGE 14 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 14 / 17
+welches sich nach der in Ziffer 10.6 darge-
+stellten Methode errechnet. Dieses Beendi-
+gungsguthaben ist im Falle einer ordentli-
+chen Kündigung innerhalb von 4 (vier) Mo-
+naten nach dem Kündigungstermin bzw. im
+Falle einer außerordentlichen Kündigung
+innerhalb von 4 (vier) Monaten nach Erklä-
+rung der Kündigungserklärung durch den
+Investor zur Zahlung auf das vom Investor
+zuletzt bekanntgegebene Bankkonto fällig.
+10.8 Sofern (auch) die Emittentin die tokenisier-
+ten Wertpapiere (auch wenn zum gleichen
+Stichtag wie ein Investor) ordentlich (Ziffer
+10.2) oder außerordentlich (Ziffer 10.3)
+kündigt, steht dem Investor eine Ausschüt-
+tungsanspruch gemäß Ziffer 5.10 zu.
+10.9 Ungeachtet des Anlasses und des Grundes
+für die Kündigung enden die Wertpapiere
+erst, sobald die Immobilie verkauft und
+sämtliche Ansprüche des Investors aus die-
+sen Investitionsbedingungen beglichen wor-
+den sind.
+11. VERÄUSSERUNG DER IMMOBILIE
+11.1 Bei Veräußerung der Immobilie hat die Emit-
+tentin mit der Sorgfalt eines ordentlichen
+Geschäftsmannes und im Interesse der In-
+vestoren zu agieren. Sie hat die Veräußerung
+insbesondere ohne unnötige Verzögerung
+und mit dem Bestreben, einen marktkonfor-
+men Verkaufserlös zu erwirtschaften, voran-
+zutreiben. 
+11.2 Sofern die gesamte Immobilie verkauft wird,
+hat die Emittentin vor dem Verkauf ein Ver-
+kehrswertgutachten eines gerichtlich beeide-
+ten Immobiliensachverständigen einzuholen.
+Die Emittentin ist verpflichtet, innerhalb der
+ersten sechs Monate ab Übermittlung des
+Verkehrswertgutachtens die Liegenschaft
+nicht zu einem Preis zu verkaufen, der 100%
+des Verkehrswertes der Liegenschaft gemäß
+dem Verkehrswertgutachten unterschreitet.
+Diese Schwelle verringert sich nach dem
+sechsten Monat ab Erhalt des Verkehrswert-
+gutachtens um jeweils fünf Prozentpunkte
+monatlich, dies bis zu einer Reduktion von
+maximal 30% des Verkehrswertes. Sofern
+die Emittentin ein anderes Verkaufsverfah-
+ren als vorteilhafter für die Investoren ein-
+schätzt, hat sie die Investoren unter Angabe
+einer verständlichen Begründung nach den
+Bestimmungen der Ziffer 6 über ihren Vor-
+schlag abstimmen zu lassen.
+11.3 Die Emittentin hat den Investoren die Mög-
+lichkeit einzuräumen, an dem vorerwähnten
+Verkaufsverfahren teilzunehmen, und ihnen
+die Modalitäten des Verkaufsverfahren sowie
+die Möglichkeit der Teilnahme über das Fo-
+rum gemäß Ziffer 6.13 oder per E-Mail 14
+(vierzehn) Tage vor dessen Einleitung zu
+kommunizieren.
+11.4 Die Emittentin hat dafür Sorge zu tragen,
+dass die Kosten der Veräußerung nicht über
+dem marktüblichen Ausmaß liegen.
+11.5 Ein Verkauf der Immobilie (A) an Personen,
+die in Bezug (i) auf ein Mitglied des Lei-
+tungsorgan der Emittentin oder (ii) einen
+(direkt oder indirekt, mittelbar oder unmit-
+telbar) an der Emittentin beteiligten Gesell-
+schafter als nahestehende Personen iSd § 32
+IO zu qualifizieren sind, oder (B) an mit der
+Emittentin gemäß § 189a Z 8 UGB (direkt
+oder indirekt, mittelbar oder unmittelbar)
+verbundene juristische und/oder natürliche
+Person und/oder ein Familienmitglied einer
+der vorerwähnten Personen darf nur nach
+vorheriger Einholung eines Verkehrswert-
+gutachtens eines gemäß DIN ISO/IEC 17024
+(oder einer vergleichbaren Norm) zertifizier-
+ten Immobilien-Sachverständigen, welches
+den Investoren zumindest 14 (vierzehn)
+Tage vor Annahme des Kaufanbots über das
+Forum gemäß Ziffer 6.13 oder per E-Mail zur
+Verfügung zu stellen ist, erfolgen. Die Emit-
+tentin hat mit einer Person gemäß (A) bzw.
+(B) zu vereinbaren, dass diese jedenfalls die
+Kosten der Erstellung des Verkehrswertgut-
+achtens trägt, gleichgültig ob der Verkauf an
+diese Person stattfindet oder nicht.
+12. BESTELLUNG UND LÖSCHUNG DES 
+PFANDRECHTS
+12.1 Die Emittentin hat zugunsten der Investoren
+ein Festbetragspfandrecht in Höhe des Ge-
+samtnennbetrags gemäß § 15 Teilschuldver-
+schreibungskuratorenG RGBl. Nr. 49/1874
+idF BGBl 1991/10 zur Sicherstellung der
+Forderungen und Ansprüche der Investoren
+aufgrund dieser Investitionsbedingungen
+(Ausschüttung eines Netto-Mietüberschuss
+je Kalendermonat gemäß Ziffer 5.1, Aus-
+schüttung anlässlich der Veräußerung der
+Immobilie gemäß Ziffer 5.10), an der Immo-
+
+=== PAGE 15 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 15 / 17
+bilie bestellt. Aufgrund dieses Pfandrechts ist
+jeder Investor im Hinblick auf seine Forde-
+rungen und Ansprüche aufgrund dieser In-
+vestitionsbedingungen je tokenisiertem
+Wertpapier in Höhe des Ausgabebetrags
+gesichert.
+12.2 Die Emittentin hat den gemeinsamen Vertre-
+ter unwiderruflich damit beauftragt, unver-
+züglich nach Eintragung des Eigentums-
+rechts der Emittentin an der Immobilie die
+Einverleibung dieses Pfandrechts zu
+bewirken.
+12.3 Weiters hat die Emittentin den gemeinsamen
+Vertreter gemäß § 15a Abs 1 Teilschuldver-
+schreibungskuratorenG RGBl. Nr. 49/1874
+idF BGBl 1991/10 zum gemeinsamen Vertre-
+ter der Genussscheininhaber bestellt und
+diesem gemäß § 15 a Abs 2 Teilschuldver-
+schreibungskuratorenG RGBl. Nr. 49/1874
+idF BGBl 1991/10 ausschließlich die nachfol-
+genden Befugnisse, Aufträge und Verpflich-
+tungen übertragen:
+(a) Befugnis zur Zustimmung über die
+gänzliche oder teilweise Löschung des
+Pfandrechts an der Immobilie unter den
+in Ziffer 12.4 genannten Bedingungen;
+(b) Befugnis zur Empfangnahme der
+grundbücherlichen Beschlüsse, insbe-
+sondere hinsichtlich der Einverleibung,
+Löschung, Freilassung der als Hypothek
+bestellten Liegenschaften bzw.
+Liegenschafts(an)teile.
+12.4 Die Investoren bevollmächtigen und beauf-
+tragen den gemeinsamen Vertreter hiermit
+ausdrücklich und unwiderruflich, nach Be-
+friedigung der mit diesem Pfandrecht besi-
+cherten Forderungen und Ansprüche der
+Investoren gemäß Ziffer 5.1 (Ausschüttung
+eines Netto-Mietüberschuss je Kalendermo-
+nat) und gemäß Ziffer 5.10 (Ausschüttung
+anlässlich der Veräußerung der Immobilie)
+dieser Investitionsbedingungen eine grund-
+buchstaugliche Erklärung über das Erlöschen
+des Pfandrechts in deren Namen zu errich-
+ten, in der geforderten Form für diese zu
+unterfertigen und mit dieser die Einverlei-
+bung der Löschung des Pfandrechtes beim
+zuständigen Grundbuchsgericht zu
+beantragen.
+12.5 Die Emittentin hat sich gegenüber dem ge-
+meinsamen Vertreter verpflichtet, diesem
+sämtliche Dokumente, wie insbesondere die
+für die Einverleibung dieses Pfandrechtes
+notwenige grundbuchstaugliche Pfandbestel-
+lungsurkunde sowie die für die Einverleibung
+der Löschung allenfalls gemäß § 15 Teil-
+schuldverschreibungskuratorenG RGBl. Nr.
+49/1874 idF BGBl 1991/10 geforderten Ver-
+zeichnisse zur Verfügung zu stellen und
+sämtliche notwenigen und zweckmäßigen
+Handlungen zu setzen, welche allenfalls zur
+Erfüllung der in dieser Ziffer 12 genannten
+Befugnisse, Aufträge und Verpflichtungen
+des gemeinsamen Vertreters erforderlich
+sind.
+12.6 Über die in dieser Ziffer 12 genannten Be-
+fugnisse, Aufträge und Verpflichtungen hin-
+aus treffen den gemeinsamen Vertreter
+keine weiteren wie immer gearteten Ver-
+pflichtungen. Der gemeinsame Vertreter ist
+insbesondere nicht dazu berechtigt oder
+verpflichtet, sonstige Rechte und Pflichten
+der Investoren aus diesen Investitionsbedin-
+gungen wahrzunehmen, wie z.B. die Verwer-
+tung der Immobilie zugunsten der Investo-
+ren oder die Entgegennahme, Auszahlung
+oder treuhänderische Verwahrung von Geld-
+beträgen. Der gemeinsame Vertreter haftet
+den Investoren ausschließlich für die Erfül-
+lung der in dieser Ziffer 12 genannten Pflich-
+ten, sofern diesem die dafür erforderlichen
+Voraussetzungen, insbesondere die dafür
+notwenigen Dokumente, vorliegen. 
+13. ÜBERTRAGBARKEIT DER TOKENI-
+SIERTEN WERTPAPIERE
+13.1 Jeder Investor kann einzelne oder alle toke-
+nisierten Wertpapiere mit Zustimmung der
+Emittentin veräußern. Die Emittentin erteilt
+unter folgenden Voraussetzungen vorab die
+Zustimmung zu einer Veräußerung der toke-
+nisierten Wertpapiere:
+13.1.1 die Übertragung erfolgt nicht zu einem ge-
+setz- oder anderweitig rechtswidrigen Zweck
+oder Motiv; und
+13.1.2 der Investor erfüllt die unter Ziffer 4.6 lit a
+bis c angeführten Voraussetzungen; und
+13.1.3 der beabsichtigte Transfer wird am Markt-
+platz bekannt gemacht.
+13.2 Die Übertragung des durch den jeweiligen
+Token repräsentierten Miteigentumsanteils
+an der Sammelurkunde gemäß Ziffern 3.1-
+
+=== PAGE 16 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 16 / 17
+3.2 erfolgt durch wirkliche Übergabe: Mit
+Durchführung der Übertragung des jeweili-
+gen Token weist der veräußernde Investor
+die Emittentin an, den durch den jeweiligen
+Token repräsentierten Miteigentumsanteil an
+der Sammelurkunde gemäß Ziffern 3.1-3.2
+ab mit Abschluss des Übertragungsvorgangs
+für den übernehmenden Investor zu besitzen
+(wirkliche Übergabe durch Besitzanwei-
+sung). Der Token gilt mit der Änderung der
+Zuordnung vom Verkäufer an den Käufer im
+Blockchain-Netzwerk als übertragen.
+14. AUSGABE WEITERER WERTPAPIERE 
+UND SONSTIGER RECHTE
+14.1 Hinsichtlich der Immobilie wird die Emitten-
+tin keine weiteren tokenisierten Wertpapiere
+oder andere Wertpapiere, Veranlagungen
+oder sonstige Beteiligungsinstrumente
+ausgeben.
+14.2 Die Emittentin behält sich jedoch ausdrück-
+lich das Recht vor, weitere tokenisierte
+Wertpapiere oder vergleichbare Finanzin-
+strumente hinsichtlich anderer Immobilien
+zu gleichen oder anderen als diesen Investi-
+tionsbedingungen auszugeben. Ein Bezugs-
+recht des Investors auf solche zukünftigen
+tokenisierten Wertpapiere oder vergleichba-
+re Finanzinstrumente besteht nicht.
+15. MITTEILUNGEN UND NACHRICHTEN
+15.1 Sämtliche Mitteilungen und Erklärungen in
+Zusammenhang mit den tokenisierten Wert-
+papieren erfolgen durch Push-Mitteilung
+über den Marktplatz bzw. des in Ziffer 6.13
+beschriebenen elektronischen Forums und –
+sofern der Investor diesen Wunsch durch
+entsprechende Zustimmung über den
+Marktplatz geäußert hat - zusätzlich per E-
+Mail an die von ihm bei der Registrierung am
+Marktplatz bekanntgegebene E-Mail-
+Adresse.
+15.2 Der Investor kann Mitteilungen und Erklä-
+rungen sowohl über den Marktplatz als auch
+per E-Mail oder per Post an die Emittentin
+richten.
+16. STEUERN UND SONSTIGE KOSTEN
+16.1 Sämtliche Steuern und Abgaben sowie et-
+waige sonstige Kosten, die mit dem Erwerb,
+dem Halten oder der Veräußerung der toke-
+nisierten Wertpapiere sowie mit Ausschüt-
+tungen verbunden sind, müssen von den
+Investoren vorbehaltlich der Regelung der
+Ziffer 5.11 selbst getragen und bezahlt oder
+abgeführt werden. 
+16.2 Ist die Emittentin gesetzlich verpflichtet,
+Steuern, Gebühren und sonstige Abgaben
+einzubehalten oder abzuziehen, wird die
+Emittentin nur den nach Abzug verbleiben-
+den Betrag an die Investoren verteilen. So-
+fern die Emittentin zum Kapitalertragssteu-
+erabzug verpflichtet ist, wird sie die Kapital-
+ertragsteuer einbehalten und an die zustän-
+digen Finanzbehörden abführen. 
+17. SCHLUSSBESTIMMUNGEN
+17.1 Diese Investitionsbedingungen unterliegen
+ausschließlich österreichischem Recht unter
+Ausschluss der jeweiligen Verweisungsnor-
+men des internationalen Privatrechts. 
+17.2 Für alle sich aus dem Rechtsverhältnis zwi-
+schen dem Investor und der Emittentin er-
+gebenden Rechtsstreitigkeiten ist das sach-
+lich für Handelssachen zuständige Gericht in
+Wien, erster Bezirk, zuständig. Diese Ge-
+richtsstandvereinbarung beschränkt nicht
+das Recht eines Investors, Verfahren vor
+einem anderen zuständigen Gericht anzu-
+strengen. Ebenso wenig schließt die Einlei-
+tung von Verfahren vor einem oder mehre-
+ren anderen Gerichtsständen die Einleitung
+von Verfahren an einem anderen Gerichts-
+stand aus, falls und soweit dies rechtlich
+zulässig ist.
+17.3 Sofern ein Investor nicht als Verbraucher
+handelt und eine Bestimmung dieser Investi-
+tionsbedingungen unwirksam oder undurch-
+setzbar ist oder werden sollte, beeinträchtigt
+das nicht die Wirksamkeit oder Durchsetz-
+barkeit der übrigen Bestimmungen dieser
+Investitionsbedingungen. In einem solchen
+Fall gilt die unwirksame oder undurchsetzba-
+re Bestimmung als durch eine wirksame und
+durchsetzbare Bestimmung ersetzt, die dem
+Zweck der zu ersetzenden Bestimmung am
+nächsten kommt. Dies gilt sinngemäß auch
+
+=== PAGE 17 ===
+
+Investitionsbedingungen für tokenisierte Wertpapiere
+Emittentin: Brick Qogir GmbH & Co KG
+ISIN: AT0000A3SE89
+Stand: 16.02.2026
+Seite 17 / 17
+für die Ausfüllung etwaiger Lücken dieser
+Investitionsbedingungen.

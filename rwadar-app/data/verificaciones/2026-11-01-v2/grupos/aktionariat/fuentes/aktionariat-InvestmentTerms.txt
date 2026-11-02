@@ -1,0 +1,204 @@
+CROWDINVESTMENT TERMS
+      PREAMBLE
+
+A.    The Company has issued part of its shares as ledger-based securities ("Share Tokens"). The
+      Share Tokens are governed by the registration agreement as published on the Website, as
+      amended from time to time (the "Registration Agreement").
+B.    The Share Tokens are locked in a smart contract on the Ethereum blockchain (the "SHA Smart
+      Contract") and for each locked Share Token, a placeholder token (the "SHA Token") is
+      generated. The SHA Token are governed by the common shareholder agreement as published
+      on the Website, as amended from time to time (the "Common SHA").
+C.    The Company now wishes to sell SHA Tokens which it holds as treasury shares to the Swiss
+      public in a crowdfunding campaign (the "Crowdinvestment") through its Website to interested
+      buyers (each a "Buyer" or "Investor", together with the Company the "Parties" and each a
+      "Party"), subject to these crowdinvestment terms (the "Terms"):
+
+
+1     SCOPE
+
+      These Terms apply to all Investors of SHA Tokens in the Crowdfunding and any purchase of
+      SHA Tokens through the Website requires the prior acceptance of these Terms. The Investors
+      further acknowledge and agree that the Registration Agreement and the Common SHA apply to
+      the SHA Tokens.
+
+
+2     PURCHASE PROCESS
+
+2.1   Based on the total purchase amount in CHF selected by the Investor on the Website (the
+      "Contribution Amount"), the amount of SHA Tokens to be received by Investor (the "Token
+      Amount") is determined based on the SHA Token price outlined on the Website.
+
+2.2   The Investor shall pay the Contribution Amount as per the instructions on the Website. The
+      Company may change the available payment methods or refuse payments or certain payment
+      methods in its sole discretion. Transaction fees and conversion fees are borne by the Investor.
+      The Contribution Amount paid by the Investor and effectively received by Company in CHF might
+      differ and the number of SHA Tokens to be allocated shall be based on the amount actually
+      received. The number of SHA Tokens will be rounded down by Company to the nearest integral
+      number.
+
+2.3   In case of oversubscription or rounding down, the excessive amount that cannot be allocated
+      shall be paid back to the Investor by Company, provided such difference exceeds (30) thirty
+      Swiss francs (CHF). All the cost and expenses of the repayment are borne by the Investor.
+
+2.4   Only payments from eligible persons as set out on the Website and herein will be accepted by
+      Company. Company, in its sole discretion, may refuse to accept any person as investor and may
+      request further information, e.g., for KYC purposes, at any time from a potential or existing
+
+
+
+                                                                                         Page 1 of 4
+      Investor. Failure to provide such information may lead to the exclusion of the Crowdinvestment.
+
+2.5   The payment of the Contribution Amount constitutes an offer by the Investor to purchase SHA
+      Tokens in the Token Amount and at the displayed SHA Token price. The Company is free to
+      decide whether or not to accept the offer. In case the offer is declined, the Company shall refund
+      the Contribution Amount to the Investor.
+
+2.6   The Investor acknowledges and agrees that there is no claim for refund from the Company and
+      any refund is made by the Company in its sole discretion. If the Company does decide to refund
+      the Contribution Amount, the Investor shall provide account details upon first request to the
+      provided contact details (e-mail address). If the Investor fails to provide account details within 50
+      days from such request, the Contribution Amount is forfeited and the Company is free to use the
+      Contribution Amount without any further consideration to the Investor. Company is not regulated
+      or supervised by any financial market authority and the reimbursement of the Contribution
+      Amount in case of a refund decision is not guaranteed or insured by a deposit insurance scheme.
+
+2.7   The participation in the Crowdinvestment is made on a first come, first serve basis.
+
+
+3     DELIVERY OF SHA TOKEN
+
+3.1   The Investor shall, upon first request by the Company, provide an Ethereum (ERC-20)
+      compatible address of which the Investor is the direct or indirect owner (the "Recipient
+      Address") for the delivery of the SHA Tokens. It is the Investor's sole responsibility to ensure
+      that a correct address is provided.
+
+3.2   Subject to (i) the Investor meeting all participation criteria as determined by the Company, (ii) the
+      successful completion of the Company's onboarding process, (iii) availability of SHA Tokens, (iv)
+      the receipt of the Contribution Amount, (v) the Investor providing a Recipient Address, and (vi)
+      the acceptance by the Company of the Investor's offer to purchase the SHA Token, the Company
+      shall deliver the Token Amount to the Recipient Address.
+
+3.3   In case the Investor fails to provide a Recipient Address, the Company may, in its sole discretion,
+      refund the Contribution Amount or provide the SHA Tokens to the Investor by other means (e.g.,
+      by sending a hardware wallet to the provided mail address). It is the Investors sole responsibility
+      to provide accurate contact details.
+
+
+4     COMPANY REPRESENTATIONS & WARRANTIES
+
+      Company does not make any representations and warranties and all representations shall be
+      fully excluded to the greatest extent permitted under applicable law. The Investor confirms that
+      he/she has not relied upon, any representation or warranty, express or implied, pertaining to the
+      Shares and/or the Company.
+
+
+5     INVESTOR REPRESENTATIONS & WARRANTIES
+
+5.1   The Investor represents and warrants as of the date of this Agreement that:
+
+
+
+                                                                                              Page 2 of 4
+5.1.1   The Investor is in full compliance with the eligibility criteria set out on the Website and these
+        Terms.
+
+5.1.2   The Investor purchases and holds the SHA Tokens in its own account and is not acting on
+        behalf of any third party as agent, nominee or in any other capacity;
+
+5.1.3   The Investor is the sole beneficial owner of the Recipient Address as well as the funds used to
+        pay the Contribution Amount including all assets credited on Company's account;
+
+5.1.4   The Investor has carefully read, reviewed and fully understood these Terms including all
+        referenced documents and is not relying up on any representation, warranty, confirmations,
+        promises or agreements except as set out in these Terms;
+
+5.1.5   The Investor recognizes that an investment in the SHA Tokens involves substantial risk and
+        can lead to the complete loss of the Contribution Amount;
+
+5.1.6   The Investor has not taken any action nor will it take any action in any country or jurisdiction
+        that would constitute a public offering of any Company SHA Tokens or require the registration
+        of the Crowdinvestment or any other offering material, nor will it distribute this offering or any
+        other offering material in any country or jurisdiction where action for that purpose is required;
+
+5.1.7   The Investor, nor any affiliates nor any person acting on its behalf (1) has offered or sold, or
+        will offer or sell, indirectly or directly, any SHA Tokens and/or distributed these Terms or any
+        materials to the Crowdinvestment to any US citizen (whether or not he/she lives in the United
+        States of America), to any US person pursuant the Section 902(k)(1) of the Securities Act of 19
+        33 ( i.e. any natural person resident in the United States of America, any partnership or
+        corporation organized or incorporated under the laws of the United States of America, any
+        estate of which any executor or administrator is a US person, any trust of which any trustee is
+        a US person, any agency or branch of a foreign entity located in the United States of America,
+        any non-discretionary account or similar account (other than an estate or trust) held by a dealer
+        or other fiduciary for the benefit or account of a US person, any discretionary account or similar
+        account (other than an estate or trust) held by a dealer or other fiduciary organized,
+        incorporated, or (if an individual) resident in the United States of America, any partnership or
+        corporation if organized or incorporated under the laws of any foreign jurisdiction and formed
+        by a US person principally for the purpose of investing in securities not registered under the
+        Act, unless it is organized or incorporated, and owned, by accredited investors (as defined in
+        Rule 501(a) of the Securities Act) who are not natural persons, estates or trusts) nor to any
+        persons acting on a non-discretionary basis for US person or US citizen , in each case in a
+        manner that would require any such shares to be registered under the Securities Act, (2) has
+        engaged or will engage in any directed selling efforts (as that term is defined in Regulation S)
+        with respect to any SHA Tokens, or (3) has engaged or will engage in any form of general
+        solicitation or general advertising (as that term is used in Rule 502(c) under the Securities Act)
+        in connection with any offer or sale of any SHA Tokens or in any manner involving a public
+        offering in the United States of America;
+
+
+
+                                                                                              Page 3 of 4
+5.1.8    The Investor is not subject and is not a resident of a jurisdiction that is subject to economic
+         sanctions or trade embargoes imposed by (1) Switzerland, (2) the United Nations Security
+         Council, (3) the European Union or any member state of the European Union, (4) U.S.
+         authorities, in particular OFAC and the U.S. Department of State, (5) the country of residence
+         of the Investor, or (6) other economic sanctions or trade embargos issued by another authority
+         having jurisdiction over the Investor or his /her/its assets;
+
+5.1.9    The Investor has carefully read and understood the Crowdinvestment and all referenced
+         documents, including the risk factors and disclaimers provided herein or on the Website.
+
+5.1.10 The Investor has had the opportunity to be advised by legal professionals or attorneys in
+         relation to these Terms and confirms that to have fully understood the legal implications of all
+         the clauses contained in these Terms.
+
+
+6       TAXES
+
+        The Investor is solely responsible to determine what, if any, taxes apply to the participation in the
+        Crowdinvestment, including, for example, withholding and income taxes. It is also the Investor's
+        sole responsibility to withhold, collect, report and remit the correct taxes to the appropriate tax
+        authorities.
+
+
+7       PRIVACY
+
+        The Investor acknowledges and agrees that the SHA Tokens are issued on a public blockchain
+        that is pseudonymous, not anonymous, in nature, meaning that any person that can associate
+        your Recipient Address with you can publicly view all token holdings, including SHA Tokens, of
+        that Recipient Address. Relating to the contact details provided to the Company directly, the
+        privacy policy as published on the Website applies.
+
+
+8       MISCELLANEOUS
+
+8.1     Notices. All notices to either party shall be in writing (incl. by email).
+
+8.2     No assignment: Neither Party may assign any of its rights, obligations or claims under these
+        Terms.
+
+8.3     Severability. If any term of these Terms or its application in any circumstance is held invalid or
+        unenforceable, the invalidity or unenforceability will not affect any other terms of this Agreement
+        which can be given effect without the invalid or unenforceable term nor the applicability of that
+        term in any other circumstance.
+
+8.4     Governing Law and Jurisdiction. These Terms shall in all respects be governed by, and
+        construed in accordance with, the substantive laws of Switzerland, to the exclusion of conflict of
+        law principles and the UN Convention on the international sale of goods (CISG). Any dispute
+        arising out of or in connection with this Agreement shall exclusively be referred to the courts
+        competent at the seat of the Company, Switzerland.
+
+
+
+                                                                                                Page 4 of 4
+

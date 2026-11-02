@@ -1,0 +1,217 @@
+URL: https://www.artexgm.com/faq
+FINAL: https://www.artexgm.com/faq
+CONSULTADO: 2026-11-01T15:01:13Z
+HTTP: 200
+
+This website uses cookies
+We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
+Consent Selection
+Necessary
+Preferences
+Statistics
+Marketing
+Show details
+Allow all
+Allow selection
+Deny
+ABOUT
+OUR COMPANY
+ARTEX MTF
+NEWS
+MARKET
+NOTICES
+VCM HISTORY
+TRADE
+TRADING INFORMATION
+TRADING PARTICIPANTS
+PRODUCT
+EQUITIES
+SELL ART
+HOW TO LIST
+CONTACT
+QUESTIONS & ANSWERS
+
+Effective Date: 26 June 2023
+
+GENERAL
+1. What is ARTEX?
+
+ARTEX is the first regulated art Multilateral Trading Facility (MTF) for the world’s most iconic artworks. Through transparent and liquid trading of art shares on a regulated MTF, ARTEX democratises investing in fine art by enabling investors easy access to what is traditionally an opaque and exclusive market.
+
+Co-founded in 2020 by capital markets professionals and art connoisseurs H.S.H. Prince Wenceslas of Liechtenstein and Yassir Benjelloun-Touimi, ARTEX is fully compliant with the Markets in Financial Instruments Directive (MIFID II), and is authorised by the Financial Market Authority (FMA) in Liechtenstein under reference number 307407. ARTEX’s core mission goes beyond trading iconic artworks. It strives to educate and inform our investors and the wider market. ARTEX’s education and media platforms will empower current and future ARTEX community members with fresh insights and educational resources that focus on the greatest artists and masterpieces in art history.
+
+2. What is ARTEX’s vision?
+
+ARTEX’s vision is the democratisation of the investment opportunities in iconic art, bringing affordability, transparency, regulatory (investor) protection and liquidity to a market traditionally opaque and exclusive. ARTEX enables qualified investors to invest in art shares with a starting nominal value of 100 USD per art share (or EUR equivalent). While shareholders retain fractional legal ownership of the masterpieces they invest in, they do not bear the costs of insuring or curating ARTEX-listed masterpieces that are displayed in museums and exhibitions for free around the world for the benefit of all art enthusiasts.
+
+In line with its vision and to foster a sense of community, ARTEX will empower current and future investors with timely and relevant information through its media and education platforms. The dedicated website will offer registered members free access to fresh insights, perspectives, and knowledge on iconic art to level the playing field.
+
+3. Is ARTEX involved in NFTs?
+
+ARTEX is not involved in non-fungible tokens (NFTs) nor does it rely on blockchain technology in any way for the time being.
+
+4. Beyond your vision of art democratisation, what is your ESG approach?
+
+It is ARTEX’s vision to not only democratise art in its truest sense but further embed a philanthropical approach to its strategy and objectives in making art accessible to investors. ARTEX aims to increase patronage to art by bringing together society, stewards of capital, and investors.
+
+Equally, ARTEX is also seeking to establish the art asset class as a sustainable investment. As part of the initiative, from a Governance perspective, ARTEX aims to implement effective controls to promote transparency and accountability from a gender-diverse leadership team governed with sound business ethics and how the rights of shareholders are upheld. A good example would be from an environmental standpoint, the asset class seeks to identify and tackle issues concerning packaging material and waste, carbon emissions and sustainability of key stakeholders.
+
+5. Why is ARTEX now calling itself ARTEX Global Markets rather than ARTEX Stock Exchange?
+
+The new name, ARTEX Global Markets, better represents our operational structure and the nature of our trading facility. The core values and ambition of ARTEX remain unchanged. We continue to operate as an MTF (Multilateral Trading Facility), enabling secure, transparent, and liquid global investment in shares of works of art, with the aim of democratising art investment. Our brand has been developed to distinguish us from traditional exchanges and to reflect our dual membership in the art and finance worlds.
+
+INVESTMENT
+1. Why invest in art?
+Iconic art has successfully passed the test of time as a proven store of value; think of artwork from the Renaissance masters, for example, and their unabated popularity for hundreds of years.
+The global art market is worth around USD3.2tn according to Deloitte, which makes it broadly as large as the private equity market.
+Only USD65.1bn worth of art changed hands in 2021 according to UBS and Art Basel. This represents just 2.2% of the global market, which is why ARTEX is a game-changer in the art world, potentially opening it up to unprecedented levels of activity.
+Between 1999 and 2019, the blue-chip Artprice 100 index of the most recognised and stable artists showed an average annual return of +8.4%, broadly in line with gold (+8.6%) and outperforming US equities (S&P 500: +6.0%).
+As an asset class, art can bring additional diversification to a broad portfolio because it is negatively correlated to equities (correlation coefficient of -0.37 between the Artprice 100 and the S&P 500 indices between 1999 and 2019) and mildly positively correlated to gold (+0.29).
+Therefore, art can be considered a haven, particularly in times of high inflation and elevated macro-economic uncertainties.
+Investing in art is like investing in gold but with less volatility and more social impact.
+2. What are the risks of investing in art shares?
+
+Like any other investments, there is always a risk where the value of your investments can fluctuate due to variable market factors. Additionally, there are other risks specific to investing in art shares that may affect their value. Specifically, the authenticity of each artwork is of paramount importance and ARTEX has established an enhanced due diligence process to make sure each artwork is authentic.
+
+3. How will investors benefit/profit from the art shares?
+
+The main driver is supply and demand. As soon as the model is adopted, qualified investors can start trading. The quality of each artwork is of course fundamental but from a technical perspective, as investors interest and investment grow, we anticipate this to stimulate more investment activity.
+
+4. How will investment in art shares be taxed?
+
+ARTEX-listed art shares will be taxed exactly the same as any other ordinary shares traded on any other regulated trading venue such as Euronext, SIX, LSE, NYSE, NASDAQ etc. As such, the shares may be subject to capital gain tax, depending on which jurisdiction each investor is subject to. ARTEX does not offer recommendations nor advice on tax-related matters. We recommend you seek professional advice.
+
+5. Are ARTEX-listed artworks insured and who bears the insurance costs?
+
+ARTEX-listed artworks will be fully insured, covering any potential damages, theft, or destruction.
+
+Shareholders do not bear the cost of insurance as this obligation will wholly be fulfilled by ARTEX through provisions we have made to pursue our ambitions and philanthropical endeavours.
+
+6. Where will the artworks be stored when the shares are admitted to trading?
+
+All artworks will be displayed in publicly accessible museums around the world for free once the artworks have been admitted to trading and successful due diligence has been performed on the museum or exhibition site. ARTEX intends to acquire and operate its own independent museum where artworks will also be exhibited on a rotating basis and loaned to other cultural institutions around the world.
+
+7. How does the securitisation process work?
+
+Each artwork is owned by a Securitisation Vehicle (SV) that has been setup exclusively for purchasing each individual artwork. Each SV owns a single artwork, and the shares represent an ownership of the SV. The costs associated with the management of each artwork as well as the administrative costs are covered by ARTEX through a professional service agreement that ARTEX Services has entered with each SV.
+
+8. What governance structure does ARTEX have in place at the SV level?
+
+Each SV is governed by independent directors to oversee the governance affairs of the SV and to represent the best interest of shareholders. ARTEX will have no involvement in the managerial decisions to be made by each SV.
+
+THE MULTILATERAL TRADING FACILITY (MTF)
+1. What is an MTF?
+
+A Multilateral Trading Facility (MTF) is a type of trading venue where financial instruments such as shares are exchanged between buyers and sellers. MTFs are described as “multilateral” because they have multiple members who can deal with each other on a non-discretionary basis. MTFs operate under the European Union’s Markets in Financial Instruments Directive II (MiFID II), which stipulates that financial instruments traded via an MTF must be exchanged on a non-discretionary basis. This means that transactions between buyers and sellers must be formed according to a set of transparent rules that do not discriminate between members or their clients. MTFs are not permitted to execute client orders against their own capital and are therefore simply a venue where buyers and sellers are paired. For example, Euronext Growth, operated by Euronext, is an MTF.
+
+2. Are the art shares traded on the ARTEX's MTF standardised transferable securities?
+
+Yes, as any other shares listed on any other regulated MTF.
+
+3. How would art shares be admitted to trading on the ARTEX's MTF?
+
+ARTEX will be able to bring art shares to the public through Art Listings admitted to trading.
+
+4. How can retail investors buy and sell art shares on the ARTEX's MTF?
+
+As with any other shares listed on any other regulated MTF, retail investors can buy and sell art shares through banks and brokers that are either members or connected to a member of the ARTEX's MTF.
+
+5. How can institutional investors buy and sell art shares on the ARTEX’s MTF?
+
+As with any other shares listed on any other regulated MTF, institutional investors can buy and sell art shares through banks and brokers that are members of the ARTEX’s MTF.
+
+6. How do you ensure liquidity on the ARTEX’s MTF?
+
+In addition to the MTF members creating liquidity as they trade art shares on behalf of their retail and institutional clients, ARTEX has entered into liquidity agreements with market makers to make sure that the secondary market is liquid from its inception with an obligation to continuously stream bid/offers.
+
+7. How are art shares cleared and settled on the ARTEX’s MTF?
+
+Art shares traded on the MTF will be cleared through a central clearing counterparty (CCP) and settled through an International Central Depositary System (ICSD). CCP services are provided by SIX xclear while ICSD services will be provided by Euroclear and Clearstream.
+
+8. What is the regulatory framework governing the MTF operated by ARTEX Global Markets?
+
+Our MTF is licensed by the Liechtenstein Financial Market Authority (FMA) and subject to Liechtenstein financial market legislation, particularly the Trading Venue & Exchanges Law (“Handelsplatz- und Börsegesetz, HPBG”). This law provides the framework for ARTEX Global Markets operating the MTF, as well as for our Market Members participating. Please be reminded that depending on the trading activity and access offered by Market Members, disclosure and reporting towards the Liechtenstein FMA may be required.
+
+ART SERVICES
+1. How does ARTEX source artworks which are potentially eligible for listing?
+
+ARTEX benefits from its extensive network of art collectors and intermediaries to source art pieces. Additionally, ARTEX has also signed sourcing agreements with several major galleries around the world that may present acquisition opportunities.
+
+2. Who can sell artworks through a listing on the ARTEX’s MTF?
+
+To be qualified to list your artwork on the MTF you must meet ARTEX’s due diligence requirements such as anti-money laundering checks, provenance, traceability, quality and more. ARTEX will then assist with the sale and listing of the artwork on the ARTEX’s MTF.
+
+3. What are the listing requirements?
+
+At this stage, ARTEX is focusing on iconic art pieces by the world’s most renowned artists. There is a strict 25-week due diligence process that will be performed to ensure each artwork is authentic, of impeccable provenance, and free of any claims. Following satisfactory due diligence on the artwork and the seller, the artwork will be securitised, and the necessary documentation shall be prepared to meet the listing requirements of the ARTEX’s MTF.
+
+4. What are the advantages of selling artwork through ARTEX rather than auction houses?
+
+Auction houses usually charge the seller a fine art commission up to 10% - 15% of the hammer price. ARTEX will be selling artworks at a premium through a broader distribution channel that will reach millions of people rather than wholesale wherein only a minority of high-net-worth individuals (HNWIs) can compete for it.
+
+OUR COMPANY
+MTF
+TRADING INFORMATION
+COMPLIANCE
+HOW TO LIST
+NEWS
+CONTACT
+FAQ
+PARIS
+229 RUE SAINT-HONORE 75001, FRANCE
+LUXEMBOURG
+14-16 AVENUE PASTEUR L-2310, LUXEMBOURG
+VADUZ
+WUHRSTRASSE 6, 9490, LIECHTENSTEIN
+© ARTEX 2020 - 2026
+Privacy NoticeTerms and Conditions
+contact@artexgm.com
+Subscribe
+
+==== LINKS ====
+https://www.cookiebot.com/en/what-is-behind-powered-by-cookiebot/?utm_source=banner_cb&utm_medium=referral&utm_content=v2 | 
+https://www.artexgm.com/faq# | Consent
+https://www.artexgm.com/faq# | Details
+https://www.artexgm.com/faq# | [#IABV2SETTINGS#]
+https://www.artexgm.com/faq# | About
+https://www.artexgm.com/faq# | Show details
+https://www.artexgm.com/faq# | Cookiebot1
+https://www.cookiebot.com/goto/privacy-policy/ | Learn more about this provider
+https://www.artexgm.com/faq# | Google2
+https://business.safety.google/privacy/ | Learn more about this provider
+https://www.artexgm.com/faq# | Matomo1
+https://matomo.org/privacy-policy/ | Learn more about this provider
+https://www.artexgm.com/faq# | Vimeo2
+https://vimeo.com/privacy | Learn more about this provider
+https://www.artexgm.com/faq# | Matomo2
+https://www.artexgm.com/faq# | Vimeo6
+https://www.artexgm.com/faq# | Cross-domain consent[#BULK_CONSENT_DOMAINS_COUNT#]
+https://www.cookiebot.com/ | Cookiebot
+https://www.artexgm.com/ | 
+https://www.artexgm.com/our-company | OUR COMPANY
+https://www.artexgm.com/artex-mtf | ARTEX MTF
+https://www.artexgm.com/news | NEWS
+https://www.artexgm.com/notices | NOTICES
+https://www.artexgm.com/vcm | VCM HISTORY
+https://www.artexgm.com/trading-information | TRADING INFORMATION
+https://www.artexgm.com/trading-participants | TRADING PARTICIPANTS
+https://www.artexgm.com/equities | EQUITIES
+https://www.artexgm.com/how-to-list | HOW TO LIST
+https://www.artexgm.com/contact | CONTACT
+https://www.artexgm.com/artex-mtf | MTF
+https://www.artexgm.com/compliance | COMPLIANCE
+https://www.artexgm.com/faq | FAQ
+https://www.artexgm.com/privacy-notice | Privacy Notice
+https://www.artexgm.com/terms-and-conditions | Terms and Conditions
+mailto:contact@artexgm.com | contact@artexgm.com
+https://www.linkedin.com/company/artexgm/ | 
+https://www.instagram.com/artexglobalmarkets/ | 
+https://www.facebook.com/artexglobalmarkets/ | 
+https://mailchi.mp/artexgm/subscribe | Subscribe
+https://www.artexgm.com/faq# | Change your consent
+https://www.artexgm.com/faq# | Withdraw your consent
+https://www.artexgm.com/faq# | Do not sell or share my personal information
+https://vimeo.com/privacy | Vimeo
+https://www.cookiebot.com/goto/privacy-policy/ | Cookiebot
+https://matomo.org/privacy-policy/ | Matomo
+https://business.safety.google/privacy/ | Google

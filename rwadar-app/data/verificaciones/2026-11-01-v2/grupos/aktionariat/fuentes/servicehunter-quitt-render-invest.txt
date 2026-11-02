@@ -1,0 +1,109 @@
+URL: https://shares.quitt.ch/invest
+Renderizado (Playwright Chromium, zona UTC): 2026-11-01T15:04:03Z
+
+ServiceHunter AG
+English
+Sign In
+ServiceHunter AG
+Buy Shares
+More info: quitt.ch
+About ServiceHunter
+SaaS•Founded in 2010, Zürich, Switzerland
+ServiceHunter AG runs quitt, a service to help households getting all administrative work with their employees done.
+draggable quitt.shares (DQTS)
+Historic market prices and access to blockchain-powered secondary trading.
+Market Price
+Price history of draggable quitt.shares
+1W
+1M
+6M
+1Y
+All
+Price
+Volume
+Jan 2026
+Mar 2026
+May 2026
+Jul 2026
+Sep 2026
+Nov 2026
+6.5 CHF
+7 CHF
+7.5 CHF
+8 CHF
+8.5 CHF
+9 CHF
+Secondary Trading
+Trade ServiceHunter AG shares with other shareholders in secure on-chain transactions, instantly settled using Frankencoin (ZCHF).
+Real-time Trading
+Open Order Book
+Atomic Settlement
+Open Secondary Trading
+All Trades
+Date / Time	Type	Price	Amount	Total
+
+
+23 Jul 2026 / 15:19	Secondary Trade	8.00 ZCHF	10 DQTS	80 ZCHF
+
+
+15 Jul 2026 / 21:39	Secondary Trade	8.00 ZCHF	5 DQTS	40 ZCHF
+
+
+25 Jun 2026 / 16:13	Secondary Trade	8.00 ZCHF	6 DQTS	48 ZCHF
+
+
+23 Jun 2026 / 17:08	Secondary Trade	8.00 ZCHF	2'500 DQTS	20'000 ZCHF
+
+
+21 Jun 2026 / 21:52	Secondary Trade	8.00 ZCHF	4 DQTS	32 ZCHF
+Page 1 of 96
+1
+2
+3
+4
+5
+…
+96
+Business Metrics
+Monthly Processed Gross Payroll Amount
+6M
+1Y
+All
+Nov 2025
+Jan 2026
+Mar 2026
+May 2026
+Jul 2026
+Sep 2026
+0 CHF
+5'000'000 CHF
+10'000'000 CHF
+15'000'000 CHF
+Your Shareholder Balance
+Overview of your registered and tokenized shares
+Register to View your Balance
+Token Overview
+Key details and on-chain references for this token
+Current Price
+CHF 8
+Last trade • 2 Oct 2026, 00:00
+Total Shares
+2'000'000
+Market Cap
+CHF 15'981'432
+Tokenized Shares
+1'658'405 DQTS
+Shareholders
+227
+Legal Documents
+Registration Agreement
+Token Holder Agreement
+Token Contracts
+0x8747…a952
+ServiceHunter AG
+Terms of Use: This page is hosted by ServiceHunter using technology licensed from Aktionariat. Some content is automatically compiled from other sources than ServiceHunter and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. ServiceHunter assumes no responsibility for the accuracy of any of this data. All shareholder registration data is stored and processed in Switzerland by Aktionariat, which maintains the shareholder registry for ServiceHunter. Shareholder registration data must by retained for ten years by law. Relevant shareholder registration data such as the current name and address is automatically synchronized with other issuers that use Aktionariat to maintain their shareholder registry.
+Direct Investment: The website may offer the possibility to directly buy securities issued by ServiceHunter. Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act in Switzerland, or equivalent laws for visitors of other countries. Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus in order to continue the offering.
+Secondary Trading: The website may offer the possibility to openly trade securities issued by ServiceHunter using blockchain-based smart contracts to settle trades between buyers and sellers without counterparty risk. As the operator of this website, ServiceHunter may charge a fee on trades. Neither being a shareholder nor performing individual trades constitute an ongoing business relationship between the shareholder and the operator under the AML act. The secondary trading facilitated herein is considered a non-commercial trading facility operated by ServiceHunter under the Financial Market Infrastructure Act and is therefore not subject to prudential supervision. As a consequence, buyers and sellers are not protected by the financial market conduct rules applicable to the trading on supervised venues.
+©2026 ServiceHunter (site content) and Aktionariat (site template). All rights reserved.
+Terms of Service
+Privacy Policy

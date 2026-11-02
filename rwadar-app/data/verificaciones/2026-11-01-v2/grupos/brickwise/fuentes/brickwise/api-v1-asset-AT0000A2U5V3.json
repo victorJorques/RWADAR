@@ -1,0 +1,198 @@
+{
+ "location": {
+  "coordinates": {
+   "lat": 46.6208877,
+   "lng": 14.2682637
+  },
+  "countryCode": "AUT",
+  "city": "Klagenfurt",
+  "postalCode": "9020",
+  "address": "Kohldorfer Straße 102, Top Gewerbe 2",
+  "staircase": 0,
+  "floor": 0,
+  "door": "2"
+ },
+ "propertyDetails": {
+  "features": [
+   {
+    "id": "32463746-12a1-473a-9f85-ae7c4c8b91ff",
+    "ENG": "Air conditioning",
+    "DEU": "Klimaanlage",
+    "createdAt": "2022-11-23T09:27:39.858Z",
+    "updatedAt": "2022-11-23T09:27:39.858Z"
+   },
+   {
+    "id": "4c46ff0d-382c-4d6f-bdd4-dc4a6d60ced1",
+    "ENG": "Lager",
+    "DEU": "Lagerfläche",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   },
+   {
+    "id": "439810f0-173c-4a56-a04f-5d646b82985a",
+    "ENG": "Parking spots",
+    "DEU": "Parkplätze",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   }
+  ],
+  "numberOfRooms": 2,
+  "size": 83.35,
+  "buildingYear": "",
+  "buildingCondition": "new",
+  "heatingType": "district",
+  "carbonEmission": 32.7,
+  "energyEmission": 71.8,
+  "propertyType": "commercial",
+  "constructionStatus": "stock",
+  "highlights": [],
+  "plots": []
+ },
+ "id": "AT0000A2U5V3",
+ "tokenId": "4H8zFkz3VeVaANrVBCPJAJQLMwrZXkQV6fWB2HyicR5H",
+ "rentalDetails": {
+  "contractType": "open",
+  "monthlyDistributionDate": 15,
+  "rentalIncome": {
+   "$numberDecimal": "13203.72"
+  },
+  "rentalSurplus": {
+   "$numberDecimal": "11828.12"
+  },
+  "rentalReturn": {
+   "$numberDecimal": "3.46"
+  },
+  "managementFee": {
+   "$numberDecimal": "631.00"
+  },
+  "propertyManagementFee": 0,
+  "liquidityReserve": {
+   "$numberDecimal": "744.60"
+  },
+  "additionalManagementCosts": [],
+  "occupancyRate": 99
+ },
+ "investmentDetails": {
+  "stage": "secondary",
+  "sharePrice": {
+   "$numberDecimal": "95.00"
+  },
+  "availableBricks": 0,
+  "totalBricks": 3600,
+  "ISIN": "AT0000A2U5V3",
+  "spv": {
+   "id": "73693178-481a-4918-9776-593972819aeb",
+   "address": {
+    "street": "Börseplatz 4",
+    "postCode": "1010",
+    "city": "Wien",
+    "countryCode": "AUT"
+   },
+   "owner": "Brickwise Real Estate GmbH",
+   "email": "realestate@brickwise.at",
+   "taxNumber": "FN 549470 w",
+   "companyPurpose": "Halten, Verwalten und Vermieten von Immobilien",
+   "companyName": "Brick Qogir GmbH & Co KG",
+   "partnerId": "brickwise",
+   "dseDocumentSrc": "https://cdn.brickwise.at/740a7c07-4c01-4cfa-be02-3383722259fd.pdf"
+  },
+  "issueStartDate": "",
+  "issueEndDate": "",
+  "issueFundingFloor": 0,
+  "securityType": "participationRightEquity",
+  "debtComponent": "",
+  "debtStartDate": "",
+  "debtAmount": 0,
+  "debtInterest": 0,
+  "issuingCompany": "",
+  "landRegisterMortgageStatusText": "Grundbücherlich besicherter Genussschein",
+  "appraisalFirm": "Herman Hilft",
+  "expertRating": 5,
+  "landRegisterMortgageDescription": "Die Absicherung erfolgt über ein im Grundbuch eingetragenes Kollektivpfandrecht zugunsten der Inhaber:innen der tokenisierten Wertpapiere in Höhe des Ausgabepreises (Nominale) der tokenisierten Wertpapiere. Der Antrag auf Einverleibung des Pfandrechts im Grundbuch wird von der Emittentin unmittelbar nach Erwerb der Immobilie gestellt. Die Eintragung kann jedoch mehrere Wochen in Anspruch nehmen, wodurch sich unmittelbar nach der Emission ein entsprechender Zeitraum ergeben kann, in dem das Pfandrecht noch nicht im Grundbuch eingetragen ist.",
+  "forumActive": true,
+  "isAllowedDomicile": [],
+  "isAllowedPlz": [],
+  "preparedCashFlowTable": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableStressScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableOptimisticScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  }
+ },
+ "descriptions": {
+  "title": "Trafik, Kohldorfer Straße 102, Klagenfurt",
+  "propertySellingPoints": "Das Objekt besteht aus einem großzügigen Verkaufsraum sowie einem Büro und einer Lagerfläche. Der Verkaufsraum ist ideal auf die Kund:innenbedürfnisse abgestimmt und mit modernster Technik, sowie einer Klimaanlage ausgestattet.",
+  "propertyHighlight": "Das Trafikant:innenschloß am Wörthersee ;-) der Traum aller Immobilieninvestor:innen",
+  "propertyDetails": "Das Geschäftslokal ist Teil der Wohn- und Gewerbeanlage Seenah-Wohnen die 2021 neu errichtet wurde. Die Immobilie zeichnet sich durch ihr charmantes Flair und die ausgezeichnete Lage inmitten modernster und bester Infrastruktur und wunderschöner Grünanlagen sowie ihre unmittelbare Nähe zum wunderschönen Wörthersee aus.",
+  "locationDetails": "Das Geschäftslokal ist einer der Mittelpunkte der Fachmarktzeile Seenah Wohnen und liegt nur wenige Meter von Klagenfurts schönster Grünanlage, dem Europapark entfernt. Durch die optimale Verkehrsanbindung ist die Trafik aus dem  Stadtzentrum sowie allen anderen Klagenfurter Bezirken in kurzen Intervallen rasch erreichbar. In unmittelbarer Nähe findest du zahlreiche Wohnanlagen, ein Strandbad, Restaurants und Einkaufsmöglichkeiten, wodurch eine hohe Frequenz gewährleistet ist.",
+  "districtDetails": "Einer der schönsten Flecken Österreichs: Das Minimundus, der Reptilienzoo, der wunderschöne Europapark, das Klagenfurter Strandbad und das blitzblaue klare Wasser des Wörthersees sind nur wenige Gehminuten entfernt. Hier tummeln sich Groß und Klein, Einheimische und Touristen und sogar Ironman Athleten wenn sie durch den Lendkanal schwimmen, der in unmittelbarer Nachbarschaft liegt.",
+  "cityDetails": "Klagenfurt liegt am Ostufer des Wörthersees und ist die Hauptstadt des südösterreichischen Bundeslandes Kärnten. Mit 102.138 Einwohnern (Stand 1. Jänner 2021) ist es die größte Stadt Kärntens und die sechstgrößte Stadt Österreichs. Klagenfurt ist unter anderem Sitz der Kärntner Landesregierung, der Alpen-Adria-Universität, der Gustav Mahler Privatuniversität für Musik, der FH Kärnten und des internationalen Flughafens. Durch die attraktive Innenstadt mit Plätzen und Altstadtgebäuden sowie Kulturangeboten und der Nähe zum Wörthersee ist Klagenfurt auch touristisch äußerst bedeutsam. Auf slowenisch heißt Klagenfurt übrigens Celovec ob Vrbskem jezeru.",
+  "rentalDetails": "Das aktuelle Mietverhältnis begann am 01. März 2021 und wurde unbefristet abgeschlossen, wobei ein 3 Jähriger Kündigungsverzicht seitens der Mieterin vereinbart wurde.",
+  "propertyQuote": "Das Trafikant:innenschloß am Wörthersee ;-) der Traum aller Immobilieninvestor:innen",
+  "investmentDetails": "Als Investor:in kannst du dich am Kauf der hier beschriebenen Immobilie (Geschäftslokal) in Form von digitalen Immobilienanteilen beteiligen. Digitale Immobilienanteile sind tokenisierte Substanzgenussrechte auf Basis der Investmentbedingungen der Emittentin.\nAls Investor:in kassierst du monatlich einen Teil der Mieteinnahmen (abzüglich Kosten und Gebühren) und du kannst deine digitalen Anteile jederzeit flexibel über den Brickwise Marktplatz verkaufen, und so von der Wertentwicklung der Immobilie profitieren.\nWir weisen darauf hin, dass die Geschäftsführung der Emittentin durch die Komplementär-GmbH erfolgt. Aufgrund dessen kann es unter Umständen zu Interessenskonflikten kommen, die direkte oder indirekte wirtschaftliche Vorteile für die Emittentin zur Folge haben können.",
+  "securityDetails": "",
+  "nomenclature": {
+   "expectedYieldDisclaimer": [
+    {
+     "lang": "deu",
+     "value": "Die erwartete Rendite berechnet sich auf Basis des Netto-Mietüberschusses über die im Mietvertrag vereinbarte Nettomiete und kommt jeweils nur zur Auszahlung, wenn der/die Mieter:in diese bezahlt hat."
+    }
+   ],
+   "liquidityReserve": [],
+   "managementFee": [],
+   "rentalIncome": [],
+   "rentalIncomeTitle": [
+    {
+     "lang": "deu",
+     "value": "Einnahmen p.a."
+    }
+   ],
+   "total": [],
+   "documents": {
+    "energyCertificate": [],
+    "expertProtocol": [],
+    "investmentBasicInformation": [],
+    "investmentConditions": [],
+    "investmentInformation": [],
+    "landRegister": [],
+    "rentalAgreement": [],
+    "utilityReport": [],
+    "plantList": []
+   }
+  }
+ },
+ "images": "[omitido]",
+ "documents": {
+  "investmentBasicInformation": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+  "investmentInformation": "https://cdn.brickwise.at/2439beca-ac29-466c-b038-6c7689e7a5a7.pdf",
+  "investmentConditions": "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+  "rentalAgreement": "https://cdn.brickwise.at/26c4e178-11b2-45ab-bb59-682ad2388ad5.pdf",
+  "expertProtocol": "https://cdn.brickwise.at/40f97f78-260b-4f9c-9ecd-fad1094a32d7.pdf",
+  "landRegister": "https://cdn.brickwise.at/8c0262ce-ce6d-4f5c-b133-6367e4452346.pdf",
+  "energyCertificate": "https://cdn.brickwise.at/09dd75ca-af87-4b50-af89-5832073a6872.pdf",
+  "utilityReport": "https://cdn.brickwise.at/5af233f2-f3c3-40d6-8cb8-58f69a8dc547.pdf",
+  "additionalDocuments": [],
+  "additionalInvestmentDocuments": [
+   {
+    "name": "Rücktrittsbelehrung",
+    "src": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf",
+    "signed": false
+   }
+  ]
+ },
+ "partnerId": "brickwise",
+ "updatedAt": "2026-10-19T13:24:56.371Z",
+ "type": "realEstate",
+ "isMIFID": true,
+ "onlyPrimary": false,
+ "preorderEnabled": false,
+ "useSerialNumber": false,
+ "investorSettings": {},
+ "loanInformation": {}
+}

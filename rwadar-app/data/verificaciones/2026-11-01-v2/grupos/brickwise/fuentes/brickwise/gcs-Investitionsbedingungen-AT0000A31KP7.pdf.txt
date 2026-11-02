@@ -1,0 +1,892 @@
+
+
+=== PAGE 1 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 1 von 21 
+  
+ 
+ 
+INVESTITIONSBEDINGUNGEN 
+FÜR 
+TOKENISIERTE WERTPAPIERE 
+ 
+  
+
+=== PAGE 2 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 2 von 21 
+  
+ 
+ INHALTSVERZEICHNIS  
+ZIFFER SEITE 
+1. Präambel ..................................................................................................................................................... 3 
+2. Wesentliche Merkmale der tokenisierten Wertpapiere und Definitionen ............................ 4 
+3. Ausgabe, Stückelung und Tokenisierung der Wertpapiere ........................................................ 5 
+4. Zeichnung und Erwerb tokenisierter Wertpapiere ....................................................................... 6 
+5. Ausschüttung und Verlustbeteiligung .............................................................................................. 8 
+6. Mitsprache bei der Verwaltung der Immobilie .............................................................................. 11 
+7. Verwaltung der tokenisierten Wertpapiere .................................................................................... 15 
+8. Keine Eigentumsrechte, kein Treuhandverhältnis, keine Gesellschafterrechte, keine 
+Nachschusspflicht ................................................................................................................................... 15 
+9. Squeeze-out .............................................................................................................................................. 16 
+10. Dauer der Wertpapiere / Kündigungsrechte .................................................................................. 17 
+11. Veräusserung der Immobilie ............................................................................................................... 18 
+12. Bestandsschutz ....................................................................................................................................... 19 
+13. Übertragbarkeit der tokenisierten Wertpapiere ........................................................................... 19 
+14. Ausgabe weiterer Wertpapiere und sonstiger Rechte .............................................................. 20 
+15. Mitteilungen und Nachrichten ........................................................................................................... 20 
+16. Steuern und sonstige Kosten ............................................................................................................ 20 
+17. Schlussbestimmungen .......................................................................................................................... 21 
+  
+
+=== PAGE 3 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 3 von 21 
+  
+ 
+1. PRÄAMBEL 
+1.1 Der Emittentin beabsichtigt, die nachstehend in Ziffer 2.1 näher bezeichnete Immobilie zu 
+erwerben.  
+1.2 Der Erlös der gegenständlichen Emission wird ausschließlich verwendet für die vollständige 
+Finanzierung des Erwerbs der Immobilie einschließlich Neben- und Finanzierungskosten, 
+Kosten der Strukturierung und Durchführung der Emission, Vermarktungskosten, und die 
+Bildung einer Liquiditätsrücklage von bis zu 10% des Gesamtnennbetrags. Der Erwerb der 
+Immobilie erfolgt unter Einbindung eines Treuhänders , wobei eine Auszahlung des 
+Emissionserlöses durch den Treuhänder an den Verkäufer gemäß der abzuschließenden 
+Treuhandvereinbarung erst erfolgen darf, wenn der Erwerb des unbelasteten Eigentums an 
+der Immobilie durch die Emittentin sichergestellt ist.  
+1.3 Die Ansprüche des Investors aus den ausgegebenen Wertpapieren werden nach Eintragung 
+des Eigentumsrechts der Emittentin an der Immobilie  in Höhe des Ausgabepreises 
+grundbücherlich durch ein Pfandrecht besichert. Der Antrag auf grundbücherliche 
+Einverleibung des Pfandrechts wird von der Emittentin unmittelbar nach Erwerb der 
+Immobilie gestellt. Die Eintragung kann jedoch mehrere Wochen in Anspruch nehmen, 
+woraus sich nach der Emission ein entsprechender Zeitraum ergeben kann, in dem das 
+Pfandrecht noch nicht im Grundbuch eingetragen ist. 
+1.4 Der Unternehmensgegenstand der Emittentin ist das Halten und Verwalten der Immobilie 
+im Einklang mit diesen Investitionsbedingungen sowie das Halten und Verwalten weiterer 
+Liegenschaften. Einem anderen Unternehmensgegenstand wird die Emittentin nicht 
+nachgehen. 
+1.5 Die Emittentin beabsichtigt die Ausgabe tokenisierter Wertpapiere, welche dem Inhaber 
+Rechte gemäß diesen Investitionsbedingungen einräumen. 
+  
+
+=== PAGE 4 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 4 von 21 
+  
+ 
+2. WESENTLICHE MERKMALE DER TOKENISIERTEN WERTPAPIERE UND DEFINITIONEN 
+2.1 Die nachfolgende Tabelle enthält die wesentlichen Merkmale der  auf Basis dieser 
+Investitionsbedingungen ausgegebenen tokenisierten Wertpapiere. Soweit die in der 
+nachfolgenden Tabelle enthaltenen Begriffe (linke Spalte) in diesen Investitionsbedingungen 
+verwendet werden, haben sie folgende Bedeutung (rechte Spalte): 
+Emittentin: Brick Qogir GmbH & Co KG, 1010 Wien, Börseplatz 4, FN 549470w 
+Geschäftskonto: IBAN: AT06 2081 5000 4360 4826 
+Wertpapier: Tokenisierte Genussscheine 
+Tokenbezeichnung/ISIN: AT0000A31KP7 
+Verwaltung der Token: Eigenverantwortlich durch den Investor (Ziffer 7) 
+Marktplatz: Brickwise App 
+Blockchain-Netzwerk: Brickprotocol 
+Immobilie: Liegenschaft EZ 431, Katastralgemeinde 49404 Hinterstoder 
+Apartment Haus 50a TOP 08 und Kfz-Abstellplatz 14 
+Gesamtnennbetrag: EUR 408.816,00 (in Worten: vierhundertachttausend 
+achthundertundsechzehn Euro und null Cent) 
+Stückelung / Gesamtzahl 
+der tokenisierten 
+Wertpapiere: 
+4.080 Stück tokenisierte Wertpapier 
+Ausgabepreis: EUR 100,20 (in Worten: Euro einhundert und zwanzig Cent) je 
+tokenisiertem Wertpapier  
+Ausschüttung: Monatliche Ausschüttung des Netto-Mietüberschusses (Ziffer 5.1) und 
+einmalige Ausschüttung anlässlich der Veräußerung der Immobilie (Ziffer 
+5.9) 
+Management-Fee Bis zu 10% der monatlichen Netto-Mieteinnahmen (Ziffer 5.4) 
+Liquiditätsrücklage Bis zu 10% des Gesamtnennbetrags (Ziffer 1.2) und bis zu 10 % der 
+monatlichen Netto-Mieteinnahmen (Ziffer 5.5) 
+Zeichnungsfrist: 25.10.2022 bis 20.12.2022 
+Ausgabetag: Tag, an dem die Emittentin erstmals tokenisierte Wertpapiere an einen 
+Investor transferiert 
+Mindestausgabemenge: 2.856 Stück tokenisierte Genussscheine (EUR 286.171,20) 
+Mindestzeichnungsbetrag: EUR 100,20 (in Worten: Euro einhundert und zwanzig Cent) 
+Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Ziffer 11) 
+Außerordentliche 
+Kündigung: 
+Durch die Emittentin in den Ausnahmefällen gemäß Ziffer 10.3; durch den 
+Investor gemäß Ziffer 10.5-10.8 
+Handelbarkeit: Ja (siehe zu den Details Ziffer 13) 
+
+=== PAGE 5 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 5 von 21 
+  
+ 
+Grundbücherliche 
+Sicherheit 
+Ja, ein Kollektivpfandrecht nach dem Kuratorengesetz 1874 zugunsten 
+des Investors wird nach Eintragung des Eigentumsrechts der Emittentin 
+in das Grundbuch beantragt. 
+Squeeze-out Ja, sofern ein Investor zumindest 90% aller tokenisierten Wertpapiere 
+hält, kann er von den übrigen Investoren den Verkauf ihrer tokenisierten 
+Wertpapiere an ihn verlangen. 
+2.2 Der Gesamtnennbetrag wird für die der nachstehenden Kalkulation angegeben Positionen 
+bzw. Zahlungen verwendet: 
+Position / Zahlung Betrag (EUR)  
+Netto-Kaufpreis der Immobilie inkl. Zubehör 361.600,00 €  
+USt. 72.320,00 €  
+Brutto-Kaufpreis der Immobilie 433.920,00 €  
+Grunderwerbsteuer 15.187,20 € 3,50% vom Brutto-Kaufpreis 
+Eintragungsgebühr Grundbuch 4.773,12 € 1,10% vom Brutto-Kaufpreis 
+Kaufvertragserrichtung & 
+Treuhandabwicklung 
+5.700,00 €  
+Sonstige externe Abwicklungskosten 925,80 €  
+Maklerhonorar 0,00 €  
+Liquiditätsrücklage 7.756,72 €  
+Sonstige Kosten 1.808,00 €  
+Eintragung Pfandrecht für Investoren 4.901,14 € 1,20% vom Gesamtnennbetrag 
+Lizenzgebühren Brickwise IT Services GmbH 6.126,43 € 1,50% vom Gesamtnennbetrag 
+Rundungsbetrag 37,59 €  
+Gesamtnennbetrag 408.816,00 €  
+Nicht, in geringerem Ausmaß oder höherem Ausmaß entstandene externe Kosten werden 
+der Liquiditätsrücklage gegengerechnet. 
+3. AUSGABE, STÜCKELUNG UND TOKENISIERUNG DER WERTPAPIERE 
+3.1 Die Emittentin begibt tokenisierte Wertpapiere zum Gesamtnennbetrag und mit einer 
+Stückelung gemäß diesen Investitionsbedingungen. Die tokenisierten Wertpapiere können 
+nur während der Zeichnungsfrist gezeichnet werden. Die Emittentin behält sich das Recht 
+vor die Zeichnungsfrist um einen Zeitraum zu verlängern, dessen Dauer höchstens dem 
+dreifachen der ursprünglichen Zeichnungsfrist entspricht. 
+3.2 Die von der Emittentin ausgegebenen Wertpapiere werden in Form von Tokens digitalisiert. 
+Token sind digitale (Wert-)Einheiten in Form eines D atensatzes, die aufgrund eines 
+Protokolls in einer Blockchain ausschließlich von der Emittentin erstellt und an den Investor 
+
+=== PAGE 6 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 6 von 21 
+  
+ 
+ausgegeben werden. Technisch betrachtet ist ein Token ein virtueller Vermögenswert auf 
+Basis eines Skriptes im Blockchain-Netzwerk. Jedes einzelne auf diese Weise tokenisierte 
+Wertpapier wird durch einen Token repräsentiert, der im Zeitpunkt der Emission auf dem 
+Blockchain-Netzwerk basiert.  
+3.3 Um tokenisierte Wertpapiere zu erwerben und zu übernehmen, benötigt der Investor einen 
+Account am Marktplatz. Sämtliche Rechte des Investors gegenüber der Emittentin knüpfen 
+sich sowohl rechtlich als auch technisch an den tatsächlichen und rechtmäßigen Besitz 
+eines tokenisierten Wertpapiers. Der Investor ist solange im Besitz eines tokenisierten 
+Wertpapiers, als sich der jeweilige Token im Account des Investors befindet. Der Besitz ist 
+rechtmäßig, wenn die tokenisierten Wertpapiere rechtmäßig erworben wurden. 
+3.4 Die Emittentin ist berechtigt, die verwendete Blockchain-Technologie und/oder das 
+verwendete Blockchain-Netzwerk jederzeit zu wechseln, sofern dadurch für den Investor 
+keine rechtlichen oder wirtschaftlichen Nachteile entstehen. Sollte ein Wechsel der 
+verwendeten Blockchain-Technologie und/oder des verwendeten Blockchain-Netzwerks 
+mit rechtlichen oder wirtschaftlichen Nachteilen für den Investor verbunden sein, so wird die 
+Emittentin den Investor hierüber vorabinformieren. Ist der Investor mit dem Wechsel des 
+Blockchain-Netzwerks aufgrund der ihm dadurch entstehenden rechtlichen oder 
+wirtschaftlichen Nachteile nicht einverstanden, kann er das Rechtsverhältnis zur Emittentin 
+gemäß Ziffer 10.5(ii) dieser Investitionsbedingungen außerordentlich kündigen. 
+4. ZEICHNUNG UND ERWERB TOKENISIERTER WERTPAPIERE 
+4.1 Die Ausgabe von tokenisierten Wertpapieren erfolgt im Rahmen mehrerer öffentlicher 
+Angebote mit einem Gesamtgegenwert von weniger als EUR 2.000.000,00 innerhalb von 12 
+Monaten in der Europäischen Union und daher unter Inanspruchnahme der Ausnahme von 
+der kapitalmarktrechtlichen Prospektpflicht. 
+4.2 Jede natürliche und jede juristische Person kann am Marktplatz tokenisierte Wertpapiere 
+durch Zeichnung und Annahme durch die Emittentin erwerben.  Die Zeichnung ist ein 
+Angebot des Investors zum Kauf und zu m Erwerb tokenisierter Wertpapiere im 
+gezeichneten Ausmaß unter Einbeziehung und Geltung dieser Investitionsbedingungen. 
+4.3 Der kleinstmögliche Zeichnungsbetrag ist der Mindestzeichnungsbetrag. Die Zeichnung 
+kann nur zum Mindestzeichnungsbetrag oder zu einem Vielfachen dieses Betrags erfolgen. 
+4.4 Die Zeichnung erfolgt durch den Klick auf den Button „Kauf signieren“ auf der 
+Emissionsplattform der Emittenti n, infolgedessen der Zeichnungsbetrag am 
+Zahlungskonto des Investors bis zur Ausgabe der tokenisierten Wertpapiere oder alternativ 
+bis zur Ablehnung der Zeichnung reserviert und gesperrt wird. 
+4.5 Die rechtswirksame Zeichnung tokenisierter Wertpapiere setzt voraus, dass 
+a) sich der Investor am Marktplatz registriert und einen Account zur eigenverantwortlichen 
+Verwahrung seiner tokenisierten Wertpapiere auf der Blockchain erstellt (hat), 
+
+=== PAGE 7 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 7 von 21 
+  
+ 
+b) die Person des Investors über den Marktplatz durch Erhebung und Prüfung der 
+gesetzlich geforderten Angaben identifiziert wurde („Know Your Customer“) und die 
+notwendigen Informationen und Identifikationsnachweise (z .B. Reisepass oder 
+Personalausweis) an die Emittentin übermittelt wurden; und 
+c) der Emittentin die Bestätigung vorliegt, dass der jeweilige Zeichnungsbetrag vom 
+Zahlungskonto des Investors auf das Konto der Emittentin überwiesen werden kann. 
+4.6 Die Annahme der Zeichnung des Investors erfolgt dadurch, dass die Emittentin für jedes (zu 
+tokenisierende) Wertpapier einen Token generiert und die dem Investor zustehenden Token 
+auf dessen Account transferiert. Die Emittentin kann die Zeichnung des Investors jederzeit 
+annehmen, sobald angebotene tokenisierte Wertpapiere im Ausmaß der 
+Mindestausgabemenge (oder darüber) gezeichnet wurden und zuvor für einen allenfalls 
+verbleibenden Kapitalbedarf (das ist die Differenz zwischen Gesamtnennbetrag und 
+Mindestausgabemenge) eine anderweitige Finanzierungsquelle sichergestellt wurde, 
+welche die Ansprüche des Investors gemäß Ziffer 5. dieser Investitionsbedingungen bei 
+ordnungsgemäßem Gang der Geschäfte v oraussichtlich nicht beeinträchtigt. Die 
+Emittentin wird die Zeichnung des Investors jedenfalls ohne unnötige Verzögerung 
+annehmen, sobald sämtliche angebotenen tokenisierten Wertpapiere gezeichnet wurden.  
+4.7 Sobald die Emittentin dem Investor die von ihm gezeichneten tokenisierten Wertpapiere auf 
+seinen Account übertragen hat, wird der Zeichnungsbetrag automatisch vom 
+Zahlungskonto des Investors auf das Konto der Emittentin überwiesen. 
+4.8 Sofern die Emittentin die Zeichnung nicht binnen zwei (2) Wochen nach Zeichnung 
+sämtlicher tokenisierten Wertpapiere an der Immobilie angenommen hat, kann der Investor 
+die Zeichnung ohne Angabe von Gründen zurückziehen. 
+4.9 Die Emittentin ist nicht verpflichtet, die Zeichnung des Investors anzunehmen. Die 
+Emittentin wird die Zeichnung insbesondere dann ablehnen, wenn 
+4.9.1 innerhalb der Zeichnungsfrist tokenisierte Wertpapiere nicht im Umfang der 
+Mindestausgabemenge gezeichnet wurden; 
+4.9.2 zwar die Mindestausgabemenge erreicht, nicht aber sämtliche angebotenen 
+tokenisierten Wertpapiere gezeichnet wurden, und für einen verbleibenden 
+Kapitalbedarf (das ist die Differenz zwischen Gesamtnennbetrag und 
+Mindestausgabemenge) keine anderweitige Finanzierungsquelle sichergestellt 
+wurde, welche die Ansprüche des Investors gemäß Ziffer 5. dieser 
+Investitionsbedingungen bei ordnungsgemäßem Gang der Geschäfte 
+voraussichtlich nicht beeinträchtigt; 
+4.9.3 der Erwerb der tokenisierten Wertpapiere zu rechtswidrigen Zwecken erfolgt; 
+4.9.4 der Investor nicht zum Erwerb tokenisierter Wertpapiere berechtigt ist; 
+
+=== PAGE 8 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 8 von 21 
+  
+ 
+4.9.5 die Emittentin nicht berechtigt ist, tokenisierte Wertpapiere an den Investor zu 
+verkaufen. 
+4.10 Sofern nicht tokenisierte Wertpapiere im Ausmaß der Mindestausgabemenge innerhalb der 
+Zeichnungsfrist gezeichnet wurden oder wenn der Investor seine Zeichnung im Einklang mit 
+diesen Investitionsbedingungen berechtigt zurückzieht, wird der am Zahlungskonto des 
+Investors reservierte Zeichnungsbetrag wieder freigegeben bzw. ein bereits bezahlter 
+Zeichnungsbetrag binnen 10 (zehn) Bankarbeitstagen auf das Zahlungskonto des Investors 
+zurücküberwiesen.  
+4.11 Wurden tokenisierte Wertpapiere zumindest im Ausmaß der Mindestausgabemenge, nicht 
+aber sämtliche angebotenen tokenisierten Wertpapiere gezeichnet und ausgegeben, und 
+wurden nicht spätestens innerhalb eines (1) Jahres nach dem Ausgabetag sämtliche 
+angebotenen (verbleibenden) tokenisierten Wertpapiere gezeichnet, so enden diese 
+Investitionsbedingungen automatisch ein (1) Jahr nach dem Ausgabetag (auflösende 
+Bedingung). Der Investor erhält diesfalls den bezahlten Ausgabebetrag vorbehaltlich der 
+Regelungen der Ziffer 11 zurückerstattet. Bereits erfolgte Ausschüttungen gemäß Ziffer 5 
+verbleiben beim Investor. 
+4.12 Der Investor ist neben der Zahlung des Zeichnungsbetrags zu keinen weiteren Zahlungen an 
+die Emittentin verpflichtet, insbesondere nicht zu Nachschüssen aus oder im 
+Zusammenhang mit den tokenisierten Wertpapieren. 
+5. AUSSCHÜTTUNG UND VERLUSTBETEILIGUNG 
+5.1 Der Investor erhält je Kalendermonat vorbehaltlich der Regelung der Ziffer 5.7 und der Ziffer 
+11 eine Ausschüttung, welche sich wie folgt berechnet:   
+[Netto-Kaltmieteinnahmen je Kalendermonat - Kosten der Bewirtschaftung der Immobilie 
+je Kalendermonat - monatliche Management Fee - monatliche Liquiditätsrücklage - nicht 
+umlagefähige Kosten der Immobilie (der „Netto-Mietüberschuss“)] / Gesamtzahl der 
+tokenisierten Wertpapiere * Anzahl der vom Investor im Zeitpunkt der Ausschüttung 
+gehaltenen Wertpapiere 
+Soweit der Netto-Mietüberschuss negativ ist (der "Netto-Mietfehlbetrag"), besteht keine 
+Nachschusspflicht für den Investor. 
+5.2 Die "Netto-Kaltmieteinnahmen" der Immobilie ist die vom Mieter bezahlte Bruttomiete 
+abzüglich Nebenkosten(-vorauszahlung/-nachzahlung) und gegebenenfalls anfallende 
+Umsatzsteuer. Nebenkosten sind alle nach dem anwendbaren Recht auf den Mieter 
+umlagefähigen Betriebskosten.  
+5.3 Die "Kosten der Bewirtschaftung der Immobilie" setzen sich zusammen wie folgt: 
+5.3.1 Hausverwaltungskosten, soweit diese nicht von den Mietern der Immobilie 
+getragen werden; hierunter fallen insbesondere: 
+
+=== PAGE 9 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 9 von 21 
+  
+ 
+(a) nach dem Gesetz vom Vermieter zu tragende Kosten; 
+(b) Kosten der Garagenstellplatzverwaltung; 
+(c) Kosten für die Miet- und Objektverwaltung; 
+(d) Kosten der Sondereigentumsverwaltung; 
+(e) Kosten im Zusammenhang mit Mieterwechseln, insbesondere Maklerkosten; 
+5.3.2 Verwaltungsaufwand der Emittentin aus der Beauftragung Dritter; hierunter fallen 
+insbesondere Kosten für Rechts- oder Steuerberatung; von Dritten in Rechnung 
+gestellte Kosten und Gebühren im  Zusammenhang mit der Verwaltung der 
+Emittentin; 
+5.3.3 Instandhaltungs- und Instandsetzungskosten für die Immobilie (soweit nicht 
+fremdfinanziert) sowie Zins- und Tilgungszahlungen im Fall der (teilweisen) 
+Fremdfinanzierung; 
+5.3.4 Kosten für Investitionen in Anlagegüter (Küche, Ausstattung, etc.) (soweit nicht 
+fremdfinanziert) sowie Zins- und Tilgungszahlungen im Fall der (teilweisen) 
+Fremdfinanzierung; 
+Sofern die Kosten der Bewirtschaftung der Immobilie nicht monatlich (sondern z.B. 
+quartalsmäßig, halbjährlich oder jährlich) anfallen, werden sie gleichmäßig auf jene Monate 
+verteilt, für die sie angefallen bzw. bestimmt sind. 
+5.4 Die "monatliche Management Fee" ist ein Teil der monatlichen Netto-Mieteinnahmen, der 
+bei der Emittentin verbleibt und/oder (gegebenenfalls teilweise) für die Bezahlung eines 
+monatlichen Entgelts für die Beauftragung Dritter verwendet wird, für (i) die Besorgung der 
+Sub-Verwaltung der Immobilie im Einklang mit diesen Investitionsbedingungen, den vom 
+Investor beschlossenen Verwaltungsmaßnahmen, den jeweils anwendbaren gesetzlichen 
+Bestimmungen und den für die Emittentin rechtsverbindlichen Verträgen sowie (ii) für die 
+Durchführung zwingend notwendiger Maßnahmen (z.B. bei Gefahr im Verzug) . Die 
+monatliche Management Fee beträgt bis zu 10% der Netto-Mieteinnahmen. 
+5.5 Die "monatliche Liquiditätsrücklage" ist eine von der Emittentin für die Deckung der 
+Kosten gemäß Ziffer 5.3 sowie für sonstige Kosten im Zusammenhang mit der Verwaltung 
+der Immobilie gebildete Reserve. Die monatliche Liquiditätsrücklage beträgt bis zu 10% der 
+Netto-Mieteinnahmen. 
+5.6 Die monatliche Ausschüttung wird für jeden Kalendermonat gesondert festgestellt und an 
+den Investor ausbezahlt. Die Feststellung der monatlichen Ausschüttung erfolgt binnen 3 
+(drei) Wochen nach Ablauf eines Kalendermonats. Die Ausschüttung wird binnen 7 (sieben) 
+Bankarbeitstagen ab Feststellung an den Investor zur Auszahlung gebracht.  
+
+=== PAGE 10 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 10 von 21 
+  
+ 
+5.7 Der Investor nimmt insoweit am Verlust aus der Bewirtschaftung der Immobilie teil, als ein 
+etwaiger Netto-Mietfehlbetrag mit Netto-Mietüberschüssen der Folgemonate solange 
+verrechnet wird, bis der negative Saldo ausgeglichen ist (der "Verlustausgleich"). 
+5.8 Die Jahresendabrechnung und die Feststellung eines etwaigen zusätzlichen 
+Ausschüttungsbetrags oder eines etwaigen Netto-Mietfehlbetrages aus der 
+Bewirtschaftung der Immobilie erfolgt binnen 8 (acht) Wochen nach Ablauf eines 
+Kalenderjahres. Ein etwaiger zusätzlicher Ausschüttungsbetrag, welcher sich im Zuge der 
+Jahresendabrechnung der Bewirtschaftung der Immobilie ergibt, gelangt binnen 7 (sieben) 
+Bankarbeitstagen ab Feststellung an den Investor zur Auszahlung. Ein etwaiger Netto-
+Mietfehlbetrag, welcher sich im Zuge der Jahresendabrechnung der Bewirtschaftung der 
+Immobilie ergibt, wird gemäß Ziffer 5.7 ausgeglichen. 
+5.9 Im Falle einer Veräußerung der Immobilie hat der Investor nach vollständigem Abschluss der 
+Veräußerung einen "Ausschüttungsanspruch anlässlich der Veräußerung der Immobilie" , 
+der sich wie folgt berechnet: 
+(Verkaufspreis der Immobilie - Kosten der Transaktionsabwicklung - allenfalls anfallende 
+Steuern auf Ebene der Emittentin + vorhandene Liquiditätsrücklage - Verbindlichkeiten aus 
+Finanzierungen in Bezug auf die Immobilie - ein noch nicht gemäß Ziffer 5.7 ausgeglichener 
+Netto-Mietfehlbetrag) / Gesamtzahl der tokenisierten Wertpapiere * Anzahl der vom 
+Investor im Zeitpunkt der Ausschüttung gehaltenen tokenisierten Wertpapiere 
+(a) Die "Kosten der Transaktionsabwicklung" sind sämtliche Kosten, die bei der 
+Emittentin im Zusammenhang der Veräußerung der Immobilie anfallen, 
+insbesondere: Notargebühren (z.B. Beglaubigungen), Treuhandgebühren, 
+Kosten der Rechtsberatung, Gerichtsgebühren, Maklerkosten, und Kosten 
+des gemeinsamen Vertreters gemäß Kuratorengesetz 1874. 
+(b) Die "Steuern auf Ebene der Emittentin " sind sämtliche Steuern im 
+Zusammenhang mit der Veräußerung, insb. Ertragsteuern, z.B. Immobilien-
+Ertragsteuer, und Verkehrssteuern (z.B. Umsatzsteuer, Grunderwerbsteuer) 
+(c) Der Ausschüttungsanspruch anlässlich der Veräußerung der Immobilie ist 
+innerhalb von 2 (zwei) Monaten nach Eingang des Veräußerungspreises bei 
+der Emittentin zur Auszahlung auf das Zahlungskonto des Investors fällig. 
+5.10 Eine gegebenenfalls von der Emittentin für den Investor abzuführende Abzugssteuer (z.B. 
+Kapitalertragsteuer) wird gesondert vom jeweiligen Ausschüttungsbetrag gemäß Ziffer 5.1 
+bzw. 5.9 in Abzug gebracht. 
+5.11 Abgesehen von den in dieser Ziffer 5 genannten Ansprüchen bestehen keine 
+Ausschüttungsansprüche zugunsten des Investors. 
+
+=== PAGE 11 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 11 von 21 
+  
+ 
+6. MITSPRACHE BEI DER VERWALTUNG DER IMMOBILIE 
+6.1 Die Emittentin wird für die Durchführung folgender Maßnahmen, sofern sie sich auf die 
+Immobilie beziehen, die Zustimmung der Investoren einholen, wobei die Zustimmung mit 
+der einfachen Mehrheit der abgegebenen Stimmen der Investoren erteilt wird: 
+(a) Beauftragung von Dienstleistern zur Instandsetzung (z.B. Renovierung) oder 
+Umbau der Immobilie sowie Ausübung der Rechte aus dem 
+Vertragsverhältnis; 
+(b) dingliche Belastung der Immobilie sowie Änderung und Löschung von 
+dinglichen Lasten; 
+(c) Abstimmungen im Zuge der ordentlichen Hausverwaltung; 
+(d) Subverwaltung der Immobilie und Beauftragung von Dienstleistern in 
+diesem Zusammenhang (z.B. Handwerker, Subverwaltung, Hausverwaltung) 
+sowie Ausübung der Rechte aus dem Vertragsverhältnis; 
+(e) Abschluss und Beendigung von Mietverträgen. 
+Eine einfache Mehrheit ist erreicht, wenn ein Vorschlag mehr als die Hälfte der gültig 
+abgegebenen Stimmen auf sich vereinigt. Erforderlich ist sohin, dass die Zahl der gültigen 
+JA-Stimmen die der gültigen NEIN-Stimmen um wenigstens eine übertrifft. 
+6.2 Beabsichtigt die Emittentin die Veräußerung der Immobilie, wird sie hierfür die Zustimmung 
+der Investoren (Einwilligung) einholen. Die Zustimmung der Investoren zur Veräußerung 
+kann nur erteilt werden, wenn zumindest 90% der tokenisierten Wertpapiere im Zeitpunkt 
+des Votings in einer Hand vereinigt sind - also vom selben Investor gehalten werden - und 
+alle Investoren der Veräußerung zustimmen. Ansonsten darf die Veräußerung der Immobilie 
+jedenfalls erfolgen, sofern 
+(a) anders als durch die Veräußerung der Immobilie ein Netto-Mietfehlbetrag 
+aus der Bewirtschaftung der Immobilie nicht innerhalb von 3 Monaten ab 
+dem erstmaligen Auftreten beseitigt werden kann; oder 
+(b) aufgrund der weiteren Bewirtschaftung der Immobilie bei der Emittentin 
+mindestens ein Insolvenzeröffnungsgrund entstehen würde; oder 
+(c) die Emittentin gesetzlich oder aufgrund rechtskräftiger behördlicher oder 
+gerichtlicher Anordnung zur Veräußerung der Immobilie verpflichtet ist; oder 
+(d) über das Vermögen der Emittentin ein Insolvenzverfahren eröffnet worden 
+ist. 
+6.3 Die Emittentin stellt dem Investor auf einer permanent verfügbaren Online-Plattform, auf 
+die der Investor über den Marktplatz zugreifen kann,  alle für die Wertentwicklung der 
+
+=== PAGE 12 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 12 von 21 
+  
+ 
+Immobilie sowie alle für die Beschlussfassungen nach dieser Ziffer 6 notwendigen und 
+verfügbaren Unterlagen und Informationen (soweit rechtlich notwendig teilweise 
+geschwärzt) im Rahmen des ordnungsgemäßen Geschäftsgangs zur Verfügung. Dazu zählen 
+insbesondere nachstehende Unterlagen und Informationen: 
+(a) Aufstellungen und Abrechnungen über die Kosten der Bewirtschaftung der 
+Immobilie; 
+(b) Abrechnungen zu Betriebskosten und Rücklagen; 
+(c) Informationen und vertragliche Unterlagen über den Abschluss, die 
+Änderung und die Beendigung von Mietverträgen und sonstigen Verträgen 
+im Zusammenhang mit der Immobilie; 
+(d) Informationen und vertragliche Unterlagen über Finanzierungen; 
+(e) Informationen sowie vertragliche und behördliche Unterlagen über 
+wertrelevante Veränderungen an der Immobilie. 
+6.4 Die Abstimmungsergebnisse binden die Emittentin lediglich schuldrechtlich  (d.h. 
+ausschließlich im Verhältnis zu den Investoren)  und nur unter den folgenden 
+Voraussetzungen: 
+(a) die Kosten für die Durchführung der jeweiligen Maßnahmen sind durch die 
+bestehende Liquiditätsrücklage gedeckt oder zu marktüblichen Konditionen 
+finanzierbar und die Tilgungen sowie Finanzierungskosten sind jedenfalls 
+durch künftige Einnahmen aus der Bewirtschaftung der Immobilie gedeckt; 
+und 
+(b) die Durchführung der Maßnahme führt nicht zur Gefahr eines Netto-
+Mietfehlbetrages aus der Bewirtschaftung der Immobilie; und  
+(c) die Durchführung der Maßnahme führt nicht zu einem oder mehreren 
+Insolvenzeröffnungsgründen; und 
+(d) es stehen der Durchführung der Maßnahme  keine anderen zwingenden 
+rechtlichen oder tatsächlichen Gründe entgegen (z.B. Gefahr im Verzug, 
+Unmöglichkeit, potenzielle Gesetzwidrigkeit, potenzieller Verstoß gegen 
+bestehende Verträge).  
+6.5 Nach fristgerechtem und formgültigem Abschluss des Votings und sofern die vorstehenden 
+Voraussetzungen vorliegen, wird die Emittentin jene Maßnahme bzw. jene Maßnahmen, die 
+eine Zustimmung erhalten haben, unverzüglich, spätestens innerhalb von 10 (zehn) 
+Werktagen, umsetzen und/oder die notwendigen Erklärungen abgeben, sofern dem nicht die 
+in Ziffer 6.4 genannten oder sonst zwingende tatsächliche oder rechtliche Gründe 
+entgegenstehen. 
+
+=== PAGE 13 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 13 von 21 
+  
+ 
+6.6 Eine wirksame Zustimmung kann nur im Rahmen einer Abstimmung über die in den Ziffern 
+6.1-6.2 genannten Maßnahmen („Voting“) erfolgen. Jeder Investor ist zur Teilnahme an allen 
+Votings unter den nachfolgenden Bedingungen berechtigt.  
+6.7 Das Voting wird ausschließlich über das Voting-Verfahren auf der Plattform der Emittentin, 
+die über den Marktplatz aufgerufen werden kann, abgehalten. Dieses Voting-Verfahren 
+erfolgt ausschließlich nach den folgenden Regeln: 
+6.7.1 Steht eine Entscheidung über eine der vorgenannten Maßnahmen an, wird die 
+Emittentin unverzüglich ein Voting abhalten. 
+6.7.2 Die Emittentin wird den Investoren eine angemessene Anzahl an unter 
+kaufmännischen Gesichtspunkten unter Wahrung der Sorgfalt eines ordentlichen 
+Kaufmanns angemessenen (d.h. geeigneten) Vorschlägen zur Abstimmung 
+bereitstellen. Sofern möglich, werden mindestens drei Vorschläge zur 
+Abstimmung bereitgestellt. Die Emittentin ist zur Abgabe einer 
+Beschlussempfehlung berechtigt; eine Pflicht zur Abgabe einer solchen 
+Empfehlung besteht jedoch nicht. 
+6.7.3 Sobald ein Voting gestartet wurde, erhält der Investor eine Push-Nachricht über 
+die Plattform der Emittentin, die über den Marktplatz aufgerufen werden kann, 
+sowie eine E-Mail mit einem entsprechenden Hinweis. 
+6.7.4 Votings werden zumindest 48 Stunden vor dem Beginn des Voting-Zeitraums 
+angekündigt. Im Fall eines Votings über eine in Ziffer 6.2 ausdrücklich genannte 
+Maßnahme wird das Voting 1 (eine) Woche vor Beginn des Voting-Zeitraums 
+angekündigt. 
+6.7.5 Der Investor hat ab dem Start des Votings  72 Stunden Zeit, um am Voting 
+teilzunehmen, d.h. die auf die von ihm gehaltenen Token entfallenden Stimmen 
+abzugeben. 
+6.7.6 Der Investor erhält die Möglichkeit, im Einklang mit Ziffer 6.12 selbst einen 
+beschlussfähigen Vorschlag zur Abstimmung (der "Gegenvorschlag") zu stellen. 
+6.7.7 Der Investor kann hinsichtlich der Vorschläge, die zur Abstimmung gebracht 
+werden, einem bestimmten Vorschlag zustimmen ("JA-Stimme") oder sich seiner 
+Stimme enthalten ("Enthaltung") oder einen bestimmten Vorschlag ablehnen 
+("NEIN-Stimme"). 
+6.7.8 Der Investor kann seine Entscheidung innerhalb des Voting-Zeitraums jederzeit 
+ändern. 
+6.7.9 Jedes tokenisierte Wertpapier gewährt dem Investor eine Stimme . Hält die 
+Emittentin und/oder eine mit ihr im Sinne des § 189a Z 8 UGB (direkt oder indirekt, 
+mittelbar oder unmittelbar) verbundene juristische und/oder natürliche Person 
+
+=== PAGE 14 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 14 von 21 
+  
+ 
+und/oder ein Familienmitglied einer der vorerwähnten Personen oder ein 
+Treuhänder für eine der vorerwähnten Personen tokenisierte Wertpapiere, so steht 
+jeder dieser Personen unabhängig von der Anzahl der von Ihnen gehaltenen 
+tokenisierten Wertpapiere nur eine Stimme zu. Werden mehrere tokenisierte 
+Wertpapiere von unterschiedlichen Personen für eine der vorerwähnten Personen 
+gehalten und sind diese daher wirtschaftlich einer der vorerwähnten Personen 
+zuzuordnen, steht dieser Person ebenfalls nur eine Stimme zu. Allen vorerwähnten 
+Personen zusammen stehen jedoch keinesfalls mehr als 50% der gesamten 
+verfügbaren Stimmen zu. Familienmitglieder im Sinne dieser Ziffer 6.7.9 sind 
+folgende Personen: Ehepartner, Lebensgefährten, Kinder, Verwandte in direkter 
+Linie, Geschwister. 
+6.8 Eine wirksame Zustimmung zu einer Voting -Option gilt als erteilt, wenn die für die 
+betreffende Maßnahme erforderliche Mehrheit der gültig abgegebenen JA-Stimmen am 
+Ende des Voting-Zeitraums vorliegt. Nicht abgegebene Stimmen und Enthaltungen bleiben 
+bei der Feststellung der erforderlichen Mehrheit der abgegebenen Stimm en 
+unberücksichtigt, wobei die Anzahl der abgegeben en Stimmen der Summe von JA -
+Stimmen, und NEIN-Stimmen je Vorschlag entspricht. Bei einem Voting nach Ziffer 6.10 
+(„Stichwahl“) gilt dies auch für Stimmenthaltungen. Eine nachträgliche Stimmabgabe ist 
+ausgeschlossen.  
+6.9 Verfügt ein Investor über mehr als 50% aller tokenisierten Wertpapiere, so ist für die 
+wirksame Zustimmung zu Maßnahmen gemäß den Ziffern 6.1-6.2, für die dieser Investor 
+abgestimmt hat, auch die Zustimmung der einfachen Mehrheit all jener Investoren, die sich 
+an der Abstimmung beteiligt haben, („Kopfmehrheit“) erforderlich. 
+6.10 Stehen bei einem Voting mehr als 2 (zwei) Voting-Vorschläge zur Auswahl und erreicht keine 
+der Voting-Vorschläge die für eine wirksame Zustimmung erforderliche Mehrheit, so wird 
+zwischen den beiden Voting-Vorschlägen mit den meisten JA-Stimmen nach Maßgabe 
+dieser Ziffer 6. (ausgenommen sind die Ziffern 6.7.6 und 6.12) ein neuerliches Voting 
+durchgeführt („Stichwahl“). 
+6.11 Wird keine Stimme abgegeben oder herrscht (gegebenenfalls nach einer Stichwahl) 
+Stimmengleichheit für mehrere Voting-Vorschläge, so gilt jenem Voting-Vorschlag die 
+Zustimmung erteilt, der der Beschlussempfehlung der Emittentin entspricht oder – sofern 
+keine Beschlussempfehlung abgegeben ist oder auf die Beschlussempfehlung keine oder 
+weniger Stimme entfallen - der Vorschlag, der von der Emittentin nachträglich empfohlen 
+wird. 
+6.12 Der Investor hat das Recht, über die Plattform der Emittentin, die über den Marktplatz 
+aufgerufen werden kann, ein eigenes Voting mit eigenen Vorschlägen zu den Maßnahmen 
+gemäß den Ziffern 6.1-6.2 nach dem in Ziffer 6.7 festgelegten Voting-Verfahren und unter 
+Beifügung der hierfür erforderlichen Unterlagen im Wege des hierfür vorgesehen 
+elektronischen Formulars unter Unterbreitung eines beschlussfähigen Vorschlags 
+anzustoßen. Der Investor hat weiters das Recht, im Rahmen eines anderweitig 
+
+=== PAGE 15 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 15 von 21 
+  
+ 
+stattfindenden Votings eigene Vorschläge ("Gegenvorschlag") zur Abstimmung im Rahmen 
+des Votings gemäß Ziffer 6.7 zu unterbreiten. Der Investor hat diese Option spätestens 24 
+(vierundzwanzig) Stunden vor dem angekündigten Start des Votings unter Beifügung der 
+hierfür erforderlichen Unterlagen im Wege des hierfür vorgesehen elektronischen Formulars 
+bekanntzugeben. Ein eigenes Voting oder ein Gegenvorschlag wird zum Voting zugelassen, 
+sobald sie (i) von mindestens 10% der gesamten verfügbaren Stimmen sowie (ii) von 
+mindestens 10% sämtlicher Investoren, sofern vorhanden jedoch mindestens 2 (zwei)  
+weiteren Investoren, mittels Voting unterstützt wird.  
+6.13 Zur Abstimmung der Investoren  untereinander sowie zur Kontaktaufnahme und 
+Kommunikation mit der Emittentin stellt die Emittentin den Investoren über die Plattform 
+der Emittentin, die über den Marktplatz aufgerufen werden kann, dauerhaft 
+(unterbrechungslos) ein gemeinsames elektronisches, nicht moderiertes Forum bereit, 
+welchem nur Investoren beitreten und sich frei zu allen gewünschten Themen per 
+elektronischer Textnachricht äußern sowie auch Dateien (z.B. Worddokumente, pdf-
+Dateien) bereitstellen können. Eine jede derartige Kommunikation ist für sämtliche anderen 
+Investoren sichtbar. Überdies können die Investoren in diesem Forum im Rahmen eines 
+elektronischen Abstimmungsprozesses ihre Zustimmung , Ablehnung oder 
+Stimmenthaltung zu einem von einem Investor angestoßenen Voting oder zu einem 
+Gegenvorschlag abgeben. 
+7. VERWALTUNG DER TOKENISIERTEN WERTPAPIERE 
+7.1 Die Token, welche die Wertpapiere des Investors repräsentieren, sind auf dem Blockchain-
+Netzwerk gespeichert. Der Investor verwaltet die tokenisierten Wertpapiere selbständig und 
+eigenverantwortlich. Er kann über seine tokenisierten Wertpapiere nur verfügen, wenn er 
+vollumfänglichen Zugang zu seinem Account hat. Ein solcher Account ist zwingend 
+erforderlich, um die tokenisierten Wertpapiere zu halten und zu handeln sowie um 
+Auszahlungen auf die tokenisierten Wertpapiere zu erhalten.  
+8. KEINE EIGENTUMSRECHTE, KEIN TREUHANDVERHÄLTNIS, KEINE 
+GESELLSCHAFTERRECHTE, KEINE NACHSCHUSSPFLICHT 
+8.1 Diese Investitionsbedingungen gewähren dem Investor keine unmittelbaren und/oder - mit 
+Ausnahme der zu bestellenden Sicherheit - keine dinglichen Rechte an der Immobilie, 
+insbesondere keine Eigentums- und eigentumsähnlichen Rechte. Die Emittentin ist des 
+Weiteren nicht Treuhänderin hinsichtlich der Immobilie. Der Investor hat nicht das Recht, 
+anlässlich der Veräußerung der Immobilie oder der Kündigung der Wertpapiere oder aus 
+irgendeinem sonstigen Anlass einen Anteil an der Immobilie zu erhalten oder sonstige 
+unmittelbare oder dingliche Rechte an der Immobilie zu begründen, mit Ausnahme der 
+Sicherheit. 
+8.2 Diese Investitionsbedingungen begründen kein Gesellschafterrechte und/oder kein 
+Gesellschaftsverhältnis und kein Recht an der Mitwirkung an der  Geschäftsführung der 
+Emittentin. Dies gilt auch für etwaige Rechtsnachfolger der Emittentin. Die Investoren sind 
+nicht dazu berechtigt, an Beschlussfassungen der Anteilseigner der Emittentin in 
+
+=== PAGE 16 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 16 von 21 
+  
+ 
+irgendeiner Form teilzunehmen und/oder mitzuwirken und/oder über Beschlüsse informiert 
+zu werden. Der Investor hat gegenüber der Geschäftsführung keine Weisungsrechte, 
+Einsichtsrechte in die Geschäftsbücher der Emittentin  oder gesellschaftsrechtlichen 
+Informations- oder Stimmrechte. 
+8.3 Der Investor hat kein Recht auf Umwandlung seiner tokenisierten Wertpapiere in einen 
+Gesellschaftsanteil an der Emittentin. 
+8.4 Es ist nicht ausgeschlossen, dass die Emittentin ihre Firma ändert , in eine andere 
+Gesellschaftsform umgewandelt wird oder dass die Gesellschaftsanteile an der Gesellschaft 
+übertragen werden; solche Maßnahmen haben keine Auswirkungen auf den Bestand der 
+Wertpapiere. Der Investor hat diesbezüglich keine Informations - oder 
+Mitbestimmungsrechte. Die Regelungen der Sätze 1 und 2 gelten sinngemäß für den Fall, 
+dass die Emittentin an einer Strukturänderunge n im Sinne des 
+Umgründungssteuergesetzes beteiligt ist. 
+8.5 Den Investor trifft keine Nachschusspflicht im Hinblick Verbindlichkeiten der Emittentin aus 
+oder im Zusammenhang mit dem Erwerb, der Verwaltung, der Bewirtschaftung oder der 
+Veräußerung der Immobilie. Ein Verlustausgleich stellt keinen Nachschuss im Sinne des Satz 
+1 dar. 
+9. SQUEEZE-OUT 
+9.1 Sofern ein Investor 90,00% oder mehr aller ausgegebenen tokenisierten Wertpapiere hält 
+(der „Hauptinvestor“), kann der Hauptinvestor ein Squeeze-out-Verfahren einleiten. Die 
+Einleitung des Squeeze-out-Verfahrens kann auch über die Plattform der Emittentin, die 
+über den Marktplatz aufgerufen werden kann, durch entsprechende Betätigung des 
+Squeeze-out-Buttons erfolgen, welcher einem Investor im Falle des Vorliegens der 
+notwendigen Voraussetzungen angezeigt wird.  Der Hauptinvestor hat dem/den 
+verbleibenden Investor/en einen Kaufpreis anzubieten, der zumindest 10% (zehn Prozent) 
+über dem gewichteten Mittel aus dem Durchschnittspreis der betreffenden tokenisierten 
+Wertpapiere der letzten 12 (zwölf) Monate und dem Durchschnittspreis der betreffenden 
+tokenisierten Wertpapiere der letzten 90 (neunzig) Tage lieg t (wenn die betreffenden 
+tokenisierten Wertpapiere innerhalb der letzten 90 (neunzig) Tage nicht gehandelt wurden, 
+ist nur Durchschnittspreis der letzten 12 (zwölf) Monate  heranzuziehen). Sofern der 
+Hauptinvestor oder zumindest einer der verbleibenden Investoren mit der Berechnung des 
+Verkaufspreises nach dieser Methode nicht einverstanden ist, kann er auf eigene Kosten ein 
+Gutachten eines unabhängigen Sachverständigen oder einer unabhängigen 
+Sachverständigengesellschaft über den Verkehrswert der zu verkaufenden tokenisierten 
+Wertpapiere einholen. Der/Die Sachverständige ist durch den Landespräsidenten der 
+Kammer der Steuerberater und Wirtschaftsprüfer für Wien zu bestellen. Hat der 
+Hauptinvestor die Einholung eines solchen Gutachtens eingeholt, so hat er seinem  
+Kaufangebot den vom Sachverständigen ermittelten Verkehrswert seiner tokenisierten 
+Wertpapiere zugrunde zu legen. Hat/haben ein/mehrere verbleibende/r Investoren ein 
+solches Gutachten eingeholt, so hat der Hauptinvestor nur gegenüber diesem/diesen 
+
+=== PAGE 17 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 17 von 21 
+  
+ 
+Investor/en seinem Kaufangebot den auf diese Weise ermittelten Verkehrswert zugrunde zu 
+legen. Die verbleibenden Investoren sind verpflichtet, dieses Kaufangebot des 
+Hauptinvestors anzunehmen. Die Kosten des Squeeze-out-Verfahrens trägt in jedem Fall 
+zur Gänze der Hauptinvestor. 
+10. DAUER DER WERTPAPIERE / KÜNDIGUNGSRECHTE 
+10.1 Die tokenisierten Wertpapiere werden grundsätzlich für die Dauer des Bestehens der 
+Emittentin bzw. ihrer Rechtsnachfolger begeben.  
+10.2 Die Emittentin verzichtet unwiderruflich auf das Recht zur ordentlichen Kündigung. 
+10.3 Das Recht der Emittentin zur außerordentlichen Kündigung aus wichtigem Grund bleibt 
+hiervon unberührt. Ein wichtiger Grund, der die Emittentin zur außerordentlichen 
+Kündigung berechtigt, ist insbesondere dann gegeben, wenn (a) mehr als 10% der Investoren 
+das Rechtsverhältnis zur Emittentin rechtswirksam, sohin entweder im Einklang mit diesen 
+Investitionsbedingungen oder sonst auf Grundlage der anwendbaren gesetzlichen 
+Bestimmungen, kündigen und die tokenisierten Wertpapiere nicht nach den Bestimmungen 
+der Ziffer 10.6-10.8 (oder anderweitig) verkauft werden, oder (b) die Handelbarkeit auf einem 
+öffentlich zugänglichen Marktplatz dauerhaft, jedoch für mindestens 60 Tage, wegfällt, oder 
+(c) wenn der Immobilienkaufvertrag über den Erwerb der Immobilie - gleich aus welchem 
+Grund - rückabgewickelt wird. In den Fällen (a) und (b) kann die Emittentin das 
+Rechtsverhältnis zum Investor unter Einhaltung einer Kündigungsfrist von 6 (sechs) 
+Monaten zum 31.12. eines jeden Kalenderjahres (Kündigungstermin) außerordentlich 
+kündigen. Die Emittentin ist im vorerwähnten Fall (a) zur Veräußerung der Immobilie 
+berechtigt und im vorerwähnten Fall (b) zur Veräußerung der Immobilie verpflichtet. Im Fall 
+einer Veräußerung gilt Ziffer 5.9. Erfolgt im Fall (a) keine Veräußerung, so erhält der Investor 
+ein Beendigungshaben, dessen Ermittlung und Auszahlung gemäß den Ziffern 10.7-10.8 
+erfolgt. Im Fall (c) kann die Emittentin die Kündigung ohne Einhaltung einer Frist vornehmen. 
+Diesfalls erhält der Investor den bezahlten Ausgabepreis abzüglich allenfalls angefallener 
+Rückabwicklungskosten. 
+10.4 Das Recht des Investors zur ordentlichen Kündigung ist für die Dauer der Handelbarkeit der 
+tokenisierten Wertpapiere auf einem öffentlich zugänglichen Marktplatz (z.B. Brickwise) 
+ausgeschlossen. Fällt die Handelbarkeit auf einem öffentlich zugänglichen Marktplatz 
+dauerhaft, jedoch für mindestens 60 Tage, weg, so kann der Investor das Rechtsverhältnis 
+zur Emittentin unter Einhaltung einer Kündigungsfrist von 6 (sechs) Monaten zum 31.12. 
+eines jeden Kalenderjahres  (Kündigungstermin) kündigen. Der frühestmögliche 
+Kündigungstermin ist jedoch erst jener 31.12. eines Kalenderjahres, der zumindest 2 (zwei) 
+Jahre nach dem Emissionsdatum liegt. Der (auch dauerhaft) erfolglose Versuch der 
+Veräußerung der tokenisierten Wertpapiere auf Brickwise oder einem anderen Marktplatz, 
+der den Handel mit diesen ermöglicht, gilt – unabhängig vom Angebotspreis – keinesfalls als 
+Wegfall der Handelbarkeit im Sinne dieser Ziffer 10.3. 
+10.5 Das Recht des Investors zur außerordentlichen Kündigung des Rechtsverhältnisses zur 
+Emittentin bleibt hiervon unberührt. Bevor der Investor die außerordentliche Kündigung 
+
+=== PAGE 18 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 18 von 21 
+  
+ 
+erklären kann, hat er die Emittentin zur Erfüllung der aus seiner Sicht verletzten 
+Verpflichtung unter Einräumung einer Frist von zumindest 14 (vierzehn) Tagen aufzufordern. 
+Stellt die Emittentin die Verletzung ihrer Verpflichtung nicht binnen der gesetzten Frist ein, 
+so kann der Investor die außerordentliche Kündigung erklären.  
+10.6 Gleichzeitig mit der Erklärung der ordentlichen Kündigung (Ziffer 10.4) bzw. der 
+außerordentlichen Kündigung (Ziffer 10.5) hat der Investor die von der Kündigung erfassten 
+tokenisierten Wertpapiere auf Brickwise sowie auf jedem von der Emittentin namhaft 
+gemachten Marktplatz, der den Handel mit den betreffenden tokenisierten Wertpapieren 
+ermöglicht, und jedem von der Emittentin namhaft gemachten Dritten zum Verkauf 
+anzubieten. 
+10.7 Der beim Verkauf gemäß Ziffer 10.6 angebotene Verkaufspreis darf nicht über dem 
+gewichteten Mittel aus dem Durchschnittspreis der betreffenden tokenisierten 
+Wertpapiere der letzten 12 (zwölf) Monate und dem Durchschnittspreis der betreffenden 
+tokenisierten Wertpapiere der letzten 90 (neunzig) Tage liegen (wenn die betreffenden 
+tokenisierten Wertpapiere innerhalb der letzten 90 (neunzig) Tage nicht gehandelt wurden, 
+ist nur Durchschnittspreis der letzten 12 (zwölf) Monate heranzuziehen). Sofern der Investor 
+mit der Berechnung des Verkaufspreises nach dieser Methode nicht einverstanden ist, kann 
+er auf eigene Kosten ein Gutachten eines unabhängigen Wirtschaftstreuhänders bzw. einer 
+unabhängigen Wirtschaftstreuhandgesellschaft über den Verkehrswert der zu verkaufenden 
+tokenisierten Wertpapiere einholen. Der Wirtschaftstreuhänder bzw . die 
+Wirtschaftstreuhandgesellschaft durch den Landespräsidenten der Kammer der 
+Wirtschaftstreuhänder für Wien bestellt. Diesfalls hat der Investor seinem Verkaufsangebot 
+den vom Wirtschaftstreuhänder bzw. von der Wirtschaftstreuhandgesellschaft ermittelten 
+Verkehrswert seiner tokenisierten Wertpapiere zugrunde zu legen. 
+10.8 Soweit die betreffenden tokenisierten Wertpapiere auf Basis eines Angebots iSd Ziffer 10.6 
+verkauft werden, ist die ordentliche Kündigung (Ziffer 10.4) bzw. außerordentliche 
+Kündigung (Ziffer 10.5) hinfällig. Soweit die betreffenden tokenisierten Wertpapiere nicht 
+verkauft werden, erhält der Investor von der Emittentin Zug-um-Zug gegen Herausgabe der 
+der betreffenden tokenisierten Wertpapiere ein Beendigungsguthaben, welches sich nach 
+der in Ziffer 10.7 dargestellten Methode errechnet. Dieses Beendigungsguthaben ist im Falle 
+einer ordentlichen Kündigung innerhalb von 2 (zwei) Monaten nach dem Kündigungstermin 
+bzw. im Falle einer außerordentlichen Kündigung innerhalb von 2 (zwei) Monaten nach 
+Erklärung der Kündigungserklärung durch den Investor zur Zahlung auf das vom Investor 
+zuletzt bekanntgegebene Bankkonto fällig. 
+11. VERÄUSSERUNG DER IMMOBILIE  
+11.1 Bei Veräußerung der Immobilie hat die Emittentin mit der Sorgfalt eines ordentlichen 
+Geschäftsmannes und im Interesse der Investoren zu agieren. Sie hat die Veräußerung 
+insbesondere ohne unnötige Verzögerung und mit dem Bestreben, einen marktkonformen 
+Verkaufserlös zu erwirtschaften, voranzutreiben.  
+
+=== PAGE 19 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 19 von 21 
+  
+ 
+11.2 Sofern die Immobilie verkauft wird, hat die Emittentin vor dem Verkauf ein 
+Verkehrswertgutachten eines gerichtlich beeideten Immobiliensachverständigen 
+einzuholen. Die Emittentin ist  verpflichtet, innerhalb der ersten sechs Monate ab 
+Übermittlung des Verkehrswertgutachtens die Liegenschaft nicht zu einem Preis zu 
+verkaufen, der 100% des Verkehrswertes der Liegenschaft gemäß dem 
+Verkehrswertgutachten unterschreitet. Diese Schwelle verringert sich nach dem sechsten 
+Monat ab Erhalt des Verkehrswertgutachtens um jeweils fünf Prozentpunkte monatlich, 
+dies bis zu einer Reduktion von maximal 30% des Verkehrswertes. Sofern die Emittentin ein 
+anderes Verkaufsverfahren als vorteilhafter für die Investoren einschätzt, hat sie die 
+Investoren unter Angabe der einer verständlichen Begründung nach den Bestimmungen der 
+Ziffer 6 über ihren Vorschlag abstimmen zu lassen. 
+11.3 Die Emittentin hat den Investoren die Möglichkeit einzuräumen, an dem vorerwähnten 
+Verkaufsverfahren teilzunehmen, und ihnen die Modalitäten des Verkaufsverfahren sowie 
+die Möglichkeit der Teilnahme über das Forum gemäß Ziffer 6.13 oder per E-Mail 14 (vierzehn) 
+Tage vor dessen Einleitung zu kommunizieren. 
+11.4 Die Emittentin hat dafür Sorge zu tragen, dass die Kosten der Veräußerung nicht über dem 
+marktüblichen Ausmaß liegen. 
+11.5 Ein Verkauf der Immobilie (A) an Personen, die in Bezug (i) auf ein Mitglied des Leitungsorgan 
+der Emittentin oder (ii) einen (direkt oder indirekt, mittelbar oder unmittelbar) an der 
+Emittentin beteiligten Gesellschafter als nahestehende Personen iSd § 32 IO zu qualifizieren 
+sind, oder (B) an mit der Emittentin gemäß § 189a Z 8 UGB (direkt oder indirekt, mittelbar 
+oder unmittelbar) verbundene juristische und/oder natürliche Person und/oder ein 
+Familienmitglied einer der vorerwähnten Personen darf nur nach vorheriger Einholung eines 
+Verkehrswertgutachtens eines gemäß DIN ISO/IEC 17024 (oder einer vergleichbaren Norm) 
+zertifizierten Immobilien-Sachverständigen, welches den Investoren zumindest 14 
+(vierzehn) Tage vor Annahme des Kaufanbots über das Forum gemäß Ziffer 6.13 oder per E-
+Mail zur Verfügung zu stellen ist, erfolgen. Die Emittentin hat mit einer Person gemäß (A) 
+bzw. (B) zu vereinbaren, dass diese jedenfalls die Kosten der Erstellung des 
+Verkehrswertgutachtens trägt, gleichgültig ob der Verkauf an diese Person stattfindet oder 
+nicht. 
+12. BESTANDSSCHUTZ 
+12.1 Gesellschaftsrechtliche Maßnahmen jeglicher Art bei der Emittentin haben keinen Einfluss 
+auf die tokenisierten Wertpapiere des Investors. 
+13. ÜBERTRAGBARKEIT DER TOKENISIERTEN WERTPAPIERE 
+13.1 Jeder Investor kann einzelne oder alle tokenisierten Wertpapiere mit Zustimmung der 
+Emittentin veräußern. Die Emittentin erteilt unter folgenden Voraussetzungen vorab die 
+Zustimmung zu einer Veräußerung der tokenisierten Wertpapiere: 
+
+=== PAGE 20 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 20 von 21 
+  
+ 
+13.1.1 die Übertragung erfolgt nicht zu einem gesetz- oder anderweitig rechtswidrigen 
+Zweck oder Motiv; und 
+13.1.2 der Investor erfüllt die unter Ziffer 4.5 lit a bis d angeführten Voraussetzungen; und 
+13.1.3 der beabsichtigte Transfer wird am Marktplatz bekannt gemacht. 
+13.2 Die sachenrechtliche Übertragung (Modus) der tokenisierten Wertpapiere erfolgt auf 
+dezentralem Wege über das Blockchain-Netzwerk und gilt mit der Änderung der Zuordnung 
+eines Tokens, welcher das zu übertragenden tokenisierte Wertpapier repräsentiert, vom 
+Verkäufer an den Käufer als bewirkt. Diese Änderung der Zuordnung stellt das digitale und 
+dezentrale Pendant zu einer physischen Übergabe eines Wertpapiers vom Verkäufer an den 
+Käufer dar. 
+14. AUSGABE WEITERER WERTPAPIERE UND SONSTIGER RECHTE 
+14.1 Hinsichtlich der Immobilie wird die Emittentin keine weiteren tokenisierten Wertpapiere 
+oder andere Wertpapiere, Veranlagungen oder sonstige Beteiligungsinstrumente ausgeben. 
+14.2 Die Emittentin behält sich jedoch ausdrücklich das Recht vor, weitere tokenisierte 
+Wertpapiere oder vergleichbare Finanzinstrumente hinsichtlich anderer Immobilien zu 
+gleichen oder anderen als diesen Investitionsbedingungen auszugeben. Ein Bezugsrecht des 
+Investors auf solche zukünftigen tokenisierten Wertpapiere oder vergleichbare 
+Finanzinstrumente besteht nicht. 
+15. MITTEILUNGEN UND NACHRICHTEN 
+15.1 Sämtliche Mitteilungen und Erklärungen in Zusammenhang mit d en tokenisierten 
+Wertpapieren erfolgen durch Push-Mitteilung über den Marktplatz bzw. des in Ziffer 6.13 
+beschriebenen elektronischen Forums und – sofern der Investor diesen Wunsch durch 
+entsprechende Zustimmung über den Marktplatz geäußert hat - zusätzlich per E-Mail an die 
+von ihm bei der Registrierung am Marktplatz bekanntgegebene Email-Adresse. 
+15.2 Der Investor kann Mitteilungen und Erklärungen sowohl über den Marktplatz als auch per 
+Email oder per Post an die Emittentin richten. 
+16. STEUERN UND SONSTIGE KOSTEN 
+16.1 Sämtliche Steuern und Abgaben sowie etwaige sonstige Kosten, die mit dem Erwerb, dem 
+Halten oder der Veräußerung der tokenisierten Wertpapiere sowie mit Ausschüttungen 
+verbunden sind, müssen von den Investoren selbst getragen und bezahlt oder abgeführt 
+werden.  
+16.2 Ist die Emittentin gesetzlich verpflichtet, Steuern, Gebühren und sonstige Abgaben 
+einzubehalten oder abzuziehen, wird die Emittentin nur den nach Abzug verbleibenden 
+Betrag an die Investoren verteilen. Sofern die Emittentin zum Kapitalertragssteuerabzug 
+
+=== PAGE 21 ===
+
+Investitionsbedingungen 
+Stand: 25.10.2022 
+  
+Seite 21 von 21 
+  
+ 
+verpflichtet ist, wird sie die Kapitalertragsteuer einbehalten und an die zuständigen 
+Finanzbehörden abführen.  
+17. SCHLUSSBESTIMMUNGEN 
+17.1 Diese Investitionsbedingungen unterliegen ausschließlich österreichischem Recht unter 
+Ausschluss der jeweiligen Verweisungsnormen des Internationalen Privatrechts.  
+17.2 Für alle sich aus dem Rechtsverhältnis zwischen dem  Investor und der Emittentin 
+ergebenden Rechtsstreitigkeiten ist das sachlich für Handelssache zuständige Gericht in 
+Wien, erster Bezirk, zuständig. Diese Gerichtsstandvereinbarung beschränkt nicht das Recht 
+eines Investors, Verfahren vor einem anderen zuständigen Gericht anzustrengen. Ebenso 
+wenig schließt die Einleitung von Verfahren vor einem oder mehreren anderen 
+Gerichtsständen die Einleitung von Verfahren an einem anderen Gerichtsstand aus, falls und 
+soweit dies rechtlich zulässig ist. 
+17.3 Sofern ein Investor nicht als Verbraucher handelt und eine Bestimmung dieser 
+Investitionsbedingungen unwirksam oder undurchsetzbar ist oder werden sollte, 
+beeinträchtigt das nicht die Wirksamkeit oder Durchsetzbarkeit der übrigen Bestimmungen 
+dieser Investitionsbedingungen. In einem solchen Fall gilt die unwirksame oder 
+undurchsetzbare Bestimmung als durch eine wirksame und durchsetzbare Bestimmung 
+ersetzt, die dem Zweck der zu ersetzenden Bestimmung am nächsten kommt. Dies gilt 
+sinngemäß auch für die Ausfüllung etwaiger Lücken dieser Investitionsbedingungen. 
+ 

@@ -1,0 +1,215 @@
+{
+ "id": "AT0000A38J32",
+ "tokenId": "6DZ4S4Tt3yo6Y7WpN8DAh2ZN8F6xmnTMAKxMgMxXnaMM",
+ "partnerId": "greemer",
+ "type": "powerplant",
+ "propertyDetails": {
+  "features": [],
+  "commissioningDate": "2019-12-31T23:00:00.000Z",
+  "constructionStatus": "stock",
+  "constructionType": "roof",
+  "lifespan": 20,
+  "powerOutput": 178,
+  "powerOutputPerAnno": 180000,
+  "powerplantType": "photovoltaic",
+  "propertySecurity": "Eigentum",
+  "highlights": [],
+  "plots": []
+ },
+ "rentalDetails": {
+  "additionalManagementCosts": [
+   {
+    "name": "Instandhaltungsrücklagen jährlich",
+    "amount": {
+     "$numberDecimal": "810.00"
+    }
+   },
+   {
+    "name": "Liquiditätsrücklage jährlich",
+    "amount": {
+     "$numberDecimal": "1620.00"
+    }
+   },
+   {
+    "name": "Gewinnnbeteiligung Emittentin (5%)",
+    "amount": {
+     "$numberDecimal": "575.92"
+    }
+   }
+  ],
+  "liquidityReserve": {
+   "$numberDecimal": "1080.00"
+  },
+  "managementFee": {
+   "$numberDecimal": "11971.52"
+  },
+  "monthlyDistributionDate": 15,
+  "rentalIncome": {
+   "$numberDecimal": "27000.00"
+  },
+  "rentalSurplus": {
+   "$numberDecimal": "10942.56"
+  },
+  "plannedFirstRentalIncomeDate": "2024-02-14T23:00:00.000Z",
+  "rentalReturn": {
+   "$numberDecimal": "6.43"
+  }
+ },
+ "investmentDetails": {
+  "stage": "secondary",
+  "issueEndDate": "2024-03-14T23:00:00.000Z",
+  "issueFundingFloor": 55.87,
+  "issueStartDate": "2023-11-14T23:00:00.000Z",
+  "maturity": true,
+  "securityType": "participationRightDebtCapital",
+  "sharePrice": {
+   "$numberDecimal": "95.00"
+  },
+  "spv": {
+   "id": "e52ec281-e6c4-4c2b-8997-fcf9e4d4bce2",
+   "partnerId": "greemer",
+   "owner": "[persona física recortada]",
+   "email": "office@green-point.at",
+   "taxNumber": "FN 329414 h",
+   "companyPurpose": "Erwerb, Verwaltung, Entwicklung, Vermietung, Verpachtung, Verauf3erung und Verwertung v?? Liegenschaften und grundstucksgleichen Rechten; Bauträger;",
+   "companyName": "Green-Point 62 GmbH",
+   "address": {
+    "street": "Pottendorfer Strasse 62, EG04",
+    "postCode": "2700",
+    "city": "Wiener Neustadt",
+    "countryCode": "AUT"
+   },
+   "taxOffice": "FA07",
+   "dseDocumentSrc": "https://cdn.brickwise.at/f86d00f8-6744-4117-97f9-390e8e8e0d64.pdf",
+   "companyNumber": "ATU65047068",
+   "taxInformation": {
+    "austrianFASTNR": "073392847",
+    "austrianIDENTIFIKATIONSBEGRIFF": "073392847"
+   }
+  },
+  "terminationRight": "issuer",
+  "totalBricks": 1790,
+  "terminationRightFrequency": "15",
+  "maturityDate": "2038-12-30T23:00:00.000Z",
+  "repaymentAmount": 100.32,
+  "minSubscriptionAmount": 0,
+  "ISIN": "AT0000A38J32",
+  "issueEndDateOriginal": "2024-01-14T23:00:00.000Z",
+  "issuingSharePrice": {
+   "$numberDecimal": "100.32"
+  },
+  "availableBricks": 0,
+  "forumActive": true,
+  "isAllowedDomicile": [],
+  "isAllowedPlz": [],
+  "preparedCashFlowTable": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableStressScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableOptimisticScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  }
+ },
+ "descriptions": {
+  "nomenclature": {
+   "rentalIncomeTitle": [
+    {
+     "lang": "deu",
+     "value": "Einnahmen p.a.*"
+    }
+   ],
+   "rentalIncome": [
+    {
+     "lang": "deu",
+     "value": "Einnahmen p.a."
+    }
+   ],
+   "managementFee": [
+    {
+     "lang": "deu",
+     "value": "Rückstellung für Rückzahlung der Genussrechtsanteile am Ende der Laufzeit "
+    }
+   ],
+   "liquidityReserve": [
+    {
+     "lang": "deu",
+     "value": "OPEX (Operational Expenses) / Betriebskosten"
+    }
+   ],
+   "total": [
+    {
+     "lang": "deu",
+     "value": "Nettoüberschuss jährlich"
+    }
+   ],
+   "expectedYieldDisclaimer": [
+    {
+     "lang": "deu",
+     "value": "*Die Rendite berechnet sich auf Basis des Nettoüberschuss jährlich und kommt jeweils nur zur Auszahlung wenn der Nettoüberschuss positiv ist."
+    }
+   ],
+   "documents": {
+    "investmentBasicInformation": [],
+    "investmentInformation": [],
+    "investmentConditions": [],
+    "rentalAgreement": [],
+    "expertProtocol": [],
+    "landRegister": [],
+    "energyCertificate": [],
+    "utilityReport": [],
+    "plantList": []
+   }
+  },
+  "propertyQuote": "PV-Anlage mit Direktverbrauch im Gebäude",
+  "title": "Photovoltaik Anlage GreenPoint mit Überschussbeteiligung",
+  "investmentDetails": "Auf Grundlage der Investitionsbedingungen begibt die Emittentin tokenisierte Wertpapiere, die den Investoren das Recht einräumen, an den laufenden Überschüssen aus dem Betrieb der Photovoltaik-Anlage zu partizipieren.",
+  "securityDetails": "Der Emittent des Wertpapiers ist der Eigentümer der Photovoltaik Anlage. Die ausgegebenen Wertpapiere sind Genussscheine und auf\ndem Blockchain Brick-Protokoll digitalisiert Die ISIN, kurz für International Securities Identification Numberm ist eine Internationale\nIdentifikationsnummer mit der Wertpapiere eindeutig identifiziert werden können.",
+  "propertyDetails": "Green-Point 62 GmbH betreibt auf dem Dach der Immobilie Green-Point in der Pottendorfer Straße 62 in 2700 Wiener Neustadt eine Photovoltaik Anlage mit 178kWp Leistung. Die Anlage ist in Betrieb und liefert Strom an folgende Abnehmer: das Gebäude, die Mieter des Gebäudes und der Überschuss wird mittels ÖEMAG-Tarif ins Netz der Netz Niederösterreich GmbH eingespeist. Die Anlage erzeugt pro Jahr ca. 180.000 kWh Strom. ",
+  "propertyHighlight": "Photovoltaik Aufdachanlage zur Versorgung von Green-Point und Einspeisung in das Netz. ",
+  "rentalDetails": "Die tokenisierten Wertpapiere gewähren dem Investor eine quotale Beteiligung (=Verhältnis zwischen der vom Investor gehaltenen tokenisierten Wertpapiere zur Gesamtzahl der tokenisierten Wertpapiere) an 95 % des Jahresüberschusses. Die quotale Beteiligung am Jahresüberschuss wird monatlich aliquot ausbezahlt.\n\nDer Jahresüberschuss berechnet sich aus den Einnahmen (Umsatzerlösen) abzüglich der Ausgaben und Rücklagen. \n\nDie Umsatzerlöse werden durch den Absatz, des in der Photovoltaik Anlage produzierten Stroms, erzielt. Der Strom wird in das Gebäude eingespeist und der Überschuss-Strom wird zum ÖEMAG-Markttarif (Marktpreis gemäß § 41 Ökostromgesetz 2012) in das Netz der Netz Niederösterreich GmbH eingespeist. \n",
+  "locationDetails": "Die Photovoltaik Anlage befindet sich am Dach der Immobilie Green-Point in Wiener Neustadt an der Pottendorfer Straße. ",
+  "cityDetails": "Die Pottendorfer Straße ist geprägt durch Mehrfamilienhäuser und Einkaufsmöglichkeiten. ",
+  "districtDetails": "Wiener Neustadt ist die zweitgrößte Stadt Niederösterreichs und liegt ca. 45km südlich von Wien. Wiener Neustadt ist sowohl für den Individualverkehr als auch mit öffentlichen Verkehrsmitteln sehr gut erschlossen. ",
+  "powerplantPictureDetails": "Der mit PV-Anlage produzierter Strom wird durch Wohnungen, Büros und Ladestationen zum Größtenteil selbst verbraucht. Damit wird ein Absatz von Strom unabhängig von Schwankundne am Strom-Markt sichergestellt.",
+  "powerplantPictureTitle": " Über die Anlage"
+ },
+ "images": "[omitido]",
+ "documents": {
+  "additionalDocuments": [],
+  "investmentBasicInformation": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+  "investmentConditions": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+  "investmentInformation": "https://cdn.brickwise.at/b9711a2c-4f37-4d6e-81d9-0719e54c6b90.pdf",
+  "additionalInvestmentDocuments": [
+   {
+    "name": "Rücktrittsbelehrung",
+    "src": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+    "signed": false
+   }
+  ]
+ },
+ "createdAt": "2023-05-19T07:31:51.083Z",
+ "updatedAt": "2026-11-01T10:57:44.514Z",
+ "location": {
+  "address": "Pottendorfer Straße 62",
+  "city": "Wiener Neustadt",
+  "coordinates": {
+   "lat": 47.8270528,
+   "lng": 16.2542063
+  },
+  "countryCode": "AUT",
+  "postalCode": "2700"
+ },
+ "investorSettings": {
+  "calculateReturnOnEquity": false
+ },
+ "isMIFID": true,
+ "onlyPrimary": false,
+ "preorderEnabled": false,
+ "useSerialNumber": false,
+ "loanInformation": {}
+}

@@ -1,0 +1,594 @@
+{
+ "title": "Boss Info AG Investor Page",
+ "companyLegalName": "\"Boss Info AG\"",
+ "ticker": "\"BOSS\"",
+ "cantonalExcerptURL": "\"https://be.chregister.ch/cr-portal/auszug/auszug.xhtml?uid=CHE-105.004.543\"",
+ "isPrimaryMarketEnabled": "true",
+ "isSecondaryMarketEnabled": "true",
+ "totalShareholders": "155",
+ "valuationPolicy": "\"LAST_TRADE\"",
+ "baseTokenRegistrationAgreementURL": null,
+ "draggableTokenHolderAgreementURL": null,
+ "headquartersAddress": "\"Farnern, Switzerland\"",
+ "foundingYear": "\"1998\"",
+ "industry": "\"IT General Contractor\"",
+ "isPrivate": "false",
+ "primaryMarketPrice": "{decimals:18,value:8501970000000000000,big:\"8501970000000000000\"}",
+ "lastSecondaryMarketTrade": "{whenCreated:\"2026-09-28T11:32:59Z\",pricePerShare:{decimals:2,value:670,big:\"670\"}}",
+ "lastPriceCheckpoint": "{whenCreated:\"2026-09-28T11:32:59Z\",pricePerShare:{decimals:1,value:67,big:\"67\"}}",
+ "marketCap": "{value:712808243000000,currencyId:\"CHF\",decimals:7}",
+ "totalShares": "{value:10650100,decimals:0}",
+ "totalSupply": "{value:10650100,ticker:\"BOSS\",decimals:0}",
+ "taxValue": "{value:805000,currencyId:\"CHF\",decimals:6}",
+ "contracts": "{address:\"0x2e880962a9609aa3eab4def919fe9e917e99073b\",chainId:\"mainnet\",blockchainExplorerURL:\"https://etherscan.io/address/0x2e880962a9609aa3eab4def919fe9e917e99073b\",isBridged:false}",
+ "blobs_keys": [
+  "/api/chains",
+  "/api/investorpages/getCorporateEvents",
+  "/api/metric?ticker=BOSS",
+  "/api/investorpages/getTokenTradingVolumeData",
+  "/api/investorpages/getTokenPriceData",
+  "/api/brokerbotsettings?ticker=BOSS"
+ ],
+ "brokerbot": {
+  "baseCurrency": "CHF",
+  "baseCryptoCurrency": "ZCHF",
+  "paymentMethods": [
+   {
+    "paymentCurrency": "CHF",
+    "paymentMethodLabel": "Bank Transfer (CHF)",
+    "paymentType": "FIAT_CURRENCY"
+   },
+   {
+    "paymentCurrency": "ETH",
+    "paymentMethodLabel": "Ether (ETH)",
+    "paymentType": "CRYPTOCURRENCY"
+   },
+   {
+    "paymentCurrency": "ZCHF",
+    "paymentMethodLabel": "Frankencoin (ZCHF)",
+    "paymentType": "CRYPTOCURRENCY",
+    "tokenRegistrationAddress": "0xb58e61c3098d85632df34eecfb899a1ed80921cb",
+    "tokenDecimals": 18
+   }
+  ],
+  "bankTransferLimit": {
+   "enabled": true,
+   "min": 100
+  },
+  "cryptoPaymentsLimit": {
+   "enabled": true,
+   "min": 9
+  },
+  "sellingEnabled": false,
+  "cryptocurrencyMinimumAmount": 9,
+  "exchangeRates": [
+   {
+    "baseCurrency": "CHF",
+    "secondaryCurrency": "EUR",
+    "exchangeRate": 1.084911027280585
+   },
+   {
+    "baseCurrency": "CHF",
+    "secondaryCurrency": "USD",
+    "exchangeRate": 1.2130179135896915
+   },
+   {
+    "baseCurrency": "CHF",
+    "secondaryCurrency": "GBP",
+    "exchangeRate": 0.905682394263795
+   },
+   {
+    "baseCurrency": "CHF",
+    "secondaryCurrency": "CHF",
+    "exchangeRate": 1.0
+   }
+  ],
+  "chain": "mainnet",
+  "chainId": 1,
+  "marketAddress": "0x3e73d3fc22a8637b2c16790aa2c0e2d552d44e69",
+  "initialShares": 500,
+  "initialCurrency": "XCHF",
+  "disabledBuyText": "Aktuell ist der Verkauf von Aktien aufgrund eines Wartungsfensters deaktiviert.\nBei Fragen wenden sie sich an simon.boss@bossinfo.ch .",
+  "disabledSellText": "Aktuell ist der Ankauf von Aktien aufgrund eines Wartungsfensters deaktiviert.\nBei Fragen wenden sie sich an simon.boss@bossinfo.ch .",
+  "insiderRules": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+  "allowList": false,
+  "identityVerification": false,
+  "emailRequired": false,
+  "addressRequired": false,
+  "fatcaRequired": false,
+  "version": 8,
+  "secondaryMarketEnabled": true,
+  "reservedShares": 0,
+  "investmentTerms": "",
+  "onlyBuySide": false
+ },
+ "companyId": "1664",
+ "http": "200",
+ "consultadoUtc": "2026-11-01T14:58:52Z",
+ "tradesConsultadoUtc": "2026-11-01T14:58:53Z",
+ "trades": {
+  "trades": [
+   {
+    "id": "0x981d925f73217e58f0cebe99cdfcc7531811edd8ad92b0ac4ed0fb2f89742f21-00394",
+    "whenCreated": "2026-09-28T11:32:59Z",
+    "tradedShares": 474,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 67,
+     "big": "67"
+    },
+    "transactionHash": "0x981d925f73217e58f0cebe99cdfcc7531811edd8ad92b0ac4ed0fb2f89742f21",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x6f5186e5f08cfb375b9339775e70c9111f51a26c99f75f1f7f199d083d6287b7-00352",
+    "whenCreated": "2026-09-28T11:32:35Z",
+    "tradedShares": 2,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 675,
+     "big": "675"
+    },
+    "transactionHash": "0x6f5186e5f08cfb375b9339775e70c9111f51a26c99f75f1f7f199d083d6287b7",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x6a7a82ae338da43bf52541b513199b9af821ca8301bbd7272bf54ec90ca20a51-00091",
+    "whenCreated": "2026-09-28T11:11:47Z",
+    "tradedShares": 1000,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 68,
+     "big": "68"
+    },
+    "transactionHash": "0x6a7a82ae338da43bf52541b513199b9af821ca8301bbd7272bf54ec90ca20a51",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xbbcd4b71100260877fbefbbe956d4dedb0a4eecd3ebde0acf9554a3745779bfc-00298",
+    "whenCreated": "2026-09-28T11:11:35Z",
+    "tradedShares": 1,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 681,
+     "big": "681"
+    },
+    "transactionHash": "0xbbcd4b71100260877fbefbbe956d4dedb0a4eecd3ebde0acf9554a3745779bfc",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x99dcaa5afa2a167dd0f5da79915defa7a536930dbc33729460faba65efe217e7-00322",
+    "whenCreated": "2026-09-28T11:11:23Z",
+    "tradedShares": 518,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 69,
+     "big": "69"
+    },
+    "transactionHash": "0x99dcaa5afa2a167dd0f5da79915defa7a536930dbc33729460faba65efe217e7",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xc3472d5e692ed466e17694faf0d0b015e6c10092eb9cbe4b8c55a6be80117d50-00436",
+    "whenCreated": "2026-09-28T11:11:11Z",
+    "tradedShares": 2,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 691,
+     "big": "691"
+    },
+    "transactionHash": "0xc3472d5e692ed466e17694faf0d0b015e6c10092eb9cbe4b8c55a6be80117d50",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xd3216ea30c7a5804197051d6fef64cc953ddec427fe28212503cccff6d35dd8a-00903",
+    "whenCreated": "2026-08-29T17:58:35Z",
+    "tradedShares": 100,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 844,
+     "big": "844"
+    },
+    "transactionHash": "0xd3216ea30c7a5804197051d6fef64cc953ddec427fe28212503cccff6d35dd8a",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x02900e5e850fe3481e2b7fc65ea0ca14567f4f9fec25699c6aa5c1d3d984a348-00298",
+    "whenCreated": "2026-08-18T06:42:59Z",
+    "tradedShares": 850,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 82,
+     "big": "82"
+    },
+    "transactionHash": "0x02900e5e850fe3481e2b7fc65ea0ca14567f4f9fec25699c6aa5c1d3d984a348",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x342a7f2b74fd060e04ee6ab84ec34298b05b533d2b2605d7a3975a9b8f7ebecd-00608",
+    "whenCreated": "2026-08-07T13:39:47Z",
+    "tradedShares": 482,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 69,
+     "big": "69"
+    },
+    "transactionHash": "0x342a7f2b74fd060e04ee6ab84ec34298b05b533d2b2605d7a3975a9b8f7ebecd",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x04f27d1b665982b0d7cdc57e5326249d982d23e5dc3465afe8697665ed186f47-00202",
+    "whenCreated": "2026-08-07T13:39:11Z",
+    "tradedShares": 989,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 705,
+     "big": "705"
+    },
+    "transactionHash": "0x04f27d1b665982b0d7cdc57e5326249d982d23e5dc3465afe8697665ed186f47",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xd674a0d47ec46050c4683686eca279241d6d72b3827d130d34660bc1c0c0bec2-00323",
+    "whenCreated": "2026-07-23T13:35:47Z",
+    "tradedShares": 11,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 705,
+     "big": "705"
+    },
+    "transactionHash": "0xd674a0d47ec46050c4683686eca279241d6d72b3827d130d34660bc1c0c0bec2",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xd1dffeff3604d18b540a7b1a38d65ca9475bf12cc2ad40f5e227eb4cee11dec7-00448",
+    "whenCreated": "2026-07-21T07:14:23Z",
+    "tradedShares": 1000,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 72,
+     "big": "72"
+    },
+    "transactionHash": "0xd1dffeff3604d18b540a7b1a38d65ca9475bf12cc2ad40f5e227eb4cee11dec7",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x4e2cfeade3cb59c7ecd75f9110d1c8efcfaa811d479ef904a25352c8bee818b1-01371",
+    "whenCreated": "2026-07-18T13:24:23Z",
+    "tradedShares": 1000,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 73,
+     "big": "73"
+    },
+    "transactionHash": "0x4e2cfeade3cb59c7ecd75f9110d1c8efcfaa811d479ef904a25352c8bee818b1",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x5df3d4f2aa511b4a5e5723e0ba0c07572b7189ecd7cf5bafb1a9d6b1b5e52d0c-00398",
+    "whenCreated": "2026-07-18T13:23:59Z",
+    "tradedShares": 1000,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 75,
+     "big": "75"
+    },
+    "transactionHash": "0x5df3d4f2aa511b4a5e5723e0ba0c07572b7189ecd7cf5bafb1a9d6b1b5e52d0c",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x90ee5c2cb5fa708bf2db85b33093c77d7f90979f8a7f878b8e817a14f67279e7-00584",
+    "whenCreated": "2026-07-18T13:23:47Z",
+    "tradedShares": 17,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 751,
+     "big": "751"
+    },
+    "transactionHash": "0x90ee5c2cb5fa708bf2db85b33093c77d7f90979f8a7f878b8e817a14f67279e7",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xd00cde54d2c83ac648578b49dd25fabba741c646ef159ea538397d4dd2633932-00344",
+    "whenCreated": "2026-07-17T21:15:47Z",
+    "tradedShares": 5,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 755,
+     "big": "755"
+    },
+    "transactionHash": "0xd00cde54d2c83ac648578b49dd25fabba741c646ef159ea538397d4dd2633932",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xe6dd5ab19dc5b82e95b4ca0058e2faec5362b1e772fb068a2e3ec4eba20a4bb2-00286",
+    "whenCreated": "2026-07-13T11:01:23Z",
+    "tradedShares": 2000,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 73,
+     "big": "73"
+    },
+    "transactionHash": "0xe6dd5ab19dc5b82e95b4ca0058e2faec5362b1e772fb068a2e3ec4eba20a4bb2",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x5eb981a0ce9408138ef64f55cfb48619508f6bdc54dc139aa6f3f3a3c6a7f629-00599",
+    "whenCreated": "2026-07-13T11:01:11Z",
+    "tradedShares": 2000,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 74,
+     "big": "74"
+    },
+    "transactionHash": "0x5eb981a0ce9408138ef64f55cfb48619508f6bdc54dc139aa6f3f3a3c6a7f629",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x072f8975d8e73c6b01331d5e5dacfc97606d0df4f767effb6836e7c47a8723f0-00296",
+    "whenCreated": "2026-07-13T11:00:59Z",
+    "tradedShares": 2700,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 75,
+     "big": "75"
+    },
+    "transactionHash": "0x072f8975d8e73c6b01331d5e5dacfc97606d0df4f767effb6836e7c47a8723f0",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xbf3d90ae28aacab1c1a04747354888dceb5d4f4c958c430fede1b5860c589ebf-00680",
+    "whenCreated": "2026-07-13T11:00:35Z",
+    "tradedShares": 50,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 751,
+     "big": "751"
+    },
+    "transactionHash": "0xbf3d90ae28aacab1c1a04747354888dceb5d4f4c958c430fede1b5860c589ebf",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x5af8ca36000f7b655fbab8ac157616608067f989e56b4afa217229a82e68e1b1-00495",
+    "whenCreated": "2026-07-06T11:01:23Z",
+    "tradedShares": 3300,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 75,
+     "big": "75"
+    },
+    "transactionHash": "0x5af8ca36000f7b655fbab8ac157616608067f989e56b4afa217229a82e68e1b1",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x0095c03f2918164361735d7088e7c59a217f136bff8177e56bcb7099f02fd55d-00146",
+    "whenCreated": "2026-07-06T10:58:23Z",
+    "tradedShares": 50,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 755,
+     "big": "755"
+    },
+    "transactionHash": "0x0095c03f2918164361735d7088e7c59a217f136bff8177e56bcb7099f02fd55d",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xe05da296fc537f41d5ab0ebee527b9489cbba8ce9c405a11ca044fb85ee6ca10-00993",
+    "whenCreated": "2026-07-02T08:50:11Z",
+    "tradedShares": 6,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 845,
+     "big": "845"
+    },
+    "transactionHash": "0xe05da296fc537f41d5ab0ebee527b9489cbba8ce9c405a11ca044fb85ee6ca10",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xd124c244eea6d98ab070fa96416ad26d1f2aa2f68e7da881779866269c41d8ec-00386",
+    "whenCreated": "2026-07-01T13:31:47Z",
+    "tradedShares": 5000,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 79,
+     "big": "79"
+    },
+    "transactionHash": "0xd124c244eea6d98ab070fa96416ad26d1f2aa2f68e7da881779866269c41d8ec",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x22f4482e8823a3b0b36ee86237d4510c6879f189ceace1d3feaadbd8088d0222-00324",
+    "whenCreated": "2026-06-29T18:18:59Z",
+    "tradedShares": 10000,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 79,
+     "big": "79"
+    },
+    "transactionHash": "0x22f4482e8823a3b0b36ee86237d4510c6879f189ceace1d3feaadbd8088d0222",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xe6cad119899756d7eca55fd44d83a0cfc3c48f9832b3ffd05eb572257f706736-00125",
+    "whenCreated": "2026-06-29T10:53:35Z",
+    "tradedShares": 183,
+    "pricePerShare": {
+     "decimals": 33,
+     "value": 8501530054644808743169398907103825,
+     "big": "8501530054644808743169398907103825"
+    },
+    "transactionHash": "0xe6cad119899756d7eca55fd44d83a0cfc3c48f9832b3ffd05eb572257f706736",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x1d07077fdc394065841455d5ac6cd4ffa3ac89192707e00c04710e95a8ddb577-00221",
+    "whenCreated": "2026-05-25T18:43:11Z",
+    "tradedShares": 2615,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 75,
+     "big": "75"
+    },
+    "transactionHash": "0x1d07077fdc394065841455d5ac6cd4ffa3ac89192707e00c04710e95a8ddb577",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xf1a285c179ab5d3aeddf7dd099d9bd9a309037a251bb6f54f4532488a7d789ea-00338",
+    "whenCreated": "2026-05-16T08:49:47Z",
+    "tradedShares": 385,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 75,
+     "big": "75"
+    },
+    "transactionHash": "0xf1a285c179ab5d3aeddf7dd099d9bd9a309037a251bb6f54f4532488a7d789ea",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x85159784090f490efd0cd6dd78e124e6c3e3d09ec5bfaafbf9ee236ebf4e48ee-00224",
+    "whenCreated": "2026-05-07T15:34:11Z",
+    "tradedShares": 3,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 88,
+     "big": "88"
+    },
+    "transactionHash": "0x85159784090f490efd0cd6dd78e124e6c3e3d09ec5bfaafbf9ee236ebf4e48ee",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x24c22f45c7fd681bf3044b0e79ae45d79ed1bc8344eca20f9ec5f377e3d1cbfb-00349",
+    "whenCreated": "2026-05-07T15:17:59Z",
+    "tradedShares": 101,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 88,
+     "big": "88"
+    },
+    "transactionHash": "0x24c22f45c7fd681bf3044b0e79ae45d79ed1bc8344eca20f9ec5f377e3d1cbfb",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x9777e91b21d72bfec594631b8d3289666663c9e52dfe643e5ee609dd2ebf5d44-00361",
+    "whenCreated": "2026-05-07T08:52:23Z",
+    "tradedShares": 1,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 88,
+     "big": "88"
+    },
+    "transactionHash": "0x9777e91b21d72bfec594631b8d3289666663c9e52dfe643e5ee609dd2ebf5d44",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x391ced7c6386157e547eee64a982e5be1eb16477d99a8af9c5c99d682565a903-00400",
+    "whenCreated": "2026-05-07T07:24:11Z",
+    "tradedShares": 10,
+    "pricePerShare": {
+     "decimals": 0,
+     "value": 8,
+     "big": "8"
+    },
+    "transactionHash": "0x391ced7c6386157e547eee64a982e5be1eb16477d99a8af9c5c99d682565a903",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x580dcd7fc5205f5acb42319cf74b31c64a94426eb64c8872bdcf64a456ac2cdd-00176",
+    "whenCreated": "2026-05-06T16:37:59Z",
+    "tradedShares": 2494,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 725,
+     "big": "725"
+    },
+    "transactionHash": "0x580dcd7fc5205f5acb42319cf74b31c64a94426eb64c8872bdcf64a456ac2cdd",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x0e2349bb3cf51c17d7a33eea1fe47ce6b809f70d1f08daf333c7d632395d5f3a-00371",
+    "whenCreated": "2026-05-06T16:37:35Z",
+    "tradedShares": 5,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 75,
+     "big": "75"
+    },
+    "transactionHash": "0x0e2349bb3cf51c17d7a33eea1fe47ce6b809f70d1f08daf333c7d632395d5f3a",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x25900fe8438688d5fad8d8dfa924796d05559d70c259213093661e484b49f64d-00331",
+    "whenCreated": "2026-05-06T16:37:23Z",
+    "tradedShares": 1,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 79,
+     "big": "79"
+    },
+    "transactionHash": "0x25900fe8438688d5fad8d8dfa924796d05559d70c259213093661e484b49f64d",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xc68015d671c7e21b7da1d6466dce6fe275691d8b06544a5dcd2d11d6eda77811-00463",
+    "whenCreated": "2026-05-06T12:58:59Z",
+    "tradedShares": 50,
+    "pricePerShare": {
+     "decimals": 2,
+     "value": 825,
+     "big": "825"
+    },
+    "transactionHash": "0xc68015d671c7e21b7da1d6466dce6fe275691d8b06544a5dcd2d11d6eda77811",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xcf4af9f3dbe32e993684a1eb59f80aa35be1931380be035c7476fd47aba5f574-00242",
+    "whenCreated": "2026-04-30T11:23:59Z",
+    "tradedShares": 3,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 89,
+     "big": "89"
+    },
+    "transactionHash": "0xcf4af9f3dbe32e993684a1eb59f80aa35be1931380be035c7476fd47aba5f574",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0xb4f111b7a6123e6d8f26244b77e2935c26d9fdf2ccf002836c4b5eaeec410e24-00915",
+    "whenCreated": "2026-04-30T11:23:35Z",
+    "tradedShares": 1,
+    "pricePerShare": {
+     "decimals": 18,
+     "value": 8890000000000001024,
+     "big": "8890000000000001024"
+    },
+    "transactionHash": "0xb4f111b7a6123e6d8f26244b77e2935c26d9fdf2ccf002836c4b5eaeec410e24",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x4b0d184e52e22decae06ea7437e2321a7d0d9bf5fc9352e987b2f354e8d48c15-00373",
+    "whenCreated": "2026-04-30T09:37:11Z",
+    "tradedShares": 5,
+    "pricePerShare": {
+     "decimals": 0,
+     "value": 8,
+     "big": "8"
+    },
+    "transactionHash": "0x4b0d184e52e22decae06ea7437e2321a7d0d9bf5fc9352e987b2f354e8d48c15",
+    "marketType": "SECONDARY"
+   },
+   {
+    "id": "0x084ff02648ef178fb5d2c388565e5dc45bb13cd2f083b3a4b59a2eaba70d27ef-00400",
+    "whenCreated": "2026-04-29T18:37:47Z",
+    "tradedShares": 1,
+    "pricePerShare": {
+     "decimals": 1,
+     "value": 89,
+     "big": "89"
+    },
+    "transactionHash": "0x084ff02648ef178fb5d2c388565e5dc45bb13cd2f083b3a4b59a2eaba70d27ef",
+    "marketType": "SECONDARY"
+   }
+  ],
+  "total": 318
+ }
+}

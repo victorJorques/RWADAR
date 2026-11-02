@@ -1,0 +1,287 @@
+{
+  "slug": "robinhood-classic-stock-tokens",
+  "tipoExpediente": "candidata",
+  "grupo": "nuevas-fuera-radar",
+  "proveedor": "Robinhood (UE)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "Robinhood Europe, UAB (código 306377915, LEI 254900GTP4UXQO1UMI36)",
+  "emisor": "Robinhood Europe, UAB (fabricante PRIIP y contraparte única del derivado)",
+  "vehiculo": "Contrato derivado OTC (MiFID II) entre el cliente y Robinhood Europe, UAB, sin vehículo separado",
+  "token": "Token fungible acuñado en una blockchain por cada contrato; no transferible ni cedible (la página y el documento de riesgos no nombran la red)",
+  "derechoAdquirido": "Derecho contractual de liquidación en efectivo frente a Robinhood Europe ligado al precio de una acción o ETP cotizado en EE. UU.; sin propiedad ni voto sobre el subyacente; importe equivalente a dividendos si el subyacente paga",
+  "jurisdiccion": "LT",
+  "identificador": "LEI 254900GTP4UXQO1UMI36 (entidad); sin ISIN por producto",
+  "moneda": "EUR (órdenes) / USD (precio y P&L del derivado)",
+  "documentos": [
+    {
+      "titulo": "Key Information Document · US-listed Share / ETP Derivative",
+      "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+      "versionOFecha": "1 July 2026 (pie 20260626-5664125-17985354)",
+      "paginas": 3,
+      "sha256": "d744e3ac63962771cb3ea745e2b8e72b3ccf9d0cd0fc3972b6e59733eecaee96",
+      "leido": true
+    },
+    {
+      "titulo": "Description of Services, Financial Instruments and Risks",
+      "url": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_eu.pdf",
+      "versionOFecha": "aplica desde 1 July 2026 (pie 20260622-5631134-17836042)",
+      "paginas": 19,
+      "sha256": "4e3ab0a266bbbaa2ab9e013acc75e515445ca2356a921699a4f4e73821cbf4f4",
+      "leido": true
+    },
+    {
+      "titulo": "Standard Pricing Fee Schedule · Robinhood Europe, UAB",
+      "url": "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+      "versionOFecha": "pie 20260901-5888610-18779116",
+      "paginas": 1,
+      "sha256": "614b0f5b0019b6b7a84a698a567258868072ce6450c262a36c78d7452c503228",
+      "leido": true
+    },
+    {
+      "titulo": "Página «Invest» Robinhood EU (inglés y español)",
+      "url": "https://robinhood.com/eu/en/invest",
+      "versionOFecha": "consultada 2026-11-01",
+      "paginas": null,
+      "sha256": "a8ebcd271955",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Lietuvos bankas (Banco de Lituania)",
+      "entidad": "Robinhood Europe, UAB",
+      "numero": "LB002288, LB002294, LB002341",
+      "url": "https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab",
+      "alcance": "Licencia de sociedad de intermediación financiera categoría A (desde 2025-04-03: recepción y transmisión, ejecución de órdenes, negociación por cuenta propia, custodia); CASP MiCA (desde 2025-05-29); entidad de pago (desde 2026-03-12). Libre prestación sin sucursal en otros Estados miembros.",
+      "consultadoUtc": "2026-11-01T15:02:05Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "ROBINHOOD EUROPE, UAB",
+      "numero": "5299 (21/04/2025)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+      "alcance": "Empresa de servicios de inversión del EEE en libre prestación en España (registro de ESI extranjeras). La ficha no detalla aquí el programa de actividades.",
+      "consultadoUtc": "2026-11-01T15:01:01Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Robinhood",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:01:20Z"
+    },
+    {
+      "regulador": "Lietuvos bankas",
+      "busqueda": "prensa (julio 2025)",
+      "resultado": "incidencia histórica: el Banco de Lituania pidió aclaraciones sobre la estructura y comunicación de los tokens de OpenAI y SpaceX (julio de 2025, según prensa; no consta resolución sancionadora en la ficha del registro)",
+      "url": "https://www.financemagnates.com/forex/robinhoods-tokenized-stocks-face-eu-scrutiny-as-openai-distances-itself-report/",
+      "consultadoUtc": "2026-11-01T14:59:00Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "derecho",
+      "literal": "Classic Stock Tokens are derivative contracts between you and Robinhood. They are priced at the prices of the underlying securities without granting rights to them.",
+      "dato": "derivado OTC, sin derechos sobre el subyacente",
+      "fuentePrimaria": "https://robinhood.com/eu/en/invest",
+      "localizador": "página Invest, aviso superior",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T14:58:41Z",
+      "alcanceYLimites": "Igual en la versión española de la página",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Your rights under the Product come from your contract with Robinhood Europe, and are also represented by a blockchain-traded token (the 'Token'), issued to you at the time of entering into the contract.",
+      "dato": "token on-chain que representa el contrato",
+      "fuentePrimaria": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+      "localizador": "KID 1 July 2026, p.1 «What is this product?»",
+      "fechaDato": "2026-07-01",
+      "consultadoUtc": "2026-11-01T14:58:51Z",
+      "alcanceYLimites": "El documento de riesgos añade que el token es «non-transferable and non-assignable»; la página indica que no se puede enviar a otras wallets",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Start with as little as €1",
+      "dato": "1 EUR",
+      "fuentePrimaria": "https://robinhood.com/eu/en/invest",
+      "localizador": "página Invest, bloque de ventajas",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T14:58:41Z",
+      "alcanceYLimites": "Cifra de la página comercial; el KID no fija mínimo. Fracciones de token",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Robinhood Europe applies a 0.10% currency conversion fee for each transaction ... Robinhood Europe does not apply any other fees related to the trading of Classic Stock Tokens.",
+      "dato": "0,10 % por operación (cambio EUR/USD a la compra y a la venta); sin comisión de gestión",
+      "fuentePrimaria": "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+      "localizador": "Fee Schedule, apartado Robinhood Classic Stock Tokens",
+      "fechaDato": "2026-09-01",
+      "consultadoUtc": "2026-11-01T14:58:52Z",
+      "alcanceYLimites": "KID: entrada 0,10 %, salida 0,10 %, costes corrientes 0,00 %; posibles diferenciales en horario ampliado",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "You can request that Robinhood Europe buy it back from you at any time at the then-quoted price of the Underlying Asset, subject to applicable fees and other conditions in each case.",
+      "dato": "recompra por Robinhood Europe a precio del subyacente, 24/5",
+      "fuentePrimaria": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+      "localizador": "KID p.1; p.3 «How long should I hold it»",
+      "fechaDato": "2026-07-01",
+      "consultadoUtc": "2026-11-01T14:58:51Z",
+      "alcanceYLimites": "Robinhood puede suspender el cierre de posiciones (movimientos inesperados, fuera de horario, anuncios). No hay mercado secundario ni transferencia del token",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "We have classified this Product as 7 out of 7, which is the highest risk class.",
+      "dato": "SRI 7/7",
+      "fuentePrimaria": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+      "localizador": "KID p.2 «Risk Indicator»",
+      "fechaDato": "2026-07-01",
+      "consultadoUtc": "2026-11-01T14:58:51Z",
+      "alcanceYLimites": "Riesgo de mercado, divisa EUR/USD y contraparte (Robinhood Europe es contraparte única)",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "The product is not covered by an investor compensation or deposit insurance scheme. Robinhood Europe is the sole counterparty to payment claims arising from the Product",
+      "dato": "sin fondo de garantía de inversiones",
+      "fuentePrimaria": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+      "localizador": "KID p.2 «What happens if Robinhood Europe is unable to pay out?»",
+      "fechaDato": "2026-07-01",
+      "consultadoUtc": "2026-11-01T14:58:51Z",
+      "alcanceYLimites": "Robinhood declara cubrirse comprando 1:1 el subyacente por cuenta propia (documento de riesgos, sección US Share Derivatives)",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "ROBINHOOD EUROPE, UAB · Empresas de Servicios de Inversión del Espacio Económico Europeo en Libre Prestación · Nº Registro Oficial 5299 · 21/04/2025",
+      "dato": "pasaporte MiFID notificado a la CNMV",
+      "fuentePrimaria": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+      "localizador": "ficha CNMV ESI extranjeras en libre prestación",
+      "fechaDato": "2025-04-21",
+      "consultadoUtc": "2026-11-01T15:01:01Z",
+      "alcanceYLimites": "Robinhood EU publica la web en español (robinhood.com/eu/es/invest). No se encontró lista oficial de países; test de conveniencia obligatorio (producto complejo) según documento de riesgos §5",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "precio",
+      "literal": "Explore 2,000+ Classic Stock Tokens linked to US stocks and ETPs",
+      "dato": "más de 2.000 subyacentes; precio = cotización del subyacente",
+      "fuentePrimaria": "https://robinhood.com/eu/en/invest",
+      "localizador": "página Invest, cabecera",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T14:58:41Z",
+      "alcanceYLimites": "No hay rendimiento: producto de valor, sigue el precio",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "custodia",
+      "literal": "although Robinhood hedges its obligations by purchasing US shares or ETPs for its own account on a 1:1 basis with the US Share Derivatives it issues",
+      "dato": "cobertura 1:1 por cuenta propia; subyacentes en custodio con licencia en EE. UU.",
+      "fuentePrimaria": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_eu.pdf",
+      "localizador": "Description of Services..., sección US Share Derivatives, p.12-13",
+      "fechaDato": "2026-07-01",
+      "consultadoUtc": "2026-11-01T14:58:52Z",
+      "alcanceYLimites": "Los subyacentes son de Robinhood, no del cliente",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple",
+      "nota": "Robinhood Europe, UAB autorizada por el Banco de Lituania (intermediación cat. A, CASP, pago) y notificada a la CNMV en libre prestación (nº 5299). El producto es un derivado OTC fabricado por la propia entidad, con KID PRIIPs."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Página comercial activa el 01/11/2026 con más de 2.000 subyacentes y negociación 24/5. KID de 1 de julio de 2026."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Web en español y pasaporte en la CNMV; no hay lista oficial de países publicada. Desde 1 €, comisión de cambio 0,10 % por operación. Producto complejo: test de conveniencia. Token no transferible; la salida es la recompra de Robinhood."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "SRI 7/7, riesgo de contraparte único, sin fondo de garantía, divisa USD. Sin advertencias de la CNMV. Antecedente: consulta del Banco de Lituania en julio de 2025 por los tokens de OpenAI/SpaceX."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": {
+    "titulo": "Classic Stock Tokens de acciones de EE. UU.",
+    "categoria": "Acciones y capital privado",
+    "pais": "LT",
+    "tipo": "valor",
+    "coleccion": "principales",
+    "resumen": "Derivados sobre más de 2.000 acciones y ETP de EE. UU. representados por un token no transferible; sigues el precio del subyacente sin ser su propietario.",
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Mínimo",
+        "valor": "Desde 1 €"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Banco de Lituania · CNMV libre prestación nº 5299"
+      },
+      {
+        "etiqueta": "Comisión",
+        "valor": "0,10 % de cambio por operación; sin gestión"
+      },
+      {
+        "etiqueta": "Reembolso",
+        "valor": "Recompra por Robinhood, 24/5"
+      },
+      {
+        "etiqueta": "Riesgo KID",
+        "valor": "7 de 7"
+      }
+    ],
+    "avisos": [
+      "Es un derivado: no eres dueño de la acción ni votas.",
+      "Contraparte única Robinhood Europe; sin fondo de garantía de inversiones.",
+      "Precio en USD: riesgo de cambio.",
+      "El token no se puede enviar a otra wallet."
+    ],
+    "url": "https://robinhood.com/eu/es/invest",
+    "fuentesActuales": [
+      "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+      "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+      "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+      "https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab"
+    ],
+    "lugar": "Vilna · Lituania",
+    "pasos": [
+      "Abres cuenta y test",
+      "Compras en euros",
+      "Robinhood recompra"
+    ],
+    "concepto": "un panel de cotizaciones bursátiles reflejado en fichas digitales sobre una mesa de Vilna al amanecer"
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "1 EUR",
+    "supervisorVerificado": "Banco de Lituania (LB002288 y otras) · CNMV ESI EEE libre prestación nº 5299",
+    "documentacionClara": "si",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "KID PRIIPs de julio de 2026, pasaporte inscrito en la CNMV, web en español, desde 1 € y comisión única de cambio del 0,10 %.",
+    "porQueNo": "Es un derivado OTC con riesgo de contraparte de Robinhood y token no transferible: no es propiedad tokenizada del activo; no hay lista oficial de países."
+  },
+  "decision": "admitir_propuesta",
+  "motivoDecision": "Cumple los cuatro criterios con fuente primaria: entidad autorizada y pasaportada en la CNMV, oferta abierta, acceso como minorista con test de conveniencia, mínimo y comisiones claros, salida por recompra y riesgos del KID. Debe presentarse como derivado tokenizado, no como acción tokenizada en propiedad.",
+  "bloqueos": [
+    "robinhood.com/eu/en/stock-tokens/ y la ayuda de países devuelven 404; no hay lista oficial de países (se apoya en la web en español y en la ficha de la CNMV)",
+    "La red blockchain no se nombra en los documentos leídos"
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T14:58:16Z",
+    "finUtc": "2026-11-01T15:02:05Z"
+  }
+}

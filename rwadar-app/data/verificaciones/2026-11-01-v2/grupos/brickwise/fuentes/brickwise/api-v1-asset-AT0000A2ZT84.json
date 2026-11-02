@@ -1,0 +1,223 @@
+{
+ "location": {
+  "coordinates": {
+   "lat": 48.1739328,
+   "lng": 16.3925091
+  },
+  "countryCode": "AUT",
+  "city": "Wien",
+  "postalCode": "1100",
+  "address": "Randhartingergasse 9",
+  "staircase": null,
+  "floor": 4
+ },
+ "propertyDetails": {
+  "features": [
+   {
+    "id": "724d36c2-d9bb-47ff-8e97-3ed28bff0fb9",
+    "ENG": "Terrace",
+    "DEU": "Terrasse",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   },
+   {
+    "id": "93564d4f-5a24-4cbe-afe4-a17f3629a582",
+    "ENG": "Built-in kitchen",
+    "DEU": "Einbauküche",
+    "createdAt": "2022-11-23T09:27:39.858Z",
+    "updatedAt": "2022-11-23T09:27:39.858Z"
+   },
+   {
+    "id": "4c46ff0d-382c-4d6f-bdd4-dc4a6d60cec1",
+    "ENG": "Elevator",
+    "DEU": "Lift",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   },
+   {
+    "id": "94370480-5c24-419f-a54b-346b769c73a4",
+    "ENG": "Floor Heating",
+    "DEU": "Fußbodenheizing",
+    "createdAt": "2022-11-23T09:27:39.858Z",
+    "updatedAt": "2022-11-23T09:27:39.858Z"
+   },
+   {
+    "id": "439810f0-173c-4a56-a04f-5e646b82985a",
+    "ENG": "Parquet flooring",
+    "DEU": "Parkettboden",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   },
+   {
+    "id": "4c46ff0d-382c-4d6f-bdd3-dc4a6d60cec1",
+    "ENG": "Cellar compartment",
+    "DEU": "Kellerabteil",
+    "createdAt": "2022-11-23T09:27:39.859Z",
+    "updatedAt": "2022-11-23T09:27:39.859Z"
+   }
+  ],
+  "numberOfRooms": 1,
+  "size": 38.68,
+  "buildingYear": "2000",
+  "buildingCondition": "new",
+  "propertyType": "flat",
+  "heatingType": "floorCentral",
+  "carbonEmission": 85.6,
+  "energyEmission": 182.4,
+  "constructionStatus": "stock",
+  "highlights": [],
+  "plots": []
+ },
+ "id": "AT0000A2ZT84",
+ "tokenId": "4DC8CYdt5rYSJgoEU5Lcefqx4J1vyfTm3q9rfxwLnvR9",
+ "rentalDetails": {
+  "contractType": "closed",
+  "contractStartDate": "2020-01-07T00:00:00.000Z",
+  "contractEndDate": "2024-06-30T00:00:00.000Z",
+  "occupancyRate": 99.1,
+  "monthlyDistributionDate": 15,
+  "rentalIncome": {
+   "$numberDecimal": "6283.44"
+  },
+  "rentalSurplus": {
+   "$numberDecimal": "4948.62"
+  },
+  "rentalReturn": {
+   "$numberDecimal": "2.47"
+  },
+  "managementFee": {
+   "$numberDecimal": "300.00"
+  },
+  "propertyManagementFee": 0,
+  "liquidityReserve": {
+   "$numberDecimal": "1034.82"
+  },
+  "additionalManagementCosts": []
+ },
+ "investmentDetails": {
+  "stage": "secondary",
+  "sharePrice": {
+   "$numberDecimal": "75.00"
+  },
+  "availableBricks": 374,
+  "issuingSharePrice": {
+   "$numberDecimal": "100.24"
+  },
+  "totalBricks": 2670,
+  "expertRating": 4.6,
+  "appraisalFirm": "Herman Hilft",
+  "ISIN": "AT0000A2ZT84",
+  "issueStartDate": "2022-05-08T00:00:00.000Z",
+  "issueEndDate": "2022-09-15T23:40:57.669Z",
+  "issueFundingFloor": 30,
+  "issueSecurityType": null,
+  "debtComponent": null,
+  "debtStartDate": "01.01.2021",
+  "spv": {
+   "id": "9caa1554-7570-4536-86e7-4bb4b81a67ff",
+   "address": {
+    "street": "Eßlinggasse 2",
+    "postCode": "1010",
+    "city": "Wien",
+    "countryCode": "AUT"
+   },
+   "owner": "Brickwise Real Estate GmbH",
+   "email": "realestate@brickwise.at",
+   "taxNumber": "FN 549469 v",
+   "companyPurpose": "Halten, Verwalten und Vermieten von Immobilien",
+   "companyName": "Brick Sagarmatha Gmbh & Co KG",
+   "partnerId": "brickwise",
+   "dseDocumentSrc": "https://cdn.brickwise.at/bd2e98e8-3861-436f-887a-a8708cb26c24.pdf"
+  },
+  "debtAmount": null,
+  "debtInterest": null,
+  "issuingCompany": null,
+  "securityType": "participationRightEquity",
+  "minSubscriptionAmount": 0,
+  "landRegisterMortgageDescription": "Die Absicherung erfolgt über ein im Grundbuch eingetragenes Kollektivpfandrecht zugunsten der Inhaber:innen der tokenisierten Wertpapiere in Höhe des Ausgabepreises (Nominale) der tokenisierten Wertpapiere. Der Antrag auf Einverleibung des Pfandrechts im Grundbuch wird von der Emittentin unmittelbar nach Erwerb der Immobilie gestellt. Die Eintragung kann jedoch mehrere Wochen in Anspruch nehmen, wodurch sich unmittelbar nach der Emission ein entsprechender Zeitraum ergeben kann, in dem das Pfandrecht noch nicht im Grundbuch eingetragen ist.",
+  "forumActive": true,
+  "isAllowedDomicile": [],
+  "isAllowedPlz": [],
+  "preparedCashFlowTable": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableStressScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableOptimisticScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  }
+ },
+ "descriptions": {
+  "title": "Randhartingergasse 9, Wien",
+  "propertySellingPoints": "<p>Die Wohnung befindet sich in einem 2015 neu ausgebauten Dachgeschoss und liegt in einer absoluten Ruhelage. Sie gliedert sich in einen Vorraum, ein möbliertes Badezimmer mit eigenem Fenster, Badewanne, WC mit Waschmaschinenanschluss sowie einem gemütlichen Wohn-Schlafraum mit Essbereich und einem besonderen Highlight: einer schönen sonnigen Terrasse.</p>",
+  "propertyHighlight": "Perfekte Dachgeschoss-Kleinwohnung mit sonnigem Balkon - unsere Jana würde sofort einziehen ;-)",
+  "propertyDetails": "Die Wohnung liegt im ersten Dachgeschoss und ist überall barrierefrei zugänglich. Die 44,81 m2  Nutzfläche teilen sich in 38,68 m2  Wohnfläche und eine 6,13 m2  große Terrasse. Der Wohn-Essbereich ist mit einer hochwertigen Küche ausgestattet. Das Badezimmer ist mit einem Tageslichtfenster, einer Badewanne und einem WC ausgestattet und bietet einen Waschmaschinenanschluss. Die gesamte Wohnung verfügt über einen schönen Parkettboden, nur das Badezimmer ist gefliest.",
+  "propertyQuote": "Perfekte Dachgeschoss-Kleinwohnung mit sonnigem Balkon - unsere Jana würde sofort einziehen ;-)",
+  "locationDetails": "Die nahe gelegene Gudrun- und Quellenstraße bieten eine weitreichende und qualitative Auswahl an Geschäften des täglichen Bedarfs und Gastronomiebetrieben sowie eine Vielzahl an Freizeit- und Erholungsmöglichkeiten. Dazu zählen etwa der Waldmüllerpark und weitere Grünanlagen, die in wenigen Gehminuten erreichbar sind. Öffentlich gelangt man von der Wohnung rasch zum Wiener Hauptbahnhof, in das Stadtzentrum mit den Linien 6 oder 11 und der U1. Die Straßenbahnlinien werden bequem in ca. 250 m erreicht und die nächstgelegene U-Bahn-Station, der Reumannplatz, kann in rund 5 Minuten erreicht werden.",
+  "districtDetails": "Favoriten, der 10. Bezirk, ist der bevölkerungsreichste Bezirk Wiens und liegt im Süden der Stadt. Der Bezirk zeichnet sich durch die öffentliche Anbindung sowohl an das U-Bahnnetz, das S-Bahnnetz, als auch den regionalen und internationalen Bahnverkehr aus. Einige Highlights in der Nähe sind das Amalienbad, der berühmte Eissalon Tichy, der fast genauso berühmte Ferhat Döner, das Hotel Schani, die Therme Wien, die Brotfabrik, der Wienerberg Teich und natürlich die Gartenschank im Alten Stadl ;)",
+  "cityDetails": "Wien, die Hauptstadt Österreichs, liegt im Osten des Landes an der Donau. Ihr künstlerisches und intellektuelles Erbe wurde von Bewohnern wie Mozart, Beethoven und Sigmund Freud geprägt. Die Stadt ist auch bekannt für ihre kaiserlichen Paläste wie das Schloss Schönbrunn, die Sommerresidenz der Habsburger.",
+  "rentalDetails": "Die Wohnung ist seit Juli 2020 befristet auf 4 Jahre frei vermietet. Das Mietverhältnis wurde vom Mieter gekündigt und endet am 28.02.2026. Es wird ein Nachmieter gesucht. Vorschläge willkommen.",
+  "investmentDetails": "Als Investor:in kannst du dich am Kauf der hier beschriebenen Immobilie in Form von digitalen Immobilienanteilen beteiligen. Digitale Immobilienanteile sind tokenisierte Substanzgenussrechte auf Basis der Investmentbedingungen der Emittentin.\nAls Investor:in kassierst du monatlich einen Teil der Mieteinnahmen (abzüglich Kosten und Gebühren) und du kannst deine digitalen Anteile jederzeit flexibel über den Brickwise Marktplatz zum Verkauf anbieten, und so von der Wertentwicklung der Immobilie profitieren.\nWir weisen darauf hin, dass die Geschäftsführung der Emittentin durch die Komplementär-GmbH erfolgt. Aufgrund dessen kann es unter Umständen zu Interessenskonflikten kommen, die direkte oder indirekte wirtschaftliche Vorteile für die Emittentin zur Folge haben können.",
+  "nomenclature": {
+   "expectedYieldDisclaimer": [
+    {
+     "lang": "deu",
+     "value": "Die erwartete Rendite berechnet sich auf Basis des Netto-Mietüberschusses über die im Mietvertrag vereinbarte Nettomiete und kommt jeweils nur zur Auszahlung, wenn der/die Mieter:in diese bezahlt hat.\n"
+    }
+   ],
+   "liquidityReserve": [],
+   "managementFee": [],
+   "rentalIncome": [],
+   "rentalIncomeTitle": [
+    {
+     "lang": "deu",
+     "value": "Einnahmen p.a."
+    }
+   ],
+   "total": [],
+   "documents": {
+    "energyCertificate": [],
+    "expertProtocol": [],
+    "investmentBasicInformation": [],
+    "investmentConditions": [],
+    "investmentInformation": [],
+    "landRegister": [],
+    "rentalAgreement": [],
+    "utilityReport": [],
+    "plantList": []
+   }
+  }
+ },
+ "images": "[omitido]",
+ "documents": {
+  "investmentBasicInformation": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+  "investmentInformation": "https://cdn.brickwise.at/ac8e71ad-8e24-4c8e-a180-bf801dccd487.pdf",
+  "investmentConditions": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+  "rentalAgreement": "https://cdn.brickwise.at/cf8d8754-aa7f-4d64-bced-b63b4bc99527.pdf",
+  "expertProtocol": "https://cdn.brickwise.at/a035fbff-1003-4e8e-bac9-c741a5e39398.pdf",
+  "landRegister": "https://cdn.brickwise.at/5cd196e5-e262-4acc-b8bb-1431c1823224.pdf",
+  "utilityReport": "https://cdn.brickwise.at/8aea0b9c-ccad-48e9-adc9-cf7e41abc1eb.pdf",
+  "additionalDocuments": [],
+  "scenarioCalculations": "https://cdn.brickwise.at/8833e186-969e-49b9-a038-c7b9c8bb1328.pdf",
+  "additionalInvestmentDocuments": [
+   {
+    "name": "Rücktrittsbelehrung",
+    "src": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+    "signed": false
+   }
+  ]
+ },
+ "partnerId": "brickwise",
+ "updatedAt": "2026-10-16T11:17:12.697Z",
+ "type": "realEstate",
+ "isMIFID": true,
+ "onlyPrimary": false,
+ "preorderEnabled": false,
+ "useSerialNumber": false,
+ "investorSettings": {},
+ "loanInformation": {}
+}

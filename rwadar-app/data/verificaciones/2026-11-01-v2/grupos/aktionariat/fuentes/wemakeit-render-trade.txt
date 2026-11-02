@@ -1,0 +1,92 @@
+URL: https://shares.wemakeit.com/trade
+Renderizado (Playwright Chromium, zona UTC): 2026-11-01T15:03:43Z
+
+English
+Sign In
+Home
+Secondary Trading
+Order Book
+Price (ZCHF)	Amount (WMKT)	Total (ZCHF)
+
+
+
+
+1.60	600	960
+
+
+1.00	804	804
+
+
+0.95	260	247
+
+
+0.85	177	150.45
+
+
+0.80	584	467.2
+Spread: 0.69 (86.25%)
+
+
+0.11	6'000	660
+All Trades
+Date / Time	Type	Price	Amount	Total
+
+
+20 Oct 2026 / 12:14	Secondary Trade	0.80 ZCHF	426 WMKT	340.8 ZCHF
+
+
+20 Oct 2026 / 12:13	Secondary Trade	0.80 ZCHF	74 WMKT	59.2 ZCHF
+
+
+8 Oct 2026 / 16:29	Secondary Trade	0.80 ZCHF	25 WMKT	20 ZCHF
+
+
+7 Oct 2026 / 14:28	Secondary Trade	0.50 ZCHF	13 WMKT	6.5 ZCHF
+
+
+22 Sep 2026 / 14:52	Secondary Trade	0.85 ZCHF	12 WMKT	10.2 ZCHF
+
+
+22 Sep 2026 / 14:49	Secondary Trade	0.85 ZCHF	12 WMKT	10.2 ZCHF
+
+
+20 Sep 2026 / 13:50	Secondary Trade	0.10 ZCHF	1 WMKT	0.1 ZCHF
+
+
+20 Sep 2026 / 13:50	Secondary Trade	0.10 ZCHF	509 WMKT	50.9 ZCHF
+
+
+20 Sep 2026 / 13:36	Secondary Trade	0.50 ZCHF	8 WMKT	4 ZCHF
+
+
+20 Sep 2026 / 13:36	Secondary Trade	0.50 ZCHF	122 WMKT	61 ZCHF
+Page 1 of 28
+1
+2
+3
+4
+5
+…
+28
+Buy
+Sell
+Number of Shares
+WMKT
+Limit Price
+ZCHF
+Order Summary
+1 WMKT
+Matched instantly
+0.8 ZCHF
+Fee (0%):
+0.00 ZCHF
+Total Value:
+0.80 ZCHF
+Register to Access Secondary Trading
+wemakeit AG
+Terms of Use: This page is hosted by wemakeit using technology licensed from Aktionariat. Some content is automatically compiled from other sources than wemakeit and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. wemakeit assumes no responsibility for the accuracy of any of this data. All shareholder registration data is stored and processed in Switzerland by Aktionariat, which maintains the shareholder registry for wemakeit. Shareholder registration data must by retained for ten years by law. Relevant shareholder registration data such as the current name and address is automatically synchronized with other issuers that use Aktionariat to maintain their shareholder registry.
+Direct Investment: The website may offer the possibility to directly buy securities issued by wemakeit. Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act in Switzerland, or equivalent laws for visitors of other countries. Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus in order to continue the offering.
+Secondary Trading: The website may offer the possibility to openly trade securities issued by wemakeit using blockchain-based smart contracts to settle trades between buyers and sellers without counterparty risk. As the operator of this website, wemakeit may charge a fee on trades. Neither being a shareholder nor performing individual trades constitute an ongoing business relationship between the shareholder and the operator under the AML act. The secondary trading facilitated herein is considered a non-commercial trading facility operated by wemakeit under the Financial Market Infrastructure Act and is therefore not subject to prudential supervision. As a consequence, buyers and sellers are not protected by the financial market conduct rules applicable to the trading on supervised venues.
+©2026 wemakeit (site content) and Aktionariat (site template). All rights reserved.
+Terms of Service
+Privacy Policy

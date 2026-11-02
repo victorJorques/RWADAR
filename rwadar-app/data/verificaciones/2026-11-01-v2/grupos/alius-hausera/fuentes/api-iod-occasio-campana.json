@@ -1,0 +1,170 @@
+{
+ "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+ "consultadoUtc": "2026-11-01T15:04:28Z",
+ "nota": "Solo campos públicos de campaña, activo y documentos. Sin inversiones ni datos de inversores. Textos HTML convertidos a texto y DNI/teléfonos omitidos.",
+ "id": 169,
+ "title": "IOD | Bono 12% a 12 meses, para anticipo de cobros",
+ "client_uuid": "9598007MF0DK0DLQJ78000001616",
+ "custom_url": "iodo1",
+ "country_of_execution": "ES",
+ "campaign_status": "CLOSED",
+ "updated_time": "2026-10-27 13:59:02",
+ "campaign": {
+  "id": 151,
+  "tenant_id": 3,
+  "issuance_id": 169,
+  "negotiation_phase": "PRIMARY",
+  "target_amount": "120000.00",
+  "coinvestment_offline": null,
+  "start_date": "2026-10-13",
+  "end_date": "2026-10-23",
+  "duration": 15,
+  "extend_days": null,
+  "active": 1,
+  "created_time": "2026-09-17 08:22:23",
+  "updated_time": "2026-10-13 16:00:49",
+  "deleted_time": null
+ },
+ "campaign_progress": {
+  "booked": 146600,
+  "invested": 120000,
+  "supply": 1200,
+  "invested_tokens": 1200
+ },
+ "asset": {
+  "name": "IOD Occasio",
+  "symbol": "IODO1",
+  "network": 80002,
+  "address": "0x6355986F7Af125f0D1b2A90705C2aF86D3b4e354",
+  "type": "security",
+  "decimals": 18,
+  "erir_sync_id": null
+ },
+ "asset_issuance_relational": {
+  "id": 157,
+  "issuance_id": 169,
+  "type_product_id": 29,
+  "asset_id": 158,
+  "name": "IOD Occasio",
+  "symbol": "IODO1",
+  "image": null,
+  "mint_strategy": "ONLY_MANUAL",
+  "expiration_date": null,
+  "duration": 15,
+  "max_supply": 1200,
+  "asset_price": "100.00",
+  "asset_amount_multiple_of": null,
+  "maximum_revenue_money": 120000,
+  "minimum_revenue_money": 100000,
+  "minimum_offer_money": 100,
+  "maximum_offer_money": 0,
+  "deployed": 0,
+  "active": 1,
+  "created_time": "2026-09-17 08:22:22",
+  "updated_time": "2026-10-21 10:43:29",
+  "deleted_time": null,
+  "erir_provider": "TOKENCITY"
+ },
+ "type": "Industria",
+ "documents": [
+  {
+   "id": 299,
+   "name": "Copia simple electrónica_OR012603041_1.pdf",
+   "description": "Escritura de emisión del bono ",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-09-28 20:09:55",
+   "updated_time": "2026-10-21 14:21:37"
+  },
+  {
+   "id": 286,
+   "name": "26_09_28_Ficha_Datos_Fundamentales_Inversion_IOD_v2.pdf",
+   "description": "Ficha de datos fundamentales de la emisión",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 1,
+   "created_time": "2026-09-17 10:15:51",
+   "updated_time": "2026-10-21 14:21:38"
+  }
+ ],
+ "extra_fields": [
+  {
+   "name": "minimum_investment",
+   "label": "Inversión mínima",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "None"
+  },
+  {
+   "name": "appraised_value",
+   "label": "Tasación",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "None"
+  },
+  {
+   "name": "collateral",
+   "label": "Garantía",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": ""
+  },
+  {
+   "name": "installments",
+   "label": "Cuotas",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "None"
+  },
+  {
+   "name": "loan_term",
+   "label": "Plazo de devolución",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "12 meses"
+  },
+  {
+   "name": "annual_interest_rate",
+   "label": "Interés anual",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "12%"
+  },
+  {
+   "name": "location",
+   "label": "Localización",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "Madrid"
+  },
+  {
+   "name": "pre_investment_valuation",
+   "label": "Valoración Pre-Money",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "None"
+  },
+  {
+   "name": "capital_for_sale",
+   "label": "% capital a la venta",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "None"
+  },
+  {
+   "name": "updates",
+   "label": "Actualizaciones",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "None"
+  },
+  {
+   "name": "faqs",
+   "label": "FAQs",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "¿En qué consiste la inversión?\nLa inversión consiste en la suscripción de un \nbono tokenizado emitido por IOD Applications\n, cuyos fondos se destinan a adquirir derechos de cobro derivados de facturas de empresas previamente identificadas y analizadas.\n¿Qué rentabilidad ofrece?\nEl bono ofrece un \ninterés fijo del 12% anual\n durante un plazo de 12 meses.\n¿Cuándo se devuelve la inversión?\nEl \nprincipal y los intereses se abonan conjuntamente al vencimiento\n, 12 meses después de la formalización del bono. El emisor puede amortizarlo anticipadamente, abonando en ese caso el principal y los intereses devengados hasta la fecha.\n¿A qué se destina el dinero invertido?\nLos fondos se destinan a la \nadquisición de derechos de cobro derivados de facturas\n, permitiendo anticipar liquidez a las empresas antes del vencimiento de dichos cobros.\n¿Qué cobertura tienen los derechos de cobro adquiridos?\nLos derechos de cobro cuentan con \ncobertura de seguro de caución de hasta el 90%\n, de acuerdo con las condiciones, límites y exclusiones aplicables a cada operación. La existencia del seguro no elimina completamente el riesgo de pérdida.\n¿Cuál es el importe de la emisión?\nLa emisión busca captar hasta \n120.000 €\n, con un importe mínimo de financiación de \n100.000 €\n. Si no se alcanza el mínimo dentro del plazo establecido, la operación se cancela y las cantidades aportadas se devuelven a los inversores sin coste.\n¿Puedo transmitir mi inversión antes del vencimiento?\nSí. Los tokens adquiridos son valores negociables \nlibremente transmisibles\n, aunque su venta antes del vencimiento dependerá de que exista una contraparte interesada.\n¿Quién actúa en representación de los inversores?\nLos titulares de los bonos tokenizados estarán representados a través del Sindicato de Obligacionistas, cuyo comisario será Alius Capital STOs PSFP S.L., que actuará como representante del sindicato frente al Emisor en caso de impago."
+  },
+  {
+   "name": "process",
+   "label": "Proceso",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "Información sobre el proceso:\nPlazo para alcanzar el objetivo de la financiación:\n hasta completar suscripción, con fecha límite el 23/10/2026. Se podrá ampliar, a criterio del Emisor, hasta un máximo de 1 mes.\nConsecuencias si no se alcanza el importa mínimo de la financiación dentro del plazo el objetivo de captación de fondos:\n se cancelará la financiación participativa y se reembolsarán las aportaciones a los inversores. Los inversores no incurrirán en ningún gasto.\nRecursos comprometidos por el promotor: \ncon anterioridad al proceso de financiación participativa, IOD Applications ha invertido en este tipo de operaciones más de 170.000€. Asimismo, el Emisor se reserva el derecho de acudir a la financiación participativa en el transcurso de la misma, en cuyo caso, se publicará el porcentaje de su participación sobre la financiación total obtenida.\nAsignación de tokens en caso de sobredemanda:\n los valores se asignarán por orden de suscripción hasta consumir la oferta disponible.\nFases del proceso:\nFASE 1. Pre-campaña:\n hasta el \n08/10/2026\n, l\nos inversores pueden expresar su interés para obtener \nacceso prioritario a la oferta\n una vez se abra el periodo de inversión.\nFASE 2. Campaña privada:\n entre el \n08/10/2026 y el 12/10/2026\n, los inversores que habían expresado previamente su interés pueden \nsuscribir la oferta con\ncarácter prioritario\n.\nFASE 3. Campaña abierta al público en general:\n desde el \n13/10/2026 hasta el 23/10/2026\n, \nla oferta quedará abierta para su suscripción por \ncualquier inversor\n, hasta completar el importe de la emisión. El plazo se \npodrá ampliar, a criterio del Emisor, hasta un máximo de 1 mes.\nFASE 4. Formalización:\ntras el cierre exitoso de la campaña, se completarán los trámites necesarios para la formalización de la operación. \nFASE 5. Entrega de los tokens a los inversores: \nuna vez inscrita la ERIR (Entidad Responsable de la Inscripción y Registro de los valores tokenizados) en la CNMV, los tokens serán entregados a los inversores en sus respectivas carteras digitales o wallets."
+  },
+  {
+   "name": "proposal",
+   "label": "Propuesta",
+   "updated_time": "2026-10-21 14:24:16",
+   "value": "La emisión ofrece la posibilidad de invertir en un \nbono tokenizado a 12 meses\n, con un \ninterés fijo del 12% anual\n, destinado a financiar la adquisición de derechos de cobro derivados de facturas.\nLa inversión está vinculada a una operativa de corto plazo: los fondos captados se destinan a adquirir derechos de cobro y \nlos importes obtenidos con el cobro de las facturas se destinan a atender las obligaciones de pago del bono\n. Los derechos de cobro adquiridos cuentan, además, \ncon cobertura de seguro de caución de hasta el 90%\n, de acuerdo con las condiciones aplicables a cada operación.\nEl principal y los intereses se abonarán conjuntamente al vencimiento\n, transcurridos 12 meses desde la formalización de la emisión. El emisor podrá realizar una amortización anticipada, en cuyo caso se abonará el principal junto con los intereses devengados hasta ese momento."
+  }
+ ],
+ "small_description": "Invierte en un bono tokenizado al 12% de interés a 12 meses, destinado a adquirir derechos de cobro futuros con cobertura de seguro de caución de hasta el 90% (“Bonos Tokenizados). "
+}

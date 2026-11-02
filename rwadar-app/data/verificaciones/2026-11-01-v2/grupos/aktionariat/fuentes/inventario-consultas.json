@@ -1,0 +1,605 @@
+[
+ {
+  "url": "https://shares.aktionariat.com/",
+  "archivo": "aktionariat-portada.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:38Z",
+  "bytes": 145206,
+  "sha256": "4b214f160802d50edd227429aa1e6ad68e7987506e30765f16a442413fb288b6",
+  "nota": "apiKey pública de Etherscan embebida en la página redactada"
+ },
+ {
+  "url": "https://shares.aktionariat.com/api/secondarymarkets/getTrades POST {\"company\": \"77\", \"skip\": 0, \"limit\": 40}",
+  "archivo": "aktionariat-getTrades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:40Z",
+  "bytes": 12101,
+  "sha256": "e1bd5f5b96053108b04101b85e979277c20a16534a55398b2fa838e930fb3fc8",
+  "nota": null
+ },
+ {
+  "url": "https://shares.bossinfo.com/",
+  "archivo": "boss-info-portada.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:52Z",
+  "bytes": 73857,
+  "sha256": "a89b8045cf8498be740d87e5cb483560dafe85aa1a5b8a321d5e14b5c5e71555",
+  "nota": "apiKey pública de Etherscan embebida en la página redactada"
+ },
+ {
+  "url": "https://shares.bossinfo.com/api/secondarymarkets/getTrades POST {\"company\": \"1664\", \"skip\": 0, \"limit\": 40}",
+  "archivo": "boss-info-getTrades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:53Z",
+  "bytes": 12245,
+  "sha256": "51ff1d89328d2f8b3ffdf5232ca3e4482fb56b9e1e4685d1628fd9c2c6b290f9",
+  "nota": null
+ },
+ {
+  "url": "https://shares.wemakeit.com/",
+  "archivo": "wemakeit-portada.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:55Z",
+  "bytes": 60874,
+  "sha256": "f806c0ef8ce724a209d65cdfb610e776ca6019f28858cd502eb698e6885a623b",
+  "nota": "apiKey pública de Etherscan embebida en la página redactada"
+ },
+ {
+  "url": "https://shares.wemakeit.com/api/secondarymarkets/getTrades POST {\"company\": \"860\", \"skip\": 0, \"limit\": 40}",
+  "archivo": "wemakeit-getTrades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:56Z",
+  "bytes": 12082,
+  "sha256": "c37547ca50b6a48bada8819b18cb2112838a3d0d2af12410252d13212ab24878",
+  "nota": null
+ },
+ {
+  "url": "https://shares.quitt.ch/",
+  "archivo": "servicehunter-quitt-portada.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:56Z",
+  "bytes": 84995,
+  "sha256": "4acd8caa5211153751f943e58d5eeb23bed52a2f0be112d0600cf53c6711cdb9",
+  "nota": "apiKey pública de Etherscan embebida en la página redactada"
+ },
+ {
+  "url": "https://shares.quitt.ch/api/secondarymarkets/getTrades POST {\"company\": \"10\", \"skip\": 0, \"limit\": 40}",
+  "archivo": "servicehunter-quitt-getTrades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:57Z",
+  "bytes": 12471,
+  "sha256": "064f1096b985a846319dea4c8c106c0a65ead772127e66cb9ff8b17d9ddcb3e3",
+  "nota": null
+ },
+ {
+  "url": "https://shares.lend.ch/",
+  "archivo": "switzerlend-portada.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:58Z",
+  "bytes": 60020,
+  "sha256": "322362958a53f019c1efbe24223f0979805a46a5e1ae33baa7e061146df456e5",
+  "nota": "apiKey pública de Etherscan embebida en la página redactada"
+ },
+ {
+  "url": "https://shares.lend.ch/api/secondarymarkets/getTrades POST {\"company\": \"40880\", \"skip\": 0, \"limit\": 40}",
+  "archivo": "switzerlend-getTrades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:59Z",
+  "bytes": 12520,
+  "sha256": "0af28929be48b74ae025ef15ca6442650967c2d2814d7e4436662221a9c7cb85",
+  "nota": null
+ },
+ {
+  "url": "https://www.aktionariat.com/terms-of-service",
+  "archivo": "aktionariat-terms-of-service.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:45Z",
+  "bytes": 54993,
+  "sha256": "a6c66edb1a47fafecec57221368274e7713c21941bc0c9e6d94621ccba4de5c6",
+  "nota": null
+ },
+ {
+  "url": "https://www.aktionariat.com/disclaimer",
+  "archivo": "aktionariat-disclaimer.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:45Z",
+  "bytes": 41909,
+  "sha256": "566fe58ebb7916c365dbc1b9d0acd9803736d6413e10599e197aaad68df4d681",
+  "nota": null
+ },
+ {
+  "url": "https://hub.aktionariat.com/documents/terms/InvestmentTerms.pdf",
+  "archivo": "aktionariat-InvestmentTerms.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:46Z",
+  "bytes": 52408,
+  "sha256": "8591777cad61ad9f9f9d4094950abbc65a1c70edb621de5fc090a6cacb55c6a6",
+  "nota": null
+ },
+ {
+  "url": "https://hub.aktionariat.com/assets/terms/Insider%20Trading%20Rules.pdf",
+  "archivo": "aktionariat-InsiderTradingRules.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:46Z",
+  "bytes": 76340,
+  "sha256": "6896ac2cb9b3942da8243b15d8f69e879b295a2bbb8938bbded8366406aded7b",
+  "nota": null
+ },
+ {
+  "url": "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+  "archivo": "aktionariat-RegistrationAgreement.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:46Z",
+  "bytes": 317532,
+  "sha256": "9b4ebb70593a586110f6a61e316663c2fd0664e38b1753c0eec24d172bcb0d6b",
+  "nota": null
+ },
+ {
+  "url": "https://storage.googleapis.com/aktionariat/public/77/43cab283-21cc-413a-83d0-3b9322b46702/Token%20Holder%20Agreement.pdf",
+  "archivo": "aktionariat-TokenHolderAgreement.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:48Z",
+  "bytes": 72428,
+  "sha256": "650eec368bdd93f45bac1cd37d6034471c4fedc913f53e818af568318f3f6b53",
+  "nota": null
+ },
+ {
+  "url": "https://storage.googleapis.com/aktionariat/public/860/28a294fe-b4c3-4b06-9fdc-f7e395065ce3/Registration%20Agreement%20wemakeit%20AG.pdf",
+  "archivo": "wemakeit-RegistrationAgreement.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:49Z",
+  "bytes": 129153,
+  "sha256": "40f87b2c36e8694bbac9d89c4f3d4a80c6ddc362e55ef41f0b6cb7a9af0c565a",
+  "nota": null
+ },
+ {
+  "url": "https://storage.googleapis.com/aktionariat/public/10/9c9c214c-0faf-4aa6-8eca-b5ff2ac7fd77/2021-03-01-Registration-Agreement-QTS-Signed%20%281%29.pdf",
+  "archivo": "servicehunter-quitt-RegistrationAgreement.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:50Z",
+  "bytes": 1848312,
+  "sha256": "bfbff93eec6a5348cef79760ca4b03efe78eb58214e7dfa350e199a091a638cb",
+  "nota": null
+ },
+ {
+  "url": "https://storage.googleapis.com/aktionariat/public/10/ff1e540c-b0a5-4396-9587-563e2bf8f428/2021-03-01-Token-Holder-Agreement-DQTS.pdf",
+  "archivo": "servicehunter-quitt-TokenHolderAgreement.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:51Z",
+  "bytes": 74518,
+  "sha256": "a59b0a546ade3fd7b142371cfaa73f6677d40b364a25f02cbd68bade76fb2411",
+  "nota": null
+ },
+ {
+  "url": "https://storage.googleapis.com/aktionariat/public/40880/869c7faa-0f1c-4d52-a5ae-b4f4c129d1a4/Registration_Agreement_Lend_signed.pdf",
+  "archivo": "switzerlend-RegistrationAgreement.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:52Z",
+  "bytes": 480316,
+  "sha256": "6d0ffcee66df76ba91d09184840ec6fe406d8e99e6fc89bccbbb7945fd7b1d06",
+  "nota": null
+ },
+ {
+  "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+  "archivo": "switzerlend-TokenAgreement.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:53Z",
+  "bytes": 455843,
+  "sha256": "896479984f553b3b6b37264482a98a34bc39f0d776967756106267abf96bcc18",
+  "nota": null
+ },
+ {
+  "url": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+  "archivo": "boss-info-RegistrationRegulations.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:55Z",
+  "bytes": 246294,
+  "sha256": "613277222244065ffc6faf4b1458c700ac86b203d58a816e0e4043d4073e045f",
+  "nota": null
+ },
+ {
+  "url": "https://shares.aktionariat.com/investor-page-terms",
+  "archivo": "aktionariat-investor-page-terms.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:40Z",
+  "bytes": 26055,
+  "sha256": "ee18536ccd5bcf8b8721662f4f95a820dd318b69aad9c29b606ea50a2012b095",
+  "nota": null
+ },
+ {
+  "url": "https://shares.aktionariat.com/invest",
+  "archivo": "aktionariat-invest.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:40Z",
+  "bytes": 19267,
+  "sha256": "23bf2d888a9ca0eb4aa38abd591ed28e04d75bd8a1b931278d6c69cadc2fee0c",
+  "nota": "apiKey pública de Etherscan embebida en la página redactada"
+ },
+ {
+  "url": "https://shares.aktionariat.com/",
+  "archivo": "aktionariat-render-portada.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:26Z",
+  "bytes": 4755,
+  "sha256": "191af13bb92275bcd21d1e27fe35a9098d7d213eb23efac525770626964a9bd9",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.aktionariat.com/",
+  "archivo": "aktionariat-render-portada.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:26Z",
+  "bytes": 212378,
+  "sha256": "4da8240acd5e41202ae051f107f460f3eaed23c279ce7d427fd2faa0d5a9cc49",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.aktionariat.com/invest",
+  "archivo": "aktionariat-render-invest.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:35Z",
+  "bytes": 2552,
+  "sha256": "8aeb735e83e0b2f38c1a04ca552b34dc663dab47a6b33ae6f662310f4f235662",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.aktionariat.com/invest",
+  "archivo": "aktionariat-render-invest.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:35Z",
+  "bytes": 146882,
+  "sha256": "16e3565c948575c28ed8fc725c8291445a64ebe5ccb36145c04548b39aa1651a",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.aktionariat.com/trade",
+  "archivo": "aktionariat-render-trade.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:44Z",
+  "bytes": 3693,
+  "sha256": "e992fc72872dd16fb8000adfeeb7d3360100b471f7318544bc185aa1adc4c6af",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.aktionariat.com/trade",
+  "archivo": "aktionariat-render-trade.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:44Z",
+  "bytes": 288665,
+  "sha256": "545501deca11ddc7f3b32a334368b6f67c45d64b95852fb9241b1b58988796de",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.bossinfo.com/",
+  "archivo": "boss-info-render-portada.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:54Z",
+  "bytes": 4059,
+  "sha256": "f0d636362058d0ebdf5de9b6a9cc234fd52d8d0d822fc90881ecc742e8552f30",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.bossinfo.com/",
+  "archivo": "boss-info-render-portada.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:54Z",
+  "bytes": 190710,
+  "sha256": "0ba66d8ab1997d908953cfed80d134cf8baa49e64136c05ee2ab0a77b3621aac",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.bossinfo.com/invest",
+  "archivo": "boss-info-render-invest.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:04Z",
+  "bytes": 2526,
+  "sha256": "1d6d3f346394847bb4c9be1305f76902abe4d74dd7219768cde760693aaa4efe",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.bossinfo.com/invest",
+  "archivo": "boss-info-render-invest.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:04Z",
+  "bytes": 147490,
+  "sha256": "158808fdbd24b68f787ddd9bc369f622b068a5f1a4b0beeeef1fac085f57b11b",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.bossinfo.com/trade",
+  "archivo": "boss-info-render-trade.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:14Z",
+  "bytes": 3584,
+  "sha256": "54135773b153a180bc92e91524619348d4af33b1194e959d33f21195094e9eca",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.bossinfo.com/trade",
+  "archivo": "boss-info-render-trade.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:14Z",
+  "bytes": 274260,
+  "sha256": "4d266e5bd6f0a737942b268a261f5a5986548ac823191f267d996eed73ff51ec",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.wemakeit.com/",
+  "archivo": "wemakeit-render-portada.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:24Z",
+  "bytes": 4152,
+  "sha256": "4aa3bd0ed07f35187413fa62503f2beff6766026f85afec3da3763c9c9f51412",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.wemakeit.com/",
+  "archivo": "wemakeit-render-portada.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:24Z",
+  "bytes": 221085,
+  "sha256": "436e474559cce0df8429031f5f46e29b91e72b97a44a72e710160acbc68e9cc9",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.wemakeit.com/invest",
+  "archivo": "wemakeit-render-invest.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:34Z",
+  "bytes": 4158,
+  "sha256": "ac3485245fed960555e293366298607574c034f19e3fe66a94f6a1f6ece4aba7",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.wemakeit.com/invest",
+  "archivo": "wemakeit-render-invest.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:34Z",
+  "bytes": 221085,
+  "sha256": "436e474559cce0df8429031f5f46e29b91e72b97a44a72e710160acbc68e9cc9",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.wemakeit.com/trade",
+  "archivo": "wemakeit-render-trade.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:43Z",
+  "bytes": 3358,
+  "sha256": "11847b3c2fefdd5ac48fcdb83910f6fdcf0c0be1e30c35d2bc7f1c8aa8b92867",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.wemakeit.com/trade",
+  "archivo": "wemakeit-render-trade.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:43Z",
+  "bytes": 238570,
+  "sha256": "bb73976c18c4d6f7f701a9a74b029dedcd73bbb82d65e4a6808785f877241a47",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.quitt.ch/",
+  "archivo": "servicehunter-quitt-render-portada.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:53Z",
+  "bytes": 4038,
+  "sha256": "7e1006d9505947f9654c753739bd48e00e58c4651dcb3fa32fb9a08b8c31b606",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.quitt.ch/",
+  "archivo": "servicehunter-quitt-render-portada.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:53Z",
+  "bytes": 189505,
+  "sha256": "7ee025b886a49f8c33f1d910771862549a422c3b0a8b3847d88237db14420723",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.quitt.ch/invest",
+  "archivo": "servicehunter-quitt-render-invest.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:03Z",
+  "bytes": 4044,
+  "sha256": "7aca2107a1874ab73934b62439a433be10012c542023a4b808ae97177158fccb",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.quitt.ch/invest",
+  "archivo": "servicehunter-quitt-render-invest.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:03Z",
+  "bytes": 189505,
+  "sha256": "7ee025b886a49f8c33f1d910771862549a422c3b0a8b3847d88237db14420723",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.quitt.ch/trade",
+  "archivo": "servicehunter-quitt-render-trade.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:12Z",
+  "bytes": 3551,
+  "sha256": "bd9b2a819b2f1eeb8bc2790beb68730f9a6e66bcdcc069d49c8208e838bf7bd4",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.quitt.ch/trade",
+  "archivo": "servicehunter-quitt-render-trade.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:12Z",
+  "bytes": 261190,
+  "sha256": "65b6433d1e3cb600e46bfbe4b91cdf8c587ab61af5c59a790312f0c44ce91f44",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.lend.ch/",
+  "archivo": "switzerlend-render-portada.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:23Z",
+  "bytes": 4274,
+  "sha256": "bd54b6d45efa61bd95318fa9d2eca1c4bfb9ddeab4d119ea9ea6601cbdada79e",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.lend.ch/",
+  "archivo": "switzerlend-render-portada.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:23Z",
+  "bytes": 207202,
+  "sha256": "f5a09fe05cfc2b0ecc7c63cfac28aa27a0104afa8d7617481475d9f1fbcf9cb4",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.lend.ch/invest",
+  "archivo": "switzerlend-render-invest.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:32Z",
+  "bytes": 2547,
+  "sha256": "04ae13ff66699b44de91ec667d889f73cef15442db6f42536cabf96b48814254",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.lend.ch/invest",
+  "archivo": "switzerlend-render-invest.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:32Z",
+  "bytes": 146624,
+  "sha256": "d5073d031e84aa0b45f493a801e7ebc574a723e162b3aa827ea7d792bb6a2c36",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.lend.ch/trade",
+  "archivo": "switzerlend-render-trade.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:42Z",
+  "bytes": 3651,
+  "sha256": "e05ebc4c1e870a2880da023330aea709c527372c8f8320be759d8a577b5038fb",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://shares.lend.ch/trade",
+  "archivo": "switzerlend-render-trade.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:42Z",
+  "bytes": 277433,
+  "sha256": "17d38cbfcd380d94197bf46adb38a2cfae436026ea455132d58eca177d4f4d81",
+  "nota": "Texto/captura renderizados con Playwright (Chromium headless)"
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"Aktionariat AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-aktionariat-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:58Z",
+  "bytes": 491,
+  "sha256": "9e595f767967953319ef0ef1ffe3014a0e03c3b5d3f97a2b503bae00c7ee5700",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1438805.json",
+  "archivo": "zefix-aktionariat-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:58Z",
+  "bytes": 13485,
+  "sha256": "b46ae864bb099562044309927ce8d3946fd7122b1d094cdd47505ac281b1161b",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"Boss Info AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-boss-info-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:59Z",
+  "bytes": 482,
+  "sha256": "47a20a975b499aa88762592148e95b16b589daf9f3a05f918229c57ea1cbead5",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/450692.json",
+  "archivo": "zefix-boss-info-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:59Z",
+  "bytes": 17747,
+  "sha256": "c22a7dcf11d9bc7b22db293a568833089869c4bf8622a1339b99496b244fea9d",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"wemakeit AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-wemakeit-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:00Z",
+  "bytes": 483,
+  "sha256": "b35f4e3ebda46a87b26e0fac1221df202028714727a610c9b0e9bbb99be57d3d",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1045629.json",
+  "archivo": "zefix-wemakeit-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:01Z",
+  "bytes": 18062,
+  "sha256": "c8605583ad65da4c17fbad978ee424d73a63800d4023c4ddc6719fed4daffa6e",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"ServiceHunter AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-servicehunter-quitt-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:02Z",
+  "bytes": 487,
+  "sha256": "d418c85223fd7ff6890752a782995af86f3b1398057b82bc55d2831902882a67",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/989312.json",
+  "archivo": "zefix-servicehunter-quitt-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:02Z",
+  "bytes": 25166,
+  "sha256": "26d35f1e21f1d1c10a741c50e38665dc63693869f8f01fa1a882e3f3f401c03c",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"Switzerlend AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-switzerlend-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:03Z",
+  "bytes": 486,
+  "sha256": "8b06e1d1d17e034beb53c0216779775a68abedc46f9db08b72167d3e0ef09dd2",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1231406.json",
+  "archivo": "zefix-switzerlend-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:03Z",
+  "bytes": 27929,
+  "sha256": "f3547c2433780660924a77bafe8fa331b77b8319411a21851e6f156f4c33f6a5",
+  "nota": null
+ },
+ {
+  "url": "https://ethereum-rpc.publicnode.com eth_call settings()/getPrice()/increment()",
+  "archivo": "onchain-brokerbots.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:06:39Z",
+  "bytes": 1740,
+  "sha256": "c669cfe50fa9a70aa75183a05be0dc00038e5e16c9def011bcf6154e7f2efa1a",
+  "nota": "Lectura on-chain"
+ },
+ {
+  "url": "https://github.com/aktionariat/contracts/blob/288fd7d17b0e3cb72d426ba45d345ec9699498cb/contracts/investment/DirectInvestment.sol",
+  "archivo": "github-aktionariat-DirectInvestment.sol",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:06:39Z",
+  "bytes": 7881,
+  "sha256": "f42ed767f190bdf11a8f7c7dabd1ce3461427444b3768f26b5dc5f7c4f49f0dc",
+  "nota": "git clone --depth 1 (commit 288fd7d, 2026-10-23)"
+ },
+ {
+  "url": "https://www.finma.ch/en/api/search/getresult POST ds={1C6B8731-638C-4003-A93C-A625BF7A6800}&Order=4 (lista de advertencias FINMA completa)",
+  "archivo": "finma-warnliste-completa.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:08:30Z",
+  "bytes": 823403,
+  "sha256": "fd8413a7480957a627a8c81c4505ce71cc1d3012f56796359507720845956854",
+  "nota": "2401 entradas; búsqueda local por nombre"
+ }
+]

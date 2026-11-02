@@ -1,0 +1,460 @@
+{
+ "rpc": "https://ethereum-rpc.publicnode.com",
+ "consultadoUtc": "2026-11-01T15:05:11Z",
+ "nota": "Llamadas eth_call de solo lectura. Selectores calculados con keccak256 de la firma.",
+ "resultados": {
+  "mTBILL": {
+   "oracle": {
+    "address": "0x056339C044055819E8Db84E71f5f2E1F536b2E5b",
+    "decimals": 8,
+    "description": "mTBILL/USD",
+    "latestRoundDataRaw": "0x00000000000000000000000000000000000000000000000000000000000001e500000000000000000000000000000000000000000000000000000000066afec3000000000000000000000000000000000000000000000000000000006ae46dc3000000000000000000000000000000000000000000000000000000006ae46dc300000000000000000000000000000000000000000000000000000000000001e5",
+    "roundId": 485,
+    "answer": 107675331,
+    "valor": 1.07675331,
+    "updatedAt": 1793355203,
+    "updatedAtUtc": "2026-10-30T10:13:23Z",
+    "historial": [
+     {
+      "roundId": 484,
+      "valor": 1.07665653,
+      "updatedAtUtc": "2026-10-29T16:04:11Z"
+     },
+     {
+      "roundId": 483,
+      "valor": 1.07655628,
+      "updatedAtUtc": "2026-10-28T13:31:35Z"
+     },
+     {
+      "roundId": 482,
+      "valor": 1.07626311,
+      "updatedAtUtc": "2026-10-27T13:14:35Z"
+     },
+     {
+      "roundId": 481,
+      "valor": 1.07615376,
+      "updatedAtUtc": "2026-10-26T12:18:11Z"
+     },
+     {
+      "roundId": 480,
+      "valor": 1.07605551,
+      "updatedAtUtc": "2026-10-23T12:07:11Z"
+     },
+     {
+      "roundId": 479,
+      "valor": 1.0759533,
+      "updatedAtUtc": "2026-10-22T13:27:35Z"
+     },
+     {
+      "roundId": 478,
+      "valor": 1.07584988,
+      "updatedAtUtc": "2026-10-21T16:00:35Z"
+     },
+     {
+      "roundId": 477,
+      "valor": 1.07555721,
+      "updatedAtUtc": "2026-10-20T12:21:35Z"
+     },
+     {
+      "roundId": 476,
+      "valor": 1.0754436,
+      "updatedAtUtc": "2026-10-19T12:36:47Z"
+     },
+     {
+      "roundId": 475,
+      "valor": 1.0753419,
+      "updatedAtUtc": "2026-10-16T13:47:47Z"
+     }
+    ]
+   },
+   "token": {
+    "address": "0xdd629e5241cbc5919847783e6c96b2de4754e438",
+    "name": "Midas US Treasury Bill Token",
+    "symbol": "mTBILL",
+    "decimals": 18,
+    "totalSupplyRaw": "0x000000000000000000000000000000000000000000384c38148402a0ddcc828b",
+    "totalSupply": 68059780.24709493
+   },
+   "depositVault": {
+    "address": "0x99361435420711723aF805F08187c9E6bF796683",
+    "minAmount()": 0,
+    "instantFee()": 0,
+    "instantDailyLimit()": 1000000000000000000000000000000,
+    "greenlistEnabled()": 0,
+    "minMTokenAmountForFirstDeposit()": 0,
+    "maxSupplyCap()": 115792089237316195423570985008687907853269984665640564039457584007913129639935,
+    "paused()": 0
+   },
+   "redemptionVault": {
+    "address": "0x569D7dccBF6923350521ecBC28A555A500c4f0Ec",
+    "minAmount()": 1000000000000000000,
+    "instantFee()": 7,
+    "instantDailyLimit()": 10000000000000000000000000,
+    "greenlistEnabled()": 0,
+    "minMTokenAmountForFirstDeposit()": null,
+    "maxSupplyCap()": null,
+    "paused()": 0
+   }
+  },
+  "mF-ONE": {
+   "oracle": {
+    "address": "0x8D51DBC85cEef637c97D02bdaAbb5E274850e68C",
+    "decimals": 8,
+    "description": "mF-ONE/USD",
+    "latestRoundDataRaw": "0x00000000000000000000000000000000000000000000000000000000000001400000000000000000000000000000000000000000000000000000000006c17235000000000000000000000000000000000000000000000000000000006ae4a9ff000000000000000000000000000000000000000000000000000000006ae4a9ff0000000000000000000000000000000000000000000000000000000000000140",
+    "roundId": 320,
+    "answer": 113340981,
+    "valor": 1.13340981,
+    "updatedAt": 1793370623,
+    "updatedAtUtc": "2026-10-30T14:30:23Z",
+    "historial": [
+     {
+      "roundId": 319,
+      "valor": 1.13317455,
+      "updatedAtUtc": "2026-10-29T16:47:11Z"
+     },
+     {
+      "roundId": 318,
+      "valor": 1.13295993,
+      "updatedAtUtc": "2026-10-28T18:29:47Z"
+     },
+     {
+      "roundId": 317,
+      "valor": 1.13271472,
+      "updatedAtUtc": "2026-10-27T18:59:11Z"
+     },
+     {
+      "roundId": 316,
+      "valor": 1.13248876,
+      "updatedAtUtc": "2026-10-26T17:52:59Z"
+     },
+     {
+      "roundId": 315,
+      "valor": 1.13183516,
+      "updatedAtUtc": "2026-10-23T17:04:47Z"
+     },
+     {
+      "roundId": 314,
+      "valor": 1.13160855,
+      "updatedAtUtc": "2026-10-22T21:09:23Z"
+     },
+     {
+      "roundId": 313,
+      "valor": 1.13135894,
+      "updatedAtUtc": "2026-10-21T17:26:47Z"
+     },
+     {
+      "roundId": 312,
+      "valor": 1.13113247,
+      "updatedAtUtc": "2026-10-20T16:29:59Z"
+     },
+     {
+      "roundId": 311,
+      "valor": 1.13090632,
+      "updatedAtUtc": "2026-10-19T17:25:59Z"
+     },
+     {
+      "roundId": 310,
+      "valor": 1.13025054,
+      "updatedAtUtc": "2026-10-16T17:44:35Z"
+     }
+    ]
+   },
+   "token": {
+    "address": "0x238a700eD6165261Cf8b2e544ba797BC11e466Ba",
+    "name": "Midas Fasanara ONE",
+    "symbol": "mF-ONE",
+    "decimals": 18,
+    "totalSupplyRaw": "0x000000000000000000000000000000000000000000303fa4baba0fd8a0f36277",
+    "totalSupply": 58328987.15103534
+   },
+   "depositVault": {
+    "address": "0x41438435c20B1C2f1fcA702d387889F346A0C3DE",
+    "minAmount()": 0,
+    "instantFee()": 10,
+    "instantDailyLimit()": 1000000000000000000000000000000,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": 148000000000000000000000,
+    "maxSupplyCap()": 115792089237316195423570985008687907853269984665640564039457584007913129639935,
+    "paused()": 1
+   },
+   "redemptionVault": {
+    "address": "0x44b0440e35c596e858cEA433D0d82F5a985fD19C",
+    "minAmount()": 1000000000000000000,
+    "instantFee()": 100,
+    "instantDailyLimit()": 200000000000000000000000,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": null,
+    "maxSupplyCap()": null,
+    "paused()": 0
+   }
+  },
+  "mGLO": {
+   "oracle": {
+    "address": "0x59313b6ae481e39B8E7710C8C26dC0ada3C532Ca",
+    "decimals": 8,
+    "description": "mGLO/USD",
+    "latestRoundDataRaw": "0x00000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000006073b4c000000000000000000000000000000000000000000000000000000006adb47cb000000000000000000000000000000000000000000000000000000006adb47cb0000000000000000000000000000000000000000000000000000000000000006",
+    "roundId": 6,
+    "answer": 101137228,
+    "valor": 1.01137228,
+    "updatedAt": 1792755659,
+    "updatedAtUtc": "2026-10-23T11:40:59Z",
+    "historial": [
+     {
+      "roundId": 5,
+      "valor": 1.00576635,
+      "updatedAtUtc": "2026-09-25T08:58:23Z"
+     },
+     {
+      "roundId": 4,
+      "valor": 1.00567226,
+      "updatedAtUtc": "2026-09-24T14:43:35Z"
+     },
+     {
+      "roundId": 3,
+      "valor": 1.0052025,
+      "updatedAtUtc": "2026-09-23T17:32:47Z"
+     },
+     {
+      "roundId": 2,
+      "valor": 1.0,
+      "updatedAtUtc": "2026-08-21T16:56:47Z"
+     },
+     {
+      "roundId": 1,
+      "valor": 1.0,
+      "updatedAtUtc": "2026-07-16T10:14:35Z"
+     }
+    ]
+   },
+   "token": {
+    "address": "0x1DD91a111606382B77A917633ED90feAf25E0F76",
+    "name": "Midas Fasanara Global Open",
+    "symbol": "mGLO",
+    "decimals": 18,
+    "totalSupplyRaw": "0x0000000000000000000000000000000000000000001585cac7a7970d8d22102a",
+    "totalSupply": 26019257.583065383
+   },
+   "depositVault": {
+    "address": "0xe6522C0B034Eb725BB03D5cf957abEC1D2566E91",
+    "minAmount()": 1000000000000000000,
+    "instantFee()": 0,
+    "instantDailyLimit()": 30000000000000000000000000,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": 114000000000000000000000,
+    "maxSupplyCap()": 115792089237316195423570985008687907853269984665640564039457584007913129639935,
+    "paused()": 1
+   },
+   "redemptionVault": {
+    "address": "0x55f3Ab43E49FFb6b1FFf5E2B310C21278bDAf0f5",
+    "minAmount()": 1000000000000000000,
+    "instantFee()": 50,
+    "instantDailyLimit()": 200000000000000000000000,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": null,
+    "maxSupplyCap()": null,
+    "paused()": 0
+   }
+  },
+  "mGLOBAL": {
+   "oracle": {
+    "address": "0x66Aa9fcD63DF74e1f67A9452E6E59Fbc67f75E38",
+    "decimals": 8,
+    "description": "mGLOBAL/USD",
+    "latestRoundDataRaw": "0x00000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000006205ab3000000000000000000000000000000000000000000000000000000006abc5100000000000000000000000000000000000000000000000000000000006adb47cb0000000000000000000000000000000000000000000000000000000000000008",
+    "roundId": 8,
+    "answer": 102783667,
+    "valor": 1.02783667,
+    "updatedAt": 1792755659,
+    "updatedAtUtc": "2026-10-23T11:40:59Z",
+    "historial": [
+     {
+      "roundId": 7,
+      "valor": 1.02241277,
+      "updatedAtUtc": "2026-09-24T14:43:35Z"
+     },
+     {
+      "roundId": 6,
+      "valor": 1.02200873,
+      "updatedAtUtc": "2026-09-23T17:32:47Z"
+     },
+     {
+      "roundId": 5,
+      "valor": 1.01664609,
+      "updatedAtUtc": "2026-08-20T18:27:59Z"
+     },
+     {
+      "roundId": 4,
+      "valor": 1.01128145,
+      "updatedAtUtc": "2026-07-23T17:45:35Z"
+     },
+     {
+      "roundId": 3,
+      "valor": 1.0057648,
+      "updatedAtUtc": "2026-06-29T16:26:47Z"
+     },
+     {
+      "roundId": 2,
+      "valor": 1.0,
+      "updatedAtUtc": "2026-05-15T16:21:35Z"
+     }
+    ]
+   },
+   "token": {
+    "address": "0x7433806912Eae67919e66aea853d46Fa0aef98A8",
+    "name": "Midas Fasanara Global",
+    "symbol": "mGLOBAL",
+    "decimals": 18,
+    "totalSupplyRaw": "0x0000000000000000000000000000000000000000001b962f45eae78f83057a0c",
+    "totalSupply": 33350224.137090635
+   },
+   "depositVault": {
+    "address": "0xCe29c36c6D4556f2d01d79414C1354B968dDDEf1",
+    "minAmount()": 1000000000000000000,
+    "instantFee()": 0,
+    "instantDailyLimit()": 115792089237316195423570985008687907853269984665640564039457584007913129639935,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": 114000000000000000000000,
+    "maxSupplyCap()": 115792089237316195423570985008687907853269984665640564039457584007913129639935,
+    "paused()": 1
+   },
+   "redemptionVault": {
+    "address": "0xA0Fc8BDFb1E6a705C1375810989B1d70a982b01B",
+    "minAmount()": 0,
+    "instantFee()": 50,
+    "instantDailyLimit()": 2000000000000000000000000,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": null,
+    "maxSupplyCap()": null,
+    "paused()": 0
+   }
+  },
+  "mGLOeuro": {
+   "oracle": {
+    "address": "0x8B7B1689396ef4468df1c0faB181D29B47089609",
+    "decimals": 8,
+    "description": "mGLOeuro/EUR",
+    "latestRoundDataRaw": "0x00000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000005f5e100000000000000000000000000000000000000000000000000000000006adfa95f000000000000000000000000000000000000000000000000000000006adfa95f0000000000000000000000000000000000000000000000000000000000000003",
+    "roundId": 3,
+    "answer": 100000000,
+    "valor": 1.0,
+    "updatedAt": 1793042783,
+    "updatedAtUtc": "2026-10-26T19:26:23Z",
+    "historial": [
+     {
+      "roundId": 2,
+      "valor": 100000.0,
+      "updatedAtUtc": "2026-09-23T10:39:35Z"
+     },
+     {
+      "roundId": 1,
+      "valor": 100000.0,
+      "updatedAtUtc": "2026-08-04T08:42:59Z"
+     }
+    ]
+   },
+   "token": {
+    "address": "0x2F8bae126b8d416C009b82Ccd60e4f9cAbbd7702",
+    "name": "Midas Fasanara Global Euro",
+    "symbol": "mGLOeuro",
+    "decimals": 18,
+    "totalSupplyRaw": "0x00000000000000000000000000000000000000000005a686e20bcb2cb906078b",
+    "totalSupply": 6831030.086271254
+   },
+   "depositVault": {
+    "address": "0xE0Dcf20b0460e1f9222528F3997F9D71Ad6375C5",
+    "minAmount()": 1100000000000000000,
+    "instantFee()": 0,
+    "instantDailyLimit()": 10000000000000000000000000,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": 98040000000000000000000,
+    "maxSupplyCap()": 115792089237316195423570985008687907853269984665640564039457584007913129639935,
+    "paused()": 1
+   },
+   "redemptionVault": {
+    "address": "0x1E9f04408FF38d1FB70CE939fC87D26D61F6F758",
+    "minAmount()": 1100000000000000000,
+    "instantFee()": 50,
+    "instantDailyLimit()": 500000000000000000000000,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": null,
+    "maxSupplyCap()": null,
+    "paused()": 0
+   }
+  },
+  "mWIN": {
+   "oracle": {
+    "address": "0x1725A66D810C0775f6B3B0FD85646D371dA19517",
+    "decimals": 8,
+    "description": "mWIN/USD",
+    "latestRoundDataRaw": "0x000000000000000000000000000000000000000000000000000000000000004e00000000000000000000000000000000000000000000000000000bfbefc53117000000000000000000000000000000000000000000000000000000006ae4a9ff000000000000000000000000000000000000000000000000000000006ae4a9ff000000000000000000000000000000000000000000000000000000000000004e",
+    "roundId": 78,
+    "answer": 13176687374615,
+    "valor": 131766.87374615,
+    "updatedAt": 1793370623,
+    "updatedAtUtc": "2026-10-30T14:30:23Z",
+    "historial": [
+     {
+      "roundId": 77,
+      "valor": 131740.13169068,
+      "updatedAtUtc": "2026-10-29T11:13:59Z"
+     },
+     {
+      "roundId": 76,
+      "valor": 131714.34393701,
+      "updatedAtUtc": "2026-10-28T12:27:59Z"
+     },
+     {
+      "roundId": 75,
+      "valor": 131678.98375782,
+      "updatedAtUtc": "2026-10-27T15:20:11Z"
+     },
+     {
+      "roundId": 74,
+      "valor": 131259.59543312,
+      "updatedAtUtc": "2026-10-26T09:43:35Z"
+     },
+     {
+      "roundId": 73,
+      "valor": 131278.52002818,
+      "updatedAtUtc": "2026-10-23T11:04:59Z"
+     },
+     {
+      "roundId": 72,
+      "valor": 131241.91551278,
+      "updatedAtUtc": "2026-10-22T10:47:35Z"
+     }
+    ]
+   },
+   "token": {
+    "address": "0x4E72025984424E52838cf8953E2863eFf036B67A",
+    "name": "Midas Wellington Income Opportunities",
+    "symbol": "mWIN",
+    "decimals": 18,
+    "totalSupplyRaw": "0x0000000000000000000000000000000000000000000000039a4975836945d352",
+    "totalSupply": 66.45777858353678
+   },
+   "depositVault": {
+    "address": "0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4",
+    "minAmount()": 0,
+    "instantFee()": 0,
+    "instantDailyLimit()": 155000000000000000000,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": 1000000000000000000,
+    "maxSupplyCap()": 115792089237316195423570985008687907853269984665640564039457584007913129639935,
+    "paused()": 0
+   },
+   "redemptionVault": {
+    "address": "0x605704d7b36d1677a8d242ded68eD505523c7924",
+    "minAmount()": 7692300000000,
+    "instantFee()": 50,
+    "instantDailyLimit()": 4000000000000000000,
+    "greenlistEnabled()": 1,
+    "minMTokenAmountForFirstDeposit()": null,
+    "maxSupplyCap()": null,
+    "paused()": 0
+   }
+  }
+ }
+}
