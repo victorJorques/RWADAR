@@ -148,14 +148,13 @@ test('la expansión de plataformas exige un lote íntegro y funciona sin cambiar
   assert.equal(r.plataformas.at(-1).slug,'plataforma-diaria-nueva');
 });
 
-test('ni una recarga ni un reinicio vuelven de 50 a 49 y una respuesta truncada conserva las 50 guardadas', async () => {
+test('una respuesta truncada o mezclada conserva las 50 guardadas, también tras reiniciar', async () => {
   const ampliado = ampliarLote();
-  const menor = lotePrueba();
   const truncado = structuredClone(ampliado); truncado.ofertas.pop();
   const mezclado = structuredClone(ampliado); mezclado.ofertas[0].ofertas_esperadas = 49;
   const e = entorno({lote:ampliado});
   assert.equal((await e.lector.cargar()).ofertas.length,50);
-  for(const lote of [menor,truncado,mezclado]) {
+  for(const lote of [truncado,mezclado]) {
     e.estado.lote = lote;
     const r = await e.lector.cargar();
     assert.equal(r.ofertas.length,50); assert.equal(r.deCache,true); assert.ok(r.error);
@@ -164,6 +163,20 @@ test('ni una recarga ni un reinicio vuelven de 50 a 49 y una respuesta truncada 
     const despues = await reinicio.lector.cargar();
     assert.equal(despues.ofertas.length,50); assert.equal(despues.deCache,true); assert.ok(despues.error);
   }
+});
+
+test('un lote coherente más pequeño sustituye al de 50 (retirada deliberada, 02/11/2026)', async () => {
+  const ampliado = ampliarLote();
+  const menor = lotePrueba();
+  const e = entorno({lote:ampliado});
+  assert.equal((await e.lector.cargar()).ofertas.length,50);
+  e.estado.lote = menor;
+  const r = await e.lector.cargar();
+  assert.equal(r.error,null); assert.equal(r.deCache,false); assert.equal(r.ofertas.length,49);
+  assert.equal(JSON.parse(e.mapa.get(CACHE_CATALOGO)).ofertas.length,49);
+  const reinicio = entorno({lote:menor,cache:ampliado});
+  const despues = await reinicio.lector.cargar();
+  assert.equal(despues.error,null); assert.equal(despues.ofertas.length,49);
 });
 
 test('la copia sin conexión conserva su fecha real, sigue disponible al caducar y no lee cachés antiguas', async () => {

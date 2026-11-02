@@ -118,8 +118,9 @@ let CATALOGO_EMBEBIDO_BLOQUEADO=false;
    muestra la última copia completa con un aviso; las cifras vencidas siguen
    ocultas oferta a oferta. Solo public.catalogo_publicacion.retirado lo oculta. */
 let CATALOGO_CADUCADO=false,CATALOGO_SIN_COMPROBAR=false,CATALOGO_RETIRADO=false;
-/* Mínimo de la última copia completa aceptada en esta pestaña. Una carga
-   posterior puede añadir fichas con manifiesto coherente, nunca perderlas. */
+/* Manifiesto de la última copia completa aceptada en esta pestaña. Desde el
+   02/11/2026 ya no es un mínimo: un lote nuevo y coherente puede tener más o
+   menos fichas (decisión de Víctor). */
 let MANIFIESTO_CATALOGO_V2_ACEPTADO={plataformas:26,ofertas:49,
  colecciones:{principales:24,secundario:21,en_camino:4}};
 /* Activos propios, no fotografías del emisor. La compuerta de publicación
@@ -2810,13 +2811,17 @@ function metadatosCatalogoV2(fila){
   verificado_lote_el:fila.verificado_lote_el,vigencia_lote_dias:fila.vigencia_lote_dias};
 }
 function validarManifiestoCatalogoV2(plataformas,ofertas){
- const minimo=MANIFIESTO_CATALOGO_V2_ACEPTADO,p=Array.isArray(plataformas)&&plataformas[0];
+ /* Desde el 02/11/2026 un lote puede tener menos ofertas que el anterior
+    (decisión de Víctor). Un lote cortado se sigue rechazando porque debe
+    traer exactamente las filas que declara su propio manifiesto. */
+ const p=Array.isArray(plataformas)&&plataformas[0];
  const plataformasEsperadas=p&&p.plataformas_esperadas,ofertasEsperadas=p&&p.ofertas_esperadas;
  const esperadas=p&&p.colecciones_esperadas;
- if(!Number.isInteger(plataformasEsperadas)||plataformasEsperadas<minimo.plataformas||plataformasEsperadas>256||
-    !Number.isInteger(ofertasEsperadas)||ofertasEsperadas<minimo.ofertas||ofertasEsperadas>1000||
+ if(!Number.isInteger(plataformasEsperadas)||plataformasEsperadas<1||plataformasEsperadas>256||
+    !Number.isInteger(ofertasEsperadas)||ofertasEsperadas<1||ofertasEsperadas>1000||
     !esperadas||Array.isArray(esperadas)||Object.keys(esperadas).length!==3||
-    !Object.keys(minimo.colecciones).every(c=>Number.isInteger(esperadas[c])&&esperadas[c]>=minimo.colecciones[c])||
+    !['principales','secundario','en_camino'].every(c=>Number.isInteger(esperadas[c])&&esperadas[c]>=0)||
+    !(esperadas.principales>0)||
     Object.values(esperadas).reduce((a,b)=>a+b,0)!==ofertasEsperadas||
     !Array.isArray(plataformas)||plataformas.length!==plataformasEsperadas||!Array.isArray(ofertas)||ofertas.length!==ofertasEsperadas||
     new Set(plataformas.map(p=>p.slug)).size!==plataformasEsperadas||new Set(ofertas.map(o=>o.slug)).size!==ofertasEsperadas)
@@ -3054,8 +3059,10 @@ async function alDia(){
   }
   // Una vista vacía o incompleta ya no retira el lote: se conserva la última
   // copia completa y se avisa de que no se ha podido comprobar la más reciente.
-  if([[0,MANIFIESTO_CATALOGO_V2_ACEPTADO.plataformas],[2,MANIFIESTO_CATALOGO_V2_ACEPTADO.ofertas]].some(([i,total])=>
-   respuestas[i].status==='fulfilled'&&(!Array.isArray(respuestas[i].value)||respuestas[i].value.length<total))){
+  // «Incompleta» es respecto a lo que declara el propio lote, no al anterior.
+  if([[0,'plataformas_esperadas'],[2,'ofertas_esperadas']].some(([i,campo])=>
+   respuestas[i].status==='fulfilled'&&(!Array.isArray(respuestas[i].value)||!respuestas[i].value.length||
+    respuestas[i].value.length!==respuestas[i].value[0]?.[campo]))){
    CATALOGO_SIN_COMPROBAR=true;
    refrescarVigenciaOfertas();throw new Error('catálogo remoto incompleto: se conserva la última copia completa');
   }

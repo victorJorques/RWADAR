@@ -2239,8 +2239,17 @@ for(const [nombre,alterar] of [
   prueba('la ampliación declarada no acepta una respuesta truncada al tamaño del lote anterior',
     Boolean(await capturaError(Promise.resolve().then(()=>vm.runInContext('validarEscaparateLocalV2(incompleto)',c)))));
   vm.runInContext('recordarManifiestoCatalogoV2(ampliado.plataformas)',c);
-  prueba('tras aceptar 50 referencias no se degrada a un lote de 49 en la misma pestaña',
-    Boolean(await capturaError(Promise.resolve().then(()=>vm.runInContext('validarEscaparateLocalV2(anterior)',c)))));
+  prueba('tras aceptar 50 referencias acepta un lote coherente de 49 (retirada deliberada, 02/11/2026)',
+    vm.runInContext('validarEscaparateLocalV2(anterior).ofertas.length===49',c));
+  const reducido=snapshotLocalV2(c),quitar=new Set(reducido.ofertas.filter(o=>o.coleccion==='secundario').slice(0,20).map(o=>o.slug));
+  reducido.ofertas=reducido.ofertas.filter(o=>!quitar.has(o.slug));
+  [...reducido.plataformas,...reducido.ofertas].forEach(x=>{x.ofertas_esperadas=29;x.colecciones_esperadas={principales:24,secundario:1,en_camino:4};});
+  c.reducido=reducido;
+  prueba('el cliente acepta un lote reducido a propósito si todas sus filas y colecciones cuadran con su manifiesto',
+    vm.runInContext('validarEscaparateLocalV2(reducido).ofertas.length===29',c));
+  const reducidoCortado=structuredClone(reducido);reducidoCortado.ofertas.pop();c.reducidoCortado=reducidoCortado;
+  prueba('un lote reducido al que le falta una fila declarada se sigue rechazando',
+    Boolean(await capturaError(Promise.resolve().then(()=>vm.runInContext('validarEscaparateLocalV2(reducidoCortado)',c)))));
   const exceso=structuredClone(ampliado);exceso.plataformas[0].ofertas_esperadas=1001;c.exceso=exceso;
   prueba('la ampliación mantiene límites explícitos de tamaño y no admite metadatos aislados',
     Boolean(await capturaError(Promise.resolve().then(()=>vm.runInContext('validarEscaparateLocalV2(exceso)',c)))));

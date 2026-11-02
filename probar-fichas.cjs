@@ -48,7 +48,10 @@ verificar('snapshot expandido requiere datos completos y revisión de cada ruta 
     c=>{c.ofertas.at(-1).documentacion=null;},
     c=>{c.ofertas.at(-1).url='javascript:alert(1)';},
   ]){const incompleto=structuredClone(ampliado);alterar(incompleto);assert.throws(()=>validarCatalogoSnapshot(incompleto));}
-  assert.throws(()=>validarCatalogoSnapshot(catalogo,{manifiesto:completo.manifiesto}),/reduce/);
+  // Desde el 02/11/2026 un catálogo coherente más pequeño que el anterior se acepta
+  // (retirada deliberada); sus páginas siguen limitadas a la lista cerrada revisada.
+  assert.equal(validarCatalogoSnapshot(catalogo,{manifiesto:completo.manifiesto}).ofertas.length,
+    catalogo.manifiesto.ofertasEsperadas);
 });
 verificar('el lector estático no ejecuta expresiones ni acepta propiedades activas del catálogo',()=>{
   for(const p of ['(()=>{throw Error("no ejecutar");})()','{get n(){throw Error("no ejecutar");}}','{...secreto}']){

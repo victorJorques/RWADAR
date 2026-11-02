@@ -262,12 +262,11 @@ function validarLotePublicoV2(plataformas, ofertas, {
     asegurar(candidato.plataformasEsperadas <= LIMITES_CATALOGO_V2.plataformas &&
       candidato.ofertasEsperadas <= LIMITES_CATALOGO_V2.ofertas,
       'V2: el manifiesto supera los límites del lector');
-    asegurar(candidato.plataformasEsperadas >= manifiesto.plataformasEsperadas &&
-      candidato.ofertasEsperadas >= manifiesto.ofertasEsperadas &&
-      COLECCIONES_OFERTA.every(c => candidato.coleccionesEsperadas[c] >= manifiesto.coleccionesEsperadas[c]),
-      'V2: el lote reduce el último manifiesto completo');
-    // El candidato solo fija las cantidades esperadas. Las guardas siguientes
-    // comprueban todas las filas, sus datos y la totalidad de cada colección.
+    // Desde el 02/11/2026, por decisión de Víctor, un lote puede tener más o
+    // menos ofertas que el anterior: se retiran fichas sin cambiar el código.
+    // Lo que protege de un lote cortado es que cada lote traiga exactamente
+    // las filas que él mismo declara: las guardas siguientes comprueban todas
+    // las filas, sus datos y la totalidad de cada colección.
     manifiesto = candidato;
   }
   asegurar(Array.isArray(plataformas) && plataformas.length === manifiesto.plataformasEsperadas,
