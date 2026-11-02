@@ -1,0 +1,249 @@
+{
+  "slug": "servicehunter-quitt",
+  "tipoExpediente": "publicada",
+  "grupo": "aktionariat",
+  "proveedor": "Aktionariat (portal de inversores shares.quitt.ch)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Ninguna hoy: ServiceHunter AG no vende; solo negociación entre accionistas en un portal con tecnología de Aktionariat AG",
+  "emisor": "ServiceHunter AG (marca comercial quitt)",
+  "vehiculo": "Sociedad anónima suiza (AG); sin SPV",
+  "token": "DQTS «Draggable quitt.shares», ERC-20 en Ethereum mainnet, contrato 0x8747a3114ef7f0eebd3eb337f745e31dbf81a952 (envoltorio de QTS 0xae7c2042c2f84ff5880a185bd7d81da5b822b3a7)",
+  "derechoAdquirido": "Acciones nominativas de ServiceHunter AG en forma de valores registrados en DLT, envueltas en DQTS con Token Holder Agreement (drag-along / tag-along). Desde 2023 los estatutos restringen la transmisión de las acciones nominativas (Vinkulierung).",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-115.866.090; token DQTS 0x8747a3114ef7f0eebd3eb337f745e31dbf81a952",
+  "moneda": "ZCHF (secundario)",
+  "documentos": [
+    {
+      "titulo": "Token Holder Agreement DQTS",
+      "url": "https://storage.googleapis.com/aktionariat/public/10/ff1e540c-b0a5-4396-9587-563e2bf8f428/2021-03-01-Token-Holder-Agreement-DQTS.pdf",
+      "versionOFecha": "Version 1.0 – 2021-03-01",
+      "paginas": 5,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Registration Agreement QTS (firmado, escaneado)",
+      "url": "https://storage.googleapis.com/aktionariat/public/10/9c9c214c-0faf-4aa6-8eca-b5ff2ac7fd77/2021-03-01-Registration-Agreement-QTS-Signed%20%281%29.pdf",
+      "versionOFecha": "2021-03-01 (según nombre del archivo)",
+      "paginas": 6,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Folleto / ficha informativa",
+      "url": null,
+      "versionOFecha": "no localizado",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (Zefix / ZefixREST)",
+      "entidad": "ServiceHunter AG",
+      "numero": "CHE-115.866.090",
+      "url": "https://www.zefix.ch/en/search/entity/list?name=ServiceHunter%20AG",
+      "alcance": "Sociedad anónima (AG) inscrita, sede Zürich, estado EXISTIEREND. Capital 200.000 CHF (SHAB 23/04/2024). Restricción de transmisión de acciones nominativas reintroducida (SHAB 17/11/2023). Absorción de Earny SA (SHAB 03/07/2026). Cambio de presidencia del consejo (SHAB 22/07/2026). Revisora: BDO AG. Es un registro mercantil, no una licencia financiera.",
+      "consultadoUtc": "2026-11-01T15:05:02Z"
+    },
+    {
+      "regulador": "FINMA",
+      "entidad": "—",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "alcance": "No se ha localizado autorización FINMA. El propio portal declara que el mercado secundario es una «non-commercial trading facility» no sujeta a supervisión prudencial; el registro de autorizados de FINMA no se consultó por nombre (pendiente).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "FINMA",
+      "busqueda": "ServiceHunter / quitt",
+      "resultado": "sin coincidencias (lista de advertencias completa, 2.401 entradas, búsqueda local por nombre)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-01T15:08:30Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "ServiceHunter",
+      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
+      "consultadoUtc": null
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "Please go to shares.quitt.ch to trade our shares.",
+      "dato": "Sin venta ni recompra del emisor; solo secundario",
+      "fuentePrimaria": "https://shares.quitt.ch/api/brokerbotsettings?ticker=DQTS",
+      "localizador": "disabledBuyText/disabledSellText; isPrimaryMarketEnabled=false; on-chain settings()=4 (bit 0x1 apagado)",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T14:58:56Z",
+      "alcanceYLimites": "El parámetro de precio del contrato desactivado (7,11154) no es ejecutable.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "Current Price CHF 8 · Last trade • 2 Oct 2026, 00:00",
+      "dato": "La fecha «2 Oct» es un punto de control de precio (lastPriceCheckpoint 2026-10-02T00:00:00Z), no una operación",
+      "fuentePrimaria": "https://shares.quitt.ch/",
+      "localizador": "Portada; datos embebidos companyStats.lastPriceCheckpoint vs lastSecondaryMarketTrade",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:03:53Z",
+      "alcanceYLimites": "El portal etiqueta como «Last trade» un registro de las 00:00:00 que no aparece en la lista de operaciones.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "precio",
+      "literal": "23 Jul 2026 / 15:19 Secondary Trade 8.00 ZCHF 10 DQTS",
+      "dato": "Última operación real 8,00 ZCHF el 23/07/2026 15:19 UTC (10 acciones)",
+      "fuentePrimaria": "https://shares.quitt.ch/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=10 (480 operaciones); lastSecondaryMarketTrade=2026-07-23T15:19:11Z",
+      "fechaDato": "2026-07-23",
+      "consultadoUtc": "2026-11-01T14:58:57Z",
+      "alcanceYLimites": "Conflicto de fechas resuelto: la operación más reciente es del 23/07/2026; no hubo cruce el 02/10/2026.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "Bid/Ask 5.00 / 8.00 · Spread 37.50%",
+      "dato": "Mejor compra 5,00 ZCHF (10 acciones) y 3,00 (6); mejor venta 8,00 (200)",
+      "fuentePrimaria": "https://shares.quitt.ch/trade",
+      "localizador": "/trade, libro de órdenes",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:04:12Z",
+      "alcanceYLimites": "Demanda visible ≈ 16 acciones (≈ 68 ZCHF). Solo ZCHF con monedero propio.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Vinkulierung neu: Die Übertragbarkeit der Namenaktien ist nach Massgabe der Statuten beschränkt.",
+      "dato": "Transmisión restringida por estatutos desde 24/10/2023",
+      "fuentePrimaria": "https://www.zefix.ch/ZefixREST/api/v1/firm/989312.json",
+      "localizador": "SHAB 17/11/2023 (Statutenänderung 24.10.2023)",
+      "fechaDato": "2023-10-24",
+      "consultadoUtc": "2026-11-01T15:05:02Z",
+      "alcanceYLimites": "El Registration Agreement de 2021 es anterior; el emisor podría negarse a inscribir a un comprador según los estatutos (no leídos).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": null,
+      "fuentePrimaria": "https://shares.quitt.ch/",
+      "localizador": "Portal completo",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:58:56Z",
+      "alcanceYLimites": "Sin oferta del emisor ni lista de países.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita (CHE-115.866.090); sin licencia financiera; sin advertencia FINMA."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "Sin oferta del emisor y sin operaciones desde el 23/07/2026 (más de 3 meses)."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "Solo secundario en ZCHF, demanda de 16 acciones; transmisión restringida por estatutos."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "El portal muestra «Last trade 2 Oct» que no es una operación."
+    }
+  },
+  "estadoOferta": "solo_reventa",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "fechaPrecio",
+      "antes": "Conflicto: encabezado «último cruce» 02/10/2026 vs tabla 23/07/2026",
+      "ahora": "Resuelto: el 02/10/2026 00:00 es un punto de control de precio, no una operación; la última operación es del 23/07/2026 a 8,00 ZCHF",
+      "fuente": "https://shares.quitt.ch/api/secondarymarkets/getTrades",
+      "critico": true
+    },
+    {
+      "campo": "derecho",
+      "antes": "No indicado",
+      "ahora": "Transmisión de acciones restringida por estatutos (SHAB 17/11/2023)",
+      "fuente": "https://www.zefix.ch/ZefixREST/api/v1/firm/989312.json",
+      "critico": true
+    },
+    {
+      "campo": "acciones tokenizadas",
+      "antes": "1.655.280 DQTS",
+      "ahora": "1.658.405 DQTS",
+      "fuente": "https://shares.quitt.ch/",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "ServiceHunter · quitt",
+    "categoria": "Acciones y capital privado",
+    "pais": "CH",
+    "tipo": "valor",
+    "coleccion": "secundario",
+    "resumen": "Acciones tokenizadas de ServiceHunter AG, operadora de quitt. El emisor no vende ni recompra; solo hay compraventa entre accionistas, sin operaciones desde julio de 2026.",
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Última operación",
+        "valor": "8,00 ZCHF (23/07/2026)"
+      },
+      {
+        "etiqueta": "Venta del emisor",
+        "valor": "Cerrada"
+      },
+      {
+        "etiqueta": "Mejor oferta de compra · 01/11/2026",
+        "valor": "5,00 ZCHF (10 acciones)"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Ninguno"
+      }
+    ],
+    "avisos": [
+      "El portal muestra «Last trade 2 Oct 2026», pero esa fecha no corresponde a ninguna operación.",
+      "Los estatutos restringen la transmisión de acciones desde 2023."
+    ],
+    "url": "https://shares.quitt.ch/",
+    "fuentesActuales": [
+      "https://shares.quitt.ch/trade",
+      "https://shares.quitt.ch/api/secondarymarkets/getTrades"
+    ],
+    "lugar": "Zúrich · Suiza",
+    "pasos": [
+      "Monedero con ZCHF",
+      "Orden entre accionistas",
+      "Venta si hay comprador"
+    ],
+    "concepto": "una agenda de servicios domésticos convertida en registro de acciones"
+  },
+  "decision": "retirar_propuesta",
+  "motivoDecision": "No hay oferta del emisor, no hay operaciones desde hace más de tres meses, la demanda visible es de 16 acciones y la transmisión está restringida por estatutos. Propuesta de retirada; decide Víctor.",
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Conflicto de fechas aclarado con la lista de operaciones on-chain.",
+    "porQueNo": "Sin oferta del emisor, última operación del 23/07/2026, demanda mínima y transmisión restringida."
+  },
+  "bloqueos": [
+    "Registration Agreement QTS escaneado: sin texto extraíble, no leído.",
+    "Advertencias CNMV no consultadas (tanda interrumpida)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T14:58:56Z",
+    "finUtc": "2026-11-01T15:08:30Z"
+  }
+}

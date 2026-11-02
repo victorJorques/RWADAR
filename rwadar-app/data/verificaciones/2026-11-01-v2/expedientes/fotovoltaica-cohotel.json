@@ -1,0 +1,411 @@
+{
+  "slug": "fotovoltaica-cohotel",
+  "tipoExpediente": "publicada",
+  "grupo": "brickwise",
+  "proveedor": "Brickwise",
+  "plataformaSlug": "brickwise",
+  "entidadComercializadora": "Brickwise Investment GmbH (agente vinculado de Effecta GmbH)",
+  "emisor": "COHOTEL Hotelbetriebsgesellschaft m.b.H. (FN 281947 d)",
+  "vehiculo": "Sociedad vehículo austriaca emisora (GmbH)",
+  "token": "Token en la red «Brickprotocol»; tokenId 9s2xF7osJQxyqS8AQSRZbvRghdFrKWc4ENQLApaNfq9C",
+  "derechoAdquirido": "Genussschein tokenizado a 15 años con reembolso del nominal cualificadamente subordinado",
+  "jurisdiccion": "AT",
+  "identificador": "ISIN AT0000A38J40",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Investitionsbedingungen",
+      "url": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+      "versionOFecha": "14.11.2023",
+      "paginas": 19,
+      "sha256": "1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40",
+      "leido": true
+    },
+    {
+      "titulo": "Basisinformationsblatt (KID)",
+      "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+      "versionOFecha": "Thu, 25 Apr 2024 14:47:24 GMT",
+      "paginas": 3,
+      "sha256": "a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f",
+      "leido": true
+    },
+    {
+      "titulo": "API pública de activos (v2) y ficha (v1)",
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+      "versionOFecha": "updatedAt 2026-10-08T19:57:53.081Z",
+      "paginas": null,
+      "sha256": "b5fd7e17d84b6793a89425a3fb09a1af74d98a8fde2c3cbb26db04c347d7707b",
+      "leido": true
+    },
+    {
+      "titulo": "Kosteninformationen Brickwise",
+      "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+      "versionOFecha": "Last-Modified 01/04/2023",
+      "paginas": 2,
+      "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "BaFin (Alemania)",
+      "entidad": "Effecta GmbH",
+      "numero": "BaFin-ID 10133261",
+      "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+      "alcance": "Wertpapierinstitut: Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) y Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) desde 26.06.2021. Es la entidad bajo cuya responsabilidad actúa Brickwise; no acredita el producto ni al emisor.",
+      "consultadoUtc": "2026-11-01T15:02:28Z"
+    },
+    {
+      "regulador": "BaFin (Alemania)",
+      "entidad": "Brickwise Investment GmbH",
+      "numero": "80174029",
+      "url": "https://portal.mvp.bafin.de/database/VGVInfo/komfortsucheForm.do (registerNr=80174029)",
+      "alcance": "Vertraglich gebundener Vermittler (agente vinculado) con entidad responsable Effecta GmbH; activo desde 04.08.2021, sin fecha de baja; datos del registro a 31.10.2026. Sin licencia propia.",
+      "consultadoUtc": "2026-11-01T15:02:47Z"
+    },
+    {
+      "regulador": "CNMV (España)",
+      "entidad": "EFFECTA GmbH",
+      "numero": "5003 (registro 11/11/2020)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+      "alcance": "ESI del EEE en libre prestación en España; programa: recepción y transmisión de órdenes sobre valores negociables y participaciones de IIC. Pestaña Agentes: «No se han encontrado datos disponibles» (no consta Brickwise como agente notificado para España).",
+      "consultadoUtc": "2026-11-01T15:09:03Z"
+    },
+    {
+      "regulador": "Firmenbuch (Austria)",
+      "entidad": "COHOTEL Hotelbetriebsgesellschaft m.b.H.",
+      "numero": "FN 281947 d",
+      "url": null,
+      "alcance": "Número FN tomado del contrato/KID del emisor; no consultado en el Firmenbuch (consulta de pago). El emisor es una sociedad vehículo no supervisada; la emisión no está aprobada por la FMA (oferta con exención de folleto).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Effecta (buscador de entidades registradas)",
+      "resultado": "sin advertencia: devuelve EFFECTA GMBH como «Empresa de Servicios de Inversión Extranjera» registrada",
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "consultadoUtc": "2026-11-01T15:04:50Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "COHOTEL (buscador de entidades registradas)",
+      "resultado": "sin coincidencias («No se han encontrado resultados»)",
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "consultadoUtc": "2026-11-01T15:06:19Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Brickwise, Effecta y emisores (buscador de entidades no autorizadas / advertencias)",
+      "resultado": "no_verificable: el botón «Buscar» no respondió (timeout de 30 s en 10 búsquedas, 01/11 15:09–15:14 UTC); no se afirma ausencia de advertencias",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:14:00Z"
+    },
+    {
+      "regulador": "FMA (Austria)",
+      "busqueda": "brickwise (Unternehmensdatenbank, entidades autorizadas)",
+      "resultado": "sin coincidencias («No entries found»): Brickwise no figura como entidad autorizada por la FMA; la lista de advertencias de la FMA no se consultó",
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise",
+      "consultadoUtc": "2026-11-02T08:42:28Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":65",
+      "dato": "solo_reventa",
+      "fuentePrimaria": "https://api.app.brickwise.at/api/v2/assets",
+      "localizador": "Objeto id=AT0000A38J40: stage, availableBricks, availableBricksSecondary; updatedAt=2026-10-08T19:57:53.081Z",
+      "fechaDato": "2026-10-08",
+      "consultadoUtc": "2026-11-01T14:58:35Z",
+      "alcanceYLimites": "La emisión primaria terminó (campaña 4/.1/.024); solo hay órdenes de reventa entre inversores. Una orden publicada no garantiza ejecución.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "precio",
+      "literal": "\"sharePrice\":120",
+      "dato": "120,00 € por participación (precio de referencia de la API)",
+      "fuentePrimaria": "https://api.app.brickwise.at/api/v2/assets",
+      "localizador": "Objeto id=AT0000A38J40: sharePrice",
+      "fechaDato": "2026-10-08",
+      "consultadoUtc": "2026-11-01T14:58:35Z",
+      "alcanceYLimites": "Campo sin metodología publicada en las fuentes leídas (probablemente última referencia de mercado); no es precio ejecutable.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "precio",
+      "literal": "5 órdenes de venta abiertas, 65 participaciones, la más barata a 110 €; 5 órdenes de compra, la mejor a 3 €",
+      "dato": "Venta desde 110,00 €; mejor compra 3,00 €",
+      "fuentePrimaria": "https://api.app.brickwise.at/api/v1/assets",
+      "localizador": "Objeto id=AT0000A38J40: offers[] (type, status=open, amount, price); coincide con lowestOfferPrice=110 y availableBricksSecondary de v2",
+      "fechaDato": "2026-05-07",
+      "consultadoUtc": "2026-11-01T14:58:36Z",
+      "alcanceYLimites": "Órdenes del tablón (contactType=bulletin) creadas entre 2024-06-17 y 2026-05-07; algunas son antiguas. La distancia entre compra y venta muestra liquidez limitada. Más 1,5 % de comisión.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "precio",
+      "literal": "Ausgabepreis: EUR 100,85",
+      "dato": "Precio de emisión original 100,85 €",
+      "fuentePrimaria": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+      "localizador": "Investitionsbedingungen (Stand 14.11.2023), p. 4",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:24Z",
+      "alcanceYLimites": "Precio de la suscripción original, no precio actual ni mínimo de reventa.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Mindestzeichnungsbetrag: EUR 100,85",
+      "dato": null,
+      "fuentePrimaria": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+      "localizador": "Investitionsbedingungen (Stand 14.11.2023), p. 4",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:24Z",
+      "alcanceYLimites": "Mínimo de la suscripción original (ya cerrada). El mínimo de compra en reventa no está documentado en las fuentes leídas.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "\"rentalReturn\":5.11; rentalSurplus=4909.64",
+      "dato": "5,11 %",
+      "fuentePrimaria": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+      "localizador": "rentalDetails: rentalReturn, rentalSurplus, rentalIncome",
+      "fechaDato": "2026-10-08",
+      "consultadoUtc": "2026-11-01T14:58:41Z",
+      "alcanceYLimites": "Rendimiento esperado que calcula la API para la instalación: excedente anual previsto (4909.64 €) / (800 participaciones × 120 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Jeder Token vermittelt dem Investor einen qualifiziert nachrangigen Rückzahlungsanspruch zum Endfälligkeitstag.",
+      "dato": "Genussschein tokenizado a 15 años con reembolso del nominal cualificadamente subordinado",
+      "fuentePrimaria": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+      "localizador": "Basisinformationsblatt, p. 1",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:24Z",
+      "alcanceYLimites": "No da propiedad de la instalación; en insolvencia cobra después de los acreedores financieros. Vencimiento API: 2038-12-30 (fin de 2038).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "Laufzeit von 15 Jahren (\"endfällig\")",
+      "dato": "Reembolso del nominal al vencimiento; antes, solo reventa (sin cancelación ordinaria del inversor)",
+      "fuentePrimaria": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+      "localizador": "Basisinformationsblatt, p. 1 y p. 3",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:24Z",
+      "alcanceYLimites": "terminationRight=issuer en la API (solo el emisor puede cancelar). La venta exige comprador.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "dato": "Riesgo 6 de 7; empfohlene Haltedauer 15 años",
+      "fuentePrimaria": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+      "localizador": "Basisinformationsblatt, p. 2 (riesgo) y p. 3 (tenencia)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:24Z",
+      "alcanceYLimites": "Pérdida total posible; sin protección de depósitos. KID solo en alemán.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "dato": "1,5 % por compra y 1,5 % por venta",
+      "fuentePrimaria": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+      "localizador": "Kosteninformationen Brickwise, p. 1 (Last-Modified 01/04/2023)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:37Z",
+      "alcanceYLimites": "Comisión del intermediario sobre el importe de cada operación; los costes del producto (RIY) están en el KID de cada emisión y no se suman mecánicamente.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "dato": "Cuenta abierta a residentes del EEE (incluye España)",
+      "fuentePrimaria": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+      "localizador": "FAQ «Kann ich einen Account von jedem Land aus eröffnen?»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:01:51Z",
+      "alcanceYLimites": "Abrir cuenta no confirma que cada emisión se distribuya en España; exige KYC, test de conveniencia y app propia. Effecta figura en la CNMV en libre prestación (RTO), sin agentes notificados. Documentación solo en alemán.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "dato": "Brickwise Investment GmbH (Múnich, HRB 269358), agente vinculado de Effecta GmbH",
+      "fuentePrimaria": "https://www.brickwise.at/imprint",
+      "localizador": "Impressum",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:01:50Z",
+      "alcanceYLimites": "Contrastado con el registro de agentes vinculados de la BaFin (nº 80174029, activo).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "custodia",
+      "literal": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+      "dato": "Autocustodia del token en la cuenta/app del inversor",
+      "fuentePrimaria": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+      "localizador": "Basisinformationsblatt, p. 1 «Art»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:24Z",
+      "alcanceYLimites": "La recuperación de una cuenta exige identificación notarial (~120 € según Kosteninformationen p. 1, nota 3).",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Intermediario verificado: Brickwise Investment GmbH, agente vinculado nº 80174029 de Effecta GmbH (BaFin-ID 10133261); Effecta inscrita en la CNMV (nº 5003, libre prestación, RTO). El emisor es una SPV austriaca no supervisada y la oferta se hizo con exención de folleto, sin aprobación de la FMA."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "API 01/11/2026: stage=secondary, 65 participaciones en venta desde 110,00 €; emisión primaria cerrada desde 4/.1/.024."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Cuenta para residentes del EEE con KYC; comisión 1,5 % por operación; autocustodia en la app; mínimo de reventa no documentado; distribución en España no confirmada."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "KID en alemán, indicador de riesgo 6 de 7, posibilidad de pérdida total, sin fondo de garantía. Búsqueda de advertencias de la CNMV no completada (bloqueo técnico); FMA: sin coincidencias en la base de entidades, lista de advertencias no consultada."
+    }
+  },
+  "estadoOferta": "solo_reventa",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "estadoOferta",
+      "antes": "no_verificable",
+      "ahora": "solo_reventa",
+      "fuente": "https://api.app.brickwise.at/api/v2/assets",
+      "critico": true
+    },
+    {
+      "campo": "coleccion",
+      "antes": "principales",
+      "ahora": "secundario",
+      "fuente": "https://api.app.brickwise.at/api/v2/assets",
+      "critico": true
+    },
+    {
+      "campo": "metricas",
+      "antes": "Moneda: EUR",
+      "ahora": "precio de referencia, libro de órdenes, emisión original, comisión, reembolso, riesgo",
+      "fuente": "https://api.app.brickwise.at/api/v1/assets",
+      "critico": false
+    },
+    {
+      "campo": "rentabilidad",
+      "antes": "null",
+      "ahora": "5,11 % (alquiler previsto / precio de referencia)",
+      "fuente": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+      "critico": false
+    },
+    {
+      "campo": "categoria",
+      "antes": "Inmobiliario",
+      "ahora": "Energía e infraestructura",
+      "fuente": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Fotovoltaica Cohotel · Steyregg",
+    "categoria": "Energía e infraestructura",
+    "pais": "AT",
+    "tipo": "rendimiento",
+    "coleccion": "secundario",
+    "resumen": "Participaciones tokenizadas (Genussscheine) de COHOTEL Hotelbetriebsgesellschaft m.b.H. ligadas a los ingresos de una instalación fotovoltaica en Steyregg. Hoy solo se compran a otros inversores en el mercado de la app.",
+    "rentabilidad": {
+      "mostrada": "5,11 %",
+      "literal": "Rendimiento esperado de la instalación que publica Brickwise: excedente anual previsto entre el valor a precio de referencia (120,00 €); previsión, no reparto realizado."
+    },
+    "metricas": [
+      {
+        "etiqueta": "Precio de referencia",
+        "valor": "120,00 € por participación"
+      },
+      {
+        "etiqueta": "Venta más barata publicada",
+        "valor": "110,00 € (65 participaciones)"
+      },
+      {
+        "etiqueta": "Mejor compra publicada",
+        "valor": "3,00 €"
+      },
+      {
+        "etiqueta": "Precio de emisión original",
+        "valor": "100,85 €"
+      },
+      {
+        "etiqueta": "Comisión por operación",
+        "valor": "1,5 % comprador y 1,5 % vendedor"
+      },
+      {
+        "etiqueta": "Intermediario",
+        "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+      },
+      {
+        "etiqueta": "Reembolso",
+        "valor": "Nominal al vencimiento (2038), subordinado"
+      },
+      {
+        "etiqueta": "Riesgo KID",
+        "valor": "6 de 7"
+      },
+      {
+        "etiqueta": "Moneda",
+        "valor": "EUR"
+      },
+      {
+        "etiqueta": "Rentabilidad publicada · base y fecha",
+        "valor": "5,11 % excedente previsto / precio de referencia · API 2026-10-08"
+      }
+    ],
+    "avisos": [
+      "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+      "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+      "Riesgo 6 de 7 en el KID; posible pérdida total.",
+      "Reembolso subordinado a los acreedores financieros del emisor."
+    ],
+    "url": "https://app.brickwise.at/desktopWeb/marketplace",
+    "fuentesActuales": [
+      "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://api.app.brickwise.at/api/v2/assets",
+      "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+      "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"
+    ],
+    "lugar": "Steyregg · Austria",
+    "pasos": [
+      "Cuenta con residencia EEE",
+      "Compras si hay vendedor",
+      "Reparto mensual variable",
+      "Vendes en la app"
+    ],
+    "concepto": "paneles solares sobre la cubierta de un hotel junto al Danubio"
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "No documentado en reventa; venta más barata publicada 110,00 € por participación + 1,5 %",
+    "supervisorVerificado": "BaFin: Effecta GmbH (BaFin-ID 10133261) y Brickwise Investment GmbH como agente vinculado nº 80174029; CNMV: Effecta nº 5003 (libre prestación)",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Precio y libro de órdenes públicos y fechados por la API (65 participaciones en venta desde 110,00 €).",
+    "porQueNo": "Solo reventa con mucha distancia entre compra y venta, KID solo en alemán, riesgo 6/7 y acceso desde España sin confirmar."
+  },
+  "decision": "actualizar",
+  "motivoDecision": "Las cifras ya tienen fuente primaria (API, contrato, KID), pero la oferta es solo reventa: proponemos pasarla a «secundario» como reventa, o agruparla en una tarjeta única «Brickwise · mercado de reventa». Retirarla de «principales».",
+  "bloqueos": [
+    "Buscador de advertencias de la CNMV sin respuesta (timeout).",
+    "Firmenbuch no consultado (de pago).",
+    "Metodología de sharePrice no documentada."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T13:10:50Z",
+    "finUtc": "2026-11-02T08:46:56Z"
+  }
+}
