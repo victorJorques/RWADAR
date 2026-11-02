@@ -1,0 +1,276 @@
+                       Contrato de Préstamo Participativo
+
+
+
+                                                              Este Acuerdo tiene lugar en Sevilla,
+
+
+
+ENTRE: RENTALTOKEN, SL; y el Inversor.
+
+Ambos serán conjuntamente referidos como las “Partes” o, en su caso, como la “Parte”
+cuando el contexto de la situación lo requiera.
+
+PREÁMBULO
+
+RentalToken SL es una empresa dedicada a la promoción inmobiliaria de un proyecto
+denominado RNT-MLG-6. Puede encontrarse más información sobre RentalToken SL en el
+siguiente enlace: http://www.Reental.co/. La información contenida en el anterior enlace tiene
+una naturaleza meramente descriptiva y no forma parte del presente acuerdo.
+
+RentalToken con la finalidad de captar la financiación necesaria para llevar a cabo el
+Proyecto RNT-MLG-6, mediante la suscripción del correspondiente contrato de préstamo
+participativo con cada inversor interesado en el Proyecto, a fin de recaudar el capital
+necesario para desarrollar y comercializar sus productos y servicios, así como otra serie de
+costes operativos.
+
+A cambio de la aportación de los inversores durante el período de inversión, éstos recibirán
+el correspondiente justificante y acceso a la plataforma para la representación y control de su
+inversión y, además, recibirán un/unos idToken/s denominados RNT-MLG-6 emitido sobre la
+red de Polygon, la cual es compatible con la Máquina Virtual de Ethereum. El idToken
+únicamente otorgará la distinción e identificación como inversor y permitirá visualizar la
+posición contable del inversor en la plataforma.
+
+El Inversor está interesado en participar invirtiendo en el Proyecto de acuerdo con los
+términos de este acuerdo y del Documento Informativo para Inversión.
+
+Que ambas partes se reconocen la capacidad legal necesaria para formalizar el presente
+Contrato de préstamo participativo (en adelante el “Acuerdo”, el “Préstamo” o el
+“Compromiso de Inversión”) en el concepto en el que intervienen en el mismo, y de
+conformidad con las siguientes:
+
+
+
+
+                                                                                                   24
+LAS PARTES ACUERDAN LO SIGUIENTE, (en adelante el “Acuerdo” o el
+“Compromiso de Inversión”):
+
+
+1. Préstamo
+
+
+ El Prestamista participa en el Préstamo Participativo prestando al Prestatario
+la cantidad de________________________ euros (€). Utilizando como
+divisa/criptoactivo el _____________.
+
+
+
+2. Aceptación de los términos del presente Acuerdo y del Documento Informativo de
+inversión
+
+La participación como inversor del proyecto queda sujeta a los términos del presente
+acuerdo y del Documento Informativo de inversión.
+
+En caso de existir discrepancias entre ambos documentos, prevalecerán los puntos
+establecidos en el presente acuerdo.
+
+3. Funcionamiento de la inversión y de la contribución
+
+
+RentalToken SL formalizará digitalmente la suscripción del Acuerdo como contrapartida a su
+contribución e Inversión en el Proyecto, mediante la mera aceptación por cada Inversor de los
+términos del presente Acuerdo y del Documento Informativo para la Inversión. Asimismo, y
+con carácter complementario, entregará a cada inversor un idToken según lo dispuesto en el
+apartado correspondiente del Documento Informativo para Inversión.
+
+
+4. Importe de la inversión
+
+El importe mínimo de la inversión será de 100 Euros. La divisa de referencia para el cálculo
+de la contribución será siempre el Euro, de acuerdo con el tipo de cambio establecido en la
+web https://messari.io) a las 12:00 UTC en la fecha del último día del Periodo de Suscripción
+(la “Conversión”).
+
+
+
+
+                                                                                                   25
+5. Pago
+El Inversor acuerda llevar a cabo su contribución al proyecto en alguna de las siguientes
+criptomonedas desde la red de Polygon (Matic, USDT, WBTC,WETH) ). El Inversor acuerda
+transferir su contribución a la dirección de Polygon establecida.
+De igual forma se puede hacer vía transferencia bancaria. La cantidad aportada por el
+Inversor a modo de contribución se considera no reembolsable, salvo en el caso de no
+alcanzarse el softcap.
+
+6. Naturaleza del préstamo.
+
+El Préstamo tendrá la consideración de participativo. A tal efecto, se regirá por el Contrato y
+por las disposiciones contenidas en el artículo 20 del Real Decreto Ley 7/1996, de 7 de julio,
+y por la Disposición Adicional Segunda de la Ley 10/1996 de 18 de diciembre.
+
+7. Duración del préstamo.
+
+El Préstamo tendrá una duración de 24 meses desde el cierre exitoso de la operación del
+Proyecto descrito en el Documento Informativo para Inversión. Se entenderá por cierre
+exitoso del Proyecto cuando RentalToken SL hubiera alcanzado el objetivo del importe de la
+inversión para el Proyecto.
+
+8.Intereses.
+
+El Préstamo devengará un interés variable que se corresponderá con una rentabilidad
+estimada del 10% anual vinculada al precio obtenido por la venta del inmueble objeto del
+Proyecto.
+
+9.Devolución de capital e intereses.
+
+ RentalToken SL se obliga frente al Inversor a la devolución del capital prestado con un
+interés anual variable vinculado al importe facturado por RentalToken SL con la venta del
+inmueble objeto del Proyecto. La devolución se llevará a cabo en una única cuota, una vez se
+hubiera vendido el inmueble objeto del Proyecto, bien a la fecha de vencimiento del Préstamo
+o bien de cualquiera de sus prórrogas.
+
+La cuota, esto es, la plusvalía del inversor se calculará conforme a lo siguiente:
+
+plusvalía Inversor= (Precio de Venta Neto - Costes totales de la inversión)*(Importe
+invertido/Costes totales de la inversión)
+
+10. Amortización préstamo.
+
+RentalToken SL podrá amortizar anticipadamente el Préstamo. En caso de amortización
+anticipada, RentalToken SL cumplirá con los requerimientos exigidos por el R.D.L. 7/1996, de
+7 de junio, art. 20.uno.(b)
+
+11. Prórroga del contrato de Préstamo.
+                                                                                                  26
+ Las Partes acuerdan que RentalToken SL tendrá el derecho de ampliar el plazo de la
+duración del Préstamo con el objetivo de ofrecer la mejor rentabilidad posible al inversor y
+devolver la totalidad del principal de la inversión y los intereses del préstamo, y en particular,
+en los supuestos derivados de causas no imputables a RentalToken SL, entre otros, en
+aquellos casos en los que el precio de venta estimado no se correspondiera con los precios
+reales del mercado por factores que afectaran al sector inmobiliario y real estate.
+ Se prevé la posibilidad de prórroga con la finalidad de devolver a los inversores la totalidad
+del principal e intereses estimados. El derecho de prórroga del Préstamo, tal y como se
+indica en el Documento Informativo para Inversión, podrá ser ejercido por RentalToken SL
+mediante 2 sucesivas prórrogas de 12 meses.
+
+12. Cesión del Préstamo
+
+ El Inversor no podrá transmitir a terceros y ceder su posición contractual y, en consecuencia,
+los derechos y obligaciones derivados del Préstamo, salvo consentimiento previo y expreso
+de RentalToken SL.
+ El Inversor se obliga a informar a los cesionarios de que deben cumplir con el completo
+contenido del presente Préstamo y del Documento Informativo para Inversión. Hasta que no
+se haya autorizado la cesión por parte de RentalToken SL y el nuevo inversor haya procedido
+a su identificación formal ante la Sociedad, RentalToken SL seguirá considerando como
+legítimo titular de los derechos asociados al Préstamo al Inversor inicial cedente.
+ Una vez realizado los trámites anteriores, RentalToken SL se reserva la posibilidad de exigir
+al Inversor cedente la transmisión del idToken al nuevo Inversor o su quema para
+posteriormente realizar la entrega de nuevos idtokens al nuevo titular del derecho de crédito
+del Préstamo.
+
+
+
+13. Riesgos
+El Inversor entiende y asume todos los riesgos especificados en el Documento informativo
+de la inversión de cara a formalizar el presente acuerdo.
+
+14. Responsabilidades e Indemnizaciones
+ El Inversor indemnizará a la Compañía, sus empleados, directores, contratistas, consultores,
+socios, proveedores, compañías matrices, subsidiarios y hermanas, agentes y
+representantes (en adelante “agentes vinculados a la Compañía”) de y contra todos y
+cualquier tipo de demandas, acciones legales, daños, pérdidas, costes y/o gastos (incluidos
+los honorarios profesionales y legales razonables) que pudieren surgir en relación con:
+
+
+
+
+                                                                                                     27
+   A. El incumplimiento de las responsabilidades u obligaciones del Inversor en virtud
+       del presente acuerdo.
+
+    B. El desempeño o incumplimiento de las responsabilidades u obligaciones del Inversor
+        en virtud del presente acuerdo;
+
+
+
+    C. El incumplimiento por parte del Inversor de cualquier derecho (incluídos, entre otros,
+    los derechos de propiedad intelectual) de cualquier otra persona o entidad.
+
+
+Sin perjuicio de lo dispuesto anteriormente, la responsabilidad total máxima de Rentaltoken
+SL con el Inversor en virtud o en relación con este Acuerdo no deberá exceder el monto de
+la contribución realizada por cada inversor.
+
+15. Información Confidencial / Divulgación
+
+ El contenido de este Compromiso de Inversión, se considerará información confidencial (en
+adelante, “Información Confidencial”). La Información Confidencial de una Parte no
+incluirá información que:
+
+   A. Llegue a considerarse de dominio público;
+   B. Esté en posesión legítima de la otra Parte antes de la divulgación y no haya sido
+   obtenida por la otra Parte ni directa ni indirectamente de la Parte reveladora; C. Es
+   divulgada a la otra parte por un tercero sin restricción de divulgación; D. Se
+   desarrolle de forma independiente por la otra Parte;
+
+    Debe ser divulgada por cualquier requerimiento u orden judicial o gubernamental
+    (debiendo el destinatario avisar de forma oportuna a la parte reveladora de dicho
+    requerimiento).
+
+Las partes acuerdan mantener la confidencialidad con respecto al contenido de este
+Acuerdo durante un período de 2 años desde la firma del presente. Las Partes acuerdan que
+no utilizarán la Información Confidencial con algún propósito distinto de la aplicación del
+presente Acuerdo. Cada parte acuerda tomar todas las medidas razonables para garantizar
+que la Información Confidencial no sea divulgada o distribuida por sus empleados o agentes
+que incumplan este Acuerdo.
+
+Sin el consentimiento previo por escrito de la otra parte, ninguna de las partes podrá hacer
+anuncios públicos o emitir comunicado de prensa o publicidad alguno relacionados con el
+presente Acuerdo. Ninguna de las partes utilizará las marcas comerciales, nombres
+comerciales, logotipos u otros derechos de propiedad intelectual de la otra parte sin haber
+obtenido su consentimiento previo por escrito.
+
+
+
+
+                                                                                                   28
+16. Miscelánea
+
+Este Acuerdo, incluyendo Documento Informativo para Inversión constituye el acuerdo
+completo entre las partes en relación con su objeto y ha de leerse e interpretarse como un
+solo documento. Además, reemplaza y extingue todos los acuerdos, proyectos de acuerdos,
+garantías, declaraciones y compromisos anteriores de cualquier naturaleza realizados por, o
+en nombre de las Partes, ya sea de forma verbal o escrita en relación con este objeto.
+
+ Cada Parte reconoce que al celebrar este Acuerdo, no se ha basado en declaraciones orales
+o escritas, garantías, representaciones de garantía o compromisos realizados por o en
+nombre de la otra Parte en relación con el objeto de este Acuerdo en ningún momento previo
+a su firma (en adelante "declaraciones precontractuales" ) que no sean las establecidas en
+este Acuerdo o el Documento Informativo de inversión. Cada Parte por la presente renuncia a
+todos los derechos y recursos que de otro modo pudieren interponerse en relación con
+dichas declaraciones precontractuales.
+
+Si algún tribunal o autoridad pública determinase que cualquier disposición de este Acuerdo o
+el Documento Informativo de inversión resultara inválida o inaplicable, cualquier invalidez o
+inaplicabilidad afectará sólo a dicha disposición y no invalidará ninguna otra disposición de
+este Acuerdo o el Documento Informativo de inversión. Si alguna disposición resultase
+inválida o inaplicable de acuerdo con lo anterior, dicha disposición se modificará o limitará
+únicamente en la medida en que resulte necesaria para que esta disposición resulte válida y
+aplicable.
+
+Nada de lo contenido en este Acuerdo ni en el Documento Informativo de inversión
+considerará a alguna de las partes como socios, joint venture o empleado de la otra parte
+para cualquier propósito.
+
+El presente Acuerdo, el Documento Informativo de inversión y cualquier disputa o queja que
+surja de o en relación con ellos, con su objeto o formación (incluídas disputas o
+reclamaciones no contractuales) se regirán e interpretarán de conformidad con la Ley
+española.
+
+Las partes acuerdan irrevocablemente que los tribunales españoles tendrán jurisdicción
+exclusiva para resolver cualquier disputa o reclamación que surja de o en conexión con este
+Acuerdo o el Documento Informativo de inversión, su objeto o formación (incluídas las
+disputas y reclamaciones no contractuales).
+
+
+
+
+Versión revisada a fecha 23 de octubre de 2023.
+
+
+
+
+                                                                                                 29
+

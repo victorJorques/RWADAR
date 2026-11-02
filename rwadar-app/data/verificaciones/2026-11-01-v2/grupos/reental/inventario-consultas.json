@@ -1019,7 +1019,8 @@
   "urlFinal": "https://s3.eu-west-1.amazonaws.com/reental/properties/71ae2a4b-91f7-4ed1-a85b-664b758dfa20/docs/1787820457733_acuerdo_suscripcion.pdf",
   "consultadoUtc": "2026-11-01T15:11:18Z",
   "bytes": 263,
-  "sha256": "088b34c651c76533aa19a609d482b4493e67b265d1ac0be75802cb8d46f80c1a"
+  "sha256": "088b34c651c76533aa19a609d482b4493e67b265d1ac0be75802cb8d46f80c1a",
+  "nota": "HTTP 403 (S3 AccessDenied); archivo no conservado; acuerdo NO leído"
  },
  {
   "url": "https://d23t4e7dm0xzj0.cloudfront.net/LVT-1/docs-es/1754922941487_acuerdo_de_suscripcion_levante_1.pdf",
