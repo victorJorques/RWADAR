@@ -1,0 +1,324 @@
+{
+  "slug": "reental-secundario-miami-2",
+  "tipoExpediente": "publicada",
+  "grupo": "reental",
+  "proveedor": "Reental",
+  "plataformaSlug": "reental",
+  "entidadComercializadora": "Rental Token, S.L. (NIF B01988393), marca Reental",
+  "emisor": "Series RNT – MIA 2, LLC",
+  "vehiculo": "Serie de Reental America Series LLC (LLC de Florida), gestionada por Reental America, LLC",
+  "token": "Reental-MIA-2 · Polygon · 0xf1ec7e14489683babdb9299e5f9908d19a8759dc",
+  "derechoAdquirido": "Participación (membership interest) en la LLC emisora, representada por token",
+  "jurisdiccion": "US-FL",
+  "identificador": "Reental project id cdd25624-974b-4da4-88fc-d0a8945cc0de",
+  "moneda": "USD",
+  "documentos": [
+    {
+      "titulo": "Acuerdo de suscripción (ES)",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/MIA-2/docs-es/1700491814710_acuerdo_de_subscripcion_mia_2.pdf",
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": "167e7dd732fe2d3f12e2a2bd9453d82871de88475b151ad38c6d4d2c37a13975",
+      "leido": true
+    },
+    {
+      "titulo": "Ficha web del inmueble",
+      "url": "https://www.reental.co/properties/1792940913121-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": "bc4565db54f06fd3c539cdac2fd31312b1d4bc66ab6c63588ff07a4bd1f2af55",
+      "leido": true
+    },
+    {
+      "titulo": "API pública getProjects / getCrowdfundingListing",
+      "url": "https://backend.reental.co/graphql",
+      "versionOFecha": "consulta 2026-11-01",
+      "paginas": null,
+      "sha256": "47e7a89e518ee3b3087cbcf7807226b63370274674098fbd167a78c06ae51e09",
+      "leido": true
+    },
+    {
+      "titulo": "API P2P getOrdersData",
+      "url": "https://backend.reentalp2p.com/graphql",
+      "versionOFecha": "consulta 2026-11-01",
+      "paginas": null,
+      "sha256": "a28ffd3224b8e50bb43f36b7014b08a1a80de46a0b8098347a26eb38e5c5e1df",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "Reental / Rental Token / Reental America",
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "alcance": "Buscador de registros oficiales: «Reental» y «Reental America» → «No se han encontrado resultados»; «Rental Token» → página sin resultados legibles. No consta inscripción como ESI, PSFP/ECSP ni otra figura.",
+      "consultadoUtc": "2026-11-01T15:07:37Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental",
+      "consultadoUtc": "2026-11-01T15:05:59Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Rental Token",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rental+Token",
+      "consultadoUtc": "2026-11-01T15:06:06Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental America",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental+America",
+      "consultadoUtc": "2026-11-01T15:06:42Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "RNT (lista «Otras entidades», PDF)",
+      "resultado": "sin coincidencias para Reental/Rental Token/RNT",
+      "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+      "consultadoUtc": "2026-11-01T15:09:08Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "status «UNDER_CONSTRUCTION»; getCrowdfundingListing: active=True, available=0",
+      "dato": "primaria agotada (0 tokens disponibles); solo reventa",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getProjects items[name=Miami 2].project.status; getCrowdfundingListing(projectId=cdd25624-974b-4da4-88fc-d0a8945cc0de).availability.available",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:03:16Z",
+      "alcanceYLimites": "Estado del inmueble: En construcción. 0 tokens en el contrato de venta primaria: la compra solo es posible a otro inversor.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "numOrders 1; tokens 6.5672; pricePerToken 145–145; paymentToken 0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      "dato": "1 órdenes de venta, 6,57 tokens, 145 USDT por token",
+      "fuentePrimaria": "https://backend.reentalp2p.com/graphql",
+      "localizador": "getOrdersData(excludeExpired:true, filter:{type:SELL}) — misma consulta que hace p2p.rnt.finance sin sesión; coincide con la portada renderizada a las 15:03:54Z",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:04:19Z",
+      "alcanceYLimites": "Precio pedido por cada vendedor, en USDT (Polygon, 0xc2132D…58e8F), aunque el token esté denominado en USD. Las órdenes caducan (máx. 08/11/2026). No garantiza ejecución.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "precio",
+      "literal": "tokenPrice {value: 100, currency: USD}; emittedTokens 6082",
+      "dato": "100 USD por token (nominal de emisión)",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getProjects items[name=Miami 2].project.tokenPrice",
+      "fechaDato": "2023-12-01",
+      "consultadoUtc": "2026-11-01T15:02:10Z",
+      "alcanceYLimites": "Precio nominal de la emisión primaria; no es el precio de reventa.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "moneda",
+      "literal": "currency «USD» (API) y símbolo visible «$» en la ficha",
+      "dato": "USD",
+      "fuentePrimaria": "https://www.reental.co/properties/1792940913121-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+      "localizador": "Bloque «Precio del Token» (elementos w-condition-invisible excluidos) + getProjects.tokenPrice.currency",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:08:05Z",
+      "alcanceYLimites": "Coincide con lo publicado.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "Ficha: «Rentabilidad de alquiler anual 15.215 %», «Plusvalía tras venta 46.45 %»; projectTierData: tier 1: estimatedApr 7.4700, estimatedAppreciation 46.4300; tier 2: estimatedApr 7.4700, estimatedAppreciation 46.4300; tier 115: estimatedApr 7.4700, estimatedAppreciation 46.4300",
+      "dato": null,
+      "fuentePrimaria": "https://www.reental.co/properties/1792940913121-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+      "localizador": "Ficha web (bloque Precio del Token) frente a getProjects.projectTierData de Miami 2",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:08:05Z / 2026-11-01T15:02:10Z",
+      "alcanceYLimites": "Cifras estimadas (objetivo), sin fecha ni base de cálculo publicadas; la ficha web y la API de la propia Reental dan cifras distintas y además varían por nivel de inversor (Reentel / Pro / SuperReentel). No es rentabilidad histórica.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "plazo",
+      "literal": "investmentDuration 6 YEARS; incomeType BOTH; fundingDate 2023-12-01T00:00:00.000Z",
+      "dato": "6 años estimados; rendimiento periódico + final",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getProjects items[name=Miami 2].project.investmentDuration / incomeType / fundingDate",
+      "fechaDato": "2023-12-01",
+      "consultadoUtc": "2026-11-01T15:02:10Z",
+      "alcanceYLimites": "Plazo estimado, no fecha garantizada de devolución.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Emisor «Series RNT – MIA 2, LLC»; el token representa un interés de membresía (participación) de la LLC de Florida; ley de Florida; oferta bajo Regulación S para no estadounidenses",
+      "dato": "participación (membership interest) en una LLC de Florida representada por token en Polygon",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/MIA-2/docs-es/1700491814710_acuerdo_de_subscripcion_mia_2.pdf",
+      "localizador": "Acuerdo de suscripción ES, portada y §1",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:11:14Z",
+      "alcanceYLimites": "No se compra el inmueble ni un valor registrado; derechos según el Operating Agreement.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "«tendrán un plazo mínimo de un (1) año, durante el cual el Inversor no venderá sus Tokens»",
+      "dato": "bloqueo de 1 año desde la suscripción; después, venta a un tercero admitido (P2P) o espera al evento de liquidez",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/MIA-2/docs-es/1700491814710_acuerdo_de_subscripcion_mia_2.pdf",
+      "localizador": "Acuerdo de suscripción ES, §1.4 «Plazo»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:11:14Z",
+      "alcanceYLimites": "No hay recompra ni reembolso a demanda. La salida depende de que exista comprador en el P2P o de la venta del activo.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "«Cualquier usuario mayor de edad puede registrarse e invertir tras pasar el proceso de KYC … y AML»; residentes fiscales en EE. UU. deben ser acreditados",
+      "dato": "abierto a mayores de edad tras KYC/AML (regla general de la plataforma)",
+      "fuentePrimaria": "https://www.reental.co/faqs",
+      "localizador": "¿Quién puede invertir con Reental?",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:04:36Z",
+      "alcanceYLimites": "Regla general de alta. En reventa el comprador necesita wallet en lista blanca y aceptación de la transmisión; no hay confirmación por producto para residentes en España.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "Los Servicios son proporcionados por RNT DAO … protocolo de intercambio p2p descentralizado y no custodial; responsabilidad acumulada máx. 1.000 USD",
+      "dato": "reventa en un mercado P2P operado por «RNT DAO», no por una entidad supervisada",
+      "fuentePrimaria": "https://p2p.rnt.finance/terms",
+      "localizador": "Términos de uso §1 y §7",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:10:03Z",
+      "alcanceYLimites": "No hay mercado secundario regulado ni contrapartida garantizada.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Denominación social: RENTAL TOKEN SL · NIF B01988393 · domicilio Sevilla (aviso legal); «RentalToken, S.L.… NIF B01988393… domicilio en Madrid» (términos de la app)",
+      "dato": "Rental Token, S.L. (NIF B01988393), titular de la plataforma",
+      "fuentePrimaria": "https://www.reental.co/aviso-legal",
+      "localizador": "Aviso legal §1 / app.reental.co/terms",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:04:36Z",
+      "alcanceYLimites": "Domicilio discrepante entre las dos páginas (Sevilla / Madrid). No figura en los registros de la CNMV.",
+      "estado": "en_conflicto"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Rental Token, S.L. y Reental America no constan en los registros de la CNMV; la emisión es privada (Reg. S) y no tiene folleto. Sin advertencias CNMV."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Primaria agotada (0 disponibles, 01/11 15:03 UTC). 1 órdenes P2P vigentes."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Alta general tras KYC; en reventa hace falta wallet en lista blanca y aprobación de la transmisión; pago en USDT; bloqueo contractual de 1 año."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "El acuerdo advierte iliquidez y pérdida total; las rentabilidades publicadas están en conflicto entre ficha y API."
+    }
+  },
+  "estadoOferta": "solo_reventa",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "url/fuentesActuales",
+      "antes": "https://www.reental.co/properties/1787864202186-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+      "ahora": "https://www.reental.co/properties/1792940913121-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+      "fuente": "https://www.reental.co/properties/1792940913121-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+      "critico": true,
+      "nota": "La URL publicada devuelve HTTP 404 (comprobado con Miami 1 y Pirineos 1); Reental ha renumerado las fichas. El prefijo numérico vuelve a cambiar: mejor enlazar a https://www.reental.co/properties o a p2p.rnt.finance."
+    },
+    {
+      "campo": "estado",
+      "antes": "no_verificable",
+      "ahora": "solo_reventa (primaria con 0 tokens disponibles)",
+      "fuente": "https://backend.reental.co/graphql",
+      "critico": true
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Miami 2",
+    "categoria": "Inmobiliario",
+    "pais": "US",
+    "tipo": "rendimiento",
+    "coleccion": "secundario",
+    "resumen": "Reventa entre inversores de tokens de Miami 2 (Reental). La emisión primaria está agotada; solo se compra si otro inversor vende en el P2P.",
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Mercado",
+        "valor": "Solo reventa entre inversores (P2P)"
+      },
+      {
+        "etiqueta": "Moneda del token",
+        "valor": "USD"
+      },
+      {
+        "etiqueta": "Pago en el P2P",
+        "valor": "USDT (Polygon)"
+      },
+      {
+        "etiqueta": "Órdenes de venta · 01/11/2026",
+        "valor": "1 · 6,57 tokens"
+      },
+      {
+        "etiqueta": "Precio pedido por token · 01/11/2026",
+        "valor": "145 USDT"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Sin registro CNMV de la plataforma"
+      },
+      {
+        "etiqueta": "Plazo estimado",
+        "valor": "6 años"
+      }
+    ],
+    "avisos": [
+      "Reental (Rental Token, S.L.) no figura en los registros de la CNMV; la emisión es una colocación privada de EE. UU. (Regulación S).",
+      "La reventa se hace en un mercado P2P de la comunidad (RNT DAO), en USDT; una orden no garantiza ejecución ni precio.",
+      "Las rentabilidades que publica Reental son estimaciones sin fecha de cálculo y cambian según el nivel del inversor."
+    ],
+    "url": "https://p2p.rnt.finance/",
+    "fuentesActuales": [
+      "https://www.reental.co/properties/1792940913121-cdd25624-974b-4da4-88fc-d0a8945cc0de-miami-2",
+      "https://p2p.rnt.finance/"
+    ],
+    "lugar": "Miami · USA",
+    "pasos": [
+      "Alta y KYC",
+      "Compras si hay oferta",
+      "Reparto o reventa"
+    ],
+    "concepto": "Ilustración editorial de un edificio residencial dividido en pequeñas piezas que pasan de una mano a otra"
+  },
+  "decision": "retirar_propuesta",
+  "motivoDecision": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 1 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+  "bloqueos": [
+    "Registro ESMA (ECSP/MiCA) no consultado: el buscador no respondió a consulta automatizada."
+  ],
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "Lote de cada orden P2P, en USDT (desde 6,57 tokens)",
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Hay 1 orden(es) de venta visibles sin login el 01/11/2026.",
+    "porQueNo": "Plataforma sin registro CNMV, colocación privada, reventa en P2P de la comunidad en USDT y rentabilidad sin cifra verificable."
+  },
+  "consulta": {
+    "inicioUtc": "2026-11-01T13:10:54Z",
+    "finUtc": "2026-11-01T15:10:17Z"
+  }
+}
