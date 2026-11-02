@@ -21,10 +21,15 @@ confianza. Informe: [`../INVESTIGACION-CATALOGO-2026-11-01.md`](../INVESTIGACION
   `robinhood-classic-stock-tokens`. Kraken xStocks, rechazada en este ciclo.
 - **28 retiradas justificadas por la revisión** (22 Reental, mGLO, mGLOBAL,
   mGLOeuro, IOD, wemakeit y quitt). **Las decide Víctor.**
-- **Bloqueo técnico:** `contrato-catalogo.js` (app) y la web rechazan un lote que
-  baje del último manifiesto (49 · 24/21/4). El camino B (23 ofertas, 6/14/3)
-  necesita una vía de **reducción deliberada** aprobada en web y app (OTA)
-  antes del lote. El camino A (51 · 24/21/6) es compatible ya.
+- **Límite de 49 quitado** (commit «Quita el mínimo de 49 ofertas», con orden
+  expresa de Víctor del 02/11). `contrato-catalogo.js`, el lector de
+  `rwadar-20260820.js` y `sincronizar.js` ya no comparan con la copia anterior:
+  aceptan un lote más pequeño o reclasificado si cuadra con su propio
+  manifiesto. Lotes cortados o mezclados se siguen rechazando. Pruebas: web
+  553/0, móvil 392/0, db, tools, acceso 140/140 y QR. **Sin publicar:** falta
+  sellar `estado.json` y publicar la web, y la OTA de Android (permiso de
+  Víctor), antes del lote reducido. La lista cerrada `rwadar-fichas-manifiesto.js`
+  se edita a mano en ese lote (quitar retiradas, añadir altas).
 - `propuesta-tarjetas.json` (con `preparar-propuesta.py`) trae las tarjetas
   con los cambios obligatorios aplicados y lo que hay que **releer el día de
   publicación** (Spiko, oráculo de mTBILL, precios de Brickwise y Aktionariat).

@@ -193,13 +193,25 @@ En la CNMV no hay advertencias para ninguna de las entidades que se proponen.
 
 ## 6. La decisión que necesito de ti
 
-La web y la app instaladas **no aceptan un catálogo más pequeño que el último**:
+**Actualización del 02/11: el límite ya está quitado en el código**, por orden
+expresa de Víctor. Antes, la web y la app no aceptaban un catálogo con menos de
+49 ofertas, o con menos de 24 principales, 21 de reventa y 4 en camino. Ahora
+aceptan un lote más pequeño o con fichas cambiadas de colección, siempre que
+cuadre con lo que él mismo declara. Un lote cortado por un fallo se sigue
+rechazando. Las pruebas pasan (web 553, móvil 392, base de datos, herramientas,
+acceso y QR).
 
-- al menos 49 ofertas;
-- al menos 24 principales, 21 de reventa y 4 en camino.
+Para que el cambio funcione en línea falta publicarlo:
 
-Es una protección para que un error de carga no borre fichas sin querer. Por
-eso hay dos caminos:
+- **la web**, con el publicador normal;
+- **la app Android**, con una actualización OTA.
+
+Hasta recibir la OTA, la app ya instalada seguirá mostrando su copia guardada
+de 49 ofertas con el aviso «no hemos podido comprobar la revisión más
+reciente». Así que el camino B ya no necesita programar nada: solo esas dos
+publicaciones, con tu permiso.
+
+La tabla de abajo es la comparación original:
 
 | | **A · Compatible hoy** | **B · Catálogo de confianza** (mi recomendación) |
 |---|---|---|
@@ -236,8 +248,8 @@ Cada paso, cuando lo autorices:
 2. **Releer las cifras del día** y montar el lote: `montar-revision.mjs`,
    comprobación en PGlite, revisión independiente del SQL y `npm test`.
 3. Precargar las 2 imágenes en producción y comprobarlas. **Permiso: publicar.**
-4. Solo en el camino B: publicar el cambio de reducción deliberada en web y
-   Android OTA. **Permiso: publicar y OTA.**
+4. Publicar el cambio que quita el límite de 49 (ya hecho y probado en la rama):
+   web y Android OTA, antes del lote reducido. **Permiso: publicar y OTA.**
 5. Aplicar `aplicar-y-aprobar.sql`. **Permiso: SQL remoto.**
 6. Preview, revisión en navegador de escritorio y móvil, y producción.
    **Permiso: publicar.**
