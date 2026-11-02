@@ -1,0 +1,37 @@
+Decodificación de midas-ethereum-eth_call-batch.json (consulta 2026-11-02T16:32:38Z)
+block 26328312
+mF-ONE.dep.paused 0
+mF-ONE.dep.greenlistEnabled 1
+mF-ONE.dep.minMTokenAmountForFirstDeposit 148,000.000000
+mF-ONE.red.paused 0
+mF-ONE.token.totalSupply 57,913,220.148891
+mF-ONE.token.paused 0
+mF-ONE.oracle.description mF-ONE/USD
+mF-ONE.oracle.latestRoundData round 320 answer 1.13340981 updatedAt 2026-10-30T14:30:23Z
+mGLO.dep.paused 1
+mGLO.dep.greenlistEnabled 1
+mGLO.dep.minMTokenAmountForFirstDeposit 114,000.000000
+mGLO.red.paused 0
+mGLO.token.totalSupply 26,019,504.862986
+mGLO.token.paused 0
+mGLO.oracle.description mGLO/USD
+mGLO.oracle.latestRoundData round 6 answer 1.01137228 updatedAt 2026-10-23T11:40:59Z
+mGLOBAL.dep.paused 1
+mGLOBAL.dep.greenlistEnabled 1
+mGLOBAL.dep.minMTokenAmountForFirstDeposit 114,000.000000
+mGLOBAL.red.paused 0
+mGLOBAL.token.totalSupply 33,350,224.137091
+mGLOBAL.token.paused 0
+mGLOBAL.oracle.description mGLOBAL/USD
+mGLOBAL.oracle.latestRoundData round 8 answer 1.02783667 updatedAt 2026-10-23T11:40:59Z
+mGLOeuro.dep.paused 1
+mGLOeuro.dep.greenlistEnabled 1
+mGLOeuro.dep.minMTokenAmountForFirstDeposit 98,040.000000
+mGLOeuro.red.paused 0
+mGLOeuro.token.totalSupply 6,831,030.086271
+mGLOeuro.token.paused 0
+mGLOeuro.oracle.description mGLOeuro/EUR
+mGLOeuro.oracle.latestRoundData round 3 answer 1.0 updatedAt 2026-10-26T19:26:23Z
+mGLOeuro.oracle.getRoundData(1) round 1 answer 100000.0 updatedAt 2026-08-04T08:42:59Z
+mGLOeuro.oracle.getRoundData(2) round 2 answer 100000.0 updatedAt 2026-09-23T10:39:35Z
+mGLOeuro.oracle.getRoundData(3) round 3 answer 1.0 updatedAt 2026-10-26T19:26:23Z
