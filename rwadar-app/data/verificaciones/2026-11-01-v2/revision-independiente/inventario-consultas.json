@@ -9,5 +9,16 @@
   "consultadoUtc": "2026-11-02T16:27:09Z",
   "bytes": 36999,
   "sha256": "a2612e3418981093a8d254260f2f03db4d863dcbada2fef0d5eaaa4570e5965a"
+ },
+ {
+  "url": "https://backend.reentalp2p.com/graphql",
+  "metodo": "POST",
+  "cuerpo": "{\"query\": \"\\n\\t\\t\\t\\tquery GET_ORDERS_DATA_QUERY($input: GetOrdersDataInput!) {\\n    getOrdersData(input: $input) {\\n      __typename\\n      ... on MarketplaceOrdersData {\\n        items {\\n          propertyId,\\n          propertyName,\\n          propertyImageUrl,\\n          country,\\n          amountMin,\\n          amountMax,\\n          amountSum,\\n          amountAvg,\\n          prices {\\n            paymentToken,\\n            pricePerTokenMin,\\n            pricePerTokenMax,\\n            priceMin,\\n            priceMax,\\n            pricePerTokenSum,\\n            priceSum,\\n            pricePerTokenAvg,\\n            priceAvg,\\n          },\\n          numOrders\\n          tokens\\n          whitelistId\\n        }\\n        expirationDateMin,\\n        expirationDateMax,\\n        listingDateMin,\\n        listingDateMax,\\n        numOrders,\\n        metadata {\\n          offset\\n          limit\\n          orderBy\\n          orderDirection\\n          numElements\\n          page\\n          pages\\n        }\\n      }\\n      \\n  ... on Error {\\n    code\\n    message\\n    description\\n  }\\n\\n    }\\n  }\\n\\t\\t\\t\", \"variables\": {\"input\": {\"excludeExpired\": true, \"filter\": {\"type\": \"SELL\"}, \"limit\": 100, \"offset\": 0}}, \"operationName\": \"GET_ORDERS_DATA_QUERY\"}",
+  "archivo": "fuentes/reentalp2p-getOrdersData-sell.json",
+  "http": 200,
+  "urlFinal": "https://backend.reentalp2p.com/graphql",
+  "consultadoUtc": "2026-11-02T16:27:28Z",
+  "bytes": 20582,
+  "sha256": "be65884f1f46d5404c97d2f01f7b41c46e9e5fddac7cf47860266618567ba143"
  }
 ]
