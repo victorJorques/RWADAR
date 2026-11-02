@@ -234,12 +234,13 @@
   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
   "metodo": "GET",
   "cuerpo": null,
-  "archivo": "fuentes/retiradas/alius-api-iodo1.json",
+  "archivo": "fuentes/retiradas/alius-api-iodo1-extracto.json",
   "http": 200,
   "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
   "consultadoUtc": "2026-11-02T16:36:21Z",
   "bytes": 18177,
-  "sha256": "746c2afa044bc428aa08c5d73437b2ac5ceac220503e6200a5b73e4f6d8b0c5e"
+  "sha256": "746c2afa044bc428aa08c5d73437b2ac5ceac220503e6200a5b73e4f6d8b0c5e",
+  "nota": "Extracto: solo campos de campaña, progreso, emisión y lista de documentos (sin datos de personas ni URL de documentos). sha256 y bytes son los de la respuesta original."
  },
  {
   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
