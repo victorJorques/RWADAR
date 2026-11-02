@@ -73,3 +73,68 @@ disponibilidad, la moneda y las órdenes se comprobaron para las 21.
   bloqueo y de Regulación S deben pasar a `no_verificable`.
 
 ---
+
+## Bloque B · Midas (4 fichas: mf-one, mglo, mglobal, mgloeuro)
+
+Qué hay publicado (catálogo del 22/10): mF-ONE, mGLO y mGLOBAL en «principales»,
+mGLOeuro en «en camino»; las cuatro con «Cifras pendientes de nueva revisión».
+
+Direcciones completas de los oráculos de mGLO y mGLOBAL, que el claim 10 abrevia.
+Están en el claim `estado` del mismo expediente y coinciden con la tabla oficial
+de contratos de `docs.midas.app/llms-full.txt`:
+
+- mGLO: `0x59313b6ae481e39B8E7710C8C26dC0ada3C532Ca`
+- mGLOBAL: `0x66Aa9fcD63DF74e1f67A9452E6E59Fbc67f75E38`
+
+Las direcciones de los *vaults* de emisión («Issuance vault») de Ethereum que
+usaron los investigadores también coinciden con esa tabla oficial.
+
+### Qué he comprobado yo (02/11/2026, lunes)
+
+Lecturas en cadena de solo lectura (`eth_call`). Los selectores los calculé yo
+con keccak256 y los contrasté con selectores conocidos (`paused()` = `0x5c975abb`,
+`totalSupply()` = `0x18160ddd`).
+
+| # | Hecho propuesto | Mi lectura | Resultado |
+|---|---|---|---|
+| B1 | Suscripción pausada el 01/11 en el contrato de Ethereum | `ethereum-rpc.publicnode.com`, bloque 26.328.312, 16:32:38Z. `paused()` del *issuance vault*: **mF-ONE = false**; mGLO = true; mGLOBAL = true; mGLOeuro = true. En otras redes: mGLO en Base (`0x2B7e…1Df1`) = true y mGLOBAL en Avalanche (`0x14A1…33dB`) = true (16:35:02Z). | **mF-ONE: ya no es cierto.** El 01/11 a las 15:05Z estaba en pausa y el 02/11 a las 16:32Z no. El 01/11/2026 fue **domingo**: pudo ser una pausa operativa de fin de semana. No lo puedo afirmar. **mGLO, mGLOBAL y mGLOeuro: confirmado**, también en día laborable y en las otras redes que comprobé. |
+| B2 | Solo lista blanca | `greenlistEnabled()` = true en los 4 *vaults* de Ethereum y en los de Base y Avalanche. Control: el *vault* de mTBILL (oferta pública con folleto) da `greenlistEnabled()` = 0 en la lectura del 01/11 de los investigadores. `llms-full.txt` (16:34:11Z, idéntico al de los investigadores, sha256 `aca8b6c7…`): «Professional Whitelisting: Certain strategies are legally restricted to professional or institutional investors…». | **Confirmado** |
+| B3 | Oferta exenta, sin folleto ni KID | Registro de folletos de ESMA por el LEI de Midas Software GmbH (16:34:32Z): 38 valores; ninguno es mF-ONE ni Fasanara (los subyacentes son estrategias cripto y «M1 - B1 Fund»). mGLO, mGLOBAL y mGLOeuro los emite Aureum Securitisation Fund, así que no aparecerían con ese LEI. Que sea una «Exempt offer» solo consta en el código de midas.app que guardaron los investigadores. No lo he releído (Cloudflare). | **Confirmado con alcance**: para mF-ONE, no hay folleto en ESMA; para los tres de Aureum, la prueba es el código de la web y no la he repetido. |
+| B4 | mGLOeuro: 6,83 M de tokens; valor por token de 100.000 EUR → 1 EUR el 26/10 | `totalSupply()` = **6.831.030,09** (sin cambios desde el 01/11). Oráculo `0x8B7B…9609`, `description()` «mGLOeuro/EUR». Rondas: 1 = 100.000,0 (04/08), 2 = 100.000,0 (23/09) y 3 = **1,0 (26/10 19:26:23Z)**, que es también la última. En las últimas ~25 horas no hubo emisiones ni quemas de mGLOeuro (`eth_getLogs`). | **Confirmado.** La tabla oficial lo llama «mGLOeuro/USD Oracle», pero el contrato dice EUR: otra pequeña incoherencia de la documentación. |
+| B5 | Primer depósito ≈ 100.000–170.000 | `minMTokenAmountForFirstDeposit()`: mF-ONE 148.000 tokens (≈ 167.700 USD al último valor, 1,1334); mGLO 114.000 (≈ 115.300 USD); mGLOBAL 114.000 (≈ 117.200 USD); mGLOeuro 98.040 (≈ 98.040 EUR). | Coincide con los investigadores. Es una lectura técnica (la unidad sale del código público), así que sigue como `no_verificable` para publicar. |
+
+### Otras cosas que he visto
+
+- **mGLO:** el 02/11 hubo una emisión de 1.726.224,51 mGLO en Ethereum (bloque
+  26.326.740, 11:16:47Z). No la hizo el *vault* en pausa, sino otro contrato
+  (`0x1732…3059`, función sin identificar). Tres horas después se quemaron
+  1.725.977,23 (14:14:23Z). Parece un movimiento técnico (puente entre redes o
+  similar), no una suscripción abierta. No saco conclusiones, pero el *vault* en
+  pausa no es la única vía por la que se crean tokens.
+- **mF-ONE:** el 02/11 a las 15:12:35Z se quemaron 415.767 tokens (`burn` del
+  administrador; el suministro pasa de 58,33 M a 57,91 M). Hay reembolsos en
+  marcha.
+- **Reembolsos:** los cuatro *vaults* de reembolso tienen `paused()` = false.
+  Quien ya tiene tokens y está en la lista blanca puede pedir el reembolso.
+
+### Veredicto · Bloque B
+
+| Ficha | Veredicto | Por qué |
+|---|---|---|
+| `mf-one` | **mantener_con_cambios** (o agruparla, ver abajo). **No** retirar por «pausada». | El hecho clave de la propuesta (suscripción pausada) es **falso hoy**. Lo que sí se sostiene: oferta exenta con memorando solo para la lista blanca, sin folleto en ESMA y con un primer depósito de unos 148.000 tokens. Según el encargo, lo que es solo para profesionales «puede entrar, marcado y con menor prioridad». Por tanto: sacarla de «principales», marcarla «solo profesionales / lista blanca» y quitar el APY no verificable. |
+| `mglo` | **retirada_justificada** | Suscripción en pausa en Ethereum y en Base, también en día laborable; ya se veía «MINTING CLOSED» el 22/10. Además es oferta exenta, solo para la lista blanca y sin documentos públicos. |
+| `mglobal` | **retirada_justificada** | Suscripción en pausa en Ethereum y en Avalanche; no se puede comprobar en la web desde el 06/10. Oferta exenta y solo para la lista blanca. |
+| `mgloeuro` | **retirada_justificada** (está en «en camino») | Suscripción en pausa, oferta exenta y solo para la lista blanca. El cambio del valor por token de 100.000 a 1 EUR está confirmado y ningún documento público lo explica, así que no hay ninguna cifra publicable. |
+
+**Alternativa menos drástica para el bloque:** **agrupar_en_una_ficha**. Una sola
+ficha secundaria «Midas · estrategias Fasanara solo para profesionales (lista
+blanca)». En ella, mF-ONE figura con la suscripción activa a fecha de consulta
+y las otras tres en pausa. Si se agrupa, la fecha y la hora de la lectura en
+cadena deben figurar en la ficha, porque el estado de pausa cambia.
+
+**Corrección al expediente `mf-one`** (no lo he editado): el claim `estado` y el
+`motivoDecision` deben reflejar que el 02/11 a las 16:32Z `paused()` = false.
+`estadoOferta` no debería ser «cerrada»: es una oferta abierta solo para la
+lista blanca.
+
+---

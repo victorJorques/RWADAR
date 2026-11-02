@@ -229,5 +229,27 @@
   "consultadoUtc": "2026-11-02T16:35:02Z",
   "bytes": 254,
   "sha256": "ad592a7b2f431635a94d110f3f934fef0de9bd66a96baf9d970fe8e3a725eeb4"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "metodo": "GET",
+  "cuerpo": null,
+  "archivo": "fuentes/retiradas/alius-api-iodo1.json",
+  "http": 200,
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "consultadoUtc": "2026-11-02T16:36:21Z",
+  "bytes": 18177,
+  "sha256": "746c2afa044bc428aa08c5d73437b2ac5ceac220503e6200a5b73e4f6d8b0c5e"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
+  "metodo": "GET",
+  "cuerpo": null,
+  "archivo": "fuentes/retiradas/alius-api-count-by-status.json",
+  "http": 200,
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
+  "consultadoUtc": "2026-11-02T16:36:22Z",
+  "bytes": 83,
+  "sha256": "859fab07ace1468e40226a8c50b6ab7242c397c46a6bf3e81a4bd18215e51b69"
  }
 ]
