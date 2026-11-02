@@ -138,3 +138,54 @@ cadena deben figurar en la ficha, porque el estado de pausa cambia.
 lista blanca.
 
 ---
+
+## Bloque C · Alius (1 ficha: iod-occasio)
+
+Lo publicado (22/10): colección «en camino», con el aviso «el 22/10/2026 la
+campaña no estaba abierta; esta referencia queda en seguimiento por si hay
+nuevas emisiones». Enlace: `https://aliuscap.com/projects/iodo1`.
+
+### Qué he comprobado yo (02/11/2026)
+
+| # | Hecho propuesto | Mi lectura | Resultado |
+|---|---|---|---|
+| C1 | Emisión cerrada y completa: 120.000 € de 120.000 € | API pública de Token City que usa la web de Alius, `…/issuance/slug/iodo1/expand/…` (16:36:21Z, sha256 de la respuesta `746c2afa…`). Datos: `campaign_status: CLOSED`; campaña del 13/10 al **23/10/2026**; `target_amount` 120.000,00; `invested` **120.000**; `invested_tokens` 1.200 de `max_supply` 1.200 (100 € por token); `booked` 146.600 (hubo más reservas que importe). | **Confirmado** |
+| C2 | No hay nueva emisión | `count-by-status` (16:36:22Z): CAMPAIGN 1, PRIVATE_CAMPAIGN 0, PRE_CAMPAIGN 0, CLOSED 2. La única en campaña es Casa de Outeiro, según la lectura del 01/11 de los investigadores. Esta vez no he pedido el detalle. | **Confirmado**: ninguna emisión nueva de IOD ni de otro emisor en precampaña. |
+| C3 | Sin reventa | La campaña tiene `negotiation_phase: PRIMARY` y no hay ninguna fase secundaria en la API. No he buscado un tablón de reventa en otra parte de Alius. Los investigadores citan la escritura: «No hay entidades que estén comprometidas … para suministrar liquidez». | **Confirmado con alcance** (solo lo que muestra esta API) |
+
+Una nota al margen, que no cambia el veredicto: la API dice
+`minimum_offer_money: 100` (mínimo por inversor, 1 token) y
+`minimum_revenue_money: 100000` (umbral para que la emisión sea válida). El claim
+`minimo` del expediente junta las dos cifras en un mismo literal; conviene
+separarlas si algún día se reutiliza.
+
+De la API solo guardo un extracto (campaña, progreso, emisión y nombres de los
+documentos), sin datos de personas ni las URL de los documentos.
+
+### Veredicto · Bloque C
+
+- **`iod-occasio` → retirada_justificada.** Está completa (120.000 de 120.000 €,
+  1.200 de 1.200 tokens), cerrada desde el 23/10, sin reventa visible y sin
+  ninguna emisión nueva en precampaña. Una emisión cerrada no es una oferta «en
+  camino».
+- Alternativa menos drástica, si se quiere seguir mostrando Alius: una
+  referencia genérica «Alius Capital · próximas emisiones» (PSFP de la CNMV n.º
+  11, según los investigadores), sin la cifra del 12 % ni datos de IOD.
+
+---
+
+## Resumen para Víctor
+
+| Bloque | Fichas | Veredicto | Qué cambia respecto a la propuesta |
+|---|---|---|---|
+| A · Reental | `reental-emision-primaria` | **retirada_justificada** | Nada. Los hechos se confirman. |
+| A · Reental | 21 `reental-secundario-*` | **retirada_justificada** como fichas sueltas. Alternativa viable: **agrupar_en_una_ficha** «Reventa P2P de Reental». | El plazo mínimo es de **6 meses, no 1 año**, en Atlanta 1 y Houston 1, 2 y 3. Levante 1: el bloqueo y la Regulación S no constan en su documento. El 404 es de la URL de la fuente, no del botón. Las órdenes cambian a diario: hoy hay 16 fichas con órdenes y 5 sin ninguna (antes eran 15 y 6). |
+| B · Midas | `mf-one` | **mantener_con_cambios** (o agrupar) | **Hoy no está en pausa** (`paused()` = false el 02/11 a las 16:32Z; el 01/11 fue domingo). Sigue siendo solo para la lista blanca y oferta exenta, así que hay que pasarla a «solo profesionales», no retirarla por «pausada». |
+| B · Midas | `mglo`, `mglobal`, `mgloeuro` | **retirada_justificada**. Alternativa: **agrupar_en_una_ficha** «solo profesionales» junto con mF-ONE. | La pausa se confirma en Ethereum el lunes y también en Base (mGLO) y en Avalanche (mGLOBAL). El cambio de valor de mGLOeuro (100.000 → 1 EUR el 26/10) se confirma. |
+| C · Alius | `iod-occasio` | **retirada_justificada** | Nada. Confirmado: CLOSED, 120.000/120.000 €, sin campañas nuevas. |
+
+**Lecturas realizadas:** 23 peticiones a fuentes públicas (Reental 14, Midas 7 y
+Alius 2), entre las 16:27 y las 16:36 UTC del 02/11/2026. Todas están en
+`inventario-retiradas.json`. No he releído el código de midas.app (Cloudflare),
+el acuerdo de Pirineos 1 (403 según los investigadores) ni la lista de
+advertencias de la CNMV.
