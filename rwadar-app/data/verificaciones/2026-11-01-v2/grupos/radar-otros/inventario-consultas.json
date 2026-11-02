@@ -1,0 +1,612 @@
+[
+ {
+  "url": "https://www.artexgm.com/",
+  "archivo": "fuentes/artex-home.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:22Z",
+  "bytes": 11281,
+  "sha256": "b2ab26130389618a5fddcf9a9d8b543230e683446f5208dbdc5f4a0c65fe7644"
+ },
+ {
+  "url": "https://www.artexgm.com/",
+  "archivo": "fuentes/artex-home-render.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:40Z",
+  "bytes": 6899,
+  "sha256": "f75efb5825674e492e1f1a805987a42ae42db24334a63f6b33e56849a34554de",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artexgm.com/equities",
+  "archivo": "fuentes/artex-equities.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:55Z",
+  "bytes": 5064,
+  "sha256": "d741a4361da6a9fd7d5e278fff6c8cd8789aaab09f28d46927c4d4445a05187e",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artexgm.com/notices",
+  "archivo": "fuentes/artex-notices.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:04Z",
+  "bytes": 5722,
+  "sha256": "93c4aab339fe3ae4bf4f75a2355990b08f3bf1997a57df78a36be468bbe6e4e5",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artexgm.com/trading-information",
+  "archivo": "fuentes/artex-trading-information.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:13Z",
+  "bytes": 6337,
+  "sha256": "900556579fa95180d4bf3437edd462feaf65341b630ada985e1a5239801a184d",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artexgm.com/trading-participants",
+  "archivo": "fuentes/artex-trading-participants.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:21Z",
+  "bytes": 8534,
+  "sha256": "0c8f8be597113acafe0d23be77714ea793b4a02dee8a3c4b07cff467427234f1",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artexgm.com/vcm",
+  "archivo": "fuentes/artex-vcm.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:29Z",
+  "bytes": 4158,
+  "sha256": "8b053e12847ec4b0065bf303b64b20cbe25d2404890c52f37593075e00198cad",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artexgm.com/news",
+  "archivo": "fuentes/artex-news.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:38Z",
+  "bytes": 4449,
+  "sha256": "57b70d43c5a50ba351017752abc821b394c66ec61fece9366ef7afea5413ad92",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artshare002.com/",
+  "archivo": "fuentes/artshare002-home.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:15Z",
+  "bytes": 4039,
+  "sha256": "c684687476d21af85dba37887ef212d6475c304538825df49e3a8ea56d743f4d",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artshare002.com/documentation",
+  "archivo": "fuentes/artshare002-documentation.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:32Z",
+  "bytes": 4052,
+  "sha256": "5cd7569550bf4cb633d7cc6163a791935185c1990542a00c1537c6b7eec7e8c7",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artshare002.com/",
+  "archivo": "fuentes/artshare002-spain-gate.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:10Z",
+  "bytes": 1820,
+  "sha256": "6925dccd3377db9db662f13549f1df09d3f3c68e96309e1783c827dc0ed9c07b",
+  "nota": "Playwright: clic en Spain en selector de país público"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=*Art%20Share*&wt=json&rows=20",
+  "archivo": "fuentes/esma-prospectus-artshare.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:38Z",
+  "bytes": 25855,
+  "sha256": "f791f4b487dbe081c119ae7638870b3eadd2e998c61617bc880980015c3d1708"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Art*Share*&wt=json&rows=50",
+  "archivo": "fuentes/esma-prospectus-partyname-artshare.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:00:29Z",
+  "bytes": 220,
+  "sha256": "c778debb768b7347418726ca0185157a0e03e2ef4f54de9108d12b10d16fd0f3"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:LU2583605592&wt=json&rows=50",
+  "archivo": "fuentes/esma-prospectus-isin-LU2583605592.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:00:31Z",
+  "bytes": 227,
+  "sha256": "4da2ae04d7c792839d08278baee45775a6bbd745c168bc14265ed684c496067e"
+ },
+ {
+  "url": "https://www.artshare002.com/page/risk-disclosure-6",
+  "archivo": "fuentes/artshare002-risk-disclosure.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:00:46Z",
+  "bytes": 10914,
+  "sha256": "fa545824e72ed1eeca001f63aab6f505ece15eff9f488eb3b208bcf465388fb0",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artshare002.com/page/terms-and-conditions-3",
+  "archivo": "fuentes/artshare002-terms.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:00:55Z",
+  "bytes": 31052,
+  "sha256": "8382951d79930b24b78bfd1705d26011448bb40e5ca8b9449c69e55ceccf5910",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artexgm.com/artex-mtf",
+  "archivo": "fuentes/artex-mtf.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:04Z",
+  "bytes": 5023,
+  "sha256": "2e407cc69f4067ae421ed134b4787baadb6a7bbef74f06f6f8e6551bbd36c8b2",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artexgm.com/faq",
+  "archivo": "fuentes/artex-faq.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:13Z",
+  "bytes": 16041,
+  "sha256": "762d9176f92ea2b91d8ba5c58f674644d8a3ea79f70ed9f814730ec8584c1f4e",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=visionHome&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%227371b8cce78a0c4e4ccd005c9350e8a03f8dbc18f6b3abd952dbe0a5ee357fd4%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net1.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 3266,
+  "sha256": "c94e3ff9090dcb8b24ca894ee4782336ed6cdb38738c72899f6f8cae994c9dc7",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=visionNewsEvents&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22a691e1661588895ac24eeacbdcc093078d5efaf985453d983d59e1b0fcd21caa%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net2.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 1139,
+  "sha256": "84555726e538f91bb00dd2ab992a7c010b608a8dde3235f18b0d18b8fae8606f",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=visionLeadership&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%223a23e07ce55aab26cf6b3a62d58e90f9506af96e10af37ae735ad570a1d3bd26%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net3.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 6039,
+  "sha256": "163eaa6c4796e7a752cb9fc92883626ecce0ca3d6d3d4f0b56a4eca344ca4206",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=ExchangeHome&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2254014d375a52a729ec1c9155d591a87640d06bd1710504f014079e34c743104b%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net4.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 7099,
+  "sha256": "04a411b25d9deff7c01e871013db82f9748cdc0b3b2fbf4e7570742c833591fc",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Trading&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22d2ab3588f52d705bee8a88054b2f7d269c36f9ad27fdbb7874473d755ab8f2ad%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net5.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 8405,
+  "sha256": "7491d1f2eb6b08b502d86e173e1385c2936f5d292c16d59ea33a340b89763f0e",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Membership&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2201887e8ec383ef07f6923763dc9ff5f7c61f1aa861002ca307bb3a4fabfbf2a4%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net6.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 4949,
+  "sha256": "9bbdbb488d9fb030df05a85c47e38cb666ad0ff8cdc2152148113f127f75b62e",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Fees&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22eb5f1cc11e1b1a30d081178d69e726ce13617db5d66203548cbe3418ed9c2f42%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net7.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 1921,
+  "sha256": "0c6a2f215ae6cf6b2c2d14ef3d940cfba9cae02c46b13c6a11dcaffa24a54a2d",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Listings&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22eb0c54ac8d10c36e4f3df16c151140aac07afa1edefb85ca787080e80f55bb93%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net8.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 5285,
+  "sha256": "674f63a20acd934d2a7c51ff45ac953986808c03745cb4495bd99d13507e20b6",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=ArtIpo&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%220414bfeecce643de390efbf6a0ccb21e80a945d5c0de67dd0cc86e974d837893%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net9.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 79,
+  "sha256": "bec8afd4d1bfcad1667538a22a2a99f28773ffde94f83b3ee1891fe112a35602",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=TradingMembers&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2295b927b5c5e71e841996000a1dfc966aad49a5c3424bdbf5611ee458fabe6fe1%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net10.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 8358,
+  "sha256": "39b9d173ce3bfae5492cb19299a40fe5b65e02a1b75aabc98e605027d6e5ff63",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=visionNews&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2259f9f24eca9f0c22afb0c8be5fb29073ec23ef29ed62ad2cbce3095f181561f1%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net11.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 10516,
+  "sha256": "1fb9286138db3a5c21caf6b57e21459e359db38d8a8f0adb881846e8266c7b0b",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Reporting&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22d847d70e3b6edb849f916709b2ddc9f7ff5c6b82f4435a1c91e47de038752b0e%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net12.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 1313,
+  "sha256": "61750cddf54bf8d6ad6659bbbd3a66395a1124eb5fb81ed962ce90389bf84671",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=IndividualInvest&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22ea2e6741e0e8293940f642ce0258cf3f51e63aaa88db98d7f39872bca14d3b37%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net13.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 94,
+  "sha256": "849d546867954c1c9b12729ae9680ce818887ae2da8543c2e930244e9b77b583",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Membership&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22e0515aa9c763b340fa09ec560186c710cbd7766f5427229875594b4af1ad770b%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net14.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 78,
+  "sha256": "0db3bebdc31fa83a5def51341308d38dbc126960111983e44e09c048eebc5f8b",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=NewListings&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22ac6758fc557dea52cc8fc945d37f8970a89990cedbf83880f5984f190f6a97e9%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net15.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 8231,
+  "sha256": "7b8cb308b4d65a4f897f11eb48d3263e5e1bb5145e55f8bad26c3a6058b24a4c",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=VCM&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22b98461221ce49f41b609b38548b3917a6d4625e744daa733feb8fd363e784a25%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net16.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 2327,
+  "sha256": "3d0acca5eb11184d0ad7051ce6e859732ed6b24ca2dfa96073746a319cd5701a",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Notices&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22201787dbc3a9438695085c19bbb9647f25a7487b6ad0fa64c65e3649b4bbf896%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net17.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 28525,
+  "sha256": "c606903fe4a2c6c1c6cf43a1dbf80dce7abdebbc31d0b68c8684738aa27ff93c",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Compliance&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%227ac597d05eab0245fb880628d7c0628f6a5e8e7b879778c7d5bbf0ea21539950%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net18.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 5259,
+  "sha256": "6861c04c677054dd76be1a8c0f20b697389417953810d104b85d28eca2b7eec6",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Home&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22d90abb3193c34fedd397bd58445909c80c211bf79ed48f21b0696eaa7903c798%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net19.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 11713,
+  "sha256": "a70c1f08e1bd2dca7b3a9bf5752f3dabd9ca13ebe1b69433ebf765e7719b7f34",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=faq&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%224fc85db92fe858cfa19cfce6e6bf1bf4e3bdb8e0ac749b96503871d776d5752f%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net20.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 13552,
+  "sha256": "63798a01b9e4451785f55c1a98744556692d85ebf263151ecb7cdb25fb1088ce",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=terms&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22bfa585bd3ce803565b3e7c18456412f08c1c71734d12cd98f93b5b8bc689caf1%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net21.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:52Z",
+  "bytes": 15810,
+  "sha256": "84671f5efd5c406c527b2bf5640b22dcf161f6112bd2872189628a74906a7527",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=legals&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22c6eba018c9dd49ca19f8cb6c2ff8d8c43d3707c394060ebc8c6aea4dc0331f71%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net22.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:52Z",
+  "bytes": 27002,
+  "sha256": "a4f0b6e03ac0ea68db3907804ebff8e1f26b698656d41a9e5ddfc6fba956f35a",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Header&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2291ca2fbbd71fb37aecdc7e52943be7d21a39e7b200c04fc8562440813ec9dfb5%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net23.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:52Z",
+  "bytes": 1951,
+  "sha256": "fd20063583d7bc8caf14dffa9bbc2cd9611bfbcdf3a5ade02e757fa65ee3c84d",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=cookies&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%229a10e883a04c7622d464a0c1f5da7598bd0c98937bf0584502bb02c7b004d6a5%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net24.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:52Z",
+  "bytes": 478,
+  "sha256": "f2140d90b22e2f3efe199a6af4078f52e88b90246fbb4f553d71e7e5a6ee3012",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Footer&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%222fbf91ffd27721194b60249cdd67c2ee3679a1bd70b8384f8eb04f73c426fb90%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net25.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:52Z",
+  "bytes": 2693,
+  "sha256": "37663b561c153e30581cd76f6fbd020446e6ce128db06b3b97e9f219d2851eab",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://www.artexgm.com/graphql?operationName=Loading&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%229a63261d2a9c44ad62f25b742de512d6bf1c6a3d52c15a42bf97f6d2cb9400d2%22%7D%7D",
+  "archivo": "fuentes/artex-equities-net26.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:52Z",
+  "bytes": 409,
+  "sha256": "2892c9c7fd293e0daf8241a07feab002de85bb24aa837507b01149bf6d29ff6d",
+  "nota": "respuesta de red capturada al renderizar https://www.artexgm.com/equities"
+ },
+ {
+  "url": "https://artex-prod-www-artex-io-uploads.s3.eu-central-1.amazonaws.com/ARTEX_GM_Fee_Schedule_V8_7de230b254.pdf",
+  "archivo": "fuentes/artex-fee-schedule-v8.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:48Z",
+  "bytes": 777987,
+  "sha256": "23c9c3795e39a29b6a5d6c7cfc126ca74b4aa3a2a22acb7c5346ca7c877e567a"
+ },
+ {
+  "url": "https://register.fma-li.li/search?q=ARTEX",
+  "archivo": "fuentes/fma-li-search-artex.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:56Z",
+  "bytes": 2393,
+  "sha256": "b4ef928021d4b81f9753f3a73a65c2547ed894ea75fa3123f4db14d1a4b3d2e6"
+ },
+ {
+  "url": "https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag",
+  "archivo": "fuentes/lb-artex.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:57Z",
+  "bytes": 175230,
+  "sha256": "8f190bd4af6b1453bd60345cc233d9141d16052d8c10a9fa971c474bb1df8206"
+ },
+ {
+  "url": "https://register.fma-li.li/search?q=ARTEX%20Global%20Markets",
+  "archivo": "fuentes/fma-li-register-artex.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:17Z",
+  "bytes": 2687,
+  "sha256": "16539806520a07a24a51474777561a2441c93178fb4bc249fbcddffbb70fe6e9",
+  "nota": "texto renderizado con Playwright/Chromium"
+ },
+ {
+  "url": "https://register.fma-li.li/ busqueda ARTEX",
+  "archivo": "fuentes/fma-li-register-artex-busqueda.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:12Z",
+  "bytes": 2067,
+  "sha256": "e1e820af74ee3ac5726b4ea6ffb44e5a62e6d360cd08efa20c892388727368f9",
+  "nota": "búsqueda en registro público FMA-LI con Playwright"
+ },
+ {
+  "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=ARTEX&registerNumber=&category=&searchType=ALL&law=&sortColumn=name&ascending=true&page=0",
+  "archivo": "fuentes/fma-li-api-search-artex.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:39Z",
+  "bytes": 1869,
+  "sha256": "00e18550a97af7ef503be6643bc1454af91c2ab8807c012e9e845d09e9766440"
+ },
+ {
+  "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Swarm&registerNumber=&category=&searchType=ALL&law=&sortColumn=name&ascending=true&page=0",
+  "archivo": "fuentes/fma-li-api-search-Swarm.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:51Z",
+  "bytes": 48,
+  "sha256": "d01953a2c338e43cb5b682030a96fb7ddd5a12cf6692ce46cdcd60c46853693b"
+ },
+ {
+  "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Blocksquare&registerNumber=&category=&searchType=ALL&law=&sortColumn=name&ascending=true&page=0",
+  "archivo": "fuentes/fma-li-api-search-Blocksquare.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:51Z",
+  "bytes": 48,
+  "sha256": "d01953a2c338e43cb5b682030a96fb7ddd5a12cf6692ce46cdcd60c46853693b"
+ },
+ {
+  "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Taurus&registerNumber=&category=&searchType=ALL&law=&sortColumn=name&ascending=true&page=0",
+  "archivo": "fuentes/fma-li-api-search-Taurus.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:52Z",
+  "bytes": 48,
+  "sha256": "d01953a2c338e43cb5b682030a96fb7ddd5a12cf6692ce46cdcd60c46853693b"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: ARTEX)",
+  "archivo": "fuentes/cnmv-advertencias-artex.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:08:01Z",
+  "bytes": 1496,
+  "sha256": "300ddb95d02dee06fadca54ca047849367c7b5fcbcc09475100c5ada924fa068",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Art Share)",
+  "archivo": "fuentes/cnmv-advertencias-art-share.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:08:42Z",
+  "bytes": 1508,
+  "sha256": "92e1e8a73074b60d9f2ab610adcff08e52b7ff3704732a04fe8f282861a2321a",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Swarm)",
+  "archivo": "fuentes/cnmv-advertencias-swarm.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:09:22Z",
+  "bytes": 1496,
+  "sha256": "8fb1f79e1caf30165c9c407ea58d855baf583a6e02f834d1a42a90afcf20bb0c",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Lofty)",
+  "archivo": "fuentes/cnmv-advertencias-lofty.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:09:45Z",
+  "bytes": 1496,
+  "sha256": "511c4658ae9a6278485d182ee77c5940fe01fbc3ce139d6dc0deb936c31ef644",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Courtyard)",
+  "archivo": "fuentes/cnmv-advertencias-courtyard.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:26Z",
+  "bytes": 1508,
+  "sha256": "2e5cdf7d90898857ad814e0e9d9bb69f9a88eb0e04e49f875c9656ccd01fa99b",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad?lang=es (búsqueda: ARTEX)",
+  "archivo": "fuentes/cnmv-entidades-artex.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:46Z",
+  "bytes": 2594,
+  "sha256": "166e2ca3397760fe451a4caf83455c852a6a016c3611c972ea8657bfa677a71a",
+  "nota": "búsqueda pública de entidades registradas CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Archax)",
+  "archivo": "fuentes/cnmv-advertencias-archax.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:11:07Z",
+  "bytes": 1499,
+  "sha256": "ba75f268319240599051125fad30bc9d435213197968fb4cf624be1587490d84",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: ADDX)",
+  "archivo": "fuentes/cnmv-advertencias-addx.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:11:19Z",
+  "bytes": 1493,
+  "sha256": "cdbecedd9b40e55c3f8ad084c43da3786c539ffb77b9a8cefbb404dac89da31e",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Republic)",
+  "archivo": "fuentes/cnmv-advertencias-republic.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:11:31Z",
+  "bytes": 2266,
+  "sha256": "fde1445c3d70268626d013a06e19f4c4676299f8584865b55b7ba13741c46fbc",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: OpenDeal)",
+  "archivo": "fuentes/cnmv-advertencias-opendeal.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:11:43Z",
+  "bytes": 1505,
+  "sha256": "70566c6b38fc1ddc1dff8a9bfc904a1c685c99a1d04008a53d831e7d515c7764",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Figure)",
+  "archivo": "fuentes/cnmv-advertencias-figure.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:12:50Z",
+  "bytes": 203,
+  "sha256": "e7fb038358f399d1f7d1848f313f7b7b73df6e874ac363a6a5e9115682ce91c4",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: tZERO)",
+  "archivo": "fuentes/cnmv-advertencias-tzero.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:13:02Z",
+  "bytes": 1496,
+  "sha256": "9394e099d1544b70174ea234e6a0d5c97fa14652265ce9041fe37651daf3165c",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: INX)",
+  "archivo": "fuentes/cnmv-advertencias-inx.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:13:14Z",
+  "bytes": 2121,
+  "sha256": "313def360f6fe66a4ee624fe0d230a88cf4ceed739213154fa3c8069ebf72c2d",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Taurus)",
+  "archivo": "fuentes/cnmv-advertencias-taurus.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:13:25Z",
+  "bytes": 1499,
+  "sha256": "e362c6a05d69442c003e8e0ffb381fdfdf357c52b0ae6743ec34f721aafa7ec1",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Tokeny)",
+  "archivo": "fuentes/cnmv-advertencias-tokeny.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:13:37Z",
+  "bytes": 1499,
+  "sha256": "eda375cc7dc6ead9d6dbe736f90754f9a408885d727d7cc8789ab5fad2592748",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es (búsqueda: Blocksquare)",
+  "archivo": "fuentes/cnmv-advertencias-blocksquare.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:13:48Z",
+  "bytes": 1514,
+  "sha256": "dea0a7dc4a986deb7802a94d46173a25fd8eb1b03d69bdf2c0cb59555c81ad00",
+  "nota": "búsqueda pública de advertencias CNMV con Playwright"
+ }
+]

@@ -1,0 +1,248 @@
+{
+  "slug": "wemakeit",
+  "tipoExpediente": "publicada",
+  "grupo": "aktionariat",
+  "proveedor": "Aktionariat (portal de inversores shares.wemakeit.com)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Ninguna hoy: el emisor wemakeit AG no vende; solo hay negociación entre accionistas en un portal con tecnología de Aktionariat AG",
+  "emisor": "wemakeit AG",
+  "vehiculo": "Sociedad anónima suiza (AG); sin SPV",
+  "token": "WMKT «wemakeit AG shares», ERC-20 en Ethereum mainnet, contrato 0xc95506540268b0447663efbfffd71b51fe92ea7f",
+  "derechoAdquirido": "Acciones nominativas de wemakeit AG emitidas como valores registrados en DLT (art. 973d CO), sin restricción de transmisión; derechos de socio tras inscripción en el libro registro.",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-260.625.831; token WMKT 0xc95506540268b0447663efbfffd71b51fe92ea7f",
+  "moneda": "ZCHF (secundario); CHF (valor fijado por el emisor)",
+  "documentos": [
+    {
+      "titulo": "Registration Agreement wemakeit AG",
+      "url": "https://storage.googleapis.com/aktionariat/public/860/28a294fe-b4c3-4b06-9fdc-f7e395065ce3/Registration%20Agreement%20wemakeit%20AG.pdf",
+      "versionOFecha": "V2.2 – 2022-03-29 (PDF creado 2023-03-20)",
+      "paginas": 6,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Crowdinvestment Terms (plantilla Aktionariat, enlazada como investmentTerms)",
+      "url": "https://hub.aktionariat.com/documents/terms/InvestmentTerms.pdf",
+      "versionOFecha": "PDF 2022-10-20",
+      "paginas": 4,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Folleto / ficha informativa",
+      "url": null,
+      "versionOFecha": "no localizado",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (Zefix / ZefixREST)",
+      "entidad": "wemakeit AG",
+      "numero": "CHE-260.625.831",
+      "url": "https://www.zefix.ch/en/search/entity/list?name=wemakeit%20AG",
+      "alcance": "Sociedad anónima (AG) inscrita, sede Zürich, estado EXISTIEREND. Capital 105.000 CHF (SHAB 24/06/2021); restricción de transmisión suprimida (SHAB 20/05/2022). Cambios en el consejo publicados el 02/12/2025 y el 29/10/2026. Es un registro mercantil, no una licencia financiera.",
+      "consultadoUtc": "2026-11-01T15:05:01Z"
+    },
+    {
+      "regulador": "FINMA",
+      "entidad": "—",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "alcance": "No se ha localizado autorización FINMA. El propio portal declara que el mercado secundario es una «non-commercial trading facility» no sujeta a supervisión prudencial; el registro de autorizados de FINMA no se consultó por nombre (pendiente).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "FINMA",
+      "busqueda": "wemakeit",
+      "resultado": "sin coincidencias (lista de advertencias completa, 2.401 entradas, búsqueda local por nombre)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-01T15:08:30Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "wemakeit",
+      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
+      "consultadoUtc": null
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "Aktuell stehen keine wemakeit-Aktien zum Verkauf.",
+      "dato": "Sin venta del emisor: solo mercado secundario entre accionistas",
+      "fuentePrimaria": "https://shares.wemakeit.com/api/brokerbotsettings?ticker=WMKT",
+      "localizador": "disabledBuyText; isPrimaryMarketEnabled=false; on-chain settings()=0 en 0x01f1…687d",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T14:58:55Z",
+      "alcanceYLimites": "/invest no muestra formulario de compra.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "Current Price CHF 8.38 Issuer Defined",
+      "dato": "8,37826 = parámetro de precio de un contrato de venta desactivado; no es precio de ninguna operación",
+      "fuentePrimaria": "https://shares.wemakeit.com/",
+      "localizador": "Portada (valuationPolicy=ISSUER_DEFINED); getPrice() del contrato desactivado = 8,37826e18",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:03:24Z",
+      "alcanceYLimites": "Se usa para calcular la «Market Cap» de 8.285.823 CHF. No es ejecutable: ni el emisor vende ni hay compradores a ese precio.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "precio",
+      "literal": "20 Oct 2026 / 12:14 Secondary Trade 0.80 ZCHF 426 WMKT",
+      "dato": "Último cruce real 0,80 ZCHF (20/10/2026 12:14 UTC; 500 acciones en dos cruces)",
+      "fuentePrimaria": "https://shares.wemakeit.com/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=860 (274 operaciones)",
+      "fechaDato": "2026-10-20",
+      "consultadoUtc": "2026-11-01T14:58:56Z",
+      "alcanceYLimites": "Desde julio de 2026 los cruces van de 0,10 a 1,00 ZCHF, unas 8–80 veces por debajo del valor fijado por el emisor.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "Bid/Ask … Spread: 0.69 (86.25%)",
+      "dato": "Mejor compra 0,11 ZCHF (6.000 acciones); mejor venta 0,80 ZCHF (584)",
+      "fuentePrimaria": "https://shares.wemakeit.com/trade",
+      "localizador": "/trade, libro de órdenes",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:03:43Z",
+      "alcanceYLimites": "Solo ZCHF con monedero propio. Recompra del emisor desactivada («Aktuell können keine wemakeit-Aktien verkauft werden»).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "The Company now wishes to sell SHA Tokens … to the Swiss public in a crowdfunding campaign",
+      "dato": null,
+      "fuentePrimaria": "https://hub.aktionariat.com/documents/terms/InvestmentTerms.pdf",
+      "localizador": "Crowdinvestment Terms, Preámbulo C",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:46Z",
+      "alcanceYLimites": "La campaña documentada se dirigía al público suizo; hoy no hay oferta del emisor. Comprar en secundario no es una oferta del emisor a residentes en España.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Registered shares (Namenaktien) of the Issuer without transfer restrictions (Vinkulierung)",
+      "dato": "Acciones nominativas DLT sin restricción",
+      "fuentePrimaria": "https://storage.googleapis.com/aktionariat/public/860/28a294fe-b4c3-4b06-9fdc-f7e395065ce3/Registration%20Agreement%20wemakeit%20AG.pdf",
+      "localizador": "Registration Agreement V2.2 §1",
+      "fechaDato": "2022-03-29",
+      "consultadoUtc": "2026-11-01T14:59:49Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita (CHE-260.625.831); sin licencia financiera; sin advertencia FINMA."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin oferta del emisor; secundario activo pero minúsculo (último cruce 20/10/2026, 400 ZCHF)."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "No se puede comprar al emisor; solo cripto (ZCHF) entre accionistas, diferencial del 86 %."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_cumple",
+      "nota": "El valor mostrado (8,38) no refleja las operaciones reales (0,80); sin folleto."
+    }
+  },
+  "estadoOferta": "solo_reventa",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "precio",
+      "antes": "Conflicto: 8,38 CHF «definido por el emisor» frente a cruces de 0,80 ZCHF",
+      "ahora": "Resuelto: 8,38 es el parámetro de un contrato de venta desactivado (settings=0), no un precio de mercado; el precio real observado es 0,80 ZCHF (20/10/2026). Cifra de precio de tarjeta: null.",
+      "fuente": "https://shares.wemakeit.com/api/secondarymarkets/getTrades",
+      "critico": true
+    },
+    {
+      "campo": "salida",
+      "antes": "No indicada",
+      "ahora": "Mejor oferta de compra 0,11 ZCHF; diferencial 86 %",
+      "fuente": "https://shares.wemakeit.com/trade",
+      "critico": true
+    },
+    {
+      "campo": "estadoRevision",
+      "antes": "fuentes_en_conflicto",
+      "ahora": "conflicto explicado; propuesta de retirada",
+      "fuente": "https://shares.wemakeit.com/",
+      "critico": true
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "wemakeit",
+    "categoria": "Acciones y capital privado",
+    "pais": "CH",
+    "tipo": "valor",
+    "coleccion": "secundario",
+    "resumen": "Acciones tokenizadas de wemakeit AG, operadora de una plataforma suiza de micromecenazgo. El emisor no vende; solo hay compraventa entre accionistas en Frankencoin, con cruces recientes muy por debajo del valor que fija el emisor.",
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Último cruce",
+        "valor": "0,80 ZCHF (20/10/2026)"
+      },
+      {
+        "etiqueta": "Valor fijado por el emisor",
+        "valor": "8,38 CHF (no ejecutable)"
+      },
+      {
+        "etiqueta": "Venta del emisor",
+        "valor": "Cerrada"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Ninguno"
+      }
+    ],
+    "avisos": [
+      "El valor de 8,38 CHF no corresponde a ninguna operación: las compraventas reales de 2026 se han cruzado entre 0,10 y 1,00 ZCHF.",
+      "Sin oferta del emisor; solo secundario en cripto con diferencial del 86 %."
+    ],
+    "url": "https://shares.wemakeit.com/",
+    "fuentesActuales": [
+      "https://shares.wemakeit.com/trade",
+      "https://shares.wemakeit.com/api/secondarymarkets/getTrades"
+    ],
+    "lugar": "Zúrich · Suiza",
+    "pasos": [
+      "Monedero con ZCHF",
+      "Orden entre accionistas",
+      "Venta si hay comprador"
+    ],
+    "concepto": "un tablón de proyectos de micromecenazgo con certificados de acciones apilados"
+  },
+  "decision": "retirar_propuesta",
+  "motivoDecision": "No se puede comprar al emisor, la única vía es cripto entre accionistas con diferencial del 86 % y el valor publicado (8,38) es diez veces el de las operaciones reales: resta confianza al cliente. La retirada la decide Víctor.",
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Base amplia de accionistas (5.276) y datos de operaciones verificables.",
+    "porQueNo": "Sin oferta del emisor, solo secundario en ZCHF con diferencial del 86 % y precio real (0,80) muy alejado del valor publicado (8,38)."
+  },
+  "bloqueos": [
+    "Advertencias CNMV de «wemakeit» no consultadas (tanda interrumpida por tiempo)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T14:58:55Z",
+    "finUtc": "2026-11-01T15:08:30Z"
+  }
+}

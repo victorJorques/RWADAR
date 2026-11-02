@@ -1,0 +1,144 @@
+{
+  "slug": "taurus-sin-oferta-concreta",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "Taurus",
+  "plataformaSlug": "taurus",
+  "entidadComercializadora": "Taurus SA (Suiza, TDX) / Taurus Europe (Chipre)",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": "CH",
+  "identificador": null,
+  "moneda": null,
+  "documentos": [
+    {
+      "titulo": "Taurus regulatory disclosure",
+      "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "FINMA authorised banks and securities firms",
+      "url": "https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FMA Liechtenstein",
+      "entidad": "búsqueda «Taurus»",
+      "numero": null,
+      "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Taurus",
+      "alcance": "0 resultados (búsqueda de control; Taurus no es una entidad de Liechtenstein).",
+      "consultadoUtc": "2026-11-01T15:04:52Z"
+    },
+    {
+      "regulador": "FINMA authorised banks and securities firms",
+      "entidad": null,
+      "numero": null,
+      "url": "https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf",
+      "alcance": "Según el radar del 22/10/2026 (estado confirmada_regulador): Taurus SA figura en FINMA como securities firm y declara operar T-DX como OTF. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    },
+    {
+      "regulador": "Taurus regulatory disclosure",
+      "entidad": null,
+      "numero": null,
+      "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+      "alcance": "Según el radar del 22/10/2026 (estado confirmada_regulador): Taurus SA figura en FINMA como securities firm y declara operar T-DX como OTF. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Taurus",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:13:25Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": null,
+      "dato": "Taurus SA figura en FINMA como securities firm y declara operar T-DX como OTF.",
+      "fuentePrimaria": "https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf",
+      "localizador": "FINMA authorised banks and securities firms (radar canónico 26, bloque licenciaRegistro)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": "La documentación contempla clientes minoristas, profesionales e institucionales, en ejecución-only; onboarding desde España no confirmado.",
+      "fuentePrimaria": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+      "localizador": "Taurus regulatory disclosure (radar canónico 26, bloque acceso)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": null,
+      "dato": "La web presenta custodia, tokenización y trading para instituciones. Su pie indica que Taurus SA tiene licencia de securities firm de FINMA, que Taurus Europe tiene licencia MiFID de la CySEC (465/26) y que TDX es una OTF operada por Taurus SA, no una bolsa.",
+      "fuentePrimaria": "https://taurushq.com/",
+      "localizador": "Taurus (radar canónico 26, bloque estadoOperativo)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Según el radar, Taurus SA es securities firm autorizada por la FINMA y opera T-DX como OTF; Taurus Europe declara licencia MiFID de la CySEC (465/26). El pasaporte a España no se comprobó."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No se identificó ni fechó ninguna oferta concreta en este ciclo."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Contempla clientes minoristas en régimen de solo ejecución, pero el alta desde España no está confirmada y el canal habitual son bancos e instituciones."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple",
+      "nota": "No hay advertencias de la CNMV por «Taurus»."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": "FINMA, Taurus SA (según el radar; no releído)",
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "OTF suizo supervisado por la FINMA con acciones tokenizadas de empresas suizas.",
+    "porQueNo": "Se dirige sobre todo a instituciones; no hay alta minorista desde España comprobada ni un valor concreto examinado."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir: infraestructura sobre todo institucional (FINMA/CySEC). No se comprobó el alta de un particular desde España ni se examinó un valor concreto de TDX con su documento.",
+  "bloqueos": [
+    "No se examinó ninguna oferta concreta con fuente primaria en este ciclo: la sesión se cortó por límite de uso y el coordinador cerró la fase de captura antes de llegar a esta plataforma. Los datos de licencia y acceso vienen del radar del 22/10/2026."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:13:25Z",
+    "finUtc": "2026-11-02T08:45:23Z"
+  }
+}

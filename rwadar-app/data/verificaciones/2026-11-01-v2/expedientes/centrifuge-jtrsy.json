@@ -1,0 +1,102 @@
+{
+ "slug": "centrifuge-jtrsy",
+ "tipoExpediente": "candidata",
+ "grupo": "radar-tesoro",
+ "proveedor": "Centrifuge",
+ "plataformaSlug": "centrifuge",
+ "entidadComercializadora": null,
+ "emisor": "No verificado en este ciclo",
+ "vehiculo": "Fondo tokenizado de letras del Tesoro de EE. UU. (Janus Henderson Anemoy; no verificado)",
+ "token": "JTRSY",
+ "derechoAdquirido": "Participaciones del fondo (no verificado)",
+ "jurisdiccion": null,
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Centrifuge (entidades no autorizadas)",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Centrifuge",
+   "consultadoUtc": "2026-11-01T15:10:28Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "accesoEspana",
+   "literal": "La disponibilidad es por fondo y puede limitarse a inversores sofisticados, acreditados o cualificados.",
+   "dato": null,
+   "fuentePrimaria": "https://centrifuge.io/terms",
+   "localizador": "rwadar-app/data/verificaciones/2026-10-23-v2/radar-canonico-26.json · fuente centrifuge-terms (verificada por el radar el 22/10/2026)",
+   "fechaDato": "2026-10-22",
+   "consultadoUtc": null,
+   "alcanceYLimites": "Texto del radar canónico, no literal del documento; la fuente primaria no se releyó en este ciclo (01/11/2026)",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "registro",
+   "literal": "Centrifuge es protocolo/infraestructura; sus términos dicen que ni Centrifuge ni afiliadas se licencian en cada jurisdicción y que los productos pueden ser no regulados.",
+   "dato": null,
+   "fuentePrimaria": "https://centrifuge.io/terms",
+   "localizador": "rwadar-app/data/verificaciones/2026-10-23-v2/radar-canonico-26.json · fuente centrifuge-terms (verificada por el radar el 22/10/2026)",
+   "fechaDato": "2026-10-22",
+   "consultadoUtc": null,
+   "alcanceYLimites": "Texto del radar canónico, no literal del documento; la fuente primaria no se releyó en este ciclo (01/11/2026)",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "elegibilidad",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": null,
+   "localizador": null,
+   "fechaDato": null,
+   "consultadoUtc": null,
+   "alcanceYLimites": "Documento de oferta de JTRSY no leído en este ciclo.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "No se consultó en este ciclo el registro del regulador del vehículo."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Estado del producto no releído el 01/11/2026; el radar lo observó en la web el 22/10/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Disponibilidad por fondo, que puede limitarse a sofisticados, acreditados o cualificados; documento de JTRSY no leído."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Riesgos del documento del producto no leídos en este ciclo; sin advertencias de la CNMV en la búsqueda por nombre salvo lo indicado."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": null,
+  "porQueNo": "Sin documento leído; probablemente solo profesionales."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Documento de oferta de JTRSY no leído y la plataforma advierte de que los fondos pueden limitarse a inversores sofisticados o cualificados y ser no regulados. No se propone.",
+ "bloqueos": [
+  "Fase de captura cerrada por el coordinador: expediente breve con la evidencia del radar del 22/10/2026."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T15:10:14Z",
+  "finUtc": "2026-11-02T08:45:38Z"
+ }
+}

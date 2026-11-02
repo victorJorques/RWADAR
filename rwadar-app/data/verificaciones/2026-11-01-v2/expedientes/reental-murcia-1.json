@@ -1,0 +1,127 @@
+{
+  "slug": "reental-murcia-1",
+  "tipoExpediente": "candidata",
+  "grupo": "reental",
+  "proveedor": "Reental",
+  "plataformaSlug": "reental",
+  "entidadComercializadora": "Rental Token, S.L. (NIF B01988393), marca Reental",
+  "emisor": null,
+  "vehiculo": null,
+  "token": "Reental-MUR-1 · Polygon · 0x29da137d6dba774ad4f79323374f685682542767",
+  "derechoAdquirido": null,
+  "jurisdiccion": null,
+  "identificador": "Reental project id 5675db7f-94d3-4c45-9fa6-f459211b5cfc",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Acuerdo de suscripción MUR-1",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/MUR-1/docs-es/1737552794110_acuerdo_de_subscripcion_reental_mur_1.pdf",
+      "versionOFecha": "enero 2025 (marca de tiempo del archivo)",
+      "paginas": 34,
+      "sha256": "0a15d6296f67918a46209132777889400b4413cd00e885fac30d2a8fc5f7d731",
+      "leido": false
+    },
+    {
+      "titulo": "Memo MUR-1",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/MUR-1/docs-es/1737552794913_memo_mur_1.pdf",
+      "versionOFecha": "enero 2025",
+      "paginas": 21,
+      "sha256": "2e111325d9531b5ce3fce080393817faa5cb4728c32ec3103e007a41774fb559",
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "Reental / Rental Token / Reental America",
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "alcance": "Buscador de registros oficiales: «Reental» y «Reental America» → «No se han encontrado resultados»; «Rental Token» → sin resultados legibles. No consta inscripción como ESI, PSFP/ECSP ni otra figura.",
+      "consultadoUtc": "2026-11-01T15:07:37Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental",
+      "consultadoUtc": "2026-11-01T15:05:59Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Rental Token",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rental+Token",
+      "consultadoUtc": "2026-11-01T15:06:06Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental America",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental+America",
+      "consultadoUtc": "2026-11-01T15:06:42Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "lista «Otras entidades» (PDF)",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+      "consultadoUtc": "2026-11-01T15:09:08Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "status «COMING_SOON», typeOfSale «PRIVATE»; getCrowdfundingListing: active true, listingTime 1737648000, available 0",
+      "dato": "sin tokens disponibles; etiqueta «próximamente» desfasada",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getProjects items[name=Murcia 1]; getCrowdfundingListing(projectId 5675db7f…)",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:02:46Z",
+      "alcanceYLimites": "Venta listada desde el 23/01/2025 y con 0 tokens disponibles; fundingDate 2025-03-18. No aparece en el catálogo público. Estado contradictorio.",
+      "estado": "en_conflicto"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Plataforma sin registro CNMV."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "0 tokens disponibles; financiada en 2025."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Venta privada; documentos de 2025 no leídos."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_verificable",
+      "nota": "No leídos."
+    }
+  },
+  "estadoOferta": "agotada",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "decision": "no_admitir",
+  "motivoDecision": "No está abierta: la API marca «COMING_SOON» pero el contrato de venta tiene 0 tokens disponibles desde 2025 y la ficha no está en el catálogo público.",
+  "bloqueos": [
+    "Acuerdo y memo descargados pero no leídos (no abierta: sin prioridad)."
+  ],
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Nada: no hay tokens a la venta.",
+    "porQueNo": "Agotada y con estado contradictorio en la API."
+  },
+  "consulta": {
+    "inicioUtc": "2026-11-01T13:10:54Z",
+    "finUtc": "2026-11-01T15:10:17Z"
+  }
+}

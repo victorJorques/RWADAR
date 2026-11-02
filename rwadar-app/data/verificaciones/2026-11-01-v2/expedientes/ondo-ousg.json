@@ -1,0 +1,102 @@
+{
+ "slug": "ondo-ousg",
+ "tipoExpediente": "candidata",
+ "grupo": "radar-tesoro",
+ "proveedor": "Ondo Finance",
+ "plataformaSlug": "ondo-finance",
+ "entidadComercializadora": null,
+ "emisor": "Emisor no verificado en este ciclo",
+ "vehiculo": "Fondo tokenizado de Tesoro de EE. UU. (no releído)",
+ "token": "OUSG",
+ "derechoAdquirido": "No verificado",
+ "jurisdiccion": null,
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Ondo (entidades no autorizadas)",
+   "resultado": "no concluyente: la página de resultados no mostró filas ni el texto «No hay datos disponibles»; repetir con navegador",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo",
+   "consultadoUtc": "2026-11-01T15:10:17Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "La web mantiene USDY, OUSG y Ondo Stocks.",
+   "dato": null,
+   "fuentePrimaria": "https://ondo.finance/",
+   "localizador": "rwadar-app/data/verificaciones/2026-10-23-v2/radar-canonico-26.json · fuente ondo-web (verificada por el radar el 22/10/2026)",
+   "fechaDato": "2026-10-22",
+   "consultadoUtc": null,
+   "alcanceYLimites": "Texto del radar canónico, no literal del documento; la fuente primaria no se releyó en este ciclo (01/11/2026)",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "No presentar Ondo como minorista global; incluso productos llamados de acceso general tienen restricciones por jurisdicción.",
+   "dato": null,
+   "fuentePrimaria": "https://docs.ondo.finance/general-access-products/usdy/eligibility",
+   "localizador": "rwadar-app/data/verificaciones/2026-10-23-v2/radar-canonico-26.json · fuente ondo-usdy-access (verificada por el radar el 22/10/2026)",
+   "fechaDato": "2026-10-22",
+   "consultadoUtc": null,
+   "alcanceYLimites": "Texto del radar canónico, no literal del documento; la fuente primaria no se releyó en este ciclo (01/11/2026)",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "elegibilidad",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": null,
+   "localizador": null,
+   "fechaDato": null,
+   "consultadoUtc": null,
+   "alcanceYLimites": "Elegibilidad concreta de OUSG no leída en fuente primaria en este ciclo.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "No se consultó en este ciclo el registro del regulador del vehículo."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Estado del producto no releído el 01/11/2026; el radar lo observó en la web el 22/10/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Elegibilidad de OUSG no verificada; Ondo no ofrece acceso minorista general."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Riesgos del documento del producto no leídos en este ciclo; sin advertencias de la CNMV en la búsqueda por nombre salvo lo indicado."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": null,
+  "porQueNo": "Sin documentación leída; no es un producto minorista."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Sin fuente primaria leída sobre elegibilidad, mínimo y documento de OUSG en este ciclo; el radar advierte de que Ondo no es minorista global. No es candidato para un particular en España.",
+ "bloqueos": [
+  "Fase de captura cerrada por el coordinador: expediente breve con la evidencia del radar del 22/10/2026."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T15:10:14Z",
+  "finUtc": "2026-11-02T08:45:38Z"
+ }
+}

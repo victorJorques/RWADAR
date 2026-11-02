@@ -1,0 +1,144 @@
+{
+  "slug": "swarm-sin-oferta-concreta",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "Swarm",
+  "plataformaSlug": "swarm",
+  "entidadComercializadora": "Swarm Capital GmbH (Vaduz, Liechtenstein), según el aviso legal de docs.swarm.com citado por el radar",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": "LI",
+  "identificador": null,
+  "moneda": null,
+  "documentos": [
+    {
+      "titulo": "Swarm Markets terms",
+      "url": "https://docs.swarm.com/about/terms/tos",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Swarm",
+      "url": "https://docs.swarm.com/",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FMA Liechtenstein",
+      "entidad": "búsqueda «Swarm»",
+      "numero": null,
+      "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Swarm (API pública del registro register.fma-li.li)",
+      "alcance": "0 resultados: ninguna entidad con «Swarm» en su nombre figura en el registro público de la FMA-LI, que incluye las licencias de empresa de inversión y los registros TVTG.",
+      "consultadoUtc": "2026-11-01T15:04:51Z"
+    },
+    {
+      "regulador": "Swarm",
+      "entidad": null,
+      "numero": null,
+      "url": "https://docs.swarm.com/",
+      "alcance": "Según el radar del 22/10/2026 (estado no_verificable): El aviso legal de docs.swarm.com (actualizado el 28/05/2026) identifica a Swarm Capital GmbH (Vaduz, Liechtenstein) y sus términos la designan como contraparte, pero ninguna fuente primaria consultada indica licencia ni regulador. No se reutiliza la etiqueta genérica 'regulada por BaFin'. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    },
+    {
+      "regulador": "Swarm Markets terms",
+      "entidad": null,
+      "numero": null,
+      "url": "https://docs.swarm.com/about/terms/tos",
+      "alcance": "Según el radar del 22/10/2026 (estado no_verificable): El aviso legal de docs.swarm.com (actualizado el 28/05/2026) identifica a Swarm Capital GmbH (Vaduz, Liechtenstein) y sus términos la designan como contraparte, pero ninguna fuente primaria consultada indica licencia ni regulador. No se reutiliza la etiqueta genérica 'regulada por BaFin'. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Swarm",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:09:22Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": null,
+      "dato": "El aviso legal de docs.swarm.com (actualizado el 28/05/2026) identifica a Swarm Capital GmbH (Vaduz, Liechtenstein) y sus términos la designan como contraparte, pero ninguna fuente primaria consultada indica licencia ni regulador. No se reutiliza la etiqueta genérica 'regulada por BaFin'.",
+      "fuentePrimaria": "https://docs.swarm.com/",
+      "localizador": "Swarm (radar canónico 26, bloque licenciaRegistro)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": "Los términos legibles en docs.swarm.com (Swarm Capital GmbH, versión del 22/04/2024) y la FAQ (03/07/2024) exigen KYC/AML y excluyen a las personas estadounidenses, pero no hay condiciones de alta de 2026 por jurisdicción y la aplicación no muestra contenido extraíble.",
+      "fuentePrimaria": "https://docs.swarm.com/about/terms/tos",
+      "localizador": "Swarm Markets terms (radar canónico 26, bloque acceso)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": null,
+      "dato": "La web redirige a una aplicación sin contenido extraíble; no se confirmó actividad transaccional ni una oferta abierta.",
+      "fuentePrimaria": "https://docs.swarm.com/",
+      "localizador": "Swarm (radar canónico 26, bloque estadoOperativo)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "La contraparte que nombran los términos (Swarm Capital GmbH, Vaduz) no aparece en el registro de la FMA-LI (búsqueda «Swarm», 0 resultados, 01/11/2026), y el radar no encontró licencia ni regulador. No se reutiliza la etiqueta antigua «regulada por BaFin»."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No se identificó ni fechó ninguna oferta concreta en este ciclo."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Según el radar, los términos (22/04/2024) exigen KYC y excluyen a personas estadounidenses, pero no hay condiciones de alta de 2026 por país."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "No hay advertencias de la CNMV por «Swarm». Falta la documentación de riesgos de cualquier producto."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "La sociedad está en el EEE (Liechtenstein) y sus términos no excluyen a España de forma expresa (según el radar).",
+    "porQueNo": "No hay licencia verificable en la FMA-LI para Swarm Capital GmbH, no se examinó ninguna oferta y no hay condiciones de alta de 2026."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir: la entidad que nombran los términos no figura en el registro público de la FMA-LI (0 resultados por «Swarm» el 01/11/2026) y no se examinó ninguna oferta concreta con documento, mínimo ni salida. Sin licencia verificable no cumple el primer criterio.",
+  "bloqueos": [
+    "No se examinó ninguna oferta concreta con fuente primaria en este ciclo: la sesión se cortó por límite de uso y el coordinador cerró la fase de captura antes de llegar a esta plataforma. Los datos de licencia y acceso vienen del radar del 22/10/2026."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:09:22Z",
+    "finUtc": "2026-11-02T08:45:23Z"
+  }
+}

@@ -1,0 +1,105 @@
+{
+ "grupo": "spiko-prosegur",
+ "proveedor": "Spiko",
+ "plataformaSlug": "spiko",
+ "tipoExpediente": "candidata",
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Spiko",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+   "consultadoUtc": "2026-11-01T15:06:53Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Twenty First Capital",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+   "consultadoUtc": "2026-11-01T15:07:00Z"
+  }
+ ],
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "slug": "spiko-cash-carry",
+ "entidadComercializadora": "Spiko Finance SAS (ACPR CIB 19183)",
+ "emisor": "Spiko Cash & Carry (fondo profesional especializado francés); gestora no verificada en este ciclo",
+ "vehiculo": "Fonds professionnel spécialisé (FIA profesional), no UCITS",
+ "token": "Acciones registradas en DLT (SPKCC / eurSPKCC)",
+ "derechoAdquirido": "Participaciones de un fondo profesional con estrategia cash-and-carry sobre activos digitales",
+ "jurisdiccion": "FR",
+ "identificador": "ISIN FR0014010OM9 (USD) / FR0014010ON7 (EUR)",
+ "moneda": "USD / EUR",
+ "documentos": [
+  {
+   "titulo": "Prospectus SPKCC (inglés)",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_SPKCC_EN.pdf",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  }
+ ],
+ "registros": [],
+ "claims": [
+  {
+   "campo": "minimo",
+   "literal": "minimumInitialSubscription \"100000\" (eurSPKCC) · \"120000\" (SPKCC) · amfClassification \"Fondo profesional especializado\"",
+   "dato": "100.000 EUR / 120.000 USD",
+   "fuentePrimaria": "https://public-api.spiko.io/v0/share-classes/",
+   "localizador": "API /share-classes",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T13:12:31Z",
+   "alcanceYLimites": "Fondo profesional: en Francia solo se comercializa a inversores profesionales (nota GECO sobre FIA).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Spiko Cash & Carry is a professional fund: contact us for its availability in your country.",
+   "dato": "no_confirmado",
+   "fuentePrimaria": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+   "localizador": "docs.spiko.io «Fund Availability»",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-01T15:03:32Z",
+   "alcanceYLimites": "Fuera de la tabla de fondos UCITS.",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "No consultado en GECO."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Clase activa en la API."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Solo profesionales; mínimo 100.000 EUR."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Documentos no leídos."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "solo_acreditados",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": "100.000 EUR / 120.000 USD",
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Producto distinto de la gama Spiko, con registro en DLT.",
+  "porQueNo": "Fondo profesional con mínimo de 100.000 EUR y disponibilidad en España no indicada."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Fondo profesional especializado con mínimo de 100.000 EUR/120.000 USD; no dirigido al particular en España.",
+ "bloqueos": [],
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:12:31Z",
+  "finUtc": "2026-11-02T08:45:27Z"
+ }
+}

@@ -1,0 +1,311 @@
+{
+  "slug": "reental-miami-7",
+  "tipoExpediente": "candidata",
+  "grupo": "reental",
+  "proveedor": "Reental",
+  "plataformaSlug": "reental",
+  "entidadComercializadora": "Rental Token, S.L. (NIF B01988393), marca Reental; gestora de la serie: Reental America, LLC",
+  "emisor": "Series RNT SPV 26 LLC (serie de Reental America Series LLC, Florida)",
+  "vehiculo": "LLC de Florida que suscribe Loan Notes de Estating Property Vault, S.A. (compartimento ligado al proyecto Alturia)",
+  "token": "Reental-MIA-7 (MIA-7 ReentalToken) · Polygon · 0xb917cfb664057cf9f1606987346f1c73b3f3e3e9",
+  "derechoAdquirido": "Participación (interés de membresía) en la serie; exposición indirecta a pagarés (Loan Notes) sobre una promoción en construcción; no propiedad del inmueble",
+  "jurisdiccion": "US-FL",
+  "identificador": "Reental project id a7ed09ce-8b78-4191-a196-e7aaffb27f8e",
+  "moneda": "USD",
+  "documentos": [
+    {
+      "titulo": "Memorando de colocación privada (PPM) Series RNT SPV 26 LLC – MIA-7",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056492572_whitepaper.pdf",
+      "versionOFecha": "13/10/2026",
+      "paginas": 71,
+      "sha256": "57e7bf2d672ea52a9f365e699f2680eb5eb98d41a35d2f8b36b1e2ab0283e3c1",
+      "leido": true
+    },
+    {
+      "titulo": "Acuerdo de suscripción confidencial MIA-7",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056503648_acuerdo_de_suscripcion.pdf",
+      "versionOFecha": "remite al PPM del 13/10/2026",
+      "paginas": 9,
+      "sha256": "62172f916b97b1b2a467fd8c29eae3b12a7d5a86198e7bd7e8079af2b3c8a20c",
+      "leido": true
+    },
+    {
+      "titulo": "Certificado de revisión del documento de emisión (EAFN)",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792133202203_certificado_revision_rnt_spv_26.pdf",
+      "versionOFecha": "14/10/2026",
+      "paginas": 2,
+      "sha256": "d7fb971839762fd938d1b827157347559b579bfa18df680fc4eb4523c856c698",
+      "leido": true
+    },
+    {
+      "titulo": "Dosier comercial MIA-7",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056479545_dosier.pdf",
+      "versionOFecha": null,
+      "paginas": 16,
+      "sha256": "16d54b4861f8ce99a39b238d0d0cef1f699da8eb400dccd0376acfce00d9ec5b",
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "Reental / Rental Token / Reental America",
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "alcance": "Buscador de registros oficiales: «Reental» y «Reental America» → «No se han encontrado resultados»; «Rental Token» → sin resultados legibles. No consta inscripción como ESI, PSFP/ECSP ni otra figura.",
+      "consultadoUtc": "2026-11-01T15:07:37Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "José María Manzanares Allen (EAFN)",
+      "numero": "21",
+      "url": "https://www.cnmv.es/portal/Consultas/DatosEntidad?numero=21&tipo=AFN&nif=[recortado]",
+      "alcance": "Registrado como «Empresa de asesoramiento financiero nacional». Firma un certificado de revisión del documento de oferta dirigido al emisor: no es una autorización de la CNMV ni de la oferta. URL con dato personal recortado.",
+      "consultadoUtc": "2026-11-01T15:08:40Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental",
+      "consultadoUtc": "2026-11-01T15:05:59Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Rental Token",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rental+Token",
+      "consultadoUtc": "2026-11-01T15:06:06Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental America",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental+America",
+      "consultadoUtc": "2026-11-01T15:06:42Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "lista «Otras entidades» (PDF)",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+      "consultadoUtc": "2026-11-01T15:09:08Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "getCrowdfundingListing: active true, listingTime 1792170000, available 8948.48351634; status «TOKENS_ON_SALE», typeOfSale «PRIVATE»",
+      "dato": "abierta en primaria: 8.948,48 de 20.000 tokens disponibles",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getCrowdfundingListing(projectId a7ed09ce…) y getProjects items[name=Miami 7]",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:02:45Z",
+      "alcanceYLimites": "Venta abierta desde el 16/10/2026 17:00 UTC (listingTime). Marcada «PRIVATE» y ausente del catálogo público www.reental.co/properties (127 fichas, ninguna MIA-7).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimo",
+      "literal": "«El importe mínimo individual de inversión en Series RNT SPV 26 LLC (MIA-7) es de 100 USD, equivalente a una (1) Participación»",
+      "dato": "100 USD (1 token)",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056492572_whitepaper.pdf",
+      "localizador": "PPM, portada",
+      "fechaDato": "2026-10-13",
+      "consultadoUtc": "2026-11-01T15:00:26Z",
+      "alcanceYLimites": "Se aceptan EUR, USD, USDT y USDC convertidos a USD; principal y rendimientos se pagan en USDT/USDC.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "«rentabilidades anuales simples estimadas del 12% para Reentel, 15% para Reentel Pro y 18% para Super Reentel, en un horizonte estimado de 36 meses. Estas tasas no son TIR ni pagos anuales»",
+      "dato": null,
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056503648_acuerdo_de_suscripcion.pdf",
+      "localizador": "Acuerdo de suscripción, Definiciones económicas «Rentabilidad objetivo o estimada»; PPM nota (2): TIR aprox. 10,78 % / 13,17 % / 15,46 %",
+      "fechaDato": "2026-10-13",
+      "consultadoUtc": "2026-11-01T15:00:27Z",
+      "alcanceYLimites": "Objetivo de escenario central, no histórico; depende del nivel del inversor; pago único al final. La descripción comercial destaca el 18 % (SuperReentel). Escenario desfavorable del PPM: 9,4 % anual simple en 48 meses (TIR aprox. 8,30 %), sin suelo.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "«Una comisión inicial del tres por ciento (3%)… facturada por Reental America… a Estating»; 1 % anual y 2 % final a Estating; carry del 50 % del beneficio para Reental (37,5 % / 25 % efectivo para Pro / SuperReentel)",
+      "dato": "0 USD de comisión de suscripción al inversor; 3 % + 1 %/año + 2 % cobrados a Estating; carry 25–50 % del beneficio",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056492572_whitepaper.pdf",
+      "localizador": "PPM, cuadro de oferta y nota (1) «Estructura de comisiones»",
+      "fechaDato": "2026-10-13",
+      "consultadoUtc": "2026-11-01T15:00:26Z",
+      "alcanceYLimites": "Las comisiones a Estating «no se descuentan al inversor» según el PPM, pero el carry reduce el beneficio del inversor.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "custodia",
+      "literal": "«Reental America no ha designado a ninguna entidad financiera externa como agente de depósito en garantía. Los fondos de los inversores serán depositados en cuentas titularidad de la Compañía o de sus afiliadas»",
+      "dato": "sin escrow independiente",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056492572_whitepaper.pdf",
+      "localizador": "PPM, «Umbral mínimo propuesto de captación; cuenta escrow»",
+      "fechaDato": "2026-10-13",
+      "consultadoUtc": "2026-11-01T15:00:26Z",
+      "alcanceYLimites": "Umbral mínimo de 1.000.000 USD «pendiente de confirmación».",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "«No existe garantía de admisión a negociación, mercado secundario, recompra, rescate ni posibilidad de transmitir los Tokens antes de la liquidación»; capital y rendimiento «a la salida de la inversión subyacente»",
+      "dato": "pago único al final (horizonte estimado 36 meses, 48 en escenario desfavorable); sin reembolso anticipado",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056503648_acuerdo_de_suscripcion.pdf",
+      "localizador": "Acuerdo de suscripción §7.3 y «Distribuciones»; PPM «Escenario desfavorable»",
+      "fechaDato": "2026-10-13",
+      "consultadoUtc": "2026-11-01T15:00:27Z",
+      "alcanceYLimites": "Reventa solo si hay comprador en el P2P de la comunidad (hoy 1 orden de 0,26 tokens a 100,10 USDT).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "«LA COMPAÑÍA NO HA HECHO NI HARÁ UNA OFERTA DE REENTALTOKENS… AL PÚBLICO EN ESE ESTADO MIEMBRO» salvo inversores cualificados, «MENOS DE 100… O… 150 PERSONAS» no cualificadas por Estado u otras exenciones",
+      "dato": "colocación privada en el EEE: no es oferta pública a minoristas en España",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056492572_whitepaper.pdf",
+      "localizador": "PPM, «Aviso a los residentes del Espacio Económico Europeo»",
+      "fechaDato": "2026-10-13",
+      "consultadoUtc": "2026-11-01T15:00:26Z",
+      "alcanceYLimites": "Para no estadounidenses se ofrece bajo Regulación S. Sin folleto aprobado por la CNMV. La FAQ general permite el alta tras KYC, pero esta emisión tiene su propia restricción.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Certificado: «Jose María Manzanares EAFN… inscrita en el registro de la Comisión Nacional del Mercado de Valores bajo el número 21, certifica que ha llevado a cabo la revisión del Documento de Emisión»",
+      "dato": "revisión por una EAFN registrada (nº 21); no autorización de la CNMV",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792133202203_certificado_revision_rnt_spv_26.pdf",
+      "localizador": "Certificado de 14/10/2026, p. 1–2",
+      "fechaDato": "2026-10-14",
+      "consultadoUtc": "2026-11-01T15:00:28Z",
+      "alcanceYLimites": "El propio certificado dice que no garantiza el éxito ni valida aspectos legales fuera de su alcance. Copia local con DNI y correo recortados.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "«implica un alto grado de riesgo, iliquidez, posibles restricciones de transmisión, ausencia de mercado secundario y la posibilidad de pérdida parcial o total del capital»",
+      "dato": "riesgo alto; posible pérdida total",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056503648_acuerdo_de_suscripcion.pdf",
+      "localizador": "Acuerdo de suscripción §4.6",
+      "fechaDato": "2026-10-13",
+      "consultadoUtc": "2026-11-01T15:00:27Z",
+      "alcanceYLimites": "Promoción de obra nueva de 351 viviendas en construcción (PPM); riesgo de plazo y de promotor.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "ley",
+      "literal": "«Este Acuerdo se regirá… de conformidad con las leyes del Estado de Florida»; jurisdicción: Tribunal de Circuito del Condado de Miami-Dade; renuncia a jurado",
+      "dato": "ley de Florida, tribunales de Miami-Dade",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056503648_acuerdo_de_suscripcion.pdf",
+      "localizador": "Acuerdo de suscripción §9.8–9.10",
+      "fechaDato": "2026-10-13",
+      "consultadoUtc": "2026-11-01T15:00:27Z",
+      "alcanceYLimites": "Un particular español tendría que reclamar en Florida.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "conflicto_rentabilidad",
+      "literal": "getPublicProperties: apr 12, saleProfitability 36; descripción: «Rentabilidad estimada: 18%* anual simple… (para estatus SuperReentel*)»",
+      "dato": "12 % (Reentel) frente a 18 % (SuperReentel) en distintos campos",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getPublicProperties items[name=Miami 7] y description_es",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:51Z",
+      "alcanceYLimites": "No es contradicción si se lee el nivel, pero la cifra destacada (18 %) no es la del inversor básico. No mostrar el 18 % como cifra general.",
+      "estado": "en_conflicto"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Emisor LLC de Florida en colocación privada (Reg. S); comercializa Rental Token, S.L., sin inscripción en la CNMV. Solo hay un certificado de revisión de una EAFN registrada, que no es autorización."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Abierta: 8.948,48 tokens disponibles en el contrato de venta el 01/11/2026 15:02 UTC; venta desde el 16/10/2026."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Mínimo 100 USD; venta «PRIVATE» fuera del catálogo público; en el EEE solo a cualificados o a menos de 150 no cualificados por Estado; sin escrow; pago final único en USDT/USDC."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Riesgos bien descritos en PPM y acuerdo; sin advertencias CNMV; ley y tribunales de Florida."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": {
+    "titulo": "Miami 7 (Alturia)",
+    "categoria": "Inmobiliario",
+    "pais": "US",
+    "tipo": "valor",
+    "coleccion": "principales",
+    "resumen": "Participaciones de una LLC de Florida que financia, mediante pagarés, una promoción de 351 viviendas en North Miami Beach. Pago único al final, estimado a 36 meses.",
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Mínimo",
+        "valor": "100 USD (1 token)"
+      },
+      {
+        "etiqueta": "Disponibles · 01/11/2026",
+        "valor": "8.948 de 20.000 tokens"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Sin registro CNMV del emisor ni de la plataforma"
+      },
+      {
+        "etiqueta": "Reembolso",
+        "valor": "Pago único al final; sin rescate"
+      },
+      {
+        "etiqueta": "Rentabilidad objetivo · PPM 13/10/2026",
+        "valor": "12 % anual simple (nivel básico), 36 meses, no garantizada"
+      }
+    ],
+    "avisos": [
+      "Colocación privada estadounidense (Regulación S) sin folleto de la CNMV; en el EEE no se ofrece al público.",
+      "Los fondos se depositan en cuentas de Reental America o filiales, sin depósito en garantía independiente.",
+      "Obra nueva en construcción: el plazo puede alargarse a 48 meses o más y se puede perder el capital."
+    ],
+    "url": "https://app.reental.co/dashboard/projects",
+    "fuentesActuales": [
+      "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056492572_whitepaper.pdf",
+      "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056503648_acuerdo_de_suscripcion.pdf",
+      "https://backend.reental.co/graphql"
+    ],
+    "lugar": "North Miami Beach · Estados Unidos",
+    "pasos": [
+      "Alta y KYC",
+      "Firma y pago",
+      "Cobro al final"
+    ],
+    "concepto": "Ilustración editorial de una torre residencial en construcción junto a la costa, con grúas"
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Es la única emisión abierta hoy en primaria de Reental y está bien documentada (PPM 13/10/2026, mínimo 100 USD), pero no cumple el criterio de entidad regulada: ni el emisor ni la plataforma constan en la CNMV, es una colocación privada que en el EEE no se ofrece al público, va fuera del catálogo público («PRIVATE»), sin escrow y con ley de Florida. Para un particular en España no da la confianza que buscamos.",
+  "bloqueos": [
+    "Sin login no se puede comprobar qué significa «PRIVATE» (qué usuarios ven y pueden comprar la emisión).",
+    "Registro ESMA (ECSP/MiCA) no consultado.",
+    "Operating Agreement de la serie no publicado; no leído."
+  ],
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "100 USD (1 token)",
+    "supervisorVerificado": null,
+    "documentacionClara": "si",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Única emisión de Reental con tokens disponibles hoy (8.948 de 20.000) y PPM de 13/10/2026 con escenarios y comisiones detallados.",
+    "porQueNo": "Sin registro CNMV, colocación privada no ofrecida al público en el EEE, sin escrow y ley de Florida."
+  },
+  "consulta": {
+    "inicioUtc": "2026-11-01T13:10:54Z",
+    "finUtc": "2026-11-01T15:10:17Z"
+  }
+}

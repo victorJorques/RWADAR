@@ -1,0 +1,128 @@
+{
+  "slug": "archax-sin-oferta-concreta",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "Archax",
+  "plataformaSlug": "archax",
+  "entidadComercializadora": "Archax Markets Europe, S.V., S.A. (UE) / Archax Ltd (Reino Unido)",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": "ES",
+  "identificador": null,
+  "moneda": null,
+  "documentos": [
+    {
+      "titulo": "Archax Markets Europe",
+      "url": "https://eu.archax.com/",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Archax UK regulatory permissions",
+      "url": "https://uk.archax.com/regulatory-permissions",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": null,
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0",
+      "alcance": "Según el radar del 22/10/2026 (estado confirmada_regulador): Archax Markets Europe, S.V., S.A. figura en CNMV con registro 289 de 08/08/2019. Este registro no se extiende a otras entidades del grupo. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Archax",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:11:07Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": null,
+      "dato": "Archax Markets Europe, S.V., S.A. figura en CNMV con registro 289 de 08/08/2019. Este registro no se extiende a otras entidades del grupo.",
+      "fuentePrimaria": "https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0",
+      "localizador": "CNMV — Archax Markets Europe, S.V., S.A. (radar canónico 26, bloque licenciaRegistro)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": "La web europea dirige sus servicios solo a clientes profesionales e institucionales del EEE y los presenta como previos al lanzamiento; por ahora solo permite registrar interés. No hay alta abierta para particulares.",
+      "fuentePrimaria": "https://eu.archax.com/",
+      "localizador": "Archax Markets Europe (radar canónico 26, bloque acceso)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": null,
+      "dato": "Las webs del grupo y de Europa ya se leen (requieren JavaScript). El grupo dice operar mediante entidades en Reino Unido y España; la web europea marca el MTF, la intermediación, la custodia y la tokenización como 'pre-launch'. No se confirma actividad comercial en la UE.",
+      "fuentePrimaria": "https://archax.com/",
+      "localizador": "Archax (radar canónico 26, bloque estadoOperativo)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Según el radar, Archax Markets Europe, S.V., S.A. figura en la CNMV con el n.º 289 (08/08/2019). Ese registro no se extiende al resto del grupo."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "La web europea marca el MTF, la intermediación, la custodia y la tokenización como «pre-launch» (radar)."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "Solo clientes profesionales e institucionales del EEE; de momento solo se puede registrar interés."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple",
+      "nota": "No hay advertencias de la CNMV por «Archax»."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "solo_acreditados",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": "CNMV, Archax Markets Europe, S.V., S.A., n.º 289 (según el radar; no releído)",
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Sociedad de valores española inscrita en la CNMV.",
+    "porQueNo": "Servicios previos al lanzamiento y solo para profesionales e institucionales; un particular no puede darse de alta."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir: la entidad europea (sociedad de valores en la CNMV) solo se dirige a clientes profesionales e institucionales y presenta sus servicios como previos al lanzamiento. Un particular en España no puede comprar.",
+  "bloqueos": [
+    "No se examinó ninguna oferta concreta con fuente primaria en este ciclo: la sesión se cortó por límite de uso y el coordinador cerró la fase de captura antes de llegar a esta plataforma. Los datos de licencia y acceso vienen del radar del 22/10/2026."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:11:07Z",
+    "finUtc": "2026-11-02T08:45:23Z"
+  }
+}

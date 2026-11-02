@@ -1,0 +1,128 @@
+{
+  "slug": "lofty-sin-oferta-concreta",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "Lofty",
+  "plataformaSlug": "lofty",
+  "entidadComercializadora": "Lofty (razón social no verificada en este ciclo)",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": "US",
+  "identificador": null,
+  "moneda": "USD",
+  "documentos": [
+    {
+      "titulo": "Lofty terms and conditions",
+      "url": "https://www.lofty.ai/terms",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Lofty",
+      "url": "https://lofty.ai/",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Lofty terms and conditions",
+      "entidad": null,
+      "numero": null,
+      "url": "https://www.lofty.ai/terms",
+      "alcance": "Según el radar del 22/10/2026 (estado sin_registro_declarado): Sus términos declaran que Lofty no está registrada ante la SEC como bolsa de valores ni en otra capacidad. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Lofty",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:09:45Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": null,
+      "dato": "Sus términos declaran que Lofty no está registrada ante la SEC como bolsa de valores ni en otra capacidad.",
+      "fuentePrimaria": "https://www.lofty.ai/terms",
+      "localizador": "Lofty terms and conditions (radar canónico 26, bloque licenciaRegistro)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": "Las páginas revisadas no traen información específica para inversores no estadounidenses: los términos solo advierten que los productos pueden no estar disponibles en cada jurisdicción y excluyen territorios sancionados por la OFAC. No se confirmó base legal, elegibilidad ni comercialización en España.",
+      "fuentePrimaria": "https://lofty.ai/",
+      "localizador": "Lofty (radar canónico 26, bloque acceso)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": null,
+      "dato": "La web y el marketplace de participaciones inmobiliarias siguen activos.",
+      "fuentePrimaria": "https://lofty.ai/",
+      "localizador": "Lofty (radar canónico 26, bloque estadoOperativo)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Según el radar, sus términos declaran que Lofty no está registrada ante la SEC en ninguna capacidad."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No se identificó ni fechó ninguna oferta concreta en este ciclo."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "No hay base legal ni condiciones publicadas para residentes en España."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "No hay advertencias de la CNMV por «Lofty». La ejecución es en redes públicas y no se garantiza la mejor ejecución (radar)."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Vende participaciones de inmuebles de EE. UU. con importes pequeños.",
+    "porQueNo": "Inmuebles en EE. UU., sin registro declarado ante la SEC y sin condiciones verificadas para España."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir: plataforma de EE. UU. que declara no estar registrada ante la SEC, sin base legal ni elegibilidad comprobadas para residentes en España, y sin una oferta concreta examinada en este ciclo.",
+  "bloqueos": [
+    "No se examinó ninguna oferta concreta con fuente primaria en este ciclo: la sesión se cortó por límite de uso y el coordinador cerró la fase de captura antes de llegar a esta plataforma. Los datos de licencia y acceso vienen del radar del 22/10/2026."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:09:45Z",
+    "finUtc": "2026-11-02T08:45:23Z"
+  }
+}

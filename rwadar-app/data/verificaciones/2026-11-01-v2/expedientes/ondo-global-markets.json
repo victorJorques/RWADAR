@@ -1,0 +1,80 @@
+{
+ "slug": "ondo-global-markets",
+ "tipoExpediente": "candidata",
+ "grupo": "radar-tesoro",
+ "proveedor": "Ondo Finance",
+ "plataformaSlug": "ondo-finance",
+ "entidadComercializadora": null,
+ "emisor": "Ondo Global Markets (BVI) Limited (según el título del folleto; documento no leído)",
+ "vehiculo": "Tokens que replican acciones y ETF bajo folleto base aprobado por la FMA de Liechtenstein el 11/11/2025 (según buscador)",
+ "token": "Ondo Global Markets (tokens «on»)",
+ "derechoAdquirido": "Certificados del emisor (no verificado)",
+ "jurisdiccion": "VG",
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Ondo (entidades no autorizadas)",
+   "resultado": "no concluyente: la página de resultados no mostró filas ni el texto «No hay datos disponibles»; repetir con navegador",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo",
+   "consultadoUtc": "2026-11-01T15:10:17Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registro",
+   "literal": "Ondo Global Markets BVI Limited Base Prospectus Document dated 11 November 2025",
+   "dato": null,
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2025/12/Ondo-Global-Markets-BVI-Limited-Base-Prospectus-Document-dated-11-November-2025.pdf",
+   "localizador": "Título del resultado de búsqueda; PDF no descargado",
+   "fechaDato": "2025-11-11",
+   "consultadoUtc": null,
+   "alcanceYLimites": "Solo descubrimiento por buscador; no se leyó el folleto, ni condiciones finales de un producto de Tesoro u oro, ni distribuidor en España",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "No se consultó en este ciclo el registro del regulador del vehículo."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Estado del producto no releído el 01/11/2026; el radar lo observó en la web el 22/10/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Distribuidor minorista en España y condiciones finales de un producto de Tesoro/oro no identificados."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Riesgos del documento del producto no leídos en este ciclo; sin advertencias de la CNMV en la búsqueda por nombre salvo lo indicado."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": null,
+  "porQueNo": "Folleto UE existe según buscador, pero sin producto, distribuidor ni condiciones verificadas."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No se leyó el folleto ni las condiciones finales de ningún producto de Tesoro u oro, ni se identificó un distribuidor que lo venda a particulares en España. Merece revisión en otro ciclo.",
+ "bloqueos": [
+  "Fase de captura cerrada por el coordinador: expediente breve con la evidencia del radar del 22/10/2026."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T15:10:14Z",
+  "finUtc": "2026-11-02T08:45:38Z"
+ }
+}
