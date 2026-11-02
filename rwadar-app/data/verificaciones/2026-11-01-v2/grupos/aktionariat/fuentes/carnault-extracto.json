@@ -1,0 +1,514 @@
+{
+ "title": "Carnault AG Investor Page",
+ "companyLegalName": "\"Carnault AG\"",
+ "ticker": "\"CAS\"",
+ "cantonalExcerptURL": "\"https://bs.chregister.ch/cr-portal/auszug/auszug.xhtml?uid=CHE-352.010.237\"",
+ "isPrimaryMarketEnabled": "true",
+ "isSecondaryMarketEnabled": "false",
+ "totalShareholders": null,
+ "valuationPolicy": null,
+ "baseTokenRegistrationAgreementURL": null,
+ "draggableTokenHolderAgreementURL": null,
+ "headquartersAddress": "\"Basel, Switzerland\"",
+ "foundingYear": "\"2016\"",
+ "industry": "\"Electronic cigarettes\"",
+ "isPrivate": "true",
+ "primaryMarketPrice": null,
+ "lastSecondaryMarketTrade": null,
+ "lastPriceCheckpoint": null,
+ "marketCap": null,
+ "totalShares": null,
+ "totalSupply": null,
+ "taxValue": null,
+ "contracts": null,
+ "blobs_keys": [],
+ "companyId": "5216",
+ "http": "401",
+ "consultadoUtc": "2026-11-02T08:47:38Z",
+ "tradesConsultadoUtc": "2026-11-02T08:47:39Z",
+ "trades": {
+  "trades": [
+   {
+    "id": "0x0c79ece11638ebc631bab302593c6608639d3bf4724027634be17b7e7984cd67-00228",
+    "whenCreated": "2026-04-07T07:49:09Z",
+    "tradedShares": 1250,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1214952,
+     "big": "1214952"
+    },
+    "transactionHash": "0x0c79ece11638ebc631bab302593c6608639d3bf4724027634be17b7e7984cd67",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x0c79ece11638ebc631bab302593c6608639d3bf4724027634be17b7e7984cd67-00226",
+    "whenCreated": "2026-04-07T07:49:09Z",
+    "tradedShares": 500,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1230746,
+     "big": "1230746"
+    },
+    "transactionHash": "0x0c79ece11638ebc631bab302593c6608639d3bf4724027634be17b7e7984cd67",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0xd55e27e42958966b06ddc363ae4da539746c1f613445ca1ca8df859b0f9568a2-00155",
+    "whenCreated": "2026-01-19T08:05:03Z",
+    "tradedShares": 1000,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1191859,
+     "big": "1191859"
+    },
+    "transactionHash": "0xd55e27e42958966b06ddc363ae4da539746c1f613445ca1ca8df859b0f9568a2",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0xd55e27e42958966b06ddc363ae4da539746c1f613445ca1ca8df859b0f9568a2-00153",
+    "whenCreated": "2026-01-19T08:05:03Z",
+    "tradedShares": 420,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1197528571428571428571428571428571,
+     "big": "1197528571428571428571428571428571"
+    },
+    "transactionHash": "0xd55e27e42958966b06ddc363ae4da539746c1f613445ca1ca8df859b0f9568a2",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x26073249454e497f6d88430918343ab83596d985332fb8a0f768cea917780a03-00099",
+    "whenCreated": "2025-12-31T13:05:45Z",
+    "tradedShares": 1400,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1197673571428571428571428571428571,
+     "big": "1197673571428571428571428571428571"
+    },
+    "transactionHash": "0x26073249454e497f6d88430918343ab83596d985332fb8a0f768cea917780a03",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x3222bf698b5b6e71f70af837cde44649641fc7ff1424855be8b89b88f15d791d-00105",
+    "whenCreated": "2025-12-30T14:04:39Z",
+    "tradedShares": 1000,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1201362,
+     "big": "1201362"
+    },
+    "transactionHash": "0x3222bf698b5b6e71f70af837cde44649641fc7ff1424855be8b89b88f15d791d",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x0ab1328353ef559d5b023456b4a6277b412b91048e3dfa36d853623a2998ed99-00047",
+    "whenCreated": "2025-12-30T09:07:29Z",
+    "tradedShares": 1300,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1194566153846153846153846153846154,
+     "big": "1194566153846153846153846153846154"
+    },
+    "transactionHash": "0x0ab1328353ef559d5b023456b4a6277b412b91048e3dfa36d853623a2998ed99",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x2be5ae15f7ffd6bcd9f5a880a05cbb76e5a3a52964c71fc9bbd0560ee934057c-00030",
+    "whenCreated": "2025-12-10T15:48:09Z",
+    "tradedShares": 1500,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1195234,
+     "big": "1195234"
+    },
+    "transactionHash": "0x2be5ae15f7ffd6bcd9f5a880a05cbb76e5a3a52964c71fc9bbd0560ee934057c",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x0bb7998c163642df3728798317d0ee518941ea68c3bc99d9e9c74c4719889b34-00073",
+    "whenCreated": "2025-12-05T12:52:59Z",
+    "tradedShares": 4484,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1115305084745762711864406779661017,
+     "big": "1115305084745762711864406779661017"
+    },
+    "transactionHash": "0x0bb7998c163642df3728798317d0ee518941ea68c3bc99d9e9c74c4719889b34",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x0bb7998c163642df3728798317d0ee518941ea68c3bc99d9e9c74c4719889b34-00071",
+    "whenCreated": "2025-12-05T12:52:59Z",
+    "tradedShares": 500,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1115306,
+     "big": "1115306"
+    },
+    "transactionHash": "0x0bb7998c163642df3728798317d0ee518941ea68c3bc99d9e9c74c4719889b34",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x90b174f643b89846443c612eb399999715dccba6a4dd1983a2bd42b53c449f9b-00083",
+    "whenCreated": "2025-11-18T09:22:13Z",
+    "tradedShares": 1666,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1207591836734693877551020408163265,
+     "big": "1207591836734693877551020408163265"
+    },
+    "transactionHash": "0x90b174f643b89846443c612eb399999715dccba6a4dd1983a2bd42b53c449f9b",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0xc50484c0ab82d78b112747cd7b4f5e44aeb171a390a5f80604eb78a027815560-00314",
+    "whenCreated": "2025-11-11T16:43:07Z",
+    "tradedShares": 500,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1197394,
+     "big": "1197394"
+    },
+    "transactionHash": "0xc50484c0ab82d78b112747cd7b4f5e44aeb171a390a5f80604eb78a027815560",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x3f5f0f78753d29c033b0ad812523307d10ec074fcf71c0c4eacf078e53f350bf-00035",
+    "whenCreated": "2025-10-28T08:28:45Z",
+    "tradedShares": 300,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1115306666666666666666666666666667,
+     "big": "1115306666666666666666666666666667"
+    },
+    "transactionHash": "0x3f5f0f78753d29c033b0ad812523307d10ec074fcf71c0c4eacf078e53f350bf",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x3e8b6a5d266ab327f31f3b32e231ff91dcdd418fd4806b543a93ecce31030fca-00004",
+    "whenCreated": "2025-10-28T08:25:33Z",
+    "tradedShares": 825,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1199831515151515151515151515151515,
+     "big": "1199831515151515151515151515151515"
+    },
+    "transactionHash": "0x3e8b6a5d266ab327f31f3b32e231ff91dcdd418fd4806b543a93ecce31030fca",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x3e8b6a5d266ab327f31f3b32e231ff91dcdd418fd4806b543a93ecce31030fca-00002",
+    "whenCreated": "2025-10-28T08:25:33Z",
+    "tradedShares": 500,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1115306,
+     "big": "1115306"
+    },
+    "transactionHash": "0x3e8b6a5d266ab327f31f3b32e231ff91dcdd418fd4806b543a93ecce31030fca",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x3e8b6a5d266ab327f31f3b32e231ff91dcdd418fd4806b543a93ecce31030fca-00000",
+    "whenCreated": "2025-10-28T08:25:33Z",
+    "tradedShares": 450,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1115306666666666666666666666666667,
+     "big": "1115306666666666666666666666666667"
+    },
+    "transactionHash": "0x3e8b6a5d266ab327f31f3b32e231ff91dcdd418fd4806b543a93ecce31030fca",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x33ce48902de471c50eca813c4b0dc58522bee567d0353a789a2125b31eb74350-00000",
+    "whenCreated": "2025-10-09T15:07:07Z",
+    "tradedShares": 100,
+    "pricePerShare": {
+     "decimals": 4,
+     "value": 111531,
+     "big": "111531"
+    },
+    "transactionHash": "0x33ce48902de471c50eca813c4b0dc58522bee567d0353a789a2125b31eb74350",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x66d60be88167be564cca3915e02b507d2ca28d736d1314540da4047d0bc05782-00000",
+    "whenCreated": "2025-10-09T15:06:59Z",
+    "tradedShares": 1000,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1115305,
+     "big": "1115305"
+    },
+    "transactionHash": "0x66d60be88167be564cca3915e02b507d2ca28d736d1314540da4047d0bc05782",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x3d11aacbb03aae7c3b9b405abde1575732f842e9ee9002b15c2a3da347e7ddbb-00084",
+    "whenCreated": "2025-10-07T12:08:21Z",
+    "tradedShares": 1256,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1194464968152866242038216560509554,
+     "big": "1194464968152866242038216560509554"
+    },
+    "transactionHash": "0x3d11aacbb03aae7c3b9b405abde1575732f842e9ee9002b15c2a3da347e7ddbb",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x3d11aacbb03aae7c3b9b405abde1575732f842e9ee9002b15c2a3da347e7ddbb-00082",
+    "whenCreated": "2025-10-07T12:08:21Z",
+    "tradedShares": 4484,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1115305084745762711864406779661017,
+     "big": "1115305084745762711864406779661017"
+    },
+    "transactionHash": "0x3d11aacbb03aae7c3b9b405abde1575732f842e9ee9002b15c2a3da347e7ddbb",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x3d11aacbb03aae7c3b9b405abde1575732f842e9ee9002b15c2a3da347e7ddbb-00080",
+    "whenCreated": "2025-10-07T12:08:21Z",
+    "tradedShares": 5000,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1115305,
+     "big": "1115305"
+    },
+    "transactionHash": "0x3d11aacbb03aae7c3b9b405abde1575732f842e9ee9002b15c2a3da347e7ddbb",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x40c683671f16eeba264a0eefe5b1cc0596ba6e01156c13ff506ad3a0fa7d880e-00002",
+    "whenCreated": "2025-07-03T17:26:11Z",
+    "tradedShares": 1270,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1188543307086614173228346456692913,
+     "big": "1188543307086614173228346456692913"
+    },
+    "transactionHash": "0x40c683671f16eeba264a0eefe5b1cc0596ba6e01156c13ff506ad3a0fa7d880e",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x40c683671f16eeba264a0eefe5b1cc0596ba6e01156c13ff506ad3a0fa7d880e-00000",
+    "whenCreated": "2025-07-03T17:26:11Z",
+    "tradedShares": 2700,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1188932222222222222222222222222222,
+     "big": "1188932222222222222222222222222222"
+    },
+    "transactionHash": "0x40c683671f16eeba264a0eefe5b1cc0596ba6e01156c13ff506ad3a0fa7d880e",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x90b1d9d36a44b5c4ea7fb0360aabeb19ac0617375e20f8d6004718c2cd5f7bc7-00000",
+    "whenCreated": "2025-07-03T17:25:59Z",
+    "tradedShares": 1350,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1115305185185185185185185185185185,
+     "big": "1115305185185185185185185185185185"
+    },
+    "transactionHash": "0x90b1d9d36a44b5c4ea7fb0360aabeb19ac0617375e20f8d6004718c2cd5f7bc7",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f-00008",
+    "whenCreated": "2025-06-13T09:43:41Z",
+    "tradedShares": 500,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1184018,
+     "big": "1184018"
+    },
+    "transactionHash": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f-00006",
+    "whenCreated": "2025-06-13T09:43:41Z",
+    "tradedShares": 302,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1115307947019867549668874172185430,
+     "big": "1115307947019867549668874172185430"
+    },
+    "transactionHash": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f-00004",
+    "whenCreated": "2025-06-13T09:43:41Z",
+    "tradedShares": 900,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1188906666666666666666666666666667,
+     "big": "1188906666666666666666666666666667"
+    },
+    "transactionHash": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f-00002",
+    "whenCreated": "2025-06-13T09:43:41Z",
+    "tradedShares": 850,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1189929411764705882352941176470588,
+     "big": "1189929411764705882352941176470588"
+    },
+    "transactionHash": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f-00000",
+    "whenCreated": "2025-06-13T09:43:41Z",
+    "tradedShares": 650,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1193829230769230769230769230769231,
+     "big": "1193829230769230769230769230769231"
+    },
+    "transactionHash": "0x6e37b469ab6dce624622c2eaaa478458b62ea839d56b9af3c35e9b16925e122f",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x4940718e630a1b28d367e63eaf9c88642937bf7c39bdc79d084d585281795ed7-00006",
+    "whenCreated": "2025-03-31T09:22:51Z",
+    "tradedShares": 1000,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1166747,
+     "big": "1166747"
+    },
+    "transactionHash": "0x4940718e630a1b28d367e63eaf9c88642937bf7c39bdc79d084d585281795ed7",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x4940718e630a1b28d367e63eaf9c88642937bf7c39bdc79d084d585281795ed7-00004",
+    "whenCreated": "2025-03-31T09:22:51Z",
+    "tradedShares": 225,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1115306666666666666666666666666667,
+     "big": "1115306666666666666666666666666667"
+    },
+    "transactionHash": "0x4940718e630a1b28d367e63eaf9c88642937bf7c39bdc79d084d585281795ed7",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x4940718e630a1b28d367e63eaf9c88642937bf7c39bdc79d084d585281795ed7-00002",
+    "whenCreated": "2025-03-31T09:22:51Z",
+    "tradedShares": 13450,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1115305055762081784386617100371747,
+     "big": "1115305055762081784386617100371747"
+    },
+    "transactionHash": "0x4940718e630a1b28d367e63eaf9c88642937bf7c39bdc79d084d585281795ed7",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x4940718e630a1b28d367e63eaf9c88642937bf7c39bdc79d084d585281795ed7-00000",
+    "whenCreated": "2025-03-31T09:22:51Z",
+    "tradedShares": 225,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1115306666666666666666666666666667,
+     "big": "1115306666666666666666666666666667"
+    },
+    "transactionHash": "0x4940718e630a1b28d367e63eaf9c88642937bf7c39bdc79d084d585281795ed7",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x34c3e478b7f9a1dfc3522bc625080930790a4e54b89ac8fca7b292b2dc6eb97c-00000",
+    "whenCreated": "2025-03-31T09:22:35Z",
+    "tradedShares": 2000,
+    "pricePerShare": {
+     "decimals": 6,
+     "value": 12367025,
+     "big": "12367025"
+    },
+    "transactionHash": "0x34c3e478b7f9a1dfc3522bc625080930790a4e54b89ac8fca7b292b2dc6eb97c",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x5e69b1b83a910b0b9effb7dfd1dfaea15e4d20327ca9e899f15244b765924604-00000",
+    "whenCreated": "2025-03-31T09:20:05Z",
+    "tradedShares": 2350,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1159362127659574468085106382978723,
+     "big": "1159362127659574468085106382978723"
+    },
+    "transactionHash": "0x5e69b1b83a910b0b9effb7dfd1dfaea15e4d20327ca9e899f15244b765924604",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0xe470d783b4a6a682f497d8bdfc4a68aab2278d137119903bf2294a975828c7c4-00004",
+    "whenCreated": "2025-02-20T13:07:07Z",
+    "tradedShares": 845,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1182455621301775147928994082840237,
+     "big": "1182455621301775147928994082840237"
+    },
+    "transactionHash": "0xe470d783b4a6a682f497d8bdfc4a68aab2278d137119903bf2294a975828c7c4",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0xe470d783b4a6a682f497d8bdfc4a68aab2278d137119903bf2294a975828c7c4-00002",
+    "whenCreated": "2025-02-20T13:07:07Z",
+    "tradedShares": 1275,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1181064313725490196078431372549020,
+     "big": "1181064313725490196078431372549020"
+    },
+    "transactionHash": "0xe470d783b4a6a682f497d8bdfc4a68aab2278d137119903bf2294a975828c7c4",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0xe470d783b4a6a682f497d8bdfc4a68aab2278d137119903bf2294a975828c7c4-00000",
+    "whenCreated": "2025-02-20T13:07:07Z",
+    "tradedShares": 508,
+    "pricePerShare": {
+     "decimals": 32,
+     "value": 1181844488188976377952755905511811,
+     "big": "1181844488188976377952755905511811"
+    },
+    "transactionHash": "0xe470d783b4a6a682f497d8bdfc4a68aab2278d137119903bf2294a975828c7c4",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x41d994d2c7e9b86af1d2b498792bcbba5c3ec19121c96d0591cb8c58a6a780dd-00002",
+    "whenCreated": "2025-02-03T08:54:21Z",
+    "tradedShares": 160,
+    "pricePerShare": {
+     "decimals": 7,
+     "value": 111530625,
+     "big": "111530625"
+    },
+    "transactionHash": "0x41d994d2c7e9b86af1d2b498792bcbba5c3ec19121c96d0591cb8c58a6a780dd",
+    "marketType": "PRIMARY"
+   },
+   {
+    "id": "0x41d994d2c7e9b86af1d2b498792bcbba5c3ec19121c96d0591cb8c58a6a780dd-00000",
+    "whenCreated": "2025-02-03T08:54:21Z",
+    "tradedShares": 2000,
+    "pricePerShare": {
+     "decimals": 5,
+     "value": 1115305,
+     "big": "1115305"
+    },
+    "transactionHash": "0x41d994d2c7e9b86af1d2b498792bcbba5c3ec19121c96d0591cb8c58a6a780dd",
+    "marketType": "PRIMARY"
+   }
+  ],
+  "total": 227
+ }
+}

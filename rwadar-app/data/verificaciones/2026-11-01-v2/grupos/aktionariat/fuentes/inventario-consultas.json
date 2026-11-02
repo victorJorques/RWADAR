@@ -637,5 +637,95 @@
   "bytes": 3661,
   "sha256": "ea165ef889a598508d5edfbeaa01495038f71990a4aad172312e3591dfa5d4c1",
   "nota": "Texto renderizado con Playwright"
+ },
+ {
+  "url": "https://shares.alanfrei.com/",
+  "archivo": "alan-frei-portada.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:35Z",
+  "bytes": 92927,
+  "sha256": "ecb4d002b46fcc9b91abffe0c4b1a8514518c4e45b17fc66bd47b71668248486",
+  "nota": "apiKey pública de Etherscan embebida en la página redactada"
+ },
+ {
+  "url": "https://shares.alanfrei.com/api/secondarymarkets/getTrades POST {\"company\": \"4183\", \"skip\": 0, \"limit\": 40}",
+  "archivo": "alan-frei-getTrades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:36Z",
+  "bytes": 12532,
+  "sha256": "de9e603650d2537b2e0aa90a0442861aaf3b24b5ded48027e7b81509a79e7331",
+  "nota": null
+ },
+ {
+  "url": "https://shares.carnault.com/",
+  "archivo": "carnault-portada.html",
+  "http": 401,
+  "consultadoUtc": "2026-11-02T08:47:38Z",
+  "bytes": 11739,
+  "sha256": "8f1dee6619fb7130da43737c9bce53993e356a8408951aa0266d8c855408a6e6",
+  "nota": null
+ },
+ {
+  "url": "https://shares.carnault.com/api/secondarymarkets/getTrades POST {\"company\": \"5216\", \"skip\": 0, \"limit\": 40}",
+  "archivo": "carnault-getTrades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:39Z",
+  "bytes": 13810,
+  "sha256": "cdd0b809f700ee1d9a8053fa7f1b85e993938aaf9aeefa8ca15bd22c4c08f5b6",
+  "nota": null
+ },
+ {
+  "url": "https://shares.twiliner.com/",
+  "archivo": "twiliner-portada.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:40Z",
+  "bytes": 41287,
+  "sha256": "f8472350dc9d893d02c35d6e7d70cc7df53ded5ea0eff0c94699a61f4dada9ac",
+  "nota": "apiKey pública de Etherscan embebida en la página redactada"
+ },
+ {
+  "url": "https://shares.twiliner.com/api/secondarymarkets/getTrades POST {\"company\": \"21975\", \"skip\": 0, \"limit\": 40}",
+  "archivo": "twiliner-getTrades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:41Z",
+  "bytes": 8833,
+  "sha256": "6145974162e0a4b73a1b6a144e44e1a189d565c2b4c23fe524439e299976c170",
+  "nota": null
+ },
+ {
+  "url": "https://shares.fieldoo.com/",
+  "archivo": "fieldoo-portada.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:42Z",
+  "bytes": 51743,
+  "sha256": "e181b05214212d50d85e0376c986db37139f575798f00f3ca556c779726a2cf0",
+  "nota": "apiKey pública de Etherscan embebida en la página redactada"
+ },
+ {
+  "url": "https://shares.fieldoo.com/api/secondarymarkets/getTrades POST {\"company\": \"3173\", \"skip\": 0, \"limit\": 40}",
+  "archivo": "fieldoo-getTrades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:43Z",
+  "bytes": 6574,
+  "sha256": "870125a178c73d940dee68d85e50a31a0d6e598c9e5a7c9af12b8302a218207a",
+  "nota": null
+ },
+ {
+  "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=REALU",
+  "archivo": "realunit-brokerbotsettings.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:43Z",
+  "bytes": 1584,
+  "sha256": "34e3aaf5d4c1d8aa06a5e368c64f64f19c9ac4654cd1dd695438805ec4a9a531",
+  "nota": null
+ },
+ {
+  "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=ARTS",
+  "archivo": "art-leasing-brokerbotsettings.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:44Z",
+  "bytes": 1393,
+  "sha256": "37e629944ac9d0d9d787df85bfb22241eec7276d9b109ab1dd90c0ee1c97f8ea",
+  "nota": null
  }
 ]
