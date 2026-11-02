@@ -1,10 +1,196 @@
 {
-  "filas": [],
+  "filas": [
+    {
+      "slug": "casa-de-outeiro",
+      "grupo": "alius-hausera",
+      "tipo": "publicada",
+      "proveedor": "Alius Capital",
+      "decision": "actualizar",
+      "estadoOferta": "no_verificable",
+      "disponibleEs": "confirmado",
+      "coleccion": "principales",
+      "categoria": "Acciones y capital privado",
+      "rentabilidad": null,
+      "criterios": {
+        "entidadYPermisos": "cumple_con_limites",
+        "actividadYFecha": "no_verificable",
+        "accesoYCondiciones": "cumple_con_limites",
+        "riesgosYAlertas": "cumple"
+      },
+      "prioridadEditorial": {
+        "compraDesdeEspanaComoParticular": "no_confirmado",
+        "minimoEntrada": "2.000 EUR (80 acciones de 25 EUR)",
+        "supervisorVerificado": "CNMV · registro de PSFP nº 11 (Adventurees Capital PFP, S.L. / Alius Capital, NIF B76632793)",
+        "documentacionClara": "parcial",
+        "salidaExplicada": "parcial",
+        "cifraRecienteVerificada": "si",
+        "porQueDestaca": "Es la única campaña abierta en Alius, plataforma registrada en la CNMV, con ficha de datos en español firmada el 30/10/2026 y mínimo de 2.000 EUR.",
+        "porQueNo": "Fechas en conflicto (FDF 31/03/2027 frente a campaña 31/10/2026), lleva el 56 % del importe mínimo sin avance desde el 23/10, emisor en constitución y salida muy restringida."
+      },
+      "cambiosCriticos": 2,
+      "claims": 12,
+      "errores": 0
+    },
+    {
+      "slug": "gemini-tokenized-stocks",
+      "grupo": "nuevas-fuera-radar",
+      "tipo": "candidata",
+      "proveedor": "Gemini (UE)",
+      "decision": "no_admitir",
+      "estadoOferta": "desaparecida",
+      "disponibleEs": "excluido",
+      "coleccion": null,
+      "categoria": null,
+      "rentabilidad": null,
+      "criterios": {
+        "entidadYPermisos": "cumple_con_limites",
+        "actividadYFecha": "no_cumple",
+        "accesoYCondiciones": "no_cumple",
+        "riesgosYAlertas": "no_cumple"
+      },
+      "prioridadEditorial": {
+        "compraDesdeEspanaComoParticular": "no",
+        "minimoEntrada": null,
+        "supervisorVerificado": "MFSA (Malta) · CNMV libre prestación nº 5304",
+        "documentacionClara": "parcial",
+        "salidaExplicada": "parcial",
+        "cifraRecienteVerificada": "no",
+        "porQueDestaca": "Fue un canal MiFID para dShares en la UE.",
+        "porQueNo": "Gemini cerró su actividad en el EEE en abril de 2026; la página comercial no está actualizada."
+      },
+      "cambiosCriticos": 0,
+      "claims": 3,
+      "errores": 0
+    },
+    {
+      "slug": "kraken-xstocks",
+      "grupo": "nuevas-fuera-radar",
+      "tipo": "candidata",
+      "proveedor": "Kraken (UE)",
+      "decision": "admitir_propuesta",
+      "estadoOferta": "abierta",
+      "disponibleEs": "confirmado",
+      "coleccion": "secundario",
+      "categoria": "Acciones y capital privado",
+      "rentabilidad": null,
+      "criterios": {
+        "entidadYPermisos": "cumple_con_limites",
+        "actividadYFecha": "cumple",
+        "accesoYCondiciones": "cumple_con_limites",
+        "riesgosYAlertas": "cumple_con_limites"
+      },
+      "prioridadEditorial": {
+        "compraDesdeEspanaComoParticular": "si",
+        "minimoEntrada": "1 EUR",
+        "supervisorVerificado": "CySEC licencia 342/17 · CNMV ESI EEE libre prestación nº 4474",
+        "documentacionClara": "parcial",
+        "salidaExplicada": "si",
+        "cifraRecienteVerificada": "si",
+        "porQueDestaca": "Distribuidor MiFID con pasaporte a España, desde 1 € y token que se puede sacar a una wallet propia.",
+        "porQueNo": "El folleto base de Backed no se pudo leer desde aquí (bloqueo geográfico) y la comisión con euros no está cuantificada en la página."
+      },
+      "cambiosCriticos": 0,
+      "claims": 8,
+      "errores": 0
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "grupo": "nuevas-fuera-radar",
+      "tipo": "candidata",
+      "proveedor": "Robinhood (UE)",
+      "decision": "admitir_propuesta",
+      "estadoOferta": "abierta",
+      "disponibleEs": "confirmado",
+      "coleccion": "principales",
+      "categoria": "Acciones y capital privado",
+      "rentabilidad": null,
+      "criterios": {
+        "entidadYPermisos": "cumple",
+        "actividadYFecha": "cumple",
+        "accesoYCondiciones": "cumple_con_limites",
+        "riesgosYAlertas": "cumple_con_limites"
+      },
+      "prioridadEditorial": {
+        "compraDesdeEspanaComoParticular": "si",
+        "minimoEntrada": "1 EUR",
+        "supervisorVerificado": "Banco de Lituania (LB002288 y otras) · CNMV ESI EEE libre prestación nº 5299",
+        "documentacionClara": "si",
+        "salidaExplicada": "si",
+        "cifraRecienteVerificada": "si",
+        "porQueDestaca": "KID PRIIPs de julio de 2026, pasaporte inscrito en la CNMV, web en español, desde 1 € y comisión única de cambio del 0,10 %.",
+        "porQueNo": "Es un derivado OTC con riesgo de contraparte de Robinhood y token no transferible: no es propiedad tokenizada del activo; no hay lista oficial de países."
+      },
+      "cambiosCriticos": 0,
+      "claims": 10,
+      "errores": 0
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "grupo": "spiko-prosegur",
+      "tipo": "candidata",
+      "proveedor": "Spiko",
+      "decision": "admitir_propuesta",
+      "estadoOferta": "abierta",
+      "disponibleEs": "confirmado",
+      "coleccion": "principales",
+      "categoria": "Tesoro y fondos",
+      "rentabilidad": "4,13 %",
+      "criterios": {
+        "entidadYPermisos": "cumple",
+        "actividadYFecha": "cumple",
+        "accesoYCondiciones": "cumple_con_limites",
+        "riesgosYAlertas": "cumple"
+      },
+      "prioridadEditorial": {
+        "compraDesdeEspanaComoParticular": "si",
+        "minimoEntrada": "1 USD",
+        "supervisorVerificado": "AMF (GECO SCV20240013) · CNMV IIC extranjera n.º 2380 (SICAV) · ACPR/REGAFI Spiko Finance CIB 19183 con LPS a España",
+        "documentacionClara": "si",
+        "salidaExplicada": "parcial",
+        "cifraRecienteVerificada": "si",
+        "porQueDestaca": "Misma SICAV supervisada que la ficha en euros, KID en español del 01/09/2026, desde 1 USD, 0,25 % anual y España incluida en la tabla de distribución del emisor.",
+        "porQueNo": "Riesgo de cambio para el ahorrador en euros; el KID y el folleto no coinciden en la VL de ejecución, y la clase EUR tiene un mínimo dudoso (1 EUR frente a 1.000 EUR)."
+      },
+      "cambiosCriticos": 0,
+      "claims": 11,
+      "errores": 0
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "grupo": "spiko-prosegur",
+      "tipo": "publicada",
+      "proveedor": "Spiko",
+      "decision": "actualizar",
+      "estadoOferta": "abierta",
+      "disponibleEs": "confirmado",
+      "coleccion": "principales",
+      "categoria": "Tesoro y fondos",
+      "rentabilidad": "2,35 %",
+      "criterios": {
+        "entidadYPermisos": "cumple",
+        "actividadYFecha": "cumple",
+        "accesoYCondiciones": "cumple_con_limites",
+        "riesgosYAlertas": "cumple"
+      },
+      "prioridadEditorial": {
+        "compraDesdeEspanaComoParticular": "si",
+        "minimoEntrada": "1 EUR",
+        "supervisorVerificado": "AMF (GECO SCV20240014) · CNMV IIC extranjera n.º 2380 · ACPR/REGAFI Spiko Finance CIB 19183 con pasaporte LPS a España",
+        "documentacionClara": "si",
+        "salidaExplicada": "si",
+        "cifraRecienteVerificada": "si",
+        "porQueDestaca": "Fondo UCITS monetario autorizado por la AMF e inscrito en la CNMV, KID en español del 01/09/2026, desde 1 EUR, 0,25 % anual y reembolso diario documentado.",
+        "porQueNo": "El folleto en español da error 403 y la web comercial indica un corte de 15:00 que no coincide con el de 11:30 del KID."
+      },
+      "cambiosCriticos": 3,
+      "claims": 12,
+      "errores": 0
+    }
+  ],
   "sinExpediente": [
     "aktionariat",
     "apartamento-vacacional-hinterstoder-50",
     "boss-info",
-    "casa-de-outeiro",
     "drautalresidenz-paternion",
     "fotovoltaica-cohotel",
     "fotovoltaica-greenpoint",
@@ -41,7 +227,6 @@
     "reental-secundario-rentas-3",
     "reental-secundario-san-antonio-1",
     "servicehunter-quitt",
-    "spiko-letras-del-tesoro-euro",
     "switzerlend",
     "terreno-con-arrendamiento-billa",
     "vivienda-pluddemanngasse-101-graz",
