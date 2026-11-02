@@ -273,7 +273,7 @@
       "Los fondos se depositan en cuentas de Reental America o filiales, sin depósito en garantía independiente.",
       "Obra nueva en construcción: el plazo puede alargarse a 48 meses o más y se puede perder el capital."
     ],
-    "url": "https://app.reental.co/dashboard/projects",
+    "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056492572_whitepaper.pdf",
     "fuentesActuales": [
       "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056492572_whitepaper.pdf",
       "https://d23t4e7dm0xzj0.cloudfront.net/properties/a7ed09ce-8b78-4191-a196-e7aaffb27f8e/docs/1792056503648_acuerdo_de_suscripcion.pdf",
@@ -292,7 +292,8 @@
   "bloqueos": [
     "Sin login no se puede comprobar qué significa «PRIVATE» (qué usuarios ven y pueden comprar la emisión).",
     "Registro ESMA (ECSP/MiCA) no consultado.",
-    "Operating Agreement de la serie no publicado; no leído."
+    "Operating Agreement de la serie no publicado; no leído.",
+    "No hay ficha pública de Miami 7 en www.reental.co/properties; el enlace de la tarjeta apunta al PPM."
   ],
   "prioridadEditorial": {
     "compraDesdeEspanaComoParticular": "no_confirmado",
