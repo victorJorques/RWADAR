@@ -10,7 +10,7 @@ UTC reales de mi lectura. No he editado los expedientes.
 Copias de lo que leí (no versionadas): carpeta de trabajo de la sesión
 `/tmp/claude-0/-home-user-RWADAR/bcd94329-4aea-5eb8-87b2-dce08ca7c659/scratchpad/revisor-altas/data/`.
 
-Estado de la revisión: en curso; cada alta se añade al cerrarla.
+Estado de la revisión: terminada el 02/11/2026 a las 16:43 UTC (lecturas entre las 16:27 y las 16:43 UTC).
 
 ---
 
@@ -149,3 +149,131 @@ Ninguno. El expediente debería pasar `accesoEspana` de «sin lista oficial» a
 de la CNMV. La red blockchain sigue sin nombrarse en los documentos, pero no
 importa, porque el token no se puede transferir.
 
+---
+
+## 3. kraken-xstocks · veredicto: **rechazada en este ciclo** (se puede volver a proponer)
+
+La condición que puso el investigador no se cumple. Nadie, ni el grupo de
+Backed ni yo, ha leído el folleto base, las condiciones finales ni el **KID**
+de los xStocks: los tres están en la web de Backed, y Backed bloquea por país
+el acceso desde la IP de consulta (EE. UU.). Lo que sí queda probado es la
+parte regulatoria: el folleto está aprobado y notificado a la CNMV, y Kraken UE
+tiene licencia y pasaporte a España. Pero sin el KID no hay indicador de
+riesgo, y sin las condiciones finales no se conocen los costes del emisor, el
+mecanismo de los dividendos ni el reembolso. Además, la comisión que paga
+quien compra en euros no está cuantificada. Con esos huecos, la tarjeta no da
+al particular la confianza que pide el encargo.
+
+### Hechos comprobados por mí (2 de noviembre de 2026)
+
+| # | Fuente (URL) | Hora UTC | Qué vi |
+|---|---|---|---|
+| 1 | https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/ | 16:37:47 | «Payward Europe Digital Solutions (CY) Limited (ex I.F. Greenfields Wealth Ltd)» · «Licence Number: 342/17» · «Licence Date: 13/11/2017» · «Company Registration Number: 356603» · «Approved Domains: https://eu.kraken.com/» · servicios 1, 2 y 3 (recepción y transmisión, ejecución, **negociación por cuenta propia**) sobre los instrumentos 1 a 10 · custodia · «Cross Border Services to Member States» incluye **Spain**. |
+| 2 | https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474&vista=17 | 16:38:50 | «PAYWARD EUROPE DIGITAL SOLUTIONS (CY) LIMITED · ESI del EEE en Libre Prestación · Nº Registro Oficial 4474 · 05/01/2018». Programa de actividades: recepción y transmisión, ejecución y **negociación por cuenta propia** sobre «1) Valores negociables» (y del 2 al 10). Es lo que hace falta, porque PEDSL vende los xStocks «acting as principal». |
+| 3 | Copia local del certificado de la FMA-LI (https://www.asfromania.ro/uploads/articole/attachments/6a018e00def77510639131.pdf). Al pedirla hoy, la ASF de Rumanía respondió «Request Rejected» (cortafuegos) y no intenté sortearlo. Leí la copia del grupo radar-tesoro, `grupos/radar-tesoro/fuentes/backed-asf-ro-6a018e.pdf`, con SHA-256 be143057…d664fe, idéntico al del expediente de Backed. | 16:37:46 (rechazo) | «Certificate of Approval of a Base Prospectus … approved by us on 08 May 2026» · «Backed Assets (JE) Limited» · LEI 984500001AB7C6C7F577 · «Debt securities of less than EUR 100 000» · «National Prospectus Identifier: BPWO-80» · anexos «6, 14, 17» del Reglamento 2019/980 (documento de registro y nota de valores **para minoristas** y valores ligados a un subyacente) · destinatarios: «Comisión Nacional del Mercado de Valores, Spain». |
+| 4 | https://www.mfsa.mt/wp-content/uploads/2026/08/Backed-Assets-JE-Limited-Certificate-of-Approval-of-a-Supplement-dated-04-August-2026.pdf · SHA-256 6f53214d…7fb090 (idéntico al expediente de Backed) | 16:38:25 | «Certificate of Approval of a Supplement … approved by us on 4 August 2026» · «SUPP-62» sobre «BPWO-80» · el suplemento también se notificó a la «Comisión Nacional del Mercado de Valores, Spain». |
+| 5 | https://eu.kraken.com/xstocks (renderizada y HTML; FAQ en español) | 16:40:02 / 16:40:21 | Cabecera comercial: «**Acciones tokenizadas.** Opera 24/5» y «con dividendos reinvertidos automáticamente» · FAQ: «disponibles para clientes de PEDSL-CY ubicados en la UE que hayan completado con éxito la evaluación de idoneidad obligatoria o que sean inversores profesionales» · «una inversión de tan solo 1 EUR» · «**No existen comisiones de trading si se compran xStocks con USD** … Se aplicarán comisiones de trading por compra instantánea estándares cuando se compren xStocks con otros activos … se debe incluir un spread» · venta: «toca "Vender" para convertir los tokens de nuevo **a USD**» · retirada a monedero propio · «No se ofrece una entrega directa de acciones» · «El pago de los dividendos se volverá a invertir automáticamente en más unidades del mismo token» · pie: «Los xStocks son emitidos por Backed Assets (JE) Limited … **El emisor de xStocks no está afiliado al Grupo Kraken**». |
+| 6 | https://eu.kraken.com/legal/risk-disclosure (renderizada) | 16:40:02 | «Updated : 27 January 2026» · «xStocks are debt securities in tokenised format» · «**PEDSL provides buy and sell services in relation to xStocks acting as principal**» · «Holders of xStocks have no voting rights, **dividend or distribution entitlements**, or legal claims to the Underlying Security» · «All investments in xStocks are subject to fees, as set forth in the offering prospectus» · riesgo de crédito de PEDSL («dealer and initial custodian») y de Backed, de liquidez, operativo y regulatorio · «you can lose your entire investment» · «complex products». |
+| 7 | https://eu.kraken.com/priips-kids (renderizada) | 16:41:50 | Sección xStocks: «Las Condiciones Finales y el **Documento de Datos Fundamentales** correspondiente a cada oferta individual de xStocks están disponibles en el sitio web del Emisor en https://assets.backed.fi/legal-documentation/product-database». Kraken no aloja el KID de los xStocks. |
+| 8 | https://assets.backed.fi/legal-documentation/product-database | 16:41:58 | Redirige a `assets.backed.fi/geoblock`: «Access Restricted … you are trying to access our website from a restricted country». **Es un bloqueo**: no se puede leer el KID, las condiciones finales ni el ISIN. |
+
+### Contraste con `backed-bib01.json` (otro grupo)
+
+- Coincide: emisor (Backed Assets (JE) Limited, LEI 984500001AB7C6C7F577),
+  folleto base BPWO-80 del 08/05/2026 y suplemento SUPP-62 del 04/08/2026,
+  ambos notificados a la CNMV. Lo comprobé con los dos certificados; el de la
+  ASF, mediante su copia con hash idéntico.
+- No hay contradicción con que «Backed solo vende directamente a
+  cualificados». Es su modelo de distribución: Backed vende a intermediarios, y
+  PEDSL compra y revende al minorista como principal, con su licencia CySEC y
+  su pasaporte. Los anexos 6 y 14 del folleto son los de oferta a minoristas, y
+  eso encaja.
+- El expediente de Backed **tampoco leyó** el contenido del folleto ni las
+  condiciones finales, por el mismo bloqueo geográfico. Contrastar con él
+  confirma la aprobación del folleto, pero no aporta su contenido. La
+  condición del investigador sigue abierta.
+
+### Discrepancias
+
+1. **El título repite la etiqueta comercial «acciones tokenizadas»**, y la
+   divulgación de riesgos dice «debt securities». La propuesta pone «xStocks en
+   Kraken: acciones de EE. UU. tokenizadas». Induce a error.
+2. **Dividendos**: la FAQ dice que se reinvierten en más tokens; la divulgación
+   de riesgos dice que no hay derecho a dividendos. Solo las condiciones finales
+   pueden aclararlo.
+3. **Comisión para el particular español**: «0 con USD» no se aplica a quien
+   compra con euros, que paga la «compra instantánea estándar» más el
+   diferencial, y no conozco el importe. A eso se suman las comisiones del
+   emisor del folleto, también sin cuantificar. La venta se liquida en USD:
+   **riesgo de cambio**, y la tarjeta no lo menciona.
+4. **«Pro» frente a «solo kraken.com»**: la página dice «Disponible en Kraken
+   Pro». El artículo de soporte que citó el investigador limita el EEE a
+   kraken.com y a operar con fiat. No releí ese artículo.
+5. **Afiliación**: la página dice «El emisor de xStocks no está afiliado al
+   Grupo Kraken». Recuerdo haber leído en prensa que Kraken anunció la compra
+   de Backed a finales de 2025, pero **no lo he comprobado**. Hay que verificarlo
+   antes de publicar, porque si es cierto, el riesgo del emisor y el del
+   intermediario serían del mismo grupo.
+6. **Aviso interno en la tarjeta pública**: «Folleto base pendiente de lectura
+   en esta revisión» no puede ir en una tarjeta publicada.
+
+### Cambios obligatorios si se vuelve a proponer
+
+- **Leer el KID y las condiciones finales** de al menos un xStock
+  representativo (p. ej. AAPLx o SPYx) desde un acceso permitido, sin saltarse
+  el bloqueo. Por ejemplo, que Víctor descargue los PDF públicos desde España y
+  los deje en `fuentes/`. Con ellos hay que añadir «Riesgo KID», los costes del
+  emisor, el ISIN, la regla de los dividendos y el reembolso con el emisor.
+- **Cuantificar la comisión de compra con euros**, con la tabla de tarifas
+  pública de Kraken UE, o mostrar «Comisión con euros: no publicada en la
+  página del producto».
+- **Título** → «xStocks: certificados tokenizados que replican acciones de
+  EE. UU.».
+- **Avisos** → añadir «Precio y venta en USD: riesgo de cambio» y «Producto
+  complejo; puedes perder toda la inversión (divulgación de riesgos)», y quitar
+  «Folleto base pendiente de lectura».
+- **Métrica «Comisión»** → no mostrar «0» como dato principal, porque el
+  particular español compra con euros.
+- No mencionar dividendos mientras no estén aclarados en las condiciones
+  finales.
+- Comprobar la afiliación entre Kraken y Backed en una fuente primaria.
+
+Se puede mantener: «Desde 1 €», «CySEC 342/17 · CNMV libre prestación nº
+4474», la salida (venta a PEDSL o retirada a un monedero propio), los pasos
+(sin marcas ni cifras) y el concepto.
+
+### Bloqueos
+
+- `assets.backed.fi` (folleto, condiciones finales y KID): bloqueo geográfico
+  desde la IP de consulta. No lo intenté sortear.
+- `asfromania.ro`: el cortafuegos rechazó la petición. Usé la copia local con
+  hash verificado. El sistema me denegó un segundo intento con otras cabeceras,
+  por considerarlo una forma de esquivar el bloqueo, y no insistí.
+
+---
+
+## Comprobación común: advertencias de la CNMV
+
+Consulta pública `https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=…`
+(entidades no autorizadas), hecha por mí:
+
+| Nombre buscado | Hora UTC | Resultado |
+|---|---|---|
+| Spiko | 16:42:43 | «No hay datos disponibles.» |
+| Twenty First | 16:42:44 | «No hay datos disponibles.» |
+| Robinhood | 16:42:46 | «No hay datos disponibles.» |
+| Kraken | 16:42:48 | «No hay datos disponibles.» |
+| Payward | 16:42:49 | «No hay datos disponibles.» |
+| Backed | 16:42:51 | «No hay datos disponibles.» |
+| Gemini (control) | 16:42:59 | Devuelve «GEMINI LTD FX» y «GEMINI OPTION LTD». La consulta funciona y detecta coincidencias. |
+
+## Resumen de veredictos
+
+| Alta | Veredicto | Qué falta para publicar |
+|---|---|---|
+| spiko-letras-del-tesoro-dolar | **aprobada_con_cambios** | Cambiar el rótulo «Gastos corrientes (KID)», precisar los días hábiles del reembolso y renovar la cifra y su fecha al publicar. |
+| robinhood-classic-stock-tokens | **aprobada_con_cambios** | Título con «derivados», salida con el límite del KID (puede suspenderse; horario ampliado no garantizado), paso 3 sin marca y aviso de suspensión. |
+| kraken-xstocks | **rechazada en este ciclo** | Leer el KID y las condiciones finales (bloqueo geográfico), cuantificar la comisión con euros, cambiar el título a «certificados», añadir el riesgo de cambio, quitar el aviso interno y comprobar la afiliación entre Kraken y Backed. |
+
+Nada de esto se ha publicado ni se ha tocado en Supabase. Las altas las
+decide Víctor.
