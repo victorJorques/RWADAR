@@ -1,0 +1,2033 @@
+{
+  "version": 1,
+  "ciclo": "2026-11-01",
+  "preparadoEl": "2026-11-02",
+  "nota": "Propuesta preparada en local. No aplicada en Supabase ni publicada. Las cifras de mercado y rentabilidad se releen el día de publicación.",
+  "escenarios": {
+    "B_catalogoDeConfianza": {
+      "ofertas": 23,
+      "colecciones": {
+        "principales": 6,
+        "secundario": 14,
+        "en_camino": 3
+      },
+      "requiere": "Vía de reducción deliberada en web y app (cambio de código, publicación y OTA con permiso de Víctor)."
+    },
+    "A_compatibleHoy": {
+      "ofertas": 51,
+      "colecciones": {
+        "principales": 24,
+        "secundario": 21,
+        "en_camino": 6
+      },
+      "requiere": "Nada nuevo en código: cumple el mínimo 49 · 24/21/4. Las retiradas siguen visibles con aviso."
+    },
+    "manifiestoPublicado": {
+      "ofertas": 49,
+      "colecciones": {
+        "principales": 24,
+        "secundario": 21,
+        "en_camino": 4
+      }
+    }
+  },
+  "ofertas": [
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "alta": false,
+      "proveedor": "Spiko",
+      "coleccionEscenarioB": "principales",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-CAMBIOS-CRITICOS.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer la rentabilidad de 31 días en la API de Spiko y sustituir cifra y fecha."
+      ],
+      "tarjeta": {
+        "titulo": "Spiko Letras del Tesoro Euro",
+        "categoria": "Tesoro y fondos",
+        "pais": "FR",
+        "tipo": "rendimiento",
+        "coleccion": "principales",
+        "resumen": "Fondo monetario UCITS en euros que invierte en letras del Tesoro de la zona euro, con acciones registradas en blockchain. Valor liquidativo variable y capital no garantizado.",
+        "rentabilidad": {
+          "mostrada": "2,35 %",
+          "literal": "Rendimiento neto anualizado de los últimos 31 días publicado por Spiko, calculado el 30/10/2026 con el valor liquidativo del 01/11/2026. Variable y no garantizado."
+        },
+        "metricas": [
+          {
+            "etiqueta": "Mínimo",
+            "valor": "1 EUR"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Supervisor",
+            "valor": "AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380"
+          },
+          {
+            "etiqueta": "Gastos corrientes (KID)",
+            "valor": "0,25 % anual"
+          },
+          {
+            "etiqueta": "Entrada / salida",
+            "valor": "0 % / 0 %"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Diario, corte 11:30 (París)"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "1 de 7"
+          },
+          {
+            "etiqueta": "Rentabilidad publicada · 31 días · 30/10/2026",
+            "valor": "2,35 %"
+          }
+        ],
+        "avisos": [
+          "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "Capital no garantizado; la rentabilidad cambia a diario con los tipos de interés.",
+          "El reembolso puede limitarse si las solicitudes superan el 10 % del patrimonio del fondo."
+        ],
+        "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+        "fuentesActuales": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+          "https://data.spiko.io/eutbl/",
+          "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+        ],
+        "lugar": "París · Francia",
+        "pasos": [
+          "Abres cuenta con KYC",
+          "Transfieres euros",
+          "Reembolso diario"
+        ],
+        "concepto": "un sobre con letras del Tesoro europeas que se convierte en fichas digitales sobre una mesa de tesorería"
+      }
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "alta": true,
+      "proveedor": "Spiko",
+      "coleccionEscenarioB": "principales",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-ALTAS.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer la rentabilidad de 31 días en la API de Spiko y sustituir cifra y fecha.",
+        "Ilustración editorial nueva (alta): generar, revisar y precargar."
+      ],
+      "tarjeta": {
+        "titulo": "Spiko Letras del Tesoro Dólar",
+        "categoria": "Tesoro y fondos",
+        "pais": "FR",
+        "tipo": "rendimiento",
+        "coleccion": "principales",
+        "resumen": "Fondo monetario UCITS en dólares que invierte en letras del Tesoro de Estados Unidos, con acciones registradas en blockchain. Para quien invierte en euros, el resultado depende también del tipo de cambio.",
+        "rentabilidad": {
+          "mostrada": "4,13 %",
+          "literal": "Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 30/10/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
+        },
+        "metricas": [
+          {
+            "etiqueta": "Mínimo",
+            "valor": "1 USD"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "USD (depósito en EUR con conversión)"
+          },
+          {
+            "etiqueta": "Supervisor",
+            "valor": "AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380"
+          },
+          {
+            "etiqueta": "Gastos corrientes (KID)",
+            "valor": "0,25 % anual"
+          },
+          {
+            "etiqueta": "Entrada / salida",
+            "valor": "0 % / 0 %"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Diario en días hábiles (Francia y EE. UU.), corte 11:30 París"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "1 de 7, más riesgo de cambio"
+          },
+          {
+            "etiqueta": "Rentabilidad publicada · 31 días · 30/10/2026 · en USD",
+            "valor": "4,13 %"
+          }
+        ],
+        "avisos": [
+          "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "Riesgo de cambio: si inviertes en euros, una bajada del dólar puede producir pérdidas aunque el fondo suba.",
+          "Capital no garantizado; el reembolso puede limitarse si las solicitudes superan el 10 % del patrimonio."
+        ],
+        "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+        "fuentesActuales": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+          "https://data.spiko.io/ustbl/",
+          "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://geco.amf-france.org/produit-d-epargne/c79398"
+        ],
+        "lugar": "París · Francia",
+        "pasos": [
+          "Abres cuenta con KYC",
+          "Depositas euros o dólares",
+          "Reembolso diario"
+        ],
+        "concepto": "letras del Tesoro estadounidense que cruzan el Atlántico convertidas en fichas digitales hacia una mesa de ahorro europea"
+      }
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "alta": true,
+      "proveedor": "Robinhood (UE)",
+      "coleccionEscenarioB": "principales",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-ALTAS.md"
+      },
+      "pendientesAlPublicar": [
+        "Ilustración editorial nueva (alta): generar, revisar y precargar."
+      ],
+      "tarjeta": {
+        "titulo": "Classic Stock Tokens: derivados sobre acciones de EE. UU.",
+        "categoria": "Acciones y capital privado",
+        "pais": "LT",
+        "tipo": "valor",
+        "coleccion": "principales",
+        "resumen": "Derivados sobre más de 2.000 acciones y ETP de EE. UU. representados por un token no transferible; sigues el precio del subyacente sin ser su propietario.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Mínimo",
+            "valor": "Desde 1 €"
+          },
+          {
+            "etiqueta": "Supervisor",
+            "valor": "Banco de Lituania · CNMV libre prestación nº 5299"
+          },
+          {
+            "etiqueta": "Comisión",
+            "valor": "0,10 % de cambio por operación; sin gestión"
+          },
+          {
+            "etiqueta": "Salida",
+            "valor": "Cierre con la contraparte en días de mercado de EE. UU.; puede suspenderse"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "7 de 7"
+          },
+          {
+            "etiqueta": "Plazo recomendado (KID)",
+            "valor": "1 año"
+          }
+        ],
+        "avisos": [
+          "Es un derivado: no eres dueño de la acción ni votas.",
+          "Contraparte única Robinhood Europe; sin fondo de garantía de inversiones.",
+          "Precio en USD: riesgo de cambio.",
+          "El token no se puede enviar a otra wallet.",
+          "La contraparte puede suspender el cierre de posiciones (KID)."
+        ],
+        "url": "https://robinhood.com/eu/es/invest",
+        "fuentesActuales": [
+          "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+          "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+          "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+          "https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab"
+        ],
+        "lugar": "Vilna · Lituania",
+        "pasos": [
+          "Abres cuenta y test",
+          "Compras en euros",
+          "Cierras con la contraparte"
+        ],
+        "concepto": "un panel de cotizaciones bursátiles reflejado en fichas digitales sobre una mesa de Vilna al amanecer"
+      }
+    },
+    {
+      "slug": "mtbill",
+      "alta": false,
+      "proveedor": "Midas",
+      "coleccionEscenarioB": "principales",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-CAMBIOS-CRITICOS.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer el oráculo el día de publicación y poner valor y fecha de ese día."
+      ],
+      "tarjeta": {
+        "titulo": "mTBILL",
+        "categoria": "Tesoro y fondos",
+        "pais": "DE",
+        "tipo": "rendimiento",
+        "coleccion": "principales",
+        "resumen": "Certificado tokenizado de Midas Software GmbH que replica letras del Tesoro de EE. UU. a corto plazo. Oferta pública en España con folleto aprobado por la FMA de Liechtenstein y KID en español.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Mínimo",
+            "valor": "Sin mínimo (Condiciones Finales)"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "USD · se paga y cobra en USDC"
+          },
+          {
+            "etiqueta": "Folleto",
+            "valor": "Aprobado por la FMA de Liechtenstein y notificado a España"
+          },
+          {
+            "etiqueta": "KID",
+            "valor": "En español · riesgo 7 de 7"
+          },
+          {
+            "etiqueta": "Comisiones (KID)",
+            "valor": "Gestión 0 % · éxito 5 % del rendimiento positivo · reembolso inmediato 0,07 % (KID)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Cualquier día hábil, valor tras 1 día hábil, con límites diarios"
+          },
+          {
+            "etiqueta": "Valor por token · 02/11/2026",
+            "valor": "1,0769 USD (oráculo del emisor)"
+          }
+        ],
+        "avisos": [
+          "El emisor no está supervisado: la FMA aprobó el folleto, no la entidad. Tu derecho es un crédito subordinado frente a Midas Software GmbH, no letras del Tesoro.",
+          "Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %.",
+          "Se opera en USDC con una wallet propia; hay riesgo de cambio euro/dólar.",
+          "El emisor cerró 2025 con patrimonio negativo (5,78 M€ de déficit) y se financia con préstamos de su matriz. Si no puede pagar, puedes perder toda la inversión (riesgo 7 de 7 en el KID).",
+          "No hay mercado secundario: solo puedes salir reembolsando al emisor o transmitiendo a otra wallet autorizada."
+        ],
+        "url": "https://midas.app/mtbill",
+        "fuentesActuales": [
+          "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+          "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+          "https://docs.midas.app/llms-full.txt"
+        ],
+        "lugar": "Berlín · Alemania",
+        "pasos": [
+          "Alta y verificación",
+          "Suscribes con USDC",
+          "Reembolso al emisor"
+        ],
+        "concepto": "Ilustración editorial de un pagaré del Tesoro convertido en ficha digital sobre una mesa de despacho berlinesa"
+      }
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "alta": false,
+      "proveedor": "Prosegur Crypto",
+      "coleccionEscenarioB": "principales",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-CAMBIOS-CRITICOS.md"
+      },
+      "pendientesAlPublicar": [],
+      "tarjeta": {
+        "titulo": "Prosegur Digital Gold",
+        "categoria": "Materias primas",
+        "pais": "ES",
+        "tipo": "valor",
+        "coleccion": "principales",
+        "resumen": "Tokens que representan gramos de oro físico custodiado por Prosegur en España. El valor sigue al precio del oro y solo se pueden revender a Prosegur Crypto.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Mínimo",
+            "valor": "1 gramo"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Compra / venta",
+            "valor": "LBMA +4 % / LBMA −6 %"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Solo recompra por Prosegur · 1–7 días hábiles aprox. en condiciones normales"
+          },
+          {
+            "etiqueta": "Custodia",
+            "valor": "Oro en inventario común custodiado por Prosegur (sin lingote asignado)"
+          },
+          {
+            "etiqueta": "Supervisión",
+            "valor": "Producto no supervisado (según su contrato)"
+          }
+        ],
+        "avisos": [
+          "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "El precio del oro puede bajar; el proveedor no garantiza rentabilidad ni valor fijo.",
+          "Según su contrato, el token de oro no es un producto financiero ni está supervisado por un regulador financiero.",
+          "Comprar y vender cuesta en total unos 10 puntos sobre el precio LBMA; la recompra tarda de 1 a 7 días hábiles y puede suspenderse.",
+          "Prosegur Crypto está autorizada por la CNMV (MiCA, 30/06/2026) para custodiar y transferir criptoactivos; esa autorización no cubre este token de oro.",
+          "Si el oro no se mueve, comprar y revender te cuesta cerca de un 10 % (compras a LBMA +4 %, vendes a LBMA −6 %). Las comisiones pueden cambiar."
+        ],
+        "url": "https://www.prosegurcrypto.com/digital-gold",
+        "fuentesActuales": [
+          "https://www.prosegurcrypto.com/digital-gold",
+          "https://app.prosegurdigitalgold.com/#/terms-service",
+          "https://prosegurdigitalgold.com/transparency",
+          "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv"
+        ],
+        "lugar": "Madrid · España",
+        "pasos": [
+          "Compras gramos digitales",
+          "Prosegur custodia el oro",
+          "Recompra por Prosegur"
+        ],
+        "concepto": "un lingote de oro dentro de una cámara acorazada dividido en mil pequeñas fichas digitales"
+      }
+    },
+    {
+      "slug": "aktionariat",
+      "alta": false,
+      "proveedor": "Aktionariat (portal de inversores shares.aktionariat.com)",
+      "coleccionEscenarioB": "principales",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-AKTIONARIAT.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer precio del emisor y libro de órdenes el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Aktionariat",
+        "categoria": "Acciones y capital privado",
+        "pais": "CH",
+        "tipo": "valor",
+        "coleccion": "principales",
+        "resumen": "Acciones tokenizadas de Aktionariat AG, empresa suiza de software para tokenizar acciones, vendidas directamente por el emisor a precio fijo. La recompra por el emisor está cerrada: para vender hay que encontrar comprador entre accionistas.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Precio del emisor · 01/11/2026",
+            "valor": "7,25 CHF por acción (fijo)"
+          },
+          {
+            "etiqueta": "Mínimo",
+            "valor": "500 CHF por transferencia"
+          },
+          {
+            "etiqueta": "Acceso",
+            "valor": "Residentes en Suiza o EEE; tope EEE 100.000 € en total"
+          },
+          {
+            "etiqueta": "Supervisor",
+            "valor": "Sin supervisión prudencial declarada (registro FINMA no consultado)"
+          },
+          {
+            "etiqueta": "Venta",
+            "valor": "Solo a otros accionistas; mejor oferta 6,00 ZCHF (5 acciones) el 01/11/2026"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "CHF / ZCHF"
+          }
+        ],
+        "avisos": [
+          "Sin folleto ni KID: la oferta se acoge a umbrales de exención y el emisor no está supervisado.",
+          "El emisor no recompra acciones; la salida depende de que otro accionista compre, con muy poca demanda visible.",
+          "El mercado secundario se liquida en Frankencoin (ZCHF) con monedero propio, sin transferencia bancaria.",
+          "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 02/11/2026).",
+          "No se publica cuánto queda del tope de 100.000 € para el EEE."
+        ],
+        "url": "https://shares.aktionariat.com/invest",
+        "fuentesActuales": [
+          "https://shares.aktionariat.com/invest",
+          "https://shares.aktionariat.com/trade",
+          "https://www.aktionariat.com/disclaimer",
+          "https://shares.aktionariat.com/investor-page-terms"
+        ],
+        "lugar": "Erlenbach · Suiza",
+        "pasos": [
+          "Registro en el portal",
+          "Compra al emisor",
+          "Venta entre accionistas"
+        ],
+        "concepto": "un libro registro de acciones convertido en cadena de bloques junto al lago de Zúrich"
+      }
+    },
+    {
+      "slug": "boss-info",
+      "alta": false,
+      "proveedor": "Aktionariat (portal de inversores shares.bossinfo.com)",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-AKTIONARIAT.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer precio del emisor y libro de órdenes el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Boss Info",
+        "categoria": "Acciones y capital privado",
+        "pais": "CH",
+        "tipo": "valor",
+        "coleccion": "secundario",
+        "resumen": "Acciones tokenizadas de Boss Info AG, integrador informático suizo. El emisor vende a 8,50 por acción, pero la última operación fue en el mercado entre accionistas a 6,70 el 28/09/2026.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Precio del emisor · 01/11/2026",
+            "valor": "8,50 CHF por acción"
+          },
+          {
+            "etiqueta": "Última operación",
+            "valor": "6,70 ZCHF (28/09/2026, entre accionistas)"
+          },
+          {
+            "etiqueta": "Mínimo",
+            "valor": "100 CHF por transferencia"
+          },
+          {
+            "etiqueta": "Supervisor",
+            "valor": "Sin supervisión prudencial declarada (registro FINMA no consultado)"
+          },
+          {
+            "etiqueta": "Venta",
+            "valor": "Recompra cerrada; mejor oferta 7,30 ZCHF"
+          }
+        ],
+        "avisos": [
+          "Acceso desde España no confirmado: el portal no publica países admitidos.",
+          "El emisor no recompra («ventana de mantenimiento», sin fecha).",
+          "El precio del emisor (8,50) está por encima de la mejor venta entre accionistas (8,40).",
+          "El portal no indica qué países pueden comprar: no consta acceso desde España."
+        ],
+        "url": "https://shares.bossinfo.com/",
+        "fuentesActuales": [
+          "https://shares.bossinfo.com/invest",
+          "https://shares.bossinfo.com/trade",
+          "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf"
+        ],
+        "lugar": "Farnern · Suiza",
+        "pasos": [
+          "Registro en el portal",
+          "Compra al emisor",
+          "Venta entre accionistas"
+        ],
+        "concepto": "un taller informático en un pueblo del Jura suizo con acciones en cadena de bloques"
+      }
+    },
+    {
+      "slug": "switzerlend",
+      "alta": false,
+      "proveedor": "Aktionariat (portal de inversores shares.lend.ch)",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-AKTIONARIAT.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer precio del emisor y libro de órdenes el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Switzerlend",
+        "categoria": "Acciones y capital privado",
+        "pais": "CH",
+        "tipo": "valor",
+        "coleccion": "secundario",
+        "resumen": "Acciones preferentes C1 tokenizadas de Switzerlend AG, operadora de la plataforma de préstamos LEND. El emisor las vende a precio fijado por él; no las recompra.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Precio del emisor · 01/11/2026",
+            "valor": "68,01 CHF por acción"
+          },
+          {
+            "etiqueta": "Última compra al emisor",
+            "valor": "07/10/2026"
+          },
+          {
+            "etiqueta": "Clase",
+            "valor": "Preferente C1 (preferencia en liquidación)"
+          },
+          {
+            "etiqueta": "Venta",
+            "valor": "Recompra cerrada; mejor oferta 59,00 ZCHF (4 acciones)"
+          },
+          {
+            "etiqueta": "Supervisor",
+            "valor": "Sin supervisión prudencial declarada (registro FINMA no consultado)"
+          }
+        ],
+        "avisos": [
+          "Acceso desde España no confirmado: el portal no publica países admitidos.",
+          "Es capital de la empresa, no una inversión en los préstamos de LEND.",
+          "La salida depende de compradores en un secundario en cripto con muy poca demanda.",
+          "El portal no indica qué países pueden comprar: no consta acceso desde España."
+        ],
+        "url": "https://shares.lend.ch/",
+        "fuentesActuales": [
+          "https://shares.lend.ch/invest",
+          "https://shares.lend.ch/trade",
+          "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf"
+        ],
+        "lugar": "Zúrich · Suiza",
+        "pasos": [
+          "Registro en el portal",
+          "Compra al emisor",
+          "Venta entre accionistas"
+        ],
+        "concepto": "una oficina de préstamos entre particulares en Zúrich con acciones en cadena de bloques"
+      }
+    },
+    {
+      "slug": "mf-one",
+      "alta": false,
+      "proveedor": "Midas",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "mantener_con_cambios",
+        "archivo": "REVISION-RETIRADAS.md"
+      },
+      "pendientesAlPublicar": [],
+      "tarjeta": {
+        "titulo": "mF-ONE",
+        "categoria": "Crédito privado",
+        "pais": "DE",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Token de Midas Software GmbH ligado a la estrategia de crédito de Fasanara, ofrecido como oferta exenta de folleto a direcciones en lista blanca.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Moneda",
+            "valor": "USD · USDC"
+          },
+          {
+            "etiqueta": "Oferta",
+            "valor": "Exenta de folleto · solo lista blanca"
+          },
+          {
+            "etiqueta": "Valor por token · 30/10/2026",
+            "valor": "1,1334 USD (oráculo)"
+          }
+        ],
+        "avisos": [
+          "Sin folleto ni KID públicos: la documentación legal solo se entrega a direcciones aprobadas.",
+          "El 01/11/2026 la suscripción estaba pausada en el contrato de Ethereum.",
+          "Solo para inversores profesionales en lista blanca: oferta exenta de folleto y sin KID."
+        ],
+        "url": "https://midas.app/mfone",
+        "fuentesActuales": [
+          "https://docs.midas.app/llms-full.txt",
+          "https://midas.app/assets/main-DOxid0Zj.js"
+        ],
+        "lugar": "Londres · Reino Unido",
+        "pasos": [
+          "Solicitas acceso",
+          "Lista blanca",
+          "Reembolso al emisor"
+        ],
+        "concepto": "Ilustración editorial de facturas comerciales transformadas en fichas sobre un mostrador"
+      }
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "alta": false,
+      "proveedor": "Alius Capital",
+      "coleccionEscenarioB": "en_camino",
+      "coleccionEscenarioA": "en_camino",
+      "disponibleEs": "confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-CAMBIOS-CRITICOS.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer campaña y recaudado; si la campaña sigue con fin 31/10/2026, mantener el conflicto de plazo como primer aviso."
+      ],
+      "tarjeta": {
+        "titulo": "Casa de Outeiro",
+        "categoria": "Acciones y capital privado",
+        "pais": "ES",
+        "tipo": "valor",
+        "coleccion": "en_camino",
+        "resumen": "Ampliación de capital con acciones tokenizadas de una bodega y proyecto de enoturismo en la Ribeira Sacra, canalizada por Alius Capital. El 01/11/2026 llevaba 1.121.000 € de un mínimo de 2.000.000 €.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Mínimo",
+            "valor": "2.000 € (80 acciones de 25 €)"
+          },
+          {
+            "etiqueta": "Supervisor",
+            "valor": "Plataforma registrada en la CNMV (PSFP nº 11)"
+          },
+          {
+            "etiqueta": "Plazo de la oferta",
+            "valor": "Hasta el 31/03/2027 según la ficha del 30/10/2026"
+          },
+          {
+            "etiqueta": "Recaudado · 01/11/2026",
+            "valor": "1.121.000 € de un mínimo de 2.000.000 €"
+          },
+          {
+            "etiqueta": "Coste para el inversor",
+            "valor": "Sin coste del proyecto (ficha de datos §6)"
+          },
+          {
+            "etiqueta": "Salida",
+            "valor": "Bloqueo inicial; de 2027 a 2030 solo puedes transmitir un 2,5 % de tus acciones al año (ficha de datos)"
+          }
+        ],
+        "avisos": [
+          "La ficha de datos del 30/10/2026 amplía el plazo al 31/03/2027, pero la campaña en Alius seguía mostrando fin el 31/10/2026 el 01/11. Confirma el plazo en Alius antes de invertir.",
+          "Si no se alcanzan 2.000.000 € antes de la fecha límite, la ampliación se cancela y se devuelve el dinero sin gastos.",
+          "La sociedad está en constitución y los tokens se entregan tras inscribir la entidad de registro en la CNMV. La venta de las acciones está limitada durante años y depende de encontrar comprador.",
+          "Inversión de capital: puede perderse todo. Las recompras y dividendos citados por el emisor son previsiones, no derechos.",
+          "La CNMV no ha verificado ni aprobado esta oferta; el registro de la CNMV es de la plataforma, no del proyecto."
+        ],
+        "url": "https://aliuscap.com/projects/casa-de-outeiro",
+        "fuentesActuales": [
+          "https://aliuscap.com/projects/casa-de-outeiro",
+          "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+          "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+          "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
+        ],
+        "lugar": "Quiroga · España",
+        "pasos": [
+          "Registro y test",
+          "Suscribes acciones",
+          "Esperas al cierre",
+          "Reventa limitada"
+        ],
+        "concepto": "una casona de piedra en ruinas sobre viñedos en terrazas junto a un río encajonado entre montañas"
+      }
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "en_camino",
+      "coleccionEscenarioA": "en_camino",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer suscritas y estado en la API de Brickwise."
+      ],
+      "tarjeta": {
+        "titulo": "Terreno con supermercado BILLA · Brückl",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "en_camino",
+        "resumen": "Genussscheine tokenizados de Brick Qogir GmbH & Co KG sobre las rentas de un terreno con supermercado alquilado a BILLA hasta 2057 en Brückl (Carintia). Emisión primaria a 100 € por participación, pendiente de alcanzar su umbral mínimo.",
+        "rentabilidad": {
+          "mostrada": "5,07 %",
+          "literal": "Reparto anual previsto que publica Brickwise: excedente de alquiler presupuestado entre el nominal de la emisión; previsión, no garantizada ni realizada."
+        },
+        "metricas": [
+          {
+            "etiqueta": "Mínimo",
+            "valor": "1.000 € (tramos de 100 €)"
+          },
+          {
+            "etiqueta": "Precio por participación",
+            "valor": "100 €"
+          },
+          {
+            "etiqueta": "Suscrito / umbral",
+            "valor": "82 de 5.000 participaciones necesarias (API 01/11/2026)"
+          },
+          {
+            "etiqueta": "Rentabilidad publicada · base y fecha",
+            "valor": "5,07 % reparto previsto / nominal · API 29/10/2026"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Cancelable a los 5 años y luego cada año; o reventa"
+          },
+          {
+            "etiqueta": "Comisión",
+            "valor": "1,5 % al invertir y 1,5 % al vender"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          }
+        ],
+        "avisos": [
+          "La emisión solo se ejecuta si alcanza 500.000 €; el 01/11/2026 la API mostraba 82 participaciones suscritas. Si no se alcanza, se devuelve el dinero sin intereses.",
+          "El plazo publicado terminó el 16/05/2026; el contrato permite prorrogarlo, pero no se publica la nueva fecha.",
+          "El emisor tenía fondos propios negativos a 31/12/2024 y la garantía en el registro aún no está inscrita.",
+          "Cuenta para residentes del EEE; distribución en España no confirmada; documentos en alemán. Riesgo 6 de 7.",
+          "El 5,07 % es una previsión del emisor sobre el nominal; todavía no se ha pagado ningún reparto."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+          "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+          "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf"
+        ],
+        "lugar": "Brückl · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Suscribes desde mínimo",
+          "Esperas umbral mínimo",
+          "Reparto mensual variable"
+        ],
+        "concepto": "un supermercado de pueblo con aparcamiento en un valle de Carintia"
+      }
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "alta": false,
+      "proveedor": "Hausera",
+      "coleccionEscenarioB": "en_camino",
+      "coleccionEscenarioA": "en_camino",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-CAMBIOS-CRITICOS.md"
+      },
+      "pendientesAlPublicar": [
+        "Revisar de nuevo tras el 04/11 y el 11/11/2026; sin documento de emisión no se publica mínimo, plazo ni rentabilidad."
+      ],
+      "tarjeta": {
+        "titulo": "Hausera · próximas ofertas",
+        "categoria": "Inmobiliario",
+        "pais": "ES",
+        "tipo": "rendimiento",
+        "coleccion": "en_camino",
+        "resumen": "Seguimiento de las operaciones inmobiliarias de Hausera. El 02/11/2026 anunciaba Alicante 2 con preventa desde el 04/11 y oferta pública desde el 11/11/2026; sin documento de emisión publicado.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Próxima operación",
+            "valor": "Alicante 2 · preventa 04/11/2026, oferta 11/11/2026"
+          },
+          {
+            "etiqueta": "Supervisor",
+            "valor": "No registrada en la CNMV (sus términos dicen que no es empresa de servicios de inversión)"
+          },
+          {
+            "etiqueta": "Coste de Hausera",
+            "valor": "Sin comisión por invertir (FAQ)"
+          }
+        ],
+        "avisos": [
+          "Hausera (HOLDTX SPAIN, S.L.) declara no ser una empresa de servicios de inversión; la inversión se firma con la sociedad de cada proyecto.",
+          "La preventa es una reserva sin compromiso; las condiciones de Alicante 2 dependen de su documento de emisión, aún no publicado.",
+          "Las rentabilidades anunciadas son previsiones del promotor; la devolución depende de vender el inmueble.",
+          "Puedes perder todo o parte del dinero; no hay mercado secundario garantizado."
+        ],
+        "url": "https://hausera.io/oportunidades/",
+        "fuentesActuales": [
+          "https://hausera.io/oportunidades/",
+          "https://hausera.io/terms/"
+        ],
+        "lugar": "Alicante · España",
+        "pasos": [
+          "Registro y verificación",
+          "Reserva en preventa",
+          "Firma con la sociedad"
+        ],
+        "concepto": "un edificio residencial en reforma con andamios frente al Mediterráneo"
+      }
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Vivienda Plüddemanngasse 101 · Graz",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de BrickOne GmbH & Co KG ligadas a las rentas de un inmueble en Graz. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "76,00 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "80,00 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "20,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "103,37 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Sin reembolso ordinario; solo reventa"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "La base de alquiler de la API cita un contrato ya vencido; la rentabilidad no se muestra."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+          "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf"
+        ],
+        "lugar": "Graz · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "un piso de alquiler en un barrio residencial de Graz"
+      }
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Vivienda Sonnleithnergasse 2 · Viena",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Sagarmatha GmbH & Co KG ligadas a las rentas de un inmueble en Viena. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "80,00 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "75,00 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "69,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "101,37 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Sin reembolso ordinario; solo reventa"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "El contrato de alquiler que figura vence el 2026-11-29; la rentabilidad no se muestra."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+          "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"
+        ],
+        "lugar": "Viena · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "un edificio de viviendas en el distrito 10 de Viena"
+      }
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Local de estanco · Klagenfurt",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Qogir GmbH & Co KG ligadas a las rentas de un inmueble en Klagenfurt. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": {
+          "mostrada": "3,46 %",
+          "literal": "Rentabilidad por alquiler esperada que publica Brickwise: excedente anual previsto entre el valor a precio de referencia (95,00 €); previsión, no reparto realizado."
+        },
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "95,00 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "95,00 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "88,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "100,02 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Sin reembolso ordinario; solo reventa"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Rentabilidad publicada · base y fecha",
+            "valor": "3,46 % alquiler neto previsto / precio de referencia · API 2026-10-27"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+          "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf"
+        ],
+        "lugar": "Klagenfurt · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "un pequeño local comercial de barrio en Klagenfurt"
+      }
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Vivienda Stallhofstraße 28 · Gratwein",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Qogir GmbH & Co KG ligadas a las rentas de un inmueble en Gratwein. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "69,96 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "69,90 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "30,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "100,10 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Sin reembolso ordinario; solo reventa"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "La base de alquiler de la API cita un contrato ya vencido; la rentabilidad no se muestra."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+          "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf"
+        ],
+        "lugar": "Gratwein · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "una vivienda de alquiler en un pueblo de Estiria"
+      }
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Vivienda Schwarzer Weg 18 · Graz",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Qogir GmbH & Co KG ligadas a las rentas de un inmueble en Graz. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "65,00 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "69,90 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "60,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "100,14 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Sin reembolso ordinario; solo reventa"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "La base de alquiler de la API cita un contrato ya vencido; la rentabilidad no se muestra."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+          "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf"
+        ],
+        "lugar": "Graz · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "un bloque de viviendas de alquiler en Graz"
+      }
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Drautalresidenz · Paternion",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Sagarmatha GmbH & Co KG ligadas a las rentas de un inmueble en Paternion. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": {
+          "mostrada": "4,83 %",
+          "literal": "Rentabilidad por alquiler esperada que publica Brickwise: excedente anual previsto entre el valor a precio de referencia (67,80 €); previsión, no reparto realizado."
+        },
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "67,80 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "70,00 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "54,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "100,05 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Sin reembolso ordinario; solo reventa"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Rentabilidad publicada · base y fecha",
+            "valor": "4,83 % alquiler neto previsto / precio de referencia · API 2026-11-01"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+          "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf"
+        ],
+        "lugar": "Paternion · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "una residencia de viviendas en el valle del Drava"
+      }
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Inmueble Randhartingergasse 9 · Viena",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Sagarmatha GmbH & Co KG ligadas a las rentas de un inmueble en Viena. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "75,00 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "78,00 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "40,50 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "100,24 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Sin reembolso ordinario; solo reventa"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "La base de alquiler de la API cita un contrato ya vencido; la rentabilidad no se muestra."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+          "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"
+        ],
+        "lugar": "Viena · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "un edificio de viviendas de ladrillo en Viena"
+      }
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Apartamento vacacional Hinterstoder 50",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Qogir GmbH & Co KG ligadas a las rentas de un inmueble en Hinterstoder. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": {
+          "mostrada": "4,10 %",
+          "literal": "Rentabilidad por alquiler esperada que publica Brickwise: excedente anual previsto entre el valor a precio de referencia (85,00 €); previsión, no reparto realizado."
+        },
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "85,00 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "72,00 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "65,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "100,20 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Sin reembolso ordinario; solo reventa"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Rentabilidad publicada · base y fecha",
+            "valor": "4,10 % alquiler neto previsto / precio de referencia · API 2026-10-31"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+          "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf"
+        ],
+        "lugar": "Hinterstoder · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "un apartamento vacacional en un valle alpino"
+      }
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Vivienda Pottendorfer Straße 62 · Wiener Neustadt",
+        "categoria": "Inmobiliario",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de Green-Point 62 GmbH ligadas a las rentas de un inmueble en Wiener Neustadt. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": null,
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "72,00 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "80,00 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "63,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "100,44 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Primera cancelación a los 15 años"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "La base de alquiler de la API cita un contrato ya vencido; la rentabilidad no se muestra.",
+          "La garantía hipotecaria sigue pendiente de inscripción según la API."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+          "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"
+        ],
+        "lugar": "Wiener Neustadt · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "un edificio residencial con placas solares en Wiener Neustadt"
+      }
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Fotovoltaica GreenPoint · Wiener Neustadt",
+        "categoria": "Infraestructura",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de Green-Point 62 GmbH ligadas a los ingresos de una instalación fotovoltaica en Wiener Neustadt. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": {
+          "mostrada": "6,43 %",
+          "literal": "Rendimiento esperado de la instalación que publica Brickwise: excedente anual previsto entre el valor a precio de referencia (95,00 €); previsión, no reparto realizado."
+        },
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "95,00 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "100,00 €"
+          },
+          {
+            "etiqueta": "Mejor compra publicada",
+            "valor": "90,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "100,32 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Nominal al vencimiento (2038), subordinado"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Rentabilidad publicada · base y fecha",
+            "valor": "6,43 % excedente previsto / precio de referencia · API 2026-11-01"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "Reembolso subordinado a los acreedores financieros del emisor."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+          "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"
+        ],
+        "lugar": "Wiener Neustadt · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "una cubierta con paneles solares sobre un edificio residencial"
+      }
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "alta": false,
+      "proveedor": "Brickwise",
+      "coleccionEscenarioB": "secundario",
+      "coleccionEscenarioA": "principales",
+      "disponibleEs": "no_confirmado",
+      "revision": {
+        "veredicto": "aprobada_con_cambios",
+        "archivo": "REVISION-BRICKWISE.md"
+      },
+      "pendientesAlPublicar": [
+        "Releer en la API de Brickwise precio de referencia, libro de órdenes y previsión, y fecharlos el día de publicación."
+      ],
+      "tarjeta": {
+        "titulo": "Fotovoltaica Cohotel · Steyregg",
+        "categoria": "Infraestructura",
+        "pais": "AT",
+        "tipo": "rendimiento",
+        "coleccion": "secundario",
+        "resumen": "Participaciones tokenizadas (Genussscheine) de COHOTEL Hotelbetriebsgesellschaft m.b.H. ligadas a los ingresos de una instalación fotovoltaica en Steyregg. Hoy solo se compran a otros inversores en el mercado de la app.",
+        "rentabilidad": {
+          "mostrada": "5,11 %",
+          "literal": "Rendimiento esperado de la instalación que publica Brickwise: excedente anual previsto entre el valor a precio de referencia (120,00 €); previsión, no reparto realizado."
+        },
+        "metricas": [
+          {
+            "etiqueta": "Precio de referencia",
+            "valor": "120,00 € por participación"
+          },
+          {
+            "etiqueta": "Venta más barata publicada",
+            "valor": "110,00 €"
+          },
+          {
+            "etiqueta": "Precio de emisión original",
+            "valor": "100,85 €"
+          },
+          {
+            "etiqueta": "Comisión por operación",
+            "valor": "1,5 % comprador y 1,5 % vendedor"
+          },
+          {
+            "etiqueta": "Intermediario",
+            "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+          },
+          {
+            "etiqueta": "Reembolso",
+            "valor": "Nominal al vencimiento (2038), subordinado"
+          },
+          {
+            "etiqueta": "Riesgo KID",
+            "valor": "6 de 7"
+          },
+          {
+            "etiqueta": "Moneda",
+            "valor": "EUR"
+          },
+          {
+            "etiqueta": "Rentabilidad publicada · base y fecha",
+            "valor": "5,11 % excedente previsto / precio de referencia · API 2026-10-08"
+          }
+        ],
+        "avisos": [
+          "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "Reembolso subordinado a los acreedores financieros del emisor."
+        ],
+        "url": "https://app.brickwise.at/desktopWeb/marketplace",
+        "fuentesActuales": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+          "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"
+        ],
+        "lugar": "Steyregg · Austria",
+        "pasos": [
+          "Cuenta con residencia EEE",
+          "Compras si hay vendedor",
+          "Reparto mensual variable",
+          "Vendes en la app"
+        ],
+        "concepto": "paneles solares sobre la cubierta de un hotel junto al Danubio"
+      }
+    }
+  ],
+  "retiradasPropuestas": [
+    {
+      "slug": "reental-secundario-miami-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 1 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-houston-2",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 1 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-houston-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 4 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-san-antonio-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 1 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-atlanta-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 3 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-houston-3",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 4 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-proyecto-100",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza: además de los problemas comunes (sin registro CNMV, colocación privada, P2P de la comunidad en USDT, rentabilidad sin cifra verificable), hoy no hay ninguna forma visible de comprarlo: primaria agotada y 0 órdenes P2P. La URL publicada da 404.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-miami-3",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 1 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-granada-3",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 2 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-carolina-del-norte-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 1 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-abu-dhabi-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 2 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-rentas-3",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 5 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-miami-2",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 1 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-miami-5",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza: además de los problemas comunes (sin registro CNMV, colocación privada, P2P de la comunidad en USDT, rentabilidad sin cifra verificable), hoy no hay ninguna forma visible de comprarlo: primaria agotada y 0 órdenes P2P. La URL publicada da 404.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-rentas-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 1 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-dania-beach-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 1 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-rentas-2",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza: además de los problemas comunes (sin registro CNMV, colocación privada, P2P de la comunidad en USDT, rentabilidad sin cifra verificable), hoy no hay ninguna forma visible de comprarlo: primaria agotada y 0 órdenes P2P. La URL publicada da 404.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-pirineos-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza: además de los problemas comunes (sin registro CNMV, colocación privada, P2P de la comunidad en USDT, rentabilidad sin cifra verificable), hoy no hay ninguna forma visible de comprarlo: primaria agotada y 0 órdenes P2P. La URL publicada da 404.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-levante-1",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza: además de los problemas comunes (sin registro CNMV, colocación privada, P2P de la comunidad en USDT, rentabilidad sin cifra verificable), hoy no hay ninguna forma visible de comprarlo: primaria agotada y 0 órdenes P2P. La URL publicada da 404.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-opportunity-2",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza al cliente: plataforma sin registro CNMV, colocación privada estadounidense (o préstamo a la SL), reventa en un P2P de la comunidad en USDT y rentabilidad sin cifra verificable (ficha y API discrepan). Hoy sí hay 4 orden(es) de venta, por lo que, si Víctor prefiere conservar Reental en reventa, propongo agrupar esta ficha con las otras 14 con órdenes en una sola referencia «Reventa P2P de Reental» y no mantener 21 tarjetas individuales. Si se mantiene, corregir URL (404) y moneda.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-secundario-malaga-6",
+      "proveedor": "Reental",
+      "motivo": "Resta confianza: además de los problemas comunes (sin registro CNMV, colocación privada, P2P de la comunidad en USDT, rentabilidad sin cifra verificable), hoy no hay ninguna forma visible de comprarlo: primaria agotada y 0 órdenes P2P. La URL publicada da 404.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "secundario"
+    },
+    {
+      "slug": "reental-emision-primaria",
+      "proveedor": "Reental",
+      "motivo": "Una referencia genérica «en camino» sin oferta ni cifra concreta no ahorra tiempo al cliente y resta confianza. Sustituirla por una ficha concreta no procede hoy: la única emisión abierta (Miami 7) es privada y no cumple el criterio de entidad regulada.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "en_camino"
+    },
+    {
+      "slug": "mglo",
+      "proveedor": "Midas",
+      "motivo": "Cerrada (vault pausado el 01/11, como ya mostraba «MINTING CLOSED» el 22/10), oferta exenta para lista blanca y sin documentos públicos: no la puede comprar el particular común. Alternativa: agrupar las cuatro de Fasanara en una ficha secundaria «solo profesionales».",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "principales"
+    },
+    {
+      "slug": "mglobal",
+      "proveedor": "Midas",
+      "motivo": "Lleva desde el 06/10 sin poder comprobarse en la web, la suscripción está pausada en cadena el 01/11 y es oferta exenta para lista blanca sin documentos públicos. Alternativa: agrupar con mGLO/mGLOeuro/mF-ONE en una ficha «solo profesionales».",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "principales"
+    },
+    {
+      "slug": "mgloeuro",
+      "proveedor": "Midas",
+      "motivo": "Ya no es «apertura sin confirmar»: hay tokens emitidos, pero es una oferta exenta para lista blanca, con memorando no público, primer depósito técnico de unos 98.000 EUR y suscripción pausada el 01/11. No sirve al particular común; proponer retirarla de «en camino» o agruparla en una ficha «solo profesionales».",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "en_camino"
+    },
+    {
+      "slug": "iod-occasio",
+      "proveedor": "Alius Capital",
+      "motivo": "Una emisión cerrada y completa no es una oferta «en camino» y resta confianza en la colección. Proponer retirarla (decide Víctor). Alternativa: si se quiere conservar la referencia a la plataforma, sustituirla por una ficha genérica «Alius Capital · próximas emisiones», sin la cifra del 12 %.",
+      "revision": "REVISION-RETIRADAS.md",
+      "coleccionPublicada": "en_camino"
+    },
+    {
+      "slug": "wemakeit",
+      "proveedor": "Aktionariat (portal de inversores shares.wemakeit.com)",
+      "motivo": "No se puede comprar al emisor, la única vía es cripto entre accionistas con diferencial del 86 % y el valor publicado (8,38) es diez veces el de las operaciones reales: resta confianza al cliente. La retirada la decide Víctor.",
+      "revision": "REVISION-AKTIONARIAT.md",
+      "coleccionPublicada": "principales"
+    },
+    {
+      "slug": "servicehunter-quitt",
+      "proveedor": "Aktionariat (portal de inversores shares.quitt.ch)",
+      "motivo": "No hay oferta del emisor, no hay operaciones desde hace más de tres meses, la demanda visible es de 16 acciones y la transmisión está restringida por estatutos. Propuesta de retirada; decide Víctor.",
+      "revision": "REVISION-AKTIONARIAT.md",
+      "coleccionPublicada": "principales"
+    }
+  ],
+  "noAdmitidasTrasRevision": [
+    {
+      "slug": "kraken-xstocks",
+      "revision": "REVISION-ALTAS.md",
+      "motivo": "Rechazada en este ciclo por la revisión independiente: KID y condiciones finales sin leer."
+    }
+  ]
+}

@@ -6,6 +6,39 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 2 de noviembre de 2026 · Claude · investigación del catálogo (ciclo manual del 01/11), preparada sin aplicar
+
+**Rama:** `claude/investigacion-catalogo-2026-11-01`. Nada aplicado en Supabase,
+nada publicado. Víctor inició el ciclo el 01/11 («haz la investigación») y pidió
+priorizar ofertas que un particular en España pueda comprar de verdad y que den
+confianza. Informe: [`../INVESTIGACION-CATALOGO-2026-11-01.md`](../INVESTIGACION-CATALOGO-2026-11-01.md).
+
+- **Expedientes:** 105 (49 publicadas + 56 candidatas) en
+  `rwadar-app/data/verificaciones/2026-11-01-v2/expedientes/`, de 9 agentes
+  investigadores, y 5 revisiones independientes en `revision-independiente/`.
+  Lectura pública previa: lote del 23/10, 49 ofertas (24/21/4), vencido el 29/10.
+- **Altas aprobadas con cambios:** `spiko-letras-del-tesoro-dolar` y
+  `robinhood-classic-stock-tokens`. Kraken xStocks, rechazada en este ciclo.
+- **28 retiradas justificadas por la revisión** (22 Reental, mGLO, mGLOBAL,
+  mGLOeuro, IOD, wemakeit y quitt). **Las decide Víctor.**
+- **Bloqueo técnico:** `contrato-catalogo.js` (app) y la web rechazan un lote que
+  baje del último manifiesto (49 · 24/21/4). El camino B (23 ofertas, 6/14/3)
+  necesita una vía de **reducción deliberada** aprobada en web y app (OTA)
+  antes del lote. El camino A (51 · 24/21/6) es compatible ya.
+- `propuesta-tarjetas.json` (con `preparar-propuesta.py`) trae las tarjetas
+  con los cambios obligatorios aplicados y lo que hay que **releer el día de
+  publicación** (Spiko, oráculo de mTBILL, precios de Brickwise y Aktionariat).
+  `consolidar.py` valida los expedientes: solo quedan 2 errores de formato
+  conocidos (mGLO y mGLOBAL citan el oráculo con la dirección abreviada).
+- **PDF/HTML originales fuera de Git** (`.gitignore` del ciclo); SHA-256 en
+  cada inventario. Se pierden si se recicla este contenedor.
+- **Pendiente:** decisión de Víctor (A/B y retiradas), ilustraciones de las 2
+  altas, montar lote, PGlite, revisión del SQL, precarga, SQL y publicación,
+  cada paso con su permiso. No se ejecutaron `npm run catalogo`,
+  `montar-revision.mjs` ni `npm test`: no hubo cambios de código.
+
+---
+
 ## 1 de noviembre de 2026 · Claude · anti-robots y límite de intentos, preparados sin activar
 
 **Rama:** `claude/anti-robots-2026-10-30`. Sin unir a `main`, porque toca
