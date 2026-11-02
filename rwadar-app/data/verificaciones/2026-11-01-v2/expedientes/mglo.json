@@ -1,0 +1,295 @@
+{
+ "slug": "mglo",
+ "tipoExpediente": "publicada",
+ "grupo": "midas",
+ "proveedor": "Midas",
+ "plataformaSlug": "midas",
+ "entidadComercializadora": "Midas (web midas.app; Midas Software GmbH figura en el pie de página como titular de la web)",
+ "emisor": "Aureum Securitisation Fund (Compartment mGLO) (vehículo de titulización luxemburgués según la web y la documentación de Midas)",
+ "vehiculo": "Compartimento mglo de Aureum Securitisation Fund, Ley luxemburguesa de titulización de 22/03/2004; estrategia gestionada por Fasanara Capital",
+ "token": "mGLO; Ethereum 0x1DD91a111606382B77A917633ED90feAf25E0F76 (también Base 0xFCc9…2584 y Robinhood Chain)",
+ "derechoAdquirido": "Valor emitido por un compartimento de titulización con exposición a la cartera de crédito de Fasanara; términos exactos solo en el memorando de oferta (no leído).",
+ "jurisdiccion": "LU",
+ "identificador": null,
+ "moneda": "USD (suscripción en USDC)",
+ "documentos": [
+  {
+   "titulo": "Offering Memorandum / términos legales (DocSend, requiere lista blanca)",
+   "url": "https://midas.docsend.com/view/23u4zxee5dxq25gc/d/q9642j2ved2jbqdy",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  },
+  {
+   "titulo": "docs.midas.app · llms-full.txt (Legal Structure, Eligibility, Smart Contracts Registry)",
+   "url": "https://docs.midas.app/llms-full.txt",
+   "versionOFecha": "consulta 01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  },
+  {
+   "titulo": "Bundle JS de midas.app (mapa de emisores y documentos)",
+   "url": "https://midas.app/assets/main-DOxid0Zj.js",
+   "versionOFecha": "consulta 01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "ESMA (registro de folletos)",
+   "entidad": "Aureum Securitisation Fund",
+   "numero": null,
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_securities",
+   "alcance": "No consta folleto: oferta exenta según la web. No se consultó el RCS ni la CSSF de Luxemburgo (bloqueo de tiempo).",
+   "consultadoUtc": "2026-11-01T15:01:41Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "consultadoUtc": "2026-11-01T15:10:04Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Aureum",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aureum",
+   "consultadoUtc": "2026-11-01T15:10:09Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Fasanara",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Fasanara",
+   "consultadoUtc": "2026-11-01T15:10:10Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "entidad",
+   "literal": "MGLO → Aureum Securitisation Fund (Compartment mGLO) · framework «Offer exempt from prospectus obligation under EU Prospectus Regulation» · offer: exempt",
+   "dato": "MGLO → Aureum Securitisation Fund (Compartment mGLO) · framework «Offer exempt from prospectus obligation under EU Prospectus Regulation» · offer: exempt",
+   "fuentePrimaria": "https://midas.app/assets/main-DOxid0Zj.js",
+   "localizador": "Bundle JS de midas.app, mapa de emisores (fuentes/midas-app-bundle-extracto-emisores.txt)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:10:46Z",
+   "alcanceYLimites": "Configuración que la web usa para la ficha; no sustituye al memorando de oferta, que no se pudo leer.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "derecho",
+   "literal": "each product is issued through a dedicated compartment holding the relevant underlying assets… orphan vehicle, owned through a charitable trust and without shareholder links to other Midas entities",
+   "dato": "compartimento segregado de un vehículo de titulización luxemburgués (Ley de 22/03/2004)",
+   "fuentePrimaria": "https://docs.midas.app/llms-full.txt",
+   "localizador": "Legal Structure · Luxembourg Securitisation Setup",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:02:54Z",
+   "alcanceYLimites": "Descripción general del emisor; no se leyó el memorando de oferta ni se consultó el RCS/CSSF de Luxemburgo, por lo que no se acredita registro ni supervisión del vehículo.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "documentos",
+   "literal": "memorandum: {url: `https://midas.docsend.com/view/23u4zxee5dxq25gc/d/q9642j2ved2jbqdy`, requiresGreenlist: !0}",
+   "dato": "documentación legal en DocSend, solo para direcciones en lista blanca",
+   "fuentePrimaria": "https://midas.app/assets/main-DOxid0Zj.js",
+   "localizador": "Bundle JS, configuración de documentos legales",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:10:46Z",
+   "alcanceYLimites": "No leída: DocSend pide identificarse y el encargo prohíbe formularios. Sin folleto aprobado en el registro ESMA para este producto.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "estado",
+   "literal": "Vault de emisión: paused()=true, greenlistEnabled()=true",
+   "dato": "suscripción pausada en el vault de Ethereum",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x59313b6ae481e39B8E7710C8C26dC0ada3C532Ca · vault de emisión 0xe6522C0B034Eb725BB03D5cf957abEC1D2566E91 · vault de reembolso 0x55f3Ab43E49FFb6b1FFf5E2B310C21278bDAf0f5",
+   "localizador": "Lectura on-chain, bloque latest",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Solo el vault de Ethereum listado en el Smart Contracts Registry; otras redes no se leyeron. La página de producto (estado «minting») está bloqueada por Cloudflare.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "minMTokenAmountForFirstDeposit() = 114000000000000000000000",
+   "dato": null,
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x59313b6ae481e39B8E7710C8C26dC0ada3C532Ca · vault de emisión 0xe6522C0B034Eb725BB03D5cf957abEC1D2566E91 · vault de reembolso 0x55f3Ab43E49FFb6b1FFf5E2B310C21278bDAf0f5",
+   "localizador": "Vault de emisión, parámetro de primer depósito (en unidades del token según el código público de midas-apps/contracts)",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Indicio técnico: 114.000 mGLO ≈ 115.300 USD al VL de 23/10. No es un mínimo publicado en un documento legal leído; no se muestra en la tarjeta como mínimo oficial.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "precio",
+   "literal": "latestRoundData: valor 1,0114 USD · updatedAt 2026-10-23T11:40:59Z",
+   "dato": "VL 1,0114 USD por token (2026-10-23)",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x59313b6ae481e39B8E7710C8C26dC0ada3C532Ca · vault de emisión 0xe6522C0B034Eb725BB03D5cf957abEC1D2566E91 · vault de reembolso 0x55f3Ab43E49FFb6b1FFf5E2B310C21278bDAf0f5",
+   "localizador": "Oráculo, ronda 6",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Precio de referencia publicado en cadena; no es rentabilidad.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida",
+   "literal": "Vault de reembolso: instantFee()=50 (1 %=100) · instantDailyLimit()=200.000 mGLO · greenlistEnabled()=true · paused()=false",
+   "dato": "reembolso inmediato con comisión técnica 0.50 % y límite diario; solo lista blanca",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x59313b6ae481e39B8E7710C8C26dC0ada3C532Ca · vault de emisión 0xe6522C0B034Eb725BB03D5cf957abEC1D2566E91 · vault de reembolso 0x55f3Ab43E49FFb6b1FFf5E2B310C21278bDAf0f5",
+   "localizador": "Vault de reembolso, parámetros",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Parámetros técnicos; las condiciones contractuales de reembolso (memorando) no se pudieron leer. La ficha de la web avisa de que los plazos de reembolso son indicativos (visto el 23/10, no hoy).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Professional Whitelisting: Certain strategies are legally restricted to professional or institutional investors. These products require a manual onboarding process and explicit wallet whitelisting",
+   "dato": "acceso restringido a direcciones en lista blanca",
+   "fuentePrimaria": "https://docs.midas.app/llms-full.txt",
+   "localizador": "Eligibility & Compliance; Quick Guide («Get access»)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:02:54Z",
+   "alcanceYLimites": "La documentación no dice qué productos concretos son solo para profesionales; el producto tiene lista blanca activa en cadena y es oferta exenta de folleto.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "supervision",
+   "literal": "Registro ESMA: 38 valores de Midas Software GmbH con Condiciones Finales; ninguno corresponde a este producto",
+   "dato": "sin folleto aprobado ni pasaporte a España",
+   "fuentePrimaria": "https://registers.esma.europa.eu/solr/esma_registers_priii_securities (búsqueda por LEI 984500BB00BN6D2B7C48)",
+   "localizador": "fuentes/esma-priii-securities-midas-software.json",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:01:41Z",
+   "alcanceYLimites": "Coherente con «oferta exenta»: no hay folleto ni KID públicos.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Comisión de gestión 0,40 % anual sobre AUM · éxito 0 %",
+   "dato": "0,40 % / 0 %",
+   "fuentePrimaria": "https://midas.app/mglo",
+   "localizador": "Fee structure (visto el 22/10/2026)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-10-22T00:00:00Z",
+   "alcanceYLimites": "No revalidado hoy (403). On-chain: reembolso inmediato 0,50 % (instantFee=50).",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "precio",
+   "literal": "Rondas del oráculo: 16/07 1,0 · 21/08 1,0 · 23/09 1,0052 · 24/09 1,0057 · 25/09 1,0058 · 23/10 1,0114",
+   "dato": "VL actualizado aproximadamente una vez al mes",
+   "fuentePrimaria": "Oráculo 0x5931…32Ca (Ethereum)",
+   "localizador": "getRoundData rondas 1–6",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Frecuencia observada, no compromiso contractual.",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "Vehículo luxemburgués de titulización con oferta exenta; no se acreditó registro del vehículo ni se leyó el memorando."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "Vault de emisión de Ethereum pausado el 01/11/2026. El 22/10 la web mostraba «MINTING CLOSED»."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Lista blanca activa y primer depósito técnico de 114.000 mGLO ≈ 115.300 USD al VL de 23/10; sin acceso minorista documentado."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Sin advertencias CNMV por Midas, Aureum ni Fasanara; riesgos del memorando no leídos."
+  }
+ },
+ "estadoOferta": "cerrada",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "estado",
+   "antes": "«MINTING CLOSED» (22/10)",
+   "ahora": "sigue cerrada: vault de emisión pausado en cadena el 01/11",
+   "fuente": "vault 0xe652…6E91 paused()=true",
+   "critico": false
+  },
+  {
+   "campo": "accesoEspana",
+   "antes": "null",
+   "ahora": "oferta exenta de folleto, solo lista blanca",
+   "fuente": "bundle midas.app",
+   "critico": true
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "mGLO",
+  "categoria": "Crédito privado",
+  "pais": "LU",
+  "tipo": "rendimiento",
+  "coleccion": "secundario",
+  "resumen": "Compartimento mGLO de Aureum Securitisation Fund, vehículo luxemburgués de titulización, ligado al Global Fund de Fasanara (crédito comercial a pymes). Oferta exenta de folleto para direcciones en lista blanca.",
+  "rentabilidad": null,
+  "metricas": [
+   {
+    "etiqueta": "Moneda",
+    "valor": "USD · USDC"
+   },
+   {
+    "etiqueta": "Emisor",
+    "valor": "Compartimento de titulización en Luxemburgo"
+   },
+   {
+    "etiqueta": "Valor por token · 23/10/2026",
+    "valor": "1,0114 USD (oráculo)"
+   }
+  ],
+  "avisos": [
+   "Oferta exenta de folleto: solo para direcciones aprobadas; sin KID.",
+   "El 01/11/2026 la suscripción estaba pausada en el contrato de Ethereum."
+  ],
+  "url": "https://midas.app/mglo",
+  "fuentesActuales": [
+   "https://docs.midas.app/llms-full.txt",
+   "https://midas.app/assets/main-DOxid0Zj.js"
+  ],
+  "lugar": "Londres · Reino Unido",
+  "pasos": [
+   "Solicitas acceso",
+   "Lista blanca",
+   "Reembolso al compartimento"
+  ],
+  "concepto": "Ilustración editorial de facturas de pequeñas empresas apiladas y convertidas en fichas digitales"
+ },
+ "decision": "retirar_propuesta",
+ "motivoDecision": "Cerrada (vault pausado el 01/11, como ya mostraba «MINTING CLOSED» el 22/10), oferta exenta para lista blanca y sin documentos públicos: no la puede comprar el particular común. Alternativa: agrupar las cuatro de Fasanara en una ficha secundaria «solo profesionales».",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Compartimento segregado de titulización luxemburgués con VL publicado en cadena.",
+  "porQueNo": "Oferta exenta para lista blanca, memorando no público y suscripción pausada el 01/11/2026."
+ },
+ "bloqueos": [
+  "midas.app/mglo: 403 de Cloudflare (rendimiento, comisiones, ventana de suscripción no revalidados).",
+  "Memorando de oferta en DocSend con identificación y lista blanca: no leído.",
+  "No se consultó el registro mercantil (RCS) ni la CSSF de Luxemburgo para Aureum Securitisation Fund.",
+  "Solo se leyeron contratos de Ethereum."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:11:07Z",
+  "finUtc": "2026-11-02T08:47:09Z",
+  "nota": "Sesión cortada por límite de uso entre 13:12 y 14:57 UTC; las horas de cada claim son las de la lectura real (inventario-consultas.json)."
+ }
+}
