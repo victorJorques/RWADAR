@@ -18,7 +18,9 @@ ESTADOS_CLAIM = {'respaldado', 'respaldado_con_alcance', 'en_conflicto', 'no_ver
 VEREDICTOS = {'cumple', 'cumple_con_limites', 'no_cumple', 'no_verificable'}
 COLECCIONES = {'principales', 'secundario', 'en_camino'}
 DISPONIBLE = {'confirmado', 'solo_acreditados', 'no_confirmado', 'excluido'}
-UTC = re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?Z$')
+UTC = re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?Z( / \d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?Z)?$')
+# Lectura directa de un contrato: «Ethereum, eth_call vía https://… · oráculo 0x…»
+ONCHAIN = re.compile(r'^(Ethereum|Polygon|Stellar|Base|Arbitrum)\b.*https://.*0x[0-9a-fA-F]{6,}')
 FECHA = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 PROHIBIDO_PASOS = re.compile(r'[0-9%€$£¥]|garantiz|rentab|benefici|segur[oa]\b|gana', re.I)
 
@@ -52,13 +54,18 @@ def validar(exp, publicadas):
         (errores if decision in ('admitir_propuesta', 'actualizar') else avisos).append('sin afirmaciones (claims)')
     for i, c in enumerate(claims):
         fuente = str(c.get('fuentePrimaria') or '')
-        if not fuente.startswith('https://'):
-            errores.append(f'claim {i} ({c.get("campo")}): fuente no HTTPS')
+        # En un descarte, una afirmación del radar del 22/10 no releída hoy se
+        # admite si lo declara; nunca en una alta ni en una actualización.
+        descarte = decision in ('no_admitir', 'retirar_propuesta')
+        no_releida = descarte and ('no se releyó' in str(c.get('alcanceYLimites')) or c.get('estado') == 'no_verificable')
+        destino = avisos if no_releida else errores
+        if not (fuente.startswith('https://') or ONCHAIN.match(fuente)):
+            destino.append(f'claim {i} ({c.get("campo")}): fuente no HTTPS ni lectura on-chain identificada')
         if c.get('estado') not in ESTADOS_CLAIM:
             errores.append(f'claim {i} ({c.get("campo")}): estado no válido {c.get("estado")}')
         hora = c.get('consultadoUtc')
         if not (isinstance(hora, str) and UTC.match(hora)):
-            errores.append(f'claim {i} ({c.get("campo")}): consultadoUtc no válido {hora}')
+            destino.append(f'claim {i} ({c.get("campo")}): consultadoUtc no válido {hora}')
         elif not hora.startswith(('2026-11-01', '2026-11-02')):
             avisos.append(f'claim {i} ({c.get("campo")}): consulta fuera del ciclo ({hora})')
         fd = c.get('fechaDato')
@@ -91,7 +98,7 @@ def validar(exp, publicadas):
             concepto = str(tarjeta.get('concepto') or '')
             if decision == 'admitir_propuesta' and not (8 <= len(concepto) <= 300):
                 errores.append('concepto de imagen ausente o fuera de rango')
-            if re.search(r'[0-9%€$]', concepto):
+            if re.search(r'[%€$£]|\d+\s*(euros?|dólares?|usd|eur|chf)\b', concepto, re.I):
                 errores.append('concepto con cifras o moneda')
             rent = tarjeta.get('rentabilidad')
             if rent:

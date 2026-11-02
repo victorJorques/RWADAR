@@ -1,0 +1,124 @@
+{
+  "slug": "twiliner",
+  "tipoExpediente": "candidata",
+  "grupo": "aktionariat",
+  "proveedor": "Aktionariat (directorio «Companies with Tokenized Shares»)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Twiliner AG (vende sus propias acciones; tecnología de Aktionariat AG)",
+  "emisor": "Twiliner AG",
+  "vehiculo": "Sociedad anónima suiza (AG/SA); sin SPV",
+  "token": "LINES en Optimism (contrato de venta 0x395a0c4cc497b6a7a0efb44249b88a10dfa0838e)",
+  "derechoAdquirido": "Acciones nominativas tokenizadas de Twiliner AG (autobuses nocturnos).",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-494.351.762; ticker LINES (Optimism)",
+  "moneda": "CHF / ZCHF",
+  "documentos": [],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (Zefix / ZefixREST)",
+      "entidad": "Twiliner AG",
+      "numero": "CHE-494.351.762",
+      "url": "https://www.zefix.ch/en/search/entity/list?name=Twiliner%20AG",
+      "alcance": "Sociedad anónima (AG) inscrita, sede Zürich, estado EXISTIEREND. Capital 184.383,95 CHF (SHAB 02/12/2025). Revisora: Gramoba AG. Es un registro mercantil, no una licencia financiera.",
+      "consultadoUtc": "2026-11-02T08:48:07Z"
+    },
+    {
+      "regulador": "FINMA",
+      "entidad": "—",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "alcance": "No se ha localizado autorización FINMA. El propio portal declara que el mercado secundario es una «non-commercial trading facility» no sujeta a supervisión prudencial; el registro de autorizados de FINMA no se consultó por nombre (pendiente).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "FINMA",
+      "busqueda": "Twiliner",
+      "resultado": "sin coincidencias (lista de advertencias completa, 2.401 entradas, búsqueda local por nombre)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-01T15:08:30Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Twiliner",
+      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
+      "consultadoUtc": null
+    }
+  ],
+  "claims": [
+    {
+      "campo": "descubrimiento",
+      "literal": "Twiliner AG LINES Transport 10'522'653 CHF",
+      "dato": "TRADED",
+      "fuentePrimaria": "https://www.aktionariat.com/tokenized-companies",
+      "localizador": "Directorio, API getTokenizedCompanies (tokenTradeStatus)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T13:11:40Z",
+      "alcanceYLimites": "Solo para descubrir; cifras autodeclaradas por el emisor según el propio directorio.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "actividad",
+      "literal": "2025-11-06 PRIMARY 2000 3.0",
+      "dato": "Última compra al emisor 06/11/2025 a 3,00",
+      "fuentePrimaria": "https://shares.twiliner.com/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=21975 (29 operaciones)",
+      "fechaDato": "2025-11-06",
+      "consultadoUtc": "2026-11-02T08:47:41Z",
+      "alcanceYLimites": "Ninguna operación en casi un año; el punto de control de precio del 21/10/2026 marca 2,56 frente a un precio de venta de 3,00.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "minimo",
+      "literal": "bankTransferLimit min 5000; cryptoPaymentsLimit min 25000",
+      "dato": "5.000 CHF por banco; 25.000 en cripto",
+      "fuentePrimaria": "https://shares.twiliner.com/api/brokerbotsettings?ticker=LINES",
+      "localizador": "Datos embebidos",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-02T08:47:40Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita; sin licencia."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "Sin operaciones desde 06/11/2025."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Mínimo 5.000 CHF; acceso España no documentado."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_verificable",
+      "nota": "Sin documentos leídos."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "decision": "no_admitir",
+  "motivoDecision": "Mínimo de 5.000 CHF, sin compras en casi un año, precio con dos cifras distintas (3,00 y 2,56) y sin acceso desde España documentado.",
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "5.000 CHF",
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Venta del emisor activa on-chain.",
+    "porQueNo": "Mínimo alto, inactividad, cifras de precio en conflicto."
+  },
+  "bloqueos": [],
+  "consulta": {
+    "inicioUtc": "2026-11-02T08:47:40Z",
+    "finUtc": "2026-11-02T08:49:02Z"
+  }
+}

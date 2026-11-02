@@ -1,0 +1,115 @@
+{
+  "slug": "carnault",
+  "tipoExpediente": "candidata",
+  "grupo": "aktionariat",
+  "proveedor": "Aktionariat (directorio «Companies with Tokenized Shares»)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Carnault AG (vende sus propias acciones; tecnología de Aktionariat AG)",
+  "emisor": "Carnault AG",
+  "vehiculo": "Sociedad anónima suiza (AG/SA); sin SPV",
+  "token": "CAS (red no visible: portal privado)",
+  "derechoAdquirido": "Acciones nominativas tokenizadas de Carnault AG.",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-352.010.237; ticker CAS",
+  "moneda": null,
+  "documentos": [],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (Zefix / ZefixREST)",
+      "entidad": "Carnault AG",
+      "numero": "CHE-352.010.237",
+      "url": "https://www.zefix.ch/en/search/entity/list?name=Carnault%20AG",
+      "alcance": "Sociedad anónima (AG) inscrita, sede Basel, estado EXISTIEREND. Capital 200.000 CHF (SHAB 01/07/2025). Revisora: CORDIS audit AG. Es un registro mercantil, no una licencia financiera.",
+      "consultadoUtc": "2026-11-02T08:48:06Z"
+    },
+    {
+      "regulador": "FINMA",
+      "entidad": "—",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "alcance": "No se ha localizado autorización FINMA. El propio portal declara que el mercado secundario es una «non-commercial trading facility» no sujeta a supervisión prudencial; el registro de autorizados de FINMA no se consultó por nombre (pendiente).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "FINMA",
+      "busqueda": "Carnault",
+      "resultado": "sin coincidencias (lista de advertencias completa, 2.401 entradas, búsqueda local por nombre)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-01T15:08:30Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Carnault",
+      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
+      "consultadoUtc": null
+    }
+  ],
+  "claims": [
+    {
+      "campo": "descubrimiento",
+      "literal": "Carnault AG CAS Electronic cigarettes 21'019'361 CHF",
+      "dato": "TRADED",
+      "fuentePrimaria": "https://www.aktionariat.com/tokenized-companies",
+      "localizador": "Directorio, API getTokenizedCompanies (tokenTradeStatus)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T13:11:40Z",
+      "alcanceYLimites": "Solo para descubrir; cifras autodeclaradas por el emisor según el propio directorio.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "estado",
+      "literal": "HTTP 401 · isPrivate:true",
+      "dato": "Portal de inversores privado (requiere acceso)",
+      "fuentePrimaria": "https://shares.carnault.com/",
+      "localizador": "Portada (HTTP 401)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-02T08:47:38Z",
+      "alcanceYLimites": "Última compra registrada 07/04/2026; secundario deshabilitado.",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "Portal privado."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "No hay acceso público."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_verificable",
+      "nota": ""
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "decision": "no_admitir",
+  "motivoDecision": "Portal privado (HTTP 401): no es una oferta pública consultable.",
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Segunda mayor capitalización autodeclarada del directorio entre las no publicadas.",
+    "porQueNo": "Portal privado, sin documentación pública."
+  },
+  "bloqueos": [
+    "Portal privado: datos no públicos."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-02T08:47:38Z",
+    "finUtc": "2026-11-02T08:48:06Z"
+  }
+}
