@@ -51,9 +51,9 @@
     {
       "regulador": "CNMV",
       "busqueda": "Art Leasing",
-      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "resultado": "no verificable: la página de resultados no se cargó (extracto vacío)",
       "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
-      "consultadoUtc": null
+      "consultadoUtc": "2026-11-02T08:50:24Z"
     }
   ],
   "claims": [

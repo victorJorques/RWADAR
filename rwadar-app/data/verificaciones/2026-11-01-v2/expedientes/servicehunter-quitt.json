@@ -67,9 +67,9 @@
     {
       "regulador": "CNMV",
       "busqueda": "ServiceHunter",
-      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "resultado": "sin coincidencias («No hay datos disponibles», tipo «No autorizadas»)",
       "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
-      "consultadoUtc": null
+      "consultadoUtc": "2026-11-02T08:49:31Z"
     }
   ],
   "claims": [
@@ -239,8 +239,7 @@
     "porQueNo": "Sin oferta del emisor, última operación del 23/07/2026, demanda mínima y transmisión restringida."
   },
   "bloqueos": [
-    "Registration Agreement QTS escaneado: sin texto extraíble, no leído.",
-    "Advertencias CNMV no consultadas (tanda interrumpida)."
+    "Registration Agreement QTS escaneado: sin texto extraíble, no leído."
   ],
   "consulta": {
     "inicioUtc": "2026-11-01T14:58:56Z",

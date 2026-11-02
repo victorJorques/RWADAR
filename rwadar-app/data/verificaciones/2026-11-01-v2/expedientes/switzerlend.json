@@ -75,9 +75,9 @@
     {
       "regulador": "CNMV",
       "busqueda": "Switzerlend",
-      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "resultado": "sin coincidencias («No hay datos disponibles», tipo «No autorizadas»)",
       "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
-      "consultadoUtc": null
+      "consultadoUtc": "2026-11-02T08:49:44Z"
     }
   ],
   "claims": [
@@ -276,7 +276,6 @@
   },
   "bloqueos": [
     "Registration Agreement escaneado sin texto extraíble.",
-    "Advertencias CNMV no consultadas (tanda interrumpida).",
     "Registro de autorizados FINMA no consultado por nombre."
   ],
   "consulta": {

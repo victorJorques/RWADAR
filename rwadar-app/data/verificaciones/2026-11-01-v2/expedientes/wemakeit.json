@@ -67,9 +67,9 @@
     {
       "regulador": "CNMV",
       "busqueda": "wemakeit",
-      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "resultado": "sin coincidencias («No hay datos disponibles», tipo «No autorizadas»)",
       "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
-      "consultadoUtc": null
+      "consultadoUtc": "2026-11-02T08:49:20Z"
     }
   ],
   "claims": [
@@ -238,9 +238,7 @@
     "porQueDestaca": "Base amplia de accionistas (5.276) y datos de operaciones verificables.",
     "porQueNo": "Sin oferta del emisor, solo secundario en ZCHF con diferencial del 86 % y precio real (0,80) muy alejado del valor publicado (8,38)."
   },
-  "bloqueos": [
-    "Advertencias CNMV de «wemakeit» no consultadas (tanda interrumpida por tiempo)."
-  ],
+  "bloqueos": [],
   "consulta": {
     "inicioUtc": "2026-11-01T14:58:55Z",
     "finUtc": "2026-11-01T15:08:30Z"

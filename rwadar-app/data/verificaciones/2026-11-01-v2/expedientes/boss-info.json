@@ -75,9 +75,9 @@
     {
       "regulador": "CNMV",
       "busqueda": "Boss Info",
-      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "resultado": "sin coincidencias («No hay datos disponibles», tipo «No autorizadas»)",
       "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
-      "consultadoUtc": null
+      "consultadoUtc": "2026-11-02T08:49:07Z"
     }
   ],
   "claims": [
@@ -177,7 +177,7 @@
       "localizador": "Pie «Secondary Trading»",
       "fechaDato": null,
       "consultadoUtc": "2026-11-01T14:58:52Z",
-      "alcanceYLimites": "Sin advertencias FINMA. CNMV no consultada (bloqueo técnico).",
+      "alcanceYLimites": "Sin advertencias FINMA. Sin advertencias CNMV ni FINMA.",
       "estado": "respaldado_con_alcance"
     }
   ],
@@ -286,7 +286,6 @@
     "porQueNo": "Sin aviso de elegibilidad por país, sin compras al emisor recientes, recompra cerrada y acuerdos legales fuera del bloque «Legal Documents»."
   },
   "bloqueos": [
-    "Búsqueda en advertencias CNMV de «Boss Info» interrumpida por tiempo; pendiente.",
     "No se probó registro ni KYC."
   ],
   "consulta": {

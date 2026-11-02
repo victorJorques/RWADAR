@@ -862,5 +862,41 @@
   "bytes": 3196,
   "sha256": "da4738b69b69ab13d981526f437cda68c9313857dd9332473c6716fd01e09b35",
   "nota": "Segunda tanda: candidatas añadidas al mismo archivo"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx (nombres: Boss Info, wemakeit, ServiceHunter, Switzerlend, Alan Frei, Art Leasing, RealUnit)",
+  "archivo": "cnmv-advertencias-busquedas.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:51:03Z",
+  "bytes": 4187,
+  "sha256": "8384f880a775d6e775a2f39a1402f9f43fd7130ab7399fbe555723fcf419123d",
+  "nota": "Segunda tanda CNMV (Playwright). «Art Leasing»: resultados no cargados."
+ },
+ {
+  "url": "derivado local",
+  "archivo": "cnmv-advertencias-ultima-busqueda.png",
+  "http": null,
+  "consultadoUtc": "2026-11-02T08:51:03Z",
+  "bytes": 263018,
+  "sha256": "92abc3e183922f8502efd22d622cdb8f03078eadd1f37fe36390757911d52981",
+  "nota": "Captura/texto extraído de una fuente ya inventariada"
+ },
+ {
+  "url": "derivado local",
+  "archivo": "realunit-kaufen.txt",
+  "http": null,
+  "consultadoUtc": "2026-11-02T08:48:00Z",
+  "bytes": 11901,
+  "sha256": "2cd043ba49b60636d05737c0f851d39ec0d411e3ca3677a71d354b4614c0cf73",
+  "nota": "Captura/texto extraído de una fuente ya inventariada"
+ },
+ {
+  "url": "derivado local",
+  "archivo": "art-leasing-investors.txt",
+  "http": null,
+  "consultadoUtc": "2026-11-02T08:48:00Z",
+  "bytes": 17078,
+  "sha256": "e3b587ebce877421a7cb0e30262760364c7467e49e5b728947d595dfc500aed8",
+  "nota": "Captura/texto extraído de una fuente ya inventariada"
  }
 ]
