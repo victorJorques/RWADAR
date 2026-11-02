@@ -1,0 +1,21 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "16040307-b226-5c59-2635-4f77d6ed8698",
+  "hash": "16040307b2265c5926354f77d6ed86983390f1e90c219950c8c14fe7becea4fe",
+  "revisionAnterior": "c406fa37-a1d3-281c-117a-95819762cfcf",
+  "revisionAnteriorComprobadaEnRemoto": true,
+  "fechaRadar": "2026-11-02",
+  "plataformas": 26,
+  "ofertas": 23,
+  "colecciones": {
+    "principales": 6,
+    "secundario": 14,
+    "en_camino": 3
+  },
+  "altas": 2,
+  "retiradas": 28,
+  "estado": "borrador",
+  "revisionIndependienteSQL": false,
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}

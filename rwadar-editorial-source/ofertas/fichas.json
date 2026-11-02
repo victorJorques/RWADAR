@@ -729,6 +729,32 @@
     "Aún sin condiciones"
    ],
    "concepto": "una cartera genérica de deuda con garantía, anunciada en euros"
+  },
+  {
+   "slug": "spiko-letras-del-tesoro-dolar",
+   "escena": "tesoro",
+   "op": {},
+   "lugar": "Tesoro de EE. UU.",
+   "pasos": [
+    "Abres cuenta con KYC",
+    "Compras participaciones",
+    "Pides el reembolso"
+   ],
+   "concepto": "un fondo monetario genérico que compra letras del Tesoro de Estados Unidos"
+  },
+  {
+   "slug": "robinhood-classic-stock-tokens",
+   "escena": "empresa",
+   "op": {
+    "forma": "oficina"
+   },
+   "lugar": "Bolsa de EE. UU.",
+   "pasos": [
+    "Abres cuenta y test",
+    "Compras en euros",
+    "Cierras con la contraparte"
+   ],
+   "concepto": "un derivado que sigue el precio de acciones estadounidenses, representado por la fachada genérica de una bolsa"
   }
  ]
 }

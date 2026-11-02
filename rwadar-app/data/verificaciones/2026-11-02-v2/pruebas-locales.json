@@ -1,0 +1,41 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-02T17:11:37.882Z",
+  "revisionId": "16040307-b226-5c59-2635-4f77d6ed8698",
+  "hash": "16040307b2265c5926354f77d6ed86983390f1e90c219950c8c14fe7becea4fe",
+  "revisionAnterior": "c406fa37-a1d3-281c-117a-95819762cfcf",
+  "resultado": "correcto",
+  "plataformas": 26,
+  "ofertas": 23,
+  "colecciones": {
+    "principales": 6,
+    "secundario": 14,
+    "en_camino": 3
+  },
+  "altas": [
+    "robinhood-classic-stock-tokens",
+    "spiko-letras-del-tesoro-dolar"
+  ],
+  "retiradas": 28,
+  "fechaRadar": "2026-11-02",
+  "vigenteHasta": "2026-11-09",
+  "sha256AplicarYAprobar": "de62690a5c13cfbedee83cf109c939604e86be17458fc4c18b71690b4c44c4aa",
+  "pruebas": [
+    "identidad SQL/fuentes",
+    "solo siete tablas editoriales, sin DDL ni borrados",
+    "partida = revisión pública c406fa37",
+    "rechazo revisión anterior incorrecta con rollback",
+    "rechazo lote incompleto con rollback",
+    "borrador invisible",
+    "aplicar dos veces sin cambios",
+    "lote anterior conservado",
+    "26 plataformas y 23 ofertas 6/14/3",
+    "28 retiradas ausentes",
+    "cifras de Spiko y acceso desde España",
+    "colecciones documentales sin cifras comerciales",
+    "lector web/app acepta la reducción y rechaza un lote cortado",
+    "vigente hasta el 09/11 inclusive"
+  ],
+  "aplicadoRemoto": false,
+  "publicadoWeb": false
+}

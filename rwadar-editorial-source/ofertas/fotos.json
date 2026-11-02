@@ -362,6 +362,20 @@
    "encuadre": "70% 55%",
    "concepto": "un parque logístico europeo, como imagen de una cartera de deuda con garantía anunciada en euros",
    "prompt": "modern European logistics park at dusk, large white warehouses, lit office block, landscaped verges, clear evening sky"
+  },
+  "spiko-letras-del-tesoro-dolar": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "un edificio federal neoclásico genérico de Estados Unidos, como imagen de un fondo que compra letras del Tesoro estadounidense",
+   "prompt": "Generic American neoclassical federal government building with white marble columns, wide stone steps and a pediment, golden hour light, wide empty plaza, clear sky, no flags"
+  },
+  "robinhood-classic-stock-tokens": {
+   "modelo": "realvisxl",
+   "semilla": 11,
+   "encuadre": "70% 55%",
+   "concepto": "la fachada genérica de un edificio de bolsa neoclásico al anochecer, como imagen de derivados sobre acciones estadounidenses",
+   "prompt": "Generic neoclassical stock exchange building facade with tall Corinthian columns, warm facade lighting at dusk, empty street in a financial district, no flags, no banners"
   }
  }
 }
