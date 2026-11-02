@@ -1448,5 +1448,221 @@
   "contentType": "application/pdf",
   "textoExtraido": "effecta-verbraucherinformationen.pdf.txt",
   "paginas": 3
+ },
+ {
+  "url": "https://www.brickwise.at/imprint",
+  "archivo": "web-imprint.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:50Z",
+  "bytes": 41447,
+  "sha256": "5ee85c3b7971bfe55eab23eeb2e9ef072262312034ca45e085a98c8db5846308",
+  "nota": null
+ },
+ {
+  "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+  "archivo": "web-faq-land.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 55846,
+  "sha256": "d652644e63dce0a863cc8f490b57f224903587b6cfff5f7d4b7196984207133e",
+  "nota": null
+ },
+ {
+  "url": "https://www.brickwise.at/",
+  "archivo": "web-home.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:51Z",
+  "bytes": 146191,
+  "sha256": "55313cac8b36f7e7cbcb1bcd92aba42df2c5019c3587e71217e6acd76105647d",
+  "nota": null
+ },
+ {
+  "url": "https://www.brickwise.at/marketplace",
+  "archivo": "web-marketplace.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:52Z",
+  "bytes": 98713,
+  "sha256": "9ba9bcc4b20c437e1057f9de8247133960c07ad11d69b1d2315adba00bb37c26",
+  "nota": "Página web estática; el mercado real está en la app"
+ },
+ {
+  "url": "https://www.brickwise.at/agb",
+  "archivo": "web-agb.html",
+  "http": 404,
+  "consultadoUtc": "2026-11-01T15:01:52Z",
+  "bytes": 27657,
+  "sha256": "56cfbf81985faaa4838a9bce41827f3cf552ff4861c15f9280c702c86c63ea4e",
+  "nota": "404"
+ },
+ {
+  "url": "https://www.brickwise.at/terms",
+  "archivo": "web-terms.html",
+  "http": 404,
+  "consultadoUtc": "2026-11-01T15:01:53Z",
+  "bytes": 27657,
+  "sha256": "56cfbf81985faaa4838a9bce41827f3cf552ff4861c15f9280c702c86c63ea4e",
+  "nota": "404"
+ },
+ {
+  "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+  "archivo": "bafin-effecta-detalle.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:28Z",
+  "bytes": 26540,
+  "sha256": "03d017236aa8b7ada6c51099cb8bc30a0e58b8ca42d8e5cdab3e8e43cb7803f0",
+  "nota": null
+ },
+ {
+  "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do?nameVermittler=B",
+  "archivo": "bafin-vgv-B.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:29Z",
+  "bytes": 52836,
+  "sha256": "13252f2ea22140ce1645cb8139aa0886d9026455a3e636cd5b65553c1e788899",
+  "nota": "Formulario; sin resultado útil"
+ },
+ {
+  "url": "https://portal.mvp.bafin.de/database/VGVInfo/komfortsucheForm.do (POST registerNr=80174029)",
+  "archivo": "bafin-vgv-registerNr-80174029.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:47Z",
+  "bytes": 26927,
+  "sha256": "3985f419e00b315bf1847e932fa598e0dc06fd5b29abc8ab52812d07bc8f1092",
+  "nota": null
+ },
+ {
+  "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittler.do?cmd=historischeDetailsAction&id=-160348058&idHistHaftendesUnternehmen=1070411",
+  "archivo": "bafin-vgv-hist.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:50Z",
+  "bytes": 26086,
+  "sha256": "2750894b1a763e0cf71868e2e6073566f62e8abebf6be30734f708711a6720c5",
+  "nota": "Hora aproximada (sin registro propio)"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+  "archivo": "cnmv-effecta-esi-extranjera-lp.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:07:18Z",
+  "bytes": 218036,
+  "sha256": "469d68218b51e424da6fac85f4841cdbe4f833d7a1f9c1978722a516ef752b74",
+  "nota": null
+ },
+ {
+  "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise&place=&bic=&category=&per_page=10&submitted=1",
+  "archivo": "fma-unternehmensdatenbank-brickwise.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:42:28Z",
+  "bytes": 139468,
+  "sha256": "323a9cc1027584e15cba7de9ffb155b2509b0f5ed10afb1a2db6c4cf20dbcba8",
+  "nota": "Resultado: No entries found"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+  "archivo": "cnmv-busqueda-Brick_Qogir.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:59Z",
+  "bytes": 1785,
+  "sha256": "12d183b21ba1d0832a9ef5dbd64476c34d28f0b864257b05e677ce9d0456a08a",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+  "archivo": "cnmv-busqueda-Brick_Sagarmatha.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:10Z",
+  "bytes": 1790,
+  "sha256": "d024e418599a214749ae207c2e564bfb0a4f95f9b5648a9e9cb793b2581fc036",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+  "archivo": "cnmv-busqueda-Brickone.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:20Z",
+  "bytes": 1782,
+  "sha256": "8e8d51233d482c9489a69f306c31bb7090dfa2f6088fe70a49e5c8f5a9740cb3",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+  "archivo": "cnmv-busqueda-COHOTEL.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:06:19Z",
+  "bytes": 1781,
+  "sha256": "5fa7eccb63e1359df2d0a5362bb0d213b30b5c91f5ccb954e63c1d26aaaca935",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+  "archivo": "cnmv-busqueda-C_P_Bricks.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:06:29Z",
+  "bytes": 1784,
+  "sha256": "42bb75259fcb264a914fcd2c8540b8d2d7b5023e5cddcef3b4cec84788d0a6ff",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/DatosEntidad?numero=5003&tipo=CLP&nif=CLP-005003",
+  "archivo": "cnmv-busqueda-Effecta.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:50Z",
+  "bytes": 855,
+  "sha256": "95445d55178fa847261b72e5c513f004e74fe784c05f029542a37f8f5beaf972",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+  "archivo": "cnmv-busqueda-Greemer.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:06:38Z",
+  "bytes": 1781,
+  "sha256": "53129ec57d2c0777d542c11849c4db1206e0ce70b050591108b49bd8a359eb97",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+  "archivo": "cnmv-busqueda-Green_Point_62.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:40Z",
+  "bytes": 1788,
+  "sha256": "008be275754321ea3565dc95bd6e15c7c21aaa47ecdea0f645aebe684b9919b0",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+  "archivo": "cnmv-busqueda-Greeninfra.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:30Z",
+  "bytes": 119,
+  "sha256": "7564decf34fec6577e1037ad0abfc1cb1881ec33238b37e858bee7ec603b0a09",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=8",
+  "archivo": "cnmv-effecta-Agentes.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:09:03Z",
+  "bytes": 2114,
+  "sha256": "2c066b7049acffbd85792cd2e6c25c0046082d86d4adf4ef5db3fc7740ebeea5",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=17",
+  "archivo": "cnmv-effecta-ProgramaActividades.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:08:28Z",
+  "bytes": 2308,
+  "sha256": "a1ce4695784e82fe1a67bec00b57ab4e9fe37e77cdfd60b6769cbe8128d1faf6",
+  "nota": "Texto de la página renderizada con Playwright"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+  "archivo": null,
+  "http": null,
+  "consultadoUtc": "2026-11-01T15:09:03Z",
+  "bytes": null,
+  "sha256": null,
+  "nota": "Bloqueo: 10 búsquedas (Brickwise, Effecta, emisores) con timeout de 30 s al pulsar Buscar; sin resultado"
  }
 ]

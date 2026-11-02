@@ -1,0 +1,98 @@
+{
+ "slug": "mmev",
+ "tipoExpediente": "candidata",
+ "grupo": "midas",
+ "proveedor": "Midas",
+ "plataformaSlug": "midas",
+ "entidadComercializadora": "Midas (web midas.app)",
+ "emisor": "Midas Software GmbH (según la web: «Public offer under the EU Prospectus Regulation»)",
+ "vehiculo": null,
+ "token": "mMEV",
+ "derechoAdquirido": "Exposición a la estrategia DeFi delta-neutral de RockawayX",
+ "jurisdiccion": "DE",
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [
+  {
+   "titulo": "Índice de productos midas.app/llms.txt",
+   "url": "https://midas.app/llms.txt",
+   "versionOFecha": "01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  }
+ ],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "consultadoUtc": "2026-11-01T15:10:04Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas Software",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas%20Software",
+   "consultadoUtc": "2026-11-01T15:10:06Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "derecho",
+   "literal": "The mMEV token gives token-holders exposure to RockawayX's delta-neutral DeFi yield strategy.",
+   "dato": "subyacente cripto/DeFi",
+   "fuentePrimaria": "https://midas.app/llms.txt",
+   "localizador": "Products · mMEV",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:20Z",
+   "alcanceYLimites": "No se identificó su ISIN en el registro ESMA.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": ""
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": ""
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": ""
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": ""
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "decision": "no_admitir",
+ "motivoDecision": "Subyacente cripto/DeFi, fuera del criterio de activos reales; sin documentos leídos.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "—",
+  "porQueNo": "Cripto/DeFi, fuera de alcance."
+ },
+ "bloqueos": [
+  "midas.app/mmev 403."
+ ],
+ "categoriaTentativa": "Cripto/DeFi (fuera de alcance)",
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:11:07Z",
+  "finUtc": "2026-11-02T08:48:27Z",
+  "nota": "Sesión cortada por límite de uso entre 13:12 y 14:57 UTC; las horas de cada claim son las de la lectura real (inventario-consultas.json)."
+ }
+}

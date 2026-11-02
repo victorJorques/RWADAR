@@ -727,5 +727,140 @@
   "bytes": 1393,
   "sha256": "37e629944ac9d0d9d787df85bfb22241eec7276d9b109ab1dd90c0ee1c97f8ea",
   "nota": null
+ },
+ {
+  "url": "https://realunit.ch/realunit-kaufen/",
+  "archivo": "realunit-kaufen.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:44Z",
+  "bytes": 629334,
+  "sha256": "c3458c6138e09a982d9288d8a020ccfa10ae4be2a7f289736eefe6e7215826c5",
+  "nota": null
+ },
+ {
+  "url": "https://www.artleasing.com/en/investors",
+  "archivo": "art-leasing-investors.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:47:59Z",
+  "bytes": 173053,
+  "sha256": "85954c54f05133b2ecd7500b1d343f19fce8baccf361fddb4f961a2e3a789a6e",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"Alan Frei Company AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-alan-frei-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:04Z",
+  "bytes": 490,
+  "sha256": "fbda8f8bc3f81c36a9ef356c53d222bdbee5e52bd8fbe93cb9a8d9246bb5a283",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1527753.json",
+  "archivo": "zefix-alan-frei-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:05Z",
+  "bytes": 9544,
+  "sha256": "a9714a85ca42d1d8b79301f6c3a07125cb34a716df941309bd12ad75b8916817",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"Carnault AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-carnault-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:06Z",
+  "bytes": 482,
+  "sha256": "1525f5e80f3854c56c61f7e75a3fa80a8bb4c592cbb33b1228a7f146260f72ca",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1275656.json",
+  "archivo": "zefix-carnault-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:06Z",
+  "bytes": 19018,
+  "sha256": "a5acb8e23fadb6715277c643daa06ea5946ed693e3e7cd69f550ee6bb562a71c",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"Twiliner AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-twiliner-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:07Z",
+  "bytes": 483,
+  "sha256": "147cb6e73cf083b73c55e2a0822d3aa80e73474850ef27a26b45badd0ffdd7a6",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1473759.json",
+  "archivo": "zefix-twiliner-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:07Z",
+  "bytes": 13521,
+  "sha256": "10b7ec86ba75ffdb7dd356392ef3b629139fd1d1b72cd43e1082ebe06cacf8db",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"Fieldoo AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-fieldoo-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:08Z",
+  "bytes": 481,
+  "sha256": "e43eddc460774924d099be5077a53c4239d09733290395994b67d394505c6ffc",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1379822.json",
+  "archivo": "zefix-fieldoo-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:08Z",
+  "bytes": 6583,
+  "sha256": "d20c72324bbf8445db8aec5827db361519cd21ebbaead12539e6a8bd3738d7eb",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"RealUnit Schweiz AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-realunit-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:09Z",
+  "bytes": 490,
+  "sha256": "44fb253734343d7ea3493a51ed20f3cde51ff82ff9e94773bf27c4722f9ffab7",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1311280.json",
+  "archivo": "zefix-realunit-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:09Z",
+  "bytes": 36403,
+  "sha256": "f89c8191e47b935b60e2c056277d6eab6579eb18402509fd5fa7dc2f64abce93",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/search.json POST {\"name\": \"ART LEASING & INVEST AG\", \"languageKey\": \"en\", \"maxEntries\": 10}",
+  "archivo": "zefix-art-leasing-busqueda.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:10Z",
+  "bytes": 493,
+  "sha256": "be0360abf877dee00120b4e648e661804c9e60f11ce331e0ee644d32a5bac942",
+  "nota": null
+ },
+ {
+  "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/802442.json",
+  "archivo": "zefix-art-leasing-ficha.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:48:11Z",
+  "bytes": 8377,
+  "sha256": "93c7b8f34c19cc728564e0934e1feff46789b20c9782b6a9079c914e0e97e660",
+  "nota": null
+ },
+ {
+  "url": "eth_call settings()/getPrice()/increment() (mainnet y optimism, publicnode) – candidatas",
+  "archivo": "onchain-brokerbots.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:49:04Z",
+  "bytes": 3196,
+  "sha256": "da4738b69b69ab13d981526f437cda68c9313857dd9332473c6716fd01e09b35",
+  "nota": "Segunda tanda: candidatas añadidas al mismo archivo"
  }
 ]

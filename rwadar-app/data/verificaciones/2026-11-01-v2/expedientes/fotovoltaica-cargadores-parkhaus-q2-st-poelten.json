@@ -1,0 +1,267 @@
+{
+  "slug": "fotovoltaica-cargadores-parkhaus-q2-st-poelten",
+  "tipoExpediente": "candidata",
+  "grupo": "brickwise",
+  "proveedor": "Brickwise",
+  "plataformaSlug": "brickwise",
+  "entidadComercializadora": "Brickwise Investment GmbH (agente vinculado de Effecta GmbH)",
+  "emisor": "Greeninfra GmbH (FN 460779 t)",
+  "vehiculo": "Sociedad austriaca emisora",
+  "token": "Token en la red «Brickprotocol»; tokenId 7aXWnn39iiyJwC2RvrB3YXkt39bDojSGRx9UYQ3kTAy3",
+  "derechoAdquirido": "Genussschein tokenizado a 15 años (fin 31/12/2039) sobre el 40 % del excedente de la instalación; reembolso del nominal subordinado",
+  "jurisdiccion": "AT",
+  "identificador": "ISIN AT0000A3E842",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "API pública (ficha v1)",
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3E842",
+      "versionOFecha": "updatedAt 2026-10-26T22:31:32.505Z",
+      "paginas": null,
+      "sha256": "e6dbfebffcec9d291945dfd4464516bea36073ecdb75a77f98f2b22d482454e0",
+      "leido": true
+    },
+    {
+      "titulo": "Investitionsbedingungen",
+      "url": "https://cdn.brickwise.at/64da3d27-ad35-4007-bf3d-9f022d3e14d2.pdf",
+      "versionOFecha": "Sun, 08 Sep 2024 10:37:25 GMT",
+      "paginas": 21,
+      "sha256": "9ebfa0b7c23f60022f36e62e62ad2c1044a3709562e18e816184f6ca187c0de2",
+      "leido": true
+    },
+    {
+      "titulo": "Basisinformationsblatt (KID)",
+      "url": "https://cdn.brickwise.at/0cfef387-b8a9-4c6c-99c9-fd46110617da.pdf",
+      "versionOFecha": "Sun, 08 Sep 2024 10:37:17 GMT",
+      "paginas": 3,
+      "sha256": "613879bec7d740d888e618f2fe67d8b3a90da96dfc4b1c3260757d738e5df63d",
+      "leido": true
+    },
+    {
+      "titulo": "Informationsblatt AltFG",
+      "url": "https://cdn.brickwise.at/ef8df591-a9bf-445f-b282-b631c24a0e5b.pdf",
+      "versionOFecha": "Sun, 08 Sep 2024 10:37:22 GMT",
+      "paginas": 17,
+      "sha256": "6a58d5f5fb2537eba92b58ef79f069fb12b024f2b4d452bbf0e23eba300a8769",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "BaFin (Alemania)",
+      "entidad": "Effecta GmbH",
+      "numero": "BaFin-ID 10133261",
+      "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+      "alcance": "Wertpapierinstitut: Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) y Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) desde 26.06.2021. Es la entidad bajo cuya responsabilidad actúa Brickwise; no acredita el producto ni al emisor.",
+      "consultadoUtc": "2026-11-01T15:02:28Z"
+    },
+    {
+      "regulador": "BaFin (Alemania)",
+      "entidad": "Brickwise Investment GmbH",
+      "numero": "80174029",
+      "url": "https://portal.mvp.bafin.de/database/VGVInfo/komfortsucheForm.do (registerNr=80174029)",
+      "alcance": "Vertraglich gebundener Vermittler (agente vinculado) con entidad responsable Effecta GmbH; activo desde 04.08.2021, sin fecha de baja; datos del registro a 31.10.2026. Sin licencia propia.",
+      "consultadoUtc": "2026-11-01T15:02:47Z"
+    },
+    {
+      "regulador": "CNMV (España)",
+      "entidad": "EFFECTA GmbH",
+      "numero": "5003 (registro 11/11/2020)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+      "alcance": "ESI del EEE en libre prestación en España; programa: recepción y transmisión de órdenes sobre valores negociables y participaciones de IIC. Pestaña Agentes: «No se han encontrado datos disponibles» (no consta Brickwise como agente notificado para España).",
+      "consultadoUtc": "2026-11-01T15:09:03Z"
+    },
+    {
+      "regulador": "Firmenbuch (Austria)",
+      "entidad": "Greeninfra GmbH",
+      "numero": "FN 460779 t",
+      "url": null,
+      "alcance": "Número FN tomado del contrato/KID del emisor; no consultado en el Firmenbuch (consulta de pago). El emisor es una sociedad vehículo no supervisada; la emisión no está aprobada por la FMA (oferta con exención de folleto).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Effecta (buscador de entidades registradas)",
+      "resultado": "sin advertencia: devuelve EFFECTA GMBH como «Empresa de Servicios de Inversión Extranjera» registrada",
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "consultadoUtc": "2026-11-01T15:04:50Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Greeninfra (buscador de entidades registradas)",
+      "resultado": "no_verificable: la página no devolvió texto (captura vacía)",
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "consultadoUtc": "2026-11-01T15:05:30Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Brickwise, Effecta y emisores (buscador de entidades no autorizadas / advertencias)",
+      "resultado": "no_verificable: el botón «Buscar» no respondió (timeout de 30 s en 10 búsquedas, iniciadas a las 15:09 UTC del 01/11); no se afirma ausencia de advertencias",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:09:03Z"
+    },
+    {
+      "regulador": "FMA (Austria)",
+      "busqueda": "brickwise (Unternehmensdatenbank, entidades autorizadas)",
+      "resultado": "sin coincidencias («No entries found»): Brickwise no figura como entidad autorizada por la FMA; la lista de advertencias de la FMA no se consultó",
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise",
+      "consultadoUtc": "2026-11-02T08:42:28Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "\"stage\":\"secondary\",\"onlyPrimary\":true,\"availableBricks\":219,\"availableBricksSecondary\":0,\"issueEndDate\":\"2024-10-30T23:00:00.000Z\"",
+      "dato": "Conflicto: 219 participaciones disponibles según la API, fuera del plazo contractual",
+      "fuentePrimaria": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3E842",
+      "localizador": "investmentDetails: stage, availableBricks, issueEndDate; v2 updatedAt=2026-10-26T22:31:32.512Z",
+      "fechaDato": "2026-10-26",
+      "consultadoUtc": "2026-11-01T14:58:43Z",
+      "alcanceYLimites": "El 23/10 la API daba 223 disponibles y el 01/11 219: se mueven unidades, pero sin documento que explique en qué régimen. Sin órdenes en el libro (offers vacío).",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "estado",
+      "literal": "Zeichnungsfrist: 15.08.2024. bis 30.09.2024 ... [anotado 05.09.2024 / 31.10.2024]; 4.3 ... die Zeichnungsfrist um einen Zeitraum zu verlängern, dessen Dauer höchstens dem dreifachen der ursprünglichen Zeichnungsfrist ent",
+      "dato": "Suscripción contractual en 2024; prórroga máxima del triple",
+      "fuentePrimaria": "https://cdn.brickwise.at/64da3d27-ad35-4007-bf3d-9f022d3e14d2.pdf",
+      "localizador": "Investitionsbedingungen, p. 4 y §4.3 p. 6",
+      "fechaDato": "2024-08-04",
+      "consultadoUtc": "2026-11-01T14:59:33Z",
+      "alcanceYLimites": "El texto extraído contiene ambas fechas; no se ha visto el PDF renderizado.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Jeder Token vermittelt dem Investor einen qualifiziert nachrangigen Rückzahlungsanspruch zum Endfälligkeitstag.",
+      "dato": "Genussschein tokenizado a 15 años (fin 31/12/2039) sobre el 40 % del excedente de la instalación; reembolso del nominal subordinado",
+      "fuentePrimaria": "https://cdn.brickwise.at/0cfef387-b8a9-4c6c-99c9-fd46110617da.pdf",
+      "localizador": "Basisinformationsblatt (Stand 04.08.2024), p. 1",
+      "fechaDato": "2024-08-04",
+      "consultadoUtc": "2026-11-01T14:59:33Z",
+      "alcanceYLimites": "Sin cancelación por el inversor (terminationRight=no en la API).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Mindestzeichnungsbetrag je Investor: EUR 507,62",
+      "dato": "507,62 € (una participación)",
+      "fuentePrimaria": "https://cdn.brickwise.at/64da3d27-ad35-4007-bf3d-9f022d3e14d2.pdf",
+      "localizador": "Investitionsbedingungen, p. 4",
+      "fechaDato": "2024-08-04",
+      "consultadoUtc": "2026-11-01T14:59:33Z",
+      "alcanceYLimites": "Mínimo de la suscripción de 2024; no acredita compra posible hoy.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "\"rentalReturn\":6.12; rentalIncome=123000; managementFee=41000; rentalSurplus=14284.05",
+      "dato": null,
+      "fuentePrimaria": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3E842",
+      "localizador": "rentalDetails",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:58:43Z",
+      "alcanceYLimites": "Previsión de la API sin fecha; KID escenario medio 6,18 %/año (p. 2). No se publica por el conflicto de estado.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Risikoklasse 6",
+      "dato": "Riesgo 6 de 7",
+      "fuentePrimaria": "https://cdn.brickwise.at/0cfef387-b8a9-4c6c-99c9-fd46110617da.pdf",
+      "localizador": "Basisinformationsblatt, p. 2",
+      "fechaDato": "2024-08-04",
+      "consultadoUtc": "2026-11-01T14:59:33Z",
+      "alcanceYLimites": "Conflicto de intereses: la gestión la ejerce un socio (KID p. 2).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "dato": "1,5 % por compra y 1,5 % por venta",
+      "fuentePrimaria": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+      "localizador": "Kosteninformationen Brickwise, p. 1 (Last-Modified 01/04/2023)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:37Z",
+      "alcanceYLimites": "Comisión del intermediario sobre el importe de cada operación; los costes del producto (RIY) están en el KID de cada emisión y no se suman mecánicamente.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "dato": "Cuenta abierta a residentes del EEE (incluye España)",
+      "fuentePrimaria": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+      "localizador": "FAQ «Kann ich einen Account von jedem Land aus eröffnen?»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:01:51Z",
+      "alcanceYLimites": "Abrir cuenta no confirma que cada emisión se distribuya en España; exige KYC, test de conveniencia y app propia. Effecta figura en la CNMV en libre prestación (RTO), sin agentes notificados. Documentación solo en alemán.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "dato": "Brickwise Investment GmbH (Múnich, HRB 269358), agente vinculado de Effecta GmbH",
+      "fuentePrimaria": "https://www.brickwise.at/imprint",
+      "localizador": "Impressum",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:01:50Z",
+      "alcanceYLimites": "Contrastado con el registro de agentes vinculados de la BaFin (nº 80174029, activo).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "custodia",
+      "literal": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+      "dato": "Autocustodia del token en la cuenta/app del inversor",
+      "fuentePrimaria": "https://cdn.brickwise.at/0cfef387-b8a9-4c6c-99c9-fd46110617da.pdf",
+      "localizador": "Basisinformationsblatt, p. 1 «Art»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:33Z",
+      "alcanceYLimites": "La recuperación de una cuenta exige identificación notarial (~120 € según Kosteninformationen p. 1, nota 3).",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Intermediario verificado: Brickwise Investment GmbH, agente vinculado nº 80174029 de Effecta GmbH (BaFin-ID 10133261); Effecta inscrita en la CNMV (nº 5003, libre prestación, RTO). El emisor es una SPV austriaca no supervisada y la oferta se hizo con exención de folleto, sin aprobación de la FMA."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "API: stage=secondary, onlyPrimary=true, 219/460 disponibles; plazo contractual vencido."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Cuenta para residentes del EEE con KYC; 1,5 % por operación; distribución en España no confirmada; documentos en alemán."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "KID en alemán, indicador de riesgo 6 de 7, posibilidad de pérdida total, sin fondo de garantía. Búsqueda de advertencias de la CNMV no completada (bloqueo técnico); FMA: sin coincidencias en la base de entidades, lista de advertencias no consultada."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "507,62 € (suscripción 2024; hoy sin acreditar)",
+    "supervisorVerificado": "BaFin: Effecta GmbH (BaFin-ID 10133261) y Brickwise Investment GmbH agente vinculado nº 80174029; CNMV: Effecta nº 5003",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Instalación en funcionamiento con KID y contrato publicados.",
+    "porQueNo": "Conflicto entre API (unidades disponibles) y contrato (plazo vencido en 2024–2025); sin órdenes de reventa."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "La API muestra 219 de 460 participaciones «disponibles» a precio de emisión (507,62 €) con stage=secondary y onlyPrimary=true, pero el contrato fija la suscripción en 2024 (prorrogable como máximo al triple, es decir, hasta 2025). No hay órdenes de reventa. No se puede acreditar hoy una compra posible ni su base contractual: conflicto sin resolver.",
+  "bloqueos": [
+    "Buscador de advertencias de la CNMV sin respuesta (timeout).",
+    "Firmenbuch no consultado (de pago)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T13:10:50Z",
+    "finUtc": "2026-11-02T08:48:55Z"
+  }
+}

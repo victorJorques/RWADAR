@@ -47,6 +47,56 @@
    "increment()": 500000000000000,
    "precioZCHF": 68.0105,
    "incrementoZCHFporAccion": 0.0005
+  },
+  "realunit": {
+   "contrato": "0xcff32c60b87296b8c0c12980de685bed6cb9dd6d",
+   "red": "mainnet",
+   "consultadoUtc": "2026-11-02T08:49:00Z",
+   "settings()": 2,
+   "getPrice()": 1370000000000000000,
+   "increment()": 0,
+   "precioZCHF": 1.37,
+   "incrementoZCHFporAccion": 0.0
+  },
+  "art-leasing": {
+   "contrato": "0xf12a6b198f3c94cbc7c2110cd7347e0bd2e534ad",
+   "red": "mainnet",
+   "consultadoUtc": "2026-11-02T08:49:01Z",
+   "settings()": 3,
+   "getPrice()": 3651200000000000000,
+   "increment()": 0,
+   "precioZCHF": 3.6512,
+   "incrementoZCHFporAccion": 0.0
+  },
+  "alan-frei": {
+   "contrato": "0x4d1b3c1e3306dd3adc0b5e07230348c19032ca3c",
+   "red": "mainnet",
+   "consultadoUtc": "2026-11-02T08:49:01Z",
+   "settings()": 3,
+   "getPrice()": 1602741880000000000,
+   "increment()": 800000000000,
+   "precioZCHF": 1.60274188,
+   "incrementoZCHFporAccion": 8e-07
+  },
+  "twiliner": {
+   "contrato": "0x395a0c4cc497b6a7a0efb44249b88a10dfa0838e",
+   "red": "optimism",
+   "consultadoUtc": "2026-11-02T08:49:02Z",
+   "settings()": 1,
+   "getPrice()": 3000000000000000000,
+   "increment()": 0,
+   "precioZCHF": 3.0,
+   "incrementoZCHFporAccion": 0.0
+  },
+  "fieldoo": {
+   "contrato": "0x81fa06b52803788685508d2997b472045d4f2504",
+   "red": "optimism",
+   "consultadoUtc": "2026-11-02T08:49:03Z",
+   "settings()": 1,
+   "getPrice()": 750052000000000000,
+   "increment()": 100000000000,
+   "precioZCHF": 0.750052,
+   "incrementoZCHFporAccion": 1e-07
   }
  }
 }

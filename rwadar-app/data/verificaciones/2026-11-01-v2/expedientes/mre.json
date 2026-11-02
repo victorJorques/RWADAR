@@ -1,0 +1,117 @@
+{
+ "slug": "mre",
+ "tipoExpediente": "candidata",
+ "grupo": "midas",
+ "proveedor": "Midas",
+ "plataformaSlug": "midas",
+ "entidadComercializadora": "Midas (web midas.app)",
+ "emisor": null,
+ "vehiculo": null,
+ "token": null,
+ "derechoAdquirido": null,
+ "jurisdiccion": null,
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [
+  {
+   "titulo": "Índice de productos midas.app/llms.txt",
+   "url": "https://midas.app/llms.txt",
+   "versionOFecha": "01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  },
+  {
+   "titulo": "Bundle JS de midas.app",
+   "url": "https://midas.app/assets/main-DOxid0Zj.js",
+   "versionOFecha": "01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  }
+ ],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "consultadoUtc": "2026-11-01T15:10:04Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas Software",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas%20Software",
+   "consultadoUtc": "2026-11-01T15:10:06Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "riesgos",
+   "literal": "delivering stable, uncorrelated yield with built-in liquidity and capital protection",
+   "dato": null,
+   "fuentePrimaria": "https://midas.app/llms.txt",
+   "localizador": "Products · mRE",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:20Z",
+   "alcanceYLimites": "Afirmación comercial («capital protection») sin documento legal que la respalde.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "entidad",
+   "literal": "Yfe=[R.MSL,R.MRE] (sin documentación legal propia); mRE no figura en el mapa de emisores",
+   "dato": null,
+   "fuentePrimaria": "https://midas.app/assets/main-DOxid0Zj.js",
+   "localizador": "configuración de documentos legales",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:10:46Z",
+   "alcanceYLimites": "La web no asigna emisor ni documento legal a mRE; tampoco aparece en el Smart Contracts Registry de docs.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "Sin emisor identificado."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Sin contratos publicados."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin condiciones."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_cumple",
+   "nota": "Promesa de «capital protection» sin respaldo documental."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "decision": "no_admitir",
+ "motivoDecision": "No hay emisor, documento legal ni contrato publicados; solo una descripción comercial que promete protección del capital.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Exposición a bonos catastróficos y reaseguro (MembersCap).",
+  "porQueNo": "Sin emisor, documentos ni contratos identificables."
+ },
+ "bloqueos": [
+  "midas.app/mre 403."
+ ],
+ "categoriaTentativa": "Reaseguro",
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:11:07Z",
+  "finUtc": "2026-11-02T08:48:27Z",
+  "nota": "Sesión cortada por límite de uso entre 13:12 y 14:57 UTC; las horas de cada claim son las de la lectura real (inventario-consultas.json)."
+ }
+}

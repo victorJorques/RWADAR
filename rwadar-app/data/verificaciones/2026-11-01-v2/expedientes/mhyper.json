@@ -1,0 +1,118 @@
+{
+ "slug": "mhyper",
+ "tipoExpediente": "candidata",
+ "grupo": "midas",
+ "proveedor": "Midas",
+ "plataformaSlug": "midas",
+ "entidadComercializadora": "Midas (web midas.app)",
+ "emisor": "Midas Software GmbH (HRB 254645, LEI 984500BB00BN6D2B7C48)",
+ "vehiculo": "Certificado basado en blockchain bajo el folleto base de 17/07/2026",
+ "token": "mHYPER",
+ "derechoAdquirido": "Crédito subordinado frente a Midas Software GmbH que replica una estrategia cripto/DeFi",
+ "jurisdiccion": "DE",
+ "identificador": "ISIN CH1475894585",
+ "moneda": "USD",
+ "documentos": [
+  {
+   "titulo": "Condiciones Finales mHYPER (FTWS-1418)",
+   "url": "https://docs.midas.app/resources/legal-product-documentation/mhyper",
+   "versionOFecha": "17/07/2026 (según ESMA)",
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "FMA Liechtenstein · registro ESMA",
+   "entidad": "Midas Software GmbH",
+   "numero": "FTWS-1418 bajo BPWO-84",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents (búsqueda por LEI 984500BB00BN6D2B7C48)",
+   "alcance": "Condiciones Finales depositadas el 17/07/2026 y pasaportadas a España (lista de Estados de acogida incluye SPAIN).",
+   "consultadoUtc": "2026-11-01T15:01:55Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "consultadoUtc": "2026-11-01T15:10:04Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas Software",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas%20Software",
+   "consultadoUtc": "2026-11-01T15:10:06Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "derecho",
+   "literal": "Hyperithm's market-neutral, stablecoin-focused DeFi strategies",
+   "dato": "subyacente: estrategia cripto/DeFi",
+   "fuentePrimaria": "https://midas.app/llms.txt",
+   "localizador": "Products · mHYPER",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:20Z",
+   "alcanceYLimites": "No es un activo real tokenizado.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "CH1475894585 · FTWS-1418 · member_states incluye SPAIN · is_passported 1",
+   "dato": "oferta pública pasaportada a España",
+   "fuentePrimaria": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents (búsqueda por LEI 984500BB00BN6D2B7C48)",
+   "localizador": "fuentes/esma-priii-documents-midas-software.json",
+   "fechaDato": "2026-07-17",
+   "consultadoUtc": "2026-11-01T15:01:55Z",
+   "alcanceYLimites": "Condiciones Finales y KID no leídos (docs.midas.app bloqueado).",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Folleto FMA pasaportado; emisor no supervisado."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Ficha bloqueada."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "FT/KID no leídos."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "KID no leído."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "decision": "no_admitir",
+ "motivoDecision": "Fuera del criterio de RWAdar: el subyacente es una estrategia cripto/DeFi, no un activo real. Además, hoy no se pudieron leer sus Condiciones Finales ni su KID. Consta como oferta pública pasaportada a España por si Víctor amplía el alcance.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "Folleto FMA Liechtenstein, ESMA FTWS-1418 pasaportado a España",
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Oferta pública pasaportada a España.",
+  "porQueNo": "Subyacente cripto/DeFi, fuera del alcance de activos reales; documentos no leídos."
+ },
+ "bloqueos": [
+  "midas.app/mhyper y docs.midas.app 403."
+ ],
+ "categoriaTentativa": "Cripto/DeFi (fuera de alcance)",
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:11:07Z",
+  "finUtc": "2026-11-02T08:48:27Z",
+  "nota": "Sesión cortada por límite de uso entre 13:12 y 14:57 UTC; las horas de cada claim son las de la lectura real (inventario-consultas.json)."
+ }
+}

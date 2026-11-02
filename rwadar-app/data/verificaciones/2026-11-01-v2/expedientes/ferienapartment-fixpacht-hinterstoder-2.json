@@ -1,0 +1,212 @@
+{
+  "slug": "ferienapartment-fixpacht-hinterstoder-2",
+  "tipoExpediente": "candidata",
+  "grupo": "brickwise",
+  "proveedor": "Brickwise",
+  "plataformaSlug": "brickwise",
+  "entidadComercializadora": "Brickwise Investment GmbH (agente vinculado de Effecta GmbH)",
+  "emisor": "C&P Bricks GmbH (FN 574638 g)",
+  "vehiculo": "Sociedad austriaca emisora",
+  "token": "Token en la red «Brickprotocol»; tokenId None",
+  "derechoAdquirido": null,
+  "jurisdiccion": "AT",
+  "identificador": "ISIN AT0000A3AAY4",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "API pública (ficha v1)",
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3AAY4",
+      "versionOFecha": "updatedAt 2025-04-01T15:50:16.256Z",
+      "paginas": null,
+      "sha256": "bf6ca13940b333bfbbb23bb9fbb3216af3cfefd821a8144c6b601299a8900edb",
+      "leido": true
+    },
+    {
+      "titulo": "Investitionsbedingungen",
+      "url": "https://cdn.brickwise.at/d9191485-e127-47bc-8b94-de95e2750496.pdf",
+      "versionOFecha": "Tue, 13 Feb 2024 13:42:34 GMT",
+      "paginas": 25,
+      "sha256": "9362cdeceb2cfd1d3a2198600758b0ef19463b06db25661f23c9db879d1a5ffb",
+      "leido": true
+    },
+    {
+      "titulo": "Basisinformationsblatt (KID)",
+      "url": "https://cdn.brickwise.at/efa60a1b-9790-4d55-9488-a8817520dc45.pdf",
+      "versionOFecha": "Tue, 13 Feb 2024 13:42:07 GMT",
+      "paginas": 3,
+      "sha256": "9ee4db3d0ecd33bc2ee01619bd1b5cbe746af265a6f46c4173566a4229852071",
+      "leido": true
+    },
+    {
+      "titulo": "Informationsblatt AltFG",
+      "url": "https://cdn.brickwise.at/0e1fe97e-83cb-4bd8-8382-528f503ab67e.pdf",
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "BaFin (Alemania)",
+      "entidad": "Effecta GmbH",
+      "numero": "BaFin-ID 10133261",
+      "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+      "alcance": "Wertpapierinstitut: Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) y Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) desde 26.06.2021. Es la entidad bajo cuya responsabilidad actúa Brickwise; no acredita el producto ni al emisor.",
+      "consultadoUtc": "2026-11-01T15:02:28Z"
+    },
+    {
+      "regulador": "BaFin (Alemania)",
+      "entidad": "Brickwise Investment GmbH",
+      "numero": "80174029",
+      "url": "https://portal.mvp.bafin.de/database/VGVInfo/komfortsucheForm.do (registerNr=80174029)",
+      "alcance": "Vertraglich gebundener Vermittler (agente vinculado) con entidad responsable Effecta GmbH; activo desde 04.08.2021, sin fecha de baja; datos del registro a 31.10.2026. Sin licencia propia.",
+      "consultadoUtc": "2026-11-01T15:02:47Z"
+    },
+    {
+      "regulador": "CNMV (España)",
+      "entidad": "EFFECTA GmbH",
+      "numero": "5003 (registro 11/11/2020)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+      "alcance": "ESI del EEE en libre prestación en España; programa: recepción y transmisión de órdenes sobre valores negociables y participaciones de IIC. Pestaña Agentes: «No se han encontrado datos disponibles» (no consta Brickwise como agente notificado para España).",
+      "consultadoUtc": "2026-11-01T15:09:03Z"
+    },
+    {
+      "regulador": "Firmenbuch (Austria)",
+      "entidad": "C&P Bricks GmbH",
+      "numero": "FN 574638 g",
+      "url": null,
+      "alcance": "Número FN tomado del contrato/KID del emisor; no consultado en el Firmenbuch (consulta de pago). El emisor es una sociedad vehículo no supervisada; la emisión no está aprobada por la FMA (oferta con exención de folleto).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Effecta (buscador de entidades registradas)",
+      "resultado": "sin advertencia: devuelve EFFECTA GMBH como «Empresa de Servicios de Inversión Extranjera» registrada",
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "consultadoUtc": "2026-11-01T15:04:50Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "C&P Bricks (buscador de entidades registradas)",
+      "resultado": "sin coincidencias («No se han encontrado resultados»)",
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "consultadoUtc": "2026-11-01T15:06:29Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Brickwise, Effecta y emisores (buscador de entidades no autorizadas / advertencias)",
+      "resultado": "no_verificable: el botón «Buscar» no respondió (timeout de 30 s en 10 búsquedas, iniciadas a las 15:09 UTC del 01/11); no se afirma ausencia de advertencias",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:09:03Z"
+    },
+    {
+      "regulador": "FMA (Austria)",
+      "busqueda": "brickwise (Unternehmensdatenbank, entidades autorizadas)",
+      "resultado": "sin coincidencias («No entries found»): Brickwise no figura como entidad autorizada por la FMA; la lista de advertencias de la FMA no se consultó",
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise",
+      "consultadoUtc": "2026-11-02T08:42:28Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "\"stage\":\"deleted\",\"availableBricks\":1631,\"totalBricks\":2120,\"issueEndDate\":\"2025-03-26T22:00:00.000Z\"",
+      "dato": "desaparecida (emisión cancelada o retirada)",
+      "fuentePrimaria": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3AAY4",
+      "localizador": "investmentDetails.stage, availableBricks, issueEndDate",
+      "fechaDato": "2025-03-26",
+      "consultadoUtc": "2026-11-01T14:58:42Z",
+      "alcanceYLimites": "Ausente de /api/v2/assets el 01/11/2026. Motivo de la baja no publicado.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+      "dato": "1,5 % por compra y 1,5 % por venta",
+      "fuentePrimaria": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+      "localizador": "Kosteninformationen Brickwise, p. 1 (Last-Modified 01/04/2023)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:37Z",
+      "alcanceYLimites": "Comisión del intermediario sobre el importe de cada operación; los costes del producto (RIY) están en el KID de cada emisión y no se suman mecánicamente.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+      "dato": "Cuenta abierta a residentes del EEE (incluye España)",
+      "fuentePrimaria": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+      "localizador": "FAQ «Kann ich einen Account von jedem Land aus eröffnen?»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:01:51Z",
+      "alcanceYLimites": "Abrir cuenta no confirma que cada emisión se distribuya en España; exige KYC, test de conveniencia y app propia. Effecta figura en la CNMV en libre prestación (RTO), sin agentes notificados. Documentación solo en alemán.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird ... ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "dato": "Brickwise Investment GmbH (Múnich, HRB 269358), agente vinculado de Effecta GmbH",
+      "fuentePrimaria": "https://www.brickwise.at/imprint",
+      "localizador": "Impressum",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:01:50Z",
+      "alcanceYLimites": "Contrastado con el registro de agentes vinculados de la BaFin (nº 80174029, activo).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "custodia",
+      "literal": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+      "dato": "Autocustodia del token en la cuenta/app del inversor",
+      "fuentePrimaria": "https://cdn.brickwise.at/efa60a1b-9790-4d55-9488-a8817520dc45.pdf",
+      "localizador": "Basisinformationsblatt, p. 1 «Art»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:25Z",
+      "alcanceYLimites": "La recuperación de una cuenta exige identificación notarial (~120 € según Kosteninformationen p. 1, nota 3).",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Intermediario verificado: Brickwise Investment GmbH, agente vinculado nº 80174029 de Effecta GmbH (BaFin-ID 10133261); Effecta inscrita en la CNMV (nº 5003, libre prestación, RTO). El emisor es una SPV austriaca no supervisada y la oferta se hizo con exención de folleto, sin aprobación de la FMA."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "stage=deleted en la API v1; ausente de v2."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Cuenta para residentes del EEE con KYC; 1,5 % por operación; distribución en España no confirmada; documentos en alemán."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "KID en alemán, indicador de riesgo 6 de 7, posibilidad de pérdida total, sin fondo de garantía. Búsqueda de advertencias de la CNMV no completada (bloqueo técnico); FMA: sin coincidencias en la base de entidades, lista de advertencias no consultada."
+    }
+  },
+  "estadoOferta": "desaparecida",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": "BaFin: Effecta GmbH (BaFin-ID 10133261) y Brickwise Investment GmbH agente vinculado nº 80174029; CNMV: Effecta nº 5003",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Ninguno.",
+    "porQueNo": "Emisión dada de baja en la API."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "La ficha de la API marca stage=deleted: la emisión (15/02/2024–27/03/2025) se quedó en 489 de 2120 participaciones y no aparece en la API v2 ni en el mercado. No es una oferta.",
+  "bloqueos": [
+    "Buscador de advertencias de la CNMV sin respuesta (timeout).",
+    "Firmenbuch no consultado (de pago)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T13:10:50Z",
+    "finUtc": "2026-11-02T08:48:55Z"
+  }
+}

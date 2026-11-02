@@ -1,0 +1,159 @@
+{
+ "slug": "mwin",
+ "tipoExpediente": "candidata",
+ "grupo": "midas",
+ "proveedor": "Midas",
+ "plataformaSlug": "midas",
+ "entidadComercializadora": "Midas (web midas.app)",
+ "emisor": "Aureum Securitisation Fund acting in respect of compartment mWIN (según la web)",
+ "vehiculo": "Compartimento mWIN de Aureum Securitisation Fund (titulización, Luxemburgo); cartera de crédito senior grado de inversión gestionada por Wellington Management",
+ "token": "mWIN; Ethereum 0x4E72025984424E52838cf8953E2863eFf036B67A (también Avalanche)",
+ "derechoAdquirido": "Valor de un compartimento de titulización; términos solo en documentación DocSend (no leída)",
+ "jurisdiccion": "LU",
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [
+  {
+   "titulo": "Términos legales mWIN (DocSend)",
+   "url": "https://docsend.com/view/v92npwcc6aa5nzg8",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  },
+  {
+   "titulo": "Bundle JS de midas.app",
+   "url": "https://midas.app/assets/main-DOxid0Zj.js",
+   "versionOFecha": "01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "ESMA (registro de folletos)",
+   "entidad": "Aureum Securitisation Fund",
+   "numero": null,
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents (búsqueda por LEI 984500BB00BN6D2B7C48)",
+   "alcance": "Sin folleto; oferta exenta.",
+   "consultadoUtc": "2026-11-01T15:01:55Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "consultadoUtc": "2026-11-01T15:10:04Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas Software",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas%20Software",
+   "consultadoUtc": "2026-11-01T15:10:06Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "entidad",
+   "literal": "MWIN → Aureum Securitisation Fund · compartment: «acting in respect of compartment mWIN» · framework «Exempt Offer»",
+   "dato": "oferta exenta",
+   "fuentePrimaria": "https://midas.app/assets/main-DOxid0Zj.js",
+   "localizador": "mapa de emisores",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:10:46Z",
+   "alcanceYLimites": "Configuración de la web.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "estado",
+   "literal": "Vault de emisión: paused()=false · greenlistEnabled()=true",
+   "dato": "suscripción operativa solo para lista blanca",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x1725A66D810C0775f6B3B0FD85646D371dA19517 · vault de emisión 0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4 · vault de reembolso 0x605704d7b36d1677a8d242ded68eD505523c7924",
+   "localizador": "on-chain",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Ethereum únicamente.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "precio",
+   "literal": "latestRoundData 131766,87 · 2026-10-30T14:30:23Z",
+   "dato": "VL 131.766,87 USD por token (30/10/2026)",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x1725A66D810C0775f6B3B0FD85646D371dA19517 · vault de emisión 0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4 · vault de reembolso 0x605704d7b36d1677a8d242ded68eD505523c7924",
+   "localizador": "oráculo, ronda 78",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "No es un mínimo de inversión ni rentabilidad. Supply 66,46 tokens.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "minMTokenAmountForFirstDeposit() = 1000000000000000000 (1 mWIN)",
+   "dato": null,
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x1725A66D810C0775f6B3B0FD85646D371dA19517 · vault de emisión 0xF7F1b944FCDe7805F6Ef3088817145d2eB667db4 · vault de reembolso 0x605704d7b36d1677a8d242ded68eD505523c7924",
+   "localizador": "vault de emisión",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Indicio técnico de primer depósito ≈ 131.800 USD; no documentado.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://midas.app/mwin",
+   "localizador": "YTW de la ficha",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:20Z",
+   "alcanceYLimites": "403 hoy; el 22/10 se vio un YTW 5,66 % que no se revalida.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "Oferta exenta; vehículo no comprobado en registro."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Vault no pausado, solo lista blanca."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Lista blanca y primer depósito técnico de 1 token ≈ 131.800 USD; sin acceso minorista."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Documentos no leídos."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "solo_acreditados",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "decision": "no_admitir",
+ "motivoDecision": "Oferta exenta para lista blanca, con un primer depósito técnico de unos 131.800 USD y documentación solo en DocSend: no la puede comprar el particular común ni hay fuente primaria legible de condiciones y riesgos.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Cartera de crédito grado de inversión de Wellington con VL diario en cadena.",
+  "porQueNo": "Oferta exenta solo para lista blanca y ticket técnico de unos 131.800 USD."
+ },
+ "bloqueos": [
+  "midas.app/mwin 403; DocSend no leído."
+ ],
+ "categoriaTentativa": "Crédito privado",
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:11:07Z",
+  "finUtc": "2026-11-02T08:48:27Z",
+  "nota": "Sesión cortada por límite de uso entre 13:12 y 14:57 UTC; las horas de cada claim son las de la lectura real (inventario-consultas.json)."
+ }
+}
