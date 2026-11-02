@@ -42,7 +42,7 @@
       "url": "https://robinhood.com/eu/en/invest",
       "versionOFecha": "consultada 2026-11-01",
       "paginas": null,
-      "sha256": "a8ebcd271955",
+      "sha256": "a8ebcd271955d0ed006dd1c85c5b13ed13849a5b228fa65cc6dfd7d45cac0d0f",
       "leido": true
     }
   ],
@@ -74,10 +74,10 @@
     },
     {
       "regulador": "Lietuvos bankas",
-      "busqueda": "prensa (julio 2025)",
-      "resultado": "incidencia histórica: el Banco de Lituania pidió aclaraciones sobre la estructura y comunicación de los tokens de OpenAI y SpaceX (julio de 2025, según prensa; no consta resolución sancionadora en la ficha del registro)",
+      "busqueda": "incidencia en prensa (julio 2025), vista solo en resultados del buscador",
+      "resultado": "no verificado en fuente primaria: según CNBC/Finance Magnates, el Banco de Lituania pidió aclaraciones sobre la estructura y comunicación de los tokens de OpenAI y SpaceX en julio de 2025; la ficha del registro (LB002288) no muestra sanción",
       "url": "https://www.financemagnates.com/forex/robinhoods-tokenized-stocks-face-eu-scrutiny-as-openai-distances-itself-report/",
-      "consultadoUtc": "2026-11-01T14:59:00Z"
+      "consultadoUtc": null
     }
   ],
   "claims": [
@@ -278,7 +278,8 @@
   "motivoDecision": "Cumple los cuatro criterios con fuente primaria: entidad autorizada y pasaportada en la CNMV, oferta abierta, acceso como minorista con test de conveniencia, mínimo y comisiones claros, salida por recompra y riesgos del KID. Debe presentarse como derivado tokenizado, no como acción tokenizada en propiedad.",
   "bloqueos": [
     "robinhood.com/eu/en/stock-tokens/ y la ayuda de países devuelven 404; no hay lista oficial de países (se apoya en la web en español y en la ficha de la CNMV)",
-    "La red blockchain no se nombra en los documentos leídos"
+    "La red blockchain no se nombra en los documentos leídos",
+    "La incidencia del Banco de Lituania de julio de 2025 solo se vio en resultados de búsqueda; no se leyó la noticia ni un comunicado oficial"
   ],
   "consulta": {
     "inicioUtc": "2026-11-01T14:58:16Z",

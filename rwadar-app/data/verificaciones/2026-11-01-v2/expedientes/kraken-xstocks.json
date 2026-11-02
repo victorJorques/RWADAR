@@ -62,9 +62,39 @@
       "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
       "alcance": "ESI del EEE en libre prestación en España",
       "consultadoUtc": "2026-11-01T15:01:04Z"
+    },
+    {
+      "regulador": "CNMV (buscador de entidades)",
+      "entidad": "Backed Assets (JE) Limited",
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad.aspx",
+      "alcance": "Búsqueda «BACKED»: 9 resultados, ninguno es Backed Assets (JE) Limited; no consta en registros de entidades (la notificación del folleto no se comprobó)",
+      "consultadoUtc": "2026-11-01T15:09:03Z"
     }
   ],
-  "advertenciasReguladores": [],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Kraken",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-02T08:42:15Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Payward",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-02T08:42:26Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Backed",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-02T08:42:36Z"
+    }
+  ],
   "claims": [
     {
       "campo": "accesoEspana",
@@ -170,7 +200,7 @@
     },
     "riesgosYAlertas": {
       "veredicto": "cumple_con_limites",
-      "nota": "Riesgo de crédito del emisor y del intermediario, liquidez, tecnología. Discrepancia sobre dividendos entre FAQ y divulgación de riesgos."
+      "nota": "Riesgo de crédito del emisor y del intermediario, liquidez, tecnología. Discrepancia sobre dividendos entre FAQ y divulgación de riesgos. Sin advertencias de la CNMV para Kraken, Payward ni Backed (02/11/2026)."
     }
   },
   "estadoOferta": "abierta",
@@ -242,6 +272,6 @@
   ],
   "consulta": {
     "inicioUtc": "2026-11-01T15:06:34Z",
-    "finUtc": "2026-11-01T15:10:27Z"
+    "finUtc": "2026-11-02T08:42:36Z"
   }
 }

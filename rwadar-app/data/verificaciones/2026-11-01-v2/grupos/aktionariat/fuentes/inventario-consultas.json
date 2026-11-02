@@ -601,5 +601,41 @@
   "bytes": 823403,
   "sha256": "fd8413a7480957a627a8c81c4505ce71cc1d3012f56796359507720845956854",
   "nota": "2401 entradas; búsqueda local por nombre"
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx (nombre: Aktionariat)",
+  "archivo": "cnmv-advertencias-busquedas.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:09:18Z",
+  "bytes": 578,
+  "sha256": "8477146ca3452a0d32a419f6f3ca67a14481a57272a491a80add4403686f4c85",
+  "nota": "Buscador de entidades advertidas CNMV vía Playwright; resultado «No hay datos disponibles». Búsquedas de otros nombres interrumpidas (timeout) y no registradas."
+ },
+ {
+  "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
+  "archivo": "cnmv-advertencias-ultima-busqueda.png",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:09:18Z",
+  "bytes": 263083,
+  "sha256": "3badcda1664a86e664915d858bab385798eaaf7b4c02386146b4e852a13cea80",
+  "nota": "Captura de la búsqueda «Aktionariat»"
+ },
+ {
+  "url": "https://www.aktionariat.com/api/landing/getTokenizedCompanies (capturado al renderizar /tokenized-companies)",
+  "archivo": "aktionariat-getTokenizedCompanies.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:40Z",
+  "bytes": 20172,
+  "sha256": "547dce044121c9c1522c56613e73ec95e91bebcf9aa3a7f3fe2fc1c021a82d62",
+  "nota": "Respuesta de red capturada con Playwright"
+ },
+ {
+  "url": "https://www.aktionariat.com/tokenized-companies",
+  "archivo": "aktionariat-tokenized-companies-render.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:40Z",
+  "bytes": 3661,
+  "sha256": "ea165ef889a598508d5edfbeaa01495038f71990a4aad172312e3591dfa5d4c1",
+  "nota": "Texto renderizado con Playwright"
  }
 ]

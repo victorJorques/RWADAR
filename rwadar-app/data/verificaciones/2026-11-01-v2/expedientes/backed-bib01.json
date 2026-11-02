@@ -1,0 +1,212 @@
+{
+ "slug": "backed-bib01",
+ "tipoExpediente": "candidata",
+ "grupo": "radar-tesoro",
+ "proveedor": "Backed Finance",
+ "plataformaSlug": "backed-finance",
+ "entidadComercializadora": null,
+ "emisor": "Backed Assets (JE) Limited (Jersey; LEI 984500001AB7C6C7F577)",
+ "vehiculo": "SPV de Jersey dedicado a emitir certificados (tracker certificates) colateralizados 1:1",
+ "token": "bIB01 (exposición al ETF iShares USD Treasury Bond 0-1yr); red y contrato no verificados hoy",
+ "derechoAdquirido": "Certificado de deuda al portador (tracker certificate) frente al emisor, con colateral segregado; no es una participación del ETF",
+ "jurisdiccion": "JE",
+ "identificador": "LEI 984500001AB7C6C7F577; folleto base FMA-LI BPWO-80; ISIN de bIB01 no verificado",
+ "moneda": "USD",
+ "documentos": [
+  {
+   "titulo": "FMA Liechtenstein · certificado de aprobación del folleto base BPWO-80 (copia publicada por la ASF de Rumanía)",
+   "url": "https://www.asfromania.ro/uploads/articole/attachments/6a018e00def77510639131.pdf",
+   "versionOFecha": "Aprobado el 08/05/2026",
+   "paginas": 2,
+   "sha256": "be143057ec2b2cd4a5275a8bccdad28689c8a8504006e9f4f7369b6816d664fe",
+   "leido": true
+  },
+  {
+   "titulo": "FMA Liechtenstein · certificado de aprobación del suplemento SUPP-62 (copia publicada por la MFSA)",
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/08/Backed-Assets-JE-Limited-Certificate-of-Approval-of-a-Supplement-dated-04-August-2026.pdf",
+   "versionOFecha": "Aprobado el 04/08/2026",
+   "paginas": 2,
+   "sha256": "6f53214d8f0ce549178fa99904ad2bb4c882bd2ebd8028aab338d959777fb090",
+   "leido": true
+  },
+  {
+   "titulo": "xStocks · Product Legal Overview",
+   "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+   "versionOFecha": "«Last updated 1 month ago» a 01/11/2026",
+   "paginas": null,
+   "sha256": "896fa6e0e18d7f12cc9695e1a31a9cf0d8130801d582e59183420f9bcf41920a",
+   "leido": true
+  },
+  {
+   "titulo": "Backed · portada y aviso legal",
+   "url": "https://backed.fi/",
+   "versionOFecha": "Leída el 01/11/2026",
+   "paginas": null,
+   "sha256": "7cc49761d1991802869ce3a290358e9311bf721dbbf14115f7826b8e0ddf58d6",
+   "leido": true
+  },
+  {
+   "titulo": "Folleto base, suplementos y condiciones finales de bIB01",
+   "url": "https://assets.backed.fi/legal-documentation",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "FMA Liechtenstein",
+   "entidad": "Backed Assets (JE) Limited",
+   "numero": "Folleto base BPWO-80 (cert. 20260508_384472); suplemento SUPP-62 (cert. 20260804_389130)",
+   "url": "https://www.asfromania.ro/uploads/articole/attachments/6a018e00def77510639131.pdf",
+   "alcance": "Aprobación de folleto de valores de deuda de menos de 100 000 EUR, notificada entre otros a la CNMV. No es autorización de la plataforma ni aval del producto.",
+   "consultadoUtc": "2026-11-01T13:12:38Z"
+  },
+  {
+   "regulador": "JFSC (Jersey)",
+   "entidad": "Backed Assets (JE) Limited",
+   "numero": null,
+   "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+   "alcance": "Registro y consentimientos COBO/CGPO según la documentación de xStocks; no se consultó el registro de la JFSC.",
+   "consultadoUtc": "2026-11-01T13:11:06Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Backed (entidades no autorizadas)",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Backed",
+   "consultadoUtc": "2026-11-01T15:10:14Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "xStocks (entidades no autorizadas)",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=xStocks",
+   "consultadoUtc": "2026-11-01T15:10:38Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registro",
+   "literal": "We hereby certify that the Base Prospectus ... was approved by us on 08 May 2026 ... National Prospectus Identifier: BPWO-80",
+   "dato": "folleto base aprobado 08/05/2026",
+   "fuentePrimaria": "https://www.asfromania.ro/uploads/articole/attachments/6a018e00def77510639131.pdf",
+   "localizador": "Certificado FMA 20260508_384472, p. 1",
+   "fechaDato": "2026-05-08",
+   "consultadoUtc": "2026-11-01T13:12:38Z",
+   "alcanceYLimites": "Lista de destinatarios incluye «Comisión Nacional del Mercado de Valores, Spain». Pasaporte del folleto, no de un distribuidor",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "registro",
+   "literal": "Supplement ... approved by us on 4 August 2026 ... SUPP-62 ... Base Prospectus BPWO-80",
+   "dato": "suplemento 04/08/2026",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/08/Backed-Assets-JE-Limited-Certificate-of-Approval-of-a-Supplement-dated-04-August-2026.pdf",
+   "localizador": "Certificado FMA 20260804_389130, p. 1",
+   "fechaDato": "2026-08-04",
+   "consultadoUtc": "2026-11-01T13:12:38Z",
+   "alcanceYLimites": "Contenido del suplemento no leído",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Tokenized financial assets are NOT offered by us or by any affiliated entity of ours directly to the public and will only be offered to “Qualified Investors”.",
+   "dato": "Backed solo ofrece directamente a inversores cualificados",
+   "fuentePrimaria": "https://backed.fi/",
+   "localizador": "backed.fi, aviso legal al pie",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:05Z",
+   "alcanceYLimites": "El minorista solo podría comprar a través de distribuidores autorizados terceros, no identificados para España en este ciclo",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "distribucion",
+   "literal": "This approval is passportable across the European Economic Area, enabling licensed third-party distributors to offer xStocks to retail clients.",
+   "dato": "minorista UE solo vía distribuidores terceros",
+   "fuentePrimaria": "https://docs.xstocks.fi/docs/product-legal-overview",
+   "localizador": "xStocks Product Legal Overview, Prospectus & Distribution",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:06Z",
+   "alcanceYLimites": "Se refiere a xStocks; no confirma que bIB01 siga emitiéndose ni quién lo distribuye en España",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "derecho",
+   "literal": "Each xStock is a bearer debt instrument classified as a tracker certificate ... It does not confer shareholder voting rights.",
+   "dato": "certificado de deuda al portador",
+   "fuentePrimaria": "https://docs.xstocks.fi/docs/product-legal-overview",
+   "localizador": "xStocks Product Legal Overview, Legal Classification",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:06Z",
+   "alcanceYLimites": "Riesgo emisor mitigado por colateral y agente de garantías",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "documentos",
+   "literal": "Access Restricted ... you are trying to access our website from a restricted country.",
+   "dato": null,
+   "fuentePrimaria": "https://assets.backed.fi/legal-documentation",
+   "localizador": "assets.backed.fi/legal-documentation",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:19Z",
+   "alcanceYLimites": "Bloqueo geográfico (la conexión sale por EE. UU.): no se pudieron leer condiciones finales, ISIN ni estado de bIB01",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "estado",
+   "literal": "bTokens DeFi Dashboard (enlace al pie)",
+   "dato": null,
+   "fuentePrimaria": "https://backed.fi/",
+   "localizador": "backed.fi, pie de página",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:05Z",
+   "alcanceYLimites": "defi.backed.fi devuelve solo el título (526 bytes, requiere JavaScript). No se pudo confirmar que bIB01 esté activo",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Folleto base del emisor aprobado por la FMA-LI (08/05/2026) y notificado a la CNMV; es aprobación de folleto, no licencia de distribución."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "No se pudo confirmar que bIB01 siga emitiéndose: documentación legal bloqueada por geolocalización y panel bTokens sin contenido legible."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Backed solo vende directamente a inversores cualificados; el minorista depende de un distribuidor tercero no identificado para España. Mínimo, comisiones y salida no verificados."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Riesgo de emisor y estructura de colateral descritos en xStocks; sin advertencias de la CNMV."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "FMA Liechtenstein (aprobación de folleto BPWO-80, notificado a la CNMV)",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Folleto base aprobado en Liechtenstein y notificado a la CNMV.",
+  "porQueNo": "Condiciones finales de bIB01 ilegibles (bloqueo geográfico), estado del producto sin confirmar y ningún distribuidor minorista identificado en España."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Falta lo esencial con fuente primaria: estado de bIB01, condiciones finales, mínimo, comisiones y un distribuidor que lo venda a particulares en España. Backed solo vende directamente a inversores cualificados.",
+ "bloqueos": [
+  "assets.backed.fi/legal-documentation y backedassets.fi bloquean la conexión por país (salida por EE. UU.).",
+  "defi.backed.fi requiere JavaScript; no se leyó con navegador."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:11:05Z",
+  "finUtc": "2026-11-01T15:10:38Z"
+ }
+}

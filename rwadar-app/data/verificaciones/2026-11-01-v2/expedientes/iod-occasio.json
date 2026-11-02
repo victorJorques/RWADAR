@@ -1,0 +1,289 @@
+{
+ "slug": "iod-occasio",
+ "tipoExpediente": "publicada",
+ "grupo": "alius-hausera",
+ "proveedor": "Alius Capital",
+ "plataformaSlug": "alius-capital",
+ "entidadComercializadora": "ALIUS CAPITAL STOS PSFP S.L. (NIF B76632793); en el registro de la CNMV figura como ADVENTUREES CAPITAL PFP, SOCIEDAD LIMITADA",
+ "emisor": "IOD APPLICATIONS, S.L.",
+ "vehiculo": "Emisión de obligaciones no convertibles de la propia sociedad (escritura de 28/09/2026)",
+ "token": "IOD Occasio (IODO1); la API pública indica network=80002 (identificador de la red de pruebas Polygon Amoy) y dirección 0x6355986F7Af125f0D1b2A90705C2aF86D3b4e354; no se verificó en cadena",
+ "derechoAdquirido": "Obligaciones simples tokenizadas de 100 EUR nominales, interés 12 % nominal anual pagado con el principal al vencimiento; directas, no subordinadas y sin garantía real",
+ "jurisdiccion": "ES",
+ "identificador": "Identificador de la oferta 9598007MF0DK0DLQJ78000001616",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Ficha de datos fundamentales IOD v2",
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+   "versionOFecha": "2026-09-28",
+   "paginas": null,
+   "sha256": "92dd2d29dd6c2fa6a6a3617abe27294efde05058052aeeaae9000b3c5b647055",
+   "leido": true
+  },
+  {
+   "titulo": "Escritura de emisión del bono (copia simple electrónica, 42 págs.)",
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+   "versionOFecha": "2026-09-28",
+   "paginas": 42,
+   "sha256": "dd65b08adf32c28fc7365e64289732bd1b8000e5353ec6b9ddffb7de15c68284",
+   "leido": true
+  },
+  {
+   "titulo": "Campaña pública (API, campos públicos)",
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "versionOFecha": "consulta 2026-11-01",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "ADVENTUREES CAPITAL PFP, SOCIEDAD LIMITADA (NIF B76632793; web registrada www.aliuscap.com)",
+   "numero": "PSFP nº 11, fecha de registro 03/11/2023",
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793",
+   "alcance": "Registro oficial de proveedores de servicios de financiación participativa (Reglamento (UE) 2020/1503). Autoriza la plataforma, no aprueba cada proyecto. La denominación del registro difiere de la que usa la web (ALIUS CAPITAL STOS PSFP S.L.); coincide el NIF B76632793 de las condiciones generales y del pie de la ficha de datos. No se leyó el pasaporte a otros Estados ni el programa de actividades detallado (pestaña sin contenido en la extracción).",
+   "consultadoUtc": "2026-11-01T14:59:25Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. (NIF A25988981)",
+   "numero": "Sociedades y Agencias de Valores nº 334, fecha de registro 06/02/2026",
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981",
+   "alcance": "Agencia de valores; su programa de actividades incluye custodia y administración, colocación sin compromiso firme y gestión de SMN sobre instrumentos basados en tecnología de registro distribuido. Designada como ERIR en la documentación de la emisión; no se comprobó la inscripción de la ERIR de esta emisión concreta en la CNMV.",
+   "consultadoUtc": "2026-11-01T15:08:16Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Alius Capital",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius+Capital",
+   "consultadoUtc": "2026-11-01T15:06:44Z",
+   "alcance": "Buscador de advertencias de la CNMV (entidades no autorizadas). Buscador validado con un nombre advertido conocido. No se consultó la pestaña de advertencias de reguladores extranjeros. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Adventurees",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees",
+   "consultadoUtc": "2026-11-01T15:06:47Z",
+   "alcance": "Buscador de advertencias de la CNMV (entidades no autorizadas). Buscador validado con un nombre advertido conocido. No se consultó la pestaña de advertencias de reguladores extranjeros. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "IOD Applications",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=IOD+Applications",
+   "consultadoUtc": "2026-11-01T15:06:54Z",
+   "alcance": "Buscador de advertencias de la CNMV (entidades no autorizadas). Buscador validado con un nombre advertido conocido. No se consultó la pestaña de advertencias de reguladores extranjeros. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Token City",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token+City",
+   "consultadoUtc": "2026-11-01T15:06:51Z",
+   "alcance": "Buscador de advertencias de la CNMV (entidades no autorizadas). Buscador validado con un nombre advertido conocido. No se consultó la pestaña de advertencias de reguladores extranjeros. No aparecer no equivale a estar autorizado."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "campaign_status: CLOSED; end_date: 2026-10-23; invested: 120000; invested_tokens: 1200 · página: «Cerrado», botón «Invertir» deshabilitado · listado: «Emisión completada»",
+   "dato": "Cerrada y completa: 120.000 EUR de 120.000 EUR (1.200 de 1.200 tokens)",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "localizador": "API campaign/campaign_progress; página del proyecto (cabecera y botón); aliuscap.com/invest (tarjeta IOD)",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-01T15:04:28Z",
+   "alcanceYLimites": "Cierre de la campaña primaria; no acredita desembolso, acta de cierre ni pago futuro. Sin campaña nueva de IOD en los listados CAMPAIGN, PRE_CAMPAIGN y PRIVATE_CAMPAIGN.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "plazo",
+   "literal": "Fecha de vencimiento: la fecha de vencimiento es a los doce meses desde la finalización del periodo de desembolso",
+   "dato": "Vencimiento 12 meses tras el desembolso (48 h tras fin de suscripción); fecha exacta no publicada",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+   "localizador": "Escritura, PRIMERO (j); FDF §3 «Plazo de desembolso» y «Plazo de vencimiento»",
+   "fechaDato": "2026-09-28",
+   "consultadoUtc": "2026-11-01T15:04:42Z",
+   "alcanceYLimites": "No se publicó acta notarial de cierre; no fechar el vencimiento.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "Distribución de intereses en el momento del reembolso al 12% nominal anual",
+   "dato": "12 % nominal anual contractual de una emisión ya cerrada",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+   "localizador": "Escritura, PRIMERO (l)",
+   "fechaDato": "2026-09-28",
+   "consultadoUtc": "2026-11-01T15:04:42Z",
+   "alcanceYLimites": "No es una oferta disponible: no mostrar como rentabilidad actual.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "minimum_offer_money: 100 · «Suscripción mínima … CIEN MIL EUROS (100.000,00 €)»",
+   "dato": "Orden mínima por inversor 100 EUR según API; 100.000 EUR es el mínimo de la emisión",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "localizador": "API asset_issuance_relational.minimum_offer_money; escritura PRIMERO (r)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:04:28Z",
+   "alcanceYLimites": "La FDF no fija un mínimo por inversor; dato de API sin documento que lo respalde. Irrelevante hoy: emisión cerrada.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "seguro",
+   "literal": "El seguro no constituye una garantía de la Emisión ni tiene como beneficiarios a los titulares de los Valores.",
+   "dato": "Seguro de caución de hasta el 90 % sobre las facturas, no a favor del inversor",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+   "localizador": "Escritura, PRIMERO (d)",
+   "fechaDato": "2026-09-28",
+   "consultadoUtc": "2026-11-01T15:04:42Z",
+   "alcanceYLimites": "Matiza la página («cobertura de seguro de caución de hasta el 90%»).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida",
+   "literal": "No hay entidades que estén comprometidas con el emisor para suministrar liquidez a la Emisión.",
+   "dato": "Sin proveedor de liquidez; transmisión libre pero dependiente de contraparte",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+   "localizador": "Escritura, PRIMERO (t); FDF §4 «Riesgo de iliquidez»",
+   "fechaDato": "2026-09-28",
+   "consultadoUtc": "2026-11-01T15:04:42Z",
+   "alcanceYLimites": "No se observó mercado secundario en Alius.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "La emisión irá dirigida tanto a inversores experimentados como no experimentados.",
+   "dato": "Abierta a no experimentados mientras estuvo en campaña",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+   "localizador": "Escritura, PRIMERO (n)",
+   "fechaDato": "2026-09-28",
+   "consultadoUtc": "2026-11-01T15:04:42Z",
+   "alcanceYLimites": "Ya no es contratable.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "la emisión está libre de comisiones y gastos para el suscriptor",
+   "dato": "Sin comisiones para el suscriptor",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+   "localizador": "Escritura, PRIMERO (i)",
+   "fechaDato": "2026-09-28",
+   "consultadoUtc": "2026-11-01T15:04:42Z",
+   "alcanceYLimites": "Costes de transferencia o tarjeta posibles según condiciones de Alius.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Plataforma PSFP CNMV nº 11; ERIR Token City European Exchange A.V. (CNMV nº 334). Emisión no aprobada por la CNMV."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "Cerrada y completa el 23/10/2026; no hay nueva emisión de IOD."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "No se puede comprar: ni primario ni reventa observada."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple",
+   "nota": "Riesgos documentados; sin advertencias CNMV por los nombres buscados."
+  }
+ },
+ "estadoOferta": "cerrada",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "coleccion",
+   "antes": "en_camino",
+   "ahora": "propuesta de retirada: emisión cerrada y completa, sin nueva emisión ni reventa",
+   "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "critico": true
+  },
+  {
+   "campo": "estado",
+   "antes": "No abierta el 22/10 (120.000 de 120.000)",
+   "ahora": "CLOSED, fin 23/10/2026, «Emisión completada» el 01/11",
+   "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/CLOSED/expand/type,asset,campaign,campaign_progress,asset_issuance_relational",
+   "critico": false
+  },
+  {
+   "campo": "documentos",
+   "antes": "Solo FDF",
+   "ahora": "Escritura de emisión de 28/09/2026 publicada; el seguro no beneficia al inversor",
+   "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "IOD Occasio",
+  "categoria": "Crédito privado",
+  "pais": "ES",
+  "tipo": "rendimiento",
+  "coleccion": "en_camino",
+  "resumen": "Bono tokenizado de IOD Applications en Alius Capital para comprar derechos de cobro de facturas. La emisión se cerró completa el 23/10/2026 y ya no se puede suscribir.",
+  "rentabilidad": null,
+  "metricas": [
+   {
+    "etiqueta": "Estado · 01/11/2026",
+    "valor": "Cerrada: 120.000 € de 120.000 €"
+   },
+   {
+    "etiqueta": "Supervisor",
+    "valor": "Plataforma registrada en la CNMV (PSFP nº 11)"
+   },
+   {
+    "etiqueta": "Salida",
+    "valor": "Pago único al vencimiento, 12 meses tras el desembolso"
+   }
+  ],
+  "avisos": [
+   "Emisión cerrada: no admite nuevas inversiones.",
+   "El seguro de caución cubre las facturas del emisor, no al inversor."
+  ],
+  "url": "https://aliuscap.com/projects/iodo1",
+  "fuentesActuales": [
+   "https://aliuscap.com/projects/iodo1",
+   "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299"
+  ],
+  "lugar": "Madrid · España",
+  "pasos": [
+   "Emisión ya cerrada",
+   "Pago al vencimiento"
+  ],
+  "concepto": "una pila de facturas sobre una mesa con un reloj de arena"
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV · registro de PSFP nº 11 (Alius Capital, NIF B76632793)",
+  "documentacionClara": "si",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "si",
+  "porQueDestaca": "Escritura y ficha de datos públicas y coherentes con la campaña.",
+  "porQueNo": "Cerrada y completa desde el 23/10/2026: no se puede comprar y no hay nueva emisión anunciada."
+ },
+ "decision": "retirar_propuesta",
+ "motivoDecision": "Una emisión cerrada y completa no es una oferta «en camino» y resta confianza en la colección. Proponer retirarla (decide Víctor). Alternativa: si se quiere conservar la referencia a la plataforma, sustituirla por una ficha genérica «Alius Capital · próximas emisiones», sin la cifra del 12 %.",
+ "bloqueos": [
+  "Sin acta notarial de cierre publicada: no se puede fechar el vencimiento.",
+  "No se verificó el token en cadena."
+ ],
+ "conflictos": [
+  "Página: «cobertura de seguro de caución de hasta el 90%» · escritura: el seguro no es garantía de la emisión ni beneficia a los titulares.",
+  "Escritura: suscripción mínima 100.000 EUR (de la emisión) · API: minimum_offer_money 100 EUR (por orden)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T15:02:20Z",
+  "finUtc": "2026-11-01T15:05:19Z"
+ }
+}

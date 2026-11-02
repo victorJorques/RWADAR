@@ -286,5 +286,37 @@
   "consultadoUtc": "2026-11-01T15:10:43Z",
   "bytes": 212159,
   "sha256": "2a7a545b59c4cf4e059a797243f18bdf051c661deb3acf9d4b82a6647bcddb21"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, búsqueda «ONCHAIN», Playwright)",
+  "archivo": "fuentes/cnmv-entidad-onchain.html",
+  "http": "playwright",
+  "consultadoUtc": "2026-11-01T15:01:40Z",
+  "bytes": 213476,
+  "sha256": "8c3a60a00e14c97d7ee8aaae6e77f17d941fe11ac618a66775691f8380e3c0e1"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, búsqueda «FRANKLIN TEMPLETON», Playwright)",
+  "archivo": "fuentes/cnmv-entidad-franklin-templeton.html",
+  "http": "playwright",
+  "consultadoUtc": "2026-11-01T15:01:49Z",
+  "bytes": 218903,
+  "sha256": "2c9a9e5cfb37c98cc8198d0b83455e007f0b9b762f7295e157b59455b4fb3ddc"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/DatosEntidad?nif=N0363289J (Playwright)",
+  "archivo": "fuentes/cnmv-ft-onchain-funds-ficha.html",
+  "http": "playwright",
+  "consultadoUtc": "2026-11-01T15:04:55Z",
+  "bytes": 208966,
+  "sha256": "263968412370be4936077c8bd95c750db56e17caa4f91f3912cbcc60e95aa119"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Backed (Playwright, captura parcial; ver cnmv-adv-t1-backed.html)",
+  "archivo": "fuentes/cnmv-advertencias-backed.html",
+  "http": "playwright",
+  "consultadoUtc": "2026-11-01T15:08:33Z",
+  "bytes": 209734,
+  "sha256": "6bf767ac373fb646c5229466cd30f7bb98a04a4e336854c35d647062df8dd0b2"
  }
 ]

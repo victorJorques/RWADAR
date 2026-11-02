@@ -1,0 +1,206 @@
+{
+ "slug": "hausera-alicante-2",
+ "tipoExpediente": "candidata",
+ "grupo": "alius-hausera",
+ "proveedor": "Hausera",
+ "plataformaSlug": "hausera",
+ "entidadComercializadora": "HOLDTX SPAIN, S.L. (operador de la plataforma; no ESI ni PSFP según sus términos)",
+ "emisor": "SPV del Grupo Hausera identificada en cada documento de emisión (para Alicante 2, no publicada)",
+ "vehiculo": "SPV por operación inmobiliaria (CRV/CRA)",
+ "token": "Según términos, instrumentos que pueden representarse mediante TRD; sin datos de token para Alicante 2",
+ "derechoAdquirido": "Obligaciones u otros valores de la SPV según su documento de emisión",
+ "jurisdiccion": "ES",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Oportunidades (portada de proyectos)",
+   "url": "https://hausera.io/oportunidades/",
+   "versionOFecha": "consulta 2026-11-02",
+   "paginas": null,
+   "sha256": "c04d273d108fa74520cb4311378b0807dac24e09c59eba61066f259c3f5c0dd2",
+   "leido": true
+  },
+  {
+   "titulo": "Términos y condiciones de Hausera",
+   "url": "https://hausera.io/terms/",
+   "versionOFecha": "sin fecha; copia del 23/10/2026",
+   "paginas": null,
+   "sha256": "f958d66e2f2e303d37b8d165e7c8ecea5eccdfab2b801a32fc3ca4f56049e25b",
+   "leido": true
+  },
+  {
+   "titulo": "Documento de emisión de Alicante 2",
+   "url": null,
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "HOLDTX SPAIN, S.L. (titular de la plataforma hausera.io)",
+   "numero": "sin registro como PSFP ni como ESI",
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "alcance": "No figura en el listado de proveedores de financiación participativa de la CNMV consultado el 01/11/2026 ni en el listado de ESI españolas. Sus propios términos dicen que no es empresa de servicios de inversión ni presta servicios de inversión. Inscrita en el Registro Mercantil de Murcia, hoja MU-106265 (según sus términos, no consultado en el registro).",
+   "consultadoUtc": "2026-11-01T14:59:16Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Hausera",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+   "consultadoUtc": "2026-11-01T15:06:48Z",
+   "alcance": "Buscador de advertencias de la CNMV (entidades no autorizadas). Buscador validado con un nombre advertido conocido. No se consultó la pestaña de advertencias de reguladores extranjeros. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Holdtx",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx",
+   "consultadoUtc": "2026-11-01T15:06:49Z",
+   "alcance": "Buscador de advertencias de la CNMV (entidades no autorizadas). Buscador validado con un nombre advertido conocido. No se consultó la pestaña de advertencias de reguladores extranjeros. No aparecer no equivale a estar autorizado."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "Alicante 2 · PRÓXIMA OPORTUNIDAD · Inicio de preventa: 04/11/2026 · Inicio de oferta pública: 11/11/2026 · Importe a financiar: 5.196.000€ · tarjeta: «PREVENTA: 11/11/2026 09:00h»",
+   "dato": "Próxima: preventa 04/11/2026 y oferta pública 11/11/2026 (bloque destacado); la tarjeta del listado dice preventa 11/11/2026",
+   "fuentePrimaria": "https://hausera.io/oportunidades/",
+   "localizador": "hausera.io/oportunidades/, bloque «PRÓXIMA OPORTUNIDAD» y tarjeta Alicante 2",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-02T08:42:13Z",
+   "alcanceYLimites": "Anuncio comercial; preventa = manifestación de interés no vinculante (términos §3). Conflicto 04/11 frente a 11/11 en la misma página.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "Duración (meses): 20 · Rentabilidad sobre inversión: 22,00% · Rentabilidad anualizada: 13,20 %",
+   "dato": null,
+   "fuentePrimaria": "https://hausera.io/oportunidades/",
+   "localizador": "Bloque «PRÓXIMA OPORTUNIDAD»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-02T08:42:13Z",
+   "alcanceYLimites": "Proyección del promotor para una operación CRV, sin documento de emisión: no se publica.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "entidad",
+   "literal": "HOLDTX SPAIN, S.L., en su condición de Titular de la Plataforma … no actúa como empresa de servicios de inversión",
+   "dato": "Operador tecnológico no supervisado; la inversión se formaliza con cada SPV emisora",
+   "fuentePrimaria": "https://hausera.io/terms/",
+   "localizador": "Términos §1 y §4 («HOLDTX SPAIN, S.L., en su condición de Titular…»); Copia del 23/10/2026 en docs/investigacion/2026-10-23/hausera/ (no releída en este ciclo)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-10-23T19:28:30Z",
+   "alcanceYLimites": "Las cotizadas se contratan a través de un tercero (Portfolio Stock Exchange según la página de cotizadas); su registro no se consultó.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "El importe mínimo son 100€ · El valor unitario de cada participación son 1.000€, por lo que ese es el importe mínimo de inversión.",
+   "dato": null,
+   "fuentePrimaria": "https://hausera.io/mercado-secundario/",
+   "localizador": "Portada (FAQ) y página de cotizadas; Copia del 23/10/2026 en docs/investigacion/2026-10-23/hausera/ (no releída en este ciclo)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-10-23T19:28:30Z",
+   "alcanceYLimites": "Dos mínimos según modalidad (100 EUR general / 1.000 EUR cotizadas); no se asigna ninguno a Alicante 2 sin su documento de emisión.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Hausera no cobra nada a los usuarios por invertir · coste externo … Portfolio Stock Exchange … 3€ para particulares y 18€ para empresas",
+   "dato": "Sin comisión de Hausera; 3 EUR únicos de alta en Portfolio para cotizadas",
+   "fuentePrimaria": "https://hausera.io/mercado-secundario/",
+   "localizador": "FAQ «¿Invertir tiene un coste asociado?»; cotizadas; Copia del 23/10/2026 en docs/investigacion/2026-10-23/hausera/ (no releída en este ciclo)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-10-23T19:28:30Z",
+   "alcanceYLimites": "Tarifas contractuales de Portfolio no revisadas; no equivale a coste total cero.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Hausera está dirigida a todo tipo de inversores: minoristas, profesionales e institucionales.",
+   "dato": null,
+   "fuentePrimaria": "https://hausera.io/faq/",
+   "localizador": "FAQ «¿A quién va dirigido?»; términos (sin lista de países); Copia del 23/10/2026 en docs/investigacion/2026-10-23/hausera/ (no releída en este ciclo)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-10-23T19:28:30Z",
+   "alcanceYLimites": "No hay admisión explícita por residencia; no se infiere del idioma ni del domicilio. Requiere identificación y cuestionario (FAQ).",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": "La existencia de mercado secundario no está garantizada, salvo que expresamente se establezca lo contrario en la documentación de la emisión.",
+   "dato": "Transmisión sujeta al documento de emisión; sin mercado secundario garantizado",
+   "fuentePrimaria": "https://hausera.io/terms/",
+   "localizador": "Términos §6.7; condiciones particulares §11; Copia del 23/10/2026 en docs/investigacion/2026-10-23/hausera/ (no releída en este ciclo)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-10-23T19:28:30Z",
+   "alcanceYLimites": "En operaciones CRV la devolución depende de la venta del inmueble.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "toda inversión conlleva riesgos, incluyendo la posible pérdida total o parcial del capital invertido",
+   "dato": "Pérdida total o parcial posible; HOLDTX no garantiza rentabilidad",
+   "fuentePrimaria": "https://hausera.io/terms/",
+   "localizador": "Términos §6.6 y §6.7; Copia del 23/10/2026 en docs/investigacion/2026-10-23/hausera/ (no releída en este ciclo)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-10-23T19:28:30Z",
+   "alcanceYLimites": "Riesgos específicos dependen del documento de emisión, no leído.",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_cumple",
+   "nota": "HOLDTX SPAIN, S.L. declara no ser ESI y no figura como PSFP en la CNMV; cada emisión la hace una SPV no identificada aún para Alicante 2. Sin advertencias CNMV por «Hausera» ni «Holdtx»."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Alicante 2 anunciada: preventa 04/11/2026 y oferta pública 11/11/2026 (consulta 02/11), con fecha de preventa contradictoria en la tarjeta."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Mínimo distinto según modalidad (100 / 1.000 EUR) y sin admisión explícita para residentes en España."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Términos advierten pérdida y falta de mercado secundario; riesgos de Alicante 2 sin documento."
+  }
+ },
+ "estadoOferta": "proxima",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "parcial",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Fechas anunciadas: preventa 04/11/2026 y oferta pública 11/11/2026, 5.196.000 EUR a financiar.",
+  "porQueNo": "El operador no está registrado en la CNMV, no hay documento de emisión de Alicante 2 y las fechas de preventa se contradicen en la misma página."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Falta lo esencial con fuente primaria: documento de emisión y SPV emisora, mínimo de Alicante 2, admisión de residentes en España y entidad supervisada. Solo es un anuncio con preventa no vinculante y fechas contradictorias. Se sigue desde hausera-proximas-ofertas.",
+ "bloqueos": [
+  "Documento de emisión de Alicante 2 no publicado en abierto.",
+  "Términos, FAQ y cotizadas no releídos hoy (copias del 23/10).",
+  "Registro de Portfolio Stock Exchange no consultado."
+ ],
+ "conflictos": [
+  "Preventa 04/11/2026 (bloque destacado) frente a 11/11/2026 (tarjeta).",
+  "Mínimo 100 EUR (FAQ) frente a 1.000 EUR (cotizadas)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-02T08:42:13Z",
+  "finUtc": "2026-11-02T08:42:13Z"
+ }
+}

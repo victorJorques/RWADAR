@@ -1,0 +1,72 @@
+{
+  "slug": "artex-art-share-002-bacon",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "ARTEX Global Markets",
+  "plataformaSlug": "artex-global-markets",
+  "entidadComercializadora": "No hay comercializador directo: ARTEX Global Markets AG opera el MTF y la compra se hace a través de bancos o brokers miembros o conectados a un miembro (lista publicada en artexgm.com/trading-participants).",
+  "emisor": "Art Share 002 S.A. (Luxemburgo)",
+  "vehiculo": "Sociedad de titulización luxemburguesa no regulada, propietaria de una única obra: el tríptico «Three studies for Portrait of George Dyer» (Francis Bacon, 1963).",
+  "token": "No es un token: acción ordinaria de clase B anotada y liquidada por canales tradicionales (la FAQ de ARTEX dice que no usa blockchain). Símbolo BAC1EU.",
+  "derechoAdquirido": "Acción ordinaria de clase B de Art Share 002 S.A.; propiedad económica fraccionada e indirecta de la obra a través de la sociedad.",
+  "jurisdiccion": "LU",
+  "identificador": "ISIN LU2583605592",
+  "moneda": "EUR",
+  "documentos": [
+    {"titulo": "Ficha de cotización «Equities» (Art Share 002)", "url": "https://www.artexgm.com/equities", "versionOFecha": "consultada 2026-11-01; admisión 08/03/2024", "paginas": null, "sha256": null, "leido": true},
+    {"titulo": "Risk Disclosure for Art Share 002", "url": "https://www.artshare002.com/page/risk-disclosure-6", "versionOFecha": "Update: Nov 15, 2023", "paginas": null, "sha256": null, "leido": true},
+    {"titulo": "Terms and Conditions (web del emisor)", "url": "https://www.artshare002.com/page/terms-and-conditions-3", "versionOFecha": "Last Updated On: 15/11/2023", "paginas": null, "sha256": null, "leido": true},
+    {"titulo": "ARTEX GM Fee Schedule (Standard member)", "url": "https://artex-prod-www-artex-io-uploads.s3.eu-central-1.amazonaws.com/ARTEX_GM_Fee_Schedule_V8_7de230b254.pdf", "versionOFecha": "Version 8, last amendment June 2026", "paginas": null, "sha256": null, "leido": true},
+    {"titulo": "FAQ de ARTEX", "url": "https://www.artexgm.com/faq", "versionOFecha": "consultada 2026-11-01", "paginas": null, "sha256": null, "leido": true},
+    {"titulo": "Prospecto / documento de admisión de Art Share 002", "url": "https://www.artshare002.com/documentation", "versionOFecha": null, "paginas": null, "sha256": null, "leido": false}
+  ],
+  "registros": [
+    {"regulador": "FMA Liechtenstein", "entidad": "ARTEX Global Markets AG", "numero": "307407 (LEI 254900UL01RE2SEBFH84; registro mercantil FL-0002.682.571-2)", "url": "https://register.fma-li.li/ (API pública ws-api.llv.li/fire-wsapi/api/v1/search?query=ARTEX)", "alcance": "Wertpapierfirma / Investment Firm, licencia según la WPFG, inscrita el 2022-12-23, sin revocación. El registro no detalla en esta respuesta el permiso de operar el MTF; la propia ARTEX dice que opera un MTF bajo MiFID II supervisado por la FMA.", "consultadoUtc": "2026-11-01T15:04:39Z"},
+    {"regulador": "CNMV", "entidad": "ARTEX MTF AG (nombre anterior)", "numero": null, "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad?lang=es", "alcance": "Aparece en el buscador de entidades de los registros oficiales de la CNMV. No se pudo abrir la ficha (el enlace no se resolvió), así que no consta el tipo de inscripción ni su alcance en España.", "consultadoUtc": "2026-11-01T15:10:46Z"},
+    {"regulador": "Lietuvos bankas", "entidad": "ARTEX Global Markets AG", "numero": null, "url": "https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag", "alcance": "La ficha existe (HTTP 200, se guardó). Según el radar del 22/10, figura como empresa de inversión del EEE que presta servicios en Lituania sin sucursal. No es relevante para España.", "consultadoUtc": "2026-11-01T15:02:57Z"},
+    {"regulador": "ESMA (registro de folletos)", "entidad": "Art Share 002", "numero": null, "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:LU2583605592", "alcance": "0 resultados por ISIN y por nombre del emisor: no hay ningún folleto del Reglamento de Folletos registrado y, por tanto, ningún pasaporte a España.", "consultadoUtc": "2026-11-01T15:00:31Z"}
+  ],
+  "advertenciasReguladores": [
+    {"regulador": "CNMV", "busqueda": "ARTEX", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es", "consultadoUtc": "2026-11-01T15:08:01Z"},
+    {"regulador": "CNMV", "busqueda": "Art Share", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es", "consultadoUtc": "2026-11-01T15:08:42Z"}
+  ],
+  "claims": [
+    {"campo": "derecho", "literal": "Type of Security … Ordinary Class B Shares … Number of Shares Admitted to Trading 412 000 … Symbol BAC1EU … ISIN LU2583605592 … Trading Currency EUR", "dato": "Acción clase B, 412.000 acciones admitidas, EUR", "fuentePrimaria": "https://www.artexgm.com/equities", "localizador": "Ficha Equities, bloque SECURITY", "fechaDato": "2024-03-08", "consultadoUtc": "2026-11-01T13:11:55Z", "alcanceYLimites": "Fecha de admisión 3/8/2024 15:50 CET, que la API (NewListings) da como 2024-03-08T14:50Z.", "estado": "respaldado"},
+    {"campo": "precio", "literal": "Last Traded Price … 67 € … Best Bid undefined € … Best Ask undefined €", "dato": "67 EUR (último precio negociado, sin fecha)", "fuentePrimaria": "https://www.artexgm.com/equities", "localizador": "Ficha Equities, bloque SUMMARY; la página avisa de que «Price feed is delayed by 15 minutes»", "fechaDato": null, "consultadoUtc": "2026-11-01T13:11:55Z", "alcanceYLimites": "No hay fecha de la última operación ni mejor oferta de compra o venta visibles. La misma ficha muestra «Volume 4 180», «High price 70 €», «Low price 50 €» y «26.42%» sin periodo claro, así que no se publican. Es el mismo 67 € que vio el radar el 22/10.", "estado": "respaldado_con_alcance"},
+    {"campo": "estado", "literal": "VCM HISTORY … JUN 26, 2025 BAC1EU_EUR ART SHARE 002 … 77.000 € (última entrada de la tabla)", "dato": "Solo reventa en el MTF; negociación activa reciente no confirmada", "fuentePrimaria": "https://www.artexgm.com/vcm", "localizador": "Tabla VCM History; última entrada del 26/06/2025", "fechaDato": "2025-06-26", "consultadoUtc": "2026-11-01T13:12:29Z", "alcanceYLimites": "Las únicas fechas de negociación visibles son las pausas de volatilidad (mayo de 2024 a junio de 2025). Los avisos de mercado de 2026 son solo calendarios de festivos. No hay oferta primaria: la API ArtIpo devuelve una lista vacía.", "estado": "respaldado_con_alcance"},
+    {"campo": "accesoEspana", "literal": "retail investors can buy and sell art shares through banks and brokers that are either members or connected to a member of the ARTEX's MTF", "dato": "Solo a través de un intermediario miembro o conectado; ninguno de la lista es español", "fuentePrimaria": "https://www.artexgm.com/faq", "localizador": "FAQ, sección MTF, pregunta 4", "fechaDato": null, "consultadoUtc": "2026-11-01T15:01:13Z", "alcanceYLimites": "La lista de participantes (consultada el 2026-11-01T13:12:21Z) solo incluye bancos y brokers de Francia, Suiza, Liechtenstein, Alemania, Italia y Reino Unido, casi todos de banca privada. La misma FAQ habla también de «qualified investors». La web del emisor pide elegir país (España figura en la lista) y tipo de inversor («Individual»/«Professional»); no se pasó de ese paso.", "estado": "respaldado_con_alcance"},
+    {"campo": "accesoEspana", "literal": "Specifically, the Art Share 002 is not available for distribution to or investment by US investors.", "dato": "Excluye EE. UU. y Canadá; no excluye expresamente a España", "fuentePrimaria": "https://www.artshare002.com/page/terms-and-conditions-3", "localizador": "Terms and Conditions (15/11/2023), apartado Registrations", "fechaDato": "2023-11-15", "consultadoUtc": "2026-11-01T15:00:55Z", "alcanceYLimites": "Los términos remiten al folleto y al KID para saber en qué países se comercializa. No se leyeron: están detrás del paso de tipo de inversor.", "estado": "respaldado_con_alcance"},
+    {"campo": "comisiones", "literal": "Transaction Fee 0.19%* The transaction fee is a fixed charge across all securities based on the counter value.", "dato": "0,19 % por operación, que el MTF cobra al miembro", "fuentePrimaria": "https://artex-prod-www-artex-io-uploads.s3.eu-central-1.amazonaws.com/ARTEX_GM_Fee_Schedule_V8_7de230b254.pdf", "localizador": "Fee Schedule V8 (junio de 2026), 1. Overview", "fechaDato": "2026-06-01", "consultadoUtc": "2026-11-01T15:02:48Z", "alcanceYLimites": "Es la tarifa del mercado al miembro. Lo que paga el particular lo fija su banco o broker y no consta. La FAQ dice que el seguro y la custodia de la obra no se cobran al accionista.", "estado": "respaldado_con_alcance"},
+    {"campo": "riesgos", "literal": "The Issuer is a non-regulated securitisation Issuer … will operate without supervision by any authority in any jurisdiction.", "dato": "Emisor no supervisado", "fuentePrimaria": "https://www.artshare002.com/page/risk-disclosure-6", "localizador": "Risk Disclosure (15/11/2023), «Regulation of the Issuer»", "fechaDato": "2023-11-15", "consultadoUtc": "2026-11-01T15:00:46Z", "alcanceYLimites": "Además: pérdida total posible, sin dividendos garantizados, liquidez no garantizada aunque haya creadores de mercado, riesgo de valoración de la obra y no es un depósito.", "estado": "respaldado"},
+    {"campo": "salida", "literal": "there is never any guarantee that you will be able to exit your investments on the Secondary Market or at what price an exit (if any) will be achieved", "dato": "Venta en el MTF; sin reembolso por el emisor", "fuentePrimaria": "https://www.artshare002.com/page/risk-disclosure-6", "localizador": "Risk Disclosure, «Liquidity Not Guaranteed»", "fechaDato": "2023-11-15", "consultadoUtc": "2026-11-01T15:00:46Z", "alcanceYLimites": "La FAQ habla de acuerdos con creadores de mercado (Helvetische Bank AG figura como Market Maker), pero la ficha no muestra precios de compra ni de venta.", "estado": "respaldado"},
+    {"campo": "documento", "literal": "Art Share 002 shall publish the documents containing information incorporated by reference in the prospectus … on this Website", "dato": "Folleto y KID no leídos", "fuentePrimaria": "https://www.artshare002.com/page/terms-and-conditions-3", "localizador": "Terms and Conditions, apartado PROSPECTUS", "fechaDato": "2023-11-15", "consultadoUtc": "2026-11-01T15:00:55Z", "alcanceYLimites": "No hay folleto en el registro de la ESMA. La prensa (no primaria) habla de un «listing prospectus» presentado en la CSSF en 2023, que no se verificó.", "estado": "no_verificable"}
+  ],
+  "criterios": {
+    "entidadYPermisos": {"veredicto": "cumple_con_limites", "nota": "El operador del MTF tiene licencia de empresa de inversión de la FMA-LI (307407), confirmada en el registro. El emisor es una sociedad de titulización no supervisada, como dice su propio aviso de riesgos. En la CNMV aparece «ARTEX MTF AG», pero no se pudo ver el alcance."},
+    "actividadYFecha": {"veredicto": "no_verificable", "nota": "La acción sigue admitida (412.000 títulos) con último precio de 67 €, pero sin fecha de esa operación ni horquilla. La última pausa de volatilidad registrada es del 26/06/2025. No hay oferta primaria."},
+    "accesoYCondiciones": {"veredicto": "no_cumple", "nota": "Solo se compra a través de los intermediarios de la lista, todos de fuera de España y casi todos de banca privada. No consta ningún broker español minorista conectado, ni el mínimo real ni la comisión del intermediario. El folleto y el KID no se leyeron."},
+    "riesgosYAlertas": {"veredicto": "cumple", "nota": "Los riesgos están bien documentados por el emisor. No hay advertencias de la CNMV por «ARTEX» ni por «Art Share»."}
+  },
+  "estadoOferta": "solo_reventa",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "1 acción; último precio visto 67 EUR (sin fecha); más la comisión del intermediario, que no consta",
+    "supervisorVerificado": "FMA Liechtenstein, ARTEX Global Markets AG, n.º 307407 (operador del MTF, no el emisor)",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Es una acción de una obra de Francis Bacon en un MTF europeo supervisado por la FMA-LI, con ISIN y liquidación en Euroclear/Clearstream; no es un token ni un NFT.",
+    "porQueNo": "No consta ningún intermediario español para un particular, el último precio no tiene fecha ni horquilla, el emisor no está supervisado y el folleto y el KID no se pudieron leer."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Faltan dos requisitos para admitirla. (1) Reventa activa: la ficha solo da un último precio de 67 € sin fecha ni precios de compra o venta, y la última pausa de volatilidad es de junio de 2025. (2) Acceso desde España: solo se compra a través de intermediarios de la lista, ninguno español. Si se confirma un broker accesible desde España y se lee el folleto o el KID, podría reevaluarse como «secundario».",
+  "bloqueos": [
+    "La web del emisor (artshare002.com) pide elegir país y tipo de inversor antes de enseñar la documentación. El clasificador de permisos no dejó declarar «Individual Investor» en nombre del usuario, así que el folleto y el KID no se leyeron.",
+    "La ficha de la CNMV de «ARTEX MTF AG» no se pudo abrir: el enlace del resultado no se resolvió con el navegador automático.",
+    "Los precios de la ficha llegan por un canal que no se pudo capturar, por lo que no hay fecha de la última operación."
+  ],
+  "consulta": {"inicioUtc": "2026-11-01T13:11:22Z", "finUtc": "2026-11-02T08:45:00Z"}
+}

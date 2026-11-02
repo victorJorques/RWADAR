@@ -392,5 +392,14 @@
   "consultadoUtc": "2026-11-02T08:42:13Z",
   "bytes": 2391533,
   "sha256": "c04d273d108fa74520cb4311378b0807dac24e09c59eba61066f259c3f5c0dd2"
+ },
+ {
+  "url": "https://hausera.io/oportunidades/",
+  "archivo": "hausera-oportunidades-2026-11-02.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:42:13Z",
+  "bytes": 4938,
+  "sha256": "f25f02bb55762e7fd13cd4999cb1b5ca833d837972f696950221dc558babef79",
+  "nota": "Texto extraído del HTML capturado (sin scripts ni estilos)."
  }
 ]
