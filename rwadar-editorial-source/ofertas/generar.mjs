@@ -150,13 +150,13 @@ try {
     const color = COLOR[categoria];
     const foto = fotos.fotos[f.slug];
     const html = foto
-      ? paginaFoto({ color, foto: await retocar(sharp, path.join(DIR_FOTOS, `${f.slug}.webp`), foto.encuadre), pasos: f.pasos, lugar: f.lugar })
+      ? paginaFoto({ color, foto: await retocar(sharp, path.join(DIR_FOTOS, `${f.slug}.webp`), foto.encuadre), pasos: f.pasos, lugar: f.lugar, rotulo: false })
       : pagina({ color, escena: c => ESCENAS[f.escena](c, f.op || {}), pasos: f.pasos, lugar: f.lugar });
     await pag.setContent(html, { waitUntil: 'load' });
     await pag.evaluate(() => document.fonts.ready);
     // Cada paso en una sola línea: si se parte, se sale de la franja visible.
     const altos = await pag.evaluate(() => [...document.querySelectorAll('.pasos li')].map(li => li.getBoundingClientRect().height));
-    const largos = f.pasos.filter((_, i) => altos[i] > 64);
+    const largos = altos.length ? f.pasos.filter((_, i) => altos[i] > 64) : [];
     if (largos.length) { noCaben.push(`${f.slug}: ${largos.join(' | ')}`); continue; }
     const png = await pag.screenshot({ type: 'png' });
     const webp = await sharp(png).resize(FICHA_ANCHO, FICHA_ALTO, { kernel: 'lanczos3' }).webp({ quality: foto ? 80 : 82, effort: 6 }).toBuffer();
@@ -188,12 +188,12 @@ for (const n of fs.readdirSync(DIR_ACTIVOS)) {
 const manifiesto = JSON.parse(fs.readFileSync(MANIFIESTO, 'utf8'));
 manifiesto.versionEsquema = 2;
 manifiesto.fichasOrigen = {
-  herramienta: `Fotografias generadas con IA (${Object.values(fotos.modelos).map(m => m.nombre).join('; ')}), retocadas y rotuladas por RWAdar; si una ficha no tiene foto, dibujo vectorial propio`,
+  herramienta: `Fotografias generadas con IA (${Object.values(fotos.modelos).map(m => m.nombre).join('; ')}), retocadas por RWAdar y sin rotulos; si una ficha no tiene foto, dibujo vectorial propio`,
   modo: 'generacion-sin-imagenes-de-terceros',
   usoPrevisto: 'Una ilustracion por ficha que explica la inversion de un vistazo; si falta, se usa la de su categoria',
-  direccionVisual: 'Foto generica del activo, parecida al real segun su fuente oficial, sin marcas, rotulos ni personas; a la izquierda, sobre un velo oscuro, el lugar y tres pasos',
+  direccionVisual: 'Foto generica del activo, parecida al real segun su fuente oficial, sin marcas, rotulos ni personas, y limpia: el lugar y los tres pasos van como texto en la ficha',
   encargos: 'rwadar-editorial-source/ofertas/fotos.json (modelo, descripcion, semilla y encuadre de cada foto)',
-  comoSeRegenera: 'python rwadar-editorial-source/ofertas/fotografiar.py (fotos) y node rwadar-editorial-source/ofertas/generar.mjs (retoque y texto)',
+  comoSeRegenera: 'python rwadar-editorial-source/ofertas/fotografiar.py (fotos) y node rwadar-editorial-source/ofertas/generar.mjs (retoque)',
 };
 manifiesto.fichas = entradas;
 fs.writeFileSync(MANIFIESTO, JSON.stringify(manifiesto, null, 2) + '\n');
