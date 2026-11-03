@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 03/11: catálogo 2026-11-03.3 (investigación del 03/11 pedida por Víctor: 23 fichas y radar comprobados hoy, revisión independiente de candidatas, cambios y SQL; aplicado con Aplicar catálogo) y normas nuevas de tarjeta para reventa y próximas. Tarjetas estrechas con los datos apilados. npm test completo en verde. Ciclo autorizado por la orden de Víctor (AGENTS.md).",
+  "nota": "Claude, 03/11: alta de Kraken xStocks por decisión editorial de Víctor (entrega 2026-11-03.4, revisión independiente aprobado_con_cambios, aplicada con Aplicar catálogo), con aviso de que las condiciones finales del emisor no ofrecen el producto en España. npm test completo en verde. Ciclo autorizado por la orden de Víctor (AGENTS.md).",
   "revisionAprobada": {
-    "commit": "63296ac3137c4e6bae0cc09659e1e15f85426d22",
-    "contenidoSha256": "sha256:f94280c15ed879846bfe28902ed231b9353e8960fb598d24fc7fe1757ada25e6",
+    "commit": "770819aeb1139bc5d2357f7fa599a0e710c63e8c",
+    "contenidoSha256": "sha256:39069b8ea5eb66df1a2cf5ff94b475d07e17698f41fc3a9a2c54d9dbd87ffd7d",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
