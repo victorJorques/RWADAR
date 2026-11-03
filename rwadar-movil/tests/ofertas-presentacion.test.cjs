@@ -220,6 +220,22 @@ test('la tarjeta muestra un mínimo en euros solo desde una referencia fechada, 
   assert.match(tarjeta.props.accessibilityLabel,/Mínimo \(EUR\): 1000 €/);
 });
 
+test('un mínimo en otra moneda se rotula «Mínimo» y la salida no repite «Salida:»', () => {
+  const oferta = dato();
+  oferta.documentacion.referencias.push(
+    {etiqueta:'Mínimo de inversión',valor:'500 CHF por transferencia bancaria',fechaDato:'2026-09-28',
+      fechaConsulta:'2026-09-29',fuente:FUENTE,alcance:'Mínimo publicado por el emisor.'},
+    {etiqueta:'Salida',valor:'Venta solo a otros accionistas',fechaDato:'2026-09-28',
+      fechaConsulta:'2026-09-29',fuente:FUENTE,alcance:'Condición de salida publicada.'});
+  const tarjeta = componentes().FichaOferta({oferta});
+  const texto = textoVisible(tarjeta);
+  assert.match(texto,/500 CHF por transferencia bancaria/);
+  assert.doesNotMatch(texto,/Mínimo \(EUR\)/);
+  assert.match(tarjeta.props.accessibilityLabel,/Mínimo: 500 CHF/);
+  assert.match(texto,/Venta solo a otros accionistas/);
+  assert.doesNotMatch(texto,/Salida:\s*Venta/);
+});
+
 test('registro del proveedor conserva fuente y fecha sin acreditar la oferta ni acceso desde España', () => {
   const plataforma = {verificacionLocal:{verificadoEl:'2026-09-21',licenciaRegistro:{estado:'confirmada_regulador',
     detalle:'Registro documental del proveedor en su autoridad competente.',

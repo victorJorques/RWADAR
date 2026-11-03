@@ -258,10 +258,15 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
   const criticos = avisosCriticos(oferta);
   const primerCritico = criticos[0];
   const resumen = resumenOferta(ofertaOriginal, [], ahora);
+  // Si el mínimo está en otra moneda o unidad, la fila no dice «(EUR)»; la
+  // fila «Salida» no repite «Salida:» (como en la web).
+  const minimoBreve = datoBreveTarjeta(resumen.minimo);
+  const salidaBreve = datoBreveTarjeta(resumen.salida);
   const datosParaDecidir = [
-    ['Mínimo (EUR)', datoBreveTarjeta(resumen.minimo)],
+    [resumen.minimo?.texto === 'No documentado en euros' && typeof resumen.minimo.unidadDocumentada === 'string' &&
+      resumen.minimo.unidadDocumentada.trim() ? 'Mínimo' : 'Mínimo (EUR)', minimoBreve],
     ['España', datoBreveTarjeta(resumen.accesoEspana)],
-    ['Salida', datoBreveTarjeta(resumen.salida)],
+    ['Salida', { ...salidaBreve, texto: String(salidaBreve.texto || '').replace(/^Salida:\s*/, '') }],
   ];
   const fechaProcedencia = resumen.fechas.comprobadaEl
     ? `Fuente consultada ${fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)}`

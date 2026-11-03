@@ -2049,7 +2049,9 @@ function textoBreveDatoTarjetaLocal(campo){
   'Sin comprobar desde España':'Sin confirmar','Salida no documentada':'Sin documentar'})[campo.texto]||campo.texto;
 }
 function datosClaveOfertaHtml(resumen,completo=false){
- const datos=[[completo?'Mínimo en euros':'Mínimo (EUR)',resumen.minimo],[completo?'Desde España':'España',resumen.accesoEspana],['Salida',resumen.salida]];
+ /* Si el mínimo está en otra moneda o unidad, la fila no dice «(EUR)». */
+ const otraUnidad=!completo&&resumen.minimo&&resumen.minimo.texto==='No documentado en euros'&&!!textoLocal(resumen.minimo.unidadDocumentada);
+ const datos=[[completo?'Mínimo en euros':otraUnidad?'Mínimo':'Mínimo (EUR)',resumen.minimo],[completo?'Desde España':'España',resumen.accesoEspana],['Salida',resumen.salida]];
  if(completo)datos.push(['Costes',resumen.costes]);
  return '<dl class="escaparate-datos-clave'+(completo?' escaparate-datos-completos':'')+'">'+datos.map(([nombre,campo])=>{
   const referencias=completo&&Array.isArray(campo.referencias)?campo.referencias.filter(r=>r&&urlHttps(r.fuente)&&fechaLocalValida(r.fechaConsulta)):[];
@@ -2059,7 +2061,9 @@ function datosClaveOfertaHtml(resumen,completo=false){
   else if(completo){const fuente=referencias[0]&&referencias[0].fuente||campo.fuente,fecha=referencias[0]&&referencias[0].fechaConsulta||campo.consultadaEl;
    citas=(urlHttps(fuente)?' <a href="'+escHtml(urlHttps(fuente))+'" target="_blank" rel="noopener nofollow" aria-label="Fuente de '+escHtml(nombre)+'">Fuente ↗</a>':'')+
     (fecha?'<small>Consultada el '+escHtml(fechaES(fecha))+'</small>':'');}
-  return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+escHtml(completo?campo.texto:textoBreveDatoTarjetaLocal(campo))+citas+'</dd></div>';
+  /* En la tarjeta, la fila «Salida» no repite «Salida:». */
+  const breve=completo?campo.texto:textoBreveDatoTarjetaLocal(campo).replace(nombre==='Salida'?/^Salida:\s*/:/$^/,'');
+  return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+escHtml(breve)+citas+'</dd></div>';
  }).join('')+'</dl>';
 }
 function tarjetaOfertaLocal(o,{secundario=false}={}){
