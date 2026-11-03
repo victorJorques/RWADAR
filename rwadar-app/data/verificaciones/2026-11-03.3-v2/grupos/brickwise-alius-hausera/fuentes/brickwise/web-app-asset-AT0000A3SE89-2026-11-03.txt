@@ -11,7 +11,7 @@ Zum Marktplatz
 
 
 ==== XHR ====
-200 https://maps.googleapis.com/maps/api/js?key=AIzaSyBQJ_8CWPikHS9mKokj6WcRQgmNKHPnBM8&libraries=places&language=de
+200 https://maps.googleapis.com/maps/api/js?key=[recortado]&libraries=places&language=de
 200 https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true
 204 https://analytics.google.com/g/collect?v=2&tid=G-KT4ETZPLB0&gtm=45je6au1v871608040za20ozb832473384zd832473384xf1&_p=1793700536640&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAGAC&cid=1759127316.179370
 200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuYIC

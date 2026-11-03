@@ -13,58 +13,349 @@
   "identificador": "ISIN CH1371002986; LEI emisor 984500BB00BN6D2B7C48",
   "moneda": "USD (suscripción y reembolso en USDC)",
   "documentos": [
-    {"titulo": "Final Terms mTBILL (Condiciones Finales), Serie 1", "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF «20260714_mTBILL_FT_signed_final.pdf» en 3475141875-files.gitbook.io, descargado sin token)", "versionOFecha": "17/07/2026; mismo archivo que el 01/11 (last-modified 05/08/2026); ESMA FTWS-1420", "paginas": 118, "sha256": "SHA:fuentes/mtbill-final-terms-20260717.pdf", "leido": true},
-    {"titulo": "Documento de datos fundamentales (KID) mTBILL en español", "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF «KID_mTBILL es.pdf» en 3475141875-files.gitbook.io, descargado sin token)", "versionOFecha": "Fecha de revisión 17/07/2026; mismo archivo que el 01/11 (last-modified 12/10/2026)", "paginas": 3, "sha256": "SHA:fuentes/mtbill-kid-es.pdf", "leido": true},
-    {"titulo": "Folleto base Midas Software GmbH 2026", "url": "https://docs.midas.app/resources/legal-product-documentation/issuer-documents", "versionOFecha": "17/07/2026, aprobado por la FMA de Liechtenstein; ESMA BPWO-84; sin suplementos", "paginas": null, "sha256": null, "leido": false},
-    {"titulo": "docs.midas.app · llms-full.txt", "url": "https://docs.midas.app/llms-full.txt", "versionOFecha": "idéntico al del 01/11 (mismo sha256)", "paginas": null, "sha256": "SHA:fuentes/docs-llms-full.txt", "leido": true},
-    {"titulo": "Registro ESMA Prospectus III (documentos y valores de Midas Software GmbH)", "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=type_s:parent&fq=%7B!parent%20which=type_s:parent%7Dissuer_lei:984500BB00BN6D2B7C48&wt=json&rows=200&sort=id%20desc", "versionOFecha": "consulta 03/11/2026: 41 documentos, ninguno nuevo desde el 01/11", "paginas": null, "sha256": "SHA:fuentes/esma-priii-documents-midas-software.json", "leido": true}
+    {
+      "titulo": "Final Terms mTBILL (Condiciones Finales), Serie 1",
+      "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF «20260714_mTBILL_FT_signed_final.pdf» en 3475141875-files.gitbook.io, descargado sin token)",
+      "versionOFecha": "17/07/2026; mismo archivo que el 01/11 (last-modified 05/08/2026); ESMA FTWS-1420",
+      "paginas": 118,
+      "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a",
+      "leido": true
+    },
+    {
+      "titulo": "Documento de datos fundamentales (KID) mTBILL en español",
+      "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF «KID_mTBILL es.pdf» en 3475141875-files.gitbook.io, descargado sin token)",
+      "versionOFecha": "Fecha de revisión 17/07/2026; mismo archivo que el 01/11 (last-modified 12/10/2026)",
+      "paginas": 3,
+      "sha256": "6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545",
+      "leido": true
+    },
+    {
+      "titulo": "Folleto base Midas Software GmbH 2026",
+      "url": "https://docs.midas.app/resources/legal-product-documentation/issuer-documents",
+      "versionOFecha": "17/07/2026, aprobado por la FMA de Liechtenstein; ESMA BPWO-84; sin suplementos",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "docs.midas.app · llms-full.txt",
+      "url": "https://docs.midas.app/llms-full.txt",
+      "versionOFecha": "idéntico al del 01/11 (mismo sha256)",
+      "paginas": null,
+      "sha256": "aca8b6c7501587594d206d89edb086110ad086c11ad4d245f88890e3ac99932a",
+      "leido": true
+    },
+    {
+      "titulo": "Registro ESMA Prospectus III (documentos y valores de Midas Software GmbH)",
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=type_s:parent&fq=%7B!parent%20which=type_s:parent%7Dissuer_lei:984500BB00BN6D2B7C48&wt=json&rows=200&sort=id%20desc",
+      "versionOFecha": "consulta 03/11/2026: 41 documentos, ninguno nuevo desde el 01/11",
+      "paginas": null,
+      "sha256": "3d4ee90bc5f8195c686732f664a50aa2a3c06ed88b3ade88496b0021892d8c16",
+      "leido": true
+    }
   ],
   "registros": [
-    {"regulador": "FMA Liechtenstein (autoridad de origen) · registro ESMA", "entidad": "Midas Software GmbH", "numero": "BPWO-84 (folleto base) · FTWS-1420 (Condiciones Finales mTBILL)", "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_securities/select?q=sec_isin:CH1371002986&wt=json&rows=50", "alcance": "FTWS-1420 (17/07/2026) pasaportado a 14 Estados, entre ellos SPAIN; idiomas incluye Spanish. Es el documento más reciente para CH1371002986; no hay suplementos del BPWO-84. La FMA aprobó el folleto, no supervisa a la entidad.", "consultadoUtc": "2026-11-03T10:20:25Z"},
-    {"regulador": "FMA Liechtenstein (registro de entidades supervisadas)", "entidad": "Midas", "numero": null, "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Midas&searchType=ALL", "alcance": "0 resultados (control «LGT» devuelve LGT Bank AG). No es entidad supervisada.", "consultadoUtc": "2026-11-03T10:20:43Z"},
-    {"regulador": "FINMA · registro de entidades autorizadas", "entidad": "Midas / Midas Software", "numero": null, "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/", "alcance": "0 resultados en ambas búsquedas.", "consultadoUtc": "2026-11-03T10:10:24Z"}
+    {
+      "regulador": "FMA Liechtenstein (autoridad de origen) · registro ESMA",
+      "entidad": "Midas Software GmbH",
+      "numero": "BPWO-84 (folleto base) · FTWS-1420 (Condiciones Finales mTBILL)",
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_securities/select?q=sec_isin:CH1371002986&wt=json&rows=50",
+      "alcance": "FTWS-1420 (17/07/2026) pasaportado a 14 Estados, entre ellos SPAIN; idiomas incluye Spanish. Es el documento más reciente para CH1371002986; no hay suplementos del BPWO-84. La FMA aprobó el folleto, no supervisa a la entidad.",
+      "consultadoUtc": "2026-11-03T10:20:25Z"
+    },
+    {
+      "regulador": "FMA Liechtenstein (registro de entidades supervisadas)",
+      "entidad": "Midas",
+      "numero": null,
+      "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Midas&searchType=ALL",
+      "alcance": "0 resultados (control «LGT» devuelve LGT Bank AG). No es entidad supervisada.",
+      "consultadoUtc": "2026-11-03T10:20:43Z"
+    },
+    {
+      "regulador": "FINMA · registro de entidades autorizadas",
+      "entidad": "Midas / Midas Software",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "alcance": "0 resultados en ambas búsquedas.",
+      "consultadoUtc": "2026-11-03T10:10:24Z"
+    }
   ],
   "advertenciasReguladores": [
-    {"regulador": "CNMV", "busqueda": "Midas", "resultado": "sin coincidencias («No hay datos disponibles»)", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas", "consultadoUtc": "2026-11-03T10:11:17Z"},
-    {"regulador": "CNMV", "busqueda": "Midas Software", "resultado": "sin coincidencias", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas+Software", "consultadoUtc": "2026-11-03T10:11:19Z"},
-    {"regulador": "CNMV", "busqueda": "Midas Protocol", "resultado": "sin coincidencias", "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas+Protocol", "consultadoUtc": "2026-11-03T10:11:21Z"},
-    {"regulador": "FINMA · lista de advertencias", "busqueda": "midas", "resultado": "coincidencia solo de nombre: «Midas.Investments» (web midas.investments, 06/07/2022, sin registro mercantil). No es Midas Software GmbH ni midas.app.", "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/midas-investments/", "consultadoUtc": "2026-11-03T10:10:46Z"}
+    {
+      "regulador": "CNMV",
+      "busqueda": "Midas",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+      "consultadoUtc": "2026-11-03T10:11:17Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Midas Software",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas+Software",
+      "consultadoUtc": "2026-11-03T10:11:19Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Midas Protocol",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas+Protocol",
+      "consultadoUtc": "2026-11-03T10:11:21Z"
+    },
+    {
+      "regulador": "FINMA · lista de advertencias",
+      "busqueda": "midas",
+      "resultado": "coincidencia solo de nombre: «Midas.Investments» (web midas.investments, 06/07/2022, sin registro mercantil). No es Midas Software GmbH ni midas.app.",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/midas-investments/",
+      "consultadoUtc": "2026-11-03T10:10:46Z"
+    }
   ],
   "claims": [
-    {"campo": "estado", "literal": "Offer Period: until end of validity of the Base Prospectus", "dato": "abierta (periodo de oferta hasta el 17/07/2027)", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)", "localizador": "Final Terms 17/07/2026, Part B, pág. 6", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:01Z", "alcanceYLimites": "Periodo documental. midas.app/mtbill sigue dando 403 (Cloudflare).", "estado": "respaldado_con_alcance"},
-    {"campo": "estado", "literal": "Vault de emisión: paused()=false, greenlistEnabled()=false, minAmount()=0, instantFee()=0 · Vault de reembolso: paused()=false", "dato": "suscripción y reembolso operativos en cadena el 03/11/2026", "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com a 0x99361435420711723aF805F08187c9E6bF796683 y 0x569D7dccBF6923350521ecBC28A555A500c4f0Ec", "localizador": "Lectura en cadena, bloque 26.333.638", "fechaDato": "2026-11-03", "consultadoUtc": "2026-11-03T10:20:57Z", "alcanceYLimites": "Solo prueba que los contratos no están pausados; el alta (KYC) y los filtros de país de la web no se ven desde fuera.", "estado": "respaldado_con_alcance"},
-    {"campo": "accesoEspana", "literal": "Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, …", "dato": "oferta pública en España", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)", "localizador": "Final Terms 17/07/2026, Part B, pág. 6; ESMA FTWS-1420 con SPAIN entre los Estados de acogida", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:01Z", "alcanceYLimites": "Confirmado hoy también en ESMA (10:20:25Z).", "estado": "respaldado"},
-    {"campo": "accesoEspana", "literal": "Target market under MiFID II: eligible counterparties, professional clients and retail clients · Prohibition of Sales to EEA Retail Investors: not applicable", "dato": "apto para minoristas", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)", "localizador": "Final Terms 17/07/2026, Part B, pág. 6", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:01Z", "alcanceYLimites": "El KID limita el perfil: minorista que conozca productos estructurados y tokens, que pueda perderlo todo, horizonte ≥ 1 año.", "estado": "respaldado_con_alcance"},
-    {"campo": "accesoEspana", "literal": "MTBILL → Midas Software GmbH · «Public offer under the EU Prospectus Regulation» · offer: public", "dato": "la web trata mTBILL como oferta pública (sin lista blanca)", "fuentePrimaria": "https://midas.app/assets/main-Z8x886kR.js", "localizador": "Bundle JS que sirve hoy midas.app (nuevo nombre; mismo contenido de emisores que main-DOxid0Zj.js del 01/11)", "fechaDato": null, "consultadoUtc": "2026-11-03T10:21:26Z", "alcanceYLimites": "Configuración de la propia web; coincide con las Condiciones Finales y con greenlistEnabled()=false.", "estado": "respaldado"},
-    {"campo": "minimo", "literal": "Minimum Investment Amount: not applicable", "dato": "sin importe mínimo", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)", "localizador": "Final Terms Part A §3, pág. 4; KID es pág. 1 («Importe mínimo de inversión: no aplicable»); en cadena minAmount()=0 y minMTokenAmountForFirstDeposit()=0", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:57Z", "alcanceYLimites": "Se paga en USDC; hacen falta wallet y alta; costes de red aparte.", "estado": "respaldado"},
-    {"campo": "precio", "literal": "mTBILL/USD latestRoundData: roundId 486, answer 107685452 (8 decimales), updatedAt 2026-11-02T13:20:23Z", "dato": "Valor por token 1,0769 USD (02/11/2026)", "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al oráculo 0x056339C044055819E8Db84E71f5f2E1F536b2E5b", "localizador": "Oráculo designado en Final Terms Part A §1; ronda 486 es la última (getRoundData(487) vacío)", "fechaDato": "2026-11-02", "consultadoUtc": "2026-11-03T10:20:57Z", "alcanceYLimites": "Es el valor publicado por el emisor, no una rentabilidad. A las 10:20 UTC del 03/11 aún no había ronda del día (las actualizaciones recientes son hacia las 13:00–16:00 UTC).", "estado": "respaldado"},
-    {"campo": "rentabilidad", "literal": null, "dato": null, "fuentePrimaria": "https://midas.app/mtbill", "localizador": "APY de 7 días de la página de producto", "fechaDato": null, "consultadoUtc": "2026-11-03T10:19:33Z", "alcanceYLimites": "midas.app/mtbill devuelve 403 (Cloudflare). No se consultó la API interna que alimenta esa cifra (la política de la sesión lo denegó). No se calcula un APY propio a partir del valor por token.", "estado": "no_verificable"},
-    {"campo": "comisiones", "literal": "No cobramos comisión de entrada · Comisiones de gestión 0,00 % · Comisión de rendimiento 5 % de la rentabilidad positiva · Costes de salida 0,07 % solo reembolso inmediato", "dato": "gestión 0 %; éxito 5 %; reembolso inmediato 0,07 %", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)", "localizador": "KID es §4, pág. 3; en cadena instantFee()=7 (0,07 %) en el vault de reembolso e instantFee()=0 en el de emisión", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:57Z", "alcanceYLimites": "Las Condiciones Finales permiten además «Instant Subscription Fee up to 0.2%» y «Redemption Fees up to 0.05%».", "estado": "en_conflicto"},
-    {"campo": "salida", "literal": "Redemption Gates 25% of the aggregate number of outstanding mTokens per settlement day · Holdback Percentage up to 5%", "dato": "límite diario 25 %; retención hasta 5 % en reembolso inmediato", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)", "localizador": "Final Terms 17/07/2026, Part A §3, pág. 4", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:01Z", "alcanceYLimites": "Término contractual depositado (FTWS-1420); sin Condiciones Finales posteriores en ESMA a 03/11/2026.", "estado": "en_conflicto"},
-    {"campo": "salida", "literal": "el Emisor no reembolsará más del 15 % de todos los Productos en circulación en ningún día de liquidación … podrá retenerse hasta el 50 % del importe", "dato": "límite diario 15 %; retención hasta 50 % en reembolso inmediato", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)", "localizador": "KID es §5, pág. 3", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:01Z", "alcanceYLimites": "Contradice las Condiciones Finales de la misma fecha. Los dos archivos son los mismos que el 01/11: el emisor no ha resuelto el conflicto.", "estado": "en_conflicto"},
-    {"campo": "salida", "literal": "Puede solicitar el reembolso cualquier Día Hábil … No existe un mercado de negociación", "dato": "reembolso al emisor cualquier día hábil, valorado tras 1 día hábil; sin mercado secundario", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)", "localizador": "KID es §5, pág. 3; en cadena: mínimo de reembolso 1 mTBILL, límite diario inmediato 10.000.000 mTBILL", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:57Z", "alcanceYLimites": "El reembolso inmediato no es obligatorio para el emisor.", "estado": "respaldado_con_alcance"},
-    {"campo": "riesgos", "literal": "The financial year 2025 ended with a reported deficit not covered by equity of EUR 5’778’815.22. Liabilities to affiliated companies amounted to EUR 14’873’900.58 … two framework loans granted by the parent company … subject to qualified subordination", "dato": "emisor con patrimonio negativo a 31/12/2025, financiado por su matriz", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)", "localizador": "Final Terms, resumen anexo, sección B, pág. 9", "fechaDato": "2025-12-31", "consultadoUtc": "2026-11-03T10:20:01Z", "alcanceYLimites": "Es la última cifra pública que se ha podido leer: no hay suplemento con cuentas intermedias en ESMA y la página de documentos del emisor da 403.", "estado": "respaldado"},
-    {"campo": "riesgos", "literal": "Producto en la clase de riesgo 7 en una escala de 7 … podría perder toda su inversión", "dato": "riesgo 7/7; sin protección de capital", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)", "localizador": "KID es §3, pág. 2", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:01Z", "alcanceYLimites": "Riesgo de cambio EUR/USD y de la paridad de USDC.", "estado": "respaldado"},
-    {"campo": "entidad", "literal": "Midas Software GmbH no es un banco y no está autorizada ni supervisada como entidad …", "dato": "emisor no supervisado; folleto aprobado por la FMA de Liechtenstein", "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)", "localizador": "KID es, pág. 2; FMA-LI y FINMA sin coincidencias hoy", "fechaDato": "2026-07-17", "consultadoUtc": "2026-11-03T10:20:43Z", "alcanceYLimites": "No presentar la aprobación del folleto como licencia.", "estado": "respaldado"},
-    {"campo": "circulante", "literal": "totalSupply() = 68.062.398,78 mTBILL", "dato": "68,06 millones de tokens en Ethereum (01/11: 68,06 millones)", "fuentePrimaria": "Ethereum, eth_call al token 0xdd629e5241cbc5919847783e6c96b2de4754e438", "localizador": "totalSupply()", "fechaDato": "2026-11-03", "consultadoUtc": "2026-11-03T10:20:57Z", "alcanceYLimites": "Solo la red Ethereum; hay tokens en otras redes.", "estado": "respaldado_con_alcance"}
+    {
+      "campo": "estado",
+      "literal": "Offer Period: until end of validity of the Base Prospectus",
+      "dato": "abierta (periodo de oferta hasta el 17/07/2027)",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)",
+      "localizador": "Final Terms 17/07/2026, Part B, pág. 6",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:01Z",
+      "alcanceYLimites": "Periodo documental. midas.app/mtbill sigue dando 403 (Cloudflare).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "estado",
+      "literal": "Vault de emisión: paused()=false, greenlistEnabled()=false, minAmount()=0, instantFee()=0 · Vault de reembolso: paused()=false",
+      "dato": "suscripción y reembolso operativos en cadena el 03/11/2026",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com a 0x99361435420711723aF805F08187c9E6bF796683 y 0x569D7dccBF6923350521ecBC28A555A500c4f0Ec",
+      "localizador": "Lectura en cadena, bloque 26.333.638",
+      "fechaDato": "2026-11-03",
+      "consultadoUtc": "2026-11-03T10:20:57Z",
+      "alcanceYLimites": "Solo prueba que los contratos no están pausados; el alta (KYC) y los filtros de país de la web no se ven desde fuera.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Countr(y)(ies) Where the Offer(s) to the Public Takes Place: Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy, Spain, …",
+      "dato": "oferta pública en España",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)",
+      "localizador": "Final Terms 17/07/2026, Part B, pág. 6; ESMA FTWS-1420 con SPAIN entre los Estados de acogida",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:01Z",
+      "alcanceYLimites": "Confirmado hoy también en ESMA (10:20:25Z).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Target market under MiFID II: eligible counterparties, professional clients and retail clients · Prohibition of Sales to EEA Retail Investors: not applicable",
+      "dato": "apto para minoristas",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)",
+      "localizador": "Final Terms 17/07/2026, Part B, pág. 6",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:01Z",
+      "alcanceYLimites": "El KID limita el perfil: minorista que conozca productos estructurados y tokens, que pueda perderlo todo, horizonte ≥ 1 año.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "MTBILL → Midas Software GmbH · «Public offer under the EU Prospectus Regulation» · offer: public",
+      "dato": "la web trata mTBILL como oferta pública (sin lista blanca)",
+      "fuentePrimaria": "https://midas.app/assets/main-Z8x886kR.js",
+      "localizador": "Bundle JS que sirve hoy midas.app (nuevo nombre; mismo contenido de emisores que main-DOxid0Zj.js del 01/11)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:21:26Z",
+      "alcanceYLimites": "Configuración de la propia web; coincide con las Condiciones Finales y con greenlistEnabled()=false.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Minimum Investment Amount: not applicable",
+      "dato": "sin importe mínimo",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)",
+      "localizador": "Final Terms Part A §3, pág. 4; KID es pág. 1 («Importe mínimo de inversión: no aplicable»); en cadena minAmount()=0 y minMTokenAmountForFirstDeposit()=0",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:57Z",
+      "alcanceYLimites": "Se paga en USDC; hacen falta wallet y alta; costes de red aparte.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "mTBILL/USD latestRoundData: roundId 486, answer 107685452 (8 decimales), updatedAt 2026-11-02T13:20:23Z",
+      "dato": "Valor por token 1,0769 USD (02/11/2026)",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al oráculo 0x056339C044055819E8Db84E71f5f2E1F536b2E5b",
+      "localizador": "Oráculo designado en Final Terms Part A §1; ronda 486 es la última (getRoundData(487) vacío)",
+      "fechaDato": "2026-11-02",
+      "consultadoUtc": "2026-11-03T10:20:57Z",
+      "alcanceYLimites": "Es el valor publicado por el emisor, no una rentabilidad. A las 10:20 UTC del 03/11 aún no había ronda del día (las actualizaciones recientes son hacia las 13:00–16:00 UTC).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": null,
+      "dato": null,
+      "fuentePrimaria": "https://midas.app/mtbill",
+      "localizador": "APY de 7 días de la página de producto",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:19:33Z",
+      "alcanceYLimites": "midas.app/mtbill devuelve 403 (Cloudflare). No se consultó la API interna que alimenta esa cifra (la política de la sesión lo denegó). No se calcula un APY propio a partir del valor por token.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "No cobramos comisión de entrada · Comisiones de gestión 0,00 % · Comisión de rendimiento 5 % de la rentabilidad positiva · Costes de salida 0,07 % solo reembolso inmediato",
+      "dato": "gestión 0 %; éxito 5 %; reembolso inmediato 0,07 %",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)",
+      "localizador": "KID es §4, pág. 3; en cadena instantFee()=7 (0,07 %) en el vault de reembolso e instantFee()=0 en el de emisión",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:57Z",
+      "alcanceYLimites": "Las Condiciones Finales permiten además «Instant Subscription Fee up to 0.2%» y «Redemption Fees up to 0.05%».",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "salida",
+      "literal": "Redemption Gates 25% of the aggregate number of outstanding mTokens per settlement day · Holdback Percentage up to 5%",
+      "dato": "límite diario 25 %; retención hasta 5 % en reembolso inmediato",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)",
+      "localizador": "Final Terms 17/07/2026, Part A §3, pág. 4",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:01Z",
+      "alcanceYLimites": "Término contractual depositado (FTWS-1420); sin Condiciones Finales posteriores en ESMA a 03/11/2026.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "salida",
+      "literal": "el Emisor no reembolsará más del 15 % de todos los Productos en circulación en ningún día de liquidación … podrá retenerse hasta el 50 % del importe",
+      "dato": "límite diario 15 %; retención hasta 50 % en reembolso inmediato",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)",
+      "localizador": "KID es §5, pág. 3",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:01Z",
+      "alcanceYLimites": "Contradice las Condiciones Finales de la misma fecha. Los dos archivos son los mismos que el 01/11: el emisor no ha resuelto el conflicto.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "salida",
+      "literal": "Puede solicitar el reembolso cualquier Día Hábil … No existe un mercado de negociación",
+      "dato": "reembolso al emisor cualquier día hábil, valorado tras 1 día hábil; sin mercado secundario",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)",
+      "localizador": "KID es §5, pág. 3; en cadena: mínimo de reembolso 1 mTBILL, límite diario inmediato 10.000.000 mTBILL",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:57Z",
+      "alcanceYLimites": "El reembolso inmediato no es obligatorio para el emisor.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "The financial year 2025 ended with a reported deficit not covered by equity of EUR 5’778’815.22. Liabilities to affiliated companies amounted to EUR 14’873’900.58 … two framework loans granted by the parent company … subject to qualified subordination",
+      "dato": "emisor con patrimonio negativo a 31/12/2025, financiado por su matriz",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF Final Terms en GitBook)",
+      "localizador": "Final Terms, resumen anexo, sección B, pág. 9",
+      "fechaDato": "2025-12-31",
+      "consultadoUtc": "2026-11-03T10:20:01Z",
+      "alcanceYLimites": "Es la última cifra pública que se ha podido leer: no hay suplemento con cuentas intermedias en ESMA y la página de documentos del emisor da 403.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Producto en la clase de riesgo 7 en una escala de 7 … podría perder toda su inversión",
+      "dato": "riesgo 7/7; sin protección de capital",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)",
+      "localizador": "KID es §3, pág. 2",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:01Z",
+      "alcanceYLimites": "Riesgo de cambio EUR/USD y de la paridad de USDC.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Midas Software GmbH no es un banco y no está autorizada ni supervisada como entidad …",
+      "dato": "emisor no supervisado; folleto aprobado por la FMA de Liechtenstein",
+      "fuentePrimaria": "https://docs.midas.app/resources/legal-product-documentation/mtbill (PDF KID es en GitBook)",
+      "localizador": "KID es, pág. 2; FMA-LI y FINMA sin coincidencias hoy",
+      "fechaDato": "2026-07-17",
+      "consultadoUtc": "2026-11-03T10:20:43Z",
+      "alcanceYLimites": "No presentar la aprobación del folleto como licencia.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "circulante",
+      "literal": "totalSupply() = 68.062.398,78 mTBILL",
+      "dato": "68,06 millones de tokens en Ethereum (01/11: 68,06 millones)",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al token 0xdd629e5241cbc5919847783e6c96b2de4754e438",
+      "localizador": "totalSupply()",
+      "fechaDato": "2026-11-03",
+      "consultadoUtc": "2026-11-03T10:20:57Z",
+      "alcanceYLimites": "Solo la red Ethereum; hay tokens en otras redes.",
+      "estado": "respaldado_con_alcance"
+    }
   ],
   "criterios": {
-    "entidadYPermisos": {"veredicto": "cumple_con_limites", "nota": "Folleto aprobado por la FMA de Liechtenstein y Condiciones Finales pasaportadas a España (ESMA, hoy sin cambios); el emisor no es entidad supervisada (FMA-LI y FINMA sin coincidencias)."},
-    "actividadYFecha": {"veredicto": "cumple", "nota": "Periodo de oferta hasta el 17/07/2027; contratos de suscripción y reembolso no pausados el 03/11; valor por token publicado el 02/11."},
-    "accesoYCondiciones": {"veredicto": "cumple_con_limites", "nota": "Oferta pública en España, apta para minoristas, sin mínimo; USDC con wallet y alta. Límites de reembolso en conflicto entre Condiciones Finales y KID."},
-    "riesgosYAlertas": {"veredicto": "cumple_con_limites", "nota": "KID en español riesgo 7/7; emisor con patrimonio negativo a 31/12/2025; sin advertencias de la CNMV (la de FINMA es de otra entidad homónima)."}
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Folleto aprobado por la FMA de Liechtenstein y Condiciones Finales pasaportadas a España (ESMA, hoy sin cambios); el emisor no es entidad supervisada (FMA-LI y FINMA sin coincidencias)."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Periodo de oferta hasta el 17/07/2027; contratos de suscripción y reembolso no pausados el 03/11; valor por token publicado el 02/11."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Oferta pública en España, apta para minoristas, sin mínimo; USDC con wallet y alta. Límites de reembolso en conflicto entre Condiciones Finales y KID."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "KID en español riesgo 7/7; emisor con patrimonio negativo a 31/12/2025; sin advertencias de la CNMV (la de FINMA es de otra entidad homónima)."
+    }
   },
   "estadoOferta": "abierta",
   "disponibleEs": "confirmado",
   "cambiosRespectoPublicado": [
-    {"campo": "sin cambios", "antes": "lo publicado el 02/11 (verificadaEl 2026-11-02)", "ahora": "Mismos documentos (Condiciones Finales y KID con sha256 idéntico), sin documentos nuevos en ESMA, llms-full.txt idéntico, mismo valor por token (1,0769 USD, ronda 486 del 02/11), mismas comisiones en cadena y contratos sin pausa. Consulta del 03/11 entre 10:19 y 10:21 UTC.", "fuente": "https://registers.esma.europa.eu/solr/esma_registers_priii_securities/select?q=sec_isin:CH1371002986&wt=json&rows=50", "critico": false},
-    {"campo": "fuentes de la web", "antes": "bundle main-DOxid0Zj.js", "ahora": "midas.app sirve hoy main-Z8x886kR.js; el mapa de emisores es el mismo (mTBILL = oferta pública)", "fuente": "https://midas.app/assets/main-Z8x886kR.js", "critico": false},
-    {"campo": "advertenciasReguladores", "antes": "sin coincidencias", "ahora": "FINMA tiene en su lista de advertencias a «Midas.Investments» (otra entidad, 2022); no afecta a Midas Software GmbH", "fuente": "https://www.finma.ch/en/finma-public/warnungen/warning-list/midas-investments/", "critico": false}
+    {
+      "campo": "sin cambios",
+      "antes": "lo publicado el 02/11 (verificadaEl 2026-11-02)",
+      "ahora": "Mismos documentos (Condiciones Finales y KID con sha256 idéntico), sin documentos nuevos en ESMA, llms-full.txt idéntico, mismo valor por token (1,0769 USD, ronda 486 del 02/11), mismas comisiones en cadena y contratos sin pausa. Consulta del 03/11 entre 10:19 y 10:21 UTC.",
+      "fuente": "https://registers.esma.europa.eu/solr/esma_registers_priii_securities/select?q=sec_isin:CH1371002986&wt=json&rows=50",
+      "critico": false
+    },
+    {
+      "campo": "fuentes de la web",
+      "antes": "bundle main-DOxid0Zj.js",
+      "ahora": "midas.app sirve hoy main-Z8x886kR.js; el mapa de emisores es el mismo (mTBILL = oferta pública)",
+      "fuente": "https://midas.app/assets/main-Z8x886kR.js",
+      "critico": false
+    },
+    {
+      "campo": "advertenciasReguladores",
+      "antes": "sin coincidencias",
+      "ahora": "FINMA tiene en su lista de advertencias a «Midas.Investments» (otra entidad, 2022); no afecta a Midas Software GmbH",
+      "fuente": "https://www.finma.ch/en/finma-public/warnungen/warning-list/midas-investments/",
+      "critico": false
+    }
   ],
   "avisosConFecha": [
-    {"avisoPublicado": "Métrica «Valor por token · 02/11/2026: 1,0769 USD (oráculo del emisor)»", "estadoHoy": "vigente", "literal": "roundId 486, answer 107685452, updatedAt 2026-11-02T13:20:23Z", "fuente": "Ethereum, oráculo 0x056339C044055819E8Db84E71f5f2E1F536b2E5b", "consultadoUtc": "2026-11-03T10:20:57Z", "textoNuevo": null},
-    {"avisoPublicado": "El emisor cerró 2025 con patrimonio negativo (5,78 M€ de déficit) y se financia con préstamos de su matriz. Si no puede pagar, puedes perder toda la inversión (riesgo 7 de 7 en el KID).", "estadoHoy": "vigente", "literal": "The financial year 2025 ended with a reported deficit not covered by equity of EUR 5’778’815.22", "fuente": "Final Terms 17/07/2026, pág. 9", "consultadoUtc": "2026-11-03T10:20:01Z", "textoNuevo": null},
-    {"avisoPublicado": "Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %.", "estadoHoy": "vigente", "literal": "FT pág. 4 «Redemption Gates 25%… Holdback Percentage up to 5%» / KID §5 «no reembolsará más del 15 %… hasta el 50 %»", "fuente": "Final Terms y KID es (mismos archivos que el 01/11)", "consultadoUtc": "2026-11-03T10:20:01Z", "textoNuevo": null}
+    {
+      "avisoPublicado": "Métrica «Valor por token · 02/11/2026: 1,0769 USD (oráculo del emisor)»",
+      "estadoHoy": "vigente",
+      "literal": "roundId 486, answer 107685452, updatedAt 2026-11-02T13:20:23Z",
+      "fuente": "Ethereum, oráculo 0x056339C044055819E8Db84E71f5f2E1F536b2E5b",
+      "consultadoUtc": "2026-11-03T10:20:57Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "El emisor cerró 2025 con patrimonio negativo (5,78 M€ de déficit) y se financia con préstamos de su matriz. Si no puede pagar, puedes perder toda la inversión (riesgo 7 de 7 en el KID).",
+      "estadoHoy": "vigente",
+      "literal": "The financial year 2025 ended with a reported deficit not covered by equity of EUR 5’778’815.22",
+      "fuente": "Final Terms 17/07/2026, pág. 9",
+      "consultadoUtc": "2026-11-03T10:20:01Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %.",
+      "estadoHoy": "vigente",
+      "literal": "FT pág. 4 «Redemption Gates 25%… Holdback Percentage up to 5%» / KID §5 «no reembolsará más del 15 %… hasta el 50 %»",
+      "fuente": "Final Terms y KID es (mismos archivos que el 01/11)",
+      "consultadoUtc": "2026-11-03T10:20:01Z",
+      "textoNuevo": null
+    }
   ],
   "propuestaTarjeta": {
     "titulo": "mTBILL",
@@ -80,13 +371,34 @@
     },
     "rentabilidad": null,
     "metricas": [
-      {"etiqueta": "Mínimo", "valor": "Sin mínimo (Condiciones Finales)"},
-      {"etiqueta": "Moneda", "valor": "USD · se paga y cobra en USDC"},
-      {"etiqueta": "Folleto", "valor": "Aprobado por la FMA de Liechtenstein y notificado a España"},
-      {"etiqueta": "KID", "valor": "En español · riesgo 7 de 7"},
-      {"etiqueta": "Comisiones (KID)", "valor": "Gestión 0 % · éxito 5 % del rendimiento positivo · reembolso inmediato 0,07 % (KID)"},
-      {"etiqueta": "Reembolso", "valor": "Cualquier día hábil, valor tras 1 día hábil, con límites diarios"},
-      {"etiqueta": "Valor por token · 02/11/2026", "valor": "1,0769 USD (oráculo del emisor)"}
+      {
+        "etiqueta": "Mínimo",
+        "valor": "Sin mínimo (Condiciones Finales)"
+      },
+      {
+        "etiqueta": "Moneda",
+        "valor": "USD · se paga y cobra en USDC"
+      },
+      {
+        "etiqueta": "Folleto",
+        "valor": "Aprobado por la FMA de Liechtenstein y notificado a España"
+      },
+      {
+        "etiqueta": "KID",
+        "valor": "En español · riesgo 7 de 7"
+      },
+      {
+        "etiqueta": "Comisiones (KID)",
+        "valor": "Gestión 0 % · éxito 5 % del rendimiento positivo · reembolso inmediato 0,07 % (KID)"
+      },
+      {
+        "etiqueta": "Reembolso",
+        "valor": "Cualquier día hábil, valor tras 1 día hábil, con límites diarios"
+      },
+      {
+        "etiqueta": "Valor por token · 02/11/2026",
+        "valor": "1,0769 USD (oráculo del emisor)"
+      }
     ],
     "avisos": [
       "El emisor no está supervisado: la FMA aprobó el folleto, no la entidad. Tu derecho es un crédito subordinado frente a Midas Software GmbH, no letras del Tesoro.",
@@ -103,7 +415,11 @@
       "https://midas.app/mtbill"
     ],
     "lugar": "Berlín · Alemania",
-    "pasos": ["Alta y verificación", "Suscribes con USDC", "Reembolso al emisor"],
+    "pasos": [
+      "Alta y verificación",
+      "Suscribes con USDC",
+      "Reembolso al emisor"
+    ],
     "concepto": "un pagaré del Tesoro convertido en ficha digital sobre una mesa de despacho berlinesa"
   },
   "prioridadEditorial": {
@@ -124,5 +440,8 @@
     "No se pudieron abrir las cuentas del emisor de la página «Issuer Documents» (403); la cifra patrimonial sale del resumen de las Condiciones Finales (cierre 2025).",
     "Folleto base BPWO-84 completo no leído."
   ],
-  "consulta": {"inicioUtc": "2026-11-03T10:10:23Z", "finUtc": "2026-11-03T10:21:26Z"}
+  "consulta": {
+    "inicioUtc": "2026-11-03T10:10:23Z",
+    "finUtc": "2026-11-03T10:21:26Z"
+  }
 }

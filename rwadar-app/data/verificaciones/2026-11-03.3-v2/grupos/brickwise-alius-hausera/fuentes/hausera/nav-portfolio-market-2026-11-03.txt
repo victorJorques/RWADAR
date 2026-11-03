@@ -1,0 +1,373 @@
+URL: https://portfolio.exchange/es/portfolio-market
+FINAL: https://portfolio.exchange/es/portfolio-market
+CONSULTADO: 2026-11-03T10:31:09Z
+HTTP: 200
+
+Inicio
+Emisores
+Tarifas
+Inversores
+Partners
+Miembros
+Nosotros
+Noticias
+Mercado
+Portfolio Stock Exchange
+Mercado
+Acceder
+Acciones
+ETP/Deuda
+Fondos de inversión
+Suscripciones
+EMISIONES
+32
+CAPITALIZACIÓN TOTAL
+2.774.877.491,69€
+ 	 	VALOR LIQUIDATIVO UNITARIO	VALOR LIQUIDATIVO	CAPITALIZACIÓN	ÚLTIMO PRECIO
+
+	
+ACRS
+- AC Residencial SOCIMI, S.A.
+AC RESIDENCIAL SOCIMI
+ES0105746004
+			29.872.824,00€	1,00€
+
+	
+ACCS
+- Almond Core Centre Socimi, S.A.
+ALMOND CORE CENTRE SOCIMI
+ES0105850004
+			28.500.000,00€	5,70€
+
+	
+AOFI
+- AOFI SHENI SOCIMI, S.A.U.
+AOFI SHENI SOCIMI
+ES0105801007
+			61.536.900,00€	123,00€
+
+	
+ATLN
+- ATOLON CAPITAL PARTNERS SOCIMI, S.A.
+ATOLON CAPITAL PARTNERS SOCIMI
+ES0105792008
+			40.249.889,82€	2,22€
+
+	
+DARI
+- DARIA 323 CORPORATE SERVICES SOCIMI S.A.U.
+DARIA 323 SOCIMI
+ES0105902003
+			29.000.000,00€	5,80€
+
+	
+ERTW
+- Edificio Rostower SOCIMI, S.A.U.
+EDIFICIO ROSTOWER SOCIMI
+ES0105871000
+			243.080.062,50€	62,50€
+
+	
+EWER
+- EWER IN LONG SOCIMI, S.A.
+EWER IN LONG SOCIMI
+ES0106052006
+			118.681.698,50€	51,50€
+
+	
+CORT
+- Global Cortiguera SOCIMI, S.A.U.
+GLOBAL CORTIGUERA SOCIMI
+ES0105841003
+			43.000.000,00€	8,60€
+
+	
+GLTA
+- Global Tavascan, SOCIMI, S.A.
+GLOBAL TAVASCAN SOCIMI
+ES0105911004
+			61.000.000,00€	12,20€
+
+	
+VEGA
+- Grupo Vega Capital SOCIMI, S.A.U.
+GRUPO VEGA CAPITAL SOCIMI
+ES0106064001
+			237.000.000,00€	47,40€
+
+	
+LVPE
+- La Verdosa Private Equity SCR, SA
+LA VERDOSA PRIVATE EQUITY SCR
+ES0181831001
+	26,13€	313.560.000,00€		
+
+	
+LBEN
+- LIBEEN PROPERTIES, S.A.U.
+LIBEEN PROPERTIES
+ES0105972006
+			4.116.602,00€	1,00€
+
+	
+LIVE
+- LIVING RESIDENTIAL SOCIMI, S.A.
+LIVING RESIDENTIAL SOCIMI
+ES0105356002
+			431.554.713,32€	1,67€
+
+	
+MGNS
+- MGN RENTALS CAPITAL SOCIMI SA
+MGN RENTALS CAPITAL SOCIMI
+ES0106009006
+			11.485.419,00€	1,65€
+
+	
+NXTL
+- NEXTLOG S.A.
+NEXTLOG SOCIMI
+ES0105969002
+			14.400.000,00€	4,00€
+
+	
+NWTA
+- NW1 Spanish Logistics Holdco SOCIMI, S.A.U.
+NW1 SPANISH LOGISTICS SOCIMI
+ES0105840005
+			43.750.000,00€	8,75€
+
+	
+ONLS
+- ONALAND 2018 SOCIMI S.A.U
+ONALAND 2018 SOCIMI
+ES0105756003
+			7.191.000,00€	1,41€
+
+	
+ORIO
+- ORION RENTAL SOCIMI, S.A.
+ORION RENTAL SOCIMI
+ES0105829008
+			13.400.000,00€	1,34€
+
+	
+ORNS
+- ORONIS INVERSIONES SOCIMI S.A.
+ORONIS INVERSIONES SOCIMI
+ES0105828000
+			50.511.540,60€	8,90€
+
+	
+PSLP
+- P3 Spain Logistics Parks SOCIMI S.A.U.
+P3 SPAIN LOGISTIC PARKS SOCIMI
+ES0105282000
+			164.665.257,70€	13,10€
+
+	
+PRIH
+- PRIMERO H INV SOCIAL SOCIMI SA
+PRIMERO H INV. SOCIAL SOCIMI
+ES0105727004
+			5.000.000,00€	1,00€
+
+	
+RAVN
+- RAV EN7 RESIDENTIAL PROPERTY SOCIMI
+RAV EN7 RESIDENTIAL PROPERTY S
+ES0105688008
+			18.100.000,00€	3,62€
+
+	
+RERP
+- Redevco European Retail Parks ES Holdco, Socimi, S.A.U.
+REDEVCO EUROPEAN RP SOCIMI
+ES0106014006
+			40.000.000,00€	8,00€
+
+	
+RIVE
+- Redevco Iberian Ventures IV SOCIMI, S.A.
+REDEVCO IBERIAN VEN. IV SOCIMI
+ES0106104005
+			113.000.000,00€	22,60€
+
+	
+RIBA
+- Rivoli Ballonti Retail SOCIMI, S.A.
+RIVOLI BALLONTI RETAIL SOCIMI
+ES0105945002
+			68.159.000,00€	10,70€
+
+	
+RRIS
+- Round Robin Inversiones Socimi, S.A.
+ROUND ROBIN INVERSIONES SOCIMI
+ES0105675005
+			7.589.134,80€	1,30€
+
+	
+SMRT
+- Smart Kitchens Properties SOCIMI S.A.
+SMART KITCHENS SOCIMI
+ES0105747002
+			12.388.801,45€	1,45€
+
+	
+SLPS
+- SMART LIVING PROPERTIES SOCIMI, S.A.
+SMART LIVING PROPERTIES SOCIMI
+ES0105907002
+			105.435.000,00€	4,26€
+
+	
+TELC
+- TELCO BUILDING SOCIMI, S.A.
+TELCO BUILDING SOCIMI
+ES0105885000
+			11.760.000,00€	1,96€
+
+	
+TORA
+- TORRE RIOJA-MADRID SOCIMI S.A.U.
+TORRE RIOJA-MADRID SOCIMI
+ES0105525002
+			418.079.648,00€	184,00€
+
+	
+TRJN
+- Trajano II Affordable Housing, S.A.U.
+Trajano II Affordable Housing
+ES0106050000
+			60.000,00€	1,00€
+
+	
+VIRI
+- Viriato Residencial I SOCIMI, S.A.
+Viriato Residencial I SOCIMI
+ES0106055009
+			28.750.000,00€	11,50€
+Acceder
+Si deseadejarnos un mensajeo desea que le enviemos nuestro folleto, nos pondremos en contacto con usted lo antes posible.
+He leído y acepto los términos de laPolítica de privacidad
+Enviar
+Portfolio es la primera bolsa del mundo que ofrece un mercado primario y secundario en la misma plataforma, integrando los procesos de custodia y post-contratación para todo tipo de emisores e inversores, consiguiendo ahorros para nuestros clientes de hasta el 90% de los costes globales.
+Portfolio
+Inicio
+Tarifas
+Partners
+Miembros
+Nosotros
+Información sobre Gobierno Corporativo, Política de Remuneraciones y otra documentación
+Información sobre Mercados
+Información sobre Servicio de Atención al Cliente
+Emisores
+REITs
+Financiación de proyectos
+Empresas Mid Cap y Tecnologías
+Crowdfunding de Equity o Inmobiliario
+Capital riesgo, Private Equity y Fondos de inv. alternativos
+Vehículos de inversión
+Bonos y Deuda Privada
+Pagarés y titulizaciones
+Inversores
+ECPs
+Inversores Profesionales
+Inversores Minoristas
+Legal
+Aviso legal
+Política de cookies
+Política de privacidad
+
+© 2026 Portfolio Stock Exchange. Todos los derechos reservados.
+
+Usamos cookies para darle una mejor experiencia de navegación.
+Puede encontrar más información sobre las cookies que utilizamos o cambiar las opciones de las mismas.
+AceptarOpciones
+
+==== LINKS ====
+https://portfolio.exchange/es/ | 
+https://portfolio.exchange/es/ | Inicio
+https://portfolio.exchange/es/portfolio-issuers | Emisores
+https://portfolio.exchange/es/portfolio-issuers/#reits | 
+https://portfolio.exchange/es/portfolio-issuers/#project | 
+https://portfolio.exchange/es/portfolio-issuers/#mid | 
+https://portfolio.exchange/es/portfolio-issuers/#crowdfunding | 
+https://portfolio.exchange/es/portfolio-issuers/#venture | 
+https://portfolio.exchange/es/portfolio-issuers/#vehicles | 
+https://portfolio.exchange/es/portfolio-issuers/#bonds | 
+https://portfolio.exchange/es/portfolio-issuers/#money | 
+https://portfolio.exchange/es/portfolio-fees | Tarifas
+https://portfolio.exchange/es/portfolio-investors | Inversores
+https://portfolio.exchange/es/portfolio-investors/#ecps | 
+https://portfolio.exchange/es/portfolio-investors/#professional | 
+https://portfolio.exchange/es/portfolio-investors/#retail | 
+https://portfolio.exchange/es/portfolio-partners | Partners
+https://portfolio.exchange/es/portfolio-members | Miembros
+https://portfolio.exchange/es/portfolio-about | Nosotros
+https://portfolio.exchange/es/portfolio-about/#infogob | 
+https://portfolio.exchange/es/portfolio-about/#infomerc | 
+https://portfolio.exchange/es/portfolio-about/#infoaten | 
+https://portfolio.exchange/es/portfolio-about/#shareholders | 
+https://portfolio.exchange/es/portfolio-news | Noticias
+https://portfolio.exchange/portfolio-market | English
+https://portfolio.exchange/es/portfolio-market | Español
+https://portfolio.exchange/portfolio-market | 
+https://portfolio.exchange/es/portfolio-market | 
+https://portfolio.exchange/es/portfolio-market | Mercado
+https://app.portfolio.exchange/ | Acceder
+https://portfolio.exchange/es/portfolio-market/ac-residencial-socimi-ACRS-ES0105746004-10 | ACRS - AC Residencial SOCIMI, S.A. AC RESIDENCIAL SOCIMI ES0105746004 29.872.824
+https://portfolio.exchange/es/portfolio-market/almond-core-centre-socimi-ACCS-ES0105850004-23 | ACCS - Almond Core Centre Socimi, S.A. ALMOND CORE CENTRE SOCIMI ES0105850004 28
+https://portfolio.exchange/es/portfolio-market/aofi-sheni-socimi-AOFI-ES0105801007-9 | AOFI - AOFI SHENI SOCIMI, S.A.U. AOFI SHENI SOCIMI ES0105801007 61.536.900,00€ 1
+https://portfolio.exchange/es/portfolio-market/atolon-capital-partners-socimi-ATLN-ES0105792008-7 | ATLN - ATOLON CAPITAL PARTNERS SOCIMI, S.A. ATOLON CAPITAL PARTNERS SOCIMI ES010
+https://portfolio.exchange/es/portfolio-market/daria-323-socimi-DARI-ES0105902003-31 | DARI - DARIA 323 CORPORATE SERVICES SOCIMI S.A.U. DARIA 323 SOCIMI ES0105902003 
+https://portfolio.exchange/es/portfolio-market/edificio-rostower-socimi-ERTW-ES0105871000-26 | ERTW - Edificio Rostower SOCIMI, S.A.U. EDIFICIO ROSTOWER SOCIMI ES0105871000 24
+https://portfolio.exchange/es/portfolio-market/ewer-in-long-socimi-EWER-ES0106052006-60 | EWER - EWER IN LONG SOCIMI, S.A. EWER IN LONG SOCIMI ES0106052006 118.681.698,50
+https://portfolio.exchange/es/portfolio-market/global-cortiguera-socimi-CORT-ES0105841003-15 | CORT - Global Cortiguera SOCIMI, S.A.U. GLOBAL CORTIGUERA SOCIMI ES0105841003 43
+https://portfolio.exchange/es/portfolio-market/global-tavascan-socimi-GLTA-ES0105911004-35 | GLTA - Global Tavascan, SOCIMI, S.A. GLOBAL TAVASCAN SOCIMI ES0105911004 61.000.
+https://portfolio.exchange/es/portfolio-market/grupo-vega-capital-socimi-VEGA-ES0106064001-65 | VEGA - Grupo Vega Capital SOCIMI, S.A.U. GRUPO VEGA CAPITAL SOCIMI ES0106064001 
+https://portfolio.exchange/es/portfolio-market/la-verdosa-private-equity-scr-LVPE-ES0181831001-22 | LVPE - La Verdosa Private Equity SCR, SA LA VERDOSA PRIVATE EQUITY SCR ES0181831
+https://portfolio.exchange/es/portfolio-market/libeen-properties-LBEN-ES0105972006-45 | LBEN - LIBEEN PROPERTIES, S.A.U. LIBEEN PROPERTIES ES0105972006 4.116.602,00€ 1,
+https://portfolio.exchange/es/portfolio-market/living-residential-socimi-LIVE-ES0105356002-3 | LIVE - LIVING RESIDENTIAL SOCIMI, S.A. LIVING RESIDENTIAL SOCIMI ES0105356002 43
+https://portfolio.exchange/es/portfolio-market/mgn-rentals-capital-socimi-MGNS-ES0106009006-51 | MGNS - MGN RENTALS CAPITAL SOCIMI SA MGN RENTALS CAPITAL SOCIMI ES0106009006 11.
+https://portfolio.exchange/es/portfolio-market/nextlog-socimi-NXTL-ES0105969002-54 | NXTL - NEXTLOG S.A. NEXTLOG SOCIMI ES0105969002 14.400.000,00€ 4,00€
+https://portfolio.exchange/es/portfolio-market/nw1-spanish-logistics-socimi-NWTA-ES0105840005-14 | NWTA - NW1 Spanish Logistics Holdco SOCIMI, S.A.U. NW1 SPANISH LOGISTICS SOCIMI 
+https://portfolio.exchange/es/portfolio-market/onaland-2018-socimi-ONLS-ES0105756003-6 | ONLS - ONALAND 2018 SOCIMI S.A.U ONALAND 2018 SOCIMI ES0105756003 7.191.000,00€ 
+https://portfolio.exchange/es/portfolio-market/orion-rental-socimi-ORIO-ES0105829008-19 | ORIO - ORION RENTAL SOCIMI, S.A. ORION RENTAL SOCIMI ES0105829008 13.400.000,00€
+https://portfolio.exchange/es/portfolio-market/oronis-inversiones-socimi-ORNS-ES0105828000-16 | ORNS - ORONIS INVERSIONES SOCIMI S.A. ORONIS INVERSIONES SOCIMI ES0105828000 50.
+https://portfolio.exchange/es/portfolio-market/p3-spain-logistic-parks-socimi-PSLP-ES0105282000-5 | PSLP - P3 Spain Logistics Parks SOCIMI S.A.U. P3 SPAIN LOGISTIC PARKS SOCIMI ES0
+https://portfolio.exchange/es/portfolio-market/primero-h-inv-social-socimi-PRIH-ES0105727004-4 | PRIH - PRIMERO H INV SOCIAL SOCIMI SA PRIMERO H INV. SOCIAL SOCIMI ES0105727004 
+https://portfolio.exchange/es/portfolio-market/rav-en7-residential-property-s-RAVN-ES0105688008-2 | RAVN - RAV EN7 RESIDENTIAL PROPERTY SOCIMI RAV EN7 RESIDENTIAL PROPERTY S ES0105
+https://portfolio.exchange/es/portfolio-market/redevco-european-rp-socimi-RERP-ES0106014006-47 | RERP - Redevco European Retail Parks ES Holdco, Socimi, S.A.U. REDEVCO EUROPEAN 
+https://portfolio.exchange/es/portfolio-market/redevco-iberian-ven-iv-socimi-RIVE-ES0106104005-72 | RIVE - Redevco Iberian Ventures IV SOCIMI, S.A. REDEVCO IBERIAN VEN. IV SOCIMI E
+https://portfolio.exchange/es/portfolio-market/rivoli-ballonti-retail-socimi-RIBA-ES0105945002-48 | RIBA - Rivoli Ballonti Retail SOCIMI, S.A. RIVOLI BALLONTI RETAIL SOCIMI ES01059
+https://portfolio.exchange/es/portfolio-market/round-robin-inversiones-socimi-RRIS-ES0105675005-1 | RRIS - Round Robin Inversiones Socimi, S.A. ROUND ROBIN INVERSIONES SOCIMI ES010
+https://portfolio.exchange/es/portfolio-market/smart-kitchens-socimi-SMRT-ES0105747002-11 | SMRT - Smart Kitchens Properties SOCIMI S.A. SMART KITCHENS SOCIMI ES0105747002 
+https://portfolio.exchange/es/portfolio-market/smart-living-properties-socimi-SLPS-ES0105907002-34 | SLPS - SMART LIVING PROPERTIES SOCIMI, S.A. SMART LIVING PROPERTIES SOCIMI ES010
+https://portfolio.exchange/es/portfolio-market/telco-building-socimi-TELC-ES0105885000-28 | TELC - TELCO BUILDING SOCIMI, S.A. TELCO BUILDING SOCIMI ES0105885000 11.760.000
+https://portfolio.exchange/es/portfolio-market/torre-rioja-madrid-socimi-TORA-ES0105525002-30 | TORA - TORRE RIOJA-MADRID SOCIMI S.A.U. TORRE RIOJA-MADRID SOCIMI ES0105525002 4
+https://portfolio.exchange/es/portfolio-market/trajano-ii-affordable-housing-TRJN-ES0106050000-57 | TRJN - Trajano II Affordable Housing, S.A.U. Trajano II Affordable Housing ES010
+https://portfolio.exchange/es/portfolio-market/viriato-residencial-i-socimi-VIRI-ES0106055009-66 | VIRI - Viriato Residencial I SOCIMI, S.A. Viriato Residencial I SOCIMI ES0106055
+https://app.portfolio.exchange/auth/login | Acceder
+https://portfolio.exchange/es/privacy | Política de privacidad
+https://twitter.com/Portfolio_SE | 
+https://www.linkedin.com/company/portfoliostockexchange/ | 
+https://portfolio.exchange/es/portfolio-about/#infogob | Información sobre Gobierno Corporativo, Política de Remuneraciones y otra docume
+https://portfolio.exchange/es/portfolio-about/#infomerc | Información sobre Mercados
+https://portfolio.exchange/es/portfolio-about/#infoaten | Información sobre Servicio de Atención al Cliente
+https://portfolio.exchange/es/portfolio-issuers/#reits | REITs
+https://portfolio.exchange/es/portfolio-issuers/#project | Financiación de proyectos
+https://portfolio.exchange/es/portfolio-issuers/#mid | Empresas Mid Cap y Tecnologías
+https://portfolio.exchange/es/portfolio-issuers/#crowdfunding | Crowdfunding de Equity o Inmobiliario
+https://portfolio.exchange/es/portfolio-issuers/#venture | Capital riesgo, Private Equity y Fondos de inv. alternativos
+https://portfolio.exchange/es/portfolio-issuers/#vehicles | Vehículos de inversión
+https://portfolio.exchange/es/portfolio-issuers/#bonds | Bonos y Deuda Privada
+https://portfolio.exchange/es/portfolio-issuers/#money | Pagarés y titulizaciones
+https://portfolio.exchange/es/portfolio-investors/#ecps | ECPs
+https://portfolio.exchange/es/portfolio-investors/#professional | Inversores Profesionales
+https://portfolio.exchange/es/portfolio-investors/#retail | Inversores Minoristas
+https://portfolio.exchange/es/legal | Aviso legal
+https://portfolio.exchange/es/cookies | Política de cookies
+
+==== XHR ====
