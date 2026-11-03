@@ -1,0 +1,142 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-03T12:16:24.648Z",
+  "revisionId": "f26bba19-39fc-aa64-a086-aba333376f0a",
+  "revisionAnterior": "fab6d2e4-0f37-2e3f-4aa8-f027d73f88f6",
+  "resultado": "correcto",
+  "sha256AplicarYAprobar": "5f60e750f5106edb20c5f9ecb870bf1cc059ed6cba33814847deea4f08707ff7",
+  "tarjetas": {
+    "aktionariat": {
+      "minimo": "500 CHF por transferencia bancaria",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Venta solo a otros accionistas; el emisor no recompra"
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "minimo": "1 participación desde 72 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "boss-info": {
+      "minimo": "100 CHF por transferencia bancaria",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: El emisor no recompra ahora; vendes a otros accionistas en ZCHF si hay comprador"
+    },
+    "casa-de-outeiro": {
+      "minimo": "2.000 € (80 acciones de 25 €)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Si no se llega a 2 M€, te devuelven el dinero; si sale, solo podrás vender un 2,5 % de tus acciones al año de 2027 a 2030"
+    },
+    "drautalresidenz-paternion": {
+      "minimo": "1 participación desde 70 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-cohotel": {
+      "minimo": "1 participación desde 110 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-greenpoint": {
+      "minimo": "1 participación desde 100 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "hausera-proximas-ofertas": {
+      "minimo": "No documentado en euros",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida no documentada"
+    },
+    "kraken-xstocks": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo"
+    },
+    "local-de-estanco-klagenfurt": {
+      "minimo": "1 participación desde 95 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "mf-one": {
+      "minimo": "No documentado en euros",
+      "espana": "No disponible desde España según la fuente",
+      "salida": "Salida: Reembolso al emisor solo para direcciones en lista blanca"
+    },
+    "mtbill": {
+      "minimo": "Sin mínimo vigente en euros",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida no documentada"
+    },
+    "prosegur-digital-gold": {
+      "minimo": "1 gramo de oro",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Solo recompra por Prosegur; normalmente de 1 a 7 días hábiles, y puede suspenderse"
+    },
+    "randhartingergasse-9-viena": {
+      "minimo": "1 participación desde 78 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "robinhood-classic-stock-tokens": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Cierras la posición con Robinhood Europe (24/5 según su web; el horario ampliado no siempre está disponible); el cierre puede suspenderse"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "minimo": "1 USD",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles de Francia y EE. UU., con corte a las 11:30 (hora de París)"
+    },
+    "spiko-letras-del-tesoro-euro": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "switzerlend": {
+      "minimo": "1 acción (68,01 CHF el 03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador"
+    },
+    "terreno-con-arrendamiento-billa": {
+      "minimo": "1.000 € (10 participaciones de 100 €)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Si no llega a 500.000 €, te devuelven el dinero; si se emite, cancelable a los 5 años o reventa en la app"
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "minimo": "1 participación desde 80 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "minimo": "1 participación desde 78 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Primera cancelación posible a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "minimo": "1 participación desde 69,90 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "minimo": "1 participación desde 75 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "minimo": "1 participación desde 69,90 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    }
+  },
+  "pruebas": [
+    "identidad SQL/fuentes",
+    "sin DDL ni borrados",
+    "cadena de producción 22/10 → 03/11.2",
+    "rechazo de revisión anterior incorrecta con rollback",
+    "idempotencia",
+    "26 plataformas y 23 fichas comprobadas el 03/11, vigentes hasta el 10/11",
+    "las 23 fichas anteriores idénticas",
+    "alta de Kraken xStocks: desde 1 €, acceso por Kraken UE y aviso de países de oferta",
+    "tarjetas sin citas literales",
+    "el 11/11 se ocultan los datos"
+  ]
+}

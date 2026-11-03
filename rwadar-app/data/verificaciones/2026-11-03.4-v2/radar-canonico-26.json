@@ -1,0 +1,1515 @@
+{
+  "version": 1,
+  "verificadoEl": "2026-11-03",
+  "publicable": false,
+  "alcance": "Revisión editorial de fuentes primarias del 03/11/2026: las 69 fuentes del radar se volvieron a consultar sin sesión y siguen diciendo lo que respaldan. No acredita onboarding, oferta abierta ni rentabilidad.",
+  "politicaFechaCanonica": "Las fechas canónicas de julio/agosto de 2026 se conservan. Esta capa no las rejuvenece y solo añade evidencia fechada, matices y alertas.",
+  "fuentes": [
+    {
+      "id": "addx-web",
+      "tipo": "empresa",
+      "titulo": "ADDX",
+      "url": "https://addx.co/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "addx-acceso",
+      "tipo": "empresa",
+      "titulo": "Inside ADDX",
+      "url": "https://www.addx.co/en/inside-addx/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "addx-mas",
+      "tipo": "regulador",
+      "titulo": "MAS Financial Institutions Directory — ADDX Pte. Ltd.",
+      "url": "https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "archax-web",
+      "tipo": "empresa",
+      "titulo": "Archax",
+      "url": "https://archax.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "archax-permisos",
+      "tipo": "empresa",
+      "titulo": "Archax UK regulatory permissions",
+      "url": "https://uk.archax.com/regulatory-permissions",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "archax-cnmv",
+      "tipo": "regulador",
+      "titulo": "CNMV — Archax Markets Europe, S.V., S.A.",
+      "url": "https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "archax-eu",
+      "tipo": "empresa",
+      "titulo": "Archax Markets Europe",
+      "url": "https://eu.archax.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "artex-web",
+      "tipo": "empresa",
+      "titulo": "ARTEX Global Markets",
+      "url": "https://www.artexgm.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "artex-lb",
+      "tipo": "regulador",
+      "titulo": "Bank of Lithuania — ARTEX Global Markets AG",
+      "url": "https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "backed-web",
+      "tipo": "empresa",
+      "titulo": "Backed Finance",
+      "url": "https://backed.fi/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "xstocks-legal",
+      "tipo": "documento_legal",
+      "titulo": "xStocks product legal overview",
+      "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "blocksquare-web",
+      "tipo": "empresa",
+      "titulo": "Blocksquare",
+      "url": "https://blocksquare.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "blocksquare-terms",
+      "tipo": "documento_legal",
+      "titulo": "Blocksquare certified partner terms template",
+      "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "centrifuge-web",
+      "tipo": "empresa",
+      "titulo": "Centrifuge",
+      "url": "https://centrifuge.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "centrifuge-terms",
+      "tipo": "documento_legal",
+      "titulo": "Centrifuge website terms",
+      "url": "https://centrifuge.io/terms",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "courtyard-web",
+      "tipo": "empresa",
+      "titulo": "Courtyard",
+      "url": "https://courtyard.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "courtyard-terms",
+      "tipo": "documento_legal",
+      "titulo": "Courtyard terms of service",
+      "url": "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "figure-web",
+      "tipo": "empresa",
+      "titulo": "Figure",
+      "url": "https://figure.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "figure-open",
+      "tipo": "empresa",
+      "titulo": "Figure Markets OPEN disclosures",
+      "url": "https://www.figuremarkets.com/disclosures/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "figure-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — Figure Securities, Inc.",
+      "url": "https://files.brokercheck.finra.org/firm/firm_307093.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "fireblocks-web",
+      "tipo": "empresa",
+      "titulo": "Fireblocks",
+      "url": "https://fireblocks.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "fireblocks-trust",
+      "tipo": "empresa",
+      "titulo": "Fireblocks Trust Company",
+      "url": "https://www.fireblocks.com/trustco",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "nydfs-virtual",
+      "tipo": "regulador",
+      "titulo": "NYDFS virtual currency businesses",
+      "url": "https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "franklin-benji",
+      "tipo": "empresa",
+      "titulo": "Franklin Templeton Benji",
+      "url": "https://digitalassets.franklintempleton.com/benji/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "franklin-prospectus",
+      "tipo": "folleto_regulatorio",
+      "titulo": "Franklin OnChain U.S. Government Money Fund prospectus",
+      "url": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "inx-web",
+      "tipo": "empresa",
+      "titulo": "INX One",
+      "url": "https://inx.co/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "inx-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — INX Securities, LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "inx-disclosure",
+      "tipo": "documento_legal",
+      "titulo": "INX funds availability disclosure",
+      "url": "https://inx.co/funds-availability-disclosure",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "lofty-web",
+      "tipo": "empresa",
+      "titulo": "Lofty",
+      "url": "https://lofty.ai/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "lofty-terms",
+      "tipo": "documento_legal",
+      "titulo": "Lofty terms and conditions",
+      "url": "https://www.lofty.ai/terms",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "maple-web",
+      "tipo": "empresa",
+      "titulo": "Maple Finance",
+      "url": "https://maple.finance/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "maple-terms",
+      "tipo": "documento_legal",
+      "titulo": "Maple interface terms — syrupUSDC and syrupUSDT",
+      "url": "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "maple-institutional",
+      "tipo": "empresa",
+      "titulo": "Maple Institutional",
+      "url": "https://maple.finance/earn/maple-institutional",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "midas-web",
+      "tipo": "empresa",
+      "titulo": "Midas · índice oficial de productos (llms.txt)",
+      "url": "https://midas.app/llms.txt",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "midas-mtbill",
+      "tipo": "folleto_regulatorio",
+      "titulo": "Folleto base de Midas Software GmbH aprobado por la FMA de Liechtenstein el 17/07/2026 (copia publicada por la MFSA)",
+      "url": "https://www.mfsa.mt/wp-content/uploads/2026/07/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2026.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "midas-old-prospectus",
+      "tipo": "regulador",
+      "titulo": "MFSA copy of 2024 Midas base prospectus",
+      "url": "https://www.mfsa.mt/wp-content/uploads/2024/11/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2024.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "ondo-web",
+      "tipo": "empresa",
+      "titulo": "Ondo Finance",
+      "url": "https://ondo.finance/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "ondo-usdy-access",
+      "tipo": "documento_legal",
+      "titulo": "Ondo USDY eligibility",
+      "url": "https://docs.ondo.finance/general-access-products/usdy/eligibility",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "openeden-web",
+      "tipo": "empresa",
+      "titulo": "OpenEden",
+      "url": "https://openeden.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "openeden-intro",
+      "tipo": "documento_legal",
+      "titulo": "OpenEden TBILL introduction",
+      "url": "https://docs.openeden.com/tbill/introduction",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "openeden-onboarding",
+      "tipo": "documento_legal",
+      "titulo": "OpenEden investor onboarding",
+      "url": "https://docs.openeden.com/tbill/investor-onboarding",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "paxg-web",
+      "tipo": "empresa",
+      "titulo": "Pax Gold",
+      "url": "https://paxos.com/paxgold",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "paxg-nydfs",
+      "tipo": "regulador",
+      "titulo": "NYDFS approval of PAX Gold",
+      "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "reental-web",
+      "tipo": "empresa",
+      "titulo": "Reental",
+      "url": "https://reental.co/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "reental-faq",
+      "tipo": "empresa",
+      "titulo": "Reental FAQ",
+      "url": "https://www.reental.co/en/faqs",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "reental-emision",
+      "tipo": "empresa",
+      "titulo": "Reental — emisión concreta y ERIR",
+      "url": "https://www.reental.co/en/corporate/reental-lanza-la-primera-emision-de-un-security-token-inmobiliario-en-espana-autorizado-por-la-cnmv",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "republic-web",
+      "tipo": "empresa",
+      "titulo": "Republic Europe · centro de ayuda",
+      "url": "https://help.republic.com/en/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "republic-entities",
+      "tipo": "regulador",
+      "titulo": "FINRA · Funding portals we regulate (OpenDeal Portal LLC)",
+      "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "republic-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — OpenDeal Broker LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "securitize-web",
+      "tipo": "empresa",
+      "titulo": "Securitize",
+      "url": "https://securitize.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "securitize-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — Securitize Markets, LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "spiko-web",
+      "tipo": "empresa",
+      "titulo": "Spiko",
+      "url": "https://spiko.io/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "spiko-access",
+      "tipo": "empresa",
+      "titulo": "Spiko Web3 use case and UCITS access",
+      "url": "https://www.spiko.io/use-cases/web3",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "spiko-amf",
+      "tipo": "regulador",
+      "titulo": "AMF GECO — fondo Spiko",
+      "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "superstate-web",
+      "tipo": "empresa",
+      "titulo": "Superstate",
+      "url": "https://superstate.co/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "superstate-ustb",
+      "tipo": "empresa",
+      "titulo": "Superstate USTB",
+      "url": "https://superstate.com/assets/ustb",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "swarm-web",
+      "tipo": "empresa",
+      "titulo": "Swarm",
+      "url": "https://docs.swarm.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "swarm-terms",
+      "tipo": "documento_legal",
+      "titulo": "Swarm Markets terms",
+      "url": "https://docs.swarm.com/about/terms/tos",
+      "primaria": true,
+      "publicadaEl": "2022-05-18",
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "taurus-web",
+      "tipo": "empresa",
+      "titulo": "Taurus",
+      "url": "https://taurushq.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "taurus-disclosure",
+      "tipo": "documento_legal",
+      "titulo": "Taurus regulatory disclosure",
+      "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "taurus-finma",
+      "tipo": "regulador",
+      "titulo": "FINMA authorised banks and securities firms",
+      "url": "https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "tokeny-web",
+      "tipo": "empresa",
+      "titulo": "Tokeny",
+      "url": "https://tokeny.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "tokeny-terms",
+      "tipo": "documento_legal",
+      "titulo": "Tokeny general terms of service",
+      "url": "https://tokeny.com/general-terms-of-service/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "tzero-web",
+      "tipo": "empresa",
+      "titulo": "tZERO",
+      "url": "https://tzero.com/",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "tzero-company",
+      "tipo": "empresa",
+      "titulo": "tZERO company and regulatory entities",
+      "url": "https://tzero.com/company",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "tzero-finra",
+      "tipo": "regulador",
+      "titulo": "FINRA BrokerCheck — tZERO Securities, LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_123421.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "paxg-occ",
+      "tipo": "regulador",
+      "titulo": "OCC — active national trust banks",
+      "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "spiko-regafi",
+      "tipo": "regulador",
+      "titulo": "REGAFI (ACPR) · Spiko Finance, empresa de inversión autorizada",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=siren%3D%22980659585%22",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    },
+    {
+      "id": "spiko-regafi-pasaporte-es",
+      "tipo": "regulador",
+      "titulo": "REGAFI (ACPR) · Pasaporte de Spiko Finance hacia España",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "primaria": true,
+      "consultadaEl": "2026-11-03"
+    }
+  ],
+  "plataformas": [
+    {
+      "slug": "addx",
+      "nombre": "ADDX",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web mantiene alta y catálogo de oportunidades.",
+        "fuentes": [
+          "addx-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "ADDX Pte. Ltd. figura en el directorio de MAS como CMS licensee y recognised market operator.",
+        "fuentes": [
+          "addx-mas"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La propia empresa limita el alta a inversores acreditados o institucionales no estadounidenses.",
+        "fuentes": [
+          "addx-acceso"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_minorista",
+          "detalle": "No presentar como acceso minorista general ni como disponible automáticamente en España.",
+          "fuentes": [
+            "addx-acceso"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "archax",
+      "nombre": "Archax",
+      "fechaCanonicaConservada": "2026-08-08",
+      "estadoOperativo": {
+        "estado": "no_verificable",
+        "detalle": "Las webs del grupo y de Europa ya se leen (requieren JavaScript). El grupo dice operar mediante entidades en Reino Unido y España; la web europea marca el MTF, la intermediación, la custodia y la tokenización como 'pre-launch'. No se confirma actividad comercial en la UE.",
+        "fuentes": [
+          "archax-web",
+          "archax-eu"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Archax Markets Europe, S.V., S.A. figura en CNMV con registro 289 de 08/08/2019. Este registro no se extiende a otras entidades del grupo.",
+        "fuentes": [
+          "archax-cnmv"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La web europea dirige sus servicios solo a clientes profesionales e institucionales del EEE y los presenta como previos al lanzamiento; por ahora solo permite registrar interés. No hay alta abierta para particulares.",
+        "fuentes": [
+          "archax-eu"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "entidad_y_servicio",
+          "detalle": "El registro de la sociedad europea no confirma que un producto esté abierto ni que una persona concreta sea elegible.",
+          "fuentes": [
+            "archax-cnmv",
+            "archax-eu"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "artex-global-markets",
+      "nombre": "ARTEX Global Markets",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "no_verificable",
+        "detalle": "La portada se lee con JavaScript: ARTEX se presenta como MTF de arte regulado por la FMA de Liechtenstein. Su página de valores muestra una sola cotización (un tríptico de Francis Bacon) con último precio de 67 € y volumen 4, pero sin mejor oferta de compra ni de venta ni fecha de la operación, así que no se confirma negociación activa.",
+        "fuentes": [
+          "artex-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "El Banco de Lituania mantiene ARTEX Global Markets AG, de Liechtenstein, en su lista de empresas de inversión del EEE que prestan servicios sin sucursal. No prueba actividad comercial actual.",
+        "fuentes": [
+          "artex-lb"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "No hay alta directa en la web. Se opera a través de los miembros y brokers de ejecución regulados que ARTEX publica en artexgm.com/trading-participants. Elegibilidad, países y condiciones dependen de cada intermediario.",
+        "fuentes": [
+          "artex-web",
+          "artex-lb"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "registro_no_equivale_operacion",
+          "detalle": "Mantener la fila como no verificable hasta confirmar web, instrumento vivo y proceso de alta.",
+          "fuentes": [
+            "artex-lb"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "backed-finance",
+      "nombre": "Backed Finance",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web muestra xStocks y documentación de producto vigente.",
+        "fuentes": [
+          "backed-web",
+          "xstocks-legal"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "La documentación de xStocks describe certificados de Backed Assets (JE) Limited emitidos bajo un folleto base aprobado por la FMA de Liechtenstein y pasaportable en el EEE; no acredita que Backed sea una plataforma de inversión licenciada en España.",
+        "fuentes": [
+          "xstocks-legal"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La distribución minorista en el EEE depende de distribuidores autorizados y términos finales; Estados Unidos está excluido.",
+        "fuentes": [
+          "xstocks-legal"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "distribuidor_y_producto",
+          "detalle": "No traducir 'folleto aprobado' a disponibilidad minorista universal ni a aval del regulador.",
+          "fuentes": [
+            "xstocks-legal"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "blocksquare",
+      "nombre": "Blocksquare",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "no_verificable",
+        "detalle": "La portada, que requiere JavaScript, presenta una oferta B2B: protocolo de tokenización inmobiliaria y plataforma de marca blanca con contacto comercial. El apartado de noticias no muestra entradas fechadas, así que no se confirma actividad actual ni portales vivos.",
+        "fuentes": [
+          "blocksquare-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "Los términos ya se leen. Son una plantilla para socios certificados (operador 'CP_COMPANY') que declara que el operador no presta servicios financieros licenciados ni regulados. No identifican entidad ni registro, y la web marca 'Regulation' como 'Available soon'.",
+        "fuentes": [
+          "blocksquare-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Los términos son una plantilla para operadores de portales: exigen KYC y control de sanciones (ONU, UE, Reino Unido, OFAC) y dejan en blanco la jurisdicción. El acceso real debe confirmarse con el operador de cada portal y activo.",
+        "fuentes": [
+          "blocksquare-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "operador_y_activo",
+          "detalle": "No atribuir a cada portal una licencia o vínculo registral por utilizar tecnología de tokenización. Revisar emisor, contrato y jurisdicción del activo.",
+          "fuentes": [
+            "blocksquare-web",
+            "blocksquare-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "centrifuge",
+      "nombre": "Centrifuge",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web mantiene infraestructura de gestión de activos on-chain.",
+        "fuentes": [
+          "centrifuge-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Centrifuge es protocolo/infraestructura; sus términos dicen que ni Centrifuge ni afiliadas se licencian en cada jurisdicción y que los productos pueden ser no regulados.",
+        "fuentes": [
+          "centrifuge-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La disponibilidad es por fondo y puede limitarse a inversores sofisticados, acreditados o cualificados.",
+        "fuentes": [
+          "centrifuge-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "protocolo_no_emisor",
+          "detalle": "Verificar cada fondo, emisor, jurisdicción y documento de oferta; no atribuir al protocolo la licencia del vehículo.",
+          "fuentes": [
+            "centrifuge-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "courtyard",
+      "nombre": "Courtyard",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web muestra packs y coleccionables tokenizados con custodia física.",
+        "fuentes": [
+          "courtyard-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "La documentación revisada describe un marketplace de NFT/coleccionables, no una licencia de mercado de valores.",
+        "fuentes": [
+          "courtyard-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Los términos contienen restricciones de sanciones, pero no se confirmó admisión operativa desde España.",
+        "fuentes": [
+          "courtyard-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "coleccionable_no_valor",
+          "detalle": "No presentar coleccionables, recompra o mercado secundario como inversión regulada ni como liquidez garantizada.",
+          "fuentes": [
+            "courtyard-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "figure",
+      "nombre": "Figure",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Figure.com mantiene servicios de crédito y enlaces a OPEN y Figure Markets; esto no acredita una oferta de inversión concreta abierta.",
+        "fuentes": [
+          "figure-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "El informe oficial FINRA de Figure Securities, Inc., CRD 307093, confirma registro SEC y operación de ATS. No se extiende a otras entidades Figure.",
+        "fuentes": [
+          "figure-finra"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "El registro del broker y su actividad ATS no bastan para confirmar condiciones de alta ni elegibilidad desde España.",
+        "fuentes": [
+          "figure-finra",
+          "figure-open"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "marca_multi_entidad",
+          "detalle": "Distinguir Figure Securities de los servicios de crédito y otras entidades de la marca; comprobar el contrato específico del producto.",
+          "fuentes": [
+            "figure-finra",
+            "figure-web"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fireblocks",
+      "nombre": "Fireblocks",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web ofrece infraestructura de activos digitales y stablecoins.",
+        "fuentes": [
+          "fireblocks-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Fireblocks Trust Company, LLC figura como trust de propósito limitado en NYDFS; la licencia pertenece a esa entidad, no al software completo.",
+        "fuentes": [
+          "fireblocks-trust",
+          "nydfs-virtual"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "La oferta principal es B2B/institucional, no un marketplace minorista directo.",
+        "fuentes": [
+          "fireblocks-web",
+          "fireblocks-trust"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "licencia_entidad_especifica",
+          "detalle": "No describir todos los servicios Fireblocks como custodia regulada; separar Trust Company, software y terceros custodios.",
+          "fuentes": [
+            "fireblocks-trust",
+            "nydfs-virtual"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "franklin-templeton",
+      "nombre": "Franklin Templeton",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Benji y el Franklin OnChain U.S. Government Money Fund mantienen superficies y folleto.",
+        "fuentes": [
+          "franklin-benji",
+          "franklin-prospectus"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "El folleto de 1 de agosto de 2026 (9001 P 08/26) identifica Franklin OnChain U.S. Government Money Fund (FOBXX), de Franklin Templeton Trust, y advierte que la SEC no ha aprobado ni desaprobado los valores. No confirma distribución en España.",
+        "fuentes": [
+          "franklin-prospectus"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "El folleto de 1/08/2026 contempla la app Benji para particulares y un portal web institucional, con KYC/AML, un mínimo inicial de 20 USD en Stellar y mínimos mayores en otras redes, sujetos a elegibilidad. Indica que el fondo se dirige a residentes en EE. UU. y que no está registrado ni autorizado para distribución en ningún país de la UE/EEE, España incluida.",
+        "fuentes": [
+          "franklin-prospectus"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "producto_y_geografia",
+          "detalle": "No convertir un fondo estadounidense accesible por Benji en oferta minorista global.",
+          "fuentes": [
+            "franklin-prospectus"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "inx",
+      "nombre": "INX",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "INX One sigue activo y aparece integrado con el ecosistema Republic.",
+        "fuentes": [
+          "inx-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "INX Securities, LLC figura en FINRA como broker-dealer registrado y opera un ATS.",
+        "fuentes": [
+          "inx-finra",
+          "inx-disclosure"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "La documentación describe financiación en USD para usuarios estadounidenses y no estadounidenses, pero no acredita admisión desde España ni elegibilidad para cada valor.",
+        "fuentes": [
+          "inx-disclosure"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_nasdaq",
+          "detalle": "No afirmar que INX cotiza en Nasdaq; la evidencia revisada confirma el broker/ATS, no ese mercado bursátil.",
+          "fuentes": [
+            "inx-finra"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lofty",
+      "nombre": "Lofty",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web y el marketplace de participaciones inmobiliarias siguen activos.",
+        "fuentes": [
+          "lofty-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "sin_registro_declarado",
+        "detalle": "Sus términos declaran que Lofty no está registrada ante la SEC como bolsa de valores ni en otra capacidad.",
+        "fuentes": [
+          "lofty-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Las páginas revisadas no traen información específica para inversores no estadounidenses: los términos solo advierten que los productos pueden no estar disponibles en cada jurisdicción y excluyen territorios sancionados por la OFAC. No se confirmó base legal, elegibilidad ni comercialización en España.",
+        "fuentes": [
+          "lofty-web",
+          "lofty-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "sin_registro_y_liquidez",
+          "detalle": "No llamar 'oferta registrada' al marketplace ni prometer liquidez instantánea; la ejecución ocurre en redes públicas y no se garantiza mejor ejecución.",
+          "fuentes": [
+            "lofty-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "maple-finance",
+      "nombre": "Maple Finance",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web mantiene productos de crédito institucional y syrup.",
+        "fuentes": [
+          "maple-web",
+          "maple-institutional"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "sin_registro_declarado",
+        "detalle": "Los términos de la interfaz syrup declaran que la operadora no está registrada ante ningún regulador.",
+        "fuentes": [
+          "maple-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La interfaz syrup excluye varias jurisdicciones, entre ellas EE. UU. La página institucional no permite confirmar en este corte todos los requisitos de alta; comprobar el producto concreto.",
+        "fuentes": [
+          "maple-terms",
+          "maple-institutional"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "producto_a_producto",
+          "detalle": "No atribuir licencia o elegibilidad de un pool a todo Maple; protocolo, interfaz, emisor y vehículo son capas distintas.",
+          "fuentes": [
+            "maple-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "midas",
+      "nombre": "Midas",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "El índice oficial de productos de midas.app (llms.txt) mantiene su catálogo, con mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base de 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
+        "fuentes": [
+          "midas-mtbill",
+          "midas-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "La FMA de Liechtenstein aprobó el 17/07/2026 un nuevo folleto base de Midas Software GmbH, válido hasta el 17/07/2027 y notificado a la CNMV. Incluye mTBILL (ISIN CH1371002986) entre los productos que se siguen ofreciendo. Aprobar el folleto no es una licencia: el propio folleto dice que el emisor no está regulado por la FMA. No se obtuvieron los términos finales vigentes de mTBILL.",
+        "fuentes": [
+          "midas-mtbill",
+          "midas-old-prospectus"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "No se obtuvieron términos finales vigentes que permitan confirmar acceso minorista, mínimo de inversión o elegibilidad desde España.",
+        "fuentes": [
+          "midas-mtbill"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "terminos_finales_no_confirmados",
+          "detalle": "No usar 'aprobado por la FMA' como aval ni como licencia de Midas. El folleto base de 17/07/2026 dice que la FMA solo revisa completitud, comprensibilidad y coherencia y que el emisor no queda regulado por ella. Exigir los términos finales vigentes de mTBILL, que deciden si se admite a minoristas del EEE.",
+          "fuentes": [
+            "midas-mtbill",
+            "midas-old-prospectus"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ondo-finance",
+      "nombre": "Ondo Finance",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web mantiene USDY, OUSG y Ondo Stocks.",
+        "fuentes": [
+          "ondo-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "No se confirmó una licencia única aplicable a la marca; emisor, producto y jurisdicción deben revisarse por separado.",
+        "fuentes": [
+          "ondo-web",
+          "ondo-usdy-access"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "Para residentes del EEE, USDY exige cliente profesional o inversor cualificado, además del onboarding del emisor.",
+        "fuentes": [
+          "ondo-usdy-access"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "no_acceso_general",
+          "detalle": "No presentar Ondo como minorista global; incluso productos llamados de acceso general tienen restricciones por jurisdicción.",
+          "fuentes": [
+            "ondo-usdy-access"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "openeden",
+      "nombre": "OpenEden",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La portada muestra TBILL, USDO y HYBOND con sus volúmenes, y la documentación oficial de TBILL y su proceso de onboarding es legible.",
+        "fuentes": [
+          "openeden-web",
+          "openeden-intro",
+          "openeden-onboarding"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "La documentación identifica al emisor TBILL como fondo profesional BVI; no convierte a toda OpenEden en entidad regulada para cada servicio.",
+        "fuentes": [
+          "openeden-intro"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "TBILL es permissioned y se limita a inversores profesionales BVI o acreditados de EE. UU. tras KYC/KYT.",
+        "fuentes": [
+          "openeden-onboarding"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_profesional",
+          "detalle": "No presentar TBILL como acceso minorista ni confundir rating del fondo con garantía de capital.",
+          "fuentes": [
+            "openeden-intro",
+            "openeden-onboarding"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pax-gold",
+      "nombre": "Pax Gold",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "Paxos mantiene la ficha PAXG, custodia y opciones de redención.",
+        "fuentes": [
+          "paxg-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Paxos Trust Company, National Association figura en la lista OCC de trust banks activos a 30/09/2026 (charter 25379). La autorización NYDFS de PAX Gold es un antecedente de 2019, no la única evidencia del estado actual.",
+        "fuentes": [
+          "paxg-occ",
+          "paxg-nydfs",
+          "paxg-web"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "La ficha oficial de Paxos indica que PAXG no está disponible actualmente en la UE ('PAXG is currently unavailable in the EU'), así que no consta acceso desde España. Fuera de la UE se dirige a particulares, sobre todo a través de exchanges, y a instituciones mediante contacto comercial directo.",
+        "fuentes": [
+          "paxg-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "oro_tokenizado",
+          "detalle": "Respaldado y canjeable no significa sin riesgo; verificar custodio, comisiones, tamaño mínimo y canal de redención.",
+          "fuentes": [
+            "paxg-web",
+            "paxg-nydfs"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "reental",
+      "nombre": "Reental",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La FAQ oficial describe registro, KYC/AML y firma del acuerdo; no se comprobó la apertura actual de una emisión concreta.",
+        "fuentes": [
+          "reental-faq"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "La fuente primaria localizada acredita una emisión española concreta con ERIR; no acredita una autorización general de Reental como empresa de servicios de inversión.",
+        "fuentes": [
+          "reental-emision"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La FAQ declara alta de adultos tras KYC/AML y exige acreditación a residentes fiscales de EE. UU.; cada emisión conserva sus propios términos.",
+        "fuentes": [
+          "reental-faq"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "emision_no_licencia_plataforma",
+          "detalle": "No convertir el registro de una emisión/ERIR en licencia global de plataforma ni dar por abierta una oportunidad sin ficha actual.",
+          "fuentes": [
+            "reental-emision"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "republic",
+      "nombre": "Republic",
+      "fechaCanonicaConservada": "2026-08-08",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "republic.com bloquea las consultas automatizadas. El centro de ayuda oficial de Republic Europe sigue guiando el alta, la exploración de oportunidades y la inversión en campañas.",
+        "fuentes": [
+          "republic-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "FINRA mantiene a OpenDeal Broker LLC (CRD 291387) registrada y sin suspensión, y a OpenDeal Portal LLC (nombre comercial Republic) en su lista de funding portals (SEC 7-167). Cada registro corresponde a una entidad concreta del grupo.",
+        "fuentes": [
+          "republic-finra",
+          "republic-entities"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Las páginas consultadas no permiten confirmar la elegibilidad vigente para cada oferta ni acceso desde España; debe revisarse la documentación de la emisión.",
+        "fuentes": [
+          "republic-web",
+          "republic-entities"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "grupo_multi_entidad",
+          "detalle": "No atribuir a Republic en bloque el registro de una filial ni omitir el régimen específico de cada oferta.",
+          "fuentes": [
+            "republic-entities",
+            "republic-finra"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "securitize",
+      "nombre": "Securitize",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La portada ya se lee: presenta inversiones tokenizadas (acciones de EE. UU. en cadena y fondos como ARK Venture Fund) con alta y acceso. No se comprobó una oferta concreta abierta; el registro de Securitize Markets se comprueba por separado.",
+        "fuentes": [
+          "securitize-web",
+          "securitize-finra"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Securitize Markets, LLC figura como broker-dealer SEC/FINRA y ATS; otras funciones pertenecen a otras filiales.",
+        "fuentes": [
+          "securitize-finra"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "El informe del broker/ATS no acredita alta disponible ni elegibilidad concreta del inversor para cada activo.",
+        "fuentes": [
+          "securitize-finra",
+          "securitize-web"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "entidades_separadas",
+          "detalle": "Nombrar la filial regulada y no extender su permiso a tokenización, administración o asesoramiento del grupo.",
+          "fuentes": [
+            "securitize-finra"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spiko",
+      "nombre": "Spiko",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La página oficial Web3 mantiene productos de tesorería, suscripción y reembolso; no se realizó onboarding.",
+        "fuentes": [
+          "spiko-access"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "La AMF (GECO) registra SPIKO EU T-BILLS MONEY MARKET FUND (ISIN FR001400ODL1), compartimento de SPIKO SICAV: OPCVM vivo, autorizado (agrément) el 05/04/2024 y abierto a todo suscriptor. Su gestora es Twenty First Capital, no Spiko, y el depositario es CACEIS Bank. El registro REGAFI de la ACPR recoge a Spiko Finance como empresa de inversión autorizada (CIB 19183) desde el 15/12/2025. Solo se verificó ese compartimento; los demás fondos Spiko deben comprobarse uno a uno.",
+        "fuentes": [
+          "spiko-amf",
+          "spiko-regafi"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No se comprobó en la CNMV la comercialización del fondo en España ni se hizo el onboarding.",
+        "fuentes": [
+          "spiko-web",
+          "spiko-amf",
+          "spiko-regafi-pasaporte-es"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "distribucion_espana",
+          "detalle": "UCITS no equivale por sí solo a onboarding disponible en España; comprobar pasaporte, distribuidor y clase.",
+          "fuentes": [
+            "spiko-amf"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "superstate",
+      "nombre": "Superstate",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web mantiene fondos tokenizados y FundOS.",
+        "fuentes": [
+          "superstate-web",
+          "superstate-ustb"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_documento_producto",
+        "detalle": "La ficha actual identifica USTB como Invesco Short Duration US Government Securities Fund, con Invesco Advisers como gestor y Superstate Services como agente de transferencias, y dice que el fondo no está registrado como sociedad de inversión. No hay aprobación ni aval de un regulador.",
+        "fuentes": [
+          "superstate-ustb"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "USTB exige acreditado y qualified purchaser; no es oferta minorista general.",
+        "fuentes": [
+          "superstate-ustb"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "solo_cualificados",
+          "detalle": "No omitir la doble elegibilidad ni confundir filing/registro con aprobación o garantía.",
+          "fuentes": [
+            "superstate-ustb"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "swarm",
+      "nombre": "Swarm",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "no_verificable",
+        "detalle": "La web redirige a una aplicación sin contenido extraíble; no se confirmó actividad transaccional ni una oferta abierta.",
+        "fuentes": [
+          "swarm-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_verificable",
+        "detalle": "El aviso legal de docs.swarm.com (actualizado el 28/05/2026) identifica a Swarm Capital GmbH (Vaduz, Liechtenstein) y sus términos la designan como contraparte, pero ninguna fuente primaria consultada indica licencia ni regulador. No se reutiliza la etiqueta genérica 'regulada por BaFin'.",
+        "fuentes": [
+          "swarm-web",
+          "swarm-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "Los términos legibles en docs.swarm.com (Swarm Capital GmbH, versión del 22/04/2024) y la FAQ (03/07/2024) exigen KYC/AML y excluyen a las personas estadounidenses, pero no hay condiciones de alta de 2026 por jurisdicción y la aplicación no muestra contenido extraíble.",
+        "fuentes": [
+          "swarm-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "acceso_no_confirmado",
+          "detalle": "No presentar Swarm como acceso minorista disponible sin condiciones actuales de alta, entidad y jurisdicción verificables.",
+          "fuentes": [
+            "swarm-web",
+            "swarm-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "taurus",
+      "nombre": "Taurus",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web presenta custodia, tokenización y trading para instituciones. Su pie indica que Taurus SA tiene licencia de securities firm de FINMA, que Taurus Europe tiene licencia MiFID de la CySEC (465/26) y que TDX es una OTF operada por Taurus SA, no una bolsa.",
+        "fuentes": [
+          "taurus-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "Taurus SA figura en FINMA como securities firm y declara operar T-DX como OTF.",
+        "fuentes": [
+          "taurus-finma",
+          "taurus-disclosure"
+        ]
+      },
+      "acceso": {
+        "estado": "confirmado_condicionado",
+        "detalle": "La documentación contempla clientes minoristas, profesionales e institucionales, en ejecución-only; onboarding desde España no confirmado.",
+        "fuentes": [
+          "taurus-disclosure"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "execution_only",
+          "detalle": "No confundir clasificación de cliente con disponibilidad universal, asesoramiento o evaluación de idoneidad.",
+          "fuentes": [
+            "taurus-disclosure"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tokeny",
+      "nombre": "Tokeny",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web mantiene software de emisión y cumplimiento on-chain.",
+        "fuentes": [
+          "tokeny-web"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Sus términos definen a Tokeny como proveedor tecnológico; el cliente/emisor conserva las obligaciones financieras y regulatorias.",
+        "fuentes": [
+          "tokeny-terms"
+        ]
+      },
+      "acceso": {
+        "estado": "no_aplica_plataforma",
+        "detalle": "Los servicios son para clientes profesionales; Tokeny no es el punto de acceso inversor a una oferta única.",
+        "fuentes": [
+          "tokeny-terms"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "proveedor_no_emisor",
+          "detalle": "No atribuir a Tokeny la licencia, custodia, solvencia o elegibilidad del emisor que usa su software.",
+          "fuentes": [
+            "tokeny-terms"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tzero",
+      "nombre": "tZERO",
+      "fechaCanonicaConservada": "2026-07-26",
+      "estadoOperativo": {
+        "estado": "observada",
+        "detalle": "La web mantiene infraestructura de emisión, trading y custodia.",
+        "fuentes": [
+          "tzero-web",
+          "tzero-company"
+        ]
+      },
+      "licenciaRegistro": {
+        "estado": "confirmada_regulador",
+        "detalle": "tZERO Securities, LLC figura en FINRA como broker-dealer y opera ATS; otras funciones pertenecen a entidades separadas.",
+        "fuentes": [
+          "tzero-finra",
+          "tzero-company"
+        ]
+      },
+      "acceso": {
+        "estado": "no_verificable",
+        "detalle": "La web contempla negociación y servicios para inversores, pero no se comprobaron las condiciones de alta y admisión desde España para cada activo.",
+        "fuentes": [
+          "tzero-web",
+          "tzero-company"
+        ]
+      },
+      "alertasCriticas": [
+        {
+          "codigo": "entidad_y_activo",
+          "detalle": "No extender SEC/FINRA a todo el grupo ni asumir que cada activo del ATS está abierto a minoristas.",
+          "fuentes": [
+            "tzero-finra",
+            "tzero-company"
+          ]
+        }
+      ]
+    }
+  ]
+}

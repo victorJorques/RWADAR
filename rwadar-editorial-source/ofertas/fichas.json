@@ -317,6 +317,20 @@
     "Cierras con la contraparte"
    ],
    "concepto": "un derivado que sigue el precio de acciones estadounidenses, representado por la fachada genérica de una bolsa"
+  },
+  {
+   "slug": "kraken-xstocks",
+   "escena": "empresa",
+   "op": {
+    "forma": "oficina"
+   },
+   "lugar": "Limasol · Chipre",
+   "pasos": [
+    "Abres cuenta y test",
+    "Compras con euros",
+    "Vendes o retiras"
+   ],
+   "concepto": "un certificado tokenizado que sigue el precio de acciones estadounidenses, representado por un distrito financiero mediterráneo genérico"
   }
  ]
 }
