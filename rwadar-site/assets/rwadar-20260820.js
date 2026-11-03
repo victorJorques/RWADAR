@@ -2423,7 +2423,7 @@ function puntosFuertesHtml(o,max=2){
 function transparenciaDetalleHtml(o,resumen){
  const fecha=v=>fechaLocalValida(v)?' · consultada el '+escHtml(fechaES(v)):'';
  const fuente=(f,de)=>{if(!f)return '';const t=f.titulo||nombreFuenteLocal(f.url);
-  return '<a href="'+escHtml(f.url)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml(t+' · fuente de: '+de)+'"><span class="escaparate-fuente-titulo">'+escHtml(t)+'</span> ↗</a>'+fecha(f.fecha);};
+  return '<a href="'+escHtml(f.url)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml(t+' · fuente de: '+de)+'"><span><span class="escaparate-fuente-titulo">'+escHtml(t)+'</span> ↗</span></a>'+fecha(f.fecha);};
  const dato=t=>'<span class="escaparate-comprobacion-dato">'+escHtml(t)+'</span>';
  const motivo=c=>c.partes?'<p>'+c.partes.map(x=>x.length>1?'<span>'+escHtml(x[0])+'</span> '+dato(x[1])+'.':'<span>'+escHtml(x[0])+'</span>').join(' ')+'</p>':
   '<p'+(c.deFuente?' class="escaparate-comprobacion-motivo-fuente"':'')+'>'+escHtml(c.motivo)+'</p>';

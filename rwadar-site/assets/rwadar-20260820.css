@@ -2186,7 +2186,7 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 #movilPanelRadar .catalogo-referencias>p{margin:0;padding-bottom:8px;border-bottom:1px solid var(--m-hairline);color:var(--tx-3);font-size:.75rem;line-height:1.45}
 #movilPanelRadar .catalogo-referencias>.emis-rejilla{margin:0}
 /* Fila compacta: miniatura de 88 px y a su lado título, proveedor · lugar, estado, puntos y datos; debajo, el pie. Toda la fila abre la ficha. */
-#emiLista .escaparate-oferta{display:grid;grid-template-columns:88px minmax(0,1fr) auto auto;grid-template-rows:auto auto auto auto auto minmax(0,1fr);grid-template-areas:"img tit tit tit" "img proc proc proc" "img meta meta meta" "img puntos puntos puntos" "img datos datos datos" "img . . ." "aviso aviso aviso aviso" "avisos avisos fecha ver";column-gap:10px;row-gap:0;align-items:start;margin:0;padding:7px 0;overflow:visible;border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;background:none;box-shadow:none;transition:background .15s}
+#emiLista .escaparate-oferta{display:grid;grid-template-columns:88px minmax(0,1fr) auto auto;grid-template-rows:auto auto auto auto auto minmax(0,1fr);grid-template-areas:"img tit tit tit" "img proc proc proc" "img meta meta meta" "img puntos puntos puntos" "img datos datos datos" "img . . ." "aviso aviso aviso aviso" "avisos avisos fecha ver";column-gap:8px;row-gap:0;align-items:start;margin:0;padding:7px 0;overflow:visible;border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;background:none;box-shadow:none;transition:background .15s}
 #emiLista .escaparate-oferta:hover{transform:none;box-shadow:none}
 #emiLista .escaparate-oferta:active{background:rgba(255,255,255,.035)}
 #emiLista .escaparate-oferta::before,#emiLista .escaparate-oferta .emi-lugar svg,#emiLista .escaparate-oferta .escaparate-aviso-compacto:not(.escaparate-aviso-bloqueo),#emiLista .escaparate-oferta .emi-fecha-dato{display:none}
@@ -2208,7 +2208,7 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 #emiLista .escaparate-oferta .escaparate-datos-clave{grid-area:datos;display:flex;flex-wrap:wrap;gap:0 10px;margin:2px 0 0;border:0;min-width:0}
 #emiLista .escaparate-oferta .escaparate-datos-clave>div{display:block;padding:0;border:0;font-size:.8125rem;line-height:1.35}
 #emiLista .escaparate-oferta .escaparate-datos-clave :is(dt,dd){display:inline;margin:0}
-#emiLista .escaparate-oferta .escaparate-datos-clave dt{margin-right:4px;color:var(--tx-3);font:500 .75rem/1.35 var(--body)}
+#emiLista .escaparate-oferta .escaparate-datos-clave dt{margin-right:3px;color:var(--tx-3);font:500 .75rem/1.35 var(--body)}
 #emiLista .escaparate-oferta .escaparate-datos-clave dd{color:var(--tx);font:600 .8125rem/1.35 var(--body);overflow-wrap:normal;hyphens:none}
 #emiLista .escaparate-oferta .escaparate-meta{grid-area:meta;display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;min-width:0}
 #emiLista .escaparate-oferta .escaparate-estado.escaparate-estado-linea{padding:0;border:0;background:none;font-size:.75rem;line-height:1.35}

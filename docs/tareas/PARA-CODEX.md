@@ -6,6 +6,46 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 3 de noviembre de 2026 (noche, 2) · Claude · corrección de la versión final de Inicio y Buscar (sin publicar)
+
+Misma rama local `claude/rediseno-final-wf1`, seis commits sobre la entrada
+de abajo. **Nada publicado, nada en `main`, Supabase sin tocar.** Recoge lo
+que el corrector anterior dejó a medias y los fallos de la revisión.
+
+- **Buscar › Ofertas:** fila compacta (todo junto a la miniatura y el pie
+  debajo): 146-183 px, 4 filas enteras por pantalla a 390×844 desde
+  cualquier fila (Principales y Reventa) y la primera en y=520. Mínimo, España y Salida
+  a 12 px; el lugar nunca se corta; puntos fuertes y estado como texto, sin
+  cápsulas. Chips y estrella con diana de 44 px; el orden del foco sigue al de
+  la vista (Lista/Mapa va justo después del buscador, también en escritorio);
+  «Ordenar por» ya no corta «Fuente y fecha»; recuento visible al filtrar;
+  cabecera y barra inferior opacas; `scroll-padding-bottom` para que la barra
+  no tape el foco. En escritorio vuelven los datos largos de las tarjetas.
+- **Transparencia:** con el catálogo caducado «se contrata hoy» y «mínimo y
+  salida» pasan a ✗ («pendiente de revalidar»), en la ficha y en la página
+  fija (`ficha-pagina` lo mira con la fecha de hoy). La página fija enlaza la
+  fuente fechada de las cuatro primeras, como la ficha. Una oferta con aviso
+  crítico (tono stop) nunca entra en la Selección y su tarjeta de Inicio lo
+  enseña entero. «Revisa · N avisos» cuenta también el aviso general, como la
+  ficha.
+- **Inglés:** solo `transparencia.json`, los datos del catálogo y el nombre
+  de cada fuente quedan como texto de la fuente; los motivos que escribe
+  RWAdar se traducen (27 frases y 3 patrones nuevos). Inicio ya no lleva el
+  rótulo «Original source text (Spanish)».
+- **Inicio (solo lo barato; se rehará entero):** fuera el botón con aspecto de
+  buscador; tarjetas de los carruseles del mismo ancho; leyenda oculta de
+  verdad con el catálogo caducado; recuentos del radar para el lector de
+  pantalla; vigencia a 12 px; la tarjeta enfocada entra entera en su
+  carrusel; «reducir movimiento» solo repinta el radar (no se pierde el foco).
+- **Presupuestos:** CSS 177 610 B (comentarios largos en una línea);
+  `probar-web.mjs` por debajo de 240 000 B. `probar-orden.mjs` solo avisa de
+  `App.js`, como antes.
+- **Pruebas:** 10 nuevas en `probar-web.mjs` y 2 en `probar-fichas.cjs`;
+  `npm test` completo en verde.
+- **Pendiente:** lo mismo que abajo (sellar, merge commit y permiso de Víctor
+  para preview, producción y OTA), y la guía de acabados, que va en un paso
+  aparte. Ver «No corregido» en el informe de esta corrección.
+
 ## 3 de noviembre de 2026 (noche) · Claude · versión final de Inicio y Buscar en la web móvil (sin publicar)
 
 Víctor y Claude como CEO decidieron la versión final (base A «radar vivo» con
