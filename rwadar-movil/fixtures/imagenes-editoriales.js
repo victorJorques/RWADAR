@@ -31,6 +31,7 @@ const FUENTES_POR_FICHA = Object.freeze({
   'oferta-robinhood-classic-stock-tokens.webp': require('../assets/ofertas-editoriales/oferta-robinhood-classic-stock-tokens.webp'),
   'oferta-spiko-letras-del-tesoro-dolar.webp': require('../assets/ofertas-editoriales/oferta-spiko-letras-del-tesoro-dolar.webp'),
   'oferta-spiko-letras-del-tesoro-euro.webp': require('../assets/ofertas-editoriales/oferta-spiko-letras-del-tesoro-euro.webp'),
+  'oferta-spiko-smart-cash-euro.webp': require('../assets/ofertas-editoriales/oferta-spiko-smart-cash-euro.webp'),
   'oferta-switzerlend.webp': require('../assets/ofertas-editoriales/oferta-switzerlend.webp'),
   'oferta-terreno-con-arrendamiento-billa.webp': require('../assets/ofertas-editoriales/oferta-terreno-con-arrendamiento-billa.webp'),
   'oferta-vivienda-pluddemanngasse-101-graz.webp': require('../assets/ofertas-editoriales/oferta-vivienda-pluddemanngasse-101-graz.webp'),

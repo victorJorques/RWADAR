@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 03/11: alta de Kraken xStocks por decisión editorial de Víctor (entrega 2026-11-03.4, revisión independiente aprobado_con_cambios, aplicada con Aplicar catálogo), con aviso de que las condiciones finales del emisor no ofrecen el producto en España. npm test completo en verde. Ciclo autorizado por la orden de Víctor (AGENTS.md).",
+  "nota": "Claude, 03/11: alta de Spiko Smart Cash Euro por decisión editorial de Víctor (entrega 2026-11-03.5; revisión independiente de tres enfoques, aprobado_con_cambios; aplicada con Aplicar catálogo), con avisos de que no consta en ningún registro público su alta en España y de que la web contradice al KID. npm test completo en verde. Ciclo autorizado por la orden de Víctor (AGENTS.md).",
   "revisionAprobada": {
-    "commit": "770819aeb1139bc5d2357f7fa599a0e710c63e8c",
-    "contenidoSha256": "sha256:39069b8ea5eb66df1a2cf5ff94b475d07e17698f41fc3a9a2c54d9dbd87ffd7d",
+    "commit": "1f41da42483e4e1b4514f8451ba318ea3706f261",
+    "contenidoSha256": "sha256:ab01da00da96a30440411ce8c72ecd1f50659dcaa2c55ec78142337b46ded772",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
