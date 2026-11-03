@@ -94,6 +94,15 @@ function comprobarCompuertas() {
     empresas:fs.readFileSync(path.join(RAIZ,'rwadar-site/para-empresas.html'),'utf8')});
   return seguridad.comprobarRevisionGitPublicable({raiz:RAIZ,manifiesto});
 }
+function catalogoBase(base) {
+  return validarCatalogoSnapshot(leerBloquesCatalogo(fs.readFileSync(archivoCatalogo(base),'utf8')));
+}
+// Fichas que de verdad se desplegaron en la base, sacadas de su snapshot.
+function fichasBase(c) {
+  const slug=n=>String(n).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  return [...c.plataformas.map(p=>'plataformas/'+p.slug+'.html'),...c.ofertas.map(o=>'ofertas/'+o.slug+'.html'),
+    ...c.fuera.map(f=>'fuera-del-radar/'+slug(f.n)+'.html')];
+}
 function rutasBaseObligatorias(base, excluirLote) {
   const reales=seguridad.listarArchivosRegulares(base), rutas=[...ARTEFACTOS_ACCESO];
   const fichasActuales=new Set(PAGINAS_FICHAS);
@@ -108,11 +117,8 @@ function rutasBaseObligatorias(base, excluirLote) {
   }
   // Estas rutas se derivan del snapshot que realmente se desplegó, no del
   // inventario que se pretende sellar ni de las altas futuras de la fuente.
-  const c=validarCatalogoSnapshot(leerBloquesCatalogo(fs.readFileSync(archivoCatalogo(base),'utf8')));
-  const slug=n=>String(n).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  rutas.push('cambios.html','metodologia.html','novedades.xml',
-    ...c.plataformas.map(p=>'plataformas/'+p.slug+'.html'),...c.ofertas.map(o=>'ofertas/'+o.slug+'.html'),
-    ...c.fuera.map(f=>'fuera-del-radar/'+slug(f.n)+'.html'));
+  const c=catalogoBase(base);
+  rutas.push('cambios.html','metodologia.html','novedades.xml',...fichasBase(c));
   const manifiesto=JSON.parse(fs.readFileSync(archivoSeguro(base,'ofertas-editoriales/manifest.json'),'utf8'));
   assert(manifiesto.versionEsquema===2&&Array.isArray(manifiesto.archivos)&&manifiesto.archivos.length===4&&Array.isArray(manifiesto.fichas),'Manifiesto editorial base incompleto');
   rutas.push('ofertas-editoriales/manifest.json');
@@ -154,7 +160,10 @@ function validarBase(base, sello, {excluirLote}={}) {
   for(const config of ['_headers','_redirects']) assert(fs.readFileSync(path.join(base,config)).equals(fs.readFileSync(path.join(RAIZ,'rwadar-site',config))),'Configuración distinta de la fuente aprobada');
   // Estos dos archivos los genera el publicador: no basta con que un sello
   // recalculado acepte otros bytes, otro BFF o una exclusión de sus rutas.
-  const accesoEsperado={'_worker.js':construirWorker(),'_routes.json':JSON.stringify(RUTAS_ACCESO)+'\n'};
+  // El worker lleva dentro la lista de fichas publicadas. Se compila con las
+  // fichas del snapshot de la base, no con el manifiesto del árbol: el ciclo
+  // añade un alta al manifiesto antes de precargar su imagen.
+  const accesoEsperado={'_worker.js':construirWorker(undefined,{fichas:fichasBase(catalogoBase(base))}),'_routes.json':JSON.stringify(RUTAS_ACCESO)+'\n'};
   for(const nombre of ARTEFACTOS_ACCESO) assert(fs.readFileSync(archivoSeguro(base,nombre)).equals(Buffer.from(accesoEsperado[nombre],'utf8')),
     'Artefacto de acceso distinto de la fuente aprobada: '+nombre);
   seguridad.validarOrigenPublicable(base);

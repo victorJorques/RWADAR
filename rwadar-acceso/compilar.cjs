@@ -11,7 +11,9 @@ const PAGINAS_FICHAS = require('../rwadar-fichas-manifiesto.js');
    eso enseñaría datos viejos durante días. El worker lleva la lista cerrada de
    fichas publicadas y, en estas carpetas, responde 404 a cualquier otra página
    sin pedírsela a ASSETS. Al retirar una ficha basta con quitarla del
-   manifiesto, como hasta ahora. */
+   manifiesto, como hasta ahora. Para el resto de archivos (por ejemplo la
+   ilustración de una oferta retirada), el worker reconoce la copia de
+   conservación por sus cabeceras y también responde 404. */
 const CARPETAS_FICHAS = Object.freeze(['ofertas', 'plataformas', 'fuera-del-radar']);
 function fichasPublicadas(manifiesto = PAGINAS_FICHAS) {
   const fichas = manifiesto.filter(ruta => {
@@ -38,7 +40,56 @@ const CABECERAS_SEGURIDAD = Object.freeze({
   'Permissions-Policy': 'accelerometer=(), autoplay=(), browsing-topics=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
 });
 
-function construirWorker(raiz = __dirname) {
+/* Código del worker para archivos que ya no están en el despliegue. Va como
+   texto literal: se incrusta tal cual en _worker.js. */
+const ARCHIVOS_RETIRADOS_WORKER = String.raw`const rutaFichaRWAdar = /^\/(ofertas|plataformas|fuera-del-radar)\/([^/]+?)(?:\.html)?\/?$/;
+function rutaNormalizadaRWAdar(request) {
+  const cruda = new URL(request.url).pathname;
+  let ruta = cruda;
+  try { ruta = decodeURIComponent(cruda); } catch {}
+  return ruta.replace(/\/{2,}/g, "/");
+}
+function fichaRetiradaRWAdar(request) {
+  if (request.method !== "GET" && request.method !== "HEAD") return false;
+  const partes = rutaFichaRWAdar.exec(rutaNormalizadaRWAdar(request));
+  if (!partes || partes[2].includes(".")) return false;
+  return !fichasRWAdar.has(partes[1] + "/" + partes[2] + ".html");
+}
+/* El servidor de assets de Pages solo usa la Cache API en notFound(), para
+   devolver la copia de conservación de un archivo que ya no está en este
+   despliegue, y esa respuesta llega con cf-cache-status HIT y x-robots-tag
+   noindex. En /assets/ se respeta: son archivos con huella y la gracia evita
+   roturas a quien tenga abierta la versión anterior de la web. */
+function copiaConservadaRWAdar(request, respuesta) {
+  if (request.method !== "GET" && request.method !== "HEAD") return false;
+  if (rutaNormalizadaRWAdar(request).startsWith("/assets/")) return false;
+  return /^hit$/i.test(respuesta.headers.get("CF-Cache-Status") || "") &&
+    /(?:^|[\s,])noindex(?:$|[\s,])/i.test(respuesta.headers.get("X-Robots-Tag") || "");
+}
+async function paginaNoEncontradaRWAdar(request, env) {
+  let pagina = null;
+  try {
+    const r = await env.ASSETS.fetch(new Request(new URL("/404", request.url), { method: "GET" }));
+    if (r.status === 200) pagina = r; else await r.body?.cancel();
+  } catch {}
+  const headers = new Headers(pagina ? pagina.headers : { "Content-Type": "text/plain; charset=utf-8" });
+  for (const nombre of ["ETag", "Last-Modified", "Content-Length", "Age", "CF-Cache-Status"]) headers.delete(nombre);
+  headers.set("Cache-Control", "no-store");
+  headers.set("X-Robots-Tag", "noindex, nofollow");
+  if (request.method === "HEAD") { await pagina?.body?.cancel(); return new Response(null, { status: 404, headers }); }
+  return new Response(pagina ? pagina.body : "No encontrado", { status: 404, headers });
+}
+async function servirArchivoRWAdar(request, env) {
+  if (fichaRetiradaRWAdar(request)) return paginaNoEncontradaRWAdar(request, env);
+  const respuesta = await env.ASSETS.fetch(request);
+  if (!copiaConservadaRWAdar(request, respuesta)) return respuesta;
+  await respuesta.body?.cancel();
+  return paginaNoEncontradaRWAdar(request, env);
+}
+`;
+
+function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS } = {}) {
+  const publicadas = fichasPublicadas(fichas);
   const importCartera = "import { crearCarteraServidor } from './cartera-servidor.mjs';";
   const original = fs.readFileSync(path.join(raiz, 'servidor.mjs'), 'utf8');
   if (original.split(importCartera).length !== 2) throw new Error('Falta la integración explícita de cartera.');
@@ -57,34 +108,13 @@ function construirWorker(raiz = __dirname) {
   return 'const carteraModelo = (() => { const module = { exports: {} };\n' + modelo + '\nreturn module.exports; })();\n' + cartera + '\n' +
     servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
     'const cabecerasRWAdar = Object.freeze(' + JSON.stringify(CABECERAS_SEGURIDAD) + ');\n' +
-    'const fichasRWAdar = new Set(' + JSON.stringify(fichasPublicadas()) + ');\n' +
-    'const rutaFichaRWAdar = /^\\/(' + CARPETAS_FICHAS.join('|') + ')\\/([^/]+?)(?:\\.html)?\\/?$/;\n' +
-    'function fichaRetiradaRWAdar(request) {\n' +
-    '  if (request.method !== "GET" && request.method !== "HEAD") return false;\n' +
-    '  let ruta;\n' +
-    '  try { ruta = decodeURIComponent(new URL(request.url).pathname); } catch { return false; }\n' +
-    '  const partes = rutaFichaRWAdar.exec(ruta);\n' +
-    '  if (!partes || partes[2].includes(".")) return false;\n' +
-    '  return !fichasRWAdar.has(partes[1] + "/" + partes[2] + ".html");\n' +
-    '}\n' +
-    'async function fichaNoEncontradaRWAdar(request, env) {\n' +
-    '  let pagina = null;\n' +
-    '  try {\n' +
-    '    const r = await env.ASSETS.fetch(new Request(new URL("/404", request.url), { method: "GET" }));\n' +
-    '    if (r.status === 200) pagina = r; else await r.body?.cancel();\n' +
-    '  } catch {}\n' +
-    '  const headers = new Headers(pagina ? pagina.headers : { "Content-Type": "text/plain; charset=utf-8" });\n' +
-    '  for (const nombre of ["ETag", "Last-Modified", "Content-Length", "Age", "CF-Cache-Status"]) headers.delete(nombre);\n' +
-    '  headers.set("Cache-Control", "no-store");\n' +
-    '  headers.set("X-Robots-Tag", "noindex, nofollow");\n' +
-    '  if (request.method === "HEAD") { await pagina?.body?.cancel(); return new Response(null, { status: 404, headers }); }\n' +
-    '  return new Response(pagina ? pagina.body : "No encontrado", { status: 404, headers });\n' +
-    '}\n' +
+    'const fichasRWAdar = new Set(' + JSON.stringify(publicadas) + ');\n' +
+    ARCHIVOS_RETIRADOS_WORKER +
     'const accesoRWAdar = crearAccesoServidor();\n' +
     'export default { async fetch(request, env, executionCtx) {\n' +
     '  const respuesta = await accesoRWAdar.atender({ request, env: configuracionRWAdar,\n' +
     '    waitUntil: executionCtx.waitUntil.bind(executionCtx),\n' +
-    '    next: () => fichaRetiradaRWAdar(request) ? fichaNoEncontradaRWAdar(request, env) : env.ASSETS.fetch(request) });\n' +
+    '    next: () => servirArchivoRWAdar(request, env) });\n' +
     '  const headers = new Headers(respuesta.headers);\n' +
     '  for (const [nombre, valor] of Object.entries(cabecerasRWAdar)) {\n' +
     '    if (nombre === "Content-Security-Policy" && headers.has(nombre)) continue;\n' +

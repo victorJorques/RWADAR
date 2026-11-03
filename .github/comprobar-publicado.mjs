@@ -13,6 +13,8 @@ import { createRequire } from 'node:module';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const require = createRequire(import.meta.url);
 const academyMod = require('../rwadar-academy.js');
@@ -139,6 +141,26 @@ for (const ficha of retiradas) {
   const ruta = '/' + ficha.replace(/\.html$/, '');
   const pagina = await pedir(ruta);
   ok(`ficha retirada ${ruta} da 404: ${pagina.estado}`, pagina.estado === 404);
+}
+/* Lo mismo con las ilustraciones de las ofertas retiradas: las borradas de
+   Git que no sigan en la carpeta editorial ni en las precargas. */
+const imagenesVivas = new Set();
+for (const dir of ['rwadar-movil/assets/ofertas-editoriales', 'rwadar-editorial-source/ofertas/precargas']) {
+  const raizDir = fileURLToPath(new URL('../' + dir + '/', import.meta.url));
+  if (fs.existsSync(raizDir)) for (const e of fs.readdirSync(raizDir, { recursive: true })) imagenesVivas.add(path.basename(String(e)));
+}
+let imagenesRetiradas = [];
+try {
+  imagenesRetiradas = [...new Set(execFileSync('git', ['log', '--diff-filter=D', '--name-only', '--format=', '--',
+    'rwadar-movil/assets/ofertas-editoriales/oferta-*.webp'],
+  { cwd: fileURLToPath(new URL('..', import.meta.url)), encoding: 'utf8' })
+    .split('\n').map(linea => path.basename(linea.trim())).filter(Boolean))]
+    .filter(nombre => !imagenesVivas.has(nombre)).sort();
+} catch (e) { console.log(`  (no se pudo leer el historial de Git: ${e.message})`); }
+ok(`el historial de Git da las ilustraciones retiradas que hay que comprobar (${imagenesRetiradas.length})`, imagenesRetiradas.length > 0);
+for (const nombre of imagenesRetiradas) {
+  const imagen = await pedir('/ofertas-editoriales/' + nombre, { method: 'HEAD' });
+  ok(`ilustración retirada /ofertas-editoriales/${nombre} da 404: ${imagen.estado}`, imagen.estado === 404);
 }
 
 console.log(`\n${correctas} correctas, ${fallos.length} fallidas`);
