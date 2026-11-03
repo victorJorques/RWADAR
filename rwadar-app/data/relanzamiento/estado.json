@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 03/11: catálogo 2026-11-03.2 (cifras 7 días, mínimo/España/salida en castellano, aplicado con Aplicar catálogo) y tarjetas que rotulan «Mínimo» cuando la unidad no es el euro y no repiten «Salida:». npm test completo en verde. Sello y publicación autorizados expresamente por Víctor.",
+  "nota": "Claude, 03/11: catálogo 2026-11-03.3 (investigación del 03/11 pedida por Víctor: 23 fichas y radar comprobados hoy, revisión independiente de candidatas, cambios y SQL; aplicado con Aplicar catálogo) y normas nuevas de tarjeta para reventa y próximas. npm test completo en verde. Ciclo autorizado por la orden de Víctor (AGENTS.md).",
   "revisionAprobada": {
-    "commit": "2ce46b05a7e0bf49ff7610babd1c9014ace7e7eb",
-    "contenidoSha256": "sha256:ba45fb15a903448a02f06792c4168b877ee8fffc2fa89d74b3fcfb4a2250e3f8",
+    "commit": "b2a3a6ec281b5bd70c956f7d3d35577f68755bc7",
+    "contenidoSha256": "sha256:70190005f85370f70f248599a85dfd8f39887d95d0e5453269aadf640ff30e42",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
