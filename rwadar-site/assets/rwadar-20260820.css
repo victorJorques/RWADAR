@@ -2322,6 +2322,14 @@ body.detalle-local-abierto{overflow:hidden}
 .escaparate-oferta .escaparate-detalle-boton:hover{filter:brightness(1.08)}
 .escaparate-oferta:hover .escaparate-detalle-boton span{transform:translateX(2px)}
 .escaparate-oferta .escaparate-detalle-boton span{display:inline-block;transition:transform var(--rapido) var(--sal)}
+/* Tarjetas estrechas (las de un grupo abierto en el móvil, 03/11/2026): si la
+   zona de datos mide menos de 260 px, la etiqueta va arriba y el dato debajo a
+   todo el ancho, en vez de cortarse en «1 partici…». */
+.escaparate-oferta .escaparate-datos-clave{container-type:inline-size}
+@container (max-width:260px){
+  .escaparate-oferta .escaparate-datos-clave>div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .escaparate-oferta .escaparate-datos-clave dd{-webkit-line-clamp:3}
+}
 @media(max-width:767px){
   #movilPanelRadar .escaparate-oferta .escaparate-cuerpo{gap:11px;padding:16px 16px 14px}
   #movilPanelRadar .escaparate-oferta .escaparate-aviso-compacto{padding:2px 0 2px 11px}
