@@ -80,8 +80,8 @@ Víctor: «retira las ofertas que ya no valgan o ya no estén». PR #42 (lote) y
   Preview y producción: 158/158. En el navegador se ven 8 principales sin
   errores.
 - **Caché de Cloudflare:** `/ofertas/mf-one` siguió dando 200 en IAD por la
-  copia de conservación de Cloudflare Pages. Ya está arreglado en la entrada
-  siguiente («tarde, 5»).
+  copia de conservación de Cloudflare Pages. Ya está arreglado: ver la entrada
+  de arriba («tarde, 5»).
 - **App:** OTA, grupo `a468d25f`, runtime `1.4.1(23)`, con el mensaje
   «Catálogo 2026-11-03.6: retirada mF-ONE». No comprobada en un móvil.
 - **Pendiente:**
