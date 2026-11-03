@@ -1,0 +1,416 @@
+
+PRIIPs KIDS
+Futuros
+Futuros TradFi
+Acciones
+xStocks
+Atención al cliente
+ES
+ES
+Futuros
+Futuros TradFi
+Acciones
+xStocks
+Atención al cliente
+Compra y vende derivados de criptomonedas y xStocks
+Descargar la aplicación de Kraken
+ES
+Documentos de datos fundamentales (KID)
+Quick Pick - Futuros perpetuos lineales vinculados a criptoactivos
+Al alza (largo)
+English
+Búlgaro
+Checo
+Danés
+Alemán
+Griego
+Español
+Estonio
+Finlandés
+Francés
+Croata
+Húngaro
+Islandés
+Italiano
+Lituano
+Letón
+Noruego bokmål
+Dutch
+Polish
+Portuguese
+Rumano
+Eslovaco
+Esloveno
+Sueco
+A la baja (corto)
+English
+Búlgaro
+Checo
+Danés
+Alemán
+Griego
+Español
+Estonio
+Finlandés
+Francés
+Croata
+Húngaro
+Islandés
+Italiano
+Lituano
+Letón
+Noruego bokmål
+Dutch
+Polish
+Portuguese
+Rumano
+Eslovaco
+Esloveno
+Sueco
+Opciones lineales liquidadas en efectivo vinculadas a criptoactivos
+English
+Búlgaro
+Checo
+Danés
+Alemán
+Griego
+Español
+Estonio
+Finlandés
+Francés
+Croata
+Húngaro
+Islandés
+Italiano
+Lituano
+Letón
+Noruego bokmål
+Dutch
+Polish
+Portuguese
+Rumano
+Eslovaco
+Esloveno
+Sueco
+Futuros perpetuos lineales vinculados a renta variable
+English
+Búlgaro
+Checo
+Danés
+Alemán
+Griego
+Español
+Estonio
+Finlandés
+Francés
+Croata
+Húngaro
+Islandés
+Italiano
+Lituano
+Letón
+Noruego bokmål
+Dutch
+Polish
+Portuguese
+Rumano
+Eslovaco
+Esloveno
+Sueco
+Futuros perpetuos lineales vinculados a materias primas
+English
+Búlgaro
+Checo
+Danés
+Alemán
+Griego
+Español
+Estonio
+Finlandés
+Francés
+Croata
+Húngaro
+Islandés
+Italiano
+Lituano
+Letón
+Noruego bokmål
+Dutch
+Polish
+Portuguese
+Rumano
+Eslovaco
+Esloveno
+Sueco
+Futuros perpetuos lineales vinculados a índices
+English
+Búlgaro
+Checo
+Danés
+Alemán
+Griego
+Español
+Estonio
+Finlandés
+Francés
+Croata
+Húngaro
+Islandés
+Italiano
+Lituano
+Letón
+Noruego bokmål
+Dutch
+Polish
+Portuguese
+Rumano
+Eslovaco
+Esloveno
+Sueco
+Futuros perpetuos lineales vinculados a criptoactivos
+English
+Búlgaro
+Checo
+Danés
+Alemán
+Griego
+Español
+Estonio
+Finlandés
+Francés
+Croata
+Húngaro
+Islandés
+Italiano
+Lituano
+Letón
+Noruego bokmål
+Dutch
+Polish
+Portuguese
+Rumano
+Eslovaco
+Esloveno
+Sueco
+Futuros perpetuos lineales vinculados a xStocks
+English
+Búlgaro
+Checo
+Danés
+Alemán
+Griego
+Español
+Estonio
+Finlandés
+Francés
+Croata
+Húngaro
+Islandés
+Italiano
+Lituano
+Letón
+Noruego bokmål
+Dutch
+Polish
+Portuguese
+Rumano
+Eslovaco
+Esloveno
+Sueco
+Futuros lineales con vencimiento fijo vinculados a criptoactivos
+English
+Búlgaro
+Checo
+Danés
+Alemán
+Griego
+Español
+Estonio
+Finlandés
+Francés
+Croata
+Húngaro
+Islandés
+Italiano
+Lituano
+Letón
+Noruego bokmål
+Dutch
+Polish
+Portuguese
+Rumano
+Eslovaco
+Esloveno
+Sueco
+Futuros agrícolas (liquidados en efectivo)
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros agrícolas (físicos)
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros de energía (liquidados en efectivo)
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros de energía (físicos)
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros sobre índices bursátiles
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros de divisas (liquidados en efectivo)
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros de divisas (físicos)
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros de metales (liquidados en efectivo)
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros de metales (físicos)
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros STIR
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros sobre bonos del Tesoro
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+Futuros del Tesoro (liquidados en efectivo)
+English
+Búlgaro
+Croata
+Checo
+Danés
+Dutch
+Estonio
+Finlandés
+Húngaro
+xStocks
+El Folleto de base para la oferta de xStocks está disponible en el sitio web del Emisor, en el apartado “Prospectus”, en 
+https://assets.backed.fi/legal-documentation
+Las Condiciones Finales y el Documento de Datos Fundamentales correspondiente a cada oferta individual de xStocks están disponibles en el sitio web del Emisor en 
+https://assets.backed.fi/legal-documentation/product-database
+Productos
+Futures
+Futuros de TradFi
+Acciones
+xStocks
+Empresa
+Atención al cliente
+Centro de privacidad
+Aviso de privacidad
+Configuración de cookies
+No vender/compartir
+Términos de servicio
+Información legal
+Declaración de riesgos
+Divulgación sobre préstamo de valores
+las Políticas
+Documentos de información clave
+by 
+PAYWARD
+© 2011–2026 Payward, Inc.
+Trading
+Kraken
+Kraken Pro
+NinjaTrader
+Breakout
+VIP
+API Trading
+|
+Services
+Payward Services
+xStocks
+CF Benchmarks
+Reap
+|
+Banking
+Krak
+Prime
+OTC
+Custody
+|
+Asset Management
+Los servicios de inversión, los servicios auxiliares y las actividades de inversión (los “Servicios”) en relación con los instrumentos financieros son proporcionados y ejecutados por Payward Europe Digital Solutions (CY) Limited (ex I.F. en relación con los instrumentos financieros. PEDSL-CY está autorizada y aprobada por la Comisión de Bolsa y Valores de Chipre (CySEC) para prestar los Servicios. Consulta las divulgaciones sobre riesgos en este 
+enlace
+. PEDSL-CY está autorizada y regulada por la Comisión de Bolsa y Valores de Chipre, con el número de licencia 342/17. PEDSL-CY está registrada en Chipre con el número de registro HE 356603 y tiene su domicilio social en Athalassas, 62, MEZZANINE, Strovolos 2012, Nicosia, Chipre.
+Estos materiales son solo para fines informativos generales y no representan asesoría o recomendaciones de inversión o financiera o solicitudes de compra o venta de instrumentos financieros para involucrarse en cualquier estrategia específica de operaciones. Los mercados de derivados son impredecibles y, por tanto, invertir en este tipo de activos puede conllevar la pérdida de capital. El valor de una inversión puede tanto subir como bajar y el desempeño anterior no es un indicador confiable de los resultados futuros. Puede que debas pagar impuestos sobre cualquier ganancia o aumento en el valor de tus inversiones y deberías buscar asesoría independiente sobre tu situación fiscal. Pueden aplicarse restricciones geográficas. Consulta las divulgaciones sobre riesgos en este 
+enlace
+.

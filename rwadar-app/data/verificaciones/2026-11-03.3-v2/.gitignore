@@ -1,0 +1,18 @@
+# Copias binarias y HTML completos de las fuentes: se conservan en disco
+# durante el ciclo, con su SHA-256 en cada inventario-consultas. En Git van
+# los textos extraídos (.txt), los resúmenes y los expedientes.
+grupos/**/*.pdf
+grupos/**/*.html
+grupos/**/*.htm
+grupos/**/*.png
+grupos/**/*.jpg
+grupos/**/*.bin
+revision-independiente/**/*.pdf
+revision-independiente/**/*.html
+revision-independiente/**/*.htm
+revision-independiente/**/*.png
+revision-independiente/**/*.jpg
+# Respuestas crudas de API y de cadena (direcciones, tokenId, UUID) que el
+# escáner de secretos confunde con claves: en disco con su SHA-256, no en Git.
+grupos/**/crudo/
+revision-independiente/**/crudo/
