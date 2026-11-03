@@ -21,7 +21,6 @@ module.exports = Object.freeze([
   "ofertas/hausera-proximas-ofertas.html",
   "ofertas/kraken-xstocks.html",
   "ofertas/local-de-estanco-klagenfurt.html",
-  "ofertas/mf-one.html",
   "ofertas/mtbill.html",
   "ofertas/prosegur-digital-gold.html",
   "ofertas/randhartingergasse-9-viena.html",

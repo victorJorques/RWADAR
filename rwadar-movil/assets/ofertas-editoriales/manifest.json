@@ -266,25 +266,6 @@
       "revisadoEl": "2026-11-02"
     },
     {
-      "slug": "mf-one",
-      "categoria": "Crédito privado",
-      "archivo": "oferta-mf-one.webp",
-      "ancho": 960,
-      "alto": 660,
-      "bytes": 72710,
-      "hashSha256": "c8969309a393bc2e3f57a13c7d6391f68fe2d16841249966b05834b4ffd670e0",
-      "alt": "Ilustración editorial de unas torres de oficinas de un distrito financiero europeo, como imagen de una cartera de préstamos a empresas, imagen generada con IA. Pasos: compras el token; sigue crédito privado; reembolsas a su precio. No es una foto del activo real.",
-      "concepto": "unas torres de oficinas de un distrito financiero europeo, como imagen de una cartera de préstamos a empresas",
-      "pasos": [
-        "Compras el token",
-        "Sigue crédito privado",
-        "Reembolsas a su precio"
-      ],
-      "origen": "foto-generada",
-      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
-    },
-    {
       "slug": "mtbill",
       "categoria": "Tesoro y fondos",
       "archivo": "oferta-mtbill.webp",
