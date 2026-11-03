@@ -41,6 +41,7 @@ for (const slug of RETIRADAS) {
   delete documentos[slug];
 }
 escaparate.ofertas = escaparate.ofertas.filter(o => !RETIRADAS.includes(o.slug));
+escaparate.fuente.notaOrigen = escaparate.fuente.notaOrigen.replace('; sin retiradas.', '.');
 escaparate.fuente.notaOrigen += ` Retirada de mF-ONE (${FES}): solo para inversores cualificados o desde 150.000 USD, con lista blanca.`;
 escaparate.fuente.actualizacionLocal = { ...escaparate.fuente.actualizacionLocal,
   archivo: `rwadar-app/data/verificaciones/${REVISION}-v2/contraste-${REVISION}.json`,
