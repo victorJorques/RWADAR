@@ -6,6 +6,63 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 3 de noviembre de 2026 (tarde) · Claude · investigación del día, normas de tarjeta y entrega 2026-11-03.3
+
+Víctor pidió otra investigación para publicar lo más actualizado posible, el
+cambio de las reglas de permisos y «normas del catálogo con sentido». Dio
+permiso expreso a todo. PR #30 a #34, todas unidas a `main`.
+
+- **Reglas (PR #30):** `AGENTS.md`, `CLAUDE.md` y el ciclo dicen ahora que la
+  orden de Víctor de investigar o actualizar el catálogo autoriza ese ciclo
+  completo: «Aplicar catálogo», «Publicar web» y «OTA Android», si pasan
+  pruebas, PGlite, revisión independiente y sello. Siguen fuera cuentas,
+  credenciales, `eas build`/`submit`, tiendas, visibilidad y migraciones.
+- **Normas de tarjeta (PR #31):** en reventa y próximas, `ficha-editorial`
+  (mismo archivo en web y app) enseña mínimo, acceso desde España y salida
+  si hay una referencia con etiqueta fija:
+  - `Mínimo de inversión`, `Acceso desde España`, `Salida` o `Reembolso`;
+  - con paréntesis opcional;
+  - la ficha tiene que estar vigente.
+
+  Siguen sin rentabilidad ni precio, como exige la restricción
+  `oferta_coleccion_documental`; no hubo migración. Las citas literales no
+  suben a la tarjeta. Está documentado en `CICLO-DIARIO-CATALOGO.md`.
+- **Investigación (PR #32):** `verificaciones/2026-11-03.3-v2/`.
+  - 6 grupos y 35 expedientes: las 23 publicadas y 12 candidatas.
+  - Tres revisiones independientes: candidatas, cambios y SQL
+    (`REVISION-ENTREGA.md`, `aprobado_con_cambios`, ya aplicados).
+  - Kraken xStocks rechazada: las condiciones finales oficiales solo ofrecen el
+    producto en Liechtenstein y Suiza (`revision-independiente/kraken-xstocks-addenda.md`,
+    con copias de la web del emisor).
+  - Spiko Smart Cash Euro rechazada: no consta su venta en España en ningún
+    supervisor.
+  - Informe: `docs/INVESTIGACION-CATALOGO-2026-11-03.md`.
+- **Supabase:** «Aplicar catálogo» con `2026-11-03.3` y copia previa. Revisión
+  `fab6d2e4` (antes `62dca2f9`): 26 plataformas y 23 ofertas (6/14/3),
+  comprobadas el 03/11 y vigentes hasta el 10/11. Spiko al 2,34 % y 3,95 %.
+  La lectura pública posterior lo confirma.
+- **Radar:** 69/69 fuentes. El PDF de la OCC (Paxos) se leyó con WebFetch
+  porque al navegador le llegaba otra cosa; su SHA-256 queda en la captura.
+  Antes, un `curl` con agente de navegador fue denegado por el control de
+  seguridad («bot check») y no se insistió.
+- **Web (PR #33 y #34):** sincronizada, sellada y publicada en preview y en
+  producción (156/156). Revisada en navegador: tarjetas principales y de
+  reventa, Spiko euro al 2,34 %, retiradas con 404. Además, la PR #34 apila
+  etiqueta y dato cuando la zona de datos mide menos de 260 px, porque en los
+  grupos abiertos del móvil el dato se cortaba («1 partici…»).
+- **App:** OTA al canal production, runtime `1.4.1(23)`, grupo `0a4700ab`,
+  394 pruebas. Lleva las normas de tarjeta. No comprobada en un móvil.
+- **Escáner de secretos:** 4 copias de páginas públicas con parámetros
+  `access=`/`token=` (Hausera, docs de Midas) salieron de Git; se conservan en
+  disco. Desde entonces solo se guarda si el escáner da 0. Todo lo crudo va en
+  `grupos/**/crudo/`, que está en el `.gitignore`.
+- **Pendiente:**
+  - Kraken xStocks: condiciones finales con España.
+  - Spiko Smart Cash Euro: confirmación de su notificación a España.
+  - Casa de Outeiro: retirarla si el 10/11 sigue igual.
+  - `actualizar-catalogo.mjs` aún quita los avisos con fecha que no sabe
+    rehacer; hay que revisarlos a mano.
+
 ## 3 de noviembre de 2026 (mediodía) · Claude · entrega 2026-11-03.2, varias entregas al día y tarjetas
 
 Con permiso expreso de Víctor (cifras «7 días mejor», «quita el límite de
