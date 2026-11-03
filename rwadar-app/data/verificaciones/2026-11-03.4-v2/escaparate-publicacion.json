@@ -1,7 +1,7 @@
 {
   "versionEsquema": 2,
   "fuente": {
-    "notaOrigen": "Revisión del 03/11/2026 (investigación del mismo día iniciada por Víctor): las 23 fichas y 12 candidatas investigadas con expediente por oferta y revisión independiente (Kraken xStocks y Spiko Smart Cash Euro, rechazadas); sin altas ni retiradas. Las cifras se publican solo donde se leyeron en la fuente oficial. Alta de Kraken xStocks por decisión editorial de Víctor (03/11/2026), con aviso de que las condiciones finales no citan España.",
+    "notaOrigen": "Revisión del 03/11/2026 (investigación del mismo día iniciada por Víctor): las 23 fichas y 12 candidatas investigadas con expediente por oferta y revisión independiente (Spiko Smart Cash Euro, rechazada; Kraken xStocks, rechazada y después incluida por decisión editorial); sin retiradas. Las cifras se publican solo donde se leyeron en la fuente oficial. Alta de Kraken xStocks por decisión editorial de Víctor (03/11/2026), con aviso de que las condiciones finales no ofrecen el producto en España.",
     "actualizacionLocal": {
       "verificadoEl": "2026-11-03",
       "archivo": "rwadar-app/data/verificaciones/2026-11-03.4-v2/contraste-2026-11-03.4.json",
@@ -2652,15 +2652,15 @@
         },
         {
           "etiqueta": "Folleto",
-          "valor": "Aprobado por la FMA de Liechtenstein y notificado a la CNMV (11/05/2026)"
+          "valor": "Aprobado por la FMA de Liechtenstein y notificado a la CNMV (11/05/2026); no cubre su venta en España"
         },
         {
           "etiqueta": "Condiciones finales",
-          "valor": "Ofrecen el producto en Liechtenstein y Suiza; no citan España"
+          "valor": "Solo ofrecen el producto en Liechtenstein y Suiza (en Suiza, solo a profesionales); España no figura como país de oferta"
         },
         {
           "etiqueta": "Compra con euros",
-          "valor": "1 % de compra instantánea más un diferencial que Kraken no publica"
+          "valor": "1 % por compra instantánea, o hasta 2 USD en compras pequeñas según la versión inglesa de la tabla, más un diferencial que Kraken no publica"
         },
         {
           "etiqueta": "Salida",
@@ -2675,7 +2675,13 @@
           "verificadaEl": "2026-11-03"
         },
         {
-          "texto": "La venta a particulares en España la hace Kraken bajo su licencia europea: las condiciones finales del emisor solo ofrecen el producto en Liechtenstein y Suiza, así que ese folleto no ampara tu compra.",
+          "texto": "Kraken UE lo vende a particulares en España, pero las condiciones finales del emisor solo ofrecen el producto en Liechtenstein y Suiza: el folleto no cubre su venta en España.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "RWAdar no ha encontrado ningún documento oficial que explique en qué se basa la venta en España.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-03"
@@ -2729,6 +2735,7 @@
         "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
         "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
         "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+        "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
         "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
       ]
     },

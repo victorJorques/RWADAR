@@ -4761,12 +4761,14 @@
   },
   "kraken-xstocks": {
     "revisadaEl": "2026-11-03",
-    "descripcion": "Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 130 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre. Qué se adquiere: un certificado de deuda (producto estructurado) emitido por Backed Assets (JE) Limited que sigue el precio de una acción o ETF cotizado en EE. UU.; sin propiedad, voto ni dividendos en efectivo. Cómo se compra: en Kraken UE, como cliente de Payward Europe Digital Solutions (CY) que supera su evaluación, desde 1 € y pagando con dinero fiduciario. Las condiciones finales del emisor solo ofrecen el producto al público en Liechtenstein y Suiza; la venta a particulares en la UE la hace Kraken bajo su licencia MiFID.",
+    "descripcion": "Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 130 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre. Qué se adquiere: un certificado de deuda (producto estructurado) emitido por Backed Assets (JE) Limited que sigue el precio de una acción o ETF cotizado en EE. UU.; sin propiedad, voto ni dividendos en efectivo. Cómo se compra: en Kraken UE, como cliente de Payward Europe Digital Solutions (CY) que supera su evaluación, desde 1 € y pagando con dinero fiduciario. Las condiciones finales del emisor solo ofrecen el producto en Liechtenstein y Suiza (en Suiza, solo a profesionales), así que el folleto no cubre su venta en España; RWAdar no ha encontrado ningún documento oficial que explique en qué se basa la venta de Kraken a particulares en la UE.",
     "fuentes": [
       "https://eu.kraken.com/xstocks",
       "https://eu.kraken.com/legal/risk-disclosure",
       "https://www.kraken.com/features/fee-schedule",
       "https://support.kraken.com/articles/xstocks-faq",
+      "https://support.kraken.com/articles/xstocks-availability",
+      "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
       "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
       "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
       "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
@@ -4793,7 +4795,7 @@
       },
       {
         "etiqueta": "Folleto",
-        "valor": "Folleto base aprobado por la FMA de Liechtenstein el 08/05/2026 y notificado a la CNMV el 11/05/2026; suplementos de agosto y septiembre de 2026"
+        "valor": "Folleto base aprobado por la FMA de Liechtenstein el 08/05/2026 y notificado a la CNMV el 11/05/2026, con suplementos de agosto y septiembre de 2026; no cubre su venta en España, porque las condiciones finales no la prevén"
       },
       {
         "etiqueta": "Países de oferta",
@@ -4815,11 +4817,11 @@
       },
       {
         "etiqueta": "Acceso desde España",
-        "valor": "Disponible para clientes de Kraken UE en la Unión Europea (España incluida) que superen su evaluación; vende Payward Europe Digital Solutions (CY), inscrita en la CNMV (n.º 4474)",
+        "valor": "Según Kraken UE, disponible para sus clientes ubicados en la UE que superen su evaluación o sean inversores profesionales",
         "fechaDato": null,
         "fechaConsulta": "2026-11-03",
         "fuente": "https://eu.kraken.com/xstocks",
-        "alcance": "Página de xStocks de Kraken UE y registro de la CNMV consultados el 03/11/2026. Las condiciones finales del emisor no citan España como país de oferta."
+        "alcance": "Página de xStocks de Kraken UE consultada el 03/11/2026. Kraken no nombra España: habla de clientes ubicados en la UE. Las condiciones finales del emisor no citan España como país de oferta."
       },
       {
         "etiqueta": "Salida",
@@ -4831,11 +4833,11 @@
       },
       {
         "etiqueta": "Países de oferta (condiciones finales)",
-        "valor": "Liechtenstein y Suiza; el derecho a ofrecer en otros países queda reservado",
+        "valor": "Liechtenstein y Suiza (en Suiza, solo a inversores profesionales); el derecho a ofrecer en otros países queda reservado",
         "fechaDato": "2026-03-26",
         "fechaConsulta": "2026-11-03",
         "fuente": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
-        "alcance": "Condiciones finales del producto n.º 159 (LITEx) alojadas en la web oficial del emisor; las de SPYx, AAPLx y NVDAx de 2026 dicen lo mismo."
+        "alcance": "Condiciones finales del producto n.º 159 (LITEx, 26/03/2026, emitidas con el folleto de 2025) alojadas en la web oficial del emisor; las de 2026 que se leyeron dicen lo mismo."
       },
       {
         "etiqueta": "Registro del vendedor",
@@ -4855,11 +4857,11 @@
       },
       {
         "etiqueta": "Comisión con euros",
-        "valor": "1 % de compra instantánea más un diferencial que Kraken no publica",
+        "valor": "1 % por compra instantánea, o hasta 2 USD en compras pequeñas según la versión inglesa de la tabla, más un diferencial que Kraken no publica",
         "fechaDato": null,
         "fechaConsulta": "2026-11-03",
         "fuente": "https://www.kraken.com/features/fee-schedule",
-        "alcance": "Tabla de comisiones de Kraken consultada el 03/11/2026."
+        "alcance": "Tabla de comisiones de Kraken consultada el 03/11/2026. La versión inglesa añade que las compras instantáneas pequeñas pagan hasta 2 USD en lugar del 1 %; la española no lo dice."
       },
       {
         "etiqueta": "Dividendos",
@@ -4875,7 +4877,7 @@
         "fechaDato": "2026-09-29",
         "fechaConsulta": "2026-11-03",
         "fuente": "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
-        "alcance": "Segundo suplemento del folleto (29/09/2026), pp. 4 y 6."
+        "alcance": "Folleto base (p. 30: el emisor no es rentable) y segundo suplemento (29/09/2026, pp. 4 y 6: pérdidas, dependencia del grupo y aval)."
       }
     ]
   }

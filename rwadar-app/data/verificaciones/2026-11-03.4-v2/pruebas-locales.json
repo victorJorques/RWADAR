@@ -1,10 +1,10 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-03T11:56:25.276Z",
-  "revisionId": "5c8b3909-bfb2-5058-86ae-888899c9928b",
+  "ejecutadoEl": "2026-11-03T12:16:24.648Z",
+  "revisionId": "f26bba19-39fc-aa64-a086-aba333376f0a",
   "revisionAnterior": "fab6d2e4-0f37-2e3f-4aa8-f027d73f88f6",
   "resultado": "correcto",
-  "sha256AplicarYAprobar": "1dcaa7e8d814dfc34b2d41bbd328cde19bc9dde9937db47661552f3b2dca8d76",
+  "sha256AplicarYAprobar": "5f60e750f5106edb20c5f9ecb870bf1cc059ed6cba33814847deea4f08707ff7",
   "tarjetas": {
     "aktionariat": {
       "minimo": "500 CHF por transferencia bancaria",
