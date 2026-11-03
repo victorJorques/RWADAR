@@ -6,6 +6,55 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 3 de noviembre de 2026 (tarde, 4) · Claude · retirada de mF-ONE (entrega 2026-11-03.6)
+
+Víctor: «retira las ofertas que ya no valgan o ya no estén». PR #42 (lote) y
+#43 (web y app), unidas a `main`.
+
+- **Cómo se decidió:** las 25 ofertas se releyeron esta tarde con sus fuentes
+  primarias, contra cuatro criterios: ya no existe, campaña terminada sin
+  prórroga publicada, no abierta al particular, o fuente caída o
+  contradictoria. Cada propuesta de retirada pasó por dos escépticos que
+  intentaron rebatirla. Resultado en
+  `verificaciones/2026-11-03.6-v2/comprobacion-retiradas.json`.
+- **Sale mF-ONE (Midas):** la web la trata como «Exempt offer», el memorando
+  solo se ve con wallet en lista blanca y los dos contratos tienen la lista
+  blanca activada (`greenlistEnabled()=true`). No hay folleto en ESMA. Es para
+  inversores profesionales.
+- **Se quedan:**
+  - **Terreno BILLA:** la propuesta de retirarla se rebatió. Brickwise la
+    sigue vendiendo en fase de financiación, a finales de octubre se
+    suscribieron 20 participaciones más, y el contrato permite prorrogar.
+  - **Casa de Outeiro:** la ficha de datos v5, firmada el 30/10, fija como
+    fecha límite el 31/03/2027.
+  - **Hausera:** su preventa empieza el 04/11.
+  - **Las otras 21:** siguen abiertas.
+- **Supabase:** «Aplicar catálogo» con `2026-11-03.6`. Revisión `344a86aa`
+  (antes `d75a22fb`): 24 ofertas (8 principales, 13 de reventa y 3 en
+  camino), 26 plataformas. Las otras 24 ofertas no cambian. Revisión
+  independiente: `REVISION-ENTREGA.md`, aprobada sin cambios obligatorios.
+- **Web:** borrada `rwadar-site/ofertas/mf-one.html`, quitada su ruta de
+  `rwadar-fichas-manifiesto.js` y borradas su ilustración y la de la app.
+  Preview y producción: 158/158. En el navegador se ven 8 principales sin
+  errores.
+- **Ojo, caché de Cloudflare:** `/ofertas/mf-one` sigue dando 200 con la
+  página vieja en el nodo IAD, el que usan la CI y este contenedor, porque se
+  pidió justo antes del despliegue. La respuesta trae `cf-cache-status: HIT`,
+  `s-maxage=604800` y `x-robots-tag: noindex`. Con `?x=1` da 404. Las fichas
+  retiradas antes (mglo, iod-occasio, reental-…) ya dan 404. No lo pongo en
+  nuestro `_headers` ni en el worker. Arreglo posible, si vuelve a pasar: que
+  el worker de `rwadar-acceso` lleve la lista de fichas y devuelva el 404 de
+  las rutas `/ofertas/*` que no estén en ella. El worker toca acceso, así que
+  pide revisión antes.
+- **App:** OTA, grupo `a468d25f`, runtime `1.4.1(23)`, con el mensaje
+  «Catálogo 2026-11-03.6: retirada mF-ONE». No comprobada en un móvil.
+- **Pendiente:**
+  - revisar Casa de Outeiro el 10/11;
+  - en BILLA, si no hay prórroga publicada con fecha, decidir en el próximo
+    ciclo;
+  - a partir del 04/11, que la tarjeta de Hausera diga «preventa desde el
+    04/11».
+
 ## 3 de noviembre de 2026 (tarde, 3) · Claude · alta de Spiko Smart Cash Euro (entrega 2026-11-03.5)
 
 Víctor: «si es tan buena oferta y tú lo ves bien y tú lo subirías, adelante».

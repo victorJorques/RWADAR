@@ -26,6 +26,21 @@ Carpeta completa: `rwadar-app/data/verificaciones/2026-11-03.3-v2/`.
 > independiente con tres enfoques: `2026-11-03.5-v2/REVISION-ALTA.md`
 > (aprobado con cambios, 13 cambios obligatorios aplicados). Entrega
 > `2026-11-03.5`: 25 ofertas.
+>
+> Por último pidió **retirar las ofertas que ya no valgan o ya no estén**. Se
+> releyeron las 25 esa tarde, y cada propuesta de retirada la intentaron
+> rebatir dos escépticos. **Sale mF-ONE:** Midas solo la vende a inversores
+> profesionales con la wallet en lista blanca, sin folleto ni KID públicos.
+> **Se quedan:**
+>
+> - **Terreno BILLA:** Brickwise la sigue vendiendo y el contrato permite
+>   prorrogar.
+> - **Casa de Outeiro:** el emisor publicó una prórroga hasta el 31/03/2027,
+>   en su ficha de datos del 30/10.
+>
+> Esto corrige lo que dicen de ellas las tablas de abajo. Detalle:
+> `2026-11-03.6-v2/comprobacion-retiradas.json`. Entrega `2026-11-03.6`:
+> 24 ofertas.
 
 ## 1. En pocas palabras
 
