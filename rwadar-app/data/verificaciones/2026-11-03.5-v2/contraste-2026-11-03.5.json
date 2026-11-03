@@ -1,0 +1,30 @@
+{
+  "tipo": "alta_por_decision_editorial",
+  "fecha": "2026-11-03",
+  "etiqueta": "2026-11-03.5",
+  "revisionAnterior": "f26bba19-39fc-aa64-a086-aba333376f0a",
+  "alta": "spiko-smart-cash-euro",
+  "decision": "Víctor, 03/11/2026: «Si es tan buena oferta y tú lo ves bien y tú lo subirías, adelante».",
+  "revisionPrevia": "2026-11-03.3-v2/revision-independiente/revision-candidata-y-cambios.md (apartado A: rechazado por no constar su notificación a España)",
+  "cambiosAplicados": [
+    "métrica fechada «· VL 02/11/2026»",
+    "literal: variable, sigue al €STR, ni fijo ni garantizado",
+    "Supervisor: la CNMV no publica los compartimentos",
+    "Gestora: Twenty First Capital, delegación en Amundi",
+    "Reembolso: puede limitarse (25 %)",
+    "aviso: la web contradice al KID",
+    "aviso principal: no consta en ningún supervisor su notificación a España"
+  ],
+  "cifra": {
+    "rentabilidad": "2,84 %",
+    "fechaDato": "2026-11-02"
+  },
+  "copiasLiterales": [
+    "radar-canonico-26.json"
+  ],
+  "colecciones": {
+    "principales": 8,
+    "secundario": 14,
+    "en_camino": 3
+  }
+}

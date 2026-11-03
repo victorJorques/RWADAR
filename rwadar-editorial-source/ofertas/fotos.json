@@ -188,6 +188,13 @@
    "encuadre": "60% 55%",
    "concepto": "un distrito financiero mediterráneo genérico al anochecer, junto al paseo marítimo, como imagen de certificados tokenizados que siguen acciones estadounidenses",
    "prompt": "Modern glass office towers of a Mediterranean financial district at dusk beside a calm seafront promenade with palm trees, warm city lights reflecting on the water, wide empty walkway, no logos, no signage, no text, no flags"
+  },
+  "spiko-smart-cash-euro": {
+   "modelo": "realvisxl",
+   "semilla": 37,
+   "encuadre": "60% 55%",
+   "concepto": "una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario",
+   "prompt": "Generic Parisian financial district street at early morning with cream limestone Haussmann-style office buildings, wrought iron balconies, soft golden sunrise light, wet cobblestones, empty sidewalk, no signage, no logos, no text, no flags"
   }
  }
 }

@@ -331,6 +331,18 @@
     "Vendes o retiras"
    ],
    "concepto": "un certificado tokenizado que sigue el precio de acciones estadounidenses, representado por un distrito financiero mediterráneo genérico"
+  },
+  {
+   "slug": "spiko-smart-cash-euro",
+   "escena": "tesoro",
+   "op": {},
+   "lugar": "París · Francia",
+   "pasos": [
+    "Abres cuenta con KYC",
+    "Transfieres euros",
+    "Reembolso diario"
+   ],
+   "concepto": "un fondo en euros que cobra cada día el tipo interbancario, representado por la sala de operaciones genérica de un banco"
   }
  ]
 }
