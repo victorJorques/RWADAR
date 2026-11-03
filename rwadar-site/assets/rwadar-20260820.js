@@ -1875,9 +1875,9 @@ function radarInicioSvg(sin){
   if(i%3===0){const ty=i?CY+R+21:CY-R-15;
    s+='<text class="ir-et" x="200" y="'+ty+'" text-anchor="middle" dominant-baseline="middle" fill="'+CATMETA[c].c+'">'+escHtml(nombre)+
     (cifra?' <tspan class="ir-et-n">'+cifra+'</tspan>':'')+'</text>';return;}
-  const der=i<3,tx=der?398:-8,arriba=i===1||i===5,lineas=nombre.length>12&&nombre.includes(' ')?nombre.split(' '):[nombre];
-  if(cifra)lineas.push(cifra);
-  const y0=arriba?CY-92-(lineas.length-1)*15:CY+76;
+  /* Una sola línea por nombre (así se traduce entero) y el número debajo. */
+  const der=i<3,tx=der?398:-8,arriba=i===1||i===5,lineas=cifra?[nombre,cifra]:[nombre];
+  const y0=arriba?CY-92-(lineas.length-1)*15:CY+102;
   s+='<text class="ir-et" x="'+tx+'" y="'+y0+'" text-anchor="'+(der?'end':'start')+'" fill="'+CATMETA[c].c+'">'+
    lineas.map((l,k)=>'<tspan'+(cifra&&k===lineas.length-1?' class="ir-et-n"':'')+' x="'+tx+'"'+(k?' dy="15"':'')+'>'+escHtml(l)+'</tspan>').join('')+'</text>';
  });

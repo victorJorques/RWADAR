@@ -2247,6 +2247,129 @@ for(const [nombre,alterar] of [
     /data-coleccion="secundario" open/.test(p.obtiene('emiLista').innerHTML)&&
     /en reventa$/.test(p.obtiene('movilOfertasEstado').textContent));
 }
+// ---- Versión final de Inicio y Buscar (ESPEC-FINAL, 03/11/2026) ----
+{
+  const p=pestanaCatalogo(),c=p.contexto;
+  const texto=h=>String(h||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ');
+  const transparencia=JSON.parse(fs.readFileSync(path.join(raiz,'rwadar-editorial-source','ofertas','transparencia.json'),'utf8'));
+  const {resumenOferta}=require('./rwadar-site/assets/ficha-editorial-20261022.js');
+  const ahora=new Date(vm.runInContext('Date.now()',c));
+  const emi=JSON.parse(vm.runInContext('JSON.stringify(EMI)',c)),plataformas=JSON.parse(vm.runInContext('JSON.stringify(P)',c));
+  // Cálculo independiente de las cinco comprobaciones, a partir del JSON y del catálogo.
+  const cinco=o=>{const t=transparencia.ofertas[o.slug],r=resumenOferta(o,plataformas,ahora);
+    return !!t&&t.verificadaEl===o.verificadaEl&&o.coleccion==='principales'&&o.disponibleEs===true&&
+      t.supervisada.cumple===true&&t.documentoEspana.cumple===true&&
+      (Number.isFinite(r.minimo.euros)||!!r.minimo.unidadDocumentada)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto)&&
+      o.estadoRevision==='actual'&&!r.vencida;};
+  const esperadas=emi.filter(cinco).map(o=>o.slug).sort();
+  vm.runInContext("huellaInicio='';emiColeccion='principales';emiCat='';emiBusquedaLocal='';pintarEmisiones()",c);
+  const inicioSel=[...p.obtiene('inicioSeleccionLista').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]).sort();
+  const lista=p.obtiene('emiLista').innerHTML;
+  const bloqueSel=lista.slice(lista.indexOf('catalogo-seleccion'),lista.indexOf('emiRestoTit'));
+  const buscarSel=[...bloqueSel.matchAll(/data-oferta-detalle="([^"]+)"/g)].map(m=>m[1]).sort();
+  prueba('la Selección son las ofertas con las 5 comprobaciones, en Inicio y en Principales, con «No es una recomendación de inversión»',
+    esperadas.length>0&&JSON.stringify(inicioSel)===JSON.stringify(esperadas)&&JSON.stringify(buscarSel)===JSON.stringify(esperadas)&&
+    p.obtiene('inicioSeleccion').hidden===false&&
+    /<section class="inicio-seccion" id="inicioSeleccion"[\s\S]*?No es una recomendación de inversión\.[\s\S]*?<\/section>/.test(html)&&
+    /Selección RWAdar <span>· la documentación más completa<\/span>[\s\S]*?No es una recomendación de inversión\./.test(bloqueSel)&&
+    lista.indexOf('catalogo-seleccion')<lista.indexOf('Resto de principales'));
+  const criterios=p.obtiene('inicioCriterios').innerHTML;
+  prueba('«Cómo elegimos» enseña los cinco criterios del archivo de transparencia',
+    transparencia.criterios.length===5&&transparencia.criterios.every(k=>criterios.includes('<li>'+k.texto+'</li>'))&&
+    /<details class="inicio-como">\s*<summary>Cómo elegimos<\/summary>/.test(html));
+  // Falla cerrado: con otra verificadaEl la oferta pierde sus puntos fuertes y sale de la Selección.
+  const sacada=esperadas[0];
+  const cerrado=vm.runInContext(`(()=>{const e=TRANSPARENCIA_POR_SLUG['${sacada}'],antes=e.verificadaEl;e.verificadaEl='2000-01-01';
+    const o=EMI.find(x=>x.slug==='${sacada}');const r={sel:enSeleccionOferta(o),puntos:puntosFuertesOferta(o).length,tarjeta:tarjetaOfertaLocal(o)};
+    e.verificadaEl=antes;return r;})()`,c);
+  prueba('sin una entrada de transparencia con la misma verificadaEl no hay puntos fuertes ni Selección',
+    cerrado.sel===false&&cerrado.puntos===0&&!/escaparate-puntos/.test(cerrado.tarjeta)&&
+    vm.runInContext(`enSeleccionOferta(EMI.find(x=>x.slug==='${sacada}'))`,c)===true);
+  // Fila móvil: Mínimo · España · Salida a la vista y en forma corta.
+  const fila=vm.runInContext(`tarjetaOfertaLocal(EMI.find(x=>x.slug==='${sacada}'))`,c);
+  const datos=[...fila.matchAll(/<div><dt>([^<]+)<\/dt><dd>([^<]+)<\/dd><\/div>/g)].map(m=>[m[1],m[2]]);
+  const ocultaDatos=[...cssMovil.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>/escaparate-datos-clave/.test(m[1])&&/display\s*:\s*none/.test(m[2]));
+  prueba('la fila móvil enseña Mínimo, España y Salida en forma corta y no esconde ninguno',
+    JSON.stringify(datos.map(d=>d[0]))==='["Mínimo","España","Salida"]'&&datos.every(d=>d[1].trim().length>0&&d[1].length<=40)&&
+    /^(?:Sí, según la fuente|No, según la fuente|Sin confirmar)$/.test(datos[1][1])&&
+    datos[2][1]===transparencia.ofertas[sacada].salidaCorta&&ocultaDatos.length===0&&
+    /title="[^"]+"/.test((fila.match(/<h3 class="emi-tit"[^>]*>/)||[''])[0]));
+  // El aviso crítico nunca se resume ni se esconde en el móvil.
+  const conBloqueo=vm.runInContext(`tarjetaOfertaLocal({...EMI.find(x=>x.slug==='${sacada}'),avisos:[{tono:'stop',texto:'AVISO_CRITICO_ENTERO_EN_LA_FILA'},{tono:'warn',texto:'Otro aviso.'}]})`,c);
+  const reglasAviso=[...cssMovil.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>/escaparate-aviso/.test(m[1]));
+  prueba('.escaparate-aviso-bloqueo nunca se oculta en el móvil y va entero en la fila',
+    /<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo"><b>Importante<\/b> · AVISO_CRITICO_ENTERO_EN_LA_FILA/.test(conBloqueo)&&
+    !/escaparate-avisos-n/.test(conBloqueo)&&reglasAviso.length>0&&
+    reglasAviso.every(m=>!/display\s*:\s*none|visibility\s*:\s*hidden|line-clamp|overflow\s*:\s*hidden/.test(m[2])||
+      m[1].split(',').every(sel=>!/escaparate-aviso/.test(sel)||/:not\(\.escaparate-aviso-bloqueo\)/.test(sel))));
+  const resumenAvisos=vm.runInContext(`tarjetaOfertaLocal(EMI.find(x=>x.slug==='${sacada}'))`,c);
+  prueba('los avisos ordinarios se resumen en «Revisa · N avisos en la ficha» junto a la fecha',
+    /<p class="escaparate-avisos-n"><b>Revisa<\/b> · <span>\d+ avisos? en la ficha<\/span><\/p><div class="emi-revision"><time /.test(resumenAvisos));
+  // Inicio sale del catálogo y sin cifras cuando caduca.
+  const cifras=p.obtiene('inicioCifras').innerHTML,vigencia=p.obtiene('inicioVigencia').innerHTML;
+  const n=JSON.parse(vm.runInContext('JSON.stringify([EMI.length,P.length,FUERA.length])',c));
+  const htmlInicio=panelInicioHTML.replace(/<!--noticias:ini-->[\s\S]*<!--noticias:fin-->/,'');
+  prueba('Inicio calcula sus cifras y su vigencia del catálogo, sin números escritos en el HTML',
+    cifras.includes('<b>'+n[0]+'</b> <span>ofertas</span>')&&cifras.includes('<b>'+n[1]+'</b> <span>plataformas</span>')&&
+    cifras.includes('<b>'+n[2]+'</b> <span>fuera del radar</span>')&&/inicio-pastilla vigente">Vigente</.test(vigencia)&&
+    /· vigente hasta el<\/span> <time datetime="\d{4}-\d{2}-\d{2}">/.test(vigencia)&&
+    /<ul class="inicio-hud" id="inicioCifras" aria-label="El registro en cifras"><\/ul>/.test(htmlInicio)&&
+    /<p class="inicio-leyenda" id="inicioLeyenda">Plataformas por tipo de activo<\/p>/.test(htmlInicio)&&
+    !/\b(?:24|26) (?:ofertas|plataformas)\b/.test(texto(htmlInicio)));
+  vm.runInContext("CATALOGO_CADUCADO=true;huellaInicio='';pintarInicio()",c);
+  const sinCifras=['inicioCifras','inicioRadar','inicioCategorias','inicioColecciones'].map(id=>p.obtiene(id).innerHTML);
+  prueba('con el catálogo caducado Inicio no enseña ninguna cifra y la pastilla pasa a «Revisión pendiente»',
+    !/<b>\d+<\/b>/.test(sinCifras[0])&&/Revisión pendiente/.test(sinCifras[0])&&!/ir-et-n/.test(sinCifras[1])&&
+    !/\d+ ofertas?</.test(sinCifras[2])&&!/<b>\d+<\/b>/.test(sinCifras[3])&&
+    /inicio-pastilla pendiente">Revisión pendiente</.test(p.obtiene('inicioVigencia').innerHTML)&&
+    p.obtiene('inicioSeleccion').hidden===true&&p.obtiene('inicioLeyenda').hidden===true);
+  vm.runInContext("CATALOGO_CADUCADO=false;huellaInicio='';pintarInicio()",c);
+  // Sin notas «x/5» en ningún sitio.
+  vm.runInContext(`abrirDetalleOfertaLocal('${sacada}')`,c);
+  const detalle=p.obtiene('escaparateDetalleLocal').innerHTML;
+  const nota=/(?<![\d,.])[0-5]\s*\/\s*5(?!\d)/;
+  prueba('ninguna nota «x/5» visible en filas, carruseles, Inicio ni la ficha',
+    ![lista,p.obtiene('inicioSeleccionLista').innerHTML,p.obtiene('inicioRecientesLista').innerHTML,detalle,htmlInicio].some(h=>nota.test(texto(h))));
+  prueba('la ficha enseña «Transparencia: lo que hemos comprobado» con los cinco criterios, su motivo y su fuente',
+    /<h3 id="detalleTransparenciaTit">Transparencia: lo que hemos comprobado<\/h3><p class="escaparate-transparencia-aviso">Es una comprobación de la documentación, no una recomendación de inversión\.<\/p>/.test(detalle)&&
+    (detalle.match(/<li class="(?:cumple|no-cumple)">/g)||[]).length===5&&
+    transparencia.criterios.every(k=>detalle.includes('<b>'+k.texto))&&
+    detalle.includes(transparencia.ofertas[sacada].supervisada.fuente.url.replace(/&/g,'&amp;'))&&
+    [...detalle.matchAll(/<a\b([^>]*)>/g)].every(m=>/^\/ofertas\//.test(atributoHTML(m[1],'href')||'')||
+      atributoHTML(m[1],'target')==='_blank'&&/\bnoopener\b/.test(atributoHTML(m[1],'rel')||'')));
+  // Ninguna etiqueta encima de las imágenes y la línea de honestidad a la vista.
+  const cajasFila=[...lista.matchAll(/<div class="escaparate-imagen">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
+  const cajasInicio=[...(p.obtiene('inicioSeleccionLista').innerHTML+p.obtiene('inicioRecientesLista').innerHTML)
+    .matchAll(/<span class="inicio-oferta-img">([\s\S]*?)<\/span>/g)].map(m=>m[1]);
+  const cajaDetalle=(detalle.match(/<div class="escaparate-dialogo-imagen">([\s\S]*?)<\/div>/)||['',''])[1];
+  prueba('ninguna etiqueta encima de las imágenes y la línea «Imágenes ilustrativas…» presente',
+    cajasFila.length>0&&cajasFila.every(h=>/^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>(?:<button [^>]*data-guardar-oferta[^>]*>[^<]*<\/button>)?$/.test(h))&&
+    cajasInicio.length>0&&cajasInicio.every(h=>/^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*loading="lazy" decoding="async"[^>]*>$/.test(h))&&
+    /^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>$/.test(cajaDetalle)&&
+    lista.includes('<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>')&&
+    detalle.includes('<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>')&&
+    (htmlInicio.match(/<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===2&&
+    !/Ilustración(?: editorial)?<\/span>/.test(p.obtiene('grid').innerHTML+lista)&&
+    !/(?:font-size|font)\s*:[^;]*\.[0-6]\d*rem/.test(declaracionesCSS(css,'.nota-ilustrativa').join(';')));
+  // Chips de categoría: orden fijo, nombre corto y sin cortar; recuentos en Plataformas.
+  vm.runInContext("emiCat='';pintarFiltrosEmision();render()",c);
+  const chips=p.obtiene('emiFiltros').innerHTML,pills=p.obtiene('pills').innerHTML;
+  const cortos=['Inmobiliario','Crédito','Tesoro','Acciones','Materias primas','Infraestructura'];
+  const filtrosMovil=declaracionesCSS(cssMovil,'#movilPanelRadar .emis-filtros').join(';');
+  prueba('chips sin cortar con nombre corto, en dos líneas y con recuento en Plataformas',
+    [...chips.matchAll(/<span class="f-corto">([^<]+)<\/span>/g)].every(m=>cortos.includes(m[1]))&&
+    /\.f-largo\{display:none\}\.f-corto\{display:inline\}/.test(css)&&
+    /flex-wrap\s*:\s*wrap/.test(filtrosMovil)&&/overflow\s*:\s*visible/.test(filtrosMovil)&&
+    /white-space\s*:\s*nowrap/.test(declaracionesCSS(cssMovil,'#movilPanelRadar .emis-filtros .f').join(';'))&&
+    /Todas <span class="ct">\d+<\/span>/.test(pills)&&!/display\s*:\s*none/.test(declaracionesCSS(cssMovil,'#movilPanelRadar .fichas-f .ct').join(';'))&&
+    /<span class="empresa-visual__categoria">(?:Inmobiliario|Crédito|Tesoro|Acciones|Materias primas|Infraestructura)<\/span>/.test(p.obtiene('grid').innerHTML));
+  // Radar de Inicio: los mismos nombres cortos, unidades claras y movimiento reducido en vivo.
+  const radar=p.obtiene('inicioRadar').innerHTML;
+  prueba('el radar de Inicio usa los nombres cortos, cuenta plataformas y atiende el cambio de movimiento reducido',
+    cortos.every(nombre=>radar.includes('>'+nombre+(nombre==='Inmobiliario'||nombre==='Acciones'?' ':'<')))&&
+    !/Inmuebles|>Infra<|>Materias</i.test(radar)&&
+    /matchMedia\('\(prefers-reduced-motion: reduce\)'\)[\s\S]{0,40}addEventListener==='function'\)mq\.addEventListener\('change'/.test(js));
+}
 {
   const p=pestanaCatalogo(),c=p.contexto,ampliado=snapshotLocalV2(c);
   const nueva={...ampliado.ofertas.find(o=>o.coleccion==='principales'),slug:'ampliacion-sintetica-validada'};

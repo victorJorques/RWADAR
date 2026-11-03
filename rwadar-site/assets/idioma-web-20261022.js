@@ -31,6 +31,7 @@
   // pasan por el diccionario aunque coincidan con una etiqueta como Inicio.
   const originales=[
     '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar',
+    '#movilPanelInicio .inicio-oferta-tit','#movilPanelInicio .inicio-oferta-prov','.escaparate-comprobaciones p','.escaparate-puntos-detalle a',
     '#emiLista .escaparate-dato-principal b','#emiLista .escaparate-referencia','#emiLista .escaparate-aviso-compacto',
     '.escaparate-datos-clave dd:has(a)','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
     '.escaparate-dialogo-identidad','.escaparate-dialogo-resumen','.escaparate-documentacion-caracteristicas',
@@ -45,7 +46,7 @@
     '.ac-pregunta legend','.ac-opcion-texto','.ac-explicacion','.ac-aviso-legal','main[data-idioma-documental]',
     'main[data-ficha-consulta] p:not(.migas):not(:has(a))','main[data-ficha-consulta] .riesgos','main[data-ficha-consulta] .fuentes','main[data-ficha-consulta] figure'
   ].join(',');
-  const superficies='#emiLista,#grid,#matrix,#radarLee,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
+  const superficies='#inicioSeleccion,#inicioRecientes,#emiLista,#grid,#matrix,#radarLee,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
   function traducir(origen){
     if(idioma.obtenerIdioma()==='en'){
       const limpio=origen.trim(),m=limpio.match(/^Ver las referencias documentales y sus fechas \((\d+)\)$/);
