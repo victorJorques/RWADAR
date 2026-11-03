@@ -301,3 +301,46 @@ Siguen valiendo dos condiciones del procedimiento:
 - antes, montar, precargar y comprobar en producción las imágenes de las dos altas.
 
 Los recomendados R1–R5 siguen abiertos y no bloquean.
+
+## 9. Corrección documental del 03/11
+
+Motivo: la compuerta CSP del publicador rechazaba la página de Aktionariat, porque el localizador
+«sellingEnabled=false; onlyBuySide=true.» casa con `/\son[a-z]+\s*=/i`. Archivos revisados:
+`rwadar-app/data/verificaciones/2026-11-03-v2/` y `rwadar-app/data/importaciones/catalogo-2026-11-03-v2/`.
+Todo con comprobaciones locales.
+
+**Qué cambia.** Comparé `aplicar-y-aprobar.sql` del 02/11 (`dd95eb52…c5d0`) con el del 03/11 sustituyendo en los
+dos el identificador y el hash de revisión. El `diff` da 15 líneas:
+- cabecera (2+2 líneas);
+- en la guarda, la revisión anterior exigida pasa a `f2be1f5e-2bfa-daa1-095b-c0b96e9206aa` y la fecha mínima, al
+  03/11;
+- en la aprobación cambian el texto de `aprobada_referencia` y el mensaje de error, y se quita el `raise notice`
+  (sin efecto);
+- una sola sentencia de ofertas, la de `aktionariat`. Sus columnas que no son JSON son idénticas; en JSON solo
+  cambian `documentacion.revisadaEl` (02/11 → 03/11) y el alcance de la referencia 15:
+  «…Localizador: disabledSellText; sellingEnabled=false; onlyBuySide=true.» →
+  «…Localizador: disabledSellText; venta desactivada (sellingEnabled: no) y solo lado comprador (onlyBuySide: sí).»
+  Mismo contenido, otra redacción.
+
+**Nada más cambia**
+- Las otras 22 ofertas, la fila de `revisiones` (incluidos `verificado_el` 02/11 y la vigencia por defecto), las 69
+  fuentes y las 26 plataformas son idénticas byte a byte, salvo el identificador de revisión.
+- **La vigencia no se extiende**: la revisión sigue vigente hasta el 09/11 y las cifras de las fichas siguen con
+  `verificada_el` 02/11 + 1 día.
+- `radar-canonico-26.json`, `escaparate-publicacion.json` y `manifiesto-catalogo.json` del 03/11 son copias
+  idénticas (`cmp`) de las del 02/11.
+- No queda ninguna coincidencia de `/\son[a-z]+\s*=/i` en el SQL, la documentación ni el escaparate del 03/11.
+
+**Inventario.**
+- SHA-256 `5b10bb378ca67ee23f32d4e67f578080a00b7bcfd99185cbc0fe747ce76f66b6`, confirmado.
+- 294 sentencias: `begin isolation level serializable`, guarda, 1 + 69 + 26 + 109 + 26 + 36 + 23 inserciones en
+  las 7 tablas de `rwadar_catalogo`, aprobación y `commit`.
+- Una sola revisión (`a4792f79-0f4d-361b-a14d-3eeb95bf7499`). Sin DDL, borrados, Auth, RLS/ACL ni funciones.
+- La aprobación exige 26/23 y 6/14/3.
+
+**Ensayo.** `node rwadar-app/data/verificaciones/2026-11-03-v2/comprobar-correccion.mjs` → `"resultado":"correcto"`,
+con el mismo SHA. Al ejecutarlo se reescribió `2026-11-03-v2/pruebas-locales.json`: pasó de `cdac6a4b…` a
+`905f8a71…`, por la hora de ejecución. Esa carpeta no está en Git, así que no puedo devolverlo a su estado.
+
+**Veredicto: aprobado.** Es una corrección solo de redacción, sin efecto sobre datos, cifras, colecciones ni
+vigencias. Se puede aplicar mientras la revisión publicada sea `f2be1f5e…`.
