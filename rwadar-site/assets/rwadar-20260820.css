@@ -1,7 +1,4 @@
-/* TIPOGRAFÍA · Geist y Geist Mono (Vercel, SIL OFL 1.1), variables y alojadas
-   en assets/fuentes/: sin terceros. Paquete oficial `geist` 1.7.2 recortado a
-   latín, latín-1, latín extendido A, puntuación, € y flechas; pesos 400-800
-   (mono 400-700). */
+/* Geist y Geist Mono (SIL OFL 1.1), alojadas en assets/fuentes/ y recortadas. */
 @font-face{font-family:'Geist';font-style:normal;font-weight:400 800;font-display:swap;
  src:url(/assets/fuentes/geist-normal-6ab67a4f11f1.woff2) format('woff2')}
 @font-face{font-family:'Geist Mono';font-style:normal;font-weight:400 700;font-display:swap;
@@ -15,9 +12,7 @@
    datos (las seis categorías, el verde de «verificado» y el coral de
    «descartada»). Gris neutro; texto cálido. */
 :root{
-  /* Superficies con una pizca de calor. Un gris exactamente neutro es
-     clínico y un gris azulado es corporativo-genérico; un punto de tierra
-     en el negro hace que la pantalla se parezca a algo impreso. */
+  /* Superficies con una pizca de calor: ni gris neutro ni azulado. */
   --noche:#0B0A0A; --noche-2:#100F0E; --sup:#171614; --sup-2:#1E1D1B; --sup-3:#262523;
   --linea:#26241F; --linea-2:#3A3833;
   /* Texto en grises CÁLIDOS. Es el cambio que más se nota al leer: un
@@ -33,10 +28,7 @@
   /* «Verificado» usa la señal: es la promesa de la marca, no un color
      aparte. Consolidar en vez de sumar. */
   --menta:#25E39A; --menta-10:rgba(37,227,154,.10); --menta-25:rgba(37,227,154,.26);
-  /* Rojo de alarma, no naranja bonito. Medido en Lab, contra el naranja
-     de «materias primas» pasa de 22,9 a 34,5 de distancia: ya no hay
-     forma de confundir una categoría con una advertencia. Y mantiene
-     5,6:1 sobre el fondo, de sobra para leerse. */
+  /* Rojo de alarma: no se confunde con el naranja de «materias primas» (5,6:1). */
   --coral:#FF3B30; --coral-10:rgba(255,59,48,.10); --coral-25:rgba(255,59,48,.32);
 
   --display:'Geist',system-ui,-apple-system,'Segoe UI Variable Display','Segoe UI',sans-serif;
@@ -238,9 +230,7 @@ h1 em{font-style:normal;color:var(--senal);
 .explica-in{position:relative;display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:center}
 
 /* la escena 3D */
-/* Alto y estrecho: el sujeto es una torre. En un lienzo apaisado una
-   torre deja medio cuadro de negro a cada lado por mucho que se acerque
-   la cámara — el formato tiene que seguir al motivo, no al revés. */
+/* Alto y estrecho: el formato sigue al motivo (una torre). */
 .escena{position:relative;width:100%;height:min(76vh,690px);border-radius:22px;overflow:hidden;
   background:radial-gradient(ellipse 76% 62% at 50% 42%,#1A1815 0%,#100F0E 58%,#090807 100%);
   border:1px solid var(--linea);box-shadow:var(--e3)}
@@ -329,9 +319,7 @@ h1 em{font-style:normal;color:var(--senal);
 .calc-total .cl{display:block;font-family:var(--mono);font-size:.61rem;letter-spacing:.09em;
   text-transform:uppercase;color:var(--tx-2);margin-top:9px;line-height:1.4}
 
-/* La cuenta a la vista. Cada línea es una operación y su resultado, con
-   los números alineados a la derecha: así se lee como una factura y no
-   como un párrafo, que es exactamente lo que se quiere. */
+/* La cuenta como una factura: cada línea, operación y resultado. */
 .cuenta{list-style:none;margin:18px 0 0;padding:0;border:1px solid var(--linea);
   border-radius:var(--rs);overflow:hidden;counter-reset:paso}
 .cuenta li{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
@@ -789,10 +777,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 
 
 /* ============ 16 · OPINIONES ============ */
-/* Van visualmente SEPARADAS de la verificación editorial y con un aviso
-   encima. Si parecieran lo mismo, la opinión de un anónimo tendría el
-   mismo peso que una licencia comprobada en el registro del regulador,
-   y eso es justo lo que no puede pasar aquí. */
+/* Separadas de la verificación editorial y con un aviso encima. */
 .op-bloque{margin-top:26px;padding-top:22px;border-top:1px solid var(--linea)}
 .op-cab{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
 .op-tit{font-family:var(--mono);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:var(--senal)}
@@ -949,9 +934,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .emis-informacion .emis-sub{margin-bottom:10px}
 .emis-legal{font-size:.76rem;line-height:1.55;color:var(--tx-3);margin:20px 0 0;max-width:76ch}
 
-/* El escaparate entregado para revisión vive exclusivamente en localhost.
-   Estas reglas pueden viajar con la fuente pública, pero no hacen visible
-   ningún dato: el catálogo y sus imágenes están fuera de rwadar-site. */
+/* Escaparate de revisión: solo en localhost; sus datos están fuera de rwadar-site. */
 .solo-escaparate-local[hidden],.escaparate-local-aviso[hidden]{display:none!important}
 /* Catálogo caducado o sin comprobar: se sigue mostrando, con este aviso. */
 .aviso-catalogo[hidden]{display:none!important}
@@ -1303,10 +1286,7 @@ body.detalle-local-abierto{overflow:hidden}
   .cmpbar{left:12px;right:12px;transform:translateY(170%)}
   .cmpbar.show{transform:translateY(0)}
   .modal-hd,.pn-body,.pn-hd{padding-inline:18px}
-  /* La cabecera iba apretada: el rótulo de la marca partía en dos
-     líneas y el botón también. En 390 px no hay sitio para las tres
-     cosas, así que cae lo prescindible — el rótulo, que ya lo dice el
-     logotipo — y el botón deja de partirse. */
+  /* En 390 px cae el rótulo de la marca y el botón no se parte. */
   .wm small{display:none}
   .hdr-cta{white-space:nowrap;padding-inline:15px;font-size:.82rem}
   .snd{padding-inline:12px}
@@ -1355,9 +1335,7 @@ body.detalle-local-abierto{overflow:hidden}
   .movil-panel:focus{outline:none}
   .movil-panel-cuerpo{width:100%;max-width:560px;margin:0 auto;padding:18px var(--movil-margen) 32px}
 
-  /* Buscar coloca primero la información accionable. JavaScript mueve
-     también los nodos reales en este mismo orden para que vista, Tab y
-     lector de pantalla coincidan; estas órdenes son una red de seguridad. */
+  /* Buscar: lo accionable primero; el JS mueve los nodos en este orden (vista = Tab). */
   #movilPanelRadar>.portada,#movilPanelRadar>.portada>.portada-in{display:contents}
   #movilPanelRadar>.emis{order:1}
   #movilPanelRadar>.tool{order:2}
@@ -1551,9 +1529,7 @@ body.detalle-local-abierto{overflow:hidden}
     border:1px solid var(--linea-2);border-radius:14px;background:var(--sup);color:var(--senal);
     font-size:2rem;line-height:1;cursor:pointer}
 
-  /* La ficha de plataforma funciona como una pantalla secundaria de la app:
-     cabecera y acciones siempre accesibles, y solo el contenido central
-     desplaza. Así no hay que volver arriba para encontrar cómo cerrarla. */
+  /* Ficha de plataforma: cabecera y acciones fijas; solo desplaza el contenido. */
   #drawer.panel{inset:max(6px,env(safe-area-inset-top)) 0 0;width:100%;max-width:none;max-height:none;
     display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;padding-bottom:0;
     border:1px solid var(--linea-2);border-bottom:0;border-radius:24px 24px 0 0;
@@ -1697,9 +1673,7 @@ body.detalle-local-abierto{overflow:hidden}
     max-width:calc(100vw - 24px);white-space:normal;text-align:center}
   .modal,.panel{padding-bottom:env(safe-area-inset-bottom)}
 
-  /* Cuenta y confirmación se comportan como una hoja de la app. La cabecera
-     nunca se desplaza y el contenido absorbe tanto las pantallas cortas como
-     el teclado virtual sin esconder el cierre ni la información legal. */
+  /* Cuenta y confirmación como hoja de la app: cabecera fija y contenido que desplaza. */
   .cuenta-caja{inset:max(6px,env(safe-area-inset-top)) 0 0;left:0;top:max(6px,env(safe-area-inset-top));
     width:100%;max-width:none;max-height:none;display:grid;grid-template-columns:minmax(0,1fr);
     grid-template-rows:auto minmax(0,1fr);padding:0;overflow:hidden;border-bottom:0;
@@ -1746,10 +1720,7 @@ body.detalle-local-abierto{overflow:hidden}
   .solo-escritorio{display:none!important}
   .solo-movil{display:inline}
 
-  /* Barra compacta de navegación: marca, destino actual y ayuda.
-     Los laterales nunca miden menos que su contenido (la marca y los botones)
-     y el título central es el único que cede: se recorta con «…» en vez de
-     montarse sobre la marca en pantallas estrechas. */
+  /* Barra compacta: marca, destino y ayuda; solo el título central cede, con «…». */
   .movil-cabecera{display:grid;grid-template-columns:minmax(max-content,1fr) minmax(0,auto) minmax(max-content,1fr);
     column-gap:10px;align-items:center;padding:calc(7px + env(safe-area-inset-top)) var(--movil-margen) 7px;
     background:var(--noche);border-color:var(--m-hairline)}
@@ -1835,9 +1806,7 @@ body.detalle-local-abierto{overflow:hidden}
   #movilPanelRadar>.marcador .l{font-size:.68rem;line-height:1.25}
 
 
-  /* En móvil las empresas se reconocen primero por una imagen procedente
-     de su web oficial. El nombre y dos señales de contexto siguen visibles;
-     toda la evidencia permanece en el panel que abre la fotografía. */
+  /* En móvil, la empresa por su imagen; la evidencia, en el panel que abre. */
   #movilPanelRadar>#plataformasResultados{padding-top:12px}
   #movilPanelRadar .recuento{margin:8px 0 13px;font-family:var(--body);font-size:.78rem}
   #movilPanelRadar .rejilla{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-bottom:0;
@@ -1975,9 +1944,7 @@ body.detalle-local-abierto{overflow:hidden}
 .catalogo-referencias[open]>summary{margin-bottom:12px}
 .catalogo-referencias>.emis-rejilla{margin-top:18px}
 
-/* Tarjeta de oferta como en los buscadores de viajes: guardar sobre la foto,
-   el lugar con su chincheta, el aviso en dos líneas (entero en la ficha) y
-   toda la tarjeta abre la ficha; el botón «Ver ficha» sigue siendo el control. */
+/* Tarjeta de oferta: guardar sobre la foto, lugar, aviso corto; toda la tarjeta abre la ficha. */
 .escaparate-oferta{cursor:pointer}
 .escaparate-oferta .escaparate-detalle-boton{position:static}
 .escaparate-oferta .escaparate-detalle-boton::after{content:'';position:absolute;inset:0;z-index:1;border-radius:16px}
