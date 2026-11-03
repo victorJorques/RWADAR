@@ -10,6 +10,14 @@ actualizado posible a día de hoy»). Se repitió el método del 01/11:
 
 Carpeta completa: `rwadar-app/data/verificaciones/2026-11-03.3-v2/`.
 
+> **Actualización (tarde del 03/11).** Víctor decidió incluir **Kraken xStocks**
+> («si es una gran oportunidad, mira cómo incluirlo»). Kraken UE lo vende online
+> a clientes de la UE, y la tarjeta dice en su primer aviso que las condiciones
+> finales del emisor solo lo ofrecen en Liechtenstein y Suiza, así que el
+> folleto no cubre su venta en España. Revisión independiente:
+> `2026-11-03.4-v2/REVISION-ALTA.md` (aprobado con cambios). Publicada en la
+> entrega `2026-11-03.4`: 24 ofertas.
+
 ## 1. En pocas palabras
 
 - **Las 23 ofertas publicadas siguen**, comprobadas hoy con sus fuentes

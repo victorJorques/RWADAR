@@ -6,6 +6,38 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 3 de noviembre de 2026 (tarde, 2) · Claude · alta de Kraken xStocks (entrega 2026-11-03.4)
+
+Víctor pidió incluir xStocks: «si es online como las demás… apáñate». La
+revisión independiente lo había rechazado porque las condiciones finales del
+emisor solo ofrecen el producto en Liechtenstein y Suiza. Víctor decidió
+publicarlo con ese aviso. PR #36 y #37, unidas a `main`.
+
+- **Ficha** (`verificaciones/2026-11-03.4-v2/preparar-entrega.mjs`), en
+  principales:
+  - desde 1 €; acceso «según Kraken UE»; salida por venta a Kraken en USD
+    (24/5) o retirada a wallet;
+  - avisos 1 y 2: «el folleto no cubre su venta en España» y «RWAdar no ha
+    encontrado ningún documento oficial que explique en qué se basa la venta
+    en España»;
+  - sin datos del KID ni enlaces a `l-p-a.com`; las condiciones finales se
+    citan desde la web oficial del emisor.
+  - Revisión independiente `REVISION-ALTA.md`: `aprobado_con_cambios`, con
+    todo aplicado.
+- **Supabase:** «Aplicar catálogo» con `2026-11-03.4`. Revisión `f26bba19`
+  (antes `fab6d2e4`): 24 ofertas (7/14/3). Las otras 23, idénticas.
+- **Imagen:** RealVisXL, semilla 29, con un distrito financiero mediterráneo
+  genérico (`fotos/kraken-xstocks.webp`). La tarjeta se compuso después del
+  SQL. Ruta `ofertas/kraken-xstocks.html` en `rwadar-fichas-manifiesto.js`.
+- **Arreglos:**
+  - `rwadar-servir.js` cargaba solo la fecha de un lote `.N`;
+  - `probar-fichas.cjs` buscaba la entrega por la fecha;
+  - ahora los dos usan la etiqueta completa y la revisión publicada.
+- **Web:** preview y producción (158/158); revisada en navegador.
+- **App:** OTA, grupo `9e9d54ef`, runtime `1.4.1(23)`; no comprobada en un móvil.
+- **Pendiente:** si el emisor publica condiciones finales con España (o la CNMV
+  aclara la base de la venta), quitar los avisos 1 y 2.
+
 ## 3 de noviembre de 2026 (tarde) · Claude · investigación del día, normas de tarjeta y entrega 2026-11-03.3
 
 Víctor pidió otra investigación para publicar lo más actualizado posible, el
