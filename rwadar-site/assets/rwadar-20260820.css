@@ -2266,4 +2266,6 @@ Visualmente 36 px; con su margen invisible, 44 px de diana. */
 #movilPanelRadar:not(.movil-radar-abierto)>:is(.portada-radar,.marcador),#movilPanelRadar:not(.movil-radar-abierto) .movil-radar-intro>p:not(.movil-mini-etiqueta):not(.movil-radar-cero){display:none}
 #movilPanelRadar .fichas-f{margin:0 0 4px}
 #movilPanelRadar .nota-portadas{display:block;margin:10px 0 0}
+/* El selector de idioma lo crea el JS: su hueco se reserva para que la página no salte al cargar. */
+[data-selector-idioma]{min-height:57px}
 }
