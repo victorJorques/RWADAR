@@ -122,11 +122,12 @@
   },
   {
    "url": "https://www.ecrowdinvest.com/",
-   "archivo": "fuentes/psfp-home/ecrowdinvest_com.html",
+   "archivo": "fuentes/crudo/psfp-home/ecrowdinvest_com.html",
    "http": 200,
    "consultadoUtc": "2026-11-03T10:08:14Z",
    "bytes": 515000,
-   "sha256": "705293042234ab102c38e259645ae43eddf633d192b69213c69c9c6033e4f268"
+   "sha256": "705293042234ab102c38e259645ae43eddf633d192b69213c69c9c6033e4f268",
+   "nota": "Movida a crudo/ (fuera de Git): la página incrusta un iframe de Google Maps con un parámetro «key=». Sin texto extraído. Se leyó solo para buscar menciones de tokenización (ninguna relevante)."
   },
   {
    "url": "https://www.bolsasocial.com/",
