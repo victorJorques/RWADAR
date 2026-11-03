@@ -1,7 +1,7 @@
 {
  "grupo": "principales-spiko-robinhood-prosegur",
  "ciclo": "2026-11-03.3-v2",
- "nota": "Consultas reales del 03/11/2026 (UTC). Respuestas de API, CSV y textos con direcciones de cadena van en fuentes/crudo/ (fuera de Git); HTML y PDF se conservan en disco (fuera de Git por .gitignore) con su SHA-256. Revisado: ninguna copia que entra en Git contiene parámetros token=, access=, signature=, key= ni X-Amz-, direcciones 0x ni UUID.",
+ "nota": "Consultas reales del 03/11/2026 (UTC). Respuestas de API, CSV y textos con direcciones de cadena van en fuentes/crudo/ (fuera de Git); HTML y PDF se conservan en disco (fuera de Git por .gitignore) con su SHA-256. Revisado: ninguna copia que entra en Git contiene parámetros de enlaces firmados (token, access, signature, key, X-Amz), direcciones de cadena ni UUID.",
  "consultas": [
   {
    "url": "https://midas.app/llms.txt",
