@@ -200,6 +200,38 @@ verificar('la ficha fija enseña «Transparencia: lo que hemos comprobado» sin 
   const sinPuntos=salidas.get('ofertas/hausera-proximas-ofertas.html');
   assert(sinPuntos.includes('Transparencia: lo que hemos comprobado')&&!sinPuntos.includes('Puntos fuertes, con su fuente'));
 });
+// Corrección (03/11): la página fija enlaza la fuente de cada comprobación, con la misma fecha que la ficha
+// de la web, y lo que escribe RWAdar se traduce (class="ui"); solo transparencia.json y el catálogo van como fuente.
+verificar('la transparencia de la página fija lleva su fuente fechada y separa la interfaz del texto de la fuente',()=>{
+  const pagina=salidas.get('ofertas/robinhood-classic-stock-tokens.html');
+  const filas=[...pagina.matchAll(/<li data-cumple="(si|no)">([\s\S]*?)<\/li>/g)].map(m=>m[2]);
+  assert.equal(filas.length,5);
+  for(const i of [0,1,2,3])assert(/<a href="https:[^"]+" target="_blank" rel="noopener noreferrer"><span data-idioma-fuente="es"[^>]*>[^<]+<\/span> ↗<\/a> <span>· consultada el \d{2}\.\d{2}\.\d{4}<\/span>/.test(filas[i]),'fuente de la fila '+(i+1));
+  assert(/<p data-campo="contratable" class="ui">Es una oferta principal y la fuente dice que se contrata desde España\.<\/p>/.test(filas[0]));
+  assert(/<p data-idioma-fuente="es"[^>]*>[^<]+<\/p>/.test(filas[1]));
+  assert(/<p data-campo="minimoSalida" class="ui"><span>Mínimo:<\/span> <span data-idioma-fuente="es"[^>]*>1 €<\/span>\. <span>Salida:<\/span> <span data-idioma-fuente="es"[^>]*>[^<]+<\/span>\.<\/p>/.test(filas[3]));
+  assert(pagina.includes('<p class="ui">Es una comprobación de la documentación, no una recomendación de inversión.</p>'));
+  assert(!/consulta \d{2}\/\d{2}\/\d{4}<\/span><\/p><\/li>/.test(pagina.slice(pagina.indexOf('id="transparencia"'))));
+});
+verificar('con la revisión vencida la página fija deja de afirmar que se contrata hoy y que el mínimo y la salida siguen documentados',()=>{
+  const codigo=fs.readFileSync(path.join(raiz,'rwadar-site/assets/ficha-pagina-20261022.js'),'utf8');
+  const fila=()=>{const marca={textContent:'✓ Sí'};return {dataset:{cumple:'si'},marca,querySelector:()=>marca};};
+  const filas={contratable:fila(),minimoSalida:fila(),vigencia:fila()};
+  const campos=Object.fromEntries(Object.entries(filas).map(([n,f])=>[n,{textContent:'',parentElement:f,appendChild(){}}]));
+  const oferta=catalogo.ofertas.find(o=>o.slug==='robinhood-classic-stock-tokens');
+  const pagina={dataset:{oferta:JSON.stringify(oferta)},querySelector:selector=>campos[selector.match(/"([^"]+)"/)[1]]};
+  let volver,reloj=new Date(oferta.verificadaEl+'T12:00:00Z');
+  const api=require('./rwadar-movil/lib/ficha-editorial');
+  const contexto={globalThis:{RWAdarFichaEditorial:{resumenOferta:o=>api.resumenOferta(o,catalogo.plataformas,reloj)}},
+    document:{hidden:false,querySelector:()=>pagina,createElement:()=>({}),addEventListener:(e,fn)=>{if(e==='visibilitychange')volver=fn;}},
+    window:{setInterval:()=>{}}};
+  vm.runInNewContext(codigo,contexto,{timeout:1000});
+  assert.equal(filas.contratable.dataset.cumple,'si');assert.equal(filas.minimoSalida.dataset.cumple,'si');assert.equal(filas.vigencia.dataset.cumple,'si');
+  reloj=new Date(Date.parse(oferta.verificadaEl+'T12:00:00Z')+9*864e5);volver();
+  for(const n of ['contratable','minimoSalida','vigencia']){assert.equal(filas[n].dataset.cumple,'no',n);assert.equal(filas[n].marca.textContent,'✗ No',n);}
+  assert.match(campos.contratable.textContent,/^Pendiente de revalidar: la revisión semanal ha vencido\.$/);
+  assert.match(campos.minimoSalida.textContent,/pendientes de revalidar/);
+});
 verificar('RSS enlaza noticias estables y el sitemap contiene todas las fichas',()=>{
   const rss=salidas.get('novedades.xml'),mapa=salidas.get('sitemap.xml');
   assert(rss.startsWith('<?xml'));assert(rss.includes('<rss version="2.0">'));

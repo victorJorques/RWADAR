@@ -31,7 +31,7 @@
   // pasan por el diccionario aunque coincidan con una etiqueta como Inicio.
   const originales=[
     '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar',
-    '#movilPanelInicio .inicio-oferta-tit','#movilPanelInicio .inicio-oferta-prov','.escaparate-comprobacion-motivo-fuente','.escaparate-comprobacion-dato','.escaparate-fuente-titulo',
+    '#movilPanelInicio .inicio-oferta-tit','#movilPanelInicio .inicio-oferta-prov','#movilPanelInicio .inicio-oferta-aviso','.escaparate-comprobacion-motivo-fuente','.escaparate-comprobacion-dato','.escaparate-fuente-titulo',
     '#emiLista .escaparate-dato-principal b','#emiLista .escaparate-referencia','#emiLista .escaparate-aviso-compacto',
     '.escaparate-datos-clave dd:has(a)','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
     '.escaparate-dialogo-identidad','.escaparate-dialogo-resumen','.escaparate-documentacion-caracteristicas',
@@ -44,7 +44,7 @@
     '#perfilOfertas .perfil-oferta h3','#perfilOfertas .perfil-oferta p','#perfilEmpresas .movil-seguida h3','#perfilEmpresas .movil-seguida p','#cuentaIdentidad','#cuentaEstadoCorreo',
     '.comunidad-autor','.comunidad-texto','.ac-articulo','.ac-tldr ol','.ac-glosario dl','.ac-leccion-cab h1',
     '.ac-pregunta legend','.ac-opcion-texto','.ac-explicacion','.ac-aviso-legal','main[data-idioma-documental]',
-    'main[data-ficha-consulta] p:not(.migas):not(.ui):not(:has(a))','main[data-ficha-consulta] .riesgos','main[data-ficha-consulta] .fuentes','main[data-ficha-consulta] figure'
+    'main[data-ficha-consulta] p:not(.migas):not(.ui):not(:has(a))','main[data-ficha-consulta] .riesgos','main[data-ficha-consulta] .fuentes:not(.puntos)','main[data-ficha-consulta] figure'
   ].join(',');
   const superficies='#emiLista,#grid,#matrix,#radarLee,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
   function traducir(origen){

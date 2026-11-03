@@ -23,6 +23,16 @@
         nodo.appendChild(fuente);
       }
     }
+    // Contratable y mínimo/salida: con la revisión vencida no se afirma nada sobre «hoy» (falla cerrado).
+    for (const [campo,motivo] of [['contratable','Pendiente de revalidar: la revisión semanal ha vencido.'],
+      ['minimoSalida','Mínimo y salida pendientes de revalidar: la revisión semanal ha vencido.']]) {
+      const nodo=pagina.querySelector('[data-campo="'+campo+'"]'), fila=nodo && nodo.parentElement;
+      const caduca=resumen.vencida===true || campo==='contratable' && !(resumen.accesoEspana && resumen.accesoEspana.estado==='si');
+      if (!nodo || !fila || !fila.dataset || fila.dataset.cumple!=='si' || !caduca) continue;
+      fila.dataset.cumple='no'; nodo.textContent=motivo;
+      const marca=fila.querySelector && fila.querySelector('.comprobacion-marca');
+      if (marca) marca.textContent='✗ No';
+    }
     // Quinta comprobación de transparencia: revisada esta semana y sin fuentes en conflicto.
     const vigencia=pagina.querySelector('[data-campo="vigencia"]');
     if (vigencia) {

@@ -163,31 +163,42 @@ const riesgos = '<section aria-labelledby="riesgos"><h2 id="riesgos">Antes de ir
 
 /* «Transparencia: lo que hemos comprobado», como en la ficha de la web. Falla
    cerrado: sin entrada con la misma verificadaEl, no hay puntos fuertes y las
-   dos comprobaciones editoriales salen en «No». La vigencia la vuelve a mirar
-   ficha-pagina al abrir la página: la fecha de hoy no se escribe aquí. */
+   dos comprobaciones editoriales salen en «No». Lo que depende de «hoy»
+   (contratable, mínimo y salida, vigencia) lo vuelve a mirar ficha-pagina al
+   abrir la página. Solo el texto de transparencia.json y los datos del
+   catálogo van como texto de la fuente; lo que escribe RWAdar se traduce. */
 function transparenciaOferta(o,catalogo) {
   const t = TRANSPARENCIA.ofertas[o.slug], e = t && t.verificadaEl === o.verificadaEl ? t : null;
   const r = resumenOferta(o,catalogo.plataformas,new Date(o.verificadaEl+'T12:00:00Z'));
   const texto = Object.fromEntries(TRANSPARENCIA.criterios.map(c=>[c.id,c.texto]));
   const minimo = Number.isFinite(r.minimo.euros) || Boolean(r.minimo.unidadDocumentada);
   const salida = !['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto);
-  const fuente = f => f && enlace(f.url) ? '<p><a href="'+esc(enlace(f.url))+'" target="_blank" rel="noopener noreferrer">'+esc(f.titulo || new URL(f.url).hostname)+' ↗</a>'+
-    (f.fecha ? ' <span>· consulta '+esc(corta(f.fecha))+'</span>' : '')+'</p>' : '';
-  const fila = (id,cumple,motivo,f,campo) => '<li data-cumple="'+(cumple?'si':'no')+'"><strong><span class="comprobacion-marca">'+(cumple?'✓ Sí':'✗ No')+'</span> '+esc(texto[id])+'</strong>'+
-    '<p'+(campo ? ' data-campo="'+campo+'"' : '')+ORIGINAL+'>'+esc(motivo)+'</p>'+fuente(f)+'</li>';
-  const editorial = id => e ? fila(id,e[id].cumple===true,e[id].motivo,{...e[id].fuente,fecha:e[id].consultadaEl}) :
-    fila(id,false,'Sin comprobación editorial para esta revisión de la oferta.');
-  const contratable = o.coleccion==='principales' && o.disponibleEs===true;
+  const conPuntos = v => v.split('-').reverse().join('.');
+  const fuente = f => f && enlace(f.url) ? '<p><a href="'+esc(enlace(f.url))+'" target="_blank" rel="noopener noreferrer"><span'+ORIGINAL+'>'+esc(f.titulo || new URL(f.url).hostname.replace(/^www\./,''))+'</span> ↗</a>'+
+    (fecha(f.fecha) ? ' <span>· consultada el '+esc(conPuntos(f.fecha))+'</span>' : '')+'</p>' : '';
+  const fila = (id,cumple,motivo,f,{campo='',original=false}={}) => '<li data-cumple="'+(cumple?'si':'no')+'"><strong><span class="comprobacion-marca">'+(cumple?'✓ Sí':'✗ No')+'</span> '+esc(texto[id])+'</strong>'+
+    '<p'+(campo ? ' data-campo="'+campo+'"' : '')+(original ? ORIGINAL : ' class="ui"')+'>'+motivo+'</p>'+fuente(f)+'</li>';
+  const editorial = id => e ? fila(id,e[id].cumple===true,esc(e[id].motivo),{...e[id].fuente,fecha:e[id].consultadaEl},{original:true}) :
+    fila(id,false,esc('Sin comprobación editorial para esta revisión de la oferta.'));
+  const acceso = r.accesoEspana.estado==='si' && enlace(r.accesoEspana.fuente) ? {url:r.accesoEspana.fuente,fecha:r.accesoEspana.consultadaEl} : null;
+  const contratable = o.coleccion==='principales' && o.disponibleEs===true && Boolean(acceso);
+  const dato = v => '<span'+ORIGINAL+'>'+esc(v)+'</span>';
+  const textoMinimo = r.minimo.texto==='No documentado en euros' && r.minimo.unidadDocumentada ? r.minimo.unidadDocumentada : r.minimo.texto;
+  const motivoMinimo = (minimo ? '<span>Mínimo:</span> '+dato(textoMinimo)+'.' : 'Mínimo sin documentar.')+' '+
+    (salida ? '<span>Salida:</span> '+dato(r.salida.texto.replace(/^Salida:\s*/,'').replace(/\.$/,''))+'.' : 'Salida sin documentar.');
+  const fuenteMinimo = minimo && enlace(r.minimo.fuente) ? {url:r.minimo.fuente,fecha:r.minimo.consultadaEl} :
+    enlace(r.salida.fuente) ? {url:r.salida.fuente,fecha:r.salida.consultadaEl} : null;
   const puntos = e ? e.puntos : [];
   return '<section aria-labelledby="transparencia"><h2 id="transparencia">Transparencia: lo que hemos comprobado</h2>'+
-    '<p>Es una comprobación de la documentación, no una recomendación de inversión.</p><ul class="comprobaciones">'+
-    fila('contratable',contratable,contratable ? 'Es una oferta principal y la fuente dice que se contrata desde España.' :
+    '<p class="ui">Es una comprobación de la documentación, no una recomendación de inversión.</p><ul class="comprobaciones">'+
+    fila('contratable',contratable,esc(contratable ? 'Es una oferta principal y la fuente dice que se contrata desde España.' :
       o.coleccion==='secundario' ? 'Es una referencia de reventa entre inversores, no una oferta abierta.' :
-      o.coleccion==='en_camino' ? 'Es un anuncio: todavía no se puede contratar.' : 'No consta en la fuente que se contrate desde España.')+
+      o.coleccion==='en_camino' ? 'Es un anuncio: todavía no se puede contratar.' :
+      o.disponibleEs===false ? 'La fuente dice que no se contrata desde España.' : 'No consta en la fuente que se contrate desde España.'),acceso,{campo:'contratable'})+
     editorial('supervisada')+editorial('documentoEspana')+
-    fila('minimoSalida',minimo && salida,(minimo ? 'Mínimo documentado' : 'Mínimo sin documentar')+'; '+(salida ? 'salida documentada' : 'salida sin documentar')+' en la revisión del '+corta(o.verificadaEl)+'.')+
-    fila('vigente',false,'Se comprueba al abrir la página con la fecha de hoy.',null,'vigencia')+'</ul>'+
-    (puntos.length ? '<h3>Puntos fuertes, con su fuente</h3><ul class="fuentes">'+puntos.map(x=>'<li><strong'+ORIGINAL+'>'+esc(x.texto)+'</strong>'+fuente(x.fuente)+'</li>').join('')+'</ul>' : '')+
+    fila('minimoSalida',minimo && salida,motivoMinimo,fuenteMinimo,{campo:'minimoSalida'})+
+    fila('vigente',false,esc('Se comprueba al abrir la página con la fecha de hoy.'),null,{campo:'vigencia'})+'</ul>'+
+    (puntos.length ? '<h3>Puntos fuertes, con su fuente</h3><ul class="fuentes puntos">'+puntos.map(x=>'<li><strong>'+esc(x.texto)+'</strong>'+fuente(x.fuente)+'</li>').join('')+'</ul>' : '')+
     '</section>';
 }
 

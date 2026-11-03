@@ -2247,6 +2247,35 @@ for(const [nombre,alterar] of [
     /data-coleccion="secundario" open/.test(p.obtiene('emiLista').innerHTML)&&
     /en reventa$/.test(p.obtiene('movilOfertasEstado').textContent));
 }
+{
+  // Corrección (03/11, ESPEC-FINAL §6): lo que escribe RWAdar en «Transparencia» se traduce; solo el texto
+  // de transparencia.json y los datos del catálogo van como texto de la fuente, y Inicio no lleva ese rótulo.
+  const idiomaWeb=fs.readFileSync(path.join(raiz,'rwadar-site/assets/idioma-web-20261022.js'),'utf8');
+  const {ingles}=require('./rwadar-movil/lib/idioma.js');
+  const c=pestanaCatalogo().contexto;
+  const motivos=JSON.parse(vm.runInContext(`JSON.stringify((()=>{const s=new Set();
+    const una=()=>EMI.forEach(o=>comprobacionesOferta(o).forEach(k=>{if(!k.deFuente)(k.partes?k.partes.map(x=>x[0]):[k.motivo]).forEach(m=>s.add(m));}));
+    una();CATALOGO_CADUCADO=true;una();CATALOGO_CADUCADO=false;return [...s];})())`,c));
+  const sinTraducir=motivos.filter(m=>ingles(m)===m);
+  prueba('en inglés se traducen los motivos que escribe RWAdar y solo el texto de transparencia.json queda como fuente',
+    motivos.length>=8&&sinTraducir.length===0&&!idiomaWeb.includes("'.escaparate-comprobaciones p'")&&
+    idiomaWeb.includes("'.escaparate-comprobacion-motivo-fuente'")&&idiomaWeb.includes("'.escaparate-comprobacion-dato'")&&
+    !/superficies='[^']*#inicio(?:Seleccion|Recientes)/.test(idiomaWeb)&&
+    ingles('cnmv.es · fuente de: Se contrata hoy desde España')==='cnmv.es · source for: Can be bought from Spain today'&&
+    ingles('Revisada el 03.11.2026; cifras vigentes 7 d.')==='Reviewed on 03.11.2026; figures valid for 7 d.'&&
+    ingles('· consultada el 03.11.2026')==='· checked on 03.11.2026');
+}
+{
+  // Corrección (03/11): con el catálogo caducado la transparencia no afirma nada sobre «hoy» (falla cerrado,
+  // como la vigencia) y lo que falta revalidar no se llama «sin documentar».
+  const c=pestanaCatalogo().contexto;
+  const r=JSON.parse(vm.runInContext(`(()=>{const o=EMI.find(x=>x.slug==='robinhood-classic-stock-tokens'),antes=comprobacionesOferta(o);
+    CATALOGO_CADUCADO=true;const k=comprobacionesOferta(o);CATALOGO_CADUCADO=false;
+    return JSON.stringify({antes:antes.map(x=>x.cumple),k:Object.fromEntries(k.map(x=>[x.id,[x.cumple,x.motivo]]))});})()`,c));
+  prueba('con el catálogo caducado «se contrata hoy» y «mínimo y salida» pasan a ✗ como pendientes de revalidar',
+    r.antes.every(Boolean)&&r.k.contratable[0]===false&&/^Pendiente de revalidar: la revisión semanal ha vencido\.$/.test(r.k.contratable[1])&&
+    r.k.minimoSalida[0]===false&&/pendiente de revalidar/.test(r.k.minimoSalida[1])&&!/sin documentar/i.test(r.k.minimoSalida[1])&&r.k.vigente[0]===false);
+}
 // ---- Versión final de Inicio y Buscar (ESPEC-FINAL, 03/11/2026) ----
 {
   const p=pestanaCatalogo(),c=p.contexto;

@@ -2367,7 +2367,7 @@ function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
     no se afirma nada sobre «hoy», y siempre lleva la fuente del acceso. */
  const caducado=catalogoSinCifrasLocal()||estado.clase==='caducado';
  const contratable=o.coleccion==='principales'&&o.disponibleEs===true&&!caducado&&!!(resumen.accesoEspana&&resumen.accesoEspana.estado==='si'&&cita(resumen.accesoEspana));
- const minimo=minimoDocumentadoLocal(resumen),salida=salidaDocumentadaLocal(resumen),pendiente=pendienteRevalidarLocal(resumen);
+ const pendiente=caducado||pendienteRevalidarLocal(resumen),minimo=!pendiente&&minimoDocumentadoLocal(resumen),salida=!pendiente&&salidaDocumentadaLocal(resumen);
  const vigente=o.estadoRevision==='actual'&&!caducado;
  const vencida='Pendiente de revalidar: la revisión semanal ha vencido.';
  /* Mínimo y salida: la etiqueta es de la interfaz y el dato, de la fuente. */
@@ -2576,7 +2576,7 @@ function abrirDetalleOfertaLocal(slug){
   '<div class="escaparate-dialogo-cuerpo"><div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
    escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540" decoding="async"></div><p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>'+
   '<p class="escaparate-dialogo-estado"><span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></p>'+
-  '<div class="escaparate-dialogo-identidad"><div><b>'+escHtml(o.plataformaNombre)+'</b><span>'+escHtml(catCorta(o.categoria))+
+  '<div class="escaparate-dialogo-identidad"><div><b>'+escHtml(o.plataformaNombre)+'</b><span>'+escHtml(typeof catCorta==='function'?catCorta(o.categoria):o.categoria)+
    (imagen&&imagen.lugar?' · '+escHtml(imagen.lugar):o.pais?' · '+escHtml(o.pais):'')+'</span></div><div class="escaparate-dialogo-dato"><b>'+escHtml(claves.destacado.valor)+
    '</b><span>'+escHtml(claves.destacado.etiqueta)+'</span>'+
    (referencia?'<p class="escaparate-referencia">'+escHtml(referencia)+'</p>':'')+'</div></div>'+
