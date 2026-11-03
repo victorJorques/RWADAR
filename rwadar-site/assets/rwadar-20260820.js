@@ -1895,6 +1895,14 @@ function radarInicioSvg(sin){
  /* En el centro, el hexágono de la marca. */
  return s+'<g transform="translate(200 200) scale(1.15) translate(-52 -52)"><path d="M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z" fill="#25E39A" stroke="#0B0A0A" stroke-width="1.4"/></g>';
 }
+/* Miniatura quieta del radar para la franja plegada de Plataformas: los
+   mismos puntos, sin rótulos ni barrido. */
+function radarMiniSvg(){
+ let s='<circle class="radar-borde" cx="200" cy="200" r="136"/>';
+ [0.40,0.60,0.76,0.90].forEach(f=>{s+='<circle class="radar-anillo" cx="200" cy="200" r="'+(136*f).toFixed(1)+'"/>'});
+ s+='<path d="M200 200 L336 200 A136 136 0 0 0 204.7 64.1 Z" fill="rgba(37,227,154,.16)"/>';
+ return s+puntosRadar(200,200,136).map(({x,y,col})=>'<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="9" fill="'+col+'"/>').join('');
+}
 function fechaRevisionOferta(o){const d=documentacionOfertaLocal(o);return d&&d.revisadaEl||o.verificadaEl||''}
 /* Tarjeta de los carruseles: foto limpia, título en dos líneas, proveedor y,
    según el carrusel, hasta dos puntos fuertes o la fecha de alta. */
@@ -1949,6 +1957,7 @@ function pintarInicio(){
  const pon=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;return el;};
  const ocultar=(id,si)=>{const el=document.getElementById(id);if(el)el.hidden=si;};
  pon('inicioRadar',P.length?radarInicioSvg(sin):'');
+ pon('movilRadarMini',P.length?radarMiniSvg():'');
  ocultar('inicioLeyenda',sin||!P.length);
  const cuenta=c=>ofertas.filter(o=>o.coleccion===c).length;
  const t=iso?'<time datetime="'+escHtml(iso)+'">'+escHtml(fecha)+'</time>':escHtml(fecha);
