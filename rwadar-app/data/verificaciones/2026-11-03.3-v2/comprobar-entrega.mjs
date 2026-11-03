@@ -79,7 +79,7 @@ try {
     if (o.coleccion === 'principales' && o.estado_revision === 'actual') assert.equal(s.accesoEspana.estado, 'si', `${o.slug}: acceso`);
     if (o.plataforma_slug === 'brickwise') {
       assert.equal(s.accesoEspana.estado, 'sin_comprobar', `${o.slug}: Brickwise no confirma la distribución en España`);
-      assert.match(fila.minimo, /^(Desde \d|1\.000 €)/, `${o.slug}: mínimo`);
+      assert.match(fila.minimo, /^(1 participación desde \d|1\.000 €)/, `${o.slug}: mínimo`);
     }
     if (o.coleccion !== 'principales') assert.equal(s.cifrasVigentes, false, `${o.slug}: sin cifras comerciales`);
     const s11 = resumenOferta(oferta, [], new Date('2026-11-11T12:00:00Z'));

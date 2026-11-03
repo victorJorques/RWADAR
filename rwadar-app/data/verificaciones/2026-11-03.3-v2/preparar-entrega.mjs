@@ -125,7 +125,7 @@ metrica('terreno-con-arrendamiento-billa', 'Suscrito / umbral',
   { etiqueta: 'Suscrito / umbral', valor: `82 de 5.000 participaciones necesarias (API ${FES})` });
 avisoCambia('terreno-con-arrendamiento-billa', 'La emisión solo se ejecuta si alcanza 500.000 €',
   `La emisión solo se ejecuta si alcanza 500.000 €; el ${FES} la API mostraba 82 participaciones suscritas (1,64 %). Si no se alcanza, se devuelve el dinero sin intereses.`);
-avisoNuevo('terreno-con-arrendamiento-billa', 'Tienes 14 días para desistir de la suscripción, según su documento de desistimiento.');
+avisoNuevo('terreno-con-arrendamiento-billa', 'Puedes desistir de la suscripción en 14 días, salvo que antes te entreguen los tokens; es un derecho que da el emisor y no existe en la reventa.');
 
 // Casa de Outeiro: la campaña en Alius tenía fin el 31/10 y no muestra ampliación.
 metrica('casa-de-outeiro', 'Recaudado', { etiqueta: `Recaudado · ${FES}`, valor: '1.121.000 € de un mínimo de 2.000.000 €' });
@@ -159,8 +159,8 @@ const REVENTA_BW = {
 const NUEVAS = {};
 for (const [slug, [precio, documento, salida]] of Object.entries(REVENTA_BW)) {
   NUEVAS[slug] = [
-    R('Mínimo de inversión', `Desde ${precio} € en reventa (${FES.slice(0, 5)})`, BW_APP, FECHA,
-      'Venta más barata del tablón de la app ese día, más un 1,5 % de comisión; el precio lo fija cada vendedor y cambia a diario. No es el precio de emisión.'),
+    R('Mínimo de inversión', `1 participación desde ${precio} € en reventa (${FES.slice(0, 5)})`, BW_APP, FECHA,
+      'Precio por participación de la venta más barata del tablón de la app ese día («Preis pro Anteil ab»), más un 1,5 % de comisión. Brickwise no publica un mínimo en reventa ni si una orden se puede comprar en parte. El precio lo fija cada vendedor y cambia a diario. No es el precio de emisión.'),
     BW_ACCESO,
     R('Salida', salida || 'Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)', documento, null,
       'Documento de la emisión (en alemán).'),

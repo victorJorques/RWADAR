@@ -4066,7 +4066,7 @@
           "verificadaEl": "2026-11-03"
         },
         {
-          "texto": "Tienes 14 días para desistir de la suscripción, según su documento de desistimiento.",
+          "texto": "Puedes desistir de la suscripción en 14 días, salvo que antes te entreguen los tokens; es un derecho que da el emisor y no existe en la reventa.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-03"
