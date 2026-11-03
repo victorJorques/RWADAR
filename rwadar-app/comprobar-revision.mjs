@@ -1,8 +1,8 @@
 // Comprueba el lote de una fecha sobre la misma cadena que producción
 // (PGlite): con la revisión anterior aprobada, el borrador nuevo no se ve; tras
 // el aplicar-y-aprobar.sql que se pega en Supabase, las vistas públicas
-// entregan 26/49 que la app y la web aceptan, y caduca a los 7 días.
-// Uso: node rwadar-app/comprobar-revision.mjs AAAA-MM-DD
+// entregan el lote completo de su manifiesto, que la app y la web aceptan, y
+// caduca a los 7 días. Uso: node rwadar-app/comprobar-revision.mjs AAAA-MM-DD[.N]
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -13,14 +13,16 @@ process.chdir(path.dirname(fileURLToPath(import.meta.url)));
 const { baseCompleta, filas, sesion } = await import('./pruebas-soporte.mjs');
 const require = createRequire(import.meta.url);
 const { cargarFuentesLocales, construirSqlImportacion, validarLotePublicoV2,
-  MANIFIESTO_CATALOGO_V2 } = require('./catalogo-publico.js');
+  MANIFIESTO_CATALOGO_V2, esRevisionLocal, ordenRevisionLocal } = require('./catalogo-publico.js');
 
-const FECHA = process.argv[2];
-assert.match(FECHA || '', /^\d{4}-\d{2}-\d{2}$/, 'Uso: node rwadar-app/comprobar-revision.mjs AAAA-MM-DD');
-const carpeta = `data/importaciones/catalogo-${FECHA}-v2/`;
+const ETIQUETA = process.argv[2];
+assert.ok(esRevisionLocal(ETIQUETA), 'Uso: node rwadar-app/comprobar-revision.mjs AAAA-MM-DD[.N]');
+const FECHA = ETIQUETA.slice(0, 10);
+const carpeta = `data/importaciones/catalogo-${ETIQUETA}-v2/`;
 const { revisionAnterior } = JSON.parse(fs.readFileSync(carpeta + 'revision.json', 'utf8'));
-const { desde } = JSON.parse(fs.readFileSync(`data/verificaciones/${FECHA}-v2/cambios-${FECHA}.json`, 'utf8'));
-const nueva = construirSqlImportacion(cargarFuentesLocales('..', { revision: FECHA, versionEsquema: 2 }));
+const { desde } = JSON.parse(fs.readFileSync(`data/verificaciones/${ETIQUETA}-v2/cambios-${ETIQUETA}.json`, 'utf8'));
+const nueva = construirSqlImportacion(cargarFuentesLocales('..', { revision: ETIQUETA, versionEsquema: 2 }));
+const manifiesto = JSON.parse(fs.readFileSync(`data/verificaciones/${ETIQUETA}-v2/manifiesto-catalogo.json`, 'utf8'));
 assert.equal(fs.readFileSync(carpeta + 'catalogo.sql', 'utf8'), nueva.sql, 'catalogo.sql coincide con las fuentes');
 
 const db = await baseCompleta();
@@ -41,10 +43,16 @@ const leerVistas = async () => {
   return { plataformas, ofertas };
 };
 
-// La revisión que hay hoy en producción, aplicada con su propio archivo.
-await db.exec(fs.readFileSync(`data/importaciones/catalogo-${desde}-v2/aplicar-y-aprobar.sql`, 'utf8'));
+// La revisión que hay hoy en producción, aplicada con su propio archivo. Desde el
+// 23/10 cada aplicador exige que la anterior esté publicada: se reproduce la
+// cadena desde el lote integral del 22/10 hasta la revisión de partida.
+const cadena = fs.readdirSync('data/importaciones').map(d => d.match(/^catalogo-(\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?)-v2$/)?.[1])
+  .filter(r => r && esRevisionLocal(r) && ordenRevisionLocal(r, '2026-10-22') >= 0 && ordenRevisionLocal(r, desde) <= 0 &&
+    fs.existsSync(`data/importaciones/catalogo-${r}-v2/aplicar-y-aprobar.sql`)).sort(ordenRevisionLocal);
+assert.equal(cadena.at(-1), desde, 'la cadena termina en la revisión de partida');
+for (const r of cadena) await db.exec(fs.readFileSync(`data/importaciones/catalogo-${r}-v2/aplicar-y-aprobar.sql`, 'utf8'));
 const antes = await leerVistas();
-assert.equal(antes.ofertas.length, 49, `el lote del ${desde} se ve antes de importar el nuevo`);
+assert.ok(antes.ofertas.length > 0, `el lote del ${desde} se ve antes de importar el nuevo`);
 assert.ok(antes.ofertas.every(o => o.revision_id === revisionAnterior), 'la revisión anterior es la publicada');
 
 await db.exec(nueva.sql);
@@ -57,15 +65,15 @@ await db.exec(aplicar);
 const [rev] = await filas(db, 'select estado from rwadar_catalogo.revisiones where id=$1', [nueva.revisionId]);
 assert.equal(rev.estado, 'aprobada');
 const { plataformas, ofertas } = await leerVistas();
-assert.equal(plataformas.length, 26, 'plataformas visibles');
-assert.equal(ofertas.length, 49, 'ofertas visibles');
+assert.equal(plataformas.length, manifiesto.plataformas_esperadas, 'plataformas visibles');
+assert.equal(ofertas.length, manifiesto.ofertas_esperadas, 'ofertas visibles');
 assert.ok([...plataformas, ...ofertas].every(x => x.revision_id === nueva.revisionId), 'todo sale del lote nuevo');
-const resultado = validarLotePublicoV2(plataformas, ofertas, { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: FECHA });
+const v2 = { manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true };
+const resultado = validarLotePublicoV2(plataformas, ofertas, { ...v2, hoy: FECHA });
 assert.equal(resultado.vigenciaDias, 7);
 const dia = n => new Date(Date.parse(`${FECHA}T00:00:00Z`) + n * 864e5).toISOString().slice(0, 10);
-validarLotePublicoV2(plataformas, ofertas, { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: dia(7) });
-assert.throws(() => validarLotePublicoV2(plataformas, ofertas, { manifiesto: MANIFIESTO_CATALOGO_V2,
-  hoy: dia(8) }), /caducada/);
+validarLotePublicoV2(plataformas, ofertas, { ...v2, hoy: dia(7) });
+assert.throws(() => validarLotePublicoV2(plataformas, ofertas, { ...v2, hoy: dia(8) }), /caducada/);
 const conCifras = ofertas.filter(o => o.metricas?.[0]?.valor !== 'Cifras pendientes de nueva revisión').length;
-console.log(`OK lote ${nueva.revisionId}: 26 plataformas, 49 ofertas, vigente hasta el ${dia(7)} inclusive; ` +
+console.log(`OK lote ${nueva.revisionId}: ${plataformas.length} plataformas, ${ofertas.length} ofertas, vigente hasta el ${dia(7)} inclusive; ` +
   `${conCifras} fichas con cifras vigentes el ${FECHA}. Aplicado dos veces sin error.`);

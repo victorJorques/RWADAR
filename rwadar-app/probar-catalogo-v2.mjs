@@ -316,6 +316,12 @@ try {
     fuenteAmpliada.manifiesto);
   assert.equal((await filas(db, 'select * from public.catalogo_ofertas_publicas')).length, 28,
     'la ampliaciónV2 no altera el manifiesto V1');
+  // Desde el 03/11/2026 puede haber más de una entrega el mismo día («AAAA-MM-DD.N»).
+  const { esRevisionLocal, ordenRevisionLocal } = require('./catalogo-publico.js');
+  for (const v of ['2026-11-03', '2026-11-03.2', '2026-11-03.12']) assert.equal(esRevisionLocal(v), true, v);
+  for (const v of ['2026-11-03.1', '2026-11-03.0', '2026-13-01', '2026-11-03.x', '2026-11-03.2-v2', '']) assert.equal(esRevisionLocal(v), false, v);
+  assert.deepEqual(['2026-11-03.10', '2026-11-04', '2026-11-03', '2026-11-03.2'].sort(ordenRevisionLocal),
+    ['2026-11-03', '2026-11-03.2', '2026-11-03.10', '2026-11-04'], 'orden por fecha y número de entrega');
   console.log('Catálogo V2: manifiesto estricto, expansión50/1000, reducción deliberada coherente (02/11) y rechazo de truncados, RLS/invoker, V1 y transporte atómico verificados.');
 }
 finally {

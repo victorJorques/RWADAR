@@ -241,6 +241,9 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
 }
 
 function datoBreveTarjeta(campo) {
+  // Un mínimo documentado en otra moneda o unidad se enseña tal cual (como en la web).
+  if (campo?.texto === 'No documentado en euros' && typeof campo.unidadDocumentada === 'string' &&
+    campo.unidadDocumentada.trim()) return { ...campo, texto: campo.unidadDocumentada.trim() };
   const breve = { 'No documentado en euros': 'No verificado', 'Sin mínimo vigente en euros': 'No verificado',
     'Sin comprobar desde España': 'Sin confirmar', 'Salida no documentada': 'Sin documentar' };
   return { ...campo, texto: breve[campo.texto] || campo.texto };

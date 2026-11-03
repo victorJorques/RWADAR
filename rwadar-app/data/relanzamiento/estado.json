@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 03/11: tarjetas de oferta más limpias (solo CSS, mismo contenido y mismas reglas editoriales) sobre el catálogo de 23 ofertas publicado hoy. test:web y test:tools en verde. Sello y publicación autorizados expresamente por Víctor.",
+  "nota": "Claude, 03/11: segunda entrega del día del catálogo (2026-11-03.2, decidida por Víctor): cifras visibles 7 días y resumen de tarjeta (mínimo, España, salida) con referencias en castellano; aplicada en Supabase con el flujo Aplicar catálogo tras revisión independiente. La web y la app muestran el mínimo documentado aunque no sea en euros. npm test completo en verde. Sello y publicación autorizados expresamente por Víctor.",
   "revisionAprobada": {
-    "commit": "dd7fbcf7756365da8c8cc5a851b3937c34494d6b",
-    "contenidoSha256": "sha256:f495d780cbe3e0b42d9501ee205467d63356a60a08a8954a170baa30fa4de522",
+    "commit": "1ace7a87ceb448470ce115c01aef10a5de8b1518",
+    "contenidoSha256": "sha256:a84544f0547a4c9e53afd43ec7bfe2b0edb2d045fdd03a546cbfe24f86e71833",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

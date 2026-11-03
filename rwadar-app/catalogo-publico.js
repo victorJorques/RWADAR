@@ -23,9 +23,18 @@ const {
   LIMITES_CATALOGO_V2,
 } = require('../rwadar-movil/lib/contrato-catalogo');
 
+// Etiqueta de una revisión local: su fecha o, desde el 03/11/2026, su fecha con
+// el número de entrega del día («2026-11-03.2»), para poder cargar más de una
+// entrega el mismo día. Las comprobaciones de fechas usan siempre la fecha.
+function esRevisionLocal(valor) {
+  return typeof valor === 'string' && /^\d{4}-\d{2}-\d{2}(?:\.(?:[2-9]|[1-9]\d))?$/.test(valor) && esFecha(valor.slice(0, 10));
+}
+const ordenRevisionLocal = (a, b) => a.slice(0, 10).localeCompare(b.slice(0, 10)) ||
+  (Number(a.slice(11) || 1) - Number(b.slice(11) || 1));
+
 function cargarFuentesLocales(raiz = path.join(__dirname, '..'), { revision, versionEsquema = 1 } = {}) {
   if (revision !== undefined) {
-    asegurar(esFecha(revision), 'fecha de revisión local inválida');
+    asegurar(esRevisionLocal(revision), 'fecha de revisión local inválida');
     asegurar([1, 2].includes(versionEsquema), 'versión de revisión local inválida');
     const carpeta = path.join(raiz, 'rwadar-app', 'data', 'verificaciones',
       `${revision}${versionEsquema === 2 ? '-v2' : ''}`);
@@ -52,8 +61,9 @@ function cargarFuentesLocales(raiz = path.join(__dirname, '..'), { revision, ver
     }
     // Una entrega documental puede ser posterior al radar sin revalidarlo.
     // La carpeta debe corresponder al radar o al último documento real del mapa.
-    asegurar(radar.verificadoEl === revision ||
-      (esFecha(radar.verificadoEl) && radar.verificadoEl < revision && fechaDocumentacion === revision),
+    const fechaRevision = revision.slice(0, 10);
+    asegurar(radar.verificadoEl === fechaRevision ||
+      (esFecha(radar.verificadoEl) && radar.verificadoEl < fechaRevision && fechaDocumentacion === fechaRevision),
       'la revisión no coincide con su carpeta ni con el corte documental');
     return { radar, escaparate, ...(manifiesto ? { manifiesto } : {}) };
   }
@@ -188,6 +198,8 @@ function construirSqlImportacion(fuentes) {
 }
 
 module.exports = {
+  esRevisionLocal,
+  ordenRevisionLocal,
   CUENTA_PLATAFORMAS,
   CUENTA_OFERTAS,
   MAX_VIGENCIA_DIAS,

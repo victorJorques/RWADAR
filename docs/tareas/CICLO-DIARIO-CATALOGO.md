@@ -30,6 +30,16 @@ de visibilidad ni activaciones de servicios. Una tarea que necesite esas
 operaciones se deja pendiente y se explica por separado. No ejecutar una
 migración general ni un `db push` como parte del ciclo.
 
+**Varias entregas el mismo día** (indicación de Víctor del 03/11/2026). No hay
+límite de una por día. La primera lleva la fecha (`AAAA-MM-DD`) y las
+siguientes `AAAA-MM-DD.2`, `.3`… en las carpetas `verificaciones/<etiqueta>-v2/`
+e `importaciones/catalogo-<etiqueta>-v2/`. `npm run catalogo` elige sola la
+siguiente etiqueta libre y parte de la revisión publicada en la última
+sincronización. El SQL de cada entrega exige que la publicada sea exactamente
+la anterior, así que dos entregas no se pisan. El flujo de GitHub «Aplicar
+catálogo» recibe la etiqueta. Las cifras de cada ficha valen 7 días desde su
+consulta (`vigenciaDias`).
+
 ## 1. Preparar la revisión y leer lo publicado
 
 1. Leer `AGENTS.md`, la entrada vigente de `PARA-CODEX.md`, `INTERNO.md` y la
@@ -127,8 +137,8 @@ publicación. Tras completar la investigación manual, volver a montar y probar
 el lote con las utilidades existentes:
 
 ```powershell
-node rwadar-app/montar-revision.mjs AAAA-MM-DD
-node rwadar-app/comprobar-revision.mjs AAAA-MM-DD
+node rwadar-app/montar-revision.mjs AAAA-MM-DD[.N]
+node rwadar-app/comprobar-revision.mjs AAAA-MM-DD[.N]
 ```
 
 Cada alta se incorpora al manifiesto editorial explícito
@@ -298,11 +308,11 @@ ciclo. Una necesidad de ampliar el esquema o tocar otra área se presenta aparte
 El contrato de lectores V2 admite ampliación explícita con
 `permitirAmpliacion:true`. Todas las filas deben declarar el mismo lote,
 fecha/vigencia y manifiesto, y sus cantidades reales deben coincidir. Límites
-del lector: **256 plataformas y 1000 ofertas**. El mínimo es el manifiesto del
-último lote completo aceptado, incluidas sus tres colecciones: no se admite
-pasar de 50 a 49 ni reducir una colección como efecto de un truncado. Una
-reducción o reclasificación deliberada necesita revisar expresamente el
-manifiesto y la compatibilidad de clientes, fuera del camino de ampliación.
+del lector: **256 plataformas y 1000 ofertas**. Desde el 02/11/2026 (Víctor)
+no hay mínimo respecto del lote anterior: el catálogo puede crecer o reducirse
+cuando la revisión lo decida. Lo que se exige es que el lote coincida
+exactamente con su propio manifiesto (filas y colecciones), así que un truncado
+sigue rechazándose.
 
 Las vistas V2 ya usan los conteos declarados y permiten que una oferta tenga
 un proveedor distinto de las 26 plataformas canónicas. Añadir una oferta no
@@ -317,10 +327,9 @@ npm test
 npm --prefix rwadar-app run auditar:relanzamiento
 ```
 
-El sincronizador valida el mínimo del snapshot anterior y escribe después de
-validar el lote completo. Ante una respuesta parcial conserva los archivos
-anteriores y devuelve error. No usar un manifiesto del candidato como mínimo
-si eso oculta que el catálogo público anterior era mayor.
+El sincronizador escribe solo después de validar el lote completo contra su
+manifiesto. Ante una respuesta parcial conserva los archivos anteriores y
+devuelve error.
 
 Revisar el diff completo, las fichas/portadas generadas, las rutas de cada alta
 y los snapshots. Actualizar las evidencias y el estado de aprobación del corte

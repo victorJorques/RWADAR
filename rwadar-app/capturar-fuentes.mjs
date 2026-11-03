@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 
 const APP = path.dirname(fileURLToPath(import.meta.url));
 const [fecha, salidaArg] = process.argv.slice(2).filter(a => !a.startsWith('--'));
-if (!/^\d{4}-\d{2}-\d{2}$/.test(fecha || '')) throw new Error('Uso: node rwadar-app/capturar-fuentes.mjs AAAA-MM-DD [salida.json]');
+if (!/^\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?$/.test(fecha || '')) throw new Error('Uso: node rwadar-app/capturar-fuentes.mjs AAAA-MM-DD[.N] [salida.json]');
 const salida = path.resolve(salidaArg || path.join(os.tmpdir(), `rwadar-capturas-${fecha}.json`));
 const solo = (process.argv.find(a => a.startsWith('--solo=')) || '').slice(7).split(',').filter(Boolean);
 

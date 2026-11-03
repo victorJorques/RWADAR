@@ -1,0 +1,24 @@
+{
+  "tipo": "entrega_documental",
+  "fecha": "2026-11-03",
+  "etiqueta": "2026-11-03.2",
+  "revisionAnterior": "a4792f79-0f4d-361b-a14d-3eeb95bf7499",
+  "decision": "Víctor, 03/11/2026: cifras visibles 7 días; tarjetas con mínimo, acceso desde España y salida en castellano.",
+  "vigenciaDias": {
+    "antes": 1,
+    "despues": 7,
+    "desde": "2026-11-02",
+    "hasta": "2026-11-09"
+  },
+  "referenciasNuevas": {
+    "spiko-letras-del-tesoro-euro": 3,
+    "spiko-letras-del-tesoro-dolar": 3,
+    "robinhood-classic-stock-tokens": 3,
+    "prosegur-digital-gold": 3,
+    "aktionariat": 3
+  },
+  "copiasLiterales": [
+    "radar-canonico-26.json",
+    "manifiesto-catalogo.json"
+  ]
+}
