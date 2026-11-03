@@ -1,7 +1,7 @@
 {
   "versionEsquema": 2,
   "fuente": {
-    "notaOrigen": "Revisión del 03/11/2026 (investigación del mismo día iniciada por Víctor): las 23 fichas y 12 candidatas investigadas con expediente por oferta y revisión independiente; sin altas ni retiradas. Las cifras se publican solo donde se leyeron en la fuente oficial.",
+    "notaOrigen": "Revisión del 03/11/2026 (investigación del mismo día iniciada por Víctor): las 23 fichas y 12 candidatas investigadas con expediente por oferta y revisión independiente (Kraken xStocks y Spiko Smart Cash Euro, rechazadas); sin altas ni retiradas. Las cifras se publican solo donde se leyeron en la fuente oficial.",
     "actualizacionLocal": {
       "verificadoEl": "2026-11-03",
       "archivo": "rwadar-app/data/verificaciones/2026-11-03.3-v2/contraste-2026-11-03.3.json",
@@ -2811,7 +2811,7 @@
           "verificadaEl": "2026-11-03"
         },
         {
-          "texto": "El 03/11/2026 la suscripción estaba activa en Ethereum, solo para direcciones en lista blanca.",
+          "texto": "El 03/11/2026 solo funcionaba la suscripción instantánea en Ethereum, para direcciones en lista blanca; la suscripción por solicitud estaba pausada.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-03"
@@ -3188,7 +3188,7 @@
           "verificadaEl": "2026-11-03"
         },
         {
-          "texto": "La API da dos fechas de fin del alquiler (01/02/2022 y 31/03/2027); la rentabilidad no se muestra.",
+          "texto": "La API da dos fechas de fin del alquiler (02/02/2022 y 31/03/2027); la rentabilidad no se muestra.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-03"

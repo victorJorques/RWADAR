@@ -114,11 +114,11 @@ metrica('switzerlend', 'Supervisor', { etiqueta: 'Supervisor', valor: `${SIN_FIN
 avisoNuevo('switzerlend', `Su web dice que el emisor recompra acciones si tiene liquidez, pero el ${FES} el contrato de compra tenía la recompra desactivada y casi sin fondos.`,
   'El precio del emisor y las ofertas');
 avisoCambia('mf-one', 'El 01/11/2026 (domingo) la suscripción figuraba pausada',
-  `El ${FES} la suscripción estaba activa en Ethereum, solo para direcciones en lista blanca.`);
+  `El ${FES} solo funcionaba la suscripción instantánea en Ethereum, para direcciones en lista blanca; la suscripción por solicitud estaba pausada.`);
 
 // Brickwise: avisos que cambian hoy (API pública).
 avisoCambia('vivienda-stallhofstra-e-28-gratwein', 'La base de alquiler de la API cita un contrato ya vencido',
-  'La API da dos fechas de fin del alquiler (01/02/2022 y 31/03/2027); la rentabilidad no se muestra.');
+  'La API da dos fechas de fin del alquiler (02/02/2022 y 31/03/2027); la rentabilidad no se muestra.');
 avisoCambia('randhartingergasse-9-viena', 'La base de alquiler de la API cita un contrato ya vencido',
   'Según la API, el inquilino se fue el 28/02/2026 y se busca otro; la rentabilidad no se muestra.');
 metrica('terreno-con-arrendamiento-billa', 'Suscrito / umbral',
@@ -225,7 +225,7 @@ const escaparate = {
   versionEsquema: 2,
   fuente: {
     notaOrigen: `Revisión del ${FES} (investigación del mismo día iniciada por Víctor): las 23 fichas y 12 candidatas investigadas ` +
-      'con expediente por oferta y revisión independiente; sin altas ni retiradas. Las cifras se publican solo donde se leyeron en la fuente oficial.',
+      'con expediente por oferta y revisión independiente (Kraken xStocks y Spiko Smart Cash Euro, rechazadas); sin altas ni retiradas. Las cifras se publican solo donde se leyeron en la fuente oficial.',
     actualizacionLocal: { verificadoEl: FECHA,
       archivo: `rwadar-app/data/verificaciones/${REVISION}-v2/contraste-${REVISION}.json`, publicable: false,
       derechosImagenVerificados: false,
