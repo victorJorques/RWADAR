@@ -11,7 +11,7 @@ publicar, pendiente de valoración creativa.
 [Vídeo y comprobaciones](VERIFICACION-ANUNCIO-DESCUBRE-2026-10-28.md).
 Los anuncios anteriores rechazados se conservan como historial.
 
-*Actualizado el 29 de octubre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 3 de noviembre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -57,7 +57,7 @@ en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 | | Estado |
 |---|---|
 | **Web** | Publicada en **https://rwadar.pages.dev**, actualizada el **28/10** desde la rama aislada, con mapa de activos en Buscar. Consulta pública; cuenta para funciones personales. Login, sesión y salida comprobados con la cuenta de QA. Se conservan el radar del acceso, registro, recuperación, comparación e idiomas. |
-| **Catálogo** | **La revisión del 22 de octubre ya está aplicada en Supabase**, vigente hasta el **29 de octubre**: 26 plataformas, 4 descartadas y 49 referencias (24 principales, 21 reventa, 4 documentales en preparación). IOD figura cerrado; cifras nuevas solo cuando se observaron en su fuente. Los campos de acceso desde España permanecen sin confirmar cuando falta evidencia específica. Ver [`VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md`](VERIFICACION-MEJORA-INTEGRAL-2026-10-22.md). |
+| **Catálogo** | **Publicado el 3 de noviembre: 23 ofertas comprobadas** (6 principales, 14 de reventa y 3 en camino) y 26 plataformas, vigente hasta el **9 de noviembre**. Entran Spiko Letras del Tesoro Dólar y los derivados sobre acciones de Robinhood; salen 28 fichas que no se podían comprar o no tenían entidad supervisada (22 de Reental, 3 de Midas, IOD, wemakeit y quitt). La web y la app aceptan desde ahora un lote coherente más pequeño. Las cifras del día (rentabilidad de Spiko, valor de mTBILL) se ocultan al día siguiente de su comprobación. Ver [`INVESTIGACION-CATALOGO-2026-11-01.md`](INVESTIGACION-CATALOGO-2026-11-01.md). |
 | **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
 | **App Android** | **[Versión 1.4.0](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.0)** publicada. Descarga pública, firma y contenido comprobados. Sesión persistente y desbloqueo opcional desde Perfil; catálogo completo, Academy y cartera manual validados. No está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
@@ -80,7 +80,7 @@ desde allí. Las pruebas y las huellas quedan en los informes con fecha. El víd
 de nueve perfiles simulados está entregado en local y reproducido completo; no
 es una prueba con personas ni una evaluación de todos los cambios posteriores.
 
-**Investigación del 1 y 2 de noviembre: preparada, sin aplicar ni publicar.** Se revisaron las 49 ofertas y 56 candidatas con revisión independiente. Entran dos ofertas que un particular en España compra desde 1 € o 1 USD con entidad supervisada (Spiko en dólares y los derivados sobre acciones de Robinhood); otras 28 publicadas deberían salir porque hoy no se pueden comprar o no tienen entidad supervisada. La web y la app no aceptan aún un catálogo más pequeño: Víctor elige entre ampliar a 51 ya o preparar antes la reducción a 23. [Informe](INVESTIGACION-CATALOGO-2026-11-01.md).
+**Catálogo renovado y publicado el 3 de noviembre**, con permiso expreso de Víctor: investigación de las 49 ofertas y 56 candidatas con revisión independiente, 23 ofertas comprobadas aplicadas en Supabase con el flujo «Aplicar catálogo», web publicada desde GitHub y actualización OTA enviada a Android 1.4.1. Desde GitHub ya se puede publicar la web y enviar la OTA (secretos `CLOUDFLARE_API_TOKEN` y `EXPO_TOKEN` añadidos por Víctor). [Informe](INVESTIGACION-CATALOGO-2026-11-01.md).
 
 **Investigación del catálogo:** tarea preparada y **PAUSADA, con inicio manual**.
 Víctor debe pulsar **Ejecutar** o pedir **«haz la investigación»** para abrir un
@@ -191,12 +191,12 @@ Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
    versión corregida (22.23.4). En el PC, `node rwadar-node-seguro.js` dice si la que
     hay vale. Para esta entrega se usa un runtime portable corregido; no se ha
     actualizado la instalación global del PC. La investigación permanece manual.
-2. **Renovar el catálogo antes de que venza su revisión el 29 de octubre.** La
-    revisión general es del 22/10, con correcciones documentales parciales del 23.
-    La próxima investigación solo empieza por orden manual de Víctor; se prepara
-   con `npm run catalogo`; aplicarla a Supabase y publicar requieren autorización
-   expresa para esas operaciones. Ver [`RUNBOOK.md`](RUNBOOK.md#catálogo).
-   Si vence, el catálogo completo sigue visible con aviso y sin cifras vencidas.
+2. **Siguiente actualización del catálogo (antes del 9 de noviembre).** Empieza por
+   orden manual de Víctor. Primero: que el resumen de cada tarjeta (mínimo, acceso
+   desde España y salida) use referencias en castellano y no las citas literales
+   en inglés del 01/11, y volver a comprobar las cifras del día. Candidatas casi
+   listas: Kraken xStocks, Franklin grBENJI, Spiko Smart Cash Euro y Art Leasing.
+   Ver [`RUNBOOK.md`](RUNBOOK.md#catálogo).
 3. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
    primera, del 2 de octubre, copió 52 tablas y se comprobó
    que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
@@ -231,7 +231,7 @@ Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
 
 | Cuándo | Qué |
 |---|---|
-| **29 de octubre de 2026** | Vence la revisión general del 22/10; las correcciones parciales no la rejuvenecen. Se conserva completa con aviso y sin cifras vencidas. |
+| **9 de noviembre de 2026** | Vence la revisión del catálogo del 02/11 (publicada el 03/11). Se conserva completa con aviso y sin cifras vencidas. |
 | Cada noche, 02:43 UTC | Copia de seguridad cifrada, guardada 35 días en GitHub |
 | Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días |
 | Agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |

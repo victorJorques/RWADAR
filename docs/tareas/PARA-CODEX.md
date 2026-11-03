@@ -6,6 +6,42 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 3 de noviembre de 2026 · Claude · catálogo de 23 ofertas aplicado, web publicada y OTA enviada
+
+Con permiso expreso de Víctor («camino B», «te doy permiso a todo», 02-03/11).
+Todo unido a `main` (PR #20, #21 y #22, con commit de unión).
+
+- **Supabase:** flujo «Aplicar catálogo» dos veces, con copia previa en cada
+  una: lote del 02/11 (`f2be1f5e`, 26 plataformas y 23 ofertas, 6/14/3) y
+  corrección documental del 03/11 (`a4792f79`). La corrección solo cambia un
+  localizador de Aktionariat («…onlyBuySide=true») que la compuerta CSP del
+  publicador confundía con un manejador `on…=`. Lectura pública posterior: 23
+  ofertas de `a4792f79`.
+- **Sin mínimo de 49:** `contrato-catalogo.js`, el lector web y
+  `sincronizar.js` aceptan un lote coherente más pequeño o reclasificado; lo
+  cortado o mezclado se sigue rechazando. Las pruebas de la web leen las
+  cantidades del propio lote.
+- **Web:** «Publicar web» preview y producción desde GitHub, ya con el secreto
+  `CLOUDFLARE_API_TOKEN`. Sello en `estado.json` sobre `f8a5a85`. En
+  producción, en navegador real: 23 fichas, sin aviso de revisión pendiente,
+  páginas de las altas 200 y de las retiradas 404. Los 401 de la consola son
+  `/api/acceso/sesion` sin sesión, como antes.
+- **App:** nuevo flujo `.github/workflows/ota-android.yml` (manual, solo
+  `main`, pruebas y guard con `--base` del APK 1.4.1). OTA enviada al canal
+  production, runtime `1.4.1(23)`. Todavía no se ha comprobado en un móvil.
+- **Escáner de secretos:** 40 capturas JSON de la investigación con
+  identificadores públicos de blockchain salen de Git (`.gitignore` del
+  ciclo). No se tocó `gitleaks.toml`.
+- **Pruebas:** `npm test` completo en verde y CI de las tres PR en verde.
+- **Pendiente para el siguiente ciclo:**
+  - El resumen de las tarjetas muestra «Mínimo: No verificado / España: Sin
+    confirmar / Salida» con citas en inglés del 01/11. Hay que añadir
+    referencias en castellano (`Mínimo de inversión`, `Acceso desde España`,
+    `Reembolso`).
+  - Las cifras de las ofertas caducan al día (`vigenciaDias: 1`).
+  - Para un lote del mismo día que otro ya aplicado no queda carpeta de
+    fecha libre: hay que esperar al día siguiente.
+
 ## 2 de noviembre de 2026 · Claude · investigación del catálogo (ciclo manual del 01/11), preparada sin aplicar
 
 **Rama:** `claude/investigacion-catalogo-2026-11-01`. Nada aplicado en Supabase,

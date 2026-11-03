@@ -5,9 +5,11 @@ ofertas publicadas y encontrar nuevas con nuestro criterio). Añadió el mismo d
 el enfoque: **ofertas para el inversor particular común en España, que den
 confianza para invertir de verdad y le ahorren horas de búsqueda.**
 
-**Estado: preparado en local.** Nada aplicado en Supabase, nada publicado en la
-web ni en la app. Para cargar el lote y publicar hace falta el permiso expreso de
-Víctor y una decisión editorial suya (apartado 6).
+**Estado final (03/11/2026): aplicado y publicado.** Víctor eligió el camino B
+y lo autorizó todo. El catálogo de 23 ofertas está en Supabase y en la web
+pública. La actualización OTA para Android 1.4.1 está enviada. Pendiente para
+la siguiente actualización: que el resumen de cada tarjeta use referencias en
+castellano y renovar las cifras del día (apartado 7).
 
 ---
 
