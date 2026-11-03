@@ -1,0 +1,866 @@
+{
+  "versionEsquema": 1,
+  "nota": "Datos editoriales de RWAdar para la tarjeta y la ficha: puntos fuertes comprobados, textos cortos y dos de las cinco comprobaciones de transparencia (las otras tres se calculan con el catálogo). No es una recomendación de inversión. Se revisa en cada ciclo del catálogo: una oferta cuya verificadaEl no coincida con la del catálogo no enseña nada de esto.",
+  "revisadoEl": "2026-11-03",
+  "lote": "2026-11-03.6",
+  "revisionCatalogo": "344a86aa-2c53-d2f0-fed4-5fdaadda33ad",
+  "revision": {
+    "evaluacion": "workflow «criterios-documentacion» (2 evaluadores y 1 escéptico por oferta con algún sí, 03/11/2026)",
+    "decision": "Claude como CEO, con Víctor (03/11/2026)"
+  },
+  "criterios": [
+    {
+      "id": "contratable",
+      "texto": "Se contrata hoy desde España",
+      "calculo": "colección principales y disponibleEs = true"
+    },
+    {
+      "id": "supervisada",
+      "texto": "Quien la vende está supervisado y registrado en la CNMV",
+      "calculo": "editorial (este archivo)"
+    },
+    {
+      "id": "documentoEspana",
+      "texto": "Hay un documento oficial (KID o folleto) que cubre su venta en España",
+      "calculo": "editorial (este archivo)"
+    },
+    {
+      "id": "minimoSalida",
+      "texto": "El mínimo y la forma de salir están documentados",
+      "calculo": "resumenOferta: mínimo y salida documentados"
+    },
+    {
+      "id": "vigente",
+      "texto": "Revisada esta semana y sin fuentes en conflicto",
+      "calculo": "estadoRevision = actual y catálogo vigente"
+    }
+  ],
+  "ofertas": {
+    "aktionariat": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "La vende el propio emisor suizo, que no figura en el registro de entidades autorizadas de FINMA ni en ningún registro de la CNMV.",
+        "fuente": {
+          "titulo": "FINMA · Registro de entidades autorizadas (búsqueda «Aktionariat»: 0 resultados)",
+          "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "No hay folleto ni KID: la oferta se acoge a umbrales de exención y no publica ningún documento equivalente.",
+        "fuente": {
+          "titulo": "Aktionariat · Aviso legal (oferta en el EEE limitada a 100.000 € en total, sin folleto)",
+          "url": "https://www.aktionariat.com/disclaimer"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "500 CHF",
+      "salidaCorta": "Venta a otros accionistas",
+      "puntos": [
+        {
+          "texto": "Compra directa al emisor",
+          "fuente": {
+            "titulo": "Fuente de la ficha · Aktionariat · DAKS",
+            "url": "https://shares.aktionariat.com/invest"
+          }
+        }
+      ]
+    },
+    "kraken-xstocks": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-11-03",
+      "supervisada": {
+        "cumple": true,
+        "motivo": "Payward Europe Digital Solutions (CY), que vende en Kraken UE, tiene licencia CySEC y figura en la CNMV (n.º 4474) en libre prestación.",
+        "fuente": {
+          "titulo": "CNMV · Payward Europe Digital Solutions (CY) Limited, ESI del EEE en libre prestación n.º 4474",
+          "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=4474"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "El folleto se notificó a la CNMV, pero las condiciones finales solo ofrecen el producto en Liechtenstein y Suiza, no en España.",
+        "fuente": {
+          "titulo": "Backed Assets (JE) · Condiciones finales n.º 159 (LITEx), apartado «Country(ies) of offer(s)»",
+          "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "1 €",
+      "salidaCorta": "Venta a Kraken, 24/5",
+      "puntos": [
+        {
+          "texto": "Registrada en la CNMV",
+          "fuente": {
+            "titulo": "CNMV · Payward Europe Digital Solutions (CY) Limited, ESI del EEE en libre prestación n.º 4474",
+            "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=4474"
+          }
+        }
+      ]
+    },
+    "prosegur-digital-gold": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Prosegur Crypto figura en la CNMV solo para custodiar y transferir criptoactivos; su contrato dice que este oro no está supervisado.",
+        "fuente": {
+          "titulo": "CNMV · Relación de proveedores de servicios de criptoactivos (Prosegur: custodia, recepción de órdenes y transferencia)",
+          "url": "https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "No tiene KID ni folleto: su contrato dice que no es un producto financiero y solo hay términos y condiciones de la empresa.",
+        "fuente": {
+          "titulo": "Prosegur Gold · Términos y condiciones generales (08/07/2026)",
+          "url": "https://app.prosegurdigitalgold.com/#/terms-service"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "1 gramo de oro",
+      "salidaCorta": "Recompra por Prosegur",
+      "puntos": [
+        {
+          "texto": "Empresa española",
+          "fuente": {
+            "titulo": "CNMV · Relación de proveedores de servicios de criptoactivos (Prosegur: custodia, recepción de órdenes y transferencia)",
+            "url": "https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf"
+          }
+        },
+        {
+          "texto": "Oro custodiado en España",
+          "fuente": {
+            "titulo": "Fuente de la ficha · Prosegur Crypto",
+            "url": "https://www.prosegurcrypto.com/digital-gold"
+          }
+        }
+      ]
+    },
+    "robinhood-classic-stock-tokens": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-11-02",
+      "supervisada": {
+        "cumple": true,
+        "motivo": "Robinhood Europe está autorizada por el Banco de Lituania y figura en la CNMV en libre prestación (n.º 5299) con derivados en su programa.",
+        "fuente": {
+          "titulo": "CNMV · Robinhood Europe, UAB, ESI del EEE en libre prestación n.º 5299",
+          "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5299"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": true,
+        "motivo": "Tiene KID PRIIPs en español (1 de julio de 2026), enlazado desde su web española, para minoristas y sin excluir España.",
+        "fuente": {
+          "titulo": "Robinhood Europe · Documento de datos fundamentales en español (derivado sobre acciones/ETP de EE. UU.)",
+          "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "1 €",
+      "salidaCorta": "Cierre con Robinhood, 24/5",
+      "puntos": [
+        {
+          "texto": "Registrada en la CNMV",
+          "fuente": {
+            "titulo": "CNMV · Robinhood Europe, UAB, ESI del EEE en libre prestación n.º 5299",
+            "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5299"
+          }
+        },
+        {
+          "texto": "KID en español",
+          "fuente": {
+            "titulo": "Robinhood Europe · Documento de datos fundamentales en español (derivado sobre acciones/ETP de EE. UU.)",
+            "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf"
+          }
+        }
+      ]
+    },
+    "spiko-smart-cash-euro": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-11-03",
+      "supervisada": {
+        "cumple": true,
+        "motivo": "Spiko Finance está autorizada en Francia (ACPR) y figura en la CNMV (n.º 5325) para tramitar órdenes sobre fondos.",
+        "fuente": {
+          "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Hay KID en español, pero ningún registro público de la CNMV ni de la AMF muestra que este fondo esté dado de alta en España.",
+        "fuente": {
+          "titulo": "CNMV · Spiko SICAV, IIC extranjera n.º 2380 (no muestra sus fondos uno a uno)",
+          "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "1 €",
+      "salidaCorta": "Reembolso diario, con límites",
+      "puntos": [
+        {
+          "texto": "Registrada en la CNMV",
+          "fuente": {
+            "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
+            "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
+          }
+        }
+      ]
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-11-02",
+      "supervisada": {
+        "cumple": true,
+        "motivo": "Spiko Finance está autorizada en Francia (ACPR) y figura en la CNMV (n.º 5325) para tramitar órdenes sobre fondos.",
+        "fuente": {
+          "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": true,
+        "motivo": "Tiene KID oficial en español para todo inversor; su SICAV está inscrita en la CNMV (n.º 2380), que no detalla cada fondo.",
+        "fuente": {
+          "titulo": "Spiko US T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)",
+          "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "1 USD",
+      "salidaCorta": "Reembolso diario",
+      "puntos": [
+        {
+          "texto": "Registrada en la CNMV",
+          "fuente": {
+            "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
+            "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
+          }
+        },
+        {
+          "texto": "KID en español",
+          "fuente": {
+            "titulo": "Spiko US T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)",
+            "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf"
+          }
+        }
+      ]
+    },
+    "spiko-letras-del-tesoro-euro": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": true,
+        "motivo": "Spiko Finance está autorizada en Francia (ACPR) y figura en la CNMV (n.º 5325) para tramitar órdenes sobre fondos.",
+        "fuente": {
+          "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": true,
+        "motivo": "KID oficial en español para todo inversor; el fondo ya existía cuando su SICAV se inscribió en la CNMV (n.º 2380), que no lista compartimentos.",
+        "fuente": {
+          "titulo": "Spiko EU T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)",
+          "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "1 €",
+      "salidaCorta": "Reembolso diario",
+      "puntos": [
+        {
+          "texto": "Registrada en la CNMV",
+          "fuente": {
+            "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
+            "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
+          }
+        },
+        {
+          "texto": "KID en español",
+          "fuente": {
+            "titulo": "Spiko EU T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)",
+            "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf"
+          }
+        }
+      ]
+    },
+    "mtbill": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "La vende el propio emisor, Midas Software GmbH, que no figura en BaFin ni en la CNMV; su KID dice que no está supervisado.",
+        "fuente": {
+          "titulo": "BaFin · Base de datos de empresas (búsqueda «Midas»: solo una sociedad danesa distinta)",
+          "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas&sucheButtonInstitut=Suche"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": true,
+        "motivo": "Folleto aprobado en Liechtenstein y notificado a la CNMV; las condiciones finales incluyen España y minoristas, y hay KID en español.",
+        "fuente": {
+          "titulo": "Midas · Documentación legal de mTBILL (condiciones finales del 17/07/2026 y KID en español)",
+          "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": null,
+      "salidaCorta": null,
+      "puntos": [
+        {
+          "texto": "Folleto notificado a la CNMV",
+          "fuente": {
+            "titulo": "Midas · Documentación legal de mTBILL (condiciones finales del 17/07/2026 y KID en español)",
+            "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill"
+          }
+        },
+        {
+          "texto": "KID en español",
+          "fuente": {
+            "titulo": "Midas · Documentación legal de mTBILL (condiciones finales del 17/07/2026 y KID en español)",
+            "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill"
+          }
+        }
+      ]
+    },
+    "boss-info": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Vende el propio emisor suizo, sin licencia de un supervisor del EEE ni registro en la CNMV; su portal dice que no está supervisado.",
+        "fuente": {
+          "titulo": "Portal de acciones de Boss Info · aviso legal («not subject to prudential supervision»)",
+          "url": "https://shares.bossinfo.com/"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "No hay folleto, KID ni ficha informativa, y el emisor no dice en qué exención se apoya para vender fuera de Suiza.",
+        "fuente": {
+          "titulo": "Portal de acciones de Boss Info · compra directa al emisor (sin folleto ni KID publicados)",
+          "url": "https://shares.bossinfo.com/invest"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "100 CHF",
+      "salidaCorta": "Venta a otros accionistas",
+      "puntos": [
+        {
+          "texto": "Compra directa al emisor",
+          "fuente": {
+            "titulo": "Fuente de la ficha · Aktionariat · BOSS",
+            "url": "https://shares.bossinfo.com/"
+          }
+        }
+      ]
+    },
+    "switzerlend": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Vende el propio emisor suizo; solo está afiliado a PolyReg (antiblanqueo), sin licencia del EEE ni registro en la CNMV.",
+        "fuente": {
+          "titulo": "Switzerlend AG · Investor Relations (afiliación a PolyReg y mercado no supervisado)",
+          "url": "https://www.lend.ch/de/investor-relations"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "No hay folleto ni KID: su página de inversores dice que «no es un folleto» y ningún documento dice qué países pueden comprar.",
+        "fuente": {
+          "titulo": "Switzerlend AG · Investor Relations («weder Anlageberatung noch ein Prospekt»)",
+          "url": "https://www.lend.ch/de/investor-relations"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "1 acción (68,01 CHF, 03/11)",
+      "salidaCorta": "Venta a otros accionistas",
+      "puntos": [
+        {
+          "texto": "Compra directa al emisor",
+          "fuente": {
+            "titulo": "Fuente de la ficha · Aktionariat · LENDS",
+            "url": "https://shares.lend.ch/"
+          }
+        }
+      ]
+    },
+    "casa-de-outeiro": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": true,
+        "motivo": "Alius está inscrita en la CNMV como plataforma de crowdfunding (nº 11, con su antiguo nombre Adventurees) y autorizada para colocar acciones.",
+        "fuente": {
+          "titulo": "CNMV · Proveedores de servicios de financiación participativa: nº 11, ADVENTUREES CAPITAL PFP (www.aliuscap.com)",
+          "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": true,
+        "motivo": "Publica la ficha de datos fundamentales que exige la norma europea de crowdfunding, en español y prevista para particulares. La CNMV no la revisa.",
+        "fuente": {
+          "titulo": "Ficha de datos fundamentales de la inversión v5 · Casa de Outeiro (30/10/2026)",
+          "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "2.000 €",
+      "salidaCorta": "Venta limitada tras la emisión",
+      "puntos": [
+        {
+          "texto": "Plataforma en la CNMV",
+          "fuente": {
+            "titulo": "CNMV · Proveedores de servicios de financiación participativa: nº 11, ADVENTUREES CAPITAL PFP (www.aliuscap.com)",
+            "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
+          }
+        },
+        {
+          "texto": "Ficha oficial en español",
+          "fuente": {
+            "titulo": "Ficha de datos fundamentales de la inversión v5 · Casa de Outeiro (30/10/2026)",
+            "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263"
+          }
+        }
+      ]
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A31KP7)",
+          "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 72 € en reventa (03/11)",
+      "salidaCorta": "Reventa en la app, si hay comprador",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "drautalresidenz-paternion": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2YPQ0)",
+          "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 70 € en reventa (03/11)",
+      "salidaCorta": "Reventa en la app, si hay comprador",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "fotovoltaica-cohotel": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A38J40)",
+          "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 110 € en reventa (03/11)",
+      "salidaCorta": "Nominal en 2038; antes, reventa",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "fotovoltaica-greenpoint": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A38J32)",
+          "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 100 € en reventa (03/11)",
+      "salidaCorta": "Nominal en 2038; antes, reventa",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "randhartingergasse-9-viena": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2ZT84)",
+          "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 78 € en reventa (03/11)",
+      "salidaCorta": "Reventa en la app, si hay comprador",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "local-de-estanco-klagenfurt": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2U5V3)",
+          "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 95 € en reventa (03/11)",
+      "salidaCorta": "Reventa en la app, si hay comprador",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "terreno-con-arrendamiento-billa": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A3SE89)",
+          "url": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "1.000 €",
+      "salidaCorta": "Cancelable a los 5 años; reventa",
+      "puntos": [
+        {
+          "texto": "Arrendado a BILLA",
+          "fuente": {
+            "titulo": "Fuente de la ficha · Brickwise",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2RAH5)",
+          "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 80 € en reventa (03/11)",
+      "salidaCorta": "Reventa en la app, si hay comprador",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A324B4)",
+          "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 78 € en reventa (03/11)",
+      "salidaCorta": "Cancelable a los 15 años; reventa",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2WCE8)",
+          "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 69,90 € en reventa (03/11)",
+      "salidaCorta": "Reventa en la app, si hay comprador",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2T4D7)",
+          "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 75 € en reventa (03/11)",
+      "salidaCorta": "Reventa en la app, si hay comprador",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
+        "fuente": {
+          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
+        "fuente": {
+          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2WCD0)",
+          "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": "Desde 69,90 € en reventa (03/11)",
+      "salidaCorta": "Reventa en la app, si hay comprador",
+      "puntos": [
+        {
+          "texto": "Reventa activa en la app",
+          "fuente": {
+            "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+            "url": "https://app.brickwise.at/desktopWeb/marketplace"
+          }
+        }
+      ]
+    },
+    "hausera-proximas-ofertas": {
+      "verificadaEl": "2026-11-03",
+      "anadidaEl": "2026-09-30",
+      "supervisada": {
+        "cumple": false,
+        "motivo": "Hausera (HOLDTX SPAIN) dice no ser empresa de servicios de inversión y no figura como plataforma de crowdfunding en la CNMV.",
+        "fuente": {
+          "titulo": "CNMV · Listado de proveedores de servicios de financiación participativa (Hausera/HOLDTX no figura)",
+          "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "documentoEspana": {
+        "cumple": false,
+        "motivo": "Alicante 2 no tiene documento de emisión público: su ficha pide iniciar sesión y no hay folleto ni ficha informativa.",
+        "fuente": {
+          "titulo": "Hausera · ficha de Alicante 2 (redirige al inicio de sesión)",
+          "url": "https://hausera.io/propiedad/alicante_2/"
+        },
+        "consultadaEl": "2026-11-03"
+      },
+      "minimoCorto": null,
+      "salidaCorta": null,
+      "puntos": []
+    }
+  }
+}
