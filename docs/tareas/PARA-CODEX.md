@@ -6,6 +6,63 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 3 de noviembre de 2026 (mediodía) · Claude · entrega 2026-11-03.2, varias entregas al día y tarjetas
+
+Con permiso expreso de Víctor (cifras «7 días mejor», «quita el límite de
+cargar dos veces en un día», «que se pueda modificar en cualquier momento»).
+PR #26, #27 y #28 unidas a `main`.
+
+- **Supabase:** flujo «Aplicar catálogo» con la etiqueta `2026-11-03.2` y copia
+  previa. Ahora está publicada la revisión `62dca2f9`, antes `a4792f79`: 26
+  plataformas y 23 ofertas (6/14/3). Las cifras de cada ficha valen 7 días
+  (`vigenciaDias: 7`). Las 6 principales tienen referencias en castellano para
+  «Mínimo de inversión», «Acceso desde España» y «Salida/Reembolso». La
+  revisión independiente (`2026-11-03.2-v2/REVISION-ENTREGA.md`) aprobó con dos
+  cambios ya aplicados: Spiko EUR «clase EUTBL» y Robinhood «24/5». La lectura
+  pública posterior lo confirma.
+- **Varias entregas el mismo día:** etiquetas `AAAA-MM-DD` y `AAAA-MM-DD.N`
+  (`esRevisionLocal`/`ordenRevisionLocal` en `catalogo-publico.js`). Las
+  aceptan `montar-revision`, `comprobar-revision`, `actualizar-catalogo`,
+  `capturar-fuentes`, `generar.mjs`, el flujo `aplicar-catalogo.yml`,
+  `rwadar-servir.js` y el lector web. Las fechas de los datos son siempre
+  `slice(0,10)`.
+- **`npm run catalogo` (`actualizar-catalogo.mjs`):**
+  - elige sola la siguiente etiqueta libre;
+  - parte de la revisión publicada en la última sincronización, y `--desde`
+    la cambia;
+  - con fichas retiradas ya no falla;
+  - no da cifras a colecciones no principales ni pisa un
+    `fuentes_en_conflicto`;
+  - lee Spiko euro y dólar de `public-api.spiko.io` (31 días, como la
+    investigación) sin borrar las demás métricas;
+  - una ficha sin regla y con cifras pasa a `noRevisada`.
+
+  Probado de punta a punta en una copia aparte: entrega `2026-11-03.3`, radar
+  69/69 y PGlite correcto. Esa prueba no se guardó en Git ni se aplicó. **Ojo
+  para el ciclo:** quita los avisos con fecha que no sabe rehacer (BILLA,
+  Aktionariat, Casa de Outeiro…) y los lista en el informe. Quien revise los
+  tiene que reponer si siguen vigentes.
+- **Tarjetas (web y app):** un mínimo documentado en otra moneda o unidad se
+  ve tal cual y la fila se llama «Mínimo»: «500 CHF…», «1 gramo de oro»,
+  «1 USD». Si está en euros sigue siendo «Mínimo (EUR)». La fila «Salida» ya no
+  repite «Salida:». Hay una prueba móvil nueva y la traducción EN «Minimum».
+- **Web:** sello sobre `2ce46b0` y auditoría «LISTO PARA CORTE FINAL».
+  «Publicar web» en preview y en producción (156/156; el primer intento
+  falló dos comprobaciones por la caché del CDN con el JS de idioma nuevo y el
+  reintento pasó). Revisado en navegador, en móvil y escritorio.
+- **App:** OTA `ota-android.yml` al canal production, runtime `1.4.1(23)`,
+  grupo `96bab3a2`. No comprobada en un móvil.
+- **Docs:** `CICLO-DIARIO-CATALOGO.md` y `RUNBOOK.md` explican las entregas
+  `.N` y que ya no hay mínimo respecto del lote anterior.
+- **No hecho (bloqueado):** quise escribir en `AGENTS.md` y `CLAUDE.md` que
+  la orden de Víctor de investigar o actualizar el catálogo autoriza, para ese
+  ciclo, «Aplicar catálogo», «Publicar web» y la OTA si pasan las compuertas.
+  El control de seguridad de Claude no deja que una herramienta se amplíe sus
+  propios permisos. Si Víctor lo quiere, lo cambia él o lo pide a Codex. El
+  texto propuesto está en el informe a Víctor de esta sesión.
+- **Pruebas:** `npm test` completo en verde tres veces (antes de sincronizar,
+  después y con el arreglo de tarjetas) y CI de las tres PR en verde.
+
 ## 3 de noviembre de 2026 · Claude · catálogo de 23 ofertas aplicado, web publicada y OTA enviada
 
 **Añadido por la tarde:** tarjetas de oferta más limpias en la web (PR #24, solo
