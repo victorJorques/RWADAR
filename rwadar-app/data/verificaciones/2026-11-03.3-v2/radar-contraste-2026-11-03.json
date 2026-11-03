@@ -1,10 +1,8 @@
 {
   "fecha": "2026-11-03",
   "fuentes": 69,
-  "correctas": 68,
-  "bloqueos": [
-    "paxg-occ: no se pudo leer https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf (la respuesta no es un PDF)"
-  ],
+  "correctas": 69,
+  "bloqueos": [],
   "contraste": [
     {
       "id": "addx-web",
@@ -857,10 +855,15 @@
     {
       "id": "paxg-occ",
       "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
-      "estado": "la respuesta no es un PDF",
-      "metodo": "navegador",
+      "estado": 200,
+      "metodo": "webfetch",
       "capturadoEl": null,
-      "ok": false
+      "literales": [
+        "OCC — Trust Banks Active As of 9/30/2026 Trust Banks Active As of 9/30",
+        "ers Boulevard Dallas TX 0 6075626 25379 Paxos Trust Company, National Association 71 Fifth Avenue New York NY 0 6099145 2"
+      ],
+      "faltan": [],
+      "ok": true
     },
     {
       "id": "spiko-regafi",

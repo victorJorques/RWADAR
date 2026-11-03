@@ -1,0 +1,10 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":56,
+    "params":{
+      "q":"funds_national_name:*SPIKO* OR funds_national_name:*Spiko* OR collectorParent:*Spiko* OR collectorParent:*SPIKO*",
+      "rows":"50",
+      "wt":"json"}},
+  "response":{"numFound":0,"start":0,"numFoundExact":true,"docs":[]
+  }}
