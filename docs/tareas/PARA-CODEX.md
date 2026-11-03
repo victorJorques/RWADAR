@@ -43,15 +43,15 @@ Supabase sin tocar.** Falta sellar y el permiso de Víctor para publicar.
   Mínimo · España · Salida en corto y pie «Revisa · N avisos en la ficha» con
   la fecha; el aviso crítico va entero. Selección arriba dentro de
   Principales y después «Resto de principales». Sin grupos por proveedor en
-  el móvil. Primera fila en y=520 a 390×844; filas de 207 px.
+  el móvil. Primera fila en y=520 a 390×844; filas de 207-209 px.
 - **Ficha:** apartado «Transparencia: lo que hemos comprobado» en el diálogo
   y en `/ofertas/<slug>` (la quinta comprobación la mira `ficha-pagina` con la
   fecha de hoy). Nada de notas «x/5».
 - **Plataformas:** miniatura del radar y «0 € · Por aparecer en el radar» en
   la franja plegada; recuentos en los chips; nombres cortos en la galería y
   en el radar grande (también en la portada de escritorio).
-- **Técnica:** CSS 179 614 B (poda de 31 declaraciones pisadas y comentarios
-  largos); JS 371 908 B; CLS 0 al cargar en el móvil (0,033 con 4G lento y CPU
+- **Técnica:** CSS 179 674 B (poda de 31 declaraciones pisadas y comentarios
+  largos); JS 372 188 B; CLS 0 al cargar en el móvil (0,033 con 4G lento y CPU
   ×4); 59 frases nuevas en inglés y patrones para «8 de 8 principales» y
   «cifras vigentes 7 d»; movimiento reducido también si cambia con la página
   abierta.
