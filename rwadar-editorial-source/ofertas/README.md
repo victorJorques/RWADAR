@@ -7,13 +7,16 @@ Cada ficha del catálogo tiene su propia imagen, `oferta-<slug>.webp`
   fuente oficial (tipo de edificio, plantas, fachada, entorno: palmeras, mar,
   montaña, viñedo…), retocada para que se vea como una foto de inmobiliaria
   y no como un dibujo;
-- a la izquierda, sobre un velo oscuro, el lugar y **tres pasos** muy cortos:
-  qué haces, qué pasa y cómo recibes o sales.
+- limpia: sin texto dibujado ni velo (desde el 03/11/2026). El lugar y los
+  **tres pasos** (qué haces, qué pasa y cómo recibes o sales) van como texto en
+  el manifiesto, en el texto alternativo y en la ficha.
 
 No son fotos del activo real: no tenemos derechos sobre las fotos de los
-emisores. La web y la app ponen encima la etiqueta «Ilustración editorial» y
-el texto alternativo dice que la imagen está generada con IA y que no es una
-foto del activo real. Si un emisor da licencia por escrito, se puede
+emisores. La web ya no pone ninguna etiqueta encima de la imagen: el texto
+alternativo empieza por «Ilustración editorial», dice que la imagen está
+generada con IA y que no es una foto del activo real, y una línea pequeña
+bajo la lista, los carruseles y el detalle dice «Imágenes ilustrativas, no
+fotos del activo». Si un emisor da licencia por escrito, se puede
 sustituir.
 
 Si una ficha no tiene foto, `generar.mjs` usa su escena en SVG (el dibujo

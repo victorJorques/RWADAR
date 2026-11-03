@@ -1432,7 +1432,7 @@ function renderGrid(f){
    <button type="button" class="empresa-visual__abrir" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}${ilustrativa?'; portada ilustrativa':''}">
     <img class="empresa-visual__imagen" src="/plataformas/${portada}.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
-    <span class="empresa-visual__categoria">${escHtml(p.cat)}</span>${ilustrativa?'<span class="empresa-visual__origen">Ilustración</span>':''}
+    <span class="empresa-visual__categoria">${escHtml(catCorta(p.cat))}</span>
     <span class="empresa-visual__texto"><strong>${escHtml(p.n)}</strong><small>${escHtml(p.tipo)} · ${escHtml(p.reg)}</small></span>
     ${v?`<span class="empresa-visual__verificada"><span>${escHtml(marcaRevision)}</span></span>`:
      `<span class="empresa-visual__verificada">${okSVG}<span>Ficha verificada</span></span>`}
@@ -1890,7 +1890,7 @@ function tarjetaInicioHtml(o){
  return '<li><button type="button" class="inicio-oferta'+cat+'" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+
   escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'" aria-describedby="'+id+'">'+
   '<span class="inicio-oferta-img"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+
-  ' loading="lazy" decoding="async" width="640" height="440"><span class="inicio-ilustracion" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
+  ' loading="lazy" decoding="async" width="640" height="440">'+
   '<span class="inicio-oferta-cat"><span class="punto"></span>'+escHtml(catCorta(o.categoria))+'</span></span>'+
   '<span class="inicio-oferta-txt" translate="no"><b>'+escHtml(o.titulo)+'</b><span>'+escHtml(o.plataformaNombre)+'</span>'+
   (imagen.lugar?'<span>'+escHtml(imagen.lugar)+'</span>':'')+'</span>'+
@@ -2281,10 +2281,7 @@ function tarjetaOfertaLocal(o,{secundario=false}={}){
   o.coleccion==='secundario'?'Liquidez no confirmada':estado.texto;
  const cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
  return '<article class="emi escaparate-oferta'+cat+(secundario?' escaparate-oferta-secundaria':'')+'">'+
-  '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" width="640" height="440">'+
-   '<span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
-   '<span class="escaparate-tipo">'+escHtml(o.coleccion==='en_camino'?'En camino':o.coleccion==='secundario'||secundario?'Secundario':tipo==='valor'?'Valor':'Rendimiento')+'</span>'+
-   botonGuardarOferta(o)+'</div>'+
+  '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440">'+botonGuardarOferta(o)+'</div>'+
   '<div class="escaparate-cuerpo">'+
    (o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
    '<h3 class="emi-tit">'+escHtml(o.titulo)+'</h3><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
@@ -2329,8 +2326,7 @@ function filaSecundariaLocal(o){
  const ultima=metricasOfertaLocal(o).find(x=>/ultima operacion/i.test(normalizaBuscaLocal(x.etiqueta)));
  const urlMercado=urlHttps(o.urlMercado),urlFicha=urlHttps(o.url),url=urlMercado||urlFicha;
  return '<article class="escaparate-sec-fila"><div class="escaparate-sec-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
-  escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" width="640" height="440"><span class="escaparate-editorial escaparate-editorial-compacta" aria-hidden="true">'+
-  escHtml(imagen.etiqueta)+'</span></div><div class="escaparate-sec-contenido">'+
+  escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440"></div><div class="escaparate-sec-contenido">'+
   '<div class="escaparate-sec-meta"><b>'+escHtml(o.plataformaNombre)+'</b><span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
   '<h4>'+escHtml(o.titulo)+'</h4><div class="escaparate-sec-cifras"><span><b>'+escHtml(rentabilidad)+'</b><small>Rentabilidad ajustada</small></span>'+
   '<span><b>'+escHtml(precio)+'</b><small>Precio observado</small></span></div>'+
@@ -2408,8 +2404,8 @@ function abrirDetalleOfertaLocal(slug){
   '<div><span>'+(o.coleccion==='en_camino'?'En camino':o.coleccion==='secundario'||secundario?'Mercado secundario':'Oferta principal')+'</span><h2 id="escaparateDetalleTitulo">'+escHtml(o.titulo)+'</h2></div>'+
   '<button type="button" data-cerrar-detalle aria-label="Cerrar detalle">×</button></header>'+
   '<div class="escaparate-dialogo-cuerpo"><div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
-   escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540"><span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
-   '<span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
+   escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540" decoding="async"></div><p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>'+
+  '<p class="escaparate-dialogo-estado"><span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></p>'+
   '<div class="escaparate-dialogo-identidad"><div><b>'+escHtml(o.plataformaNombre)+'</b><span>'+escHtml(o.categoria)+
    (o.pais?' · '+escHtml(o.pais):'')+'</span></div><div class="escaparate-dialogo-dato"><b>'+escHtml(claves.destacado.valor)+
    '</b><span>'+escHtml(claves.destacado.etiqueta)+'</span>'+

@@ -1679,11 +1679,16 @@ prueba('cada portada móvil es el botón accesible que abre su ficha y carga la 
     atributoHTML(img[2], 'width') === '720' && atributoHTML(img[2], 'height') === '720' &&
     atributoHTML(img[2], 'decoding') === 'async' &&
     atributoHTML(img[2], 'loading') === 'lazy'));
-prueba('las ilustraciones editoriales se identifican en la tarjeta, la ficha y la accesibilidad',
-  /class="empresa-visual__origen">Ilustración/.test(js) &&
+// Imágenes limpias (decisión de Víctor, 03/11/2026, ESPEC-FINAL §1): ninguna
+// etiqueta encima de la portada. La honestidad va en el nombre accesible
+// («; portada ilustrativa»), en la ficha y en una línea visible bajo la galería.
+prueba('las portadas ilustrativas se declaran sin taparlas: nombre accesible, ficha y línea bajo la galería',
+  !/empresa-visual__origen/.test(js) && !/empresa-visual__origen/.test(html) &&
+  js.includes("aria-label=\"Abrir la ficha de ${escHtml(p.n)}${ilustrativa?'; portada ilustrativa':''}\"") &&
+  /<p class="nota-ilustrativa nota-portadas">Portadas ilustrativas, no logotipos ni fotos de la empresa<\/p>/.test(html) &&
+  /display\s*:\s*block/i.test(declaracionesCSS(cssMovil, '#movilPanelRadar .nota-portadas').join(';')) &&
   /<span>Ficha verificada<\/span>/.test(js) &&
   /Imagen ilustrativa/.test(js) && /No muestra un activo concreto/.test(js) &&
-  /top\s*:\s*56px/i.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__origen').join(';')) &&
   /minmax\(0,1fr\)/i.test(declaracionesCSS(cssBase, '.pn-origen-visual').join(';')));
 prueba('la galería visual solo sustituye las fichas en móvil y mantiene dos columnas táctiles',
   /display\s*:\s*none/i.test(declaracionesCSS(cssBase, '.empresa-visual__abrir').join(';')) &&
@@ -2629,12 +2634,15 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
   const reglasImagen = declaracionesCSS(cssBase, '.escaparate-imagen');
   const reglasImagenMovil = declaracionesCSS(cssMovil, '#movilPanelRadar .escaparate-oferta .escaparate-imagen');
   const reglasMiniaturaMovil = declaracionesCSS(cssMovil, '#movilPanelRadar .escaparate-oferta .escaparate-imagen img');
-  // Móvil (03/11/2026, petición de Víctor): fila compacta con miniatura de ancho
-  // fijo que enseña la mitad derecha de la ilustración, sin su rótulo dibujado.
-  prueba('las tarjetas mantienen portada 16/10 en escritorio y una miniatura sin rótulo en el móvil',
+  // Móvil (03/11/2026, ESPEC-FINAL §1): las ilustraciones ya no llevan texto
+  // dibujado, así que la miniatura de ancho fijo se encuadra al centro, sin el
+  // desplazamiento ni la ampliación que lo escondían, y sin nada encima.
+  prueba('las tarjetas mantienen portada 16/10 en escritorio y una miniatura limpia y centrada en el móvil',
     reglasImagen.some(d=>/aspect-ratio\s*:\s*16\s*\/\s*10/.test(d)) &&
     reglasImagenMovil.some(d=>/(?:^|;)\s*width\s*:\s*\d+px/.test(d)) &&
-    reglasMiniaturaMovil.some(d=>/object-position\s*:\s*100%/.test(d)));
+    reglasMiniaturaMovil.length > 0 &&
+    reglasMiniaturaMovil.every(d=>!/object-position\s*:\s*100%|transform\s*:\s*scale|width\s*:\s*2\d\d%/.test(d)) &&
+    !/escaparate-editorial|inicio-ilustracion|escaparate-tipo/.test(js));
   const controles = ['.escaparate-detalle-boton','.escaparate-oferta .escaparate-detalle-boton',
     '#movilPanelRadar .escaparate-oferta .escaparate-detalle-boton'];
   const reglasBoton = controles.flatMap(selector=>declaracionesCSS(css,selector));
