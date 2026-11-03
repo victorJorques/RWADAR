@@ -44,7 +44,8 @@ function snapshotLocal({raiz = RAIZ, lote = LOTE_LOCAL} = {}) {
   if (lote && !/^\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?-v2$/.test(lote)) throw new Error('Lote local no válido');
   let datos = leerCatalogo(raiz);
   if (lote) {
-    const fuentes = cargarFuentesLocales(raiz,{revision:lote.slice(0,10),versionEsquema:2});
+    // La etiqueta del lote es la entrega completa (AAAA-MM-DD o AAAA-MM-DD.N), no solo su fecha.
+    const fuentes = cargarFuentesLocales(raiz,{revision:lote.slice(0,-3),versionEsquema:2});
     const importacion = construirSqlImportacion(fuentes);
     const {escaparate,manifiesto} = fuentes;
     const revision = JSON.parse(fs.readFileSync(path.join(raiz,'rwadar-app/data/importaciones',

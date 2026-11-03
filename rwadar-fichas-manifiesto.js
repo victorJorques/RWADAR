@@ -19,6 +19,7 @@ module.exports = Object.freeze([
   "ofertas/fotovoltaica-cohotel.html",
   "ofertas/fotovoltaica-greenpoint.html",
   "ofertas/hausera-proximas-ofertas.html",
+  "ofertas/kraken-xstocks.html",
   "ofertas/local-de-estanco-klagenfurt.html",
   "ofertas/mf-one.html",
   "ofertas/mtbill.html",

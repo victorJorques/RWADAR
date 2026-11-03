@@ -226,6 +226,26 @@
       "revisadoEl": "2026-11-02"
     },
     {
+      "slug": "kraken-xstocks",
+      "categoria": "Acciones y capital privado",
+      "archivo": "oferta-kraken-xstocks.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 54200,
+      "hashSha256": "1508f11e5c2bcc1b256cf7104f38b2dbeccda813d96940bd139a90fbca56861b",
+      "alt": "Ilustración editorial de un distrito financiero mediterráneo genérico al anochecer, junto al paseo marítimo, como imagen de certificados tokenizados que siguen acciones estadounidenses, imagen generada con IA. Pasos: abres cuenta y test; compras con euros; vendes o retiras. No es una foto del activo real.",
+      "concepto": "un distrito financiero mediterráneo genérico al anochecer, junto al paseo marítimo, como imagen de certificados tokenizados que siguen acciones estadounidenses",
+      "pasos": [
+        "Abres cuenta y test",
+        "Compras con euros",
+        "Vendes o retiras"
+      ],
+      "lugar": "Limasol · Chipre",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-02"
+    },
+    {
       "slug": "local-de-estanco-klagenfurt",
       "categoria": "Inmobiliario",
       "archivo": "oferta-local-de-estanco-klagenfurt.webp",
