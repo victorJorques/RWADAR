@@ -4,17 +4,6 @@
  "nota": "Una entrada por ficha. «concepto» completa la frase «Ilustración editorial de …». Las escenas están en escenas.mjs; los pasos y el lugar se comprueban contra la fuente de la ficha (sin cifras, marcas ni promesas).",
  "fichas": [
   {
-   "slug": "mf-one",
-   "escena": "cartera_credito",
-   "op": {},
-   "pasos": [
-    "Compras el token",
-    "Sigue crédito privado",
-    "Reembolsas a su precio"
-   ],
-   "concepto": "una cartera genérica de préstamos a empresas que sigue un token"
-  },
-  {
    "slug": "fotovoltaica-greenpoint",
    "escena": "solar",
    "op": {
