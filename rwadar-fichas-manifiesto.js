@@ -28,6 +28,7 @@ module.exports = Object.freeze([
   "ofertas/robinhood-classic-stock-tokens.html",
   "ofertas/spiko-letras-del-tesoro-dolar.html",
   "ofertas/spiko-letras-del-tesoro-euro.html",
+  "ofertas/spiko-smart-cash-euro.html",
   "ofertas/switzerlend.html",
   "ofertas/terreno-con-arrendamiento-billa.html",
   "ofertas/vivienda-pluddemanngasse-101-graz.html",

@@ -405,6 +405,26 @@
       "revisadoEl": "2026-11-02"
     },
     {
+      "slug": "spiko-smart-cash-euro",
+      "categoria": "Tesoro y fondos",
+      "archivo": "oferta-spiko-smart-cash-euro.webp",
+      "ancho": 960,
+      "alto": 660,
+      "bytes": 84524,
+      "hashSha256": "a8c8d687d0f91af98e063ccbf2a3cdb1bc53c92989be1d988133d5a044bd6942",
+      "alt": "Ilustración editorial de una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario, imagen generada con IA. Pasos: abres cuenta con KYC; transfieres euros; pides el reembolso. No es una foto del activo real.",
+      "concepto": "una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario",
+      "pasos": [
+        "Abres cuenta con KYC",
+        "Transfieres euros",
+        "Pides el reembolso"
+      ],
+      "lugar": "París · Francia",
+      "origen": "foto-generada",
+      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
+      "revisadoEl": "2026-11-02"
+    },
+    {
       "slug": "switzerlend",
       "categoria": "Acciones y capital privado",
       "archivo": "oferta-switzerlend.webp",
