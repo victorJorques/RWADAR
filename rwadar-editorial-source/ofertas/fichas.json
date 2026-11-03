@@ -340,9 +340,9 @@
    "pasos": [
     "Abres cuenta con KYC",
     "Transfieres euros",
-    "Reembolso diario"
+    "Pides el reembolso"
    ],
-   "concepto": "un fondo en euros que cobra cada día el tipo interbancario, representado por la sala de operaciones genérica de un banco"
+   "concepto": "un fondo en euros ligado al €STR, representado por una calle financiera parisina genérica"
   }
  ]
 }

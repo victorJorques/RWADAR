@@ -47,6 +47,7 @@ const F = {
   folleto: 'https://geco.amf-france.org/back-office/document/download/438274',
   amf: 'https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf',
   disponibilidad: 'https://docs.spiko.io/documentation/product_overview/fund_availability',
+  particulares: 'https://www.spiko.io/es/usos-principales/particulares',
   sicav: 'https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es',
   intermediario: 'https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&vista=17&lang=es',
 };
@@ -57,70 +58,70 @@ const PCT = '2,84 %', DATO = '2026-11-02';
 
 const oferta = {
   slug: SLUG, tipo: 'rendimiento',
-  titulo: 'Spiko Euro (Smart Cash): fondo en euros que sigue el tipo interbancario',
+  titulo: 'Spiko Euro (Smart Cash): fondo en euros ligado al €STR',
   plataformaSlug: 'spiko', plataformaNombre: 'Spiko',
   categoria: 'Tesoro y fondos', pais: 'FR',
-  resumen: 'Fondo UCITS en euros de Spiko que busca el €STR más un margen mediante permutas (swaps) con grandes bancos; ' +
-    'no es un fondo monetario. Valor liquidativo variable y capital no garantizado.',
+  resumen: 'Fondo de inversión UCITS en euros de Spiko que busca el €STR (el tipo a un día del euro) más un margen mediante ' +
+    'permutas (swaps) con bancos; no es un fondo monetario ni un depósito. Su valor cambia cada día y el capital no está garantizado.',
   url: F.oferta, cta: 'Ver fuente',
-  imagenAlt: 'Spiko Euro (Smart Cash): fondo en euros que sigue el tipo interbancario',
+  imagenAlt: 'Spiko Euro (Smart Cash): fondo en euros ligado al €STR',
   verificadaEl: FECHA, vigenciaDias: 7, permanente: false, disponibleEs: true, eu: null, fueraLadrillo: true,
   puntuacion: null, precio: null, estadoRevision: 'actual', coleccion: 'principales', moneda: 'EUR', patrocinada: false,
-  rentabilidad: { mostrada: PCT, literal: `Rendimiento neto anualizado que publica Spiko con el valor liquidativo del 02/11/2026 ` +
-    `(devengo diario); consultado el ${FES}. Variable: sigue al €STR; no es un tipo fijo ni está garantizado.` },
+  rentabilidad: { mostrada: PCT, literal: 'Cifra que publica Spiko, ya descontadas sus comisiones: lo que creció el fondo en su último ' +
+    `día de cálculo, pasado a un año (valor liquidativo del 02/11/2026; consultado el ${FES}). Variable: sigue al €STR; no es un tipo fijo ni está garantizado.` },
   metricas: [
     { etiqueta: 'Mínimo', valor: '1 EUR' },
-    { etiqueta: 'Moneda', valor: 'EUR' },
-    { etiqueta: 'Qué es', valor: 'Fondo UCITS que cobra el €STR más un margen con permutas con bancos; no es un fondo monetario' },
-    { etiqueta: 'Supervisor', valor: 'Compartimento aprobado por la AMF (SCV20260075) · SICAV inscrita en la CNMV, n.º 2380; la CNMV no publica los compartimentos' },
-    { etiqueta: 'Gestora', valor: 'Twenty First Capital (gestión delegada en Amundi)' },
-    { etiqueta: 'Comisión de gestión', valor: '0,25 % anual, más gastos de funcionamiento de hasta el 0,10 %' },
-    { etiqueta: 'Entrada / salida', valor: '0 % / 0 %' },
-    { etiqueta: 'Reembolso', valor: 'Diario, corte 15:00 (París), abono al día hábil siguiente; puede limitarse (25 %)' },
-    { etiqueta: 'Riesgo KID', valor: '1 de 7, más riesgo de contraparte' },
-    { etiqueta: 'Plazo recomendado (KID)', valor: '3 meses' },
-    { etiqueta: 'Rendimiento neto publicado · VL 02/11/2026', valor: PCT },
+    { etiqueta: 'Qué es', valor: 'Fondo de inversión europeo (UCITS) que invierte en acciones, bonos y otros títulos y cambia lo que rinden con bancos por el €STR más un margen; no es un fondo monetario' },
+    { etiqueta: 'Supervisor', valor: 'AMF (Francia): n.º SCV20260075, aún sin ficha pública en su base GECO · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España' },
+    { etiqueta: 'Gestora', valor: 'Twenty First Capital (gestión de las inversiones delegada en Amundi)' },
+    { etiqueta: 'Comisiones', valor: '0,25 % anual de gestión y hasta 0,10 % de gastos de funcionamiento; 0 % de entrada y de salida' },
+    { etiqueta: 'Reembolso', valor: 'Diario; puede limitarse si un día las salidas netas llegan al 25 % del fondo. Orden antes de las 15:00 (hora de París) y pago al día hábil siguiente' },
+    { etiqueta: 'Riesgo KID', valor: '1 de 7, sin contar el riesgo de contraparte (el KID lo deja fuera); plazo recomendado: 3 meses' },
+    { etiqueta: 'Rentabilidad publicada · neta y variable · 02/11/2026', valor: PCT },
   ],
   avisos: [
     aviso(GEN),
-    aviso('Spiko dice que se puede contratar desde España, pero la CNMV no publica los compartimentos de fondos extranjeros: no hemos podido confirmar en ningún supervisor que este esté notificado para venderse en España.'),
-    aviso('Su web habla de «tipo fijo garantizado», pero el KID dice que no hay rentabilidad mínima garantizada: el rendimiento sigue al €STR y el capital no está garantizado.'),
-    aviso('No es un fondo monetario: el interés lo pagan bancos mediante permutas (swaps). Si un banco falla, el fondo depende de su cartera y de las garantías (riesgo de contraparte).'),
-    aviso('El reembolso puede limitarse si las solicitudes superan el 25 % del patrimonio del fondo, aunque la web diga que no hay límites de retirada.'),
-    aviso('La web nombra a Amundi como gestora; según el KID, el productor es Twenty First Capital y Amundi gestiona por delegación.'),
+    aviso('Spiko dice que se puede contratar desde España, pero no hemos podido confirmar en ningún registro público de la CNMV ni de la AMF (Francia) que este fondo esté dado de alta para venderse aquí: la CNMV solo muestra la sociedad Spiko SICAV, no sus fondos uno a uno.'),
+    aviso('No es una cuenta ni un depósito. La web de Spiko dice «Interés a tipo fijo» y «Garantizado por contrapartes», pero el KID dice que no hay rentabilidad mínima garantizada y que puedes perder parte o toda la inversión: el rendimiento depende del €STR, que cambia cada día.'),
+    aviso('No es un fondo monetario: invierte en acciones, bonos y otros títulos y cede lo que rinden a uno o varios bancos, que a cambio le pagan el €STR más un margen. Si un banco falla, el fondo podría quedar expuesto a esos títulos, que pueden bajar, y las garantías podrían no cubrir la pérdida. El riesgo 1 de 7 del KID no tiene en cuenta este riesgo.'),
+    aviso('Si un mismo día los inversores piden sacar, entre todos y descontado lo que entra, el 25 % del fondo o más, la gestora puede pagar solo una parte y pasar el resto al siguiente día hábil (como mucho 20 días en 3 meses), aunque la página de Spiko para particulares diga «No existen límites de retirada».'),
+    aviso('La web de Spiko presenta a Amundi Asset Management como «Sociedad gestora», pero la gestora es Twenty First Capital, según el KID y el certificado de la AMF; el folleto dice que delega en Amundi la gestión de las inversiones. Las reclamaciones se dirigen a Twenty First Capital.'),
+    aviso('El enlace de la web de Spiko para «Verificar la autorización» lleva a la base pública de la AMF (GECO), pero allí este fondo todavía no tiene ficha publicada. Su autorización consta en el folleto que publica la AMF y en un certificado de la AMF que aloja Spiko.'),
   ],
-  fuentesActuales: [F.oferta, F.rendimiento, F.kid, F.folleto, F.amf, F.disponibilidad, F.sicav],
+  fuentesActuales: [F.oferta, F.rendimiento, F.kid, F.folleto, F.amf, F.disponibilidad, F.particulares, F.sicav],
 };
 const R = (etiqueta, valor, fuente, fechaDato, alcance) => ({ etiqueta, valor, fechaDato, fechaConsulta: FECHA, fuente, alcance });
 const documentacion = {
   revisadaEl: FECHA,
   descripcion: `${oferta.resumen} Qué se adquiere: acciones de la clase EUR (FR0014015LD3) del compartimento Spiko Amundi ` +
-    'Overnight Swap Fund de Spiko SICAV (Francia), aprobado por la AMF el 23/02/2026. El fondo tiene una cartera y la ' +
-    'intercambia con bancos por el €STR más un margen; el rendimiento es variable. Spiko marca España como disponible, ' +
-    'pero la CNMV no publica qué compartimentos de fondos extranjeros están notificados, así que no consta en ningún supervisor.',
+    'Overnight Swap Fund, de Spiko SICAV (Francia), autorizado por la AMF con el n.º SCV20260075 (así figura en un certificado ' +
+    'de la AMF del 23/02/2026). El fondo invierte en acciones, bonos y otros títulos y cede lo que rinden a uno o varios bancos, ' +
+    'que a cambio le pagan el €STR más un margen; el rendimiento es variable y, si un banco falla, el fondo puede quedar expuesto ' +
+    'a esos títulos. Spiko marca España como disponible, pero ni la CNMV ni la AMF publican que este fondo esté dado de alta para venderse en España.',
   fuentes: Object.values(F),
   caracteristicas: [
     { etiqueta: 'Proveedor', valor: 'Spiko' },
     { etiqueta: 'Entidad que comercializa', valor: 'Spiko Finance (ESI del EEE en libre prestación, CNMV n.º 5325, para recibir y transmitir órdenes sobre IIC); en la CNMV, la comercializadora inscrita de la SICAV es Aldana Capital A.V.' },
     { etiqueta: 'Fondo', valor: 'Spiko Amundi Overnight Swap Fund, compartimento de Spiko SICAV (Francia); clase EUR, ISIN FR0014015LD3' },
     { etiqueta: 'Gestora', valor: 'Twenty First Capital (productor según el KID); gestión financiera delegada en Amundi Asset Management' },
-    { etiqueta: 'Qué se adquiere', valor: 'Acciones de un compartimento UCITS que obtiene el €STR más un margen mediante permutas con bancos' },
+    { etiqueta: 'Qué se adquiere', valor: 'Acciones de un fondo UCITS que invierte en acciones, bonos y otros títulos y cambia lo que rinden con bancos por el €STR más un margen' },
     { etiqueta: 'Moneda', valor: 'EUR' },
   ],
   referencias: [
     R('Mínimo de inversión', 'Desde 1 €', F.folleto, '2026-09-01', 'Tabla de clases del folleto de la SICAV en la base GECO de la AMF (en vigor desde el 01/09/2026).'),
     R('Acceso desde España', 'Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC)',
       F.disponibilidad, '2026-10-23', 'Tabla de disponibilidad de Spiko (23/10/2026). La CNMV no publica los compartimentos de los fondos extranjeros: no consta en ningún supervisor.'),
-    R('Reembolso', 'Diario: orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse si se pide más del 25 % del fondo',
+    R('Reembolso', 'Diario; puede limitarse si un día las salidas netas de todos los inversores llegan al 25 % del fondo. Orden antes de las 15:00 (hora de París) y pago al día hábil siguiente',
       F.folleto, '2026-09-01', 'Folleto de la SICAV (§3.2.4) en la base GECO de la AMF.'),
     R('Rendimiento neto publicado', PCT, F.rendimiento, DATO,
       'API pública de Spiko (devengo diario del valor liquidativo del 02/11/2026, anualizado y neto de comisiones). Variable: sigue al €STR.'),
     R('Comisión de gestión', '0,25 % anual; gastos de funcionamiento de hasta el 0,10 %; sin comisión de entrada ni de salida', F.folleto, '2026-09-01',
       'Folleto de la SICAV en la base GECO de la AMF.'),
-    R('Riesgo (KID)', '1 de 7; capital no garantizado y sin rentabilidad mínima; plazo recomendado de 3 meses', F.kid, '2026-09-01', 'KID en español del 01/09/2026.'),
+    R('Riesgo (KID)', '1 de 7, sin contar el riesgo de contraparte; capital no garantizado y sin rentabilidad mínima; en los escenarios del KID, 10.000 € quedan entre 9.980 € y 10.100 € a 3 meses (moderado: 9.990 €); plazo recomendado de 3 meses', F.kid, '2026-09-01', 'KID en español del 01/09/2026.'),
+    R('Ajuste del valor liquidativo', 'Si un día entran o salen muchas órdenes, la gestora puede ajustar el valor liquidativo hasta un 0,50 % (swing pricing)', F.folleto, '2026-09-01', 'Folleto de la SICAV (§3.2.4) en la base GECO de la AMF.'),
     R('Aprobación del compartimento', 'AMF, SCV20260075 (certificado del 23/02/2026)', F.amf, '2026-02-23', 'Certificado de la AMF que aloja Spiko.'),
     R('Registro de la SICAV en España', 'Spiko SICAV · CNMV n.º 2380 (30/01/2026)', F.sicav, '2026-01-30', `Registro de la CNMV consultado el ${FES}; no lista compartimentos.`),
-    R('Web frente al KID', 'La web habla de «tipo fijo garantizado»; el KID dice que no hay rentabilidad mínima garantizada', F.oferta, null,
+    R('Web frente al KID', 'La web dice «Interés a tipo fijo», «Garantizado por contrapartes» y «rendimiento diario garantizado»; el KID dice «No existe rentabilidad mínima garantizada. Podría perder la totalidad o parte de su inversión»', F.oferta, null,
       `Web en español de Spiko Euro consultada el ${FES} y KID del 01/09/2026.`),
   ],
 };
@@ -151,7 +152,9 @@ escribir(path.join(DIR, `contraste-${REVISION}.json`), { tipo: 'alta_por_decisio
   revisionAnterior: PREVIA, alta: SLUG,
   decision: `Víctor, ${FES}: «Si es tan buena oferta y tú lo ves bien y tú lo subirías, adelante».`,
   revisionPrevia: '2026-11-03.3-v2/revision-independiente/revision-candidata-y-cambios.md (apartado A: rechazado por no constar su notificación a España)',
-  cambiosAplicados: ['métrica fechada «· VL 02/11/2026»', 'literal: variable, sigue al €STR, ni fijo ni garantizado',
+  cambiosAplicados: ['métrica fechada «Rentabilidad publicada · neta y variable · 02/11/2026»; 8 datos', 'literal: variable, sigue al €STR, ni fijo ni garantizado',
+    'no es una cuenta ni un depósito; puedes perder parte o toda la inversión', 'sin ficha pública en GECO (métrica y aviso)', 'citas literales de la web',
+    'fila Salida: la limitación primero', 'revisión de tres enfoques: REVISION-ALTA.md (13 cambios obligatorios)',
     'Supervisor: la CNMV no publica los compartimentos', 'Gestora: Twenty First Capital, delegación en Amundi', 'Reembolso: puede limitarse (25 %)',
     'aviso: la web contradice al KID', 'aviso principal: no consta en ningún supervisor su notificación a España'],
   cifra: { rentabilidad: PCT, fechaDato: DATO }, copiasLiterales: ['radar-canonico-26.json'], colecciones });

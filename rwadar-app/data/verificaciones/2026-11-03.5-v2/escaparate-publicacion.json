@@ -2226,15 +2226,15 @@
     {
       "slug": "spiko-smart-cash-euro",
       "tipo": "rendimiento",
-      "titulo": "Spiko Euro (Smart Cash): fondo en euros que sigue el tipo interbancario",
+      "titulo": "Spiko Euro (Smart Cash): fondo en euros ligado al €STR",
       "plataformaSlug": "spiko",
       "plataformaNombre": "Spiko",
       "categoria": "Tesoro y fondos",
       "pais": "FR",
-      "resumen": "Fondo UCITS en euros de Spiko que busca el €STR más un margen mediante permutas (swaps) con grandes bancos; no es un fondo monetario. Valor liquidativo variable y capital no garantizado.",
+      "resumen": "Fondo de inversión UCITS en euros de Spiko que busca el €STR (el tipo a un día del euro) más un margen mediante permutas (swaps) con bancos; no es un fondo monetario ni un depósito. Su valor cambia cada día y el capital no está garantizado.",
       "url": "https://www.spiko.io/es/spiko-euro",
       "cta": "Ver fuente",
-      "imagenAlt": "Spiko Euro (Smart Cash): fondo en euros que sigue el tipo interbancario",
+      "imagenAlt": "Spiko Euro (Smart Cash): fondo en euros ligado al €STR",
       "verificadaEl": "2026-11-03",
       "vigenciaDias": 7,
       "permanente": false,
@@ -2249,7 +2249,7 @@
       "patrocinada": false,
       "rentabilidad": {
         "mostrada": "2,84 %",
-        "literal": "Rendimiento neto anualizado que publica Spiko con el valor liquidativo del 02/11/2026 (devengo diario); consultado el 03/11/2026. Variable: sigue al €STR; no es un tipo fijo ni está garantizado."
+        "literal": "Cifra que publica Spiko, ya descontadas sus comisiones: lo que creció el fondo en su último día de cálculo, pasado a un año (valor liquidativo del 02/11/2026; consultado el 03/11/2026). Variable: sigue al €STR; no es un tipo fijo ni está garantizado."
       },
       "metricas": [
         {
@@ -2257,43 +2257,31 @@
           "valor": "1 EUR"
         },
         {
-          "etiqueta": "Moneda",
-          "valor": "EUR"
-        },
-        {
           "etiqueta": "Qué es",
-          "valor": "Fondo UCITS que cobra el €STR más un margen con permutas con bancos; no es un fondo monetario"
+          "valor": "Fondo de inversión europeo (UCITS) que invierte en acciones, bonos y otros títulos y cambia lo que rinden con bancos por el €STR más un margen; no es un fondo monetario"
         },
         {
           "etiqueta": "Supervisor",
-          "valor": "Compartimento aprobado por la AMF (SCV20260075) · SICAV inscrita en la CNMV, n.º 2380; la CNMV no publica los compartimentos"
+          "valor": "AMF (Francia): n.º SCV20260075, aún sin ficha pública en su base GECO · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España"
         },
         {
           "etiqueta": "Gestora",
-          "valor": "Twenty First Capital (gestión delegada en Amundi)"
+          "valor": "Twenty First Capital (gestión de las inversiones delegada en Amundi)"
         },
         {
-          "etiqueta": "Comisión de gestión",
-          "valor": "0,25 % anual, más gastos de funcionamiento de hasta el 0,10 %"
-        },
-        {
-          "etiqueta": "Entrada / salida",
-          "valor": "0 % / 0 %"
+          "etiqueta": "Comisiones",
+          "valor": "0,25 % anual de gestión y hasta 0,10 % de gastos de funcionamiento; 0 % de entrada y de salida"
         },
         {
           "etiqueta": "Reembolso",
-          "valor": "Diario, corte 15:00 (París), abono al día hábil siguiente; puede limitarse (25 %)"
+          "valor": "Diario; puede limitarse si un día las salidas netas llegan al 25 % del fondo. Orden antes de las 15:00 (hora de París) y pago al día hábil siguiente"
         },
         {
           "etiqueta": "Riesgo KID",
-          "valor": "1 de 7, más riesgo de contraparte"
+          "valor": "1 de 7, sin contar el riesgo de contraparte (el KID lo deja fuera); plazo recomendado: 3 meses"
         },
         {
-          "etiqueta": "Plazo recomendado (KID)",
-          "valor": "3 meses"
-        },
-        {
-          "etiqueta": "Rendimiento neto publicado · VL 02/11/2026",
+          "etiqueta": "Rentabilidad publicada · neta y variable · 02/11/2026",
           "valor": "2,84 %"
         }
       ],
@@ -2305,31 +2293,37 @@
           "verificadaEl": "2026-11-03"
         },
         {
-          "texto": "Spiko dice que se puede contratar desde España, pero la CNMV no publica los compartimentos de fondos extranjeros: no hemos podido confirmar en ningún supervisor que este esté notificado para venderse en España.",
+          "texto": "Spiko dice que se puede contratar desde España, pero no hemos podido confirmar en ningún registro público de la CNMV ni de la AMF (Francia) que este fondo esté dado de alta para venderse aquí: la CNMV solo muestra la sociedad Spiko SICAV, no sus fondos uno a uno.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-03"
         },
         {
-          "texto": "Su web habla de «tipo fijo garantizado», pero el KID dice que no hay rentabilidad mínima garantizada: el rendimiento sigue al €STR y el capital no está garantizado.",
+          "texto": "No es una cuenta ni un depósito. La web de Spiko dice «Interés a tipo fijo» y «Garantizado por contrapartes», pero el KID dice que no hay rentabilidad mínima garantizada y que puedes perder parte o toda la inversión: el rendimiento depende del €STR, que cambia cada día.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-03"
         },
         {
-          "texto": "No es un fondo monetario: el interés lo pagan bancos mediante permutas (swaps). Si un banco falla, el fondo depende de su cartera y de las garantías (riesgo de contraparte).",
+          "texto": "No es un fondo monetario: invierte en acciones, bonos y otros títulos y cede lo que rinden a uno o varios bancos, que a cambio le pagan el €STR más un margen. Si un banco falla, el fondo podría quedar expuesto a esos títulos, que pueden bajar, y las garantías podrían no cubrir la pérdida. El riesgo 1 de 7 del KID no tiene en cuenta este riesgo.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-03"
         },
         {
-          "texto": "El reembolso puede limitarse si las solicitudes superan el 25 % del patrimonio del fondo, aunque la web diga que no hay límites de retirada.",
+          "texto": "Si un mismo día los inversores piden sacar, entre todos y descontado lo que entra, el 25 % del fondo o más, la gestora puede pagar solo una parte y pasar el resto al siguiente día hábil (como mucho 20 días en 3 meses), aunque la página de Spiko para particulares diga «No existen límites de retirada».",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-03"
         },
         {
-          "texto": "La web nombra a Amundi como gestora; según el KID, el productor es Twenty First Capital y Amundi gestiona por delegación.",
+          "texto": "La web de Spiko presenta a Amundi Asset Management como «Sociedad gestora», pero la gestora es Twenty First Capital, según el KID y el certificado de la AMF; el folleto dice que delega en Amundi la gestión de las inversiones. Las reclamaciones se dirigen a Twenty First Capital.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El enlace de la web de Spiko para «Verificar la autorización» lleva a la base pública de la AMF (GECO), pero allí este fondo todavía no tiene ficha publicada. Su autorización consta en el folleto que publica la AMF y en un certificado de la AMF que aloja Spiko.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-03"
@@ -2342,6 +2336,7 @@
         "https://geco.amf-france.org/back-office/document/download/438274",
         "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
         "https://docs.spiko.io/documentation/product_overview/fund_availability",
+        "https://www.spiko.io/es/usos-principales/particulares",
         "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
       ]
     },

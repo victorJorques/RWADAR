@@ -4883,7 +4883,7 @@
   },
   "spiko-smart-cash-euro": {
     "revisadaEl": "2026-11-03",
-    "descripcion": "Fondo UCITS en euros de Spiko que busca el €STR más un margen mediante permutas (swaps) con grandes bancos; no es un fondo monetario. Valor liquidativo variable y capital no garantizado. Qué se adquiere: acciones de la clase EUR (FR0014015LD3) del compartimento Spiko Amundi Overnight Swap Fund de Spiko SICAV (Francia), aprobado por la AMF el 23/02/2026. El fondo tiene una cartera y la intercambia con bancos por el €STR más un margen; el rendimiento es variable. Spiko marca España como disponible, pero la CNMV no publica qué compartimentos de fondos extranjeros están notificados, así que no consta en ningún supervisor.",
+    "descripcion": "Fondo de inversión UCITS en euros de Spiko que busca el €STR (el tipo a un día del euro) más un margen mediante permutas (swaps) con bancos; no es un fondo monetario ni un depósito. Su valor cambia cada día y el capital no está garantizado. Qué se adquiere: acciones de la clase EUR (FR0014015LD3) del compartimento Spiko Amundi Overnight Swap Fund, de Spiko SICAV (Francia), autorizado por la AMF con el n.º SCV20260075 (así figura en un certificado de la AMF del 23/02/2026). El fondo invierte en acciones, bonos y otros títulos y cede lo que rinden a uno o varios bancos, que a cambio le pagan el €STR más un margen; el rendimiento es variable y, si un banco falla, el fondo puede quedar expuesto a esos títulos. Spiko marca España como disponible, pero ni la CNMV ni la AMF publican que este fondo esté dado de alta para venderse en España.",
     "fuentes": [
       "https://www.spiko.io/es/spiko-euro",
       "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
@@ -4891,6 +4891,7 @@
       "https://geco.amf-france.org/back-office/document/download/438274",
       "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
       "https://docs.spiko.io/documentation/product_overview/fund_availability",
+      "https://www.spiko.io/es/usos-principales/particulares",
       "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
       "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&vista=17&lang=es"
     ],
@@ -4913,7 +4914,7 @@
       },
       {
         "etiqueta": "Qué se adquiere",
-        "valor": "Acciones de un compartimento UCITS que obtiene el €STR más un margen mediante permutas con bancos"
+        "valor": "Acciones de un fondo UCITS que invierte en acciones, bonos y otros títulos y cambia lo que rinden con bancos por el €STR más un margen"
       },
       {
         "etiqueta": "Moneda",
@@ -4939,7 +4940,7 @@
       },
       {
         "etiqueta": "Reembolso",
-        "valor": "Diario: orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse si se pide más del 25 % del fondo",
+        "valor": "Diario; puede limitarse si un día las salidas netas de todos los inversores llegan al 25 % del fondo. Orden antes de las 15:00 (hora de París) y pago al día hábil siguiente",
         "fechaDato": "2026-09-01",
         "fechaConsulta": "2026-11-03",
         "fuente": "https://geco.amf-france.org/back-office/document/download/438274",
@@ -4963,11 +4964,19 @@
       },
       {
         "etiqueta": "Riesgo (KID)",
-        "valor": "1 de 7; capital no garantizado y sin rentabilidad mínima; plazo recomendado de 3 meses",
+        "valor": "1 de 7, sin contar el riesgo de contraparte; capital no garantizado y sin rentabilidad mínima; en los escenarios del KID, 10.000 € quedan entre 9.980 € y 10.100 € a 3 meses (moderado: 9.990 €); plazo recomendado de 3 meses",
         "fechaDato": "2026-09-01",
         "fechaConsulta": "2026-11-03",
         "fuente": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
         "alcance": "KID en español del 01/09/2026."
+      },
+      {
+        "etiqueta": "Ajuste del valor liquidativo",
+        "valor": "Si un día entran o salen muchas órdenes, la gestora puede ajustar el valor liquidativo hasta un 0,50 % (swing pricing)",
+        "fechaDato": "2026-09-01",
+        "fechaConsulta": "2026-11-03",
+        "fuente": "https://geco.amf-france.org/back-office/document/download/438274",
+        "alcance": "Folleto de la SICAV (§3.2.4) en la base GECO de la AMF."
       },
       {
         "etiqueta": "Aprobación del compartimento",
@@ -4987,7 +4996,7 @@
       },
       {
         "etiqueta": "Web frente al KID",
-        "valor": "La web habla de «tipo fijo garantizado»; el KID dice que no hay rentabilidad mínima garantizada",
+        "valor": "La web dice «Interés a tipo fijo», «Garantizado por contrapartes» y «rendimiento diario garantizado»; el KID dice «No existe rentabilidad mínima garantizada. Podría perder la totalidad o parte de su inversión»",
         "fechaDato": null,
         "fechaConsulta": "2026-11-03",
         "fuente": "https://www.spiko.io/es/spiko-euro",

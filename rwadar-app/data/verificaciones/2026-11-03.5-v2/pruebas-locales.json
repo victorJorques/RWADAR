@@ -1,10 +1,10 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-03T13:15:53.268Z",
-  "revisionId": "ec8dbd52-e7ad-3b4a-11c6-d6ed9070820b",
+  "ejecutadoEl": "2026-11-03T14:01:10.225Z",
+  "revisionId": "d75a22fb-929d-5b5c-6110-13d1ce3731fd",
   "revisionAnterior": "f26bba19-39fc-aa64-a086-aba333376f0a",
   "resultado": "correcto",
-  "sha256AplicarYAprobar": "ea32794acdd605eec0eec46d53dceb71ada0379ed5f676b603d05f9ad0e7065e",
+  "sha256AplicarYAprobar": "b95aba541a4c2869fca0179188a8d142ee5f81ad515fff3c68347bbaa18d86c4",
   "tarjetas": {
     "aktionariat": {
       "minimo": "500 CHF por transferencia bancaria",
@@ -94,7 +94,7 @@
     "spiko-smart-cash-euro": {
       "minimo": "1 €",
       "espana": "Disponible desde España según la fuente",
-      "salida": "Reembolso: Diario: orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse si se pide más del 25 % del fondo"
+      "salida": "Reembolso: Diario; puede limitarse si un día las salidas netas de todos los inversores llegan al 25 % del fondo. Orden antes de las 15:00 (hora de París) y pago al día hábil siguiente"
     },
     "switzerlend": {
       "minimo": "1 acción (68,01 CHF el 03/11)",

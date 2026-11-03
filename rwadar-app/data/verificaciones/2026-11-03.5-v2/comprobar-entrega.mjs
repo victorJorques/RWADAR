@@ -89,8 +89,11 @@ try {
       assert.equal(o.coleccion, 'principales');
       assert.equal(s.minimo.euros, 1, 'Smart Cash: desde 1 €');
       assert.equal(s.accesoEspana.estado, 'si', 'Smart Cash: Spiko marca España como disponible');
-      assert.match(o.avisos[1].texto, /no hemos podido confirmar en ningún supervisor/);
-      assert.match(o.avisos[2].texto, /tipo fijo garantizado/);
+      assert.match(o.avisos[1].texto, /no hemos podido confirmar en ningún registro público/);
+      assert.match(o.avisos[2].texto, /Interés a tipo fijo/);
+      assert.ok(o.metricas.length <= 8, 'Smart Cash: la web enseña como mucho 8 datos');
+      assert.equal(o.avisos.length, 7, 'Smart Cash: 7 avisos');
+      assert.match(s.salida.texto, /^Reembolso: Diario; puede limitarse/, 'Smart Cash: la limitación se ve en la tarjeta');
       assert.equal(o.rentabilidad?.mostrada, '2,84 %');
       assert.match(o.rentabilidad.literal, /no es un tipo fijo ni está garantizado/);
       assert.equal(s.cifrasVigentes, true, 'Smart Cash: cifra vigente el 03/11');
