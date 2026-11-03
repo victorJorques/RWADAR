@@ -2628,10 +2628,13 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     !/Ordenar por puntuaci[oó]n/.test(js));
   const reglasImagen = declaracionesCSS(cssBase, '.escaparate-imagen');
   const reglasImagenMovil = declaracionesCSS(cssMovil, '#movilPanelRadar .escaparate-oferta .escaparate-imagen');
-  prueba('las tarjetas mantienen portada 16/10 en escritorio y móvil',
+  const reglasMiniaturaMovil = declaracionesCSS(cssMovil, '#movilPanelRadar .escaparate-oferta .escaparate-imagen img');
+  // Móvil (03/11/2026, petición de Víctor): fila compacta con miniatura de ancho
+  // fijo que enseña la mitad derecha de la ilustración, sin su rótulo dibujado.
+  prueba('las tarjetas mantienen portada 16/10 en escritorio y una miniatura sin rótulo en el móvil',
     reglasImagen.some(d=>/aspect-ratio\s*:\s*16\s*\/\s*10/.test(d)) &&
-    reglasImagenMovil.some(d=>/aspect-ratio\s*:\s*16\s*\/\s*10/.test(d)) &&
-    !reglasImagenMovil.some(d=>/aspect-ratio\s*:\s*16\s*\/\s*7\.7/.test(d)));
+    reglasImagenMovil.some(d=>/(?:^|;)\s*width\s*:\s*\d+px/.test(d)) &&
+    reglasMiniaturaMovil.some(d=>/object-position\s*:\s*100%/.test(d)));
   const controles = ['.escaparate-detalle-boton','.escaparate-oferta .escaparate-detalle-boton',
     '#movilPanelRadar .escaparate-oferta .escaparate-detalle-boton'];
   const reglasBoton = controles.flatMap(selector=>declaracionesCSS(css,selector));
