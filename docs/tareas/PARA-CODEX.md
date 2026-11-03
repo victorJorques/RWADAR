@@ -6,6 +6,69 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 3 de noviembre de 2026 (noche) · Claude · versión final de Inicio y Buscar en la web móvil (sin publicar)
+
+Víctor y Claude como CEO decidieron la versión final (base A «radar vivo» con
+injertos de B y C). Rama local `claude/rediseno-final-wf1` (parte de
+`claude/rediseno-inicio-buscar`, 7b951ed). **Nada publicado, nada en `main`,
+Supabase sin tocar.** Falta sellar y el permiso de Víctor para publicar.
+
+- **Transparencia (datos):** `rwadar-editorial-source/ofertas/transparencia.mjs`
+  valida `transparencia.json` contra el catálogo publicado (slug y
+  `verificadaEl`, textos cortos de 40 caracteres, sin «%», «rentab»,
+  «garantiz», «benefici», «gananci», «recomend» ni «mejor», fuentes https) y
+  escribe el bloque `TRANSPARENCIA_POR_SLUG` del JS web y
+  `rwadar-movil/lib/transparencia-contenido.js`. Su `--comprobar` va en
+  `test:tools`. **En cada ciclo del catálogo hay que revisar este archivo:** si
+  cambia la `verificadaEl` de una oferta, `npm test` se para y la web no
+  enseña nada de esa oferta (falla cerrado).
+- **Imágenes limpias:** fuera todas las etiquetas sobre las fotos (tarjetas,
+  filas, carruseles, detalle, galería). El `alt` sigue empezando por
+  «Ilustración editorial»; línea visible «Imágenes ilustrativas, no fotos del
+  activo» bajo la lista, cada carrusel y la foto del detalle, y «Portadas
+  ilustrativas, no logotipos ni fotos de la empresa» bajo la galería.
+- **Inicio:** radar vivo con los nombres cortos (Inmobiliario, Crédito,
+  Tesoro, Acciones, Materias primas, Infraestructura), leyenda «Plataformas
+  por tipo de activo», esquinas, vigencia «Revisado el … · vigente hasta el
+  …» con pastilla «Vigente» (o «Revisión pendiente» y sin cifras), etiqueta
+  «REGISTRO INDEPENDIENTE · NO VENDE NI ASESORA», botón con aspecto de
+  buscador que enfoca `#emiBuscar`, «Ver ofertas» y «Ver plataformas»;
+  carruseles «Selección RWAdar · la documentación más completa» (las 3 que
+  cumplen las 5 comprobaciones; «No es una recomendación de inversión»;
+  «Cómo elegimos») y «Recién añadidas» (4, por fecha de alta); por tipo,
+  colecciones, noticias, fuera del radar y nota legal. Las fotos se piden al
+  acercarse: la primera pantalla carga 0 KB de imágenes (antes 378 KB).
+- **Buscar › Ofertas (móvil):** fila de una columna con miniatura de 88 px,
+  título de 2 líneas con `title=`, proveedor · lugar, hasta 2 puntos fuertes,
+  Mínimo · España · Salida en corto y pie «Revisa · N avisos en la ficha» con
+  la fecha; el aviso crítico va entero. Selección arriba dentro de
+  Principales y después «Resto de principales». Sin grupos por proveedor en
+  el móvil. Primera fila en y=520 a 390×844; filas de 207 px.
+- **Ficha:** apartado «Transparencia: lo que hemos comprobado» en el diálogo
+  y en `/ofertas/<slug>` (la quinta comprobación la mira `ficha-pagina` con la
+  fecha de hoy). Nada de notas «x/5».
+- **Plataformas:** miniatura del radar y «0 € · Por aparecer en el radar» en
+  la franja plegada; recuentos en los chips; nombres cortos en la galería y
+  en el radar grande (también en la portada de escritorio).
+- **Técnica:** CSS 179 614 B (poda de 31 declaraciones pisadas y comentarios
+  largos); JS 371 908 B; CLS 0 al cargar en el móvil (0,033 con 4G lento y CPU
+  ×4); 59 frases nuevas en inglés y patrones para «8 de 8 principales» y
+  «cifras vigentes 7 d»; movimiento reducido también si cambia con la página
+  abierta.
+- **Pruebas cambiadas** (con comentario que cita la decisión): etiqueta
+  «Ilustración» de las portadas, miniatura móvil centrada, `title=` del
+  título, etiquetas «Mínimo · España · Salida», «Doc.» en su span y
+  agrupación por proveedor solo en escritorio. 14 pruebas nuevas en
+  `probar-web.mjs` y 1 en `probar-fichas.cjs`. `npm test` completo en verde
+  (web 567, fichas 66, precarga 32, app 394, acceso 144).
+- **Pendiente:**
+  - sellar (`auditar-relanzamiento.mjs` → `estado.json`), unir con merge
+    commit y pedir permiso a Víctor para preview, producción y OTA;
+  - la app no cambia todavía (`transparencia-contenido.js` está listo);
+  - en escritorio los chips siguen con el nombre largo, como pedía «no
+    cambiar de aspecto»; si Víctor quiere el corto también ahí, es un cambio
+    de una línea en el CSS.
+
 ## 3 de noviembre de 2026 (tarde, 5) · Claude · el worker da 404 a lo retirado aunque Cloudflare guarde copia
 
 Víctor: «arréglalo», sobre la ficha de mF-ONE que seguía saliendo en
