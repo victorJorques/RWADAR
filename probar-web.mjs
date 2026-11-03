@@ -14,6 +14,11 @@ const lee = nombre => fs.readFileSync(path.join(sitio, nombre), 'utf8');
 const require = createRequire(import.meta.url);
 const { adelgazarJS, sinComentariosJS } = require('./rwadar-adelgazar.js');
 const { leerBloquesCatalogo } = require('./rwadar-fichas.js');
+// Cantidades del catálogo publicado, leídas de su propio manifiesto: desde el
+// 02/11/2026 un lote coherente puede tener más o menos fichas que 49.
+const CATALOGO_REAL = leerBloquesCatalogo(fs.readFileSync(path.join(raiz, 'rwadar-site', 'assets', 'catalogo-publico-20261022.js'), 'utf8'));
+const N_OFERTAS = CATALOGO_REAL.ofertas.length, N_PLATAFORMAS = CATALOGO_REAL.plataformas.length;
+const COL_REAL = { ...CATALOGO_REAL.ofertas[0].colecciones_esperadas };
 const {
   ARCHIVOS_PUBLICABLES,
   ORIGEN_LEGADO,
@@ -2003,11 +2008,11 @@ prueba('el simulador del generador se puede ensayar de forma aislada', inicioSim
 const simulacionPublicador = vm.runInNewContext(
   publicador.slice(inicioSimulador, finSimulador) + '\n({capturado, contexto});',
   { vm, script: js, scriptCatalogo: jsCatalogo, URL, console, require }, { timeout: 20000 });
-prueba('el simulador real conserva URL HTTPS, las 26 plataformas y las 49 referencias documentadas',
+prueba(`el simulador real conserva URL HTTPS, las ${N_PLATAFORMAS} plataformas y las ${N_OFERTAS} referencias documentadas`,
   vm.runInContext("new URL('https://example.test/fuente').protocol", simulacionPublicador.contexto) === 'https:' &&
   (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === 26 &&
-  (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === 49 &&
-  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}">Doc\. /g) || []).length === 49);
+  (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === N_OFERTAS &&
+  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}">Doc\. /g) || []).length === N_OFERTAS);
 // Ejecutar el cliente entero, con un reloj y un DOM persistentes como los de
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
 const fechaLoteEmbebido = jsCatalogo.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
@@ -2084,23 +2089,23 @@ const cargaSnapshotLocalParaPruebas = js.slice(js.indexOf('async function cargar
   const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto;
   prueba('el JS público reducido activa Buscar sin fixture ni controles locales',
     !p.obtiene('escaparateBusqueda').hidden&&p.obtiene('escaparateLocalAviso').hidden&&p.obtiene('emiTipoFiltros').hidden&&
-    vm.runInContext('!MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL===null&&P.length===26&&EMI.length===49&&FUERA.length===4',c)&&
+    vm.runInContext('!MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL===null&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length===4',c)&&
     (p.escuchas.get('emiBuscar:input')||[]).length===1);
-  p.obtiene('emiBuscar').value='Houston 3';p.escuchas.get('emiBuscar:input')[0]();
+  p.obtiene('emiBuscar').value='Klagenfurt';p.escuchas.get('emiBuscar:input')[0]();
   prueba('Buscar público reducido encuentra la ficha de reventa y cambia de colección',
-    p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="reental-secundario-houston-3"')&&
+    p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="local-de-estanco-klagenfurt"')&&
     !p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="boss-info"')&&
-    vm.runInContext("emiColeccion==='secundario'&&emiBusquedaLocal==='Houston 3'",c));
+    vm.runInContext("emiColeccion==='secundario'&&emiBusquedaLocal==='Klagenfurt'",c));
   vm.runInContext('activarBusquedaOfertas();activarBusquedaOfertas()',c);
   prueba('reinicializar Buscar público no duplica eventos ni sustituye el catálogo',
     (p.escuchas.get('emiBuscar:input')||[]).length===1&&
-    vm.runInContext('P.length===26&&EMI.length===49&&FUERA.length===4&&ESCAPARATE_LOCAL===null',c));
+    vm.runInContext('P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length===4&&ESCAPARATE_LOCAL===null',c));
   p.obtiene('emiBuscar').value='';p.escuchas.get('emiBuscar:input')[0]();
   vm.runInContext("emiColeccion='principales'",c);
   p.escuchas.get('emiFiltros:click')[0]({target:{closest:()=>({getAttribute:()=> 'Tesoro y fondos'})}});
   p.obtiene('emiOrden').value='min';p.escuchas.get('emiOrden:change')[0]();
   prueba('filtro y orden públicos reducidos funcionan con el catálogo íntegro sin fixture',
-    vm.runInContext("emiCat==='Tesoro y fondos'&&emiOrden==='min'&&P.length===26&&EMI.length===49&&FUERA.length===4",c)&&
+    vm.runInContext("emiCat==='Tesoro y fondos'&&emiOrden==='min'&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length===4",c)&&
     p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="spiko-letras-del-tesoro-euro"')&&
     !p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="boss-info"'));
   const recarga=pestanaCatalogo({codigo:jsPublicado});
@@ -2113,11 +2118,11 @@ for(const fallo of ['incompleto','transporte']){
   const antes=vm.runInContext('JSON.stringify([P,EMI,FUERA])',c);
   c.fetch=async()=>fallo==='incompleto'?{ok:true,status:200,json:async()=>[]}:{ok:false,status:500};
   const error=await capturaError(vm.runInContext('alDia()',c));
-  p.obtiene('emiBuscar').value='Houston 3';p.escuchas.get('emiBuscar:input')[0]();
+  p.obtiene('emiBuscar').value='Klagenfurt';p.escuchas.get('emiBuscar:input')[0]();
   prueba('el JS público reducido conserva el lote completo y Buscar tras fallo '+fallo,Boolean(error)&&
     antes===vm.runInContext('JSON.stringify([P,EMI,FUERA])',c)&&
     !p.obtiene('escaparateBusqueda').hidden&&p.obtiene('escaparateLocalAviso').hidden&&
-    p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="reental-secundario-houston-3"'));
+    p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="local-de-estanco-klagenfurt"'));
 }
 {
   const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto,focos=[];
@@ -2172,8 +2177,8 @@ for(const fallo of ['incompleto','transporte']){
   c.fetch=async(url,opciones)=>{llamadas.push({url,opciones});return {ok:true,json:async()=>
     JSON.parse(JSON.stringify(url.includes('manifest.json')?activosEditoriales.manifiesto:c.snapshot))};};
   const resultado=await vm.runInContext('('+cargaSnapshotLocalParaPruebas+')()',c);
-  prueba('snapshot local V2 muestra las 26/49/4 y las colecciones 24/21/4 con arrays de identidad conservada',resultado===true&&
-    vm.runInContext("P===arraysAntes.plataformas&&EMI===arraysAntes.ofertas&&FUERA===arraysAntes.descartes&&P.length===26&&EMI.length===49&&FUERA.length===4&&ESCAPARATE_LOCAL===null&&['principales','secundario','en_camino'].every((k,i)=>EMI.filter(o=>o.coleccion===k).length===[24,21,4][i])",c));
+  prueba(`snapshot local V2 muestra las ${N_PLATAFORMAS}/${N_OFERTAS}/4 y las colecciones de su manifiesto con arrays de identidad conservada`,resultado===true&&
+    vm.runInContext("P===arraysAntes.plataformas&&EMI===arraysAntes.ofertas&&FUERA===arraysAntes.descartes&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length===4&&ESCAPARATE_LOCAL===null&&['principales','secundario','en_camino'].every(k=>EMI.filter(o=>o.coleccion===k).length===EMI[0].colecciones_esperadas[k])",c));
   prueba('snapshot local V2 abre fichas normales y conserva las fechas y metadatos del lote',
     vm.runInContext('Boolean(ofertaDetalleLocalPorSlug(EMI[0].slug))&&P[0].verificacionLocal.verificadoEl===snapshot.fuente.revision&&EMI.every(o=>o.version_esquema===2&&o.revisionId===P[0].revisionId)',c));
   prueba('la carga aislada solo pide snapshot e imágenes editoriales con credenciales omitidas',
@@ -2209,15 +2214,18 @@ for(const [nombre,alterar] of [
   c.fetch=async url=>({ok:true,json:async()=>url.includes('manifest.json')?activosEditoriales.manifiesto:c.snapshot});
   await vm.runInContext('('+cargaSnapshotLocalParaPruebas+')()',c);
   prueba('un snapshot completo envejecido sigue disponible con aviso y sin cifras vencidas',
-    vm.runInContext('P.length===26&&EMI.length===49&&CATALOGO_CADUCADO&&!CATALOGO_EMBEBIDO_BLOQUEADO',c)&&/cifras por actualizar/.test(p.obtiene('emiLista').innerHTML));
+    vm.runInContext('P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&CATALOGO_CADUCADO&&!CATALOGO_EMBEBIDO_BLOQUEADO',c)&&/cifras por actualizar/.test(p.obtiene('emiLista').innerHTML));
 }
 {
   const p=pestanaCatalogo(), c=p.contexto;
   const todo=vm.runInContext("tarjetasPorProveedorHtml(EMI.filter(o=>o.coleccion==='principales'))",c);
+  const esperado=JSON.parse(vm.runInContext("(()=>{const l=EMI.filter(o=>o.coleccion==='principales'),g={};"+
+    "l.forEach(o=>{g[o.plataformaSlug]=(g[o.plataformaSlug]||0)+1});return JSON.stringify({n:l.length,g:Object.values(g).filter(x=>x>1)})})()",c));
   prueba('agrupar proveedores conserva cada referencia individual y el nombre común sin escoger un ticker',
-    (todo.match(/data-oferta-detalle=/g)||[]).length===24&&/Ver 12 referencias/.test(todo)&&/Ver 5 referencias/.test(todo)&&
-    /<summary><b>Aktionariat<\/b>/.test(todo)&&/Cada una conserva su fuente/.test(todo));
-  vm.runInContext("emiBusquedaLocal='Houston'",c);
+    (todo.match(/data-oferta-detalle=/g)||[]).length===esperado.n&&esperado.g.length>0&&
+    esperado.g.every(k=>new RegExp('Ver '+k+' referencias').test(todo))&&
+    /<summary><b>[^<]+<\/b>/.test(todo)&&/Cada una conserva su fuente/.test(todo));
+  vm.runInContext("emiBusquedaLocal='Klagenfurt'",c);
   const filtrado=vm.runInContext("tarjetasPorProveedorHtml(EMI.filter(o=>o.coleccion==='secundario'&&coincideBusquedaOfertaLocal(o)))",c);
   prueba('una búsqueda exacta recupera fichas individuales sin encerrarlas en la agrupación',
     !/class="ofertas-grupo"/.test(filtrado)&&/data-oferta-detalle=/.test(filtrado));
@@ -2231,22 +2239,24 @@ for(const [nombre,alterar] of [
   const p=pestanaCatalogo(),c=p.contexto,ampliado=snapshotLocalV2(c);
   const nueva={...ampliado.ofertas.find(o=>o.coleccion==='principales'),slug:'ampliacion-sintetica-validada'};
   ampliado.ofertas.push(nueva);
-  [...ampliado.plataformas,...ampliado.ofertas].forEach(x=>{x.ofertas_esperadas=50;x.colecciones_esperadas={principales:25,secundario:21,en_camino:4};});
+  [...ampliado.plataformas,...ampliado.ofertas].forEach(x=>{x.ofertas_esperadas=N_OFERTAS+1;x.colecciones_esperadas={...COL_REAL,principales:COL_REAL.principales+1};});
   c.ampliado=ampliado;c.anterior=snapshotLocalV2(c);
-  prueba('el cliente acepta una ampliación 50+ solo con todas las filas y conteos de colección coherentes',
-    vm.runInContext('validarEscaparateLocalV2(ampliado).ofertas.length===50',c));
+  prueba('el cliente acepta una ampliación solo con todas las filas y conteos de colección coherentes',
+    vm.runInContext('validarEscaparateLocalV2(ampliado).ofertas.length===ampliado.ofertas.length',c)&&ampliado.ofertas.length===N_OFERTAS+1);
   const incompleto=structuredClone(ampliado);incompleto.ofertas.pop();c.incompleto=incompleto;
   prueba('la ampliación declarada no acepta una respuesta truncada al tamaño del lote anterior',
     Boolean(await capturaError(Promise.resolve().then(()=>vm.runInContext('validarEscaparateLocalV2(incompleto)',c)))));
   vm.runInContext('recordarManifiestoCatalogoV2(ampliado.plataformas)',c);
-  prueba('tras aceptar 50 referencias acepta un lote coherente de 49 (retirada deliberada, 02/11/2026)',
-    vm.runInContext('validarEscaparateLocalV2(anterior).ofertas.length===49',c));
-  const reducido=snapshotLocalV2(c),quitar=new Set(reducido.ofertas.filter(o=>o.coleccion==='secundario').slice(0,20).map(o=>o.slug));
+  prueba('tras aceptar una ampliación acepta un lote coherente más pequeño (retirada deliberada, 02/11/2026)',
+    vm.runInContext('validarEscaparateLocalV2(anterior).ofertas.length===anterior.ofertas.length',c)&&c.anterior.ofertas.length===N_OFERTAS);
+  const reducido=snapshotLocalV2(c),secundarias=reducido.ofertas.filter(o=>o.coleccion==='secundario');
+  const quitar=new Set(secundarias.slice(0,Math.max(1,secundarias.length-1)).map(o=>o.slug));
   reducido.ofertas=reducido.ofertas.filter(o=>!quitar.has(o.slug));
-  [...reducido.plataformas,...reducido.ofertas].forEach(x=>{x.ofertas_esperadas=29;x.colecciones_esperadas={principales:24,secundario:1,en_camino:4};});
+  [...reducido.plataformas,...reducido.ofertas].forEach(x=>{x.ofertas_esperadas=reducido.ofertas.length;
+    x.colecciones_esperadas={...COL_REAL,secundario:COL_REAL.secundario-quitar.size};});
   c.reducido=reducido;
   prueba('el cliente acepta un lote reducido a propósito si todas sus filas y colecciones cuadran con su manifiesto',
-    vm.runInContext('validarEscaparateLocalV2(reducido).ofertas.length===29',c));
+    vm.runInContext('validarEscaparateLocalV2(reducido).ofertas.length===reducido.ofertas.length',c)&&reducido.ofertas.length===N_OFERTAS-quitar.size);
   const reducidoCortado=structuredClone(reducido);reducidoCortado.ofertas.pop();c.reducidoCortado=reducidoCortado;
   prueba('un lote reducido al que le falta una fila declarada se sigue rechazando',
     Boolean(await capturaError(Promise.resolve().then(()=>vm.runInContext('validarEscaparateLocalV2(reducidoCortado)',c)))));
@@ -2269,7 +2279,7 @@ for (const causa of ['medianoche','reactivacion','consulta-limitada']) {
   else if (causa === 'reactivacion') p.escuchas.get('visibilitychange').forEach(fn => fn());
   else await vm.runInContext('mirar()', c);
   prueba(`pestaña ${causa}: al caducar, radar, vistas y ofertas siguen visibles con el aviso de revisión pendiente`,
-    vm.runInContext('P.length===26&&EMI.length===49&&!CATALOGO_EMBEBIDO_BLOQUEADO&&CATALOGO_CADUCADO',c) &&
+    vm.runInContext('P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&!CATALOGO_EMBEBIDO_BLOQUEADO&&CATALOGO_CADUCADO',c) &&
     /data-abrir=/.test(p.obtiene('grid').innerHTML) && /data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML) &&
     p.obtiene('avisoCatalogoRadar').hidden===false && /^Revisión pendiente\. Estos datos se revisaron el /.test(p.obtiene('avisoCatalogoRadar').textContent) &&
     p.obtiene('avisoCatalogoOfertas').textContent===p.obtiene('avisoCatalogoRadar').textContent &&
@@ -2277,7 +2287,7 @@ for (const causa of ['medianoche','reactivacion','consulta-limitada']) {
   p.reloj(new Date(Date.parse(corte)+30*86400000).toISOString());
   vm.runInContext('refrescarVigenciaOfertas()', c);
   prueba(`pestaña ${causa}: un mes después sigue visible y ninguna cifra comercial vencida se muestra`,
-    vm.runInContext("P.length===26&&EMI.length===49&&EMI.filter(o=>o.coleccion==='principales').every(o=>estadoVigenciaLocal(o).clase==='caducado')",c) &&
+    vm.runInContext("P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&EMI.filter(o=>o.coleccion==='principales').every(o=>estadoVigenciaLocal(o).clase==='caducado')",c) &&
     /data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML) && /cifras por actualizar/.test(p.obtiene('emiLista').innerHTML) &&
     p.obtiene('avisoCatalogoRadar').hidden===false);
 }
@@ -2287,7 +2297,7 @@ for (const vacia of ['plataformas','ofertas']) {
   vm.runInContext('render()', c);
   const error=await capturaError(vm.runInContext('alDia()',c));
   prueba(`una vista ${vacia} vacía con otra HTTP 500 conserva la última copia completa y avisa`, Boolean(error) &&
-    vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&CATALOGO_SIN_COMPROBAR&&P.length===26&&EMI.length===49',c) &&
+    vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&CATALOGO_SIN_COMPROBAR&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas',c) &&
     /data-abrir=/.test(p.obtiene('grid').innerHTML) && /data-oferta-detalle=/.test(p.obtiene('emiLista').innerHTML) &&
     /^No hemos podido comprobar la revisión más reciente/.test(p.obtiene('avisoCatalogoRadar').textContent));
 }
@@ -2310,14 +2320,14 @@ for (const vacia of ['plataformas','ofertas']) {
     : {ok:true,status:200,json:async()=>[]};
   const error=await capturaError(vm.runInContext('alDia()',c));
   prueba('sin la tabla de la orden (base antigua), las vistas vacías no ocultan el catálogo', Boolean(error) &&
-    vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===26&&EMI.length===49',c));
+    vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas',c));
 }
 {
   const p=pestanaCatalogo(), c=p.contexto;
   c.fetch=async()=>({ok:false,status:500});
   const error=await capturaError(vm.runInContext('alDia()',c));
   prueba('un fallo de transporte aislado conserva solo el lote completo que todavía está vigente', Boolean(error) &&
-    vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===26&&EMI.length===49',c));
+    vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas',c));
 }
 prueba('las etiquetas públicas de ordenación describen los comparadores documentales reales',
   /value="cierra">Fuente y fecha/.test(html) && /value="rent">Cifra publicada por la plataforma/.test(html) &&
@@ -3127,7 +3137,7 @@ try {
   prueba('el endpoint local entrega por defecto el snapshot publicable V2 completo sin caché',
     escaparateRespuesta.status===200 && escaparateRespuesta.headers.get('cache-control')==='no-store' &&
     escaparate.versionEsquema===2 && escaparate.lote==='snapshot-publicable'&&escaparate.preparado===false&&
-    escaparate.plataformas?.length===26&&escaparate.ofertas?.length===49&&escaparate.descartes?.length===4&&
+    escaparate.plataformas?.length===N_PLATAFORMAS&&escaparate.ofertas?.length===N_OFERTAS&&escaparate.descartes?.length===4&&
     escaparate.ofertas.every(o=>o.revisionId===escaparate.plataformas[0].revisionId)&&!escaparate.secundario&&!escaparate.exclusionesOfertas);
   const imagenNombre = activosEditoriales.fichas[0].archivo;
   const imagenRespuesta = await fetch(`http://127.0.0.1:${puerto}/ofertas-editoriales/${imagenNombre}`);

@@ -1,0 +1,14 @@
+{
+  "tipo": "correccion_documental",
+  "fecha": "2026-11-03",
+  "revisionAnterior": "f2be1f5e-2bfa-daa1-095b-c0b96e9206aa",
+  "motivo": "Un localizador técnico de una referencia de Aktionariat coincidía con el patrón «on…=» de la compuerta CSP del publicador.",
+  "oferta": "aktionariat",
+  "antes": "sellingEnabled=false; onlyBuySide=true.",
+  "despues": "venta desactivada (sellingEnabled: no) y solo lado comprador (onlyBuySide: sí).",
+  "copiasLiterales": [
+    "radar-canonico-26.json",
+    "escaparate-publicacion.json",
+    "manifiesto-catalogo.json"
+  ]
+}
