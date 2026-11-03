@@ -32,8 +32,9 @@ const hayBandera = nombre => process.argv.includes(`--${nombre}`);
 const hoyEspana = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(new Date());
 const FECHA = arg('fecha') || hoyEspana();
 assert.match(FECHA, /^\d{4}-\d{2}-\d{2}$/);
-const anteriores = fs.readdirSync(IMPORT).map(d => d.match(/^catalogo-(\d{4}-\d{2}-\d{2})-v2$/)?.[1])
-  .filter(f => f && f < FECHA && fs.existsSync(path.join(VERIF, `${f}-v2`, 'escaparate-publicacion.json'))).sort();
+const anteriores = fs.readdirSync(IMPORT).map(d => d.match(/^catalogo-(\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?)-v2$/)?.[1])
+  .filter(f => f && f.slice(0, 10) < FECHA && fs.existsSync(path.join(VERIF, `${f}-v2`, 'escaparate-publicacion.json')))
+  .sort((a, b) => a.slice(0, 10).localeCompare(b.slice(0, 10)) || Number(a.slice(11) || 1) - Number(b.slice(11) || 1));
 const DESDE = anteriores.at(-1);
 assert.ok(DESDE, 'no hay ninguna revisión anterior de la que partir');
 const fES = iso => iso.split('-').reverse().join('/');

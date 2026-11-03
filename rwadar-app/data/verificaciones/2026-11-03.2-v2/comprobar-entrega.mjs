@@ -1,5 +1,4 @@
-// Ensayo local de la entrega del 04/11 en PGlite (sin red). El 03/11 se ejecuta
-// con el reloj del ensayo (-r ./…/reloj-04-11.cjs); el 04/11, sin él.
+// Ensayo local de la segunda entrega del 03/11 («2026-11-03.2») en PGlite (sin red).
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -18,9 +17,9 @@ const { cargarFuentesLocales, construirSqlImportacion, validarLotePublicoV2,
 const { resumenOferta } = require(path.join(ROOT, 'rwadar-site/assets/ficha-editorial-20261022.js'));
 const leer = p => JSON.parse(fs.readFileSync(p, 'utf8'));
 const sha = p => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
-const lote = path.join(APP, 'data/importaciones/catalogo-2026-11-04-v2');
+const lote = path.join(APP, 'data/importaciones/catalogo-2026-11-03.2-v2');
 const revision = leer(path.join(lote, 'revision.json'));
-const nueva = construirSqlImportacion(cargarFuentesLocales(ROOT, { revision: '2026-11-04', versionEsquema: 2 }));
+const nueva = construirSqlImportacion(cargarFuentesLocales(ROOT, { revision: '2026-11-03.2', versionEsquema: 2 }));
 assert.equal(revision.revisionId, nueva.revisionId);
 assert.equal(fs.readFileSync(path.join(lote, 'catalogo.sql'), 'utf8'), nueva.sql);
 const aplicar = fs.readFileSync(path.join(lote, 'aplicar-y-aprobar.sql'), 'utf8');
@@ -63,7 +62,7 @@ try {
     const a = antes.o.find(x => x.slug === o.slug);
     if (!tocadas.includes(o.slug)) assert.deepEqual(o.documentacion, a.documentacion, o.slug);
   }
-  const r = validarLotePublicoV2(despues.p, despues.o, { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: '2026-11-04', permitirAmpliacion: true });
+  const r = validarLotePublicoV2(despues.p, despues.o, { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: '2026-11-03', permitirAmpliacion: true });
   assert.equal(r.fecha, '2026-11-02');
   // Qué verá el cliente en la tarjeta, con el mismo lector de la web.
   const tarjetas = {};
@@ -71,7 +70,7 @@ try {
     const o = despues.o.find(x => x.slug === slug);
     const oferta = { ...o, verificadaEl: o.verificada_el, vigenciaDias: o.vigencia_dias, estadoRevision: o.estado_revision,
       disponibleEs: o.disponible_es, plataformaSlug: o.plataforma_slug };
-    for (const dia of ['2026-11-04', '2026-11-09']) {
+    for (const dia of ['2026-11-03', '2026-11-09']) {
       const s = resumenOferta(oferta, [], new Date(`${dia}T12:00:00Z`));
       tarjetas[`${slug} ${dia}`] = { minimo: s.minimo.unidadDocumentada || s.minimo.texto, espana: s.accesoEspana.texto, salida: s.salida.texto };
       assert.equal(s.accesoEspana.estado, 'si', `${slug} ${dia}: acceso desde España visible`);

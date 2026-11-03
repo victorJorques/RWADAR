@@ -1,8 +1,7 @@
-// Entrega documental del 04/11/2026 sobre la revisión publicada del 03/11
-// (a4792f79). Preparación LOCAL: sin red ni servicios remotos.
+// Segunda entrega documental del 03/11/2026 (revisión «2026-11-03.2») sobre la
+// publicada del mismo día (a4792f79). Preparación LOCAL: sin red ni servicios remotos.
 //
-//   node rwadar-app/data/verificaciones/2026-11-04-v2/preparar-entrega.mjs
-//   (antes del 04/11, con el reloj del ensayo: node -r ./rwadar-app/data/verificaciones/2026-11-04-v2/reloj-04-11.cjs …)
+//   node rwadar-app/data/verificaciones/2026-11-03.2-v2/preparar-entrega.mjs
 //
 // Dos cambios, por decisión de Víctor del 03/11:
 // 1. Cifras visibles 7 días en vez de 1 (vigenciaDias 7 en las 23 ofertas,
@@ -22,7 +21,7 @@ const DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(DIR, '../../../..');
 const require = createRequire(import.meta.url);
 const { cargarFuentesLocales, construirSqlImportacion } = require('../../../catalogo-publico.js');
-const FECHA = '2026-11-04', DESDE = '2026-11-03';
+const FECHA = '2026-11-03', REVISION = '2026-11-03.2', DESDE = '2026-11-03';
 const PREVIA = 'a4792f79-0f4d-361b-a14d-3eeb95bf7499'; // publicada; leída como visitante el 03/11
 const CONSULTA = '2026-11-02'; // revisión independiente de estos datos
 const leer = p => JSON.parse(fs.readFileSync(p, 'utf8'));
@@ -96,14 +95,14 @@ for (const [slug, refs] of Object.entries(NUEVAS)) {
 const CSP = /<style\b|\sstyle\s*=|\son[a-z]+\s*=|<script/i;
 assert.ok(!CSP.test(JSON.stringify(documentos)) && !CSP.test(JSON.stringify(escaparate)), 'texto que la compuerta CSP rechazaría');
 escribir(path.join(DIR, 'documentacion-ofertas.json'), documentos);
-escribir(path.join(DIR, `contraste-${FECHA}.json`), { tipo: 'entrega_documental', fecha: FECHA, revisionAnterior: PREVIA,
+escribir(path.join(DIR, `contraste-${REVISION}.json`), { tipo: 'entrega_documental', fecha: FECHA, etiqueta: REVISION, revisionAnterior: PREVIA,
   decision: 'Víctor, 03/11/2026: cifras visibles 7 días; tarjetas con mínimo, acceso desde España y salida en castellano.',
   vigenciaDias: { antes: 1, despues: 7, desde: '2026-11-02', hasta: '2026-11-09' },
   referenciasNuevas: Object.fromEntries(Object.entries(NUEVAS).map(([s, r]) => [s, r.length])),
   copiasLiterales: ['radar-canonico-26.json', 'manifiesto-catalogo.json'] });
 
-const nueva = construirSqlImportacion(cargarFuentesLocales(ROOT, { revision: FECHA, versionEsquema: 2 }));
-const destino = path.join(ROOT, `rwadar-app/data/importaciones/catalogo-${FECHA}-v2`);
+const nueva = construirSqlImportacion(cargarFuentesLocales(ROOT, { revision: REVISION, versionEsquema: 2 }));
+const destino = path.join(ROOT, `rwadar-app/data/importaciones/catalogo-${REVISION}-v2`);
 escribir(path.join(destino, 'catalogo.sql'), nueva.sql);
 const guarda = `do $guarda$
 declare actual uuid; retirada boolean;
@@ -134,7 +133,7 @@ begin
     raise exception 'Catálogo incompleto: se conserva el lote anterior';
   end if;
   update rwadar_catalogo.revisiones set estado = 'aprobada', aprobada_el = now(),
-    aprobada_referencia = 'Entrega documental 04/11/2026: cifras visibles 7 días y referencias en castellano de mínimo, acceso desde España y salida; datos y fechas de comprobación sin cambios. Decisión y autorización de Víctor (03/11).'
+    aprobada_referencia = 'Segunda entrega documental del 03/11/2026: cifras visibles 7 días y referencias en castellano de mínimo, acceso desde España y salida; datos y fechas de comprobación sin cambios. Decisión y autorización de Víctor (03/11).'
     where id = v and estado = 'borrador';
   if not exists (select 1 from rwadar_catalogo.revision_publicable_v2 where id = v) then
     raise exception 'Entrega no publicable: se deshace la transacción completa';
@@ -142,14 +141,14 @@ begin
 end $aprobar$;
 `;
 escribir(path.join(destino, 'aplicar-y-aprobar.sql'),
-  '-- Entrega documental del 04/11/2026 sobre la revisión del 03/11. Autorizada por Víctor.\n' +
+  '-- Segunda entrega documental del 03/11/2026 (2026-11-03.2) sobre la revisión del mismo día. Autorizada por Víctor.\n' +
   '-- Cifras visibles 7 días y referencias en castellano; no renueva radar ni cifras.\n' +
   nueva.sql.replace('-- El lote entra como BORRADOR. Este fichero nunca lo aprueba ni lo publica.',
     '-- Este aplicador importa y aprueba al final, únicamente si pasan todas las guardas.')
     .replace('begin;', 'begin isolation level serializable;\n' + guarda)
     .replace(/commit;\n$/, aprobar + 'commit;\n'));
 escribir(path.join(destino, 'revision.json'), { versionEsquema: 2, revisionId: nueva.revisionId, hash: nueva.hash,
-  revisionAnterior: PREVIA, revisionAnteriorComprobadaEnRemoto: true, fechaEntregaDocumental: FECHA, fechaRadar: '2026-11-02',
+  revisionAnterior: PREVIA, revisionAnteriorComprobadaEnRemoto: true, fechaEntregaDocumental: FECHA, etiqueta: REVISION, fechaRadar: '2026-11-02',
   plataformas: 26, ofertas: 23, colecciones: { principales: 6, secundario: 14, en_camino: 3 },
   vigenciaDias: 7, referenciasNuevas: 15, nuevasAltas: 0, estado: 'borrador', aplicadoEnRemoto: false, publicacionWeb: false });
 console.log(JSON.stringify({ revisionId: nueva.revisionId, previa: PREVIA, sha256: sha(path.join(destino, 'aplicar-y-aprobar.sql')) }));

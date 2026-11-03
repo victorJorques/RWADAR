@@ -49,7 +49,9 @@ const HOJA = (args.find(a => a.startsWith('--hoja=')) || '').slice('--hoja='.len
 // El catálogo de referencia es la última revisión V2 del repositorio.
 function catalogoVigente() {
   const base = path.join(RAIZ, 'rwadar-app', 'data', 'verificaciones');
-  const carpetas = fs.readdirSync(base).filter(n => /^\d{4}-\d{2}-\d{2}-v2$/.test(n)).sort();
+  const clave = n => n.slice(0, 10) + String(Number(n.slice(11, -3) || 1)).padStart(3, '0');
+  const carpetas = fs.readdirSync(base).filter(n => /^\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?-v2$/.test(n))
+    .sort((a, b) => clave(a).localeCompare(clave(b)));
   for (const carpeta of carpetas.reverse()) {
     const ruta = path.join(base, carpeta, 'escaparate-publicacion.json');
     if (fs.existsSync(ruta)) return { carpeta, ofertas: JSON.parse(fs.readFileSync(ruta, 'utf8')).ofertas };

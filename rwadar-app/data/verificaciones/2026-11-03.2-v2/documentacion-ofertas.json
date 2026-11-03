@@ -1,6 +1,6 @@
 {
   "spiko-letras-del-tesoro-euro": {
-    "revisadaEl": "2026-11-04",
+    "revisadaEl": "2026-11-03",
     "descripcion": "Fondo monetario UCITS en euros que invierte en letras del Tesoro de la zona euro, con acciones registradas en blockchain. Valor liquidativo variable y capital no garantizado. Qué se adquiere: Acciones de capitalización de la clase EUR (FR001400ODL1) del compartimento, inscritas a nombre del titular en un registro DLT; el valor sigue el valor liquidativo diario.",
     "fuentes": [
       "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
@@ -278,7 +278,7 @@
     ]
   },
   "spiko-letras-del-tesoro-dolar": {
-    "revisadaEl": "2026-11-04",
+    "revisadaEl": "2026-11-03",
     "descripcion": "Fondo monetario UCITS en dólares que invierte en letras del Tesoro de Estados Unidos, con acciones registradas en blockchain. Para quien invierte en euros, el resultado depende también del tipo de cambio. Qué se adquiere: Acciones de capitalización de la clase USD (FR001400ODM9) del compartimento, inscritas a nombre del titular en DLT. Existe una clase EUR no cubierta (FR001400SBD3) con exposición al dólar.",
     "fuentes": [
       "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
@@ -425,7 +425,7 @@
     ]
   },
   "robinhood-classic-stock-tokens": {
-    "revisadaEl": "2026-11-04",
+    "revisadaEl": "2026-11-03",
     "descripcion": "Derivados sobre más de 2.000 acciones y ETP de EE. UU. representados por un token no transferible; sigues el precio del subyacente sin ser su propietario. Qué se adquiere: Derecho contractual de liquidación en efectivo frente a Robinhood Europe ligado al precio de una acción o ETP cotizado en EE. UU.; sin propiedad ni voto sobre el subyacente; importe equivalente a dividendos si el subyacente paga",
     "fuentes": [
       "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
@@ -693,7 +693,7 @@
     ]
   },
   "prosegur-digital-gold": {
-    "revisadaEl": "2026-11-04",
+    "revisadaEl": "2026-11-03",
     "descripcion": "Tokens que representan gramos de oro físico custodiado por Prosegur en España. El valor sigue al precio del oro y solo se pueden revender a Prosegur Crypto. Qué se adquiere: Derecho contractual sobre una cantidad equivalente de oro físico segregado en un inventario fungible (no sobre un lingote concreto); solo revendible a Prosegur Crypto; canje físico por lingote con 1.000 tokens.",
     "fuentes": [
       "https://www.prosegurcrypto.com/digital-gold",
@@ -923,7 +923,7 @@
     ]
   },
   "aktionariat": {
-    "revisadaEl": "2026-11-04",
+    "revisadaEl": "2026-11-03",
     "descripcion": "Acciones tokenizadas de Aktionariat AG, empresa suiza de software para tokenizar acciones, vendidas directamente por el emisor a precio fijo. La recompra por el emisor está cerrada: para vender hay que encontrar comprador entre accionistas. Qué se adquiere: Acciones nominativas (Namenaktien, nominal 0,10 CHF) emitidas como valores registrados en DLT (Registerwertrechte, art. 973d CO), envueltas en el token DAKS sujeto al Token Holder Agreement (arrastre/drag-along 75 % y acompañamiento/tag-along). Los derechos de socio (voto, dividendo) exigen inscribirse en el libro registro de acciones del emisor.",
     "fuentes": [
       "https://shares.aktionariat.com",
