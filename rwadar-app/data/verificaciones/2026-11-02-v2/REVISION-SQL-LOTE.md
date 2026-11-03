@@ -259,3 +259,45 @@ Comprobaciones propias (scripts en el scratchpad, no en el repositorio): inventa
 de comillas y bloques `$…$`; casos negativos A–G de la guarda en PGlite; comparación tarjeta a tarjeta con la
 propuesta; cruce de cifras con claims; fechas; simulación del encuadre de las fotos. No he ejecutado nada contra
 Supabase ni contra servicios remotos, ni he publicado ni hecho commits.
+
+## 8. Comprobación de cambios (03/11/2026)
+
+Revisión de los commits `e465210` (cambios en `preparar-lote.mjs` y lote regenerado) y `338faff` (nueva foto de
+Robinhood), solo con comprobaciones locales.
+
+**Diferencias en el escaparate** (`git diff a5ef05a..HEAD -- …/escaparate-publicacion.json`): solo cambian avisos y
+métricas, en estas fichas:
+
+| Ficha | Cambio | ¿Pedido? |
+|---|---|---|
+| terreno-con-arrendamiento-billa | quitada la métrica «Suscrito / umbral … (API 01/11/2026)»; queda la del 02/11 | sí (1) |
+| terreno-con-arrendamiento-billa | aviso → «El reparto que prevé el emisor no está garantizado y todavía no se ha pagado ninguno.» | sí (2) |
+| boss-info | aviso → «El precio del emisor está por encima de la mejor oferta de venta entre accionistas.» | sí (3) |
+| mf-one | quitada la métrica «Valor por token · 30/10/2026: 1,1334 USD (oráculo)» | sí (4) |
+| boss-info, switzerlend | quitado el aviso «El portal no indica qué países pueden comprar…», que repetía «Acceso desde España no confirmado…» (este se mantiene) | no, pero correcto |
+| mf-one | aviso → «El 01/11/2026 (domingo) la suscripción figuraba pausada…; el 02/11 volvía a estar activa.» | no, pero respaldado: REVISION-RETIRADAS, `paused()=false` el 02/11 a las 16:32Z |
+
+Ninguna ficha tiene ya etiquetas de métrica repetidas. No hay más cambios en el escaparate.
+
+**SQL nuevo**
+- `aplicar-y-aprobar.sql` SHA-256 **`dd95eb52a0659096d9170017b1403995053c5300cc6a37525a943aecf7a5c5d0`**, confirmado.
+- Revisión `f2be1f5e-2bfa-daa1-095b-c0b96e9206aa` (hash `f2be1f5e…b8b02`). La guarda sigue exigiendo la anterior
+  `c406fa37…`.
+- El inventario es el mismo que en la sección 1: 294 sentencias con el mismo reparto por tabla y una sola revisión.
+- `preparar-lote.mjs` vuelve a producir los mismos bytes.
+- `comprobar-lote.mjs`: `"resultado":"correcto"`, idempotencia, lote anterior conservado, los dos negativos y el
+  mismo SHA. He devuelto `pruebas-locales.json` a su versión del commit.
+
+**Fichas y fotos**
+- `fichas.json`: el lugar de las dos altas es ahora «Estados Unidos».
+- `generar.mjs --comprobar`: 23 fichas, 23 con foto.
+- Nueva foto de Robinhood (`31b296e1…67e2`, 1344 × 768): fachada neoclásica de día con friso liso. No tiene texto
+  legible, marcas, banderas ni personas. En el borde superior queda un relieve ornamental del frontón, cortado e
+  irrelevante. Encaja con la ficha.
+
+**Veredicto final: aprobado**, para el SQL con SHA `dd95eb52…c5d0` y para las dos fotos.
+Siguen valiendo dos condiciones del procedimiento:
+- aplicarlo como muy tarde hoy, 03/11 (las cifras de las fichas caducan a 1 día);
+- antes, montar, precargar y comprobar en producción las imágenes de las dos altas.
+
+Los recomendados R1–R5 siguen abiertos y no bloquean.

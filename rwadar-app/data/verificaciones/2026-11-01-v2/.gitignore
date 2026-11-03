@@ -12,3 +12,47 @@ revision-independiente/**/*.html
 revision-independiente/**/*.htm
 revision-independiente/**/*.png
 revision-independiente/**/*.jpg
+
+# Capturas con identificadores públicos de blockchain (tokenId, direcciones EVM,
+# UUID) que el escáner de secretos confunde con claves. Se conservan en disco con su
+# SHA-256 en el inventario de consultas de cada grupo; no van a Git.
+grupos/aktionariat/fuentes/aktionariat-extracto.json
+grupos/aktionariat/fuentes/alan-frei-extracto.json
+grupos/aktionariat/fuentes/art-leasing-brokerbotsettings.json
+grupos/aktionariat/fuentes/boss-info-extracto.json
+grupos/aktionariat/fuentes/fieldoo-extracto.json
+grupos/aktionariat/fuentes/realunit-brokerbotsettings.json
+grupos/aktionariat/fuentes/servicehunter-quitt-extracto.json
+grupos/aktionariat/fuentes/switzerlend-extracto.json
+grupos/aktionariat/fuentes/twiliner-extracto.json
+grupos/aktionariat/fuentes/wemakeit-extracto.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A2RAH5.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A2T4D7.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A2U5V3.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A2WCD0.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A2WCE8.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A2YPQ0.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A2ZT84.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A31KP7.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A324B4.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A35A42.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A38J32.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A38J40.json
+grupos/brickwise/fuentes/brickwise/api-v1-asset-AT0000A3E842.json
+grupos/brickwise/fuentes/brickwise/api-v1-assets-redactado.json
+grupos/brickwise/fuentes/brickwise/api-v2-assets.json
+grupos/midas/fuentes/docs-llms-full.txt
+grupos/midas/inventario-consultas.jsonl
+grupos/reental/fuentes/graphql-crowdfunding-mia-7.json
+grupos/reental/fuentes/graphql-crowdfunding-mur-1.json
+grupos/reental/fuentes/graphql-getProjects-offset0.json
+grupos/reental/fuentes/graphql-getProjects-offset100.json
+grupos/reental/fuentes/graphql-getPublicProperties-all.json
+grupos/reental/fuentes/graphql-getPublicProperties-offset0-completo.json
+grupos/reental/fuentes/graphql-getPublicProperties-offset100-completo.json
+grupos/reental/fuentes/graphql-getPublicProperties-offset100.json
+grupos/reental/fuentes/p2p-getOrdersData-sell.json
+revision-independiente/fuentes/midas-llms-full.txt
+revision-independiente/fuentes/retiradas/midas-docs-llms-full.txt
+revision-independiente/fuentes/retiradas/reental-graphql-crowdfunding-y-proyectos.json
+revision-independiente/fuentes/retiradas/reentalp2p-getOrdersData-sell.json
