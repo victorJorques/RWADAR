@@ -73,7 +73,13 @@ verificar('servidor preparado crece con manifiesto cerrado y rechaza truncados o
   fs.mkdirSync(baseTemporal,{recursive:true});
   const temporal=fs.mkdtempSync(path.join(baseTemporal,'fichas-'));
   try{
-    const fecha=catalogo.revision,lote=fecha+'-v2';
+    // La entrega local es la de la revisión publicada; con varias entregas el mismo
+    // día (AAAA-MM-DD.N) la fecha del lote ya no basta para encontrarla.
+    const importacionesRaiz=path.join(raiz,'rwadar-app/data/importaciones');
+    const etiquetaPublicada=fs.readdirSync(importacionesRaiz).map(d=>d.match(/^catalogo-(.+)-v2$/)?.[1]).filter(Boolean)
+      .find(r=>{try{return JSON.parse(fs.readFileSync(path.join(importacionesRaiz,'catalogo-'+r+'-v2','revision.json'),'utf8'))
+        .revisionId===(catalogo.ofertas[0].revisionId||catalogo.ofertas[0].revision_id);}catch{return false;}});
+    const fecha=etiquetaPublicada||catalogo.revision,lote=fecha+'-v2';
     const carpeta=path.join(temporal,'rwadar-app/data/verificaciones',lote);
     const importaciones=path.join(temporal,'rwadar-app/data/importaciones','catalogo-'+lote);
     fs.mkdirSync(carpeta,{recursive:true});fs.mkdirSync(importaciones,{recursive:true});
