@@ -36,17 +36,20 @@ import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
-const { cargarFuentesLocales, construirSqlImportacion } = require('./catalogo-publico.js');
+const { cargarFuentesLocales, construirSqlImportacion, esRevisionLocal, ordenRevisionLocal } = require('./catalogo-publico.js');
 
-const fecha = process.argv[2];
-assert.match(fecha || '', /^\d{4}-\d{2}-\d{2}$/, 'Uso: node rwadar-app/montar-revision.mjs AAAA-MM-DD');
+// La etiqueta es la fecha o, si ese día ya hay una entrega, la fecha y su número
+// («2026-11-03.2»). Los datos se fechan siempre con la fecha.
+const etiqueta = process.argv[2];
+assert.ok(esRevisionLocal(etiqueta), 'Uso: node rwadar-app/montar-revision.mjs AAAA-MM-DD[.N]');
+const fecha = etiqueta.slice(0, 10);
 const APP = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.join(APP, '..');
 const verificaciones = path.join(APP, 'data', 'verificaciones');
-const carpeta = path.join(verificaciones, `${fecha}-v2`);
-const cambios = JSON.parse(fs.readFileSync(path.join(carpeta, `cambios-${fecha}.json`), 'utf8'));
+const carpeta = path.join(verificaciones, `${etiqueta}-v2`);
+const cambios = JSON.parse(fs.readFileSync(path.join(carpeta, `cambios-${etiqueta}.json`), 'utf8'));
 const { desde } = cambios;
-assert.ok(desde < fecha, 'la revisión de partida debe ser anterior');
+assert.ok(esRevisionLocal(desde) && ordenRevisionLocal(desde, etiqueta) < 0, 'la revisión de partida debe ser anterior');
 for (const campo of ['alcance', 'notaOrigen', 'notaActualizacion', 'referenciaAprobacion']) {
   assert.ok(typeof cambios[campo] === 'string' && cambios[campo].length >= 20, `falta «${campo}» en los cambios`);
 }
@@ -87,10 +90,10 @@ escaparate.plataformas = radar.plataformas.map(p => ({ slug: p.slug, verificacio
 escaparate.fuente = {
   notaOrigen: cambios.notaOrigen,
   actualizacionLocal: { verificadoEl: fecha,
-    archivo: `rwadar-app/data/verificaciones/${fecha}-v2/contraste-${fecha}.json`,
+    archivo: `rwadar-app/data/verificaciones/${etiqueta}-v2/contraste-${etiqueta}.json`,
     publicable: false, derechosImagenVerificados: false, nota: cambios.notaActualizacion },
   actualizacionRadarLocal: { verificadoEl: fecha,
-    archivo: `rwadar-app/data/verificaciones/${fecha}-v2/radar-canonico-26.json`,
+    archivo: `rwadar-app/data/verificaciones/${etiqueta}-v2/radar-canonico-26.json`,
     publicable: false, plataformas: radar.plataformas.length, fuentesPrimarias: radar.fuentes.length },
 };
 
@@ -132,7 +135,7 @@ escribir(path.join(carpeta, 'documentacion-ofertas.json'), documentacion);
 escribir(path.join(carpeta, 'manifiesto-catalogo.json'), manifiesto);
 
 // Mismas comprobaciones que la importación: si algo no cuadra, se para aquí.
-const nueva = construirSqlImportacion(cargarFuentesLocales(RAIZ, { revision: fecha, versionEsquema: 2 }));
+const nueva = construirSqlImportacion(cargarFuentesLocales(RAIZ, { revision: etiqueta, versionEsquema: 2 }));
 const [a, m, d] = fecha.split('-');
 const fechaEs = `${d}/${m}/${a}`;
 const aprobacion = `
@@ -161,7 +164,7 @@ begin
 end $$;
 `;
 assert.ok(nueva.sql.endsWith('commit;\n'));
-const importaciones = path.join(APP, 'data', 'importaciones', `catalogo-${fecha}-v2`);
+const importaciones = path.join(APP, 'data', 'importaciones', `catalogo-${etiqueta}-v2`);
 escribir(path.join(importaciones, 'catalogo.sql'), nueva.sql);
 escribir(path.join(importaciones, 'aplicar-y-aprobar.sql'),
   `-- Revisión del catálogo del ${fechaEs}: importar y aprobar en un solo paso.\n` +
@@ -171,7 +174,7 @@ escribir(path.join(importaciones, 'aplicar-y-aprobar.sql'),
   aprobacion.slice(1) + 'commit;\n');
 escribir(path.join(importaciones, 'revision.json'), {
   versionEsquema: 2, revisionId: nueva.revisionId, hash: nueva.hash,
-  revisionAnterior: anterior.revisionId, fechaRadar: fecha,
+  revisionAnterior: anterior.revisionId, fechaRadar: fecha, etiqueta,
   plataformas: radar.plataformas.length, ofertas: escaparate.ofertas.length, estado: 'borrador',
 });
 console.log(`Lote ${nueva.revisionId} (${fechaEs}): ${radar.plataformas.length} plataformas, ` +

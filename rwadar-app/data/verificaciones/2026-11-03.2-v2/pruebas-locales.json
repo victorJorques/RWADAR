@@ -1,10 +1,10 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-03T09:19:15.597Z",
-  "revisionId": "522272dd-7730-3654-05dd-2f7879cf793f",
+  "ejecutadoEl": "2026-11-03T09:21:58.551Z",
+  "revisionId": "62dca2f9-8a9b-0dae-bef9-82fbda910280",
   "revisionAnterior": "a4792f79-0f4d-361b-a14d-3eeb95bf7499",
   "resultado": "correcto",
-  "sha256AplicarYAprobar": "2356fc5d3be13592f270aa764c09acad550894aeb3f85b0182cf0d8141650f77",
+  "sha256AplicarYAprobar": "1f3575c9b19c2a9b98d8c66442fa894606082b2ce201a02b1767f685d4887ea8",
   "tarjetas": {
     "spiko-letras-del-tesoro-euro 2026-11-03": {
       "minimo": "1 €",
@@ -29,12 +29,12 @@
     "robinhood-classic-stock-tokens 2026-11-03": {
       "minimo": "1 €",
       "espana": "Disponible desde España según la fuente",
-      "salida": "Salida: Cierras la posición con Robinhood Europe en días de mercado de EE. UU.; el cierre puede suspenderse"
+      "salida": "Salida: Cierras la posición con Robinhood Europe (24/5 según su web; el horario ampliado no siempre está disponible); el cierre puede suspenderse"
     },
     "robinhood-classic-stock-tokens 2026-11-09": {
       "minimo": "1 €",
       "espana": "Disponible desde España según la fuente",
-      "salida": "Salida: Cierras la posición con Robinhood Europe en días de mercado de EE. UU.; el cierre puede suspenderse"
+      "salida": "Salida: Cierras la posición con Robinhood Europe (24/5 según su web; el horario ampliado no siempre está disponible); el cierre puede suspenderse"
     },
     "prosegur-digital-gold 2026-11-03": {
       "minimo": "1 gramo de oro",

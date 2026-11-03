@@ -47,7 +47,7 @@ const SPIKO_DISPONIBILIDAD = 'https://docs.spiko.io/documentation/product_overvi
 const ESPANA_KYC = 'Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.';
 const NUEVAS = {
   'spiko-letras-del-tesoro-euro': [
-    R('Mínimo de inversión', 'Desde 1 €', SPIKO_FOLLETO, '2026-09-01', 'Suscripción inicial mínima de 1 EUR, clase EUR (folleto de la SICAV).'),
+    R('Mínimo de inversión (clase EUTBL)', 'Desde 1 €', SPIKO_FOLLETO, '2026-09-01', 'Suscripción inicial mínima de 1 EUR de la clase EUTBL (folleto de la SICAV); otras clases pueden tener otro mínimo.'),
     R('Acceso desde España', ESPANA_KYC, SPIKO_DISPONIBILIDAD, '2026-10-23', 'Tabla de disponibilidad del proveedor: España marcada; no se admiten personas estadounidenses.'),
     R('Reembolso', 'Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo',
       'https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf', '2026-09-01', 'KID en español y folleto.'),
@@ -62,7 +62,7 @@ const NUEVAS = {
     R('Mínimo de inversión', 'Desde 1 €', 'https://robinhood.com/eu/en/invest', '2026-11-01', 'Web del proveedor; el KID no fija mínimo.'),
     R('Acceso desde España', 'Disponible para residentes en España: Robinhood Europe está inscrita en la CNMV para operar en España (libre prestación, n.º 5299).',
       'https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299', '2025-04-21', 'Registro de la CNMV y comunicado del proveedor del 22/06/2026.'),
-    R('Salida', 'Cierras la posición con Robinhood Europe en días de mercado de EE. UU.; el cierre puede suspenderse',
+    R('Salida', 'Cierras la posición con Robinhood Europe (24/5 según su web; el horario ampliado no siempre está disponible); el cierre puede suspenderse',
       'https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf', '2026-07-01', 'KID de los Classic Stock Tokens.'),
   ],
   'prosegur-digital-gold': [

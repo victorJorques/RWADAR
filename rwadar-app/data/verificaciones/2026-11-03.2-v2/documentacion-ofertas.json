@@ -252,12 +252,12 @@
         "alcance": "Dato de tamaño, no de rentabilidad. Publicado el 22/10: 467,94 M EUR. Localizador: API /share-classes/EUTBL/totals."
       },
       {
-        "etiqueta": "Mínimo de inversión",
+        "etiqueta": "Mínimo de inversión (clase EUTBL)",
         "valor": "Desde 1 €",
         "fechaDato": "2026-09-01",
         "fechaConsulta": "2026-11-02",
         "fuente": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
-        "alcance": "Redacción en castellano del dato comprobado en la fuente el 01/11/2026 y revisado de forma independiente el 02/11/2026. Suscripción inicial mínima de 1 EUR, clase EUR (folleto de la SICAV)."
+        "alcance": "Redacción en castellano del dato comprobado en la fuente el 01/11/2026 y revisado de forma independiente el 02/11/2026. Suscripción inicial mínima de 1 EUR de la clase EUTBL (folleto de la SICAV); otras clases pueden tener otro mínimo."
       },
       {
         "etiqueta": "Acceso desde España",
@@ -561,7 +561,7 @@
       },
       {
         "etiqueta": "Salida",
-        "valor": "Cierras la posición con Robinhood Europe en días de mercado de EE. UU.; el cierre puede suspenderse",
+        "valor": "Cierras la posición con Robinhood Europe (24/5 según su web; el horario ampliado no siempre está disponible); el cierre puede suspenderse",
         "fechaDato": "2026-07-01",
         "fechaConsulta": "2026-11-02",
         "fuente": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",

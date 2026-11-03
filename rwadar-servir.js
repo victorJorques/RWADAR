@@ -37,11 +37,11 @@ const ESCAPARATE_LOCAL = path.join(RAIZ, 'rwadar-movil', 'fixtures', 'escaparate
 const FIXTURE_HISTORICO = process.argv.includes('--fixture-historico');
 const argumentoLote = process.argv.find(x => x.startsWith('--lote='));
 const LOTE_LOCAL = argumentoLote ? argumentoLote.slice(7) : null;
-if (LOTE_LOCAL && !/^\d{4}-\d{2}-\d{2}-v2$/.test(LOTE_LOCAL)) throw new Error('Lote local no válido');
+if (LOTE_LOCAL && !/^\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?-v2$/.test(LOTE_LOCAL)) throw new Error('Lote local no válido');
 if (LOTE_LOCAL && FIXTURE_HISTORICO) throw new Error('Elige un lote o el fixture histórico');
 
 function snapshotLocal({raiz = RAIZ, lote = LOTE_LOCAL} = {}) {
-  if (lote && !/^\d{4}-\d{2}-\d{2}-v2$/.test(lote)) throw new Error('Lote local no válido');
+  if (lote && !/^\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?-v2$/.test(lote)) throw new Error('Lote local no válido');
   let datos = leerCatalogo(raiz);
   if (lote) {
     const fuentes = cargarFuentesLocales(raiz,{revision:lote.slice(0,10),versionEsquema:2});

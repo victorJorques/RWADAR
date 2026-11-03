@@ -1,9 +1,16 @@
 // Renueva el catálogo con una sola orden: lee de nuevo todas las fuentes y
 // todas las ofertas, comprueba el radar, pone al día cada ficha con lo que se
 // lee hoy en su fuente oficial, monta el lote y lo prueba en PGlite. No toca
-// Supabase ni publica nada: deja el SQL listo para pegar y un informe.
+// Supabase ni publica nada: deja la entrega lista para la revisión
+// independiente y el flujo «Aplicar catálogo», y un informe.
 //
-// Uso: node rwadar-app/actualizar-catalogo.mjs [--fecha=AAAA-MM-DD] [--capturas=archivo.json] [--sin-capturar]
+// Uso: node rwadar-app/actualizar-catalogo.mjs [--fecha=AAAA-MM-DD] [--etiqueta=AAAA-MM-DD.N]
+//        [--desde=ETIQUETA] [--capturas=archivo.json] [--sin-capturar]
+//
+// Se puede entregar el catálogo las veces que haga falta el mismo día: si ya
+// hay una entrega con la fecha de hoy, esta sale como «AAAA-MM-DD.2», «.3»…
+// Parte de la revisión publicada en la última sincronización
+// (rwadar-site/assets/catalogo-publico-20261022.js); --desde la cambia.
 //
 // Reglas que aplica sola (las de docs/tareas/REVISION-CATALOGO-2026-10-19.md):
 // - Una fuente del radar que no carga o que ya no dice lo que respalda
@@ -13,7 +20,7 @@
 //   ficha pasa a «no verificable», pierde la cifra y lleva un aviso.
 // - Los avisos con datos del día se rehacen; los que no se pueden volver a
 //   comprobar no se conservan con fecha nueva.
-// Salida: data/verificaciones/<fecha>-v2/{cambios,contraste,informe}-<fecha>.*
+// Salida: data/verificaciones/<etiqueta>-v2/{cambios,contraste,informe}-<etiqueta>.*
 // y, si todo cuadra, el lote de montar-revision.mjs. Código 0 si el lote queda
 // listo; 2 si hay que revisar algo a mano antes de montarlo.
 import assert from 'node:assert/strict';
@@ -21,6 +28,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
 const APP = path.dirname(fileURLToPath(import.meta.url));
@@ -30,18 +38,36 @@ const arg = nombre => (process.argv.find(a => a.startsWith(`--${nombre}=`)) || '
 const hayBandera = nombre => process.argv.includes(`--${nombre}`);
 
 const hoyEspana = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(new Date());
+const { esRevisionLocal, ordenRevisionLocal } = createRequire(import.meta.url)('./catalogo-publico.js');
 const FECHA = arg('fecha') || hoyEspana();
 assert.match(FECHA, /^\d{4}-\d{2}-\d{2}$/);
-const anteriores = fs.readdirSync(IMPORT).map(d => d.match(/^catalogo-(\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?)-v2$/)?.[1])
-  .filter(f => f && f.slice(0, 10) < FECHA && fs.existsSync(path.join(VERIF, `${f}-v2`, 'escaparate-publicacion.json')))
-  .sort((a, b) => a.slice(0, 10).localeCompare(b.slice(0, 10)) || Number(a.slice(11) || 1) - Number(b.slice(11) || 1));
-const DESDE = anteriores.at(-1);
-assert.ok(DESDE, 'no hay ninguna revisión anterior de la que partir');
-const fES = iso => iso.split('-').reverse().join('/');
+// Etiqueta de la entrega: la fecha y, si ese día ya hay otra, su número. Una
+// carpeta con solo el informe de un intento bloqueado de este programa se reutiliza.
+const propios = e => [`cambios-${e}.json`, `contraste-${e}.json`, `informe-${e}.md`];
+const ocupada = e => fs.existsSync(path.join(IMPORT, `catalogo-${e}-v2`)) ||
+  (fs.existsSync(path.join(VERIF, `${e}-v2`)) && fs.readdirSync(path.join(VERIF, `${e}-v2`)).some(f => !propios(e).includes(f)));
+let ETIQUETA = arg('etiqueta');
+if (!ETIQUETA) { ETIQUETA = FECHA; for (let n = 2; ocupada(ETIQUETA); n++) ETIQUETA = `${FECHA}.${n}`; }
+assert.ok(esRevisionLocal(ETIQUETA) && ETIQUETA.slice(0, 10) === FECHA, `etiqueta no válida para el ${FECHA}: ${ETIQUETA}`);
+assert.ok(!ocupada(ETIQUETA), `la entrega ${ETIQUETA} ya existe; quita --etiqueta para usar la siguiente libre`);
+const anteriores = fs.readdirSync(IMPORT).map(d => d.match(/^catalogo-(.+)-v2$/)?.[1])
+  .filter(f => f && esRevisionLocal(f) && ordenRevisionLocal(f, ETIQUETA) < 0 &&
+    fs.existsSync(path.join(VERIF, `${f}-v2`, 'escaparate-publicacion.json')))
+  .sort(ordenRevisionLocal);
+// Se parte de la revisión publicada: el aplicador SQL exige que la anterior sea
+// exactamente esa. Una entrega preparada pero sin aplicar no sirve de partida.
+const PUBLICADA = (fs.readFileSync(path.join(APP, '..', 'rwadar-site', 'assets', 'catalogo-publico-20261022.js'), 'utf8')
+  .match(/"revisionId":"([0-9a-f-]{36})"/) || [])[1];
+const revisionDe = f => JSON.parse(fs.readFileSync(path.join(IMPORT, `catalogo-${f}-v2`, 'revision.json'), 'utf8')).revisionId;
+const DESDE = arg('desde') || anteriores.filter(f => revisionDe(f) === PUBLICADA).at(-1) || anteriores.at(-1);
+assert.ok(DESDE && anteriores.includes(DESDE), 'no hay ninguna revisión anterior de la que partir');
+const desdeNoPublicada = revisionDe(DESDE) !== PUBLICADA;
+const fES = iso => iso.slice(0, 10).split('-').reverse().join('/');
 const FES = fES(FECHA);
+console.log(`Entrega ${ETIQUETA}, partiendo de la ${DESDE}${desdeNoPublicada ? ' (OJO: no es la publicada en la última sincronización)' : ' (la publicada)'}.`);
 
 // ---------------------------------------------------------------- 1 · capturar
-const CAPTURAS = path.resolve(arg('capturas') || path.join(os.tmpdir(), `rwadar-capturas-${FECHA}.json`));
+const CAPTURAS = path.resolve(arg('capturas') || path.join(os.tmpdir(), `rwadar-capturas-${ETIQUETA}.json`));
 if (!hayBandera('sin-capturar')) {
   console.log(`1/5 · Leyendo de nuevo las fuentes de la revisión del ${fES(DESDE)}…`);
   execFileSync(process.execPath, [path.join(APP, 'capturar-fuentes.mjs'), DESDE, CAPTURAS], { stdio: 'inherit' });
@@ -141,7 +167,7 @@ for (const f of radar.fuentes) {
 }
 
 // ---------------------------------------------------------------- 3 · fichas
-console.log('3/5 · Poniendo al día las 49 fichas…');
+console.log(`3/5 · Poniendo al día las ${Object.keys(esc).length} fichas…`);
 
 // Brickwise: tarjetas de la app (hora de España) y API pública de la app.
 const APP_BW = 'https://app.brickwise.at/desktopWeb/marketplace';
@@ -255,7 +281,9 @@ for (const slug of Object.keys(esc).filter(s => esc[s].plataformaSlug === 'midas
   if (lectura.gestion) refs.push(ref('Comisión de gestión', lectura.gestion.replace('annual on AUM', 'anual sobre AUM').replace('.', ','), o.url));
   if (lectura.exito) refs.push(ref('Comisión de éxito', lectura.exito.replace('.', ','), o.url));
   const dinamicos = [];
-  if (lectura.apy7 && APY_7_DIAS.has(slug)) {
+  // Solo la colección principal lleva cifras, y un «fuentes_en_conflicto» lo resuelve una persona.
+  const conCifra = o.coleccion === 'principales' && o.estadoRevision !== 'fuentes_en_conflicto';
+  if (lectura.apy7 && APY_7_DIAS.has(slug) && conCifra) {
     const mostrada = `${numES(Number(lectura.apy7))} %`;
     Object.assign(ficha(slug), { cifras: 'comprobadas' });
     Object.assign(ficha(slug).cambios, { estadoRevision: 'actual',
@@ -265,7 +293,7 @@ for (const slug of Object.keys(esc).filter(s => esc[s].plataformaSlug === 'midas
     informe.cifras.push(`${o.titulo}: ${o.rentabilidad?.mostrada || 'sin cifra'} → ${mostrada}`);
   } else if (t && (lectura.tvl || lectura.precio || lectura.mintingCerrado)) {
     if (o.rentabilidad || /APY publicado/.test(JSON.stringify(o.metricas))) sinCifra(slug, `la página se lee pero no muestra el APY`);
-    else Object.assign(ficha(slug).cambios, { estadoRevision: 'actual', metricas: [{ etiqueta: 'Moneda', valor: o.moneda || 'USD' }] });
+    else if (conCifra) Object.assign(ficha(slug).cambios, { estadoRevision: 'actual', metricas: [{ etiqueta: 'Moneda', valor: o.moneda || 'USD' }] });
     if (lectura.mintingCerrado) dinamicos.push(aviso(`El ${FES} la página mostraba «MINTING CLOSED»: ahora no se pueden suscribir tokens nuevos.`));
     if (lectura.listaBlanca) dinamicos.push(aviso('Invertir, reembolsar y transferir solo está disponible para direcciones en lista blanca.'));
     if (o.rentabilidad || /APY publicado/.test(JSON.stringify(o.metricas))) dinamicos.push(aviso(`El ${FES} la página no mostraba la cifra de APY, así que RWAdar no publica rendimiento hasta poder leerlo en la fuente oficial.`));
@@ -284,36 +312,44 @@ for (const slug of Object.keys(esc).filter(s => esc[s].plataformaSlug === 'midas
   ponerAvisos(slug, dinamicos);
 }
 
-// Spiko: datos públicos del fondo.
-{
-  const slug = 'spiko-letras-del-tesoro-euro', D = 'https://data.spiko.io/eutbl/';
-  const t = plano(D);
-  const l = { r30: t.match(/30D YIELD ([\d.]+)%/)?.[1], nav: t.match(/LATEST NAV ([\d.]+) (\d{4}-\d{2}-\d{2})/),
-    aum: t.match(/AUM €([\d.]+)M/)?.[1], minimo: t.match(/MINIMUM INITIAL SUBSCRIPTION ([\d.]+) EUR/)?.[1],
-    comision: t.match(/MANAGEMENT FEES ([\d.]+)%/)?.[1] };
-  contraste[slug] = { ...l, nav: l.nav?.slice(1) };
-  if (l.r30) {
-    const mostrada = `${numES(Number(l.r30))} %`;
+// Spiko: rendimiento neto de 31 días de su API pública (la misma lectura que la
+// investigación del 02/11). Se cambia solo esa cifra; el resto de la ficha se conserva.
+for (const [slug, clase, enDolares] of [['spiko-letras-del-tesoro-euro', 'EUTBL', false],
+  ['spiko-letras-del-tesoro-dolar', 'USTBL', true]]) {
+  const o = esc[slug];
+  if (!o) continue;
+  const API = `https://public-api.spiko.io/v0/share-classes/${clase}/yield`;
+  let y = null;
+  const c = captura(API);
+  try { if (c?.texto && !(typeof c.estado === 'number' && c.estado >= 400)) y = JSON.parse(c.texto); } catch {}
+  const dato = typeof y?.updatedAt === 'string' ? y.updatedAt.slice(0, 10) : null;
+  const valor = Number(y?.monthlyYield);
+  // Un dato de más de 7 días no se presenta como de hoy.
+  const reciente = dato && /^\d{4}-\d{2}-\d{2}$/.test(dato) && dato <= FECHA &&
+    (Date.parse(FECHA) - Date.parse(dato)) / 864e5 <= 7;
+  contraste[slug] = { api: API, monthlyYield: y?.monthlyYield ?? null, updatedAt: y?.updatedAt ?? null };
+  const sinRentabilidad = o.metricas.filter(m => !m.etiqueta.startsWith('Rentabilidad publicada'));
+  if (o.coleccion === 'principales' && Number.isFinite(valor) && valor > 0 && valor < 0.2 && reciente) {
+    const mostrada = `${numES(valor * 100)} %`;
+    const fechaDato = fES(dato);
     fichas[slug] = { ...ficha(slug), cifras: 'comprobadas' };
     Object.assign(ficha(slug).cambios, { estadoRevision: 'actual',
-      rentabilidad: { mostrada, literal: `Rendimiento anualizado a 30 días observado el ${FES}; variable y no garantizado.` },
-      metricas: [{ etiqueta: 'Moneda', valor: 'EUR' }, ...(l.minimo ? [{ etiqueta: 'Suscripción inicial publicada', valor: `${l.minimo} EUR` }] : []),
-        { etiqueta: 'Rendimiento publicado · 30 días', valor: mostrada }] });
-    if (esc[slug].rentabilidad?.mostrada !== mostrada) informe.cifras.push(`Spiko Letras del Tesoro Euro: ${esc[slug].rentabilidad?.mostrada || 'sin cifra'} → ${mostrada}`);
-    ponerReferencias(slug, [ref('Rendimiento publicado · 30 días', mostrada, D),
-      ...(l.minimo ? [ref('Suscripción inicial publicada', `${l.minimo} EUR`, D)] : []), ref('Moneda', 'EUR', D),
-      ...(l.comision ? [ref('Comisión de gestión', `${numES(Number(l.comision))} %`, D)] : []),
-      ...(l.nav ? [ref('Valor liquidativo', `${numES(Number(l.nav[1]), 4)} EUR (${fES(l.nav[2])})`, D)] : []),
-      ...(l.aum ? [ref('Patrimonio gestionado', `${numES(Number(l.aum))} M EUR`, D)] : [])]);
+      rentabilidad: { mostrada, literal: `Rendimiento neto anualizado${enDolares ? ' en dólares' : ''} de los últimos 31 días publicado por Spiko el ${fechaDato}; consultado el ${FES}.${enDolares ? ' No incluye la variación del euro frente al dólar.' : ''} Variable y no garantizado.` },
+      metricas: [...sinRentabilidad, { etiqueta: `Rentabilidad publicada · 31 días · ${fechaDato}${enDolares ? ' · en USD' : ''}`, valor: mostrada }] });
+    if (o.rentabilidad?.mostrada !== mostrada) informe.cifras.push(`${o.titulo}: ${o.rentabilidad?.mostrada || 'sin cifra'} → ${mostrada}`);
+    ponerReferencias(slug, [{ ...ref('Rentabilidad publicada · 31 días', mostrada, API,
+      `Rendimiento neto anualizado de 31 días que publica Spiko (dato del ${fechaDato}). Variable y no garantizado.`), fechaDato: dato }]);
     ponerAvisos(slug, []);
   } else {
-    sinCifra(slug, 'no se pudo leer el rendimiento en data.spiko.io');
+    Object.assign(ficha(slug).cambios, { estadoRevision: 'no_verificable', rentabilidad: null, metricas: sinRentabilidad });
+    if (o.rentabilidad) informe.cifras.push(`${o.titulo}: ${o.rentabilidad.mostrada} → sin cifra`);
+    informe.sinComprobar.push(`${o.titulo}: no se pudo leer un rendimiento reciente en ${API}`);
     ponerAvisos(slug, [aviso(`No se pudo comprobar el rendimiento en la fuente oficial el ${FES}.`)]);
   }
 }
 
 // Prosegur Digital Gold: condiciones publicadas en su tabla comparativa.
-{
+if (esc['prosegur-digital-gold']) {
   const slug = 'prosegur-digital-gold', U = 'https://www.prosegurcrypto.com/digital-gold';
   const t = plano(U);
   const hechos = [['Compra mínima publicada', /Compra mínima ✔ 1 gramo/, '1 gramo'],
@@ -331,7 +367,7 @@ for (const slug of Object.keys(esc).filter(s => esc[s].plataformaSlug === 'midas
 // Aktionariat y los portales que usan su tecnología.
 const PORTALES = { aktionariat: 'https://shares.aktionariat.com/', 'boss-info': 'https://shares.bossinfo.com/',
   wemakeit: 'https://shares.wemakeit.com/', 'servicehunter-quitt': 'https://shares.quitt.ch/', switzerlend: 'https://shares.lend.ch/' };
-for (const [slug, U] of Object.entries(PORTALES)) {
+for (const [slug, U] of Object.entries(PORTALES).filter(([slug]) => esc[slug])) {
   const t = plano(U);
   if (!t) { informe.sinComprobar.push(`${esc[slug].titulo}: no se pudo leer ${U}`); ponerAvisos(slug, []); continue; }
   const precio = t.match(/Current Price CHF ([\d.]+) (Issuer Defined|Last trade • (\d{1,2} \w{3} \d{4}))/);
@@ -391,7 +427,7 @@ function alius(U) {
     dias: dias == null ? null : Number(dias), recaudado: v(/Recaudado ([\d.]+,\d{2}) €/) };
 }
 const euros = s => s.replace(/,00$/, '');
-{
+if (esc['casa-de-outeiro']) {
   const slug = 'casa-de-outeiro', U = 'https://aliuscap.com/projects/casa-de-outeiro', W = 'https://casadeouteiro.com/emision-capital/';
   const a = alius(U);
   const hasta = plano(W).match(/EMISIÓN DE CAPITAL HASTA (\d{1,2}\/\d{1,2})/)?.[1];
@@ -412,7 +448,7 @@ const euros = s => s.replace(/,00$/, '');
   else informe.sinComprobar.push('Casa de Outeiro: no se pudo leer la ficha de Alius Capital');
   ponerAvisos(slug, dinamicos);
 }
-{
+if (esc['iod-occasio']) {
   const slug = 'iod-occasio', U = esc['iod-occasio'].url;
   const a = alius(U);
   contraste[slug] = a;
@@ -439,7 +475,7 @@ const euros = s => s.replace(/,00$/, '');
 }
 
 // Hausera: oportunidad destacada y trayectoria publicada.
-{
+if (esc['hausera-proximas-ofertas']) {
   const slug = 'hausera-proximas-ofertas', H = 'https://hausera.io/', O = 'https://hausera.io/oportunidades/';
   const t = plano(O);
   const d = t.match(/opciones (.+?) (PREVENTA|ABIERTA|PRÓXIMAMENTE|EN ESTUDIO) (?:CRV|CRA) Importe a financiar: ([\d.]+)€(.*?)Más información/);
@@ -470,7 +506,7 @@ const euros = s => s.replace(/,00$/, '');
 }
 
 // Reental: catálogo de inmuebles y mercado P2P (todas sus páginas).
-{
+if (esc['reental-emision-primaria']) {
   const slug = 'reental-emision-primaria', RP = 'https://www.reental.co/properties';
   if (plano(RP)) ponerReferencias(slug, [ref('Catálogo de inmuebles', 'Fichas con estado «En reforma», «En explotación», «Financiado» o «Cerrado»; no indica cuáles admiten inversión nueva', RP,
     `Visto en la fuente oficial el ${FES}. El estado de obra o explotación no acredita que se pueda invertir.`)]);
@@ -509,10 +545,17 @@ for (const slug of Object.keys(esc).filter(s => s.startsWith('reental-secundario
   ficha(slug).cambios.avisos = [aviso(GEN), aviso(ORDEN), ...lista, ...dinamicos];
   for (const a of dinamicos) informe.avisos.push(`${o.titulo}: ${a.texto}`);
 }
-if (!p2pLegible) informe.sinComprobar.push('Mercado P2P de Reental: no se pudo leer el listado');
+if (!p2pLegible && Object.keys(esc).some(s => s.startsWith('reental-secundario-')))
+  informe.sinComprobar.push('Mercado P2P de Reental: no se pudo leer el listado');
 
 // Cualquier ficha sin regla propia conserva sus textos y se marca para revisar.
 for (const slug of Object.keys(esc)) {
+  if (!fichas[slug] && (esc[slug].rentabilidad != null || esc[slug].precio != null)) {
+    // Sus cifras no se han vuelto a leer: no se re-fechan y dejan de verse al caducar.
+    fichas[slug] = { noRevisada: true };
+    informe.notas.push(`${esc[slug].titulo}: sin regla automática; conserva ficha y cifras con su fecha anterior (caducan solas). Revísala a mano.`);
+    continue;
+  }
   if (!fichas[slug]) { ponerAvisos(slug, []); informe.notas.push(`${esc[slug].titulo}: sin regla automática; revisa a mano.`); }
   // Solo se anota un aviso que desaparece de verdad, no el que se rehace con la fecha nueva.
   const molde = s => s.replace(/\d{2}\/\d{2}\/\d{4}|\d+([.,]\d+)?/g, '#').slice(0, 60);
@@ -522,7 +565,7 @@ for (const slug of Object.keys(esc)) {
 }
 
 // ---------------------------------------------------------------- 4 · escribir
-const carpeta = path.join(VERIF, `${FECHA}-v2`);
+const carpeta = path.join(VERIF, `${ETIQUETA}-v2`);
 fs.mkdirSync(carpeta, { recursive: true });
 const cambios = {
   desde: DESDE,
@@ -533,8 +576,8 @@ const cambios = {
   ofertas: fichas,
 };
 const escribir = (archivo, valor) => fs.writeFileSync(path.join(carpeta, archivo), JSON.stringify(valor, null, 2) + '\n');
-escribir(`cambios-${FECHA}.json`, cambios);
-escribir(`contraste-${FECHA}.json`, { fecha: FECHA, desde: DESDE,
+escribir(`cambios-${ETIQUETA}.json`, cambios);
+escribir(`contraste-${ETIQUETA}.json`, { fecha: FECHA, etiqueta: ETIQUETA, desde: DESDE,
   metodo: 'rwadar-app/actualizar-catalogo.mjs: Chromium sin ventana, sin iniciar sesión ni aceptar nada, con hora de España; petición directa cuando el navegador recibe un bloqueo; PDF con pdftotext.',
   capturadoEn: (h => [h[0], h.at(-1)])(Object.values(CAP).map(r => r.consultada).filter(Boolean).sort()),
   radar: radarContraste, fichas: contraste });
@@ -543,12 +586,12 @@ escribir(`contraste-${FECHA}.json`, { fecha: FECHA, desde: DESDE,
 let lote = null, comprobacion = null;
 if (!bloqueos.length) {
   console.log('4/5 · Montando el lote…');
-  const montar = spawnSync(process.execPath, [path.join(APP, 'montar-revision.mjs'), FECHA], { encoding: 'utf8' });
+  const montar = spawnSync(process.execPath, [path.join(APP, 'montar-revision.mjs'), ETIQUETA], { encoding: 'utf8' });
   lote = (montar.stdout + montar.stderr).trim();
   if (montar.status !== 0) bloqueos.push(`montar-revision.mjs falló: ${lote.split('\n').slice(-3).join(' ')}`);
   else {
     console.log('5/5 · Probándolo en PGlite sobre la cadena de producción…');
-    const prueba = spawnSync(process.execPath, [path.join(APP, 'comprobar-revision.mjs'), FECHA], { encoding: 'utf8' });
+    const prueba = spawnSync(process.execPath, [path.join(APP, 'comprobar-revision.mjs'), ETIQUETA], { encoding: 'utf8' });
     comprobacion = (prueba.stdout + prueba.stderr).trim().split('\n').at(-1);
     if (prueba.status !== 0) bloqueos.push(`comprobar-revision.mjs falló: ${(prueba.stdout + prueba.stderr).trim().split('\n').slice(-4).join(' ')}`);
   }
@@ -556,17 +599,20 @@ if (!bloqueos.length) {
 
 const lista = (titulo, elementos) => elementos.length ? `\n## ${titulo}\n\n${elementos.map(e => `- ${e}`).join('\n')}\n` : '';
 const fuentesOk = radarContraste.filter(f => f.ok).length;
-const md = `# Revisión del catálogo del ${FES}\n\n` +
-  `Hecha con \`node rwadar-app/actualizar-catalogo.mjs\`, partiendo de la del ${fES(DESDE)}.\n\n` +
+const md = `# Revisión del catálogo del ${FES} (entrega ${ETIQUETA})\n\n` +
+  `Hecha con \`node rwadar-app/actualizar-catalogo.mjs\`, partiendo de la entrega ${DESDE}` +
+  `${desdeNoPublicada ? ' (OJO: no es la publicada en la última sincronización; el SQL solo se aplicará si esa es la publicada)' : ''}.\n\n` +
   `- **${bloqueos.length ? 'NO LISTA: revisa lo de abajo antes de montarla' : 'Lista para aplicar'}.**\n` +
   `- Radar: ${fuentesOk} de ${radar.fuentes.length} fuentes leídas y con su texto de respaldo.\n` +
   (lote ? `- ${lote.split('\n').at(-1)}\n` : '') + (comprobacion ? `- PGlite: ${comprobacion}\n` : '') +
-  (bloqueos.length ? '' : `- Falta lo de Víctor: pegar \`rwadar-app/data/importaciones/catalogo-${FECHA}-v2/aplicar-y-aprobar.sql\` en Supabase › SQL Editor › Run (a partir de las 02:00 de España del ${FES}) y publicar la web.\n`) +
+  (bloqueos.length ? '' : `- Siguiente: revisión independiente de la entrega; si la aprueba, flujo «Aplicar catálogo» con fecha \`${ETIQUETA}\` ` +
+    `(a partir de las 02:00 de España del ${FES}) y «Publicar web», dentro de la orden de Víctor para este ciclo ` +
+    `(docs/tareas/CICLO-DIARIO-CATALOGO.md).\n`) +
   lista('Bloqueos (hay que resolverlos a mano)', bloqueos) +
   lista('Cifras que cambian', informe.cifras) +
   lista('Fichas sin poder comprobar (pierden cifra o llevan aviso)', informe.sinComprobar) +
   lista('Avisos con datos del día', informe.avisos) +
   lista('Otros cambios para revisar', informe.notas);
-fs.writeFileSync(path.join(carpeta, `informe-${FECHA}.md`), md);
+fs.writeFileSync(path.join(carpeta, `informe-${ETIQUETA}.md`), md);
 console.log('\n' + md);
 process.exit(bloqueos.length ? 2 : 0);
