@@ -1,63 +1,19 @@
-/* ===================================================================
-   TIPOGRAFÍA · alojada en RWAdar, sin terceros
-   -------------------------------------------------------------------
-   Geist y Geist Mono en su versión VARIABLE, en assets/fuentes/.
-   Antes se pedían a fonts.googleapis.com: nueve ficheros estáticos,
-   138 kB, y una petición a un tercero que recibía la IP de cada
-   visitante. La variable trae todo el rango de peso en 30 kB, así que
-   la página pide menos red, no depende de nadie y no hay salto de
-   tipografía al cargar.
-
-   De paso desaparece una falsa negrita: se usaba Geist Mono 700 sin
-   haberla pedido nunca, y el navegador la fabricaba estirando la 600.
-
-   Geist y Geist Mono son de Vercel, con licencia SIL Open Font 1.1,
-   que permite exactamente esto.
-
-   2/10/2026: la copia anterior era solo el recorte «latin-ext» (Ā, Ł,
-   Ş…) y NO traía a-z ni A-Z, así que casi todo el texto salía con la
-   letra de reserva del sistema. Ahora es el paquete oficial `geist`
-   1.7.2 (npm), recortado a latín básico, latín-1 y latín extendido A,
-   puntuación, € y flechas, con peso 400-800 (mono 400-700).
-   =================================================================== */
+/* TIPOGRAFÍA · Geist y Geist Mono (Vercel, SIL OFL 1.1), variables y alojadas
+   en assets/fuentes/: sin terceros. Paquete oficial `geist` 1.7.2 recortado a
+   latín, latín-1, latín extendido A, puntuación, € y flechas; pesos 400-800
+   (mono 400-700). */
 @font-face{font-family:'Geist';font-style:normal;font-weight:400 800;font-display:swap;
  src:url(/assets/fuentes/geist-normal-6ab67a4f11f1.woff2) format('woff2')}
 @font-face{font-family:'Geist Mono';font-style:normal;font-weight:400 700;font-display:swap;
  src:url(/assets/fuentes/geist-mono-normal-7ead591194e0.woff2) format('woff2')}
 
-/* ===================================================================
-   RWAdar · edición nocturna
-   -------------------------------------------------------------------
-   La página anterior era papel: crema, tinta azul, verde menta. Esta es
-   un instrumento: fondo de noche, oro como única señal y el contenido
-   emitiendo luz propia. El cambio no es de gusto sino de lectura — un
-   radar se mira en la oscuridad, y sobre negro el color de cada
-   categoría se distingue de un vistazo en vez de competir con el papel.
-   =================================================================== */
+/* RWAdar · edición nocturna: fondo de noche para que el color de cada
+   categoría del radar se distinga de un vistazo. */
 
 /* ============ 1 · TOKENS ============ */
-/* ---------------------------------------------------------------------
-   POR QUÉ NO HAY ORO.
-   La versión anterior era negro y oro, y era un error de fondo. Oro sobre
-   negro es el atajo más repetido para APARENTAR lujo — el de las landings
-   de cripto y el de los relojes de imitación—, y por eso se lee como
-   «esto quiere parecer caro». En una web cuyo argumento entero es la
-   credibilidad, eso juega en contra de lo que dice el texto.
-
-   Las marcas que de verdad están arriba hacen lo contrario: Stripe,
-   Linear, Vercel, Apple, Palantir van casi monocromas. La confianza se
-   parece a la contención.
-
-   Así que la interfaz es grafito y blanco, y EL ÚNICO COLOR DE LA PÁGINA
-   ES EL DE LOS DATOS: las seis categorías de activo, más el verde de
-   «verificado» y el coral de «descartada», que significan algo. Quitando
-   el oro de la interfaz, esos colores por fin destacan — antes competían
-   con un dorado que estaba en todas partes sin querer decir nada.
-
-   El gris es NEUTRO, sin desviación azul: un gris azulado tira a
-   corporativo-genérico. El texto sí es cálido, para que el conjunto no
-   quede clínico.
-   --------------------------------------------------------------------- */
+/* Sin oro: la interfaz es grafito y blanco, y el único color es el de los
+   datos (las seis categorías, el verde de «verificado» y el coral de
+   «descartada»). Gris neutro; texto cálido. */
 :root{
   /* Superficies con una pizca de calor. Un gris exactamente neutro es
      clínico y un gris azulado es corporativo-genérico; un punto de tierra
@@ -69,15 +25,8 @@
      valor tirando a tierra se lee cómodo. */
   --tx:#F7F5F0; --tx-2:#BBB5AB; --tx-3:#8A8378;
 
-  /* --- LA SEÑAL ---------------------------------------------------
-     El color de RWAdar es el verde de un eco de radar. No es una
-     ocurrencia: es lo que la marca dice ser, y es exactamente lo
-     contrario del oro — no intenta parecer caro, intenta parecer un
-     instrumento. Sobre negro tiene 13:1 de contraste, así que sirve
-     para texto, para botones y para el barrido.
-
-     Va en el logotipo, en los rótulos, en la acción principal, en los
-     enlaces y en el foco. En ningún otro sitio. */
+  /* --- LA SEÑAL: el verde de un eco de radar (13:1 sobre negro). Solo en el
+   logotipo, los rótulos, la acción principal, los enlaces y el foco. */
   --senal:#25E39A; --senal-cl:#6BF0C0; --senal-os:#0B5F42;
   --senal-10:rgba(37,227,154,.10); --senal-18:rgba(37,227,154,.20); --senal-30:rgba(37,227,154,.34);
 
@@ -192,12 +141,8 @@ body.locked{overflow:hidden}
 .portada-in{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
 .portada-txt{max-width:40rem}
 
-/* --- EL RADAR ---
-   Es la pieza que le faltaba a una web que se llama RWAdar: no una
-   ilustración de un radar, sino el registro entero dibujado como radar.
-   Cada punto es una plataforma de verdad, sale de los mismos datos que
-   las fichas y se puede pulsar. El barrido gira y va encendiendo los
-   puntos a su paso, que es exactamente lo que hace un radar. */
+/* --- EL RADAR: el registro entero dibujado como radar; cada punto es una
+   plataforma, sale de los mismos datos que las fichas y se puede pulsar. */
 .portada-radar{display:flex;justify-content:center}
 .radar-caja{width:100%;max-width:560px}
 #radarHero{width:100%;height:auto;overflow:visible}
@@ -500,11 +445,7 @@ select option{background:var(--sup);color:var(--tx)}
 .ficha:has(.abrir:focus-visible){outline:2px solid var(--senal);outline-offset:3px}
 .ficha .sub{font-family:var(--mono);font-size:.68rem;color:var(--tx-3);margin-top:4px}
 .ficha .nota{font-size:.885rem;line-height:1.58;color:var(--tx-2);margin:0;flex:1}
-/* El aval, en voz baja.
-   Antes era una caja rellena de menta, y en una rejilla de 24 fichas eso
-   son 24 rectángulos verdes gritando a la vez: tapaban el color de
-   categoría, que es lo único que de verdad distingue una ficha de otra.
-   Ahora es una nota al margen — se lee cuando se busca, no antes. */
+/* El aval, en voz baja: una nota al margen que no tapa el color de categoría. */
 .aval{display:flex;gap:10px;align-items:flex-start;border-left:2px solid var(--menta-25);
   padding:2px 0 2px 12px;font-size:.8rem;line-height:1.55;color:var(--tx-3)}
 .aval svg{flex:none;margin-top:3px;color:var(--menta)}
@@ -1057,8 +998,8 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .escaparate-patrocinada{justify-self:start;color:var(--senal);font-size:.75rem;font-weight:700}
 .escaparate-detalle-boton,.escaparate-sec-enlaces button{min-height:44px;padding:8px 13px;border:1px solid var(--linea-2);
   border-radius:99px;background:transparent;color:var(--tx-2);font-size:.68rem;font-weight:650;cursor:pointer}
-.escaparate-oferta .escaparate-detalle-boton{font-size:.875rem;background:var(--sup-2);white-space:nowrap}
-.escaparate-oferta .escaparate-detalle-boton span{margin-left:6px;color:var(--senal)}
+.escaparate-oferta .escaparate-detalle-boton{font-size:.875rem;white-space:nowrap}
+.escaparate-oferta .escaparate-detalle-boton span{margin-left:6px}
 .escaparate-detalle-boton:hover,.escaparate-sec-enlaces button:hover{border-color:var(--senal-30);color:var(--senal)}
 .escaparate-detalle-boton:focus-visible,.escaparate-sec-enlaces button:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 .escaparate-aviso-compacto{margin:0;padding:7px 8px;border-left:2px solid #FFB454;border-radius:0 7px 7px 0;
@@ -1066,7 +1007,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .escaparate-aviso-bloqueo{border-color:#FF8A80;background:rgba(255,59,48,.07)}
 .escaparate-aviso-bloqueo b{color:#FF8A80}
 .escaparate-aviso-compacto b{color:#FFB454}.escaparate-aviso-compacto span{color:var(--tx-3)}
-.escaparate-oferta .emi-pie{gap:10px;padding-top:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.escaparate-oferta .emi-pie{gap:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .escaparate-oferta .emi-ver{font-family:var(--body);font-size:.875rem;line-height:1.4;white-space:normal;overflow-wrap:anywhere}
 .escaparate-oferta .emi-ir{padding:7px 10px;font-size:.7rem}
 .escaparate-secundario{margin-top:34px;border:1px solid var(--linea);border-radius:16px;background:var(--sup);overflow:hidden}
@@ -1373,13 +1314,7 @@ body.detalle-local-abierto{overflow:hidden}
   .marcador .n{font-size:1.9rem}
 }
 
-/* ==================================================================
-   17 · SHELL MÓVIL / PWA
-   ------------------------------------------------------------------
-   La navegación de app solo existe por debajo de 768 px. El escritorio
-   conserva exactamente la composición editorial anterior. Las vistas
-   auxiliares no duplican estado: enlazan con cuenta y vigilancia reales.
-   ================================================================== */
+/* 17 · SHELL MÓVIL / PWA: navegación de app solo por debajo de 768 px; el escritorio no cambia. */
 .movil-cabecera,.movil-nav,.movil-panel,.movil-banner-explica,.movil-busqueda-cab,.movil-ficha-abrir,
 .movil-ofertas-intro,.movil-ofertas-futuro,.movil-radar-intro,.movil-registro-intro,.movil-resultados-mas,
 .movil-filtros-toggle,.movil-transparencia,.movil-detalle-cab,.solo-movil,.fav-local{display:none}
@@ -1388,7 +1323,7 @@ body.detalle-local-abierto{overflow:hidden}
 @media (max-width:767px),
        (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
   :root{--movil-nav-alto:68px;--movil-margen:16px}
-  html{scroll-padding-top:142px;-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%}
   body{padding-bottom:calc(var(--movil-nav-alto) + max(7px,env(safe-area-inset-bottom)));
     min-height:100dvh;overscroll-behavior-y:none}
   body[data-movil-pestana]:not([data-movil-pestana="buscar"]) footer,
@@ -1399,21 +1334,17 @@ body.detalle-local-abierto{overflow:hidden}
   .saltar{top:env(safe-area-inset-top)}
 
   /* Cabecera estable como en la app nativa, incluida la isla/notch de iOS. */
-  .movil-cabecera{display:block;position:sticky;top:0;z-index:62;
-    padding:calc(9px + env(safe-area-inset-top)) var(--movil-margen) 13px;
-    background:rgba(11,10,10,.94);border-bottom:1px solid var(--linea);
-    backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%)}
-  .movil-cabecera-superior{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-  .movil-marca{display:inline-flex;align-items:center;gap:8px;min-height:44px;
-    font-family:var(--display);font-size:1.22rem;font-weight:800;letter-spacing:-.04em}
+  .movil-cabecera{position:sticky;top:0;z-index:62;border-bottom:1px solid var(--linea)}
+  .movil-cabecera-superior{align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .movil-marca{display:inline-flex;align-items:center;
+    font-family:var(--display);font-weight:800;letter-spacing:-.04em}
   .movil-marca em{color:var(--senal);font-style:normal}
-  .movil-cabecera-accion{display:grid;place-items:center;width:44px;height:44px;padding:0;
-    border:1px solid var(--linea-2);border-radius:99px;background:var(--sup);color:var(--tx);cursor:pointer}
+  .movil-cabecera-accion{display:grid;place-items:center;padding:0;
+    border:1px solid var(--linea-2);border-radius:99px;color:var(--tx);cursor:pointer}
   .movil-cabecera-accion:active{transform:scale(.94)}
   .movil-cabecera-etiqueta,.movil-mini-etiqueta{margin:0 0 3px;font-family:var(--mono);
     font-size:.59rem;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;color:var(--senal)}
-  .movil-cabecera-titulo{margin:0;font-family:var(--display);font-size:1.48rem;line-height:1.12;
-    font-weight:800;letter-spacing:-.045em;color:var(--tx)}
+  .movil-cabecera-titulo{font-family:var(--display);line-height:1.12;color:var(--tx)}
   .movil-cabecera-sub{margin:4px 0 0;font-size:.79rem;line-height:1.4;color:var(--tx-3)}
 
   [data-movil-panel][hidden]{display:none!important}
@@ -1474,13 +1405,11 @@ body.detalle-local-abierto{overflow:hidden}
     font-family:var(--mono);font-size:1.15rem}
   #movilPanelRadar .emis.sin-emisiones .emis-orden,
   #movilPanelRadar .emis.sin-emisiones .emis-filtros{display:none}
-  #movilPanelRadar .emis.sin-emisiones .emis-vacio{min-height:0;padding:18px;text-align:left}
   #movilPanelRadar .emis.sin-emisiones .emis-vacio::before{display:none}
   #movilPanelRadar .emis.sin-emisiones .emis-vacio h3{margin-bottom:6px}
-  #movilPanelRadar .emis.sin-emisiones .emis-vacio p{margin:0;max-width:none}
-  #movilPanelRadar .emis-informacion{margin-top:12px;border:1px solid var(--linea);border-radius:13px;background:var(--sup)}
-  #movilPanelRadar .emis-informacion>summary{display:flex;align-items:center;min-height:46px;padding:11px 13px;
-    color:var(--tx-2);font-size:.76rem;font-weight:650;line-height:1.35;cursor:pointer;list-style:none}
+  #movilPanelRadar .emis.sin-emisiones .emis-vacio p{max-width:none}
+  #movilPanelRadar .emis-informacion{margin-top:12px}
+  #movilPanelRadar .emis-informacion>summary{display:flex;align-items:center;font-weight:650;line-height:1.35;cursor:pointer;list-style:none}
   #movilPanelRadar .emis-informacion>summary::-webkit-details-marker{display:none}
   #movilPanelRadar .emis-informacion>summary::after{content:'+';margin-left:auto;color:var(--senal);font:500 1.15rem/1 var(--body)}
   #movilPanelRadar .emis-informacion[open]>summary::after{content:'–'}
@@ -1800,13 +1729,7 @@ body.detalle-local-abierto{overflow:hidden}
   body.movil-teclado .movil-nav{transform:translateY(112%);opacity:0;pointer-events:none}
 }
 
-/* ==================================================================
-   20 · BÚSQUEDA MÓVIL · JERARQUÍA Y DETALLE PROGRESIVO
-   ------------------------------------------------------------------
-   Toma de las interfaces de sistema la claridad, los materiales sobrios
-   y la agrupación; conserva el negro cálido, el verde de señal, el radar
-   y los colores de datos propios de RWAdar.
-   ================================================================== */
+/* 20 · BÚSQUEDA MÓVIL · jerarquía y detalle progresivo, con el negro cálido y el verde de RWAdar. */
 @media (max-width:767px),
        (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
   :root{
@@ -2104,10 +2027,7 @@ body.detalle-local-abierto{overflow:hidden}
 .tutorial-final h3{margin-top:0}.tutorial-final p{max-width:65ch;line-height:1.6}.tutorial-final .btn-s{margin:10px}
 @media(max-width:767px){#movilPanelAcademy.movil-academy-abierta>.movil-panel-cuerpo{display:none}#movilPanelAcademy.movil-academy-abierta>#academy{display:block!important;width:100%;padding:20px}.tutorial-mandos{justify-content:center}.tutorial-mandos button{flex:1}.tutorial-mandos p{order:-1;width:100%;text-align:center}}
 
-/* ---- Tarjetas de oferta más limpias (03/11/2026) ----
-   Mismo contenido y mismas reglas editoriales (sin cifras en la tarjeta, tres
-   datos neutros, aviso íntegro y un único «Ver ficha»): más aire, jerarquía
-   clara, datos como ficha técnica y un botón que invita a entrar. */
+/* ---- Tarjetas de oferta (03/11/2026): mismas reglas editoriales, más aire y un único «Ver ficha». */
 .emis-rejilla .escaparate-oferta,.ofertas-grupo-rejilla .escaparate-oferta{display:flex;flex-direction:column;
   overflow:hidden;border-radius:18px;border-color:var(--linea);
   background:linear-gradient(180deg,var(--sup) 0,var(--noche-2) 100%);
@@ -2146,8 +2066,7 @@ body.detalle-local-abierto{overflow:hidden}
   .emis-rejilla .escaparate-oferta:hover,.ofertas-grupo-rejilla .escaparate-oferta:hover{transform:none}
 }
 
-/* 21 · RADAR VIVO EN EL MÓVIL (03/11/2026). Inicio abre con el radar real y sus cifras con fecha;
-   Buscar enseña filas densas (miniatura, dato clave, estado) y deja el resto para la ficha. */
+/* 21 · RADAR VIVO EN EL MÓVIL (03/11/2026): Inicio con el radar real y filas densas en Buscar. */
 .escaparate-procedencia,.escaparate-meta{display:contents}
 .escaparate-avisos-n,.f-corto{display:none}
 @media (max-width:767px),(max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){.f-largo{display:none}.f-corto{display:inline}
@@ -2195,8 +2114,7 @@ body.detalle-local-abierto{overflow:hidden}
 .inicio-como[open]>summary::after{content:'–'/''}
 .inicio-como ol{margin:0;padding-left:20px}
 .inicio-como li+li{margin-top:3px}
-/* Carruseles: se recorren con el dedo o con el teclado y la última tarjeta
-   visible queda asomada, para que se vea que hay más. */
+/* Carruseles: dedo o teclado; la última tarjeta visible queda asomada. */
 .inicio-carrusel{display:flex;gap:10px;margin:0 calc(-1 * var(--movil-margen));padding:2px var(--movil-margen) 6px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--movil-margen);scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .inicio-carrusel::-webkit-scrollbar{display:none}
 .inicio-carrusel>li{display:flex;flex:0 0 min(41vw,190px);scroll-snap-align:start}
@@ -2243,9 +2161,7 @@ body.detalle-local-abierto{overflow:hidden}
 .inicio-fuera button{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%;min-height:74px;padding:11px 12px;border:1px solid rgba(255,59,48,.22);border-radius:14px;background:linear-gradient(160deg,rgba(255,59,48,.08),var(--m-material) 70%);color:var(--tx);text-align:left;font:700 .9rem/1.2 var(--body);cursor:pointer}
 .inicio-fuera em{padding:3px 7px;border:1.5px solid rgba(255,138,128,.55);border-radius:6px;color:#FF8A80;font:700 .58rem/1.2 var(--mono);font-style:normal;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-2deg)}
 
-/* Mandos de Ofertas en el móvil: una línea con qué es esto; buscador y
-   Lista/Mapa; «Ordenar por · Fuente y fecha» con «¿Cómo ordenamos?» al lado;
-   pestañas y chips. La primera fila llega antes de y=520 a 390×844. */
+/* Mandos de Ofertas en el móvil; la primera fila llega antes de y=520 a 390×844. */
 #movilPanelRadar>.emis{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:8px;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none}
 #movilPanelRadar>.emis>*{grid-column:1/-1;min-width:0}
 #movilPanelRadar>.emis>.movil-ofertas-intro{grid-row:1;display:block;margin:-4px 0 6px;padding:0;border:0;background:none;box-shadow:none}
@@ -2300,10 +2216,7 @@ Visualmente 36 px; con su margen invisible, 44 px de diana. */
 #movilPanelRadar .catalogo-referencias[open]>summary{margin-bottom:2px}
 #movilPanelRadar .catalogo-referencias>p{margin:0;padding-bottom:8px;border-bottom:1px solid var(--m-hairline);color:var(--tx-3);font-size:.75rem;line-height:1.45}
 #movilPanelRadar .catalogo-referencias>.emis-rejilla{margin:0}
-/* Fila de oferta: miniatura de 88 px a la izquierda (Guardar encima); título,
-proveedor · lugar y puntos fuertes; debajo, Mínimo · España · Salida y el pie
-con el estado, «Revisa · N avisos en la ficha» y la fecha. Toda la fila abre
-la ficha. El aviso crítico, si lo hay, va entero. */
+/* Fila de oferta: miniatura de 88 px, título, proveedor, puntos, datos y pie; toda la fila abre la ficha. */
 #emiLista .escaparate-oferta{display:grid;grid-template-columns:88px minmax(0,1fr) auto auto;grid-template-areas:"img tit tit tit" "img proc proc proc" "img meta meta meta" "puntos puntos puntos puntos" "datos datos datos datos" "aviso aviso aviso aviso" "avisos avisos fecha ver";column-gap:10px;row-gap:3px;align-items:start;margin:0;padding:10px 0 11px;overflow:visible;border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;background:none;box-shadow:none;transition:background .15s}
 #emiLista .escaparate-oferta:hover{transform:none;box-shadow:none}
 #emiLista .escaparate-oferta:active{background:rgba(255,255,255,.035)}
