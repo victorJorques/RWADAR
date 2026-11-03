@@ -2042,6 +2042,9 @@ async function copiarEnlaceFicha(ruta){
  }catch(_){avisar('Abre «Ficha completa» y copia la dirección de esa página.');}
 }
 function textoBreveDatoTarjetaLocal(campo){
+ /* Un mínimo documentado en otra moneda o unidad (1 USD, 1 gramo, 500 CHF) se
+    enseña tal cual en vez de «No verificado»: está comprobado, solo que no en euros. */
+ if(campo&&campo.texto==='No documentado en euros'&&textoLocal(campo.unidadDocumentada))return textoLocal(campo.unidadDocumentada);
  return ({'No documentado en euros':'No verificado','Sin mínimo vigente en euros':'No verificado',
   'Sin comprobar desde España':'Sin confirmar','Salida no documentada':'Sin documentar'})[campo.texto]||campo.texto;
 }

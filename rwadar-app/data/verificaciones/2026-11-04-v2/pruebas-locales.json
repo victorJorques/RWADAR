@@ -1,0 +1,69 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-04T09:00:03.307Z",
+  "revisionId": "9f82d49f-aeb1-affe-e40b-aafb5a1142f0",
+  "revisionAnterior": "a4792f79-0f4d-361b-a14d-3eeb95bf7499",
+  "resultado": "correcto",
+  "sha256AplicarYAprobar": "443febfaf2b5a6c8f96b394a4f0ecc1b251010c68b8f8dea1fc2149aa9470aac",
+  "tarjetas": {
+    "spiko-letras-del-tesoro-euro 2026-11-04": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "spiko-letras-del-tesoro-euro 2026-11-09": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "spiko-letras-del-tesoro-dolar 2026-11-04": {
+      "minimo": "1 USD",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles de Francia y EE. UU., con corte a las 11:30 (hora de París)"
+    },
+    "spiko-letras-del-tesoro-dolar 2026-11-09": {
+      "minimo": "1 USD",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles de Francia y EE. UU., con corte a las 11:30 (hora de París)"
+    },
+    "robinhood-classic-stock-tokens 2026-11-04": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Cierras la posición con Robinhood Europe en días de mercado de EE. UU.; el cierre puede suspenderse"
+    },
+    "robinhood-classic-stock-tokens 2026-11-09": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Cierras la posición con Robinhood Europe en días de mercado de EE. UU.; el cierre puede suspenderse"
+    },
+    "prosegur-digital-gold 2026-11-04": {
+      "minimo": "1 gramo de oro",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Solo recompra por Prosegur; normalmente de 1 a 7 días hábiles, y puede suspenderse"
+    },
+    "prosegur-digital-gold 2026-11-09": {
+      "minimo": "1 gramo de oro",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Solo recompra por Prosegur; normalmente de 1 a 7 días hábiles, y puede suspenderse"
+    },
+    "aktionariat 2026-11-04": {
+      "minimo": "500 CHF por transferencia bancaria",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Venta solo a otros accionistas; el emisor no recompra"
+    },
+    "aktionariat 2026-11-09": {
+      "minimo": "500 CHF por transferencia bancaria",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Venta solo a otros accionistas; el emisor no recompra"
+    }
+  },
+  "pruebas": [
+    "identidad SQL/fuentes",
+    "sin DDL ni borrados",
+    "rechazo de revisión anterior incorrecta con rollback",
+    "idempotencia",
+    "solo cambian vigencia (1 → 7) y la documentación de cinco ofertas",
+    "tarjetas con acceso desde España y salida en castellano hasta el 09/11",
+    "el 10/11 las cifras ya no se muestran"
+  ]
+}
