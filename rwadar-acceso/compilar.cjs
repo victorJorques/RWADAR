@@ -1,6 +1,26 @@
 'use strict';
 const fs = require('node:fs');
 const path = require('node:path');
+const PAGINAS_FICHAS = require('../rwadar-fichas-manifiesto.js');
+
+/* Fichas retiradas. Cloudflare Pages guarda en cada centro de datos, durante
+   una semana, una «copia de conservación» de cada archivo que sirve, y la
+   devuelve cuando ese archivo ya no está en el despliegue nuevo
+   (@cloudflare/pages-shared, asset-server/handler.ts: ASSET_PRESERVATION_CACHE,
+   «public, s-maxage=604800», con x-robots-tag noindex). Para una ficha retirada
+   eso enseñaría datos viejos durante días. El worker lleva la lista cerrada de
+   fichas publicadas y, en estas carpetas, responde 404 a cualquier otra página
+   sin pedírsela a ASSETS. Al retirar una ficha basta con quitarla del
+   manifiesto, como hasta ahora. */
+const CARPETAS_FICHAS = Object.freeze(['ofertas', 'plataformas', 'fuera-del-radar']);
+function fichasPublicadas(manifiesto = PAGINAS_FICHAS) {
+  const fichas = manifiesto.filter(ruta => {
+    const partes = ruta.split('/');
+    return partes.length === 2 && CARPETAS_FICHAS.includes(partes[0]) && /^[^/.]+\.html$/.test(partes[1]);
+  });
+  if (!fichas.some(ruta => ruta.startsWith('ofertas/'))) throw new Error('El manifiesto de fichas no trae ninguna oferta.');
+  return [...new Set(fichas)].sort();
+}
 
 // Public project coordinates; never an administrative key.
 const CONFIGURACION_PUBLICA = Object.freeze({
@@ -37,11 +57,34 @@ function construirWorker(raiz = __dirname) {
   return 'const carteraModelo = (() => { const module = { exports: {} };\n' + modelo + '\nreturn module.exports; })();\n' + cartera + '\n' +
     servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
     'const cabecerasRWAdar = Object.freeze(' + JSON.stringify(CABECERAS_SEGURIDAD) + ');\n' +
+    'const fichasRWAdar = new Set(' + JSON.stringify(fichasPublicadas()) + ');\n' +
+    'const rutaFichaRWAdar = /^\\/(' + CARPETAS_FICHAS.join('|') + ')\\/([^/]+?)(?:\\.html)?\\/?$/;\n' +
+    'function fichaRetiradaRWAdar(request) {\n' +
+    '  if (request.method !== "GET" && request.method !== "HEAD") return false;\n' +
+    '  let ruta;\n' +
+    '  try { ruta = decodeURIComponent(new URL(request.url).pathname); } catch { return false; }\n' +
+    '  const partes = rutaFichaRWAdar.exec(ruta);\n' +
+    '  if (!partes || partes[2].includes(".")) return false;\n' +
+    '  return !fichasRWAdar.has(partes[1] + "/" + partes[2] + ".html");\n' +
+    '}\n' +
+    'async function fichaNoEncontradaRWAdar(request, env) {\n' +
+    '  let pagina = null;\n' +
+    '  try {\n' +
+    '    const r = await env.ASSETS.fetch(new Request(new URL("/404", request.url), { method: "GET" }));\n' +
+    '    if (r.status === 200) pagina = r; else await r.body?.cancel();\n' +
+    '  } catch {}\n' +
+    '  const headers = new Headers(pagina ? pagina.headers : { "Content-Type": "text/plain; charset=utf-8" });\n' +
+    '  for (const nombre of ["ETag", "Last-Modified", "Content-Length", "Age", "CF-Cache-Status"]) headers.delete(nombre);\n' +
+    '  headers.set("Cache-Control", "no-store");\n' +
+    '  headers.set("X-Robots-Tag", "noindex, nofollow");\n' +
+    '  if (request.method === "HEAD") { await pagina?.body?.cancel(); return new Response(null, { status: 404, headers }); }\n' +
+    '  return new Response(pagina ? pagina.body : "No encontrado", { status: 404, headers });\n' +
+    '}\n' +
     'const accesoRWAdar = crearAccesoServidor();\n' +
     'export default { async fetch(request, env, executionCtx) {\n' +
     '  const respuesta = await accesoRWAdar.atender({ request, env: configuracionRWAdar,\n' +
     '    waitUntil: executionCtx.waitUntil.bind(executionCtx),\n' +
-    '    next: () => env.ASSETS.fetch(request) });\n' +
+    '    next: () => fichaRetiradaRWAdar(request) ? fichaNoEncontradaRWAdar(request, env) : env.ASSETS.fetch(request) });\n' +
     '  const headers = new Headers(respuesta.headers);\n' +
     '  for (const [nombre, valor] of Object.entries(cabecerasRWAdar)) {\n' +
     '    if (nombre === "Content-Security-Policy" && headers.has(nombre)) continue;\n' +
@@ -52,4 +95,4 @@ function construirWorker(raiz = __dirname) {
 }
 
 const RUTAS = Object.freeze({ version: 1, include: ['/*'], exclude: [] });
-module.exports = { construirWorker, RUTAS, CONFIGURACION_PUBLICA, CABECERAS_SEGURIDAD };
+module.exports = { construirWorker, RUTAS, CONFIGURACION_PUBLICA, CABECERAS_SEGURIDAD, CARPETAS_FICHAS, fichasPublicadas };

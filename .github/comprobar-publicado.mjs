@@ -7,10 +7,12 @@
    Cloudflare con lo que hay en el repositorio: portada, privacidad, mapa
    del sitio, índice de la Academy, cada lección publicada (con su fecha de
    revisión legal), sus assets con huella, la CSP y que las lecciones no
-   publicadas den 404. Sale con código 1 si algo no cuadra.
+   publicadas y las fichas retiradas den 404. Sale con código 1 si algo no cuadra.
    ===================================================================== */
 import { createRequire } from 'node:module';
 import crypto from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const academyMod = require('../rwadar-academy.js');
@@ -118,6 +120,25 @@ for (const ruta of assets) {
 for (const l of pendientes) {
   const pagina = await pedir(`/academy/${l.slug}`);
   ok(`lección ${l.modulo} (Próximamente) no tiene página: ${pagina.estado}`, pagina.estado === 404);
+}
+
+/* Fichas retiradas: Cloudflare Pages conserva una semana, en cada centro de
+   datos, copias de lo que sirvió y las devuelve si el archivo desaparece. El
+   worker debe dar 404 a toda ficha borrada del repositorio que no haya vuelto
+   al manifiesto. La lista sale del historial de Git (el flujo usa fetch-depth 0). */
+let retiradas = [];
+try {
+  retiradas = [...new Set(execFileSync('git', ['log', '--diff-filter=D', '--name-only', '--format=', '--',
+    'rwadar-site/ofertas/*.html', 'rwadar-site/plataformas/*.html', 'rwadar-site/fuera-del-radar/*.html'],
+  { cwd: fileURLToPath(new URL('..', import.meta.url)), encoding: 'utf8' })
+    .split('\n').map(linea => linea.trim().replace(/^rwadar-site\//, '')).filter(Boolean))]
+    .filter(ficha => !paginasFichas.includes(ficha)).sort();
+} catch (e) { console.log(`  (no se pudo leer el historial de Git: ${e.message})`); }
+ok(`el historial de Git da las fichas retiradas que hay que comprobar (${retiradas.length})`, retiradas.length > 0);
+for (const ficha of retiradas) {
+  const ruta = '/' + ficha.replace(/\.html$/, '');
+  const pagina = await pedir(ruta);
+  ok(`ficha retirada ${ruta} da 404: ${pagina.estado}`, pagina.estado === 404);
 }
 
 console.log(`\n${correctas} correctas, ${fallos.length} fallidas`);
