@@ -181,6 +181,13 @@
    "encuadre": "70% 55%",
    "concepto": "la fachada genérica de un edificio de bolsa neoclásico al anochecer, como imagen de derivados sobre acciones estadounidenses",
    "prompt": "Generic neoclassical stock exchange building facade with tall Corinthian columns and a plain smooth frieze, warm facade lighting at dusk, empty street in a financial district, no flags, no banners, no inscription"
+  },
+  "kraken-xstocks": {
+   "modelo": "realvisxl",
+   "semilla": 29,
+   "encuadre": "60% 55%",
+   "concepto": "un distrito financiero mediterráneo genérico al anochecer, junto al paseo marítimo, como imagen de certificados tokenizados que siguen acciones estadounidenses",
+   "prompt": "Modern glass office towers of a Mediterranean financial district at dusk beside a calm seafront promenade with palm trees, warm city lights reflecting on the water, wide empty walkway, no logos, no signage, no text, no flags"
   }
  }
 }
