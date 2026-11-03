@@ -79,3 +79,27 @@ ilustración de su categoría: la web, la app y `npm run catalogo` lo avisan.
 Cambiar las imágenes cambia la huella del contenido aprobado: hace falta una
 aprobación nueva en `rwadar-app/data/relanzamiento/estado.json` para publicar
 la web, y una versión nueva de la app para que la app las enseñe.
+
+## Transparencia por oferta
+
+`transparencia.json` guarda, para cada oferta, dos de las cinco
+comprobaciones de transparencia (quien la vende está supervisado y registrado
+en la CNMV; hay un documento oficial que cubre su venta en España), con su
+motivo, su fuente y su fecha; los puntos fuertes con fuente; el mínimo y la
+salida en forma corta, y la fecha de alta en el registro. Las otras tres
+(se contrata hoy desde España, mínimo y salida documentados, revisión vigente)
+las calcula la web con el catálogo.
+
+```
+node rwadar-editorial-source/ofertas/transparencia.mjs --comprobar   # valida y mira que la web y la app estén al día
+node rwadar-editorial-source/ofertas/transparencia.mjs               # escribe el bloque de la web y lib/transparencia-contenido.js
+```
+
+Comprueba que cada oferta esté en el catálogo publicado y con la misma
+`verificadaEl`, que los textos cortos (puntos, mínimo, salida) no pasen de 40
+caracteres, que ningún texto lleve «%», «rentab», «garantiz», «benefici»,
+«gananci», «recomend» ni «mejor», y que las fuentes sean https. En cada ciclo
+del catálogo se revisa junto con las fichas: si cambia la `verificadaEl` de una
+oferta y no se revisa aquí, `npm test` lo para y la web no enseña nada de esa
+oferta (falla cerrado). Es una comprobación de la documentación, no una
+recomendación de inversión, y no da notas («x/5»).
