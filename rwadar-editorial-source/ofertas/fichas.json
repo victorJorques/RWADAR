@@ -342,7 +342,7 @@
     "Transfieres euros",
     "Pides el reembolso"
    ],
-   "concepto": "un fondo en euros ligado al €STR, representado por una calle financiera parisina genérica"
+   "concepto": "un fondo en euros ligado al tipo a un día del euro, representado por una calle financiera parisina genérica"
   }
  ]
 }
