@@ -105,6 +105,40 @@ test('reventa documental depende de compradores y nunca promete liquidez inmedia
   assert.equal(resumenOferta(oferta([],{coleccion:'secundario'}),[],AHORA).salida.texto,'Salida no documentada');
 });
 
+test('reventa y próximas enseñan mínimo, acceso y salida documentados mientras la ficha está vigente', () => {
+  const refs = [referencia('Mínimo de inversión','1 participación desde 78 € en reventa'),
+    referencia('Acceso desde España','Disponible para residentes en España según el proveedor'),
+    referencia('Salida','Vendes a otro inversor en el mercado si hay comprador')];
+  for (const coleccion of ['secundario','en_camino']) {
+    const o = oferta(refs,{coleccion,estadoRevision:'no_verificable'});
+    const antes = structuredClone(o);
+    const s = resumenOferta(o,[],AHORA);
+    assert.equal(s.cifrasVigentes,false, 'sin rentabilidad ni precio principal');
+    assert.equal(s.minimo.unidadDocumentada,'1 participación desde 78 € en reventa');
+    assert.equal(s.accesoEspana.estado,'si');
+    assert.equal(s.salida.texto,'Salida: Vendes a otro inversor en el mercado si hay comprador');
+    assert.deepEqual(o,antes);
+    const vencida = resumenOferta(o,[],new Date('2026-10-29T00:00:00Z'));
+    assert.equal(vencida.vencida,true);
+    assert.equal(vencida.minimo.unidadDocumentada,undefined);
+    assert.equal(vencida.accesoEspana.estado,'sin_comprobar');
+  }
+  const dudoso = resumenOferta(oferta([referencia('Acceso desde España','Consultar con el proveedor')],
+    {coleccion:'secundario',estadoRevision:'no_verificable'}),[],AHORA);
+  assert.equal(dudoso.accesoEspana.estado,'sin_comprobar');
+  const reventaEnEuros = resumenOferta(oferta([referencia('Mínimo de inversión','Desde 78 €')],
+    {coleccion:'secundario',estadoRevision:'no_verificable'}),[],AHORA);
+  assert.equal(reventaEnEuros.minimo.euros,78);
+  // Las citas literales del documento no suben a la tarjeta de reventa.
+  const literal = resumenOferta(oferta([referencia('Entrada mínima','Mindestzeichnungsbetrag: EUR 103,37'),
+    referencia('Plazo','Ordentliche Kündigung: Nein'),referencia('salida · consulta 01/11/2026','Ordentliche Kündigung: Nein'),
+    referencia('Acceso España','Available in Spain')],
+    {coleccion:'secundario',estadoRevision:'no_verificable'}),[],AHORA);
+  assert.equal(literal.minimo.unidadDocumentada,undefined);
+  assert.equal(literal.accesoEspana.estado,'sin_comprobar');
+  assert.doesNotMatch(literal.salida.texto,/Kündigung/);
+});
+
 test('éxito 0 % nunca oculta gestión 0,6 % y cada coste conserva su fecha y fuente sin sumar',()=>{
   const refs=[referencia('Comisión de éxito · 22/10/2026','0 %','2026-10-22'),
     referencia('Comisión publicada · Gestión','0,60 % anual sobre AUM','2026-10-20'),
