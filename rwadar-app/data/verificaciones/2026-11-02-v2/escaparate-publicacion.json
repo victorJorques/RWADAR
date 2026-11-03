@@ -2663,13 +2663,7 @@
           "verificadaEl": "2026-11-02"
         },
         {
-          "texto": "El precio del emisor (8,50) está por encima de la mejor venta entre accionistas (8,40).",
-          "tono": "warn",
-          "esAntiguedad": false,
-          "verificadaEl": "2026-11-02"
-        },
-        {
-          "texto": "El portal no indica qué países pueden comprar: no consta acceso desde España.",
+          "texto": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-02"
@@ -2749,12 +2743,6 @@
           "verificadaEl": "2026-11-02"
         },
         {
-          "texto": "El portal no indica qué países pueden comprar: no consta acceso desde España.",
-          "tono": "warn",
-          "esAntiguedad": false,
-          "verificadaEl": "2026-11-02"
-        },
-        {
           "texto": "El precio del emisor y las ofertas entre accionistas cambian: compruébalos en el portal antes de operar.",
           "tono": "warn",
           "esAntiguedad": false,
@@ -2801,10 +2789,6 @@
         {
           "etiqueta": "Oferta",
           "valor": "Exenta de folleto · solo lista blanca"
-        },
-        {
-          "etiqueta": "Valor por token · 30/10/2026",
-          "valor": "1,1334 USD (oráculo)"
         }
       ],
       "avisos": [
@@ -2821,7 +2805,7 @@
           "verificadaEl": "2026-11-02"
         },
         {
-          "texto": "El 01/11/2026 la suscripción estaba pausada en el contrato de Ethereum.",
+          "texto": "El 01/11/2026 (domingo) la suscripción figuraba pausada en el contrato de Ethereum; el 02/11 volvía a estar activa.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-02"
@@ -4014,10 +3998,6 @@
           "valor": "100 €"
         },
         {
-          "etiqueta": "Suscrito / umbral",
-          "valor": "82 de 5.000 participaciones necesarias (API 01/11/2026)"
-        },
-        {
           "etiqueta": "Reembolso",
           "valor": "Cancelable a los 5 años y luego cada año; o reventa"
         },
@@ -4074,7 +4054,7 @@
           "verificadaEl": "2026-11-02"
         },
         {
-          "texto": "El 5,07 % es una previsión del emisor sobre el nominal; todavía no se ha pagado ningún reparto.",
+          "texto": "El reparto que prevé el emisor no está garantizado y todavía no se ha pagado ninguno.",
           "tono": "warn",
           "esAntiguedad": false,
           "verificadaEl": "2026-11-02"

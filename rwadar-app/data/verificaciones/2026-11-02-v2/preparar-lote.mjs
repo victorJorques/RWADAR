@@ -76,7 +76,7 @@ const EUTBL = yieldHoy('EUTBL'), USTBL = yieldHoy('USTBL');
 
 // ---------------------------------------------------------------- ofertas
 const esHttps = u => typeof u === 'string' && /^https:\/\/[^\s]+$/.test(u);
-const DINAMICAS = /^(Precio de referencia|Venta más barata|Mejor compra|Rentabilidad publicada|Precio del emisor|Última operación|Última compra|Venta$|Recaudado)/;
+const DINAMICAS = /^(Precio de referencia|Venta más barata|Mejor compra|Rentabilidad publicada|Precio del emisor|Última operación|Última compra|Venta$|Recaudado|Valor por token)/;
 const aviso = texto => ({ texto, tono: 'warn', esAntiguedad: false, verificadaEl: FECHA });
 
 function metricasPara(slug, coleccion, tarjeta) {
@@ -92,6 +92,7 @@ function metricasPara(slug, coleccion, tarjeta) {
     if (slug === 'casa-de-outeiro' || slug === 'terreno-con-arrendamiento-billa') {
       // Estado de la campaña, comprobado por la revisión independiente el 02/11.
       const original = tarjeta.metricas.find(m => /^(Recaudado|Suscrito)/.test(m.etiqueta));
+      metricas = metricas.filter(m => !/^(Recaudado|Suscrito)/.test(m.etiqueta));
       if (original) metricas.push({ etiqueta: original.etiqueta.replace(/01\/11\/2026/, '02/11/2026')
         .replace('API 01/11/2026', 'API 02/11/2026'), valor: original.valor.replace('API 01/11/2026', 'API 02/11/2026') });
     }
@@ -109,6 +110,20 @@ function avisosPara(slug, coleccion, tarjeta, exp) {
   let textos = [...tarjeta.avisos];
   if (!textos.includes(AVISO_GENERAL)) textos.unshift(AVISO_GENERAL);
   textos = [AVISO_GENERAL, ...textos.filter(t => t !== AVISO_GENERAL)];
+  // Correcciones de la revisión independiente del SQL (02/11/2026).
+  const CAMBIO = {
+    'El 5,07 % es una previsión del emisor sobre el nominal; todavía no se ha pagado ningún reparto.':
+      'El reparto que prevé el emisor no está garantizado y todavía no se ha pagado ninguno.',
+    'El precio del emisor (8,50) está por encima de la mejor venta entre accionistas (8,40).':
+      'El precio del emisor está por encima de la mejor oferta de venta entre accionistas.',
+    'El 01/11/2026 la suscripción estaba pausada en el contrato de Ethereum.':
+      'El 01/11/2026 (domingo) la suscripción figuraba pausada en el contrato de Ethereum; el 02/11 volvía a estar activa.',
+  };
+  textos = textos.map(t => CAMBIO[t] || t);
+  if (textos.some(t => t.startsWith('Acceso desde España no confirmado'))) {
+    textos = textos.filter(t => t !== 'El portal no indica qué países pueden comprar: no consta acceso desde España.');
+  }
+  textos = [...new Set(textos)];
   if (coleccion === 'secundario' && exp.plataformaSlug === 'brickwise') {
     textos.push('Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.');
   }

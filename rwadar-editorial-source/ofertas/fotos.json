@@ -177,10 +177,10 @@
   },
   "robinhood-classic-stock-tokens": {
    "modelo": "realvisxl",
-   "semilla": 11,
+   "semilla": 23,
    "encuadre": "70% 55%",
    "concepto": "la fachada genérica de un edificio de bolsa neoclásico al anochecer, como imagen de derivados sobre acciones estadounidenses",
-   "prompt": "Generic neoclassical stock exchange building facade with tall Corinthian columns, warm facade lighting at dusk, empty street in a financial district, no flags, no banners"
+   "prompt": "Generic neoclassical stock exchange building facade with tall Corinthian columns and a plain smooth frieze, warm facade lighting at dusk, empty street in a financial district, no flags, no banners, no inscription"
   }
  }
 }

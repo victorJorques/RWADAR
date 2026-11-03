@@ -1,8 +1,8 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-02T17:11:37.882Z",
-  "revisionId": "16040307-b226-5c59-2635-4f77d6ed8698",
-  "hash": "16040307b2265c5926354f77d6ed86983390f1e90c219950c8c14fe7becea4fe",
+  "ejecutadoEl": "2026-11-03T07:49:49.381Z",
+  "revisionId": "f2be1f5e-2bfa-daa1-095b-c0b96e9206aa",
+  "hash": "f2be1f5e2bfadaa1095bc0b96e9206aa0fc1407798327f3eee60b255f53b8b02",
   "revisionAnterior": "c406fa37-a1d3-281c-117a-95819762cfcf",
   "resultado": "correcto",
   "plataformas": 26,
@@ -19,7 +19,7 @@
   "retiradas": 28,
   "fechaRadar": "2026-11-02",
   "vigenteHasta": "2026-11-09",
-  "sha256AplicarYAprobar": "de62690a5c13cfbedee83cf109c939604e86be17458fc4c18b71690b4c44c4aa",
+  "sha256AplicarYAprobar": "dd95eb52a0659096d9170017b1403995053c5300cc6a37525a943aecf7a5c5d0",
   "pruebas": [
     "identidad SQL/fuentes",
     "solo siete tablas editoriales, sin DDL ni borrados",

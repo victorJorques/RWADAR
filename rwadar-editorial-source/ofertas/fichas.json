@@ -296,7 +296,7 @@
    "slug": "spiko-letras-del-tesoro-dolar",
    "escena": "tesoro",
    "op": {},
-   "lugar": "Tesoro de EE. UU.",
+   "lugar": "Estados Unidos",
    "pasos": [
     "Abres cuenta con KYC",
     "Compras participaciones",
@@ -310,7 +310,7 @@
    "op": {
     "forma": "oficina"
    },
-   "lugar": "Bolsa de EE. UU.",
+   "lugar": "Estados Unidos",
    "pasos": [
     "Abres cuenta y test",
     "Compras en euros",
