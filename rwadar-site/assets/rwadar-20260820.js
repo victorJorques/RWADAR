@@ -1851,10 +1851,8 @@ function movimientoReducido(){
    retardo como atributo, algo que la CSP no permite con style, y así se
    encienden justo cuando el barrido pasa. Con movimiento reducido, quieto. */
 function radarInicioSvg(sin){
- const CX=200,CY=200,R=140,quieto=movimientoReducido(),cats=Object.keys(CATMETA);
+ const CX=200,CY=200,R=136,quieto=movimientoReducido(),cats=Object.keys(CATMETA);
  const pol=(a,r)=>[CX+Math.cos(a*Math.PI/180)*r,CY+Math.sin(a*Math.PI/180)*r];
- const CORTO={"Inmobiliario":"Inmuebles","Crédito privado":"Crédito","Tesoro y fondos":"Tesoro",
-  "Acciones y capital privado":"Acciones","Materias primas":"Materias","Infraestructura":"Infra"};
  const n1=v=>v.toFixed(1);
  let s='<defs><radialGradient id="gBarridoInicio" cx="0" cy="0.5" r="1"><stop offset="0" stop-color="#25E39A" stop-opacity=".36"/>'+
   '<stop offset=".6" stop-color="#25E39A" stop-opacity=".08"/><stop offset="1" stop-color="#25E39A" stop-opacity="0"/></radialGradient>'+
@@ -1867,17 +1865,21 @@ function radarInicioSvg(sin){
   const [x1,y1]=pol(g*5,R),[x2,y2]=pol(g*5,R+(g%6===0?8:g%2===0?4:2.5));
   s+='<line class="radar-tick'+(g%18===0?' fuerte':'')+'" x1="'+n1(x1)+'" y1="'+n1(y1)+'" x2="'+n1(x2)+'" y2="'+n1(y2)+'"/>';
  }
+ /* Mismos nombres cortos que los chips y las casillas (Inmobiliario, Crédito,
+    Tesoro, Acciones, Materias primas, Infraestructura); el número es de
+    plataformas. A los lados, pegados al borde y por encima del aro, para que
+    ningún rótulo pise el círculo ni se salga de la pantalla. */
  cats.forEach((c,i)=>{
-  const [x,y]=pol(-120+i*60,R),n=P.filter(p=>p.cat===c).length,nombre=escHtml(CORTO[c]||c),cifra=sin||!n?'':String(n);
+  const [x,y]=pol(-120+i*60,R),n=P.filter(p=>p.cat===c).length,cifra=sin||!n?'':String(n),nombre=catCorta(c);
   s+='<line class="radar-sector" x1="200" y1="200" x2="'+n1(x)+'" y2="'+n1(y)+'"/>';
-  /* Arriba y abajo, centrado; a los lados, pegado al borde y en dos líneas,
-     para que ningún rótulo pise el círculo ni se salga de la pantalla. */
-  if(i%3===0){const ty=i?CY+R+20:CY-R-17;
-   s+='<text class="ir-et" x="200" y="'+ty+'" text-anchor="middle" dominant-baseline="middle" fill="'+CATMETA[c].c+'">'+nombre+
-    (cifra?' <tspan class="ir-et-n">'+cifra+'</tspan>':'')+'</text>';}
-  else{const der=i<3,tx=der?388:12,ty=n1(pol(-90+i*60,R+20)[1]);
-   s+='<text class="ir-et" x="'+tx+'" y="'+ty+'" text-anchor="'+(der?'end':'start')+'" fill="'+CATMETA[c].c+'"><tspan x="'+tx+'" dy="-3">'+nombre+'</tspan>'+
-    (cifra?'<tspan class="ir-et-n" x="'+tx+'" dy="15">'+cifra+'</tspan>':'')+'</text>';}
+  if(i%3===0){const ty=i?CY+R+21:CY-R-15;
+   s+='<text class="ir-et" x="200" y="'+ty+'" text-anchor="middle" dominant-baseline="middle" fill="'+CATMETA[c].c+'">'+escHtml(nombre)+
+    (cifra?' <tspan class="ir-et-n">'+cifra+'</tspan>':'')+'</text>';return;}
+  const der=i<3,tx=der?398:-8,arriba=i===1||i===5,lineas=nombre.length>12&&nombre.includes(' ')?nombre.split(' '):[nombre];
+  if(cifra)lineas.push(cifra);
+  const y0=arriba?CY-92-(lineas.length-1)*15:CY+76;
+  s+='<text class="ir-et" x="'+tx+'" y="'+y0+'" text-anchor="'+(der?'end':'start')+'" fill="'+CATMETA[c].c+'">'+
+   lineas.map((l,k)=>'<tspan'+(cifra&&k===lineas.length-1?' class="ir-et-n"':'')+' x="'+tx+'"'+(k?' dy="15"':'')+'>'+escHtml(l)+'</tspan>').join('')+'</text>';
  });
  const fin=pol(-88,R);
  s+='<g'+(quieto?' transform="rotate(-38 200 200)"':'')+'><path d="M200 200 L'+(CX+R)+' 200 A'+R+' '+R+' 0 0 0 '+n1(fin[0])+' '+n1(fin[1])+' Z" fill="url(#gBarridoInicio)"/>'+
@@ -1894,18 +1896,40 @@ function radarInicioSvg(sin){
  return s+'<g transform="translate(200 200) scale(1.15) translate(-52 -52)"><path d="M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z" fill="#25E39A" stroke="#0B0A0A" stroke-width="1.4"/></g>';
 }
 function fechaRevisionOferta(o){const d=documentacionOfertaLocal(o);return d&&d.revisadaEl||o.verificadaEl||''}
-function tarjetaInicioHtml(o){
- const imagen=imagenOfertaLocal(o),estado=estadoVigenciaLocal(o),f=fechaRevisionOferta(o);
- const id='inicioOf-'+escHtml(o.slug),cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
+/* Tarjeta de los carruseles: foto limpia, título en dos líneas, proveedor y,
+   según el carrusel, hasta dos puntos fuertes o la fecha de alta. */
+function tarjetaInicioHtml(o,modo){
+ const imagen=imagenOfertaLocal(o),e=transparenciaOferta(o);
+ const id='inicio-'+modo+'-'+escHtml(o.slug),cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
+ const pie=modo==='sel'?puntosFuertesOferta(o).slice(0,2).map(x=>'<span class="inicio-punto">'+escHtml(x.texto)+'</span>').join(''):
+  e&&fechaLocalValida(e.anadidaEl)?'Añadida el <time datetime="'+escHtml(e.anadidaEl)+'">'+escHtml(fechaBarras(e.anadidaEl))+'</time>':'';
  return '<li><button type="button" class="inicio-oferta'+cat+'" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+
-  escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'" aria-describedby="'+id+'">'+
-  '<span class="inicio-oferta-img"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+
-  ' loading="lazy" decoding="async" width="640" height="440">'+
-  '<span class="inicio-oferta-cat"><span class="punto"></span>'+escHtml(catCorta(o.categoria))+'</span></span>'+
-  '<span class="inicio-oferta-txt" translate="no"><b>'+escHtml(o.titulo)+'</b><span>'+escHtml(o.plataformaNombre)+'</span>'+
-  (imagen.lugar?'<span>'+escHtml(imagen.lugar)+'</span>':'')+'</span>'+
-  '<span class="inicio-oferta-pie" id="'+id+'">'+(estado.clase==='caducado'?'<span class="inicio-oferta-estado">'+escHtml(estado.texto)+'</span>':'')+
-  '<time datetime="'+escHtml(f)+'">Revisada el '+escHtml(fechaBarras(f))+'</time></span></button></li>';
+  escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'"'+(pie?' aria-describedby="'+id+'"':'')+'>'+
+  '<span class="inicio-oferta-img"><img data-src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+
+  ' loading="lazy" decoding="async" width="640" height="440"></span>'+
+  '<span class="inicio-oferta-txt"><b class="inicio-oferta-tit">'+escHtml(o.titulo)+'</b><span class="inicio-oferta-prov">'+escHtml(o.plataformaNombre)+'</span></span>'+
+  (pie?'<span class="inicio-oferta-pie" id="'+id+'">'+pie+'</span>':'')+'</button></li>';
+}
+/* Las fotos de los carruseles se piden al acercarse a la pantalla: con solo
+   loading=lazy el navegador las adelanta 1250 px y la primera pantalla de
+   Inicio cargaba unos 380 KB de imágenes que no se ven. */
+let observadorFotosInicio=null;
+function diferirFotosInicio(){
+ if(typeof document==='undefined'||typeof document.querySelectorAll!=='function')return;
+ const fotos=[...document.querySelectorAll('#movilPanelInicio img[data-src]')];if(!fotos.length)return;
+ const cargar=img=>{const src=img.getAttribute('data-src');img.removeAttribute('data-src');if(src)img.src=src;};
+ if(typeof IntersectionObserver!=='function'){fotos.forEach(cargar);return;}
+ if(!observadorFotosInicio)observadorFotosInicio=new IntersectionObserver(entradas=>entradas.forEach(e=>{
+  if(e.isIntersecting){observadorFotosInicio.unobserve(e.target);cargar(e.target);}}),{rootMargin:'48px 160px'});
+ fotos.forEach(img=>observadorFotosInicio.observe(img));
+}
+/* Altas de los últimos 30 días según transparencia.json (falla cerrado: sin
+   entrada vigente, la oferta no sale), de la más nueva a la más antigua. */
+function ofertasRecientesInicio(ofertas,max=6){
+ const h=new Date(),hoy=Date.UTC(h.getUTCFullYear(),h.getUTCMonth(),h.getUTCDate());
+ return ofertas.map(o=>({o,e:transparenciaOferta(o)})).filter(({e})=>e&&fechaLocalValida(e.anadidaEl)&&
+   hoy-Date.parse(e.anadidaEl+'T00:00:00Z')>=0&&hoy-Date.parse(e.anadidaEl+'T00:00:00Z')<=30*86400000)
+  .sort((a,b)=>b.e.anadidaEl.localeCompare(a.e.anadidaEl)||String(a.o.titulo).localeCompare(String(b.o.titulo),'es')).slice(0,max).map(x=>x.o);
 }
 function pintarInicio(){
  const panel=document.getElementById('movilPanelInicio');
@@ -1913,13 +1937,19 @@ function pintarInicio(){
  const ofertas=ofertasCatalogoInicio(),sin=inicioSinCifras();
  const iso=P[0]&&fechaLocalValida(P[0].verificado_lote_el)?P[0].verificado_lote_el:'';
  const fecha=fechaBarras(iso)||ultimaRevision().replace(/\./g,'/');
+ /* Selección: principales con las cinco comprobaciones, por empresa y nombre. */
+ const seleccion=ofertas.filter(o=>o.coleccion==='principales'&&enSeleccionOferta(o)).sort((a,b)=>
+  String(a.plataformaNombre).localeCompare(String(b.plataformaNombre),'es')||String(a.titulo).localeCompare(String(b.titulo),'es'));
+ const recientes=ofertasRecientesInicio(ofertas);
  const huella=[P.length,FUERA.length,sin,CATALOGO_EMBEBIDO_BLOQUEADO,iso,movimientoReducido(),
-  P.map(p=>p.slug+p.cat).join(),ofertas.map(o=>o.slug+o.coleccion+o.categoria+o.estadoRevision+fechaRevisionOferta(o)).join()].join('|');
+  P.map(p=>p.slug+p.cat).join(),ofertas.map(o=>o.slug+o.coleccion+o.categoria+o.estadoRevision+fechaRevisionOferta(o)).join(),
+  seleccion.map(o=>o.slug).join(),recientes.map(o=>o.slug).join()].join('|');
  if(huella===huellaInicio)return;
  huellaInicio=huella;
  const pon=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;return el;};
  const ocultar=(id,si)=>{const el=document.getElementById(id);if(el)el.hidden=si;};
  pon('inicioRadar',P.length?radarInicioSvg(sin):'');
+ ocultar('inicioLeyenda',sin||!P.length);
  const cuenta=c=>ofertas.filter(o=>o.coleccion===c).length;
  const t=iso?'<time datetime="'+escHtml(iso)+'">'+escHtml(fecha)+'</time>':escHtml(fecha);
  pon('inicioCifras',CATALOGO_EMBEBIDO_BLOQUEADO?'<li class="inicio-hud-1 inicio-hud-aviso"><b>Catálogo no disponible</b> <span>Volverá en cuanto se publique de nuevo</span></li>':
@@ -1928,16 +1958,18 @@ function pintarInicio(){
   '<li class="inicio-hud-2"><b>'+P.length+'</b> <span>plataformas</span></li>'+
   '<li class="inicio-hud-3"><b>'+FUERA.length+'</b> <span>fuera del radar</span></li>'+
   '<li class="inicio-hud-4"><span>revisado el</span> <b>'+t+'</b></li>');
- /* Ofertas principales, por fecha de revisión (la más reciente primero) y nombre. */
- const principales=ofertas.filter(o=>o.coleccion==='principales').sort((a,b)=>
-  fechaRevisionOferta(b).localeCompare(fechaRevisionOferta(a))||String(a.titulo).localeCompare(String(b.titulo),'es'));
- ocultar('inicioRevisadas',!principales.length);
- const ultima=principales.length?fechaRevisionOferta(principales[0]):'';
- const fr=document.getElementById('inicioRevisadasFecha');
- if(fr){fr.textContent=fechaBarras(ultima).slice(0,5);if(typeof fr.setAttribute==='function')fr.setAttribute('datetime',ultima);}
- pon('inicioCarrusel',principales.map(tarjetaInicioHtml).join('')+(principales.length?
-  '<li><button type="button" class="inicio-oferta inicio-oferta-todas" data-movil-ir="emisiones">'+
-  (sin?'':'<b>'+ofertas.length+'</b> <span>ofertas en el registro</span>')+'<span class="inicio-ir">Ver todas <span aria-hidden="true">→</span></span></button></li>':''));
+ /* Vigencia del catálogo: hasta cuándo valen las cifras, con su pastilla. */
+ const dias=P[0]&&Number.isInteger(P[0].vigencia_lote_dias)?P[0].vigencia_lote_dias:0;
+ const hasta=iso&&dias>0?new Date(Date.parse(iso+'T00:00:00Z')+dias*86400000).toISOString().slice(0,10):'';
+ pon('inicioVigencia',CATALOGO_EMBEBIDO_BLOQUEADO?'<span class="inicio-pastilla pendiente">Catálogo no disponible</span>':
+  sin?'<span class="inicio-pastilla pendiente">Revisión pendiente</span> <span>Revisado el</span> '+t+' <span>· pendiente de renovar</span>':
+  iso?'<span class="inicio-pastilla vigente">Vigente</span> <span>Revisado el</span> '+t+(hasta?' <span>· vigente hasta el</span> <time datetime="'+hasta+'">'+escHtml(fechaBarras(hasta))+'</time>':''):'');
+ ocultar('inicioSeleccion',!seleccion.length);
+ pon('inicioCriterios',criteriosTransparencia().map(c=>'<li>'+escHtml(c.texto)+'</li>').join(''));
+ pon('inicioSeleccionLista',seleccion.map(o=>tarjetaInicioHtml(o,'sel')).join(''));
+ ocultar('inicioRecientes',!recientes.length);
+ pon('inicioRecientesLista',recientes.map(o=>tarjetaInicioHtml(o,'alta')).join(''));
+ diferirFotosInicio();
  /* Accesos por tipo de activo: el orden fijo de CATMETA y su recuento real. */
  const cats=Object.keys(CATMETA).filter(c=>ofertas.some(o=>o.categoria===c));
  ocultar('inicioPorTipo',!cats.length);
@@ -1971,6 +2003,8 @@ function sincronizarRadarPlegado(){
   const panel=document.getElementById('movilPanelRadar');
   if(panel&&panel.classList){panel.classList.toggle('movil-radar-abierto');sincronizarRadarPlegado();}
  });
+ try{const mq=typeof window!=='undefined'&&typeof window.matchMedia==='function'?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
+  if(mq&&typeof mq.addEventListener==='function')mq.addEventListener('change',()=>{if(typeof pintarInicio==='function')pintarInicio();});}catch(e){}
  const panel=document.getElementById('movilPanelInicio');
  if(!panel||typeof panel.addEventListener!=='function')return;
  panel.addEventListener('click',e=>{
@@ -2281,13 +2315,11 @@ function datosClaveOfertaHtml(resumen,completo=false){
    nota: dos salen de transparencia.json (con su motivo y su fuente) y tres
    del catálogo. Falla cerrado: sin entrada, o con otra verificadaEl, la
    oferta no enseña puntos fuertes ni entra en la Selección. */
-const CRITERIOS_TRANSPARENCIA_RESERVA=[['contratable','Se contrata hoy desde España'],
- ['supervisada','Quien la vende está supervisado y registrado en la CNMV'],
- ['documentoEspana','Hay un documento oficial (KID o folleto) que cubre su venta en España'],
- ['minimoSalida','El mínimo y la forma de salir están documentados'],['vigente','Revisada esta semana y sin fuentes en conflicto']];
 function criteriosTransparencia(){
  const t=typeof TRANSPARENCIA_CRITERIOS!=='undefined'&&Array.isArray(TRANSPARENCIA_CRITERIOS)?TRANSPARENCIA_CRITERIOS:[];
- return CRITERIOS_TRANSPARENCIA_RESERVA.map(([id,texto])=>{const c=t.find(x=>x&&x.id===id);return {id,texto:c&&textoLocal(c.texto)||texto}});
+ return [['contratable','Se contrata hoy desde España'],['supervisada','Quien la vende está supervisado y registrado en la CNMV'],
+  ['documentoEspana','Hay un documento oficial (KID o folleto) que cubre su venta en España'],
+  ['minimoSalida','El mínimo y la forma de salir están documentados'],['vigente','Revisada esta semana y sin fuentes en conflicto']].map(([id,texto])=>{const c=t.find(x=>x&&x.id===id);return {id,texto:c&&textoLocal(c.texto)||texto}});
 }
 function transparenciaOferta(o){
  const t=typeof TRANSPARENCIA_POR_SLUG!=='undefined'&&TRANSPARENCIA_POR_SLUG?TRANSPARENCIA_POR_SLUG:null;
@@ -2298,8 +2330,8 @@ function catalogoSinCifrasLocal(){
  return [typeof CATALOGO_CADUCADO!=='undefined'&&CATALOGO_CADUCADO,typeof CATALOGO_SIN_COMPROBAR!=='undefined'&&CATALOGO_SIN_COMPROBAR,
   typeof CATALOGO_EMBEBIDO_BLOQUEADO!=='undefined'&&CATALOGO_EMBEBIDO_BLOQUEADO].some(Boolean);
 }
-const minimoDocumentadoLocal=r=>!!(r&&r.minimo&&(Number.isFinite(r.minimo.euros)||textoLocal(r.minimo.unidadDocumentada)));
-const salidaDocumentadaLocal=r=>!!(r&&r.salida&&textoLocal(r.salida.texto)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto));
+function minimoDocumentadoLocal(r){return !!(r&&r.minimo&&(Number.isFinite(r.minimo.euros)||textoLocal(r.minimo.unidadDocumentada)))}
+function salidaDocumentadaLocal(r){return !!(r&&r.salida&&textoLocal(r.salida.texto)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto))}
 function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
  const e=transparenciaOferta(o),estado=estadoVigenciaLocal(o),textos=criteriosTransparencia();
  const cita=c=>c&&urlHttps(c.fuente)?{url:urlHttps(c.fuente),titulo:nombreFuenteLocal(c.fuente),fecha:fechaLocalValida(c.consultadaEl)?c.consultadaEl:''}:null;

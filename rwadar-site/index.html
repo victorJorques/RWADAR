@@ -1058,33 +1058,48 @@
     <!-- Portada: el radar real del registro. Puntos, cifras y fecha los pinta
          pintarInicio() desde P, EMI y FUERA; aquí no hay ninguna cifra. -->
     <section class="inicio-portada" aria-labelledby="inicioPortadaTit">
-      <div class="inicio-radar-caja">
-        <button class="inicio-radar-abrir" type="button" data-inicio-radar>
-          <svg class="inicio-radar" id="inicioRadar" viewBox="6 6 388 388" aria-hidden="true" focusable="false"></svg>
-          <span class="inicio-radar-pista">Explorar el radar <span aria-hidden="true">›</span></span>
-        </button>
+      <div class="inicio-radar-caja" data-inicio-radar>
+        <svg class="inicio-radar" id="inicioRadar" viewBox="-14 6 416 388" aria-hidden="true" focusable="false"></svg>
         <ul class="inicio-hud" id="inicioCifras" aria-label="El registro en cifras"></ul>
       </div>
-      <p class="movil-mini-etiqueta">REGISTRO INDEPENDIENTE</p>
+      <div class="inicio-radar-pie">
+        <p class="inicio-leyenda" id="inicioLeyenda">Plataformas por tipo de activo</p>
+        <button class="inicio-radar-pista" type="button" data-inicio-radar>Explorar el radar <span aria-hidden="true">›</span></button>
+      </div>
+      <p class="inicio-vigencia" id="inicioVigencia"></p>
+      <p class="movil-mini-etiqueta inicio-etiqueta-registro">REGISTRO INDEPENDIENTE · NO VENDE NI ASESORA</p>
       <h2 class="inicio-portada-tit" id="inicioPortadaTit">Plataformas de tokenización, con la fuente al lado</h2>
-      <p class="inicio-portada-sub">Quién está en el radar, qué ofertas documentamos y quién se ha quedado fuera, y por qué.</p>
+      <button class="inicio-buscar" type="button" data-inicio-buscar>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <span>Busca una oferta, empresa o país</span>
+      </button>
       <div class="inicio-atajos">
         <button class="movil-boton-principal" type="button" data-movil-ir="emisiones">Ver ofertas</button>
         <button class="movil-boton-secundario" type="button" data-movil-ir="tool">Ver plataformas</button>
       </div>
-      <button class="inicio-buscar" type="button" data-inicio-buscar>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <span>Buscar oferta, empresa o país</span>
-      </button>
     </section>
 
-    <section class="inicio-seccion" id="inicioRevisadas" aria-labelledby="inicioRevisadasTit" hidden>
+    <!-- Las ofertas con las cinco comprobaciones de transparencia (pintarInicio).
+         Es una comprobación de la documentación, no una recomendación. -->
+    <section class="inicio-seccion" id="inicioSeleccion" aria-labelledby="inicioSeleccionTit" hidden>
+      <h3 class="inicio-seccion-tit" id="inicioSeleccionTit">Selección RWAdar · la documentación más completa</h3>
+      <p class="inicio-seccion-sub">Cumplen las 5 comprobaciones de transparencia de RWAdar. No es una recomendación de inversión.</p>
+      <details class="inicio-como">
+        <summary>Cómo elegimos</summary>
+        <ol id="inicioCriterios"></ol>
+      </details>
+      <ul class="inicio-carrusel" id="inicioSeleccionLista" aria-label="Selección RWAdar: ofertas con las 5 comprobaciones de transparencia"></ul>
+      <p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>
+    </section>
+
+    <section class="inicio-seccion" id="inicioRecientes" aria-labelledby="inicioRecientesTit" hidden>
       <div class="inicio-seccion-cab">
-        <h3 class="inicio-seccion-tit" id="inicioRevisadasTit">Revisadas el <time id="inicioRevisadasFecha"></time></h3>
+        <h3 class="inicio-seccion-tit" id="inicioRecientesTit">Recién añadidas</h3>
         <button class="inicio-ver" type="button" data-movil-ir="emisiones">Ver todas <span aria-hidden="true">›</span></button>
       </div>
-      <p class="inicio-seccion-sub">Las ofertas principales, por fecha de revisión y nombre. Toca una para ver su ficha.</p>
-      <ul class="inicio-carrusel" id="inicioCarrusel" aria-labelledby="inicioRevisadasTit"></ul>
+      <p class="inicio-seccion-sub">Por fecha de alta en el registro</p>
+      <ul class="inicio-carrusel" id="inicioRecientesLista" aria-label="Recién añadidas, por fecha de alta en el registro"></ul>
+      <p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>
     </section>
 
     <section class="inicio-seccion" id="inicioPorTipo" aria-labelledby="inicioPorTipoTit" hidden>
