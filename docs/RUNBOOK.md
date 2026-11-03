@@ -147,13 +147,17 @@ no toca Supabase ni publica):
 npm run catalogo
 ```
 
-Vuelve a leer las fuentes del radar y las 49 fichas, comprueba que cada
+Vuelve a leer las fuentes del radar y todas las fichas, comprueba que cada
 fuente sigue diciendo lo que respalda (`rwadar-app/data/comprobaciones-fuentes.json`),
 pone al día cada ficha con lo leído ese día (una cifra que no se puede leer se
 quita y la ficha lleva aviso), monta el lote, lo prueba en PGlite y deja un
-informe en `rwadar-app/data/verificaciones/<fecha>-v2/informe-<fecha>.md`. Si
-una fuente del radar falla, se para sin montar nada y dice cuál revisar a mano.
-Después, Víctor pega `aplicar-y-aprobar.sql` en Supabase y se publica la web.
+informe en `rwadar-app/data/verificaciones/<etiqueta>-v2/informe-<etiqueta>.md`.
+La etiqueta es la fecha o, si ese día ya hubo otra entrega, `AAAA-MM-DD.2`, `.3`…
+(se puede actualizar las veces que haga falta). Si una fuente del radar falla,
+se para sin montar nada y dice cuál revisar a mano. Las fichas sin regla
+automática se marcan para revisarlas a mano. Tras la revisión independiente,
+la entrega se une a `main` y se aplica con el flujo «Aplicar catálogo»
+(etiqueta de la entrega); después se publica la web con «Publicar web».
 Desde un ordenador en España se leen más fuentes que desde la nube (Midas
 bloquea las consultas automáticas desde fuera).
 
