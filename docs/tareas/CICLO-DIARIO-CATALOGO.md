@@ -22,11 +22,14 @@ trazabilidad; en el siguiente inicio manual se investiga de nuevo desde fuentes
 vigentes y se decide de nuevo, sin arrastrar aprobaciones.
 
 El inicio manual habilita la investigación de ese ciclo; **no concede una
-autorización recurrente autónoma**. Antes de aplicar SQL editorial remoto o
-publicar preview y producción, comprobar el permiso expreso de Víctor para esa
-ejecución, además de las revisiones y compuertas. No abarca cuentas, comunidad,
-políticas o funciones, credenciales, correo, pagos, EAS, OTA, tiendas, cambios
-de visibilidad ni activaciones de servicios. Una tarea que necesite esas
+autorización recurrente autónoma** (nada se programa por horario). Desde el
+03/11/2026 (indicación expresa de Víctor), **su orden de investigar o
+actualizar el catálogo es el permiso expreso de ese ciclo** para aplicar el SQL
+revisado con «Aplicar catálogo», publicar preview y producción con «Publicar
+web» y enviar la OTA con «OTA Android», siempre tras las revisiones y
+compuertas. No abarca cuentas, comunidad, políticas o funciones, credenciales,
+correo, pagos, `eas build`/`eas submit`, tiendas, cambios de visibilidad ni
+activaciones de servicios. Una tarea que necesite esas
 operaciones se deja pendiente y se explica por separado. No ejecutar una
 migración general ni un `db push` como parte del ciclo.
 
@@ -300,8 +303,7 @@ Antes de aplicar:
    colecciones y cada dato crítico cambiado. El éxito local o del comando SQL
    no acredita por sí solo el estado remoto. Guardar esta comprobación.
 
-El SQL de catálogo revisado requiere el permiso expreso de Víctor para ese
-ciclo. Una necesidad de ampliar el esquema o tocar otra área se presenta aparte.
+El SQL de catálogo revisado lo autoriza la orden de Víctor que abrió el ciclo. Una necesidad de ampliar el esquema o tocar otra área se presenta aparte.
 
 ## 6. Comprobar web, clientes y publicar
 
