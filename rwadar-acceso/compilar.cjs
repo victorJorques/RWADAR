@@ -79,10 +79,27 @@ async function paginaNoEncontradaRWAdar(request, env) {
   if (request.method === "HEAD") { await pagina?.body?.cancel(); return new Response(null, { status: 404, headers }); }
   return new Response(pagina ? pagina.body : "No encontrado", { status: 404, headers });
 }
+/* Una revalidación (If-None-Match / If-Modified-Since) de una copia de
+   conservación recibe un 304 sin cabeceras. Para saber si el 304 viene de una
+   copia, se repite la consulta como HEAD sin condiciones. */
+async function esCopiaConservadaRWAdar(request, respuesta, env) {
+  if (copiaConservadaRWAdar(request, respuesta)) return true;
+  if (respuesta.status !== 304 || (request.method !== "GET" && request.method !== "HEAD")) return false;
+  if (!request.headers.has("If-None-Match") && !request.headers.has("If-Modified-Since")) return false;
+  if (rutaNormalizadaRWAdar(request).startsWith("/assets/")) return false;
+  const headers = new Headers(request.headers);
+  headers.delete("If-None-Match");
+  headers.delete("If-Modified-Since");
+  try {
+    const comprobacion = await env.ASSETS.fetch(new Request(request.url, { method: "HEAD", headers }));
+    await comprobacion.body?.cancel();
+    return copiaConservadaRWAdar(request, comprobacion);
+  } catch { return false; }
+}
 async function servirArchivoRWAdar(request, env) {
   if (fichaRetiradaRWAdar(request)) return paginaNoEncontradaRWAdar(request, env);
   const respuesta = await env.ASSETS.fetch(request);
-  if (!copiaConservadaRWAdar(request, respuesta)) return respuesta;
+  if (!(await esCopiaConservadaRWAdar(request, respuesta, env))) return respuesta;
   await respuesta.body?.cancel();
   return paginaNoEncontradaRWAdar(request, env);
 }

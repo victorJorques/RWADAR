@@ -137,13 +137,23 @@ try {
     .filter(ficha => !paginasFichas.includes(ficha)).sort();
 } catch (e) { console.log(`  (no se pudo leer el historial de Git: ${e.message})`); }
 ok(`el historial de Git da las fichas retiradas que hay que comprobar (${retiradas.length})`, retiradas.length > 0);
+/* La marca «noindex, nofollow» + no-store solo la pone el 404 del worker (el
+   404 propio de Pages no lleva x-robots-tag): así la comprobación demuestra que
+   la lista cerrada está activa, y no depende de si el centro de datos que
+   responde guarda o no una copia. */
+const noEncontradaDelWorker = p => p.estado === 404 && p.cabeceras.get('x-robots-tag') === 'noindex, nofollow' &&
+  p.cabeceras.get('cache-control') === 'no-store';
+const inexistente = await pedir('/ofertas/rwadar-comprobacion-ficha-inexistente');
+ok('una ficha que nunca existió da el 404 del worker', noEncontradaDelWorker(inexistente));
 for (const ficha of retiradas) {
   const ruta = '/' + ficha.replace(/\.html$/, '');
   const pagina = await pedir(ruta);
-  ok(`ficha retirada ${ruta} da 404: ${pagina.estado}`, pagina.estado === 404);
+  ok(`ficha retirada ${ruta} da el 404 del worker: ${pagina.estado}`, noEncontradaDelWorker(pagina));
 }
 /* Lo mismo con las ilustraciones de las ofertas retiradas: las borradas de
-   Git que no sigan en la carpeta editorial ni en las precargas. */
+   Git que no sigan en la carpeta editorial ni en las precargas. Aquí el 404
+   puede ser el de Pages (sin copia en ese centro de datos) o el del worker
+   (con copia), así que solo se exige el 404, también al revalidar. */
 const imagenesVivas = new Set();
 for (const dir of ['rwadar-movil/assets/ofertas-editoriales', 'rwadar-editorial-source/ofertas/precargas']) {
   const raizDir = fileURLToPath(new URL('../' + dir + '/', import.meta.url));
@@ -160,7 +170,8 @@ try {
 ok(`el historial de Git da las ilustraciones retiradas que hay que comprobar (${imagenesRetiradas.length})`, imagenesRetiradas.length > 0);
 for (const nombre of imagenesRetiradas) {
   const imagen = await pedir('/ofertas-editoriales/' + nombre, { method: 'HEAD' });
-  ok(`ilustración retirada /ofertas-editoriales/${nombre} da 404: ${imagen.estado}`, imagen.estado === 404);
+  const revalidada = await pedir('/ofertas-editoriales/' + nombre, { method: 'HEAD', headers: { 'If-None-Match': '"rwadar-comprobacion"' } });
+  ok(`ilustración retirada /ofertas-editoriales/${nombre} da 404: ${imagen.estado} / ${revalidada.estado}`, imagen.estado === 404 && revalidada.estado === 404);
 }
 
 console.log(`\n${correctas} correctas, ${fallos.length} fallidas`);

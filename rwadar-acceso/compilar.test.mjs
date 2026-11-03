@@ -163,3 +163,36 @@ test('la copia de conservación de cualquier otro archivo retirado da 404, salvo
     assert.deepEqual(pedidas, [new URL(BASE_WEB + ruta).pathname], ruta);
   }
 });
+
+test('la revalidación de una copia de conservación (304) también da 404, y la de un archivo vivo sigue en 304', async () => {
+  const worker = await compilar(['ofertas/viva.html'], 'revalidar');
+  const conservada = { 'CF-Cache-Status': 'HIT', 'X-Robots-Tag': 'noindex' };
+  const assets = (cabecerasSinCondicion) => {
+    const pedidas = [];
+    return { pedidas, env: { ASSETS: { fetch: async req => {
+      const url = new URL(req.url);
+      const condicional = req.headers.has('If-None-Match') || req.headers.has('If-Modified-Since');
+      pedidas.push(req.method + ' ' + url.pathname + (condicional ? ' condicional' : ''));
+      if (url.pathname === '/404') return new Response('<title>Fuera de cobertura · RWAdar</title>', { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+      if (condicional) return new Response(null, { status: 304 });
+      return new Response(req.method === 'HEAD' ? null : 'contenido', { status: 200, headers: cabecerasSinCondicion });
+    } } } };
+  };
+  for (const cabecera of [{ 'If-None-Match': '"vieja"' }, { 'If-Modified-Since': 'Tue, 03 Nov 2026 10:00:00 GMT' }]) {
+    const { pedidas, env } = assets(conservada);
+    const r = await worker.fetch(new Request(BASE_WEB + '/ofertas-editoriales/oferta-retirada.webp', { headers: cabecera }), env, CTX);
+    assert.equal(r.status, 404, JSON.stringify(cabecera));
+    assert.deepEqual(pedidas, ['GET /ofertas-editoriales/oferta-retirada.webp condicional', 'HEAD /ofertas-editoriales/oferta-retirada.webp', 'GET /404']);
+  }
+  const vivo = assets({ 'Cache-Control': 'public, max-age=0, must-revalidate' });
+  const r = await worker.fetch(new Request(BASE_WEB + '/ofertas-editoriales/oferta-viva.webp', { headers: { 'If-None-Match': '"x"' } }), vivo.env, CTX);
+  assert.equal(r.status, 304);
+  assert.deepEqual(vivo.pedidas, ['GET /ofertas-editoriales/oferta-viva.webp condicional', 'HEAD /ofertas-editoriales/oferta-viva.webp']);
+  // En /assets/ y sin cabeceras condicionales no hay segunda consulta.
+  for (const [ruta, cabeceras] of [['/assets/x.0123456789ab.js', { 'If-None-Match': '"x"' }], ['/ofertas-editoriales/oferta-viva.webp', {}]]) {
+    const { pedidas, env } = assets(conservada);
+    const sinCondicion = { ASSETS: { fetch: async req => { pedidas.push(new URL(req.url).pathname); return new Response(null, { status: 304 }); } } };
+    assert.equal((await worker.fetch(new Request(BASE_WEB + ruta, { headers: cabeceras }), sinCondicion, CTX)).status, 304, ruta);
+    assert.deepEqual(pedidas, [ruta], ruta);
+  }
+});
