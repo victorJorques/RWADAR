@@ -6,6 +6,44 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 3 de noviembre de 2026 (tarde, 3) · Claude · alta de Spiko Smart Cash Euro (entrega 2026-11-03.5)
+
+Víctor: «si es tan buena oferta y tú lo ves bien y tú lo subirías, adelante».
+La revisión independiente de la mañana la había rechazado: no consta en
+ningún registro público su alta en España (la CNMV no muestra compartimentos
+de fondos extranjeros) y la web contradice al KID. PR #39 y #40, unidas a
+`main`.
+
+- **Ficha** (`verificaciones/2026-11-03.5-v2/preparar-entrega.mjs`), en
+  principales:
+  - 2,84 % neto: lo publica Spiko con el valor liquidativo del 02/11; variable,
+    sigue al €STR;
+  - desde 1 €; reembolso diario con límite del 25 %;
+  - riesgo KID 1/7 sin contar la contraparte;
+  - 8 datos, porque la web enseña como mucho 8.
+- **Avisos:**
+  - no consta en ningún registro público su alta en España;
+  - no es cuenta ni depósito, con las citas literales de la web frente al KID;
+  - no es un fondo monetario: invierte en títulos y los cambia con bancos;
+  - el límite del 25 %;
+  - la gestora es Twenty First Capital;
+  - todavía no tiene ficha en GECO.
+- **Revisión independiente:** workflow de 3 enfoques (hechos, protección del
+  inversor y entrega técnica) más una síntesis. `REVISION-ALTA.md`:
+  `aprobado_con_cambios`, con los 13 cambios obligatorios aplicados.
+- **Supabase:** «Aplicar catálogo» con `2026-11-03.5`. Revisión `d75a22fb`
+  (antes `f26bba19`): 25 ofertas (8/14/3). Las otras 24, idénticas.
+- **Imagen:** RealVisXL, semilla 37, con una calle parisina genérica. El
+  concepto no puede llevar «€»: la compuerta de `generar.mjs --comprobar` lo
+  toma por cifra; así falló una vez la CI.
+- **Web:** preview y producción (160/160); revisada en navegador.
+- **App:** OTA, grupo `43d5e26a`, runtime `1.4.1(23)`; no comprobada en un móvil.
+- **Pendiente:**
+  - preguntar por escrito a la CNMV o a Aldana Capital A.V. si FR0014015LD3
+    está notificado: si sí, se quita el primer aviso; si no, se retira la ficha;
+  - en Spiko Letras del Tesoro Euro, poner primero la limitación en «Salida»,
+    porque la fila se corta.
+
 ## 3 de noviembre de 2026 (tarde, 2) · Claude · alta de Kraken xStocks (entrega 2026-11-03.4)
 
 Víctor pidió incluir xStocks: «si es online como las demás… apáñate». La

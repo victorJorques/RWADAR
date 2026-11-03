@@ -17,6 +17,15 @@ Carpeta completa: `rwadar-app/data/verificaciones/2026-11-03.3-v2/`.
 > folleto no cubre su venta en España. Revisión independiente:
 > `2026-11-03.4-v2/REVISION-ALTA.md` (aprobado con cambios). Publicada en la
 > entrega `2026-11-03.4`: 24 ofertas.
+>
+> Después decidió incluir también **Spiko Smart Cash Euro** («si es tan buena
+> oferta y tú lo ves bien… adelante»). Su tarjeta avisa de que ningún registro
+> público de la CNMV ni de la AMF confirma que se venda en España y cita
+> literalmente la web («Interés a tipo fijo», «Garantizado por contrapartes»)
+> frente al KID («No existe rentabilidad mínima garantizada»). Revisión
+> independiente con tres enfoques: `2026-11-03.5-v2/REVISION-ALTA.md`
+> (aprobado con cambios, 13 cambios obligatorios aplicados). Entrega
+> `2026-11-03.5`: 25 ofertas.
 
 ## 1. En pocas palabras
 
