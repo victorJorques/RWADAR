@@ -1,0 +1,194 @@
+                     Insider Trading Rules
+                                   Version 1.1, 2020-05-17
+
+Summary
+Generally, Insiders are free to trade shares, but must disclose their motivation when doing
+so. If they make short-term gains with their trading, the Company can demand that they
+share up to 75% of these gains with the other shareholders by handing them over to the
+company.
+
+Parties
+These rules form a binding agreement between:
+
+   1. An issuer of shares or other securities («Company»)
+   2. An employee or board member of the Company («You» or «Insider»)
+
+Employees typically enter into this agreement as part of their employment, making it valid
+without additional signature as long as it is referred to in the employment agreement and
+made available to the employee.
+
+Purpose
+The purpose of this agreement is to sterilize the harms of insider trading without preventing
+an efficient market from forming. Insider trading has the benefit of pushing the market price
+of a share closer to its true value, a property which economists refer to as market efficiency.
+A further key ingredient for market efficiency is information. That is why these rules provide
+an incentive to keep the shareholders informed about the state of the company, even in the
+absence of formal reporting. That way, shareholders can reach their own judgement about
+the relevance of a given piece of information and take their own actions. In order to prevent
+insiders from making unfair trading gains by exploiting their privileged access to information,
+the agreement contains provisions to socialize these gains.
+
+Equal Treatment
+The Company makes sure that all insiders (employees and board members) are bound to
+these rules.
+
+Trading Restrictions and Disclosure of Information
+You are free to buy or sell shares through the Brokerbot provided by the Company on its
+website. When doing so, you must publicly disclose Your trade (number of shares, price and
+time) and Your motivation (why did you decide to buy or sell?). If You are not allowed to
+disclose the information Your trade is based on, then You are not allowed to trade. When in
+doubt whether the relevant information is confidential, You should prepare the relevant
+information and ask Your manager for permission to disclose it. Trading on another venue
+than that provided by the Company itself requires the prior approval of the Company.
+
+Sharing of Insider Gains
+If Your trade results in realized or unrealized gains within seven days ("gain period"), you
+may be forced to return up to 75% ("sharing quota") of these gains to the other shareholders
+by handing them over to the company. In case of a buy, the gain is the number of acquired
+shares times the market price at the end of the gain period minus the amount paid to acquire
+the shares. In case of a sale, the gain is the averted loss, calculated by multiplying the
+number of sold shares with the market price at the end of the period and subtracting the
+product from the sales proceeds. The market price is defined as the last price offered by the
+Company. In case of multiple trades within the gain period, the relevant gain is the net gain
+(i.e. it is possible to subtract losses) and the period is prolonged until 90% of the relevant
+trade volume happened at least seven days ago, whereas the volume of a trade is defined
+as the number of shares multiplied with their price.
+
+Enforcement
+Upon request from a registered shareholder, the Company can demand from You to share
+your trading gains as defined in the previous section. To be valid, the request must be filed
+with the Company within 30 days of the end of the relevant gains period and the requesting
+shareholder must agree that the Company can share his identity with You under the
+condition that Your identity is also shared with the requesting shareholder. The Company
+agrees to notify You within 7 days in case it receives any such request. The decision on
+whether Your and the requesting shareholders identity is mutually disclosed is left to You. If
+not exercised, the Company’s right to demand a socialization of Your gains expires within
+two years.
+
+Failure of Compliance
+You are fully liable for all failures to comply with this agreement, directly or indirectly. This
+includes failures like not convincingly disclose Your trading motivation or the circumvention
+of these rules through collaboration with a third party. In such cases, you owe the Company
+100% of the gains made with any such trades and the relevant gains period is extended to
+end within seven days after all information the trade was based on became publicly known.
+Further, the right of the Company to demand a socialization of Your (or the collaborating third
+party’s) gains is extended to five years.
+
+In case of an accidental failure to disclose relevant information, You can cure that failure
+within three months of the trade by notifying the Company who then can take steps to
+retro-activaly disclose that information. In that case, the gain period is extended to end
+seven days after the relevant information becomes public (and possibly extended according
+to the extension rules).
+Exceptions
+Shares received in the context of an employee incentive program or other form of employee
+compensation do not fall under this agreement. Also, gains below 500 CHF are exempt from
+this agreement.
+
+Termination
+Without explicit agreement to the contrary, this agreement ends within two months after You
+cease to be an employee or board member of the Company. The termination of this
+agreement does not affect any pending enforcement decisions.
+            Regeln für den Insiderhandel
+                                   Version 1.1, 2020-05-17
+
+Zusammenfassung
+Generell steht es Insidern frei, mit Aktien zu handeln, sie müssen dabei aber ihre
+Beweggründe offenlegen. Wenn sie mit ihrem Handel kurzfristige Gewinne erzielen, kann
+das Unternehmen verlangen, dass sie bis zu 75 % dieser Gewinne mit den anderen
+Aktionären teilen, indem sie sie an das Unternehmen abtreten.
+
+Parteien
+Diese Regeln bilden eine verbindliche Vereinbarung zwischen:
+
+   1. Einem Emittent von Aktien oder anderen Wertpapieren ("Unternehmen")
+   2. Einem Mitarbeiter oder Vorstandsmitglied des Unternehmens ("Sie" oder "Insider")
+
+In der Regel schliessen Arbeitnehmer diese Vereinbarung als Teil ihres Arbeitsverhältnisses
+ab, so dass sie ohne zusätzliche Unterschrift gültig ist, solange in der Arbeitsvereinbarung
+auf sie verwiesen wird und sie dem Arbeitnehmer zur Verfügung gestellt wird.
+
+Zweck
+Der Zweck dieser Vereinbarung besteht darin, die Schäden des Insiderhandels
+abzuschwächen, ohne die Entstehung eines effizienten Marktes zu verhindern. Der
+Insiderhandel hat den Vorteil, dass er den Marktpreis einer Aktie näher an ihren wahren
+Wert heranbringt, eine Eigenschaft, die Wirtschaftswissenschaftler als Markteffizienz
+bezeichnen. Ein weiterer wichtiger Faktor für die Markteffizienz ist die Information. Deshalb
+bieten diese Regeln einen Anreiz, die Aktionäre über die Lage des Unternehmens auf dem
+Laufenden zu halten, auch wenn keine formelle Berichterstattung erfolgt. Auf diese Weise
+können sich die Aktionäre selbst ein Urteil über die Relevanz einer bestimmten Information
+bilden und ihre eigenen Massnahmen ergreifen. Um zu verhindern, dass Insider unter
+Ausnutzung ihres privilegierten Zugangs zu Informationen unlautere Handelsgewinne
+erzielen, enthält die Vereinbarung Bestimmungen zur Sozialisierung dieser Gewinne.
+
+Gleichbehandlung
+Das Unternehmen stellt sicher, dass alle Insider (Mitarbeiter und Vorstandsmitglieder) an
+diese Regeln gebunden sind.
+
+Handelsbeschränkungen und Offenlegung von Informationen
+Es steht Ihnen frei, Aktien über den von der Gesellschaft auf ihrer Website bereitgestellten
+Brokerbot zu kaufen oder zu verkaufen. Wenn Sie dies tun, müssen Sie Ihren Handel
+(Anzahl der Aktien, Preis und Zeitpunkt) und Ihre Beweggründe (warum haben Sie sich für
+den Kauf oder Verkauf entschieden?) öffentlich bekannt geben. Wenn Sie die Informationen,
+auf denen Ihr Handel beruht, nicht offenlegen dürfen, dürfen Sie nicht handeln. Wenn Sie
+Zweifel haben, ob die betreffenden Informationen vertraulich sind, sollten Sie die
+entsprechenden Informationen vorbereiten und Ihren Vorgesetzten um die Erlaubnis bitten,
+sie offenzulegen. Der Handel an einem anderen Handelsplatz als dem vom Unternehmen
+selbst bereitgestellten erfordert die vorherige Genehmigung des Unternehmens.
+
+Aufteilung von Insidergewinnen
+Wenn Ihr Handel innerhalb von sieben Tagen zu realisierten oder nicht realisierten
+Gewinnen führt ("Gewinnperiode"), können Sie gezwungen sein, bis zu 75 % dieser
+Gewinne an die anderen Aktionäre zurückzugeben ("Beteiligungsquote"), indem Sie sie an
+die Gesellschaft aushändigen. Im Falle eines Kaufs ist der Gewinn die Anzahl der
+erworbenen Aktien mal dem Marktpreis am Ende der Gewinnperiode abzüglich des für den
+Erwerb der Aktien gezahlten Betrags. Bei einem Verkauf ist der Gewinn der vermiedene
+Verlust, der durch Multiplikation der Anzahl der verkauften Aktien mit dem Börsenkurs am
+Ende des Zeitraums und Abzug des Produkts vom Verkaufserlös berechnet wird. Der
+Marktpreis ist definiert als der letzte von der Gesellschaft angebotene Preis. Bei mehreren
+Abschlüssen innerhalb des Gewinnzeitraums ist der relevante Gewinn der Nettogewinn (d.h.
+es ist möglich, Verluste abzuziehen), und der Zeitraum wird verlängert, bis 90 % des
+relevanten Handelsvolumens mindestens sieben Tage zurückliegen, wobei das Volumen
+eines Abschlusses als die Anzahl der Aktien multipliziert mit ihrem Preis definiert ist.
+
+Vollstreckung
+Auf Antrag eines eingetragenen Aktionärs kann die Gesellschaft von Ihnen verlangen, dass
+Sie Ihre Handelsgewinne, wie im vorherigen Abschnitt definiert, teilen. Um gültig zu sein,
+muss der Antrag innerhalb von 30 Tagen nach dem Ende des betreffenden
+Gewinnzeitraums bei der Gesellschaft eingereicht werden und der antragstellende Aktionär
+muss zustimmen, dass die Gesellschaft seine Identität mit Ihnen teilen kann, unter der
+Bedingung, dass Ihre Identität auch dem antragstellenden Aktionär mitgeteilt wird. Die
+Gesellschaft verpflichtet sich, Sie innerhalb von 7 Tagen zu benachrichtigen, wenn sie eine
+solche Anfrage erhält. Die Entscheidung darüber, ob Ihre Identität und die des anfragenden
+Aktionärs gegenseitig offengelegt werden, liegt bei Ihnen. Das Recht der Gesellschaft, eine
+Vergesellschaftung Ihrer Gewinne zu verlangen, erlischt innerhalb von zwei Jahren, wenn es
+nicht ausgeübt wird.
+
+Nichteinhaltung der Vorschriften
+Sie haften in vollem Umfang für alle Versäumnisse, die Sie bei der Einhaltung dieser
+Vereinbarung direkt oder indirekt begehen. Dies schliesst Versäumnisse wie die nicht
+überzeugende Offenlegung Ihrer Handelsmotivation oder die Umgehung dieser Regeln
+durch die Zusammenarbeit mit einer dritten Partei ein. In solchen Fällen schulden Sie dem
+Unternehmen 100 % der mit solchen Geschäften erzielten Gewinne, und der entsprechende
+Gewinnzeitraum verlängert sich auf sieben Tage, nachdem alle Informationen, auf denen
+der Handel beruhte, öffentlich bekannt wurden. Darüber hinaus wird das Recht der
+Gesellschaft, eine Vergesellschaftung Ihrer Gewinne (oder der Gewinne des kooperierenden
+Dritten) zu verlangen, auf fünf Jahre verlängert.
+
+Falls Sie es versehentlich versäumt haben, relevante Informationen offenzulegen, können
+Sie dieses Versäumnis innerhalb von drei Monaten nach dem Handel heilen, indem Sie das
+Unternehmen benachrichtigen, das dann Schritte zur nachträglichen Offenlegung dieser
+Informationen unternehmen kann. In diesem Fall verlängert sich die Gewinnspanne bis zum
+Ablauf von sieben Tagen nach dem Bekanntwerden der betreffenden Informationen (und
+kann gemäss den Verlängerungsregeln verlängert werden).
+
+Ausnahmen
+Aktien, die im Rahmen eines Mitarbeiterbeteiligungsprogramms oder einer anderen Form
+der Mitarbeitervergütung erhalten werden, fallen nicht unter diese Vereinbarung. Auch
+Gewinne unter 500 CHF sind von dieser Vereinbarung ausgenommen.
+
+Vertragsende
+Ohne ausdrückliche gegenteilige Vereinbarung endet diese Vereinbarung innerhalb von
+zwei Monaten, nachdem Sie nicht mehr Arbeitnehmer oder Vorstandsmitglied des
+Unternehmens sind. Die Beendigung dieser Vereinbarung hat keinen Einfluss auf anhängige
+Vollstreckungsentscheidungen.
+

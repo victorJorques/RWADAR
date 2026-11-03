@@ -1,0 +1,10 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":141,
+    "params":{
+      "q":"instrument_isins:LU2583605592",
+      "rows":"50",
+      "wt":"json"}},
+  "response":{"numFound":0,"start":0,"numFoundExact":true,"docs":[]
+  }}

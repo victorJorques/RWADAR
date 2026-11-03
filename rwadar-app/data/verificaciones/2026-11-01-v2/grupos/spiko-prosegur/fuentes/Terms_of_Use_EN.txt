@@ -1,0 +1,1335 @@
+Terms of Use
+Version 2.2
+Created on 28 May 2024
+Updated on 30 June 2026
+
+
+1. IDENTIFICATION OF SPIKO FINANCE AND LEGAL NOTICE
+
+Spiko Finance is a French “Société par actions simplifiée” registered with the Paris Trade
+Register under the number 980 659 585 and having its headquarters at 16, rue des Immeubles
+Industriels, 75011 Paris, France.
+
+Spiko Finance is licensed as an investment firm by the French Prudential Control and
+Resolution Authority (ACPR) under number 19183. This license can be verified on the website
+www.regafi.fr.
+
+2. DEFINITIONS
+
+Allowlist: refers to the list of Wallets, identified by their address, enabling the securing and
+transfer of Tokens corresponding to shares or units of UCITS registered in DLT by Portfolio
+Management Companies.
+
+Allowlisting: refers to the procedure of adding a Customer's Wallet address to the Allowlist.
+
+API: refers to an application programming interface provided by Spiko Finance that enables
+Users and Non-Customer Users to use API Services and access API Data.
+
+Customer: a Customer may be a natural person with full legal capacity, or a legal entity acting
+through one or several natural persons (the Users) and having the power or authorization
+required to contract in the Customer's name and on the Customer's behalf. The Customer is (i)
+a consumer, understood as any natural person acting for purposes that do not fall within the
+scope of their professional activity, (ii) a non-professional, understood as any legal entity
+acting outside its usual professional activities, or (iii) a professional, understood as any natural
+person or legal entity acting for purposes that fall within the scope of its commercial, industrial,
+artisanal, liberal or agricultural activity, including when acting in the name of or on behalf of
+another professional.
+
+Customer Account or Account: refers to a unique nominative account enabling access to Spiko
+Finance's Services on its Website. An Account is opened in the name of a legal entity or a
+natural person. One or more Users can access an Account and use the Services.
+
+Validated Customer Account: designates a Customer Account for which the User has received
+an email from Spiko Finance informing them of its validation, after satisfaction of the
+applicable KYC and AML-CFT requirements. Spiko Finance alone decides whether to validate
+a Customer Account on the basis of the Customer's identification data, KYC and AML-CFT
+policy, and the information provided by the Customer. Only a Customer with a Validated
+Customer Account may access the Services.
+Individual Virtual Account: refers to a virtual account, identified by its unique bank details (i.e.
+IBAN – International Bank Account Number), which, for each Customer, is associated with one
+of the UCITS. Each Customer has as many Individual Virtual Accounts as there are UCITS
+accessible on the Website.
+
+Terms of Use (TOU): refers to the present Spiko Finance Terms of Use governing the Services
+applicable to all Spiko Finance Customers. These Terms of Use are available and can be
+downloaded from the Website; they are also sent to the Customer by email. Customers must
+validate and accept them when creating their Customer Account.
+
+Crypto-assets: refers to the assets defined in article 3(1)(5) of Regulation (EU) 2023/1114 of 31
+May 2023 on markets in crypto-assets. This definition is subject to change in accordance with
+modifications in applicable law.
+
+MiFID II: refers to Directive 2014/65/EU of 15 May 2014 on markets in financial instruments.
+
+Two-factor authentication: This is a method that requires the Client to present two distinct
+modes of identification to modify their Account information, such as their bank details, or to
+make a withdrawal. This security feature is enabled by default for all Clients.
+
+Distributed Ledger Technology (DLT) or Blockchain: refers to the computer protocol enabling
+the registration and transfer of Crypto-assets, Electronic Money Tokens, as well as financial
+securities when these are registered in a DLT in accordance with article L211-3 of the French
+Monetary and Financial Code. Blockchains are used as part of the register management of the
+UCITS offered on the Website: the units or shares of these UCITS are registered in DLT. The
+DLTs that can be used in the context of the Services are listed on the Website.
+
+Key Information Document: means the information document referred to in Regulation no.
+1286/2014 of November 26, 2014 on key information documents relating to packaged retail
+and insurance-based investment products and its subsequent implementing texts, as
+amended over time where applicable. It is systematically communicated to the investor, in
+electronic form, in durable medium by email, or on paper at the Customer’s request, before the
+subscription in any UCITS. The Key Information Documents of the UCITS offered for
+subscription on the Website are also publicly accessible at all times on the Website.
+
+Regulatory Information Document: refers to the document that informs the Customer about
+their categorisation within the meaning of MiFID II and contains, where applicable, an
+assessment of the appropriateness of the products or services offered by Spiko Finance. It is
+notably sent to the Client by email after their Customer Account has been validated.
+
+API Data: refers to the data or information provided or made available by an API.
+
+Electronic Money Tokens: refers to the assets defined in article 3(1)(7) of Regulation (EU)
+2023/1114 of 31 May 2023 on markets in crypto-assets. This definition is subject to change in
+accordance with modifications in applicable regulations.
+
+"Know Your Customer" or KYC: refers to the onboarding process and continuous monitoring
+implemented by Spiko Finance as part of its Anti-Money Laundering and Countering the
+Financing of Terrorism (AML-CFT) program. This process includes the collection of certain
+documents and ongoing analysis of clients' transactions. Spiko Finance diligently conducts
+these procedures for all clients or individuals seeking access to Spiko Finance services.
+Anti-Money Laundering and Countering the Financing of Terrorism or AML-CFT: refers to the
+fight against money laundering and the financing of terrorism within the meaning of the French
+Monetary and Financial Code, giving rise to the implementation of a system for evaluating
+Customer transactions in compliance with regulations in force in France.
+
+UCITS: refers to undertakings for collective investment in transferable securities managed by
+Portfolio Management Companies.
+
+Party or Parties: refers to the Customer and Spiko Finance, together or separately depending
+on the context.
+
+Privacy Policy: refers to Spiko Finance's internal policy on the processing of personal data
+relating to Customers. It is publicly available on the Website.
+
+Wallet: refers to a computer application that technically enables the control, receipt and
+dispatch of tokens and/or Crypto-assets and/or Electronic Money Tokens on a DLT, the
+security of which is guaranteed by the use of cryptographic processes based on private key
+and address mechanisms. A Wallet contains one or more addresses used and one or more
+private keys.
+
+Internal Wallet: means a Wallet made available to the Customer by Spiko Finance.
+
+External Wallet: refers to a Wallet that is not an Internal Wallet.
+
+Portfolio Management Company: refers to the portfolio management company responsible for
+managing one or more of the UCITS offered on the Website by Spiko Finance. The shares or
+units of the UCITS offered on the Website are registered in registered form on DLTs in the
+technical form of Tokens. These Tokens are registered in the DLT and at the address on said
+DLT indicated by the Customer at the time of his subscription order (the chosen DLT must
+necessarily appear among the list of DLTs proposed for the UCITS).
+
+Services: refers to the various services offered by Spiko Finance through the Website, as
+defined in Article 8.1 of the TOU.
+
+API Services: refers to the Services that can be used by way of an API, as determined in Article
+8.4 of the TOU.
+
+Website: designates the Spiko Finance Internet Website available at the following addresses:
+www.spiko.io.
+
+Tokens: refers to the technical form taken by the shares or units of the UCITS offered on the
+Website as a result of their registration in DLT by the Portfolio Management Company. Indeed,
+the UCITS to which the Customer may subscribe through the Website have the specificity that
+their shares or units take exclusively the form of registered shares and are registered by the
+Portfolio Management Companies within DLT in accordance with article L211-3 of the French
+Monetary and Financial Code. Consequently, from a technical point of view, these shares or
+units take the form of Tokens. They are therefore not Crypto-assets.
+
+User: refers to the Client if the Account is opened in the name of a natural person, or a natural
+person expressly mandated by the Client to access the Client Account and use the Services if
+the Account is opened in the name of a legal entity. A User's identifier is a valid and personal
+email address. A User's access to the Site and use of the Services is secured by a password,
+as well as by two-factor authentication.
+
+Non-Customer User: refers to any individual or representative of a legal person, other than a
+Customer or a User, who uses the API to access to certain API Data by way of an electronic
+communication network.
+
+Customer Knowledge Questionnaire: refers to the questionnaire drawn up for the purposes of
+AML-CFT, the fight against fraud, and, if relevant, the assessment of the appropriateness of
+the products and services in relation to the financial knowledge and experience of the
+Customer, and sent to the Customer via an interface on the Website. Spiko Finance reserves
+the right to refuse a Service to a Customer, without compensation, in the event of a non-
+response, partial response or unsatisfactory response to a Customer Knowledge
+Questionnaire within 72 hours of its communication to the Customer.
+
+3. GENERAL PROVISIONS
+
+These TOU govern the Services offered to all Customers on the Website. Together with the
+Customer Knowledge Questionnaire, the Regulatory Information Document, the regulatory
+policies published on the Website (such as the complaints handling policy and the policy on
+identifying, preventing and managing conflicts of interest), and the special terms of use, they
+constitute the only contractual documents binding on the Parties, to the exclusion of all other
+documents, which are only indicative and non-contractual.
+
+4. APPLICATION OF THE GENERAL TERMS OF USE - ENFORCEABILITY AND PROOF
+
+The TOU are made available to the Customer on the Website in accordance with article 1127-
+1 of the French Civil Code. They may also be communicated to the Customer by email on
+request, in addition to the automatic communication and validation when the Customer
+Account is created. They are also automatically communicated to the Customer when they are
+updated.
+
+As a result, the TOU and their subsequent modifications are binding on Customers, who
+acknowledge that they are aware of them and accept them. Communications, Services and
+Customer documents are archived on a reliable and durable medium in accordance with article
+1379 of the French Civil Code. All these elements have evidential value between the Parties.
+In general, any computer document produced by Spiko Finance constitutes proof between the
+Parties.
+
+5. LANGUAGE OF THE TOU
+
+The TOU are available in French and English. The elements will be translated in good faith by
+Spiko Finance. It is expressly agreed between the Parties that in the event of any potential
+dispute regarding the translations, the French version of these TOU shall prevail between the
+Parties.
+
+6. MODIFICATION OF THE TOU
+
+Spiko Finance reserves the right to modify its TOU at any time. In the event of modification of
+the TOU, the new version of the TOU is subject to acceptance by the Customer, who has 15
+days to object. Once this 15-day period has elapsed, and if the Customer has not objected, the
+TOU will come into force and will be applicable to all Services performed by the Customer.
+
+The version of the TOU applicable is that in force on the date the Service is performed. The
+Customer is advised to save the TOU in force on the date of completion of the Services used,
+notwithstanding the archiving rules implemented by Spiko Finance.
+
+If the Customer does not accept the new version of the TOU, the Customer Account will be
+closed in accordance with article 9.9.
+
+7. NULLITY OF A CLAUSE OF THE TOU
+
+The invalidity of any provision of these TOU shall not entail the invalidity of these TOU in their
+entirety.
+
+8. SERVICES OFFERED
+
+8.1. Description of services offered
+
+Spiko Finance offers various Services to the Customer from its Website, including in particular
+the following:
+
+   • receipt and transmission of orders, as described in article 11;
+   • monitoring investments;
+   • access to an instant withdrawals service, as described in article 12 herein;
+   • adding an External Wallet to the Allowlist, as described in article 13;
+   • the technical provision of an Internal Wallet, as described in article 14 herein.
+
+These services require the Customer to have a Validated Customer Account.
+
+8.2. Language of services
+
+Services are offered to the Customer in French and English. The Customer may choose the
+language they prefer in their account. By choosing English, the Customer accepts the
+provision of services in English and confirms that they understand this language. Services may
+be made available in other languages in the future, at Spiko Finance's unilateral discretion.
+
+8.3. Level of service
+
+Spiko Finance undertakes to ensure the permanence, continuity and quality of access to the
+Services. In this respect, Spiko Finance will make its best efforts to maintain access to the
+Website 24 hours a day, 7 days a week.
+
+If necessary, Spiko Finance reserves the right to limit or suspend access to the Website in
+order to carry out any maintenance and/or improvement operations. In such a case, Spiko
+Finance undertakes to inform the Customer in advance of these maintenance and/or
+improvement operations, within a reasonable period of time, by all useful means and in
+particular by a general information message on the Website concerning these maintenance
+operations.
+
+The Customer acknowledges and accepts that this service level agreement does not cover
+any failure or interruption of the Services caused by telecoms operators or Internet and mobile
+web access providers, or by poor Internet coverage or saturation of Internet access due to the
+location of an event.
+
+The Customer is informed that in the event of breakdown, maintenance or updating of Spiko
+Finance's systems, access to his Customer Account may be temporarily suspended. In such a
+case, Spiko Finance will endeavour to notify the Customer as soon as possible and will use its
+best efforts to restore access to the Services as quickly as possible.
+
+8.4. Using the API
+
+8.4.1. General provisions
+
+Spiko Finance provides APIs enabling Customers to use API Services and access API Data.
+
+Spiko Finance also authorizes Non-Customer Users to access certain API Data, in accordance
+with the terms and conditions set out below. With respect to Non-Customer Users, the
+present article constitutes the entire contractual relationship with Spiko Finance, subject to
+the implicit application or the application by reference of other clauses of the TOU. By
+choosing to use an API, the Non-Customer User unreservedly accepts the TOU. Spiko Finance
+reserves the right to refuse access to the APIs to Non-Customer Users who are residents of
+countries not eligible for the Services provided by Spiko Finance.
+
+The technical terms of use of the APIs are available on the Site, on the following page:
+https://docs.spiko.io/developers/introduction.
+
+The APIs are provided free of charge.
+
+Any processing of personal data that may be carried out as part of the use of the API is carried
+out in accordance with article 19 of the TOU.
+
+8.4.2. Description of API Services
+
+Spiko Finance provides the following APIs:
+
+   i.      The Public API is accessible to Customers, Users and Non-Customer Users. It is
+           used to obtain public financial information relating to UCIs.
+   ii.     The Investor API is accessible to Customers and Users. It provides access to
+           customer-specific data, such as portfolio information. It also enables Customers to
+           submit subscription and redemption orders, and to track the status of these orders.
+   iii.    The Distributor API is accessible to certain Customers who distribute UCITS to
+           their own clients via the Website. Its use is governed by specific contractual
+           documentation.
+
+Spiko Finance reserves the right to suspend or modify the API Services. In particular, Spiko
+Finance may restrict or modify the terms of access and technical parameters (as detailed in
+the dedicated page of the Website).
+
+8.4.3. Obligations relating to use of the APIs
+
+All use of the APIs must comply with the TOU and the technical terms of use set out on the
+dedicated page of the Website.
+In particular, any Customer, User or Non-Customer User who uses an API undertakes to
+comply with the following obligations:
+
+    • Not to use the APIs to carry out any action that may cause any prejudice whatsoever to
+    Spiko Finance and/or other Customers or Users;
+    • Not to make any use of the APIs that would be contrary to applicable laws and
+    regulations and/or cause an infringement of the rights of third parties, in particular
+    intellectual property rights and/or privacy rights;
+    • Not to harm, hinder or distort the proper functioning of the APIs, in particular by using
+    the APIs in an abusive or excessive manner;
+    • Not to circumvent the means implemented by Spiko Finance to guarantee the security
+    of the APIs and API Data, in particular technical identification procedures;
+    • Not to reconstitute all or part of the content of APIs or API Services over which no rights
+    have been granted;
+    • Not to encourage or permit the introduction or attempted introduction of viruses,
+    malware, ransomware, malicious software, spyware or any other element of destructive or
+    compromising nature to the APIs.
+
+Spiko Finance reserves the right to interrupt access to the APIs or API Services at any time, in
+whole or in part, without Spiko Finance being held liable, in the event of a breach of the TOU
+or use considered as non-compliant by Spiko Finance.
+
+8.4.4. Ownership and use of content accessible via the APIs
+
+The APIs, API Services and all API Data are either the exclusive property of Spiko Finance, or
+are the subject of a licensing agreement for the benefit of Spiko Finance.
+
+The User and the Non-Customer User are however authorized to download and use the API
+Data for internal and/or personal use, subject to indicating the source and owner. Any other
+use of said data by the User is strictly forbidden without the written consent of Spiko Finance,
+and in particular any commercial use.
+
+8.4.5. Liability
+
+Spiko Finance shall not be held liable for any errors, negligence, failures or omissions on the
+part of the User in using and accessing the APIs and API Services. In addition, unless otherwise
+provided by law, Spiko Finance shall not be held liable for any damage directly or indirectly
+related to the use of and access to the APIs and API Services.
+
+Any unauthorized use of the APIs, API Services and/or API Data that does not comply with the
+TOU may render the User or Non-Customer liable.
+
+9. OPENING AND USE OF A CUSTOMER ACCOUNT
+
+9.1. Prior acceptance of the TOU
+
+Access to the Services provided by Spiko Finance requires acceptance of these TOU by the
+Customer via the Website, by ticking the box "I accept the Terms of Use" with a link to these
+TOU.
+
+Once accepted, the TOU can be consulted, printed and downloaded at any time on the
+Website in the dedicated section.
+If the Customer does not accept the TOU in their entirety, they must not create an Account or
+access the Services.
+
+Acceptance must be full and complete. Any conditional acceptance is considered null and
+void. Any Customer who does not agree to be bound by these TOU must not access the
+Website or use the Services.
+
+9.2. Documents and information to be provided by the Customer
+
+After accepting the TOU, the Customer may create a Customer Account. The documents and
+information to be provided when requesting the creation of a Customer Account are indicated
+on the Website or are available upon written request to Spiko Finance.
+
+The nature and format of these documents may change over time. In the course of the business
+relationship, Spiko Finance may ask a customer to update its documents or provide additional
+documents (in particular, proof of origin of funds, proof of income or assets, or answers to a
+Customer Knowledge Questionnaire).
+
+9.3. Restrictions on nationality and country of residence due to AML-CFT measures
+
+Opening a Customer Account and maintaining a business relationship with Spiko Finance is
+restricted to Customers whose country of nationality, residence or registration is not on the
+list of countries not authorized by Spiko Finance. The list of these countries is indicated on the
+Website and is subject to change at any time and without notice by simple decision of Spiko
+Finance or by regulatory obligations. Spiko Finance cannot be held responsible for the
+consequences of the termination of a business relationship with a Customer due to the
+blocking or suspension of their Customer Account as a result of restrictions linked to their
+country of residence, nationality or registration.
+
+9.4. Customer account validation
+
+Spiko Finance alone decides that a Customer Account may be a Validated Customer Account
+on the basis of the Customer's identification data, KYC and AML-CFT policy, and the
+information provided by the Customer. Only a Customer with a Validated Customer Account
+can access the Services.
+
+The Customer receives an email from Spiko Finance informing them whether Spiko Finance
+has decided that the Customer Account may or may not be a Validated Customer Account, or
+whether additional information, documents or elements need to be provided in order for Spiko
+Finance to decide whether to validate the Customer's account.
+
+9.5. Updating Customer Account information
+
+The Customer undertakes to notify Spiko Finance as soon as possible of any change of
+identity, professional situation, place of residence, telephone number, bank details, email
+address or any other change that may affect their investment capacity or personal situation,
+and to provide a new document if requested by Spiko Finance.
+
+In the event of expiry of their identity document or any other supporting document provided,
+the Customer must provide a new valid and complete document as soon as possible, failing
+which their Account will be suspended or blocked.
+Once the Customer Account has been validated, certain information may only be modified in
+accordance with a specific procedure communicated on the Website, and on presentation of
+supporting documents.
+
+9.6. Securing the Customer Account on the Website
+
+The Users are solely responsible for securing access to their Account on the Website, which
+is accessed by default via an email address and a password. It is imperative that the User
+protects his Account by ensuring the protection of his email system (to which only he has
+access) linked to his Account.
+
+The User may access their Validated Customer Account at any time after logging in. The User
+undertakes to use the Services personally and not to allow any third party to use them in his
+place or on his behalf.
+
+The User is likewise responsible for maintaining the confidentiality and security of their email
+address, any access to the Website using the latter being deemed to have been made by the
+Customer. The User must immediately contact Spiko Finance if he notices that his Customer
+Account has been used without his knowledge.
+
+9.7. Double Account
+
+The Customer undertakes to create only one Customer Account. Multi-accounting is
+prohibited in order to ensure the effectiveness of anti-fraud measures. Consequently, Spiko
+Finance reserves the right to delete the additional accounts of the Customers concerned
+without prior notice or delay. Spiko Finance cannot be held liable in any way on this basis.
+
+However, a Customer who holds a Customer Account for a natural person may open one or
+more Customer Accounts for a legal entity. Subject to validation by Spiko Finance of this new
+account or these new accounts, each Customer Account thus opened may be managed by the
+same User using a single login. In all cases, only one Customer Account may be opened for a
+single natural person or a single legal entity.
+
+Similarly, a User who administers a Customer Account for a legal entity may open a Customer
+Account for a natural person and manage both accounts using a single username.
+
+9.8. Adding Multiple Users to a Legal Entity Account
+
+In the case of a legal entity Account, once the Account is opened by the Customer, the first
+User can add other Users authorized to use the Services on behalf of and for the Customer,
+under the Customer’s full responsibility. The Client expressly releases Spiko Finance from
+professional secrecy concerning the Account data with respect to the Users. The Customer
+determines the scope of rights each User has on the Account.
+
+Each User is assigned a unique password and a means of Two-factor Authentication to access
+the Account. Each User has customized rights on the Account based on the permissions
+granted by the Customer. The different User profiles are: administrator, manager and viewer.
+The viewer has read-only access to the Account and cannot perform any actions.
+
+9.9. Deletion of a Customer Account
+A Customer may request, at any time, to delete their Customer Account, whether validated or
+not, by informing Spiko Finance by email. Spiko Finance will comply with the request within a
+reasonable period of time. If the customer has subscribed to shares or units of UCITS via the
+Website using an Internal Wallet, these shares or units must be redeemed before the account
+is deleted.
+
+In addition, in the event of a serious breach by the Customer of any of its obligations under
+these TOU, or in the cases prescribed by the regulations in force or its internal procedures (in
+particular its AML/CFT procedure), Spiko Finance may terminate the contractual relationship
+with immediate effect and delete the Customer Account. In the event of deletion of the
+Account, if the Customer had subscribed to shares or units of UCITS through the Website,
+Spiko Finance will send the Customer a written portfolio statement and will provide it with the
+contact details of the Portfolio Management Companies of the UCITS of which the Customer
+is a shareholder. The Customer may then request the transfer of its shares or units to an
+External Wallet. In the absence of a transfer to an External Wallet, the Customer will no longer
+be able to use the Services and will then only be able to transmit its redemption or transfer
+instructions to the Portfolio Management Company.
+
+Please note that, in the event of deletion of the Customer Account (irrespective of the cause
+of that deletion), certain data will be kept for 5 years after the end of the business relationship.
+
+9.10. Suspension or blocking of a Customer Account
+
+A Customer Account may be suspended or blocked by Spiko Finance at any time for reasons
+relating to:
+
+   • KYC procedure;
+   • AML-CFT;
+   • at the express request of the competent authorities;
+   • non-compliance with these TOU;
+   • in the absence of a valid response from the Customer within a maximum of 7 working
+   days to requests for supporting documents concerning his KYC or the provision of a
+   Service;
+   • legitimate suspicion that the Customer is a victim of fraud, theft, cyber-attack, extortion,
+   manipulation, violence, blackmail, or is unable to assess the risks associated with the
+   Investments;
+   • due to behaviour attributable to the Customer (insults, threats, abusive requests, etc.).
+
+A suspended or blocked Customer Account will no longer be able to access the Services,
+either temporarily or permanently.
+
+Spiko Finance cannot be held responsible for the consequences of any nature whatsoever of
+the blocking or suspension of a Customer Account.
+
+9.11. Death of a Customer who is a natural person
+
+In the event of the death of the Customer who is a natural person, confirmed by the
+communication of an official document, Spiko Finance shall suspend the Account without
+delay, subject to the execution of any operations initiated before the communication of the
+said document. Subsequently, at the request of the notary and/or the beneficiaries, the
+Account may be reactivated for the purpose of settling the estate. It can also be closed.
+10. INFORMATION AND CATEGORISATION OF CUSTOMERS - APPROPRIATENESS
+ASSESSMENT
+
+10.1. Categorisation of the Customer under MiFID II
+
+In accordance with the obligations arising from MiFID II, Spiko Finance informs the Customer
+of their categorisation as a retail client, professional client or eligible counterparty. This
+information is included in the Regulatory Information Document sent to the Customer after
+their Customer Account has been validated.
+
+The Customer is informed of their right to request a different category and the consequences
+this will have on their level of protection. Any request to change category must be made by
+registered letter with acknowledgement of receipt or any other means accepted by Spiko
+Finance and must include the reasons for the change. Any request for a change of category is
+subject to compliance with regulatory provisions and the agreement of Spiko Finance, which
+may refuse or accept such a request at its discretion.
+
+Clients categorised as ‘professionals’ or ‘eligible counterparties’ are responsible for informing
+Spiko Finance, by registered letter with acknowledgement of receipt, of any change that may
+affect their classification.
+
+10.2. General information on risks
+
+Prior to the Customer carrying out a transaction involving one of the UCITS accessible on the
+Website, Spiko Finance shall provide the Customer with the regulatory documentation relating
+to the UCITS concerned, including at least links to the Key Information Document and the
+prospectus of the UCITS concerned. This information is available in the Customer Account and
+on a dedicated page of the Website.
+
+The regulatory documentation relating to UCITS contains information on their characteristics
+and risks. The Client undertakes to consult these documents in order to make informed
+investment decisions. The risks of UCITS may include, but are not limited to, the following:
+
+   • Credit risk: this is the risk of default by an issuer of securities held by a UCITS.
+   • Interest rate risk: this is the risk of a decline in the value of securities held by a UCITS in
+   the event of an increase in interest rates.
+   • Operational risk: this is the risk of direct or indirect losses due to inadequate or failed
+   procedures on the part of those involved in managing the UCITS.
+   • Currency risk: this is the risk of loss linked to changes in exchange rates where the
+   Customer’s reference currency differs from that of the UCITS.
+   • External Wallet Risk: this is the risk associated with the Wallet set up under the
+   Customer’s responsibility to secure and transfer the Tokens corresponding to the shares
+   or units of the UCITS in which the Customer has invested. Any factor that could affect the
+   compatibility of the Wallet set up with the DLT used, the validity of the information
+   provided on this Wallet, the regulatory framework applicable to its establishment and to
+   the person operating it, its security and the confidentiality of the means of access enabling
+   the tokens attached to it to be mobilised, could affect the transfer of the UCITS shares and
+   result in a total or partial loss of the investor's investment.
+
+In general, unless otherwise stated, the capital invested by the Customer in UCITS is not
+guaranteed and any investment in a UCITS involves a risk of loss. The Customer is informed
+that past performance is not indicative of future performance.
+10.3. Appropriateness assessment
+
+In accordance with applicable regulations, and subject to the provisions of Article 10.4, Spiko
+Finance assesses the appropriateness of the Services and UCITS available to the Customer
+on the Website.
+
+This assessment is based in particular on the Customer Knowledge Questionnaire, which must
+be completed by the Customer before their Account is validated. This questionnaire aims to
+assess the Client's financial knowledge and experience. The assessment enables Spiko
+Finance to offer the Customer Services and UCITS that are appropriate to their knowledge and
+experience. It is expressly specified that Spiko Finance is not authorised to verify the suitability
+of the Services and/or UCITS to the Client's investment objectives, risk tolerance and/or
+ability to withstand losses.
+
+Spiko Finance's appropriateness assessment is formalised in the Regulatory Information
+Document, which is sent to the Customer by email after their Account has been validated.
+
+The assessment covers all Services offered by Spiko Finance. It covers the UCITS referred to
+in the Regulatory Information Document, it being specified that this document may refer to all
+UCITS belonging to a category of similar products.
+
+The appropriateness assessment may be updated periodically, taking into account the quality
+and category of the Customer.
+
+If Spiko Finance considers, based on the information provided by the Customer, that the latter
+does not have the knowledge and experience required to understand the risks inherent in the
+Services and/or certain categories of UCITS accessible on the Website, Spiko Finance will
+warn the Customer prior to executing any transaction. However, the Customer may expressly
+request access to the Services and/or UCITS concerned. At its sole discretion, Spiko Finance
+may accept or refuse this request for access.
+
+When this warning is issued at the end of the Customer Knowledge Questionnaire, it is
+included in the Regulatory Information Document. This document also mentions any request
+for access made by the Customer and Spiko Finance's response.
+
+The Customer accepts that Spiko Finance cannot be held liable for any losses incurred as a
+result of investments made by a Customer who has been warned in this way, or by a Customer
+who has provided false information, as the Customer remains solely responsible for their
+statements.
+
+10.4. Absence of assessment of the appropriateness - Execution-only
+
+Spiko Finance is authorised to provide order reception and transmission services in the form
+of ‘execution-only’, in accordance with Article L. 533-13 III of the French Monetary and
+Financial Code. In this case, Spiko Finance shall not be required to assess the appropriateness
+of the Services and UCITS, provided that the following conditions are met:
+
+   • the service relates to non-complex UCITS, as defined by the regulations;
+   • the service is provided at the initiative of the Customer;
+   • the Customer has been informed in advance that Spiko Finance is not required to assess
+   the appropriateness of the Services and UCITS and that it does not benefit from the
+   corresponding protection of the relevant rules of conduct;
+   • Spiko Finance has complied with the regulatory provisions relating to conflicts of interest
+   set out in Article L. 533-10 II 3° of the French Monetary and Financial Code.
+
+The Customer is duly informed of this absence of appropriateness assessment in the
+Regulatory Information Document.
+
+10.5. Information on costs and fees
+
+In accordance with regulations, Spiko Finance provides the Customer, prior to placing an
+order, with a reasonable estimate of the costs and fees associated with the relevant UCITS
+(management fees and administrative fees), the exact amount of which depends on each
+UCITS offered on the Website. This information is provided in the Customer Account in the
+tab presenting the characteristics of the UCITS. It may also be communicated to the Customer
+by any other means.
+
+The Customer is informed that the investment services provided by Spiko Finance to the
+Customer (i.e. the order reception and transmission service) are provided free of charge.
+
+Spiko Finance draws the Customer’s attention to the fact that specific fees may have to be
+borne by the Customer for certain transactions if the latter uses External Wallets to secure the
+Tokens. These fees depend on the DLT chosen by the Customer when making their
+investment.
+
+In addition, Spiko Finance sends the Customer an annual statement of the costs and fees paid
+by the Customer in connection with transactions executed through the Website. This
+statement is made available to the Customer by any means.
+
+11. CONDITIONS OF USE OF THE SERVICE OF RECEPTION AND TRANSMISSION OF
+ORDERS
+
+These conditions govern the provision by Spiko Finance of the service of reception and
+transmission of orders. This service may only be provided in respect of one or more units or
+shares of UCITS which a Customer wants to subscribe or sell.
+
+11.1. Preamble
+
+Spiko Finance, in its capacity as investment firm, is authorized to receive and transmit orders
+for shares or units in UCITS, in accordance with legal and regulatory conditions. This service is
+provided in accordance with the legal and regulatory provisions in force.
+
+The Customer remains responsible for investment or disinvestment decisions and for the
+personal management of its portfolio of shares or units of UCITS. Spiko Finance does not carry
+out any act of management on behalf of the customer or any third party, and does not provide
+any personalised advice or recommendations regarding investment, divestment or arbitrage
+involving financial instruments. The Customer declares that they have sufficient knowledge
+for this purpose. The Customer undertakes to inform Spiko Finance of any event likely to alter
+their ability to assess the characteristics of the transactions they are requesting to be carried
+out, as well as the particular risks that these transactions may entail.
+In view of their registration in DLT, the shares or units of the UCITS in which Spiko Finance
+provides reception and transmission of orders take the form of Tokens, the securing and
+transfer of which require the setting up of a Wallet, included in the Allowlist, under the
+conditions set out in article 13. This Wallet may be an External Wallet or an Internal Wallet.
+External Wallets are set up and operated under the Customer's responsibility. In the event of
+a problem, malfunction or loss of access to an External Wallet which renders the Tokens
+corresponding to the shares or units of the UCITS in which the Customer has invested
+unavailable, the Customer is invited to contact Spiko Finance as soon as possible in
+accordance with the conditions set out in article 19.
+
+11.2. Receipt and handling of orders
+
+The Customer may send his orders to Spiko Finance via the Website within his Customer
+Account.
+
+As specified in articles 11.4 and 11.5, orders may be settled: (i) in legal currencies, under the
+conditions of article 11.4 or (ii) using Electronic Money Tokens, under the conditions of article
+11.5.
+
+For each order, the Website enables the Customer to define :
+
+   • the nature of the desired transaction (purchase, sale or, if applicable, conversion);
+   • the name of the UCITS to which the order relates;
+   • the number of shares or units of the UCITS to which the order relates, or, alternatively,
+   the amount in currency of the order;
+   • for a subscription order:
+       ◦ the Internal Wallet included in the Allowlist used by the customer to secure the
+       Tokens corresponding to the shares or units of the UCITS in which he invests, and
+       which will be transmitted to him by the Management Company. By default, the Internal
+       Wallet created automatically when the Customer Account was created is used;
+       ◦ the settlement method, it being specified that, for certain UCITS, settlement in
+       Electronic Money Tokens may be authorized by Spiko Finance under the conditions set
+       out in article 11.5;
+   • for a redemption order:
+       ◦ the Internal Wallet included in the Allowlist used by the Customer to secure the
+       Tokens corresponding to the shares or units of the UCITS he is redeeming;
+       ◦ the bank details of the account to which the Customer wishes the sums
+       corresponding to his redemption to be transferred by bank transfer by the UCITS, and,
+       if applicable, proof of ownership of this account such as a bank identity statement;
+       ◦ where applicable, the DLT address to which the Customer wishes the sums
+       corresponding to his redemption to be transferred by means of a transfer of Electronic
+       Money Tokens, under the conditions set out in article 11.5.
+
+The modalities of the time-stamping of orders depend on the nature of the transaction:
+
+   • For subscription orders, the order is recorded and time-stamped by Spiko Finance upon
+   receipt of a transfer to the Individual Virtual Account, or of a transfer of Electronic Money
+   Tokens to the DLT address, the respective details of which shall be communicated to the
+   Client via the Website. After receipt of the transfer, the subscription order remains
+   revocable and cancellable until the time of the next centralization, as indicated in the
+   prospectus of the relevant UCITS, upon simple request to Spiko Finance support at
+   support@spiko.io. At the end of this period, the subscription order becomes irrevocable.
+   The currency amount of the order recorded by Spiko Finance corresponds to the amount
+   credited to the Individual Virtual Account or to the DLT address.
+   • Redemption or conversion orders are revocable and cancellable until the time of the next
+   centralization, as indicated in the prospectus of the relevant UCITS. For example, if the
+   prospectus of the UCI provides for daily centralization at 10:30 a.m., a redemption order
+   validated on the Website by the Client at 4:00 p.m. may be revoked until 10:29:59 a.m. the
+   following day or the next business day. At the end of this period, the redemption or
+   conversion order becomes irrevocable.
+
+The time-stamp indicates that Spiko Finance has accepted the order. Spiko Finance
+immediately sends an email to the Customer indicating the characteristics of the order.
+
+Spiko Finance reserves the right to ask the customer to confirm the order by any means before
+transmitting it to the Portfolio Management Company for execution. Confirmation must be
+requested as soon as possible after receipt of the order. In the absence of confirmation by the
+customer when Spiko Finance requires it, the order is deemed to have been abandoned.
+
+11.3. Transmission and execution of orders
+
+11.3.1. General provisions
+
+Upon receipt of the Customer's order or its confirmation when required by Spiko Finance, and
+in any event as soon as possible after such receipt or confirmation, Spiko Finance will transmit
+the order to the Portfolio Management Company.
+
+The customer is expressly informed that transmission of the order does not prejudge its
+execution. The order will only be executed if market conditions permit and if it satisfies all
+applicable legal, regulatory and contractual conditions. Furthermore, in the case of redemption
+orders, the Customer is informed that for some of the UCITS offered on the Website, orders
+are only considered valid by the Portfolio Management Company on receipt of the tokens
+corresponding to the units redeemed.
+
+Consequently, delays in the transmission of currencies or Tokens may delay the execution of
+orders by the Portfolio Management Company.
+
+If an order cannot be executed, Spiko Finance will inform the customer by email as soon as
+possible. The order that could not be executed will be canceled. In the event of non-execution
+of a subscription order made by transfer to the Individual Virtual Account communicated to
+the Customer, the amount credited will be transferred as soon as possible back to the
+Customer's bank account. It will be up to the Customer to issue a new order.
+
+11.3.2. Provisions for redemption orders
+
+Once a redemption order has been placed on the Website, the Customer transfers the Tokens
+representing his shares or units to the redemption address of the UCITS.
+
+If the shares or units of the UCITS are registered in an Internal Wallet, Spiko Finance carries
+out this transfer.
+
+If the Tokens are registered on an External Wallet, the Customer must first transfer them to
+the Internal Wallet designated by Spiko Finance. The Customer is responsible for paying the
+costs of transferring these Tokens to the Internal Wallet address. The transfer corresponding
+to the redemption is then carried out by Spiko Finance, in accordance with the terms described
+in the previous paragraph.
+
+11.3.3. Scheduled orders
+
+Customers may schedule one or more redemption orders for execution on a specified future
+date. On the execution date, the redemption order is executed under the conditions defined in
+article 11.3.2.
+
+11.4. Settlement of orders in currency
+
+11.4.1. For subscription orders
+
+As indicated in Article 11.2, subscription orders are settled at the same time as they are time-
+stamped by Spiko Finance. The currency amount of the order registered by Spiko Finance
+corresponds to the amount credited to the Individual Virtual Account.
+
+This settlement must be made by bank transfer to the Individual Virtual Account, the details of
+which have been communicated to the Customer via the Website. For each UCITS, a unique
+Individual Virtual Account is associated with each Customer. The Client must therefore ensure
+that the Individual Virtual Account they use to place their subscription order corresponds to
+the UCITS in which they wish to invest. Spiko Finance declines all responsibility in the event
+of a transfer to a bank account other than the one whose details have been communicated to
+the Client.
+
+For each UCITS, the Individual Virtual Account associated with the Customer is
+communicated at the time of their first subscription. For subsequent subscriptions to the same
+UCITS, the same Individual Virtual Account must be used. All transfers received on the
+Individual Virtual Account associated with the Customer will be treated by Spiko Finance as
+subscription orders in the UCITS concerned. Consequently, the Customer does not need to log
+in to the Website to place these subscription orders.
+
+The Customer undertakes to make transfers to their Individual Virtual Accounts only from
+accounts opened in their name. Spiko Finance reserves the right to refuse a transfer from an
+account opened in the name of a third party.
+
+At the Customer’s request, Spiko Finance will provide them with a subscription receipt on a
+durable medium indicating the amount the Customer wishes to subscribe. This proof may be
+communicated by the Customer to their bank if requested.
+
+The Customer's attention is drawn to the fact that subscription orders are executed at the net
+asset value in force for the UCITS concerned. Consequently, the date and time of receipt of
+the transfer materializing the subscription order may have a positive or negative impact on the
+net asset value at which the subscription is executed.
+
+11.4.2. Redemption orders
+
+Once the redemption order has been placed and the Tokens transferred in accordance with
+the conditions set out in article 11.3.2, the Portfolio Management Company transfers the funds
+in the currency corresponding to the redemption order to the bank account indicated by the
+Customer when placing the redemption order in accordance with the conditions set out in
+article 11.2.
+11.4.3. Specific provisions for settlements and redemptions in currencies other than the
+reference currency of the UCITS
+
+Spiko Finance does not provide currency exchange services. However, some of the UCITS
+offered include unit or share classes denominated in different currencies, without currency
+hedging. Generally speaking, these UCITS comprise one class of units or shares denominated
+in a “reference” currency (e.g. the US dollar) and another class denominated in an “alternative”
+currency (e.g. the euro).
+
+By default, when the Customer subscribes to such UCITS, Spiko Finance considers that the
+Customer wishes to subscribe to units or shares denominated in the UCITS’ reference
+currency. Consequently, when the Customer uses the alternative currency for payment, it
+instructs the Portfolio Management Company to convert the units or shares denominated in
+the alternative currency into units or shares denominated in the reference currency, at the
+same time as his/her subscription.
+
+In the event of a subscription in a currency other than the reference currency of the UCITS,
+orders are transmitted to the Portfolio Management Company as follows:
+
+   • Subscription order in the class denominated in the subscription currency;
+   • Concurrent conversion order to the class denominated in the reference currency of the
+   UCITS.
+
+Symmetrically, redemption orders in currencies other than the reference currency of the
+UCITS are subject to a prior conversion order.
+
+However, on simple request to Spiko Finance, Customers retain the option of subscribing to
+the class denominated in an alternative currency. In this case, no conversion order is
+transmitted to the Portfolio Management Company.
+
+Details of conversions between unit or share classes are given in the prospectus of the UCITS
+concerned. Customers are informed that, in general, from an accounting perspective,
+conversions are treated as redemptions followed by subscriptions.
+
+By way of illustration: for a subscription in euros to a UCITS whose reference currency is the
+US dollar, the following are transmitted simultaneously:
+
+   • a subscription order in the EUR class
+   • a conversion order to the USD class
+
+The customer thus retains the option of settling subsequent redemptions in EUR or USD.
+
+11.5. Settlement of orders in Electronic Money Tokens
+
+11.5.1. General provisions
+
+For certain UCITS, provided that the prospectus of these UCITS allows it, Spiko Finance may
+authorize the Customer to settle subscription orders and to receive settlement of redemption
+orders in Electronic Money Tokens.
+The eligible Electronic Money Tokens are determined in the prospectus of the relevant UCITS.
+The Customer is informed by any means of the addition or removal of an Electronic Money
+Token from the list of eligible Electronic Money Tokens.
+
+The settlement of a subscription order in Electronic Money Tokens is deemed valid only if
+eligible Electronic Money Tokens specific to the relevant UCITS are transferred to the DLT
+address indicated by Spiko Finance. In particular, and unless otherwise indicated on the
+Website, the Customer is informed that settlements of subscription orders must be made
+using an Electronic Money Token referencing the currency of the relevant UCITS. For example,
+a subscription to a UCITS denominated in euros must be made by means of an eligible
+Electronic Money Token denominated in euros.
+
+For the purposes of settling subscription and redemption orders, each Electronic Money Token
+is deemed equivalent to one monetary unit of the currency to which that Electronic Money
+Token refers. For example, one unit of EURC (an Electronic Money Token issued by Circle) is
+deemed equivalent to one euro. Consequently, a subscription order in the amount of 1,000
+euros may be settled by transferring 1,000 EURC.
+
+In accordance with its internal policies, Spiko Finance reserves the right to suspend
+settlements in Electronic Money Tokens for certain Customers, for certain categories of
+Customers or for all Customers, at any time, without notice and without having to provide any
+justification.
+
+The use of Electronic Money Tokens for the settlement of subscription and redemption orders
+involves various risks that are described in detail in the prospectus of the relevant UCITS. By
+using this settlement method, the Customer unreservedly indicates that they have read and
+accept these risks.
+
+The use of Electronic Money Tokens for the settlement of subscription and redemption orders
+is not charged by Spiko Finance. It may be subject to fees charged by the relevant UCITS, in
+accordance with its prospectus.
+
+11.5.2. For subscription orders
+
+As indicated in article 11.2, the settlement of subscription orders takes place at the same time
+as their time-stamping by Spiko Finance. The amount of the order recorded by Spiko Finance
+corresponds to the quantity of Electronic Money Tokens transferred to the DLT address.
+
+This settlement must be made by means of a transfer of Electronic Money Tokens to the DLT
+address, the details of which have been communicated to the Customer via the Website. For
+each UCITS, a unique DLT address is associated with each Customer. The Customer must
+therefore ensure that the DLT address they use to place their subscription order corresponds
+to the UCITS in which they wish to invest. Spiko Finance declines all responsibility in the event
+of a transfer of Electronic Money Tokens to a DLT address other than the one whose details
+have been communicated to the Customer.
+
+For each UCITS, the DLT address associated with the Customer is communicated at the time
+of their first subscription. For subsequent subscriptions to the same UCITS, the same DLT
+address must be used. All transfers of Electronic Money Tokens received at the DLT address
+associated with the Customer will be treated by Spiko Finance as subscription orders in the
+relevant UCITS. Consequently, placing these subscription orders does not require the
+Customer to log in to the Website.
+The Customer undertakes to make transfers to these DLT addresses only from Electronic
+Money Token and/or Crypto-asset accounts opened in their name with crypto-asset service
+providers, or from self-hosted DLT addresses that they own and control. In particular, the
+Customer is informed that checks on the origin of the Electronic Money Tokens may be carried
+out as part of the obligations relating to the travel rule. Spiko Finance therefore reserves the
+right to ask the Customer to certify and/or demonstrate that they own and control the DLT
+address used to make the transfer of Electronic Money Tokens. In addition, Spiko Finance
+reserves the right to refuse a transfer from an account opened in the name of a third party, or
+in the event of an inability to comply with the obligations relating to the travel rule.
+
+At the Customer's request, Spiko Finance will provide them, on a durable medium, with a
+subscription receipt indicating the amount the Customer wishes to subscribe. This receipt may
+be communicated by the Customer to their crypto-asset service provider upon request.
+
+The Customer's attention is drawn to the fact that subscription orders are executed at the net
+asset value in force for the relevant UCITS. Consequently, the date and time of receipt of the
+transfer materializing the subscription order may have a positive or negative impact on the net
+asset value at which the subscription is executed.
+
+11.5.3. For redemption orders
+
+Once the redemption order has been placed and the Tokens transferred in accordance with
+the conditions set out in article 11.3.2, the Portfolio Management Company transfers the
+Electronic Money Tokens corresponding to the redemption order to the DLT address indicated
+by the Customer when placing their redemption order, in accordance with the conditions set
+out in article 11.2.
+
+The DLT address intended to receive settlement of the redemption order that is communicated
+to Spiko Finance must be controlled by the Customer. Spiko Finance declines all responsibility
+in the event of a transfer of Electronic Money Tokens to a DLT address that the Customer does
+not control, where the details of that DLT address have been communicated by the Customer
+to Spiko Finance. In addition, the Customer undertakes to request settlement of a redemption
+only to a DLT address corresponding to an account opened in their name with crypto-asset
+service providers and/or a self-hosted DLT address that they own and control. The Customer
+is informed that checks relating to the destination of the Electronic Money Tokens may be
+carried out as part of the obligations relating to the travel rule. Spiko Finance therefore
+reserves the right to ask the Customer to certify and/or demonstrate that they own and control
+the DLT address used to receive the transfer of Electronic Money Tokens. In addition, Spiko
+Finance reserves the right to refuse a transfer to an account opened in the name of a third
+party, or in the event of an inability to comply with the obligations relating to the travel rule.
+
+
+11.6. Informing the customer of the executed order
+
+On instructions from the Portfolio Management Company, Spiko Finance sends the customer
+a transaction advice note confirming whether or not the order has been executed. In the event
+of a dispute concerning the conditions of receipt or transmission of an order, the dispute,
+formulated in writing and stating the reasons, must be sent to Spiko Finance within eight (8)
+days of receipt of the transaction advice by the customer. If no objection is received within the
+specified time limit, Spiko Finance shall be deemed to have duly performed its duties
+hereunder.
+11.7. Obligations of Spiko Finance
+
+Spiko Finance acts in accordance with professional practice. It may not be held liable for any
+loss or failure in the performance of its obligations caused by force majeure or resulting from a
+failure on the part of the Portfolio Management Company. In particular, it may not be held liable
+for any consequences arising from a breakdown in the means of transmitting orders.
+
+11.8. Fees
+
+The customer will not be billed for the order reception-transmission service provided by Spiko
+Finance.
+
+12. CONDITIONS OF USE OF THE INSTANT WITHDRAWAL SERVICE
+
+12.1. Eligible clients to the instant withdrawal service
+
+Subject to the terms and conditions stipulated in this article 12, Customers have the option of
+requesting the instant withdrawal of all or part of the balance of their Account.
+
+Generally speaking, the instant withdrawal service is offered by Spiko Finance to all
+Customers who have a Validated Customer Account.
+
+However, in application of its internal procedures, Spiko Finance reserves the right to refuse
+access to the instant withdrawal service to any Customer without having to provide the
+Customer concerned with a justification. In addition, access to the instant withdrawal service
+may be refused or suspended for categories of Customers (taking into account in particular
+their status as a natural person and/or their country of registration or residence), in accordance
+with applicable law.
+
+12.2. Detailed description of the instant withdrawal service
+
+An eligible Customer may request to receive, as part of an instant withdrawal, the amount
+corresponding to the redemption of all or part of the Tokens they own. This request is made
+through the Website within their Customer Account.
+
+It is specified that the instant withdrawal request is equivalent to a redemption order within
+the meaning of Article 11 of these Terms of Use. The instant withdrawal request therefore
+indicates the number of shares or units of the UCITS to which the redemption order relates, or,
+alternatively, the amount of the order in currency. Notwithstanding the provisions of Article
+11.2, redemption orders submitted by the Client in connection with instant withdrawals are
+irrevocable.
+
+The Customer Account shall indicate the following information:
+
+   • the UCITS eligible for the instant withdrawal service; it being specified that Spiko
+   Finance reserves the right to modify the list of eligible UCITS at any time;
+   • the maximum amount that can be withdrawn by the Customer instantly;
+   • the reference net asset value of the eligible UCITS; it being specified that each instant
+   withdrawal request is executed on the basis of the net asset value of the UCITS concerned
+   in force at the time of the withdrawal request; and
+   • if, exceptionally, access to the instant withdrawal service is temporarily disabled for all
+   Clients or for certain categories of Clients, this information is also shown in the Client
+   Account.
+
+The instant withdrawal request is equivalent to requesting the conclusion, between the
+Customer and Spiko Finance, of an assignment of receivable with the following terms and
+conditions:
+
+   • Identity of the assignor: the Customer
+   • Identity of the assignee: Spiko Finance
+   • Identity of the assigned debtor: the UCITS concerned by the instant withdrawal request
+   • Nature of the assigned receivable: the receivable corresponding to the payment by the
+   UCITS of the amount corresponding to the redemption order; it being specified that the
+   exact amount is generally not known at the time the assignment of receivable is concluded,
+   as the redemption is executed on the basis of the net asset value of the relevant UCITS in
+   force at the time of the next centralization
+   • Amount of the assignment of receivable: the amount requested by the Customer in their
+   instant withdrawal request
+   • Date of transfer of the receivable: the transfer of the receivable takes place at the time
+   Spiko Finance accepts the instant withdrawal request
+   • Costs: N/A, the assignment of receivable does not entail any additional costs
+   • Applicable law: French law
+
+The acceptance of the instant withdrawal request by Spiko Finance therefore results in the
+conclusion of the assignment of receivable between the Customer and Spiko Finance, the
+terms and conditions of which are described in the previous paragraph. This assignment of
+receivable is concluded electronically and Spiko Finance time-stamps and archives all
+supporting evidence relating to the conclusion of the assignment and the identification of the
+Customer. The assignment of receivable agreement concluded between the Customer and
+Spiko Finance can be consulted upon simple written request to Spiko Finance customer
+service (support@spiko.io).
+
+The amount of the assignment of receivable is made available to the Customer via an instant
+transfer to the bank account specified by the Customer. After acceptance of the instant
+withdrawal request, the Tokens subject to the redemption order are withdrawn from the
+Customer Account and are no longer accessible.
+
+It is specified that, due to the processing time for the instant withdrawal request and the time
+required to complete the instant transfer, Spiko Finance does not guarantee the instant nature
+of the withdrawal and informs the Customers concerned that the transfer may take several
+minutes to be received after the request has been accepted.
+
+After receiving confirmation that the transfer has been sent by the payment service provider,
+Spiko Finance sends the Customer an email summarizing the details of the instant withdrawal
+transaction.
+
+The Customer is informed of and accepts that, in accordance with point 7 of article L. 312-4 of
+the French Consumer Code, the assignment of receivable that materializes this instant
+withdrawal service does not constitute consumer credit and is not subject to the provisions
+relating to consumer credit.
+
+12.3. Remuneration
+The instant withdrawal service is available to the Customer free of charge. Spiko Finance does
+not charge the Customer any fees for carrying out instant withdrawal transactions.
+
+However, the Customer is informed of and accepts that the amount resulting from the
+redemption of the Tokens may be greater than the amount withdrawn (in particular if the net
+asset value used as a reference for the redemption on D+1 is greater than that used for the
+instant withdrawal on D). The difference between these two amounts will not be paid back to
+the Customer.
+
+13. CONDITIONS OF USE OF THE ALLOWLISTING SERVICE
+
+13.1. General terms and conditions
+
+Investment in the UCITS accessible on the Website requires the establishment of at least one
+Wallet included in the Allowlist.
+
+Allowlisting is carried out by Spiko Finance on behalf of the Portfolio Management Company.
+Allowlisting may be refused at Spiko Finance's discretion.
+
+Units or shares of the UCITS may only be transferred to an investor or potential investor with
+a Wallet included in the Allowlist.
+
+13.2. Adding Wallets to the Allowlist
+
+Customers with a Validated Customer Account may request that one or more External Wallets
+they hold be added to the Allowlist. The addition of this Wallet to the Allowlist enables the
+transfer of Tokens corresponding to shares or units of UCITS registered in DLT.
+
+In the event that the Customer chooses to add an External Wallet to the Allowlist and transfer
+units or shares of UCITS to this External Wallet, the Customer shall be solely responsible for
+these transactions. By requesting the addition of an External Wallet to the Allowlist, the
+Customer confirms that they have control over this External Wallet. The Customer undertakes
+to use this External Wallet personally and not to allow any third party to use it in their place or
+on their behalf, except to bear full responsibility for doing so. The Customer's attention is
+drawn to the fact that a transfer of Tokens to another Customer's Wallet constitutes a transfer
+of ownership of their shares or units of UCITS to that other Customer.
+
+Under no circumstances can Spiko Finance be held liable for the consequences of an error in
+a transfer made by the Customer from an External Wallet.
+
+13.3. Obligations of Spiko Finance
+
+Spiko Finance takes immediate steps with the Portfolio Management Companies concerned
+to carry out Allowlisting.
+
+
+
+
+14. CONDITIONS OF USE OF THE INTERNAL WALLET SERVICE
+
+14.1. Description of the service
+Spiko Finance provides the Customer with an Internal Wallet to secure Tokens corresponding
+to shares or units of UCITS subscribed to on the Website. This Internal Wallet must be used
+by the Customer in connection with subscription and redemption orders relating to units or
+shares of UCITS accessible on the Website. These units or shares of UCITS are, by default,
+recorded in the Internal Wallet following the execution of the subscription order.
+
+In addition, the Customer may request the creation of other Internal Wallets. Depending on the
+Account operating mode chosen by the Customer, the Customer may determine the DLT on
+which these Internal Wallets are to be created. The Tokens corresponding to the shares or
+units of UCITS subscribed to on the Website may be registered in any of these Internal Wallets.
+The Customer may thus determine the Internal Wallet in which the shares or units are to be
+registered at the time of the initial subscription, or request, after subscription, their transfer
+from one Internal Wallet to another.
+
+14.2. Redemption procedure for shares or units of UCITS using an Internal Wallet
+
+If the Tokens corresponding to the shares or units of UCITS in which the Customer has
+invested are secured on an Internal Wallet, the Customer may request the redemption of his
+shares from the Website. Where applicable, once the redemption order has been validated,
+the corresponding Tokens are transferred to the UCITS's redemption address without delay.
+
+14.3. Obligations of Spiko Finance
+
+Spiko Finance assumes the costs relating to the transfer to the DLT of Tokens corresponding
+to the shares or units of the UCITS in which the Customer has invested and secured via the
+Internal Wallet made available to the Customer. Spiko Finance can only carry out the following
+actions with the Internal Wallet made available to the Customer: (i) transferring the Tokens to
+the UCITS' redemption address, (ii) transferring the Tokens to an External Wallet designated
+by the Customer, operated under its own responsibility and contained in the Allowlist, or (iii)
+transfer the Tokens to another Internal Wallet opened in the Customer's name and created on
+a different DLT. These actions can only be carried out at the express request of the Customer
+on the Website.
+
+In the event that Spiko Finance loses the private key of the Internal Wallet made available to
+the Customer, Spiko Finance undertakes to take the technical steps, and to bear the costs
+thereof, with the Portfolio Management Company or Companies, so that the Tokens
+corresponding to the shares or units of UCITS subscribed to by the Customer may be
+registered in a new Internal Wallet made available to the Customer or in an External Wallet of
+the Customer's choice.
+
+This Internal Wallet cannot be used to hold Crypto-assets. The Customer undertakes not to
+transfer Crypto-assets to the Internal Wallet made available by Spiko Finance, nor to ask a
+third party to transfer Crypto-assets to this Internal Wallet. Spiko Finance declines all
+responsibility for any transfer by the Customer or a third party of Crypto-assets to this Wallet.
+Spiko Finance draws the Customer's attention to the fact that any transfer of Crypto-assets
+to this Wallet may lead to the total loss of the Crypto-assets thus transferred.
+
+
+15. LIABILITY AND DISCLAIMER
+To the fullest extent permitted by law, Spiko Finance shall not be liable for any loss of profits,
+revenues, values, earnings or data, or for any direct, indirect or consequential damages
+suffered by the Customer or any third party.
+
+Spiko Finance shall not be liable to the Customer in the event of non-performance or improper
+performance of the TOU on the part of the Customer, fraud, negligence or error attributable to
+the Customer, or the occurrence of a case of force majeure.
+
+The Customer is solely responsible for the choices they make in using the Services. The
+Customer is duly warned of the risks associated with the Services. Spiko Finance shall not be
+held liable for any malfunction or impossibility of access to the Website attributable to third
+parties or to the Customer, to congestion of the Internet network, to unsuitable equipment on
+the part of the Customer, to maintenance or updating of the Website or to any other
+circumstance beyond Spiko Finance's control or in the event of force majeure. In particular,
+Spiko Finance cannot be held liable for any financial consequences that may result from the
+impossibility for a Customer to access the Website and/or use the Services for the reasons
+indicated above.
+
+Furthermore, Spiko Finance cannot be held liable for any problem, malfunction or loss of the
+means of access to an External Wallet, which is set up and operated under the sole
+responsibility of the Customer.
+
+16. TAX RETURN
+
+Spiko Finance does not file tax returns on behalf of its Customers. Customers are responsible
+for declaring their capital gains and taking all necessary and compulsory steps to pay their
+taxes in accordance with current legislation.
+
+However, Spiko Finance may be required to transmit to the Customer, on behalf of one or more
+Portfolio Management Companies, single tax forms, in accordance with applicable
+regulations. Where applicable, these documents are issued under the responsibility of the
+Portfolio Management Companies responsible for maintaining the register of the UCITS
+concerned. The Customer is also informed that, in accordance with applicable regulations,
+these single tax forms may be forwarded to the competent tax authorities by the Portfolio
+Management Company or Companies, or by Spiko Finance acting on their behalf.
+
+17. ACCOUNT STATEMENT
+
+Through the Account, the Customer may request a statement of account for the shares or units
+of UCITS in which it has invested via the Website. This statement is issued by Spiko Finance
+in the name and on behalf of the Portfolio Management Company (or Portfolio Management
+Companies, if the Customer holds shares or units in UCITS managed by separate Portfolio
+Management Companies).
+
+The statement of account is sent by e-mail to the Customer at his request. It covers the period
+indicated by the Customer when requesting the statement. It includes at least the following
+information: (i) the name and ISIN code of the UCITS of which the Customer is a shareholder,
+(ii) the transactions (subscriptions or redemptions) carried out by the Customer during the
+period and covered by the service of reception and transmission of orders, (iii) the valuation of
+the UCITS shares or units held by the Customer, and (iv) where applicable, an estimate of the
+increase in the value of the shares or units of UCITS held by the Customer and/or the interest
+received by the Customer.
+18. INTELLECTUAL PROPERTY, TRADEMARKS AND PHOTOGRAPHS
+
+The Website, the Spiko brand, and the elements reproduced on the Spiko Finance Website, in
+particular photographs, visuals, texts, works, illustrations, drawings, logos and images, are and
+remain the exclusive property of Spiko Finance and are protected by copyright, trademark law
+and/or patent law. Any use, reproduction and/or distribution of these elements without the
+prior written authorization of Spiko Finance will expose the offender to legal proceedings.
+Consequently, the Customer is prohibited from reproducing, representing, extracting and
+using in any way whatsoever all or part of the trademarks, logos, of the Spiko Finance Website.
+
+19. PROTECTION OF PERSONAL DATA AND CONFIDENTIALITY
+
+Spiko Finance undertakes to do its utmost to ensure the security and confidentiality of
+personal data in accordance with the legal and regulatory provisions in force.
+
+Spiko Finance undertakes to ensure that only authorized personnel have access to the
+Customer's personal data. Access to the premises and servers on which data is collected,
+processed and archived is strictly limited. Appropriate technical and organizational measures
+have been taken to prevent unauthorized access.
+
+Customers are informed when opening their Account and in the present TOU that Spiko
+Finance collects and processes personal data concerning them automatically. More generally,
+the Customer consents to the application of Spiko Finance's Privacy Policy. The collection and
+processing of personal data carried out by Spiko Finance in its capacity as data controller
+within the meaning of Regulation nᵒ 2016/679 known as the General Data Protection
+Regulation are necessary for the opening of a Customer Account and the performance of the
+Services, for the constitution of customer files, for the proper administration of commercial
+relations between Customers and Spiko Finance and make it possible to improve the customer
+experience and/or make it possible to personalize the customer experience. This data is
+intended for Spiko Finance and its service providers and partners located inside and outside
+the European Union for the purposes of the present, but will not be used by third parties for
+the purpose of canvassing Customers.
+
+Customers are informed that the Portfolio Management Companies of the UCITS in which
+they invest automatically collect and process personal data concerning them as part of their
+record-keeping duties. The collection and processing of personal data carried out by the
+Management Companies in their capacity as data controller within the meaning of Regulation
+nᵒ 2016/679 known as the General Data Protection Regulation is necessary for the execution
+of the Customer's subscription orders.
+
+For the purposes of implementing the obligations defined by Article 1649 AC of the French
+General Tax Code, Customers affected by these reporting obligations are expressly informed
+that Spiko and the Portfolio Management Companies of the UCITS in which it invests may
+transfer some of their data to the French tax authorities and to the tax authorities of other
+Member States of the European Union and/or States or territories that have entered into an
+agreement with France allowing for the automatic exchange of information for tax purposes.
+
+The Customer has at all times a right of access, modification, rectification and opposition on
+legitimate grounds, as well as a right to limitation of processing or portability of personal data
+concerning them, which they may exercise by writing directly under signature and enclosing a
+copy of their identity document, to:
+   • dpo@spiko.io
+   • Spiko Finance, 16, rue des Immeubles Industriels, 75011, France.
+
+The Customer's personal data is kept for the longest period necessary to comply with
+applicable legal and regulatory provisions. Most information is kept for the duration of the
+contractual relationship with the Customer, and then for a minimum of 5 additional years, in
+accordance with legal and regulatory obligations relating to AML-CFT.
+
+In the event of a dispute relating to the use of their data by Spiko Finance, Customers are
+informed that they may refer the matter to the Commission Nationale de l'Informatique et des
+Libertés (CNIL).
+
+20. CONTACT
+
+For any information or questions, Spiko Finance can be contacted :
+
+   • By email to contact@spiko.io
+   • By post to Spiko Finance, 16, rue des Immeubles Industriels, Paris 75011, France.
+
+21. PROVISION OF INFORMATION ON A DURABLE MEDIUM AND VIA THE WEBSITE
+
+By accepting these TOU, the Customer informs Spiko Finance that they formally opt for the
+provision on a durable medium other than paper of information that must be provided on a
+durable medium in accordance with applicable regulations.
+
+The method of providing this information shall be, depending on the circumstances and at
+Spiko Finance's discretion, either by sending an email to the Customer and/or by making an
+electronic document containing the said information available in the Customer Account,
+accompanied by an email informing the Customer that this document has been posted online.
+
+Furthermore, by accepting these TOU, the Customer informs Spiko Finance that they formally
+consent to the information referred to in paragraph 2 of Article 3 of Delegated Regulation (EU)
+2017/565 not being sent to them personally, but being published and made available to all
+Customers via the Website. Spiko Finance nevertheless retains the right to send certain
+information referred to in this paragraph to the Customer personally, on a durable medium.
+
+22. CLAIMS AND DISPUTES
+
+In the event of a dispute or claim by the Customer, the contracting parties undertake to seek
+an amicable settlement first. The Customer may send a complaint to Spiko Finance, which will
+have ten days to acknowledge receipt, then two months from the date it was sent to reply.
+
+If the customer is not satisfied with Spiko Finance's response, they may as a second step refer
+the matter to an ombudsman free of charge, two months after the first written complaint has
+been sent, and within one year at the latest:
+
+   • The Ombudsman of the AMF ("Autorité des Marchés Financiers"), 17 place de la Bourse
+   - 75082 Paris Cedex 02, France or online
+
+If mediation fails, or in the absence of an amicable settlement if the Customer is a professional,
+the dispute may be brought before the competent courts.
+23. NON-WAIVER
+
+The fact that Spiko Finance does not avail itself, at one time or another, of any of the provisions
+of these TOU, shall not be interpreted as a waiver by Spiko Finance to subsequently avail itself
+of any of the said TOU, nor shall it be considered as a modification of the TOU.
+
+24. TERRITORIAL JURISDICTION AND APPLICABLE LAW
+
+These TOU are governed by French law. Unless otherwise provided by law, all disputes arising
+out of or in connection with the Services entered into pursuant to these TOUs, concerning the
+validity, interpretation, performance, termination, consequences and consequences thereof,
+shall be submitted to the competent courts of the Paris Court of Appeal.
+

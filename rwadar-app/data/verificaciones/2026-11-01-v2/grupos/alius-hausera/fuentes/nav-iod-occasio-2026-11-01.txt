@@ -1,0 +1,146 @@
+URL: https://aliuscap.com/projects/iodo1
+HTTP: 200
+InicioUtc: 2026-11-01T15:05:10.475Z
+FinUtc: 2026-11-01T15:05:19.739Z
+BotonesInvertir: [{"tag":"A","text":"Invertir","disabled":false,"href":"https://aliuscap.com/invest"},{"tag":"BUTTON","text":"Invertir","disabled":true,"href":null},{"tag":"A","text":"Invertir","disabled":false,"href":"https://aliuscap.com/invest"}]
+
+Consentimiento
+Detalles
+Acerca de las cookies
+Esta página web usa cookies
+Con el fin de mejorar nuestros servicios y entender cómo utilizas nuestro website, utilizamos nuestras propias cookies y cookies de terceros.
+Selección de consentimiento
+Necesarias
+Preferencias
+Estadística
+Marketing
+Denegar
+Permitir la selección
+Permitir todas
+menu
+IOD | Bono 12% a 12 meses, para anticipo de cobros
+Industria
+Cerrado
+
+IOD Occasio
+
+(IODO1)
+
+Documento de emisión
+download
+
+Objetivo
+
+120.000,00 €
+
+Tipo de producto financiero
+
+Bono
+
+Precio por Token
+
+100,00 €
+
+Interés anual
+
+12 %
+
+Plazo de devolución
+
+12 meses
+
+Tokens a la venta
+
+1.200
+
+Tokens vendidos
+
+1.200
+
+Días restantes
+
+--
+
+Recaudado
+
+120.000,00 €
+
+beenhere
+
+Importe máximo
+
+120.000,00 €
+
+beenhere
+Umbral de éxito
+
+100.000,00 €
+
+Invertir
+Información del proyecto
+Descripción
+Propuesta
+Proceso
+Documentos
+FAQs
+
+IOD Applications es una compañía creada con el propósito de mejorar, gracias a su experiencia financiera y sus sistemas de software, la gestión del capital circulante de sus clientes. De esta forma, se identifican oportunidades de financiación de circulante en las cuales la Sociedad decide actuar y/o participar aportando fondos que permitan a sus clientes incrementar su capital de trabajo.
+
+
+
+
+https://www.iodapp.com/
+
+
+
+
+💶 Anticipo de cobros, con seguro de caución
+
+
+
+
+A través de esta emisión, IOD Applications busca captar hasta 120.000 € para adquirir derechos de cobro derivados de facturas emitidas por empresas previamente identificadas y analizadas. Los fondos permiten anticipar esos cobros, aportando liquidez a las empresas antes del vencimiento de sus facturas.
+
+
+
+
+Los derechos de cobro adquiridos cuentan con cobertura de seguro de caución de hasta el 90%, de acuerdo con las condiciones aplicables a cada operación. Los importes obtenidos a medida que se produzca el cobro de las facturas se destinarán a atender las obligaciones de pago derivadas del bono.
+
+
+
+
+📊 Experiencia financiera y tecnológica
+
+
+
+
+El proyecto está impulsado por un equipo que combina experiencia tecnológica y financiera. Smart Escrow, socio de IOD Applications, ha estructurado desde 2020 más de 840 operaciones por un importe superior a 25 millones de euros. Por su parte, Armatura Capital y su fundador aportan más de 25 años de experiencia, habiendo participado en operaciones de financiación en distintos sectores por un volumen superior a 1.000 millones de euros.
+
+Anterior
+download CONVOCATORIA DE JUNTA GENERAL
+LEGAL Y CORPORATIVO
+Aviso Legal
+Política de Privacidad
+Política de Cookies
+Información financiera
+Reglamento interno de conducta
+Quejas y reclamaciones
+Inversión de personas vinculadas
+CLIENTES
+Información básica para el cliente
+Condiciones generales
+Quiénes somos
+Contacto
+Condiciones generales Mangopay
+
+Tasa de impago 0%
+
+DESTACADOS
+Invertir
+Obtener inversión
+Tokenización de la inversión
+SIGUENOS
+
+Alius Capital (ALIUS CAPITAL STOS PSFP S.L.) es un proveedor de servicios de financiación participativa autorizado y supervisado por la CNMV
+
+Copyright ©2026 Alius Capital

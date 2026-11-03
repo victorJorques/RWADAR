@@ -1,0 +1,6 @@
+URL: https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es
+BUSQUEDA: Figure
+CONSULTADO: 2026-11-01T15:12:50Z
+FINAL: https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es
+
+upstream request failed

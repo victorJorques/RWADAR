@@ -1,0 +1,121 @@
+URL https://app.reental.co/terms
+UTC 2026-11-01T15:10:17.312Z
+
+Sigue tu inversión en tiempo real instalando Reental
+
+Instalar
+TÉRMINOS Y CONDICIONES
+Aviso Legal
+
+RentalToken , S.L., (en adelante el Titular) con NIF B01988393 (en adelante Reental) y domicilio en Madrid, Calle Don Ramón de la Cruz 38, 28001, inscripta en el Registro Mercantil con fecha 15-12-2020, en el Tomo 41162, Folio 30, Inscripción 1, Hoja M-729800; es titular del Sitio Web accesible a través de la URL https://www.reental.co/ (en adelante, Reental, la Plataforma o el Sitio Web, indistintamente).
+
+Para cualquier consulta, duda o sugerencia respecto a Reental, puedes ponerte en contacto con nosotros a través de la siguiente dirección de correo electrónico: hola@reental.co o al teléfono de contacto +34 621 340 254
+
+A continuación, se procede a mostrar las condiciones que, de un modo general, regulan el acceso a la página web del Titular, tanto de los servicios como funcionalidades allí ofrecidos, sin perjuicio de la aplicación de otras condiciones distintas a la contratación de bienes o servicios o su modificación. Se recomienda una lectura y revisión periódica ya que pueden existir modificaciones en los textos legales.
+
+Condiciones Generales de Uso
+1. Identificación de las partes
+
+Las presentes Condiciones Generales de Uso quedan suscritas, de una parte, por el Titular y de otra, por tí, como Usuario persona física o jurídica que accede voluntariamente de manera libre y gratuita al Sitio Web. Estas condiciones serán aplicables con independencia de la suscripción de los servicios de financiación participativa ofrecidos en la Plataforma.
+
+2. Objeto del Sitio Web
+
+Reental es una plataforma de inversión inmobiliaria que pone a disposición de los inversores distintas oportunidades de inversión, para permitirles participar en ellas a través de la adquisición de participaciones representadas en forma de token, como participación de un préstamo participativo.
+
+3. Obligaciones del Usuario
+
+Como Usuario mediante el mero acceso y navegación a través del Sitio Web, deberá:
+
+Emplear el Sitio Web de manera diligente, correcta y lícita, siempre en respeto a la legislación vigente, la moral y las buenas costumbres, así como el orden público.
+Revisar periódicamente estas Condiciones, o cualesquiera otras que resulten aplicables, comprobando las modificaciones que pudieran producirse.
+Revisar las comunicaciones que Reental te remita, ya que pueden contener información importante.
+No utilizar el Sitio Web con fines comerciales, especialmente para recabar información o contenidos con la finalidad de prestar servicios que constituyan claramente una competencia para Reental.
+No modificar o tratar de modificar en modo alguno, ni realizar acciones o utilizar medios orientados a simular la apariencia o las funciones del Sitio Web.
+No dañar, deshabilitar, sobrecargar o dificultar el servicio (o la red o redes conectadas al servicio), o interferir en su uso y disfrute.
+Abstenerse de llevar a cabo acción alguna que conlleve la introducción de virus informáticos, gusanos, troyanos o cualquier otra clase de código malicioso destinado a interrumpir, destruir o limitar las funcionalidades del Sitio Web.
+No emplear técnicas de ingeniería inversa y/o descifrar, descompilar o utilizar cualquier otro sistema destinado a conocer el código fuente de Reental.
+En cualquier caso, no realizar ningún tipo de acto que pueda vulnerar derechos o intereses del Titular o de terceros como puedan ser, a modo de ejemplo, derechos de propiedad intelectual o industrial (patentes, marcas, derechos de copyright, secretos comerciales...).
+4. Disponibilidad del Sitio Web
+
+El Titular trata de mejorar y expandir Reental, al igual que su contenido y los servicios en él ofrecidos. A pesar de ello, el Sitio Web se mostrará tal y como se encuentre en cada momento, según disponibilidad, limitaciones y otras circunstancias concurrentes.
+
+5. Condiciones Particulares de Registro
+
+Las presentes Condiciones Particulares de Registro son suscritas, de un lado, por Reental, y de otro, por aquel Usuario que haya completado el formulario correspondiente para crear una cuenta como Inversor y los pasos indicados en el Sitio Web destinados a llevar a cabo el registro; junto con la aceptación de estas Condiciones Particulares.
+
+5.1. Requisitos y procedimiento para crear una cuenta de “Inversor”
+
+Podrán crear una cuenta en el Sitio Web las personas físicas mayores de edad de conformidad con lo dispuesto en la legislación española; en nombre propio o en representación de una persona jurídica. En este último caso será preciso, por tanto, que la persona física ostente la representación legal de la persona jurídica o sociedad en cuestión (a través de poder notarial u otros documentos). El Usuario deberá acceder a la opción “Registrate” en la parte superior derecha de la web y posteriormente pulsar en “Créala” completar usuario y contraseña y pulsar “Enviar”. Deberá completar todos los pasos indicados, entre los que se incluye la lectura de la información relativa a la Política de Privacidad y el resto de Información Básica para el Cliente Inversor. Reental, confirmará al Usuario su registro en el Sitio Web, a través del envío de una comunicación de bienvenida, momento a partir del cual pasa a ser Usuario Registrado. Si el Usuario Registrado no recuerda su contraseña deberá hacer clic sobre “Recuperar contraseña”, e introducir el correo electrónico a través del cual efectuó el registro, para su restablecimiento. El Titular se reserva el derecho de comprobar y verificar la identidad del Usuario en cualquier momento. El no cumplimiento de los requisitos exigidos en el presente apartado o engaño en cuanto a identidad, faculta al Titular a dar de baja en cualquier momento a tal Usuario, eximiendo de cualquier tipo de responsabilidad al Titular de tal acción. Las presentes Condiciones únicamente resultan de aplicación al uso del Sitio Web y el registro genérico inicial como Usuario Inversor.
+
+5.2. Obligaciones del Usuario Inversor Registrado
+
+El Usuario Inversor Registrado tiene las siguientes obligaciones:
+
+No registrarse con varias cuentas de Usuario en el Sitio Web, ni hacerlo con datos falsos o suplantando la personalidad de terceros. Eres responsable de facilitar tus datos reales.
+No utilizar o intentar servirse de la cuenta de otro Usuario, sin autorización o consentimiento.
+Ser el único responsable de todas las actividades que se realicen desde tu cuenta personal en Reental.
+Cuidar la confidencialidad de tus datos de acceso, ya que serás responsable de cualquier daño que sufra o sufran terceros por incumplir estas Condiciones. También eres responsable de lo que suceda en tu cuenta personal salvo que la seguridad de la misma se haya visto comprometida por causas ajenas. En concreto, deberás:
+Mantener la cuenta actualizada.
+Almacenar la contraseña escogida de manera confidencial.
+Ser el único Usuario que utilice la cuenta creada.
+No comercializar, vender o transferir la cuenta a un tercero.
+Reental se reserva el derecho de verificar el perfil del Usuario Inversor, pudiendo eliminar o suspender la cuenta en caso de incumplimiento de los presentes textos legales o cualesquiera otros aplicables.
+6. Condiciones programa de referidos
+
+A continuación detallamos las condiciones del programa de referidos al que se puede acceder cuando en el momento del registro el usuario se registre utilizando el codigo de referidos que se encuentra en el apartado de “perfil” de Rental.:
+
+6.1. Beneficiarios del programa
+“Refiriente”: Un usuario de Reental pasa a ser refiriente cuando un nuevo usuario ha utilizado su código de referido en el momento del registro y ha realizado la primera inversión.
+“Referido” . Es aquel nuevo usuario que en el momento del registro ha utilizado el código de referido de otro usuario de Reental.
+6.2. Retribucion del programa
+El Refiriente recibe un 4% en RNT o un 2% en USDT de la inversión realizada por el referido en los 12 primeros meses.
+El referido recibe un 2% en RNT de su inversión realizada en su primera inversión.
+Ambos, el referido y el referente recibirán su incentivo a los 3 meses siempre y cuando la inversión no se haya retirado.
+6.3. Limitaciones:
+6.3.1 No podrá invitarse a familiares de primer grado ni a personas jurídicas cuyo administrador sea el propio prescriptor.
+7. Exclusión de responsabilidad
+7.1. Disponibilidad
+
+Reental trabaja para que los servicios y funcionalidades del Sitio Web se encuentren siempre disponibles. No obstante, cuando acceda a éste, le será mostrado según la disponibilidad y las limitaciones que concurran en cada momento.
+
+7.2. Alcance del control de Reental
+
+A pesar del continuo esfuerzo del Titular por proteger los sistemas y los contenidos incluidos en el Sitio Web, a cuyo efecto emplea los estándares de seguridad y cumplimiento normativo, no es posible ofrecer plenas garantías en relación con las intrusiones o pérdidas de información que puedan producirse. Del mismo modo, no puede garantizarse la ausencia de virus o de otros elementos dañinos en el Sitio Web o en sitios web de terceros que puedan producir alteraciones en el sistema informático, tanto software como hardware, del Usuario. Por esta razón, el Usuario asume y comprende que existan situaciones que puedan escapar al control de Reental.
+
+7.3. Responsabilidad de los enlaces a terceros
+
+La Plataforma puede incluir enlaces a páginas o sitios de terceros ajenos al Titular, sobre los cuales no asume ningún tipo de responsabilidad al no aprobar ni revisar sus funciones y contenidos. El Usuario que acceda a cualquier enlace publicado en el Sitio Web lo hace bajo su propio riesgo y ventura, sin que el Titular asuma ninguna responsabilidad por ello.
+
+7.4. Responsabilidad del mal uso del Sitio Web
+
+De igual manera, el Sitio Web queda eximido de toda responsabilidad derivada de un mal uso del mismo por parte de los Usuarios, así como por el incumplimiento de las obligaciones o compromisos asumidos en virtud de estas condiciones o cualesquiera otra aplicables.
+
+8. Derechos de propiedad intelectual e industrial
+
+Todos los derechos de propiedad intelectual e industrial sobre el Sitio Web y sus contenidos, entre los que se incluye la programación, el diseño, aplicaciones, los gráficos, los códigos, texto o imágenes, las marcas, nombres comerciales, signos distintivos y demás elementos allí presentes pertenecen en exclusiva al Titular, incluida la marca Reental, o cuenta con derechos y/o autorizaciones bastantes para su explotación. Como consecuencia de lo anterior, cualquier reproducción, distribución, comunicación pública (incluida la puesta a disposición), transformación o cualquier otra forma de explotación, ni tan siquiera citando las fuentes, queda prohibida, salvo que se cuente con el consentimiento previo, expreso y por escrito del Titular o del titular en exclusiva de los derechos afectados. Si detectas alguna infracción, rogamos nos lo comuniques al correo electrónico indicado en la cabecera.
+
+9. Indemnización
+9.1. Sanción
+
+El Titular puede sancionar a cualquiera de los Usuarios que incumplan las condiciones que le son aplicables, con la imposibilidad de acceder, temporal o indefinidamente al Sitio Web. La duración de la sanción dependerá del tipo de infracción cometida. La restricción de acceso no conllevará en ningún caso derecho a indemnización.
+
+9.2. Daño, perjuicio, pérdida o coste
+
+Cualquier tipo de daño, perjuicio, pérdida o coste (incluidos honorarios de abogados y/o procuradores) derivado de un incumplimiento por parte del Usuario de estas Condiciones o de cualesquiera otras que resultaren aplicables, en que incurriera Reental deberá ser resarcido por el Usuario que lo originó. Ello abarca cualquier reclamación de terceros derivada de dichos incumplimientos.
+
+10. Modificaciones
+
+Las presentes Condiciones pueden ser en cualquier momento modificadas y/o actualizadas sin necesidad de previo aviso. Las modificaciones efectuadas entrarán en vigor a partir de su publicación en el Sitio Web, sea cual sea el medio y forma empleado para ello. La modificación solo afectará a los Usuarios que las hubieran aceptado con posterioridad a dicha modificación.
+
+11. Otras cuestiones
+11.1. Salvaguarda e interpretación
+
+Si la Autoridad competente declarara alguna de estas disposiciones como ilegal, inválida o no ejecutable, ello supondrá que la misma deba ser interpretada de la manera más próxima a la intención original de tal disposición. En cualquier caso, tal declaración respecto de alguna o algunas cláusulas no perjudicará la validez de las restantes. La no exigencia por parte del Titular del cumplimiento estricto de alguno de los términos de estas Condiciones, no constituye ni podrá interpretarse en ningún caso como una renuncia por su parte a exigirlo en un futuro.
+
+11.2. Idioma
+
+El idioma aplicable a las presentes Condiciones es el español. Si se facilitan versiones en otros idiomas como el inglés, será únicamente por mera cortesía y mayor comodidad para el Usuario. En caso de contradicción prevalecerá la versión en español.
+
+11.3. Legislación y fuero
+
+Las relaciones entre el Titular y el Usuario se regirán por la legislación española y las discrepancias o conflictos en torno a estas Condiciones, dependerá de que el usuario ostente la condición de consumidor y/o usuario de conformidad a la normativa aplicable. Siendo consumidor y/o usuario los conflictos, se someterán a los Juzgados y Tribunales del domicilio del Usuario. En caso de que no tuviera tal condición, los conflictos se determinarán en los Juzgados y Tribunales de Madrid. Estas Condiciones Generales se rigen por la ley española. Así mismo, en cumplimiento de lo dispuesto en la Ley de Resolución Alternativa de Litigios. Además te recordamos que puedes acceder a la plataforma de resolución de litigios en línea de la Unión Europea siguiendo este enlace: https://ec.europa.eu/consumers/odr/main/?event=main.home2.show

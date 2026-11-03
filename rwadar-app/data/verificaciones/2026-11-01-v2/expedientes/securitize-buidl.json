@@ -1,0 +1,102 @@
+{
+ "slug": "securitize-buidl",
+ "tipoExpediente": "candidata",
+ "grupo": "radar-tesoro",
+ "proveedor": "Securitize",
+ "plataformaSlug": "securitize",
+ "entidadComercializadora": null,
+ "emisor": "BlackRock USD Institutional Digital Liquidity Fund Ltd. (no verificado en este ciclo)",
+ "vehiculo": "Fondo institucional tokenizado (no examinado)",
+ "token": "BUIDL",
+ "derechoAdquirido": "Participaciones del fondo",
+ "jurisdiccion": null,
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Securitize (entidades no autorizadas)",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Securitize",
+   "consultadoUtc": "2026-11-01T15:10:26Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registro",
+   "literal": "Securitize Markets, LLC figura como broker-dealer SEC/FINRA y ATS; otras funciones pertenecen a otras filiales.",
+   "dato": null,
+   "fuentePrimaria": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+   "localizador": "rwadar-app/data/verificaciones/2026-10-23-v2/radar-canonico-26.json · fuente securitize-finra (verificada por el radar el 22/10/2026)",
+   "fechaDato": "2026-10-22",
+   "consultadoUtc": null,
+   "alcanceYLimites": "Texto del radar canónico, no literal del documento; la fuente primaria no se releyó en este ciclo (01/11/2026)",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Spain's CNMV approved Securitize to operate a regulated trading and settlement system under the EU's DLT Pilot Regime",
+   "dato": null,
+   "fuentePrimaria": "https://theblock.co/post/380639/securitize-eu-approval-operate-tokenized-trading-system-avalanche",
+   "localizador": "Prensa (descubrimiento); no se consultó el registro de la CNMV",
+   "fechaDato": null,
+   "consultadoUtc": null,
+   "alcanceYLimites": "Es una autorización de infraestructura (sistema DLT de negociación y liquidación), no de un producto. No se encontró ningún producto minorista abierto en España",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "elegibilidad",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": null,
+   "localizador": null,
+   "fechaDato": null,
+   "consultadoUtc": null,
+   "alcanceYLimites": "Documento de oferta de BUIDL no leído en este ciclo.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "No se consultó en este ciclo el registro del regulador del vehículo."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Estado del producto no releído el 01/11/2026; el radar lo observó en la web el 22/10/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "BUIDL no examinado; ningún producto minorista encontrado bajo el régimen piloto DLT en España."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Riesgos del documento del producto no leídos en este ciclo; sin advertencias de la CNMV en la búsqueda por nombre salvo lo indicado."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": null,
+  "porQueNo": "Sin producto minorista identificado en España."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "BUIDL no se examinó con fuente primaria y es un fondo institucional; la autorización del régimen piloto DLT de Securitize en España es de infraestructura y no se halló ningún producto para particulares.",
+ "bloqueos": [
+  "Fase de captura cerrada por el coordinador: expediente breve con la evidencia del radar del 22/10/2026."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T15:10:14Z",
+  "finUtc": "2026-11-02T08:45:38Z"
+ }
+}

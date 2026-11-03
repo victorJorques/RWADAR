@@ -1,0 +1,285 @@
+{
+  "slug": "switzerlend",
+  "tipoExpediente": "publicada",
+  "grupo": "aktionariat",
+  "proveedor": "Aktionariat (portal de inversores shares.lend.ch)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Switzerlend AG (vende sus propias acciones C1 en un portal con tecnología de Aktionariat AG)",
+  "emisor": "Switzerlend AG (marca LEND)",
+  "vehiculo": "Sociedad anónima suiza (AG); sin SPV",
+  "token": "LENDS (SHA token sobre acciones preferentes C1), ERC-20 en Ethereum mainnet, contrato 0x343324f53cbeee3ee6d171f2a20f005964c98047",
+  "derechoAdquirido": "Acciones preferentes clase C1 (nominal 1,00 CHF) con preferencia en liquidación, emitidas como valores registrados en DLT y envueltas en LENDS sujeto al Token Shareholder Agreement (drag-along 66⅔ %, tag-along). Es capital de la empresa, no los préstamos de la plataforma LEND.",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-456.445.646; token LENDS 0x343324f53cbeee3ee6d171f2a20f005964c98047",
+  "moneda": "CHF / ZCHF (Frankencoin)",
+  "documentos": [
+    {
+      "titulo": "Token Shareholder Agreement LENDS",
+      "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "versionOFecha": "PDF modificado 2026-03-19 (DocuSign)",
+      "paginas": 9,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Registration Agreement Lend (firmado, escaneado)",
+      "url": "https://storage.googleapis.com/aktionariat/public/40880/869c7faa-0f1c-4d52-a5ae-b4f4c129d1a4/Registration_Agreement_Lend_signed.pdf",
+      "versionOFecha": "sin fecha legible",
+      "paginas": 8,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Insider Trading Rules (plantilla Aktionariat)",
+      "url": "https://hub.aktionariat.com/documents/terms/InsiderTradingRules.pdf",
+      "versionOFecha": "no descargado",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Folleto / ficha informativa",
+      "url": null,
+      "versionOFecha": "no localizado",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (Zefix / ZefixREST)",
+      "entidad": "Switzerlend AG",
+      "numero": "CHE-456.445.646",
+      "url": "https://www.zefix.ch/en/search/entity/list?name=Switzerlend%20AG",
+      "alcance": "Sociedad anónima (AG) inscrita, sede Zürich, estado EXISTIEREND. Capital 712.028 CHF (SHAB 08/12/2023) con banda de capital; las preferentes A1, A2, B, C1 y C2 tienen preferencia en liquidación; la restricción de transmisión afecta a ordinarias y a A1, A2, B y C2, no a C1. Revisora: Ferax Treuhand AG. Objeto: servicios financieros, concesión e intermediación de créditos. Es un registro mercantil, no una licencia financiera.",
+      "consultadoUtc": "2026-11-01T15:05:03Z"
+    },
+    {
+      "regulador": "FINMA",
+      "entidad": "—",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "alcance": "No se ha localizado autorización FINMA. El propio portal declara que el mercado secundario es una «non-commercial trading facility» no sujeta a supervisión prudencial; el registro de autorizados de FINMA no se consultó por nombre (pendiente).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "FINMA",
+      "busqueda": "Switzerlend / LEND",
+      "resultado": "sin coincidencias (lista de advertencias completa, 2.401 entradas, búsqueda local por nombre)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-01T15:08:30Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Switzerlend",
+      "resultado": "sin coincidencias («No hay datos disponibles», tipo «No autorizadas»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
+      "consultadoUtc": "2026-11-02T08:49:44Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "Buy LENDS at 68.0105 CHF · bank transfer or crypto",
+      "dato": "Venta directa del emisor abierta",
+      "fuentePrimaria": "https://shares.lend.ch/trade",
+      "localizador": "/trade DIRECT FROM ISSUER; isPrimaryMarketEnabled=true; on-chain settings()=5 (bit 0x1 activo)",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:04:42Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "Price per LENDS 68.01 CHF",
+      "dato": "68,0105 por acción C1; sube 0,0005 por acción vendida",
+      "fuentePrimaria": "https://shares.lend.ch/invest",
+      "localizador": "/invest + getPrice()=68,0105e18, increment()=5e14 en 0x8d90…9b65",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:04:32Z",
+      "alcanceYLimites": "Precio fijado por el emisor con incremento mínimo (curva lineal).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "actividad",
+      "literal": "7 Oct 2026 / 13:34 Direct Investment 68.01 ZCHF 10 LENDS",
+      "dato": "Última compra al emisor 07/10/2026 (11 LENDS); 25/09/2026 (6); 03/09/2026 (3)",
+      "fuentePrimaria": "https://shares.lend.ch/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=40880 (94 operaciones)",
+      "fechaDato": "2026-10-07",
+      "consultadoUtc": "2026-11-01T14:58:59Z",
+      "alcanceYLimites": "Último cruce secundario 25/08/2026 a 67,00 ZCHF (1 acción).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Total: 408.07 CHF",
+      "dato": "Orden por defecto 6 acciones = 408,07 CHF; sin mínimo configurado para transferencia (min 0)",
+      "fuentePrimaria": "https://shares.lend.ch/invest",
+      "localizador": "/invest; brokerbotsettings bankTransferLimit.min=0, initialShares=6",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:04:32Z",
+      "alcanceYLimites": "Mínimo práctico: 1 acción ≈ 68 CHF más comisiones bancarias.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "Bid/Ask 59.00 / 67.50 · Spread 12.59%",
+      "dato": "Recompra del emisor desactivada (sellingEnabled=false); mejor compra en secundario 59,00 ZCHF por 4 acciones",
+      "fuentePrimaria": "https://shares.lend.ch/trade",
+      "localizador": "/trade libro de órdenes; brokerbotsettings",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:04:42Z",
+      "alcanceYLimites": "Demanda visible 4 acciones (236 ZCHF). Solo ZCHF con monedero propio.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "All Share Tokens are issued as preferred C1 shares with a nominal value of CHF 1.00 and which have the Liquidation Preferences",
+      "dato": "Preferentes C1 con preferencia en liquidación; drag-along 66⅔ %",
+      "fuentePrimaria": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "localizador": "Token SHA, Section A – Key terms",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:59:53Z",
+      "alcanceYLimites": "La preferencia C1 es subordinada o no respecto de A1/A2/B/C2 según estatutos (no leídos).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": null,
+      "fuentePrimaria": "https://shares.lend.ch/",
+      "localizador": "Portal completo",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T14:58:58Z",
+      "alcanceYLimites": "Sin lista de países ni aviso del emisor para residentes UE/España.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "supervision",
+      "literal": null,
+      "dato": null,
+      "fuentePrimaria": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "localizador": "Lista de advertencias FINMA",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:08:30Z",
+      "alcanceYLimites": "Sin advertencia FINMA. Que el emisor tenga o no autorización o afiliación a un organismo de autorregulación por su actividad de crédito no se ha verificado; en cualquier caso no cubriría la venta de sus acciones.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita (CHE-456.445.646); estatus FINMA no verificado; sin advertencias."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Venta del emisor abierta, última compra 07/10/2026."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Acceso desde España no documentado; entrada ≈ 68 CHF; recompra cerrada."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Derechos y preferencias descritos en el Token SHA; sin folleto."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "estado",
+      "antes": "Sin estado ni precio en la tarjeta",
+      "ahora": "Venta del emisor abierta a 68,0105 por acción C1 (última compra 07/10/2026)",
+      "fuente": "https://shares.lend.ch/invest",
+      "critico": true
+    },
+    {
+      "campo": "salida",
+      "antes": "No indicada",
+      "ahora": "Recompra cerrada; mejor compra en secundario 59,00 ZCHF (4 acciones)",
+      "fuente": "https://shares.lend.ch/trade",
+      "critico": true
+    },
+    {
+      "campo": "derecho",
+      "antes": "Clase C1 (LENDS)",
+      "ahora": "C1 preferente con preferencia en liquidación, libremente transmisible (la restricción estatutaria no incluye C1)",
+      "fuente": "https://www.zefix.ch/ZefixREST/api/v1/firm/1231406.json",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Switzerlend",
+    "categoria": "Acciones y capital privado",
+    "pais": "CH",
+    "tipo": "valor",
+    "coleccion": "principales",
+    "resumen": "Acciones preferentes C1 tokenizadas de Switzerlend AG, operadora de la plataforma de préstamos LEND. El emisor las vende a precio fijado por él; no las recompra.",
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Precio del emisor · 01/11/2026",
+        "valor": "68,01 CHF por acción"
+      },
+      {
+        "etiqueta": "Última compra al emisor",
+        "valor": "07/10/2026"
+      },
+      {
+        "etiqueta": "Clase",
+        "valor": "Preferente C1 (preferencia en liquidación)"
+      },
+      {
+        "etiqueta": "Venta",
+        "valor": "Recompra cerrada; mejor oferta 59,00 ZCHF (4 acciones)"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "No verificado"
+      }
+    ],
+    "avisos": [
+      "Acceso desde España no confirmado: el portal no publica países admitidos.",
+      "Es capital de la empresa, no una inversión en los préstamos de LEND.",
+      "La salida depende de compradores en un secundario en cripto con muy poca demanda."
+    ],
+    "url": "https://shares.lend.ch/",
+    "fuentesActuales": [
+      "https://shares.lend.ch/invest",
+      "https://shares.lend.ch/trade",
+      "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf"
+    ],
+    "lugar": "Zúrich · Suiza",
+    "pasos": [
+      "Registro en el portal",
+      "Compra al emisor",
+      "Venta entre accionistas"
+    ],
+    "concepto": "una oficina de préstamos entre particulares en Zúrich con acciones en cadena de bloques"
+  },
+  "decision": "actualizar",
+  "motivoDecision": "Compra abierta y documentada (precio y última compra verificados on-chain), pero acceso desde España sin confirmar y recompra cerrada; actualizar datos sin destacar.",
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "1 acción ≈ 68,01 CHF (orden por defecto 6 = 408,07 CHF)",
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Venta del emisor abierta con precio verificado on-chain y compras recientes (07/10/2026); derechos de la clase C1 descritos en el Token SHA.",
+    "porQueNo": "Sin aviso de elegibilidad para residentes en España, sin folleto y sin recompra; demanda secundaria de 4 acciones."
+  },
+  "bloqueos": [
+    "Registration Agreement escaneado sin texto extraíble.",
+    "Registro de autorizados FINMA no consultado por nombre."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T14:58:58Z",
+    "finUtc": "2026-11-01T15:08:30Z"
+  }
+}

@@ -1,0 +1,102 @@
+{
+ "rpc": "https://ethereum-rpc.publicnode.com",
+ "nota": "eth_call de solo lectura a los contratos Brokerbot/DirectInvestment indicados por /api/brokerbotsettings (marketAddress). Precio en ZCHF con 18 decimales. settings bit 0x1 = compra cripto habilitada (DirectInvestment.sol, shim legado).",
+ "bloque": 26320707,
+ "resultados": {
+  "aktionariat": {
+   "contrato": "0x2f2c3cf0b2d6f4f6cd5f57665ae629eee813350b",
+   "consultadoUtc": "2026-11-01T15:06:36Z",
+   "settings()": 1,
+   "getPrice()": 7250000000000000000,
+   "increment()": 0,
+   "precioZCHF": 7.25,
+   "incrementoZCHFporAccion": 0.0
+  },
+  "boss-info": {
+   "contrato": "0x3e73d3fc22a8637b2c16790aa2c0e2d552d44e69",
+   "consultadoUtc": "2026-11-01T15:06:37Z",
+   "settings()": 1,
+   "getPrice()": 8501970000000000000,
+   "increment()": 5000000000000,
+   "precioZCHF": 8.50197,
+   "incrementoZCHFporAccion": 5e-06
+  },
+  "wemakeit": {
+   "contrato": "0x01f15a8933f4d93635fe69aa65b44a9601f8687d",
+   "consultadoUtc": "2026-11-01T15:06:37Z",
+   "settings()": 0,
+   "getPrice()": 8378260000000000000,
+   "increment()": 20000000000000,
+   "precioZCHF": 8.37826,
+   "incrementoZCHFporAccion": 2e-05
+  },
+  "servicehunter-quitt": {
+   "contrato": "0x0273308ef6bf133756fd57e2252ca526bd43b234",
+   "consultadoUtc": "2026-11-01T15:06:38Z",
+   "settings()": 4,
+   "getPrice()": 7111540000000000000,
+   "increment()": 30000000000000,
+   "precioZCHF": 7.11154,
+   "incrementoZCHFporAccion": 3e-05
+  },
+  "switzerlend": {
+   "contrato": "0x8d90319fe817fe9e23973fcab9f1ff0f1e0d9b65",
+   "consultadoUtc": "2026-11-01T15:06:38Z",
+   "settings()": 5,
+   "getPrice()": 68010500000000000000,
+   "increment()": 500000000000000,
+   "precioZCHF": 68.0105,
+   "incrementoZCHFporAccion": 0.0005
+  },
+  "realunit": {
+   "contrato": "0xcff32c60b87296b8c0c12980de685bed6cb9dd6d",
+   "red": "mainnet",
+   "consultadoUtc": "2026-11-02T08:49:00Z",
+   "settings()": 2,
+   "getPrice()": 1370000000000000000,
+   "increment()": 0,
+   "precioZCHF": 1.37,
+   "incrementoZCHFporAccion": 0.0
+  },
+  "art-leasing": {
+   "contrato": "0xf12a6b198f3c94cbc7c2110cd7347e0bd2e534ad",
+   "red": "mainnet",
+   "consultadoUtc": "2026-11-02T08:49:01Z",
+   "settings()": 3,
+   "getPrice()": 3651200000000000000,
+   "increment()": 0,
+   "precioZCHF": 3.6512,
+   "incrementoZCHFporAccion": 0.0
+  },
+  "alan-frei": {
+   "contrato": "0x4d1b3c1e3306dd3adc0b5e07230348c19032ca3c",
+   "red": "mainnet",
+   "consultadoUtc": "2026-11-02T08:49:01Z",
+   "settings()": 3,
+   "getPrice()": 1602741880000000000,
+   "increment()": 800000000000,
+   "precioZCHF": 1.60274188,
+   "incrementoZCHFporAccion": 8e-07
+  },
+  "twiliner": {
+   "contrato": "0x395a0c4cc497b6a7a0efb44249b88a10dfa0838e",
+   "red": "optimism",
+   "consultadoUtc": "2026-11-02T08:49:02Z",
+   "settings()": 1,
+   "getPrice()": 3000000000000000000,
+   "increment()": 0,
+   "precioZCHF": 3.0,
+   "incrementoZCHFporAccion": 0.0
+  },
+  "fieldoo": {
+   "contrato": "0x81fa06b52803788685508d2997b472045d4f2504",
+   "red": "optimism",
+   "consultadoUtc": "2026-11-02T08:49:03Z",
+   "settings()": 1,
+   "getPrice()": 750052000000000000,
+   "increment()": 100000000000,
+   "precioZCHF": 0.750052,
+   "incrementoZCHFporAccion": 1e-07
+  }
+ }
+}

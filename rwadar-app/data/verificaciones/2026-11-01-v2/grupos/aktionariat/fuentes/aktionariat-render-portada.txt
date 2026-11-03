@@ -1,0 +1,127 @@
+URL: https://shares.aktionariat.com/
+Renderizado (Playwright Chromium, zona UTC): 2026-11-01T15:02:26Z
+
+English
+Sign In
+Aktionariat AG
+The End-to-End Ecosystem for Tokenized Equity
+Buy Shares
+Shareholder Chat
+More info: aktionariat.com
+About Aktionariat
+Fintech•Founded in 2020, Erlenbach, Switzerland
+Aktionariat is the leading Swiss tokenization provider. We help companies to manage shareholders, issue tokenized shares and enable investing & trading using blockchain technology. We offer a platform to modernize equity management while meeting legal and regulatory requirements.
+Draggable Aktionariat AG Shares (DAKS)
+Historic market prices and access to blockchain-powered secondary trading.
+Market Price
+Price history of Draggable Aktionariat AG Shares
+1W
+1M
+6M
+1Y
+All
+Price
+Volume
+Jan 2026
+Mar 2026
+May 2026
+Jul 2026
+Sep 2026
+Nov 2026
+2 CHF
+4 CHF
+6 CHF
+8 CHF
+Direct Investment
+Invest in Aktionariat AG by buying tokenized shares directly from the issuer at a fixed price.
+Direct Funding
+Bank Transfer
+Crypto Payment
+Buy Shares
+Secondary Trading
+Trade Aktionariat AG shares with other shareholders in secure on-chain transactions, instantly settled using Frankencoin (ZCHF).
+Real-time Trading
+Open Order Book
+Atomic Settlement
+Open Secondary Trading
+All Trades
+Date / Time	Type	Price	Amount	Total
+
+
+31 Oct 2026 / 11:56	Direct Investment	7.25 ZCHF	1 DAKS	7.25 ZCHF
+
+
+27 Oct 2026 / 15:39	Direct Investment	7.25 ZCHF	100 DAKS	725 ZCHF
+
+
+14 Oct 2026 / 03:01	Direct Investment	7.25 ZCHF	100 DAKS	725 ZCHF
+
+
+8 Oct 2026 / 21:06	Direct Investment	7.25 ZCHF	69 DAKS	500.25 ZCHF
+
+
+8 Oct 2026 / 05:56	Direct Investment	7.25 ZCHF	1 DAKS	7.25 ZCHF
+Page 1 of 247
+1
+2
+3
+4
+5
+…
+247
+Business Metrics
+Total value of tokenized shares
+6M
+1Y
+All
+Nov…
+Jan 2026
+Mar 2026
+May 2026
+Jul 2026
+Sep 2026
+Nov 2026
+0 CHF
+100'000'000 CHF
+200'000'000 CHF
+300'000'000 CHF
+400'000'000 CHF
+Your Shareholder Balance
+Overview of your registered and tokenized shares
+Register to View your Balance
+Community & Updates
+Follow DAKS for shareholder news, community discussions, and market insights.
+Telegram
+Real-time updates, Q&A and shareholder discussions
+Telegram
+X (Twitter)
+Live market news, insights and community highlights
+X
+LinkedIn
+Official announcements and professional investor updates
+LinkedIn
+Token Overview
+Key details and on-chain references for this token
+Current Price
+CHF 7.25
+Last trade • 31 Oct 2026, 11:56
+Total Shares
+1'800'000
+Market Cap
+CHF 12'928'657
+Tokenized Shares
+800'000 DAKS
+Shareholders
+369
+Legal Documents
+Registration Agreement
+Token Holder Agreement
+Token Contracts
+0x6f38…b200
+Aktionariat AG
+Terms of Use: This page is hosted by Aktionariat using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Aktionariat and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. Aktionariat assumes no responsibility for the accuracy of any of this data. All shareholder registration data is stored and processed in Switzerland by Aktionariat, which maintains the shareholder registry for Aktionariat. Shareholder registration data must by retained for ten years by law. Relevant shareholder registration data such as the current name and address is automatically synchronized with other issuers that use Aktionariat to maintain their shareholder registry.
+Direct Investment: The website may offer the possibility to directly buy securities issued by Aktionariat. Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act in Switzerland, or equivalent laws for visitors of other countries. Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus in order to continue the offering.
+Secondary Trading: The website may offer the possibility to openly trade securities issued by Aktionariat using blockchain-based smart contracts to settle trades between buyers and sellers without counterparty risk. As the operator of this website, Aktionariat may charge a fee on trades. Neither being a shareholder nor performing individual trades constitute an ongoing business relationship between the shareholder and the operator under the AML act. The secondary trading facilitated herein is considered a non-commercial trading facility operated by Aktionariat under the Financial Market Infrastructure Act and is therefore not subject to prudential supervision. As a consequence, buyers and sellers are not protected by the financial market conduct rules applicable to the trading on supervised venues.
+©2026 Aktionariat (site content) and Aktionariat (site template). All rights reserved.
+Terms of Service
+Privacy Policy

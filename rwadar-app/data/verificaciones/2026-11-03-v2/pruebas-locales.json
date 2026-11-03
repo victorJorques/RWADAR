@@ -1,0 +1,18 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-03T08:21:41.744Z",
+  "revisionId": "a4792f79-0f4d-361b-a14d-3eeb95bf7499",
+  "revisionAnterior": "f2be1f5e-2bfa-daa1-095b-c0b96e9206aa",
+  "resultado": "correcto",
+  "sha256AplicarYAprobar": "5b10bb378ca67ee23f32d4e67f578080a00b7bcfd99185cbc0fe747ce76f66b6",
+  "pruebas": [
+    "identidad SQL/fuentes",
+    "copias literales de radar, ofertas y manifiesto",
+    "solo cambia la documentación de aktionariat",
+    "sin DDL ni borrados",
+    "rechazo de revisión anterior incorrecta con rollback",
+    "idempotencia",
+    "vistas públicas idénticas salvo revisión y documentación",
+    "vigencia desde el 02/11 sin extender"
+  ]
+}

@@ -1,0 +1,114 @@
+{
+ "grupo": "spiko-prosegur",
+ "proveedor": "Spiko",
+ "plataformaSlug": "spiko",
+ "tipoExpediente": "candidata",
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Spiko",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+   "consultadoUtc": "2026-11-01T15:06:53Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Twenty First Capital",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+   "consultadoUtc": "2026-11-01T15:07:00Z"
+  }
+ ],
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "slug": "spiko-letras-del-tesoro-libra",
+ "entidadComercializadora": "Spiko Finance SAS (ACPR CIB 19183)",
+ "emisor": "SPIKO SICAV, compartimento SPIKO UK T-BILLS MONEY MARKET FUND; gestora Twenty First Capital",
+ "vehiculo": "Compartimento de SICAV UCITS, fondo monetario VNAV a corto plazo en GBP",
+ "token": "Acción GBP registrada en DLT (UKTBL)",
+ "derechoAdquirido": "Acciones de la clase GBP FR0014012MN7 (o EUR no cubierta FR0014012MO5)",
+ "jurisdiccion": "FR",
+ "identificador": "ISIN FR0014012MN7 / FR0014012MO5",
+ "moneda": "GBP",
+ "documentos": [
+  {
+   "titulo": "Spiko SICAV – Prospectus vEN",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+   "versionOFecha": "01/09/2026",
+   "paginas": 82,
+   "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35",
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV (IIC extranjeras)",
+   "entidad": "SPIKO SICAV",
+   "numero": "2380 (30/01/2026)",
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+   "alcance": "Registro de la SICAV; la vista pública no desglosa compartimentos ni clases",
+   "consultadoUtc": "2026-11-01T14:59:43Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "accesoEspana",
+   "literal": "🇪🇸 Spain ... ❌ (T-Bills Pound)",
+   "dato": "excluido",
+   "fuentePrimaria": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+   "localizador": "docs.spiko.io «Fund Availability», 23/10/2026",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-01T15:03:32Z",
+   "alcanceYLimites": "Solo Francia tiene ✅ en T-Bills Pound. Las clases creadas después del registro necesitan registro propio.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "documentos",
+   "literal": "UKTBL KID es: .../EN/KID_UKTBL_EN.pdf",
+   "dato": "Sin KID en español",
+   "fuentePrimaria": "https://public-api.spiko.io/v0/legal-documents/",
+   "localizador": "API /legal-documents/",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T13:12:32Z",
+   "alcanceYLimites": "La API remite al KID en inglés también para el idioma español.",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Misma SICAV UCITS; compartimento no consultado en GECO."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple",
+   "nota": "Activo en la API."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "No distribuido en España según el emisor."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "KID no leído."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "excluido",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": "1 GBP",
+  "supervisorVerificado": null,
+  "documentacionClara": "parcial",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Misma gestora y SICAV que las fichas en euros y dólares.",
+  "porQueNo": "El emisor no lo distribuye en España."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "España marcada ❌ para T-Bills Pound en la tabla de distribución del emisor (23/10/2026).",
+ "bloqueos": [],
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:12:31Z",
+  "finUtc": "2026-11-02T08:45:27Z"
+ }
+}

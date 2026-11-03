@@ -1,0 +1,221 @@
+
+
+=== PAGE 1 ===
+
+ 
+Stand: 04.08.2024       Seite 1 
+Basisinformationsblatt 
+Zweck 
+Dieses Informationsblatt stellt Ihnen wesentliche Informationen über dieses Anlageprodukt zur Verfügung. Es handelt sich nicht um Wer-
+bematerial. Diese Informationen sind gesetzlich vorgeschrieben, um Ihnen dabei zu helfen, die Art, das Risiko, die Kosten sowie die mögli-
+chen Gewinne und Verluste dieses Produkts zu verstehen, und Ihnen dabei zu helfen, es mit anderen Produkten zu vergleichen. 
+Produkt 
+Name des Produktes: Tokenisierte Genussscheine in Bezug auf die GREEMER Anlage auf dem Projekt " Parkhaus Q2" in der Gemeinde 
+St. Pölten in Niederösterreich, bestehend aus einer Photovoltaik Anlage mit 113kWp Leistung, einer HPC Schnelladestation mit 320 KW 
+Leistung und 28 AC-Wallboxen (die "GREEMER-Anlage") 
+Name des Produktherstellers: Greeninfra G.m.b.H., ISIN:  AT0000A3E842 
+Weitere Informationen erhalten Sie unter office@greeninfra.at 
+Für den PRIIP-Hersteller in Sachen Basisinformationsblatt zuständige Behörde: Finanzmarktaufsichtsbehörde (FMA) - Österreich 
+Erstellungsdatum des Basisinformationsblatts: 14.07.2024 
+Sie sind im Begriff, ein Produkt zu erwerben, das nicht einfach ist und schwer zu verstehen sein kann. 
+Um welche Art von Produkt handelt es sich? 
+Art: 	Bei diesem Produkt handelt es sich um ein digitales und verbrieftes übertragbares Wertpapier in Form eines Genussscheins ("Token") 
+- Wertpapier sui generis, und Zahlungsansprüche gegen den Produkthersteller, deren Höhe von Einnahmen des Produktherstellers aus der 
+Bewirtschaftung der oben angegebenen GREEMER-Anlage abhängt, sowie Mitspracherechte betreffend die Verwaltung der Immobilie ge-
+währt. Die Token werden auf Basis des Blockchain-Netzwerkes "Brickprotocol" ausgegeben und können auf dem Marktplatz der "GREE-
+MER-App" und der „Brickwise App“ gehandelt werden. Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwort-
+lich durch den Anleger. Die Investitionsbedingungen des Produkts unterliegen dem Recht der Republik Österreich.  
+Das Produkt hat eine Laufzeit von 15 Jahren ("endfällig"). Es bestehen außerdem unabdingbare gesetzliche Kündigungsrechte. 
+Der Nennbetrag je Token (Produkt) beträgt EUR 507,62 die Ausgabe erfolgt zu 100% des Nennbetrages und der Gesamtbetrag des Pro-
+dukts beträgt bis zu EUR 233.505,20. 
+Ziele: Ziele des Produktes sind,  
+• Refinanzierung (Rückführung der Fremdkapitalmittel für die Errichtung) der GREEMER-Anlage durch den Produkthersteller, 
+• Gewährung bestimmter vertraglicher Zahlungsansprüche zu den vorab vom Produkthersteller festgelegten Bedingungen und damit 
+die Teilhabe am wirtschaftlichen Erfolg einer vom Produkthersteller errichteten Anlage zugunsten des Anlegers und  
+Anspruch auf Teilhabe an den Überschüssen: Jeder Token vermittelt dem Anleger einen Zahlungsanspruch gegen den Produkthersteller, 
+dessen Höhe sich nach dem auf einen Token entfallenden Anteil an 40 % des Jahresüberschusses aus dem Absatz des von der GREEMER-
+Anlage erzeugten Stroms (der „Monatliche Netto-Überschuss“), bemisst. Der Netto-Überschuss wird wie folgt berechnet: (Monatlich Er-
+wirtschaftete Umsatzerlöse + Monatliche sonstige Erträgnisse - Monatliche Rückstellung für die geplante Rückzahlung - Monatliche Be-
+triebliche Aufwendungen - Verlustvorträge (jeweils aliquot)) * 0,40. Der Anspruch wird für jeden Kalendermonat ermittelt und ist je Kalen-
+dermonat nachschüssig zur Zahlung fällig. Die weiteren Einzelheiten sind in den Investitionsbedingungen abschließend geregelt. 
+Mitspracherechte: Jeder Token vermittelt dem Anleger einen Anspruch auf Teilnahme an Beschlussfassungen der Tokeninhaber betref-
+fend die Verwaltung der GREEMER-Anlage und der Produkthersteller ist verpflichtet, die Beschlüsse der Tokeninhaber bei der Verwaltung 
+und ggf. Veräußerung der GREEMER Anlage umzusetzen. Jeder Token vermittelt eine Stimme bei den Beschlussfassungen und Beschlüsse 
+werden grundsätzlich mit der einfachen Mehrheit der abgegebenen Stimmen gefasst. Beschlussfassungen erfolgen digital und die Stim-
+men können über die "GREEMER-App" und die „Brickwise App“ abgegeben werden. Die weiteren Einzelheiten betreffend die Verwaltungs-
+rechte und deren Ausübung sind abschließend in den Investitionsbedingungen geregelt. 
+Rückzahlungsanspruch: Jeder Token vermittelt dem Investor einen qualifiziert nachrangigen Rückzahlungsanspruch zum Endfälligkeits-
+tag. Dieser Rückzahlungsanspruch ist qualifiziert nachrangig gemäß Ziffer 9 der Investitionsbedingungen. Der Rückzahlungsbetrag ent-
+spricht dem Ausgabepreis (Nominale) je tokenisiertem Wertpapier. Nach erfolgter Rückzahlung des Rückzahlungsbetrages erlischt der To-
+ken und somit auch der Miteigentumsanteil des Investors an der Sammelurkunde. 
+Nachrangigkeit: Alle Ansprüche des Investors sind gegenüber Gläubigern aus Fremdfinanzierungen im Sinne des § 67 Abs 3 Insolvenz-
+rechtsordnung qualifiziert nachrangig, jedoch gegenüber allen sonstigen Gläubigern gleichgestellt. Gemäß den Investitionsbedingungen 
+erklärt jeder Investor unwiderruflich, dass er sämtliche vermögensrechtliche Forderungen aus den Investitionsbedingungen, soweit nicht 
+zwingende gesetzliche Bestimmungen etwas anderes vorsehen, (i) im Fall einer bestehenden oder durch diese Forderungen entstehenden 
+Zahlungsunfähigkeit (§ 66 IO); (ii) im Fall eines bestehenden oder durch diese Forderungen entstehenden negativen Eigenkapitals (§ 225 
+Abs 1 UGB); (iii) im Fall der bestehenden oder durch diese Forderungen entstehenden Unterschreitung einer Eigenmittelquote von 8 % (§ 
+23 Unternehmensreorganisationsgesetz - "URG" idgF); ebenso wie (iv) im Fall der Liquidation, erst nach Befriedigung aller anderen Gläubi-
+ger aus Fremdfinanzierungen begehrt und wegen seiner vermögensrechtlichen Forderungen kein Insolvenzverfahren eröffnet zu werden 
+braucht 
+Übertragung/Handelbarkeit: Die Übertragung des Produktes ist nur mit Zustimmung des Produktherstellers zulässig. Die Zustimmung 
+wird vorab erteilt, wenn die in den Investitionsbedingungen festgelegten Voraussetzungen gegeben sind. Die Token sind in den Handel auf 
+dem öffentlich zugänglichen Marktplatz in der "GREEMER-App" und der „Brickwise App“ einbezogen. 
+Übersicht: 
+Basiswert: GREEMER Anlage auf dem Projekt Parkhaus Q2 in der Gemeinde St. Pölten, Niederösterreich, bestehend aus 
+einer Photovoltaik Anlage mit 113kWp Leistung, HPC Ladestation und AC-Wallboxen. 
+Nennbetrag:  EUR 233.505,62 
+Emissionstag: 15.08.2024 
+Beendigungszeitpunkt: 31.12.2039 (15 Jahre) ("endfällig" / Endfälligkeitstag) 
+  
+05.09.2024
+31.10.2024
+
+=== PAGE 2 ===
+
+ 
+Stand: 04.08.2024       Seite 2 
+Kleinanleger-Zielgruppe: Das Produkt richtet sich an Privatkunden (doch sind auch professionelle Kunden und geeignete Gegenparteien 
+nicht vom Erwerb des Produkts ausgeschlossen), die das Ziel Vermögensbildung oder Vermögensoptimierung mittels mittelbarer Beteili-
+gung an der wirtschaftlichen Entwicklung einer Energieerzeugungsanlage verfolgen und bereit sind, die technischen Anforderung für den 
+Erwerb, die Verwaltung und Übertragung der Token zu erfüllen. Die Anleger sollen einen langfristigen Anlagehorizont verfolgen und einen 
+etwaigen finanziellen Verlust bis hin zum vollständigen Verlust des eingesetzten Kapitals tragen können. Das Produkt zielt auf Anleger mit 
+erweiterten Kenntnissen und Erfahrungen mit Finanzprodukten und Verwaltung von Energieerzeugungsanlage ab und ist nicht geeignet 
+für Personen, die Wert auf einen Kapitalschutz legen.   
+Welche Risiken bestehen und was könnte ich im Gegenzug dazu bekommen?  
+ 
+1  2  3  4  5  6  7 
+ ◄••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••► 
+Niedrigeres Risiko                                                                                            Höheres 
+Risiko 
+Dieser Risikoindikator beruht auf der Produktart und für diese Produktart beträgt der gesetzlich festgelegte Risikoindikator 6. 
+Wenn Sie die Anlage frühzeitig auflösen, kann das tatsächliche Risiko erheblich davon abweichen und Sie erhalten unter Um-
+ständen weniger zurück. Es kann sein, dass Sie Ihr Produkt nicht ohne Weiteres veräußern können oder dass Sie es zu einem 
+Preis veräußern müssen, der den Betrag,  
+den Sie zurückerhalten, erheblich schmälert. Der Gesamtrisikoindikator hilft Ihnen, das mit diesem Produkt verbundene Risiko im Vergleich 
+zu anderen Produkten einzuschätzen. Er zeigt, wie hoch die Wahrscheinlichkeit ist, dass Sie bei diesem Produkt Geld verlieren, weil sich die 
+Märkte in einer bestimmten Weise entwickeln oder wir nicht in der Lage sind, Sie auszubezahlen. Wir haben dieses Produkt auf einer Skala 
+von 1 bis 7 in die Risikoklasse 6 eingestuft, wobei 6 der zweithöchsten Risikoklasse entspricht. Das Risiko potenzieller Verluste aus der 
+künftigen Wertentwicklung wird als hoch eingestuft. Bei ungünstigen Marktbedingungen ist es sehr wahrscheinlich, dass unsere Fähigkeit 
+beeinträchtigt wird, Sie auszuzahlen. Die Veräußerbarkeit des Produkts ist eingeschränkt, da das Produkt nicht für den Handel an einem 
+organsierten Markt zugelassen ist. Dieses Produkt beinhaltet keinen Schutz vor künftigen Marktentwicklungen, sodass Sie das angelegte 
+Kapital ganz oder teilweise verlieren könnten. Wenn wir Ihnen nicht das zahlen können, was Ihnen zusteht, könnten Sie das gesamte ange-
+legte Kapital verlieren. Wir weisen darauf hin, dass die Geschäftsführung der Emittentin durch einen Gesellschafter erfolgt. Aufgrund des-
+sen kann es unter Umständen zu Interessenskonflikten kommen, die direkte oder indirekte wirtschaftliche Vorteile für die Emittentin zur 
+Folge haben können. 
+Performance-Szenarien 
+Einmalige Anlage von EUR 10.000,- Haltedauer 
+1 Jahr 
+Haltedauer  
+5 Jahre 
+15 Jahre  
+(empfohlene Haltedauer) 
+Stressszenario 
+Was Sie nach Abzug der 
+Kosten erhalten könnten   EUR  9.305 EUR 11.692 EUR 17.2254 
+Jährliche Durchschnittsren-
+dite* -6,95% 3,38% 4,84% 
+Pessimistisches Szena-
+rio 
+Was Sie nach Abzug der 
+Kosten erhalten könnten   EUR  9.305 EUR 11.752 EUR 17.869 
+Jährliche Durchschnittsren-
+dite*  -6,95% 3,50% 5,25% 
+Mittleres  
+Szenario 
+Was Sie nach Abzug der 
+Kosten erhalten könnten   EUR  9.305 EUR 11.877 EUR 19.272  
+Jährliche Durchschnittsren-
+dite*  -6,95% 3,75% 6,18% 
+Optimistisches Szena-
+rio 
+Was Sie nach Abzug der 
+Kosten erhalten könnten   EUR  9.305 EUR 11.909 EUR 19.663 
+Jährliche Durchschnittsren-
+dite*  -6,95% 3,82% 6,44% 
+*Die jährliche Durchschnittsrendite wurde exponentiell ermittelt. 
+Diese Tabelle zeigt, wie viel Sie in den nächsten 15 Jahren unter verschiedenen Szenarien zurückerhalten könnten, wenn Sie zum Zeitpunkt 
+der erstmaligen Ausgabe EUR 10.000 und zu einem Ausgabebetrag von EUR 507,62 je Token anlegen. Hinsichtlich der Zahlungen wird von 
+unterschiedlichen Überschüssen aus Umsatzerlösen und unterschiedlichen Ausgaben für die Verwaltung der GREEMER-Anlage ausgegan-
+gen. Die Veräußerung der GREEMER-Anlage sowie eine Wertentwicklung werden nicht berücksichtigt. Im „Mittleren Szenario“ wird ange-
+nommen, dass die zu erwartende Rendite bei 6,18% pro Jahr liegt. Im „Optimistischen Szenario“ wird angenommen, dass die Rendite und 
+Wertentwicklung pro Jahr jeweils dem Durchschnitt entsprechen und die Verwaltungskosten den Annahmen entsprechen. Im „Pessimis-
+tischen Szenario“ wird angenommen, dass die Rendite 5,25% pro Jahr liegt und die Verwaltungskosten den Annahmen im mittleren Sze-
+nario entsprechen. Im „Stressszenario“ wird unterstellt, dass die Rendite bei 4,84% pro Jahr liegt und die Verwaltungskosten den Annah-
+men im mittleren Szenario entsprechen.   
+Die dargestellten Szenarien zeigen, wie sich Ihre Anlage entwickeln könnte. Sie können sie mit den Szenarien für andere Produkte verglei-
+chen. Die dargestellten Szenarien entsprechen einer Schätzung der künftigen Wertentwicklung aufgrund früherer Wertänderungen derar-
+tiger Investments; sie sind kein exakter Indikator. Wie viel Sie tatsächlich erhalten, hängt davon ab, wie sich der Markt entwickelt und wie 
+lange Sie das Produkt halten. Das Stressszenario zeigt, was Sie im Fall extremer Marktbedingungen zurückerhalten und berücksichtigt 
+nicht den Fall, dass wir womöglich nicht in der Lage sind, die Auszahlung vorzunehmen. Dieses Produkt kann nur über den öffentlich zu-
+gänglichen Marktplatz in der "GREEMER-App" und der „Brickwise App“ veräußert werden. Deshalb lässt sich schwer abschätzen, wie viel 
+
+
+=== PAGE 3 ===
+
+ 
+Stand: 04.08.2024       Seite 3 
+Sie erhalten, wenn Sie es vor Ende der empfohlenen Haltedauer/Fälligkeit veräußern. Es kann sein, dass Sie es nicht vorzeitig veräußern 
+können oder dass Ihnen bei der Veräußerung ein hoher Verlust entsteht. In den angeführten Zahlen sind sämtliche Kosten des Produkts 
+selbst enthalten, sowie die Kosten der Vermittlerstelle. Bei den angeführten Zahlen ist Ihre persönliche steuerliche Situation nicht berück-
+sichtigt, die sich ebenfalls darauf auswirken kann, wie viel Sie zurückerhalten. 
+Was geschieht, wenn der Produkthersteller nicht in der Lage ist, die Auszahlung vorzunehmen? 
+Das Produkt unterliegt keinerlei Einlagensicherung oder Deckung nach einem Anlegerschutzsystem. Jeder Anleger ist deshalb dem tat-
+sächlichen Risiko ausgesetzt, dass der Produkthersteller seine Pflichten aus den Investitionsbedingungen nicht oder nicht vollständig er-
+füllt. In Bezug auf Forderungen (d.h. Zahlungsansprüche des Anlegers) bedeutet dies, dass Forderungen trotz Fälligkeit nicht realisiert 
+und/oder nicht dauerhaft rechtlich bestandskräftig durchgesetzt werden können. Dies gilt insbesondere für den Fall der Eröffnung eines 
+Insolvenzverfahrens über das Vermögen des Produktherstellers. Es besteht die tatsächliche Möglichkeit eines Totalverlusts des eingesetz-
+ten Kapitals und des Ausbleibens erwarteter Zahlungen und vergeblicher Aufwendungen für die rechtliche/gerichtliche Durchsetzung von 
+Ansprüchen. 
+Welche Kosten entstehen? 
+Kosten im Zeitverlauf 
+Die Renditeminderung (Reduction in Yield — RIY) zeigt, wie sich die von Ihnen gezahlten Gesamtkosten auf die Anlagerendite, die Sie er-
+halten könnten, auswirken. In den Gesamtkosten sind einmalige, laufende und zusätzliche Kosten berücksichtigt. Die hier ausgewiesenen 
+Beträge entsprechen den kumulierten Kosten des Produkts bei drei verschiedenen Haltedauern. Bei den angegebenen Zahlen wird davon 
+ausgegangen, dass Sie EUR 10.000 anlegen. Die Zahlen sind Schätzungen und können in der Zukunft anders ausfallen. Die Person, die Ihnen 
+dieses Produkt verkauft oder Sie dazu berät, kann Ihnen weitere Kosten in Rechnung stellen. Sollte dies der Fall sein, informiert Sie die 
+Person über diese Kosten und zeigt Ihnen, wie sich sämtliche Kosten im Zeitverlauf auf Ihre Anlage auswirken werden. 
+Einmalige Anlage EUR 10.000,- 
+Szenarien 
+Wenn Sie nach  
+1 Jahr einlösen 
+Wenn Sie nach  
+5 Jahren einlösen 
+Wenn Sie nach 15 Jahren (empfoh-
+lene Haltedauer) einlösen 
+Gesamtkosten EUR 1.306,46   EUR 1.306,46   EUR  1.306,46  
+Auswirkungen auf die Rendite (RIY) pro Jahr 13,06% 2,61% 0,87% 
+Zusammenfassung der Kosten 
+Aus der nachfolgenden Tabelle geht Folgendes hervor:  
+• wie sich die verschiedenen Arten von Kosten pro Jahr auf die Rendite, die Sie über die empfohlene Haltedauer von 15 Jahren er-
+halten könnten, auswirken;  
+• was die verschiedenen Kostenkategorien beinhalten. 
+Diese Tabelle zeigt die Auswirkungen auf die Rendite pro Jahr 
+Einmalige 
+Kosten 
+Einstiegskosten 0,77 %  Auswirkung der im Preis bereits inbegriffenen Kosten. Die Kosten für die 
+Vermittlung Ihres Produkts sind darin inbegriffen.  
+Ausstiegskosten 0,10 % Auswirkung der Kosten, die anfallen, wenn Sie aus Ihrer Anlage aussteigen 
+Laufende 
+Kosten 
+Portfolio-Transaktionskosten 0,00 % Die Auswirkungen der Kosten, die dafür anfallen, dass wir für das Produkt 
+zugrunde liegende Anlagen kaufen und verkaufen. 
+Sonstige laufenden Kosten 0,00 % Auswirkung der Kosten, die wir Ihnen jährlich für die Anlageverwaltung ab-
+ziehen. 
+Zusätzliche 
+Kosten 
+Erfolgsgebühr 0,00 % Auswirkungen der Erfolgsgebühr. Eine solche ist nicht vereinbart. 
+Carried Interest 0,00 % Auswirkungen von Carried Interests. Solche sind nicht vereinbart.  
+Wie lange sollte ich die Anlage halten, und kann ich vorzeitig Geld entnehmen? 
+Empfohlene Haltedauer: 15 Jahre  
+Es wird eine Haltedauer für das Produkt von 15 Jahren empfohlen. Die Investitionsbedingungen sehen eine Laufzeit von 15 Jahren vor. Davor 
+ist eine ordentliche Kündigung nicht möglich. Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt hiervon für beide 
+Parteien unberührt. 
+Wie kann ich mich beschweren?  
+Bei Beschwerden bezüglich des Vermittlungsprozesses kontaktieren Sie bitte die diesbezügliche Ansprechperson Ihres Vermittlers. Be-
+schwerden bezüglich des Produktes oder des Inhalts des Dokuments richten Sie bitte an Greeninfra G.m.b.H, Gregor-Mendel-Straße 2-4/1/2, 
+1180 Wien. Sie können auch gerne eine E-Mail an office@greeninfra.at senden.. 
+Sonstige zweckdienliche Angaben 
+Um die vollständigen Informationen zu diesem übertragbaren Wertpapier - insbesondere zu den Produkteigenschaften und den mit einem 
+Investment verbundenen Risiken - zu erhalten, sollten die verbindlichen Investitionsbedingungen sowie gegebenenfalls der Basisprospekt 
+samt Nachträgen gelesen werden. Sämtliche Dokumente können beim Produkthersteller, Greeninfra GmbH, angefordert werden. 
+ 

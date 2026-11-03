@@ -1,0 +1,433 @@
+{
+ "grupo": "spiko-prosegur",
+ "nota": "Horas reales de consulta en UTC. Las filas sin archivo se leyeron con WebFetch o fallaron.",
+ "consultas": [
+  {
+   "url": "https://data.spiko.io/eutbl/",
+   "archivo": "fuentes/spiko-data-eutbl.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:11:42Z",
+   "bytes": 50787,
+   "sha256": "9d6954c5785f6d14a6601ce2835ce4204980efa8fc89347b50f855cc49cd2a1c"
+  },
+  {
+   "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+   "archivo": "fuentes/spiko-web-es-eutbl.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:11:42Z",
+   "bytes": 215300,
+   "sha256": "d83df57d51a882158619844f15ebb3e7e90b65bccbc33080462c162d8463bdec"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/product_overview/tbills/legal_documentation/",
+   "archivo": "fuentes/spiko-docs-legal.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:11:43Z",
+   "bytes": 29553,
+   "sha256": "c964e5873b6c6adb69d533a3d5a91a68fbac511467de214631825158bbf356b3"
+  },
+  {
+   "url": "https://www.prosegurcrypto.com/digital-gold",
+   "archivo": "fuentes/prosegur-digital-gold.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:11:43Z",
+   "bytes": 75252,
+   "sha256": "613d4a7a6b7b33ca82f37fc88130e9bce8ecaa65f5fbac2c7bdc4003ed718ca7"
+  },
+  {
+   "url": "https://app.prosegurdigitalgold.com/",
+   "archivo": "fuentes/prosegur-app.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:11:47Z",
+   "bytes": 11832,
+   "sha256": "3dfc73ef92ab275d4bb778a3951861b1dea1e358ebd3a27e54f38ab918d9a95b"
+  },
+  {
+   "url": "https://prosegurdigitalgold.com/transparency",
+   "archivo": "fuentes/prosegur-transparency.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:11:48Z",
+   "bytes": 27715,
+   "sha256": "7f540f8769288c5e8b027e643c3d70e8734241cbe6817a6b772e83f63a8163ca"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/docs/openapi.json",
+   "archivo": "fuentes/spiko-public-api-openapi.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:12:09Z",
+   "bytes": 59140,
+   "sha256": "0bbc4437b4f5863031289ff29807b893f5c529ffb396bb13dcb8554e41c1298d"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/funds/",
+   "archivo": "fuentes/spiko-api-funds.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:12:31Z",
+   "bytes": 7292,
+   "sha256": "2c29c2759b13d029e06df6a171651641c875a47d13bdf59800130cd9a498dbe6"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/",
+   "archivo": "fuentes/spiko-api-share-classes.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:12:31Z",
+   "bytes": 25434,
+   "sha256": "54b1a6bda52819398199e979fdda052a8c9f9e4b81f2a50a361b56382de9cc82"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/legal-documents/",
+   "archivo": "fuentes/spiko-api-legal-documents.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:12:32Z",
+   "bytes": 9109,
+   "sha256": "98a5fe8d4cd528ef7bfb1ef8fd714a5faa73f9e2e1e9bdd815a79a8e0ffe01c9"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+   "archivo": "fuentes/spiko-api-eutbl-yield.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:12:32Z",
+   "bytes": 259,
+   "sha256": "bcabc444226d7d0ec90d975430c9fb0a4b17a5f55755eede47616e6a4197bb6f"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+   "archivo": "fuentes/spiko-api-eutbl-nav-latest.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:12:33Z",
+   "bytes": 218,
+   "sha256": "d1fcd22f2716f64d064e0c1bd4e4d847005fac1f6b3a791e40a9e6786d3d8445"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/totals",
+   "archivo": "fuentes/spiko-api-eutbl-totals.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:12:33Z",
+   "bytes": 476,
+   "sha256": "150cb553ba7d24188c06f36a68b32d347498a5bd363113b52730e1d698ca801e"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL?startDay=2026-09-20",
+   "archivo": "fuentes/spiko-api-eutbl-nav-historico.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T13:12:50Z",
+   "bytes": 6564,
+   "sha256": "c561577792aee88cc60d151e47a3647d06fb57e3cfdc2779b110b78de8eea63f"
+  },
+  {
+   "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+   "archivo": "fuentes/KID_EUTBL_ES.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T14:58:23Z",
+   "bytes": 130290,
+   "sha256": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325"
+  },
+  {
+   "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+   "archivo": "fuentes/KID_USTBL_ES.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T14:58:24Z",
+   "bytes": 146264,
+   "sha256": "c1ce5400bf18617ef34925eed121335ca4bcd9b3d4a11f265f80ffce5a7e92f6"
+  },
+  {
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+   "archivo": "fuentes/Prospectus_Spiko_SICAV_EN.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T14:58:25Z",
+   "bytes": 1734485,
+   "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35"
+  },
+  {
+   "url": "https://cdn.spiko.finance/legal_docs/ES/Prospectus_Spiko_SICAV_ES.pdf",
+   "archivo": "fuentes/Prospectus_Spiko_SICAV_ES.403.xml",
+   "http": 403,
+   "consultadoUtc": "2026-11-01T14:58:26Z",
+   "bytes": 111,
+   "sha256": "a824bc7739e226e1b40ea0f8c4e4f4c6f796fc3b4abfa6e9abe3bd119a30d938",
+   "nota": "403 AccessDenied (S3); folleto en español no leído"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J",
+   "archivo": "fuentes/cnmv-iicextranjera-spiko-sicav.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T14:59:21Z",
+   "bytes": 151915,
+   "sha256": "8fb7b63911e3835a492f01e068af0924bfe6b0b785eb96c0d4ca8a9bcc81e973"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+   "archivo": "fuentes/cnmv-spiko-sicav-datos-generales.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T14:59:43Z",
+   "bytes": 44205,
+   "sha256": "1a47309cdd02661e864d239660e360ca6d3f85ab531d0d6aa75584ff3635534e",
+   "metodo": "playwright-chromium innerText"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0401205J&vista=18&lang=es",
+   "archivo": "fuentes/cnmv-spiko-sicav-comercializadoras.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T14:59:56Z",
+   "bytes": 44596,
+   "sha256": "fc7abe9e50253042caa0e635d803ce4920f8f5aed74c7346cb9dbd32bd510883",
+   "metodo": "playwright-chromium innerText"
+  },
+  {
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=siren%3D%22980659585%22",
+   "archivo": "fuentes/regafi-spiko-finance-entite.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:00:13Z",
+   "bytes": 816,
+   "sha256": "62ab887b074058421fd6aaf90cc82190b9ed356166fbcea878a8b96dbf2dbb26"
+  },
+  {
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+   "archivo": "fuentes/regafi-spiko-finance-pasaporte-es.json",
+   "http": 0,
+   "consultadoUtc": "2026-11-01T15:00:14Z",
+   "bytes": 0,
+   "sha256": "",
+   "nota": "curl: connection reset por el proxy; sin archivo"
+  },
+  {
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+   "archivo": "fuentes/regafi-spiko-finance-pasaporte-es.json",
+   "http": 0,
+   "consultadoUtc": "2026-11-01T15:00:40Z",
+   "bytes": 0,
+   "sha256": "",
+   "nota": "curl: connection reset por el proxy; sin archivo"
+  },
+  {
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+   "archivo": null,
+   "http": null,
+   "consultadoUtc": "2026-11-01T15:01:30Z",
+   "bytes": null,
+   "sha256": null,
+   "metodo": "WebFetch (curl reiniciado por el proxy 3 veces: connection reset)",
+   "resultado": "total_count 1; ESPAGNE; Libre prestation de services; date_debut 2026-01-08; A1/C3 true desde 2026-01-08"
+  },
+  {
+   "url": "https://geco.amf-france.org/produit-d-epargne/c79399",
+   "archivo": "fuentes/amf-geco-eutbl-c79399.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:01:33Z",
+   "bytes": 4414,
+   "sha256": "c67ea04258bfa1a4e2cc95226167ea28863590d25d71630ceedec4462f72cc70",
+   "metodo": "playwright-chromium innerText"
+  },
+  {
+   "url": "https://geco.amf-france.org/produit-d-epargne/c79398",
+   "archivo": "fuentes/amf-geco-c79398.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:01:51Z",
+   "bytes": 4495,
+   "sha256": "65785e45dbee443b1c8b464df5e825bb69dd388405a5454d91ac5c43da246daa",
+   "metodo": "playwright-chromium innerText"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+   "archivo": "fuentes/spiko-api-ustbl-yield.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:02:10Z",
+   "bytes": 259,
+   "sha256": "2a80345cbe001aeb2ccbb032e6d3d554f24b85562dea95b9e300715feffcd62b"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+   "archivo": "fuentes/spiko-api-ustbl-nav-latest.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:02:10Z",
+   "bytes": 218,
+   "sha256": "73f3b9e4bd80548daba43dfab8ce82a2309aed69c769866aefca93254aae8eab"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/USTBL/totals",
+   "archivo": "fuentes/spiko-api-ustbl-totals.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:02:11Z",
+   "bytes": 474,
+   "sha256": "bde56aee6e60bac281727fc9bb3c70a04537724d03e963db00a616586b45f831"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL?startDay=2026-09-25",
+   "archivo": "fuentes/spiko-api-ustbl-nav-historico.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:02:11Z",
+   "bytes": 5257,
+   "sha256": "6e820afa8cc53737d957229c527b5034b069bafeeb56ee378d2bd482b13b498d"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/eurUSTBL/yield",
+   "archivo": "fuentes/spiko-api-eurustbl-yield.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:02:12Z",
+   "bytes": 260,
+   "sha256": "479db5b46202f3f9e640acc3919d45c368c9cf7ae6fa4f1a03dae930122e9a98"
+  },
+  {
+   "url": "https://data.spiko.io/ustbl/",
+   "archivo": "fuentes/spiko-data-ustbl.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:02:12Z",
+   "bytes": 50939,
+   "sha256": "08273ed89e72569eb94c3f539b9960fffabcc2ef0327cc013b1c5ecfca234b4a"
+  },
+  {
+   "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-dolar",
+   "archivo": null,
+   "http": 404,
+   "nota": "404 (URL /es/spiko-letras-del-tesoro-dolar); archivo no conservado; la URL correcta es /es/spiko-letras-del-tesoro-dollar (fila posterior)",
+   "consultadoUtc": "2026-11-01T15:02:12Z",
+   "bytes": 20737,
+   "sha256": "5bf7552162d11da412b20787537d8779c2c33af4e20df4e64f323ff12fc3a121"
+  },
+  {
+   "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+   "archivo": "fuentes/spiko-web-es-ustbl.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:02:32Z",
+   "bytes": 222885,
+   "sha256": "6b5a6f982ae4090615f9c5d990e23cafefa620e48b9e9edb8b69b4d3c10947c7"
+  },
+  {
+   "url": "https://www.spiko.io/es/usos-principales/particulares",
+   "archivo": "fuentes/spiko-web-es-particulares.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:02:33Z",
+   "bytes": 182826,
+   "sha256": "9a69bbe4c446b624c0fee835ba2ad8edfc0bae3e9fdd5f27f1ca1b3120caf392"
+  },
+  {
+   "url": "https://support.spiko.io/hc/en-us/articles/45293337468177-Geographic-Restrictions",
+   "archivo": "fuentes/spiko-support-geographic-restrictions.403.html",
+   "http": 403,
+   "consultadoUtc": "2026-11-01T15:02:44Z",
+   "bytes": 5841,
+   "sha256": "0ef4cecf93358c58676b6eb41bbeeae2b005e17baf3ef5873517b173a6c400b3",
+   "nota": "403 con desafío de Cloudflare («Just a moment...»); contenido no leído"
+  },
+  {
+   "url": "https://support.spiko.io/hc/en-us/articles/45293573063057-Terms-of-Use",
+   "archivo": "fuentes/spiko-support-terms-of-use.403.html",
+   "http": 403,
+   "consultadoUtc": "2026-11-01T15:02:44Z",
+   "bytes": 5787,
+   "sha256": "876e4f85e4398342a572ac4e0edebf0af29e716e6e039448154d8871541857af",
+   "nota": "403 con desafío de Cloudflare («Just a moment...»); contenido no leído"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+   "archivo": "fuentes/spiko-docs-product_overview-fund_availability.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:03:32Z",
+   "bytes": 32104,
+   "sha256": "fab2aa90df069dafd9b6bff59acb56b6559e55b124271d63c9a7466c21a54cb8"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/product_overview/onboarding_restrictions",
+   "archivo": "fuentes/spiko-docs-product_overview-onboarding_restrictions.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:03:32Z",
+   "bytes": 24159,
+   "sha256": "dd2a7db3f490eddeb0579bed17fc1ab68391d2c849823046eaaaee3128060a69"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/account_management/deposits_withdrawals",
+   "archivo": "fuentes/spiko-docs-account_management-deposits_withdrawals.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:03:33Z",
+   "bytes": 30181,
+   "sha256": "49eb8ef2792d1fb09fff94bd51735759806a23ff56588d0303f2250aec610dd4"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/account_management/currency_exchange",
+   "archivo": "fuentes/spiko-docs-account_management-currency_exchange.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:03:33Z",
+   "bytes": 35057,
+   "sha256": "feae3ef48021db3593f4663b53afc0a8127deef0e0dd51f58baa39a40f9ec7f0"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/product_overview/tbills/fees",
+   "archivo": "fuentes/spiko-docs-product_overview-tbills-fees.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:03:33Z",
+   "bytes": 26194,
+   "sha256": "82395ae5202ae8c065d2f706d9acd0d24ad597d851c6df7f5f63be8685ddca92"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/product_overview/tbills/safeguarding",
+   "archivo": "fuentes/spiko-docs-product_overview-tbills-safeguarding.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:03:34Z",
+   "bytes": 29626,
+   "sha256": "f33ff0130820efb4e1eaf8ec299d9257a9547134b9ccf5dcd9f1396c17fcd963"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/legal_documentation/terms_of_use",
+   "archivo": "fuentes/spiko-docs-legal_documentation-terms_of_use.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:03:34Z",
+   "bytes": 24270,
+   "sha256": "bbd642fae872269e4d0f11d89bc1b6bfbf194e18b25a05a1b3be3f324bbd81ee"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/legal_documentation/regulatory_information",
+   "archivo": "fuentes/spiko-docs-legal_documentation-regulatory_information.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:03:35Z",
+   "bytes": 24221,
+   "sha256": "ef3a8a3c27a2e53191439d5811e505fff5d23e42c9d4ab0592da235e86cbb729"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/account_management/account_creation/individuals",
+   "archivo": "fuentes/spiko-docs-account_creation-individuals.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:03:51Z",
+   "bytes": 28358,
+   "sha256": "f562d846f5ab829502936706694682b8f33a68d0f407356a491dcad5f0095a4d"
+  },
+  {
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Terms_of_Use_EN.pdf",
+   "archivo": "fuentes/Terms_of_Use_EN.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:04:12Z",
+   "bytes": 282841,
+   "sha256": "71dd7ba10600e4fe87478ce01ce2a0d9c6d49bf32586cd825ba84c670ddbd883"
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+   "archivo": "fuentes/cnmv-advertencias-busquedas.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-01T15:06:53Z",
+   "bytes": 2267,
+   "sha256": "14f9ebc693e0ede8dd9dd09280240f4ed0da23480c6121df89fa7ce6850d5060",
+   "metodo": "playwright: formulario de búsqueda de advertencias CNMV",
+   "terminos": [
+    "Spiko",
+    "Twenty First Capital",
+    "Prosegur"
+   ]
+  },
+  {
+   "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "archivo": "fuentes/prosegur-terms-service.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-02T08:42:21Z",
+   "bytes": 74700,
+   "sha256": "60556d4c89c94b679d3b41dfd3e66f78574ad2df4eb74b34f1f82823931de22b",
+   "metodo": "playwright-chromium innerText"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+   "archivo": "fuentes/esma-mica-casps.csv",
+   "http": 200,
+   "consultadoUtc": "2026-11-02T08:42:50Z",
+   "bytes": 191716,
+   "sha256": "14d19dfd3bb4bec5883e71e0d2c056dcc7807849ed1a871cb6788caae02a1f99"
+  }
+ ]
+}

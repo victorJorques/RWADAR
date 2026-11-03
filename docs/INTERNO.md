@@ -80,6 +80,8 @@ desde allí. Las pruebas y las huellas quedan en los informes con fecha. El víd
 de nueve perfiles simulados está entregado en local y reproducido completo; no
 es una prueba con personas ni una evaluación de todos los cambios posteriores.
 
+**Investigación del 1 y 2 de noviembre: preparada, sin aplicar ni publicar.** Se revisaron las 49 ofertas y 56 candidatas con revisión independiente. Entran dos ofertas que un particular en España compra desde 1 € o 1 USD con entidad supervisada (Spiko en dólares y los derivados sobre acciones de Robinhood); otras 28 publicadas deberían salir porque hoy no se pueden comprar o no tienen entidad supervisada. La web y la app no aceptan aún un catálogo más pequeño: Víctor elige entre ampliar a 51 ya o preparar antes la reducción a 23. [Informe](INVESTIGACION-CATALOGO-2026-11-01.md).
+
 **Investigación del catálogo:** tarea preparada y **PAUSADA, con inicio manual**.
 Víctor debe pulsar **Ejecutar** o pedir **«haz la investigación»** para abrir un
 solo ciclo; la programación anterior no inicia trabajo ni autoriza futuras

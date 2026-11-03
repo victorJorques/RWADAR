@@ -1,0 +1,136 @@
+{
+  "slug": "gemini-tokenized-stocks",
+  "tipoExpediente": "candidata",
+  "grupo": "nuevas-fuera-radar",
+  "proveedor": "Gemini (UE)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "Gemini Intergalactic EU Artemis, Ltd. (Malta, C110965)",
+  "emisor": "Dinari, Inc. (EE. UU.; no regulado por autoridad de la UE según el KID)",
+  "vehiculo": "dShares: derivado OTC bilateral sin apalancamiento",
+  "token": "ERC-20 (Arbitrum en el lanzamiento de MSTR)",
+  "derechoAdquirido": "Derecho contractual frente a Dinari ligado 1:1 a una acción/ETF de EE. UU.; recompra solo por Dinari",
+  "jurisdiccion": "MT",
+  "identificador": null,
+  "moneda": "USD",
+  "documentos": [
+    {
+      "titulo": "Key Information Document (KID) - Tokenized stocks (dShares)",
+      "url": "https://www.gemini.com/es/legal/key-information-document",
+      "versionOFecha": "Date of this document: 03 July 2025",
+      "paginas": null,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Página Gemini Tokenized Stocks",
+      "url": "https://www.gemini.com/tokenizedstocks",
+      "versionOFecha": "consultada 2026-11-01",
+      "paginas": null,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Gemini closing accounts in the UK, EU and Australia: Everything you need to know",
+      "url": "https://support.gemini.com/hc/en-gb/articles/46255474469275-Gemini-closing-accounts-in-the-UK-EU-and-Australia-Everything-you-need-to-know",
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "GEMINI INTERGALACTIC EU ARTEMIS, LTD",
+      "numero": "5304 (04/07/2025)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5304",
+      "alcance": "ESI del EEE en libre prestación. Sigue inscrita el 01/11/2026 pese al cierre anunciado (posible desfase del registro).",
+      "consultadoUtc": "2026-11-01T15:01:03Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Gemini",
+      "resultado": "coincidencias no relacionadas: GEMINI LTD FX (04/09/2023, geminiltdfx.com) y GEMINI OPTION LTD (29/03/2021, geminioption.com); ninguna es Gemini Intergalactic EU Artemis",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:01:30Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "Gemini users in the UK, EU/EEA & Australia face withdrawal-only mode from Mar 5, 2026 and account closure on Apr 6.",
+      "dato": "cierre de cuentas UE el 2026-04-06",
+      "fuentePrimaria": "https://www.moonpay.com/newsroom/gemini-uk-eu-australia-closure-what-to-do-next",
+      "localizador": "MoonPay newsroom, 6 Feb 2026 (fuente secundaria)",
+      "fechaDato": "2026-02-06",
+      "consultadoUtc": "2026-11-01T15:05:41Z",
+      "alcanceYLimites": "La nota oficial de soporte de Gemini devuelve 403 (Cloudflare); el buscador muestra su texto «effective 6 April 2026, Gemini has ceased operations in the ... European Economic Area». No leída directamente.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "estado",
+      "literal": "Invest in U.S. stocks from anywhere in the EU—no U.S. broker required.",
+      "dato": "la página comercial sigue anunciando acceso UE",
+      "fuentePrimaria": "https://www.gemini.com/tokenizedstocks",
+      "localizador": "página Tokenized Stocks",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:03:47Z",
+      "alcanceYLimites": "Contradice el cierre de la actividad en el EEE; se considera página desactualizada",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Dinari is not domiciled in the European Union (EU) and is not regulated by any competent EU authority.",
+      "dato": "fabricante fuera de la UE",
+      "fuentePrimaria": "https://www.gemini.com/es/legal/key-information-document",
+      "localizador": "KID 03 July 2025, Product",
+      "fechaDato": "2025-07-03",
+      "consultadoUtc": "2026-11-01T15:05:11Z",
+      "alcanceYLimites": "KID con más de 12 meses; SRI 7/7; entrada 0,2 % y salida 0,2 %",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Distribuidor MiFID maltés inscrito en la CNMV; fabricante Dinari sin regulación UE."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "Gemini anunció el cierre de sus operaciones en el EEE con efecto 6 de abril de 2026 (soporte oficial bloqueado; confirmado por fuentes secundarias). La página comercial sigue sin actualizar."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "No se admiten nuevas cuentas en el EEE desde febrero de 2026; lista oficial de jurisdicciones bloqueada por Cloudflare."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_cumple",
+      "nota": "KID de julio de 2025 sin revisión visible; contraparte no regulada en la UE."
+    }
+  },
+  "estadoOferta": "desaparecida",
+  "disponibleEs": "excluido",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": "MFSA (Malta) · CNMV libre prestación nº 5304",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Fue un canal MiFID para dShares en la UE.",
+    "porQueNo": "Gemini cerró su actividad en el EEE en abril de 2026; la página comercial no está actualizada."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Oferta desaparecida para residentes en la UE: Gemini cesó operaciones en el EEE con efecto 6 de abril de 2026. No proponer la plataforma al radar.",
+  "bloqueos": [
+    "support.gemini.com devuelve 403 (Cloudflare) tanto para la lista de jurisdicciones como para el aviso de cierre; no se intentó eludir el bloqueo"
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:03:47Z",
+    "finUtc": "2026-11-01T15:05:41Z"
+  }
+}

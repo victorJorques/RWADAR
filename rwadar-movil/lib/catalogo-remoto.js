@@ -80,8 +80,9 @@ function crearLectorCatalogo({ almacenamiento, clientePublico, ahora = () => new
   async function prepararMinimo() {
     if (minimoCargado) return;
     minimoCargado = true;
-    // Una app reiniciada también recuerda el último lote completo. Nunca
-    // acepta una respuesta más corta solo porque volvió a arrancar el binario.
+    // Una app reiniciada también recuerda el último lote completo. Desde el
+    // 02/11/2026 un lote nuevo puede tener menos fichas si es coherente con su
+    // propio manifiesto; uno cortado sigue sin aceptarse.
     try {
       const raw = await almacenamiento.getItem(CACHE_CATALOGO);
       if (raw) conservarMinimo(adaptarCatalogoV2(JSON.parse(raw), ahora(), {manifiestoMinimo}));

@@ -1,0 +1,165 @@
+{
+  "slug": "alan-frei-company",
+  "tipoExpediente": "candidata",
+  "grupo": "aktionariat",
+  "proveedor": "Aktionariat (directorio «Companies with Tokenized Shares»)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Alan Frei Company AG (vende sus propias acciones; tecnología de Aktionariat AG)",
+  "emisor": "Alan Frei Company AG",
+  "vehiculo": "Sociedad anónima suiza (AG/SA); sin SPV",
+  "token": "AFS, ERC-20 en Ethereum mainnet, contrato 0x56528c1df17fd5451451eb6efde297758bc8f9a1",
+  "derechoAdquirido": "Acciones nominativas tokenizadas de Alan Frei Company AG sujetas a Registration Agreement y Token Shareholder Agreement (no leídos).",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-482.713.456; token AFS 0x56528c1df17fd5451451eb6efde297758bc8f9a1",
+  "moneda": "CHF / ZCHF",
+  "documentos": [
+    {
+      "titulo": "Registration Agreement Alan Frei Company AG",
+      "url": "https://storage.googleapis.com/aktionariat/public/4183/e4aa8c60-ad0e-4e6f-bdad-26da46f2cce4/Registration%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG%2BFinal.pdf",
+      "versionOFecha": "no leído",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Token Shareholder Agreement Alan Frei Company AG",
+      "url": "https://storage.googleapis.com/aktionariat/public/4183/8d41cc5b-82ae-477d-a8b3-62b333d1e317/Token%2BShareholder%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG.pdf",
+      "versionOFecha": "no leído",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (Zefix / ZefixREST)",
+      "entidad": "Alan Frei Company AG",
+      "numero": "CHE-482.713.456",
+      "url": "https://www.zefix.ch/en/search/entity/list?name=Alan%20Frei%20Company%20AG",
+      "alcance": "Sociedad anónima (AG) inscrita, sede Zürich, estado EXISTIEREND. Capital 105.000 CHF (SHAB 19/06/2023); sin revisora inscrita. Es un registro mercantil, no una licencia financiera.",
+      "consultadoUtc": "2026-11-02T08:48:05Z"
+    },
+    {
+      "regulador": "FINMA",
+      "entidad": "—",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "alcance": "No se ha localizado autorización FINMA. El propio portal declara que el mercado secundario es una «non-commercial trading facility» no sujeta a supervisión prudencial; el registro de autorizados de FINMA no se consultó por nombre (pendiente).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "FINMA",
+      "busqueda": "Alan Frei",
+      "resultado": "sin coincidencias (lista de advertencias completa, 2.401 entradas, búsqueda local por nombre)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-01T15:08:30Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Alan Frei",
+      "resultado": "sin coincidencias («No hay datos disponibles», tipo «No autorizadas»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
+      "consultadoUtc": "2026-11-02T08:50:04Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "descubrimiento",
+      "literal": "Alan Frei Company AFS New Adventures 16'382'476 CHF",
+      "dato": "TRADED",
+      "fuentePrimaria": "https://www.aktionariat.com/tokenized-companies",
+      "localizador": "Directorio, API getTokenizedCompanies (tokenTradeStatus)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T13:11:40Z",
+      "alcanceYLimites": "Solo para descubrir; cifras autodeclaradas por el emisor según el propio directorio.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "estado",
+      "literal": "isPrimaryMarketEnabled:true",
+      "dato": "Venta del emisor abierta; última compra 20/10/2026 (60 AFS a ≈1,603)",
+      "fuentePrimaria": "https://shares.alanfrei.com/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=4183 (877 operaciones); on-chain settings()=3",
+      "fechaDato": "2026-10-20",
+      "consultadoUtc": "2026-11-02T08:47:36Z",
+      "alcanceYLimites": "Bit 0x1 activo (compra). El significado del bit 0x2 (legado) no se ha verificado en el código.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "precio",
+      "literal": "primaryMarketPrice 1.60274188",
+      "dato": "1,6027 por acción (sube 0,0000008 por acción)",
+      "fuentePrimaria": "https://shares.alanfrei.com/",
+      "localizador": "Datos embebidos + getPrice() en 0x4d1b…ca3c",
+      "fechaDato": "2026-11-02",
+      "consultadoUtc": "2026-11-02T08:49:01Z",
+      "alcanceYLimites": "Fijado por el emisor.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "bankTransferLimit min 1",
+      "dato": "1 CHF (orden por defecto 1.000 acciones)",
+      "fuentePrimaria": "https://shares.alanfrei.com/api/brokerbotsettings?ticker=AFS",
+      "localizador": "Datos embebidos",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-02T08:47:35Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": null,
+      "fuentePrimaria": "https://shares.alanfrei.com/",
+      "localizador": "Portada",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-02T08:47:35Z",
+      "alcanceYLimites": "Sin aviso de países admitidos en el portal leído.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita; sin licencia financiera."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Compras al emisor en octubre de 2026."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Acceso desde España no documentado."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_verificable",
+      "nota": "Acuerdos no leídos; objeto social genérico («aventuras»)."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "decision": "no_admitir",
+  "motivoDecision": "Falta lo esencial para el cliente: no hay fuente que admita a residentes en España y los acuerdos de accionista no se han leído.",
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "1 CHF",
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Venta del emisor activa con 683 accionistas y precio verificado on-chain.",
+    "porQueNo": "Sin aviso de elegibilidad para España, documentos sin leer, sin supervisión."
+  },
+  "bloqueos": [
+    "Documentos no descargados (fase de captura cerrada)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-02T08:47:35Z",
+    "finUtc": "2026-11-02T08:49:01Z"
+  }
+}

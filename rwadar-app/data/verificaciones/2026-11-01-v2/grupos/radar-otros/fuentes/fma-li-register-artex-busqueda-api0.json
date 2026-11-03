@@ -1,0 +1,5 @@
+{
+  "api": {
+    "baseUrl": "https://ws-api.llv.li/fire-wsapi"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "slug": "bitpanda-stocks",
+  "tipoExpediente": "candidata",
+  "grupo": "nuevas-fuera-radar",
+  "proveedor": "Bitpanda",
+  "plataformaSlug": null,
+  "entidadComercializadora": "Bitpanda Financial Services GmbH (Viena)",
+  "emisor": "Emisores cotizados de cada acción/ETF/ETC (no hay emisión propia)",
+  "vehiculo": "Acciones, ETF y ETC en ejecución por cuenta del cliente; fracciones en custodia ómnibus",
+  "token": "ninguno (no se describe registro on-chain)",
+  "derechoAdquirido": "Acción o fracción de acción en custodia ómnibus; las fracciones no son transferibles ni certificables",
+  "jurisdiccion": "AT",
+  "identificador": "CNMV ESI EEE libre prestación nº 5045",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Página Stocks & ETFs de Bitpanda",
+      "url": "https://www.bitpanda.com/en/stocks",
+      "versionOFecha": "consultada 2026-11-02",
+      "paginas": null,
+      "sha256": null,
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "BITPANDA FINANCIAL SERVICES GmbH",
+      "numero": "5045 (08/03/2021)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5045",
+      "alcance": "ESI del EEE en libre prestación en España",
+      "consultadoUtc": "2026-11-01T15:01:06Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Bitpanda",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-02T08:42:46Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "derecho",
+      "literal": "Execution only services for stocks, ETF and ETC are provided by Bitpanda Financial Services GmbH ... Fractions generally do not carry voting rights and cannot be transferred or certificated",
+      "dato": "valores tradicionales en custodia ómnibus, sin token",
+      "fuentePrimaria": "https://www.bitpanda.com/en/stocks",
+      "localizador": "pie legal de la página Stocks",
+      "fechaDato": "2026-11-02",
+      "consultadoUtc": "2026-11-02T08:43:20Z",
+      "alcanceYLimites": "La página no menciona tokens ni blockchain para este producto; Vision Chain (marzo 2026) es infraestructura para entidades, según prensa",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "€1 flat fee per trade and no hidden fees",
+      "dato": "1 EUR por operación",
+      "fuentePrimaria": "https://www.bitpanda.com/en/stocks",
+      "localizador": "cabecera de la página Stocks",
+      "fechaDato": "2026-11-02",
+      "consultadoUtc": "2026-11-02T08:43:20Z",
+      "alcanceYLimites": "Más diferenciales, cambio de divisa y costes de producto según la propia página",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple",
+      "nota": "Bitpanda Financial Services GmbH inscrita en la CNMV (5045)."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Más de 10.000 acciones y ETF el 02/11/2026."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "No es una oferta tokenizada: valores tradicionales en custodia ómnibus. Queda fuera del filtro on-chain de RWAdar."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple",
+      "nota": "Sin advertencias de la CNMV."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": "FMA (Austria) vía CNMV libre prestación nº 5045",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Intermediario inscrito en la CNMV con acciones fraccionadas.",
+    "porQueNo": "No hay token: son acciones tradicionales en custodia ómnibus, fuera del alcance de RWAdar."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No es tokenización on-chain: la página describe ejecución de acciones/ETF tradicionales con custodia ómnibus. Revisar Vision Chain solo si aparece una emisión minorista concreta.",
+  "bloqueos": [
+    "bitpanda.com/es/acciones devuelve 404; se leyó la versión inglesa"
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:01:06Z",
+    "finUtc": "2026-11-02T08:43:20Z"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "slug": "tokeny-sin-oferta-concreta",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "Tokeny",
+  "plataformaSlug": "tokeny",
+  "entidadComercializadora": "Tokeny (proveedor tecnológico; razón social no verificada en este ciclo)",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": null,
+  "identificador": null,
+  "moneda": null,
+  "documentos": [
+    {
+      "titulo": "Tokeny general terms of service",
+      "url": "https://tokeny.com/general-terms-of-service/",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Tokeny",
+      "url": "https://tokeny.com/",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Tokeny general terms of service",
+      "entidad": null,
+      "numero": null,
+      "url": "https://tokeny.com/general-terms-of-service/",
+      "alcance": "Según el radar del 22/10/2026 (estado no_aplica_plataforma): Sus términos definen a Tokeny como proveedor tecnológico; el cliente/emisor conserva las obligaciones financieras y regulatorias. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Tokeny",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:13:37Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": null,
+      "dato": "Sus términos definen a Tokeny como proveedor tecnológico; el cliente/emisor conserva las obligaciones financieras y regulatorias.",
+      "fuentePrimaria": "https://tokeny.com/general-terms-of-service/",
+      "localizador": "Tokeny general terms of service (radar canónico 26, bloque licenciaRegistro)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": "Los servicios son para clientes profesionales; Tokeny no es el punto de acceso inversor a una oferta única.",
+      "fuentePrimaria": "https://tokeny.com/general-terms-of-service/",
+      "localizador": "Tokeny general terms of service (radar canónico 26, bloque acceso)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": null,
+      "dato": "La web mantiene software de emisión y cumplimiento on-chain.",
+      "fuentePrimaria": "https://tokeny.com/",
+      "localizador": "Tokeny (radar canónico 26, bloque estadoOperativo)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Según el radar, Tokeny es proveedor tecnológico: el emisor que usa su software es quien tiene las obligaciones financieras y regulatorias."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No se identificó ni fechó ninguna oferta concreta en este ciclo."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "Sus servicios son para clientes profesionales (emisores); no es un punto de acceso para inversores."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple",
+      "nota": "No hay advertencias de la CNMV por «Tokeny»."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Software de emisión y cumplimiento (ERC-3643) que usan emisores regulados.",
+    "porQueNo": "No vende nada a inversores: cada oferta depende de un emisor distinto, que no se identificó."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir: Tokeny es un proveedor de software para emisores, no un punto de venta. Una oferta que use su tecnología tendría que evaluarse por su emisor y su comercializador.",
+  "bloqueos": [
+    "No se examinó ninguna oferta concreta con fuente primaria en este ciclo: la sesión se cortó por límite de uso y el coordinador cerró la fase de captura antes de llegar a esta plataforma. Los datos de licencia y acceso vienen del radar del 22/10/2026."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:13:37Z",
+    "finUtc": "2026-11-02T08:45:23Z"
+  }
+}

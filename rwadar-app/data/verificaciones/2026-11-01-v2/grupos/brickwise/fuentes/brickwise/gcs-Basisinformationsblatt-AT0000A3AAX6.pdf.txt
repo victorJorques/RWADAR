@@ -1,0 +1,219 @@
+
+
+=== PAGE 1 ===
+
+Stand: 15.02.2024 - Seite 1 
+Basisinformationsblatt 
+Zweck 
+Dieses Informationsblatt stellt Ihnen wesentliche Informationen über dieses Anlageprodukt zur Verfügung. Es handelt sich nich t um Wer-
+bematerial. Diese Informationen sind gesetzlich vorgeschrieben, um Ihnen dabei zu helfen, die Art, das Risiko, die Kosten sowie die mög-
+lichen Gewinne und Verluste dieses Produkts zu verstehen, und Ihnen dabei zu helfen, es mit anderen Produkten zu vergleichen. 
+Produkt 
+Name des Produktes: Tokenisierte Genussscheine in Bezug auf die Liegenschaft B-LNr. VERGABE OFFEN, Anteil: 108/5830, EZ 
+756, KG 01660 Kagran, BG Donaustadt, Wagramer Straße 113, 1220 Wien (die "Immobilie") 
+Name des Produktherstellers: C&P Bricks GmbH, ISIN: AT0000A3AAX6 
+Weitere Informationen erhalten Sie unter C&P Bricks GmbH 
+Für den PRIIP-Hersteller in Sachen Basisinformationsblatt zuständige Behörde: Finanzmarktaufsichtsbehörde (FMA) - Österreich 
+Erstellungsdatum des Basisinformationsblatts: 15.02.2024 
+Sie sind im Begriff, ein Produkt zu erwerben, das nicht einfach ist und schwer zu verstehen sein kann. 
+Um welche Art von Produkt handelt es sich? 
+Art:  Bei diesem Produkt handelt es sich um ein digitales und verbrieftes übertragbares Wertpapier in Form eines Genussscheins ("Token") 
+- Wertpapier sui generis, und Zahlungsansprüche gegen den Produkthersteller, deren Höhe von Einnahmen des Produktherstellers aus der 
+Bewirtschaftung der oben angegebenen Immobilie abhängt, sowie Mitspracherechte betreffend die Verwaltung der Immobilie gewährt. Die 
+Zahlungsansprüche sollen durch eine an der Immobilie noch zu bestellende Immobiliarsicherheit (Kollektivpfandrecht zugunsten der Inha-
+ber:innen der Token) besichert werden. Die Token werden auf Basis des Blockchain-Netzwerkes "Brickprotocol" ausgegeben und können 
+auf folgenden Marktplätzen gehandelt werden: C&P Bricks App, Brickwise App . Die Verwaltung und Übertragung der Token erfolgt 
+ausschließlich eigenverantwortlich durch den Anleger. Die Investitionsbedingungen des Produkts unterliegen dem Recht der Republik Ös-
+terreich.  
+Das Produkt läuft grundsätzlich endlos/ewig ("Perpetual"). Sowohl der Investor als auch die Emittentin sind jedoch berechtigt, die Wertpa-
+piere erstmalig innerhalb von dreißig (30) Tagen nach Ablauf von 5 (fünf) Jahren ab dem Ausgabetag und danach alle weiteren 5 (fünf) 
+Jahre wiederum jeweils unter Einhaltung einer 30-tägigen Kündigungsfrist zu kündigen. Es bestehen außerdem unabdingbare gesetzliche 
+Kündigungsrechte. 
+Der Nennbetrag je Token (Produkt) beträgt EUR 100,00; die Ausgabe erfolgt zu 100% des Nennbetrages  und der Gesamtbetrag des 
+Produkts beträgt bis zu EUR 220.000,00. 
+Ziele: Ziele des Produktes sind,  
+• Berichtigung des Kaufpreises für den Erwerb der Immobilie, 
+• Gewährung bestimmter vertraglicher Zahlungsansprüche zu den vorab vom Produkthersteller festgelegten Bedingungen und damit die 
+Teilhabe am wirtschaftlichen Erfolg einer vom Produkthersteller erworbenen Wohnimmobilie zugunsten des Anlegersund  
+Anspruch auf Teilhabe an den Mieterlösen: Jeder Token vermittelt dem Anleger einen Zahlungsanspruch gegen den Produkthersteller, 
+dessen Höhe sich nach dem auf einen Token entfallenden Anteil am Überschuss der Netto-Kaltmieteinnahmen (je Kalenderjahr) abzüglich 
+1/12 der jährlichen Zinszahlungen/Kreditrate für die Fremdfinanzierung, abzüglich der Kosten aus der Bewirtschaftung der Immobilie (je 
+Kalenderjahr), und abzüglich des Anteils am Netto-Mietüberschusses, der der Emittentin zusteht (je Kalenderjahr), („Netto-Mietüberschuss“ 
+und "Basiswert") bemisst. Der Anspruch wird für jeden Kalendermonat ermittelt und ist je Kalendermonat nachschüssig nach Ermittlung 
+des Basiswertes durch den Produkthersteller zur Zahlung fällig. Die weiteren Einzelheiten sind in den Investitionsbedingungen abschließend 
+geregelt. 
+Mitspracherechte: Jeder Token vermittelt dem Anleger einen Anspruch auf Teilnahme an Beschlussfassungen der Tokeninhaber betref-
+fend die Verwaltung der Immobilie und der Produkthersteller ist verpflichtet, die Beschlüsse der Tokeninhaber bei der Verwaltung und ggf. 
+Veräußerung der Immobilie umzusetzen. Jeder Token vermittelt eine Stimme bei den Beschlussfassungen und Beschlüsse werden grund-
+sätzlich mit der einfachen Mehrheit der abgegebenen Stimmen gefasst. Beschlussfassungen erfolgen digital und die Stimmen können über 
+folgende Marktplätze abgegeben wirden: C&P Bricks App, Brickwise App. Die weiteren Einzelheiten betreffend die Verwaltungsrechte und 
+deren Ausübung sind abschließend in den Investitionsbedingungen geregelt. 
+Ausschüttungsanspruch anlässlich der Veräußerung der Immobilie: Jeder Token vermittelt im Falle einer Veräußerung der Immobilie, 
+die grundsätzlich (es bestehen Ausnahmen) nur mit wirksamer Zustimmung aller gültig abgegebenen Stimmen der Anleger erfolgen kann, 
+einen Zahlungsanspruch gegen den Produkthersteller, dessen Höhe sich nach dem auf einen Token entfallenden Anteil am Überschuss 
+des Immobilien-Veräußerungserlöses bemisst. Soweit ein Veräußerungsverlust generiert wird, besteht keine Nachschusspflicht. Die weite-
+ren Einzelheiten sind in den Investitionsbedingungen abschließend geregelt. 
+Übertragung/Handelbarkeit: Die Übertragung des Produktes ist nur mit Zustimmung des Produktherstellers zulässig . Die Zustimmung 
+wird vorab erteilt, wenn die in den Investitionsbedingungen festgelegten Voraussetzungen gegeben sind. Die Token sind in den Handel auf 
+den folgenden öffentlich zugänglichen Marktplätzen einbezogen: C&P Bricks App, Brickwise App. 
+Übersicht: 
+Basiswert: B-LNr. VERGABE OFFEN, Anteil: 108/5830, EZ 756, KG 01660, BG Donaustadt, Wagramer Straße 113, 1220 
+Wien  
+Nennbetrag:  EUR 220.000,00 
+Emissionstag: 15.02.2024 
+Beendigungszeitpunkt: keine feste Laufzeit („ewig laufend/Perpetual“) 
+ 
+Weitere wichtige Hinweise zu dem Produkt: Im Falle der Liquidation des Produktherstellers vermittelt jeder Token einen Anspruch 
+auf Teilhabe am Erlös aus der Veräußerung der Immobilie.  
+Die Token gewähren für den Fall, dass mindestens 9 0% der Token von einer Person gehalten werden (" Hauptinvestor"), dem Hauptin-
+vestor jeweils einen Anspruch gegen alle verbliebenden Tokeninhaber, die Übertragung aller verbleibenden Token an ihn gegen Z ahlung 
+eines bestimmten Kaufpreises verlangen zu können (" Squeeze-out"). Die weiteren Einzelheiten betreffend die Durchführung eines 
+Squeeze-Out sind abschließend in den Investitionsbedingungen geregelt. 
+Kleinanleger-Zielgruppe: Das Produkt richtet sich an Privatkunden (doch sind auch professionelle Kunden und geeignete Gegenpar-
+teien nicht vom Erwerb des Produkts ausgeschlossen), die das Ziel Vermögensbildung oder Vermögensoptimierung mittels mittelbarer 
+Beteiligung an der wirtschaftlichen Entwicklung einer Immobilie verfolgen und bereit sind, die technischen Anforderung für den Erwerb, die 
+Verwaltung und Übertragung der Token zu erfüllen. Die Anleger sollen einen langfristigen Anlagehorizont verfolgen und einen etwaigen 
+finanziellen Verlust bis hin zum vollständigen Verlust des eingesetzten Kapitals tragen können. Das Produkt zielt auf Anleger mit erweiterten 
+Kenntnissen und Erfahrungen mit  Finanzprodukten und Verwaltung von Immobilien ab und ist nicht geeignet für Personen, die Wert auf 
+einen Kapitalschutz legen. 
+
+=== PAGE 2 ===
+
+Stand: 15.02.2024 - Seite 2 
+  
+ 
+Welche Risiken bestehen und was könnte ich im Gegenzug dazu bekommen?  
+ 
+1  2  3  4  5  6  7 
+ ◄••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••► 
+ Niedrigeres Risiko Höheres Risiko 
+Dieser Risikoindikator beruht auf der Produktart und für diese Produktart beträgt der gesetzlich festgelegte Risikoindikator 6 . 
+Wenn Sie die Anlage frühzeitig auflösen, kann das tatsächliche Risiko erheblich davon abweichen und Sie erhalten unter Um-
+ständen weniger zurück. Es kann sein, dass Sie Ihr Produkt nicht ohne Weiteres veräußern  können oder dass Sie es zu einem 
+Preis veräußern müssen, der den Betrag,  
+den Sie zurückerhalten, erheblich schmälert. Der Gesamtrisikoindikator hilft Ihnen, das mit diesem Produkt verbundene Risiko im Vergleich 
+zu anderen Produkten einzuschätzen. Er zeigt, wie hoch die Wahrscheinlichkeit ist, dass Sie bei diesem Produkt Geld verlieren , weil sich 
+die Märkte in einer bestimmten Weise entwickeln oder wir nicht in der Lage sind, Sie auszubezahlen. Wir haben dieses Produkt auf einer 
+Skala von 1 bis 7 in die Risikoklasse 6 eingestuft, wobei 6 der zweithöchsten Risikoklasse entspricht. Das Risiko potenzieller Verluste aus 
+der künftigen Wertentwicklung wird als hoch eingestuft. Bei ungünstigen Marktbedingungen ist es sehr wahrscheinlich, dass unsere Fähig-
+keit beeinträchtigt wird, Sie auszuzahlen. Im Falle der Wandlung des Erwerbs von Token durch einen Hauptinvestor entstehen zusätzliche 
+Risiken, die in dem Gesamtrisikoindikator nicht berücksichtigt sind. Die Veräußerbarkeit des Produkts ist eingeschränkt, da d as Produkt 
+nicht für den Handel an einem organsierten Markt zugelassen ist. Dieses Produkt beinhaltet keinen Schutz vor künftigen Marktentwicklun-
+gen, sodass Sie das angelegte Kapital ganz oder teilweise verlieren könnten. Wenn wir Ihnen nicht das zahlen können, was Ihnen zusteht, 
+könnten Sie das gesamte angelegte Kapital verlieren. 
+Performance-Szenarien 
+Einmalige Anlage von EUR 10.000,- Haltedauer 
+1 Jahr 
+Haltedauer  
+5 Jahre 
+15 Jahre  
+(empfohlene Haltedauer) 
+Stressszenario 
+Was Sie nach Abzug der Kosten 
+erhalten könnten EUR 7.493,49  EUR 7.114,49  EUR 6.741,00  
+Jährliche Durchschnittsrendite* -26,09% -6,93% -2,87% 
+Pessimistisches 
+Szenario 
+Was Sie nach Abzug der Kosten 
+erhalten könnten EUR 7.693,40  EUR 7.880,19  EUR 8.900,85  
+Jährliche Durchschnittsrendite* -24,17% -4,98% -0,92% 
+Mittleres  
+Szenario 
+Was Sie nach Abzug der Kosten 
+erhalten könnten EUR 8.232,41   EUR 10.767,72  EUR 19.251,01  
+Jährliche Durchschnittsrendite* -18,86% 1,20% 4,49% 
+Optimistisches 
+Szenario 
+Was Sie nach Abzug der Kosten 
+erhalten könnten EUR 8.771,42  EUR 14.067,23  EUR 35.782,64  
+Jährliche Durchschnittsrendite* -13,56% 6,79% 8,93% 
+*Die jährliche Durchschnittsrendite wurde exponentiell ermittelt. 
+Diese Tabelle zeigt, wie viel Sie in den nächsten 5 Jahren unter verschiedenen Szenarien zurückerhalten könnten, wenn Sie zum Zeitpunkt 
+der erstmaligen Ausgabe EUR 10.000 und zu einem Ausgabebetrag von EUR 100,00 je Token anlegen. Im "Mittleren Szenario" wir d an-
+genommen, dass die durchschnittliche erwartete Ausschüttung bei 0,83% pro Jahr (Annahme, dass die Indexierung lt. Mietvertrag 2% pro 
+Jahr beträgt (= Ziel der EZB)) und die durchschnittliche Wertentwicklung bei 3,45% pro Jahr liegt. Im "Optimistischen Szenario" wird ange-
+nommen, dass die durchschnittliche erwartete Ausschüttung bei 0,83% pro Jahr und die durchschnittliche Wertentwicklung bei 6,90 % pro 
+Jahr liegt. Im "Pessimistischen Szenario wird angenommen, dass die durchschnittliche erwartete Ausschüttung bei 0,83% pro Jahr und die 
+durchschnittliche Wertentwicklung bei 0,00% pro Jahr liegt.  Im "Stressszenario" wird unterstellt, dass die durchschnittliche erwartete Aus-
+schüttung bei 0,83% pro Jahr und die durchschnittliche Wertentwicklung bei -1,00% pro Jahr liegt. Die dargestellten Szenarien zeigen, wie 
+sich Ihre Anlage entwickeln könnte. Sie können sie mit den Szenarien für andere Produkte vergleichen. Die dargestellten Szena rien ent-
+sprechen einer Schätzung der künftigen Ausschüttungen und Wertentwicklung aufgrund früherer Entwicklungen derartiger Investments; sie 
+sind kein exakter Indikator. Wie viel Sie tatsächlich erhalten, hängt davon ab, wie sich der Markt entwickelt und wie lange Sie das Produkt 
+halten. Das Stressszenario zeigt, was Sie im Fall extremer Marktbedingungen zurückerhalten und berücksichtigt nicht den Fall,  dass wir 
+womöglich nicht in der Lage sind, die Auszahlung vorzunehmen. Dieses Produkt kann nur über folgende öffentlich zugängliche Marktplätze 
+veräußert werden: C&P Bricks App, Brickwise App. Deshalb lässt sich schwer abschätzen, wie viel Sie erhalten, wenn Sie es vor Ende der 
+empfohlenen Haltedauer/Fälligkeit veräußern. Es kann sein, dass Sie es nicht vorzeitig veräußern können oder dass Ihnen bei der Veräu-
+ßerung ein hoher Verlust entsteht. In den angeführten Zahlen sind sämtliche Kosten des Produkts selbst enthalten, sowie die K osten der 
+Vermittlerstelle. Bei den angeführten Zahlen ist Ihre persönliche steuerliche Situation nicht berücksichtigt, die sich ebenfalls darauf auswir-
+ken kann, wie viel Sie zurückerhalten. 
+Was geschieht, wenn der Produkthersteller nicht in der Lage ist, die Auszahlung vorzunehmen ? 
+Das Produkt unterliegt keinerlei Einlagensicherung oder Deckung nach einem Anlegerschutz system. Jeder Anleger ist deshalb dem tat-
+sächlichen Risiko ausgesetzt, dass der Produkthersteller seine Pflichten aus den Investitionsbedingungen nicht oder nicht vollständig erfüllt. 
+In Bezug auf Forderungen (d.h. Zahlungsansprüche des Anlegers) bedeutet dies, dass Forderungen trotz Fälligkeit nicht realisiert und/oder 
+nicht dauerhaft rechtlich bestandskräftig durchgesetzt werden können. Dies gilt insbesondere für den Fall der Eröffnung eine s Insolvenz-
+verfahrens über das Vermögen des Produktherstellers. Es besteht die tatsächliche Möglichkeit eines Totalverlusts des eingesetzten Kapitals 
+und des Ausbleibens erwarteter Zahlungen und vergeblicher Aufwendungen für die rechtliche/gerichtliche Durchsetzung von Ansprüchen. 
+Welche Kosten entstehen? 
+Kosten im Zeitverlauf 
+Die Renditeminderung (Reduction in Yield  — RIY) zeigt, wie sich die von Ihnen gezahlten Gesamtkosten auf die Anlagerendite, die Sie 
+erhalten könnten, auswirken. In den Gesamtkosten sind einmalige, laufende und zusätzliche Kosten berücksichtigt. Die hier ausgewiesenen 
+Beträge entsprechen den kumulierten Kosten des Produkts bei drei verschiedenen Haltedauern. Bei den angegebenen Zahlen wird davon 
+ausgegangen, dass Sie EUR 10.000 anlegen. Die Zahlen sind Schätzungen und können in der Zukunft anders ausfallen.  Die Person, die 
+
+
+=== PAGE 3 ===
+
+Stand: 15.02.2024 - Seite 3 
+Ihnen dieses Produkt verkauft oder Sie dazu berät, kann Ihnen weitere Kosten in Rechnung stellen. Sollte dies der Fall sein, informiert Sie 
+die Person über diese Kosten und zeigt Ihnen, wie sich sämtliche Kosten im Zeitverlauf auf Ihre Anlage auswirken werden. 
+Einmalige Anlage EUR 10.000,- 
+Szenarien 
+Wenn Sie nach  
+1 Jahr einlösen 
+Wenn Sie nach  
+5 Jahren einlösen 
+Wenn Sie nach 15 Jahren (emp-
+fohlene Haltedauer) einlösen 
+Gesamtkosten EUR 868,24 = 8,6824% EUR 890,79 = 8,9079% EUR 962,55 = 9,6255% 
+Auswirkungen auf die Rendite (RIY) pro 
+Jahr 9,54% 1,53% 0,32% 
+Zusammenfassung der Kosten 
+Aus der nachfolgenden Tabelle geht Folgendes hervor:  
+• wie sich die verschiedenen Arten von Kosten pro Jahr auf die Rendite, die Sie über die empfohlene Haltedauer von 5 Jahren 
+erhalten könnten, auswirken;  
+• was die verschiedenen Kostenkategorien beinhalten. 
+Diese Tabelle zeigt die Auswirkungen auf die Rendite pro Jahr 
+Einmalige 
+Kosten 
+Einstiegskosten 0,48 %  Auswirkung der im Preis bereits inbegriffenen Kosten.  Die Kosten für die 
+Vermittlung Ihres Produkts sind darin inbegriffen.  
+Ausstiegskosten 0,10 % Auswirkung der Kosten, die anfallen, wenn Sie aus Ihrer Anlage ausstei-
+gen 
+Laufende 
+Kosten 
+Portfolio-Transaktionskosten 0,00 % Die Auswirkungen der Kosten, die dafür anfallen, dass wir für das Produkt 
+zugrunde liegende Anlagen kaufen und verkaufen. 
+Sonstige laufenden Kosten 0,00 % Auswirkung der Kosten, die wir Ihnen jährlich für die Anlageverwaltung ab-
+ziehen. 
+Zusätzliche 
+Kosten 
+Erfolgsgebühr 0,00 % Auswirkungen der Erfolgsgebühr. Eine solche ist nicht vereinbart. 
+Carried Interest 0,00 % Auswirkungen von Carried Interests. Solche sind nicht vereinbart.  
+Wie lange sollte ich die Anlage halten, und kann ich vorzeitig Geld entnehmen?  
+Empfohlene Haltedauer: 15 Jahre  
+Vorbehaltlich der Durchführung der Liquidation des Produktherstellers wird eine Haltedauer für das Produkt von mindestens 15 Jahren 
+empfohlen. Die Investitionsbedingungen sehen eine ewige Laufzeit vor. Sowohl der Investor als auch die Emittentin sind jedoch berechtigt, 
+die Wertpapiere erstmalig innerhalb von 30 Tagen nach Ablauf von 5 Jahren ab dem Ausgabetag und danach alle weiteren 5 Jahre wiede-
+rum jeweils unter Einhaltung einer 30 -tägigen Kündigungsfrist zu kündigen . Im Fall einer ordentlichen Kündigung durch die Emittentin ist 
+diese zur Veräußerung der Immobilie verpflichtet. Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt hiervon für beide 
+Parteien unberührt. 
+Wie kann ich mich beschweren?  
+Bei Beschwerden bezüglich des Vermittlungsprozesses kontaktiere n Sie bitte die diesbezügliche Ansprechperson Ihres Vermittlers. Be-
+schwerden bezüglich des Produktes oder des Inhalts des Dokuments richte n Sie bitte an C&P Bricks GmbH, Brauquartier 2, 8055 Graz. 
+Sie können auch gerne eine E-Mail an C&P Bricks GmbH senden. 
+Sonstige zweckdienliche Angaben 
+Um die vollständigen Informationen zu diesem übertragbaren Wertpapier - insbesondere zu den Produkteigenschaften und den mit einem 
+Investment verbundenen Risiken - zu erhalten, sollten die verbindlichen Investitionsbedingungen sowie gegebenenfalls der Basisprospekt 
+samt Nachträgen gelesen werden. Sämtliche Dokumente können bei m Produkthersteller, C&P Bricks GmbH , angefordert oder unter 
+https://cpbricks.bwplatform.app/assets/AT0000A3AAX6 heruntergeladen werden. 
+ 

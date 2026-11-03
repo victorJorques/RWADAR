@@ -1,0 +1,374 @@
+{
+ "slug": "franklin-templeton-grbenji",
+ "tipoExpediente": "candidata",
+ "grupo": "radar-tesoro",
+ "proveedor": "Franklin Templeton",
+ "plataformaSlug": "franklin-templeton",
+ "entidadComercializadora": "Franklin Templeton International Services, S.à r.l., Sucursal en España (única comercializadora inscrita en la CNMV para esta SICAV)",
+ "emisor": "Franklin Templeton OnChain Funds (SICAV UCITS, Luxemburgo); sociedad gestora Franklin Templeton International Services S.à r.l. (FTIS)",
+ "vehiculo": "Subfondo Franklin OnChain U.S. Government Liquidity Fund (antes «Money Fund», renombrado el 15/06/2026), fondo del mercado monetario VLC de deuda pública a corto plazo; clase AB (Ddis) USD",
+ "token": "grBENJI en Stellar (asset GA3ZBL3LBRKOF7CZ6MCA7JLPHWQCGYCCGKH4GVWNEDZOXW4IPXFGN2FQ; contrato Soroban CBEFW4IKKVB5KAX7QJAOHZUY77X5M6TRHE7ER6V75WESMAG7SSJBWP4R, según anuncio de 21X)",
+ "derechoAdquirido": "Acciones de una SICAV UCITS (fondo monetario) registradas en un sistema de agencia de transferencias integrado en blockchain; no es propiedad directa de las letras del Tesoro",
+ "jurisdiccion": "LU",
+ "identificador": "ISIN LU3258450587; CNMV IIC extranjera nº 2284 (SICAV, inscrita el 13/12/2024)",
+ "moneda": "USD",
+ "documentos": [
+  {
+   "titulo": "Ficha mensual en español, clase AB (Ddis) USD (comunicación de marketing)",
+   "url": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "versionOFecha": "Reporte mensual 30/09/2026",
+   "paginas": 3,
+   "sha256": "3ed4b340387c29e827576142e198491f0bb7a6527532b0a09eb47e78fd529b95",
+   "leido": true
+  },
+  {
+   "titulo": "KID PRIIPs (inglés, Luxemburgo), clase AB (Dis) USD",
+   "url": "https://www.franklintempleton.lu/download/en-lu/key-information-document/28329846-1e59-4630-8d6c-93267d7b5e37/PRIIPSEU_LU3258450587_en_LU.pdf",
+   "versionOFecha": "Fecha de producción 15/06/2026",
+   "paginas": 3,
+   "sha256": "0b7cd15fd5249252462c749709863863513b2f80e093e1c222aac5a2781723db",
+   "leido": true
+  },
+  {
+   "titulo": "21X AG · anuncio de admisión de grBENJI",
+   "url": "https://21x.eu/download/21x-ag-listing-announcement-grbenji/",
+   "versionOFecha": "Inicio de negociación 13/05/2026",
+   "paginas": 1,
+   "sha256": "e610c618f17915d51a306fa000b01c601462c48a281243d686ec951350e145c0",
+   "leido": true
+  },
+  {
+   "titulo": "Folleto de Franklin Templeton OnChain Funds",
+   "url": "https://www.ftidocuments.com",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  },
+  {
+   "titulo": "KID en español",
+   "url": null,
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "FRANKLIN TEMPLETON ONCHAIN FUNDS",
+   "numero": "2284 (IIC extranjera, fecha registro 13/12/2024)",
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0363289J",
+   "alcance": "SICAV de Luxemburgo, IIC comunitaria sujeta a la Directiva 2009/65/CE inscrita para comercialización en España. El registro no detalla clases ni canal minorista.",
+   "consultadoUtc": "2026-11-01T15:05:15Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "Franklin Templeton International Services, S.À.R.L., Sucursal en España",
+   "numero": "Comercializadora inscrita de la IIC nº 2284",
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0363289J&vista=18",
+   "alcance": "Única entidad comercializadora que figura para esta SICAV en España.",
+   "consultadoUtc": "2026-11-01T15:05:44Z"
+  },
+  {
+   "regulador": "CSSF (Luxemburgo)",
+   "entidad": "Franklin Templeton International Services S.à r.l.",
+   "numero": null,
+   "url": "https://www.franklintempleton.lu/download/en-lu/key-information-document/28329846-1e59-4630-8d6c-93267d7b5e37/PRIIPSEU_LU3258450587_en_LU.pdf",
+   "alcance": "Según el KID, la CSSF supervisa a FTIS respecto del KID y el producto está autorizado en Luxemburgo. No se consultó el registro de la CSSF directamente.",
+   "consultadoUtc": "2026-11-01T14:59:23Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Franklin Templeton (entidades no autorizadas)",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Franklin%20Templeton",
+   "consultadoUtc": "2026-11-01T15:10:36Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Benji (entidades no autorizadas)",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Benji",
+   "consultadoUtc": "2026-11-01T15:10:41Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registroEspana",
+   "literal": "FRANKLIN TEMPLETON ONCHAIN FUNDS · Nº Registro oficial 2284 · 13/12/2024 · SICAV · LUXEMBURGO · IIC Sujeto a la directiva 2009/65/CE",
+   "dato": "CNMV nº 2284",
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0363289J",
+   "localizador": "CNMV, vehículos de inversión extranjeros, datos generales",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:05:15Z",
+   "alcanceYLimites": "Inscripción de la SICAV (paraguas); el registro no lista clases ni el canal de suscripción",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comercializadora",
+   "literal": "Entidades comercializadoras: FRANKLIN TEMPLETON INTERNATIONAL SERVICES, S.À.R.L., SUCURSAL EN ESPAÑA",
+   "dato": "FTIS Sucursal en España",
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0363289J&vista=18",
+   "localizador": "CNMV, pestaña Entidades comercializadoras",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:05:44Z",
+   "alcanceYLimites": "No figura ningún neobróker ni banco español como comercializador",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "tipoProducto",
+   "literal": "fondo del mercado monetario de valor liquidativo constante (VLC) de deuda pública a corto plazo",
+   "dato": "FMM VLC deuda pública",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "localizador": "Ficha ES 30/09/2026, p. 1, Objetivo de inversión",
+   "fechaDato": "2026-09-30",
+   "consultadoUtc": "2026-11-01T14:58:53Z",
+   "alcanceYLimites": "Reglamento europeo de FMM",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Inversión mínima USD 20",
+   "dato": "20 USD",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "localizador": "Ficha ES 30/09/2026, p. 1, Datos del Fondo",
+   "fechaDato": "2026-09-30",
+   "consultadoUtc": "2026-11-01T14:58:53Z",
+   "alcanceYLimites": "Clase AB (Ddis) USD; no consta en el KID; el canal puede fijar otro mínimo",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Comisión inicial máxima 1,50% · Comisión de salida — · Comisión de gestión anual 0,20%",
+   "dato": "entrada máx. 1,50 %; salida 0 %; gestión 0,20 %/año",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "localizador": "Ficha ES 30/09/2026, p. 1, Comisiones",
+   "fechaDato": "2026-09-30",
+   "consultadoUtc": "2026-11-01T14:58:53Z",
+   "alcanceYLimites": "Coincide con el KID (15/06/2026): entrada hasta 1,50 %, 0,20 % gastos corrientes, 0 % salida. Un agregador (rwa.xyz) cita 0,15 %: no se usa.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "costesKid",
+   "literal": "Total costs 170 USD · Annual cost impact 1.7% (10 000 USD, salida a 1 año)",
+   "dato": "1,7 % el primer año si se aplica la entrada máxima",
+   "fuentePrimaria": "https://www.franklintempleton.lu/download/en-lu/key-information-document/28329846-1e59-4630-8d6c-93267d7b5e37/PRIIPSEU_LU3258450587_en_LU.pdf",
+   "localizador": "KID 15/06/2026, p. 2, Costs over Time",
+   "fechaDato": "2026-06-15",
+   "consultadoUtc": "2026-11-01T14:59:23Z",
+   "alcanceYLimites": "Supone la comisión de entrada máxima del 1,50 %; el distribuidor puede cobrar otros costes",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "Conforme a la legislación vigente, no está permitido mostrar los datos de rentabilidad cuyo historial de rentabilidad sea inferior a 12 meses completos.",
+   "dato": null,
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "localizador": "Ficha ES 30/09/2026, p. 1, Rentabilidad",
+   "fechaDato": "2026-09-30",
+   "consultadoUtc": "2026-11-01T14:58:53Z",
+   "alcanceYLimites": "Clase iniciada el 11/02/2026: sin rentabilidad publicada. No se debe mostrar ninguna cifra",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "precio",
+   "literal": "Valor liquidativo-AB (Ddis) USD $1,00",
+   "dato": "1,00 USD (VL constante objetivo)",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "localizador": "Ficha ES 30/09/2026, p. 1, Características del Fondo",
+   "fechaDato": "2026-09-30",
+   "consultadoUtc": "2026-11-01T14:58:53Z",
+   "alcanceYLimites": "VL constante buscado, no garantizado",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "tamano",
+   "literal": "Patrimonio (USD) $57,95 Millón · Vencimiento medio 37 Días · Vida Media 77 Días",
+   "dato": "57,95 M USD",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "localizador": "Ficha ES 30/09/2026, p. 1",
+   "fechaDato": "2026-09-30",
+   "consultadoUtc": "2026-11-01T14:58:53Z",
+   "alcanceYLimites": "Patrimonio del subfondo",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "We have classified this product as 1 out of 7 ... Be aware of currency risk ... Counterparty risk · Blockchain-based Shares risk",
+   "dato": "ISR 1/7; riesgo divisa; contraparte; acciones en blockchain",
+   "fuentePrimaria": "https://www.franklintempleton.lu/download/en-lu/key-information-document/28329846-1e59-4630-8d6c-93267d7b5e37/PRIIPSEU_LU3258450587_en_LU.pdf",
+   "localizador": "KID 15/06/2026, p. 2, Risk Indicator",
+   "fechaDato": "2026-06-15",
+   "consultadoUtc": "2026-11-01T14:59:23Z",
+   "alcanceYLimites": "El fondo no garantiza el capital (ficha ES p. 2). Un inversor en euros soporta el tipo de cambio USD/EUR",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida",
+   "literal": "You may sell your shares on any dealing day.",
+   "dato": "reembolso cualquier día de negociación",
+   "fuentePrimaria": "https://www.franklintempleton.lu/download/en-lu/key-information-document/28329846-1e59-4630-8d6c-93267d7b5e37/PRIIPSEU_LU3258450587_en_LU.pdf",
+   "localizador": "KID 15/06/2026, p. 3, How long should I hold it",
+   "fechaDato": "2026-06-15",
+   "consultadoUtc": "2026-11-01T14:59:23Z",
+   "alcanceYLimites": "Sujeto a hora de corte y días de valoración del folleto (no leído)",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "canalCompra",
+   "literal": "The shares can be purchased or redeemed at any time through the App or Institutional Web Portal, as applicable",
+   "dato": "App o portal web institucional",
+   "fuentePrimaria": "https://www.franklintempleton.lu/download/en-lu/key-information-document/28329846-1e59-4630-8d6c-93267d7b5e37/PRIIPSEU_LU3258450587_en_LU.pdf",
+   "localizador": "KID 15/06/2026, p. 1, Buying and selling shares",
+   "fechaDato": "2026-06-15",
+   "consultadoUtc": "2026-11-01T14:59:23Z",
+   "alcanceYLimites": "El KID no nombra la app ni dice si está disponible en España",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Benji Investments en App Store España: HTTP 404",
+   "dato": "app no disponible en la tienda española",
+   "fuentePrimaria": "https://apps.apple.com/es/app/benji-investments/id1551677725",
+   "localizador": "apps.apple.com/es, ficha id1551677725",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:06:18Z",
+   "alcanceYLimites": "La web de Benji solo enlaza a la App Store de EE. UU. No se comprobó Google Play España. Falta un canal minorista confirmado en España",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "jurisdiccionesRegistradas",
+   "literal": "Registered Jurisdictions*: Austria, Cyprus, France, Germany, Italy (Institutional only), Liechtenstein, Netherlands, Portugal, Spain · US Persons excluded",
+   "dato": "España entre las jurisdicciones registradas",
+   "fuentePrimaria": "https://21x.eu/download/21x-ag-listing-announcement-grbenji/",
+   "localizador": "Anuncio 21X, tabla",
+   "fechaDato": "2026-05-13",
+   "consultadoUtc": "2026-11-01T14:58:32Z",
+   "alcanceYLimites": "21X es un sistema DLT de negociación y liquidación; su formulario de alta pide datos de empresa: no consta acceso directo de particulares",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "publicoObjetivo",
+   "literal": "Destinado a inversores minoristas Inversores que entienden los riesgos del Fondo y prevén invertir durante al menos 1 año.",
+   "dato": "minorista (mercado objetivo)",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "localizador": "Ficha ES 30/09/2026, p. 3",
+   "fechaDato": "2026-09-30",
+   "consultadoUtc": "2026-11-01T14:58:53Z",
+   "alcanceYLimites": "Mercado objetivo del KID; no prueba que exista un canal minorista abierto en España",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "documentosIdioma",
+   "literal": "Los documentos del Fondo están disponibles en inglés.",
+   "dato": "folleto y KID en inglés",
+   "fuentePrimaria": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "localizador": "Ficha ES 30/09/2026, p. 3",
+   "fechaDato": "2026-09-30",
+   "consultadoUtc": "2026-11-01T14:58:53Z",
+   "alcanceYLimites": "No se encontró KID en español",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple",
+   "nota": "UCITS de Luxemburgo (supervisión CSSF según el KID) inscrito en la CNMV como IIC extranjera nº 2284; comercializa en España FTIS Sucursal en España."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple",
+   "nota": "Ficha de 30/09/2026 con patrimonio de 57,95 M USD y VL de 1,00 USD; clase iniciada el 11/02/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Mínimo de 20 USD y comisiones documentados, pero el canal de compra («App o portal institucional») no se pudo confirmar para un particular en España: la app Benji no aparece en la App Store española y 21X está orientado a empresas."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple",
+   "nota": "KID: riesgo 1/7, riesgo de divisa, de contraparte y de acciones en blockchain; sin garantía de capital. Sin advertencias de la CNMV."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": {
+  "titulo": "Franklin OnChain U.S. Government Liquidity Fund (grBENJI)",
+  "categoria": "Tesoro y fondos",
+  "pais": "LU",
+  "tipo": "rendimiento",
+  "coleccion": "principales",
+  "resumen": "Fondo monetario UCITS de Luxemburgo que invierte en deuda pública de EE. UU. a corto plazo; sus acciones se registran en Stellar. Borrador: falta confirmar cómo lo compra un particular en España.",
+  "rentabilidad": null,
+  "metricas": [
+   {
+    "etiqueta": "Mínimo",
+    "valor": "20 USD (ficha 30/09/2026)"
+   },
+   {
+    "etiqueta": "Supervisor",
+    "valor": "CSSF (Luxemburgo); inscrito en la CNMV, nº 2284"
+   },
+   {
+    "etiqueta": "Comisión de gestión",
+    "valor": "0,20 % anual; entrada hasta 1,50 %; sin salida"
+   },
+   {
+    "etiqueta": "Reembolso",
+    "valor": "Cualquier día de negociación"
+   },
+   {
+    "etiqueta": "Riesgo KID",
+    "valor": "1 de 7"
+   },
+   {
+    "etiqueta": "Rentabilidad publicada",
+    "valor": "No se publica: la clase tiene menos de 12 meses"
+   }
+  ],
+  "avisos": [
+   "Fondo en dólares: el tipo de cambio puede restar a un inversor en euros.",
+   "No garantiza el capital; el valor constante de 1 USD es un objetivo.",
+   "El folleto y el KID están en inglés.",
+   "Canal de compra minorista en España sin confirmar a 01/11/2026."
+  ],
+  "url": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+  "fuentesActuales": [
+   "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+   "https://www.franklintempleton.lu/download/en-lu/key-information-document/28329846-1e59-4630-8d6c-93267d7b5e37/PRIIPSEU_LU3258450587_en_LU.pdf",
+   "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0363289J"
+  ],
+  "lugar": "Luxemburgo · Luxemburgo",
+  "pasos": [
+   "Alta con el gestor",
+   "Suscribes en dólares",
+   "Reembolso diario"
+  ],
+  "concepto": "un sobre de letras del Tesoro convertido en una ficha digital que pasa de mano en mano"
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": "20 USD",
+  "supervisorVerificado": "CNMV, registro de IIC extranjeras nº 2284 (comercializadora FTIS Sucursal en España); CSSF según el KID",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "si",
+  "porQueDestaca": "Es un UCITS monetario inscrito en la CNMV, con mínimo de 20 USD, KID de riesgo 1/7 y ficha en español de 30/09/2026.",
+  "porQueNo": "No se ha podido confirmar un canal por el que un particular en España lo compre hoy; KID solo en inglés; sin rentabilidad publicable."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Es la candidata más sólida del grupo, pero falta un dato esencial: el canal real de compra para un particular en España (el KID remite a una «App» y la app Benji no aparece en la App Store española). Se deja la propuestaTarjeta como borrador. Para admitirla hay que confirmar el canal con FTIS Sucursal en España (+34 91 426 3600, según la ficha) o ver la app en la tienda española, y conseguir el KID en español si existe.",
+ "bloqueos": [
+  "Folleto de la SICAV no localizado (ftidocuments.com no se consultó).",
+  "KID en español no encontrado; solo inglés.",
+  "La ficha de fondo en franklintempleton.com.es requiere JavaScript; WebFetch devolvió la página vacía.",
+  "No se comprobó Google Play España ni el registro de la CSSF."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T14:58:32Z",
+  "finUtc": "2026-11-01T15:10:41Z"
+ }
+}

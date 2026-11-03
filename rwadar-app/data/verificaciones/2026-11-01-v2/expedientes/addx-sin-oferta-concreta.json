@@ -1,0 +1,128 @@
+{
+  "slug": "addx-sin-oferta-concreta",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "ADDX",
+  "plataformaSlug": "addx",
+  "entidadComercializadora": "ADDX Pte. Ltd. (Singapur)",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": "SG",
+  "identificador": null,
+  "moneda": null,
+  "documentos": [
+    {
+      "titulo": "Inside ADDX",
+      "url": "https://www.addx.co/en/inside-addx/",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "MAS Financial Institutions Directory — ADDX Pte. Ltd.",
+      "url": "https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "MAS Financial Institutions Directory",
+      "entidad": null,
+      "numero": null,
+      "url": "https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD",
+      "alcance": "Según el radar del 22/10/2026 (estado confirmada_regulador): ADDX Pte. Ltd. figura en el directorio de MAS como CMS licensee y recognised market operator. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "ADDX",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:11:19Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": null,
+      "dato": "ADDX Pte. Ltd. figura en el directorio de MAS como CMS licensee y recognised market operator.",
+      "fuentePrimaria": "https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD",
+      "localizador": "MAS Financial Institutions Directory — ADDX Pte. Ltd. (radar canónico 26, bloque licenciaRegistro)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": "La propia empresa limita el alta a inversores acreditados o institucionales no estadounidenses.",
+      "fuentePrimaria": "https://www.addx.co/en/inside-addx/",
+      "localizador": "Inside ADDX (radar canónico 26, bloque acceso)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": null,
+      "dato": "La web mantiene alta y catálogo de oportunidades.",
+      "fuentePrimaria": "https://addx.co/",
+      "localizador": "ADDX (radar canónico 26, bloque estadoOperativo)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Según el radar, figura en el directorio de la MAS como titular de licencia CMS y operador de mercado reconocido."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No se identificó ni fechó ninguna oferta concreta en este ciclo."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "Solo inversores acreditados o institucionales no estadounidenses."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple",
+      "nota": "No hay advertencias de la CNMV por «ADDX»."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "solo_acreditados",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": "MAS (Singapur), ADDX Pte. Ltd. (según el radar; no releído)",
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Mercado supervisado por la MAS con emisiones de capital privado y deuda.",
+    "porQueNo": "Solo para acreditados o institucionales; un particular común en España no es elegible."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir: la propia ADDX limita el alta a inversores acreditados o institucionales no estadounidenses. Un particular común en España no es elegible.",
+  "bloqueos": [
+    "No se examinó ninguna oferta concreta con fuente primaria en este ciclo: la sesión se cortó por límite de uso y el coordinador cerró la fase de captura antes de llegar a esta plataforma. Los datos de licencia y acceso vienen del radar del 22/10/2026."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:11:19Z",
+    "finUtc": "2026-11-02T08:45:23Z"
+  }
+}

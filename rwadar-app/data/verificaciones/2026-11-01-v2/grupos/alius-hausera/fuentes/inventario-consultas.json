@@ -1,0 +1,405 @@
+[
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T13:11:23Z",
+  "bytes": 48180,
+  "sha256": "b5327de2895e957988a6aadd13d190c2a73030004d5ab70f421b71b22a97f8c0"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T13:12:26Z",
+  "bytes": 48606,
+  "sha256": "00af0e4d7007f03c0455d9b8f526effb030fc50d91c7973203247edf799c13c5",
+  "nota": "Solo expansiones públicas de campaña (sin investments)"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+  "archivo": "casa-fdf-v5-2026-10-30.txt",
+  "http": 200,
+  "contentType": "application/pdf",
+  "consultadoUtc": "2026-11-01T13:12:38Z",
+  "bytes": 429084,
+  "sha256": "147cd9729caaf06be2afe5d894303c964bac2be0777116006399f81d800e0de3",
+  "nota": "PDF público leído completo; se guarda solo el texto extraído con NIF/teléfono/correo de personas físicas omitidos. bytes/sha256 son del PDF original servido."
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/264",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/264",
+  "archivo": "casa-anexos-v3-2026-10-30.txt",
+  "http": 200,
+  "contentType": "application/pdf",
+  "consultadoUtc": "2026-11-01T13:12:39Z",
+  "bytes": 391427,
+  "sha256": "332e32c27aabd763e1607c1ebd91a17d00b569cb2bf2019d3d11e1fcc79e976b",
+  "nota": "PDF público leído completo; se guarda solo el texto extraído con NIF/teléfono/correo de personas físicas omitidos. bytes/sha256 son del PDF original servido."
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T13:12:41Z",
+  "bytes": 32513,
+  "sha256": "3ec67c48c55af62f0a3769e31d5fd989850a6b001b94c48f85754169d19fb741"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/data",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/data",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T13:12:41Z",
+  "bytes": 4170,
+  "sha256": "8a2fc44769fb8883ab1948b394f10689a53f6bcf6e01365100a8c7013d5c7db6"
+ },
+ {
+  "url": "https://casadeouteiro.com/emision-capital/",
+  "urlFinal": "https://casadeouteiro.com/emision-capital/",
+  "archivo": "casa-emisor-emision-capital.html",
+  "http": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T14:58:28Z",
+  "bytes": 347581,
+  "sha256": "002381ea3cd6dece6c93d90e3ee38dfbe179b3a6984a4488fa7d157c80a6272d"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+  "urlFinal": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores?lang=es",
+  "archivo": "cnmv-listado-psfp.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T14:59:16Z",
+  "bytes": 165407,
+  "sha256": "97d4542e88d571352a53c0c8a2aaf95181481828ceb3cc51c871fb9235866a17"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793",
+  "urlFinal": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor?nreg=11&nif=B76632793",
+  "archivo": "cnmv-psfp-11-B76632793.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T14:59:25Z",
+  "bytes": 155452,
+  "sha256": "8a4c8171e27a806c0b19470f5f1ff8e765866f9156c3373a15e13b862a90656c"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/proveedor.aspx?vista=17&nreg=11&nif=B76632793",
+  "urlFinal": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/proveedor?vista=17&nreg=11&nif=B76632793",
+  "archivo": "cnmv-psfp-11-vista17.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T14:59:49Z",
+  "bytes": 153892,
+  "sha256": "113025bdcdd4d3a22fdfa968685d027a54ec34c56121de570686241ed452c011"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/proveedor.aspx?vista=45&nreg=11&nif=B76632793",
+  "urlFinal": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/proveedor?vista=45&nreg=11&nif=B76632793",
+  "archivo": "cnmv-psfp-11-vista45.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T14:59:51Z",
+  "bytes": 153931,
+  "sha256": "389e6d8334220d49dbcd7ae2f9a7c144114887f683bad32fc5120c537958bb2a"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "archivo": "api-casa-de-outeiro-campana.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:26Z",
+  "bytes": 25795,
+  "sha256": "b503a46e3bfd0d3628fd875895df2ae50ddc4bd3c180553bf6e4dbcf30a54636",
+  "nota": "Extracto filtrado (campos públicos) de la respuesta API; sha256 del extracto, el sha de la respuesta original consta en la entrada raw-only con la misma URL."
+ },
+ {
+  "url": "https://aliuscap.com/projects/casa-de-outeiro",
+  "archivo": "nav-casa-de-outeiro-2026-11-01.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:59Z",
+  "bytes": 7324,
+  "sha256": "8e04010a2628f4f29161747b68b3a0969e02ba2850de8c04fa6edb151e374e72",
+  "nota": "Texto visible renderizado con Playwright (Chromium sin sesión), 13:11:59–13:12:10 UTC."
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
+  "archivo": "api-alius-count-by-status.json",
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T15:02:20Z",
+  "bytes": 83,
+  "sha256": "859fab07ace1468e40226a8c50b6ab7242c397c46a6bf3e81a4bd18215e51b69"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/CAMPAIGN/expand/type,asset,campaign,campaign_progress,asset_issuance_relational",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/CAMPAIGN/expand/type,asset,campaign,campaign_progress,asset_issuance_relational",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T15:02:20Z",
+  "bytes": 7098,
+  "sha256": "44db70dbb8061682579249319c94b91fc62abcdc65e78e4d9987f548c6497117"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/PRE_CAMPAIGN/expand/type,asset,campaign,campaign_progress,asset_issuance_relational",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/PRE_CAMPAIGN/expand/type,asset,campaign,campaign_progress,asset_issuance_relational",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T15:02:21Z",
+  "bytes": 2,
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/PRIVATE_CAMPAIGN/expand/type,asset,campaign,campaign_progress,asset_issuance_relational",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/PRIVATE_CAMPAIGN/expand/type,asset,campaign,campaign_progress,asset_issuance_relational",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T15:02:22Z",
+  "bytes": 2,
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/CLOSED/expand/type,asset,campaign,campaign_progress,asset_issuance_relational",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/CLOSED/expand/type,asset,campaign,campaign_progress,asset_issuance_relational",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T15:02:23Z",
+  "bytes": 20047,
+  "sha256": "1c745760289cea57b13d2777b990f925d0c785102eda6ac0d93f92fcdcf8f746"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/status/{CAMPAIGN|PRE_CAMPAIGN|PRIVATE_CAMPAIGN|CLOSED}/expand/...",
+  "archivo": "api-alius-emisiones-por-estado.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:20Z",
+  "bytes": 3354,
+  "sha256": "50886984a7a89dc7b7c7c3574e2fee8b0cbe52a0cb47afcd821e71c5ec074b15",
+  "nota": "Extracto filtrado de 4 respuestas API."
+ },
+ {
+  "url": "https://aliuscap.com/invest",
+  "archivo": "nav-alius-invest-2026-11-01.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:01:58Z",
+  "bytes": 6114,
+  "sha256": "0360ebc49b88a0314f444725c4b72b9142394c1d07cfdd5b558e1c2452c22f15",
+  "nota": "Texto renderizado con Playwright sin sesión."
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "archivo": null,
+  "http": 200,
+  "contentType": "application/json; charset=UTF-8",
+  "consultadoUtc": "2026-11-01T15:04:28Z",
+  "bytes": 18177,
+  "sha256": "746c2afa044bc428aa08c5d73437b2ac5ceac220503e6200a5b73e4f6d8b0c5e"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/iodo1/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "archivo": "api-iod-occasio-campana.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:04:28Z",
+  "bytes": 9499,
+  "sha256": "8f05f95686bf95df2ff1c9efeb5f53adde93507038803fea24150c77fd132b49",
+  "nota": "Extracto filtrado (campos públicos) de la respuesta API; sha256 del extracto, el sha de la respuesta original consta en la entrada raw-only con la misma URL."
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/286",
+  "archivo": "iod-fdf-v2-2026-09-28.txt",
+  "http": 200,
+  "contentType": "application/pdf",
+  "consultadoUtc": "2026-11-01T15:04:41Z",
+  "bytes": 390753,
+  "sha256": "92dd2d29dd6c2fa6a6a3617abe27294efde05058052aeeaae9000b3c5b647055",
+  "nota": "PDF leído completo; se guarda texto extraído con datos personales omitidos; bytes/sha256 del PDF original (idéntico al del 23/10)."
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+  "urlFinal": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
+  "archivo": "iod-escritura-emision-2026-09-28.txt",
+  "http": 200,
+  "contentType": "application/pdf",
+  "consultadoUtc": "2026-11-01T15:04:42Z",
+  "bytes": 1427963,
+  "sha256": "dd65b08adf32c28fc7365e64289732bd1b8000e5353ec6b9ddffb7de15c68284",
+  "nota": "Copia simple electrónica de la escritura de emisión (42 págs.) leída en sus apartados de condiciones; se guarda texto extraído con DNI omitidos; bytes/sha256 del PDF original."
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius+Capital",
+  "urlFinal": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius+Capital",
+  "archivo": "cnmv-adv-alius-capital.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:06:44Z",
+  "bytes": 212335,
+  "sha256": "7ec621fcb4e0e0c8ad32402e6966b3fd15712b4b3431d698d76fb246d0f96a1b",
+  "nota": "Buscador de advertencias CNMV por denominación: Alius Capital"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius",
+  "urlFinal": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius",
+  "archivo": "cnmv-adv-alius.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:06:45Z",
+  "bytes": 212159,
+  "sha256": "477b2dd44e6eb27a5d8a03725baeeb12a8a0fee2251f40803f962a6e0ff1cb38",
+  "nota": "Buscador de advertencias CNMV por denominación: Alius"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees",
+  "urlFinal": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees",
+  "archivo": "cnmv-adv-adventurees.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:06:47Z",
+  "bytes": 212291,
+  "sha256": "2db2465212713c8d6eb361a174b21b9efc46f462f61dc3a0d4d237c313d4d047",
+  "nota": "Buscador de advertencias CNMV por denominación: Adventurees"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+  "urlFinal": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+  "archivo": "cnmv-adv-hausera.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:06:48Z",
+  "bytes": 212203,
+  "sha256": "2fa22c9165a2a0b1dba0e5e781bfc0ba04ece4cb91dc79ea716b011d35adfb2f",
+  "nota": "Buscador de advertencias CNMV por denominación: Hausera"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx",
+  "urlFinal": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx",
+  "archivo": "cnmv-adv-holdtx.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:06:49Z",
+  "bytes": 212181,
+  "sha256": "3675cf485f4886c4cd41a4cc6c00b6029629383ab9721ac68724230a751f5a44",
+  "nota": "Buscador de advertencias CNMV por denominación: Holdtx"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token+City",
+  "urlFinal": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token+City",
+  "archivo": "cnmv-adv-token-city.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:06:51Z",
+  "bytes": 212269,
+  "sha256": "2f7bc94ea9f22d4d330503c25682b48ce8b39ffef6baa46551b9fba6604579f3",
+  "nota": "Buscador de advertencias CNMV por denominación: Token City"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Outeiro",
+  "urlFinal": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Outeiro",
+  "archivo": "cnmv-adv-outeiro.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:06:52Z",
+  "bytes": 212203,
+  "sha256": "08cbecd53ab73ec4cc4a12ef327e23536659343f97e9f68f944346fa847287d5",
+  "nota": "Buscador de advertencias CNMV por denominación: Outeiro"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=IOD+Applications",
+  "urlFinal": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=IOD+Applications",
+  "archivo": "cnmv-adv-iod-applications.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:06:54Z",
+  "bytes": 212401,
+  "sha256": "8d0c7faad53748654af0413d098e8d878788b814d18771e94097ca3d6656afd0",
+  "nota": "Buscador de advertencias CNMV por denominación: IOD Applications"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981",
+  "urlFinal": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981",
+  "archivo": "cnmv-esi-token-city-A25988981.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:08:16Z",
+  "bytes": 223179,
+  "sha256": "2cec604e36653fe9e56f3f3413f7a84c9d489aac9e0fc4a6988caee782289dba"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=17",
+  "urlFinal": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981&vista=17",
+  "archivo": "cnmv-esi-token-city-programa.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-01T15:08:31Z",
+  "bytes": 271066,
+  "sha256": "6944d30d469b655219e7a95e1c3747d075cc5b32e96da348ffff4891cf46744e"
+ },
+ {
+  "url": "https://aliuscap.com/general-terms",
+  "archivo": "nav-alius-condiciones-generales-2026-11-01.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:02:57Z",
+  "bytes": 53338,
+  "sha256": "4773fd39890b8d0e7f7b28ceabf2661b0813ffec836b75af36b400effc237b95",
+  "nota": "Texto visible renderizado con Playwright (Chromium sin sesión)."
+ },
+ {
+  "url": "https://aliuscap.com/basic-information-for-clients",
+  "archivo": "nav-alius-informacion-basica-2026-11-01.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:03:07Z",
+  "bytes": 12247,
+  "sha256": "e8eac85100814bcbd08b47fc16392a53ad865a9200ebdba994be08c041003139",
+  "nota": "Texto visible renderizado con Playwright (Chromium sin sesión)."
+ },
+ {
+  "url": "https://aliuscap.com/projects/iodo1",
+  "archivo": "nav-iod-occasio-2026-11-01.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:10Z",
+  "bytes": 3474,
+  "sha256": "a5d95e262b8ffe74fa97529e621765118053926b2f355abcc0201aec7e94fe6d",
+  "nota": "Texto visible renderizado con Playwright (Chromium sin sesión)."
+ },
+ {
+  "url": "https://aliuscap.com/projects/casa-de-outeiro",
+  "archivo": "nav-casa-de-outeiro-boton-2026-11-01.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:20Z",
+  "bytes": 4863,
+  "sha256": "f7fabbab1d8ff92b3130795f4f437dd016e6a4d84ddb7e5e9f19fbdef32eaf10",
+  "nota": "Texto visible renderizado con Playwright (Chromium sin sesión)."
+ },
+ {
+  "url": "https://hausera.io/oportunidades/",
+  "urlFinal": "https://hausera.io/oportunidades/",
+  "archivo": "hausera-oportunidades-2026-11-02.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-02T08:42:13Z",
+  "bytes": 2391533,
+  "sha256": "c04d273d108fa74520cb4311378b0807dac24e09c59eba61066f259c3f5c0dd2"
+ },
+ {
+  "url": "https://hausera.io/oportunidades/",
+  "archivo": "hausera-oportunidades-2026-11-02.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T08:42:13Z",
+  "bytes": 4938,
+  "sha256": "f25f02bb55762e7fd13cd4999cb1b5ca833d837972f696950221dc558babef79",
+  "nota": "Texto extraído del HTML capturado (sin scripts ni estilos)."
+ }
+]

@@ -1,0 +1,232 @@
+[
+ {
+  "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+  "archivo": "fuentes/spiko-share-classes_EUTBL_yield.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:26:47Z",
+  "bytes": 259,
+  "sha256": "bcabc444226d7d0ec90d975430c9fb0a4b17a5f55755eede47616e6a4197bb6f"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+  "archivo": "fuentes/spiko-net-asset-values_EUTBL_latest.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:26:47Z",
+  "bytes": 218,
+  "sha256": "d1fcd22f2716f64d064e0c1bd4e4d847005fac1f6b3a791e40a9e6786d3d8445"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/share-classes/EUTBL",
+  "archivo": "fuentes/spiko-share-classes_EUTBL.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:26:47Z",
+  "bytes": 2098,
+  "sha256": "8935b224e68b36afc39c718f412d060e516f9a47967e2658275e3e5638771de7"
+ },
+ {
+  "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL?startDay=2026-09-28&endDay=2026-11-03",
+  "archivo": "fuentes/spiko-nav-EUTBL-history.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:27:04Z",
+  "bytes": 5251,
+  "sha256": "cffeed71fcadb29eb9dc5df4f8bd2de6c0a2a53c80898d3df5ca685348f05096"
+ },
+ {
+  "url": "https://docs.spiko.io/documentation/product_overview/fund_availability/",
+  "archivo": "fuentes/spiko-fund-availability.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:27:15Z",
+  "bytes": 32104,
+  "sha256": "46152ac3f9cb212745da17a48137c9cb85fa65640e03303ec00c20e26429215a"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+  "archivo": "fuentes/cnmv-iic-spiko.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:27:22Z",
+  "bytes": 151927,
+  "sha256": "e6745377a9a9059de0045072242634c441d8dce25a03d1b318c048621fe639c9"
+ },
+ {
+  "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+  "archivo": "fuentes/spiko-es-eutbl.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:27:33Z",
+  "bytes": 217273,
+  "sha256": "0a5a3b2a6672f08039a38beb59238e09afd8109fab93c7aabbdaba8248467eb9"
+ },
+ {
+  "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+  "archivo": "fuentes/spiko-KID_EUTBL_ES.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:27:40Z",
+  "bytes": 130290,
+  "sha256": "cb1a621d8bd212909b106c7c302164443ff463ae9d61e7780d76d74806373325"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+  "archivo": "fuentes/prosegur-terms.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:28:41Z",
+  "bytes": 73305,
+  "sha256": "f36f22152406f2471076e90bb1e9edb341d937e0a310cbd00dec9cbc53166b83"
+ },
+ {
+  "url": "https://www.prosegurcrypto.com/digital-gold",
+  "archivo": "fuentes/prosegur-digital-gold.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:28:55Z",
+  "bytes": 8629,
+  "sha256": "476fb7576be2b2350241fcbe22b977f69a328d289df2dca2033f00d046db9194"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/transparency",
+  "archivo": "fuentes/prosegur-transparency.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:29:06Z",
+  "bytes": 2409,
+  "sha256": "b1a421f5da88607a266dc76e38af599799c4010ee1ff573c7cb59ba11525baf3"
+ },
+ {
+  "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+  "archivo": "fuentes/esma-CASPS.csv",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:29:24Z",
+  "bytes": 191716,
+  "sha256": "14d19dfd3bb4bec5883e71e0d2c056dcc7807849ed1a871cb6788caae02a1f99"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=type_s:parent&fq={!parent which=type_s:parent}issuer_lei:984500BB00BN6D2B7C48&wt=json&rows=100&sort=id desc",
+  "archivo": "fuentes/esma-priii-docs-midas.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:30:14Z",
+  "bytes": 57800,
+  "sha256": "ba69f6ef28cd771c16cb1815ece2de1bc9deb0701589069fbbad90e1e62657f3"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_securities/select?…issuer_lei:984500BB00BN6D2B7C48…",
+  "archivo": "fuentes/esma-priii-sec-midas.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:30:22Z",
+  "bytes": 21472,
+  "sha256": "c5f2b95ba7e6bfb7f6d837d9414a9a9d6e62352851eec809e6d24cdf78ce0f72"
+ },
+ {
+  "url": "https://docs.midas.app/llms-full.txt",
+  "archivo": "fuentes/midas-llms-full.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:30:28Z",
+  "bytes": 217884,
+  "sha256": "aca8b6c7501587594d206d89edb086110ad086c11ad4d245f88890e3ac99932a"
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+  "archivo": "fuentes/mtbill-FT.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:31:03Z",
+  "bytes": 1248073,
+  "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a"
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
+  "archivo": "fuentes/mtbill-KID-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:31:03Z",
+  "bytes": 154610,
+  "sha256": "6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545"
+ },
+ {
+  "url": "eth_call latestRoundData/decimals 0x056339C044055819E8Db84E71f5f2E1F536b2E5b via https://ethereum-rpc.publicnode.com",
+  "archivo": "fuentes/onchain-mtbill-oracle-20261102.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:31:17Z",
+  "bytes": 464,
+  "sha256": "730835d4c619f6a76c7c1a61e9da8e73b87e39f2ce2259d47ee8f2534a57d366"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+  "archivo": "fuentes/outeiro-api.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:32:07Z",
+  "bytes": 48606,
+  "sha256": "00af0e4d7007f03c0455d9b8f526effb030fc50d91c7973203247edf799c13c5"
+ },
+ {
+  "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+  "archivo": "fuentes/outeiro-FDF-v5.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:32:14Z",
+  "bytes": 429084,
+  "sha256": "147cd9729caaf06be2afe5d894303c964bac2be0777116006399f81d800e0de3"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793",
+  "archivo": "fuentes/cnmv-psfp-11.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:32:26Z",
+  "bytes": 155452,
+  "sha256": "8a4c8171e27a806c0b19470f5f1ff8e765866f9156c3373a15e13b862a90656c"
+ },
+ {
+  "url": "https://aliuscap.com/projects/casa-de-outeiro",
+  "archivo": "fuentes/alius-outeiro.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:32:45Z",
+  "bytes": 4815,
+  "sha256": "bf5fc3f0f7f865cdcaf2d3be696cfde1d12d909267ebbb027737bb97fd131199"
+ },
+ {
+  "url": "https://casadeouteiro.com/emision-capital/",
+  "archivo": "fuentes/outeiro-emisor.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:33:13Z",
+  "bytes": 5776,
+  "sha256": "aa638ca073cfe3d8b72763da8ec89efc97d85e112a5c954f65a2717fe3d6e567"
+ },
+ {
+  "url": "https://hausera.io/oportunidades/",
+  "archivo": "fuentes/hausera-oportunidades.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:34:10Z",
+  "bytes": 5373,
+  "sha256": "b7cd0cd10c0ed1e2b7f77971a0d5e462f540c9ba6308b84b1673562d21d3271c"
+ },
+ {
+  "url": "https://hausera.io/terms/",
+  "archivo": "fuentes/hausera-terms.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:34:18Z",
+  "bytes": 53675,
+  "sha256": "4abef7f57289b762022f092146cf462ec25534fea7ca877223d5d3363972097f"
+ },
+ {
+  "url": "https://hausera.io/oportunidades/",
+  "archivo": "fuentes/hausera-oportunidades.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:34:28Z",
+  "bytes": 2384532,
+  "sha256": "85e7e2083f9cd627afd5dbce0f2cc7fb8c0128f8bc9437f599b23cdec11b591b"
+ },
+ {
+  "url": "https://hausera.io/oportunidades/alicante-2/ · https://hausera.io/alicante-2/",
+  "archivo": null,
+  "http": 404,
+  "consultadoUtc": "2026-11-02T16:34:49Z"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+  "archivo": "fuentes/cnmv-psfp-listado.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:34:51Z",
+  "bytes": 165407,
+  "sha256": "4fd600d11b3e7c20912bf553e861259816096d7548bf984b88a849c1aef2b4dc"
+ },
+ {
+  "url": "https://hausera.io/faq/",
+  "archivo": "fuentes/hausera-faq.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-02T16:35:19Z",
+  "bytes": 3400,
+  "sha256": "bc1b0d67d7bc407289ca38dfc86fdc7bda8fa985de816374b02a44da321155b6"
+ }
+]

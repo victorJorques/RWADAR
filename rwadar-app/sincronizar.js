@@ -149,6 +149,8 @@ function ofertaPublica(o) {
 
 // Solo se leen los literales JSON emitidos por este sincronizador. Acorn
 // localiza sus límites sin ejecutar JavaScript, ni siquiera el resto de la web.
+// Comprueba que la copia anterior es íntegra. Desde el 02/11/2026 su manifiesto
+// ya no es un mínimo: el lote nuevo puede tener más o menos fichas.
 function manifiestoMinimoFuente(script, manifiesto, hoy) {
   const ast = parse(script, { ecmaVersion: 'latest' });
   const leer = nombre => {

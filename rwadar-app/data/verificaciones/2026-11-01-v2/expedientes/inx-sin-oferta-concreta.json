@@ -1,0 +1,136 @@
+{
+  "slug": "inx-sin-oferta-concreta",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "INX",
+  "plataformaSlug": "inx",
+  "entidadComercializadora": "INX Securities, LLC (EE. UU.)",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": "US",
+  "identificador": null,
+  "moneda": "USD",
+  "documentos": [
+    {
+      "titulo": "INX funds availability disclosure",
+      "url": "https://inx.co/funds-availability-disclosure",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "FINRA BrokerCheck — INX Securities, LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FINRA BrokerCheck",
+      "entidad": null,
+      "numero": null,
+      "url": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+      "alcance": "Según el radar del 22/10/2026 (estado confirmada_regulador): INX Securities, LLC figura en FINRA como broker-dealer registrado y opera un ATS. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    },
+    {
+      "regulador": "INX funds availability disclosure",
+      "entidad": null,
+      "numero": null,
+      "url": "https://inx.co/funds-availability-disclosure",
+      "alcance": "Según el radar del 22/10/2026 (estado confirmada_regulador): INX Securities, LLC figura en FINRA como broker-dealer registrado y opera un ATS. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "INX",
+      "resultado": "sin coincidencias con INX: solo nombres parecidos sin relación (p. ej. NEXCOINXT 29/06/2026, ECOFINX CAPITAL 23/02/2026, NEXCOINX 09/02/2026)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:13:14Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": null,
+      "dato": "INX Securities, LLC figura en FINRA como broker-dealer registrado y opera un ATS.",
+      "fuentePrimaria": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+      "localizador": "FINRA BrokerCheck — INX Securities, LLC (radar canónico 26, bloque licenciaRegistro)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": "La documentación describe financiación en USD para usuarios estadounidenses y no estadounidenses, pero no acredita admisión desde España ni elegibilidad para cada valor.",
+      "fuentePrimaria": "https://inx.co/funds-availability-disclosure",
+      "localizador": "INX funds availability disclosure (radar canónico 26, bloque acceso)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": null,
+      "dato": "INX One sigue activo y aparece integrado con el ecosistema Republic.",
+      "fuentePrimaria": "https://inx.co/",
+      "localizador": "INX One (radar canónico 26, bloque estadoOperativo)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Según el radar, INX Securities, LLC es broker-dealer de la FINRA y opera un ATS. No cotiza en Nasdaq."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No se identificó ni fechó ninguna oferta concreta en este ciclo."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "La documentación (radar) habla de financiación en USD para usuarios de EE. UU. y de fuera, pero no acredita la admisión desde España."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple",
+      "nota": "No hay advertencias de la CNMV contra INX; los resultados parecidos son de otras entidades."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Broker y ATS de EE. UU. integrado en el ecosistema Republic.",
+    "porQueNo": "Mercado de EE. UU. sin elegibilidad comprobada para España."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir: ATS de EE. UU. (FINRA) sin elegibilidad desde España acreditada ni un valor concreto examinado.",
+  "bloqueos": [
+    "No se examinó ninguna oferta concreta con fuente primaria en este ciclo: la sesión se cortó por límite de uso y el coordinador cerró la fase de captura antes de llegar a esta plataforma. Los datos de licencia y acceso vienen del radar del 22/10/2026."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:13:14Z",
+    "finUtc": "2026-11-02T08:45:23Z"
+  }
+}

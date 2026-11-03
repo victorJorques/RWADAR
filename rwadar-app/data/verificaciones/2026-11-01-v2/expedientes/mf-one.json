@@ -1,0 +1,286 @@
+{
+ "slug": "mf-one",
+ "tipoExpediente": "publicada",
+ "grupo": "midas",
+ "proveedor": "Midas",
+ "plataformaSlug": "midas",
+ "entidadComercializadora": "Midas Software GmbH (web midas.app)",
+ "emisor": "Midas Software GmbH (HRB 254645, LEI 984500BB00BN6D2B7C48), oferta exenta de folleto",
+ "vehiculo": "mToken de Midas Software GmbH bajo memorando privado (PPM); gestor de estrategia Fasanara Capital. No figura en el folleto base 2026.",
+ "token": "mF-ONE; Ethereum 0x238a700eD6165261Cf8b2e544ba797BC11e466Ba (también solmF-ONE en Solana)",
+ "derechoAdquirido": "Exposición contractual a la estrategia de crédito de Fasanara frente al emisor alemán (sin compartimento segregado, según Legal Structure). Términos exactos solo en el PPM, no leído.",
+ "jurisdiccion": "DE",
+ "identificador": null,
+ "moneda": "USD (suscripción en USDC)",
+ "documentos": [
+  {
+   "titulo": "Private Placement Memorandum mF-ONE (DocSend, requiere lista blanca)",
+   "url": "https://midas.docsend.com/v/qbpr5/mfone-ppm",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  },
+  {
+   "titulo": "docs.midas.app · llms-full.txt (Legal Structure, Eligibility, Smart Contracts Registry)",
+   "url": "https://docs.midas.app/llms-full.txt",
+   "versionOFecha": "consulta 01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  },
+  {
+   "titulo": "Bundle JS de midas.app (mapa de emisores y documentos)",
+   "url": "https://midas.app/assets/main-DOxid0Zj.js",
+   "versionOFecha": "consulta 01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "ESMA (registro de folletos)",
+   "entidad": "Midas Software GmbH",
+   "numero": null,
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_securities",
+   "alcance": "Ningún folleto ni Condiciones Finales para mF-ONE.",
+   "consultadoUtc": "2026-11-01T15:01:41Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "consultadoUtc": "2026-11-01T15:10:04Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Midas Software",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas%20Software",
+   "consultadoUtc": "2026-11-01T15:10:06Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Fasanara",
+   "resultado": "sin coincidencias (listado de entidades advertidas, tipo «No autorizadas»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Fasanara",
+   "consultadoUtc": "2026-11-01T15:10:10Z"
+  },
+  {
+   "regulador": "FMA Liechtenstein (registro de entidades supervisadas, API ws-api.llv.li)",
+   "busqueda": "Midas",
+   "resultado": "sin coincidencias: Midas no figura como entidad supervisada por la FMA (coherente con el folleto: la FMA solo aprueba el folleto)",
+   "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Midas&searchType=ALL",
+   "consultadoUtc": "2026-11-01T15:10:24Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "entidad",
+   "literal": "MFONE → Midas Software GmbH · framework «Exempt offer» · offer: exempt",
+   "dato": "MFONE → Midas Software GmbH · framework «Exempt offer» · offer: exempt",
+   "fuentePrimaria": "https://midas.app/assets/main-DOxid0Zj.js",
+   "localizador": "Bundle JS de midas.app, mapa de emisores (fuentes/midas-app-bundle-extracto-emisores.txt)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:10:46Z",
+   "alcanceYLimites": "Configuración que la web usa para la ficha; no sustituye al memorando de oferta, que no se pudo leer.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "documentos",
+   "literal": "memorandum: {url: `https://midas.docsend.com/v/qbpr5/mfone-ppm`, requiresGreenlist: !0}",
+   "dato": "documentación legal en DocSend, solo para direcciones en lista blanca",
+   "fuentePrimaria": "https://midas.app/assets/main-DOxid0Zj.js",
+   "localizador": "Bundle JS, configuración de documentos legales",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:10:46Z",
+   "alcanceYLimites": "No leída: DocSend pide identificarse y el encargo prohíbe formularios. Sin folleto aprobado en el registro ESMA para este producto.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "estado",
+   "literal": "Vault de emisión: paused()=true, greenlistEnabled()=true",
+   "dato": "suscripción pausada en el vault de Ethereum",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x8D51DBC85cEef637c97D02bdaAbb5E274850e68C · vault de emisión 0x41438435c20B1C2f1fcA702d387889F346A0C3DE · vault de reembolso 0x44b0440e35c596e858cEA433D0d82F5a985fD19C",
+   "localizador": "Lectura on-chain, bloque latest",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Solo el vault de Ethereum listado en el Smart Contracts Registry; otras redes no se leyeron. La página de producto (estado «minting») está bloqueada por Cloudflare.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "minMTokenAmountForFirstDeposit() = 148000000000000000000000",
+   "dato": null,
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x8D51DBC85cEef637c97D02bdaAbb5E274850e68C · vault de emisión 0x41438435c20B1C2f1fcA702d387889F346A0C3DE · vault de reembolso 0x44b0440e35c596e858cEA433D0d82F5a985fD19C",
+   "localizador": "Vault de emisión, parámetro de primer depósito (en unidades del token según el código público de midas-apps/contracts)",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Indicio técnico: 148.000 mF-ONE ≈ 167.700 USD al VL de 30/10. No es un mínimo publicado en un documento legal leído; no se muestra en la tarjeta como mínimo oficial.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "precio",
+   "literal": "latestRoundData: valor 1,1334 USD · updatedAt 2026-10-30T14:30:23Z",
+   "dato": "VL 1,1334 USD por token (2026-10-30)",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x8D51DBC85cEef637c97D02bdaAbb5E274850e68C · vault de emisión 0x41438435c20B1C2f1fcA702d387889F346A0C3DE · vault de reembolso 0x44b0440e35c596e858cEA433D0d82F5a985fD19C",
+   "localizador": "Oráculo, ronda 320",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Precio de referencia publicado en cadena; no es rentabilidad.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida",
+   "literal": "Vault de reembolso: instantFee()=100 (1 %=100) · instantDailyLimit()=200.000 mF-ONE · greenlistEnabled()=true · paused()=false",
+   "dato": "reembolso inmediato con comisión técnica 1.00 % y límite diario; solo lista blanca",
+   "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com · oráculo 0x8D51DBC85cEef637c97D02bdaAbb5E274850e68C · vault de emisión 0x41438435c20B1C2f1fcA702d387889F346A0C3DE · vault de reembolso 0x44b0440e35c596e858cEA433D0d82F5a985fD19C",
+   "localizador": "Vault de reembolso, parámetros",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:05:11Z",
+   "alcanceYLimites": "Parámetros técnicos; las condiciones contractuales de reembolso (memorando) no se pudieron leer. La ficha de la web avisa de que los plazos de reembolso son indicativos (visto el 23/10, no hoy).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Professional Whitelisting: Certain strategies are legally restricted to professional or institutional investors. These products require a manual onboarding process and explicit wallet whitelisting",
+   "dato": "acceso restringido a direcciones en lista blanca",
+   "fuentePrimaria": "https://docs.midas.app/llms-full.txt",
+   "localizador": "Eligibility & Compliance; Quick Guide («Get access»)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T15:02:54Z",
+   "alcanceYLimites": "La documentación no dice qué productos concretos son solo para profesionales; el producto tiene lista blanca activa en cadena y es oferta exenta de folleto.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "supervision",
+   "literal": "Registro ESMA: 38 valores de Midas Software GmbH con Condiciones Finales; ninguno corresponde a este producto",
+   "dato": "sin folleto aprobado ni pasaporte a España",
+   "fuentePrimaria": "https://registers.esma.europa.eu/solr/esma_registers_priii_securities (búsqueda por LEI 984500BB00BN6D2B7C48)",
+   "localizador": "fuentes/esma-priii-securities-midas-software.json",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T15:01:41Z",
+   "alcanceYLimites": "Coherente con «oferta exenta»: no hay folleto ni KID públicos.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "MANAGEMENT 0.6% annual on AUM · PERFORMANCE 0% on yield/raw performance",
+   "dato": "gestión 0,6 % anual; éxito 0 %",
+   "fuentePrimaria": "https://midas.app/mfone",
+   "localizador": "Fee structure (captura de navegador del 23/10/2026)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-10-23T19:00:00Z",
+   "alcanceYLimites": "No revalidado hoy (403). On-chain: comisión de suscripción instantánea 0,10 % y de reembolso inmediato 1,00 %.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_cumple",
+   "nota": "Oferta exenta sin folleto ni KID; documentación solo para lista blanca; el emisor no está supervisado."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "Vault de emisión de Ethereum pausado el 01/11/2026; ficha web bloqueada."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Lista blanca activa y primer depósito técnico de 148.000 tokens; no hay acceso minorista documentado desde España."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Sin advertencias CNMV; riesgos del PPM no leídos."
+  }
+ },
+ "estadoOferta": "cerrada",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "estado",
+   "antes": "principal, APY 7,43 % (22/10)",
+   "ahora": "suscripción pausada en cadena (01/11) y APY no verificable",
+   "fuente": "vault 0x4143…C3DE paused()=true",
+   "critico": true
+  },
+  {
+   "campo": "rentabilidad",
+   "antes": "7,43 % APY 7 días",
+   "ahora": "null",
+   "fuente": "midas.app/mfone 403",
+   "critico": true
+  },
+  {
+   "campo": "accesoEspana",
+   "antes": "null",
+   "ahora": "oferta exenta, solo lista blanca; no apta para el particular común",
+   "fuente": "bundle midas.app + Eligibility & Compliance",
+   "critico": true
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "mF-ONE",
+  "categoria": "Crédito privado",
+  "pais": "DE",
+  "tipo": "rendimiento",
+  "coleccion": "secundario",
+  "resumen": "Token de Midas Software GmbH ligado a la estrategia de crédito de Fasanara, ofrecido como oferta exenta de folleto a direcciones en lista blanca.",
+  "rentabilidad": null,
+  "metricas": [
+   {
+    "etiqueta": "Moneda",
+    "valor": "USD · USDC"
+   },
+   {
+    "etiqueta": "Oferta",
+    "valor": "Exenta de folleto · solo lista blanca"
+   },
+   {
+    "etiqueta": "Valor por token · 30/10/2026",
+    "valor": "1,1334 USD (oráculo)"
+   }
+  ],
+  "avisos": [
+   "Sin folleto ni KID públicos: la documentación legal solo se entrega a direcciones aprobadas.",
+   "El 01/11/2026 la suscripción estaba pausada en el contrato de Ethereum."
+  ],
+  "url": "https://midas.app/mfone",
+  "fuentesActuales": [
+   "https://docs.midas.app/llms-full.txt",
+   "https://midas.app/assets/main-DOxid0Zj.js"
+  ],
+  "lugar": "Londres · Reino Unido",
+  "pasos": [
+   "Solicitas acceso",
+   "Lista blanca",
+   "Reembolso al emisor"
+  ],
+  "concepto": "Ilustración editorial de facturas comerciales transformadas en fichas sobre un mostrador"
+ },
+ "decision": "retirar_propuesta",
+ "motivoDecision": "Resta confianza al cliente particular: oferta exenta sin folleto ni KID, documentación solo para lista blanca, suscripción pausada en cadena el 01/11 y APY no verificable desde el 22/10. Si Víctor prefiere no retirarla, agrupar las de Fasanara (mF-ONE, mGLO, mGLOBAL, mGLOeuro) en una ficha secundaria «solo profesionales».",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Estrategia de crédito de Fasanara con VL publicado en cadena a diario.",
+  "porQueNo": "Oferta exenta para lista blanca, sin documentos públicos y con la suscripción pausada el 01/11/2026."
+ },
+ "bloqueos": [
+  "midas.app/mfone: 403 de Cloudflare (APY, comisiones y estado no revalidados).",
+  "PPM en DocSend con identificación y lista blanca: no leído por las reglas del encargo.",
+  "Solo se leyeron contratos de Ethereum; solmF-ONE (Solana) no comprobado."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:11:07Z",
+  "finUtc": "2026-11-02T08:46:15Z",
+  "nota": "Sesión cortada por límite de uso entre 13:12 y 14:57 UTC; las horas de cada claim son las de la lectura real (inventario-consultas.json)."
+ }
+}

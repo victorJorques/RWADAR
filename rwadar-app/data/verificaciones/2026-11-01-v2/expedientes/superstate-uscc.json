@@ -1,0 +1,80 @@
+{
+ "slug": "superstate-uscc",
+ "tipoExpediente": "candidata",
+ "grupo": "radar-tesoro",
+ "proveedor": "Superstate",
+ "plataformaSlug": "superstate",
+ "entidadComercializadora": null,
+ "emisor": "No verificado",
+ "vehiculo": "Fondo de estrategia de crédito/base cripto (no examinado)",
+ "token": "USCC",
+ "derechoAdquirido": "No verificado",
+ "jurisdiccion": "US",
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Superstate (entidades no autorizadas)",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Superstate",
+   "consultadoUtc": "2026-11-01T15:10:24Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "accesoEspana",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": null,
+   "localizador": null,
+   "fechaDato": null,
+   "consultadoUtc": null,
+   "alcanceYLimites": "Ficha de USCC no leída en este ciclo; el radar solo documenta USTB.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "No se consultó en este ciclo el registro del regulador del vehículo."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Estado del producto no releído el 01/11/2026; el radar lo observó en la web el 22/10/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "No examinado."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Riesgos del documento del producto no leídos en este ciclo; sin advertencias de la CNMV en la búsqueda por nombre salvo lo indicado."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": null,
+  "porQueNo": "Sin verificación primaria; probablemente solo cualificados."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No examinado con fuente primaria; por lo documentado en USTB, Superstate dirige sus fondos a inversores cualificados de EE. UU. No se propone.",
+ "bloqueos": [
+  "Fase de captura cerrada por el coordinador: expediente breve con la evidencia del radar del 22/10/2026."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T15:10:14Z",
+  "finUtc": "2026-11-02T08:45:38Z"
+ }
+}

@@ -1,0 +1,80 @@
+{
+ "slug": "superstate-ustb",
+ "tipoExpediente": "candidata",
+ "grupo": "radar-tesoro",
+ "proveedor": "Superstate",
+ "plataformaSlug": "superstate",
+ "entidadComercializadora": null,
+ "emisor": "Invesco Short Duration US Government Securities Fund (gestor Invesco Advisers; agente de transferencias Superstate Services, según la ficha)",
+ "vehiculo": "Fondo no registrado como sociedad de inversión en EE. UU.",
+ "token": "USTB",
+ "derechoAdquirido": "Participaciones del fondo",
+ "jurisdiccion": "US",
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Superstate (entidades no autorizadas)",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Superstate",
+   "consultadoUtc": "2026-11-01T15:10:24Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "accesoEspana",
+   "literal": "USTB exige acreditado y qualified purchaser; no es oferta minorista general.",
+   "dato": null,
+   "fuentePrimaria": "https://superstate.com/assets/ustb",
+   "localizador": "rwadar-app/data/verificaciones/2026-10-23-v2/radar-canonico-26.json · fuente superstate-ustb (verificada por el radar el 22/10/2026)",
+   "fechaDato": "2026-10-22",
+   "consultadoUtc": null,
+   "alcanceYLimites": "Texto del radar canónico, no literal del documento; la fuente primaria no se releyó en este ciclo (01/11/2026)",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "No se consultó en este ciclo el registro del regulador del vehículo."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Estado del producto no releído el 01/11/2026; el radar lo observó en la web el 22/10/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Solo inversores acreditados y qualified purchasers."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Riesgos del documento del producto no leídos en este ciclo; sin advertencias de la CNMV en la búsqueda por nombre salvo lo indicado."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "solo_acreditados",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": null,
+  "porQueNo": "Solo acreditados y qualified purchasers."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Exige ser inversor acreditado y qualified purchaser (EE. UU.): excluye al particular en España.",
+ "bloqueos": [
+  "Fase de captura cerrada por el coordinador: expediente breve con la evidencia del radar del 22/10/2026."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T15:10:14Z",
+  "finUtc": "2026-11-02T08:45:38Z"
+ }
+}

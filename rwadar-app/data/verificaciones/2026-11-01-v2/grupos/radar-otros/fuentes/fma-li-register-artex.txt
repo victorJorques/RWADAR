@@ -1,0 +1,61 @@
+URL: https://register.fma-li.li/search?q=ARTEX%20Global%20Markets
+FINAL: https://register.fma-li.li/search?q=ARTEX%20Global%20Markets
+CONSULTADO: 2026-11-01T15:03:17Z
+HTTP: 200
+
+Register Startseite
+FMA Website
+English
+FMA-Register
+
+Die FMA Liechtenstein führt gemäss den Vorgaben der einzelnen Spezialgesetze Datenbanken und Listen über die in ihren Tätigkeitsbereich fallenden inländischen und vom Ausland in Liechtenstein tätigen Finanzintermediäre.
+
+Die im Register abrufbaren Daten wurden sorgfältig zusammengestellt und werden gemäss den gesetzlichen Anforderungen aktualisiert. Für die Vollständigkeit und Richtigkeit der Angaben wird keine Haftung übernommen.
+
+Die Mutationslisten nach Quartal finden Sie hier.
+
+Diese Kategorien sind noch nicht (vollumfänglich) in der Datenbank erfasst und stehen daher nur als PDF zur Verfügung. Die Inhalte werden bei der Suche nicht berücksichtigt. Wir arbeiten an der Übernahme in die Datenbank.
+
+PDF-Kategorie
+Zahlungsinstitutsregister
+In Liquidation befindliche und liquidierte Investmentunternehmen (Fonds), AIF und OGAW ab dem 01.01.2023
+In Liquidation befindliche Investmentunternehmen (Fonds) vor dem 03.06.2017
+In Liquidation befindliche und liquidierte Investmentunternehmen/OGAW/AIF vom 02.06.2017 bis 31.12.2022
+Bewilligte bzw. bescheinigte Investmentunternehmen (Fonds), AIF und OGAW
+Liste der schweizerischen Versicherungsunternehmen (freier Dienstleistungs- oder Niederlassungsverkehr in Liechtenstein)
+Liste gebilligte Prospekte (bis 20.07.2019)
+Liste gebilligte Prospekte (ab 21.07.2019)
+Europäisch gedeckte Schuldverschreibungen
+Fonds mit Vertriebszulassung im Fürstentum Liechtenstein
+Bescheinigte Investmentunternehmen nach dem Gesetz vom 02. Dezember 2015 über
+Liste der ausländischen Versicherungsunternehmen (EWR) (freier Dienstleistungsverkehr in Liechtenstein)
+Finanzholdinggesellschaften
+FMA-Registernummer
+Kategorie
+bitte wählen
+Gesetz
+bitte wählen
+Status
+Aktive Einträge
+Inaktive Einträge
+Alle Einträge
+Suchen
+© 2026 Finanzmarktaufsicht Liechtenstein, 1.2.22
+.Impressum.Rechtshinweise.Datenschutz
+ 
+ 
+ 
+ 
+
+==== LINKS ====
+https://register.fma-li.li/search?lang=de | 
+http://register.fma-li.li/ | Register Startseite
+https://www.fma-li.li/ | FMA Website
+https://fma-li.li/de/standort/finanzmarktteilnehmer | hier
+https://fma-li.li/de/impressum | Impressum
+https://fma-li.li/de/rechtshinweis | Rechtshinweise
+https://fma-li.li/de/die-fma/datenschutz | Datenschutz
+https://twitter.com/fma_li?lang=de | 
+https://www.linkedin.com/company/fma---financial-market-authority-liechtenstein/ | 
+https://www.xing.com/company/fmaliechtenstein | 
+https://www.instagram.com/fma_liechtenstein/?hl=de | 

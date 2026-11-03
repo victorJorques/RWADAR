@@ -1,0 +1,80 @@
+{
+ "slug": "franklin-templeton-fobxx",
+ "tipoExpediente": "candidata",
+ "grupo": "radar-tesoro",
+ "proveedor": "Franklin Templeton",
+ "plataformaSlug": "franklin-templeton",
+ "entidadComercializadora": null,
+ "emisor": "Franklin Templeton Trust (EE. UU.)",
+ "vehiculo": "Franklin OnChain U.S. Government Money Fund (FOBXX), fondo monetario registrado en EE. UU.",
+ "token": "BENJI (FOBXX)",
+ "derechoAdquirido": "Acciones del fondo estadounidense",
+ "jurisdiccion": "US",
+ "identificador": null,
+ "moneda": "USD",
+ "documentos": [],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Franklin Templeton (entidades no autorizadas)",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Franklin%20Templeton",
+   "consultadoUtc": "2026-11-01T15:10:36Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "accesoEspana",
+   "literal": "[El folleto de 1/08/2026] indica que el fondo se dirige a residentes en EE. UU. y que no está registrado ni autorizado para distribución en ningún país de la UE/EEE, España incluida.",
+   "dato": null,
+   "fuentePrimaria": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+   "localizador": "rwadar-app/data/verificaciones/2026-10-23-v2/radar-canonico-26.json · fuente franklin-prospectus (verificada por el radar el 22/10/2026)",
+   "fechaDato": "2026-10-22",
+   "consultadoUtc": null,
+   "alcanceYLimites": "Texto del radar canónico, no literal del documento; la fuente primaria no se releyó en este ciclo (01/11/2026)",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "No se consultó en este ciclo el registro del regulador del vehículo."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Estado del producto no releído el 01/11/2026; el radar lo observó en la web el 22/10/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "No autorizado para distribución en la UE/EEE; dirigido a residentes en EE. UU."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Riesgos del documento del producto no leídos en este ciclo; sin advertencias de la CNMV en la búsqueda por nombre salvo lo indicado."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "excluido",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": null,
+  "porQueNo": "Excluido en la UE/EEE."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "El folleto del fondo estadounidense excluye la distribución en la UE/EEE, España incluida. Su equivalente europeo es grBENJI (expediente franklin-templeton-grbenji).",
+ "bloqueos": [
+  "Fase de captura cerrada por el coordinador: expediente breve con la evidencia del radar del 22/10/2026."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T15:10:14Z",
+  "finUtc": "2026-11-02T08:45:38Z"
+ }
+}

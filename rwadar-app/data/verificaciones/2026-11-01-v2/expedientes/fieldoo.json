@@ -1,0 +1,113 @@
+{
+  "slug": "fieldoo",
+  "tipoExpediente": "candidata",
+  "grupo": "aktionariat",
+  "proveedor": "Aktionariat (directorio «Companies with Tokenized Shares»)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Fieldoo AG (vende sus propias acciones; tecnología de Aktionariat AG)",
+  "emisor": "Fieldoo AG",
+  "vehiculo": "Sociedad anónima suiza (AG/SA); sin SPV",
+  "token": "FDOS en Optimism (contrato 0x81fa06b52803788685508d2997b472045d4f2504)",
+  "derechoAdquirido": "Acciones nominativas tokenizadas de Fieldoo AG.",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-195.865.186; ticker FDOS (Optimism)",
+  "moneda": "CHF / XCHF",
+  "documentos": [],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (Zefix / ZefixREST)",
+      "entidad": "Fieldoo AG",
+      "numero": "CHE-195.865.186",
+      "url": "https://www.zefix.ch/en/search/entity/list?name=Fieldoo%20AG",
+      "alcance": "Sociedad anónima (AG) inscrita, sede Zürich, estado EXISTIEREND. Capital 100.000 CHF (SHAB 16/05/2022); sin revisora inscrita. Es un registro mercantil, no una licencia financiera.",
+      "consultadoUtc": "2026-11-02T08:48:08Z"
+    },
+    {
+      "regulador": "FINMA",
+      "entidad": "—",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "alcance": "No se ha localizado autorización FINMA. El propio portal declara que el mercado secundario es una «non-commercial trading facility» no sujeta a supervisión prudencial; el registro de autorizados de FINMA no se consultó por nombre (pendiente).",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "FINMA",
+      "busqueda": "Fieldoo",
+      "resultado": "sin coincidencias (lista de advertencias completa, 2.401 entradas, búsqueda local por nombre)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-01T15:08:30Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Fieldoo",
+      "resultado": "no consultado: la tanda de búsquedas en el buscador de advertencias de la CNMV se cortó por tiempo (bloqueo técnico); pendiente",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx",
+      "consultadoUtc": null
+    }
+  ],
+  "claims": [
+    {
+      "campo": "descubrimiento",
+      "literal": "Fieldoo AG FDOS Sport Tech 6'827'706 CHF",
+      "dato": "TRADED",
+      "fuentePrimaria": "https://www.aktionariat.com/tokenized-companies",
+      "localizador": "Directorio, API getTokenizedCompanies (tokenTradeStatus)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T13:11:40Z",
+      "alcanceYLimites": "Solo para descubrir; cifras autodeclaradas por el emisor según el propio directorio.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "actividad",
+      "literal": "2026-06-11 PRIMARY 150 0.75",
+      "dato": "Última compra 11/06/2026; 15 accionistas",
+      "fuentePrimaria": "https://shares.fieldoo.com/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=3173 (21 operaciones)",
+      "fechaDato": "2026-06-11",
+      "consultadoUtc": "2026-11-02T08:47:43Z",
+      "alcanceYLimites": "Usa CryptoFranc (XCHF), moneda ya sustituida en el resto de portales por ZCHF.",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita; sin revisora."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "Actividad mínima (21 operaciones, 15 accionistas)."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": ""
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_verificable",
+      "nota": ""
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "decision": "no_admitir",
+  "motivoDecision": "Actividad mínima (15 accionistas), sin documentos ni acceso desde España documentados.",
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "50 CHF",
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Mínimo bajo (50 CHF).",
+    "porQueNo": "Casi sin actividad ni documentación."
+  },
+  "bloqueos": [],
+  "consulta": {
+    "inicioUtc": "2026-11-02T08:47:42Z",
+    "finUtc": "2026-11-02T08:49:03Z"
+  }
+}

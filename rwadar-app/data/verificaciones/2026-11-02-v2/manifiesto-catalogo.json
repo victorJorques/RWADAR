@@ -1,0 +1,10 @@
+{
+  "version_esquema": 2,
+  "plataformas_esperadas": 26,
+  "ofertas_esperadas": 23,
+  "colecciones_esperadas": {
+    "principales": 6,
+    "secundario": 14,
+    "en_camino": 3
+  }
+}

@@ -1,0 +1,407 @@
+                             ACUERDO DE SUSCRIPCIÓN CONFIDENCIAL
+Este Acuerdo de Suscripción Confidencial (el "Acuerdo") se celebra en la fecha indicada en la Ficha de
+Suscripción entre la sociedad identificada como Emisor y la persona física o jurídica identificada como
+Inversor. La Ficha de Suscripción forma parte integrante del Acuerdo.
+                                            FICHA DE SUSCRIPCIÓN
+A. Datos de la emisión
+ Denominación legal del Emisor                             Series RNT SPV 26 LLC
+
+ Nombre comercial de la emisión                            Miami 7 Alturia (MIA-7)
+
+ Símbolo o denominación del token                          MIA-7 (Series RNT SPV 26 ReentalToken)
+
+                                                           Memorando Informativo de Oferta Privada - Series RNT
+ PPM aplicable
+                                                           SPV 26 LLC (MIA-7)
+
+ Fecha y versión del PPM                                   13 de octubre de 2026
+
+                                                           Operating Agreement de Series RNT SPV 26 LLC
+ Operating Agreement aplicable                             correspondiente a MIA-7, puesto a disposición del
+                                                           Inversor conjuntamente con este Acuerdo
+
+ Precio unitario del token                                 100 USD
+B. Datos del tokenholder y de la suscripción
+ Nombre o denominación legal                               {{tokenholder_legal_name}}
+
+ Número de identificación                                  {{tokenholder_id}}
+
+ Correo electrónico de notificaciones                      {{tokenholder_email}}
+
+ País de residencia fiscal                                 {{tokenholder_tax_residence}}
+
+ Status Reental, si resulta aplicable​
+                                                           {{tokenholder_reental_status}}
+ (Reentel / Reentel Pro / Super Reentel)
+
+ Wallet receptora                                          {{tokenholder_wallet}}
+
+ Número de tokens suscritos                                {{subscribed_token_quantity}}
+
+ Precio total de compra y moneda​
+                                                           {{total_purchase_price_and_currency}}
+ efectivamente aportada
+
+ Moneda y medio de pago (USD, EUR, USDT u otro medio
+                                                           {{payment_currency_and_method}}
+ admitido)
+
+ Fecha de suscripción                                      {{subscription_date}}
+
+ Firmante autorizado y cargo (solo si el​
+                                                           {{authorized_signatory_name_and_title}}
+ inversor es una entidad)
+Los campos anteriores constituyen los únicos datos variables visibles del documento. La información
+económica, jurídica y operativa de la emisión se recoge en los Documentos de la Oferta identificados en
+esta ficha.
+                                            DEFINICIONES ECONÓMICAS
+Los términos económicos definidos en el Operating Agreement tendrán en este Acuerdo el mismo
+significado que se les atribuye en aquel. A efectos exclusivamente informativos y sin sustituir, ampliar
+
+
+
+
+                                                       1
+ni modificar dichas definiciones, se identifican a continuación los principales conceptos económicos
+relacionados con la suscripción. En caso de diferencia terminológica o interpretativa, prevalecerán la
+definición y las reglas de cálculo contenidas en el Operating Agreement. Los importes, porcentajes,
+prioridades, fechas, comisiones y demás condiciones particulares serán los establecidos en los Documentos
+de la Oferta.
+Aportación de Capital. El importe efectivamente aportado por el Inversor y aceptado por el Emisor en
+relación con la adquisición de los Tokens de Compra, determinado conforme al Operating Agreement y
+reflejado en los libros y registros del Emisor.
+Efectivo Disponible. El efectivo que pueda destinarse legalmente a distribución conforme a la definición,
+deducciones, reservas y determinaciones previstas en el Operating Agreement. La existencia de ingresos o
+beneficios contables no implica necesariamente la existencia de Efectivo Disponible.
+Distribuciones. Los pagos que, en su caso, efectúe el Emisor a los Miembros con arreglo a las fuentes,
+prioridades, condiciones y limitaciones establecidas en el Operating Agreement y descritas en el PPM. En
+MIA-7 se prevé el pago del capital y, si existe, del rendimiento a la salida de la inversión subyacente y una
+vez recibidos los fondos distribuibles por el Emisor. No se prevén distribuciones mensuales al Inversor.
+Evento de Liquidez. El evento o transacción que tenga esta consideración conforme a la definición
+contenida en el Operating Agreement y, cuando así se prevea, complementada por el PPM.
+Ingresos Netos de una Transacción de Capital. Los ingresos netos en efectivo derivados de una
+Transacción de Capital, calculados después de las deducciones, pagos y reservas establecidos en el
+Operating Agreement.
+Porcentaje de Participación. La participación atribuida al Inversor en los libros y registros del Emisor,
+conforme al Operating Agreement, que se utilizará cuando proceda para determinar asignaciones y
+distribuciones.
+Comisiones aplicables. Únicamente las comisiones y remuneraciones identificadas en el PPM, el
+Operating Agreement o los restantes Documentos de la Oferta, calculadas conforme a las bases,
+porcentajes y condiciones allí establecidos.
+Rentabilidad objetivo o estimada. Cualquier rentabilidad, plazo o escenario económico presentado como
+objetivo, previsión o estimación en el PPM. No constituye una obligación de resultado ni una garantía de
+pago, salvo previsión expresa en contrario en los Documentos de la Oferta. El escenario central de MIA-7
+contempla rentabilidades anuales simples estimadas del 12% para Reentel, 15% para Reentel Pro y 18%
+para Super Reentel, en un horizonte estimado de 36 meses. Estas tasas no son TIR ni pagos anuales y están
+sujetas a los escenarios, plazos y reglas de reparto recogidos en los Documentos de la Oferta.
+                                                 SECCIÓN 1
+                           SUSCRIPCIÓN, PAGO Y EMISIÓN DE LOS TOKENS
+1.1 Suscripción. El Inversor se suscribe y se obliga a adquirir del Emisor el número de tokens indicado en
+la Ficha de Suscripción (los "Tokens de Compra") por el precio total allí establecido (el "Precio de
+Compra"). Cada Token representa el interés de membresía o derecho societario descrito en los
+Documentos de la Oferta. La Oferta MIA-7 comprende un máximo de 20.000 Tokens de 100 USD cada
+uno, por un importe máximo de 2.000.000 USD. El mínimo individual es de un Token. El vehículo
+suscribe el instrumento de Estating vinculado al desarrollo residencial Alturia, en North Miami Beach,
+Florida; el Inversor adquiere participaciones del Emisor y no directamente dicho instrumento ni derechos
+de propiedad sobre el inmueble.
+1.2 Condiciones de aceptación. La suscripción quedará sujeta a: (a) la aceptación expresa, total o parcial,
+por el Emisor o su Gerente; (b) el pago íntegro y efectivo del Precio de Compra; (c) la firma válida de este
+Acuerdo; (d) la superación de las comprobaciones KYC/AML, sanciones y elegibilidad aplicables; y (e) el
+cumplimiento de los requisitos de la exención de oferta indicada en la Ficha de Suscripción. El Emisor
+podrá rechazar o reducir la suscripción conforme a los Documentos de la Oferta y devolverá, sin intereses,
+cualquier importe correspondiente a la parte no aceptada.
+1.3 Pago. El Inversor efectuará el pago mediante la moneda y el medio indicados en la Ficha de
+Suscripción, siguiendo las instrucciones facilitadas por el Emisor. Si el pago se realiza en moneda distinta
+de la moneda de denominación de la Oferta, se aplicará el tipo de cambio y la metodología identificados
+en el PPM o en las instrucciones de pago. Las comisiones bancarias, de cambio o de blockchain que
+correspondan al Inversor se deducirán antes de determinar el importe neto recibido.
+
+
+
+                                                     2
+1.4 Emisión y registro. Los Tokens de Compra se considerarán emitidos cuando el Emisor haya aceptado
+la suscripción y recibido el Precio de Compra en fondos disponibles (la "Fecha de Cierre"). La titularidad
+se reflejará en los libros y registros del Emisor y, cuando resulte aplicable, mediante la asignación de los
+Tokens a la wallet verificada del Inversor.
+1.5 Irrevocabilidad. La suscripción será irrevocable desde su aceptación por el Emisor, salvo cuando una
+norma imperativa aplicable reconozca expresamente al Inversor un derecho de desistimiento, rescisión o
+revocación. En tal caso, dicho derecho podrá ejercitarse exclusivamente en los supuestos, plazos y
+condiciones establecidos por esa norma. La residencia del Inversor, por sí sola, no implicará la existencia
+de un derecho de desistimiento, rescisión o revocación.
+                                                SECCIÓN 2
+              DOCUMENTOS DE LA OFERTA E INCORPORACIÓN POR REFERENCIA
+2.1 Documentos de la Oferta. A los efectos de este Acuerdo, los "Documentos de la Oferta" son: (a) el
+PPM identificado en la Ficha de Suscripción, incluidos sus anexos y suplementos vigentes; (b) el
+Operating Agreement del Emisor identificado en dicha ficha; y (c) este Acuerdo. El Inversor reconoce
+haber recibido o tenido acceso a dichos documentos antes de firmar.
+2.2 Incorporación. Los Documentos de la Oferta se incorporan al presente por referencia. La descripción
+del proyecto, el uso de fondos, las comisiones, la duración estimada, los derechos económicos, las
+distribuciones, los factores de riesgo y las restantes condiciones particulares de la emisión serán
+exclusivamente las establecidas en los Documentos de la Oferta aplicables.
+2.3 Orden de prevalencia. El Operating Agreement regirá los derechos societarios, la gestión, las
+asignaciones, las distribuciones y la liquidación del Emisor. Este Acuerdo regirá el procedimiento de
+suscripción, las declaraciones del Inversor, el pago y la emisión de los Tokens. El PPM tendrá carácter
+informativo y de divulgación de la Oferta. En caso de contradicción, prevalecerá el documento definitivo
+que regule específicamente la materia afectada.
+2.4 Adhesión al Operating Agreement. La adquisición de los Tokens exige la celebración de dos
+instrumentos jurídicos vinculados pero diferenciados: (a) este Acuerdo de Suscripción; y (b) el Documento
+de Adhesión al Operating Agreement incorporado como Anexo I. El Inversor deberá aceptar y firmar
+ambos instrumentos. La aceptación del Documento de Adhesión implica que el Inversor solicita su
+admisión como Miembro del Emisor y queda obligado por el Operating Agreement en los términos
+previstos en dicho Anexo I.
+                                               SECCIÓN 3
+                           DECLARACIONES Y GARANTÍAS DEL EMISOR
+3.1 Existencia y autoridad. El Emisor declara que está debidamente constituido, válidamente existente y,
+cuando resulte exigible, en situación regular conforme a las leyes de su jurisdicción de constitución, y que
+dispone de facultades suficientes para celebrar este Acuerdo y emitir los Tokens de Compra.
+3.2 Emisión válida. Una vez aceptada la suscripción, recibido el Precio de Compra y cumplidos los
+requisitos de cierre, los Tokens de Compra serán válidamente emitidos y pagados en su totalidad, sujetos a
+las restricciones previstas en los Documentos de la Oferta y en la ley aplicable.
+3.3 Ausencia de otras garantías. Salvo por las declaraciones expresamente contenidas en este Acuerdo,
+el Emisor no otorga garantía alguna respecto de la rentabilidad, liquidez, valoración, transmisibilidad o
+recuperación del capital.
+                                                SECCIÓN 4
+                           DECLARACIONES Y GARANTÍAS DEL INVERSOR
+4.1 Capacidad y autoridad. El Inversor tiene capacidad y autoridad suficientes para firmar este Acuerdo,
+adherirse al Operating Agreement, realizar el pago y adquirir y mantener los Tokens. Si el Inversor es una
+entidad, su firmante está debidamente autorizado y la entidad no ha sido constituida exclusivamente para
+eludir los requisitos aplicables a la Oferta.
+4.2 Exactitud de la información. Toda la información facilitada por el Inversor es completa, correcta y
+actual. El Inversor notificará sin demora cualquier cambio relevante producido antes de la emisión de los
+Tokens o durante el periodo en que deba mantenerse su elegibilidad.
+
+
+
+
+                                                     3
+4.3 Recepción y revisión. El Inversor ha recibido o tenido acceso a los Documentos de la Oferta, ha
+dispuesto de tiempo suficiente para revisarlos, ha podido formular preguntas y obtener la información
+adicional razonablemente disponible que ha considerado necesaria.
+4.4 Decisión independiente. El Inversor adopta su decisión por cuenta propia y sobre la base de su propio
+análisis y del asesoramiento legal, fiscal, financiero o técnico que haya considerado oportuno. No se ha
+basado en declaraciones, promesas o garantías distintas de las contenidas expresamente en los Documentos
+de la Oferta.
+4.5 Fines de inversión. El Inversor adquiere los Tokens por cuenta propia, con fines de inversión y no con
+la intención de realizar una distribución pública o una transmisión contraria a la normativa aplicable.
+4.6 Comprensión del riesgo. El Inversor comprende que la adquisición de Tokens implica un alto grado
+de riesgo, iliquidez, posibles restricciones de transmisión, ausencia de mercado secundario y la posibilidad
+de pérdida parcial o total del capital. Puede soportar económicamente dicha pérdida sin consecuencias
+materiales adversas.
+4.7 Ausencia de garantía. El Inversor reconoce que las previsiones, escenarios, rentabilidades objetivo o
+plazos estimados no constituyen garantías y pueden no alcanzarse. El Emisor, el Gerente, sus afiliadas y
+las plataformas operativas no garantizan la devolución del capital ni el pago de rendimientos.
+4.8 Consecuencias fiscales. El Inversor es responsable de determinar y cumplir las consecuencias fiscales
+derivadas de la suscripción, tenencia, percepción de distribuciones y transmisión de los Tokens en las
+jurisdicciones que le resulten aplicables.
+4.9 Wallet y riesgos tecnológicos. El Inversor es responsable de facilitar una wallet correcta, compatible y
+bajo su control, custodiar sus credenciales y verificar las instrucciones de transferencia. Reconoce los
+riesgos tecnológicos, operativos, de blockchain, custodia, pérdida de claves y fraude descritos en el PPM.
+                                                  SECCIÓN 5
+                                      ELEGIBILIDAD REGULATORIA
+5.1 Clasificación. El Inversor declara que cumple la clasificación regulatoria indicada en la Ficha de
+Suscripción y todos los requisitos de elegibilidad previstos en el PPM y en la ley aplicable.
+5.2 Inversores estadounidenses. Cuando la Oferta se realice al amparo de la Regulación D, el Inversor
+declara ser un "inversor acreditado" conforme a la Regla 501(a) y acepta proporcionar la información y
+documentación necesarias para verificar dicha condición cuando resulte exigible, incluida la verificación
+requerida por la Regla 506(c), si fuera aplicable.
+5.3 Inversores no estadounidenses. Cuando la Oferta se realice al amparo de la Regulación S, el Inversor
+declara que no es una Persona de los Estados Unidos, que adquiere los Tokens en una transacción
+extraterritorial, que no actúa por cuenta o en beneficio de una Persona de los Estados Unidos y que puede
+adquirir y mantener legalmente los Tokens en su jurisdicción.
+                                                 SECCIÓN 6
+                            KYC, AML, SANCIONES Y ORIGEN DE FONDOS
+6.1 Identificación y comprobaciones. El Inversor proporcionará la información y documentación que el
+Emisor, el Gerente o sus proveedores designados soliciten para verificar su identidad, titularidad real,
+elegibilidad, residencia, origen de fondos, origen del patrimonio y cumplimiento de las normas de
+prevención del blanqueo de capitales, financiación del terrorismo y sanciones.
+6.2 Fondos lícitos. El Inversor declara que los fondos utilizados proceden de actividades lícitas, le
+pertenecen o se aplican por cuenta de la persona debidamente identificada, y no están relacionados con
+blanqueo de capitales, financiación del terrorismo, fraude, corrupción, evasión de sanciones u otra
+actividad ilícita.
+
+
+
+
+                                                     4
+6.3 Sanciones. El Inversor declara que ni él, ni sus titulares reales, administradores o representantes
+relevantes están sujetos a sanciones aplicables ni se encuentran establecidos o residentes en una
+jurisdicción cuya participación esté prohibida.
+6.4 Actualización y suspensión. El Emisor podrá solicitar actualizaciones periódicas, suspender la
+emisión, transferencia o distribución de Tokens y rechazar o terminar la relación cuando sea necesario para
+cumplir la normativa aplicable o sus políticas de cumplimiento.
+                                                SECCIÓN 7
+                                 RESTRICCIONES DE TRANSMISIÓN
+7.1 Restricción general. Los Tokens no podrán ser vendidos, cedidos, gravados o transmitidos salvo de
+conformidad con la ley aplicable, el PPM, el Operating Agreement y los procedimientos de la plataforma.
+Toda transmisión podrá quedar sujeta a la aprobación del Gerente, controles KYC/AML, verificación de
+elegibilidad, inclusión de la wallet receptora en lista blanca y firma de una adhesión al Operating
+Agreement.
+7.2 Periodos de restricción. El Inversor acepta los periodos de tenencia, restricciones de reventa y
+leyendas aplicables a la exención regulatoria identificada en la Ficha de Suscripción, incluido cualquier
+periodo mínimo aplicable a valores adquiridos bajo la Regulación D.
+7.3 Ausencia de liquidez. No existe garantía de admisión a negociación, mercado secundario, recompra,
+rescate ni posibilidad de transmitir los Tokens antes de la liquidación o disolución del Emisor.
+                                                 SECCIÓN 8
+                        COMUNICACIONES, DATOS Y FIRMA ELECTRÓNICA
+8.1 Comunicaciones electrónicas. El Inversor consiente recibir por medios electrónicos este Acuerdo, los
+Documentos de la Oferta, notificaciones, informes, solicitudes de información y demás comunicaciones
+relacionadas con su inversión, utilizando el correo electrónico, la cuenta de usuario o los demás datos
+indicados en la Ficha de Suscripción.
+8.2 Datos personales. El Inversor reconoce que sus datos podrán ser tratados y comunicados al Emisor, al
+Gerente, a sus afiliadas, proveedores de KYC/AML, agentes de pago, custodios, asesores, autoridades y
+demás terceros necesarios para gestionar la Oferta, cumplir obligaciones legales y administrar los Tokens,
+de acuerdo con los avisos de privacidad aplicables.
+8.3 Firma electrónica. Las firmas electrónicas, las imágenes de firmas manuscritas y las contrapartes
+electrónicas tendrán la misma validez y eficacia que una firma original en papel, en la máxima medida
+permitida por la ley aplicable. Una misma acción o proceso de firma electrónica podrá aplicarse tanto a
+este Acuerdo como al Documento de Adhesión incluido como Anexo I, siempre que la interfaz de firma
+identifique claramente ambos instrumentos y permita al Inversor acceder a ellos antes de prestar su
+consentimiento.
+                                               SECCIÓN 9
+                                    DISPOSICIONES GENERALES
+9.1 Notificaciones. Las notificaciones al Inversor se enviarán a los datos indicados en la Ficha de
+Suscripción. Las notificaciones al Emisor se dirigirán al domicilio o correo electrónico especificados en
+los Documentos de la Oferta o comunicados posteriormente por el Emisor.
+9.2 Acuerdo completo. Este Acuerdo y los Documentos de la Oferta constituyen el acuerdo completo
+entre las partes respecto de la suscripción y sustituyen las comunicaciones, manifestaciones y acuerdos
+anteriores sobre la misma materia.
+9.3 Modificaciones. Este Acuerdo solo podrá modificarse por escrito conforme a sus propios términos y a
+los Documentos de la Oferta. La actualización de datos administrativos del Inversor no constituirá una
+modificación contractual.
+
+
+
+
+                                                    5
+9.4 Cesión. El Inversor no podrá ceder este Acuerdo ni los derechos derivados del mismo salvo junto con
+una transmisión permitida de los Tokens. El Emisor podrá ceder funciones administrativas u operativas a
+su Gerente o proveedores, sin quedar liberado de las obligaciones que legalmente le correspondan.
+9.5 Divisibilidad. Si alguna disposición fuese inválida o inaplicable, se interpretará o limitará en la medida
+necesaria para hacerla aplicable, sin afectar a las restantes disposiciones.
+9.6 Renuncias. La falta o demora en el ejercicio de un derecho no constituirá renuncia. Toda renuncia
+deberá constar por escrito y se limitará al supuesto concreto al que se refiera.
+9.7 Contrapartes. Este Acuerdo podrá firmarse en una o varias contrapartes, todas las cuales constituirán
+un único instrumento.
+9.8 Ley aplicable. Este Acuerdo se regirá e interpretará de conformidad con las leyes del Estado de
+Florida, sin aplicación de sus normas de conflicto de leyes.
+9.9 Jurisdicción. Las partes acuerdan que cualquier demanda, acción o procedimiento para hacer cumplir
+este Acuerdo, o que surja de él o de las transacciones contempladas en el mismo, ya sea en contrato,
+agravio o de otro modo, se presentará en el Tribunal de Circuito del Condado de Miami-Dade, Florida,
+siempre que dicho tribunal tenga jurisdicción sobre la materia. Cada parte consiente irrevocablemente la
+jurisdicción de dicho tribunal y de los tribunales de apelación correspondientes.
+9.10 RENUNCIA AL JUICIO POR JURADO. CADA PARTE RENUNCIA, CONSCIENTE,
+VOLUNTARIA E INTENCIONALMENTE Y EN LA MÁXIMA MEDIDA PERMITIDA POR LA LEY,
+A CUALQUIER DERECHO A JUICIO POR JURADO RESPECTO DE CUALQUIER
+CONTROVERSIA DERIVADA DE ESTE ACUERDO O DE LOS DOCUMENTOS DE LA OFERTA.
+
+
+
+
+                                                      6
+                                                FIRMAS
+Mediante su firma, el Inversor confirma la exactitud de la Ficha de Suscripción y celebra este Acuerdo. La
+adhesión al Operating Agreement se formaliza mediante el Documento de Adhesión separado que figura
+como Anexo I.
+
+ INVERSOR / TOKENHOLDER
+
+ Nombre o denominación                                  {{tokenholder_legal_name}}
+
+ Firmante autorizado (persona que​
+ firma en nombre del inversor, si es una​               {{authorized_signatory_name}}
+ entidad)
+
+ Cargo, si resulta aplicable                            {{authorized_signatory_title}}
+
+ Fecha                                                  {{subscription_date}}
+
+
+ Firma                                                  {{tokenholder_signature}}
+
+
+ ACEPTADO POR EL EMISOR
+
+ Emisor                                                 Series RNT SPV 26 LLC
+
+ Por el Gerente                                         Reental America LLC
+
+ Firmante autorizado                                    Eric Sánchez Gálvez
+
+ Cargo                                                  CEO
+
+ Fecha de firma del Gerente                             {{manager_signature_date}}
+
+
+ Firma                                                  {{manager_signature}}
+
+
+
+
+                                                    7
+                                       ANEXO I
+                     DOCUMENTO DE ADHESIÓN AL OPERATING AGREEMENT
+AVISO IMPORTANTE. Este Documento de Adhesión es un instrumento jurídico distinto del Acuerdo de
+Suscripción, aunque ambos puedan firmarse electrónicamente dentro del mismo proceso. Mediante su
+firma, el Inversor acepta quedar obligado por el Operating Agreement identificado a continuación.
+ Emisor / Compañía                                      Series RNT SPV 26 LLC
+
+                                                        Operating Agreement de Series RNT SPV 26 LLC
+ Operating Agreement objeto de​
+                                                        correspondiente a MIA-7, puesto a disposición del
+ adhesión
+                                                        Inversor conjuntamente con este Acuerdo
+
+ Miembro adherente                                      {{tokenholder_legal_name}}
+
+ Interés representado                                   {{subscribed_token_quantity}} x MIA-7 ReentalToken
+
+ Fecha de adhesión                                      {{subscription_date}}
+1. Adhesión. El abajo firmante declara haber recibido o tenido acceso al Operating Agreement identificado
+anteriormente, se adhiere a él de forma expresa e irrevocable y acepta quedar vinculado por todas sus
+disposiciones como si fuera firmante original del mismo.
+2. Admisión como Miembro. El firmante solicita su admisión como Miembro de la Compañía respecto del
+interés correspondiente a los Tokens de Compra aceptados y emitidos. La admisión será efectiva cuando se
+cumplan las condiciones previstas en el Acuerdo de Suscripción y el Gerente acepte la suscripción y
+actualice los libros y registros de la Compañía.
+3. Derechos y obligaciones. Desde su admisión, el firmante tendrá los derechos y asumirá las obligaciones
+atribuidos a los Miembros de su clase conforme al Operating Agreement, incluidos los relativos a gestión,
+asignaciones, distribuciones, restricciones de transmisión, limitaciones de responsabilidad, indemnización
+y liquidación.
+4. Poderes y autorizaciones. El firmante otorga únicamente los poderes y autorizaciones que el Operating
+Agreement atribuya expresamente a los Miembros y al Gerente, con el alcance y las limitaciones
+establecidos en dicho documento.
+5. Firma electrónica. Este Documento de Adhesión podrá firmarse electrónicamente. Cuando se utilice una
+única acción de firma para el paquete documental, dicha acción constituirá una aceptación separada de este
+Documento de Adhesión y del Acuerdo de Suscripción, ambos previamente puestos a disposición del
+firmante.
+
+
+
+
+                                                    8
+                              FIRMA DEL DOCUMENTO DE ADHESIÓN
+
+Miembro / Tokenholder                            {{tokenholder_legal_name}}
+
+Firmante autorizado                              {{authorized_signatory_name}}
+
+Cargo, si resulta aplicable                      {{authorized_signatory_title}}
+
+Fecha                                            {{subscription_date}}
+
+Firma de adhesión                                {{tokenholder_oa_joinder_signature}}
+
+Aceptado por el Gerente                          Reental America LLC
+
+Firmante autorizado                              Eric Sánchez Gálvez
+
+Fecha de firma del Gerente                       {{manager_signature_date}}
+
+
+Firma                                            {{manager_signature}}
+
+
+
+
+                                             9
+

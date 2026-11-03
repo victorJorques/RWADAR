@@ -1,0 +1,317 @@
+[Texto extraído con pdftotext/HTML; datos personales de personas físicas omitidos por RWAdar]
+
+    PLATAFORMA REGULADA DE FINANCIACIÓN PARTICIPATIVA
+              INSCRITA EN CNMV CON EL Nº11
+
+
+
+
+            FICHA DE DATOS FUNDAMENTALES
+                    DE LA INVERSIÓN
+
+
+
+
+                       Proyecto
+                  IOD Occasio (IODO1)
+                    Bono tokenizado
+         para adquisición de facturas que tienen
+             cobertura de seguro de caución
+
+Identificador de la oferta: 9598007MF0DK0DLQJ78000001616
+Promotor: IOD APPLICATIONS S.L.
+Importe: 120.000€
+Tipo de instrumento: Bono Tokenizado
+Interés: 12% anual
+Plazo: 12 meses
+Cobertura: los derechos de cobro adquiridos por el Promotor cuentan con
+cobertura de seguro de caución hasta el 90%
+Periodo de la oferta: Hasta completar suscripción.
+Apertura el 08/10/2026. Fecha límite el 23/10/2026
+
+
+
+                   Madrid, 28 de septiembre del 2026
+                                                                                                  CIF B76632793
+                                                                          Entidad registrada en CNMV con el Nº11
+
+
+
+    La presente oferta de financiación participativa no ha sido verificada ni aprobada por CNMV ni
+    por la Autoridad Europea de Valores y Mercados (AEVM). La idoneidad de su experiencia y
+    conocimientos no se ha evaluado necesariamente antes de que se le concediera acceso a esta
+    inversión. Al realizar esta inversión, usted asume plenamente el riesgo que comporta, incluido el
+    de pérdida parcial o total del dinero invertido.
+
+
+
+    Advertencia sobre los riesgos
+    Invertir en este proyecto de financiación participativa entraña riesgos, incluido el de pérdida
+    parcial o total del dinero invertido. Su inversión no está cubierta ni por los sistemas de garantía
+    de depósitos establecidos de conformidad con la Directiva 2014/49/UE del Parlamento Europeo
+    y del Consejo (1) ni por los sistemas de indemnización de los inversores establecidos de
+    conformidad con la Directiva 97/9/CE del Parlamento Europeo y del Consejo (2). Es posible que
+    no obtenga rendimiento alguno de su inversión. No se trata de un producto de ahorro y
+    recomendamos no invertir más del 10 % de su patrimonio neto en proyectos de financiación
+    participativa. Es posible que no pueda vender los instrumentos de inversión cuando lo desee.
+    Aun cuando pueda venderlos, podría sufrir pérdidas.
+    (1) Directiva 2014/49/UE del Parlamento Europeo y del Consejo, de 16 de abril de 2014, relativa
+    a los sistemas de garantía de depósitos (DO L 173 de 12.6.2014, p. 149).
+    (2) Directiva 97/9/CE del Parlamento Europeo y del Consejo, de 3 de marzo de 1997, relativa a
+    los sistemas de indemnización de los inversores (DO L 84 de 26.3.1997, p. 22)
+
+
+
+
+    Período de reflexión precontractual para inversores no experimentados
+    Los inversores no experimentados se benefician de un período de reflexión durante el cual
+    pueden, en cualquier momento, revocar su oferta de inversión o manifestación de interés en la
+    oferta de financiación participativa sin indicar el motivo y sin incurrir en una sanción. El período
+    de reflexión comienza en el momento en que el inversor potencial no experimentado hace una
+    oferta de inversión o indica su manifestación de interés y expira cuatro días naturales después.
+    Para ello bastará con notificar a Alius Capital STOs PSFP S.L. la voluntad de desistimiento en la
+    inversión dentro de dicho período, procediéndose a la devolución de las cantidades aportadas,
+    decayendo todos los compromisos relacionados con la inversión.
+
+
+
+
+1. INFORMACIÓN SOBRE EL PROMOTOR DEL PROYECTO Y EL PROYECTO DE FINANCIACIÓN
+   PARTICIPATIVA
+
+Identidad, forma jurídica, titularidad, puestos directivos y datos de contacto.
+•   Identidad: IOD APPLICATIONS S.L (en adelante, “la Sociedad”, “el Promotor” o “el Emisor”)
+•   CIF: B19875392
+•   Forma jurídica: Sociedad Limitada (S.L.)
+•   Titularidad: SMART ESCROW, S.L. (en adelante, “Smart Escrow”), NIF B26571471 ostenta el 25%
+    del capital de la Sociedad; ARMATURA CAPITAL, S.L (en adelante, “Armatura”). NIF B86496510
+    ostente el 25% del capital de la Sociedad; Gregorio Lopez-Triviño, DNI [DNI omitido] ostenta el 25%
+    del capital de la Sociedad y Alberto Luis Ortega Useros, DNI [DNI omitido] ostenta el 25% del capital
+    de la Sociedad.
+
+                                                                                                      2
+                                                                                                     CIF B76632793
+                                                                             Entidad registrada en CNMV con el Nº11
+
+•     Administrador único: D. Alberto Luis Ortega Useros
+•     Datos de contacto: Alberto Luis Ortega Useros, [correo omitido]
+
+Declaración de responsabilidad de la persona responsable de la información facilitada.
+
+
+    D. Alberto Luis Ortega Useros, administrador único de IOD APPLICATIONS S.L., declara que, hasta
+    donde alcanza su conocimiento, no se ha omitido ningún dato y la información no es sustancialmente
+    engañosa ni inexacta. El promotor del proyecto es el responsable de la elaboración de esta ficha de
+    datos fundamentales de la inversión.
+
+
+Actividades principales del promotor del proyecto, productos o servicios ofrecidos por el
+promotor del proyecto.
+
+La Sociedad tiene como objeto social el desarrollo de sistemas de software de gestión y trabajos de
+consultoría y asesoría que le permite identificar oportunidades de financiación de empresas en crecimiento
+(CNAE 6220). Se trata de una empresa creada con el propósito de mejorar con sus sistemas la gestión del
+capital circulante de las empresas. De esta forma, se identifican oportunidades de financiación de circulante
+en las cuales la Sociedad decide actuar y/o participar aportando fondos que permitan a sus clientes
+incrementar su capital de trabajo. La financiación solicitada permitirá la estructuración de operaciones
+relacionadas con la compra de derechos de crédito / facturas.
+
+Smart Escrow es una plataforma tecnológica fintech, cuya misión es facilitar el día a día de entidades de
+crédito y empresas gracias al desarrollo de herramientas basadas en la automatización integral de
+procesos de verificación y estructuración de la información, apoyándose en el tratamiento de la Big Data y
+la aplicación de Machine Learning (IA). Desde su fundación en 2020 Smart Escrow ha estructurado con
+éxito más de 840 operaciones de financiación por valor superior a 25.000.000€. Armatura es una empresa
+con amplia experiencia en la dirección y gestión financiera, especializada en operaciones de compra-venta
+de compañías, finanzas corporativas y estrategias de inversión. Desde su fundación en 2016, Armatura y
+su fundador con más de 25 años de experiencia, han participado en operaciones de financiación en
+sectores como agroindustrial, inmobiliario, tecnológico, industrial, manufactura, entre otros, por valor
+superior a +1.000m€.
+
+Estados financieros
+Accesible al inversor a través del hipervínculo: https://aliuscap.com/projects/iodo1 (pestaña Documentos).
+
+Principales cifras y coeficientes financieros anuales de los dos últimos años
+Se proporcionan las principales cifras y coeficientes financieros anuales de la Sociedad, como principal
+promotor de la oferta de financiación participativa IOD Occasio (IODO1).
+
+      (euros)                                                              2024            2025
+      Total de los activos                                                44.711          100.167
+      Existencias                                                            0             3.000
+      Fondos propios                                                      29.829          61.738
+      Deuda neta                                                      -   24.096      -   58.266
+      Volumen de negocios                                                 30.680          160.959
+      Beneficios antes de intereses, impuestos,                           6.713           43.082
+      depreciaciones y amortizaciones (EBITDA)
+      Margen de beneficio neto                                              9%             20%
+      Relación deuda-fondos propios (D/D+E)                                 0%              0%
+      Relación activos fijos inmateriales sobre el total de activos        46%             13%
+                                                                                                         3
+                                                                                                 CIF B76632793
+                                                                         Entidad registrada en CNMV con el Nº11
+
+
+
+
+Descripción del Proyecto de financiación participativa, finalidad y principales características
+
+El proyecto de financiación participativa contempla la obtención de financiación por un importe de 120.000€
+mediante la emisión de obligaciones no convertibles tokenizadas (“Bonos Tokenizados). La financiación
+obtenida se destinará a la compra con descuento de facturas emitidas por diversas empresas que la
+Sociedad ha identificado previamente y que considera aptas, entendiendo que los riesgos operativos de
+las compañías pueden mitigarse mediante el control de la caja. Las facturas adquiridas cuentan con
+cobertura de seguro de caución de hasta el 90% según sus condiciones. Smart Escrow y Armatura
+respaldan este proyecto, aportando más de 25 años de experiencia en el sector del desarrollo de
+herramientas basadas en la automatización y la gestión financiera de compañías.
+
+
+                                        Proyección IOD €                  12 meses
+                        Total ingreso por operaciones                     328.541,39
+                        Gastos generales operativos y admin.              223.669,76
+                        Resultado de explotación                          104.871,63
+                        Gasto financiero                                   18.000,00
+                        Resultado antes de impuestos                       86.871,63
+                        Impuesto sociedades                                21.717,91
+                        Beneficio neto                                     65.153,72
+
+
+
+2. PRINCIPALES CARACTERÍSTICAS DEL PROCESO DE FINANCIACIÓN PARTICIPATIVA
+
+•   Objetivo de financiación (importe máximo): 120.000€
+•   Importe mínimo de financiación requerido: 100.000€
+•   Plazo de suscripción: desde el 8/10/2026 hasta completar suscripción, con fecha límite el 23/10/2026.
+    Plazo ampliable hasta en un máximo de 1 mes.
+•   Consecuencias si no se alcanza dentro del plazo el objetivo de captación de fondos: se
+    cancelará la financiación participativa y se reembolsarán las aportaciones a los inversores. Los
+    inversores no incurrirán en ningún gasto.
+•   Recursos comprometidos por el promotor: con anterioridad al proceso de financiación participativa,
+    la Sociedad ha invertido en este tipo de producto más de 170.000€.
+
+
+3. INFORMACIÓN RELATIVA A LA OFERTA DE VALORES NEGOCIABLES
+
+•   Instrumento emitido: obligación no convertible representada mediante tecnologías de registro
+    distribuido (“Bono tokenizado”).
+•   Nombre del token: IOD Occasio (IODO1)
+•   Precio de suscripción: 100€ por token
+•   Objetivo de financiación: 120.000€ (1.200 tokens)
+•   Importe mínimo de financiación requerido: 100.000€ (1.000 tokens)
+•   Plazo de suscripción: desde el 8/10/2026 hasta que se complete la suscripción de la Emisión y, en
+    todo caso, hasta el 23/10/2026. Este plazo podrá ampliarse por un período máximo adicional de un
+    mes.
+•   Plazo de desembolso: 48h desde la finalización del plazo de suscripción.
+•   Plazo de vencimiento: 12 meses desde la finalización del plazo de desembolso.
+•   Devengo de intereses: desde el día siguiente a la finalización del plazo de desembolso hasta el día
+    de vencimiento, incluido.
+                                                                                                     4
+                                                                                                 CIF B76632793
+                                                                         Entidad registrada en CNMV con el Nº11
+
+•   Interés del bono: 12% anual
+•   Forma de amortización: pago único, de principal más intereses, al día siguiente de la finalización del
+    plazo de vencimiento. Posibilidad de amortización anticipada del promotor, con pago proporcional de
+    los intereses devengados hasta la fecha de amortización.
+•   Cobertura: las facturas financiadas cuentan con cobertura de seguro de caución de hasta el 90%.
+•   Sindicato de obligacionistas: se constituirá un sindicato de obligacionistas, y Alius Capital STOs
+    PSFP S.L. será designado como comisario, que actuará como representante legal del sindicato y
+    órgano de relación con el Emisor, con las atribuciones que le confiere el reglamento del sindicato de
+    acuerdo con la LSC.
+•   Custodia y entrega a los inversores de los valores negociables: actuará como ERIR a los efectos
+    previstos en la LMVSI de 17 de marzo de 2023 la sociedad Token City European Exchange AV S.A.
+    Los tokens representativos de los valores negociables emitidos serán entregados a las
+    billeteras de los inversores, las cuales serán habilitadas por Alius Capital STOs PSFP S.L.,
+    tras la inscripción en CNMV de la ERIR de la emisión.
+•   Transmisibilidad: los tokens son valores negociables libremente transmisibles.
+•   Asignación en caso de sobredemanda: los valores se asignarán por orden de suscripción hasta
+    consumir la oferta disponible.
+
+4. FACTORES DE RIESGO
+
+Los potenciales inversores que tengan la intención de participar en la presente financiación participativa
+deberán leer detenidamente, y en su totalidad, los siguientes factores de riesgo asociados a la Emisión
+con el objetivo que, con el resto de la información contenida en el presente documento, pueda tomar una
+decisión fundada sobre su inversión. La información proporcionada a los posibles inversores no sustituye
+el asesoramiento financiero o sobre inversiones que pueda ser ofrecido o requerido por parte de asesores
+profesionales a los posibles inversores. Igualmente, la información proporcionada no convalida ni sustituye
+la evaluación de las necesidades, objetivos, experiencia, conocimiento y circunstancias económicas
+personales del potencial inversor para que sea idóneo para ser parte de la Emisión.
+
+En los sucesivos apartados, se exponen a los potenciales inversores los riesgos asociados a su
+participación en la Emisión, teniendo en cuenta los aspectos financieros, productivos y comerciales
+inherentes al modelo de negocio. El objetivo del Promotor es la implantación de medidas con el objetivo
+de mitigar los riesgos asociados al modelo de negocio propuesto. Sin perjuicio de las medidas de mitigación
+de riesgos, es posible que la materialización de cualquiera de los riesgos que se detallan a continuación
+pueda provocar efectos adversos para los potenciales inversores en la operativa de negocio e inversión.
+Por tanto, cabe la posibilidad de que el Promotor no pueda, total o parcialmente, cumplir con sus
+previsiones en virtud del presente documento.
+
+Riesgos del Proyecto
+La información relativa de las empresas deudoras de los derechos de cobro que se adquieren se ha evaluado
+en base a la información disponible de las mismas en el momento en que se adquieran. El análisis de las
+compañías realizado por el Promotor se basa en su experiencia y en un análisis razonado del mercado y
+del modelo de negocio. No obstante, dichas previsiones podrían variar sustancialmente como consecuencia
+de acontecimientos futuros o nueva información que afecte a las condiciones económicas o del mercado,
+pudiendo derivar en una pérdida parcial o total del valor de la inversión.
+
+Riesgo de insuficiencia de oportunidades de inversión elegibles
+Existe el riesgo de que, como consecuencia de circunstancias de mercado, cambios en las condiciones
+económicas o financieras, o cualesquiera otros factores ajenos al control del Promotor, no se identifique
+un volumen suficiente de oportunidades de inversión que cumplan con los criterios de elegibilidad,
+
+                                                                                                     5
+                                                                                                    CIF B76632793
+                                                                            Entidad registrada en CNMV con el Nº11
+
+rentabilidad y riesgo establecidos para la inversión de los fondos.
+La materialización de este riesgo podría provocar que los fondos permanezcan total o parcialmente sin
+invertir durante determinados períodos, o que no puedan ser invertidos en activos u operaciones con una
+rentabilidad suficiente para alcanzar los rendimientos inicialmente previstos. En consecuencia, dicha
+circunstancia podría afectar negativamente a los flujos de caja disponibles y, en última instancia, a la
+capacidad del Emisor para atender íntegra y puntualmente el pago de los intereses y, en su caso, el
+reembolso del principal del Bono.
+
+Riesgos de contraparte asociado al seguro de caución
+Las operaciones en las que se inviertan los fondos podrán contar con la cobertura de pólizas de seguro de
+caución emitidas por entidades aseguradoras de reconocida solvencia. No obstante, la existencia de dichas
+pólizas no elimina por completo el riesgo de pérdida asociado a las operaciones cubiertas.
+En caso de producirse un incumplimiento que determine la necesidad de ejecutar el seguro de caución,
+existe el riesgo de que la entidad aseguradora no pueda atender, total o parcialmente, sus obligaciones de
+pago, las atienda con retraso o que la efectividad de la cobertura se vea afectada por las condiciones,
+límites, exclusiones, procedimientos o plazos previstos en la correspondiente póliza.
+La materialización de este riesgo podría afectar negativamente a los flujos de caja disponibles y, en última
+instancia, a la capacidad del Emisor para atender íntegra y puntualmente sus obligaciones de pago de
+intereses y, en su caso, de reembolso del principal del Bono.
+
+Riesgo de incumplimiento
+Existe el riesgo de que el Promotor o el Proyecto puedan verse afectados por una situación de insolvencia,
+incumplimiento contractual u otros eventos que dificulten la devolución del capital invertido. Sin embargo,
+la inversión cuenta con un respaldo en los derechos de cobro de las facturas financiadas que cuentan con
+cobertura de un seguro de caución de hasta el 90% del importe invertido, constituyendo una cobertura
+significativa frente al riesgo de pérdida total del capital. Los factores que podrían originar un incumplimiento
+incluyen: a) un deterioro relevante de las condiciones macroeconómicas; b) errores de gestión; c) retrasos
+administrativos; d) falta de liquidez temporal; o e) situaciones excepcionales de mercado. Actualmente, el
+Promotor no tiene conocimiento de ningún impedimento legal, financiero u operativo que pueda afectar la
+correcta ejecución del proyecto.
+
+Riesgo de fallo tecnológico
+Existe el riesgo de que la plataforma de financiación participativa utilizada para la emisión del Bono
+Tokenizado experimente incidencias técnicas o interrupciones temporales en la prestación de sus servicios.
+Si bien la plataforma dispone de planes de contingencia y continuidad operativa, dichos fallos podrían
+ocasionar retrasos en la suscripción, formalización o gestión del Bono Tokenizado.
+
+Riesgo de iliquidez de la inversión
+Si bien los Bonos Tokenizados son instrumentos libremente transmisibles, la posibilidad de venta o
+transmisión anticipada de los tokens dependerá de la existencia de una contraparte interesada o de las
+condiciones del mercado secundario aplicable. Por consiguiente, existe un riesgo de iliquidez de la
+inversión.
+
+5. TARIFAS, INFORMACIÓN Y VÍAS DE RECURSO
+
+El inversor no soportará coste alguno en relación con la inversión en este Proyecto de
+financiación participativa.
+Podrá obtener información adicional, de forma gratuita, sobre el Proyecto y la Sociedad, en el enlace:
+https://aliuscap.com/projects/iodo1. Igualmente, el inversor podrá dirigir una reclamación sobre la
+inversión o sobre la conducta del Promotor del Proyecto o el proveedor de servicios de financiación
+participativa, según lo previsto en: https://aliuscap.com/complaints-policy.
+                                                                                                         6
+

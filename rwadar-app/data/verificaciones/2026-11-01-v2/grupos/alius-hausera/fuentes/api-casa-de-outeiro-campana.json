@@ -1,0 +1,260 @@
+{
+ "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+ "consultadoUtc": "2026-11-01T13:12:26Z",
+ "nota": "Solo campos públicos de campaña, activo y documentos. Sin inversiones ni datos de inversores. Textos HTML convertidos a texto y DNI/teléfonos omitidos.",
+ "id": 71,
+ "title": "Casa de Outeiro",
+ "client_uuid": "9598007MF0DK0DLQJ78000001613",
+ "custom_url": "casa-de-outeiro",
+ "country_of_execution": "ES",
+ "campaign_status": "CAMPAIGN",
+ "updated_time": "2026-10-30 16:39:10",
+ "campaign": {
+  "id": 61,
+  "tenant_id": 3,
+  "issuance_id": 71,
+  "negotiation_phase": "PRIMARY",
+  "target_amount": "3220000.00",
+  "coinvestment_offline": null,
+  "start_date": "2026-07-01",
+  "end_date": "2026-10-31",
+  "duration": 129,
+  "extend_days": null,
+  "active": 1,
+  "created_time": "2025-09-25 14:41:02",
+  "updated_time": "2026-07-01 15:58:38",
+  "deleted_time": null
+ },
+ "campaign_progress": {
+  "booked": 1693350,
+  "invested": 1121000,
+  "supply": 128800,
+  "invested_tokens": 44840
+ },
+ "asset": {
+  "name": "Casa de Outeiro",
+  "symbol": "CdO",
+  "network": 80002,
+  "address": null,
+  "type": "security",
+  "decimals": 18,
+  "erir_sync_id": null
+ },
+ "asset_issuance_relational": {
+  "id": 66,
+  "issuance_id": 71,
+  "type_product_id": 30,
+  "asset_id": 67,
+  "name": "Casa de Outeiro",
+  "symbol": "CdO",
+  "image": "web/upload/3/pfp/project/71/1758804062ziRWFwXzE9qKwUtCh9w2CdO_ Logo TOKEN.png",
+  "mint_strategy": "ONLY_MANUAL",
+  "expiration_date": null,
+  "duration": 129,
+  "max_supply": 128800,
+  "asset_price": "25.00",
+  "asset_amount_multiple_of": 40,
+  "maximum_revenue_money": 3220000,
+  "minimum_revenue_money": 2000000,
+  "minimum_offer_money": 2000,
+  "maximum_offer_money": 0,
+  "deployed": 0,
+  "active": 1,
+  "created_time": "2025-09-25 14:41:02",
+  "updated_time": "2026-09-23 13:37:48",
+  "deleted_time": null,
+  "erir_provider": "TOKENCITY"
+ },
+ "type": "Enoturismo",
+ "documents": [
+  {
+   "id": 264,
+   "name": "26_10_30_Anexo I y Anexo II Casa de Outeiro_v3.pdf",
+   "description": "Anexo I y Anexo II",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 13:48:12",
+   "updated_time": "2026-10-30 16:39:47"
+  },
+  {
+   "id": 263,
+   "name": "26_10_30_Ficha Datos Fundamentales Inversión-capital Casa de Outeiro_v5 (1).pdf",
+   "description": "Ficha de datos fundamentales de la emisión Casa de Outeiro",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 1,
+   "created_time": "2026-06-24 13:10:50",
+   "updated_time": "2026-10-30 16:39:49"
+  },
+  {
+   "id": 262,
+   "name": "SOLICITUD-AL-REGISTRO-MERCANTIL-DE-LUGO-DE-NOMBRAMIENTO-DE-EXPERTO-INDEPENDIENTE-2_signed.pdf",
+   "description": "Solicitud nombramiento experto",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 13:07:04",
+   "updated_time": "2026-10-30 16:39:51"
+  },
+  {
+   "id": 260,
+   "name": "Proyecciones Casa de Outeiro (3).pdf",
+   "description": "Proyecciones Casa de Outeiro",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 03:26:30",
+   "updated_time": "2026-10-30 16:39:53"
+  },
+  {
+   "id": 259,
+   "name": "Informe-valoracion-Terrazas-de-Outeiro-SL-–-Vinedos-instalaciones-y-edificaciones-–-12-05-2026.pdf",
+   "description": "Valoración Terrazas de Outeiro SL",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 03:24:34",
+   "updated_time": "2026-10-30 16:39:55"
+  },
+  {
+   "id": 258,
+   "name": "Informe-valoracion-Vinedos-de-Outeiro-SL-12-05-2026.pdf",
+   "description": "Valoración Viñedos de Outeiro SL",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 03:24:08",
+   "updated_time": "2026-10-30 16:39:56"
+  },
+  {
+   "id": 257,
+   "name": "Certificacion-negativa-denominacion-social-–-Casa-de-Outeiro-Bodega-y-Vinedos-SA-–-RMC-–-02-01-2026.pdf",
+   "description": "Reserva de denominación SA",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 03:23:12",
+   "updated_time": "2026-10-30 16:39:58"
+  },
+  {
+   "id": 256,
+   "name": "CARTA-FUNDACIONAL-DE-CASA-DE-OUTEIRO.pdf",
+   "description": "Carta Fundacional Casa de Outeiro",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 03:22:35",
+   "updated_time": "2026-10-30 16:40:00"
+  },
+  {
+   "id": 255,
+   "name": "CONTRATO-DE-MEMBRESIA-DE-CASA-DE-OUTEIRO.pdf",
+   "description": "Contrato de Membresía Casa de Outeiro",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 03:13:14",
+   "updated_time": "2026-10-30 16:40:01"
+  },
+  {
+   "id": 254,
+   "name": "CONSTITUCION SA ESTATUTOS.pdf",
+   "description": "Borrador de Estatutos SA",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 03:07:25",
+   "updated_time": "2026-10-30 16:40:03"
+  },
+  {
+   "id": 253,
+   "name": "9 AUMENTO CAPITAL CASA OUTEIRO.pdf",
+   "description": "Borrador de Ampliación de Capital SA",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 02:52:55",
+   "updated_time": "2026-10-30 16:40:05"
+  },
+  {
+   "id": 252,
+   "name": "CONSTITUCION SA ESTATUTOS.pdf",
+   "description": "Borrador de Constitución SA",
+   "visibility": "PUBLIC",
+   "is_issuance_document": 0,
+   "created_time": "2026-06-24 02:52:55",
+   "updated_time": "2026-10-30 16:40:06"
+  }
+ ],
+ "extra_fields": [
+  {
+   "name": "process",
+   "label": "Proceso",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "INFORMACIÓN SOBRE EL PROCESO DE INVERSIÓN\nPlazo para alcanzar el objetivo de la financiación:\n hasta completar suscripción, con fecha límite el 31/10/2026.\nConsecuencias si no se alcanza el importa mínimo de la financiación dentro del plazo el objetivo de captación de fondos:\n se cancelará la financiación participativa y se reembolsarán las aportaciones a los inversores. Los inversores no incurrirán en ningún gasto.\nRecursos comprometidos por el promotor: \ncon anterioridad al proceso de financiación participativa, los accionistas de Casa de Outeiro ha realizado aportaciones no dinerarias por importe de 1.704.030,00 €. Asimismo, se reserva el derecho de acudir a la financiación participativa en el transcurso de la misma, en cuyo caso, se publicará el porcentaje de su participación sobre la financiación total obtenida.\nAsignación de tokens en caso de sobredemanda:\n los valores se asignarán por orden de suscripción hasta consumir la oferta disponible.\nFASES DEL PROCESO DE INVERSIÓN\nFASE 1. Pre-campaña:\n los inversores pudieron expresar su interés en el proyecto para disponer de acceso prioritario cuando se abriera la oferta de inversión. Esta fase finalizó el \n24/06/2026\n.\nFASE 2. Campaña privada:\n entre el \n24/06/2026 y el 30/06/2026\n, los inversores que habían expresado previamente su interés pudieron suscribir la oferta, formalizar los correspondientes acuerdos y realizar sus desembolsos. Los fondos permanecieron retenidos hasta la formalización de la operación.\nFASE 3. Campaña abierta al público en general:\n desde el \n01/07/2026 hasta el 31/10/2026\n, cualquier inversor puede suscribir la oferta, formalizar los correspondientes acuerdos y realizar su desembolso. Los fondos permanecerán retenidos hasta que la operación quede formalizada, momento en el que serán transferidos al Promotor.\nFASE 4. Formalización:\n una vez cerrada la campaña, se procederá a la formalización notarial y a la inscripción de la ampliación de capital en el Registro Mercantil. Posteriormente, se presentará ante la CNMV la documentación correspondiente a la entidad responsable de la administración de la inscripción y registro de los valores (ERIR). Este proceso está previsto en un \nplazo máximo de 7 días tras el cierre de la campaña.\nFASE 5. Entrega de los tokens a los inversores: \nuna vez completados los trámites correspondientes ante la CNMV, los tokens se entregarán a los inversores en sus respectivas carteras digitales o \nwallets\n. La entrega está prevista aproximadamente en el \nplazo de un mes desde la presentación de la documentación ante la CNMV."
+  },
+  {
+   "name": "proposal",
+   "label": "Propuesta",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "INFORMACIÓN SOBRE EL PROMOTOR\nPromotor:\nCasa de Outeiro Bodega y Viñedos, S.A (España), sociedad en proceso de constitución (\"la Sociedad\" o \"el Promotor\")\nForma Jurídica:\n Sociedad Anónima (S.A.)\nTitularidad: \nTourgalia Gestión, S.L. ostenta el 43,49% del capital de la Sociedad; Investimentos de Capitais Reunidos, S.L., el 36,91%; SolQuiroga, S.L., el 14,08%; Sonia Noemí Álvarez Blanco, el 5,34%; y Juan Luis Vázquez Rodríguez, el 0,18%.\nAdministradores solidarios y directores:\nJuan Luis Vázquez Rodríguez y Sonia Noemí Álvarez Blanco\nDatos de contacto: \nJuan Luis Vázquez Rodríguez - jlvazquez@casadeouteiro.com\nINFORMACIÓN SOBRE EL PROYECTO\nCasa de Outeiro Bodega y Viñedos, S.A\n. nace como la sociedad matriz destinada a integrar bajo una misma estructura los activos y el negocio del proyecto. Esta integración se realizará mediante la aportación de las participaciones de \nTerrazas de Outeiro, S.L. y Viñedos de Outeiro, S.L.\n, sociedades que conforman el negocio actual de la bodega.\nEl proyecto incorpora activos tangibles e intangibles ya existentes: una finca de más de 30 hectáreas en la Ribeira Sacra, viñedos en producción, las ruinas de la histórica Casa de Outeiro, existencias de vino, maquinaria, cartera de clientes, marca, conocimiento técnico y una actividad vitivinícola consolidada.\nSobre esta base patrimonial se desarrollará un destino vinculado al vino, la hospitalidad, la gastronomía, el bienestar, la longevidad, las experiencias y el territorio.\nEl plan contempla la recuperación de La Casa y la construcción de un hotel boutique de 8 habitaciones, con una propuesta arquitectónica firmada por A-cero; una nueva bodega; cuevas y espacios privados vinculados a La Comunidad; un Asador; un salón de eventos; un centro de bienestar y longevidad y un programa propio concebido específicamente para este territorio; jardines y piscina; espacios al aire libre; miradores; experiencias enoturísticas; barco privado; helipuerto y otros servicios asociados al proyecto.\nINFORMACIÓN SOBRE LA OFERTA DE INVERSIÓN\nUna inversión patrimonial, empresarial y territorial con liquidez programada\nCasa de Outeiro está construyendo una plataforma de activos singulares con capacidad de crear valor patrimonial, operativo y estratégico durante décadas.\nLa inversión permite participar en una compañía propietaria de un viñedo de aproximadamente 30 hectáreas, una bodega, una marca vinícola en crecimiento y un futuro complejo enoturístico y hotelero diseñado para convertirse en uno de los proyectos de referencia de la Ribeira Sacra y del Geoparque Mundial UNESCO Montañas do Courel.\nSe trata de una inversión en propiedad real: acciones de la empresa, con escritura notarial e inscripción en el Registro Mercantil, emitidas a través de una plataforma regulada por la Comisión Nacional del Mercado de Valores (CNMV).\nPara abordar el proyecto, se plantea una \nampliación de capital \nmediante la emisión de\n acciones tokenizadas \nde Casa de Outeiro Bodega y Viñedos S.A., cuyas características principales se resumen a continuación:\nIdentificador de la oferta: \n9598007MF0DK0DLQJ78000001613\nNombre del token:\n Casa de Outeiro (CdO)\nInstrumento financiero:\n Acciones representadas mediante tecnologías de registro distribuido \n(1 acción = 1 token)\nObjetivo de financiación:\n 3.220.000€ (128.800 tokens)\nImporte mínimo de financiación requerido:\n 2.000.000€ (80.000 tokens)\nValoración pre-money:\n 4.260.075€\n% de la sociedad a la venta:\n 43%\nPrecio de suscripción: \n25€ / token\nAportación mínima:\n 2.000€ (80 tokens)\nCustodia y entrega a los inversores de los tokens:\n actuará como ERIR a los efectos previstos en la LMVSI de 17 de marzo de 2023 la sociedad TOKEN CITY EUROPEAN EXCHANGE A.V. Los tokens representativos de los valores negociables emitidos serán entregados a las billeteras de los inversores, las cuales serán habilitadas por Alius Capital, tras la inscripción en CNMV de la ERIR de la emisión.\nTransmisibilidad:\n tokens libremente transmisibles de manera progresiva conforme a la información publicada en el Dossier Plan de Negocios en la pestaña \"Documentos\".\n¿QUÉ OBTIENEN LOS INVERSORES?\nCasa de Outeiro combina la seguridad de una inversión respaldada por activos tangibles con el potencial de crecimiento de un proyecto diferencial en uno de los destinos vitivinícolas con mayor proyección de España, ofreciendo a los inversores la oportunidad de participar desde las primeras fases de creación de valor.\nLa inversión en Casa de Outeiro reúne cuatro componentes estratégicos:\n🏡 \nValor patrimonial\nCo-propiedad de terrenos, viñedo, inmuebles, instalaciones, equipamientos y negocio enoturístico.\n💶 \nValor empresarial\nParticipación en los beneficios generados por el vino, el hotel, la gastronomía, el enoturismo, los eventos y las experiencias.\n🍷 \nValor de pertenencia y acceso a servicios exclusivos\nAcceso a una comunidad limitada, experiencias privadas, producto exclusivo y una vinculación real con uno de los proyectos territoriales más singulares de Galicia.\n💎 \nValor de plataforma\nPosibilidad de que Casa de Outeiro evolucione hacia una plataforma de activos singulares vinculados al territorio, el lujo, la arquitectura y la economía de la experiencia.\nAl participar en la ampliación de capital tokenizada, los inversores acceden a una oportunidad respaldada por activos reales y con potencial de revalorización:\nParticipación accionarial:\nacceso al \n43% del capital de la sociedad matriz\n, propietaria de todos los activos del proyecto (finca, viñedos, bodega, hotel y resto de infraestructuras).\nRevalorización del activo y del negocio:\ninversión en un activo patrimonial singular e irrepetible, cuyo valor se verá impulsado por el desarrollo de un \nHotel Experiencial de 8 habitaciones \ny el crecimiento del negocio enoturístico. Modelo de negocio escalable, que será replicado en otros territorios y países, creando una cadena de establecimientos y comunidades a nivel nacional e internacional. \nCobro de dividendos:\ndividendos anuales crecientes\n, desde el 6,7% en 2030 hasta el 16,9% en 2041 (con primeros repartos desde 2028).\nAcceso exclusivo a productos y servicios:\nplanes de membresía reservados \nsolo para los accionistas\n: cada año recibes vino elaborado en exclusiva para los socios, noches incluidas en el hotel con prioridad de reserva, botellas envejeciendo a tu nombre en las cuevas de la bodega y espacios privados para tus propios encuentros y celebraciones. En el nivel de membresía Circular, por ejemplo, estos beneficios están valorados en 3.280€ anuales, frente a una cuota de socio de 400€.\nLiquidez progresiva: \nlos tokens representan \nacciones transmisibles\n, con un calendario de liberación gradual desde el primer año, ofreciendo una vía potencial de desinversión y fomentando la revalorización por escasez.\nPlan de recompra:\nse prevé, asimismo, destinar parte de la tesorería del negocio a \nrecompra a los inversores\n.\nSinergias en La Comunidad:\nacceso a un ecosistema sinérgico de inversores y negocios. \nCasa de Outeiro no propone únicamente financiar la construcción de una bodega o de un hotel. Propone participar desde el inicio en la creación de un activo irrepetible, con vocación de permanencia, generación de rentas y creación de valor durante generaciones. \nA modo de síntesis, la siguiente tabla reúne las principales magnitudes de rentabilidad estimada para el inversor: por revalorización de las acciones, por dividendos y por los beneficios de la comunidad de socios.  A modo de síntesis, la siguiente tabla reúne las principales magnitudes de rentabilidad estimada para el inversor: por revalorización de las acciones, por dividendos y por los beneficios de la comunidad de socios.\nVer el detalle financiero de la oferta a inversores en el documento \n\"TESIS DE INVERSIÓN\" en el pestaña de Documentos\n."
+  },
+  {
+   "name": "faqs",
+   "label": "FAQs",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "¿QUÉ REPRESENTA EL TOKEN EXACTAMENTE, A NIVEL LEGAL?\n1 TOKEN = 1 ACCIÓN de Casa de Outeiro Bodega y Viñedos, S.A.\nLos inversores participan en una ampliación de capital, adquiriendo acciones tokenizadas de Casa de Outeiro Bodega y Viñedos, S.A, propietaria del 100% de los activos, del negocio actual y del crecimiento futuro, con una valoración pre-money de la empresa de 4,26 millones de euros y una valoración post-money de 7,66 millones de euros.\nLos inversores de la emisión tokenizada aportan aproximadamente 3,22 millones de euros y acceden, en conjunto, a alrededor del 43% del capital económico de la sociedad.\nEl capital captado se destina a completar el desarrollo arquitectónico, hotelero, enoturístico y productivo de Casa de Outeiro.\n¿LAS ACCIONES TOKENIZADAS SE VAN A REVALORIZAR?\nEl plan de negocio contempla la puesta en marcha integral del complejo en 2030 y proyecta las siguientes magnitudes financieras de referencia respecto a la revalorización:\nEl salto entre la valoración de entrada y las valoraciones estimadas de 2030 y 2034 responde a los siguientes factores:\nRestauración y puesta en valor del activo\nLa valoración de entrada (7,66 M€ post-money) corresponde, sustancialmente, al valor patrimonial de la finca, el viñedo, el proyecto arquitectónico y el plan de desarrollo empresarial antes de completarse la reforma. Al finalizar la obra desaparece gran parte de la incertidumbre de ejecución y el activo queda terminado y en condiciones de generar ingresos. Por lo tanto, el valor en 2030 recoge la revalorización de las acciones por el desarrollo del proyecto arquitectónico y del negocio enoturístico, sin generación de caja, pero con un activo ya terminado y en condiciones de explotación. \nExplotación del negocio\nUna vez se inicia la explotación del negocio enoturístico, la valoración estimada sobre la empresa en marcha — tanto por descuento de flujos de caja como por múltiplos de EBITDA—, incorpora las ganancias crecientes de la actividad empresarial. \nPosicionamiento exclusivo\nEl proyecto se sitúa en un segmento en expansión — enoturismo y agroturismo premium— en la Ribeira Sacra, con escasa competencia directa en su categoría y con el atractivo adicional del Geoparque Mundial UNESCO Montañas do Courel.\n¿PUEDO VENDER MIS ACCIONES TOKENIZADAS?\nCasa de Outeiro incorpora una estrategia de liquidez progresiva basada en cinco mecanismos complementarios:\nVentana extraordinaria de liquidez en 2028\nLa sociedad prevé optimizar su estructura de pasivo una vez ejecutada la obra, lo que le permitirá el acceso a financiación ajena, en su caso con garantías reales, en condiciones financieras muy favorables. Una parte limitada de dicha financiación podrá destinarse a una ofertade recompra de acciones, con un fondo objetivo inicial de hasta 800.000 euros.\nLa Directiva podrá estudiar una oferta de adquisición a un precio determinado conforme a una valoración independiente y a la estructura financiera de la sociedad, evitando fijar una expectativa concreta. Dicha recompra estará condicionada a la obtención de la financiación, a la tasación del activo, a la situación de tesorería y a los límites legales aplicables. En línea con las prácticas habituales en este tipo de operaciones, la oferta de recompra podrá incorporar un descuento sobre la valoración de referencia, que compensa el sacrificio de liquidez que asume la sociedad. La oferta se realizará de forma transparente y, en caso de exceso de solicitudes, mediante un sistema de prorrateo.\nNueva ventana de liquidez en 2030\nUna vez finalizado y abierto el complejo, la sociedad prevé habilitar una segunda ventanade recompra. El precio se determinará a partir de una valoración independiente de Casa de Outeiro, aplicando, en su caso, un descuento razonable sobre el valor de referencia, siguiendo la misma lógica señalada en el apartado anterior.\nFondo anual de recompra\nDesde 2032, el Consejo de Administración propondrá anualmente la dotación de un fondo de liquidez vinculado al flujo de caja libre generado por la compañía. El objetivo será permitir salidas parciales y ordenadas sin comprometer la estabilidad financiera del proyecto.\nTransmisión entre inversores\nLa transmisión de acciones entre los propios inversores de Casa de Outeiro estará libre desde el primer día. Para la venta a terceros, no accionistas, el porcentaje de capital social susceptible de transmitirse libremente se irá liberalizando progresivamente, respetando las estipulaciones del pacto de socios. La compañía facilitará la conexión entre compradores y vendedores, si bien no podrá garantizar la existencia de contrapartida. \nOperaciones corporativas\nLa creación de una plataforma de activos singulares abre, a medio y largo plazo, otras alternativas de liquidez como la entrada de un inversor institucional, la incorporación de un socio hotelero o patrimonial, la venta parcial de alguna unidad de negocio, la refinanciación de los activos, la integración en un vehículo de inversión de mayor dimensión o la venta total o parcial de la compañía.\n¿LA EMPRESA TIENE PREVISTO PAGAR DIVIDENDOS?\nCasa de Outeiro pretende combinar revalorización y generación de rentas. La política de dividendos será progresiva y estará subordinada a la terminación del proyecto y al mantenimiento de una tesorería adecuada. Como referencia se establecen las siguientes fases:\nFase Inicial:\n Hasta un 30% del beneficio neto durante los primeros años de explotación.\nFase de Consolidación: \nEntre un 35% y un 40% durante dicha etapa.\nFase de Madurez: \nHasta un 50% en la fase de madurez total del negocio.\nA modo ilustrativo, sobre la base del plan de negocio vigente, la rentabilidad por dividendo sobre el precio de emisión podría evolucionar desde aproximadamente un 6,7% en 2030 hasta cerca de un 16,9% en 2041, con los primeros repartos ya previstos desde 2028 gracias a la actividad previa a la apertura del complejo hotelero. Estas cifras son estimaciones basadas en el plan de negocio y no constituyen una rentabilidad garantizada.\nEl objetivo es alcanzar una rentabilidad recurrente por dividendos, además de la revalorización de las acciones.\n¿QUÉ BENEFICIOS ME APORTA FORMAR PARTE DE LA COMUNIDAD?\nCasa de Outeiro no es solo una inversión financiera: es también el acceso a una comunidad limitada de propietarios, con beneficios y experiencias reservados en exclusiva para los accionistas. Cada año, los socios reciben vino elaborado en exclusiva para la comunidad, noches de hotel incluidas con prioridad de reserva, botellas envejeciendo a su nombre en las cuevas de la bodega y acceso a espacios privados para encuentros y celebraciones de los socios.\nEstos beneficios se organizan en distintos niveles de membresía, opcionales, cuyo valor anual estimado supera ampliamente el coste de la cuota correspondiente:"
+  },
+  {
+   "name": "updates",
+   "label": "Actualizaciones",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "21/07/2026\n: WEBINAR Q&A, para resolver dudas de los inversores. Ver vídeo del encuentro en: \nhttps://www.youtube.com/watch?v=tHkqFTb5S50\n14/07/2026\n: Artículo en ABC, \"\nCasa de Outeiro: innovación e inversión privada para revitalizar el medio rural, crear empleo y recuperar patrimonio\n\".\n01/07/2026\n: Lanzamiento de la Oferta Pública"
+  },
+  {
+   "name": "capital_for_sale",
+   "label": "% capital a la venta",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "43%"
+  },
+  {
+   "name": "pre_investment_valuation",
+   "label": "Valoración Pre-Money",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "4,26M€"
+  },
+  {
+   "name": "minimum_investment",
+   "label": "Inversión mínima",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "2000 €"
+  },
+  {
+   "name": "appraised_value",
+   "label": "Tasación",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "None"
+  },
+  {
+   "name": "collateral",
+   "label": "Garantía",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "None"
+  },
+  {
+   "name": "installments",
+   "label": "Cuotas",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "None"
+  },
+  {
+   "name": "loan_term",
+   "label": "Plazo de devolución",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "None"
+  },
+  {
+   "name": "annual_interest_rate",
+   "label": "Interés anual",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "None"
+  },
+  {
+   "name": "location",
+   "label": "Localización",
+   "updated_time": "2026-10-30 16:39:10",
+   "value": "Ribeira Sacra, España"
+  }
+ ],
+ "small_description": "Casa de Outeiro es un proyecto vitivinícola y patrimonial en Quiroga, Ribeira Sacra, que parte de una bodega ya operativa, viñedos en producción y una trayectoria comercial demostrada. Su siguiente fase integra un hotel de ocho habitaciones, gastronomía, enoturismo, eventos y experiencias en una propiedad singular. La ampliación de capital permite participar como accionista en el desarrollo de un modelo de negocio con siete fuentes de ingresos, sujeto a los riesgos y condiciones propios de una inversión empresarial."
+}

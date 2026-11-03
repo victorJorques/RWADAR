@@ -1,0 +1,135 @@
+{
+ "grupo": "spiko-prosegur",
+ "proveedor": "Spiko",
+ "plataformaSlug": "spiko",
+ "tipoExpediente": "candidata",
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Spiko",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+   "consultadoUtc": "2026-11-01T15:06:53Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Twenty First Capital",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+   "consultadoUtc": "2026-11-01T15:07:00Z"
+  }
+ ],
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "slug": "spiko-smart-cash-euro",
+ "entidadComercializadora": "Spiko Finance SAS (ACPR CIB 19183)",
+ "emisor": "SPIKO SICAV, compartimento SPIKO AMUNDI OVERNIGHT SWAP FUND (SAFO); gestora Twenty First Capital",
+ "vehiculo": "Compartimento de SICAV UCITS; no es fondo monetario (API: «UCITS EUR»)",
+ "token": "Acción EUR registrada en DLT; Ethereum 0x0990b149e915cb08e2143a5c6f669c907eddc8b0 (folleto p. 48)",
+ "derechoAdquirido": "Acciones de capitalización de la clase EUR FR0014015LD3 (nombre comercial «Spiko Euro», gama Smart Cash)",
+ "jurisdiccion": "FR",
+ "identificador": "ISIN FR0014015LD3",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Spiko SICAV – Prospectus vEN",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+   "versionOFecha": "01/09/2026",
+   "paginas": 82,
+   "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35",
+   "leido": true
+  },
+  {
+   "titulo": "KID en español · eurSAFO",
+   "url": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV (IIC extranjeras)",
+   "entidad": "SPIKO SICAV",
+   "numero": "2380 (30/01/2026)",
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+   "alcance": "Registro de la SICAV; la vista pública no desglosa compartimentos ni clases",
+   "consultadoUtc": "2026-11-01T14:59:43Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "minimo",
+   "literal": "minimumInitialSubscription \"1\" · managementFees \"0.0025\"",
+   "dato": "1 EUR; gestión 0,25 %",
+   "fuentePrimaria": "https://public-api.spiko.io/v0/share-classes/",
+   "localizador": "API /share-classes, símbolo eurSAFO; folleto p. 6 y p. 66 (P1 0,25 % IVA incl.)",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-01T13:12:31Z",
+   "alcanceYLimites": "Índice de referencia publicado: €STR capitalizado + 0,50 %; es un índice de comparación, no una rentabilidad.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "🇪🇸 Spain ✅ (Smart Cash)",
+   "dato": "España incluida",
+   "fuentePrimaria": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+   "localizador": "docs.spiko.io «Fund Availability», 23/10/2026",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-01T15:03:32Z",
+   "alcanceYLimites": "La columna Smart Cash cubre Spiko Euro, Dollar, Pound y Swiss Franc.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "—",
+   "dato": null,
+   "fuentePrimaria": "https://data.spiko.io/eutbl/",
+   "localizador": "No capturada en este ciclo",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-01T13:11:42Z",
+   "alcanceYLimites": "No se consultó /share-classes/eurSAFO/yield.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "No se consultó la ficha GECO del compartimento SAFO; la SICAV sí está en la CNMV (2380)."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Clase activa en la API y en el folleto del 01/09/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "España incluida, 1 EUR, 0,25 %; salida no leída en KID."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "KID en español no leído."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "confirmado",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "si",
+  "minimoEntrada": "1 EUR",
+  "supervisorVerificado": null,
+  "documentacionClara": "parcial",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Clase en euros desde 1 EUR con 0,25 % y España incluida en la tabla del emisor.",
+  "porQueNo": "En este ciclo no se leyeron su KID, su ficha AMF ni su rentabilidad."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Pendiente, no descartada: faltan el registro AMF del compartimento, el KID en español y una cifra con base. Recomendado para el próximo ciclo (encaja con el particular en España).",
+ "bloqueos": [
+  "Fase de captura cerrada por el coordinador antes de leer KID, GECO y rentabilidad."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:12:31Z",
+  "finUtc": "2026-11-02T08:45:27Z"
+ }
+}

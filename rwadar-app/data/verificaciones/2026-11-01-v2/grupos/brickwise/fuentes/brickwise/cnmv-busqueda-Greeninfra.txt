@@ -1,0 +1,4 @@
+URL: https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad
+Busqueda: Greeninfra
+ConsultadoUtc: 2026-11-01T15:05:30Z
+

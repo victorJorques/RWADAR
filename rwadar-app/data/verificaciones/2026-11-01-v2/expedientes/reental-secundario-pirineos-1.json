@@ -1,0 +1,317 @@
+{
+  "slug": "reental-secundario-pirineos-1",
+  "tipoExpediente": "publicada",
+  "grupo": "reental",
+  "proveedor": "Reental",
+  "plataformaSlug": "reental",
+  "entidadComercializadora": "Rental Token, S.L. (NIF B01988393), marca Reental",
+  "emisor": null,
+  "vehiculo": null,
+  "token": "Reental-PIR-1 · Polygon · 0xb0562abb317818c7f1529c3bc828760ecc1f1887",
+  "derechoAdquirido": null,
+  "jurisdiccion": "US-FL",
+  "identificador": "Reental project id 71ae2a4b-91f7-4ed1-a85b-664b758dfa20",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Acuerdo de suscripción (ES)",
+      "url": "https://s3.eu-west-1.amazonaws.com/reental/properties/71ae2a4b-91f7-4ed1-a85b-664b758dfa20/docs/1787820457733_acuerdo_suscripcion.pdf",
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": "088b34c651c76533aa19a609d482b4493e67b265d1ac0be75802cb8d46f80c1a",
+      "leido": false
+    },
+    {
+      "titulo": "Ficha web del inmueble",
+      "url": "https://www.reental.co/properties/1792927141634-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1",
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": "5744a25773a1c741b0ae038f32ba17330d93e1a492b8d1dc784506e0b013d44b",
+      "leido": true
+    },
+    {
+      "titulo": "API pública getProjects / getCrowdfundingListing",
+      "url": "https://backend.reental.co/graphql",
+      "versionOFecha": "consulta 2026-11-01",
+      "paginas": null,
+      "sha256": "47e7a89e518ee3b3087cbcf7807226b63370274674098fbd167a78c06ae51e09",
+      "leido": true
+    },
+    {
+      "titulo": "API P2P getOrdersData",
+      "url": "https://backend.reentalp2p.com/graphql",
+      "versionOFecha": "consulta 2026-11-01",
+      "paginas": null,
+      "sha256": "a28ffd3224b8e50bb43f36b7014b08a1a80de46a0b8098347a26eb38e5c5e1df",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "Reental / Rental Token / Reental America",
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "alcance": "Buscador de registros oficiales: «Reental» y «Reental America» → «No se han encontrado resultados»; «Rental Token» → página sin resultados legibles. No consta inscripción como ESI, PSFP/ECSP ni otra figura.",
+      "consultadoUtc": "2026-11-01T15:07:37Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental",
+      "consultadoUtc": "2026-11-01T15:05:59Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Rental Token",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rental+Token",
+      "consultadoUtc": "2026-11-01T15:06:06Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental America",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental+America",
+      "consultadoUtc": "2026-11-01T15:06:42Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "RNT (lista «Otras entidades», PDF)",
+      "resultado": "sin coincidencias para Reental/Rental Token/RNT",
+      "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+      "consultadoUtc": "2026-11-01T15:09:08Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "status «RENOVATING»; getCrowdfundingListing: active=True, available=0",
+      "dato": "primaria agotada (0 tokens disponibles); solo reventa",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getProjects items[name=Pirineos 1].project.status; getCrowdfundingListing(projectId=71ae2a4b-91f7-4ed1-a85b-664b758dfa20).availability.available",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:03:16Z",
+      "alcanceYLimites": "Estado del inmueble: En reforma. 0 tokens en el contrato de venta primaria: la compra solo es posible a otro inversor.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "Sin entrada «Pirineos 1» entre los 30 inmuebles con órdenes de venta vigentes",
+      "dato": "sin órdenes de venta visibles",
+      "fuentePrimaria": "https://backend.reentalp2p.com/graphql",
+      "localizador": "getOrdersData(excludeExpired:true, filter:{type:SELL}, limit:100) → numElements 30",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:04:19Z",
+      "alcanceYLimites": "Hoy no hay forma visible de comprar este token: ni primaria ni órdenes P2P.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "tokenPrice {value: 100, currency: EUR}; emittedTokens 15000",
+      "dato": "100 EUR por token (nominal de emisión)",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getProjects items[name=Pirineos 1].project.tokenPrice",
+      "fechaDato": "2026-09-16",
+      "consultadoUtc": "2026-11-01T15:02:10Z",
+      "alcanceYLimites": "Precio nominal de la emisión primaria; no es el precio de reventa.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "moneda",
+      "literal": "currency «EUR» (API) y símbolo visible «€» en la ficha",
+      "dato": "EUR",
+      "fuentePrimaria": "https://www.reental.co/properties/1792927141634-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1",
+      "localizador": "Bloque «Precio del Token» (elementos w-condition-invisible excluidos) + getProjects.tokenPrice.currency",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:08:07Z",
+      "alcanceYLimites": "El 23/10 la tarjeta publicada decía USD.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "Ficha: «Rentabilidad de alquiler anual 11 %», «Plusvalía tras venta 11 %»; projectTierData: tier 1: estimatedApr 0.1500, estimatedAppreciation 0.1500; tier 2: estimatedApr 0.1200, estimatedAppreciation 0.1200; tier 115: estimatedApr 0.1100, estimatedAppreciation 0.1100",
+      "dato": null,
+      "fuentePrimaria": "https://www.reental.co/properties/1792927141634-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1",
+      "localizador": "Ficha web (bloque Precio del Token) frente a getProjects.projectTierData de Pirineos 1",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:08:07Z / 2026-11-01T15:02:10Z",
+      "alcanceYLimites": "Cifras estimadas (objetivo), sin fecha ni base de cálculo publicadas; la ficha web y la API de la propia Reental dan cifras distintas y además varían por nivel de inversor (Reentel / Pro / SuperReentel). No es rentabilidad histórica.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "plazo",
+      "literal": "investmentDuration 12 MONTHS; incomeType BULLET; fundingDate 2026-09-16T00:00:00.000Z",
+      "dato": "12 meses estimados; pago único final",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getProjects items[name=Pirineos 1].project.investmentDuration / incomeType / fundingDate",
+      "fechaDato": "2026-09-16",
+      "consultadoUtc": "2026-11-01T15:02:10Z",
+      "alcanceYLimites": "Plazo estimado, no fecha garantizada de devolución.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Acuerdo de suscripción publicado en S3: HTTP 403 (AccessDenied)",
+      "dato": null,
+      "fuentePrimaria": "https://s3.eu-west-1.amazonaws.com/reental/properties/71ae2a4b-91f7-4ed1-a85b-664b758dfa20/docs/1787820457733_acuerdo_suscripcion.pdf",
+      "localizador": "docsEs «Acuerdo de suscripcion»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:11:18Z",
+      "alcanceYLimites": "No leído; el emisor y el derecho no se pueden confirmar hoy con el contrato.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "«Cualquier usuario mayor de edad puede registrarse e invertir tras pasar el proceso de KYC … y AML»; residentes fiscales en EE. UU. deben ser acreditados",
+      "dato": "abierto a mayores de edad tras KYC/AML (regla general de la plataforma)",
+      "fuentePrimaria": "https://www.reental.co/faqs",
+      "localizador": "¿Quién puede invertir con Reental?",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:04:36Z",
+      "alcanceYLimites": "Regla general de alta. En reventa el comprador necesita wallet en lista blanca y aceptación de la transmisión; no hay confirmación por producto para residentes en España.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "Los Servicios son proporcionados por RNT DAO … protocolo de intercambio p2p descentralizado y no custodial; responsabilidad acumulada máx. 1.000 USD",
+      "dato": "reventa en un mercado P2P operado por «RNT DAO», no por una entidad supervisada",
+      "fuentePrimaria": "https://p2p.rnt.finance/terms",
+      "localizador": "Términos de uso §1 y §7",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:10:03Z",
+      "alcanceYLimites": "No hay mercado secundario regulado ni contrapartida garantizada.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Denominación social: RENTAL TOKEN SL · NIF B01988393 · domicilio Sevilla (aviso legal); «RentalToken, S.L.… NIF B01988393… domicilio en Madrid» (términos de la app)",
+      "dato": "Rental Token, S.L. (NIF B01988393), titular de la plataforma",
+      "fuentePrimaria": "https://www.reental.co/aviso-legal",
+      "localizador": "Aviso legal §1 / app.reental.co/terms",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:04:36Z",
+      "alcanceYLimites": "Domicilio discrepante entre las dos páginas (Sevilla / Madrid). No figura en los registros de la CNMV.",
+      "estado": "en_conflicto"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Rental Token, S.L. y Reental America no constan en los registros de la CNMV; la emisión es privada (Reg. S) y no tiene folleto. Sin advertencias CNMV."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Primaria agotada (0 disponibles, 01/11 15:03 UTC). Sin órdenes P2P vigentes."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Alta general tras KYC; en reventa hace falta wallet en lista blanca y aprobación de la transmisión; pago en USDT; bloqueo contractual de 1 año."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "El acuerdo advierte iliquidez y pérdida total; las rentabilidades publicadas están en conflicto entre ficha y API."
+    }
+  },
+  "estadoOferta": "solo_reventa",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "url/fuentesActuales",
+      "antes": "https://www.reental.co/properties/1789120829529-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1",
+      "ahora": "https://www.reental.co/properties/1792927141634-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1",
+      "fuente": "https://www.reental.co/properties/1792927141634-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1",
+      "critico": true,
+      "nota": "La URL publicada devuelve HTTP 404 (comprobado con Miami 1 y Pirineos 1); Reental ha renumerado las fichas. El prefijo numérico vuelve a cambiar: mejor enlazar a https://www.reental.co/properties o a p2p.rnt.finance."
+    },
+    {
+      "campo": "estado",
+      "antes": "no_verificable",
+      "ahora": "solo_reventa (primaria con 0 tokens disponibles)",
+      "fuente": "https://backend.reental.co/graphql",
+      "critico": true
+    },
+    {
+      "campo": "moneda",
+      "antes": "USD",
+      "ahora": "EUR",
+      "fuente": "https://www.reental.co/properties/1792927141634-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1",
+      "critico": true
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Pirineos 1",
+    "categoria": "Inmobiliario",
+    "pais": "ES",
+    "tipo": "rendimiento",
+    "coleccion": "secundario",
+    "resumen": "Reventa entre inversores de tokens de Pirineos 1 (Reental). La emisión primaria está agotada; solo se compra si otro inversor vende en el P2P.",
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Mercado",
+        "valor": "Solo reventa entre inversores (P2P)"
+      },
+      {
+        "etiqueta": "Moneda del token",
+        "valor": "EUR"
+      },
+      {
+        "etiqueta": "Pago en el P2P",
+        "valor": "USDT (Polygon)"
+      },
+      {
+        "etiqueta": "Órdenes de venta · 01/11/2026",
+        "valor": "Ninguna"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Sin registro CNMV de la plataforma"
+      },
+      {
+        "etiqueta": "Plazo estimado",
+        "valor": "12 meses"
+      }
+    ],
+    "avisos": [
+      "Reental (Rental Token, S.L.) no figura en los registros de la CNMV; la emisión es una colocación privada de EE. UU. (Regulación S).",
+      "La reventa se hace en un mercado P2P de la comunidad (RNT DAO), en USDT; una orden no garantiza ejecución ni precio.",
+      "Las rentabilidades que publica Reental son estimaciones sin fecha de cálculo y cambian según el nivel del inversor."
+    ],
+    "url": "https://p2p.rnt.finance/",
+    "fuentesActuales": [
+      "https://www.reental.co/properties/1792927141634-71ae2a4b-91f7-4ed1-a85b-664b758dfa20-pir-1",
+      "https://p2p.rnt.finance/"
+    ],
+    "lugar": "Benasque · ESP",
+    "pasos": [
+      "Alta y KYC",
+      "Compras si hay oferta",
+      "Reparto o reventa"
+    ],
+    "concepto": "Ilustración editorial de un edificio residencial dividido en pequeñas piezas que pasan de una mano a otra"
+  },
+  "decision": "retirar_propuesta",
+  "motivoDecision": "Resta confianza: además de los problemas comunes (sin registro CNMV, colocación privada, P2P de la comunidad en USDT, rentabilidad sin cifra verificable), hoy no hay ninguna forma visible de comprarlo: primaria agotada y 0 órdenes P2P. La URL publicada da 404.",
+  "bloqueos": [
+    "Registro ESMA (ECSP/MiCA) no consultado: el buscador no respondió a consulta automatizada.",
+    "Acuerdo de suscripción en S3 devuelve HTTP 403: no leído."
+  ],
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Nada que destacar hoy.",
+    "porQueNo": "Plataforma sin registro CNMV, colocación privada, reventa en P2P de la comunidad en USDT y rentabilidad sin cifra verificable."
+  },
+  "consulta": {
+    "inicioUtc": "2026-11-01T13:10:54Z",
+    "finUtc": "2026-11-01T15:10:17Z"
+  }
+}

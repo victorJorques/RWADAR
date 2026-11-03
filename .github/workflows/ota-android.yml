@@ -1,0 +1,97 @@
+name: Actualización OTA Android
+
+# Envío MANUAL de una actualización por aire (OTA, EAS Update) a la app
+# Android instalada, canal production. Nunca se lanza sola: solo con
+# «Run workflow». Cada envío necesita la autorización expresa de Víctor.
+# Antes pasa las pruebas de la app y el guard de compatibilidad con el
+# binario real (rwadar-movil/scripts/comprobar-ota-compatible.cjs): si el
+# cambio exige otro APK (dependencias, configuración, nativo), no envía nada.
+#
+# Necesita el secreto de repositorio EXPO_TOKEN (expo.dev › Account settings
+# › Access tokens). Ver rwadar-movil/LEEME.md.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mensaje:
+        description: 'Qué cambia (se ve en EAS)'
+        required: true
+        type: string
+      base:
+        description: 'Commit completo del APK instalado (1.4.1 = c1f7106…)'
+        required: true
+        default: c1f7106a49e988ca1dde214f0e75b7fe7d4d2719
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-ota-android
+  cancel-in-progress: false
+
+jobs:
+  ota:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: rwadar-movil
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        working-directory: .
+        run: |
+          echo "La OTA solo se envía desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Descargar el código con su historial
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22.23.4
+
+      - name: Comprobar que Node lleva el parche de seguridad
+        run: node ../rwadar-node-seguro.js
+
+      - name: Comprobar que existe la credencial de Expo
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "FALTA EL SECRETO EXPO_TOKEN en Settings › Secrets and variables › Actions."
+            exit 1
+          fi
+          echo "Credencial presente."
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Pruebas de la app
+        run: npm test
+
+      - name: Compatibilidad con el APK instalado
+        env:
+          BASE: ${{ inputs.base }}
+        run: node scripts/comprobar-ota-compatible.cjs --base "$BASE"
+
+      - name: Enviar la OTA (canal production, Android)
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          MENSAJE: ${{ inputs.mensaje }}
+        run: |
+          npx --yes eas-cli@21.8.0 update --channel production --platform android \
+            --environment production --message "$MENSAJE" --non-interactive --json \
+            > "$RUNNER_TEMP/update.json"
+          node -e "
+            const u = JSON.parse(require('fs').readFileSync(process.env.RUNNER_TEMP + '/update.json', 'utf8'));
+            const lista = Array.isArray(u) ? u : [u];
+            if (!lista.length || !lista.every(x => x && x.id && x.runtimeVersion)) {
+              console.error('EAS no devolvió una actualización identificable.'); process.exit(1);
+            }
+            for (const x of lista) console.log('OTA', x.id, 'grupo', x.group, 'runtime', x.runtimeVersion, 'plataforma', x.platform);
+          "

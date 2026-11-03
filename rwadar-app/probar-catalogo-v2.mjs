@@ -154,7 +154,18 @@ try {
   const resultadoAmpliado = validarAmpliacion(ampliado);
   assert.equal(resultadoAmpliado.ofertasEsperadas, 50);
   assert.deepEqual(resultadoAmpliado.manifiesto, fuenteAmpliada.manifiesto);
-  assert.throws(() => validarAmpliacion({ plataformas, ofertas }, resultadoAmpliado.manifiesto), /reduce/);
+  // Desde el 02/11/2026 un lote coherente más pequeño se acepta (retirada deliberada).
+  assert.equal(validarAmpliacion({ plataformas, ofertas }, resultadoAmpliado.manifiesto).ofertasEsperadas, 49);
+  const reducido = structuredClone({ plataformas, ofertas });
+  const quitar = new Set(reducido.ofertas.filter(o => o.coleccion === 'secundario').slice(0, 20).map(o => o.slug));
+  reducido.ofertas = reducido.ofertas.filter(o => !quitar.has(o.slug));
+  for (const fila of [...reducido.plataformas, ...reducido.ofertas]) {
+    fila.ofertas_esperadas = 29; fila.colecciones_esperadas.secundario = 1;
+  }
+  assert.equal(validarAmpliacion(reducido).ofertasEsperadas, 29, 'una retirada deliberada coherente se acepta');
+  const reducidoCortado = structuredClone(reducido); reducidoCortado.ofertas.pop();
+  assert.throws(() => validarAmpliacion(reducidoCortado), /incompletas|incompleta/,
+    'un lote reducido al que le falta una fila declarada se rechaza');
   for (const alterar of [
     lote => { lote.ofertas.pop(); },
     lote => { lote.plataformas.pop(); },
@@ -162,9 +173,6 @@ try {
     lote => { lote.ofertas[49].revision_id = '00000000-0000-0000-0000-000000000000'; },
     lote => { lote.plataformas[25].colecciones_esperadas.secundario--; },
     lote => { lote.ofertas[49].documentacion.imagenEditorialAlt = 'Corto'; },
-    lote => { for (const f of [...lote.plataformas, ...lote.ofertas]) {
-      f.colecciones_esperadas.principales++; f.colecciones_esperadas.secundario--;
-    } lote.ofertas.find(o => o.coleccion === 'secundario').coleccion = 'principales'; },
     lote => { for (const f of [...lote.plataformas, ...lote.ofertas]) {
       f.ofertas_esperadas = LIMITES_CATALOGO_V2.ofertas + 1;
       f.colecciones_esperadas.principales = LIMITES_CATALOGO_V2.ofertas - 24;
@@ -175,6 +183,19 @@ try {
     const invalido = structuredClone(ampliado); alterar(invalido);
     assert.throws(() => validarAmpliacion(invalido), 'una ampliación conserva todas las guardas');
   }
+  // Desde el 02/11/2026 se puede mover una oferta de colección si el manifiesto
+  // del lote lo declara; si no lo declara, se sigue rechazando.
+  const reclasificado = structuredClone(ampliado);
+  for (const f of [...reclasificado.plataformas, ...reclasificado.ofertas]) {
+    f.colecciones_esperadas = { ...f.colecciones_esperadas, principales: 26, secundario: 20 };
+  }
+  reclasificado.ofertas.find(o => o.coleccion === 'secundario').coleccion = 'principales';
+  assert.equal(validarAmpliacion(reclasificado).coleccionesEsperadas.secundario, 20,
+    'una reclasificación declarada en el manifiesto se acepta');
+  const sinDeclarar = structuredClone(ampliado);
+  sinDeclarar.ofertas.find(o => o.coleccion === 'secundario').coleccion = 'principales';
+  assert.throws(() => validarAmpliacion(sinDeclarar), /colección/,
+    'una reclasificación que no cuadra con el manifiesto se rechaza');
   resultadoAmpliado.manifiesto.coleccionesEsperadas.principales = 999;
   assert.equal(ampliado.plataformas[0].colecciones_esperadas.principales, 25,
     'el manifiesto devuelto no comparte objetos con el transporte');
@@ -217,10 +238,18 @@ try {
   const antes50 = fs.readFileSync(jsPath, 'utf8');
   const csvAntes50 = fs.readFileSync(path.join(temporal, 'sitio.csv'), 'utf8');
   assert.equal(manifiestoMinimoFuente(antes50, MANIFIESTO_CATALOGO_V2).ofertasEsperadas, 50);
-  await assert.rejects(sincronizar({ jsPath, csvPath: path.join(temporal, 'sitio.csv'), fetchFn,
-    versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true }), /reduce/);
-  assert.equal(fs.readFileSync(jsPath, 'utf8'), antes50, 'un lote anterior de49 no reemplaza el de50');
+  // Un lote truncado sigue sin reemplazar la copia de 50.
+  await assert.rejects(sincronizar({ jsPath, csvPath: path.join(temporal, 'sitio.csv'), versionEsquema: 2,
+    manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true,
+    fetchFn: async url => ({ ok: true, json: async () => url.includes('catalogo_ofertas_publicas_v2')
+      ? ampliado.ofertas.slice(1) : url.includes('catalogo_plataformas_publicas_v2') ? ampliado.plataformas : descartes }) }));
+  assert.equal(fs.readFileSync(jsPath, 'utf8'), antes50, 'un lote truncado no reemplaza el de50');
   assert.equal(fs.readFileSync(path.join(temporal, 'sitio.csv'), 'utf8'), csvAntes50);
+  // Desde el 02/11/2026 un lote coherente de 49 sí reemplaza al de 50 (retirada deliberada).
+  await sincronizar({ jsPath, csvPath: path.join(temporal, 'sitio.csv'), fetchFn,
+    versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true });
+  assert.equal(manifiestoMinimoFuente(fs.readFileSync(jsPath, 'utf8'), MANIFIESTO_CATALOGO_V2).ofertasEsperadas, 49,
+    'un lote coherente más pequeño sustituye al anterior');
   assert.throws(() => manifiestoMinimoFuente('const P=[(()=>{throw Error("no ejecutar");})()]; const EMI=[];',
     MANIFIESTO_CATALOGO_V2), /JSON|Unexpected token/);
 
@@ -287,7 +316,7 @@ try {
     fuenteAmpliada.manifiesto);
   assert.equal((await filas(db, 'select * from public.catalogo_ofertas_publicas')).length, 28,
     'la ampliaciónV2 no altera el manifiesto V1');
-  console.log('Catálogo V2: manifiesto estricto, expansión50/1000, no retroceso, RLS/invoker, V1 y transporte atómico verificados.');
+  console.log('Catálogo V2: manifiesto estricto, expansión50/1000, reducción deliberada coherente (02/11) y rechazo de truncados, RLS/invoker, V1 y transporte atómico verificados.');
 }
 finally {
   await db.close();

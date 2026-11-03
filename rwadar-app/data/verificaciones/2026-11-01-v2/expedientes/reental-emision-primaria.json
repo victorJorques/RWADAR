@@ -1,0 +1,166 @@
+{
+  "slug": "reental-emision-primaria",
+  "tipoExpediente": "publicada",
+  "grupo": "reental",
+  "proveedor": "Reental",
+  "plataformaSlug": "reental",
+  "entidadComercializadora": "Rental Token, S.L. (NIF B01988393), marca Reental",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": null,
+  "identificador": null,
+  "moneda": null,
+  "documentos": [
+    {
+      "titulo": "Catálogo público de inmuebles (15 páginas)",
+      "url": "https://www.reental.co/properties",
+      "versionOFecha": null,
+      "paginas": 15,
+      "sha256": "f2fc5b69d8fb9d0321f7517776c4bde268a835eff4c011f433371696b9196839",
+      "leido": true
+    },
+    {
+      "titulo": "API pública getProjects (129 proyectos)",
+      "url": "https://backend.reental.co/graphql",
+      "versionOFecha": "consulta 2026-11-01",
+      "paginas": null,
+      "sha256": "47e7a89e518ee3b3087cbcf7807226b63370274674098fbd167a78c06ae51e09",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "Reental / Rental Token / Reental America",
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "alcance": "Buscador de registros oficiales: «Reental» y «Reental America» → «No se han encontrado resultados»; «Rental Token» → sin resultados legibles. No consta inscripción como ESI, PSFP/ECSP ni otra figura.",
+      "consultadoUtc": "2026-11-01T15:07:37Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental",
+      "consultadoUtc": "2026-11-01T15:05:59Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Rental Token",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rental+Token",
+      "consultadoUtc": "2026-11-01T15:06:06Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental America",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental+America",
+      "consultadoUtc": "2026-11-01T15:06:42Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "lista «Otras entidades» (PDF)",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+      "consultadoUtc": "2026-11-01T15:09:08Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "Estados en el catálogo público (127 fichas): CLOSED 51, IN_OPERATION 49, UNDER_RENOVATION 19, UNDER_CONSTRUCTION 4, FUNDED 3, RENOVATING 1",
+      "dato": "ninguna ficha pública en venta primaria",
+      "fuentePrimaria": "https://www.reental.co/properties",
+      "localizador": "Listado ?4c3cf42c_page=1…15, campo fs-cmsfilter-field=\"estado\"",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T13:10:55Z",
+      "alcanceYLimites": "El catálogo público no muestra ninguna emisión abierta.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "estado",
+      "literal": "getProjects (129): TOKENS_ON_SALE 1 (Miami 7, PRIVATE), COMING_SOON 1 (Murcia 1, PRIVATE, 0 disponibles); getCrowdfundingListing de los 24 revisados: available 0 salvo Miami 7 (8.948,48)",
+      "dato": "única emisión abierta: Miami 7, venta privada",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getProjects metadata.numElements=129; getCrowdfundingListing",
+      "fechaDato": "2026-11-01",
+      "consultadoUtc": "2026-11-01T15:02:45Z",
+      "alcanceYLimites": "Miami 7 tiene expediente propio (reental-miami-7) con decisión no_admitir.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "«La inversión mínima es 1 token = 100 euros/dólares»; el catálogo dice «invertir en inmobiliario desde 500€»",
+      "dato": null,
+      "fuentePrimaria": "https://www.reental.co/faqs",
+      "localizador": "FAQ «¿Cuál es el mínimo…?» frente a texto bajo el listado",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:04:36Z",
+      "alcanceYLimites": "Conflicto sin resolver entre 100 y 500.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "licencia",
+      "literal": "FAQ: en España «valores negociables tokenizados, bajo… la Ley 6/2023»; API: isErir=false en los 129 proyectos; CNMV: sin inscripción de Reental/Rental Token",
+      "dato": "sin registro CNMV de la plataforma",
+      "fuentePrimaria": "https://www.reental.co/faqs",
+      "localizador": "FAQ «¿Cómo funciona legalmente Reental?»; getProjects.isErir; buscador CNMV",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-01T15:07:37Z",
+      "alcanceYLimites": "La nota de prensa sobre una emisión con ERIR no se ha vuelto a leer hoy; ningún proyecto actual figura con isErir=true.",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Sin registro CNMV de la plataforma."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "No hay emisión pública abierta; la única abierta es privada."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Mínimo en conflicto (100 / 500)."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin advertencias CNMV."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "estado",
+      "antes": "en seguimiento, sin apertura comprobada",
+      "ahora": "catálogo público sin ninguna emisión abierta; única abierta (Miami 7) es venta privada",
+      "fuente": "https://backend.reental.co/graphql",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": null,
+  "decision": "retirar_propuesta",
+  "motivoDecision": "Una referencia genérica «en camino» sin oferta ni cifra concreta no ahorra tiempo al cliente y resta confianza. Sustituirla por una ficha concreta no procede hoy: la única emisión abierta (Miami 7) es privada y no cumple el criterio de entidad regulada.",
+  "bloqueos": [],
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Nada concreto.",
+    "porQueNo": "Referencia genérica sin emisión pública abierta ni entidad registrada en la CNMV."
+  },
+  "consulta": {
+    "inicioUtc": "2026-11-01T13:10:54Z",
+    "finUtc": "2026-11-01T15:10:17Z"
+  }
+}

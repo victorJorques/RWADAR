@@ -6,6 +6,44 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 2 de noviembre de 2026 · Claude · investigación del catálogo (ciclo manual del 01/11), preparada sin aplicar
+
+**Rama:** `claude/investigacion-catalogo-2026-11-01`. Nada aplicado en Supabase,
+nada publicado. Víctor inició el ciclo el 01/11 («haz la investigación») y pidió
+priorizar ofertas que un particular en España pueda comprar de verdad y que den
+confianza. Informe: [`../INVESTIGACION-CATALOGO-2026-11-01.md`](../INVESTIGACION-CATALOGO-2026-11-01.md).
+
+- **Expedientes:** 105 (49 publicadas + 56 candidatas) en
+  `rwadar-app/data/verificaciones/2026-11-01-v2/expedientes/`, de 9 agentes
+  investigadores, y 5 revisiones independientes en `revision-independiente/`.
+  Lectura pública previa: lote del 23/10, 49 ofertas (24/21/4), vencido el 29/10.
+- **Altas aprobadas con cambios:** `spiko-letras-del-tesoro-dolar` y
+  `robinhood-classic-stock-tokens`. Kraken xStocks, rechazada en este ciclo.
+- **28 retiradas justificadas por la revisión** (22 Reental, mGLO, mGLOBAL,
+  mGLOeuro, IOD, wemakeit y quitt). **Las decide Víctor.**
+- **Límite de 49 quitado** (commit «Quita el mínimo de 49 ofertas», con orden
+  expresa de Víctor del 02/11). `contrato-catalogo.js`, el lector de
+  `rwadar-20260820.js` y `sincronizar.js` ya no comparan con la copia anterior:
+  aceptan un lote más pequeño o reclasificado si cuadra con su propio
+  manifiesto. Lotes cortados o mezclados se siguen rechazando. Pruebas: web
+  553/0, móvil 392/0, db, tools, acceso 140/140 y QR. **Sin publicar:** falta
+  sellar `estado.json` y publicar la web, y la OTA de Android (permiso de
+  Víctor), antes del lote reducido. La lista cerrada `rwadar-fichas-manifiesto.js`
+  se edita a mano en ese lote (quitar retiradas, añadir altas).
+- `propuesta-tarjetas.json` (con `preparar-propuesta.py`) trae las tarjetas
+  con los cambios obligatorios aplicados y lo que hay que **releer el día de
+  publicación** (Spiko, oráculo de mTBILL, precios de Brickwise y Aktionariat).
+  `consolidar.py` valida los expedientes: solo quedan 2 errores de formato
+  conocidos (mGLO y mGLOBAL citan el oráculo con la dirección abreviada).
+- **PDF/HTML originales fuera de Git** (`.gitignore` del ciclo); SHA-256 en
+  cada inventario. Se pierden si se recicla este contenedor.
+- **Pendiente:** decisión de Víctor (A/B y retiradas), ilustraciones de las 2
+  altas, montar lote, PGlite, revisión del SQL, precarga, SQL y publicación,
+  cada paso con su permiso. No se ejecutaron `npm run catalogo`,
+  `montar-revision.mjs` ni `npm test`: no hubo cambios de código.
+
+---
+
 ## 1 de noviembre de 2026 · Claude · anti-robots y límite de intentos, preparados sin activar
 
 **Rama:** `claude/anti-robots-2026-10-30`. Sin unir a `main`, porque toca

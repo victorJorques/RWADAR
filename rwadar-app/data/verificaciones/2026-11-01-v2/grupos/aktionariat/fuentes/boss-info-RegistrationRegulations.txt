@@ -1,0 +1,352 @@
+TOKENIZATION AND REGISTRATION REGULATIONS OF BOSS INFO AG
+V2.0 – 2022-05-24
+The board of directors (the "Board") of Boss Info AG (the "Company") has established the following
+regulations (the "Regulations"), which (i) provide the information that the Company is required to provide under
+article 973i para. 1 of the Swiss Code of Obligations, (ii) set forth the tokenization terms
+("Registrierungsvereinbarung", "convention d'inscription") in relation to those shares of the Company that have
+been or will be issued from time to time in the form of ledger-based securities (Registerwertrechte/droits-valeurs
+inscrits) within the meaning of Articles 973d et seq. of the Swiss Code of Obligations (the "Tokenized Shares")
+and (iii) set forth the modalities pursuant to which acquirers of the Company's shares can be recognized as
+shareholders of the Company and recorded in the Company's share register, as contemplated by Article 6 of the
+Company's articles of association.
+
+These Regulations amend and restate the previous registration agreement dated 23 August 2021 (ref. V.1.3 –
+2021-08-23).
+
+1.        GENERAL INFORMATION
+
+ System                            Ethereum Mainnet, see ethereum.org for further information
+
+ Issuer                            Boss Info AG, Farnern, Switzerland, CHE-105.004.543,
+
+ Issued instrument                 Registered shares (Namenaktien) of the issuer (the "Shares")
+
+                                   Contract 0x2e880962a9609aa3eab4def919fe9e917e99073b (the "Token
+ Register
+                                   Contract"), named "Boss Info AG" with symbol "BOSS"
+
+ Source code                       Bridge protocol security token. https://developers.mtpelerin.com/
+
+ Additional source of
+                                   bossinfo.ch/token (the "Website")
+ information
+ Number of Shares
+ outstanding and their             See the commercial registry (zefix.ch) or the Website.
+ nominal value
+ Number of Share
+                                   See the Token Contract or the Website.
+ Tokens in circulation
+ Transfer restrictions
+                                   None
+ (Vinkulierung)
+
+2.        INFORMATION REGARDING THE TOKENIZED SHARES, THE DISTRIBUTED LEDGER
+          AND THE SMART CONTRACT
+
+2.1       Rights associated with the Tokenized Shares
+
+The Board has resolved to tokenize and may in the future resolve to tokenize from time to time some or all of the
+Company's registered shares pursuant to Articles 973d et seq. of the Swiss Code of Obligations and these
+Regulations.
+The rights associated with the Tokenized Shares are set forth in the articles of association of the Company and
+Swiss law, in particular Articles 620 et seq. of the Swiss Code of Obligations.
+
+2.2       Functioning of the distributed ledger and smart contract
+
+The Board has resolved that the Tokenized Shares will be associated with digital tokens created by means of the
+Mt Pelerin Bridge Protocol Version 2 (the "Bridge Protocol", see Section 2.2.3) and recorded in the Ethereum
+distributed ledger (see Section 2.2.2).
+2.2.1    The distributed ledger technology
+Ethereum is a distributed ledger. The distributed ledger technology is a technology that allows the operation of a
+distributed ledger, i.e. a ledger that is not kept by a trusted intermediary but by a community of independent
+participants.
+The distributed ledger technology, as implemented on the Ethereum distributed ledger is based on complex
+mathematical and cryptography concepts, which are described in this document at a high level only. The
+technology makes it possible to keep records of data relating to persons whose identity is protected by
+asymmetric cryptographic methods. Such methods are based on the interplay between a public key and a private
+key, which are two numbers that are mathematically related. The public key (often referred to as the
+"distributed ledger address") is available to all ledger participants, while the private key must remain secret.
+The holder of the private key can generate "signature" messages that can be identified as authentic (i.e. as having
+been generated with the private key) by the ledger participants. Such signature messages can be used to initiate
+"transactions", i.e. new entries in the ledger. In a distributed ledger that functions as a "blockchain", the
+participants validate transactions in blocks, by adding a new set of data (or "block") to a chain pre-existing
+blocks.
+Each ledger participant maintains its own copy of the ledger, and updates such copy when a participant includes
+a new "block" in a manner consistent with the chain's protocol. This regime aims to ensure the transparency and
+immutability of the transactions recorded in the ledger.
+
+
+2.2.2    Functioning of the Ethereum distributed ledger
+The Board has resolved that the tokens associated with the Tokenized Shares will be recorded in the Ethereum
+blockchain (the "distributed ledger").
+The distributed ledger has two functions.
+The first is related to Ether (or ETH). Ether is a cryptocurrency (or digital currency) that is recorded and traded
+on the distributed ledger. Users of the distributed ledger can trade Ethers on the distributed ledger and use such
+Ethers as a means of payment.
+The second is the use of "smart contracts". The distributed ledger allows for the creation of computer codes
+called "smart contracts", which can perform a large number of functions, including creating a record of digital
+tokens on distributed ledger addresses.
+A "token" is an entry in a register that is maintained by means of the smart contract. Each token is attributed to a
+particular distributed ledger address. The fact that the register maintained through the smart contract contains a
+corresponding entry is evidence that a token is attributed to the relevant distributed ledger address.
+Entries in the distributed ledger are validated by a large number of participants. Any person or entity may act as
+validator and validate transactions in the distributed ledger, subject to technical requirements unrelated to the
+identity of the person or entity (e.g. technical infrastructure requirements and/or minimum amount of Ethers
+"staked" (i.e. locked on a distributed ledger address for a certain period of time)).
+
+
+2.2.3    The smart contracts framework
+The Tokenized Shares are created and managed by means of smart contracts based on the Bridge Protocol, an
+open source, multi-chain, non-custodial framework to issue asset tokens and manage their compliance on public
+blockchains. These smart contracts define the manner in which the tokens are issued, transferred and cancelled.
+The smart contracts also serve to record the ownership of the tokens.
+Tokens deployed in accordance with the Bridge Protocol take the form of what is a "proxy" smart contract
+combined with a "logic" smart contract. The "proxy" smart contract contains the data that is specific to the token
+but does not contain the full logic and functions needed to operate the tokens on a stand-alone basis. The "proxy"
+smart contract however "calls" these functions from a separate smart contract (referred to as the "logic" smart
+contract).
+In the context of the Tokenized Shares, the Token Contract acts as the "proxy" smart contract.
+The Solidity source code and the distributed ledger address of the Token Contract (proxy) are published at
+https://etherscan.io/address/0x2e880962a9609aa3eab4def919fe9e917e99073b
+The Solidity source code and the distributed ledger address of the "logic" smart contract are published at
+https://etherscan.io/address/0xa8124db0a8ff6772f35923349e388d092522f712#code.
+Both "proxy" and "logic" smart contracts have been submitted by the CMTA's Expert Committee and deemed to
+comply with the CMTA Tokenized shares standard.
+
+3.       TOKENIZATION TERMS
+
+3.1      Definitions
+
+In these Regulations:
+"Company" has the meaning set forth in the preamble to these Regulations.
+"Distributed ledger" has the meaning set forth in Section 2.2.2.
+"Distributed ledger address" has the meaning set forth in Section 2.2.1.
+"Hard fork" means a disagreement among participants of the distributed ledger resulting in a split into two or
+more incompatible versions of such distributed ledger, and which results in the tokens recorded in the distributed
+ledger being duplicated (one version of the tokens remaining on each version of the distributed ledger).
+"Transaction" has the meaning set forth in Section 3.2.
+"Token" means the account unit created by means of the Token Contract.
+"Token Contract" has the meaning set forth in Section 1.
+"Token holder" means any person with de facto control over the private key associated with the distributed
+ledger address on which one or more tokens are recorded.
+"Tokenized Shares" has the meaning set forth in the preamble to these Regulations.
+
+3.2      Transactions in Tokenized Shares
+
+Unless applicable law provides otherwise (e.g. in the event of universal succession further to the death or merger
+of the token holder, or if the transfer or encumberment is carried out pursuant to the Federal Act on
+Intermediated Securities), the transfer of legal title to a Tokenized Share, and the creation of a security or other
+interest on such Tokenized Share (such as a pledge or usufruct) (each such transfer or creation of interest a
+"Transaction"), requires the transfer of the relevant token to a distributed ledger address controlled by the
+acquirer in accordance with the rules and procedures of the distributed ledger and the functions of the smart
+contract.
+There are no transfer restrictions (Vinkulierung). Further, the Company has deactivated the "white listing"
+function of the Token Contract and instead implemented requirements for shareholders to identify both the legal
+and beneficial owner of the relevant token before being able to exercise shareholder rights (see Section 4 below).
+A transfer of a Token will be deemed to have been recorded in the distributed ledger when 30 blocks or more
+have been validated after the one relating to the Transaction.
+Once a Transaction has been recorded in the distributed ledger, the Transaction will remain valid if the
+agreement based on which the Transaction was carried out is invalidated, for example further to a material error
+of one of the parties or of a fraud. In such a case, unwinding the Transaction will require a return of the relevant
+token to a distributed ledger address controlled by the transferor.
+
+3.3      Hard forks
+
+In the event of a hard fork or under similar circumstances that may endanger the reliability of the distributed
+ledger, the Company may activate the "pause" function of the Token Contract to prevent Transactions on both
+versions of the distributed ledger pending its decision on which version it will support and the communication of
+such decision to the shareholders.
+If the Company decides to support the version of the distributed ledger that follows the rules and protocols of
+such distributed ledger that were in force immediately prior to the occurrence of the hard fork (i.e. the "legacy"
+version of the relevant distributed ledger), all Transactions on "forked" versions of the distributed ledger will be
+invalid, and any token existing on a forked version of the distributed ledger will not be associated with
+Tokenized Shares.
+If the Company decides to support a forked version of the distributed ledger, all Transactions on the "legacy"
+version of the relevant distributed ledger will be invalid, and any token existing on the "legacy" version of the
+distributed ledger will not be associated with Tokenized Shares.
+
+3.4      Cancellation of lost or stolen tokens
+
+If a token holder initiates proceedings to have one or more tokens cancelled pursuant to Article 973h CO, the
+number of public notices required pursuant to Article 973h para. 2 will be one, and the deadline imposed on
+token holders to produce the relevant private keys will be one month.
+The Company will cancel and re-issue a token upon delivery of an enforceable (vollstreckbar, exécutoire) court
+decision ordering such cancellation and re-issue.
+
+4.       RECOGNITION OF ACQUIRERS OF SHARES AS SHAREHOLDERS
+
+4.1      Share register
+
+According to Article 6 of the Company's articles of association, the Company recognizes as shareholders the
+persons who are recorded in the Company's share register as the owners or usufructaries of Shares. Shareholders
+can only exercise or claim their shareholder rights (including their dividend and other financial shareholder
+rights) upon their registration in the Company's share register. Rights to dividends and other financial
+shareholder rights that arise before the registration of a shareholder in the Company's share register are forfeited
+to the Company. Persons having acquired Shares will be recorded in the Company's share register as
+shareholders only if they have followed the rules and procedures set forth in this Section 4. These requirements
+apply to the acquirers and holders of the Company's Shares irrespective of whether such shares have been issued
+as ledger-based securities or otherwise.
+The rules and procedures set forth in this Section 4 do not limit the powers and rights of the Company and its
+board of directors under applicable law and the Company's articles of association.
+
+4.2      Registration request
+
+The Company will register in its share register acquirers of Shares who have submitted a duly completed
+registration request in the manner contemplated in this Section 4. The Company may, at its discretion, register
+acquirers of Shares in its share register if it has otherwise satisfied itself that such acquirer satisfies the relevant
+requirements of the Company's articles of association and applicable law. The Company will also not require
+shareholders registered in the share register as of the date hereof to re-register.
+
+
+4.2.1    Form of the registration request
+Registration requests must be made in writing at the following address:
+         Boss Info AG
+         Attn. Share register
+         Tannackerstrasse 3
+         4539 Farnern
+or electronically, by email to info@bossinfo.ch or through the Company's dedicated portal at
+www.bossinfo.com/kontakt/
+
+
+4.2.2    Content of the request – Shares acquired by the beneficial owner
+All acquirers of Shares must provide the following information:
+        (i)      first and last name (for individuals) or corporate name (for legal entities and unincorporated
+                 partnerships) of the applicant;
+        (ii)     details of the applicant:
+
+                           place of residence (for individuals) or registered office (for legal entities and
+                            unincorporated partnerships) and valid postal address;
+                           date of birth (for individuals) or date of constitution (for legal entities and
+                            unincorporated partnerships);
+                           nationality(ies) (for individuals);
+                           email address;
+                           telephone number;
+                           copy of a document used to verify the identity;
+
+        (iii)    confirmation that the applicant holds the Shares for its own account and not as a fiduciary for a
+                 third party;
+        (iv)     total number of Shares acquired by the applicant, if applicable split by the form of the Shares
+                 (ledger-based securities, share certificates, etc.); and
+        (v)      IBAN of a bank account opened in the name of the shareholder with a bank established in
+                 Switzerland or in another member State of the Organization for Economic Co-operation and
+                 Development (OECD).
+
+Acquirers of Tokenized Shares who hold their Tokenized Shares on distributed ledger addresses that they control
+(e.g. through a wallet that they control) must provide the following additional information:
+        (vi)     distributed ledger address(es) on which the Tokenized Shares are recorded;
+        (vii)    confirmation that the applicant has sole control over the distributed ledger address(es) referred to
+                 under (vi) above; and
+        (viii)   total number of Tokenized Shares held on each distributed ledger address referred to under (vi)
+                 above.
+
+Acquirers of Tokenized Shares who hold their Tokenized Shares through professional custodians within the
+meaning of the Federal Act on Intermediated Securities (e.g. banks, securities firms or DLT-based trading
+facilities within the meaning of the Financial Market Infrastructure Act) must provide the following additional
+information:
+        (ix)     name and address of the professional custodian; and
+        (x)      total number of Shares acquired through the professional custodian, if applicable split by the form
+                 of the Shares (ledger-based securities, share certificates, etc.).
+
+
+4.2.3     Content of the request – Shares acquired through a fiduciary
+All persons and entities who have acquired Shares through a third party (fiduciary) must themselves or through
+the fiduciary provide the following information:
+        (i)      first and last name (for individuals) or corporate name (for legal entities and unincorporated
+                 partnerships) of the beneficial owner;
+        (ii)     details of the beneficial owner:
+
+                           place of residence (for individuals) or registered office (for legal entities and
+                            unincorporated partnerships) and valid postal address;
+                           date of birth (for individuals) or date of constitution (for legal entities and
+                            unincorporated partnerships);
+                          nationality(ies) (for individuals);
+                          email address;
+                          telephone number;
+                          copy of a document used to verify the identity;
+
+        (iii)    name and address of the fiduciary;
+        (iv)     confirmation from the fiduciary that the identified beneficial owner beneficially owns the
+                 respective Shares;
+        (v)      total number of shares acquired by the fiduciary, split by the form of the Shares (ledger-based
+                 securities, Share certificates, etc.); and
+        (vi)     IBAN of a bank account opened in the name of the fiduciary with a bank established in Switzerland
+                 or in another member State of the Organization for Economic Co-operation and Development
+                 (OECD).
+
+All persons and entities who have acquired shares through a fiduciary who itself holds the Tokenized Shares on
+distributed ledger addresses that the fiduciary controls (e.g. through a wallet that the fiduciary controls) must
+themselves or through the fiduciary provide the following additional information:
+        (vii)    distributed ledger address(es) on which the Tokenized Shares are recorded;
+        (viii)   total number of Tokenized Shares held on each distributed ledger address referred to under (vii)
+                 above; and
+        (ix)     confirmation from the fiduciary that the fiduciary controls the ledger address(es) referred to under
+                 (vii) above.
+
+Professional custodians within the meaning of the Federal Act on Intermediated Securities (e.g. banks, securities
+firms or DLT-based trading facilities within the meaning of the Financial Market Infrastructure Act) may request
+to be recorded as nominees in the share register by providing solely the information contemplated under (iii), (v)
+and (vii) to (ix) above.
+
+
+4.2.4     Supporting evidence
+The Company may request supporting evidence in relation to a registration.
+If the shares are held in tokenized form, the Company may, in particular, request that a beneficial owner or
+fiduciary acting on behalf of a beneficial owner performs a so-called "satoshi test", i.e. makes a small transaction
+from the distributed ledger address purported to be the applicant's, or otherwise request that the respective
+beneficial owner or fiduciary demonstrates that it has control over the distributed ledger address on which the
+Tokens are recorded.
+
+
+4.2.5     New confirmation
+The Company can, at any time, request a shareholder to confirm that the information provided in a previous
+registration request remains accurate and up to date.
+
+
+4.2.6     Disclosure of beneficial ownership
+Shareholders who reach or cross a relevant threshold for the disclosure of the beneficial ownership of the Shares
+must, in addition, comply with applicable legal requirements.
+
+
+4.2.7     Consequences of registration
+Once recorded in the Company's share register, a shareholder is entitled to exercise all the membership and
+financial rights associated with the Shares recorded under its name in the share register.
+By contrast, as per the Company's articles of association, an owner of Tokenized Shares who is not registered in
+the share register does not have any right as a shareholder of the Company. Such owner of Tokenized Shares is
+in particular not entitled to dividends or other distributions made by the Company, to attend general meetings or
+to vote on the occasion of such general meetings. In the event of a subsequent registration in the share register,
+shareholder rights will only arise and accrue for the period that follows the registration. Rights to dividends and
+other financial shareholder rights that arise before the registration of the shareholder in the Company's share
+register will be forfeited to the Company.
+
+
+4.2.8    De-registration
+Upon being informed or otherwise having obtained knowledge of a transfer of Shares by a shareholder, the
+Company will strike off the corresponding entry from the share register.
+In any case, Article 6 of the Company's articles of association applies with respect to the de-registration from the
+share register.
+
+5.       AMENDMENTS
+The Company may amend these Regulations at any time and without prior notice. Amendments to these
+Regulations will be validly made and binding upon all shareholders upon being published in accordance with the
+Company's articles of association or otherwise communicated to shareholders, including through a publication
+on the Company's website. Amendments to these terms will only affect the acquisition, encumbrance or disposal
+of Shares (including Transactions) entered into after the amendments became effective and will not affect such
+transactions (including Transactions) previously completed (in the case of ledger-based securities, recorded in
+the distributed ledger).
+
+6.       APPLICABLE LAW AND JURISDICTION
+These Regulations are governed by and must be construed in accordance with the laws of Switzerland, excluding
+the rules on conflict of laws thereof.
+Any dispute, controversy or claim arising out of or in relation to these terms, including the validity, invalidity,
+breach or termination thereof, will be subject to the exclusive jurisdiction of the ordinary courts of Bern,
+Switzerland.
+
+
+Farnern, 24.5.2022
+
+
+
+
+Simon Boss
+Chairman Boss Info AG
+

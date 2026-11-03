@@ -1,0 +1,999 @@
+
+
+=== PAGE 1 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+DATUM: 02.06.2023 
+INVESTITIONSBEDINGUNGEN 
+FÜR 
+TOKENISIERTE WERTPAPIERE 
+ 
+  
+
+=== PAGE 2 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 2  
+ 
+ 
+ 
+INHALTSVERZEICHNIS 
+ZIFFER SEITE 
+1. Präambel ........................................................................................................................................ 3 
+2. Wesentliche Merkmale der tokenisierten Wertpapiere und Definitionen ................................... 3 
+3. Ausgabe, Stückelung und Tokenisierung der Wertpapiere ........................................................... 5 
+4. Zeichnung und Erwerb tokenisierter Wertpapiere ....................................................................... 6 
+5. Ausschüttung und Verlustbeteiligung ........................................................................................... 8 
+6. Mitsprache bei der Verwaltung der Immobilie ........................................................................... 11 
+7. Eigenverwaltung der tokenisierten Wertpapiere ........................................................................ 16 
+8. Keine Eigentumsrechte, kein Treuhandverhältnis, keine Gesellschafterrechte, keine 
+Nachschusspflicht ........................................................................................................................ 16 
+9. Squeeze-out ................................................................................................................................. 17 
+10. Laufzeit und Beendigung der Wertpapiere, Kündigungsrechte .................................................. 18 
+11. Veräusserung der Immobilie ....................................................................................................... 20 
+12. Bestellung und Löschung des Pfandrechts .................................................................................. 21 
+13. Übertragbarkeit der tokenisierten Wertpapiere ......................................................................... 22 
+14. Ausgabe weiterer Wertpapiere und sonstiger Rechte ................................................................ 23 
+15. Mitteilungen und Nachrichten .................................................................................................... 23 
+16. Steuern und sonstige Kosten ....................................................................................................... 23 
+17. Schlussbestimmungen ................................................................................................................. 23 
+  
+
+=== PAGE 3 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 3  
+ 
+ 
+1. PRÄAMBEL 
+1.1 Die Emittentin beabsichtigt, die tieferstehend näher bezeichnete Immobilie zu erwerben. 
+1.2 Der Erlös der gegenständlichen Emission wird ausschließlich für die in Ziffer 2.2 angeführten 
+Zahlungen verwendet. 
+1.3 Der Erwerb der Immobilie durch die Emittentin wird anteilig durch die Aufnahme eines Kredits 
+(voraussichtlich) bei der Raiffeisenbank Halbenrain -Tieschen eGen (mbH)  in Höhe von EUR 
+250.000,00 sowie durch den Erlös aus der gegenständlichen Emission finanziert. Der 
+Fremdkapitalanteil für die Finanzierun g des Ankaufs der Immobilie beträgt sohin 62,50%. Der 
+vereinbarte Zinssatz beträgt  derzeit (voraussichtlich) 4,875% (variabel). Die Zinslast beträgt 
+aktuell EUR 12.187,50 p.a.. Das Darlehen hat eine Laufzeit von  (voraussichtlich) 35 Jahren , 
+wovon die erste n 15 Jahre tilgungsfrei s ind. Die Tilgung des Darlehens erfolgt beginnend mit 
+dem 16. Jahr bis zu m Ende der Kreditlaufzeit.  Die Rückzahlung wird aus dem Verkauf der 
+Immobilie finanziert, welcher 15 Jahre nach dem Ausgabedatum geplant ist. 
+1.4 Die Forderungen des Investors aus den ausgegebenen Wertpapieren werden in Höhe des 
+Ausgabepreises grundbücherlich durch ein Pfandrecht besichert. Das Pfandrecht steht im Rang 
+hinter jenem der finanzierenden Bank. Der Antrag auf grundbücherliche Einverleib ung des 
+Pfandrechts wird unmittelbar nach Erwerb der Immobilie gestellt. Die Eintragung kann mehrere 
+Wochen in Anspruch nehmen, woraus sich nach der Emission ein entsprechender Zeitraum 
+ergeben kann, in dem das Pfandrecht noch nicht im Grundbuch eingetragen ist. 
+1.5 Der Unternehmensgegenstand der Emittentin ist : Erwerb Entwicklung, Verwaltung und 
+Veräußerung von Immobilien, Immobilienentwicklungen und Immobilienprojekten; 
+Vermietung, Verpachtung oder sonstige Überlassung von Immobilien; Erwerb, Verwaltung und 
+Veräußerung von Beteiligungen an Gesellschaften; Ausübung der Geschäftsführung an 
+Unternehmen in der Immobilienwirtschaft . Die Emittentin hat es gegenüber dem Investor zu 
+unterlassen, einen anderen Unternehmensgegenstand zu verfolgen. 
+1.6 Die Emittentin beabsichtigt die Ausgabe tokenisierter Wertpapiere, welche dem Inhaber Rechte 
+gemäß diesen Investitionsbedingungen einräumen. 
+2. WESENTLICHE MERKMALE DER TOKENISIERTEN WERTPAPIERE UND DEFINITIONEN 
+2.1 Die nachfolgende Tabelle enthält die wesentlichen Merkmale der auf Ba sis dieser 
+Investitionsbedingungen ausgegebenen tokenisierten Wertpapiere. Soweit die in der 
+nachfolgenden Tabelle enthaltenen Begriffe (linke Spalte) in diesen Investitionsbedingungen 
+verwendet werden, haben sie folgende Bedeutung (rechte Spalte): 
+Emittentin: C&P Bricks GmbH, FN 574638 g, Brauquartier 2, 8055 Graz,  
+Wertpapierart: Tokenisierte Genussscheine 
+
+=== PAGE 4 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 4  
+ 
+ 
+Tokenbezeichnung & ISIN: AT0000A35A42 
+Art der Tokenisierung: Jeder Token vermittelt anteilig Miteigentum an einer physischen 
+Sammelurkunde (Ziffern 3.1-3.2) 
+Verwaltung der Token: Eigenverantwortlich durch den Investor (Ziffer 7) 
+Marktplatz: C&P Bricks App, Brickwise App 
+Blockchain-Netzwerk: Brickprotocol 
+Immobilie: B-LNr. 25, Anteil: 102/7384, EZ 431, KG 49404 Hinterstoder, Bezirksgericht 
+Kirchdorf an der Krems, Hinterstoder 50b, 3 
+Gesamtnennbetrag: EUR 150.000,00 (siehe zur Kalkulation Ziffer 2.2) 
+Stückelung / Gesamtzahl der 
+tokenisierten Wertpapiere: 
+1.500 Stück tokenisierte Genussscheine 
+Ausgabepreis: EUR 100,00 je tokenisiertem Wertpapier 
+Ausschüttung: Monatliche Ausschüttung des Netto-Mietüberschusses (Ziffer 5.1) und 
+einmalige Ausschüttung anlässlich der Veräußerung der Immobilie (Ziffer 5.9) 
+Geplante erste monatliche Ausschüttung des Netto-Mietüberschusses: Im 
+nächsten Kalendermonat nach dem Ausgabetag. 
+Anteil an den Netto-
+Mieteinnahmen, der der 
+Emittentin zusteht 
+3% der monatlichen Netto-Mieteinnahmen (Ziffer 5.4) 
+Liquiditätsrücklagen Einmalige Liquiditätsrücklage: 1,68% des Gesamtnennbetrags 
+Monatliche Liquiditätsrücklage im Zeitpunkt der Emission: 2% der monatlichen 
+Netto-Mieteinnahmen (Ziffer 5.5) 
+Maximale monatliche Liquiditätsrücklage: 10% der monatlichen Netto-
+Mieteinnahmen (Ziffer 5.5) 
+Zeichnungsfrist: 02.06.2023 bis 31.07.2023 
+Ausgabetag: Tag, an dem die Emittentin erstmals tokenisierte Wertpapiere an einen Investor 
+transferiert 
+Mindestausgabemenge: 1.425 Stück tokenisierte Wertpapiere (EUR 142.500,00) 
+Mindestzeichnungsbetrag: EUR 500,00 
+Ordentliche Kündigung: Ja, siehe zu den Details Ziffer 10.2; die ordentliche Kündigung ist erstmals nach 
+5 (fünf) Jahren ab dem Ausgabetag und sodann alle weiteren 5 (fünf) Jahre 
+möglich; Kündigungsfrist jeweils 30 (dreißig) Tage. 
+Außerordentliche Kündigung: Durch die Emittentin gemäß Ziffer 10.3 (insb. bei Kündigung tokenisierter 
+Wertpapiere durch einen oder mehrere Investoren); durch den Investor gemäß 
+Ziffer 10.4 ff (jedoch keine außerordentliche Kündigung bei Wegfall der 
+Handelbarkeit der tokenisierten Wertpapiere) 
+Übertragbarkeit: Ja (siehe zu den Details Ziffer 13) 
+Grundbücherliche Sicherheit Ja, ein Kollektivpfandrecht nach dem Kuratorengesetz 1874 zu einem Festbetrag 
+in Höhe des Gesamtnennbetrags zugunsten der Investoren wird nach 
+Eintragung des Eigentumsrechts der Emittentin in das Grundbuch beantragt. Die 
+
+=== PAGE 5 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 5  
+ 
+ 
+Eintragung und Löschung erfolgt durch einen gemeinsamen Vertreter gemäß § 
+15a Kuratorengesetz 1874 (siehe zu den Details Ziffer 12). 
+Gemeinsamer Vertreter Tuscher Schmidt Rechtsanwälte GmbH (Firmenbuchnummer 536866i), 
+ausschließlich für die Eintragung und Löschung des Pfandrechts 
+Squeeze-out Ja, sofern ein Investor zumindest 90% aller tokenisierten Wertpapiere hält, kann 
+er von den übrigen Investoren den Verkauf ihrer tokenisierten Wertpapiere an 
+ihn verlangen. 
+2.2 Der Gesamtnennbetrag wird für die in der nachstehenden Kalkulation angegeben Positionen 
+bzw. Zahlungen verwendet: 
+Position / Zahlung Betrag (EUR) Informationen 
+1. Rückführung Immobilienkredit EUR 0,00 - 
+2. Zahlung eines Teils des Kaufpreises in 
+folgender Höhe: 
+EUR 119.300,00 - 
+3. Summe (= Finanzierungsbetrag) EUR 119.300,00  
+4. Grunderwerbsteuer EUR 15.311,10  
+5. Eintragungsgebühr Grundbuch EUR 4.812,06  
+6. Kaufvertragserrichtung & 
+Treuhandabwicklung 
+EUR 3.300,00  
+7. Sonstige externe Abwicklungskosten EUR 0,00  
+8. Vermarktungskosten EUR 0,00  
+9. Maklerhonorar EUR 0,00 0% des Kaufpreises 
+10. Liquiditätsrücklage EUR 2.520,00 1,68% des Gesamtnennbetrags 
+11. Eintragung Pfandrecht für Investoren EUR 2.300,00 1,2% des Gesamtnennbetrags + 
+EUR 500,00 für externe Kosten 
+12. Eintragung gemeinsamer Vertreter EUR 1.700,00  
+13. Software-Lizenzgebühren Brickwise IT 
+Services GmbH 
+EUR 750,00  
+14. Rundungsbetrag EUR 6,84  
+15. Gesamtnennbetrag EUR 150.000,00  
+ 
+3. AUSGABE, STÜCKELUNG UND TOKENISIERUNG DER WERTPAPIERE 
+3.1 Die Emittentin begibt Wertpapiere zum Gesamtnennbetrag und mit einer Stückelung gemäß 
+diesen Investitionsbedingungen. Die Ausgabe erfolgt durch Ausstellung einer einzigen 
+physischen Sammelurkunde über sämtliche Wertpapiere (die " tokenisierten Wertpapiere ") 
+
+=== PAGE 6 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 6  
+ 
+ 
+durch die Emittentin. Ein Anspruch des Investors auf Ausstellung einzelner Urkunden besteht 
+nicht. 
+3.2 Die von der Emittentin ausgegebenen Wertpapiere werden in Form  von Tokens digitalisiert. 
+Token sind digitale (Wert-)Einheiten in Form eines Datensatzes, die aufgrund eines Protokolls in 
+einer Blockchain ausschließlich von der Emittentin erstellt und an den Investor übertragen 
+werden. Die Tokenisierung erfolgt durch Einräumung eines Miteigentumsanteils im Umfang von 
+1/Gesamtzahl der tokenisierten Wertpapiere je Token an der Sammelurkunde durch die 
+Emittentin an den jeweiligen Token -Inhaber durch Übertragung des jeweiligen Tokens in den 
+Account des Investors. 
+3.3 Um tokenisierte Wertpapiere zu erwerben und zu übernehmen, benötigt der Investor einen 
+Account am Marktplatz. Sämtliche Rechte des Investors gegenüber der Emittentin knüpfen sich 
+an die rechtmäßig erworbene anteilige Miteigentümerschaft an der Sammelurkunde, welche 
+der Emittentin ausschließlich durch die Inhaberschaft über den jeweiligen Token nachgewiesen 
+wird. Der Investor gilt als Inhaber eines Token, solange sich dieser im Account des Investors 
+befindet. 
+3.4 Die Emittentin ist berechtigt, die verwendete Blockchain-Technologie und/oder das verwendete 
+Blockchain-Netzwerk jederzeit zu wechseln, sofern dadurch für den Investor keine rechtlichen 
+oder wirtschaftlichen Nachteile entstehen. Sollte ein Wechsel der verwendeten Blockchain -
+Technologie und/oder des verwendeten Blo ckchain-Netzwerks mit rechtlichen oder 
+wirtschaftlichen Nachteilen für den Investor verbunden sein, so wird die Emittentin den Investor 
+hierüber vorabinformieren. Ist der Investor mit dem Wechsel des Blockchain -Netzwerks 
+aufgrund der ihm dadurch entstehend en rechtlichen oder wirtschaftlichen Nachteile nicht 
+einverstanden, kann er das Rechtsverhältnis zur Emittentin gemäß Ziffer 10.4 dieser 
+Investitionsbedingungen außerordentlich kündigen. 
+4. ZEICHNUNG UND ERWERB TOKENISIERTER WERTPAPIERE 
+4.1 Die Ausgabe von tokenisierten Wertpapieren erfolgt im Rahmen mehrerer öffentlicher 
+Angebote mit einem Gesamtgegenwert von weniger als EUR 2.000.000,00 innerhalb von 12 
+Monaten in der Europäischen Union und daher unter Inanspruchnahme der Ausnahme von der 
+kapitalmarktrechtlichen Prospektpflicht. 
+4.2 Jede natürliche und jede juristische Person kann am Marktplatz tokenisierte Wertpapiere durch 
+Zeichnung und Annahme durch die Emittentin erwerben. Die Zeichnung ist ein Angebot des 
+Investors zum Kauf und zum Erwerb tokenisierter Wertpapiere im gezeichneten Ausmaß unter 
+Einbeziehung und Geltung dieser Investitionsbedingungen.  Der Investor hat ab dem Zeitpunkt 
+der Zeichnung eine vorvertragliche Bedenkzeit von 4 (vier) Tagen, während der er seine 
+Zeichnung ohne Begründung und ohne Vertragsstrafe jederzeit widerrufen kann.  Im Fall des 
+
+=== PAGE 7 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 7  
+ 
+ 
+wirksamen Widerrufs erhält der Investor den bezahlten Investitionsbetrag abzugsfrei 
+zurückerstattet. 
+4.3 Die tokenisierten Wertpapiere können nur während der Zeichnungsfrist gezeichnet werden. Die 
+Emittentin behält sich das Recht vor, die Zeichnungsfrist um einen Zeitraum zu verlängern, 
+dessen Dauer höchstens dem dreifachen der ursprünglichen Zeichnungsfrist entspricht. 
+4.4 Der kleinstmögliche Zeichnungsbetrag ist der Mindestzeichnungsbetrag. Die Zeichnung kann nur 
+zum Mindestzeichnungsbetrag oder zu einem über dem Mindestzeichnungsbetrag liegenden 
+Vielfachen des Ausgabepreises je tokenisiertem Wertpapier erfolgen. 
+4.5 Die Zeichnung erfolgt durch den Klick auf den Button „Kauf signieren“  auf der 
+Emissionsplattform der Emittentin, infolgedessen der Zeichnungsbetrag am Zahlungskonto des 
+Investors bis zur Ausgabe der tokenisierten Wertpapiere oder alternativ bis zur Ablehnung der 
+Zeichnung reserviert und gesperrt wird. 
+4.6 Die rechtswirksame Zeichnung tokenisierter Wertpapiere setzt voraus, dass 
+(a) sich der Investor am Marktplatz registriert und einen Account zur 
+eigenverantwortlichen Verwahrung seiner tokenisierten Wertpapiere auf der 
+Blockchain erstellt (hat), 
+(b) die Person des Investors über den Marktplatz durch Erhebung und Prüfung der 
+gesetzlich geforderten Angaben identifiziert wurde („Know Your Customer“) 
+und die notwendigen Informationen und Identifikationsnachweise (z.B. 
+Reisepass oder Personalausweis) an die Emittentin übermittelt wurden; und 
+(c) der Emittentin die Bestätigung vorliegt, dass der jeweilige Zeichnungsbetrag 
+vom Zahlungskonto des Investors auf das Konto der Emittentin überwiesen 
+werden kann. 
+4.7 Die Annahme der Zeichnung des Investors erfolgt dadurch, dass die Emittentin einen Token 
+generiert, welcher einen Miteigentumsanteil an der Sammelurkunde gemäß Ziffern 3.1-3.2 
+repräsentiert, und die dem Investor zustehenden Token auf dessen Account transferiert. Die 
+Emittentin kann die Zeichnung des Investors jederzeit annehmen, sobald angebotene 
+tokenisierte Wertpapiere im Ausmaß der Mindestausgabemenge (oder darüber) gezeichnet 
+wurden und zuvor für einen allenfalls verbleibenden Kapitalbedarf (das ist die Differenz 
+zwischen Gesamtnennbetrag und Mindestausgabemenge) eine anderweitige 
+Finanzierungsquelle sichergestellt wurde, welche die Ansprüche des Investors gemäß Ziffer 5 
+dieser Investitionsbedingungen bei ordnungsgemäßem Gang d er Geschäfte voraussichtlich 
+nicht beeinträchtigt. Die Emittentin wird die Zeichnung des Investors jedenfalls ohne unnötige 
+Verzögerung annehmen, sobald sämtliche angebotenen tokenisierten Wertpapiere gezeichnet 
+wurden.  
+
+=== PAGE 8 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 8  
+ 
+ 
+4.8 Sobald die Emittentin dem Investor die von ihm gezeichneten tokenisierten Wertpapiere auf 
+seinen Account übertragen hat, wird der Zeichnungsbetrag automatisch vom Zahlungskonto des 
+Investors auf das Konto der Emittentin überwiesen. 
+4.9 Sofern die Emittentin die Zeichnung nicht binnen z wei (2) Wochen nach Zeichnung sämtlicher 
+tokenisierten Wertpapiere angenommen hat, kann der Investor die Zeichnung ohne Angabe von 
+Gründen zurückziehen. 
+4.10 Die Emittentin ist nicht verpflichtet, die Zeichnung des Investors anzunehmen, wenn 
+4.10.1 innerhalb der Zeich nungsfrist tokenisierte Wertpapiere nicht im Umfang der 
+Mindestausgabemenge gezeichnet wurden; 
+4.10.2 zwar die Mindestausgabemenge erreicht, nicht aber sämtliche angebotenen 
+tokenisierten Wertpapiere gezeichnet wurden, und für einen verbleibenden 
+Kapitalbedarf (d as ist die Differenz zwischen Gesamtnennbetrag und 
+Mindestausgabemenge) keine anderweitige Finanzierungsquelle sichergestellt wurde, 
+welche die Ansprüche des Investors gemäß Ziffer 5 dieser Investitionsbedingungen bei 
+ordnungsgemäßem Gang der Geschäfte voraussichtlich nicht beeinträchtigt; 
+4.10.3 der Erwerb der tokenisierten Wertpapiere zu rechtswidrigen Zwecken erfolgen sollte; 
+4.10.4 der Investor nicht zum Erwerb tokenisierter Wertpapiere berechtigt ist; 
+4.10.5 die Emittentin nicht berechtigt ist, tokenisierte Wertpapiere an den Investor zu 
+verkaufen. 
+4.11 Sofern nicht tokenisierte Wertpapiere im Ausmaß der Mindestausgabemenge innerhalb der 
+Zeichnungsfrist gezeichnet wurden oder wenn der Investor seine Zeichnung im Einklang mit 
+diesen Investitionsbedingungen berechti gt zurückzieht, wird der am Zahlungskonto des 
+Investors reservierte Zeichnungsbetrag wieder freigegeben bzw. ein bereits bezahlter 
+Zeichnungsbetrag binnen 10 (zehn) Bankarbeitstagen auf das Zahlungskonto des Investors 
+zurücküberwiesen.  
+4.12 Der Investor ist neben der Zahlung des Zeichnungsbetrags zu keinen weiteren Zahlungen an die 
+Emittentin verpflichtet, insbesondere nicht zu Nachschüssen aus oder im Zusammenhang mit 
+den tokenisierten Wertpapieren. 
+5. AUSSCHÜTTUNG UND VERLUSTBETEILIGUNG 
+5.1 Der Investor erhält je Kalendermonat vorbehaltlich der Regelungen der Ziffer 5.8 und der Ziffer 
+10 eine Ausschüttung, welche sich wie folgt berechnet: 
+
+=== PAGE 9 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 9  
+ 
+ 
+[Netto-Kaltmieteinnahmen je Kalendermonat - 1/12 der jährlichen Kreditrate/Zinsen für die 
+Finanzierung des Restkaufpreises - Kosten der Bewirtschaftung der Immobilie je 
+Kalendermonat - Anteil an den Netto-Mieteinnahmen, der der Emittentin zusteht - monatliche 
+Liquiditätsrücklage (der "Netto-Mietüberschuss")] / Gesamtzahl der tokenisierten 
+Wertpapiere * Anzahl der vom Investor im Zeitpunkt der Ausschüttung gehaltenen 
+Wertpapiere 
+Soweit der Netto -Mietüberschuss negativ ist (der " Netto-Mietfehlbetrag"), besteht keine 
+Nachschusspflicht für den Investor. 
+5.2 Die "Netto-Kaltmieteinnahmen" der Immobilie ist die vom Mieter bezahlte Bruttomiete 
+abzüglich allenfalls anfallender Nebenkosten(-vorauszahlung/-nachzahlung) und gegebenenfalls 
+anfallender Umsatzsteuer. Nebenkosten sind alle nach dem anwendbaren Recht auf den Mieter 
+umlagefähigen Betriebskosten.  
+5.3 Die "Kosten der Bewirtschaftung der Immobilie" setzen sich zusammen wie folgt: 
+5.3.1 Hausverwaltungskosten, soweit diese nicht von den Mietern der Immobilie getragen 
+werden; hierunter fallen insbesondere: 
+(a) nach dem Gesetz vom Vermieter zu tragende Kosten; 
+(b) Kosten der Garagenstellplatzverwaltung; 
+(c) Kosten für die Miet- und Objektverwaltung; 
+(d) Kosten der Sondereigentumsverwaltung; 
+(e) Kosten im Zusammenhang mit Mieterwechseln, insbesondere Maklerkosten; 
+(f) Kosten für FF&E (Furniture, Fixture and Equipment); 
+(g) Grundsteuer; 
+(h) Instandhaltungsrücklage; 
+(i) Tourismusabgabe; 
+5.3.2 Verwaltungsaufwand der Emittentin aus der Beauftragung Dritter; hierunter fallen 
+insbesondere Kosten für Rechts - oder Steuerberatung; von Dritten in Rechnung 
+gestellte Kosten und Gebühren im Zusammenhang mit der Verwaltung der Emittentin; 
+
+=== PAGE 10 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 10  
+ 
+ 
+5.3.3 Instandhaltungs- und Instandsetzungskosten für die Immobilie (soweit nicht 
+fremdfinanziert) sowie Zins - und Tilgungszahlungen im Fall der (teilweisen) 
+Fremdfinanzierung; 
+5.3.4 Kosten für Investitionen in Anlagegüter (Küche, Ausstattung, etc.) (soweit nicht 
+fremdfinanziert) sowie Zins - und Tilgungszahlungen im Fall der (teilweisen) 
+Fremdfinanzierung; 
+Sofern die Kosten der Bewirtschaftung der Immobilie nicht monatlich (sondern  z.B. 
+quartalsmäßig, halbjährlich oder jährlich) anfallen, werden sie gleichmäßig auf jene Monate 
+verteilt, für die sie angefallen bzw. bestimmt sind. 
+5.4 Der Anteil an den Netto-Mieteinnahmen, der der Emittentin zusteht (siehe zur Höhe Ziffer 2.1) 
+ist ein Teil der monatlichen Netto -Mieteinnahmen, der bei der Emittentin verbleibt und/oder 
+(gegebenenfalls teilweise) für die Bezahlung eines monatlichen Entgelts für die Beauftragung 
+Dritter verwendet wird, für (i) die Besorgung der Sub-Verwaltung der Immobilie im Einklang mit 
+diesen Investitionsbedingungen, den vom Investor beschlossenen Verwaltungsmaßnahmen, 
+den jeweils anwendbaren gesetzlichen Bestimmungen und den für die Emittentin 
+rechtsverbindlichen Verträgen sowie (ii) für die Durchfü hrung zwingend notwendiger 
+Maßnahmen (z.B. bei Gefahr im Verzug). 
+5.5 Die Liquiditätsrücklagen (siehe zur Höhe Ziffer 2.1), bestehend aus der einmaligen und der 
+monatlichen Liquiditätsrücklage, sind eine von der Emittentin für die Deckung der Kosten gemäß 
+Ziffer 5.3 sowie für sonstige Kosten im Zusammenhang mit der Verwaltung der Immobilie 
+gebildete Reserve. 
+5.6 Die monatliche Ausschüttung wird für jeden Kalendermo nat gesondert festgestellt und an den 
+Investor ausbezahlt. Die Feststellung der monatlichen Ausschüttung erfolgt binnen 3 (drei) 
+Wochen nach Ablauf eines Kalendermonats. Die Ausschüttung wird binnen 7 (sieben) 
+Bankarbeitstagen ab Feststellung an den Investor zur Auszahlung gebracht.  
+5.7 Der Investor nimmt insoweit am Verlust aus der Bewirtschaftung der Immobilie teil, als ein 
+etwaiger Netto -Mietfehlbetrag mit Netto -Mietüberschüssen der Folgemonate solange 
+verrechnet wird, bis der negative Saldo ausgeglichen ist (der "Verlustausgleich"). 
+5.8 Die Jahresendabrechnung und die Feststellung eines etwaigen zusätzlichen 
+Ausschüttungsbetrags oder eines etwaigen Netto-Mietfehlbetrages aus der Bewirtschaftung der 
+Immobilie erfolgt binnen 8 (acht) Wochen nach Ablauf eines Kale nderjahres. Ein etwaiger 
+zusätzlicher Ausschüttungsbetrag, welcher sich im Zuge der Jahresendabrechnung der 
+Bewirtschaftung der Immobilie ergibt, gelangt binnen 7 (sieben) Bankarbeitstagen ab 
+Feststellung an den Investor zur Auszahlung. Ein etwaiger Netto -Mietfehlbetrag, welcher sich 
+im Zuge der Jahresendabrechnung der Bewirtschaftung der Immobilie ergibt, wird gemäß Ziffer 
+5.7 ausgeglichen. 
+
+=== PAGE 11 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 11  
+ 
+ 
+5.9 Im Falle einer Veräußerung der Immobilie hat der Investor nach vollständigem Abschluss der 
+Veräußerung einen "Ausschüttungsanspruch anlässlich der Veräußerung der Immobilie" , der 
+sich wie folgt berechnet: 
+(Verkaufspreis der Immobilie - Kosten der Transaktionsabwicklung - allenfalls anfallende Steuern 
+auf Ebene der Emittentin + vorhandene Liquiditätsrücklage - Verbindlichkeiten aus 
+Finanzierungen in Bezug auf die Immobilie - ein noch nicht gemäß Ziffer 5.7 ausgeglichener 
+Netto-Mietfehlbetrag) / Gesamtzahl der tokenisierten Wertpapiere * Anzahl der vom Investor 
+im Zeitpunkt der Ausschüttung gehaltenen tokenisierten Wertpapiere 
+(a) Die " Kosten der Transaktionsabwicklung " sind sämtliche Kosten, die bei der 
+Emittentin im Zusammenhang der Veräußerung der Immobilie anfallen, 
+insbesondere: Notargebühren (z.B. Beglaubigungen), Treuhandgebühren, 
+Kosten der Rechtsberatung, Gerichtsgebühren, Maklerkosten, und Kosten des 
+gemeinsamen Vertreters gemäß Kuratorengesetz 1874. 
+(b) Die " Steuern auf Ebene der Emittentin " sind sämtliche Steuern im 
+Zusammenhang mit der Veräußerung der Immobilie, insb. Ertragsteuer n, z.B. 
+Immobilien-Ertragsteuer, Körperschaftssteuer , und Verkehrssteuern (z.B. 
+Umsatzsteuer, Grunderwerbsteuer) 
+(c) Der Ausschüttungsanspruch anlässlich der Veräußerung der Immobilie ist 
+innerhalb von 2 (zwei) Monaten nach Eingang des Veräußerungspreises bei der 
+Emittentin zur Auszahlung auf das Zahlungskonto des Investors fällig. 
+5.10 Eine gegebenenfalls von der Emittentin für den Investor abzuführende Abzugssteuer (z.B. 
+Kapitalertragsteuer) wird gesondert vom jeweiligen Ausschüttungsbetrag gemäß Ziffer 5.1 bzw. 
+5.9 in Abzug gebracht. 
+5.11 Abgesehen von den in dieser Ziffer 5 genannten Ansprüchen bestehen keine 
+Ausschüttungsansprüche zugunsten des Investors. 
+6. MITSPRACHE BEI DER VERWALTUNG DER IMMOBILIE 
+6.1 Die Emittentin wird für die Durchführung folgender Maßnahmen, sofern sie sich auf die 
+Immobilie beziehen, die Zustimmung der Investoren einholen, wobei die Zustimmung mit der 
+einfachen Mehrheit der abgegebenen Stimmen der Investoren erteilt wird: 
+(a) Beauftragung von Dienstleistern zur Instandsetzung (z.B. Renovierung) oder 
+Umbau der Immobilie sowie Ausübung der Rechte aus dem Vertragsverhältnis; 
+(b) dingliche Belastung der Immobilie sowie Änderung und Löschung von dinglichen 
+Lasten; 
+
+=== PAGE 12 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 12  
+ 
+ 
+(c) Abstimmungen im Zuge der ordentlichen Hausverwaltung; 
+(d) Löschung des Kollektivpfandrechts gemäß Ziffer 12. 
+(e) Subverwaltung der Immobilie und Beauftragung von Dienstleistern in diesem 
+Zusammenhang (z.B. Handwerker, Subverwaltung, Hausverwaltung) sowie 
+Ausübung der Rechte aus dem Vertragsverhältnis; 
+(f) Abschluss und Beendigung von Mietverträgen. 
+Eine einfache Mehrheit ist erreicht, wenn ein Vorschlag mehr als die Hälfte der gültig 
+abgegebenen Stimmen auf sich vereinigt. Erforderlich ist sohin, dass die Zahl der gültigen JA -
+Stimmen die der gültigen NEIN-Stimmen um wenigstens eine übertrifft. 
+6.2 Beabsichtigt die Emittentin die Veräußerung der Immobilie, wird sie hierfür die Zustimmung der 
+Investoren (Einwilligung) einholen. Die Zustimmung der Investoren zur Veräußerung kann nur 
+erteilt werden, wenn zumindest 90% (neunzig Prozent) der tokenisierten Wertpapiere im 
+Zeitpunkt des Votings in einer Hand vereinigt sind - also vom selben Investor gehalten werden - 
+und alle Investoren der Veräußerung zustimmen. Im Übrigen darf die Veräußerung der 
+Immobilie jedenfalls erfolgen, sofern 
+(a) anders als durch die Veräußerung der Immobilie ein Netto -Mietfehlbetrag aus 
+der Bewirtschaftung der Immobilie nicht innerhalb von 3 (drei) Monaten ab dem 
+erstmaligen Auftreten beseitigt werden kann; oder 
+(b) aufgrund der weiteren Bewirtschaftung der Immobilie bei der Emittentin 
+mindestens ein Insolvenzeröffnungsgrund entstehen würde; oder 
+(c) die Emittentin gesetzlich oder aufg rund rechtskräftiger behördlicher oder 
+gerichtlicher Anordnung zur Veräußerung der Immobilie verpflichtet ist; oder 
+(d) über das Vermögen der Emittentin ein Insolvenzverfahren eröffnet worden ist. 
+6.3 Die Emittentin stellt dem Investor auf einer permanent verfügba ren Online-Plattform, auf die 
+der Investor über den Marktplatz zugreifen kann, alle für die Wertentwicklung der Immobilie 
+sowie alle für die Beschlussfassungen nach dieser Ziffer 6 notwendigen und verfügbaren 
+Unterlagen und Informationen (soweit rechtlich notwendig teilweise geschwärzt) im Rahmen 
+des ordnungsgemäßen Geschäftsgangs zur Verfügung. Dazu zählen insbesondere nachstehende 
+Unterlagen und Informationen: 
+(a) Aufstellungen und Abrechnungen über die Kosten der Bewir tschaftung der 
+Immobilie, sofern diese durch die Emittentin und aufgrund dieser 
+Investitionsbedingungen wirtschaftlich durch den Investor zu tragen sind; 
+
+=== PAGE 13 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 13  
+ 
+ 
+(b) Abrechnungen zu Betriebskosten und Rücklagen, die von der Emittentin zu 
+tragen sind; 
+(c) Informationen und vertragliche Unterlagen über den Abschluss, die Änderung 
+und die Beendigung von Mietverträgen und sonstigen Verträgen im 
+Zusammenhang mit der Immobilie; 
+(d) Informationen und vertragliche Unterlagen über Finanzierungen; 
+(e) Informationen sowie vertragliche und be hördliche Unterlagen über 
+wertrelevante Veränderungen an der Immobilie. 
+6.4 Die Abstimmungsergebnisse binden die Emittentin lediglich schuldrechtlich (d.h. ausschließlich 
+im Verhältnis zu den Investoren) und nur unter den folgenden Voraussetzungen: 
+(a) die Kosten für die Durchführung der jeweiligen Maßnahmen sind durch die 
+bestehende Liquiditätsrücklage gedeckt oder zu marktüblichen Konditionen 
+finanzierbar und die Tilgungen sowie Finanzierungskosten sind jedenfalls durch 
+künftige Einnahmen aus der Bewirtschaftung der Immobilie gedeckt; und 
+(b) die Durchführung der Maßnahme führt nicht zur Gefahr eines Netto -
+Mietfehlbetrages aus der Bewirtschaftung der Immobilie; und  
+(c) die Durchführung der Maßnahme führt nicht zu einem oder mehreren 
+Insolvenzeröffnungsgründen; und 
+(d) es ste hen der Durchführung der Maßnahme keine anderen zwingenden 
+rechtlichen oder tatsächlichen Gründe entgegen (z.B. Gefahr im Verzug, 
+Unmöglichkeit, potenzielle Gesetzwidrigkeit, potenzieller Verstoß gegen 
+bestehende Verträge, deren Vertragspartei die Emittentin ist).  
+6.5 Nach fristgerechtem und formgültigem Abschluss des Votings und sofern die vorstehenden 
+Voraussetzungen vorliegen, wird die Emittentin jene Maßnahme bzw. jene Maßnahmen, die 
+eine Zustimmung erhalten haben, unverzüglich, spätestens innerhalb von 10 (zehn) Werktagen, 
+umsetzen und/oder die notwendigen Erklärungen abgeben, sofern dem nicht die in Ziffer 6.4 
+genannten oder sonst zwingende tatsächliche oder rechtliche Gründe entgegenstehen. 
+6.6 Eine wirksame Zustimmung kann nur im Rahmen einer Abstimmung über die in den Ziffern 6.1-
+6.2 genannten Maßnahmen („ Voting“) erfolgen. Jeder Investor ist zur Teilnahme an allen 
+Votings unter den nachfolgenden Bedingungen berechtigt.  
+
+=== PAGE 14 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 14  
+ 
+ 
+6.7 Das Voting wird ausschließlich über das Voting -Verfahren auf der Plattform der Emittentin, die 
+über den Marktplatz aufgerufen werden kann, abgehalten. Dieses Voting -Verfahren erfolgt 
+ausschließlich nach den folgenden Regeln: 
+6.7.1 Steht eine Entscheidung über eine der vorgenannten Maßnahmen an, wird die 
+Emittentin unverzüglich ein Voting abhalten. 
+6.7.2 Die Emittentin wird den Investoren eine angemessene Anzahl an unter 
+kaufmännischen Gesichtspunkten unter Wahrung der Sorgfalt eines ordentlichen 
+Kaufmanns angemessenen (d.h. geeigneten) Vorschlägen zur Abstimmung 
+bereitstellen. Sofern möglich, werden mindestens drei Vorschläge zur Abstimmung 
+bereitgestellt. Die Emittentin ist zur Abgabe einer Beschlussempfehlung berechtigt; 
+eine Pflicht zur Abgabe einer Empfehlung besteht jedoch nicht. 
+6.7.3 Sobald ein Voting gestartet wurde, erhält der Investor eine Push -Nachricht über die 
+Plattform der Emittentin, die über den Marktplatz aufgerufen werden kann, sowie eine 
+E-Mail mit einem entsprechenden Hinweis. 
+6.7.4 Votings werden zumindest 48 Stunden vor dem Beginn des Voting -Zeitraums 
+angekündigt. Im Fall eines Votings über eine in Ziffer 6.2 ausdrücklich genannte 
+Maßnahme wird das Voting 1 (eine) Woche vor Beginn des Voting -Zeitraums 
+angekündigt. 
+6.7.5 Der Investor hat ab dem Start des Votings 72 Stunden Zeit, um am Voting 
+teilzunehmen, d.h. die auf die von ihm gehaltenen Token entfallenden Stimmen  
+abzugeben. 
+6.7.6 Der Investor erhält die Möglichkeit, im Einklang mit Ziffer 6.12 selbst einen 
+beschlussfähigen Vorschlag zur Abstimmung (der "Gegenvorschlag") zu stellen. 
+6.7.7 Der Investor kann hinsichtlich der Vorschläge, die zur Abstimmung gebracht werden, 
+einem bestimmten Vorschlag zustimmen (" JA-Stimme") oder sich seiner Stimme 
+enthalten (" Enthaltung") oder einen bestimmten Vorschlag ablehnen (" NEIN-
+Stimme"). 
+6.7.8 Der Investor kann seine Entscheidung innerhalb des  Voting-Zeitraums jederzeit 
+ändern. 
+6.7.9 Jedes tokenisierte Wertpapier gewährt dem Investor eine Stimme. Hält die Emittentin 
+und/oder eine mit ihr im Sinne des § 189a Z 8 UGB (direkt oder indirekt, mittelbar oder 
+unmittelbar) verbundene juristische und/oder nat ürliche Person und/oder ein 
+Familienmitglied einer der vorerwähnten Personen oder ein Treuhänder für eine der 
+vorerwähnten Personen tokenisierte Wertpapiere, so steht jeder dieser Personen 
+
+=== PAGE 15 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 15  
+ 
+ 
+unabhängig von der Anzahl der von Ihnen gehaltenen tokenisierten We rtpapiere nur 
+eine Stimme zu. Werden mehrere tokenisierte Wertpapiere von unterschiedlichen 
+Personen für eine der vorerwähnten Personen gehalten und sind diese daher 
+wirtschaftlich einer der vorerwähnten Personen zuzuordnen, steht dieser Person 
+ebenfalls nur eine Stimme zu. Allen vorerwähnten Personen zusammen stehen jedoch 
+keinesfalls mehr als 50% der gesamten verfügbaren Stimmen zu. Familienmitglieder 
+im Sinne dieser Ziffer 6.7.9 sind folgende Personen: Ehepartner, Lebensgefährten, 
+Kinder, Verwandte in direkter Linie, Geschwister. 
+6.8 Eine wirksame Zustimmung zu einer Voting -Option gilt als erteilt, wenn die für die betreffende 
+Maßnahme erforderliche Mehrheit der gültig abgegebenen JA -Stimmen am Ende des Voting -
+Zeitraums vorliegt. Nicht abgegebene Stimmen und Enthaltungen bleiben bei der Feststellung 
+der erforderlichen Mehrheit der abgegebenen Stimmen unberücksichtigt, wobei die Anzahl der 
+abgegebenen Stimmen der Summe von JA-Stimmen und NEIN-Stimmen je Vorschlag entspricht. 
+Bei einem Voting nach Ziffer 6.10 („Stichwahl“) gilt dies auch für Stimmenthaltungen. Eine 
+nachträgliche Stimmabgabe ist ausgeschlossen.  
+6.9 Verfügt ein Investor über mehr als 50% aller tokenisierten Wertpapiere, so ist für die wirksame 
+Zustimmung zu Maßnahmen gemäß den Ziffern 6.1-6.2, für die dieser Investor abgestimmt hat, 
+auch die Zustimmung der einfachen Mehrheit all jener Investore n, die sich an der Abstimmung 
+beteiligt haben, („Kopfmehrheit“) erforderlich. 
+6.10 Stehen bei einem Voting mehr als 2 (zwei) Voting-Vorschläge zur Auswahl und erreicht keine der 
+Voting-Vorschläge die für eine wirksame Zustimmung erforderliche Mehrheit, so wird zwischen 
+den beiden Voting -Vorschlägen mit den meisten JA -Stimmen nach Maßgabe dieser Ziffer 6 
+(ausgenommen sind die Ziffern 6.7.6 und 6.12) ein neuerliches Voting durchgeführt 
+(„Stichwahl“). 
+6.11 Wird keine Stimme abgegeben oder herrscht (gegebenenfalls nach einer Stichwahl) 
+Stimmengleichheit für mehrere Voting -Vorschläge, so gilt jenem Voting -Vorschlag die 
+Zustimmung erteilt, der der Beschlussempfehlung der Emittentin entspricht oder – sofern keine 
+Beschlussempfehlung abgegeben ist oder auf die Beschlussempfehlung keine oder weniger 
+Stimme entfallen - der Vorschlag, der von der Emittentin nachträglich empfohlen wird. 
+6.12 Der Investor hat das Rech t, über die Plattform der Emittentin, die über den Marktplatz 
+aufgerufen werden kann, ein eigenes Voting mit eigenen Vorschlägen zu den Maßnahmen 
+gemäß den Ziffern 6.1-6.2 nach dem in Ziffer 6.7 festgelegten Voting -Verfahren und unter 
+Beifügung der hierfür erforderlichen Unterlagen im Wege des hierfür vorgesehen elektronischen 
+Formulars unter Unterbreitung eines beschlussfähigen Vorschlags anzustoßen. Der Investor hat 
+weiters das Recht, im Rahmen eines anderweitig stattfindenden Votings eigene Vorschläge 
+("Gegenvorschlag") zur Abstimmung im Rahmen des Votings gemäß Ziffer 6.7 zu unterbreiten. 
+Der Investor hat diese Option spätestens 24 (vierundzwanzig) Stunden vor dem angekündigten 
+
+=== PAGE 16 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 16  
+ 
+ 
+Start des Votings unter Beifügung der hierfür erforderlichen Unterlagen im Wege des hierfür 
+vorgesehen elektronischen Formulars bekanntzugeben. Ein eigenes Voting oder ein  
+Gegenvorschlag wird zum Voting zugelassen, sobald sie (i) von mindestens 10% der gesamten 
+verfügbaren Stimmen sowie (ii) von mindestens 10% sämtlicher Investoren, sofern vorhanden 
+jedoch mindestens 2 (zwei) weiteren Investoren, mittels Voting unterstützt wird.  
+6.13 Zur Abstimmung der Investoren untereinander sowie zur Kontaktaufnahme und Kommunikation 
+mit der Emittentin stellt die Emittentin den Investoren über die Plattform der Emittentin, die 
+über den Marktplatz aufgerufen werden kann, dauerhaft (unterbrechungslos) ein gemeinsames 
+elektronisches, nicht moderiertes Forum bereit, welchem nur Investoren beitreten und sich frei 
+zu allen gewünschten Themen per elektronischer Textnachricht äußern sowie auch Dateien (z.B. 
+Worddokumente, pdf-Dateien) bereitstellen können. Eine jede derartige Kommunikation ist für 
+sämtliche anderen Investoren sichtbar. Überdies können die Investoren in diesem Forum im 
+Rahmen eines elektronischen Abstimmungsprozesses ihre Zustimmung, Ablehnung oder 
+Stimmenthaltung zu einem von einem Inv estor angestoßenen Voting oder zu einem 
+Gegenvorschlag abgeben. 
+7. EIGENVERWALTUNG DER TOKENISIERTEN WERTPAPIERE 
+7.1 Die Token, welche einen Miteigentumsanteil an der Sammelurkunde gemäß Ziffern 3.1-3.2 
+repräsentieren, sind auf dem Blockchain -Netzwerk gespeichert. Der Investor verwaltet diese 
+selbständig und eigenverantwortlich und kann nur über sie verfügen, wenn er vollumfänglichen 
+Zugang zu seinem Account hat. Ein solcher Account ist zwingend erforderlich, um di e 
+tokenisierten Wertpapiere zu halten und zu handeln sowie um Auszahlungen auf die 
+tokenisierten Wertpapiere zu erhalten. Weder die Emittentin noch andere Personen 
+übernehmen die Verwaltung oder Verwahrung der tokenisierten Wertpapiere. 
+8. KEINE EIGENTUMSRECH TE, KEIN TREUHANDVERHÄLTNIS, KEINE GESELLSCHAFTERRECHTE, 
+KEINE NACHSCHUSSPFLICHT 
+8.1 Diese Investitionsbedingungen gewähren dem Investor keine unmittelbaren und/oder - mit 
+Ausnahme der zu bestellenden Sicherheit - keine dinglichen Rechte an der Immobilie, 
+insbesondere keine Eigentums - und eigentumsähnlichen Rechte. Die Emittentin ist des 
+Weiteren nicht Treuhänderin hinsichtlich der Immobilie. Der Investor hat nicht das Recht, 
+anlässlich der Veräußerung der Immobilie oder der Kündigung der Wertpapiere oder aus 
+irgendeinem sonstigen Anlass die Immobilie, einen Miteigentumsanteil an der Immobilie oder 
+sonstige Anteile an der Immobilie zu erhalten oder sonstige unmittelbare oder dingliche Rechte 
+an der Immobilie zu begründen, mit Ausnahme der Sicherheit. 
+8.2 Diese Inves titionsbedingungen begründen keine Gesellschafterrechte und/oder kein 
+Gesellschaftsverhältnis und kein Recht an der Mitwirkung an der Geschäftsführung der 
+Emittentin. Dies gilt auch für etwaige Rechtsnachfolger der Emittentin. Die Investoren sind nicht 
+
+=== PAGE 17 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 17  
+ 
+ 
+dazu berechtigt, an Beschlussfassungen der Anteilseigner der Emittentin in irgendeiner Form 
+teilzunehmen und/oder mitzuwirken und/oder über Beschlüsse informiert zu werden. Der 
+Investor hat gegenüber der Geschäftsführung keine Weisungsrechte, Einsichtsrechte in die 
+Geschäftsbücher der Emittentin oder gesellschaftsrechtlichen Informations- oder Stimmrechte. 
+8.3 Der Investor hat kein Recht auf Umwandlung seiner tokenisierten Wertpapiere in einen 
+Gesellschaftsanteil an der Emittentin. 
+8.4 Es ist nicht ausgeschlossen, das s die Emittentin ihre Firma ändert, in eine andere 
+Gesellschaftsform umgewandelt wird oder dass die Gesellschaftsanteile an der Gesellschaft 
+übertragen werden; solche Maßnahmen haben keine Auswirkungen auf den Bestand der 
+Wertpapiere. Der Investor hat dies bezüglich keine Informations- oder Mitbestimmungsrechte. 
+Die Regelungen der Sätze 1 und 2 gelten sinngemäß für den Fall, dass die Emittentin an einer 
+Strukturänderung im Sinne des Umgründungssteuergesetzes beteiligt ist. 
+8.5 Den Investor trifft keine Nachschusspflicht im Hinblick Verbindlichkeiten der Emittentin aus oder 
+im Zusammenhang mit dem Erwerb, der Verwaltung, der Bewirtschaftung oder der 
+Veräußerung der Immobilie. Ein Verlustausgleich stellt keinen Nachschuss im Sinne des Satz 1 
+dar. 
+9. SQUEEZE-OUT 
+9.1 Sofern ein Investor 90,00% oder mehr aller ausgegebenen tokenisierten Wertpapiere hält (der 
+„Hauptinvestor“), kann der Hauptinvestor ein Squeeze -out-Verfahren einleiten. Die Einleitung 
+des Squeeze -out-Verfahrens kann auch über die Plattform der Emittentin, die ü ber den 
+Marktplatz aufgerufen werden kann, durch entsprechende Betätigung des Squeeze-out-Buttons 
+erfolgen, welcher einem Investor im Falle des Vorliegens der notwendigen Voraussetzungen 
+angezeigt wird. Der Hauptinvestor hat dem/den verbleibenden Investor/ en einen Kaufpreis 
+anzubieten, der zumindest 10% (zehn Prozent) über dem gewichteten Mittel aus dem 
+Durchschnittspreis der betreffenden tokenisierten Wertpapiere der letzten 12 (zwölf) Monate 
+und dem Durchschnittspreis der betreffenden tokenisierten Wertpa piere der letzten 90 
+(neunzig) Tage liegt (wenn die betreffenden tokenisierten Wertpapiere innerhalb der letzten 90 
+(neunzig) Tage nicht gehandelt wurden, ist nur Durchschnittspreis der letzten 12 (zwölf) Monate 
+heranzuziehen). Sofern der Hauptinvestor ode r zumindest einer der verbleibenden Investoren 
+mit der Berechnung des Verkaufspreises nach dieser Methode nicht einverstanden ist, kann er 
+auf eigene Kosten ein Gutachten eines unabhängigen Sachverständigen oder einer 
+unabhängigen Sachverständigengesellsch aft über den Verkehrswert der zu verkaufenden 
+tokenisierten Wertpapiere einholen. Der/Die Sachverständige ist durch den Landespräsidenten 
+der Kammer der Steuerberater und Wirtschaftsprüfer für Wien zu bestellen. Hat der 
+Hauptinvestor die Einholung eines solchen Gutachtens eingeholt, so hat er seinem Kaufangebot 
+den vom Sachverständigen ermittelten Verkehrswert seiner tokenisierten Wertpapiere 
+zugrunde zu legen. Hat/haben ein/mehrere verbleibende/r Investoren ein solches Gutachten 
+
+=== PAGE 18 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 18  
+ 
+ 
+eingeholt, so hat der Haupt investor nur gegenüber diesem/diesen Investor/en seinem 
+Kaufangebot den auf diese Weise ermittelten Verkehrswert zugrunde zu legen. Die 
+verbleibenden Investoren sind verpflichtet, dieses Kaufangebot des Hauptinvestors 
+anzunehmen. Die Kosten des Squeeze -out-Verfahrens trägt in jedem Fall zur Gänze der 
+Hauptinvestor. 
+10. LAUFZEIT UND BEENDIGUNG DER WERTPAPIERE, KÜNDIGUNGSRECHTE 
+10.1 Die Laufzeit der tokenisierten Wertpapiere ist unbestimmt. Die tokenisierten Wertpapiere 
+haben keinen Endfälligkeitstag.  
+10.2 Sowohl der Inve stor als auch die Emittentin sind berechtigt, die tokenisierten Wertpapiere 
+erstmalig 5 (fünf) Jahre ab dem Ausgabetag und sodann alle weiteren 5 (fünf) Jahre (jeweils das 
+"Kündigungsereignis") ordentlich zu kündigen, wobei die Emittentin nur alle, jedoch nicht 
+einzelne oder mehrere, begebenen Wertpapiere kündigen kann. Die Kündigungsfrist beträgt 30 
+(dreißig) Tage ab dem jeweiligen Kündigungsereignis. Im Fall einer ordentlichen Kündigung 
+durch die Emittentin ist diese zur Veräußerung der Immobilie verpflichtet. 
+10.3 Das Recht der Emittentin zur außerordentlichen Kündigung aus wichtigem Grund bleibt von den 
+Regelungen der Ziffer 10.2 unberührt. Ein wichtiger Grund, der die Emittentin zur 
+außerordentlichen Kündigung berechtigt, ist insbesondere dann gegeben, wenn,  vorbehaltlich 
+des Kündigungsrechts der Emittentin gemäß Ziffer 10.2,  
+(a) ein Investor ein oder mehrere tokenisierte(s) Wertpapier(e) rechtswirksam, also 
+entweder im Einklang mit diesen Investitionsbedingungen oder son st auf 
+Grundlage der anwendbaren gesetzlichen Bestimmungen, kündigt und diese(s) 
+tokenisierte(n) Wertpapier(e) nicht nach den Bestimmungen der Ziffern 10.5-
+10.7 (oder anderweitig) verkauft werden, oder  
+(b) wenn der Vertrag über den Erwerb der Immobilie - gleich aus welchem Grund - 
+rückabgewickelt wird.  
+Im Fall (a) kann die Emittentin das Rechtsverhältnis zum Investor unte r Einhaltung einer 
+Kündigungsfrist von 6 (sechs) Monaten zum 31.12. eines jeden Kalenderjahres 
+(Kündigungstermin) außerordentlich kündigen. Die Emittentin ist im Fall einer Kündigung infolge 
+des Falles (a) zur Veräußerung der Immobilie verpflichtet. Der In vestor hat diesfalls einen 
+Anspruch gemäß Ziffer 10.8. Im Fall (b) kann die Emittentin die Kündigung ohne Einhaltung einer 
+Frist vornehmen. Diesfalls gilt Ziffer 10.8 nicht, sondern erhält der Investor den bezahlten 
+Ausgabepreis abzüglich allenfalls angefallener Rückabwicklungskosten. 
+10.4 Das Recht des Investors zur Erklärung der außerordentlichen Kündigung des Rechtsverhältnisses 
+zur Emittentin bleibt hiervon unberührt. Ein wichtiger Grund, der den Investor jedenfalls zur 
+Erklärung der außerordentlichen Kündigung berechtigt, ist der Wechsel des Blockchain -
+
+=== PAGE 19 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 19  
+ 
+ 
+Netzwerks (Ziffer 3.4), wenn dem Investor dadurch rechtliche oder wirtschaftliche Nachteile 
+entstehen. In einem solchen Fall kann der Investor tokenisierte Wertpapiere unter Einhaltung 
+einer Kündigungsfrist von 30 (dreißig) Tagen ab dem Tag  der Durchführung des Wechsels der 
+Blockchain-Technologie und/oder des Blockchain-Netzwerks außerordentlich kündigen. Für alle 
+anderen wichtigen Gründe gilt, dass der Investor die außerordentliche Kündigung erst wirksam 
+erklären kann, nachdem er die Emitte ntin zur Erfüllung der aus seiner Sicht verletzten 
+Verpflichtung unter Einräumung einer Frist von zumindest 14 (vierzehn) Tagen aufgefordert und 
+die Emittentin die Verletzung ihrer Verpflichtung nicht binnen der gesetzten Frist eingestellt hat.  
+10.5 Gleichzeitig mit der Erklärung seiner ordentlichen Kündigung (Ziffer 10.2) bzw. der 
+außerordentlichen Kündigung (Ziffer 10.4) hat der Investor die von der Kündigung erfassten 
+tokenisierten Wertpapiere am Marktplatz sowie auf jedem anderen von der Emittentin namhaft 
+gemachten Marktplatz, der den Handel mit den betreffenden tokenisierten Wertpapieren 
+ermöglicht, und jedem von der Emittentin namhaft gemachten Dritten zum Verkauf Zug-um-Zug 
+gegen Zahlung des Kaufpreises anzubieten. 
+10.6 Der beim Verkauf gemäß Ziffer 10.5 angebotene Verkaufspreis darf nicht über dem gewichteten 
+Mittel aus dem Durchschnittspreis der betreffenden tokenisierten Wertpapiere der l etzten 12 
+(zwölf) Monate und dem Durchschnittspreis der betreffenden tokenisierten Wertpapiere der 
+letzten 90 (neunzig) Tage liegen (wenn die betreffenden tokenisierten Wertpapiere innerhalb 
+der letzten 90 (neunzig) Tage nicht gehandelt wurden, ist nur Dur chschnittspreis der letzten 12 
+(zwölf) Monate heranzuziehen). Sofern der Investor mit der Berechnung des Verkaufspreises 
+nach dieser Methode nicht einverstanden ist, kann er auf eigene Kosten ein Gutachten eines 
+unabhängigen Sachverständigen im Sinne der Z iffer 10.2 über den Verkehrswert der zu 
+verkaufenden tokenisierten Wertpapiere einholen. Diesfalls hat der Investor seinem 
+Verkaufsangebot den vom Sachverständigen ermittelten Verkehrswert seiner tokenisierten 
+Wertpapiere zugrunde zu legen. 
+10.7 Soweit die betreffenden tokenisierten Wertpapiere auf Basis eines Angebots iSd Ziffer 10.5 
+verkauft werden, ist die Erklärung der ordentlichen Kündigung (Ziffer 10.2) bzw. der 
+außerordentlichen Kündigung (Ziffer 10.4) des Investors unwirksam und die Kündigung wird 
+nicht wirksam. Soweit die betreffenden tokenisierten Wertpapiere nicht innerhalb eines 
+Zeitraums von 3 (drei) Monaten ab dem Angebot der jewe iligen tokenisierten Wertpapiere zu 
+einem Preis im Einklang mit Ziffer 10.6 verkauft werden und die Emittentin die tokenisierten 
+Wertpapiere nicht selbst kündigt und die Veräußerung der Immobilie veranlasst (Ziffer 10.3(a)), 
+wird die Kündigung mit Ablauf des letzten Tages des vorerwähnten Zeitraums von 3 (drei 
+Monaten) wirksam und erhält der Investor von der Emittentin Zug -um-Zug gegen Herausgabe 
+der betreffenden tokenisierten Wertpapiere ein Beendigungsguthaben, welches sich nach der 
+in Ziffer 10.6 dargestellten Methode errechnet. Dieses Beendigungsguthaben ist im Falle einer 
+ordentlichen Kündigung innerhalb von 4 (vier) Monaten nach dem Kündigungstermin bzw. im 
+Falle einer außerordentlichen Kündigung innerhalb von 4 (vier) Monaten nach Erklärung der 
+
+=== PAGE 20 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 20  
+ 
+ 
+Kündigungserklärung durch den In vestor zur Zahlung auf das vom Investor zuletzt 
+bekanntgegebene Bankkonto fällig. 
+10.8 Sofern (auch) die Emittentin die tokenisierten Wertpapiere (auch wenn zum gleichen Stichtag 
+wie ein Investor) ordentlich (Ziffer 10.2) oder außerordentlich (Ziffer 10.3) kündigt, steht dem 
+Investor eine Ausschüttungsanspruch gemäß Ziffer 5.9 zu. 
+10.9 Ungeachtet des Anlasses und des Grundes für die Kündigung enden die Wertpapiere erst, sobald 
+die Immobilie verkauft und sämtliche Ansprüche des Investors aus diesen 
+Investitionsbedingungen beglichen worden sind. 
+11. VERÄUSSERUNG DER IMMOBILIE 
+11.1 Bei Veräußerung der Immobilie  hat die Emittentin mit der Sorgfalt eines ordent lichen 
+Geschäftsmannes und im Interesse der Investoren zu agieren. Sie hat die Veräußerung 
+insbesondere ohne unnötige Verzögerung und mit dem Bestreben, einen marktkonformen 
+Verkaufserlös zu erwirtschaften, voranzutreiben.  
+11.2 Sofern die gesamte Immobilie ver kauft wird, hat die Emittentin vor dem Verkauf ein 
+Verkehrswertgutachten eines gerichtlich beeideten Immobiliensachverständigen einzuholen. 
+Die Emittentin ist verpflichtet, innerhalb der ersten sechs Monate ab Übermittlung des 
+Verkehrswertgutachtens die Li egenschaft nicht zu einem Preis zu verkaufen, der 100% des 
+Verkehrswertes der Liegenschaft gemäß dem Verkehrswertgutachten unterschreitet. Diese 
+Schwelle verringert sich nach dem sechsten Monat ab Erhalt des Verkehrswertgutachtens um 
+jeweils fünf Prozentpu nkte monatlich, dies bis zu einer Reduktion von maximal 30% des 
+Verkehrswertes. Sofern die Emittentin ein anderes Verkaufsverfahren als vorteilhafter für die 
+Investoren einschätzt, hat sie die Investoren unter Angabe einer verständlichen Begründung 
+nach den Bestimmungen der Ziffer 6 über ihren Vorschlag abstimmen zu lassen. 
+11.3 Die Emittentin hat den Investoren die Möglichkeit einzuräumen, an dem vorerwähnten 
+Verkaufsverfahren teilzunehmen, und ihnen die Modalitäten des V erkaufsverfahren sowie die 
+Möglichkeit der Teilnahme über das Forum gemäß Ziffer 6.13 oder per E-Mail 14 (vierzehn) Tage 
+vor dessen Einleitung zu kommunizieren. 
+11.4 Die Emittentin hat dafür Sorge zu tragen, dass die Kost en der Veräußerung nicht über dem 
+marktüblichen Ausmaß liegen. 
+11.5 Ein Verkauf der Immobilie (A) an Personen, die in Bezug (i) auf ein Mitglied des Leitungsorgan 
+der Emittentin oder (ii) einen (direkt oder indirekt, mittelbar oder unmittelbar) an der Emittentin 
+beteiligten Gesellschafter als nahestehende Personen iSd § 32 IO zu qualifizieren sind, oder (B) 
+an mit der Emittentin gemäß § 189a Z 8 UGB (direkt oder indirekt, mittelbar oder unmittelbar) 
+verbundene juristische und/oder natürliche Person und/oder ein Familienmitglied einer der 
+vorerwähnten Personen darf nur nach vorheriger Einholung eines Verkehrswertgutachtens 
+
+=== PAGE 21 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 21  
+ 
+ 
+eines gemäß DIN ISO/IEC 17024 (oder einer vergleichbaren Norm) zertifizierten Immobilien -
+Sachverständigen, welches den Investoren zumindest 14 (vierzehn) Tage vor Annahme des 
+Kaufanbots über das Forum gemäß Ziffer 6.13 oder per E -Mail zur Verfügung zu stellen ist, 
+erfolgen. Die Emittentin hat mit einer Person gemäß (A) bzw. (B) zu vereinbaren, dass diese 
+jedenfalls die Kosten der Erstellung des Verkehrswertgutachtens trägt, gleichgültig ob der 
+Verkauf an diese Person stattfindet oder nicht. 
+12. BESTELLUNG UND LÖSCHUNG DES PFANDRECHTS 
+12.1 Die Emittentin hat an zugunsten der Investoren ein Festbetragspfandrecht in Höh e des 
+Gesamtnennbetrags gemäß § 15 TeilschuldverschreibungskuratorenG RGBl. Nr. 49/1874 idF 
+BGBl 1991/10 zur Sicherstellung der Forderungen und Ansprüche der Investoren aufgrund 
+dieser Investitionsbedingungen (Ausschüttung eines Netto -Mietüberschuss je Kal endermonat 
+gemäß Ziffer 5.1, Ausschüttung anlässlich der Veräußerung der Immobilie gemäß Ziffer 5.9), an 
+der Immobilie bestellt. Aufgrund dieses Pfandrechts ist jeder Investo r im Hinblick auf seine 
+Forderungen und Ansprüche aufgrund dieser Investitionsbedingungen je tokenisiertem 
+Wertpapier in Höhe des Ausgabebetrags gesichert. 
+12.2 Die Emittentin hat den gemeinsamen Vertreter unwiderruflich damit beauftragt, unverzüglich 
+nach Eintragung des Eigentumsrechts der Emittentin an der Immobilie die Einverleibung dieses 
+Pfandrechts zu bewirken. 
+12.3 Weiters hat die Emittentin den gemeinsamen Vertreter gemäß § 15a Abs 1 
+TeilschuldverschreibungskuratorenG RGBl. Nr. 49/1874 idF BGBl 1991/10 zum ge meinsamen 
+Vertreter der Genussscheininhaber bestellt und diesem gemäß § 15 a Abs 2 
+TeilschuldverschreibungskuratorenG RGBl. Nr. 49/1874 idF BGBl 1991/10 ausschließlich die 
+nachfolgenden Befugnisse, Aufträge und Verpflichtungen übertragen:  
+(a) Befugnis zur Zus timmung über die gänzliche oder teilweise Löschung des 
+Pfandrechts an der Immobilie unter den in Ziffer 12.4 genannten Bedingungen; 
+(b) Befugnis zur Empfangnahme der grundbücherlichen Beschlüsse, insbesondere 
+hinsichtlich der Einverleibung, Löschung, Freilassung der als Hypothek bestellten 
+Liegenschaften bzw. Liegenschafts(an)teile. 
+12.4 Die Investoren bevollmächtigen und beauftragen den gemeinsamen Vertreter hiermit 
+ausdrücklich und unwiderruflich, nach Befriedigung der mit diesem Pfandrecht besicherten 
+Forderungen und Ansprüche der Investoren gemäß Ziffer 5.1 (Ausschüttung eines Netto -
+Mietüberschuss je Kalendermonat) und gemäß Ziffer 5.9 (Ausschüttung anlässlich der 
+Veräußerung der Immobilie) dieser Investitionsbedingungen eine grundbuchstaugliche 
+Erklärung über das Erlöschen des Pfandrechts in deren Namen zu errichten, in der geforderten 
+
+=== PAGE 22 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 22  
+ 
+ 
+Form für diese zu unterfertigen und mit dieser die Einverleibung der Löschung des Pfandrechtes 
+beim zuständigen Grundbuchsgericht zu beantragen. 
+12.5 Die Emittentin hat sich gegenüber dem gemeinsamen Vertreter verpflichtet, diesem sämtliche 
+Dokumente, wie insbesondere die für die Einverleibung dieses Pfandrechtes not wenige 
+grundbuchstaugliche Pfandbestellungsurkunde sowie die für die Einverleibung der Löschung 
+allenfalls gemäß § 15 TeilschuldverschreibungskuratorenG RGBl. Nr. 49/1874 idF BGBl 1991/10 
+geforderten Verzeichnisse zur Verfügung zu stellen und sämtliche not wenigen und 
+zweckmäßigen Handlungen zu setzen, welche allenfalls zur Erfüllung der in dieser Ziffer 12 
+genannten Befugnisse, Aufträge und Verpflichtungen des gemeinsamen Vertreters erforderlich 
+sind. 
+12.6 Über die in dieser Ziffer 12 genannten Befugnisse, Aufträge und Verpflichtungen hinaus treffen 
+den gemeinsamen Vertreter keine weiteren wie immer gearteten Verpflichtungen. Der 
+gemeinsame Vertreter ist insbesondere nicht dazu berechtigt oder verpflichtet, sonstige Rechte 
+und Pflichten der Investoren aus diesen Investitionsbedingungen wahrzunehmen, wie z.B. die 
+Verwertung der Immobilie zugunsten der Investoren oder die Entgegennahme, Auszahlung oder 
+treuhänderische Verwahrung von Geldbeträgen. Der gemeinsame Vertreter haftet den 
+Investoren ausschließlich für die Erfüllung der in dieser Ziffer 12 genannten Pflichten, sofern 
+diesem die dafür erforderlichen Voraussetzungen, insbesondere die dafür notwenigen 
+Dokumente, vorliegen.  
+13. ÜBERTRAGBARKEIT DER TOKENISIERTEN WERTPAPIERE 
+13.1 Jeder Investor  kann einzelne oder alle tokenisierten Wertpapiere mit Zustimmung der 
+Emittentin veräußern. Die Emittentin erteilt unter folgenden Voraussetzungen vorab die 
+Zustimmung zu einer Veräußerung der tokenisierten Wertpapiere: 
+13.1.1 die Übertragung erfolgt nicht zu einem gesetz- oder anderweitig rechtswidrigen Zweck 
+oder Motiv; und 
+13.1.2 der Investor erfüllt die unter Ziffer 4.6 lit a bis d angeführten Voraussetzungen; und 
+13.1.3 der beabsichtigte Transfer wird am Marktplatz bekannt gemacht. 
+13.2 Die Übertragung des durch den jeweiligen Token repräsentierten Miteigentumsanteils an der 
+Sammelurkunde gemäß Ziffern 3.1-3.2 erfolgt durch wirkliche Übergabe: Mit Durchführung der 
+Übertragung des jeweiligen Token weist der veräußernde Investor die Emittentin an, den durch 
+den jeweiligen Token repräsentierten Miteigentumsanteil an der Sammelurkunde gemäß Ziffern 
+3.1-3.2 ab mit Abschluss des Übertragungsvorgangs für den übernehmenden Investor zu 
+besitzen (wirkliche Übergabe durch Besitzanweisung). Der Token gilt mit der Änderung der 
+Zuordnung vom Verkäufer an den Käufer im Blockchain-Netzwerk als übertragen. 
+
+=== PAGE 23 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 23  
+ 
+ 
+14. AUSGABE WEITERER WERTPAPIERE UND SONSTIGER RECHTE 
+14.1 Hinsichtlich der Immobilie wird die Emittentin keine weiteren tokenisierten Wertpapiere oder 
+andere Wertpapiere, Veranlagungen oder sonstige Beteiligungsinstrumente ausgeben. 
+14.2 Die Emittentin behält sich jedoch ausdrücklich das Recht vor, weitere tokenisierte Wertpapiere 
+oder vergleichbare Finanzinstrumente hinsichtlich anderer Immobilien zu gleichen oder anderen 
+als diesen Investitionsbedingungen auszugeben. Ein Bezugsrecht des Investors auf solche 
+zukünftigen tokenisierten Wertpapiere oder vergleichbare Finanzinstrumente besteht nicht. 
+15. MITTEILUNGEN UND NACHRICHTEN 
+15.1 Sämtliche Mitteilungen und Erklärungen in Zusammenhang mit den tokenisierten Wertpapieren 
+erfolgen durch Push -Mitteilung über den Marktplatz bzw. des in Ziffer 6.13 beschriebenen 
+elektronischen Forums und – sofern der Investor diesen Wunsch durch entsprechende 
+Zustimmung über den Marktplatz geäußert hat - zusätzlich per E -Mail an die von ihm bei der 
+Registrierung am Marktplatz bekanntgegebene Email-Adresse. 
+15.2 Der Investor kann Mitteilungen und Erklärungen sowohl über den Marktplatz als auch per Email 
+oder per Post an die Emittentin richten. 
+16. STEUERN UND SONSTIGE KOSTEN 
+16.1 Sämtliche Steuern und Abgaben sowie etwaige sonstige Kosten, die mit dem Erwerb, dem 
+Halten oder der Veräußerung der tokenisiert en Wertpapiere sowie mit Ausschüttungen 
+verbunden sind, müssen von den Investoren vorbehaltlich der Regelung der Ziffer 16.2 selbst 
+getragen und bezahlt oder abgeführt werden.  
+16.2 Ist die Emittentin gesetzlich verpflic htet, Steuern, Gebühren und sonstige Abgaben 
+einzubehalten oder abzuziehen, wird die Emittentin nur den nach Abzug verbleibenden Betrag 
+an die Investoren verteilen. Sofern die Emittentin zum Kapitalertragssteuerabzug verpflichtet 
+ist, wird sie die Kapitale rtragsteuer einbehalten und an die zuständigen Finanzbehörden 
+abführen.  
+17. SCHLUSSBESTIMMUNGEN 
+17.1 Diese Investitionsbedingungen unterliegen ausschließlich österreichischem Recht unter 
+Ausschluss der jeweiligen Verweisungsnormen des internationalen Privatrechts.  
+17.2 Für alle sich aus dem Rechtsverhältnis zwischen dem Investor und der Emittentin ergebenden 
+Rechtsstreitigkeiten ist das sachlich für Handelssachen zuständige Gericht in Wien, erster Bezirk, 
+zuständig. Diese Gerichtsstandvereinbarung beschränkt nicht das Recht eines Investors, 
+Verfahren vor einem anderen zuständigen Gericht anzustrengen. Ebenso wenig schließt die 
+
+=== PAGE 24 ===
+
+Investitionsbedingungen der C&P Bricks GmbH 
+ISIN: AT0000A35A42 
+Datum: 02.06.2023 
+ 
+ 24  
+ 
+ 
+Einleitung von Verfahren vor einem oder mehreren anderen Gerichtsständen die Einleitung von 
+Verfahren an einem anderen Gerichtsstand aus, falls und soweit dies rechtlich zulässig ist. 
+17.3 Sofern ein Investor nicht als Verbraucher handelt und eine Bestimmung dieser 
+Investitionsbedingungen unwirksam oder undurchsetzbar ist oder werden sollte, beeinträchtigt 
+das nicht die Wirksamkeit oder Durchsetzbarkeit  der übrigen Bestimmungen dieser 
+Investitionsbedingungen. In einem solchen Fall gilt die unwirksame oder undurchsetzbare 
+Bestimmung als durch eine wirksame und durchsetzbare Bestimmung ersetzt, die dem Zweck 
+der zu ersetzenden Bestimmung am nächsten kommt.  Dies gilt sinngemäß auch für die 
+Ausfüllung etwaiger Lücken dieser Investitionsbedingungen. 

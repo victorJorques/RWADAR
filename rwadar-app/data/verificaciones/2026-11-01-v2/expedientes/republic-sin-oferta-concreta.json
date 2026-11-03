@@ -1,0 +1,151 @@
+{
+  "slug": "republic-sin-oferta-concreta",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "Republic",
+  "plataformaSlug": "republic",
+  "entidadComercializadora": "OpenDeal Broker LLC / OpenDeal Portal LLC (EE. UU.); Republic Europe para la UE",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": "US",
+  "identificador": null,
+  "moneda": "USD",
+  "documentos": [
+    {
+      "titulo": "FINRA · Funding portals we regulate (OpenDeal Portal LLC)",
+      "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "FINRA BrokerCheck — OpenDeal Broker LLC",
+      "url": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Republic Europe · centro de ayuda",
+      "url": "https://help.republic.com/en/",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FINRA BrokerCheck",
+      "entidad": null,
+      "numero": null,
+      "url": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+      "alcance": "Según el radar del 22/10/2026 (estado confirmada_regulador): FINRA mantiene a OpenDeal Broker LLC (CRD 291387) registrada y sin suspensión, y a OpenDeal Portal LLC (nombre comercial Republic) en su lista de funding portals (SEC 7-167). Cada registro corresponde a una entidad concreta del grupo. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    },
+    {
+      "regulador": "FINRA · Funding portals we regulate (OpenDeal Portal LLC)",
+      "entidad": null,
+      "numero": null,
+      "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate",
+      "alcance": "Según el radar del 22/10/2026 (estado confirmada_regulador): FINRA mantiene a OpenDeal Broker LLC (CRD 291387) registrada y sin suspensión, y a OpenDeal Portal LLC (nombre comercial Republic) en su lista de funding portals (SEC 7-167). Cada registro corresponde a una entidad concreta del grupo. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Republic",
+      "resultado": "sin coincidencias con Republic: los dos resultados son clones de Trade Republic («TRADE REPUBLIC BANK (CLON)», 17/02/2025; «TRADE REPUBLICA», 28/10/2024), sin relación",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:11:31Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "OpenDeal",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:11:43Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": null,
+      "dato": "FINRA mantiene a OpenDeal Broker LLC (CRD 291387) registrada y sin suspensión, y a OpenDeal Portal LLC (nombre comercial Republic) en su lista de funding portals (SEC 7-167). Cada registro corresponde a una entidad concreta del grupo.",
+      "fuentePrimaria": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+      "localizador": "FINRA BrokerCheck — OpenDeal Broker LLC (radar canónico 26, bloque licenciaRegistro)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": "Las páginas consultadas no permiten confirmar la elegibilidad vigente para cada oferta ni acceso desde España; debe revisarse la documentación de la emisión.",
+      "fuentePrimaria": "https://help.republic.com/en/",
+      "localizador": "Republic Europe · centro de ayuda (radar canónico 26, bloque acceso)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": null,
+      "dato": "republic.com bloquea las consultas automatizadas. El centro de ayuda oficial de Republic Europe sigue guiando el alta, la exploración de oportunidades y la inversión en campañas.",
+      "fuentePrimaria": "https://help.republic.com/en/",
+      "localizador": "Republic Europe · centro de ayuda (radar canónico 26, bloque estadoOperativo)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Según el radar, la FINRA tiene a OpenDeal Broker LLC (CRD 291387) y a OpenDeal Portal LLC (funding portal 7-167). Cada registro es de una entidad concreta y no cubre la UE."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No se identificó ni fechó ninguna oferta concreta en este ciclo."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "No se comprobó la elegibilidad de ninguna campaña desde España. El régimen europeo de Republic Europe no se verificó."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple",
+      "nota": "No hay advertencias de la CNMV por «Republic» (solo clones de Trade Republic, sin relación) ni por «OpenDeal»."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Plataforma de financiación participativa con campañas en EE. UU. y Europa.",
+    "porQueNo": "Los registros verificados son de EE. UU. y no se examinó ninguna campaña concreta abierta a España."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir en este ciclo: los registros comprobados (FINRA) son de entidades estadounidenses y no se examinó ninguna campaña concreta con su régimen europeo, sus documentos y su elegibilidad desde España.",
+  "bloqueos": [
+    "No se examinó ninguna oferta concreta con fuente primaria en este ciclo: la sesión se cortó por límite de uso y el coordinador cerró la fase de captura antes de llegar a esta plataforma. Los datos de licencia y acceso vienen del radar del 22/10/2026."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:11:31Z",
+    "finUtc": "2026-11-02T08:45:23Z"
+  }
+}

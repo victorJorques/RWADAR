@@ -1,0 +1,192 @@
+{
+ "id": "AT0000A3SE89",
+ "onlyPrimary": false,
+ "tokenId": null,
+ "partnerId": "brickwise",
+ "type": "plot",
+ "preorderEnabled": false,
+ "isMIFID": true,
+ "useSerialNumber": true,
+ "propertyDetails": {
+  "features": [],
+  "highlights": [],
+  "constructionStatus": "stock",
+  "propertyType": "commercial",
+  "size": 2774,
+  "plots": [
+   {
+    "kg": "74102",
+    "ez": "317",
+    "gst": "540/2",
+    "widmung": {
+     "art": "Bauland - Geschäftsgebiet",
+     "bauklasse": "A5",
+     "verbaubarkeit": "-",
+     "form": "-"
+    }
+   },
+   {
+    "kg": "74102",
+    "ez": "127",
+    "gst": "540/4",
+    "widmung": {
+     "art": "Bauland - Geschäftsgebiet",
+     "bauklasse": "A5",
+     "verbaubarkeit": "-",
+     "form": "-"
+    }
+   }
+  ]
+ },
+ "rentalDetails": {
+  "additionalManagementCosts": [
+   {
+    "name": "Submietvertrag",
+    "amount": {
+     "$numberDecimal": "33277.44"
+    }
+   }
+  ],
+  "rentalSurplus": {
+   "$numberDecimal": "32451.43"
+  },
+  "contractEndDate": "2057-12-30T23:00:00.000Z",
+  "contractStartDate": "2012-12-30T23:00:00.000Z",
+  "contractType": "closed",
+  "liquidityReserve": {
+   "$numberDecimal": "420.00"
+  },
+  "managementFee": {
+   "$numberDecimal": "1021.49"
+  },
+  "monthlyDistributionDate": 15,
+  "occupancyRate": 100,
+  "payoutInterval": "monthly",
+  "plannedFirstRentalIncomeDate": "2026-07-14T22:00:00.000Z",
+  "rentalIncome": {
+   "$numberDecimal": "67170.36"
+  },
+  "rentalReturn": {
+   "$numberDecimal": "5.07"
+  }
+ },
+ "investmentDetails": {
+  "stage": "primary",
+  "forumActive": true,
+  "isAllowedPlz": [],
+  "isAllowedDomicile": [],
+  "minSubscriptionAmount": 10,
+  "issueEndDate": "2026-05-15T22:00:00.000Z",
+  "issueFundingFloor": 78076,
+  "issueStartDate": "2026-02-15T23:00:00.000Z",
+  "securityType": "participationRightDebtCapital",
+  "sharePrice": {
+   "$numberDecimal": "100.00"
+  },
+  "terminationRight": "issuerAndInvestor",
+  "totalBricks": 6404,
+  "landRegisterMortgageDescription": "Die Absicherung erfolgt dabei über ein im Grundbuch eingetragenes Kollektivpfandrecht zugunsten der Inhaber:innen der tokenisierten Wertpapiere in Höhe des Ausgabepreises (Nominale) der tokenisierten Wertpapiere. Der Antrag auf Einverleibung des Pfandrechts im Grundbuch wird von der Emittentin unmittelbar nach Erwerb der Immobilie gestellt. Die Eintragung kann jedoch mehrere Wochen in Anspruch nehmen, wodurch sich unmittelbar nach der Emission ein entsprechender Zeitraum ergeben kann, in dem das Pfandrecht noch nicht im Grundbuch eingetragen ist.",
+  "landRegisterMortgageStatusText": "Grundbücherliche Besicherung noch ausstehend.",
+  "spv": {
+   "id": "73693178-481a-4918-9776-593972819aeb",
+   "address": {
+    "street": "Börseplatz 4",
+    "postCode": "1010",
+    "city": "Wien",
+    "countryCode": "AUT"
+   },
+   "owner": "Brickwise Real Estate GmbH",
+   "email": "realestate@brickwise.at",
+   "taxNumber": "FN 549470 w",
+   "companyPurpose": "Halten, Verwalten und Vermieten von Immobilien",
+   "companyName": "Brick Qogir GmbH & Co KG",
+   "partnerId": "brickwise",
+   "dseDocumentSrc": "https://cdn.brickwise.at/740a7c07-4c01-4cfa-be02-3383722259fd.pdf"
+  },
+  "ISIN": "AT0000A3SE89",
+  "issueEndDateOriginal": "2026-05-15T22:00:00.000Z",
+  "issuingSharePrice": {
+   "$numberDecimal": "100.00"
+  },
+  "availableBricks": 6322,
+  "preparedCashFlowTable": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableStressScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  },
+  "preparedCashFlowTableOptimisticScenario": {
+   "preparedCashFlowTable": null,
+   "distributionSurplusSum": null
+  }
+ },
+ "descriptions": {
+  "nomenclature": {
+   "rentalIncomeTitle": [],
+   "rentalIncome": [],
+   "managementFee": [],
+   "liquidityReserve": [],
+   "total": [],
+   "expectedYieldDisclaimer": [],
+   "documents": {
+    "plantList": [],
+    "investmentBasicInformation": [],
+    "investmentInformation": [],
+    "investmentConditions": [],
+    "rentalAgreement": [],
+    "expertProtocol": [],
+    "landRegister": [
+     {
+      "lang": "deu",
+      "value": "Grundbuch"
+     }
+    ],
+    "energyCertificate": [],
+    "utilityReport": []
+   }
+  },
+  "propertyDetails": "<p>Die Liegenschaft ist zentrumsnahe und hat einen langfristigen Mietvertrag über 45 Jahre mit einem namhaften Einzelhändler.</p>",
+  "title": "Betriebsgrundstück mit langfristigem BILLA-Mietvertrag",
+  "propertyHighlight": "Asset Infos: Zitat",
+  "propertySellingPoints": "<p>Bei der Liegenschaft handelt es sich um 2 Grundstücke. Auf dem Grundstück mit der Nummer 540/4 befindet sich der Parkplatzbereich und auf 540/2 das Gebäude mit dem Einkaufsmarkt.</p>",
+  "cityDetails": "<p>Der auf der Liegenschaft befindliche Einkaufsmarkt ist leicht erreichbar und befindet sich im Zentrum von Brückl. Vis-a-vis befinden sich neben dem Gemeindeamt, die Schulen und Kindergärten. Die Gemeinde Brückl hat knapp 3.000 Einwohner.</p>",
+  "districtDetails": "Brückl ist eine Marktgemeinde in Kärnten mit rund 3.000 Einwohnern und liegt am Südende des Görtschitztals, verkehrsgünstig zwischen St. Veit, Völkermarkt und Klagenfurt.  Die Region gilt als Tor zur „Norischen Region“ und ist wirtschaftlich durch kleinere Gewerbe-, Industrie- und Dienstleistungsbetriebe geprägt.",
+  "locationDetails": "<p>Der Standort der Liegenschaft ist im Zentrum von Brückl und befindet sich Ecke 10.-Oktober-Straße und Sankt Johanner Straße.</p>",
+  "rentalDetails": "Das Grundstück ist seit 31.12.2012 langfristig (auf 45 Jahre) vermietet. Die Mieterträge sind wertgesichert.",
+  "propertyQuote": "Nahversorgungsstandort mit BILLA als etabliertem Konzernmieter.",
+  "investmentDetails": "Als Investor:in kannst du dich an der Immobilie in Form von digitalen Immobilienanteilen beteiligen. Digitale Immobilienanteile sind tokenisierte Genussscheine auf Basis der Investmentbedingungen der Emittentin. Als Investor:in kassierst du monatlich einen Teil der Mieteinnahmen (siehe Tabelle). Sowohl der Investor als auch die Emittentin sind\nberechtigt, die Wertpapiere erstmalig nach Ablauf\nvon 5 Jahren ab dem Ausgabetag, sodann innerhalb\neiner Frist von dreißig (30) Tagen, und danach jedes\nweitere Jahr wiederum jeweils unter Einhaltung\n<p>einer 30-tägigen Kündigungsfrist zu kündigen. <span>Bei diesem Produkt handelt es sich aus ertragsteuerrechtlicher Sicht um ein Fremdkapital-Produkt, bei dessen Erträgen es sich um Einkünfte aus Kapitalvermögen handelt, die der Kapitalertragssteuer unterliegen.</span></p><div><p></p><div></div><p></p><div><div><div></div></div></div></div>",
+  "taxInformation": "Bei diesem Produkt handelt es sich aus ertragsteuerrechtlicher Sicht um ein Fremdkapital-Produkt, bei dessen Erträgen es sich um Einkünfte aus Kapitalvermögen handelt, die der Kapitalertragssteuer unterliegen.\n"
+ },
+ "images": "[omitido]",
+ "documents": {
+  "additionalDocuments": [],
+  "additionalInvestmentDocuments": [
+   {
+    "name": "Rücktrittsbelehrung",
+    "src": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A3SE89/AT0000A3SE89_Ruecktrittsbelehrung.pdf",
+    "signed": false
+   }
+  ],
+  "landRegister": "https://staging.cdn.brickwise.at/a9a0fd94-9a9e-47bb-af8d-186189192227.pdf",
+  "rentalAgreement": "https://staging.cdn.brickwise.at/61a38504-8277-435d-a42b-97a6d41ec266.pdf",
+  "investmentBasicInformation": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+  "investmentConditions": "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+  "investmentInformation": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf"
+ },
+ "createdAt": "2026-01-07T13:09:44.330Z",
+ "updatedAt": "2026-10-26T22:26:36.233Z",
+ "location": {
+  "address": "10. Oktober Straße 2",
+  "city": "Brückl",
+  "coordinates": {
+   "lat": 46.748435,
+   "lng": 14.5336328
+  },
+  "postalCode": "9371",
+  "countryCode": "AUT"
+ },
+ "investorSettings": {},
+ "loanInformation": {}
+}

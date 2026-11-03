@@ -1,0 +1,213 @@
+Fee
+ Schedule
+
+AR T E X GM
+
+VERSION : 8
+LA ST A M E N D M E N T – J u n e 2 0 2 6
+
+
+
+
+ARTEX GM is a Multilateral Trading Facility operated by ARTEX Global Markets AG, a Company incorporated in the Principality of
+Liechtenstein under company number FL-0002.682.571-2 with registered offices at Wuhrstrasse 6, 9490, Vaduz, Liechtenstein. ARTEX
+Global Markets AG is regulated by the Financial Markets Authority under reference number 307407. ARTEX Global Markets AG is a subsidiary
+of ARTEX AG, the Parent Company. ARTEX AG is a company registered in the Principality of Liechtenstein and its head office at Wuhrstrasse
+6, 9490, Vaduz, Liechtenstein under company number FL-0002.641.606-1.
+                                                                                                                                    Fee Schedule
+
+
+
+1. OVERVIEW
+
+The trading schedule provided is subject to change. All modifications will be communicated through official market notices
+on our website. Please refer to our website for the most current trading schedule, www.artexgm.com.
+
+                   Fee type                                                               ARTEX GM
+
+    Membership Fee                                                           EUR 20,000 per annum*
+                                                   *Membership fees shall be waived for all new members onboarded from 1 January 2025
+                                                                                         to 30 June 2027.
+
+
+    Transaction Fee
+                                                                                             0.19%*
+    The transaction fee is a fixed
+    charge across all securities based
+    on the counter value.
+
+
+
+    Connectivity Fee (ISV)                                                   EUR 5,000* (one-off payment)
+    Implementation fee for the initial set up of
+    order routing networks using independent          * Connectivity fees shall be waived for all new members onboarded from 1 January
+    software vendors (NYFIX, EMSx).
+                                                                                      2025 to 30 June 2027.
+    Each member is responsible for any
+    costs, charges or expenses of connecting
+    to ARTEX GM.
+
+
+
+
+    Connectivity (Point to Point) Fee                   Please get in touch with us if you are interested in connecting VIA
+                                                        point to point.
+
+
+
+
+    Ad hoc Fees                                                                       EUR 100 per hour
+    Fees are charged for any investigative
+    actions required by a member on any
+    orders or transactions conducted on
+    ARTEX GM regardless of the
+    outcome of the procedure.
+
+
+
+
+       Drop copy request fee                                                      EUR 15,000 per annum
+Members may request a pre- and post-
+trade drop copy of their trades. The fee is
+charged on a monthly basis. The drop copy
+service fee is exclusive of value-added
+taxes. No full or partial reimbursements of
+the drop copy service fee will be made.
+
+
+
+
+                                                       ARTEX Global Markets AG                                                                     2
+                                                 Wuhrstrasse 6 | LI-9490 Vaduz | Liechtenstein
+                                                            www.artexgm.com
+             ARTEX Global Markets AG is a company incorporated under the laws of Liechtenstein, registration number FL-0002.682.571-2.
+                       ARTEX Global Markets AG is authorised and regulated by the Financial Market Authority, Liechtenstein.
+                                                                                                                                    Fee Schedule
+
+
+
+
+         Transaction Reporting                                                             EUR 5,000
+                                                        * Transaction Reporting fees shall be waived for all members onboarded from 1
+Applicable to non-EEA firms participating                                    January 2025 to 30 June 2027.
+on the MTF operated by ARTEX GM. The
+fee charged is irrespective of the number
+of transactions concluded on the MTF.
+
+
+
+
+         Cancellation Fee                                                                 EUR 1,000
+
+Please see the Guidelines for Cancellation
+of Trades for further information.
+
+
+
+
+         Market historical data                                                   Available upon request*
+The fee applicable to historical market
+data will vary based on the data set and
+negotiable.
+
+
+
+
+2. LISTING / DE- LISTING
+
+                       Fee type                                                                 ARTEX GM
+
+         Admission/Listing Fee                                                               EUR 299,000
+
+
+         Delisting Fee                                                         25% of the Final Purchase Premium
+         Mandatory Asset Purchase                             (Please see Rule 43 of Part 1 Chapter 3 — Admission and Operating Rules)
+
+
+
+
+3. CO- LOCATION
+
+ARTEX GM has outsourced the hosting of its servers to Amazon Web Services (AWS), Frankfurt. It is possible to obtain
+information about the co-location of servers, with standardised rates, from AWS. Please contact a relationship manager
+for more information.
+
+4. BILLING PROCESS
+
+    1.     Unless agreed otherwise, the invoices must be paid within 30 days of the issue on the terms set out in the relevant
+           invoice.
+    2.     For the partial execution of an order within one day, the trading fee is charged only once.
+    3.     Interest in arrears of 10% per annum may be charged on payments received late.
+
+
+
+
+                                                       ARTEX Global Markets AG                                                                     3
+                                                 Wuhrstrasse 6 | LI-9490 Vaduz | Liechtenstein
+                                                            www.artexgm.com
+             ARTEX Global Markets AG is a company incorporated under the laws of Liechtenstein, registration number FL-0002.682.571-2.
+                       ARTEX Global Markets AG is authorised and regulated by the Financial Market Authority, Liechtenstein.
+                                                                                                                                      Fee Schedule
+
+Currency and FX Conversion
+
+    1.       All invoices will be issued and payable in EUR.
+
+    2.       For any transactions executed in currencies other than EUR, amounts will be converted to EUR at the official
+             European Central Bank (ECB) month end rate.
+
+
+
+Reimbursement of fees
+
+    1.       Any claim for the reimbursement of fees must be lodged within six months of the invoice date. Entitlement to
+             reimbursement will lapse at the end of this period.
+    2.       The claim for reimbursement must be supported by confirmation from the member’s auditors.
+
+For any further queries, please email billing@artexgm.com
+
+
+5. CORPORATE INFORMATION
+
+    1.       Corporate name and form:
+
+    Name:              ARTEX Global Markets AG (ARTEX GM)
+    Address:           Wuhrstrasse 6, 9490, Vaduz, Liechtenstein
+    Legal form:                  Limited company
+
+
+
+    2.       Venue Information:
+
+    Regulatory License: 307407, Financial Markets Authority, Liechtenstein.
+
+    LEI:                                    254900UL01RE2SEBFH84
+
+    Operating MIC:                          ARTX
+
+
+6. REVISION HISTORY
+
+
+             Version                          Date                      Changes/comments                       Notice is given on the date
+         1                               June 2023                             Version 1                           Initial publication
+         2                             February 2024                           Version 2                             February 2024
+         3                              June 2024                              Version 3                               June 2024
+         4                             January 2025                            Version 4                              January 2025
+         5                              June 2025                              Version 5                              June 2025
+         6                            September 2025                           Version 6                            September 2025
+         7                            December 2025                            Version 7                            December 2025
+         8                                June 2026                           Version 8                                 June 2026
+
+
+This Fee Schedule enters into force on 29 June 2026.
+
+
+
+
+                                                         ARTEX Global Markets AG                                                                     4
+                                                   Wuhrstrasse 6 | LI-9490 Vaduz | Liechtenstein
+                                                              www.artexgm.com
+               ARTEX Global Markets AG is a company incorporated under the laws of Liechtenstein, registration number FL-0002.682.571-2.
+                         ARTEX Global Markets AG is authorised and regulated by the Financial Market Authority, Liechtenstein.
+

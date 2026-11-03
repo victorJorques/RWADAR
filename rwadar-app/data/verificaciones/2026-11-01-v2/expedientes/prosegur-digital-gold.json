@@ -1,0 +1,323 @@
+{
+ "slug": "prosegur-digital-gold",
+ "tipoExpediente": "publicada",
+ "grupo": "spiko-prosegur",
+ "proveedor": "Prosegur Crypto",
+ "plataformaSlug": "prosegur-crypto",
+ "entidadComercializadora": "PROSEGUR CUSTODIA DE ACTIVOS DIGITALES, S.L.U. (CIF B88610126; nombre comercial Prosegur Crypto)",
+ "emisor": "PROSEGUR CUSTODIA DE ACTIVOS DIGITALES, S.L.U. (según los términos, emisora de los Tokens de Oro y prestadora de los servicios)",
+ "vehiculo": "Contrato de compraventa y custodia con la propia sociedad; sin SPV ni fondo. Oro físico segregado en inventario fungible custodiado por Prosegur.",
+ "token": "Token de Oro, 1 token = 1 gramo. Términos 08/07/2026: Ethereum, estándar ERC-1155. Página de transparencia: Polygon, estándar ERC-3643 (conflicto). Sin dirección de contrato publicada en las fuentes leídas.",
+ "derechoAdquirido": "Derecho contractual sobre una cantidad equivalente de oro físico segregado en un inventario fungible (no sobre un lingote concreto); solo revendible a Prosegur Crypto; canje físico por lingote con 1.000 tokens.",
+ "jurisdiccion": "ES",
+ "identificador": "CIF B88610126 · LEI (registro ESMA, 19 caracteres tal como figura) 59800G0P3PV13KLX615",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Términos y Condiciones Generales · Prosegur Gold",
+   "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "versionOFecha": "Actualizado el 08/07/2026 (texto idéntico al leído el 23/10/2026)",
+   "paginas": null,
+   "sha256": "60556d4c89c94b679d3b41dfd3e66f78574ad2df4eb74b34f1f82823931de22b",
+   "leido": true
+  },
+  {
+   "titulo": "Página comercial Digital Gold",
+   "url": "https://www.prosegurcrypto.com/digital-gold",
+   "versionOFecha": "Consultada el 01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  },
+  {
+   "titulo": "Transparency (características del oro y del token)",
+   "url": "https://prosegurdigitalgold.com/transparency",
+   "versionOFecha": "Consultada el 01/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV (registro provisional MiCA de ESMA, CASPs)",
+   "entidad": "PROSEGUR CUSTODIA DE ACTIVOS DIGITALES S.L.U. (PROSEGUR CRYPTO)",
+   "numero": "Autorización MiCA art. 63, fecha 30/06/2026",
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+   "alcance": "Servicios autorizados: (a) custodia y administración de criptoactivos por cuenta de clientes; (g) recepción y transmisión de órdenes; (j) transferencia de criptoactivos. No incluye (c) canje por fondos ni (f) colocación. Los términos del oro (08/07/2026) declaran que su comercialización no está supervisada por ningún regulador financiero: la autorización MiCA de la entidad no acredita el producto de oro.",
+   "consultadoUtc": "2026-11-02T08:42:50Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Prosegur",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+   "consultadoUtc": "2026-11-01T15:07:43Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "Precio de compra ... Comprar (app); «Empieza hoy mismo» (web)",
+   "dato": "abierta",
+   "fuentePrimaria": "https://www.prosegurcrypto.com/digital-gold",
+   "localizador": "Página comercial Digital Gold, 01/11/2026",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T13:11:43Z",
+   "alcanceYLimites": "Venta activa observada en la web; sin alta ni compra por nuestra parte. El precio del gramo no se capturó hoy (la app carga el dato por JavaScript).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "derecho",
+   "literal": "Los Tokens de Oro confieren derechos sobre una cantidad equivalente de oro físico segregado mantenido dentro de un inventario fungible",
+   "dato": "Derecho sobre oro segregado fungible, sin lingote ni número de serie asignado",
+   "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "localizador": "Términos 08/07/2026, §§2.1 y 2.4",
+   "fechaDato": "2026-07-08",
+   "consultadoUtc": "2026-11-02T08:42:21Z",
+   "alcanceYLimites": "Obligación contractual de Prosegur; no hay verificación física independiente en las fuentes leídas.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "supervision",
+   "literal": "SU COMERCIALIZACIÓN NO ESTÁ SUJETA A LA SUPERVISIÓN DE NINGÚN REGULADOR FINANCIERO",
+   "dato": "Producto no financiero y sin supervisión financiera, según el propio contrato",
+   "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "localizador": "Términos 08/07/2026, advertencia inicial y §2.2",
+   "fechaDato": "2026-07-08",
+   "consultadoUtc": "2026-11-02T08:42:21Z",
+   "alcanceYLimites": "La entidad sí figura como CASP autorizado por la CNMV (30/06/2026) para custodia, RTO y transferencia de criptoactivos; esa autorización no se extiende al token de oro. La web comercial habla de «estrictos estándares regulatorios»: en conflicto con el contrato.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Compra mínima ✔ 1 gramo",
+   "dato": "1 gramo (importe en euros variable con el oro)",
+   "fuentePrimaria": "https://www.prosegurcrypto.com/digital-gold",
+   "localizador": "Tabla comparativa de la página comercial",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T13:11:43Z",
+   "alcanceYLimites": "No figura en los términos. No convertir a euros por nuestra cuenta.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Compra de tokens ... Precio LBMA diario + 4% · Venta de tokens ... Precio LBMA diario - 6%",
+   "dato": "Compra LBMA +4 %; venta LBMA −6 %",
+   "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "localizador": "Términos 08/07/2026, §5.4 (cuadro) y §6.2",
+   "fechaDato": "2026-07-08",
+   "consultadoUtc": "2026-11-02T08:42:21Z",
+   "alcanceYLimites": "Cuadro «susceptible de cambio». Gastos bancarios y de proveedores de pago a cargo del cliente (§5.3, §6.5). Ida y vuelta: 10 puntos porcentuales sobre LBMA, frente a «márgenes mínimos» de la web.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "custodia",
+   "literal": "El Oro Físico ... será almacenado en instalaciones de custodia de alta seguridad de Prosegur Crypto (o en las de terceros custodios especialmente designados)",
+   "dato": "Oro en búnker de Prosegur Cash; tokens custodiados en la plataforma; pólizas de seguro anunciadas",
+   "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "localizador": "Términos 08/07/2026, §§4.1–4.2; Transparency: lingote 1 kg 999,9, búnker Prosegur Cash",
+   "fechaDato": "2026-07-08",
+   "consultadoUtc": "2026-11-02T08:42:21Z",
+   "alcanceYLimites": "Lingotes de 1 kg divididos en 1.000 tokens. La web anuncia auditorías mensuales; no se ha leído ningún informe de auditoría.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida",
+   "literal": "En condiciones normales, las órdenes de recompra se procesarán en un plazo de 1 a 7 días hábiles aproximadamente desde su solicitud",
+   "dato": "Solo recompra por Prosegur Crypto; pago en 1–7 días hábiles aprox.",
+   "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "localizador": "Términos 08/07/2026, §§6.1–6.4",
+   "fechaDato": "2026-07-08",
+   "consultadoUtc": "2026-11-02T08:42:21Z",
+   "alcanceYLimites": "Posible suspensión y límites diarios/mensuales (§6.7); sin venta a terceros. Canje físico: 1.000 tokens, recogida en la Comunidad de Madrid, costes a cargo del cliente (§2.4). La web dice «Menos de 24 horas» y «Liquidez sin restricciones»: en conflicto con el contrato.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "todas las transacciones económicas se realizarán en EUROS para los Clientes residentes en el Espacio Económico Europeo",
+   "dato": "Residentes en el EEE (incluida España), personas físicas o jurídicas, con KYC (DNI, NIE o pasaporte)",
+   "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "localizador": "Términos 08/07/2026, §§1, 3.2, 5.5, 8 (Ley española de consumidores) y 14",
+   "fechaDato": "2026-07-08",
+   "consultadoUtc": "2026-11-02T08:42:21Z",
+   "alcanceYLimites": "Sociedad española, contrato en español y sujeto a la LGDCU. Sin derecho de desistimiento (art. 103 TRLGDCU). Alta sujeta a validación.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "PROSEGUR CRYPTO NO GARANTIZA NI RENTABILIDAD NI UN VALOR FIJO DE LOS TOKENS DE ORO",
+   "dato": null,
+   "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "localizador": "Términos 08/07/2026, advertencia inicial y §2.5",
+   "fechaDato": "2026-07-08",
+   "consultadoUtc": "2026-11-02T08:42:21Z",
+   "alcanceYLimites": "Valor ligado al precio del oro; sin interés ni rendimiento.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "token",
+   "literal": "Red blockchain Polygon ... Token standard ERC-3643",
+   "dato": "Polygon / ERC-3643 según la web; Ethereum / ERC-1155 según el contrato",
+   "fuentePrimaria": "https://prosegurdigitalgold.com/transparency",
+   "localizador": "Transparency, «Characteristics of Gold»; Términos §2.1",
+   "fechaDato": "2026-11-01",
+   "consultadoUtc": "2026-11-01T13:11:48Z",
+   "alcanceYLimites": "Discrepancia técnica entre la página de transparencia y el contrato. No afecta al derecho, pero debe aclararse.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "fiscalidad",
+   "literal": "Los Tokens de Oro suponen una entrega de oro de inversión exenta de IVA de acuerdo con lo dispuesto en el artículo 140. Bis de la Ley de IVA",
+   "dato": "Exento de IVA como oro de inversión (según el contrato)",
+   "fuentePrimaria": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "localizador": "Términos 08/07/2026, §5.2",
+   "fechaDato": "2026-07-08",
+   "consultadoUtc": "2026-11-02T08:42:21Z",
+   "alcanceYLimites": "Criterio del emisor; plusvalías a cargo del cliente.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Entidad española identificada (CIF B88610126) y autorizada por la CNMV como CASP MiCA desde el 30/06/2026 para custodia, RTO y transferencia; el producto de oro, según su contrato, no está supervisado por ningún regulador financiero."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple",
+   "nota": "Venta activa en la web el 01/11/2026; términos vigentes de 08/07/2026 sin cambios respecto al 23/10/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Residentes en el EEE con KYC, liquidación en euros, compra desde 1 gramo. Límites: diferencial de compra +4 % y venta −6 %, salida solo por recompra en 1–7 días hábiles con posible suspensión."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Sin advertencias de la CNMV. Riesgos dichos en el contrato (precio del oro, sin rentabilidad, no transmisible). Conflictos entre web y contrato: liquidez <24 h, «márgenes mínimos», «estándares regulatorios» y red/estándar del token."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "liquidación (documentación de la ficha)",
+   "antes": "«Menos de 24 horas según el proveedor»",
+   "ahora": "Recompra solo por Prosegur, 1–7 días hábiles aprox., con posible suspensión y límites (contrato 08/07/2026 §§6.4 y 6.7)",
+   "fuente": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "critico": true
+  },
+  {
+   "campo": "comisiones (métricas de la tarjeta)",
+   "antes": "no figuran en la tarjeta",
+   "ahora": "Compra LBMA +4 %; venta LBMA −6 %",
+   "fuente": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "critico": true
+  },
+  {
+   "campo": "supervisión",
+   "antes": "no recogida",
+   "ahora": "CASP MiCA autorizado por la CNMV (30/06/2026) para custodia/RTO/transferencia; el token de oro no supervisado según su contrato",
+   "fuente": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+   "critico": true
+  },
+  {
+   "campo": "disponibleEs",
+   "antes": "null",
+   "ahora": "confirmado (residentes EEE, KYC; contrato español)",
+   "fuente": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "critico": false
+  },
+  {
+   "campo": "token",
+   "antes": "no indicado",
+   "ahora": "conflicto Ethereum ERC-1155 (contrato) frente a Polygon ERC-3643 (transparencia)",
+   "fuente": "https://prosegurdigitalgold.com/transparency",
+   "critico": false
+  },
+  {
+   "campo": "versión de condiciones",
+   "antes": "08/07/2026",
+   "ahora": "08/07/2026, sin cambios (texto idéntico al del 23/10/2026)",
+   "fuente": "https://app.prosegurdigitalgold.com/#/terms-service",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "Prosegur Digital Gold",
+  "categoria": "Materias primas",
+  "pais": "ES",
+  "tipo": "valor",
+  "coleccion": "principales",
+  "resumen": "Tokens que representan gramos de oro físico custodiado por Prosegur en España. El valor sigue al precio del oro y solo se pueden revender a Prosegur Crypto.",
+  "rentabilidad": null,
+  "metricas": [
+   {
+    "etiqueta": "Mínimo",
+    "valor": "1 gramo"
+   },
+   {
+    "etiqueta": "Moneda",
+    "valor": "EUR"
+   },
+   {
+    "etiqueta": "Compra / venta",
+    "valor": "LBMA +4 % / LBMA −6 %"
+   },
+   {
+    "etiqueta": "Reembolso",
+    "valor": "Recompra por Prosegur, 1–7 días hábiles"
+   },
+   {
+    "etiqueta": "Custodia",
+    "valor": "Oro segregado en búnker de Prosegur Cash"
+   },
+   {
+    "etiqueta": "Supervisión",
+    "valor": "Producto no supervisado; entidad CASP MiCA (CNMV)"
+   }
+  ],
+  "avisos": [
+   "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+   "El precio del oro puede bajar; el proveedor no garantiza rentabilidad ni valor fijo.",
+   "Según su contrato, el token de oro no es un producto financiero ni está supervisado por un regulador financiero.",
+   "Comprar y vender cuesta en total unos 10 puntos sobre el precio LBMA; la recompra tarda de 1 a 7 días hábiles y puede suspenderse."
+  ],
+  "url": "https://www.prosegurcrypto.com/digital-gold",
+  "fuentesActuales": [
+   "https://www.prosegurcrypto.com/digital-gold",
+   "https://app.prosegurdigitalgold.com/#/terms-service",
+   "https://prosegurdigitalgold.com/transparency",
+   "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv"
+  ],
+  "lugar": "Madrid · España",
+  "pasos": [
+   "Compras gramos digitales",
+   "Prosegur custodia el oro",
+   "Recompra por Prosegur"
+  ],
+  "concepto": "un lingote de oro dentro de una cámara acorazada dividido en mil pequeñas fichas digitales"
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "si",
+  "minimoEntrada": "1 gramo de oro (precio en EUR variable)",
+  "supervisorVerificado": "CNMV · autorización MiCA CASP de Prosegur Custodia de Activos Digitales (registro ESMA, 30/06/2026); no cubre el token de oro",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Empresa española con autorización MiCA de la CNMV, contrato en español, compra desde 1 gramo y oro custodiado por Prosegur Cash.",
+  "porQueNo": "El token de oro no está supervisado, cuesta +4 % al comprar y −6 % al vender, solo se revende a Prosegur en 1–7 días hábiles y la web contradice el contrato en liquidez y red del token."
+ },
+ "decision": "actualizar",
+ "motivoDecision": "La oferta sigue activa y las condiciones de 08/07/2026 no han cambiado. Hay que corregir la ficha publicada: quitar «menos de 24 horas» como dato y poner el plazo contractual, añadir el diferencial 4 %/6 % y aclarar que la entidad es CASP MiCA pero el producto no está supervisado.",
+ "bloqueos": [
+  "La app (app.prosegurdigitalgold.com) carga el precio por JavaScript; hoy no se capturó el precio del gramo y no se publica.",
+  "No se ha leído ningún informe de auditoría ni la póliza de seguro.",
+  "El LEI del registro ESMA tiene 19 caracteres; se copia tal cual y no se ha validado en GLEIF."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-01T13:11:43Z",
+  "finUtc": "2026-11-02T08:44:19Z"
+ }
+}

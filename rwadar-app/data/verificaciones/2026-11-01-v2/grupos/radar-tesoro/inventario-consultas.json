@@ -1,0 +1,322 @@
+[
+ {
+  "url": "https://backed.fi/",
+  "archivo": "fuentes/backed-home.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:05Z",
+  "bytes": 53820,
+  "sha256": "7cc49761d1991802869ce3a290358e9311bf721dbbf14115f7826b8e0ddf58d6"
+ },
+ {
+  "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+  "archivo": "fuentes/xstocks-legal-overview.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:06Z",
+  "bytes": 357802,
+  "sha256": "896fa6e0e18d7f12cc9695e1a31a9cf0d8130801d582e59183420f9bcf41920a"
+ },
+ {
+  "url": "https://backed.fi/legal",
+  "archivo": "fuentes/backed-legal.html",
+  "http": 404,
+  "consultadoUtc": "2026-11-01T13:11:06Z",
+  "bytes": 5501,
+  "sha256": "5f1bfeb3e2ffc7162b9cdc41f3f821b42282af056c0ec7d69478674ccee1d234"
+ },
+ {
+  "url": "https://backed.fi/products",
+  "archivo": "fuentes/backed-products.html",
+  "http": 404,
+  "consultadoUtc": "2026-11-01T13:11:07Z",
+  "bytes": 5501,
+  "sha256": "5f1bfeb3e2ffc7162b9cdc41f3f821b42282af056c0ec7d69478674ccee1d234"
+ },
+ {
+  "url": "https://assets.backed.fi/legal-documentation",
+  "archivo": "fuentes/backed-legal-documentation.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:19Z",
+  "bytes": 10606,
+  "sha256": "e767d67458a8c22c84c170d20ace2f6f755118b66528d1e63a7f7cdac2bd17d6"
+ },
+ {
+  "url": "https://www.backedassets.fi/legal-documentation",
+  "archivo": "fuentes/backedassets-legal-documentation.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:19Z",
+  "bytes": 10606,
+  "sha256": "9fd7b6a945279eaf8ef7a4af74c8ee2ba4666e7cc111b95976acbe3bdb32809d"
+ },
+ {
+  "url": "https://defi.backed.fi/",
+  "archivo": "fuentes/backed-defi-dashboard.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:20Z",
+  "bytes": 526,
+  "sha256": "90b713333b9c2e56e324bfd4fe3b4786989f06641b6c2d8626754a566d171a22"
+ },
+ {
+  "url": "https://assets.backed.fi/",
+  "archivo": "fuentes/backed-assets-home.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:11:21Z",
+  "bytes": 10606,
+  "sha256": "f891396b697f4b0f1f9d98d2b207f8c6b0c96af4133fba31514afa7e26f63f17"
+ },
+ {
+  "url": "https://www.mfsa.mt/wp-content/uploads/2026/08/Backed-Assets-JE-Limited-Certificate-of-Approval-of-a-Supplement-dated-04-August-2026.pdf",
+  "archivo": "fuentes/backed-mfsa-cert-supp-2026-08-04.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:38Z",
+  "bytes": 320779,
+  "sha256": "6f53214d8f0ce549178fa99904ad2bb4c882bd2ebd8028aab338d959777fb090"
+ },
+ {
+  "url": "https://www.asfromania.ro/uploads/articole/attachments/6a018e00def77510639131.pdf",
+  "archivo": "fuentes/backed-asf-ro-6a018e.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:38Z",
+  "bytes": 385188,
+  "sha256": "be143057ec2b2cd4a5275a8bccdad28689c8a8504006e9f4f7369b6816d664fe"
+ },
+ {
+  "url": "https://asfromania.ro/uploads/articole/attachments/69830a5f6af8a943824136.pdf",
+  "archivo": "fuentes/backed-asf-ro-69830a.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T13:12:40Z",
+  "bytes": 357869,
+  "sha256": "7d670ae656b015dddec7cc49065aed193c6a342deb30257a074099b75ece659d"
+ },
+ {
+  "url": "https://21x.eu/download/21x-ag-listing-announcement-grbenji/",
+  "archivo": "fuentes/ft-21x-listing-grbenji.bin",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:32Z",
+  "bytes": 140617,
+  "sha256": "e610c618f17915d51a306fa000b01c601462c48a281243d686ec951350e145c0"
+ },
+ {
+  "url": "https://www.franklintempleton.com.es/download/es-es/factsheet/7188caa2-eb9b-4073-b8ce-92e1c8ab9a4d/Factsheet-FranklinOnChainUSGovernmentLiquidityFund-AB(Ddis)USD-41372-PX1-FF-ES-es-ES.PDF",
+  "archivo": "fuentes/ft-gbenji-factsheet-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:58:53Z",
+  "bytes": 80368,
+  "sha256": "3ed4b340387c29e827576142e198491f0bb7a6527532b0a09eb47e78fd529b95"
+ },
+ {
+  "url": "https://www.franklintempleton.lu/download/en-lu/key-information-document/28329846-1e59-4630-8d6c-93267d7b5e37/PRIIPSEU_LU3258450587_en_LU.pdf",
+  "archivo": "fuentes/ft-gbenji-kid-en-lu.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T14:59:23Z",
+  "bytes": 165098,
+  "sha256": "0b7cd15fd5249252462c749709863863513b2f80e093e1c222aac5a2781723db"
+ },
+ {
+  "url": "https://digitalassets.franklintempleton.com/benji/",
+  "archivo": "fuentes/ft-benji-home.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:00:19Z",
+  "bytes": 184991,
+  "sha256": "eaff50a732884d983d015df7b309959c86ca01e68bf5e0e3b5e9d33d73121db4"
+ },
+ {
+  "url": "https://21x.eu/",
+  "archivo": "fuentes/21x-home.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:00:19Z",
+  "bytes": 231120,
+  "sha256": "91fceb0c0d600b3ee9ca7a451c540cda01bd3ee869f82f7ef93faac734b03089"
+ },
+ {
+  "url": "https://21x.eu/onboarding/",
+  "archivo": "fuentes/21x-onboarding.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:00:35Z",
+  "bytes": 116518,
+  "sha256": "85cddabac52452510caa27c47d1c4fb932552eef280ee2df40546d86ad25e2f8"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad?nombre=FRANKLIN%20TEMPLETON%20ONCHAIN",
+  "archivo": "fuentes/cnmv-busqueda-franklin-onchain.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:00:48Z",
+  "bytes": 213887,
+  "sha256": "6692ec2e49a87e47c58c0c6ed16b655c130c14270d3d33477621f4142633dc25"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/DatosEntidad?nif=N0363289J",
+  "archivo": "fuentes/cnmv-datosentidad-N0363289J.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:02Z",
+  "bytes": 211441,
+  "sha256": "d70d16bf61fad0215562d4cfddd174f03bffcfa28d465d3c7f783315066a5440"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0363289J",
+  "archivo": "fuentes/cnmv-iicextranjera-N0363289J.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:15Z",
+  "bytes": 151981,
+  "sha256": "6e90dd3d637363553beda582e9d4427552387e9e6f19bed02e64b7e2ed405d5a"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0363289J&vista=18",
+  "archivo": "fuentes/cnmv-iicextranjera-N0363289J-comercializadoras.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:05:44Z",
+  "bytes": 152440,
+  "sha256": "c063669e7c1799c8d0f3eac9fcef2302018d218b7103b26b8b8acf0e03b2895d"
+ },
+ {
+  "url": "https://apps.apple.com/es/app/benji-investments/id1551677725",
+  "archivo": "fuentes/ft-benji-appstore-es.html",
+  "http": 404,
+  "consultadoUtc": "2026-11-01T15:06:18Z",
+  "bytes": 1146,
+  "sha256": "120a307f868f3276b56dabfbd5f107d1b1426b6436a15fbc8d4311160881e416"
+ },
+ {
+  "url": "https://apps.apple.com/es/search?term=benji%20franklin",
+  "archivo": "fuentes/ft-benji-appstore-es-search.html",
+  "http": 404,
+  "consultadoUtc": "2026-11-01T15:06:18Z",
+  "bytes": 1146,
+  "sha256": "120a307f868f3276b56dabfbd5f107d1b1426b6436a15fbc8d4311160881e416"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Backed",
+  "archivo": "fuentes/cnmv-adv-t1-backed.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:14Z",
+  "bytes": 212181,
+  "sha256": "c1bcc8dec219cb89dba9bf0026a3b4734e5f18d5d7460edaca2577dc9c24a7c9"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ondo",
+  "archivo": "fuentes/cnmv-adv-t1-ondo.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:17Z",
+  "bytes": 228125,
+  "sha256": "37b1619aa66f9a485fa998bc09944b8600c58eee2c6997b192785c50929ad1de"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OpenEden",
+  "archivo": "fuentes/cnmv-adv-t1-openeden.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:19Z",
+  "bytes": 212225,
+  "sha256": "f4f45f42901315a36682d92d9004ef7661a83e1c8974294ca9425711ea6ce1b3"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Open%20Eden",
+  "archivo": "fuentes/cnmv-adv-t1-open-eden.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:22Z",
+  "bytes": 212247,
+  "sha256": "d025e607eb4bacaac92ab59dc720457e8bca7f3f5ebc5fa252eca6ea7ae4163a"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Superstate",
+  "archivo": "fuentes/cnmv-adv-t1-superstate.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:24Z",
+  "bytes": 212269,
+  "sha256": "4a54b0208550385ef6942c3519032c070f87a2d18ebe7bda7d3712fef1479437"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Securitize",
+  "archivo": "fuentes/cnmv-adv-t1-securitize.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:26Z",
+  "bytes": 212269,
+  "sha256": "d730f2278b42e18eddf9db9bb8550844e56c594ba2ce2e42ce9a18fba68021df"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Centrifuge",
+  "archivo": "fuentes/cnmv-adv-t1-centrifuge.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:28Z",
+  "bytes": 212269,
+  "sha256": "4726cbc74c2d51925b74ca9be2a48cb70028cd3578e78b0916c9f6115df15061"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Maple",
+  "archivo": "fuentes/cnmv-adv-t1-maple.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:30Z",
+  "bytes": 212159,
+  "sha256": "4804426705e34dae83401011701fb11a10a2c780f660a1b134d47fa0dc80aa03"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Paxos",
+  "archivo": "fuentes/cnmv-adv-t1-paxos.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:33Z",
+  "bytes": 212159,
+  "sha256": "562b636e460673324eb22d9bd1a952116de67b9d5f4aa13298bea624691a361a"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Franklin%20Templeton",
+  "archivo": "fuentes/cnmv-adv-t1-franklin-templeton.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:36Z",
+  "bytes": 212445,
+  "sha256": "5f6da8dc029648e5d1630896b682d340cafec76212a32ba074f4445c10350470"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=xStocks",
+  "archivo": "fuentes/cnmv-adv-t1-xstocks.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:38Z",
+  "bytes": 212203,
+  "sha256": "545724063f09a2bf0454002bc1ac92a4d33e7f7889fb63b9bb8b32b22823cf97"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Benji",
+  "archivo": "fuentes/cnmv-adv-t1-benji.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:41Z",
+  "bytes": 212159,
+  "sha256": "b06ca74a4bb90d3e758760113dcfcefc3ac37277a059fa7e52a851ff9df4204c"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Syrup",
+  "archivo": "fuentes/cnmv-adv-t1-syrup.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-01T15:10:43Z",
+  "bytes": 212159,
+  "sha256": "2a7a545b59c4cf4e059a797243f18bdf051c661deb3acf9d4b82a6647bcddb21"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, búsqueda «ONCHAIN», Playwright)",
+  "archivo": "fuentes/cnmv-entidad-onchain.html",
+  "http": "playwright",
+  "consultadoUtc": "2026-11-01T15:01:40Z",
+  "bytes": 213476,
+  "sha256": "8c3a60a00e14c97d7ee8aaae6e77f17d941fe11ac618a66775691f8380e3c0e1"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, búsqueda «FRANKLIN TEMPLETON», Playwright)",
+  "archivo": "fuentes/cnmv-entidad-franklin-templeton.html",
+  "http": "playwright",
+  "consultadoUtc": "2026-11-01T15:01:49Z",
+  "bytes": 218903,
+  "sha256": "2c9a9e5cfb37c98cc8198d0b83455e007f0b9b762f7295e157b59455b4fb3ddc"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/DatosEntidad?nif=N0363289J (Playwright)",
+  "archivo": "fuentes/cnmv-ft-onchain-funds-ficha.html",
+  "http": "playwright",
+  "consultadoUtc": "2026-11-01T15:04:55Z",
+  "bytes": 208966,
+  "sha256": "263968412370be4936077c8bd95c750db56e17caa4f91f3912cbcc60e95aa119"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Backed (Playwright, captura parcial; ver cnmv-adv-t1-backed.html)",
+  "archivo": "fuentes/cnmv-advertencias-backed.html",
+  "http": "playwright",
+  "consultadoUtc": "2026-11-01T15:08:33Z",
+  "bytes": 209734,
+  "sha256": "6bf767ac373fb646c5229466cd30f7bb98a04a4e336854c35d647062df8dd0b2"
+ }
+]

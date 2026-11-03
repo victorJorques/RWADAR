@@ -1,0 +1,10 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":932,
+    "params":{
+      "q":"party_name:*Art*Share*",
+      "rows":"50",
+      "wt":"json"}},
+  "response":{"numFound":0,"start":0,"numFoundExact":true,"docs":[]
+  }}

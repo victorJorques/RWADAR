@@ -1,0 +1,136 @@
+{
+  "slug": "blocksquare-marketplaces-sin-oferta-concreta",
+  "tipoExpediente": "candidata",
+  "grupo": "radar-otros",
+  "proveedor": "Blocksquare (marketplaces de socios certificados)",
+  "plataformaSlug": "blocksquare",
+  "entidadComercializadora": "Depende de cada marketplace operado por un socio certificado; Blocksquare es proveedor tecnológico",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": null,
+  "identificador": null,
+  "moneda": null,
+  "documentos": [
+    {
+      "titulo": "Blocksquare certified partner terms template",
+      "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    },
+    {
+      "titulo": "Blocksquare",
+      "url": "https://blocksquare.io/",
+      "versionOFecha": "consultada por el radar el 2026-10-22; no releída en este ciclo",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FMA Liechtenstein",
+      "entidad": "búsqueda «Blocksquare»",
+      "numero": null,
+      "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Blocksquare",
+      "alcance": "0 resultados (búsqueda de control; Blocksquare no es una entidad de Liechtenstein).",
+      "consultadoUtc": "2026-11-01T15:04:51Z"
+    },
+    {
+      "regulador": "Blocksquare certified partner terms template",
+      "entidad": null,
+      "numero": null,
+      "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+      "alcance": "Según el radar del 22/10/2026 (estado no_verificable): Los términos ya se leen. Son una plantilla para socios certificados (operador 'CP_COMPANY') que declara que el operador no presta servicios financieros licenciados ni regulados. No identifican entidad ni registro, y la web marca 'Regulation' como 'Available soon'. No se releyó en este ciclo.",
+      "consultadoUtc": null
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Blocksquare",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+      "consultadoUtc": "2026-11-01T15:13:48Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": null,
+      "dato": "Los términos ya se leen. Son una plantilla para socios certificados (operador 'CP_COMPANY') que declara que el operador no presta servicios financieros licenciados ni regulados. No identifican entidad ni registro, y la web marca 'Regulation' como 'Available soon'.",
+      "fuentePrimaria": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+      "localizador": "Blocksquare certified partner terms template (radar canónico 26, bloque licenciaRegistro)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": null,
+      "dato": "Los términos son una plantilla para operadores de portales: exigen KYC y control de sanciones (ONU, UE, Reino Unido, OFAC) y dejan en blanco la jurisdicción. El acceso real debe confirmarse con el operador de cada portal y activo.",
+      "fuentePrimaria": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+      "localizador": "Blocksquare certified partner terms template (radar canónico 26, bloque acceso)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": null,
+      "dato": "La portada, que requiere JavaScript, presenta una oferta B2B: protocolo de tokenización inmobiliaria y plataforma de marca blanca con contacto comercial. El apartado de noticias no muestra entradas fechadas, así que no se confirma actividad actual ni portales vivos.",
+      "fuentePrimaria": "https://blocksquare.io/",
+      "localizador": "Blocksquare (radar canónico 26, bloque estadoOperativo)",
+      "fechaDato": null,
+      "consultadoUtc": null,
+      "alcanceYLimites": "Dato heredado del radar canónico del 22/10/2026 (radar-canonico-26.json, fuente consultada ese día); no se releyó en este ciclo porque el coordinador cerró la fase de captura. Es paráfrasis del radar, no literal de la fuente.",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_verificable",
+      "nota": "La plantilla de términos para socios (según el radar) declara que el operador no presta servicios financieros con licencia y deja en blanco la entidad y la jurisdicción. Cada marketplace necesitaría su propio registro, que no se comprobó."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No se identificó ni fechó ninguna oferta concreta en este ciclo."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "No se identificó ningún marketplace europeo concreto ni sus condiciones para residentes en España."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_verificable",
+      "nota": "No hay advertencias de la CNMV por «Blocksquare». No se evaluaron los marketplaces de los socios."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Blocksquare da tecnología de tokenización inmobiliaria a marketplaces de terceros, algunos europeos.",
+    "porQueNo": "No se examinó ningún marketplace ni inmueble concreto, y la plantilla de términos dice que el operador no presta servicios con licencia."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir: no hay una oferta concreta (inmueble, emisor, documento, mínimo) de un marketplace con tecnología Blocksquare documentada con fuente primaria. Además, la plantilla de términos declara que el operador no presta servicios regulados. Queda pendiente para un ciclo propio: identificar los marketplaces europeos y su registro.",
+  "bloqueos": [
+    "No se examinó ninguna oferta concreta con fuente primaria en este ciclo: la sesión se cortó por límite de uso y el coordinador cerró la fase de captura antes de llegar a esta plataforma. Los datos de licencia y acceso vienen del radar del 22/10/2026."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-01T15:13:48Z",
+    "finUtc": "2026-11-02T08:45:23Z"
+  }
+}
