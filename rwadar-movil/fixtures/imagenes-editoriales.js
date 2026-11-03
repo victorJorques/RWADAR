@@ -24,7 +24,6 @@ const FUENTES_POR_FICHA = Object.freeze({
   'oferta-hausera-proximas-ofertas.webp': require('../assets/ofertas-editoriales/oferta-hausera-proximas-ofertas.webp'),
   'oferta-kraken-xstocks.webp': require('../assets/ofertas-editoriales/oferta-kraken-xstocks.webp'),
   'oferta-local-de-estanco-klagenfurt.webp': require('../assets/ofertas-editoriales/oferta-local-de-estanco-klagenfurt.webp'),
-  'oferta-mf-one.webp': require('../assets/ofertas-editoriales/oferta-mf-one.webp'),
   'oferta-mtbill.webp': require('../assets/ofertas-editoriales/oferta-mtbill.webp'),
   'oferta-prosegur-digital-gold.webp': require('../assets/ofertas-editoriales/oferta-prosegur-digital-gold.webp'),
   'oferta-randhartingergasse-9-viena.webp': require('../assets/ofertas-editoriales/oferta-randhartingergasse-9-viena.webp'),

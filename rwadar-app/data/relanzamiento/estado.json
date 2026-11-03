@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 03/11: alta de Spiko Smart Cash Euro por decisión editorial de Víctor (entrega 2026-11-03.5; revisión independiente de tres enfoques, aprobado_con_cambios; aplicada con Aplicar catálogo), con avisos de que no consta en ningún registro público su alta en España y de que la web contradice al KID. npm test completo en verde. Ciclo autorizado por la orden de Víctor (AGENTS.md).",
+  "nota": "Claude, 03/11: retirada de mF-ONE (entrega 2026-11-03.6; comprobadas las 25 ofertas y verificada la retirada por dos escépticos; revisión independiente del SQL aprobada; aplicada con Aplicar catálogo). npm test completo en verde. Ciclo autorizado por la orden de Víctor (AGENTS.md).",
   "revisionAprobada": {
-    "commit": "1f41da42483e4e1b4514f8451ba318ea3706f261",
-    "contenidoSha256": "sha256:ab01da00da96a30440411ce8c72ecd1f50659dcaa2c55ec78142337b46ded772",
+    "commit": "3b19ad014e0260cd13e5c0b8ca87f6db2d02b45d",
+    "contenidoSha256": "sha256:57b3feb2fc994c0adb2a44fde28d795bf7a98fa199771c980df81782aff6025f",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
