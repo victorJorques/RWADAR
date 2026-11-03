@@ -1150,7 +1150,27 @@ body.detalle-local-abierto{overflow:hidden}
 .escaparate-dialogo-imagen img{display:block;width:100%;height:100%;object-fit:cover}
 /* Imágenes limpias (03/11/2026): nada encima; una línea pequeña debajo. */
 .nota-ilustrativa{margin:6px 0 0;color:var(--tx-3);font-size:.75rem;line-height:1.4}
+.solo-lector{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* Puntos fuertes (con fuente en la ficha): hasta dos chips con ✓, sin nota ni orden. */
+.escaparate-puntos{display:flex;flex-wrap:wrap;gap:4px;margin:0;padding:0;list-style:none}
+.escaparate-puntos li{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border:1px solid var(--senal-30);border-radius:99px;background:var(--senal-10);color:var(--senal);font-size:.75rem;line-height:1.35}
+.escaparate-puntos li::before{content:'✓'/'';font-weight:700}
+/* Ficha: «Transparencia: lo que hemos comprobado». Cinco criterios con su
+   motivo y su fuente; ni nota ni orden. */
+.escaparate-transparencia-aviso{margin:-4px 0 10px;color:var(--tx-2);font-size:.84rem;line-height:1.5}
+.escaparate-comprobaciones{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.escaparate-comprobaciones li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;padding:10px 11px;border:1px solid var(--linea);border-radius:10px}
+.escaparate-comprobacion-marca{display:grid;place-items:center;width:24px;height:24px;border-radius:99px;background:rgba(255,180,84,.12);color:#FFB454;font-weight:800}
+.escaparate-comprobaciones li.cumple .escaparate-comprobacion-marca{background:var(--senal-10);color:var(--senal)}
+.escaparate-comprobaciones b{display:block;font-size:.88rem;line-height:1.35}
+.escaparate-comprobaciones p{margin:3px 0 0;color:var(--tx-2);font-size:.82rem;line-height:1.5}
+.escaparate-comprobaciones .escaparate-comprobacion-fuente{color:var(--tx-3);font-size:.78rem}
+.escaparate-comprobaciones a,.escaparate-puntos-detalle a{color:var(--senal);overflow-wrap:anywhere}
+.escaparate-transparencia h4{margin:14px 0 8px;font-size:.88rem}
+.escaparate-puntos-detalle{display:grid;gap:6px;margin:0;padding:0;list-style:none;font-size:.84rem;line-height:1.5}
+.escaparate-puntos-detalle li::before{content:'✓ '/'';color:var(--senal);font-weight:700}
 .escaparate-dialogo-estado{margin:8px 0 0}
+.escaparate-dialogo-estado .escaparate-estado{position:static;display:inline-block;max-width:none}
 .nota-portadas{display:none}
 .escaparate-dialogo-identidad{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;padding:16px 2px 12px}
 .escaparate-dialogo-identidad>div:first-child b,.escaparate-dialogo-identidad>div:first-child span{display:block}
@@ -2215,90 +2235,98 @@ body.detalle-local-abierto{overflow:hidden}
 .inicio-fuera button{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%;min-height:74px;padding:11px 12px;border:1px solid rgba(255,59,48,.22);border-radius:14px;background:linear-gradient(160deg,rgba(255,59,48,.08),var(--m-material) 70%);color:var(--tx);text-align:left;font:700 .9rem/1.2 var(--body);cursor:pointer}
 .inicio-fuera em{padding:3px 7px;border:1.5px solid rgba(255,138,128,.55);border-radius:6px;color:#FF8A80;font:700 .58rem/1.2 var(--mono);font-style:normal;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-2deg)}
 
-#movilPanelRadar>.emis{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:end;column-gap:8px;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none}
+/* Mandos de Ofertas en el móvil: una línea con qué es esto; buscador y
+   Lista/Mapa; «Ordenar por · Fuente y fecha» con «¿Cómo ordenamos?» al lado;
+   pestañas y chips. La primera fila llega antes de y=520 a 390×844. */
+#movilPanelRadar>.emis{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:8px;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none}
 #movilPanelRadar>.emis>*{grid-column:1/-1;min-width:0}
-#movilPanelRadar>.emis>.movil-ofertas-intro{grid-row:1;grid-column:1;display:block;align-self:center;margin:0;padding:0;border:0;background:none;box-shadow:none}
-#movilPanelRadar .movil-ofertas-intro>.movil-ofertas-icono,#movilPanelRadar .movil-ofertas-intro .movil-mini-etiqueta,#movilPanelRadar #movilOfertasBajada{display:none}
-#movilPanelRadar .movil-ofertas-intro h3{margin:0;font:750 1.05rem/1.2 var(--display);letter-spacing:-.025em}
-.movil-ofertas-estado{display:block;margin-top:3px;color:var(--tx-3);font:600 .66rem/1.3 var(--mono)}
-.movil-ofertas-estado.hay-ofertas{color:var(--senal)}
-#movilPanelRadar>.emis>.emis-cab{grid-row:1;grid-column:2;display:block;margin:0}
-#movilPanelRadar .emis-orden{display:flex;flex-direction:column;align-items:stretch;gap:3px}
-#movilPanelRadar .emis-orden label{font-size:.56rem;letter-spacing:.11em}
-#movilPanelRadar>.emis>.emis-criterio-orden{grid-row:1;grid-column:3;position:relative;align-self:end;margin:0}
-#movilPanelRadar .emis-criterio-orden>summary{display:grid;place-items:center;width:44px;height:48px;padding:0;border:1px solid var(--m-hairline);border-radius:12px;background:var(--m-material);color:var(--senal);font-size:0;list-style:none;cursor:pointer}
+#movilPanelRadar>.emis>.movil-ofertas-intro{grid-row:1;display:block;margin:-4px 0 6px;padding:0;border:0;background:none;box-shadow:none}
+#movilPanelRadar .movil-ofertas-intro>.movil-ofertas-icono{display:none}
+#movilPanelRadar .movil-ofertas-intro>div{font-size:.72rem;line-height:1.45}
+#movilPanelRadar .movil-ofertas-intro>div>*{display:inline;margin:0}
+#movilPanelRadar .movil-ofertas-intro .movil-mini-etiqueta{color:var(--senal);font:650 .6rem/1.45 var(--mono);letter-spacing:.05em}
+#movilPanelRadar .movil-ofertas-intro .movil-mini-etiqueta::after{content:' · '/''}
+#movilPanelRadar #movilOfertasBajada{color:var(--tx-3);font-size:inherit;line-height:inherit}
+#movilPanelRadar .movil-ofertas-intro h3,#movilPanelRadar .movil-ofertas-estado{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#movilPanelRadar>.emis>.escaparate-busqueda{grid-row:2;grid-column:1;margin:0}
+#movilPanelRadar>.emis>.buscar-vistas{grid-row:2;grid-column:2;margin:0}
+#movilPanelRadar>.emis>.emis-cab{grid-row:3;grid-column:1;display:block;margin:6px 0 0}
+#movilPanelRadar .emis-orden{display:flex;flex-direction:row;align-items:center;gap:8px}
+#movilPanelRadar .emis-orden label{flex:none;margin:0;font-size:.56rem;letter-spacing:.04em}
+#movilPanelRadar .emis-orden select{padding:0 2px 0 8px}
+#movilPanelRadar .emis-orden select{flex:1 1 auto;min-width:0}
+#movilPanelRadar>.emis>.emis-criterio-orden{grid-row:3;grid-column:2;position:relative;margin:6px 0 0}
+#movilPanelRadar .emis-criterio-orden>summary{display:flex;align-items:center;min-height:48px;padding:0 2px;color:var(--senal);font:650 .74rem/1.2 var(--body);list-style:none;cursor:pointer}
 #movilPanelRadar .emis-criterio-orden>summary::-webkit-details-marker{display:none}
-#movilPanelRadar .emis-criterio-orden>summary::before{content:'?'/'';font:700 1.05rem/1 var(--body)}
-#movilPanelRadar .emis-criterio-orden[open]>summary{border-color:var(--senal-30);background:var(--senal-10)}
-#movilPanelRadar .emis-criterio-orden>p{position:absolute;z-index:8;top:calc(100% + 6px);right:0;width:min(330px,calc(100vw - 32px));margin:0;padding:12px 14px;border:1px solid var(--linea-2);border-radius:14px;background:#1D1C19;color:var(--tx-2);font-size:.8rem;line-height:1.5;box-shadow:0 18px 40px -16px #000}
-#movilPanelRadar .escaparate-busqueda{margin:10px 0 0}
+#movilPanelRadar .emis-criterio-orden>p{position:absolute;z-index:8;top:calc(100% + 4px);right:0;width:min(330px,calc(100vw - 32px));margin:0;padding:12px 14px;border:1px solid var(--linea-2);border-radius:14px;background:#1D1C19;color:var(--tx-2);font-size:.8rem;line-height:1.5;box-shadow:0 18px 40px -16px #000}
+@media (max-width:374px){#movilPanelRadar>.emis>.emis-criterio-orden{grid-row:4;justify-self:end;margin:0}}
 #movilPanelRadar .escaparate-busqueda label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-#movilPanelRadar .escaparate-busqueda input{min-height:46px;padding:10px 14px 10px 40px;border-color:var(--m-hairline);border-radius:14px;background:var(--m-material) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2325E39A' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") no-repeat 14px 50%/17px;font-size:16px}
-#movilPanelRadar #emiColecciones:not([hidden]){margin:10px 0 0}
+#movilPanelRadar .escaparate-busqueda input{min-height:48px;padding:10px 12px 10px 38px;border-color:var(--m-hairline);border-radius:14px;background:var(--m-material) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2325E39A' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") no-repeat 12px 50%/17px;font-size:16px}
+#movilPanelRadar #emiColecciones:not([hidden]){margin:6px 0 0}
 /* Chips en dos líneas: nombres cortos y ninguna palabra partida.
 Visualmente 36 px; con su margen invisible, 44 px de diana. */
-#movilPanelRadar .emis-filtros,#movilPanelRadar .fichas-f{flex-wrap:wrap;gap:8px 6px;margin:10px 0 0;padding:0;overflow:visible}
+#movilPanelRadar .emis-filtros,#movilPanelRadar .fichas-f{flex-wrap:wrap;gap:6px;margin:6px 0 0;padding:0;overflow:visible}
 #movilPanelRadar .emis-filtros .f,#movilPanelRadar .fichas-f .f{position:relative;flex:none;min-height:36px;padding:6px 10px;gap:6px;border-color:var(--m-hairline);background:var(--m-material);font-size:.78rem;white-space:nowrap}
 #movilPanelRadar .fichas-f .ct{display:none}
 #movilPanelRadar :is(.emis-filtros,.fichas-f) .f::before{content:'';position:absolute;inset:-4px 0}
 #movilPanelRadar :is(.emis-filtros,.fichas-f) .f.on{border-color:var(--senal);background:var(--senal)}
 @media (max-width:374px){#movilPanelRadar :is(.emis-filtros,.fichas-f){column-gap:5px}#movilPanelRadar :is(.emis-filtros,.fichas-f) .f{padding-inline:8px}}
-#movilPanelRadar .buscar-vistas{justify-self:end;width:auto;margin:10px 0 0;padding:3px;border-color:var(--m-hairline);border-radius:12px}
-#movilPanelRadar .buscar-vistas button{flex:none;min-width:72px;font-size:.8rem}
+#movilPanelRadar .buscar-vistas{justify-self:end;width:auto;padding:1px;border-color:var(--m-hairline);border-radius:12px}
+#movilPanelRadar .buscar-vistas button{flex:none;min-width:58px;padding-inline:10px;font-size:.8rem}
 #movilPanelRadar .emis-rejilla{display:block;padding:0}
-/* La nota de la colección pasa al pie de la lista: la primera fila sube. */
+/* La lista: una nota común arriba, la Selección y el resto, y la línea de las imágenes al pie. */
 #movilPanelRadar #emiLista{display:flex;flex-direction:column;align-items:stretch;gap:0}
-#emiLista>.catalogo-coleccion-cab{order:1;margin:10px 0 0}
-#emiLista>.catalogo-coleccion-cab p{margin:0;color:var(--tx-3);font-size:.74rem;line-height:1.45}
+#emiLista>.catalogo-coleccion-cab{display:none}
+.catalogo-nota-movil{margin:6px 0 0;color:var(--tx-3);font-size:.75rem;line-height:1.4}
+.catalogo-bloque-cab{margin:6px 0 0}
+.catalogo-bloque-cab h3{margin:0;font:750 .95rem/1.3 var(--display);letter-spacing:-.02em}
+.catalogo-bloque-cab h3 span{color:var(--tx-2);font-size:.8125rem;font-weight:600}
+.catalogo-bloque-cab p{margin:1px 0 0;color:var(--tx-3);font-size:.75rem;line-height:1.3}
+.catalogo-seleccion .catalogo-bloque-cab h3{color:var(--senal)}
 #movilPanelRadar .catalogo-referencias{margin:8px 0 0;padding:0;border:0;border-radius:0}
 #movilPanelRadar .catalogo-referencias>summary{min-height:44px}
 #movilPanelRadar .catalogo-referencias h3{font-size:1rem}
 #movilPanelRadar .catalogo-referencias[open]>summary{margin-bottom:2px}
-#movilPanelRadar .catalogo-referencias>p{margin:0;padding-bottom:8px;border-bottom:1px solid var(--m-hairline);color:var(--tx-3);font-size:.74rem;line-height:1.45}
+#movilPanelRadar .catalogo-referencias>p{margin:0;padding-bottom:8px;border-bottom:1px solid var(--m-hairline);color:var(--tx-3);font-size:.75rem;line-height:1.45}
 #movilPanelRadar .catalogo-referencias>.emis-rejilla{margin:0}
-/* Grupos de un mismo proveedor: un rótulo y sus filas, ya abiertos. */
-#movilPanelRadar .ofertas-grupo{border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;background:none}
-#movilPanelRadar .ofertas-grupo>summary{min-height:44px;padding:12px 0 2px}
-#movilPanelRadar .ofertas-grupo>summary b{font-size:.92rem}
-#movilPanelRadar .ofertas-grupo>summary span{margin-left:auto;color:var(--tx-3);font-size:.74rem}
-#movilPanelRadar .ofertas-grupo>summary::after{content:'–'/'';margin-left:-4px;color:var(--senal);font-weight:400}
-#movilPanelRadar .ofertas-grupo:not([open])>summary::after{content:'+'/''}
-#movilPanelRadar .ofertas-grupo>p{margin:0 0 4px;color:var(--tx-3);font-size:.66rem;line-height:1.4}
-#movilPanelRadar .ofertas-grupo-rejilla{display:block;padding:0 0 0 10px;border-left:2px solid var(--m-hairline)}
-#movilPanelRadar .ofertas-grupo-rejilla .escaparate-oferta:last-child{border-bottom:0}
-/* Fila de oferta: miniatura a la izquierda, lo esencial a la derecha.
-Toda la fila abre la ficha; «Guardar» queda encima de la miniatura. */
-#emiLista .escaparate-oferta{display:grid;grid-template-columns:76px minmax(0,1fr) auto;grid-template-areas:"img tit tit" "img proc proc" "img datos datos" "img meta meta" "img fecha ver";column-gap:12px;row-gap:2px;align-items:start;margin:0;padding:10px 0;overflow:visible;border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;background:none;box-shadow:none;transition:background .15s}
+/* Fila de oferta: miniatura de 88 px a la izquierda (Guardar encima); título,
+proveedor · lugar y puntos fuertes; debajo, Mínimo · España · Salida y el pie
+con el estado, «Revisa · N avisos en la ficha» y la fecha. Toda la fila abre
+la ficha. El aviso crítico, si lo hay, va entero. */
+#emiLista .escaparate-oferta{display:grid;grid-template-columns:88px minmax(0,1fr) auto auto;grid-template-areas:"img tit tit tit" "img proc proc proc" "img meta meta meta" "puntos puntos puntos puntos" "datos datos datos datos" "aviso aviso aviso aviso" "avisos avisos fecha ver";column-gap:10px;row-gap:3px;align-items:start;margin:0;padding:10px 0 11px;overflow:visible;border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;background:none;box-shadow:none;transition:background .15s}
 #emiLista .escaparate-oferta:hover{transform:none;box-shadow:none}
 #emiLista .escaparate-oferta:active{background:rgba(255,255,255,.035)}
-#emiLista .escaparate-oferta::before,#emiLista .escaparate-oferta .escaparate-datos-clave>div:nth-child(3),#emiLista .escaparate-oferta .emi-lugar svg,#emiLista .escaparate-oferta .escaparate-aviso-compacto:not(.escaparate-aviso-bloqueo){display:none}
+#emiLista .escaparate-oferta::before,#emiLista .escaparate-oferta .emi-lugar svg,#emiLista .escaparate-oferta .escaparate-aviso-compacto:not(.escaparate-aviso-bloqueo),#emiLista .escaparate-oferta .emi-fecha-dato{display:none}
 #emiLista .escaparate-oferta :is(.escaparate-cuerpo,.emi-pie,.emi-revision){display:contents}
-#movilPanelRadar .escaparate-oferta .escaparate-imagen{grid-area:img;align-self:stretch;width:76px;min-height:96px;max-height:150px;aspect-ratio:auto;border-radius:12px}
-#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar{top:3px;right:3px;width:30px;height:30px;min-height:30px;padding:0;font-size:0;line-height:1}
+#movilPanelRadar .escaparate-oferta .escaparate-imagen{grid-area:img;width:88px;height:88px;aspect-ratio:auto;border-radius:12px}
+#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar{top:4px;right:4px;width:30px;height:30px;min-height:30px;padding:0;font-size:0;line-height:1}
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::before{content:'';position:absolute;inset:-7px}
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::after{content:'☆'/'';font-size:15px}
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar.on::after{content:'★'/''}
-#emiLista .escaparate-oferta .emi-tit{grid-area:tit;min-height:0;margin:0;font:700 .95rem/1.22 var(--display);letter-spacing:-.015em}
-#emiLista .escaparate-oferta .escaparate-procedencia{grid-area:proc;display:flex;min-width:0;overflow:hidden;color:var(--tx-2);font-size:.76rem;line-height:1.3;white-space:nowrap}
+#emiLista .escaparate-oferta .escaparate-patrocinada{grid-area:tit;justify-self:start;margin:-2px 0 0}
+#emiLista .escaparate-oferta .emi-tit{grid-area:tit;display:-webkit-box;min-height:0;margin:0;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font:700 1rem/1.25 var(--display);letter-spacing:-.015em}
+#emiLista .escaparate-oferta .escaparate-procedencia{grid-area:proc;display:flex;min-width:0;overflow:hidden;color:var(--tx-2);font-size:.8125rem;line-height:1.35;white-space:nowrap}
 #emiLista .escaparate-oferta :is(.emi-donde,.emi-lugar){display:block;flex:0 1 auto;min-width:0;margin:0;overflow:hidden;font:inherit;color:inherit;text-overflow:ellipsis}
+#emiLista .escaparate-oferta .emi-donde b{font-weight:600}
 #emiLista .escaparate-oferta .emi-lugar{flex-shrink:4;color:var(--tx-3)}
 #emiLista .escaparate-oferta .emi-lugar::before{content:'·'/'';margin:0 5px}
-#emiLista .escaparate-oferta .escaparate-datos-clave{grid-area:datos;display:flex;gap:12px;margin:1px 0 0;border:0;min-width:0}
-#emiLista .escaparate-oferta .escaparate-datos-clave>div{display:flex;align-items:baseline;gap:5px;min-width:0;padding:0;border:0}
-#emiLista .escaparate-oferta .escaparate-datos-clave>div:first-child{flex:0 1 auto}
-#emiLista .escaparate-oferta .escaparate-datos-clave>div+div{flex:0 0 auto;max-width:55%}
-#emiLista .escaparate-oferta .escaparate-datos-clave dt{flex:none;color:var(--tx-3);font:650 .56rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
-#emiLista .escaparate-oferta .escaparate-datos-clave dd{display:block;min-width:0;overflow:hidden;color:var(--tx);font:600 .76rem/1.3 var(--body);text-overflow:ellipsis;white-space:nowrap}
+#emiLista .escaparate-oferta .escaparate-puntos{grid-area:puntos;margin-top:4px}
+#emiLista .escaparate-oferta .escaparate-datos-clave{grid-area:datos;display:flex;flex-wrap:wrap;gap:2px 12px;margin:2px 0 0;border:0;min-width:0}
+#emiLista .escaparate-oferta .escaparate-datos-clave>div{display:block;padding:0;border:0;font-size:.8125rem;line-height:1.35}
+#emiLista .escaparate-oferta .escaparate-datos-clave :is(dt,dd){display:inline;margin:0}
+#emiLista .escaparate-oferta .escaparate-datos-clave dt{margin-right:5px;color:var(--tx-3);font:650 .6rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+#emiLista .escaparate-oferta .escaparate-datos-clave dd{color:var(--tx);font:600 .8125rem/1.35 var(--body);overflow-wrap:normal;hyphens:none}
 #emiLista .escaparate-oferta .escaparate-meta{grid-area:meta;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;min-width:0;margin-top:2px}
-#emiLista .escaparate-oferta .escaparate-estado.escaparate-estado-linea{padding:1px 7px;font-size:.68rem;line-height:1.5}
-#emiLista .escaparate-oferta .escaparate-no-disponible{font-size:.7rem}
-#emiLista .escaparate-oferta .escaparate-avisos-n{display:inline-flex;align-items:center;gap:4px;margin:0;color:#FFB454;font-size:.72rem;line-height:1.4}
-#emiLista .escaparate-oferta .escaparate-avisos-n::before{content:'';width:6px;height:6px;border-radius:99px;background:currentColor}
-#emiLista .escaparate-oferta .escaparate-aviso-bloqueo{grid-column:1/-1;margin:4px 0 0;padding:2px 0 2px 9px;font-size:.76rem;line-height:1.45}
-#emiLista .escaparate-oferta .emi-ver{grid-area:fecha;align-self:center;font:500 .62rem/1.3 var(--mono);color:var(--tx-3);white-space:nowrap}
-#emiLista .escaparate-oferta .emi-fecha-dato{display:none}
-#movilPanelRadar .escaparate-oferta .escaparate-detalle-boton{grid-area:ver;align-self:center;justify-self:end;min-height:44px;margin:-13px -4px -13px 0;padding:0 4px;border:0;background:none;color:var(--senal);font:700 .8rem/1 var(--body);white-space:nowrap}
+#emiLista .escaparate-oferta .escaparate-estado.escaparate-estado-linea{padding:1px 8px;font-size:.75rem;line-height:1.45}
+#emiLista .escaparate-oferta .escaparate-no-disponible{font-size:.75rem}
+#emiLista .escaparate-oferta .escaparate-avisos-n{grid-area:avisos;display:block;align-self:center;margin:0;color:#FFB454;font-size:.75rem;line-height:1.4}
+#emiLista .escaparate-oferta .emi-ver-pre{display:none}
+#emiLista .escaparate-oferta .escaparate-aviso-bloqueo{grid-area:aviso;margin:4px 0 0;padding:2px 0 2px 9px;font-size:.8125rem;line-height:1.45}
+#emiLista .escaparate-oferta .emi-ver{grid-area:fecha;align-self:center;color:var(--tx-3);font:500 .75rem/1.3 var(--mono);white-space:nowrap}
+#movilPanelRadar .escaparate-oferta .escaparate-detalle-boton{grid-area:ver;align-self:center;justify-self:end;min-height:44px;margin:-12px -4px -12px 0;padding:0 4px;border:0;background:none;color:var(--senal);font:700 .875rem/1 var(--body);white-space:nowrap}
 #emiLista .escaparate-oferta .escaparate-detalle-boton::after{border-radius:0}
+#emiLista .escaparate-oferta .escaparate-detalle-boton:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
+#emiLista>.nota-ilustrativa{margin:12px 0 0}
 
 #movilPanelRadar>.movil-radar-intro{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 12px;width:calc(100% - 2 * var(--movil-margen));max-width:528px;margin:2px auto 0;padding:10px 10px 10px 14px;border:1px solid var(--m-hairline);border-radius:16px;background:var(--m-material)}
 #movilPanelRadar .movil-radar-intro>*{grid-column:1;margin:0}

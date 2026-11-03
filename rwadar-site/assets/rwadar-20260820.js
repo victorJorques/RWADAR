@@ -1710,10 +1710,20 @@ function pintarEmisiones(){
   if(pestanas){pestanas.hidden=false;pestanas.innerHTML=
    [['principales','Principales'],['secundario','Reventa'],['en_camino','Próximas']].map(([c,t])=>
     '<button type="button" role="tab" data-emi-coleccion="'+c+'" class="'+(emiColeccion===c?'on':'')+'" aria-selected="'+(emiColeccion===c)+'">'+t+' <em>'+cuantas(c)+'</em></button>').join('');}
-  caja.innerHTML='<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.</p></header>'+
-   '<div class="catalogo-principales">'+(visibles.length?tarjetasPorProveedorHtml(visibles):
-   '<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>')+'</div>'+
-   seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino');
+  const movil=vistaMovilOfertas(),elegidas=movil?visibles.filter(enSeleccionOferta):[];
+  const resto=visibles.filter(o=>!elegidas.includes(o));
+  /* Móvil: primero la Selección (las que cumplen las cinco comprobaciones) y
+     después el resto, cada bloque en el orden del selector. */
+  const filas=!visibles.length?'<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>':
+   elegidas.length?'<div class="catalogo-bloque catalogo-seleccion" role="group" aria-labelledby="emiSeleccionTit"><header class="catalogo-bloque-cab"><h3 id="emiSeleccionTit">Selección RWAdar <span>· la documentación más completa</span></h3>'+
+    '<p>No es una recomendación de inversión.</p></header>'+elegidas.map(o=>tarjetaOfertaLocal(o)).join('')+'</div>'+
+    (resto.length?'<div class="catalogo-bloque" role="group" aria-labelledby="emiRestoTit"><header class="catalogo-bloque-cab"><h3 id="emiRestoTit">Resto de principales</h3></header>'+resto.map(o=>tarjetaOfertaLocal(o)).join('')+'</div>':''):
+   tarjetasPorProveedorHtml(visibles);
+  caja.innerHTML=(movil?'<p class="catalogo-nota-movil">RWAdar no recibe dinero de las inversiones.</p>':'')+
+   '<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.</p></header>'+
+   '<div class="catalogo-principales">'+filas+'</div>'+
+   seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino')+
+   '<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>';
   return;
  }
  const v=emisionesVisibles();
@@ -2266,8 +2276,96 @@ function datosClaveOfertaHtml(resumen,completo=false){
   return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+escHtml(breve)+citas+'</dd></div>';
  }).join('')+'</dl>';
 }
+/* ---- Transparencia de cada oferta (03/11/2026) ----------------------
+   Cinco comprobaciones de la documentación, no una recomendación ni una
+   nota: dos salen de transparencia.json (con su motivo y su fuente) y tres
+   del catálogo. Falla cerrado: sin entrada, o con otra verificadaEl, la
+   oferta no enseña puntos fuertes ni entra en la Selección. */
+const CRITERIOS_TRANSPARENCIA_RESERVA=[['contratable','Se contrata hoy desde España'],
+ ['supervisada','Quien la vende está supervisado y registrado en la CNMV'],
+ ['documentoEspana','Hay un documento oficial (KID o folleto) que cubre su venta en España'],
+ ['minimoSalida','El mínimo y la forma de salir están documentados'],['vigente','Revisada esta semana y sin fuentes en conflicto']];
+function criteriosTransparencia(){
+ const t=typeof TRANSPARENCIA_CRITERIOS!=='undefined'&&Array.isArray(TRANSPARENCIA_CRITERIOS)?TRANSPARENCIA_CRITERIOS:[];
+ return CRITERIOS_TRANSPARENCIA_RESERVA.map(([id,texto])=>{const c=t.find(x=>x&&x.id===id);return {id,texto:c&&textoLocal(c.texto)||texto}});
+}
+function transparenciaOferta(o){
+ const t=typeof TRANSPARENCIA_POR_SLUG!=='undefined'&&TRANSPARENCIA_POR_SLUG?TRANSPARENCIA_POR_SLUG:null;
+ const e=t&&o&&typeof o.slug==='string'&&Object.hasOwn(t,o.slug)?t[o.slug]:null;
+ return e&&fechaLocalValida(o.verificadaEl)&&e.verificadaEl===o.verificadaEl?e:null;
+}
+function catalogoSinCifrasLocal(){
+ return [typeof CATALOGO_CADUCADO!=='undefined'&&CATALOGO_CADUCADO,typeof CATALOGO_SIN_COMPROBAR!=='undefined'&&CATALOGO_SIN_COMPROBAR,
+  typeof CATALOGO_EMBEBIDO_BLOQUEADO!=='undefined'&&CATALOGO_EMBEBIDO_BLOQUEADO].some(Boolean);
+}
+const minimoDocumentadoLocal=r=>!!(r&&r.minimo&&(Number.isFinite(r.minimo.euros)||textoLocal(r.minimo.unidadDocumentada)));
+const salidaDocumentadaLocal=r=>!!(r&&r.salida&&textoLocal(r.salida.texto)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto));
+function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
+ const e=transparenciaOferta(o),estado=estadoVigenciaLocal(o),textos=criteriosTransparencia();
+ const cita=c=>c&&urlHttps(c.fuente)?{url:urlHttps(c.fuente),titulo:nombreFuenteLocal(c.fuente),fecha:fechaLocalValida(c.consultadaEl)?c.consultadaEl:''}:null;
+ const editorial=campo=>e&&e[campo]?{cumple:e[campo].cumple===true,motivo:textoLocal(e[campo].motivo),
+  fuente:urlHttps(e[campo].fuente&&e[campo].fuente.url)?{url:urlHttps(e[campo].fuente.url),titulo:textoLocal(e[campo].fuente.titulo),fecha:e[campo].consultadaEl}:null}:
+  {cumple:false,motivo:'Sin comprobación editorial para esta revisión de la oferta.',fuente:null};
+ const contratable=o.coleccion==='principales'&&o.disponibleEs===true;
+ const minimo=minimoDocumentadoLocal(resumen),salida=salidaDocumentadaLocal(resumen);
+ const vigente=o.estadoRevision==='actual'&&!catalogoSinCifrasLocal()&&estado.clase!=='caducado';
+ const lista={
+  contratable:{cumple:contratable,fuente:cita(resumen.accesoEspana),motivo:contratable?'Es una oferta principal y la fuente dice que se contrata desde España.':
+   o.coleccion==='secundario'?'Es una referencia de reventa entre inversores, no una oferta abierta.':
+   o.coleccion==='en_camino'?'Es un anuncio: todavía no se puede contratar.':
+   o.disponibleEs===false?'La fuente dice que no se contrata desde España.':'No consta en la fuente que se contrate desde España.'},
+  supervisada:editorial('supervisada'),documentoEspana:editorial('documentoEspana'),
+  minimoSalida:{cumple:minimo&&salida,fuente:minimo?cita(resumen.minimo):cita(resumen.salida),
+   motivo:(minimo?'Mínimo: '+textoBreveDatoTarjetaLocal(resumen.minimo):'Mínimo sin documentar')+'. '+(salida?resumen.salida.texto:'Salida sin documentar')+'.'},
+  vigente:{cumple:vigente,fuente:null,motivo:vigente?'Revisada el '+fechaES(o.verificadaEl)+'; '+estado.texto+'.':
+   o.estadoRevision==='fuentes_en_conflicto'?'Las fuentes no coinciden.':
+   o.estadoRevision==='no_verificable'?'No se pudo confirmar en la revisión.':'La revisión semanal ha vencido.'},
+ };
+ return textos.map(c=>({...c,...lista[c.id]}));
+}
+function enSeleccionOferta(o){return !!transparenciaOferta(o)&&comprobacionesOferta(o).every(c=>c.cumple)}
+function puntosFuertesOferta(o){
+ const e=transparenciaOferta(o);
+ return e&&Array.isArray(e.puntos)?e.puntos.filter(x=>x&&textoLocal(x.texto)):[];
+}
+/* Corta en una palabra, nunca a media palabra. */
+function textoCortoLocal(v,max=40){
+ const t=textoLocal(v);if(t.length<=max)return t;
+ const c=t.slice(0,max+1),i=c.lastIndexOf(' ');return (i>12?c.slice(0,i):t.slice(0,max)).replace(/[\s,;:·.(-]+$/,'')+'…';
+}
+/* Mínimo · España · Salida en forma corta (decisión de Víctor del 03/11). Sin
+   revisión vigente no hay cifras: manda lo que calcula resumenOferta. */
+function datosTarjetaOfertaHtml(o,resumen){
+ const e=transparenciaOferta(o),acceso=resumen.accesoEspana&&resumen.accesoEspana.estado;
+ const minimo=minimoDocumentadoLocal(resumen)?e&&textoLocal(e.minimoCorto)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.minimo)):
+  textoBreveDatoTarjetaLocal(resumen.minimo);
+ const salida=salidaDocumentadaLocal(resumen)?e&&textoLocal(e.salidaCorta)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.salida).replace(/^Salida:\s*/,'')):'Sin documentar';
+ const espana=acceso==='si'?'Sí, según la fuente':acceso==='no'?'No, según la fuente':'Sin confirmar';
+ return '<dl class="escaparate-datos-clave">'+[['Mínimo',minimo],['España',espana],['Salida',salida]]
+  .map(([dt,dd])=>'<div><dt>'+escHtml(dt)+'</dt><dd>'+escHtml(dd)+'</dd></div>').join('')+'</dl>';
+}
+function puntosFuertesHtml(o,max=2){
+ const l=puntosFuertesOferta(o).slice(0,max);
+ return l.length?'<ul class="escaparate-puntos" aria-label="Puntos fuertes">'+l.map(x=>'<li>'+escHtml(x.texto)+'</li>').join('')+'</ul>':'';
+}
+/* En la ficha: los cinco criterios con su motivo y su fuente; todos los puntos fuertes. */
+function transparenciaDetalleHtml(o,resumen){
+ const fecha=v=>fechaLocalValida(v)?' · consultada el '+escHtml(fechaES(v)):'';
+ const fuente=(f,de)=>{if(!f)return '';const t=f.titulo||nombreFuenteLocal(f.url);
+  return '<a href="'+escHtml(f.url)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml(t+' · fuente de: '+de)+'">'+escHtml(t)+' ↗</a>'+fecha(f.fecha);};
+ const puntos=puntosFuertesOferta(o);
+ return '<section class="escaparate-dialogo-seccion escaparate-transparencia" aria-labelledby="detalleTransparenciaTit">'+
+  '<h3 id="detalleTransparenciaTit">Transparencia: lo que hemos comprobado</h3>'+
+  '<p class="escaparate-transparencia-aviso">Es una comprobación de la documentación, no una recomendación de inversión.</p>'+
+  '<ul class="escaparate-comprobaciones">'+comprobacionesOferta(o,resumen).map(c=>'<li class="'+(c.cumple?'cumple':'no-cumple')+'">'+
+   '<span class="escaparate-comprobacion-marca" aria-hidden="true">'+(c.cumple?'✓':'✗')+'</span><div><b>'+escHtml(c.texto)+
+   '<span class="solo-lector">'+(c.cumple?': sí':': no')+'</span></b><p>'+escHtml(c.motivo)+'</p>'+(c.fuente?'<p class="escaparate-comprobacion-fuente">'+fuente(c.fuente,c.texto)+'</p>':'')+'</div></li>').join('')+'</ul>'+
+  (puntos.length?'<h4>Puntos fuertes, con su fuente</h4><ul class="escaparate-puntos-detalle">'+puntos.map(x=>'<li><b>'+escHtml(x.texto)+'</b>'+
+   (x.fuente&&urlHttps(x.fuente.url)?' '+fuente({url:urlHttps(x.fuente.url),titulo:textoLocal(x.fuente.titulo)},x.texto):'')+'</li>').join('')+'</ul>':'')+
+  '</section>';
+}
 function tarjetaOfertaLocal(o,{secundario=false}={}){
- const estado=estadoVigenciaLocal(o),tipo=tipoOfertaLocal(o);
+ const estado=estadoVigenciaLocal(o);
  const resumen=resumenEditorialOferta(o);
  const documentacion=documentacionOfertaLocal(o);
  /* El aviso general (igual en todas) va una vez encima de la lista; la
@@ -2284,24 +2382,24 @@ function tarjetaOfertaLocal(o,{secundario=false}={}){
   '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440">'+botonGuardarOferta(o)+'</div>'+
   '<div class="escaparate-cuerpo">'+
    (o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
-   '<h3 class="emi-tit">'+escHtml(o.titulo)+'</h3><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
+   '<h3 class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h3><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
    (imagen&&imagen.lugar?'<p class="emi-lugar">'+ICONO_LUGAR+escHtml(imagen.lugar)+'</p>':'')+'</div>'+
-   datosClaveOfertaHtml(resumen)+
+   puntosFuertesHtml(o)+datosTarjetaOfertaHtml(o,resumen)+
    '<div class="escaparate-meta"><span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
-   (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+
-   /* En la fila compacta del móvil el aviso ordinario se resume en su
-      número; el crítico (tono stop) se sigue leyendo entero en todas partes. */
-   (!bloqueo&&avisos.length?'<p class="escaparate-avisos-n"><b>'+avisos.length+'</b> '+(avisos.length===1?'aviso en la ficha':'avisos en la ficha')+'</p>':'')+'</div>'+
+   (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</div>'+
    (avisoPrincipal?'<p class="escaparate-aviso-compacto'+(bloqueo?' escaparate-aviso-bloqueo':'')+'"><b>'+(bloqueo?'Importante':'Revisa')+'</b> · '+escHtml(avisoPrincipal)+(avisos.length>1?'<span> · '+(avisos.length-1)+' más en la ficha</span>':'')+'</p>':'')+
-   '<div class="emi-pie"><div class="emi-revision"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'">'+
-    (documentacion?'Doc. ':'Revisado ')+escHtml(fechaES(fechaRevision))+'</time>'+
+   /* En la fila compacta del móvil el aviso ordinario se resume en su
+      número, junto a la fecha; el crítico (tono stop) se lee entero siempre. */
+   '<div class="emi-pie">'+(!bloqueo&&avisos.length?'<p class="escaparate-avisos-n"><b>Revisa</b> · <span>'+avisos.length+(avisos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
+    '<div class="emi-revision"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'"><span class="emi-ver-pre">'+
+    (documentacion?'Doc.':'Revisado')+' </span>'+escHtml(fechaES(fechaRevision))+'</time>'+
     (resumen.fechas.fechaDato&&resumen.fechas.fechaDato!==fechaRevision?'<span class="emi-fecha-dato">Dato: '+escHtml(fechaES(resumen.fechas.fechaDato))+'</span>':'')+'</div>'+
     '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Ver ficha <span aria-hidden="true">→</span></button>'+
    '</div></div></article>';
 }
-/* En el móvil las filas son compactas: los grupos de un mismo proveedor
-   llegan abiertos para que se vean todas las referencias de un vistazo.
-   En escritorio siguen plegados, como antes. */
+/* En el móvil las filas son compactas y van sueltas, sin grupos por
+   proveedor (una sola nota común arriba). En escritorio siguen los grupos
+   plegados, como antes. */
 let gruposPintadosMovil=null;
 function vistaMovilOfertas(){
  try{return typeof window!=='undefined'&&typeof window.matchMedia==='function'&&
@@ -2310,12 +2408,12 @@ function vistaMovilOfertas(){
 }
 function tarjetasPorProveedorHtml(ofertas){
  gruposPintadosMovil=vistaMovilOfertas();
- if(emiBusquedaLocal||emiCat||emiTipoLocal!=='todos')return ofertas.map(o=>tarjetaOfertaLocal(o)).join('');
+ if(gruposPintadosMovil||emiBusquedaLocal||emiCat||emiTipoLocal!=='todos')return ofertas.map(o=>tarjetaOfertaLocal(o)).join('');
  const grupos=new Map();
  ofertas.forEach(o=>{const clave=o.plataformaSlug||o.plataformaNombre;
   if(!grupos.has(clave))grupos.set(clave,[]);grupos.get(clave).push(o);});
  return [...grupos.values()].map(grupo=>grupo.length<2?tarjetaOfertaLocal(grupo[0]):
-  '<details class="ofertas-grupo"'+(vistaMovilOfertas()?' open':'')+'><summary><b>'+escHtml((P.find(p=>p.slug===grupo[0].plataformaSlug)||{}).n||grupo[0].plataformaNombre.split(' · ')[0])+'</b><span>Ver '+grupo.length+' referencias</span></summary>'+
+  '<details class="ofertas-grupo"><summary><b>'+escHtml((P.find(p=>p.slug===grupo[0].plataformaSlug)||{}).n||grupo[0].plataformaNombre.split(' · ')[0])+'</b><span>Ver '+grupo.length+' referencias</span></summary>'+
   '<p>Referencias del mismo proveedor. Cada una conserva su fuente, sus condiciones y su fecha; no se suman ni se comparan sus rendimientos.</p>'+
   '<div class="ofertas-grupo-rejilla">'+grupo.map(o=>tarjetaOfertaLocal(o)).join('')+'</div></details>').join('');
 }
@@ -2416,6 +2514,7 @@ function abrirDetalleOfertaLocal(slug){
    (resumen.fechas.fechaDato?' · Fecha de ese dato: '+escHtml(fechaES(resumen.fechas.fechaDato)):'')+'. Cada referencia conserva su fecha propia.</p>':'')+
   enlaceFichaPublicaHtml(rutaFichaPublica('ofertas',o.slug))+
   '<section class="escaparate-dialogo-seccion" aria-labelledby="detalleAccesoTit"><h3 id="detalleAccesoTit">Quién puede acceder y cómo salir</h3>'+datosClaveOfertaHtml(resumen,true)+'</section>'+
+  transparenciaDetalleHtml(o,resumen)+
   documentacionOfertaHtml(documentacion)+
   (metricas.length?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Datos publicados <span>'+metricas.length+'</span></summary><div class="escaparate-dialogo-metricas">'+
    metricas.map(x=>'<div><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div></details>':'')+

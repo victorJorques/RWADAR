@@ -2017,7 +2017,8 @@ prueba(`el simulador real conserva URL HTTPS, las ${N_PLATAFORMAS} plataformas y
   vm.runInContext("new URL('https://example.test/fuente').protocol", simulacionPublicador.contexto) === 'https:' &&
   (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === 26 &&
   (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === N_OFERTAS &&
-  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}">Doc\. /g) || []).length === N_OFERTAS);
+  // La fila móvil (ESPEC-FINAL §3) esconde «Doc.» junto a «Revisa · N avisos»: va en su propio span.
+  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}"><span class="emi-ver-pre">Doc\. <\/span>/g) || []).length === N_OFERTAS);
 // Ejecutar el cliente entero, con un reloj y un DOM persistentes como los de
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
 const fechaLoteEmbebido = jsCatalogo.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
@@ -2223,6 +2224,12 @@ for(const [nombre,alterar] of [
 }
 {
   const p=pestanaCatalogo(), c=p.contexto;
+  // ESPEC-FINAL §3: sin grupos por proveedor en el móvil; en escritorio siguen.
+  const movilSinGrupos=vm.runInContext("tarjetasPorProveedorHtml(EMI.filter(o=>o.coleccion==='principales'))",c);
+  prueba('en el móvil las filas van sueltas, sin grupos por proveedor ni su párrafo repetido',
+    !/class="ofertas-grupo"/.test(movilSinGrupos) && !/Cada una conserva su fuente/.test(movilSinGrupos) &&
+    (movilSinGrupos.match(/data-oferta-detalle=/g)||[]).length===vm.runInContext("EMI.filter(o=>o.coleccion==='principales').length",c));
+  vm.runInContext("window.matchMedia=()=>({matches:false})",c);
   const todo=vm.runInContext("tarjetasPorProveedorHtml(EMI.filter(o=>o.coleccion==='principales'))",c);
   const esperado=JSON.parse(vm.runInContext("(()=>{const l=EMI.filter(o=>o.coleccion==='principales'),g={};"+
     "l.forEach(o=>{g[o.plataformaSlug]=(g[o.plataformaSlug]||0)+1});return JSON.stringify({n:l.length,g:Object.values(g).filter(x=>x>1)})})()",c));
@@ -2569,12 +2576,14 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     prueba(`tarjeta ${caso.nombre}: imagen, título, proveedor y tres datos siguen el orden de lectura`,
       /<img\b[^>]*alt="[^"]+"[^>]*loading="lazy"[^>]*width="\d+"[^>]*height="\d+"/.test(tarjeta) &&
       tarjeta.indexOf('escaparate-imagen') < tarjeta.indexOf('escaparate-cuerpo') &&
-      cuerpo.includes('<h3 class="emi-tit">'+render.titulo+'</h3>') &&
+      // ESPEC-FINAL §3: el título lleva title= con el texto completo (la fila lo corta a dos líneas).
+      cuerpo.includes('<h3 class="emi-tit" title="'+render.titulo+'">'+render.titulo+'</h3>') &&
       cuerpo.includes('<div class="emi-donde"><b>'+render.proveedor+'</b></div>') &&
       cuerpo.indexOf('<h3') < cuerpo.indexOf('class="emi-donde"') &&
       cuerpo.indexOf('class="emi-donde"') < cuerpo.indexOf('class="escaparate-datos-clave"') &&
       (cuerpo.match(/class="escaparate-datos-clave"/g)||[]).length === 1 &&
-      ['Mínimo (EUR)','España','Salida'].every(etiqueta=>cuerpo.includes('<dt>'+etiqueta+'</dt>')) &&
+      // ESPEC-FINAL §3: «Mínimo · España · Salida»; el valor corto ya lleva su unidad («1 €», «500 CHF»).
+      ['Mínimo','España','Salida'].every(etiqueta=>cuerpo.includes('<dt>'+etiqueta+'</dt>')) &&
       !/escaparate-destacado|escaparate-dato-principal/.test(tarjeta));
     prueba(`tarjeta ${caso.nombre}: no contiene documento, descripción, métricas auxiliares ni enlaces externos`,
       !/<a\b|catalogo-descripcion|escaparate-metrica|escaparate-disponibilidad/.test(tarjeta) &&
