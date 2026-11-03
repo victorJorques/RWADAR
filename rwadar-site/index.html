@@ -239,14 +239,14 @@
     <label for="emiBuscar">Buscar por oferta, empresa, país o activo</label>
     <input id="emiBuscar" type="search" autocomplete="off" placeholder="Ej.: Spiko, Suiza…">
   </div>
-  <div class="vista emis-colecciones" id="emiColecciones" role="tablist" aria-label="Qué ofertas ver" hidden></div>
-  <div class="emis-filtros solo-escaparate-local" id="emiTipoFiltros" hidden></div>
-  <div class="emis-filtros" id="emiFiltros"></div>
-
   <div class="buscar-vistas" role="group" aria-label="Vista de las ofertas">
     <button type="button" data-buscar-vista="lista" aria-pressed="true" aria-controls="emiLista">Lista</button>
     <button type="button" data-buscar-vista="mapa" aria-pressed="false" aria-controls="buscarMapa">Mapa</button>
   </div>
+  <div class="vista emis-colecciones" id="emiColecciones" role="tablist" aria-label="Qué ofertas ver" hidden></div>
+  <div class="emis-filtros solo-escaparate-local" id="emiTipoFiltros" hidden></div>
+  <div class="emis-filtros" id="emiFiltros"></div>
+
   <div class="buscar-mapa" id="buscarMapa" role="region" data-leaflet-css="/assets/leaflet-1.9.4.css" data-leaflet-js="/assets/leaflet-1.9.4.js" aria-label="Mapa de activos documentados" hidden>
     <div class="mapa-permiso" id="mapaPermiso">
       <h3>Explora los activos por su ubicación</h3>

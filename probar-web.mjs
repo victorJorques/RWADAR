@@ -2276,6 +2276,47 @@ for(const [nombre,alterar] of [
     r.antes.every(Boolean)&&r.k.contratable[0]===false&&/^Pendiente de revalidar: la revisión semanal ha vencido\.$/.test(r.k.contratable[1])&&
     r.k.minimoSalida[0]===false&&/pendiente de revalidar/.test(r.k.minimoSalida[1])&&!/sin documentar/i.test(r.k.minimoSalida[1])&&r.k.vigente[0]===false);
 }
+{
+  // Corrección (03/11, ESPEC-FINAL §6): dianas de 44 px, orden del foco igual al de la vista, foco nunca
+  // tapado por la barra fija, cabecera opaca y recuento visible al filtrar en Buscar › Ofertas.
+  const px=(d,prop)=>{const m=d.match(new RegExp('(?:^|;)\\s*'+prop+'\\s*:\\s*(-?\\d+(?:\\.\\d+)?)px'));return m?Number(m[1]):NaN;};
+  const chip=declaracionesCSS(cssMovil,'#movilPanelRadar .emis-filtros .f').join(';'),chipZona=(cssMovil.match(/#movilPanelRadar :is\(\.emis-filtros,\.fichas-f\) \.f::before\{([^}]*)\}/)||['',''])[1];
+  const filasChips=declaracionesCSS(cssMovil,'#movilPanelRadar .emis-filtros').join(';');
+  const insetChip=(chipZona.match(/inset\s*:\s*-(\d+)px/)||[])[1],huecoFilas=(filasChips.match(/gap\s*:\s*(\d+)px/)||[])[1];
+  const estrella=declaracionesCSS(cssMovil,'#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar').join(';');
+  const estrellaZona=declaracionesCSS(cssMovil,'#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::before').join(';');
+  const insetEstrella=Number((estrellaZona.match(/inset\s*:\s*-(\d+)px/)||[])[1]);
+  prueba('chips de categoría y estrella de Guardar tienen 44 px de diana sin pisarse ni quedar recortadas',
+    px(chip,'min-height')-2+2*Number(insetChip)>=44&&Number(huecoFilas)>=2*Number(insetChip)&&
+    px(estrella,'width')-2+2*insetEstrella>=44&&px(estrella,'top')+1>=insetEstrella&&px(estrella,'right')+1>=insetEstrella&&
+    /min-height\s*:\s*44px/.test(declaracionesCSS(css,'.escaparate-comprobaciones a').join(';'))&&
+    /display\s*:\s*inline-flex/.test(declaracionesCSS(css,'.escaparate-comprobaciones a').join(';')));
+  const seccion=html.slice(html.indexOf('<section class="emis wrap" id="emisiones">'));
+  const pos=['class="emis-cab"','class="emis-criterio-orden"','id="escaparateBusqueda"','class="buscar-vistas"','id="emiColecciones"','id="emiFiltros"'].map(s=>seccion.indexOf(s));
+  const fila=s=>(declaracionesCSS(cssMovil,'#movilPanelRadar>.emis>'+s).join(';').match(/grid-row\s*:\s*(\d+)/)||[])[1];
+  prueba('en Buscar › Ofertas el orden del foco sigue al de la vista (orden, ¿Cómo ordenamos?, buscador, Lista/Mapa, pestañas, chips)',
+    pos.every((x,i)=>x>0&&(i===0||x>pos[i-1]))&&fila('.emis-cab')==='2'&&fila('.emis-criterio-orden')==='2'&&
+    fila('.escaparate-busqueda')==='3'&&fila('.buscar-vistas')==='3'&&
+    /html\{scroll-padding-top:72px;scroll-padding-bottom:calc\(var\(--movil-nav-alto\)/.test(cssMovil));
+  const cabecera=declaracionesCSS(cssMovil,'.movil-cabecera').join(';'),barra=declaracionesCSS(cssMovil,'.movil-nav').join(';');
+  prueba('la cabecera y la barra inferior del móvil son opacas, sin cristal',
+    /background\s*:\s*var\(--noche\)/.test(cabecera)&&/background\s*:\s*var\(--noche-2\)/.test(barra)&&
+    !/backdrop-filter/.test(cabecera+barra)&&!/\.movil-cabecera\{background:rgba/.test(css));
+  const p=pestanaCatalogo(),c=p.contexto;
+  vm.runInContext("emiColeccion='principales';emiCat='Tesoro y fondos';emiBusquedaLocal='';pintarEmisiones()",c);
+  const filtrada=p.obtiene('emiLista').innerHTML,anuncio=p.obtiene('movilOfertasEstado').textContent;
+  vm.runInContext("emiCat='';pintarEmisiones()",c);
+  const sinFiltro=p.obtiene('emiLista').innerHTML;
+  prueba('al filtrar, el recuento de resultados queda a la vista y sin filtro no se repite',
+    /^\d+ de \d+ principales$/.test(anuncio)&&filtrada.includes('<p class="catalogo-recuento" aria-hidden="true">'+anuncio+'</p>')&&
+    !sinFiltro.includes('catalogo-recuento')&&!/opacity/.test(declaracionesCSS(css,'.emis-colecciones button em').join(';')));
+  const dt=declaracionesCSS(cssMovil,'#emiLista .escaparate-oferta .escaparate-datos-clave dt').join(';');
+  prueba('en la fila, Mínimo, España y Salida miden 12 px o más, el lugar no se corta y los títulos de fila van por debajo del bloque',
+    /font\s*:\s*\d+\s+\.75rem/.test(dt)&&!/text-transform/.test(dt)&&
+    /flex-wrap\s*:\s*wrap/.test(declaracionesCSS(cssMovil,'#emiLista .escaparate-oferta .escaparate-procedencia').join(';'))&&
+    /flex\s*:\s*none/.test(declaracionesCSS(cssMovil,'#emiLista .escaparate-oferta .emi-lugar').join(';'))&&
+    /<h3 id="emiSeleccionTit">[\s\S]*?<h4 class="emi-tit"/.test(sinFiltro)&&!/<h3 class="emi-tit"/.test(sinFiltro.slice(0,sinFiltro.indexOf('catalogo-referencias'))));
+}
 // ---- Versión final de Inicio y Buscar (ESPEC-FINAL, 03/11/2026) ----
 {
   const p=pestanaCatalogo(),c=p.contexto;

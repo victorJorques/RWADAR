@@ -1107,7 +1107,7 @@ body.detalle-local-abierto{overflow:hidden}
 .escaparate-comprobaciones b{display:block;font-size:.88rem;line-height:1.35}
 .escaparate-comprobaciones p{margin:3px 0 0;color:var(--tx-2);font-size:.82rem;line-height:1.5}
 .escaparate-comprobaciones .escaparate-comprobacion-fuente{color:var(--tx-3);font-size:.78rem}
-.escaparate-comprobaciones a,.escaparate-puntos-detalle a{color:var(--senal);overflow-wrap:anywhere}
+.escaparate-comprobaciones a,.escaparate-puntos-detalle a{display:inline-flex;align-items:center;min-height:44px;color:var(--senal);overflow-wrap:anywhere}
 .escaparate-transparencia h4{margin:14px 0 8px;font-size:.88rem}
 .escaparate-puntos-detalle{display:grid;gap:6px;margin:0;padding:0;list-style:none;font-size:.84rem;line-height:1.5}
 .escaparate-puntos-detalle li::before{content:'✓ '/'';color:var(--senal);font-weight:700}
@@ -1676,8 +1676,7 @@ body.detalle-local-abierto{overflow:hidden}
   .movil-nav{position:fixed;left:0;right:0;bottom:0;z-index:74;display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));min-height:var(--movil-nav-alto);
     padding:7px 4px max(7px,env(safe-area-inset-bottom));
-    background:rgba(16,15,14,.96);border-top:1px solid var(--linea-2);
-    backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+    background:var(--noche-2);border-top:1px solid var(--linea-2);
     transition:transform var(--medio) var(--sal),opacity var(--rapido) var(--sal)}
   .movil-nav-item{position:relative;display:flex;min-width:0;min-height:52px;flex-direction:column;
     align-items:center;justify-content:center;gap:2px;padding:3px 2px;border:0;background:transparent;
@@ -1742,7 +1741,7 @@ body.detalle-local-abierto{overflow:hidden}
     --m-radius-hero:24px;
     --m-ease:cubic-bezier(.25,.8,.25,1);
   }
-  html{scroll-padding-top:72px}
+  html{scroll-padding-top:72px;scroll-padding-bottom:calc(var(--movil-nav-alto) + 12px + env(safe-area-inset-bottom))}
   body::after{opacity:.018}
   .solo-escritorio{display:none!important}
   .solo-movil{display:inline}
@@ -1753,8 +1752,7 @@ body.detalle-local-abierto{overflow:hidden}
      montarse sobre la marca en pantallas estrechas. */
   .movil-cabecera{display:grid;grid-template-columns:minmax(max-content,1fr) minmax(0,auto) minmax(max-content,1fr);
     column-gap:10px;align-items:center;padding:calc(7px + env(safe-area-inset-top)) var(--movil-margen) 7px;
-    background:rgba(11,10,10,.88);border-color:var(--m-hairline);
-    backdrop-filter:blur(24px) saturate(145%);-webkit-backdrop-filter:blur(24px) saturate(145%)}
+    background:var(--noche);border-color:var(--m-hairline)}
   .movil-cabecera-superior{display:contents}
   .movil-marca{grid-column:1;grid-row:1;justify-self:start;min-height:44px;gap:7px;font-size:1.08rem}
   .movil-marca .mk{width:27px;height:27px}
@@ -1940,9 +1938,10 @@ body.detalle-local-abierto{overflow:hidden}
   #movilPanelRadar>.fuera.movil-detalle-activo .fuera-lista{gap:10px}
 }
 
+
 @media (max-width:767px) and (display-mode:standalone),
        (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse) and (display-mode:standalone){
-  .movil-cabecera{background:rgba(11,10,10,.97)}
+  .movil-cabecera{background:var(--noche)}
 }
 
 @media (max-width:960px) and (max-height:540px) and (orientation:landscape) and (hover:none) and (pointer:coarse){
@@ -2004,7 +2003,7 @@ body.detalle-local-abierto{overflow:hidden}
 }
 
 /* Ofertas: pestañas Principales · Reventa · Próximamente; se ve una cada vez. */
-.emis-colecciones button em{font-style:normal;opacity:.7;margin-left:4px}
+.emis-colecciones button em{font-style:normal;margin-left:4px}
 .catalogo-principales{display:contents}
 #emiLista:is([data-coleccion="secundario"],[data-coleccion="en_camino"]) :is(.catalogo-coleccion-cab,.catalogo-principales){display:none}
 #emiLista[data-coleccion="principales"] .catalogo-referencias,
@@ -2165,7 +2164,7 @@ body.detalle-local-abierto{overflow:hidden}
 .inicio-fuera em{padding:3px 7px;border:1.5px solid rgba(255,138,128,.55);border-radius:6px;color:#FF8A80;font:700 .58rem/1.2 var(--mono);font-style:normal;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-2deg)}
 
 /* Mandos de Ofertas en el móvil; la primera fila llega antes de y=520 a 390×844. */
-#movilPanelRadar>.emis{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:8px;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none}
+#movilPanelRadar>.emis{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:8px;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none}
 #movilPanelRadar>.emis>*{grid-column:1/-1;min-width:0}
 #movilPanelRadar>.emis>.movil-ofertas-intro{grid-row:1;display:block;margin:-4px 0 6px;padding:0;border:0;background:none;box-shadow:none}
 #movilPanelRadar .movil-ofertas-intro>.movil-ofertas-icono{display:none}
@@ -2175,30 +2174,29 @@ body.detalle-local-abierto{overflow:hidden}
 #movilPanelRadar .movil-ofertas-intro .movil-mini-etiqueta::after{content:' · '/''}
 #movilPanelRadar #movilOfertasBajada{color:var(--tx-3);font-size:inherit;line-height:inherit}
 #movilPanelRadar .movil-ofertas-intro h3,#movilPanelRadar .movil-ofertas-estado{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-#movilPanelRadar>.emis>.escaparate-busqueda{grid-row:2;grid-column:1;margin:0}
-#movilPanelRadar>.emis>.buscar-vistas{grid-row:2;grid-column:2;margin:0}
-#movilPanelRadar>.emis>.emis-cab{grid-row:3;grid-column:1;display:block;margin:6px 0 0}
+#movilPanelRadar>.emis>.emis-cab{grid-row:2;grid-column:1;display:block;min-width:auto;margin:0}
+#movilPanelRadar>.emis>.emis-criterio-orden{grid-row:2;grid-column:2;position:relative;margin:0}
+#movilPanelRadar>.emis>.escaparate-busqueda{grid-row:3;grid-column:1;margin:6px 0 0}
+#movilPanelRadar>.emis>.buscar-vistas{grid-row:3;grid-column:2;margin:6px 0 0}
 #movilPanelRadar .emis-orden{display:flex;flex-direction:row;align-items:center;gap:8px}
-#movilPanelRadar .emis-orden label{flex:none;margin:0;font-size:.56rem;letter-spacing:.04em}
-#movilPanelRadar .emis-orden select{padding:0 2px 0 8px}
-#movilPanelRadar .emis-orden select{flex:1 1 auto;min-width:0}
-#movilPanelRadar>.emis>.emis-criterio-orden{grid-row:3;grid-column:2;position:relative;margin:6px 0 0}
+#movilPanelRadar .emis-orden label{flex:0 1 auto;margin:0;font-size:.56rem;letter-spacing:.04em}
+#movilPanelRadar .emis-orden select{flex:1 1 0;min-width:9.6em;padding:0 2px 0 8px}
 #movilPanelRadar .emis-criterio-orden>summary{display:flex;align-items:center;min-height:48px;padding:0 2px;color:var(--senal);font:650 .74rem/1.2 var(--body);list-style:none;cursor:pointer}
 #movilPanelRadar .emis-criterio-orden>summary::-webkit-details-marker{display:none}
 #movilPanelRadar .emis-criterio-orden>p{position:absolute;z-index:8;top:calc(100% + 4px);right:0;width:min(330px,calc(100vw - 32px));margin:0;padding:12px 14px;border:1px solid var(--linea-2);border-radius:14px;background:#1D1C19;color:var(--tx-2);font-size:.8rem;line-height:1.5;box-shadow:0 18px 40px -16px #000}
-@media (max-width:374px){#movilPanelRadar>.emis>.emis-criterio-orden{grid-row:4;justify-self:end;margin:0}}
+@media (max-width:374px){#movilPanelRadar>.emis>.emis-cab{grid-column:1/-1}#movilPanelRadar>.emis>.emis-criterio-orden{grid-row:3;justify-self:end}#movilPanelRadar>.emis>:is(.escaparate-busqueda,.buscar-vistas){grid-row:4}}
 #movilPanelRadar .escaparate-busqueda label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 #movilPanelRadar .escaparate-busqueda input{min-height:48px;padding:10px 12px 10px 38px;border-color:var(--m-hairline);border-radius:14px;background:var(--m-material) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2325E39A' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") no-repeat 12px 50%/17px;font-size:16px}
 #movilPanelRadar #emiColecciones:not([hidden]){margin:6px 0 0}
 /* Chips en dos líneas: nombres cortos y ninguna palabra partida.
-Visualmente 36 px; con su margen invisible, 44 px de diana. */
-#movilPanelRadar .emis-filtros,#movilPanelRadar .fichas-f{flex-wrap:wrap;gap:6px;margin:6px 0 0;padding:0;overflow:visible}
-#movilPanelRadar .emis-filtros .f,#movilPanelRadar .fichas-f .f{position:relative;flex:none;min-height:36px;padding:6px 10px;gap:6px;border-color:var(--m-hairline);background:var(--m-material);font-size:.78rem;white-space:nowrap}
+Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
+#movilPanelRadar .emis-filtros,#movilPanelRadar .fichas-f{flex-wrap:wrap;gap:12px 6px;margin:6px 0 0;padding:0;overflow:visible}
+#movilPanelRadar .emis-filtros .f,#movilPanelRadar .fichas-f .f{position:relative;flex:none;min-height:34px;padding:5px 10px;gap:6px;border-color:var(--m-hairline);background:var(--m-material);font-size:.78rem;white-space:nowrap}
 #movilPanelRadar .fichas-f{column-gap:5px}
 #movilPanelRadar .fichas-f .f{padding-inline:6px;gap:5px;font-size:.75rem}
 #movilPanelRadar .fichas-f .ct{margin-left:1px;color:var(--tx-3);font-size:.72rem}
 #movilPanelRadar .fichas-f .f.on .ct{color:inherit}
-#movilPanelRadar :is(.emis-filtros,.fichas-f) .f::before{content:'';position:absolute;inset:-4px 0}
+#movilPanelRadar :is(.emis-filtros,.fichas-f) .f::before{content:'';position:absolute;inset:-6px -1px}
 #movilPanelRadar :is(.emis-filtros,.fichas-f) .f.on{border-color:var(--senal);background:var(--senal)}
 @media (max-width:374px){#movilPanelRadar :is(.emis-filtros,.fichas-f){column-gap:5px}#movilPanelRadar :is(.emis-filtros,.fichas-f) .f{padding-inline:8px}}
 #movilPanelRadar .buscar-vistas{justify-self:end;width:auto;padding:1px;border-color:var(--m-hairline);border-radius:12px}
@@ -2208,7 +2206,8 @@ Visualmente 36 px; con su margen invisible, 44 px de diana. */
 #movilPanelRadar #emiLista{display:flex;flex-direction:column;align-items:stretch;gap:0}
 #emiLista>.catalogo-coleccion-cab{display:none}
 .catalogo-nota-movil{margin:6px 0 0;color:var(--tx-3);font-size:.75rem;line-height:1.4}
-.catalogo-bloque-cab{margin:6px 0 0}
+.catalogo-recuento{margin:8px 0 0;color:var(--senal);font:650 .8125rem/1.35 var(--body)}
+.catalogo-bloque-cab{margin:4px 0 0}
 .catalogo-bloque-cab h3{margin:0;font:750 .95rem/1.3 var(--display);letter-spacing:-.02em}
 .catalogo-bloque-cab h3 span{color:var(--tx-2);font-size:.8125rem;font-weight:600}
 .catalogo-bloque-cab p{margin:1px 0 0;color:var(--tx-3);font-size:.75rem;line-height:1.3}
@@ -2219,37 +2218,38 @@ Visualmente 36 px; con su margen invisible, 44 px de diana. */
 #movilPanelRadar .catalogo-referencias[open]>summary{margin-bottom:2px}
 #movilPanelRadar .catalogo-referencias>p{margin:0;padding-bottom:8px;border-bottom:1px solid var(--m-hairline);color:var(--tx-3);font-size:.75rem;line-height:1.45}
 #movilPanelRadar .catalogo-referencias>.emis-rejilla{margin:0}
-/* Fila de oferta: miniatura de 88 px, título, proveedor, puntos, datos y pie; toda la fila abre la ficha. */
-#emiLista .escaparate-oferta{display:grid;grid-template-columns:88px minmax(0,1fr) auto auto;grid-template-rows:auto auto auto minmax(0,1fr);grid-template-areas:"img tit tit tit" "img proc proc proc" "img meta meta meta" "img . . ." "puntos puntos puntos puntos" "datos datos datos datos" "aviso aviso aviso aviso" "avisos avisos fecha ver";column-gap:10px;row-gap:3px;align-items:start;margin:0;padding:10px 0 11px;overflow:visible;border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;background:none;box-shadow:none;transition:background .15s}
+/* Fila compacta: miniatura de 88 px y a su lado título, proveedor · lugar, estado, puntos y datos; debajo, el pie. Toda la fila abre la ficha. */
+#emiLista .escaparate-oferta{display:grid;grid-template-columns:88px minmax(0,1fr) auto auto;grid-template-rows:auto auto auto auto auto minmax(0,1fr);grid-template-areas:"img tit tit tit" "img proc proc proc" "img meta meta meta" "img puntos puntos puntos" "img datos datos datos" "img . . ." "aviso aviso aviso aviso" "avisos avisos fecha ver";column-gap:10px;row-gap:0;align-items:start;margin:0;padding:7px 0;overflow:visible;border:0;border-bottom:1px solid var(--m-hairline);border-radius:0;background:none;box-shadow:none;transition:background .15s}
 #emiLista .escaparate-oferta:hover{transform:none;box-shadow:none}
 #emiLista .escaparate-oferta:active{background:rgba(255,255,255,.035)}
 #emiLista .escaparate-oferta::before,#emiLista .escaparate-oferta .emi-lugar svg,#emiLista .escaparate-oferta .escaparate-aviso-compacto:not(.escaparate-aviso-bloqueo),#emiLista .escaparate-oferta .emi-fecha-dato{display:none}
 #emiLista .escaparate-oferta :is(.escaparate-cuerpo,.emi-pie,.emi-revision){display:contents}
 #movilPanelRadar .escaparate-oferta .escaparate-imagen{grid-area:img;width:88px;height:88px;aspect-ratio:auto;border-radius:12px}
-#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar{top:4px;right:4px;width:30px;height:30px;min-height:30px;padding:0;font-size:0;line-height:1}
-#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::before{content:'';position:absolute;inset:-7px}
+#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar{top:7px;right:7px;width:30px;height:30px;min-height:30px;padding:0;font-size:0;line-height:1}
+#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::before{content:'';position:absolute;inset:-8px}
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::after{content:'☆'/'';font-size:15px}
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar.on::after{content:'★'/''}
 #emiLista .escaparate-oferta .escaparate-patrocinada{grid-area:tit;justify-self:start;margin:-2px 0 0}
-#emiLista .escaparate-oferta .emi-tit{grid-area:tit;display:-webkit-box;min-height:0;margin:0;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font:700 1rem/1.25 var(--display);letter-spacing:-.015em}
-#emiLista .escaparate-oferta .escaparate-procedencia{grid-area:proc;display:flex;min-width:0;overflow:hidden;color:var(--tx-2);font-size:.8125rem;line-height:1.35;white-space:nowrap}
+#emiLista .escaparate-oferta .emi-tit{grid-area:tit;display:-webkit-box;min-height:0;margin:0;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font:700 1rem/1.2 var(--display);letter-spacing:-.015em}
+#emiLista .escaparate-oferta .escaparate-procedencia{grid-area:proc;display:flex;flex-wrap:wrap;min-width:0;overflow:hidden;color:var(--tx-2);font-size:.8125rem;line-height:1.35;white-space:nowrap}
 #emiLista .escaparate-oferta :is(.emi-donde,.emi-lugar){display:block;flex:0 1 auto;min-width:0;margin:0;overflow:hidden;font:inherit;color:inherit;text-overflow:ellipsis}
 #emiLista .escaparate-oferta .emi-donde b{font-weight:600}
-#emiLista .escaparate-oferta .emi-lugar{flex-shrink:4;color:var(--tx-3)}
+#emiLista .escaparate-oferta .emi-lugar{flex:none;max-width:100%;color:var(--tx-3)}
 #emiLista .escaparate-oferta .emi-lugar::before{content:'·'/'';margin:0 5px}
-#emiLista .escaparate-oferta .escaparate-puntos{grid-area:puntos;margin-top:4px}
-#emiLista .escaparate-oferta .escaparate-datos-clave{grid-area:datos;display:flex;flex-wrap:wrap;gap:2px 12px;margin:2px 0 0;border:0;min-width:0}
+#emiLista .escaparate-oferta .escaparate-puntos{grid-area:puntos;gap:0 10px;margin:2px 0 0}
+#emiLista .escaparate-oferta .escaparate-puntos li{padding:0;border:0;background:none;font-size:.75rem;line-height:1.35;white-space:nowrap}
+#emiLista .escaparate-oferta .escaparate-datos-clave{grid-area:datos;display:flex;flex-wrap:wrap;gap:0 10px;margin:2px 0 0;border:0;min-width:0}
 #emiLista .escaparate-oferta .escaparate-datos-clave>div{display:block;padding:0;border:0;font-size:.8125rem;line-height:1.35}
 #emiLista .escaparate-oferta .escaparate-datos-clave :is(dt,dd){display:inline;margin:0}
-#emiLista .escaparate-oferta .escaparate-datos-clave dt{margin-right:5px;color:var(--tx-3);font:650 .6rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+#emiLista .escaparate-oferta .escaparate-datos-clave dt{margin-right:4px;color:var(--tx-3);font:500 .75rem/1.35 var(--body)}
 #emiLista .escaparate-oferta .escaparate-datos-clave dd{color:var(--tx);font:600 .8125rem/1.35 var(--body);overflow-wrap:normal;hyphens:none}
-#emiLista .escaparate-oferta .escaparate-meta{grid-area:meta;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;min-width:0;margin-top:2px}
-#emiLista .escaparate-oferta .escaparate-estado.escaparate-estado-linea{padding:1px 8px;font-size:.75rem;line-height:1.45}
+#emiLista .escaparate-oferta .escaparate-meta{grid-area:meta;display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;min-width:0}
+#emiLista .escaparate-oferta .escaparate-estado.escaparate-estado-linea{padding:0;border:0;background:none;font-size:.75rem;line-height:1.35}
 #emiLista .escaparate-oferta .escaparate-no-disponible{font-size:.75rem}
-#emiLista .escaparate-oferta .escaparate-avisos-n{grid-area:avisos;display:block;align-self:center;margin:0;color:#FFB454;font-size:.75rem;line-height:1.4}
+#emiLista .escaparate-oferta .escaparate-avisos-n{grid-area:avisos;display:block;align-self:center;margin:6px 0 0;color:#FFB454;font-size:.75rem;line-height:1.4}
 #emiLista .escaparate-oferta .emi-ver-pre{display:none}
 #emiLista .escaparate-oferta .escaparate-aviso-bloqueo{grid-area:aviso;margin:4px 0 0;padding:2px 0 2px 9px;font-size:.8125rem;line-height:1.45}
-#emiLista .escaparate-oferta .emi-ver{grid-area:fecha;align-self:center;color:var(--tx-3);font:500 .75rem/1.3 var(--mono);white-space:nowrap}
+#emiLista .escaparate-oferta .emi-ver{grid-area:fecha;align-self:center;margin-top:6px;color:var(--tx-3);font:500 .75rem/1.3 var(--mono);white-space:nowrap}
 #movilPanelRadar .escaparate-oferta .escaparate-detalle-boton{grid-area:ver;align-self:center;justify-self:end;min-height:44px;margin:-12px -4px -12px 0;padding:0 4px;border:0;background:none;color:var(--senal);font:700 .875rem/1 var(--body);white-space:nowrap}
 #emiLista .escaparate-oferta .escaparate-detalle-boton::after{border-radius:0}
 #emiLista .escaparate-oferta .escaparate-detalle-boton:focus-visible{outline:2px solid var(--senal);outline-offset:2px}

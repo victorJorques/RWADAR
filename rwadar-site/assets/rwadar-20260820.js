@@ -1705,8 +1705,8 @@ function pintarEmisiones(){
   const informacion=document.getElementById('emisInformacion');if(informacion)informacion.open=true;
   const estado=document.getElementById('movilOfertasEstado');
   const seleccion=catalogo.filter(o=>o.coleccion===emiColeccion),coincidencias=seleccion.filter(coincideOfertaLocal);
-  if(estado){estado.textContent=coincidencias.length+' de '+seleccion.length+' '+({principales:'principales',secundario:'en reventa',en_camino:'próximas'}[emiColeccion]);estado.classList.toggle('hay-ofertas',coincidencias.length>0);
-   estado.classList.toggle('con-filtro',!!(emiCat||emiBusquedaLocal))}
+  const recuento=coincidencias.length+' de '+seleccion.length+' '+({principales:'principales',secundario:'en reventa',en_camino:'próximas'}[emiColeccion]);
+  if(estado){estado.textContent=recuento;estado.classList.toggle('hay-ofertas',coincidencias.length>0)}
   /* Como en la app: una pestaña por colección y se ve una cada vez. */
   const cuantas=c=>catalogo.filter(o=>o.coleccion===c).length;
   if(caja.dataset)caja.dataset.coleccion=emiColeccion;
@@ -1723,7 +1723,9 @@ function pintarEmisiones(){
     '<p>No es una recomendación de inversión.</p></header>'+elegidas.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>'+
     (resto.length?'<div class="catalogo-bloque" role="group" aria-labelledby="emiRestoTit"><header class="catalogo-bloque-cab"><h3 id="emiRestoTit">Resto de principales</h3></header>'+resto.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>':''):
    tarjetasPorProveedorHtml(visibles);
-  caja.innerHTML=(movil?'<p class="catalogo-nota-movil">RWAdar no recibe dinero de las inversiones.</p>':'')+
+  /* Con un filtro o una búsqueda, el recuento también a la vista (el lector ya lo oye en #movilOfertasEstado). */
+  caja.innerHTML=(movil?(emiCat||emiBusquedaLocal?'<p class="catalogo-recuento" aria-hidden="true">'+escHtml(recuento)+'</p>':'')+
+   '<p class="catalogo-nota-movil">RWAdar no recibe dinero de las inversiones.</p>':'')+
    '<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.</p></header>'+
    '<div class="catalogo-principales">'+filas+'</div>'+
    seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino')+
@@ -5281,7 +5283,15 @@ const Movil = (function(){
   }
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
    const objetivo=destino==='top'?document.getElementById('top'):document.getElementById(destino);
-   if(objetivo)objetivo.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
+   if(objetivo){objetivo.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
+    /* Si el foco se quedó en el panel que se acaba de ocultar, pasa al destino:
+       su pestaña activa o su primer título visible. */
+    const activo=document.activeElement;
+    if(!activo||activo===document.body||activo.closest&&activo.closest('[hidden]')){
+     const foco=[...objetivo.querySelectorAll('[role="tab"][aria-selected="true"],h2,h3')].find(e=>e.offsetWidth>1&&e.getClientRects().length)||objetivo;
+     if(!/^(?:A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(foco.tagName)&&!foco.hasAttribute('tabindex'))foco.setAttribute('tabindex','-1');
+     foco.focus({preventScroll:true});
+    }}
    geometria();
   }));
  }
