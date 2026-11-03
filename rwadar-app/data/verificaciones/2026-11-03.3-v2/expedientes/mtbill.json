@@ -185,7 +185,7 @@
       "localizador": "Oráculo designado en Final Terms Part A §1; ronda 486 es la última (getRoundData(487) vacío)",
       "fechaDato": "2026-11-02",
       "consultadoUtc": "2026-11-03T10:20:57Z",
-      "alcanceYLimites": "Es el valor publicado por el emisor, no una rentabilidad. A las 10:20 UTC del 03/11 aún no había ronda del día (las actualizaciones recientes son hacia las 13:00–16:00 UTC).",
+      "alcanceYLimites": "Es el valor publicado por el emisor, no una rentabilidad. A las 10:20 UTC del 03/11 aún no había ronda del día (las actualizaciones recientes son hacia las 13:00–16:00 UTC). Releído a las 10:34:53Z: sigue la ronda 486.",
       "estado": "respaldado"
     },
     {
@@ -442,6 +442,6 @@
   ],
   "consulta": {
     "inicioUtc": "2026-11-03T10:10:23Z",
-    "finUtc": "2026-11-03T10:21:26Z"
+    "finUtc": "2026-11-03T10:34:53Z"
   }
 }

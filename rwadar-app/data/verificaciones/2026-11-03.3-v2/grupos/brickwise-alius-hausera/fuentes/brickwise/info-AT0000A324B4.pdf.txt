@@ -46,7 +46,7 @@ Name des Emittenten                      Green-Point 62 GmbH
 
 Rechtsform                               GmbH
 
-Geschäftsführung                         Dr. Vitaliy Kryvoruchko
+Geschäftsführung                         [persona física recortada]
 
 Eigentumsverhältnisse                    Gesellschafterin (100%):
                                          YH Property Holding GmbH (FN 462621 a)
@@ -1129,7 +1129,7 @@ Anlage 1: Bilanz der Emittentin zum 31.12.2021
 
 
     Geschäftsführung:          Name                                                                     seit
-                               Dr. Vitaliy Kryvoruchko                                            20.6.2017
+                               [persona física recortada]                                            20.6.2017
 
 
 

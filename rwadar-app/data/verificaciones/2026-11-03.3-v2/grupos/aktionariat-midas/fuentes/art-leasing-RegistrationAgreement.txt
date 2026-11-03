@@ -1,1 +1,22 @@
-
+TRANSCRIPCIÓN PARCIAL (lectura a vista del escaneado; el PDF no tiene capa de texto)
+Fuente: https://artleasing.com/wp-content/uploads/2022/09/Registration-Agreement-ALIAG-Signed.pdf
+Descargado: 2026-11-03T10:07:03Z · 8.304.263 bytes · sha256 7454ab76d186459837fd7e188c2a1ce9d6ac4afb3ba259ddd46cb1bf2d00f21e
+El PDF no se conserva en el repositorio (> 3 MB). Páginas renderizadas a 80 ppp solo para leerlas.
+
+REGISTRATION AGREEMENT · V2.2 – 7.10.2022 · 4 páginas · pie «LEXR»
+§1 General Information
+- Issuer: ART LEASING & INVEST AG, Zürich, Switzerland, CHE-112.510.455.
+- Website: www.artleasing.com/investors.
+- Instrument: Registered shares (Namenaktien) of the Issuer without transfer restrictions (Vinkulierung).
+- Form: Ledger-based securities as defined in article 973d ss. of the Swiss Code of Obligations.
+- Blockchain: Ethereum Mainnet.
+- Smart Contract: ERC-20 token issued under the smart contract 0xa12706714bb95b3869F2BEb72B5d1D304bfe153F, named "ARTLEASING SHARES" with symbol "ART" … The Share Tokens are not divisible.
+- Transfer restrictions: Not applicable.
+- Other Agreements: "ART SHA" (ARTS) is a wrapper token that represents Share Tokens bound to an automatically enforceable shareholder agreement that can be found on the Website.
+- Jurisdiction: Zürich, Switzerland.
+§2 Scope · §3 Issuance of Shares as Share Tokens · §4 Transfer of Share Tokens
+§5 Shareholder Registration: "Only persons registered in the Share Register are entitled to the rights as a shareholder (such as voting and dividend rights)."
+§6 Burning · §7 Establishment of securities · §8 Loss of tokens (recovery function) · §9 Subjecting Share Tokens to other agreements · §10 Hard fork
+§11 General provisions: limitation of liability; Swiss law; ordinary courts of Zürich.
+§12 Resolution: adopted by the Board of Directors by circular resolution, 7.10.2022 (dos firmas).
+Nota: no contiene una sección «Risk Factors», aunque el Common SHA remite a ella.

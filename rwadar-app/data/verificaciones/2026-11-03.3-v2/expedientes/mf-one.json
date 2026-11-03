@@ -88,7 +88,7 @@
       "localizador": "paused() y greenlistEnabled(), bloque 26.333.638",
       "fechaDato": "2026-11-03",
       "consultadoUtc": "2026-11-03T10:20:57Z",
-      "alcanceYLimites": "El 01/11 (domingo) estaba en pausa; el 02/11 y el 03/11, activa. Solo Ethereum; solmF-ONE no comprobado.",
+      "alcanceYLimites": "El 01/11 (domingo) estaba en pausa; el 02/11 y el 03/11, activa. Solo Ethereum; solmF-ONE no comprobado. Releído a las 10:34:53Z: sigue sin pausa.",
       "estado": "respaldado"
     },
     {
@@ -280,6 +280,6 @@
   ],
   "consulta": {
     "inicioUtc": "2026-11-03T10:19:32Z",
-    "finUtc": "2026-11-03T10:21:26Z"
+    "finUtc": "2026-11-03T10:34:53Z"
   }
 }

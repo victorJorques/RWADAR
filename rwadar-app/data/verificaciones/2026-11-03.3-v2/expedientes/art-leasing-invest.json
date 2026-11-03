@@ -1,0 +1,374 @@
+{
+  "slug": "art-leasing-invest",
+  "tipoExpediente": "candidata",
+  "grupo": "aktionariat-midas",
+  "proveedor": "ART LEASING & INVEST AG (widget de compra de Aktionariat en artleasing.com)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "ART LEASING & INVEST AG (vende sus propias acciones; tecnología de Aktionariat AG)",
+  "emisor": "ART LEASING & INVEST AG, Zúrich, UID CHE-112.510.455",
+  "vehiculo": "Sociedad anónima suiza (AG) de leasing de arte; sin SPV",
+  "token": "ARTS «ARTLEASING SHARES SHA», ERC-20 en Ethereum, 0xc0da2786176dac9eda661c566828950ca571348c (0 decimales), que envuelve ART «ARTLEASING SHARES» 0xe284d8b9ace134c541a39cc6a8292aca4c342896. Contrato de venta del emisor 0xf12a6b198f3c94cbc7c2110cd7347e0bd2e534ad (Brokerbot v8, código verificado en Sourcify). Los acuerdos publicados citan otros contratos: 0xa12706714bb95b3869F2BEb72B5d1D304bfe153F (ART) y 0xFD04E85EBBA564aF3052743A88374405D1e8a8E7 (ART SHA).",
+  "derechoAdquirido": "Acciones nominativas (nominal 0,10 CHF) emitidas como valores registrados en DLT (art. 973d CO), sin restricción de transmisión, envueltas en un token sujeto al Common Shareholder Agreement (arrastre con quórum del 51 %, acompañamiento si alguien supera el 50 %). Es capital de la empresa de leasing, no obras de arte.",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-112.510.455; ticker ARTS",
+  "moneda": "CHF (transferencia) / ZCHF (cripto)",
+  "documentos": [
+    {
+      "titulo": "Registration Agreement V2.2 (firmado, escaneado)",
+      "url": "https://artleasing.com/wp-content/uploads/2022/09/Registration-Agreement-ALIAG-Signed.pdf",
+      "versionOFecha": "V2.2 – 7.10.2022",
+      "paginas": 4,
+      "sha256": "7454ab76d186459837fd7e188c2a1ce9d6ac4afb3ba259ddd46cb1bf2d00f21e",
+      "leido": true
+    },
+    {
+      "titulo": "SHA Common Shareholder Agreement",
+      "url": "https://artleasing.com/wp-content/uploads/2022/09/Common-Shareholder-Agreement-ART-LEASING-INVEST-AG.pdf",
+      "versionOFecha": "V0.3 18/08/2022",
+      "paginas": 6,
+      "sha256": "2f030789d6db3f32447d895ef53934dd061a217a2fba9d4b03e0492f8a007b7c",
+      "leido": true
+    },
+    {
+      "titulo": "Página de inversores (aviso legal, condiciones, widget de compra)",
+      "url": "https://www.artleasing.com/en/investors",
+      "versionOFecha": "sin fecha; leída 03/11/2026",
+      "paginas": null,
+      "sha256": "d8f90a37133ae1a6e505f2165cf5b1b124f3b6d3ddca87466f98c7763ccb8ed6",
+      "leido": true
+    },
+    {
+      "titulo": "Código verificado del contrato de venta (Brokerbot v8)",
+      "url": "https://sourcify.dev/server/v2/contract/1/0xf12a6b198f3c94cbc7c2110cd7347e0bd2e534ad?fields=sources",
+      "versionOFecha": "VERSION = 0x8; BUYING_ENABLED 0x1, SELLING_ENABLED 0x2",
+      "paginas": null,
+      "sha256": "40d4cf9ef258df4a953fea51393cb5d5de4d88b9dd75e1515ec750ee8f156f87",
+      "leido": true
+    },
+    {
+      "titulo": "Folleto / cuentas anuales",
+      "url": null,
+      "versionOFecha": "no publicados",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (ZefixREST)",
+      "entidad": "ART LEASING & INVEST AG",
+      "numero": "CHE-112.510.455",
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/802442.json",
+      "alcance": "Inscrita, EXISTIEREND, sede Zúrich. Capital 448.661 CHF en 4.486.610 acciones nominativas de 0,10 CHF; restricción de transmisión suprimida (SHAB 22/09/2022). Revisora blueAUDIT GmbH (SHAB 11/01/2024). No es licencia financiera.",
+      "consultadoUtc": "2026-11-03T10:15:51Z"
+    },
+    {
+      "regulador": "FINMA · registro de entidades autorizadas",
+      "entidad": "Art Leasing",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "alcance": "0 resultados (control «Maerki Baumann» = 1). Sin licencia FINMA.",
+      "consultadoUtc": "2026-11-03T10:10:22Z"
+    },
+    {
+      "regulador": "PolyReg (autorregulación contra el blanqueo)",
+      "entidad": "ART LEASING & INVEST AG",
+      "numero": null,
+      "url": "https://api.polyreg.ch/api/membership-check?name=ART%20LEASING%20%26%20INVEST%20AG",
+      "alcance": "result=false (también con «Art Leasing & Invest AG»).",
+      "consultadoUtc": "2026-11-03T10:15:38Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Art Leasing",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Art+Leasing",
+      "consultadoUtc": "2026-11-03T10:11:13Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Artleasing",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Artleasing",
+      "consultadoUtc": "2026-11-03T10:11:15Z"
+    },
+    {
+      "regulador": "FINMA · lista de advertencias",
+      "busqueda": "art leasing / artleasing",
+      "resultado": "sin coincidencias (2.401 entradas)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-03T10:10:33Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "settings()=0x3 · widget: «Buy | Sell … You are buying 1′000 ARTS for 3′651.2 CHF. Start Buying»",
+      "dato": "abierta: el emisor vende (y técnicamente recompra) a través del contrato",
+      "fuentePrimaria": "https://www.artleasing.com/en/investors",
+      "localizador": "Widget renderizado (captura art-leasing-render-widget.png); en cadena settings()=0x3 en 0xf12a…34ad (10:08:08Z)",
+      "fechaDato": "2026-11-03",
+      "consultadoUtc": "2026-11-03T10:18:02Z",
+      "alcanceYLimites": "Bits según el código verificado: 0x1 venta del emisor, 0x2 recompra.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "getPrice()=3,6512 · increment()=0 · hasDrift()=false · 1′000 ARTS for 3′651.2 CHF",
+      "dato": "3,6512 CHF por acción, fijado por el emisor",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al contrato de venta 0xf12a6b198f3c94cbc7c2110cd7347e0bd2e534ad",
+      "localizador": "getPrice(), increment(), getBuyPrice(1000)=getSellPrice(1000)=3.651,2",
+      "fechaDato": "2026-11-03",
+      "consultadoUtc": "2026-11-03T10:09:11Z",
+      "alcanceYLimites": "Mismo precio en todas las compras desde 09/2024.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "actividad",
+      "literal": "2026-10-20T14:37:35Z PRIMARY 690 · 2026-08-11T14:35:23Z PRIMARY 3",
+      "dato": "Última compra al emisor 20/10/2026 (690 acciones a 3,6512); solo 2 compras en los últimos 12 meses",
+      "fuentePrimaria": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+      "localizador": "getTrades companySlug=artleasing, historial completo (58 operaciones, todas compras al emisor)",
+      "fechaDato": "2026-10-20",
+      "consultadoUtc": "2026-11-03T10:19:10Z",
+      "alcanceYLimites": "Desde el 17/10/2022 el emisor ha vendido 23.274 acciones por unos 74.763 (CHF o ZCHF), sumando todas las procedencias: no se sabe qué parte consume el tope EEE.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Minimum order size for bank transfers is 5′000 CHF (1370 ARTS).",
+      "dato": "5.000 CHF por transferencia; en cripto, desde 1 acción (3,65 ZCHF)",
+      "fuentePrimaria": "https://www.artleasing.com/en/investors",
+      "localizador": "Widget de compra renderizado; brokerbotsettings ARTS bankTransferLimit min 5000, cryptoPaymentsLimit min 0",
+      "fechaDato": "2026-11-03",
+      "consultadoUtc": "2026-11-03T10:18:02Z",
+      "alcanceYLimites": "Pagar en cripto exige monedero propio con ZCHF o ETH.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Offer only valid for persons in Switzerland and the EEA: The public offer to purchase the shares is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. … The offer for persons from the EEA is limited to a total of €100,000.",
+      "dato": "Residentes en Suiza o el EEE (España incluida); tope conjunto EEE 100.000 €",
+      "fuentePrimaria": "https://www.artleasing.com/en/investors",
+      "localizador": "Bloque «IMPORTANT INFORMATION» de la página de inversores",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:06:41Z",
+      "alcanceYLimites": "Aviso del propio emisor. No se publica cuánto queda del tope. Registro y KYC no probados.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "settings()=0x3 (SELLING_ENABLED) · ZCHF.balanceOf(contrato)=818,0896 · getSellPrice(1000)=3.651,2",
+      "dato": "El emisor recompra a 3,6512 ZCHF por acción, pero el contrato solo tiene 818 ZCHF para pagar (unas 224 acciones)",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al contrato de venta 0xf12a6b198f3c94cbc7c2110cd7347e0bd2e534ad",
+      "localizador": "settings(), getSellPrice(), balanceOf del token ZCHF 0xb58e…21cb",
+      "fechaDato": "2026-11-03",
+      "consultadoUtc": "2026-11-03T10:09:11Z",
+      "alcanceYLimites": "Ninguna venta al emisor en las 58 operaciones registradas. El pago se hace en ZCHF a un monedero propio.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "The Issuer is under no obligation to offer or repurchase the Share Tokens and may stop the Open Trading at any time or limit the Open Trading to selling or buying only.",
+      "dato": "La recompra es voluntaria y puede cerrarse en cualquier momento",
+      "fuentePrimaria": "https://artleasing.com/wp-content/uploads/2022/09/Common-Shareholder-Agreement-ART-LEASING-INVEST-AG.pdf",
+      "localizador": "Common SHA V0.3, §1.4, págs. 2–3",
+      "fechaDato": "2022-08-18",
+      "consultadoUtc": "2026-11-03T10:07:02Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Registered shares (Namenaktien) of the Issuer without transfer restrictions (Vinkulierung) · Ledger-based securities as defined in article 973d ss.",
+      "dato": "Acciones nominativas DLT sin restricción de transmisión",
+      "fuentePrimaria": "https://artleasing.com/wp-content/uploads/2022/09/Registration-Agreement-ALIAG-Signed.pdf",
+      "localizador": "Registration Agreement V2.2, §1, pág. 1 (escaneado; leído a vista, transcripción en fuentes/art-leasing-RegistrationAgreement.txt)",
+      "fechaDato": "2022-10-07",
+      "consultadoUtc": "2026-11-03T10:07:03Z",
+      "alcanceYLimites": "Voto y dividendo solo tras inscribirse en el libro registro (§5).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Key Decision Quorum 51 (required for the decision on the drag-along, changes to this Agreement or changes to the SHA Smart Contract)",
+      "dato": "Arrastre con quórum del 51 %",
+      "fuentePrimaria": "https://artleasing.com/wp-content/uploads/2022/09/Common-Shareholder-Agreement-ART-LEASING-INVEST-AG.pdf",
+      "localizador": "Common SHA V0.3, General Information, pág. 1; aviso en mayúsculas de pág. 2",
+      "fechaDato": "2022-08-18",
+      "consultadoUtc": "2026-11-03T10:07:02Z",
+      "alcanceYLimites": "El propio acuerdo avisa de que el contrato puede forzar una venta por debajo del valor razonable.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "documentos",
+      "literal": "RA: «smart contract 0xa12706714bb95b3869F2BEb72B5d1D304bfe153F» · Common SHA: «SHA Smart Contract 0xFD04E85EBBA564aF3052743A88374405D1e8a8E7» · contrato de venta: token()=0xc0da…348c, wrapped()=0xe284…2896",
+      "dato": "Los acuerdos publicados citan contratos de token distintos de los que vende hoy el emisor",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al contrato de venta 0xf12a6b198f3c94cbc7c2110cd7347e0bd2e534ad",
+      "localizador": "token() (10:08:08Z), wrapped() y terms() (10:09:28Z); RA §1 y Common SHA pág. 1",
+      "fechaDato": "2026-11-03",
+      "consultadoUtc": "2026-11-03T10:09:28Z",
+      "alcanceYLimites": "terms() de los contratos nuevos remite a www.artleasing.com/investors, donde están estos acuerdos, y el SHA prevé migrar de contrato (§5); aun así, ningún documento público explica la migración.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "documentos",
+      "literal": "using bank payment or digital currencies like Ethereum or XCHF. The offer is limited to 408,170 out of 4,486,610 shares.",
+      "dato": "La web describe un proceso (app, XCHF) y un cupo desfasados",
+      "fuentePrimaria": "https://www.artleasing.com/en/investors",
+      "localizador": "Bloque «BUY ARTLEASING SHARES»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:06:41Z",
+      "alcanceYLimites": "408.170 es el número de acciones antes de la ampliación de 2022 (Zefix); en cadena hay 204.170 tokenizadas, 186.262 de ellas aún en el contrato de venta. El pago en cripto es hoy ZCHF.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "supervision",
+      "literal": "0 resultados en FINMA · PolyReg result=false",
+      "dato": "Emisor sin supervisión financiera",
+      "fuentePrimaria": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "localizador": "Buscador FINMA «Art Leasing»",
+      "fechaDato": "2026-11-03",
+      "consultadoUtc": "2026-11-03T10:10:22Z",
+      "alcanceYLimites": "Para vender acciones propias no hace falta licencia; no hay folleto ni cuentas publicadas.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "An investment in shares is associated with various risks and a loss of up to the entire capital invested may occur.",
+      "dato": "Pérdida total posible",
+      "fuentePrimaria": "https://www.artleasing.com/en/investors",
+      "localizador": "Bloque «IMPORTANT INFORMATION», «Risks»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:06:41Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita en el registro mercantil, sin licencia FINMA ni PolyReg (no la necesita para vender sus acciones). Sin advertencias. Los acuerdos citan contratos de token superados."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Venta activa en cadena; última compra el 20/10/2026, pero solo 2 compras en 12 meses."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Aviso del emisor que admite el EEE (tope 100.000 €). Mínimo 5.000 CHF por transferencia. Recompra activa con 818 ZCHF de fondos."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Pérdida total y arrastre al 51 % explicados; sin folleto, sin cuentas publicadas y con web desfasada."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "cambiosRespectoPublicado": [],
+  "bloqueosDel0111": [
+    {
+      "bloqueo": "Actividad sin comprobar",
+      "hoy": "Resuelto: última compra 20/10/2026; 2 compras en 12 meses (getTrades companySlug=artleasing)."
+    },
+    {
+      "bloqueo": "Acuerdos sin leer",
+      "hoy": "Resuelto: leídos el Registration Agreement V2.2 y el Common SHA V0.3; aparecen el arrastre al 51 % y direcciones de contrato superadas."
+    },
+    {
+      "bloqueo": "Página desfasada (XCHF, app)",
+      "hoy": "Sigue igual el 03/11; además el cupo de 408.170 acciones no cuadra con el capital actual."
+    },
+    {
+      "bloqueo": "Mínimo de 5.000 CHF",
+      "hoy": "Confirmado en el widget de compra."
+    }
+  ],
+  "propuestaTarjeta": {
+    "nota": "Borrador por si Víctor decide admitirla en «secundario». La propuesta del investigador es no_admitir.",
+    "titulo": "Art Leasing & Invest",
+    "categoria": "Acciones y capital privado",
+    "pais": "CH",
+    "tipo": "valor",
+    "coleccion": "secundario",
+    "resumen": "Acciones tokenizadas de ART LEASING & INVEST AG, empresa suiza de leasing de obras de arte, vendidas por el emisor a un precio que fija él. Es capital de la empresa, no arte.",
+    "resumenTarjeta": {
+      "minimo": "5.000 CHF por transferencia (en cripto, desde 1 acción: 3,65 ZCHF)",
+      "accesoEspana": "Sí: el emisor admite residentes en Suiza y el EEE, con un tope total de 100.000 € para el EEE",
+      "salida": "El emisor recompra a su precio mientras tenga fondos (818 ZCHF el 03/11/2026); puede cerrarla cuando quiera"
+    },
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Precio del emisor · 03/11/2026",
+        "valor": "3,6512 CHF por acción"
+      },
+      {
+        "etiqueta": "Mínimo",
+        "valor": "5.000 CHF por transferencia"
+      },
+      {
+        "etiqueta": "Acceso",
+        "valor": "Residentes en Suiza o EEE; tope EEE 100.000 € en total"
+      },
+      {
+        "etiqueta": "Recompra del emisor · 03/11/2026",
+        "valor": "Activa, con 818 ZCHF de fondos"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Ninguno: no figura en el registro de autorizados de FINMA (03/11/2026)"
+      },
+      {
+        "etiqueta": "Última compra al emisor",
+        "valor": "20/10/2026"
+      }
+    ],
+    "avisos": [
+      "Sin folleto, sin KID y sin cuentas publicadas; el emisor no está supervisado.",
+      "Los acuerdos publicados citan contratos de token que ya no son los que vende el emisor, y la web describe un proceso antiguo.",
+      "La recompra del emisor es voluntaria y hoy solo tiene fondos para unas 224 acciones; se paga en ZCHF a un monedero propio.",
+      "Con el 51 % a favor, todos los accionistas pueden verse obligados a vender a un comprador.",
+      "No se publica cuánto queda del tope de 100.000 € para el EEE."
+    ],
+    "url": "https://www.artleasing.com/en/investors",
+    "fuentesActuales": [
+      "https://www.artleasing.com/en/investors",
+      "https://artleasing.com/wp-content/uploads/2022/09/Common-Shareholder-Agreement-ART-LEASING-INVEST-AG.pdf",
+      "https://artleasing.com/wp-content/uploads/2022/09/Registration-Agreement-ALIAG-Signed.pdf",
+      "https://shares.aktionariat.com/api/secondarymarkets/getTrades"
+    ],
+    "lugar": "Zúrich · Suiza",
+    "pasos": [
+      "Registro en el widget",
+      "Compra al emisor",
+      "Recompra si hay fondos"
+    ],
+    "concepto": "un cuadro contemporáneo colgado en un despacho de Zúrich con su participación societaria convertida en ficha digital"
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "5.000 CHF por transferencia (desde 1 acción = 3,65 ZCHF en cripto)",
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Aviso del emisor que admite el EEE y recompra del emisor activa en cadena a su mismo precio.",
+    "porQueNo": "Documentos y web que no cuadran con lo que se vende hoy, mínimo de 5.000 CHF, dos compras en 12 meses y recompra con 818 ZCHF de fondos."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Hoy se respaldan entidad, estado, acceso EEE, mínimo, salida y riesgos, pero lo que lee el inversor no coincide con lo que compra: los acuerdos citan contratos de token sustituidos sin explicación pública y la web describe un proceso (app, XCHF) y un cupo (408.170 acciones) desfasados. Sumado al mínimo de 5.000 CHF, a solo dos compras en 12 meses y a una recompra con 818 ZCHF de fondos, no da la confianza que pide el catálogo. Revisable si el emisor actualiza acuerdos y web.",
+  "bloqueos": [
+    "Ningún documento público explica la migración de los contratos de token (0xa127…/0xFD04… → 0xe284…/0xc0da…).",
+    "No se publica cuánto queda del tope de 100.000 € para el EEE.",
+    "No se probó el registro ni el KYC del widget (prohibido por el encargo).",
+    "El Registration Agreement es un escaneado de 8,3 MB: leído a vista; el PDF no se conserva (> 3 MB), queda su sha256 en el inventario."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-03T10:06:19Z",
+    "finUtc": "2026-11-03T10:19:10Z"
+  }
+}
