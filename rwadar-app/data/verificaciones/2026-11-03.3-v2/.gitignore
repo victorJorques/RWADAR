@@ -16,3 +16,11 @@ revision-independiente/**/*.jpg
 # escáner de secretos confunde con claves: en disco con su SHA-256, no en Git.
 grupos/**/crudo/
 revision-independiente/**/crudo/
+
+# Copias de páginas públicas con parámetros de enlace (access=, token=) que el
+# escáner de secretos confunde con claves. Son de terceros y públicos; se
+# conservan en disco con su SHA-256 en el inventario del grupo, no en Git.
+grupos/aktionariat-midas/fuentes/docs-llms-full.txt
+grupos/brickwise-alius-hausera/fuentes/hausera/nav-hausera-terms-2026-11-03.txt
+grupos/brickwise-alius-hausera/fuentes/hausera/nav-hausera-oportunidades-2026-11-03.txt
+grupos/brickwise-alius-hausera/fuentes/hausera/nav-hausera-faq-2026-11-03.txt
