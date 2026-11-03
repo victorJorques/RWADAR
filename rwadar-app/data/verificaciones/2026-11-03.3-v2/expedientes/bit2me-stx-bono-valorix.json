@@ -1,0 +1,261 @@
+{
+ "slug": "bit2me-stx-bono-valorix",
+ "tipoExpediente": "candidata",
+ "grupo": "nuevas-espana",
+ "proveedor": "Bit2Me STX",
+ "plataformaSlug": null,
+ "entidadComercializadora": "BIT2ME SECURITY TOKENS EXCHANGE STX, A.V., S.A. (filial del grupo Bit2Me)",
+ "emisor": "Valorix (razón social del emisor de la emisión de diciembre no publicada; en el registro ERIR de la CNMV consta ACTIVOS Y VALORES DIGITALES, S.A. (Valorix) como emisor de una emisión anterior de 500.000 €)",
+ "vehiculo": "Bono corporativo (obligaciones) representado mediante tecnología de registro distribuido, negociado en el SNL TRD Bit2Me STX",
+ "token": "Bono tokenizado de Valorix; red no indicada para esta emisión (la FAQ de la prueba de 2024 cita Hyperledger Besu)",
+ "derechoAdquirido": "Deuda de Valorix: derecho a cobrar principal e intereses según un documento de emisión que todavía no es público",
+ "jurisdiccion": "ES",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Nota de prensa de Bit2Me: «Bit2Me STX obtiene la autorización de la CNMV para lanzar su Bolsa de Valores nativa en blockchain»",
+   "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "versionOFecha": "28/10/2026",
+   "paginas": null,
+   "sha256": "9c6240aa3a46bdf5e2f879b3253267cf4d13a1364eec008c3d34d3e9689057ef",
+   "leido": true
+  },
+  {
+   "titulo": "Página de producto Bit2Me STX",
+   "url": "https://bit2me.com/es/stx",
+   "versionOFecha": "sin fecha; consulta 03/11/2026",
+   "paginas": null,
+   "sha256": "0a6a316ff72ad00e50e59f0696e04e5efce891197000359297988d27b0df7e7d",
+   "leido": true
+  },
+  {
+   "titulo": "FAQ de Bit2Me STX (emisión de prueba de Valorix en el sandbox)",
+   "url": "https://support.bit2me.com/es/support/solutions/articles/35000266706",
+   "versionOFecha": "modificada el 24/10/2025; describe la emisión de 2024",
+   "paginas": null,
+   "sha256": "32c7ebffebf97003c97a1438cd00c028c8055146243388dae5858d0f24cfcf21",
+   "leido": true
+  },
+  {
+   "titulo": "Documento de emisión del bono de Valorix de diciembre de 2026",
+   "url": null,
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "BIT2ME SECURITY TOKENS EXCHANGE STX, A.V., S.A.",
+   "numero": "Agencia de valores nº 343 (fecha de registro oficial 18/09/2026)",
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A56759137&lang=es",
+   "alcance": "Ficha ESI de la CNMV: agencia de valores adherida al Fondo de Garantía de Inversiones (FOGAIN). Dirección: Paseo de la Castellana 144, Madrid.",
+   "consultadoUtc": "2026-11-03T10:18:14Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "BIT2ME SECURITY TOKENS EXCHANGE STX, A.V., S.A.",
+   "numero": "Infraestructura «Bit2Me STX (SNL TRD)»",
+   "url": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+   "alcance": "Relación de infraestructuras de mercados de la CNMV: «Sistema de negociación y liquidación basado en tecnología de registros distribuidos». Es una autorización de infraestructura, no la aprobación de ningún valor concreto.",
+   "consultadoUtc": "2026-11-03T10:10:18Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "BITCOINFORME, S.L. (Bit2Me, matriz del grupo)",
+   "numero": "Proveedor de servicios de criptoactivos (MiCA)",
+   "url": "https://www.cnmv.es/portal/consultas/Proveedores-Servicios-Criptoactivos.aspx?lang=es",
+   "alcance": "Consta en la lista de proveedores de servicios de criptoactivos de la CNMV. Esa licencia es de la matriz y no cubre valores negociables tokenizados.",
+   "consultadoUtc": "2026-11-03T10:10:15Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Bit2Me",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bit2Me",
+   "consultadoUtc": "2026-11-03T10:16:03Z",
+   "alcance": "Buscador de advertencias de la CNMV, tipo «no autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD). No se consultó la pestaña de advertencias de otros supervisores. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Valorix",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Valorix",
+   "consultadoUtc": "2026-11-03T10:16:05Z",
+   "alcance": "Buscador de advertencias de la CNMV, tipo «no autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD). No se consultó la pestaña de advertencias de otros supervisores. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Activos y Valores Digitales",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Activos%20y%20Valores%20Digitales",
+   "consultadoUtc": "2026-11-03T10:18:45Z",
+   "alcance": "Buscador de advertencias de la CNMV, tipo «no autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD). No se consultó la pestaña de advertencias de otros supervisores. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Credimax",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Credimax",
+   "consultadoUtc": "2026-11-03T10:18:46Z",
+   "alcance": "Buscador de advertencias de la CNMV, tipo «no autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD). No se consultó la pestaña de advertencias de otros supervisores. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Rapicredit",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rapicredit",
+   "consultadoUtc": "2026-11-03T10:18:49Z",
+   "alcance": "Buscador de advertencias de la CNMV, tipo «no autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD). No se consultó la pestaña de advertencias de otros supervisores. No aparecer no equivale a estar autorizado."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "STX prevé iniciar su operativa en las próximas semanas y completar su primera emisión de la mano de Valorix […] un bono corporativo tokenizado de 1 millón de euros […] previsto para diciembre de 2026",
+   "dato": "Próxima: emisión primaria prevista para diciembre de 2026; hoy no hay emisión abierta",
+   "fuentePrimaria": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "localizador": "Nota de prensa del 28/10/2026, penúltimo párrafo antes de «Sobre Bit2Me STX»",
+   "fechaDato": "2026-10-28",
+   "consultadoUtc": "2026-11-03T10:12:27Z",
+   "alcanceYLimites": "Anuncio del propio grupo. Sin fecha exacta, sin documento de emisión y sin condiciones publicadas.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "dirigido a inversores elegibles conforme a la normativa de emisión aplicable",
+   "dato": null,
+   "fuentePrimaria": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "localizador": "Nota de prensa del 28/10/2026",
+   "fechaDato": "2026-10-28",
+   "consultadoUtc": "2026-11-03T10:12:27Z",
+   "alcanceYLimites": "No se dice quién es «inversor elegible» ni si incluye a particulares. La emisión de prueba de 2024 exigía ser residente en España con DNI o NIE, pero esas condiciones eran del sandbox.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "minimo",
+   "literal": "El importe mínimo para participar es de 1.000 € por cada unidad de token del bono.",
+   "dato": null,
+   "fuentePrimaria": "https://support.bit2me.com/es/support/solutions/articles/35000266706",
+   "localizador": "FAQ, pregunta 10 (modificada el 24/10/2025)",
+   "fechaDato": "2025-10-24",
+   "consultadoUtc": "2026-11-03T10:19:26Z",
+   "alcanceYLimites": "Mínimo de la emisión de prueba de 2024 en el sandbox, no del bono de diciembre de 2026. La página de STX todavía muestra esa información del sandbox. No vale como mínimo de la nueva emisión.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": "un bono corporativo tokenizado de 1 millón de euros […] que cotizará posteriormente en el mercado secundario",
+   "dato": "Venta en el mercado secundario de STX tras la emisión, o cobro del principal al vencimiento; plazo y condiciones sin publicar",
+   "fuentePrimaria": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "localizador": "Nota de prensa del 28/10/2026",
+   "fechaDato": "2026-10-28",
+   "consultadoUtc": "2026-11-03T10:12:27Z",
+   "alcanceYLimites": "No se publican el vencimiento ni el cupón. Un mercado secundario de 1 millón de euros puede tener muy poca liquidez.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "entidad",
+   "literal": "ha obtenido la autorización de la Comisión Nacional del Mercado de Valores (CNMV) para operar un Sistema de Negociación y Liquidación (SNL […]) bajo el Régimen Piloto de infraestructuras DLT",
+   "dato": "Agencia de valores CNMV nº 343 que opera el SNL TRD «Bit2Me STX»",
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+   "localizador": "CNMV, Relación de infraestructuras de mercados; ficha ESI nº 343; nota de prensa del 28/10/2026",
+   "fechaDato": "2026-10-28",
+   "consultadoUtc": "2026-11-03T10:10:18Z",
+   "alcanceYLimites": "La autorización es de la infraestructura y de la agencia de valores. No acredita la calidad del emisor ni del bono.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "entidad",
+   "literal": "Estas autorizaciones se suman a […] la Agencia de Valores que la CNMV otorgó a STX en noviembre de 2025 (prensa) · CNMV: «Número y fecha de registro oficial: 343 - 18/09/2026»",
+   "dato": null,
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=0&lang=es",
+   "localizador": "Listado CNMV de sociedades y agencias de valores; prensa sectorial",
+   "fechaDato": "2026-09-18",
+   "consultadoUtc": "2026-11-03T10:18:06Z",
+   "alcanceYLimites": "La prensa fecha la autorización como agencia de valores en noviembre de 2025 y la CNMV la inscribe el 18/09/2026. Puede ser la diferencia entre autorización e inscripción. No afecta a la decisión.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "La comisión es del 0,2% por la suscripción del bono en el mercado primario y 0,2% por cada compra o venta que se realice en el mercado secundario.",
+   "dato": null,
+   "fuentePrimaria": "https://support.bit2me.com/es/support/solutions/articles/35000266706",
+   "localizador": "FAQ, preguntas 10–11 (emisión de prueba de 2024)",
+   "fechaDato": "2025-10-24",
+   "consultadoUtc": "2026-11-03T10:19:26Z",
+   "alcanceYLimites": "Tarifas de la prueba del sandbox. No consta que valgan para la emisión de diciembre.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "La inversión en instrumentos financieros tokenizados […] conlleva riesgos significativos, entre los que se incluyen la pérdida total o parcial del capital invertido, riesgo de iliquidez en el mercado secundario y riesgos operacionales derivados del uso de […] TRD/DLT.",
+   "dato": "Pérdida de capital, iliquidez, riesgo tecnológico; sin fondo de garantía de depósitos",
+   "fuentePrimaria": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "localizador": "Nota de prensa del 28/10/2026, aviso legal final",
+   "fechaDato": "2026-10-28",
+   "consultadoUtc": "2026-11-03T10:12:27Z",
+   "alcanceYLimites": "Riesgos genéricos de la plataforma. Faltan los riesgos del emisor (Valorix, filial de un grupo de microcréditos en Colombia según la página de STX).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "derecho",
+   "literal": "VALORIX es una filial de Credimax LLC […] Credimax tiene presencia en Colombia a través de Rapicredit, una fintech líder de microcréditos",
+   "dato": "El emisor pertenece a un grupo de microcrédito con actividad en Colombia",
+   "fuentePrimaria": "https://bit2me.com/es/stx",
+   "localizador": "bit2me.com/es/stx, bloque «Proyectos Valorix»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:12:13Z",
+   "alcanceYLimites": "Descripción comercial. No se ha leído información financiera del emisor.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Bit2Me STX es agencia de valores CNMV nº 343 y opera un SNL TRD inscrito. La razón social del emisor de diciembre y sus cuentas no son públicas."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "No hay emisión abierta hoy. La primera emisión está anunciada para diciembre de 2026, sin fecha exacta."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Dirigida a «inversores elegibles», sin definir. No hay mínimo, cupón, vencimiento ni comisiones publicados para esta emisión."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Sin advertencias de la CNMV para Bit2Me, Valorix, Activos y Valores Digitales, Credimax ni Rapicredit. Riesgos genéricos publicados. Falta el documento de emisión con los riesgos del emisor."
+  }
+ },
+ "estadoOferta": "proxima",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV · agencia de valores nº 343 y SNL TRD «Bit2Me STX» (régimen piloto DLT)",
+  "documentacionClara": "no",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Sería el primer bono tokenizado emitido en una infraestructura española del régimen piloto DLT, con un operador inscrito en la CNMV.",
+  "porQueNo": "Hoy no se puede comprar: está anunciado para diciembre, para «inversores elegibles» sin definir y sin documento de emisión."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No hay oferta abierta hoy. Bit2Me STX está autorizada (agencia de valores CNMV nº 343 y SNL TRD inscrito), pero su primera emisión, un bono de Valorix de 1 millón de euros, está prevista para diciembre de 2026. Va dirigida a «inversores elegibles» sin definir y no tiene publicados documento de emisión, mínimo, cupón, vencimiento ni comisiones. Conviene revisarla en diciembre: si el documento admite a particulares residentes en España, podría entrar en «en camino» o en principales.",
+ "bloqueos": [
+  "Documento de emisión del bono de diciembre no publicado.",
+  "stx.bit2me.com es una aplicación que exige registro; no se ha entrado.",
+  "La página bit2me.com/es/stx todavía muestra las condiciones del sandbox de 2024 (mínimo de 1.000 €, retiradas bloqueadas): están desfasadas y no se usan."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-03T10:05:34Z",
+  "finUtc": "2026-11-03T10:22:24Z"
+ }
+}

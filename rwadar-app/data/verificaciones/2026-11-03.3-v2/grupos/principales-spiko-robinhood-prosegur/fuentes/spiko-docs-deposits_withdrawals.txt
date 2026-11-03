@@ -1,0 +1,96 @@
+ 
+ Deposits and Withdrawals | Spiko Tech Docs 
+ Skip to main content 
+ Products Spiko Direct Spiko Embedded API Reference 
+ Search 
+ Our products 
+ Overview 
+ Spiko T-Bills 
+ Spiko Smart Cash 
+ Spiko Cash & Carry 
+ Fund Availability 
+ Onboarding Restrictions 
+ Account management 
+ Account creation 
+ Multi-User Access Management 
+ Deposits and Withdrawals 
+ Currency Exchange 
+ Accounting and Tax Treatment 
+ Tokenization 
+ Explaining Tokenization 
+ Transfers & Redemptions 
+ Addresses 
+ Security Audits 
+ NAV Data Feed 
+ Legal 
+ Legal Notice 
+ Regulatory Information 
+ Terms of Use 
+ Privacy Policy 
+ Account management 
+ Deposits and Withdrawals 
+ On this page 
+ Deposits and Withdrawals
+ The deposit and withdrawal process is the same across all Spiko products (T-Bills, Smart Cash, and Cash & Carry). You manage all operations from the Spiko platform.
+ Deposits ​ 
+ For each of our clients, each account and share class has a dedicated virtual IBAN (vIBAN), accessible directly from your interface or the API. Once your transfer is received on this vIBAN, reconciliation is done automatically and you receive a real-time notification.
+ Supported rails per currency ​ 
+ Currency Supported Rails 
+ EUR SEPA, TARGET2, SWIFT 
+ GBP CHAPS, BACS, Faster Payments, SWIFT 
+ USD SWIFT 
+ CHF SIC, SWIFT 
+ Beneficiary name ​ 
+ The beneficiary name to use on the wire transfer is always the same for a given product and deposit currency:
+ Product Deposit Currency Beneficiary Name 
+ Spiko T-Bills Euro ( EUTBL ) EUR Spiko Euro 
+ Spiko T-Bills Pound ( UKTBL ) GBP Spiko Sicav - Spiko UK T-Bills Money Market Fund 
+ Spiko T-Bills Pound ( UKTBL ) EUR Spiko Pound 
+ Spiko T-Bills Dollar ( USTBL ) USD Spiko Sicav - Spiko US T-Bills Money Market Fund 
+ Spiko T-Bills Dollar ( USTBL ) EUR Spiko Dollar 
+ Spiko Smart Cash ( SAFO , eurSAFO , gbpSAFO , chfSAFO ) Any Spiko Amundi 
+ Spiko Cash & Carry ( SPKCC , eurSPKCC ) Any Spiko Digital Assets Cash & Carry Fund 
+ Withdrawals ​ 
+ Spiko provides two withdrawal modalities: standard withdrawal and instant withdrawal .
+ WITHDRAWAL SECURITY
+ For security purposes, withdrawal bank accounts must meet strict ownership criteria:
+ Individual Accounts : Account holder name must match the Spiko account holder
+ Corporate Accounts : Account must be in the legal entity's name
+ Withdrawals to non-matching accounts will be rejected. Bank account ownership verification is mandatory.
+ Standard Withdrawals ​ 
+ Standard withdrawal is the default option. It can be used by all clients. Cutoff times and settlement timelines depend on the product and currency - refer to the relevant product section under Our products for details.
+ Instant Withdrawals (EUR only) ​ 
+ The instant withdrawal feature allows you to withdraw your funds from Spiko Euro and Spiko T-Bills Euro and receive them in your bank account within minutes. This feature uses SEPA instant credit transfer and is available 24/7 .
+ Instant transfers are supported for amounts up to €500,000 per day . Any amount above €500,000 per day is processed as a standard withdrawal, with timing depending on the product.
+ To make an instant withdrawal, simply make a withdrawal from an EUR-denominated product and select the "Instant Withdrawal" option. Please feel free to email us at support@spiko.io if you have any questions.
+ info
+ The instant withdrawal service is provided to you free of charge, Spiko covers all the costs related to instant withdrawals. For more details about how instant withdrawal works, please refer to Article 12 of our Terms of Use or contact us at support@spiko.io .
+ Previous
+ Multi-User Access Management
+ Next
+ Currency Exchange
+ Deposits Supported rails per currency 
+ Beneficiary name 
+ Withdrawals Standard Withdrawals 
+ Instant Withdrawals (EUR only) 
+ Documentation
+ Products 
+ Spiko Direct 
+ Spiko Embedded 
+ API Reference 
+ APIs
+ Public API 
+ Investor API 
+ Distributor API 
+ Legal
+ Legal notice 
+ Regulatory information 
+ Terms of use 
+ Privacy policy 
+ Spiko
+ spiko.io 
+ Spiko app 
+ Contact 
+ LinkedIn 
+ © 2026 Spiko. All rights reserved.
+ 

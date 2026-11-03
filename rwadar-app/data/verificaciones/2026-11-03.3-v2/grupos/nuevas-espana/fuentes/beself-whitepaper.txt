@@ -1,0 +1,1852 @@
+NOTA: texto extraído del PDF original (sha256 en inventario-consultas.json). Se han suprimido DNI, correos y la dirección del contrato. El PDF no se conserva porque contiene datos personales.
+
+          DOCUMENTO DE OFERTA DE EMISIÓN DE ACCIONES TOKENIZADAS
+    POR PARTE DE BESELF BRANDS, S.A. CON NOMBRE COMERCIAL “BESELF BRANDS”
+
+                                                                                 28 de marzo de 2025
+Denominación del Token:                 BeToken (BTK)
+
+Dirección del Smart Contract de la
+                                        [dirección de contrato suprimida; ver PDF original por su sha256]
+emisión del Token:
+
+Tipo de valor emitido:                  Acciones tokenizadas
+
+Valor nominal de cada Token:            0,01.- €
+
+Inversión mínima:                       100,00.- €
+
+Entidad de Servicios de Inversión       GABRIEL CARRILLO CAPEL EAF, S.L. (nº Registro 147)
+interviniente:
+
+Entidad Responsable de la               Ursus-3 Capital, AV., S.A. (CIF - A86796182)
+Inscripción y Registro:
+
+Información sobre la Inversión:
+La emisión de las acciones tokenizadas por parte de BESELF BRANDS, S.A. se realiza al amparo de lo dispuesto
+en la ley 6/2023 de los Mercados de Valores y de los Servicios de Inversión.
+
+El presente documento no es considerado un folleto informativo ni ha sido revisado por parte de la Comisión
+del Mercado de Valores ni ninguna otra autoridad competente o administrativa, según lo establecido en el
+artículo 35.2.b de la Ley de Mercado de Valores. El emisor del token es el único responsable del contenido de
+este documento.
+
+La emisión de los tokens va a consistir en el 100% de las acciones de BESELF BRANDS, S.A.
+
+El presente documento ha sido validado por una entidad autorizada para la prestación de servicios de
+inversión, e igualmente el proceso de comercialización de los tokens va a ser supervisado por dicha entidad
+autorizada. La validación del presente documento por parte de la empresa de servicios de inversión se ha
+realizado sobre la información a entregar a los inversores, que deberá ser clara, imparcial y no engañosa y
+referirse a las características y riesgos de los valores emitidos, así como a la situación jurídica y económico-
+financiera del emisor de una manera suficientemente detallada para permitir que el inversor pueda tomar una
+decisión de inversión.
+
+Las inversiones que se describen en el presente documento de oferta de emisión de valores tokenizados (en
+adelante, el “Documento de Oferta” y la “Oferta” respectivamente) pueden conllevar una pérdida de las
+cantidades invertidas.
+
+El contenido del Documento de Oferta y el mecanismo de inversión cumple con los requerimientos vigentes
+de la legislación nacional y es responsabilidad de los inversores potenciales fuera de la jurisdicción española
+comprobar que este instrumento no infringe ninguna legislación local en el país de residencia del inversor
+potencial antes de la formalización del presente acuerdo; asimismo BESELF BRANDS, S.A. se compromete a
+dejar a salvo a Gabriel Carrillo Capel EAF S.L. de cualquier posible sanción, multa o penalidad derivada de la
+omisión voluntaria o involuntaria de las responsabilidades legales y/o fiscales aplicables en su país.
+
+
+
+
+                                                                                                        1
+1. RESUMEN EJECUTIVO
+
+El presente documento, entre otros aspectos, describe la emisión de acciones tokenizadas
+representa vas del 100% del capital de la sociedad “Beself Brands, S.A.” (en adelante el
+“Emisor” o “Beself Brands” o la “Sociedad”), de las que un 16.65% se ofrecerán a nuevos
+inversores, y cuyos datos registrales se encuentran en la cláusula 2, a través de tokens de
+seguridad (Security Tokens).
+En concreto, el presente documento con ene información descrip va del proyecto a desarrollar
+por el Emisor tal y como se deﬁne más adelante, el mercado potencial en el que operará, las
+proyecciones ﬁnancieras del negocio que ocupa el presente documento y el sistema de
+adquisición de las acciones tokenizadas a emi r por el Emisor (en adelante, la “Información”).
+Es importante ma zar que el obje vo del proyecto a desarrollar por el Emisor se estructura en
+los siguientes pasos:
+i)        A través del presente documento, el Emisor pretende emi r acciones tokenizadas
+          representa vas del capital de la sociedad y ofrecer parte de ellas a aquellos inversores
+          que estuvieran interesados en par cipar en el proyecto que desarrollará directamente
+          el Emisor. Los fondos captados serán des nados a la par cipación en el desarrollo del
+          negocio del Emisor.
+ii)       Las acciones representa vas de la totalidad del capital de la sociedad del Emisor serán
+          tokenizadas. Esto es, mediante la adquisición de una o varias acciones, el inversor será
+           tular de una parte alícuota del capital de la Sociedad que, a su vez, estará representado
+          mediante una pluralidad de tokens o ﬁchas criptográﬁcas cuyas caracterís cas se
+          detallan más adelante (en adelante, los “Tokens”).
+El inversor deberá basar su decisión de par cipar en el proyecto que llevará a cabo el Emisor a
+través de su inversión teniendo en consideración no solo la estructura detallada entre los puntos
+i) al ii) anteriores sino también con respecto a la totalidad de la información del presente
+documento.
+
+2. INFORMACIÓN GENERAL
+
+2.1 Responsabilidad por el contenido del presente documento.
+El Emisor acepta la responsabilidad por el contenido del presente documento y declara que,
+según su leal saber y entender, la información expuesta es precisa y que no se han omi do datos
+o información relevantes. A este respecto, sobre cualquier discrepancia o error de traducción
+entre diferentes informaciones, será el documento publicado en castellano el que prevalecerá
+respecto a otros idiomas.
+El Emisor declara que, al preparar el presente documento, ha tomado todas las precauciones
+razonables para garan zar que, a su entender, la información contenida en el documento es
+correcta y no se omite ningún hecho o información que pueda afectar a la decisión de inversión
+por parte del lector.
+
+
+
+
+                                                                                                  2
+2.2 ¿Quién es el Emisor de los Tokens?
+
+2.2.1   Iden dad y datos de contacto del Emisor
+        - Emisor: Beself Brands, S.A.
+        - Nombre comercial: Beself Brands
+        - Website: www.besel rands.com
+        - Domicilio social: C/ Blanquers 7-8 – Parcela Valls 43- Tarragona
+        - Datos de inscripción: Hoja T-47561 Tomo 2847 Folio 5 IRUS: 1000116601650
+        - CIF: B65114373
+        - Teléfono: 877 990 800
+        - Email: info@besel rands.com
+
+2.2.2 Origen y ac vidades principales del Emisor
+Beself Brands se presenta como un grupo de marcas especializadas que busca inspirar a sus
+clientes a descubrir y vivir lo mejor que llevan dentro. Beself Brands se dedica a ofrecer
+productos que mejoran la experiencia diaria de las personas en diversas áreas de su vida.
+
+Un Portafolio Diversiﬁcado de Marcas
+Beself Brands opera a través de cinco marcas dis ntas, cada una diseñada para sa sfacer las
+necesidades especíﬁcas de sus clientes. Estas marcas se centran en sectores clave como el
+ﬁtness, la jardinería, el bricolaje, el hogar y los juguetes. Al ofrecer una amplia gama de
+productos, Beself Brands se asegura de que cada cliente pueda encontrar lo que necesita para
+mejorar su calidad de vida y disfrutar de su hogar al máximo.
+
+La estrategia de la empresa se basa en un modelo de negocio exclusivo en línea, lo que signiﬁca
+que todos sus productos están disponibles para la compra a través de plataformas digitales. Este
+enfoque no solo facilita el acceso a los productos, sino que también permite a Beself Brands
+mantenerse a la vanguardia de las tendencias del mercado y adaptarse rápidamente a las
+necesidades cambiantes de los consumidores.
+
+Ubicación y Operaciones
+Con sede cerca de Barcelona, Beself Brands es una empresa española que se ha consolidado en
+el ámbito del comercio electrónico. Su ubicación estratégica le permite aprovechar las ventajas
+del mercado europeo y establecer conexiones sólidas con partners y clientes en toda la región.
+La empresa ha inver do en tecnología y logís ca para garan zar que sus operaciones sean
+eﬁcientes y efec vas.
+
+Expansión y Nuevas Oportunidades
+Beself Brands pretende dar un paso signiﬁca vo hacia su crecimiento con la obtención de fondos
+a través de la emisión y posterior venta de Tokens representa vos de parte de las acciones de
+la compañía. Esta entrada de capital permi rá a la empresa iniciar un ambicioso proyecto de
+expansión territorial y redireccionamiento de sus canales de venta. La estrategia incluye una
+
+
+
+                                                                                              3
+combinación de ventas a través de marketplaces reconocidos, como Amazon, Mano a Mano y
+Maisons du Monde, así como la venta directa a través de sus propias páginas web.
+
+Experiencia y Conocimiento del Mercado
+La dilatada experiencia de Beself Brands en el negocio internacional y en la venta en línea es un
+ac vo invaluable. La empresa ha acumulado un profundo conocimiento del mercado al que se
+dirige, así como de los stakeholders involucrados en su cadena de valor. Este entendimiento le
+permite an cipar tendencias, iden ﬁcar oportunidades y adaptarse a las demandas del
+consumidor de manera efec va.
+El comercio electrónico ha experimentado un crecimiento exponencial en los úl mos años, y
+Beself Brands está bien posicionada para capitalizar esta tendencia. Con un enfoque en el estudio
+de las tendencias del mercado y la mejora con nua, la empresa se esfuerza por ofrecer
+productos que no solo sa sfacen las necesidades de sus clientes, sino que les ayuda a sacar lo
+mejor de ellos en los ámbitos que desarrollan sus ac vidades preferidas.
+
+Proyecciones de Crecimiento
+Con la implementación de su estrategia de expansión y el aprovechamiento de las oportunidades
+en el mercado de la venta en línea, Beself Brands prevé un crecimiento signiﬁca vo en los
+próximos años. Se es ma que, al ﬁnal de este proyecto, la empresa alcanzará una cifra de ventas
+neta cercana a los 100 millones de euros. Este obje vo ambicioso reﬂeja la conﬁanza de la
+empresa en su modelo de negocio y en la capacidad de sus marcas para resonar con los
+consumidores.
+
+2.2.3 Estructura societaria
+Beself Brands está formada por 5 socios, de los cuales los 3 mayoritarios que ostentan el 82,45%
+del capital y del número de acciones, siendo estos:
+   EMEI GROUP, SL: Con CIF: L714956X, de nacionalidad andorrana, ostenta el 57.34%% de las
+    acciones y del capital. ALBERT PRAT ASENSIO, español, con DNI: [DNI suprimido], co-fundador
+    de Beself Brands, SA es el accionista mayoritario de EMEI GROUP, S.L.
+   CHRISTIAN LEONARD BOWER: Con NIE: Y-3860576-V, de nacionalidad neerlandesa, ostenta
+    el 18.69% de las acciones y del capital
+   MIREIA CALVET VERGÉS: Con DNI: [DNI suprimido], de nacionalidad española, Co-Fundadora,
+    CEO y Administradora Única de Beself Brands, ostenta el 6.42% de las acciones y capital.
+
+2.2.4   Iden dad de los principales directores o gestores del Emisor
+
+Mireia Calvet Vergés
+Co-Fundadora de Emei Group S.L. y Administradora Única, CEO & Líder Digital en Beself Brands.
+
+Resumen Profesional
+Con más de diez años de experiencia en el ámbito digital y la ges ón de marcas, se dedica a
+liderar equipos hacia la creación de experiencias de compra online innovadoras y sostenibles.
+Como CEO de Beself Brands, ha guiado el crecimiento de la empresa y el lanzamiento de marcas
+
+                                                                                               4
+exitosas como GREENCUT, FITFIU, MCHAUS y BEELOOM. Se caracteriza por un liderazgo inclusivo,
+centrado en la mo vación y el compromiso con la excelencia, siempre buscando an cipar las
+tendencias del mercado y adaptarse a ellas para garan zar el éxito y la sostenibilidad a largo
+plazo.
+Experiencia Profesional
+     Emei Group S.L. Co-Fundadora
+        Impulsar el desarrollo de marcas digitales de alto impacto y liderando equipos
+        mul disciplinares hacia el éxito.
+     Beself Brands CEO & Líder Digital
+        Dirigir la transformación digital de la empresa, impulsando el crecimiento y
+        consolidación de marcas innovadoras. Vender productos que establecen nuevos
+        estándares en el mercado, creando un impacto duradero en el sector del comercio
+        online. Fomentar una cultura organizacional inclusiva y mo vadora, alineada con la
+        visión de innovación y calidad.
+     Beself Brands COO & Business Development
+        Ges ón de operaciones y desarrollo de nuevos negocios, con foco en la expansión
+        internacional y la op mización de procesos internos.
+     Agroverd Maquinaria y Herramientas S.L.
+        Marke ng Manager
+        Desarrollo de estrategias de marke ng digital y tradicional para aumentar la visibilidad
+        y posicionamiento de la marca en su sector.
+     Administración de Loterías y Apuestas del Estado
+        Key Account Manager
+        Ges ón de cuentas clave, implementación de estrategias de ﬁdelización y desarrollo de
+        nuevos productos.
+Habilidades Principales
+     Estrategia Empresarial
+     Comunicación de Marke ng
+     Liderazgo Inclusivo
+     Innovación y Transformación Digital
+     Desarrollo de Negocios
+     Ges ón de Equipos Mul disciplinares
+Formación Académica
+     EAE Business School
+        Master of Business Administra on (MBA), Execu ve MBA
+        2014 - 2017
+     Ins tuto Superior de Morfopsicología
+        Postgrado en Morfopsicología
+        Enero 2024 - Diciembre 2025
+     IESE Business School - University of Navarra
+        Curso de Especialización en Dirección y Liderazgo de Equipos
+        2017
+
+
+
+                                                                                              5
+       Universitat de Vic – Universitat Central de Catalunya (UVic-UCC)
+        Licenciatura en Relaciones Públicas, Publicidad y Comunicación Aplicada
+        2003 – 2008
+
+Albert Prat Asensio
+CEO de Emei Group y Fundador de Beself Brands.
+
+Resumen Profesional
+Empresario de serie con más de 20 años de experiencia en la creación y desarrollo de empresas
+de e-commerce. Con una sólida trayectoria en la creación, ges ón y expansión de marcas a nivel
+internacional, Albert Prat Asensio ha demostrado un fuerte liderazgo en la dirección estratégica
+y opera va de empresas de e-commerce y asesoría.
+Actualmente, es Director General de Emei Group, una consultora especializada en e-commerce,
+y accionista mayoritario de Beself Brands. Además, actúa como asesor estratégico para el
+desarrollo comercial y la creación de marcas dentro del grupo Beself Brands.
+
+Experiencia Profesional
+    Emei Group – Director General
+       (2021 - presente)
+       Asesoría especializada en e-commerce. Responsable de la estrategia general y desarrollo
+       de soluciones para op mizar el comercio electrónico de empresas de diferentes
+       sectores.
+    Beself Brands – Fundador y Asesor Estratégico
+       (2008 - presente)
+       Fundador de Beself Brands, grupo especializado en marcas propias en e-commerce.
+       Responsable del desarrollo estratégico y expansión internacional de las marcas del
+       grupo. Supervisión de operaciones clave en diferentes mercados europeos.
+    Prat Geräte und Werkzeuge GmbH – Fundador
+       (2013 - 2016)
+       Fundador de la empresa dedicada a la introducción y distribución de las marcas de Beself
+       Brands en el mercado alemán, ges onando la expansión y el posicionamiento en uno de
+       los mercados más estratégicos de Europa.
+    Greencut Technical Service S.L. – Co-Fundador
+       (2012 - 2018)
+       Co-fundador de la empresa dedicada a la reparación y mantenimiento en España de una
+       de las principales marcas del grupo Beself Brands. Coordinación de operaciones y
+       estrategias de servicio post-venta.
+    Director Comercial - Grupo de Marcas Alemanas en España
+       (Inicio de carrera profesional)
+       Inició su carrera profesional como Director Comercial de un grupo de marcas alemanas,
+       donde fue responsable de la distribución y expansión en el mercado español, logrando
+       un posicionamiento destacado en el sector.
+
+
+
+                                                                                              6
+Habilidades y Especialidades
+    Dirección estratégica y opera va
+    Creación y ges ón de marcas
+    Comercio internacional
+    E-commerce y marke ng digital
+    Desarrollo de planes de negocio
+    Ges ón de proyectos y equipos mul disciplinarios
+    Expansión internacional y posicionamiento de marcas en mercados clave
+Formación académica
+    MBA (Máster en Dirección de Empresas)
+        Universidad de Deusto
+        [2012]
+    ADE (Administración y Dirección de Empresas)
+        Universitat Oberta de Catalunya (UOC)
+        [2008]
+
+Toni Diaz
+CFO en Beself Brands
+
+Resumen profesional
+Toni Diaz es un profesional altamente cualiﬁcado en el ámbito ﬁnanciero, con una sólida
+trayectoria que abarca diversas posiciones clave en empresas de renombre.
+
+Con más de 25 años de experiencia en el sector ﬁnanciero, Toni Diaz ha adquirido habilidades
+que transcurren desde desarrollar el sen do del análisis y el detalle, a la dirección estratégica y
+ﬁnanciera; aportando ideas innovadoras y alterna vas ayudan a conseguir los obje vos
+marcados.
+
+Toni Diaz se destaca por ser exigente, crea vo y proac vo, cualidades que le permiten abordar
+desa os con una mentalidad estratégica y abierta. Es un tomador de decisiones eﬁcaz y un gran
+colaborador en equipo, lo que le ha permi do construir relaciones sólidas y fomentar un
+ambiente de trabajo posi vo. Su experiencia abarca áreas clave como sistemas, estrategia,
+análisis, ﬁnanzas e inversiones, lo que, junto con sus habilidades técnicas y de liderazgo, lo
+convierte en un valioso ac vo para Beself Brands.
+
+Experiencia Profesional
+       Beself Brands – CFO
+        (Actualidad)
+        Grupo especializado en marcas propias en e-commerce.
+        Realizando funciones de dirección ﬁnanciera y estratégica.
+
+       Solarca Group – Group CFO
+        (2019-2024)
+
+                                                                                                 7
+       Grupo internacional de 20 empresas, con su sede principal en Tarragona y presentado
+       sus servicios en el sector de la limpieza química.
+       Desarrollando e implementando la estrategia ﬁnanciera para facilitar el desarrollo
+       normalizado de la ac vidad en todo el grupo
+
+      Applus IDIADA – Financial Senior Manager
+       (2006-2019)
+       Grupo internacional de empresas, con su sede cerca de Barcelona, ofreciendo servicios
+       de tes ng e ingeniería aplicada a los vehículos.
+       Responsable de un equipo de 15 personas, responsable de los sistemas de información
+       ﬁnanciera, control de los procesos económico/administra vos, análisis de inversiones y
+       elaboración/seguimiento de presupuestos
+
+      Lear Corpora on – Finance Analyst
+       (2003-2005)
+       Filial europea de la mul nacional americana Lear Corpora on, con sus headquarters de
+       la división de electrónica y cableado situada en Valls.
+       Responsable del análisis de los KPIs de ges ón ﬁnanciera para el mercado europeo y
+       Filipinas
+
+      RSM – Audit Junior
+       (2002-2003)
+       Reconocida ﬁrma de auditoria ﬁnanciera. Auditor Junior.
+
+Habilidades y Especialidades
+      Estrategia ﬁnanciera
+      Planiﬁcación y organización
+      Finanzas internacionales
+      Negociación y resolución de acuerdos
+      M&A
+      Dirección y ges ón de equipos
+
+Educación
+      MBA
+       Universitat Rovira i Virgili
+       [2017-2018]
+
+      Bachelor of Business Administra on – Business controller
+       Universidad Politécnica de Madrid
+       [2011]
+
+      Administración y Dirección de Empresas
+       Universitat Rovira i Virgili
+
+                                                                                           8
+        [2000-2002]
+
+       Diplomatura en Ciencias Empresariales
+        Universitat Rovira i Virgili
+        [1998-2000]
+
+2.3 ¿Cuáles son las caracterís cas de los Tokens emi dos?
+
+2.3.1   Información general
+        - Tipo y clase: Polygon ERC-3643
+        - Denominación del token: BeToken (BTK)
+        - Moneda: Euros (€)
+        - Valor nominal de la acción en capital: 0,01€
+        - Valor de venta: De 2,60.- € a 2,75.- € (*)
+        - Número de Tokens emi dos: 17.841.900
+        - Importe total de la emisión en capital: 178.419,00.-€
+        - Importe total de la emisión dirigida a los inversores (incluyendo el valor
+            adicional):7.962.816,00.- €
+
+Beself Brands ene la intención de vender/colocar un máximo del 16,65% de los Tokens, esto es,
+2.971.200 acciones que ene en autocartera. En caso que no se alcance la colocación del total
+de los Tokens, Beself Brands adaptará el proyecto a los ingresos conseguidos.
+
+(*) El valor de venta dependerá de la fase en que se adquieran los Tokens. El precio de adquisición
+y fechas que abarcará cada fase se desarrollan en el punto 3.5.1. posterior.
+
+2.3.2 Naturaleza jurídica de los Tokens
+De acuerdo con lo previsto en el art 6 de la LMVSI, las acciones podrán representarse mediante
+tecnología de registros distribuidos (“en adelante, “TRD”).
+
+En este sen do, la Sociedad acordó en Junta General Extraordinaria de Socios de fecha 28 de
+marzo de 2025 la transformación de la sociedad a sociedad anónima y que la totalidad de las
+acciones estén representadas mediante TRD o tokens.
+
+URSUS-3 Capital AV, S.A. ha sido designado como en dad responsable de la inscripción y registro
+ERIR de las citadas acciones.
+
+2.3.3 Inversión mínima
+Para adquirir Tokens que sean objeto de comercialización (el 16,65% del capital social del
+Emisor), será necesario realizar una adquisición que comporte una inversión mínima de cien
+Euros (100,00.- €), según el precio que resulte aplicable en cada fase y subfase.
+
+
+
+
+                                                                                                 9
+2.3.4 Derechos polí cos y económicos asociados al Tokens
+Todos los Tokens tendrán los mismos derechos polí cos y económicos. No existen dis ntas clases
+de acciones, por ende, todos los Tokens disfrutarán de los mismos derechos.
+
+2.3.5 Compromisos de los fundadores
+Los accionistas que son tulares del 83,35% de las acciones tokenizadas (“los Tokens”) que no
+serán objeto de comercialización, con el ﬁn de ofrecer conﬁanza en el Proyecto se comprometen,
+mediante un acuerdo entre accionistas cuya adhesión será intrínseca y simultánea a la compra
+del Token, a no vender más de un 10% de sus Tokens por año durante los 4 primeros años
+después del cierre de la primera fase de venta de Tokens, según se establece en el apartado 3.5.1
+del presente documento.
+
+Beself Brands, en cuanto esté disponible, tramitará los documentos necesarios para permi r que
+sus accionistas ( tulares de los tokens) puedan negociar en un mercado secundario (exchange)
+del máximo nivel TIER 1, 2 ó 3, que para el po de inversión y disponibilidad del mercado sea
+posible.
+
+2.3.6 Polí ca de dividendos
+En el acuerdo entre accionistas adjunto en el presente documento, se establece que, a par r del
+ejercicio cerrado en el 2027, la mitad del resultado neto distribuible se repar rá entre los
+accionistas.
+La Compañía procederá a prac car, en el momento de la distribución de dividendos, intereses,
+par cipaciones en beneﬁcios o cualquier otra remuneración a los accionistas, las retenciones
+ﬁscales que resulten exigibles conforme a la norma va tributaria vigente en cada momento
+
+Ejemplo: Si el resultado neto distribuible del ejercicio 2027 es de 500k€, un socio que posea un
+2% de la compañía recibirá (importe bruto): 500k€ * 50 % * 2 % = 5k€
+
+2.3.7 Premio de ﬁdelidad en caso de beneﬁcios
+En el acuerdo entre accionistas adjunto en el presente documento, se establece que los nuevos
+accionistas que mantengan sus Tokens un (1) año después de la adquisición, disfrutarán de un
+premio en modo de donación monetaria por parte del Emisor consistente en el 10% de la
+inversión realizada, proporcional al número de tokens adquiridos, siempre que el Emisor obtenga
+durante el ejercicio 2025 beneﬁcios que sean distribuibles, esto es, una vez atendidas y cubiertas
+las reservas legales y estatutarias, compensado las pérdidas de ejercicios anteriores y otros
+conceptos establecidos en la Ley de Sociedades de Capital.
+
+Ejemplo:
+       Importe total recaudado por Beself Brands en todas sus fases y preventas: 7.962.816,00€
+       Total del premio: 7.962.816,00€ x 10% = 796.281,60€
+       Inversor que hubiera adquirido un 3% de los nuevos tokens obtendrá: 796.281,60€ x 3%
+        = 23.888,45€
+
+
+
+                                                                                               10
+Para ello, el Emisor se compromete a dotar una reserva contable y y así bloquear el importe de
+la venta de los Tokens, el importe correspondiente al 10% del importe de las ventas de Tokens.
+
+Esta donación se pagará dentro del mes siguiente a la aprobación de las cuentas anuales del
+ejercicio 2025.
+
+2.3.8 Derechos y compromisos de información del Emisor
+Las Cuentas Anuales del Emisor serán auditadas, aunque no sea obligatorio.
+
+Los accionistas recibirán trimestralmente (Enero, Abril, Julio y Octubre) información ﬁnanciera
+que permita conocer los resultados y evolución del proyecto. Los KPI’s podrán incluir, y no
+estarán limitados a estos: Ventas, EBITDA, EBIT, cash-ﬂow. Resultado neto. Predicción a ﬁnal de
+año. Ejecución de las par das presupuestadas en el proyecto.
+
+Los direc vos de Beself Brands se reservan el derecho de modiﬁcar o ampliar la can dad de KPIs
+evitando que la información sensible que pueda ser u lizada por la competencia no sea pública
+y distribuida
+Adicionalmente, los direc vos de Beself Brands, ofrecerán dos AMA:
+(a) febrero: presentación de los resultados del ejercicio anterior y presupuesto para el año en
+     curso; y
+(b) julio: análisis de la evolución del presupuesto y reajuste de la previsión para ﬁnal del
+     ejercicio.
+
+2.3.9 Representación de la par cipación en capital como criptoac vo
+La tecnología Blockchain es una tecnología que nace con el obje vo de crear registros
+distribuidos y, en concreto, la cadena de bloques de Polygon que es la u lizada para la emisión
+del Token, permite la generación y transmisibilidad de ac vos digitales con la seguridad de una
+tecnología basada en criptogra a.
+
+En relación con lo anterior, los Tokens de la presente emisión se generarán con el uso de Smart
+Contract bajo el estándar ERC-3643.
+
+2.3.10 Almacenamiento y control de los Tokens
+De cara al correcto almacenamiento y control de los Tokens, los inversores u lizarán un Wallet
+ges onada desde la plataforma de Beself Brands, cuya dirección será comunicada durante el
+proceso de alta en la plataforma. El inversor irá recibiendo los dividendos anuales en función de
+la proporción de Tokens que tenga en su Wallet frente a la can dad total de Tokens del que se
+compone la sociedad. La dirección del Smart Contract que da origen a los tokens es:
+[dirección de contrato suprimida; ver PDF original por su sha256].
+
+En el caso de que el Emisor requiera actualizar las caracterís cas técnicas de los protocolos
+informá cos o exista algún problema tecnológico, ya sea en la cadena de bloques u lizada, en el
+estándar u lizado o en el Smart Contract, el Emisor se reserva la posibilidad de bloquear
+
+                                                                                              11
+permanentemente todos los Tokens de los inversores. En dicho caso, el Emisor no ﬁcará a los
+inversores de esta situación pudiendo, optar por:
+
+(i)     la creación de nuevos tokens, que serán enviados a los inversores o almacenados en un
+        nuevo Smart Contract; o
+(ii)    proceder a la destokenización de las acciones. Las condiciones aplicables y los actos a
+        realizar para dicha destokenización serán enviados a los accionistas en dicho momento,
+        sin que en ningún caso puedan verse agraviados por dicha situación, sin perjuicio de que
+        no estarán disponibles ciertas caracterís cas que permite la tecnología Blockchain.
+
+3. PLAN DE NEGOCIO
+
+3.1 Introducción
+Beself Brands (h ps://besel rands.com/), con sede cerca de Barcelona, se dedica a la
+fabricación y distribución de diversas marcas propias, comercializando exclusivamente online,
+principalmente en el mercado europeo.
+Para entenderlo es necesario conocer la trayectoria de Beself Brands desde la creación de la
+empresa en 1996. A con nuación, destacamos los principales hitos del recorrido:
+ 1996: El fundador, Albert Prat, comienza a vender productos desde su hogar, publicitándose
+    en revistas de anuncios, como "Anun s". Con el empo, esta revista se digitaliza y se
+    convierte en un canal de ventas online.
+ 2003: Con la llegada de eBay, la plataforma pionera en USA, Albert Prat abre su primera
+    cuenta y comienza a vender en Internet, lo que marca el ﬁn del uso de "Anun s" como canal
+    de venta.
+ 2008: Tras conocer a varios fabricantes en su anterior trabajo, el fundador decide empezar
+    a producir productos por cuenta propia, comprando su primer contenedor de ar culos de
+    jardinería. Alquila su primera nave de 200 m² cerca de Barcelona y las ventas alcanzan los
+    300.000 €.
+ 2009: Debido al crecimiento de la ac vidad, se cons tuye la sociedad y se lanza la primera
+    marca propia, Greencut. La empresa se traslada a una nave de 500 m² y cuenta con 4
+    empleados, alcanzando unas ventas de 900.000 €.
+ 2011: La empresa crece nuevamente, pasando de 9 a 17 empleados y mudándose a una nave
+    de 3.600 m² en Barcelona. Se lanza la marca de ﬁtness FitFiu y se abre el mercado europeo
+    a través de eBay, alcanzando 3 millones de euros en ventas.
+ 2013: Nace la marca McHaus.
+ 2017: Beself Brands se traslada a unas nuevas instalaciones de 7.000 m² con un equipo de
+    34 personas. Se lanza la marca Playkin y se expande la presencia de Beself Brands a otros
+    Marketplaces, como Amazon. Las ventas alcanzan los 17 millones de euros.
+ 2019: Se amplían las instalaciones a 15.000 m². El equipo crece a 60 personas y se lanza
+    Beeloom, alcanzando una facturación de 21 millones de euros.
+ 2023: Con el mismo equipo y las mismas instalaciones, se lleva a cabo un reposicionamiento
+    estratégico orientado a alinear los productos, comunicaciones, atención al cliente y trabajo
+
+
+
+                                                                                             12
+    en equipo con los valores de la organización, realizando un rebranding para consolidarse
+    como Beself Brands.
+
+
+
+
+3.2 Productos y Mercados
+Beself Brands ofrece una variedad de productos a través de cinco marcas propias, especializadas
+en los mercados de: ﬁtness, jardinería, bricolaje, juguetes infan les y mobiliario.
+
+3.2.1 Productos y marcas
+Beself Brands ofrece un amplio catálogo de productos a través de sus dis ntas marcas:
+     FitFiu (h ps://www.ﬁ iu-ﬁtness.com): especializada en productos para iniciarse en el
+        mundo del deporte, tanto dentro como fuera del hogar. Se ofrecen bicicletas está cas,
+        walkpads, cintas de correr, y accesorios para ﬁtness y yoga.
+
+
+
+       Greencut (h ps://www.greencut-tools.com): marca especializada en maquinaria de
+        jardín, taller y bricolaje, para que los clientes puedan disfrutar del bricolaje y la
+        jardinería. Greencut ofrece productos, diseñados por nosotros, como: desbrozadoras,
+        robots cortacésped, sopladoras, desolladoras, herramientas de bricolaje, motosierras…
+
+
+
+       Playkin (h ps://www.playkinkids.com): combina entretenimiento y aprendizaje
+        mediante coches eléctricos y juguetes innovadores. La marca ofrece juguetes eléctricos
+        tales como coches y motos réplicas de las marcas más relevantes del mercado.
+
+
+
+       Beeloom (h ps://www.beeloomkids.com): marca especializada en juguetes educa vos
+        y mobiliario infan l que fomenta el aprendizaje de los más pequeños. Siguiendo la
+        metodología Montessori la marca ofrece juguetes, material didác co y mobiliario, tales
+        como: bicicletas sin pedales, Juguetes del hogar, construcciones y puzles, juguetes de
+        oﬁcios, torres de aprendizaje, tronas...
+
+                                                                                            13
+       McHaus (h ps://www.mc-haus.com): marca dedicada a la decoración y mobiliario del
+        hogar, ofreciendo productos como clima zadores, organizadores, mobiliario de salón,
+        sillas, sofás y accesorios de gaming.
+
+
+
+
+3.2.2   Los Mercados
+
+Beself Brands distribuye sus productos principalmente en el mercado de la Unión Europea,
+operando en países como España, Francia, Portugal, Bélgica, Países Bajos, Luxemburgo, Italia,
+Polonia, Alemania y Suiza.
+
+Dependiendo de la región, los productos y marcas que se ofrecen, así como el canal de venta
+(Marketplaces y website propio) varían. A con nuación, se muestra un gráﬁco con los principales
+mercados en los que se opera, junto con las marcas y Marketplaces que se u lizan.
+
+
+
+
+3.3 Canales de Venta (B2C)
+Beself Brands ofrece sus productos a mediante dos canales principales:
+
+1. Website: a través de su si o web corpora vo (www.besel rands.com) o las webs especíﬁcas
+   de cada marca, nuestros clientes pueden acceder fácilmente a nuestros productos.
+
+2. Marketplaces: se u lizan Marketplaces como escaparate para los productos. Estos pueden
+   ser:
+   o Genéricos: portales mul -producto, como Amazon.
+
+
+
+
+                                                                                            14
+    o   Especializados: portales centrados en categorías especíﬁcas, como BebeBou k (para
+        productos de Beeloom), Maison du Monde (para productos de McHaus) y Mano a Mano
+        (para productos de Greencut).
+
+Algunos de los partners de Beself (Marketplaces) a través de los que se distribuyen las macas del
+Emisor son:
+
+
+
+
+3.4 Proyecto
+Con los fondos que el Emisor planea obtener mediante la venta al precio de venta indicado de
+los Tokens que representan el 16,65% del capital se llevará a cabo un proyecto de expansión de
+mercado en los ámbitos de: ampliación de catálogo, aumento de ventas y expansión territorial
+(el “Proyecto”).
+
+    Fase 1 (Horizonte temporal: 24 meses):
+     o Desarrollo y crecimiento en mercados como Francia, Portugal e Italia.
+     o Potenciación del mercado alemán a través de marketplaces.
+El mercado francés es uno de los mercados más potentes, en cuanto a la compra on-line, de la
+Unión Europea. A nivel global el mercado on-line francés casi triplica el mercado español.
+
+Par endo de un nivel de ventas en Francia muy similar al que se realizan en España; con el
+Proyecto se pretende mul plicar por tres (3) las ventas en el mercado francés. En cuanto a las
+ventas en Italia, al ﬁnal del Proyecto, estas duplicarán las ventas actuales.
+
+En lo referente al mercado alemán: contando con una ra o de poder adquisi vo por habitante
+top en Europa, la potenciación del mercado alemán, va a facilitar que los productos de Beself
+Brands puedan ofrecerse a precios más elevados y así incrementar la rentabilidad.
+
+Para el éxito de esta fase, se va a requerir de inversión en mejora de medios informá cos,
+inteligencia ar ﬁcial y comunicación, entre otros; así como restructurar el pasivo de la compañía,
+para conseguir un mejor apalancamiento ﬁnanciero que incremente la rentabilidad de la
+empresa.
+
+    Fase 2 (Horizonte temporal: 24 meses):
+     o Potenciar las ventas a través del propio website en España, Francia, Italia y Portugal.
+     o Incrementar el valor de marca.
+
+
+Con la intención de incrementar la rentabilidad de la empresa, Beself Brands pretende potenciar
+la venta a través de su website. En un formato po Marketplace, entre otros obje vos, se
+conseguirá mejorar la experiencia de compra, obteniendo una venta cruzada de los productos
+
+
+                                                                                                 15
+de las diferentes marcas propias y desarrollando una estrategia de valor añadido enfocada a la
+sa sfacción del cliente.
+Con la transferencia de la venta de Marketplace externo a la venta por website propio, la
+rentabilidad se ve incrementada, tanto por evitar las comisiones de los servicios de
+Marketplaces, el pay per click o el coste de los banners publicitarios como por el conocimiento
+del cliente; al poder contactar directamente con él, sin intermediarios de comunicación y a través
+de medios más eﬁcientes.
+La mejora en la comprensión de los clientes va a permi r diseñar nuevos productos y mejorar
+los procesos de venta, aumentando así el disfrute del cliente.
+Para alcanzar los obje vos de esta fase y poder garan zar el volumen de visitas, compras y
+ﬁdelización necesarios, Beself Brands requerirá de inversión en medios de tecnología
+informá ca: Big Data, inteligencia ar ﬁcial, desarrollo de los website y potenciación del
+hardware; así como incrementar nuestra comunicación corpora va a través de redes sociales,
+Ads y eventos.
+
+   Fase 3 (Horizonte temporal: 24 meses):
+    o Entrada en el mercado del Reino Unido (Inglaterra, Gales, Escocia e Irlanda).
+    o Expansión en el mercado alemán a través del propio website.
+
+
+Tras consolidar las fases anteriores, el Emisor se enfocará en op mizar el margen de ventas en
+Alemania y en expandirse en el mayor mercado de Europa: el Reino Unido.
+Una vez implementados y consiguiendo un volumen de ventas adecuado en Alemania, Beself
+Brands redirigirá su estrategia a conducir el mercado alemán a la compra en su website. Como
+se comentaba en la fase anterior, esta estrategia permi rá mejorar la rentabilidad por venta.
+En cuanto a la integración en el mercado inglés, con el mercado de la Unión Europea consolidado,
+se pretende alcanzar el que es el mercado europeo más ac vo y más grande en la compra on-
+line.
+Beself Brands aprovechará la experiencia e inversión realizadas en las etapas anteriores para
+conseguir el éxito en esta fase. Los fondos necesarios irán orientados, principalmente, al área de
+marke ng para fomentar las campañas de comunicación que ayuden a conseguir la penetración
+en el mercado inglés y la conducción de las compras de los clientes alemanes a los websites
+corpora vos. Al mismo empo, será necesario inver r en medios tecnológicos para absorber la
+entrada de nuevas visitas y compras en nuestro entorno web.
+
+3.5 Descripción de la opera va de negocio y proyecciones ﬁnancieras
+Beself Brands ene la intención de impactar en el mercado on-line de la Unión Europea y de
+Europa potenciando el posicionamiento de sus marcas e incrementando las ventas, tanto a
+través de partners (Market places) como de su propio website.
+
+3.5.1 Necesidades de ﬁnanciación del Proyecto
+Beself Brands para desarrollar su Proyecto de expansión territorial, de marca y canales de venta
+precisa de una inversión de 7.962.816 €.
+
+
+
+                                                                                               16
+ Beself Brands ofrece a los potenciales inversores la posibilidad de colaborar en este Proyecto
+ mediante la par cipación como tulares de parte del capital social de la sociedad a través de
+ Security Tokens (Token de seguridad).
+ Beself Brands contaba con una estructura de fondos propios a 31 de diciembre de 2024 (balance
+ no auditado) como sigue:
+- Capital social: 148.707,00.-€
+- Reserva legal: 45.800,00.- €
+- Otras reservas y primas de emisión: 775.901,00.-€
+- Total fondos propios: 970.408,00.-€
+
+En fecha 28 de marzo de 2025 se ha acordado ampliar el capital social con cargo a reservas de
+libre disposición por importe de 29.712,00. € mediante la creación de 2.971.200 nuevas acciones
+de un cén mo de valor nominal cada una de ellas (0,01.- €) representadas por Tokens que fueron
+íntegramente asumidas por el propio Emisor en régimen de autocartera y que son las que se van
+a proceder a comercializar, dejando la estructura de fondos propios como sigue:
+- Capital social: 178.419,00.-€
+- Reserva legal: 45.800,00.- €
+- Otras reservas y primas de emisión: 746.189,00.-€
+- Total fondos propios: 970.408,00.-€
+
+ Los 17.841.900 Tokens serán distribuidos de la siguiente forma:
+     - 14.870.700 Tokens pertenecen a los actuales accionistas; y
+     - 2.971.200 Tokens pertenecen a la propia sociedad y serán los ofertados a los inversores.
+
+ Cada Token corresponderá a una acción del capital social del Emisor, cuyo valor nominal es de
+ 0.01.-€
+
+ Los Tokens ofertados a los inversores serán lanzados en dos fases:
+ - Fase 1:
+     o Subfase primera: hasta el 2 de junio de 2025.
+     o Subfase segunda: 19 de junio de 2025.
+
+ -   Fase 2:
+     o Subfase primera: 8 de sep embre de 2025.
+     o Subfase segunda: 15 de sep embre de 2025.
+
+ El precio del Token dependerá de la fase y subfase en que el inversor lo adquiera. El precio del
+ Token incluirá el valor nominal y un sobre precio o prima de emisión. La prima va a ser dis nta
+ en función del momento de adquisición del Token.
+
+ En el caso que alguno de los Tokens no se coloque en una subfase, se ofrecerán de nuevo en la
+ siguiente.
+
+
+
+                                                                                              17
+En el siguiente cuadro se indican los valores:
+
+                                                              Valor por Token                                             Importe en Euros
+                                                                                          Prima
+                                          Número de                       Capital                              Total                                Prima
+                                                    Valor token                          emisión                                  Capital
+                                           Tokens                           (€)                                 (€)                                emisión
+                                                                                           (€)
+Capital social antes de la amplicación       14.870.700       0,01000       0,01000                     148.707,00               148.707,00          0,00
+
+Venta 1                                         594.240       2,60000       0,01000        2,59000     1.545.024,00              5.942,40         1.539.081,60
+Venta 2                                         891.360       2,65000       0,01000        2,64000     2.362.104,00              8.913,60         2.353.190,40
+Total                                         1.485.600                                                3.907.128,00              14.856,00        3.892.272,00
+Venta 3                                         594.240       2,70000       0,01000        2,69000     1.604.448,00              5.942,40         1.598.505,60
+Venta 4                                         891.360       2,75000       0,01000        2,74000     2.451.240,00              8.913,60         2.442.326,40
+Total                                         1.485.600                                                4.055.688,00              14.856,00        4.040.832,00
+Total ampliación de capital (%)                 16,65%
+Total ampliación de capital                   2.971.200                                                7.962.816,00              29.712,00        7.933.104,00
+
+Total tokens que componen los FFPP           17.841.900                                                                          178.419,00
+
+
+                                                          Número de                                            Total
+                                                                    Valor token
+                                                           Tokens                                               (€)
+Venta 1                                                          594.240                2,60000        1.545.024,00
+Venta 2                                                          891.360                2,65000        2.362.104,00
+Total                                                          1.485.600                               3.907.128,00
+Venta 3                                                          594.240                2,70000        1.604.448,00
+Venta 4                                                          891.360                2,75000        2.451.240,00
+Total                                                          1.485.600                               4.055.688,00
+Total ampliación de capital (%)                                  16,65%
+Total ampliación de capital                                    2.971.200                               7.962.816,00
+
+Total tokens que componen los FFPP                            17.841.900
+
+Valoración de Beself Brands
+
+
+
+                                                                                                                                     Años
+                                           Año 0      Año 1       Año 2       Año 3        Año 4     Año 5             Año 6
+k€                                                                                                                                posteriores
+EBITDA                                                2.105       2.970         4.280      6.350     8.810             11.630
+
+Impuestos                                             (410)       (620)         (930)     (1.440)    (2.060)           (2.790)
+Variación del WC                                      705          573          887        1.084     1.243             1.535
+
+Inversión                                             (100)       (350)         (425)      (150)      (125)             (150)
+
+Free Cash Flow                                        2.300       2.573         3.812      5.844     7.868             10.225       73.092
+
+Flujo de caja actualizado                 46.142      2.133       2.052         2.615      3.448     3.993             4.463        27.438
+Deuda financiera actual                   (5.097)
+
+Ampliación de capital                      7.963
+Valor actual del proyecto                 49.008
+
+Numero de tokens                         17.841.900
+Valor teòrico del token (€)                 2,7
+
+
+El valor actual de Beself Brands a inicio del Proyecto asciende a 49.008.000.-€.
+
+
+
+                                                                                                                                             18
+Para el cálculo del valora actual se ha considerado el escenario base, se ha confeccionado un
+cash-ﬂow del proyecto par endo de las entradas y salidas de cash de las par das de la cuenta
+de resultados (EBITDA, costes ﬁnancieros e impuestos).
+
+Las inversiones deﬁnidas para cada ejercicio corresponden tanto a las inversiones en
+infraestructura tecnológica y desarrollo de websites mostradas en el apartado “Des no de la
+inversión” del whitepaper (mostramos el cuadro a con nuación) como a otras inversiones que
+serán necesarias para el desarrollo orgánico de la ac vidad.
+
+                                                                          Importe
+Concepto
+                                                                            (k€)
+Adquisición stock para rotación permanente                                  2.000
+
+Reestructuración pasivo de la sociedad                                      3.700
+
+Inversión en infraestructura tecnológica                                     650
+
+Desarrollo de los websites                                                   300
+
+Mejora e implementación de los instrumentos de control interno               300
+
+Costes estructurales para la ampliación de capital                           185
+
+Costes lanzamiento para negociación en exchange de los BeToken               150
+
+ERIR                                                                         25
+
+Liquidez para garantizar la negociabilidad de los BeToken                    500
+
+Gastos extraordinarios                                                       153
+
+Total inversión                                                             7.963
+
+La variación en el working capital, es decir, el fondo de maniobra, es consecuencia del
+incremento de ac vidad. Para su cálculo se han tenido en cuenta las condiciones habituales de
+pago de proveedores y acreedores, impuestos internacionales y los plazos de cobro de las ventas
+realizadas. El efecto, dado que el período de cobro es signiﬁca vamente más corto que el
+período de pago es posi vo en cada ejercicio.
+
+Para la obtención el valor actual de la Sociedad, se ha procedido a actualizar los ﬂujos de caja
+futuro, u lizando un WACC del 15.3% y una renta residual para los ejercicios posteriores a la
+ﬁnalización del proyecto descrito que observa un crecimiento orgánico similar al de la inﬂación
+media a largo plazo (2.0%) Con todo ello, valor actual de los cash-ﬂows esperados asciende a
+46.142.000,00.-€.
+
+Si consideramos que el valor ﬁnanciero de la deuda que ostenta la empresa a cierre del ejercicio
+2024 es de 5.1M y la aportación por incremento de capital explicada en este whitepaper, la
+valoración de la empresa, como se muestra en el cuadro al inicio del apartado es de 49.008.000.-
+€, lo que, dado el número de token totales creados, arroja un valor medio teórico por token de
+2.7€
+
+
+                                                                                             19
+En este sen do, se adjuntan las cuentas anuales del ejercicio 2023 auditadas, así como un
+balance de situación auditado a fecha 30 de se embre de 2024.
+
+3.5.2 Proyección a 6 años de la cuenta de Pérdidas y Ganancias.
+3.5.2.1 Escenario Base
+Teniendo en cuenta el escenario base, la es mación de la cuenta de pérdidas y ganancias para
+Beself Brands para los próximos 6 años sería la siguiente:
+
+
+                                                            Pressupuesto
+                                                                              Año 1       Año 2          Año 3               Año 4            Año 5         Año 6
+                                                                2025
+k€
+Ventas                                                         22.887        31.200      38.000          48.300            61.700            77.100        95.800
+Consumos                                                      (18.882)       (25.470)   (30.740)      (38.950)             (49.180)          (60.950)      (75.400)
+
+Margen operativo                                                 4.005        5.730       7.260          9.350             12.520            16.150        20.400
+
+Margen operativo (%)                                           17,5%         18,4%       19,1%           19,4%               20,3%           20,9%         21,3%
+
+Team                                                           (2.160)       (2.265)     (2.760)         (3.430)           (4.420)           (5.510)       (6.820)
+
+Overheads                                                      (1.320)       (1.360)     (1.530)         (1.640)           (1.750)           (1.830)       (1.950)
+EBITDA                                                           525          2.105       2.970          4.280               6.350            8.810        11.630
+
+EBITDA %                                                         2,3%         6,7%        7,8%            8,9%               10,3%           11,4%         12,1%
+
+Amortización                                                     (184)        (195)       (245)           (335)              (395)            (405)         (375)
+
+EBIT                                                             341          1.910       2.725          3.945               5.955            8.405        11.255
+
+EBIT %                                                           1,5%         6,1%        7,2%            8,2%               9,7%            10,9%         11,7%
+
+Resultados Financieros                                           (264)        (270)       (250)           (225)              (200)            (150)         (100)
+EBT                                                               77          1.640       2.475          3.720               5.755            8.255        11.155
+
+EBT %                                                            0,3%         5,3%        6,5%            7,7%               9,3%            10,7%         11,6%
+
+Impuesto de Sociedades                                           (20)         (410)       (620)           (930)            (1.440)           (2.060)       (2.790)
+
+Resultado neto                                                    57          1.230       1.855          2.790               4.315            6.195         8.365
+Resultado neto %                                                 0,2%         3,9%        4,9%            5,8%               7,0%             8,0%          8,7%
+
+
+
+3.5.2.2 Escalado de rentabilidad: Proyección 6 años base
+
+                                                  Pressupuesto
+                                                                    Año 1     Año 2     Año 3      Año 4           Año 5             Año 6       Año 7
+                                                      2025
+k€
+Fondos propios Iniciales                              970           8.990     9.424     11.279     13.141          16.061        20.099
+Resultado neto del ejercicio                          57            1.230     1.855     2.790      4.315           6.195             8.365
+Rentabilidad sobre fondos propios iniciales (%)       5,9%         13,7%      19,7%     24,7%      32,8%           38,6%             41,6%
+
+
+Aportación nuevos inversores                         7.963              0       0         0          0               0                0              0
+Distribución de resultados preferencial                0            (796)       0         0          0               0                0              0
+Distribución de resultados                             0                0       0       (928)      (1.395)         (2.158)       (3.098)         (4.183)
+Fondos propios final del ejercicio                   8.990          9.424     11.279    13.141     16.061          20.099        25.366          21.184
+
+                                                                                                                                                            Total del
+                                                                    Año 1     Año 2     Año 3      Año 4           Año 5             Año 6       Año 7
+                                                                                                                                                            proyecto
+Retribución nuevos inversores (k€)                                     796      0        155        233             360              517          698        2.759
+Rentabilidad sobre la inversión (%)                                10,0%       0,0%      1,9%       2,9%            4,5%             6,5%         8,8%       34,6%
+
+
+
+
+                                                                                                                                                                     20
+Cabe destacar las siguientes consideraciones y resultados:
+1. Los inversores que conserven los Tokens al ﬁnal del primer año, recibirán un premio en forma
+   de donación (únicamente atribuible a los nuevos accionistas) del 10% de la inversión
+   realizada, proporcional al número de Tokens adquiridos.
+
+2. La rentabilidad global de los dividendos distribuidos a los inversores (incluyendo el premio
+   indicado con anterioridad) es del 34.6%. La rentabilidad par cular de cada inversor
+   dependerá de la Fase y la subfase en que el inversor adquiera su Token, siendo más rentable
+   para los inversores que par cipen en la subfase 1 de la Fase 1 y menos rentable para los
+   inversores que par cipen en la subfase 2 de la Fase 2.
+
+3. A par r del año 2 (2027) se distribuirán el 50% del resultado neto distribuible.
+
+4. El valor en fondos propios de Beself Brands hasta el ﬁnal del proyecto se incrementa en un
+   136%.
+
+La rentabilidad esperada, según se detalla en el punto 2 anterior se ob ene de considerar los
+ingresos medios que los nuevos inversores obtendrían en el caso que mantengan los tokens
+desde la venta inicial hasta el reparto de los beneﬁcios del ejercicio 6. Esta rentabilidad del 34.6%
+se alcanza de la siguiente forma:
+                                                                                           Importe
+                                     Total retribución        % nuevos inversores   correspondiente a los
+                                                                                     nuevos inversores
+Premio por fidelidad                    796.281,60                  100,00%              796.281,60
+
+Dividendos Año 2                        927.500,00                  16,65%               154.455,97
+
+Dividendos Año 3                       1.395.000,00                 16,65%               232.308,44
+
+Dividendos Año 4                       2.157.500,00                 16,65%               359.287,07
+
+Dividendos Año 5                       3.097.500,00                 16,65%               515.824,66
+
+Dividendos Año 6                       4.182.500,00                 16,65%               696.509,00
+
+                                            Total de rendimientos obtenidos (€)         2.754.666,75
+
+                                                     Aportación nuevos inversores       7.962.816,00
+
+                                                           Rentabilidad esperada           34,6%
+
+
+
+
+                                                                                                        21
+3.5.3   Des no de la inversión
+
+                                                                               Importe
+              Concepto
+                                                                                 (k€)
+              Adquisición stock para rotación permanente                        2.000
+
+              Reestructuración pasivo de la sociedad                            3.700
+
+              Inversión en infraestructura tecnológica                           650
+
+              Desarrollo de los websites                                         300
+
+              Mejora e implementación de los instrumentos de control interno     300
+
+              Costes estructurales para la ampliación de capital                 185
+
+              Costes lanzamiento para negociación en exchange de los BeToken     150
+
+              ERIR                                                               25
+
+              Liquidez para garantizar la negociabilidad de los BeToken          500
+
+              Gastos extraordinarios                                             150
+
+              Total inversión                                                   7.963
+
+Adquisición de stock para rotación permanente: dada la celeridad con la que se deben distribuir
+los productos adquiridos on-line por los clientes de Beself Brands y el largo periodo de
+abastecimiento, es signiﬁca vamente relevante disponer de un stock adecuado para evitar
+quedarse sin existencias y no poder abastecer al mercado para conseguir las ventas necesarias
+deﬁnidas en el plan anterior.
+Para ampliar la oferta en Francia, Portugal, Italia, Alemania y ﬁnalmente en Reino Unido, será
+necesario poder u lizar almacenes descentralizados para poder cumplir con los plazos de
+entrega, lo que obligará a Beself Brands a incrementar su valor de stock.
+
+Reestructuración del pasivo de la sociedad: Beself Brands pretende ser una empresa con menor
+dependencia de ﬁnanciación con en dades de crédito. Para ello, des nará parte de los fondos
+recibidos a reestructurar su pasivo, provocando, al mismo empo una reducción paula na de los
+costes ﬁnancieros.
+
+Inversión en infraestructura tecnológica: la potenciación del website de la compañía como
+segundo canal de venta, al igual que la descentralización de los almacenes, requiere de inversión
+tecnológica para garan zar un acceso adecuado de los clientes de Beself Brands a los productos
+ofrecidos, upgrade de la polí ca de ciberseguridad, adecuación de servidores y u lización de
+cloud, entre otras inversiones.
+
+Desarrollo de los websites: dada la competencia en el sector de los maketplaces, el desarrollo
+de los websites corpora vos de las cinco marcas de Beself Brands, así como la aplicación de
+inteligencia ar ﬁcial en el workﬂow de navegación de los clientes, requiere de un proyecto muy
+innovador y de amplia envergadura.
+
+
+
+                                                                                              22
+Costes estructurales de la ampliación de capital: fondos para hacer frente a los gastos
+notariales, registrales, administra vos y de comunicación necesarios para el lanzamiento de los
+BeToken.
+
+Costes de lanzamiento para la negociación de BeToken en un Exchange: con el ﬁn de garan zar
+a los inversores de Beself Brands la posibilidad de negociar con sus BeToken en un mercado
+secundario, la compañía reserva una par da de 150.000,00.-€ para hacer frente a los costes de
+registro y lanzamiento. La empresa, una vez lanzados los BeToken en el mercado secundario,
+desarrollará acciones de marke ng para mantener el conocimiento e interés de estos y facilitar
+el trading de los inversores. Beself Brands seguirá trabajando en la incorporación de los Tokens
+para su co zación en nuevos exchanges a medida que obtengan las regulaciones necesarias, con
+el obje vo de ampliar el alcance y aumentar el atrac vo del SECURITY TOKEN.
+
+Liquidez para garan zar la negociabilidad de los BeToken: Beself Brands pretende que sus
+inversores puedan disfrutar de una compra/venta ágil en el mercado secundario de sus tokens.
+Para ello, se reservará 500.000,00.- € para dotar de liquidez al token.
+
+4. DERECHOS DE INFORMACIÓN DE LOS INVERSORES
+
+Los inversores podrán iden ﬁcarse en la Web donde tendrán información sobre Beself Brands:
+las inversiones realizadas, rentabilidad, así como información relevante que también podrá ser
+compar da por otros canales de comunicación como las redes sociales.
+Además de que serán tulares de los derechos inherentes a la tularidad de las acciones.
+
+5. COMERCIALIZACIÓN DE LOS TOKENS
+
+5.1 Procedimiento de comercialización de los Tokens
+La Emisión de las acciones tokenizadas se realiza al amparo de lo dispuesto en la ley 6/2023 de
+Mercados de Valores y de los Servicios de Inversión.
+
+La emisión de los derechos y obligaciones tokenizados se va a producir en la propia
+infraestructura de Beself Brands, SA www.besel rands.com y www.betoken.io
+
+5.2 Iden ﬁcación de la ERIR y sus funciones en la presente Emisión
+5.2.1 Iden ﬁcación de la ERIR que intervendrá en el proceso de Emisión:
+Actuará como ERIR, la sociedad Ursus-3 Capital AV, S.A. (en adelante “la ERIR”) con CIF A-
+86796182 y domicilio en Madrid, Calle Juan Hurtado de Mendoza, 15, en dad ﬁnanciera
+debidamente inscrita con el número 251 en el Registro de Agencias de Valores de la Comisión
+nacional del Mercado de Valores (CNMV) y que está autorizada para prestar la ac vidad prevista
+en la letra a) del ar culo 126 de la ley 6/2023, de 17 de marzo, de los Mercados de Valores y de
+los Servicios de inversión (¨LMVSI”).
+
+
+
+
+                                                                                             23
+5.2.2 Funciones de la ERIR
+De conformidad con los ar culos 6, 8, 12 y 14 de la LMVSI la ERIR ene las siguientes funciones:
+ Garan zar la integridad e inmutabilidad de las emisiones de los valores negociables.
+ Iden ﬁcar de forma directa o indirecta a los tulares de los derechos sobre los valores
+    negociables.
+ Determinar la naturaleza, caracterís cas y número de los valores de cada tular.
+ Garan zar a los tulares su acceso a la información correspondiente a sus valores
+    negociables, así como a las operaciones realizadas sobre estos.
+ Ges onar la inscripción, cons tución y ejecución de los diferentes actos y negocios jurídicos
+    que deban inscribirse conforme a derecho, incluyendo, entre otros, derechos reales
+    limitados, embargos y otros gravámenes y transmisiones forzosas, así como las
+    transmisiones mor s causa.
+ Expedir cer ﬁcados de legi mación acredita vos de los dis ntos derechos sobre los valores
+    negociables.
+ Ges onar el ejercicio de los derechos de cobro de los intereses, dividendos y cualesquiera
+    otros eventos corpora vos de contenido económico.
+
+5.3 Iden ﬁcación de la ESI y sus funciones en la presente emisión
+5.3.1 Iden ﬁcación de la ESI que intervendrá en el proceso de emisión:
+
+DENOMINACIÓN SOCIAL: GABRIEL CARRILLO CAPEL EAF, SL
+Nº REGISTRO EN CNMV: 147
+
+5.3.2 Funciones de la ESI
+La ESI llevará a cabo las siguientes funciones con respecto al proceso de venta de los Tokens:
+a) Validación del Proyecto
+    La ESI ha llevado a cabo una validación del proyecto empresarial que va a ser ﬁnanciado a
+    través de la emisión de los Tokens revisando la siguiente información:
+     El proyecto empresarial y Plan de negocio que se pretende ﬁnanciar
+     Accionistas del Proyecto
+     Direc vos y gestores del Proyecto
+     Riesgo asociado al Proyecto y a la comercialización de los Tokens: la ESI llevará a cabo el
+          análisis de los diferentes posibles escenarios. Se analizarán los riesgos intrínsecos al
+          modelo de negocio, así como a la emisión a través de la tecnología Blockchain
+     Estructura organiza va del Proyecto y procedimientos de control implantados para la
+          mi gación de riesgos.
+    La ESI ha llevado a cabo una supervisión general del proyecto, debiendo validar el presente
+    documento que cons tuye la información a entregar a los inversores. Por otro lado, la ESI ha
+    supervisado que la información rela va a la situación jurídica, económica y ﬁnanciera del
+    Emisor esté a disposición del inversor de una manera suﬁcientemente clara y detallada para
+    permi r que pueda tomar una decisión de inversión fundada.
+
+
+
+
+                                                                                               24
+5.4 Dirección y Ges ón del Proyecto
+Tanto la captación y ges ón de os fondos como la ges ón del proyecto se llevará a cabo a través
+del Emisor.
+
+5.5 Comercialización y colocación de los Tokens a inversores
+El Emisor llevará a cabo la comercialización de los Tokens entre inversores a través de la
+plataforma de www.besel rands.com y www.betoken.io
+Con respecto a los potenciales inversores, se llevará a cabo la categorización de los mismos según
+los criterios establecidos por la norma va ﬁnanciera. En concreto, se determinará si el potencial
+inversor puede ser tratado como inversor profesional (y, en caso contrario, inversor minorista),
+se evaluará su ap tud para la suscripción de Tokens en la presente Emisión. Con respecto a los
+inversores que tengan la condición de minoristas, Beself Brands será responsable de determinar
+la conveniencia del producto ﬁnanciero ofrecido en el presente Proyecto para su perﬁl inversor,
+y de realizar las advertencias precep vas respecto del riesgo que tal inversión supone.
+
+Igualmente, será necesario por parte de los potenciales inversores completar el proceso de
+iden ﬁcación formal y facilitar la información requerida en la plataforma de
+www.besel rands.com y www.betoken.io para dar cumplimiento a la norma va en materia de
+prevención del blanqueo de capitales y ﬁnanciación del terrorismo (PBC-FT).
+
+Estos inversores iniciales serán incluidos en la “Whitelist” o listado aprobado de inversores tras
+haber superado los procesos de KYC y PBC deﬁnidos anteriormente.
+
+En relación con la categorización de los posibles inversores, su iden ﬁcación y la información
+rela va a (PBC-FT), Beself Brands será responsable del tratamiento de dichos datos personales,
+que se ajustarán a polí cas de privacidad es puladas por el propio Emisor.
+
+5.6 Tipos de inversores a los que va dirigida la Emisión
+La oferta de Tokens se dirigirá, tanto a inversores cualiﬁcados, entendiendo por tales, los
+inversores profesiones según la deﬁnición de los mismos que se hace en el ar culo 205 LMVSI y
+su reglamento de desarrollo, como a determinadas personas sicas y jurídicas que no tengan la
+condición de inversor cualiﬁcado. En estos úl mos casos, Beself Brands analizará la información
+provista por el inversor a ﬁn de determinar que el inversor ene la suﬁciente experiencia y
+conocimientos ﬁnancieros como para considerarlo idóneo para realizar la inversión de los
+Tokens.
+Todos los inversores, con independencia de su categorización, recibirán la misma información e
+inver rán en las mismas condiciones.
+
+5.7 Adquisición de los Tokens
+El compromiso de adquisición de los Tokens se llevará a cabo durante el periodo de adquisición,
+deﬁnido en la cláusula 5.8 del presente documento, en la plataforma www.besel rands.com y
+www.betoken.io de Beself Brands.
+
+
+
+                                                                                               25
+5.8 Períodos de Adquisición
+El plazo para rellenar y aceptar el Acuerdo de Adquisición de los Tokens (en adelante, el “Período
+de Adquisición”) se distribuirá en dis ntas fases y subfases establecidas en el apartado 3.5.1 del
+presente documento.
+
+5.9 Divisa y criptomonedas aceptadas
+La adquisición de Tokens en la plataforma deberá realizarse única y exclusivamente mediante
+Euros.
+
+5.10 Precio de los Tokens
+El precio de adquisición dependerá de la fase de Emisión y subfase de acuerdo a la tabla
+siguiente:
+
+                                                       Valor por Token                                 Importe en Euros
+                                                                               Prima
+                                         Número de                Capital                    Total                          Prima
+                                                   Valor token                emisión                       Capital
+                                          Tokens                    (€)                       (€)                          emisión
+                                                                                (€)
+Capital social antes de la amplicación    14.870.700    0,01000     0,01000               148.707,00       148.707,00        0,00
+
+Venta 1                                      594.240    2,60000     0,01000     2,59000   1.545.024,00     5.942,40       1.539.081,60
+Venta 2                                      891.360    2,65000     0,01000     2,64000   2.362.104,00     8.913,60       2.353.190,40
+Total                                      1.485.600                                      3.907.128,00     14.856,00      3.892.272,00
+Venta 3                                      594.240    2,70000     0,01000     2,69000   1.604.448,00     5.942,40       1.598.505,60
+Venta 4                                      891.360    2,75000     0,01000     2,74000   2.451.240,00     8.913,60       2.442.326,40
+Total                                      1.485.600                                      4.055.688,00     14.856,00      4.040.832,00
+Total ampliación de capital (%)              16,65%
+Total ampliación de capital                2.971.200                                      7.962.816,00     29.712,00      7.933.104,00
+
+Total tokens que componen los FFPP        17.841.900                                                       178.419,00
+
+
+
+5.11 Distribución de los Tokens
+Los Tokens serán distribuidos a las carteras digitales de los inversores (en adelante, la “Wallet de
+inversor”), en el momento de la conﬁrmación de la operación. Esta Wallet será una dirección en
+la blockchain asociada al inversor que le facilitará la Plataforma una vez superado el proceso de
+iden ﬁcación formal.
+Los potenciales inversores deberán, en cualquier caso, haber completado el documento de
+información sobre el inversor con el ﬁn de categorizarlos como un inversor profesional o no
+profesional y, en caso contrario, evaluar su ap tud para par cipar en la Emisión.
+
+6. TRANSMISIBLIDAD DE LOS TOKENS
+
+Los Tokens serán libremente transmisibles pero, a los efectos de dar cumplimiento a las
+obligaciones de conocimiento establecidas legalmente, los Tokens únicamente podrán ser
+transferidos a favor de aquéllos que hayan completado debidamente los procesos de KYC y PBC
+deﬁnidos anteriormente y hayan superado un proceso de evaluación individualizada que llevará
+a cabo el Emisor, en el que tendrán que acreditar que enen los conocimientos adecuados
+rela vos a la inversión y al sector del Emisor (en adelante, el “Comprador Autorizado”).
+
+
+
+
+                                                                                                                                    26
+7. FISCALIDAD
+
+7.1 Emisor
+El Emisor procederá a realizar las retenciones correspondientes sobre los rendimientos
+sa sfechos según la norma va contable española vigente.
+A este respecto, se informa a los inversores de que los rendimientos obtenidos por personas
+  sicas residentes en España enen la naturaleza de rendimiento de capital mobiliario. El po
+vigente de retención es el 19%. En el caso de personas sicas residentes, deberán integrar dichos
+rendimientos en la base imponible del ahorro y tributar con arreglo a una tarifa con pos de
+oscilan entre el 19 y 26%.
+En cuanto a los contribuyentes del Impuesto sobre Sociedades en España, así como
+contribuyentes del Impuesto sobre la Renta de No Residentes (“IRNR”) con establecimiento
+permanente, y sin perjuicio de la tributación que les corresponda con arreglo a su tratamiento
+contable y ﬁscal, los rendimientos están sujetos a una retención del 19%.
+Para contribuyentes del IRNR sin establecimiento permanente en España, como regla general,
+dichos rendimientos estarán sujetos a una retención del 19%, salvo que resulte aplicable un
+Convenio de Doble Imposición que establezca un po inferior, o estén exentas por residir en
+otros Estados miembros de la Unión Europea y siempre que no se obtenga a través de países o
+territorios caliﬁcados como paraísos ﬁscales bajo la ley española. A tal efecto, el inversor deberá
+facilitar al Emisor un cer ﬁcado emi do por las autoridades ﬁscales de su país de residencia que
+acredite tal extremo. Dicho cer ﬁcado tendrá la validez de un año.
+En cuanto al premio de permanencia a los inversores, consistente en una donación equivalente
+al 10% del valor de su inversión inicial para aquellos que mantengan los Tokens adquiridos
+durante un periodo mínimo de un (1) año, según lo especiﬁcado en este documento informa vo,
+es importante destacar que esta donación de carácter dinerario está igualmente sujeta a una
+retención y puede tener implicaciones ﬁscales para el receptor, las cuales variarán en función de
+la legislación tributaria vigente en la jurisdicción de residencia del inversor. Cada receptor es
+responsable de informarse y cumplir con las obligaciones ﬁscales que puedan derivarse de la
+recepción de dicha donación. Se recomienda encarecidamente que los inversores consulten con
+un asesor ﬁscal o legal en su país de residencia para comprender plenamente las posibles
+consecuencias ﬁscales y asegurarse de que cumplen con todas las norma vas aplicables. La
+sociedad no se hace responsable de las obligaciones ﬁscales que puedan surgir como resultado
+de la donación, y cada inversor acepta asumir la responsabilidad de cualquier carga ﬁscal que
+pueda derivarse de esta transacción.
+
+7.2 Inversor
+El Inversor será responsable de la declaración de impuestos resultantes del pago de los
+rendimientos recibidos por parte del Emisor.
+
+
+
+
+                                                                                                27
+8. FACTORES DE RIESGO DE LA INVERSION
+
+Los potenciales inversores que tengan la intención de adquirir los Tokens emi dos deberán leer
+detenidamente y en su totalidad, los siguientes factores de riesgo asociado a la Emisión con el
+obje vo que, con el resto de la información contenida en el presente documento de oferta de
+emisión, pueda tomar una decisión fundada sobre si quiere ser parte de la Emisión.
+La información proporcionada a los posibles inversores en el presente documento no sus tuye
+el asesoramiento ﬁnanciero o sobre inversiones que pueda ser ofrecido o requerido por parte
+de asesores profesionales a los posibles inversores. Igualmente, la información aquí
+proporcionada no convalida ni sus tuye la evaluación de las necesidades obje vos, experiencia,
+conocimiento y circunstancias económicas personales del potencial inversor para que sea idóneo
+para ser parte de la Emisión.
+
+En los sucesivos apartados, se exponen a los potenciales inversores los riesgos asociados a su
+par cipación en la Emisión, teniendo en cuenta a los aspectos ﬁnancieros, jurídicos y
+tecnológicos inherente al modelo de negocio propuesto por el Emisor, así como la opera va de
+la tokenización de los valores emi dos.
+
+El obje vo del Emisor es la implantación de medidas de carácter organiza vo y tecnológico con
+el obje vo de mi gar los riesgos asociados al modelo de negocio propuesto, así como a la
+infraestructura tecnológica u lizada para la Emisión. Sin perjuicio de las medidas de mi gación
+de riesgos, es posible la materialización de cualquiera de los riesgos que se detallan a
+con nuación, pueda provocar efectos adversos para los potenciales inversores en la opera va
+de negoció e inversión. Por tanto, cabe la posibilidad de que el Emisor no pueda total o
+parcialmente cumplir con sus obligaciones en virtud del presente documento.
+
+8.1 Riesgo sobre información que afecte a la evolución ﬁnanciera del Proyecto
+La información contenida en el presente documento informa vo relacionada con las previsiones
+ﬁnancieras y de evolución económica han sido proyectadas en base a la información actual. Los
+planteamientos económicos realizados por el Emisor se basan en la experiencia y el análisis
+realizado, que llevan al planteamiento de previsiones económicas que el Emisor considera
+razonables. Dichas previsiones pueden cambiar sustancialmente por eventos futuros o nueva
+información que provoquen la posible pérdida de las inversiones.
+
+8.2 Producto de inversión de alto riesgo
+Las inversiones realizadas a través de tecnologías novedosas como Blockchain y que se realizan
+en las fases iniciales de un proyecto como el presentado en el presente documento suponen un
+alto riesgo. Este po de inversiones pueden obtener un alto rendimiento o, por el contrario,
+pueden verse afectados notablemente hasta el punto en que el potencial inversor pueda llegar
+a perder la totalidad de las inversiones realizadas.
+En este sen do, los proyectos de inversión basados en la tokenización de los ac vos emi dos
+puede ser un signo aparente de un alto potencial de revalorización, pero el buen devenir de las
+
+
+
+                                                                                            28
+inversiones a nivel económico depende más de las ﬂuctuaciones y cambios del mercado en el
+que opera el Emisor, que del sistema de representación digital de los ac vos.
+
+En deﬁni va, el presente producto de inversión puede ser categorizado como de alto riesgo por
+sus caracterís cas, debiendo el posible inversor entenderlos y aceptarlos antes de su
+par cipación en la Emisión.
+
+8.3 Riesgo sobre la norma va aplicable a la Emisión
+La emisión de valores negociables a través de la tecnología blockchain es actualmente muy
+novedosa y ene una regulación aplicable en con nua evolución y que puede ser cambiante en
+diferentes jurisdicciones. Se trata de un proyecto novedoso en el que se existe el riesgo de que
+la regulación futura del uso de tecnologías de registro distribuido, la creación de tokens
+representa vos de valores a través de Smart Contract y su posterior transmisión entre inversores
+pueda irse adaptando y puede llegar, incluso a ser prohibido o ajustado por futura norma va.
+
+8.4 Riesgo de iliquidez de los Tokens
+Los Tokens pueden tener un riesgo de iliquidez, no encontrando los inversores una contraparte
+en un momento dado en que quieran venderlos.
+
+8.5 Riesgo asociado a la tecnología
+Los sistemas tecnológicos (Blockchain y Smart Contract) u lizados para la representación digital
+de los ac vos están basados en tecnologías muy novedosas y en con nua evolución. A este
+respecto existe el riesgo de un mal funcionamiento, disfunciones o el cierre deﬁni vo del uso de
+esa tecnología y, por tanto, puede afectar a la representación digital y la posible transmisión de
+los Tokens.
+
+Sin perjuicio de las medidas de ciberseguridad adoptadas, El Emisor no puede asegurar que la
+emisión de tokens y su posterior comercialización pueda ser interrumpida o que padezca
+cualquier otro po de error, por lo que hay un riesgo inherente de que se produzcan defectos,
+fallas. La tecnología está preparada para dar solución a este po de incidencias mediante
+instrucciones de la ERIR.
+
+Por otro lado, el sistema de validación de transacciones y generación y ejecución del Smart
+Contract se basa en mecanismos de consenso Proof-of-Stake. Dicho sistema de consenso
+permite teóricamente que una o varias personas en conjunto tengan la posibilidad de controlar
+más del 50% del poder de validación que permite el consenso en las diferentes cadenas de
+bloques u lizadas en materia de transacciones y ejecución de Smart Contracts. En caso de sufrir
+la cadena de bloques un ataque por conjunción de dicho poder u lizando más del 50% del poder
+de validación y pudiendo validar las transacciones falsas es un riesgo propio de la tecnología
+Blockchain.
+
+
+
+
+                                                                                               29
+8.6 Riesgo de custodia y pérdida de claves privadas
+Tal y como se describe en la opera va de comercialización de los Tokens, el potencial inversor
+deberá aceptar la metodología de almacenamiento de los Tokens de Beself Brands. Para ello,
+Beself Brands se apoya de la tecnología del proveedor de monederos digitales Venly. Los ac vos
+de cada usuario quedan registrados en la cadena de bloques correspondiente y, por tanto,
+heredan todas las ventajas de seguridad de la cadena de bloques subyacente.
+
+Protección de la clave privada del monedero de un usuario
+La clave privada del monedero, que proporciona acceso completo a los ac vos, debe mantenerse
+en estricta conﬁdencialidad. Para proteger la clave privada, Venly emplea un proceso de cifrado
+en dos etapas: primero mediante el cifrado de una frase de paso generada aleatoriamente; y, a
+con nuación, dividiendo ésta en dos partes u lizando el algoritmo de Shamir Secret Sharing,
+que se encriptan nuevamente, y de las cuales una la conserva Venly en forma segura en una Key
+Vault y la otra parte la almacena de forma segura la plataforma con un tercer cifrado.
+
+
+Para acceder a la clave privada y realizar operaciones como transferencias de ac vos o ﬁrma de
+transacciones, el usuario inicia el proceso en la plataforma con sus credenciales de acceso. Con
+la solicitud de realización de la operación que requiere el uso de la clave privada, la plataforma
+desencripta la parte del usuario en cues ón y se envía a Venly, que, combinando la parte del
+usuario con la parte almacenada por ellos reconstruye la frase de paso original. La frase de paso
+se u liza para descifrar la clave privada y ejecutar las operaciones requeridas.
+
+Este proceso garan za que sólo la plataforma pueda acceder y controlar la cartera, incluso si una
+de las partes se ve comprome da.
+
+8.7 Riesgo en los rendimientos
+Los rendimientos distribuidos a los posibles inversores que sean parte de la Emisión dependerán
+del buen funcionamiento del proyecto y en concreto de la fecha y cuan a de los ingresos
+percibidos por el Emisor para el desarrollo del proyecto. En caso de que los rendimientos o
+ingresos previstos en la opera va de negocio no se llevara a cabo o se retrase el pago de terceros,
+la distribución y recepción de rendimiento por parte del inversor puede verse directamente
+afectada.
+
+8.8 Riesgo asociado al mercado on-line
+Dependiendo de las ﬂuctuaciones en el mercado on-line, existe el riesgo de que la expansión de
+catálogo o de mercado pueda verse afectada. El mercado de venta on-line es un mercado muy
+amplio y dinámico que puede beneﬁciar o perjudicar las proyecciones futuras esperadas. Sin
+perjuicio de lo anterior, en todo caso el Emisor se compromete a retribuir al inversor siguiendo
+la polí ca de dividendos explicada anteriormente.
+
+
+
+
+                                                                                                30
+                                            ANEXO I
+
+                                   DERECHOS ECONÓMICOS
+
+Rentabilidad del inversor
+De forma adicional a la rentabilidad por dividendos obtenida de las acciones, y sin perjuicio de
+la plusvalía o minusvalía obtenida en una eventual transmisión de los Tokens, la rentabilidad del
+inversor incluirá la recepción de un premio en modo de donación monetaria por parte del Emisor
+que se otorgará únicamente a aquellos inversores que adquieran Tokens en cualquiera de las
+fases y subventas, y que los mantengan (holders) durante un (1) año (365 días) desde la
+ﬁnalización de la úl ma subfase de venta y que consis rá en el 10% de la inversión realizada,
+proporcional al número de Tokens adquiridos, siempre que el Emisor obtenga durante el ejercicio
+2025 beneﬁcios que sean distribuibles, esto es, una vez atendidas y cubiertas las reservas legales
+y estatutarias, compensado las pérdidas de ejercicios anteriores y otros conceptos establecidos
+en la Ley de Sociedades de Capital.
+
+Ejemplo:
+       Importe total recaudado por Beself Brands en todas sus fases y preventas: 7.962.816,00€
+       Total del premio: 7.962.816,00€ x 10% = 796.281,60€
+       Inversor que hubiera adquirido un 3% de los nuevos tokens obtendrá: 796.281,60€ x 3%
+        = 23.888,45€
+
+Para ello, el Emisor se compromete a bloquear una parte del valor adicional de los Tokens y
+reservar del precio de la venta de los Tokens, la can dad correspondiente al 10% del importe
+obtenido de las ventas de los Tokens.
+
+Esta donación se pagará dentro del mes siguiente a la aprobación de las cuentas anuales del
+ejercicio 2025.
+
+Por lo tanto, aquellos inversores que realicen su suscripción más temprano, aportando la misma
+can dad en euros, disfrutarán de una mayor rentabilidad. Por ejemplo, los que par cipen en la
+primera subfase de la Fase 1 obtendrán una rentabilidad superior en comparación con aquellos
+que se suscriban en la segunda subfase de la Fase 2.
+
+Distribución de beneﬁcios
+Una vez ﬁnalizada la aprobación de las cuentas anuales auditadas del segundo ejercicio después
+de la ampliación de capital, esto es, el ejercicio 2027. Se establecerá la siguiente polí ca de
+distribución de beneﬁcios:
+        - Repar r el 50% del resultado neto en proporción al número de tokens de cada socio.
+        - El derecho a la recepción de dividendos corresponde a todos los accionistas de la
+            empresa.
+
+
+
+
+                                                                                               31
+A modo de ejemplo: Si consideramos que el ejercicio 2027 (Año 2), de acuerdo con la proyección
+base que se muestra a con nuación es 1.855k€, un inversor que posea el 5% del número de
+Tokens recibirá, un importe bruto de (*): 1.855k€ x 50% x 5% = 46k€
+(*) El cálculo anterior no considera los efectos ﬁscales del premio (donación), así como las
+posibles retenciones ﬁscales, que Beself Brands u otros organismos se vean obligados a aplicar.
+
+Cálculo de la rentabilidad
+Para el cálculo de la rentabilidad se presentan dos escenarios:
+         - Base: Considerando un crecimiento y expansión de acuerdo con las tendencias del
+             ecommerce.
+         - Moderado: Considerando un crecimiento orgánico residual.
+         - Nuevas líneas: Considerando un crecimiento y expansión de acuerdo con las
+             tendencias del ecommerce e incorporando líneas de producto nuevas en la marca
+             Fi iu y Greencut.
+
+                                     ESCENARIO BASE
+La rentabilidad del inversor en el escenario base resultará como se muestra en el cuadro
+siguiente.
+                                  Pressupuesto
+                                                  Año 1      Año 2      Año 3      Año 4      Año 5      Año 6
+                                      2025
+k€
+Ventas                               22.887      31.200     38.000     48.300     61.700     77.100     95.800
+Consumos                            (18.882)     (25.470)   (30.740)   (38.950)   (49.180)   (60.950)   (75.400)
+
+Margen operativo                     4.005        5.730      7.260      9.350     12.520     16.150     20.400
+
+Margen operativo (%)                 17,5%       18,4%      19,1%      19,4%      20,3%      20,9%      21,3%
+
+Team                                 (2.160)     (2.265)    (2.760)    (3.430)    (4.420)    (5.510)    (6.820)
+
+Overheads                            (1.320)     (1.360)    (1.530)    (1.640)    (1.750)    (1.830)    (1.950)
+EBITDA                                525         2.105      2.970      4.280      6.350      8.810     11.630
+
+EBITDA %                             2,3%         6,7%       7,8%       8,9%      10,3%      11,4%      12,1%
+
+Amortización                         (184)        (195)      (245)      (335)      (395)      (405)      (375)
+
+EBIT                                  341         1.910      2.725      3.945      5.955      8.405     11.255
+
+EBIT %                               1,5%         6,1%       7,2%       8,2%       9,7%      10,9%      11,7%
+
+Resultados Financieros               (264)        (270)      (250)      (225)      (200)      (150)      (100)
+EBT                                    77         1.640      2.475      3.720      5.755      8.255     11.155
+
+EBT %                                0,3%         5,3%       6,5%       7,7%       9,3%      10,7%      11,6%
+
+Impuesto de Sociedades                (20)        (410)      (620)      (930)     (1.440)    (2.060)    (2.790)
+
+Resultado neto                         57         1.230      1.855      2.790      4.315      6.195      8.365
+Resultado neto %                     0,2%         3,9%       4,9%       5,8%       7,0%       8,0%       8,7%
+
+El Año 1, únicamente aquellos inversores que mantengan los Tokens durante un año (como se
+describe al inicio del anexo) recibirán el premio de ﬁdelidad proporcional a la inversión de Tokens
+que posean, del 10% del valor de la inversión recibida en Beself Brands.
+
+A par r del Año 2, todos los inversores que tengan Tokens recibirán un dividendo proporcional
+al número de Tokens que posean.
+
+
+                                                                                                                  32
+En el cuadro siguiente se observa que: considerando la colocación de todos los Tokens y los
+resultados del escenario base; el rendimiento global previsto del inversor que par cipe y
+mantenga sus Tokens durante los 6 ejercicios en los que se planiﬁca el proyecto presentado,
+obtendrá un rendimiento acumulado del 34.6%. El rendimiento variará dependiendo de la fase
+y la subfase en que adquiera los Tokens, siendo mayor si se adquiere en la subfase 1 de la Fase 1
+y menor si se adquiere en la subfase 2 de la Fase 2.
+
+La rentabilidad indicada en el párrafo anterior, se ob ene de considerar los ingresos medios que
+los nuevos inversores obtendrían en el caso que mantengan los Tokens desde la venta inicial
+hasta el reparto de los beneﬁcios del ejercicio 6. Esta rentabilidad del 34.6% se alcanza de la
+siguiente forma:
+                                                                                                                                 Importe
+                                                             Total retribución                  % nuevos inversores       correspondiente a los
+                                                                                                                           nuevos inversores
+Premio por fidelidad                                             796.281,60                          100,00%                        796.281,60
+
+Dividendos Año 2                                                 927.500,00                           16,65%                        154.455,97
+
+Dividendos Año 3                                                 1.395.000,00                         16,65%                        232.308,44
+
+Dividendos Año 4                                                 2.157.500,00                         16,65%                        359.287,07
+
+Dividendos Año 5                                                 3.097.500,00                         16,65%                        515.824,66
+
+Dividendos Año 6                                                 4.182.500,00                         16,65%                        696.509,00
+
+                                                                          Total de rendimientos obtenidos (€)                      2.754.666,75
+
+                                                                                    Aportación nuevos inversores                   7.962.816,00
+
+                                                                                          Rentabilidad esperada                       34,6%
+
+
+
+Esta rentabilidad no considera la variación del valor del Token en el mercado secundario
+(Exchange) que, considerando la proyección esperada en este escenario moderado, con un
+incremento de los fondos propios del 136% y el fondo de liquidez de 500k€ deﬁnido en el
+apartado de distribución de la inversión de este documento informa vo, se espera posi va. (*)
+
+                                                  Pressupuesto
+                                                                 Año 1        Año 2       Año 3      Año 4     Año 5     Año 6        Año 7
+                                                      2025
+k€
+Fondos propios Iniciales                              970        8.990        9.424       11.279     13.141    16.061    20.099
+Resultado neto del ejercicio                          57         1.230        1.855       2.790      4.315     6.195     8.365
+Rentabilidad sobre fondos propios iniciales (%)       5,9%       13,7%        19,7%       24,7%      32,8%     38,6%     41,6%
+
+
+Aportación nuevos inversores                         7.963         0            0           0          0         0         0            0
+Distribución de resultados preferencial                0          (796)         0           0          0         0         0            0
+Distribución de resultados                             0           0            0         (928)      (1.395)   (2.158)   (3.098)      (4.183)
+Fondos propios final del ejercicio                   8.990       9.424        11.279      13.141     16.061    20.099    25.366       21.184
+
+                                                                                                                                                Total del
+                                                                 Año 1        Año 2       Año 3      Año 4     Año 5     Año 6        Año 7
+                                                                                                                                                proyecto
+Retribución nuevos inversores (k€)                                796           0          154        232       359       516          697        2.755
+Rentabilidad sobre la inversión (%)                              10,0%         0,0%        1,9%       2,9%      4,5%      6,5%         8,7%      34,6%
+
+
+
+
+                                                                                                                                                          33
+(*) La rentabilidad derivada de la variación del valor del Token en el mercado secundario viene
+deﬁnida por factores que no se han podido considerar en el cálculo por su complejidad. La
+empresa, una vez lanzados los BeToken en el mercado secundario, desarrollará acciones de
+marke ng para mantener el conocimiento e interés de estos y facilitar el trading de los inversores.
+Beself Brands seguirá trabajando en la incorporación de nuevos exchanges a medida que
+obtengan las regulaciones necesarias, con el obje vo de ampliar el alcance y aumentar el
+atrac vo del SECURITY TOKEN.
+
+                                    ESCENARIO MODERADO
+La rentabilidad del inversor en el escenario moderado resultará como se muestra en el cuadro
+siguiente.
+                                  Pressupuesto
+                                                  Año 1      Año 2      Año 3      Año 4      Año 5      Año 6
+                                      2025
+k€
+Ventas                               22.887      25.200     27.000     30.090     32.230     34.530     36.490
+Consumos                            (18.882)     (20.570)   (21.880)   (24.160)   (25.490)   (27.120)   (28.530)
+
+Margen operativo                     4.005        4.630      5.120      5.930      6.740      7.410      7.960
+
+Margen operativo (%)                 17,5%       18,4%      19,0%      19,7%      20,9%      21,5%      21,8%
+
+Team                                 (2.160)     (2.265)    (2.330)    (2.540)    (2.700)    (2.830)    (3.000)
+
+Overheads                            (1.320)     (1.360)    (1.430)    (1.500)    (1.600)    (1.710)    (1.820)
+EBITDA                                525         1.005      1.360      1.890      2.440      2.870      3.140
+
+EBITDA %                             2,3%         4,0%       5,0%       6,3%       7,6%       8,3%       8,6%
+
+Amortización                         (184)        (195)      (245)      (315)      (365)      (365)      (325)
+
+EBIT                                  341         810        1.115      1.575      2.075      2.505      2.815
+
+EBIT %                               1,5%         3,2%       4,1%       5,2%       6,4%       7,3%       7,7%
+
+Resultados Financieros               (264)        (270)      (250)      (225)      (200)      (150)      (100)
+EBT                                    77         540        865        1.350      1.875      2.355      2.715
+
+EBT %                                0,3%         2,1%       3,2%       4,5%       5,8%       6,8%       7,4%
+
+Impuesto de Sociedades                (20)        (140)      (220)      (340)      (470)      (590)      (680)
+
+Resultado neto                         57         400        645        1.010      1.405      1.765      2.035
+Resultado neto %                     0,2%         1,6%       2,4%       3,4%       4,4%       5,1%       5,6%
+
+
+
+El Año 1, únicamente aquellos inversores que mantengan los Tokens durante un año (como se
+describe al inicio del anexo) recibirán el premio de ﬁdelidad, proporcional a la inversión de tokens
+que posean, del 10% del valor de la inversión realizada en Beself Brands.
+
+A par r del Año 2, todos los inversores que tengan Tokens recibirán un dividendo proporcional
+al número de tokens que posean.
+
+En el cuadro siguiente se observa que: considerando la colocación de todos los Tokens y los
+resultados del escenario moderado; el rendimiento global previsto del inversor que par cipe y
+mantenga sus Tokens durante los 6 ejercicios en los que se planiﬁca el proyecto presentado,
+obtendrá un rendimiento acumulado del 17.2%. El rendimiento par cular para cada inversor
+variará dependiendo de la fase y la subfase en que adquiera los Tokens, siendo mayor si se
+adquiere en la subfase 1 de la Fase 1 y menor si se adquiere en la subfase 2 de la Fase 2.
+
+                                                                                                                  34
+La rentabilidad indicada en el párrafo anterior, se ob ene de considerar los ingresos medios que
+los nuevos inversores obtendrían en el caso que mantengan los tokens desde la venta inicial
+hasta el reparto de los beneﬁcios del ejercicio 6. Esta rentabilidad del 17.2 % se alcanza de la
+siguiente forma:
+
+                                                                                                                                  Importe
+                                                                 Total retribución                % nuevos inversores      correspondiente a los
+                                                                                                                            nuevos inversores
+Premio por fidelidad                                                796.281,60                         100,00%                      796.281,60
+
+Dividendos Año 2                                                    322.500,00                          16,65%                      53.705,72
+
+Dividendos Año 3                                                    505.000,00                          16,65%                      84.097,32
+
+Dividendos Año 4                                                    702.500,00                          16,65%                      116.986,87
+
+Dividendos Año 5                                                    882.500,00                          16,65%                      146.962,15
+
+Dividendos Año 6                                                   1.017.500,00                         16,65%                      169.443,61
+
+                                                                            Total de rendimientos obtenidos (€)                    1.367.477,27
+
+                                                                                      Aportación nuevos inversores                 7.962.816,00
+
+                                                                                            Rentabilidad esperada                     17,2%
+
+
+
+La rentabilidad indicada no considera la variación del valor del Token en el mercado secundario
+(Exchange) que, considerando la proyección esperada en este escenario moderado, con un
+incremento de los fondos propios del 34% y el fondo de liquidez de 500k€ deﬁnido en el apartado
+de distribución de la inversión de este documento informa vo, se espera posi va. (*)
+
+                                                  Pressupuesto
+                                                                    Año 1       Año 2       Año 3      Año 4     Año 5    Año 6       Año 7
+k€                                                    2025
+Fondos propios Iniciales                              970           8.990       8.594       9.239      9.926     10.826   11.889
+Resultado neto del ejercicio                          57            400          645        1.010      1.405     1.765    2.035
+Rentabilidad sobre fondos propios iniciales (%)      5,9%           4,4%         7,5%       10,9%      14,2%     16,3%    17,1%
+
+
+Aportación nuevos inversores                         7.963           0            0          0           0         0        0           0
+Donación por fidelidad                                 0            (796)         0          0           0         0        0           0
+Distribución de resultados                             0             0            0         (323)       (505)    (703)    (883)       (1.018)
+Fondos propios final del ejercicio                   8.990          8.594       9.239       9.926      10.826    11.889   13.041      12.024
+
+                                                                                                                                                Total del
+                                                                    Año 1       Año 2       Año 3      Año 4     Año 5    Año 6       Año 7
+                                                                                                                                                proyecto
+Retribución nuevos inversores (k€)                                  796           0          54          84       117      147         169        1.367
+Rentabilidad sobre la inversión (%)                                 10,0%        0,0%       0,7%        1,1%      1,5%     1,8%        2,1%       17,2%
+
+
+
+
+(*) La rentabilidad derivada de la variación del valor del Token en el mercado secundario viene
+deﬁnida por factores que no se han podido considerar en el cálculo por su complejidad. La
+empresa, una vez lanzados los BeToken en el mercado secundario, desarrollará acciones de
+marke ng para mantener el conocimiento e interés de estos y facilitar el trading de los inversores.
+Beself Brands seguirá trabajando en la incorporación de nuevos exchanges a medida que
+
+
+
+                                                                                                                                                          35
+obtengan las regulaciones necesarias, con el obje vo de ampliar el alcance y aumentar el
+atrac vo del SECURITY TOKEN.
+.
+                                  ESCENARIO NUEVAS LINEAS
+La rentabilidad del inversor en el escenario de nuevas líneas resultará como se muestra en el
+cuadro siguiente.
+                                Pressupuesto
+                                                Año 1      Año 2      Año 3      Año 4      Año 5      Año 6
+                                    2025
+k€
+Ventas                             22.887      38.500     50.000     67.500     87.500     96.500     125.000
+Consumos                          (18.882)     (31.410)   (40.470)   (54.480)   (69.760)   (76.290)   (98.370)
+
+Margen operativo                   4.005        7.090      9.530     13.020     17.740     20.210     26.630
+
+Margen operativo (%)               17,5%       18,4%      19,1%      19,3%      20,3%      20,9%      21,3%
+
+Team                               (2.160)     (2.265)    (2.960)    (3.910)    (5.100)    (5.640)    (7.220)
+
+Overheads                          (1.320)     (1.360)    (1.530)    (1.640)    (1.750)    (1.830)    (1.950)
+EBITDA                              525         3.465      5.040      7.470     10.890     12.740     17.460
+
+EBITDA %                            2,3%        9,0%      10,1%      11,1%      12,4%      13,2%      14,0%
+
+Amortización                        (184)       (195)      (245)      (335)      (395)      (405)      (375)
+EBIT                                341         3.270      4.795      7.135     10.495     12.335     17.085
+
+EBIT %                              1,5%        8,5%       9,6%      10,6%      12,0%      12,8%      13,7%
+
+Resultados Financieros              (264)       (270)      (250)      (225)      (200)      (150)      (100)
+
+EBT                                  77         3.000      4.545      6.910     10.295     12.185     16.985
+EBT %                               0,3%        7,8%       9,1%      10,2%      11,8%      12,6%      13,6%
+
+Impuesto de Sociedades              (20)        (750)     (1.140)    (1.730)    (2.570)    (3.050)    (4.250)
+
+Resultado neto                       57         2.250      3.405      5.180      7.725      9.135     12.735
+Resultado neto %                    0,2%        5,8%       6,8%       7,7%       8,8%       9,5%      10,2%
+
+El Año 1, únicamente aquellos inversores que mantengan los Tokens durante un año (como se
+describe al inicio del anexo) recibirán el premio de ﬁdelidad, proporcional al número de tokens
+que posean, del 10% del valor de la inversión realizada en Beself Brands.
+
+A par r del Año 2, todos los inversores que tengan Tokens recibirán un dividendo proporcional
+al número de tokens que posean.
+
+En el cuadro siguiente se observa que: considerando la colocación de todos los Tokens y los
+resultados del escenario de nuevas líneas; el rendimiento global previsto del inversor que
+par cipe y mantenga sus Tokens durante los 6 ejercicios en los que se planiﬁca el proyecto
+presentado, obtendrá un rendimiento acumulado del 49.9%. El rendimiento par cular para cada
+inversor variará dependiendo de la fase y la subfase en que adquiera los Token, siendo mayor si
+se adquiere en la subfase 1 de la Fase 1 y menor si se adquiere en la subfase 2 de la Fase 2.
+La rentabilidad indicada en el párrafo anterior, se ob ene de considerar los ingresos medios que
+los nuevos inversores obtendrían en el caso que mantengan los tokens desde la venta inicial
+hasta el reparto de los beneﬁcios del ejercicio 6. Esta rentabilidad del 49.9 % se alcanza de la
+siguiente forma:
+
+
+
+                                                                                                                36
+                                                                                                                                 Importe
+                                                             Total retribución                  % nuevos inversores       correspondiente a los
+                                                                                                                           nuevos inversores
+Premio por fidelidad                                             796.281,60                          100,00%                        796.281,60
+
+Dividendos Año 2                                                 1.702.500,00                         16,65%                        283.516,22
+
+Dividendos Año 3                                                 2.590.000,00                         16,65%                        431.311,02
+
+Dividendos Año 4                                                 3.862.500,00                         16,65%                        643.219,61
+
+Dividendos Año 5                                                 4.567.500,00                         16,65%                        760.622,80
+
+Dividendos Año 6                                                 6.367.500,00                         16,65%                       1.060.375,63
+
+                                                                          Total de rendimientos obtenidos (€)                      3.975.326,88
+
+                                                                                    Aportación nuevos inversores                   7.962.816,00
+
+                                                                                          Rentabilidad esperada                       49,9%
+
+
+
+La rentabilidad indicada no considera la variación del valor del Token en el mercado secundario
+(Exchange) que, considerando la proyección esperada en este escenario moderado, con un
+incremento de los fondos propios del 229% y el fondo de liquidez de 500k€ deﬁnido en el
+apartado de distribución de la inversión de este documento informa vo, se espera posi va. (*)
+
+                                                  Pressupuesto
+                                                                  Año 1       Año 2       Año 3       Año 4    Año 5     Año 6        Año 7
+                                                      2025
+k€
+Fondos propios Iniciales                              970         8.990       10.444      13.849     17.326    22.461    27.734
+Resultado neto del ejercicio                          57          2.250       3.405       5.180       7.725    9.135     12.735
+Rentabilidad sobre fondos propios iniciales (%)       5,9%       25,0%        32,6%       37,4%      44,6%     40,7%     45,9%
+
+
+Aportación nuevos inversores                         7.963         0            0           0          0         0         0            0
+Distribución de resultados preferencial                0          (796)         0           0          0         0         0            0
+Distribución de resultados                             0           0            0         (1.703)    (2.590)   (3.863)   (4.568)      (6.368)
+Fondos propios final del ejercicio                   8.990       10.444       13.849      17.326     22.461    27.734    35.901       29.534
+
+                                                                                                                                                Total del
+                                                                  Año 1       Año 2       Año 3       Año 4    Año 5     Año 6        Año 7
+                                                                                                                                                proyecto
+Retribución nuevos inversores (k€)                                796           0          284        431       643       761         1.060       3.975
+Rentabilidad sobre la inversión (%)                              10,0%         0,0%        3,6%       5,4%      8,1%      9,6%        13,3%       49,9%
+
+(*) La rentabilidad derivada de la variación del valor del Token en el mercado secundario viene
+deﬁnida por factores que no se han podido considerar en el cálculo por su complejidad. La
+empresa, una vez lanzados los BeToken en el mercado secundario, desarrollará acciones de
+marke ng para mantener el conocimiento e interés de estos y facilitar el trading de los inversores.
+Beself Brands seguirá trabajando en la incorporación de nuevos exchanges a medida que
+obtengan las regulaciones necesarias, con el obje vo de ampliar el alcance y aumentar el
+atrac vo del SECURITY TOKEN.
+
+
+
+
+                                                                                                                                                          37
+

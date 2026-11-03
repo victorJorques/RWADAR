@@ -1,0 +1,1654 @@
+                                        ​
+
+
+
+
+                                   MiCA White Paper
+                                   LCX Gold (LCXG)
+
+                                                 Version 1.1​
+                                                 April 2025
+
+                                                      ​
+
+
+
+
+             White Paper in accordance with the Markets in Crypto-Assets Regulation (MiCAR) ​
+                                 for the European Economic Area (EEA)
+
+                   Classification: Utility Token under Article 3(1)(9) and Annex I of MiCAR
+
+                      Purpose: Offer to the public and admission to trading in the EEA
+
+                                       Prepared and filed by LCX.com
+
+
+
+      This white paper has been prepared in accordance with the requirements set forth in Commission
+Implementing Regulation (EU) 2024/2984, ensuring that all relevant reporting formats, content specifications,
+     and machine-readable structures outlined in Annex I of this regulation have been fully mapped and
+  implemented, particularly reflected through the Recitals, to enable proper notification under the Markets in
+                                      Crypto-Assets Regulation (MiCAR).
+
+
+
+
+                                                     ​
+                                                 Copyright:
+
+        This White Paper is under copyright of LCX AG Liechtenstein and may not be used, copied, ​
+              or published by any third party without explicit written permission from LCX AG.
+                                                       ​
+
+
+
+
+00​        TABLE OF CONTENT
+
+
+COMPLIANCE STATEMENTS​                                                                                     6
+SUMMARY​                                                                                                   7
+A. PART A - INFORMATION ABOUT THE OFFEROR OR THE PERSON SEEKING ADMISSION TO TRADING​                      9
+      A.1 Name​                                                                                            9
+      A.2 Legal Form​                                                                                      9
+      A.3 Registered Address​                                                                              9
+      A.4 Head Office​                                                                                     9
+      A.5 Registration Date​                                                                               9
+      A.6 Legal Entity Identifier​                                                                         9
+      A.7 Another Identifier Required Pursuant to Applicable National Law​                                 9
+      A.8 Contact Telephone Number​                                                                        9
+      A.9 E-mail Address​                                                                                  9
+      A.10 Response Time (Days)​                                                                           9
+      A.11 Parent Company​                                                                                 9
+      A.12 Members of the Management Body​                                                                 9
+      A.13 Business Activity​                                                                              9
+      A.14 Parent Company Business Activity​                                                               10
+      A.15 Newly Established​                                                                              10
+      A.16 Financial Condition for the past three Years​                                                   10
+      A.17 Financial Condition Since Registration​                                                         10
+B. PART B - INFORMATION ABOUT THE ISSUER, IF DIFFERENT FROM THE OFFEROR OR PERSON SEEKING ADMISSION TO
+TRADING​                                                                                               11
+      B.1 Issuer different from offeror or person seeking admission to trading​                            11
+      B.2 Name​                                                                                            11
+      B.3 Legal Form​                                                                                      11
+      B.4 Registered Address​                                                                              11
+      B.5 Head Office​                                                                                     11
+      B.6 Registration Date​                                                                               11
+      B.7 Legal Entity Identifier​                                                                         11
+      B.8 Another Identifier Required Pursuant to Applicable National Law​                                 11
+      B.9 Parent Company​                                                                                  11
+      B.10 Members of the Management Body​                                                                 11
+      B.11 Business Activity​                                                                              11
+      B.12 Parent Company Business Activity​                                                               11
+C. PART C - INFORMATION ABOUT THE OPERATOR OF THE TRADING PLATFORM IN CASES WHERE IT DRAWS UP THE
+CRYPTO-ASSET WHITE PAPER AND INFORMATION ABOUT OTHER PERSONS DRAWING THE CRYPTO-ASSET WHITE PAPER
+PURSUANT TO ARTICLE 6(1), SECOND SUBPARAGRAPH, OF REGULATION (EU) 2023/1114​                      12
+      C.1 Name​                                                                                            12
+      C.2 Legal Form​                                                                                      12
+      C.3 Registered Address​                                                                              12
+      C.4 Head Office​                                                                                     12
+      C.5 Registration Date​                                                                               12
+      C.6 Legal Entity Identifier​                                                                         12
+      C.7 Another Identifier Required Pursuant to Applicable National Law​                                 12
+      C.8 Parent Company​                                                                                  12
+      C.9 Reason for Crypto-Asset White Paper Preparation​                                                 12
+      C.10 Members of the Management Body​                                                                 12
+      C.11 Operator Business Activity​                                                                     12
+      C.12 Parent Company Business Activity​                                                               13
+      C.13 Other persons drawing up the white paper under Article 6 (1) second subparagraph MiCA​          13
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​              ​                                 2/32
+                                                       ​
+
+
+     C.14 Reason for drawing up the white paper under Article 6 (1) second subparagraph MiCA​           13
+D. PART D - INFORMATION ABOUT THE CRYPTO-ASSET PROJECT​                                                 14
+     D.1 Crypto-Asset Project Name​                                                                     14
+     D.2 Crypto-Assets Name​                                                                            14
+     D.3 Abbreviation​                                                                                  14
+     D.4 Crypto-Asset Project Description​                                                              14
+     D.5 Details of all persons involved in the implementation of the crypto-asset project​             14
+     D.6 Utility Token Classification​                                                                  14
+     D.7 Key Features of Goods/Services for Utility Token Projects​                                     14
+     D.8 Plans for the Token​                                                                           14
+     D.9 Resource Allocation​                                                                           14
+     D.10 Planned Use of Collected Funds or Crypto-Assets​                                              14
+E. PART E - INFORMATION ABOUT THE OFFER TO THE PUBLIC OF CRYPTO-ASSETS OR THEIR ADMISSION TO TRADING​   15
+     E.1 Public Offering or Admission to Trading​                                                       15
+     E.2 Reasons for Public Offer or Admission to Trading​                                              15
+     E.3 Fundraising Target​                                                                            15
+     E.4 Minimum Subscription Goals​                                                                    15
+     E.5 Maximum Subscription Goal​                                                                     15
+     E.6 Oversubscription Acceptance​                                                                   15
+     E.7 Oversubscription Allocation​                                                                   15
+     E.8 Issue Price​                                                                                   15
+     E.9 Official Currency or Any Other Crypto-Assets Determining the Issue Price​                      15
+     E.10 Subscription Fee​                                                                             15
+     E.11 Offer Price Determination Method​                                                             15
+     E.12 Total Number of Offered/Traded Crypto-Assets​                                                 15
+     E.13 Targeted Holders​                                                                             15
+     E.14 Holder Restrictions​                                                                          15
+     E.15 Reimbursement Notice​                                                                         16
+     E.16 Refund Mechanism​                                                                             16
+     E.17 Refund Timeline​                                                                              16
+     E.18 Offer Phases​                                                                                 16
+     E.19 Early Purchase Discount​                                                                      16
+     E.20 Time-Limited Offer​                                                                           16
+     E.21 Subscription Period Beginning​                                                                16
+     E.22 Subscription Period End​                                                                      16
+     E.23 Safeguarding Arrangements for Offered Funds/Crypto-Assets​                                    16
+     E.24 Payment Methods for Crypto-Asset Purchase​                                                    16
+     E.25 Value Transfer Methods for Reimbursement​                                                     16
+     E.26 Right of Withdrawal​                                                                          16
+     E.27 Transfer of Purchased Crypto-Assets​                                                          16
+     E.28 Transfer Time Schedule​                                                                       16
+     E.29 Purchaser's Technical Requirements​                                                           16
+     E.30 Crypto-asset service provider (CASP) name​                                                    16
+     E.31 CASP identifier​                                                                              16
+     E.32 Placement Form​                                                                               16
+     E.33 Trading Platforms name​                                                                       16
+     E.34 Trading Platforms Market Identifier Code (MIC)​                                               17
+     E.35 Trading Platforms Access​                                                                     17
+     E.36 Involved Costs​                                                                               17
+     E.37 Offer Expenses​                                                                               17
+     E.38 Conflicts of Interest​                                                                        17
+     E.39 Applicable Law​                                                                               17
+     E.40 Competent Court​                                                                              17
+F. PART F - INFORMATION ABOUT THE CRYPTO-ASSETS​                                                        18
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​             ​                              3/32
+                                                       ​
+
+
+     F.1 Crypto-Asset Type​                                                                                                               18
+     F.2 Crypto-Asset Functionality​                                                                                                      18
+     F.3 Planned Application of Functionalities​                                                                                          18
+     F.4 Type of white paper​                                                                                                             18
+     F.5 The type of submission​                                                                                                          18
+     F.6 Crypto-Asset Characteristics​                                                                                                    18
+     F.7 Commercial name or trading name​                                                                                                 18
+     F.8 Website of the issuer​                                                                                                           18
+     F.9 Starting date of offer to the public or admission to trading​                                                                    18
+     F.10 Publication date​                                                                                                               18
+     F.11 Any other services provided by the issuer​                                                                                      18
+     F.12 Identifier of operator of the trading platform​                                                                                 18
+     F.13 Language or languages of the white paper​                                                                                       18
+     F.14 Digital Token Identifier Code used to uniquely identify the crypto-asset or each of the several crypto assets to which the white
+     paper relates, where available​                                                                                                       18
+     F.15 Functionally Fungible Group Digital Token Identifier, where available​                                                          19
+     F.16 Voluntary data flag​                                                                                                            19
+     F.17 Personal data flag​                                                                                                             19
+     F.18 LEI eligibility​                                                                                                                19
+     F.19 Home Member State​                                                                                                              19
+     F.20 Host Member States​                                                                                                             19
+G. PART G - INFORMATION ON THE RIGHTS AND OBLIGATIONS ATTACHED TO THE CRYPTO-ASSETS​                                                      20
+     G.1 Purchaser Rights and Obligations​                                                                                                20
+     G.2 Exercise of Rights and Obligation​                                                                                               20
+     G.3 Conditions for Modifications of Rights and Obligations​                                                                          20
+     G.4 Future Public Offers​                                                                                                            20
+     G.5 Issuer Retained Crypto-Assets​                                                                                                   20
+     G.6 Utility Token Classification​                                                                                                    20
+     G.7 Key Features of Goods/Services of Utility Tokens​                                                                                20
+     G.8 Utility Tokens Redemption​                                                                                                       20
+     G.9 Non-Trading Request​                                                                                                             20
+     G.10 Crypto-Assets Purchase or Sale Modalities​                                                                                      20
+     G.11 Crypto-Assets Transfer Restrictions​                                                                                            20
+     G.12 Supply Adjustment Protocols​                                                                                                    20
+     G.13 Supply Adjustment Mechanisms​                                                                                                   20
+     G.14 Token Value Protection Schemes​                                                                                                 21
+     G.15 Token Value Protection Schemes Description​                                                                                     21
+     G.16 Compensation Schemes​                                                                                                           21
+     G.17 Compensation Schemes Description​                                                                                               21
+     G.18 Applicable Law​                                                                                                                 21
+     G.19 Competent Court​                                                                                                                21
+H. PART H – INFORMATION ON THE UNDERLYING TECHNOLOGY​                                                                                     21
+     H.1 Distributed ledger technology​                                                                                                   21
+     H.2 Protocols and Technical Standards​                                                                                               22
+     H.3 Technology Used​                                                                                                                 23
+     H.4 Consensus Mechanism​                                                                                                             23
+     H.5 Incentive Mechanisms and Applicable Fees​                                                                                        24
+     H.6 Use of Distributed Ledger Technology​                                                                                            24
+     H.7 DLT Functionality Description​                                                                                                   24
+     H.8 Audit​                                                                                                                           24
+     H.9 Audit Outcome​                                                                                                                   24
+I. PART I – INFORMATION ON RISKS​                                                                                                         25
+     I.1 Offer-Related Risks​                                                                                                             25
+     I.2 Issuer-Related Risks​                                                                                                            25
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​               ​                                                          4/32
+                                                       ​
+
+
+     I.3 Crypto-Assets-Related Risks​                                                                                                         25
+     I.4 Project Implementation-Related Risks​                                                                                                26
+     I.5 Technology-Related Risks​                                                                                                            26
+     I.6 Mitigation Measures​                                                                                                                 26
+J. PART J – INFORMATION ON THE SUSTAINABILITY INDICATORS IN RELATION TO ADVERSE IMPACT ON THE CLIMATE AND
+OTHER ENVIRONMENT-RELATED ADVERSE IMPACTS​                                                               27
+     J.1 Mandatory information on principal adverse impacts on the climate and other environment-related adverse impacts of the
+     consensus mechanism​                                                                                                                     27
+     J.2 Supplementary information on principal adverse impacts on the climate and other environment-related adverse impacts of the
+     consensus mechanism​                                                                                                           28
+
+
+
+
+This crypto-asset white paper has been prepared in accordance with Regulation (EU) 2023/1114 on Markets in Crypto-Assets (MiCAR) for
+   the purposes of offering the LCXG token to the public and seeking admission to trading within the European Economic Area and the
+                                                       European Economic Area.
+
+    LCXG is classified as a Utility Token under Article 4(1) of MiCAR, as it is intended to provide digital access to a good or service via
+           distributed ledger technology and does not seek to maintain a stable value by reference to any asset or currency.
+
+   In line with Article 5(1) of MiCAR, this white paper has been notified to the Financial Market Authority (FMA) Liechtenstein prior to
+publication and is published in accordance with Article 6. No approval by the competent authority is required, and this white paper will be
+                  registered in the MiCA register maintained by the European Securities and Markets Authority (ESMA).
+
+
+
+
+    NOTE: THIS CRYPTO-ASSET WHITE PAPER HAS NOT BEEN APPROVED BY ANY COMPETENT
+    AUTHORITY IN ANY MEMBER STATE OF THE European Economic Area. THE PERSON SEEKING
+  ADMISSION TO TRADING IS SOLELY RESPONSIBLE FOR THE CONTENT OF THIS CRYPTO-ASSET
+     WHITE PAPER ACCORDING TO THE European Economic Area’S MARKETS IN CRYPTO-ASSET
+                                  REGULATION (MICA).
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​              ​                                                             5/32
+                                                       ​
+
+
+01​       DATE OF NOTIFICATION
+
+          2025-04-07
+
+          COMPLIANCE STATEMENTS
+02​       This crypto-asset white paper has not been approved by any competent authority in any Member
+          State of the European Economic Area. The offeror of the crypto-asset is solely responsible for the
+          content of this crypto-asset white paper. ​
+          ​
+          Where relevant in accordance with Article 6(3), second subparagraph of Regulation (EU) 2023/1114,
+          reference shall be made to ‘person seeking admission to trading’ or to ‘operator of the trading
+          platform’ instead of ‘offeror’.
+
+03​       This crypto-asset white paper complies with Title II and Annex I of Regulation (EU) 2023/1114, and is
+          prepared in accordance with the requirements applicable to Utility Tokens under MiCAR and, to the
+          best of the knowledge of the management body, the information presented in the crypto-asset white
+          paper is fair, clear and not misleading and the crypto-asset white paper makes no omission likely to
+          affect its import.
+
+                     According to the current interpretation and structure of the LCXG ecosystem, the token does
+          not fulfill the criteria for an asset-referenced token under MiCAR Article 3(1)(6), as it does not directly
+          reference a value or asset, nor does it aim to stabilize its value. LCXG is functionally designed to
+          enable access to tokenized NFTs (Tiamonds Gold NFTs), which in turn may be redeemed for physical
+          gold. The NFT, not the LCXG token, reflects ownership of the underlying asset.
+
+04​       The crypto-asset referred to in this white paper may lose its value in part or in full, may not always be
+          transferable and may not be liquid.
+
+05​       Not applicable
+
+06​       The crypto-asset referred to in this white paper is not covered by the investor compensation schemes
+          under Directive 97/9/EC of the European Parliament and of the Council.The crypto-asset referred to in
+          this white paper is not covered by the deposit guarantee schemes under Directive 2014/49/EU of the
+          European Parliament and of the Council.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                             6/32
+                                                       ​
+
+
+          SUMMARY
+07​       Warning
+
+                   This summary should be read as an introduction to the crypto-asset white paper. Any decision
+          to purchase or invest in the crypto-asset should be based on a comprehensive consideration of the
+          full content of the white paper, not solely on this summary.
+
+                   The offer to the public of this crypto-asset and its admission to trading do not constitute an
+          offer or solicitation to purchase financial instruments. Any such offer or solicitation may only be made
+          by means of a prospectus or other offering document in accordance with applicable national or Union
+          law.
+
+                  This crypto-asset white paper does not constitute a prospectus within the meaning of
+          Regulation (EU) 2017/1129 of the European Parliament and of the Council, nor does it serve as any
+          other type of offer document under Union or national law.
+
+
+
+08​       Characteristics of the crypto-asset
+
+​         LCXG is classified as a Utility Token under Article 3(1)(9) of Regulation (EU) 2023/1114 (MiCAR). ​
+​         LCXG tokens solely provide digital access rights to unlock and retrieve a specific Tiamonds Gold NFT
+​         previously deposited into the LCX Tokenization Bridge smart contract.
+
+​         Each Tiamonds Gold NFT independently represents a direct ownership right to exactly one (1) ounce
+​         of investment-grade physical gold. This physical gold is securely stored in insured, high-security vaults
+​         in Liechtenstein and fully insured by Lloyd’s of London. It is important to clearly understand that LCXG
+​         tokens themselves are NOT backed by gold, do NOT grant ownership rights to physical gold, and do
+​         NOT confer a direct claim or redemption right to physical gold.
+
+​         Instead, the LCXG token exclusively functions as a digital key or access mechanism. Holding LCXG
+​         tokens enables holders to retrieve the Tiamonds Gold NFTs stored within the LCX Tokenization ​
+​         Bridge. Once the NFT is successfully redeemed from the smart contract, the holder independently
+​         holds the ownership right to the underlying gold represented by the NFT itself. All rights related to ​
+​         redemption of the physical gold are thus exclusively derived from and managed under the separate
+​         terms applicable to the Tiamonds Gold NFTs issued by Tiamonds AG.
+
+​         Therefore, LCXG tokens neither stabilize their value against gold nor any other asset and should not
+​         be viewed as a stablecoin or asset-referenced token. Any economic value or market pricing of LCXG
+​         tokens is purely market-driven based on demand and supply dynamics, and may indirectly reflect ​
+​         market perceptions about the NFTs they grant access to.
+
+09​       Not applicable
+
+10​       Key information about the offer to the public or admission to trading
+
+​         LCXG is a utility token as defined in Article 3(1)(9) of MiCAR. It provides access to a service operated
+​         by LCX AG – namely, the ability to redeem a specific NFT (Tiamonds Gold NFT), which serves as a
+​         digital representation of ownership in physical gold.
+
+​         The NFT is redeemable through a third-party provider (Tiamonds AG). LCXG does not directly ​
+​         reference or stabilize its value against any underlying assets, including gold, and is therefore not an
+​         asset-referenced token (ART) under MiCAR.​
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                            7/32
+                                                       ​
+
+
+​         The value of LCXG is determined by market supply and demand, and may be influenced by the ​
+​         market value of the NFT it can unlock, but it does not aim to replicate or stabilize against the gold ​
+​         price.
+
+
+    Total offer amount
+                                                           The token issuance is continuous and access-based, and
+                                                           does not constitute an offer of a financial instrument. LCXG
+                                                           is issued under the notification regime of Article 5 MiCAR.
+                                                           The provisions of Title III MiCAR do not apply.
+
+
+                                                           Variable
+    Total number of tokens to be offered to the
+    public
+                                                           Continuous
+    Subscription period
+                                                           Not applicable
+    Minimum and maximum subscription amount
+                                                           Variable
+    Issue price
+                                                           Tokenization fee of 1%, paid in LCX token. Additionally
+    Subscription fees (if any)
+                                                           standard blockchain gas fees may apply.
+                                                           Retail and professional investors within EU/EEA and
+    Target holders of tokens
+                                                           globally (subject to legal access)
+                                                           Continuous
+    Description of offer phases
+                                                           LCX AG, Herrengasse 6, 9490 Vaduz, Liechtenstein
+    CASP responsible for placing the token (if
+    any)
+                                                           Without a firm commitment basis
+    Form of placement
+                                                           LCX AG, Herrengasse 6, 9490 Vaduz, Liechtenstein
+    Admission to trading
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​        ​                                                8/32
+                                                       ​
+
+
+          A.​  PART A - INFORMATION ABOUT THE OFFEROR OR THE PERSON
+          SEEKING ADMISSION TO TRADING
+A.1​      Name
+          LCX
+A.2​      Legal Form
+          AG
+A.3​      Registered Address
+          Herrengasse 6, 9490 Vaduz, Liechtenstein
+A.4​      Head Office
+          Herrengasse 6, 9490 Vaduz, Liechtenstein
+A.5​      Registration Date
+          24.04.2018
+A.6​      Legal Entity Identifier
+          529900SN07Z6RTX8R418
+A.7​      Another Identifier Required Pursuant to Applicable National Law
+          FL-0002.580.678-2
+A.8​      Contact Telephone Number
+          +423 235 40 15
+A.9​      E-mail Address
+          legal@lcx.com
+          A.10​      Response Time (Days)
+          020
+          A.11​      Parent Company
+          Not applicable
+          A.12​      Members of the Management Body
+
+    Full Name                                              Business Address             Function
+    Monty C. M. Metzger                                    Herrengasse 6, 9490 Vaduz,   President of the
+                                                           Liechtenstein                Board
+    Katarina Metzger                                       Herrengasse 6, 9490 Vaduz,   Board Member
+                                                           Liechtenstein
+    Anurag Verma                                           Herrengasse 6, 9490 Vaduz,   Director of Technology
+                                                           Liechtenstein
+
+          A.13​      Business Activity
+           LCX provides various crypto-asset services under Liechtenstein’s Token and Trusted Technology ​
+​         Service Provider Act (“Token- und Vertrauenswürdige Technologie-Dienstleister-Gesetz” in short ​
+​         “TVTG”) also known as the Blockchain Act. These include custody and administration of crypto-assets,
+​         offering secure storage for clients' assets and private keys. LCX operates a trading platform, ​
+​         facilitating the matching of buy and sell orders for crypto-assets. It enables both crypto-to-fiat and ​
+​         crypto-to-crypto exchanges, ensuring compliance with AML and KYC regulations. LCX also supports
+​         token placements, marketing crypto-assets on behalf of offerors.
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​              ​                                          9/32
+                                                       ​
+
+
+         Under MiCA, LCX is classified as a Crypto-Asset Service Provider (CASP). LCX is not yet formally
+         supervised under MiCA until the license is granted by the competent authority.​
+         ​
+         ​Under the TVTG framework, LCX provides:
+                ●​ TT Depositary – Custody and safekeeping of crypto-assets.
+                ●​ TT Trading Platform Operator – Operation of a regulated crypto-asset exchange.
+                ●​ TT Exchange Service Provider – Crypto-to-fiat and crypto-to-crypto exchange.
+                ●​ Token Issuer – Marketing and distribution of tokens.
+                ●​ TT Transfer Service Provider – Crypto-asset transfers between ledger addresses.
+                ●​ Token Generator & Tokenization Service Provider – Creation and issuance of tokens.
+                ●​ Physical Validator – Enforcement of token-based rights on TT systems.
+                ●​ TT Verification & Identity Service Provider – Legal capacity verification and identity
+                   registration.
+                ●​ TT Price Service Provider – Providing aggregated crypto-asset price information.
+          A.14​      Parent Company Business Activity
+          Not applicable
+          A.15​      Newly Established
+          false
+          A.16​      Financial Condition for the past three Years
+           LCX AG has a strong capital base, with CHF 1 million (approx. 1,126,000 USD) in share capital ​
+​         (Stammkapital) and a solid equity position (Eigenkapital) in 2023. The company has experienced ​
+​         fluctuations in financial performance over the past three years, reflecting the dynamic nature of the
+​         crypto market. While LCX AG recorded a loss in 2022, primarily due to a market downturn and a ​
+​         security breach, it successfully covered the impact through reserves. The company has remained ​
+​         financially stable, achieving revenues and profits in 2021, 2023 and 2024 while maintaining ​
+​         break-even operations.
+          In 2023 and 2024, LCX AG strengthened its operational efficiency, expanded its business activities,
+​         and upheld a stable financial position. Looking ahead to 2025, the company anticipates ​ ​
+​         positive financial development, supported by market uptrends, an inflow of customer funds, and strong
+​         business performance. Increased adoption of digital assets and service expansion are expected to
+​         drive higher revenues and profitability, further reinforcing LCX AG’s financial position.
+          A.17​      Financial Condition Since Registration
+           LCX AG has been financially stable since its registration, supported by CHF 1 million in share capital
+​         (Stammkapital) and continuous business growth. Since its inception, the company has expanded its
+​         operations, secured multiple regulatory registrations, and established itself as a key player in the ​
+​         crypto and blockchain industry.
+          While market conditions have fluctuated, LCX AG has maintained strong revenues and break-even
+​         operations. The company has consistently reinvested in its platform, technology, and regulatory ​
+​         compliance, ensuring long-term sustainability. The LCX Token has been a fundamental part of the ​
+​         ecosystem, with a market capitalization of approximately $200 million USD and an all-time high ​
+​         exceeding $500 million USD in 2022. Looking ahead, LCX AG anticipates continued financial growth,
+​         driven by market uptrends, increased adoption of digital assets, and expanding business activities.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                          10/32
+                                                       ​
+
+
+B.​       PART B - INFORMATION ABOUT THE ISSUER, IF DIFFERENT FROM THE
+          OFFEROR OR PERSON SEEKING ADMISSION TO TRADING
+B.1​      Issuer different from offeror or person seeking admission to trading
+          false
+B.2​      Name
+          Not applicable
+B.3​      Legal Form
+          Not applicable
+B.4​      Registered Address
+          Not applicable
+B.5​      Head Office
+          Not applicable
+B.6​      Registration Date
+          Not applicable
+B.7​      Legal Entity Identifier
+          Not applicable
+B.8​      Another Identifier Required Pursuant to Applicable National Law
+          Not applicable
+B.9​      Parent Company
+          Not applicable
+B.10​ Members of the Management Body
+          Not applicable
+B.11​     Business Activity
+          Not applicable
+B.12​ Parent Company Business Activity
+          Not applicable
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                     11/32
+                                                       ​
+
+
+C.​        PART C - INFORMATION ABOUT THE OPERATOR OF THE TRADING
+           PLATFORM IN CASES WHERE IT DRAWS UP THE CRYPTO-ASSET WHITE
+           PAPER AND INFORMATION ABOUT OTHER PERSONS DRAWING THE
+           CRYPTO-ASSET WHITE PAPER PURSUANT TO ARTICLE 6(1), SECOND
+           SUBPARAGRAPH, OF REGULATION (EU) 2023/1114
+C.1​       Name
+           LCX AG
+C.2​       Legal Form
+           AG
+C.3​       Registered Address
+           Herrengasse 6, 9490 Vaduz, Liechtenstein
+C.4​       Head Office
+           Herrengasse 6, 9490 Vaduz, Liechtenstein
+C.5​       Registration Date
+           24.04.2018
+C.6​       Legal Entity Identifier
+           529900SN07Z6RTX8R418
+C.7​       Another Identifier Required Pursuant to Applicable National Law
+           FL-0002.580.678-2
+C.8​       Parent Company
+           Not Applicable
+C.9​       Reason for Crypto-Asset White Paper Preparation
+​      This crypto-asset white paper has been prepared in accordance with Regulation (EU) 2023/1114
+(MiCA) for the purpose of:
+      -​   The offer to the public of LCXG tokens within the European Economic Area (EU) and European
+           Economic Area (EEA), and
+      -​   The admission to trading of LCXG on regulated platforms, starting with the LCX Exchange.
+While the total consideration for the public offer of LCXG is expected to remain below EUR 5,000,000 over a
+rolling 12-month period, and is therefore exempt from prior approval by the competent authority under Article
+4(2)(b) of the Regulation, the issuer — LCX AG — is fulfilling its obligation to:
+      -​   Notify this white paper to the Financial Market Authority (FMA) Liechtenstein;
+      -​   Publish the white paper publicly;
+      -​   And ensure its registration in the MiCA register maintained by the European Securities and Markets
+           Authority (ESMA).
+This white paper has been prepared to provide transparent, accurate, and fair information to prospective
+token holders and regulatory authorities in line with the principles of MiCA.
+
+
+C.10​ Members of the Management Body
+
+  Full Name                                                Business Address             Function
+  Monty C. M. Metzger                                      Herrengasse 6, 9490 Vaduz,   President of the
+                                                           Liechtenstein                Board
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​              ​                                        12/32
+                                                       ​
+
+
+    Katarina Metzger                                       Herrengasse 6, 9490 Vaduz,   Board Member
+                                                           Liechtenstein
+    Anurag Verma                                           Herrengasse 6, 9490 Vaduz,   Director of Technology
+                                                           Liechtenstein
+
+C.11​     Operator Business Activity
+           LCX provides various crypto-asset services under Liechtenstein’s Token and Trusted Technology ​
+​         Service Provider Act (“Token- und Vertrauenswürdige Technologie-Dienstleister-Gesetz” in short ​
+​         “TVTG”) also known as the Blockchain Act. These include custody and administration of crypto-assets,
+​         offering secure storage for clients' assets and private keys. LCX operates a trading platform, ​
+​         facilitating the matching of buy and sell orders for crypto-assets. It enables both crypto-to-fiat and ​
+​         crypto-to-crypto exchanges, ensuring compliance with AML and KYC regulations. LCX also supports
+​         token placements, marketing crypto-assets on behalf of offerors.
+          Under MiCA, LCX is classified as a Crypto-Asset Service Provider (CASP). LCX is not yet formally
+          supervised under MiCA until the license is granted by the competent authority.​
+          ​
+          ​       Under the TVTG framework, LCX provides:
+                ●​ TT Depositary – Custody and safekeeping of crypto-assets.
+                ●​ TT Trading Platform Operator – Operation of a regulated crypto-asset exchange.
+                ●​ TT Exchange Service Provider – Crypto-to-fiat and crypto-to-crypto exchange.
+                ●​ Token Issuer – Marketing and distribution of tokens.
+                ●​ TT Transfer Service Provider – Crypto-asset transfers between ledger addresses.
+                ●​ Token Generator & Tokenization Service Provider – Creation and issuance of tokens.
+                ●​ Physical Validator – Enforcement of token-based rights on TT systems.
+                ●​ TT Verification & Identity Service Provider – Legal capacity verification and identity
+                   registration.
+                ●​ TT Price Service Provider – Providing aggregated crypto-asset price information
+C.12​ Parent Company Business Activity
+          Not Applicable
+C.13​ Other persons drawing up the white paper under Article 6 (1) second subparagraph MiCA
+          Not Applicable
+C.14​ Reason for drawing up the white paper under Article 6 (1) second subparagraph MiCA
+          Not Applicable
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​              ​                                         13/32
+                                                       ​
+
+
+D.​       PART D - INFORMATION ABOUT THE CRYPTO-ASSET PROJECT
+D.1​      Crypto-Asset Project Name
+          LCX Gold
+D.2​      Crypto-Assets Name
+          LCXG
+D.3​      Abbreviation
+          LCXG
+D.4​      Crypto-Asset Project Description
+
+​         LCXG is a utility token issued by LCX AG, designed to serve as a digital access token to a redemption
+​         mechanism operated by LCX. Through this mechanism, users can interact with a smart ​ ​
+​         contract-based infrastructure – the LCX Tokenization Bridge – which enables the redemption of a ​
+​         corresponding Tiamonds Gold NFT.
+
+​         Each Tiamonds Gold NFT represents an independently verifiable on-chain certificate of ownership for
+​         exactly one (1) ounce of investment-grade physical gold. This gold is securely stored in high-security
+​         vaults in Liechtenstein and fully insured by Lloyd’s of London. The LCXG token itself confers no ​
+​         ownership, redemption, or direct rights to gold. LCXG solely functions as an access mechanism to
+​         retrieve the NFT via the LCX Tokenization Bridge smart contract. Actual gold redemption or ​
+​         management is exclusively governed by separate terms issued by Tiamonds AG.
+
+​         The redemption process of LCXG involves only retrieving the corresponding NFT:
+
+​         1.​        A user sends exactly one (1) LCXG token to the LCX Tokenization Bridge smart ​ ​
+​         ​​         contract.
+
+​         2.​        The smart contract returns the corresponding locked Tiamonds Gold NFT.
+
+​         Once the NFT is redeemed, the holder independently holds direct ownership rights to the ​​
+​         underlying gold. Physical gold redemption or custody management is then handled separately by ​
+​         Tiamonds AG under their specific redemption terms and procedures. LCXG tokens themselves do not
+​         directly grant gold ownership or gold redemption rights.
+
+​         This architecture enables:
+
+​         ​•​        Access Rights: LCXG grants access solely to retrieve a previously deposited NFT.
+
+​         •​         On-chain transparency: All token mints and redemptions are executed and verifiable on ​
+​         ​​         Ethereum via the LCX Tokenization Bridge.
+
+​         •​         Fractional usability: LCXG is an ERC-20 token, divisible up to 18 decimal places.
+
+​         •​         No direct gold claim: LCXG does not grant direct ownership or redemption rights to physical
+​         ​​         gold.
+
+​         LCXG does not aim to maintain a stable value and is not backed by a reserve or reference basket ​
+​         within the meaning of Title III of MiCAR. It is therefore classified as a Utility Token under Article 3(1)(9)
+​         of Regulation (EU) 2023/1114 (MiCAR), as its sole purpose is to provide digital access to a service
+​         provided by its issuer — namely, NFT redemption.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                              14/32
+                                                       ​
+
+
+​         LCXG will be available to the public and tradable on the LCX Exchange, with listings such as ​
+​         LCXG/USD and LCXG/EUR. It may also be integrated into decentralized liquidity pools (e.g., ​
+​         LCXG/USDC on Uniswap) to enhance market reach, subject to applicable compliance and AML ​
+​         measures.
+
+
+
+
+D.5​      Details of all persons involved in the implementation of the crypto-asset project
+
+
+
+           Full Name                                       Business Address              Function
+           LCX AG                                          LCX AG, Herrengasse 6, 9490   Operator of the Crypto-Asset
+                                                           Vaduz, Liechtenstein          Project
+           Tiamonds AG                                     Tiamonds AG, Herrengasse 6,   Custodian of the Physical
+                                                           9490 Vaduz, Liechtenstein     Reserve Asset
+           LCX TECHNOLOGIES                                HD-003, WEWORK DLF            Operational and Technology
+           PRIVATE LIMITED                                 FORUM CYBER PHASE III         Service Provider
+                                                           Gurugram, Haryana, 122002
+                                                           India
+           Law Firm Bergt & Partners Ltd.                  Buchenweg 6                   Legal
+                                                           P.O. Box 743
+                                                           9490 Vaduz
+                                                           Liechtenstein
+
+
+
+
+D.6​      Utility Token Classification
+          false
+D.7​      Key Features of Goods/Services for Utility Token Projects
+          Not applicable
+D.8​      Plans for the Token
+          Not applicable
+D.9​      Resource Allocation
+          Not applicable
+D.10​ Planned Use of Collected Funds or Crypto-Assets
+          Not applicable
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​              ​                                          15/32
+                                                       ​
+
+
+          E.​ PART E - INFORMATION ABOUT THE OFFER TO THE PUBLIC OF
+          CRYPTO-ASSETS OR THEIR ADMISSION TO TRADING
+E.1​      Public Offering or Admission to Trading
+          OTPC and ATTR
+
+
+E.2​      Reasons for Public Offer or Admission to Trading
+
+​         LCX AG is offering LCXG tokens to the public and seeking admission to trading on the LCX Exchange
+​         to provide secure, transparent, and regulated access to a digital redemption mechanism built on ​
+​         distributed ledger technology.
+
+​         LCXG is classified explicitly as a Utility Token under MiCA. It functions solely as a digital access ​
+​         mechanism to retrieve specific Tiamonds Gold NFTs previously deposited into the LCX Tokenization
+​         Bridge. These NFTs—independently issued and managed by Tiamonds AG—exclusively represent
+​         legal ownership and redemption claims to physical gold.
+
+​         LCXG tokens do not directly represent gold ownership, claims, or rights. They simply grant ​
+​         access to the NFTs, which separately confer these rights.
+
+​         These NFTs, which are managed by a separate entity (Tiamonds AG), serve as tokenized certificates
+​         representing claims to physical gold. LCXG does not itself reference gold, maintain a stable value, or
+​         represent a fractional interest in the underlying gold. It acts solely as an access key to a service — the
+​         redemption infrastructure operated by LCX AG.
+
+​         The purpose of the public offering and trading admission is to:
+
+​         •​         Enable broader accessibility to this redemption mechanism,
+
+​         •​         Facilitate the transfer and secondary trading of access rights (LCXG) among verified users,
+
+​         •​         Reduce onboarding friction by enabling users to access the redemption mechanism via ​
+​         ​​         tokens (LCXG) that can be acquired through trading, not just direct NFT ownership,
+
+​         •​         Enable users to engage with a compliant, on-chain interface that allows the redemption of
+​         ​​         LCXG tokens for Tiamonds Gold NFTs and vice versa, depending on whether the user wishes
+​         ​​         to access or re-tokenize a previously issued NFT.
+
+​         This setup contributes to MiCA’s objectives by improving transparency, consumer protection, and legal
+​         clarity around tokenized service access mechanisms — without functioning as an asset-referenced or
+​         investment token.
+
+E.3​      Fundraising Target
+
+​         Not applicable — the LCXG token is not used for fundraising. Each token is minted solely against the
+​         deposit of 1 ounce of physical gold, represented by a Tiamonds Gold NFT. The issuance mechanism
+​         ensures that no capital is raised from the public; instead, the token reflects an on-chain certificate of
+​         ownership of a specific gold bar. LCXG tokens are then placed for trading on the LCX Exchange.
+
+E.4​      Minimum Subscription Goals
+          Not applicable
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                            16/32
+                                                       ​
+
+
+E.5​      Maximum Subscription Goal
+          Not applicable
+E.6​      Oversubscription Acceptance
+          Not applicable
+E.7​      Oversubscription Allocation
+          Not applicable
+E.8​      Issue Price
+
+​         Variable — LCXG tokens are issued on-demand upon depositing a corresponding Tiamonds Gold NFT
+​         into the LCX Tokenization Bridge. The initial tokenization fee is calculated based on current market
+​         conditions and platform fees. Once issued, LCXG token pricing is determined purely by market supply
+​         and demand on LCX Exchange and other secondary markets. LCXG tokens do not directly reference
+​         or aim to stabilize their value against the underlying gold.
+
+E.9​      Official Currency or Any Other Crypto-Assets Determining the Issue Price
+
+​         USD (gold reference price), LCX token (fee payments)
+
+E.10​     Subscription Fee
+
+​         1% tokenization fee (payable in LCX Token)
+
+
+
+E.11​     Offer Price Determination Method
+
+​         Dynamic pricing mechanism — LCXG tokens are issued on-demand via the LCX Tokenization Bridge
+​         at a value reflecting 1 oz of investment-grade physical gold plus applicable fees at the time of minting.
+
+
+
+E.12​     Total Number of Offered/Traded Crypto-Assets
+
+​         Variable — LCXG tokens are minted on-demand and do not have a pre-defined or capped supply. The
+​         total supply is directly linked to the number of gold-backed NFTs (each representing 1 ounce of ​
+​         physical gold) deposited into the LCX Tokenization Bridge. The number of LCXG tokens in circulation
+​         will always equal the number of gold NFTs held in reserve.
+
+E.13​     Targeted Holders
+          ALL
+E.14​     Holder Restrictions
+
+​         LCXG tokens may not be offered to or held by persons in jurisdictions where such offering is ​
+​         prohibited or restricted by applicable law. On the LCX Exchange, only users with a fully verified LCX
+​         account — including completed KYC (Know Your Customer) and AML (Anti-Money Laundering) ​
+​         checks — are permitted to purchase, trade, or redeem LCXG. Access is further restricted for residents
+​         or citizens of jurisdictions listed on LCX’s prohibited country list, in accordance with applicable ​
+​         sanctions, financial crime prevention frameworks, and LCX’s internal compliance policies.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                           17/32
+                                                       ​
+
+
+E.15​     Reimbursement Notice
+
+​         Not applicable — LCXG tokens are not offered in capped fundraising phases; tokens are issued solely
+​         in exchange for deposited gold NFTs.
+
+E.16​     Refund Mechanism
+          Not applicable
+E.17​     Refund Timeline
+          Not applicable
+E.18​     Offer Phases
+
+​         Not applicable — LCXG issuance is continuous and demand-driven, not offered in time-based sale
+​         tranches.
+
+E.19​     Early Purchase Discount
+          Not applicable
+E.20​     Time-Limited Offer
+          Not applicable
+E.21​     Subscription Period Beginning
+          Not applicable
+E.22​     Subscription Period End
+          Not applicable
+E.23​     Safeguarding Arrangements for Offered Funds/Crypto-Assets
+
+​         LCXG tokens are issued exclusively on-demand through the deposit and locking of a corresponding
+​         Tiamonds Gold NFT into the LCX Tokenization Bridge smart contract. Each Tiamonds Gold NFT ​
+​         independently represents exactly one (1) ounce of investment-grade physical gold, securely stored
+​         and insured by Tiamonds AG. Importantly, LCXG issuance is never directly against physical gold or
+​         any other asset, but strictly tied to the digital representation (NFT). Therefore, safeguarding and ​
+​         custody of physical gold is entirely managed independently by Tiamonds AG, in accordance with their
+​         established terms and procedures.
+
+​         The underlying gold is safeguarded by Tiamonds AG and insured by Lloyd’s of London. The LCX Gold
+​         Bridge smart contract ensures 1:1 collateralization and full on-chain auditability, effectively preventing
+​         over-issuance or duplication.
+
+​         LCX Exchange applies strict AML/KYC controls to ensure secure custody and traceability of assets
+​         during trading. Additionally, LCX follows the principle of segregation of customer funds as required
+​         under applicable law and MiCA. This means client assets are held separately from the company’s own
+​         operational funds, ensuring maximum asset protection and regulatory compliance.
+
+E.24​     Payment Methods for Crypto-Asset Purchase
+
+​         LCXG is not sold for fiat or crypto in a traditional sense. Tokens are minted upon the deposit of a ​
+​         gold-backed NFT (Tiamonds NFT) into the LCX Tokenization Bridge. Secondary purchases may be
+​         made using fiat (e.g., EUR, USD) or crypto (e.g., USDC, ETH) through LCX Exchange, subject to the
+​         user’s verified account status.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                            18/32
+                                                       ​
+
+
+E.25​     Value Transfer Methods for Reimbursement
+
+​         Not applicable — LCXG tokens are redeemable, not refundable. Redemption occurs when users send
+​         LCXG back to the LCX Tokenization Bridge to receive the corresponding Tiamonds Gold NFT. The
+​         NFT can then be redeemed for physical gold via the Tiamonds platform.
+
+E.26​     Right of Withdrawal
+
+​         Not applicable — LCXG tokens are issued in exchange for a physical asset via NFT and do not ​
+​         represent a traditional investment offering or subscription. As such, the 14-day withdrawal right under
+​         Article 37 MiCA does not apply.
+
+E.27​     Transfer of Purchased Crypto-Assets
+
+​         LCXG tokens are purchased directly on the LCX Exchange through the trading interface, where the
+​         price is determined by market supply and demand. Upon successful order execution, the tokens are
+​         automatically credited to the user’s verified LCX Exchange wallet. Users may later withdraw LCXG to
+​         an external non-custodial wallet (e.g., MetaMask) if desired.
+
+​       In cases where LCXG is minted via the LCX Tokenization Bridge (e.g., institutional or vault clients), the
+token ​ is delivered to the designated recipient address immediately upon successful deposit of the ​
+​       corresponding Tiamonds Gold NFT and smart contract execution.
+
+
+
+E.28​     Transfer Time Schedule
+
+​         Near-instant — LCXG tokens are transferred on-chain via Ethereum (ERC-20 standard) immediately
+​         upon completion of the deposit and smart contract verification. Transfer times depend on blockchain
+​         congestion and gas fees.
+
+E.29​     Purchaser's Technical Requirements
+
+​         Users must have an LCX Exchange account with completed KYC/AML verification for primary or ​
+​         secondary market access. External wallet users must have a compatible Ethereum wallet (e.g., ​
+​         MetaMask, WalletConnect) capable of interacting with ERC-20 tokens and smart contracts.
+
+E.30​     Crypto-asset service provider (CASP) name
+
+​         Not applicable
+
+E.31​     CASP identifier
+          Not applicable
+E.32​     Placement Form
+          NTAV
+E.33​     Trading Platforms name
+          LCX AG
+E.34​     Trading Platforms Market Identifier Code (MIC)
+          LCXE
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                          19/32
+                                                       ​
+
+
+E.35​     Trading Platforms Access
+
+​         LCXG is initially available for trading exclusively on the LCX Exchange, a regulated trading platform
+​         operated by LCX AG. Access to the platform is restricted to verified users who have completed full
+​         KYC/AML verification in accordance with applicable EU and Liechtenstein laws.
+
+​         Trading of LCXG is conducted through standard market pairs (e.g., LCXG/USD, LCXG/EUR), with
+​         prices determined by supply and demand. Users may trade, hold, or withdraw LCXG to an external
+​         ERC-20 compatible wallet. LCX may also establish liquidity pools on decentralized platforms (e.g.,
+​         Uniswap) to support broader market access in compliance with MiCA.
+
+E.36​     Involved Costs
+
+​         Users may be subject to trading fees when buying or selling LCXG on LCX Exchange, as outlined in
+​         the platform’s published fee schedule. Gas fees may apply for token withdrawals to external wallets.
+​         No additional fees are charged during minting or redemption beyond the standard 1% tokenization fee.
+
+E.37​     Offer Expenses​​                 ​           ​   ​       ​   ​     ​       ​       ​        ​
+
+​         Not applicable — LCXG tokens are issued on-demand and are not part of a capital-raising event. ​
+​         There are no marketing, underwriting, or placement costs passed on to purchasers.
+
+E.38​     Conflicts of Interest
+
+​         None known. LCX AG has implemented internal policies to prevent and manage potential conflicts of
+​         interest. All token issuance and trading activities are conducted under regulatory supervision and ​
+​         subject to internal compliance and audit controls.
+
+
+
+E.39​     Applicable Law
+
+​         This white paper, and the issuance and trading of LCXG, are governed by the laws of Liechtenstein
+​         and applicable European Economic Area regulations, including Regulation (EU) 2023/1114 (MiCAR).
+
+​         LCXG is classified as a Utility Token within the meaning of Article 3(1)(9) of MiCAR. As such, the ​
+​         token and its offering are subject to the provisions of Title II of MiCAR (including Article 5 and ​
+​         Annex I), and are not governed by the authorisation requirements under Title III related to ​​
+​         asset-referenced tokens or e-money tokens.
+
+E.40​     Competent Court
+
+​         In case of disputes, the competent court is the Princely Court of Liechtenstein. Disputes will be ​
+​         resolved in accordance with Liechtenstein law and relevant EU regulations, including the Markets in
+​         Crypto-Assets Regulation (MiCA).
+
+
+
+
+          F.​        PART F - INFORMATION ABOUT THE CRYPTO-ASSETS
+F.1​      Crypto-Asset Type
+
+​         Utility Token
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​           ​                                      20/32
+                                                       ​
+
+
+F.2​      Crypto-Asset Functionality
+
+​         LCXG is a crypto-asset classified as a Utility Token under Article 3(1)(9) of Regulation (EU) 2023/1114
+​         (MiCAR). It is designed to provide digital access to a service operated by LCX AG — specifically, ​
+​         interaction with the LCX Tokenization Bridge smart contract that facilitates the redemption or ​
+​         tokenization of Tiamonds Gold NFTs.
+
+​         Each Tiamonds Gold NFT represents a digital certificate issued by Tiamonds AG and may be linked to
+​         the ownership of one (1) ounce of investment-grade physical gold stored in secure vaults in ​
+​         Liechtenstein. However, LCXG itself does not represent ownership of gold, nor does it aim to maintain
+​         a stable value or reference any underlying asset.
+
+​         LCXG may be:
+
+​         •​         Redeemed via the LCX Tokenization Bridge to obtain the corresponding Tiamonds Gold NFT,
+
+​         •​         Acquired by users who wish to regain access to previously tokenized NFTs,
+
+​         •​         Traded on the LCX Exchange or potentially on decentralized exchanges, functioning as a
+​         ​​         transferable access token within a regulated DLT environment.
+
+​         LCXG does not grant voting rights, profit participation, or entitlements to financial returns. It functions
+​         solely as a technical access key within a redemption system, fully aligned with the definition and ​
+​         regulatory scope of Utility Tokens under MiCAR.
+
+F.3​      Planned Application of Functionalities
+
+​         LCXG is designed for secure trading, ownership transfer, and on-chain redemption. Token holders
+​         may use LCXG to:
+
+​         ​•​        Trade on regulated exchanges (LCX Exchange),
+
+​         •​         Transfer to personal wallets (ERC-20 compatible),
+
+​         •​         Redeem through the LCX Tokenization Bridge for a corresponding Tiamonds NFT,
+
+​         •​         Redeem the NFT via Tiamonds AG for physical gold delivery or in-vault ownership.
+
+​         Future functionality may include cross-chain interoperability, integration with DeFi protocols, and ​
+​         tokenized lending or collateralization solutions where legally permitted.
+
+F.4​      Type of white paper
+
+​         Utility Token (pursuant to Article 3(1)(9) and Annex I of Regulation (EU) 2023/1114)
+
+
+
+F.5​      The type of submission
+          NEWT
+F.6​      Crypto-Asset Characteristics
+
+​         LCXG is a Utility Token issued by LCX AG on the Ethereum blockchain using the ERC-20 standard. It
+​         serves as a digital access key to a smart contract-based redemption infrastructure — the LCX ​
+​         Tokenization Bridge — which facilitates the interaction between users and Tiamonds Gold NFTs.
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                              21/32
+                                                       ​
+
+
+​         Each Tiamonds Gold NFT may be linked to an underlying physical gold bar, and users can utilize ​
+​         LCXG to redeem or retrieve such NFTs via the on-chain interface. Conversely, users who possess a
+​         Tiamonds Gold NFT may deposit it into the bridge and receive one LCXG token in return.
+
+​         LCXG:
+
+​         •​         Is not backed or collateralized by any asset,
+
+​         •​         Does not represent ownership of physical gold, nor reference its value,
+
+​         •​         Does not aim to maintain a stable value, and its price is determined by market supply and
+​         ​​         demand,
+
+​         •​         Is divisible up to 18 decimal places, fully transferable, and tradable on the LCX Exchange and
+​         ​​         potentially other compatible platforms,
+
+​         •​         Does not provide governance rights, profit sharing, or financial claims,
+
+​         •​         Exists solely to provide access to a token redemption mechanism, qualifying it as a Utility
+​         ​​         Token under MiCAR.
+
+F.7​      Commercial name or trading name
+          LCXG
+F.8​      Website of the issuer
+
+​         https://www.LCX.com
+
+F.9​      Starting date of offer to the public or admission to trading
+          2025-05-05
+F.10​     Publication date
+          2025-05-05
+F.11​     Any other services provided by the issuer
+
+​         LCX AG operates a regulated trading platform (LCX Exchange) and is registered under the ​
+​         Liechtenstein Blockchain Act (TVTG) as a Token and Trusted Technology Service Provider (TTSP).
+​         LCX provides a range of crypto-asset services, including custody, token issuance, price data services,
+​         and the operation of smart contract infrastructure — such as the LCX Tokenization Bridge — for asset
+​         ​tokenization and redemption.
+
+​         In addition, LCX AG has submitted its application for authorization as a Crypto-Asset Service Provider
+​         (CASP) under the Markets in Crypto-Assets Regulation (MiCA) on February 1, 2025, the date MiCA
+​         became applicable in Liechtenstein.
+
+F.12​     Language or languages of the white paper
+          English
+F.13​     Digital Token Identifier Code used to uniquely identify the crypto-asset or each of the several
+          crypto assets to which the white paper relates, where available
+
+​         Pending DTI registration — LCX AG intends to apply for a Digital Token Identifier Code with the ​
+​         Digital Token Identifier Foundation (DTIF) in accordance with ISO 24165.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                            22/32
+                                                       ​
+
+
+
+
+F.14​     Functionally Fungible Group Digital Token Identifier, where available
+          Not applicable
+F.15​     Voluntary data flag
+          true
+F.16​     Personal data flag
+          false
+F.17​     LEI eligibility
+          true
+F.18​     Home Member State
+          Liechtenstein
+F.19​     Host Member States
+          Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, ​
+​         Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, ​ ​     ​
+​         Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                       23/32
+                                                       ​
+
+
+          G.​  PART G - INFORMATION ON THE RIGHTS AND OBLIGATIONS
+          ATTACHED TO THE CRYPTO-ASSETS
+G.1​      Purchaser Rights and Obligations
+
+​         LCXG token holders have the exclusive right to digitally access and unlock a specific Tiamonds Gold
+​         NFT stored within the LCX Tokenization Bridge. Once this NFT has been retrieved, the holder ​
+​         independently acquires direct ownership rights associated exclusively with the NFT—specifically, ​
+​         ownership of exactly one (1) ounce of investment-grade physical gold. It is crucial to clearly ​
+​         understand that LCXG tokens alone do NOT grant any direct rights, claims, or redemption entitlements
+​         to the underlying physical gold. Any redemption or delivery rights for physical gold are governed solely
+​         and independently by Tiamonds AG and their specific NFT redemption procedures
+
+​         Purchasers are entitled to clear, fair, and non-misleading information through this MiCA-compliant ​
+​         white paper, as required by Regulation (EU) 2023/1114. LCXG holders do not have governance rights,
+​         profit participation, or voting powers.
+
+​         All LCXG buyers on LCX Exchange must complete AML/KYC verification and agree to LCX’s terms of
+​         service. Token holders must ensure compliance with local laws and are subject to platform rules ​
+​         regarding custody, trading, and withdrawal.
+
+G.2​      Exercise of Rights and Obligation
+
+​         The redemption right is exercised via the LCX Tokenization Bridge smart contract. Users may return 1
+​         ​LCXG token to the bridge in exchange for the corresponding Tiamonds Gold NFT. Redemption of the
+​         ​physical gold is then executed via Tiamonds AG according to their redemption procedures.
+
+​         All actions — including transfers, redemptions, and trades — are executed on-chain using ERC-20
+​         and smart contract standards. LCX provides transparent auditability and real-time supply matching
+​         between LCXG tokens and gold-backed NFTs.
+
+G.3​      Conditions for Modifications of Rights and Obligations
+
+​         LCXG rights are tied to the legal and technical structure of its asset-referenced model. Any material
+​         changes to the redemption mechanism, rights, or backing model will be disclosed publicly and notified
+​         to the competent authority as required under Article 20 MiCA.
+
+​         Modifications may only occur in compliance with MiCA, and in such cases, LCX will ensure fair ​
+​         treatment of token holders, publish updated information, and, where applicable, provide advance ​
+​         notice through official communication channels.
+
+
+
+G.4​      Future Public Offers
+
+​         Not applicable — LCXG is issued on-demand and not through fixed fundraising rounds.
+
+G.5​      Issuer Retained Crypto-Assets
+
+​         Not applicable — LCXG tokens are minted exclusively upon deposit and locking of ​          ​
+​         corresponding Tiamonds Gold NFTs. The issuer retains no pre-minted tokens, reserve ​ ​
+​         holdings, or other crypto-assets. LCXG issuance is strictly demand-driven and directly linked to ​
+​         NFT deposits into the LCX Tokenization Bridge.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                          24/32
+                                                       ​
+
+
+G.6​      Utility Token Classification
+
+​         True
+
+G.7​      Key Features of Goods/Services of Utility Tokens
+          Not applicable
+G.8​      Utility Tokens Redemption
+          Not applicable
+G.9​      Non-Trading Request
+          false
+G.10​ Crypto-Assets Purchase or Sale Modalities
+
+​         LCXG tokens are minted exclusively via the LCX Tokenization Bridge upon deposit of a corresponding
+​         Tiamonds Gold NFT, granting access rights to retrieve the NFT. Secondary purchases or sales occur
+​         on LCX Exchange at market-driven prices. Trading is available only to verified accounts meeting full
+​         AML/KYC requirements. LCXG tokens do not directly represent or reference the market value of gold.
+
+G.11​ Crypto-Assets Transfer Restrictions
+
+​         No transfer restrictions apply, except those required by law or LCX compliance policies (e.g., ​
+​         sanctioned jurisdictions or AML flags). Users must use ERC-20 compatible wallets for off-platform ​
+​         transfers.
+
+G.12​ Supply Adjustment Protocols
+          False
+G.13​ Supply Adjustment Mechanisms
+          Not applicable
+G.14​ Token Value Protection Schemes
+          False
+G.15​ Token Value Protection Schemes Description
+          Not Applicable
+G.16​ Compensation Schemes
+          False
+G.17​ Compensation Schemes Description
+          Not Applicable
+G.18​ Applicable Law
+
+​         LCXG and this white paper are governed by the laws of Liechtenstein and Regulation (EU) 2023/1114
+​         (MiCA). Additional rules under the Liechtenstein Blockchain Act (TVTG) and EU financial crime ​
+​         regulations apply.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                        25/32
+                                                       ​
+
+
+G.19​ Competent Court
+
+​         The competent court for disputes arising in connection with LCXG is the Princely Court of ​​
+​         Liechtenstein, with jurisdiction under Liechtenstein and applicable EU law.
+
+
+
+
+          H.​        PART H – INFORMATION ON THE UNDERLYING TECHNOLOGY
+H.1​      Distributed ledger technology
+
+​         LCXG is an ERC-20 token issued on the Ethereum blockchain, a public, permissionless distributed
+​         ledger that enables secure, transparent, and immutable token issuance and transfer. Ethereum’s ​
+​         smart contract infrastructure is used to manage the minting and redemption of LCXG tokens via the
+​         LCX Tokenization Bridge, a proprietary smart contract system developed by LCX.
+
+​         The smart contract architecture ensures that each LCXG token issued corresponds precisely to the
+​         retrieval right of exactly one Tiamonds Gold NFT, each of which independently represents exactly one
+​         (1) ounce of investment-grade physical gold held separately in custody.
+
+​         All LCXG token movements — including issuance, redemption, and transfers — are recorded on the
+​         Ethereum ledger, ensuring traceability, transparency, and compliance with MiCA’s technical integrity
+​         and market integrity principles.
+
+
+
+H.2​      Protocols and Technical Standards
+​         LCXG is deployed on Ethereum using widely adopted blockchain protocols and standards:
+
+​         ​1.​       Protocols Used
+
+​         ​•​        Smart Contracts (Solidity-based): Issuance and redemption managed via the LCX Gold ​
+​         ​​         Bridge.
+
+​         •​         Token Transfer Protocols: ERC-20 standard used for transfers, wallets, and exchange ​
+​         ​​         compatibility.
+
+​         ​2.​       Technical Standards Implemented
+
+​         ​•​        ERC-20 Standard: Enables fungibility, wallet compatibility, and exchange support.
+
+​         •​         Auditability & Security: Smart contracts adhere to industry best practices for auditability, ​
+​         ​​         upgradability, and secure deployment.
+
+​         •​         Oracle Integration (optional/roadmap): Price feeds may be incorporated for dynamic gold ​
+​         ​​         pricing or supply display.
+
+​         •​         Etherscan Verification: Smart contracts are verified and viewable on-chain for transparency.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                               26/32
+                                                       ​
+
+
+H.3​      Technology Used
+
+​         LCXG operates as a smart contract-driven token on the Ethereum Layer 1 blockchain. The issuance
+​         mechanism is implemented via the LCX Tokenization Bridge, which links the on-chain token with ​
+​         off-chain physical gold through Tiamonds Gold NFTs.
+
+​         Ethereum ensures transaction finality, global accessibility, and immutability of token operations. Users
+​         can store LCXG in any ERC-20-compatible wallet.
+
+​         While Ethereum Layer 1 is used for mainnet operations, LCX may explore Layer 2 scalability solutions
+​         (e.g., Arbitrum, Optimism) for gas optimization and faster transaction throughput in future iterations.
+
+
+
+H.4​      Consensus Mechanism
+          Ethereum currently uses a Proof-of-Stake (PoS) consensus mechanism. Validators are selected to
+​         confirm transactions and secure the network based on staked ETH.
+          PoS significantly reduces energy consumption compared to Proof-of-Work and contributes to ​
+​         Ethereum’s environmental efficiency. LCXG does not rely on a proprietary consensus mechanism but
+​         benefits from Ethereum’s robust validator model.
+          In accordance with MiCA, LCX provides transparency on the network’s consensus and ​ ​
+​         ensures that any risks associated with transaction finality and validator behavior are mitigated by ​
+​         smart contract architecture and custodial safeguards.
+
+
+
+
+H.5​      Incentive Mechanisms and Applicable Fees
+
+​         LCXG does not use a rewards-based incentive model. Token issuance is strictly tied to physical gold
+​         deposits via NFTs.
+
+​         Applicable Fees include:
+
+​     ​•​    1% Tokenization Fee: Charged at the time of minting via LCX Tokenization Bridge, payable in
+LCX ​ Token.
+
+​         •​         Gas Fees: Applicable for Ethereum-based transactions (minting, transfers, redemptions).
+
+​         •​         Trading Fees: Standard exchange fees apply for LCXG trades on the LCX Exchange.
+
+​         There are no staking, liquidity mining, or governance rewards associated with LCXG.
+
+
+
+H.6​      Use of Distributed Ledger Technology
+
+​         True
+
+H.7​      DLT Functionality Description
+
+​         Ethereum’s distributed ledger is used to manage all issuance, redemption, and transfer actions related
+​         to LCXG.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                           27/32
+                                                       ​
+
+
+​         ​•​        Issuance: Triggered via the LCX Tokenization Bridge smart contract upon deposit of a ​
+​         ​​         gold-backed NFT.
+
+​         •​         Redemption: Executed by returning LCXG to the bridge and receiving the corresponding NFT.
+
+​         •​         Transparency: Token supply, reserves, and movement are publicly visible on-chain.
+
+​         •​         Security: Ethereum’s finality and immutability protect the system from tampering and ​
+​         ​​         unauthorized access.
+
+
+
+
+H.8​      Audit
+          false
+H.9​      Audit Outcome
+
+​         not applicable
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                           28/32
+                                                       ​
+
+
+    I.​   PART I – INFORMATION ON RISKS
+I.1​      Offer-Related Risks
+
+​         LCXG tokens are not part of a fixed fundraising round, but are offered on a continuous basis through
+​         LCX Exchange. While the token is fully backed by physical gold, market price fluctuations may lead
+​         to temporary deviations from the underlying asset value, especially on secondary markets.
+
+​         Although redemption is always available through the LCX Tokenization Bridge, liquidity constraints or
+​         ​operational issues at the exchange level may cause temporary delays in trading or settlement. In the
+​         event of rapid market demand or withdrawal surges, LCXG liquidity may be temporarily limited, ​
+​         impacting pricing or order execution.
+
+
+
+I.2​      Issuer-Related Risks
+​         LCX AG is a regulated entity under the Liechtenstein Blockchain Act and has applied for MiCA ​
+​         authorization. However, risks may still arise from:
+
+​         ​•​        Operational dependencies on third-party custodians (e.g., Tiamonds AG for gold storage),
+
+​         •​         Cybersecurity threats to internal systems or the trading platform,
+
+​         •​      Regulatory changes affecting token classification, redemption rights, or cross-border ​
+​         marketing.
+
+​         Furthermore, past security events (e.g., the 2022 incident disclosed in Part A) highlight potential IT
+​         infrastructure vulnerabilities, although corrective actions were taken and reserves were maintained.
+
+
+
+
+I.3​      Crypto-Assets-Related Risks
+
+​         While LCXG is fully collateralized, token price volatility may still occur on secondary markets due to
+​         trading activity, investor sentiment, or macroeconomic conditions.
+
+​         There is a risk that the perceived value of the token may temporarily deviate from the spot price of
+​         gold due to arbitrage lag, demand fluctuations, or limited on-exchange liquidity.
+
+​         Additionally, token holders must ensure secure custody of their private keys. If users lose access to
+​         their wallets or credentials, LCX cannot restore access to LCXG tokens held in self-custody.
+
+I.4​      Project Implementation-Related Risks
+
+​         The LCX Tokenization Bridge smart contract and NFT infrastructure are critical components of the
+​         LCXG issuance model. Any technical failure, upgrade delay, or exploit within the bridge or the NFT
+​         verification process could affect minting, redemption, or on-chain auditability.
+
+​         Delays in physical gold redemption or bottlenecks at Tiamonds AG’s redemption process could ​
+​         temporarily impair user experience or undermine redemption confidence. Furthermore, scalability ​
+​         challenges on Ethereum (e.g., high gas fees) may impact transaction efficiency for users interacting
+​         with LCXG on-chain.
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                           29/32
+                                                       ​
+
+
+I.5​      Technology-Related Risks
+
+​         LCXG operates on Ethereum, which is a robust and widely used blockchain, but still susceptible to
+​         network congestion, smart contract bugs, or DLT-level disruptions.
+
+​         The risk of previously unknown vulnerabilities cannot be ​fully eliminated. Malicious attacks, exploits,
+​         or bugs in the LCX Tokenization Bridge could compromise issuance logic or token integrity if ​
+​         unpatched.
+
+​         Additionally, Ethereum gas fees may become prohibitively high during times of network congestion,
+​         temporarily reducing user accessibility to redemption or transfers.
+
+
+
+I.6​      Mitigation Measures
+
+​         LCX employs multiple risk mitigation strategies including:
+
+​         ​•​        Independent smart contract audits and internal code reviews for the LCX Tokenization Bridge;
+
+​         •​         Redundant security infrastructure for LCX Exchange and user wallets;
+
+​         •​         Full 1:1 collateralization model with physical gold held in insured, regulated vaults;
+
+​         •​         Continuous on-chain auditability of token supply and reserves;
+
+​         •​         AML/CFT compliance through full KYC onboarding for all LCX Exchange users;
+
+​         •​         Segregation of customer funds in line with MiCA and TVTG requirements;
+
+​         •​         Clear disclosure of fees, redemption procedures, and rights in this MiCA white paper;
+
+​         •​         Ongoing monitoring of Ethereum Layer 2 solutions to address gas cost efficiency.
+
+
+
+          J.​  PART J – INFORMATION ON THE SUSTAINABILITY INDICATORS IN
+          RELATION TO ADVERSE IMPACT ON THE CLIMATE AND OTHER
+          ENVIRONMENT-RELATED ADVERSE IMPACTS
+​         Adverse impacts on climate and other environment-related adverse impacts.
+J.1​      Information on principal adverse impacts on the climate and other environment-related adverse
+          impacts of the consensus mechanism
+
+​         LCXG operates on the Ethereum blockchain, which transitioned to Proof-of-Stake (PoS) in September
+​         2022 with the Ethereum Merge. This change significantly reduced the network’s energy consumption
+​         — by more than 99% compared to Proof-of-Work.
+
+​         The minting, trading, and transfer of LCXG tokens leverage smart contract infrastructure built on ​
+​         Ethereum Layer 1, using energy-efficient consensus validation by staked ETH validators. LCX is also
+​         monitoring Layer 2 networks (e.g., Arbitrum, Optimism) for future integration to further optimize ​
+​         transaction efficiency and reduce gas-related environmental impact.
+
+​         In alignment with MiCA’s environmental disclosure requirements, LCX provides this transparency to
+​         support environmentally sustainable crypto innovation and compliance.
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                              30/32
+                                                       ​
+
+
+
+
+                                                           General information
+                                                                         LCX
+ S.1 Name
+ Name reported in field A.1
+                                                                         529900SN07Z6RTX8R418
+ S.2 Relevant legal entity identifier
+ Identifier referred to in field A.2
+                                                                         LCXG
+ S.3 Name of the crypto-asset
+ Name of the crypto-asset, as reported in field D.2
+
+ S.4 Consensus Mechanism
+                                                                         Proof-of-Stake (PoS) — Ethereum Mainnet
+ The consensus mechanism, as reported in field H.4
+
+ S.5 Incentive Mechanisms and Applicable Fees
+                                                                         LCXG relies on Ethereum’s PoS, where
+ Incentive mechanisms to secure transactions and any                     validators stake 32 ETH and earn transaction
+ fees applicable, as reported in field H.5                               fees and block rewards. There are no additional
+                                                                         network incentives specific to LCXG. Users pay
+                                                                         Ethereum gas fees for transfers or smart
+                                                                         contract interactions. A 1% tokenization fee
+                                                                         applies during LCXG issuance via the LCX
+                                                                         Tokenization Bridge, payable in LCX Token.
+
+                                                                         2024-05-01
+ S.6 Beginning of the period to which the disclosure
+ relates
+                                                                         Not applicable
+ S.7 End of the period to which the disclosure relates
+
+                                      Mandatory key indicator on energy consumption
+
+ S.8 Energy consumption
+                                                                         2,600 kWh per year (estimated for Ethereum
+ Total amount of energy used for the validation of                       PoS per token class; significantly reduced
+ transactions and the maintenance of the integrity of the                post-Merge)
+ distributed ledger of transactions, expressed per
+ calendar year
+
+                                                       Sources and methodologies
+
+ S.9 Energy consumption sources and
+                                                                         Based on data provided by the Ethereum
+ Methodologies
+                                                                         Foundation and external sustainability research
+ Sources and methodologies used in relation to the                       (e.g., CCRI, UCL Centre for Blockchain
+ information reported in field S.8                                       Technologies). A bottom-up methodology is
+                                                                         applied, taking validator node requirements and
+                                                                         client usage into account. LCX refers to the
+                                                                         Functionally Fungible Group Digital Token
+                                                                         Identifier (FFG DTI), where available, and
+                                                                         follows updates from the Digital Token Identifier
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​            ​                                              31/32
+                                                       ​
+
+
+                                                               Foundation (DTIF) to reflect ongoing
+                                                               methodological improvements.
+
+
+
+J.2​      Supplementary information on principal adverse impacts on the climate and other
+          environment-related adverse impacts of the consensus mechanism
+          Not applicable
+
+
+
+
+MiCAR White Paper - April 2025​
+LCX AG - Herrengasse 6 - 9490 Vaduz - Liechtenstein​       ​                                          32/32
+

@@ -1,0 +1,69 @@
+ 
+ What is an MMF? | Spiko Tech Docs 
+ Skip to main content 
+ Products Spiko Direct Spiko Embedded API Reference 
+ Search 
+ Our products 
+ Overview 
+ Spiko T-Bills 
+ What is an MMF? 
+ Spiko MMFs 
+ Investment Mandate 
+ Fee Structure 
+ Stakeholders 
+ Legal Documentation 
+ Safeguarding of Assets 
+ Spiko Smart Cash 
+ Spiko Cash & Carry 
+ Fund Availability 
+ Onboarding Restrictions 
+ Account management 
+ Account creation 
+ Multi-User Access Management 
+ Deposits and Withdrawals 
+ Currency Exchange 
+ Accounting and Tax Treatment 
+ Tokenization 
+ Explaining Tokenization 
+ Transfers & Redemptions 
+ Addresses 
+ Security Audits 
+ NAV Data Feed 
+ Legal 
+ Legal Notice 
+ Regulatory Information 
+ Terms of Use 
+ Privacy Policy 
+ Our products 
+ Spiko T-Bills 
+ What is an MMF? 
+ What is an MMF?
+ A Money Market Fund (MMF) is a financial product designed for optimized cash management . MMFs invest exclusively in highly liquid and secure financial instruments. The term "MMF" is the industry-standard abbreviation for "Money Market Fund".
+ Money Market Funds provide daily deposit and withdrawal flexibility , making them the preferred choice for corporate treasurers and financial institutions managing short-term liquidity.
+ MMFs are subject to stringent regulations due to their systemic importance in the global financial system. In the European Union, MMFs must obtain specific authorization and undergo ongoing supervision by national regulatory bodies, such as the French Financial Markets Authority (Autorité des marchés financiers - AMF).
+ Parking cash in an MMF, rather than in a traditional bank account, allows you to earn returns that track the risk-free rate of the fund's base currency. Unlike term deposits, MMFs offer instant access to your funds without any notice period requirements.
+ Previous
+ Overview
+ Next
+ Spiko MMFs
+ Documentation
+ Products 
+ Spiko Direct 
+ Spiko Embedded 
+ API Reference 
+ APIs
+ Public API 
+ Investor API 
+ Distributor API 
+ Legal
+ Legal notice 
+ Regulatory information 
+ Terms of use 
+ Privacy policy 
+ Spiko
+ spiko.io 
+ Spiko app 
+ Contact 
+ LinkedIn 
+ © 2026 Spiko. All rights reserved.
+ 

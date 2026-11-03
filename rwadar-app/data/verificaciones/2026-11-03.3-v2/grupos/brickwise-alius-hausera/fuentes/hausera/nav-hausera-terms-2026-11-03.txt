@@ -1,0 +1,466 @@
+URL: https://hausera.io/terms/
+FINAL: https://hausera.io/terms/
+CONSULTADO: 2026-11-03T10:16:18Z
+HTTP: 200
+
+MAÑANA A LAS 9:00 (ESP), PREVENTA DE ALICANTE 2
+VER PROYECTO
+Oportunidades
+Cómo invertir
+Ayuda
+FAQs
+Tutorial
+Promos
+Contacto
+Conócenos
+Equipo
+Track record
+Telegram
+Blog
+Acceder
+CONDICIONES GENERALES DE USO Y CONTRATACIÓN DE LA PLATAFORMA HAUSERA
+1. TITULAR Y OPERADOR DE LA PLATAFORMA
+
+La Plataforma HAUSERA constituye una infraestructura tecnológica que permite el acceso digital a información general, documentación y comunicaciones de carácter genérico relativas a oportunidades de inversión promovidas por sociedades del Grupo Hausera identificadas en cada caso, y no una entidad de intermediación financiera ni una empresa de servicios de inversión.
+
+La participación en las oportunidades publicadas se formaliza directamente entre el Inversor y la sociedad Emisora (SPV) identificada en la documentación específica de la emisión o, en su caso, a través de la infraestructura de mercado o entidad habilitada que resulte aplicable conforme a la normativa del mercado de valores.
+
+Denominación: HOLDTX SPAIN, S.L. (en adelante, HOLDTX)
+
+Nombre Comercial HAUSERA
+
+Número de Identificación Fiscal: B67708032
+
+Registro Mercantil Registro Mercantil de Murcia: Inscrita con fecha 09/12/2021, Tomo 3551, Libro 0, Folio 217, Sección 8, Inscripción 1, Hoja MU-106265
+
+Domicilio social: CEEIC – Centro Europeo de Empresas e Innovación, C/ Berlín, 3F, 30553, Murcia (España)
+
+Correo electrónico de contacto: contacto@hausera.io
+
+La presente Plataforma se explota bajo el dominio https://www.hausera.io (la "Plataforma").
+
+2. NORMATIVA APLICABLE
+
+La Plataforma y las relaciones jurídicas derivadas de su uso se rigen por la legislación española y de la Unión Europea que resulte aplicable y, en particular, por:
+
+Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico.
+Real Decreto Legislativo 1/2007, de 16 de noviembre, por el que se aprueba el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios, cuando resulte aplicable.
+Reglamento (UE) 2016/679 (RGPD) y Ley Orgánica 3/2018.
+Ley 10/2010, de 28 de abril, de prevención del blanqueo de capitales y su normativa de desarrollo cuando resulte aplicable.
+Ley 6/2023, de 17 de marzo, de los Mercados de Valores y de los Servicios de Inversión, cuando las oportunidades publicadas se instrumenten mediante valores negociables u otros instrumentos financieros en lo que resulte aplicable a las emisiones, a los emisores y a los sujetos financieros intervinientes.
+Real Decreto Legislativo 1/2010, de 2 de julio, por el que se aprueba el texto refundido de la Ley de Sociedades de Capital, en lo relativo a la emisión de obligaciones u otros instrumentos por parte de las sociedades emisoras.
+Reglamento (UE) 2022/858, de 30 de mayo de 2022, sobre un régimen piloto para las infraestructuras de mercado basadas en tecnología de registro distribuido, en la medida en que resulte aplicable a las infraestructuras o entidades autorizadas intervinientes.
+Ley 6/2020, de 11 de noviembre, reguladora de determinados aspectos de los servicios electrónicos de confianza.
+Reglamento (UE) n.º 910/2014 (eIDAS), sobre identificación electrónica y servicios de confianza para las transacciones electrónicas.
+3. DEFINICIONES
+
+A efectos de estas CGC:
+
+"Plataforma": el sitio web accesible a través del dominio https://www.hausera.io, operado por HOLDTX.
+"Titular" o "Prestador de la Plataforma": HOLDTX SPAIN, S.L., sociedad responsable de la explotación y gestión técnica de la Plataforma como servicio de la sociedad de la información.
+"Grupo Hausera": el conjunto de sociedades encabezadas por HAUSERA CORP, S.L., incluyendo sus filiales y sociedades participadas, entre ellas HOLDTX y, en su caso, sociedades de administración/gestión de activos y las SPV emisoras.
+"Usuario": cualquier persona física o jurídica que acceda a la Plataforma.
+"Inversor": el Usuario que, tras completar el proceso de registro y verificación correspondiente, formalice su participación en una oportunidad conforme a la documentación aplicable.
+"Oportunidad" o "Proyecto": cada operación inmobiliaria respecto de la cual la Plataforma pone a disposición información general, documentación y, en su caso, funcionalidades técnicas o documentales de soporte al proceso aplicable.
+"Preventa": fase previa, en su caso, a la formalización de la inversión, en la que la Plataforma facilita exclusivamente información general, documentación y mecanismos de manifestación de interés no vinculante, sin que ello constituya actividad de colocación, comercialización individualizada, orden de compra ni garantía de asignación.
+"Ticket": unidad o denominación operativa utilizada en la Plataforma a efectos meramente descriptivos para referirse al importe mínimo de participación o a la unidad mínima de referencia establecida, en su caso, en la documentación aplicable.
+"Emisor" o "SPV": la sociedad vehículo constituida para la titularidad de un activo o proyecto concreto y que emite los instrumentos financieros asociados a dicha oportunidad, identificada en el Documento de Emisión y/o en el Acuerdo de Reserva.
+"Instrumentos financieros representados mediante TRD/DLT": instrumentos financieros cuya emisión, registro, transferencia o almacenamiento se soporta, total o parcialmente, en tecnología de registro distribuido, en los términos y con el alcance establecidos en el Documento de Emisión y/o en la documentación aplicable.
+"ERIR": la entidad responsable de la inscripción y registro designada en cada emisión, encargada de las funciones de registro, validación y demás actuaciones previstas en la normativa aplicable y/o en la documentación de la emisión.
+"Documento de Emisión": documento legal e informativo relativo a una oportunidad concreta, emitido por el Emisor (SPV) o bajo su responsabilidad, que describe al Emisor, las características del instrumento financiero y las condiciones aplicables a la emisión, y que podrá facilitarse por medios electrónicos antes de la formalización de la contratación.
+"Acuerdo de Reserva": documento contractual suscrito electrónicamente en relación con una oportunidad concreta, que regula, en su caso, determinados aspectos documentales, procedimentales o precontractuales del proceso aplicable, conforme a la documentación anexa.
+"Tercero habilitado" o "Infraestructura de mercado": entidad autorizada o infraestructura regulada a través de la cual, en oportunidades cotizadas, el Inversor ejecuta la adquisición, y en su caso la negociación, liquidación y/o custodia de los instrumentos financieros, con sujeción a sus propios términos, condiciones y normativa aplicable.
+"Wallet": dirección, identificador o cuenta técnica asociada al Inversor que, cuando proceda, se utilice para la identificación, registro o gestión técnica de instrumentos financieros representados mediante TRD/DLT, conforme a la documentación de cada emisión y a la infraestructura tecnológica utilizada.
+"Proveedor KYC": tercero que realiza la verificación de identidad y/o documentación del Usuario/Inversor, en su caso, incluyendo comprobaciones biométricas o de prueba de vida cuando se habiliten.
+4. OBJETO Y FUNCIONALIDAD DE LA PLATAFORMA
+4.1. Objeto
+
+La Plataforma tiene por objeto facilitar a los Usuarios el acceso digital a información general, documentación y comunicaciones de carácter genérico relativas a operaciones inmobiliarias promovidas por sociedades identificadas en cada caso como Emisor (SPV), así como permitir funcionalidades tecnológicas y documentales de soporte al proceso aplicable.
+
+La Plataforma constituye un entorno tecnológico que permite:
+
+La creación y gestión de cuentas de Usuario.
+El acceso a información general y documentación relativa a cada oportunidad.
+La suscripción electrónica, en su caso, del Acuerdo de Reserva mediante sistemas de firma digital.
+La recepción de comunicaciones informativas, operativas o documentales vinculadas a cada oportunidad.
+La gestión tecnológica y documental de las funcionalidades habilitadas en la Plataforma
+
+Asimismo, la Plataforma puede publicar oportunidades bajo dos modalidades operativas: (i) oportunidades no cotizadas, en las que la formalización correspondiente se realiza contractualmente con el Emisor (SPV) conforme al Acuerdo de Reserva y a la documentación asociada; y (ii) oportunidades cotizadas, en las que la adquisición y, en su caso, la negociación secundaria se realiza a través de un tercero habilitado o infraestructura de mercado, siendo la Plataforma un canal exclusivamente informativo y documental y, en su caso, de manifestación de interés no vinculante, sin ejecución de órdenes ni actividad de colocación.
+
+4.2. Delimitación de responsabilidades
+
+HOLDTX SPAIN, S.L., en su condición de Titular de la Plataforma: presta servicios digitales de acceso, registro y soporte tecnológico y documental vinculados a las funcionalidades habilitadas en la Plataforma; no actúa como empresa de servicios de inversión; no presta asesoramiento financiero ni realiza recomendaciones personalizadas de inversión; no garantiza rentabilidades ni resultados económicos de los proyectos publicados; no realiza actividades de colocación, comercialización individualizada, recepción o transmisión de órdenes, ejecución, custodia ni cualesquiera otras actividades reservadas a empresas de servicios de inversión o a otras entidades autorizadas conforme a la normativa del mercado de valores.
+
+La inversión en cada oportunidad se formaliza con la sociedad Emisora (SPV) identificada en el correspondiente Documento de Emisión y, en su caso, en la documentación contractual aplicable, que será la única responsable frente al Inversor del cumplimiento de las obligaciones económicas derivadas de la emisión.
+
+HOLDTX no presta servicios de recepción y transmisión de órdenes, ejecución de órdenes por cuenta de terceros, custodia de instrumentos financieros ni cualesquiera otros servicios de inversión o auxiliares en los términos definidos en la Ley 6/2023, de 17 de marzo, de los Mercados de Valores y de los Servicios de Inversión.
+
+Cuando intervenga una Entidad Responsable de la Inscripción y Registro (ERIR) u otros terceros, sus funciones y responsabilidades se regirán por la normativa aplicable y por la documentación específica de cada emisión.
+
+4.3. Naturaleza de la información
+
+La información publicada en la Plataforma tiene carácter general, genérico, meramente informativo y no individualizado, y no constituye, por sí misma, recomendación personalizada de inversión, prestación de servicios de inversión, actividad de colocación, comercialización individualizada ni asesoramiento financiero, sin perjuicio de que determinadas oportunidades puedan estructurarse como emisiones de valores conforme a la normativa aplicable, lo cual se detallará en el correspondiente Documento de Emisión.
+
+Cada oportunidad contará con su propia documentación contractual y regulatoria, que el Inversor deberá revisar y aceptar antes de la formalización correspondiente, conforme a la documentación aplicable.
+
+Las métricas financieras publicadas en relación con cada oportunidad, incluyendo rentabilidad estimada, TIR, ROI u otras proyecciones económicas, tienen carácter meramente estimativo e informativo y no constituyen garantía de resultado, compromiso de rentabilidad futura ni promesa de desempeño, pudiendo variar en función de la evolución del mercado, circunstancias económicas o factores propios del proyecto.
+
+El Usuario reconoce expresamente que la información disponible en la Plataforma tiene carácter general y no individualizado y que HOLDTX SPAIN, S.L. no realiza evaluaciones de idoneidad o conveniencia respecto de las oportunidades publicadas, ni formula recomendaciones personalizadas de inversión. La decisión de participar en una oportunidad corresponde exclusivamente al Inversor, quien declara actuar bajo su propio criterio y responsabilidad.
+
+4.4. Aceptación de documentación específica
+
+La formalización de la participación en una oportunidad requerirá, además de la previa aceptación de las presentes Condiciones Generales y de la Política de Privacidad durante el proceso de registro, la aceptación expresa del Acuerdo de Reserva correspondiente, del Documento de Emisión y de la demás documentación asociada al proyecto que resulte aplicable.
+
+La aceptación de las presentes Condiciones Generales y, en su caso, del Acuerdo de Reserva, del Documento de Emisión y de la documentación aplicable, se realizará mediante mecanismos de aceptación expresa habilitados en la Plataforma y/o mediante firma electrónica, quedando el Inversor facultado para conservar una copia en soporte duradero y recibiendo confirmación electrónica de la aceptación y formalización correspondiente, de conformidad con la normativa aplicable en materia de contratación a distancia y servicios de la sociedad de la información.
+
+El Inversor declara haber tenido acceso previo, suficiente y gratuito a la documentación contractual y regulatoria aplicable a la oportunidad correspondiente, así como haber dispuesto del tiempo necesario para su revisión antes de prestar su consentimiento.
+
+5. REGISTRO Y PROCESO DE CONTRATACIÓN
+5.1. Registro en la Plataforma
+
+Para acceder a determinadas funcionalidades de la Plataforma y, en su caso, a la documentación y procesos aplicables a cada oportunidad publicada, el Usuario deberá registrarse creando una cuenta personal.
+
+El registro requerirá la cumplimentación de los datos solicitados y la aceptación expresa de las presentes Condiciones Generales y de la Política de Privacidad.
+
+El Usuario garantiza que los datos facilitados son veraces, exactos y actualizados, siendo responsable de su actualización.
+
+HOLDTX podrá verificar la identidad del Usuario en cualquier momento y suspender o cancelar la cuenta en caso de incumplimiento de estas Condiciones, cuando resulte razonablemente justificado.
+
+5.2. Verificación de identidad y cumplimiento normativo
+
+Con carácter previo al acceso a determinadas funcionalidades de la Plataforma y, en su caso, a la formalización correspondiente respecto de una oportunidad, el Usuario deberá completar el proceso de identificación y verificación requerido conforme a la normativa aplicable en materia de prevención del blanqueo de capitales y, cuando proceda, conforme a la normativa del mercado de valores.
+
+La Plataforma podrá utilizar proveedores externos para la realización de los procesos de verificación de identidad (KYC), así como para la validación documental y biométrica.
+
+La falta de superación satisfactoria del proceso de verificación impedirá la continuación del proceso aplicable o la formalización correspondiente, según proceda.
+
+5.3. Procedimiento de reserva en oportunidades no cotizadas
+
+Cuando se abra un periodo de preventa para una oportunidad concreta, el Usuario podrá acceder a la página específica del proyecto y, en su caso, iniciar el proceso documental correspondiente respecto de una determinada cuantía, conforme a las reglas de la oportunidad y a la documentación aplicable.
+
+Una vez realizada dicha manifestación de interés: el Usuario podrá recibir por correo electrónico el Acuerdo de Reserva, junto con el Documento de Emisión correspondiente y, en su caso, la documentación asociada; el Acuerdo de Reserva podrá ponerse a disposición del Usuario para su suscripción mediante sistema de firma electrónica habilitado en la Plataforma; una vez suscrito por las partes que correspondan, el Usuario recibirá copia de la documentación firmada por medios electrónicos.
+
+La firma electrónica del Acuerdo de Reserva constituirá manifestación expresa del consentimiento del Usuario respecto de la documentación aplicable a la oportunidad correspondiente, en los términos previstos en dicha documentación.
+
+5.4. Formalización de la aportación económica
+
+Tras la firma del Acuerdo de Reserva, el Usuario deberá realizar la transferencia bancaria correspondiente dentro del plazo indicado en el propio contrato.
+
+La formalización correspondiente respecto de la oportunidad quedará supeditada al cumplimiento conjunto de: la firma válida del Acuerdo de Reserva; la recepción efectiva de los fondos en la cuenta designada por la sociedad Emisora dentro del plazo establecido.
+
+La Plataforma podrá solicitar justificante de transferencia o documentación adicional cuando resulte necesario para la validación, trazabilidad o verificación de la operación.
+
+5.5. Confirmación de participación
+
+Una vez verificados los requisitos anteriores, el Usuario quedará formalmente incorporado a la oportunidad correspondiente en los términos previstos en el Documento de Emisión y, en su caso, en el Acuerdo de Reserva.
+
+La Plataforma enviará confirmación electrónica de la correcta formalización del proceso.
+
+5.6. Naturaleza jurídica del proceso de reserva
+
+El Usuario reconoce que: la eventual suscripción del Acuerdo de Reserva produce los efectos jurídicos que resulten de su propio contenido y de la documentación anexa; la emisión efectiva de los instrumentos financieros se regirá por lo dispuesto en el Documento de Emisión; la participación del Inversor podrá quedar condicionada al cumplimiento de los requisitos aplicables y a la formalización de la emisión conforme a la documentación del proyecto.
+
+5.7. Particularidades de las oportunidades cotizadas
+
+En oportunidades cotizadas, el Inversor deberá completar, cuando proceda, el alta y verificación exigida por el tercero habilitado o infraestructura de mercado a través del cual se formalizará y, en su caso, ejecutará la adquisición.
+
+El Inversor reconoce que: (i) la apertura de cuenta, el depósito y retirada de fondos, la ejecución de órdenes, la liquidación y, en su caso, la custodia o el registro, se rigen por los términos y condiciones del tercero habilitado y por su normativa aplicable; y (ii) la Plataforma no controla ni asume responsabilidad por los procesos internos, tiempos de verificación, disponibilidad operativa o reglas de ejecución del tercero habilitado.
+
+La Plataforma actúa exclusivamente como canal informativo y documental, sin intervenir en la recepción o transmisión de órdenes, en la ejecución de operaciones ni en la custodia de instrumentos financieros.
+
+6. ADQUISICIÓN DE INSTRUMENTOS FINANCIEROS (NO COTIZADAS / COTIZADAS)
+6.1. Modalidades de estructuración
+
+Las oportunidades publicadas en la Plataforma podrán estructurarse bajo dos modalidades: (i) oportunidades no cotizadas, en las que la formalización correspondiente se realiza directamente con la sociedad Emisora (SPV); y (ii) oportunidades cotizadas, en las que la adquisición, ejecución y, en su caso, negociación de los instrumentos financieros se realiza a través de una infraestructura de mercado autorizada o de un tercero habilitado al efecto, conforme a su normativa específica.
+
+6.2. Naturaleza de los instrumentos financieros
+
+Las oportunidades podrán instrumentarse mediante la emisión de obligaciones u otros valores negociables, o cualesquiera otros instrumentos financieros, por parte de la sociedad Emisora (SPV), pudiendo representarse, cuando así se indique, mediante Tecnología de Registro Distribuido (TRD/DLT). La concreta naturaleza jurídica del instrumento financiero, sus derechos económicos, plazos, rentabilidad estimada, riesgos, régimen de transmisión y demás condiciones se regirán exclusivamente por lo establecido en el Documento de Emisión y en la documentación contractual aplicable.
+
+6.3. Oportunidades no cotizadas (adquisición directa con la sociedad Emisora)
+
+En las oportunidades no cotizadas, la adquisición de los instrumentos financieros se formaliza contractualmente entre el Inversor y la sociedad Emisora (SPV) identificada en el correspondiente Documento de Emisión y, en su caso, en la documentación contractual aplicable. HOLDTX SPAIN, S.L., en su condición de Titular de la Plataforma, no es parte en la relación contractual correspondiente, salvo en lo relativo a la prestación de los servicios digitales descritos en las presentes Condiciones.
+
+6.4. Oportunidades cotizadas (adquisición y ejecución a través de infraestructura o tercero)
+
+En el caso de oportunidades estructuradas como valores admitidos a negociación en mercados regulados, sistemas multilaterales de negociación u otras infraestructuras autorizadas, la adquisición de los instrumentos financieros, la ejecución de órdenes, la liquidación y, en su caso, la custodia se realizará a través de la entidad de negociación, infraestructura de mercado o tercero habilitado correspondiente. En dichos supuestos, HOLDTX SPAIN, S.L. no interviene en la recepción o transmisión de órdenes, en la ejecución de operaciones ni en la custodia de instrumentos financieros, limitándose a facilitar información general, documentación y, en su caso, funcionalidades técnicas o documentales de soporte.
+
+En las oportunidades cotizadas, cualquier funcionalidad que pueda habilitar la Plataforma con carácter previo a la operativa a través del tercero correspondiente tendrá carácter exclusivamente informativo, documental o de manifestación de interés no vinculante, y no constituirá orden de compra, actividad de colocación, comercialización individualizada, garantía de ejecución de la adquisición ni garantía de disponibilidad de precio o volumen. La operación quedará en todo caso sujeta a la formalización efectiva por el Inversor a través del tercero habilitado y a las reglas del correspondiente mercado o infraestructura.
+
+6.5. Intervención de la ERIR y otros terceros
+
+En determinadas emisiones podrá intervenir una Entidad Responsable de la Inscripción y Registro (ERIR) u otros terceros con funciones técnicas, registrales o de validación. La intervención de dichos terceros se regirá por la normativa aplicable y por lo dispuesto en el Documento de Emisión correspondiente y por su respectivo ámbito de actuación.
+
+6.6. Responsabilidad de la sociedad Emisora y ausencia de garantía
+
+La sociedad Emisora será la única responsable frente al Inversor del cumplimiento de las obligaciones económicas derivadas de la emisión, incluyendo, en su caso, el pago del principal y los rendimientos correspondientes, en los términos previstos en el Documento de Emisión. HOLDTX no garantiza la obtención de rentabilidad ni responde frente al Inversor por el resultado económico de las oportunidades publicadas.
+
+6.7. Riesgos, transmisión y liquidez
+
+El Inversor reconoce que toda inversión conlleva riesgos, incluyendo la posible pérdida total o parcial del capital invertido, riesgos de mercado, riesgos de ejecución del proyecto, riesgos de liquidez y, en su caso, riesgos tecnológicos asociados al uso de TRD. El Inversor declara haber leído y comprendido los riesgos descritos en el Documento de Emisión y haber tenido oportunidad suficiente para analizarlos antes de prestar su consentimiento o formalizar su participación, según proceda.
+
+La transmisión de los instrumentos financieros adquiridos podrá estar sujeta a limitaciones establecidas en el Documento de Emisión y, en su caso, a requisitos de identificación y validación del adquirente. La existencia de mercado secundario no está garantizada, salvo que expresamente se establezca lo contrario en la documentación de la emisión.
+
+7. PAGO DE LOS INSTRUMENTOS FINANCIEROS Y REEMBOLSOS
+7.1. Canal de pagos y titularidad de las cuentas
+
+El desembolso asociado, en su caso, a la formalización correspondiente o a la adquisición de instrumentos financieros se realizará, con carácter general, mediante transferencia bancaria o, en su caso, a través de la infraestructura de mercado o del tercero interviniente que corresponda en las oportunidades cotizadas, conforme se describa en la documentación específica de la oportunidad.
+
+La cuenta o canal de pago será, según proceda, titularidad del Emisor (SPV), de la entidad que actúe por cuenta de éste o de la infraestructura de mercado o tercero correspondiente, según se identifique expresamente en el Acuerdo de Reserva, el Documento de Emisión y/o la documentación asociada a la oportunidad.
+
+7.2. Oportunidades no cotizadas: transferencia y perfección de la inversión
+
+En las oportunidades no cotizadas, el Inversor deberá efectuar la transferencia bancaria por el importe y dentro del plazo establecidos en el Acuerdo de Reserva y en las instrucciones contenidas en la documentación aplicable o comunicadas por el Emisor, en su caso a través de la Plataforma.
+
+La formalización y eficacia de la participación del Inversor quedarán condicionadas a la concurrencia conjunta de: (i) la firma válida del Acuerdo de Reserva, incluyendo la aceptación del Documento de Emisión y, en su caso, de la documentación contractual vinculada; (ii) la recepción efectiva de los fondos en la cuenta designada; y (iii) la superación satisfactoria de los procesos de verificación aplicables (KYC/PBC/FT y cualesquiera controles adicionales que procedan).
+
+7.3. Oportunidades cotizadas: operativa a través de terceros y ausencia de custodia por la Plataforma
+
+En las oportunidades estructuradas como instrumentos financieros admitidos a negociación en mercados regulados, sistemas multilaterales de negociación u otras infraestructuras autorizadas, el Inversor reconoce que la ejecución de la operación, la eventual custodia y, en su caso, el acceso al mercado secundario, se articularán a través de la entidad o infraestructura tercera que corresponda, conforme a sus propios términos y condiciones.
+
+En estos supuestos, HOLDTX SPAIN, S.L. no recibe ni custodia fondos del Inversor, ni ejecuta órdenes, ni presta servicios de inversión, limitándose a facilitar información general, documentación, acceso digital a la oportunidad y, en su caso, funcionalidades técnicas o documentales de soporte o de manifestación de interés no vinculante, cuando así se prevea para la oportunidad correspondiente.
+
+7.4. Conciliación, validación y derecho a requerir documentación
+
+La consideración de un desembolso como válido quedará supeditada a: (i) la recepción efectiva de los fondos o la confirmación de la operación por el tercero correspondiente, (ii) la correcta identificación del ordenante/adquirente, y (iii) la superación satisfactoria de los controles internos y/o de terceros en materia de KYC/PBC/FT.
+
+La Plataforma, el Emisor o los terceros intervinientes podrán solicitar al Inversor el justificante de la operación, documentación acreditativa del origen de fondos u otra información necesaria para el cumplimiento de obligaciones legales o para la mitigación de riesgos operativos y de fraude.
+
+7.5. Devoluciones y reembolsos
+
+Los importes desembolsados podrán ser objeto de devolución o reembolso en los supuestos previstos en el Acuerdo de Reserva, el Documento de Emisión y/o la documentación específica de la oportunidad, incluyendo, a título enunciativo: (i) la no formalización o cancelación de la emisión, (ii) la no superación de los controles de verificación, (iii) la superación del importe máximo de financiación o la necesidad de realizar ajustes en la cuantía finalmente formalizada conforme a las reglas de la oportunidad, o (iv) cualquier otro supuesto regulado para la oportunidad.
+
+Salvo que se establezca otra cosa por razones legales o por la operativa del tercero interviniente, la devolución se realizará a la misma cuenta de origen desde la que se efectuó el desembolso o por el medio técnicamente equivalente que permita asegurar la trazabilidad y el cumplimiento normativo.
+
+7.6. Responsabilidad de pago del Emisor y rol de la Plataforma
+
+Las obligaciones económicas derivadas de la inversión —incluyendo, en su caso, el pago de rendimientos, cupones, rentas, intereses, amortización o devolución del principal— corresponden exclusiva y directamente al Emisor (SPV) o, en su caso, se instrumentarán conforme a las reglas de la infraestructura de mercado aplicable en las oportunidades cotizadas.
+
+HOLDTX SPAIN, S.L. actúa únicamente como infraestructura tecnológica y soporte digital de carácter informativo, documental y operativo respecto de las funcionalidades habilitadas en la Plataforma, sin asumir funciones de garante, fiador, avalista ni responsable solidario de las obligaciones económicas de los instrumentos financieros.
+
+8. FISCALIDAD Y RETENCIONES
+8.1. Carácter informativo
+
+El régimen fiscal aplicable a las inversiones dependerá de la naturaleza del instrumento financiero, de la modalidad de la oportunidad (no cotizada/cotizada) y de la situación personal y fiscal del Inversor. La información fiscal facilitada en la Plataforma o en la documentación de cada oportunidad tiene carácter meramente informativo y no constituye asesoramiento fiscal.
+
+El Inversor es responsable de analizar las implicaciones fiscales de su inversión y, en caso de duda, se recomienda que consulte con un asesor fiscal independiente antes de adoptar cualquier decisión de inversión.
+
+8.2. Retenciones y certificados
+
+Cuando resulte legalmente exigible, las retenciones fiscales que procedan se practicarán por la entidad que, conforme a la normativa tributaria y a la estructura concreta de la operación, tenga la condición de pagador u obligado a retener. En particular: (i) en oportunidades no cotizadas, las retenciones, en su caso, se realizarán conforme se establezca en la documentación de la emisión y por la entidad obligada; y (ii) en oportunidades cotizadas, las retenciones y obligaciones informativas, en su caso, podrán corresponder al tercero habilitado o a la entidad que satisfaga los rendimientos, según la operativa aplicable. La entidad obligada a retener podrá facilitar al Inversor los certificados fiscales que correspondan conforme a la normativa vigente.
+
+8.3. Obligaciones del Inversor
+
+El Inversor será el único responsable del cumplimiento de sus obligaciones fiscales, incluida la correcta declaración de rendimientos, intereses, rentas, plusvalías o cualesquiera resultados derivados de la inversión, tanto en España como en su jurisdicción fiscal, sin perjuicio de las obligaciones de retención o información que correspondan a terceros.
+
+9. PROTECCIÓN DE DATOS PERSONALES
+9.1. Responsables del tratamiento y roles
+
+En el marco del funcionamiento de la Plataforma y de las oportunidades de inversión publicadas, los distintos intervinientes actuarán como responsables del tratamiento de datos personales en función de sus respectivas competencias y ámbitos de actuación:
+
+(i) HOLDTX SPAIN, S.L. actúa como responsable del tratamiento respecto de los datos personales tratados en relación con: a) el alta, gestión y mantenimiento de la cuenta del Usuario; b) el acceso y uso de la Plataforma y sus funcionalidades; c) la gestión de las funcionalidades documentales y electrónicas habilitadas en la Plataforma, incluyendo la remisión de documentación, las evidencias de aceptación o firma y las comunicaciones operativas asociadas; y d) la seguridad, integridad y prevención del fraude vinculadas al uso de la Plataforma.
+
+(ii) La sociedad Emisora (SPV) identificada en cada oportunidad actúa como responsable independiente respecto de los tratamientos derivados de la relación contractual de inversión, incluyendo la formalización, ejecución y gestión de la emisión, el cumplimiento de obligaciones mercantiles, fiscales y, en su caso, de prevención del blanqueo de capitales y financiación del terrorismo.
+
+(iii) La Entidad Responsable de la Inscripción y Registro (ERIR) designada en cada emisión y, en su caso, los terceros habilitados que intervengan en oportunidades cotizadas (infraestructuras de mercado, entidades participantes u otros intervinientes regulados), actuarán como responsables o encargados del tratamiento en su propio ámbito de actuación, conforme a la normativa aplicable y a la documentación específica de la emisión.
+
+La comunicación de datos entre HOLDTX SPAIN, la sociedad Emisora (SPV) y, en su caso, la ERIR u otros intervinientes, se realizará únicamente cuando resulte necesaria para la ejecución de la relación contractual, la formalización o gestión de la relación contractual correspondiente o el cumplimiento de obligaciones legales aplicables.
+
+Cada responsable tratará los datos personales conforme a su propia política de privacidad y dentro de los límites de su respectivo ámbito competencial.
+
+9.2. Normativa aplicable
+
+El tratamiento de datos se realiza conforme al Reglamento (UE) 2016/679 (RGPD), la Ley Orgánica 3/2018 (LOPDGDD) y, cuando resulte aplicable, la normativa sectorial vinculada a la prevención del blanqueo de capitales y financiación del terrorismo (PBC/FT).
+
+9.3. Categorías de datos
+
+Los datos tratados podrán incluir, según la operativa y el perfil del Usuario: datos identificativos y de contacto; datos de acceso y credenciales; datos de navegación y dispositivos; datos económicos y de pago (p. ej., justificantes de transferencia); y datos/documentación para verificación de identidad y diligencia debida (KYC, incluida información biométrica o de prueba de vida si se emplea), así como información necesaria para verificar el origen de fondos cuando proceda.
+
+9.4. Finalidades del tratamiento
+
+Los datos personales se tratarán para las siguientes finalidades: a) gestionar el registro, autenticación y mantenimiento de la cuenta del Usuario; b) permitir el acceso a la Plataforma y la utilización de sus funcionalidades; c) gestionar las funcionalidades documentales y electrónicas asociadas al proceso aplicable, incluida la remisión y conservación de evidencias de aceptación o firma; d) gestionar comunicaciones operativas (confirmaciones, avisos informativos relativos a oportunidades, incidencias, soporte y atención al Usuario); e) realizar verificaciones de identidad y medidas de diligencia debida y control interno (KYC/PBC/FT) cuando resulte aplicable; f) garantizar la seguridad de la Plataforma, prevención del fraude, trazabilidad operativa y continuidad del servicio; y g) cumplir obligaciones legales aplicables y atender requerimientos de autoridades competentes.
+
+9.5. Bases jurídicas (legitimación)
+
+Las bases jurídicas del tratamiento serán: a) ejecución de un contrato o aplicación de medidas precontractuales (art. 6.1.b RGPD), para el alta, uso de la Plataforma y la gestión documental y electrónica del proceso aplicable; b) cumplimiento de obligaciones legales (art. 6.1.c RGPD), en particular, cuando proceda, obligaciones mercantiles, fiscales y de PBC/FT; c) interés legítimo (art. 6.1.f RGPD) en garantizar la seguridad, integridad, trazabilidad, prevención del fraude y correcto funcionamiento de la Plataforma, así como en la defensa frente a reclamaciones; y d) cuando proceda, consentimiento (art. 6.1.a RGPD) para finalidades no necesarias para la ejecución del contrato (por ejemplo, comunicaciones comerciales), que podrá retirarse en cualquier momento con los efectos previstos en la Política de Privacidad.
+
+9.6. Destinatarios y comunicaciones de datos
+
+Con la aceptación de estas Condiciones Generales y la utilización de la Plataforma, el Usuario queda informado de que sus datos podrán comunicarse, cuando sea necesario para las finalidades descritas, a: a) la sociedad Emisora (SPV) de la oportunidad correspondiente, cuando dicha comunicación resulte necesaria para la formalización o gestión aplicable; b) otras sociedades del Grupo Hausera que intervengan en funciones de soporte administrativo, gestión del activo, administración, cumplimiento normativo, soporte técnico o back-office, en la medida estrictamente necesaria; c) la ERIR designada en la emisión y, cuando proceda, a terceros con funciones registrales o de validación; d) proveedores tecnológicos que presten servicios a HOLDTX o al Emisor (por ejemplo, plataforma de firma electrónica, hosting, verificación KYC, comunicaciones), actuando como encargados del tratamiento; y e) autoridades públicas, órganos judiciales o administrativos cuando exista obligación legal o requerimiento.
+
+9.7. Transferencias internacionales de datos
+
+En caso de que alguno de los proveedores o sistemas utilizados implique transferencias internacionales de datos fuera del Espacio Económico Europeo, dichas transferencias se realizarán conforme a los mecanismos previstos en el RGPD (por ejemplo, decisiones de adecuación, cláusulas contractuales tipo u otros instrumentos aplicables). El detalle actualizado de transferencias, proveedores y garantías aplicables se facilitará en la Política de Privacidad.
+
+9.8. Plazos de conservación
+
+Los datos se conservarán durante el tiempo necesario para: (i) mantener la relación del Usuario con la Plataforma y/o, en su caso, la relación contractual de inversión, y (ii) cumplir las obligaciones legales aplicables y atender posibles responsabilidades. Finalizados dichos plazos, los datos se bloquearán y quedarán a disposición de jueces y tribunales, Ministerio Fiscal o administraciones competentes durante los plazos de prescripción aplicables, procediéndose posteriormente a su eliminación segura.
+
+9.9. Particularidades en el uso de Tecnología de Registro Distribuido (TRD/DLT)
+
+Cuando una oportunidad se estructure mediante instrumentos financieros representados mediante TRD/DLT, el Usuario reconoce que pueden generarse registros técnicos asociados a identificadores digitales y transacciones que, por la naturaleza de la tecnología, pueden tener carácter persistente. En todo caso: a) no se incorporarán datos personales en claro en la infraestructura TRD/DLT; b) la vinculación entre la identidad del Usuario y los identificadores técnicos se gestionará mediante sistemas internos con medidas de seudonimización, control de accesos y seguridad; y c) cuando proceda el ejercicio del derecho de supresión, se aplicarán medidas de bloqueo y se eliminarán o disociarán los elementos bajo control de HOLDTX/Emisor que permitan vincular al Usuario con los identificadores técnicos, sin perjuicio de las limitaciones técnicas inherentes a la TRD/DLT.
+
+9.10. Derechos del Usuario
+
+Para cualquier asunto relacionado con el tratamiento de datos de personas físicas por parte de la Plataforma podrá dirigirse al Delegado de Protección de Datos a través de la siguiente dirección de correo: dpd@hausera.io.
+
+El Usuario podrá ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, así como, cuando proceda, retirar el consentimiento otorgado, mediante solicitud dirigida al correo electrónico rgpd@hausera.io. Se recuerda al usuario que le asiste el derecho a reclamar ante la Agencia Española de Protección de Datos (www.aepd.es) y que puede oponerse al tratamiento de datos para finalidades comerciales.
+
+10. PREVENCIÓN DEL BLANQUEO DE CAPITALES Y FINANCIACIÓN DEL TERRORISMO (PBC/FT)
+
+HOLDTX SPAIN, S.L. y las sociedades Emisoras (SPV) intervinientes en cada oportunidad, en la medida en que desarrollan actividades comprendidas en el artículo 2 de la Ley 10/2010, de 28 de abril, de prevención del blanqueo de capitales y de la financiación del terrorismo, tienen la condición de sujetos obligados y actúan en cumplimiento de dicha normativa y de su desarrollo reglamentario.
+
+Asimismo, cuando en una emisión intervenga una Entidad Responsable de la Inscripción y Registro (ERIR) que tenga la condición de empresa de servicios de inversión u otra entidad sujeta a obligaciones en materia de PBC/FT (por ejemplo, una Agencia de Valores), dicha entidad actuará igualmente como sujeto obligado en el ámbito de sus funciones y responsabilidades, aplicando sus propios procedimientos de diligencia debida, control interno y demás obligaciones legalmente exigibles, sin perjuicio de las funciones registrales y de validación que le correspondan conforme a la normativa del mercado de valores y a la documentación de la emisión.
+
+Las entidades del Grupo Hausera disponen de un Manual corporativo de Prevención del Blanqueo de Capitales y Financiación del Terrorismo que establece políticas, procedimientos y mecanismos de control interno comunes, sin perjuicio de la responsabilidad individual que corresponda a cada entidad conforme a la normativa aplicable y del régimen específico de las entidades financieras o de servicios de inversión que intervengan.
+
+En el marco de sus respectivas obligaciones legales, HOLDTX y/o la sociedad Emisora correspondiente y/o, en su caso, la ERIR podrán: requerir al Usuario o Inversor información y documentación adicional sobre su identidad, titularidad real, actividad económica u origen de fondos; acceder, cuando resulte legalmente procedente, a la documentación de identificación y diligencia debida recabada por otro sujeto obligado interviniente en la operación; aplicar medidas de diligencia debida reforzada cuando resulte necesario; suspender, paralizar o condicionar la continuación del proceso aplicable o la formalización correspondiente hasta la completa aplicación de las medidas exigibles; denegar la formalización correspondiente respecto de una oportunidad cuando no resulte posible cumplir adecuadamente las obligaciones legales; y comunicar, cuando proceda, operaciones sospechosas a las autoridades competentes, en los términos previstos en la normativa aplicable.
+
+Los datos e información recabados en cumplimiento de obligaciones en materia de PBC/FT podrán ser comunicados entre HOLDTX, las sociedades Emisoras (SPV) y, en su caso, la ERIR, cuando resulte estrictamente necesario para el cumplimiento de obligaciones legales o para la correcta aplicación de las medidas de diligencia debida en el ámbito de cada sujeto obligado, conforme a los principios de necesidad, proporcionalidad y seguridad.
+
+El Usuario reconoce que el cumplimiento de las obligaciones legales en materia de prevención del blanqueo de capitales podrá implicar la suspensión, limitación o denegación de la formalización correspondiente respecto de una oportunidad, prevaleciendo dichas obligaciones sobre cualquier otra previsión contractual.
+
+11. CONDICIONES PARTICULARES DE CADA EMISIÓN
+
+Cada oportunidad publicada en la Plataforma contará con su correspondiente Documento de Emisión y, en su caso, documentación contractual adicional que regulará las condiciones específicas de la emisión y el régimen jurídico del instrumento financiero emitido.
+
+Para la formalización correspondiente respecto de una oportunidad concreta, el Usuario deberá aceptar expresamente el Documento de Emisión y el Acuerdo de Reserva correspondiente mediante los sistemas electrónicos habilitados al efecto. La aceptación tendrá carácter individual y específico para cada emisión, sin que la participación en una oportunidad implique la aceptación de futuras emisiones.
+
+El Documento de Emisión incluirá, entre otros aspectos, la identificación de la sociedad Emisora (SPV), la naturaleza jurídica del instrumento financiero, el importe de la emisión, el plazo, las condiciones económicas, la rentabilidad estimada, los riesgos asociados, las limitaciones de transmisión, el régimen de amortización y cualquier otra condición relevante para la inversión.
+
+La aceptación del Documento de Emisión constituye requisito indispensable para la formalización de la inversión y determinará los derechos y obligaciones del Inversor frente a la sociedad Emisora.
+
+En caso de discrepancia, contradicción o diferencia de interpretación entre lo dispuesto en las presentes Condiciones Generales y el Documento de Emisión de una oportunidad concreta, prevalecerá lo establecido en este último exclusivamente respecto de dicha emisión y en lo relativo a las condiciones específicas del instrumento financiero, manteniéndose vigentes las restantes previsiones de las presentes Condiciones Generales.
+
+12. DERECHOS Y LIMITACIONES DE USO
+
+El acceso a las funcionalidades operativas de la Plataforma, así como a las funcionalidades documentales y electrónicas habilitadas respecto de cada oportunidad, estará reservado exclusivamente a los Usuarios que hayan completado satisfactoriamente el proceso de registro y verificación de identidad y que cumplan los requisitos legales y regulatorios aplicables.
+
+HOLDTX SPAIN, S.L. podrá limitar, suspender, restringir determinadas funcionalidades o cancelar el acceso a la Plataforma, total o parcialmente, cuando concurra alguna de las siguientes circunstancias: incumplimiento de las presentes Condiciones Generales o de la documentación específica de una emisión; detección de inconsistencias relevantes, inexactitudes o falsedades en la información facilitada por el Usuario; no superación o imposibilidad de aplicar adecuadamente los procesos de verificación o diligencia debida exigidos por la normativa aplicable, incluida la normativa de prevención del blanqueo de capitales; existencia de indicios de actuación contraria a la normativa vigente o de uso indebido de la Plataforma; razones técnicas, operativas, de seguridad o regulatorias que así lo aconsejen; requerimiento judicial, administrativo o de autoridad supervisora competente.
+
+La suspensión o cancelación del acceso no generará derecho a indemnización alguna para el Usuario, salvo en caso de dolo o culpa grave imputable a HOLDTX, sin perjuicio de las obligaciones contractuales previamente asumidas por el Usuario respecto de oportunidades ya formalizadas.
+
+El Usuario se compromete a utilizar la Plataforma de forma diligente, lícita y conforme a la normativa vigente, absteniéndose de realizar actuaciones que puedan afectar a la seguridad, integridad, disponibilidad o correcto funcionamiento del sistema.
+
+HOLDTX podrá adoptar en cualquier momento las medidas técnicas y organizativas necesarias para preservar la seguridad y continuidad de la Plataforma, incluyendo actualizaciones, mantenimiento, limitaciones temporales de determinadas funcionalidades o suspensión preventiva cuando resulte necesario por razones técnicas, regulatorias o de protección del sistema y de los Usuarios.
+
+13. RESPONSABILIDAD
+
+HOLDTX SPAIN, S.L. presta servicios de acceso, gestión digital y soporte tecnológico de la Plataforma, limitándose a facilitar información general, documentación y funcionalidades técnicas o documentales habilitadas en relación con las oportunidades publicadas, sin intervenir como parte en la relación contractual correspondiente entre el Inversor y la sociedad Emisora (SPV).
+
+HOLDTX no actúa como empresa de servicios de inversión, no realiza actividades de colocación o comercialización individualizada, no presta servicios de recepción o transmisión de órdenes, ejecución de órdenes por cuenta de terceros ni custodia de instrumentos financieros, ni presta asesoramiento financiero, jurídico o fiscal individualizado.
+
+La responsabilidad derivada de las obligaciones económicas asociadas a cada oportunidad —incluyendo el pago de principal, intereses, rendimientos o cualesquiera derechos económicos— corresponde exclusivamente a la sociedad Emisora (SPV) identificada en el Documento de Emisión correspondiente.
+
+HOLDTX no garantiza la obtención de rentabilidad ni la consecución de los resultados económicos previstos en los proyectos publicados, ni asume obligación de resultado alguno en relación con las inversiones realizadas a través de la Plataforma.
+
+HOLDTX no será responsable de interrupciones temporales del servicio, indisponibilidad de la Plataforma, errores técnicos, incidencias en redes de comunicaciones, fallos de terceros proveedores tecnológicos, entidades financieras, infraestructuras de mercado o sistemas basados en Tecnología de Registro Distribuido (TRD/DLT), siempre que no medie dolo o culpa grave por su parte.
+
+En particular, cuando los instrumentos financieros se representen mediante Tecnología de Registro Distribuido (TRD/DLT), el Usuario reconoce que dicha infraestructura tecnológica puede estar sujeta a riesgos técnicos u operativos propios de redes distribuidas, incluyendo fallos de protocolo, congestión de red, bifurcaciones ("forks"), interrupciones de nodos u otras incidencias técnicas ajenas al control de HOLDTX.
+
+Tampoco será responsable de los daños derivados del uso indebido de la Plataforma por parte del Usuario, del incumplimiento de las presentes Condiciones o de actuaciones realizadas a través de credenciales comprometidas cuando no sean imputables a HOLDTX.
+
+Asimismo, HOLDTX no será responsable por actuaciones, incumplimientos o incidencias imputables a terceros intervinientes en la operación, incluyendo, entre otros, sociedades Emisoras (SPV), entidades financieras, proveedores tecnológicos, proveedores de verificación de identidad (KYC), ERIR, infraestructuras de mercado u otros terceros habilitados que intervengan en la emisión, registro, negociación o gestión de los instrumentos financieros.
+
+En ningún caso HOLDTX responderá por pérdidas indirectas, lucro cesante, pérdida de oportunidad o daños consecuenciales derivados de la inversión realizada, sin perjuicio de las responsabilidades que no puedan excluirse o limitarse conforme a la normativa imperativa aplicable.
+
+14. MODIFICACIONES DE LAS CONDICIONES GENERALES
+
+HOLDTX SPAIN, S.L. podrá modificar las presentes Condiciones Generales cuando resulte necesario por razones legales, regulatorias, técnicas, operativas o de mejora del servicio, conforme a la normativa aplicable.
+
+Las modificaciones serán publicadas en la Plataforma, indicando expresamente la fecha de entrada en vigor.
+
+Cuando las modificaciones afecten de manera sustancial a los derechos u obligaciones de los Usuarios registrados, HOLDTX notificará dicha circunstancia mediante la Plataforma y/o por correo electrónico con una antelación razonable a su entrada en vigor.
+
+En caso de no estar conforme con las modificaciones sustanciales, el Usuario podrá dejar de utilizar la Plataforma y solicitar la cancelación de su cuenta con anterioridad a la fecha de entrada en vigor. La continuación en el uso de la Plataforma tras dicha fecha implicará la aceptación de las modificaciones introducidas.
+
+Las modificaciones de las presentes Condiciones Generales no afectarán a las relaciones contractuales ya formalizadas, que se regirán por el Documento de Emisión y la documentación contractual vigente en el momento de su aceptación, sin perjuicio de aquellas modificaciones que resulten obligatorias por imperativo legal o regulatorio.
+
+15. LEGISLACIÓN APLICABLE Y JURISDICCIÓN
+
+Las presentes Condiciones Generales se regirán e interpretarán conforme a la legislación española.
+
+En caso de controversia derivada del acceso o uso de la Plataforma, las partes se someten a los Juzgados y Tribunales que resulten competentes conforme a la normativa aplicable.
+
+Cuando el Usuario tenga la condición de consumidor o usuario conforme a la normativa de protección de consumidores y usuarios, serán competentes los juzgados y tribunales de su domicilio.
+
+Cuando el Usuario no ostente tal condición, las partes se someten expresamente, con renuncia a cualquier otro fuero que pudiera corresponderles, a los Juzgados y Tribunales de Murcia.
+
+16. CONTACTO
+
+Para cualquier consulta, solicitud de información, incidencia o reclamación relacionada con la Plataforma o con las presentes Condiciones Generales, el Usuario podrá dirigirse a:
+
+HOLDTX SPAIN, S.L.
+
+Domicilio social: CEEIC – Centro Europeo de Empresas e Innovación, C/ Berlín, 3F, 30553, Murcia (España)
+
+Correo electrónico de contacto: contacto@hausera.io
+
+Las comunicaciones podrán realizarse por medios electrónicos, que tendrán plena validez jurídica conforme a la normativa aplicable. HOLDTX procurará atender las consultas y reclamaciones en un plazo razonable desde su recepción.
+
+Sin perjuicio de lo anterior, y en cumplimiento de la normativa sobre resolución alternativa de litigios en materia de consumo, se informa al Usuario de la existencia de la plataforma europea de resolución de litigios en línea (ODR), accesible a través de la siguiente dirección: https://ec.europa.eu/consumers/odr https://ec.europa.eu/consumers/odr
+
+contacto@hausera.io
+
+ACCESO RÁPIDO
+Registrarse
+Iniciar sesión
+Comunidad
+FAQs
+Blog
+Proyecto Solidario
+LEGAL
+Política de cookies
+Política de privacidad
+Términos y condiciones
+Canal Ético
+Contacto
+NUESTRA NEWSLETTER
+
+Entérate de todas las novedades: lanzamientos, promociones y mucho más.
+
+Enviar
+Quiero recibir comunicaciones de Hausera y acepto la Política de privacidad
+
+©2026, Hausera.io. Todos los derechos reservados
+
+Lugar El Buen Retiro, 25, Cartagena, 30310, Murcia
+
+==== LINKS ====
+https://hausera.io/propiedad/alicante_2/ | VER PROYECTO
+https://hausera.io/login/ | Acceder
+https://hausera.io/ | 
+https://hausera.io/oportunidades/ | Oportunidades
+https://hausera.io/como-invertir/ | Cómo invertir
+https://hausera.io/faq/ | FAQs
+https://hausera.io/tutorial/ | Tutorial
+https://hausera.io/promociones/ | Promos
+https://hausera.io/contacto/ | Contacto
+https://hausera.io/equipo/ | Equipo
+https://hausera.io/track-record/ | Track record
+https://t.me/hausera | Telegram
+https://hausera.io/blog/ | Blog
+https://hausera.io/areaprivada/ | Área Privada
+https://ec.europa.eu/consumers/odr | https://ec.europa.eu/consumers/odr
+https://hausera.io/privacidad | Política de Privacidad
+https://t.me/hausera | 
+https://x.com/hauseraio | 
+https://instagram.com/hausera.io | 
+https://hausera.io/register/ | Registrarse
+https://hausera.io/login/ | Iniciar sesión
+https://t.me/hausera | Comunidad
+https://blog.hausera.io/ | Blog
+https://hausera.io/proyecto-solidario/ | Proyecto Solidario
+https://hausera.io/cookies/ | Política de cookies
+https://hausera.io/privacidad/ | Política de privacidad
+https://hausera.io/terms/ | Términos y condiciones
+https://centinela.lefebvre.es/public/concept/2366088?access=GigFAvNTRzhO8%2fK9A9H2o73ufGmAi2QkUJVs5Yj%2bJfw%3d | Canal Ético
+https://hausera.io/privacidad | Política de privacidad
+
+==== XHR ====
+200 https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;900&display=swap
+200 https://o4510233659572224.ingest.de.sentry.io/api/4510233979060304/envelope/?sentry_version=7&sentry_key=caf471fd96ea718da07a1bc1aad946f2&sentry_client=sentry.javascript.gatsby%2F10.74.0
+200 https://forms-eu1.hscollectedforms.net/collected-forms/v1/config/json?portalId=26769893&utk=
+200 https://api-eu1.hubapi.com/hs-script-loader-public/v2/config/pixels-and-events/json?portalId=26769893
+200 https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap
+200 https://api.hausera.io/v1/graphql

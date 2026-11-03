@@ -1,0 +1,77 @@
+ 
+ Spiko MMFs | Spiko Tech Docs 
+ Skip to main content 
+ Products Spiko Direct Spiko Embedded API Reference 
+ Search 
+ Our products 
+ Overview 
+ Spiko T-Bills 
+ What is an MMF? 
+ Spiko MMFs 
+ Investment Mandate 
+ Fee Structure 
+ Stakeholders 
+ Legal Documentation 
+ Safeguarding of Assets 
+ Spiko Smart Cash 
+ Spiko Cash & Carry 
+ Fund Availability 
+ Onboarding Restrictions 
+ Account management 
+ Account creation 
+ Multi-User Access Management 
+ Deposits and Withdrawals 
+ Currency Exchange 
+ Accounting and Tax Treatment 
+ Tokenization 
+ Explaining Tokenization 
+ Transfers & Redemptions 
+ Addresses 
+ Security Audits 
+ NAV Data Feed 
+ Legal 
+ Legal Notice 
+ Regulatory Information 
+ Terms of Use 
+ Privacy Policy 
+ Our products 
+ Spiko T-Bills 
+ Spiko MMFs 
+ Spiko MMFs
+ Spiko offers access to three money market funds, each tailored to deliver optimal cash management solutions in their respective currencies.
+ Spiko T-Bills Dollar Spiko T-Bills Euro Spiko T-Bills Pound 
+ Spiko Symbol USTBL EUTBL UKTBL 
+ Official Name Spiko US T-Bills Money Market Fund Spiko EU T-Bills Money Market Fund Spiko UK T-Bills Money Market Fund 
+ Base Currency $ USD € EUR £ GBP 
+ ISIN Code FR001400ODM9 FR001400ODL1 FR0014012MN7 
+ Bloomberg Identifier SPKUSMM SPKEUMM SPKUKMM 
+ Performance Benchmark Effective Federal Funds Rate (EFFR) Euro Short-Term Rate (€STR) Sterling Overnight Index Average (SONIA) 
+ Investment Strategy Invests exclusively in U.S. T-Bills with maturities under 6 months Invests exclusively in Treasury Bills from top Eurozone countries (primarily Germany and France) with maturities under 6 months Invests exclusively in UK Treasury Bills with maturities under 6 months 
+ Interest Distribution Automatically reinvested , increasing fund shares value Automatically reinvested , increasing fund shares value Automatically reinvested , increasing fund shares value 
+ Liquidity Daily access on business days Daily access on business days Daily access on business days 
+ Cut-off time 11.30am Paris time 11.30am Paris time 11.30am Paris time 
+ Previous
+ What is an MMF?
+ Next
+ Investment Mandate
+ Documentation
+ Products 
+ Spiko Direct 
+ Spiko Embedded 
+ API Reference 
+ APIs
+ Public API 
+ Investor API 
+ Distributor API 
+ Legal
+ Legal notice 
+ Regulatory information 
+ Terms of use 
+ Privacy policy 
+ Spiko
+ spiko.io 
+ Spiko app 
+ Contact 
+ LinkedIn 
+ © 2026 Spiko. All rights reserved.
+ 

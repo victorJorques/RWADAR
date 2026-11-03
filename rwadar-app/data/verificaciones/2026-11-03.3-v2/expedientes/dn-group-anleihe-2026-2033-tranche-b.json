@@ -1,0 +1,131 @@
+{
+  "slug": "dn-group-anleihe-2026-2033-tranche-b",
+  "tipoExpediente": "candidata",
+  "grupo": "nuevas-europa",
+  "proveedor": "DN Group AG (emisión directa)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "DN Group AG, Fráncfort del Meno (la propia emisora)",
+  "emisor": "DN Group AG",
+  "vehiculo": "Bono corporativo no subordinado y sin garantía, 10 % anual, 2026/2033",
+  "token": "Tramo B como criptovalor (Kryptowertpapier, eWpG) inscrito en un registro de criptovalores",
+  "derechoAdquirido": "Derecho a cupón y a devolución del nominal frente a DN Group AG",
+  "jurisdiccion": "DE",
+  "identificador": "Tramo B ISIN DE000A46ZYN8 (WKN A46ZYN); tramo A DE000A46ZYM0",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Wertpapierprospekt DN Group AG, 10 % p.a. Anleihe 2026/2033",
+      "url": "https://dn-ag.com/assets/documents/anleihe202631/DN_Group_Prospekt_gebilligt.pdf",
+      "versionOFecha": "06. Juli 2026 (aprobado por BaFin; EU-Wachstumsemissionsprospekt)",
+      "paginas": 158,
+      "sha256": "923a6de7e735249d446d2ae5bf5756dc067cd114e2afc0e278601a9ecb63075b",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "BaFin",
+      "entidad": "DN Group AG",
+      "numero": null,
+      "url": "https://dn-ag.com/assets/documents/anleihe202631/DN_Group_Prospekt_gebilligt.pdf",
+      "alcance": "Folleto aprobado por BaFin y notificación pedida a la CSSF (Luxemburgo); no consta notificación a la CNMV",
+      "consultadoUtc": "2026-11-03T10:10:10Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "DN Group",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "consultadoUtc": "2026-11-03T10:18:54Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "accesoEspana",
+      "literal": "Die Schuldverschreibungen sollen in Deutschland und Luxemburg wie folgt öffentlich angeboten werden.",
+      "dato": "oferta pública solo en Alemania y Luxemburgo",
+      "fuentePrimaria": "https://dn-ag.com/assets/documents/anleihe202631/DN_Group_Prospekt_gebilligt.pdf",
+      "localizador": "Folleto 06/07/2026, Abschnitt 4 (resumen), p. 10",
+      "fechaDato": "2026-07-06",
+      "consultadoUtc": "2026-11-03T10:10:10Z",
+      "alcanceYLimites": "Fuera de esos países solo cabría colocación privada; no es una oferta pública para particulares en España",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "estado",
+      "literal": "8. Juli 2026 Beginn der Angebotsfrist ... 7. Juli 2027 Ende der Angebotsfrist für das Öffentliche Angebot",
+      "dato": "periodo de oferta 08/07/2026–07/07/2027 (salvo cierre anticipado)",
+      "fuentePrimaria": "https://dn-ag.com/assets/documents/anleihe202631/DN_Group_Prospekt_gebilligt.pdf",
+      "localizador": "Folleto, resumen, calendario",
+      "fechaDato": "2026-07-06",
+      "consultadoUtc": "2026-11-03T10:10:10Z",
+      "alcanceYLimites": "No se ha comprobado hoy en la web del emisor si sigue abierta ni el suplemento de 13/08/2026 citado por terceros",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Der Ausgabebetrag für die Schuldverschreibungen entspricht 100 % des Nennbetrags, also EUR 1.000,00.",
+      "dato": "1.000 EUR por bono",
+      "fuentePrimaria": "https://dn-ag.com/assets/documents/anleihe202631/DN_Group_Prospekt_gebilligt.pdf",
+      "localizador": "Folleto, resumen, p. 10",
+      "fechaDato": "2026-07-06",
+      "consultadoUtc": "2026-11-03T10:10:10Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Die Emittentin hat die Möglichkeit ... den Endfälligkeitstag um ein Jahr ... zu verschieben ... Zinsstundungsoption",
+      "dato": "la emisora puede alargar el vencimiento un año y aplazar cupones",
+      "fuentePrimaria": "https://dn-ag.com/assets/documents/anleihe202631/DN_Group_Prospekt_gebilligt.pdf",
+      "localizador": "Folleto, resumen",
+      "fechaDato": "2026-07-06",
+      "consultadoUtc": "2026-11-03T10:10:10Z",
+      "alcanceYLimites": "Bono sin garantía y no cubierto por fondos de garantía; riesgo de pérdida total",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Folleto aprobado por BaFin; emisora no es entidad financiera."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Periodo de oferta hasta 07/07/2027 según folleto."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "Oferta pública solo en Alemania y Luxemburgo."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Alto rendimiento sin garantía, con opción de aplazar cupones y vencimiento."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "excluido",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": "1.000 EUR",
+    "supervisorVerificado": "BaFin (aprobación del folleto)",
+    "documentacionClara": "si",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Bono con tramo como criptovalor eWpG y folleto UE aprobado.",
+    "porQueNo": "El folleto limita la oferta pública a Alemania y Luxemburgo."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Oferta pública limitada a Alemania y Luxemburgo según el folleto; no se ofrece a particulares residentes en España.",
+  "bloqueos": [
+    "Folleto no notificado a la CNMV (solo pedida la notificación a la CSSF)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-03T10:10:10Z",
+    "finUtc": "2026-11-03T10:25:37Z"
+  }
+}

@@ -1,0 +1,250 @@
+GRUNDSÄTZE DER AUFTRAGSAUSFÜHRUNG /
+
+        PRINCIPLES OF ORDER EXECUTION
+                     (VERSION JANUARY 2024)
+GRUNDSÄTZE DER AUFTRAGSAUSFÜHRUNG /
+PRNCIPLES OF ORDER EXECUTION
+
+
+
+Allgemeines                                                      General
+ Vor dem Hintergrund der gesetzlichen Anforderungen hat          Against the background of legal requirements,
+ ASSETERA        die      folgenden      Grundsätze    der       ASSETERA has established the following principles of
+ Auftragsausführung ("Ausführungspolitik") festgelegt, die       order execution ("Execution Policy"), which apply within
+ im Rahmen der Dienstleistung der Annahme und                    the scope of the service of reception and transmission of
+ Übermittlung von Aufträgen im ASSETERA Marktplatz sowie         orders in the ASSETERA Marketplace and when placing
+ bei der Erteilung von Orders im Rahmen der                      orders within the scope of portfolio management, in
+ Portfolioverwaltung (Portfolio Management) nach Maßgabe         accordance with the specifics of the respective type of
+ der Spezifika der jeweiligen Dienstleistungsart Anwendung       service.
+ finden.
+ ASSETERA       ist    nicht     zur    Erbringung    der        ASSETERA is not authorized to provide the investment
+ Wertpapierdienstleistung der Ausführung von Aufträgen           service of executing orders and therefore the following
+ berechtigt und daher sind die folgenden Grundsätze unter        principles are to be understood under this limiting
+ diesem einschränkenden Umstands zu verstehen.                   circumstance.
+
+
+Richtlinien (Ausführungspolitik)                                 Guidelines (Execution Policy)
+
+
+            ASSETERA legt folgende                                          ASSETERA establishes the following
+            Ausführungspolitik fest                                         execution policy
+ 1. ASSETERA führt Dienstleistungen stets im bestmöglichen       1. ASSETERA always performs services in the best
+    Interesse des Kunden durch. Die Kontrolle und                   possible interest of the customer. ASSETERA pursues
+    Überprüfung der Sicherstellung dieses Interesses sowie          the control and verification of the safeguarding of this
+    der Erzielung bestmöglicher Ergebnisse für den Kunden           interest and the achievement of the best possible
+    verfolgt ASSETERA dabei insbesondere dadurch, dass im           results for the customer in particular by proceeding in
+    Rahmen der Erbringung der Wertpapierdienstleistung der          accordance with these principles within the framework
+    Annahme und Übermittlung von Aufträgen (z.B.                    of the provision of the securities service of the
+    ASSETERA Marktplatz) und der Portfolioverwaltung                reception and transmission of orders (e.g. ASSETERA
+    gemäß diesen Grundsätzen vorzugehen ist und dies auch           Marketplace) and portfolio management and by also
+    in regelmäßigen Abständen geprüft wird.                         checking this at regular intervals.
+ 2. Die berechtigten Interessen des Kunden haben bei der         2. The legitimate interests of the customer always take
+    Durchführung von Dienstleistungen stets Vorrang vor den         precedence over the interests of ASSETERA and its
+    Interessen von ASSETERA und deren Mitarbeiter.                  employees in the performance of services.
+ 3. Die Interessen verschiedener Kunden, deren Aufträge          3. The interests of different clients, their orders as well as
+    sowie die im Rahmen der Portfolioverwaltung für sie             the orders placed for them within the scope of
+    erteilten Orders werden gleich behandelt, eine                  portfolio management shall be treated equally; no
+    Bevorzugung bestimmter Kunden gegenüber anderen                 preference shall be given to certain clients over other
+    Kunden findet nicht statt.                                      clients.
+ 4. Besteht bei der Durchführung von Dienstleistungen die        4. If, during the performance of services, there is a risk
+    Gefahr, dass die Interessen eines Kunden ungleich den           that the interests of one customer may be treated
+    Interessen eines anderen Kunden behandelt werden oder           unequally to the interests of another customer or that
+    die Interessen eines Kunden nicht bestmöglich gewahrt           the interests of a customer may not be protected in the
+    sein könnten, so ist die Geschäftsleitung und die               best possible way, the Executive Board and the
+    Compliance-Unit hierüber unverzüglich zu informieren.           Compliance Unit shall be informed immediately. The
+    Die Geschäftsleitung legt sodann in Abstimmung mit der          Executive Board, in consultation with the Compliance
+    Compliance-Unit jene Schritte fest, die erforderlich sind,      Unit, shall then determine the steps necessary to
+    damit die Durchführung der Dienstleistungen im                  ensure that the services are performed in the best
+    bestmöglichen Interesse aller involvierten Kunden erfolgt.      possible interests of all customers involved.
+GRUNDSÄTZE DER AUFTRAGSAUSFÜHRUNG /
+PRNCIPLES OF ORDER EXECUTION
+
+
+
+5. ASSETERA informiert Kunden unverzüglich über alle            5. ASSETERA shall inform customers without delay of
+   wesentlichen Schwierigkeiten, die für die korrekte              any material difficulties relevant to the correct
+   Weiterleitung des Auftrags oder der Order zur Ausführung        forwarding of the order or instruction for execution as
+   relevant sind, sobald ASSETERA von einer solchen                soon as ASSETERA becomes aware of such difficulty.
+   Schwierigkeit Kenntnis erlangt.
+6. ASSETERA stellt nach Maßgabe des einschränkenden             6. ASSETERA shall ensure to the best of its ability,
+   Umstandes, dass ASSETERA kein ausführendes Institut             subject to the restrictive circumstance that
+   ist, bestmöglich sicher, dass die für Kunden seitens der        ASSETERA is not an executing institution, that orders
+   ausführenden Institute ausgeführten Aufträge und Orders         and instructions executed for customers by executing
+   umgehend und korrekt registriert und zugewiesen                 institutions are promptly and correctly registered and
+   werden. Es ist jedoch zu beachten, dass Aufträge die zur        allocated. However, it should be noted that orders
+   Ausführung an den ASSETERA Marktplatz übertragen                transmitted to the ASSETERA marketplace for
+   werden, ausschließlich bilateral zwischen Kunden des            execution are exclusively settled bilaterally between
+   ASSETERA Marktplatzes über den ASSETERA Settlement              customers of the ASSETERA marketplace via the
+   Smart Contract für Clearing & Settlement abgewickelt            ASSETERA Settlement Smart Contract for Clearing &
+   werden und dabei keine Weiterleitung an ein ausführendes        Settlement, and are not forwarded to an executing
+   Institut erfolgt                                                institution.
+7. ASSETERA überwacht die Wirksamkeit der festgelegten          7. ASSETERA regularly monitors the effectiveness of the
+   Grundsätze, insbesondere die Qualität der Ausführung            established principles, in particular the quality of
+   durch die genannten Einrichtungen, regelmäßig und               execution by the aforementioned entities, and
+   behebt bei Bedarf etwaige Mängel. Da ASSETERA kein              corrects any deficiencies as necessary. Since
+   ausführendes Institut ist, beschränkt sich die zur Analyse      ASSETERA is not an executing institution, the
+   der erreichten Ausführungsqualität seitens ASSETERA             procedures         and       methods       used        by
+   herangezogenen Verfahren und Methoden auf die                   ASSETERA to analyze the execution quality achieved
+   laufende       Beobachtung     des     Entstehens     von       are limited to the ongoing observation of the
+   Ausführungsmängeln im Rahmen der Tätigkeiten des                occurrence of execution deficiencies within the scope
+   jeweiligen ausführenden Instituts (z.B. falsche                 of the activities of the respective executing institution
+   Ausführungsmenge, falsches Wertpapier, Missachtung von          (e.g. incorrect execution quantity, incorrect security,
+   Limits etc.); gravierende Mängel in der Ausführung (wozu        disregarding of limits, etc.); serious deficiencies in
+   auch eine hohe Frequenz von wiederkehrenden Fehlern im          execution (including a high frequency of recurring errors
+   Rahmen der Ausführung zählt) werden seitens ASSETERA            in the course of execution) are documented by
+   dokumentiert.                                                   ASSETERA.
+8. Eine Zusammenlegung von Aufträgen bzw. Orders für            8. A combination of orders or orders for different
+   verschiedene Kunden und deren anschließende Erteilung           ASSETERA will only combine orders for different
+   an ein ausführendes Institut erfolgt seitens ASSETERA nur       customers and subsequently issue them to one
+   unter folgenden Bedingungen und wenn, nur im Rahmen             executing institution under the following conditions, if
+   der Portfolioverwaltung:                                        so, only within the scope of portfolio management:
+   a) Es ist unwahrscheinlich, dass die Zusammenlegung für         a) the aggregation is unlikely to be detrimental to the
+      den (die) betreffenden Kunden nachteilig ist;                   client(s) concerned;
+   b) jedem Kunden, dessen Auftrag mit anderen                     b) each client whose order is to be aggregated with
+      zusammengelegt werden soll, wird mitgeteilt, dass               others is informed that such aggregation may be
+      eine derartige Zusammenlegung in Bezug auf einen                detrimental with respect to a particular order (but
+      bestimmten Auftrag nachteilig sein kann (allerdings             only to the extent that it may be detrimental at all);
+      nur, sofern dies überhaupt nachteilig sein kann);
+GRUNDSÄTZE DER AUFTRAGSAUSFÜHRUNG /
+PRNCIPLES OF ORDER EXECUTION
+
+
+
+   c) die bestehenden Grundsätze der Auftragszuweisung               c) the existing order allocation policies effectively
+      regeln wirksam die redliche Zuweisung auch im                     govern fair allocation, including with respect to
+      Hinblick darauf, wie das Volumen und der Preis von                how the volume and price of orders determine the
+      Aufträgen die Zuweisung und Teilausführung von                    allocation and partial execution of orders.
+      Aufträgen bestimmen.
+9. Eine Zusammenlegung von Aufträgen bzw. Orders mit              9. A combination of orders with transactions for
+   Geschäften für eigene Rechnung von ASSETERA ist                   ASSETERA's own account is not permitted
+   ausnahmslos unzulässig.                                           without exception.
+10. Der Kunde wird ausdrücklich dahingehend gewarnt, dass         10. The customer is expressly warned that explicit
+    ausdrückliche Weisungen des Kunden ASSETERA davon                 instructions from the customer may prevent
+    abhalten können, die Maßnahmen zu treffen, die sie im             ASSETERA from taking the measures it has defined
+    Rahmen ihrer Grundsätze der Auftragsausführung                    and implemented as part of its order execution policy,
+    festgelegt und umgesetzt hat, sodass die Erzielung des            so that the achievement of the best possible result is
+    bestmöglichen Ergebnisses bei Befolgung von                       not guaranteed if customer instructions are followed.
+    Kundenweisungen nicht gewährleistet ist.
+11. Nur, soweit anwendbar: Wenngleich ASSETERA kein               11. Only to the extent applicable: Although ASSETERA is
+    ausführendes Institut ist, so sei im Rahmen dieser                not an executing institution, it is stipulated in these
+    Grundsätze entsprechend den gesetzlichen Vorgaben                 principles, in accordance with the legal requirements,
+    festgelegt, dass regulierten Märkten und MTF                      that priority is given to regulated markets and MTF
+    („multilateral trading facility“) Vorrang eingeräumt wird,        ("multilateral trading facility") in order to ensure
+    um die Ausführung sicherzustellen, sobald es die                  execution as soon as market conditions permit (with
+    Marktbedingungen zulassen (in Bezug auf den ASSETERA              regard to the ASSETERA marketplace, this aspect is to
+    Marktplatz ist dieser Aspekt nach Maßgabe der                     be understood in accordance with the limited
+    eingeschränkten Anwendbarkeit zu verstehen).                      applicability).
+12. Der Kunde wird im Rahmen dieser Grundsätze explizit           12. Within the framework of these principles, the
+    darauf hingewiesen, dass die gegenständlichen                     customer is explicitly informed that these principles
+    Grundsätze die Ausführung von Aufträgen und Orders                permit the execution of orders outside a trading venue.
+    außerhalb eines Handelsplatzes zulassen. Die                      The customer's consent to the contents of these
+    Zustimmung des Kunden zu den Inhalten dieser                      principles shall at the same time constitute its consent
+    Grundsätze stellt gleichzeitig seine Zustimmung zu dieser         to this possibility of executing orders outside a trading
+    Möglichkeit der Ausführung von Aufträgen außerhalb                venue.
+    eines Handelsplatzes dar.
+13. Beim Fällen von Entscheidungen über den Handel mit            13. When making decisions on trading OTC products,
+    OTC-Produkten überprüft ASSETERA die Redlichkeit des              ASSETERA verifies the probity of the price offered to
+    dem Kunden angebotenen Preises, indem sie Marktdaten              the customer by using market data used to estimate
+    heranzieht, die bei der Einschätzung des Preises für dieses       the price of this product and - if possible - compares it
+    Produkt verwendet wurden, und — sofern möglich —                  with similar or comparable products.
+    diesen mit ähnlichen oder vergleichbaren Produkten
+    vergleicht.
+GRUNDSÄTZE DER AUFTRAGSAUSFÜHRUNG /
+PRNCIPLES OF ORDER EXECUTION
+
+
+
+14. Sofern die Wahl des Ausführungsplatzes seitens                14. If ASSETERA selects the execution venue, ASSETERA
+    ASSETERA erfolgt, berücksichtigt ASSETERA zur                     shall take into account the following aspects in
+    Wahrung des bestmöglichen Interesses des Kunden                   particular in order to safeguard the best interests of
+    insbesondere folgende Aspekte: Kurs/Preis; Kosten;                the customer: Price; costs; speed of execution;
+    Schnelligkeit der Ausführung; Wahrscheinlichkeit der              probability of execution; probability of settlement of
+    Ausführung; Wahrscheinlichkeit der Abwicklung des                 the order size; type of order; quality of the technical
+    Auftragsumfangs; Art des Auftrags; Qualität der                   connection ("latency"); number of trading participants;
+    technischen Anbindung („latency“); Anzahl der                     waiting time until the opening of the trading venue;
+    Handelsteilnehmer; Wartezeit bis zur Öffnung des                  remaining trading time until the closing of the trading
+    Handelsplatzes; Verbleibende Handelszeit bis zur                  venue; liquidity (e.g. liquidity on the preceding trading
+    Schließung des Handelsplatzes; Liquidität (z. B. Liquidität       day); partial execution quota.
+    am vorangehenden Handelstag); Teilausführungsquote.
+15. Grundsätzlich gewichtet ASSETERA den Aspekt                   15. In principle, ASSETERA weights the aspect "price"
+    „Kurs/Preis“ relativ zu den anderen Aspekten vor dem              highest relative to the other aspects against the
+    Hintergrund der bestmöglichen Durchführung am                     background of the best possible execution. In certain
+    höchsten. In bestimmten Fällen allerdings kann sich die           cases, however, the weighting of the aspects
+    Gewichtung der genannten Aspekte verschieben (z. B.               mentioned may shift (e.g. if the order volume is very
+    wenn das Ordervolumen sehr hoch oder die Order mit                high or the order has specific execution parameters).
+    spezifischen Ausführungsparametern versehen ist).
+16. Die oben genannten, zur Erzielung des bestmöglichen           16. The above-mentioned aspects, which are relevant for
+    Ergebnisses für den Kunden relevanten Aspekte werden in           achieving the best possible result for the client, are
+    Einklang mit den gesetzlichen Bestimmungen unter                  weighted in accordance with the legal provisions,
+    Berücksichtigung der folgenden Kriterien gewichtet:               taking into account the following criteria:
+    Merkmale des Kunden und dessen Einstufung                         characteristics of the client and its classification (retail
+    (Privatkunde, prof. Kunde); Merkmale des Auftrags                 client, professional client); characteristics of the order
+    (Volumen,     Typ,    Preis   etc.);   Merkmale    der            (volume, type, price, etc.); characteristics of the
+    Finanzinstrumente, die Gegenstand des Auftrags sind;              financial instruments that are the subject of the order;
+    Merkmale der Ausführungsplätze, an die der Auftrag                characteristics of the execution venues to which the
+    weitergeleitet werden kann.                                       order can be forwarded.
+17. Aufgrund der obigen Ausführungen ist ersichtlich, dass        17. Based on the above, it is evident that, among the
+    unter den zuvor genannten Faktoren (Kurs, Kosten,                 factors mentioned above (price, costs, speed, etc.), the
+    Schnelligkeit etc.) in Bezug auf den Privatkunden den             factors price and costs are of increased and primary
+    Faktoren Preis bzw. Kosten eine erhöhte und vorrangige            importance with regard to retail clients. In addition,
+    Bedeutung zukommt. Im Übrigen wird die relative                   the relative importance of the aforementioned factors
+    Bedeutung der genannten Faktoren – soweit in der Praxis           - insofar as applicable and relevant in practice - is
+    anwendbar und relevant – von ASSETERA anhand                      determined                                            by
+    folgender Kriterien bestimmt:                                     ASSETERA on the basis of the following criteria:
+   a) Merkmale des Kunden und dessen Einstufung als                  a) characteristics of the customer and his
+      Privatkunde oder als professioneller Kunde;                       classification as a retail client or as a professional
+                                                                        client;
+   b) Merkmale       des   Kundenauftrags, einschließlich            b) characteristics of the customer order, including
+      Aufträgen,     die   Wertpapierfinanzierungsgeschäfte             orders involving securities financing transactions;
+      umfassen;.
+   c) Merkmale der Finanzinstrumente, die Gegenstand des             c) characteristics of the financial instruments that are
+      betreffenden Auftrags sind;                                       the subject of the order in question;
+   d) Merkmale der Ausführungsplätze, an die der Auftrag             d) characteristics of the execution venues to which
+      weitergeleitet werden kann                                        the order can be forwarded.
+GRUNDSÄTZE DER AUFTRAGSAUSFÜHRUNG /
+PRNCIPLES OF ORDER EXECUTION
+
+
+
+18. Die ausführenden Institute – nicht jedoch ASSETERA als       18. The executing institutions - but not ASSETERA as a
+    Wertpapierfirma – verfügen über Zugänge zu den                   securities firm - have access to the most important
+    wichtigsten Ausführungsplätzen der Welt, wie                     execution venues in the world, such as in particular the
+    insbesondere die Börsen Hongkong, Tokio, New York,               stock exchanges in Hong Kong, Tokyo, New York,
+    Frankfurt, London, Zürich, Paris, Amsterdam und Mailand.         Frankfurt, London, Zurich, Paris, Amsterdam and
+    Im Bereich des ASSETERA Marktplatzes erfolgt die                 Milan. In the area of the AS-SETERA marketplace,
+    Ausführung über die kooperierende Bank.                          execution is carried out by the cooperating bank.
+19. Diese Grundsätze werden laufend aktualisiert und             19. These principles are continuously updated and
+    regelmäßig hinsichtlich der Qualität der Ausführung durch        regularly reviewed with regard to the quality of their
+    die zur Ausführung berechtigten Institute geprüft. Darüber       implementation by the institutions authorized to carry
+    hinaus wird sie einmal jährlich einer Revision durch die         them out. In addition, it is subject to an annual audit by
+    Geschäftsleitung unterzogen.                                     the management.
+20. Diese Grundsätze finden auf die von ASSETERA erbrachte       20. These principles apply to the reception and
+    Annahme und Übermittlung von Aufträgen sowie die                 transmission of orders provided by ASSETERA and to
+    Portfolioverwaltung Anwendung. Bei Ausführung von                portfolio management. When executing orders, the
+    Aufträgen kommen die Ausführungspolitiken der                    execution policies of the respective executing
+    jeweiligen ausführenden Institute zur Anwendung.                 institutions apply.
+                                                Haftungsausschluss
+                                                Dieses Dokument dient ausschließlich der unverbindlichen Information
+                                                und stellt weder ein Angebot noch eine Aufforderung zur
+                                                Angebotsstellung oder eine Empfehlung für einen An- oder Verkauf von
+                                                Finanzinstrumenten dar. Dieses Dokument ersetzt weder die auf Ihre
+                                                individuellen Verhältnisse und Kenntnisse / Erfahrungen bezogene
+                                                fachgerechte Beratung durch Ihren Kundenbetreuer noch jene durch
+                                                einen Rechts- oder Steuerberater.
+
+                                                Disclaimer
+                                                This document is for non-binding information purposes only and does
+                                                not constitute an offer or a solicitation of an offer or a recommendation
+                                                to buy or sell financial instruments. This document is not a substitute for
+                                                professional advice based on your individual circumstances and
+                                                knowledge / experience from your account manager or from a legal or tax
+                                                advisor.
+
+
+
+
+Irrtum und Druckfehler vorbehalten / Errors and misprints reserved
+Version January 2024
+
+www.assetera.com
+

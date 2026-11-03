@@ -1,0 +1,73 @@
+ 
+ Legal Documentation | Spiko Tech Docs 
+ Skip to main content 
+ Products Spiko Direct Spiko Embedded API Reference 
+ Search 
+ Our products 
+ Overview 
+ Spiko T-Bills 
+ Spiko Smart Cash 
+ What is Smart Cash? 
+ Smart Cash Fund 
+ Fee Structure 
+ Stakeholders 
+ Legal Documentation 
+ Spiko Cash & Carry 
+ Fund Availability 
+ Onboarding Restrictions 
+ Account management 
+ Account creation 
+ Multi-User Access Management 
+ Deposits and Withdrawals 
+ Currency Exchange 
+ Accounting and Tax Treatment 
+ Tokenization 
+ Explaining Tokenization 
+ Transfers & Redemptions 
+ Addresses 
+ Security Audits 
+ NAV Data Feed 
+ Legal 
+ Legal Notice 
+ Regulatory Information 
+ Terms of Use 
+ Privacy Policy 
+ Our products 
+ Spiko Smart Cash 
+ Legal Documentation 
+ On this page 
+ Legal Documentation
+ Prospectus ​ 
+ Spiko Funds Prospectus Spiko Funds Prospectus. PDF 
+ Key Information Documents ​ 
+ KID - Spiko Euro KID of the Euro share class of the Spiko Amundi Overnight Swap Fund PDF 
+ KID - Spiko Dollar KID of the Dollar share class of the Spiko Amundi Overnight Swap Fund PDF 
+ KID - Spiko Pound KID of the Pound share class of the Spiko Amundi Overnight Swap Fund PDF 
+ KID - Spiko Swiss Franc KID of the Swiss Franc share class of the Spiko Amundi Overnight Swap Fund PDF 
+ Previous
+ Stakeholders
+ Next
+ What is a Cash & Carry Strategy?
+ Prospectus 
+ Key Information Documents 
+ Documentation
+ Products 
+ Spiko Direct 
+ Spiko Embedded 
+ API Reference 
+ APIs
+ Public API 
+ Investor API 
+ Distributor API 
+ Legal
+ Legal notice 
+ Regulatory information 
+ Terms of use 
+ Privacy policy 
+ Spiko
+ spiko.io 
+ Spiko app 
+ Contact 
+ LinkedIn 
+ © 2026 Spiko. All rights reserved.
+ 

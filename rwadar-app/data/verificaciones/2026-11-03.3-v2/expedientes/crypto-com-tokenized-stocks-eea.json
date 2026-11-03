@@ -1,0 +1,428 @@
+{
+  "slug": "crypto-com-tokenized-stocks-eea",
+  "tipoExpediente": "candidata",
+  "grupo": "nuevas-europa",
+  "proveedor": "Crypto.com (app) · Tokenized Stocks (EEA)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "Foris Capital CY Limited (antes A.N. Allnew Investments Ltd), Lárnaca, Chipre, HE 348194",
+  "emisor": "Foris Capital CY Limited según el anuncio y la cláusula 7.1 de los términos; la cláusula 6.2 atribuye la compra del subyacente y la emisión a Foris Capital MU Limited (ver conflicto)",
+  "vehiculo": "Contrato derivado OTC totalmente desembolsado entre el cliente y Foris Capital CY (sin apalancamiento)",
+  "token": "Un token por valor en la red Cronos EVM; no transferible fuera de la app de Crypto.com",
+  "derechoAdquirido": "Derecho contractual frente a Foris Capital CY al valor del subyacente (acción o ETF de EE. UU.). No da propiedad, ni voto, ni derecho directo a dividendos sobre la acción.",
+  "jurisdiccion": "CY",
+  "identificador": "CySEC CIF 344/17 · CNMV ESI EEE libre prestación nº 4485",
+  "moneda": "USD",
+  "documentos": [
+    {
+      "titulo": "Crypto.com – Tokenized Stocks Terms and Conditions (Foris Capital CY)",
+      "url": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "versionOFecha": "Last Update: 11 August 2026",
+      "paginas": 13,
+      "sha256": "1169bff5d9a4deaf72885cf185e5134274089e0534fb43eab0ba8cdd37421c6f",
+      "leido": true
+    },
+    {
+      "titulo": "Risk Disclosure Statement – Tokenized Stocks (FCCY)",
+      "url": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+      "versionOFecha": "sin fecha en el documento (consultado hoy)",
+      "paginas": 3,
+      "sha256": "8d5a498fe8787ae05d5911f5d00826b6e97db05a9d31c79aa04f13f87052fe3e",
+      "leido": true
+    },
+    {
+      "titulo": "Crypto.com Launches the Future of Trading with Tokenized Stocks (nota de prensa EEE)",
+      "url": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "versionOFecha": "12 Aug 2026",
+      "paginas": null,
+      "sha256": "e02c47e5a21d2a91425ddab4a8a374c71f7069681d989613cb50206c1955327a",
+      "leido": true
+    },
+    {
+      "titulo": "About Crypto.com Tokenized Stocks (EEA) – centro de ayuda",
+      "url": "https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+      "versionOFecha": "August 11, 2026",
+      "paginas": null,
+      "sha256": "c70f1f8ee8d5205fad8192ae465af4c90d210e43cba2eee45ae142202107507d",
+      "leido": true
+    },
+    {
+      "titulo": "Buy and Sell Tokenized Stocks (EEA) – centro de ayuda",
+      "url": "https://help.crypto.com/en/articles/15855825-buy-and-sell-tokenized-stocks-eea",
+      "versionOFecha": "August 11, 2026",
+      "paginas": null,
+      "sha256": "edf4708535b4c4290f2b6de7e218452f65a790bce5348d43a190f6a04b58ae25",
+      "leido": true
+    },
+    {
+      "titulo": "Corporate actions and dividends of Tokenized Stocks (EEA) – centro de ayuda",
+      "url": "https://help.crypto.com/en/articles/15855830-corporate-actions-and-dividends-of-tokenized-stocks-eea",
+      "versionOFecha": "August 11, 2026",
+      "paginas": null,
+      "sha256": "3613ddcac67ef62a1339003c2c74c34b4f09fa50ef7399239083ed044a071066",
+      "leido": true
+    },
+    {
+      "titulo": "Key Information Document (KID) de cada Tokenized Stock",
+      "url": null,
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false,
+      "nota": "Los términos (cl. 5.2) dicen que FCCY lo pone a disposición «via the Crypto.com App». No hay copia pública: crypto.com/eea/financialservices redirige a la portada de EE. UU. desde nuestra conexión y 9 rutas probadas en crypto.com/document/ dan 403."
+    },
+    {
+      "titulo": "Tokenized Stocks FAQs (lista de países excluidos, cl. 3.1 d)",
+      "url": null,
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false,
+      "nota": "No localizada en web pública."
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CySEC",
+      "entidad": "Foris Capital CY Ltd (ex A.N. Allnew Investments Ltd)",
+      "numero": "Licencia 344/17 (27/11/2017)",
+      "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/46172/",
+      "alcance": "Empresa de servicios de inversión chipriota. Nombre comercial aprobado: Crypto.com; dominio aprobado crypto.com/eea/financialservices. España figura en «Cross Border Services to Member States» con recepción y transmisión, ejecución, negociación por cuenta propia, gestión de carteras y asesoramiento sobre los instrumentos 1–10 (incluye derivados, categoría 4) y custodia.",
+      "consultadoUtc": "2026-11-03T10:08:29Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "FORIS CAPITAL CY LIMITED",
+      "numero": "4485 (19/01/2018)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4485",
+      "alcance": "Empresas de Servicios de Inversión del EEE en libre prestación en España; dirección 47 Ioanni Kondylaki, Q Tower, Lárnaca. Listado general consultado en https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+      "consultadoUtc": "2026-11-03T10:08:14Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Crypto.com",
+      "resultado": "6 coincidencias de dominios ajenos (idcxscrypto.com, deltascrypto.com, alphascrypto.com, fxprocrypto.com, tradescrypto.com, ccxcrypto.com); ninguna es Crypto.com ni Foris",
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "consultadoUtc": "2026-11-03T10:17:19Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Foris",
+      "resultado": "2 coincidencias: HTTPS://FORISDAXLTD.COM (06/10/2025) y HTTPS://MY.FORISDAXLTD.TOP/ (24/11/2025). Son webs clon no autorizadas; no son Foris Capital CY Limited",
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "consultadoUtc": "2026-11-03T10:17:57Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Allnew",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "consultadoUtc": "2026-11-03T10:18:36Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "entidad",
+      "literal": "In the EEA, the Tokenized Stocks are provided by Foris Capital CY Limited ... regulated by the Cyprus Securities and Exchange Commission (CySEC) and holds a Cypriot Investment Firm (CIF) license with no. 344/17",
+      "dato": "Foris Capital CY Limited · CySEC 344/17",
+      "fuentePrimaria": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "localizador": "Nota de prensa 12/08/2026, pie legal",
+      "fechaDato": "2026-08-12",
+      "consultadoUtc": "2026-11-03T10:07:02Z",
+      "alcanceYLimites": "Coincide con la ficha CySEC y con los términos (cl. 1)",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "pasaporteEspana",
+      "literal": "Cross Border Services to Member States ... Spain",
+      "dato": "España en la lista de pasaporte de CySEC; CNMV nº 4485 (19/01/2018)",
+      "fuentePrimaria": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/46172/",
+      "localizador": "Ficha CySEC 46172, pestaña Spain; ficha CNMV 4485",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:08:29Z",
+      "alcanceYLimites": "El pasaporte acredita a la empresa, no que este producto concreto se active para residentes en España",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "estado",
+      "literal": "Crypto.com has launched Tokenized Stocks ... available to eligible users in the EEA",
+      "dato": "lanzado el 12/08/2026; páginas de ayuda EEE activas hoy",
+      "fuentePrimaria": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "localizador": "Nota de prensa 12/08/2026",
+      "fechaDato": "2026-08-12",
+      "consultadoUtc": "2026-11-03T10:07:02Z",
+      "alcanceYLimites": "No se puede ver la app sin cuenta; el estado se apoya en la nota y en el centro de ayuda (11/08/2026) leídos hoy",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "not be located in, under the jurisdiction of, or a national or resident of any of the countries ... listed in the Tokenized Stocks FAQs",
+      "dato": "no_verificable para España a nivel de producto",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "localizador": "Términos, cl. 3.1 (d), p. 3",
+      "fechaDato": "2026-08-11",
+      "consultadoUtc": "2026-11-03T10:07:03Z",
+      "alcanceYLimites": "La lista de países excluidos está en unas FAQ que no son públicas. El centro de ayuda solo dice «Subject to jurisdictional availability»",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "tipoCliente",
+      "literal": "you will be classified as a retail client unless otherwise notified",
+      "dato": "minorista, tras test de conveniencia MiFID II",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "localizador": "Términos, cl. 4.1 y 4.4, p. 3–4",
+      "fechaDato": "2026-08-11",
+      "consultadoUtc": "2026-11-03T10:07:03Z",
+      "alcanceYLimites": "Producto complejo: test de conveniencia obligatorio; el acceso puede restringirse si no es apropiado",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "access is available from as little as US$1",
+      "dato": "1 USD",
+      "fuentePrimaria": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "localizador": "Nota de prensa 12/08/2026, entradilla",
+      "fechaDato": "2026-08-12",
+      "consultadoUtc": "2026-11-03T10:07:02Z",
+      "alcanceYLimites": "También en la ayuda EEE: «Buy as little as $1 of any tokenized stock with crypto, cash, or cards»",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "moneda",
+      "literal": "Tokenized Stocks, related collateral, cash settlement, and fees are denominated in US dollars (USD)",
+      "dato": "USD; conversión desde EUR con posible diferencial",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "localizador": "Términos, cl. 11.1–11.2, p. 6",
+      "fechaDato": "2026-08-11",
+      "consultadoUtc": "2026-11-03T10:07:03Z",
+      "alcanceYLimites": "El riesgo de cambio lo repite el Risk Disclosure Statement, p. 2",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "For a limited introductory period, Crypto.com is offering eligible users zero-commission trading on Tokenized Stocks ... Other FX charges or spreads may apply.",
+      "dato": "0 % de comisión temporal; diferencial y cambio aparte",
+      "fuentePrimaria": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "localizador": "Nota de prensa 12/08/2026",
+      "fechaDato": "2026-08-12",
+      "consultadoUtc": "2026-11-03T10:07:02Z",
+      "alcanceYLimites": "No se publica la fecha de fin de la promoción ni la tabla de costes MiFID (cl. 10.1 remite a la app)",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "You may terminate your participation in Tokenised Stocks by redeeming your holdings at any time.",
+      "dato": "venta o reembolso en la app en cualquier momento, con FCCY como contraparte",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "localizador": "Términos, cl. 17.2, p. 10; cl. 6.4 (FCCY actúa como principal), p. 5",
+      "fechaDato": "2026-08-11",
+      "consultadoUtc": "2026-11-03T10:07:03Z",
+      "alcanceYLimites": "Las órdenes pueden retrasarse, suspenderse o rechazarse (cl. 7.2 y 12 l); fuera del horario de EE. UU. puede haber solo órdenes limitadas (ayuda Buy and Sell)",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "Tokenized Stocks are not transferable and can only be opened and closed through the Crypto.com app. You cannot transfer Tokenized Stocks to another user or withdraw them to an external wallet.",
+      "dato": "no transferible; solo se cierra en la app",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+      "localizador": "Risk Disclosure Statement, «Liquidity and exit risk», p. 3",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:07:05Z",
+      "alcanceYLimites": "Coincide con términos cl. 6.3",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Tokenized Stocks are over-the-counter (“OTC”) derivative contracts between you and FCCY that provide price exposure to selected publicly listed U.S. stocks or exchange traded funds",
+      "dato": "derivado OTC; sin propiedad de la acción",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+      "localizador": "Risk Disclosure Statement, p. 1–2",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:07:05Z",
+      "alcanceYLimites": "Sin derechos de voto ni de dividendo directo",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Tokenized Stocks are unsecured contractual obligations of Foris Capital CY Ltd. ... you will rank as an unsecured creditor",
+      "dato": "riesgo de emisor/contraparte",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "localizador": "Términos, cl. 12 (h), p. 8",
+      "fechaDato": "2026-08-11",
+      "consultadoUtc": "2026-11-03T10:07:03Z",
+      "alcanceYLimites": "Las acciones de respaldo están a nombre de FCCY en el bróker (cl. 8.1–8.2); el cliente no tiene derecho real sobre ellas",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "garantia",
+      "literal": "Compensation is limited to the lower of 90% of the cumulative covered claim and EUR 20,000 per eligible investor.",
+      "dato": "ICF de Chipre: hasta 20.000 € o 90 %",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+      "localizador": "Risk Disclosure Statement, p. 2; términos cl. 12 (j), p. 8",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:07:05Z",
+      "alcanceYLimites": "No cubre pérdidas por caída de precio",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "custodia",
+      "literal": "The underlying assets supporting the Tokenized Stocks are held in custody with Alpaca, a U.S. regulated self-clearing broker-dealer",
+      "dato": "subyacente en Alpaca (EE. UU.) a favor de FCCY",
+      "fuentePrimaria": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "localizador": "Nota de prensa 12/08/2026",
+      "fechaDato": "2026-08-12",
+      "consultadoUtc": "2026-11-03T10:07:02Z",
+      "alcanceYLimites": "Términos cl. 8.1: «held with the Securities Broker ... for the benefit of Foris Capital CY Ltd»",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "catalogo",
+      "literal": "Initially offering exposure to 1,500 underlying stocks and funds",
+      "dato": "unas 1.500 acciones y ETF de EE. UU. (dato de lanzamiento)",
+      "fuentePrimaria": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "localizador": "Nota de prensa 12/08/2026",
+      "fechaDato": "2026-08-12",
+      "consultadoUtc": "2026-11-03T10:07:02Z",
+      "alcanceYLimites": "La ayuda EEE (11/08/2026) dice «approximately 1,500»; no se ha comprobado el número actual dentro de la app",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "documentos",
+      "literal": "Foris Capital CY Ltd makes the Key Information Document and Offering Documents available to you ... via the Crypto.com App",
+      "dato": "KID solo en la app",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "localizador": "Términos, cl. 5.2, p. 4",
+      "fechaDato": "2026-08-11",
+      "consultadoUtc": "2026-11-03T10:07:03Z",
+      "alcanceYLimites": "Sin KID público no se puede comprobar el indicador de riesgo ni los costes",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "emisor",
+      "literal": "Foris Capital MU Limited is responsible for procuring eligible Underlying Securities from the Securities Broker for its own account and separately issuingTokenized Stocks",
+      "dato": "emisor en conflicto: FCCY (nota, cl. 7.1) frente a Foris Capital MU (cl. 6.2)",
+      "fuentePrimaria": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "localizador": "Términos, cl. 6.2 frente a cl. 7.1, p. 5",
+      "fechaDato": "2026-08-11",
+      "consultadoUtc": "2026-11-03T10:07:03Z",
+      "alcanceYLimites": "La nota de prensa dice «Tokenized Stocks issued by Foris Capital CY Limited»",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "dividendos",
+      "literal": "You do not receive dividends as cash. Payouts are reinvested automatically ... A 30% U.S. withholding tax is deducted before reinvestment.",
+      "dato": "reinversión automática neta de retención del 30 % (según ayuda)",
+      "fuentePrimaria": "https://help.crypto.com/en/articles/15855830-corporate-actions-and-dividends-of-tokenized-stocks-eea",
+      "localizador": "Ayuda Corporate actions (EEA), «Dividends»",
+      "fechaDato": "2026-08-11",
+      "consultadoUtc": "2026-11-03T10:09:11Z",
+      "alcanceYLimites": "Los términos (cl. 6.1 y 9.1) dicen que no hay derecho a dividendos y que los ajustes son discrecionales y no garantizados",
+      "estado": "en_conflicto"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple",
+      "nota": "Foris Capital CY Ltd, CySEC 344/17, con España en su pasaporte y en la CNMV (nº 4485). Sin advertencias de la CNMV con su nombre; sí hay dos webs clon «forisdaxltd» advertidas."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Lanzado el 12/08/2026; centro de ayuda EEE y términos del 11/08/2026 en línea hoy. No se puede comprobar dentro de la app."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Mínimo 1 USD y salida en la app documentados. Falta, en fuente pública, que el producto esté activo para residentes en España (la lista de países excluidos está en unas FAQ no públicas) y el KID con costes."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Riesgos bien explicados en términos y Risk Disclosure. Hay conflictos sobre emisor y dividendos. KID no público."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": {
+    "nota": "Borrador para un ciclo futuro. No se propone admitir hoy.",
+    "titulo": "Tokenized Stocks de Crypto.com: derivados sobre acciones y ETF de EE. UU.",
+    "categoria": "Acciones y capital privado",
+    "pais": "CY",
+    "tipo": "valor",
+    "coleccion": "principales",
+    "resumen": "Contratos derivados de Foris Capital CY (supervisada por la CySEC) que siguen el precio de acciones y ETF de EE. UU. Se compran y se venden solo dentro de la app.",
+    "rentabilidad": null,
+    "resumenTarjeta": {
+      "minimo": "Desde 1 USD por valor",
+      "accesoEspana": "La empresa tiene pasaporte en España (CNMV nº 4485); falta confirmar en público que el producto se ofrece aquí",
+      "salida": "Vendes en la app cuando quieras; Crypto.com es la contraparte y no puedes sacarlo a otra wallet"
+    },
+    "metricas": [
+      {
+        "etiqueta": "Mínimo",
+        "valor": "1 USD"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "CySEC (licencia 344/17) · CNMV nº 4485"
+      },
+      {
+        "etiqueta": "Salida",
+        "valor": "Venta en la app; no transferible"
+      },
+      {
+        "etiqueta": "Fondo de compensación",
+        "valor": "ICF de Chipre, hasta 20.000 € (no cubre caídas de precio)"
+      },
+      {
+        "etiqueta": "Moneda",
+        "valor": "USD; cambio desde EUR con diferencial"
+      }
+    ],
+    "avisos": [
+      "No eres dueño de la acción: tienes un contrato con Foris Capital CY.",
+      "Si Foris Capital CY quiebra, eres acreedor sin garantía.",
+      "Test de conveniencia obligatorio: producto complejo.",
+      "El KID solo está dentro de la app.",
+      "La CNMV advierte de webs clon con el nombre «Foris DAX»."
+    ],
+    "url": "https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+    "fuentesActuales": [
+      "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+      "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/46172/",
+      "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4485"
+    ],
+    "lugar": "Lárnaca · Chipre",
+    "pasos": [
+      "Alta y test",
+      "Compras en la app",
+      "Vendes en la app"
+    ],
+    "concepto": "Ilustración editorial de un teléfono del que salen fichas con forma de acción sobre un mapa de Europa"
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "1 USD",
+    "supervisorVerificado": "CySEC licencia 344/17; CNMV ESI EEE libre prestación nº 4485",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Entidad MiFID con pasaporte en España, entrada desde 1 USD y términos y riesgos públicos y claros.",
+    "porQueNo": "El KID no es público y no hay fuente pública que confirme que el producto está activo para residentes en España."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Casi lista. Entidad, pasaporte, mínimo, salida y riesgos están respaldados hoy en fuente primaria. Faltan dos cosas esenciales: (1) el KID, que solo se entrega dentro de la app, y (2) una fuente pública que confirme que el producto está activo para residentes en España (la lista de países excluidos está en unas FAQ no públicas). Además hay conflictos documentales sobre el emisor (FCCY frente a Foris Capital MU) y sobre los dividendos.",
+  "bloqueos": [
+    "KID no público (términos cl. 5.2: «via the Crypto.com App»).",
+    "Lista de países excluidos («Tokenized Stocks FAQs», cl. 3.1 d) no localizada.",
+    "crypto.com/eea/financialservices y crypto.com/eea/licenses se ven como la versión de EE. UU. o sin datos desde nuestra conexión, que sale por EE. UU.",
+    "Conflicto emisor: nota de prensa y cl. 7.1 (FCCY) frente a cl. 6.2 (Foris Capital MU Limited).",
+    "Conflicto dividendos: ayuda (reinversión neta del 30 %) frente a términos (sin derecho; ajustes discrecionales)."
+  ],
+  "siguientePaso": "Pedir a Crypto.com (compliance.cy@crypto.com, correo de la ficha CySEC) o mirar la app desde un móvil con residencia española: el KID de un valor (p. ej. AAPL), la lista de países y la fecha de fin de la promoción sin comisión. No lo hemos hecho: requiere cuenta o contacto.",
+  "consulta": {
+    "inicioUtc": "2026-11-03T10:06:03Z",
+    "finUtc": "2026-11-03T10:23:25Z"
+  }
+}

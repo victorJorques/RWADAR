@@ -1,0 +1,372 @@
+Volver al contenido
+Volver al contenido
+
+Cliente Particular
+Contacte con nosotros
+Quiénes somos
+Fondos
+Gestores
+Perspectivas
+Documentos y materiales
+Búsquedas en Franklin Templeton
+Home
+Fondos
+Fondos monetarios
+Franklin OnChain U.S. Government Liquidity Fund - ...
+Franklin OnChain U.S. Government Liquidity Fund
+AB (Ddis) USD
+Reporte Mensual
+Documento de datos fundamentales
+Ver todo
+Fecha 02.11.2026
+Valor liquidativo
+
+$1,00
+
+ 
+ 
+Cambio en el valor liquidativo
+
+$0,00
+
+(0,00%)
+ 
+marca a mercado (MTM)
+
+$1,0000
+
+ 
+ 
+Diferencia
+
+-0,0019%
+
+ 
+Con efecto el 15 de junio de 2026, Franklin OnChain U.S. Government Money Fund pasó a denominarse Franklin OnChain U.S. Government Liquidity Fund.
+Franklin OnChain U.S. Government Liquidity Fund - AB (Ddis) USD
+Información general
+Rentabilidad
+Participaciones
+Dividendos
+Precio
+Documentos
+Información general
+Objetivo del Fondo
+Perfil del Inversor
+¿Cuáles son los principales riesgos?
+
+Maximizar los ingresos, en una medida que sea coherente con la conservación del capital y la liquidez, al tiempo que tratar de mantener un valor liquidativo de la acción constante de 1 USD. Según el Reglamento europeo relativo a los fondos del mercado monetario, este Fondo entrará en la categoría de fondo del mercado monetario de valor liquidativo constante (VLC) de deuda pública a corto plazo.
+
+El Fondo invierte al menos el 99,5 % en:
+
+Instrumentos del mercado monetario ("IMM") de deuda pública denominados en dólares estadounidenses y emitidos o garantizados por el Gobierno o el banco central de EE. UU., incluidos valores emitidos por agencias relacionadas;
+pactos de recompra inversa admisibles garantizados por IMM de deuda pública;
+y/o depósitos en efectivo en dólares estadounidenses.
+Información del Fondo
+Patrimonio 
+Fecha 30.09.2026 (Actualización mensual)
+$57,95 Millón
+Fecha de Lanzamiento del Fondo 
+12.02.2025
+Fecha de Lanzamiento de la Clase 
+11.02.2026
+Fecha de Lanzamiento 
+11.02.2026
+Divisa Base del Fondo 
+USD
+Divisa Base de la Clase 
+USD
+Índice 
+FTSE 1-month US Treasury Bill Index
+Clase de activo 
+Fondos Monetarios
+Gestor de inversiones 
+Franklin Templeton Fixed Income
+Vehículo de inversión 
+Franklin Templeton OnChain Funds
+Domicilio 
+Luxembourg
+Inversión Mínima 
+USD 20
+Último dividendo
+Distribución de frecuencia 
+Diaria
+Dividendo por acción 
+Fecha 30.09.2026
+$0,0030
+Fecha de pago 
+Fecha 30.09.2026
+30.09.2026
+1-Day Net Yield 
+Fecha 02.11.2026 (Actualización diaria)
+3,78%
+7-Day Net Yield 
+Fecha 02.11.2026 (Actualización diaria)
+3,77%
+Comisiones
+Comisión de suscripción﻿﻿ 
+Fecha 31.10.2026
+1,50%
+Relación de gastos corrientes (OCR)
+1
+ 
+Fecha 31.10.2026
+0,20%
+Códigos identificativos
+Código ISIN 
+LU3258450587
+Código Bloomberg 
+FRKOGAB LX
+Código SEDOL 
+BVVJYL1
+Código CUSIP 
+-
+Código Fondo 
+N/A
+Rentabilidad
+Rentabilidad a 1 año
+Rentabilidad acumulada
+Rentabilidad anualizada
+Rentabilidad anual
+Medidas de riesgo
+Rentabilidad a 1 año
+Fecha 30.09.2026
+Mensual
+Trimestral
+
+
+
+La rentabilidad pasada no puede predecir rentabilidades futuras.
+
+
+
+	
+
+Fin de mes
+
+Fecha 30.09.2026
+
+	
+Divisa
+	
+sep-25 /
+sep-26
+	
+sep-24 /
+sep-25
+	
+sep-23 /
+sep-24
+	
+sep-22 /
+sep-23
+	
+sep-21 /
+sep-22
+	
+sep-20 /
+sep-21
+	
+sep-19 /
+sep-20
+	
+sep-18 /
+sep-19
+	
+sep-17 /
+sep-18
+	
+sep-16 /
+sep-17
+	
+
+Fecha de inicio del fondo
+
+
+
+	AB (Ddis) USD (%)	USD	
+—
+	
+—
+	
+—
+	
+—
+	
+—
+	
+—
+	
+—
+	
+—
+	
+—
+	
+—
+	11.02.2026
+
+	FTSE 1-month US Treasury Bill Index (%)	USD	
+3,86
+	
+4,53
+	
+5,56
+	
+4,61
+	
+0,61
+	
+0,05
+	
+0,86
+	
+2,33
+	
+1,51
+	
+0,60
+	—
+La clase de acciones ha sido lanzado el 11.02.2026 . Según la legislación actual, no podemos mostrar datos de rendimiento con un historial de rendimiento de menos de 12 meses.
+
+
+Participaciones
+
+Dividendos
+
+Precio
+Liquidativos y dividendos históricos
+Fecha 02.11.2026 Actualización diaria
+Desde lanzamiento
+Periodo de tiempo
+Desde lanzamiento
+Fecha desde
+[common.date-picker-button], [common.date-picker-selected-date] 11 de febrero de 2026
+a
+[common.date-picker-button], [common.date-picker-selected-date] 2 de noviembre de 2026
+
+Chart
+
+Line chart with 189 data points.
+The chart has 1 X axis displaying Time. Data ranges from 2026-02-11 00:00:01 to 2026-11-02 00:00:01.
+The chart has 1 Y axis displaying values. Data ranges from 1 to 1.
+mar '26
+abr '26
+may '26
+jun '26
+jul '26
+ago '26
+sep '26
+oct '26
+nov '26
+$1
+Valor liquidativo
+End of interactive chart.
+
+La rentabilidad pasada no puede predecir rentabilidades futuras. El valor de las acciones del fondo y los ingresos que se reciban de él pueden bajar o subir, y es posible que los inversores no recuperen la totalidad del importe invertido. Los datos facilitados sobre los precios históricos se encuentran en la moneda de la clase de acciones y se calculan según el NAV-NAV, teniendo en cuenta las reinversiones y las ganancias o pérdidas de capital. Los cargos de ventas, así como las comisiones, impuestos y otros costes relevantes que deba pagar el inversor, no están incluidos en los cálculos. 
+
+Valor liquidativo
+Fecha 02.11.2026
+Valor liquidativo 
+$1,00
+Cambio en el valor liquidativo 
+$0,00
+Variac. valor liquidativo (%) 
+0,00%
+marca a mercado (MTM) 
+$1,0000
+Diferencia 
+-0,0019%
+Valor liquidativo máximo y mínimo
+Fecha 02.11.2026 Actualización diaria
+Año	2026
+Valor liquidativo máximo	
+
+$1,00
+
+02.11.2026
+
+
+Valor liquidativo mínimo	
+
+$1,00
+
+17.02.2026
+
+Liquidativos y dividendos históricos
+Documentos
+Documentos de los fondos
+Nombre
+
+Ficha commercial - Franklin OnChain U.S. Government Liquidity Fund (AB (Ddis) USD)
+
+Descargar
+Documentos reglamentarios
+Nombre
+
+Documento de datos fundamentales - Franklin OnChain U.S. Government Liquidity Fund AB (Ddis) USD
+
+Descargar
+
+Folleto Informativo (en inglés) - Franklin Templeton OnChain Funds
+
+Descargar
+
+Informe Anual (en inglés) - Franklin Templeton OnChain Funds
+
+Descargar
+
+Informe Semestral (en inglés) - Franklin Templeton OnChain Funds
+
+Descargar
+Información importante
+
+Este fondo cumple los requisitos del artículo 6 del Reglamento de la UE sobre divulgación de información financiera sostenible (SFDR); no promueve características medioambientales o sociales ni tiene un objetivo de inversión sostenible con arreglo a la normativa de la UE.
+
+El Franklin OnChain U.S. Government Liquidity Fund es un fondo gestionado activamente y calificado como fondo monetario de deuda pública a corto plazo con valor liquidativo constante. El fondo ha sido debidamente autorizado por la CSSF de conformidad con las disposiciones del MMFR. Este fondo no ha sido calificado por agencias de calificación crediticia externas. El valor de una inversión en el fondo, a diferencia de un depósito, puede fluctuar.
+
+Este material de marketing está destinado únicamente a fines de interés general y no debe interpretarse como asesoramiento de inversión, ni constituye asesoramiento legal o fiscal, ni es una oferta de acciones o una invitación a solicitar acciones de la SICAV Franklin Templeton OnChain Funds (el «Fondo»), con domicilio en Luxemburgo. Para evitar cualquier duda, si decide invertir, estará comprando participaciones/acciones del Fondo y no estará invirtiendo directamente en los activos subyacentes del Fondo.
+
+El valor de las acciones del Fondo y los ingresos que se obtienen de él pueden tanto subir como bajar, y es posible que los inversores no recuperen la totalidad del importe invertido. Los resultados pasados no son indicativos de los rendimientos futuros. Las fluctuaciones monetarias pueden afectar al valor de las inversiones en el extranjero. Al invertir en un fondo denominado en una moneda extranjera, su rendimiento también puede verse afectado por las fluctuaciones monetarias.
+
+Franklin Templeton («FT») no será responsable ante ningún usuario de este documento ni ante ninguna otra persona o entidad por la inexactitud de la información o por cualquier error u omisión en su contenido, independientemente de la causa de dicha inexactitud, error u omisión. Las opiniones expresadas son las del autor en la fecha de publicación y están sujetas a cambios sin previo aviso. Cualquier investigación y análisis contenidos en este material de marketing han sido obtenidos por FT para sus propios fines y se le proporcionan únicamente de forma incidental. Es posible que se hayan utilizado datos de fuentes de terceros en la preparación de este documento y FT no ha verificado, validado ni auditado dichos datos de forma independiente. Las referencias a industrias, sectores o empresas concretas se ofrecen a título informativo y no son necesariamente indicativas de la composición del Fondo en un momento dado.
+
+Las acciones del Fondo no pueden ofrecerse ni venderse, directa o indirectamente, a residentes de los Estados Unidos de América. Las acciones del Fondo no están disponibles para su distribución pública en todas las jurisdicciones y los posibles inversores deben consultar a su asesor financiero antes de decidir invertir. El Fondo puede invertir en acciones de otros fondos del mercado monetario a corto plazo, lo que puede conllevar riesgos específicos que se describen con más detalle en el folleto del Fondo y, cuando esté disponible, en el documento de datos fundamentales (KID) pertinente o en cualquier otro documento de oferta relevante.
+
+Las suscripciones de participaciones del Fondo solo pueden realizarse sobre la base del Folleto actual del Fondo y, cuando esté disponible, el DFI pertinente (o cualquier otro documento de oferta pertinente), acompañado del último informe anual auditado disponible y del último informe semestral, si se ha publicado posteriormente. Estos documentos se pueden consultar en nuestro sitio web www.ftidocuments.com, se pueden obtener de forma gratuita a través de su representante local de FT o se pueden solicitar a través del Servicio de Instalaciones Europeas de FT, disponible en https://www.eifs.lu/franklintempleton. Los documentos del Fondo están disponibles en inglés.
+
+Además, en franklintempleton.lu se puede consultar un resumen de los derechos de los inversores. El resumen está disponible en inglés.
+
+Los subfondos de FTOCF están notificados para su comercialización en varios Estados miembros de la UE en virtud de la Directiva OICVM. FTOCF puede rescindir dichas notificaciones para cualquier clase de acciones y/o subfondo en cualquier momento mediante el proceso previsto en el artículo 93 bis de la Directiva OICVM.
+
+Emitido en Europa por: Franklin Templeton International Services S.à r.l. – Supervisado por la Commission de Surveillance du Secteur Financier - 8A, rue Albert Borschette, L-1246 Luxemburgo.
+
+Las referencias a los índices se realizan únicamente con fines comparativos y se proporcionan para representar el entorno de inversión existente durante los periodos indicados. Un índice no está gestionado y no se puede invertir directamente en él. El rendimiento del índice no incluye la deducción de gastos y no representa el rendimiento de ningún fondo de Franklin Templeton.
+
+CFA® y Chartered Financial Analyst® son marcas comerciales propiedad de CFA Institute.
+
+Los índices no están gestionados y no puede invertirse directamente en ellos. No reflejan las comisiones, costes o gastos de ventas.
+Avisos y condiciones importantes para proveedores de datos disponibles en www.franklintempletondatasources.com. 
+
+Fuente: FTSE.
+
+Emitido en España por Franklin Templeton International Services S.à r.l.—Sucursal española, profesional del sector financiero bajo la supervisión de la CNMV, José Ortega y Gasset 29, Madrid (España). Tel +34 91 426 3600. 
+
+Notas al pie
+
+En el caso de los fondos que carecen de 12 meses de datos, o para los que no es probable que el OCF ofrezca una idea justa de los costes futuros probables, la cifra indicada es una estimación.
+
+Esta web está destinada a residentes en España.
+Cliente Particular
+España
+Accesibilidad Digital
+Información Legal Importante
+Information reglamentaria
+Aviso de privacidad
+Cambiar la configuración de las cookies
+Política de Seguridad
+Derechos del Inversor
+Financial Crimes Compliance
+Empleo
+Póngase en contacto con nosotros:
+Copyright © 2026 Franklin Templeton. Todos los derechos reservados.

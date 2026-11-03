@@ -1,0 +1,215 @@
+{
+ "slug": "beself-brands-betoken",
+ "tipoExpediente": "candidata",
+ "grupo": "nuevas-espana",
+ "proveedor": "BeToken (Beself Brands)",
+ "plataformaSlug": null,
+ "entidadComercializadora": "BESELF BRANDS, S.A. (emisor; venta en su propia web betoken.io). Según el documento de oferta, interviene GABRIEL CARRILLO CAPEL EAF, S.L. (CNMV nº 147), que valida el documento y supervisa la comercialización",
+ "emisor": "BESELF BRANDS, S.A. (antes S.L.), comercio electrónico de productos de consumo, Tarragona",
+ "vehiculo": "Acciones ordinarias de una sociedad no cotizada representadas mediante TRD (Ley 6/2023)",
+ "token": "BeToken (BTK); red y dirección del contrato en el documento de oferta (no se reproducen aquí)",
+ "derechoAdquirido": "Acciones ordinarias de Beself Brands, S.A. (1 token = 1 acción de 0,01 € de nominal), con derechos económicos y de voto según sus estatutos y el pacto de accionistas",
+ "jurisdiccion": "ES",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Documento de oferta de emisión de acciones tokenizadas de Beself Brands, S.A. («whitepaper»)",
+   "url": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+   "versionOFecha": "28/03/2025",
+   "paginas": 37,
+   "sha256": "e5e16d1d24644ef917e01d90a03b6384b9838b6fbdd25f2fa45baf3868188357",
+   "leido": true
+  },
+  {
+   "titulo": "Registro ERIR de la CNMV (Ursus-3 Capital), página 3: inscripción de la emisión de Beself Brands",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "versionOFecha": "inscripción del 11/07/2025",
+   "paginas": null,
+   "sha256": "4cdaee361403c68aec4dd3d5c5a5cf8008815d71573288829743597e0a0f320c",
+   "leido": true
+  },
+  {
+   "titulo": "Web de venta betoken.io",
+   "url": "https://betoken.io/",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "URSUS-3 CAPITAL, A.V., S.A. (ERIR de la emisión)",
+   "numero": "Agencia de valores nº 251; única ERIR inscrita en la CNMV",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "alcance": "Literal de la CNMV del 11/07/2025: «Emisión de acciones por importe de 7.962.816€ y transformación en S.A. inscrita en el Registro Mercantil el 8/5/2025», con Ursus-3 como entidad responsable del registro. La CNMV advierte en esa página: la inscripción «no implica que la CNMV haya validado las condiciones de la emisión ni la información facilitada por el emisor».",
+   "consultadoUtc": "2026-11-03T10:06:31Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "GABRIEL CARRILLO CAPEL EAF, S.L.",
+   "numero": "Empresa de asesoramiento financiero nº 147 (27/06/2014)",
+   "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=2&lang=es",
+   "alcance": "Consta en el listado de EAF de la CNMV. El documento de oferta dice que valida el documento y supervisa la comercialización. Una EAF asesora, no coloca valores ni custodia dinero.",
+   "consultadoUtc": "2026-11-03T10:19:58Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "BESELF BRANDS, S.A.",
+   "numero": "sin registro como entidad supervisada",
+   "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=0&lang=es",
+   "alcance": "El emisor es una sociedad comercial y no figura como ESI. No se consultó en el Registro Mercantil.",
+   "consultadoUtc": "2026-11-03T10:18:06Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Beself",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Beself",
+   "consultadoUtc": "2026-11-03T10:16:07Z",
+   "alcance": "Buscador de advertencias de la CNMV, tipo «no autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas. No se consultó la pestaña de advertencias de otros supervisores. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Beself Brands",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Beself%20Brands",
+   "consultadoUtc": "2026-11-03T10:18:50Z",
+   "alcance": "Buscador de advertencias de la CNMV, tipo «no autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas. No se consultó la pestaña de advertencias de otros supervisores. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Betoken",
+   "resultado": "sin coincidencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Betoken",
+   "consultadoUtc": "2026-11-03T10:16:08Z",
+   "alcance": "Buscador de advertencias de la CNMV, tipo «no autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas. No se consultó la pestaña de advertencias de otros supervisores. No aparecer no equivale a estar autorizado."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "Fase 1: hasta el 2 de junio de 2025 · 19 de junio de 2025 · Fase 2: 8 de septiembre de 2025 · 15 de septiembre de 2025",
+   "dato": "Según su documento, la venta por fases terminó en septiembre de 2025; hoy no consta ninguna oferta abierta",
+   "fuentePrimaria": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+   "localizador": "Documento de oferta del 28/03/2025, apartado 3.5.1",
+   "fechaDato": "2025-03-28",
+   "consultadoUtc": "2026-11-03T10:19:37Z",
+   "alcanceYLimites": "El documento no prevé fases después de septiembre de 2025. No se pudo comprobar en la web si sigue vendiendo.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "estado",
+   "literal": "betoken.io: «Connection reset by peer» y HTTP 522; beselfbrands.com: HTTP 522",
+   "dato": "Webs del emisor y de venta caídas hoy",
+   "fuentePrimaria": "https://betoken.io/",
+   "localizador": "Consultas directas de hoy (inventario-consultas.json, sin contenido)",
+   "fechaDato": "2026-11-03",
+   "consultadoUtc": "2026-11-03T10:20:54Z",
+   "alcanceYLimites": "Un 522 es un fallo del servidor de origen detrás de Cloudflare: puede ser temporal. Se probó varias veces entre las 10:11 y las 10:21 UTC.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Inversión mínima: 100,00.- €",
+   "dato": "100 EUR (en 2025)",
+   "fuentePrimaria": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+   "localizador": "Documento de oferta, portada y apartado 2.3.3",
+   "fechaDato": "2025-03-28",
+   "consultadoUtc": "2026-11-03T10:19:37Z",
+   "alcanceYLimites": "Mínimo de las fases de 2025. No vale para hoy.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "precio",
+   "literal": "Valor de venta: De 2,60.- € a 2,75.- € (*) · El valor de venta dependerá de la fase en que se adquieran los Tokens",
+   "dato": null,
+   "fuentePrimaria": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+   "localizador": "Documento de oferta, apartado 2.3 y cuadro de 3.5.1",
+   "fechaDato": "2025-03-28",
+   "consultadoUtc": "2026-11-03T10:19:37Z",
+   "alcanceYLimites": "Precio de la emisión de 2025 con prima. No existe un precio de mercado.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": "Beself Brands, en cuanto esté disponible, tramitará los documentos necesarios para permitir que sus accionistas […] puedan negociar en un mercado secundario (exchange)",
+   "dato": "Sin mercado secundario; los fundadores se comprometen a no vender más de un 10 % de sus tokens al año durante 4 años",
+   "fuentePrimaria": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+   "localizador": "Documento de oferta, apartados 2.3.4–2.3.5",
+   "fechaDato": "2025-03-28",
+   "consultadoUtc": "2026-11-03T10:19:37Z",
+   "alcanceYLimites": "La salida a bolsa anunciada para el primer semestre de 2026 solo aparece en prensa y no se ha comprobado.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "El presente documento no es considerado un folleto informativo ni ha sido revisado por parte de la Comisión del Mercado de Valores […] pueden conllevar una pérdida de las cantidades invertidas.",
+   "dato": "Sin folleto aprobado; riesgo de pérdida total; empresa no cotizada",
+   "fuentePrimaria": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+   "localizador": "Documento de oferta, portada y apartado 8 «Factores de riesgo»",
+   "fechaDato": "2025-03-28",
+   "consultadoUtc": "2026-11-03T10:19:37Z",
+   "alcanceYLimites": "Oferta exenta de folleto (art. 35.2.b de la Ley 6/2023).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "La emisión de las acciones tokenizadas por parte de BESELF BRANDS, S.A. se realiza al amparo de lo dispuesto en la ley 6/2023",
+   "dato": null,
+   "fuentePrimaria": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+   "localizador": "Documento de oferta, portada",
+   "fechaDato": "2025-03-28",
+   "consultadoUtc": "2026-11-03T10:19:37Z",
+   "alcanceYLimites": "La oferta de 2025 iba dirigida al público en España. Hoy no se puede comprobar ningún acceso porque la web no responde.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Emisión inscrita a través de una ERIR de la CNMV (Ursus-3, nº 251) y validada por una EAF inscrita (nº 147). El emisor y quien vende no son entidades supervisadas."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "Las fases de venta del documento terminaron en septiembre de 2025. Las webs no responden hoy (522)."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "No hay compra ni reventa verificable hoy. El mínimo de 100 € y el precio de 2,60–2,75 € son de 2025."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Sin advertencias de la CNMV. Riesgos explicados en el documento. No hay folleto aprobado por la CNMV ni mercado secundario."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV · ERIR Ursus-3 Capital A.V. (nº 251) para el registro; EAF nº 147 para la validación del documento. El emisor no está supervisado",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Fue una de las primeras empresas españolas con el 100 % de sus acciones tokenizadas e inscritas en el registro ERIR de la CNMV.",
+  "porQueNo": "La venta terminó en 2025, no hay mercado secundario y sus webs no responden hoy."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No se puede comprar hoy. Según su documento de oferta, la venta de BeToken terminó en septiembre de 2025. No existe mercado secundario: el emisor solo dice que lo tramitará cuando sea posible. Además, betoken.io y beselfbrands.com no responden hoy (error 522). La emisión está inscrita en la CNMV a través de la ERIR Ursus-3, pero el emisor no está supervisado y la oferta no tiene folleto aprobado.",
+ "bloqueos": [
+  "betoken.io y beselfbrands.com no responden (conexión reiniciada y HTTP 522) entre las 10:11 y las 10:21 UTC.",
+  "No se ha comprobado la salida a bolsa anunciada en prensa para 2026.",
+  "El PDF original no se conserva porque contiene DNI de los fundadores. Se guarda el texto con esos datos suprimidos y el sha256 del PDF."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-03T10:06:31Z",
+  "finUtc": "2026-11-03T10:23:29Z"
+ }
+}

@@ -1,0 +1,268 @@
+REGISTRATION AGREEMENT
+V1.0 – 2021-02-01
+
+1      GENERAL INFORMATION
+System                      Ethereum Mainnet       ("Blockchain"),    see   ethereum.org     for    further
+                            information
+
+Issuer                      Aktionariat AG, Erlenbach, Switzerland, CHE-453.438.437, ("Issuer" or
+                            "Company")
+
+Issued instrument           Registered shares (Namenaktien) of the issuer (the "Shares")
+
+Register                    Contract    0xcB58EC733Ab0d96216B048bf7C3209d6c184D7c3          (the
+                            "Token Contract" or "Token Register"), named "Aktionariat AG Shares"
+                            with symbol "AKS".
+
+Source code                 Available on Etherscan1 and Github2.
+
+Additional source of aktionariat.com/investors.html (the "Website")
+information
+
+Number of Shares See the commercial registry (zefix.ch) or the Website.
+outstanding and their
+nominal value
+
+Number     of    Share See the Token Contract or the Website.
+Tokens in circulation
+
+Transfer restrictions None
+(Vinkulierung)
+
+
+
+2      SCOPE
+The Issuer's articles of association allow the board of the Issuer to change the legal form of the
+Shares upon request of the respective shareholder, including the conversion of Shares held as
+uncertificated securities according to article 973c of the Swiss Code of Obligations ("CO") into
+register securities according to article 973d CO. The Issuer issues one numeric unit in the Token
+Contract for each Share that is issued as a register security ("Share Tokens"). This registration
+agreement (the "Registration Agreement" or "Agreement") sets out the terms relating to the
+Share Tokens, such as the rules of transfer and the process in case of loss thereof. The Issuer
+and all Token Holders are bound to this Agreement by law. The Registration Agreement may be
+
+
+1 etherscan.io/address/0xcB58EC733Ab0d96216B048bf7C3209d6c184D7c3#code
+2 github.com/aktionariat/contracts/blob/7eacef64aebb6c4cf5f7950fb804bddefef6b9d5/src/Shares.sol
+
+
+
+
+                                     Registration Agreement                                        1/6
+updated by the Issuer from time to time to reflect the latest legal and technical developments, as
+well as decisions taken by the general assembly or the board of directors as tasked by the general
+assembly. The Issuer makes the currently applicable version of this Agreement available on the
+Website and, where necessary, informs the registered shareholders in accordance with the
+articles of association.
+
+3      SHARE REGISTER
+3.1    Shareholder Registration
+The Company keeps an off-chain share register that is separate from the Token Register (the
+"Share Register"). Any person, legal or natural, that can demonstrate the power to dispose over
+a Share Token (a "Token Holder"), can request the registration in the Share Register. Only the
+persons registered in the Share Register are entitled to the rights as a shareholder (such as voting
+and dividend rights). For the avoidance of doubt, a Token Holder is free to transfer its Share
+Tokens without having first registered in the Share Register.
+
+To request the entry in the Share Register, the Token Holder must prove that she or he controls
+the address where the Share Tokens in question are held. In addition, the Token Holder needs
+to provide the personal information as per the electronic form provided by the Company or a third
+party designated by the Company. For Share Tokens held through an intermediary, the
+intermediary may perform the registration on behalf of the beneficiary.
+
+3.2    Transfer Restrictions (Vinkulierung)
+The Company may refuse entry in the Share Register in accordance with the transfer restrictions
+in the articles of association. As of the date of this Registration Agreement, there are no transfer
+restrictions.
+
+3.3    Sub-Registers
+The Issuer can, but is not required to, recognize sub-registers. A sub-register can be any technical
+means to keep track of the ownership of a multitude of Share Tokens assigned to a single address
+in the Token Register. It could for example be another smart contract, a register deployed to a
+different blockchain, or a database of a custodian. In case the Company recognizes a sub-
+register, it suffices to prove control of the sub-register (or a fraction thereof) to be registered as a
+shareholder for the tokens held by the sub-register (or the respective fraction thereof). In case
+the sub-register allows the transfer and holding of fractional units of a share, the number of Share
+Tokens assigned to the respective shareholder is rounded down to the next natural number.
+
+3.4    Updates and Delegation
+The Issuer may delegate the task of validating requests and updating the Share Register. Name
+changes and changes of address must be notified to the Issuer or to the third party designated
+by the Issuer.
+
+3.5    Establishment of securities
+The registration of a security in accordance with article 973g section 1 number 1 CO is technically
+not supported in the Token Register. The legally valid establishment of a security on a Share
+
+
+
+
+                                       Registration Agreement                                       2/6
+Token therefore requires the transfer of the Share Token or the use of a sub-register that offers
+the required functionality.
+
+4      HARD FORK
+In case of a split of the Blockchain (hard fork), the Company decides, at its own discretion, which
+version of the Blockchain will be considered to hold the real Share Tokens and communicates
+this decision on the Website.
+
+5      TRANSFER
+Any action that results in a transfer of the capability to demonstrate the power to dispose over a
+Share Token constitutes a valid transfer of the Share Token. This includes the transfer of private
+keys to a new owner, for example by sending a paper wallet by mail.
+
+Shares issued as Share Tokens are indivisibly bound to each other in accordance with article
+973d ss. CO: It is not possible to transfer a Share Token without transferring the right to register
+a Share in the Share Register and vice versa. The transfer of Share Tokens is legally effective
+irrespective of the validity of the underlying obligatory transaction (abstract effect). No grounds
+for invalidity, such as lack of will, material error or withdrawal of consent to the transfer, may be
+invoked. The acquirer of Share Tokens is protected in her/his acquisition even if the transferor
+did not have the right to dispose over the Share Tokens, except if the acquirer acted in bad faith
+or with gross negligence. In case of bankruptcy (Konkurs), seizure of assets (Pfändung) or a
+moratorium (Nachlassstundung) of a Token Holder, article 973f CO applies.
+
+6      BURNING
+Burning a token is the technical process of deleting it from the Token Register or making it
+otherwise permanently and provably inaccessible. The ability to burn tokens is part of the ERC-
+20 standard. However, Token Holders are advised to consult with the Issuer before burning any
+tokens and to agree with the Issuer on the purpose and consequences of the burning. For
+example, burning a Share Token can make sense when the Token Holder and the Issuer agreed
+to convert them into a different legal form.
+
+7      LOSS OF TOKENS
+By default, all issued Share Tokens are subject to a recovery function embedded in the Token
+Register. The recovery function allows Token Holders that lost access to their Share Tokens to
+reclaim them. Potential abuse of the recovery function is guarded against by requiring a collateral
+and by having a suitably long period during which counterclaims can be filed. It is possible to opt
+out from the recovery function on a per-address basis by invoking the respective function on the
+smart contract. As a further fallback to prevent abuse, the Issuer is given the power to cancel a
+pending token recovery, thereby preventing the recovery from completing. The Issuer agrees to
+only exert this power in case of suspected abuse or errors. The recovery mechanism is
+documented in more detail on github.com/aktionariat/contracts/blob/master/doc/recoverable.md .
+
+Alternatively, lost Share Tokens can be declared invalid by a judge and replaced with new Share
+Tokens in accordance with the procedure laid out in aricle. 973h CO. Invalid Share Tokens remain
+
+
+
+                                      Registration Agreement                                     3/6
+in the Token Register but do not represent Shares anymore. It is the responsibility of the Issuer
+to inform about invalid tokens on the Website.
+
+8      EXCLUSION OF REPRESENTATIONS / LIABILITY
+To the extent permitted by law, all representations and warranties with regard to the Shares and
+the Share Tokens and any liability by the Company or any person acting on behalf of the Company
+with regard thereto are herewith excluded. The Token Holder herewith waives any and all claims
+related to misrepresentations or breaches of warranties it may have under the applicable law.
+
+9      TAXES
+The Token Holder bears the sole responsibility to determine if its purchase of the Share Tokens,
+the potential appreciation or depreciation in the Share Tokens over time, the sale and purchase
+of Share Tokens and/or any other action or transaction related to the Share Tokens has tax
+implications for the Token Holder.
+
+10     GENERAL PROVISIONS
+10.1   Severability / Good Faith
+Should any part or provision of this Agreement be held to be invalid by any competent court,
+governmental or administrative authority having jurisdiction, the other provisions of this
+Agreement shall nonetheless remain valid. In this case, the Company shall dictate a substitute
+provision that best reflects the economic intentions without being unenforceable and shall execute
+all agreements and documents required in this connection. The same shall apply if and to the
+extent that this Agreement is found to contain any gaps or omissions.
+
+10.2   Governing Law and Jurisdiction
+This Agreement shall be governed by and construed in accordance with the substantive laws of
+Switzerland. All disputes arising out of or in connection with the present Agreement, including
+disputes on its conclusion, binding effect, amendment and termination, shall be resolved by the
+ordinary courts of Meilen, Switzerland.
+
+11     RISK FACTORS OF THE SHARE TOKENS
+11.1   General Risks
+Purchasing Share Tokens may offer an opportunity for capital gains but also entail a high degree
+of business and financial risks, including the possibility of a complete loss of the investment. This
+document does not represent any solicitation for the purchase or sale of Share Tokens. Instead,
+each purchaser is requested to engage in his own independent research and make his own
+decisions with respect to the purchase of Share Tokens. It is assumed that prospective Token
+Holders, to the extent necessary, consult a lawyer, accountant, and/or tax professional to evaluate
+the risks entailed.
+
+The risks described herein are not the only risks that come into question and are by no means
+intended to represent a comprehensive list. Potential purchasers should be aware that buying
+Share Tokens may also be exposed to other risks of another nature. The order in which the
+individual risks were chosen to be presented does not provide any indication of the probability of
+
+
+                                      Registration Agreement                                     4/6
+occurrence or the seriousness or importance of the individual risks or their impact in the event
+that they occur. Additional risks that are not business-specific and that are not yet currently known
+to the Company or that the Company does not currently deem to be relevant may likewise have
+an impact.
+
+Prospective Token Holders should ensure that they fully understand the nature of the Share
+Tokens and the extent of their exposure to risks and they should consider the suitability of the
+Share Tokens as an investment in the light of their own circumstances and financial condition.
+
+The Share Tokens involve a high degree of risk, including the potential risk of expiring
+worthless. Potential buyers should be prepared in certain circumstances to sustain a total
+loss of the capital invested to purchase the Share Tokens.
+
+11.2   Regulatory Risk
+The blockchain technology allows new forms of interaction and it is possible that certain
+jurisdictions will apply existing regulations on or introduce new regulations addressing blockchain
+technology-based applications which may be contrary to the current setup of the Share Tokens.
+This may, inter alia, result in substantial modifications of the Share Tokens including their loss.
+
+11.3   Operational and IT Risks
+The smart-contract concept on which the Share Tokens are built and the blockchain technology
+in general are still in an early development stage and unproven, therefore there is no warranty
+that the process of creating, receiving, holding, using and storing Share Tokens will be
+uninterrupted or error-free and there is an inherent risk that the software could contain
+weaknesses, vulnerabilities or bugs causing, inter alia, the complete loss of Share Tokens.
+Furthermore, it is possible that there may take place hacking attacks and other unexpected
+activities which could result in the theft or loss of Share Tokens. Moreover, the underlying protocol
+may be subject to future changes and unforeseen problems which can affect the proper
+functioning of the smart-contract and cannot be influenced by the Issuer.
+
+In particular, blockchains are susceptible to mining attacks, including but not limited to
+doublespend attacks, majority mining power attacks, "selfish-mining" attacks, timestamp
+manipulation, and race condition attacks. Any successful attacks present a risk to the Share
+Tokens, expected proper execution and sequencing of transactions in Share Tokens, and
+expected proper execution and sequencing of contract computations and may result in the loss
+of Share Tokens.
+
+In some applications, it may be desirable to use a smart contract to autonomously manage Share
+Tokens. Depending on the precise implementation, this could lead to a situation where a
+malicious claim on the Share Tokens held by the contract address cannot be cleared by the
+rightful owner. The Company cannot be held liable for loss of tokens resulting from incompatible
+implementation of third-party smart contracts.
+
+11.4   Loss of Keys
+Share Tokens may be lost or become inaccessible in particular if the holder of Share Tokens
+loses the respective private key to their Share Tokens or due to malfunctioning or incompatibilities
+
+
+                                      Registration Agreement                                     5/6
+of the wallet in which the Share Tokens are stored. This could also lead to the loss of the Share
+Tokens. Moreover, it is the responsibility of the Token Holder not to lose the key or password that
+allows access to the wallet.
+
+12     SIGNATURES
+In accordance with the articles of association, the board of directors of the Issuer hereby declares
+that this Registration Agreement governs all Share Tokens in accordance with article 973d CO.
+
+
+
+Zurich, 2021-02-01
+
+
+
+
+Luzius Meisser                                       Murat Ögat
+
+President of the Board of Directors                  Member of the Board of Directors
+
+
+
+
+                                      Registration Agreement                                    6/6
+
