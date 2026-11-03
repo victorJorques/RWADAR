@@ -6,6 +6,48 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 3 de noviembre de 2026 (tarde, 5) · Claude · el worker da 404 a lo retirado aunque Cloudflare guarde copia
+
+Víctor: «arréglalo», sobre la ficha de mF-ONE que seguía saliendo en
+`/ofertas/mf-one`. PR #45, unida a `main`, publicada en preview y producción
+(219/219).
+
+- **Causa:** el servidor de archivos de Cloudflare Pages
+  (`@cloudflare/pages-shared`, `asset-server/handler.ts`,
+  `ASSET_PRESERVATION_CACHE`) guarda una semana, en cada centro de datos, una
+  «copia de conservación» de cada archivo que sirve. Si el archivo desaparece
+  del despliegue, la devuelve con `cf-cache-status: HIT` y
+  `x-robots-tag: noindex`. Por eso mF-ONE solo seguía en IAD.
+- **Arreglo** (`rwadar-acceso/compilar.cjs`):
+  - el worker lleva la lista cerrada de fichas, sacada del manifiesto. En
+    `ofertas/`, `plataformas/` y `fuera-del-radar/`, cualquier otra ficha da
+    el 404 de `/404`, sin pedirla a ASSETS. Las barras repetidas se
+    normalizan antes;
+  - fuera de `/assets/`, una respuesta de ASSETS con `HIT` + `noindex` se
+    trata como copia de un archivo retirado y da 404. Si la respuesta es un
+    304 de una revalidación, se repite la consulta sin condiciones. Así queda
+    cubierta, por ejemplo, la ilustración de mF-ONE;
+  - el 404 del worker lleva `x-robots-tag: noindex, nofollow` y
+    `cache-control: no-store`. El 404 propio de Pages no lleva esa marca.
+- **Precarga:** `rwadar-precargar-imagenes.js` compila el worker esperado con
+  las fichas del snapshot de la base, no con el manifiesto. Si no, un alta ya
+  añadida al manifiesto bloquearía la precarga (prueba nueva en
+  `probar-precarga.cjs`).
+- **Comprobación tras publicar** (`.github/comprobar-publicado.mjs`):
+  - las 29 fichas retiradas del historial de Git, y una que nunca existió,
+    deben dar el 404 del worker;
+  - las 29 ilustraciones retiradas deben dar 404, también al revalidar.
+- **Pruebas:** `npm test` 394 + 144. `compilar.test.mjs` tiene 8 casos que ya
+  no dependen de las fichas de hoy. Revisión con un workflow de 4 enfoques, con
+  escépticos, y segunda verificación sin falsos positivos en unos 2.000 casos
+  reales de producción y preview. Sello nuevo.
+- **Retirar una ficha** sigue igual: quitarla del manifiesto y borrar su
+  página. Ver `docs/tareas/CICLO-DIARIO-CATALOGO.md` §6.
+- **Queda:** los despliegues antiguos con huella (`<hash>.rwadar.pages.dev`)
+  siguen enseñando su versión, con `noindex`. Son inmutables: solo se quitarían
+  borrándolos en Cloudflare, con permiso de Víctor, y algunos los citan
+  informes de `docs/`.
+
 ## 3 de noviembre de 2026 (tarde, 4) · Claude · retirada de mF-ONE (entrega 2026-11-03.6)
 
 Víctor: «retira las ofertas que ya no valgan o ya no estén». PR #42 (lote) y
@@ -37,15 +79,9 @@ Víctor: «retira las ofertas que ya no valgan o ya no estén». PR #42 (lote) y
   `rwadar-fichas-manifiesto.js` y borradas su ilustración y la de la app.
   Preview y producción: 158/158. En el navegador se ven 8 principales sin
   errores.
-- **Ojo, caché de Cloudflare:** `/ofertas/mf-one` sigue dando 200 con la
-  página vieja en el nodo IAD, el que usan la CI y este contenedor, porque se
-  pidió justo antes del despliegue. La respuesta trae `cf-cache-status: HIT`,
-  `s-maxage=604800` y `x-robots-tag: noindex`. Con `?x=1` da 404. Las fichas
-  retiradas antes (mglo, iod-occasio, reental-…) ya dan 404. No lo pongo en
-  nuestro `_headers` ni en el worker. Arreglo posible, si vuelve a pasar: que
-  el worker de `rwadar-acceso` lleve la lista de fichas y devuelva el 404 de
-  las rutas `/ofertas/*` que no estén en ella. El worker toca acceso, así que
-  pide revisión antes.
+- **Caché de Cloudflare:** `/ofertas/mf-one` siguió dando 200 en IAD por la
+  copia de conservación de Cloudflare Pages. Ya está arreglado: ver la entrada
+  de arriba («tarde, 5»).
 - **App:** OTA, grupo `a468d25f`, runtime `1.4.1(23)`, con el mensaje
   «Catálogo 2026-11-03.6: retirada mF-ONE». No comprobada en un móvil.
 - **Pendiente:**
