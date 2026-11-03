@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-01",
+  "actualizadoEl": "2026-11-03",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 01/11: límite de intentos en el servidor de cuentas (por visitante: 30 entradas y 10 envíos de correo cada 10 minutos) y casilla anti-robots de Cloudflare preparada pero apagada (sin clave no carga nada ni cambia la CSP). Revisado por Codex en GitHub (código y seguridad, sin hallazgos) y por dos revisiones independientes; npm test en verde con Node 22.23.4. Sello y publicación autorizados expresamente por Víctor el 01/11.",
+  "nota": "Claude, 03/11: catálogo de 23 ofertas comprobadas (camino B elegido y autorizado por Víctor el 02/11): investigación del 01/11 con revisión independiente, lote del 02/11 y corrección documental del 03/11 aplicados en Supabase con el flujo Aplicar catálogo; web y app aceptan un lote coherente más pequeño (sin el mínimo de 49). npm test completo en verde con Node 22.23.4. Sello y publicación autorizados expresamente por Víctor.",
   "revisionAprobada": {
-    "commit": "7ff6537f4f635c8fc06f97749be4e2191b178773",
-    "contenidoSha256": "sha256:ede3fd47e841d7f5513a62dc0fabf0ded327a2427fb86403ceb0b5397d29f195",
+    "commit": "f8a5a8585bfa2f15b1d91cc475c3e026caa24cbd",
+    "contenidoSha256": "sha256:d0e5c243c9942806c5929940c99518d5f4c042788d855ad3c6ff3da1878c081b",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
