@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 03/11: catálogo de 23 ofertas comprobadas (camino B elegido y autorizado por Víctor el 02/11): investigación del 01/11 con revisión independiente, lote del 02/11 y corrección documental del 03/11 aplicados en Supabase con el flujo Aplicar catálogo; web y app aceptan un lote coherente más pequeño (sin el mínimo de 49). npm test completo en verde con Node 22.23.4. Sello y publicación autorizados expresamente por Víctor.",
+  "nota": "Claude, 03/11: tarjetas de oferta más limpias (solo CSS, mismo contenido y mismas reglas editoriales) sobre el catálogo de 23 ofertas publicado hoy. test:web y test:tools en verde. Sello y publicación autorizados expresamente por Víctor.",
   "revisionAprobada": {
-    "commit": "f8a5a8585bfa2f15b1d91cc475c3e026caa24cbd",
-    "contenidoSha256": "sha256:d0e5c243c9942806c5929940c99518d5f4c042788d855ad3c6ff3da1878c081b",
+    "commit": "dd7fbcf7756365da8c8cc5a851b3937c34494d6b",
+    "contenidoSha256": "sha256:f495d780cbe3e0b42d9501ee205467d63356a60a08a8954a170baa30fa4de522",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
