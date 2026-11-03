@@ -1,0 +1,203 @@
+KEY INFORMATION DOCUMENT
+Purpose
+This document provides you with key information about this investment product. It is not marketing material. The information is required by law to
+help you understand the nature, risks, costs, potential gains and losses of this product and to help you compare it with other products.
+
+Product
+
+
+              SPIKO AMUNDI OVERNIGHT SWAP FUND – EUR share class
+
+Manufacturer of this Product: TWENTY FIRST CAPITAL. LEI: 969500WSBA6KS8V1OR80.
+ISIN: FR0014015LD3
+For further information, please visit www.twentyfirstcapital.com or call: + 33 (0)1 70 37 80 83.
+The Autorité des marchés financiers (AMF) is responsible for supervising TWENTY FIRST CAPITAL in relation to this Key Information Document.
+TWENTY FIRST CAPITAL is authorised in France under number GP 11000029 and regulated by the AMF.
+SPIKO AMUNDI OVERNIGHT SWAP FUND is a sub-fund of Spiko SICAV. This sub-fund is authorised in France by the AMF.
+This document was published on 1 September 2026.
+
+What is this product?
+Type: This Product is an undertaking for collective investment in transferable securities (UCITS) governed by French law.
+Term: The Product has a term of 99 years.
+Objectives:
+AMF classification: Not applicable.
+The management objective of SPIKO AMUNDI OVERNIGHT SWAP FUND is to achieve, over a minimum investment horizon of 3 months, an annualised
+net performance at least equal to the benchmark €STR + 0.50%. In order to achieve its management objective, the fund:
+●    invests up to 120% of its assets in bonds, equities and money market instruments. This investment complies with the applicable UCITS rules and
+     aims to diversify assets in order to limit issuer concentration risk;
+●    enters into so-called "Total Return Swap" (TRS) contracts with one or more counterparties. Under these contracts, the performance of the bonds,
+     equities and money market instruments held by the fund (including the dividends and coupons attached to them) is returned to the TRS
+     counterparty (or the TRS counterparties), which pay(s) the fund a return equal to the benchmark plus a margin predetermined at the time the
+     TRS is entered into. This margin allows the annualised performance to exceed the benchmark, in order to meet the fund’s management objective.
+The Fund enters into these Total Return Swaps on its entire securities portfolio, with the possible exception of the portion invested in money market
+UCITS. As a result, the volatility of the investment portfolio (including the TRS) is in line with the volatility of overnight rates. No unhedged exposure
+to instruments with a maturity of more than 1 month is permitted. Given this strategy, the sub-fund aims to neutralise both the exposure to portfolio
+securities and the currency risk between these assets and the currency of each share class, through an overall hedge using Total Return Swap
+contracts. In the event of a counterparty default, the Fund could be exposed to the risk of the portfolio securities and/or to residual currency risk.
+Please note that the currency risk between the share class currency and any other currency is not hedged.
+The €STR benchmark (Euro Short Term Rate) expresses the overnight rate of the euro money market. It is calculated by the European Central Bank.
+The index is used ex post as a performance comparison indicator. The management strategy is discretionary and is not constrained by the index.
+Income allocation: Accumulation.
+Target investors: The Product is aimed at any type of investor wishing to invest short-term cash. Capital is not guaranteed for investors, who must
+be able to bear losses equal to the amount of their investment in the Product. The Product is not marketed to U.S. investors falling within the definition
+of "U.S. Persons" as summarised in the Product’s prospectus.
+Subscription and redemption operations: Subscription requests, expressed as an amount, and redemption requests, expressed in number of shares
+or as an amount, are centralised by Spiko Finance by 3:00 p.m. (Paris time) at the latest. These requests are executed on the basis of the net asset
+value established on the day of their centralisation. Subscriptions and redemptions relate to shares to be registered in the holder’s name on the DLT
+registers offered. Centralisation of orders received after 3:00 p.m. (Paris time) is postponed to the following business day. The net asset value is
+calculated on each day on which at least one of the two financial centres, Paris or New York, is open for a full trading session. At the investor’s option,
+settlement of subscriptions and redemptions may be made by bank transfer or by transfer of electronic money tokens denominated in the currency
+of the relevant share class. Investors wishing to use this settlement method should refer to the Product’s prospectus, which describes the
+arrangements and risks involved.
+Other information: Further information about the Product can be obtained on written request from Twenty First Capital, 39, avenue Pierre 1er de
+Serbie, 75008 Paris, France. Further details can be found in the Product’s prospectus or on the website www.twentyfirstcapital.com. The share price
+and, where applicable, information on other share classes, details of the net asset value, performance scenarios and past performance of the Product
+are available on the website www.twentyfirstcapital.com.
+Depositary: CACEIS Bank
+
+
+
+
+                                                                       Page 1 of 3
+What are the risks and what could I get in return?
+
+ RISK INDICATOR                                                                                       The summary risk indicator assumes that you hold
+                                                                                                      the Product until the end of the recommended
+      1          2          3          4         5          6          7                              holding period (3 months). The actual risk can be
+                                                                                                      very different if you exit before maturity, and you
+                                                                                                      may get back less.
+   Lower risk                                                   Higher risk
+
+The summary risk indicator is a guide to the level of risk of this Product compared to other products. It shows how likely it is that the Product will lose
+money because of movements in the markets or because we are not able to pay you.
+We have classified this Product as 1 out of 7, which is the lowest risk class. In other words, the potential losses from the Product’s future performance
+are rated as very low, and if market conditions were to deteriorate, it is very unlikely that our capacity to pay you would be affected.
+Material risk(s) for the Product not taken into account in this indicator:
+Counterparty risk: The fund uses temporary purchase and sale operations of securities and/or OTC derivatives, including Total Return Swap contracts.
+These operations, concluded with a counterparty, expose the fund to the risk of default and/or non-performance of the swap contract by the
+counterparty, which may have a material impact on the fund’s net asset value. This risk may not, where applicable, be offset by the financial collateral
+received.
+Additional risks: In the event of default and/or non-performance of the Total Return Swap contract by a derivative counterparty, market liquidity risk
+may amplify variations in the product’s performance.
+Risks related to the settlement of subscriptions and redemptions in electronic money tokens and to the holding of electronic money tokens by the
+Product: investors are invited to refer to the risk section of the prospectus, which sets out the risks related to electronic money tokens.
+The use of complex products such as derivatives can amplify movements in the value of securities in your portfolio. As this Product does not provide
+protection against market fluctuations, you could lose all or part of your investment.
+In addition to the risks included in the risk indicator, other risks may affect the performance of the Fund. Please refer to the prospectus of SPIKO
+AMUNDI OVERNIGHT SWAP FUND.
+
+PERFORMANCE SCENARIOS
+The figures shown include all costs of the Product itself, but not necessarily all the costs payable to your advisor or distributor. These figures do not
+take into account your personal tax situation, which may also affect the amounts you receive.
+What you will get from this Product depends on future market performance. Future market developments are uncertain and cannot be predicted
+accurately.
+The unfavourable, moderate and favourable scenarios shown are illustrations using the worst, best and average performance of the Product and/or
+an appropriate benchmark over the last 10 years. Markets could develop very differently in the future. The stress scenario shows what you might get
+back in extreme market situations.
+
+                                                        Recommended holding period: 3 months
+                                                                 Investment: EUR 10,000
+
+ Scenarios                                                                                                                   If you exit after 3 months
+
+ Minimum                         There is no minimum guaranteed return. You could lose all or part of your investment.
+
+                                 What you might get back after costs                                                                 EUR 9,980
+ Stress scenario
+                                 Average quarterly return                                                                             - 0.20%
+
+                                 What you might get back after costs                                                                 EUR 9,990
+ Unfavourable scenario
+                                 Average quarterly return                                                                             - 0.10%
+
+                                 What you might get back after costs                                                                 EUR 9,990
+ Moderate scenario
+                                 Average quarterly return                                                                             - 0.10%
+
+                                 What you might get back after costs                                                                 EUR 10,100
+ Favourable scenario
+                                 Average quarterly return                                                                             + 1.00%
+
+This table shows the amounts you could get back over the recommended holding period of 3 months under different scenarios, assuming you invest
+EUR 10,000.
+Unfavourable scenario: this type of scenario occurred for an investment between 02/2022 and 05/2022.
+Moderate scenario: this type of scenario occurred for an investment between 03/2017 and 06/2017.
+Favourable scenario: this type of scenario occurred for an investment between 02/2024 and 05/2024.
+
+What happens if TWENTY FIRST CAPITAL is unable to pay out?
+The Product is a co-ownership of financial instruments and deposits separate from the portfolio management company. In the event of the latter’s
+default, the Product’s assets held by the depositary will not be affected. In the event of the depositary’s default, the risk of financial loss for the Product
+is mitigated by the legal segregation of the depositary’s assets from those of the Product.
+
+
+
+
+                                                                           Page 2 of 3
+What are the costs?
+The person selling you this Product or advising you on it may charge you additional costs. If so, that person will inform you about these costs and
+show you the impact of all costs on your investment over time.
+
+COSTS OVER TIME:
+The tables show the amounts taken from your investment to cover the different types of costs. These amounts depend on how much you invest and
+how long you hold the Product. The amounts shown here are illustrations based on a sample investment amount and different possible investment
+periods. We have assumed:
+     ●    that you would get back the amount you invested (0% annual return).
+     ●    EUR 10,000 is invested.
+
+                                                                                                                        If you exit after 3 months
+
+ Total costs                                                                                                                     EUR 6
+
+ Cost impact*                                                                                                                     0.1%
+
+(*) This illustrates the effects of costs over a holding period of less than one year. This percentage cannot be directly compared to the cost impact
+figures provided for other PRIIPs. We may share costs with the person selling the Product to cover the services they provide. Where applicable, that
+person will inform you of the amount.
+
+COMPOSITION OF COSTS:
+ One-off costs upon entry or exit                                                                                        If you exit after 3 months
+
+ Entry costs                              No entry cost applies to this Product.                                                  EUR 0
+
+ Exit costs                               No exit cost applies to this Product.                                                   EUR 0
+
+ Ongoing costs                                                                                                           If you exit after 3 months
+
+ Management fees and other                0.06% of the value of your investment. This is an estimate based on
+                                                                                                                                  EUR 6
+ administrative or operating costs        actual costs since the Product was launched.
+
+ Transaction costs                        No transaction costs for this Product.                                                  EUR 0
+
+ Incidental costs taken under specific conditions                                                                        If you exit after 3 months
+
+ Performance fees                         No performance fee applies to this Product.                                             EUR 0
+
+The table above shows the impact of the different types of costs on the return you could obtain from your investment at the end of the recommended
+holding period of 3 months, and the meaning of the different cost categories.
+
+How long should I hold it and can I take money out early?
+Recommended holding period: 3 months
+This Product is designed for short-term investments; you should be prepared to hold your investment in the Product for at least 3 months.
+Subscription requests, expressed as an amount, and redemption requests, expressed in number of shares, are centralised by Spiko Finance by 3:00
+p.m. (Paris time) at the latest. These requests are executed on the basis of the net asset value established on the day of their centralisation.
+Subscriptions and redemptions relate to shares to be registered in the holder’s name on the DLT registers offered. Centralisation of orders received
+after 3:00 p.m. (Paris time) is postponed to the following business day. The net asset value is calculated on each day on which at least one of the two
+financial centres, Paris or New York, is open for a full trading session. A redemption capping mechanism (known as "Gates") may be applied by the
+management company. The operating procedures are described in the Prospectus.
+
+How can I complain?
+Shareholders may file complaints free of charge with the Management Company in an official language of their country of origin. Unitholders may
+access the complaint handling procedure on request at the registered office of the Management Company and on the Management Company’s
+website at www.twentyfirstcapital.com.
+
+Other relevant information
+Performance scenarios: You can find the latest performance scenarios, updated monthly, on the website www.twentyfirstcapital.com.
+Past performance: The data are insufficient to provide retail investors with a useful indication of past performance.
+This key information document is updated at least annually.
+
+
+
+
+                                                                     Page 3 of 3
+

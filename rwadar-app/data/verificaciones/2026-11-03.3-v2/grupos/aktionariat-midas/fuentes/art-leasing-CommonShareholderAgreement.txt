@@ -1,0 +1,296 @@
+    SHA COMMON SHAREHOLDER AGREEMENT
+    V0.3 18/08/2022
+    GENERAL INFORMATION
+Preamble              ART LEASING & INVEST AG, Zürich, Switzerland, CHE-112.510.455 (the "Issuer") has
+                      issued its shares in two forms: As unregistered rights ("Ordinary Shares") and as
+                      registered rights ("Share Tokens", together with the Ordinary Shares the "Shares", and
+                      their holders the "Shareholders").
+
+                      This shareholder agreement is common to all Shareholders, i.e., it applies to holders of
+                      Share Tokens and holders of Ordinary Shares (the “Common SHA”) serves the main
+                      purpose of
+
+                          -   granting all Shareholders a tag-along right;
+                          -   imposing a drag-along obligation on the Parties of this Token SHA; and
+                          -   describing the automatic enforcement of the drag-along obligations of Share
+                              Token holders subject to this Common SHA (the "Token Holders").
+                      To enable the enforced transfer of Share Tokens, the Share Tokens are locked in a smart
+                      contract on the Ethereum blockchain (the "SHA Smart Contract") and for each locked
+                      Share Token, a placeholder token (the "SHA Token") is generated.
+
+Website               The latest version of this Common SHA can be found on the Issuer’s investor relations
+                      page (the "Website")
+
+Share Token           Share Tokens are issued under the registration agreement as available on the Website
+                      (the "Registration Agreement") and registered in the respective smart contract ("Share
+                      Token Smart Contract")
+
+SHA Token             The ‘draggable’ SHA Token of the Issuer is called ART SHA and registered in smart
+                      contract    0xFD04E85EBBA564aF3052743A88374405D1e8a8E7          ("SHA      Smart
+                      Contract").
+
+                      The source code of the Smart Contract determines its functionality. It can be found on
+                      Etherscan under:
+
+                      https://etherscan.io/address/0xFD04E85EBBA564aF3052743A88374405D1e8a8E7
+
+Voting Period         60 calendar days starting with the initiation of an offer
+
+Execution period      30 calendar days after the end of a Voting Period
+
+Key         Decision 51 (required for the decision on the drag-along, changes to this Agreement or changes to
+Quorum               the SHA Smart Contract)
+
+
+
+
+                                                Common SHA                                    Page 1 of 6
+IMPORTANT NOTICE TO TOKEN HOLDERS
+THE SHA SMART CONTRACT MAY BE USED BY MAJORITY SHAREHOLDERS OR A MAJORITY
+OF SHA TOKEN HOLDERS TO ENFORCE A TRANSFER OF THE SHARE TOKENS FOR A PRICE
+THAT IS BELOW THE FAIR MARKET VALUE OF THE SHARE TOKENS, OR TO AMEND OR
+OTHERWISE TERMINATE THE SHA SMART CONTRACT AND THIS COMMON SHA. THE SHA
+SMART CONTRACT WILL EXECUTE SUCH TRANSACTIONS OF THE SHARE TOKENS
+REGARDLESS OF WHETHER THEY ARE IN COMPLIANCE WITH ANY APPLICABLE LAW, THIS
+COMMON SHA OR ANY OTHER LEGAL OBLIGATIONS AND/OR RESTRICTIONS THAT MAY
+APPLY, AND SUCH TRANSACTION IS IRREVERSIBLE. NEITHER THE ISSUER NOR THE
+ORACLE HAVE THE TECHNICAL MEANS TO ENSURE COMPLIANCE WITH THIS COMMON SHA
+AND ARE, TO THE MAXIMUM EXTENT PERMISSIBLE UNDER APPLICABLE LAW, NOT LIABLE
+FOR ANY DAMAGES AND/OR LOSSES BY TOKEN HOLDERS OUT OF OR IN CONNECTION
+WITH THE SHA TOKENS.
+In addition, please take note on the Risk Factors of Share Tokens as set out in the Registration
+Agreement.
+
+1     SCOPE
+1.1    PARTIES
+Holders of Ordinary Shares (“Ordinary Shareholders”) and the Company may become a Party to this
+Common SHA by signing an accession declaration. The number of Ordinary Shareholders and the
+number of Shares they hold in total is published on the Website.
+Token Holders accept the terms of this Common SHA by wrapping their Share Tokens in the
+respective smart contract or by otherwise directly or indirectly obtaining ownership of SHA Tokens.
+The Issuer, or a notary appointed by the Issuer, is a Party to this Agreement to the extent it is obliged
+to notify other Parties or it acts as an oracle for calling certain functions of the SHA Smart Contract
+(the "Oracle").
+Each Shareholder, the Issuer and the Oracle are each a "Party" and together the "Parties".
+1.2    RELATION TO SHARE TOKENS AND REGISTRATION AGREEMENT
+The terms and technical features governing the Share Tokens as available on the Website (the
+"Registration Agreement") relating to the transfer of Share Tokens, shareholder registration (incl.
+statutory transfer restrictions, if any), burning, establishment of securities, loss of tokens and hard fork
+apply to the SHA Tokens mutatis mutandis (Sections 5 ss. of the Registration Agreement).
+Token Holders can only transfer ownership of Share Tokens indirectly by transferring SHA Tokens. It
+is not possible to 'unwrap' the SHA Tokens or to terminate this Common SHA except as set out in
+section 4 and 5.
+1.3    RELATION TO THE SHA SMART CONTRACT
+In case of inconsistencies between the natural language of this Common SHA and the source code of
+the SHA Smart Contract, the source code shall prevail. Neither the Issuer nor the Oracle nor any
+other person can prevent the execution of the SHA Smart Contract as per the source code or amend
+the SHA Smart Contract, except in line with the amendment procedure outlined under section 5.
+1.4    OPEN TRADING & GENERAL UNDERTAKINGS
+The Issuer may decide to offer Share Tokens for public sale and repurchase by the Issuer to create a
+
+
+
+                                              Common SHA                                       Page 2 of 6
+public market for the Shares (&quot;Open Trading&quot;). The Issuer conducts the Open Trading in a
+transparent manner, with Shareholders having the possibility to be immediately notified about every
+trade if they wish to do so. Such notifications must include the number of shares traded, their price,
+and the point in time the trade happened. The Issuer is under no obligation to offer or repurchase the
+Share Tokens and may stop the Open Trading at any time or limit the Open Trading to selling or
+buying only.
+
+All Shareholders agree to take all actions reasonably required to enable the Open Trading and/or
+increase the number available Share Tokens in the Open Trading if Share Tokens have sold out,
+such as amendments to the Articles and other acts as reasonably deemed necessary by the Issuer.
+Further, all Shareholders waive any subscription rights regarding the sale, and any rights regarding
+the equal treatment of Shareholders regarding the repurchase, of Share Tokens within the Open
+Trading.
+
+2     TAG-ALONG (CO-SALE RIGHT)
+2.1    GRANT AND NOTIFICATION
+Each Party hereby grants to all other Shareholders the right to co-sell all (but not less than all) Shares
+held by such other Shareholder together with the selling Party to the proposed acquirer in accordance
+with the terms and conditions set forth in this Section 2 ("Tag-Along Right") provided that after such
+transfer, the proposed acquirer would directly, indirectly or acting in concert with third parties control
+more than 50 of all Shares outstanding ("Tag-Along Event").
+The selling Party shall notify the other Shareholders of any Tag-Along Event in accordance with
+Section 6 ("Tag-Along Notice").
+2.2    TERMS OF TAG-ALONG
+The terms of the Tag-Along Right shall be the same consideration per Share and otherwise the same
+terms and conditions as applicable to the selling Party.
+2.3    EXERCISE
+Each Shareholder wishing to exercise its Tag-Along Right with respect to all Shares held by such
+Shareholder shall so notify the selling Party in accordance with Section 6 within an exercise period of
+30 days from receipt of the Tag-Along Notice ("Tag-Along Exercise Notice"). If no Tag-Along
+Exercise Notice is submitted until the expiry of the exercise period, the Tag-Along Right of that
+Shareholder shall be deemed to have been forfeited (verwirkt; périmé) with respect to this Tag-Along
+Event. If the proposed acquirer refuses to accept the purchase of the Shares from the Shareholders
+exercising their Tag-Along Right, the selling Party shall be prohibited from transferring the Shares to
+the proposed acquirer.
+2.4    TRANSFER TO PROPOSED ACQUIRER
+Subject to the exercise of a right of first refusal (if any) or the Tag-Along Right, the selling Party shall
+be free to transfer the relevant Shares to the proposed acquirer on the terms disclosed to the other
+Shareholders in the Tag-Along Notice within a period of six months starting after the expiry of the
+30-day exercise period for the Tag-Along Right. Thereafter, the procedure pursuant to this Section 2
+shall be repeated prior to any such transfer.
+
+3     DRAG-ALONG (CO-SALE OBLIGATION)
+3.1    GRANT
+In the event a Shareholder (or a group of Shareholder(s)) solely or jointly holding more than the Key
+Decision Quorum wish(es) to transfer all its (their) shares in one or a series of related transactions to
+a proposed acquirer (including another Shareholder), who wishes to acquire all (but not less than all)
+Shares in the Issuer, pursuant to a bona fide purchase offer ("Drag-Along Event"), such
+
+
+                                              Common SHA                                       Page 3 of 6
+Shareholder(s) (the "Relevant Selling Shareholder(s)") shall be entitled to require that all other
+Parties co-sell all their Shares ("Drag-Along Obligation") to the proposed acquirer (the "Proposed
+Acquirer"). If not all Shareholders are subject to this or an equivalent drag-along obligation, the
+Drag-Along Obligation shall still apply to the Parties to this Common SHA.
+3.2     NOTIFICATION
+In case of a Drag-Along Event, the Relevant Selling Shareholders shall notify the Parties in
+accordance with Section 6 ("Drag-Along Notice"). The Drag-Along Notice shall be accompanied by
+copies of all documents evidencing the key terms and conditions (including as to the consideration) of
+the proposed sale and transfer of all shares to the Proposed Acquirer.
+For the avoidance of doubt and notwithstanding anything to the contrary contained herein, a right of
+first refusal applicable to a Party, if any, and the Tag-Along Right (Section 2) shall not apply in case of
+a Drag-Along Event.
+3.3     TERMS OF DRAG-ALONG
+The terms and conditions applicable for the transfer of all Shares to the Proposed Acquirer (the
+"Drag-Along Offer") shall be in accordance with the terms of the underlying agreement between the
+Relevant Selling Shareholder(s) and the acquirer, provided, however, that these shall include the
+following terms:
+      a) For each Share, the purchase price shall be the same and all considerations for the Shares
+         shall be paid on the same date and in cash.
+      b) Each Token Holder's liability as well as representations and warranties shall, to the extent
+         legally permissible, be excluded.
+3.4     AUTOMATED EXECUTION FOR SHARE TOKENS
+3.4.1    Initiation
+In order to initiate the acquisition of all Share Tokens, the Proposed Acquirer is required to call the
+respective function in the SHA Smart Contract, which is subject to a non-reimbursable software
+license fee payable to the licensor as defined in the source code.
+By doing so, a separate smart contract governing the acquisition ("Offer Contract") is created and an
+'OfferCreated' event is emitted on the Blockchain. It is the responsibility of each Token Holder to
+monitor the Blockchain for such events or to use a service to do so on her or his behalf.
+3.4.2    Voting
+After the initiation of an offer, the Voting Period starts. During the Voting Period, any Token Holder
+may call the functions 'voteYes' and 'voteNo' to vote on the Drag-Along Offer. Ordinary Shareholders
+may vote by either (i) turning their Ordinary Shares into Share Tokens, locking these in the SHA Smart
+Contract and then voting, or (ii) reporting their vote to the Oracle which shall report such votes to the
+Offer Contract within 96 hours, subject to reimbursement of the transaction fees for voting. The
+Oracle, but not the Token Holders, can technically report votes to the Offer Contract even after the
+end of the Voting Period, but shall only do so forvotes received before the end of the Voting Period.
+During the voting period, the decision quorum can only be reached by reaching the relevant
+percentage of “yes” votes relative to all Shares. After the end of the Voting Period, it suffices to reach
+the relevant percentage of “yes” votes relative to those shares who cast a vote.
+SHA Token holders can change their vote at any time during the Voting Period and the vote counts
+are automatically updated in case SHA Tokens are transferred to addresses for which a different vote
+was recorded.
+3.4.3    Execution
+After the Voting Period, the Execution Period starts.
+
+
+
+                                             Common SHA                                       Page 4 of 6
+Subject to (i) the votes reaching the Key Decision Quorum and (ii) the availability of funds for the
+Drag-Along Offer for Share Tokens being available in the Offer Contract, anyone can trigger the
+'execution' function on the Offer Contract during the Voting Period or the Execution Period.
+The execution function enforces the Drag-Along Offer by transferring all Share Tokens to the
+Proposed Acquirer and replacing the Share Tokens with the respective price per Share Token as per
+the Drag-Along Offer. SHA Tokens can then be used to unwrap the proceeds from the SHA Smart
+Contract.
+After the execution, the SHA Token no longer represent Share Tokens.
+3.4.4       Cancellation
+The Proposed Acquirer can cancel the offer at any time by calling the respective function on the Offer
+Contract.
+Anyone can cancel the Drag-Along Offer by calling the respective function on the Offer Contract if
+either (i) the Proposed Acquirer did not make enough funds available in the Offer Contract, or (ii) the
+Execution Period has passed, or (iii) the Key Decision Quorum has become unreachable under the
+assumption that the number of 'no' votes will not decrease, or (iv) a higher counteroffer using the
+same acquisition currency as the current offer is made.
+3.5        EXECUTION FOR ORDINARY SHARES
+The Ordinary Shareholders shall execute the transfer to the Proposed Acquirer within 20 days after
+the successful triggering of the 'execution' function.
+
+4         TERM & TERMINATION
+This Common SHA is valid for an initial fixed term until the tenth anniversary after the date hereof.
+Thereafter, this Common SHA shall continue to be in effect for successive periods of five years unless
+terminated by any Party upon twelve months' prior notice to all other Parties upon completion of the
+initial fixed term or any end of a successive period. Any termination by a Party shall only be effective
+with respect to the respective Party, and shall be without prejudice to the continued binding effect of
+this Common SHA for all other Parties.
+In case of termination of this Common SHA by any Party, the other Parties have the option to
+purchase the Shares of the terminating Shareholder during the entire notice period at fair market
+value. If any of the other Parties disagree with the fair market value, they may request its binding and
+final determination for all other Parties by an experienced international accounting firm appointed by
+the Issuer.
+In case the purchase option is not exercised, the terminating Party is free to burn their tokens and
+demand a replacement that is not bound to this Agreement from the Issuer.
+This Common SHA terminates for a specific Party upon such Party ceasing to be a Shareholder,
+whereas such cessation and release is without prejudice to any accrued rights and obligations of the
+relevant Party at the time of such cessation and release.
+
+5         AMENDMENTS
+All Parties acknowledge and agree that:
+      -     Parties together reaching the Key Decision Quorum of Shares bound to this Common SHA
+            can amend or terminate the SHA Smart Contract by migrating to a new smart contract; and
+      -     Parties together reaching the Key Decision Quorum of Shares bound to this Common SHA
+            have the right to amend or terminate this Common SHA,
+provided, however, that the initiating Party shall notify the other Parties as set out in Section 6 about
+the amendment or termination including its terms and proposed consummation, and, in case of a
+
+
+
+                                             Common SHA                                     Page 5 of 6
+Material Change (as defined below), with the notice offer all other Parties to purchase their SHA
+Tokens at fair market value within a period of 30 calendar days from publication. If any of the other
+Parties disagree with the fair market value, they may request its binding and final determination for all
+other Parties by an experienced international accounting firm appointed by the Issuer.
+A 'Material Change' means any amendment of any of the provisions of the SHA Smart Contract
+and/or this Common SHA that affects any accrued rights of any other Parties or impose any greater
+liability or any more onerous obligation than in the current version. Any amendments in view of a
+potential initial public offering (IPO) of the Company, including the replacement of the Share Tokens
+with shares of a new holding company and customary lock-up periods, shall not constitute a Material
+Change.
+In case of a termination or migration to a new contract, the current SHA Smart Contract and this
+Common SHA cease to be binding and all Token Holders are free to unwrap their Share Tokens. In
+such an event, the SHA Smart Contract is programmed to change its name to reflect that it no longer
+reflects a shareholders' agreement. For the avoidance of doubt, unwrapping the SHA Token after a
+successful migration does not necessarily yield the originally wrapped Share Token, but could
+potentially also result in a new version of an SHA token bound to an updated version of this Common
+SHA and/or a new Share Token.
+
+6     NOTIFICATIONS
+To send out the notifications as required under this Common SHA, the notifying Party shall inform the
+Issuer, and the Issuer shall distribute the notification to all Parties by email in accordance with their
+entry in the shareholder registry (except to those that have opted out of notifications) as well as by
+making a respective blockchain-based announcement.
+All Parties agree with their data from the shareholder registry being used by the Issuer for the purpose
+of notifying them about matters concerning this Common SHA as well as for the purpose of forwarding
+messages between the Parties of this agreement.
+
+7     GENERAL PROVISIONS
+7.1    LIMITATION OF LIABILITY
+Unless explicitly stated otherwise and except in cases where such exclusion is not permitted under
+applicable law (such as in cases of willful misconduct and gross negligence, or for incorrect or
+misleading statements relating to the content and functionality of the Share Tokens), all
+representations and warranties with regard to the SHA Tokens, SHA Smart Contract, the Oracle and
+the Blockchain and any liability by the Issuer and the Oracle, or any person acting on behalf of the
+Issuer and the Oracle with regard thereto, are herewith excluded.
+7.2    SEVERABILITY / GOOD FAITH
+Should any part or provision of this Common SHA be held to be invalid by any competent court,
+governmental or administrative authority having jurisdiction, the other provisions of this Common SHA
+shall nonetheless remain valid. In this case, the Issuer shall dictate a substitute provision that best
+reflects the economic intentions without being unenforceable and shall execute all agreements and
+documents required in this connection. The same shall apply if and to the extent that this Common
+SHA is found to contain any gaps or omissions.
+7.3    GOVERNING LAW AND JURISDICTION
+This Common SHA shall be governed by and construed in accordance with the substantive laws of
+Switzerland. All disputes arising out of or in connection with the present Common SHA, including
+disputes on its conclusion, binding effect, amendment and termination, shall be resolved by the
+ordinary courts at the seat of the Issuer.
+
+
+
+
+                                             Common SHA                                     Page 6 of 6
+

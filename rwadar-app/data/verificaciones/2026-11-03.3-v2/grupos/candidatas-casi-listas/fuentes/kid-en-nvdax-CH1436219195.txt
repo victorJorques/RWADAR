@@ -1,0 +1,166 @@
+KEY INFORMATION DOCUMENT
+
+Purpose
+This document provides you with key information about this investment product. It is not marketing material. The information is required by law to help you understand the
+nature, risks, costs, potential gains and losses of this product and to help you compare it with other products.
+
+
+
+
+PRODUCT
+
+NVIDIA xStock (Ticker: NVDAx)
+ISIN: CH1436219195
+Product Manufacturer:
+Backed Assets (JE) Limited (the “Issuerˮ), website: www.backedassets.fi. Call +41 41 541 16 09 for more information. The issuer is not domiciled in the European
+Union (EU) and is not regulated by any competent EU authority. The Securities Note has been approved by the Financial Market Authority Liechtenstein (FMA)
+as of 08 May 2026. Such approval should not be considered as an endorsement of the issuer or the quality of the securities that is/are the subject of this
+Securities Note.
+
+                                                         This document is dated 02 Nov 2026
+                             You are about to purchase a product that is not simple and may be difficult to understand.
+WHAT IS THIS PRODUCT?
+
+                          Open-ended Tracker Certificate in the form of Ledger-Based Securities ("Registerwertrechte") according to Art. 973d et seqq. Swiss
+Type
+                          Code of Obligations ("CO") under Swiss law.
+
+                          This product has no fixed maturity. However, it may be redeemed by the investor or terminated by the Issuer. In case of a termination
+Term                      by the Issuer, the Issuer will notify the investors of the termination at the earliest possible date, in any event no later than 30 business
+                          days prior to the termination date.
+
+                          The product is a Tracker Certificate issued as a token on supported blockchain networks. It tracks the price of NVIDIA Corporation (the
+Objectives                "Underlying"). The investment objective of the Underlying is to deliver the price return of the NVIDIA Corporation equity shares. NVDAx
+                          is designed to give eligible investors regulatory-compliant access to the stock price of NVIDIA Corporation.
+
+                            UNDERLYING INFORMATION
+                            Issuer                NVIDIA Corporation
+                            Name                  NVIDIA Corporation
+                            ISIN                  US67066G1040
+                           Ticker                NVDA UQ Equity
+                          The product is denominated in US Dollars. The Underlying base currency is US Dollar.
+                          The tokens are freely transferable across wallets, are fully collateralized by the underlying asset, and are issued in compliance with the
+                          Swiss DLT act.
+                            SERVICE PROVIDERS
+                            Tokenizer             Backed Finance AG
+                            Broker                Alpaca Securities LLC, InCore Bank AG, Maerki Baumann & Co. AG
+                            Custody               Alpaca Securities LLC, InCore Bank AG, Maerki Baumann & Co. AG
+                            Security Agent        Security Agent Services AG
+                          The Issuer intends to admit the Product to trading at Payward Digital Solutions Ltd., Bermuda ("Kraken Bermuda"), licensed to conduct
+                          digital asset business and operate a digital asset exchange. Further, the Issuer will issue and redeem Products on request of Kraken
+                          Bermuda and other European and non-European intermediaries acting as Authorized Participants.
+
+
+INTENDED RETAIL INVESTOR
+This product is intended for retail investors who:
+      are primarily looking for capital growth and are expecting the Underlying to perform in a way that generates a favorable return
+      are willing and able to bear a total loss of their investment
+      are willing to accept the second-highest risk level, compatible with the summary risk indicator shown below
+      have the ability to make an informed investment decision through sufficient knowledge and understanding of the product and its specific risks and
+      rewards, potentially resulting from experience of investing in and/or holding a number of similar products providing a similar market exposure or relevant
+      training activities
+      have a minimum investment horizon of the recommended holding period specified below.
+
+WHAT ARE THE RISKS AND WHAT COULD I GET IN RETURN?
+
+RISK INDICATOR
+                                                                    The summary risk indicator is a guide to the level of risk of this product compared to other
+    1        2       3        4       5        6        7           products. It shows how likely it is that the product will lose money because of movements in
+                                                                    the markets or because we are not able to pay you.
+ LOWER RISK                                        HIGHER RISK      We have classified this product as 6 out of 7, which is the second-highest risk class. This rates
+                                                                    the potential losses from future performance at a high level, and poor market conditions will
+                                                                    likely impact the capacity of Backed Assets (JE) to pay you.
+             The Risk Indicator assumes you keep the product        This product does not include any protection from future market performance so you could
+      !      for the recommended holding period of 5 years.
+                                                                    incur significant losses. If we are not able to pay you what is owed, you could incur significant
+                                                                    losses.
+
+
+
+
+Performance scenarios
+What you will get from this product depends on future market performance. Market developments in the future are uncertain and cannot be accurately
+predicted.
+The scenarios shown are illustrations based on results from the past and on certain assumptions. Markets could develop very differently in the future.
+Recommended Holding Period:                                                       5 years
+Example Investment:                                                               USD 10,000.00
+Scenarios                                                                                                   If you exit after 1     If you exit at the
+                                                                                                            year                    Recommended Holding Period
+Minimum             There is no minimum guaranteed return. You could lose part or all of your investment.
+Stress              What you might get back after costs                                                     475.00 USD              6.00 USD
+                    Average return each year                                                                -95.17 %                -77.47 %
+Unfavourable        What you might get back after costs                                                     4,865.00 USD            9,377.00 USD
+                    Average return each year                                                                -51.16 %                -1.28 %
+Moderate            What you might get back after costs                                                     15,939.00 USD           132,018.00 USD
+                    Average return each year                                                                58.98 %                 67.40 %
+Favourable          What you might get back after costs                                                     35,976.00 USD           322,958.00 USD
+                     Average return each year                                                                 257.26 %                100.14 %
+The scenarios illustrate how your investment could perform. They present an estimate of future performance based on evidence from the past and are not an
+exact indicator. The real performance will vary depending on how the market performs and how long you keep the investment/product. The figures shown
+include all the costs of the product itself, but may not include all the costs that you pay to your advisor or distributor. The figures do not take into account your
+personal tax situation, which may also affect how much you get back. The stress scenario shows what you might get back in extreme market circumstances.
+Unfavourable scenario: This type of scenario occurred for an investment between 29/10/2025 and 02/11/2026.
+Moderate scenario: This type of scenario occurred for an investment between 30/11/2020 and 28/11/2025.
+Favourable scenario: This type of scenario occurred for an investment between 31/05/2019 and 31/05/2024.
+This product cannot be easily ended. This means it is difficult to estimate how much you would get back if the contract is ended before the Recommended
+Holding Period. You will either be unable to end early or you will have to pay high costs or lose up to 100% of the investment if you do so.
+* The calculation is based on the notional of the contract (in this example USD 10,000.00).
+WHAT HAPPENS IF BACKED ASSETS (JE) IS UNABLE TO PAY OUT?
+
+The product is collateralized through the purchase of the Underlyings. When an investor buys the product, the Issuer uses the proceeds, minus the costs, to
+finance the purchase of Underlyings. The value of the collateral at any point in time must correspond to the value of the product at that time, calculated
+accordingly by the Issuer. The investors have a primary claim to the collateral allocated to the specific product.
+In addition, the investors have a subordinated claim to the assets of the Issuer after all primary claims have been settled. The product is neither insured nor
+guaranteed by any government or agency.
+WHAT ARE THE COSTS?
+
+The person advising on or selling you this product may charge you other costs. If so, this person will provide you with information about these costs and how
+they affect your investment.
+COSTS OVER TIME
+
+The tables show the amounts that are taken from your investment to cover different types of costs. These amounts depend on how much you invest and how
+long you hold the product. The amounts shown here are illustrations based on an example investment amount and different possible investment periods.
+We have assumed:
+      •    In the first year you would get back the amount that you invested (0 % annual return). For the other holding periods we have assumed the product
+           performs as shown in the moderate scenario.
+      •    USD 10,000.00 is invested.
+                                                                                                                            If you exit at the Recommended
+                                                                                                                            Holding Period
+Total costs                                                                                                                 100.00 USD
+Annual cost impact (*)                                                                                                        0.1803 % each year
+(*) This illustrates how costs reduce your return each year over the holding period. For example it shows that if you exit at the recommended holding period
+your average return per year is projected to be 67.58 % before costs and 67.40 % after costs.
+COMPOSITION OF COSTS
+
+One-off costs upon entry or exit                                                                                            If you exit after 1 year
+Entry costs                              Up to 0.50 % of the amount you pay when entering this investment.                  50.00 USD
+Exit costs                               Up to 0.50 % of your investment value at exit before it is paid out to you.        50.00 USD
+Ongoing costs
+Management fees and other                The tracker charges no management fee at present. A fee of up to 0.25% per
+                                                                                                                            0.00 USD
+administrative or operating costs        annum may be introduced in the future.
+Transaction costs                        There is no transaction cost for this product.                                     0.00 USD
+Incidental costs taken under specific conditions
+Performance fees                         There is no performance fee for this product.                                      0.00 USD
+
+Additional fees or charges may be applied by intermediaries or authorized participants involved in the distribution, trading, or secondary market operations of
+this product. These costs are not imposed by the product issuer and may vary depending on the intermediary or platform used.
+HOW LONG SHOULD I HOLD IT AND CAN I TAKE MONEY OUT EARLY?
+
+                                                   Recommended Holding Period: 5 years
+The average investor holds this kind of product for about 5 years on average. Furthermore, this period enhances the comparability with other investment
+products without a fixed lifetime.
+You may place a redemption order for product with the issuer, or any party acting on behalf of the Issuer, at any time. The redemption may be settled in cash
+or, in sole discretion of the Issuer, in kind. You may also sell the product in the secondary market to third-parties.
+HOW CAN I COMPLAIN?
+
+Any complaint regarding the person advising on, or selling, the product can be submitted directly to that person via the relevant website. Any complaint
+regarding the product, this document or the conduct of the Issuer of this product can be submitted in text form (e.g. by letter or email) to Backed Assets (JE)
+Limited First Floor, La Chasse Chambers, Ten La Chasse, St. Helier, Jersey, JE2 4UE, email: contact@backedassets.fi, website: https://backedassets.fi/contact.
+OTHER RELEVANT INFORMATION
+
+The prospectus and its supplements, final terms and factsheets are available on the Issuerʼs website at:
+https://www.backedassets.fi/legal-documentation
+Further information about the Underlying, including past performance, holdings and more is available at:
+https://investor.nvidia.com/financial-info/financial-reports/
+

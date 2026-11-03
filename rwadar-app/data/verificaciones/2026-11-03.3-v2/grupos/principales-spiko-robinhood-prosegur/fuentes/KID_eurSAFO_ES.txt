@@ -1,0 +1,178 @@
+DOCUMENTO DE DATOS FUNDAMENTALES
+Objetivo
+Este documento le proporciona información fundamental sobre este producto de inversión. No se trata de material comercial. La ley exige esta información
+para ayudarle a comprender la naturaleza, los riesgos, los costes y las ganancias y pérdidas potenciales de este producto y para ayudarle a compararlo con
+otros productos.
+Producto
+
+             SPIKO AMUNDI OVERNIGHT SWAP FUND – participación EUR
+Productor de este producto: TWENTY FIRST CAPITAL. LEI: 969500WSBA6KS8V1OR80.
+ISIN: FR0014015LD3
+Para más información, consulte el sitio www.twentyfirstcapital.com o llame al: + 33 (0)1 70 37 80 83.
+La Autorité des marchés financiers (AMF) es responsable de la supervisión de TWENTY FIRST CAPITAL en relación con este Documento de Datos
+Fundamentales. TWENTY FIRST CAPITAL está autorizada en Francia con el número GP 11000029 y regulada por la AMF.
+SPIKO AMUNDI OVERNIGHT SWAP FUND es un compartimento de Spiko SICAV. Este compartimento está autorizado en Francia por la AMF.
+Este documento se ha publicado el 1 de septiembre de 2026.
+¿Qué es este producto?
+Tipo: Este producto es un organismo francés de inversión colectiva en valores mobiliarios (OICVM).
+Plazo: El producto tiene una duración de 99 años.
+Objetivos:
+Clasificación AMF: No aplicable.
+El objetivo de gestión de SPIKO AMUNDI OVERNIGHT SWAP FUND consiste, sobre un horizonte de inversión de 3 meses como mínimo, en obtener una
+rentabilidad anualizada neta al menos igual al indicador de referencia €STR + 0,50 %. Para alcanzar su objetivo de gestión, el fondo:
+●    invierte hasta el 120 % de su activo en obligaciones, acciones e instrumentos del mercado monetario. Esta inversión respeta las reglas OICVM aplicables
+     y persigue una diversificación de los activos para limitar el riesgo de concentración por emisor;
+●    celebra, con una o varias contrapartes, contratos denominados « Total Return Swaps » (TRS). En el marco de estos contratos, la rentabilidad de las
+     obligaciones, acciones e instrumentos del mercado monetario mantenidos por el fondo (incluidos los dividendos y cupones asociados) se entrega a la
+     contraparte del TRS (o a las contrapartes de los TRS), que pagan al fondo una rentabilidad igual al indicador de referencia más un margen
+     predeterminado en el momento de la celebración del (o los) TRS. Este margen permite generar la rentabilidad anualizada por encima del indicador de
+     referencia, con el fin de cumplir el objetivo de gestión del fondo.
+El Fondo celebra estos Total Return Swap sobre la totalidad de su cartera de valores, con la posible excepción de la proporción invertida en OICVM
+monetarios. Así, la volatilidad de la cartera de inversión (incluidos los TRS) está en línea con la volatilidad de los tipos a un día. No se autoriza ninguna
+exposición no cubierta a instrumentos con vencimiento superior a 1 mes. Habida cuenta de esta estrategia, el compartimento pretende neutralizar la
+exposición a los valores en cartera así como el riesgo de cambio entre estos activos y la divisa de cada clase de participaciones, gracias a una cobertura
+global mediante contratos de Total Return Swap. En caso de incumplimiento de una contraparte, el Fondo podría verse expuesto al riesgo de los valores en
+cartera y/o al riesgo de cambio residual. Tenga en cuenta que el riesgo de cambio entre la divisa de la clase de participaciones y cualquier otra divisa no
+está cubierto.
+El indicador de referencia €STR (Euro Short Term Rate) expresa el tipo del mercado monetario del euro a un día. Es calculado por el Banco Central Europeo.
+El índice se utiliza a posteriori como indicador de comparación de la rentabilidad. La estrategia de gestión es discrecional y sin ataduras al índice.
+Asignación de ingresos: Capitalización.
+Inversores objetivo: El Producto está dirigido a todo tipo de inversores que deseen rentabilizar una colocación de tesorería a corto plazo. El capital no está
+garantizado para los inversores, quienes deben ser capaces de asumir pérdidas iguales al importe de su inversión en el Producto. El Producto no se
+comercializa entre inversores estadounidenses que entren en la definición de « U.S. Persons » tal como se resume en el folleto del Producto.
+Operaciones de suscripción y reembolso: Las solicitudes de suscripción, expresadas en importe, y de reembolso, expresadas en número de
+participaciones o en importe, son centralizadas por Spiko Finance a más tardar a las 15:00 (hora de París). Estas solicitudes se ejecutan sobre la base del
+valor liquidativo establecido el día de su centralización. Las suscripciones y los reembolsos se refieren a participaciones que deben inscribirse en forma
+nominativa en los DLT propuestos. La centralización de las órdenes recibidas después de las 15:00 (hora de París) se aplaza al siguiente día hábil. El valor
+liquidativo se calcula cada día en que al menos una de las dos plazas financieras, París o Nueva York, está abierta en sesión completa. A elección del inversor,
+la liquidación de las suscripciones y los reembolsos puede efectuarse mediante transferencia bancaria o mediante transferencia de fichas de dinero
+electrónico denominadas en la divisa de la clase de participaciones correspondiente. Los inversores que deseen recurrir a esta forma de liquidación deben
+consultar el folleto del Producto, que describe sus modalidades y sus riesgos.
+Otra información: Puede obtener más información sobre el Producto mediante simple solicitud por escrito a Twenty First Capital, 39, avenue Pierre 1er de
+Serbie, 75008, París, Francia. Encontrará más información en el folleto del Producto o en el sitio web www.twentyfirstcapital.com. El precio de las
+participaciones y, en su caso, información relativa a otras categorías de participaciones, los datos sobre el valor liquidativo, los escenarios de rentabilidad y
+las rentabilidades pasadas del Producto están disponibles en el sitio web www.twentyfirstcapital.com.
+Depositario: CACEIS Bank
+
+
+
+
+                                                                         Página 1 de 3
+¿Cuáles son los riesgos y cuál podría ser la rentabilidad?
+
+ INDICADOR DE RIESGO                                                                                El indicador resumido de riesgo presupone que
+                                                                                                    mantendrá el Producto hasta el final del período
+                                                                                                    de mantenimiento recomendado (3 meses). El
+      1         2          3          4         5          6         7                              riesgo real puede ser muy distinto si opta por una
+                                                                                                    salida anticipada, en cuyo caso podría obtener
+                                                                                                    menos a cambio.
+   Riesgo más bajo                                       Riesgo más alto
+El indicador resumido de riesgo permite valorar el nivel de riesgo de este Producto en relación con otros. Muestra la probabilidad de que el Producto registre
+pérdidas debido a movimientos de los mercados o a la imposibilidad por nuestra parte de pagarle.
+Hemos clasificado este Producto en el indicador de riesgo 1 de 7, que corresponde a la clase de riesgo más baja. En otras palabras, las pérdidas potenciales
+vinculadas a los resultados futuros del Producto se sitúan en un nivel muy bajo y, si la situación en los mercados se deteriorase, es muy poco probable que
+nuestra capacidad para pagarle se vea afectada.
+Riesgo(s) significativo(s) para el Producto no tenidos en cuenta en este indicador:
+Riesgo de contraparte: El OIC recurre a operaciones de adquisición y cesión temporal de valores y/o a derivados negociados extrabursátiles, incluidos los
+contratos de permuta de rendimiento total. Estas operaciones, celebradas con una contraparte, exponen al OIC a un riesgo de incumplimiento y/o de no
+ejecución del contrato de permuta por parte de esta, que podrán tener un impacto significativo en el valor liquidativo del OIC. Este riesgo podría no ser, en
+su caso, compensado por las garantías financieras recibidas.
+Riesgos adicionales: En caso de incumplimiento y/o no ejecución del contrato de Total Return Swap por parte de una contraparte de un contrato derivado,
+el riesgo de liquidez del mercado puede acentuar la variación de la rentabilidad del producto.
+Riesgos relacionados con la liquidación de las suscripciones y los reembolsos en fichas de dinero electrónico y con la tenencia de fichas de dinero electrónico
+por parte del Producto: Se invita a los inversores a consultar la sección del folleto relativa a los riesgos, que presenta los riesgos relacionados con las fichas
+de dinero electrónico.
+El uso de productos complejos como los derivados puede provocar una amplificación de los movimientos de los valores en su cartera. Al no prever este
+Producto protección frente a las contingencias del mercado, podría perder la totalidad o parte de su inversión.
+Además de los riesgos incluidos en el indicador de riesgo, otros riesgos pueden influir en la rentabilidad del Fondo. Consulte el folleto de SPIKO AMUNDI
+OVERNIGHT SWAP FUND.
+ESCENARIOS DE RENTABILIDAD
+Las cifras indicadas incluyen todos los costes del propio Producto, pero no necesariamente todos los gastos que debe abonar a su asesor o distribuidor.
+Estas cifras no tienen en cuenta su situación fiscal personal, que también puede influir en los importes que recibirá.
+Lo que obtendrá de este Producto depende de la rentabilidad futura del mercado. La evolución futura del mercado es aleatoria y no puede predecirse con
+precisión.
+Los escenarios desfavorable, moderado y favorable presentados son ejemplos que utilizan las mejores y peores rentabilidades, así como la rentabilidad
+media del Producto y/o del índice de referencia adecuado durante los últimos 10 años. Los mercados podrían evolucionar de forma muy diferente en el
+futuro. El escenario de tensión muestra lo que podría obtener en situaciones extremas de mercado.
+                                                 Período de mantenimiento recomendado: 3 meses
+                                                                 Inversión: 10 000 EUR
+ Escenarios                                                                                                             Si sale después de 3 meses
+ Mínimo                          No existe rentabilidad mínima garantizada. Podría perder la totalidad o parte de su inversión.
+                                 Lo que podría obtener tras deducir los costes                                                    9 980 EUR
+ Escenario de tensión
+                                 Rentabilidad trimestral media                                                                     - 0,20 %
+                                 Lo que podría obtener tras deducir los costes                                                    9 990 EUR
+ Escenario desfavorable
+                                 Rentabilidad trimestral media                                                                     - 0,10 %
+                                 Lo que podría obtener tras deducir los costes                                                    9 990 EUR
+ Escenario moderado
+                                 Rentabilidad trimestral media                                                                     - 0,10 %
+                                 Lo que podría obtener tras deducir los costes                                                    10 100 EUR
+ Escenario favorable
+                                 Rentabilidad trimestral media                                                                     + 1,00 %
+Esta tabla muestra las cantidades que podría obtener durante el período de mantenimiento recomendado de 3 meses, en función de los distintos escenarios,
+suponiendo que invierta 10 000 EUR.
+Escenario desfavorable: este tipo de escenario se produjo para una inversión entre los meses 02/2022 y 05/2022.
+Escenario moderado: este tipo de escenario se produjo para una inversión entre los meses 03/2017 y 06/2017.
+Escenario favorable: este tipo de escenario se produjo para una inversión entre los meses 02/2024 y 05/2024.
+¿Qué pasa si TWENTY FIRST CAPITAL no puede realizar los pagos?
+El Producto es una copropiedad de instrumentos financieros y depósitos separada de la sociedad gestora de carteras. En caso de incumplimiento de esta
+última, los activos del Producto custodiados por el depositario no se verán afectados. En caso de incumplimiento del depositario, el riesgo de pérdida
+financiera del Producto se reduce gracias a la segregación legal de los activos del depositario respecto a los del Producto.
+
+
+¿Cuáles son los costes?
+La persona que le venda este Producto o que le asesore sobre el mismo puede pedirle que pague costes adicionales. Si así fuera, esa persona le informará
+sobre esos costes y le mostrará la incidencia del conjunto de los costes en su inversión a lo largo del tiempo.
+COSTES A LO LARGO DEL TIEMPO:
+Las tablas presentan los importes detraídos de su inversión para cubrir los distintos tipos de costes. Estos importes dependen del importe que invierta y del
+tiempo durante el cual mantenga el Producto. Los importes indicados aquí son ilustraciones basadas en un importe de inversión a modo de ejemplo y
+diferentes períodos de inversión posibles. Hemos supuesto:
+                                                                       Página 2 de 3
+     ●    que recuperaría la cantidad invertida (rentabilidad anual del 0 %).
+     ●    Se invierten 10 000 EUR.
+                                                                                                                            Si sale después de 3 meses
+ Costes totales                                                                                                                       6 EUR
+ Incidencia de los costes*                                                                                                            0,1 %
+(*) Esto ilustra el efecto de los costes durante un período de mantenimiento inferior a un año. Este porcentaje no se puede comparar directamente con las
+cifras de incidencia de los costes proporcionadas para otros PRIIP. Es posible que compartamos los costes con la persona que le vende el Producto a fin de
+cubrir los servicios que esta le presta. En su caso, esta persona le informará del importe.
+COMPOSICIÓN DE LOS COSTES:
+ Costes únicos de entrada o salida                                                                                          Si sale después de 3 meses
+ Costes de entrada                          No se aplican costes de entrada a este Producto.                                           0 EUR
+ Costes de salida                           No se aplican costes de salida a este Producto.                                            0 EUR
+ Costes recurrentes                                                                                                         Si sale después de 3 meses
+ Gastos de gestión y otros gastos           0,06 % del valor de su inversión. Esta estimación se basa en los costes
+                                                                                                                                       6 EUR
+ administrativos o de explotación           reales registrados desde el lanzamiento del Producto.
+ Costes de transacción                      Ningún coste de transacción para este Producto.                                            0 EUR
+ Costes accesorios cobrados bajo determinadas condiciones                                                                   Si sale después de 3 meses
+ Comisiones vinculadas a los
+                                            No se aplica comisión de rentabilidad a este Producto.                                     0 EUR
+ resultados
+La tabla anterior indica la incidencia de los distintos tipos de costes en la rentabilidad que podría obtener de su inversión al final del período de mantenimiento
+recomendado de 3 meses, así como el significado de las distintas categorías de costes.
+¿Cuánto tiempo debo mantenerlo y puedo retirar dinero anticipadamente?
+Período de mantenimiento recomendado: 3 meses
+Este Producto está diseñado para inversiones a corto plazo; debe estar preparado para mantener su inversión en el Producto durante al menos 3 meses.
+Las solicitudes de suscripción, expresadas en importe, y de reembolso, expresadas en número de participaciones, son centralizadas por Spiko Finance a
+más tardar a las 15:00 (hora de París). Estas solicitudes se ejecutan sobre la base del valor liquidativo establecido el día de su centralización. Las suscripciones
+y los reembolsos se refieren a participaciones que deben inscribirse en forma nominativa en los DLT propuestos. La centralización de las órdenes recibidas
+después de las 15:00 (hora de París) se aplaza al siguiente día hábil. El valor liquidativo se calcula cada día en que al menos una de las dos plazas financieras,
+París o Nueva York, está abierta en sesión completa. La sociedad gestora podrá implementar un mecanismo de limitación de reembolsos (denominado «
+Gates »). Las modalidades de funcionamiento se describen en el Folleto.
+¿Cómo puedo reclamar?
+Los accionistas pueden presentar reclamaciones gratuitamente ante la Sociedad Gestora en una lengua oficial de su país de origen. Los partícipes pueden
+acceder al procedimiento de tratamiento de reclamaciones previa solicitud en la sede de la Sociedad Gestora y en el sitio web de la Sociedad Gestora en la
+dirección www.twentyfirstcapital.com.
+Otros datos pertinentes
+Escenarios de rentabilidad: Puede            encontrar    los   últimos   escenarios    de   rentabilidad,   actualizados    mensualmente,     en   el   sitio   web
+www.twentyfirstcapital.com.
+Rentabilidades pasadas: Los datos son insuficientes para proporcionar a los inversores particulares una indicación útil sobre las rentabilidades pasadas.
+Este documento de datos fundamentales se actualiza al menos una vez al año.
+
+
+
+
+                                                                          Página 3 de 3
+

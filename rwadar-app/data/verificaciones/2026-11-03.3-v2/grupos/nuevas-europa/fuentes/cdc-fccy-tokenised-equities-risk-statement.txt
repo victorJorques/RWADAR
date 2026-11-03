@@ -1,0 +1,142 @@
+                                     Risk Disclosure Statement​
+​
+This Risk Disclosure Statement contains general information about financial instruments and
+services offered by Foris Capital CY Limited (“FCCY”), a Cyprus Investment Firm, authorised
+and regulated by the Cyprus Securities and Exchange Commission (“CySEC”) under licence
+number 344/17. This Risk Disclosure Statement is not directed at, and should not be relied upon
+by, persons in any jurisdiction where the distribution of such information or the provision of the
+services described herein would be contrary to local law or regulation. The information provided
+is of a general nature and does not constitute investment advice, a personal recommendation,
+or an offer or invitation to engage in investment activity. The information provided does not take
+into account your individual investment objectives, financial situation or particular needs.​
+​
+Investing in financial instruments involves risks. The value of investments and any income or
+rewards may go down as well as up, may be variable and not guaranteed, and you may receive
+back less than you invested, including the possible loss of your entire investment. Past
+performance is not a reliable indicator of future results. Any examples, illustrations or projected
+returns are for information only and are not guaranteed.​
+​
+Different financial instruments carry different levels of risk. Risks may include, among others,
+market risk (price movements and volatility), interest rate risk, product credit risk (issuer or
+counterparty default), liquidity risk (difficulty buying/selling or delays in execution), concentration
+risk, currency risk (where financial instruments are denominated in or exposed to a foreign
+currency), and operational risk (including failures of systems, processes or third-party service
+providers). Fees, charges and taxes may reduce returns. Certain financial instruments may be
+complex and may not be suitable for all investors.​
+​
+Some financial instruments, including derivatives, may involve leverage, which can amplify both
+gains and losses. In some circumstances, losses may exceed the initial amount invested.
+Product-specific terms and conditions, market rules, dealing restrictions, pricing methodology,
+trading availability and settlement arrangements may apply.​
+​
+Where required, FCCY may conduct an appropriateness assessment in accordance with
+applicable regulatory requirements. You should ensure you understand the nature and risks of
+any financial instrument before investing. Please review all relevant financial instrument
+documents, including where applicable, the Key Information Document (“KID”), terms and
+conditions, costs and charges information and risk disclosures, and also consider whether the
+financial instrument is appropriate for your knowledge, experience, financial situation,
+investment objectives and risk tolerance. Where you are unsure, you should seek independent
+professional advice.​
+​
+Tokenized Stocks specific risks​
+​
+Tokenized Stocks are financial instruments provided by FCCY. Tokenized Stocks are
+over-the-counter (“OTC”) derivative contracts between you and FCCY that provide price
+
+                                                                                                     1
+exposure to selected publicly listed U.S. stocks or exchange traded funds (“Underlying
+Asset”). Tokenized Stocks are backed on a 1:1 basis by the relevant Underlying Asset, in
+accordance with the applicable product terms and conditions. However, Tokenized Stocks are
+not shares, ETFs or units in a fund.​
+​
+No ownership of the Underlying Asset. When you purchase a Tokenized Stock, you do not
+acquire legal or beneficial ownership of the Underlying Asset. You do not have shareholder
+rights, such as voting rights, attendance rights at shareholder meetings, or direct dividend rights.
+Your rights are contractual rights against FCCY under the relevant product terms and
+conditions.​
+​
+Capital at risk and no capital protection. The value of a Tokenized Stock depends on the
+price performance of the relevant Underlying Asset and other applicable factors, including
+foreign exchange rates and fees. The value of your position may fall, and you may lose part or
+all of the amount invested. Tokenized Stocks do not provide capital protection or guaranteed
+returns.​
+​
+Market risk. The price of the Underlying Asset may fluctuate significantly due to general market
+conditions, company-specific events, sector developments, economic conditions, interest rates,
+investor sentiment, geopolitical events or other factors. Price movements may be sudden and
+may result in losses.​
+​
+Counterparty risk. Tokenized Stocks are bilateral OTC derivative contracts between you and
+FCCY. FCCY is the sole counterparty to your claims under the financial instrument. Although
+Tokenized Stocks are backed on a 1:1 basis by the relevant Underlying Asset or equivalent
+exposure, you do not have legal or beneficial ownership of that Underlying Asset and remain
+exposed to FCCY’s ability to meet its obligations. If FCCY is unable to meet its obligations, you
+may lose part, or all of your investment, regardless of the performance of the Underlying Asset.
+
+Investor Compensation Fund. FCCY is a member of the Investor Compensation Fund for
+clients of CIFs. Eligible clients may be entitled to compensation from the Investor Compensation
+Fund, if FCCY is unable to meet its obligations, subject to applicable conditions, exclusions and
+statutory limits. Compensation is limited to the lower of 90% of the cumulative covered claim
+and EUR 20,000 per eligible investor. The Investor Compensation Fund does not cover
+investment losses arising from market movements, product performance or normal investment
+risk. ​
+​
+Currency risk. The Underlying Assets are priced and traded in U.S. dollars (“USD”), while you
+may pay for and receive the cash value of your position in euros (“EUR”), or another supported
+currency. Your return may be affected by changes in the exchange rate between USD and the
+currency used to open or close your position. Currency conversion rates and related costs may
+affect your final return.
+
+Pricing risk. The price quoted to you may differ from the last traded price of the Underlying
+Asset or from the price available when the relevant U.S. market reopens, particularly outside
+
+                                                                                                  2
+normal NASDAQ and NYSE trading hours, during periods of market stress, or where pricing
+data is delayed, unavailable or unreliable.​
+​
+Extended hours trading risk. Tokenized Stocks may be available outside normal exchange
+(for example, NASDAQ or NYSE) trading hours, subject to system availability, pricing
+availability, market conditions and the product terms and conditions. Trading outside normal
+market hours carries additional risks, including higher volatility, lower liquidity, wider bid/ask
+spreads, reduced market visibility and pricing differences when the relevant U.S. market
+reopens.​
+​
+Liquidity and exit risk. Tokenized Stocks are not transferable and can only be opened and
+closed through the Crypto.com app. You cannot transfer Tokenized Stocks to another user or
+withdraw them to an external wallet. Closure may be delayed or unavailable, or may occur at a
+less favourable price, during market stress, U.S. exchange trading halts, corporate actions,
+system outages or where pricing is unavailable.​
+​
+Corporate action risk. Corporate actions affecting the Underlying Asset, such as dividends,
+stock splits, mergers, acquisitions, spin-offs, delistings, suspensions or liquidations, may affect
+the value, availability or treatment of your Tokenized Stock. Such events may result in
+adjustments, restrictions, trading halts or mandatory closure of your position in accordance with
+the product terms and conditions.​
+​
+Technology and blockchain risk. Tokenized Stocks are represented in the Crypto.com app
+through blockchain-based or related technology. Technical failures, cyberattacks, network
+disruptions, system outages, data errors or other technology issues may affect access to,
+display of, or operation of your positions.
+
+Operational and third-party risk. Tokenized Stocks rely on operational processes, technology
+systems, pricing sources, execution arrangements, market data providers and other third-party
+service providers. Failures, delays, outages, errors or disruptions may affect pricing, order
+submission, execution, settlement, reporting or access to your positions.
+
+Fees and charges. Fees, spreads, currency conversion costs, transaction costs, taxes and
+other charges may reduce your returns. The costs that apply may depend on your trading
+activity, the applicable fee tier, the time of trading, the relevant exchange rate and the applicable
+product terms and conditions.
+
+Regulatory and tax risk. Changes in laws, regulations, tax treatment, market rules, product
+eligibility rules or supervisory expectations may affect the availability, terms and conditions,
+pricing or treatment of Tokenized Stocks. You are responsible for understanding and complying
+with any tax obligations that may apply to you.
+
+Information documents. You should review the relevant product documents, including the KID,
+product terms and conditions, costs and charges information and applicable risk disclosures
+before trading Tokenized Stocks, and consider whether the financial instrument is appropriate
+for your circumstances.
+
+                                                                                                   3
+

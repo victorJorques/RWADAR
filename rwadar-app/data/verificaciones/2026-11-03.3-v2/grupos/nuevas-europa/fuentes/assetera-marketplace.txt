@@ -1,0 +1,161 @@
+
+This is a Test Environment and Sandbox. Tokens and Currencies have no real value. Switch to marketplace.assetera.com for the Production system.Skip to main content
+Sign in
+Marketplace
+588
+RWAs available
+577
+Public Market Token
+4
+Private Market Token
+7
+Portfolio
+Available to Buy/Sell
+Search tokensFilters
+GalleryTable
+AMZNx / USDC
+Stock
+Amazon.com xStock
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price246.64 USDCBuy
+AAPLx / USDC
+Stock
+Apple xStock
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price323.30 USDCBuy
+GSx / USDC
+Stock
+Goldman Sachs xStock
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price897.01 USDCBuy
+METAx / USDC
+Stock
+Meta xStock
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price610.48 USDCBuy
+GOOGLx / USDC
+Stock
+Alphabet xStock
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price279.33 USDCBuy
+JPMx / USDC
+Stock
+JPMorgan Chase xStock
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price339.50 USDCBuy
+NVDAx / USDC
+Stock
+NVIDIA xStock
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price205.37 USDCBuy
+OXC / USDC
+Bond
+OilXCoin
+Asset classDerivatives & structured products
+Access typeRealtime
+MarketPrimary
+Price—Buy
+YLD8on / USDC
+—
+Ondo 8 Targeted Income TR Portfolio
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price4.98 USDCBuy
+YLD5on / USDC
+—
+Ondo 5 Targeted Income TR Portfolio
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price5.00 USDCBuy
+STXon / USDC
+Stock
+Seagate (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price608.67 USDCBuy
+STRCon / USDC
+Stock
+Strategy Stretch Preferred (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price106.38 USDCBuy
+SNOWon / USDC
+Stock
+Snowflake (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price289.83 USDCBuy
+SNDKon / USDC
+Stock
+SanDisk (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price1,110.26 USDCBuy
+SHOPon / USDC
+Stock
+Shopify (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price157.86 USDCBuy
+SEDGon / USDC
+Stock
+SolarEdge Technologies (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price30.21 USDCBuy
+SCCOon / USDC
+Stock
+Southern Copper (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price180.59 USDCBuy
+RKLBon / USDC
+Stock
+Rocket Lab (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price53.08 USDCBuy
+RIVNon / USDC
+Stock
+Rivian Automotive (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price13.30 USDCBuy
+REGNon / USDC
+Stock
+Regeneron Pharmaceuticals (Ondo Tokenized)
+Asset classEquity & equity-like instruments
+Access typeRealtime
+MarketPrimary
+Price972.52 USDCBuy
+Load more
+EN
+Terms and ConditionsPrivacy PolicyNeed help?Corporate Governance
+Assetera 2026 © All Rights Reserved
+Marketplace · Assetera Marketplace
+

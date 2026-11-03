@@ -1,0 +1,36 @@
+URL: https://app.brickwise.at/desktopWeb/asset/AT0000A3SE89
+FINAL: https://app.brickwise.at/desktopWeb/asset/AT0000A3SE89
+CONSULTADO: 2026-11-03T10:08:56Z
+HTTP: 200
+
+404
+Diese Seite existiert zurzeit nicht
+Zum Marktplatz
+
+==== LINKS ====
+
+
+==== XHR ====
+200 https://maps.googleapis.com/maps/api/js?key=AIzaSyBQJ_8CWPikHS9mKokj6WcRQgmNKHPnBM8&libraries=places&language=de
+200 https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true
+204 https://analytics.google.com/g/collect?v=2&tid=G-KT4ETZPLB0&gtm=45je6au1v871608040za20ozb832473384zd832473384xf1&_p=1793700536640&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAGAC&cid=1759127316.179370
+200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuYIC
+403 https://ad.doubleclick.net/activity;src=11822496;type=ros170;cat=rosco0;rcb=0;ord=1753008404509;npa=0;auiddc=1100919716.1793700538;u1=%5Burl%5D;uaa=x86;uab=64;uafvl=HeadlessChrome%3B153.0.8010.12%7CNo
+403 https://11822496.fls.doubleclick.net/activityi;src=11822496;type=ros170;cat=rosco0;rcb=0;ord=1753008404509;npa=0;auiddc=1100919716.1793700538;u1=%5Burl%5D;uaa=x86;uab=64;uafvl=HeadlessChrome%3B153.0.8
+400 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuYOD&sid=fZ7bkiF3iS-xBT-rAAgH
+200 https://api.app.brickwise.at/api/v1/appConfig/webAppUrl?webAppURL=https://app.brickwise.at
+200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuYRy&sid=fZ7bkiF3iS-xBT-rAAgH
+400 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuYOG&sid=fZ7bkiF3iS-xBT-rAAgH
+200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuYhM
+400 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuYmC&sid=UEBXxo5HAF_KxQpQAAmB
+400 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuYq0&sid=UEBXxo5HAF_KxQpQAAmB
+200 https://api.app.brickwise.at/api/v1/utils/frontendVersion
+200 https://api.app.brickwise.at/api/v1/utils/fees
+200 https://api.app.brickwise.at/api/v2/assets
+200 https://api.app.brickwise.at/api/v1/utils/featureFlags
+200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuZ9C
+200 https://api.app.brickwise.at/launchpad/api/v2/assets?ids=[%22AT0000A2RAH5%22,%22AT0000A2T4D7%22,%22AT0000A2U5V3%22,%22AT0000A2WCD0%22,%22AT0000A2WCE8%22,%22AT0000A2YPQ0%22,%22AT0000A2ZT84%22,%22AT0000
+200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuZC-&sid=nYMfH2gWpUfPb1gsAAmC
+401 https://api.app.brickwise.at/auth/checksession
+200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuZC_&sid=nYMfH2gWpUfPb1gsAAmC
+204 https://analytics.google.com/g/collect?v=2&tid=G-KT4ETZPLB0&gtm=45je6au1v871608040za20gzb832473384zd832473384xf1&_p=1793700536640&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AEAAAGQC&ae=a&cid=1759127316.17937005

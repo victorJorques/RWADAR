@@ -1,0 +1,45 @@
+ Spiko Smart Cash EUR · Spiko Data Log in Sign up 
+ All products Smart Cash EUR Smart Cash USD Smart Cash GBP Smart Cash CHF EU T-Bills US T-Bills UK T-Bills Cash & Carry EUR Cash & Carry USD 
+ EUR ISIN FR0014015LD3 
+ Spiko Smart Cash EUR
+ EUR UCITS
+ Learn more about Spiko Smart Cash EUR on spiko.io.
+ AUM
+ €1.90B
+ €1,901,758,446
+ Users
+ 10,729
+ 30d yield
+ 2.84%
+ Annualised
+ Latest NAV
+ 1.0163
+ 2026-11-02
+ NAV, last 2 months
+ Daily net asset value per share, in EUR.
+ AUM, last 2 months
+ Total AUM in this product, in EUR.
+ Users, last 2 months
+ Number of users holding this product.
+ Cumulative interest accrued
+ Total interest accrued since the product's launch, in EUR.
+ Share class details
+ ISIN FR0014015LD3 
+ Currency EUR 
+ AMF classification UCITS 
+ Reference index Capitalized €STR + 0.50% 
+ Use of income Accumulating 
+ Management fees 0.25% 
+ Subscription fees 0.00% 
+ Redemption fees 0.00% 
+ Minimum initial subscription 1 EUR 
+ NAV decimals 6 
+ Share decimals 5 
+ Total interest accrued since launch: € 11.91M ( € 11,907,168 ).
+ Source: Spiko Public API v0 · cached server-side
+ © Spiko 2026 
+ Legal Notice 
+ Terms of Use 
+ Privacy 
+ Dune workspace ↗ 
+ 
