@@ -1163,8 +1163,7 @@ function pintarRadar(){
     izquierda se salía del lienzo y aparecía cortado. */
  const CX=200, CY=200, RMAX=140;
  const cats=Object.keys(CATMETA);
- const CORTO={"Inmobiliario":"Inmuebles","Crédito privado":"Crédito","Tesoro y fondos":"Tesoro",
-  "Acciones y capital privado":"Acciones","Materias primas":"Materias","Infraestructura":"Infra"};
+ /* Los mismos nombres cortos que los chips y que Inicio (catCorta). */
  const pol=(ang,rad)=>[CX+Math.cos(ang*Math.PI/180)*rad, CY+Math.sin(ang*Math.PI/180)*rad];
 
  let s='';
@@ -1194,15 +1193,19 @@ function pintarRadar(){
   const a=-90+i*60-30;
   const [x,y]=pol(a,RMAX);
   s+=`<line class="radar-sector" x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/>`;
-  const [tx,ty]=pol(-90+i*60,RMAX+19);
+  /* Arriba y abajo, centrado; a los lados, pegado por fuera del aro, para
+     que «Materias primas» e «Infraestructura» quepan enteros. */
+  const lado=i%3===0?0:i<3?1:-1,[mx,ty]=pol(-90+i*60,RMAX+19);
+  const tx=lado?CX+lado*(Math.sqrt(Math.max(0,(RMAX+12)**2-(ty-CY)**2))+4):mx,ancla=lado>0?'start':lado<0?'end':'middle';
+  const zx=lado>0?tx-4:lado<0?tx-100:tx-48,largo=catCorta(c).length>9&&lado;
   s+=`<g class="radar-etg" tabindex="0" role="button" aria-label="Ver solo ${escHtml(c)} en el radar"`
    +` data-filtra="${escHtml(c)}">`
    /* El rótulo va del color de su categoría, y con eso el radar gana la
       leyenda que le faltaba: se ve de un vistazo qué color es cada tipo
       de activo, sin una tabla aparte. Va en `style` y no en `fill`
       porque un atributo de presentación pierde contra la clase CSS. */
-   +`<rect class="radar-et-zona" x="${(tx-48).toFixed(1)}" y="${(ty-22).toFixed(1)}" width="96" height="44" rx="13" fill="transparent"/>`
-   +`<text class="radar-et" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" fill="${CATMETA[c].c}">${escHtml(CORTO[c]||c)}</text></g>`;
+   +`<rect class="radar-et-zona" x="${zx.toFixed(1)}" y="${(ty-22).toFixed(1)}" width="${lado?104:96}" height="44" rx="13" fill="transparent"/>`
+   +`<text class="radar-et${largo?' radar-et-largo':''}" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="${ancla}" dominant-baseline="middle" fill="${CATMETA[c].c}">${escHtml(catCorta(c))}</text></g>`;
  });
 
  /* El barrido: una cola larga que se apaga, no una porción de tarta. Un

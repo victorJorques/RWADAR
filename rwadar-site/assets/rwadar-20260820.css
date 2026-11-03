@@ -156,6 +156,7 @@ body.locked{overflow:hidden}
 .radar-tick{stroke:var(--senal);stroke-width:.7;opacity:.16}
 .radar-tick.fuerte{stroke-width:1;opacity:.32}
 .radar-etg{cursor:pointer}
+.radar-et-largo{letter-spacing:.04em}
 .radar-etg .radar-et{transition:opacity .16s var(--sal)}
 .radar-etg:hover .radar-et,.radar-etg:focus-visible .radar-et{opacity:1}
 .radar-etg:focus-visible{outline:2px solid var(--senal);outline-offset:2px;border-radius:4px}
@@ -1822,6 +1823,7 @@ body.detalle-local-abierto{overflow:hidden}
     background:linear-gradient(180deg,rgba(29,28,25,.92),rgba(16,15,14,.96));
     box-shadow:0 1px 0 rgba(255,255,255,.055) inset,0 22px 52px -38px #000}
   #movilPanelRadar .radar-et{font-size:14px;letter-spacing:.035em}
+  #movilPanelRadar .radar-et-largo{font-size:11px;letter-spacing:0}
   #movilPanelRadar .radar-lectura{margin:0 8px;padding:11px 4px 2px;border:0;border-top:1px solid var(--m-hairline);
     border-radius:0;background:transparent;min-height:64px}
   #movilPanelRadar .radar-etg,.blip{touch-action:manipulation}
