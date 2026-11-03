@@ -43,6 +43,31 @@ la anterior, así que dos entregas no se pisan. El flujo de GitHub «Aplicar
 catálogo» recibe la etiqueta. Las cifras de cada ficha valen 7 días desde su
 consulta (`vigenciaDias`).
 
+**Normas de las tarjetas** (decididas por Víctor el 03/11/2026: «cambia las
+normas del catálogo a cosas con sentido»):
+
+1. **Principales:** pueden llevar rentabilidad o precio, siempre con su fuente,
+   su base y la fecha del dato. Se ven 7 días desde su consulta. La tarjeta
+   enseña tres datos: mínimo, acceso desde España y salida.
+2. **Reventa y próximas:** no llevan rentabilidad ni precio principal. En
+   reventa la rentabilidad depende del precio que pagues a otro inversor, y en
+   una próxima todavía no se puede comprar. La base de datos también lo exige
+   (`oferta_coleccion_documental`). Sí enseñan el mínimo, el acceso desde España
+   y la salida cuando hay una referencia escrita para la tarjeta, con estas
+   condiciones:
+   - lleva la etiqueta fija `Mínimo de inversión`, `Acceso desde España`,
+     `Salida` o `Reembolso`, con un paréntesis opcional;
+   - está en castellano llano;
+   - tiene fuente y fecha;
+   - la ficha sigue vigente.
+
+   Un precio de reventa del día va con su fecha y sin presentarse nunca como
+   precio de emisión. Ejemplos: «1 participación desde 78 € en reventa
+   (03/11)» en el mínimo, o «venta más barata 78 € el 03/11» como referencia de
+   la ficha.
+3. **Citas literales** de documentos (alemán, inglés, campos de API) se quedan
+   en la ficha completa y no suben a la tarjeta.
+
 ## 1. Preparar la revisión y leer lo publicado
 
 1. Leer `AGENTS.md`, la entrada vigente de `PARA-CODEX.md`, `INTERNO.md` y la

@@ -52,8 +52,17 @@
     const dias = Number(oferta.vigenciaDias);
     const vencida = !hoy || !revisionCifras || !Number.isInteger(dias) || dias < 1 ||
       Date.parse(hoy + 'T00:00:00Z') > Date.parse(revisionCifras + 'T00:00:00Z') + dias * 86400000;
-    const actual = !vencida && oferta.estadoRevision === 'actual' && !oferta.cifrasPendientes &&
-      (!oferta.coleccion || oferta.coleccion === 'principales');
+    const principal = !oferta.coleccion || oferta.coleccion === 'principales';
+    const actual = !vencida && oferta.estadoRevision === 'actual' && !oferta.cifrasPendientes && principal;
+    // Reventa y próximas (03/11/2026, Víctor): no llevan rentabilidad ni precio
+    // principal, pero sí enseñan el mínimo, el acceso y la salida documentados
+    // con fuente y fecha mientras la ficha está vigente.
+    const documental = !vencida && !principal && !oferta.cifrasPendientes;
+    const conDatos = actual || documental;
+    // En reventa y próximas solo cuentan las referencias redactadas para la
+    // tarjeta, con etiqueta fija; las citas literales se quedan en la ficha.
+    const paraTarjeta = r => principal ||
+      /^(?:M[ií]nimo de inversi[oó]n|Acceso desde Espa[ñn]a|Salida|Reembolso)(?: \([^)]{1,60}\))?$/.test(texto(r.etiqueta));
     const ultimo = referencias[0];
     const estado = oferta.estadoRevision === 'fuentes_en_conflicto'
       ? {texto:'Las fuentes no coinciden',tono:'stop'}
@@ -62,20 +71,20 @@
       : oferta.coleccion === 'en_camino' ? {texto:'Anuncio documentado · apertura sin confirmar',tono:'neutro'}
       : oferta.estadoRevision !== 'actual' ? {texto:'No se pudo confirmar la apertura',tono:'warn'}
       : {texto:'Datos con fuente y fecha · consulta las condiciones',tono:'ok'};
-    const elegible = referencias.filter(r => {
+    const elegible = referencias.filter(paraTarjeta).filter(r => {
       const etiqueta = normal(r.etiqueta);
       return !/precio|cotizacion|valor liquidativo|por (?:token|participacion|accion)/.test(etiqueta) &&
         /minim|suscripcion inicial/.test(etiqueta) &&
         !/por (?:token|participacion|accion)/.test(normal(r.valor));
     });
     const minimoRef = elegible[0];
-    let minimo = {texto:actual ? 'No documentado en euros' : 'Sin mínimo vigente en euros'};
-    if (actual && minimoRef) {
+    let minimo = {texto:conDatos ? 'No documentado en euros' : 'Sin mínimo vigente en euros'};
+    if (conDatos && minimoRef) {
       const euros = importeEuros(minimoRef.valor);
       minimo = euros === null ? {...campo(minimoRef,'No documentado en euros'),unidadDocumentada:texto(minimoRef.valor)}
         : {...campo(minimoRef, new Intl.NumberFormat('es-ES',{maximumFractionDigits:2}).format(euros) + ' €'),euros};
     }
-    const accesoRef = referencias.find(r => /espana|spain/.test(normal(r.etiqueta)) &&
+    const accesoRef = referencias.filter(paraTarjeta).find(r => /espana|spain/.test(normal(r.etiqueta)) &&
       /acceso|disponib|elegibil|residen/.test(normal(r.etiqueta)));
     const accesoExplicito = oferta.disponibleEs === true || oferta.disponibleEs === false;
     const accesoValor = normal(accesoRef?.valor);
@@ -88,11 +97,15 @@
         (oferta.disponibleEs === true ? accesoPositivo : accesoNegativo)) {
       accesoEspana = {...campo(accesoRef,oferta.disponibleEs ? 'Disponible desde España según la fuente' : 'No disponible desde España según la fuente'),
         estado:oferta.disponibleEs ? 'si' : 'no'};
+    } else if (documental && accesoRef && accesoPositivo !== accesoNegativo) {
+      // Sin indicador propio (el contrato lo reserva a las principales): manda la referencia.
+      accesoEspana = {...campo(accesoRef,accesoPositivo ? 'Disponible desde España según la fuente' : 'No disponible desde España según la fuente'),
+        estado:accesoPositivo ? 'si' : 'no'};
     }
-    const salidaRef = referencias.find(r => /reembols|devolucion|salida|liquidacion|plazo/.test(normal(r.etiqueta)) &&
+    const salidaRef = referencias.filter(paraTarjeta).find(r => /reembols|devolucion|salida|liquidacion|plazo/.test(normal(r.etiqueta)) &&
       !/emision|campana|suscripcion|captacion|cierre/.test(normal(r.etiqueta)));
     let salida = {texto:'Salida no documentada'};
-    if (actual && salidaRef) salida = campo(salidaRef, texto(salidaRef.etiqueta).replace(/\s*·.*$/,'') + ': ' + texto(salidaRef.valor));
+    if (conDatos && salidaRef) salida = campo(salidaRef, texto(salidaRef.etiqueta).replace(/\s*·.*$/,'') + ': ' + texto(salidaRef.valor));
     else if (oferta.coleccion === 'secundario' && referencias.length &&
         Array.isArray(oferta.documentacion?.fuentes) && oferta.documentacion.fuentes.some(fuente)) {
       salida = campo(ultimo,'Reventa entre inversores; depende de que haya compradores');
