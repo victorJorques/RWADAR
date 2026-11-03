@@ -30,11 +30,20 @@ Esta indicación sustituye el modo automático anterior descrito en los informes
 y traspasos fechados del 22/10.
 
 Seguir la investigación profunda, la revisión independiente y las compuertas de
-[`CICLO-DIARIO-CATALOGO.md`](docs/tareas/CICLO-DIARIO-CATALOGO.md). Para SQL
-remoto o publicación web, comprobar el permiso expreso de Víctor para ese ciclo;
-iniciar la investigación no elimina los límites anteriores. No incluye cuentas,
+[`CICLO-DIARIO-CATALOGO.md`](docs/tareas/CICLO-DIARIO-CATALOGO.md).
+
+**La orden de Víctor autoriza el ciclo completo** (indicación expresa de Víctor
+del 03/11/2026: «que se pueda modificar en cualquier momento; las ofertas no
+esperan» y «modifica esto»). La orden de Víctor de investigar o actualizar el
+catálogo es, para ese ciclo, el permiso expreso para aplicar el SQL revisado
+con el flujo de GitHub «Aplicar catálogo», publicar la web con «Publicar web»
+(preview y después producción) y enviar la OTA con «OTA Android», si pasan las
+pruebas, el ensayo en PGlite, la revisión independiente y el sello. Un fallo
+detiene el ciclo en ese paso. Se puede entregar el catálogo varias veces el
+mismo día (`AAAA-MM-DD`, después `AAAA-MM-DD.2`, `.3`…). No incluye cuentas,
 comunidad, Auth, RLS/ACL, funciones, migraciones de esquema, credenciales,
-correos, pagos, builds/OTA/tiendas, visibilidad ni otras operaciones.
+correos, pagos, `eas build`/`eas submit`, tiendas, visibilidad ni otras
+operaciones.
 Cada candidata se admite y publica tras las compuertas y con autorización, o no
 se admite ni publica ese día; no se mantiene una cola ni un estado público
 «en investigación». En otro inicio manual se consultan de nuevo las fuentes,
