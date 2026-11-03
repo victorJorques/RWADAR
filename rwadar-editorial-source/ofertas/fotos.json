@@ -25,13 +25,6 @@
   }
  },
  "fotos": {
-  "mf-one": {
-   "modelo": "realvisxl",
-   "semilla": 11,
-   "encuadre": "70% 55%",
-   "concepto": "unas torres de oficinas de un distrito financiero europeo, como imagen de una cartera de préstamos a empresas",
-   "prompt": "modern glass office towers in a European financial district at blue hour, offices softly lit, evening sky reflections, trees on a quiet plaza"
-  },
   "fotovoltaica-greenpoint": {
    "modelo": "canva",
    "encuadre": "70% 55%",
