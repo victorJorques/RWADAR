@@ -1705,7 +1705,8 @@ function pintarEmisiones(){
   const informacion=document.getElementById('emisInformacion');if(informacion)informacion.open=true;
   const estado=document.getElementById('movilOfertasEstado');
   const seleccion=catalogo.filter(o=>o.coleccion===emiColeccion),coincidencias=seleccion.filter(coincideOfertaLocal);
-  if(estado){estado.textContent=coincidencias.length+' de '+seleccion.length+' '+({principales:'principales',secundario:'en reventa',en_camino:'próximas'}[emiColeccion]);estado.classList.toggle('hay-ofertas',coincidencias.length>0)}
+  if(estado){estado.textContent=coincidencias.length+' de '+seleccion.length+' '+({principales:'principales',secundario:'en reventa',en_camino:'próximas'}[emiColeccion]);estado.classList.toggle('hay-ofertas',coincidencias.length>0);
+   estado.classList.toggle('con-filtro',!!(emiCat||emiBusquedaLocal))}
   /* Como en la app: una pestaña por colección y se ve una cada vez. */
   const cuantas=c=>catalogo.filter(o=>o.coleccion===c).length;
   if(caja.dataset)caja.dataset.coleccion=emiColeccion;
@@ -1719,8 +1720,8 @@ function pintarEmisiones(){
      después el resto, cada bloque en el orden del selector. */
   const filas=!visibles.length?'<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>':
    elegidas.length?'<div class="catalogo-bloque catalogo-seleccion" role="group" aria-labelledby="emiSeleccionTit"><header class="catalogo-bloque-cab"><h3 id="emiSeleccionTit">Selección RWAdar <span>· la documentación más completa</span></h3>'+
-    '<p>No es una recomendación de inversión.</p></header>'+elegidas.map(o=>tarjetaOfertaLocal(o)).join('')+'</div>'+
-    (resto.length?'<div class="catalogo-bloque" role="group" aria-labelledby="emiRestoTit"><header class="catalogo-bloque-cab"><h3 id="emiRestoTit">Resto de principales</h3></header>'+resto.map(o=>tarjetaOfertaLocal(o)).join('')+'</div>':''):
+    '<p>No es una recomendación de inversión.</p></header>'+elegidas.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>'+
+    (resto.length?'<div class="catalogo-bloque" role="group" aria-labelledby="emiRestoTit"><header class="catalogo-bloque-cab"><h3 id="emiRestoTit">Resto de principales</h3></header>'+resto.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>':''):
    tarjetasPorProveedorHtml(visibles);
   caja.innerHTML=(movil?'<p class="catalogo-nota-movil">RWAdar no recibe dinero de las inversiones.</p>':'')+
    '<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.</p></header>'+
@@ -1879,7 +1880,7 @@ function radarInicioSvg(sin){
    s+='<text class="ir-et" x="200" y="'+ty+'" text-anchor="middle" dominant-baseline="middle" fill="'+CATMETA[c].c+'">'+escHtml(nombre)+
     (cifra?' <tspan class="ir-et-n">'+cifra+'</tspan>':'')+'</text>';return;}
   /* Una sola línea por nombre (así se traduce entero) y el número debajo. */
-  const der=i<3,tx=der?398:-8,arriba=i===1||i===5,lineas=cifra?[nombre,cifra]:[nombre];
+  const der=i<3,tx=der?385:3,arriba=i===1||i===5,lineas=cifra?[nombre,cifra]:[nombre];
   const y0=arriba?CY-92-(lineas.length-1)*15:CY+102;
   s+='<text class="ir-et" x="'+tx+'" y="'+y0+'" text-anchor="'+(der?'end':'start')+'" fill="'+CATMETA[c].c+'">'+
    lineas.map((l,k)=>'<tspan'+(cifra&&k===lineas.length-1?' class="ir-et-n"':'')+' x="'+tx+'"'+(k?' dy="15"':'')+'>'+escHtml(l)+'</tspan>').join('')+'</text>';
@@ -1908,17 +1909,19 @@ function radarMiniSvg(){
 }
 function fechaRevisionOferta(o){const d=documentacionOfertaLocal(o);return d&&d.revisadaEl||o.verificadaEl||''}
 /* Tarjeta de los carruseles: foto limpia, título en dos líneas, proveedor y,
-   según el carrusel, hasta dos puntos fuertes o la fecha de alta. */
+   según el carrusel, hasta dos puntos fuertes o la fecha de alta. El aviso
+   crítico (tono stop), si existe, va entero también aquí. */
 function tarjetaInicioHtml(o,modo){
- const imagen=imagenOfertaLocal(o),e=transparenciaOferta(o);
+ const imagen=imagenOfertaLocal(o),e=transparenciaOferta(o),bloqueo=avisoBloqueoOferta(o);
  const id='inicio-'+modo+'-'+escHtml(o.slug),cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
  const pie=modo==='sel'?puntosFuertesOferta(o).slice(0,2).map(x=>'<span class="inicio-punto">'+escHtml(x.texto)+'</span>').join(''):
   e&&fechaLocalValida(e.anadidaEl)?'Añadida el <time datetime="'+escHtml(e.anadidaEl)+'">'+escHtml(fechaBarras(e.anadidaEl))+'</time>':'';
  return '<li><button type="button" class="inicio-oferta'+cat+'" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+
-  escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'"'+(pie?' aria-describedby="'+id+'"':'')+'>'+
+  escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'"'+(pie||bloqueo?' aria-describedby="'+[bloqueo?id+'-aviso':'',pie?id:''].filter(Boolean).join(' ')+'"':'')+'>'+
   '<span class="inicio-oferta-img"><img data-src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+
   ' loading="lazy" decoding="async" width="640" height="440"></span>'+
   '<span class="inicio-oferta-txt"><b class="inicio-oferta-tit">'+escHtml(o.titulo)+'</b><span class="inicio-oferta-prov">'+escHtml(o.plataformaNombre)+'</span></span>'+
+  (bloqueo?'<span class="inicio-oferta-aviso escaparate-aviso-bloqueo" id="'+id+'-aviso"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+'</span>':'')+
   (pie?'<span class="inicio-oferta-pie" id="'+id+'">'+pie+'</span>':'')+'</button></li>';
 }
 /* Las fotos de los carruseles se piden al acercarse a la pantalla: con solo
@@ -1952,7 +1955,7 @@ function pintarInicio(){
  const seleccion=ofertas.filter(o=>o.coleccion==='principales'&&enSeleccionOferta(o)).sort((a,b)=>
   String(a.plataformaNombre).localeCompare(String(b.plataformaNombre),'es')||String(a.titulo).localeCompare(String(b.titulo),'es'));
  const recientes=ofertasRecientesInicio(ofertas);
- const huella=[P.length,FUERA.length,sin,CATALOGO_EMBEBIDO_BLOQUEADO,iso,movimientoReducido(),
+ const huella=[P.length,FUERA.length,sin,CATALOGO_EMBEBIDO_BLOQUEADO,iso,
   P.map(p=>p.slug+p.cat).join(),ofertas.map(o=>o.slug+o.coleccion+o.categoria+o.estadoRevision+fechaRevisionOferta(o)).join(),
   seleccion.map(o=>o.slug).join(),recientes.map(o=>o.slug).join()].join('|');
  if(huella===huellaInicio)return;
@@ -1962,6 +1965,10 @@ function pintarInicio(){
  pon('inicioRadar',P.length?radarInicioSvg(sin):'');
  pon('movilRadarMini',P.length?radarMiniSvg():'');
  ocultar('inicioLeyenda',sin||!P.length);
+ /* Los recuentos del radar, también para el lector de pantalla (el SVG va oculto). */
+ ocultar('inicioRadarLista',sin||!P.length);
+ pon('inicioRadarLista',sin?'':Object.keys(CATMETA).map(c=>{const n=P.filter(p=>p.cat===c).length;
+  return n?'<li><span>'+escHtml(catCorta(c))+'</span> <span>'+n+(n===1?' plataforma':' plataformas')+'</span></li>':''}).join(''));
  const cuenta=c=>ofertas.filter(o=>o.coleccion===c).length;
  const t=iso?'<time datetime="'+escHtml(iso)+'">'+escHtml(fecha)+'</time>':escHtml(fecha);
  pon('inicioCifras',CATALOGO_EMBEBIDO_BLOQUEADO?'<li class="inicio-hud-1 inicio-hud-aviso"><b>Catálogo no disponible</b> <span>Volverá en cuanto se publique de nuevo</span></li>':
@@ -1974,8 +1981,8 @@ function pintarInicio(){
  const dias=P[0]&&Number.isInteger(P[0].vigencia_lote_dias)?P[0].vigencia_lote_dias:0;
  const hasta=iso&&dias>0?new Date(Date.parse(iso+'T00:00:00Z')+dias*86400000).toISOString().slice(0,10):'';
  pon('inicioVigencia',CATALOGO_EMBEBIDO_BLOQUEADO?'<span class="inicio-pastilla pendiente">Catálogo no disponible</span>':
-  sin?'<span class="inicio-pastilla pendiente">Revisión pendiente</span> <span>Revisado el</span> '+t+' <span>· pendiente de renovar</span>':
-  iso?'<span class="inicio-pastilla vigente">Vigente</span> <span>Revisado el</span> '+t+(hasta?' <span>· vigente hasta el</span> <time datetime="'+hasta+'">'+escHtml(fechaBarras(hasta))+'</time>':''):'');
+  sin?'<span class="inicio-pastilla pendiente">Revisión pendiente</span> <span><span>Revisado el</span> '+t+'</span> <span>· pendiente de renovar</span>':
+  iso?'<span class="inicio-pastilla vigente">Vigente</span> <span><span>Revisado el</span> '+t+'</span>'+(hasta?' <span><span>· vigente hasta el</span> <time datetime="'+hasta+'">'+escHtml(fechaBarras(hasta))+'</time></span>':''):'');
  ocultar('inicioSeleccion',!seleccion.length);
  pon('inicioCriterios',criteriosTransparencia().map(c=>'<li>'+escHtml(c.texto)+'</li>').join(''));
  pon('inicioSeleccionLista',seleccion.map(o=>tarjetaInicioHtml(o,'sel')).join(''));
@@ -2016,11 +2023,15 @@ function sincronizarRadarPlegado(){
   if(panel&&panel.classList){panel.classList.toggle('movil-radar-abierto');sincronizarRadarPlegado();}
  });
  try{const mq=typeof window!=='undefined'&&typeof window.matchMedia==='function'?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
-  if(mq&&typeof mq.addEventListener==='function')mq.addEventListener('change',()=>{if(typeof pintarInicio==='function')pintarInicio();});}catch(e){}
+  if(mq&&typeof mq.addEventListener==='function')mq.addEventListener('change',()=>{const r=document.getElementById('inicioRadar');
+   if(r&&typeof P!=='undefined'&&P.length)r.innerHTML=radarInicioSvg(inicioSinCifras());});}catch(e){}
  const panel=document.getElementById('movilPanelInicio');
  if(!panel||typeof panel.addEventListener!=='function')return;
+ /* Con el teclado, la tarjeta que recibe el foco entra entera en su carrusel. */
+ panel.addEventListener('focusin',e=>{const li=e.target&&e.target.closest&&e.target.closest('.inicio-carrusel>li');
+  if(li&&typeof li.scrollIntoView==='function')li.scrollIntoView({block:'nearest',inline:'nearest',behavior:movimientoReducido()?'auto':'smooth'});});
  panel.addEventListener('click',e=>{
-  const b=e.target&&e.target.closest&&e.target.closest('[data-inicio-cat],[data-inicio-coleccion],[data-inicio-buscar],[data-inicio-radar]');
+  const b=e.target&&e.target.closest&&e.target.closest('[data-inicio-cat],[data-inicio-coleccion],[data-inicio-radar]');
   if(!b||typeof Movil==='undefined'||!Movil.ir||!Movil.verEnBuscar)return;
   e.preventDefault();
   if(b.hasAttribute('data-inicio-radar')){
@@ -2029,8 +2040,6 @@ function sincronizarRadarPlegado(){
    sincronizarRadarPlegado();Movil.ir('movilRadarIntro',b);return;
   }
   const campo=document.getElementById('emiBuscar');
-  /* El campo se enfoca dentro del mismo toque: iOS solo abre el teclado así. */
-  if(b.hasAttribute('data-inicio-buscar')){Movil.ir('emisiones',b);if(campo&&campo.focus)campo.focus({preventScroll:true});return;}
   emiBusquedaLocal='';if(campo)campo.value='';
   if(b.hasAttribute('data-inicio-cat')){
    emiCat=b.getAttribute('data-inicio-cat')||'';
@@ -2344,30 +2353,43 @@ function catalogoSinCifrasLocal(){
 }
 function minimoDocumentadoLocal(r){return !!(r&&r.minimo&&(Number.isFinite(r.minimo.euros)||textoLocal(r.minimo.unidadDocumentada)))}
 function salidaDocumentadaLocal(r){return !!(r&&r.salida&&textoLocal(r.salida.texto)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto))}
+/* Con la revisión vencida el dato existe pero falta revalidarlo: no es «sin documentar». */
+function pendienteRevalidarLocal(r){return !!(r&&(r.vencida===true||catalogoSinCifrasLocal()||r.salida&&r.salida.texto==='Salida pendiente de revalidar'))}
 function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
  const e=transparenciaOferta(o),estado=estadoVigenciaLocal(o),textos=criteriosTransparencia();
  const cita=c=>c&&urlHttps(c.fuente)?{url:urlHttps(c.fuente),titulo:nombreFuenteLocal(c.fuente),fecha:fechaLocalValida(c.consultadaEl)?c.consultadaEl:''}:null;
- const editorial=campo=>e&&e[campo]?{cumple:e[campo].cumple===true,motivo:textoLocal(e[campo].motivo),
+ /* Los motivos de supervisada y documentoEspana son texto editorial de
+    transparencia.json (deFuente); los demás los escribe la interfaz. */
+ const editorial=campo=>e&&e[campo]?{cumple:e[campo].cumple===true,motivo:textoLocal(e[campo].motivo),deFuente:true,
   fuente:urlHttps(e[campo].fuente&&e[campo].fuente.url)?{url:urlHttps(e[campo].fuente.url),titulo:textoLocal(e[campo].fuente.titulo),fecha:e[campo].consultadaEl}:null}:
   {cumple:false,motivo:'Sin comprobación editorial para esta revisión de la oferta.',fuente:null};
- const contratable=o.coleccion==='principales'&&o.disponibleEs===true;
- const minimo=minimoDocumentadoLocal(resumen),salida=salidaDocumentadaLocal(resumen);
- const vigente=o.estadoRevision==='actual'&&!catalogoSinCifrasLocal()&&estado.clase!=='caducado';
+ /* Falla cerrado como la vigencia: con el catálogo caducado o sin comprobar
+    no se afirma nada sobre «hoy», y siempre lleva la fuente del acceso. */
+ const caducado=catalogoSinCifrasLocal()||estado.clase==='caducado';
+ const contratable=o.coleccion==='principales'&&o.disponibleEs===true&&!caducado&&!!(resumen.accesoEspana&&resumen.accesoEspana.estado==='si'&&cita(resumen.accesoEspana));
+ const minimo=minimoDocumentadoLocal(resumen),salida=salidaDocumentadaLocal(resumen),pendiente=pendienteRevalidarLocal(resumen);
+ const vigente=o.estadoRevision==='actual'&&!caducado;
+ const vencida='Pendiente de revalidar: la revisión semanal ha vencido.';
+ /* Mínimo y salida: la etiqueta es de la interfaz y el dato, de la fuente. */
+ const partes=[minimo?['Mínimo:',textoBreveDatoTarjetaLocal(resumen.minimo).replace(/\.$/,'')]:[pendiente?'Mínimo pendiente de revalidar.':'Mínimo sin documentar.'],
+  salida?['Salida:',textoLocal(resumen.salida.texto).replace(/^Salida:\s*/,'').replace(/\.$/,'')]:[pendiente?'Salida pendiente de revalidar.':'Salida sin documentar.']];
  const lista={
   contratable:{cumple:contratable,fuente:cita(resumen.accesoEspana),motivo:contratable?'Es una oferta principal y la fuente dice que se contrata desde España.':
    o.coleccion==='secundario'?'Es una referencia de reventa entre inversores, no una oferta abierta.':
    o.coleccion==='en_camino'?'Es un anuncio: todavía no se puede contratar.':
-   o.disponibleEs===false?'La fuente dice que no se contrata desde España.':'No consta en la fuente que se contrate desde España.'},
+   o.disponibleEs===false?'La fuente dice que no se contrata desde España.':caducado?vencida:'No consta en la fuente que se contrate desde España.'},
   supervisada:editorial('supervisada'),documentoEspana:editorial('documentoEspana'),
-  minimoSalida:{cumple:minimo&&salida,fuente:minimo?cita(resumen.minimo):cita(resumen.salida),
-   motivo:(minimo?'Mínimo: '+textoBreveDatoTarjetaLocal(resumen.minimo):'Mínimo sin documentar')+'. '+(salida?resumen.salida.texto:'Salida sin documentar')+'.'},
+  minimoSalida:{cumple:minimo&&salida,fuente:minimo?cita(resumen.minimo):cita(resumen.salida),partes,
+   motivo:partes.map(x=>x.length>1?x[0]+' '+x[1]+'.':x[0]).join(' ')},
   vigente:{cumple:vigente,fuente:null,motivo:vigente?'Revisada el '+fechaES(o.verificadaEl)+'; '+estado.texto+'.':
    o.estadoRevision==='fuentes_en_conflicto'?'Las fuentes no coinciden.':
    o.estadoRevision==='no_verificable'?'No se pudo confirmar en la revisión.':'La revisión semanal ha vencido.'},
  };
  return textos.map(c=>({...c,...lista[c.id]}));
 }
-function enSeleccionOferta(o){return !!transparenciaOferta(o)&&comprobacionesOferta(o).every(c=>c.cumple)}
+function avisoBloqueoOferta(o){return (o&&Array.isArray(o.avisos)?o.avisos:[]).find(x=>x&&x.tono==='stop'&&textoLocal(x.texto))||null}
+/* Una oferta con aviso crítico nunca entra en la Selección (falla cerrado). */
+function enSeleccionOferta(o){return !!transparenciaOferta(o)&&!avisoBloqueoOferta(o)&&comprobacionesOferta(o).every(c=>c.cumple)}
 function puntosFuertesOferta(o){
  const e=transparenciaOferta(o);
  return e&&Array.isArray(e.puntos)?e.puntos.filter(x=>x&&textoLocal(x.texto)):[];
@@ -2383,7 +2405,8 @@ function datosTarjetaOfertaHtml(o,resumen){
  const e=transparenciaOferta(o),acceso=resumen.accesoEspana&&resumen.accesoEspana.estado;
  const minimo=minimoDocumentadoLocal(resumen)?e&&textoLocal(e.minimoCorto)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.minimo)):
   textoBreveDatoTarjetaLocal(resumen.minimo);
- const salida=salidaDocumentadaLocal(resumen)?e&&textoLocal(e.salidaCorta)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.salida).replace(/^Salida:\s*/,'')):'Sin documentar';
+ const salida=salidaDocumentadaLocal(resumen)?e&&textoLocal(e.salidaCorta)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.salida).replace(/^Salida:\s*/,'')):
+  pendienteRevalidarLocal(resumen)?'Pendiente de revalidar':'Sin documentar';
  const espana=acceso==='si'?'Sí, según la fuente':acceso==='no'?'No, según la fuente':'Sin confirmar';
  return '<dl class="escaparate-datos-clave">'+[['Mínimo',minimo],['España',espana],['Salida',salida]]
   .map(([dt,dd])=>'<div><dt>'+escHtml(dt)+'</dt><dd>'+escHtml(dd)+'</dd></div>').join('')+'</dl>';
@@ -2392,30 +2415,35 @@ function puntosFuertesHtml(o,max=2){
  const l=puntosFuertesOferta(o).slice(0,max);
  return l.length?'<ul class="escaparate-puntos" aria-label="Puntos fuertes">'+l.map(x=>'<li>'+escHtml(x.texto)+'</li>').join('')+'</ul>':'';
 }
-/* En la ficha: los cinco criterios con su motivo y su fuente; todos los puntos fuertes. */
+/* En la ficha: los cinco criterios con su motivo y su fuente; todos los puntos
+   fuertes. Solo el texto de transparencia.json y los datos del catálogo se
+   marcan como fuente (no se traducen); lo que escribe la interfaz, sí. */
 function transparenciaDetalleHtml(o,resumen){
  const fecha=v=>fechaLocalValida(v)?' · consultada el '+escHtml(fechaES(v)):'';
  const fuente=(f,de)=>{if(!f)return '';const t=f.titulo||nombreFuenteLocal(f.url);
-  return '<a href="'+escHtml(f.url)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml(t+' · fuente de: '+de)+'">'+escHtml(t)+' ↗</a>'+fecha(f.fecha);};
+  return '<a href="'+escHtml(f.url)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml(t+' · fuente de: '+de)+'"><span class="escaparate-fuente-titulo">'+escHtml(t)+'</span> ↗</a>'+fecha(f.fecha);};
+ const dato=t=>'<span class="escaparate-comprobacion-dato">'+escHtml(t)+'</span>';
+ const motivo=c=>c.partes?'<p>'+c.partes.map(x=>x.length>1?'<span>'+escHtml(x[0])+'</span> '+dato(x[1])+'.':'<span>'+escHtml(x[0])+'</span>').join(' ')+'</p>':
+  '<p'+(c.deFuente?' class="escaparate-comprobacion-motivo-fuente"':'')+'>'+escHtml(c.motivo)+'</p>';
  const puntos=puntosFuertesOferta(o);
  return '<section class="escaparate-dialogo-seccion escaparate-transparencia" aria-labelledby="detalleTransparenciaTit">'+
   '<h3 id="detalleTransparenciaTit">Transparencia: lo que hemos comprobado</h3>'+
   '<p class="escaparate-transparencia-aviso">Es una comprobación de la documentación, no una recomendación de inversión.</p>'+
   '<ul class="escaparate-comprobaciones">'+comprobacionesOferta(o,resumen).map(c=>'<li class="'+(c.cumple?'cumple':'no-cumple')+'">'+
    '<span class="escaparate-comprobacion-marca" aria-hidden="true">'+(c.cumple?'✓':'✗')+'</span><div><b>'+escHtml(c.texto)+
-   '<span class="solo-lector">'+(c.cumple?': sí':': no')+'</span></b><p>'+escHtml(c.motivo)+'</p>'+(c.fuente?'<p class="escaparate-comprobacion-fuente">'+fuente(c.fuente,c.texto)+'</p>':'')+'</div></li>').join('')+'</ul>'+
+   '<span class="solo-lector">'+(c.cumple?': sí':': no')+'</span></b>'+motivo(c)+(c.fuente?'<p class="escaparate-comprobacion-fuente">'+fuente(c.fuente,c.texto)+'</p>':'')+'</div></li>').join('')+'</ul>'+
   (puntos.length?'<h4>Puntos fuertes, con su fuente</h4><ul class="escaparate-puntos-detalle">'+puntos.map(x=>'<li><b>'+escHtml(x.texto)+'</b>'+
    (x.fuente&&urlHttps(x.fuente.url)?' '+fuente({url:urlHttps(x.fuente.url),titulo:textoLocal(x.fuente.titulo)},x.texto):'')+'</li>').join('')+'</ul>':'')+
   '</section>';
 }
-function tarjetaOfertaLocal(o,{secundario=false}={}){
+function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
  const estado=estadoVigenciaLocal(o);
  const resumen=resumenEditorialOferta(o);
  const documentacion=documentacionOfertaLocal(o);
  /* El aviso general (igual en todas) va una vez encima de la lista; la
     tarjeta enseña el propio de esa oferta. */
- const avisos=avisosOfertaLocal(o).filter(t=>!AVISO_GENERAL_OFERTA.test(t)),imagen=imagenOfertaLocal(o);
- const bloqueo=(Array.isArray(o.avisos)?o.avisos:[]).find(x=>x&&x.tono==='stop');
+ const todos=avisosOfertaLocal(o),avisos=todos.filter(t=>!AVISO_GENERAL_OFERTA.test(t)),imagen=imagenOfertaLocal(o);
+ const bloqueo=avisoBloqueoOferta(o);
  const advertencia=(Array.isArray(o.avisos)?o.avisos:[]).find(x=>x&&x.tono==='warn'&&!x.esAntiguedad&&!AVISO_GENERAL_OFERTA.test(textoLocal(x.texto)));
  const avisoPrincipal=bloqueo?textoLocal(bloqueo.texto):advertencia?textoLocal(advertencia.texto):avisos[0];
  const fechaRevision=documentacion?documentacion.revisadaEl:o.verificadaEl;
@@ -2426,15 +2454,15 @@ function tarjetaOfertaLocal(o,{secundario=false}={}){
   '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440">'+botonGuardarOferta(o)+'</div>'+
   '<div class="escaparate-cuerpo">'+
    (o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
-   '<h3 class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h3><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
+   '<h'+nivel+' class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h'+nivel+'><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
    (imagen&&imagen.lugar?'<p class="emi-lugar">'+ICONO_LUGAR+escHtml(imagen.lugar)+'</p>':'')+'</div>'+
-   puntosFuertesHtml(o)+datosTarjetaOfertaHtml(o,resumen)+
+   puntosFuertesHtml(o)+(vistaMovilOfertas()?datosTarjetaOfertaHtml(o,resumen):datosClaveOfertaHtml(resumen))+
    '<div class="escaparate-meta"><span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
    (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</div>'+
    (avisoPrincipal?'<p class="escaparate-aviso-compacto'+(bloqueo?' escaparate-aviso-bloqueo':'')+'"><b>'+(bloqueo?'Importante':'Revisa')+'</b> · '+escHtml(avisoPrincipal)+(avisos.length>1?'<span> · '+(avisos.length-1)+' más en la ficha</span>':'')+'</p>':'')+
    /* En la fila compacta del móvil el aviso ordinario se resume en su
       número, junto a la fecha; el crítico (tono stop) se lee entero siempre. */
-   '<div class="emi-pie">'+(!bloqueo&&avisos.length?'<p class="escaparate-avisos-n"><b>Revisa</b> · <span>'+avisos.length+(avisos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
+   '<div class="emi-pie">'+(!bloqueo&&todos.length?'<p class="escaparate-avisos-n"><b>Revisa</b> · <span>'+todos.length+(todos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
     '<div class="emi-revision"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'"><span class="emi-ver-pre">'+
     (documentacion?'Doc.':'Revisado')+' </span>'+escHtml(fechaES(fechaRevision))+'</time>'+
     (resumen.fechas.fechaDato&&resumen.fechas.fechaDato!==fechaRevision?'<span class="emi-fecha-dato">Dato: '+escHtml(fechaES(resumen.fechas.fechaDato))+'</span>':'')+'</div>'+
@@ -2548,8 +2576,8 @@ function abrirDetalleOfertaLocal(slug){
   '<div class="escaparate-dialogo-cuerpo"><div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
    escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540" decoding="async"></div><p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>'+
   '<p class="escaparate-dialogo-estado"><span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></p>'+
-  '<div class="escaparate-dialogo-identidad"><div><b>'+escHtml(o.plataformaNombre)+'</b><span>'+escHtml(o.categoria)+
-   (o.pais?' · '+escHtml(o.pais):'')+'</span></div><div class="escaparate-dialogo-dato"><b>'+escHtml(claves.destacado.valor)+
+  '<div class="escaparate-dialogo-identidad"><div><b>'+escHtml(o.plataformaNombre)+'</b><span>'+escHtml(catCorta(o.categoria))+
+   (imagen&&imagen.lugar?' · '+escHtml(imagen.lugar):o.pais?' · '+escHtml(o.pais):'')+'</span></div><div class="escaparate-dialogo-dato"><b>'+escHtml(claves.destacado.valor)+
    '</b><span>'+escHtml(claves.destacado.etiqueta)+'</span>'+
    (referencia?'<p class="escaparate-referencia">'+escHtml(referencia)+'</p>':'')+'</div></div>'+
   (o.resumen&&estado.clase!=='caducado'?'<p class="escaparate-dialogo-resumen">'+escHtml(o.resumen)+'</p>':'')+

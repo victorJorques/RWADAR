@@ -2369,6 +2369,24 @@ for(const [nombre,alterar] of [
     cortos.every(nombre=>radar.includes('>'+nombre+(nombre==='Inmobiliario'||nombre==='Acciones'?' ':'<')))&&
     !/Inmuebles|>Infra<|>Materias</i.test(radar)&&
     /matchMedia\('\(prefers-reduced-motion: reduce\)'\)[\s\S]{0,40}addEventListener==='function'\)mq\.addEventListener\('change'/.test(js));
+  // Corrección (03/11): las tarjetas de un carrusel miden lo mismo; un proveedor largo se corta con «…» y no las estira.
+  const liCarrusel=declaracionesCSS(css,'.inicio-carrusel>li').join(';'),provCarrusel=declaracionesCSS(css,'.inicio-oferta-prov').join(';');
+  prueba('las tarjetas de los carruseles de Inicio miden lo mismo y el proveedor largo no las ensancha',
+    /flex\s*:\s*0 0 [^;]+/.test(liCarrusel)&&/min-width\s*:\s*0/.test(liCarrusel)&&
+    /min-width\s*:\s*0/.test(declaracionesCSS(css,'.inicio-oferta').join(';'))&&/min-width\s*:\s*0/.test(declaracionesCSS(css,'.inicio-oferta-txt').join(';'))&&
+    /overflow\s*:\s*hidden/.test(provCarrusel)&&/text-overflow\s*:\s*ellipsis/.test(provCarrusel)&&/white-space\s*:\s*nowrap/.test(provCarrusel));
+  // Un aviso crítico (tono stop) saca la oferta de la Selección y va entero en su tarjeta de Inicio.
+  const stop=vm.runInContext(`(()=>{const o={...EMI.find(x=>x.slug==='${sacada}')};o.avisos=[...(o.avisos||[]),{tono:'stop',texto:'AVISO_STOP_EN_INICIO'}];
+    return {sel:enSeleccionOferta(o),tarjeta:tarjetaInicioHtml(o,'alta')};})()`,c);
+  prueba('una oferta con aviso crítico sale de la Selección y su tarjeta de Inicio enseña el aviso entero',
+    stop.sel===false&&/<span class="inicio-oferta-aviso escaparate-aviso-bloqueo" id="[^"]+-aviso"><b>Importante<\/b> · AVISO_STOP_EN_INICIO<\/span>/.test(stop.tarjeta)&&
+    /aria-describedby="[^"]*-aviso/.test(stop.tarjeta)&&vm.runInContext(`enSeleccionOferta(EMI.find(x=>x.slug==='${sacada}'))`,c)===true&&
+    !/\.inicio-oferta-aviso\{[^}]*display\s*:\s*none/.test(css));
+  // La leyenda y su lista para el lector de pantalla se ocultan de verdad con el catálogo caducado.
+  prueba('los recuentos del radar llegan al lector de pantalla y la leyenda oculta no se ve',
+    /<li><span>(?:Inmobiliario|Crédito|Tesoro|Acciones|Materias primas|Infraestructura)<\/span> <span>\d+ plataformas?<\/span><\/li>/.test(p.obtiene('inicioRadarLista').innerHTML)&&
+    /<ul class="solo-lector" id="inicioRadarLista" aria-labelledby="inicioLeyenda"><\/ul>/.test(htmlInicio)&&
+    /\.inicio-leyenda\[hidden\]\{display:none\}/.test(css)&&!/data-inicio-buscar/.test(htmlInicio));
 }
 {
   const p=pestanaCatalogo(),c=p.contexto,ampliado=snapshotLocalV2(c);

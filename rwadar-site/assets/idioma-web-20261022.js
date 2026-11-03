@@ -31,7 +31,7 @@
   // pasan por el diccionario aunque coincidan con una etiqueta como Inicio.
   const originales=[
     '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar',
-    '#movilPanelInicio .inicio-oferta-tit','#movilPanelInicio .inicio-oferta-prov','.escaparate-comprobaciones p','.escaparate-puntos-detalle a',
+    '#movilPanelInicio .inicio-oferta-tit','#movilPanelInicio .inicio-oferta-prov','.escaparate-comprobacion-motivo-fuente','.escaparate-comprobacion-dato','.escaparate-fuente-titulo',
     '#emiLista .escaparate-dato-principal b','#emiLista .escaparate-referencia','#emiLista .escaparate-aviso-compacto',
     '.escaparate-datos-clave dd:has(a)','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
     '.escaparate-dialogo-identidad','.escaparate-dialogo-resumen','.escaparate-documentacion-caracteristicas',
@@ -44,9 +44,9 @@
     '#perfilOfertas .perfil-oferta h3','#perfilOfertas .perfil-oferta p','#perfilEmpresas .movil-seguida h3','#perfilEmpresas .movil-seguida p','#cuentaIdentidad','#cuentaEstadoCorreo',
     '.comunidad-autor','.comunidad-texto','.ac-articulo','.ac-tldr ol','.ac-glosario dl','.ac-leccion-cab h1',
     '.ac-pregunta legend','.ac-opcion-texto','.ac-explicacion','.ac-aviso-legal','main[data-idioma-documental]',
-    'main[data-ficha-consulta] p:not(.migas):not(:has(a))','main[data-ficha-consulta] .riesgos','main[data-ficha-consulta] .fuentes','main[data-ficha-consulta] figure'
+    'main[data-ficha-consulta] p:not(.migas):not(.ui):not(:has(a))','main[data-ficha-consulta] .riesgos','main[data-ficha-consulta] .fuentes','main[data-ficha-consulta] figure'
   ].join(',');
-  const superficies='#inicioSeleccion,#inicioRecientes,#emiLista,#grid,#matrix,#radarLee,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
+  const superficies='#emiLista,#grid,#matrix,#radarLee,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
   function traducir(origen){
     if(idioma.obtenerIdioma()==='en'){
       const limpio=origen.trim(),m=limpio.match(/^Ver las referencias documentales y sus fechas \((\d+)\)$/);
@@ -101,6 +101,8 @@
   function marcarFuente(fuente){
     if(!fuente.lang)fuente.lang=fuente.dataset.idiomaFuente||'es';
     fuente.setAttribute('translate','no');
+    // Títulos y proveedores de los carruseles de Inicio: nombres propios, sin rótulo.
+    if(fuente.closest('.inicio-carrusel'))return;
     const dialogo=fuente.closest('.escaparate-dialogo');
     const superficie=(dialogo&&dialogo.querySelector('.escaparate-dialogo-cuerpo'))||fuente.closest(superficies)||fuente;
     if(superficie!==fuente)fuente.removeAttribute('data-idioma-fuente-etiqueta');
