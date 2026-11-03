@@ -1,0 +1,137 @@
+Futuros
+Futuros TradFi
+Acciones
+xStocks
+Atención al cliente
+ES
+ES
+Futuros
+Futuros TradFi
+Acciones
+xStocks
+Atención al cliente
+Compra y vende derivados de criptomonedas y xStocks
+Descargar la aplicación de Kraken
+ES
+PAYWARD EUROPE DIGITAL SOLUTIONS (CY) LIMITED
+MiFID II RISK DISCLOSURE STATEMENT
+Payward Europe Digital Solutions (CY) Limited (formerly I.F. Greenfields Wealth Ltd) is authorised and regulated by the Cyprus Securities and Exchange Commission with licence number 342/17.
+GENERAL RISK DISCLOSURE STATEMENT
+Introduction
+This notice has been published by Payward Europe Digital Solutions (CY) Limited (“PEDSL”). PEDSL (formerly I.F. Greenfields Wealth Ltd) is authorised and regulated by the Cyprus Securities and Exchange Commission with licence number 342/17. In this notice “we”, “us” and similar expressions means PEDSL and, where the context so admits, any of its affiliates (the “Kraken Group”). This notice has been published pursuant to our obligations under the Markets in Financial Instruments Directive (Directive 2014/65/EU), as transposed to local law pursuant to the Investment Services and Activities and Regulated Markets Law of 2017 (L. 87(I)/2017), to provide you with a general description of the risks of financial instruments.
+This notice describes generally the most significant risks of investing in financial instruments such as derivatives. Any investment in financial instruments involves a degree of risk, though some financial instruments are riskier than others. Prices can fall as well as rise and there is a risk you may lose your entire investment in any financial instrument.
+This notice cannot disclose all the risks and other significant aspects of financial instruments. You should also read any relevant documentation, for example terms of services and offering documents which may include more information on the risks relating to a financial instrument.
+You should not make any investment decision unless you understand the nature of your exposure to risk and potential loss and you should carefully consider whether any financial instrument is suited to your circumstances before making any investment decision. Unless otherwise agreed in writing, we will not provide investment advice to you and any communication with you should not be relied upon as such. No investment decision should be made in reliance on such communications, which do not include all risk factors or other matters that may be material, do not take into account individual investment objectives, financial conditions, or needs, and are not personal recommendations or investment advice, or a basis to consider PEDSL or any entity of the Kraken Group to be a fiduciary or other type of advisor.
+1. Products
+PEDSL offers financial instruments which are derivative contracts, often, but not always, linked to crypto-assets. A derivative is a contract entered into between parties for the exchange of payments calculated by reference to an underlying asset. A derivative can be traded “over-the-counter” (i.e., outside of an exchange or other trading venue) (OTC) or on an exchange (exchange-traded).
+Exchange-traded derivatives
+•
+Leverage risk
+: Futures contracts are leveraged instruments as the amount of initial margin required is smaller relative to the potential gains or losses under the contracts. Whilst leverage can enhance your profits, it can also exacerbate your losses.
+• Margin risk:
+A relatively small market movement will have a proportionately larger impact on the margin you have deposited or will have to deposit. This may work against you as well as for you. You may sustain a total loss of initial margin funds and any additional margin deposited with the firm to maintain your position. However, if the market moves against your position or margin levels are increased, you may be called upon to pay substantial additional collateral on short notice to cover losses incurred under the futures contracts and maintain your position. Failure to provide collateral may lead to the contracts being closed out which could crystallise a loss position.
+• Market risk:
+Trading derivatives exposes you to market risk. If you hold a long position and the underlying-asset price declines or if you hold a short position and the underlying asset price increases, you may lose the full value of your investment. The derivatives markets can be volatile, which means the prices of the products can change rapidly and are therefore unpredictable. Further, the legal and regulatory status of derivatives is uncertain and may be prone to change.
+• Liquidity risk:
+Trading derivatives exposes you to liquidity risk. This is the risk that you suffer a loss because you cannot close out a Derivatives position because there is no demand to take the other side of that trade.
+• Credit risk:
+Trading derivatives exposes you to credit risk. This is the risk that one or more of your counterparties to a Derivative contract have deposited insufficient collateral into their account(s) such that you may not receive some or all of the assets or funds they owe you.
+• Operational risk:
+Trading platforms use computer systems for order routing, execution, and matching of trades. As with all facilities and systems, they are vulnerable to temporary disruption or failure. Your ability to recover certain losses may be subject to limits on liability
+imposed by the system provider, the market and/or member firms.
+• Legislative and Regulatory Risk:
+Changes or actions in your country or state of residence may adversely affect:
+i. the use, transfer, and value of your collateral;
+ii. the operations and profitability of some services;
+iii. the tax treatment of the services; and
+iv. your ability to close derivatives trades in a timely manner or at all
+• No title ownership of the underlying asset:
+In entering into Derivatives, you are not entering into a sale or purchase agreement to purchase assets themselves. Derivatives do not give you any rights to receive physical delivery of any underlying asset and we may not be holding a hedging position on the underlying asset (and if we did, you would have no right to such hedging position).Instead, it is a contract that provides an agreed position with respect to the future price of an asset that may result in a profit or a loss for you.
+xStocks
+xStocks are debt securities in tokenised format, providing investors with exposure to the performance of the stocks, exchange-traded funds (ETFs) or government bonds (each an “Underlying Security”). PEDSL provides buy and sell services in relation to xStocks acting as principal. Transactions in xStocks may expose you to the following specific risks:
+Holders of xStocks do not have ownership in any of the Underlying Securities;
+instead, by purchasing xStocks investors can benefit from exposure to the performance of the Underlying Security. Holders of xStocks have no voting rights, dividend or distribution entitlements, or legal claims to the Underlying Security or any residual assets in the event of the Underlying Security’s liquidation or termination. An investment in the xStocks does not entitle holders to receive any information from the respective issuer or sponsor of the Underlying Security.
+All investments in xStocks are subject to fees
+, as set forth in the offering prospectus for each xStock (which is available on our Site and on the website of the issuer of the xStocks (https://assets.backed.fi/legal-documentation)). Consequently, the return on xStocks will not be identical to the potential return generated by directly holding the Underlying Security during the same period.
+Investment in xStocks involves a high degree of risk and may result in the total loss of invested capital.
+xStocks are a highly speculative investment and are highly reliant on technology. xStocks are complex products which are difficult to understand and may not be suitable for inexperienced investors.
+BY INVESTING IN xSTOCKS, YOU CAN LOSE YOUR ENTIRE INVESTMENT.
+You should not invest money that you cannot afford to lose. You should seek advice from an independent and suitably licensed financial advisor and ensure that you have the risk appetite, relevant experience and knowledge before you decide to trade.
+Investing in xStocks exposes you to market risks
+associated with the underlying companies (i.e., the company whose shares your xStocks represent), such as market volatility, financial performance, corporate actions, regulatory developments, and economic conditions.
+Investing in xStocks exposes you to the financial and operational risks
+of PEDSL itself as the dealer and initial custodian of your investment, which include risks related to the creditworthiness, operational and technology related risks, and solvency of PEDSL, and which exist irrespective of the performance of the xStocks and the Underlying Securities.
+Investing in xStocks exposes you to liquidity risk
+, which is the risk that you suffer a loss because you cannot liquidate your investment in an xStock at the moment you wish to because there is insufficient purchase demand.
+Investing in xStocks exposes you to platform parameters ris
+k, which is the risk that you suffer a loss because PEDSL had to change parameters on the platform which affects xStocks.
+Investing in xStocks exposes you to operational risk,
+which is the risk that you suffer a loss because of a malfunction of the platform, for example resulting from scheduled or unscheduled downtimes, matching system failure, database failure, cryptocurrency transfer or storage failure, failure or malfunction of the API, hacker attacks or other failure or malfunction.
+Investing in xStocks exposes you to regulatory risk,
+which is the risk that you suffer a loss because PEDSL has to restrict or terminate elements of our service in response to regulatory action against us or the Issuer.
+Investing in xStocks also exposes you to the financial and operational risks of Backed Assets (JE) Limited as the issuer of xStocks (“Backed.fi”),
+which include risks related to the creditworthiness, operational and technology related risks, and solvency of Backed.fi, and which exist irrespective of the performance of the underlying companies.
+Backed.fi is also exposed to the credit risks of the various counterparties with which it transacts and the failure of such counterparties to fulfill their respective obligations. This includes the credit risks of depositary institutions with whom Backed.fi holds funds and assets. This credit risk includes the possibility that such depositary institution will fail to fulfil an obligation or commitment to Backed.fi. Any insolvency of such depositary institution may result in delayed or impossible access to funds or assets, including those serving as collateral for any xStocks. In such an event, you may face a partial or total loss of your invested capital.
+Prospective investors should also familiarise themselves with the risks associated with the xStocks as set out in the
+“Risk Factors” section prospectus for the xStocks
+(which is available on our Site and on the website of the issuer of the xStocks (https://assets.backed.fi/legal-documentation)
+2. Insolvency
+In the event of our insolvency or default, or that of any other brokers involved with your transaction, it may lead to positions being liquidated or closed out without your consent. In certain circumstances, you may not get back the actual assets which you lodged as collateral and you may have to accept any available payments in cash.
+3. Taxation
+Your investment may be subject to the impact of taxes as imposed in your jurisdictions. You should consult your own professional tax advisers on the implications of making an investment in, holding, or disposing of investments in crypto-asset derivatives.
+4. Appropriateness
+Before we open an account for you, we are required to make an assessment of whether the product(s) and/or services you have chosen are appropriate for you, and to warn you if, on the basis of the information you provide us, any product or service is not appropriate. You may be able to re-take the appropriateness test once you have educated yourself with the products.
+5. Position Monitoring
+You should further ensure that you are able to monitor positions on your account at all times, as you are solely responsible for this. We are not responsible for monitoring positions on your account.
+6. Fees and Costs
+Our fees and charges are set out on our webpage eu.kraken.com
+.
+Before entering into a transaction, you should make sure you clearly understand all commission, fees and other charges for which you will be liable. These charges will affect your net profit (if any) or increase your loss.
+Updated : 27 January 2026
+Productos
+Futures
+Futuros de TradFi
+Acciones
+xStocks
+Empresa
+Atención al cliente
+Centro de privacidad
+Aviso de privacidad
+Configuración de cookies
+No vender/compartir
+Términos de servicio
+Información legal
+Declaración de riesgos
+Divulgación sobre préstamo de valores
+las Políticas
+Documentos de información clave
+by
+PAYWARD
+© 2011–2026 Payward, Inc.
+Trading
+Kraken
+Kraken Pro
+NinjaTrader
+Breakout
+VIP
+API Trading
+|
+Services
+Payward Services
+xStocks
+CF Benchmarks
+Reap
+|
+Banking
+Krak
+Prime
+OTC
+Custody
+|
+Asset Management
+Los servicios de inversión, los servicios auxiliares y las actividades de inversión (los “Servicios”) en relación con los instrumentos financieros son proporcionados y ejecutados por Payward Europe Digital Solutions (CY) Limited (ex I.F. en relación con los instrumentos financieros. PEDSL-CY está autorizada y aprobada por la Comisión de Bolsa y Valores de Chipre (CySEC) para prestar los Servicios. Consulta las divulgaciones sobre riesgos en este
+enlace
+. PEDSL-CY está autorizada y regulada por la Comisión de Bolsa y Valores de Chipre, con el número de licencia 342/17. PEDSL-CY está registrada en Chipre con el número de registro HE 356603 y tiene su domicilio social en Athalassas, 62, MEZZANINE, Strovolos 2012, Nicosia, Chipre.
+Estos materiales son solo para fines informativos generales y no representan asesoría o recomendaciones de inversión o financiera o solicitudes de compra o venta de instrumentos financieros para involucrarse en cualquier estrategia específica de operaciones. Los mercados de derivados son impredecibles y, por tanto, invertir en este tipo de activos puede conllevar la pérdida de capital. El valor de una inversión puede tanto subir como bajar y el desempeño anterior no es un indicador confiable de los resultados futuros. Puede que debas pagar impuestos sobre cualquier ganancia o aumento en el valor de tus inversiones y deberías buscar asesoría independiente sobre tu situación fiscal. Pueden aplicarse restricciones geográficas. Consulta las divulgaciones sobre riesgos en este
+enlace
+.

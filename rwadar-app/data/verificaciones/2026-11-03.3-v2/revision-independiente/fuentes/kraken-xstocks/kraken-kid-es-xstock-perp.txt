@@ -1,0 +1,196 @@
+Documento de Datos Fundamentales
+Finalidad
+Este documento le proporciona información fundamental que debe conocer sobre este producto de inversión. No se trata de material comercial. Es una
+información exigida por ley para ayudarle a comprender la naturaleza, los riesgos, los costes y los beneficios y pérdidas potenciales de este producto y para
+ayudarle a compararlo con otros productos.
+Producto
+Denominación del producto                                   Futuro perpetuo lineal sobre          el   xStock   subyacente    Lista   completa    disponible   en
+                                                            https://www.cryptofacilities.com/
+Nombre del productor del PRIIP                              Crypto Facilities Limited (CFL)
+Autoridad competente para la supervisión CFL                UK Financial Conduct Authority (FCA)
+Fecha y hora de elaboración de este documento               15 jul. 2026, 10:28 (CEST)
+de datos fundamentales
+
+Está a punto de adquirir un producto que no es sencillo y que puede ser difícil de comprender.
+1.    ¿Qué es este producto?
+Nota: Los términos que figuran en negrita en este artículo se definen en la tabla siguiente
+
+     Tipo                  Contrato de derivados negociado en bolsa vinculado al rendimiento del xStock Subyacente (según se define a continuación). El
+                           producto es un Futuro Perpetuo Lineal.
+
+                           El producto ofrece una exposición indirecta al precio del xStock Subyacente sin necesidad de poseer dicho xStock Subyacente. Un
+                           xStock es un instrumento de deuda tokenizado respaldado en una proporción de 1:1 por un patrimonio neto específico o un fondo
+                           cotizado en bolsa (ETF, por sus siglas en inglés). El producto no proporciona protección alguna frente al rendimiento futuro del
+                           Subyacente, y usted podría perder una cantidad superior a su inversión inicial.
+     Plazo                 El producto es un futuro perpetuo, lo que significa que no tiene fecha de vencimiento y se renueva automáticamente cada hora al
+                           final de la hora. Un inversor en el producto puede cerrar su posición en cualquier momento abriendo una posición de futuros opuesta
+                           (con el mismo subyacente), siempre que haya suficiente oferta o demanda.
+     Objetivos             Descripción general: un Futuro Perpetuo Lineal es un contrato de derivados cotizado en bolsa con términos estandarizados que se
+                           celebra entre un comprador (que adopta una posición "larga") y un vendedor (que adopta una posición "corta") y que proporciona
+                           exposición apalancada a un xStock Subyacente sin conferir ningún interés, título o derecho directo sobre el subyacente. Un futuro le
+                           permite tratar de beneficiarse de los movimientos en el precio del subyacente.
+
+                           Apalancamiento: el producto es un producto apalancado, ya que a usted no se le exige pagar el valor del xStock Subyacente al
+                           comprar el producto. En cambio, al abrir una posición se le exige pagar un depósito inicial de margen, cuyo importe depende del
+                           nivel de apalancamiento incorporado en el contrato. CFL puede cerrar su posición si el valor de su cartera de derivados cae por
+                           debajo de los requisitos de margen mínimo denominados "margen de mantenimiento". Al cerrar la posición, usted podría incurrir en
+                           pérdidas superiores al margen, lo que significa que podría perder más de lo que invirtió inicialmente. Los tipos de divisas de garantía
+                           admitidos como margen idóneo están
+                           publicados en https://www.cryptofacilities.com/, y son susceptibles de ser modificados de forma oportuna por CFL ("Activos en
+                           garantía"). Se aplican recortes y tasas de conversión a las divisas de garantía distintas del USD
+
+                           cPérdidas o ganancias: el comprador y el vendedor mantienen posturas opuestas sobre cómo evolucionará el valor del precio del
+                           futuro. Los inversores que prevén que el precio de un activo subirá, normalmente abrirán una posición (“larga”) de compra. Si prevén
+                           una caída del precio, normalmente abrirán una posición ("corta") de venta. Los titulares de contratos "largos" obtendrán beneficios si
+                           el precio del contrato en el momento del cierre es superior al precio al que se suscribió inicialmente, o incurrirán en pérdidas si el
+                           precio de cierre es inferior al precio de compra. Para una posición corta, se aplica lo contrario.
+
+                           Mecanismo de tipos de financiación: mientras el contrato esté abierto, el comprador o el vendedor pueden recibir pagos del otro
+                           destinados a mantener el precio del contrato alineado con el precio de mercado del xStock Subyacente ("Tasa de Financiación"). La
+                           Tasa de Financiación se calcula para un periodo de una hora ("Periodo de Financiación") basándose en el precio medio ponderado
+                           en el tiempo ("TWAP", por sus siglas en inglés) del contrato y el xStock Subyacente. Los pagos de la Tasa de Financiación se
+                           intercambian de forma continua entre las posiciones largas y cortas y se acumulan como ganancias o pérdidas no realizadas. Estos
+                           pagos se liquidan cada hora al final del Periodo de Financiación correspondiente o cuando un comprador o vendedor modifica su
+                           respectiva posición abierta neta, lo que ocurra primero.
+                           xStock Subyacente           Cualquier xStock idóneo disponible en        Garantías           Los activos de su cartera que son
+                                                       la plataforma de negociación de Kraken.      admisibles          aceptables para CFL como garantía
+                                                       Hay disponible una lista de todos los                            para su exposición según el producto
+                                                       xStock Subyacentes disponibles para el                           tal     como      se      describe en
+                                                       producto en                                                      https://www.cryptofacilities.com/
+                                                       https://www.cryptofacilities.com/
+     Inversor              Este producto está destinado a inversores particulares que cumplan todos los siguientes criterios:
+     minorista        al       (a) tienen amplios conocimientos o experiencia en productos financieros derivados y en productos que proporcionan exposición
+     que             va             a xStocks y tienen la capacidad de comprender los productos y sus riesgos y beneficios;
+     dirigido                  (b) su principal objetivo de inversión es la optimización del capital, el apalancamiento con fines de inversión direccional,
+                                    arbitraje o cobertura y esperan que el activo subyacente se comporte de manera que genere una rentabilidad positiva;
+                               (c) tienen un horizonte de inversión a corto plazo y supervisarán periódicamente el rendimiento del producto para garantizar
+                                    una toma de decisiones oportuna en relación con una estrategia de salida óptima;
+                               (d) no buscan la protección del capital y pueden asumir pérdidas superiores al capital inicialmente invertido;
+                               (e) aceptan el riesgo de que la contraparte de su transacción pueda incumplir sus obligaciones; y
+                               (f) aceptan que negociar con xStocks conlleva riesgos significativos debido a la alta volatilidad del subyacente y que este
+                                    producto tiene una categoría de riesgo de 7 sobre 7 sobre 7.
+2.    ¿Qué riesgos corro y qué podría obtener a cambio?
+Indicador de Riesgo
+
+
+                 1                    2                     3                      4                     5                     6                     7
+
+
+     Riesgo más bajo                                                                                                                          Riesgo más alto
+                 El indicador de riesgo asume que usted mantiene el producto hasta el final del período de tenencia recomendado. Si liquida la inversión
+                 anticipadamente, el riesgo real puede variar considerablemente y es posible que obtenga menos beneficios.
+
+
+
+El indicador resumido de riesgo es una guía del nivel de riesgo de este producto en comparación con otros productos. Muestra las probabilidades de que el
+producto pierda dinero debido a la evolución de los mercados o porque no podamos pagarle. Hemos clasificado este producto en la clase de riesgo 7 en una
+escala de 7, en la que 7 significa el riesgo más alto. Esta evaluación califica la posibilidad de sufrir pérdidas en rentabilidades futuras como muy alta y la
+probabilidad de que una mala coyuntura de mercado influya en la capacidad de Crypto Facilities Ltd de pagarle como posible.
+En determinadas circunstancias se le puede pedir que efectúe pagos adicionales por las pérdidas sufridas. Las pérdidas totales que puede sufrir pueden
+superar considerablemente el importe invertido. Este producto no incluye ninguna protección frente al comportamiento futuro del mercado, por lo que podrías
+incurrir en pérdidas significativas. Si no podemos pagarte lo que se te debe, podrías sufrir pérdidas significativas. Esto se denomina «riesgo de crédito».
+ Escenarios de rentabilidad
+Este gráfico ilustra cómo podría comportarse su inversión. Puede compararlo con los gráficos de pago de otros derivados.
+
+                                                                                                    El gráfico ofrece una serie de resultados posibles y no
+                                                                                                    constituye una indicación exacta de lo que podría
+                                                                                                    recuperar. Lo que obtenga variará en función de la
+                                                                                                    evolución del subyacente. Para cada nivel del subyacente,
+                                                                                                    el gráfico muestra cuál sería el beneficio o la pérdida del
+                                                                                                    producto. El eje horizontal muestra las posibles
+                                                                                                    variaciones de precio del subyacente y el eje vertical el
+                                                                                                    beneficio o la pérdida resultante, expresado como
+                                                                                                    porcentaje del valor nocional.
+
+                                                                                                    Comprar este producto significa que usted espera que el
+                                                                                                    precio del subyacente suba.
+
+                                                                                                    Este producto está apalancado y no ofrece protección del
+                                                                                                    capital. Puede perder la totalidad de su inversión y, debido
+                                                                                                    a los requisitos de margen, podría tener que realizar pagos
+                                                                                                    adicionales y perder más del importe inicialmente invertido.
+
+                                                                                                    La rentabilidad porcentual se calcula sobre el valor
+                                                                                                    nocional del contrato, ya que el producto no tiene un
+                                                                                                    importe de inversión inicial.
+                                                                                                    Las cifras presentadas incluyen todos los costes del
+                                                                                                    producto propiamente dicho, pero es posible que no
+                                                                                                    incluyan todos los costes que usted deba pagar a su
+                                                                                                    asesor o distribuidor. Las cifras no tienen en cuenta su
+                                                                                                    situación fiscal personal, que también puede influir en la
+                                                                                                    cantidad que reciba.
+3.     ¿Qué pasa si no podemos pagar?
+Usted está expuesto al riesgo de que la contraparte no pueda cumplir sus obligaciones derivadas del producto. En caso de insolvencia de la contraparte, el
+producto se liquidará de conformidad con sus condiciones. Aunque existen procedimientos de constitución de márgenes para reducir la exposición a la liquidez
+de la contraparte, es posible que dichos ocedimientos de constitución de márgenes no cubran totalmente su exposición a la contraparte y que usted pueda sufrir
+pérdidas superiores a las de su inversión inicial.
+Usted también está expuesto al riesgo de que CFL no pueda pagar lo que se le adeude bajo el producto, por ejemplo, en caso de quiebra o una directiva oficial
+para la acción de resolución. Esto podría afectar negativamente al valor del producto y podría llevarle a perder parte o la totalidad de su inversión en el
+producto. Tenga en cuenta que todos los fondos de clientes están segregados de los fondos propios de CFL.
+4.     ¿Cuáles son los costes?
+ Costes a lo largo del tiempo
+Los cuadros muestran los importes que se detraen de su inversión para cubrir diferentes tipos de costes. Estos importes dependen de cuánto invierte, de
+cuánto tiempo mantiene el producto y de lo buenos que sean los resultados del producto. Los importes indicados aquí ilustran un ejemplo de inversión de una
+determinada cuantía durante diferentes períodos de inversión posibles. El ejemplo de inversión es una inversión inicial de 1.000,00 USD en Linear Perpetual
+Future con un apalancamiento de 10 veces sobre xStocks, el producto es una larga y se cierra al cabo de 1 día. Las diferencias en las características anteriores
+pueden producir resultados diferentes. Consulte https://support.kraken.com/articles/360048917612-fee-schedule para obtener información completa sobre
+costes y cargos.
+Hemos partido de los siguientes supuestos: (i) Recuperaría la cantidad que invirtió (0 % de rendimiento anual). y (ii) Un valor nominal de 10.000,00 USD.
+
+                                                  En caso de salida después del Período de mantenimiento recomendado
+     Costes totales                               0,00 USD
+     Incidencia anual de los costes (*)           0,00 %
+
+(*) Esto ilustra el efecto de los costes, en relación con el valor nocional del producto, durante un período de tenencia inferior a un año. Este porcentaje se
+calcula sobre la base de los costes acumulados en este periodo, divididos por el valor nocional del producto, y no puede compararse directamente con las cifras
+sobre el impacto de los costes de otros productos.
+Composición de los costes
+                                                                                                                                         En caso de salida
+                                                                                                                                         después       del
+     Costes únicos de entrada o salida                                                                                                   Período        de
+                                                                                                                                         mantenimiento
+                                                                                                                                         recomendado
+     Costes de entrada           Al entrar en el producto, paga una comisión de maker o taker denominada en USD, calculada como          0,00 USD
+                                 un porcentaje del valor nocional de la orden para una operación coincidente, en función de su           (0,00     %        x
+                                 volumen de negociación de futuros móvil de 30 días. En este ejemplo, asumimos una comisión taker        10.000,00 USD)
+                                 del 0,00 % aplicada al importe nocional del producto.
+     Costes de salida         Cuando sale del producto, paga una comisión de emisor o comprador denominada en USD calculada              0,00 USD
+                              como un porcentaje del valor nocional de la orden para una operación compensada basada en su               (0,00     %        x
+                              volumen de negociación de futuros renovables a 30 días. En este ejemplo, asumimos que se cobra             10.000,00 USD)
+                              una comisión de comprador del 0,00 % sobre el importe nocional del producto.
+
+     Costes corrientes
+
+     Comisiones      de       N/A                                                                                                        N/A
+     gestión y otros
+     costes
+     administrativos   o
+     de funcionamiento
+
+     Costes             de    N/A                                                                                                        N/A
+     operación
+
+     Costes accesorios detraídos en condiciones específicas
+
+     Comisiones         de    N/A                                                                                                        N/A
+     rendimiento
+
+5.    ¿Cuánto tiempo debo mantener la inversión, y puedo retirar dinero de manera anticipada?
+Debido a su alta volatilidad, el producto no tiene un periodo de tenencia recomendado. Para presentar la información requerida de conformidad con
+los requisitos legales, el presente documento de datos fundamentales se refiere a un período de tenencia recomendado de un día natural.
+El producto reacciona a los movimientos de precios más bajos del activo subyacente, lo que da lugar a pérdidas y ganancias potencialmente significativas en
+periodos de tiempo impredecibles. Una recomendación individual de un periodo de tenencia podría proporcionar información engañosa a los inversores. Los
+inversores deben supervisar su posición con frecuencia para determinar el momento más óptimo para abandonar o reducir su inversión mediante la
+presentación de una orden de liquidación a través de la plataforma de Kraken.
+6.    ¿Cómo puedo reclamar?
+Cualquier reclamación puede presentarse a CFL a través del sitio web https://www.cryptofacilities.com/ y posteriormente a través de la dirección de correo
+electrónico recibida al ponerse en contacto a través de dicho sitio web. Las reclamaciones deben incluir el nombre del producto y el identificador comercial que
+se le haya facilitado (disponible en la plataforma en su lista de operaciones), así como el motivo de la reclamación.
+7.    Otros datos de interés
+La información contenida en este documento de datos fundamentales no constituye una recomendación de compra o venta del producto. Solo debe negociar
+con productos derivados si comprende los riesgos que implica. En https://www.cryptofacilities.com/. hay disponible amplio material de formación sobre este
+producto y criptoactivos. En caso de que se produzca un desfase entre el momento en que realiza su pedido y el momento en que se ejecuta, es posible que su
+pedido no se ejecute al precio que esperaba. Asegúrese de que la intensidad de la señal de Internet sea suficiente antes de operar. El sitio web
+https://www.cryptofacilities.com/ contiene información importante sobre su cuenta, nuestras condiciones legales para este producto y nuestras políticas. Debe
+asegurarse de que está familiarizado con todas condiciones aplicables a su cuenta.
+
