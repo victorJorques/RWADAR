@@ -3,6 +3,7 @@
 (function(raiz){const diccionario={
   "Los favoritos se quedan en este navegador, separados por cuenta.": "Favourites stay in this browser, separated by account.",
   "Mínimo (EUR)": "Minimum (EUR)",
+  "Mínimo": "Minimum",
   "España": "Spain",
   "Sin confirmar": "Unconfirmed",
   "Sin documentar": "Undocumented",

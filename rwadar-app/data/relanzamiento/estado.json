@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 03/11: segunda entrega del día del catálogo (2026-11-03.2, decidida por Víctor): cifras visibles 7 días y resumen de tarjeta (mínimo, España, salida) con referencias en castellano; aplicada en Supabase con el flujo Aplicar catálogo tras revisión independiente. La web y la app muestran el mínimo documentado aunque no sea en euros. npm test completo en verde. Sello y publicación autorizados expresamente por Víctor.",
+  "nota": "Claude, 03/11: catálogo 2026-11-03.2 (cifras 7 días, mínimo/España/salida en castellano, aplicado con Aplicar catálogo) y tarjetas que rotulan «Mínimo» cuando la unidad no es el euro y no repiten «Salida:». npm test completo en verde. Sello y publicación autorizados expresamente por Víctor.",
   "revisionAprobada": {
-    "commit": "1ace7a87ceb448470ce115c01aef10a5de8b1518",
-    "contenidoSha256": "sha256:a84544f0547a4c9e53afd43ec7bfe2b0edb2d045fdd03a546cbfe24f86e71833",
+    "commit": "2ce46b05a7e0bf49ff7610babd1c9014ace7e7eb",
+    "contenidoSha256": "sha256:ba45fb15a903448a02f06792c4168b877ee8fffc2fa89d74b3fcfb4a2250e3f8",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
