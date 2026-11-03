@@ -71,6 +71,20 @@ prueba('archivo extra no puede viajar por compartir carpeta/extensión',()=>{
   const extra=path.join(dirRegistro,'extra.webp');fs.writeFileSync(extra,'extra');assert.throws(()=>cargarRegistro(temporal));fs.unlinkSync(extra);
 });
 prueba('base sellada valida el árbol completo incluida configuración',()=>assert.equal(validarBase(base,sello).sha256,sello.sha256));
+prueba('un alta ya añadida al manifiesto no invalida la base: el worker esperado sale de sus fichas',()=>{
+  // El ciclo añade la ruta del alta al manifiesto antes de precargar su imagen.
+  const selloArchivo=path.join(temporal,'sello-alta.json');fs.writeFileSync(selloArchivo,JSON.stringify(sello));
+  const guion=`const path=require('node:path');const raiz=${JSON.stringify(raiz)};
+    const ruta=require.resolve(path.join(raiz,'rwadar-fichas-manifiesto.js'));
+    const original=require(ruta);require.cache[ruta].exports=Object.freeze([...original,'ofertas/alta-nueva.html']);
+    const {construirWorker}=require(path.join(raiz,'rwadar-acceso/compilar.cjs'));
+    if(!construirWorker().includes('ofertas/alta-nueva.html'))throw new Error('el manifiesto inyectado no llegó al worker');
+    const {validarBase}=require(path.join(raiz,'rwadar-precargar-imagenes.js'));
+    const sello=JSON.parse(require('node:fs').readFileSync(${JSON.stringify(selloArchivo)},'utf8'));
+    process.stdout.write(validarBase(${JSON.stringify(base)},sello).sha256);`;
+  const r=spawnSync(process.execPath,['-e',guion],{cwd:raiz,encoding:'utf8'});
+  assert.equal(r.status,0,r.stderr);assert.equal(r.stdout,sello.sha256);
+});
 prueba('Worker o rutas alterados siguen bloqueados aunque se recalcule el sello',()=>{
   const recalcular=()=>{const archivos=inventario(base);return {...sello,archivos,sha256:huellaInventario(archivos)};};
   for(const nombre of ['_worker.js','_routes.json']){

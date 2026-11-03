@@ -7,10 +7,14 @@
    Cloudflare con lo que hay en el repositorio: portada, privacidad, mapa
    del sitio, índice de la Academy, cada lección publicada (con su fecha de
    revisión legal), sus assets con huella, la CSP y que las lecciones no
-   publicadas den 404. Sale con código 1 si algo no cuadra.
+   publicadas y las fichas retiradas den 404. Sale con código 1 si algo no cuadra.
    ===================================================================== */
 import { createRequire } from 'node:module';
 import crypto from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const require = createRequire(import.meta.url);
 const academyMod = require('../rwadar-academy.js');
@@ -118,6 +122,56 @@ for (const ruta of assets) {
 for (const l of pendientes) {
   const pagina = await pedir(`/academy/${l.slug}`);
   ok(`lección ${l.modulo} (Próximamente) no tiene página: ${pagina.estado}`, pagina.estado === 404);
+}
+
+/* Fichas retiradas: Cloudflare Pages conserva una semana, en cada centro de
+   datos, copias de lo que sirvió y las devuelve si el archivo desaparece. El
+   worker debe dar 404 a toda ficha borrada del repositorio que no haya vuelto
+   al manifiesto. La lista sale del historial de Git (el flujo usa fetch-depth 0). */
+let retiradas = [];
+try {
+  retiradas = [...new Set(execFileSync('git', ['log', '--diff-filter=D', '--name-only', '--format=', '--',
+    'rwadar-site/ofertas/*.html', 'rwadar-site/plataformas/*.html', 'rwadar-site/fuera-del-radar/*.html'],
+  { cwd: fileURLToPath(new URL('..', import.meta.url)), encoding: 'utf8' })
+    .split('\n').map(linea => linea.trim().replace(/^rwadar-site\//, '')).filter(Boolean))]
+    .filter(ficha => !paginasFichas.includes(ficha)).sort();
+} catch (e) { console.log(`  (no se pudo leer el historial de Git: ${e.message})`); }
+ok(`el historial de Git da las fichas retiradas que hay que comprobar (${retiradas.length})`, retiradas.length > 0);
+/* La marca «noindex, nofollow» + no-store solo la pone el 404 del worker (el
+   404 propio de Pages no lleva x-robots-tag): así la comprobación demuestra que
+   la lista cerrada está activa, y no depende de si el centro de datos que
+   responde guarda o no una copia. */
+const noEncontradaDelWorker = p => p.estado === 404 && p.cabeceras.get('x-robots-tag') === 'noindex, nofollow' &&
+  p.cabeceras.get('cache-control') === 'no-store';
+const inexistente = await pedir('/ofertas/rwadar-comprobacion-ficha-inexistente');
+ok('una ficha que nunca existió da el 404 del worker', noEncontradaDelWorker(inexistente));
+for (const ficha of retiradas) {
+  const ruta = '/' + ficha.replace(/\.html$/, '');
+  const pagina = await pedir(ruta);
+  ok(`ficha retirada ${ruta} da el 404 del worker: ${pagina.estado}`, noEncontradaDelWorker(pagina));
+}
+/* Lo mismo con las ilustraciones de las ofertas retiradas: las borradas de
+   Git que no sigan en la carpeta editorial ni en las precargas. Aquí el 404
+   puede ser el de Pages (sin copia en ese centro de datos) o el del worker
+   (con copia), así que solo se exige el 404, también al revalidar. */
+const imagenesVivas = new Set();
+for (const dir of ['rwadar-movil/assets/ofertas-editoriales', 'rwadar-editorial-source/ofertas/precargas']) {
+  const raizDir = fileURLToPath(new URL('../' + dir + '/', import.meta.url));
+  if (fs.existsSync(raizDir)) for (const e of fs.readdirSync(raizDir, { recursive: true })) imagenesVivas.add(path.basename(String(e)));
+}
+let imagenesRetiradas = [];
+try {
+  imagenesRetiradas = [...new Set(execFileSync('git', ['log', '--diff-filter=D', '--name-only', '--format=', '--',
+    'rwadar-movil/assets/ofertas-editoriales/oferta-*.webp'],
+  { cwd: fileURLToPath(new URL('..', import.meta.url)), encoding: 'utf8' })
+    .split('\n').map(linea => path.basename(linea.trim())).filter(Boolean))]
+    .filter(nombre => !imagenesVivas.has(nombre)).sort();
+} catch (e) { console.log(`  (no se pudo leer el historial de Git: ${e.message})`); }
+ok(`el historial de Git da las ilustraciones retiradas que hay que comprobar (${imagenesRetiradas.length})`, imagenesRetiradas.length > 0);
+for (const nombre of imagenesRetiradas) {
+  const imagen = await pedir('/ofertas-editoriales/' + nombre, { method: 'HEAD' });
+  const revalidada = await pedir('/ofertas-editoriales/' + nombre, { method: 'HEAD', headers: { 'If-None-Match': '"rwadar-comprobacion"' } });
+  ok(`ilustración retirada /ofertas-editoriales/${nombre} da 404: ${imagen.estado} / ${revalidada.estado}`, imagen.estado === 404 && revalidada.estado === 404);
 }
 
 console.log(`\n${correctas} correctas, ${fallos.length} fallidas`);

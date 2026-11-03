@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 03/11: retirada de mF-ONE (entrega 2026-11-03.6; comprobadas las 25 ofertas y verificada la retirada por dos escépticos; revisión independiente del SQL aprobada; aplicada con Aplicar catálogo). npm test completo en verde. Ciclo autorizado por la orden de Víctor (AGENTS.md).",
+  "nota": "Claude, 03/11: el worker da 404 a las fichas retiradas y a las copias de conservación de Cloudflare Pages (orden de Víctor: «arréglalo», por la ficha de mF-ONE que seguía saliendo). Revisión independiente de cuatro enfoques y segunda verificación; npm test completo en verde. Catálogo sin cambios (entrega 2026-11-03.6).",
   "revisionAprobada": {
-    "commit": "3b19ad014e0260cd13e5c0b8ca87f6db2d02b45d",
-    "contenidoSha256": "sha256:57b3feb2fc994c0adb2a44fde28d795bf7a98fa199771c980df81782aff6025f",
+    "commit": "09c859ad648ca0497f31a0c5d501d81465c416d9",
+    "contenidoSha256": "sha256:221bbda3150bac0b883ea2a11b50c43f4660b1cfaf7afa55e26b0a1647af137b",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

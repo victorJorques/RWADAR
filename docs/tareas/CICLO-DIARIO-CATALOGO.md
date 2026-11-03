@@ -381,6 +381,29 @@ Tras aprobar la preview y comprobar que el corte y el lote no cambiaron:
 node rwadar-publicar.js --produccion
 ```
 
+**Fichas retiradas.** Para retirar una ficha:
+
+- quítala de `rwadar-fichas-manifiesto.js`;
+- borra su página de `rwadar-site/ofertas/`, `plataformas/` o
+  `fuera-del-radar/`.
+
+Desde el 03/11/2026, el worker (`rwadar-acceso/compilar.cjs`) lee ese
+manifiesto y devuelve 404 a cualquier ficha de esas carpetas que no figure en
+él. No llega a pedirla a Cloudflare.
+
+Hace falta porque Cloudflare Pages guarda durante una semana, en cada centro
+de datos, una «copia de conservación» de lo que sirvió. Si un archivo ya no
+está en el despliegue, sirve esa copia (`cf-cache-status: HIT`,
+`x-robots-tag: noindex`). Así pasó con mF-ONE. El worker también reconoce esa
+copia en cualquier otro archivo fuera de `/assets/`, por ejemplo la
+ilustración de una oferta retirada, y devuelve 404.
+
+La comprobación que corre tras publicar (`.github/comprobar-publicado.mjs`)
+exige ese 404 en todas las fichas e ilustraciones borradas del historial de
+Git. Para mirarlo a mano, `curl -I` debe dar 404 con
+`x-robots-tag: noindex, nofollow`. Esa marca solo la pone el worker, así que
+el resultado no depende del centro de datos que responda.
+
 Verificar las URLs públicas sin autenticación y contrastar recursos/contenido
 con el corte revisado. Conservar prueba HTTP y revisión visual de cada imagen
 nueva y de los cambios críticos. **Una publicación web no actualiza el APK

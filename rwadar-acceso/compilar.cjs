@@ -1,6 +1,28 @@
 'use strict';
 const fs = require('node:fs');
 const path = require('node:path');
+const PAGINAS_FICHAS = require('../rwadar-fichas-manifiesto.js');
+
+/* Fichas retiradas. Cloudflare Pages guarda en cada centro de datos, durante
+   una semana, una «copia de conservación» de cada archivo que sirve, y la
+   devuelve cuando ese archivo ya no está en el despliegue nuevo
+   (@cloudflare/pages-shared, asset-server/handler.ts: ASSET_PRESERVATION_CACHE,
+   «public, s-maxage=604800», con x-robots-tag noindex). Para una ficha retirada
+   eso enseñaría datos viejos durante días. El worker lleva la lista cerrada de
+   fichas publicadas y, en estas carpetas, responde 404 a cualquier otra página
+   sin pedírsela a ASSETS. Al retirar una ficha basta con quitarla del
+   manifiesto, como hasta ahora. Para el resto de archivos (por ejemplo la
+   ilustración de una oferta retirada), el worker reconoce la copia de
+   conservación por sus cabeceras y también responde 404. */
+const CARPETAS_FICHAS = Object.freeze(['ofertas', 'plataformas', 'fuera-del-radar']);
+function fichasPublicadas(manifiesto = PAGINAS_FICHAS) {
+  const fichas = manifiesto.filter(ruta => {
+    const partes = ruta.split('/');
+    return partes.length === 2 && CARPETAS_FICHAS.includes(partes[0]) && /^[^/.]+\.html$/.test(partes[1]);
+  });
+  if (!fichas.some(ruta => ruta.startsWith('ofertas/'))) throw new Error('El manifiesto de fichas no trae ninguna oferta.');
+  return [...new Set(fichas)].sort();
+}
 
 // Public project coordinates; never an administrative key.
 const CONFIGURACION_PUBLICA = Object.freeze({
@@ -18,7 +40,73 @@ const CABECERAS_SEGURIDAD = Object.freeze({
   'Permissions-Policy': 'accelerometer=(), autoplay=(), browsing-topics=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
 });
 
-function construirWorker(raiz = __dirname) {
+/* Código del worker para archivos que ya no están en el despliegue. Va como
+   texto literal: se incrusta tal cual en _worker.js. */
+const ARCHIVOS_RETIRADOS_WORKER = String.raw`const rutaFichaRWAdar = /^\/(ofertas|plataformas|fuera-del-radar)\/([^/]+?)(?:\.html)?\/?$/;
+function rutaNormalizadaRWAdar(request) {
+  const cruda = new URL(request.url).pathname;
+  let ruta = cruda;
+  try { ruta = decodeURIComponent(cruda); } catch {}
+  return ruta.replace(/\/{2,}/g, "/");
+}
+function fichaRetiradaRWAdar(request) {
+  if (request.method !== "GET" && request.method !== "HEAD") return false;
+  const partes = rutaFichaRWAdar.exec(rutaNormalizadaRWAdar(request));
+  if (!partes || partes[2].includes(".")) return false;
+  return !fichasRWAdar.has(partes[1] + "/" + partes[2] + ".html");
+}
+/* El servidor de assets de Pages solo usa la Cache API en notFound(), para
+   devolver la copia de conservación de un archivo que ya no está en este
+   despliegue, y esa respuesta llega con cf-cache-status HIT y x-robots-tag
+   noindex. En /assets/ se respeta: son archivos con huella y la gracia evita
+   roturas a quien tenga abierta la versión anterior de la web. */
+function copiaConservadaRWAdar(request, respuesta) {
+  if (request.method !== "GET" && request.method !== "HEAD") return false;
+  if (rutaNormalizadaRWAdar(request).startsWith("/assets/")) return false;
+  return /^hit$/i.test(respuesta.headers.get("CF-Cache-Status") || "") &&
+    /(?:^|[\s,])noindex(?:$|[\s,])/i.test(respuesta.headers.get("X-Robots-Tag") || "");
+}
+async function paginaNoEncontradaRWAdar(request, env) {
+  let pagina = null;
+  try {
+    const r = await env.ASSETS.fetch(new Request(new URL("/404", request.url), { method: "GET" }));
+    if (r.status === 200) pagina = r; else await r.body?.cancel();
+  } catch {}
+  const headers = new Headers(pagina ? pagina.headers : { "Content-Type": "text/plain; charset=utf-8" });
+  for (const nombre of ["ETag", "Last-Modified", "Content-Length", "Age", "CF-Cache-Status"]) headers.delete(nombre);
+  headers.set("Cache-Control", "no-store");
+  headers.set("X-Robots-Tag", "noindex, nofollow");
+  if (request.method === "HEAD") { await pagina?.body?.cancel(); return new Response(null, { status: 404, headers }); }
+  return new Response(pagina ? pagina.body : "No encontrado", { status: 404, headers });
+}
+/* Una revalidación (If-None-Match / If-Modified-Since) de una copia de
+   conservación recibe un 304 sin cabeceras. Para saber si el 304 viene de una
+   copia, se repite la consulta como HEAD sin condiciones. */
+async function esCopiaConservadaRWAdar(request, respuesta, env) {
+  if (copiaConservadaRWAdar(request, respuesta)) return true;
+  if (respuesta.status !== 304 || (request.method !== "GET" && request.method !== "HEAD")) return false;
+  if (!request.headers.has("If-None-Match") && !request.headers.has("If-Modified-Since")) return false;
+  if (rutaNormalizadaRWAdar(request).startsWith("/assets/")) return false;
+  const headers = new Headers(request.headers);
+  headers.delete("If-None-Match");
+  headers.delete("If-Modified-Since");
+  try {
+    const comprobacion = await env.ASSETS.fetch(new Request(request.url, { method: "HEAD", headers }));
+    await comprobacion.body?.cancel();
+    return copiaConservadaRWAdar(request, comprobacion);
+  } catch { return false; }
+}
+async function servirArchivoRWAdar(request, env) {
+  if (fichaRetiradaRWAdar(request)) return paginaNoEncontradaRWAdar(request, env);
+  const respuesta = await env.ASSETS.fetch(request);
+  if (!(await esCopiaConservadaRWAdar(request, respuesta, env))) return respuesta;
+  await respuesta.body?.cancel();
+  return paginaNoEncontradaRWAdar(request, env);
+}
+`;
+
+function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS } = {}) {
+  const publicadas = fichasPublicadas(fichas);
   const importCartera = "import { crearCarteraServidor } from './cartera-servidor.mjs';";
   const original = fs.readFileSync(path.join(raiz, 'servidor.mjs'), 'utf8');
   if (original.split(importCartera).length !== 2) throw new Error('Falta la integración explícita de cartera.');
@@ -37,11 +125,13 @@ function construirWorker(raiz = __dirname) {
   return 'const carteraModelo = (() => { const module = { exports: {} };\n' + modelo + '\nreturn module.exports; })();\n' + cartera + '\n' +
     servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
     'const cabecerasRWAdar = Object.freeze(' + JSON.stringify(CABECERAS_SEGURIDAD) + ');\n' +
+    'const fichasRWAdar = new Set(' + JSON.stringify(publicadas) + ');\n' +
+    ARCHIVOS_RETIRADOS_WORKER +
     'const accesoRWAdar = crearAccesoServidor();\n' +
     'export default { async fetch(request, env, executionCtx) {\n' +
     '  const respuesta = await accesoRWAdar.atender({ request, env: configuracionRWAdar,\n' +
     '    waitUntil: executionCtx.waitUntil.bind(executionCtx),\n' +
-    '    next: () => env.ASSETS.fetch(request) });\n' +
+    '    next: () => servirArchivoRWAdar(request, env) });\n' +
     '  const headers = new Headers(respuesta.headers);\n' +
     '  for (const [nombre, valor] of Object.entries(cabecerasRWAdar)) {\n' +
     '    if (nombre === "Content-Security-Policy" && headers.has(nombre)) continue;\n' +
@@ -52,4 +142,4 @@ function construirWorker(raiz = __dirname) {
 }
 
 const RUTAS = Object.freeze({ version: 1, include: ['/*'], exclude: [] });
-module.exports = { construirWorker, RUTAS, CONFIGURACION_PUBLICA, CABECERAS_SEGURIDAD };
+module.exports = { construirWorker, RUTAS, CONFIGURACION_PUBLICA, CABECERAS_SEGURIDAD, CARPETAS_FICHAS, fichasPublicadas };
