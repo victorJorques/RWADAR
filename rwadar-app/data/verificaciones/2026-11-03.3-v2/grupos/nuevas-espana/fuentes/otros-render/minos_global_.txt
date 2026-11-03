@@ -1,0 +1,226 @@
+Servicios
+Soluciones
+Productos
+Contacto
+Elige tu idioma
+TODO LO NECESARIO PARA OFRECER SERVICIOS SOBRE CRIPTOACTIVOS Y ACTIVOS DIGITALES
+
+Somos un Custodio, Broker y Marketplace de Criptoactivos y Activos Digitales que ofrece sus productos a través de una Plataforma B2B o en Crypto-as-a-Service a través de una única API
+
+MINOS GLOBAL obtiene la autorización como Entidad de Pago y consolida su posición como infraestructura regulada para pagos digitales, stablecoins y mercados de capitales tokenizados.
+ Más información
+PROSEGUR CRYPTO, MINOS GLOBAL y NUEK sellan una alianza para desarrollar soluciones de pago y activos digitales.
+ Más información
+MINOS GLOBAL obtiene la autorización bajo MiCA y se posiciona para operar pagos con stablecoins y mercados de capitales tokenizados.
+ Más información
+PROSEGUR CASH aumenta su participación en MINOS GLOBAL y refuerza su apuesta por los activos tokenizados.
+ Más información
+
+Minos Global ha sido autorizado el 10 de marzo de 2026 por la CNMV como proveedor de servicios en criptoactivos según el Reglamento UE 2023/1114.
+
+Ver autorización
+
+Minos Global ha sido autorizado el 6 de julio de 2026 por el Banco de España como entidad de pago para la prestación del servicio de ejecución de transferencias EMT bajo el RDL 19/2018.
+
+Servicios
+Soluciones
+
+Gracias a una arquitectura orientada a microservicios y APIs, logramos ofrecer una gama amplia de soluciones de infraestructura.
+
+Conoce nuestras soluciones
+Productos
+
+La estructura de Minos Global se separa en 4 verticales. Cada vertical representa un producto que integra una o varias soluciones.
+
+Conoce nuestros productos
+Soluciones
+
+Gracias a una arquitectura orientada a microservicios y APIs, Minos Global logra ofrecer una gama amplia de soluciones
+
+Custodia
+
+Desde Minos Global ofrecemos una solución de custodia gracias a la infraestructura creada que permite la monitorización, verificación y control de procesos y operaciones.
+
+Documentación API
+
+Pagos
+
+Desde Minos Global ofrecemos una solución de transacciones que permite a los negocios aceptar pagos en criptomonedas. Tanto el consumidor como el ofertante de producto o servicio puede seleccionar la moneda en la que desea realizar la operación.
+
+Documentación API
+
+Brokerage
+
+Desde Minos Global ofrecemos una solución de operativa que permite la optimización en cada transacción y operación.
+
+Documentación API
+
+Tokenización
+
+Desde Minos Global ofrecemos una solución de tokenización de activos. Contamos con distintas herramientas que permiten la creación y gestión de diversos criptoactivos; NFTs, Utility Tokens, Security Tokens...
+
+Documentación API
+
+Trust
+
+Desde Minos Global ofrecemos un servicio de terceros de confianza basado en Blockchain. Este servicio permite almacenar cualquier documento digital en Blockchain, garantizando la inmutabilidad del mismo.
+
+Documentación API
+
+Productos
+
+La estructura de Minos Global se separa en 4 verticales. Cada vertical representa un producto final que integra una o varias soluciones.
+
+Pagos
+NUMMUN
+
+Pasarela pagos cripto que integra las soluciones de custodia y brokerage y que permite el cobro en la moneda que tú elijas.
+
+nummunpay.com
+Inversiones
+PROSEGUR CRYPTO
+
+Plataforma de inversión que integra las soluciones de custodia, brokerage y pagos y que acerca a los inversores a la nueva economía tokenizada.
+
+www.prosegurcrypto.com
+NFT
+OPENART
+
+Marketplace que integra las soluciones de custodia, brokerage, pagos y trust y que permite la creación y la comercialización de NFTs customizados.
+
+Tokenización
+MINOS SECURITIES
+
+Plataforma para la emisión, custodia, comercialización y registro de activos financieros tokenizados (ERIR) bajo la Ley de Mercados de Valores y Servicios de Inversión.
+
+minos-securities.com
+¿Quieres conocernos y profundizar sobre si puedes utilizar activos digitales en tu modelo de negocio?
+
+Contáctanos en [correo suprimido]
+
+Aviso Legal
+
+La presente página web es titularidad de Minos Global, S.L., con NIF B88104062 y domicilio social en calle Maudes, 51, 8.ª planta, 28003 Madrid. La sociedad está inscrita en el Registro Mercantil de Madrid, tomo 37.774, folio 189, hoja M-672944.
+
+Minos Global, S.L. está autorizada por la Comisión Nacional del Mercado de Valores (CNMV) como proveedor de servicios de criptoactivos, de conformidad con el Reglamento (UE) 2023/1114. Minos Global, S.L. está habilitada para prestar los servicios de custodia y administración de criptoactivos por cuenta de clientes, canje de criptoactivos por fondos, canje de criptoactivos por otros criptoactivos, ejecución de órdenes sobre criptoactivos por cuenta de clientes, colocación de criptoactivos, recepción y transmisión de órdenes sobre criptoactivos por cuenta de clientes y prestación de servicios de transferencia de criptoactivos por cuenta de clientes. La CNMV es la autoridad competente encargada de su supervisión en relación con la prestación de dichos servicios. La autorización de Minos Global, S.L. se refiere exclusivamente a los servicios de criptoactivos incluidos expresamente en su alcance. No se extiende a otros productos, servicios o actividades que puedan ofrecerse en esta página web y que no se encuentren comprendidos en el ámbito de aplicación de MiCA.
+
+Esta autorización puede consultarse en los registros oficiales de la CNMV y de ESMA.
+
+Los criptoactivos conllevan riesgos elevados y su valor puede experimentar fluctuaciones significativas, incluida la posible pérdida total de los fondos o criptoactivos objeto de una operación. Antes de contratar un servicio o realizar una operación con criptoactivos, consulte y comprenda la información incluida en el apartado Advertencias de Riesgo.
+
+Órdenes
+Fecha Orden
+Par
+Típo
+Precio
+Volumen
+ 2/11/26, 23:14 
+ USDC/USD 
+ Venta 
+ 0.996 
+ 35 
+ 2/11/26, 21:36 
+ EUR/BTC 
+ Compra 
+ 68816.1 
+ 0.00722011 
+ 2/11/26, 21:31 
+ EUR/BTC 
+ Compra 
+ 68817.1 
+ 0.01792505 
+ 2/11/26, 20:35 
+ EUR/BTC 
+ Compra 
+ 68867.6 
+ 0.04333532 
+ 2/11/26, 20:32 
+ USD/AVAX 
+ Compra 
+ 8.368 
+ 116.93121295 
+ 2/11/26, 19:51 
+ EUR/SOL 
+ Compra 
+ 81.84 
+ 12.15542521 
+ 2/11/26, 19:48 
+ AVAX/USD 
+ Venta 
+ 8.254 
+ 60.18 
+ 2/11/26, 19:47 
+ ADA/USD 
+ Venta 
+ 0.185586 
+ 4271.36 
+ 2/11/26, 19:46 
+ EUR/BTC 
+ Compra 
+ 68724.7 
+ 0.02895029 
+ 2/11/26, 19:35 
+ ETH/EUR 
+ Venta 
+ 1998.84 
+ 0.279 
+ 2/11/26, 18:16 
+ USD/ETH 
+ Compra 
+ 2265.07 
+ 0.01257373 
+ 2/11/26, 18:00 
+ EUR/XRP 
+ Compra 
+ 1.1115 
+ 42.15924426 
+Anterior
+Página 1 de 22
+Siguiente
+Whitepapers
+Criptoactívo
+URL a Whitepaper
+ Cardano (ADA) 
+https://white-paper.crypto-risk-metrics.com/en/cardano-ada-ffg-76qs7qcxb/index.html
+ Avalanche (AVAX) 
+https://www.lcx.com/avax-mica-white-paper/
+ Binance Coin (BNB) 
+https://white-paper.crypto-risk-metrics.com/en/binance-coin-ffg-8n2vxjkb1/index.html
+ Bitcoin (BTC) 
+https://www.lcx.com/btc-mica-white-paper/
+ Polkadot (DOT) 
+https://www.lcx.com/dot-mica-white-paper/
+ Ethereum (ETH) 
+https://crypto-risk-metrics.com/en/white-paper-ethereum-ffg-d5rg2fhh0/ ; https://www.lcx.com/eth-mica-white-paper/
+ Euro Coin (EURC) 
+https://www.circle.com/fr/legal/mica-eurc-whitepaper
+ Eurite (EURI) 
+https://www.eurite.com/download-whitepaper/
+ Chainlink (LINK) 
+https://www.lcx.com/link-mica-white-paper/
+ Polygon (MATIC) 
+https://white-paper.crypto-risk-metrics.com/en/polygon-pol-ffg-gb8dq8dwn/index.html
+ Solana (SOL) 
+https://white-paper.crypto-risk-metrics.com/en/solana-sol-ffg-6qz1lnc12/index.html
+ TronX (TRX) 
+https://www.lcx.com/tron-mica-white-paper/
+ USD Coin (USDC) 
+https://www.circle.com/fr/legal/mica-usdc-whitepaper
+ Ripple (XRP) 
+https://www.crypto-risk-metrics.com/en/white-paper-ripple-xrp-ffg-42phjb2bs/
+
+Escalando la economía tokenizada
+
+Servicios
+Soluciones
+Productos
+Contacto
+Advertencias de Riesgo
+Atención al Cliente
+Políticas y Documentación
+Información de sostenibilidad MiCA
+Elige tu idioma
+
+SÍGUENOS:
+
+© Minos Global 2026 | Aviso Legal

@@ -1,0 +1,134 @@
+{
+  "slug": "lcx-gold-lcxg",
+  "tipoExpediente": "candidata",
+  "grupo": "nuevas-europa",
+  "proveedor": "LCX (Liechtenstein)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "LCX AG",
+  "emisor": "LCX AG",
+  "vehiculo": "Token de utilidad de acceso a un NFT de oro de un tercero (Tiamonds AG)",
+  "token": "LCX Gold (LCXG)",
+  "derechoAdquirido": "Ningún derecho sobre oro: solo acceso a recuperar un NFT que a su vez representa 1 onza",
+  "jurisdiccion": "LI",
+  "identificador": null,
+  "moneda": null,
+  "documentos": [
+    {
+      "titulo": "LCX Gold (LCXG) MiCA White Paper",
+      "url": "https://wp.lcx.com/wp-content/uploads/LCX-Gold-LCXG-MiCA-Whitepaper-05_06_2025.docx-1.pdf",
+      "versionOFecha": "05/06/2025",
+      "paginas": 32,
+      "sha256": "2106e2961da96b6c393a5d483ec802e80a54653ca83ffc7f88d798a3a80d74cf",
+      "leido": true
+    },
+    {
+      "titulo": "Registro provisional MiCA de ESMA – OTHER (white papers notificados)",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv",
+      "versionOFecha": "consultado hoy",
+      "paginas": null,
+      "sha256": "6bf558a76610ab88a7b085b180fc93cda2f1e806ede465a17d250bb1ae649ce3",
+      "leido": true
+    },
+    {
+      "titulo": "Registro provisional MiCA de ESMA – ARTZZ (emisores de fichas referenciadas a activos)",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+      "versionOFecha": "consultado hoy",
+      "paginas": null,
+      "sha256": "fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FMA (Liechtenstein) vía ESMA",
+      "entidad": "LCX AG",
+      "numero": "LEI 529900SN07Z6RTX8R418",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv",
+      "alcance": "White paper notificado para «Admission to trading and offer of LCX Gold (LCXG)»; no es una autorización del token",
+      "consultadoUtc": "2026-11-03T10:14:39Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "LCX",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "consultadoUtc": "2026-11-03T10:19:04Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "derecho",
+      "literal": "tokens themselves are NOT backed by gold, do NOT grant ownership rights to physical gold, and do NOT confer a direct claim or redemption right to physical gold",
+      "dato": "sin respaldo ni derecho sobre oro",
+      "fuentePrimaria": "https://wp.lcx.com/wp-content/uploads/LCX-Gold-LCXG-MiCA-Whitepaper-05_06_2025.docx-1.pdf",
+      "localizador": "White paper LCXG 05/06/2025, resumen",
+      "fechaDato": "2025-06-05",
+      "consultadoUtc": "2026-11-03T10:15:04Z",
+      "alcanceYLimites": "El oro lo custodia un tercero y se reclama vía NFT de Tiamonds AG",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "documentos",
+      "literal": "THIS CRYPTO-ASSET WHITE PAPER HAS NOT BEEN APPROVED BY ANY COMPETENT AUTHORITY",
+      "dato": "white paper no aprobado",
+      "fuentePrimaria": "https://wp.lcx.com/wp-content/uploads/LCX-Gold-LCXG-MiCA-Whitepaper-05_06_2025.docx-1.pdf",
+      "localizador": "Página de LCX y white paper",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:15:04Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "regulacion",
+      "literal": "ARTZZ.csv sin filas (solo cabecera)",
+      "dato": "ningún emisor de ficha referenciada a activos (ART) autorizado en el registro provisional de ESMA",
+      "fuentePrimaria": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+      "localizador": "Registro provisional MiCA de ESMA",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:14:38Z",
+      "alcanceYLimites": "Ningún token de oro tiene hoy «autorización MiCA» como ART en ese registro; los de oro (LCXG, DGLD de Gold Token SA, NatGold) son white papers notificados",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "White paper notificado, no autorizado; el token no es un activo real."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No examinado."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "No examinado."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_cumple",
+      "nota": "Sin derecho sobre el oro."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Aparece como «oro» en el registro MiCA de ESMA.",
+    "porQueNo": "Es un token de utilidad sin respaldo ni derecho sobre oro."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No es un activo real tokenizado: el propio white paper dice que el token no está respaldado por oro ni da derecho a él.",
+  "bloqueos": [],
+  "consulta": {
+    "inicioUtc": "2026-11-03T10:14:30Z",
+    "finUtc": "2026-11-03T10:25:37Z"
+  }
+}

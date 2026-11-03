@@ -1,0 +1,846 @@
+{
+ "fuente": "https://api.app.brickwise.at/api/v1/assets (offers[], status=open) y https://api.app.brickwise.at/api/v2/assets",
+ "nota": "Resumen sin direcciones de cartera ni identificadores de usuario; crudo en crudo/api-v1-assets.json",
+ "activos": {
+  "AT0000A2RAH5": {
+   "id": "AT0000A2RAH5",
+   "titulo": "Wohnung, Plüddemanngasse 101, Graz",
+   "stage": "secondary",
+   "ventasAbiertas": 21,
+   "participacionesEnVenta": 333,
+   "ventaMasBarata": 80,
+   "cantidadAVentaMasBarata": 2,
+   "ventaMasBarataCreada": "2026-09-28",
+   "ventaMasCara": 160,
+   "comprasAbiertas": 3,
+   "participacionesPedidas": 3,
+   "mejorCompra": 20,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2026-04-23",
+   "ordenMasRecienteCreada": "2026-09-28T12:39:09.038Z",
+   "ventaMasBarataCantidad5": [
+    [
+     80,
+     2,
+     "2026-09-28"
+    ],
+    [
+     85,
+     2,
+     "2026-08-10"
+    ],
+    [
+     91,
+     10,
+     "2025-12-19"
+    ],
+    [
+     91,
+     6,
+     "2026-06-17"
+    ],
+    [
+     99,
+     1,
+     "2026-07-15"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     20,
+     1,
+     "2026-04-23"
+    ],
+    [
+     1,
+     1,
+     "2024-03-03"
+    ],
+    [
+     0.01,
+     1,
+     "2024-07-28"
+    ]
+   ],
+   "v2_availableBricksSecondary": 333,
+   "v2_lowestOfferPrice": 80,
+   "v2_sharePrice": 76,
+   "v2_rentalReturn": 3.96,
+   "v2_updatedAt": "2026-11-01T14:46:40.944Z"
+  },
+  "AT0000A2T4D7": {
+   "id": "AT0000A2T4D7",
+   "titulo": "Wohnung, Sonnleithnergasse 2, Wien 10.",
+   "stage": "secondary",
+   "ventasAbiertas": 38,
+   "participacionesEnVenta": 96,
+   "ventaMasBarata": 75,
+   "cantidadAVentaMasBarata": 11,
+   "ventaMasBarataCreada": "2026-04-28",
+   "ventaMasCara": 165,
+   "comprasAbiertas": 10,
+   "participacionesPedidas": 10,
+   "mejorCompra": 69,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2026-10-31",
+   "ordenMasRecienteCreada": "2026-10-31T10:00:35.870Z",
+   "ventaMasBarataCantidad5": [
+    [
+     75,
+     11,
+     "2026-04-28"
+    ],
+    [
+     97,
+     5,
+     "2025-01-15"
+    ],
+    [
+     99.99,
+     5,
+     "2023-08-19"
+    ],
+    [
+     100,
+     1,
+     "2023-08-19"
+    ],
+    [
+     102,
+     1,
+     "2023-05-30"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     69,
+     1,
+     "2026-10-31"
+    ],
+    [
+     65,
+     1,
+     "2026-10-16"
+    ],
+    [
+     60,
+     1,
+     "2026-10-14"
+    ]
+   ],
+   "v2_availableBricksSecondary": 96,
+   "v2_lowestOfferPrice": 75,
+   "v2_sharePrice": 80,
+   "v2_rentalReturn": 3.21,
+   "v2_updatedAt": "2026-11-02T10:37:24.257Z"
+  },
+  "AT0000A2U5V3": {
+   "id": "AT0000A2U5V3",
+   "titulo": "Trafik, Kohldorfer Straße 102, Klagenfurt",
+   "stage": "secondary",
+   "ventasAbiertas": 46,
+   "participacionesEnVenta": 301,
+   "ventaMasBarata": 95,
+   "cantidadAVentaMasBarata": 15,
+   "ventaMasBarataCreada": "2026-03-21",
+   "ventaMasCara": 210,
+   "comprasAbiertas": 4,
+   "participacionesPedidas": 4,
+   "mejorCompra": 88,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2026-10-19",
+   "ordenMasRecienteCreada": "2026-10-19T13:51:47.487Z",
+   "ventaMasBarataCantidad5": [
+    [
+     95,
+     5,
+     "2026-03-21"
+    ],
+    [
+     95,
+     10,
+     "2026-03-30"
+    ],
+    [
+     99,
+     4,
+     "2026-08-18"
+    ],
+    [
+     99.1,
+     1,
+     "2026-08-18"
+    ],
+    [
+     99.1,
+     1,
+     "2026-08-18"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     88,
+     1,
+     "2026-10-19"
+    ],
+    [
+     15,
+     1,
+     "2026-09-21"
+    ],
+    [
+     1,
+     1,
+     "2024-03-03"
+    ]
+   ],
+   "v2_availableBricksSecondary": 301,
+   "v2_lowestOfferPrice": 95,
+   "v2_sharePrice": 95,
+   "v2_rentalReturn": 3.46,
+   "v2_updatedAt": "2026-10-27T22:23:04.552Z"
+  },
+  "AT0000A2WCD0": {
+   "id": "AT0000A2WCD0",
+   "titulo": "Wohnung, Stallhofstraße 28, Gratwein",
+   "stage": "secondary",
+   "ventasAbiertas": 85,
+   "participacionesEnVenta": 313,
+   "ventaMasBarata": 69.9,
+   "cantidadAVentaMasBarata": 1,
+   "ventaMasBarataCreada": "2026-11-01",
+   "ventaMasCara": 8000,
+   "comprasAbiertas": 12,
+   "participacionesPedidas": 20,
+   "mejorCompra": 30,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2026-07-01",
+   "ordenMasRecienteCreada": "2026-11-01T16:18:21.350Z",
+   "ventaMasBarataCantidad5": [
+    [
+     69.9,
+     1,
+     "2026-11-01"
+    ],
+    [
+     70,
+     6,
+     "2026-02-16"
+    ],
+    [
+     70,
+     5,
+     "2026-04-27"
+    ],
+    [
+     70,
+     2,
+     "2026-07-12"
+    ],
+    [
+     70,
+     1,
+     "2026-10-19"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     30,
+     1,
+     "2026-07-01"
+    ],
+    [
+     25,
+     1,
+     "2026-06-23"
+    ],
+    [
+     20,
+     1,
+     "2026-05-16"
+    ]
+   ],
+   "v2_availableBricksSecondary": 313,
+   "v2_lowestOfferPrice": 69.9,
+   "v2_sharePrice": 69.96,
+   "v2_rentalReturn": 4.11,
+   "v2_updatedAt": "2026-11-01T16:18:21.464Z"
+  },
+  "AT0000A2WCE8": {
+   "id": "AT0000A2WCE8",
+   "titulo": "Wohnung, Schwarzer Weg 18, Graz",
+   "stage": "secondary",
+   "ventasAbiertas": 74,
+   "participacionesEnVenta": 299,
+   "ventaMasBarata": 69.9,
+   "cantidadAVentaMasBarata": 1,
+   "ventaMasBarataCreada": "2026-10-27",
+   "ventaMasCara": 200,
+   "comprasAbiertas": 8,
+   "participacionesPedidas": 10,
+   "mejorCompra": 60,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2026-10-25",
+   "ordenMasRecienteCreada": "2026-11-02T14:03:48.074Z",
+   "ventaMasBarataCantidad5": [
+    [
+     69.9,
+     1,
+     "2026-10-27"
+    ],
+    [
+     70,
+     1,
+     "2026-10-21"
+    ],
+    [
+     71.9,
+     1,
+     "2026-09-18"
+    ],
+    [
+     72.27,
+     1,
+     "2026-09-18"
+    ],
+    [
+     74,
+     25,
+     "2026-11-02"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     60,
+     1,
+     "2026-10-25"
+    ],
+    [
+     35,
+     1,
+     "2026-07-01"
+    ],
+    [
+     29,
+     3,
+     "2025-10-22"
+    ]
+   ],
+   "v2_availableBricksSecondary": 299,
+   "v2_lowestOfferPrice": 69.9,
+   "v2_sharePrice": 65,
+   "v2_rentalReturn": 3.73,
+   "v2_updatedAt": "2026-11-02T14:03:48.200Z"
+  },
+  "AT0000A2YPQ0": {
+   "id": "AT0000A2YPQ0",
+   "titulo": "Drautalresidenz, Paternion",
+   "stage": "secondary",
+   "ventasAbiertas": 32,
+   "participacionesEnVenta": 150,
+   "ventaMasBarata": 70,
+   "cantidadAVentaMasBarata": 3,
+   "ventaMasBarataCreada": "2026-10-18",
+   "ventaMasCara": 220,
+   "comprasAbiertas": 9,
+   "participacionesPedidas": 108,
+   "mejorCompra": 54,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2026-10-31",
+   "ordenMasRecienteCreada": "2026-10-31T10:02:35.220Z",
+   "ventaMasBarataCantidad5": [
+    [
+     70,
+     3,
+     "2026-10-18"
+    ],
+    [
+     75,
+     5,
+     "2026-04-28"
+    ],
+    [
+     84,
+     1,
+     "2026-01-28"
+    ],
+    [
+     88,
+     75,
+     "2024-05-02"
+    ],
+    [
+     90,
+     1,
+     "2025-01-08"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     54,
+     1,
+     "2026-10-31"
+    ],
+    [
+     50,
+     1,
+     "2026-09-29"
+    ],
+    [
+     21,
+     1,
+     "2025-11-07"
+    ]
+   ],
+   "v2_availableBricksSecondary": 150,
+   "v2_lowestOfferPrice": 70,
+   "v2_sharePrice": 70,
+   "v2_rentalReturn": 4.68,
+   "v2_updatedAt": "2026-11-02T12:46:24.044Z"
+  },
+  "AT0000A2ZT84": {
+   "id": "AT0000A2ZT84",
+   "titulo": "Randhartingergasse 9, Wien",
+   "stage": "secondary",
+   "ventasAbiertas": 31,
+   "participacionesEnVenta": 184,
+   "ventaMasBarata": 78,
+   "cantidadAVentaMasBarata": 21,
+   "ventaMasBarataCreada": "2026-06-29",
+   "ventaMasCara": 120,
+   "comprasAbiertas": 8,
+   "participacionesPedidas": 21,
+   "mejorCompra": 40.5,
+   "cantidadMejorCompra": 10,
+   "mejorCompraCreada": "2026-04-22",
+   "ordenMasRecienteCreada": "2026-11-02T13:59:27.693Z",
+   "ventaMasBarataCantidad5": [
+    [
+     78,
+     20,
+     "2026-06-29"
+    ],
+    [
+     78,
+     1,
+     "2026-11-02"
+    ],
+    [
+     79.99,
+     3,
+     "2026-06-26"
+    ],
+    [
+     80,
+     5,
+     "2026-06-16"
+    ],
+    [
+     90,
+     1,
+     "2026-01-06"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     40.5,
+     10,
+     "2026-04-22"
+    ],
+    [
+     21,
+     1,
+     "2026-08-21"
+    ],
+    [
+     20,
+     1,
+     "2026-08-18"
+    ]
+   ],
+   "v2_availableBricksSecondary": 184,
+   "v2_lowestOfferPrice": 78,
+   "v2_sharePrice": 75,
+   "v2_rentalReturn": 2.47,
+   "v2_updatedAt": "2026-11-02T13:59:27.796Z"
+  },
+  "AT0000A31KP7": {
+   "id": "AT0000A31KP7",
+   "titulo": "Ferien-Appartement, Hinterstoder 50",
+   "stage": "secondary",
+   "ventasAbiertas": 37,
+   "participacionesEnVenta": 263,
+   "ventaMasBarata": 72,
+   "cantidadAVentaMasBarata": 5,
+   "ventaMasBarataCreada": "2026-10-06",
+   "ventaMasCara": 1000,
+   "comprasAbiertas": 7,
+   "participacionesPedidas": 18,
+   "mejorCompra": 65,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2026-09-30",
+   "ordenMasRecienteCreada": "2026-11-02T13:56:10.355Z",
+   "ventaMasBarataCantidad5": [
+    [
+     72,
+     5,
+     "2026-10-06"
+    ],
+    [
+     77,
+     5,
+     "2026-10-03"
+    ],
+    [
+     79,
+     10,
+     "2026-11-02"
+    ],
+    [
+     80,
+     14,
+     "2026-02-08"
+    ],
+    [
+     85,
+     4,
+     "2026-09-30"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     65,
+     1,
+     "2026-09-30"
+    ],
+    [
+     20,
+     1,
+     "2025-05-19"
+    ],
+    [
+     20,
+     3,
+     "2026-09-29"
+    ]
+   ],
+   "v2_availableBricksSecondary": 263,
+   "v2_lowestOfferPrice": 72,
+   "v2_sharePrice": 85,
+   "v2_rentalReturn": 4.1,
+   "v2_updatedAt": "2026-11-02T13:56:10.469Z"
+  },
+  "AT0000A324B4": {
+   "id": "AT0000A324B4",
+   "titulo": "Wohnung, Pottendorfer Straße 62 TOP 2.06, Wr. Neustadt",
+   "stage": "secondary",
+   "ventasAbiertas": 20,
+   "participacionesEnVenta": 127,
+   "ventaMasBarata": 78,
+   "cantidadAVentaMasBarata": 21,
+   "ventaMasBarataCreada": "2026-11-02",
+   "ventaMasCara": 250,
+   "comprasAbiertas": 15,
+   "participacionesPedidas": 17,
+   "mejorCompra": 63,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2026-10-15",
+   "ordenMasRecienteCreada": "2026-11-02T13:48:26.724Z",
+   "ventaMasBarataCantidad5": [
+    [
+     78,
+     21,
+     "2026-11-02"
+    ],
+    [
+     80,
+     11,
+     "2026-02-08"
+    ],
+    [
+     86.5,
+     4,
+     "2026-09-21"
+    ],
+    [
+     89,
+     30,
+     "2024-05-02"
+    ],
+    [
+     90,
+     10,
+     "2024-12-16"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     63,
+     1,
+     "2026-10-15"
+    ],
+    [
+     50,
+     1,
+     "2025-12-26"
+    ],
+    [
+     19,
+     3,
+     "2025-11-06"
+    ]
+   ],
+   "v2_availableBricksSecondary": 127,
+   "v2_lowestOfferPrice": 78,
+   "v2_sharePrice": 72,
+   "v2_rentalReturn": 4.22,
+   "v2_updatedAt": "2026-11-02T13:48:26.832Z"
+  },
+  "AT0000A35A42": {
+   "id": "AT0000A35A42",
+   "titulo": "Investieren in eine Ferienimmobilie mit Fixpacht in Hinterstoder!",
+   "stage": "secondary",
+   "ventasAbiertas": 9,
+   "participacionesEnVenta": 71,
+   "ventaMasBarata": 98,
+   "cantidadAVentaMasBarata": 4,
+   "ventaMasBarataCreada": "2026-08-10",
+   "ventaMasCara": 507.61,
+   "comprasAbiertas": 10,
+   "participacionesPedidas": 10,
+   "mejorCompra": 17.5,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2025-08-17",
+   "ordenMasRecienteCreada": "2026-08-10T18:05:22.900Z",
+   "ventaMasBarataCantidad5": [
+    [
+     98,
+     4,
+     "2026-08-10"
+    ],
+    [
+     100,
+     24,
+     "2026-02-05"
+    ],
+    [
+     100,
+     5,
+     "2026-08-10"
+    ],
+    [
+     101,
+     4,
+     "2026-08-10"
+    ],
+    [
+     109.5,
+     5,
+     "2025-01-21"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     17.5,
+     1,
+     "2025-08-17"
+    ],
+    [
+     1.11,
+     1,
+     "2025-06-20"
+    ],
+    [
+     1,
+     1,
+     "2023-11-25"
+    ]
+   ],
+   "v2_availableBricksSecondary": 71,
+   "v2_lowestOfferPrice": 98,
+   "v2_sharePrice": 90,
+   "v2_rentalReturn": -0.12,
+   "v2_updatedAt": "2026-10-27T21:49:16.692Z"
+  },
+  "AT0000A38J32": {
+   "id": "AT0000A38J32",
+   "titulo": "Photovoltaik Anlage GreenPoint mit Überschussbeteiligung",
+   "stage": "secondary",
+   "ventasAbiertas": 16,
+   "participacionesEnVenta": 351,
+   "ventaMasBarata": 100,
+   "cantidadAVentaMasBarata": 5,
+   "ventaMasBarataCreada": "2026-09-20",
+   "ventaMasCara": 300,
+   "comprasAbiertas": 9,
+   "participacionesPedidas": 18,
+   "mejorCompra": 90,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2026-10-20",
+   "ordenMasRecienteCreada": "2026-11-01T11:33:00.268Z",
+   "ventaMasBarataCantidad5": [
+    [
+     100,
+     5,
+     "2026-09-20"
+    ],
+    [
+     102,
+     5,
+     "2026-09-05"
+    ],
+    [
+     102,
+     2,
+     "2026-09-28"
+    ],
+    [
+     105,
+     3,
+     "2026-09-20"
+    ],
+    [
+     110,
+     276,
+     "2025-02-07"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     90,
+     1,
+     "2026-10-20"
+    ],
+    [
+     89,
+     1,
+     "2026-11-01"
+    ],
+    [
+     84,
+     1,
+     "2026-06-23"
+    ]
+   ],
+   "v2_availableBricksSecondary": 351,
+   "v2_lowestOfferPrice": 100,
+   "v2_sharePrice": 95,
+   "v2_rentalReturn": 6.43,
+   "v2_updatedAt": "2026-11-01T11:33:00.389Z"
+  },
+  "AT0000A38J40": {
+   "id": "AT0000A38J40",
+   "titulo": "Photovoltaik Anlage Cohotel mit Überschussbeteiligung",
+   "stage": "secondary",
+   "ventasAbiertas": 5,
+   "participacionesEnVenta": 65,
+   "ventaMasBarata": 110,
+   "cantidadAVentaMasBarata": 35,
+   "ventaMasBarataCreada": "2025-02-07",
+   "ventaMasCara": 210,
+   "comprasAbiertas": 5,
+   "participacionesPedidas": 14,
+   "mejorCompra": 3,
+   "cantidadMejorCompra": 1,
+   "mejorCompraCreada": "2024-11-23",
+   "ordenMasRecienteCreada": "2026-05-07T12:56:27.495Z",
+   "ventaMasBarataCantidad5": [
+    [
+     110,
+     31,
+     "2025-02-07"
+    ],
+    [
+     110,
+     4,
+     "2026-05-07"
+    ],
+    [
+     115,
+     10,
+     "2026-01-09"
+    ],
+    [
+     120,
+     7,
+     "2026-02-08"
+    ],
+    [
+     210,
+     13,
+     "2024-07-30"
+    ]
+   ],
+   "mejoresCompras3": [
+    [
+     3,
+     1,
+     "2024-11-23"
+    ],
+    [
+     1,
+     10,
+     "2025-03-12"
+    ],
+    [
+     1,
+     1,
+     "2025-09-24"
+    ]
+   ],
+   "v2_availableBricksSecondary": 65,
+   "v2_lowestOfferPrice": 110,
+   "v2_sharePrice": 120,
+   "v2_rentalReturn": 5.11,
+   "v2_updatedAt": "2026-10-08T19:57:53.081Z"
+  },
+  "AT0000A3E842": {
+   "id": "AT0000A3E842",
+   "titulo": "Photovoltaik Anlage mit Schnellladestation im Parkhaus Quartier Mitte St. Pölten",
+   "stage": "secondary",
+   "ventasAbiertas": 0,
+   "participacionesEnVenta": 0,
+   "ventaMasBarata": null,
+   "cantidadAVentaMasBarata": 0,
+   "ventaMasBarataCreada": null,
+   "ventaMasCara": null,
+   "comprasAbiertas": 0,
+   "participacionesPedidas": 0,
+   "mejorCompra": null,
+   "cantidadMejorCompra": 0,
+   "mejorCompraCreada": null,
+   "ordenMasRecienteCreada": null,
+   "ventaMasBarataCantidad5": [],
+   "mejoresCompras3": [],
+   "v2_availableBricksSecondary": 0,
+   "v2_lowestOfferPrice": 507.62,
+   "v2_sharePrice": 507.62,
+   "v2_rentalReturn": 6.12,
+   "v2_updatedAt": "2026-10-26T22:31:32.512Z"
+  },
+  "AT0000A3SE89": {
+   "id": "AT0000A3SE89",
+   "titulo": "Betriebsgrundstück mit langfristigem BILLA-Mietvertrag",
+   "stage": "primary",
+   "ventasAbiertas": 0,
+   "participacionesEnVenta": 0,
+   "ventaMasBarata": null,
+   "cantidadAVentaMasBarata": 0,
+   "ventaMasBarataCreada": null,
+   "ventaMasCara": null,
+   "comprasAbiertas": 0,
+   "participacionesPedidas": 0,
+   "mejorCompra": null,
+   "cantidadMejorCompra": 0,
+   "mejorCompraCreada": null,
+   "ordenMasRecienteCreada": null,
+   "ventaMasBarataCantidad5": [],
+   "mejoresCompras3": [],
+   "v2_availableBricksSecondary": null,
+   "v2_lowestOfferPrice": null,
+   "v2_sharePrice": 100,
+   "v2_rentalReturn": 5.07,
+   "v2_updatedAt": "2026-10-29T12:39:14.815Z"
+  }
+ }
+}

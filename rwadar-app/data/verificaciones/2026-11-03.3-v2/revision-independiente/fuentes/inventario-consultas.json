@@ -1,0 +1,1080 @@
+{
+ "revision": "revision-independiente · candidata spiko-smart-cash-euro y cambios críticos",
+ "ciclo": "2026-11-03.3-v2",
+ "nota": "Solo fuentes públicas; sin sesión, KYC, formularios ni wallets. eth_call de solo lectura. Las copias con parámetros de enlace (token, key), direcciones de contrato o UUID van en fuentes/crudo/ (fuera de Git).",
+ "consultas": [
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+   "archivo": "fuentes/crudo/spiko-api-EUTBL-yield.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:42:51Z",
+   "bytes": 259,
+   "sha256": "a3ee124db247ddb810594d0da9071a2c3ea5a595207b83579ad96bbe91692ef6",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+   "archivo": "fuentes/crudo/spiko-api-USTBL-yield.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:42:52Z",
+   "bytes": 259,
+   "sha256": "6594d03376303a2023a7790b6708f04f91758b84cd5b4e87b8a495f86553a426",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+   "archivo": "fuentes/crudo/spiko-api-eurSAFO-yield.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:42:52Z",
+   "bytes": 259,
+   "sha256": "e4261606386d211337b7a589a2bbcc5eced4c01fd8af4d9b3e1121c6c599d44f",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/EUTBL",
+   "archivo": "fuentes/crudo/spiko-api-EUTBL-shareclass.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:42:52Z",
+   "bytes": 2098,
+   "sha256": "8935b224e68b36afc39c718f412d060e516f9a47967e2658275e3e5638771de7",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/USTBL",
+   "archivo": "fuentes/crudo/spiko-api-USTBL-shareclass.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:42:53Z",
+   "bytes": 2266,
+   "sha256": "ec95a63de5207e05c9a7110ef5cec5368571861caad3f6fffac5ede397320e94",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO",
+   "archivo": "fuentes/crudo/spiko-api-eurSAFO-shareclass.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:42:53Z",
+   "bytes": 1805,
+   "sha256": "c34bef80310b89f9de29e1f69149a24ebcbf1bfa6cb8ee5ec01599f4e68d0820",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/net-asset-values/EUTBL?startDay=2026-09-25",
+   "archivo": "fuentes/crudo/spiko-api-nav-EUTBL.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:43:06Z",
+   "bytes": 5908,
+   "sha256": "27415c5bbc60a68324d8fc1a0cc1b45a084d285ba95beb566bcd1384aa707671",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/net-asset-values/USTBL?startDay=2026-09-25",
+   "archivo": "fuentes/crudo/spiko-api-nav-USTBL.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:43:06Z",
+   "bytes": 5476,
+   "sha256": "1637fbb8610603f39a406a06636d818cecdbdd0d5cb3350ca0972bffecc66784",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/net-asset-values/eurSAFO?startDay=2026-09-25",
+   "archivo": "fuentes/crudo/spiko-api-nav-eurSAFO.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:43:07Z",
+   "bytes": 5692,
+   "sha256": "68316c5d0be2a488e0280951efed88277ce0b9965e570eb5d3b3f50290341f87",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO/totals",
+   "archivo": "fuentes/crudo/spiko-api-eurSAFO-totals.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:43:07Z",
+   "bytes": 478,
+   "sha256": "59bbe2cab51ea2ef2b86e3ea72f42bfb5b4477ca0fb935f23b1cbe26223d8340",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.spiko.io/es/spiko-euro",
+   "archivo": "fuentes/spiko/web-es-spiko-euro.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:43:44Z",
+   "bytes": 220593,
+   "sha256": "9bebcda5ae2e670de191055ee89abd77d01a93087c0fe29fa20a33ec5effcd86",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+   "archivo": "fuentes/spiko/web-es-letras-euro.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:43:45Z",
+   "bytes": 217273,
+   "sha256": "faa71514aaf4847b99eb5feeac5f8cbcd903e6fbfbef755829547d4112fe3ec5",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+   "archivo": "fuentes/spiko/web-es-letras-dollar.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:43:45Z",
+   "bytes": 224889,
+   "sha256": "c52562a4c1453ac03468f3f06e6d6e99d7760151fe3643b6bb5950ab508c0cc6",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.spiko.io/es/usos-principales/particulares",
+   "archivo": "fuentes/spiko/web-es-particulares.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:43:46Z",
+   "bytes": 183905,
+   "sha256": "71fb389fcfd087f797c957c389193122fc1e8fbacb755a8dd4e97d84882f5a49",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+   "archivo": "fuentes/cnmv/cnmv-iicext-spiko-sicav.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:44:10Z",
+   "bytes": 151927,
+   "sha256": "b8d01d7dd0c0b1f29f7fc5307f434148b5a3fbb208b8db5c266bcc9d7d79aee9",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0401205J&vista=18&lang=es",
+   "archivo": "fuentes/cnmv/cnmv-iicext-spiko-sicav-comercializadoras.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:44:26Z",
+   "bytes": 152642,
+   "sha256": "1dab626c11b5dbf7d78d1a04269897d07af046ffc642698cfca6f12dc0df14f9",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&vista=1&lang=es",
+   "archivo": "fuentes/cnmv/cnmv-iicext-spiko-sicav-vista1-error.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:45:06Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db",
+   "metodo": "curl",
+   "nota": "Vistas 1-17 y 19-22 devuelven «No ha sido posible completar su consulta»: solo existen las pestañas 0 (Datos generales) y 18 (Comercializadoras)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=26",
+   "archivo": "fuentes/cnmv/cnmv-listado-ucits.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:46:18Z",
+   "bytes": 268944,
+   "sha256": "e8e13406a3dbe5a8f934a072524de8b95fcc5d74c2b2df9b640948188637f096",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0181304G&lang=es",
+   "archivo": "fuentes/cnmv/control-iicext-AB-SICAV-I.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:46:35Z",
+   "bytes": 152194,
+   "sha256": "4b121847b339cd1227a23891adfa93084b0c8d0f8c129c2d225bcc4ef4864a5d",
+   "metodo": "curl",
+   "nota": "Control: SICAV luxemburguesa con muchos compartimentos; la CNMV tampoco los lista."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0253231E&lang=es",
+   "archivo": "fuentes/cnmv/control-iicext-AB-SICAV-III.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:46:37Z",
+   "bytes": 152201,
+   "sha256": "ba5ea6329fda5cdc78ba6316200f31d5c925bcbf4b13b8493b6b68acaaa90d37",
+   "metodo": "curl",
+   "nota": "Control."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0099567J&lang=es",
+   "archivo": "fuentes/cnmv/control-iicext-2XIDEAS-UCITS.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:46:38Z",
+   "bytes": 152204,
+   "sha256": "930403d444e10628e8197c2cc09bdaed2a7f836db3cdd52c3b8342e3cc397f15",
+   "metodo": "curl",
+   "nota": "Control."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/busqueda.aspx?id=34 (UCITS Extranjero, denominación «SPIKO»)",
+   "archivo": "fuentes/cnmv/cnmv-busqueda-ucits-SPIKO.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:47:07Z",
+   "bytes": 149360,
+   "sha256": "ec9f4e1a7d786f4ebfe60f309a4abc7fc776a43654a86ae8e546386a2297f0d4",
+   "metodo": "playwright (buscador público)",
+   "nota": "Un único resultado: redirige a la ficha N0401205J (SPIKO SICAV, n.º 2380)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/busqueda.aspx?id=34 (UCITS Extranjero, «OVERNIGHT SWAP»)",
+   "archivo": "fuentes/cnmv/cnmv-busqueda-ucits-OVERNIGHT_SWAP.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:47:22Z",
+   "bytes": 211856,
+   "sha256": "67271c93e9a835e2492db97ba346d75e23c7b93f0c6153e0c32072ff5e8e31a3",
+   "metodo": "playwright (buscador público)",
+   "nota": "«No se han encontrado resultados»."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/busqueda.aspx?id=34 (UCITS Extranjero, «TWENTY FIRST»)",
+   "archivo": "fuentes/cnmv/cnmv-busqueda-ucits-TWENTY_FIRST.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:47:29Z",
+   "bytes": 211850,
+   "sha256": "1fb7be64b1bbdfcc90e92ef030002687796082fbc1fac8defe906f43570772d5",
+   "metodo": "playwright (buscador público)",
+   "nota": "«No se han encontrado resultados»."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/busqueda.aspx?id=34 (FIA Extranjero, «SPIKO»)",
+   "archivo": "fuentes/cnmv/cnmv-busqueda-fia-SPIKO.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:47:36Z",
+   "bytes": 211839,
+   "sha256": "15b5994de5ade680e9c22e105f8028966365bc89859e4222889050a5c1565829",
+   "metodo": "playwright (buscador público)",
+   "nota": "«No se han encontrado resultados»."
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+   "archivo": "fuentes/spiko/docs-fund-availability.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:47:53Z",
+   "bytes": 32104,
+   "sha256": "46152ac3f9cb212745da17a48137c9cb85fa65640e03303ec00c20e26429215a",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_national_name:*SPIKO* OR …*Spiko* OR collectorParent:*Spiko* OR …*SPIKO*",
+   "archivo": "fuentes/esma/esma-cbdif-spiko.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:49:54Z",
+   "bytes": 309,
+   "sha256": "e65c26fa95cdd1538bfe2afdd262a4dd7da8621ada64452353348a3e2aa88ef9",
+   "metodo": "curl (Solr público de ESMA)",
+   "nota": "Base central de ESMA de comercialización transfronteriza: 0 resultados."
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_manager_nat_name:*TWENTY*",
+   "archivo": "fuentes/esma/esma-cbdif-twenty-first.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:49:55Z",
+   "bytes": 3910,
+   "sha256": "16ba25e7e3684e71571bad90bc1d2e7641340575e557b8c06e373dd6fd531fa6",
+   "metodo": "curl (Solr público de ESMA)",
+   "nota": "10 fondos de Twenty First Capital; ninguno de Spiko."
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=funds_ca_cou_code:FR AND funds_legal_framework:UCIT&facet.field=funds_host_country_codes",
+   "archivo": "fuentes/esma/esma-cbdif-amf-ucits-cobertura.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:49:56Z",
+   "bytes": 1007,
+   "sha256": "95e4d3826776ccf70c1d882059233be43044b4cd35928b425589394a05aad159",
+   "metodo": "curl (Solr público de ESMA)",
+   "nota": "Cobertura: solo 707 UCITS con autoridad AMF (120 con España como acogida): base incompleta para Francia, no concluyente."
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/funds/compartment/c124199",
+   "archivo": "fuentes/amf/geco-compartment-c124199.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:04Z",
+   "bytes": 107,
+   "sha256": "61df956efd994b7de628a902a603f041b1d2ec400e13b10130698e14c5762b66",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/funds/compartment/c124199/shares",
+   "archivo": "fuentes/amf/geco-compartment-c124199-shares.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:04Z",
+   "bytes": 2,
+   "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399",
+   "archivo": "fuentes/amf/geco-compartment-c79399.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:05Z",
+   "bytes": 4073,
+   "sha256": "e78b2ff7930179e97564d60e02d8cf10b64d484200f394f6bf2ee74cec7c9f96",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399/shares",
+   "archivo": "fuentes/amf/geco-compartment-c79399-shares.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:05Z",
+   "bytes": 583,
+   "sha256": "8ca9533d1c84f549208ffbfb8c0e5e6b080e56f5fa8d53a3285f68e96656ee36",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/funds/lastVl/FR0014015LD3",
+   "archivo": "fuentes/amf/geco-lastvl-FR0014015LD3.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:06Z",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/funds/lastVl/FR001400ODL1",
+   "archivo": "fuentes/amf/geco-lastvl-FR001400ODL1.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:06Z",
+   "bytes": 523,
+   "sha256": "44beab111a046bd75542716b85d2f42155408256e97d1789bc9c7d40b3e2d2e1",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/funds/product/p79397",
+   "archivo": "fuentes/amf/geco-product-p79397.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:25Z",
+   "bytes": 875,
+   "sha256": "9742d810ca8d8ad93e819285a82598eaf21e0316c1f704075d36e664c6cd7dd0",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/document/byCompartAndProduct?compartCode=c79399&prdCode=p79397",
+   "archivo": "fuentes/amf/geco-docs-c79399-p79397.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:26Z",
+   "bytes": 673,
+   "sha256": "97837295fd0b4af43fa7ac0d05b38b866fa4389c98e3ef9d8256a1146a9b8f8c",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/document/byCompartAndProduct?compartCode=c124199&prdCode=p79397",
+   "archivo": "fuentes/amf/geco-docs-c124199-p79397.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:27Z",
+   "bytes": 446,
+   "sha256": "7e75c86c87018af9a922041fa3889b385a0ca78d59f4f9da86d13e19af40f42f",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://geco.amf-france.org/back-office/document/download/438274",
+   "archivo": "fuentes/crudo/geco-prospectus-spiko-sicav-vFR-2026-09-01.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:27Z",
+   "bytes": 2150362,
+   "sha256": "940559b4976a6837791e72725bc4ac3bf4c5faf579592bed7d36ac9d215f74fe",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "archivo": "fuentes/spiko/KID_eurSAFO_ES.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:28Z",
+   "bytes": 135012,
+   "sha256": "53effea21c5fd26ddc78cb7e1e877c3f9f74d965013bd4e1b051fbf46907a322",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+   "archivo": "fuentes/spiko/SAFO_Letter_EN.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:29Z",
+   "bytes": 82462,
+   "sha256": "709e0585259a5e461710633ae97475c2273c985aa99ae96d7c8fda746cd96c77",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://cdn.spiko.finance/legal_docs/ES/Prospectus_Spiko_SICAV_ES.pdf",
+   "archivo": null,
+   "http": 403,
+   "consultadoUtc": "2026-11-03T10:50:30Z",
+   "metodo": "curl",
+   "nota": "AccessDenied (S3). No se conserva copia."
+  },
+  {
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+   "archivo": "fuentes/crudo/Prospectus_Spiko_SICAV_EN.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:50:31Z",
+   "bytes": 1734485,
+   "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://data.spiko.io/safo-eur",
+   "archivo": "fuentes/crudo/data-spiko-safo-eur.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:51:12Z",
+   "bytes": 48753,
+   "sha256": "44b0c115682981e03bb88e50dcead3727ecc5d1c5fb77f6737ffec6a05ccce62",
+   "metodo": "curl",
+   "nota": "Movida a crudo/: contiene direcciones de cadena o parámetros con aspecto de clave."
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/product_overview/smart_cash/funds",
+   "archivo": "fuentes/spiko/docs-smart-cash-funds.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:51:13Z",
+   "bytes": 26522,
+   "sha256": "6ba85433aaa52804f0b5753d6b61bae5aa0780e621d115990599c1a40e2ff446",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/product_overview/smart_cash/what_is_smart_cash",
+   "archivo": "fuentes/spiko/docs-what-is-smart-cash.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:51:13Z",
+   "bytes": 28782,
+   "sha256": "d440f1499052c9a5eaa63d6f683f577fb28c4a9aed346399c9a7d4c92d867115",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/account_management/deposits_withdrawals",
+   "archivo": "fuentes/spiko/docs-deposits-withdrawals.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:51:14Z",
+   "bytes": 30181,
+   "sha256": "d38427dd415ad84b77ad5c87f0f2238e14d1b50df41f14a96ac4fdd463f0cf1c",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://docs.spiko.io/documentation/product_overview/onboarding_restrictions",
+   "archivo": "fuentes/spiko/docs-onboarding-restrictions.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:51:14Z",
+   "bytes": 24159,
+   "sha256": "d8ecac725abc0ee813f925dbe0174052f51b616559281ca08ca2a93884a4b250",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://data-api.ecb.europa.eu/service/data/EST/B.EU000A2X2A25.WT?lastNObservations=6&format=csvdata",
+   "archivo": "fuentes/bce/ecb-estr-ultimos.csv",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:51:26Z",
+   "bytes": 2188,
+   "sha256": "843019b0aa007e6a5d8b72d53c90a77d09c5842f76c3f022be3580292bdc05aa",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://public-api.spiko.io/v0/legal-documents/",
+   "archivo": "fuentes/crudo/spiko-api-legal-documents.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:52:53Z",
+   "bytes": 9109,
+   "sha256": "98a5fe8d4cd528ef7bfb1ef8fd714a5faa73f9e2e1e9bdd815a79a8e0ffe01c9",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Spiko",
+   "archivo": "fuentes/cnmv/advertencias-Spiko.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:06Z",
+   "bytes": 212159,
+   "sha256": "69ead05291670c911a12550392b2a7bb9393d36783763cbe0614242ec5c7d33f",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Twenty+First+Capital",
+   "archivo": "fuentes/cnmv/advertencias-Twenty_First_Capital.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:08Z",
+   "bytes": 212489,
+   "sha256": "7c0a6818dba570e7da0df43b2e925baad490480f74d2738a50e77cf6188ae1f8",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "archivo": "fuentes/cnmv/advertencias-Effecta.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:09Z",
+   "bytes": 212203,
+   "sha256": "71f56af52a7bc574c58f96f730790d5e1d48021db580abb23cd4c1b0ee26dca0",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "archivo": "fuentes/cnmv/advertencias-Brickwise.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:11Z",
+   "bytes": 212247,
+   "sha256": "f84885bec2df2d7027f300f57a33e3a070a6d920334c56e577f814de8a7c3a44",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend",
+   "archivo": "fuentes/cnmv/advertencias-Switzerlend.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:13Z",
+   "bytes": 212291,
+   "sha256": "5d015bce78d16ceb45a22255e05ccf5f516d6359c973532309c878fd66c1f28a",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "archivo": "fuentes/cnmv/advertencias-Midas.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:14Z",
+   "bytes": 212159,
+   "sha256": "46a5e94f17226f79d01d4de448a5acfdb6094b0981e4aaccd4624855d9b58848",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+   "archivo": "fuentes/cnmv/advertencias-Hausera.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:16Z",
+   "bytes": 212203,
+   "sha256": "7a05b6bf5a1845facec0ccc294b5c873d71c4c62803a968c57a69060941f2bcf",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx",
+   "archivo": "fuentes/cnmv/advertencias-Holdtx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:17Z",
+   "bytes": 212181,
+   "sha256": "805d0bdd9bfa4ed35dc27f4a768ba1c0e336a2c8c702af0bb4ba05a88ce523d8",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius",
+   "archivo": "fuentes/cnmv/advertencias-Alius.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:19Z",
+   "bytes": 212159,
+   "sha256": "adb183d56be15a7e7fcb76f3980197e3ba089efc2eb28db30fb393bd0db01299",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Outeiro",
+   "archivo": "fuentes/cnmv/advertencias-Outeiro.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:21Z",
+   "bytes": 212203,
+   "sha256": "07034abe699b36df9aa37d0474467d1d9b5968fd2bf0419b36c83c6a939b52a1",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "archivo": "fuentes/cnmv/advertencias-Trading.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:22Z",
+   "bytes": 237479,
+   "sha256": "04d15f2be0ca025868a90364c6372bf8847e1c39c3fa795ce6baeee7b0f8bc45",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es",
+   "archivo": "fuentes/cnmv/cnmv-esi-5325-spiko-finance.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:37Z",
+   "bytes": 218116,
+   "sha256": "49bdd3ab9a03b5bec04b0c9a37b3202a3ce1bc1dea97164cac266926604a165e",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&vista=17&lang=es",
+   "archivo": "fuentes/cnmv/cnmv-esi-5325-spiko-finance-actividades.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:53:39Z",
+   "bytes": 220121,
+   "sha256": "e80eddc9bc10f5be042a06c5b41f13f81e12f9932e959f9b8f74ad8a4fa99e8e",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "fuentes/crudo/brickwise-api-v2-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:54:17Z",
+   "bytes": 53971,
+   "sha256": "e742c195873b2c33d2dca258188bb0fb154476390d978f830dd35f0a2ae7bf67",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCD0",
+   "archivo": "fuentes/crudo/brickwise-api-v1-asset-AT0000A2WCD0.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:54:18Z",
+   "bytes": 8491,
+   "sha256": "780c50cc2a1e0a8dd1de28b8ec89fc57f6b0e142cbe60d3fa0ffca55dcf6d08f",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84",
+   "archivo": "fuentes/crudo/brickwise-api-v1-asset-AT0000A2ZT84.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:54:19Z",
+   "bytes": 10670,
+   "sha256": "8b5bcaebf9ede7a41733477a0cf87631248baa518a540e35847bb9d0f1c40a3b",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2YPQ0",
+   "archivo": "fuentes/crudo/brickwise-api-v1-asset-AT0000A2YPQ0.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:54:20Z",
+   "bytes": 9653,
+   "sha256": "61742cecd01100f3a15ec222973de4d154673b3bb2b69b537e23a7f3183f3492",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4",
+   "archivo": "fuentes/crudo/brickwise-api-v1-asset-AT0000A324B4.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:54:20Z",
+   "bytes": 12167,
+   "sha256": "13a3586b425e561450623eb328aac528824a560f19a04d5eaf431aa6761987b5",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+   "archivo": "fuentes/crudo/brickwise-api-v1-asset-AT0000A3SE89.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:54:20Z",
+   "bytes": 7526,
+   "sha256": "b66346d157c1fb981b83175c6d344833b330aa1c09208ea3cd1ab3dbd4fdff72",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "fuentes/crudo/brickwise-api-v1-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:55:22Z",
+   "bytes": 236014,
+   "sha256": "3f967faf017c0166f99d7e618836462183dc562a42ad22640d14350aa37267ae",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://api.app.brickwise.at/launchpad/api/v2/assets?ids=%5B%22AT0000A2WCD0%22%2C%22AT0000A2ZT84%22%2C%22AT0000A2YPQ0%22%2C%22AT0000A324B4%22%2C%22AT0000A3SE89%22%5D",
+   "archivo": "fuentes/crudo/brickwise-api-launchpad-v2-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:55:24Z",
+   "bytes": 48245,
+   "sha256": "582982722ea9b9ba29216908aff642e9cd2864f9c3c084dbc86efe065c83f9ba",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+   "archivo": "fuentes/crudo/brickwise-billa-investmentbedingungen.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:55:43Z",
+   "bytes": 143516,
+   "sha256": "56b3147d497082b01b573f51680655540365f95e43a64065ad4e8de8a000b533",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A3SE89/AT0000A3SE89_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/brickwise/billa-ruecktrittsbelehrung.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:55:44Z",
+   "bytes": 64709,
+   "sha256": "64612057d922812916e1c893ab67b78592c9f0a8a6c031f27cb3d941912f0528",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A3SE89",
+   "archivo": "fuentes/renders/brickwise-app-asset-billa-render-404.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:56:09Z",
+   "bytes": 165,
+   "sha256": "ef4fae0bc15d1ad8374b8c7478ab4fdfeb60f479a65fd205fc0246cad0515ba8",
+   "metodo": "playwright (render público)",
+   "nota": "La ficha individual responde «404 Diese Seite existiert zurzeit nicht» sin sesión (igual para AT0000A2WCD0 y AT0000A2ZT84)."
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "archivo": "fuentes/renders/brickwise-app-marketplace-render.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:58:18Z",
+   "bytes": 3808,
+   "sha256": "2a70be8129d30b17dc3450ee6433a984179d430131415cd7a3625163690d5c08",
+   "metodo": "playwright (render público)"
+  },
+  {
+   "url": "https://sourcify.dev/server/v2/contract/1/<contrato Brokerbot LENDS, ver crudo/>?fields=sources,abi,compilation",
+   "archivo": "fuentes/crudo/sourcify-brokerbot-lends.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T10:59:59Z",
+   "bytes": 41016,
+   "sha256": "3222c176c10c3157573e293ee4e9798c832e8ad01867384df88e5ba2b641ec02",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://ethereum-rpc.publicnode.com eth_call settings()/base()/token()/getPrice()/balanceOf al Brokerbot de LENDS (bloque 26.333.836)",
+   "archivo": "fuentes/crudo/ethcall-brokerbot-lends.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:00:25Z",
+   "bytes": 2225,
+   "sha256": "703757729e7a0ed3ea6fbd10e90411c10488545771bab06c40d1f9c984c3f9ba",
+   "metodo": "eth_call de solo lectura"
+  },
+  {
+   "url": "https://www.lend.ch/de/investor-relations",
+   "archivo": "fuentes/crudo/lend-investor-relations-de.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:00:44Z",
+   "bytes": 428559,
+   "sha256": "fcb572506f37500c7c4c970fb51a832fc715951c2906e6eb5a02a861492d951f",
+   "metodo": "curl",
+   "nota": "Movida a crudo/: contiene direcciones de cadena o parámetros con aspecto de clave."
+  },
+  {
+   "url": "https://docs.midas.app/llms.txt",
+   "archivo": "fuentes/crudo/midas-docs-llms.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:01:08Z",
+   "bytes": 5537,
+   "sha256": "4defa0d35d2f7675b0991aac173ca6bec89b61002b77da705e3fa132ec832e6c",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://docs.midas.app/resources/smart-contracts-registry(.md)",
+   "archivo": "fuentes/crudo/midas-smart-contracts-registry.md",
+   "http": 403,
+   "consultadoUtc": "2026-11-03T11:01:14Z",
+   "metodo": "curl",
+   "nota": "Desafío de Cloudflare («Just a moment...»). No se sorteó. Las direcciones de mF-ONE se toman de la copia del grupo aktionariat-midas (crudo/docs-llms-full.txt, sha256 aca8b6c7…, 10:19Z) y se contrastan en cadena: mToken() de ambos vaults = token mF-ONE.",
+   "bytes": 5696,
+   "sha256": "7352444a5e4bcedd3a7d168bd3419bd33900bf8790e15b38ae57e2e40894e47f"
+  },
+  {
+   "url": "https://ethereum-rpc.publicnode.com eth_call paused()/greenlistEnabled()/mToken()/fnPaused(bytes4) a los vaults de mF-ONE (bloque 26.333.842)",
+   "archivo": "fuentes/crudo/ethcall-mfone-vaults.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:01:42Z",
+   "bytes": 3191,
+   "sha256": "ac64bda4ba0ae1199ff13ecd159294d2006c960db8dd0537bd2b78cb65b5cb7f",
+   "metodo": "eth_call de solo lectura"
+  },
+  {
+   "url": "https://ethereum-rpc.publicnode.com eth_call instantDailyLimit()/instantFee()/minAmount()/minMTokenAmountForFirstDeposit()/dailyLimits al vault de emisión de mF-ONE (bloque 26.333.844)",
+   "archivo": "fuentes/crudo/ethcall-mfone-deposit-limits.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:02:00Z",
+   "bytes": 1081,
+   "sha256": "759298868b28ba0d513e59fa4ec58a52275992610e8f8b5bf133b9978fde5d80",
+   "metodo": "eth_call de solo lectura"
+  },
+  {
+   "url": "https://hausera.io/oportunidades/",
+   "archivo": "fuentes/renders/hausera-oportunidades-render.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:02:10Z",
+   "bytes": 4696,
+   "sha256": "ed9b8e2ee6053b8dd7944644a7bac3b231555c2dc8c8fee8fa0a7a28804cb348",
+   "metodo": "playwright (render público)"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "archivo": "fuentes/renders/hausera-alicante2-render-login.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:02:10Z",
+   "bytes": 339,
+   "sha256": "d5ea513cf0b862c95f5d2db2142c6b07b1d696e642fd66f384619ec6fefb0947",
+   "metodo": "playwright (render público)",
+   "nota": "Pide iniciar sesión: no hay documento público."
+  },
+  {
+   "url": "https://hausera.io/oportunidades/",
+   "archivo": "fuentes/crudo/hausera-oportunidades.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:02:47Z",
+   "bytes": 2384532,
+   "sha256": "85e7e2083f9cd627afd5dbce0f2cc7fb8c0128f8bc9437f599b23cdec11b591b",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://hausera.io/terms/",
+   "archivo": "fuentes/crudo/hausera-terms.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:03:01Z",
+   "bytes": 2346932,
+   "sha256": "44a51fdc7cc7406ef23f2ed9db74d0ed1c52db6c493407e015d73f43a2e12e72",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "archivo": "fuentes/crudo/hausera-alicante2.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:03:02Z",
+   "bytes": 2305956,
+   "sha256": "5315e25079bc746c9473a8ccd7863eefc43987608f29bcba771fbf86bf97db8d",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "archivo": "fuentes/crudo/tokencity-casa-de-outeiro.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:03:16Z",
+   "bytes": 48606,
+   "sha256": "00af0e4d7007f03c0455d9b8f526effb030fc50d91c7973203247edf799c13c5",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
+   "archivo": "fuentes/crudo/tokencity-casa-tabs.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:03:17Z",
+   "bytes": 32513,
+   "sha256": "3ec67c48c55af62f0a3769e31d5fd989850a6b001b94c48f85754169d19fb741",
+   "metodo": "curl"
+  },
+  {
+   "url": "https://aliuscap.com/projects/casa-de-outeiro",
+   "archivo": "fuentes/renders/alius-casa-de-outeiro-render.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-03T11:03:39Z",
+   "bytes": 4529,
+   "sha256": "8f5a33f754972ea18234c8ab44f86c1a24f479b9723ea18fd26868b527bcaf20",
+   "metodo": "playwright (render público)"
+  }
+ ],
+ "derivados": [
+  {
+   "archivo": "fuentes/brickwise/billa-ruecktrittsbelehrung.txt",
+   "bytes": 6552,
+   "sha256": "8b4a82783686f827fced779001bf4f374daaf60b62ee91ae9676de5aadddf762",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Alius.txt",
+   "bytes": 13155,
+   "sha256": "7e8202189b291fa8b505123158778708b96216b898dda45df6d22edf9429ce1c",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Brickwise.txt",
+   "bytes": 13159,
+   "sha256": "752bd0b429694011169c82885a3f1c5ccd790e4271d42f34b2b6d7f896ec4560",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Effecta.txt",
+   "bytes": 13157,
+   "sha256": "71307ef7fab0d02bebcd182f9c23f324a718403309779ef6d158d74149f2cf85",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Hausera.txt",
+   "bytes": 13157,
+   "sha256": "7a6bd72a221b0033a7f4ed6fa1631ca2f5822caff4c054c16e22ded483d4362c",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Holdtx.txt",
+   "bytes": 13156,
+   "sha256": "dd0667af65b0035253bcdc41f3717e68131c91e7d2b8dd35e63276159554d588",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Midas.txt",
+   "bytes": 13155,
+   "sha256": "1efb5c8f30607f66416ad871ef73bfa4fa5d81e3c4d557e66e0dce220f99d6ad",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Outeiro.txt",
+   "bytes": 13157,
+   "sha256": "178cefeed96ce48a5e21ac75b2cca99439814203c05df70b62ee3958887be8a2",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Spiko.txt",
+   "bytes": 13155,
+   "sha256": "a360973d99947f22855b01bfa8c0eb67bc0b8848a7a0a11c36e6da54ccfd1a9f",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Switzerlend.txt",
+   "bytes": 13161,
+   "sha256": "67799179811ccd60627e6f70f19e0e9452059eef4539d4f4205f6b5d9f1e66b6",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Trading.txt",
+   "bytes": 14209,
+   "sha256": "d52710639628827604bff82de8030d0891c7910d315ffc7d40bd357854cd15e2",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/advertencias-Twenty_First_Capital.txt",
+   "bytes": 13170,
+   "sha256": "7a2012f47a87d5e7fc48abdc787bf13f00605a2688b762dfea6ff9899e039599",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/cnmv-busqueda-fia-SPIKO.txt",
+   "bytes": 13179,
+   "sha256": "d0c6cda017824bd193acdd82d7d5886c7ebcd42ef45d6c4c20b3a093f3f6261d",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/cnmv-busqueda-ucits-OVERNIGHT_SWAP.txt",
+   "bytes": 13179,
+   "sha256": "d0c6cda017824bd193acdd82d7d5886c7ebcd42ef45d6c4c20b3a093f3f6261d",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/cnmv-busqueda-ucits-SPIKO.txt",
+   "bytes": 13412,
+   "sha256": "ab92783ff68d10b02c74ff8db9628de21b7954c04fa05dac5a5d360626b637e3",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/cnmv-busqueda-ucits-TWENTY_FIRST.txt",
+   "bytes": 13179,
+   "sha256": "d0c6cda017824bd193acdd82d7d5886c7ebcd42ef45d6c4c20b3a093f3f6261d",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/cnmv-esi-5325-spiko-finance-actividades.txt",
+   "bytes": 14527,
+   "sha256": "eb39a0cd8cb4b247d1cf4976c59e3139f109a6c37829b91de7a809d3f9ec2edf",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/cnmv-esi-5325-spiko-finance.txt",
+   "bytes": 13977,
+   "sha256": "f2b012612228b25fbc59480e7462cfe5ae87bcadeaba1f1ae876751c37ed5637",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/cnmv-iicext-spiko-sicav-comercializadoras.txt",
+   "bytes": 13449,
+   "sha256": "172cd37485d015470c8587a0c15ec5fa5dfe8ceb2b8c0fc2bad8b7e1a23ad634",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/cnmv-iicext-spiko-sicav.txt",
+   "bytes": 13412,
+   "sha256": "ab92783ff68d10b02c74ff8db9628de21b7954c04fa05dac5a5d360626b637e3",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/cnmv-listado-ucits.txt",
+   "bytes": 13838,
+   "sha256": "540816980aecc87579e867e8b139734244b6f82b2835f8cc86b6e99260106f45",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/control-iicext-2XIDEAS-UCITS.txt",
+   "bytes": 13437,
+   "sha256": "fbe431a0e76e5e972d4d28ce59b46de25d3f2def52a5b975fea4781fcfa41149",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/control-iicext-AB-SICAV-I.txt",
+   "bytes": 13430,
+   "sha256": "5b231a8a7701a588d1a4648340365ed0e703936c06fbf5cb73d4218b3dcf5281",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/cnmv/control-iicext-AB-SICAV-III.txt",
+   "bytes": 13435,
+   "sha256": "0e2a1d7a236e0fd03f0cd1383cedb0f68defa794b3217b1b76a757c2508fa560",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/crudo/Prospectus_EN.txt",
+   "bytes": 339753,
+   "sha256": "b4fae236651548792a07159b3533b39406c00782ff5dd9d6b2f2f160e6cae6ba",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/crudo/brickwise-billa-investmentbedingungen.txt",
+   "bytes": 94236,
+   "sha256": "d9451cb525227b09186ca59ddc99d9af489098c1719a20280d6ad3b1bb735f8a",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/crudo/geco-prospectus-vFR.txt",
+   "bytes": 390279,
+   "sha256": "ea438854c9a42b9bac2f62e1fb313a46b7a1284d64cd5e54a6c83cc5bffaeb7d",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/crudo/hausera-terms.txt",
+   "bytes": 53258,
+   "sha256": "e0cfce3186114ef310a32a7008352327f1a487a34be04e97078ae0eb765fbd66",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/KID_eurSAFO_ES.txt",
+   "bytes": 18495,
+   "sha256": "1c714541db6b43f4b8dc717fc50a0a8cb38235b5cca670fa80792c84e215aec6",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/SAFO_Letter_EN.txt",
+   "bytes": 3988,
+   "sha256": "706b32f71b3c5b354e68acb0e7769c0c7faca3d1f83251fa1289e1c16a39f3e7",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/data-spiko-safo-eur.txt",
+   "bytes": 1106,
+   "sha256": "ecf23ca3e5ad91e0dc739ccd5fee4250dfb6a078f264d5b88a06fb2953caa874",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/docs-deposits-withdrawals.txt",
+   "bytes": 3894,
+   "sha256": "37abedd274163457d83da63ea2482875c763937cf26c7703f8c34b585ae544c5",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/docs-fund-availability.txt",
+   "bytes": 3330,
+   "sha256": "4bcf07716c1a8710c59a588329ca7178b6bf94761107eaba5567dc277c24604e",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/docs-onboarding-restrictions.txt",
+   "bytes": 1832,
+   "sha256": "7b35bf74be7b4253af3e70294e3f217b1905b982bb5f61060cc081645c9c34f7",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/docs-smart-cash-funds.txt",
+   "bytes": 2138,
+   "sha256": "58e34d839102c5128d329da8b563812baf56448613d0c26353eb63a0381ffa12",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/docs-what-is-smart-cash.txt",
+   "bytes": 3432,
+   "sha256": "434935552e76d2533154ccb36134093186dad471443c40b821f1a1000deb8c2b",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/web-es-letras-dollar.txt",
+   "bytes": 11623,
+   "sha256": "de5c78bb4d16554377505eb45e94464cbbc1bbe21dca98301fe33d040502a437",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/web-es-letras-euro.txt",
+   "bytes": 10822,
+   "sha256": "853516a803f8e3615a733fca5d96c1064fb963bac4c708afe151402b5de7a48f",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/web-es-particulares.txt",
+   "bytes": 9573,
+   "sha256": "6cf179ec861aeece9f707c8d0b04f0118c74559315cd4620b5dc53ad389463b1",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/spiko/web-es-spiko-euro.txt",
+   "bytes": 12193,
+   "sha256": "e52168f386a90fd7f26d9cf8bcb66575f7a625806dfacb36e6f6ca77e59a4c2c",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  },
+  {
+   "archivo": "fuentes/switzerlend/lend-investor-relations-de.txt",
+   "bytes": 7953,
+   "sha256": "846386f83edfae2e66755082b53249594de1fa6cba106b5f60924b24bd54b348",
+   "derivadoDe": "texto extraído (pdftotext / html→texto) de una copia listada arriba"
+  }
+ ]
+}

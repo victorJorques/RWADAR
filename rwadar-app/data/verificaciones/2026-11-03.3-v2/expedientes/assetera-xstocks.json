@@ -1,0 +1,226 @@
+{
+  "slug": "assetera-xstocks",
+  "tipoExpediente": "candidata",
+  "grupo": "nuevas-europa",
+  "proveedor": "Assetera (marketplace de valores tokenizados, Viena)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "ASSETERA GmbH, Ungargasse 37, 1030 Viena (FN 448308 b)",
+  "emisor": "Emisor de los xStocks (familia Backed/Payward); no se ha leído hoy su folleto",
+  "vehiculo": "Certificados tokenizados xStocks que siguen 1:1 el valor de la acción o ETF",
+  "token": "xStocks (p. ej. AAPLx, NVDAx) cotizados contra USDC en el marketplace",
+  "derechoAdquirido": "Derecho contractual frente al emisor, colateralizado 1:1 con acciones en un custodio; sin voto ni propiedad de la acción (según la nota de Assetera)",
+  "jurisdiccion": "AT",
+  "identificador": "FMA Wertpapierfirma § 3 WAG 2018 · CNMV nº 5216",
+  "moneda": "USD (USDC)",
+  "documentos": [
+    {
+      "titulo": "Assetera Brings 700+ xStocks to European Retail and B2B Distribution",
+      "url": "https://www.assetera.com/media/assetera-x-xstocks",
+      "versionOFecha": "15 Sep 2026",
+      "paginas": null,
+      "sha256": "4fcb97d3a068849547a620909d738964e2a9ec81b74fe8501f186a70b3e32c1d",
+      "leido": true
+    },
+    {
+      "titulo": "Assetera Lists 450+ Ondo Tokenized Stocks and ETFs ... Across 30 EEA countries",
+      "url": "https://www.assetera.com/media/assetera-x-ondo",
+      "versionOFecha": "07 Oct 2026",
+      "paginas": null,
+      "sha256": "29dc27d407feb7f83340bc42217658f365f15741bd5d3d8bc5896969e506f2c6",
+      "leido": true
+    },
+    {
+      "titulo": "Assetera – How to get started (platform)",
+      "url": "https://www.assetera.com/platform",
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": "c2a36fbb775fb4387392c6215afab6ed4e651c0c94457cb338e92e5ba4dd75c7",
+      "leido": true
+    },
+    {
+      "titulo": "Assetera Marketplace (catálogo público renderizado)",
+      "url": "https://marketplace.assetera.com/en",
+      "versionOFecha": "consultado hoy",
+      "paginas": null,
+      "sha256": "85968290ba121c787bf95dd612ac506b571ca81746384e4a6f12937c40eda72b",
+      "leido": true
+    },
+    {
+      "titulo": "Assetera Marketplace – Terms (Last updated: July 2026)",
+      "url": "https://marketplace.assetera.com/en/terms",
+      "versionOFecha": "July 2026",
+      "paginas": null,
+      "sha256": "7c8c6de563bab1b4aea08c4b7f14b68e0ab5c955ca985b9f2756bb547a13bb76",
+      "leido": true
+    },
+    {
+      "titulo": "ASSETERA GmbH – MiFID Order Execution (Version January 2024)",
+      "url": "https://asseteramainblob.blob.core.windows.net/publicfiles/Assetera%20GmbH%20-%20MiFID%20Order%20Execution.pdf",
+      "versionOFecha": "January 2024",
+      "paginas": 7,
+      "sha256": "517c4292d3b3f4cbdf6a5e5c997eb9c9e26dc9abff7defced12e0d29f0013148",
+      "leido": true
+    },
+    {
+      "titulo": "Folleto base y condiciones finales de los xStocks",
+      "url": null,
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false,
+      "nota": "No leído hoy. El expediente kraken-xstocks del 01/11 no pudo leerlo por bloqueo geográfico; lo lleva otro grupo."
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FMA (Austria)",
+      "entidad": "ASSETERA GmbH",
+      "numero": "Wertpapierfirma gemäß § 3 WAG 2018, Konzession seit 28.02.2022",
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=Assetera&place=&bic=&category=&per_page=10&submitted=1",
+      "alcance": "Asesoramiento, gestión de carteras y recepción y transmisión de órdenes sobre (tokenisierte) Wertpapiere, instrumentos del mercado monetario, participaciones de fondos y derivados. No figura ejecución por cuenta propia ni gestión de un MTF (la web dice «MTF applied»).",
+      "consultadoUtc": "2026-11-03T10:20:54Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "ASSETERA GmbH",
+      "numero": "5216 (26/10/2023)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5216",
+      "alcance": "ESI del EEE en libre prestación en España (dirección antigua: Rotenturmstraße 13, Viena)",
+      "consultadoUtc": "2026-11-03T10:12:56Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Assetera",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "consultadoUtc": "2026-11-03T10:18:45Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "Assetera, in partnership with Payward, the parent company of Kraken, is launching with 200+ US equity xStocks on its regulated European MiFID platform",
+      "dato": "xStocks en Assetera desde el 15/09/2026",
+      "fuentePrimaria": "https://www.assetera.com/media/assetera-x-xstocks",
+      "localizador": "Nota de Assetera, 15/09/2026",
+      "fechaDato": "2026-09-15",
+      "consultadoUtc": "2026-11-03T10:12:39Z",
+      "alcanceYLimites": "El catálogo público renderizado hoy muestra xStocks (AMZNx, AAPLx, NVDAx…) con precio en USDC y botón «Buy»",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "They are now available through Assetera's MiFID-licensed platform across all 30 EU/EEA member states",
+      "dato": "30 países del EEE, sin lista",
+      "fuentePrimaria": "https://www.assetera.com/media/assetera-x-xstocks",
+      "localizador": "Nota de Assetera, 15/09/2026",
+      "fechaDato": "2026-09-15",
+      "consultadoUtc": "2026-11-03T10:12:39Z",
+      "alcanceYLimites": "No hay lista de países ni condiciones de elegibilidad públicas; «Availability and eligibility vary by jurisdiction»",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "acceso",
+      "literal": "Connect Your Wallet. Use a self-hosted or hosted wallet. Fund it with USDC or EUROP, or purchase directly via Assetera with a variety of payment methods",
+      "dato": "hace falta wallet y USDC/EUROP o pago vía Assetera",
+      "fuentePrimaria": "https://www.assetera.com/platform",
+      "localizador": "Página «How to get started», paso 02",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:12:40Z",
+      "alcanceYLimites": "Barrera para el particular medio; no se detallan los métodos de pago",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": null,
+      "dato": null,
+      "fuentePrimaria": "https://marketplace.assetera.com/en",
+      "localizador": "Catálogo y términos del marketplace",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-03T10:13:07Z",
+      "alcanceYLimites": "No hay mínimo publicado; el precio por token (p. ej. AAPLx en USDC) no equivale a un mínimo",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "comisiones",
+      "literal": null,
+      "dato": null,
+      "fuentePrimaria": "https://marketplace.assetera.com/en/terms",
+      "localizador": "Términos del marketplace (July 2026) y política de ejecución (enero 2024)",
+      "fechaDato": "2026-07",
+      "consultadoUtc": "2026-11-03T10:24:12Z",
+      "alcanceYLimites": "No hay tabla de costes pública",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "salida",
+      "literal": "Holders have a contractual claim against the issuer, collateralized 1:1 by shares held with a regulated custodian, and can redeem their xStock for its equivalent cash value in USD",
+      "dato": "reembolso en USD frente al emisor; reventa en el marketplace",
+      "fuentePrimaria": "https://www.assetera.com/media/assetera-x-xstocks",
+      "localizador": "Nota de Assetera, 15/09/2026",
+      "fechaDato": "2026-09-15",
+      "consultadoUtc": "2026-11-03T10:12:39Z",
+      "alcanceYLimites": "Sin plazos ni costes de reembolso publicados por Assetera",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Licensed by the Austrian Financial Market Authority as a MiFID II investment firm under WAG 2018",
+      "dato": "FMA, Wertpapierfirma",
+      "fuentePrimaria": "https://www.assetera.com/media/assetera-x-xstocks",
+      "localizador": "Nota de Assetera, «About Assetera»",
+      "fechaDato": "2026-09-15",
+      "consultadoUtc": "2026-11-03T10:12:39Z",
+      "alcanceYLimites": "La nota de Deploi (13/05/2026) la llama «EU-regulated DLT trading platform» y «licensed trading and settlement venue», que no cuadra con la ficha FMA (solo RTO, asesoramiento y gestión)",
+      "estado": "en_conflicto"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "FMA (WAG 2018) y CNMV nº 5216. Licencia de recepción y transmisión de órdenes; la web habla de MTF «applied» y una nota la llama centro de negociación."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Catálogo público con xStocks y precios hoy; no se puede ver la ficha de un producto sin iniciar sesión."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Sin mínimo, sin costes, sin lista de países y con wallet + USDC/EUROP."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Avisos genéricos; el folleto de los xStocks no se leyó hoy. Sin advertencias CNMV."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": "FMA (Wertpapierfirma § 3 WAG 2018); CNMV nº 5216",
+    "documentacionClara": "no",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Distribuidor MiFID austriaco con pasaporte en España que lista xStocks y, desde el 07/10/2026, Ondo Stocks.",
+    "porQueNo": "No publica mínimo, costes, países ni documentos del producto, y exige wallet con USDC/EUROP."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Es un canal más para los xStocks (que estudia otro grupo con Kraken). Assetera está autorizada y tiene pasaporte en España, pero no publica mínimo, costes, países admitidos ni los documentos del producto, y la compra pasa por una wallet con USDC o EUROP.",
+  "bloqueos": [
+    "Sin mínimo ni tabla de costes públicos.",
+    "Sin lista de países ni requisitos de elegibilidad.",
+    "Folleto de xStocks no leído hoy (otro grupo).",
+    "Fichas de producto del marketplace solo tras iniciar sesión.",
+    "Conflicto sobre el alcance de la licencia (RTO frente a «trading and settlement venue»)."
+  ],
+  "notaCoordinador": "Cambio que puede afectar al expediente ondo-global-markets: desde el 07/10/2026 Assetera dice ofrecer Ondo Stocks a «retail and professional clients across 30 countries» (nota de Assetera). El 01/11 Ondo constaba solo para profesionales o cualificados en el EEE. No lo he comprobado en los documentos de Ondo.",
+  "consulta": {
+    "inicioUtc": "2026-11-03T10:12:30Z",
+    "finUtc": "2026-11-03T10:25:37Z"
+  }
+}

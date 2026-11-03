@@ -1,0 +1,238 @@
+URL: https://app.brickwise.at/desktopWeb/marketplace
+FINAL: https://app.brickwise.at/desktopWeb/marketplace
+CONSULTADO: 2026-11-03T10:08:21Z
+HTTP: 200
+
+Klicke hier, um einen Account zu erstellen.
+Marktplatz
+Einloggen
+Account erstellen
+Alle
+Wohnimmobilien
+Gewerbe
+Finanzierungsphase
+Bestand
+Karte
+Neue Objekte
+59
+KESt
+Bestand
+Betriebsgrundstück mit langfristigem BILLA-Mietvertrag
+10. Oktober Straße 2, Brückl
+1%
+5,07 % p.a.
+Erw. laufende Ausschüttung
+Mindestinvestition
+€ 1.000,00
+Laufzeit:
+endlos
+Ausschüttungen erw. ab:
+14.7.2026
+Weitere Objekte
+Handel aktiv
+85
+KESt
+Bestand
+Photovoltaik Anlage mit Schnellladestation im Parkhaus Quartier Mitte St. Pölten
+Rennbahnstraße 1, 3100 St. Pölten, St. Pölten
+6,12 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 507,62
+Laufzeit:
+30.10.2039
+Erw. nächste Ausschüttung:
+15.11.2026
+Handel aktiv
+405
+4.6
+Bestand
+Randhartingergasse 9, Wien
+Randhartingergasse 9, Wien
+2,38 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 78,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.11.2026
+Handel aktiv
+205
+KESt
+Bestand
+Photovoltaik Anlage GreenPoint mit Überschussbeteiligung
+Pottendorfer Straße 62, Wiener Neustadt
+6,11 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 100,00
+Laufzeit:
+30.12.2038
+Ausschüttungen erw. ab:
+14.2.2024
+Handel aktiv
+99
+KESt
+Bestand
+Photovoltaik Anlage Cohotel mit Überschussbeteiligung
+Gewerbeallee 15, Steyregg
+5,57 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 110,00
+Laufzeit:
+30.12.2038
+Ausschüttungen erw. ab:
+15.2.2024
+Handel aktiv
+174
+5
+Bestand
+Wohnung, Plüddemanngasse 101, Graz
+Plüddemanngasse 101, Top 4, Graz
+3,76 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 80,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.11.2026
+Handel aktiv
+215
+4
+Bestand
+Wohnung, Sonnleithnergasse 2, Wien 10.
+Sonnleithnergasse 2, Top 247, Wien
+3,42 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 75,00
+Laufzeit:
+endlos
+Ausschüttungen erw. ab:
+14.12.2023
+Handel aktiv
+358
+5
+Bestand
+Trafik, Kohldorfer Straße 102, Klagenfurt
+Kohldorfer Straße 102, Top Gewerbe 2, Klagenfurt
+3,46 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 95,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.11.2026
+Handel aktiv
+305
+4.5
+Bestand
+Wohnung, Stallhofstraße 28, Gratwein
+Stallhofstraße 28, Gratwein
+4,11 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 69,90
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.11.2026
+Handel aktiv
+326
+4.8
+Bestand
+Wohnung, Schwarzer Weg 18, Graz
+Schwarzer Weg 18, Graz
+3,47 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 69,90
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.11.2026
+Handel aktiv
+292
+3.5
+Bestand
+Drautalresidenz, Paternion
+Bahnhofstraße 210, Paternion
+4,68 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 70,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.11.2026
+Handel aktiv
+466
+4.4
+Bestand
+Ferien-Appartement, Hinterstoder 50
+Hinterstoder 50, Hinterstoder
+4,84 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 72,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.11.2026
+Handel aktiv
+231
+4.4
+KESt
+Bestand
+Wohnung, Pottendorfer Straße 62 TOP 2.06, Wr. Neustadt
+Pottendorferstrasse 62, Wiener Neustadt
+3,90 % p.a.
+Erw. laufende Ausschüttung
+Preis pro Anteil
+ab € 78,00
+Laufzeit:
+endlos
+Erw. nächste Ausschüttung:
+15.11.2026
+Handel aktiv
+138
+KESt
+Bestand
+Fremdkapitalanteil
+Investieren in eine Ferienimmobilie mit Fixpacht in Hinterstoder!
+Hinterstoder 50, Hinterstoder
+9,32 % p.a.
+Renditepotenzial (mittleres Szenario)
+Preis pro Anteil
+ab € 98,00
+Laufzeit:
+endlos (gepl. Verkauf in 11,7J)
+Ausschüttungen erw. ab:
+14.9.2023
+Diese Plattform wird von Brickwise Investment GmbH betrieben, die vertraglich gebundener Vermittler gemäß § 3 (2) WpIG der Effecta GmbH, Florstadt, ist.
+
+==== LINKS ====
+
+
+==== XHR ====
+200 https://maps.googleapis.com/maps/api/js?key=[recortado]&libraries=places&language=de
+200 https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true
+204 https://analytics.google.com/g/collect?v=2&tid=G-KT4ETZPLB0&gtm=45je6au1v871608040za20ozb832473384zd832473384xf1&_p=1793700501772&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAGAC&cid=353328838.1793700
+403 https://ad.doubleclick.net/activity;src=11822496;type=ros170;cat=rosco0;rcb=6;ord=8916906342500;npa=0;auiddc=1235731795.1793700503;u1=%5Burl%5D;uaa=x86;uab=64;uafvl=HeadlessChrome%3B153.0.8010.12%7CNo
+200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuPnI
+403 https://11822496.fls.doubleclick.net/activityi;src=11822496;type=ros170;cat=rosco0;rcb=6;ord=8916906342500;npa=0;auiddc=1235731795.1793700503;u1=%5Burl%5D;uaa=x86;uab=64;uafvl=HeadlessChrome%3B153.0.8
+200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuPsV&sid=7da9WyVOP1a4xztfAAgD
+200 https://api.app.brickwise.at/socket.io/?EIO=4&transport=polling&t=Q6WuPsX&sid=7da9WyVOP1a4xztfAAgD
+200 https://api.app.brickwise.at/api/v1/appConfig/webAppUrl?webAppURL=https://app.brickwise.at
+200 https://api.app.brickwise.at/api/v1/utils/frontendVersion
+200 https://api.app.brickwise.at/api/v1/utils/fees
+200 https://api.app.brickwise.at/api/v2/assets
+200 https://api.app.brickwise.at/api/v1/utils/featureFlags
+401 https://api.app.brickwise.at/auth/checksession
+200 https://api.app.brickwise.at/launchpad/api/v2/assets?ids=[%22AT0000A2RAH5%22,%22AT0000A2T4D7%22,%22AT0000A2U5V3%22,%22AT0000A2WCD0%22,%22AT0000A2WCE8%22,%22AT0000A2YPQ0%22,%22AT0000A2ZT84%22,%22AT0000
+200 https://maps.googleapis.com/maps/api/js?key=[recortado]&libraries=places&v=3.47&callback=vueGoogleMapsInit
+204 https://analytics.google.com/g/collect?v=2&tid=G-KT4ETZPLB0&gtm=45je6au1v871608040za20gzb832473384zd832473384xf1&_p=1793700501772&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AEAAAGQC&ae=a&cid=353328838.179370050

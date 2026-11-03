@@ -1,0 +1,48 @@
+{
+ "url": "https://www.cnmv.es/Portal/BusquedaAdvertencias.aspx?lang=es",
+ "metodo": "playwright: buscador público de entidades advertidas (campo Denominación)",
+ "resultados": [
+  {
+   "termino": "Spiko",
+   "consultadoUtc": "2026-11-03T10:19:51Z",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Spiko",
+   "extracto": "Buscador de entidades advertidas\nListado de entidades advertidas\n\nCriterios de consulta: por tipo No autorizadas, de nombre Spiko.\n\nNo hay datos disponibles.\n\n"
+  },
+  {
+   "termino": "Twenty First Capital",
+   "consultadoUtc": "2026-11-03T10:20:02Z",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Twenty+First+Capital",
+   "extracto": "Buscador de entidades advertidas\nListado de entidades advertidas\n\nCriterios de consulta: por tipo No autorizadas, de nombre Twenty First Capital.\n\nNo hay datos disponibles.\n\n"
+  },
+  {
+   "termino": "Robinhood",
+   "consultadoUtc": "2026-11-03T10:20:13Z",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Robinhood",
+   "extracto": "Buscador de entidades advertidas\nListado de entidades advertidas\n\nCriterios de consulta: por tipo No autorizadas, de nombre Robinhood.\n\nNo hay datos disponibles.\n\n"
+  },
+  {
+   "termino": "Prosegur",
+   "consultadoUtc": "2026-11-03T10:20:24Z",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur",
+   "extracto": "Buscador de entidades advertidas\nListado de entidades advertidas\n\nCriterios de consulta: por tipo No autorizadas, de nombre Prosegur.\n\nNo hay datos disponibles.\n\n"
+  },
+  {
+   "termino": "Spiko Finance",
+   "consultadoUtc": "2026-11-03T10:20:36Z",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Spiko+Finance",
+   "extracto": "Buscador de entidades advertidas\nListado de entidades advertidas\n\nCriterios de consulta: por tipo No autorizadas, de nombre Spiko Finance.\n\nNo hay datos disponibles.\n\n"
+  },
+  {
+   "termino": "Robinhood Europe",
+   "consultadoUtc": "2026-11-03T10:20:47Z",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Robinhood+Europe",
+   "extracto": "Buscador de entidades advertidas\nListado de entidades advertidas\n\nCriterios de consulta: por tipo No autorizadas, de nombre Robinhood Europe.\n\nNo hay datos disponibles.\n\n"
+  },
+  {
+   "termino": "Prosegur Custodia",
+   "consultadoUtc": "2026-11-03T10:21:28Z",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur+Custodia",
+   "extracto": ""
+  }
+ ]
+}

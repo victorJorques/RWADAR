@@ -1,0 +1,797 @@
+Dra7
+
+
+
+
+Second Supplement dated 29 September 2026 to the Base Prospectus dated 8 May 2026 of
+Backed Assets (JE) Limited
+
+This supplement ("Second Supplement") is supplemental to the base prospectus of Backed Assets
+(JE) Limited dated 8 May 2026 ("Base Prospectus"), as supplemented on 4 August 2026 and any other
+supplements thereto and the respective specification of the detailed terms applicable to each Product
+("Final Terms") for the specific securities in order to obtain all the relevant information.
+
+This Second Supplement constitutes a supplement according to Article 23 of the Regulation (EU)
+2017/1129 of the European Parliament and the Council of 14 June 2017, as amended ("Prospectus
+Regulation"). Terms defined in the Base Prospectus have the same meaning when used in this Sup-
+plement. In case of discrepancies between this Second Supplement and the Base Prospectus, this
+Second Supplement shall prevail.
+
+This Second Supplement has been approved by the Financial Market Authority Liechtenstein ("FMA"),
+as competent authority under the Prospectus Regulation. The FMA only approves this Second Supple-
+ment as meeting the standards of completeness, comprehensibility and consistency imposed by the
+Prospectus Regulation. Such approval should not be considered as an endorsement of the Issuer or
+the quality of the securities that is/are the subject of this Second Supplement. Investors should make
+their own assessment as to the suitability of investing in the securities.
+
+This Second Supplement will be available on the website of Backed Assets (JE) Limited at
+www.backedassets.fi during 10 years after its publication and is also available (together with the other
+parts of documents of the Base Prospectus) free of charge at the offices of the Issuer at Backed Assets
+(JE) Limited, First Floor, La Chasse Chambers, Ten La Chasse, St. Helier, JE2 4UE, Jersey. Any web-
+site mentioned in this Second Supplement does not form part of this Second Supplement or the Base
+Prospectus itself.
+
+1. RIGHT OF WITHDRAWAL:
+
+Investors who have already agreed to purchase or subscribe for the Products issued pursuant to Final
+Terms under the Base Prospectus before this Second Supplement is published shall according to Article
+23 paragraph 2 Prospectus Regulation have the right, exercisable within three Business Days after the
+publication of this Second Supplement to withdraw their acceptances, provided that the significant new
+factor, material mistake or material inaccuracy referred to in this Second Supplement arose or was
+noted before the closing of the offer period or the delivery of the Products, whichever occurs first.
+
+Any withdrawal may be exercised without stating any reason and shall be sent to the Issuer (Backed
+Assets (JE) Limited, First Floor, La Chasse Chambers, Ten La Chasse, St. Helier, JE2 4UE, Jersey) in
+written form.
+
+2. PURPOSE / REASON OF THIS SUPPLEMENT:
+
+This Supplement has been prepared in order to supplement the Base Prospectus with:
+
+       A) Authorized Participant Agreements
+
+The Issuer has entered in 2025 and 2026 Authorized Participant Agreements with Payward Digital So-
+lutions Ltd and with Payward Europe Digital Solutions (CY) Limited, which may become material and
+are now reflected in the EU Base Prospectus. Further Authorized Participants may be appointed.
+
+       B) Possibility to Replace Underlyings in case of an Underlying Corporate Restructuring
+
+
+
+
+                                                                                                    1/14
+Dra7
+
+
+
+
+Where a corporate restructuring event affecting the Underlying results in its exchange or replacement
+of such Underlying by a different security, the Issuer may elect to accept the replacement rather than
+exercise an Issuer Call Option that would trigger a redemption. In such cases, the Issuer shall publish
+a notice setting out details of the new Underlying and the revised denomination of the Products.
+
+         C) Minor corrections
+
+In addition, minor corrections have been implemented, especially regarding the dates and names of the
+agreements with InCore Bank AG.
+
+3. INFORMATION BEING SUPPLEMENTED:
+
+       a. Amendments in the section titled “Warning”, to be inserted under subsection “Important
+          Note for Investors acquiring the Products on the secondary market”
+
+          In letter (c), the text “they are a Professional Investor (as defined above)” shall be replaced with
+          “they are a Professional Investor (as defined in the SPB Order)”.
+
+       b. Amendments in the section “IMPORTANT INFORMATION, GENERAL SALES RE-
+          STRICTIONS”, subsection “CONFIRMATION OF YOUR WARRANTIES”:
+
+          1. The following text shall be inserted at the end of the first paragraph after the word “Final
+             Terms”: “, (vii) you have read this Base Prospectus (including the relevant Final Terms), and
+             (viii) you have received and acknowledged the warning set out above under the JFSC Guid-
+             ance (as defined above); you understand the risks set out above; that the Products are suit-
+             able for them you that you wish to acquire Products from the Issuer, and (ix) under the SPB
+             Order (as defined above), you are a Professional Investor (as defined in the SPB Order), or
+             alternatively you will be deemed, by such acquisition, to have represented that you have re-
+             ceived and acknowledged the SPB Order Investment Warning (as defined above)” and the
+             word “and” before “(vi)” in the same paragraph shall be deleted.
+
+       c. Amendments in section “A. Definitions”
+
+            1. In the definition of “Authorized Participant”, the following sentence shall be added after the
+               first sentence “Currently the issuer has Authorized Participant Agreements with Payward
+               Digital Solutions Ltd and Payward Europe Digital Solutions (CY) Limited, both group com-
+               panies of the Issuer.” The complete definition shall read as follows:
+
+                “An appropriately regulated entity approved and engaged by the Issuer (in its absolute sole
+                discretion) for the offering of one or several Products to Investors. Currently, the Issuer has
+                Authorized Participant Agreements with Payward Digital Solutions Ltd and Payward Europe
+                Digital Solutions (CY) Limited, both group companies of the Issuer”
+
+            2. In the definition of “Custody Agreement”, the words “UK” and “US” shall be replaced by
+               “U.S.” and “U.K.”, so that the definition now reads as follows:
+
+                “A custody agreement between the Issuer and any Custodian according to general market
+                standards for custody services, including a Swiss Custody Agreement, a U.S. Custody
+                Agreement and a U.K. Custody Agreement.”
+
+            3. In the definition of “Paying Account Provider Functions”, the words “UK” and “US” shall be
+               replaced by “U.S.” and “U.K.”, so that the definition now reads as follows:
+
+
+
+
+                                                                                                           2/14
+Dra7
+
+
+
+
+                Paying account provider functions as defined in Section Error! Reference source not
+                found. of the Base Prospectus and as further specified in the Swiss Account Control Agree-
+                ment, the U.S. Securities Account Control Agreement and the U.K. Securities Account Con-
+                trol Agreement as well as the Final Terms of the respective Product
+
+            4. In the definition of “Prime Borrower”, the word “the” shall be replaced by “a”, so that the
+               definition now reads as follows:
+
+                “Broker firm that acts as borrower of Lent Underlyings according to a Securites Lending
+                Agreement, provided that such broker firm shall meet the requirements set out in Section
+                3.14 under the heading “Prime Borrower””
+
+            5. In the definition of “Recalculation”, a typographic error shall be corrected: the letters “y” and
+               “l” shall be swapped to correctly read “Underlying” (previously “Underyling”).
+
+            6. The definition of “Registration Agreement” shall be substantially rewritten. The definition
+               shall be fully replaced by the following text:
+
+                “The provisions required under article 973d ss. CO that form part of the Terms and Condi-
+                tions and set forth the terms relating to the securitization of the Products as Ledger-Based
+                Securities by the Issuer, including the effects of such securitization, the rules governing
+                transfers and the procedures applicable upon loss of Ledger-Based securities. The Regis-
+                tration Agreement forms part of the Terms and Conditions”
+
+            7. In the definition of “Termination Notice”, the phrase “in any event” shall be replaced by “if
+               possible”, so that the definition now reading as follows:
+
+                “The Issuer has to notify the Investors of the termination of a Product at the earliest possible
+                date, if possible no later than 30 Business Days prior to the Termination Date”
+
+            8. In the definition of “Tokenization Services Agreement”, the following description shall be
+               deleted: “pursuant to which the Issuer provides certain support services relating to the
+               xStocks product offering to Payward, Inc., including minting activities, and pursuant to
+               which Payward, Inc. provides certain ancillary services to the Issuer, including AML over-
+               sight and operational services. The prior Tokenization Services Agreement between the
+               Issuer and Backed Finance AG, effective as of 18 November 2021, has been superseded
+               by the Services Agreement” and the abbreviation “US” shall be replaced by “U.S.”. The
+               complete definition shall read as follows:
+
+                “The Services Agreement between the Issuer and Payward, Inc. (U.S.), effective as of 5
+                January 2026, as amended from time to time”
+
+       d. Amendments in section “2.3.1.2 Counterparty Risk”
+
+            1. In this section, letter (g) shall be amended by deleting the word “Payward”, reading as
+               follows:
+                 “g. the legal entity providing the technical infrastructure for the tokenization services, i.e.
+                 for the creation, activation, issuance and redemption of the ledger-based securities for the
+                 Products serving as Underlyings (as defined in the Base Prospectus) held as Collateral.”
+            2. In the same section, the third paragraph starting with “Concerning”, the term “Concerning”
+               shall be replaced by “With respect to” and additionally the abbreviations “U.S.” shall replace
+               “US” and “U.K.” shall replace “UK”.
+
+
+
+
+                                                                                                            3/14
+Dra7
+
+
+
+
+       e. Amendments in section “2.3.2 Risks related to the Business Activities and Industry of
+          the Issuer”
+
+            1. In this section another subsection shall be added at the after “2.3.2.7 Reputational Risk”
+               being named “2.3.2.8 Financial dependency on Payward Group companies” and shall read
+               as follows:
+
+                “In determining that the use of the going concern assumption is appropriate, the Issuer’s
+                directors considered measures undertaken to support liquidity and ongoing operations.
+                On January 5, 2026, the Issuer entered into the Tokenization Services Agreement with
+                Payward, pursuant to which Payward committed to cover the Issuer’s ongoing expendi-
+                ture. The Issuer also entered into a Contribution Agreement with the Parent in January
+                2026, pursuant to which a shareholder loan of approximately $6.1 million was extin-
+                guished and received an additional approximately $16.8 million in financing. On the basis
+                of these arrangements, the Issuer’s directors concluded that the use of the going concern
+                assumption is appropriate.
+
+                The Issuer’s future viability, however, remains dependent in part on the continued availa-
+                bility of financial support from Payward and other members of the Payward Group. Nei-
+                ther Payward nor PEL has guaranteed the Issuer’s obligations under the Products, and
+                the financial support described above does not eliminate the risks associated with the Is-
+                suer’s history of operating losses or the Issuer’s need for sufficient liquidity to fund its op-
+                erations. If the financial support available to the Issuer is insufficient to fund its ongoing
+                operations, or if the Issuer is unable to obtain additional financing when needed on ac-
+                ceptable terms or at all, the Issuer may be unable to continue its operations in their cur-
+                rent form or to meet its obligations as they become due.
+
+                Any actual or perceived uncertainty regarding the Issuer’s ability to continue as a going
+                concern could make it more difficult for the Issuer to obtain additional financing on favorable
+                terms or at all and could adversely affect the confidence of Investors, service providers,
+                counterparties and distribution partners. If the Issuer is unable to continue as a going con-
+                cern, the Issuer may be required to reduce or cease operations or liquidate its assets, and
+                the Issuer may realize significantly less than the amounts at which those assets are carried
+                on the Issuer’s financial statements. In such circumstances, Investors could lose all or a
+                substantial portion of their investment in the Products.”
+
+       f.   Amendments in section “2.3.4.1 Personnel Interdependence / Conflicts of Interest”
+
+            1. In this section in the second paragraph, first sentence, the text “Products, Underlyings,”
+               shall be added after “hold”, the sentence reading as follows:
+                “Furthermore, in accordance with the relevant applicable law, the directors may hold Prod-
+                ucts, Underlyings, securities, other financial instruments and digital assets on their per-
+                sonal name and account.”
+       g. Amendments in section “2.4.2.5 Technical Risks relating to Blockchains”
+
+            1. In this section, in the third paragraph, first sentence, the text “(“PoW”)” and “(“PoS”)” shall
+               be deleted, the sentence reading as follows:
+                “The Ethereum blockchain is undergoing a series of upgrades, most notably the gradual
+                move from a Proof of Work consensus mechanism to a Proof of Stake mechanism, both in
+                form of Forks, changes to the rules of the protocol, and in other ways.”
+
+
+
+
+                                                                                                             4/14
+Dra7
+
+
+
+
+        h. Amendments in section “2.5.2.6 Risks relating to Products Linked to Equity Instru-
+           ments”
+
+             1. In this section, in the first sentence, the word “geopolitical” shall be replaced by to “(geo)po-
+                litical”.
+        i.   Amendments in section “3.3 Organisational Structure”
+
+             1. In this section, in the fifth paragraph, in the first sentence, the following text shall be added
+                “(“Payward”)”after “Payward, Inc.” reading the sentence as follows:
+                 “The Issuer, has entered into a Tokenization Services Agreement with Payward, Inc. (“Pay-
+                 ward”), under which the Issuer provides certain support services relating to the xStocks
+                 product offering to Payward, Inc., including minting activities, and pursuant to which Pay-
+                 ward, Inc. provides certain ancillary services to the Issuer, including AML oversight and
+                 operational services.”
+        j.   Amendments in section “3.6.1.1 Directors”
+
+             1. In this section, in the fifth column of the list the following text shall be deleted “as alternate
+                director to Mark Greenberg” and the following text “Business Manager” shall be replaced
+                by “Chief Executive Officer, Chief Financial Officer and Alternate Director”, reading the col-
+                umn as follows:
+       Andrew Price               c/o First Floor, La Chasse Chambers, Ten La         Chief Executive Officer, Chief
+                                  Chasse, St. Helier, JE2 4UE, Jersey                 Financial Officer and Alter-
+                                                                                      nate Director
+
+
+
+        k. Amendments in section “3.6.2 Supervisory Bodies”
+
+             1. In this section, the whole text shall be replaced, reading the section as follows:
+                 “The Issuer’s business and affairs are managed under the direction of the Board of Direc-
+                 tors. The Board of Directors currently consists of four members, each of whom is a mem-
+                 ber pursuant to the board composition provisions of the Issuer’s existing memorandum
+                 and articles of association.
+                 The Issuer’s memorandum and articles of association provide that the maximum and min-
+                 imum number of directors on the Board of Directors can be fixed by ordinary resolution
+                 adopted by the Issuer, but subject to certain provisions of the articles of association and
+                 the Jersey Companies Law, the minimum number of directors shall be three.”
+        l.   Amendments in section “3.8.1 Financial Information and Historic Financial Information”
+
+             1. In this section, under subsection “Negative equity, losses and negative operating cash
+                flow”, in the third paragraph, the term “Support” shall be replaced by “Tokenization”, reading
+                the section as follows:
+                 “In order to mitigate any uncertainty regarding the Issuer’s ability to continue as a going
+                 concern, the following measures have been implemented: (i) on 5 January 2026, the Issuer
+                 entered into a Tokenization Services Agreement with Payward Inc., under which Payward
+                 Inc. committed to cover the Issuer’s ongoing expenditure; (ii) on 6 January 2026, the Issuer
+                 entered into a Contribution Agreement with its parent Backed Finance AG, whereby Backed
+                 Finance AG contributed a loan receivable of approximately USD 6,075,435 which extin-
+                 guished the loan payable held by the Issuer and terminated all intercompany loan agree-
+                 ments; and (iii) the Issuer received a further USD 16,823,000 in additional financing.”
+
+
+
+
+                                                                                                              5/14
+Dra7
+
+
+
+
+       m. Amendments in section “3.10 Material Contracts”
+
+             In this section, after the third paragraph reading “Payward Inc. provides AML oversight and
+             AML operational services. There are no further material contracts that are not entered into
+             in the ordinary course of the Issuer's business, which could result in any member of the
+             Payward Group being under an obligation or entitlement that is material to the Issuer's ability
+             to meet its obligations to investors in respect of the Products being issued.”, the following
+             text shall be added:
+
+             “The Issuer has appointed the following Authorized Participants:
+
+            i.    According to an Authorised Participant Agreement dated 28 April 2025, amended on 4
+                  May 2026: Payward Digital Solutions Ltd, Park Place, 55 Par-la-Ville Road, Hamilton,
+                  Pembroke HM 11, Bermuda, which holds a Class F Digital Asset Business licence and
+                  is regulated by the Bermuda Monetary Authority; and
+
+            ii.   According to an Authorised Participant Agreement dated 4 May 2026: Payward Europe
+                  Digital Solutions (CY) Limited, Athalassas 62, Mezzanine, Strovolos 2012, Nicosia, Cy-
+                  prus, registered with the Cyprus Registrar of Companies under number HE 356603,
+                  authorised and regulated by the Cyprus Securities and Exchange Commission under
+                  registration number 342/17.
+
+             The Issuer may appoint further Authorized Participants from time to time. Details of the Au-
+             thorized Participants appointed in respect of a Product will be set out in the relevant Final
+             Terms.
+
+             On January 6, 2026, the Parent entered into an Intellectual Property Transfer Agreement
+             with Payward, pursuant to which the Parent sold, assigned and transferred to Payward all
+             of its right, title and interest in certain technology and intellectual property assets related to
+             the tokenized equities business. The transferred intellectual property includes, among other
+             things, all software, distributed ledger, blockchain and tokenization technology, inventions,
+             patents, patent applications, trade secrets, trademarks, service marks, trade names, logos
+             and domain names.
+
+             The initial consideration payable by Payward for the transferred intellectual property was
+             USDC 16.823 million, subject to adjustment following finalization of the purchase price allo-
+             cation for Payward’s acquisition. Any adjustment amount will be treated as an adjustment to
+             the purchase price for the transferred intellectual property.
+
+             Term Loan Guaranty
+
+             On October 1, 2025, the Parent entered into a Term Loan Agreement with PEL, pursuant to
+             which PEL agreed to provide delayed draw term loans to the Parent for working capital and
+             liquidity provisioning in support of the Products. In connection with the agreement, the Is-
+             suer, together with certain other subsidiaries of the Parent, agreed to guarantee the obliga-
+             tions of the Parent under the facility. The guaranty covers outstanding amounts under the
+             facility, including principal, interest and certain related obligations, subject to the terms of the
+             agreement.”
+
+
+
+
+                                                                                                             6/14
+Dra7
+
+
+
+
+       n. Amendments in section “3.14 Interest of Natural and Legal Persons involved in the Issue
+          / Offer”
+
+          1. In the third paragraph, the following text shall be deleted “or “Registerwertrechte””, reading
+             the paragraph as follows:
+               “The tokenization of the Products is being done in accordance with Swiss law by the Issuer
+               directly creating and issuing ledger-based securities ("Ledger-Based Securities") accord-
+               ing to Art. 973d et seqq. CO.”
+
+          2. In the fifth paragraph, after the word “group” the following text shall be added “, from Pay-
+             ward Digital Solutions Ltd acting as Authorized Participant, and from Payward Europe Dig-
+             ital Solutions (CY) Limited acting as Authorized Participant,”, the paragraph reading as fol-
+             lows:
+               “Apart from the tokenization services which are performed by the Issuer utilising the oper-
+               ational resources of the Payward Group, from Payward Digital Solutions Ltd acting as Au-
+               thorized Participant, and from Payward Europe Digital Solutions (CY) Limited acting as
+               Authorized Participant, the Authorized Participants, Custodians, Sub-Custodians, Brokers,
+               Security Agent, Paying Account Providers and any other third parties set out below are not
+               related to the Issuer. Such third parties may act in different functions provided that they
+               implement appropriate measures to avoid conflicts of interests between the individual func-
+               tions, if required:”
+
+          3. In the subsection “Tokenization Services Agreement” the comma before “effective as of 5
+             January 2026” shall be removed, the sentence reading as follows:
+               “The agreement between the Issuer and Payward, Inc. (US), effective as of 5 January
+               2026, as amended from time to time ("Tokenization Services Agreement") covers the
+               provision of the tokenization services.”
+
+           4. After the subsection “Information on the Authorized Participant(s)”, the following two para-
+              graphs shall be added as first and second paragraph of this subsection:
+               “Payward Digital Solutions Ltd, Park Place, 55, Par-la-Ville Road, Hamilton, Pembroke,
+               HM 11, Bermuda, holding a Class F Digital Assets Business license and regulated by the
+               Bermuda Monetary Authority, acts as Authorized Participant for the Products.
+               Payward Europe Digital Solutions (CY) Limited, Athalassas 62, Mezzanine, Strovolos
+               2012, Nicosia, Cyprus, registered with the Cyprus Registrar of Companies under number
+               HE 356603, authorised and regulated by the Cyprus Securities and Exchange Commis-
+               sion under registration number 342/17, acts as authorized participant for the products.“
+
+          5. In the subsection “Custody Agreement / Cryptocurrency Services Agreement” the sec-
+             ond paragraph starting with “The Issuer and InCore Bank AG as Custodian” shall be com-
+             pletely deleted and replaced by the following text:
+              “The Issuer as Account Holder, InCore Bank AG as Custodian and Security Agent Ser-
+              vices AG as Security Agent entered into a control agreement dated 28 February 2024 (the
+              “Swiss Account Control Agreement”) replacing an account control agreement dated 28
+              February 2023, for the purpose of perfecting the security interest created by the Collateral
+              Agreement.
+
+              In parallel with this, the Issuer entered into a Bank Client Agreement with InCore Bank AG
+              (the “Bank Client Agreement”) on 26 February 2024, according to which InCore Bank
+
+
+
+
+                                                                                                       7/14
+Dra7
+
+
+
+
+          AG shall comprehensively provide the Issuer with global custody, global execution (in-
+          cluding transactional account services regarding the issuance of Products under this
+          Base Prospectus), account control and transactional banking services (upon a Realiza-
+          tion Event), as well as other services.
+
+          A Global Execution Individual Agreement between the Issuer and Incore Bank AG is ap-
+          pended to the Bank Client Agreement (the “Global Execution Individual Agreement”)
+          dated 26 February 2024, according to which InCore Bank AG (i) processes trading orders
+          instructed by the Issuer and (ii) manages cash accounts of the Issuer. InCore is responsi-
+          ble for the placement, trading and settlement of these orders regarding the Swiss Collat-
+          eral in its own name for the account of the Issuer.
+
+          In addition, the Issuer entered into a Global Custody Individual Agreement with InCore
+          Bank AG (the “Global Custody Individual Agreement”) on 26 February 2024, which is
+          also appended to the Bank Client Agreement, and according to which InCore Bank AG
+          provides global custody services to the Issuer, covering safekeeping and management of
+          the Swiss Collateral, including corporate actions for the relevant Underlyings. InCore
+          Bank AG shall provide for one main account for the Issuer with a sub-account for each
+          Underlying class. InCore Bank AG shall settle trading orders in accordance with custom-
+          ary due diligence using standardized and automated processes.
+
+          InCore Bank AG shall handle the deposited assets with the customary care and diligence
+          and the Issuer shall indemnify and hold harmless the Custodian for all costs and direct
+          losses related to the Swiss Account Control Agreement, which InCore Bank AG might be-
+          come liable in connection with the due performance of its obligations under the Swiss Ac-
+          count Control Agreement, other than costs and losses arising from InCore Bank AG gross
+          negligence or unlawful intent. InCore Bank AG assumes liability for any direct damage to
+          the Issuer resulting from grossly negligent or intentional non-performance or inadequate
+          performance. InCore Bank AG is authorized by the Issuer to use third-party custodians.
+          InCore Bank AG is not allowed to do any securities lending with the Underlyings. InCore
+          Bank AG may terminate the Control Agreement at any time upon the expiry of the initial
+          minimum one-year term, with twelve months' prior written notice to the end of a calendar
+          month. The Swiss Account Control Agreement, the Bank Client Agreement, the Global Ex-
+          ecution Individual Agreement and the Global Custody Individual Agreement are governed
+          by Swiss law.”
+
+       6. In the subsection “Brokerage Agreement / Institutional Account Agreement”, the sec-
+          ond paragraph shall be fully replaced by the following text:
+          “The Issuer and InCore Bank AG as Broker entered into the Swiss Account Control Agree-
+          ment, based on InCore Bank AG's "General Terms and Conditions to hold Swiss Collateral
+          in custody.”
+
+       7. In subsection “Paying Account Provider Agreement”, the second paragraph shall be re-
+          placed as follows:
+          “The Issuer and InCore Bank AG as Paying Account Provider entered into a Swiss Account
+          Control Agreement dated 28 February 2024. The Paying Account Provider shall provide for
+          a separate cash account for the Issuer with separate sub-accounts for each Product.”
+       8. Also in subsection “Paying Account Provider Agreement”, the last sentence of the third
+          paragraph reading “The framework agreement which includes the Paying Account Provider
+          Agreement, is governed by Swiss law” shall be replaced by the following sentence:
+          “The Swiss Account Control Agreement is governed by Swiss law.”
+
+
+
+
+                                                                                                 8/14
+Dra7
+
+
+
+
+       o. Amendments in section “3.15.1 In General”
+
+            1. In the second paragraph, first sentence, the following text “the Issuer going through” shall
+               be deleted, the sentence reading as follows:
+                “Any Issuance Process, Redemption Process and payment flow to any Investor is subject
+                to KYC/AML procedures, if necessary at the Issuer's sole discretion and acknowledgement
+                of required regulatory warnings.”
+       p. Amendments in section “3.17 Reasons for the Offer and Use of Proceeds”
+
+            1. In this section, in the second paragraph, after the word “Products” the following text “and
+               with the acquisition, custody and disposition of Collateral” shall be added, the paragraph
+               reading as follows:
+                “The Issuer will use the Proceeds to (i) finance the purchase of the Collateral, (ii) pay the
+                fees and costs of the various service providers in connection with creating, launching, is-
+                suing, redeeming, distributing, marketing and providing all further services for the Products
+                and with the acquisition, custody and disposition of Collateral and (iii) finance its own ex-
+                isting and future business activities.”
+
+       q. Amendments in section “4.1.1 Type and Class of the Offered Securities”
+
+            1. In this section, at the end of the eighth paragraph, the following text shall be added “Should
+               the Termination Date be in the past at the moment the Investors are noticed, for instance
+               due to a corporate restructuring at the level of the Underlying which was not announced to
+               the Issuer with sufficient time in advance, Investors may not have the option to redeem
+               before the Termination Date but they will (i) redeem due to the Issuer Call Option which
+               entails a redemption or (ii) in case of a replacement of the Underlying, they will be able to
+               redeem the Products when the Underlying has been replaced, at the earliest possible
+               date.”, the paragraph reading as follows:
+               “The Issuer will provide Termination Notice to Investors in the event that it intends to exercise
+               its Issuer Call Option or replace the Underlying. Investors will have the option to redeem
+               their investment in the Product prior to the Termination Date in line with the ordinary Investor
+               Redemption procedures. If an Investor chooses not to redeem their investment, their invest-
+               ment will automatically be converted to the replacement Underlying upon the day following
+               the Termination Date. Should the Termination Date be in the past at the moment the Inves-
+               tors are noticed, for instance due to a corporate restructuring at the level of the Underlying
+               which was not announced to the Issuer with sufficient time in advance, Investors may not
+               have the option to redeem before the Termination Date but they will (i) redeem due to the
+               Issuer Call Option which entails a redemption or (ii) in case of a replacement of the Under-
+               lying, they will be able to redeem the Products when the Underlying has been replaced, at
+               the earliest possible date.”
+
+       r.   Amendments in section “4.3 Tax Restrictions”
+
+            1. Under the subsection “Jersey Taxation”:
+                a) In the subparagraph “The Issuer” the first paragraph starting with “Under Article 123C
+                   of the Income Tax (Jersey) Law 1961” shall be deleted and fully replaced by the follow-
+                   ing text:
+                    “The Issuer is tax resident in Jersey. Jersey has implemented the OECD's global mini-
+                    mum tax rate of 15%, known as "Pillar 2", which applies for fiscal years commencing
+                    on or after January 1, 2025. Pillar 2 is an OECD initiative that ensures that multinational
+
+
+
+
+                                                                                                            9/14
+Dra7
+
+
+
+
+              enterprises with a consolidated annual turnover of at least €750 million (“MNEs”) pay a
+              minimum blended “effective tax rate” of 15% on their worldwide profits, no matter where
+              those profits arise. The Issuer is part of an MNE group and on the basis that it is tax
+              resident in Jersey is expected to be subject to Jersey’s Pillar 2 tax regime. “
+          b) In the subparagraph “Holders of Products” the first two paragraphs have different spec-
+             ifications added at various points, being therefore completely replaced by the following
+             text:
+              “It is anticipated that non-Jersey holders of the Products will not be subject to any tax
+              in Jersey in respect of the acquisition, ownership, sale, exchange of the Products un-
+              less they hold the Products in connection with a Jersey permanent establishment. Ac-
+              cordingly, save as set out below, there will be no withholding or similar tax required to
+              be deducted by the Issuer in respect of non-Jersey resident holders of the Products.
+
+              Any Jersey resident holders of the Products (or non-Jersey residents who hold their
+              Products in connection with a Jersey permanent establishment) may be liable to pay
+              tax on their income more generally, but there is no capital gains tax, estate duty, inher-
+              itance tax (other than stamp duty, see below). The attention of Jersey residents (or non-
+              Jersey residents who hold their Products in connection with a Jersey permanent es-
+              tablishment) is drawn to Article 134A of the Income Tax Law and other provisions of the
+              Income Tax Law, the effect of which may be to render any gains in respect of their
+              Products and/or distributions made in respect of them chargeable to Jersey income
+              tax. Jersey residents who (or non-Jersey residents who hold their Products in connec-
+              tion with a Jersey permanent establishment) are subject to Pillar 2 taxes in Jersey may
+              be taxed differently on the Products from the manner set out above.”
+
+       2. In the subsection “Implementation of the Common Reporting Standard in Jersey”:
+              a. the title of such subsection is replaced by “Common Reporting Standard and
+                 Crypto-Asset Reporting Framework”
+              b. after the aforementioned title, the subtitle “Common Reporting Standard” is added
+              c.   a new last subparagraph titled “Crypto-Asset Reporting Framework” is inserted at
+                   the end of the section with the following text:
+              “The Jersey CARF rules apply to a person that, as a business, effectuates or provides
+              a service effectuating relevant exchange transactions in Relevant Crypto-Assets (as
+              defined under CARF) for or on behalf of users. The Issuer generally acts solely as
+              issuer of the Products: it issues and redeems Products to and from brokers, distributors,
+              and certain other eligible persons, does not custody the Products on behalf of investors,
+              and does not operate a platform on which, or otherwise effectuate transactions by
+              which, users exchange the Products. On that basis, the Issuer does not expect to be a
+              Reporting Crypto-Asset Service Provider (as defined under CARF), or to have material
+              reporting obligations thereunder, and expects that brokers, exchanges, and other inter-
+              mediaries that effectuate exchange transactions in the Products for their customers will
+              bear any applicable CARF due diligence and reporting obligations with respect to cus-
+              tomers.
+
+              If the Issuer is or becomes obliged to report under CARF, it would be required to perform
+              applicable due diligence and report specified user and transaction information to Rev-
+              enue Jersey, the Income Tax department of the Government of Jersey, being the office
+              of the Comptroller of Revenue (as described in Article 2 of the Revenue Administration
+              (Jersey) Law 2019) responsible for the administration and collection of tax in Jersey, or
+
+
+
+
+                                                                                                   10/14
+Dra7
+
+
+
+
+                   any successor body, department, or authority from time to time carrying out such func-
+                   tions. Due diligence and recordkeeping obligations under CARF apply from January 1,
+                   2026, with the first reports for 2026 due to Revenue Jersey by June 30, 2027. Interpre-
+                   tive guidance and the Issuer’s activities may continue to evolve, and no assurance can
+                   be given that the Issuer will not be required to collect or report information regarding
+                   holders of the Products under CARF.”
+
+       s. Amendments in section “4.7.1 Method of Collateralization”
+
+            1. In the subsection “Asserting rights in the Collateral (“Perfection”)”, third paragraph, the
+               text “23/24 November 2022” shall be replaced with “28 February 2024”, reading as follows:
+               “The Issuer as account holder, Security Agent Services AG, as the Security Agent and In-
+               Core Bank AG, as the Custodian have entered into the Swiss Account Control Agreement
+               dated on 28 February 2024. The Issuer and Security Agent may enter into Account Control
+               Agreements with other custodians appointed from time to time as indicated in the Final
+               Terms and/or on its website, www.backedassets.fi.”
+
+       t.   Amendments in section “5. Terms and Conditions of the Offer of Securities to the Public”
+
+            1. In subsection “II. Form and Transferability of Securities”, the following amendments shall
+               be implemented:
+                a. In the second paragraph the text “(Registrierungsvereinbarung)” shall be deleted, read-
+                  ing as follows:
+                “The Issuer and each holder of Products issued by the Issuer, i.e. any Investor, enter into
+                a Registration Agreement according to article 973d CO based on the following provisions
+                which (i) sets out the terms relating to the securitization of the Products in ledger-based
+                securities according to article 973d CO under Swiss law by the Issuer, the effects, the rules
+                of transfer and the process in case of loss of such ledger-based securities, and (ii) is part
+                of these Terms and Conditions:”
+
+
+                b. The title “Establishment (Errichtung) and effects (Wirkung)“ shall be amended by
+                  deleting the text “(Errichtung)” and “(Wirkung)”, reading as follows:
+                “Establishment and effects“
+                c. Under the title “Establishment and effects”, in the first paragraph, the text “(Register-
+                  wertrecht)” shall be deleted and shall reads follows:
+                “The Issuer hereby securitizes the Products in the form of cryptographic tokens as ledger-
+                based securities according to article 973d CO under Swiss law that are created by the
+                Issuer by means of a registration in the smart contract based securities ledger according
+                to article 973d (2) CO running on a Product-DLT serving as underlying system for the
+                ledger-based securities. The entitlement to the securitized Securities exclusively results
+                from the Securities Ledger.”
+
+                d. The title “Transfer (Übertragung)” shall be amended by deleting the text “(Übertra-
+                  gung)”, reading as follows:
+
+                “Transfer”
+
+
+
+
+                                                                                                        11/14
+Dra7
+
+
+
+
+           e. The title “Establishment of securities (Sicherheiten)” shall be amended by deleting
+             the text “(Sicherheiten)”, reading as follows:
+
+           “Establishment of securities”
+
+           f. Under the title “Establishment of securities”, in the first paragraph, the text “(Sicher-
+              heit)” shall be deleted twice and the following text shall be added at the end “This means
+              that a holder wishing to pledge its ledger-based securities must transfer them to the
+              pledgee, or to a custodian acting on the pledgee’s behalf, rather than creating a pledge
+              notation on the Securities Ledger.”, reading as follows:
+            “The registration of a security according to 973g (1)(1) CO is technically not supported
+            by the Securities Ledger. Securities over ledger-based securities can only be created by
+            the transfer of the respective ledger-based securities. This means that a holder wishing
+            to pledge its ledger-based securities must transfer them to the pledgee, or to a custodian
+            acting on the pledgee’s behalf, rather than creating a pledge notation on the Securities
+            Ledger.”
+
+           g. The title “Cancellation (Kraftloserklärung)” shall be amended by deleting the text
+             “(Kraftloserklärung)”, reading as follows:
+            “Cancellation”
+           h. Under the title “Cancellation”, in the second paragraph, in the first sentence, the text
+             “(Zug, Einzelrichter im summarischen Verfahren)” shall be deleted, such first sentence
+             reading as follows:
+              “If a beneficiary of ledger-based securities loses access (power of disposal) to the
+              ledger-based securities, such beneficiary may demand according to article 973h CO
+              the competent court to cancel the respective ledger-based securities, provided that the
+              beneficiary furnishes credible evidence of its original power of disposal and of the loss
+              thereof, which is according to the Issuer's view very challenging to achieve.”
+           i. Under the title “Cancellation”, in the third paragraph, first sentence, the text
+              “(Rechtskraftbescheinigung)” shall be deleted, such first sentence reading as follows:
+              “Following cancellation of the respective ledger based-securities by the court, the ben-
+              eficiary shall provide to the Tokenizer or to the Issuer, who then forwards to the To-
+              kenizer (i) the court decree with a confirmation of legal validity and (ii) the address to
+              which the replacing ledger-based securities shall be transferred.”
+           j. Under the title “Cancellation”, in the fifth and last paragraph, the text “(Wertpapiere)”,
+              “(einfache Wertrechte”) und (“Bucheffekten”) shall be deleted, reading as follows:
+            “None of the Issuer, the Investors, the Security Agent, the Custodian, the Paying Account
+            Provider or any other person shall at any time have the right to affect or demand the
+            conversion of Products (as Ledger-Based Securities) into, or the delivery of, individually
+            certificated securities, uncertificated securities or book-entry securities.”
+
+       2. In subsection “VI. Issuance, Redemption, Denomination, Recalculation and Rebas-
+          ing”:
+           a. Under title “iii. Issuer Redemption (Issuer Call Option)”, in the first paragraph, first
+             sentence, the text “in any event” shall be replaced by “if possible”, reading as follows:
+            “If an event occurs, which in the sole discretion of the Issuer requires a discontinuation
+            of a Product ("Termination Event"), the Issuer has the right to terminate such Product
+            ("Issuer Call Option") at a date of its choice ("Termination Date"), without providing for
+
+
+
+
+                                                                                                   12/14
+Dra7
+
+
+
+
+                a specific reason, by notifying the Investors at the earliest possible date, if possible no
+                later than 30 Business Days prior to the Termination Date ("Termination Notice").”
+          3. In subsection “IX. Adjustments for Products related to any Underlying or Collateral”:
+              a. under the title “v. Other Events”, in the first paragraph, the text “or Collateral” shall be
+              added in the last sentence after “Underlying”, reading as follows:
+              “In the case of events other than those described in clause IX. "Adjustments for Products
+              related to any Underlying" of the Terms and Conditions, which in the sole opinion of the
+              Issuer have an effect equivalent to that of such events, the rules described in clause IX.
+              "Adjustments for Products related to any Underlying or Collateral" of the Terms and Con-
+              ditions shall apply mutatis mutandis.”
+
+              b. after the first paragraph, the following text shall be added as second paragraph, reading
+              as follows:
+              “Where the Underlying is replaced by or exchanged for a different security traded on the
+              same exchange as the Underlying – for instance due to a merger or other corporate re-
+              structuring event at the level of the Underlying – as a result of circumstances beyond the
+              control of the Issuer, the Issuer of the Products shall be entitled, but not obliged, to replace
+              the Underlying in accordance with the relevant corporate restructuring of the Underlying’s
+              issuer, instead of exercising an Issuer Call Option. In such a case, the Issuer shall publish
+              a notice in accordance with section XIX (Notices) informing Investors of the new Underly-
+              ing, including its ISIN and the new Redemption Amount of a Product at the time of the
+              replacement. The Denomination may then differ from the initial Denomination, and in case
+              of variable, it may differ from the 1:1 variable Denomination.”
+
+          4. In subsection “XXII. Realization Event and Realization of Collateral”, under title “ii. Re-
+             alization of Collateral and Priority of Payments”, second paragraph, first sentence, the
+             following text shall be deleted “the Framework Agreement including the Swiss Custody
+             Agreement”, such sentence reading as follows:
+             “With first priority, the Security Agent, the Custodian and the Paying Account Provider shall
+             be entitled to satisfy its claims against the Issuer under the Swiss Collateral Agreement
+             and/or US Security Agreement and/or UK Security Agreement, the Swiss Account Control
+             Agreement, the US Securities Account Control Agreement and the UK Securities Account
+             Control Agreement (or any similar agreement or Custody Agreement), as the case may be
+             (including fee claims) from the realization proceeds before any other payments are made.”
+       u. Amendments in section “Form of Final Terms”
+
+          1. In this section, in the subsection “A. Part A − Contractual Terms”:
+          a. in the eight paragraph, first sentence, the text “dated [●]” shall be deleted, reading as fol-
+             lows:
+              “Terms used herein shall be deemed to be defined as such for the purposes of the general
+              terms and conditions ("Terms and Conditions") of the Products issued by Backed Assets
+              (JE) Limited (the Issuer) set forth in the Base Prospectus.”
+
+
+
+
+                                                                                                         13/14
+Docusign Envelope ID: 98E99889-5ECD-8EBC-824F-FA77F8036925
+
+
+
+
+            Signed on behalf of Backed Assets (JE) Limited, as duly authorized representative/s:
+
+            25 September 2026
+
+
+
+
+              Lindsay Anne Bracegirdle
+              Director
+
+
+
+
+                                                 End of this Second Supplement
+
+                                                             *****
+
+
+
+
+                                                                                                   14/14
+

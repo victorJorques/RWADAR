@@ -1,0 +1,222 @@
+
+Getting Started with xStocks | Kraken Support
+Los xStocks no están disponibles en EE.UU.. Se aplican restricciones geográficas. Consulta 
+kraken.com/legal/xstocks
+ para obtener más información.
+ES
+ES
+Compra cripto en minutos
+Descargar la aplicación de Kraken
+ES
+Preguntar a la IA
+All
+Filtrar por:
+Seleccionar producto
+¿Cómo deposito efectivo en mi cuenta?
+Necesito ayuda con la verificación de la cuenta
+¿Por qué no puedo acceder a mi cuenta?
+¿Existen comisiones por retirar criptomonedas?
+Necesito ayuda para iniciar sesión en mi cuenta
+Atención al cliente
+xStocks
+xStocks en Kraken
+Primeros pasos con xStocks
+Última actualización:
+30 de octubre de 2026
+Kraken ofrece acceso a xStocks, representaciones tokenizadas de ETFs y acciones tradicionales de EE.UU. Aunque Kraken no emite estos tokens directamente, facilitamos la compra, venta, conversión y almacenamiento seguro de todos ellos en un solo lugar. 
+¿Te interesa? Sigue los pasos a continuación para empezar.
+Antes de comenzar, asegúrate de que:
+•
+Tienes una cuenta de Kraken verificada
+•
+Te encuentras en una 
+región elegible
+¿Qué son los xStocks?
+Los xStocks son representaciones tokenizadas de acciones y ETF del mundo real. Cada xStock está respaldado 1:1 por el activo subyacente y emitido como token SPL on-chain..
+Desbloquea el trading de xStocks en la aplicación de Kraken
+1
+Abre la aplicación de Kraken y ve a la sección 
+Comprar
+.
+2
+Busca cualquier token y tócalo. Los xStocks se tienen una "x" añadida al ticker de la acción que los diferencia de las acciones tradicionales.
+3
+Aparecerá la ventana emergente 
+Comenzar 
+; toca 
+Continuar
+. 
+4
+Acepta los Términos de servicio actualizados y confirma que no te encuentras en EE.UU. ni eres una persona de EE.UU.
+5
+Confirma tu dirección actual. 
+Si tu dirección ha cambiado respecto a lo que se muestra en la aplicación o requiere verificación, es posible que debas subir una nueva prueba de dirección.
+Una vez que recibas la aprobación, estarás listo para comenzar a operar con xStocks.
+Nota: Los xStocks son distintos de las acciones tradicionales y no están disponibles para clientes en los Estados Unidos (EE.UU.) ni personas estadounidenses (según la definición del Reglamento S de la Ley de Valores de 1933). 
+Preguntas frecuentes
+¿En qué se diferencian los xStocks de las acciones tradicionales?
+Las xStocks no otorgan derechos tradicionales de accionista, como el derecho a voto. Los dividendos funcionan de forma distinta: cuando se declara un dividendo, tu saldo de xStocks se ajusta automáticamente al alza para reflejar su valor, neto de las retenciones fiscales aplicables. Conservas el beneficio económico de los dividendos sin necesidad de hacer nada. Para más detalles sobre cómo funciona, consulta ¿Recibo dividendos de las xStocks?
+A diferencia de los modelos de corretaje tradicionales, los xStocks eliminan la fricción, las comisiones elevadas, las limitaciones de horario del mercado y los procesos de incorporación complejos. En su lugar, ofrecen liquidación instantánea, inversiones fraccionarias, acceso al mercado 24/5 y autocustodia. Las acciones se construyen sobre tecnología blockchain y utilizan contratos inteligentes para garantizar transparencia, automatización y eficiencia de costes.
+Característica
+Acciones tradicionales
+xStocks
+Horario de trading
+Limitado al horario del mercado
+24/5 en Kraken; 24/7 on-chain
+Tiempo de liquidación
+1 día hábil
+Instantáneo o casi instantáneo mediante contratos inteligentes
+Accesibilidad
+Limitado por geografía e intermediarios
+Los inversores pueden retirar sus xStocks a un monedero on-chain compatible para tener el control total.
+Transparencia
+Depende de terceros
+Registros inmutables en blockchain
+¿Quién puede comprar xStocks?
+Las xStocks solo están disponibles para clientes no estadounidenses en países seleccionados; consulta este 
+artículo de soporte
+ para conocer quién puede acceder. No son accesibles en EE.UU. (ni para personas de EE.UU.), Canadá, Reino Unido o Australia​. 
+¿Cuándo puedo operar con xStocks?
+Se puede operar con xStocks las 24 horas del día, 5 días a la semana, lo que te permite acceder fuera de las horas de mercado tradicionales. Se está trabajando para permitir operar los fines de semana.  Cuando se retiran a un monedero autoalojado, los xStocks se pueden operar 24/7 on-chain.
+¿Puedo retirar xStocks a un monedero de criptomonedas?
+Sí, se admite la autocustodia. Es posible retirar los xStocks a un monedero compatible de Solana o Ethereum para tener un control integral.
+¿Puedo retirar mis xStocks y operarlos en plataformas de finanzas tradicionales como IBKR?
+No. Tener xStocks no es lo mismo que comprar una acción de la empresa subyacente. Los xStocks proporcionan una exposición sintética al valor de la acción. Los titulares de xStocks no tienen derechos de voto ni reclamaciones legales sobre las acciones de la empresa subyacente o cualquier activo residual en caso de liquidación de la empresa subyacente. Una inversión en xStocks no da derecho a los titulares a recibir información del emisor o patrocinador de las acciones.
+¿Cómo deposito fondos en mi cuenta para comprar xStocks?
+Puedes comprar xStocks usando dinero fiduciario, criptomonedas o stablecoins (como USDC o USDG). Kraken maneja la conversión durante la operación​.
+¿Cuál es la inversión mínima de los xStocks?
+Los xStocks permiten a los clientes comprar acciones fraccionadas de los activos subyacentes con una inversión mínima de 1 USD. 
+¿Existen comisiones de trading?
+No existen comisiones de trading en la compra de xStocks con USDG o USD en Kraken. Se aplicarán comisiones de trading por compra instantánea estándares cuando se compren xStocks con otros activos. Para bloquear un precio, debe incluirse un spread en el precio del activo en cada transacción.
+¿Cómo supervisan los xStocks el precio de las acciones reales?
+Los precios de los xStocks están vinculados al precio de ejecución del valor subyacente. Kraken actualiza los precios en función del precio en tiempo real a la hora de comprar o vender los tokens.
+¿Recibiré dividendos de los xStocks?
+El pago de los dividendos se volverá a invertir automáticamente en más unidades del mismo token. En vez de recibir el dividendo en efectivo, tu balance de xStocks aumentará para reflejarlo.
+¿Los xStocks son seguros?
+Kraken y Backed utilizan custodia segura, reservas auditadas e infraestructura de blockchain para garantizar la seguridad y la transparencia de las tenencias de xStocks. Aun así, invertir en xStocks conlleva cierto riesgo. Consulta la Divulgación sobre el riesgo de los xStocks en 
+kraken.com/legal/xstocks
+, así como el folleto básico y los términos finales sobre los xStocks disponibles en https://assets.backed.fi/legal-documentation para obtener más información.
+¿Quieres obtener más información sobre los xStocks? Visita el 
+Centro de aprendizaje de Kraken para obtener información detallada.
+Preguntas frecuentes
+Crear una cuenta
+Crear una cuenta
+Iniciar sesión
+Crear una cuenta
+Crear una cuenta
+Iniciar sesión
+Funciones
+ →
+Comprar criptos
+Vender criptos
+Margin trading
+Trading de futuros
+Trading OTC
+Instituciones
+API trading
+Recompensas de staking
+Compras recurrentes
+Kraken Borrow
+Kraken Funded
+Acerca de Kraken
+ →
+Seguridad de Kraken
+Trabaja en Kraken
+Blog de Kraken
+Kraken para desarrolladores
+Sala de prensa
+Programa de afiliados
+Listados de activos
+Estado de Kraken
+Centro de Atención al cliente
+Quejas
+Precios de las criptomonedas
+ →
+Precio de Bitcoin
+Precio de Ethereum
+Precio de Dogecoin
+Precio de Ripple
+Precio de Cardano
+Precio de Solana
+Precio de Litecoin
+Categorías de criptos
+Predicciones de precios
+Convertir criptos
+ →
+BTC a USD
+ETH a USD
+XRP a USD
+BNB a USD
+SOL a USD
+DOGE a USD
+ADA a USD
+TRX a USD
+LTC a USD
+Comprar criptos
+ →
+Compre Bitcoin
+Comprar Ethereum
+Comprar Dogecoin
+Comprar XRP
+Comprar Cardano
+Comprar Solana
+Comprar Litecoin
+Compra acciones
+ →
+Comprar Nvidia
+Comprar Tesla
+Comprar Apple
+Comprar Amazon
+Comprar Palantir
+Comprar Microsoft
+Comprar renta variable tokenizada
+ →
+Comprar NVDAx
+Comprar TSLAx
+Comprar AAPLx
+Comprar SPYx
+Comprar AMZNx
+Educación financiera
+ →
+¿Qué es una criptomoneda?
+¿Qué son los contratos inteligentes?
+¿Qué es Bitcoin?
+¿Qué es la tokenización?
+Mejores apps de cripto
+Mejores exchanges de criptomonedas
+Kraken y Coinbase
+Centro de privacidad
+Aviso de privacidad
+Configuración de cookies
+No vender/compartir
+Centro de cumplimiento
+Términos de servicio
+Normas de trading en el exchange
+Divulgaciones
+by 
+PAYWARD
+© 2011–2026 Payward, Inc.
+Trading
+Kraken
+Kraken Pro
+NinjaTrader
+Breakout
+VIP
+API Trading
+|
+Services
+Payward Services
+xStocks
+CF Benchmarks
+Reap
+|
+Banking
+Krak
+Prime
+OTC
+Custody
+|
+Asset Management
+Estos materiales ofrecen únicamente información general y no deben entenderse como asesoramiento sobre inversiones o productos financieros ni como una recomendación o una solicitud para comprar, vender, hacer staking ni mantener ningún criptoactivo, ni para participar en ninguna estrategia de trading específica. Kraken no trabaja ni trabajará para aumentar o disminuir el precio de ningún criptoactivo en particular de los que ofrece. Los mercados de criptoactivos son impredecibles y, por tanto, la inversión en este tipo de activos puede suponer la pérdida de capital. Es posible que la rentabilidad o el incremento del valor de tus criptoactivos estén sujetos a impuestos. Pueden aplicarse restricciones geográficas. Algunos productos y mercados de criptomonedas no están regulados. El estado normativo de Kraken para sus productos y sus servicios difiere según la jurisdicción y es posible que la compensación gubernamental o los sistemas de protección normativa no te protejan. Consulta las 
+divulgaciones legales
+ de cada jurisdicción.

@@ -1,0 +1,430 @@
+{
+ "slug": "casa-de-outeiro",
+ "tipoExpediente": "publicada",
+ "grupo": "brickwise-alius-hausera",
+ "proveedor": "Alius Capital",
+ "plataformaSlug": "alius-capital",
+ "entidadComercializadora": "ALIUS CAPITAL STOS PSFP S.L. (NIF B76632793); en el registro de la CNMV figura como ADVENTUREES CAPITAL PFP, SOCIEDAD LIMITADA",
+ "emisor": "Casa de Outeiro Bodega y Viñedos, S.A. (sociedad en constitución según la ficha de 30/10/2026)",
+ "vehiculo": "Sociedad anónima holding (CNAE 6420) que integrará Terrazas de Outeiro S.L. y Viñedos de Outeiro S.L.; ampliación de capital",
+ "token": "Casa de Outeiro (CdO). La API pública indica network=80002 (identificador de la red de pruebas Polygon Amoy) y ninguna dirección de contrato; no se toma como red definitiva. Entrega de tokens tras inscribir la ERIR de la emisión en la CNMV.",
+ "derechoAdquirido": "Acciones nominativas ordinarias de una sola serie, representadas mediante tecnología de registro distribuido (1 token = 1 acción), nominal 10 EUR + prima 15 EUR",
+ "jurisdiccion": "ES",
+ "identificador": "Identificador de la oferta 9598007MF0DK0DLQJ78000001613 (LEI del emisor: pendiente de constitución)",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Ficha de datos fundamentales de la inversión v5 (firmada 30/10/2026)",
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "versionOFecha": "2026-10-30 (archivo «26_10_30_…_v5»)",
+   "paginas": 6,
+   "sha256": "147cd9729caaf06be2afe5d894303c964bac2be0777116006399f81d800e0de3",
+   "leido": true,
+   "nota": "Descargado de nuevo el 03/11/2026 (2026-11-03T10:13:40Z); SHA-256 idéntico al del 01/11. Texto sin datos personales en fuentes/alius/casa-fdf-v5.pdf.txt"
+  },
+  {
+   "titulo": "Anexo I (Acuerdo de inversión) y Anexo II (FDF) v3",
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/264",
+   "versionOFecha": "2026-10-30",
+   "paginas": 7,
+   "sha256": "332e32c27aabd763e1607c1ebd91a17d00b569cb2bf2019d3d11e1fcc79e976b",
+   "leido": true,
+   "nota": "Descargado de nuevo el 03/11/2026; SHA-256 idéntico al del 01/11"
+  },
+  {
+   "titulo": "Campaña pública (API de Token City, campos públicos)",
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "versionOFecha": "consulta 2026-11-03",
+   "paginas": null,
+   "sha256": "00af0e4d7007f03c0455d9b8f526effb030fc50d91c7973203247edf799c13c5",
+   "leido": true,
+   "nota": "Respuesta byte a byte idéntica a la del 01/11 (mismo SHA-256). Crudo en fuentes/crudo/"
+  },
+  {
+   "titulo": "Condiciones generales de contratación de Alius Capital",
+   "url": "https://aliuscap.com/general-terms",
+   "versionOFecha": "sin fecha visible; consulta 2026-11-03",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Texto renderizado hoy; mismo contenido que el 01/11"
+  },
+  {
+   "titulo": "Estatutos, pacto de socios, contrato de membresía, informes de valoración y proyecciones (lista de documentos públicos)",
+   "url": "https://aliuscap.com/projects/casa-de-outeiro",
+   "versionOFecha": "subidos 24/06/2026, re-publicados 30/10/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  },
+  {
+   "titulo": "Página pública del proyecto en Alius (texto renderizado sin sesión)",
+   "url": "https://aliuscap.com/projects/casa-de-outeiro",
+   "versionOFecha": "consulta 2026-11-03T10:14:10Z",
+   "paginas": null,
+   "sha256": "cfc70748fd5dcafb017103ef90419eec85e9dd63561f6e2c0518a09411717239",
+   "leido": true
+  },
+  {
+   "titulo": "Pestañas de la campaña (Proceso, Actualizaciones)",
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
+   "versionOFecha": "consulta 2026-11-03",
+   "paginas": null,
+   "sha256": "3ec67c48c55af62f0a3769e31d5fd989850a6b001b94c48f85754169d19fb741",
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "ADVENTUREES CAPITAL PFP, SOCIEDAD LIMITADA (NIF B76632793; web registrada www.aliuscap.com)",
+   "numero": "PSFP nº 11, fecha de registro 03/11/2023",
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793",
+   "alcance": "Registro oficial de proveedores de servicios de financiación participativa (Reglamento (UE) 2020/1503). Autoriza la plataforma, no aprueba cada proyecto. La denominación del registro difiere de la que usa la web (ALIUS CAPITAL STOS PSFP S.L.); coincide el NIF B76632793 de las condiciones generales y del pie de la ficha de datos. No se leyó el pasaporte a otros Estados ni el programa de actividades detallado (pestaña sin contenido en la extracción). Releído el 03/11/2026: nº 11, 03/11/2023, www.aliuscap.com; el listado de PSFP de hoy sigue con «ADVENTUREES CAPITAL PFP, SOCIEDAD LIMITADA».",
+   "consultadoUtc": "2026-11-03T10:13:43Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. (NIF A25988981)",
+   "numero": "Sociedades y Agencias de Valores nº 334, fecha de registro 06/02/2026",
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981",
+   "alcance": "Agencia de valores; su programa de actividades incluye custodia y administración, colocación sin compromiso firme y gestión de SMN sobre instrumentos basados en tecnología de registro distribuido. Designada como ERIR en la documentación de la emisión; no se comprobó la inscripción de la ERIR de esta emisión concreta en la CNMV. Releído el 03/11/2026: nº 334, 06/02/2026.",
+   "consultadoUtc": "2026-11-03T10:27:26Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Alius Capital (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius+Capital",
+   "consultadoUtc": "2026-11-03T10:10:28Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Alius (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius",
+   "consultadoUtc": "2026-11-03T10:11:36Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Adventurees (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees",
+   "consultadoUtc": "2026-11-03T10:11:40Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Token City (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token+City",
+   "consultadoUtc": "2026-11-03T10:11:42Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Outeiro (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Outeiro",
+   "consultadoUtc": "2026-11-03T10:11:44Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas). No aparecer no equivale a estar autorizado."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "campaign_status: CAMPAIGN; campaign.end_date: 2026-10-31; extend_days: null · página: «Campaña», «Días restantes --», botón «Invertir» (dashboard.aliuscap.com/invest/casa-de-outeiro)",
+   "dato": "En campaña según Alius, con fin de campaña el 31/10/2026 ya pasado y sin ampliación registrada",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "localizador": "API campaign/campaign_status (respuesta idéntica a la del 01/11); página del proyecto, cabecera y botón",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:13:21Z",
+   "alcanceYLimites": "Visto sin sesión; no se probó si acepta órdenes. Recuento API: {\"CAMPAIGN\": 1, \"PRIVATE_CAMPAIGN\": 0, \"PRE_CAMPAIGN\": 0, \"CLOSED\": 2} (única en campaña).",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "plazo",
+   "literal": "Periodo de la oferta: Hasta completar suscripción. Fecha límite: 31/03/2027 · Madrid, 30 de octubre del 2026",
+   "dato": "Fecha límite 31/03/2027 según la ficha de datos",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "localizador": "FDF v5, portada y §2",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-03T10:13:40Z",
+   "alcanceYLimites": "La pestaña «Proceso» de hoy sigue diciendo «con fecha límite el 31/10/2026»; la web del emisor, «EMISIÓN DE CAPITAL HASTA 31/10» (actualización 17/09/26). Las condiciones de Alius fijan un máximo de 6 meses de campaña (01/07/2026 → 31/03/2027 son 9).",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "recaudado",
+   "literal": "invested: 1121000; invested_tokens: 44840; supply: 128800 · «Recaudado 1.121.000,00 €», «Umbral de éxito 2.000.000,00 €»",
+   "dato": "1.121.000 € de un mínimo de 2.000.000 € (56 %)",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "localizador": "API campaign_progress; página del proyecto",
+   "fechaDato": "2026-11-03",
+   "consultadoUtc": "2026-11-03T10:13:21Z",
+   "alcanceYLimites": "Igual que el 01/11 y +5.000 € desde el 22/10. El campo booked (1.693.350) no se publica en la página y su significado no está documentado.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "con un “ticket” o aportación mínima de 80 acciones (2.000€)",
+   "dato": "2.000 € (80 acciones de 25 €).",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "localizador": "FDF v5 §3; página «Inversión mínima 2.000,00 €», «Precio por Token 25,00 €»",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-03T10:13:40Z",
+   "alcanceYLimites": "Coincide con la página de hoy. No experimentados: aviso y consentimiento expreso por superar 1.000 €.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "El INVERSOR puede ser considerado como un Inversor Experimentado o un Inversor No Experimentado … inversión superior a 1 000 EUR o al 5 % del patrimonio neto",
+   "dato": "Plataforma española registrada en la CNMV; admite particulares con test y aviso de riesgo.",
+   "fuentePrimaria": "https://aliuscap.com/general-terms",
+   "localizador": "Condiciones generales, «3. Habilitarse para poder invertir» y «4. Revisar acuerdos e invertir» (texto renderizado hoy)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:15:20Z",
+   "alcanceYLimites": "PSFP nº 11 de la CNMV (comprobado hoy). No se probó el registro ni el KYC. 4 días de reflexión para no experimentados.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida",
+   "literal": "se cancelará la financiación participativa y se reembolsarán las aportaciones a los inversores … Desde el año 2027 al año 2030 incluido se producirá una liberación del 10% en paquetes del 2.5% anual por inversor.",
+   "dato": "Si no se llega a 2 M€, te devuelven el dinero. Si sale, venta limitada al 2,5 % anual de 2027 a 2030.",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "localizador": "FDF v5 §2 (umbral) y §5 «Transmisibilidad»",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-03T10:13:40Z",
+   "alcanceYLimites": "La venta depende de encontrar comprador. Recompras y fondos de liquidez citados en las FAQ son previsiones condicionadas, no derechos. Errata 2026/2027 en la cláusula sin resolver.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "umbral",
+   "literal": "Importe mínimo de financiación requerido: 2.000.000€ … se cancelará la financiación participativa y se reembolsarán las aportaciones a los inversores. Los inversores no incurrirán en ningún gasto.",
+   "dato": "Mínimo 2.000.000 EUR; si no se alcanza, cancelación y reembolso sin gasto",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "localizador": "FDF v5 §2",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-03T10:13:40Z",
+   "alcanceYLimites": "Fondos retenidos en Mangopay hasta formalizar (Anexo I §5). · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "derecho",
+   "literal": "acciones nominativas ordinarias de una sola serie, representadas mediante tecnologías de registro distribuido (“Acciones tokenizadas”)",
+   "dato": "Acciones ordinarias tokenizadas; 43,04 % del capital si se suscribe todo",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "localizador": "FDF v5 §3 y §5 (tabla post emisión)",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-03T10:13:40Z",
+   "alcanceYLimites": "Sociedad en constitución por aportaciones no dinerarias, pendiente del informe del experto independiente; documentos societarios son borradores (Anexo I §3). · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "custodia",
+   "literal": "actuará como ERIR … TOKEN CITY EUROPEAN EXCHANGE A.V. Los tokens … serán entregados a las billeteras de los inversores … tras la inscripción en CNMV de la ERIR de la emisión",
+   "dato": "ERIR: Token City European Exchange A.V., S.A. (CNMV nº 334); tokens tras inscripción",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "localizador": "FDF v5 §3; Anexo I §6",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-03T10:13:40Z",
+   "alcanceYLimites": "Si la inscripción se retrasa, los derechos de socio se mantienen desde la escritura notarial (Anexo I §6). Inscripción de la ERIR de esta emisión no comprobada. · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "El inversor no soportará coste alguno en relación con la inversión en este Proyecto de financiación participativa.",
+   "dato": "Sin coste del proyecto para el inversor; pagos por transferencia o tarjeta pueden tener coste",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "localizador": "FDF v5 §6; condiciones generales Alius, apartado «Precio» del inversor",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-03T10:13:40Z",
+   "alcanceYLimites": "La membresía de la Comunidad es opcional y aparte. No equivale a coste total cero en todo caso. · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "riesgos, incluido el de pérdida parcial o total del dinero invertido … no está cubierta ni por los sistemas de garantía de depósitos … Es posible que no pueda vender los instrumentos",
+   "dato": "Pérdida total posible; sin garantía de depósitos ni FOGAIN; iliquidez; oferta no verificada por la CNMV",
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "localizador": "FDF v5, advertencias iniciales y §4",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-03T10:13:40Z",
+   "alcanceYLimites": "Riesgos de proyecto, financiación, sector turístico y tecnología enumerados en §4. · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "la rentabilidad por dividendo sobre el precio de emisión podría evolucionar desde aproximadamente un 6,7% en 2030 hasta cerca de un 16,9% en 2041 … no constituyen una rentabilidad garantizada",
+   "dato": null,
+   "fuentePrimaria": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "localizador": "Pestaña FAQs de la campaña, «¿La empresa tiene previsto pagar dividendos?»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:13:21Z",
+   "alcanceYLimites": "Proyección del plan de negocio, no rentabilidad. No se publica. · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Alius figura en el registro de PSFP de la CNMV (nº 11, NIF B76632793) con su antigua denominación Adventurees Capital PFP, S.L.; ERIR designada Token City European Exchange A.V. (CNMV nº 334). Emisor en constitución, sin LEI; la oferta no está aprobada por la CNMV."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "El 03/11 sigue «Campaña» con botón Invertir, pero el fin de campaña de Alius (31/10/2026) ya pasó sin ampliación registrada; la FDF del 30/10 fija 31/03/2027. 1.121.000 € de un mínimo de 2.000.000 €, sin avance desde el 01/11."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Particulares no experimentados admitidos con test y advertencias; mínimo 2.000 EUR; sin coste del proyecto; salida muy restringida y dependiente de contraparte o recompras condicionadas."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple",
+   "nota": "Riesgos claros en la FDF; sin advertencias de la CNMV para Alius Capital, Alius, Adventurees, Token City ni Outeiro (consulta de hoy, buscador validado)."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "confirmado",
+ "propuestaTarjeta": {
+  "titulo": "Casa de Outeiro",
+  "categoria": "Acciones y capital privado",
+  "pais": "ES",
+  "tipo": "valor",
+  "coleccion": "en_camino",
+  "resumen": "Ampliación de capital con acciones tokenizadas de una bodega y proyecto de enoturismo en la Ribeira Sacra, canalizada por Alius Capital. El 03/11/2026 llevaba 1.121.000 € de un mínimo de 2.000.000 €, la misma cifra que el 01/11.",
+  "rentabilidad": null,
+  "metricas": [
+   {
+    "etiqueta": "Mínimo",
+    "valor": "2.000 € (80 acciones de 25 €)"
+   },
+   {
+    "etiqueta": "Supervisor",
+    "valor": "Plataforma registrada en la CNMV (PSFP nº 11)"
+   },
+   {
+    "etiqueta": "Plazo de la oferta",
+    "valor": "Hasta el 31/03/2027 según la ficha del 30/10/2026"
+   },
+   {
+    "etiqueta": "Coste para el inversor",
+    "valor": "Sin coste del proyecto (ficha de datos §6)"
+   },
+   {
+    "etiqueta": "Salida",
+    "valor": "Bloqueo inicial; de 2027 a 2030 solo puedes transmitir un 2,5 % de tus acciones al año (ficha de datos)"
+   },
+   {
+    "etiqueta": "Recaudado · 03/11/2026",
+    "valor": "1.121.000 € de un mínimo de 2.000.000 €"
+   }
+  ],
+  "avisos": [
+   "La ficha de datos del 30/10/2026 amplía el plazo al 31/03/2027, pero el 03/11/2026 la campaña en Alius seguía con fin el 31/10/2026, ya pasado, y sin días restantes. Confirma el plazo en Alius antes de invertir.",
+   "Si no se alcanzan 2.000.000 € antes de la fecha límite, la ampliación se cancela y se devuelve el dinero sin gastos.",
+   "La sociedad está en constitución y los tokens se entregan tras inscribir la entidad de registro en la CNMV. La venta de las acciones está limitada durante años y depende de encontrar comprador.",
+   "Inversión de capital: puede perderse todo. Las recompras y dividendos citados por el emisor son previsiones, no derechos.",
+   "La CNMV no ha verificado ni aprobado esta oferta; el registro de la CNMV es de la plataforma, no del proyecto."
+  ],
+  "url": "https://aliuscap.com/projects/casa-de-outeiro",
+  "fuentesActuales": [
+   "https://aliuscap.com/projects/casa-de-outeiro",
+   "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
+  ],
+  "lugar": "Quiroga · España",
+  "pasos": [
+   "Registro y test",
+   "Suscribes acciones",
+   "Esperas al cierre",
+   "Reventa limitada"
+  ],
+  "concepto": "una casona de piedra en ruinas sobre viñedos en terrazas junto a un río encajonado entre montañas",
+  "resumenTarjeta": {
+   "minimo": "2.000 € (80 acciones de 25 €).",
+   "accesoEspana": "Plataforma española registrada en la CNMV; admite particulares con test y aviso de riesgo.",
+   "salida": "Si no se llega a 2 M€, te devuelven el dinero. Si sale, venta limitada al 2,5 % anual de 2027 a 2030."
+  }
+ },
+ "revisionAvisos": [
+  {
+   "aviso": "La ficha de datos del 30/10/2026 amplía el plazo al 31/03/2027, pero la campaña en Alius seguía mostrando fin el 31/10/2026 el 01/11. Confirma el plazo en Alius antes de invertir.",
+   "veredicto": "cambia",
+   "textoNuevo": "La ficha de datos del 30/10/2026 amplía el plazo al 31/03/2027, pero el 03/11/2026 la campaña en Alius seguía con fin el 31/10/2026, ya pasado, y sin días restantes. Confirma el plazo en Alius antes de invertir.",
+   "fuente": "https://aliuscap.com/projects/casa-de-outeiro",
+   "literal": "«Campaña» · «Días restantes --» · API campaign.end_date 2026-10-31, extend_days null · FDF v5: «Fecha límite: 31/03/2027»",
+   "consultadoUtc": "2026-11-03T10:14:10Z",
+   "nota": "El conflicto sigue; cambia la fecha de la comprobación y ahora el fin de campaña de Alius ya pasó."
+  },
+  {
+   "aviso": "Métrica «Recaudado · 02/11/2026: 1.121.000 € de un mínimo de 2.000.000 €»",
+   "veredicto": "vigente",
+   "textoNuevo": "Recaudado · 03/11/2026: 1.121.000 € de un mínimo de 2.000.000 €",
+   "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "literal": "invested: 1121000",
+   "consultadoUtc": "2026-11-03T10:13:21Z"
+  },
+  {
+   "aviso": "Métrica «Plazo de la oferta: Hasta el 31/03/2027 según la ficha del 30/10/2026»",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "literal": "Fecha límite: 31/03/2027",
+   "consultadoUtc": "2026-11-03T10:13:40Z"
+  }
+ ],
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "avisos/plazo",
+   "antes": "…la campaña en Alius seguía mostrando fin el 31/10/2026 el 01/11",
+   "ahora": "El 03/11 la campaña sigue «Campaña» con fin 31/10/2026 ya pasado, «Días restantes --» y sin ampliación en la API",
+   "fuente": "https://aliuscap.com/projects/casa-de-outeiro",
+   "critico": true
+  },
+  {
+   "campo": "recaudado",
+   "antes": "1.121.000 € (02/11)",
+   "ahora": "1.121.000 € (03/11): sin avance",
+   "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "critico": false
+  },
+  {
+   "campo": "resumenTarjeta",
+   "antes": "sin bloque",
+   "ahora": "mínimo, acceso desde España y salida en castellano",
+   "fuente": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "critico": false
+  }
+ ],
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": "2.000 EUR (80 acciones de 25 EUR)",
+  "supervisorVerificado": "CNMV · registro de PSFP nº 11 (Adventurees Capital PFP, S.L. / Alius Capital, NIF B76632793)",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "si",
+  "porQueDestaca": "Única campaña abierta de Alius (PSFP nº 11 de la CNMV), con ficha de datos en español del 30/10/2026 y mínimo de 2.000 €.",
+  "porQueNo": "Fechas en conflicto (FDF 31/03/2027 frente a campaña cerrada el 31/10/2026 en Alius), 56 % del importe mínimo sin avance desde el 22/10, emisor en constitución y salida muy restringida."
+ },
+ "decision": "actualizar",
+ "motivoDecision": "Todo igual que el 01/11 (API idéntica, mismos documentos), pero ahora la fecha de fin de campaña de Alius (31/10) ya pasó y sigue sin ampliarse en la plataforma. Se mantiene en «en camino» con el aviso re-fechado. Si el 10/11 sigue igual, proponemos retirarla.",
+ "bloqueos": [
+  "No se probó la contratación (sin sesión): no se sabe si «Invertir» acepta órdenes tras el 31/10.",
+  "No se leyeron estatutos, pacto de socios, contrato de membresía ni informes de valoración.",
+  "No se comprobó la inscripción de la ERIR de esta emisión en la CNMV."
+ ],
+ "conflictos": [
+  "FDF v5 (30/10/2026): fecha límite 31/03/2027 · API campaign.end_date y pestaña Proceso: 31/10/2026 · web del emisor: «hasta 31/10».",
+  "Condiciones generales: campaña de 1 a 6 meses · campaña pública desde 01/07/2026 hasta 31/03/2027 (9 meses).",
+  "FDF: transmisión limitada «hasta el año 2027» y compromiso «hasta el año 2026» (errata sin resolver).",
+  "Registro CNMV: Adventurees Capital PFP, S.L. · web y documentos: Alius Capital STOS PSFP S.L. (mismo NIF)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-03T10:13:21Z",
+  "finUtc": "2026-11-03T10:27:26Z"
+ }
+}

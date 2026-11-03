@@ -1,0 +1,367 @@
+{
+  "grupo": "nuevas-europa",
+  "ciclo": "2026-11-03.3-v2",
+  "nota": "Horas reales de cada lectura (UTC). Los CSV de ESMA son registros públicos, no respuestas crudas de API.",
+  "consultas": [
+    {
+      "url": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "archivo": "fuentes/cdc-news-tokenized-stocks-eea-launch.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:07:02Z",
+      "bytes": 135114,
+      "sha256": "e02c47e5a21d2a91425ddab4a8a374c71f7069681d989613cb50206c1955327a"
+    },
+    {
+      "url": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "archivo": "fuentes/cdc-fccy-tokenised-equities-terms.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:07:03Z",
+      "bytes": 217691,
+      "sha256": "1169bff5d9a4deaf72885cf185e5134274089e0534fb43eab0ba8cdd37421c6f"
+    },
+    {
+      "url": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+      "archivo": "fuentes/cdc-fccy-tokenised-equities-risk-statement.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:07:05Z",
+      "bytes": 99578,
+      "sha256": "8d5a498fe8787ae05d5911f5d00826b6e97db05a9d31c79aa04f13f87052fe3e"
+    },
+    {
+      "url": "https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+      "archivo": "fuentes/cdc-help-about-tokenized-stocks-eea.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:07:05Z",
+      "bytes": 133714,
+      "sha256": "c70f1f8ee8d5205fad8192ae465af4c90d210e43cba2eee45ae142202107507d"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+      "archivo": "fuentes/cnmv-esi-eee-libre-prestacion.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:08:06Z",
+      "bytes": 1991648,
+      "sha256": "5e79d59544ff0c030d204a05d2ce0537ba0c74de4fac97df1d1ae5d0d69295de"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4485",
+      "archivo": "fuentes/cnmv-ficha-foris-capital-cy-4485.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:08:14Z",
+      "bytes": 218123,
+      "sha256": "c2496d5760de28e23acf3efdb5fa6f497626e344b3df2677c3afd78f55de18c3"
+    },
+    {
+      "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/",
+      "archivo": "fuentes/cysec-cifs-list.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:08:21Z",
+      "bytes": 973007,
+      "sha256": "3c65d2b5e05d245b8787fa58fe6ae249c63fcbbba942002e7f2d855745b44841"
+    },
+    {
+      "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/46172/",
+      "archivo": "fuentes/cysec-foris-capital-cy-46172.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:08:29Z",
+      "bytes": 680992,
+      "sha256": "490f28b8c5e2b1b482930f4803edfe11f4051e772d5f2992b60ff62d55711c03"
+    },
+    {
+      "url": "https://crypto.com/eea/financialservices",
+      "archivo": "fuentes/cdc-eea-financialservices.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:08:57Z",
+      "bytes": 221764,
+      "sha256": "d81a5a0a937fef378b24af8907d0446712e01232da6bb5ba6e10f9caf8a38ca0",
+      "nota": "Redirige (301) a la portada de EE. UU. de crypto.com desde nuestra conexión, que sale por EE. UU.; no contiene datos de Foris Capital CY"
+    },
+    {
+      "url": "https://help.crypto.com/es/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+      "archivo": "fuentes/cdc-help-es-about-tokenized-stocks-eea.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:08:57Z",
+      "bytes": 133714,
+      "sha256": "909d2063b9f7842359a48b44b080b5be685b87eed5fd7ab5db64083d7d79faf1",
+      "nota": "Versión /es/ del artículo: el contenido sigue en inglés"
+    },
+    {
+      "url": "https://help.crypto.com/en/collections/tokenized-stocks-eea",
+      "archivo": null,
+      "http": 404,
+      "consultadoUtc": "2026-11-03T10:08:58Z",
+      "bytes": 93209,
+      "sha256": "c15230fb3ee5b455b6b34a591eb9814270223e18f213039245457787976a79cb",
+      "nota": "404; archivo descartado (URL errónea, se usó la colección 19682896)"
+    },
+    {
+      "url": "https://help.crypto.com/en/collections/19682896-tokenized-stocks-eea",
+      "archivo": "fuentes/cdc-help-collection-tokenized-stocks-eea.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:09:10Z",
+      "bytes": 102590,
+      "sha256": "4d100fd6b755e9d35c8f3c80b94dd6d622bcc20a45017f520d4b681bae350f09"
+    },
+    {
+      "url": "https://help.crypto.com/en/articles/15855825-buy-and-sell-tokenized-stocks-eea",
+      "archivo": "fuentes/cdc-help-buy-sell-tokenized-stocks-eea.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:09:11Z",
+      "bytes": 133484,
+      "sha256": "edf4708535b4c4290f2b6de7e218452f65a790bce5348d43a190f6a04b58ae25"
+    },
+    {
+      "url": "https://help.crypto.com/en/articles/15855830-corporate-actions-and-dividends-of-tokenized-stocks-eea",
+      "archivo": "fuentes/cdc-help-corporate-actions-eea.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:09:11Z",
+      "bytes": 136550,
+      "sha256": "3613ddcac67ef62a1339003c2c74c34b4f09fa50ef7399239083ed044a071066"
+    },
+    {
+      "url": "https://crypto.com/eea/stocks",
+      "archivo": "fuentes/cdc-eea-stocks.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:09:35Z",
+      "bytes": 385075,
+      "sha256": "26166ed825b788d3e738e4171011d9a35a93b5dc69f10e136681fe9586d05839"
+    },
+    {
+      "url": "https://dn-ag.com/assets/documents/anleihe202631/DN_Group_Prospekt_gebilligt.pdf",
+      "archivo": "fuentes/dn-group-prospekt-anleihe-2026-2031.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:10:10Z",
+      "bytes": 2881951,
+      "sha256": "923a6de7e735249d446d2ae5bf5756dc067cd114e2afc0e278601a9ecb63075b"
+    },
+    {
+      "url": "https://assetera.com/",
+      "archivo": "fuentes/assetera-home.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:12:30Z",
+      "bytes": 113575,
+      "sha256": "52e3fb652018f273370475fd21049bfc82fb62553d708a6e7d70f1494d2e0670"
+    },
+    {
+      "url": "https://www.assetera.com/media/assetera-x-xstocks",
+      "archivo": "fuentes/assetera-media-assetera-x-xstocks.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:12:39Z",
+      "bytes": 69698,
+      "sha256": "4fcb97d3a068849547a620909d738964e2a9ec81b74fe8501f186a70b3e32c1d"
+    },
+    {
+      "url": "https://www.assetera.com/media/assetera-x-ondo",
+      "archivo": "fuentes/assetera-media-assetera-x-ondo.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:12:39Z",
+      "bytes": 70364,
+      "sha256": "29dc27d407feb7f83340bc42217658f365f15741bd5d3d8bc5896969e506f2c6"
+    },
+    {
+      "url": "https://www.assetera.com/media/assetera-and-deploi",
+      "archivo": "fuentes/assetera-media-assetera-and-deploi.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:12:40Z",
+      "bytes": 69631,
+      "sha256": "c39ab4960dc78a088b3342ff6a173f1e5a6e9416b02a079a6667f5458b7181e1"
+    },
+    {
+      "url": "https://www.assetera.com/listing",
+      "archivo": "fuentes/assetera-listing.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:12:40Z",
+      "bytes": 51887,
+      "sha256": "f853c6dd8771fda48cb93ecaa9371c8f53cbd33c162b96a075169dc6c0fcbf8a"
+    },
+    {
+      "url": "https://www.assetera.com/platform",
+      "archivo": "fuentes/assetera-platform.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:12:40Z",
+      "bytes": 59331,
+      "sha256": "c2a36fbb775fb4387392c6215afab6ed4e651c0c94457cb338e92e5ba4dd75c7"
+    },
+    {
+      "url": "https://www.assetera.com/legal-notice",
+      "archivo": "fuentes/assetera-legal-notice.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:12:41Z",
+      "bytes": 59869,
+      "sha256": "4a416298cf339aec22285271127c5855d81105397438b3053cd826d3e8ce3ea6"
+    },
+    {
+      "url": "https://www.assetera.com/imprint",
+      "archivo": "fuentes/assetera-imprint.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:12:41Z",
+      "bytes": 53423,
+      "sha256": "3c0c3ab4c7dcecb5eac95bce0f2018efda4e9329cbf844b0d6ec1cf5df26591a"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5216",
+      "archivo": "fuentes/cnmv-ficha-assetera-5216.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:12:56Z",
+      "bytes": 218092,
+      "sha256": "ec60b3e6cd5e5ef3d4637b55d03abc47b3a537f47b55c5d46818f787b43c4f38"
+    },
+    {
+      "url": "https://marketplace.assetera.com/",
+      "archivo": "fuentes/assetera-marketplace.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:13:07Z",
+      "bytes": 343039,
+      "sha256": "85968290ba121c787bf95dd612ac506b571ca81746384e4a6f12937c40eda72b",
+      "nota": "HTML del servidor incluye un aviso «Test Environment and Sandbox»; la versión renderizada con navegador no lo muestra"
+    },
+    {
+      "url": "https://plus.assetera.com/en",
+      "archivo": "fuentes/assetera-plus.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:13:08Z",
+      "bytes": 343039,
+      "sha256": "64bc40f38f3ac37aead5640e42f268169632947c34e09d6355bad92b2a206786",
+      "nota": "plus.assetera.com redirige a marketplace.assetera.com/en"
+    },
+    {
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+      "archivo": "fuentes/crudo/esma-mica-artzz.csv",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:14:38Z",
+      "bytes": 276,
+      "sha256": "fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67",
+      "nota": "Movido a crudo/: el CSV de ESMA contiene URLs públicas con parámetro token= que el escáner de secretos puede confundir con claves"
+    },
+    {
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv",
+      "archivo": "fuentes/crudo/esma-mica-other.csv",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:14:39Z",
+      "bytes": 251161,
+      "sha256": "6bf558a76610ab88a7b085b180fc93cda2f1e806ede465a17d250bb1ae649ce3",
+      "nota": "Movido a crudo/: el CSV de ESMA contiene URLs públicas con parámetro token= que el escáner de secretos puede confundir con claves"
+    },
+    {
+      "url": "https://www.lcx.com/lcxg-mica-white-paper/",
+      "archivo": "fuentes/lcx-lcxg-mica-white-paper.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:14:52Z",
+      "bytes": 334046,
+      "sha256": "c1e11f8052fef4e1a121bc1b0890c58958a6d7b631ce28f362a04c78cce5d8c9"
+    },
+    {
+      "url": "https://wp.lcx.com/wp-content/uploads/LCX-Gold-LCXG-MiCA-Whitepaper-05_06_2025.docx-1.pdf",
+      "archivo": "fuentes/lcx-gold-lcxg-mica-whitepaper-2025-06-05.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:15:04Z",
+      "bytes": 639070,
+      "sha256": "2106e2961da96b6c393a5d483ec802e80a54653ca83ffc7f88d798a3a80d74cf"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es  [búsqueda: Crypto.com]",
+      "archivo": "fuentes/cnmv-advertencias-crypto-com.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:17:19Z",
+      "bytes": 782,
+      "sha256": "432b3d5e3242d2f6eea573968c8a5a04826c0440a2f273447ad674013afee9e2",
+      "via": "playwright (formulario CNMV)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es  [búsqueda: Foris]",
+      "archivo": "fuentes/cnmv-advertencias-foris.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:17:57Z",
+      "bytes": 609,
+      "sha256": "023ab2b9ae6480af1dbc97d1518efc275d18205db4aabadc96f43658800cb021",
+      "via": "playwright (formulario CNMV)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es  [búsqueda: Allnew]",
+      "archivo": "fuentes/cnmv-advertencias-allnew.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:18:36Z",
+      "bytes": 243,
+      "sha256": "f73e50165d8a421d66c894fa92f424aec4a540ddf2d89603dedc18e688850269",
+      "via": "playwright (formulario CNMV)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es  [búsqueda: Assetera]",
+      "archivo": "fuentes/cnmv-advertencias-assetera.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:18:45Z",
+      "bytes": 247,
+      "sha256": "453926bc859bd5ffb78a4ee0625b50062467d69279d21a25f20edb78a7b7a5cf",
+      "via": "playwright (formulario CNMV)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es  [búsqueda: DN Group]",
+      "archivo": "fuentes/cnmv-advertencias-dn-group.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:18:54Z",
+      "bytes": 247,
+      "sha256": "c715b4dcf41857c72a500960a3f8af4f05ebe1c01d4408d886fd6609c4939744",
+      "via": "playwright (formulario CNMV)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es  [búsqueda: LCX]",
+      "archivo": "fuentes/cnmv-advertencias-lcx.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:19:04Z",
+      "bytes": 237,
+      "sha256": "a1dd21f6dfc90ee4208995c98c8d48f7cf3021b4b49f81f2048d50049a4f0dd7",
+      "via": "playwright (formulario CNMV)"
+    },
+    {
+      "url": "https://crypto.com/eea/licenses",
+      "archivo": "fuentes/cdc-eea-licenses.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:19:20Z",
+      "bytes": 94973,
+      "sha256": "cba0ab20bf5a617d6a470856370b36e42debb65608be96a1d96e5aea8e55b5ee",
+      "nota": "Tabla de licencias cargada por JavaScript; el HTML no trae los datos de la UE"
+    },
+    {
+      "url": "https://help.crypto.com/en/articles/15030596-about-crypto-com-tokenized-stocks",
+      "archivo": "fuentes/cdc-help-about-tokenized-stocks-global.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:19:33Z",
+      "bytes": 131573,
+      "sha256": "c862a054aa9cd3b15cedcd9e48cbbfaca2c48735a52bf8e59007af4df5e361fc"
+    },
+    {
+      "url": "https://asseteramainblob.blob.core.windows.net/publicfiles/Assetera%20GmbH%20-%20MiFID%20Order%20Execution.pdf",
+      "archivo": "fuentes/assetera-mifid-order-execution.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:20:02Z",
+      "bytes": 205753,
+      "sha256": "517c4292d3b3f4cbdf6a5e5c997eb9c9e26dc9abff7defced12e0d29f0013148"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=Assetera&place=&bic=&category=&per_page=10&submitted=1",
+      "archivo": "fuentes/fma-at-assetera.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:20:54Z",
+      "bytes": 144667,
+      "sha256": "b3603b264a47f1779d853a6b6a34696402405d1912396fb90cd95e93c9dd7389"
+    },
+    {
+      "url": "https://marketplace.assetera.com/en/terms",
+      "archivo": "fuentes/assetera-marketplace-terms.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:24:12Z",
+      "bytes": 3582,
+      "sha256": "7c8c6de563bab1b4aea08c4b7f14b68e0ab5c955ca985b9f2756bb547a13bb76",
+      "via": "playwright (render)"
+    },
+    {
+      "url": "https://marketplace.assetera.com/en/help",
+      "archivo": "fuentes/assetera-marketplace-help.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-03T10:24:22Z",
+      "bytes": 989,
+      "sha256": "cc5e4b8ffc8f7b310ed42535e8ba8b616409fc29679ac33e143662aa4d0cde76",
+      "via": "playwright (render)"
+    }
+  ]
+}

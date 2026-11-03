@@ -1,0 +1,286 @@
+URL: https://portfolio.exchange/es/portfolio-market (pestaña «ETP/Deuda»)
+CONSULTADO: 2026-11-03T10:32:00Z
+
+Inicio
+Emisores
+Tarifas
+Inversores
+Partners
+Miembros
+Nosotros
+Noticias
+Mercado
+Portfolio Stock Exchange
+Mercado
+Acceder
+Acciones
+ETP/Deuda
+Fondos de inversión
+Suscripciones
+EMISIONES
+25
+VOLUMEN TOTAL
+836.052.775,00€
+ 	 	VALOR TOTAL	NOMINAL	ÚLTIMO PRECIO	BID	ASK	CUPÓN	PERIODICIDAD
+
+	
+ADDC
+- ALTARIUS ETI AG
+AddCapital ETI
+FR00140119A9
+	20.000.000,00€	1.000,00€	105,36%
+1.053,60€
+	1.008,16€	1.044,01€	 	 
+
+	
+ATRH
+- ATRYS HEALTH S.A.
+ATRYS BONOS CoCos 2023
+FR001400YGG3
+	31.548.575,00€	126.194,30€	100%
+126.194,30€
+			9,5%	Semestral
+
+	
+EVRG
+- ALTARIUS ETI AG
+EVERGE ETI
+FR0014017562
+	20.000.000,00€	1.000,00€	103,24%
+1.032,40€
+	1.034,44€	1.037,96€	 	 
+
+	
+FLKN
+- ALTARIUS ETI AG
+FALKON ESTATES ETI
+FR001400UQT3
+	20.000.000,00€	1.000,00€	108,07%
+1.080,70€
+	1.096,71€	1.100,01€	 	 
+
+	
+FERM
+- Fermion Equity Fund
+FERMION FSC-09-2025 EUR500M
+FR0014012WV9
+	500.000.000,00€	125.000,00€	100%
+125.000,00€
+			3,75%	Anual
+
+	
+FRTP
+- ALTARIUS ETI AG
+Frontland Prime ETI
+FR00140119B7
+	70.000.000,00€	1.000,00€	96,57%
+965,70€
+	960,30€	964,70€	 	 
+
+	
+HAUS
+- ALTARIUS ETI AG
+Hausera ETI
+FR0014010H19
+	6.924.000,00€	1.000,00€	96%
+960,00€
+	989,28€	997,19€	 	 
+
+	
+HIII
+- ALTARIUS ETI AG
+Hausera Lago Di Garda 3 ETI
+FR0014012BI0
+	6.910.000,00€	1.000,00€	100%
+1.000,00€
+	1.056,79€	1.061,34€	 	 
+
+	
+HMII
+- ALTARIUS ETI AG
+Hausera Madrid 2 ETI
+FR0014012HS6
+	7.996.000,00€	1.000,00€	102,9%
+1.029,00€
+	1.044,07€	1.047,52€	 	 
+
+	
+FORO
+- MetaWealth Luxembourg SA
+METAWEALTH S1 COMP 1 - FO.RO
+FR001400XBO0
+	2.045.200,00€	100,00€	100%
+100,00€
+			2%	Anual
+
+	
+PRTA
+- MetaWealth Luxembourg SA
+METAWEALTH S1 COMP 2 - PORTA
+FR001400XN83
+	2.447.000,00€	100,00€	99,41%
+99,41€
+			5%	Semestral
+
+	
+WYND
+- MetaWealth Luxembourg SA
+METAWEALTH S1 COMP 3 - WYNDHAM
+FR001400YBM2
+	1.435.100,00€	100,00€	98,88%
+98,88€
+			5%	Semestral
+
+	
+MOAL
+- Altarius ETI Public Limited Company
+Monetario ETP
+XS3373438483
+	944.500,00€	1,00€	101%
+1,01€
+	1,00€	1,01€	 	 
+
+	
+DONO
+- MetaWealth Lux Institutional SA
+MW LUX INST S1 COMP1 - DOMUS
+FR0014011UE1
+	3.956.400,00€	100,00€	99,52%
+99,52€
+			5%	Semestral
+
+	
+ONEU
+- MetaWealth Lux Institutional SA
+MW LUX INST S1 COMP2 - ONE
+FR0014012NZ9
+	3.321.000,00€	1.000,00€	99,31%
+993,10€
+			5%	Semestral
+
+	
+BESH
+- MetaWealth Lux Institutional SA
+MW LUX INST S1 COMP4 -BESS1
+FR0014015C19
+	2.925.000,00€	25.000,00€	100%
+25.000,00€
+			22%	Anual
+
+	
+BESI
+- MetaWealth Lux Institutional SA
+MW LUX INST S2 COMP4 - BESS1
+FR0014015C01
+	2.100.000,00€	100.000,00€	99,95%
+99.950,00€
+			18%	Anual
+
+	
+NEXI
+- ALTARIUS ETI AG
+NEXIS UAE I ETI
+FR001401BCS3
+	15.000.000,00€	1.000,00€	100%
+1.000,00€
+	998,60€	1.001,40€	 	 
+
+	
+NLAR
+- ALTARIUS ETI AG
+NLA REAL ESTATE ETI
+FR0014010AF2
+	20.000.000,00€	1.000,00€	100%
+1.000,00€
+	1.105,62€	1.111,15€	 	 
+
+	
+NVSN
+- New Venture Securities SaRL
+NVS 12pcnt 26-2029 Notes
+FR001401AC90
+	500.000,00€	5.000,00€	100%
+5.000,00€
+			12%	Trimestral
+
+	
+RESI
+- ALTARIUS ETI AG
+RESI ETI – REAL ESTATE SPAIN
+FR001400SZ45
+	3.000.000,00€	1.000,00€	141,01%
+1.410,10€
+	1.429,61€	1.433,71€	 	 
+
+	
+RFSL
+- ALTARIUS ETI AG
+Rubrick FSL ETI
+FR0014016KX1
+	5.000.000,00€	1.000,00€	100%
+1.000,00€
+	998,60€	1.001,41€	 	 
+
+	
+STVE
+- ALTARIUS ETI AG
+SMART TECH VISION ETI
+FR001400UQU1
+	50.000.000,00€	1.000,00€	103,95%
+1.039,50€
+	1.039,90€	1.042,83€	 	 
+
+	
+THCR
+- ALTARIUS ETI AG
+Think Credit ETI
+FR001400TET1
+	20.000.000,00€	1.000,00€	124,32%
+1.243,20€
+	1.324,09€	1.338,06€	 	 
+
+	
+VELL
+- ALTARIUS ETI AG
+VELLE CAPITAL ETI
+FR001401AP12
+	20.000.000,00€	1.000,00€	100%
+1.000,00€
+	998,60€	1.001,41€	 	 
+Acceder
+Si deseadejarnos un mensajeo desea que le enviemos nuestro folleto, nos pondremos en contacto con usted lo antes posible.
+He leído y acepto los términos de laPolítica de privacidad
+Enviar
+Portfolio es la primera bolsa del mundo que ofrece un mercado primario y secundario en la misma plataforma, integrando los procesos de custodia y post-contratación para todo tipo de emisores e inversores, consiguiendo ahorros para nuestros clientes de hasta el 90% de los costes globales.
+Portfolio
+Inicio
+Tarifas
+Partners
+Miembros
+Nosotros
+Información sobre Gobierno Corporativo, Política de Remuneraciones y otra documentación
+Información sobre Mercados
+Información sobre Servicio de Atención al Cliente
+Emisores
+REITs
+Financiación de proyectos
+Empresas Mid Cap y Tecnologías
+Crowdfunding de Equity o Inmobiliario
+Capital riesgo, Private Equity y Fondos de inv. alternativos
+Vehículos de inversión
+Bonos y Deuda Privada
+Pagarés y titulizaciones
+Inversores
+ECPs
+Inversores Profesionales
+Inversores Minoristas
+Legal
+Aviso legal
+Política de cookies
+Política de privacidad
+
+© 2026 Portfolio Stock Exchange. Todos los derechos reservados.
+
+Usamos cookies para darle una mejor experiencia de navegación.
+Puede encontrar más información sobre las cookies que utilizamos o cambiar las opciones de las mismas.
+AceptarOpciones

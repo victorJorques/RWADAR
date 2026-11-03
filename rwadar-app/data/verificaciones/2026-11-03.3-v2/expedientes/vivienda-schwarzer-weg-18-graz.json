@@ -1,0 +1,503 @@
+{
+ "slug": "vivienda-schwarzer-weg-18-graz",
+ "tipoExpediente": "publicada",
+ "grupo": "brickwise-alius-hausera",
+ "proveedor": "Brickwise",
+ "plataformaSlug": "brickwise",
+ "entidadComercializadora": "Brickwise Investment GmbH (agente vinculado de Effecta GmbH)",
+ "emisor": "Brick Qogir GmbH & Co KG (FN 549470 w)",
+ "vehiculo": "Sociedad vehículo austriaca emisora (GmbH & Co KG)",
+ "token": "Token en la red «Brickprotocol»; tokenId HmpcTKMKoYQgVrXgEQubbMTtUgywa6Hi76mPGYCLKxC1",
+ "derechoAdquirido": "Genussschein tokenizado perpetuo (participación en el excedente de alquiler y en la venta del inmueble); securityType=participationRightEquity",
+ "jurisdiccion": "AT",
+ "identificador": "ISIN AT0000A2WCE8",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Investitionsbedingungen (contrato de emisión)",
+   "url": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+   "versionOFecha": "18.03.2022",
+   "paginas": null,
+   "sha256": "29f022d658974041c33edc0dc9494559d8a8f79e159342b777614046032735fc",
+   "leido": true,
+   "nota": "Descargado de nuevo el 03/11/2026 (2026-11-03T10:07:24Z); SHA-256 idéntico al del 01/11: el documento no ha cambiado. Texto en fuentes/brickwise/contrato-AT0000A2WCE8.pdf.txt"
+  },
+  {
+   "titulo": "Basisinformationsblatt (KID)",
+   "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+   "versionOFecha": "Tue, 06 Dec 2022 14:13:57 GMT",
+   "paginas": null,
+   "sha256": "3a4fa36bfa5f16012b2054c5b54bacae5425801f725628b3e2ea7576264d1d13",
+   "leido": true,
+   "nota": "Descargado de nuevo el 03/11/2026 (2026-11-03T10:07:24Z); SHA-256 idéntico al del 01/11: el documento no ha cambiado. Texto en fuentes/brickwise/kid-AT0000A2WCE8.pdf.txt"
+  },
+  {
+   "titulo": "Informationsblatt",
+   "url": "https://cdn.brickwise.at/36cfe50a-2527-45f9-85d9-23aaab647847.pdf",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": "0124232ae6afee97d3f0e15c614fd68f3049303aa61a3ba1f2ed8573abbeaea2",
+   "leido": true,
+   "nota": "Descargado de nuevo el 03/11/2026 (2026-11-03T10:07:24Z); SHA-256 idéntico al del 01/11: el documento no ha cambiado. Texto en fuentes/brickwise/info-AT0000A2WCE8.pdf.txt"
+  },
+  {
+   "titulo": "API pública v2 (listado de activos)",
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "versionOFecha": "updatedAt 2026-11-02T14:03:48.200Z",
+   "paginas": null,
+   "sha256": "e742c195873b2c33d2dca258188bb0fb154476390d978f830dd35f0a2ae7bf67",
+   "leido": true,
+   "nota": "Respuesta cruda en fuentes/crudo/ (fuera de Git)"
+  },
+  {
+   "titulo": "API pública v1 (libro de órdenes)",
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "versionOFecha": "consulta 03/11/2026",
+   "paginas": null,
+   "sha256": "3f967faf017c0166f99d7e618836462183dc562a42ad22640d14350aa37267ae",
+   "leido": true,
+   "nota": "Crudo en fuentes/crudo/; resumen sin direcciones en fuentes/brickwise/libro-ordenes-resumen-2026-11-03.json"
+  },
+  {
+   "titulo": "Ficha del activo (API v1)",
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCE8",
+   "versionOFecha": "updatedAt 2026-10-25T18:17:39.019Z",
+   "paginas": null,
+   "sha256": "54cb4c69ec2b6bd85c3696bd4cae20ed2b7d4b3206a8421873a42cc7e5def1a0",
+   "leido": true
+  },
+  {
+   "titulo": "Mercado de la app (texto renderizado sin sesión)",
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "versionOFecha": "consulta 2026-11-03T10:08:21Z",
+   "paginas": null,
+   "sha256": "83efe66a4c8266e5ebac5985b37b8431bbb7655d2796e7ae8a4d5c162d8312a0",
+   "leido": true
+  },
+  {
+   "titulo": "Kosteninformationen Brickwise",
+   "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "versionOFecha": "Last-Modified 01/04/2023",
+   "paginas": 2,
+   "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+   "leido": true,
+   "nota": "SHA-256 idéntico al del 01/11"
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Effecta GmbH",
+   "numero": "BaFin-ID 10133261",
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "alcance": "Wertpapierinstitut: Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) y Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) desde 26.06.2021; «Stand der Daten: 02.11.2026». Es la entidad bajo cuya responsabilidad actúa Brickwise; no acredita el producto ni al emisor.",
+   "consultadoUtc": "2026-11-03T10:12:14Z"
+  },
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Brickwise Investment GmbH",
+   "numero": "80174029",
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (búsqueda por nombre «Brickwise»)",
+   "alcance": "Vertraglich gebundener Vermittler (agente vinculado) con Effecta GmbH como entidad responsable; «Tätig ab 04.08.2021», sin fecha «Tätig bis», Meldedatum 29.06.2023; «Stand der Daten: 02.11.2026». Sin licencia propia.",
+   "consultadoUtc": "2026-11-03T10:12:36Z"
+  },
+  {
+   "regulador": "CNMV (España)",
+   "entidad": "EFFECTA GmbH",
+   "numero": "5003 (registro 11/11/2020)",
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+   "alcance": "ESI del EEE en libre prestación en España; programa: «Recepción y transmisión de órdenes» sobre valores negociables y participaciones de IIC. Pestaña «Agentes»: «No se han encontrado datos disponibles» (Brickwise no consta como agente notificado para España).",
+   "consultadoUtc": "2026-11-03T10:11:58Z"
+  },
+  {
+   "regulador": "Firmenbuch (Austria)",
+   "entidad": "Brick Qogir GmbH & Co KG",
+   "numero": "FN 549470 w",
+   "url": null,
+   "alcance": "Número FN tomado del contrato/KID del emisor; no consultado en el Firmenbuch (consulta de pago). El emisor es una sociedad vehículo no supervisada; la emisión no está aprobada por la FMA (oferta con exención de folleto).",
+   "consultadoUtc": null
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Brickwise (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "consultadoUtc": "2026-11-03T10:11:16Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas, p. ej. 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Effecta (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "consultadoUtc": "2026-11-03T10:11:18Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas, p. ej. 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Brick Qogir (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Qogir",
+   "consultadoUtc": "2026-11-03T10:11:20Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas, p. ej. 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "FMA (Austria)",
+   "busqueda": "brickwise (base de entidades autorizadas)",
+   "resultado": "sin coincidencias («0 Search results · No entries found»): Brickwise no es entidad autorizada por la FMA",
+   "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise",
+   "consultadoUtc": "2026-11-03T10:12:55Z"
+  },
+  {
+   "regulador": "FMA (Austria)",
+   "busqueda": "brickwise, effecta, brick qogir, brickone (buscador de la web de la FMA, que incluye sus avisos al inversor)",
+   "resultado": "0 resultados en las cuatro búsquedas; la misma búsqueda con «investor warning» devuelve 1.225 resultados (buscador operativo)",
+   "url": "https://www.fma.gv.at/en/?s=brickwise",
+   "consultadoUtc": "2026-11-03T10:12:57Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":299",
+   "dato": "solo_reventa",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v2/assets",
+   "localizador": "Objeto id=AT0000A2WCE8: stage, availableBricks, availableBricksSecondary; updatedAt=2026-11-02T14:03:48.200Z",
+   "fechaDato": "2026-11-02",
+   "consultadoUtc": "2026-11-03T10:05:09Z",
+   "alcanceYLimites": "Emisión primaria cerrada (campaña 30/06/2022); solo órdenes de reventa entre inversores.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "precio",
+   "literal": "Libro de órdenes abierto: 74 órdenes de venta (299 participaciones); la más barata a 69,90 € (1 participación, orden del 27/10/2026). 8 órdenes de compra; la mejor a 60,00 € (1 participación, orden del 25/10/2026).",
+   "dato": "Venta desde 69,90 € (1 a ese precio, 299 en total); mejor compra 60,00 €",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v1/assets",
+   "localizador": "Objeto id=AT0000A2WCE8: offers[] con status=open (type, amount, price, createdAt); coincide con lowestOfferPrice=69.9 y availableBricksSecondary=299 de la v2",
+   "fechaDato": "2026-11-03",
+   "consultadoUtc": "2026-11-03T10:05:10Z",
+   "alcanceYLimites": "Tablón de anuncios (contactType=bulletin), no bolsa con casación; hay órdenes abiertas desde 2026. Una orden publicada no garantiza ejecución. Más 1,5 % de comisión.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "precio",
+   "literal": "Wohnung, Schwarzer Weg 18, Graz … 3,47 % p.a. Erw. laufende Ausschüttung … Preis pro Anteil ab € 69,90",
+   "dato": "Precio por participación desde 69,90 € (app)",
+   "fuentePrimaria": "https://app.brickwise.at/desktopWeb/marketplace",
+   "localizador": "Mercado de la app, tarjeta «Wohnung, Schwarzer Weg 18, Graz» (texto renderizado sin sesión)",
+   "fechaDato": "2026-11-03",
+   "consultadoUtc": "2026-11-03T10:08:21Z",
+   "alcanceYLimites": "Coincide con la venta más barata del libro de órdenes. La cifra «% p.a.» de la tarjeta es reparto previsto, no realizado.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "precio",
+   "literal": "\"sharePrice\":65",
+   "dato": "65,00 € por participación (precio de referencia de la API)",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v2/assets",
+   "localizador": "Objeto id=AT0000A2WCE8: sharePrice",
+   "fechaDato": "2026-11-02",
+   "consultadoUtc": "2026-11-03T10:05:09Z",
+   "alcanceYLimites": "Campo sin metodología publicada; no es precio ejecutable.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "precio",
+   "literal": "Ausgabepreis: EUR 100,14",
+   "dato": "Precio de emisión original 100,14 €",
+   "fuentePrimaria": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+   "localizador": "Investitionsbedingungen (Stand 18.03.2022), p. 4",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:07:24Z",
+   "alcanceYLimites": "Precio de la suscripción original, no precio actual ni mínimo de reventa. · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimoEmisionOriginal",
+   "literal": "Mindestzeichnungsbetrag: EUR 100,14",
+   "dato": null,
+   "fuentePrimaria": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+   "localizador": "Investitionsbedingungen (Stand 18.03.2022), p. 4",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:07:24Z",
+   "alcanceYLimites": "Mínimo de la suscripción original (ya cerrada). El mínimo de compra en reventa no está documentado en las fuentes leídas. · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "derecho",
+   "literal": "Genussscheine ... läuft endlos/ewig (\"Perpetual\") und kann durch den Anleger nur dann gekündigt werden, wenn die Token nicht mehr in den Handel auf einem öffentlich zugänglichen Marktplatz einbezogen sind.",
+   "dato": "Genussschein tokenizado perpetuo (participación en el excedente de alquiler y en la venta del inmueble); securityType=participationRightEquity",
+   "fuentePrimaria": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+   "localizador": "Basisinformationsblatt, p. 1 «Art»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:07:24Z",
+   "alcanceYLimites": "No da propiedad del inmueble ni participación societaria. El landRegisterMortgageStatusText de la API dice «Grundbücherlich besicherter Genussschein». · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+   "dato": "Riesgo 6 de 7; empfohlene Haltedauer 5 años",
+   "fuentePrimaria": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+   "localizador": "Basisinformationsblatt, p. 2 (riesgo) y p. 3 (tenencia)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:07:24Z",
+   "alcanceYLimites": "Pérdida total posible; sin protección de depósitos. KID solo en alemán. · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+   "dato": "1,5 % por compra y 1,5 % por venta",
+   "fuentePrimaria": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "localizador": "Kosteninformationen Brickwise, p. 1 (Last-Modified 01/04/2023)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:07:31Z",
+   "alcanceYLimites": "Comisión del intermediario sobre el importe de cada operación; los costes del producto (RIY) están en el KID de cada emisión y no se suman mecánicamente. · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "custodia",
+   "literal": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+   "dato": "Autocustodia del token en la cuenta/app del inversor",
+   "fuentePrimaria": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+   "localizador": "Basisinformationsblatt, p. 1 «Art»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:07:24Z",
+   "alcanceYLimites": "La recuperación de una cuenta exige identificación notarial (~120 € según Kosteninformationen p. 1, nota 3). · Releído el 03/11/2026: documento con el mismo SHA-256 que el 01/11",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "{\"data\":{\"fees\":0.015}}",
+   "dato": "1,5 % por operación (API de comisiones de la app)",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v1/utils/fees",
+   "localizador": "GET /api/v1/utils/fees",
+   "fechaDato": "2026-11-03",
+   "consultadoUtc": "2026-11-03T10:09:20Z",
+   "alcanceYLimites": "Confirma la cifra de Kosteninformationen; no distingue entre compra y venta.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "\"rentalReturn\":3.73; rentalSurplus=7171.8 · Die Wohnung ist seit September 2019 befristet auf 4 Jahre vermietet. Das Mietverhältnis endet am 30.08.2023.",
+   "dato": null,
+   "fuentePrimaria": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCE8",
+   "localizador": "rentalDetails (rentalReturn, rentalSurplus, rentalIncome, contrato) y descriptions.rentalDetails; app: tarjeta del mercado",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:05:31Z",
+   "alcanceYLimites": "La base de la previsión no está al día (alquiler vencido). La app muestra 3,47 % igualmente. No se publica.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Wohnung, Schwarzer Weg 18, Graz … Preis pro Anteil ab € 69,90",
+   "dato": "Sin mínimo publicado; la venta más barata era de 69,90 € por participación (03/11/2026).",
+   "fuentePrimaria": "https://app.brickwise.at/desktopWeb/marketplace",
+   "localizador": "Mercado de la app («Preis pro Anteil ab») y API v2 lowestOfferPrice=69.9",
+   "fechaDato": "2026-11-03",
+   "consultadoUtc": "2026-11-03T10:08:21Z",
+   "alcanceYLimites": "Brickwise no publica un mínimo de compra en reventa. A ese precio había 1 participación(es); se suma el 1,5 % de comisión. El precio cambia a diario.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+   "dato": "Cuenta para residentes del EEE (España incluida) con KYC; documentos solo en alemán.",
+   "fuentePrimaria": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "localizador": "FAQ «Kann ich einen Account von jedem Land aus eröffnen?» (texto renderizado hoy)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:09:54Z",
+   "alcanceYLimites": "Abrir cuenta no confirma que cada emisión se distribuya en España. Effecta figura en la CNMV en libre prestación (nº 5003, solo recepción y transmisión de órdenes) y sin agentes notificados. KID y contrato solo en alemán.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida",
+   "literal": "Ordentliche Kündigung: Nein (siehe zu den Ausnahmen Punkt 11)",
+   "dato": "Sin reembolso: vendes en el tablón de la app si hay comprador, con 1,5 % de comisión.",
+   "fuentePrimaria": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+   "localizador": "Investitionsbedingungen, p. 4; Kosteninformationen p. 1 (1,5 %)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:07:24Z",
+   "alcanceYLimites": "Vender exige que haya comprador; la distancia entre la venta más barata (69,90 €) y la mejor compra (60,00 €) muestra liquidez limitada. Tenencia recomendada en el KID: 5 años.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "entidad",
+   "literal": "Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird bei der Vermittlung von Finanzinstrumenten gemäß § 2 (2) Nr. 3 WpIG ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+   "dato": "Brickwise Investment GmbH (Múnich, HRB 269358), agente vinculado de Effecta GmbH",
+   "fuentePrimaria": "https://www.brickwise.at/imprint",
+   "localizador": "Impressum (texto renderizado hoy)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:10:01Z",
+   "alcanceYLimites": "Contrastado hoy con el registro de agentes vinculados de la BaFin (nº 80174029, activo).",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Comprobado hoy: Brickwise Investment GmbH es agente vinculado nº 80174029 de Effecta GmbH (BaFin-ID 10133261, datos a 02/11/2026); Effecta figura en la CNMV (nº 5003, libre prestación, solo recepción y transmisión de órdenes, sin agentes). El emisor es una SPV austriaca no supervisada; oferta con exención de folleto."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "API 03/11/2026: stage=secondary; 299 participaciones en venta desde 69,90 €; mejor compra 60,00 €."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Cuenta para residentes del EEE con KYC; 1,5 % por operación (Kosteninformationen y API de comisiones); autocustodia en la app; sin mínimo publicado en reventa; distribución en España no confirmada."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "KID en alemán, riesgo 6 de 7, pérdida total posible. CNMV: sin advertencias para Brickwise, Effecta ni el emisor (buscador validado hoy). FMA: sin coincidencias en la base de entidades ni en su web."
+  }
+ },
+ "estadoOferta": "solo_reventa",
+ "disponibleEs": "no_confirmado",
+ "propuestaTarjeta": {
+  "titulo": "Vivienda Schwarzer Weg 18 · Graz",
+  "categoria": "Inmobiliario",
+  "pais": "AT",
+  "tipo": "rendimiento",
+  "coleccion": "secundario",
+  "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Qogir GmbH & Co KG ligadas a las rentas de un inmueble en Graz. Hoy solo se compran a otros inversores en el mercado de la app.",
+  "rentabilidad": null,
+  "metricas": [
+   {
+    "etiqueta": "Venta más barata · 03/11/2026",
+    "valor": "69,90 € por participación (1 a ese precio)"
+   },
+   {
+    "etiqueta": "Participaciones en venta · 03/11/2026",
+    "valor": "299"
+   },
+   {
+    "etiqueta": "Mejor oferta de compra · 03/11/2026",
+    "valor": "60,00 € (1 participación, orden del 25/10/2026)"
+   },
+   {
+    "etiqueta": "Precio de emisión original",
+    "valor": "100,14 €"
+   },
+   {
+    "etiqueta": "Comisión por operación",
+    "valor": "1,5 % comprador y 1,5 % vendedor"
+   },
+   {
+    "etiqueta": "Intermediario",
+    "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+   },
+   {
+    "etiqueta": "Reembolso",
+    "valor": "Sin reembolso ordinario; solo reventa"
+   },
+   {
+    "etiqueta": "Riesgo KID",
+    "valor": "6 de 7"
+   },
+   {
+    "etiqueta": "Moneda",
+    "valor": "EUR"
+   }
+  ],
+  "avisos": [
+   "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+   "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+   "Riesgo 6 de 7 en el KID; posible pérdida total.",
+   "La API describe un alquiler que terminó el 30/08/2023 y no informa de otro; la rentabilidad no se muestra.",
+   "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar."
+  ],
+  "url": "https://app.brickwise.at/desktopWeb/marketplace",
+  "fuentesActuales": [
+   "https://app.brickwise.at/desktopWeb/marketplace",
+   "https://api.app.brickwise.at/api/v2/assets",
+   "https://api.app.brickwise.at/api/v1/assets",
+   "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+   "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf"
+  ],
+  "lugar": "Graz · Austria",
+  "pasos": [
+   "Cuenta con residencia EEE",
+   "Compras si hay vendedor",
+   "Reparto mensual variable",
+   "Vendes en la app"
+  ],
+  "concepto": "un bloque de viviendas de alquiler en Graz",
+  "resumenTarjeta": {
+   "minimo": "Sin mínimo publicado; la venta más barata era de 69,90 € por participación (03/11/2026).",
+   "accesoEspana": "Cuenta para residentes del EEE (España incluida) con KYC; documentos solo en alemán.",
+   "salida": "Sin reembolso: vendes en el tablón de la app si hay comprador, con 1,5 % de comisión."
+  }
+ },
+ "revisionAvisos": [
+  {
+   "aviso": "La base de alquiler de la API cita un contrato ya vencido; la rentabilidad no se muestra.",
+   "veredicto": "vigente",
+   "textoNuevo": "La API describe un alquiler que terminó el 30/08/2023 y no informa de otro; la rentabilidad no se muestra.",
+   "fuente": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCE8",
+   "literal": "Die Wohnung ist seit September 2019 befristet auf 4 Jahre vermietet. Das Mietverhältnis endet am 30.08.2023.",
+   "consultadoUtc": "2026-11-03T10:05:31Z"
+  },
+  {
+   "aviso": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://api.app.brickwise.at/api/v1/assets",
+   "literal": "órdenes creadas o actualizadas hasta el 2026-11-02",
+   "consultadoUtc": "2026-11-03T10:05:10Z"
+  }
+ ],
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "metricas",
+   "antes": "Sin precio ni libro de órdenes en la tarjeta publicada",
+   "ahora": "Venta más barata 69,90 € (1 a ese precio, 299 en total); mejor compra 60,00 € (1, orden del 25/10/2026) · API 03/11/2026",
+   "fuente": "https://api.app.brickwise.at/api/v1/assets",
+   "critico": false
+  },
+  {
+   "campo": "resumenTarjeta",
+   "antes": "sin bloque",
+   "ahora": "mínimo, acceso desde España y salida en castellano (ver propuestaTarjeta.resumenTarjeta)",
+   "fuente": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "critico": false
+  },
+  {
+   "campo": "advertenciasReguladores",
+   "antes": "CNMV: buscador sin respuesta (timeout del 01/11)",
+   "ahora": "CNMV: sin advertencias para Brickwise, Effecta y el emisor; buscador validado hoy",
+   "fuente": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "critico": false
+  },
+  {
+   "campo": "availableBricksSecondary",
+   "antes": "274 (API 01/11/2026)",
+   "ahora": "299 (API 03/11/2026)",
+   "fuente": "https://api.app.brickwise.at/api/v2/assets",
+   "critico": false
+  }
+ ],
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": "Sin mínimo publicado en reventa; venta más barata 69,90 € por participación + 1,5 % (03/11/2026)",
+  "supervisorVerificado": "BaFin: Effecta GmbH (BaFin-ID 10133261) y Brickwise Investment GmbH como agente vinculado nº 80174029; CNMV: Effecta nº 5003 (libre prestación, RTO). Comprobado el 03/11/2026",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "si",
+  "porQueDestaca": "Precio y libro de órdenes públicos y fechados (API 03/11/2026: 299 participaciones en venta desde 69,90 €).",
+  "porQueNo": "Solo reventa con mucha distancia entre compra y venta, KID solo en alemán, riesgo 6/7 y acceso desde España sin confirmar."
+ },
+ "decision": "actualizar",
+ "motivoDecision": "Sigue solo en reventa (API 03/11/2026) y sus documentos no han cambiado (mismo SHA-256). Se actualizan cifras del libro de órdenes con cantidades y fechas, se añade el bloque de tres datos y se cierran las advertencias de la CNMV. Se mantiene en «secundario»; agruparla en una tarjeta «Brickwise · reventa» sigue siendo opción de Víctor.",
+ "bloqueos": [
+  "Firmenbuch no consultado (de pago); los números FN vienen de los documentos del emisor.",
+  "Metodología de sharePrice no documentada.",
+  "No se sabe si una orden se puede comprar en parte (p. ej., 1 de las 1 participaciones de la venta más barata)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-03T10:05:09Z",
+  "finUtc": "2026-11-03T10:20:06Z"
+ }
+}

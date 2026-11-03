@@ -1,0 +1,191 @@
+{
+ "slug": "fotovoltaica-cargadores-parkhaus-q2-st-poelten",
+ "tipoExpediente": "candidata",
+ "grupo": "brickwise-alius-hausera",
+ "proveedor": "Brickwise",
+ "plataformaSlug": "brickwise",
+ "entidadComercializadora": "Brickwise Investment GmbH (agente vinculado de Effecta GmbH)",
+ "emisor": "Greeninfra GmbH (FN 460779 t)",
+ "vehiculo": "Sociedad austriaca emisora",
+ "token": "Token en la red «Brickprotocol»; tokenId 7aXWnn39iiyJwC2RvrB3YXkt39bDojSGRx9UYQ3kTAy3",
+ "derechoAdquirido": "Genussschein tokenizado a 15 años (fin 31/12/2039) sobre el 40 % del excedente de la instalación; reembolso del nominal subordinado",
+ "jurisdiccion": "AT",
+ "identificador": "ISIN AT0000A3E842",
+ "moneda": "EUR",
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "documentos": [
+  {
+   "titulo": "Investitionsbedingungen",
+   "url": "https://cdn.brickwise.at/64da3d27-ad35-4007-bf3d-9f022d3e14d2.pdf",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": "9ebfa0b7c23f60022f36e62e62ad2c1044a3709562e18e816184f6ca187c0de2",
+   "leido": true,
+   "nota": "Mismo SHA-256 que el 01/11"
+  },
+  {
+   "titulo": "Basisinformationsblatt (KID)",
+   "url": "https://cdn.brickwise.at/0cfef387-b8a9-4c6c-99c9-fd46110617da.pdf",
+   "versionOFecha": "Stand 04.08.2024",
+   "paginas": null,
+   "sha256": "613879bec7d740d888e618f2fe67d8b3a90da96dfc4b1c3260757d738e5df63d",
+   "leido": true,
+   "nota": "Mismo SHA-256 que el 01/11"
+  },
+  {
+   "titulo": "API launchpad y v2",
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "versionOFecha": "updatedAt 2026-10-26T22:31:32.512Z",
+   "paginas": null,
+   "sha256": "88f14fe02eb6971912d2efde9edcfa6ac2b8fe1fdb574c56dff0b0bc504d73e9",
+   "leido": true
+  },
+  {
+   "titulo": "Mercado de la app",
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "versionOFecha": "consulta 2026-11-03T10:08:21Z",
+   "paginas": null,
+   "sha256": "83efe66a4c8266e5ebac5985b37b8431bbb7655d2796e7ae8a4d5c162d8312a0",
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Effecta GmbH",
+   "numero": "BaFin-ID 10133261",
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "alcance": "Wertpapierinstitut: Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) y Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) desde 26.06.2021; «Stand der Daten: 02.11.2026». Es la entidad bajo cuya responsabilidad actúa Brickwise; no acredita el producto ni al emisor.",
+   "consultadoUtc": "2026-11-03T10:12:14Z"
+  },
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Brickwise Investment GmbH",
+   "numero": "80174029",
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (búsqueda por nombre «Brickwise»)",
+   "alcance": "Vertraglich gebundener Vermittler (agente vinculado) con Effecta GmbH como entidad responsable; «Tätig ab 04.08.2021», sin fecha «Tätig bis», Meldedatum 29.06.2023; «Stand der Daten: 02.11.2026». Sin licencia propia.",
+   "consultadoUtc": "2026-11-03T10:12:36Z"
+  },
+  {
+   "regulador": "CNMV (España)",
+   "entidad": "EFFECTA GmbH",
+   "numero": "5003 (registro 11/11/2020)",
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+   "alcance": "ESI del EEE en libre prestación en España; programa: «Recepción y transmisión de órdenes» sobre valores negociables y participaciones de IIC. Pestaña «Agentes»: «No se han encontrado datos disponibles» (Brickwise no consta como agente notificado para España).",
+   "consultadoUtc": "2026-11-03T10:11:58Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Brickwise (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "consultadoUtc": "2026-11-03T10:11:16Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas, p. ej. 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Effecta (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "consultadoUtc": "2026-11-03T10:11:18Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas, p. ej. 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Greeninfra (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Greeninfra",
+   "consultadoUtc": "2026-11-03T10:11:33Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas, p. ej. 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Greemer (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Greemer",
+   "consultadoUtc": "2026-11-03T10:11:34Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas, p. ej. 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "FMA (Austria)",
+   "busqueda": "brickwise (base de entidades autorizadas)",
+   "resultado": "sin coincidencias («0 Search results · No entries found»): Brickwise no es entidad autorizada por la FMA",
+   "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise",
+   "consultadoUtc": "2026-11-03T10:12:55Z"
+  },
+  {
+   "regulador": "FMA (Austria)",
+   "busqueda": "brickwise, effecta, brick qogir, brickone (buscador de la web de la FMA, que incluye sus avisos al inversor)",
+   "resultado": "0 resultados en las cuatro búsquedas; la misma búsqueda con «investor warning» devuelve 1.225 resultados (buscador operativo)",
+   "url": "https://www.fma.gv.at/en/?s=brickwise",
+   "consultadoUtc": "2026-11-03T10:12:57Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "\"stage\":\"secondary\",\"onlyPrimary\":true,\"availableBricks\":219,\"availableBricksSecondary\":0,\"issueEndDate\":\"2024-10-30T23:00:00.000Z\"",
+   "dato": "La API ofrece 219 de 460 participaciones a precio de emisión con la suscripción cerrada",
+   "fuentePrimaria": "https://api.app.brickwise.at/launchpad/api/v2/assets?ids=[…]",
+   "localizador": "investmentDetails: stage, availableBricks, issueEndDate; onlyPrimary",
+   "fechaDato": "2026-10-26",
+   "consultadoUtc": "2026-11-03T10:09:19Z",
+   "alcanceYLimites": "Sin órdenes de reventa en la API v1.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "estado",
+   "literal": "Photovoltaik Anlage mit Schnellladestation im Parkhaus Quartier Mitte St. Pölten Rennbahnstraße 1, 3100 St. Pölten, St. Pölten 6,12 % p.a. Erw. laufende Ausschüttung Preis pro Anteil ab € 507,62 Laufzeit: 30.10.2039 Erw.",
+   "dato": "La app la muestra con «Handel aktiv» y «Preis pro Anteil ab € 507,62»",
+   "fuentePrimaria": "https://app.brickwise.at/desktopWeb/marketplace",
+   "localizador": "Mercado de la app",
+   "fechaDato": "2026-11-03",
+   "consultadoUtc": "2026-11-03T10:08:21Z",
+   "alcanceYLimites": "No queda claro si se compra al emisor o a otro inversor.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "plazo",
+   "literal": "4.3 Die tokenisierten Wertpapiere können nur während der Zeichnungsfrist gezeichnet werden. Die Emittentin behält sich das Recht vor, die Zeichnungsfrist um einen Zeitraum zu verlängern, dessen Dauer höchstens dem dreifachen der ursprünglichen Zeichnungsfrist entspricht.",
+   "dato": "Suscripción limitada a 2024 (prórroga máxima en 2025)",
+   "fuentePrimaria": "https://cdn.brickwise.at/64da3d27-ad35-4007-bf3d-9f022d3e14d2.pdf",
+   "localizador": "Investitionsbedingungen §4.3 y cuadro inicial («Zeichnungsfrist … 31.10.2024»)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:07:28Z",
+   "alcanceYLimites": "Con el contrato, hoy no cabe suscripción primaria.",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Mismo intermediario que el resto de Brickwise (comprobado hoy)."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "La app y la API la ofrecen a 507,62 €, pero el contrato cerró la suscripción en 2024."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "No se puede acreditar una compra posible ni su base contractual."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Riesgo 6 de 7; sin advertencias CNMV para Greeninfra ni Greemer."
+  }
+ },
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "decision": "no_admitir",
+ "motivoDecision": "Igual que el 01/11: la app la presenta como comprable desde 507,62 € («Handel aktiv»), pero el contrato solo permitía suscribir en 2024 (prórroga máxima en 2025) y no hay órdenes de reventa. No es una emisión primaria abierta acreditable.",
+ "bloqueos": [
+  "Conflicto entre la app/API (219 disponibles a 507,62 €) y el contrato (suscripción cerrada)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-03T10:05:09Z",
+  "finUtc": "2026-11-03T10:08:21Z"
+ }
+}

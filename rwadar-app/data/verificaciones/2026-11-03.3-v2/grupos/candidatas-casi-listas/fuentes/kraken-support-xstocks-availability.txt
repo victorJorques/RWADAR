@@ -1,0 +1,178 @@
+
+What stocks and ETFs are available as xStocks?
+Los xStocks no están disponibles en EE.UU.. Se aplican restricciones geográficas. Consulta 
+kraken.com/legal/xstocks
+ para obtener más información.
+ES
+ES
+Compra cripto en minutos
+Descargar la aplicación de Kraken
+ES
+Preguntar a la IA
+All
+Filtrar por:
+Seleccionar producto
+¿Cómo deposito efectivo en mi cuenta?
+Necesito ayuda con la verificación de la cuenta
+¿Por qué no puedo acceder a mi cuenta?
+¿Existen comisiones por retirar criptomonedas?
+Necesito ayuda para iniciar sesión en mi cuenta
+Atención al cliente
+xStocks
+xStocks en Kraken
+¿Qué acciones y ETF están disponibles como xStocks?
+Última actualización:
+18 de junio de 2026
+Ofrecemos muchas de las acciones tokenizadas y ETF más populares, incluyendo nombres como Tesla (TSLAx), Apple (AAPLx) y GameStop (GMEx).​ 
+Los xStocks no están disponibles en: Estados Unidos, Australia, Canadá, Bélgica, el Reino Unido y las 
+regiones prohibidas.
+xStocks y ETF disponibles en Kraken
+xStocks y ETF disponibles para trading con margen
+Los siguientes xStocks y ETF se pueden negociar utilizando un apalancamiento de 
+3x
+:*
+AAPLx, CRCLx, GLDx, GOOGLx, HOODx, MSTRx, NVDAx, QQQx, SPYx y TSLAx
+*Se aplican restricciones geográficas
+Los xStocks no están disponibles en: Estados Unidos, Australia, Canadá, Reino Unido y 
+regiones prohibidas
+.
+Requisitos para clientes del EEE
+Si resides en el 
+EEE
+, debes completar y aprobar un 
+cuestionario
+ antes de obtener acceso al trading de xStocks.
+Una vez aprobados, los clientes del EEE pueden comprar, vender y convertir xStocks utilizando 
+solo fiat.
+Disponibilidad para otras regiones
+Para clientes fuera del EEE, puedes comprar, vender y convertir xStocks utilizando tanto cripto como 
+fiat
+ (efectivo).
+Los xStocks son emitidos por Backed Assets (JE) Limited (una sociedad de responsabilidad limitada privada de Jersey) y ofrecidos a clientes elegibles de Kraken a través de Payward Digital Solutions Ltd. (“PDSL”), una empresa con licencia para llevar a cabo negocios de activos digitales por la Autoridad Monetaria de las Bermudas. Los xStocks no están ni estarán registrados ante ningún regulador de valores local. PDSL (Kraken) no proporciona asesoramiento ni recomendaciones de inversión, y ninguna comunicación, a través de ninguna aplicación o sitio web de Kraken o de otro modo, debe interpretarse como tal. Los inversores individuales deben tomar sus propias decisiones o buscar asesoramiento profesional independiente si no están seguros de la idoneidad o adecuación de cualquier inversión para sus circunstancias o necesidades, incluido el posible tratamiento fiscal. Invertir en xStocks implica un elemento de riesgo. El valor de una inversión puede bajar o subir, y el rendimiento pasado no es un indicador fiable de resultados futuros. No disponible en EE. UU. ni para personas estadounidenses. Se aplican restricciones geográficas. Lea la Divulgación de riesgos de xStocks de Kraken en 
+kraken.com/legal/xstocks
+, así como el Folleto base y los Términos finales relacionados para xStocks en 
+https://assets.backed.fi/legal-documentation
+ para obtener más información.
+Requisitos para clientes del EEE
+Disponibilidad para otras regiones
+Crear una cuenta
+Crear una cuenta
+Iniciar sesión
+Crear una cuenta
+Crear una cuenta
+Iniciar sesión
+Funciones
+ →
+Comprar criptos
+Vender criptos
+Margin trading
+Trading de futuros
+Trading OTC
+Instituciones
+API trading
+Recompensas de staking
+Compras recurrentes
+Kraken Borrow
+Kraken Funded
+Acerca de Kraken
+ →
+Seguridad de Kraken
+Trabaja en Kraken
+Blog de Kraken
+Kraken para desarrolladores
+Sala de prensa
+Programa de afiliados
+Listados de activos
+Estado de Kraken
+Centro de Atención al cliente
+Quejas
+Precios de las criptomonedas
+ →
+Precio de Bitcoin
+Precio de Ethereum
+Precio de Dogecoin
+Precio de Ripple
+Precio de Cardano
+Precio de Solana
+Precio de Litecoin
+Categorías de criptos
+Predicciones de precios
+Convertir criptos
+ →
+BTC a USD
+ETH a USD
+XRP a USD
+BNB a USD
+SOL a USD
+DOGE a USD
+ADA a USD
+TRX a USD
+LTC a USD
+Comprar criptos
+ →
+Compre Bitcoin
+Comprar Ethereum
+Comprar Dogecoin
+Comprar XRP
+Comprar Cardano
+Comprar Solana
+Comprar Litecoin
+Compra acciones
+ →
+Comprar Nvidia
+Comprar Tesla
+Comprar Apple
+Comprar Amazon
+Comprar Palantir
+Comprar Microsoft
+Comprar renta variable tokenizada
+ →
+Comprar NVDAx
+Comprar TSLAx
+Comprar AAPLx
+Comprar SPYx
+Comprar AMZNx
+Educación financiera
+ →
+¿Qué es una criptomoneda?
+¿Qué son los contratos inteligentes?
+¿Qué es Bitcoin?
+¿Qué es la tokenización?
+Mejores apps de cripto
+Mejores exchanges de criptomonedas
+Kraken y Coinbase
+Centro de privacidad
+Aviso de privacidad
+Configuración de cookies
+No vender/compartir
+Centro de cumplimiento
+Términos de servicio
+Normas de trading en el exchange
+Divulgaciones
+by 
+PAYWARD
+© 2011–2026 Payward, Inc.
+Trading
+Kraken
+Kraken Pro
+NinjaTrader
+Breakout
+VIP
+API Trading
+|
+Services
+Payward Services
+xStocks
+CF Benchmarks
+Reap
+|
+Banking
+Krak
+Prime
+OTC
+Custody
+|
+Asset Management
+Estos materiales ofrecen únicamente información general y no deben entenderse como asesoramiento sobre inversiones o productos financieros ni como una recomendación o una solicitud para comprar, vender, hacer staking ni mantener ningún criptoactivo, ni para participar en ninguna estrategia de trading específica. Kraken no trabaja ni trabajará para aumentar o disminuir el precio de ningún criptoactivo en particular de los que ofrece. Los mercados de criptoactivos son impredecibles y, por tanto, la inversión en este tipo de activos puede suponer la pérdida de capital. Es posible que la rentabilidad o el incremento del valor de tus criptoactivos estén sujetos a impuestos. Pueden aplicarse restricciones geográficas. Algunos productos y mercados de criptomonedas no están regulados. El estado normativo de Kraken para sus productos y sus servicios difiere según la jurisdicción y es posible que la compensación gubernamental o los sistemas de protección normativa no te protejan. Consulta las 
+divulgaciones legales
+ de cada jurisdicción.

@@ -1,0 +1,91 @@
+{
+ "slug": "hausera-eti-portfolio",
+ "tipoExpediente": "candidata",
+ "grupo": "brickwise-alius-hausera",
+ "proveedor": "Hausera / Portfolio Stock Exchange",
+ "plataformaSlug": "hausera",
+ "entidadComercializadora": "Portfolio Stock Exchange (sistema multilateral de negociación; registro no comprobado hoy)",
+ "emisor": "ALTARIUS ETI AG",
+ "vehiculo": "ETI (exchange traded instruments) de ALTARIUS ETI AG con nombre Hausera",
+ "token": null,
+ "derechoAdquirido": "No documentado: no se leyó el folleto ni las condiciones finales",
+ "jurisdiccion": null,
+ "identificador": "FR0014010H19 · FR0014012BI0 · FR0014012HS6",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Portfolio Stock Exchange · mercado, pestaña «ETP/Deuda»",
+   "url": "https://portfolio.exchange/es/portfolio-market",
+   "versionOFecha": "consulta 2026-11-03T10:32:00Z",
+   "paginas": null,
+   "sha256": "4e20093f10cac09f50f7625f63b53de2a778cd1d613a7183e2bc2dc5c5a1ec2d",
+   "leido": true
+  },
+  {
+   "titulo": "Portfolio Stock Exchange · portada",
+   "url": "https://portfolio.exchange/es",
+   "versionOFecha": "consulta 2026-11-03T10:30:53Z",
+   "paginas": null,
+   "sha256": "6e9dd87d2e46e11b071af153147a9c87a6d6f97d5da6844d1dd41eddea2c4594",
+   "leido": true
+  }
+ ],
+ "registros": [],
+ "advertenciasReguladores": [],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "HAUS Hausera ETI FR0014010H19, último precio 96 % (960,00 €), compra/venta 989,28 € / 997,19 € · HIII Hausera Lago Di Garda 3 ETI FR0014012BI0, último precio 100 % (1.000,00 €), compra/venta 1.056,79 € / 1.061,34 € · HMII Hausera Madrid 2 ETI FR0014012HS6, último precio 102,9 % (1.029,00 €), compra/venta 1.044,07 € / 1.047,52 €",
+   "dato": "Cotizan con precios de compra y venta publicados",
+   "fuentePrimaria": "https://portfolio.exchange/es/portfolio-market",
+   "localizador": "Pestaña «ETP/Deuda»",
+   "fechaDato": "2026-11-03",
+   "consultadoUtc": "2026-11-03T10:32:00Z",
+   "alcanceYLimites": "Sin documentos del emisor leídos.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Portfolio Stock Exchange es un sistema multilateral de negociación sujeto a la normativa de la Unión Europea. Estamos autorizados por la Comisión Nacional del Mercado de Valores (CNMV).",
+   "dato": null,
+   "fuentePrimaria": "https://portfolio.exchange/es",
+   "localizador": "Portada de Portfolio",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-03T10:30:53Z",
+   "alcanceYLimites": "La portada dice que admite minoristas, pero no se comprobó la autorización en el registro de la CNMV ni las condiciones de cada ETI.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "Emisor ALTARIUS ETI AG sin registro ni folleto comprobados; registro de Portfolio no comprobado."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Cotizan hoy con precios publicados."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin mínimo, comisiones ni elegibilidad documentados por el emisor."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Sin folleto ni KID leídos."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "decision": "no_admitir",
+ "motivoDecision": "Pista del grupo nuevas-espana comprobada en parte: en Portfolio cotizan tres ETI de ALTARIUS ETI AG con nombre Hausera (nominal 1.000 €). Falta lo esencial: folleto o condiciones finales y KID, supervisor del emisor, relación con las obligaciones de Hausera, mínimo, comisiones y acceso de particulares en España documentado.",
+ "bloqueos": [
+  "Folleto y KID de ALTARIUS ETI AG no localizados en abierto.",
+  "Autorización de Portfolio Stock Exchange no comprobada en el registro de la CNMV."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-03T10:30:53Z",
+  "finUtc": "2026-11-03T10:32:00Z"
+ }
+}

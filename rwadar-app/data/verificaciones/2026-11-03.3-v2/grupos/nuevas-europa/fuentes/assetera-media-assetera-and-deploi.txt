@@ -1,0 +1,84 @@
+Assetera and Deploi
+AboutFor B2B PartnersFor InvestorsMediaContact us
+EN
+DE
+EN
+EN
+DE
+Go to Platform
+Deploi Launches Direct Issuance Infrastructure for Private Credit on Polygon with Nasdaq CSD ISIN Allocations
+Assetera and Deploi Partner to Bring Regulated Private Credit to European Investors
+Partnerships
+13 May 2026
+Vienna, 13 May
+Deploi, the institutional infrastructure layer for digital private credit, today announced the launch of its direct issuance framework on Polygon after receiving ISIN allocations from Nasdaq CSD for its inaugural UK Consumer Credit notes.
+The first issuance, Series 2026/CON/001, enables regulated digital debt issuance for consumer credit assets with individual notes of up to EUR 5 million. Approximately EUR 100 million in additional issuance volume through Assetera is already lined up over the next six months.
+Deploi’s infrastructure is designed to modernize the operational backbone of the private credit market by replacing manual fund structures with programmable issuance, settlement, and risk management infrastructure.“The legacy private credit model is operationally outdated, investors and lending partners want faster execution, better transparency, and more flexible structures. Deploi replaces fragmented intermediaries with scalable digital infrastructure purpose-built for modern private credit markets.”
+Oskars Jepsis, Founder of Deploi 
+The notes are issued and settled through Assetera, the EU-regulated DLT trading platform licensed under the MiFID II framework, enabling compliant access for European investors."Private credit has long been inaccessible to most European investors due to structural barriers — high minimums, opacity, and illiquidity. By providing the regulated infrastructure for Deploi's instruments, Assetera removes those barriers while maintaining full MiFID II compliance. This partnership demonstrates precisely what regulated DLT infrastructure makes possible: institutional-grade yield products, compliantly distributed at scale across Europe." 
+Thomas Labenbacher, CEO of Assetera
+Deploi’s issuance and registry infrastructure is anchored on EVM-compatible chains, with Polygon serving as the initial settlement layer ahead of planned expansion to Canton Network infrastructure.“Private credit is a massive market, but it still runs on outdated infrastructure. What Deploi is doing with direct issuance and bringing this onchain with Polygon is a clear step toward making these markets more efficient, transparent, and easier to access for institutional participants.” 
+Marc Boiron, CEO at Polygon Labs
+Early Market Traction
+Deploi enters the market with growing institutional demand and active issuance momentum:
+Initial live product focused on UK consumer credit
+Notes issued in tranches up to EUR 5 million
+Approximately EUR 100 million pipeline expected over the next three months
+Target net yields are expected to range between 6–18%, depending on underlying asset structures and market conditions
+Infrastructure & Settlement
+Deploi combines regulated issuance infrastructure with blockchain-native settlement and servicing:
+Regulated Settlement: 
+Assetera acts as Deploi’s licensed trading and settlement venue
+Onchain Registry: 
+Digital debt instruments and registry records anchored on Polygon
+Strategic Expansion: Canton Network
+Looking ahead, Deploi is extending its infrastructure to bridge the gap between decentralized finance and institutional capital.
+Deploi is working with the Canton Foundation, the independent governing body of the Canton Network, to launch issuance and secondary market capabilities on Canton within the next 60 days. Canton is rapidly becoming a leading blockchain infrastructure for regulated financial markets, combining institutional-grade privacy with public blockchain interoperability.
+Get started now and gain access to Deploi tokens through Assetera, including live market data and execution infrastructure for eligible participants.
+Be among the first investors
+TPLUS will be available through the Assetera Marketplace. Subscribe to our newsletter to be among the first investors with priority access and favourable conditions when it goes live.
+Thank you! Your submission has been received!
+Something went wrong while submitting the form.
+By subscribing you agree to receive Assetera market updates. Unsubscribe at any time. This is not an offer to purchase securities. Availability is subject to eligibility criteria and applicable law.
+Read the full TPLUS launch announcement by Synthesys.
+About the Companies
+About the Deploi
+Deploi is a Nordics-based financial infrastructure provider enabling private credit originators to issue institutional-grade digital debt securities directly to global investors through regulated blockchain infrastructure.
+‍
+About Assetera
+​​Assetera is the first EU-regulated DLT trading platform for securities and real-world assets. Licensed by the Austrian FMA under the MiFID II framework, Assetera enables compliant distribution of tokenized financial products across Europe.
+‍
+About the Canton Foundation
+The Canton Foundation is the independent governing body of the Canton Network, a privacy-enabled blockchain network built for regulated financial markets. The Foundation oversees network governance, ecosystem development, and participant onboarding.
+‍
+About Polygon Labs
+Polygon Labs develops blockchain infrastructure for scalable payments and financial markets. Its technology supports institutions, fintechs, and enterprises building onchain financial applications at global scale.
+‍
+‍
+Disclaimer: This communication does not constitute investment advice or an offer. Financial instruments involve risk and may result in loss of capital. Past performance is not a reliable indicator of future results.
+You might also be interested in
+Assetera & Chiliz
+Chiliz and Assetera join forces to accelerate tokenized Real-World Assets in sports and entertainment
+Partnerships
+24 Nov 2025
+Featured Article Ledger Insights 
+Assetera to enable EU crypto exchanges to offer Backed tokenized stocks
+In the news
+01 Aug 2025
+Assetera Joins the Eurøpe Consortium
+The Austrian MiFID II-regulated platform for the distribution of tokenized securities and real-world assets joins issuers, exchanges and infrastructure providers working to expand the use of regulated euro stablecoins on-chain, where the US dollar accounts for about 99% of total market value
+Partnerships
+05 Oct 2026
+Assetera & Brickken
+Liquidity to Tokenized Assets
+Partnerships
+23 Jun 2025
+Subscribe to stay informed on RWA trends and tokenization strategies.
+Weekly insights, webinars, and infographics from Assetera straight to your inbox.
+By proceeding, you acknowledge that you have read and agree to our Privacy Policy and consent to receive updates and communications related to our services.
+Thank you! Your submission has been received!
+Something went wrong while submitting the form.
+HomeAboutFor B2B PartnersFor InvestorsMediaContact us
+ImprintPrivacy & Cookies PolicyLegal NoticeCorporate GovernanceAssetera GmbH - MiFID Conflicts of InterestAssetera GmbH - MiFID Complaint ProcedureAssetera GmbH - MiFID Order ExecutionToken Listing
+Assetera 2026 ©. All Rights Reserved.
+

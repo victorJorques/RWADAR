@@ -1,0 +1,208 @@
+Key Information Document
+Purpose
+This document provides you with key information about this investment product. It is not marketing material. The information is required by
+law to help you understand the nature, risks, costs, potential gains and losses of this product and to help you compare it with other products.
+
+Product
+Name: US-listed Share / ETP Derivative (the ‘Product’)
+PRIIP Manufacturer: Robinhood Europe, UAB, a licensed and regulated Lithuanian investment firm (legal entity code 306377915)
+(‘Robinhood Europe’) being a subsidiary of Robinhood Markets, Inc. (collectively with its affiliates, ‘Robinhood’) and part of the Robinhood
+group of companies
+Contact: https://robinhood.com/eu/en/ | Call +370 5 214 1321 for more information
+Competent Authority: The Bank of Lithuania, Gedimino pr. 6, LT-01103 Vilnius, Lithuania, is responsible for supervising Robinhood Europe
+regarding this Key Information Document
+Date of Document Production: 1 July 2026
+
+You are about to purchase a product that is not simple and may be difficult to understand.
+What is this product?                                                        affiliated with and does not otherwise exert control over such third
+Type: The Product is an over-the-counter (‘OTC’) derivative which            parties. All references to the ticker symbols and names of the
+gives you direct, one-to-one exposure to the market price of the             Underlying Assets are purely descriptive in nature and do not imply
+underlying US-listed share or US-listed exchange-traded product              any cooperation, affiliation, control or approval of the Product by the
+(‘ETP’) that you select. The Product is priced and quoted in USD, and        respective issuers of the Underlying Assets or any other third parties.
+its profit and loss is calculated in USD. An ETP (exchange-traded            This Key Information Document is intended to provide you with an
+product) is a type of investment traded on a stock exchange. Similar         overview of the US Share / ETP Derivative, which has a range of
+to a share, its value is generally linked to the performance of an           Underlying Assets available. More information on the underlying
+underlying asset, such as an index, a basket of shares, or a                 investment options can be found here.
+commodity.
+                                                                             Term: The Product has no fixed term.
+When you buy the Product, you enter into a financial derivative
+contract with Robinhood Europe, which is a type of financial                 Objectives: The objective of the Product is to enable you to
+instrument regulated under the Directive on markets in financial             participate indirectly and proportionally in changes in the Underlying
+instruments (Directive (EU) 2014/65 – MiFID II). The value of this           Asset’s value. Holding the Product does not mean you own any
+contract depends on the performance of the US-listed share or ETP,           shares or units, or that you have any rights to receive shares or units
+as selected by you on the Robinhood Europe platform. The relevant            of the Underlying Asset. The Product does not allow you to redeem
+share or ETP selected on the Robinhood platform is referred to as the        it for shares or units in the Underlying Asset or otherwise, and does
+‘Underlying asset’. Your rights under the Product come from your             not offer rights that you would have if you bought shares or units in
+contract with Robinhood Europe, and are also represented by a                the Underlying Asset directly (such as voting rights at shareholders’
+blockchain-traded token (the ‘Token’), issued to you at the time of          meetings).
+entering into the contract. Each Token represents one underlying
+share or unit in the Underlying Asset, so you will receive the same          You can hold the Product indefinitely, meaning there is no term or
+number of Tokens as the number of shares or units that you select in         expiry date. You can exit your position in the Product at any time by
+the Robinhood Europe app.                                                    submitting such a request via the Robinhood Europe app. We will
+                                                                             fulfil your request as soon as possible, taking into account any
+The price of the Product fluctuates with the price of the Underlying         applicable terms and conditions. Any exit of a position in the Product
+Asset, based on market prices for the chosen Underlying Asset. You           will always be at the prevailing price of the Underlying Asset, less any
+can buy the Product at the quoted price of the Underlying Asset at           relevant fees. Therefore, one significant factor that affects your return
+the time of purchase. You can request that Robinhood Europe buy it           is your selection of the Underlying Asset and its performance.
+back from you at any time at the then-quoted price of the Underlying
+Asset, subject to applicable fees and other conditions in each case.         Intended retail investor: The Product is a complex financial
+                                                                             instrument suitable only for informed retail investors with specific
+You can usually trade the Product during normal NASDAQ trading               knowledge of and experience trading similar products and financial
+hours, from 09:30 to 16:00 Eastern Time (GMT-5). Robinhood Europe            markets. It is intended for investors seeking exposure to underlying
+may make trading possible outside of these hours, although this              assets.
+service may not always be available. Trading during extended hours
+carries unique risks, including greater price volatility, lower liquidity,   The Product is suitable for investors with a short to medium-term
+wider bid/ask spreads and reduced market information. You can                investment horizon, aligned with the recommended holding period. It
+place orders for the Product in euros (‘EUR’) via the Robinhood              is intended for investors who are willing and financially able to bear
+Europe app. When you open a position, EUR is converted into USD              significant losses, including the total loss of the invested capital, and
+at the FX rate shown in the app. When you close the position, any            who do not expect any capital protection.
+payout is calculated in USD and converted back into EUR at the FX
+rate shown in the app.                                                       Investors should be aware that the value of the Product may fluctuate
+                                                                             significantly due to the volatility of the underlying assets. Active
+The Underlying Assets that are ETPs originate from third parties and         monitoring and management of the investment are required.
+are neither issued nor managed by Robinhood. Robinhood is not
+
+
+
+
+Page 1 of 3 | Key Information Document
+                                                                                                                  20260626-5664125-17985354
+What are the risks and what could I get in return?
+Risk Indicator:
+                                                                           The scenarios shown are illustrations based on results from the past
+                                                                           and on certain assumptions. Markets could develop very differently
+                                                                           in the future. The figures shown include all the costs of the product
+                                                                           itself, but may not include all the costs that you pay to your advisor
+                                                                           or distributor. The figures do not take into account your personal tax
+                                                                           situation, which may also affect how much you get back. The stress
+                                                                           scenario shows what you may get back in extreme market
+                                                                           circumstances.
+
+                                                                           It is difficult to estimate how much you would get back if you were to
+                                                                           end your investment early. You could be unable to end early, have to
+                                                                           pay high costs or lose up to 100% of the investment if you do so.
+                                                                           Buying this product would indicate that you believe the underlying
+                                                                           price will increase. Your maximum loss would be that you lose your
+                                                                           entire investment (premium paid).
+
+                                                                            Recommended holding period: 1 year
+                                                                            Example Investment: EUR 10,000
+The summary risk indicator is a guide to the level of risk of this
+Product compared to other products. It shows how likely it is that the      Scenarios                                           If you exit after 1 year
+Product will lose money because of movements in the markets or
+because we are not able to pay you.
+                                                                            Minimum            There is no minimum guaranteed return. You could lose
+We have classified this Product as 7 out of 7, which is the highest risk                       some or all of your investment.
+class. This rates the potential losses from future performance at a
+very high level, and poor market conditions are very likely to impact       Stress             What you might get back after             4,033
+our capacity to pay you. The risk and return of your investment will                           costs                                    -59.7%
+                                                                                               Average return each year
+vary significantly depending on the Underlying Asset you select. This
+is because the return on the Product depends significantly on the
+Underlying Asset selected, and the performance of the Underlying
+Asset. Even though the risk and return of the product varies
+depending on the underlying Asset, the risk classification (with 7          Unfavourable       What you might get back after             6,646
+being the highest risk level) applies regardless of which specific                             costs                                    -33.5%
+Underlying Asset is selected.                                                                  Average return each year
+
+
+Be aware of currency risk. You will receive payments in a
+different currency, so the final return you will get depends on the
+exchange rate between the two currencies. This risk is not
+                                                                            Moderate           What you might get back after             9,933
+considered in the indicator shown above.                                                       costs                                     -0.7%
+                                                                                               Average return each year
+Fluctuations in the NASDAQ-provided price and trading volume of an
+Underlying Asset may negatively affect the value of the Product, as
+they reflect the market value of the corresponding Underlying Asset.
+The price of the Underlying Asset may in turn be subject to significant
+                                                                            Favourable         What you might get back after            14,804
+volatility. This Product does not include any protection from future                           costs                                    48.0%
+market performance, so you could incur significant losses, or even                             Average return each year
+lose your entire investment. If we are not able to pay you what is
+owed, you could lose some or all of your investment.
+
+Material risks not included in the summary risk indicator: Robinhood
+Europe is the sole counterparty to your claims. If we are not able to PLEASE NOTE: The above scenarios are modelled based on the
+pay you what is owed, you could lose your entire investment.          Underlying Asset you select being AAPL (a share issued by Apple,
+                                                                      Inc. and traded on NASDAQ). Actual performance of the Product
+Performance Scenarios: What you will get from this Product depends on a number of factors, including your selection of
+depends on future market performance. Market developments in the Underlying Asset.
+future are uncertain and cannot be accurately predicted.
+
+
+What happens if Robinhood Europe is unable to pay out?
+The product is not covered by an investor compensation or deposit insurance scheme. Robinhood Europe is the sole counterparty to payment
+claims arising from the Product for all Underlying Assets. Therefore, we are the counterparty to the financial derivative contracts. Accordingly,
+you are exposed to the risk that we may be unable to fulfil our obligations under these contracts, which could result in you losing all or part
+of your investment (for example, if we become insolvent).
+
+What are the costs?
+The person advising on or selling you this Product may charge you other costs. If so, this person will provide you with information about
+these costs and how they affect your investment.
+Costs over time:
+The tables show the amounts that are taken from your investment to cover different types of costs for all Underlying Assets. These amounts
+depend on how much you invest, how long you hold the Product, and how well the Product does. The amounts shown here are illustrations
+based on an example investment amount.
+We have assumed: (i) you would get back the amount that you invested (0% annual return); and (ii) EUR 10,000 is invested.
+
+
+
+
+Page 2 of 3 | Key Information Document
+                                                                                                                 20260626-5664125-17985354
+                                                   If you exit after 1 year   * This illustrates how costs reduce your return each year over the
+Total costs                                                         EUR 20
+                                                                              recommended holding period. For example, it shows that if you exit
+                                                                              at the recommended holding period your average return per year is
+Annual impact of costs (*)                                            0.2%    projected to be -0.5% before costs and -0.7% after costs.
+
+
+Composition of costs:
+ One-off costs upon entry or exit                                                                                              If you exit after 1 year
+ Entry costs                                  0.10% of the amount you pay in when entering this investment. This is the most                   EUR 10
+                                              you will be charged. The person selling you the product will inform you of the
+                                              actual fee.
+ Exit costs                                   0.10% of your investment before it is paid out to you.                                           EUR 10
+ Ongoing costs
+ Management fees and other                  0.00% of the value of your investment per year. This is an estimate based on                        EUR 0
+ administrative or operating costs          actual costs over last year.
+ Transaction costs                          0.00% of the value of your investment per year. This is an estimate of the costs                    EUR 0
+                                            incurred when we buy or sell the underlying assets for the Product. The actual
+                                            amount depends on how much we buy and sell.
+ Incidental costs taken under specific conditions
+ Performance fees                           There is no performance fee for this Product.                                                       EUR 0
+
+
+
+How long should I hold it and can I take money out early?
+Recommended holding period: 1 year
+It is not possible to provide an individual recommendation for a holding period. The recommended holding period reflects the characteristics
+of the Product, particularly the volatility of US-listed shares and ETPs, and is intended to reduce the impact of short-term market fluctuations
+and exit costs on returns.
+You can hold the Product until you choose to close out your position on any trading day, subject to market conditions and the Product terms
+and conditions. Whether or not you choose to do so will depend on your investment strategy and risk profile. Robinhood Europe may suspend
+the closing of positions in the Product, particularly in the event of unexpected market movements, requests made outside US trading hours,
+ad hoc announcements, or other circumstances that make pricing more difficult.
+How can I complain?
+If you are dissatisfied with any part of our services or this Product and wish to file a complaint, you can find information about our complaints
+procedure online here. You can also contact us in writing at the following address: Vilniaus g. 33-201, LT-01402 Vilnius, Lithuania, or by email
+at complaints_eu@robinhood.com. We will then handle your complaint and provide you with feedback as soon as possible. If you are not
+satisfied with our final response to your complaint, you can contact the Bank of Lithuania via the Electronic Government Gateway (for citizens
+and residents of the Republic of Lithuania only), or contact the Bank of Lithuania's Legal and Licensing Department at Totorių g. 4, LT-01121
+Vilnius or by e-mail at www.lb.lt/gincu-sistema, within one year from the date of contacting us to resolve the dispute. Complaints are handled
+at no cost. For more information on disputes handled by the Bank of Lithuania, please visit www.lb.lt.
+
+Other relevant information
+Robinhood Europe is available to discuss the terms and conditions of the offering, and will provide any additional information it possesses
+or can reasonably acquire. Full product terms and conditions can be found here.
+
+This document has been produced in compliance with Regulation (EU) No. 1286/2014 (‘PRIIPs Regulation’), and includes disclosures that
+use the prescribed PRIIPs Regulation methodologies.
+
+
+
+
+Page 3 of 3 | Key Information Document
+                                                                                                                    20260626-5664125-17985354
+

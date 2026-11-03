@@ -1,0 +1,53 @@
+{
+  "tipo": "revision_integral",
+  "fecha": "2026-11-03",
+  "etiqueta": "2026-11-03.3",
+  "revisionAnterior": "62dca2f9-8a9b-0dae-bef9-82fbda910280",
+  "decision": "Víctor, 03/11/2026: nueva investigación para publicar lo más actualizado posible; normas de tarjeta del 03/11/2026.",
+  "radar": {
+    "fuentes": 69,
+    "correctas": 69,
+    "archivo": "radar-contraste-2026-11-03.json",
+    "sha256": "1e7b0198bf48ba4e76d59cc3aa2bf9eff76238a2b20f4700b42dce53d5b19fe3"
+  },
+  "cifras": {
+    "spiko-letras-del-tesoro-euro": {
+      "rentabilidad": "2,34 %",
+      "fechaDato": "2026-11-02"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "rentabilidad": "3,95 %",
+      "fechaDato": "2026-11-02"
+    }
+  },
+  "referenciasTarjeta": {
+    "vivienda-pluddemanngasse-101-graz": 3,
+    "vivienda-sonnleithnergasse-2-viena": 3,
+    "local-de-estanco-klagenfurt": 3,
+    "vivienda-stallhofstra-e-28-gratwein": 3,
+    "vivienda-schwarzer-weg-18-graz": 3,
+    "drautalresidenz-paternion": 3,
+    "randhartingergasse-9-viena": 3,
+    "apartamento-vacacional-hinterstoder-50": 3,
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": 3,
+    "fotovoltaica-greenpoint": 3,
+    "fotovoltaica-cohotel": 3,
+    "terreno-con-arrendamiento-billa": 3,
+    "casa-de-outeiro": 2,
+    "boss-info": 2,
+    "switzerlend": 2,
+    "mf-one": 2,
+    "spiko-letras-del-tesoro-euro": 3,
+    "spiko-letras-del-tesoro-dolar": 3,
+    "robinhood-classic-stock-tokens": 3,
+    "prosegur-digital-gold": 3,
+    "aktionariat": 3
+  },
+  "altas": [],
+  "retiradas": [],
+  "colecciones": {
+    "principales": 6,
+    "secundario": 14,
+    "en_camino": 3
+  }
+}

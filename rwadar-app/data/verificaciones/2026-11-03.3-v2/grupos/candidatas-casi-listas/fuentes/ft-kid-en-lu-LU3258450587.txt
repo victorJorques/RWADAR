@@ -1,0 +1,212 @@
+Key Information Document
+Purpose
+This document provides you with key information about this investment product. It is not marketing
+material. The information is required by law to help you understand the nature, risks, costs, potential
+gains and losses of this product and to help you compare it with other products.
+
+
+
+Product
+
+Franklin OnChain U.S. Government Liquidity Fund
+Class AB (Dis) USD • ISIN LU3258450587 • Token grBENJI • A sub-fund of Franklin Templeton OnChain Funds (UCITS)
+Management company (and Manufacturer): Franklin Templeton International Services S.à r.l. ("FTIS"), part of the Franklin Templeton group of companies.
+Website: www.franklintempleton.lu
+Call (+352) 46 66 67-1 for more information
+The Commission de Surveillance du Secteur Financier (CSSF) is responsible for supervising Franklin Templeton International Services S.à r.l. in relation to
+this Key Information Document.
+This product is authorised in Luxembourg.
+Date of Production of the KID: 15/06/2026
+
+
+
+What is this product?
+Type                                                                               For the distribution share class shown in this document, dividend income will
+The product is a share class of the sub-fund Franklin OnChain U.S.                 normally be reinvested daily in the purchase of further share class to which
+Government Liquidity Fund (the "Fund") which is part of Franklin Templeton         such dividends relate.
+OnChain Funds, an open-ended investment company with variable capital              Buying and selling shares
+(SICAV), qualifying as a UCITS.                                                    The shares can be purchased or redeemed at any time through the App or
+Term                                                                               Institutional Web Portal, as applicable, although redemptions of shares will
+The Fund has no maturity date. The Fund could be closed under the                  only be processed as per the Dealing Cut-Off Time (as defined in the current
+conditions laid down in the current prospectus of the Fund.                        prospectus of the Fund) and on Valuation Days.
+Objectives                                                                         Intended retail Investor
+Investment Objective                                                               Investors who understand the risks of the Fund and plan to invest for at least
+To seek to maximise income to the extent consistent with the preservation of       1 year. The Fund may appeal to investors who:
+capital and liquidity, while seeking to maintain a constant net asset value per    • are looking for income from an investment that seeks to preserve capital
+share of 1 US dollar.                                                              • are interested in exposure to developed short-maturity bond markets as part
+This fund qualifies as a short-term public debt constant net asset value           of a diversified portfolio
+(CNAV) money market fund under the European Money Market Fund                      • have a low risk profile and can tolerate small short-term changes in the share
+Regulation.                                                                        price
+Investment Policy
+The Fund invests at least 99.5% (i) in Public Debt Money Market Instruments
+(“MMIs”) denominated in US dollar and issued or guaranteed by the US                Terms to understand
+government or the US central bank including securities issued by related            bonds: Securities that represent an obligation to repay a debt,
+agencies, (ii) in eligible reverse repurchase agreements secured with Public
+                                                                                    along with interest.
+Debt MMIs and/or (iii) in US dollar cash deposits.
+It is expected that the Fund will have exposure to reverse repurchase               derivatives: Financial instruments whose value is linked to one or
+agreements in the range of 0% to 50% of its Net Asset Value. Under certain          more rates, indexes, share prices or other values.
+circumstances this proportion may approach but not exceed 100%.
+The Fund invests only in securities denominated in US dollar with a weighted        money market instruments: Financial instruments designed to
+average maturity of up to 60 days and a weighted average life of up to 120          provide stable value, interest, high liquidity and a very low risk of
+days.                                                                               loss.
+SFDR category Article 6 (does not promote environmental and/or social
+characteristics or have a sustainable investment objective under EU
+regulations).                                                                      Depositary
+Base currency US dollar (USD).                                                     The Bank of New York Mellon SA/NV, Luxembourg Branch
+Benchmark(s) FTSE 1-month US Treasury Bill Index. Used for performance             Further Information
+comparison only.                                                                   Please refer to the 'Other relevant information' section below. The name
+The Fund is actively managed and may deviate materially from that of the           Franklin Templeton OnChain Funds refers to the proprietary blockchain-
+benchmark(s).                                                                      integrated system for transfer agency that utilizes features of traditional book
+Share Class Policy                                                                 entry form and one or more public blockchain networks. For the avoidance of
+                                                                                   doubt, the Fund will not invest in any cryptocurrencies (referred to as, among
+                                                                                   other things, virtual currencies) or more generally in any assets linked to the
+                                                                                   blockchain.
+
+
+
+
+Key Information Document Page 1 of 3
+What are the risks and what could I get in return?
+Risk Indicator                                                                        We have classified this product as 1 out of 7, which is the lowest risk class.
+                                                                                      This rates the potential losses from future performance at a very low level,
+                                                                                      and poor market conditions are very unlikely to impact the capacity to pay
+
+      1 2 3 4 5 6 7                                                                   you.
+                                                                                      Be aware of currency risk. In some circumstances, you may receive
+                                                                                      payment in a different currency, so that the final return you get may depend
+                                                                                      on the exchange rate between the two currencies. This risk is not considered
+   Lower risk                                                       Higher risk       in the indicator shown above.
+                                                                                      Other risks materially relevant to the product not included in the summary
+                                                                                      risk indicator:
+                 The risk indicator assumes you keep the product for 1 year(s).       • Counterparty risk
+                 The actual risk can vary significantly if you cash in at an early    • Blockchain-based Shares risk
+                 stage and you may get back less.                                     For a full discussion of all the risks applicable to this Fund, please refer to
+                                                                                      the "Risk Considerations" section of the current prospectus of the Fund.
+The summary risk indicator is a guide to the level of risk of this product            This product does not include any protection from future market performance
+compared to other products. It shows how likely it is that the product will lose      so you could lose some or all of your investment.
+money because of movements in the markets.
+
+
+
+
+Performance Scenarios
+The figures shown include all the costs of the product itself, but may not include all the costs that you pay to your advisor or distributor. The figures do not take
+into account your personal tax situation, which may also affect how much you get back. What you will get from this product depends on future market
+performance. Market developments in the future are uncertain and cannot be accurately predicted.
+The unfavourable, moderate, and favourable scenarios shown are illustrations using the worst, average, and best performance of the product and the suitable
+benchmark over the last 10 years. Markets could develop very differently in the future.
+
+Recommended holding period: 1 years
+Example Investment: 10000 USD
+Scenarios                                     Returns                                                                                        If you exit after 1 year
+
+                                               There is no minimum guaranteed return. You could lose some or all of your
+Minimum                                                                                                                                                             -
+                                               investment.
+Stress                                         What you might get back after costs                                                                       9 630 USD
+Stress                                         Average return each year                                                                                      -3.70%
+Unfavourable                                   What you might get back after costs                                                                       9 830 USD
+Unfavourable                                   Average return each year                                                                                      -1.70%
+Moderate                                       What you might get back after costs                                                                       9 990 USD
+Moderate                                       Average return each year                                                                                      -0.10%
+Favourable                                     What you might get back after costs                                                                      10 380 USD
+Favourable                                     Average return each year                                                                                       3.80%
+
+The stress scenario shows what you might get back in extreme market circumstances.
+Unfavourable scenario: This type of scenario occurred for an investment using the benchmark as stated in the prospectus between November 2020 and
+November 2021.
+Moderate scenario: This type of scenario occurred for an investment using the benchmark as stated in the prospectus between May 2019 and May 2020.
+Favourable scenario: This type of scenario occurred for an investment using the benchmark as stated in the prospectus between June 2023 and June 2024.
+
+What happens if Franklin Templeton International Services S.à r.l. is unable to pay out?
+Franklin Templeton International Services S.à r.l. ("FTIS") is the management company of the Fund, but the assets of the Fund are held separately from FTIS
+by the depositary. Bank of New York Mellon SA/NV, Luxembourg Branch, as the appointed depositary, is liable to the Fund or its shareholders for losses
+caused by its negligent or intentional failure to fulfil its safekeeping or record-keeping obligations (cash could however be lost in case of default of the depositary
+or its delegates).
+There is no compensation or guarantee scheme protecting you from a default of the Fund's depositary.
+
+What are the costs?
+The person advising on or selling you this product may charge you other costs. If so, this person will provide you with information about these costs and how
+they affect your investment.
+Costs over Time
+The tables show the amounts that are taken from your investment to cover different types of costs. These amounts depend on how much you invest, how long
+you hold the product and how well the product does. The amounts shown here are illustrations based on an example investment amount and different possible
+investment periods.
+We have assumed:
+• In the first year you would get back the amount that you invested (0% annual return). For the other holding periods we have assumed the product performs
+as shown in the moderate scenario
+• USD 10 000 is invested
+
+Costs over Time                                                                                                                              If you exit after 1 year
+Total costs                                                                                                                                                170 USD
+Annual cost impact (*)                                                                                                                                          1.7%
+(*) This illustrates how costs reduce your return each year over the holding period. For example it shows that if you exit at the recommended holding period
+your average return per year is projected to be 1.6% before costs and -0.1% after costs.
+
+Key Information Document Page 2 of 3
+We may share part of the costs with the person selling you the product to cover the services they provide to you. They will inform you of the amount.
+Please note that the figures shown here do not include any additional fees that may be charged by your distributor, advisor or any insurance wrapper in which
+the fund may be placed.
+Composition of Costs
+
+ One-off costs upon entry or
+                                     Description                                                                                      If you exit after 1 year
+ exit
+
+Entry costs                         1.50% of the amount you pay in when entering this investment.                                     Up to 150 USD
+
+                                    We do not charge an exit fee for this product, but the person selling you the product may do
+Exit costs                                                                                                                            0 USD
+                                    so.
+ Ongoing costs taken each
+                                     Description                                                                                      If you exit after 1 year
+ year
+Management fees and other
+                                    0.20% of the value of your investment per year. This is an estimate based on actual costs
+administrative or operating                                                                                                           20 USD
+                                    over the last year.
+costs
+                                    0.00% of the value of your investment per year. This is an estimate of the costs incurred
+Transaction costs                   when we buy and sell the underlying investments for the product. The actual amount will vary      0 USD
+                                    depending on how much we buy and sell.
+ Incidental costs taken under
+                                     Description                                                                                      If you exit after 1 year
+ specific conditions
+
+Performance fees (and carried
+                                    There is no performance fee for this product.                                                     0 USD
+interest)
+
+
+
+How long should I hold it and can I take money out early?
+Recommended holding period: 1 year(s)
+This Fund has no minimum required holding period. We consider that the 1 year recommended holding period is appropriate because the Fund is designed
+for short-term investment. You may sell your shares on any dealing day. The value of your investments may go down as well as up irrespective of the period
+you are holding your investments, depending on such factors as the performance of the Fund, movements in stock and bond prices, and conditions in financial
+markets generally. Please contact your broker, financial adviser or distributor for information on any costs and charges relating to the sale of the shares.
+
+How can I complain?
+Investors who would like to receive the procedures relating to complaints handling or wish to make a complaint about the Fund, the operation of FTIS or the
+person advising on or selling the Fund, should go on the website www.franklintempleton.lu, contact Franklin Templeton International Services, S.à r.l., 8A, rue
+Albert Borschette L-1246 Luxembourg, or send an e-mail to the client service department at OnchainServicingIntl@franklintempleton.com.
+
+
+
+Other relevant information
+For further information on the Objectives and Investment Policy of the Fund, please refer to the section “Fund Information, Objectives and Investment Policies”
+of the current prospectus. Copies of the latest prospectus and annual & semi-annual reports of Franklin Templeton OnChain Funds are available in English
+and, selectively, in certain other languages, on the website www.ftidocuments.com, your local Franklin Templeton website, or may be obtained free of charge
+from Franklin Templeton International Services, S.à r.l., 8A, rue Albert Borschette, L- 1246 Luxembourg or your financial adviser. The latest prices and other
+information on the Fund (including other share classes of the Fund) are available from FTIS, www.fundinfo.com or www.franklintempleton.lu.
+Under current legislation, we are not allowed to display performance data for funds with less than a complete full calendar year. Previous performance scenario
+calculations are available under:
+- https://docs.data2report.lu/documents/FTI/KID_PP/KID_annex_PP_LU3258450587_en.pdf
+- https://docs.data2report.lu/documents/FTI/KID_PS/KID_annex_PS_LU3258450587_en.pdf
+
+
+
+
+Key Information Document Page 3 of 3
+
