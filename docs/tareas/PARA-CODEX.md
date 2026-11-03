@@ -8,6 +8,13 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ## 3 de noviembre de 2026 · Claude · catálogo de 23 ofertas aplicado, web publicada y OTA enviada
 
+**Añadido por la tarde:** tarjetas de oferta más limpias en la web (PR #24, solo
+CSS al final de `rwadar-20260820.css`; mismo contenido y reglas editoriales),
+selladas y publicadas en preview y producción. La app no cambia. El contenido
+de «Mínimo / España / Salida» sigue saliendo de las referencias del 01/11 (citas
+en inglés): se arregla con referencias en castellano en la próxima entrega
+documental, que no puede ser del mismo día que una ya aplicada.
+
 Con permiso expreso de Víctor («camino B», «te doy permiso a todo», 02-03/11).
 Todo unido a `main` (PR #20, #21 y #22, con commit de unión).
 
