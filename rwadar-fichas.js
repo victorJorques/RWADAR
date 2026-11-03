@@ -11,6 +11,9 @@ const { validarLotePublicoV2, MANIFIESTO_CATALOGO_V2 } = require('./rwadar-movil
 const permitidas = require('./rwadar-fichas-manifiesto');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { paginasAcademy } = require('./rwadar-academy');
+const { resumenOferta } = require('./rwadar-movil/lib/ficha-editorial');
+// Transparencia de cada oferta (validada por rwadar-editorial-source/ofertas/transparencia.mjs).
+const TRANSPARENCIA = JSON.parse(fs.readFileSync(path.join(__dirname,'rwadar-editorial-source/ofertas/transparencia.json'),'utf8'));
 const RAIZ = __dirname;
 const SITIO = path.join(RAIZ, 'rwadar-site');
 const ORIGEN = 'https://rwadar.pages.dev';
@@ -158,6 +161,36 @@ const riesgos = '<section aria-labelledby="riesgos"><h2 id="riesgos">Antes de ir
   '<li><strong>Custodia:</strong> comprueba quién mantiene el activo y qué derecho recibes.</li>' +
   '<li><strong>Supervisión:</strong> un registro de la plataforma no protege cada producto ni confirma tu elegibilidad.</li></ul></section>';
 
+/* «Transparencia: lo que hemos comprobado», como en la ficha de la web. Falla
+   cerrado: sin entrada con la misma verificadaEl, no hay puntos fuertes y las
+   dos comprobaciones editoriales salen en «No». La vigencia la vuelve a mirar
+   ficha-pagina al abrir la página: la fecha de hoy no se escribe aquí. */
+function transparenciaOferta(o,catalogo) {
+  const t = TRANSPARENCIA.ofertas[o.slug], e = t && t.verificadaEl === o.verificadaEl ? t : null;
+  const r = resumenOferta(o,catalogo.plataformas,new Date(o.verificadaEl+'T12:00:00Z'));
+  const texto = Object.fromEntries(TRANSPARENCIA.criterios.map(c=>[c.id,c.texto]));
+  const minimo = Number.isFinite(r.minimo.euros) || Boolean(r.minimo.unidadDocumentada);
+  const salida = !['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto);
+  const fuente = f => f && enlace(f.url) ? '<p><a href="'+esc(enlace(f.url))+'" target="_blank" rel="noopener noreferrer">'+esc(f.titulo || new URL(f.url).hostname)+' ↗</a>'+
+    (f.fecha ? ' <span>· consulta '+esc(corta(f.fecha))+'</span>' : '')+'</p>' : '';
+  const fila = (id,cumple,motivo,f,campo) => '<li data-cumple="'+(cumple?'si':'no')+'"><strong><span class="comprobacion-marca">'+(cumple?'✓ Sí':'✗ No')+'</span> '+esc(texto[id])+'</strong>'+
+    '<p'+(campo ? ' data-campo="'+campo+'"' : '')+ORIGINAL+'>'+esc(motivo)+'</p>'+fuente(f)+'</li>';
+  const editorial = id => e ? fila(id,e[id].cumple===true,e[id].motivo,{...e[id].fuente,fecha:e[id].consultadaEl}) :
+    fila(id,false,'Sin comprobación editorial para esta revisión de la oferta.');
+  const contratable = o.coleccion==='principales' && o.disponibleEs===true;
+  const puntos = e ? e.puntos : [];
+  return '<section aria-labelledby="transparencia"><h2 id="transparencia">Transparencia: lo que hemos comprobado</h2>'+
+    '<p>Es una comprobación de la documentación, no una recomendación de inversión.</p><ul class="comprobaciones">'+
+    fila('contratable',contratable,contratable ? 'Es una oferta principal y la fuente dice que se contrata desde España.' :
+      o.coleccion==='secundario' ? 'Es una referencia de reventa entre inversores, no una oferta abierta.' :
+      o.coleccion==='en_camino' ? 'Es un anuncio: todavía no se puede contratar.' : 'No consta en la fuente que se contrate desde España.')+
+    editorial('supervisada')+editorial('documentoEspana')+
+    fila('minimoSalida',minimo && salida,(minimo ? 'Mínimo documentado' : 'Mínimo sin documentar')+'; '+(salida ? 'salida documentada' : 'salida sin documentar')+' en la revisión del '+corta(o.verificadaEl)+'.')+
+    fila('vigente',false,'Se comprueba al abrir la página con la fecha de hoy.',null,'vigencia')+'</ul>'+
+    (puntos.length ? '<h3>Puntos fuertes, con su fuente</h3><ul class="fuentes">'+puntos.map(x=>'<li><strong'+ORIGINAL+'>'+esc(x.texto)+'</strong>'+fuente(x.fuente)+'</li>').join('')+'</ul>' : '')+
+    '</section>';
+}
+
 function paginaOferta(o,catalogo,imagen) {
   const d = o.documentacion || {};
   const refs = (d.referencias || []).filter(r=>enlace(r.fuente) && fecha(r.fechaConsulta));
@@ -172,7 +205,7 @@ function paginaOferta(o,catalogo,imagen) {
     '<div><dt>Mínimo en euros</dt><dd data-campo="minimo"'+ORIGINAL+'>Consulta la fuente; no se presupone un mínimo vigente.</dd></div>'+
     '<div><dt>Acceso desde España</dt><dd data-campo="accesoEspana"'+ORIGINAL+'>Sin comprobar desde España.</dd></div>'+
     '<div><dt>Costes</dt><dd data-campo="costes"'+ORIGINAL+'>Confirma los costes actuales con el proveedor.</dd></div></dl></section>'+
-    '<section aria-labelledby="salida"><h2 id="salida">Cómo se recupera el dinero</h2><p data-campo="salida"'+ORIGINAL+'>La salida no se da por garantizada; consulta la documentación del proveedor.</p></section>'+riesgos+
+    '<section aria-labelledby="salida"><h2 id="salida">Cómo se recupera el dinero</h2><p data-campo="salida"'+ORIGINAL+'>La salida no se da por garantizada; consulta la documentación del proveedor.</p></section>'+transparenciaOferta(o,catalogo)+riesgos+
     '<section aria-labelledby="fuentes"><h2 id="fuentes">Fuentes y fechas</h2><p>Revisión editorial del lote: <time datetime="'+esc(o.verificadaEl)+'">'+esc(corta(o.verificadaEl))+'</time>. Esta fecha no renueva las cifras ni la apertura de la oferta.</p>'+
     '<p>Las consultas citadas se muestran por separado. La fecha del dato puede ser anterior y una fuente puede no publicar una fecha propia.</p>'+
     (refs.length ? '<details><summary>Ver las referencias documentales y sus fechas ('+refs.length+')</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(r.etiqueta)+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+

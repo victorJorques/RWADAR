@@ -189,6 +189,17 @@ verificar('escape y enlaces bloquean inyección, credenciales y artefactos priva
   assert.equal(esc('<img src=x onerror="x">'), '&lt;img src=x onerror=&quot;x&quot;&gt;');
   for(const u of ['javascript:alert(1)','https://u:p@example.com','https://claude.ai/code/artifact/x'])assert.equal(enlace(u),null);
 });
+verificar('la ficha fija enseña «Transparencia: lo que hemos comprobado» sin notas ni recomendación',()=>{
+  const pagina=salidas.get('ofertas/robinhood-classic-stock-tokens.html');
+  assert(pagina.includes('<h2 id="transparencia">Transparencia: lo que hemos comprobado</h2>'));
+  assert(pagina.includes('Es una comprobación de la documentación, no una recomendación de inversión.'));
+  assert.equal((pagina.match(/<li data-cumple="(?:si|no)">/g)||[]).length,5);
+  assert(/<p data-campo="vigencia"[^>]*>Se comprueba al abrir la página/.test(pagina));
+  assert(pagina.includes('Puntos fuertes, con su fuente'));
+  assert(!/(?<![\d,.])[0-5]\s*\/\s*5(?!\d)/.test(pagina.replace(/<[^>]*>/g,' ')));
+  const sinPuntos=salidas.get('ofertas/hausera-proximas-ofertas.html');
+  assert(sinPuntos.includes('Transparencia: lo que hemos comprobado')&&!sinPuntos.includes('Puntos fuertes, con su fuente'));
+});
 verificar('RSS enlaza noticias estables y el sitemap contiene todas las fichas',()=>{
   const rss=salidas.get('novedades.xml'),mapa=salidas.get('sitemap.xml');
   assert(rss.startsWith('<?xml'));assert(rss.includes('<rss version="2.0">'));

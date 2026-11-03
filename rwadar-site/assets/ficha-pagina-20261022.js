@@ -23,6 +23,16 @@
         nodo.appendChild(fuente);
       }
     }
+    // Quinta comprobación de transparencia: revisada esta semana y sin fuentes en conflicto.
+    const vigencia=pagina.querySelector('[data-campo="vigencia"]');
+    if (vigencia) {
+      const vigente=!resumen.vencida && oferta.estadoRevision==='actual';
+      vigencia.textContent=vigente ? 'Sí: la revisión está vigente y las fuentes coinciden.' :
+        'No: la revisión semanal ha vencido o no se pudo confirmar; consulta las condiciones en la fuente.';
+      const fila=vigencia.parentElement, marca=fila && fila.querySelector('.comprobacion-marca');
+      if (fila && fila.dataset) fila.dataset.cumple=vigente ? 'si' : 'no';
+      if (marca) marca.textContent=vigente ? '✓ Sí' : '✗ No';
+    }
   }
   pintar();
   document.addEventListener('visibilitychange',()=>{if(!document.hidden) pintar();});
