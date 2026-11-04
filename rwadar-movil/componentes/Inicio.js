@@ -12,7 +12,7 @@ import { FUENTES_INICIO, GRUPOS_FUENTES_INICIO } from '../lib/inicio-fuentes';
 import { cifrasInicio } from '../lib/inicio-cifras';
 import { datosCortosOferta } from '../lib/transparencia';
 import { resumenOferta } from '../lib/ficha-editorial';
-import { C, F, R, T, UI } from '../lib/tema';
+import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
 const COMUNIDAD_ABIERTA = false;
@@ -50,7 +50,7 @@ function SaberMas({ t, puntos }) {
   return (
     <View style={e.saberMas}>
       <Pressable onPress={() => { tacto.eleccion(); setAbierto((v) => !v); }}
-        style={({ pressed }) => [e.saberMasBoton, pressed && e.b3Pulsado]}
+        style={({ pressed }) => [e.saberMasBoton, pressed && pulsado('b3')]}
         accessibilityRole="button" accessibilityState={{ expanded: abierto }} noTraducir accessibilityLabel={t.saberMas}>
         <Text noTraducir style={e.b3Txt}>{t.saberMas}</Text>
         <Text noTraducir style={e.b3Txt} accessible={false}>{abierto ? '−' : '+'}</Text>
@@ -164,13 +164,13 @@ function Carrusel({ c }) {
       </ScrollView>
       <View style={e.carruselMando}>
         <Pressable onPress={() => ir(indice - 1)} disabled={indice === 0}
-          style={({ pressed }) => [e.bi, indice === 0 && e.biApagado, pressed && e.biPulsado]}
+          style={({ pressed }) => [e.bi, indice === 0 && e.biApagado, pressed && pulsado('icono')]}
           accessibilityRole="button" noTraducir accessibilityLabel={c.anterior} accessibilityState={{ disabled: indice === 0 }}>
           <View style={{ transform: [{ rotate: '180deg' }] }}><Icono nombre="flecha" color={indice === 0 ? C.tx3 : C.tx} tamano={18} /></View>
         </Pressable>
         <Text noTraducir style={e.carruselPos} accessibilityLiveRegion="polite">{`${indice + 1} / ${c.tarjetas.length}`}</Text>
         <Pressable onPress={() => ir(indice + 1)} disabled={indice === c.tarjetas.length - 1}
-          style={({ pressed }) => [e.bi, indice === c.tarjetas.length - 1 && e.biApagado, pressed && e.biPulsado]}
+          style={({ pressed }) => [e.bi, indice === c.tarjetas.length - 1 && e.biApagado, pressed && pulsado('icono')]}
           accessibilityRole="button" noTraducir accessibilityLabel={c.siguiente}
           accessibilityState={{ disabled: indice === c.tarjetas.length - 1 }}>
           <Icono nombre="flecha" color={indice === c.tarjetas.length - 1 ? C.tx3 : C.tx} tamano={18} />
@@ -203,7 +203,7 @@ function Bloque({ n, c, t, onFuentes, onLayout, children }) {
       <Rotulo n={n} texto={c.rotulo} />
       {children}
       {c.saberMas ? <SaberMas t={t} puntos={c.saberMas} /> : null}
-      <Pressable onPress={onFuentes} style={({ pressed }) => [e.fuentesApartado, pressed && e.b3Pulsado]}
+      <Pressable onPress={onFuentes} style={({ pressed }) => [e.fuentesApartado, pressed && pulsado('b3')]}
         accessibilityRole="link" noTraducir accessibilityLabel={`${t.fuentesApartado}: ${c.rotulo}`}>
         <Text noTraducir style={e.fuentesApartadoTxt}>{t.fuentesApartado} ›</Text>
       </Pressable>
@@ -286,18 +286,18 @@ export default function Inicio({
         <View style={e.accionPortada}>
           {avisoPrimero ? <Text noTraducir style={e.avisoPortada}>{t.portada.aviso}</Text> : null}
           <Pressable onPress={() => { tacto.abrir(); onDestino('ofertas'); }}
-            style={({ pressed }) => [e.b1, pressed && e.b1Pulsado]} accessibilityRole="button" noTraducir
+            style={({ pressed }) => [e.b1, pressed && pulsado('b1')]} accessibilityRole="button" noTraducir
             accessibilityLabel={t.portada.boton(n)}>
             <Text noTraducir style={e.b1Txt}>{t.portada.boton(n)}</Text>
           </Pressable>
           {avisoPrimero ? null : <Text noTraducir style={e.avisoPortada}>{t.portada.aviso}</Text>}
         </View>
         <Pressable onPress={() => { tacto.eleccion(); onDestino('plataformas'); }}
-          style={({ pressed }) => [e.b3, pressed && e.b3Pulsado]} accessibilityRole="button" noTraducir
+          style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button" noTraducir
           accessibilityLabel={t.portada.explorar}>
           <Text noTraducir style={e.b3Txt}>{t.portada.explorar} ›</Text>
         </Pressable>
-        <Pressable onPress={() => irAFuentes('portada')} style={({ pressed }) => [e.fuentesApartado, pressed && e.b3Pulsado]}
+        <Pressable onPress={() => irAFuentes('portada')} style={({ pressed }) => [e.fuentesApartado, pressed && pulsado('b3')]}
           accessibilityRole="link" noTraducir accessibilityLabel={`${t.fuentesApartado}: ${GRUPOS_FUENTES_INICIO[0][idioma === 'en' ? 'en' : 'es']}`}>
           <Text noTraducir style={e.fuentesApartadoTxt}>{t.fuentesApartado} ›</Text>
         </Pressable>
@@ -399,7 +399,7 @@ export default function Inicio({
         <View style={e.caso}>
           <Text noTraducir style={e.casoEtiqueta}>{cap.cap5.caso}</Text>
           <Text noTraducir style={e.texto}>{cap.cap5.casoTexto}</Text>
-          <Pressable onPress={() => { tacto.eleccion(); onDestino('fuera'); }} style={({ pressed }) => [e.b3, pressed && e.b3Pulsado]}
+          <Pressable onPress={() => { tacto.eleccion(); onDestino('fuera'); }} style={({ pressed }) => [e.b3, pressed && pulsado('b3')]}
             accessibilityRole="link" noTraducir accessibilityLabel={cap.cap5.casoEnlace}>
             <Text noTraducir style={e.b3Txt}>{cap.cap5.casoEnlace}</Text>
           </Pressable>
@@ -420,7 +420,7 @@ export default function Inicio({
           {cifras.vigente && cifras.hasta ? `${cap.cap6.vigencia(cifras.revisado, cifras.hasta)} ` : ''}{cap.cap6.riesgo}
         </Text>
         <Pressable onPress={() => { tacto.eleccion(); onDestino('plataformas'); }}
-          style={({ pressed }) => [e.b3, pressed && e.b3Pulsado]} accessibilityRole="button" noTraducir
+          style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button" noTraducir
           accessibilityLabel={t.portada.explorar}>
           <Text noTraducir style={e.b3Txt}>{t.portada.explorar} ›</Text>
         </Pressable>
@@ -431,7 +431,7 @@ export default function Inicio({
         <View style={e.novedades}>
           <Text style={e.novedadTxt}><Text style={e.novedadFecha}>{ultima.fechaTexto}</Text> · {ultima.titulo}</Text>
           <Pressable onPress={() => { tacto.eleccion(); setNovedadesAbiertas((v) => !v); }}
-            style={({ pressed }) => [e.b3, pressed && e.b3Pulsado]} accessibilityRole="button"
+            style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button"
             accessibilityState={{ expanded: novedadesAbiertas }} noTraducir accessibilityLabel={t.novedades}>
             <Text noTraducir style={e.b3Txt}>{t.novedades} {novedadesAbiertas ? '−' : '›'}</Text>
           </Pressable>
@@ -445,7 +445,7 @@ export default function Inicio({
                 <Text style={e.noticiaTxt}>{noticia.texto}</Text>
                 {destino ? (
                   <Pressable onPress={() => { tacto.abrir(); onDestino(destino.app); }}
-                    style={({ pressed }) => [e.b3, pressed && e.b3Pulsado]} accessibilityRole="button"
+                    style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button"
                     accessibilityLabel={destino.texto}>
                     <Text style={e.b3Txt}>{destino.texto} ›</Text>
                   </Pressable>
@@ -483,7 +483,7 @@ export default function Inicio({
                   {letra ? <Text noTraducir style={e.tarjetaSelLetra}>{letra}</Text> : null}
                   <Text noTraducir style={e.tarjetaSelMinimo}>{t.seleccion.minimo} <Text noTraducir style={e.tarjetaSelMinimoDato}>{minimo}</Text></Text>
                   <Pressable onPress={() => { tacto.abrir(); onAbrirOferta?.(o); }}
-                    style={({ pressed }) => [e.b3, pressed && e.b3Pulsado]} accessibilityRole="button" noTraducir
+                    style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button" noTraducir
                     accessibilityLabel={`${t.seleccion.verFicha}: ${o.titulo}`}>
                     <Text noTraducir style={e.b3Txt}>{t.seleccion.verFicha} ›</Text>
                   </Pressable>
@@ -493,7 +493,7 @@ export default function Inicio({
           })}
           <Text noTraducir style={e.texto}>{t.seleccion.aviso}</Text>
           <Text noTraducir style={e.nota}>{t.seleccion.imagenes}</Text>
-          <Pressable onPress={() => irAFuentes('seleccion')} style={({ pressed }) => [e.fuentesApartado, pressed && e.b3Pulsado]}
+          <Pressable onPress={() => irAFuentes('seleccion')} style={({ pressed }) => [e.fuentesApartado, pressed && pulsado('b3')]}
             accessibilityRole="link" noTraducir accessibilityLabel={`${t.fuentesApartado}: ${t.seleccion.antetitulo}`}>
             <Text noTraducir style={e.fuentesApartadoTxt}>{t.fuentesApartado} ›</Text>
           </Pressable>
@@ -503,15 +503,15 @@ export default function Inicio({
       {/* Por dónde seguir */}
       <View style={e.seguir}>
         <Text noTraducir style={e.titular} accessibilityRole="header">{t.seguir.titular}</Text>
-        <Pressable onPress={() => { tacto.abrir(); onDestino('ofertas'); }} style={({ pressed }) => [e.b1, e.b1Seguir, pressed && e.b1Pulsado]}
+        <Pressable onPress={() => { tacto.abrir(); onDestino('ofertas'); }} style={({ pressed }) => [e.b1, e.b1Seguir, pressed && pulsado('b1')]}
           accessibilityRole="button" noTraducir accessibilityLabel={t.seguir.ofertas(n)}>
           <Text noTraducir style={e.b1Txt}>{t.seguir.ofertas(n)}</Text>
         </Pressable>
-        <Pressable onPress={() => { tacto.abrir(); onDestino('plataformas'); }} style={({ pressed }) => [e.b2, pressed && e.b2Pulsado]}
+        <Pressable onPress={() => { tacto.abrir(); onDestino('plataformas'); }} style={({ pressed }) => [e.b2, pressed && pulsado('b2')]}
           accessibilityRole="button" noTraducir accessibilityLabel={t.seguir.plataformas(cifras.vigente ? cifras.plataformas : 0)}>
           <Text noTraducir style={e.b2Txt}>{t.seguir.plataformas(cifras.vigente ? cifras.plataformas : 0)}</Text>
         </Pressable>
-        <Pressable onPress={onExplicar} style={({ pressed }) => [e.banner, pressed && e.b2Pulsado]}
+        <Pressable onPress={onExplicar} style={({ pressed }) => [e.banner, pressed && pulsado('b2')]}
           accessibilityRole="button" accessibilityLabel="Abrir explicación animada sobre tokenización">
           <View style={e.bannerMarca}><Icono nombre="ayuda" color={C.senal} tamano={20} /></View>
           <View style={{ flex: 1 }}>
@@ -537,7 +537,7 @@ export default function Inicio({
       {/* Fuentes, agrupadas por apartado y con enlace. */}
       <View style={e.fuentes} onLayout={guardar('fuentes')}>
         <Pressable onPress={() => { tacto.eleccion(); setFuentesAbiertas((v) => !v); }}
-          style={({ pressed }) => [e.fuentesCab, pressed && e.b3Pulsado]} accessibilityRole="button"
+          style={({ pressed }) => [e.fuentesCab, pressed && pulsado('b3')]} accessibilityRole="button"
           accessibilityState={{ expanded: fuentesAbiertas }} noTraducir accessibilityLabel={t.fuentes.titulo(FUENTES_INICIO.length)}>
           <Text noTraducir style={e.fuentesTit}>{t.fuentes.titulo(FUENTES_INICIO.length)}</Text>
           <Text noTraducir style={e.fuentesTit} accessible={false}>{fuentesAbiertas ? '−' : '+'}</Text>
@@ -552,7 +552,7 @@ export default function Inicio({
                   <View key={`${g.id}-${f.n}`} style={e.fuenteFila}>
                     <Text noTraducir idiomaOriginal="es-ES" style={e.fuenteTxt}>{f.texto}</Text>
                     {f.urls.map((url) => (
-                      <Pressable key={url} onPress={() => onAbrirEnlace?.(url)} style={({ pressed }) => [e.fuenteEnlace, pressed && e.b3Pulsado]}
+                      <Pressable key={url} onPress={() => onAbrirEnlace?.(url)} style={({ pressed }) => [e.fuenteEnlace, pressed && pulsado('b3')]}
                         accessibilityRole="link" noTraducir accessibilityLabel={`${f.texto}: ${url}`}>
                         <Text noTraducir style={e.fuenteEnlaceTxt} numberOfLines={1}>{enlaceCorto(url)} ↗</Text>
                       </Pressable>
@@ -561,7 +561,7 @@ export default function Inicio({
                 ))}
                 {posiciones.current[g.id] != null ? (
                   <Pressable onPress={() => { tacto.eleccion(); bajarA(posiciones.current[g.id]); }}
-                    style={({ pressed }) => [e.b3, pressed && e.b3Pulsado]} accessibilityRole="button" noTraducir
+                    style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button" noTraducir
                     accessibilityLabel={t.fuentes.volver}>
                     <Text noTraducir style={e.b3Txt}>↑ {t.fuentes.volver}</Text>
                   </Pressable>
@@ -587,17 +587,13 @@ const e = StyleSheet.create({
 
   /* Botones de la guía (GUIA-ACABADOS §4). */
   b1: { minHeight: UI.boton, borderRadius: R.m, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20 },
-  b1Pulsado: { backgroundColor: C.senalP, transform: [{ scale: 0.98 }] },
   b1Seguir: { marginTop: 16 },
   b1Txt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.enSenal },
   b2: { minHeight: UI.boton, borderRadius: R.m, backgroundColor: C.ton, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20, marginTop: 10 },
-  b2Pulsado: { backgroundColor: C.ton2, transform: [{ scale: 0.98 }] },
   b2Txt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx },
   b3: { minHeight: UI.tactil, borderRadius: R.m, justifyContent: 'center', alignSelf: 'flex-start', paddingHorizontal: 8, marginHorizontal: -8 },
-  b3Pulsado: { backgroundColor: C.senalT },
   b3Txt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },
   bi: { width: 44, height: 44, borderRadius: R.p, backgroundColor: C.ton, alignItems: 'center', justifyContent: 'center' },
-  biPulsado: { backgroundColor: C.ton2, transform: [{ scale: 0.96 }] },
   biApagado: { opacity: 0.5 },
 
   /* Portada */

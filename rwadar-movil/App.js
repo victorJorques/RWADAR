@@ -1572,7 +1572,7 @@ function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjust
       {accion && !procesando ? (
         <Pressable
           onPress={accion[1]}
-          style={({ pressed }) => [e.panelAvisosBoton, pressed && e.pulsado]}
+          style={({ pressed }) => [e.panelAvisosBoton, pressed && e.pulsadoVerde]}
           accessibilityRole="button"
         >
           <Text style={e.panelAvisosBotonTxt}>{accion[0]}</Text>
@@ -1833,7 +1833,7 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
               ))}
             </View>
             <Pressable onPress={onSeguir} disabled={deshabilitado}
-              style={({ pressed }) => [e.botonPrincipal, sigue && e.botonSecundario, deshabilitado && e.deshabilitado, pressed && e.pulsado]}
+              style={({ pressed }) => [e.botonPrincipal, sigue && e.botonSecundario, deshabilitado && e.deshabilitado, pressed && (sigue ? e.pulsado : e.pulsadoVerde)]}
               accessibilityRole="button"
               accessibilityState={{ selected: sigue, disabled: deshabilitado }}>
               <Text style={[e.botonTxt, sigue && { color: C.senal }]}>
@@ -1868,8 +1868,12 @@ const e = StyleSheet.create({
 
   /* Las superficies grandes apenas ceden: conservan la respuesta táctil
      sin producir el salto visual de encoger una tarjeta completa. */
-  pulsado: { backgroundColor: C.ton2, transform: [{ scale: 0.98 }] },
+  /* Al pulsar cambia el relleno; sin encoger, así vale también con «reducir
+     movimiento» (GUIA-ACABADOS §9). */
+  pulsado: { backgroundColor: C.ton2 },
   pulsadoSuave: { backgroundColor: C.ton },
+  /* El b1 se oscurece al pulsar (GUIA-ACABADOS §4). */
+  pulsadoVerde: { backgroundColor: C.senalP },
   deshabilitado: { opacity: 0.5 },
 
   contenido: { flex: 1 },
@@ -1884,7 +1888,7 @@ const e = StyleSheet.create({
     width: 44, height: 44, borderRadius: R.p, alignItems: 'center', justifyContent: 'center',
     backgroundColor: C.ton,
   },
-  accionCabeceraPulsada: { backgroundColor: C.ton2, transform: [{ scale: 0.96 }] },
+  accionCabeceraPulsada: { backgroundColor: C.ton2 },
   cabeceraEtiqueta: { ...T.etiqueta, color: C.tx3 },
   cabeceraTitulo: { ...T.seccion, fontSize: 17, lineHeight: 22, color: C.tx, flex: 1, textAlign: 'center' },
   cabeceraSub: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, textAlign: 'center', marginBottom: 2 },
