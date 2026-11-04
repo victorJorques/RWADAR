@@ -1189,7 +1189,7 @@
   "Ej.: Spiko, Suiza…": "E.g. Spiko, Switzerland…",
   // App (04/11/2026): rótulos en frase normal (GUIA-ACABADOS §5), barra de 5,
   // «Descartadas», Selección y transparencia de la ficha.
-  "Descartadas": "Discarded",
+  "Descartadas": "Excluded",
   "Copia sin conexión": "Offline copy",
   "Arriba, la Selección RWAdar: las que pasan las 5 comprobaciones de transparencia. Después, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.": "At the top, the RWAdar selection: the offers that pass the 5 transparency checks. Then the references with verifiable figures, followed by those pending or in conflict. The order does not depend on payments or returns.",
   "la documentación más completa": "the most complete documentation",

@@ -202,7 +202,7 @@ const es = {
 
 const en = {
   portada: {
-    radar: { ofertas: 'Offers', plataformas: 'Platforms', descartadas: 'Discarded', revisado: 'Reviewed' },
+    radar: { ofertas: 'Offers', plataformas: 'Platforms', descartadas: 'Excluded', revisado: 'Reviewed' },
     antetitulo: 'Independent and free · Tokenization for investors in Spain',
     titular: 'Blockchain was born to pay without banks. Now the banks themselves use it.',
     subtitulo: (n) => `They use it to move shares, bonds and money. ${n ? `Here you can see the radar's ${n} offers` : "Here you can see the radar's offers"}, each with its source and date.`,
@@ -316,7 +316,7 @@ const en = {
       cifraPie: 'CNMV warnings in 2025 about "chiringuitos financieros", firms that offer investments without authorisation. More than one a day on average, and not only in crypto.',
       caso: 'Case',
       casoTexto: 'RealT sold tokenized stakes in some 700 Detroit properties. In February 2026 it told its investors "The model no longer works" and stopped almost all weekly rent payouts. In July it announced a voluntary liquidation.',
-      casoEnlace: 'It is listed under "Discarded", with the reason.',
+      casoEnlace: 'It is listed under "Excluded", with the reason.',
       saberMas: [
         'Robinhood says it in writing on its European site: "you are not buying the actual stocks—you are buying tokenized contracts that follow their price". Legally, "you enter into a derivatives contract with Robinhood Europe".',
         'Kraken: "xStocks provide exposure to the value of the stock but do not carry shareholder rights, voting rights, or any legal claim…".',
@@ -335,7 +335,7 @@ const en = {
       vigencia: (revisado, hasta) => `Catalogue reviewed ${revisado}. Next review: ${hasta}.`,
       riesgo: 'Investing carries risk: you can lose some or all of what you invest.',
       saberMas: [
-        'Every offer carries its source and the date we checked it. And the platforms we discard don\'t disappear: we publish them under "Discarded", with the reason and the source.',
+        'Every offer carries its source and the date we checked it. And the platforms we exclude don\'t disappear: we publish them under "Excluded", with the reason and the source.',
         'Nobody pays to be on the radar or to rank higher. And if you invest, your money never goes through RWAdar.',
         'IOSCO, which brings together securities regulators (the CNMV among them), said it in November 2025: "Tokenization is growing but remains nascent".',
         "The ECB's figures: about €38 billion in tokenized assets on public blockchains (February 2026), against €241 trillion in assets worldwide (end of 2025). By our own count, that is less than 2 cents in every 100 euros.",

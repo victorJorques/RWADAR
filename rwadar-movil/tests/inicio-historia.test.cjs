@@ -60,7 +60,9 @@ test('sin llamadas [n] en el texto, sin frases vetadas y con «Descartadas»', (
     'Las mejor documentadas', 'Menos no es ninguno', 'oportunidad de inversión', 'manos poderosas', 'subirse al tren',
     'sin intermediarios', 'Fuera del radar']) assert.ok(!textos.includes(vetada), `frase vetada en Inicio: ${vetada}`);
   assert.match(textos, /«Descartadas»/);
-  assert.match(ingles, /"Discarded"/);
+  // ESPEC-INICIO §2.11 (vinculante): en inglés es «Excluded», no «Discarded».
+  assert.match(ingles, /"Excluded"/);
+  assert.doesNotMatch(ingles, /Discard/i);
   const inicio = leer('componentes', 'Inicio.js');
   assert.doesNotMatch(inicio, /Fuera del radar|TextInput/, 'el radar vivo va sin caja de búsqueda');
   assert.match(inicio, /<Radar datos=\{plataformas\} portada/);
