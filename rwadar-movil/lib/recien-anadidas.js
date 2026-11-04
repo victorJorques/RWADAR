@@ -6,7 +6,8 @@
 
    La fecha de alta en el radar es un HECHO (`anadidaEl` de
    transparencia.json), no una nota ni una recomendación:
-   - Inicio, «Recién añadidas»: las altas de los últimos 30 días, de la más
+   - Inicio, «Recién añadidas»: las altas de Principales (la lista que abre
+     «Ver todas las ofertas nuevas») de los últimos 30 días, de la más
      nueva a la más antigua y 6 como mucho; sin ninguna, no sale.
    - Ofertas: «Nueva» durante 14 días y el orden «Más nuevas primero».
    Con el catálogo caducado no se enseña nada de esto.
@@ -50,6 +51,7 @@ export function ordenarMasNuevas(ofertas, tabla = TRANSPARENCIA_POR_SLUG) {
 export function recienAnadidas(ofertas, { ahora = new Date(), catalogoCaducado = false, dias = DIAS_RECIEN, max = MAX_RECIEN,
   tabla = TRANSPARENCIA_POR_SLUG } = {}) {
   if (catalogoCaducado) return [];
+  // Sin colección (copia local de pruebas), cuenta como Principales.
   return ordenarMasNuevas((Array.isArray(ofertas) ? ofertas : [])
-    .filter((o) => esNueva(o, { ahora, dias, tabla })), tabla).slice(0, max);
+    .filter((o) => (o?.coleccion ?? 'principales') === 'principales' && esNueva(o, { ahora, dias, tabla })), tabla).slice(0, max);
 }

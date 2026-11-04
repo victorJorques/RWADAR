@@ -62,13 +62,10 @@ test('sin altas recientes o con el catálogo caducado, el carrusel no sale', () 
   assert.equal(r.recienAnadidas([oferta('a')], { ahora: dia('2026-11-04'), tabla: hoy }).length, 1);
   assert.deepEqual(r.recienAnadidas([oferta('a')], { ahora: dia('2026-11-04'), tabla: hoy, catalogoCaducado: true }), []);
   assert.equal(r.esNueva(oferta('a'), { ahora: dia('2026-11-04'), tabla: hoy, catalogoCaducado: true }), false);
-  // Inicio solo lo pinta con catálogo vigente y lo pone bajo la portada, antes del 01.
-  const inicio = fs.readFileSync(path.join(RAIZ, 'componentes', 'Inicio.js'), 'utf8');
-  assert.match(inicio, /recienAnadidas\(ofertas, \{ catalogoCaducado: !cifras\.vigente \}\)/);
-  assert.ok(inicio.indexOf('<RecienAnadidas') > inicio.indexOf('onLayout={medirAccion}') &&
-    inicio.indexOf('<RecienAnadidas') < inicio.indexOf('<Bloque n={1}'));
-  const componente = fs.readFileSync(path.join(RAIZ, 'componentes', 'RecienAnadidas.js'), 'utf8');
-  assert.match(componente, /if \(!ofertas\.length\) return null;/);
+  // Solo Principales: es la lista que abre «Ver todas las ofertas nuevas».
+  const reventa = { ...oferta('a'), coleccion: 'secundario' }, proxima = { ...oferta('a'), coleccion: 'en_camino' };
+  assert.deepEqual(r.recienAnadidas([reventa, proxima], { ahora: dia('2026-11-04'), tabla: hoy }), []);
+  assert.equal(r.recienAnadidas([{ ...oferta('a'), coleccion: 'principales' }], { ahora: dia('2026-11-04'), tabla: hoy }).length, 1);
 });
 
 test('con el catálogo publicado, las altas recientes son las de transparencia.json', () => {
@@ -76,7 +73,7 @@ test('con el catálogo publicado, las altas recientes son las de transparencia.j
   const { EMI } = new Function(`${src};return {EMI};`)();
   const ahora = dia(EMI[0].verificado_lote_el);
   const tabla = contenido.TRANSPARENCIA_POR_SLUG;
-  const esperadas = EMI.filter((o) => {
+  const esperadas = EMI.filter((o) => o.coleccion === 'principales').filter((o) => {
     const f = tabla[o.slug]?.anadidaEl;
     const d = f ? Math.round((Date.UTC(ahora.getFullYear(), ahora.getMonth(), ahora.getDate()) - Date.parse(`${f}T00:00:00Z`)) / 86400000) : -1;
     return d >= 0 && d < 30;

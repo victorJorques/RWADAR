@@ -86,7 +86,7 @@ function rentabilidadSecundaria(oferta) {
 // El aviso general (igual en todas las fichas) no ocupa la tarjeta: va una vez
 // encima de la lista y entero en el detalle.
 const AVISO_GENERAL = /^Referencia editorial gratuita\b/;
-function avisosCriticos(oferta) {
+export function avisosCriticos(oferta) {
   return (oferta?.avisos || [])
     .filter((aviso) => !AVISO_GENERAL.test(String(aviso?.texto || '')))
     .filter((aviso) => (aviso.tono === 'warn' || aviso.tono === 'stop')
@@ -247,7 +247,7 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
    ficha», la fecha y «Ver ficha». El aviso crítico (tono stop) se lee entero
    siempre; el ordinario se resume en su número y sigue entero para el lector
    de pantalla y en la ficha. */
-function avisosContables(oferta) {
+export function avisosContables(oferta) {
   return (oferta?.avisos || []).filter((aviso) => aviso && String(aviso.texto || '').trim() &&
     aviso.tono !== 'ok' && (!aviso.esAntiguedad || aviso.tono === 'stop'));
 }

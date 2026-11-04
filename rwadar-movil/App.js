@@ -421,7 +421,7 @@ export default function App() {
      arriba la Selección RWAdar (las que pasan las cinco comprobaciones de
      transparencia; falla cerrado). Con dos o tres columnas siguen los grupos. */
   const filasOfertas = useMemo(() => {
-    const filas = agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas && columnasOfertas > 1);
+    const filas = agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas && columnasOfertas > 1 && ordenOfertas !== 'nuevas');
     // Con «Más nuevas primero», una sola lista: la más nueva arriba (como la web).
     const conSeleccion = columnasOfertas === 1 && ordenOfertas !== 'nuevas' && (grupoOfertas === 'principales' || grupoOfertas === 'todo');
     if (!conSeleccion) return filas;
@@ -569,7 +569,11 @@ export default function App() {
       tacto.eleccion();
       irADescartadas.current = destino === 'fuera' && fuera.length > 0;
       // «Ver todas las ofertas nuevas»: Principales con «Más nuevas primero».
-      if (destino === 'ofertas-nuevas') { setOrdenOfertas('nuevas'); setGrupoOfertas('principales'); }
+      // Sin los filtros ni la búsqueda de antes, para que se vean todas las nuevas.
+      if (destino === 'ofertas-nuevas') {
+        setOrdenOfertas('nuevas'); setGrupoOfertas('principales');
+        setTipoOferta(''); setProveedorOferta(''); setGrupoProveedorAbierto(''); setBusquedaOfertas('');
+      }
       setVistaBuscar(destino === 'ofertas' || destino === 'ofertas-nuevas' ? 'ofertas' : 'empresas');
       setPestana('buscar');
       if (irADescartadas.current && pestana === 'buscar' && vistaBuscar === 'empresas') bajarADescartadas();
@@ -878,21 +882,27 @@ export default function App() {
                         </Text>
                       </Pressable>
                     </View>
-                    {/* Ordenar por, como el selector de la web. */}
+                    {/* Ordenar por, como el selector de la web. La diana de cada chip
+                        mide 48 px; el chip se ve de 36, como los demás. */}
                     <View style={e.ordenOfertas} accessibilityRole="radiogroup" accessibilityLabel="Ordenar por">
                       <Text style={e.ordenOfertasEtiqueta}>Ordenar por</Text>
-                      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={e.ordenOfertasChips} contentContainerStyle={e.chipsContenidoCompacto}>
+                      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={e.ordenOfertasChips}>
                         {[['aldia', 'Las más al día primero'], ['nuevas', 'Más nuevas primero']].map(([valor, texto]) => (
-                          <Pressable key={valor} onPress={() => { tacto.eleccion(); setOrdenOfertas(valor); }}
-                            style={({ pressed }) => [e.chip, ordenOfertas === valor && e.chipOn, pressed && e.pulsado]}
+                          <Pressable key={valor} onPress={() => { tacto.eleccion(); setOrdenOfertas(valor); }} style={e.chipOrden}
                             accessibilityRole="radio" accessibilityState={{ checked: ordenOfertas === valor }} accessibilityLabel={texto}>
-                            <Text style={[e.chipTxt, ordenOfertas === valor && e.chipTxtOn]} numberOfLines={1}>{texto}</Text>
+                            {({ pressed }) => (
+                              <View style={[e.chip, e.chipOrdenCara, ordenOfertas === valor && e.chipOn, pressed && e.pulsado]}>
+                                <Text style={[e.chipTxt, ordenOfertas === valor && e.chipTxtOn]} numberOfLines={1}>{texto}</Text>
+                              </View>
+                            )}
                           </Pressable>
                         ))}
                       </ScrollView>
                     </View>
                     {/* La frase de la Selección, solo cuando la lista la lleva arriba. */}
-                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>{filasOfertas[0]?.seleccion
+                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>{ordenOfertas === 'nuevas'
+                      ? 'Primero, las que hemos añadido al radar más recientemente. El orden no depende de pagos ni de rentabilidades.'
+                      : filasOfertas[0]?.seleccion
                       ? 'Arriba, la Selección RWAdar: las que pasan las 5 comprobaciones de transparencia. Después, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'
                       : 'Primero, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'}</Text> : null}
                     <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
@@ -2039,6 +2049,8 @@ const e = StyleSheet.create({
   ordenOfertas: { marginTop: 4 },
   ordenOfertasEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 2 },
   ordenOfertasChips: { maxHeight: 50 },
+  chipOrden: { minHeight: UI.tactil, justifyContent: 'center', marginRight: 8 },
+  chipOrdenCara: { marginRight: 0 },
 
   ficha: {
     backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
