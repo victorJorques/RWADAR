@@ -6,6 +6,82 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (tarde, 3) · Claude · correcciones de la revisión a la entrega 2026-11-03.7 (sin aplicar)
+
+Misma rama local `claude/catalogo-2026-11-04`, commits dd1cef2, 8caf488,
+c72b09b, 37fc303, ca59546 y el de este traspaso. **Sin push, Supabase sin
+tocar, nada publicado, sin OTA.** La entrada de abajo queda superada en lo
+que diga distinto.
+
+- **Revisión nueva `bd1f873b`** (la 89e88b04 no vale; sigue exigiendo la
+  344a86aa publicada). 58 textos en vez de 51: además, el acceso de Spiko,
+  Maple y Fireblocks (los vio la revisión) y, con la misma regla, Courtyard,
+  OpenEden, Swarm y Reental. ARTEX ya no se contradice; retoques de
+  castellano; la nota de RealT explica bien por qué se quita «la mayor
+  demanda» (Outlier lo atribuye a la ciudad). Nada más cambia.
+  `aplicar-y-aprobar.sql` d57b5dbc… (con `--con-textos-plataformas`,
+  d2fecfef…).
+- **App:** quitado el cambio a «Importante» (chocaba con `claude/remates`,
+  que ya lo hace). La OTA tiene que salir después de unir remates.
+- **Fila 19 hecha en el código:** «Marketplace» se lee «Mercado de
+  compraventa» en la web, las fichas fijas y la app (en inglés,
+  «Marketplace»); el valor de la base no cambia. La línea de tipo y región
+  de la tarjeta móvil ocupa hasta dos líneas para no cortar la región.
+- **Informe y revisión en el repositorio:**
+  `rwadar-app/data/verificaciones/2026-11-03.7-v2/INFORME-ENTREGA.md` (pasos
+  exactos en su §7) y `REVISION-ENTREGA.md`.
+- **Pruebas:** ensayo PGlite correcto en las dos variantes; `npm test`
+  completo en verde (web 579, fichas 68, precarga 32, móvil 406 + 2
+  omitidas, acceso 144, base de datos sin fallos); guardián de la OTA ok;
+  visto en Chrome sin red externa.
+- **Unir con remates:** el código y los datos se unen sin conflictos; solo
+  choca este archivo (las dos ramas añaden su entrada arriba): conservar las
+  dos.
+- **Pendiente (coordinador):** revisar los 15 textos marcados
+  «(corrección)» y la fila 19; decidir `public.plataformas`; unir a `main`;
+  leer como visitante que la publicada es la 344a86aa (compuerta, con hora);
+  «Aplicar catálogo» con `2026-11-03.7`; sincronizar, regenerar y sellar;
+  «Publicar web»; «OTA Android» después de remates.
+
+## 4 de noviembre de 2026 (tarde, 2) · Claude · textos del catálogo para el lector (entrega 2026-11-03.7, sin aplicar)
+
+Víctor: «hasta que no esté todo no has acabado». Rama local
+`claude/catalogo-2026-11-04`, commits 7900819 (entrega) y 141812b (app).
+**Sin push, Supabase sin tocar, nada publicado, sin OTA.**
+
+- **Entrega `2026-11-03.7`** (revisión 89e88b04; exige que la publicada sea
+  la 344a86aa). Solo cambian textos que ve el lector: los 26 avisos de
+  plataforma (anexo A de la lista de frases), 22 notas de estado (anexo B) y
+  tres detalles con «onboarding» o «ya se leen» (Ondo, Taurus, Blocksquare).
+  Cifras, fechas, fuentes, colecciones y las 24 ofertas, idénticas a la .6.
+  Cada texto, antes y después, en `textos-lector.json`; donde me aparto de
+  la lista para no cambiar un hecho (ARTEX, INX, Lofty, Securitize, Swarm,
+  Superstate, tZERO), lo explica su nota.
+- **Por qué `.7` del 03/11 y no `2026-11-04`:** los datos son del 03/11 y el
+  cargador exige esa fecha; fecharla el 04/11 alargaría la vigencia un día sin
+  releer fuentes. No se usa `npm run catalogo` porque relee fuentes y renueva
+  cifras; se hace como la .6, con `preparar-entrega.mjs`.
+- **Reental (fila 18), Toucan (fila 75) y RealT** están en
+  `public.plataformas` y `public.fuentes`, que el lote diario solo lee
+  (CICLO-DIARIO §5). Van aparte en `textos-plataformas.sql`, con guarda e
+  idempotente. Si se acepta tocar esas tablas,
+  `preparar-entrega.mjs --con-textos-plataformas` los mete en el aplicador.
+  RealT: sin «la mayor demanda…» (no está en las fuentes legibles; la de la
+  ciudad da 403), «Liquidación anunciada», «unos 700» y una fuente nueva
+  (Outlier Media, 16/07/2026) para la liquidación y la venta, que no tenían.
+- **No se puede como dato (fila 19, «Marketplace»):** es un valor del tipo
+  enumerado `rwa_actor`; cambiarlo es cambiar el esquema. Hay que hacerlo en
+  el código de web y app, en lo que se enseña.
+- **App:** el aviso de plataforma dice «Importante», como la web (antes
+  «Alerta crítica»). El inglés ya existía.
+- **Pruebas:** ensayo PGlite de la entrega correcto en las dos variantes;
+  `npm test` completo en verde; `comprobar-ota-compatible.cjs` ok.
+- **Pendiente (coordinador):** revisión independiente; decidir los textos de
+  `public.plataformas`; unir a `main`; «Aplicar catálogo» con `2026-11-03.7`;
+  sincronizar, regenerar fichas y sellar; «Publicar web» y «OTA Android».
+  Si se aplican los textos de `public.plataformas`, `node rwadar-app/volcar-seed.js`
+  para que `02_seed.sql` no se quede con los viejos.
+
 ## 4 de noviembre de 2026 (tarde) · Claude · rediseño publicado en web y app
 
 Víctor: «súbelo todo en cuanto esté». PR #47 (rediseño) y #48 (arreglo de la

@@ -1,0 +1,222 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-04T15:39:31.848Z",
+  "revisionId": "bd1f873b-95ec-2d2e-1fb5-17ccb505e283",
+  "revisionAnterior": "344a86aa-2c53-d2f0-fed4-5fdaadda33ad",
+  "sha256AplicarYAprobar": "d57b5dbce55abfb80f227ef8e467b4e01c8679aa5c9fb9d507fa5f85391a2e2c",
+  "sha256TextosPlataformas": "3c762ccd348edeb57fa674562a6a1a7c65a5752fe336cd203f8c10f1b4911acc",
+  "textosPlataformasEnAplicador": false,
+  "pruebas": [
+    "cadena de producción 22/10 → 03/11.6: la publicada es la 344a86aa",
+    "rechaza una revisión anterior distinta y lo deshace todo",
+    "idempotente: aplicarlo dos veces da lo mismo",
+    "26 plataformas y 24 ofertas; las 24 ofertas, idénticas; fechas del 03/11 y 7 días",
+    "las 26 plataformas: solo cambian los 58 textos previstos (26 avisos, 22 notas de estado, 10 detalles de acceso o licencia); estados, fuentes y fechas iguales",
+    "el lector de la web lo acepta; vence el 11/11, como la 03/11.6",
+    "las 24 tarjetas se ven igual que antes",
+    "el lote solo lee public.plataformas: notas, descartes, cambios de estado y avisos, igual",
+    "textos-plataformas.sql se niega si un texto anterior no es el previsto, y no deja nada a medias",
+    "textos-plataformas.sql: idempotente",
+    "cambian solo la nota de Reental, el motivo de Toucan y la etiqueta y el motivo de RealT; estados y fechas iguales; sin cambios de estado ni avisos",
+    "como visitante: 4 descartadas; RealT con «Liquidación anunciada», sin «la mayor», con «unos 700» y 4 fuentes; Domoblock y Goldfinch iguales",
+    "la nota nueva de Reental sale en la vista pública del catálogo",
+    "variante --con-textos-plataformas: una sola transacción, guarda, idempotente y el mismo resultado"
+  ],
+  "tarjetas": {
+    "aktionariat": {
+      "minimo": "500 CHF por transferencia bancaria",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Venta solo a otros accionistas; el emisor no recompra"
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "minimo": "1 participación desde 72 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "boss-info": {
+      "minimo": "100 CHF por transferencia bancaria",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: El emisor no recompra ahora; vendes a otros accionistas en ZCHF si hay comprador"
+    },
+    "casa-de-outeiro": {
+      "minimo": "2.000 € (80 acciones de 25 €)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Si no se llega a 2 M€, te devuelven el dinero; si sale, solo podrás vender un 2,5 % de tus acciones al año de 2027 a 2030"
+    },
+    "drautalresidenz-paternion": {
+      "minimo": "1 participación desde 70 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-cohotel": {
+      "minimo": "1 participación desde 110 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-greenpoint": {
+      "minimo": "1 participación desde 100 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "hausera-proximas-ofertas": {
+      "minimo": "No documentado en euros",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida no documentada"
+    },
+    "kraken-xstocks": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo"
+    },
+    "local-de-estanco-klagenfurt": {
+      "minimo": "1 participación desde 95 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "mtbill": {
+      "minimo": "Sin mínimo vigente en euros",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida no documentada"
+    },
+    "prosegur-digital-gold": {
+      "minimo": "1 gramo de oro",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Solo recompra por Prosegur; normalmente de 1 a 7 días hábiles, y puede suspenderse"
+    },
+    "randhartingergasse-9-viena": {
+      "minimo": "1 participación desde 78 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "robinhood-classic-stock-tokens": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Cierras la posición con Robinhood Europe (24/5 según su web; el horario ampliado no siempre está disponible); el cierre puede suspenderse"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "minimo": "1 USD",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles de Francia y EE. UU., con corte a las 11:30 (hora de París)"
+    },
+    "spiko-letras-del-tesoro-euro": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "spiko-smart-cash-euro": {
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario; puede limitarse si un día las salidas netas de todos los inversores llegan al 25 % del fondo. Orden antes de las 15:00 (hora de París) y pago al día hábil siguiente"
+    },
+    "switzerlend": {
+      "minimo": "1 acción (68,01 CHF el 03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador"
+    },
+    "terreno-con-arrendamiento-billa": {
+      "minimo": "1.000 € (10 participaciones de 100 €)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Si no llega a 500.000 €, te devuelven el dinero; si se emite, cancelable a los 5 años o reventa en la app"
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "minimo": "1 participación desde 80 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "minimo": "1 participación desde 78 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Primera cancelación posible a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "minimo": "1 participación desde 69,90 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "minimo": "1 participación desde 75 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "minimo": "1 participación desde 69,90 € en reventa (03/11)",
+      "espana": "Sin comprobar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    }
+  },
+  "descartes": [
+    {
+      "nombre": "Domoblock",
+      "etiqueta_descarte": "Sin supervisión",
+      "motivo_descarte": "La propia plataforma declara que no está supervisada por la CNMV, que no es una Empresa de Servicios de Inversión y que sus productos no son valores negociables. Antes sus emisiones pasaban por una ESI autorizada; dejó de ser así a partir del proyecto DOMO-VLC-4.",
+      "fuentes": [
+        {
+          "url": "https://redinversora.com/recursos/inversion-alternativa/domoblock",
+          "titulo": "RedInversora · análisis de Domoblock con datos verificados"
+        },
+        {
+          "url": "https://todocrowdlending.com/domoblock/",
+          "titulo": "TodoCrowdlending · situación regulatoria de Domoblock"
+        }
+      ]
+    },
+    {
+      "nombre": "Goldfinch",
+      "etiqueta_descarte": "Cierre aprobado",
+      "motivo_descarte": "En junio de 2026 la comunidad aprobó el cierre de Goldfinch Prime. Quedan más de 50 M$ sin devolver en los fondos de prestatarios y solo se ha recuperado en torno al 30 % del capital: de ocho prestatarios, dos en impago y seis en reestructuración.",
+      "fuentes": [
+        {
+          "url": "https://thedefiant.io/news/defi/goldfinch-finance-winds-down-depositors-report-50m-defaults",
+          "titulo": "The Defiant · Goldfinch cierra; los depositantes declaran 50 M$ en impagos"
+        },
+        {
+          "url": "https://www.theblock.co/post/405825/goldfinch-set-shutter-prime-community-vote-backs-wind-down-proposal",
+          "titulo": "The Block · la comunidad aprueba el cierre de Goldfinch Prime"
+        }
+      ]
+    },
+    {
+      "nombre": "RealT",
+      "etiqueta_descarte": "Liquidación anunciada",
+      "motivo_descarte": "En julio de 2025, Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones. Un juez le prohibió cobrar alquileres hasta que las viviendas cumplieran la normativa y le ordenó repararlas. En julio de 2026 la empresa anunció una liquidación voluntaria y la venta de toda su cartera. Había vendido, en forma de tokens, participaciones de unos 700 inmuebles de Detroit.",
+      "fuentes": [
+        {
+          "url": "https://detroitmi.gov/news/city-scores-major-win-tenants-living-troubled-real-token-properties-are-subject-sweeping-lawsuit",
+          "titulo": "Ciudad de Detroit · la ciudad gana una medida para los inquilinos de Real Token"
+        },
+        {
+          "url": "https://outliermedia.org/realt-crypto-real-estate-detroit-properties/",
+          "titulo": "Outlier Media · RealT anuncia que venderá sus inmuebles de Detroit"
+        },
+        {
+          "url": "https://www.bridgedetroit.com/detroit-sues-blockchain-real-estate-firm/",
+          "titulo": "BridgeDetroit · Detroit demanda a Real Token por cientos de infracciones"
+        },
+        {
+          "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
+          "titulo": "BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar"
+        }
+      ]
+    },
+    {
+      "nombre": "Toucan Protocol",
+      "etiqueta_descarte": "Registro bloqueado",
+      "motivo_descarte": "El bloqueo no viene de Toucan, sino de los registros de carbono: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudia un estado «inmovilizado» que la permitiría, todavía sin resolver. Toucan respaldó públicamente la decisión.",
+      "fuentes": [
+        {
+          "url": "https://blog.toucan.earth/response-to-verras-announcement/",
+          "titulo": "Toucan · su propia respuesta al anuncio de Verra"
+        },
+        {
+          "url": "https://carboncredits.com/verra-suspension-carbon-credits-proposes-immobilizing-credits/",
+          "titulo": "CarbonCredits · Verra prohíbe tokenizar créditos retirados y propone inmovilizarlos"
+        },
+        {
+          "url": "https://www.spglobal.com/commodity-insights/en/news-research/latest-news/energy-transition/052522-as-verra-halts-tokenization-of-carbon-credits-toucan-vows-to-keep-web3-ethos-alive",
+          "titulo": "S&P Global · Verra detiene la tokenización de créditos de carbono"
+        }
+      ]
+    }
+  ],
+  "resultado": "correcto"
+}
