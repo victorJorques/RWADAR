@@ -1413,7 +1413,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       `${nombre}: ${etiquetaEstadoVerificacionLocal(campo.estado)}`,
       campo.detalle,
     ]),
-    ...(verificacion.alertasCriticas || []).map((alerta) => `Alerta crítica: ${alerta.detalle}`),
+    ...(verificacion.alertasCriticas || []).map((alerta) => `Importante: ${alerta.detalle}`),
   ].join('. ');
 
   return (
@@ -1441,7 +1441,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       <View style={e.verLocalAlertas}>
         {(verificacion.alertasCriticas || []).map((alerta) => (
           <View key={alerta.codigo} style={e.verLocalAlerta}>
-            <Text style={e.verLocalAlertaTitulo}>Alerta crítica</Text>
+            <Text style={e.verLocalAlertaTitulo}>Importante</Text>
             <Text noTraducir idiomaOriginal="es-ES" style={e.verLocalAlertaTexto} numberOfLines={compacta ? 3 : undefined}>
               {alerta.detalle}
             </Text>

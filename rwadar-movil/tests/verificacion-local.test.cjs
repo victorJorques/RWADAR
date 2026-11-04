@@ -76,7 +76,7 @@ test('las fichas móviles priorizan la verificación local sobre claims canónic
   assert.match(detalle, /const filasFicha = verificacion[\s\S]*?\? \[\['Tipo de actor',[\s\S]*?: \[\['Tipo de actor'/);
   // La fecha, en dd/mm/aaaa como en toda la app (04/11/2026).
   assert.match(app, /Revisión de fuentes · <Text noTraducir>\{fecha\}<\/Text>/);
-  assert.match(app, /Alerta crítica/);
+  assert.match(app, /e\.verLocalAlertaTitulo/);
   assert.match(app, /fuentes\.map\(fuente =>/);
   assert.match(app, /abrirEnlace\(fuente\.url\)/);
 });
