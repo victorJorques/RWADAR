@@ -467,7 +467,7 @@ paso(`abre la ficha de una plataforma del radar (${elegida})`, !!elegida && awai
 paso('la ficha no muestra opiniones (siguen cerradas)', await pagina.locator('#dwOpiniones').count() === 0 ||
   (await pagina.locator('#dwOpiniones').innerHTML()).trim() === '');
 await pagina.click('#btnVig');
-paso('«Vigilar esta plataforma» la guarda', await aviso(pagina, /La estás vigilando/));
+paso('«Vigilar esta plataforma» la guarda', await aviso(pagina, /La sigues/));
 const [fila] = await enCola(() => filas(db, `select count(*)::int n from vigilancia v join auth.users u on u.id=v.usuario_id where u.email=$1`, [CORREO]));
 paso('y queda guardada en la base de datos, a su nombre', fila.n === 1);
 await captura(pagina, '05-vigilando');
@@ -648,7 +648,7 @@ await pr.waitForSelector('#cuentaEstado:not([hidden])');
 paso('el alta pasa la comprobación y Supabase recibe el testigo',
   !!correoDe(RITA, 'signup') && testigosRobot.some((x) => x.ruta === '/signup'));
 await pr.click('#cuentaReenviar');
-paso('«Reintentar» el correo pide otro testigo', await aviso(pr, /La solicitud de reenvío fue aceptada/) &&
+paso('«Reintentar» el correo pide otro testigo', await aviso(pr, /Hemos pedido el reenvío/) &&
   testigosRobot.some((x) => x.ruta === '/resend'));
 await enCola(() => db.query('update auth.users set email_confirmed_at=now() where email=$1', [RITA]));
 await pr.click('#cuentaEstadoEntrar');

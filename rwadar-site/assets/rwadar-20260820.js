@@ -3782,7 +3782,7 @@ const Opiniones=(function(){
   let formulario;
   if(!Cuenta.hay()){
    formulario='<div class="op-cuenta">Para dejar tu nota y contar tu experiencia hace falta una cuenta. '+
-     'Es gratis y también permite guardar las plataformas que quieres vigilar. '+
+     'Es gratis y también permite guardar las plataformas que quieres seguir. '+
      '<button type="button" id="opEntrar">Crear cuenta o entrar</button></div>';
   }else if(!propiaDisponible){
    formulario='<p class="op-cargando">Tu editor de opiniones no está disponible ahora. Vuelve a intentarlo más tarde.</p>';
@@ -4041,7 +4041,7 @@ const Cuenta = (function(){
   if(t.includes('captcha')) return 'No hemos podido comprobar que no eres un robot. Vuelve a intentarlo.';
   if(t.includes('sending confirmation email')||t.includes('sending recovery email')||t.includes('smtp')||
      t.includes('application-specific password')||t.includes('username and password not accepted'))
-   return 'No se ha podido enviar el correo. No damos la entrega por confirmada. Prueba más tarde; si continúa, contacta con RWAdar.';
+   return 'No se ha podido enviar el correo. Prueba más tarde; si sigue fallando, contacta con RWAdar.';
   return 'No se ha podido completar la operación. Vuelve a intentarlo; si continúa, contacta con RWAdar.';
  }
 
@@ -4211,7 +4211,7 @@ const Cuenta = (function(){
  }
  async function alternar(nombre){
   if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('El seguimiento está en pausa. Puedes consultar las fichas sin cuenta.');return;}
-  if(!identidadConfirmada){abrir('registro','Crea una cuenta para guardar '+nombre+' en tu lista de vigilancia.');return;}
+  if(!identidadConfirmada){abrir('registro','Crea una cuenta para guardar '+nombre+' en tu lista de seguimiento.');return;}
   const cuenta=versionCuenta,uid=ses.uid;
   const b=$('btnVig'); if(b) b.disabled=true;
   try{
@@ -4219,15 +4219,15 @@ const Cuenta = (function(){
     const id=vigiladas.get(nombre);
     const filas=await rest('/vigilancia?plataforma_id=eq.'+id,{method:'DELETE'},cuenta);
     if(!Array.isArray(filas)||filas.length!==1||filas[0].plataforma_id!==id)
-     throw new Error('No se ha podido confirmar el cambio de vigilancia.');
-    vigiladas.delete(nombre); aviso(nombre+': ya no la vigilas');
+     throw new Error('No se ha podido confirmar el cambio en tu lista.');
+    vigiladas.delete(nombre); aviso(nombre+': ya no la sigues');
    }else{
     const id=await idDe(nombre); if(!id) throw new Error('no encuentro esa plataforma');
     if(!vigente(cuenta))return;
     const filas=await rest('/vigilancia',{method:'POST',body:JSON.stringify({usuario_id:uid,plataforma_id:id})},cuenta);
     if(!Array.isArray(filas)||filas.length!==1||filas[0].plataforma_id!==id)
-     throw new Error('No se ha podido confirmar el cambio de vigilancia.');
-    vigiladas.set(nombre,id); aviso('Vigilando '+nombre+'. La entrega por correo aún no está activa.');
+     throw new Error('No se ha podido confirmar el cambio en tu lista.');
+    vigiladas.set(nombre,id); aviso('Sigues '+nombre+'. Todavía no enviamos avisos por correo.');
    }
   }catch(e){ if(vigente(cuenta))aviso('No se ha podido guardar: '+e.message); }
   if(!vigente(cuenta))return;
@@ -4253,20 +4253,20 @@ const Cuenta = (function(){
   }
   const on=vigiladas.has(nombre);
   c.innerHTML='<button class="btn-vigilar'+(on?' on':'')+'" id="btnVig">'+
-   (on?'✓ La estás vigilando':'+ Vigilar esta plataforma')+'</button>'+
+   (on?'✓ La sigues':'+ Seguir esta plataforma')+'</button>'+
    '<p class="pn-nota pn-nota-separada">'+
-   (identidadConfirmada?'La vigilancia queda guardada. La entrega por correo aún no está activa.'
-       :'Necesita una cuenta para guardar la vigilancia entre visitas.')+'</p>';
+   (identidadConfirmada?'Guardada en tu lista. Todavía no enviamos avisos por correo.'
+       :'Necesitas una cuenta para que tu lista se guarde entre visitas.')+'</p>';
   const b=$('btnVig'); if(b) b.addEventListener('click',()=>alternar(nombre));
  }
 
  /* --- la ventana de entrar / registro / recuperar ------------------ */
  const TEXTOS={
-  entrar:{t:'Entrar',s:OPINIONES_DISPONIBLES?'Para guardar vigilancia y gestionar tus opiniones.':'Para guardar tu lista de vigilancia entre visitas y dispositivos.',b:'Entrar',otro:'Crear una cuenta'},
+  entrar:{t:'Entrar',s:OPINIONES_DISPONIBLES?'Para guardar tu lista de seguimiento y gestionar tus opiniones.':'Para guardar tu lista de seguimiento entre visitas y dispositivos.',b:'Entrar',otro:'Crear una cuenta'},
   registro:{t:'Crear cuenta',s:'Es opcional y gratis. Tendrás que confirmar el correo antes de entrar.',b:'Crear cuenta',otro:'Ya tengo cuenta'},
   recuperar:{t:'Recuperar el acceso',s:'Solicita un enlace para poner una contraseña nueva.',b:'Solicitar el enlace',otro:'Volver a entrar'},
   nueva_clave:{t:'Elige una contraseña nueva',s:'El enlace ya ha verificado tu solicitud. Escribe la contraseña que usarás desde ahora.',b:'Guardar contraseña',otro:''},
-  borrar_cuenta:{t:'Borrar mi cuenta',s:'Se borrarán tu cuenta, perfil y vigilancia. No se puede deshacer. Confirma con tu contraseña actual y escribe BORRAR.',b:'Borrar definitivamente',otro:''},
+  borrar_cuenta:{t:'Borrar mi cuenta',s:'Se borrarán tu cuenta, tu perfil y tu lista de seguimiento. No se puede deshacer. Confirma con tu contraseña actual y escribe BORRAR.',b:'Borrar definitivamente',otro:''},
   registro_pausado:{t:'Alta temporalmente en pausa',s:'Puedes consultar todo RWAdar sin crear una cuenta.'},
   recuperar_pausado:{t:'Recuperación temporalmente en pausa',s:'Las cuentas existentes siguen pudiendo entrar.'},
   confirmacion_pendiente:{t:'Confirma tu correo para entrar',s:'La solicitud se ha recibido.'},
@@ -4293,11 +4293,11 @@ const Cuenta = (function(){
    $('cuentaEstadoCorreo').hidden=true;$('cuentaEstadoCorreo').textContent='';
    $('cuentaPaso1').textContent='Puedes usar todo el radar sin cuenta.';
    $('cuentaPaso2').textContent='Las cuentas que ya funcionan pueden seguir entrando.';
-   $('cuentaPaso3').textContent='Reabriremos este paso cuando el correo se haya comprobado de extremo a extremo.';
+   $('cuentaPaso3').textContent='Reabriremos este paso cuando hayamos comprobado que el correo funciona de principio a fin.';
   }else{
    $('cuentaEstadoTexto').textContent=registro
-    ?'La solicitud fue aceptada. Abre el enlace del correo si lo recibes; la aceptación no demuestra que el mensaje haya sido entregado.'
-    :'La solicitud fue aceptada. Abre el enlace del correo si lo recibes para elegir una contraseña nueva.';
+    ?'Hemos pedido que te envíen el correo, pero no podemos confirmar que te llegue. Si lo recibes, abre su enlace.'
+    :'Hemos pedido que te envíen el correo, pero no podemos confirmar que te llegue. Si lo recibes, abre su enlace para elegir una contraseña nueva.';
    $('cuentaEstadoCorreo').hidden=!correoPendiente;
    $('cuentaEstadoCorreo').textContent=correoPendiente;
    $('cuentaPaso1').textContent='Solicitud aceptada.';
@@ -4473,7 +4473,7 @@ const Cuenta = (function(){
     else if(j&&typeof j.id==='string'&&j.id&&typeof j.email==='string'){
      correoPendiente=correo;$('cNombre').value='';$('cCorreo').value='';
      abrir('confirmacion_pendiente');
-    }else throw new Error('La respuesta del alta no es válida. No damos la cuenta por creada.');
+    }else throw new Error('Algo ha fallado al crear la cuenta y no podemos confirmar que se haya creado. Inténtalo de nuevo.');
    }else{
     const j=await auth('/token?grant_type=password',await conAntiRobots({email:correo,password:clave}));
     if(operacion!==operacionCuenta||modo!==modoEnvio)return;
@@ -4499,7 +4499,7 @@ const Cuenta = (function(){
     await auth('/recover?redirect_to='+vuelta,await conAntiRobots({email:correoPendiente}));
    else return;
    if(operacion!==operacionCuenta||modo!==modoEnvio)return;
-   msj('La solicitud de reenvío fue aceptada. Esto no confirma la entrega del mensaje.',true);
+   msj('Hemos pedido el reenvío, pero no podemos confirmar que el correo te llegue.',true);
    bot.textContent='Espera un minuto para reintentar';
    temporizadorReenvio=setTimeout(()=>{
     if(modo===modoEnvio){bot.disabled=false;bot.textContent='Reintentar correo';}
@@ -4553,11 +4553,11 @@ const Cuenta = (function(){
    '<div><div class="quien" translate="no">'+esc(nom)+'</div><div class="correo" translate="no">'+esc(ses.correo||'')+'</div></div></div>'+
    (datosCuentaError?'<p class="perfil-nota" role="status">No se pudieron cargar los datos de tu cuenta. Tu sesión sigue abierta. <button id="pfReintentarCuenta" type="button">Reintentar datos de cuenta</button></p>':'')+
    '<div id="pfInversiones"></div>'+
-   '<details class="perfil-opciones"><summary>Cuenta y plataformas vigiladas</summary>'+
+   '<details class="perfil-opciones"><summary>Cuenta y plataformas que sigues</summary>'+
    '<div class="perfil-cifras">'+
     '<div><span class="n">'+dias+'</span><span class="l">Días<br>de miembro</span></div>'+
-    '<div><span class="n">'+lista.length+'</span><span class="l">Plataformas<br>vigiladas</span></div>'+
-    '<div><span class="n">'+avisosRecibidos+'</span><span class="l">Alertas<br>generadas</span></div>'+
+    '<div><span class="n">'+lista.length+'</span><span class="l">Plataformas<br>que sigues</span></div>'+
+    '<div><span class="n">'+avisosRecibidos+'</span><span class="l">Avisos<br>recibidos</span></div>'+
    '</div>'+
    '<p class="perfil-nota">Miembro desde el '+desde+'.</p>'+ 
    '<div class="perfil-sec">'+(OPINIONES_DISPONIBLES?'Identidad pública':'Tu nombre')+'</div>'+
@@ -4572,16 +4572,16 @@ const Cuenta = (function(){
        '<p class="perfil-nota">Cómo verificamos, cómo leer una ficha, los filtros, el comparador y por qué conviene mirar «Descartadas» primero.</p>'+
        '<a class="perfil-manual" id="pfManual" href="'+esc(MANUAL_BIENVENIDA)+'" target="_blank" rel="noopener">Descargar el manual (PDF, 10 páginas)</a>'
      : '')+
-   '<div class="perfil-sec">Lo que vigilas</div>'+
+   '<div class="perfil-sec">Las que sigues</div>'+
    (lista.length
      ? '<ul class="vig-lista">'+lista.map(n=>'<li><span>'+esc(n)+'</span><button data-q="'+esc(n)+'">quitar</button></li>').join('')+'</ul>'
-     : '<p class="perfil-nota">Todavía no vigilas ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Vigilar» para guardarla aquí.</p>')+
+     : '<p class="perfil-nota">Todavía no sigues ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Seguir» para guardarla aquí.</p>')+
    '<div class="perfil-sec">Avisos</div>'+
    (AVISOS_CORREO_DISPONIBLES
      ? '<label class="fila-opcion"><input type="checkbox" id="optAvisos" aria-describedby="optAvisosAyuda"'+(correoConsentido?' checked':'')+'>'+
-       '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que vigilo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
-       '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, el envío todavía no está activo: faltan configurar Brevo y verificar la entrega de extremo a extremo. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'
-     : '<p class="perfil-nota">Próximamente: avisos por correo cuando cambie una plataforma que vigilas. Se activarán solo si tú lo pides. Mientras tanto, tu lista queda guardada en tu cuenta.</p>')+
+       '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que sigo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
+       '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, todavía no enviamos estos avisos: falta configurar el servicio de correo y probar que los mensajes llegan. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'
+     : '<p class="perfil-nota">Próximamente: avisos por correo cuando cambie una plataforma que sigues. Se activarán solo si tú lo pides. Mientras tanto, tu lista queda guardada en tu cuenta.</p>')+
    '</details><div class="perfil-pie">'+
     '<button id="pfSalir">Cerrar sesión</button>'+
     '<button class="peligro" id="pfBorrar">Borrar mi cuenta</button>'+
@@ -4710,7 +4710,7 @@ const Cuenta = (function(){
    if(tk)await auth('/logout?scope=local',null,{token:tk});
    if(cuenta===versionCuenta)aviso('Sesión cerrada.');
   }catch(e){
-   if(cuenta===versionCuenta)aviso('Has salido de esta pestaña, pero no hemos podido confirmar el cierre en el servidor. La sesión remota podría seguir activa. Contacta con RWAdar si necesitas revocar todas las sesiones.');
+   if(cuenta===versionCuenta)aviso('Has salido de esta pestaña, pero no hemos podido confirmar el cierre en el servidor. Puede que la sesión siga abierta en otros dispositivos. Si quieres cerrarla en todos, contacta con RWAdar.');
   }
  }
  function borrar(){

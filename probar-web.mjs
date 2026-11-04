@@ -317,7 +317,7 @@ async function altaSinUsuarioValidoFallaCerrada(codigo) {
   pruebaAlta.resolver({ id:'usuario-sin-correo' });
   await pruebaAlta.ejecucion;
   return pruebaAlta.aperturas.length === 0 && pruebaAlta.entradas() === 0 &&
-    pruebaAlta.mensajes.some(m=>/alta no es v[aá]lida/i.test(m)) && pruebaAlta.limpiezas() === 1;
+    pruebaAlta.mensajes.some(m=>/no podemos confirmar que se haya creado/i.test(m)) && pruebaAlta.limpiezas() === 1;
 }
 
 async function operacionCuentaObsoletaNoMutaVista(codigo) {
@@ -953,7 +953,7 @@ prueba('un signup sin usuario raíz válido nunca se presenta como alta aceptada
   await altaSinUsuarioValidoFallaCerrada(js));
 prueba('el reenvío de confirmación usa /resend con type signup y no promete entrega',
   /auth\('\/resend\?redirect_to='\+vuelta,await conAntiRobots\(\{type:'signup',email:correoPendiente\}\)\)/.test(js) &&
-  /solicitud de reenvío fue aceptada[^']*no confirma la entrega/i.test(js));
+  /Hemos pedido el reenvío[^']*no podemos confirmar que el correo te llegue/i.test(js));
 prueba('alta, entrada, recuperación y reenvío pasan por el anti-robots; renovar la sesión y cambiar la clave no',
   (js.match(/auth\('\/(signup|recover|resend)\?redirect_to='\+vuelta,await conAntiRobots\(/g) || []).length === 4 &&
   /auth\('\/token\?grant_type=password',await conAntiRobots\(/.test(js) &&
@@ -2807,7 +2807,7 @@ prueba('privacidad y UI permiten solicitar la retirada del consentimiento anteri
   /consentimiento explícito/.test(privacidadLineal) &&
   /Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar/.test(html) &&
   /puedes retirarlo escribiendo a RWAdar@protonmail.com/.test(html) &&
-  /Está desactivado por defecto[\s\S]*faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(js));
+  /Está desactivado por defecto[\s\S]*todavía no enviamos estos avisos/.test(js));
 prueba('privacidad distingue consulta pública y cuenta confirmada para funciones personales, conservando correos, sesión y borrado',
   /La consulta de la web es pública/.test(privacidadLineal) &&
   /Necesitas una cuenta con el correo confirmado para las funciones personales/.test(privacidadLineal) &&

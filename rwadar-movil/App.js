@@ -1212,7 +1212,7 @@ function PantallaPerfil({
       )}
 
       {estadoCuenta?.disponible ? <Text style={e.notaFavoritosLocales}>
-        Los siguientes favoritos se guardan solo en este dispositivo. Son distintos de la lista de vigilancia de tu cuenta.
+        Los siguientes favoritos se guardan solo en este dispositivo. Son distintos de la lista de seguimiento de tu cuenta.
       </Text> : null}
 
       <GrupoMenu titulo={`Plataformas guardadas · ${seguidas.length}`}>
@@ -1648,7 +1648,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                   Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. RWAdar no guarda la contraseña en el dispositivo.
                 </Text>
                 <Text style={e.privacidadParrafo}>
-                  Tu lista de vigilancia y tu registro manual de inversiones se guardan de forma privada en Supabase, asociados a tu cuenta, para consultarlos y modificarlos desde la web y la app con cartera sincronizada. El registro incluye los nombres y proveedores que escribas, moneda, compras, ventas, cobros, gastos y valoraciones con sus cantidades, precios, comisiones y fechas. RWAdar no conecta con tus proveedores ni importa compras o precios automáticamente. No se envían los favoritos locales ni el progreso de Academy.
+                  Tu lista de seguimiento y tu registro manual de inversiones se guardan de forma privada en Supabase, asociados a tu cuenta, para consultarlos y modificarlos desde la web y la app con cartera sincronizada. El registro incluye los nombres y proveedores que escribas, moneda, compras, ventas, cobros, gastos y valoraciones con sus cantidades, precios, comisiones y fechas. RWAdar no conecta con tus proveedores ni importa compras o precios automáticamente. No se envían los favoritos locales ni el progreso de Academy.
                 </Text>
                 <Text style={e.privacidadParrafo}>
                   La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.
@@ -1657,7 +1657,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                   La copia de inversiones de una versión anterior se conserva en este dispositivo. No se sube automáticamente: solo puedes importarla con tu confirmación cuando el registro de la cuenta está vacío. Importarla no borra la copia local ni combina o sustituye inversiones que ya estén en tu cuenta.
                 </Text>
                 <Text style={e.privacidadParrafo}>
-                  Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil, la lista de vigilancia y el registro remoto de inversiones. Borrar una inversión desde la cartera guarda el registro de cuenta sin ella. Los favoritos, las copias locales anteriores de inversiones de todas las cuentas y el progreso local se eliminan por separado con «Borrar datos del dispositivo»; ese botón no elimina inversiones de tu cuenta.
+                  Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil, la lista de seguimiento y el registro remoto de inversiones. Borrar una inversión desde la cartera guarda el registro de cuenta sin ella. Los favoritos, las copias locales anteriores de inversiones de todas las cuentas y el progreso local se eliminan por separado con «Borrar datos del dispositivo»; ese botón no elimina inversiones de tu cuenta.
                 </Text>
               </>
             ) : null}
