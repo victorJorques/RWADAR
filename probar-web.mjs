@@ -701,6 +701,33 @@ new Function(js);
 prueba('el JavaScript externo compila', true);
 prueba('el pre-render contiene las 26 fichas', (html.match(/class="abrir"/g) || []).length === 26);
 prueba('el pre-render contiene los 4 descartes', (html.match(/class="fila"/g) || []).length === 4);
+// QA escritorio 04/11/2026, n.º 1: la franja de cifras anima solo los números
+// y conserva el símbolo (antes «€0» acababa en «NaN» y «0 €» en «0»).
+{
+  const inicio = js.indexOf('function partesCifra('), fin = js.indexOf('(function cabeceraElevada');
+  const codigoContador = js.slice(inicio, fin);
+  for (const [idioma, textos] of [['es', ['0 €', '26', '6', '4', '—']], ['en', ['€0', '26', '6', '4', '—']]]) {
+    const nodos = textos.map(t => ({ textContent: t, vistos: [] }));
+    const cola = []; let reloj = 0;
+    const contexto = vm.createContext({
+      menos: false, performance: { now: () => reloj },
+      requestAnimationFrame: fn => cola.push(fn),
+      window: { IntersectionObserver: true },
+      IntersectionObserver: function (fn) { this.observe = () => fn([{ isIntersecting: true }]); this.disconnect = () => {}; },
+      document: { querySelector: s => s === '.marcador' ? { querySelectorAll: () => nodos } : null },
+    });
+    contexto.window = contexto;
+    vm.runInContext(codigoContador, contexto);
+    for (let i = 0; cola.length && i < 400; i++) {
+      reloj += 16; cola.shift()(reloj);
+      nodos.forEach(n => n.vistos.push(n.textContent));
+    }
+    const todos = nodos.flatMap(n => n.vistos.concat(n.textContent));
+    prueba(`el contador de la franja (${idioma}) termina en el mismo texto, conserva el € y nunca escribe NaN`,
+      cola.length === 0 && nodos.every((n, i) => n.textContent === textos[i]) && !todos.some(t => /NaN/.test(t)) &&
+      nodos[0].vistos.every(t => t === textos[0]) && nodos[1].vistos.some(t => t !== '26') && nodos[1].vistos.every(t => /^\d+$/.test(t)));
+  }
+}
 prueba('todos los formularios fallan cerrados bajo form-action none',
   [...html.matchAll(/<form\b([^>]*)>/gi)].every(m => !/\baction\s*=/i.test(m[1])));
 

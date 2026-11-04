@@ -3053,25 +3053,41 @@ function pulir(){
  redSeguridad=setTimeout(todoVisible,2000);
 }
 
+/* Solo se anima la parte numérica: «0 €» y «€0» (inglés) conservan su
+   símbolo, y lo que no es una cifra entera («—») no se toca. Antes
+   parseInt('€0') daba NaN y «0 €» perdía el € (QA 04/11/2026, n.º 1). */
+function partesCifra(texto){
+ const m=/^(\D*?)(\d+)(\D*)$/.exec(String(texto==null?'':texto).trim());
+ return m?{antes:m[1],valor:parseInt(m[2],10),despues:m[3]}:null;
+}
 function contarHasta(el,fin){
  if(!el) return;
- if(menos){el.textContent=fin;return}
+ const c=partesCifra(fin);
+ /* Sin cifra, o con 0, no hay nada que contar: el texto se queda como está. */
+ if(!c||c.valor===0)return;
+ if(menos){el.textContent=String(fin).trim();return}
  const t0=performance.now(),dur=1100;
+ let escrito='';
+ const pinta=v=>{escrito=c.antes+v+c.despues;el.textContent=escrito;};
  const tic=t=>{
+   /* Si otra parte de la página reescribe la cifra (datos en vivo, idioma),
+      manda ese texto: el contador se retira. */
+   if(el.textContent!==escrito) return;
    const p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
-   el.textContent=Math.round(fin*e);
+   pinta(Math.round(c.valor*e));
    if(p<1) requestAnimationFrame(tic);
  };
- el.textContent='0';
+ pinta(0);
  requestAnimationFrame(tic);
 }
 
 (function contadores(){
  const m=document.querySelector('.marcador'); if(!m) return;
- const cifras=[...m.querySelectorAll('.n')].map(el=>[el,parseInt(el.textContent,10)]);
  if(menos||!('IntersectionObserver' in window)) return;
+ /* La cifra se lee al entrar en pantalla, no al cargar: así cuenta hasta el
+    dato vigente y en el idioma que se esté viendo. */
  const io=new IntersectionObserver(es=>{
-   if(es[0].isIntersecting){ cifras.forEach(([el,v])=>contarHasta(el,v)); io.disconnect(); }
+   if(es[0].isIntersecting){ m.querySelectorAll('.n').forEach(el=>contarHasta(el,el.textContent)); io.disconnect(); }
  },{threshold:.4});
  io.observe(m);
 })();
