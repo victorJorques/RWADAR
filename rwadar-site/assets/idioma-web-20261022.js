@@ -19,11 +19,11 @@
     'Fuentes y fechas':'Sources and dates','Quién es':'Who they are',
     'Cómo funciona y qué se ha comprobado':'How it works and what has been checked',
     'Supervisión y alcance':'Supervision and scope','Quién puede acceder':'Who can access it',
-    'Referencias documentales de esta plataforma':'Documented references from this platform',
-    'Antes de ir a la fuente':'Before visiting the source','¿Ves un error en esta ficha?':'See an error in these details?',
+    'Ofertas de esta plataforma en RWAdar':'Offers from this platform on RWAdar',
+    'Antes de invertir':'Before you invest','¿Ves un error en esta ficha?':'See an error in these details?',
     'Saltar al contenido':'Skip to content','Principal':'Main navigation','Información':'Information',
     'Comunicar un error':'Report an error','Cómo verificamos':'How we check sources',
-    'Independencia editorial':'Editorial independence','Privacidad y aviso legal':'Privacy and legal notice'
+    'Transparencia comercial':'Commercial transparency','Privacidad y aviso legal':'Privacy and legal notice'
   };
   const traducibles=['aria-label','aria-description','title','placeholder','alt'];
   const selectorProtegido='script,style,code,pre,textarea,[contenteditable],[translate="no"],[data-idioma-control],[data-idioma-fuente]';

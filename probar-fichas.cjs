@@ -165,7 +165,8 @@ verificar('importes no aparecen como condiciones vigentes sin ejecutar la guarda
     assert(atributos.includes('lang="es"'));
     assert(atributos.includes('translate="no"'));
   }
-  assert(pagina.includes('La fecha del dato puede ser anterior'));
+  // LISTA-FINAL.md fila 44 (revisión de frases que pidió Víctor, 04/11/2026).
+  assert(pagina.includes('El dato puede ser más antiguo'));
   assert(pagina.includes('No es una fotografía del activo real'));
 });
 verificar('la ficha abierta reevalúa la caducidad al volver y sin HTML de la fuente',()=>{

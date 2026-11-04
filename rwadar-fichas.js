@@ -121,7 +121,7 @@ function fuentes(lista) {
     .filter(f => enlace(f.url) && !vistas.has(f.url) && vistas.add(f.url)).map(f =>
       '<li><a href="' + esc(enlace(f.url)) + '" target="_blank" rel="noopener noreferrer">' +
       esc(f.titulo || new URL(f.url).hostname) + ' ↗</a>' + (f.consultadaEl ?
-        ' <span>· consulta citada ' + esc(corta(f.consultadaEl)) + '</span>' : '') + '</li>').join('') + '</ul>';
+        ' <span>· consultada el ' + esc(corta(f.consultadaEl)) + '</span>' : '') + '</li>').join('') + '</ul>';
 }
 
 function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',organizacion,oferta}) {
@@ -150,16 +150,16 @@ function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',org
     '</head><body><a class="saltar" href="#contenido">Saltar al contenido</a><header class="cabecera"><a class="marca" href="/" aria-label="RWAdar · Inicio">RWA<span>dar</span></a>' +
     '<nav aria-label="Principal"><a href="/#emisiones" data-volver="ofertas">Ofertas</a><a href="/#tool">Plataformas</a><a href="/academy/">Academy</a><a href="/cambios">Noticias de RWAdar</a></nav></header>' +
     '<div data-selector-idioma></div><main id="contenido"'+(organizacion ? ' data-ficha-consulta' : ' data-idioma-documental="es"')+(oferta ? ' data-oferta="'+esc(json(oferta))+'"' : '')+'><p class="migas"><a href="/">Inicio</a> / <span'+ORIGINAL+'>'+esc(titulo)+'</span></p>' +
-    '<h1'+(organizacion ? ORIGINAL : '')+'>'+esc(titulo)+'</h1>'+contenido+'</main><footer><p>RWAdar es una referencia editorial gratuita. La inclusión no es recomendación ni garantía. Las operaciones se realizan con el proveedor.</p>' +
-    '<nav aria-label="Información"><a href="/metodologia">Cómo verificamos</a><a href="/transparencia-comercial">Independencia editorial</a><a href="/privacidad">Privacidad y aviso legal</a>' +
+    '<h1'+(organizacion ? ORIGINAL : '')+'>'+esc(titulo)+'</h1>'+contenido+'</main><footer><p>RWAdar es un catálogo gratuito con información propia. Que algo aparezca aquí no es una recomendación ni una garantía. Si inviertes, lo haces directamente con el proveedor.</p>' +
+    '<nav aria-label="Información"><a href="/metodologia">Cómo verificamos</a><a href="/transparencia-comercial">Transparencia comercial</a><a href="/privacidad">Privacidad y aviso legal</a>' +
     '<a href="/novedades.xml">RSS</a><a href="mailto:RWAdar@protonmail.com">Comunicar un error</a></nav></footer></body></html>\n';
 }
 
-const riesgos = '<section aria-labelledby="riesgos"><h2 id="riesgos">Antes de ir a la fuente</h2><ul class="riesgos">' +
-  '<li><strong>Pérdida:</strong> el capital y el rendimiento pueden perderse.</li>' +
+const riesgos = '<section aria-labelledby="riesgos"><h2 id="riesgos">Antes de invertir</h2><ul class="riesgos">' +
+  '<li><strong>Pérdida:</strong> puedes perder el dinero invertido y lo que esperabas ganar.</li>' +
   '<li><strong>Salida:</strong> la reventa depende de compradores; tokenizar no garantiza liquidez.</li>' +
-  '<li><strong>Custodia:</strong> comprueba quién mantiene el activo y qué derecho recibes.</li>' +
-  '<li><strong>Supervisión:</strong> un registro de la plataforma no protege cada producto ni confirma tu elegibilidad.</li></ul></section>';
+  '<li><strong>Custodia:</strong> comprueba quién guarda el activo y qué derecho te da.</li>' +
+  '<li><strong>Supervisión:</strong> que la plataforma esté registrada no cubre todos sus productos ni confirma que tú puedas invertir.</li></ul></section>';
 
 /* «Transparencia: lo que hemos comprobado», como en la ficha de la web. Falla
    cerrado: sin entrada con la misma verificadaEl, no hay puntos fuertes y las
@@ -210,19 +210,19 @@ function paginaOferta(o,catalogo,imagen) {
   const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(d.descripcion || o.resumen)+'</p>'+fichaImagen+
     '<p class="estado" role="status" data-campo="estado">Referencia documental: confirma las condiciones actuales en las fuentes.</p>'+
     '<section aria-labelledby="que"><h2 id="que">Qué es y quién lo ofrece</h2><dl><div><dt>Proveedor</dt><dd'+ORIGINAL+'>'+esc(o.plataformaNombre)+'</dd></div>' +
-    '<div><dt>Tipo de activo</dt><dd'+ORIGINAL+'>'+esc(o.categoria)+'</dd></div><div><dt>Supervisión de la plataforma</dt><dd'+ORIGINAL+'>'+esc(p?.verificacionLocal?.licenciaRegistro?.detalle || 'Esta plataforma aún no tiene una evaluación propia en el radar. Su oferta no equivale a una evaluación del proveedor.')+'</dd></div></dl>'+
+    '<div><dt>Tipo de activo</dt><dd'+ORIGINAL+'>'+esc(o.categoria)+'</dd></div><div><dt>Supervisión de la plataforma</dt><dd'+ORIGINAL+'>'+esc(p?.verificacionLocal?.licenciaRegistro?.detalle || 'Todavía no hemos evaluado esta plataforma. Que publiquemos esta oferta no significa que hayamos revisado al proveedor.')+'</dd></div></dl>'+
     (p ? '<p><a href="'+rutaPlataforma(p)+'">Consultar ficha de plataforma</a></p>' : '')+'</section>' +
     '<section aria-labelledby="acceso"><h2 id="acceso">Acceso y condiciones</h2><p>La admisión depende de tu residencia, categoría de inversor y de las condiciones del proveedor.</p><dl>'+
     '<div><dt>Mínimo en euros</dt><dd data-campo="minimo"'+ORIGINAL+'>Consulta la fuente; no se presupone un mínimo vigente.</dd></div>'+
     '<div><dt>Acceso desde España</dt><dd data-campo="accesoEspana"'+ORIGINAL+'>Sin comprobar desde España.</dd></div>'+
     '<div><dt>Costes</dt><dd data-campo="costes"'+ORIGINAL+'>Confirma los costes actuales con el proveedor.</dd></div></dl></section>'+
     '<section aria-labelledby="salida"><h2 id="salida">Cómo se recupera el dinero</h2><p data-campo="salida"'+ORIGINAL+'>La salida no se da por garantizada; consulta la documentación del proveedor.</p></section>'+transparenciaOferta(o,catalogo)+riesgos+
-    '<section aria-labelledby="fuentes"><h2 id="fuentes">Fuentes y fechas</h2><p>Revisión editorial del lote: <time datetime="'+esc(o.verificadaEl)+'">'+esc(corta(o.verificadaEl))+'</time>. Esta fecha no renueva las cifras ni la apertura de la oferta.</p>'+
-    '<p>Las consultas citadas se muestran por separado. La fecha del dato puede ser anterior y una fuente puede no publicar una fecha propia.</p>'+
-    (refs.length ? '<details><summary>Ver las referencias documentales y sus fechas ('+refs.length+')</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(r.etiqueta)+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+
+    '<section aria-labelledby="fuentes"><h2 id="fuentes">Fuentes y fechas</h2><p>Revisamos esta ficha el <time datetime="'+esc(o.verificadaEl)+'">'+esc(corta(o.verificadaEl))+'</time>. Esa fecha no garantiza que las cifras sigan igual ni que la oferta siga abierta.</p>'+
+    '<p>Cada fuente lleva el día en que la consultamos. El dato puede ser más antiguo, y algunas fuentes no dicen de qué fecha es.</p>'+
+    (refs.length ? '<details><summary>Ver los '+refs.length+' datos consultados y sus fechas</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(r.etiqueta)+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+
     fuentes([...(d.fuentes || []),...(o.fuentesActuales || [])])+'</section>'+
     '<p class="aviso">Consulta documentación, admisión, riesgos y condiciones actuales antes de decidir. RWAdar no tramita inversiones ni recibe tu dinero.</p>'+
-    '<p><a class="boton" href="'+esc(enlace(o.url))+'" target="_blank" rel="noopener noreferrer">Consultar fuente</a></p>'+
+    '<p><a class="boton" href="'+esc(enlace(o.url))+'" target="_blank" rel="noopener noreferrer">Ver oferta en '+esc(o.plataformaNombre)+' ↗</a></p>'+
     '<p><a href="mailto:RWAdar@protonmail.com?subject='+encodeURIComponent('Corrección de ficha: '+o.titulo)+'">¿Ves un error en esta ficha?</a></p>';
   return pagina({titulo:o.titulo,descripcion:o.resumen,ruta:rutaOferta(o),contenido,revision:o.verificadaEl,
     imagen:imagen ? '/'+imagen.salida : '/og.png',organizacion:{nombre:o.plataformaNombre,url:o.url},oferta:o});
@@ -235,8 +235,8 @@ function paginaPlataforma(p,catalogo) {
     '<section><h2>Cómo funciona y qué se ha comprobado</h2><p'+ORIGINAL+'>'+esc(p.aval)+'</p><h3>Supervisión y alcance</h3><p'+ORIGINAL+'>'+esc(v.licenciaRegistro?.detalle || 'Consulta el alcance del registro en la fuente.')+'</p>'+fuentes(v.licenciaRegistro?.fuentes || [])+'</section>'+
     '<section><h2>Quién puede acceder</h2><p'+ORIGINAL+'>'+esc(v.acceso?.detalle || p.acceso)+'</p><p>La presencia en el radar no confirma acceso desde España ni aprobación de un producto concreto.</p>'+fuentes(v.acceso?.fuentes || [])+'</section>'+riesgos+
     '<section><h2>Fuentes y fechas</h2><p>Revisión editorial: '+esc(corta(v.verificadoEl || p.ver))+'. Cada fuente mantiene su propia fecha de consulta.</p>'+fuentes([...(v.estadoOperativo?.fuentes || []),...(v.alertasCriticas || []).flatMap(a=>a.fuentes || [])])+'</section>'+
-    '<section><h2>Referencias documentales de esta plataforma</h2>'+(asociadas.length ? '<ul'+ORIGINAL+'>'+asociadas.map(o=>'<li><a href="'+rutaOferta(o)+'">'+esc(o.titulo)+'</a></li>').join('')+'</ul>' : '<p>El catálogo no contiene una oferta individual documentada de esta plataforma. No implica que el proveedor carezca de productos.</p>')+'</section>'+
-    '<p><a class="boton" href="'+esc(enlace(p.web))+'" target="_blank" rel="noopener noreferrer">Consultar fuente</a></p>';
+    '<section><h2>Ofertas de esta plataforma en RWAdar</h2>'+(asociadas.length ? '<ul'+ORIGINAL+'>'+asociadas.map(o=>'<li><a href="'+rutaOferta(o)+'">'+esc(o.titulo)+'</a></li>').join('')+'</ul>' : '<p>Todavía no tenemos fichas de ofertas concretas de esta plataforma. Eso no quiere decir que no tenga productos.</p>')+'</section>'+
+    '<p><a class="boton" href="'+esc(enlace(p.web))+'" target="_blank" rel="noopener noreferrer">Ir a la web de '+esc(p.n)+' ↗</a></p>';
   return pagina({titulo:p.n,descripcion:p.nota,ruta:rutaPlataforma(p),contenido,revision:v.verificadoEl || p.ver,organizacion:{nombre:p.n,url:p.web}});
 }
 
@@ -246,7 +246,7 @@ function novedades(catalogo) {
   const cambio = fs.existsSync(ruta) ? JSON.parse(fs.readFileSync(ruta,'utf8')) : null;
   const entradas = noticias.map(n=>({id:'noticia-'+n.id,fecha:n.fecha,titulo:n.titulo,texto:n.texto,url:ORIGEN+'/cambios#noticia-'+n.id}));
   if (cambio) entradas.push({id:'catalogo-'+catalogo.revision,fecha:catalogo.revision,titulo:'Revisión documental del catálogo del '+corta(catalogo.revision),
-    texto:'Revisadas las fuentes de '+catalogo.plataformas.length+' plataformas y '+catalogo.ofertas.length+' referencias. La revisión no acredita apertura ni renueva cifras que no se hayan leído en su fuente.',url:ORIGEN+'/cambios#catalogo-'+catalogo.revision});
+    texto:'Revisadas las fuentes de '+catalogo.plataformas.length+' plataformas y '+catalogo.ofertas.length+' ofertas. Haber revisado una ficha no significa que la oferta esté abierta, y las cifras que no hemos vuelto a leer en su fuente no se dan por actuales.',url:ORIGEN+'/cambios#catalogo-'+catalogo.revision});
   return entradas.sort((a,b)=>b.fecha.localeCompare(a.fecha) || a.id.localeCompare(b.id));
 }
 
@@ -263,14 +263,14 @@ function construirSalidas({catalogo, paginasPermitidas = permitidas} = {}) {
       contenido:'<p class="estado">'+esc(f.badge)+'</p><section><h2>Por qué la descartamos</h2><p>'+esc(f.why)+'</p></section><section><h2>Fuentes</h2>'+fuentes(f.fuentes || [])+'</section><p>Solo descartamos una plataforma si hay una fuente que lo justifique. Si sabes que algo ha cambiado, escríbenos y lo revisamos.</p>'}));
   }
   salidas.set('metodologia.html',pagina({titulo:'Cómo verificamos',descripcion:'Qué comprueba RWAdar, qué significa cada fecha y cómo se ordena un catálogo editorial independiente.',ruta:'/metodologia',revision:c.revision,
-    contenido:'<p class="intro">RWAdar informa con la fuente al lado. Aparecer es gratuito y el veredicto editorial no se vende.</p><section><h2>Qué comprobamos</h2><p>Separar plataforma, entidad jurídica, registro y producto evita atribuir a una oferta permisos que pertenecen a otra entidad. Las fuentes del emisor describen sus condiciones; el registro del regulador delimita la supervisión.</p></section>'+
-    '<section><h2>Tres fechas distintas</h2><dl><div><dt>Revisión editorial</dt><dd>Cuándo se revisó o preparó el lote, incluidos los intentos que no permitieron comprobar datos.</dd></div><div><dt>Consulta de la fuente</dt><dd>Cuándo se leyó la referencia concreta. No cambia la fecha original del dato.</dd></div><div><dt>Fecha del dato</dt><dd>La indicada expresamente por el proveedor. Si falta, se declara que no fue publicada.</dd></div></dl></section>'+
-    '<section><h2>Estado y vigencia</h2><p>«No verificable» significa que no se confirmó el dato o la apertura, por ejemplo por un bloqueo de lectura. «Fuentes en conflicto» indica discrepancias. No son pruebas de fraude. Las cifras que vencen se ocultan; la ficha y el catálogo completo siguen disponibles con aviso.</p></section>'+
-    '<section><h2>Cómo ordenamos</h2><p>El orden editorial no depende de pagos ni utiliza la rentabilidad como criterio por defecto. Se distinguen referencias principales, reventa y anuncios con apertura sin confirmar. Los filtros describen datos, no perfiles personales ni recomendaciones.</p></section>'+
+    contenido:'<p class="intro">Cada dato de RWAdar dice de dónde sale. Aparecer es gratis y nadie puede pagar para cambiar lo que decimos de su oferta.</p><section><h2>Qué comprobamos</h2><p>Miramos por separado la plataforma, la empresa que hay detrás, su registro ante el supervisor y cada producto. Así no damos a una oferta un permiso que en realidad tiene otra empresa. Las condiciones salen de los documentos de quien emite la oferta, y lo que está supervisado, del registro oficial.</p></section>'+
+    '<section><h2>Tres fechas distintas</h2><dl><div><dt>Revisión editorial</dt><dd>Cuándo revisamos o preparamos ese grupo de fichas, incluidos los intentos que no permitieron comprobar datos.</dd></div><div><dt>Consulta de la fuente</dt><dd>Cuándo se leyó la referencia concreta. No cambia la fecha original del dato.</dd></div><div><dt>Fecha del dato</dt><dd>La indicada expresamente por el proveedor. Si falta, se declara que no fue publicada.</dd></div></dl></section>'+
+    '<section><h2>Estado y vigencia</h2><p>«No verificable» significa que no se confirmó el dato o la apertura, por ejemplo porque la web no nos dejó leerla. «Fuentes en conflicto» indica discrepancias. No son pruebas de fraude. Si una cifra lleva demasiado tiempo sin revisarse, la ocultamos; la ficha y el catálogo siguen visibles, con un aviso.</p></section>'+
+    '<section><h2>Cómo ordenamos</h2><p>El orden editorial no depende de pagos ni utiliza la rentabilidad como criterio por defecto. Separamos las ofertas principales, la reventa entre inversores y los anuncios que aún no han abierto. Los filtros solo ordenan datos: no te dicen qué te conviene.</p></section>'+
     '<section><h2>Cómo corregimos</h2><p>Escribe a <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a> indicando la ficha y una fuente primaria. Conservamos los informes con fecha y mostramos las novedades de cada revisión.</p></section>'}));
   const entradas=novedades(c);
-  salidas.set('cambios.html',pagina({titulo:'Novedades y revisiones',descripcion:'Historial editorial de RWAdar, con fechas y una fuente RSS sin registro.',ruta:'/cambios',revision:c.revision,
-    contenido:'<p class="intro">Cambios documentales y novedades del proyecto. <a href="/novedades.xml">Suscribirse por RSS</a> permite seguirlos sin cuenta ni correo.</p><ol class="novedades">'+entradas.map(e=>'<li id="'+esc(e.id)+'"><article><time datetime="'+e.fecha+'">'+corta(e.fecha)+'</time><h2>'+esc(e.titulo)+'</h2><p>'+esc(e.texto)+'</p></article></li>').join('')+'</ol>'}));
+  salidas.set('cambios.html',pagina({titulo:'Novedades y revisiones',descripcion:'Historial editorial de RWAdar, con fechas y un canal RSS que no pide registro.',ruta:'/cambios',revision:c.revision,
+    contenido:'<p class="intro">Cambios en las fichas y novedades de RWAdar. <a href="/novedades.xml">Suscribirse por RSS</a> permite seguirlos sin cuenta ni correo.</p><ol class="novedades">'+entradas.map(e=>'<li id="'+esc(e.id)+'"><article><time datetime="'+e.fecha+'">'+corta(e.fecha)+'</time><h2>'+esc(e.titulo)+'</h2><p>'+esc(e.texto)+'</p></article></li>').join('')+'</ol>'}));
   salidas.set('novedades.xml','<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>RWAdar · Novedades</title><link>'+ORIGEN+'/cambios</link><description>Revisiones y novedades editoriales, sin registro.</description><language>es</language>'+entradas.map(e=>'<item><title>'+esc(e.titulo)+'</title><link>'+esc(e.url)+'</link><guid isPermaLink="true">'+esc(e.url)+'</guid><pubDate>'+new Date(e.fecha+'T00:00:00Z').toUTCString()+'</pubDate><description>'+esc(e.texto)+'</description></item>').join('')+'</channel></rss>\n');
   assert.deepEqual([...salidas.keys()].sort(),[...paginasPermitidas].sort(),'Las páginas deben coincidir con el manifiesto cerrado');
   salidas.set(COMPARTIDO,fs.readFileSync(path.join(RAIZ,'rwadar-movil/lib/ficha-editorial.js'),'utf8'));
