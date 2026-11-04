@@ -1,0 +1,2 @@
+Lectura como visitante (clave publicable, REST de Supabase): 2026-11-04T19:07:11Z
+catalogo_plataformas_publicas_v2, catalogo_ofertas_publicas_v2 y plataformas?estado=eq.descartada con sus fuentes.

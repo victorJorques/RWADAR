@@ -37,6 +37,7 @@ import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const { cargarFuentesLocales, construirSqlImportacion, esRevisionLocal, ordenRevisionLocal } = require('./catalogo-publico.js');
+const { etiquetaLegible } = require('./rotulos-referencias.js');
 
 // La etiqueta es la fecha o, si ese día ya hay una entrega, la fecha y su número
 // («2026-11-03.2»). Los datos se fechan siempre con la fecha.
@@ -123,6 +124,10 @@ for (const oferta of escaparate.ofertas) {
   doc.fuentes = doc.fuentes.filter(u => !fuera.has(u));
   doc.referencias = doc.referencias.filter(r => !fuera.has(r.fuente)).concat(cambio.referencias || []);
   for (const r of doc.referencias) if (!doc.fuentes.includes(r.fuente)) doc.fuentes.push(r.fuente);
+  // «Datos con su fecha»: el lector ve el rótulo, nunca el nombre interno del campo
+  // («accesoEspana · …» → «Acceso desde España · …»; ver rotulos-referencias.js).
+  // Un campo sin rótulo hace fallar el montaje.
+  doc.referencias = doc.referencias.map(r => ({ ...r, etiqueta: etiquetaLegible(r.etiqueta) }));
 }
 
 const escribir = (destino, valor) => {

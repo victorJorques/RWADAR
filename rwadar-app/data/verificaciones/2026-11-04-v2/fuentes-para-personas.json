@@ -1,0 +1,356 @@
+{
+  "etiqueta": "2026-11-04",
+  "comprobadoEl": "2026-11-04",
+  "decision": "Encargo del 04/11/2026: las fuentes de la documentación que son direcciones de una API (una persona ve un error 405 o JSON) se sustituyen por la página pensada para personas que muestra lo mismo, comprobada hoy. El dato, su fecha de consulta y su valor no cambian: se leyó en la API ese día y la página es donde una persona lo ve; el alcance de cada referencia lo dice.",
+  "como": "curl con el proxy de la sesión y Google Chrome sin interfaz (--dump-dom) para las páginas que pintan los datos con JavaScript. Ningún inicio de sesión, muro de pago ni comprobación anti-bots sorteado.",
+  "sustituciones": [
+    {
+      "apis": [
+        "https://shares.aktionariat.com/api/secondarymarkets/getTrades"
+      ],
+      "persona": "https://shares.aktionariat.com/trade",
+      "ofertas": [
+        "aktionariat"
+      ],
+      "queMuestra": "Página «Secondary Trading» del emisor: precio, libro de órdenes y la lista «All Trades» con fecha, tipo, precio y cantidad de cada operación.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «All Trades … 31 Oct 2026 / 11:56 Direct Investment 7.25 ZCHF 1 DAKS». Con curl, 200 en HTML; la lista la pinta el navegador con la misma API, que abierta directamente da «405 Method not allowed»."
+    },
+    {
+      "apis": [
+        "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS"
+      ],
+      "persona": "https://shares.aktionariat.com/invest",
+      "ofertas": [
+        "aktionariat"
+      ],
+      "queMuestra": "Página «Direct Investment» del emisor: precio por acción y formas de pago; su HTML lleva la misma configuración que daba la API (mínimo por transferencia y avisos de compra o venta desactivada).",
+      "comprobado": "curl y Chrome sin interfaz, 04/11/2026: 200 en HTML; «Price per DAKS 7.25 CHF», y en el HTML «bankTransferLimit»: {enabled: true, min: 500} y «the sell-side of the Brokerbot will remain disabled for the foreseeable future»."
+    },
+    {
+      "apis": [
+        "https://shares.bossinfo.com/api/secondarymarkets/getTrades"
+      ],
+      "persona": "https://shares.bossinfo.com/trade",
+      "ofertas": [
+        "boss-info"
+      ],
+      "queMuestra": "Página «Secondary Trading» del emisor: precio, libro de órdenes y la lista «All Trades» con fecha, tipo, precio y cantidad de cada operación.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «All Trades … 28 Sep 2026 / 11:32 Secondary Trade 6.70 ZCHF 474 BOSS». Con curl, 200 en HTML; la lista la pinta el navegador con la misma API, que abierta directamente da «405 Method not allowed»."
+    },
+    {
+      "apis": [
+        "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS"
+      ],
+      "persona": "https://shares.bossinfo.com/invest",
+      "ofertas": [
+        "boss-info"
+      ],
+      "queMuestra": "Página «Direct Investment» del emisor: precio por acción y formas de pago; su HTML lleva la misma configuración que daba la API (mínimo por transferencia y avisos de compra o venta desactivada).",
+      "comprobado": "curl y Chrome sin interfaz, 04/11/2026: 200 en HTML; «Price per BOSS 8.5 CHF», y en el HTML «bankTransferLimit»: {enabled: true, min: 100} y «Aktuell ist der Ankauf von Aktien aufgrund eines Wartungsfensters deaktiviert»."
+    },
+    {
+      "apis": [
+        "https://shares.lend.ch/api/secondarymarkets/getTrades"
+      ],
+      "persona": "https://shares.lend.ch/trade",
+      "ofertas": [
+        "switzerlend"
+      ],
+      "queMuestra": "Página «Secondary Trading» del emisor: precio, libro de órdenes y la lista «All Trades» con fecha, tipo, precio y cantidad de cada operación.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «All Trades … 7 Oct 2026 / 13:34 Direct Investment 68.01 ZCHF 10 LENDS». Con curl, 200 en HTML; la lista la pinta el navegador con la misma API, que abierta directamente da «405 Method not allowed»."
+    },
+    {
+      "apis": [
+        "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS"
+      ],
+      "persona": "https://shares.lend.ch/invest",
+      "ofertas": [
+        "switzerlend"
+      ],
+      "queMuestra": "Página «Direct Investment» del emisor: precio por acción y formas de pago; su HTML lleva la misma configuración que daba la API (mínimo por transferencia y avisos de compra o venta desactivada).",
+      "comprobado": "curl y Chrome sin interfaz, 04/11/2026: 200 en HTML; «Price per LENDS 68.01 CHF», y en el HTML «bankTransferLimit»: {enabled: true, min: 0}."
+    },
+    {
+      "apis": [
+        "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+        "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+        "https://public-api.spiko.io/v0/share-classes/EUTBL/totals"
+      ],
+      "persona": "https://data.spiko.io/eutbl/",
+      "ofertas": [
+        "spiko-letras-del-tesoro-euro"
+      ],
+      "queMuestra": "Página de datos de Spiko para personas: patrimonio (AUM), número de usuarios, rentabilidad anualizada a 30 días y último valor liquidativo con su fecha; dice «Source: Spiko Public API v0».",
+      "comprobado": "curl, 04/11/2026: 200 en HTML con los datos ya escritos: «AUM €428.86M … Users 2,825 … 30d yield 2.39% … Latest NAV 1.0622 2026-11-04»."
+    },
+    {
+      "apis": [
+        "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+        "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+        "https://public-api.spiko.io/v0/share-classes/USTBL/totals"
+      ],
+      "persona": "https://data.spiko.io/ustbl/",
+      "ofertas": [
+        "spiko-letras-del-tesoro-dolar"
+      ],
+      "queMuestra": "Página de datos de Spiko para personas: patrimonio (AUM), número de usuarios, rentabilidad anualizada a 30 días y último valor liquidativo con su fecha; dice «Source: Spiko Public API v0».",
+      "comprobado": "curl, 04/11/2026: 200 en HTML con los datos ya escritos: «AUM $173.64M … Users 869 … 30d yield 3.99% … Latest NAV 1.1018 2026-11-04»."
+    },
+    {
+      "apis": [
+        "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield"
+      ],
+      "persona": "https://data.spiko.io/safo-eur",
+      "ofertas": [
+        "spiko-smart-cash-euro"
+      ],
+      "queMuestra": "Página de datos de Spiko para personas: patrimonio (AUM), número de usuarios, rentabilidad anualizada a 30 días y último valor liquidativo con su fecha; dice «Source: Spiko Public API v0».",
+      "comprobado": "curl, 04/11/2026: 200 en HTML con los datos ya escritos: «Spiko Smart Cash EUR … 30d yield 2.84% Annualised … Latest NAV 1.0165 2026-11-04»."
+    },
+    {
+      "apis": [
+        "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress"
+      ],
+      "persona": "https://aliuscap.com/projects/casa-de-outeiro",
+      "ofertas": [
+        "casa-de-outeiro"
+      ],
+      "queMuestra": "Ficha del proyecto en Alius Capital: tokens vendidos, recaudado, importe máximo y umbral de éxito.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «Tokens vendidos 44.840 … Recaudado 1.121.000,00 € … Importe máximo 3.220.000,00 € … Umbral de éxito 2.000.000,00 €». La API de Token City devuelve JSON."
+    },
+    {
+      "apis": [
+        "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc"
+      ],
+      "persona": "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+      "ofertas": [
+        "kraken-xstocks"
+      ],
+      "queMuestra": "Buscador de folletos de ESMA («Prospectus III Documents»), el mismo registro que consultaba la API; hay que buscar el LEI 984500001AB7C6C7F577. La ficha ya enlazaba esta página.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: 200, «Prospectus III Documents». La consulta directa devuelve JSON (wt=json); el buscador no admite un enlace con la búsqueda hecha."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7"
+      ],
+      "persona": "https://www.brickwise.at/assets/at0000a31kp7",
+      "ofertas": [
+        "apartamento-vacacional-hinterstoder-50"
+      ],
+      "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A31KP7 - Hinterstoder 50, Hinterstoder … Erw. lfd. Rendite* 4,85% p.a. Marktwert € 293.760,00 Preis pro Anteil € 72,00 Verfügbare Anteile 258». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2YPQ0"
+      ],
+      "persona": "https://www.brickwise.at/assets/at0000a2ypq0",
+      "ofertas": [
+        "drautalresidenz-paternion"
+      ],
+      "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A2YPQ0 - Drautalresidenz, Paternion … Erw. lfd. Rendite* 4,68% p.a. Marktwert € 111.300,00 Preis pro Anteil € 70,00 Verfügbare Anteile 150». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40"
+      ],
+      "persona": "https://app.brickwise.at/desktopWeb/marketplace",
+      "ofertas": [
+        "fotovoltaica-cohotel"
+      ],
+      "queMuestra": "Mercado de la app de Brickwise en el navegador (ya era la dirección de la oferta): cada inmueble con su rentabilidad esperada, el precio o la inversión mínima y si se negocia. Este activo no tiene página propia en brickwise.at.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026, sin iniciar sesión: «Photovoltaik Anlage Cohotel mit Überschussbeteiligung Gewerbeallee 15, Steyregg 5,57 % p.a. Erw. laufende Ausschüttung Preis pro Anteil ab € 110,00 Laufzeit: 30.12.2038 Ausschüttungen erw. ab: 15.2.2024 Handel aktiv». www.brickwise.at/assets/at0000a38j40 da 404."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32"
+      ],
+      "persona": "https://app.brickwise.at/desktopWeb/marketplace",
+      "ofertas": [
+        "fotovoltaica-greenpoint"
+      ],
+      "queMuestra": "Mercado de la app de Brickwise en el navegador (ya era la dirección de la oferta): cada inmueble con su rentabilidad esperada, el precio o la inversión mínima y si se negocia. Este activo no tiene página propia en brickwise.at.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026, sin iniciar sesión: «Photovoltaik Anlage GreenPoint mit Überschussbeteiligung Pottendorfer Straße 62, Wiener Neustadt 6,11 % p.a. Erw. laufende Ausschüttung Preis pro Anteil ab € 100,00 Laufzeit: 30.12.2038 Ausschüttungen erw. ab: 14.2.2024 Handel aktiv». www.brickwise.at/assets/at0000a38j32 da 404."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84"
+      ],
+      "persona": "https://www.brickwise.at/assets/at0000a2zt84",
+      "ofertas": [
+        "randhartingergasse-9-viena"
+      ],
+      "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A2ZT84 - Randhartingergasse 9, Wien … Erw. lfd. Rendite* 2,47% p.a. Marktwert € 200.250,00 Preis pro Anteil € 75,00 Verfügbare Anteile 558». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2U5V3"
+      ],
+      "persona": "https://www.brickwise.at/assets/at0000a2u5v3",
+      "ofertas": [
+        "local-de-estanco-klagenfurt"
+      ],
+      "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A2U5V3 - Kohldorfer Straße 102, Klagenfurt … Erw. lfd. Rendite* 3,46% p.a. Marktwert € 342.000,00 Preis pro Anteil € 95,00 Verfügbare Anteile 306». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89"
+      ],
+      "persona": "https://app.brickwise.at/desktopWeb/marketplace",
+      "ofertas": [
+        "terreno-con-arrendamiento-billa"
+      ],
+      "queMuestra": "Mercado de la app de Brickwise en el navegador (ya era la dirección de la oferta): cada inmueble con su rentabilidad esperada, el precio o la inversión mínima y si se negocia. Este activo no tiene página propia en brickwise.at.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026, sin iniciar sesión: «Betriebsgrundstück mit langfristigem BILLA-Mietvertrag 10. Oktober Straße 2, Brückl 1% 5,07 % p.a. Erw. laufende Ausschüttung Mindestinvestition € 1.000,00 Laufzeit: endlos Ausschüttungen erw. ab: 14.7.2026». www.brickwise.at/assets/at0000a3se89 da 404."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2RAH5"
+      ],
+      "persona": "https://www.brickwise.at/assets/at0000a2rah5",
+      "ofertas": [
+        "vivienda-pluddemanngasse-101-graz"
+      ],
+      "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A2RAH5 - Plüddemanngasse 101, Graz … Erw. lfd. Rendite* 3,96% p.a. Marktwert € 76.000,00 Preis pro Anteil € 76,00 Verfügbare Anteile 333». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4"
+      ],
+      "persona": "https://www.brickwise.at/assets/at0000a324b4",
+      "ofertas": [
+        "vivienda-pottendorfer-stra-e-62-wr-neustadt"
+      ],
+      "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A324B4 - Pottendorferstrasse 62, Wiener Neustadt … Erw. lfd. Rendite* 4,22% p.a. Marktwert € 101.520,00 Preis pro Anteil € 72,00 Verfügbare Anteile 127». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCE8"
+      ],
+      "persona": "https://www.brickwise.at/assets/at0000a2wce8",
+      "ofertas": [
+        "vivienda-schwarzer-weg-18-graz"
+      ],
+      "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A2WCE8 - Schwarzer Weg 18, Graz … Erw. lfd. Rendite* 3,73% p.a. Marktwert € 192.400,00 Preis pro Anteil € 65,00 Verfügbare Anteile 299». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2T4D7"
+      ],
+      "persona": "https://www.brickwise.at/assets/at0000a2t4d7",
+      "ofertas": [
+        "vivienda-sonnleithnergasse-2-viena"
+      ],
+      "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A2T4D7 - Sonnleithnergasse 2, Wien … Erw. lfd. Rendite* 3,21% p.a. Marktwert € 188.000,00 Preis pro Anteil € 80,00 Verfügbare Anteile 96». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCD0"
+      ],
+      "persona": "https://www.brickwise.at/assets/at0000a2wcd0",
+      "ofertas": [
+        "vivienda-stallhofstra-e-28-gratwein"
+      ],
+      "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A2WCD0 - Stallhofstraße 28, Gratwein … Erw. lfd. Rendite* 4,11% p.a. Marktwert € 239.263,20 Preis pro Anteil € 69,96 Verfügbare Anteile 313». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    }
+  ],
+  "radar": [
+    {
+      "ids": [
+        "spiko-regafi",
+        "spiko-regafi-pasaporte-es"
+      ],
+      "apis": [
+        "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=siren%3D%22980659585%22",
+        "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22"
+      ],
+      "persona": "https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211",
+      "queMuestra": "Ficha de Spiko Finance en el REGAFI de la ACPR: identificación, actividad, código CIB con su fecha y «Passeports en Europe», con España.",
+      "comprobado": "Chrome sin interfaz, 04/11/2026 (el servidor cortó la conexión en varios intentos antes de responder): «Spiko Finance … Entreprise d’Investissement … Codes CIB 19183 Depuis le 15/12/2025 … Passeports en Europe 28 … Pays d’exercice : ESPAGNE … Libre prestation de services». Las dos consultas a la API devuelven JSON."
+    }
+  ],
+  "seQuedan": [
+    {
+      "url": "https://api.app.brickwise.at/api/v1/assets",
+      "ofertas": [
+        "apartamento-vacacional-hinterstoder-50",
+        "drautalresidenz-paternion",
+        "fotovoltaica-cohotel",
+        "fotovoltaica-greenpoint",
+        "randhartingergasse-9-viena",
+        "local-de-estanco-klagenfurt",
+        "vivienda-pluddemanngasse-101-graz",
+        "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+        "vivienda-schwarzer-weg-18-graz",
+        "vivienda-sonnleithnergasse-2-viena",
+        "vivienda-stallhofstra-e-28-gratwein"
+      ],
+      "motivo": "Libro de órdenes de la app de Brickwise (cuántas órdenes de compra y venta hay y a qué precio). Ninguna página pública lo enseña: la página del inmueble y el mercado de la app muestran el precio desde y las participaciones disponibles, no las órdenes; el detalle solo se ve dentro de la app. Se conserva la dirección de la API y queda anotado."
+    },
+    {
+      "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+      "ofertas": [
+        "casa-de-outeiro"
+      ],
+      "motivo": "Aunque el servidor se llama «api», devuelve el PDF del documento de la emisión (application/pdf, 200 el 04/11/2026): una persona lo abre y lo lee. Se conserva."
+    },
+    {
+      "url": "https://midas.app/assets/main-DOxid0Zj.js",
+      "ofertas": [
+        "mtbill"
+      ],
+      "motivo": "Es el código JavaScript de la web de Midas, no una API ni JSON: no hay una página para personas que diga «Public offer under the EU Prospectus Regulation» (docs.midas.app/legal/eligibility-and-compliance y docs.midas.app/resources/legal-product-documentation/mtbill no lo dicen; midas.app/mtbill da 403). Se conserva y queda anotado."
+    },
+    {
+      "url": "https://docs.midas.app/llms-full.txt",
+      "ofertas": [
+        "mtbill"
+      ],
+      "motivo": "Texto plano oficial de la documentación de Midas, legible por una persona; su página HTML daba 403. Se conserva."
+    },
+    {
+      "url": "https://midas.app/llms.txt",
+      "ofertas": [
+        "mtbill"
+      ],
+      "radar": [
+        "midas"
+      ],
+      "motivo": "Texto plano oficial, legible. Se conserva."
+    },
+    {
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+      "ofertas": [
+        "prosegur-digital-gold"
+      ],
+      "motivo": "Hoja CSV oficial de ESMA (se descarga, no es una API ni JSON). Se conserva."
+    },
+    {
+      "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+      "radar": [
+        "blocksquare"
+      ],
+      "motivo": "Texto Markdown de los términos, legible. Se conserva."
+    }
+  ]
+}

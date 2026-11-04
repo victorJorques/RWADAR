@@ -6,6 +6,46 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 2) · Claude · entrega 2026-11-04: arreglos de datos del catálogo (sin aplicar)
+
+Rama local `claude/catalogo-2026-11-04` (worktree `catalogo-1104`, sale de
+`main` 081fc27), un commit. **Sin push, Supabase solo leído como visitante,
+nada publicado, sin OTA ni workflows.** Solo datos; la web va en otras ramas.
+
+- **Parte de la publicada:** lectura como visitante a las 19:07:11 UTC del 04/11:
+  `f2732257` (la .7 con los textos de la .8), 26 plataformas, 24 ofertas
+  (8/13/3). Guardada en `verificaciones/2026-11-04-v2/lectura-publica/`; el
+  preparador comprueba que coincide con la base local.
+- **Etiqueta `2026-11-04`**, revisión nueva `50073929…`, `aplicar-y-aprobar.sql`
+  SHA `fccac4f2c4e610757d4f2e2001733ab2c51f24271ff1821e434d89dc1d69c2a6`.
+  Entrega documental: radar, cifras y vigencia siguen del 03/11 (vence el 11/11).
+- **Qué cambia:**
+  - «Datos con su fecha»: 228 rótulos internos («accesoEspana · consulta …»)
+    pasan a castellano («Acceso desde España · consulta …») en 21 ofertas;
+    valores, fuentes y fechas iguales.
+  - 59 referencias en 20 ofertas y 2 fuentes del radar (REGAFI de Spiko) dejan
+    la dirección de API por la página para personas (Aktionariat, BOSS Info y
+    SwitzerLend `/trade` e `/invest`; Spiko `data.spiko.io`; Brickwise
+    `www.brickwise.at/assets/<isin>` o el mercado de la app; Alius Capital;
+    buscador de ESMA; ficha del REGAFI). Comprobadas hoy con curl y Chrome sin
+    interfaz.
+  - ARTEX «Blockchains»: «Mercado regulado (MTF)» → «No usa blockchain» (su FAQ).
+  - Toucan: fuente nueva del ACR (30/05/2022) y motivo fechado en mayo de 2022.
+- **Generador arreglado:** diccionario de los 67 campos en
+  `rwadar-app/rotulos-referencias.js`; lo usan `2026-11-02-v2/preparar-lote.mjs`
+  y `montar-revision.mjs` (que falla si llega un campo sin rótulo).
+- **Lo que no se pudo:** el libro de órdenes de Brickwise
+  (`api.app.brickwise.at/api/v1/assets`, 11 fichas) no tiene página pública y
+  se queda; el JS de Midas (mTBILL) no tiene equivalente; el estado de hoy de
+  Verra/ACR no se pudo leer (Verra da 403). Detalle en el informe.
+- **Pruebas:** `comprobar-entrega.mjs` correcto (27 comprobaciones, 16 casos de
+  fallo que no dejan nada); `preparar-entrega.mjs` reproducible; `npm test`
+  completo en verde.
+- **Pendiente (coordinador):** revisión independiente; unir a `main`; releer
+  como visitante (con hora); «Aplicar catálogo» con `2026-11-04`; sincronizar,
+  fichas, `volcar-seed.js`, `transparencia.json`, sello y «Publicar web». Sin OTA.
+  Pasos en `rwadar-app/data/verificaciones/2026-11-04-v2/INFORME-ENTREGA.md` §6.
+
 ## 4 de noviembre de 2026 (noche) · Claude · entrega 2026-11-03.8: textos de Reental, Toucan y RealT (sin aplicar)
 
 Víctor: «hasta que no esté todo no has acabado». Rama local
