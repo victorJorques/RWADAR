@@ -41,38 +41,76 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
         nodos[0].vistos.every(t => t === textos[0]) && nodos[1].vistos.some(t => t !== '26') && nodos[1].vistos.every(t => /^\d+$/.test(t)));
     }
   }
-  // QA escritorio 04/11/2026, n.º 7: en inglés la página nace con lang="en" y
-  // oculta hasta traducirse; nunca más de 1,5 s y nunca en castellano.
+  // QA escritorio 04/11/2026, n.º 7: en escritorio y en inglés la página nace
+  // oculta hasta traducirse, con tope de 1,5 s desde la navegación. En el móvil
+  // (no saltaba) no se oculta, y lang lo pone idioma-web, no idioma-previo.
   {
     const codigoPrevio = lee('assets/idioma-previo-20261104.js');
-    const ensayo = (guardado, pasos) => {
-      const clases = new Set(), eventos = {}, relojes = [];
+    const ensayo = (guardado, pasos, { movil = false, ahora = 200 } = {}) => {
+      const clases = new Set(), eventos = {}, relojes = [], consultas = [];
       const raiz = { lang: 'es', classList: { add: c => clases.add(c), remove: c => clases.delete(c) } };
       const contexto = vm.createContext({
         localStorage: { getItem: k => { if (guardado instanceof Error) throw guardado; return k === 'rwadar.idioma' ? guardado : null; } },
         document: { documentElement: raiz, addEventListener: (t, fn) => { eventos[t] = fn; } },
+        matchMedia: q => { consultas.push(q); return { matches: movil && /max-width:767px/.test(q) }; },
+        performance: { now: () => ahora },
         setTimeout: (fn, ms) => relojes.push([fn, ms]),
       });
       contexto.globalThis = contexto;
       vm.runInContext(codigoPrevio, contexto);
       const inicial = { lang: raiz.lang, oculta: clases.has('idioma-previo') };
       pasos({ eventos, relojes, listo: () => contexto.RWAdarIdiomaListo && contexto.RWAdarIdiomaListo() });
-      return { inicial, final: { lang: raiz.lang, oculta: clases.has('idioma-previo') }, relojes };
+      return { inicial, final: { lang: raiz.lang, oculta: clases.has('idioma-previo') }, relojes, consultas };
     };
     const traducida = ensayo('en', ({ eventos, listo }) => { listo(); eventos.DOMContentLoaded(); });
     const soloTraducida = ensayo('en', ({ listo }) => listo());
     const tope = ensayo('en', ({ relojes }) => relojes.forEach(([fn]) => fn()));
+    const movil = ensayo('en', () => {}, { movil: true });
+    const tarde = ensayo('en', () => {}, { ahora: 1600 });
     const castellano = ensayo('es', () => {});
     const sinAlmacen = ensayo(new Error('bloqueado'), () => {});
-    prueba('idioma-previo oculta la página en inglés solo hasta traducirla y cargarla, con tope de 1,5 s',
-      traducida.inicial.lang === 'en' && traducida.inicial.oculta && !traducida.final.oculta &&
-      soloTraducida.final.oculta && tope.relojes.length === 1 && tope.relojes[0][1] === 1500 && !tope.final.oculta &&
+    prueba('idioma-previo oculta en escritorio y en inglés solo hasta traducir y cargar, con tope de 1,5 s desde la navegación; en el móvil, no',
+      traducida.inicial.oculta && !traducida.final.oculta && traducida.inicial.lang === 'es' && traducida.final.lang === 'es' &&
+      soloTraducida.final.oculta && tope.relojes.length === 1 && tope.relojes[0][1] === 1300 && !tope.final.oculta && tope.final.lang === 'es' &&
+      !movil.inicial.oculta && movil.relojes.length === 0 && movil.consultas.length === 1 &&
+      !tarde.inicial.oculta && tarde.relojes.length === 0 &&
       castellano.inicial.lang === 'es' && !castellano.inicial.oculta && castellano.relojes.length === 0 &&
       !sinAlmacen.inicial.oculta && sinAlmacen.inicial.lang === 'es');
     prueba('idioma-web avisa a idioma-previo cuando termina la primera traducción',
       /cargarIdioma\(almacenamiento\)\.then\(\(\)=>\{actualizar\(\);[^}]*RWAdarIdiomaListo\(\)/.test(lee('assets/idioma-web-20261022.js')) &&
       /html\.idioma-previo body\{visibility:hidden\}/.test(lee('assets/idioma-20261022.css')) &&
       ARCHIVOS_PUBLICABLES.includes('assets/idioma-previo-20261104.js'));
+  }
+  // QA escritorio 04/11/2026, n.º 8: si la lista de plataformas cambia de alto
+  // (filtro), la barra se recalcula; si se filtra desde la barra con la lista
+  // desplazada, la vista vuelve al principio de los resultados, bajo la barra.
+  {
+    const inicio = js.indexOf('(function barraFiltros(){'), fin = js.indexOf('(function cabeceraElevada');
+    const ensayo = ({ foco, caja }) => {
+      const observados = new Map(), desplazamientos = [], clases = new Set();
+      const hdr = { offsetHeight: 69 }, campo = {}, lista = { getBoundingClientRect: () => caja };
+      const barra = { offsetHeight: 76, contains: n => n === campo, style: { setProperty() {} },
+        classList: { toggle: (c, si) => (si ? clases.add(c) : clases.delete(c)), remove: c => clases.delete(c) } };
+      const contexto = vm.createContext({
+        document: { documentElement: { style: { setProperty() {} } }, activeElement: foco ? campo : {},
+          querySelector: s => (s === '.hdr' ? hdr : s === '.barra' ? barra : null),
+          getElementById: id => (id === 'plataformasResultados' ? lista : null) },
+        getComputedStyle: () => ({ position: 'sticky' }), requestAnimationFrame: fn => fn(),
+        ResizeObserver: function (fn) { this.observe = n => observados.set(n, fn); },
+        addEventListener() {}, scrollY: 5000, innerHeight: 800, scrollTo: o => desplazamientos.push(o),
+      });
+      contexto.window = contexto;
+      vm.runInContext(js.slice(inicio, fin), contexto);
+      if (observados.has(lista)) observados.get(lista)();
+      return { desplazamientos, empujada: clases.has('barra-empujada'), observaLista: observados.has(lista) };
+    };
+    const filtrada = ensayo({ foco: true, caja: { top: -2500, bottom: -1737 } });
+    const sinFoco = ensayo({ foco: false, caja: { top: -2500, bottom: -1737 } });
+    const debajo = ensayo({ foco: true, caja: { top: 300, bottom: 900 } });
+    prueba('la barra de filtros sigue el alto de la lista y, al filtrar desde ella, la vista vuelve al principio de los resultados',
+      inicio > 0 && fin > inicio && filtrada.observaLista && filtrada.desplazamientos.length === 1 &&
+      filtrada.desplazamientos[0].top === 5000 - 2500 - 69 - 76 &&
+      sinFoco.desplazamientos.length === 0 && sinFoco.empujada && debajo.desplazamientos.length === 0 && !debajo.empujada);
   }
   // QA escritorio 04/11/2026, n.º 12: en el panel y en la ficha de la web, una
   // API o una respuesta JSON se cita sin enlace, con su fecha.
@@ -137,8 +175,11 @@ export function probarTarjetaYComparador({ c, prueba }) {
   const minimosComparador=vm.runInContext(`P.map(p=>[p.slug,p.ticket,minimoPlataformaTexto(p),EMI.some(o=>o.plataformaSlug===p.slug)])`,c);
   vm.runInContext(`compare=[P.findIndex(p=>p.slug==='spiko'),P.findIndex(p=>p.slug==='addx')];openCompare()`,c);
   const tablaComparador=c.document.getElementById('modalBody').innerHTML;
-  prueba('el comparador muestra el mínimo documentado o «Sin documentar», nunca «Bajo», «Medio» o «Alto»',
-    minimosComparador.every(([,ticket,texto,ofertas])=>texto!==ticket&&!/^(?:Bajo|Medio|Alto|No aplica)$/.test(texto)&&(ofertas||texto==='Sin documentar'))&&
+  // Los proveedores de infraestructura (ticket «No aplica») siguen diciendo «No aplica».
+  prueba('el comparador muestra el mínimo documentado, «Sin documentar» o «No aplica», nunca «Bajo», «Medio» o «Alto»',
+    minimosComparador.some(([,ticket])=>ticket==='No aplica')&&
+    minimosComparador.every(([,ticket,texto,ofertas])=>ticket==='No aplica'?texto==='No aplica':
+      texto!==ticket&&!/^(?:Bajo|Medio|Alto|No aplica)$/.test(texto)&&(ofertas||texto==='Sin documentar'))&&
     /€/.test(minimosComparador.find(m=>m[0]==='spiko')[2])&&
     /<th>Mínimo<\/th><td>[^<]*€[^<]*<\/td><td>Sin documentar<\/td>/.test(tablaComparador));
 }

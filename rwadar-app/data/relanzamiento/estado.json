@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 04/11: barrido de calidad de la web publicada (arreglos de móvil y escritorio, revisados) y entrega de catálogo 2026-11-04 (rótulos legibles, fuentes para personas, ARTEX y Toucan), aplicada con Aplicar catálogo y sincronizada (revisión cf79e4a4). Antes, Academy, Privacidad e Inicio en escritorio. Orden de Víctor: «hay que subirlo cuanto antes». npm test completo en verde.",
+  "nota": "Claude, 04/11: corrección de la revisión de los arreglos de escritorio (idioma-previo solo oculta en escritorio y con tope desde la navegación, barra de filtros al filtrar, comparador «No aplica», botones de /acceso). Antes, el barrido de calidad y la entrega de catálogo 2026-11-04. Orden de Víctor: «hay que subirlo cuanto antes». npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "f17f460c7795138fce7c2e71950a0185059a5bfa",
-    "contenidoSha256": "sha256:5d9d839877a1c59f164aec3a0c180cc0dcd900424e1acabff2e2c355185141f8",
+    "commit": "c65b0f48c01b7a7d7e9c0cb9455161008bcd3247",
+    "contenidoSha256": "sha256:3a56da4eedcbf866877d28fb55f342638fd7895f9867edaea7ff02fc54140f92",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
