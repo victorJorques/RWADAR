@@ -5,6 +5,8 @@ import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { Icono } from './Navegacion';
 import Radar from './Radar';
 import { ImagenOferta } from './Ofertas';
+import RecienAnadidas from './RecienAnadidas';
+import { recienAnadidas } from '../lib/recien-anadidas';
 import { LECCIONES } from '../lib/academy-contenido';
 import { DESTINOS_NOTICIAS, NOTICIAS } from '../lib/noticias-contenido';
 import { CAPITULOS_INICIO, CIFRAS_MERCADO_EL, textosInicio } from '../lib/inicio-contenido';
@@ -313,6 +315,11 @@ export default function Inicio({
           <Text noTraducir style={e.fuentesApartadoTxt}>{t.portada.fuentes} ›</Text>
         </Pressable>
       </View>
+
+      {/* Recién añadidas: justo bajo la portada, para que al bajar un poco se
+          vean ofertas de verdad. Sin catálogo vigente, nada. */}
+      <RecienAnadidas ofertas={recienAnadidas(ofertas, { catalogoCaducado: !cifras.vigente })}
+        onAbrirOferta={onAbrirOferta} onVerTodas={() => onDestino('ofertas-nuevas')} />
 
       {cambios.length ? (
         <View style={e.seccion}>
