@@ -1046,7 +1046,9 @@ function desenlazarConsultasTecnicas(raiz,fechaDe){
   /* Se conserva el título; no «Ver fuente», «Fuente ↗», la flecha ni la fecha ISO. */
   const titulo=String(a.textContent||'').replace(/\s*↗\s*$/,'').replace(/\s·\s\d{4}-\d{2}-\d{2}$/,'').trim()
    .replace(/^(?:Abrir fuente|Ver fuente|Fuente)(?:\s·\s|$)/,'').trim();
-  const f=(String(a.textContent||'').match(/(\d{4}-\d{2}-\d{2})\s*↗?\s*$/)||[])[1]||(fechaDe&&fechaDe(url))||'';
+  /* Si justo detrás ya pone «consultada el …», no se repite la fecha. */
+  const fechada=a.nextSibling&&/^\s*·?\s*consultada el/i.test(a.nextSibling.textContent||'');
+  const f=fechada?'':(String(a.textContent||'').match(/(\d{4}-\d{2}-\d{2})\s*↗?\s*$/)||[])[1]||(fechaDe&&fechaDe(url))||'';
   const s=document.createElement('span');s.className='consulta-tecnica';
   if(titulo)s.appendChild(document.createTextNode(titulo+' · '));
   const r=document.createElement('span');r.textContent='Consulta técnica';s.appendChild(r);

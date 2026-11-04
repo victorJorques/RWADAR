@@ -84,7 +84,10 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
     vm.runInContext(fechaESCodigo + '\n' + js.slice(inicio, fin) + '\nthis.desenlazar=desenlazarConsultasTecnicas;this.tecnica=consultaTecnica;', contexto);
     const enlaces = [['https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS', 'Ver fuente · shares.aktionariat.com ↗'],
       ['https://www.regafi.fr/api/explore/v2.1/catalog/datasets/x/records', 'REGAFI (ACPR) · Spiko · 2026-11-02 ↗'],
-      ['https://shares.aktionariat.com/invest', 'Fuente 1 · shares.aktionariat.com ↗']].map(([href, texto]) => ({ href, textContent: texto,
+      ['https://shares.aktionariat.com/invest', 'Fuente 1 · shares.aktionariat.com ↗'],
+      // Si detrás ya pone «consultada el …», la fecha no se repite.
+      ['https://shares.aktionariat.com/api/secondarymarkets/getTrades', 'shares.aktionariat.com ↗', ' · consultada el 01/11/2026']
+    ].map(([href, texto, detras]) => ({ href, textContent: texto, nextSibling: detras ? { textContent: detras } : null,
         getAttribute: () => href, replaceWith(n) { this.sustituto = n; } }));
     contexto.desenlazar({ querySelectorAll: () => enlaces }, () => '2026-11-03');
     const leido = n => n.tag === '#text' ? n.textContent : n.textContent || n.hijos.map(leido).join('');
@@ -92,6 +95,7 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
       leido(enlaces[0].sustituto) === 'shares.aktionariat.com · Consulta técnica · 03/11/2026' &&
       leido(enlaces[1].sustituto) === 'REGAFI (ACPR) · Spiko · Consulta técnica · 02/11/2026' &&
       enlaces[0].sustituto.className === 'consulta-tecnica' && !enlaces[2].sustituto &&
+      leido(enlaces[3].sustituto) === 'shares.aktionariat.com · Consulta técnica' &&
       contexto.tecnica('https://example.com/datos.json') && !contexto.tecnica('https://api-docs.example.com/guia') &&
       /desenlazarConsultasTecnicas\(d,/.test(js) && /desenlazarConsultasTecnicas\(cuerpo,/.test(js));
   }
