@@ -69,7 +69,7 @@ paso('una revisión local incompleta conserva la copia completa sin contactar pr
 // revisión de frases que pidió Víctor, 04/11/2026).
 paso('las fichas y el detalle muestran fecha, tres estados y alertas críticas',
   web.includes('resumenVerificacionLocalHtml(v)')
-  && web.includes('detalleVerificacionLocalHtml(v)')
+  && web.includes('detalleVerificacionLocalHtml(v,p.nota)')
   && web.includes("['Actividad',verificacion.estadoOperativo]")
   && web.includes("['Licencia o registro',verificacion.licenciaRegistro]")
   && web.includes("['Acceso',verificacion.acceso]")

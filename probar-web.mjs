@@ -1191,7 +1191,7 @@ prueba('el radar resuelve zonas solapadas por el punto geométricamente más cer
   /class="zona"[^>]*pointer-events="none"/.test(js) &&
   /function masCercano\(e\)/.test(js) &&
   /getScreenCTM/.test(js) && /matriz\.inverse\(\)/.test(js) &&
-  /let mejor=null,distancia=22\*22/.test(js) &&
+  /radio=Math\.max\(22,22\/escala\)/.test(js) && /let mejor=null,distancia=radio\*radio/.test(js) &&
   /const i=masCercano\(e\);if\(i!=null\)openDrawer\(i\)/.test(js));
 prueba('ofertas, menús y vuelta de Avisos conservan dianas móviles utilizables',
   Number((ofertasOrdenEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
@@ -3127,7 +3127,7 @@ console.log('\n=== RWADAR ACADEMY ===');
     /\/academy\/\*\n\s+Cache-Control: public, max-age=0, must-revalidate/.test(headers));
   const codigoAcademy = lee('assets/academy-20261002.js');
   prueba('el progreso es local y separado por cuenta tras verificar la sesión, sin enviar resultados',
-    /const CLAVE = 'rwadar\.academy\.v1:' \+ cuenta\.id/.test(codigoAcademy) &&
+    /CLAVE = 'rwadar\.academy\.v1:' \+ cuenta\.id/.test(codigoAcademy) && /if \(!CLAVE\) return vacio\(\)/.test(codigoAcademy) &&
     /await window\.RWADAR_ACCESO\.verificar\(\)/.test(codigoAcademy) &&
     (codigoAcademy.match(/try \{/g) || []).length >= 3 &&
     !/innerHTML|fetch\(|XMLHttpRequest|sendBeacon|document\.cookie/.test(codigoAcademy));
