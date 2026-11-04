@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 04/11: textos de Reental, Toucan y RealT (entrega 2026-11-03.8, solo public.plataformas y public.fuentes), aplicada con Aplicar catálogo y sincronizada; antes, remates, «Recién añadidas» y la entrega 2026-11-03.7. Orden de Víctor: «hasta que no esté todo no has acabado». Revisión independiente con fuentes abiertas; npm test completo en verde.",
+  "nota": "Claude, 04/11: Academy (lecciones en llano) y tablas de Privacidad en el móvil, e Inicio como historia también en escritorio (1024 px o más); revisión independiente y corrección de cada parte, npm test completo en verde. Antes, la entrega 2026-11-03.8. Orden de Víctor: «súbelo en cuanto esté» y «hay que subirlo cuanto antes».",
   "revisionAprobada": {
-    "commit": "763f77121924fea20d9765177f401dbf2e590353",
-    "contenidoSha256": "sha256:570fddb208697ccd06e1b715775aa20dce34469a7d8ba7a9d25e8349e72bd9f0",
+    "commit": "24963d48fe25ab3f6a787975a3f9cd2f2d020762",
+    "contenidoSha256": "sha256:64e6665ee2660a5f2c86e9043c3c12f265bc888bd8f88f243a77c29c57588f53",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
