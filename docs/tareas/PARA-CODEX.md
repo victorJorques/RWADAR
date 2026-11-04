@@ -6,6 +6,43 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (tarde, 3) · Claude · correcciones de la revisión a la entrega 2026-11-03.7 (sin aplicar)
+
+Misma rama local `claude/catalogo-2026-11-04`, commits dd1cef2, 8caf488,
+c72b09b, 37fc303, ca59546 y el de este traspaso. **Sin push, Supabase sin
+tocar, nada publicado, sin OTA.** La entrada de abajo queda superada en lo
+que diga distinto.
+
+- **Revisión nueva `bd1f873b`** (la 89e88b04 no vale; sigue exigiendo la
+  344a86aa publicada). 58 textos en vez de 51: además, el acceso de Spiko,
+  Maple y Fireblocks (los vio la revisión) y, con la misma regla, Courtyard,
+  OpenEden, Swarm y Reental. ARTEX ya no se contradice; retoques de
+  castellano; la nota de RealT explica bien por qué se quita «la mayor
+  demanda» (Outlier lo atribuye a la ciudad). Nada más cambia.
+  `aplicar-y-aprobar.sql` d57b5dbc… (con `--con-textos-plataformas`,
+  d2fecfef…).
+- **App:** quitado el cambio a «Importante» (chocaba con `claude/remates`,
+  que ya lo hace). La OTA tiene que salir después de unir remates.
+- **Fila 19 hecha en el código:** «Marketplace» se lee «Mercado de
+  compraventa» en la web, las fichas fijas y la app (en inglés,
+  «Marketplace»); el valor de la base no cambia. La línea de tipo y región
+  de la tarjeta móvil ocupa hasta dos líneas para no cortar la región.
+- **Informe y revisión en el repositorio:**
+  `rwadar-app/data/verificaciones/2026-11-03.7-v2/INFORME-ENTREGA.md` (pasos
+  exactos en su §7) y `REVISION-ENTREGA.md`.
+- **Pruebas:** ensayo PGlite correcto en las dos variantes; `npm test`
+  completo en verde (web 579, fichas 68, precarga 32, móvil 406 + 2
+  omitidas, acceso 144, base de datos sin fallos); guardián de la OTA ok;
+  visto en Chrome sin red externa.
+- **Unir con remates:** el código y los datos se unen sin conflictos; solo
+  choca este archivo (las dos ramas añaden su entrada arriba): conservar las
+  dos.
+- **Pendiente (coordinador):** revisar los 15 textos marcados
+  «(corrección)» y la fila 19; decidir `public.plataformas`; unir a `main`;
+  leer como visitante que la publicada es la 344a86aa (compuerta, con hora);
+  «Aplicar catálogo» con `2026-11-03.7`; sincronizar, regenerar y sellar;
+  «Publicar web»; «OTA Android» después de remates.
+
 ## 4 de noviembre de 2026 (tarde, 2) · Claude · textos del catálogo para el lector (entrega 2026-11-03.7, sin aplicar)
 
 Víctor: «hasta que no esté todo no has acabado». Rama local
