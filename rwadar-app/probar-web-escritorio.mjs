@@ -81,6 +81,37 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
       /html\.idioma-previo body\{visibility:hidden\}/.test(lee('assets/idioma-20261022.css')) &&
       ARCHIVOS_PUBLICABLES.includes('assets/idioma-previo-20261104.js'));
   }
+  // QA escritorio 04/11/2026, n.º 8: si la lista de plataformas cambia de alto
+  // (filtro), la barra se recalcula; si se filtra desde la barra con la lista
+  // desplazada, la vista vuelve al principio de los resultados, bajo la barra.
+  {
+    const inicio = js.indexOf('(function barraFiltros(){'), fin = js.indexOf('(function cabeceraElevada');
+    const ensayo = ({ foco, caja }) => {
+      const observados = new Map(), desplazamientos = [], clases = new Set();
+      const hdr = { offsetHeight: 69 }, campo = {}, lista = { getBoundingClientRect: () => caja };
+      const barra = { offsetHeight: 76, contains: n => n === campo, style: { setProperty() {} },
+        classList: { toggle: (c, si) => (si ? clases.add(c) : clases.delete(c)), remove: c => clases.delete(c) } };
+      const contexto = vm.createContext({
+        document: { documentElement: { style: { setProperty() {} } }, activeElement: foco ? campo : {},
+          querySelector: s => (s === '.hdr' ? hdr : s === '.barra' ? barra : null),
+          getElementById: id => (id === 'plataformasResultados' ? lista : null) },
+        getComputedStyle: () => ({ position: 'sticky' }), requestAnimationFrame: fn => fn(),
+        ResizeObserver: function (fn) { this.observe = n => observados.set(n, fn); },
+        addEventListener() {}, scrollY: 5000, innerHeight: 800, scrollTo: o => desplazamientos.push(o),
+      });
+      contexto.window = contexto;
+      vm.runInContext(js.slice(inicio, fin), contexto);
+      if (observados.has(lista)) observados.get(lista)();
+      return { desplazamientos, empujada: clases.has('barra-empujada'), observaLista: observados.has(lista) };
+    };
+    const filtrada = ensayo({ foco: true, caja: { top: -2500, bottom: -1737 } });
+    const sinFoco = ensayo({ foco: false, caja: { top: -2500, bottom: -1737 } });
+    const debajo = ensayo({ foco: true, caja: { top: 300, bottom: 900 } });
+    prueba('la barra de filtros sigue el alto de la lista y, al filtrar desde ella, la vista vuelve al principio de los resultados',
+      inicio > 0 && fin > inicio && filtrada.observaLista && filtrada.desplazamientos.length === 1 &&
+      filtrada.desplazamientos[0].top === 5000 - 2500 - 69 - 76 &&
+      sinFoco.desplazamientos.length === 0 && sinFoco.empujada && debajo.desplazamientos.length === 0 && !debajo.empujada);
+  }
   // QA escritorio 04/11/2026, n.º 12: en el panel y en la ficha de la web, una
   // API o una respuesta JSON se cita sin enlace, con su fecha.
   {
