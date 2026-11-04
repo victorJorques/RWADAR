@@ -1561,7 +1561,7 @@ function openDrawer(i){
  if(typeof Opiniones!=="undefined"&&OPINIONES_DISPONIBLES){const c=document.getElementById("dwOpiniones");if(c)Opiniones.pinta(p.n,c);}
  const cuerpo=document.getElementById('dwBody');if(cuerpo)cuerpo.scrollTop=0;
  /* n.º 12: las fuentes que son una API (REGAFI…) no se enlazan. */
- desenlazarConsultasTecnicas(cuerpo,()=>p.verificacionLocal&&p.verificacionLocal.verificadoEl||'');
+ if(typeof desenlazarConsultasTecnicas==='function')desenlazarConsultasTecnicas(cuerpo,()=>p.verificacionLocal&&p.verificacionLocal.verificadoEl||'');
  openPanel('drawer');
 }
 function toggleCompare(i){
@@ -2781,7 +2781,7 @@ function abrirDetalleOfertaLocal(slug){
   doc.fuentes+
   '</div></div>';
  /* n.º 12: sin enlaces a API ni JSON; la fecha, la de la consulta de esa fuente. */
- desenlazarConsultasTecnicas(d,u=>(documentacion&&documentacion.referencias||[]).filter(r=>r.fuente===u).map(r=>r.fechaConsulta).sort().at(-1)||
+ if(typeof desenlazarConsultasTecnicas==='function')desenlazarConsultasTecnicas(d,u=>(documentacion&&documentacion.referencias||[]).filter(r=>r.fuente===u).map(r=>r.fechaConsulta).sort().at(-1)||
   (documentacion&&documentacion.revisadaEl)||o.verificadaEl);
  if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');
   if(typeof history!=='undefined'&&typeof history.pushState==='function'&&typeof location!=='undefined'){
