@@ -1023,7 +1023,7 @@ function bloquePortada(academy) {
     ${niveles}
     </div>
     <a class="academia-ver-todo" href="/academy/">Ver todas las lecciones <span aria-hidden="true">→</span></a>
-    <p class="academia-nota">Las lecciones son de texto. Todavía no hay vídeos: no mostraremos miniaturas ni botones que no lleven a contenido real.</p>
+    <p class="academia-nota">Las lecciones son de texto. De momento no hay vídeos.</p>
   </div>
   <!--academy:fin-->`;
 }

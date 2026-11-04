@@ -916,7 +916,7 @@ let escenaVisible=false;
 })();
 
 /* ---- el paso a paso ---- */
-const ROTULOS=["1 · Entero","2 · Partido en 3.000","3 · Cada trozo, un dueño","4 · Cambiando de mano"];
+const ROTULOS=["1 · Entero","2 · Partido en 3.000","3 · Cada trozo, un dueño","4 · Cambian de dueño"];
 const VENTAJAS_POR_PASO=[[],[0],[0,1],[0,1,2,3]];
 let paso=0, reloj=null;
 const menos=window.matchMedia('(prefers-reduced-motion: reduce)').matches;

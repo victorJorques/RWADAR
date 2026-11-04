@@ -1,6 +1,6 @@
 ---
 slug: como-leer-el-radar
-titulo: "Cómo leer el radar: comparar proveedores sin dejarte deslumbrar"
+titulo: "Cómo usar RWAdar para comparar proveedores con criterio"
 nivel: Avanzado
 modulo: 7
 categoria: Selección de proveedor
@@ -15,7 +15,7 @@ leccion_anterior: liquidez-como-evaluarla
 leccion_siguiente: expediente-de-tokenizacion
 ---
 
-## Cómo leer el radar: comparar proveedores sin dejarte deslumbrar
+## Cómo usar RWAdar para comparar proveedores con criterio
 
 **Nivel:** Avanzado · **Lectura:** 13 min · **Categoría:** Selección de proveedor
 **Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE

@@ -1,6 +1,6 @@
 ---
 slug: quien-es-quien-actores-tokenizacion
-titulo: "Quién es quién: el mapa de actores de una tokenización"
+titulo: "Quién es quién en una tokenización"
 nivel: Principiante
 modulo: 2
 categoria: Fundamentos
@@ -15,7 +15,7 @@ leccion_anterior: que-significa-tokenizar-un-activo
 leccion_siguiente: es-tu-activo-tokenizable
 ---
 
-## Quién es quién: el mapa de actores de una tokenización
+## Quién es quién en una tokenización
 
 **Nivel:** Principiante · **Lectura:** 14 min · **Categoría:** Fundamentos
 **Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE

@@ -1,6 +1,6 @@
 ---
 slug: cuanto-cuesta-tokenizar
-titulo: "Cuánto cuesta y cuánto tarda: la anatomía de un presupuesto de tokenización"
+titulo: "Cuánto cuesta y cuánto tarda: las partidas de un presupuesto de tokenización"
 nivel: Intermedio
 modulo: 5
 categoria: Economía del proyecto
@@ -15,7 +15,7 @@ leccion_anterior: marco-legal-cuando-tu-token-es-un-valor
 leccion_siguiente: liquidez-como-evaluarla
 ---
 
-## Cuánto cuesta y cuánto tarda: la anatomía de un presupuesto de tokenización
+## Cuánto cuesta y cuánto tarda: las partidas de un presupuesto de tokenización
 
 **Nivel:** Intermedio · **Lectura:** 15 min · **Categoría:** Economía del proyecto
 **Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE

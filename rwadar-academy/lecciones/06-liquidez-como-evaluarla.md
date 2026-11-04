@@ -1,6 +1,6 @@
 ---
 slug: liquidez-como-evaluarla
-titulo: "La liquidez es la promesa más incumplida del sector: cómo evaluarla antes de creerla"
+titulo: "Liquidez: cómo comprobar si de verdad podrás vender"
 nivel: Intermedio
 modulo: 6
 categoria: Gestión de riesgos
@@ -15,7 +15,7 @@ leccion_anterior: cuanto-cuesta-tokenizar
 leccion_siguiente: como-leer-el-radar
 ---
 
-## La liquidez es la promesa más incumplida del sector: cómo evaluarla antes de creerla
+## Liquidez: cómo comprobar si de verdad podrás vender
 
 **Nivel:** Intermedio · **Lectura:** 13 min · **Categoría:** Gestión de riesgos
 **Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
