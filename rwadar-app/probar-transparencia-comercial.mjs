@@ -63,7 +63,8 @@ paso('la tarjeta abre una ficha identificada y los enlaces externos conservan el
   cliente.includes("Ver oferta en '+escHtml(e.pl)")
   && cliente.includes('data-oferta-detalle=')
   && cliente.includes('>Ver ficha ')
-  && cliente.includes("(secundario?'Ficha oficial':'Consultar fuente')+' de '+o.titulo+' en '+o.plataformaNombre")
+  // El enlace final dice «Ver oferta en <proveedor> ↗», como la página aparte (NOTAS 3 del coordinador, 04/11/2026).
+  && cliente.includes("(secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre)+': '+o.titulo")
   && cliente.includes("o.patrocinada?' sponsored':''"));
 
 paso('la página no activa el modelo porcentual 3–5 %',
