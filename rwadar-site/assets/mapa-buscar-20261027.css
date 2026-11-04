@@ -86,12 +86,14 @@
 /* Marcadores: el color de su tipo de activo, como en el radar; 44 px de
    toque; el número centrado si hay varias ofertas en el mismo punto. */
 .mapa-marcador{display:grid;place-items:center;background:none;border:0;outline:0}
+/* El aro oscuro fuera del blanco da al borde más de 3:1 sobre el mapa claro
+   (los colores del radar se pensaron para fondo oscuro). */
 .mapa-pin{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cc,#6B7570);color:#14110D;
-  box-shadow:0 0 0 2px #fff,0 2px 6px rgba(16,24,20,.35);transition:transform var(--t-1) var(--ease),box-shadow var(--t-2) var(--ease)}
+  box-shadow:0 0 0 2px #fff,0 0 0 3.5px rgba(22,26,24,.75),0 2px 6px rgba(16,24,20,.35);transition:transform var(--t-1) var(--ease),box-shadow var(--t-2) var(--ease)}
 .mapa-pin svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .mapa-pin b{font:700 .8125rem/1 var(--body);font-variant-numeric:tabular-nums}
 .mapa-pin.mixto{--cc:#2A2927;color:#fff}
-.mapa-pin.aproximado{box-shadow:0 0 0 2px #fff,0 0 0 9px color-mix(in srgb,var(--cc,#6B7570) 30%,transparent),0 2px 6px rgba(16,24,20,.35)}
+.mapa-pin.aproximado{box-shadow:0 0 0 2px #fff,0 0 0 3.5px rgba(22,26,24,.75),0 0 0 9px color-mix(in srgb,var(--cc,#6B7570) 40%,transparent),0 2px 6px rgba(16,24,20,.35)}
 .mapa-marcador.activo .mapa-pin,.mapa-marcador:focus-visible .mapa-pin{transform:scale(1.15);box-shadow:0 0 0 2px #fff,0 0 0 4px #161A18,0 4px 10px rgba(16,24,20,.35)}
 @media (hover:hover){.mapa-marcador:hover .mapa-pin{transform:scale(1.08)}}
 @media (prefers-reduced-motion:reduce){.mapa-pin{transition:none}.mapa-marcador .mapa-pin{transform:none!important}}
@@ -115,7 +117,7 @@
 .mapa-popup .mapa-tipo,.mapa-popup .mapa-lugar{color:#4A524D}
 .mapa-popup .mapa-precision{margin-top:2px;color:#5E6661;font-size:.75rem}
 .mapa-popup-pie{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
-.mapa-popup .mapa-fuente{color:#5E6661}
+#mapaLienzo .mapa-popup .mapa-fuente{color:#5E6661}
 .mapa-popup .mapa-ver{margin-right:-8px;color:#0B7A50}
 .mapa-popup .mapa-ver:active{background:#E3F3EA}
 .mapa-popup .mapa-ver:focus-visible,.mapa-popup .mapa-fuente:focus-visible{outline:2px solid #0B7A50;outline-offset:-2px}
