@@ -161,7 +161,8 @@
     observado.observe(document.documentElement,{subtree:true,characterData:true,childList:true,attributes:true,attributeFilter:[...traducibles,'data-idioma-fuente']});
     let almacenamiento;
     try{almacenamiento={getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v)};}catch{almacenamiento={getItem:()=>null,setItem:()=>{throw Error('storage unavailable');}};}
-    idioma.cargarIdioma(almacenamiento).then(actualizar);
+    // Avisa a idioma-previo (en <head>) de que ya está traducida y se puede enseñar.
+    idioma.cargarIdioma(almacenamiento).then(()=>{actualizar();if(typeof globalThis.RWAdarIdiomaListo==='function')globalThis.RWAdarIdiomaListo();});
     actualizar();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',iniciar,{once:true});else iniciar();

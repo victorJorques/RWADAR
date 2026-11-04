@@ -386,8 +386,12 @@ h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3vw,2.
 .tool{scroll-margin-top:74px;padding-top:70px}
 .tool-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
 .tool-cab p{color:var(--tx-2);margin:6px 0 0;font-size:.94rem}
-.barra{position:sticky;top:60px;z-index:40;background:rgba(7,9,16,.9);
+/* Se pega bajo la cabecera real (--alto-cabecera la mide el JS: una o dos
+   filas) y, al acabar la lista de plataformas, la empuja hacia arriba
+   (--barra-empuje): no tapa Descartadas ni el pie (QA 04/11/2026, n.º 8). */
+.barra{position:sticky;top:var(--alto-cabecera,60px);z-index:40;background:rgba(7,9,16,.9);
   padding-block:15px;border-block:var(--bd);margin-bottom:26px}
+.barra.barra-empujada{transform:translateY(var(--barra-empuje,0px))}
 .barra-in{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .buscar{position:relative;flex:1 1 240px;max-width:340px}
 .buscar svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--tx-3)}
@@ -486,6 +490,9 @@ select option{background:var(--sup);color:var(--tx)}
 .fuentes{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:12px}
 .fuentes a{color:var(--senal);display:inline-flex;align-items:center;min-height:32px;padding:0 8px;border-radius:var(--r-m);font-size:.8125rem;transition:var(--tr)}
 .fuentes a:hover{background:var(--senal-t)}
+/* Consulta técnica (API o JSON): se cita sin enlace (QA 04/11/2026, n.º 12). */
+.consulta-tecnica{color:var(--tx-3);font-size:.8125rem;overflow-wrap:anywhere}
+.fuentes .consulta-tecnica{display:inline-flex;align-items:center;min-height:32px;padding:0 8px}
 
 /* ============ 11 · COMPARADOR Y PANELES ============ */
 .cmpbar{position:fixed;left:50%;bottom:22px;transform:translate(-50%,170%);z-index:70;color:var(--tx);border-radius:var(--r-p);padding:10px 10px 10px 20px;display:flex;align-items:center;gap:15px;box-shadow:var(--e-2);transition:transform var(--t-3) var(--ease);background:var(--s2)}
@@ -1106,6 +1113,17 @@ body.detalle-local-abierto{overflow:hidden}
   .portada-radar{order:-1}
   .radar-caja{max-width:400px}
 }
+/* Tableta y portátil pequeño (hasta 1279 px): la cabecera cabe en UNA fila.
+   «Sonido y vibración» queda solo con su icono (el nombre sigue en aria-label
+   y title), los enlaces se juntan y, por debajo de 1024 px, salen el lema de
+   la marca y «Ver ofertas →», que repite «Ofertas» (QA 04/11/2026, n.º 9). */
+@media (max-width:1279px){
+  .hdr-in{gap:12px}
+  .hdr-link{padding:0 8px}
+  .hdr-cuenta,.hdr-cta{padding:0 12px}
+  .snd{width:44px;padding:0;gap:0;font-size:0}
+}
+@media (max-width:1023px){.wm small,.hdr-cta{display:none}}
 @media (max-width:720px){
   .hdr-link{display:none}
   .marcador{grid-template-columns:repeat(2,1fr)}

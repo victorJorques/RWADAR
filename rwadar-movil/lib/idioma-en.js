@@ -575,6 +575,7 @@
   "Aprender en la Academy": "Learn in the Academy",
   "Cambios en lo que sigues": "Changes in what you follow",
   "Noticias de RWAdar": "RWAdar news",
+  "Consulta técnica": "Technical query",
   "Ver en": "View in",
   "Comunidad": "Community",
   "Publicaciones de la comunidad": "Community posts",

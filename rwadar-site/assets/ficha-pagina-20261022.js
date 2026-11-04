@@ -5,6 +5,11 @@
   if (!pagina || !globalThis.RWAdarFichaEditorial) return;
   let oferta;
   try {oferta=JSON.parse(pagina.dataset.oferta);} catch {return;}
+  // La misma regla que rwadar-fichas.js y la web: /api/ o JSON = consulta técnica.
+  const consultaTecnica=url=>{
+    try {const u=new URL(String(url)); return /(?:^|\/)api(?:\/|$)/i.test(u.pathname) || /\.json$/i.test(u.pathname) ||
+      /(?:^|&)(?:format|output)=json(?:&|$)/i.test(u.search.slice(1));} catch {return false;}
+  };
   function pintar() {
     const resumen=globalThis.RWAdarFichaEditorial.resumenOferta(oferta);
     for (const nombre of ['minimo','accesoEspana','salida','costes','estado']) {
@@ -16,10 +21,17 @@
         ? campo.referencias.map(r=>({fuente:r.fuente,consultadaEl:r.fechaConsulta,etiqueta:r.etiqueta}))
         : campo.fuente ? [campo] : [];
       for (const referencia of referencias) {
+        const fecha=referencia.consultadaEl ? referencia.consultadaEl.split('-').reverse().join('/') : '';
+        const rotulo=globalThis.RWAdarFichaEditorial.rotuloReferencia(referencia.etiqueta);
+        // Una API o una respuesta JSON no es una página para personas: no se enlaza (QA 04/11/2026, n.º 12).
+        if (consultaTecnica(referencia.fuente)) {
+          const tecnica=document.createElement('span'); tecnica.className='consulta-tecnica';
+          tecnica.textContent=' · '+(rotulo ? rotulo+' · ' : '')+'Consulta técnica'+(fecha ? ' · '+fecha : '');
+          nodo.appendChild(tecnica); continue;
+        }
         const fuente=document.createElement('a'); fuente.href=referencia.fuente;
         fuente.target='_blank'; fuente.rel='noopener noreferrer';
-        fuente.textContent=' · '+(globalThis.RWAdarFichaEditorial.rotuloReferencia(referencia.etiqueta) || 'Fuente')+
-          (referencia.consultadaEl ? ' · consultada el '+referencia.consultadaEl.split('-').reverse().join('/') : '')+' ↗';
+        fuente.textContent=' · '+(rotulo || 'Fuente')+(fecha ? ' · consultada el '+fecha : '')+' ↗';
         nodo.appendChild(fuente);
       }
     }

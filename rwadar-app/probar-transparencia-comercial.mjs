@@ -98,7 +98,9 @@ paso('la ruta conserva canonical, sitemap y redirección; el worker no ofrece un
   && /caches\.delete\(nombre\)/.test(worker)
   && !/addEventListener\(\s*['"]fetch['"]|caches\.open\(|cache\.(?:put|addAll|match)\(/.test(worker));
 
+// idioma-previo va en <head>, sin defer: marca el inglés antes de pintar (QA 04/11/2026).
 const scriptsCsp = [
+  '<script src="/assets/idioma-previo-20261104.js"></script>',
   '<script src="/assets/analitica-20260927.js" defer></script>',
   '<script src="/assets/idioma-en-20261022.js" defer></script>',
   '<script src="/assets/idioma-20261022.js" defer></script>',

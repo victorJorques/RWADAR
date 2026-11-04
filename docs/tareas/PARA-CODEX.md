@@ -6,6 +6,87 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 2) · Claude · QA de escritorio: 9 arreglos de la web publicada (sin publicar)
+
+Rama local `claude/qa-escritorio` (sale de `main`, 081fc27). **Sin push, sin
+publicar, Supabase sin tocar, sin OTA ni EAS.** Los números son los de la
+tabla del barrido de calidad (HALLAZGOS.md del coordinador). Va en paralelo
+con `claude/qa-movil` y `claude/escritorio-inicio`; se unirán después.
+
+- **n.º 1 · «0 €» → «NaN»** (94feb93): la franja de cifras anima solo el
+  número y conserva prefijo y sufijo; sin cifra o con 0 no anima, y si otra
+  parte de la página reescribe la cifra, se retira. Antes: «NaN» en inglés y
+  «0» en castellano; ahora «€0» y «0 €».
+- **n.º 7 · el inglés saltaba** (8570810, 1f8e32e): nuevo
+  `assets/idioma-previo-20261104.js` (en `ARCHIVOS_PUBLICABLES`), externo y
+  sin defer en `<head>` porque la CSP no admite scripts en línea. Si la
+  preferencia guardada es inglés pone `lang="en"` y la clase `idioma-previo`
+  (`body{visibility:hidden}` en idioma-20261022.css) hasta que idioma-web
+  avisa de que ha traducido y ha llegado DOMContentLoaded; tope de 1,5 s.
+  Va en Inicio, las páginas de rwadar-fichas.js, Academy, 404, privacidad,
+  transparencia comercial y para empresas. CLS en inglés: **0,22 → 0** a
+  1366 y **0,067 → 0** a 820; la primera pintura en inglés pasa de ~0,25 s a
+  ~0,6 s (espera a la traducción), en castellano no cambia.
+- **n.º 8 · barra de filtros** (b315a15): `.barra` usa `top:var(--alto-cabecera)`
+  (ResizeObserver sobre `.hdr`) y al acabar `#plataformasResultados` se
+  empuja hacia arriba (`--barra-empuje`); no se mueven nodos del DOM, así que
+  el orden móvil/escritorio de `Movil` no cambia. Tapado: 57 → 0 px a 1024 y
+  820; ya no queda fija sobre Descartadas ni el pie.
+- **n.º 9 · cabecera de tableta** (38eb8f7): por debajo de 1280 px «Sonido y
+  vibración» solo con icono (aria-label y title), enlaces y botones más
+  juntos; por debajo de 1024 px salen el lema de la marca y «Ver ofertas →»
+  (repite «Ofertas»). Una fila (69 px) de 768 a 1366, ES y EN, también con
+  «Mis inversiones» e inicial. No toca la estructura de Inicio.
+- **n.º 12 · fuentes que son API** (c6ece17): una URL con `/api/`, que acaba
+  en `.json` o pide `format=json` no se enlaza; se cita «Consulta técnica ·
+  fecha» (con su título si lo tiene). En rwadar-fichas.js
+  (`sinEnlacesTecnicos` sobre el contenido de cada página, sin tocar las
+  plantillas de secciones), ficha-pagina y la web (ficha de oferta y panel de
+  plataforma; fbd7d91 la llama con guarda `typeof`, porque las pruebas de
+  rwadar-movil ejecutan un trozo del script sin el ayudante). Cero enlaces a
+  API en /ofertas/aktionariat, /boss-info, /switzerlend y /plataformas/spiko.
+  Si al lado ya pone «consultada el …», no repite la fecha (bebc45d).
+- **n.º 18 · comparador** (daf08ca): «Mínimo» es el mínimo más bajo
+  documentado en euros entre las ofertas de esa plataforma («Desde 1 €» en
+  Spiko) o «Sin documentar», no «Alto». `textoEspanaOferta` y
+  `textoSalidaOferta`: una sola función para la tarjeta (escritorio y móvil)
+  y «Lo esencial» de la ficha. **No hecho:** el campo «Blockchains» de ARTEX
+  («Mercado regulado (MTF)») es un dato de Supabase; corregirlo va en una
+  entrega del catálogo.
+- **n.º 27 · «Mis inversiones» sin sesión** (df52b2e): rotula «Entrar»; en
+  /acceso el botón de la vista abierta se oculta («Ya tengo cuenta» ya no
+  repite «Entrar»).
+- **n.º 28 · «Noticias de RWAdar»** (77a773a): el menú de las páginas fijas
+  dice «Novedades» («Updates»). og.png regenerado con
+  `rwadar-editorial-source/og.mjs`: sectores como en el radar (Inmobiliario,
+  Crédito, Tesoro…) y un punto por plataforma del catálogo (26).
+- **n.º 29 · compartir** (8570810, 141ad06): og:* y `twitter:card` en
+  privacidad, transparencia comercial y para empresas, y `twitter:card` en
+  todas las páginas de rwadar-fichas.js. Sin imágenes nuevas (las ofertas
+  siguen con su .webp). **Decisión de Víctor:** /para-empresas sigue con
+  `noindex,nofollow`; no se ha cambiado.
+- **Pruebas** (1a90a20): funcionales nuevas en
+  `rwadar-app/probar-web-escritorio.mjs` (las llama probar-web.mjs, que así
+  no pasa su presupuesto de 240 000 B), `probar-fichas.cjs` y
+  `rwadar-acceso/acceso-sin-duplicados.test.mjs`. Ninguna fija frases
+  legales. `npm test` completo en verde (base de datos: 27 scripts con 886
+  comprobaciones, 30 SQL y 11 del mapa; web 589, fichas 70, precarga 32, móvil 409 + 2 omitidas, acceso 145,
+  herramientas y `copiar-idiomas-web --comprobar` sin diferencias). OTA:
+  `comprobar-ota-compatible.cjs --base c1f7106…` da `ok`; no se tocan
+  archivos protegidos. CSS 168 389 B. `probar-orden.mjs` solo avisa de
+  `rwadar-movil/App.js` (119 KB > 110 KB), que ya pasaba en `main`.
+- **Al unir con `claude/qa-movil`:** el código se une sin conflictos; chocan
+  solo las páginas generadas de ofertas, plataformas y Descartadas (una
+  línea cada una). Se resuelven regenerando con `node rwadar-fichas.js` y
+  `node rwadar-academy.js` tras la unión. Con `claude/escritorio-inicio`, sin
+  conflictos.
+- **Pendiente:** publicar (con la sincronización completa) y comprobar en
+  producción; la tarjeta de plataforma y el panel siguen diciendo «Mínimo:
+  alto» / «Importe de entrada: Alto» (nivel de entrada; el barrido solo
+  pedía el comparador). En inglés, «Sin documentar» y «Desde 1 €» del
+  comparador siguen en castellano: idioma-web protege entera la celda
+  `#modal tbody td` (frente de inglés de `claude/qa-movil`).
+
 ## 4 de noviembre de 2026 (noche, 3) · Claude · QA móvil: arreglos de la revisión
 
 Misma rama local `claude/qa-movil`, 6 commits más sobre ee25496 (de 0595f79
