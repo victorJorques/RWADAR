@@ -536,14 +536,36 @@ export default function App() {
       abrirEnlace(destino.url);
     }
   };
+  /* «fuera» abre Plataformas en «Descartadas» (ESPEC-INICIO §4), que va al
+     pie de la lista, tras las 26 fichas. Se baja en cuanto la lista sabe lo
+     que mide: primero al final (así se pintan las últimas fichas) y luego al
+     principio del pie, que es donde empieza «Descartadas». */
+  const listaPlataformas = useRef(null);
+  const medidasPlataformas = useRef({ alto: 0, pie: 0 });
+  const irADescartadas = useRef(false);
+  const bajarADescartadas = () => {
+    const { alto, pie } = medidasPlataformas.current;
+    if (!irADescartadas.current || !alto || !pie || !listaPlataformas.current) return;
+    irADescartadas.current = false;
+    listaPlataformas.current.scrollToEnd?.({ animated: false });
+    const ajustar = () => {
+      const m = medidasPlataformas.current;
+      listaPlataformas.current?.scrollToOffset?.({
+        offset: Math.max(0, m.alto - (StyleSheet.flatten(e.lista).paddingBottom || 0) - m.pie - 8), animated: false });
+    };
+    setTimeout(ajustar, 60);
+    setTimeout(ajustar, 320);
+  };
   /* Destinos de Inicio (noticias y atajos). */
   const irA = (destino, url) => {
     if (destino === 'academy') abrirAcademy();
     else if (destino === 'web' && url) abrirEnlace(url);
     else if (destino === 'buscar' || destino === 'ofertas' || destino === 'fuera' || destino === 'plataformas') {
       tacto.eleccion();
+      irADescartadas.current = destino === 'fuera' && fuera.length > 0;
       setVistaBuscar(destino === 'ofertas' ? 'ofertas' : 'empresas');
       setPestana('buscar');
+      if (irADescartadas.current && pestana === 'buscar' && vistaBuscar === 'empresas') bajarADescartadas();
     }
   };
   const ofertaPorSlug = useMemo(() => new Map(
@@ -689,6 +711,8 @@ export default function App() {
 
           {pestana === 'buscar' && vistaBuscar === 'empresas' ? (
             <FlatList
+              ref={listaPlataformas}
+              onContentSizeChange={(_, alto) => { medidasPlataformas.current.alto = alto; bajarADescartadas(); }}
               data={visibles}
               keyExtractor={(p) => p.slug}
               contentContainerStyle={e.lista}
@@ -761,7 +785,7 @@ export default function App() {
                 />
               }
               ListFooterComponent={
-                <View>
+                <View onLayout={(ev) => { medidasPlataformas.current.pie = ev.nativeEvent.layout.height; bajarADescartadas(); }}>
                   <Descartadas fuera={fuera} />
                   <PiePrivacidad onAbrir={() => setPrivacidad(true)} />
                 </View>
@@ -847,7 +871,10 @@ export default function App() {
                         </Text>
                       </Pressable>
                     </View>
-                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>Arriba, la Selección RWAdar: las que pasan las 5 comprobaciones de transparencia. Después, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.</Text> : null}
+                    {/* La frase de la Selección, solo cuando la lista la lleva arriba. */}
+                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>{filasOfertas[0]?.seleccion
+                      ? 'Arriba, la Selección RWAdar: las que pasan las 5 comprobaciones de transparencia. Después, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'
+                      : 'Primero, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'}</Text> : null}
                     <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
                       {ofertasVisibles.length} de {ofertasDelGrupo.length} {ofertasDelGrupo.length === 1 ? 'ficha' : 'fichas'} · {todasOfertas.length} en el catálogo
                     </Text>
@@ -1963,7 +1990,7 @@ const e = StyleSheet.create({
   },
   segmentoOferta: {
     flex: 1, minHeight: UI.tactil, alignItems: 'center', justifyContent: 'center',
-    borderRadius: 10, paddingHorizontal: 7,
+    borderRadius: R.s, paddingHorizontal: 7,
   },
   segmentoOfertaOn: { backgroundColor: C.s3 },
   segmentoOfertaTxt: { ...T.menor, fontSize: 13, lineHeight: 18, fontFamily: F.media, color: C.tx2, textAlign: 'center' },

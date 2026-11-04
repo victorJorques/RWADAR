@@ -1242,7 +1242,8 @@
   "Aviso importante": "Important notice",
   "Aviso reforzado para esta lección": "Additional notice for this lesson",
   "Sobre esta lección": "About this lesson",
-  "min": "min"
+  "min": "min",
+  "Primero, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.": "First, the references with verifiable figures, followed by those pending or in conflict. The order does not depend on payments or returns."
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);
