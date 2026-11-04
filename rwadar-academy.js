@@ -1028,6 +1028,16 @@ function bloquePortada(academy) {
   <!--academy:fin-->`;
 }
 
+/* El enlace discreto de Inicio a la Academy (decisión de Víctor del 04/11/2026),
+   con el número real de lecciones publicadas. En el móvil cambia a la pestaña
+   Academy; en escritorio abre /academy/. */
+function bloqueInicio(academy) {
+  const n = publicadas(academy).length;
+  return `      <!--academy-inicio:ini-->
+      <a class="b3 rel-academia rel-revela" href="/academy/" data-movil-cambiar="academy"><span>¿Empiezas de cero?</span> <span>${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en Academy</span><span class="rel-flecha" aria-hidden="true"></span></a>
+      <!--academy-inicio:fin-->`;
+}
+
 function bloqueSitemap(academy) {
   const visibles = publicadas(academy);
   const ultima = visibles.map(l => l.revisionLegal).sort().at(-1);
@@ -1101,8 +1111,10 @@ function construirSalidas(academy = cargarAcademy()) {
   salidas.set(path.join(DIR_WEB, 'index.html'), paginaIndice(academy));
   for (const l of publicadas(academy)) salidas.set(path.join(DIR_WEB, `${l.slug}.html`), paginaLeccion(academy, l));
   const index = fs.readFileSync(INDEX_WEB, 'utf8');
-  salidas.set(INDEX_WEB, reemplazarEntreMarcas(index, '<!--academy:ini-->', '<!--academy:fin-->',
-    bloquePortada(academy), 'rwadar-site/index.html'));
+  const conLecciones = reemplazarEntreMarcas(index, '<!--academy:ini-->', '<!--academy:fin-->',
+    bloquePortada(academy), 'rwadar-site/index.html');
+  salidas.set(INDEX_WEB, reemplazarEntreMarcas(conLecciones, '<!--academy-inicio:ini-->', '<!--academy-inicio:fin-->',
+    bloqueInicio(academy), 'rwadar-site/index.html'));
   const sitemap = fs.readFileSync(SITEMAP, 'utf8');
   salidas.set(SITEMAP, reemplazarEntreMarcas(sitemap, '<!-- academy:ini', '<!-- academy:fin -->',
     bloqueSitemap(academy), 'rwadar-site/sitemap.xml'));

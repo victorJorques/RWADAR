@@ -2073,6 +2073,7 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 .rel-escaparate .nota-ilustrativa{margin-top:12px;color:var(--tx-3);font:400 .75rem/1.4 var(--body)}
 .rel-botones{display:grid;gap:12px;margin-top:24px}
 .rel-botones>*{width:100%}
+.rel-academia{margin:16px 0 0 -8px;text-align:left}
 .rel-app{margin-top:24px;padding-top:16px;border-top:var(--bd)}
 .rel-app-enlace{margin-left:-8px}
 .rel-app-nota{margin-top:4px;color:var(--tx-2);font:400 .9375rem/1.5 var(--body)}

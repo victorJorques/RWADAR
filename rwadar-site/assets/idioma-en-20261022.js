@@ -1389,6 +1389,7 @@
   "Son las mejor documentadas del radar.": "They are the best documented on the radar.",
   "Pasar las 5 comprobaciones no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.": "Passing the 5 checks doesn't make an offer safer or more profitable. It is not an investment recommendation.",
   "Mira, compara y decide tú.": "Look, compare and decide for yourself.",
+  "¿Empiezas de cero?": "Starting from scratch?",
   "Ver las plataformas": "See the platforms",
   "App gratis para Android": "Free app for Android",
   "Se descarga en rwadar.pages.dev/android, no en Google Play.": "Download it at rwadar.pages.dev/android, not on Google Play.",
