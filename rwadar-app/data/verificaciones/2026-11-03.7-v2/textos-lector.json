@@ -1,0 +1,396 @@
+{
+  "etiqueta": "2026-11-03.7",
+  "desde": "2026-11-03.6",
+  "redactadoEl": "2026-11-04",
+  "decision": "Víctor, 04/11/2026: «hasta que no esté todo no has acabado». Faltaban los textos del catálogo de la lista de frases (filas 11, 12, 18, 19 y 75, anexos A y B) y RealT.",
+  "reglas": [
+    "Solo cambian textos que ve el lector. Cifras, fechas de verificación, fuentes del lote, colecciones y ofertas quedan igual.",
+    "Cada texto nuevo dice lo mismo que el anterior y que su fuente; se quitan las instrucciones para redactores y la jerga.",
+    "La etiqueta es 2026-11-03.7 y no 2026-11-04: los datos siguen siendo del 03/11 y el cargador exige que la carpeta coincida con la fecha de los datos. Poner 04/11 alargaría un día la vigencia sin haber vuelto a leer las fuentes."
+  ],
+  "revision": {
+    "addx": {
+      "estadoOperativo": {
+        "antes": "La web mantiene alta y catálogo de oportunidades.",
+        "despues": "La web sigue aceptando altas y muestra su catálogo de oportunidades."
+      },
+      "alertas": {
+        "no_minorista": {
+          "antes": "No presentar como acceso minorista general ni como disponible automáticamente en España.",
+          "despues": "No está abierta a cualquier inversor minorista, y no puedes dar por hecho que se pueda contratar desde España."
+        }
+      }
+    },
+    "archax": {
+      "estadoOperativo": {
+        "antes": "Las webs del grupo y de Europa ya se leen (requieren JavaScript). El grupo dice operar mediante entidades en Reino Unido y España; la web europea marca el MTF, la intermediación, la custodia y la tokenización como 'pre-launch'. No se confirma actividad comercial en la UE.",
+        "despues": "El grupo dice operar con empresas en Reino Unido y España. Su web europea marca como «pre-launch» (aún sin lanzar) el sistema multilateral de negociación (MTF), la intermediación, la custodia y la tokenización. No hemos podido confirmar actividad comercial en la UE.",
+        "nota": "Se quita «ya se leen (requieren JavaScript)», que es un apunte de cómo se leyó la web."
+      },
+      "alertas": {
+        "entidad_y_servicio": {
+          "antes": "El registro de la sociedad europea no confirma que un producto esté abierto ni que una persona concreta sea elegible.",
+          "despues": "Que su sociedad europea esté registrada no confirma que un producto esté abierto ni que tú puedas invertir."
+        }
+      }
+    },
+    "artex-global-markets": {
+      "estadoOperativo": {
+        "antes": "La portada se lee con JavaScript: ARTEX se presenta como MTF de arte regulado por la FMA de Liechtenstein. Su página de valores muestra una sola cotización (un tríptico de Francis Bacon) con último precio de 67 € y volumen 4, pero sin mejor oferta de compra ni de venta ni fecha de la operación, así que no se confirma negociación activa.",
+        "despues": "ARTEX se presenta como un sistema multilateral de negociación (MTF) de arte regulado por la FMA de Liechtenstein. Su página de valores muestra una sola cotización (un tríptico de Francis Bacon) con un último precio de 67 € y un volumen de 4, pero sin mejor precio de compra ni de venta ni fecha de la operación. Por eso no podemos confirmar que haya negociación activa."
+      },
+      "alertas": {
+        "registro_no_equivale_operacion": {
+          "antes": "Mantener la fila como no verificable hasta confirmar web, instrumento vivo y proceso de alta.",
+          "despues": "Hasta que podamos confirmar su web, un instrumento que se negocie de verdad y cómo darse de alta, la tratamos como no verificable.",
+          "nota": "La lista proponía «No hemos podido confirmar que su web funcione…», pero su portada sí se lee (ver el estado). Se conserva lo que dice el texto: las tres cosas que faltan por confirmar."
+        }
+      }
+    },
+    "backed-finance": {
+      "estadoOperativo": {
+        "antes": "La web muestra xStocks y documentación de producto vigente.",
+        "despues": "La web muestra los xStocks y su documentación de producto en vigor."
+      },
+      "alertas": {
+        "distribuidor_y_producto": {
+          "antes": "No traducir 'folleto aprobado' a disponibilidad minorista universal ni a aval del regulador.",
+          "despues": "Que el folleto esté aprobado no significa que cualquier inversor minorista pueda comprar ni que el supervisor avale el producto."
+        }
+      }
+    },
+    "blocksquare": {
+      "estadoOperativo": {
+        "antes": "La portada, que requiere JavaScript, presenta una oferta B2B: protocolo de tokenización inmobiliaria y plataforma de marca blanca con contacto comercial. El apartado de noticias no muestra entradas fechadas, así que no se confirma actividad actual ni portales vivos.",
+        "despues": "Su web se dirige a empresas: ofrece un protocolo de tokenización inmobiliaria y una plataforma de marca blanca, con contacto comercial. Sus noticias no tienen fecha, así que no podemos confirmar que siga activa ni que haya portales en funcionamiento."
+      },
+      "licenciaRegistro": {
+        "antes": "Los términos ya se leen. Son una plantilla para socios certificados (operador 'CP_COMPANY') que declara que el operador no presta servicios financieros licenciados ni regulados. No identifican entidad ni registro, y la web marca 'Regulation' como 'Available soon'.",
+        "despues": "Ya se pueden leer sus condiciones de uso. Son una plantilla para socios certificados (operador 'CP_COMPANY') que declara que el operador no presta servicios financieros licenciados ni regulados. No identifican entidad ni registro, y la web marca 'Regulation' como 'Available soon'.",
+        "nota": "Solo cambia la primera frase, como pide la lista."
+      },
+      "alertas": {
+        "operador_y_activo": {
+          "antes": "No atribuir a cada portal una licencia o vínculo registral por utilizar tecnología de tokenización. Revisar emisor, contrato y jurisdicción del activo.",
+          "despues": "Que un portal use su tecnología de tokenización no significa que tenga licencia ni que esté inscrito en un registro. Revisa quién lo emite, el contrato y la jurisdicción del activo."
+        }
+      }
+    },
+    "centrifuge": {
+      "estadoOperativo": {
+        "antes": "La web mantiene infraestructura de gestión de activos on-chain.",
+        "despues": "La web sigue ofreciendo infraestructura para gestionar activos en blockchain."
+      },
+      "alertas": {
+        "protocolo_no_emisor": {
+          "antes": "Verificar cada fondo, emisor, jurisdicción y documento de oferta; no atribuir al protocolo la licencia del vehículo.",
+          "despues": "Centrifuge es el protocolo, no el emisor: la licencia del vehículo de un fondo no es de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta."
+        }
+      }
+    },
+    "courtyard": {
+      "alertas": {
+        "coleccionable_no_valor": {
+          "antes": "No presentar coleccionables, recompra o mercado secundario como inversión regulada ni como liquidez garantizada.",
+          "despues": "Los coleccionables, la recompra y su mercado de reventa no son una inversión regulada ni garantizan que puedas vender."
+        }
+      }
+    },
+    "figure": {
+      "estadoOperativo": {
+        "antes": "Figure.com mantiene servicios de crédito y enlaces a OPEN y Figure Markets; esto no acredita una oferta de inversión concreta abierta.",
+        "despues": "Figure.com sigue ofreciendo servicios de crédito y enlaces a OPEN y Figure Markets; eso no demuestra que haya una oferta de inversión concreta abierta."
+      },
+      "alertas": {
+        "marca_multi_entidad": {
+          "antes": "Distinguir Figure Securities de los servicios de crédito y otras entidades de la marca; comprobar el contrato específico del producto.",
+          "despues": "Figure Securities es una empresa distinta de los servicios de crédito y de las demás empresas de la marca. Comprueba el contrato del producto concreto."
+        }
+      }
+    },
+    "fireblocks": {
+      "alertas": {
+        "licencia_entidad_especifica": {
+          "antes": "No describir todos los servicios Fireblocks como custodia regulada; separar Trust Company, software y terceros custodios.",
+          "despues": "No todos los servicios de Fireblocks son custodia regulada: su Trust Company, su software y los custodios externos son cosas distintas."
+        }
+      }
+    },
+    "franklin-templeton": {
+      "estadoOperativo": {
+        "antes": "Benji y el Franklin OnChain U.S. Government Money Fund mantienen superficies y folleto.",
+        "despues": "Las páginas de Benji y del Franklin OnChain U.S. Government Money Fund, y su folleto, siguen publicadas."
+      },
+      "alertas": {
+        "producto_y_geografia": {
+          "antes": "No convertir un fondo estadounidense accesible por Benji en oferta minorista global.",
+          "despues": "Que un fondo estadounidense se pueda contratar a través de Benji no lo convierte en una oferta abierta a minoristas de cualquier país."
+        }
+      }
+    },
+    "inx": {
+      "alertas": {
+        "no_nasdaq": {
+          "antes": "No afirmar que INX cotiza en Nasdaq; la evidencia revisada confirma el broker/ATS, no ese mercado bursátil.",
+          "despues": "Lo que hemos revisado confirma su bróker y su sistema alternativo de negociación (ATS), pero no que INX cotice en Nasdaq.",
+          "nota": "La lista proponía «No hemos encontrado pruebas…»; se deja como en el original: lo revisado confirma el bróker y el ATS, no Nasdaq."
+        }
+      }
+    },
+    "lofty": {
+      "estadoOperativo": {
+        "antes": "La web y el marketplace de participaciones inmobiliarias siguen activos.",
+        "despues": "La web y su mercado de participaciones inmobiliarias siguen activos."
+      },
+      "alertas": {
+        "sin_registro_y_liquidez": {
+          "antes": "No llamar 'oferta registrada' al marketplace ni prometer liquidez instantánea; la ejecución ocurre en redes públicas y no se garantiza mejor ejecución.",
+          "despues": "Su mercado no es una oferta registrada y no garantiza que puedas vender al momento. Las operaciones se hacen en redes públicas y no se garantiza que se ejecuten en las mejores condiciones.",
+          "nota": "«Mejor ejecución» no es solo el precio; por eso «en las mejores condiciones» y no «al mejor precio»."
+        }
+      }
+    },
+    "maple-finance": {
+      "estadoOperativo": {
+        "antes": "La web mantiene productos de crédito institucional y syrup.",
+        "despues": "La web sigue ofreciendo productos de crédito para instituciones y syrup."
+      },
+      "alertas": {
+        "producto_a_producto": {
+          "antes": "No atribuir licencia o elegibilidad de un pool a todo Maple; protocolo, interfaz, emisor y vehículo son capas distintas.",
+          "despues": "La licencia o los requisitos de un fondo (pool) no valen para todo Maple: el protocolo, la interfaz, el emisor y el vehículo son piezas distintas."
+        }
+      }
+    },
+    "midas": {
+      "estadoOperativo": {
+        "antes": "El índice oficial de productos de midas.app (llms.txt) mantiene su catálogo, con mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base de 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
+        "despues": "La lista oficial de productos de midas.app sigue incluyendo mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base del 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto no dejan leerse con herramientas automáticas, así que no hemos comprobado cada emisión."
+      },
+      "alertas": {
+        "terminos_finales_no_confirmados": {
+          "antes": "No usar 'aprobado por la FMA' como aval ni como licencia de Midas. El folleto base de 17/07/2026 dice que la FMA solo revisa completitud, comprensibilidad y coherencia y que el emisor no queda regulado por ella. Exigir los términos finales vigentes de mTBILL, que deciden si se admite a minoristas del EEE.",
+          "despues": "Que el folleto esté «aprobado por la FMA» no es un aval ni una licencia de Midas: según el folleto base del 17/07/2026, la FMA solo revisa que esté completo, se entienda y sea coherente, y el emisor no queda regulado por ella. Si pueden entrar minoristas del EEE lo deciden los términos finales vigentes de mTBILL, que no hemos podido obtener.",
+          "nota": "«Que no hemos podido obtener»: lo dice la licencia de Midas en este mismo lote («No se obtuvieron los términos finales vigentes de mTBILL»)."
+        }
+      }
+    },
+    "ondo-finance": {
+      "estadoOperativo": {
+        "antes": "La web mantiene USDY, OUSG y Ondo Stocks.",
+        "despues": "La web sigue ofreciendo USDY, OUSG y Ondo Stocks."
+      },
+      "acceso": {
+        "antes": "Para residentes del EEE, USDY exige cliente profesional o inversor cualificado, además del onboarding del emisor.",
+        "despues": "Para residentes del EEE, USDY exige cliente profesional o inversor cualificado, además del alta con el emisor."
+      },
+      "alertas": {
+        "no_acceso_general": {
+          "antes": "No presentar Ondo como minorista global; incluso productos llamados de acceso general tienen restricciones por jurisdicción.",
+          "despues": "Ondo no está abierta a minoristas de todo el mundo: incluso los productos que llama «de acceso general» tienen restricciones según la jurisdicción."
+        }
+      }
+    },
+    "openeden": {
+      "estadoOperativo": {
+        "antes": "La portada muestra TBILL, USDO y HYBOND con sus volúmenes, y la documentación oficial de TBILL y su proceso de onboarding es legible.",
+        "despues": "La portada muestra TBILL, USDO y HYBOND con sus volúmenes, y se puede leer la documentación oficial de TBILL y de su proceso de alta."
+      },
+      "alertas": {
+        "solo_profesional": {
+          "antes": "No presentar TBILL como acceso minorista ni confundir rating del fondo con garantía de capital.",
+          "despues": "TBILL no está abierto a inversores minoristas, y la calificación (rating) del fondo no garantiza tu capital."
+        }
+      }
+    },
+    "pax-gold": {
+      "estadoOperativo": {
+        "antes": "Paxos mantiene la ficha PAXG, custodia y opciones de redención.",
+        "despues": "Paxos sigue publicando la ficha de PAXG, su custodia y las opciones de canje."
+      },
+      "alertas": {
+        "oro_tokenizado": {
+          "antes": "Respaldado y canjeable no significa sin riesgo; verificar custodio, comisiones, tamaño mínimo y canal de redención.",
+          "despues": "Que esté respaldado por oro y se pueda canjear no significa que no tenga riesgo. Comprueba el custodio, las comisiones, el mínimo y cómo se canjea."
+        }
+      }
+    },
+    "reental": {
+      "estadoOperativo": {
+        "antes": "La FAQ oficial describe registro, KYC/AML y firma del acuerdo; no se comprobó la apertura actual de una emisión concreta.",
+        "despues": "Sus preguntas frecuentes oficiales explican el registro, la verificación de identidad y de prevención del blanqueo (KYC/AML) y la firma del contrato. No hemos comprobado si ahora hay una emisión concreta abierta."
+      },
+      "alertas": {
+        "emision_no_licencia_plataforma": {
+          "antes": "No convertir el registro de una emisión/ERIR en licencia global de plataforma ni dar por abierta una oportunidad sin ficha actual.",
+          "despues": "Que una emisión esté inscrita (ERIR) no es una licencia para toda la plataforma, y una oportunidad sin ficha actual no hay que darla por abierta."
+        }
+      }
+    },
+    "republic": {
+      "estadoOperativo": {
+        "antes": "republic.com bloquea las consultas automatizadas. El centro de ayuda oficial de Republic Europe sigue guiando el alta, la exploración de oportunidades y la inversión en campañas.",
+        "despues": "republic.com no deja leer su web con herramientas automáticas. El centro de ayuda oficial de Republic Europe sigue explicando cómo darse de alta, ver oportunidades e invertir en campañas."
+      },
+      "alertas": {
+        "grupo_multi_entidad": {
+          "antes": "No atribuir a Republic en bloque el registro de una filial ni omitir el régimen específico de cada oferta.",
+          "despues": "El registro de una filial no cubre a todo Republic, y cada oferta tiene sus propias reglas."
+        }
+      }
+    },
+    "securitize": {
+      "estadoOperativo": {
+        "antes": "La portada ya se lee: presenta inversiones tokenizadas (acciones de EE. UU. en cadena y fondos como ARK Venture Fund) con alta y acceso. No se comprobó una oferta concreta abierta; el registro de Securitize Markets se comprueba por separado.",
+        "despues": "La portada presenta inversiones tokenizadas (acciones de EE. UU. en blockchain y fondos como ARK Venture Fund) con alta y acceso. No hemos comprobado una oferta concreta abierta; el registro de Securitize Markets se revisa aparte."
+      },
+      "alertas": {
+        "entidades_separadas": {
+          "antes": "Nombrar la filial regulada y no extender su permiso a tokenización, administración o asesoramiento del grupo.",
+          "despues": "El permiso es de una filial concreta, Securitize Markets, LLC (bróker registrado ante la SEC y la FINRA, y ATS), y no cubre la tokenización, la administración ni el asesoramiento del resto del grupo.",
+          "nota": "La lista dejaba «(Si se conoce, nombrar la filial.)». Se conoce: es la que acredita su fuente, el informe de FINRA BrokerCheck de Securitize Markets, LLC, y la que nombra la licencia de este lote."
+        }
+      }
+    },
+    "spiko": {
+      "estadoOperativo": {
+        "antes": "La página oficial Web3 mantiene productos de tesorería, suscripción y reembolso; no se realizó onboarding.",
+        "despues": "Su página oficial Web3 sigue mostrando productos de tesorería, con suscripción y reembolso. No llegamos a darnos de alta."
+      },
+      "alertas": {
+        "distribucion_espana": {
+          "antes": "UCITS no equivale por sí solo a onboarding disponible en España; comprobar pasaporte, distribuidor y clase.",
+          "despues": "Ser un fondo UCITS no basta, por sí solo, para poder contratarlo desde España: hay que comprobar el pasaporte, el distribuidor y la clase de participación."
+        }
+      }
+    },
+    "superstate": {
+      "estadoOperativo": {
+        "antes": "La web mantiene fondos tokenizados y FundOS.",
+        "despues": "La web sigue ofreciendo fondos tokenizados y FundOS."
+      },
+      "alertas": {
+        "solo_cualificados": {
+          "antes": "No omitir la doble elegibilidad ni confundir filing/registro con aprobación o garantía.",
+          "despues": "Para USTB hay que cumplir dos requisitos a la vez: ser inversor acreditado y «qualified purchaser». Presentar documentos o estar inscrito ante un supervisor no es una aprobación ni una garantía.",
+          "nota": "Los dos requisitos son los del acceso de Superstate en este lote («USTB exige acreditado y qualified purchaser»), con la misma fuente."
+        }
+      }
+    },
+    "swarm": {
+      "estadoOperativo": {
+        "antes": "La web redirige a una aplicación sin contenido extraíble; no se confirmó actividad transaccional ni una oferta abierta.",
+        "despues": "La web lleva a una aplicación de la que no se puede leer el contenido; no hemos confirmado que haya operaciones ni una oferta abierta."
+      },
+      "alertas": {
+        "acceso_no_confirmado": {
+          "antes": "No presentar Swarm como acceso minorista disponible sin condiciones actuales de alta, entidad y jurisdicción verificables.",
+          "despues": "No está confirmado que un inversor minorista pueda entrar: no hemos podido comprobar unas condiciones de alta actuales que digan con qué empresa se contrata y desde qué jurisdicciones.",
+          "nota": "La lista decía «no hemos podido comprobar … la empresa». Su aviso legal sí nombra a Swarm Capital GmbH (licencia de este lote); lo que falta son condiciones de alta actuales por empresa y jurisdicción."
+        }
+      }
+    },
+    "taurus": {
+      "acceso": {
+        "antes": "La documentación contempla clientes minoristas, profesionales e institucionales, en ejecución-only; onboarding desde España no confirmado.",
+        "despues": "La documentación contempla clientes minoristas, profesionales e institucionales, en régimen de solo ejecución, sin asesoramiento; no está confirmado que se pueda dar de alta desde España."
+      },
+      "alertas": {
+        "execution_only": {
+          "antes": "No confundir clasificación de cliente con disponibilidad universal, asesoramiento o evaluación de idoneidad.",
+          "despues": "Que Taurus clasifique a sus clientes (minoristas, profesionales o institucionales) no significa que el servicio esté abierto a todos, ni que te asesoren o comprueben si te conviene."
+        }
+      }
+    },
+    "tokeny": {
+      "estadoOperativo": {
+        "antes": "La web mantiene software de emisión y cumplimiento on-chain.",
+        "despues": "La web sigue ofreciendo software para emitir tokens y cumplir la normativa en blockchain."
+      },
+      "alertas": {
+        "proveedor_no_emisor": {
+          "antes": "No atribuir a Tokeny la licencia, custodia, solvencia o elegibilidad del emisor que usa su software.",
+          "despues": "Tokeny es el proveedor del software: la licencia, la custodia, la solvencia y los requisitos de acceso son del emisor que lo usa, no de Tokeny."
+        }
+      }
+    },
+    "tzero": {
+      "estadoOperativo": {
+        "antes": "La web mantiene infraestructura de emisión, trading y custodia.",
+        "despues": "La web sigue ofreciendo infraestructura de emisión, negociación y custodia."
+      },
+      "alertas": {
+        "entidad_y_activo": {
+          "antes": "No extender SEC/FINRA a todo el grupo ni asumir que cada activo del ATS está abierto a minoristas.",
+          "despues": "Su registro ante la SEC y la FINRA no cubre a todo el grupo, y no hay que dar por hecho que cada activo de su sistema de negociación (ATS) esté abierto a minoristas.",
+          "nota": "El original no dice que haya activos cerrados a minoristas, solo que no se dé por hecho que todos estén abiertos."
+        }
+      }
+    }
+  },
+  "plataformasPublicas": {
+    "nota": "Estos tres textos no están en la revisión: viven en public.plataformas y public.fuentes, que el lote diario solo lee (CICLO-DIARIO-CATALOGO.md §5). Van en textos-plataformas.sql, aparte, y solo entran en aplicar-y-aprobar.sql con --con-textos-plataformas.",
+    "reental": {
+      "nota": {
+        "antes": "Proyectos inmobiliarios en España y Latinoamérica desde 100 €. La opción más accesible para un inversor español.",
+        "despues": "Proyectos inmobiliarios en España y Latinoamérica desde 100 €.",
+        "fila": 18,
+        "motivo": "Se quita la valoración («la opción más accesible…»). No se añade nada."
+      }
+    },
+    "toucan-protocol": {
+      "motivo_descarte": {
+        "antes": "El bloqueo no es suyo sino del registro: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudia un estado «inmovilizado» que la permitiría, todavía sin resolver. Toucan respaldó públicamente la decisión.",
+        "despues": "El bloqueo no viene de Toucan, sino de los registros de carbono: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudia un estado «inmovilizado» que la permitiría, todavía sin resolver. Toucan respaldó públicamente la decisión.",
+        "fila": 75,
+        "motivo": "Solo cambia el principio, para que se sepa de quién no es el bloqueo. El resto es igual y conserva sus tres fuentes."
+      }
+    },
+    "realt": {
+      "etiqueta_descarte": {
+        "antes": "En liquidación",
+        "despues": "Liquidación anunciada",
+        "motivo": "La empresa anunció la liquidación el 02/07/2026; Cryptoast (04/07/2026) dice que no se puede confirmar que afecte a la sociedad matriz."
+      },
+      "motivo_descarte": {
+        "antes": "Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones, en la mayor demanda por insalubridad de la historia de la ciudad. Un juez le prohibió cobrar alquileres en las no conformes y le ordenó reparar. En julio de 2026 la propia empresa anunció liquidación voluntaria y la venta de sus más de 700 inmuebles en Detroit.",
+        "despues": "En julio de 2025, Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones. Un juez le prohibió cobrar alquileres hasta que las viviendas cumplieran la normativa y le ordenó repararlas. En julio de 2026 la empresa anunció una liquidación voluntaria y la venta de toda su cartera. Había vendido en tokens participaciones de unos 700 inmuebles de Detroit.",
+        "motivo": "Sin «la mayor demanda…»: no está en BridgeDetroit ni en Michigan Public, y la nota de la ciudad de Detroit devuelve 403 (curl y WebFetch, 04/11/2026). La liquidación, la venta y «unos 700» no tenían fuente en la ficha; ahora la tienen (Outlier Media, 16/07/2026)."
+      },
+      "fuentesNuevas": [
+        {
+          "url": "https://outliermedia.org/realt-crypto-real-estate-detroit-properties/",
+          "titulo": "Outlier Media · RealT anuncia que venderá sus inmuebles de Detroit",
+          "publicada_el": "2026-07-16",
+          "consultada_el": "2026-11-04",
+          "literal": "Crypto real estate company plans to sell over 700 Detroit properties · «A cryptocurrency real estate company that sold shares of about 700 Detroit properties says it plans to sell off its entire portfolio» · «We are entering voluntary liquidation,» he said (Jean-Marc Jacobson, llamada con inversores del 2 de julio). Aaron Mondry, 16/07/2026, leído con WebFetch el 04/11/2026 (curl devolvió 429)."
+        }
+      ],
+      "fuentesQueSeConservan": [
+        {
+          "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
+          "literal": "«… the city of Detroit's suit, filed earlier this month, against Real Token, or RealT; its co-founders, brothers Remy Jacobson and Jean-Marc Jacobson; and 165 affiliates, for public nuisance violations involving more than 400 residential properties in Detroit with substandard conditions.» · «A Wayne County Circuit Court judge has barred Real Token … from collecting rent from tenants until properties are brought up to code» · titular «Judge bars Real Token from collecting rent, orders repairs», 24/07/2025. Leído con curl el 04/11/2026."
+        },
+        {
+          "url": "https://www.bridgedetroit.com/detroit-sues-blockchain-real-estate-firm/",
+          "literal": "No se pudo releer el 04/11/2026 (429). Se conserva."
+        },
+        {
+          "url": "https://detroitmi.gov/news/city-scores-major-win-tenants-living-troubled-real-token-properties-are-subject-sweeping-lawsuit",
+          "literal": "403 con curl y con WebFetch el 04/11/2026. Se conserva, pero ya no respalda ningún superlativo."
+        }
+      ],
+      "contraste": [
+        "Cryptoast, 04/07/2026 (https://cryptoast.fr/immobilier-tokenise-realt-liquidation-francais-concernes/): «RealT a officialisé jeudi sa décision d'engager une procédure de liquidation volontaire, qui concernerait également les LLC … et les INC associées», «Nous allons vendre chaque actif», «les quelque 700 biens du portefeuille» y «ne permettent pas de confirmer formellement que la société mère elle-même est placée en liquidation». No se añade como fuente: basta Outlier, y la regla es no cambiar más fuentes de las necesarias.",
+        "Michigan Public / Outlier Media, 20/03/2026: «around 700 homes and apartment buildings in Detroit». Coincide con «unos 700»."
+      ]
+    }
+  },
+  "noSePuede": [
+    {
+      "fila": 19,
+      "texto": "«Marketplace» → «Mercado de compraventa» (9 plataformas)",
+      "motivo": "No es un texto del catálogo: es el valor del tipo enumerado rwa_actor ('Marketplace', 'Emisor', 'Infraestructura') de public.plataformas.actor. Cambiarlo en la base es cambiar el esquema, que el ciclo de catálogo no permite. Se puede hacer en el código, en lo que se enseña: web (rwadar-20260820.js, que lo pinta en :1439, :1479, :1491, :1564 y :5280), fichas estáticas (rwadar-fichas.js:244) y app, con su entrada en inglés."
+    }
+  ]
+}
