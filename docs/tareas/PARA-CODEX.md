@@ -6,6 +6,40 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 3) · Claude · QA móvil: arreglos de la revisión
+
+Misma rama local `claude/qa-movil`, 6 commits más sobre ee25496 (de 0595f79
+a 7b28852, y este traspaso). **Sin push, nada publicado, Supabase sin tocar, sin OTA ni
+workflows.** Solo cambia cómo se pinta; los datos del catálogo, igual.
+
+- **Importante (arreglado):** 5 fichas fijas `/ofertas/<slug>` (aktionariat,
+  prosegur-digital-gold, robinhood-classic-stock-tokens y las dos de Spiko)
+  enseñaban «· comisiones · consulta 01/11/2026» en Costes. Ahora el enlace
+  usa `rotuloReferencia()`: «· Comisiones · consultada el 01/11/2026 ↗».
+  Comprobado en navegador: 0 de 24 fichas con claves internas.
+- **Menores (arreglados):**
+  - **Costes (web y app):** «Comisiones» va aparte y se traduce («Fees»); la
+    cita lleva `lang` y la nota «Cita literal de la fuente, en inglés.», como
+    en «Datos con su fecha».
+  - **Idioma de la cita:** las 12 de Brickwise («Vermittlungsgebühr…») salen
+    como alemán (más palabras alemanas, ä/ö/ü/ß y «Investor:in» no cuenta
+    como «in»); «Start with as little as €1», como inglés. Sobre las 476
+    referencias del catálogo de hoy solo cambian esas 17, todas a mejor.
+  - **A 360 px:** «Mercado de compraventa» en dos líneas sin cortar; títulos
+    de «Recién añadidas» a cuatro líneas, sin cortes; rótulos del radar a
+    44 px (65-70×44); chips cortos («All», 37 px) con diana de 44×46.
+  - **Inglés:** «+ Follow this platform» y su nota en la ficha de plataforma.
+  - **App Academy:** «7 LECCIONES · 3 NIVELES» (antes 9, junto a «de 7»).
+- **No hecho:** la página no vuelve a preguntar por la sesión tras el primer
+  401 (`acceso-privado.js`). Vale mientras las cuentas sigan en pausa; al
+  reabrirlas, comprobar al volver a la pestaña o con un evento `storage`.
+- **Pruebas:** `npm test` en verde (1.466 correctas, 0 fallidas; node --test
+  11/11, 409/411 con 2 omitidas, 144/144). Guardián OTA `ok` (1.4.1(23)).
+  Ajustadas dos comprobaciones existentes de costes (web y app) al nuevo
+  marcado; sin pruebas nuevas de textos. Medidas y capturas en
+  `scratchpad/qa-movil-fix2/` (`resultados.json`, `capturas/`).
+- **Al publicar:** web y OTA (la app cambia en Costes y Academy).
+
 ## 4 de noviembre de 2026 (noche, 2) · Claude · arreglos del barrido de calidad de la web en el móvil
 
 Rama local `claude/qa-movil` (sale de `main`, 081fc27). **Sin push, nada
