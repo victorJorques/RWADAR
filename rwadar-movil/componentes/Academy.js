@@ -93,7 +93,7 @@ export default function Academy({ slug, onAbrirLeccion, onVolver, onCerrar, onAc
         <View style={{ flex: 1 }}>
           <Text style={e.cabEtiqueta}>RWAdar Academy</Text>
           <Text style={e.cabTitulo} numberOfLines={1} accessibilityRole="header">
-            {leccion ? `Lección ${leccion.modulo} de ${LECCIONES.length}` : 'Lecciones'}
+            {leccion ? `Lección ${leccion.modulo} de ${PUBLICADAS.length}` : 'Lecciones'}
           </Text>
         </View>
         {/* Como pestaña no se cierra: se cambia de pestaña. */}

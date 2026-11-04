@@ -727,7 +727,7 @@ function paginaLeccion(academy, l) {
   const ctx = { destinos: academy.destinos, lecciones: academy.lecciones };
   const nivel = nivelDe(academy, l.nivel);
   const nNivel = numeroNivel(academy, l.nivel);
-  const total = academy.lecciones.length;
+  const total = publicadas(academy).length; // solo las publicadas: «Lección 1 de 7», no «de 9»
   const canonica = `${ORIGEN}${urlLeccion(l.slug)}`;
   const cuerpo = l.cuerpo.map(b => ({ ...b }));
   const indice = asignarIds(cuerpo);
