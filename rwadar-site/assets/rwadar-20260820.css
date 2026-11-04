@@ -1109,6 +1109,17 @@ body.detalle-local-abierto{overflow:hidden}
   .portada-radar{order:-1}
   .radar-caja{max-width:400px}
 }
+/* Tableta y portátil pequeño (hasta 1279 px): la cabecera cabe en UNA fila.
+   «Sonido y vibración» queda solo con su icono (el nombre sigue en aria-label
+   y title), los enlaces se juntan y, por debajo de 1024 px, salen el lema de
+   la marca y «Ver ofertas →», que repite «Ofertas» (QA 04/11/2026, n.º 9). */
+@media (max-width:1279px){
+  .hdr-in{gap:12px}
+  .hdr-link{padding:0 8px}
+  .hdr-cuenta,.hdr-cta{padding:0 12px}
+  .snd{width:44px;padding:0;gap:0;font-size:0}
+}
+@media (max-width:1023px){.wm small,.hdr-cta{display:none}}
 @media (max-width:720px){
   .hdr-link{display:none}
   .marcador{grid-template-columns:repeat(2,1fr)}
