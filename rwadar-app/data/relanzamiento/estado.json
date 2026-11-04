@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 04/11: remates de web y app, «Recién añadidas» y textos del catálogo para el lector (entrega 2026-11-03.7, revisión f2732257, aplicada con Aplicar catálogo y sincronizada). Orden de Víctor: «hasta que no esté todo no has acabado» y «súbelo en cuanto esté». Dos revisiones independientes del catálogo y revisión y corrección de los remates; npm test completo en verde.",
+  "nota": "Claude, 04/11: textos de Reental, Toucan y RealT (entrega 2026-11-03.8, solo public.plataformas y public.fuentes), aplicada con Aplicar catálogo y sincronizada; antes, remates, «Recién añadidas» y la entrega 2026-11-03.7. Orden de Víctor: «hasta que no esté todo no has acabado». Revisión independiente con fuentes abiertas; npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "d9092daf80a74d1baf1638ed78e127b615e598d9",
-    "contenidoSha256": "sha256:c05d7fecdee97ce4aba632e05108f23da60071bab99437e1d816924b0d7af7d1",
+    "commit": "763f77121924fea20d9765177f401dbf2e590353",
+    "contenidoSha256": "sha256:570fddb208697ccd06e1b715775aa20dce34469a7d8ba7a9d25e8349e72bd9f0",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
