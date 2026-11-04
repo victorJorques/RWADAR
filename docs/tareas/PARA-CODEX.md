@@ -6,6 +6,27 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (tarde, 2) · Claude · remates, «Recién añadidas» y textos del catálogo publicados
+
+Víctor: «hasta que no esté todo no has acabado» y «súbelo en cuanto esté».
+PR #50 (remates, «Recién añadidas» y entrega 2026-11-03.7), unida a `main`.
+
+- **Catálogo 2026-11-03.7:**
+  - **Antes de aplicar:** lectura como visitante a las 16:58:48 UTC; la publicada
+    era la `344a86aa`, con 24 ofertas (8/13/3).
+  - **Aplicado** con «Aplicar catálogo» desde `main` (725a153).
+  - **Después:** en línea, la `f2732257-206d-48ce-2067-c7e19fa33002`, con 24
+    ofertas (8/13/3) y 26 plataformas. Sale el aviso nuevo («No está abierta a
+    cualquier inversor minorista…») y ya no sale «No presentar como…».
+  - **Sincronizado:** `sincronizar.js`, `rwadar-fichas.js` y
+    `transparencia.json` (revisión y lote nuevos). `npm test` en verde.
+- **Decisión de Víctor (04/11):** la nota legal NO lleva frase de «posiciones
+  propias». Hoy no tiene inversiones en el radar y RWAdar no hace
+  recomendaciones: valora datos y documentos. Si un día invierte en algo del
+  radar, revisarlo con él.
+- **Pendiente:** Reental, Toucan y RealT (`public.plataformas`), en otra
+  entrega. El texto nuevo de RealT tiene que decir solo lo que dice su fuente.
+
 ## 4 de noviembre de 2026 (tarde, 3) · Claude · correcciones de la revisión a la entrega 2026-11-03.7 (sin aplicar)
 
 Misma rama local `claude/catalogo-2026-11-04`, commits dd1cef2, 8caf488,
