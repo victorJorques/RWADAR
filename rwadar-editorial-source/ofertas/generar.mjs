@@ -16,7 +16,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
-import { execSync } from 'node:child_process';
+import { execSync, execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import * as ESCENAS from './escenas.mjs';
 import { pagina, W, H } from './plantilla.mjs';
@@ -135,7 +135,16 @@ const { errores, sinImagen, porSlug } = validar(spec, catalogo);
 if (errores.length) { console.error(errores.map(e => `ERROR ${e}`).join('\n')); process.exit(1); }
 if (sinImagen.length) console.warn(`AVISO: ${sinImagen.length} fichas sin ilustración propia (usan la de su categoría): ${sinImagen.join(', ')}`);
 console.log(`fichas.json: ${spec.fichas.length} fichas (${Object.keys(fotos.fotos).length} con foto), catálogo ${catalogo.carpeta}`);
-if (SOLO_COMPROBAR) process.exit(0);
+if (SOLO_COMPROBAR) {
+  // El resto del contenido editorial se comprueba aquí y no con entradas nuevas
+  // en el package.json raíz: ese archivo lo vigila el guardián de la OTA
+  // (rwadar-movil/scripts/comprobar-ota-compatible.cjs) y cambiarlo exigiría
+  // otro APK aunque solo se toquen los scripts de pruebas.
+  for (const extra of ['ofertas/transparencia.mjs', 'inicio/fuentes.mjs']) {
+    execFileSync(process.execPath, [path.join(RAIZ, 'rwadar-editorial-source', extra), '--comprobar'], { stdio: 'inherit' });
+  }
+  process.exit(0);
+}
 
 const sharp = require('sharp');
 const { chromium } = cargarPlaywright();
