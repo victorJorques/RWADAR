@@ -1,0 +1,34 @@
+{
+  "versionEsquema": 2,
+  "tipo": "textos_plataformas",
+  "etiqueta": "2026-11-03.8",
+  "revisionId": null,
+  "revisionNueva": false,
+  "revisionPublicadaExigida": "f2732257-206d-48ce-2067-c7e19fa33002",
+  "hashRevisionPublicadaExigida": "f2732257206d48ce2067c7e19fa3300202a22060ffcda457d2aea8f6d20da7a9",
+  "revisionPublicadaComprobadaEnRemoto": false,
+  "desde": "2026-11-03.7",
+  "tablas": [
+    "public.plataformas",
+    "public.fuentes"
+  ],
+  "cambios": [
+    "reental.nota",
+    "toucan-protocol.motivo_descarte",
+    "realt.etiqueta_descarte",
+    "realt.motivo_descarte"
+  ],
+  "titulosFuentes": [
+    {
+      "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
+      "antes": "BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar",
+      "despues": "BridgeDetroit · una jueza prohíbe a Real Token cobrar alquileres y ordena reparar"
+    }
+  ],
+  "fuentesNuevas": [
+    "https://outliermedia.org/realt-crypto-real-estate-detroit-properties/"
+  ],
+  "estado": "preparada",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}
