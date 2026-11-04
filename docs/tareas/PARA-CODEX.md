@@ -6,6 +6,39 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 2) · Claude · Inicio como historia también en escritorio (sin publicar)
+
+Rama local `claude/escritorio-inicio` (sobre `main` 320ec05), commits
+a213955 (CSS) y 12455de (JS). **Sin push, nada publicado, Supabase sin
+tocar, sin OTA.** Solo cambian `rwadar-20260820.css` y `rwadar-20260820.js`;
+`index.html` no hizo falta tocarlo.
+
+- **Qué se ve:** a partir de 1024 px, Inicio es la misma historia que en el
+  móvil y con el mismo texto: portada a dos columnas (titular, subtítulo,
+  botón y aviso a la izquierda; el radar grande con sus cifras a la
+  derecha), «Recién añadidas», capítulos 01–06 en una columna de 720 px con
+  las cifras grandes, Selección, fuentes y nota legal. «Quién más se ha
+  movido», «Recién añadidas» y la Selección pasan de carrusel a cuadrícula
+  más ancha (3 por fila; 4 si son 4; si sobran 2, a medias). Debajo siguen
+  Ofertas, Plataformas, Método, Descartadas y Academy como antes.
+- **Cómo:** el JS mueve el panel de Inicio al principio de `<main>` y pone
+  `html.escritorio-relato`; por debajo de 1024 px lo devuelve a su sitio. El
+  radar interactivo de la portada antigua pasa a Plataformas, justo después
+  de «El radar»; el titular antiguo y el marcador se ocultan en ese ancho.
+  En escritorio, los botones del relato bajan a su sección, «Explorar el
+  radar» lleva a Plataformas y las tarjetas abren su ficha. La barra de
+  lectura va bajo la cabecera y solo mientras se lee Inicio.
+- **Lo que no cambia:** el móvil y el escritorio de 768 a 1023 px. Comparado
+  con `main` estilo a estilo (390 px en Inicio, Ofertas y Plataformas; 800 y
+  1000 px): idéntico. Ofertas, Plataformas, Método, Descartadas y Academy a
+  1366 y 1024: idénticos; solo se mueve el radar.
+- **Pruebas:** `npm test` completo en verde; guardián de la OTA ok. CSS:
+  173 579 B (presupuesto 180 000). Sin textos nuevos, así que sin cambios en
+  inglés.
+- **Pendiente:** que Víctor lo vea y, si le vale, unir y publicar la web.
+  La cabecera de escritorio ya se partía en dos líneas a 1024 px antes de
+  este cambio; no se ha tocado.
+
 ## 4 de noviembre de 2026 (noche) · Claude · entrega 2026-11-03.8: textos de Reental, Toucan y RealT (sin aplicar)
 
 Víctor: «hasta que no esté todo no has acabado». Rama local
@@ -41,6 +74,7 @@ Víctor: «hasta que no esté todo no has acabado». Rama local
   `npm test`; sellar; «Publicar web». No hace falta OTA (la app lee estos
   textos de Supabase). Detalle en
   `rwadar-app/data/verificaciones/2026-11-03.8-v2/INFORME-ENTREGA.md`.
+
 
 ## 4 de noviembre de 2026 (tarde, 2) · Claude · remates, «Recién añadidas» y textos del catálogo publicados
 
