@@ -74,6 +74,42 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
       /html\.idioma-previo body\{visibility:hidden\}/.test(lee('assets/idioma-20261022.css')) &&
       ARCHIVOS_PUBLICABLES.includes('assets/idioma-previo-20261104.js'));
   }
+  // Remates 04/11/2026: Inicio sin salto (CLS) en tableta y escritorio. La clase
+  // escritorio-relato llega desde <head>, con la misma consulta que Movil.adaptar();
+  // el panel ya va el primero en <main> y se ve aunque nazca con [hidden].
+  {
+    const codigoPrevio = lee('assets/idioma-previo-20261104.js'), css = lee('assets/rwadar-20260820.css');
+    const movil = (js.match(/const media=window\.matchMedia\('([^']+)'\)/) || [])[1] || '';
+    const apaisado = movil.split(/,\s*/)[1] || '';
+    const ensayo = ({ ruta = '/', ancho, horizontal = false, almacen = null }) => {
+      const clases = new Set();
+      const contexto = vm.createContext({
+        location: { pathname: ruta },
+        matchMedia: q => ({ matches: q === '(min-width: 768px)' ? ancho >= 768 : q === apaisado ? horizontal : false }),
+        localStorage: { getItem: () => { if (almacen) throw almacen; return null; } },
+        document: { documentElement: { lang: 'es', classList: { add: c => clases.add(c), remove: c => clases.delete(c) } }, addEventListener: () => {} },
+        setTimeout: () => {},
+      });
+      contexto.globalThis = contexto;
+      vm.runInContext(codigoPrevio, contexto);
+      return clases.has('escritorio-relato');
+    };
+    prueba('Inicio nace como historia desde 768 px (salvo móvil apaisado), solo en «/» y aunque falle el almacenamiento',
+      apaisado.includes('max-height: 540px') && codigoPrevio.includes(apaisado) &&
+      /const ancho=window\.matchMedia\('\(min-width: 768px\)'\)/.test(js) && !/insertBefore\(panelInicio/.test(js) &&
+      ensayo({ ancho: 1024 }) && ensayo({ ancho: 820 }) && !ensayo({ ancho: 390 }) && !ensayo({ ancho: 900, horizontal: true }) &&
+      !ensayo({ ruta: '/academy/', ancho: 1366 }) && ensayo({ ancho: 1366, almacen: new Error('bloqueado') }));
+    const principal = html.slice(html.indexOf('<main id="top">'), html.indexOf('</main>'));
+    const portada = (html.match(/<section class="rel-nuevas" id="relNuevas"[^>]*>/) || [''])[0];
+    const letra = (css.match(/font-family:'Geist';font-style:normal;[^}]*src:url\(([^)]+)\)/) || [])[1];
+    prueba('el panel de Inicio va el primero en <main>, se ve con [hidden] y «Recién añadidas» no aparece de golpe',
+      /^<main id="top">\s*(?:<!--[\s\S]*?-->\s*)?<section class="movil-panel" id="movilPanelInicio"/.test(principal) &&
+      principal.indexOf('id="movilPanelInicio"') < principal.indexOf('id="movilPanelRadar"') &&
+      /@media \(min-width:768px\)\{\s*\.escritorio-relato #movilPanelInicio\{display:block\}/.test(css) &&
+      portada && !/\shidden\b/.test(portada));
+    prueba('la letra principal se precarga en <head> con el mismo archivo que usa el CSS',
+      Boolean(letra) && html.slice(0, html.indexOf('</head>')).includes(`<link rel="preload" href="${letra}" as="font" type="font/woff2" crossorigin>`));
+  }
   // QA escritorio 04/11/2026, n.º 12: en el panel y en la ficha de la web, una
   // API o una respuesta JSON se cita sin enlace, con su fecha.
   {

@@ -2154,7 +2154,7 @@ var relatoInicio=(function(){
    emiCat='';emiTipoLocal='todos';emiBusquedaLocal='';const b=$('emiBuscar');if(b)b.value='';
    pintarFiltrosEmision();pintarTiposOfertaLocal();pintarEmisiones();}
   /* Tocar el radar o «Explorar el radar» abre el radar de Plataformas. */
-  /* En escritorio (1024 px o más) no hay pestañas: cada botón baja a su
+  /* En tableta y escritorio (768 px o más) no hay pestañas: cada botón baja a su
      sección, el radar al radar interactivo de Plataformas y cada tarjeta abre su ficha. */
   const esc=!raiz.classList.contains('movil-ui')&&e.target.closest&&e.target.closest('[data-inicio-radar],[data-movil-ir],[data-perfil-oferta]');
   if(esc){e.preventDefault();if(esc.dataset.perfilOferta){abrirDetalleOfertaLocal(esc.dataset.perfilOferta);return;}
@@ -5199,13 +5199,11 @@ const Movil = (function(){
   .map(p=>[p.dataset.movilPanel,p]));
  const panelBuscar=paneles.get('buscar');
  const panelAcademy=paneles.get('academy');
- /* Escritorio ancho (1024 px o más): Inicio cuenta arriba la misma historia
-    que en el móvil y el radar interactivo pasa a Plataformas. Entre 768 y
-    1023 px el escritorio sigue como estaba. */
- const ancho=window.matchMedia('(min-width: 1024px)');
- const panelInicio=paneles.get('inicio');
- const anclaInicio=panelInicio&&panelInicio.parentNode&&typeof document.createComment==='function'?document.createComment('rwadar: posición de Inicio'):null;
- if(anclaInicio)panelInicio.parentNode.insertBefore(anclaInicio,panelInicio);
+ /* Tableta y escritorio (768 px o más): Inicio cuenta arriba la misma historia
+    que en el móvil y el radar interactivo pasa a Plataformas. Inicio ya va en
+    el HTML al principio de <main> (así «#top» lo abre) y idioma-previo marca
+    html.escritorio-relato antes de pintar: nada se mueve ni salta al cargar. */
+ const ancho=window.matchMedia('(min-width: 768px)');
  const emisiones=document.getElementById('emisiones');
  const portada=document.querySelector('#movilPanelRadar>.portada');
  const portadaTexto=document.querySelector('.portada-txt');
@@ -5561,11 +5559,6 @@ const Movil = (function(){
  }
  function adaptar(){
   const esMovil=media.matches,relato=!esMovil&&ancho.matches;
-  /* Inicio sube al principio de <main> (así «#top» lo abre) y vuelve a su sitio al salir. */
-  if(panelInicio&&panelBuscar&&panelBuscar.parentNode){
-   if(relato){if(panelInicio.nextSibling!==panelBuscar)panelBuscar.parentNode.insertBefore(panelInicio,panelBuscar);}
-   else if(anclaInicio&&anclaInicio.parentNode&&anclaInicio.nextSibling!==panelInicio)anclaInicio.parentNode.insertBefore(panelInicio,anclaInicio.nextSibling);
-  }
   if(document.documentElement&&document.documentElement.classList)document.documentElement.classList.toggle('escritorio-relato',relato);
   /* En escritorio el h1 de la portada antigua no se ve: el título de Inicio hace de h1. */
   const titInicio=document.getElementById('inicioPortadaTit');
