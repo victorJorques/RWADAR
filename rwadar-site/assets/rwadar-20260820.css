@@ -2089,7 +2089,7 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 .rel-refs>summary{display:flex;align-items:center;justify-content:space-between;min-height:56px;color:var(--tx);font:600 .9375rem/1.2 var(--body)}
 .rel-refs>summary::after{color:var(--tx-3)}
 .rel-refs-nota{margin-bottom:8px}
-.rel-refs-grupo{margin:0 -8px 8px;padding:8px;border-radius:var(--r-m);scroll-margin-top:76px;transition:background-color var(--t-3) var(--ease)}
+.rel-refs-grupo{margin:0 -8px 8px;padding:8px;border-radius:var(--r-m);scroll-margin-top:8px;transition:background-color var(--t-3) var(--ease)}
 .rel-refs-grupo:focus{outline:0}
 .rel-refs-grupo:focus-visible{outline:2px solid var(--senal);outline-offset:-2px}
 .rel-refs-grupo.activa{background:var(--ton)}
