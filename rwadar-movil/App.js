@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { ActivityIndicator, Animated, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
-import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal, useIdioma } from './componentes/Idioma';
+import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal, useIdioma, cargarIdiomaGuardado } from './componentes/Idioma';
 import { traducir } from './lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -182,6 +182,9 @@ export default function App() {
     }
   }, [cuenta]);
   const { width: anchoPantalla } = useWindowDimensions();
+
+  // El idioma elegido en Perfil vale desde la primera pantalla (también la de acceso).
+  useEffect(() => { cargarIdiomaGuardado(); }, []);
 
   useEffect(() => {
     // Crear y liberar en el mismo efecto evita conservar un cliente del SDK
