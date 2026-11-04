@@ -33,9 +33,10 @@
     '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar',
     '#movilPanelInicio .inicio-oferta-tit','#movilPanelInicio .inicio-oferta-prov','#movilPanelInicio .inicio-oferta-aviso','.escaparate-comprobacion-motivo-fuente','.escaparate-comprobacion-dato','.escaparate-fuente-titulo',
     '#emiLista .escaparate-dato-principal b','#emiLista .escaparate-referencia','#emiLista .escaparate-aviso-compacto',
-    '.escaparate-datos-clave dd:has(a)','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
+    '.escaparate-datos-clave dd:has(a)>.dato-fuente','.escaparate-datos-clave dd:has(a)>.escaparate-cita-original','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
     '.escaparate-dialogo-identidad','.escaparate-dialogo-resumen','.escaparate-documentacion-caracteristicas',
-    '.escaparate-referencias-fechadas','.escaparate-fuentes-documentales','.escaparate-dialogo-metricas','.escaparate-dialogo-avisos',
+    // De las referencias fechadas solo son de la fuente el rótulo original, el valor y el alcance.
+    '.escaparate-referencias-fechadas .ref-etiqueta-original','.escaparate-referencias-fechadas .ref-valor','.escaparate-referencias-fechadas .ref-alcance','.escaparate-dialogo-metricas','.escaparate-dialogo-avisos',
     '#grid .empresa-visual__texto strong','#grid .empresa-visual__imagen','#grid .ficha-nom h3','#grid .sub','#grid .nota','#grid .aval',
     '#matrix .mm','#rlNom','#rlMeta','#dwId h3','#dwBody .pn-resumen>p','#dwBody .pn-claves','#dwBody .pn-origen-visual>span',
     '#dwBody .pn-verificacion-local-campo>p','#dwBody .pn-verificacion-local-alertas ul','#dwBody .pn-datos-grid dd','#dwBody .pn-fuentes',

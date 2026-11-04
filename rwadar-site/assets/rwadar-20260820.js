@@ -2252,6 +2252,11 @@ function documentacionOfertaLocal(o,ahora=new Date()){
       fuente(r.fuente)&&d.fuentes.includes(r.fuente)))return null;
  return d;
 }
+/* Rótulo legible de una referencia («accesoEspana · consulta …» → «Acceso
+   desde España») e idioma de su cita; la lógica vive en ficha-editorial.js. */
+function rotuloRefLocal(e){const api=typeof globalThis!=='undefined'&&globalThis.RWAdarFichaEditorial;return api&&api.rotuloReferencia?api.rotuloReferencia(e):textoLocal(e)}
+function idiomaCitaLocal(v){const api=typeof globalThis!=='undefined'&&globalThis.RWAdarFichaEditorial;return api&&api.idiomaCita?api.idiomaCita(v):''}
+const NOMBRE_IDIOMA_CITA={en:'inglés',fr:'francés',de:'alemán'};
 function nombreFuenteLocal(url){
  try{return new URL(url).hostname.replace(/^www\./,'')}catch{return 'Fuente documental'}
 }
@@ -2266,9 +2271,13 @@ function partesDocumentacionOferta(d,{resumen='',ultima=''}={}){
   d.caracteristicas.map(c=>'<div><dt>'+escHtml(c.etiqueta)+'</dt><dd>'+escHtml(c.valor)+'</dd></div>').join('')+'</dl></details>':'';
  const referencias=d.referencias.length?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Datos con su fecha <span>'+d.referencias.length+'</span></summary>'+
   '<p class="escaparate-documentacion-aviso">Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.</p>'+
-  '<div class="escaparate-referencias-fechadas">'+d.referencias.map(r=>'<article><h4>'+escHtml(r.etiqueta)+'</h4><p><b>'+escHtml(r.valor)+'</b></p>'+
+  '<div class="escaparate-referencias-fechadas">'+d.referencias.map(r=>{
+    /* El rótulo es de la interfaz (se traduce); el valor y el alcance, citas de la fuente. */
+    const rotulo=rotuloRefLocal(r.etiqueta),interno=rotulo!==textoLocal(r.etiqueta),idioma=idiomaCitaLocal(r.valor);
+    return '<article><h4'+(interno?'':' class="ref-etiqueta-original"')+'>'+escHtml(rotulo)+'</h4><p class="ref-valor"'+(idioma?' lang="'+idioma+'"':'')+'><b>'+escHtml(r.valor)+'</b></p>'+
+    (NOMBRE_IDIOMA_CITA[idioma]?'<p class="ref-nota-idioma">Cita literal de la fuente, en '+NOMBRE_IDIOMA_CITA[idioma]+'.</p>':'')+
     '<p>Fecha del dato: '+(r.fechaDato?fecha(r.fechaDato):'no indicada en la fuente')+' · Consultado el '+fecha(r.fechaConsulta)+'</p>'+
-    '<p>'+escHtml(r.alcance)+'</p><a href="'+escHtml(r.fuente)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Ver fuente · '+nombreFuenteLocal(r.fuente)+' de '+r.etiqueta+': '+r.fuente)+'">Ver fuente · '+escHtml(nombreFuenteLocal(r.fuente))+' ↗</a></article>').join('')+'</div></details>':'';
+    '<p class="ref-alcance">'+escHtml(r.alcance)+'</p><a href="'+escHtml(r.fuente)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Ver fuente · '+nombreFuenteLocal(r.fuente)+' de '+rotulo+': '+r.fuente)+'">Ver fuente · '+escHtml(nombreFuenteLocal(r.fuente))+' ↗</a></article>'}).join('')+'</div></details>':'';
  return {ficha,referencias,fuentes:'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Fuentes consultadas · '+fecha(d.revisadaEl)+'</summary>'+ultima+'<ul class="escaparate-fuentes-documentales">'+
   d.fuentes.map((u,i)=>'<li><a href="'+escHtml(u)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Fuente '+(i+1)+' · '+nombreFuenteLocal(u)+': '+u)+'">Fuente '+(i+1)+' · '+escHtml(nombreFuenteLocal(u))+' ↗</a></li>').join('')+'</ul></details>'};
 }
@@ -2423,7 +2432,7 @@ function datosClaveOfertaHtml(resumen,completo=false,metricas=[]){
  return '<dl class="escaparate-datos-clave'+(completo?' escaparate-datos-completos':'')+'">'+datos.map(([nombre,campo])=>{
   const referencias=completo&&Array.isArray(campo.referencias)?campo.referencias.filter(r=>r&&urlHttps(r.fuente)&&fechaLocalValida(r.fechaConsulta)):[];
   let citas='';
-  if(completo&&referencias.length>1)citas='<ul>'+referencias.map((r,i)=>'<li><a href="'+escHtml(urlHttps(r.fuente))+'" target="_blank" rel="noopener nofollow" aria-label="Fuente '+(i+1)+' · '+escHtml(r.etiqueta)+' de '+escHtml(nombre)+'">Fuente '+(i+1)+' · '+escHtml(r.etiqueta)+' ↗</a><small>Consultada el '+escHtml(fechaES(r.fechaConsulta))+
+  if(completo&&referencias.length>1)citas='<ul>'+referencias.map((r,i)=>'<li><a href="'+escHtml(urlHttps(r.fuente))+'" target="_blank" rel="noopener nofollow" aria-label="Fuente '+(i+1)+' · '+escHtml(rotuloRefLocal(r.etiqueta))+' de '+escHtml(nombre)+'">Fuente '+(i+1)+' · '+escHtml(rotuloRefLocal(r.etiqueta))+' ↗</a><small>Consultada el '+escHtml(fechaES(r.fechaConsulta))+
     (r.fechaDato?' · Dato del '+escHtml(fechaES(r.fechaDato)):'')+'</small></li>').join('')+'</ul>';
   else if(completo){const fuente=referencias[0]&&referencias[0].fuente||campo.fuente,fecha=referencias[0]&&referencias[0].fechaConsulta||campo.consultadaEl;
    citas=(urlHttps(fuente)?' <a href="'+escHtml(urlHttps(fuente))+'" target="_blank" rel="noopener nofollow" aria-label="Fuente de '+escHtml(nombre)+'">Fuente ↗</a>':'')+
@@ -2432,8 +2441,9 @@ function datosClaveOfertaHtml(resumen,completo=false,metricas=[]){
      métrica en castellano del catálogo y la cita original debajo. */
   const breve=(completo?campo.texto:textoBreveDatoTarjetaLocal(campo)).replace(nombre==='Salida'?/^Salida:\s*/i:/$^/,'');
   const coste=completo&&nombre==='Costes'&&metricas.find(x=>/comisi|coste|gasto|tarifa/i.test(normalizaBuscaLocal(x.etiqueta)));
-  if(coste)return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+escHtml(coste.valor)+'<small class="escaparate-cita-original">'+escHtml(breve)+'</small>'+citas+'</dd></div>';
-  return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+escHtml(breve)+citas+'</dd></div>';
+  /* El dato va en su propio span: es texto de la fuente; las citas son interfaz y se traducen. */
+  if(coste)return '<div><dt>'+escHtml(nombre)+'</dt><dd><span class="dato-fuente">'+escHtml(coste.valor)+'</span><small class="escaparate-cita-original">'+escHtml(breve)+'</small>'+citas+'</dd></div>';
+  return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+(citas?'<span class="dato-fuente">'+escHtml(breve)+'</span>':escHtml(breve))+citas+'</dd></div>';
  }).join('')+'</dl>';
 }
 /* ---- Transparencia de cada oferta (03/11/2026) ----------------------
