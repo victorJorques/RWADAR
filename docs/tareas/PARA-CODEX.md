@@ -6,6 +6,77 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 · Claude · Inicio como historia, barra de 5 y «Descartadas» (sin publicar)
+
+Rama local `claude/inicio-historia` (sale de `claude/acabados`), commits
+cc11db1…fe349fb. **Nada publicado, nada en `main`, Supabase sin tocar, app sin
+tocar** (salvo el diccionario `rwadar-movil/lib/idioma-en.js`, que es común).
+
+- **Inicio cuenta la historia** de HISTORIA-v2 con el orden de ESPEC-INICIO:
+  radar vivo arriba, seis capítulos, novedades, Selección con sus 5
+  comprobaciones a la vista, «Mira, compara y decide tú», fuentes y nota legal.
+  Sin buscador. La comunidad pasa a Perfil.
+- **Texto limpio, sin llamadas [n]** (decisión de Víctor del 04/11: «Los
+  números 9 10 14 18, ¿los puedes quitar del texto?»). Cada apartado acaba en
+  «Fuentes de este apartado ›», que abre su grupo en la lista del final, con
+  «Volver al texto». Las 38 fuentes viven en
+  `rwadar-editorial-source/inicio/fuentes.json` y las escribe `fuentes.mjs`
+  (con `--comprobar` en `test:tools`).
+- **Cifras del catálogo** (24, 26, 4, 3, 5, «una de ellas, de 1 $», fechas) solo
+  en `cifrasInicio()`; sin catálogo vigente se ocultan la Selección, los
+  mínimos y la vigencia, y la línea de riesgo se queda.
+- **Barra de 5:** Inicio · Ofertas · Plataformas · Academy · Perfil. Fuera el
+  selector de Buscar; la vista sigue en `body[data-movil-buscar]`. Siguen
+  igual `data-movil-ir`, `data-movil-tab`, los hash (`#tool` marca
+  Plataformas), «Explorar el radar», las fichas y su vuelta. Escritorio igual.
+- **«Descartadas»** («Discarded» en inglés) en todos los rótulos de la web y en
+  las fichas de descarte («… · Plataforma descartada»). La ruta
+  `/fuera-del-radar/` y `#fuera` no cambian.
+- **Frases de LISTA-FINAL.md** que están en el código de la web: filas 1-3,
+  5, 7-9, 11 (solo el rótulo), 13, 16, 20, 22, 23 (solo la tercera frase),
+  24-34, 35, 36-42, 44-48, 52, 55-58, 63, 70-74, 76, 77, 79-83, 85-87, 89-91
+  y 93, con su inglés.
+- **Inglés:** Inicio entero (comprobado: ningún texto en castellano queda en
+  el panel) y las frases nuevas; plantillas propias en `idioma-web`.
+- **Pruebas** (`probar-web.mjs`, comentario con la decisión en cada cambio):
+  la barra pasa a 5 botones, Inicio nuevo, Selección, comprobaciones y cifras;
+  nuevas: sin `[n]` visible y cada apartado con su grupo de fuentes, frases
+  prohibidas, «Descartadas» sí y «Fuera del radar» no, y los enlaces de
+  siempre. Los arneses del service worker pasan a `probar-web-pwa.mjs` para
+  que `probar-web.mjs` siga por debajo de su presupuesto (239 854 B). También
+  `probar-fichas.cjs`, `rwadar-app/probar-verificacion-local-ui.mjs` y
+  `rwadar-app/probar-transparencia-comercial.mjs` (frases nuevas).
+- `npm test` completo en verde; `probar-orden.mjs` solo avisa de `App.js`,
+  como antes. CSS 165 074 B (de 155 166), JS 381 378 B.
+- Capturas a 390 × 844, 360 × 780, 375 × 667 y 1366 × 900, y `medidas.json`, en
+  el scratchpad de la sesión (`inicio-real/`). La portada mide lo mismo que la
+  maqueta: botón 595-643, aviso 651-723 y «Explorar el radar» 723-767 a 390 px.
+
+**Pendiente:**
+- **Datos del catálogo (ciclo con permiso de Víctor):** avisos y notas de
+  plataforma (filas 11-12, anexos A y B), Reental (18), «Marketplace» (19) y
+  el motivo de Toucan (75).
+- **Decisión de Víctor:** el subtítulo «Registro de tokenización» (fila 10 y
+  92, con `og.png`), el acceso a Academy desde Inicio, sus posiciones propias,
+  la relación pagada y «la mayor demanda» de RealT (ESPEC-INICIO §10).
+- **Ciclo de la app** (mismo texto o pruebas de paridad en `rwadar-movil`):
+  filas 14, 17, 23 (dos primeras frases) y 43; «Descartadas» en `App.js`,
+  `Inicio.js`, Academy y noticias (`noticias.json` y `academy.json` reescriben
+  archivos de la app; por eso «Fuera del radar» sigue en las lecciones, en
+  `/cambios` y en el RSS), y la barra de 5 en la app.
+- **No aplicadas por ahora:** cuentas y vigilancia (49-51, 53, 54: la cuenta
+  está en pausa y sus pruebas fijan esas frases), Academy (59-62, 64-69),
+  conversión y B2B (78, 84, 88), y la fila 83 conserva «no es una oferta
+  comercial» porque lo exige `probar-para-empresas.mjs`.
+- `transparencia.json` sigue con sus criterios antiguos: Inicio enseña los de
+  HISTORIA-v2 en llano y la ficha los del archivo (cambiarlo reescribe
+  `rwadar-movil/lib/transparencia-contenido.js`).
+- Notas del coordinador, confirmadas: portadas de Plataformas con texto y
+  cápsula encima, «Cifras vigentes 6 d» y el «Consultar fuente» grande en el
+  sitio del precio de la ficha. El tren del capítulo 6 es el único y no mete
+  prisa.
+- Publicar necesita el permiso de Víctor.
+
 ## 4 de noviembre de 2026 · Claude · acabados de la web (sin publicar)
 
 Rama local `claude/acabados` (sale de 1b0e1e3), commits 53bb826…8a6afdb.
