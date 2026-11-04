@@ -1623,8 +1623,9 @@ body.detalle-local-abierto{overflow:hidden}
   #movilPanelRadar .empresa-visual__texto strong,#movilPanelRadar .empresa-visual__texto small{display:block}
   #movilPanelRadar .empresa-visual__texto strong{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;
     color:var(--tx);font:600 .9375rem/1.25 var(--body);letter-spacing:-.01em}
-  #movilPanelRadar .empresa-visual__texto small{margin-top:2px;overflow:hidden;color:var(--tx-2);
-    font:400 .75rem/1.3 var(--body);text-overflow:ellipsis;white-space:nowrap}
+  /* Hasta dos líneas: «Mercado de compraventa · Reino Unido» no cabe en una y la región no se pierde. */
+  #movilPanelRadar .empresa-visual__texto small{display:-webkit-box;margin-top:2px;overflow:hidden;color:var(--tx-2);
+    font:400 .75rem/1.3 var(--body);-webkit-box-orient:vertical;-webkit-line-clamp:2}
   #movilPanelRadar .empresa-visual__verificada{display:flex;align-items:center;margin:6px 10px 0;
     gap:4px;color:var(--tx-3);font:500 .75rem/1.2 var(--body)}
   #movilPanelRadar .empresa-visual__verificada>span{min-width:0;overflow-wrap:anywhere}
