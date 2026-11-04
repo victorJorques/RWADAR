@@ -1341,6 +1341,7 @@ function GrupoMenu({ titulo, children }) {
 }
 
 function FilaMenu({ icono, titulo, subtitulo, onPress, ultima, peligro, cargando }) {
+  useIdioma();
   const color = peligro ? C.coral : C.tx;
   return (
     <Pressable
@@ -1348,7 +1349,7 @@ function FilaMenu({ icono, titulo, subtitulo, onPress, ultima, peligro, cargando
       disabled={cargando}
       style={({ pressed }) => [e.filaMenu, !ultima && e.filaMenuBorde, pressed && e.pulsadoSuave, cargando && e.deshabilitado]}
       accessibilityRole="button"
-      accessibilityLabel={`${titulo}. ${subtitulo}`}
+      accessibilityLabel={`${traducir(titulo)}. ${traducir(subtitulo)}`}
       accessibilityState={{ disabled: !!cargando, busy: !!cargando }}
     >
       <View style={[e.filaIcono, peligro && e.filaIconoPeligro]}>

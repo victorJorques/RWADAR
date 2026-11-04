@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { Pressable, ScrollView, Text, View } from './Idioma';
+import { FuenteOriginal, Pressable, ScrollView, Text, View } from './Idioma';
 import { C, F, R, T, UI } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 import { Icono } from './Navegacion';
@@ -240,6 +240,8 @@ function Leccion({ l, progreso, onAccion, onMarcar, onTest, onAbrirLeccion, onWe
       </View>
       {leida ? <Text style={e.leidaAviso}>✓ Marcaste esta lección como leída.</Text> : null}
 
+      {/* En inglés, el texto de la lección sigue en castellano y se avisa, como en la web. */}
+      <FuenteOriginal idiomaOriginal="es-ES" />
       <Bloques bloques={l.preambulo} onAccion={onAccion} />
 
       <View style={e.tldr}>
@@ -393,7 +395,7 @@ function Test({ preguntas, onAccion, onTerminar }) {
       {contestadas === preguntas.length ? (
         <View style={e.resumen} accessibilityLiveRegion="polite">
           <Text style={e.resumenTxt}>
-            Has acertado {aciertos} de {preguntas.length}.{aciertos === preguntas.length ? ' Lección dominada.' : ' Repasa las explicaciones de las que fallaste.'}
+            {`Has acertado ${aciertos} de ${preguntas.length}.${aciertos === preguntas.length ? ' Lección dominada.' : ' Repasa las explicaciones de las que fallaste.'}`}
           </Text>
         </View>
       ) : null}
@@ -408,7 +410,9 @@ function AvisoLegal({ leccion, onAccion }) {
   return (
     <View style={e.legal}>
       <Text style={e.legalTit}>Aviso importante</Text>
-      {AVISO_COMUN.map((tramos, k) => <Texto key={k} tramos={tramos} estilo={e.legalTxt} onAccion={onAccion} />)}
+      {/* El aviso legal es contenido revisado: se queda en castellano también en inglés. */}
+      <FuenteOriginal idiomaOriginal="es-ES" />
+      {AVISO_COMUN.map((tramos, k) => <Texto key={k} tramos={tramos} estilo={e.legalTxt} onAccion={onAccion} original />)}
       {leccion && leccion.notaLegal.length ? (
         <View style={[e.legalPropio, leccion.avisoReforzado && e.legalReforzado]}>
           <Text style={[e.legalEtiqueta, leccion.avisoReforzado && e.legalEtiquetaReforzada]}>
@@ -530,7 +534,7 @@ function Acciones({ tramos, onAccion }) {
 }
 
 /* Texto con negrita, cursiva, saltos de línea y enlaces de acción. */
-function Texto({ tramos, estilo, onAccion }) {
+function Texto({ tramos, estilo, onAccion, original }) {
   const partes = useMemo(() => tramos.map((t, k) => {
     if (t.br) return '\n';
     if (t.a) {
@@ -549,7 +553,9 @@ function Texto({ tramos, estilo, onAccion }) {
     // Si un tramo es negrita y cursiva a la vez, manda la negrita.
     return <Text key={k} style={[t.i && e.cursiva, t.b && e.negrita]}>{t.v}</Text>;
   }), [tramos, onAccion]);
-  return <Text style={estilo}>{partes}</Text>;
+  return original
+    ? <Text style={estilo} noTraducir idiomaOriginal="es-ES">{partes}</Text>
+    : <Text style={estilo}>{partes}</Text>;
 }
 
 /* ------------------------------------------------------------------ */
