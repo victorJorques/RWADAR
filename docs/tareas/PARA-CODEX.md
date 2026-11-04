@@ -6,6 +6,55 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 4) · Claude · remates 3: Inicio sin salto, tableta, leyenda en inglés y «Qué se adquiere» (sin publicar)
+
+Rama local `claude/remates-3` (worktree `remates-3`, sale de `main` 857ef73,
+que es lo publicado), commits 09fe24f, a43cd81 y 43c00e7. **Sin push, nada
+publicado, Supabase sin tocar, sin OTA ni EAS.** Sin textos nuevos.
+
+- **Inicio ya no salta al cargar (09fe24f).** Medido con el reloj fijo
+  (04/11 12:00 UTC) y el mismo catálogo, `main` local frente a la rama, en
+  castellano: 1024×768 **0,874 → 0**; 1366×860 **0,886 → 0**; 1920×1080
+  0,90 → 0,0015. En inglés ya era 0 (la página espera oculta a traducirse).
+  Había tres causas: el JS subía el panel de Inicio y ponía la clase después
+  de pintar; la letra Geist llegaba tarde (el subtítulo pasaba de 3 a 2
+  líneas y el botón subía 29 px); y «Recién añadidas» aparecía de golpe en la
+  franja que asoma bajo la portada. Ahora: `idioma-previo` marca
+  `html.escritorio-relato` en `<head>` (solo en «/», misma consulta que
+  `Movil.adaptar()`); el panel va en el HTML el primero dentro de `<main>`
+  (el JS ya no lo mueve) y el CSS lo enseña aunque nazca con `hidden`;
+  `<link rel="preload">` de `geist-normal`; «Recién añadidas» nace visible
+  (`pintarInicio` la oculta si no hay altas). Con la letra retrasada 1 s,
+  0,015. Cambio de tamaño en caliente 1366→900→390→1366, ES y EN: bien.
+- **Tableta (768–1023 px):** cuenta la misma historia que el escritorio, en
+  una columna: titular, «Ver las 24 ofertas» y su aviso antes del radar
+  (a 820×1180, botón en 439–495 y aviso en 515–563). Cuatro tarjetas, dos y
+  dos. El radar interactivo pasa a Plataformas, como en escritorio. Con
+  pantalla baja (900×600) el aviso va antes del botón.
+- **Inglés (a43cd81):** «Original source text (Spanish)» ya no sale sobre la
+  leyenda del radar («26 platforms on the radar…»), solo sobre el punto
+  leído al pasar el ratón; en Ofertas va sobre las tarjetas y no sobre
+  «Main offers / 8 of 8 entries…». En el panel de Inicio no había ninguno.
+- **«Qué se adquiere» (43c00e7):** en la ficha fija sale del párrafo inicial
+  y va como fila de «Qué es y quién lo ofrece», con punto final (22 de 24).
+  La ficha fija no tiene un apartado «Características»: esa lista es su
+  equivalente. Kraken xStocks y Spiko Smart Cash Euro cuentan en el párrafo
+  algo distinto y más detallado: no se toca. En el panel de la web tampoco
+  se repite ya cuando la descripción no empieza por el resumen (17 ofertas).
+- **Pruebas:** `npm test` completo en verde (base de datos 27 scripts con 886
+  comprobaciones, 30 SQL y 11 del mapa; web 592; fichas 71; precarga 32;
+  móvil 411 con 409 bien y 2 omitidas; acceso 145; herramientas sin
+  diferencias). Pruebas nuevas funcionales, sin frases: `probar-web-escritorio.mjs`
+  (clase en `<head>`, panel primero en `<main>`, precarga de la letra) y
+  `probar-fichas.cjs`. Guardián OTA `ok` (1.4.1(23)). CSS 177 911 B.
+  `probar-orden.mjs` solo avisa de `rwadar-movil/App.js`, como en `main`.
+- **Al unir:** el panel de Inicio se ha movido de sitio en `index.html`
+  (430 líneas): si otra rama cambió algo dentro de ese panel, el conflicto se
+  resuelve aplicando su cambio en la nueva posición y regenerando con
+  `npm test`. `idioma-web` solo cambia la línea de `superficies`.
+- **Capturas y medidas:** `scratchpad/remates-3/` (`medidas.json`,
+  `capturas/antes-*` y `despues-*`).
+
 ## 4 de noviembre de 2026 (noche, 2) · Claude · entrega 2026-11-04: arreglos de datos del catálogo (sin aplicar)
 
 Rama local `claude/catalogo-2026-11-04` (worktree `catalogo-1104`, sale de
