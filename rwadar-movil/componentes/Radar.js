@@ -40,10 +40,17 @@ export const GEOMETRIA_RADAR = Object.freeze({cx:CX,cy:CY,radio:RMAX,
   radioPunto:RADIO_PUNTO,radioHalo:RADIO_HALO,trazoHalo:TRAZO_HALO,margen:MARGEN_PUNTO});
 const VUELTA = 8000;              // lo que tarda el barrido en dar la vuelta
 const TAMANO_DIANA = 44;           // caja nominal; las cajas se pueden solapar
+const MARGEN_PORTADA = 62;         // sitio a cada lado para los rótulos de la portada
 const RADIO_ACCESO = { Minorista: 0.40, Acreditado: 0.60, Empresas: 0.76, Institucional: 0.90 };
 const CORTO = {
   'Inmobiliario': 'Inmuebles', 'Crédito privado': 'Crédito', 'Tesoro y fondos': 'Tesoro',
   'Acciones y capital privado': 'Acciones', 'Materias primas': 'Materias',
+};
+
+/* Los nombres cortos de la portada, los mismos que la web. */
+const CORTO_PORTADA = {
+  'Inmobiliario': 'Inmobiliario', 'Crédito privado': 'Crédito', 'Tesoro y fondos': 'Tesoro',
+  'Acciones y capital privado': 'Acciones', 'Materias primas': 'Materias primas',
 };
 
 const accesoLegible = (plataforma) => plataforma?.verificacionLocal
@@ -96,7 +103,11 @@ export function resolverPuntoRadar(puntos, puntoReceptor, evento, escala) {
   return elegido.p;
 }
 
-export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
+/* `portada`: el radar vivo de Inicio (ESPEC-INICIO §2.0). Sin caja, sin
+   lectura ni leyenda y con el recuento de cada tipo junto a su nombre; el
+   dibujo no pasa de `tamano` para dejar sitio al titular. Tocar un punto
+   sigue abriendo su ficha. */
+export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva, portada = false, tamano = LADO, sinRotulos = false }) {
   const idiomaActual=useIdioma();
   const giro = useRef(new Animated.Value(0)).current;
   const [leido, setLeido] = useState(null);
@@ -115,8 +126,15 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
      representan 44 dp exclusivos. El toque se resuelve por centro cercano
      y la lista ofrece una alternativa grande y accesible. */
   const { width: ancho } = useWindowDimensions();
-  const lado = Math.max(240, Math.min(LADO, ancho - 34));
+  const lado = portada ? Math.max(120, Math.min(tamano, ((ancho - 32) * LADO) / (LADO + 2 * (sinRotulos ? 0 : MARGEN_PORTADA))))
+    : Math.max(240, Math.min(LADO, ancho - 34));
   const k = lado / LADO;
+  /* En la portada los rótulos van fuera del círculo, en dos líneas (nombre y
+     recuento): el lienzo se ensancha a los lados sin mover el dibujo. */
+  const margen = portada && !sinRotulos ? MARGEN_PORTADA : 0;
+  const ANCHO_VISTA = LADO + 2 * margen;
+  const ox = margen;
+  const anchoLienzo = ANCHO_VISTA * k;
 
   useEffect(() => {
     const bucle = Animated.loop(
@@ -133,9 +151,9 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
   const rotacion = giro.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
 
   return (
-    <View style={e.caja}>
-      <View style={[e.lienzo, { width: lado, height: lado }]}>
-        <Svg width={lado} height={lado} viewBox={`0 0 ${LADO} ${LADO}`}>
+    <View style={portada ? e.cajaPortada : e.caja}>
+      <View style={[e.lienzo, { width: anchoLienzo, height: lado }]}>
+        <Svg width={anchoLienzo} height={lado} viewBox={`${-ox} 0 ${ANCHO_VISTA} ${LADO}`}>
           {/* Anillos, uno por nivel de acceso. Sin rótulo dentro: los cuatro
               nombres caían justo encima de los puntos del sector de arriba. */}
           {[0.40, 0.60, 0.76, 0.90].map((f) => (
@@ -162,13 +180,33 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
               stroke={C.linea} strokeWidth={1} opacity={0.8} />;
           })}
           {cats.map((c, i) => {
-            const [tx, ty] = pol(-90 + i * 60, RMAX + 16);
+            const angulo = -90 + i * 60;
+            const opacidad = categoriaActiva && categoriaActiva !== c ? 0.35 : 1;
+            if (portada && sinRotulos) return null;
+            if (!portada) {
+              const [tx, ty] = pol(angulo, RMAX + 16);
+              return (
+                <SvgText key={c} x={tx} y={ty} fill={COLOR_CATEGORIA[c]}
+                  fontSize={11} fontFamily={F.semi} textAnchor="middle" opacity={opacidad}>
+                  {traducir(CORTO[c] || c)}
+                </SvgText>
+              );
+            }
+            // Portada: nombre del tipo y, debajo, cuántas plataformas hay.
+            const [tx, ty] = pol(angulo, RMAX + 12);
+            const ancla = Math.abs(Math.cos((angulo * Math.PI) / 180)) < 0.1 ? 'middle' : Math.cos((angulo * Math.PI) / 180) > 0 ? 'start' : 'end';
+            const arriba = angulo === -90, abajo = angulo === 90;
+            const y0 = arriba ? ty - 20 : abajo ? ty + 12 : ty - 4;
+            const total = (datos || []).filter((p) => p.categoria === c).length;
             return (
-              <SvgText key={c} x={tx} y={ty} fill={COLOR_CATEGORIA[c]}
-                fontSize={9.5} fontFamily={F.mono} textAnchor="middle"
-                opacity={categoriaActiva && categoriaActiva !== c ? 0.35 : 1}>
-                {traducir(CORTO[c] || c).toUpperCase()}
-              </SvgText>
+              <G key={c} opacity={opacidad}>
+                <SvgText x={tx} y={y0} fill={COLOR_CATEGORIA[c]} fontSize={13} fontFamily={F.semi} textAnchor={ancla}>
+                  {traducir(CORTO_PORTADA[c] || c)}
+                </SvgText>
+                <SvgText x={tx} y={y0 + 15} fill={C.tx2} fontSize={13} fontFamily={F.media} textAnchor={ancla}>
+                  {String(total)}
+                </SvgText>
+              </G>
             );
           })}
 
@@ -191,7 +229,7 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
         <Animated.View
           pointerEvents="none"
           style={[StyleSheet.absoluteFill, { transform: [{ rotate: rotacion }] }]}>
-          <Svg width={lado} height={lado} viewBox={`0 0 ${LADO} ${LADO}`}>
+          <Svg width={anchoLienzo} height={lado} viewBox={`${-ox} 0 ${ANCHO_VISTA} ${LADO}`}>
             <Defs>
               <RadialGradient id="barrido" cx="0" cy="0.5" r="1">
                 <Stop offset="0" stopColor={C.senal} stopOpacity="0.26" />
@@ -225,7 +263,7 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
               onAbrir(elegido);
             }}
             style={[e.diana, {
-              left: punto.x * k - TAMANO_DIANA / 2,
+              left: punto.x * k - TAMANO_DIANA / 2 + ox * k,
               top: punto.y * k - TAMANO_DIANA / 2,
             }]}
             accessibilityRole="button"
@@ -236,6 +274,7 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
 
       {/* La lectura. Sin esto el radar es bonito y mudo, y hay que abrir
           puntos al azar para saber qué son. */}
+      {portada ? null : <>
       <View style={e.lectura}>
         {leido ? (
           <>
@@ -270,15 +309,17 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
           </Pressable>
         ))}
       </View>
+      </>}
     </View>
   );
 }
 
 const e = StyleSheet.create({
   caja: {
-    backgroundColor: C.noche2, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.panel, paddingVertical: 16, marginBottom: 14, alignItems: 'center',
+    backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
+    borderRadius: R.l, paddingVertical: 16, marginBottom: 14, alignItems: 'center',
   },
+  cajaPortada: { alignItems: 'center' },
   /* El tamaño va inline: depende del ancho de la pantalla. Aquí solo lo
      que no cambia. */
   lienzo: {},
@@ -293,7 +334,7 @@ const e = StyleSheet.create({
   },
   chincheta: { width: 8, height: 8, borderRadius: 4 },
   lecturaNom: { ...T.ficha, fontSize: 16, color: C.tx, marginTop: 4 },
-  lecturaSub: { ...T.dato, fontSize: 11, color: C.tx2, marginTop: 2 },
+  lecturaSub: { ...T.dato, fontSize: 12, color: C.tx2, marginTop: 2 },
   lecturaVacia: { ...T.menor, fontSize: 12, color: C.tx3, textAlign: 'center', lineHeight: 17 },
 
   leyenda: {
@@ -301,5 +342,5 @@ const e = StyleSheet.create({
     gap: 10, paddingHorizontal: 16, paddingTop: 12,
   },
   leyendaItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
-  leyendaTxt: { ...T.dato, fontSize: 10.5, color: C.tx3 },
+  leyendaTxt: { ...T.dato, fontSize: 12, color: C.tx3 },
 });

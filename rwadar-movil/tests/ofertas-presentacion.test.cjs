@@ -1,4 +1,5 @@
 'use strict';
+// Rótulos en frase normal, sin mayúsculas (GUIA-ACABADOS §5, aplicada a la web el 04/11/2026).
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
@@ -41,6 +42,10 @@ const datos = modulo('lib/datos.js', {
   './academy-progreso': modulo('lib/academy-progreso.js'),
 });
 
+const transparencia = modulo('lib/transparencia.js', {
+  './transparencia-contenido': modulo('lib/transparencia-contenido.js', {}),
+});
+
 function componentes(ahora = AHORA, opciones = {}) {
   const estilos = {};
   const crear = (tipo, props, ...children) => typeof tipo === 'function' && tipo.name === 'FilaMetrica'
@@ -58,6 +63,8 @@ function componentes(ahora = AHORA, opciones = {}) {
     '../lib/datos': datos,
     '../lib/verificacion-local': verificacion,
     '../lib/ficha-editorial': require('../lib/ficha-editorial'),
+    // La transparencia de la web (03/11/2026): puntos fuertes y forma corta.
+    '../lib/transparencia': transparencia,
     '../lib/tema': { C: {}, COLOR_CATEGORIA: {}, F: { media: 'Media', semi: 'Semi' }, R: {}, T: {}, UI: { tactil: 44, boton: 48 }, iniciales: () => 'PR' },
     './Navegacion': { Icono: 'Icono' },
     './useTransicionFicha': { default: (_visible, cerrar) => ({ cerrar, estilo: {} }), __esModule: true },
@@ -107,8 +114,11 @@ test('tarjeta móvil prioriza nombre/proveedor, tres datos y la consulta de fuen
   const visible = textoVisible(tarjeta);
   const textos = nodos(tarjeta).filter(nodo => nodo.tipo === 'Text').map(textoVisible);
   assert.ok(textos.indexOf(oferta.titulo) < textos.indexOf(oferta.plataformaNombre));
-  for (const esperado of [oferta.titulo, oferta.plataformaNombre, 'Fuente consultada 30/09/2026',
-    'Mínimo (EUR)', 'España', 'Salida', 'Ver ficha →']) assert.ok(visible.includes(esperado), esperado);
+  // Fila compacta de la web (versión final del 03/11/2026, decidida por Víctor):
+  // Mínimo · España · Salida en forma corta y solo la fecha al pie; «Fuente
+  // consultada …» sigue entero en la etiqueta accesible.
+  for (const esperado of [oferta.titulo, oferta.plataformaNombre, '30/09/2026',
+    'Mínimo', 'España', 'Salida', 'Ver ficha →']) assert.ok(visible.includes(esperado), esperado);
   for (const fuera of ['7,50 %', oferta.rentabilidad.literal, oferta.documentacion.descripcion, 'Referencia documentada', '999 EUR', '123 CHF', oferta.resumen, 'RENT. AJUSTADA']) {
     assert.ok(!visible.includes(fuera), `bloque largo reapareció en la tarjeta: ${fuera}`);
   }
@@ -210,14 +220,17 @@ test('la tarjeta muestra un mínimo en euros solo desde una referencia fechada, 
   const tarjeta = componentes().FichaOferta({oferta});
   const texto = textoVisible(tarjeta);
   assert.match(texto,/1000 €/);
-  assert.match(texto,/Fuente consultada 30\/09\/2026/);
+  // Fila compacta de la web (03/11/2026): al pie, solo la fecha.
+  assert.match(texto,/30\/09\/2026/);
+  assert.match(tarjeta.props.accessibilityLabel,/Fuente consultada 30\/09\/2026/);
   const detalle = textoVisible(componentes().DetalleOferta({oferta}));
   assert.match(detalle,/Fuente consultada el\s+29\/09\/2026/);
   assert.match(detalle,/Fecha del dato:\s+28\/09\/2026/);
   assert.match(texto,/Sin confirmar/);
   assert.match(texto,/Sin documentar/);
   assert.doesNotMatch(texto,/999 EUR|Disponible desde España/);
-  assert.match(tarjeta.props.accessibilityLabel,/Mínimo \(EUR\): 1000 €/);
+  // Forma corta de la web: «Mínimo», sin «(EUR)», porque el dato ya lleva el €.
+  assert.match(tarjeta.props.accessibilityLabel,/Mínimo: 1000 €/);
 });
 
 test('un mínimo en otra moneda se rotula «Mínimo» y la salida no repite «Salida:»', () => {
@@ -255,6 +268,9 @@ test('registro del proveedor conserva fuente y fecha sin acreditar la oferta ni 
   assert.doesNotMatch(textoVisible(ui.DetalleOferta({oferta:dato(),plataforma})),/Registro confirmado/);
 });
 
+// Ficha de la web final (04/11/2026): «Lo esencial» y los avisos arriba, luego
+// los riesgos y el botón; las cuatro condiciones con su fuente y el registro van
+// después, plegados (el árbol de prueba incluye lo plegado).
 test('el detalle muestra las cuatro condiciones antes de la explicación larga y conserva riesgos y fuentes', () => {
   const ui = componentes();
   const oferta = dato();
@@ -265,13 +281,14 @@ test('el detalle muestra las cuatro condiciones antes de la explicación larga y
   } } };
   const detalle = ui.DetalleOferta({ oferta, plataforma });
   const texto = textoVisible(detalle);
-  for (const condicion of ['Mínimo publicado en euros', 'Acceso desde España', 'Cómo recuperar el dinero', 'Costes publicados']) {
-    assert.ok(texto.indexOf(condicion) >= 0 && texto.indexOf(condicion) < texto.indexOf(registro), condicion);
-    assert.ok(texto.indexOf(condicion) < texto.indexOf('EN TRES FRASES'), condicion);
+  const esencial = texto.indexOf('Mínimo'), riesgo = texto.indexOf('Puedes perder parte o todo');
+  const enlace = texto.indexOf('Ver oferta en');
+  assert.ok(esencial >= 0 && esencial < riesgo && riesgo < enlace);
+  for (const condicion of ['Mínimo en euros', 'Desde España', 'Costes']) {
+    assert.ok(texto.indexOf(condicion) > enlace && texto.indexOf(condicion) < texto.indexOf(oferta.documentacion.descripcion), condicion);
   }
   assert.ok(texto.includes(registro));
-  assert.ok(texto.indexOf('Puedes perder dinero') < texto.indexOf('Mínimo publicado en euros'));
-  assert.ok(texto.includes('No consta en esta ficha. Un registro de la plataforma no acredita cada oferta.'));
+  assert.ok(texto.indexOf(registro) > enlace);
   assert.ok(nodos(detalle).some(n => n.props?.accessibilityLabel?.includes('https://regulador.example/registro')));
 });
 
@@ -283,7 +300,7 @@ test('registrar inversión es una acción manual secundaria y mantiene una sola 
   assert.equal(registros, 0, 'abrir la ficha no registra una inversión');
   registrar.props.onPress(); assert.equal(registros, 1);
   const principales = nodos(detalle).filter(n => n.props?.accessibilityRole === 'link'
-    && n.props.accessibilityLabel?.startsWith('Ver en la fuente ·'));
+    && n.props.accessibilityLabel?.startsWith('Ver oferta en '));
   assert.equal(principales.length, 1);
 });
 
@@ -340,8 +357,10 @@ test('datos vencidos y colecciones documentales no regresan al simplificar la ta
     for (const texto of [textoVisible(tarjeta), tarjeta.props.accessibilityLabel]) {
       assert.doesNotMatch(texto, /7,50|999 EUR|123 CHF|APY ilustrativo/);
     }
-    assert.ok(textoVisible(tarjeta).includes('Fuente consultada 30/09/2026'));
-    assert.match(textoVisible(tarjeta), /cifras ocultas|disponibilidad sin confirmar|apertura sin confirmar/);
+    // Fila compacta de la web (03/11/2026): al pie, solo la fecha.
+    assert.ok(textoVisible(tarjeta).includes('30/09/2026'));
+    assert.ok(tarjeta.props.accessibilityLabel.includes('Fuente consultada 30/09/2026'));
+    assert.match(textoVisible(tarjeta), /Cifras por actualizar|Liquidez no confirmada|Apertura no confirmada/);
     assert.deepEqual(oferta, original);
   }
 });
@@ -354,11 +373,12 @@ test('patrocinio y aviso bloqueante principal permanecen visibles y sin elipsis'
   ] });
   const tarjeta = componentes().FichaOferta({ oferta });
   const visible = textoVisible(tarjeta);
-  assert.match(visible, /PATROCINADA/);
+  // Rótulos en frase normal (GUIA-ACABADOS §5, aplicada a la web el 04/11).
+  assert.match(visible, /Patrocinada/);
   assert.match(visible, /La apertura de nuevas inversiones no está confirmada/);
   assert.match(visible, /1 más en la ficha/);
   assert.doesNotMatch(visible, /Revisión antigua repetida/);
-  const aviso = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes('IMPORTANTE'));
+  const aviso = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes('Importante'));
   assert.equal(aviso.props.numberOfLines, undefined);
   assert.match(tarjeta.props.accessibilityLabel, /Aviso bloqueante/);
 });
@@ -368,22 +388,24 @@ test('un warning relevante no desaparece si no hay stop y tampoco se trunca', ()
   const tarjeta = componentes().FichaOferta({ oferta: dato({ avisos: [
     { tono: 'warn', texto: warning }, { tono: 'warn', texto: 'Las comisiones reducen el resultado.' },
   ] }) });
-  const aviso = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes(warning));
-  assert.ok(aviso);
-  assert.equal(aviso.props.numberOfLines, undefined);
-  assert.match(textoVisible(tarjeta), /1 más en la ficha/);
+  // Fila compacta de la web (03/11/2026): sin aviso crítico, el ordinario se
+  // resume en su número al pie («Revisa · N avisos en la ficha») y se lee
+  // entero en la ficha y en la etiqueta accesible, sin cortar.
+  assert.match(textoVisible(tarjeta), /Revisa\s+·\s+2 avisos en la ficha/);
   assert.doesNotMatch(textoVisible(tarjeta), /Avisos y condiciones en la ficha completa/);
+  const resumenAvisos = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && /avisos en la ficha/.test(textoVisible(nodo)));
+  assert.equal(resumenAvisos.props.numberOfLines, undefined);
   assert.ok(tarjeta.props.accessibilityLabel.includes(warning));
   assert.match(tarjeta.props.accessibilityLabel, /Precaución/);
 });
 
 test('estado documental conserva incertidumbre y nunca hereda apertura del sello documental', () => {
-  for (const [coleccion, esperado] of [['secundario', 'disponibilidad sin confirmar'], ['en_camino', 'apertura sin confirmar']]) {
+  for (const [coleccion, esperado] of [['secundario', 'Liquidez no confirmada'], ['en_camino', 'Apertura no confirmada']]) {
     const tarjeta = componentes().FichaOferta({ oferta: dato({ coleccion }) });
     const estado = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes(esperado));
     assert.ok(estado);
     assert.equal(estado.props.numberOfLines, undefined);
-    assert.doesNotMatch(textoVisible(tarjeta), /Cifras vigentes/);
+    assert.doesNotMatch(textoVisible(tarjeta), /Cifras válidas|Cifras vigentes/);
   }
 });
 
@@ -396,8 +418,8 @@ test('detalle conserva documentación, importes históricos contextualizados, ri
     'No son precios actuales', '28/09/2026', '30/09/2026', oferta.documentacion.referencias[0].alcance,
     'La inversión puede perder valor.', '999 EUR', oferta.rentabilidad.literal, 'no recibe ni custodia']) assert.ok(visible.includes(esperado), esperado);
   assert.ok(!visible.includes(FUENTE));
-  assert.match(visible, /Ver en la fuente\s*·\s*Proveedor/);
-  assert.doesNotMatch(visible, /OTRAS FUENTES CONSULTADAS/);
+  assert.match(visible, /Ver oferta en\s*Proveedor/);
+  assert.doesNotMatch(visible, /Ver fuente 1 ·/);
   const enlaces = nodos(detalle).filter(nodo => nodo.tipo === 'Pressable' && nodo.props.accessibilityLabel?.includes(FUENTE));
   assert.equal(enlaces.length, 1, 'cada destino tiene una sola acción, sin repetir el CTA principal en las referencias');
   for (const enlace of enlaces) {
@@ -431,7 +453,8 @@ test('el detalle muestra éxito y gestión separados con fechas y enlaces propio
 
 test('compactación no reduce la legibilidad ni fija alturas sobre condiciones o riesgos', () => {
   const { estilos } = componentes();
-  assert.equal(estilos.imagenFicha.aspectRatio, 2);
+  // La miniatura de la fila compacta de la web (88 px, cuadrada).
+  assert.equal(estilos.imagenFicha.aspectRatio, 1);
   assert.ok(estilos.titulo.fontSize >= 16);
   assert.ok(estilos.datoValor.fontSize >= 16);
   for (const nombre of ['plataforma', 'estadoFicha', 'fechaFicha', 'abrirFicha', 'avisoFichaTxt', 'referencia']) {

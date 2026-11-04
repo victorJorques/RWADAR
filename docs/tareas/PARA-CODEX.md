@@ -6,6 +6,509 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (5) · Claude · revisión app frente a web final y arreglos pequeños (sin publicar)
+
+- Rama local `claude/inicio-historia`, commits 8f2332b y 3e36d1d (**nada publicado, sin push, Supabase y EAS sin tocar, sin OTA**; `package.json`, `app.json`, `eas.json` y `scripts/` sin cambios desde 6b008ca). Comparado el texto visible de Inicio, Ofertas (las tres pestañas), la ficha (Robinhood, mTBILL, Boss Info) y el inglés en Expo web y en la web local: portada con «Fuentes» como la web; fila con el estado de la web («Cifras por actualizar», «Fuentes en conflicto», «Liquidez no confirmada», «Apertura no confirmada») en ámbar y la fecha de la revisión; reventa y próximas enseñan su mínimo y su salida documentados (antes «No verificado» en todas, porque el catálogo remoto las marca `cifrasPendientes`); «Otras ofertas principales» y buscador «Ej.: Spiko, Suiza…»; en la ficha, «Cifras» solo con el estado, la salida sin «Salida:» y los costes con la métrica. Zonas de toque ≥ 44 px. `npm test` completo en verde (móvil 406 + 2 omitidas). Pendiente (fuera de `rwadar-movil/`): la línea de novedades de la app usa el `titulo` y no el `resumen` porque `rwadar-noticias.js` no copia `resumen` a la app.
+
+## 4 de noviembre de 2026 (4) · Claude · la app dice y enseña lo mismo que la web final (sin publicar)
+
+- Rama local `claude/inicio-historia`, commits a485ded…a787dde encima del merge 6b008ca (**nada publicado, sin push, Supabase y EAS sin tocar, sin OTA**): Inicio con los textos cortos de la web (03 con carrusel de 5, nota legal corta con la completa plegada, aviso de riesgo junto a «Mira, compara y decide tú», «Ver las 24 ofertas» en el 06); ficha de oferta como `abrirDetalleOfertaLocal` («Lo esencial» y avisos arriba; «Antes de invertir», «No es una recomendación…» y «Ver oferta en <proveedor> ↗»; lo demás plegado; sin «Consultar fuente» grande); «Cifras válidas N días más», comprobación 2 y «Inscrita en la CNMV (UE)», «Selección RWAdar · pasan nuestras 5 comprobaciones», pestañas de Ofertas en inglés y fechas dd/mm/aaaa; fila con los puntos fuertes en la columna del texto; diccionario con 5 claves nuevas y una repetida fuera, copiado a la web; `npm test` completo en verde (móvil 406 + 2 omitidas); capturas en el scratchpad (`app-final/`). Pendiente: la app conserva su etiqueta obligatoria «Ilustración editorial» sobre la foto en vez del pie «Imágenes ilustrativas…», y no tiene «Ficha completa · Copiar enlace».
+
+## 4 de noviembre de 2026 · Claude · corrector del Inicio: menos reglas, más fácil de leer (sin publicar)
+
+Rama local `claude/inicio-historia`, commits c6a5475…0004444 (encima de
+61cf23e). **Nada publicado, nada en `main`, Supabase sin tocar, sin push.**
+
+- **Pruebas de frases, fuera** (decisión de Víctor del 04/11: «ese tipo de
+  reglas quítalas… hay que tener en cuenta la legalidad y ya está»). Se
+  quitan de `probar-web.mjs` la lista de frases prohibidas, la de llamadas
+  [n], la de «Descartadas»/«Fuera del radar», la del tamaño de los avisos, la
+  de notas x/5 y las frases exactas de Inicio, Perfil, Avisos, Buscar, la
+  Selección y la ficha; en `probar-para-empresas.mjs`, «no es una oferta
+  comercial» (y se aplica la fila 83). Se quedan las funcionales. Los avisos
+  legales siguen en la web: los cuida la revisión editorial.
+- **Inicio más corto** (textos del revisor de lectura, con su inglés): de
+  1.833 a 1.118 palabras visibles y de 10.215 a 7.873 px a 390. Capítulo 03 con
+  dos frases y un carrusel de 5 («1 de 5»); lo que sale de la vista va al
+  «Saber más» de su capítulo, con las mismas fuentes. Aviso de riesgo junto a
+  «Mira, compara y decide tú»; nota legal corta con la completa plegada;
+  «Ver las 24 ofertas» junto a «Explorar el radar» en el 06.
+- **Ficha de oferta:** «Lo esencial» y «Avisos de esta oferta» arriba;
+  luego foto, «Antes de invertir», «No es una recomendación de inversión…»
+  y «Ver oferta en <proveedor> ↗»; lo demás plegado. Robinhood: de 3.891 a
+  1.978 px y los avisos a 641 px (antes, 3.241). El pie era un `<footer>` y la
+  regla global lo ocultaba en el móvil. Página fija: supervisión con el
+  motivo de la comprobación, los avisos arriba y el botón tras los riesgos.
+- **Legal:** la comprobación 2 dice «autorizada por un supervisor de la UE e
+  inscrita en la CNMV» y la cápsula «Inscrita en la CNMV (UE)»
+  (`transparencia.json`, regenerado para web y app).
+- **Otros:** «cifras válidas 6 días más»; fechas dd/mm/aaaa en la web
+  dinámica (y el pie); Plataformas con la foto limpia y el texto debajo; el
+  orden de Ofertas cabe entero; «Descartadas» en Academy, la noticia del
+  28/09, /cambios y el RSS (regenera `academy-contenido.js` y
+  `noticias-contenido.js` de la app); «Excluded» en inglés; Atrás cierra la
+  ficha sin salir de la web y, desde Inicio, vuelve a Inicio; /#fuera y
+  /#metodo abren su detalle y /#fuentes-cap3 se queda en Inicio; con el
+  catálogo caducado, pasar de inglés a castellano ya no deja la portada en
+  inglés (`data-rel-sin`); 320 px sin cortes; Academy y páginas legales sin
+  mayúsculas de máquina ni borde verde.
+- **Pruebas:** `npm test` completo en verde (web 579, fichas 68, precarga 32,
+  móvil 394 + 2 omitidas, acceso 144, base de datos sin fallos).
+  `probar-orden.mjs` solo avisa de `App.js`, como antes. CSS 165 279 B,
+  `probar-web.mjs` 238 362 B. Capturas y `medidas.json` en el scratchpad de
+  la sesión (`inicio-real/`), 0 errores y 0 peticiones externas.
+
+**Pendiente:**
+- **Víctor:** la línea de posiciones propias de la nota legal (MAR art. 20;
+  no se ha escrito nada sin su respuesta), el relato en escritorio, el acceso
+  a Academy desde Inicio (ya no lo frena ninguna prueba), el subtítulo
+  «Registro de tokenización».
+- **Ciclo de catálogo (con su permiso):** RealT («la mayor demanda…», «En
+  liquidación» → «Liquidación anunciada», «unos 700»), la categoría de los
+  derivados y la métrica de costes en castellano donde no exista.
+- **Sin hacer por tamaño:** las 38 descripciones de fuentes en inglés
+  (`texto_en` en `fuentes.json`), el texto del enlace de cada fuente, la
+  página fija con todo plegado como la ficha y la app (otro agente).
+
+## 4 de noviembre de 2026 · Claude · correcciones del revisor en el mapa de Ofertas (sin publicar)
+
+Misma rama local `claude/mapa-ofertas`, commits efb366c, f095a09, f10ecf7 y
+ad2749c sobre la entrada de abajo. **Nada publicado, sin push, Supabase sin
+tocar.** Solo los tres archivos del mapa, el bloque `#buscarMapa` de
+`index.html` y cuatro entradas junto a las del mapa en `idioma-en.js`
+(copiadas con `copiar-idiomas-web.cjs`).
+
+- **Marcadores que se tapaban:** `agruparCerca()` (en `mapa-buscar-util`)
+  junta los que en pantalla quedarían a menos de 40 px con el zoom actual y
+  se rehace al cambiar de zoom (si los grupos no cambian, no se toca nada y
+  la ficha sigue abierta). El grupo muestra el número; su ficha dice «N
+  ofertas en esta zona» y, si los puntos no son el mismo, trae «Acercar»,
+  que amplía hasta separarlos. Leyenda: «Varias ofertas juntas». Medido: 0
+  marcadores tapados a 320, 360, 390 y 1366 px, en castellano e inglés.
+- **Teclado:** al abrir una ficha el foco va a su título; Escape (Leaflet no
+  lo atendía con el foco dentro), la X o «Acercar» lo devuelven al marcador.
+  «Quitar mi ubicación» pasa el foco a «Usar mi ubicación».
+- **Avisos en una franja arriba del mapa** (`#mapaAvisos`, fuera del lienzo
+  de Leaflet): «No se ha podido cargar el mapa base» con «Reintentar» ya no
+  queda bajo los puntos, y los avisos que piden hacer algo (ubicación
+  denegada, zona sin resultados) salen ahí con una X en vez de empujar los
+  mandos. Antes de cargar siguen bajo la tarjeta. La ficha se abre por
+  debajo de la franja y con alto máximo que no tapa el zoom.
+- **Chips:** «Buscar aquí» (con `title` «Buscar en la zona visible del
+  mapa») y «Quitar mi ubicación» baja junto a la línea de distancias. Caben
+  en una línea de 320 a 1366 px; si no cupieran (iOS pone el selector a
+  16 px), bajan de línea en vez de cortarse.
+- **Contraste:** aro oscuro fino por fuera del blanco en cada marcador
+  (borde 7,2:1 sobre el mapa claro). «Fuente» de la ficha, gris como se
+  quería.
+- **«Usar mi ubicación» desde España** encuadra tu punto y las tres ofertas
+  más cercanas (hoy, un grupo «12» en Austria), en vez de un zoom 10 vacío.
+- **Cifras con el idioma:** «1,558 km» y «± 15 km» en inglés (antes
+  «± 15.000 m»); de 1 km en adelante el margen va en km.
+- **Pruebas:** `npm test` completo en verde (probar-web 578 correctas;
+  fichas 68; precarga 32; móvil 394; acceso 144; base de datos sin fallos).
+  `probar-web.mjs` sin cambios. `rwadar-app/probar-mapa-buscar.test.cjs`
+  sigue fuera de `npm test` y falla los mismos 6 de 10 que antes, por las
+  mismas razones (catálogo de 49, JSON local al abrir Mapa, margen en
+  `#mapaMargen`); no lo toqué porque estaba fuera del alcance de esta tanda.
+- Capturas con teselas reales en el scratchpad de la sesión (`mapa/`, con
+  `medidas.json`): 19 teselas nuevas bajadas con curl, 49 en la caché (tope
+  80). Antes de «Cargar mapa», 0 teselas y sin Leaflet.
+
+**Pendiente:** actualizar `probar-mapa-buscar.test.cjs` (24 ofertas, 12 con
+ubicación, una petición local antes de cargar, margen en `#mapaMargen`) y
+meterlo en `npm test`, si Víctor quiere. Publicar necesita su permiso.
+
+---
+
+## 4 de noviembre de 2026 · Claude · mapa de Ofertas claro (sin publicar)
+
+Rama local `claude/mapa-ofertas` (sale de `claude/inicio-historia`), commits
+25a3a14 y c341f0e. **Nada publicado, nada en `main`, Supabase sin tocar, app
+sin tocar** (salvo el diccionario común `rwadar-movil/lib/idioma-en.js`).
+Decisión de Víctor del 04/11: «Oscuro no me gusta el mapa, mejóralo».
+
+- **Solo** `mapa-buscar-20261027.js`, `mapa-buscar-20261027.css`, el bloque
+  `#buscarMapa` de `index.html` y 69 entradas de inglés junto a «Lista» y
+  «Mapa» en `idioma-en.js` (copiadas con `copiar-idiomas-web.cjs`).
+  `mapa-buscar-util-20261027.js` no cambia.
+- **Antes de cargar:** «Dónde están los activos», «12 de 24 ofertas tienen
+  ubicación documentada» (sale del JSON local de ubicaciones, que ahora se
+  pide al abrir Mapa; es del propio sitio y no contacta con OpenStreetMap),
+  una línea de privacidad, «Cargar mapa» y el detalle en «Más información».
+- **Mandos:** buscador con botón de icono y «Usar mi ubicación» como botón de
+  icono en una fila; selector «Todas», «Ver todo» y «Buscar en esta zona»
+  como chips de 36 px en la segunda (caben enteros a 390 px). La instrucción
+  queda para el lector de pantalla. Los avisos rutinarios solo se anuncian;
+  los que piden hacer algo (permiso denegado, fallo) también se ven.
+- **Mapa claro:** teselas estándar de OpenStreetMap sin filtro oscuro, solo
+  `saturate(.72)`; 60 vh en el móvil, a todo el ancho y con radio de 16 px.
+  Zoom blanco de 44 px abajo a la derecha. Si no llega ninguna tesela, aviso
+  blanco «No se ha podido cargar el mapa base» con «Reintentar», bajo los
+  puntos y la ficha. Las teselas se piden ya con la vista ajustada a las
+  ofertas (antes se pedía primero el mundo entero). Fuera el
+  `mix-blend-mode: plus-lighter` de Leaflet en las teselas: con el lienzo en
+  fracción de píxel dejaba una raya blanca en cada junta.
+- **Marcadores:** `divIcon` con el color de su tipo (clases `cat-N` del
+  radar), icono del tipo o el número centrado si hay varias en el mismo
+  punto, 44 px de toque; «ciudad aproximada» con halo. Leyenda bajo el mapa
+  con los tipos presentes.
+- **Ficha emergente blanca:** título en dos líneas que no tapa nada, tipo y
+  colección, lugar, precisión en una línea («Punto indicado por el proveedor»
+  o «Ciudad aproximada»), «Ver ficha» (abre la misma ficha que la lista:
+  botón con `data-oferta-detalle`; Leaflet 1.9 deja subir el clic) y la fuente
+  con su fecha. AutoPan con margen calculado al abrir: cabecera fija, barra
+  inferior y zoom.
+- **Debajo del mapa** (al lado en escritorio): «N ofertas en el mapa / en
+  esta zona / por distancia a tu ubicación» y filas compactas con miniatura,
+  como las de Ofertas; toda la fila abre la ficha, la fuente abre su pestaña.
+  Las notas de precisión del JSON van una sola vez en el pie.
+- **Privacidad igual:** teselas solo tras «Cargar mapa» (comprobado: 0
+  teselas y 0 Leaflet antes), aviso de IP, ubicación con permiso, una vez y
+  sin guardar, atribución de OpenStreetMap.
+- **Pruebas:** `probar-web.mjs` sin cambios (578 correctas). `npm test`
+  completo en verde. Ojo: `rwadar-app/probar-mapa-buscar.test.cjs` no está en
+  `npm test` y ya fallaba 5 de 10 antes de este cambio (espera el catálogo de
+  49 y hoy hay 24). Ahora fallan además, a propósito, dos comprobaciones: que
+  abrir Mapa no pida nada (pide el JSON local para la cuenta) y que «140 m»
+  esté en `#mapaOrigen` (el margen va en `#mapaMargen` para que la frase se
+  traduzca). Siguen bien la del publicador, la de Leaflet y la de cabeceras.
+- Capturas con teselas reales (30 descargadas con curl a una caché, de un
+  máximo de 80) a 390 × 844 y 1366 × 900 en el scratchpad de la sesión
+  (`mapa/`), con `medidas.json`; inglés comprobado sin restos en castellano.
+
+**Pendiente:** actualizar `probar-mapa-buscar.test.cjs` al catálogo de 24 y
+meterlo en `npm test`, si Víctor quiere. Publicar necesita su permiso.
+
+---
+
+## 4 de noviembre de 2026 · Claude · Inicio como historia, barra de 5 y «Descartadas» (sin publicar)
+
+Rama local `claude/inicio-historia` (sale de `claude/acabados`), commits
+cc11db1…fe349fb. **Nada publicado, nada en `main`, Supabase sin tocar, app sin
+tocar** (salvo el diccionario `rwadar-movil/lib/idioma-en.js`, que es común).
+
+- **Inicio cuenta la historia** de HISTORIA-v2 con el orden de ESPEC-INICIO:
+  radar vivo arriba, seis capítulos, novedades, Selección con sus 5
+  comprobaciones a la vista, «Mira, compara y decide tú», fuentes y nota legal.
+  Sin buscador. La comunidad pasa a Perfil.
+- **Texto limpio, sin llamadas [n]** (decisión de Víctor del 04/11: «Los
+  números 9 10 14 18, ¿los puedes quitar del texto?»). Cada apartado acaba en
+  «Fuentes de este apartado ›», que abre su grupo en la lista del final, con
+  «Volver al texto». Las 38 fuentes viven en
+  `rwadar-editorial-source/inicio/fuentes.json` y las escribe `fuentes.mjs`
+  (con `--comprobar` en `test:tools`).
+- **Cifras del catálogo** (24, 26, 4, 3, 5, «una de ellas, de 1 $», fechas) solo
+  en `cifrasInicio()`; sin catálogo vigente se ocultan la Selección, los
+  mínimos y la vigencia, y la línea de riesgo se queda.
+- **Barra de 5:** Inicio · Ofertas · Plataformas · Academy · Perfil. Fuera el
+  selector de Buscar; la vista sigue en `body[data-movil-buscar]`. Siguen
+  igual `data-movil-ir`, `data-movil-tab`, los hash (`#tool` marca
+  Plataformas), «Explorar el radar», las fichas y su vuelta. Escritorio igual.
+- **«Descartadas»** («Discarded» en inglés) en todos los rótulos de la web y en
+  las fichas de descarte («… · Plataforma descartada»). La ruta
+  `/fuera-del-radar/` y `#fuera` no cambian.
+- **Frases de LISTA-FINAL.md** que están en el código de la web: filas 1-3,
+  5, 7-9, 11 (solo el rótulo), 13, 16, 20, 22, 23 (solo la tercera frase),
+  24-34, 35, 36-42, 44-48, 52, 55-58, 63, 70-74, 76, 77, 79-83, 85-87, 89-91
+  y 93, con su inglés.
+- **Inglés:** Inicio entero (comprobado: ningún texto en castellano queda en
+  el panel) y las frases nuevas; plantillas propias en `idioma-web`.
+- **Pruebas** (`probar-web.mjs`, comentario con la decisión en cada cambio):
+  la barra pasa a 5 botones, Inicio nuevo, Selección, comprobaciones y cifras;
+  nuevas: sin `[n]` visible y cada apartado con su grupo de fuentes, frases
+  prohibidas, «Descartadas» sí y «Fuera del radar» no, y los enlaces de
+  siempre. Los arneses del service worker pasan a `probar-web-pwa.mjs` para
+  que `probar-web.mjs` siga por debajo de su presupuesto (239 854 B). También
+  `probar-fichas.cjs`, `rwadar-app/probar-verificacion-local-ui.mjs` y
+  `rwadar-app/probar-transparencia-comercial.mjs` (frases nuevas).
+- `npm test` completo en verde; `probar-orden.mjs` solo avisa de `App.js`,
+  como antes. CSS 165 074 B (de 155 166), JS 381 378 B.
+- Capturas a 390 × 844, 360 × 780, 375 × 667 y 1366 × 900, y `medidas.json`, en
+  el scratchpad de la sesión (`inicio-real/`). La portada mide lo mismo que la
+  maqueta: botón 595-643, aviso 651-723 y «Explorar el radar» 723-767 a 390 px.
+
+**Pendiente:**
+- **Datos del catálogo (ciclo con permiso de Víctor):** avisos y notas de
+  plataforma (filas 11-12, anexos A y B), Reental (18), «Marketplace» (19) y
+  el motivo de Toucan (75).
+- **Decisión de Víctor:** el subtítulo «Registro de tokenización» (fila 10 y
+  92, con `og.png`), el acceso a Academy desde Inicio, sus posiciones propias,
+  la relación pagada y «la mayor demanda» de RealT (ESPEC-INICIO §10).
+- **Ciclo de la app** (mismo texto o pruebas de paridad en `rwadar-movil`):
+  filas 14, 17, 23 (dos primeras frases) y 43; «Descartadas» en `App.js`,
+  `Inicio.js`, Academy y noticias (`noticias.json` y `academy.json` reescriben
+  archivos de la app; por eso «Fuera del radar» sigue en las lecciones, en
+  `/cambios` y en el RSS), y la barra de 5 en la app.
+- **No aplicadas por ahora:** cuentas y vigilancia (49-51, 53, 54: la cuenta
+  está en pausa y sus pruebas fijan esas frases), Academy (59-62, 64-69),
+  conversión y B2B (78, 84, 88), y la fila 83 conserva «no es una oferta
+  comercial» porque lo exige `probar-para-empresas.mjs`.
+- `transparencia.json` sigue con sus criterios antiguos: Inicio enseña los de
+  HISTORIA-v2 en llano y la ficha los del archivo (cambiarlo reescribe
+  `rwadar-movil/lib/transparencia-contenido.js`).
+- Notas del coordinador, confirmadas: portadas de Plataformas con texto y
+  cápsula encima, «Cifras vigentes 6 d» y el «Consultar fuente» grande en el
+  sitio del precio de la ficha. El tren del capítulo 6 es el único y no mete
+  prisa.
+- Publicar necesita el permiso de Víctor.
+
+## 4 de noviembre de 2026 (3) · Claude · corrector del port a la app (sin publicar)
+
+Misma rama local `claude/app-rediseno`, commits 9c8fcd9…12e8d44 encima de
+7b09367, solo en `rwadar-movil/` y este archivo. **Nada publicado, sin push,
+sin OTA ni EAS, Supabase sin tocar**, sin dependencias ni código nativo; ni
+`package.json`, ni `app.json`, ni `eas.json`, ni `scripts/`, ni la web.
+
+- **Aviso de riesgo medido** (ESPEC-INICIO §3): va antes del botón si,
+  después, quedaría bajo la barra (lo mide con `onLayout`, así que cuenta la
+  letra grande de Android y «Revisión pendiente» arriba). Medido en Expo
+  web: 390 × 844 aviso después (botón 608-656, aviso 666-738, barra 776);
+  360 × 780, 375 × 667, 320 × 640 y 390 × 844 caducado, aviso antes y
+  entero sobre la barra. A 375 × 667 el botón ya cabe entero (518-566,
+  barra 599): radar de 132 px y márgenes más cortos.
+- **«Está en «Descartadas»»** abre Plataformas y baja a «Descartadas»
+  (estaba 5.924 px más abajo). Captura `09-tras-descartadas.png`.
+- **Inglés «Excluded»** (ESPEC §2.11 y HISTORIA-v2), no «Discarded»: 1
+  entrada de `lib/idioma-en.js` y **3** de `lib/inicio-contenido.js`
+  (no 2, como decía la entrada de abajo), con «we exclude».
+- **Selección de Inicio como la web:** solo principales, en el orden de la
+  web (Robinhood, Euro, Dólar), nota de riesgo de respaldo «Puedes perder
+  parte o todo lo que inviertas.» si entra otra oferta, y «1 $».
+- **Las cifras de mercado del 03 caducan solas:** pasados 7 días desde
+  `CIFRAS_MERCADO_EL` (`lib/inicio-contenido.js`, hoy 2026-11-03) se quitan
+  125, 14.230 millones, −3,9 % y las barras, y queda una frase sin cifra
+  (`10-mercado-caducado.png`, reloj al 11/11). **Al rehacer las cifras en
+  cada ciclo, cambiar a la vez el texto y esa fecha** (la prueba lo exige).
+- **Menores:** «Fuentes de este apartado» del 05 antes del puente;
+  «¿Cómo ordenamos?» solo nombra la Selección cuando la lista la lleva;
+  cita a 28 y cifras a 36; «Revisión pendiente» sin mono; Academy sin mono;
+  radios sueltos a R (BloqueoApp, Cuenta, segmentado); los enlaces de una
+  fuente en fila (Inicio) y la fecha junto al enlace (ficha).
+- **No hecho, a propósito:** puntos suspensivos en la barra (la prueba de
+  `radar-geometria` prohíbe `numberOfLines` y `maxFontSizeMultiplier` en la
+  barra para no bloquear la letra del sistema; que lo decida Víctor) y los
+  nombres y el solape del radar de Plataformas («Materias primas» pisaría
+  más el punto naranja; necesita recolocar rótulos).
+- **CONDICIÓN DE LA OTA:** no enviarla hasta regenerar
+  `lib/academy-contenido.js` y `lib/noticias-contenido.js` desde
+  `rwadar-academy/` y `rwadar-noticias/` con «Descartadas» (hoy dicen
+  «Fuera del radar» en 7 sitios de Academy). Es de la web: no se toca aquí.
+- **Pruebas:** `npm --prefix rwadar-movil test` 408: 406 bien, 0 fallos y
+  2 omitidas. Nuevas en `inicio-historia` (orden y nota de la Selección,
+  caducidad de las cifras); cambiadas con comentario: el aviso medido y
+  «Excluded» (`inicio-historia`) y el simulador de tema con `R`
+  (`desbloqueo-app`).
+- **Capturas** rehechas desde HEAD en el scratchpad, `app-rediseno/01` a
+  `07`, más `08-inicio-360x780.png`, `09-tras-descartadas.png` y
+  `10-mercado-caducado.png`. 0 errores y 0 peticiones externas.
+
+## 4 de noviembre de 2026 (2) · Claude · la app con el rediseño de la web (sin publicar)
+
+Rama local `claude/app-rediseno` (sale de `claude/acabados`, 2bcbd20), commits
+d73ccc4…e4521db, solo en `rwadar-movil/`. **Nada publicado, sin OTA ni EAS,
+Supabase sin tocar, sin dependencias ni código nativo** (todo cabe en una OTA).
+Ni `package.json`, ni `app.json`, ni `eas.json`, ni `scripts/`, ni la web.
+
+- **Acabados** (`lib/tema.js`, GUIA-ACABADOS §13): superficies s0-s3,
+  relleno tonal, una sola línea al 8 %, radios 8 · 12 · 16 · 24 · píldora,
+  dos elevaciones, tres botones con su pulsado (sin encoger con «reducir
+  movimiento»), chips tonales sin borde, ✓ en texto, rótulos en frase normal
+  y sin mono (la mono queda en las cifras del radar). Cabecera y barra opacas.
+- **Barra de 5:** Inicio · Ofertas · Plataformas · Academy · Perfil. Fuera
+  el selector de Buscar; Ofertas y Plataformas son sus dos vistas, así que
+  los avisos, Academy, «fuera» y Perfil siguen llevando a donde iban. Las
+  fichas se cierran con Atrás como antes (`onRequestClose`). El idioma, solo
+  arriba de Perfil.
+- **Ofertas:** fila compacta de la web (miniatura, 2 líneas, proveedor y
+  lugar, 2 puntos fuertes ✓, Mínimo · España · Salida cortos, «Revisa · N
+  avisos en la ficha», fecha y «Ver ficha»). Arriba, «Selección RWAdar · la
+  documentación más completa» con «No es una recomendación de inversión» y
+  luego «Resto de principales». `lib/transparencia.js` copia la lógica de la
+  web y falla cerrado; con el catálogo de hoy salen las mismas 3.
+- **Ficha:** «Transparencia: lo que hemos comprobado», con ✓/✗, el motivo y
+  la fuente con su fecha, y los puntos fuertes con su fuente.
+- **Inicio como historia** (ESPEC-INICIO y HISTORIA-v2, titular n.º 1):
+  radar vivo sin buscador y con sus 4 cifras, «Ver las 24 ofertas» con el
+  aviso pegado (antes del botón por debajo de 700 px), seis capítulos,
+  novedad, Selección con las 5 comprobaciones a la vista, «Mira, compara y
+  decide tú», fuentes y nota legal. **Sin llamadas [n]** (decisión de
+  Víctor): cada apartado acaba en «Fuentes de este apartado», que abre la
+  lista agrupada y baja a su grupo. Las cifras salen del catálogo y sin
+  catálogo vigente no hay Selección, mínimos ni vigencia.
+- **«Descartadas»** en la app; en inglés quedó «Excluded» en la entrada (3),
+  como manda ESPEC-INICIO §2.11 (1 entrada de `lib/idioma-en.js` y 3 de
+  `lib/inicio-contenido.js`).
+- **Inglés:** 54 entradas nuevas al final de `lib/idioma-en.js`; el texto
+  de Inicio va en `lib/inicio-contenido.js` en los dos idiomas.
+- **Pruebas:** `npm --prefix rwadar-movil test` 406, 404 bien y 2 omitidas.
+  Nuevas: `transparencia.test.cjs` (5) e `inicio-historia.test.cjs` (5).
+  Cambiadas con comentario: barra de 5 y sin `SelectorBuscar`
+  (`navegacion`), rótulo de barra a 11 px (`radar-geometria`), fila compacta
+  (`ofertas-presentacion`, `ofertas-vigencia`) y rótulos en frase normal
+  (`academy`, `cuentas-ui`, `verificacion-local`, `navegacion`).
+- **Capturas** (Expo web en local, sin red, 390 × 844 y dsf 2) en el
+  scratchpad de la sesión, `app-rediseno/01-inicio.png` a `07-ingles.png`,
+  más `01b-inicio-375x667.png` y `02b-fuentes-del-apartado.png`. La cuenta se
+  simula con el catálogo publicado (`app-rediseno/scripts/preparar.sh`).
+- **Al mezclar con la web:** las dos ramas añaden entradas al final de
+  `rwadar-movil/lib/idioma-en.js` (choque trivial: quedarse con las dos).
+  Después, `node rwadar-movil/scripts/copiar-idiomas-web.cjs`, porque el
+  `test:tools` de la raíz exige la copia idéntica en la web.
+- **Pendiente:** regenerar `lib/academy-contenido.js` y
+  `lib/noticias-contenido.js` cuando la web cambie «Fuera del radar» en
+  `rwadar-academy/` y `rwadar-noticias/` (son generados); que
+  `rwadar-editorial-source/inicio/fuentes.mjs` escriba también
+  `lib/inicio-fuentes.js`; la etiqueta sobre la foto grande de la ficha
+  (la web ya la quitó); probarlo en un Android real; y la OTA, solo con el
+  permiso expreso de Víctor.
+
+## 4 de noviembre de 2026 · Claude · acabados de la web (sin publicar)
+
+Rama local `claude/acabados` (sale de 1b0e1e3), commits 53bb826…8a6afdb.
+**Nada publicado, nada en `main`, Supabase sin tocar.** Aplica la guía de
+acabados del diseñador (botones, bordes y rótulos que «se veían baratos»)
+al CSS real, sustituyendo reglas, sin una capa encima.
+
+- **Tokens** en `:root`: superficies, relleno tonal, una sola línea al 8 %,
+  radios 8 · 12 · 16 · 24 · píldora, dos elevaciones, escala de letra y
+  movimiento de 120-200 ms sin rebote. Los tokens viejos apuntan a los nuevos.
+- **Botones:** tres (verde relleno, tonal y de texto) y uno de icono
+  redondo de 44 px, cada uno en una sola regla; al pulsar se oscurecen y
+  encogen (nada con «reducir movimiento»). «Ver ficha» no encoge (su
+  `::after` abre la fila). Segmentados: la opción elegida en relieve, nunca
+  en verde; el idioma, con la misma paleta y foco verde.
+- **Chips, etiquetas y ✓:** píldora tonal sin borde (la elegida, blanca);
+  etiquetas de estado en un rectángulo de 8 px y frase normal; el punto
+  fuerte es texto con ✓ verde, sin cápsula.
+- **Cajas:** una línea tenue y un solo nivel de caja (Academy, Perfil,
+  ficha); vacíos sin discontinuas; campos tonales; fuera todo el cristal
+  y las sombras sueltas; cabecera y barra opacas, también en escritorio.
+- **Rótulos:** de mayúsculas de máquina a frase normal de 12 px; la mono
+  solo en el radar. 16 textos del HTML/JS pasan a frase normal y sus claves
+  de `idioma-en.js` también (el motor sigue traduciendo la versión en
+  mayúsculas que usa la app); copiado a la web.
+- **Iconos:** un solo trazo de 1,75; SVG en el menú de Perfil y en la
+  estrella; chevrones de trazo. **Pesos** 400-700 e interletraje −.02em.
+- **Pruebas cambiadas** (`probar-web.mjs`, comentario que cita la guía):
+  la barra inferior sobre `--noche` (§6), «Ofertas específicas» en frase
+  normal (§12.4) y el microtexto del secundario a 12 px (§5).
+- **Medidas** (`medidas.json` y capturas antes/después en el scratchpad de
+  la sesión): CSS 177 610 → 155 166 B; radios 35 → 15, bordes 33 → 20,
+  sombras 29 → 7, cristal 14 → 0, mayúsculas 45 → 5; 4 filas enteras en
+  Ofertas y Reventa a 390 px; CLS de Inicio en escritorio 0,039 → 0,000
+  (el selector de idioma tiene su hueco reservado).
+- `npm test` completo en verde; `probar-orden.mjs` solo avisa de `App.js`.
+- **Pendiente:** la escala de letra completa (quedan 79 tamaños; solo se
+  subieron los de menos de 11 px y los rótulos); las páginas sueltas con
+  su propia hoja (lecciones de Academy, privacidad, 404); la app (§13 de la
+  guía); los chips de Plataformas en una fila desplazable. Inicio, el
+  cambio a «Descartadas» y la barra de 5 botones van en el paso de Inicio.
+  Publicar necesita el permiso de Víctor.
+
+## 3 de noviembre de 2026 (noche, 2) · Claude · corrección de la versión final de Inicio y Buscar (sin publicar)
+
+Misma rama local `claude/rediseno-final-wf1`, seis commits sobre la entrada
+de abajo. **Nada publicado, nada en `main`, Supabase sin tocar.** Recoge lo
+que el corrector anterior dejó a medias y los fallos de la revisión.
+
+- **Buscar › Ofertas:** fila compacta (todo junto a la miniatura y el pie
+  debajo): 146-183 px, 4 filas enteras por pantalla a 390×844 desde
+  cualquier fila (Principales y Reventa) y la primera en y=520. Mínimo, España y Salida
+  a 12 px; el lugar nunca se corta; puntos fuertes y estado como texto, sin
+  cápsulas. Chips y estrella con diana de 44 px; el orden del foco sigue al de
+  la vista (Lista/Mapa va justo después del buscador, también en escritorio);
+  «Ordenar por» ya no corta «Fuente y fecha»; recuento visible al filtrar;
+  cabecera y barra inferior opacas; `scroll-padding-bottom` para que la barra
+  no tape el foco. En escritorio vuelven los datos largos de las tarjetas.
+- **Transparencia:** con el catálogo caducado «se contrata hoy» y «mínimo y
+  salida» pasan a ✗ («pendiente de revalidar»), en la ficha y en la página
+  fija (`ficha-pagina` lo mira con la fecha de hoy). La página fija enlaza la
+  fuente fechada de las cuatro primeras, como la ficha. Una oferta con aviso
+  crítico (tono stop) nunca entra en la Selección y su tarjeta de Inicio lo
+  enseña entero. «Revisa · N avisos» cuenta también el aviso general, como la
+  ficha.
+- **Inglés:** solo `transparencia.json`, los datos del catálogo y el nombre
+  de cada fuente quedan como texto de la fuente; los motivos que escribe
+  RWAdar se traducen (27 frases y 3 patrones nuevos). Inicio ya no lleva el
+  rótulo «Original source text (Spanish)».
+- **Inicio (solo lo barato; se rehará entero):** fuera el botón con aspecto de
+  buscador; tarjetas de los carruseles del mismo ancho; leyenda oculta de
+  verdad con el catálogo caducado; recuentos del radar para el lector de
+  pantalla; vigencia a 12 px; la tarjeta enfocada entra entera en su
+  carrusel; «reducir movimiento» solo repinta el radar (no se pierde el foco).
+- **Presupuestos:** CSS 177 610 B (comentarios largos en una línea);
+  `probar-web.mjs` por debajo de 240 000 B. `probar-orden.mjs` solo avisa de
+  `App.js`, como antes.
+- **Pruebas:** 10 nuevas en `probar-web.mjs` y 2 en `probar-fichas.cjs`;
+  `npm test` completo en verde.
+- **Pendiente:** lo mismo que abajo (sellar, merge commit y permiso de Víctor
+  para preview, producción y OTA), y la guía de acabados, que va en un paso
+  aparte. Ver «No corregido» en el informe de esta corrección.
+
+## 3 de noviembre de 2026 (noche) · Claude · versión final de Inicio y Buscar en la web móvil (sin publicar)
+
+Víctor y Claude como CEO decidieron la versión final (base A «radar vivo» con
+injertos de B y C). Rama local `claude/rediseno-final-wf1` (parte de
+`claude/rediseno-inicio-buscar`, 7b951ed). **Nada publicado, nada en `main`,
+Supabase sin tocar.** Falta sellar y el permiso de Víctor para publicar.
+
+- **Transparencia (datos):** `rwadar-editorial-source/ofertas/transparencia.mjs`
+  valida `transparencia.json` contra el catálogo publicado (slug y
+  `verificadaEl`, textos cortos de 40 caracteres, sin «%», «rentab»,
+  «garantiz», «benefici», «gananci», «recomend» ni «mejor», fuentes https) y
+  escribe el bloque `TRANSPARENCIA_POR_SLUG` del JS web y
+  `rwadar-movil/lib/transparencia-contenido.js`. Su `--comprobar` va en
+  `test:tools`. **En cada ciclo del catálogo hay que revisar este archivo:** si
+  cambia la `verificadaEl` de una oferta, `npm test` se para y la web no
+  enseña nada de esa oferta (falla cerrado).
+- **Imágenes limpias:** fuera todas las etiquetas sobre las fotos (tarjetas,
+  filas, carruseles, detalle, galería). El `alt` sigue empezando por
+  «Ilustración editorial»; línea visible «Imágenes ilustrativas, no fotos del
+  activo» bajo la lista, cada carrusel y la foto del detalle, y «Portadas
+  ilustrativas, no logotipos ni fotos de la empresa» bajo la galería.
+- **Inicio:** radar vivo con los nombres cortos (Inmobiliario, Crédito,
+  Tesoro, Acciones, Materias primas, Infraestructura), leyenda «Plataformas
+  por tipo de activo», esquinas, vigencia «Revisado el … · vigente hasta el
+  …» con pastilla «Vigente» (o «Revisión pendiente» y sin cifras), etiqueta
+  «REGISTRO INDEPENDIENTE · NO VENDE NI ASESORA», botón con aspecto de
+  buscador que enfoca `#emiBuscar`, «Ver ofertas» y «Ver plataformas»;
+  carruseles «Selección RWAdar · la documentación más completa» (las 3 que
+  cumplen las 5 comprobaciones; «No es una recomendación de inversión»;
+  «Cómo elegimos») y «Recién añadidas» (4, por fecha de alta); por tipo,
+  colecciones, noticias, fuera del radar y nota legal. Las fotos se piden al
+  acercarse: la primera pantalla carga 0 KB de imágenes (antes 378 KB).
+- **Buscar › Ofertas (móvil):** fila de una columna con miniatura de 88 px,
+  título de 2 líneas con `title=`, proveedor · lugar, hasta 2 puntos fuertes,
+  Mínimo · España · Salida en corto y pie «Revisa · N avisos en la ficha» con
+  la fecha; el aviso crítico va entero. Selección arriba dentro de
+  Principales y después «Resto de principales». Sin grupos por proveedor en
+  el móvil. Primera fila en y=520 a 390×844; filas de 207-209 px.
+- **Ficha:** apartado «Transparencia: lo que hemos comprobado» en el diálogo
+  y en `/ofertas/<slug>` (la quinta comprobación la mira `ficha-pagina` con la
+  fecha de hoy). Nada de notas «x/5».
+- **Plataformas:** miniatura del radar y «0 € · Por aparecer en el radar» en
+  la franja plegada; recuentos en los chips; nombres cortos en la galería y
+  en el radar grande (también en la portada de escritorio).
+- **Técnica:** CSS 179 674 B (poda de 31 declaraciones pisadas y comentarios
+  largos); JS 372 188 B; CLS 0 al cargar en el móvil (0,033 con 4G lento y CPU
+  ×4); 59 frases nuevas en inglés y patrones para «8 de 8 principales» y
+  «cifras vigentes 7 d»; movimiento reducido también si cambia con la página
+  abierta.
+- **Pruebas cambiadas** (con comentario que cita la decisión): etiqueta
+  «Ilustración» de las portadas, miniatura móvil centrada, `title=` del
+  título, etiquetas «Mínimo · España · Salida», «Doc.» en su span y
+  agrupación por proveedor solo en escritorio. 14 pruebas nuevas en
+  `probar-web.mjs` y 1 en `probar-fichas.cjs`. `npm test` completo en verde
+  (web 567, fichas 66, precarga 32, app 394, acceso 144).
+- **Pendiente:**
+  - sellar (`auditar-relanzamiento.mjs` → `estado.json`), unir con merge
+    commit y pedir permiso a Víctor para preview, producción y OTA;
+  - la app no cambia todavía (`transparencia-contenido.js` está listo);
+  - en escritorio los chips siguen con el nombre largo, como pedía «no
+    cambiar de aspecto»; si Víctor quiere el corto también ahí, es un cambio
+    de una línea en el CSS.
+
 ## 3 de noviembre de 2026 (tarde, 5) · Claude · el worker da 404 a lo retirado aunque Cloudflare guarde copia
 
 Víctor: «arréglalo», sobre la ficha de mF-ONE que seguía saliendo en

@@ -440,7 +440,8 @@ html = inyectar(html, 'emiLista', capturado.emiLista);
 const pieRevision = capturadoTexto.pieRevision;
 // Con el catálogo caducado la web añade «· pendiente de renovar» y lo sigue
 // mostrando (catálogo siempre disponible). El HTML estático dice lo mismo.
-if (!/^Última revisión del registro: \d{2}\.\d{2}\.\d{4}( · pendiente de renovar)?$/.test(pieRevision)) {
+// Fechas en dd/mm/aaaa en toda la web (revisión de lectura, 04/11/2026).
+if (!/^Última revisión del registro: \d{2}\/\d{2}\/\d{4}( · pendiente de renovar)?$/.test(pieRevision)) {
   console.error('ERROR: no se pudo derivar la fecha de revisión del registro.');
   process.exit(1);
 }

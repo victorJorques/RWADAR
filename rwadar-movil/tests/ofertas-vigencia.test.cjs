@@ -1,3 +1,4 @@
+// Rótulos en frase normal, sin mayúsculas (GUIA-ACABADOS §5, aplicada a la web el 04/11/2026).
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -113,7 +114,8 @@ test('web y móvil conservan el último día completo y retiran cifras al siguie
     assert.equal(movil.cifrasOfertaVigentes(dato, ultimoDia), true);
     assert.equal(movil.cifrasOfertaVigentes(dato, caducada), false);
     assert.doesNotMatch(webVigente.tarjetaOfertaLocal(dato), centinelas);
-    assert.match(webVigente.tarjetaOfertaLocal(dato), /cifras vigentes hasta hoy/);
+    // «cifras válidas hasta hoy» (LISTA-FINAL fila 14, 04/11/2026).
+    assert.match(webVigente.tarjetaOfertaLocal(dato), /cifras válidas hasta hoy/);
     assert.match(webVigente.tarjetaOfertaLocal(dato), /aria-label="Ver ficha de Oferta de prueba en Proveedor"/);
     assert.doesNotMatch(webCaducada.tarjetaOfertaLocal(dato), centinelas);
     assert.match(webCaducada.tarjetaOfertaLocal(dato), /escaparate-estado-linea caducado/);
@@ -184,7 +186,7 @@ test('una web abierta revisa las cifras a medianoche sin depender de una respues
     assert.ok(inicio > 0 && fin > inicio);
     vm.runInContext(codigo.slice(inicio, fin), contexto);
     contexto.refrescarVigenciaOfertas();
-    assert.match(html, /cifras vigentes hasta hoy/);
+    assert.match(html, /cifras válidas hasta hoy/);
     contexto.abrirDetalleOfertaLocal(oferta.slug);
     assert.match(contexto.document.getElementById().innerHTML, /97,13/);
     contexto.programarRevisionVigenciaOfertas();
@@ -208,6 +210,10 @@ function componentesMoviles(ahora, simulacion = {}) {
     'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), Animated: {View:'AnimatedView'}, StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
     '../lib/ficha-editorial': require('../lib/ficha-editorial'),
+    // La transparencia de la web (03/11/2026): puntos fuertes y forma corta.
+    '../lib/transparencia': cargarModulo('lib/transparencia.js', {
+      './transparencia-contenido': cargarModulo('lib/transparencia-contenido.js'),
+    }),
     '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
       imagenEditorialOferta: () => null },
     '../lib/datos': datosMoviles,
@@ -234,7 +240,7 @@ test('tarjeta, accesibilidad y detalle móvil ocultan precio/yield vencidos sin 
     for (const render of [componentes.FichaOferta, componentes.DetalleOferta]) {
       const texto = textoRenderizado(render({ oferta: dato }));
       assert.doesNotMatch(texto, centinelas);
-      assert.match(texto, render === componentes.FichaOferta ? /cifras ocultas/ : /Consultar emisor/);
+      assert.match(texto, render === componentes.FichaOferta ? /Cifras por actualizar/ : /Consultar emisor/);
       assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo/);
     }
   }
@@ -256,12 +262,14 @@ test('una app abierta retira las cifras al cambiar de día y al volver de suspen
       AppState: { addEventListener(nombre, fn) { assert.equal(nombre, 'change'); reactivar = fn; return { remove() { retiroEscucha = true; } }; } },
       setTimeout(fn, espera) { assert.ok(espera > 0 && espera <= 86400100); temporizador = fn; return 1; },
     });
-    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Datos con fuente y fecha/);
+    // Fila compacta de la web (03/11/2026): una principal vigente enseña su vigencia.
+    // «Cifras válidas N días más» desde el 04/11/2026 (LISTA-FINAL fila 14).
+    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Cifras válidas/);
     assert.match(textoRenderizado(componentes.DetalleOferta({ oferta })), /97,13/);
     reloj.setTime(caducada.getTime());
     if (evento === 'medianoche') temporizador(); else reactivar('active');
     assert.doesNotMatch(textoRenderizado(componentes.FichaOferta({ oferta })), centinelas);
-    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /cifras ocultas/);
+    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Cifras por actualizar/);
     assert.doesNotMatch(textoRenderizado(componentes.DetalleOferta({ oferta })), centinelas);
     limpiar();
     assert.equal(retiroEscucha, true);
@@ -299,7 +307,8 @@ test('el detalle conserva acceso a fuentes fechadas cuando retira las cifras', (
   const fuente = 'https://example.test/fuente-oficial';
   const detalle = componentes.DetalleOferta({ oferta: { ...oferta, fuentesActuales: [fuente] } });
   const texto = textoRenderizado(detalle);
-  assert.match(texto, /OTRAS FUENTES CONSULTADAS/);
+  // Las fuentes van plegadas en «Fuentes consultadas», como la web (04/11/2026).
+  assert.match(texto, /Ver fuente 1 ·/);
   assert.match(texto, /Revisión del catálogo:\s*21\/09\/2026/);
   assert.ok(texto.includes(fuente));
   assert.match(texto, /contratación y el pago se realizan directamente con el proveedor/);
@@ -328,7 +337,7 @@ test('una referencia del 27 de septiembre conserva su revisión documental el d�
       const texto = textoRenderizado(render({ oferta: dato }));
       assert.match(texto, /(?:Revisión documental|Revisión del catálogo:)\s*27\/09\/2026/);
       assert.match(texto, render === componentes.FichaOferta
-        ? estadoRevision === 'fuentes_en_conflicto' ? /Las fuentes no coinciden/ : /cifras ocultas/
+        ? { actual: /Cifras por actualizar/, no_verificable: /Apertura no confirmada/, fuentes_en_conflicto: /Fuentes en conflicto/ }[estadoRevision]
         : /Consultar emisor/);
       assert.match(texto, /La inversión puede perder valor/);
       assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo|Disponible desde España/);
@@ -338,7 +347,8 @@ test('una referencia del 27 de septiembre conserva su revisión documental el d�
     assert.ok(detalle.includes(fuente));
     assert.match(detalle, /Sin comprobar desde España/);
     if (estadoRevision === 'no_verificable') assert.match(detalle, /Apertura no confirmada/);
-    if (estadoRevision === 'fuentes_en_conflicto') assert.match(detalle, /Fuentes oficiales en conflicto/);
+    // El estado con las palabras de la web (estadoVigenciaLocal, 04/11/2026).
+    if (estadoRevision === 'fuentes_en_conflicto') assert.match(detalle, /Fuentes en conflicto/);
     assert.deepEqual(dato, original);
   }
 });
@@ -377,12 +387,12 @@ test('la ficha documental y sus referencias históricas sobreviven al TTL sin pr
   const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: dato }));
   assert.match(tarjeta, /Fuente consultada 27\/09\/2026/);
   assert.doesNotMatch(tarjeta, /Fuente consultada 30\/09\/2026/);
-  assert.match(tarjeta, /cifras ocultas/);
+  assert.match(tarjeta, /Cifras por actualizar/);
   assert.doesNotMatch(tarjeta, /54,20|97,13|9876|1234|4455/);
   const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
   assert.match(detalle, /Revisión del catálogo:\s*30\/09\/2026/);
-  for (const esperado of ['CARACTERÍSTICAS DOCUMENTADAS', documentacion.descripcion, 'Inmobiliario residencial',
-    'REFERENCIAS FECHADAS', 'No son precios actuales', '54,20 CHF', '26/09/2026',
+  for (const esperado of ['Características', documentacion.descripcion, 'Inmobiliario residencial',
+    'No son precios actuales', '54,20 CHF', '26/09/2026',
     '27/09/2026', documentacion.referencias[0].alcance, fuente]) assert.ok(detalle.includes(esperado), esperado);
   assert.doesNotMatch(detalle, centinelas);
   assert.deepEqual(dato, original);
@@ -621,7 +631,7 @@ test('V2 recorre REST y normalizadores hasta tres grupos web y detalles document
     assert.equal(dialogo.open, true); assert.match(dialogo.innerHTML, /9043 CHF/);
     assert.match(dialogo.innerHTML, /2026-09-20/); assert.match(dialogo.innerHTML, /2026-09-27/);
     const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: o }));
-    assert.match(tarjeta, o.coleccion === 'secundario' ? /Referencia de reventa · disponibilidad sin confirmar/ : /Anuncio documentado · apertura sin confirmar/); assert.doesNotMatch(tarjeta, /9043 CHF/);
+    assert.match(tarjeta, o.coleccion === 'secundario' ? /Liquidez no confirmada/ : /Apertura no confirmada/); assert.doesNotMatch(tarjeta, /9043 CHF/);
     assert.match(textoRenderizado(componentes.DetalleOferta({ oferta: o })), /9043 CHF/);
   }
 });

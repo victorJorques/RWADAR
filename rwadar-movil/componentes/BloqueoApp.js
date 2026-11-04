@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Pressable, ScrollView, Text } from './Idioma';
-import { C, F, T } from '../lib/tema';
+import { C, F, R, T } from '../lib/tema';
 import * as idioma from '../lib/idioma';
 
 export default function BloqueoApp({ preparando = false, ocupado = false,
@@ -44,7 +44,7 @@ const s = StyleSheet.create({
   detalle: { ...T.menor, color: C.tx2 },
   mensaje: { ...T.menor, color: C.tx, borderLeftWidth: 2, borderLeftColor: C.senal,
     paddingLeft: 12 },
-  boton: { backgroundColor: C.senal, borderRadius: 14, minHeight: 52,
+  boton: { backgroundColor: C.senal, borderRadius: R.m, minHeight: 52,
     paddingHorizontal: 18, paddingVertical: 15, justifyContent: 'center', alignItems: 'center' },
   botonTexto: { ...T.cuerpoFte, color: C.noche, textAlign: 'center' },
   salir: { minHeight: 48, padding: 12, justifyContent: 'center', alignItems: 'center' },

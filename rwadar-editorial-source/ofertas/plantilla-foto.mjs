@@ -1,7 +1,7 @@
 // Página de 1280×880 para las fotografías generadas: la foto, graduada y con
-// viñeta, ocupa todo el lienzo con el activo a la derecha; a la izquierda, un
-// velo oscuro con el lugar y los tres pasos, en la franja que se ve en todas
-// las tarjetas.
+// una viñeta suave, ocupa todo el lienzo. Desde el 03/11/2026 (Víctor: «deja
+// una foto limpia») la imagen no lleva rótulos: el lugar y los tres pasos van
+// como texto en la ficha. Con rotulo:true se recupera el velo con el texto.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,7 +16,7 @@ const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;'
 
 // foto: data URL de la imagen ya retocada; encuadre: posición CSS del objeto
 // (p. ej. '70% 50%') para dejar el activo a la derecha.
-export function paginaFoto({ color, foto, encuadre = '68% 55%', pasos, lugar }) {
+export function paginaFoto({ color, foto, encuadre = '68% 55%', pasos, lugar, rotulo = false }) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>${FUENTES}
   *{margin:0;padding:0;box-sizing:border-box}
   body{width:${W}px;height:${H}px;background:#0B0A0A;font-family:Geist,sans-serif;color:#F7F5F0;overflow:hidden;position:relative}
@@ -27,6 +27,10 @@ export function paginaFoto({ color, foto, encuadre = '68% 55%', pasos, lugar }) 
     linear-gradient(90deg,rgba(9,9,10,.94) 0%,rgba(9,9,10,.82) 26%,rgba(9,9,10,.42) 46%,rgba(9,9,10,0) 62%),
     linear-gradient(0deg,rgba(9,9,10,.55) 0%,rgba(9,9,10,0) 28%),
     radial-gradient(ellipse 85% 95% at 68% 48%,rgba(0,0,0,0) 55%,rgba(0,0,0,.42) 100%)}
+  /* sin rótulo: solo una viñeta suave y una base algo más oscura abajo */
+  .vineta{position:absolute;inset:0;background:
+    linear-gradient(0deg,rgba(9,9,10,.32) 0%,rgba(9,9,10,0) 30%),
+    radial-gradient(ellipse 90% 100% at 50% 48%,rgba(0,0,0,0) 60%,rgba(0,0,0,.34) 100%)}
   /* grano fino, para que la imagen respire como una foto */
   .grano{position:absolute;inset:0;opacity:.07;mix-blend-mode:overlay}
   .acento{position:absolute;left:44px;top:330px;width:64px;height:4px;border-radius:2px;background:${color};box-shadow:0 0 14px ${color}}
@@ -39,9 +43,9 @@ export function paginaFoto({ color, foto, encuadre = '68% 55%', pasos, lugar }) 
   .pasos li:not(:last-child) .n::after{content:'';position:absolute;left:50%;top:58px;width:3.5px;height:18px;background:${color};opacity:.55;transform:translateX(-50%)}
   </style></head><body>
   <img class="foto" src="${foto}" alt="">
-  <div class="velo"></div>
+  ${rotulo ? '<div class="velo"></div>' : '<div class="vineta"></div>'}
   <svg class="grano" width="${W}" height="${H}"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
-  <div class="acento"></div>
-  <div class="bloque">${lugar ? `<div class="lugar"><i></i>${esc(lugar)}</div>` : ''}<ol class="pasos">${pasos.map((t, i) => `<li><span class="n">${i + 1}</span><span>${esc(t)}</span></li>`).join('')}</ol></div>
+  ${rotulo ? `<div class="acento"></div>
+  <div class="bloque">${lugar ? `<div class="lugar"><i></i>${esc(lugar)}</div>` : ''}<ol class="pasos">${pasos.map((t, i) => `<li><span class="n">${i + 1}</span><span>${esc(t)}</span></li>`).join('')}</ol></div>` : ''}
   </body></html>`;
 }

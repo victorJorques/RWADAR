@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-03",
+  "actualizadoEl": "2026-11-04",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 03/11: el worker da 404 a las fichas retiradas y a las copias de conservación de Cloudflare Pages (orden de Víctor: «arréglalo», por la ficha de mF-ONE que seguía saliendo). Revisión independiente de cuatro enfoques y segunda verificación; npm test completo en verde. Catálogo sin cambios (entrega 2026-11-03.6).",
+  "nota": "Claude, 04/11: rediseño de la web y de la app (Inicio como historia con fuentes y sin llamadas en el texto, barra de 5 botones, «Descartadas», acabados profesionales, lista de ofertas compacta con transparencia, ficha con lo esencial y los avisos arriba, mapa de Ofertas claro). Orden de Víctor: «súbelo todo en cuanto esté». Revisiones independientes de producto, normas, lectura, técnica y accesibilidad, con correcciones; npm test completo en verde. Catálogo sin cambios (entrega 2026-11-03.6).",
   "revisionAprobada": {
-    "commit": "09c859ad648ca0497f31a0c5d501d81465c416d9",
-    "contenidoSha256": "sha256:221bbda3150bac0b883ea2a11b50c43f4660b1cfaf7afa55e26b0a1647af137b",
+    "commit": "031ac441c08ba078ec070500f4e0a2d2fcff7ad3",
+    "contenidoSha256": "sha256:4a445d6a0d904b5609905523fc89195469198f665fa20419c08f8c9959fd5279",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

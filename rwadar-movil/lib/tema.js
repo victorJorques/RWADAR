@@ -1,4 +1,6 @@
-import { Platform } from 'react-native';
+import * as Nativo from 'react-native';
+
+const { Platform } = Nativo;
 
 /* ---------------------------------------------------------------------
    Los mismos colores que la web, para que la app y el sitio se
@@ -21,35 +23,60 @@ import { Platform } from 'react-native';
        y cansa; el mismo valor tirando a tierra se lee cómodo.
    --------------------------------------------------------------------- */
 export const C = {
-  /* Superficies, con una pizca de calor en el negro. */
+  /* Superficies (GUIA-ACABADOS §3 y §13): el fondo y tres alturas. En negro,
+     la altura la da la luz, no la sombra. */
+  s0: '#0B0A0A',   // fondo, cabecera y barra inferior
+  s1: '#171614',   // tarjetas, filas agrupadas
+  s2: '#1E1D1B',   // hojas y menús encima de s1
+  s3: '#2A2927',   // opción elegida de un segmentado
+  ton: 'rgba(255,255,255,0.06)',   // relleno de controles: botón tonal, campo, chip
+  ton2: 'rgba(255,255,255,0.10)',  // el mismo, pulsado o elegido
+  /* Un solo borde: fino y de un solo color tenue. */
+  bd: 'rgba(255,255,255,0.08)',
+
+  /* Nombres de antes, que ahora apuntan a los nuevos: todo lo que ya los usa
+     cambia a la vez. */
   noche: '#0B0A0A',
-  noche2: '#100F0E',
+  noche2: '#0B0A0A',
   sup: '#171614',
   sup2: '#1E1D1B',
-  sup3: '#262523',
-  linea: '#26241F',
-  linea2: '#3A3833',
+  sup3: '#2A2927',
+  linea: 'rgba(255,255,255,0.08)',
+  linea2: 'rgba(255,255,255,0.08)',
 
-  /* Texto en grises cálidos. */
+  /* Texto en grises cálidos. El terciario sube a #958E83 para pasar AA
+     sobre s2. */
   tx: '#F7F5F0',
   tx2: '#BBB5AB',
-  tx3: '#8A8378',
+  tx3: '#958E83',
 
-  /* La señal: el verde de un eco de radar. 13:1 sobre el fondo, así que
-     sirve para texto, para botones y para el barrido. */
+  /* La señal: el verde de un eco de radar. Solo para la acción principal,
+     los botones y enlaces de texto, la ✓, el estado «ok», la pestaña activa,
+     el foco, el logotipo y el radar. */
   senal: '#25E39A',
+  senalP: '#1FC98A',      // verde pulsado
+  enSenal: '#06140E',     // la única tinta sobre verde
+  senalT: 'rgba(37,227,154,0.12)',   // fondo de estado «ok»
   senalCl: '#6BF0C0',
   senalOs: '#0B5F42',
-  senal10: 'rgba(37,227,154,0.10)',
+  senal10: 'rgba(37,227,154,0.12)',
   senal20: 'rgba(37,227,154,0.20)',
-  senal34: 'rgba(37,227,154,0.34)',
+  /* Nunca un borde verde (GUIA-ACABADOS §3): el antiguo borde verde pasa a
+     ser la línea tenue de siempre. */
+  senal34: 'rgba(255,255,255,0.08)',
+
+  /* Estados. */
+  aviso: '#FFB454',
+  avisoT: 'rgba(255,180,84,0.12)',
+  alarma: '#FF8A80',
+  alarmaT: 'rgba(255,59,48,0.14)',
 
   /* «Descartada». Es rojo puro y no naranja a propósito: contra el
      naranja de «materias primas» la distancia en Lab era de 22,9 —una
      categoría confundible con una advertencia—, y así sube a 34,5. */
   coral: '#FF3B30',
-  coral10: 'rgba(255,59,48,0.10)',
-  coral32: 'rgba(255,59,48,0.32)',
+  coral10: 'rgba(255,59,48,0.14)',
+  coral32: 'rgba(255,255,255,0.08)',
 
   /* Los cuatro dueños del explicador, iguales que en el 3D de la web. */
   duenos: ['#25E39A', '#5B8CFF', '#F2B23C', '#B583FF'],
@@ -90,15 +117,23 @@ export const F = {
 };
 
 export const T = {
-  titular:   { fontFamily: F.extra,   fontSize: 27, letterSpacing: -0.85, lineHeight: 31 },
-  seccion:   { fontFamily: F.extra,   fontSize: 21, letterSpacing: -0.62, lineHeight: 25 },
-  ficha:     { fontFamily: F.negrita, fontSize: 20, letterSpacing: -0.38, lineHeight: 26 },
-  cuerpo:    { fontFamily: F.regular, fontSize: 16, letterSpacing: -0.1, lineHeight: 24 },
-  cuerpoFte: { fontFamily: F.media,   fontSize: 16, letterSpacing: -0.1, lineHeight: 24 },
-  menor:     { fontFamily: F.regular, fontSize: 14, letterSpacing: -0.05, lineHeight: 21 },
-  dato:      { fontFamily: F.mono,    fontSize: 13, letterSpacing: 0.4, lineHeight: 19 },
-  etiqueta:  { fontFamily: F.mono,    fontSize: 12, letterSpacing: 1.1, lineHeight: 18 },
+  titular:   { fontFamily: F.negrita, fontSize: 28, letterSpacing: -0.56, lineHeight: 33 },
+  seccion:   { fontFamily: F.negrita, fontSize: 20, letterSpacing: -0.2, lineHeight: 25 },
+  ficha:     { fontFamily: F.negrita, fontSize: 20, letterSpacing: -0.2, lineHeight: 26 },
+  cuerpo:    { fontFamily: F.regular, fontSize: 16, letterSpacing: 0, lineHeight: 24 },
+  cuerpoFte: { fontFamily: F.media,   fontSize: 16, letterSpacing: 0, lineHeight: 24 },
+  menor:     { fontFamily: F.regular, fontSize: 14, letterSpacing: 0, lineHeight: 21 },
+  /* Fechas y cifras en Geist con números tabulares; la mono queda solo para
+     las cifras del radar (GUIA-ACABADOS §3). */
+  dato:      { fontFamily: F.media,   fontSize: 13, letterSpacing: 0, lineHeight: 18, fontVariant: ['tabular-nums'] },
+  /* Rótulo en frase normal, 12 px y gris: sin mono ni mayúsculas (§5). */
+  etiqueta:  { fontFamily: F.semi,    fontSize: 12, letterSpacing: 0, lineHeight: 17 },
+  /* La cifra del radar, el instrumento: la única mono de la app. */
+  instrumento: { fontFamily: F.mono, letterSpacing: 0, fontVariant: ['tabular-nums'] },
 };
+
+/* Escala de letra: 7 tamaños (11 solo en la barra inferior). */
+export const FS = { 1: 11, 2: 12, 3: 13, 4: 15, 5: 16, 6: 20, 7: 28 };
 
 /* ---------------------------------------------------------------------
    Elevación
@@ -115,14 +150,53 @@ const sombraIOS = (y, radio, opacidad) => ({
   shadowOpacity: opacidad,
 });
 
+/* Dos elevaciones (GUIA-ACABADOS §13). e1 es una superficie más clara, sin
+   sombra; e2 es la sombra de iOS o elevation 4 en Android, solo para hojas
+   y menús. e3 se queda como alias de e2. */
 export const E = {
-  e1: Platform.select({ ios: sombraIOS(2, 6, 0.30), android: { elevation: 1 }, default: {} }),
-  e2: Platform.select({ ios: sombraIOS(6, 16, 0.42), android: { elevation: 4 }, default: {} }),
-  e3: Platform.select({ ios: sombraIOS(12, 28, 0.55), android: { elevation: 9 }, default: {} }),
+  e1: {},
+  e2: Platform.select({ ios: sombraIOS(24, 24, 0.8), android: { elevation: 4 }, default: {} }),
+};
+E.e3 = E.e2;
+
+/* Radios: 8 · 12 · 16 · 24 (solo hojas y diálogos) · píldora
+   (GUIA-ACABADOS §3). Radio anidado = radio exterior − relleno. */
+export const R = { s: 8, m: 12, l: 16, xl: 24, p: 999 };
+
+/* Un solo borde, en todas partes. */
+export const BORDE = { borderWidth: 1, borderColor: C.bd };
+
+/* Movimiento: 120 ms al pulsar, 160 para color y 200 para lo que aparece,
+   siempre ease-out. `reducir` sigue a «reducir movimiento» del sistema: con
+   él activo, los pulsados cambian de color pero no encogen. */
+export const MOV = { pulsar: 120, color: 160, aparecer: 200, reducir: false };
+try {
+  const accesibilidad = Nativo.AccessibilityInfo;
+  accesibilidad?.isReduceMotionEnabled?.()?.then?.((v) => { MOV.reducir = Boolean(v); })?.catch?.(() => {});
+  accesibilidad?.addEventListener?.('reduceMotionChanged', (v) => { MOV.reducir = Boolean(v); });
+} catch { /* sin accesibilidad (pruebas): se queda en false */ }
+
+/* Tres botones (GUIA-ACABADOS §4): b1 relleno verde, una sola acción por
+   pantalla; b2 tonal, las demás; b3 de texto verde. Los controles no llevan
+   borde: se distinguen por su relleno. */
+export const BOTON = {
+  b1: { minHeight: 48, borderRadius: R.m, backgroundColor: C.senal, paddingHorizontal: 20,
+    alignItems: 'center', justifyContent: 'center' },
+  b2: { minHeight: 48, borderRadius: R.m, backgroundColor: C.ton, paddingHorizontal: 20,
+    alignItems: 'center', justifyContent: 'center' },
+  b3: { minHeight: 44, borderRadius: R.m, paddingHorizontal: 8, alignItems: 'flex-start', justifyContent: 'center' },
+  texto: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, letterSpacing: 0 },
 };
 
-/* Escala de radios: la curva crece con la superficie. */
-export const R = { xs: 8, s: 12, m: 14, ficha: 18, panel: 24, pastilla: 99 };
+/* Estado al pulsar de cada variante. Se calcula al pulsar, así que respeta
+   «reducir movimiento» aunque cambie con la app abierta. */
+export function pulsado(variante = 'b2') {
+  const escala = MOV.reducir ? null : { transform: [{ scale: variante === 'chip' ? 0.97 : variante === 'icono' ? 0.96 : 0.98 }] };
+  if (variante === 'b1') return [{ backgroundColor: C.senalP }, escala];
+  if (variante === 'b3') return { backgroundColor: C.senalT };
+  if (variante === 'fila') return { backgroundColor: C.ton };
+  return [{ backgroundColor: C.ton2 }, escala];
+}
 
 /* Medidas semánticas compartidas por el nuevo shell. Mantenerlas aquí evita
    que navegación, filas y botones acaben con dianas distintas al crecer la
@@ -131,7 +205,7 @@ export const UI = {
   margen: 16,
   tactil: 48,
   fila: 60,
-  boton: 52,
+  boton: 48,
   nav: 68,
   icono: 24,
 };

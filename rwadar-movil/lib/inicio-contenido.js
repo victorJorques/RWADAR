@@ -1,0 +1,500 @@
+/* ---------------------------------------------------------------------
+   Inicio como historia: los textos, en castellano y en inglés
+   ---------------------------------------------------------------------
+   Los mismos que la web final (04/11/2026): el castellano sale del panel
+   #movilPanelInicio de rwadar-site/index.html y de rwadar-20260820.js
+   (NOTAS_SELECCION y CRITERIOS_INICIO); el inglés, del diccionario común
+   lib/idioma-en.js, que es el que traduce la web. Textos cortos del revisor
+   de lectura: lo que sale de la vista va al «Saber más» de su capítulo, con
+   las mismas fuentes. DECISIÓN DE VÍCTOR del 04/11/2026: sin llamadas [n];
+   cada apartado acaba en «Fuentes de este apartado» (lib/inicio-fuentes.js).
+
+   Ninguna cifra del catálogo va escrita aquí: {ofertas}, {plataformas},
+   {descartadas}, {seleccion}, {minimos}, {usd}, {revisado} y {hasta} llegan
+   en cada carga (las funciones de abajo). Sin catálogo vigente, las frases
+   con cifra se ocultan o quedan sin número (ESPEC §2.10). Las cifras de
+   mercado (125 veces, 14.230 millones, −3,9 %) son de rwa.xyz a 03/11/2026,
+   van en `cap3.mercado` (el hueco `null` de su «Saber más») y se vuelven a
+   fechar en cada ciclo del catálogo.
+   --------------------------------------------------------------------- */
+
+const es = {
+  portada: {
+    radar: {
+      ofertas: 'Ofertas',
+      plataformas: 'Plataformas',
+      descartadas: 'Descartadas',
+      revisado: 'Revisado el',
+    },
+    antetitulo: 'Independiente y gratis · Tokenización en España',
+    titular: 'La blockchain nació para pagar sin bancos. Hoy la usan los propios bancos.',
+    subtitulo: (n) => `Mueven con ella acciones, bonos y dinero. ${n ? `Aquí ves las ${n} ofertas del radar` : 'Aquí ves las ofertas del radar'}, con su fuente y su fecha.`,
+    boton: (n) => (n ? `Ver las ${n} ofertas` : 'Ver las ofertas'),
+    aviso: 'Invertir tiene riesgos: puedes perder parte o todo lo que inviertas. RWAdar informa, no asesora ni vende.',
+    explorar: 'Explorar el radar',
+    // En la portada, como la web, el enlace dice solo «Fuentes».
+    fuentes: 'Fuentes',
+  },
+  fuentesApartado: 'Fuentes de este apartado',
+  saberMas: 'Saber más',
+  capitulos: {
+    cap1: {
+      rotulo: 'De dónde viene',
+      titular: 'Empezó con un titular de periódico.',
+      queEsRotulo: 'Qué es',
+      queEs: 'La blockchain es un registro compartido. Tokenizar es apuntar en ella una acción, un bono o un fondo.',
+      texto: 'En el primer bloque de bitcoin, de enero de 2009, quedó grabado un titular de The Times.',
+      genesis: 'Bloque génesis',
+      genesisFecha: '03/01/2009',
+      genesisPie: '«El ministro de Hacienda, al borde de un segundo rescate a los bancos».',
+      saberMas: [
+        'A veces el token es el activo y otras, solo un contrato que sigue su precio.',
+        'En España, la ley admite desde 2023 registrar así los valores, además de las anotaciones en cuenta y los títulos de siempre.',
+        'Satoshi Nakamoto presentó el documento técnico de bitcoin el 31/10/2008, en plena crisis financiera. Proponía pagos directos de una persona a otra, «sin pasar por una institución financiera».',
+        'En 2016, Don y Alex Tapscott escribieron en TIME: «No hablamos de la web social, la inteligencia artificial, el big data, la robótica, ni siquiera de los coches autónomos. Hablamos de la blockchain».',
+        'El economista Nouriel Roubini lo ve al revés: «la tecnología más sobrevalorada —y menos útil— de la historia de la humanidad». Lo escribió en 2018, ante el Comité Bancario del Senado de EE. UU.',
+      ],
+    },
+    cap2: {
+      rotulo: 'Qué cambia',
+      titular: 'Menos intermediarios, menos esperas.',
+      hoy: 'Hoy',
+      nuevo: 'Lo que permite la blockchain',
+      rutaHoy: ['Tú', 'Bróker', 'Cámara de compensación', 'Custodio', 'Activo'],
+      rutaNueva: ['Tú', 'Plataforma', 'Registro compartido', 'Activo'],
+      registroPie: 'con quien crea el producto y quien guarda el activo',
+      filas: [
+        [
+          'Liquidación',
+          'Compras el lunes; en Europa, se completa el miércoles',
+          'Pagas y recibes a la vez',
+        ],
+        ['Horario', 'Solo en horario de bolsa', 'A cualquier hora, cualquier día'],
+      ],
+      pie: 'Esquema simplificado: menos intermediarios no quiere decir ninguno.',
+      saberMas: [
+        'Larry Fink, consejero delegado de BlackRock, lo resumió en su carta de 2025: «Si SWIFT es el correo postal, la tokenización es el correo electrónico». SWIFT es la red que usan los bancos para los pagos internacionales. Lo dice quien vende fondos tokenizados, y BlackRock no tiene relación con RWAdar.',
+        'El BCE es más prudente: que los activos se puedan programar «podría reducir el número de intermediarios y de operaciones». Lo ve como un beneficio posible, aún sin medir.',
+        'En los pagos entre países, las monedas estables «a menudo» cambian unos intermediarios por otros. Son monedas digitales ligadas a una divisa, casi siempre el dólar. Lo concluyen tres autores del Banco de Pagos Internacionales (BIS) en un documento de trabajo de octubre de 2026, a título personal.',
+        'No se trata de salir del euro: las operaciones que pasan por Pontes, el sistema del BCE, se pagan en euros del propio banco central.',
+        'La UE también acortará los plazos: desde el 11/10/2027, una compra de acciones se completará en un día hábil, y no en dos.',
+      ],
+    },
+    cap3: {
+      rotulo: 'Quién lo usa ya',
+      titular: 'Ya no es solo cosa de cripto.',
+      texto1: 'Desde el 28 de octubre, la DTCC, donde se guardan las acciones y los bonos de EE. UU., ofrece tokenizar parte de ellos.',
+      texto2: 'En Europa, el BCE permite a las grandes entidades pagar estas operaciones con Pontes, y Santander, Cecabank y ABANCA ya participan.',
+      carrusel: 'Quién más se ha movido',
+      carruselNota: 'Ninguna tiene relación con RWAdar ni paga por aparecer.',
+      anterior: 'Tarjeta anterior',
+      siguiente: 'Tarjeta siguiente',
+      posicion: (i, n) => `${i} de ${n}`,
+      tarjetas: [
+        {
+          nombre: 'Banca europea',
+          fecha: '14/10/2026',
+          cifra: '37 bancos',
+          pie: 'de 15 países, siete de ellos españoles',
+          texto: 'Su consorcio, Qivalis, tiene licencia para emitir una moneda digital en euros, pero aún no lo ha hecho.',
+        },
+        {
+          nombre: 'JPMorgan',
+          fecha: '2026',
+          cifra: '7.000 millones',
+          pie: 'de dólares al día, de media, en su red Kinexys, según el propio banco (datos de 2025)',
+          texto: 'Jamie Dimon, su presidente: «Tenemos que lanzar nuestra propia tecnología blockchain».',
+        },
+        {
+          nombre: 'MEDE',
+          fecha: 'octubre de 2026',
+          cifra: '1.000 millones',
+          pie: 'de euros, en un bono digital pagado a través de Pontes',
+          texto: 'Lo emitió el Mecanismo Europeo de Estabilidad, con el Bundesbank a cargo de la emisión y los pagos.',
+        },
+        {
+          nombre: 'Visa',
+          fecha: 'octubre de 2026',
+          cifra: '25.000 millones',
+          pie: 'de dólares al año, saldados con monedas digitales ligadas a una divisa',
+          texto: 'Es su ritmo actual: diez veces más que hace un año, pero poco frente a todo lo que mueve Visa.',
+        },
+        {
+          nombre: 'Swift',
+          fecha: 'julio de 2026',
+          cifra: '17 bancos',
+          pie: 'en un piloto de la red de pagos internacionales',
+          texto: 'Prueban a mover depósitos convertidos en token entre países, a cualquier hora. El pago final sigue por la vía de siempre.',
+        },
+      ],
+      mercado: 'El mercado de letras del Tesoro de EE. UU. tokenizadas es hoy 125 veces mayor que en enero de 2023: de 114 millones de dólares a unos 14.230 millones (03/11/2026). En los últimos 30 días ha bajado un 3,9 %. Es el tamaño del mercado, no lo que rinde.',
+      sinCifra: 'Nuestra última cifra del mercado de letras del Tesoro de EE. UU. tokenizadas tiene más de 7 días, así que la hemos quitado. La de hoy está en su fuente, rwa.xyz.',
+      saberMas: [
+        'Al servicio de la DTCC se han apuntado 20 entidades, entre ellas J.P. Morgan.',
+        'Con Pontes, estas operaciones se pagan en euros del propio banco central. Tres de sus 13 primeros participantes son españoles.',
+        null,
+        'Los siete bancos españoles de Qivalis son BBVA, CaixaBank, ABANCA, Sabadell, Bankinter, Cecabank y Kutxabank.',
+        'Opinión. Piero Cipollone, del Comité Ejecutivo del BCE, habló en agosto de 2026 de una «revolución copernicana». Pero admite que los activos reales tokenizados siguen siendo «diminutos» y poco líquidos frente a los mercados mundiales.',
+        'Opinión. Larry Fink y Rob Goldstein, de BlackRock, escribieron a finales de 2025: «Creemos que la tokenización puede estar hoy más o menos donde estaba internet en 1996». Fink lo recoge en su carta de 2026 y avisa: «No sustituirá de la noche a la mañana el sistema financiero actual».',
+        'Previsión. Paul Atkins, presidente de la SEC, el supervisor de la bolsa de EE. UU., en diciembre de 2025: «Así va a ser el mundo… Quizá ni siquiera tarde diez años; quizá incluso mucho menos, quizá un par de años».',
+      ],
+    },
+    cap4: {
+      rotulo: 'Por qué te importa',
+      titular: 'Hoy, invertir en bolsa es cosa de pocos.',
+      cifras: [
+        ['34,6 %', 'del 10 % de hogares con más renta', 34.6],
+        ['menos del 2 %', 'del 20 % con menos renta', 2],
+      ],
+      cifrasPie: 'tienen acciones en bolsa (España, finales de 2024)',
+      texto: 'Para el economista jefe de la OCDE, trocear un activo en tokens podría facilitar la entrada de pequeños inversores, pero aún no a gran escala.',
+      minimos: (m, n, usd) => `En el radar, ${m} de las ${n} ofertas tienen un mínimo documentado de 1 €${usd === 1 ? ' (una de ellas, de 1 $)' : usd > 1 ? ` (${usd} de ellas, de 1 $)` : ''}.`,
+      aviso: 'Sin contar comisiones ni el cambio de divisa. Y un mínimo bajo no significa un riesgo bajo.',
+      saberMas: [
+        'Lo dijo Stefano Scarpetta en el simposio económico de Jackson Hole, en EE. UU. (agosto de 2026). Añadió que los límites legales y los de la infraestructura de los mercados aún lo impiden a gran escala.',
+        'Larry Fink escribió en 2025 que la tokenización hace que invertir sea «mucho más democrático», siempre que se resuelva «un problema crítico: la verificación de identidad». Lo dice quien vende fondos tokenizados: hoy, el de BlackRock pide un mínimo de 5 millones de dólares y tiene unos 100 titulares.',
+        'En EE. UU., solo alrededor de una de cada ocho personas cumple los requisitos de «inversor acreditado» que piden ciertas ofertas privadas, según un estudio de técnicos de la SEC, el supervisor de la bolsa de EE. UU. (2025).',
+      ],
+    },
+    cap5: {
+      rotulo: 'Los riesgos',
+      titular: 'Lo que no sale en el anuncio.',
+      ventajas: 'Ventajas',
+      riesgos: 'Riesgos',
+      tabla: [
+        [
+          'Más horas para operar',
+          'No siempre podrás vender cuando quieras, ni al precio que esperas',
+        ],
+        [
+          'Mínimos de 1 € en algunas ofertas',
+          'Puedes perder parte o todo lo que inviertas',
+        ],
+        [
+          'Menos pasos en cada operación',
+          'Un token no siempre te hace dueño del activo',
+        ],
+      ],
+      cnmv: 'En 2025, la CNMV publicó 458 advertencias sobre chiringuitos financieros: empresas que ofrecen invertir sin autorización.',
+      caso: 'Caso',
+      casoTexto: 'RealT vendió en tokens partes de unos 700 inmuebles de Detroit y en 2026 dejó de pagar casi todas las rentas.',
+      casoEnlace: 'Está en «Descartadas», con su motivo',
+      saberMas: [
+        'En febrero de 2026, RealT escribió a sus inversores: «El modelo ya no funciona». Dejó de pagarles casi todas las rentas semanales y en julio anunció una liquidación voluntaria.',
+        'Las 458 advertencias de la CNMV son más de una al día de media, y no solo sobre cripto.',
+        'Robinhood lo dice por escrito en su web europea: «No compras las acciones reales: compras contratos tokenizados que siguen su precio». Legalmente, es un contrato derivado con Robinhood Europe.',
+        'Kraken dice de sus xStocks que no dan «derechos de accionista», ni de voto, ni ningún derecho legal sobre las acciones.',
+        'La CNMV recoge una conclusión de los supervisores europeos: los nombres de estos productos «pueden generar confusión, al no tratarse de acciones», sobre todo porque un inversor sin conocimientos accede a ellos con facilidad. Suelen ser contratos entre dos partes.',
+        'Para el FMI (octubre de 2026), estos mercados son «relativamente ilíquidos»: puede costar vender rápido sin que baje el precio. Además, sus precios se mueven más que en los mercados tradicionales.',
+        'En cripto no hay un fondo de garantía que te cubra, ni siquiera con MiCA, el reglamento europeo de criptoactivos. Lo avisan los tres supervisores europeos: EBA, EIOPA y ESMA (2025).',
+      ],
+      puente: 'Por eso existe RWAdar.',
+    },
+    cap6: {
+      rotulo: 'Para qué sirve',
+      titular: 'Antes de invertir en nada, mira el radar.',
+      texto: 'La tokenización aún está empezando: los supervisores de valores la llaman «incipiente».',
+      cifra: '0 €',
+      cifraPie: 'lo que paga una empresa por salir en el radar. Ni vendemos ni asesoramos.',
+      vigencia: (revisado, hasta) => `Catálogo revisado el ${revisado}. Próxima revisión: ${hasta}.`,
+      riesgo: 'Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.',
+      saberMas: [
+        'Cada oferta lleva su fuente y la fecha en que la consultamos. Y las plataformas que descartamos no desaparecen: las publicamos en «Descartadas», con el motivo y la fuente.',
+        'Nadie paga por estar en el radar ni por aparecer más arriba. Y si inviertes, tu dinero nunca pasa por RWAdar.',
+        'IOSCO, que reúne a los supervisores de valores, entre ellos la CNMV, lo dijo en noviembre de 2025: «La tokenización crece, pero sigue siendo incipiente».',
+        'Según el BCE, es una fracción mínima de los activos del mundo: unos 38.000 millones de euros en blockchains públicas (febrero de 2026), frente a 241 billones de euros (millones de millones) en total (finales de 2025). Por nuestra cuenta, no llega a 2 céntimos de cada 100 euros.',
+      ],
+    },
+  },
+  novedades: 'Todas las novedades',
+  seleccion: {
+    antetitulo: 'Selección RWAdar',
+    titular: (n) => `Las ${n} que pasan nuestras 5 comprobaciones.`,
+    texto: (n, revisado) => `Son las mejor documentadas de las ${n} ofertas a ${revisado}.`,
+    criterios: [
+      'Se contrata hoy desde España.',
+      'La entidad que la ofrece está autorizada por un supervisor de la UE e inscrita en la CNMV.',
+      'Tiene un documento oficial para su venta en España: folleto o KID.',
+      'Están documentados el mínimo y cómo salir.',
+      'La revisamos esta semana y sus fuentes coinciden.',
+    ],
+    letraPequena: {
+      'robinhood-classic-stock-tokens': 'Es un derivado que sigue el precio de la acción. No eres su dueño ni votas, y puedes perder todo lo invertido.',
+      'spiko-letras-del-tesoro-euro': 'Es un fondo monetario, no una letra del Tesoro ni un depósito. No está garantizado: puedes perder parte de lo invertido.',
+      'spiko-letras-del-tesoro-dolar': 'Es un fondo monetario en dólares, no una letra del Tesoro ni un depósito. No está garantizado: puedes perder parte de lo invertido, también si baja el dólar.',
+    },
+    letraRespaldo: 'Puedes perder parte o todo lo que inviertas.',
+    minimo: 'Mínimo documentado:',
+    verFicha: 'Ver ficha',
+    aviso: 'Pasar las 5 comprobaciones no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.',
+    imagenes: 'Imágenes ilustrativas, no fotos del activo',
+  },
+  seguir: {
+    titular: 'Mira, compara y decide tú.',
+    ofertas: (n) => (n ? `Ver las ${n} ofertas` : 'Ver las ofertas'),
+    plataformas: (n) => (n ? `Ver las ${n} plataformas` : 'Ver las plataformas'),
+    riesgo: 'Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.',
+  },
+  fuentes: {
+    titulo: 'Fuentes',
+    nota: 'Agrupadas por apartado. Consultadas el 03/11/2026 salvo que se diga otra cosa.',
+    volver: 'Volver al texto',
+  },
+  legal: {
+    titulo: 'Nota legal y advertencia de riesgo',
+    corta: 'RWAdar no asesora ni vende, y nadie paga por aparecer. No es una recomendación de inversión. Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.',
+    completa: 'Leer nota legal completa',
+    parrafos: [
+      'RWAdar es un registro editorial independiente y gratuito. No es una entidad autorizada por la CNMV. No presta servicios de inversión y no puede asesorar ni hacer publicidad de inversiones por cuenta de otros.',
+      'No vende ni recibe dinero de las inversiones, y ninguna empresa paga por aparecer en el radar.',
+      'Esta página da la misma información general a todo el mundo. No tiene en cuenta tu situación y no es una recomendación de inversión.',
+      'Con muchos criptoactivos, como avisan los supervisores europeos (EBA, EIOPA y ESMA), «puedes perder buena parte del dinero invertido o incluso todo». Un mínimo bajo no significa un riesgo bajo.',
+      'Antes de contratar, comprueba la entidad en los registros de la CNMV y de ESMA. Lee también su documento legal: el KID o el folleto y, en cripto, el libro blanco.',
+      'Las entidades citadas no tienen relación con RWAdar. Sus nombres se usan solo para citar datos públicos, sin logotipos. Las citas en español son traducción de RWAdar, y el original está en las fuentes. Las cifras de mercado son de terceros, a 03/11/2026, y cambian a diario.',
+    ],
+    pie: 'RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación.',
+  },
+};
+
+const en = {
+  portada: {
+    radar: {
+      ofertas: 'Offers',
+      plataformas: 'Platforms',
+      descartadas: 'Excluded',
+      revisado: 'Reviewed on',
+    },
+    antetitulo: 'Independent and free · Tokenization in Spain',
+    titular: 'Blockchain was born to pay without banks. Now the banks themselves use it.',
+    subtitulo: (n) => `They use it to move shares, bonds and money. ${n ? `Here you can see the radar's ${n} offers` : "Here you can see the radar's offers"}, each with its source and date.`,
+    boton: (n) => (n ? `See the ${n} offers` : 'See the offers'),
+    aviso: 'Investing carries risk: you can lose some or all of what you invest. RWAdar informs, but doesn\'t advise or sell.',
+    explorar: 'Explore the radar',
+    fuentes: 'Sources',
+  },
+  fuentesApartado: 'Sources for this section',
+  saberMas: 'Learn more',
+  capitulos: {
+    cap1: {
+      rotulo: 'Where it comes from',
+      titular: 'It started with a newspaper headline.',
+      queEsRotulo: 'What it is',
+      queEs: 'A blockchain is a shared record. Tokenizing means recording a share, a bond or a fund on it.',
+      texto: 'Bitcoin\'s first block, from January 2009, carries a headline from The Times.',
+      genesis: 'Genesis block',
+      genesisFecha: '03/01/2009',
+      genesisPie: 'Recorded in the block.',
+      saberMas: [
+        'Sometimes the token is the asset; sometimes it is only a contract that tracks its price.',
+        'In Spain, the law has allowed securities to be recorded this way since 2023, alongside traditional book entries and certificates.',
+        'Satoshi Nakamoto announced bitcoin\'s white paper on 31/10/2008, in the middle of the financial crisis. It proposed payments "sent directly from one party to another without going through a financial institution".',
+        'In 2016, Don and Alex Tapscott wrote in TIME: “We\'re not talking about the social web, artificial intelligence, big data, robotics or even self-driving cars. We\'re talking about the blockchain.”',
+        'Economist Nouriel Roubini sees it the other way round: the “most over-hyped – and least useful – technology in human history”. He wrote it in 2018, in his testimony to the US Senate Banking Committee.',
+      ],
+    },
+    cap2: {
+      rotulo: 'What changes',
+      titular: 'Fewer middlemen, less waiting.',
+      hoy: 'Today',
+      nuevo: 'What blockchain allows',
+      rutaHoy: ['You', 'Broker', 'Clearing house', 'Custodian', 'Asset'],
+      rutaNueva: ['You', 'Platform', 'Shared ledger', 'Asset'],
+      registroPie: 'with whoever creates the product and whoever holds the asset',
+      filas: [
+        [
+          'Settlement',
+          'You buy on Monday; in Europe, it completes on Wednesday',
+          'You pay and receive at the same time',
+        ],
+        ['Hours', 'Only during market hours', 'At any hour, any day'],
+      ],
+      pie: 'Simplified diagram: fewer middlemen doesn\'t mean none.',
+      saberMas: [
+        'Larry Fink, CEO of BlackRock, put it this way in his 2025 letter: “If SWIFT is the postal service, tokenization is email itself.” SWIFT is the network banks use for international payments. This comes from someone who sells tokenized funds, and BlackRock is not related to RWAdar.',
+        'The ECB is more cautious: making assets programmable “could reduce the number of intermediaries and operations”. It sees this as a possible benefit, not yet measured.',
+        'In cross-border payments, “the stablecoin architecture often substitutes one set of intermediaries for another”. Stablecoins are digital currencies tied to a currency, almost always the dollar. That is the conclusion of three authors of a Bank for International Settlements (BIS) working paper, October 2026, writing in a personal capacity.',
+        'This is not about leaving the euro: transactions that go through Pontes, the ECB\'s system, are paid in the central bank\'s own euros.',
+        'The EU is also shortening the wait: from 11/10/2027, a share purchase will complete in one business day instead of two.',
+      ],
+    },
+    cap3: {
+      rotulo: 'Who uses it already',
+      titular: 'It\'s not just a crypto thing anymore.',
+      texto1: 'Since 28 October, DTCC, where US shares and bonds are held, has offered to tokenize some of them.',
+      texto2: 'In Europe, the ECB lets large institutions pay for these transactions through Pontes, and Santander, Cecabank and ABANCA already take part.',
+      carrusel: 'Who else has moved',
+      carruselNota: 'None of them is related to RWAdar or pays to appear.',
+      anterior: 'Previous card',
+      siguiente: 'Next card',
+      posicion: (i, n) => `${i} of ${n}`,
+      tarjetas: [
+        {
+          nombre: 'European banks',
+          fecha: '14/10/2026',
+          cifra: '37 banks',
+          pie: 'from 15 countries, seven of them Spanish',
+          texto: 'Their consortium, Qivalis, holds a licence to issue a euro digital currency, but hasn\'t done so yet.',
+        },
+        {
+          nombre: 'JPMorgan',
+          fecha: '2026',
+          cifra: '7 billion',
+          pie: 'dollars a day on average on its Kinexys network, according to the bank itself (2025 data)',
+          texto: 'Jamie Dimon, its chairman: “We need to roll out our own blockchain technology”.',
+        },
+        {
+          nombre: 'ESM',
+          fecha: 'October 2026',
+          cifra: '1 billion',
+          pie: 'euros, in a digital bond settled through Pontes',
+          texto: 'It was issued by the European Stability Mechanism, with the Bundesbank handling issuance and payments.',
+        },
+        {
+          nombre: 'Visa',
+          fecha: 'October 2026',
+          cifra: '25 billion',
+          pie: 'dollars a year, settled with digital currencies tied to a currency',
+          texto: 'That is its current pace: ten times more than a year ago, but small next to everything Visa moves.',
+        },
+        {
+          nombre: 'Swift',
+          fecha: 'July 2026',
+          cifra: '17 banks',
+          pie: 'in a pilot on the banks\' international payments network',
+          texto: 'They are testing moving deposits turned into tokens across borders, at any hour. Final payment still goes the usual way.',
+        },
+      ],
+      mercado: 'The market for tokenized US Treasuries is now 125 times larger than in January 2023: from $114 million to about $14,230 million (03/11/2026). It is down 3.9% over the last 30 days. It measures the size of the market, not a return.',
+      sinCifra: 'Our latest figure for the tokenized US Treasuries market is more than 7 days old, so we have removed it. Today\'s figure is at its source, rwa.xyz.',
+      saberMas: [
+        'Twenty firms have signed up to DTCC\'s service, J.P. Morgan among them.',
+        'With Pontes, these transactions are paid in the central bank\'s own euros. Three of its first 13 participants are Spanish.',
+        null,
+        'The seven Spanish banks in Qivalis are BBVA, CaixaBank, ABANCA, Sabadell, Bankinter, Cecabank and Kutxabank.',
+        'Opinion. Piero Cipollone, of the ECB\'s Executive Board, spoke in August 2026 of “a Copernican revolution”. But he admits that “compared with the size of global markets, tokenised real-world assets remain tiny, with limited liquidity”.',
+        'Opinion. Larry Fink and Rob Goldstein, of BlackRock, wrote late in 2025: “we believe that tokenization today may be roughly where the internet was in 1996.” Fink repeats it in his 2026 letter and warns: “It won\'t replace the existing financial system overnight.”',
+        'Forecast. Paul Atkins, chair of the SEC, the US securities regulator, in December 2025: “It\'s the way the world will be… maybe not even in ten years, maybe even a lot less time, maybe a couple of years from now.”',
+      ],
+    },
+    cap4: {
+      rotulo: 'Why it matters to you',
+      titular: 'Today, investing in shares is for the few.',
+      cifras: [
+        ['34.6%', 'of the top 10% of households by income', 34.6],
+        ['under 2%', 'of the bottom 20%', 2],
+      ],
+      cifrasPie: 'hold listed shares (Spain, end of 2024)',
+      texto: 'For the OECD\'s chief economist, splitting an asset into tokens could make it easier for small investors to get in, but not yet at scale.',
+      minimos: (m, n, usd) => `On the radar, ${m} of the ${n} offers have a documented minimum of €1${usd === 1 ? ' (one of them, $1)' : usd > 1 ? ` (${usd} of them, $1)` : ''}.`,
+      aviso: 'Not counting fees or currency exchange. And a low minimum does not mean low risk.',
+      saberMas: [
+        'Stefano Scarpetta said it at the Jackson Hole economic symposium in the US (August 2026). He added that legal and market-infrastructure limits still prevent it at scale.',
+        'Larry Fink (2025): "Perhaps most importantly, tokenization makes investing much more democratic", "provided we crack one critical problem: identity verification". This comes from someone who sells tokenized funds: today BlackRock\'s tokenized fund asks for a $5 million minimum and has about 100 holders.',
+        'In the US, only about 1 in 8 people qualify as "accredited investors" for certain private offerings, according to a SEC staff working paper (2025).',
+      ],
+    },
+    cap5: {
+      rotulo: 'The risks',
+      titular: 'What the ad doesn\'t tell you.',
+      ventajas: 'Advantages',
+      riesgos: 'Risks',
+      tabla: [
+        [
+          'More hours to trade',
+          'You can\'t always sell when you want, or at the price you expect',
+        ],
+        ['€1 minimums in some offers', 'You can lose some or all of what you invest'],
+        [
+          'Fewer steps in each transaction',
+          'A token doesn\'t always make you the owner of the asset',
+        ],
+      ],
+      cnmv: 'In 2025, the CNMV issued 458 warnings about “chiringuitos financieros”: firms that offer investments without authorisation.',
+      caso: 'Case',
+      casoTexto: 'RealT sold tokenized stakes in some 700 Detroit properties and in 2026 stopped almost all rent payouts.',
+      casoEnlace: 'It is listed under "Excluded", with the reason',
+      saberMas: [
+        'In February 2026, RealT told its investors “The model no longer works”. It stopped almost all weekly rent payouts and in July announced a voluntary liquidation.',
+        'The CNMV\'s 458 warnings come to more than one a day on average, and not only about crypto.',
+        'Robinhood says it in writing on its European site: "you are not buying the actual stocks—you are buying tokenized contracts that follow their price". Legally, "you enter into a derivatives contract with Robinhood Europe".',
+        'Kraken: "xStocks provide exposure to the value of the stock but do not carry shareholder rights, voting rights, or any legal claim…".',
+        'The CNMV cites a conclusion of the European supervisors: the names of these products “can cause confusion, as they are not shares”, especially as an investor without knowledge can access them easily (our translation). They are usually contracts between two parties.',
+        'The IMF (October 2026): tokenized markets “remain relatively illiquid and exhibit higher volatility than traditional counterparts”.',
+        'In crypto, even under MiCA, the EU crypto-assets regulation, "you will not benefit from compensation schemes" (EBA, EIOPA and ESMA, 2025).',
+      ],
+      puente: 'That\'s why RWAdar exists.',
+    },
+    cap6: {
+      rotulo: 'What it\'s for',
+      titular: 'Before you invest in anything, check the radar.',
+      texto: 'Tokenization is still just beginning: securities supervisors call it “nascent”.',
+      cifra: '€0',
+      cifraPie: 'what a company pays to be on the radar. We don\'t sell or advise.',
+      vigencia: (revisado, hasta) => `Catalogue reviewed ${revisado}. Next review: ${hasta}.`,
+      riesgo: 'Investing carries risk: you can lose some or all of what you invest.',
+      saberMas: [
+        'Every offer carries its source and the date we checked it. And the platforms we exclude don\'t disappear: we publish them under "Excluded", with the reason and the source.',
+        'Nobody pays to be on the radar or to rank higher. And if you invest, your money never goes through RWAdar.',
+        'IOSCO, which brings together securities regulators, the CNMV among them, said it in November 2025: “Tokenization is growing but remains nascent”.',
+        'According to the ECB, it is a tiny fraction of the world\'s assets: about €38 billion on public blockchains (February 2026), against €241 trillion in total (end of 2025). By our own count, that is less than 2 cents in every 100 euros.',
+      ],
+    },
+  },
+  novedades: 'All updates',
+  seleccion: {
+    antetitulo: 'RWAdar selection',
+    titular: (n) => `The ${n} that pass our 5 checks.`,
+    texto: (n, revisado) => `They are the best documented of the ${n} offers as of ${revisado}.`,
+    criterios: [
+      'It can be bought from Spain today.',
+      'The firm offering it is authorised by an EU supervisor and listed with the CNMV.',
+      'It has an official document for its sale in Spain: prospectus or KID.',
+      'The minimum and how to get out are documented.',
+      'We reviewed it this week and its sources agree.',
+    ],
+    letraPequena: {
+      'robinhood-classic-stock-tokens': 'A derivative that tracks the share price. You don\'t own the share or vote, and you can lose everything you invest.',
+      'spiko-letras-del-tesoro-euro': 'A money market fund, not a Treasury bill or a deposit. It is not guaranteed: you can lose part of what you invest.',
+      'spiko-letras-del-tesoro-dolar': 'A money market fund in dollars, not a Treasury bill or a deposit. It is not guaranteed: you can lose part of what you invest, including if the dollar falls.',
+    },
+    letraRespaldo: 'You can lose some or all of what you invest.',
+    minimo: 'Documented minimum:',
+    verFicha: 'View details',
+    aviso: 'Passing the 5 checks doesn\'t make an offer safer or more profitable. It is not an investment recommendation.',
+    imagenes: 'Illustrative images, not photos of the asset',
+  },
+  seguir: {
+    titular: 'Look, compare and decide for yourself.',
+    ofertas: (n) => (n ? `See the ${n} offers` : 'See the offers'),
+    plataformas: (n) => (n ? `See the ${n} platforms` : 'See the platforms'),
+    riesgo: 'Investing carries risk: you can lose some or all of what you invest.',
+  },
+  fuentes: {
+    titulo: 'Sources',
+    nota: 'Grouped by section. Checked on 03/11/2026 unless stated otherwise.',
+    volver: 'Back to the text',
+  },
+  legal: {
+    titulo: 'Legal note and risk warning',
+    corta: 'RWAdar doesn\'t advise or sell, and nobody pays to appear. This is not an investment recommendation. Investing carries risk: you can lose some or all of what you invest.',
+    completa: 'Read the full legal note',
+    parrafos: [
+      'RWAdar is an independent, free editorial register. It is not authorised by the CNMV. It provides no investment services and cannot give advice or advertise investments on behalf of others.',
+      'It sells nothing, receives no money from investments, and no company pays to appear on the radar.',
+      'This page gives everyone the same general information. It does not take your situation into account and it is not an investment recommendation.',
+      'With many crypto-assets, as the European supervisors (EBA, EIOPA and ESMA) warn, “You may lose a lot, or even all, of the money invested”. A low minimum does not mean low risk.',
+      'Before you sign up, check the firm in the CNMV and ESMA registers. Also read its legal document: the KID or the prospectus and, in crypto, the white paper.',
+      'The organisations quoted are not related to RWAdar. Their names are used only to cite public data, without logos. Market figures come from third parties, as of 03/11/2026, and change daily.',
+    ],
+    pie: 'RWAdar does not ask for bank details, wallet keys or recovery phrases.',
+  },
+};
+
+export const INICIO = Object.freeze({ es, en });
+/* Día en que se consultaron las cifras de mercado del 03 (125 veces, 14.230
+   millones, −3,9 %), las de rwa.xyz. Pasados 7 días se quitan y queda la frase
+   sin cifra (ESPEC-INICIO §9): la app no se publica en cada ciclo como la web,
+   así que lo comprueba ella al enseñarlas. Se cambia a la vez que el texto. */
+export const CIFRAS_MERCADO_EL = '2026-11-03';
+export const CAPITULOS_INICIO = Object.freeze(['cap1', 'cap2', 'cap3', 'cap4', 'cap5', 'cap6']);
+export const textosInicio = (idioma) => (idioma === 'en' ? en : es);

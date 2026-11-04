@@ -137,6 +137,14 @@ const EDITORIAL_OFERTA_POR_CATEGORIA={
 /* fichas-editoriales:inicio (generado por rwadar-editorial-source/ofertas/generar.mjs) */
 const EDITORIAL_OFERTA_POR_SLUG=Object.freeze({"aktionariat":{"src":"/ofertas-editoriales/oferta-aktionariat.webp","alt":"Ilustración editorial de un edificio de oficinas moderno a orillas del lago de Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Erlenbach · Suiza"},"apartamento-vacacional-hinterstoder-50":{"src":"/ofertas-editoriales/oferta-apartamento-vacacional-hinterstoder-50.webp","alt":"Ilustración editorial de un complejo de apartamentos vacacionales de madera en un valle alpino austriaco, parecido al real, imagen generada con IA. Pasos: compras participaciones; el apartamento se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Hinterstoder · Austria"},"boss-info":{"src":"/ofertas-editoriales/oferta-boss-info.webp","alt":"Ilustración editorial de un pequeño edificio de oficinas en un pueblo suizo al pie del Jura, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Farnern · Suiza"},"casa-de-outeiro":{"src":"/ofertas-editoriales/oferta-casa-de-outeiro.webp","alt":"Ilustración editorial de una casa solariega de piedra restaurada entre viñedos en terrazas sobre un cañón fluvial de la Ribeira Sacra, parecida a la real, imagen generada con IA. Pasos: suscribes la ampliación; recibes tus acciones; socio de bodega y hotel. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Ribeira Sacra · Lugo"},"drautalresidenz-paternion":{"src":"/ofertas-editoriales/oferta-drautalresidenz-paternion.webp","alt":"Ilustración editorial de un edificio residencial de pocas plantas con jardín ante montañas de Carintia, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Paternion · Austria"},"fotovoltaica-cohotel":{"src":"/ofertas-editoriales/oferta-fotovoltaica-cohotel.webp","alt":"Ilustración editorial de unos paneles solares en la cubierta plana de un edificio comercial austriaco, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.","categoria":"Infraestructura","lugar":"Steyregg · Austria"},"fotovoltaica-greenpoint":{"src":"/ofertas-editoriales/oferta-fotovoltaica-greenpoint.webp","alt":"Ilustración editorial de unos paneles solares en la cubierta de un edificio de oficinas de una ciudad austriaca, imagen generada con IA. Pasos: compras participaciones; los paneles dan energía; reparto del excedente. No es una foto del activo real.","categoria":"Infraestructura","lugar":"Wiener Neustadt · Austria"},"hausera-proximas-ofertas":{"src":"/ofertas-editoriales/oferta-hausera-proximas-ofertas.webp","alt":"Ilustración editorial de un edificio de viviendas mediterráneo recién reformado en Alicante, como imagen de una casa que se compra, se reforma y se vende, imagen generada con IA. Pasos: reservas en la preventa; se reforma y se vende; cobro tras la venta. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Alicante · España"},"kraken-xstocks":{"src":"/ofertas-editoriales/oferta-kraken-xstocks.webp","alt":"Ilustración editorial de un distrito financiero mediterráneo genérico al anochecer, junto al paseo marítimo, como imagen de certificados tokenizados que siguen acciones estadounidenses, imagen generada con IA. Pasos: abres cuenta y test; compras con euros; vendes o retiras. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Limasol · Chipre"},"local-de-estanco-klagenfurt":{"src":"/ofertas-editoriales/oferta-local-de-estanco-klagenfurt.webp","alt":"Ilustración editorial de un edificio de viviendas con un pequeño local comercial en planta baja, en una esquina de una ciudad austriaca, imagen generada con IA. Pasos: compras participaciones; el local se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Klagenfurt · Austria"},"mtbill":{"src":"/ofertas-editoriales/oferta-mtbill.webp","alt":"Ilustración editorial de un edificio institucional neoclásico genérico, como imagen de las letras del Tesoro de Estados Unidos, imagen generada con IA. Pasos: compras el token; sigue letras del Tesoro; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos","lugar":"Estados Unidos"},"prosegur-digital-gold":{"src":"/ofertas-editoriales/oferta-prosegur-digital-gold.webp","alt":"Ilustración editorial de unos lingotes de oro sin marcas en una cámara acorazada, imagen generada con IA. Pasos: compras gramos de oro; se guarda en una cámara; vendes y cobras en euros. No es una foto del activo real.","categoria":"Materias primas","lugar":"Custodia en España"},"randhartingergasse-9-viena":{"src":"/ofertas-editoriales/oferta-randhartingergasse-9-viena.webp","alt":"Ilustración editorial de un ático reformado con terraza sobre un edificio clásico de Viena, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Viena · Austria"},"robinhood-classic-stock-tokens":{"src":"/ofertas-editoriales/oferta-robinhood-classic-stock-tokens.webp","alt":"Ilustración editorial de la fachada genérica de un edificio de bolsa neoclásico al anochecer, como imagen de derivados sobre acciones estadounidenses, imagen generada con IA. Pasos: abres cuenta y test; compras en euros; cierras con la contraparte. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Estados Unidos"},"spiko-letras-del-tesoro-dolar":{"src":"/ofertas-editoriales/oferta-spiko-letras-del-tesoro-dolar.webp","alt":"Ilustración editorial de un edificio federal neoclásico genérico de Estados Unidos, como imagen de un fondo que compra letras del Tesoro estadounidense, imagen generada con IA. Pasos: abres cuenta con KYC; compras participaciones; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos","lugar":"Estados Unidos"},"spiko-letras-del-tesoro-euro":{"src":"/ofertas-editoriales/oferta-spiko-letras-del-tesoro-euro.webp","alt":"Ilustración editorial de un edificio ministerial neoclásico genérico, como imagen de un fondo que compra letras del Tesoro de la zona euro, imagen generada con IA. Pasos: compras participaciones; el fondo compra letras; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos","lugar":"Zona euro"},"spiko-smart-cash-euro":{"src":"/ofertas-editoriales/oferta-spiko-smart-cash-euro.webp","alt":"Ilustración editorial de una calle financiera parisina genérica al amanecer, con fachadas de piedra y luz suave, como imagen de un fondo en euros ligado al tipo interbancario, imagen generada con IA. Pasos: abres cuenta con KYC; transfieres euros; pides el reembolso. No es una foto del activo real.","categoria":"Tesoro y fondos","lugar":"París · Francia"},"switzerlend":{"src":"/ofertas-editoriales/oferta-switzerlend.webp","alt":"Ilustración editorial de un edificio de oficinas de cristal y piedra en Zúrich, como imagen de una empresa suiza con su capital repartido en acciones, imagen generada con IA. Pasos: compras acciones; eres accionista; reventa entre socios. No es una foto del activo real.","categoria":"Acciones y capital privado","lugar":"Zúrich · Suiza"},"terreno-con-arrendamiento-billa":{"src":"/ofertas-editoriales/oferta-terreno-con-arrendamiento-billa.webp","alt":"Ilustración editorial de un supermercado sin marca en su propio solar en un valle de Carintia, visto desde el aire, imagen generada con IA. Pasos: compras en la emisión; un súper alquila el suelo; reparto o venta futura. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Brückl · Austria"},"vivienda-pluddemanngasse-101-graz":{"src":"/ofertas-editoriales/oferta-vivienda-pluddemanngasse-101-graz.webp","alt":"Ilustración editorial de un bloque de pisos moderno de fachada blanca en Graz, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Graz · Austria"},"vivienda-pottendorfer-stra-e-62-wr-neustadt":{"src":"/ofertas-editoriales/oferta-vivienda-pottendorfer-stra-e-62-wr-neustadt.webp","alt":"Ilustración editorial de un edificio de viviendas blanco y gris en una esquina de Wiener Neustadt, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Wiener Neustadt · Austria"},"vivienda-schwarzer-weg-18-graz":{"src":"/ofertas-editoriales/oferta-vivienda-schwarzer-weg-18-graz.webp","alt":"Ilustración editorial de un edificio residencial moderno de tres alturas con terrazas en Graz, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Graz · Austria"},"vivienda-sonnleithnergasse-2-viena":{"src":"/ofertas-editoriales/oferta-vivienda-sonnleithnergasse-2-viena.webp","alt":"Ilustración editorial de un gran conjunto residencial blanco con patio arbolado en Viena, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Viena · Austria"},"vivienda-stallhofstra-e-28-gratwein":{"src":"/ofertas-editoriales/oferta-vivienda-stallhofstra-e-28-gratwein.webp","alt":"Ilustración editorial de un edificio residencial de dos plantas ante colinas boscosas de Estiria, parecido al real, imagen generada con IA. Pasos: compras participaciones; la vivienda se alquila; reparto o venta en la app. No es una foto del activo real.","categoria":"Inmobiliario","lugar":"Gratwein · Austria"}});
 /* fichas-editoriales:fin */
+/* Transparencia de cada oferta (comprobaciones editoriales, puntos fuertes y
+   textos cortos). Falla cerrado: sin entrada, o con otra verificadaEl, nada. */
+/* transparencia:inicio */
+/* GENERADO por rwadar-editorial-source/ofertas/transparencia.mjs desde transparencia.json: no se edita a mano.
+   Dos de las cinco comprobaciones, los puntos fuertes y los textos cortos de cada oferta. No es una recomendación. */
+const TRANSPARENCIA_CRITERIOS=Object.freeze([{"id":"contratable","texto":"Se contrata hoy desde España"},{"id":"supervisada","texto":"La entidad que la ofrece está autorizada por un supervisor de la UE e inscrita en la CNMV"},{"id":"documentoEspana","texto":"Hay un documento oficial (KID o folleto) que cubre su venta en España"},{"id":"minimoSalida","texto":"El mínimo y la forma de salir están documentados"},{"id":"vigente","texto":"Revisada esta semana y sin fuentes en conflicto"}]);
+const TRANSPARENCIA_POR_SLUG=Object.freeze({"aktionariat":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"La vende el propio emisor suizo, que no figura en el registro de entidades autorizadas de FINMA ni en ningún registro de la CNMV.","fuente":{"titulo":"FINMA · Registro de entidades autorizadas (búsqueda «Aktionariat»: 0 resultados)","url":"https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"No hay folleto ni KID: la oferta se acoge a umbrales de exención y no publica ningún documento equivalente.","fuente":{"titulo":"Aktionariat · Aviso legal (oferta en el EEE limitada a 100.000 € en total, sin folleto)","url":"https://www.aktionariat.com/disclaimer"},"consultadaEl":"2026-11-03"},"minimoCorto":"500 CHF","salidaCorta":"Venta a otros accionistas","puntos":[{"texto":"Compra directa al emisor","fuente":{"titulo":"Fuente de la ficha · Aktionariat · DAKS","url":"https://shares.aktionariat.com/invest"}}]},"apartamento-vacacional-hinterstoder-50":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A31KP7)","url":"https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 72 € en reventa (03/11)","salidaCorta":"Reventa en la app, si hay comprador","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"boss-info":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Vende el propio emisor suizo, sin licencia de un supervisor del EEE ni registro en la CNMV; su portal dice que no está supervisado.","fuente":{"titulo":"Portal de acciones de Boss Info · aviso legal («not subject to prudential supervision»)","url":"https://shares.bossinfo.com/"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"No hay folleto, KID ni ficha informativa, y el emisor no dice en qué exención se apoya para vender fuera de Suiza.","fuente":{"titulo":"Portal de acciones de Boss Info · compra directa al emisor (sin folleto ni KID publicados)","url":"https://shares.bossinfo.com/invest"},"consultadaEl":"2026-11-03"},"minimoCorto":"100 CHF","salidaCorta":"Venta a otros accionistas","puntos":[{"texto":"Compra directa al emisor","fuente":{"titulo":"Fuente de la ficha · Aktionariat · BOSS","url":"https://shares.bossinfo.com/"}}]},"casa-de-outeiro":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":true,"motivo":"Alius está inscrita en la CNMV como plataforma de crowdfunding (nº 11, con su antiguo nombre Adventurees) y autorizada para colocar acciones.","fuente":{"titulo":"CNMV · Proveedores de servicios de financiación participativa: nº 11, ADVENTUREES CAPITAL PFP (www.aliuscap.com)","url":"https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":true,"motivo":"Publica la ficha de datos fundamentales que exige la norma europea de crowdfunding, en español y prevista para particulares. La CNMV no la revisa.","fuente":{"titulo":"Ficha de datos fundamentales de la inversión v5 · Casa de Outeiro (30/10/2026)","url":"https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263"},"consultadaEl":"2026-11-03"},"minimoCorto":"2.000 €","salidaCorta":"Venta limitada tras la emisión","puntos":[{"texto":"Plataforma en la CNMV","fuente":{"titulo":"CNMV · Proveedores de servicios de financiación participativa: nº 11, ADVENTUREES CAPITAL PFP (www.aliuscap.com)","url":"https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"}},{"texto":"Ficha oficial en español","fuente":{"titulo":"Ficha de datos fundamentales de la inversión v5 · Casa de Outeiro (30/10/2026)","url":"https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263"}}]},"drautalresidenz-paternion":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2YPQ0)","url":"https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 70 € en reventa (03/11)","salidaCorta":"Reventa en la app, si hay comprador","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"fotovoltaica-cohotel":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A38J40)","url":"https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 110 € en reventa (03/11)","salidaCorta":"Nominal en 2038; antes, reventa","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"fotovoltaica-greenpoint":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A38J32)","url":"https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 100 € en reventa (03/11)","salidaCorta":"Nominal en 2038; antes, reventa","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"hausera-proximas-ofertas":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Hausera (HOLDTX SPAIN) dice no ser empresa de servicios de inversión y no figura como plataforma de crowdfunding en la CNMV.","fuente":{"titulo":"CNMV · Listado de proveedores de servicios de financiación participativa (Hausera/HOLDTX no figura)","url":"https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Alicante 2 no tiene documento de emisión público: su ficha pide iniciar sesión y no hay folleto ni ficha informativa.","fuente":{"titulo":"Hausera · ficha de Alicante 2 (redirige al inicio de sesión)","url":"https://hausera.io/propiedad/alicante_2/"},"consultadaEl":"2026-11-03"},"minimoCorto":null,"salidaCorta":null,"puntos":[]},"kraken-xstocks":{"verificadaEl":"2026-11-03","anadidaEl":"2026-11-03","supervisada":{"cumple":true,"motivo":"Payward Europe Digital Solutions (CY), que vende en Kraken UE, tiene licencia CySEC y figura en la CNMV (n.º 4474) en libre prestación.","fuente":{"titulo":"CNMV · Payward Europe Digital Solutions (CY) Limited, ESI del EEE en libre prestación n.º 4474","url":"https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=4474"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"El folleto se notificó a la CNMV, pero las condiciones finales solo ofrecen el producto en Liechtenstein y Suiza, no en España.","fuente":{"titulo":"Backed Assets (JE) · Condiciones finales n.º 159 (LITEx), apartado «Country(ies) of offer(s)»","url":"https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"1 €","salidaCorta":"Venta a Kraken, 24/5","puntos":[{"texto":"Inscrita en la CNMV (UE)","fuente":{"titulo":"CNMV · Payward Europe Digital Solutions (CY) Limited, ESI del EEE en libre prestación n.º 4474","url":"https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=4474"}}]},"local-de-estanco-klagenfurt":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2U5V3)","url":"https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 95 € en reventa (03/11)","salidaCorta":"Reventa en la app, si hay comprador","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"mtbill":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"La vende el propio emisor, Midas Software GmbH, que no figura en BaFin ni en la CNMV; su KID dice que no está supervisado.","fuente":{"titulo":"BaFin · Base de datos de empresas (búsqueda «Midas»: solo una sociedad danesa distinta)","url":"https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas&sucheButtonInstitut=Suche"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":true,"motivo":"Folleto aprobado en Liechtenstein y notificado a la CNMV; las condiciones finales incluyen España y minoristas, y hay KID en español.","fuente":{"titulo":"Midas · Documentación legal de mTBILL (condiciones finales del 17/07/2026 y KID en español)","url":"https://docs.midas.app/resources/legal-product-documentation/mtbill"},"consultadaEl":"2026-11-03"},"minimoCorto":null,"salidaCorta":null,"puntos":[{"texto":"Folleto notificado a la CNMV","fuente":{"titulo":"Midas · Documentación legal de mTBILL (condiciones finales del 17/07/2026 y KID en español)","url":"https://docs.midas.app/resources/legal-product-documentation/mtbill"}},{"texto":"KID en español","fuente":{"titulo":"Midas · Documentación legal de mTBILL (condiciones finales del 17/07/2026 y KID en español)","url":"https://docs.midas.app/resources/legal-product-documentation/mtbill"}}]},"prosegur-digital-gold":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Prosegur Crypto figura en la CNMV solo para custodiar y transferir criptoactivos; su contrato dice que este oro no está supervisado.","fuente":{"titulo":"CNMV · Relación de proveedores de servicios de criptoactivos (Prosegur: custodia, recepción de órdenes y transferencia)","url":"https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"No tiene KID ni folleto: su contrato dice que no es un producto financiero y solo hay términos y condiciones de la empresa.","fuente":{"titulo":"Prosegur Gold · Términos y condiciones generales (08/07/2026)","url":"https://app.prosegurdigitalgold.com/#/terms-service"},"consultadaEl":"2026-11-03"},"minimoCorto":"1 gramo de oro","salidaCorta":"Recompra por Prosegur","puntos":[{"texto":"Empresa española","fuente":{"titulo":"CNMV · Relación de proveedores de servicios de criptoactivos (Prosegur: custodia, recepción de órdenes y transferencia)","url":"https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf"}},{"texto":"Oro custodiado en España","fuente":{"titulo":"Fuente de la ficha · Prosegur Crypto","url":"https://www.prosegurcrypto.com/digital-gold"}}]},"randhartingergasse-9-viena":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2ZT84)","url":"https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 78 € en reventa (03/11)","salidaCorta":"Reventa en la app, si hay comprador","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"robinhood-classic-stock-tokens":{"verificadaEl":"2026-11-03","anadidaEl":"2026-11-02","supervisada":{"cumple":true,"motivo":"Robinhood Europe está autorizada por el Banco de Lituania y figura en la CNMV en libre prestación (n.º 5299) con derivados en su programa.","fuente":{"titulo":"CNMV · Robinhood Europe, UAB, ESI del EEE en libre prestación n.º 5299","url":"https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5299"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":true,"motivo":"Tiene KID PRIIPs en español (1 de julio de 2026), enlazado desde su web española, para minoristas y sin excluir España.","fuente":{"titulo":"Robinhood Europe · Documento de datos fundamentales en español (derivado sobre acciones/ETP de EE. UU.)","url":"https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"1 €","salidaCorta":"Cierre con Robinhood, 24/5","puntos":[{"texto":"Inscrita en la CNMV (UE)","fuente":{"titulo":"CNMV · Robinhood Europe, UAB, ESI del EEE en libre prestación n.º 5299","url":"https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5299"}},{"texto":"KID en español","fuente":{"titulo":"Robinhood Europe · Documento de datos fundamentales en español (derivado sobre acciones/ETP de EE. UU.)","url":"https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf"}}]},"spiko-letras-del-tesoro-dolar":{"verificadaEl":"2026-11-03","anadidaEl":"2026-11-02","supervisada":{"cumple":true,"motivo":"Spiko Finance está autorizada en Francia (ACPR) y figura en la CNMV (n.º 5325) para tramitar órdenes sobre fondos.","fuente":{"titulo":"CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":true,"motivo":"Tiene KID oficial en español para todo inversor; su SICAV está inscrita en la CNMV (n.º 2380), que no detalla cada fondo.","fuente":{"titulo":"Spiko US T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)","url":"https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"1 USD","salidaCorta":"Reembolso diario","puntos":[{"texto":"Inscrita en la CNMV (UE)","fuente":{"titulo":"CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"}},{"texto":"KID en español","fuente":{"titulo":"Spiko US T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)","url":"https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf"}}]},"spiko-letras-del-tesoro-euro":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":true,"motivo":"Spiko Finance está autorizada en Francia (ACPR) y figura en la CNMV (n.º 5325) para tramitar órdenes sobre fondos.","fuente":{"titulo":"CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":true,"motivo":"KID oficial en español para todo inversor; el fondo ya existía cuando su SICAV se inscribió en la CNMV (n.º 2380), que no lista compartimentos.","fuente":{"titulo":"Spiko EU T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)","url":"https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"1 €","salidaCorta":"Reembolso diario","puntos":[{"texto":"Inscrita en la CNMV (UE)","fuente":{"titulo":"CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"}},{"texto":"KID en español","fuente":{"titulo":"Spiko EU T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)","url":"https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf"}}]},"spiko-smart-cash-euro":{"verificadaEl":"2026-11-03","anadidaEl":"2026-11-03","supervisada":{"cumple":true,"motivo":"Spiko Finance está autorizada en Francia (ACPR) y figura en la CNMV (n.º 5325) para tramitar órdenes sobre fondos.","fuente":{"titulo":"CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Hay KID en español, pero ningún registro público de la CNMV ni de la AMF muestra que este fondo esté dado de alta en España.","fuente":{"titulo":"CNMV · Spiko SICAV, IIC extranjera n.º 2380 (no muestra sus fondos uno a uno)","url":"https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"},"consultadaEl":"2026-11-03"},"minimoCorto":"1 €","salidaCorta":"Reembolso diario, con límites","puntos":[{"texto":"Inscrita en la CNMV (UE)","fuente":{"titulo":"CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"}}]},"switzerlend":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Vende el propio emisor suizo; solo está afiliado a PolyReg (antiblanqueo), sin licencia del EEE ni registro en la CNMV.","fuente":{"titulo":"Switzerlend AG · Investor Relations (afiliación a PolyReg y mercado no supervisado)","url":"https://www.lend.ch/de/investor-relations"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"No hay folleto ni KID: su página de inversores dice que «no es un folleto» y ningún documento dice qué países pueden comprar.","fuente":{"titulo":"Switzerlend AG · Investor Relations («weder Anlageberatung noch ein Prospekt»)","url":"https://www.lend.ch/de/investor-relations"},"consultadaEl":"2026-11-03"},"minimoCorto":"1 acción (68,01 CHF, 03/11)","salidaCorta":"Venta a otros accionistas","puntos":[{"texto":"Compra directa al emisor","fuente":{"titulo":"Fuente de la ficha · Aktionariat · LENDS","url":"https://shares.lend.ch/"}}]},"terreno-con-arrendamiento-billa":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A3SE89)","url":"https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"1.000 €","salidaCorta":"Cancelable a los 5 años; reventa","puntos":[{"texto":"Arrendado a BILLA","fuente":{"titulo":"Fuente de la ficha · Brickwise","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"vivienda-pluddemanngasse-101-graz":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2RAH5)","url":"https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 80 € en reventa (03/11)","salidaCorta":"Reventa en la app, si hay comprador","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"vivienda-pottendorfer-stra-e-62-wr-neustadt":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A324B4)","url":"https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 78 € en reventa (03/11)","salidaCorta":"Cancelable a los 15 años; reventa","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"vivienda-schwarzer-weg-18-graz":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2WCE8)","url":"https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 69,90 € en reventa (03/11)","salidaCorta":"Reventa en la app, si hay comprador","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"vivienda-sonnleithnergasse-2-viena":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2T4D7)","url":"https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 75 € en reventa (03/11)","salidaCorta":"Reventa en la app, si hay comprador","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]},"vivienda-stallhofstra-e-28-gratwein":{"verificadaEl":"2026-11-03","anadidaEl":"2026-09-30","supervisada":{"cumple":false,"motivo":"Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.","fuente":{"titulo":"CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos","url":"https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"},"consultadaEl":"2026-11-03"},"documentoEspana":{"cumple":false,"motivo":"Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.","fuente":{"titulo":"Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2WCD0)","url":"https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf"},"consultadaEl":"2026-11-03"},"minimoCorto":"Desde 69,90 € en reventa (03/11)","salidaCorta":"Reventa en la app, si hay comprador","puntos":[{"texto":"Reventa activa en la app","fuente":{"titulo":"Brickwise · mercado de reventa en la app (03/11/2026)","url":"https://app.brickwise.at/desktopWeb/marketplace"}}]}});
+/* transparencia:fin */
 
 
 
@@ -166,6 +174,14 @@ const CATMETA={
  "Materias primas":{c:"#FF8A5B",ic:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>'},
  "Infraestructura":{c:"#9AA6BF",ic:'<circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><circle cx="12" cy="6" r="2.4"/><path d="M12 8.4v3.2M10.3 13.2L7.4 16M13.7 13.2L16.6 16"/>'},
 };
+/* Nombre corto para chips y casillas del móvil: «Acciones y capital privado»
+   no cabe en una fila de 390 px sin partirse. El nombre completo sigue en
+   escritorio, en el radar y en cada ficha. */
+const CAT_CORTA={"Crédito privado":"Crédito","Tesoro y fondos":"Tesoro","Acciones y capital privado":"Acciones"};
+const catCorta=c=>CAT_CORTA[c]||c;
+/* Dos textos y el CSS enseña uno: largo en escritorio, corto en el móvil. */
+const nombreCatHtml=c=>catCorta(c)===c?escHtml(c):
+ '<span class="f-largo">'+escHtml(c)+'</span><span class="f-corto">'+escHtml(catCorta(c))+'</span>';
 const ACCESOS=["Minorista","Acreditado","Institucional","Empresas"];
 const TICKETS=["Bajo","Medio","Alto","No aplica"];
 
@@ -1018,8 +1034,8 @@ const urlHttps=s=>{const v=String(s||'').trim();
 /* Las fechas salen del dato, nunca escritas a mano: una fecha de revisión
    que se queda vieja sin que nadie lo note destruye la credibilidad de un
    registro que se vende precisamente por estar al día. */
-const fCorta=s=>{if(!s)return'';const[a,m,d]=String(s).split('-');return `${d}.${m}.${a.slice(2)}`};
-const fLarga=s=>{if(!s)return'';const[a,m,d]=String(s).split('-');return `${d}.${m}.${a}`};
+const fCorta=s=>{if(!s)return'';const[a,m,d]=String(s).split('-');return `${d}/${m}/${a.slice(2)}`};
+const fLarga=s=>{if(!s)return'';const[a,m,d]=String(s).split('-');return `${d}/${m}/${a}`};
 const revisionVisible=p=>p&&p.verificacionLocal?p.verificacionLocal.verificadoEl:p&&p.ver;
 const accesoVisible=p=>p&&p.verificacionLocal
  ?etiquetaVerificacionLocal(p.verificacionLocal.acceso.estado):p&&p.acceso;
@@ -1038,26 +1054,26 @@ function textoBusquedaPlataforma(p){
 }
 function resumenVerificacionLocalHtml(verificacion){
  if(!verificacion)return'';
- const campos=[['Estado operativo',verificacion.estadoOperativo],
-  ['Licencia / registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
+ const campos=[['Actividad',verificacion.estadoOperativo],
+  ['Licencia o registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
  return '<div class="verificacion-local-resumen" aria-label="Revisión editorial '+escHtml(verificacion.verificadoEl)+'">'+
-  '<div class="verificacion-local-fecha">REVISIÓN EDITORIAL · '+escHtml(verificacion.verificadoEl)+'</div><div class="verificacion-local-estados">'+
+  '<div class="verificacion-local-fecha">Revisión editorial · '+escHtml(verificacion.verificadoEl)+'</div><div class="verificacion-local-estados">'+
   campos.map(([nombre,campo])=>'<span class="verificacion-local-estado '+
    ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><b>'+escHtml(nombre)+'</b>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span>').join('')+
-  '</div>'+verificacion.alertasCriticas.map(alerta=>'<p class="verificacion-local-alerta"><b>Alerta crítica</b>'+escHtml(alerta.detalle)+'</p>').join('')+'</div>';
+  '</div>'+verificacion.alertasCriticas.map(alerta=>'<p class="verificacion-local-alerta"><b>Importante</b>'+escHtml(alerta.detalle)+'</p>').join('')+'</div>';
 }
 function detalleVerificacionLocalHtml(verificacion){
  if(!verificacion)return'';
- const campos=[['Estado operativo',verificacion.estadoOperativo],
-  ['Licencia / registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
+ const campos=[['Actividad',verificacion.estadoOperativo],
+  ['Licencia o registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
  return '<section class="pn-seccion pn-verificacion-local" aria-labelledby="dwVerificacionLocalTit">'+
   '<div class="pn-verificacion-local-cab"><h4 id="dwVerificacionLocalTit">Revisión editorial</h4><time datetime="'+
   escHtml(verificacion.verificadoEl)+'">'+escHtml(verificacion.verificadoEl)+'</time></div><div class="pn-verificacion-local-campos">'+
   campos.map(([nombre,campo])=>'<article class="pn-verificacion-local-campo '+
    ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><div><b>'+escHtml(nombre)+'</b><span>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span></div><p>'+escHtml(campo.detalle)+'</p></article>').join('')+
-  '</div><div class="pn-verificacion-local-alertas"><h5>Alertas críticas</h5><ul>'+
+  '</div><div class="pn-verificacion-local-alertas"><h5>Avisos importantes</h5><ul>'+
   verificacion.alertasCriticas.map(alerta=>'<li>'+escHtml(alerta.detalle)+'</li>').join('')+
-  '</ul></div>'+fuentesVerificacionHtml(verificacion)+'<p class="pn-nota">Registro, documento o web accesible no equivalen a aval, licencia global ni acceso desde España.</p></section>';
+  '</ul></div>'+fuentesVerificacionHtml(verificacion)+'<p class="pn-nota">Que una plataforma tenga registro, documentos o una web que funciona no significa que esté avalada, que tenga licencia para todo ni que se pueda contratar desde España.</p></section>';
 }
 function fuentesVerificacionHtml(verificacion){
  const fuentes=[...new Map([
@@ -1073,8 +1089,8 @@ const colOf=p=>(CATMETA[p.cat]||{c:'#7C8699'}).c;
 const catClase=p=>' cat-'+Math.max(0,Object.keys(CATMETA).indexOf(p.cat));
 const aplicaCat=(el,p)=>{if(!el)return;for(let i=0;i<6;i++)el.classList.remove('cat-'+i);el.classList.add(catClase(p).trim())};
 const siglaEl=(p,cls='sigla')=>`<span class="${escHtml(cls)} ${catClase(p)}">${escHtml(initials(String(p.n||'')))}</span>`;
-const okSVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg>`;
-const escudoSVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg>`;
+const okSVG=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg>`;
+const escudoSVG=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg>`;
 
 /* =================================================================
    EL RADAR DE PORTADA
@@ -1093,64 +1109,12 @@ const escudoSVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" str
 const RADIO_ACCESO={"Minorista":0.40,"Acreditado":0.60,"Empresas":0.76,"Institucional":0.90};
 const VUELTA=8;   /* segundos que tarda el barrido en dar la vuelta */
 
-function pintarRadar(){
- const svg=document.getElementById('radarHero');
- if(!svg) return;
- /* RMAX=140, no 168: los rótulos van FUERA del círculo y con 168 el de la
-    izquierda se salía del lienzo y aparecía cortado. */
- const CX=200, CY=200, RMAX=140;
+/* Dónde cae cada plataforma en el radar. La comparten el radar de Buscar
+   y la portada de Inicio, para que los dos dibujen exactamente lo mismo. */
+function puntosRadar(CX,CY,RMAX){
  const cats=Object.keys(CATMETA);
- const CORTO={"Inmobiliario":"Inmuebles","Crédito privado":"Crédito","Tesoro y fondos":"Tesoro",
-  "Acciones y capital privado":"Acciones","Materias primas":"Materias","Infraestructura":"Infra"};
  const pol=(ang,rad)=>[CX+Math.cos(ang*Math.PI/180)*rad, CY+Math.sin(ang*Math.PI/180)*rad];
-
- let s='';
- /* Anillos, uno por nivel de acceso. Sin rótulo dentro: los cuatro nombres
-    caían justo encima de los puntos del sector de arriba y no se leía ni
-    una cosa ni la otra. La escala se explica en una línea debajo del
-    dibujo, que además se lee sin tener que buscarla. */
- [0.40,0.60,0.76,0.90].forEach(f=>{
-  s+=`<circle class="radar-anillo" cx="${CX}" cy="${CY}" r="${(RMAX*f).toFixed(1)}"/>`;
- });
- s+=`<circle class="radar-borde" cx="${CX}" cy="${CY}" r="${RMAX}"/>`;
-
- /* Marcas de grado en el borde. Puro oficio: no informan de nada, pero sin
-    ellas el círculo parece un gráfico y con ellas parece un aparato.
-    36 y no 72: con una cada cinco grados el borde se convertía en una
-    línea gruesa y sucia en vez de en una escala. */
- for(let g=0;g<36;g++){
-  const a=g*10, largo=(g%3===0)?7:3.5;
-  const [x1,y1]=pol(a,RMAX), [x2,y2]=pol(a,RMAX+largo);
-  s+=`<line class="radar-tick${g%6===0?' fuerte':''}" x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
- }
-
- /* Los seis sectores. El rótulo es un botón: filtra el radar de abajo y
-    baja hasta él. Convierte el dibujo en un mando de navegación en vez
-    de en una lámina que solo se mira. */
- cats.forEach((c,i)=>{
-  const a=-90+i*60-30;
-  const [x,y]=pol(a,RMAX);
-  s+=`<line class="radar-sector" x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/>`;
-  const [tx,ty]=pol(-90+i*60,RMAX+19);
-  s+=`<g class="radar-etg" tabindex="0" role="button" aria-label="Ver solo ${escHtml(c)} en el radar"`
-   +` data-filtra="${escHtml(c)}">`
-   /* El rótulo va del color de su categoría, y con eso el radar gana la
-      leyenda que le faltaba: se ve de un vistazo qué color es cada tipo
-      de activo, sin una tabla aparte. Va en `style` y no en `fill`
-      porque un atributo de presentación pierde contra la clase CSS. */
-   +`<rect class="radar-et-zona" x="${(tx-48).toFixed(1)}" y="${(ty-22).toFixed(1)}" width="96" height="44" rx="13" fill="transparent"/>`
-   +`<text class="radar-et" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" fill="${CATMETA[c].c}">${escHtml(CORTO[c]||c)}</text></g>`;
- });
-
- /* El barrido: una cola larga que se apaga, no una porción de tarta. Un
-    radar deja estela de fósforo; el borde duro delataba el truco. */
- s+=`<g class="radar-barrido">`
-   +`<path d="M${CX} ${CY} L${CX+RMAX} ${CY} A${RMAX} ${RMAX} 0 0 0 ${(CX+RMAX*Math.cos(-88*Math.PI/180)).toFixed(1)} ${(CY+RMAX*Math.sin(-88*Math.PI/180)).toFixed(1)} Z" fill="url(#gBarrido)"/>`
-   +`<line x1="${CX}" y1="${CY}" x2="${CX+RMAX}" y2="${CY}" stroke="#25E39A" stroke-width="1.3" opacity=".75"/></g>`;
- s+=`<circle class="radar-centro" cx="${CX}" cy="${CY}" r="2.6"/>`;
-
- /* y los puntos: uno por plataforma */
- P.forEach((p,i)=>{
+ return P.map((p,i)=>{
   const ci=Math.max(0,cats.indexOf(p.cat));
   const n=P.filter(x=>x.cat===p.cat).length;
   const k=P.filter(x=>x.cat===p.cat).indexOf(p);
@@ -1188,12 +1152,71 @@ function pintarRadar(){
   const rad=Math.max(0,Math.min(RMAX-RADIO_VISUAL_MAX-MARGEN_BORDE,RMAX*(base+escalon)));
   const [x,y]=pol(ang,rad);
   const col=colOf(p);
-  /* El retardo negativo hace que el halo se encienda justo cuando el
-     barrido cruza este ángulo. El ángulo se mide desde el eje +X, igual
-     que la rotación del barrido: sumándole 90 (por empezar los sectores
-     arriba) los halos iban un cuarto de vuelta adelantados y encendían
-     puntos donde no había nada. */
-  const norm=((ang%360)+360)%360;
+  return {p,i,x,y,ang,col};
+ });
+}
+
+function pintarRadar(){
+ const svg=document.getElementById('radarHero');
+ if(!svg) return;
+ /* RMAX=140, no 168: los rótulos van FUERA del círculo y con 168 el de la
+    izquierda se salía del lienzo y aparecía cortado. */
+ const CX=200, CY=200, RMAX=140;
+ const cats=Object.keys(CATMETA);
+ /* Los mismos nombres cortos que los chips y que Inicio (catCorta). */
+ const pol=(ang,rad)=>[CX+Math.cos(ang*Math.PI/180)*rad, CY+Math.sin(ang*Math.PI/180)*rad];
+
+ let s='';
+ /* Anillos, uno por nivel de acceso. Sin rótulo dentro: los cuatro nombres
+    caían justo encima de los puntos del sector de arriba y no se leía ni
+    una cosa ni la otra. La escala se explica en una línea debajo del
+    dibujo, que además se lee sin tener que buscarla. */
+ [0.40,0.60,0.76,0.90].forEach(f=>{
+  s+=`<circle class="radar-anillo" cx="${CX}" cy="${CY}" r="${(RMAX*f).toFixed(1)}"/>`;
+ });
+ s+=`<circle class="radar-borde" cx="${CX}" cy="${CY}" r="${RMAX}"/>`;
+
+ /* Marcas de grado en el borde. Puro oficio: no informan de nada, pero sin
+    ellas el círculo parece un gráfico y con ellas parece un aparato.
+    36 y no 72: con una cada cinco grados el borde se convertía en una
+    línea gruesa y sucia en vez de en una escala. */
+ for(let g=0;g<36;g++){
+  const a=g*10, largo=(g%3===0)?7:3.5;
+  const [x1,y1]=pol(a,RMAX), [x2,y2]=pol(a,RMAX+largo);
+  s+=`<line class="radar-tick${g%6===0?' fuerte':''}" x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+ }
+
+ /* Los seis sectores. El rótulo es un botón: filtra el radar de abajo y
+    baja hasta él. Convierte el dibujo en un mando de navegación en vez
+    de en una lámina que solo se mira. */
+ cats.forEach((c,i)=>{
+  const a=-90+i*60-30;
+  const [x,y]=pol(a,RMAX);
+  s+=`<line class="radar-sector" x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/>`;
+  /* Arriba y abajo, centrado; a los lados, pegado por fuera del aro, para
+     que «Materias primas» e «Infraestructura» quepan enteros. */
+  const lado=i%3===0?0:i<3?1:-1,[mx,ty]=pol(-90+i*60,RMAX+19);
+  const tx=lado?CX+lado*(Math.sqrt(Math.max(0,(RMAX+12)**2-(ty-CY)**2))+4):mx,ancla=lado>0?'start':lado<0?'end':'middle';
+  const zx=lado>0?tx-4:lado<0?tx-100:tx-48,largo=catCorta(c).length>9&&lado;
+  s+=`<g class="radar-etg" tabindex="0" role="button" aria-label="Ver solo ${escHtml(c)} en el radar"`
+   +` data-filtra="${escHtml(c)}">`
+   /* El rótulo va del color de su categoría, y con eso el radar gana la
+      leyenda que le faltaba: se ve de un vistazo qué color es cada tipo
+      de activo, sin una tabla aparte. Va en `style` y no en `fill`
+      porque un atributo de presentación pierde contra la clase CSS. */
+   +`<rect class="radar-et-zona" x="${zx.toFixed(1)}" y="${(ty-22).toFixed(1)}" width="${lado?104:96}" height="44" rx="13" fill="transparent"/>`
+   +`<text class="radar-et${largo?' radar-et-largo':''}" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="${ancla}" dominant-baseline="middle" fill="${CATMETA[c].c}">${escHtml(catCorta(c))}</text></g>`;
+ });
+
+ /* El barrido: una cola larga que se apaga, no una porción de tarta. Un
+    radar deja estela de fósforo; el borde duro delataba el truco. */
+ s+=`<g class="radar-barrido">`
+   +`<path d="M${CX} ${CY} L${CX+RMAX} ${CY} A${RMAX} ${RMAX} 0 0 0 ${(CX+RMAX*Math.cos(-88*Math.PI/180)).toFixed(1)} ${(CY+RMAX*Math.sin(-88*Math.PI/180)).toFixed(1)} Z" fill="url(#gBarrido)"/>`
+   +`<line x1="${CX}" y1="${CY}" x2="${CX+RMAX}" y2="${CY}" stroke="#25E39A" stroke-width="1.3" opacity=".75"/></g>`;
+ s+=`<circle class="radar-centro" cx="${CX}" cy="${CY}" r="2.6"/>`;
+
+ /* y los puntos: uno por plataforma */
+ puntosRadar(CX,CY,RMAX).forEach(({p,i,x,y,col})=>{
   s+=`<g class="blip" tabindex="0" role="button" data-cat="${escHtml(p.cat)}" data-i="${i}"`
    +` data-x="${x.toFixed(1)}" data-y="${y.toFixed(1)}"`
    +` aria-label="${escHtml(p.n)}. ${escHtml(p.cat)}. Estado de acceso: ${escHtml(accesoVisible(p))}. Abrir ficha.">`
@@ -1383,7 +1406,7 @@ function render(){
  document.getElementById('pills').innerHTML=
   `<button class="f ${S2.cat===''?'on':''}" data-filtrar-cat="" aria-pressed="${S2.cat===''?'true':'false'}">Todas <span class="ct">${P.length}</span></button>`+
   Object.keys(CATMETA).map(c=>{const n=P.filter(p=>p.cat===c).length;
-   const cp={cat:c};return `<button class="f ${S2.cat===c?'on':''}" data-cat="${escHtml(c)}" data-filtrar-cat="${escHtml(c)}" aria-pressed="${S2.cat===c?'true':'false'}"><span class="punto ${catClase(cp)}"></span>${escHtml(c)} <span class="ct">${n}</span></button>`}).join('');
+   const cp={cat:c};return `<button class="f ${S2.cat===c?'on':''}" data-cat="${escHtml(c)}" data-filtrar-cat="${escHtml(c)}" aria-pressed="${S2.cat===c?'true':'false'}"><span class="punto ${catClase(cp)}"></span>${nombreCatHtml(c)} <span class="ct">${n}</span></button>`}).join('');
  const f=filtered();
  document.getElementById('count').innerHTML=CATALOGO_EMBEBIDO_BLOQUEADO?'<b>0</b> plataformas · catálogo no disponible temporalmente':`<b>${f.length}</b> de ${P.length} plataformas · última revisión ${ultimaRevision()}${CATALOGO_CADUCADO?' · pendiente de renovar':''}`;
  document.getElementById('grid').classList.toggle('hide',S2.view!=='grid');
@@ -1398,21 +1421,21 @@ function render(){
 function renderGrid(f){
  const g=document.getElementById('grid');
  if(CATALOGO_EMBEBIDO_BLOQUEADO){g.innerHTML='<div class="vacio"><p>Catálogo no disponible temporalmente. Las plataformas volverán a mostrarse en cuanto se publique de nuevo.</p></div>';return}
- if(!f.length){g.innerHTML=`<div class="vacio"><p>El radar no detecta ninguna plataforma con estos filtros.</p><button class="f" data-accion="limpiar">Limpiar filtros</button></div>`;return}
+ if(!f.length){g.innerHTML=`<div class="vacio"><p>Ninguna plataforma cumple estos filtros.</p><button class="f" data-accion="limpiar">Limpiar filtros</button></div>`;return}
  g.innerHTML=f.map(p=>{const i=P.indexOf(p),on=compare.includes(i),ilustrativa=portadaEsIlustrativa(p);
   const portada=String(p.n).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const compararTexto=on?`Quitar ${p.n} de la comparación`:`Añadir ${p.n} a la comparación`;
   const v=p.verificacionLocal;
   const nota=v?v.estadoOperativo.detalle:p.nota;
   const aval=v?v.licenciaRegistro.detalle:p.aval;
-  const marcaRevision=v?'Revisión editorial '+v.verificadoEl:'Ficha verificada';
+  const marcaRevision=v?'Revisión editorial: '+fLarga(v.verificadoEl):'Ficha verificada';
   const marcas=v?resumenVerificacionLocalHtml(v):
    `<div class="marcas"><span class="m acc">${escHtml(p.acceso)}</span><span class="m">Entrada: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>`;
   return `<div class="ficha ${on?'sel':''} ${catClase(p)}">
    <button type="button" class="empresa-visual__abrir" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}${ilustrativa?'; portada ilustrativa':''}">
     <img class="empresa-visual__imagen" src="/plataformas/${portada}.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
-    <span class="empresa-visual__categoria">${escHtml(p.cat)}</span>${ilustrativa?'<span class="empresa-visual__origen">Ilustración</span>':''}
+    <span class="empresa-visual__categoria">${escHtml(catCorta(p.cat))}</span>
     <span class="empresa-visual__texto"><strong>${escHtml(p.n)}</strong><small>${escHtml(p.tipo)} · ${escHtml(p.reg)}</small></span>
     ${v?`<span class="empresa-visual__verificada"><span>${escHtml(marcaRevision)}</span></span>`:
      `<span class="empresa-visual__verificada">${okSVG}<span>Ficha verificada</span></span>`}
@@ -1423,7 +1446,7 @@ function renderGrid(f){
    <p class="nota">${escHtml(nota)}</p>
    <div class="aval${v?' aval-local':''}">${v?'':escudoSVG}<span>${escHtml(aval)}</span></div>
    ${marcas}
-   <div class="ficha-pie"><span class="verif">${v?'':' '+okSVG}${v?'Revisión editorial '+escHtml(v.verificadoEl):' Verificado '+escHtml(fCorta(p.ver))}</span>
+   <div class="ficha-pie"><span class="verif">${v?'':' '+okSVG}${v?'Revisión editorial: '+escHtml(fLarga(v.verificadoEl)):' Verificado '+escHtml(fCorta(p.ver))}</span>
     <button class="cmp ${on?'on':''}" data-comparar="${i}" aria-pressed="${on?'true':'false'}">${on?'✓ Comparando':'+ Comparar'}</button>
     <button class="movil-ficha-abrir" data-abrir="${i}">Ver ficha <span aria-hidden="true">›</span></button></div></div>`}).join('');
 }
@@ -1465,7 +1488,7 @@ function openDrawer(i){
    <section class="pn-seccion pn-datos" aria-labelledby="dwAccesoTit">
     <h4 id="dwAccesoTit">Acceso e inversión</h4>
     <dl class="datos">
-     <div><dt>Tipo de actor</dt><dd>${escHtml(p.tipo)}</dd></div>
+     <div><dt>Tipo de empresa</dt><dd>${escHtml(p.tipo)}</dd></div>
      <div><dt>Quién puede entrar</dt><dd>${escHtml(p.acceso)}</dd></div>
      <div><dt>Importe de entrada</dt><dd>${escHtml(p.ticket)}</dd></div>
     </dl>
@@ -1474,8 +1497,8 @@ function openDrawer(i){
     <h4 id="dwActivoTit">Activo y alcance</h4>
     <dl class="datos">
      <div><dt>Tipo de activo</dt><dd>${escHtml(p.cat)}</dd></div>
-     <div><dt>Región / marco</dt><dd>${escHtml(p.reg)}</dd></div>
-     <div><dt>Cadenas</dt><dd>${escHtml(p.cadenas)}</dd></div>
+     <div><dt>Región y normativa</dt><dd>${escHtml(p.reg)}</dd></div>
+     <div><dt>Blockchains</dt><dd>${escHtml(p.cadenas)}</dd></div>
      <div><dt>Última verificación</dt><dd>${escHtml(fLarga(p.ver))}</dd></div>
     </dl>
    </section>
@@ -1486,9 +1509,9 @@ function openDrawer(i){
   </section>
   <div class="pn-web-escritorio">
    ${web?`<a class="pn-cta" href="${escHtml(web)}" target="_blank" rel="noopener">Abrir ${escHtml(p.n)} ↗</a>`:'<p class="pn-nota">Web oficial no disponible.</p>'}
-   <p class="pn-nota">Se abre la web oficial en otra pestaña. Verifica siempre los datos en origen.</p>
+   <p class="pn-nota">Se abre la web oficial en otra pestaña. Comprueba siempre los datos en la web oficial.</p>
   </div>
-  <p class="pn-nota pn-web-movil-nota">El botón «Web oficial» abre otra pestaña. Verifica siempre los datos en origen.</p>
+  <p class="pn-nota pn-web-movil-nota">El botón «Web oficial» abre otra pestaña. Comprueba siempre los datos en la web oficial.</p>
   ${v?'':`<section class="pn-seccion pn-opiniones-seccion" aria-label="Puntuación y opiniones">
    <div id="dwOpiniones"></div>
   </section>`}`;
@@ -1538,11 +1561,11 @@ function openCompare(){
  const datoLocal=(p,campo)=>p.verificacionLocal
   ?`<span class="comp-estado">${escHtml(etiquetaVerificacionLocal(p.verificacionLocal[campo].estado))}</span><span class="comp-nota">${escHtml(p.verificacionLocal[campo].detalle)}</span>`
   :null;
- const rows=[['Tipo de activo',p=>escHtml(p.cat)],['Tipo de actor',p=>escHtml(p.tipo)],['Región / marco',p=>escHtml(p.reg)],
-  ['Estado de acceso',p=>datoLocal(p,'acceso')||`<span class="m acc">${escHtml(p.acceso)}</span>`],['Entrada',p=>escHtml(p.ticket)],['Cadenas',p=>escHtml(p.cadenas)],
-  ['Licencia / registro',p=>datoLocal(p,'licenciaRegistro')||`<span class="comp-aval">${escHtml(p.aval)}</span>`],
-  ['Estado operativo',p=>datoLocal(p,'estadoOperativo')||`<span class="comp-nota">${escHtml(p.nota)}</span>`],
-  ['Alertas críticas',p=>p.verificacionLocal?`<span class="comp-alerta">${p.verificacionLocal.alertasCriticas.map(a=>escHtml(a.detalle)).join('<br>')}</span>`:'—'],
+ const rows=[['Tipo de activo',p=>escHtml(p.cat)],['Tipo de empresa',p=>escHtml(p.tipo)],['Región y normativa',p=>escHtml(p.reg)],
+  ['Estado de acceso',p=>datoLocal(p,'acceso')||`<span class="m acc">${escHtml(p.acceso)}</span>`],['Mínimo',p=>escHtml(p.ticket)],['Blockchains',p=>escHtml(p.cadenas)],
+  ['Licencia o registro',p=>datoLocal(p,'licenciaRegistro')||`<span class="comp-aval">${escHtml(p.aval)}</span>`],
+  ['Actividad',p=>datoLocal(p,'estadoOperativo')||`<span class="comp-nota">${escHtml(p.nota)}</span>`],
+  ['Avisos importantes',p=>p.verificacionLocal?`<span class="comp-alerta">${p.verificacionLocal.alertasCriticas.map(a=>escHtml(a.detalle)).join('<br>')}</span>`:'—'],
   ['Revisión',p=>escHtml(p.verificacionLocal?p.verificacionLocal.verificadoEl:fLarga(p.ver))],
   ['',p=>{const u=urlHttps(p.web);return u?`<a href="${escHtml(u)}" target="_blank" rel="noopener" class="comp-enlace">Abrir ↗</a>`:'—'}]];
  document.getElementById('modalBody').innerHTML=`<table class="comp">
@@ -1606,7 +1629,7 @@ const cortoES=x=>{const n=Number(x)||0;
  if(n>=1e6)return (Math.round(n/1e5)/10).toString().replace('.',',')+' M';
  if(n>=1000)return Math.round(n/1000)+' mil';
  return milesES(n)};
-const fechaES=iso=>{const p=String(iso||'').split('-');return p.length===3?p[2]+'.'+p[1]+'.'+p[0]:'—'};
+const fechaES=iso=>{const p=String(iso||'').split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:'—'};
 const diasHasta=iso=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(String(iso||'')))return null;
  const d=new Date(iso+'T00:00:00'),h=new Date();
  return Number.isFinite(d.getTime())?Math.ceil((d-new Date(h.getFullYear(),h.getMonth(),h.getDate()))/86400000):null};
@@ -1653,6 +1676,8 @@ function pintarAvisoCatalogo(){
 }
 function pintarEmisiones(){
  pintarAvisoCatalogo();
+ /* Las pruebas cargan pintarEmisiones sola, sin Inicio. */
+ if(typeof pintarInicio==='function')pintarInicio();
  const caja=document.getElementById('emiLista');if(!caja)return;
  if(MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL){pintarEscaparateLocal();return;}
  if(CATALOGO_EMBEBIDO_BLOQUEADO){
@@ -1664,7 +1689,7 @@ function pintarEmisiones(){
  const catalogo=EMI.filter(e=>e&&e.catalogo===true);
  if(catalogo.length){
   if(catalogo.length!==EMI.length||!catalogo.every(ofertaLocalValida)){
-   caja.innerHTML='<div class="emis-vacio"><h3>Catálogo no disponible</h3><p>La revisión remota no supera el contrato completo. No mostramos una copia parcial.</p></div>';
+   caja.innerHTML='<div class="emis-vacio"><h3>Catálogo no disponible</h3><p>Los datos que hemos recibido están incompletos, así que no mostramos las ofertas a medias.</p></div>';
    return;
   }
   const principales=catalogo.filter(o=>o.coleccion==='principales');
@@ -1680,7 +1705,8 @@ function pintarEmisiones(){
   const informacion=document.getElementById('emisInformacion');if(informacion)informacion.open=true;
   const estado=document.getElementById('movilOfertasEstado');
   const seleccion=catalogo.filter(o=>o.coleccion===emiColeccion),coincidencias=seleccion.filter(coincideOfertaLocal);
-  if(estado){estado.textContent=coincidencias.length+' de '+seleccion.length+' '+({principales:'principales',secundario:'en reventa',en_camino:'próximas'}[emiColeccion]);estado.classList.toggle('hay-ofertas',coincidencias.length>0)}
+  const recuento=coincidencias.length+' de '+seleccion.length+' '+({principales:'principales',secundario:'en reventa',en_camino:'próximas'}[emiColeccion]);
+  if(estado){estado.textContent=recuento;estado.classList.toggle('hay-ofertas',coincidencias.length>0)}
   /* Como en la app: una pestaña por colección y se ve una cada vez. */
   const cuantas=c=>catalogo.filter(o=>o.coleccion===c).length;
   if(caja.dataset)caja.dataset.coleccion=emiColeccion;
@@ -1688,10 +1714,22 @@ function pintarEmisiones(){
   if(pestanas){pestanas.hidden=false;pestanas.innerHTML=
    [['principales','Principales'],['secundario','Reventa'],['en_camino','Próximas']].map(([c,t])=>
     '<button type="button" role="tab" data-emi-coleccion="'+c+'" class="'+(emiColeccion===c?'on':'')+'" aria-selected="'+(emiColeccion===c)+'">'+t+' <em>'+cuantas(c)+'</em></button>').join('');}
-  caja.innerHTML='<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.</p></header>'+
-   '<div class="catalogo-principales">'+(visibles.length?tarjetasPorProveedorHtml(visibles):
-   '<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>')+'</div>'+
-   seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino');
+  const movil=vistaMovilOfertas(),elegidas=movil?visibles.filter(enSeleccionOferta):[];
+  const resto=visibles.filter(o=>!elegidas.includes(o));
+  /* Móvil: primero la Selección (las que cumplen las cinco comprobaciones) y
+     después el resto, cada bloque en el orden del selector. */
+  const filas=!visibles.length?'<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>':
+   elegidas.length?'<div class="catalogo-bloque catalogo-seleccion" role="group" aria-labelledby="emiSeleccionTit"><header class="catalogo-bloque-cab"><h3 id="emiSeleccionTit">Selección RWAdar <span>· pasan nuestras 5 comprobaciones</span></h3>'+
+    '<p>No es una recomendación de inversión.</p></header>'+elegidas.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>'+
+    (resto.length?'<div class="catalogo-bloque" role="group" aria-labelledby="emiRestoTit"><header class="catalogo-bloque-cab"><h3 id="emiRestoTit">Otras ofertas principales</h3></header>'+resto.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>':''):
+   tarjetasPorProveedorHtml(visibles);
+  /* Con un filtro o una búsqueda, el recuento también a la vista (el lector ya lo oye en #movilOfertasEstado). */
+  caja.innerHTML=(movil?(emiCat||emiBusquedaLocal?'<p class="catalogo-recuento" aria-hidden="true">'+escHtml(recuento)+'</p>':'')+
+   '<p class="catalogo-nota-movil">RWAdar no recibe dinero de las inversiones.</p>':'')+
+   '<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son informativas y gratuitas. Si puedes invertir, las condiciones y los riesgos los confirma la empresa que ofrece cada producto. RWAdar no recibe dinero de las inversiones.</p></header>'+
+   '<div class="catalogo-principales">'+filas+'</div>'+
+   seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino')+
+   '<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>';
   return;
  }
  const v=emisionesVisibles();
@@ -1765,17 +1803,20 @@ function seccionReferenciasCatalogo(catalogo,coleccion){
   ?'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
   :'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.';
  return '<details class="catalogo-referencias" data-coleccion="'+coleccion+'"'+(emiColeccion===coleccion?' open':'')+'><summary><h3>'+titulo+'</h3><span>'+visibles.length+' de '+todas.length+' referencias</span></summary>'+
-  '<p>'+alcance+' La ordenación financiera solo se aplica a las ofertas principales.</p><div class="emis-rejilla">'+
+  '<p>'+alcance+' Ordenar por rentabilidad o por mínimo solo cambia el orden de las ofertas principales.</p><div class="emis-rejilla">'+
   (visibles.length?tarjetasPorProveedorHtml(visibles):'<p>Ninguna referencia coincide con la búsqueda y la categoría.</p>')+'</div></details>';
 }
 function pintarFiltrosEmision(){
  const caja=document.getElementById('emiFiltros');if(!caja)return;
- const cats=[],hayCatalogo=EMI.some(e=>e&&e.catalogo===true);
+ const hayCatalogo=EMI.some(e=>e&&e.catalogo===true);
  const origen=MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL?ESCAPARATE_LOCAL.ofertas:
   hayCatalogo?EMI.filter(ofertaLocalValida):EMI.filter(emisionValida);
- origen.forEach(e=>{const cat=e.categoria||e.cat;if(cat&&!cats.includes(cat))cats.push(cat)});
- caja.innerHTML=cats.length?'<button class="f'+(emiCat?'':' on')+'" data-emi-cat="" aria-pressed="'+(!emiCat)+'">Todas</button>'+cats.map(c=>
-  '<button class="f'+(emiCat===c?' on':'')+'" data-emi-cat="'+escHtml(c)+'" aria-pressed="'+(emiCat===c)+'"><span class="punto'+catClase({cat:c})+'"></span>'+escHtml(c)+'</button>').join(''):'';
+ /* Orden fijo de CATMETA, no el de llegada: un lote remoto ordenado por slug
+    movía «Inmobiliario» al borde y la fila lo enseñaba partido. */
+ const presentes=new Set(origen.map(e=>e.categoria||e.cat).filter(Boolean));
+ const cats=[...Object.keys(CATMETA).filter(c=>presentes.has(c)),...[...presentes].filter(c=>!Object.hasOwn(CATMETA,c))];
+ caja.innerHTML=cats.length?'<button class="f'+(emiCat?'':' on')+'" type="button" data-emi-cat="" aria-pressed="'+(!emiCat)+'">Todas</button>'+cats.map(c=>
+  '<button class="f'+(emiCat===c?' on':'')+'" type="button" data-emi-cat="'+escHtml(c)+'" aria-pressed="'+(emiCat===c)+'"><span class="punto'+catClase({cat:c})+'"></span>'+nombreCatHtml(c)+'</button>').join(''):'';
 }
 (function mandosEmision(){
  activarDetallesOfertas();
@@ -1787,6 +1828,295 @@ function pintarFiltrosEmision(){
  if(filtros&&filtros.addEventListener)filtros.addEventListener('click',ev=>{const b=ev.target&&ev.target.closest&&ev.target.closest('[data-emi-cat]');if(!b)return;
   emiCat=b.getAttribute('data-emi-cat')||'';pintarFiltrosEmision();pintarEmisiones();if(typeof Sonido!=='undefined'&&Sonido.marcar)Sonido.marcar()});
  if(orden&&orden.addEventListener)orden.addEventListener('change',()=>{emiOrden=orden.value||'cierra';pintarEmisiones()});
+})();
+
+/* =================================================================
+   INICIO EN EL MÓVIL · LA HISTORIA (HISTORIA-v2, ESPEC-INICIO, 04/11/2026)
+   -----------------------------------------------------------------
+   Arriba, el radar real del registro con cuatro lecturas en sus esquinas;
+   debajo, seis capítulos, la Selección y las fuentes. Todo lo que es cifra
+   del catálogo sale de P, EMI, FUERA y transparencia.json al pintar: ni una
+   cifra escrita a mano. Si la revisión ha vencido o no se pudo comprobar, se
+   quitan las cifras y la Selección, y queda la fecha. Sin rentabilidades.
+   ================================================================= */
+let huellaInicio='';
+function fechaBarras(iso){const p=String(iso||'').split('-');return p.length===3&&/^\d{4}$/.test(p[0])?p[2]+'/'+p[1]+'/'+p[0]:''}
+function inicioSinCifras(){return Boolean(CATALOGO_CADUCADO||CATALOGO_SIN_COMPROBAR||CATALOGO_EMBEBIDO_BLOQUEADO||!P.length)}
+function ofertasCatalogoInicio(){
+ if(CATALOGO_EMBEBIDO_BLOQUEADO||(MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL))return [];
+ const l=EMI.filter(o=>o&&o.catalogo===true);
+ return l.length&&l.length===EMI.length&&l.every(ofertaLocalValida)?l:[];
+}
+function movimientoReducido(){
+ try{return typeof window!=='undefined'&&typeof window.matchMedia==='function'&&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches===true}catch(e){return false}
+}
+/* El mismo reparto de puntos que el radar de Buscar (puntosRadar), más
+   grande. El barrido y los ecos van con animación SVG: cada eco lleva su
+   retardo como atributo, algo que la CSP no permite con style, y así se
+   encienden justo cuando el barrido pasa. Con movimiento reducido, quieto. */
+function radarInicioSvg(sin){
+ const CX=200,CY=200,R=136,quieto=movimientoReducido(),cats=Object.keys(CATMETA);
+ const pol=(a,r)=>[CX+Math.cos(a*Math.PI/180)*r,CY+Math.sin(a*Math.PI/180)*r];
+ const n1=v=>v.toFixed(1);
+ let s='<defs><radialGradient id="gBarridoInicio" cx="0" cy="0.5" r="1"><stop offset="0" stop-color="#25E39A" stop-opacity=".36"/>'+
+  '<stop offset=".6" stop-color="#25E39A" stop-opacity=".08"/><stop offset="1" stop-color="#25E39A" stop-opacity="0"/></radialGradient>'+
+  '<radialGradient id="gFondoInicio"><stop offset="0" stop-color="#25E39A" stop-opacity=".13"/><stop offset=".7" stop-color="#25E39A" stop-opacity=".03"/>'+
+  '<stop offset="1" stop-color="#25E39A" stop-opacity="0"/></radialGradient></defs>'+
+  '<circle cx="200" cy="200" r="'+R+'" fill="url(#gFondoInicio)"/>';
+ [0.40,0.60,0.76,0.90].forEach(f=>{s+='<circle class="radar-anillo" cx="200" cy="200" r="'+n1(R*f)+'"/>'});
+ s+='<circle class="radar-borde" cx="200" cy="200" r="'+R+'"/>';
+ for(let g=0;g<72;g++){
+  const [x1,y1]=pol(g*5,R),[x2,y2]=pol(g*5,R+(g%6===0?8:g%2===0?4:2.5));
+  s+='<line class="radar-tick'+(g%18===0?' fuerte':'')+'" x1="'+n1(x1)+'" y1="'+n1(y1)+'" x2="'+n1(x2)+'" y2="'+n1(y2)+'"/>';
+ }
+ /* Mismos nombres cortos que los chips y las casillas (Inmobiliario, Crédito,
+    Tesoro, Acciones, Materias primas, Infraestructura); el número es de
+    plataformas. A los lados, pegados al borde y por encima del aro, para que
+    ningún rótulo pise el círculo ni se salga de la pantalla. */
+ cats.forEach((c,i)=>{
+  const [x,y]=pol(-120+i*60,R),n=P.filter(p=>p.cat===c).length,cifra=sin||!n?'':String(n),nombre=catCorta(c);
+  s+='<line class="radar-sector" x1="200" y1="200" x2="'+n1(x)+'" y2="'+n1(y)+'"/>';
+  if(i%3===0){const ty=i?CY+R+21:CY-R-15;
+   s+='<text class="ir-et" x="200" y="'+ty+'" text-anchor="middle" dominant-baseline="middle" fill="'+CATMETA[c].c+'">'+escHtml(nombre)+
+    (cifra?' <tspan class="ir-et-n">'+cifra+'</tspan>':'')+'</text>';return;}
+  /* Una sola línea por nombre (así se traduce entero) y el número debajo. */
+  const der=i<3,tx=der?385:3,arriba=i===1||i===5,lineas=cifra?[nombre,cifra]:[nombre];
+  const y0=arriba?CY-92-(lineas.length-1)*15:CY+102;
+  s+='<text class="ir-et" x="'+tx+'" y="'+y0+'" text-anchor="'+(der?'end':'start')+'" fill="'+CATMETA[c].c+'">'+
+   lineas.map((l,k)=>'<tspan'+(cifra&&k===lineas.length-1?' class="ir-et-n"':'')+' x="'+tx+'"'+(k?' dy="15"':'')+'>'+escHtml(l)+'</tspan>').join('')+'</text>';
+ });
+ const fin=pol(-88,R);
+ s+='<g'+(quieto?' transform="rotate(-38 200 200)"':'')+'><path d="M200 200 L'+(CX+R)+' 200 A'+R+' '+R+' 0 0 0 '+n1(fin[0])+' '+n1(fin[1])+' Z" fill="url(#gBarridoInicio)"/>'+
+  '<line x1="200" y1="200" x2="'+(CX+R)+'" y2="200" stroke="#25E39A" stroke-width="1.6" opacity=".85"/>'+
+  (quieto?'':'<animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="'+VUELTA+'s" repeatCount="indefinite"/>')+'</g>';
+ puntosRadar(CX,CY,R).forEach(({x,y,ang,col})=>{
+  const X=n1(x),Y=n1(y),t=((((ang%360)+360)%360)/360*VUELTA).toFixed(2);
+  if(!quieto)s+='<circle cx="'+X+'" cy="'+Y+'" r="5" fill="'+col+'" opacity="0">'+
+   '<animate attributeName="opacity" values=".8;0;0" keyTimes="0;.2;1" dur="'+VUELTA+'s" begin="'+t+'s" repeatCount="indefinite"/>'+
+   '<animate attributeName="r" values="5;15;15" keyTimes="0;.2;1" dur="'+VUELTA+'s" begin="'+t+'s" repeatCount="indefinite"/></circle>';
+  s+='<circle cx="'+X+'" cy="'+Y+'" r="5.6" fill="'+col+'" stroke="#0B0A0A" stroke-width="1.6"/>';
+ });
+ /* En el centro, el hexágono de la marca. */
+ return s+'<g transform="translate(200 200) scale(1.15) translate(-52 -52)"><path d="M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z" fill="#25E39A" stroke="#0B0A0A" stroke-width="1.4"/></g>';
+}
+/* Miniatura quieta del radar para la franja plegada de Plataformas: los
+   mismos puntos, sin rótulos ni barrido. */
+function radarMiniSvg(){
+ let s='<circle class="radar-borde" cx="200" cy="200" r="136"/>';
+ [0.40,0.60,0.76,0.90].forEach(f=>{s+='<circle class="radar-anillo" cx="200" cy="200" r="'+(136*f).toFixed(1)+'"/>'});
+ s+='<path d="M200 200 L336 200 A136 136 0 0 0 204.7 64.1 Z" fill="rgba(37,227,154,.16)"/>';
+ return s+puntosRadar(200,200,136).map(({x,y,col})=>'<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="9" fill="'+col+'"/>').join('');
+}
+function fechaRevisionOferta(o){const d=documentacionOfertaLocal(o);return d&&d.revisadaEl||o.verificadaEl||''}
+/* Selección de Inicio: la letra pequeña de cada oferta es texto editorial de
+   RWAdar (HISTORIA-v2 §2.7); título, mínimo y foto salen del catálogo. Una
+   oferta que entre nueva lleva, al menos, la línea de riesgo. */
+const NOTAS_SELECCION={
+ 'robinhood-classic-stock-tokens':'Es un derivado que sigue el precio de la acción. No eres su dueño ni votas, y puedes perder todo lo invertido.',
+ 'spiko-letras-del-tesoro-euro':'Es un fondo monetario, no una letra del Tesoro ni un depósito. No está garantizado: puedes perder parte de lo invertido.',
+ 'spiko-letras-del-tesoro-dolar':'Es un fondo monetario en dólares, no una letra del Tesoro ni un depósito. No está garantizado: puedes perder parte de lo invertido, también si baja el dólar.'};
+/* Las 5 comprobaciones en llano, a la vista en Inicio (HISTORIA-v2 §2.7).
+   La 2 dice quién autoriza: un supervisor de la UE; la CNMV las inscribe. */
+const CRITERIOS_INICIO={contratable:'Se contrata hoy desde España.',supervisada:'La entidad que la ofrece está autorizada por un supervisor de la UE e inscrita en la CNMV.',
+ documentoEspana:'Tiene un documento oficial para su venta en España: folleto o KID.',
+ minimoSalida:'Están documentados el mínimo y cómo salir.',vigente:'La revisamos esta semana y sus fuentes coinciden.'};
+const minimoCortoInicio=o=>{const e=transparenciaOferta(o);return e?textoLocal(e.minimoCorto).replace(/^(\d+(?:,\d+)?) USD$/,'$1 $'):''};
+const idiomaInicio=()=>{try{return typeof RWAdarIdioma!=='undefined'&&RWAdarIdioma.obtenerIdioma()==='en'?'en':'es'}catch(e){return 'es'}};
+/* Todas las cifras del relato salen de aquí: catálogo, transparencia.json y la
+   Selección. Ninguna va escrita en el HTML. */
+function cifrasInicio(){
+ const ofertas=ofertasCatalogoInicio(),orden=Object.keys(NOTAS_SELECCION);
+ const iso=P[0]&&fechaLocalValida(P[0].verificado_lote_el)?P[0].verificado_lote_el:'';
+ const dias=P[0]&&Number.isInteger(P[0].vigencia_lote_dias)?P[0].vigencia_lote_dias:0;
+ const minimos=ofertas.filter(o=>/^1 [€$]$/.test(minimoCortoInicio(o)));
+ return {sin:inicioSinCifras(),ofertas:ofertas.length,plataformas:P.length,descartadas:FUERA.length,revisado:iso,
+  hasta:iso&&dias>0?new Date(Date.parse(iso+'T00:00:00Z')+dias*86400000).toISOString().slice(0,10):'',
+  minimos:minimos.length,usd:minimos.filter(o=>/\$$/.test(minimoCortoInicio(o))).length,
+  seleccion:ofertas.filter(o=>o.coleccion==='principales'&&enSeleccionOferta(o)).sort((a,b)=>((orden.indexOf(a.slug)+1)||99)-((orden.indexOf(b.slug)+1)||99)||
+   String(a.plataformaNombre).localeCompare(String(b.plataformaNombre),'es')||String(a.titulo).localeCompare(String(b.titulo),'es'))};
+}
+/* Una frase con cifra: su plantilla en castellano o en inglés, o null si falta
+   alguna cifra (entonces se queda la frase sin número del HTML). */
+function plantillaInicio(p,c,en){
+ const v={ofertas:c.ofertas,plataformas:c.plataformas,seleccion:c.seleccion.length,minimos:c.minimos,revisado:fechaBarras(c.revisado),hasta:fechaBarras(c.hasta),
+  usd:!c.usd?'':en?' ('+(c.usd===1?'one of them':c.usd+' of them')+', $1)':' ('+(c.usd===1?'una de ellas':c.usd+' de ellas')+', de 1 $)'};
+ const claves=[...String(p||'').matchAll(/\{(\w+)\}/g)].map(m=>m[1]);
+ return !p||c.sin||claves.some(k=>!(k in v)||(k!=='usd'&&!v[k]))?null:p.replace(/\{(\w+)\}/g,(_,k)=>String(v[k]));
+}
+function tarjetaSeleccionHtml(o,i){
+ /* En inglés, la moneda delante: «€1», «$1». */
+ const corto=minimoCortoInicio(o),min=idiomaInicio()==='en'?corto.replace(/^(\d+(?:,\d+)?) ([€$])$/,(_,n,m)=>m+n.replace(',','.')):corto;
+ const img=imagenOfertaLocal(o),id='relTarjeta'+i,t=String(o.titulo||'');
+ return '<li class="rel-tarjeta"><article aria-labelledby="'+id+'">'+
+  (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
+  '<div class="rel-tarjeta-cuerpo">'+(o.plataformaNombre&&t.indexOf(o.plataformaNombre)!==0?'<p class="rel-tarjeta-plat" translate="no">'+escHtml(o.plataformaNombre)+'</p>':'')+
+  '<h3 id="'+id+'" lang="es" translate="no">'+escHtml(t)+'</h3><p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
+  (min?'<p class="rel-tarjeta-min"><span>Mínimo documentado:</span> <span translate="no">'+escHtml(min)+'</span></p>':'')+
+  '<button class="b3 rel-tarjeta-ver" type="button" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(t)+'">Ver ficha<span class="rel-flecha" aria-hidden="true"></span></button></div></article></li>';
+}
+/* Las fotos de la Selección se piden al acercarse a la pantalla: con solo
+   loading=lazy el navegador las adelanta 1250 px. */
+let observadorFotosInicio=null;
+function diferirFotosInicio(){
+ if(typeof document==='undefined'||typeof document.querySelectorAll!=='function')return;
+ const fotos=[...document.querySelectorAll('#movilPanelInicio img[data-src]')];if(!fotos.length)return;
+ const cargar=img=>{const src=img.getAttribute('data-src');img.removeAttribute('data-src');if(src)img.src=src;};
+ if(typeof IntersectionObserver!=='function'){fotos.forEach(cargar);return;}
+ if(!observadorFotosInicio)observadorFotosInicio=new IntersectionObserver(entradas=>entradas.forEach(e=>{
+  if(e.isIntersecting){observadorFotosInicio.unobserve(e.target);cargar(e.target);}}),{rootMargin:'48px 160px'});
+ fotos.forEach(img=>observadorFotosInicio.observe(img));
+}
+function pintarInicio(){
+ const panel=document.getElementById('movilPanelInicio');
+ if(!panel)return;
+ const c=cifrasInicio(),sin=c.sin,en=idiomaInicio()==='en';
+ const huella=[P.length,FUERA.length,sin,CATALOGO_EMBEBIDO_BLOQUEADO,c.revisado,c.hasta,en,c.ofertas,c.minimos,c.usd,
+  P.map(p=>p.slug+p.cat).join(),c.seleccion.map(o=>o.slug+fechaRevisionOferta(o)).join()].join('|');
+ if(huella===huellaInicio)return;
+ huellaInicio=huella;
+ const pon=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;return el;};
+ const ocultar=(id,si)=>{const el=document.getElementById(id);if(el)el.hidden=si;};
+ pon('inicioRadar',P.length?radarInicioSvg(sin):'');
+ pon('movilRadarMini',P.length?radarMiniSvg():'');
+ /* Los recuentos del radar, también para el lector de pantalla (el SVG va oculto). */
+ ocultar('inicioRadarLista',sin||!P.length);
+ pon('inicioRadarLista',sin?'':Object.keys(CATMETA).map(k=>{const n=P.filter(p=>p.cat===k).length;
+  return n?'<li><span>'+escHtml(catCorta(k))+'</span> <span>'+n+(n===1?' plataforma':' plataformas')+'</span></li>':''}).join(''));
+ const fecha=fechaBarras(c.revisado)||ultimaRevision();
+ const t=c.revisado?'<time datetime="'+escHtml(c.revisado)+'">'+escHtml(fecha)+'</time>':escHtml(fecha);
+ pon('inicioCifras',CATALOGO_EMBEBIDO_BLOQUEADO?'<li class="inicio-hud-1 inicio-hud-aviso"><b>Catálogo no disponible</b> <span>Volverá en cuanto se publique de nuevo</span></li>':
+  sin?'<li class="inicio-hud-1 inicio-hud-aviso"><b>Revisión pendiente</b> <span>Sin cifras hasta renovarla</span></li><li class="inicio-hud-4"><span>última revisión</span> <b>'+t+'</b></li>':
+  (c.ofertas?'<li class="inicio-hud-1"><b>'+c.ofertas+'</b> <span>ofertas</span></li>':'')+
+  '<li class="inicio-hud-2"><b>'+c.plataformas+'</b> <span>plataformas</span></li>'+
+  '<li class="inicio-hud-3"><b>'+c.descartadas+'</b> <span>descartadas</span></li>'+
+  '<li class="inicio-hud-4"><span>revisado el</span> <b>'+t+'</b></li>');
+ if(typeof panel.querySelectorAll==='function')[...panel.querySelectorAll('[data-rel-plantilla]')].forEach(el=>{
+  /* Sin cifras, la frase en castellano de data-rel-sin (el idioma la traduce
+     si hace falta): no la que hubiera en pantalla, que puede estar en inglés. */
+  const texto=plantillaInicio(el.getAttribute(en&&el.hasAttribute('data-rel-plantilla-en')?'data-rel-plantilla-en':'data-rel-plantilla'),c,en)??el.getAttribute('data-rel-sin')??'';
+  if(el.textContent!==texto)el.textContent=texto;
+ });
+ ocultar('relMinimos',sin||!c.minimos||!c.ofertas);
+ ocultar('relMinimosAviso',sin||!c.minimos||!c.ofertas);
+ ocultar('relVigencia',sin||!c.revisado||!c.hasta);
+ ocultar('relEscaparate',sin||!c.seleccion.length);
+ pon('inicioCriterios',criteriosTransparencia().map(k=>'<li>'+escHtml(CRITERIOS_INICIO[k.id]||k.texto)+'</li>').join(''));
+ pon('relTarjetas',sin?'':c.seleccion.map(tarjetaSeleccionHtml).join(''));
+ diferirFotosInicio();
+ if(relatoInicio)relatoInicio.repintar();
+}
+/* Plataformas en el móvil: el radar grande vive en Inicio; en Buscar se
+   pliega para que la galería se vea antes, y se despliega con un toque. */
+function sincronizarRadarPlegado(){
+ const panel=document.getElementById('movilPanelRadar'),b=document.getElementById('movilRadarAlternar');
+ if(!panel||!b||!panel.classList||typeof b.setAttribute!=='function')return;
+ const abierto=panel.classList.contains('movil-radar-abierto');
+ b.setAttribute('aria-expanded',abierto?'true':'false');
+ b.textContent=abierto?'Ocultar el radar':'Ver el radar';
+}
+/* El relato: aparecer al bajar (quieto con «reducir movimiento»), el carrusel
+   «Quién más se ha movido», «Fuentes de este apartado», la
+   portada a la altura de la pantalla y la barra de progreso de lectura. */
+var relatoInicio=(function(){
+ const $=id=>document.getElementById(id),panel=$('movilPanelInicio'),raiz=document.documentElement;
+ const b=$('movilRadarAlternar');
+ if(b&&typeof b.addEventListener==='function')b.addEventListener('click',()=>{
+  const radar=$('movilPanelRadar');
+  if(radar&&radar.classList){radar.classList.toggle('movil-radar-abierto');sincronizarRadarPlegado();}
+ });
+ try{const mq=typeof window!=='undefined'&&typeof window.matchMedia==='function'?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
+  if(mq&&typeof mq.addEventListener==='function')mq.addEventListener('change',()=>{const r=$('inicioRadar');
+   if(r&&typeof P!=='undefined'&&P.length)r.innerHTML=radarInicioSvg(inicioSinCifras());});}catch(e){}
+ if(!panel||typeof panel.addEventListener!=='function'||!raiz||!raiz.classList||typeof panel.querySelectorAll!=='function')return null;
+ const quieto=movimientoReducido,todos=s=>[...panel.querySelectorAll(s)];
+ let io=null,origen=null;
+ if(!quieto()&&typeof IntersectionObserver==='function'){
+  raiz.classList.add('rel-anim');
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target);}}),{rootMargin:'0px 0px -6% 0px'});
+ }
+ const revelar=()=>todos('.rel-revela:not(.visto)').forEach(n=>io?io.observe(n):n.classList.add('visto'));
+ /* «Quién más se ha movido»: sin tamaño (Inicio oculto) se supone el principio,
+    y un ResizeObserver repinta en cuanto lo hay. */
+ const lista=$('relQuienLista'),items=lista?[...lista.children]:[],pos=$('relQuienPos'),ant=panel.querySelector('.rel-quien-ant'),sig=panel.querySelector('.rel-quien-sig');
+ if($('relQuienTotal'))$('relQuienTotal').textContent=String(items.length);
+ const paso=()=>items.length>1?items[1].offsetLeft-items[0].offsetLeft:lista.clientWidth;
+ const actual=()=>{const p=paso();return p>0?Math.max(0,Math.min(items.length-1,Math.round(lista.scrollLeft/p))):0;};
+ function quien(){
+  if(!lista)return;
+  const ancho=lista.clientWidth;
+  if(pos)pos.textContent=String(ancho?actual()+1:1);
+  if(ant)ant.disabled=!ancho||lista.scrollLeft<4;
+  if(sig)sig.disabled=ancho?lista.scrollLeft+ancho>=lista.scrollWidth-4:items.length<2;
+ }
+ const ir=d=>lista.scrollTo({left:Math.max(0,actual()+d)*paso(),behavior:quieto()?'auto':'smooth'});
+ if(lista){
+  let raf=0;lista.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;quien();});},{passive:true});
+  if(ant)ant.addEventListener('click',()=>ir(-1));
+  if(sig)sig.addEventListener('click',()=>ir(1));
+  lista.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();ir(e.key==='ArrowRight'?1:-1);}});
+  if(typeof ResizeObserver==='function')new ResizeObserver(quien).observe(lista);
+ }
+ /* Rótulos del radar a 12 px en pantalla (11 por debajo de 380 px) aunque el SVG se escale. */
+ function rotulos(){
+  const r=$('inicioRadar');if(!r||typeof r.getScreenCTM!=='function'||!r.style)return;
+  const m=r.getScreenCTM();if(!m||!m.a)return;
+  const fs=Math.max(12,(window.innerWidth<380?11:12)/m.a);
+  r.style.setProperty('--ir-fs',fs.toFixed(2)+'px');
+  r.querySelectorAll('text.ir-et').forEach(t=>{const ts=t.querySelectorAll('tspan[dy]');if(!ts.length)return;
+   if(!t.dataset.y0)t.dataset.y0=t.getAttribute('y');const y0=parseFloat(t.dataset.y0),salto=fs*1.2;
+   ts.forEach(s=>s.setAttribute('dy',salto.toFixed(1)));if(y0<200)t.setAttribute('y',(y0+15*ts.length-salto*ts.length).toFixed(1));});
+ }
+ /* «Fuentes de este apartado»: abre la lista en su grupo; «Volver al texto» regresa. */
+ const refs=$('relRefs');
+ const llevar=(n,centro)=>{n.scrollIntoView({block:centro?'center':'start',behavior:quieto()?'auto':'smooth'});n.focus({preventScroll:true});};
+ panel.addEventListener('click',e=>{
+  /* Tocar el radar o «Explorar el radar» abre el radar de Plataformas. */
+  const r=e.target.closest&&e.target.closest('[data-inicio-radar]');
+  if(r&&typeof Movil!=='undefined'&&Movil.ir){e.preventDefault();const radar=$('movilPanelRadar');
+   if(radar)radar.classList.add('movil-radar-abierto');sincronizarRadarPlegado();Movil.ir('movilRadarIntro',r);return;}
+  const a=e.target.closest&&e.target.closest('a[data-rel-fuentes]');
+  if(a){
+   const g=$('fuentes-'+a.dataset.relFuentes);if(!g||!refs)return;
+   e.preventDefault();e.stopPropagation();refs.open=true;origen=a;
+   todos('.rel-refs-grupo').forEach(x=>{const on=x===g;x.classList.toggle('activa',on);x.querySelector('.rel-refs-volver').hidden=!on;});
+   llevar(g,false);return;
+  }
+  const v=e.target.closest&&e.target.closest('.rel-refs-volver');
+  if(v&&origen&&origen.isConnected){e.preventDefault();v.hidden=true;llevar(origen,true);}
+ });
+ /* Un enlace directo a «#fuentes-…» abre la lista en su grupo. */
+ if(typeof location!=='undefined'&&refs){const m=/^#fuentes-(\w+)$/.exec(location.hash||''),g=m&&$('fuentes-'+m[1]);
+  if(g){refs.open=true;todos('.rel-refs-grupo').forEach(x=>x.classList.toggle('activa',x===g));
+   setTimeout(()=>requestAnimationFrame(()=>llevar(g,false)),120);}}
+ /* Con el teclado, la tarjeta que recibe el foco entra entera en su carrusel. */
+ panel.addEventListener('focusin',e=>{const li=e.target&&e.target.closest&&e.target.closest('.rel-tarjetas>li');
+  if(li)li.scrollIntoView({block:'nearest',inline:'nearest',behavior:quieto()?'auto':'smooth'});});
+ /* La portada ocupa la pantalla y solo se recalcula si cambia el ancho (la barra
+    de direcciones del móvil cambia el alto al bajar). */
+ const portada=$('relPortada'),barra=$('relProgreso'),relleno=barra&&barra.querySelector('span');
+ let ancho=0,pendiente=false;
+ function alto(){
+  if(!portada||window.innerWidth===ancho)return;ancho=window.innerWidth;
+  const cab=$('movilCabecera'),nav=$('movilNav'),arriba=cab?cab.offsetHeight:0;
+  portada.style.setProperty('--rel-alto',Math.max(320,window.innerHeight-arriba-(nav?nav.offsetHeight:0))+'px');
+  if(barra)barra.style.setProperty('--rel-arriba',arriba+'px');
+ }
+ function progreso(){
+  if(!relleno||panel.hidden)return;
+  const total=panel.offsetHeight-window.innerHeight,y=-panel.getBoundingClientRect().top;
+  relleno.style.transform='scaleX('+(total>0?Math.min(1,Math.max(0,y/total)):0).toFixed(4)+')';
+  barra.classList.toggle('on',!!portada&&window.scrollY>portada.offsetHeight*.6);
+ }
+ window.addEventListener('scroll',()=>{if(pendiente)return;pendiente=true;requestAnimationFrame(()=>{pendiente=false;progreso();});},{passive:true});
+ window.addEventListener('resize',()=>{alto();rotulos();quien();progreso();},{passive:true});
+ try{if(typeof RWAdarIdioma!=='undefined')RWAdarIdioma.suscribirIdioma(()=>{huellaInicio='';pintarInicio();});}catch(e){}
+ const repintar=()=>{alto();rotulos();quien();revelar();progreso();};
+ /* Al volver a Inicio, el radar y el carrusel ya tienen tamaño: se miden otra vez. */
+ if(typeof MutationObserver==='function'&&document.body)new MutationObserver(()=>{if(document.body.dataset.movilPestana==='inicio')requestAnimationFrame(repintar);})
+  .observe(document.body,{attributes:true,attributeFilter:['data-movil-pestana']});
+ repintar();
+ return {repintar};
 })();
 
 /* ---- escaparate de revisión local ---------------------------------
@@ -1856,20 +2186,20 @@ function ofertaLocalValida(o){
    (!o.catalogo||['actual','no_verificable','fuentes_en_conflicto'].includes(o.estadoRevision));
 }
 function estadoVigenciaLocal(o,ahora=new Date()){
- if(o.coleccion!=null&&o.coleccion!=='principales')return {clase:'caducado',texto:o.coleccion==='en_camino'?'anuncio documentado · apertura no confirmada':'referencia documental · liquidez no confirmada'};
+ if(o.coleccion!=null&&o.coleccion!=='principales')return {clase:'caducado',texto:o.coleccion==='en_camino'?'anunciada · sin confirmar que abra':'reventa · sin confirmar que se pueda operar'};
  if(o.estadoRevision==='no_verificable')return {clase:'caducado',texto:'apertura no confirmada'};
  if(o.estadoRevision==='fuentes_en_conflicto')return {clase:'caducado',texto:'fuentes en conflicto'};
  const base=Date.parse(o.verificadaEl+'T00:00:00Z'),ttl=Number(o.vigenciaDias);
  if(!fechaLocalValida(o.verificadaEl)||!Number.isFinite(base)||new Date(base).toISOString().slice(0,10)!==o.verificadaEl||
     !Number.isInteger(ttl)||ttl<1||!Number.isFinite(new Date(base+ttl*86400000).getTime())||!Number.isFinite(ahora.getTime())||
-    (o.estadoRevision!=null&&o.estadoRevision!=='actual'))return {clase:'caducado',texto:'vigencia sin definir'};
+    (o.estadoRevision!=null&&o.estadoRevision!=='actual'))return {clase:'caducado',texto:'sin fecha de validez'};
  const hoyUTC=Date.UTC(ahora.getUTCFullYear(),ahora.getUTCMonth(),ahora.getUTCDate());
- if(base>hoyUTC)return {clase:'caducado',texto:'revisión futura no válida'};
+ if(base>hoyUTC)return {clase:'caducado',texto:'fecha de revisión errónea'};
  const resta=Math.floor((base+ttl*86400000-hoyUTC)/86400000);
  if(resta<0)return {clase:'caducado',texto:'cifras por actualizar'};
- /* Mismas palabras que la app: dicen hasta cuándo valen las cifras. */
- if(o.permanente)return {clase:'permanente',texto:resta===0?'cifras vigentes hasta hoy':'cifras vigentes '+resta+' d'};
- return {clase:'vigente',texto:resta===0?'cifras vigentes hasta hoy':'cifras vigentes '+resta+' d'};
+ /* Dicen hasta cuándo valen las cifras, en días enteros (LISTA-FINAL fila 14). */
+ const texto=resta===0?'cifras válidas hasta hoy':'cifras válidas '+resta+(resta===1?' día más':' días más');
+ return {clase:o.permanente?'permanente':'vigente',texto};
 }
 // La documentación tiene su propia fecha: no amplía el TTL de una cifra ni
 // confirma apertura. Mantener la semántica de validarDocumentacionOferta del
@@ -1895,19 +2225,22 @@ function documentacionOfertaLocal(o,ahora=new Date()){
 function nombreFuenteLocal(url){
  try{return new URL(url).hostname.replace(/^www\./,'')}catch{return 'Fuente documental'}
 }
-function documentacionOfertaHtml(d){
- if(!d)return '';
+/* Las tres partes por separado (la ficha las coloca en su orden); juntas, para quien las pida enteras. */
+function documentacionOfertaHtml(d,opciones){const x=partesDocumentacionOferta(d,opciones);return x?x.ficha+x.referencias+x.fuentes:''}
+function partesDocumentacionOferta(d,{resumen='',ultima=''}={}){
+ if(!d)return null;
  const fecha=v=>escHtml(fechaES(v));
- const ficha=d.descripcion?'<section class="escaparate-dialogo-seccion"><h3>Sobre esta referencia</h3>'+
-  '<p class="escaparate-dialogo-resumen">'+escHtml(d.descripcion)+'</p><details class="escaparate-detalle-ampliable"><summary>Características <span>'+d.caracteristicas.length+'</span></summary><dl class="escaparate-documentacion-caracteristicas">'+
-  d.caracteristicas.map(c=>'<div><dt>'+escHtml(c.etiqueta)+'</dt><dd>'+escHtml(c.valor)+'</dd></div>').join('')+'</dl></details></section>':'';
- const referencias=d.referencias.length?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Referencias fechadas <span>'+d.referencias.length+'</span></summary>'+
+ const r=textoLocal(resumen),desc=r&&d.descripcion.startsWith(r)?d.descripcion.slice(r.length).trim():d.descripcion;
+ const ficha=d.descripcion?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Sobre esta oferta</summary>'+
+  (desc?'<p class="escaparate-dialogo-resumen">'+escHtml(desc)+'</p>':'')+'<h4>Características</h4><dl class="escaparate-documentacion-caracteristicas">'+
+  d.caracteristicas.map(c=>'<div><dt>'+escHtml(c.etiqueta)+'</dt><dd>'+escHtml(c.valor)+'</dd></div>').join('')+'</dl></details>':'';
+ const referencias=d.referencias.length?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Datos con su fecha <span>'+d.referencias.length+'</span></summary>'+
   '<p class="escaparate-documentacion-aviso">Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.</p>'+
   '<div class="escaparate-referencias-fechadas">'+d.referencias.map(r=>'<article><h4>'+escHtml(r.etiqueta)+'</h4><p><b>'+escHtml(r.valor)+'</b></p>'+
     '<p>Fecha del dato: '+(r.fechaDato?fecha(r.fechaDato):'no indicada en la fuente')+' · Consultado el '+fecha(r.fechaConsulta)+'</p>'+
     '<p>'+escHtml(r.alcance)+'</p><a href="'+escHtml(r.fuente)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Ver fuente · '+nombreFuenteLocal(r.fuente)+' de '+r.etiqueta+': '+r.fuente)+'">Ver fuente · '+escHtml(nombreFuenteLocal(r.fuente))+' ↗</a></article>').join('')+'</div></details>':'';
- return ficha+referencias+'<section class="escaparate-dialogo-seccion"><h3>Fuentes documentales · '+fecha(d.revisadaEl)+'</h3><ul class="escaparate-fuentes-documentales">'+
-  d.fuentes.map((u,i)=>'<li><a href="'+escHtml(u)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Fuente '+(i+1)+' · '+nombreFuenteLocal(u)+': '+u)+'">Fuente '+(i+1)+' · '+escHtml(nombreFuenteLocal(u))+' ↗</a></li>').join('')+'</ul></section>';
+ return {ficha,referencias,fuentes:'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Fuentes consultadas · '+fecha(d.revisadaEl)+'</summary>'+ultima+'<ul class="escaparate-fuentes-documentales">'+
+  d.fuentes.map((u,i)=>'<li><a href="'+escHtml(u)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Fuente '+(i+1)+' · '+nombreFuenteLocal(u)+': '+u)+'">Fuente '+(i+1)+' · '+escHtml(nombreFuenteLocal(u))+' ↗</a></li>').join('')+'</ul></details>'};
 }
 function etiquetaMetricaLocal(valor,indice){
  const v=normalizaBuscaLocal(valor);
@@ -1997,11 +2330,11 @@ function clavesOfertaLocal(o,secundario){
  return {destacado,auxiliares:preferidas.slice(0,2)};
 }
 /* Como en los buscadores de viajes: dónde está el activo, con su chincheta. */
-const ICONO_LUGAR='<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
+const ICONO_LUGAR='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
 const AVISO_GENERAL_OFERTA=/^Referencia editorial gratuita\b/;
 /* Lo primero que piden los usuarios en una tarjeta: quién supervisa la
    plataforma. Sale del radar; sin promesas ni sellos que no consten. */
-const ICONO_SUPERVISOR='<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/></svg>';
+const ICONO_SUPERVISOR='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/></svg>';
 function supervisionOferta(o){
  const p=(typeof P!=='undefined'&&Array.isArray(P)?P:[]).find(x=>x&&x.slug===o.plataformaSlug);
  const estado=p&&p.verificacionLocal&&p.verificacionLocal.licenciaRegistro&&p.verificacionLocal.licenciaRegistro.estado;
@@ -2046,9 +2379,12 @@ function textoBreveDatoTarjetaLocal(campo){
     enseña tal cual en vez de «No verificado»: está comprobado, solo que no en euros. */
  if(campo&&campo.texto==='No documentado en euros'&&textoLocal(campo.unidadDocumentada))return textoLocal(campo.unidadDocumentada);
  return ({'No documentado en euros':'No verificado','Sin mínimo vigente en euros':'No verificado',
-  'Sin comprobar desde España':'Sin confirmar','Salida no documentada':'Sin documentar'})[campo.texto]||campo.texto;
+  'Sin comprobar desde España':'Sin confirmar','Salida no documentada':'Sin documentar',
+  /* La fila ya dice «España»: no se repite dentro del dato. */
+  'Disponible desde España según la fuente':'Disponible',
+  'No disponible desde España según la fuente':'No disponible'})[campo.texto]||campo.texto;
 }
-function datosClaveOfertaHtml(resumen,completo=false){
+function datosClaveOfertaHtml(resumen,completo=false,metricas=[]){
  /* Si el mínimo está en otra moneda o unidad, la fila no dice «(EUR)». */
  const otraUnidad=!completo&&resumen.minimo&&resumen.minimo.texto==='No documentado en euros'&&!!textoLocal(resumen.minimo.unidadDocumentada);
  const datos=[[completo?'Mínimo en euros':otraUnidad?'Mínimo':'Mínimo (EUR)',resumen.minimo],[completo?'Desde España':'España',resumen.accesoEspana],['Salida',resumen.salida]];
@@ -2061,19 +2397,131 @@ function datosClaveOfertaHtml(resumen,completo=false){
   else if(completo){const fuente=referencias[0]&&referencias[0].fuente||campo.fuente,fecha=referencias[0]&&referencias[0].fechaConsulta||campo.consultadaEl;
    citas=(urlHttps(fuente)?' <a href="'+escHtml(urlHttps(fuente))+'" target="_blank" rel="noopener nofollow" aria-label="Fuente de '+escHtml(nombre)+'">Fuente ↗</a>':'')+
     (fecha?'<small>Consultada el '+escHtml(fechaES(fecha))+'</small>':'');}
-  /* En la tarjeta, la fila «Salida» no repite «Salida:». */
-  const breve=completo?campo.texto:textoBreveDatoTarjetaLocal(campo).replace(nombre==='Salida'?/^Salida:\s*/:/$^/,'');
+  /* La fila «Salida» no repite «Salida:». En la ficha, los costes van con la
+     métrica en castellano del catálogo y la cita original debajo. */
+  const breve=(completo?campo.texto:textoBreveDatoTarjetaLocal(campo)).replace(nombre==='Salida'?/^Salida:\s*/i:/$^/,'');
+  const coste=completo&&nombre==='Costes'&&metricas.find(x=>/comisi|coste|gasto|tarifa/i.test(normalizaBuscaLocal(x.etiqueta)));
+  if(coste)return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+escHtml(coste.valor)+'<small class="escaparate-cita-original">'+escHtml(breve)+'</small>'+citas+'</dd></div>';
   return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+escHtml(breve)+citas+'</dd></div>';
  }).join('')+'</dl>';
 }
-function tarjetaOfertaLocal(o,{secundario=false}={}){
- const estado=estadoVigenciaLocal(o),tipo=tipoOfertaLocal(o);
+/* ---- Transparencia de cada oferta (03/11/2026) ----------------------
+   Cinco comprobaciones de la documentación, no una recomendación ni una
+   nota: dos salen de transparencia.json (con su motivo y su fuente) y tres
+   del catálogo. Falla cerrado: sin entrada, o con otra verificadaEl, la
+   oferta no enseña puntos fuertes ni entra en la Selección. */
+function criteriosTransparencia(){
+ const t=typeof TRANSPARENCIA_CRITERIOS!=='undefined'&&Array.isArray(TRANSPARENCIA_CRITERIOS)?TRANSPARENCIA_CRITERIOS:[];
+ return [['contratable','Se contrata hoy desde España'],['supervisada','La entidad que la ofrece está autorizada por un supervisor de la UE e inscrita en la CNMV'],
+  ['documentoEspana','Hay un documento oficial (KID o folleto) que cubre su venta en España'],
+  ['minimoSalida','El mínimo y la forma de salir están documentados'],['vigente','Revisada esta semana y sin fuentes en conflicto']].map(([id,texto])=>{const c=t.find(x=>x&&x.id===id);return {id,texto:c&&textoLocal(c.texto)||texto}});
+}
+function transparenciaOferta(o){
+ const t=typeof TRANSPARENCIA_POR_SLUG!=='undefined'&&TRANSPARENCIA_POR_SLUG?TRANSPARENCIA_POR_SLUG:null;
+ const e=t&&o&&typeof o.slug==='string'&&Object.hasOwn(t,o.slug)?t[o.slug]:null;
+ return e&&fechaLocalValida(o.verificadaEl)&&e.verificadaEl===o.verificadaEl?e:null;
+}
+function catalogoSinCifrasLocal(){
+ return [typeof CATALOGO_CADUCADO!=='undefined'&&CATALOGO_CADUCADO,typeof CATALOGO_SIN_COMPROBAR!=='undefined'&&CATALOGO_SIN_COMPROBAR,
+  typeof CATALOGO_EMBEBIDO_BLOQUEADO!=='undefined'&&CATALOGO_EMBEBIDO_BLOQUEADO].some(Boolean);
+}
+function minimoDocumentadoLocal(r){return !!(r&&r.minimo&&(Number.isFinite(r.minimo.euros)||textoLocal(r.minimo.unidadDocumentada)))}
+function salidaDocumentadaLocal(r){return !!(r&&r.salida&&textoLocal(r.salida.texto)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto))}
+/* Con la revisión vencida el dato existe pero falta revalidarlo: no es «sin documentar». */
+function pendienteRevalidarLocal(r){return !!(r&&(r.vencida===true||catalogoSinCifrasLocal()||r.salida&&r.salida.texto==='Salida pendiente de revalidar'))}
+function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
+ const e=transparenciaOferta(o),estado=estadoVigenciaLocal(o),textos=criteriosTransparencia();
+ const cita=c=>c&&urlHttps(c.fuente)?{url:urlHttps(c.fuente),titulo:nombreFuenteLocal(c.fuente),fecha:fechaLocalValida(c.consultadaEl)?c.consultadaEl:''}:null;
+ /* Los motivos de supervisada y documentoEspana son texto editorial de
+    transparencia.json (deFuente); los demás los escribe la interfaz. */
+ const editorial=campo=>e&&e[campo]?{cumple:e[campo].cumple===true,motivo:textoLocal(e[campo].motivo),deFuente:true,
+  fuente:urlHttps(e[campo].fuente&&e[campo].fuente.url)?{url:urlHttps(e[campo].fuente.url),titulo:textoLocal(e[campo].fuente.titulo),fecha:e[campo].consultadaEl}:null}:
+  {cumple:false,motivo:'Todavía no hemos comprobado este punto en la revisión actual.',fuente:null};
+ /* Falla cerrado como la vigencia: con el catálogo caducado o sin comprobar
+    no se afirma nada sobre «hoy», y siempre lleva la fuente del acceso. */
+ const caducado=catalogoSinCifrasLocal()||estado.clase==='caducado';
+ const contratable=o.coleccion==='principales'&&o.disponibleEs===true&&!caducado&&!!(resumen.accesoEspana&&resumen.accesoEspana.estado==='si'&&cita(resumen.accesoEspana));
+ const pendiente=caducado||pendienteRevalidarLocal(resumen),minimo=!pendiente&&minimoDocumentadoLocal(resumen),salida=!pendiente&&salidaDocumentadaLocal(resumen);
+ const vigente=o.estadoRevision==='actual'&&!caducado;
+ const vencida='Pendiente de revalidar: la revisión semanal ha vencido.';
+ /* Mínimo y salida: la etiqueta es de la interfaz y el dato, de la fuente. */
+ const partes=[minimo?['Mínimo:',textoBreveDatoTarjetaLocal(resumen.minimo).replace(/\.$/,'')]:[pendiente?'Mínimo pendiente de revalidar.':'Mínimo sin documentar.'],
+  salida?['Salida:',textoLocal(resumen.salida.texto).replace(/^Salida:\s*/,'').replace(/\.$/,'')]:[pendiente?'Salida pendiente de revalidar.':'Salida sin documentar.']];
+ const lista={
+  contratable:{cumple:contratable,fuente:cita(resumen.accesoEspana),motivo:contratable?'Es una oferta principal y la fuente dice que se contrata desde España.':
+   o.coleccion==='secundario'?'Es una referencia de reventa entre inversores, no una oferta abierta.':
+   o.coleccion==='en_camino'?'Es un anuncio: todavía no se puede contratar.':
+   o.disponibleEs===false?'La fuente dice que no se contrata desde España.':caducado?vencida:'No consta en la fuente que se contrate desde España.'},
+  supervisada:editorial('supervisada'),documentoEspana:editorial('documentoEspana'),
+  minimoSalida:{cumple:minimo&&salida,fuente:minimo?cita(resumen.minimo):cita(resumen.salida),partes,
+   motivo:partes.map(x=>x.length>1?x[0]+' '+x[1]+'.':x[0]).join(' ')},
+  vigente:{cumple:vigente,fuente:null,motivo:vigente?'Revisada el '+fechaES(o.verificadaEl)+'; '+estado.texto+'.':
+   o.estadoRevision==='fuentes_en_conflicto'?'Las fuentes no coinciden.':
+   o.estadoRevision==='no_verificable'?'No se pudo confirmar en la revisión.':'La revisión semanal ha vencido.'},
+ };
+ return textos.map(c=>({...c,...lista[c.id]}));
+}
+function avisoBloqueoOferta(o){return (o&&Array.isArray(o.avisos)?o.avisos:[]).find(x=>x&&x.tono==='stop'&&textoLocal(x.texto))||null}
+/* Una oferta con aviso crítico nunca entra en la Selección (falla cerrado). */
+function enSeleccionOferta(o){return !!transparenciaOferta(o)&&!avisoBloqueoOferta(o)&&comprobacionesOferta(o).every(c=>c.cumple)}
+function puntosFuertesOferta(o){
+ const e=transparenciaOferta(o);
+ return e&&Array.isArray(e.puntos)?e.puntos.filter(x=>x&&textoLocal(x.texto)):[];
+}
+/* Corta en una palabra, nunca a media palabra. */
+function textoCortoLocal(v,max=40){
+ const t=textoLocal(v);if(t.length<=max)return t;
+ const c=t.slice(0,max+1),i=c.lastIndexOf(' ');return (i>12?c.slice(0,i):t.slice(0,max)).replace(/[\s,;:·.(-]+$/,'')+'…';
+}
+/* Mínimo · España · Salida en forma corta (decisión de Víctor del 03/11). Sin
+   revisión vigente no hay cifras: manda lo que calcula resumenOferta. */
+function datosCortosOferta(o,resumen){
+ const e=transparenciaOferta(o),acceso=resumen.accesoEspana&&resumen.accesoEspana.estado;
+ const minimo=minimoDocumentadoLocal(resumen)?e&&textoLocal(e.minimoCorto)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.minimo)):
+  textoBreveDatoTarjetaLocal(resumen.minimo);
+ const salida=salidaDocumentadaLocal(resumen)?e&&textoLocal(e.salidaCorta)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.salida).replace(/^Salida:\s*/,'')):
+  pendienteRevalidarLocal(resumen)?'Pendiente de revalidar':'Sin documentar';
+ const espana=acceso==='si'?'Sí, según la fuente':acceso==='no'?'No, según la fuente':'Sin confirmar';
+ return {minimo,espana,salida};
+}
+function datosTarjetaOfertaHtml(o,resumen){
+ const d=datosCortosOferta(o,resumen);
+ return '<dl class="escaparate-datos-clave">'+[['Mínimo',d.minimo],['España',d.espana],['Salida',d.salida]]
+  .map(([dt,dd])=>'<div><dt>'+escHtml(dt)+'</dt><dd>'+escHtml(dd)+'</dd></div>').join('')+'</dl>';
+}
+function puntosFuertesHtml(o,max=2){
+ const l=puntosFuertesOferta(o).slice(0,max);
+ return l.length?'<ul class="escaparate-puntos" aria-label="Puntos fuertes">'+l.map(x=>'<li>'+escHtml(x.texto)+'</li>').join('')+'</ul>':'';
+}
+/* En la ficha: los cinco criterios con su motivo y su fuente; todos los puntos
+   fuertes. Solo el texto de transparencia.json y los datos del catálogo se
+   marcan como fuente (no se traducen); lo que escribe la interfaz, sí. */
+function transparenciaDetalleHtml(o,resumen){
+ const fecha=v=>fechaLocalValida(v)?' · consultada el '+escHtml(fechaES(v)):'';
+ const fuente=(f,de)=>{if(!f)return '';const t=f.titulo||nombreFuenteLocal(f.url);
+  return '<a href="'+escHtml(f.url)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml(t+' · fuente de: '+de)+'"><span><span class="escaparate-fuente-titulo">'+escHtml(t)+'</span> ↗</span></a>'+fecha(f.fecha);};
+ const dato=t=>'<span class="escaparate-comprobacion-dato">'+escHtml(t)+'</span>';
+ const motivo=c=>c.partes?'<p>'+c.partes.map(x=>x.length>1?'<span>'+escHtml(x[0])+'</span> '+dato(x[1])+'.':'<span>'+escHtml(x[0])+'</span>').join(' ')+'</p>':
+  '<p'+(c.deFuente?' class="escaparate-comprobacion-motivo-fuente"':'')+'>'+escHtml(c.motivo)+'</p>';
+ const puntos=puntosFuertesOferta(o);
+ return '<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable escaparate-transparencia">'+
+  '<summary id="detalleTransparenciaTit">Lo que hemos comprobado</summary>'+
+  '<p class="escaparate-transparencia-aviso">Es una comprobación de la documentación, no una recomendación de inversión.</p>'+
+  '<ul class="escaparate-comprobaciones">'+comprobacionesOferta(o,resumen).map(c=>'<li class="'+(c.cumple?'cumple':'no-cumple')+'">'+
+   '<span class="escaparate-comprobacion-marca" aria-hidden="true">'+(c.cumple?'✓':'✗')+'</span><div><b>'+escHtml(c.texto)+
+   '<span class="solo-lector">'+(c.cumple?': sí':': no')+'</span></b>'+motivo(c)+(c.fuente?'<p class="escaparate-comprobacion-fuente">'+fuente(c.fuente,c.texto)+'</p>':'')+'</div></li>').join('')+'</ul>'+
+  (puntos.length?'<h4>Puntos fuertes, con su fuente</h4><ul class="escaparate-puntos-detalle">'+puntos.map(x=>'<li><b>'+escHtml(x.texto)+'</b>'+
+   (x.fuente&&urlHttps(x.fuente.url)?' '+fuente({url:urlHttps(x.fuente.url),titulo:textoLocal(x.fuente.titulo)},x.texto):'')+'</li>').join('')+'</ul>':'')+
+  '</details>';
+}
+function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
+ const estado=estadoVigenciaLocal(o);
  const resumen=resumenEditorialOferta(o);
  const documentacion=documentacionOfertaLocal(o);
  /* El aviso general (igual en todas) va una vez encima de la lista; la
     tarjeta enseña el propio de esa oferta. */
- const avisos=avisosOfertaLocal(o).filter(t=>!AVISO_GENERAL_OFERTA.test(t)),imagen=imagenOfertaLocal(o);
- const bloqueo=(Array.isArray(o.avisos)?o.avisos:[]).find(x=>x&&x.tono==='stop');
+ const todos=avisosOfertaLocal(o),avisos=todos.filter(t=>!AVISO_GENERAL_OFERTA.test(t)),imagen=imagenOfertaLocal(o);
+ const bloqueo=avisoBloqueoOferta(o);
  const advertencia=(Array.isArray(o.avisos)?o.avisos:[]).find(x=>x&&x.tono==='warn'&&!x.esAntiguedad&&!AVISO_GENERAL_OFERTA.test(textoLocal(x.texto)));
  const avisoPrincipal=bloqueo?textoLocal(bloqueo.texto):advertencia?textoLocal(advertencia.texto):avisos[0];
  const fechaRevision=documentacion?documentacion.revisadaEl:o.verificadaEl;
@@ -2081,32 +2529,42 @@ function tarjetaOfertaLocal(o,{secundario=false}={}){
   o.coleccion==='secundario'?'Liquidez no confirmada':estado.texto;
  const cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
  return '<article class="emi escaparate-oferta'+cat+(secundario?' escaparate-oferta-secundaria':'')+'">'+
-  '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" width="640" height="440">'+
-   '<span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
-   '<span class="escaparate-tipo">'+escHtml(o.coleccion==='en_camino'?'En camino':o.coleccion==='secundario'||secundario?'Secundario':tipo==='valor'?'Valor':'Rendimiento')+'</span>'+
-   botonGuardarOferta(o)+'</div>'+
+  '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440">'+botonGuardarOferta(o)+'</div>'+
   '<div class="escaparate-cuerpo">'+
    (o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
-   '<h3 class="emi-tit">'+escHtml(o.titulo)+'</h3><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
-   (imagen&&imagen.lugar?'<p class="emi-lugar">'+ICONO_LUGAR+escHtml(imagen.lugar)+'</p>':'')+
-   datosClaveOfertaHtml(resumen)+
-   '<span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
-   (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+
+   '<h'+nivel+' class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h'+nivel+'><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
+   (imagen&&imagen.lugar?'<p class="emi-lugar">'+ICONO_LUGAR+escHtml(imagen.lugar)+'</p>':'')+'</div>'+
+   puntosFuertesHtml(o)+(vistaMovilOfertas()?datosTarjetaOfertaHtml(o,resumen):datosClaveOfertaHtml(resumen))+
+   '<div class="escaparate-meta"><span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
+   (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</div>'+
    (avisoPrincipal?'<p class="escaparate-aviso-compacto'+(bloqueo?' escaparate-aviso-bloqueo':'')+'"><b>'+(bloqueo?'Importante':'Revisa')+'</b> · '+escHtml(avisoPrincipal)+(avisos.length>1?'<span> · '+(avisos.length-1)+' más en la ficha</span>':'')+'</p>':'')+
-   '<div class="emi-pie"><div class="emi-revision"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'">'+
-    (documentacion?'Doc. ':'Revisado ')+escHtml(fechaES(fechaRevision))+'</time>'+
+   /* En la fila compacta del móvil el aviso ordinario se resume en su
+      número, junto a la fecha; el crítico (tono stop) se lee entero siempre. */
+   '<div class="emi-pie">'+(!bloqueo&&todos.length?'<p class="escaparate-avisos-n"><b>Revisa</b> · <span>'+todos.length+(todos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
+    '<div class="emi-revision"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'"><span class="emi-ver-pre">'+
+    (documentacion?'Doc.':'Revisado')+' </span>'+escHtml(fechaES(fechaRevision))+'</time>'+
     (resumen.fechas.fechaDato&&resumen.fechas.fechaDato!==fechaRevision?'<span class="emi-fecha-dato">Dato: '+escHtml(fechaES(resumen.fechas.fechaDato))+'</span>':'')+'</div>'+
     '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Ver ficha <span aria-hidden="true">→</span></button>'+
    '</div></div></article>';
 }
+/* En el móvil las filas son compactas y van sueltas, sin grupos por
+   proveedor (una sola nota común arriba). En escritorio siguen los grupos
+   plegados, como antes. */
+let gruposPintadosMovil=null;
+function vistaMovilOfertas(){
+ try{return typeof window!=='undefined'&&typeof window.matchMedia==='function'&&
+  window.matchMedia('(max-width: 767px), (max-width: 960px) and (max-height: 540px) and (hover: none) and (pointer: coarse)').matches===true;}
+ catch(e){return false}
+}
 function tarjetasPorProveedorHtml(ofertas){
- if(emiBusquedaLocal||emiCat||emiTipoLocal!=='todos')return ofertas.map(o=>tarjetaOfertaLocal(o)).join('');
+ gruposPintadosMovil=vistaMovilOfertas();
+ if(gruposPintadosMovil||emiBusquedaLocal||emiCat||emiTipoLocal!=='todos')return ofertas.map(o=>tarjetaOfertaLocal(o)).join('');
  const grupos=new Map();
  ofertas.forEach(o=>{const clave=o.plataformaSlug||o.plataformaNombre;
   if(!grupos.has(clave))grupos.set(clave,[]);grupos.get(clave).push(o);});
  return [...grupos.values()].map(grupo=>grupo.length<2?tarjetaOfertaLocal(grupo[0]):
-  '<details class="ofertas-grupo"><summary><b>'+escHtml((P.find(p=>p.slug===grupo[0].plataformaSlug)||{}).n||grupo[0].plataformaNombre.split(' · ')[0])+'</b><span>Ver '+grupo.length+' referencias</span></summary>'+
-  '<p>Referencias del mismo proveedor. Cada una conserva su fuente, sus condiciones y su fecha; no se suman ni se comparan sus rendimientos.</p>'+
+  '<details class="ofertas-grupo"><summary><b>'+escHtml((P.find(p=>p.slug===grupo[0].plataformaSlug)||{}).n||grupo[0].plataformaNombre.split(' · ')[0])+'</b><span>Ver sus '+grupo.length+' ofertas</span></summary>'+
+  '<p>Ofertas de la misma empresa. Cada una tiene su fuente, sus condiciones y su fecha; no sumamos ni comparamos sus rentabilidades.</p>'+
   '<div class="ofertas-grupo-rejilla">'+grupo.map(o=>tarjetaOfertaLocal(o)).join('')+'</div></details>').join('');
 }
 function filaSecundariaLocal(o){
@@ -2116,8 +2574,7 @@ function filaSecundariaLocal(o){
  const ultima=metricasOfertaLocal(o).find(x=>/ultima operacion/i.test(normalizaBuscaLocal(x.etiqueta)));
  const urlMercado=urlHttps(o.urlMercado),urlFicha=urlHttps(o.url),url=urlMercado||urlFicha;
  return '<article class="escaparate-sec-fila"><div class="escaparate-sec-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
-  escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" width="640" height="440"><span class="escaparate-editorial escaparate-editorial-compacta" aria-hidden="true">'+
-  escHtml(imagen.etiqueta)+'</span></div><div class="escaparate-sec-contenido">'+
+  escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440"></div><div class="escaparate-sec-contenido">'+
   '<div class="escaparate-sec-meta"><b>'+escHtml(o.plataformaNombre)+'</b><span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
   '<h4>'+escHtml(o.titulo)+'</h4><div class="escaparate-sec-cifras"><span><b>'+escHtml(rentabilidad)+'</b><small>Rentabilidad ajustada</small></span>'+
   '<span><b>'+escHtml(precio)+'</b><small>Precio observado</small></span></div>'+
@@ -2164,6 +2621,12 @@ function dialogoOfertaLocal(){
  d.addEventListener('close',()=>{
   document.body.classList.remove('detalle-local-abierto');
   restaurarFocoOfertaLocal(d);
+  /* Cerrada con ×, Escape o el fondo: se retira su paso del historial. */
+  if(d.rwadarHistorial){d.rwadarHistorial=false;if(history.state&&history.state.rwadarOferta)history.back();}
+ });
+ /* Atrás cierra la ficha y deja la página donde estaba, sin salir de la web. */
+ if(typeof window!=='undefined'&&typeof window.addEventListener==='function')window.addEventListener('popstate',()=>{
+  if(d.open&&d.rwadarHistorial&&!(history.state&&history.state.rwadarOferta)){d.rwadarHistorial=false;d.close();}
  });
  document.body.appendChild(d);return d;
 }
@@ -2182,40 +2645,59 @@ function abrirDetalleOfertaLocal(slug){
  d.setAttribute('data-oferta-slug',o.slug);
  const estado=estadoVigenciaLocal(o),claves=clavesOfertaLocal(o,secundario);
  const resumen=resumenEditorialOferta(o);
- const documentacion=documentacionOfertaLocal(o);
- const referencia=estado.clase==='caducado'?'':textoLocal(tipoOfertaLocal(o)==='rendimiento'?o.rentabilidad&&o.rentabilidad.literal:o.precio&&o.precio.unidad);
- const metricas=metricasOfertaLocal(o),avisos=avisosOfertaLocal(o),imagen=imagenOfertaLocal(o);
- const urlFicha=urlHttps(o.url),urlMercado=urlHttps(o.urlMercado);
- const disponibilidad=estado.clase==='caducado'?'Disponibilidad para España por confirmar':o.disponibleEs===true?'Disponible para España según la fuente':
-  o.disponibleEs===false?'No disponible en España según la fuente':'Disponibilidad para España por confirmar';
- const enlaces=(secundario&&urlMercado?'<a class="emi-ir" href="'+escHtml(urlMercado)+'" target="_blank" rel="noopener nofollow'+(o.patrocinada?' sponsored':'')+'" aria-label="'+escHtml('Abrir mercado de '+o.titulo+' en '+o.plataformaNombre)+'">Abrir mercado ↗</a>':'')+
-  (urlFicha?'<a class="emi-ir" href="'+escHtml(urlFicha)+'" target="_blank" rel="noopener nofollow'+(o.patrocinada?' sponsored':'')+'" aria-label="'+escHtml((secundario?'Ficha oficial':'Consultar fuente')+' de '+o.titulo+' en '+o.plataformaNombre)+'">'+
-   escHtml(secundario?'Ficha oficial':'Consultar fuente')+' ↗</a>':'');
+ const documentacion=documentacionOfertaLocal(o),vigente=estado.clase!=='caducado';
+ const referencia=vigente?textoLocal(tipoOfertaLocal(o)==='rendimiento'?o.rentabilidad&&o.rentabilidad.literal:o.precio&&o.precio.unidad):'';
+ const metricas=metricasOfertaLocal(o),imagen=imagenOfertaLocal(o);
+ /* Todos los avisos del catálogo, tal cual; el genérico ya lo dice la línea del botón. */
+ const avisos=avisosOfertaLocal(o).filter(t=>!AVISO_GENERAL_OFERTA.test(t));
+ const urlFicha=urlHttps(o.url),urlMercado=urlHttps(o.urlMercado),cortos=datosCortosOferta(o,resumen);
+ const supervisada=comprobacionesOferta(o,resumen).find(c=>c.id==='supervisada');
+ const rel='noopener nofollow'+(o.patrocinada?' sponsored':'');
+ const enlace=(url,texto,etiqueta)=>'<a class="emi-ir" href="'+escHtml(url)+'" target="_blank" rel="'+rel+'" aria-label="'+escHtml(etiqueta)+'">'+escHtml(texto)+' ↗</a>';
+ const enlaces=(secundario&&urlMercado?enlace(urlMercado,'Abrir mercado','Abrir mercado de '+o.titulo+' en '+o.plataformaNombre):'')+
+  (urlFicha?enlace(urlFicha,secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre,(secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre)+': '+o.titulo):'');
+ /* Un precio o una rentabilidad solo salen si hay cifra publicable (nunca «Consultar fuente» en grande). */
+ const cifra=vigente&&claves.destacado&&!/^(?:Consultar|No publicada)/.test(claves.destacado.valor)?claves.destacado:null;
+ /* Sin cifra, una línea normal que dice dónde mirar. */
+ const sinCifra=cifra?null:o.coleccion==='secundario'||o.coleccion==='en_camino'||secundario?['Precio y condiciones','Consúltalos en su web']:
+  !vigente?['Condiciones actuales','Consultar emisor']:tipoOfertaLocal(o)==='valor'?['Precio','En la web del proveedor']:null;
+ const fila=(dt,dd,clase='')=>'<div><dt>'+escHtml(dt)+'</dt><dd'+(clase?' class="'+clase+'"':'')+'>'+dd+'</dd></div>';
+ const revision=vigente?'<span>Revisadas el '+escHtml(fechaES(o.verificadaEl))+'</span> · <span>'+escHtml(estado.texto.replace(/^cifras /,''))+'</span>':
+  '<span class="escaparate-estado caducado">'+escHtml(estado.texto)+'</span>';
+ const esencial='<section class="escaparate-dialogo-seccion escaparate-esencial" aria-labelledby="detalleEsencialTit"><h3 id="detalleEsencialTit">Lo esencial</h3><dl>'+
+  (o.resumen&&vigente?fila('Qué es','<span class="escaparate-dialogo-resumen">'+escHtml(o.resumen)+'</span>'):'')+
+  fila('Quién la vende','<span class="escaparate-esencial-dato">'+escHtml(o.plataformaNombre)+'</span>'+
+   (supervisada&&supervisada.cumple&&supervisada.motivo?'<small class="escaparate-comprobacion-motivo-fuente">'+escHtml(supervisada.motivo)+'</small>':''))+
+  (cifra?fila(cifra.etiqueta,'<b>'+escHtml(cifra.valor)+'</b>'+(referencia?'<small class="escaparate-referencia">'+escHtml(referencia)+'</small>':'')):
+   sinCifra?fila(sinCifra[0],escHtml(sinCifra[1])):'')+
+  fila('Mínimo','<span class="escaparate-esencial-dato">'+escHtml(cortos.minimo)+'</span>')+fila('España',escHtml(cortos.espana))+
+  fila('Salida','<span class="escaparate-esencial-dato">'+escHtml(cortos.salida)+'</span>')+fila('Cifras',revision)+'</dl></section>';
+ const ultima=resumen.fechas.comprobadaEl?'<p class="escaparate-fechas">Última consulta citada: '+escHtml(fechaES(resumen.fechas.comprobadaEl))+
+  (resumen.fechas.fechaDato?' · Fecha de ese dato: '+escHtml(fechaES(resumen.fechas.fechaDato)):'')+'. Cada referencia conserva su fecha propia.</p>':'';
+ const doc=partesDocumentacionOferta(documentacion,{resumen:vigente?o.resumen:'',ultima})||{ficha:'',referencias:'',fuentes:ultima};
  d.innerHTML='<div class="escaparate-dialogo-marco"><header class="escaparate-dialogo-cab">'+
-  '<div><span>'+(o.coleccion==='en_camino'?'En camino':o.coleccion==='secundario'||secundario?'Mercado secundario':'Oferta principal')+'</span><h2 id="escaparateDetalleTitulo">'+escHtml(o.titulo)+'</h2></div>'+
+  '<div><span>'+(o.coleccion==='en_camino'?'Próxima':o.coleccion==='secundario'||secundario?'Reventa entre inversores':'Oferta principal')+'</span><h2 id="escaparateDetalleTitulo">'+escHtml(o.titulo)+'</h2></div>'+
   '<button type="button" data-cerrar-detalle aria-label="Cerrar detalle">×</button></header>'+
-  '<div class="escaparate-dialogo-cuerpo"><div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
-   escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540"><span class="escaparate-editorial" aria-hidden="true">'+escHtml(imagen.etiqueta)+'</span>'+
-   '<span class="escaparate-estado '+estado.clase+'">'+escHtml(estado.texto)+'</span></div>'+
-  '<div class="escaparate-dialogo-identidad"><div><b>'+escHtml(o.plataformaNombre)+'</b><span>'+escHtml(o.categoria)+
-   (o.pais?' · '+escHtml(o.pais):'')+'</span></div><div class="escaparate-dialogo-dato"><b>'+escHtml(claves.destacado.valor)+
-   '</b><span>'+escHtml(claves.destacado.etiqueta)+'</span>'+
-   (referencia?'<p class="escaparate-referencia">'+escHtml(referencia)+'</p>':'')+'</div></div>'+
-  (o.resumen&&estado.clase!=='caducado'?'<p class="escaparate-dialogo-resumen">'+escHtml(o.resumen)+'</p>':'')+
-  '<div class="escaparate-dialogo-contexto"><span>'+escHtml(disponibilidad)+'</span><span>'+escHtml(documentacion?'Referencia documentada · '+fechaES(documentacion.revisadaEl):'Datos revisados · '+fechaES(o.verificadaEl))+'</span></div>'+
-  (resumen.fechas.comprobadaEl?'<p class="escaparate-fechas">Última consulta citada: '+escHtml(fechaES(resumen.fechas.comprobadaEl))+
-   (resumen.fechas.fechaDato?' · Fecha de ese dato: '+escHtml(fechaES(resumen.fechas.fechaDato)):'')+'. Cada referencia conserva su fecha propia.</p>':'')+
+  '<div class="escaparate-dialogo-cuerpo">'+esencial+
+  (avisos.length?'<section class="escaparate-dialogo-seccion" aria-labelledby="detalleAvisosTit"><h3 id="detalleAvisosTit">Avisos de esta oferta</h3><ul class="escaparate-dialogo-avisos">'+
+   avisos.map(x=>'<li>'+escHtml(x)+'</li>').join('')+'</ul></section>':'')+
+  '<div class="escaparate-dialogo-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+
+   escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' width="960" height="540" decoding="async"></div><p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>'+
+  '<section class="escaparate-dialogo-seccion escaparate-antes-fuente"><h3>Antes de invertir</h3><ul><li>Puedes perder parte o todo lo que inviertas.</li><li>La salida depende del contrato y puede requerir compradores.</li><li>Comprueba quién custodia el activo y quién responde.</li><li>El registro de una empresa no cubre todos sus productos.</li></ul></section>'+
+  /* Un div, no un footer: la regla global de footer lo ocultaba en el móvil. */
+  '<div class="escaparate-dialogo-pie"><p>No es una recomendación de inversión. RWAdar no vende ni recibe tu dinero: confirma las condiciones con el proveedor.</p><div>'+enlaces+'</div></div>'+
   enlaceFichaPublicaHtml(rutaFichaPublica('ofertas',o.slug))+
-  '<section class="escaparate-dialogo-seccion" aria-labelledby="detalleAccesoTit"><h3 id="detalleAccesoTit">Quién puede acceder y cómo salir</h3>'+datosClaveOfertaHtml(resumen,true)+'</section>'+
-  documentacionOfertaHtml(documentacion)+
+  transparenciaDetalleHtml(o,resumen)+
+  '<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Acceso, salida y costes, con su fuente</summary>'+datosClaveOfertaHtml(resumen,true,metricas)+'</details>'+
+  doc.ficha+doc.referencias+
   (metricas.length?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Datos publicados <span>'+metricas.length+'</span></summary><div class="escaparate-dialogo-metricas">'+
    metricas.map(x=>'<div><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div></details>':'')+
-  (avisos.length?'<section class="escaparate-dialogo-seccion"><h3>Qué conviene revisar</h3><ul class="escaparate-dialogo-avisos">'+
-   avisos.map(x=>'<li>'+escHtml(x)+'</li>').join('')+'</ul></section>':'')+
-  '<section class="escaparate-dialogo-seccion escaparate-antes-fuente"><h3>Antes de ir a la fuente</h3><ul><li>Puedes perder parte o todo el capital.</li><li>La salida depende del contrato y puede requerir compradores.</li><li>Comprueba quién custodia el activo y quién responde.</li><li>El registro de una empresa no cubre todos sus productos.</li></ul></section>'+
-  '<footer class="escaparate-dialogo-pie"><p>Información editorial. Confirma admisión, costes, salida y riesgos con el emisor antes de contratar. RWAdar no recibe ni custodia tu inversión.</p><div>'+enlaces+'</div></footer>'+
+  doc.fuentes+
   '</div></div>';
- if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');}
+ if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');
+  if(typeof history!=='undefined'&&typeof history.pushState==='function'&&typeof location!=='undefined'){
+   const previo=history.state&&typeof history.state==='object'?history.state:{};
+   history.pushState({...previo,rwadarOferta:o.slug},'',location.href);d.rwadarHistorial=true;}}
  document.body.classList.add('detalle-local-abierto');
  d.scrollTop=0;
  const cuerpo=d.querySelector('.escaparate-dialogo-cuerpo');if(cuerpo)cuerpo.scrollTop=desplazamiento;
@@ -2654,12 +3136,12 @@ const ESTADOS_VERIFICACION_LOCAL={
  acceso:new Set(['confirmado_condicionado','no_aplica_plataforma','no_verificable'])
 };
 const ETIQUETAS_VERIFICACION_LOCAL={
- observada:'Observada',no_verificable:'No verificable',
+ observada:'Activa al revisarla',no_verificable:'No verificable',
  confirmada_regulador:'Registro confirmado',
- confirmada_documento_producto:'Documento de producto',
+ confirmada_documento_producto:'Consta en el documento del producto',
  no_aplica_plataforma:'No aplica a la plataforma',
  sin_registro_declarado:'Sin registro declarado',
- confirmado_condicionado:'Acceso condicionado'
+ confirmado_condicionado:'Con requisitos'
 };
 function etiquetaVerificacionLocal(estado){
  return ETIQUETAS_VERIFICACION_LOCAL[estado]||'No verificado';
@@ -3805,7 +4287,7 @@ const Cuenta = (function(){
   const pausado=modo==='registro_pausado'||modo==='recuperar_pausado';
   const registro=modo==='confirmacion_pendiente';
   const e=$('cuentaEstado');
-  $('cuentaEstadoMarca').textContent=pausado?'CUENTAS EN PAUSA':'SOLICITUD RECIBIDA';
+  $('cuentaEstadoMarca').textContent=pausado?'Cuentas en pausa':'Solicitud recibida';
   if(pausado){
    $('cuentaEstadoTexto').textContent='La confirmación obligatoria está activa, pero RWAdar todavía no tiene un servicio de correo propio probado. Para no dejar cuentas bloqueadas, no recogemos nuevas altas ni solicitudes de recuperación por ahora.';
    $('cuentaEstadoCorreo').hidden=true;$('cuentaEstadoCorreo').textContent='';
@@ -4087,7 +4569,7 @@ const Cuenta = (function(){
      : '<p class="perfil-nota perfil-ayuda">Solo lo ves tú. Las opiniones llegarán próximamente.</p>')+ 
    (MANUAL_BIENVENIDA
      ? '<div class="perfil-sec">Manual de uso</div>'+
-       '<p class="perfil-nota">Cómo verificamos, cómo leer una ficha, los filtros, el comparador y por qué conviene mirar «Fuera del radar» primero.</p>'+
+       '<p class="perfil-nota">Cómo verificamos, cómo leer una ficha, los filtros, el comparador y por qué conviene mirar «Descartadas» primero.</p>'+
        '<a class="perfil-manual" id="pfManual" href="'+esc(MANUAL_BIENVENIDA)+'" target="_blank" rel="noopener">Descargar el manual (PDF, 10 páginas)</a>'
      : '')+
    '<div class="perfil-sec">Lo que vigilas</div>'+
@@ -4471,7 +4953,7 @@ const Comunidad=(function(){
   const caja=$('comunidad'),proxima=$('comunidadProximamente');
   if(!caja)return;
   caja.hidden=false;if(proxima)proxima.hidden=true;
-  const seccionComunidad=$('inicioComunidad');if(seccionComunidad)seccionComunidad.hidden=false;
+  const seccionComunidad=$('perfilComunidad');if(seccionComunidad)seccionComunidad.hidden=false;
   $('comunidadForm').addEventListener('submit',publicar);
   $('comunidadTexto').addEventListener('input',e=>{$('comunidadCuenta').textContent=String(e.target.value.length);});
   $('comunidadLista').addEventListener('click',async e=>{
@@ -4502,8 +4984,9 @@ const Comunidad=(function(){
 /* =================================================================
    SHELL MÓVIL / PWA
    -----------------------------------------------------------------
-   Cuatro pestañas comunes a iPhone y Android (Inicio, Buscar, Academy y
-   Perfil), sin convertir la web de escritorio en otra cosa. La composición móvil cambia de jerarquía,
+   Cinco botones comunes a iPhone y Android (Inicio, Ofertas, Plataformas,
+   Academy y Perfil; Ofertas y Plataformas son las dos vistas de Buscar),
+   sin convertir la web de escritorio en otra cosa. La composición móvil cambia de jerarquía,
    pero comparte el mismo DOM y estado: no duplica datos, filtros, 3D ni
    lógica de cuenta.
    ================================================================= */
@@ -4534,8 +5017,7 @@ const Movil = (function(){
  const detalles=new Map([
   ['presentacion',portadaTexto],['metodo',metodo],['fuera',fuera]
  ].filter(([,nodo])=>Boolean(nodo)));
- const selectorBuscar=document.getElementById('movilBuscarSelector');
- const ordenMovil=[selectorBuscar,emisiones,herramienta,barra,radarIntro,radarPortada,marcador,resultados,transparencia,academia,portadaTexto,portada].filter(Boolean);
+ const ordenMovil=[emisiones,herramienta,barra,radarIntro,radarPortada,marcador,resultados,transparencia,academia,portadaTexto,portada].filter(Boolean);
  const ordenEscritorio=[portada,emisiones,herramienta,barra,resultados,metodo,fuera,academia].filter(Boolean);
  const movibles=[...ordenMovil,explicador,leccionesAcademy].filter(Boolean);
  const anclas=new Map();
@@ -4549,14 +5031,17 @@ const Movil = (function(){
  const cabSub=document.getElementById('movilCabeceraSub');
  const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
  const textos={
-  inicio:['RWADAR','Inicio','Noticias, novedades y por dónde empezar'],
-  buscar:['EXPLORAR RWADAR','Buscar','Ofertas y '+total+' plataformas contrastadas'],
-  academy:['APRENDE A TU RITMO','Academy','Lecciones por niveles, con test y revisión legal'],
-  cuenta:['TU ESPACIO','Perfil','Lo que guardas, avisos y privacidad']
+  inicio:['RWAdar','Inicio','Novedades y por dónde empezar'],
+  buscar:['Explorar RWAdar','Ofertas','Cada una con su fuente y su fecha'],
+  plataformas:['Explorar RWAdar','Plataformas',total+' plataformas revisadas'],
+  academy:['Lecciones gratuitas','Academy','Lecciones por niveles, con test y revisión legal'],
+  cuenta:['Tu cuenta','Perfil','Lo que guardas, avisos y privacidad']
  };
  /* La app abre en Inicio. Un enlace con ancla (#emisiones, #fuera…) va a
-    Buscar, que es donde está ese contenido. */
- const destinoInicial=typeof location!=='undefined'&&location.hash&&location.hash.length>1?'buscar':'inicio';
+    Buscar, que es donde está ese contenido; si el ancla es de Inicio
+    (#fuentes-cap3), se queda en Inicio. */
+ const anclaEnInicio=()=>{try{const n=document.getElementById(decodeURIComponent(location.hash.slice(1)));return !!(n&&n.closest&&n.closest('#movilPanelInicio'))}catch(e){return false}};
+ const destinoInicial=typeof location!=='undefined'&&location.hash&&location.hash.length>1?(anclaEnInicio()?'inicio':'buscar'):'inicio';
  let activa=destinoInicial,academyAbierta=false,academyOrigen=null,academyHistorial=false,avisosHistorial=false;
  let detalleAbierto=null,detalleOrigen=null,detalleHistorial=false;
  let modoMovilPrevio=media.matches;
@@ -4590,7 +5075,7 @@ const Movil = (function(){
   requestAnimationFrame(()=>requestAnimationFrame(()=>window.dispatchEvent(new Event('resize'))));
  }
  function cabecera(id){
-  const t=textos[id]||textos.buscar;
+  const t=id==='buscar'&&document.body.dataset.movilBuscar==='plataformas'?textos.plataformas:textos[id]||textos.buscar;
   if(cabEtiqueta)cabEtiqueta.textContent=t[0];
   if(cabTitulo)cabTitulo.textContent=t[1];
   if(cabSub)cabSub.textContent=t[2];
@@ -4630,7 +5115,7 @@ const Movil = (function(){
   }
  }
  function cabeceraAcademy(){
-  if(cabEtiqueta)cabEtiqueta.textContent='APRENDE A TU RITMO';
+  if(cabEtiqueta)cabEtiqueta.textContent='Lecciones gratuitas';
   if(cabTitulo)cabTitulo.textContent='Academy';
   if(cabSub)cabSub.textContent='Lecciones por niveles, con test y revisión legal';
  }
@@ -4695,9 +5180,9 @@ const Movil = (function(){
   }else mostrarAcademy(true,true,true,origen);
  }
  const textosDetalle={
-  presentacion:['QUÉ INCLUYE EL RADAR','Qué analiza RWAdar','Alcance, límites y lectura del registro'],
-  metodo:['CRITERIOS CONTRASTADOS','Método de selección','Cómo decidimos qué plataformas entran'],
-  fuera:['TRANSPARENCIA','Fuera del radar','Descartes publicados con su motivo y sus fuentes']
+  presentacion:['Qué incluye RWAdar','Qué analiza RWAdar','Qué entra, qué no y cómo leer cada ficha'],
+  metodo:['Cómo elegimos','Método de selección','Cómo decidimos qué plataformas entran'],
+  fuera:['Transparencia','Descartadas','Descartes publicados con su motivo y sus fuentes']
  };
  function cabeceraDetalle(id){
   const t=textosDetalle[id]||textos.buscar;
@@ -4714,8 +5199,11 @@ const Movil = (function(){
   document.querySelectorAll('[data-movil-action="detalle"]').forEach(b=>
    b.setAttribute('aria-expanded','false'));
   cabecera('buscar');
-  window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   const origen=detalleOrigen;detalleOrigen=null;
+  /* Abierto desde Inicio (el caso RealT): Atrás o «Volver» regresan a Inicio,
+     junto al enlace, en vez de dejar al lector en Buscar. */
+  if(enfocar&&origen&&origen.closest&&origen.closest('#movilPanelInicio'))cambiar('inicio',{arriba:false});
+  else window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   const alternativo=document.getElementById('q')||document.getElementById('movilTabRadar');
   if(enfocar)devolverFoco(origen,alternativo);
   return anterior;
@@ -4843,11 +5331,7 @@ const Movil = (function(){
   activa=id;
   document.body.dataset.movilPestana=id;
   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!==id;});
-  tabs.forEach(tab=>{
-   const elegida=tab.dataset.movilTab===id;
-   tab.setAttribute('aria-selected',elegida?'true':'false');
-   tab.tabIndex=elegida?0:-1;
-  });
+  marcarTabs();
   cabecera(id);
   if(id==='cuenta')pintarPerfil();
   if(id==='academy')pintarAcademy();
@@ -4856,12 +5340,24 @@ const Movil = (function(){
   }
   if(id==='buscar')geometria();
  }
+ /* Una sola pestaña marcada: en Buscar, la de su vista (Ofertas o Plataformas). */
+ function marcarTabs(){
+  const vista=document.body.dataset.movilBuscar||'ofertas';
+  tabs.forEach(tab=>{
+   const elegida=tab.dataset.movilTab===activa&&(!tab.dataset.navVista||tab.dataset.navVista===vista);
+   tab.setAttribute('aria-selected',elegida?'true':'false');
+   tab.tabIndex=elegida?0:-1;
+  });
+ }
  function adaptar(){
   const esMovil=media.matches;
   modoMovilPrevio=esMovil;
   ordenarBuscar(esMovil);
   if(document.documentElement&&document.documentElement.classList)
    document.documentElement.classList.toggle('movil-ui',esMovil);
+  /* Las filas de ofertas abren sus grupos solo en el móvil: al cruzar el
+     punto de corte se vuelven a pintar con el estado que toca. */
+  if(gruposPintadosMovil!==null&&gruposPintadosMovil!==esMovil&&typeof pintarEmisiones==='function')pintarEmisiones();
   if(esMovil){cambiar(activa,{arriba:false});Cuenta.actualizarMovil();pintarSonidoMovil();pintarPerfil();pintarAcademy();}
   else{
    mostrarAvisos(false,false);
@@ -4871,21 +5367,20 @@ const Movil = (function(){
    geometria();
   }
  }
- /* Ofertas o plataformas dentro de Buscar (solo en el móvil). */
- const DE_PLATAFORMAS=new Set(['tool','plataformasResultados','movilRadarIntro']);
+ /* Ofertas o Plataformas: las dos vistas de Buscar, cada una con su botón en
+    la barra (solo en el móvil). La vista se guarda en body[data-movil-buscar]. */
+ const DE_PLATAFORMAS=new Set(['tool','plataformasResultados','movilRadarIntro','fuera']);
  function verEnBuscar(que){
   document.body.dataset.movilBuscar=que;
-  if(selectorBuscar)selectorBuscar.querySelectorAll('[data-movil-buscar]').forEach(b=>{
-   const on=b.dataset.movilBuscar===que;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;
-  });
+  const panelBuscar=document.getElementById('movilPanelRadar');
+  if(panelBuscar&&typeof panelBuscar.setAttribute==='function')panelBuscar.setAttribute('aria-labelledby',que==='plataformas'?'movilTabPlataformas':'movilTabRadar');
+  marcarTabs();
+  if(activa==='buscar'&&!detalleAbierto&&!academyAbierta)cabecera('buscar');
  }
- if(selectorBuscar)selectorBuscar.addEventListener('click',e=>{
-  const b=e.target.closest&&e.target.closest('[data-movil-buscar]');
-  if(!b)return;
-  verEnBuscar(b.dataset.movilBuscar);
-  window.scrollTo({top:0,behavior:'auto'});
-  geometria();
- });
+ function elegirTab(tab){
+  if(tab.dataset.navVista)verEnBuscar(tab.dataset.navVista);
+  cambiar(tab.dataset.movilTab);
+ }
  verEnBuscar(typeof location!=='undefined'&&DE_PLATAFORMAS.has((location.hash||'').slice(1))?'plataformas':'ofertas');
  function ir(destino,origen=null){
   if(destino==='explain'){abrirAcademyDesde(origen);return;}
@@ -4898,13 +5393,21 @@ const Movil = (function(){
   }
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
    const objetivo=destino==='top'?document.getElementById('top'):document.getElementById(destino);
-   if(objetivo)objetivo.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
+   if(objetivo){objetivo.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
+    /* Si el foco se quedó en el panel que se acaba de ocultar, pasa al destino:
+       su pestaña activa o su primer título visible. */
+    const activo=document.activeElement;
+    if(!activo||activo===document.body||activo.closest&&activo.closest('[hidden]')){
+     const foco=[...objetivo.querySelectorAll('[role="tab"][aria-selected="true"],h2,h3')].find(e=>e.offsetWidth>1&&e.getClientRects().length)||objetivo;
+     if(!/^(?:A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(foco.tagName)&&!foco.hasAttribute('tabindex'))foco.setAttribute('tabindex','-1');
+     foco.focus({preventScroll:true});
+    }}
    geometria();
   }));
  }
 
  tabs.forEach((tab,indice)=>{
-  tab.addEventListener('click',()=>cambiar(tab.dataset.movilTab));
+  tab.addEventListener('click',()=>elegirTab(tab));
   tab.addEventListener('keydown',e=>{
    let siguiente=null;
    if(e.key==='ArrowRight')siguiente=(indice+1)%tabs.length;
@@ -4912,7 +5415,7 @@ const Movil = (function(){
    if(e.key==='Home')siguiente=0;
    if(e.key==='End')siguiente=tabs.length-1;
    if(siguiente==null)return;
-   e.preventDefault();cambiar(tabs[siguiente].dataset.movilTab);
+   e.preventDefault();elegirTab(tabs[siguiente]);
    tabs[siguiente].focus({preventScroll:true});
   });
  });
@@ -5032,11 +5535,15 @@ const Movil = (function(){
      breakpoint mientras la página estaba aparcada. */
   if(!e.persisted||media.matches!==modoMovilPrevio)adaptar();
   if(media.matches){reconciliarEstadoSubvista(false);if(activa==='buscar')geometria();}
+  /* /#fuera y /#metodo abren su detalle, como un toque en su enlace. Va tras
+     adaptar(), que si no lo cerraría al cargar. */
+  if(detalleDeAncla&&media.matches){const d=detalleDeAncla;detalleDeAncla='';ir(d);}
  });
+ let detalleDeAncla=typeof location!=='undefined'&&detalles.has((location.hash||'').slice(1))?location.hash.slice(1):'';
  adaptar();
  if(typeof location!=='undefined'&&location.hash==='#explain')abrirAcademyDesde(document.getElementById('movilTabAcademy'));
  window.addEventListener('hashchange',()=>{if(location.hash==='#explain')abrirAcademyDesde(document.activeElement);});
- return {cambiar:cambiar,
+ return {cambiar:cambiar,ir:ir,verEnBuscar:verEnBuscar,
   tutorial(origen){if(!media.matches)return false;abrirAcademyDesde(origen);return true;},
   volverAcademy(){if(!media.matches)return false;mostrarAcademy(false);return true;}
  };

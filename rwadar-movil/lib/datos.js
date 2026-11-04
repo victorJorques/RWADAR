@@ -225,6 +225,12 @@ export function proveedoresDeOfertas(ofertas) {
   return [...porSlug.values()].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
 }
 
+/* Hasta cuándo valen las cifras, en días enteros, como la web
+   (estadoVigenciaLocal, LISTA-FINAL fila 14, 04/11/2026). */
+function etiquetaValidez(dias) {
+  return dias === 0 ? 'Cifras válidas hasta hoy' : `Cifras válidas ${dias} ${dias === 1 ? 'día' : 'días'} más`;
+}
+
 export function vigenciaOferta(oferta, ahora = new Date()) {
   if (oferta?.coleccion === 'secundario' || oferta?.coleccion === 'en_camino') {
     return { estado: 'documental', etiqueta: oferta.coleccion === 'en_camino'
@@ -259,12 +265,12 @@ export function vigenciaOferta(oferta, ahora = new Date()) {
     if (dias <= 7) {
       return {
         estado: 'permanente-proxima',
-        etiqueta: dias === 0 ? 'Cifras vigentes hasta hoy' : `Cifras vigentes ${dias} d`,
+        etiqueta: etiquetaValidez(dias),
         venceEl, dias,
       };
     }
     return {
-      estado: 'permanente-vigente', etiqueta: `Cifras vigentes ${dias} d`,
+      estado: 'permanente-vigente', etiqueta: etiquetaValidez(dias),
       venceEl, dias,
     };
   }
@@ -274,11 +280,11 @@ export function vigenciaOferta(oferta, ahora = new Date()) {
   if (dias <= 7) {
     return {
       estado: 'proxima',
-      etiqueta: dias === 0 ? 'Cifras vigentes hasta hoy' : `Cifras vigentes ${dias} d`,
+      etiqueta: etiquetaValidez(dias),
       venceEl, dias,
     };
   }
-  return { estado: 'vigente', etiqueta: `Cifras vigentes ${dias} d`, venceEl, dias };
+  return { estado: 'vigente', etiqueta: etiquetaValidez(dias), venceEl, dias };
 }
 
 export function textoBusquedaOferta(oferta) {

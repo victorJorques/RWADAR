@@ -231,7 +231,7 @@ La tecnología no crea una vía de negociación legalmente válida —eso lo det
 >
 > En el radar de RWAdar puedes filtrar por **nivel de acceso** —minorista, acreditado, institucional, empresas— y por región y tipo de activo, para ver a qué inversores llega realmente cada plataforma. Ese dato es el que más se aproxima a la profundidad potencial de su mercado.
 >
-> Consulta también **Fuera del radar**: uno de los cuatro criterios que documentamos en cada ficha es **riesgos y alertas**, y publicamos con motivo y fuente las plataformas que hemos descartado.
+> Consulta también **Descartadas**: uno de los cuatro criterios que documentamos en cada ficha es **riesgos y alertas**, y publicamos con motivo y fuente las plataformas que hemos descartado.
 >
 > **[Abrir el radar y filtrar por nivel de acceso →]**
 >

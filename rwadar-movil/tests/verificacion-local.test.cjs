@@ -1,3 +1,4 @@
+// Rótulos en frase normal, sin mayúsculas (GUIA-ACABADOS §5, aplicada a la web el 04/11/2026).
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -73,8 +74,9 @@ test('las fichas móviles priorizan la verificación local sobre claims canónic
   assert.match(detalle, /<PanelVerificacionLocal verificacion=\{verificacion\} \/>/);
   assert.match(detalle, /\['Quién puede entrar', p\.acceso\]/);
   assert.match(detalle, /const filasFicha = verificacion[\s\S]*?\? \[\['Tipo de actor',[\s\S]*?: \[\['Tipo de actor'/);
-  assert.match(app, /REVISIÓN DE FUENTES · \{verificacion\.verificadoEl\}/);
-  assert.match(app, /ALERTA CRÍTICA/);
+  // La fecha, en dd/mm/aaaa como en toda la app (04/11/2026).
+  assert.match(app, /Revisión de fuentes · <Text noTraducir>\{fecha\}<\/Text>/);
+  assert.match(app, /Alerta crítica/);
   assert.match(app, /fuentes\.map\(fuente =>/);
   assert.match(app, /abrirEnlace\(fuente\.url\)/);
 });

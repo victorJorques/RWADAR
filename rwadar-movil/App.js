@@ -48,6 +48,8 @@ import {
   DetalleOferta, ExclusionesOfertas, FichaOferta, FichaGrupoOfertas,
   agruparOfertasLectura, ordenarOfertasLectura,
 } from './componentes/Ofertas';
+import { resumenOferta } from './lib/ficha-editorial';
+import { enSeleccionOferta } from './lib/transparencia';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
 const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
@@ -95,7 +97,10 @@ export default function App() {
     Geist_700Bold, Geist_800ExtraBold, GeistMono_500Medium,
   });
 
-  /* Cuatro pestañas: inicio · buscar (empresas u ofertas) · academy · perfil. */
+  /* Cinco botones en la barra (ESPEC-INICIO §4): Inicio · Ofertas ·
+     Plataformas · Academy · Perfil. Ofertas y Plataformas son las dos vistas
+     de la pestaña «buscar» (vistaBuscar 'ofertas' o 'empresas'), así que los
+     destinos de siempre siguen funcionando sin tocarlos. */
   const [pestana, setPestana] = useState('inicio');
   const [vistaBuscar, setVistaBuscar] = useState('ofertas');
   const [guardadas, setGuardadas] = useState([]);
@@ -249,7 +254,7 @@ export default function App() {
       }
       if (catalogo.caducado) {
         const [a, m, d] = String(catalogo.fecha).split('-');
-        mensajes.push(`Revisión pendiente: estos datos se revisaron el ${d}.${m}.${a} y su revisión semanal ha vencido. ` +
+        mensajes.push(`Revisión pendiente: estos datos se revisaron el ${d}/${m}/${a} y su revisión semanal ha vencido. ` +
           'Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor.');
       }
       if (f.error) mensajes.push('No se pudieron actualizar los descartes documentados.');
@@ -407,8 +412,22 @@ export default function App() {
     - (separacionOfertas * (columnasOfertas - 1))) / columnasOfertas;
   const filtrosOfertasActivos = Number(!!tipoOferta) + Number(!!proveedorOferta);
   const hayRestriccionesOfertas = !!(busquedaOfertas || tipoOferta || proveedorOferta);
-  const filasOfertas = useMemo(() => agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas),
-    [ofertasVisibles, hayRestriccionesOfertas]);
+  const catalogoCaducado = fechaCatalogo?.caducado === true;
+  /* En el móvil, como en la web: filas sueltas, sin grupos por proveedor, y
+     arriba la Selección RWAdar (las que pasan las cinco comprobaciones de
+     transparencia; falla cerrado). Con dos o tres columnas siguen los grupos. */
+  const filasOfertas = useMemo(() => {
+    const filas = agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas && columnasOfertas > 1);
+    const conSeleccion = columnasOfertas === 1 && (grupoOfertas === 'principales' || grupoOfertas === 'todo');
+    if (!conSeleccion) return filas;
+    const ahora = new Date();
+    const elegidas = filas.filter((fila) => fila.tipo === 'oferta' &&
+      enSeleccionOferta(fila.oferta, resumenOferta(fila.oferta, [], ahora), { ahora, catalogoCaducado }));
+    if (!elegidas.length) return filas;
+    const resto = filas.filter((fila) => !elegidas.includes(fila));
+    return [{ tipo: 'cabecera', slug: 'cabecera:seleccion', seleccion: true }, ...elegidas,
+      ...(resto.length ? [{ tipo: 'cabecera', slug: 'cabecera:resto' }, ...resto] : [])];
+  }, [ofertasVisibles, hayRestriccionesOfertas, columnasOfertas, grupoOfertas, catalogoCaducado]);
 
   const seleccionarGrupoOfertas = (grupo) => {
     tacto.eleccion();
@@ -517,14 +536,36 @@ export default function App() {
       abrirEnlace(destino.url);
     }
   };
+  /* «fuera» abre Plataformas en «Descartadas» (ESPEC-INICIO §4), que va al
+     pie de la lista, tras las 26 fichas. Se baja en cuanto la lista sabe lo
+     que mide: primero al final (así se pintan las últimas fichas) y luego al
+     principio del pie, que es donde empieza «Descartadas». */
+  const listaPlataformas = useRef(null);
+  const medidasPlataformas = useRef({ alto: 0, pie: 0 });
+  const irADescartadas = useRef(false);
+  const bajarADescartadas = () => {
+    const { alto, pie } = medidasPlataformas.current;
+    if (!irADescartadas.current || !alto || !pie || !listaPlataformas.current) return;
+    irADescartadas.current = false;
+    listaPlataformas.current.scrollToEnd?.({ animated: false });
+    const ajustar = () => {
+      const m = medidasPlataformas.current;
+      listaPlataformas.current?.scrollToOffset?.({
+        offset: Math.max(0, m.alto - (StyleSheet.flatten(e.lista).paddingBottom || 0) - m.pie - 8), animated: false });
+    };
+    setTimeout(ajustar, 60);
+    setTimeout(ajustar, 320);
+  };
   /* Destinos de Inicio (noticias y atajos). */
   const irA = (destino, url) => {
     if (destino === 'academy') abrirAcademy();
     else if (destino === 'web' && url) abrirEnlace(url);
-    else if (destino === 'buscar' || destino === 'ofertas' || destino === 'fuera') {
+    else if (destino === 'buscar' || destino === 'ofertas' || destino === 'fuera' || destino === 'plataformas') {
       tacto.eleccion();
+      irADescartadas.current = destino === 'fuera' && fuera.length > 0;
       setVistaBuscar(destino === 'ofertas' ? 'ofertas' : 'empresas');
       setPestana('buscar');
+      if (irADescartadas.current && pestana === 'buscar' && vistaBuscar === 'empresas') bajarADescartadas();
     }
   };
   const ofertaPorSlug = useMemo(() => new Map(
@@ -543,10 +584,14 @@ export default function App() {
   };
   const filtrar = (c) => { tacto.eleccion(); setCategoria(c); };
   const cambiarPestana = (id) => {
-    if (id === pestana) return;
+    const destino = id === 'ofertas' || id === 'plataformas' ? 'buscar' : id;
+    const vista = id === 'ofertas' ? 'ofertas' : id === 'plataformas' ? 'empresas' : vistaBuscar;
+    if (destino === pestana && vista === vistaBuscar) return;
     tacto.eleccion();
-    setPestana(id);
+    setVistaBuscar(vista);
+    setPestana(destino);
   };
+  const destinoBarra = pestana === 'buscar' ? (vistaBuscar === 'ofertas' ? 'ofertas' : 'plataformas') : pestana;
   // Mejora descargada: reinicia al pulsar. Versión nueva: descarga el APK, que
   // Android instala encima sin desinstalar. Sin nada pendiente: comprueba.
   const actualizarApp = async () => {
@@ -629,7 +674,8 @@ export default function App() {
           />
         ) : null}
 
-        <SelectorIdioma />
+        {/* El idioma sale de la primera pantalla: solo arriba de Perfil (ESPEC §4). */}
+        {pestana === 'perfil' ? <SelectorIdioma /> : null}
 
         {MODO_LOCAL ? <BannerModoLocal /> : null}
 
@@ -654,20 +700,19 @@ export default function App() {
               fuera={fuera}
               cambios={avisos}
               renderCambio={(aviso) => <Aviso aviso={aviso} />}
-            />
-          ) : null}
-
-          {pestana === 'buscar' ? (
-            <SelectorBuscar
-              vista={vistaBuscar}
-              empresas={radar.length}
-              ofertas={todasOfertas.length}
-              onCambiar={(vista) => { tacto.eleccion(); setVistaBuscar(vista); }}
+              plataformas={radar}
+              ofertas={todasOfertas}
+              fechaCatalogo={fechaCatalogo}
+              onAbrirPlataforma={abrir}
+              onAbrirOferta={(oferta) => { tacto.abrir(); setOfertaAbierta(oferta); }}
+              onAbrirEnlace={abrirEnlace}
             />
           ) : null}
 
           {pestana === 'buscar' && vistaBuscar === 'empresas' ? (
             <FlatList
+              ref={listaPlataformas}
+              onContentSizeChange={(_, alto) => { medidasPlataformas.current.alto = alto; bajarADescartadas(); }}
               data={visibles}
               keyExtractor={(p) => p.slug}
               contentContainerStyle={e.lista}
@@ -740,7 +785,7 @@ export default function App() {
                 />
               }
               ListFooterComponent={
-                <View>
+                <View onLayout={(ev) => { medidasPlataformas.current.pie = ev.nativeEvent.layout.height; bajarADescartadas(); }}>
                   <Descartadas fuera={fuera} />
                   <PiePrivacidad onAbrir={() => setPrivacidad(true)} />
                 </View>
@@ -772,20 +817,6 @@ export default function App() {
                       : <SegmentoOferta texto={`Próximas ${enCamino.length}`} activo={grupoOfertas === 'en_camino'}
                         onPress={() => seleccionarGrupoOfertas('en_camino')} />}
                   </View>
-                  {/* Un solo aviso para todo el grupo, en vez de repetirlo en cada tarjeta. */}
-                  <Text style={e.resultadoCompacto}>{grupoOfertas === 'secundario'
-                    ? 'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
-                    : grupoOfertas === 'en_camino'
-                      ? 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'
-                      : 'Referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.'}</Text>
-                  <Pressable onPress={() => setCriteriosOfertasAbiertos(actual => !actual)}
-                    style={({ pressed }) => [e.criteriosOrden, pressed && e.pulsadoSuave]}
-                    accessibilityRole="button" accessibilityLabel="¿Cómo ordenamos?"
-                    accessibilityState={{ expanded: criteriosOfertasAbiertos }}>
-                    <Text style={e.botonBordeTxt}>¿Cómo ordenamos?</Text>
-                    <Text style={e.botonBordeTxt} accessible={false}>{criteriosOfertasAbiertos ? '−' : '+'}</Text>
-                  </Pressable>
-                  {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>Primero las referencias con cifras comprobables; después, las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades. Agrupamos las repetidas por proveedor; al buscar se muestran las fichas individuales.</Text> : null}
                   {grupoProveedorAbierto ? (
                     <View>
                       <Text style={e.resultadoCompacto}>Referencias de {proveedoresOferta.find(p => p.slug === grupoProveedorAbierto)?.nombre || 'este proveedor'}. La búsqueda se aplica a este grupo.</Text>
@@ -801,12 +832,12 @@ export default function App() {
                       <Icono nombre="buscar" color={C.tx2} tamano={23} />
                       <TextInput
                         style={e.buscador}
-                        placeholder="Oferta, proveedor, país o métrica"
+                        placeholder="Ej.: Spiko, Suiza…"
                         placeholderTextColor={C.tx3}
                         value={busquedaOfertas}
                         onChangeText={setBusquedaOfertas}
                         returnKeyType="search"
-                        accessibilityLabel="Buscar ofertas por nombre, proveedor, país o métrica"
+                        accessibilityLabel="Buscar por oferta, empresa, país o activo"
                       />
                       {hayRestriccionesOfertas ? (
                         <Pressable
@@ -821,9 +852,12 @@ export default function App() {
                       ) : null}
                     </View>
                     <View style={e.barraFiltrosOfertas}>
-                      <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
-                        {ofertasVisibles.length} de {ofertasDelGrupo.length} {ofertasDelGrupo.length === 1 ? 'ficha' : 'fichas'} · {todasOfertas.length} en el catálogo
-                      </Text>
+                      <Pressable onPress={() => setCriteriosOfertasAbiertos(actual => !actual)}
+                        style={({ pressed }) => [e.criteriosOrden, pressed && e.b3Pulsado]}
+                        accessibilityRole="button" accessibilityLabel="¿Cómo ordenamos?"
+                        accessibilityState={{ expanded: criteriosOfertasAbiertos }}>
+                        <Text style={e.b3Txt}>¿Cómo ordenamos? {criteriosOfertasAbiertos ? '−' : '+'}</Text>
+                      </Pressable>
                       <Pressable
                         onPress={() => setFiltrosOfertasAbiertos((abiertos) => !abiertos)}
                         style={({ pressed }) => [e.botonFiltrosOfertas, filtrosOfertasAbiertos && e.botonFiltrosOfertasOn,
@@ -837,12 +871,25 @@ export default function App() {
                         </Text>
                       </Pressable>
                     </View>
+                    {/* La frase de la Selección, solo cuando la lista la lleva arriba. */}
+                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>{filasOfertas[0]?.seleccion
+                      ? 'Arriba, la Selección RWAdar: las que pasan las 5 comprobaciones de transparencia. Después, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'
+                      : 'Primero, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'}</Text> : null}
+                    <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
+                      {ofertasVisibles.length} de {ofertasDelGrupo.length} {ofertasDelGrupo.length === 1 ? 'ficha' : 'fichas'} · {todasOfertas.length} en el catálogo
+                    </Text>
+                    {/* Un solo aviso para todo el grupo, en vez de repetirlo en cada tarjeta. */}
+                    <Text style={e.resultadoCompacto}>{grupoOfertas === 'secundario'
+                      ? 'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
+                      : grupoOfertas === 'en_camino'
+                        ? 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'
+                        : 'RWAdar no recibe dinero de las inversiones.'}</Text>
                   </View>
                   {filtrosOfertasAbiertos ? (
                     <View style={e.filtrosOfertasDesplegados}>
                       {grupoOfertas === 'principales' || (MODO_LOCAL && grupoOfertas === 'todo') ? (
                         <View>
-                          <Text style={e.filtroGrupoEtiqueta}>TIPO DE OFERTA PRINCIPAL</Text>
+                          <Text style={e.filtroGrupoEtiqueta}>Tipo de oferta principal</Text>
                           <ScrollView horizontal showsHorizontalScrollIndicator={false}
                             style={e.chipsOfertas} contentContainerStyle={e.chipsContenidoCompacto}>
                             <Chip texto="Cualquier tipo" activo={!tipoOferta}
@@ -856,7 +903,7 @@ export default function App() {
                           </ScrollView>
                         </View>
                       ) : null}
-                      <Text style={e.filtroGrupoEtiqueta}>PROVEEDOR</Text>
+                      <Text style={e.filtroGrupoEtiqueta}>Proveedor</Text>
                       <ScrollView horizontal showsHorizontalScrollIndicator={false}
                         style={e.chipsOfertas} contentContainerStyle={e.chipsContenidoCompacto}>
                         <Chip texto="Todos" activo={!proveedorOferta}
@@ -876,11 +923,19 @@ export default function App() {
               }
               renderItem={({ item }) => (
                 <View style={{ width: columnasOfertas > 1 ? anchoCeldaOferta : '100%' }}>
-                  {item.tipo === 'grupo'
+                  {item.tipo === 'cabecera' ? (
+                    <View style={e.bloqueOfertasCab} accessibilityRole="header">
+                      {item.seleccion ? <>
+                        <Text style={e.bloqueOfertasTit}><Text style={e.bloqueOfertasMarca}>Selección RWAdar</Text> · pasan nuestras 5 comprobaciones</Text>
+                        <Text style={e.bloqueOfertasSub}>No es una recomendación de inversión.</Text>
+                      </> : <Text style={e.bloqueOfertasTit}>Otras ofertas principales</Text>}
+                    </View>
+                  ) : item.tipo === 'grupo'
                     ? <FichaGrupoOfertas grupo={item} onAbrir={() => {
                       tacto.abrir(); setProveedorOferta(item.proveedorSlug); setGrupoProveedorAbierto(item.proveedorSlug);
                     }} />
                     : <FichaOferta oferta={item.oferta} plataforma={radar.find(p => p.slug === item.oferta.plataformaSlug)}
+                      catalogoCaducado={catalogoCaducado}
                       onAbrir={() => { tacto.abrir(); setOfertaAbierta(item.oferta); }} />}
                 </View>
               )}
@@ -892,7 +947,10 @@ export default function App() {
                   onLimpiar={() => { setBusquedaOfertas(''); setTipoOferta(''); setProveedorOferta(''); setGrupoProveedorAbierto(''); }}
                 />
               }
-              ListFooterComponent={<ExclusionesOfertas datos={exclusionesOfertas} onAbrirEnlace={abrirEnlace} />}
+              ListFooterComponent={<View>
+                {filasOfertas.length ? <Text style={e.notaImagenes}>Imágenes ilustrativas, no fotos del activo</Text> : null}
+                <ExclusionesOfertas datos={exclusionesOfertas} onAbrirEnlace={abrirEnlace} />
+              </View>}
             />
           ) : null}
 
@@ -945,7 +1003,7 @@ export default function App() {
         </View>
 
         <Navegacion
-          activa={pestana}
+          activa={destinoBarra}
           guardados={sigo.length + guardadas.length}
           novedades={avisos.length}
           onCambiar={cambiarPestana}
@@ -958,6 +1016,7 @@ export default function App() {
 
         <DetalleOferta
           oferta={ofertaAbierta}
+          catalogoCaducado={fechaCatalogo?.caducado === true}
           onCerrar={() => { tacto.eleccion(); setOfertaAbierta(null); }}
           onAbrirEnlace={abrirEnlace}
           plataformaCanonica={!!ofertaAbierta && radar.some((p) => p.slug === ofertaAbierta.plataformaSlug)}
@@ -986,28 +1045,24 @@ export default function App() {
   );
 }
 
+/* Cabecera opaca de una sola línea, como la web (GUIA-ACABADOS §6 y ESPEC
+   §4): la marca, el título de la pestaña y la ayuda. Debajo, solo si dice
+   algo, una línea con el recuento. */
 function Cabecera({ pestana, vistaBuscar, total, ofertas, secundario, enCamino, guardados, sinConexion, onAyuda }) {
   const textos = {
-    inicio: {
-      etiqueta: 'RWADAR',
-      titulo: 'Inicio',
-      subtitulo: 'Noticias, novedades y por dónde empezar',
-    },
+    inicio: { titulo: 'Inicio', subtitulo: '' },
+    // Ofertas y Plataformas ya enseñan sus recuentos en el segmentado y los
+    // chips; la cabecera solo avisa si es una copia sin conexión o local.
     radar: {
-      etiqueta: 'RADAR DE ACTIVOS REALES',
-      titulo: 'Explora lo verificado',
-      subtitulo: MODO_LOCAL
-        ? `${total} plataformas · fixture local`
-        : `${total} plataformas${sinConexion ? ' · copia sin conexión' : ' · revisión editorial'}`,
+      titulo: 'Plataformas',
+      subtitulo: MODO_LOCAL ? `${total} plataformas · fixture local` : sinConexion ? 'Copia sin conexión' : '',
     },
     ofertas: {
-      etiqueta: MODO_LOCAL ? 'ESCAPARATE LOCAL' : 'ESCAPARATE DE ACTIVOS',
-      titulo: 'Ofertas específicas',
+      titulo: 'Ofertas',
       subtitulo: MODO_LOCAL ? `${ofertas} principales · ${secundario} referencias secundarias`
-        : `${ofertas} principales · ${secundario} secundarias · ${enCamino} en camino`,
+        : sinConexion ? 'Copia sin conexión' : '',
     },
     perfil: {
-      etiqueta: 'TU ESPACIO',
       titulo: 'Perfil',
       subtitulo: guardados ? `${guardados} ${guardados === 1 ? 'guardado' : 'guardados'} en este dispositivo` : 'Lo que guardas, avisos y privacidad',
     },
@@ -1018,23 +1073,22 @@ function Cabecera({ pestana, vistaBuscar, total, ofertas, secundario, enCamino, 
   return (
     <View style={e.cabecera}>
       <View style={e.cabeceraSuperior}>
-        <View style={e.marcaFila} accessibilityRole="header">
-          <Marca tamano={27} />
+        <View style={e.marcaFila}>
+          <Marca tamano={26} />
           <Text style={e.marca}>RWA<Text style={{ color: C.senal }}>dar</Text></Text>
         </View>
+        <Text style={e.cabeceraTitulo} accessibilityRole="header" numberOfLines={1}>{actual.titulo}</Text>
         <Pressable
           onPress={onAyuda}
-          style={({ pressed }) => [e.accionCabecera, pressed && e.pulsado]}
+          style={({ pressed }) => [e.accionCabecera, pressed && e.accionCabeceraPulsada]}
           accessibilityRole="button"
           accessibilityLabel="Abrir explicación animada sobre RWAdar"
-          hitSlop={7}
+          hitSlop={4}
         >
-          <Icono nombre="ayuda" color={C.tx} tamano={23} />
+          <Icono nombre="ayuda" color={C.tx} tamano={20} />
         </Pressable>
       </View>
-      <Text style={e.cabeceraEtiqueta}>{actual.etiqueta}</Text>
-      <Text style={e.cabeceraTitulo} accessibilityRole="header">{actual.titulo}</Text>
-      <Text style={e.cabeceraSub}>{actual.subtitulo}</Text>
+      {actual.subtitulo ? <Text style={e.cabeceraSub}>{actual.subtitulo}</Text> : null}
     </View>
   );
 }
@@ -1140,7 +1194,7 @@ function PantallaPerfil({
       <View style={e.resumenDispositivo}>
         <View style={e.resumenMarca}><Marca tamano={48} /></View>
         <View style={{ flex: 1 }}>
-          <Text style={e.resumenEtiqueta}>TU PERFIL</Text>
+          <Text style={e.resumenEtiqueta}>Tu perfil</Text>
           <Text style={e.resumenTitulo}>Sin cuenta, por ahora</Text>
           <Text style={e.resumenTexto}>
             {MODO_LOCAL
@@ -1152,7 +1206,7 @@ function PantallaPerfil({
         </View>
         <View style={e.resumenNumero}>
           <Text style={e.resumenNumeroValor}>{total}</Text>
-          <Text style={e.resumenNumeroEtiqueta}>GUARDADOS</Text>
+          <Text style={e.resumenNumeroEtiqueta}>Guardados</Text>
         </View>
       </View>
       )}
@@ -1195,7 +1249,7 @@ function PantallaPerfil({
           <View style={e.avisoProximo}>
             <View style={e.avisoProximoIcono}><Icono nombre="avisos" color={C.senal} tamano={22} /></View>
             <View style={{ flex: 1 }}>
-              <Text style={e.resumenEtiqueta}>PRÓXIMAMENTE</Text>
+              <Text style={e.resumenEtiqueta}>Próximamente</Text>
               <Text style={e.avisoProximoTit}>Avisos de cambios</Text>
               <Text style={e.resumenTexto}>Los avisos llegarán próximamente a la app con las nuevas actualizaciones.</Text>
             </View>
@@ -1323,19 +1377,8 @@ function Chip({ texto, color, activo, onPress }) {
   );
 }
 
-/* Buscar: primero las ofertas documentadas, como en la web; después las
-   plataformas del radar (internamente, «empresas»). */
-function SelectorBuscar({ vista, empresas, ofertas, onCambiar }) {
-  return (
-    <View style={[e.selectorOfertas, e.selectorBuscar]} accessibilityRole="tablist"
-      accessibilityLabel="Buscar ofertas o plataformas">
-      <SegmentoOferta texto={`Ofertas ${ofertas}`} activo={vista === 'ofertas'} onPress={() => onCambiar('ofertas')} />
-      <SegmentoOferta texto={`Plataformas ${empresas}`} activo={vista === 'empresas'} onPress={() => onCambiar('empresas')} />
-    </View>
-  );
-}
-
 function SegmentoOferta({ texto, activo, onPress }) {
+  const [, nombreSegmento, cuentaSegmento] = String(texto).match(/^(.*?)(?: (\d+))?$/);
   return (
     <Pressable
       onPress={onPress}
@@ -1344,7 +1387,10 @@ function SegmentoOferta({ texto, activo, onPress }) {
       accessibilityState={{ selected: activo }}
       accessibilityLabel={`Mostrar ${texto.toLocaleLowerCase('es')}`}
     >
-      <Text style={[e.segmentoOfertaTxt, activo && e.segmentoOfertaTxtOn]} numberOfLines={2}>{texto}</Text>
+      {/* El nombre y la cifra por separado, para que el nombre se traduzca. */}
+      <Text style={[e.segmentoOfertaTxt, activo && e.segmentoOfertaTxtOn]} numberOfLines={2}>
+        {nombreSegmento}{cuentaSegmento ? <Text noTraducir>{` ${cuentaSegmento}`}</Text> : null}
+      </Text>
     </Pressable>
   );
 }
@@ -1376,7 +1422,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       accessible={compacta}
       accessibilityLabel={compacta ? etiquetaAccesible : undefined}
     >
-      <Text style={e.verLocalFecha}>REVISIÓN DE FUENTES · {verificacion.verificadoEl}</Text>
+      <Text style={e.verLocalFecha}>Revisión de fuentes · <Text noTraducir>{fecha}</Text></Text>
       <View style={e.verLocalCampos}>
         {campos.map(([nombre, campo]) => {
           const atencion = campo.estado === 'no_verificable' ||
@@ -1395,7 +1441,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       <View style={e.verLocalAlertas}>
         {(verificacion.alertasCriticas || []).map((alerta) => (
           <View key={alerta.codigo} style={e.verLocalAlerta}>
-            <Text style={e.verLocalAlertaTitulo}>ALERTA CRÍTICA</Text>
+            <Text style={e.verLocalAlertaTitulo}>Alerta crítica</Text>
             <Text noTraducir idiomaOriginal="es-ES" style={e.verLocalAlertaTexto} numberOfLines={compacta ? 3 : undefined}>
               {alerta.detalle}
             </Text>
@@ -1546,7 +1592,7 @@ function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjust
           <Icono nombre="avisos" color={C.senal} tamano={24} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={e.panelAvisosEtiqueta}>ESTADO DEL DISPOSITIVO</Text>
+          <Text style={e.panelAvisosEtiqueta}>Estado del dispositivo</Text>
           <Text style={e.panelAvisosTitulo}>{titulo}</Text>
         </View>
       </View>
@@ -1557,7 +1603,7 @@ function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjust
       {accion && !procesando ? (
         <Pressable
           onPress={accion[1]}
-          style={({ pressed }) => [e.panelAvisosBoton, pressed && e.pulsado]}
+          style={({ pressed }) => [e.panelAvisosBoton, pressed && e.pulsadoVerde]}
           accessibilityRole="button"
         >
           <Text style={e.panelAvisosBotonTxt}>{accion[0]}</Text>
@@ -1736,7 +1782,7 @@ function Descartadas({ fuera }) {
   if (!fuera.length) return null;
   return (
     <View style={e.fueraCaja}>
-      <Text style={e.fueraTitulo}>Fuera del radar</Text>
+      <Text style={e.fueraTitulo} accessibilityRole="header">Descartadas</Text>
       <Text style={e.fueraSub}>
         Solo aparecen aquí los descartes cuyo motivo podemos respaldar con una
         fuente comprobable. Señalar a una empresa sin poder demostrarlo vale
@@ -1751,7 +1797,7 @@ function Descartadas({ fuera }) {
           <Text style={e.fueraPor}>{f.motivo_descarte}</Text>
           {(f.fuentes || []).length > 0 && (
             <View style={e.fuentes}>
-              <Text style={e.fuentesTitulo}>COMPROBADO EN</Text>
+              <Text style={e.fuentesTitulo}>Comprobado en</Text>
               {f.fuentes.map((s) => (
                 <Pressable key={s.url} onPress={() => { tacto.eleccion(); abrirEnlace(s.url); }}
                   accessibilityRole="link" accessibilityLabel={`Abrir fuente: ${s.titulo}`}>
@@ -1802,13 +1848,13 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
               <PanelVerificacionLocal verificacion={verificacion} />
             ) : (
               <>
-                <Text style={e.detEtiqueta}>POR QUÉ ESTÁ EN EL RADAR</Text>
+                <Text style={e.detEtiqueta}>Por qué está en el radar</Text>
                 <View style={e.aval}><FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.avalTxt}>{p.aval}</FuenteOriginal></View>
-                <Text style={e.detEtiqueta}>QUÉ HACE</Text>
+                <Text style={e.detEtiqueta}>Qué hace</Text>
                 <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.detParrafo}>{p.nota}</FuenteOriginal>
               </>
             )}
-            <Text style={e.detEtiqueta}>FICHA</Text>
+            <Text style={e.detEtiqueta}>Ficha</Text>
             <View style={e.tabla}>
               {filasFicha.map(([k, v]) => (
                 <View key={k} style={e.filaTabla}>
@@ -1818,7 +1864,7 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
               ))}
             </View>
             <Pressable onPress={onSeguir} disabled={deshabilitado}
-              style={({ pressed }) => [e.botonPrincipal, sigue && e.botonSecundario, deshabilitado && e.deshabilitado, pressed && e.pulsado]}
+              style={({ pressed }) => [e.botonPrincipal, sigue && e.botonSecundario, deshabilitado && e.deshabilitado, pressed && (sigue ? e.pulsado : e.pulsadoVerde)]}
               accessibilityRole="button"
               accessibilityState={{ selected: sigue, disabled: deshabilitado }}>
               <Text style={[e.botonTxt, sigue && { color: C.senal }]}>
@@ -1844,184 +1890,177 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
 }
 
 const e = StyleSheet.create({
-  criteriosOrden: { minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 8, marginBottom: 4 },
+  criteriosOrden: { minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', borderRadius: R.m, paddingHorizontal: 8, marginLeft: -8 },
+  b3Txt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },
+  b3Pulsado: { backgroundColor: C.senalT },
   pantalla: { flex: 1, backgroundColor: C.noche },
   centro: { alignItems: 'center', justifyContent: 'center' },
   cargandoTxt: { ...T.cuerpo, marginTop: 14, color: C.tx2 },
 
   /* Las superficies grandes apenas ceden: conservan la respuesta táctil
      sin producir el salto visual de encoger una tarjeta completa. */
-  pulsado: { transform: [{ scale: 0.98 }], opacity: 0.9 },
-  pulsadoSuave: { opacity: 0.68 },
+  /* Al pulsar cambia el relleno; sin encoger, así vale también con «reducir
+     movimiento» (GUIA-ACABADOS §9). */
+  pulsado: { backgroundColor: C.ton2 },
+  pulsadoSuave: { backgroundColor: C.ton },
+  /* El b1 se oscurece al pulsar (GUIA-ACABADOS §4). */
+  pulsadoVerde: { backgroundColor: C.senalP },
   deshabilitado: { opacity: 0.5 },
 
   contenido: { flex: 1 },
   cabecera: {
-    backgroundColor: C.noche2, paddingHorizontal: UI.margen, paddingTop: 10, paddingBottom: 17,
-    borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2,
+    backgroundColor: C.s0, paddingHorizontal: UI.margen, paddingTop: 6, paddingBottom: 6,
+    borderBottomWidth: 1, borderBottomColor: C.bd,
   },
-  cabeceraSuperior: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  marcaFila: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  marca: { fontFamily: F.extra, fontSize: 21, letterSpacing: -0.7, color: C.tx },
+  cabeceraSuperior: { minHeight: 48, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
+  marcaFila: { flexDirection: 'row', alignItems: 'center', gap: 7, flexShrink: 0 },
+  marca: { fontFamily: F.extra, fontSize: 19, letterSpacing: -0.4, color: C.tx },
   accionCabecera: {
-    width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center',
-    backgroundColor: C.sup2, borderWidth: 1, borderColor: C.linea2,
+    width: 44, height: 44, borderRadius: R.p, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.ton,
   },
-  cabeceraEtiqueta: { ...T.etiqueta, color: C.senal, marginTop: 13, marginBottom: 4 },
-  cabeceraTitulo: { ...T.titular, fontSize: 26, lineHeight: 30, color: C.tx },
-  cabeceraSub: { ...T.menor, color: C.tx2, marginTop: 3 },
+  accionCabeceraPulsada: { backgroundColor: C.ton2 },
+  cabeceraEtiqueta: { ...T.etiqueta, color: C.tx3 },
+  cabeceraTitulo: { ...T.seccion, fontSize: 17, lineHeight: 22, color: C.tx, flex: 1, textAlign: 'center' },
+  cabeceraSub: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, textAlign: 'center', marginBottom: 2 },
 
   estadoGlobal: {
-    ...T.menor, color: '#F2B23C', backgroundColor: '#2B2416',
+    ...T.menor, fontSize: 13, lineHeight: 19, color: C.aviso, backgroundColor: C.avisoT,
     paddingHorizontal: 16, paddingVertical: 9,
   },
   estadoPendiente: {
-    ...T.menor, color: C.coral, backgroundColor: C.coral10,
+    ...T.menor, fontSize: 13, lineHeight: 19, color: C.alarma, backgroundColor: C.alarmaT,
     paddingHorizontal: 16, paddingVertical: 9,
   },
   bannerLocal: {
     minHeight: 34, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
     paddingHorizontal: 14, paddingVertical: 7, backgroundColor: C.senal10,
-    borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.senal34,
+    borderBottomWidth: 1, borderBottomColor: C.senal34,
   },
   bannerLocalPunto: { width: 7, height: 7, borderRadius: 4, backgroundColor: C.senal },
-  bannerLocalTxt: { ...T.etiqueta, fontSize: 9, color: C.senal, textAlign: 'center' },
+  bannerLocalTxt: { ...T.etiqueta, color: C.tx3, textAlign: 'center' },
 
   lista: { padding: UI.margen, paddingBottom: 26 },
   listaVacia: { flexGrow: 1 },
 
   banner: {
     flexDirection: 'row', alignItems: 'center', gap: 13,
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.ficha, padding: 15, minHeight: 76, marginBottom: 14, ...E.e1,
+    backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
+    borderRadius: R.l, padding: 16, minHeight: 76, marginBottom: 14,
   },
   bannerMarca: {
-    width: 42, height: 42, borderRadius: R.m, backgroundColor: C.senal,
+    width: 40, height: 40, borderRadius: R.m, backgroundColor: C.senalT,
     alignItems: 'center', justifyContent: 'center',
   },
-  bannerTit: { ...T.ficha, fontSize: 15.5, color: C.tx },
+  bannerTit: { ...T.ficha, fontSize: 15, lineHeight: 20, color: C.tx },
   bannerSub: { ...T.menor, fontSize: 12, color: C.tx2, marginTop: 2 },
 
-  panelBusqueda: {
-    backgroundColor: C.sup, borderWidth: 1.5, borderColor: C.senal34,
-    borderRadius: R.ficha, marginBottom: 15, overflow: 'hidden', ...E.e2,
-  },
+  panelBusqueda: { marginBottom: 12 },
   busquedaFila: {
-    minHeight: UI.fila, flexDirection: 'row', alignItems: 'center', gap: 11,
-    paddingHorizontal: 14, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2,
+    minHeight: 48, flexDirection: 'row', alignItems: 'center', gap: 10,
+    paddingHorizontal: 14, borderRadius: R.m, backgroundColor: C.ton,
   },
   buscador: { ...T.cuerpo, color: C.tx, flex: 1, paddingVertical: 12 },
   limpiar: {
-    width: 36, height: 36, borderRadius: 18, backgroundColor: C.sup2,
+    width: 36, height: 36, borderRadius: R.p, backgroundColor: C.ton2,
     alignItems: 'center', justifyContent: 'center',
   },
   limpiarTxt: { fontFamily: F.media, fontSize: 13, color: C.tx2 },
   chips: { maxHeight: 58 },
-  chipsContenido: { paddingHorizontal: 12, paddingVertical: 10 },
+  chipsContenido: { paddingHorizontal: 0, paddingVertical: 10 },
   chip: {
-    minHeight: 38, flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: C.sup2,
-    borderWidth: 1, borderColor: C.linea, borderRadius: R.pastilla,
-    paddingHorizontal: 13, paddingVertical: 8, marginRight: 8,
+    minHeight: 36, flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: C.ton,
+    borderRadius: R.p, paddingHorizontal: 12, marginRight: 8,
   },
-  chipOn: { backgroundColor: C.senal, borderColor: C.senal },
-  chipTxt: { ...T.menor, fontFamily: F.media, color: C.tx2 },
-  chipTxtOn: { color: C.noche },
+  chipOn: { backgroundColor: C.tx },
+  chipTxt: { ...T.menor, fontSize: 13, lineHeight: 18, fontFamily: F.media, color: C.tx2 },
+  chipTxtOn: { color: C.s0, fontFamily: F.semi },
   punto: { width: 8, height: 8, borderRadius: 4 },
   resultadoResumen: {
-    minHeight: 48, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingHorizontal: 14, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2,
+    minHeight: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
   },
-  resultadoTit: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
-  contador: { ...T.dato, color: C.senal },
+  resultadoTit: { ...T.etiqueta, color: C.tx3 },
+  contador: { ...T.dato, fontSize: 12, color: C.tx3 },
   filaOfertas: { gap: 12 },
+  bloqueOfertasCab: { paddingTop: 14, paddingBottom: 6 },
+  bloqueOfertasTit: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 15, lineHeight: 21, color: C.tx },
+  bloqueOfertasMarca: { color: C.senal },
+  bloqueOfertasSub: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx3, marginTop: 1 },
+  notaImagenes: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 12, marginBottom: 8 },
   panelOfertasCompacto: { marginBottom: 12 },
   selectorOfertas: {
-    minHeight: UI.tactil + 6, flexDirection: 'row', gap: 3, padding: 3,
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.m,
+    minHeight: UI.tactil + 6, flexDirection: 'row', gap: 2, padding: 3,
+    backgroundColor: C.ton, borderRadius: R.m,
   },
-  selectorBuscar: { marginHorizontal: UI.margen, marginTop: 10, marginBottom: 2 },
   segmentoOferta: {
     flex: 1, minHeight: UI.tactil, alignItems: 'center', justifyContent: 'center',
     borderRadius: R.s, paddingHorizontal: 7,
   },
-  segmentoOfertaOn: { backgroundColor: C.senal },
-  segmentoOfertaTxt: { ...T.dato, fontFamily: F.semi, color: C.tx2, textAlign: 'center' },
-  segmentoOfertaTxtOn: { color: C.noche },
-  panelBusquedaOfertas: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.m, marginTop: 8, overflow: 'hidden',
-  },
+  segmentoOfertaOn: { backgroundColor: C.s3 },
+  segmentoOfertaTxt: { ...T.menor, fontSize: 13, lineHeight: 18, fontFamily: F.media, color: C.tx2, textAlign: 'center' },
+  segmentoOfertaTxtOn: { color: C.tx, fontFamily: F.semi },
+  panelBusquedaOfertas: { marginTop: 10 },
   busquedaFilaOfertas: { minHeight: 48 },
   barraFiltrosOfertas: {
-    minHeight: 42, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingHorizontal: 12,
+    minHeight: 44, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 4,
   },
-  resultadoCompacto: { ...T.dato, color: C.tx2 },
+  resultadoCompacto: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx3, marginTop: 6 },
   botonFiltrosOfertas: {
-    minHeight: UI.tactil, justifyContent: 'center', borderRadius: R.pastilla,
-    borderWidth: 1, borderColor: C.linea2, paddingHorizontal: 11,
+    minHeight: UI.tactil, justifyContent: 'center', borderRadius: R.p,
+    backgroundColor: C.ton, paddingHorizontal: 14,
   },
-  botonFiltrosOfertasOn: { backgroundColor: C.senal10, borderColor: C.senal34 },
-  botonFiltrosOfertasTxt: { ...T.dato, fontFamily: F.semi, color: C.tx2 },
-  botonFiltrosOfertasTxtOn: { color: C.senal },
-  filtrosOfertasDesplegados: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.m, marginTop: 8, paddingTop: 10, paddingBottom: 2,
-  },
-  filtroGrupoEtiqueta: { ...T.etiqueta, color: C.tx3, paddingHorizontal: 12, marginBottom: 2 },
+  botonFiltrosOfertasOn: { backgroundColor: C.tx },
+  botonFiltrosOfertasTxt: { ...T.menor, fontSize: 13, lineHeight: 18, fontFamily: F.semi, color: C.tx2 },
+  botonFiltrosOfertasTxtOn: { color: C.s0 },
+  filtrosOfertasDesplegados: { marginTop: 8, paddingTop: 4 },
+  filtroGrupoEtiqueta: { ...T.etiqueta, color: C.tx3, marginTop: 4, marginBottom: 2 },
   chipsOfertas: { maxHeight: 50 },
-  chipsContenidoCompacto: { paddingHorizontal: 12, paddingTop: 5, paddingBottom: 7 },
+  chipsContenidoCompacto: { paddingTop: 5, paddingBottom: 7 },
 
   ficha: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.ficha, padding: 16, marginBottom: 12, gap: 10, ...E.e1,
+    backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
+    borderRadius: R.l, padding: 16, marginBottom: 12, gap: 10,
   },
   fichaTop: { minHeight: 50, flexDirection: 'row', alignItems: 'center', gap: 12 },
-  mono: { width: 44, height: 44, borderRadius: R.m, alignItems: 'center', justifyContent: 'center' },
-  monoGrande: { width: 52, height: 52, borderRadius: 16 },
+  mono: { width: 40, height: 40, borderRadius: R.m, alignItems: 'center', justifyContent: 'center' },
+  monoGrande: { width: 52, height: 52, borderRadius: R.l },
   /* Las iniciales van sobre el color de la categoría, que es claro:
      encima tiene que ir tinta oscura, no blanca. */
-  monoTxt: { fontFamily: F.extra, fontSize: 15, color: C.noche },
+  monoTxt: { fontFamily: F.negrita, fontSize: 15, color: C.noche },
   fichaNombre: { ...T.ficha, color: C.tx },
-  fichaSub: { ...T.dato, color: C.tx2, marginTop: 3 },
+  fichaSub: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx3, marginTop: 3 },
   fichaNota: { ...T.cuerpo, color: C.tx2 },
   etiquetas: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
   etiqueta: {
-    ...T.dato, fontSize: 11, color: C.tx2, backgroundColor: C.sup2,
-    borderWidth: 1, borderColor: C.linea, borderRadius: R.pastilla,
-    paddingHorizontal: 9, paddingVertical: 4, overflow: 'hidden',
+    ...T.etiqueta, color: C.tx2, backgroundColor: C.ton,
+    borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden',
   },
-  etiquetaAcento: { backgroundColor: C.senal10, borderColor: C.senal34, color: C.senal },
+  etiquetaAcento: { backgroundColor: C.senalT, color: C.senal },
   verLocal: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.senal34,
-    borderRadius: R.s, padding: 14, gap: 11, marginBottom: 2,
+    backgroundColor: C.ton, borderRadius: R.m, padding: 14, gap: 11, marginBottom: 2,
   },
-  verLocalCompacta: { padding: 11, gap: 8, backgroundColor: C.noche2 },
-  verLocalFecha: { ...T.etiqueta, fontSize: 9.5, color: C.senal },
+  verLocalCompacta: { padding: 12, gap: 8 },
+  verLocalFecha: { ...T.etiqueta, color: C.tx3 },
   verLocalCampos: { gap: 7 },
-  verLocalCampo: {
-    borderLeftWidth: 2, borderLeftColor: C.senal34, paddingLeft: 9,
-  },
-  verLocalCampoAtencion: { borderLeftColor: C.coral32 },
-  verLocalCampoNombre: { ...T.etiqueta, fontSize: 8.5, color: C.tx3 },
-  verLocalCampoEstado: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 12, color: C.senal, marginTop: 1 },
-  verLocalCampoEstadoAtencion: { color: C.coral },
-  verLocalDetalle: { ...T.menor, fontSize: 12.5, lineHeight: 18, color: C.tx2, marginTop: 4 },
+  verLocalCampo: { paddingLeft: 0 },
+  verLocalCampoAtencion: {},
+  verLocalCampoNombre: { ...T.etiqueta, color: C.tx3 },
+  verLocalCampoEstado: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 13, lineHeight: 18, color: C.senal, marginTop: 1 },
+  verLocalCampoEstadoAtencion: { color: C.aviso },
+  verLocalDetalle: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2, marginTop: 4 },
   verLocalAlertas: { gap: 7 },
   verLocalAlerta: {
-    borderWidth: 1, borderColor: C.coral32, borderRadius: R.s,
-    backgroundColor: C.coral10, padding: 10,
+    borderRadius: R.s, backgroundColor: C.alarmaT, padding: 10,
   },
-  verLocalAlertaTitulo: { ...T.etiqueta, fontSize: 8.5, color: C.coral },
-  verLocalAlertaTexto: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx, marginTop: 4 },
-  verLocalNota: { ...T.menor, fontSize: 11.5, lineHeight: 17, color: C.tx3 },
+  verLocalAlertaTitulo: { ...T.etiqueta, color: C.alarma },
+  verLocalAlertaTexto: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx, marginTop: 4 },
+  verLocalNota: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3 },
   seguir: {
-    minHeight: UI.tactil, borderWidth: 1, borderColor: C.senal,
+    minHeight: UI.tactil, backgroundColor: C.ton,
     borderRadius: R.m, alignItems: 'center', justifyContent: 'center',
   },
-  seguirOn: { backgroundColor: C.senal10, borderColor: C.senal },
-  seguirTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.senal },
+  seguirOn: { backgroundColor: C.senalT },
+  seguirTxt: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx },
   seguirTxtOn: { color: C.senal },
 
   vacio: { ...T.cuerpo, color: C.tx2, textAlign: 'center' },
@@ -2033,168 +2072,166 @@ const e = StyleSheet.create({
     width: 132, height: 132, alignItems: 'center', justifyContent: 'center', marginBottom: 24,
   },
   vacioEco: {
-    position: 'absolute', width: 128, height: 128, borderRadius: 64,
-    borderWidth: 1, borderColor: C.senal34, backgroundColor: C.senal10,
+    position: 'absolute', width: 128, height: 128, borderRadius: 64, backgroundColor: C.senalT,
   },
   vacioIcono: {
     width: 92, height: 92, borderRadius: 46, alignItems: 'center', justifyContent: 'center',
-    backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34, marginBottom: 22,
+    backgroundColor: C.senalT, marginBottom: 22,
   },
   vacioTituloGrande: { ...T.seccion, color: C.tx, textAlign: 'center', marginBottom: 10 },
   vacioDescripcion: { ...T.cuerpo, color: C.tx2, textAlign: 'center', maxWidth: 360, marginBottom: 22 },
   vacioAvisos: { minHeight: 330, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 14 },
-  vacioResultados: { alignItems: 'center', gap: 12, paddingHorizontal: 20, paddingVertical: 36 },
+  vacioResultados: { alignItems: 'center', gap: 12, paddingHorizontal: 20, paddingVertical: 36, backgroundColor: C.s1, borderRadius: R.l },
   cta: {
-    width: '100%', maxWidth: 340, minHeight: UI.boton, borderRadius: R.m,
-    backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 18,
+    width: '100%', maxWidth: 340, minHeight: 48, borderRadius: R.m,
+    backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20,
   },
-  ctaTxt: { ...T.cuerpoFte, fontFamily: F.negrita, fontSize: 15.5, color: C.noche },
+  ctaTxt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.enSenal },
   ctaTexto: { minHeight: UI.tactil, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 12, marginTop: 7 },
   ctaTextoTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.senal, textAlign: 'center' },
   ctaBorde: {
-    minHeight: UI.tactil, borderRadius: R.m, borderWidth: 1, borderColor: C.senal,
+    minHeight: UI.tactil, borderRadius: R.m, backgroundColor: C.ton,
     alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20, marginTop: 4,
   },
-  ctaBordeTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.senal },
+  ctaBordeTxt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx },
 
   resumenSeguimiento: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.senal34,
-    borderRadius: R.ficha, padding: 17, marginBottom: 16, ...E.e2,
+    backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
+    borderRadius: R.l, padding: 16, marginBottom: 16,
   },
-  resumenEtiqueta: { ...T.etiqueta, color: C.senal, marginBottom: 5 },
+  resumenEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 5 },
   resumenTitulo: { ...T.ficha, color: C.tx },
   resumenTexto: { ...T.menor, color: C.tx2, marginTop: 5 },
   resumenAccion: {
     minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', gap: 10,
-    borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, marginTop: 14, paddingTop: 12,
+    borderTopWidth: 1, borderTopColor: C.linea2, marginTop: 14, paddingTop: 12,
   },
   resumenAccionTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.senal, flex: 1 },
 
   seccionCab: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 3, marginBottom: 10,
   },
-  seccionTit: { ...T.seccion, fontSize: 19, color: C.tx },
+  seccionTit: { ...T.seccion, color: C.tx },
   seccionDato: {
-    ...T.dato, color: C.noche, backgroundColor: C.senal, minWidth: 27,
-    paddingHorizontal: 7, paddingVertical: 4, borderRadius: R.pastilla, textAlign: 'center', overflow: 'hidden',
+    ...T.dato, color: C.tx2, backgroundColor: C.ton, minWidth: 27,
+    paddingHorizontal: 8, paddingVertical: 2, borderRadius: R.s, textAlign: 'center', overflow: 'hidden',
   },
   aviso: {
-    minHeight: 74, flexDirection: 'row', gap: 12, backgroundColor: C.sup,
-    borderWidth: 1, borderColor: C.linea, borderRadius: R.ficha,
-    padding: 15, marginBottom: 10, ...E.e1,
+    minHeight: 74, flexDirection: 'row', gap: 12, backgroundColor: C.s1,
+    borderWidth: 1, borderColor: C.bd, borderRadius: R.l,
+    padding: 16, marginBottom: 10,
   },
-  avisoMarca: { width: 4, alignSelf: 'stretch', borderRadius: 2, backgroundColor: C.coral },
+  avisoMarca: { width: 3, alignSelf: 'stretch', borderRadius: 2, backgroundColor: C.alarma },
   avisoTitular: { ...T.cuerpoFte, fontFamily: F.negrita, color: C.tx },
   avisoDetalle: { ...T.menor, color: C.tx2, marginTop: 5 },
 
   panelAvisos: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.ficha, padding: 17, marginBottom: 18, ...E.e2,
+    backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
+    borderRadius: R.l, padding: 16, marginBottom: 18,
   },
-  panelAvisosAtencion: { backgroundColor: '#241F14', borderColor: '#6F592B' },
-  panelAvisosActivo: { backgroundColor: C.senal10, borderColor: C.senal34 },
+  panelAvisosAtencion: { backgroundColor: C.s1 },
+  panelAvisosActivo: { backgroundColor: C.s1 },
   panelAvisosCab: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   panelAvisosIcono: {
-    width: 46, height: 46, borderRadius: 23, alignItems: 'center', justifyContent: 'center',
-    backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34,
+    width: 40, height: 40, borderRadius: R.m, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.senalT,
   },
-  panelAvisosEtiqueta: { ...T.etiqueta, fontSize: 9, color: C.senal, marginBottom: 2 },
+  panelAvisosEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 2 },
   panelAvisosTitulo: { ...T.ficha, color: C.tx },
   panelAvisosTexto: { ...T.menor, color: C.tx2, marginTop: 12 },
   panelAvisosBoton: {
     minHeight: UI.boton, backgroundColor: C.senal, borderRadius: R.m,
-    paddingHorizontal: 16, marginTop: 15, alignItems: 'center', justifyContent: 'center',
+    paddingHorizontal: 20, marginTop: 15, alignItems: 'center', justifyContent: 'center',
   },
-  panelAvisosBotonTxt: { ...T.cuerpoFte, fontFamily: F.negrita, color: C.noche },
+  panelAvisosBotonTxt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.enSenal },
 
   masCuerpo: { padding: UI.margen, paddingBottom: 32 },
   resumenDispositivo: {
-    minHeight: 136, flexDirection: 'row', alignItems: 'center', gap: 13,
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.senal34,
-    borderRadius: R.ficha, padding: 16, marginBottom: 28, ...E.e2,
+    minHeight: 120, flexDirection: 'row', alignItems: 'center', gap: 13,
+    backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
+    borderRadius: R.l, padding: 16, marginBottom: 28,
   },
   resumenMarca: {
-    width: 62, height: 62, borderRadius: 31, alignItems: 'center', justifyContent: 'center',
-    backgroundColor: C.noche2, borderWidth: 1, borderColor: C.linea2,
+    width: 56, height: 56, borderRadius: R.p, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.ton,
   },
   resumenNumero: { alignItems: 'center', paddingLeft: 8 },
-  resumenNumeroValor: { fontFamily: F.extra, fontSize: 27, lineHeight: 30, color: C.senal },
-  resumenNumeroEtiqueta: { ...T.etiqueta, fontSize: 8, color: C.tx3, marginTop: 2 },
+  resumenNumeroValor: { fontFamily: F.negrita, fontSize: 28, lineHeight: 32, color: C.tx, fontVariant: ['tabular-nums'] },
+  resumenNumeroEtiqueta: { ...T.etiqueta, color: C.tx3, marginTop: 2 },
   grupoSeccion: { marginBottom: 25 },
   notaFavoritosLocales: { ...T.menor, fontSize: 12, color: C.tx3, marginTop: 16, marginBottom: 22, paddingHorizontal: 4 },
   notaGuardadas: { ...T.menor, fontSize: 12, color: C.tx3, marginTop: -14, marginBottom: 22, paddingHorizontal: 4 },
   avisoProximo: {
-    flexDirection: 'row', gap: 12, padding: 15, backgroundColor: C.sup, borderRadius: R.m,
-    borderWidth: StyleSheet.hairlineWidth, borderColor: C.linea,
+    flexDirection: 'row', gap: 12, padding: 16, backgroundColor: C.s1, borderRadius: R.l,
+    borderWidth: 1, borderColor: C.bd,
   },
   avisoProximoIcono: {
-    width: 44, height: 44, borderRadius: R.s, alignItems: 'center', justifyContent: 'center',
-    backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34,
+    width: 40, height: 40, borderRadius: R.m, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.senalT,
   },
-  avisoProximoTit: { ...T.ficha, fontSize: 15.5, color: C.tx, marginBottom: 2 },
-  grupoTitulo: { ...T.seccion, fontSize: 19, color: C.tx, marginBottom: 10 },
+  avisoProximoTit: { ...T.ficha, fontSize: 15, lineHeight: 20, color: C.tx, marginBottom: 2 },
+  grupoTitulo: { ...T.seccion, fontSize: 17, lineHeight: 22, color: C.tx, marginBottom: 10 },
   grupo: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.ficha, overflow: 'hidden', ...E.e1,
+    backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
+    borderRadius: R.l, overflow: 'hidden',
   },
   filaMenu: {
-    minHeight: 74, flexDirection: 'row', alignItems: 'center', gap: 12,
-    paddingHorizontal: 14, paddingVertical: 11,
+    minHeight: 64, flexDirection: 'row', alignItems: 'center', gap: 12,
+    paddingHorizontal: 14, paddingVertical: 12,
   },
-  filaMenuBorde: { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2 },
+  filaMenuBorde: { borderBottomWidth: 1, borderBottomColor: C.bd },
   filaIcono: {
-    width: 42, height: 42, borderRadius: R.m, alignItems: 'center', justifyContent: 'center',
-    backgroundColor: C.sup2, borderWidth: 1, borderColor: C.linea2,
+    width: 40, height: 40, borderRadius: R.m, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.ton,
   },
-  filaIconoPeligro: { backgroundColor: C.coral10, borderColor: C.coral32 },
-  filaTitulo: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
-  filaTituloPeligro: { color: C.coral },
-  filaSub: { ...T.menor, fontSize: 12, color: C.tx2, marginTop: 2 },
+  filaIconoPeligro: { backgroundColor: C.alarmaT },
+  filaTitulo: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx },
+  filaTituloPeligro: { color: C.alarma },
+  filaSub: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx3, marginTop: 2 },
   notaMas: { ...T.menor, fontSize: 12, lineHeight: 18, color: C.tx3, textAlign: 'center', paddingHorizontal: 14 },
 
   fueraCaja: { marginTop: 28 },
   fueraTitulo: { ...T.seccion, color: C.tx, marginBottom: 6 },
   fueraSub: { ...T.menor, color: C.tx2, marginBottom: 14 },
   fueraFila: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.s, padding: 14, marginBottom: 8, ...E.e1,
+    paddingVertical: 14, borderTopWidth: 1, borderTopColor: C.bd,
   },
   fueraCab: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 5 },
   fueraNombre: { ...T.ficha, fontSize: 15, color: C.tx },
   insignia: {
-    ...T.etiqueta, fontSize: 9.5, backgroundColor: C.coral, color: C.tx,
-    paddingHorizontal: 8, paddingVertical: 3, borderRadius: R.pastilla, overflow: 'hidden',
+    ...T.etiqueta, backgroundColor: C.alarmaT, color: C.alarma,
+    paddingHorizontal: 8, paddingVertical: 2, borderRadius: R.s, overflow: 'hidden',
   },
   fueraPor: { ...T.menor, color: C.tx2 },
-  fuentes: { marginTop: 11, paddingTop: 11, gap: 6, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea },
-  fuentesTitulo: { ...T.etiqueta, fontSize: 9.5, color: C.tx2 },
-  fuente: { ...T.menor, fontSize: 12, fontFamily: F.semi, color: C.senal },
+  fuentes: { marginTop: 11, paddingTop: 11, gap: 6, borderTopWidth: 1, borderTopColor: C.linea },
+  fuentesTitulo: { ...T.etiqueta, color: C.tx3 },
+  fuente: { ...T.menor, fontSize: 13, lineHeight: 19, fontFamily: F.semi, color: C.senal, paddingVertical: 12, marginVertical: -12 },
 
   piePrivacidad: { alignItems: 'center', paddingVertical: 22 },
-  piePrivacidadTxt: { ...T.menor, fontFamily: F.semi, color: C.senal, textDecorationLine: 'underline' },
+  piePrivacidadTxt: { ...T.menor, fontFamily: F.semi, color: C.senal },
 
   detCab: {
     flexDirection: 'row', alignItems: 'center', flexShrink: 0, gap: 12, padding: 16,
-    borderBottomWidth: 1, borderBottomColor: C.linea, backgroundColor: C.noche2,
+    borderBottomWidth: 1, borderBottomColor: C.bd, backgroundColor: C.s1,
   },
   detNombre: { ...T.seccion, color: C.tx, lineHeight: 29 },
   detCategoria: { ...T.menor, color: C.tx2, marginTop: 6 },
   cerrar: {
-    width: UI.tactil, height: UI.tactil, flexShrink: 0, borderRadius: R.pastilla, backgroundColor: C.sup2,
-    borderWidth: 1, borderColor: C.linea, alignItems: 'center', justifyContent: 'center',
+    width: UI.tactil, height: UI.tactil, flexShrink: 0, borderRadius: R.p, backgroundColor: C.ton,
+    alignItems: 'center', justifyContent: 'center',
   },
-  cerrarTxt: { fontFamily: F.media, fontSize: 15, color: C.tx2 },
+  cerrarTxt: { fontFamily: F.media, fontSize: 15, color: C.tx },
   detDesplazamiento: { flex: 1, minHeight: 0 },
   detCuerpo: { padding: 18, paddingBottom: 40 },
-  detEtiqueta: { ...T.etiqueta, color: C.tx2, marginTop: 20, marginBottom: 8 },
+  detEtiqueta: { ...T.etiqueta, color: C.tx3, marginTop: 20, marginBottom: 8 },
   detParrafo: { ...T.cuerpo, fontSize: 15, lineHeight: 23, color: C.tx },
-  aval: { backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34, borderRadius: R.s, padding: 13 },
-  avalTxt: { ...T.cuerpoFte, color: C.senal },
-  tabla: { backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.s },
+  aval: { backgroundColor: C.ton, borderRadius: R.m, padding: 13 },
+  avalTxt: { ...T.cuerpoFte, color: C.tx },
+  tabla: { backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd, borderRadius: R.l, overflow: 'hidden' },
   filaTabla: {
     flexDirection: 'row', justifyContent: 'space-between', gap: 14,
     paddingHorizontal: 14, paddingVertical: 11,
-    borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea,
+    borderBottomWidth: 1, borderBottomColor: C.linea,
   },
   filaClave: { ...T.menor, color: C.tx2 },
   filaValor: { ...T.menor, fontFamily: F.semi, color: C.tx, flexShrink: 1, textAlign: 'right' },
@@ -2203,22 +2240,22 @@ const e = StyleSheet.create({
      rótulos, donde la señal se usa como fondo. */
   botonPrincipal: {
     minHeight: UI.boton, backgroundColor: C.senal, borderRadius: R.m,
-    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, marginTop: 24, ...E.e2,
+    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20, marginTop: 24,
   },
-  botonSecundario: { backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal },
-  botonTxt: { ...T.cuerpoFte, fontFamily: F.negrita, fontSize: 15, color: C.noche },
+  botonSecundario: { backgroundColor: C.ton },
+  botonTxt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.enSenal },
   botonBorde: {
-    minHeight: UI.boton, borderWidth: 1, borderColor: C.linea, borderRadius: R.m,
-    paddingHorizontal: 16, alignItems: 'center', justifyContent: 'center', marginTop: 10, backgroundColor: C.sup,
+    minHeight: UI.boton, borderRadius: R.m,
+    paddingHorizontal: 20, alignItems: 'center', justifyContent: 'center', marginTop: 10, backgroundColor: C.ton,
   },
-  botonBordeTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
+  botonBordeTxt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx },
   nota: { ...T.menor, fontSize: 12, color: C.tx2, textAlign: 'center', marginTop: 16 },
   privacidadCuerpo: { padding: 20, paddingBottom: 44 },
   privacidadTit: { ...T.ficha, fontSize: 16, color: C.tx, marginTop: 18, marginBottom: 6 },
   privacidadParrafo: { ...T.cuerpo, color: C.tx2 },
   botonPeligro: {
-    minHeight: UI.boton, backgroundColor: C.coral, borderRadius: R.m,
-    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, marginTop: 22,
+    minHeight: UI.boton, backgroundColor: C.alarmaT, borderRadius: R.m,
+    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20, marginTop: 22,
   },
-  botonPeligroTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
+  botonPeligroTxt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.alarma },
 });

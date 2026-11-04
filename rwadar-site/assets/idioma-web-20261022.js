@@ -19,11 +19,11 @@
     'Fuentes y fechas':'Sources and dates','Quién es':'Who they are',
     'Cómo funciona y qué se ha comprobado':'How it works and what has been checked',
     'Supervisión y alcance':'Supervision and scope','Quién puede acceder':'Who can access it',
-    'Referencias documentales de esta plataforma':'Documented references from this platform',
-    'Antes de ir a la fuente':'Before visiting the source','¿Ves un error en esta ficha?':'See an error in these details?',
+    'Ofertas de esta plataforma en RWAdar':'Offers from this platform on RWAdar',
+    'Antes de invertir':'Before you invest','¿Ves un error en esta ficha?':'See an error in these details?',
     'Saltar al contenido':'Skip to content','Principal':'Main navigation','Información':'Information',
     'Comunicar un error':'Report an error','Cómo verificamos':'How we check sources',
-    'Independencia editorial':'Editorial independence','Privacidad y aviso legal':'Privacy and legal notice'
+    'Transparencia comercial':'Commercial transparency','Privacidad y aviso legal':'Privacy and legal notice'
   };
   const traducibles=['aria-label','aria-description','title','placeholder','alt'];
   const selectorProtegido='script,style,code,pre,textarea,[contenteditable],[translate="no"],[data-idioma-control],[data-idioma-fuente]';
@@ -31,6 +31,7 @@
   // pasan por el diccionario aunque coincidan con una etiqueta como Inicio.
   const originales=[
     '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar',
+    '#movilPanelInicio .inicio-oferta-tit','#movilPanelInicio .inicio-oferta-prov','#movilPanelInicio .inicio-oferta-aviso','.escaparate-comprobacion-motivo-fuente','.escaparate-comprobacion-dato','.escaparate-fuente-titulo',
     '#emiLista .escaparate-dato-principal b','#emiLista .escaparate-referencia','#emiLista .escaparate-aviso-compacto',
     '.escaparate-datos-clave dd:has(a)','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
     '.escaparate-dialogo-identidad','.escaparate-dialogo-resumen','.escaparate-documentacion-caracteristicas',
@@ -43,7 +44,7 @@
     '#perfilOfertas .perfil-oferta h3','#perfilOfertas .perfil-oferta p','#perfilEmpresas .movil-seguida h3','#perfilEmpresas .movil-seguida p','#cuentaIdentidad','#cuentaEstadoCorreo',
     '.comunidad-autor','.comunidad-texto','.ac-articulo','.ac-tldr ol','.ac-glosario dl','.ac-leccion-cab h1',
     '.ac-pregunta legend','.ac-opcion-texto','.ac-explicacion','.ac-aviso-legal','main[data-idioma-documental]',
-    'main[data-ficha-consulta] p:not(.migas):not(:has(a))','main[data-ficha-consulta] .riesgos','main[data-ficha-consulta] .fuentes','main[data-ficha-consulta] figure'
+    'main[data-ficha-consulta] p:not(.migas):not(.ui):not(:has(a))','main[data-ficha-consulta] .riesgos','main[data-ficha-consulta] .fuentes:not(.puntos)','main[data-ficha-consulta] figure'
   ].join(',');
   const superficies='#emiLista,#grid,#matrix,#radarLee,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
   function traducir(origen){
@@ -52,6 +53,13 @@
       if(limpio==='Todas')return origen.replace(limpio,idioma.traducir('Todos'));
       if(Object.hasOwn(uiConsulta,limpio))return origen.replace(limpio,uiConsulta[limpio]);
       if(m)return origen.replace(limpio,'View documentary references and dates ('+m[1]+')');
+      // Frases con cifra o fecha de LISTA-FINAL.md (04/11/2026), solo de la web.
+      for(const [re,en] of [[/^Ver sus (\d+) ofertas$/,'View its $1 offers'],[/^Fuente revisada el (.+)$/,'Source checked on $1'],
+        [/^Fuentes consultadas · (.+)$/,'Sources checked · $1'],[/^Ver oferta en (.+) ↗$/,'See the offer on $1 ↗'],[/^Ir a la web de (.+) ↗$/,"Go to $1's website ↗"],
+        [/^Ver los (\d+) datos consultados y sus fechas$/,'View the $1 data points checked and their dates'],
+        [/^Revisadas el (.+)$/,'Reviewed $1'],[/^válidas 1 día más$/,'valid for 1 more day'],[/^válidas (\d+) días más$/,'valid for $1 more days'],
+        [/^válidas hasta hoy$/,'valid until today'],[/^Revisión editorial: (.+)$/,'Editorial review: $1'],[/^Última revisión del registro: (.+)$/,'Latest register review: $1']])
+        if(re.test(limpio))return origen.replace(limpio,limpio.replace(re,en));
     }
     return idioma.traducir(origen);
   }
@@ -100,6 +108,8 @@
   function marcarFuente(fuente){
     if(!fuente.lang)fuente.lang=fuente.dataset.idiomaFuente||'es';
     fuente.setAttribute('translate','no');
+    // Títulos y proveedores de los carruseles de Inicio: nombres propios, sin rótulo.
+    if(fuente.closest('.inicio-carrusel'))return;
     const dialogo=fuente.closest('.escaparate-dialogo');
     const superficie=(dialogo&&dialogo.querySelector('.escaparate-dialogo-cuerpo'))||fuente.closest(superficies)||fuente;
     if(superficie!==fuente)fuente.removeAttribute('data-idioma-fuente-etiqueta');

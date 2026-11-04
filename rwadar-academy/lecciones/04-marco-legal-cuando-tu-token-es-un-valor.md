@@ -240,7 +240,7 @@ El criterio de conexión relevante en la comercialización de instrumentos finan
 >
 > Si tu proyecto cae en el cajón 1 —y la mayoría de los activos reales caen ahí—, necesitas trabajar con actores que tengan **capacidad regulatoria real**, no solo capacidad técnica: una entidad de registro autorizada y un canal de comercialización habilitado.
 >
-> En cada ficha, el radar de RWAdar documenta cuatro criterios, y el primero es precisamente **entidad y permisos**: qué entidad figura en la fuente y para qué actividad tiene licencia o registro. Puedes filtrar por región, tipo de activo y nivel de acceso —el filtro por capacidad regulatoria llegará próximamente— y consultar la sección *Fuera del radar*, donde publicamos con motivo y fuente las plataformas que hemos descartado.
+> En cada ficha, el radar de RWAdar documenta cuatro criterios, y el primero es precisamente **entidad y permisos**: qué entidad figura en la fuente y para qué actividad tiene licencia o registro. Puedes filtrar por región, tipo de activo y nivel de acceso —el filtro por capacidad regulatoria llegará próximamente— y consultar la sección *Descartadas*, donde publicamos con motivo y fuente las plataformas que hemos descartado.
 >
 > **[Abrir el radar y filtrar por capacidad regulatoria →]**
 >

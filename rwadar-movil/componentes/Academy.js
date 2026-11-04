@@ -91,7 +91,7 @@ export default function Academy({ slug, onAbrirLeccion, onVolver, onCerrar, onAc
           </Pressable>
         ) : null}
         <View style={{ flex: 1 }}>
-          <Text style={e.cabEtiqueta}>RWADAR ACADEMY</Text>
+          <Text style={e.cabEtiqueta}>RWAdar Academy</Text>
           <Text style={e.cabTitulo} numberOfLines={1} accessibilityRole="header">
             {leccion ? `Lección ${leccion.modulo} de ${LECCIONES.length}` : 'Lecciones'}
           </Text>
@@ -148,7 +148,7 @@ function Indice({ progreso, onAbrirLeccion, onExplicar }) {
         accessibilityHint="Tutorial de Academy en cuatro pasos, también explicados en texto">
         <View style={e.extraCab}>
           <View style={e.extraIcono}><Text style={e.extraIconoTxt}>3D</Text></View>
-          <Text style={e.extraEtiqueta}>ACADEMY · TUTORIAL GUIADO</Text>
+          <Text style={e.extraEtiqueta}>Academy · tutorial guiado</Text>
         </View>
         <Text style={e.extraTit}>Mira cómo se tokeniza un edificio</Text>
         <Text style={e.extraSub}>El edificio sigue entero. Sus derechos se representan en participaciones que pueden cambiar de titular.</Text>
@@ -172,7 +172,7 @@ function Indice({ progreso, onAbrirLeccion, onExplicar }) {
         const lecciones = LECCIONES.filter((l) => l.nivel === n.id);
         return (
           <View key={n.id} style={e.nivel}>
-            <Text style={e.sobrelinea}>NIVEL {k + 1} · {n.lema.toUpperCase()}</Text>
+            <Text style={e.sobrelinea}>Nivel {k + 1} · {n.lema}</Text>
             <Text style={e.nivelTit} accessibilityRole="header">{n.nombre}</Text>
             <Text style={e.nivelPregunta}>{n.pregunta}</Text>
             {lecciones.map((l) => (
@@ -199,7 +199,7 @@ function Tarjeta({ l, progreso, onPress }) {
     <>
       <View style={e.tarjetaFila}>
         <Text style={[e.tarjetaNum, !l.publicado && e.apagado]}>{String(l.modulo).padStart(2, '0')}</Text>
-        <Text style={e.tarjetaMeta}>{l.categoria.toUpperCase()} · {l.minutos} MIN</Text>
+        <Text style={e.tarjetaMeta}>{l.categoria} · {l.minutos} min</Text>
       </View>
       <Text style={[e.tarjetaTit, !l.publicado && e.tarjetaTitPronto]}>{l.titulo}</Text>
       {l.publicado ? <Text style={e.tarjetaResumen} numberOfLines={3}>{l.resumen}</Text> : null}
@@ -230,20 +230,20 @@ function Leccion({ l, progreso, onAccion, onMarcar, onTest, onAbrirLeccion, onWe
 
   return (
     <View>
-      <Text style={e.sobrelinea}>NIVEL {numeroNivel(l.nivel)} · {nivel.nombre.toUpperCase()} · {nivel.lema.toUpperCase()}</Text>
+      <Text style={e.sobrelinea}>Nivel {numeroNivel(l.nivel)} · {nivel.nombre} · {nivel.lema}</Text>
       <Text style={e.titular} accessibilityRole="header">{l.titulo}</Text>
       <View style={e.meta}>
-        <Dato etiqueta="LECTURA" valor={`${l.minutos} min`} />
-        <Dato etiqueta="CATEGORÍA" valor={l.categoria} />
-        <Dato etiqueta="REVISIÓN LEGAL" valor={l.revisionLegalTexto} />
-        <Dato etiqueta="JURISDICCIÓN" valor={l.jurisdiccion} />
+        <Dato etiqueta="Lectura" valor={`${l.minutos} min`} />
+        <Dato etiqueta="Categoría" valor={l.categoria} />
+        <Dato etiqueta="Revisión legal" valor={l.revisionLegalTexto} />
+        <Dato etiqueta="Jurisdicción" valor={l.jurisdiccion} />
       </View>
       {leida ? <Text style={e.leidaAviso}>✓ Marcaste esta lección como leída.</Text> : null}
 
       <Bloques bloques={l.preambulo} onAccion={onAccion} />
 
       <View style={e.tldr}>
-        <Text style={e.tldrTit}>EN 30 SEGUNDOS</Text>
+        <Text style={e.tldrTit}>En 30 segundos</Text>
         {l.tldr.map((tramos, k) => (
           <View key={k} style={e.tldrFila}>
             <View style={e.tldrNum}><Text style={e.tldrNumTxt}>{k + 1}</Text></View>
@@ -265,7 +265,7 @@ function Leccion({ l, progreso, onAccion, onMarcar, onTest, onAbrirLeccion, onWe
       <Test key={l.slug} preguntas={l.quiz} onAccion={onAccion} onTerminar={onTest} />
 
       <View style={e.paso}>
-        <Text style={e.sobrelinea}>DA EL SIGUIENTE PASO</Text>
+        <Text style={e.sobrelinea}>Da el siguiente paso</Text>
         <Text style={e.pasoTit}>{l.siguientePaso.titulo}</Text>
         <Bloques bloques={l.siguientePaso.bloques} onAccion={onAccion} />
       </View>
@@ -307,7 +307,7 @@ function Vecina({ l, lado, onPress }) {
     return (
       <View style={[e.vecina, e.vecinaPronto]}>
         <Text style={[e.vecinaEtiqueta, e.apagado]}>{etiqueta}</Text>
-        <Text style={[e.vecinaEtiqueta, e.vecinaPronta]}>PRÓXIMAMENTE</Text>
+        <Text style={[e.vecinaEtiqueta, e.vecinaPronta]}>Próximamente</Text>
         <Text style={e.vecinaTit} numberOfLines={3}>{l.titulo}</Text>
       </View>
     );
@@ -353,7 +353,7 @@ function Test({ preguntas, onAccion, onTerminar }) {
         const mostrar = respondida || abiertas[k];
         return (
           <View key={k} style={e.pregunta}>
-            <Text style={e.preguntaNum}>PREGUNTA {k + 1} DE {preguntas.length}</Text>
+            <Text style={e.preguntaNum}>Pregunta {k + 1} de {preguntas.length}</Text>
             <Texto tramos={p.enunciado} estilo={e.preguntaTxt} onAccion={onAccion} />
             {p.opciones.map((o, i) => {
               const esCorrecta = respondida && i === p.correcta;
@@ -407,12 +407,12 @@ function Test({ preguntas, onAccion, onTerminar }) {
 function AvisoLegal({ leccion, onAccion }) {
   return (
     <View style={e.legal}>
-      <Text style={e.legalTit}>AVISO IMPORTANTE</Text>
+      <Text style={e.legalTit}>Aviso importante</Text>
       {AVISO_COMUN.map((tramos, k) => <Texto key={k} tramos={tramos} estilo={e.legalTxt} onAccion={onAccion} />)}
       {leccion && leccion.notaLegal.length ? (
         <View style={[e.legalPropio, leccion.avisoReforzado && e.legalReforzado]}>
           <Text style={[e.legalEtiqueta, leccion.avisoReforzado && e.legalEtiquetaReforzada]}>
-            {leccion.avisoReforzado ? 'AVISO REFORZADO PARA ESTA LECCIÓN' : 'SOBRE ESTA LECCIÓN'}
+            {leccion.avisoReforzado ? 'Aviso reforzado para esta lección' : 'Sobre esta lección'}
           </Text>
           {leccion.notaLegal.map((b, k) => (
             <Texto key={k} tramos={b.texto} estilo={[e.legalTxt, leccion.avisoReforzado && e.legalTxtReforzado]} onAccion={onAccion} />
@@ -483,7 +483,7 @@ function Tabla({ b, onAccion }) {
         <View style={[e.tablaFila, e.tablaCab]}>
           {b.cabecera.map((c, k) => (
             <View key={k} style={[e.tablaCelda, { width: ancho }]}>
-              <Text style={e.tablaCabTxt}>{c.map((t) => t.v || '').join('').toUpperCase()}</Text>
+              <Text style={e.tablaCabTxt}>{c.map((t) => t.v || '').join('')}</Text>
             </View>
           ))}
         </View>
@@ -510,7 +510,7 @@ function Acciones({ tramos, onAccion }) {
           return (
             <View key={k} style={e.accionPronto} accessible accessibilityLabel={`${destino.etiqueta}: próximamente`}>
               <Text style={e.accionProntoTxt}>{destino.etiqueta}</Text>
-              <Text style={e.pronto} numberOfLines={1}>PRÓXIMAMENTE</Text>
+              <Text style={e.pronto} numberOfLines={1}>Próximamente</Text>
             </View>
           );
         }
@@ -558,9 +558,9 @@ const e = StyleSheet.create({
   pulsado: { opacity: 0.82, transform: [{ scale: 0.99 }] },
   cab: {
     flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: UI.margen, paddingVertical: 12,
-    backgroundColor: C.noche2, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2,
+    backgroundColor: C.noche2, borderBottomWidth: 1, borderBottomColor: C.linea2,
   },
-  cabEtiqueta: { ...T.etiqueta, color: C.senal },
+  cabEtiqueta: { ...T.etiqueta, color: C.tx3 },
   cabTitulo: { ...T.ficha, color: C.tx, marginTop: 2 },
   boton: {
     width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center',
@@ -570,9 +570,9 @@ const e = StyleSheet.create({
   cerrarTxt: { fontFamily: F.media, fontSize: 15, color: C.tx2 },
   /* En tabletas el texto no se estira de lado a lado: columna de lectura. */
   cuerpo: { padding: UI.margen, paddingBottom: 48, width: '100%', maxWidth: 720, alignSelf: 'center' },
-  aviso: { ...T.menor, color: '#F2B23C', backgroundColor: '#2B2416', padding: 10, borderRadius: R.s, marginBottom: 14 },
+  aviso: { ...T.menor, color: C.aviso, backgroundColor: C.avisoT, padding: 10, borderRadius: R.m, marginBottom: 14 },
 
-  sobrelinea: { ...T.etiqueta, color: C.senal, marginBottom: 8 },
+  sobrelinea: { ...T.etiqueta, color: C.tx3, marginBottom: 8 },
   titular: { ...T.titular, color: C.tx, marginBottom: 12 },
   entradilla: { ...T.cuerpo, fontSize: 15.5, lineHeight: 23, color: C.tx2, marginBottom: 16 },
   negrita: { fontFamily: F.semi, color: C.tx },
@@ -581,7 +581,7 @@ const e = StyleSheet.create({
   apagado: { color: C.tx3 },
 
   progreso: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.m, padding: 14, marginBottom: 12,
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.l, padding: 14, marginBottom: 12,
   },
   progresoBarra: { flexDirection: 'row', height: 8, borderRadius: 4, backgroundColor: C.sup3, overflow: 'hidden', marginBottom: 9 },
   progresoRelleno: { backgroundColor: C.senal },
@@ -589,16 +589,16 @@ const e = StyleSheet.create({
 
   extra: {
     backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34,
-    borderRadius: R.ficha, padding: 18, marginBottom: 18,
+    borderRadius: R.l, padding: 18, marginBottom: 18,
   },
   extraCab: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 },
-  extraIcono: { width: 44, height: 44, borderRadius: R.s, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center' },
-  extraIconoTxt: { fontFamily: F.mono, fontSize: 13, color: C.noche },
-  extraEtiqueta: { ...T.etiqueta, flex: 1, color: C.senal },
+  extraIcono: { width: 44, height: 44, borderRadius: R.m, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center' },
+  extraIconoTxt: { fontFamily: F.semi, fontSize: 13, color: C.noche },
+  extraEtiqueta: { ...T.etiqueta, flex: 1, color: C.tx3 },
   extraTit: { ...T.seccion, color: C.tx, marginBottom: 8 },
   extraSub: { ...T.cuerpo, color: C.tx2 },
   extraPasos: { ...T.menor, color: C.senalCl, marginTop: 14, marginBottom: 16 },
-  extraAccion: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, minHeight: 48, padding: 12, backgroundColor: C.senal, borderRadius: R.s },
+  extraAccion: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, minHeight: 48, padding: 12, backgroundColor: C.senal, borderRadius: R.m },
   extraAccionTxt: { ...T.cuerpoFte, color: C.noche, flexShrink: 1 },
   extraAlternativa: { ...T.menor, color: C.tx2, marginTop: 10 },
 
@@ -606,29 +606,29 @@ const e = StyleSheet.create({
   nivelTit: { ...T.seccion, color: C.tx },
   nivelPregunta: { ...T.cuerpoFte, color: C.tx2, marginTop: 3, marginBottom: 12 },
   tarjeta: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.ficha, padding: 15, marginBottom: 10,
+    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.l, padding: 15, marginBottom: 10,
   },
   tarjetaPronto: { backgroundColor: 'transparent', borderStyle: 'dashed', borderColor: C.linea2 },
   tarjetaFila: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 6 },
-  tarjetaNum: { fontFamily: F.mono, fontSize: 18, color: C.senal },
-  tarjetaMeta: { ...T.dato, fontSize: 10, color: C.tx3, flex: 1 },
+  tarjetaNum: { fontFamily: F.semi, fontSize: 18, fontVariant: ['tabular-nums'], color: C.senal },
+  tarjetaMeta: { ...T.dato, fontSize: 12, color: C.tx3, flex: 1 },
   tarjetaTit: { ...T.ficha, fontSize: 16, color: C.tx },
   tarjetaTitPronto: { color: C.tx2 },
   tarjetaResumen: { ...T.menor, color: C.tx3, marginTop: 5 },
   tarjetaEstado: { ...T.menor, fontFamily: F.semi, color: C.senal, marginTop: 8 },
-  tarjetaEstadoPronto: { color: '#F2B23C' },
+  tarjetaEstadoPronto: { color: C.aviso },
 
   meta: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 10 },
-  dato: { backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.xs, paddingHorizontal: 10, paddingVertical: 7 },
-  datoEtiqueta: { ...T.etiqueta, fontSize: 9, color: C.tx3, marginBottom: 2 },
+  dato: { backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.s, paddingHorizontal: 10, paddingVertical: 7 },
+  datoEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 2 },
   datoValor: { ...T.menor, color: C.tx },
   leidaAviso: { ...T.menor, color: C.senal, marginBottom: 6 },
 
   tldr: {
-    backgroundColor: '#0F1F18', borderWidth: 1, borderColor: C.senal34, borderRadius: R.ficha,
+    backgroundColor: '#0F1F18', borderWidth: 1, borderColor: C.senal34, borderRadius: R.l,
     padding: 16, marginTop: 8, marginBottom: 18,
   },
-  tldrTit: { ...T.etiqueta, color: C.senal, marginBottom: 12 },
+  tldrTit: { ...T.etiqueta, color: C.tx3, marginBottom: 12 },
   tldrFila: { flexDirection: 'row', gap: 11, marginBottom: 12 },
   tldrNum: { width: 26, height: 26, borderRadius: 13, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center', marginTop: 1 },
   tldrNumTxt: { fontFamily: F.extra, fontSize: 13, color: C.noche },
@@ -645,7 +645,7 @@ const e = StyleSheet.create({
   listaMarca: { ...T.cuerpo, fontSize: 16.5, lineHeight: 27, color: C.senal, minWidth: 18 },
   listaTxt: { flex: 1, marginBottom: 8 },
 
-  recuadro: { borderRadius: R.m, borderWidth: 1, padding: 14, paddingBottom: 2, marginBottom: 16 },
+  recuadro: { borderRadius: R.l, borderWidth: 1, padding: 14, paddingBottom: 2, marginBottom: 16 },
   recuadroIdea: { backgroundColor: C.senal10, borderColor: C.senal34 },
   recuadroAviso: { backgroundColor: 'rgba(255,170,64,0.09)', borderColor: 'rgba(255,170,64,0.34)' },
   recuadroTit: { fontFamily: F.negrita, fontSize: 15, lineHeight: 20, marginBottom: 9 },
@@ -653,94 +653,94 @@ const e = StyleSheet.create({
   recuadroTitAviso: { color: '#FFAA40' },
   cita: { borderLeftWidth: 2, borderLeftColor: C.linea2, paddingLeft: 12, marginBottom: 12 },
 
-  tabla: { marginBottom: 16, borderWidth: 1, borderColor: C.linea, borderRadius: R.s, backgroundColor: C.noche2 },
+  tabla: { marginBottom: 16, borderWidth: 1, borderColor: C.linea, borderRadius: R.m, backgroundColor: C.noche2 },
   tablaContenido: { flexGrow: 1 },
-  tablaFila: { flexDirection: 'row', borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2 },
+  tablaFila: { flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: C.linea2 },
   tablaFilaUltima: { borderBottomWidth: 0 },
   tablaCab: { backgroundColor: C.sup },
   tablaCelda: { padding: 10 },
-  tablaCabTxt: { ...T.etiqueta, fontSize: 9.5, color: C.senal },
+  tablaCabTxt: { ...T.etiqueta, color: C.tx3 },
   tablaTxt: { ...T.menor, color: C.tx2 },
   tablaTxtPrimera: { fontFamily: F.semi, color: C.tx },
 
-  glosario: { backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.s, padding: 13, marginBottom: 8 },
+  glosario: { backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.m, padding: 13, marginBottom: 8 },
   glosarioTermino: { ...T.cuerpoFte, fontFamily: F.negrita, color: C.tx, marginBottom: 4 },
 
-  pregunta: { backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.ficha, padding: 14, marginBottom: 12 },
-  preguntaNum: { ...T.etiqueta, fontSize: 9.5, color: C.tx3, marginBottom: 6 },
+  pregunta: { backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.l, padding: 14, marginBottom: 12 },
+  preguntaNum: { ...T.etiqueta, color: C.tx3, marginBottom: 6 },
   preguntaTxt: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 15.5, lineHeight: 22, color: C.tx, marginBottom: 6 },
   opcion: {
     flexDirection: 'row', alignItems: 'flex-start', gap: 11, padding: 11, minHeight: UI.tactil, marginTop: 8,
-    borderRadius: R.s, borderWidth: 1, borderColor: C.linea, backgroundColor: C.noche2,
+    borderRadius: R.m, borderWidth: 1, borderColor: C.linea, backgroundColor: C.noche2,
   },
   opcionBien: { borderColor: C.senal, backgroundColor: C.senal10 },
   opcionMal: { borderColor: C.coral, backgroundColor: C.coral10 },
   letra: { width: 26, height: 26, borderRadius: 13, borderWidth: 1, borderColor: C.linea2, alignItems: 'center', justifyContent: 'center' },
   letraBien: { backgroundColor: C.senal, borderColor: C.senal },
   letraMal: { backgroundColor: C.coral, borderColor: C.coral },
-  letraTxt: { fontFamily: F.mono, fontSize: 12, color: C.tx2 },
+  letraTxt: { fontFamily: F.semi, fontSize: 12, color: C.tx2 },
   letraTxtMarcada: { color: C.noche },
   opcionTxt: { ...T.cuerpo, color: C.tx2, flex: 1 },
   opcionTxtBien: { color: C.tx },
   veredicto: { ...T.cuerpoFte, fontFamily: F.semi, marginTop: 12 },
   veredictoBien: { color: C.senal },
   veredictoMal: { color: C.coral },
-  explicacion: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, marginTop: 12, paddingTop: 10 },
+  explicacion: { borderTopWidth: 1, borderTopColor: C.linea2, marginTop: 12, paddingTop: 10 },
   explicacionTit: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx, marginBottom: 6 },
   verRespuesta: { marginTop: 10, paddingVertical: 8, alignSelf: 'flex-start' },
   verRespuestaTxt: { ...T.menor, color: C.tx3, textDecorationLine: 'underline' },
-  resumen: { backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34, borderRadius: R.m, padding: 14, marginBottom: 6 },
+  resumen: { backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34, borderRadius: R.l, padding: 14, marginBottom: 6 },
   resumenTxt: { ...T.cuerpoFte, fontFamily: F.semi, color: C.tx },
 
   paso: {
-    backgroundColor: '#0F1F18', borderWidth: 1, borderColor: C.senal34, borderRadius: R.ficha,
+    backgroundColor: '#0F1F18', borderWidth: 1, borderColor: C.senal34, borderRadius: R.l,
     padding: 16, paddingBottom: 6, marginTop: 22, marginBottom: 16,
   },
   pasoTit: { ...T.seccion, fontSize: 19, lineHeight: 24, color: C.tx, marginBottom: 12 },
   acciones: { gap: 10, marginBottom: 14 },
   accion: {
-    minHeight: UI.boton, borderRadius: R.s, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center',
+    minHeight: UI.boton, borderRadius: R.m, backgroundColor: C.senal, alignItems: 'center', justifyContent: 'center',
     paddingHorizontal: 16, paddingVertical: 12,
   },
   accionTxt: { fontFamily: F.negrita, fontSize: 15, color: C.noche, textAlign: 'center' },
   accionPronto: {
-    minHeight: UI.tactil, borderRadius: R.s, borderWidth: 1, borderStyle: 'dashed', borderColor: C.linea2,
+    minHeight: UI.tactil, borderRadius: R.m, borderWidth: 1, borderStyle: 'dashed', borderColor: C.linea2,
     flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 8,
     paddingHorizontal: 14, paddingVertical: 10,
   },
   accionProntoTxt: { fontFamily: F.semi, fontSize: 14.5, color: C.tx2, flexShrink: 1, textAlign: 'center' },
   pronto: {
-    ...T.etiqueta, fontSize: 9, color: '#FFAA40', borderWidth: 1, borderColor: 'rgba(255,170,64,0.34)',
-    borderRadius: R.pastilla, paddingHorizontal: 7, paddingVertical: 2, overflow: 'hidden', flexShrink: 0,
+    ...T.etiqueta, color: '#FFAA40', borderWidth: 1, borderColor: 'rgba(255,170,64,0.34)',
+    borderRadius: R.p, paddingHorizontal: 7, paddingVertical: 2, overflow: 'hidden', flexShrink: 0,
   },
   enlinea: { fontFamily: F.negrita, color: C.senal, textDecorationLine: 'underline' },
   enlineaPronto: { fontFamily: F.semi, color: C.tx },
 
   marcar: {
-    minHeight: UI.boton, borderRadius: R.s, borderWidth: 1, borderColor: C.linea2, backgroundColor: C.sup,
+    minHeight: UI.boton, borderRadius: R.m, borderWidth: 1, borderColor: C.linea2, backgroundColor: C.sup,
     alignItems: 'center', justifyContent: 'center', marginBottom: 14,
   },
   marcarOn: { borderColor: C.senal, backgroundColor: C.senal10 },
   marcarTxt: { fontFamily: F.semi, fontSize: 15, color: C.tx },
   marcarTxtOn: { color: C.senal },
   vecinas: { flexDirection: 'row', gap: 10, marginBottom: 20 },
-  vecina: { flex: 1, backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.m, padding: 12, minHeight: 88 },
+  vecina: { flex: 1, backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.l, padding: 12, minHeight: 88 },
   vecinaPronto: { backgroundColor: 'transparent', borderStyle: 'dashed', borderColor: C.linea2 },
-  vecinaEtiqueta: { ...T.etiqueta, fontSize: 9.5, color: C.senal, marginBottom: 6 },
-  vecinaPronta: { color: '#F2B23C', marginTop: -3 },
+  vecinaEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 6 },
+  vecinaPronta: { color: C.aviso, marginTop: -3 },
   vecinaTit: { ...T.menor, fontFamily: F.semi, color: C.tx },
 
-  legal: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, paddingTop: 16, marginTop: 8 },
+  legal: { borderTopWidth: 1, borderTopColor: C.linea2, paddingTop: 16, marginTop: 8 },
   legalTit: { ...T.etiqueta, color: C.tx3, marginBottom: 10 },
   legalTxt: { ...T.menor, fontSize: 12.5, lineHeight: 18.5, color: C.tx3, marginBottom: 9 },
-  legalPropio: { borderWidth: 1, borderColor: C.linea, borderRadius: R.s, padding: 12, paddingBottom: 3, marginTop: 4, marginBottom: 6 },
+  legalPropio: { borderWidth: 1, borderColor: C.linea, borderRadius: R.m, padding: 12, paddingBottom: 3, marginTop: 4, marginBottom: 6 },
   legalReforzado: { borderColor: 'rgba(255,170,64,0.34)', backgroundColor: 'rgba(255,170,64,0.08)' },
-  legalEtiqueta: { ...T.etiqueta, fontSize: 9, color: C.tx2, marginBottom: 8 },
+  legalEtiqueta: { ...T.etiqueta, color: C.tx2, marginBottom: 8 },
   legalEtiquetaReforzada: { color: '#FFAA40' },
   legalTxtReforzado: { color: '#F2CB94' },
-  revision: { ...T.dato, fontSize: 10.5, lineHeight: 16, color: C.tx3, marginTop: 10, marginBottom: 14 },
+  revision: { ...T.dato, fontSize: 12, lineHeight: 16, color: C.tx3, marginTop: 10, marginBottom: 14 },
   web: {
-    minHeight: UI.tactil, borderRadius: R.s, borderWidth: 1, borderColor: C.linea2,
+    minHeight: UI.tactil, borderRadius: R.m, borderWidth: 1, borderColor: C.linea2,
     alignItems: 'center', justifyContent: 'center', paddingHorizontal: 14,
   },
   webTxt: { fontFamily: F.semi, fontSize: 14, color: C.tx2 },

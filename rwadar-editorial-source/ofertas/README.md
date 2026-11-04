@@ -7,13 +7,16 @@ Cada ficha del catálogo tiene su propia imagen, `oferta-<slug>.webp`
   fuente oficial (tipo de edificio, plantas, fachada, entorno: palmeras, mar,
   montaña, viñedo…), retocada para que se vea como una foto de inmobiliaria
   y no como un dibujo;
-- a la izquierda, sobre un velo oscuro, el lugar y **tres pasos** muy cortos:
-  qué haces, qué pasa y cómo recibes o sales.
+- limpia: sin texto dibujado ni velo (desde el 03/11/2026). El lugar y los
+  **tres pasos** (qué haces, qué pasa y cómo recibes o sales) van como texto en
+  el manifiesto, en el texto alternativo y en la ficha.
 
 No son fotos del activo real: no tenemos derechos sobre las fotos de los
-emisores. La web y la app ponen encima la etiqueta «Ilustración editorial» y
-el texto alternativo dice que la imagen está generada con IA y que no es una
-foto del activo real. Si un emisor da licencia por escrito, se puede
+emisores. La web ya no pone ninguna etiqueta encima de la imagen: el texto
+alternativo empieza por «Ilustración editorial», dice que la imagen está
+generada con IA y que no es una foto del activo real, y una línea pequeña
+bajo la lista, los carruseles y el detalle dice «Imágenes ilustrativas, no
+fotos del activo». Si un emisor da licencia por escrito, se puede
 sustituir.
 
 Si una ficha no tiene foto, `generar.mjs` usa su escena en SVG (el dibujo
@@ -79,3 +82,27 @@ ilustración de su categoría: la web, la app y `npm run catalogo` lo avisan.
 Cambiar las imágenes cambia la huella del contenido aprobado: hace falta una
 aprobación nueva en `rwadar-app/data/relanzamiento/estado.json` para publicar
 la web, y una versión nueva de la app para que la app las enseñe.
+
+## Transparencia por oferta
+
+`transparencia.json` guarda, para cada oferta, dos de las cinco
+comprobaciones de transparencia (quien la vende está supervisado y registrado
+en la CNMV; hay un documento oficial que cubre su venta en España), con su
+motivo, su fuente y su fecha; los puntos fuertes con fuente; el mínimo y la
+salida en forma corta, y la fecha de alta en el registro. Las otras tres
+(se contrata hoy desde España, mínimo y salida documentados, revisión vigente)
+las calcula la web con el catálogo.
+
+```
+node rwadar-editorial-source/ofertas/transparencia.mjs --comprobar   # valida y mira que la web y la app estén al día
+node rwadar-editorial-source/ofertas/transparencia.mjs               # escribe el bloque de la web y lib/transparencia-contenido.js
+```
+
+Comprueba que cada oferta esté en el catálogo publicado y con la misma
+`verificadaEl`, que los textos cortos (puntos, mínimo, salida) no pasen de 40
+caracteres, que ningún texto lleve «%», «rentab», «garantiz», «benefici»,
+«gananci», «recomend» ni «mejor», y que las fuentes sean https. En cada ciclo
+del catálogo se revisa junto con las fichas: si cambia la `verificadaEl` de una
+oferta y no se revisa aquí, `npm test` lo para y la web no enseña nada de esa
+oferta (falla cerrado). Es una comprobación de la documentación, no una
+recomendación de inversión, y no da notas («x/5»).
