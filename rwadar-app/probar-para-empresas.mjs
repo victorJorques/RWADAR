@@ -37,8 +37,8 @@ paso('declara un canal exploratorio bloqueado hasta la aprobación legal',
   && /data-commercial-status="legal-approval-pending"/.test(pagina)
   && /data-revenue-model="in-app-advertising-pending"/.test(pagina)
   && /data-investor-commission="0"/.test(pagina)
-  && texto.includes('no ofrece ahora patrocinio, precios, contratacion, facturacion ni publicacion')
-  && texto.includes('no es una oferta comercial'));
+  // La frase «no es una oferta comercial» ya no se fija (decisión de Víctor, 04/11/2026: sin reglas de redacción).
+  && texto.includes('no ofrece ahora patrocinio, precios, contratacion, facturacion ni publicacion'));
 
 paso('no inventa un precio ni presenta presupuesto, contrato o factura como disponibles',
   !/\b[1-9]\d*(?:[.,]\d+)?\s*(?:€|eur)\b/i.test(pagina)
