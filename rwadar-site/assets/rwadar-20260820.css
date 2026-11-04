@@ -2148,8 +2148,8 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
   .rel .inicio-hud li.inicio-hud-4{flex-direction:column;align-items:flex-end;gap:2px}
   .rel .inicio-hud span{white-space:nowrap}
 }
-/* Pantallas bajas: si se ve el botón, se ve el aviso (va antes). */
-@media (max-height:700px){
+/* Pantallas bajas: si se ve el botón, se ve el aviso (va antes). En escritorio, no. */
+@media (max-height:700px) and (max-width:1023px){
   .rel-portada{grid-template-rows:minmax(140px,1fr) auto}
   .rel-portada-txt{display:flex;flex-direction:column;align-items:stretch}
   .rel-portada .rel-aviso{order:1}
@@ -2168,3 +2168,99 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
 .movil-ui body:not([data-movil-pestana="cuenta"])>[data-selector-idioma]{display:none}
 /* La hoja de ficha cerrada (fuera de pantalla) no oscurece el borde derecho. */
 .panel[inert]{box-shadow:none}
+
+/* ============ 22 · INICIO EN ESCRITORIO (1024 px o más) ============
+   La misma historia que en el móvil, con el mismo texto: portada a dos
+   columnas, capítulos a 720 px de lectura y los carruseles como cuadrícula
+   a lo ancho. El radar interactivo baja a Plataformas (lo mueve el JS). */
+@media (min-width:1024px){
+.escritorio-relato #movilPanelInicio:not([hidden]){display:block}
+.escritorio-relato .portada{padding-block:8px 0}
+.escritorio-relato .portada-in{display:block}
+.escritorio-relato .portada :is(.portada-txt,.marcador){display:none}
+.escritorio-relato .rel{--rel-col:720px;--rel-ancho:min(1120px,calc(100vw - 96px));max-width:1300px;margin:0 auto;padding:0 24px 72px}
+.escritorio-relato .rel>:not(.rel-portada){max-width:var(--rel-col);margin-inline:auto}
+/* Portada: texto a la izquierda, el radar grande a la derecha. */
+.escritorio-relato .rel-portada{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);grid-template-rows:auto;align-items:center;column-gap:clamp(40px,5vw,80px);
+  min-height:clamp(520px,calc(100svh - 180px),760px);margin:0;padding:32px 0 40px;
+  background:radial-gradient(closest-side at 75% 50%,rgba(37,227,154,.09),transparent)}
+.escritorio-relato .rel-portada-txt{grid-column:1;grid-row:1;max-width:560px;padding:0}
+.escritorio-relato .rel-radar{grid-column:2;grid-row:1;height:clamp(400px,calc(100svh - 300px),600px);margin:0}
+.escritorio-relato .rel .rel-radar .inicio-radar{position:absolute;inset:56px 0;width:100%;height:calc(100% - 112px);margin:0}
+.escritorio-relato .inicio-hud{position:absolute;inset:0;margin:0;padding:0;list-style:none;pointer-events:none}
+.escritorio-relato .rel .inicio-hud li{position:absolute;display:flex;flex-direction:column;gap:6px;max-width:30%}
+.escritorio-relato .rel .inicio-hud-1,.escritorio-relato .rel .inicio-hud-2{top:0}
+.escritorio-relato .rel .inicio-hud-3,.escritorio-relato .rel .inicio-hud-4{bottom:0}
+.escritorio-relato .rel .inicio-hud-1,.escritorio-relato .rel .inicio-hud-3{left:0}
+.escritorio-relato .rel .inicio-hud-2,.escritorio-relato .rel .inicio-hud-4{right:0;align-items:flex-end;text-align:right}
+.escritorio-relato .rel .inicio-hud b{font-size:2.5rem}
+.escritorio-relato .rel .inicio-hud-4 b{font-size:1.0625rem}
+.escritorio-relato .rel .inicio-hud span{font-size:.8125rem}
+.escritorio-relato .rel-ante{font-size:.8125rem;margin-bottom:16px}
+.escritorio-relato .rel-portada-tit{font-size:clamp(2.75rem,4.4vw,4rem);line-height:1.03;letter-spacing:-.035em}
+.escritorio-relato .rel-portada-sub{margin-top:20px;font-size:1.1875rem;line-height:1.55}
+.escritorio-relato .rel-cta{width:auto;min-height:56px;margin-top:32px;padding:0 32px;font-size:1rem}
+.escritorio-relato .rel-portada .rel-aviso{max-width:46ch;margin-top:20px;font-size:.9375rem}
+.escritorio-relato .rel-portada-pie{justify-content:flex-start;gap:24px;margin:24px -8px 0}
+/* Capítulos: columna de lectura con cifras grandes. */
+.escritorio-relato .rel-nuevas{padding:72px 0 32px}
+.escritorio-relato .rel-cap{padding:112px 0 48px}
+.escritorio-relato :is(.rel-escaparate,.rel-empieza){padding:112px 0 48px}
+.escritorio-relato .rel-num{font-size:.875rem;margin-bottom:24px}
+.escritorio-relato .rel-num-n::after{width:40px}
+.escritorio-relato .rel-tit{font-size:2.75rem;line-height:1.08;letter-spacing:-.03em}
+.escritorio-relato .rel-define{margin-top:24px}
+.escritorio-relato .rel-define-txt{font-size:1.5rem;line-height:1.4}
+.escritorio-relato :is(.rel-txt,.rel-aviso,.rel-cifra-pie,.rel-par-et,.rel-par-pie){font-size:1.125rem;line-height:1.6}
+.escritorio-relato .rel-txt{margin-top:20px}
+.escritorio-relato .rel-cifra{margin-top:48px}
+.escritorio-relato .rel-cifra-n{font-size:7rem;letter-spacing:-.045em}
+.escritorio-relato .rel-par{gap:32px;margin-top:40px}
+.escritorio-relato .rel-par-n{font-size:3.5rem}
+.escritorio-relato .rel-barra-pista{height:10px}
+.escritorio-relato .rel-puente{margin-top:48px;font-size:2.75rem;line-height:1.08}
+.escritorio-relato :is(.rel-bloque,.rel-cadena){margin-top:32px;padding:28px 32px}
+.escritorio-relato .rel-bloque-txt p{font-size:1.25rem}
+.escritorio-relato .rel-cadena{column-gap:40px}
+.escritorio-relato .rel-nodo{min-height:40px;padding:10px 16px;font-size:.9375rem}
+.escritorio-relato .rel-nodo+.rel-nodo{margin-top:20px}
+.escritorio-relato .rel-nodo+.rel-nodo::before{left:20px;top:-20px;height:20px}
+.escritorio-relato .rel-dato p+p{font-size:1.0625rem}
+.escritorio-relato .rel-tabla td{padding:16px 24px 16px 0;font-size:1.0625rem}
+.escritorio-relato :is(.rel-mas li,.rel-cinco li){font-size:1rem}
+/* Carruseles como cuadrícula: más ancha que la columna, sin flechas. */
+.escritorio-relato .rel-quien{margin-top:64px}
+.escritorio-relato :is(.rel-quien-pos,.rel-quien-mandos){display:none}
+.escritorio-relato .rel-quien-tit{font-size:1.5rem}
+.escritorio-relato :is(.rel-quien-lista,.rel-tarjetas){grid-auto-flow:row;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;
+  width:var(--rel-ancho);margin:24px 0 0 calc((var(--rel-col) - var(--rel-ancho))/2);padding:0;overflow:visible;scroll-snap-type:none}
+/* De tres en tres; cuatro, en una fila; si sobran dos, a medias. */
+.escritorio-relato :is(.rel-quien-lista,.rel-tarjetas)>li{grid-column:span 4}
+.escritorio-relato :is(.rel-quien-lista,.rel-tarjetas)>li:first-child:nth-last-child(4),.escritorio-relato :is(.rel-quien-lista,.rel-tarjetas)>li:first-child:nth-last-child(4)~li{grid-column:span 3}
+.escritorio-relato :is(.rel-quien-lista,.rel-tarjetas)>li:nth-last-child(2):nth-child(3n+1),.escritorio-relato :is(.rel-quien-lista,.rel-tarjetas)>li:last-child:nth-child(3n+2){grid-column:span 6}
+.escritorio-relato .rel-q{padding:24px}
+.escritorio-relato .rel-q-cifra{font-size:2.25rem}
+.escritorio-relato .rel-nuevas-tit{font-size:1.75rem}
+.escritorio-relato .rel-tarjeta article{transition:border-color var(--t-2) var(--ease)}
+.escritorio-relato .rel-tarjeta article:hover{border-color:var(--tx-3)}
+.escritorio-relato .rel-nueva-abrir:hover::after{background:none}
+.escritorio-relato .rel-botones{display:flex;gap:16px}
+.escritorio-relato .rel-botones>*{width:auto;min-height:56px;padding:0 32px}
+.escritorio-relato .rel-legal{padding-top:48px}
+.escritorio-relato .rel-refs-grupo{scroll-margin-top:calc(var(--rel-arriba,68px) + 16px)}
+.escritorio-relato .rel .movil-nota-final{color:var(--tx-3);font-size:.8125rem}
+/* Los títulos de «Recién añadidas» salen enteros: aquí hay sitio debajo. */
+.escritorio-relato .rel-nueva h3 span{-webkit-line-clamp:none}
+/* El logo (#top) lleva al principio de la página, sin tapar la portada. */
+.escritorio-relato main#top{scroll-margin-top:100vh}
+}
+/* Escritorio bajo: si se ve el botón, se ve el aviso (va antes) y la portada encoge. */
+@media (min-width:1024px) and (max-height:760px){
+.escritorio-relato .rel-portada-txt{display:flex;flex-direction:column;align-items:flex-start}
+.escritorio-relato .rel-portada .rel-aviso{order:1;margin-top:16px}
+.escritorio-relato .rel-cta{order:2;margin-top:20px}
+.escritorio-relato .rel-portada-pie{order:3;margin-top:16px}
+.escritorio-relato .rel-portada-tit{font-size:clamp(2.25rem,3.6vw,3.25rem)}
+.escritorio-relato .rel-portada-sub{margin-top:16px;font-size:1.0625rem}
+.escritorio-relato .rel-portada{padding:24px 0 32px}
+}

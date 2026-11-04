@@ -21,26 +21,26 @@ leccion_siguiente: cuanto-cuesta-tokenizar
 **Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 > **Antes de empezar**
-> Esta es la lección con mayor carga normativa de toda la Academy y la que antes queda desactualizada. Te explicamos **cómo funciona el mecanismo de calificación**, no cómo calificar tu caso. La calificación concreta de una emisión solo puede hacerla un profesional habilitado con la documentación delante. Comprueba siempre la fecha de revisión que figura arriba.
+> Esta es la lección con más normativa de toda la Academy y la que antes se queda desactualizada. Te explicamos **cómo funciona el mecanismo de calificación**, no cómo calificar tu caso. La calificación concreta de una emisión solo puede hacerla un profesional habilitado con la documentación delante. Comprueba siempre la fecha de revisión que figura arriba.
 
 ---
 
 ### En 30 segundos (TL;DR)
 
 1. **La calificación no depende de la tecnología ni del nombre que le pongas.** Depende de una sola cosa: **qué derecho estás vendiendo**.
-2. **Si vendes propiedad fraccionada de un activo que renta, participación en beneficios o un derecho de crédito, casi siempre estás emitiendo un instrumento financiero** — territorio MiFID II y ley española del mercado de valores, no MiCA.
+2. **Si vendes propiedad fraccionada de un activo que renta, participación en beneficios o un derecho de crédito, casi siempre estás emitiendo un instrumento financiero.** Se rige por MiFID II (la norma europea de los mercados de valores) y por la ley española del mercado de valores, no por MiCA (la norma europea de los criptoactivos).
 3. **Caer en ese cajón no es una mala noticia.** Es más lento y más caro, pero es lo que convierte tu emisión en algo defendible ante un inversor institucional y ante un supervisor.
 
 ---
 
-### La pregunta de la que cuelga absolutamente todo
+### La pregunta de la que depende todo
 
 En la Lección 1 vimos que el token es la anotación de un derecho. Ahora toca la consecuencia práctica de aquella idea: **el régimen legal que te aplica lo determina el derecho que representas, no el software con el que lo registras**.
 
-Da igual que lo llames token, participación digital, unidad o cualquier otra cosa. El regulador mira a través de la etiqueta y pregunta: *¿qué recibe exactamente la persona que paga?*
+Da igual que lo llames token, participación digital, unidad o cualquier otra cosa. Al regulador no le importa la etiqueta. Pregunta: *¿qué recibe exactamente la persona que paga?*
 
 > **La idea central**
-> No preguntes «¿esto es un security token o un utility token?». Pregunta: **«¿qué derecho concreto adquiere quien compra, y de dónde espera obtener un beneficio?»**. La respuesta a esa pregunta decide en qué cajón caes, y el cajón decide todo lo demás: qué registro necesitas, qué información debes publicar, quién puede vender la emisión y dónde puede negociarse después.
+> No preguntes «¿esto es un *security token* (un token que es un valor) o un *utility token* (un token de uso)?». Pregunta: **«¿qué derecho concreto adquiere quien compra, y de dónde espera obtener un beneficio?»**. La respuesta a esa pregunta decide en qué cajón caes, y el cajón decide todo lo demás: qué registro necesitas, qué información debes publicar, quién puede vender la emisión y dónde puede negociarse después.
 
 ---
 
@@ -48,19 +48,19 @@ Da igual que lo llames token, participación digital, unidad o cualquier otra co
 
 #### Cajón 1 · Instrumento financiero
 
-Es el territorio de MiFID II y, en España, de la ley del mercado de valores y de los servicios de inversión y su desarrollo reglamentario. Caes aquí cuando lo emitido es, en esencia, un valor negociable: participaciones en el capital de una sociedad, obligaciones o bonos, derechos de crédito, o derechos sobre los flujos que genera un activo gestionado por otro.
+Aquí se aplican MiFID II y, en España, la ley del mercado de valores y de los servicios de inversión y su desarrollo reglamentario. Caes aquí cuando lo emitido es, en esencia, un valor negociable: participaciones en el capital de una sociedad, obligaciones o bonos, derechos de crédito, o derechos sobre los flujos que genera un activo gestionado por otro.
 
 **Las tres señales que apuntan a este cajón:**
 
 - El comprador **espera un rendimiento** derivado de la gestión o el esfuerzo de un tercero, no de su propio uso del bien.
-- Lo emitido es **fungible y transmisible**, pensado para circular entre inversores.
-- Existe o se anticipa **un mercado** donde esas unidades cambien de manos.
+- Lo emitido es **fungible** (cada unidad es igual a otra y se pueden intercambiar) **y transmisible**, pensado para circular entre inversores.
+- Existe o se prevé **un mercado** donde esas unidades se compren y se vendan.
 
 Si las tres se cumplen, la conversación con tu despacho empieza por aquí, se llame como se llame el producto.
 
 #### Cajón 2 · Criptoactivo regulado por MiCA
 
-MiCA —el reglamento europeo de mercados de criptoactivos— cubre los criptoactivos que **no** son instrumentos financieros: fichas referenciadas a activos, fichas de dinero electrónico y la categoría general de «otros criptoactivos», donde encajan los tokens de utilidad y las criptomonedas.
+MiCA —el reglamento europeo de mercados de criptoactivos— cubre los criptoactivos que **no** son instrumentos financieros: fichas referenciadas a activos y fichas de dinero electrónico (así llama el reglamento en castellano a dos tipos de *stablecoins*), y la categoría general de «otros criptoactivos», donde encajan los tokens de utilidad y las criptomonedas.
 
 El propio reglamento excluye expresamente de su ámbito lo que ya es instrumento financiero. Es decir: los cajones 1 y 2 **no se solapan**. O una cosa o la otra.
 
@@ -70,30 +70,30 @@ En España, MiCA es plenamente aplicable desde el 1 de julio de 2026, al termina
 
 Piezas verdaderamente únicas y no fungibles —una obra concreta, un coleccionable irrepetible— quedan en principio fuera de MiCA por su carácter no fungible.
 
-> **Atención — la trampa del fraccionamiento**
-> La exclusión de las piezas únicas decae cuando se emiten en serie o **se fraccionan en unidades intercambiables entre sí**. Y fraccionar es justamente lo que hace una tokenización. Si tu plan es dividir una obra de arte en mil participaciones que se compran esperando revalorización, es muy probable que no estés en el cajón 3 — sino en el 1. Esta es la confusión más frecuente en el arte tokenizado.
+> **Atención: la trampa del fraccionamiento**
+> La exclusión de las piezas únicas deja de aplicarse cuando se emiten en serie o **se fraccionan en unidades intercambiables entre sí**. Y fraccionar es justamente lo que hace una tokenización. Si tu plan es dividir una obra de arte en mil participaciones que se compran esperando revalorización, es muy probable que no estés en el cajón 3, sino en el 1. Esta es la confusión más frecuente en el arte tokenizado.
 
 ---
 
-### Por qué el RWA «de verdad» cae casi siempre en el cajón 1
+### Por qué los activos reales tokenizados caen casi siempre en el cajón 1
 
-Aquí está el mensaje que más dinero ahorra de toda esta lección. Buena parte del discurso comercial del sector habla el idioma de MiCA porque es el marco nuevo, mediático y aparentemente más accesible. Pero los activos que interesan a un dueño de patrimonio —un inmueble que renta, una cartera de préstamos, una participación en una pyme— generan derechos que son, por naturaleza, instrumentos financieros.
+Esta es la parte más importante de la lección. Muchos proveedores hablan sobre todo de MiCA, porque es la norma nueva, la que sale en los medios y la que parece más fácil de cumplir. Pero los activos que interesan a un dueño de patrimonio —un inmueble que renta, una cartera de préstamos, una participación en una pyme— generan derechos que son, por naturaleza, instrumentos financieros.
 
-Traducido: **la mayoría de proyectos de tokenización de activos reales no se rigen por MiCA**. Se rigen por la normativa de valores de toda la vida, que es más exigente, más lenta y más cara, pero también mucho más sólida.
+En resumen: **la mayoría de proyectos de tokenización de activos reales no se rigen por MiCA**. Se rigen por la normativa de valores de toda la vida, que es más exigente, más lenta y más cara, pero también mucho más sólida.
 
-Si un proveedor te presenta tu emisión inmobiliaria como un producto MiCA y no menciona ni el registro autorizado ni las obligaciones de información al inversor, hay dos posibilidades: o ha calificado la operación de una forma que conviene revisar con un tercero independiente, o está describiendo un producto distinto del que tú crees estar comprando. En ambos casos, la conversación se detiene y se lleva a un despacho.
+Si un proveedor te presenta tu emisión inmobiliaria como un producto MiCA y no menciona ni el registro autorizado ni las obligaciones de información al inversor, hay dos posibilidades: o ha calificado la operación de una forma que conviene revisar con un tercero independiente, o está describiendo un producto distinto del que tú crees estar comprando. En ambos casos, conviene parar y consultarlo con un despacho.
 
 ---
 
 ### Qué implica realmente caer en el cajón 1: las cuatro consecuencias
 
-#### 1. El registro deja de ser libre
+#### 1. Ya no vale cualquier registro
 
 Cuando lo emitido son valores negociables representados mediante registro distribuido, la ley española exige que exista una **entidad responsable de la inscripción y el registro** debidamente autorizada —típicamente entidades de crédito o empresas de servicios de inversión habilitadas para custodiar instrumentos financieros—, y un **documento de emisión** que describa los valores y las características técnicas del registro.
 
-Es la Condición que vimos en la Lección 2 y la que más candidatos elimina: no todo proveedor tecnológico puede ocupar esa posición.
+Es el rol de registro y custodia que vimos en la Lección 2, y el requisito que más candidatos elimina: no todo proveedor tecnológico puede ocupar esa posición.
 
-#### 2. Aparece la obligación de informar (o una exención que hay que ganarse)
+#### 2. Aparece la obligación de informar (o una exención que hay que justificar)
 
 Ofrecer valores al público activa, con carácter general, la obligación de publicar un **folleto** aprobado por el supervisor. Existen exenciones, y la mayoría de emisiones pequeñas se apoyan en ellas:
 
@@ -102,24 +102,24 @@ Ofrecer valores al público activa, con carácter general, la obligación de pub
 - Ofertas con un **importe mínimo elevado por inversor**.
 - Ofertas cuyo **importe total no supera un umbral** en un periodo de doce meses.
 
-> **Aviso — cifra en transición, compruébala**
-> A fecha de esta revisión (21 de agosto de 2026), el umbral de exención de folleto aplicable en España se ha situado tradicionalmente en **8 millones de euros** en doce meses. La reforma europea conocida como *Listing Act* amplía el margen que pueden fijar los Estados miembros **hasta 12 millones**, con efectos a partir de junio de 2026, y la adaptación de la norma española a ese nuevo margen ha estado pendiente de tramitación.
+> **Aviso: cifra en transición, compruébala**
+> A 21 de agosto de 2026, el umbral de exención de folleto aplicable en España se ha situado tradicionalmente en **8 millones de euros** en doce meses. La reforma europea conocida como *Listing Act* amplía el margen que pueden fijar los Estados miembros **hasta 12 millones**, con efectos a partir de junio de 2026, y la adaptación de la norma española a ese nuevo margen ha estado pendiente de tramitación.
 >
 > **No dimensiones tu emisión sobre la cifra de esta lección.** Confirma el umbral vigente en la web de la CNMV o con tu despacho antes de fijar el importe. Este recuadro es, además, un buen ejemplo de por qué toda lección de esta Academy lleva fecha de revisión visible.
 
-Y una precisión que se malinterpreta constantemente: **la exención lo es de publicar folleto, no de todo lo demás.** No te exime de la calificación como valor, ni de las reglas sobre quién puede comercializar, ni de la responsabilidad por la información que facilites. Incluso acogiéndote a una exención, suele ser necesario entregar algún documento informativo a los inversores.
+Y un detalle que se malinterpreta a menudo: **la exención lo es de publicar folleto, no de todo lo demás.** No te exime de la calificación como valor, ni de las reglas sobre quién puede comercializar, ni de la responsabilidad por la información que facilites. Incluso acogiéndote a una exención, suele ser necesario entregar algún documento informativo a los inversores.
 
-#### 3. Vender la emisión es actividad reservada
+#### 3. Vender la emisión solo pueden hacerlo entidades autorizadas
 
-Captar, comercializar o colocar instrumentos financieros no lo puede hacer libremente cualquiera. Según la estructura, intervendrá una empresa de servicios de inversión, una **plataforma de financiación participativa autorizada** —régimen europeo con su propio límite de captación por promotor en doce meses— o se articulará alguna exención.
+Captar, comercializar o colocar instrumentos financieros no lo puede hacer libremente cualquiera. Según la estructura, intervendrá una empresa de servicios de inversión, una **plataforma de financiación participativa autorizada** —régimen europeo con su propio límite de captación por promotor en doce meses— o se usará alguna exención.
 
 Es el punto donde más proyectos se atascan: llegan con la emisión construida y descubren que no tienen forma legal de ofrecérsela a nadie.
 
 #### 4. El mercado secundario no es libre
 
-Que un token sea técnicamente transferible no significa que pueda negociarse en cualquier sitio. La negociación de instrumentos financieros ocurre en infraestructuras autorizadas. Para las basadas en registro distribuido existe un **régimen piloto europeo** específico, con condiciones y límites propios.
+Que un token sea técnicamente transferible no significa que pueda negociarse en cualquier sitio. La negociación de instrumentos financieros ocurre en infraestructuras autorizadas. Para las basadas en registro distribuido existe un **régimen piloto europeo** (un marco de prueba) específico, con condiciones y límites propios.
 
-Es exactamente por esto que la promesa de «liquidez inmediata» merece tanto escepticismo. Lo desarrollamos en la Lección 6.
+Por eso la promesa de «liquidez inmediata» merece tanto escepticismo. Lo desarrollamos en la Lección 6.
 
 ---
 
@@ -132,7 +132,7 @@ Es exactamente por esto que la promesa de «liquidez inmediata» merece tanto es
 | **Participación en una pyme** | 1 · Instrumento financiero | Pactos de socios, régimen societario, límites del canal de captación |
 | **Obra de arte única, sin fraccionar** | 3 · Posiblemente fuera | Autenticidad y procedencia; verificar que no haya serie ni fraccionamiento |
 | **Obra de arte fraccionada en participaciones** | 1 · Muy probablemente instrumento financiero | La expectativa de revalorización cambia la naturaleza de la operación |
-| **Token de acceso o uso sin expectativa de rendimiento** | 2 · MiCA | Obligaciones de libro blanco y comunicaciones publicitarias |
+| **Token de acceso o uso sin expectativa de rendimiento** | 2 · MiCA | Libro blanco (el documento informativo que exige MiCA) y reglas de la publicidad |
 
 *Orientación general con fines educativos. La calificación real depende del diseño concreto de cada operación.*
 
@@ -141,13 +141,13 @@ Es exactamente por esto que la promesa de «liquidez inmediata» merece tanto es
 ### Los tres errores que más caros salen
 
 **«Lo llamamos token de utilidad y así evitamos la normativa de valores.»**
-La etiqueta no decide nada. Si quien compra espera un rendimiento derivado de la gestión de otro, el nombre comercial es irrelevante. Este planteamiento no reduce el riesgo: lo concentra, porque añade a la infracción de fondo un problema de información engañosa al inversor.
+La etiqueta no decide nada. Si quien compra espera un rendimiento derivado de la gestión de otro, el nombre comercial es irrelevante. Este planteamiento no reduce el riesgo: lo agrava, porque añade a la infracción de fondo un problema de información engañosa al inversor.
 
 **«Solo se lo ofrezco a gente de mi entorno, así que no es una oferta pública.»**
-Las exenciones por número de inversores o por importe existen, pero tienen condiciones precisas que hay que cumplir y acreditar, y se agotan. Además, exención no equivale a ausencia de obligaciones. Es una vía perfectamente válida, pero se diseña con un despacho, no se improvisa.
+Las exenciones por número de inversores o por importe existen, pero tienen condiciones precisas que hay que cumplir y acreditar, y tienen límites que se agotan. Además, exención no equivale a ausencia de obligaciones. Es una vía perfectamente válida, pero se diseña con un despacho, no se improvisa.
 
 **«La plataforma tiene sede fuera de la UE, así que la normativa española no aplica.»**
-Lo determinante no es dónde esté el proveedor, sino **hacia dónde se dirige la oferta y dónde residen los inversores**. Una emisión ofrecida activamente a residentes en España atrae la normativa española, con independencia del domicilio social de quien la instrumenta.
+Lo determinante no es dónde esté el proveedor, sino **hacia dónde se dirige la oferta y dónde residen los inversores**. Una emisión ofrecida activamente a residentes en España queda sujeta a la normativa española, con independencia del domicilio social de quien la instrumenta.
 
 ---
 
@@ -159,7 +159,7 @@ Cinco datos que abaratan y aceleran cualquier análisis legal:
 2. **A quién quieres ofrecérselo:** minoristas, cualificados, o ambos.
 3. **En qué países residen esos inversores.**
 4. **Cuánto quieres captar** y en cuánto tiempo.
-5. **Si aspiras a que exista mercado secundario** o basta con una tenencia a vencimiento.
+5. **Si quieres que exista un mercado secundario** (donde los inversores puedan revenderse las unidades) o basta con que las conserven hasta el vencimiento.
 
 Con esas cinco respuestas, un despacho puede orientarte sobre el cajón, la vía de oferta y el orden de magnitud del proceso. Sin ellas, cualquier presupuesto que recibas será una estimación a ciegas.
 
@@ -177,7 +177,7 @@ Ya sabes qué régimen te aplica y por qué. Falta la pregunta que decide si el 
 Categoría de instrumento financiero que agrupa las clases de valores susceptibles de ser negociados en el mercado de capitales: acciones y participaciones equivalentes, bonos y obligaciones, y otros valores que otorgan derecho a adquirirlos o que dan lugar a una liquidación en efectivo. Que un valor se represente mediante registro distribuido no altera su condición de valor negociable.
 
 **Folleto**
-Documento informativo, sujeto a aprobación del supervisor, que debe publicarse con carácter general antes de ofrecer valores al público o admitirlos a negociación. Recoge la información necesaria para que un inversor evalúe el emisor, el activo, los derechos que adquiere y los riesgos. Existen exenciones tasadas, que eximen de publicarlo pero no del resto de obligaciones.
+Documento informativo, sujeto a aprobación del supervisor, que debe publicarse con carácter general antes de ofrecer valores al público o admitirlos a negociación. Recoge la información necesaria para que un inversor evalúe el emisor, el activo, los derechos que adquiere y los riesgos. Existen exenciones fijadas por ley, que eximen de publicarlo pero no del resto de obligaciones.
 
 **Inversor cualificado**
 Categoría de inversor —entidades financieras, grandes empresas y determinadas personas que solicitan expresamente ese tratamiento y acreditan conocimientos y patrimonio— a la que se presume capacidad para evaluar riesgos por sí misma. Las ofertas dirigidas exclusivamente a inversores cualificados están sujetas a un régimen de información menos exigente.
@@ -197,7 +197,7 @@ Categoría de inversor —entidades financieras, grandes empresas y determinadas
 <summary>Ver respuesta</summary>
 
 **Respuesta correcta: C.**
-Se dan las tres señales del cajón 1: expectativa de rendimiento generado por la gestión ajena, unidades fungibles y transmisibles, y vocación de circular entre inversores. El nombre comercial no altera la calificación —de hecho, denominar «utilidad» a algo que funcionalmente es una participación en rentas añade un problema de información al inversor sobre el problema de fondo—. Tampoco la tecnología: el reglamento europeo de criptoactivos excluye expresamente de su ámbito lo que ya es instrumento financiero, de modo que los dos regímenes no se solapan.
+Se dan las tres señales del cajón 1: expectativa de rendimiento generado por la gestión ajena, unidades fungibles y transmisibles, y pensadas para circular entre inversores. El nombre comercial no altera la calificación —de hecho, denominar «utilidad» a algo que funcionalmente es una participación en rentas añade un problema de información al inversor sobre el problema de fondo—. Tampoco la tecnología: el reglamento europeo de criptoactivos excluye expresamente de su ámbito lo que ya es instrumento financiero, de modo que los dos regímenes no se solapan.
 </details>
 
 ---
@@ -229,7 +229,7 @@ Es el malentendido más extendido del sector. La exención tiene un objeto muy c
 <summary>Ver respuesta</summary>
 
 **Respuesta correcta: C.**
-El criterio de conexión relevante en la comercialización de instrumentos financieros no es el domicilio social del proveedor ni la ubicación de su infraestructura técnica, sino el mercado al que se dirige activamente la oferta y la residencia de los destinatarios. Una emisión promocionada hacia residentes en España atrae la normativa española y europea aplicable. Y la opción D señala otro error frecuente: la protección del inversor minorista no es un derecho del que se pueda disponer mediante una renuncia contractual.
+Lo que decide qué normas se aplican al comercializar instrumentos financieros no es el domicilio social del proveedor ni la ubicación de su infraestructura técnica, sino el mercado al que se dirige activamente la oferta y la residencia de los destinatarios. Una emisión promocionada hacia residentes en España queda sujeta a la normativa española y europea aplicable. Y la opción D señala otro error frecuente: la protección del inversor minorista no es un derecho del que se pueda disponer mediante una renuncia contractual.
 </details>
 
 ---
@@ -238,7 +238,7 @@ El criterio de conexión relevante en la comercialización de instrumentos finan
 
 > ### Ahora ya sabes qué preguntarle a un proveedor
 >
-> Si tu proyecto cae en el cajón 1 —y la mayoría de los activos reales caen ahí—, necesitas trabajar con actores que tengan **capacidad regulatoria real**, no solo capacidad técnica: una entidad de registro autorizada y un canal de comercialización habilitado.
+> Si tu proyecto cae en el cajón 1 —y la mayoría de los activos reales caen ahí—, necesitas trabajar con actores que tengan **las autorizaciones necesarias**, no solo capacidad técnica: una entidad de registro autorizada y un canal de comercialización habilitado.
 >
 > En cada ficha, el radar de RWAdar documenta cuatro criterios, y el primero es precisamente **entidad y permisos**: qué entidad figura en la fuente y para qué actividad tiene licencia o registro. Puedes filtrar por región, tipo de activo y nivel de acceso —el filtro por capacidad regulatoria llegará próximamente— y consultar la sección *Descartadas*, donde publicamos con motivo y fuente las plataformas que hemos descartado.
 >

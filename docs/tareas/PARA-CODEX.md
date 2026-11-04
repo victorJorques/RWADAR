@@ -6,6 +6,117 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 3) · Claude · Inicio en escritorio: arreglos de la revisión (sin publicar)
+
+Misma rama `claude/escritorio-inicio`, commits 800b2d2 (CSS) y 1bdb505 (JS).
+**Sin push, nada publicado, Supabase sin tocar, sin OTA.**
+
+- **Pantallas bajas (importante):** con 760 px de alto o menos, el aviso de
+  riesgo va antes de «Ver las 24 ofertas» y la portada encoge. Medido en
+  294 tamaños (1024–1920 de ancho, 560–960 de alto, ES y EN): en ninguno se
+  ve el botón sin el aviso. A 1366×650 el aviso queda en 425–473 y el botón
+  en 493–549; a 1024×600 en inglés, aviso 495–543.
+- **Foco (importante):** los botones del relato llevan el foco al título del
+  destino («Activos y ofertas documentados», «El radar», «Plataformas
+  descartadas»), como Movil.ir en el móvil.
+- **Menores:** el título de Inicio hace de h1 en escritorio (`aria-level=1`;
+  se quita por debajo de 1024); el logo y `/#top` llevan a scrollY 0;
+  `#fuentes-…` deja el grupo bajo la cabecera real (132 px con cabecera de
+  117 a 1024); los títulos de «Recién añadidas» salen enteros.
+- **Pruebas:** `npm test` en verde (web 580, fichas 68, precarga 32, móvil
+  411 con 409 bien y 2 omitidas, acceso 144/144, db 0 fallos + 30 SQL +
+  11/11, Node seguro 16); guardián OTA ok, runtime 1.4.1(23). El móvil a
+  390 px no cambia (barra de progreso a 59 px, sin `aria-level`).
+- **Capturas:** `scratchpad/escritorio/corr/` (c-es-1366x650-arriba,
+  c-en-1024x600-arriba, c-es-1024x768-logo, c-es-1024-nuevas-ancho…).
+
+## 4 de noviembre de 2026 (noche, 2) · Claude · Inicio como historia también en escritorio (sin publicar)
+
+Rama local `claude/escritorio-inicio` (sobre `main` 320ec05), commits
+a213955 (CSS) y 12455de (JS). **Sin push, nada publicado, Supabase sin
+tocar, sin OTA.** Solo cambian `rwadar-20260820.css` y `rwadar-20260820.js`;
+`index.html` no hizo falta tocarlo.
+
+- **Qué se ve:** a partir de 1024 px, Inicio es la misma historia que en el
+  móvil y con el mismo texto: portada a dos columnas (titular, subtítulo,
+  botón y aviso a la izquierda; el radar grande con sus cifras a la
+  derecha), «Recién añadidas», capítulos 01–06 en una columna de 720 px con
+  las cifras grandes, Selección, fuentes y nota legal. «Quién más se ha
+  movido», «Recién añadidas» y la Selección pasan de carrusel a cuadrícula
+  más ancha (3 por fila; 4 si son 4; si sobran 2, a medias). Debajo siguen
+  Ofertas, Plataformas, Método, Descartadas y Academy como antes.
+- **Cómo:** el JS mueve el panel de Inicio al principio de `<main>` y pone
+  `html.escritorio-relato`; por debajo de 1024 px lo devuelve a su sitio. El
+  radar interactivo de la portada antigua pasa a Plataformas, justo después
+  de «El radar»; el titular antiguo y el marcador se ocultan en ese ancho.
+  En escritorio, los botones del relato bajan a su sección, «Explorar el
+  radar» lleva a Plataformas y las tarjetas abren su ficha. La barra de
+  lectura va bajo la cabecera y solo mientras se lee Inicio.
+- **Lo que no cambia:** el móvil y el escritorio de 768 a 1023 px. Comparado
+  con `main` estilo a estilo (390 px en Inicio, Ofertas y Plataformas; 800 y
+  1000 px): idéntico. Ofertas, Plataformas, Método, Descartadas y Academy a
+  1366 y 1024: idénticos; solo se mueve el radar.
+- **Pruebas:** `npm test` completo en verde; guardián de la OTA ok. CSS:
+  173 579 B (presupuesto 180 000). Sin textos nuevos, así que sin cambios en
+  inglés.
+- **Pendiente:** que Víctor lo vea y, si le vale, unir y publicar la web.
+  La cabecera de escritorio ya se partía en dos líneas a 1024 px antes de
+  este cambio; no se ha tocado.
+
+## 4 de noviembre de 2026 (tarde, 5) · Claude · corrector de Academy y Privacidad (sin publicar)
+
+Misma rama `claude/academy-pulido`, encima de la entrada de abajo. **Sin push,
+Supabase sin tocar, nada publicado, sin OTA.**
+
+- **Fecha de revisión legal:** vuelve a **2026-10-02** en las lecciones 1-7
+  (frontmatter, cabecera, pie, JSON-LD y sitemap). El pulido fue de estilo, no
+  una revisión legal; la última que consta es la de Víctor del 2/10. Si Víctor
+  revisa de nuevo, se cambia la fecha (y en la 04, «A 21 de agosto de 2026»
+  con lo que haya hoy sobre el umbral de 12 millones).
+- **Lección 6:** el título vuelve a «Cuatro espejismos de liquidez» y una
+  línea explica la palabra, para que el aviso reforzado («Las condiciones,
+  espejismos y preguntas…») siga remitiendo a algo que está en la lección.
+  El aviso no se toca.
+- **Lección 5:** primer punto del resumen acortado; la tarjeta vuelve a caber
+  en 3 líneas a 390 px en castellano y en inglés (clave nueva en
+  `idioma-en.js` y `copiar-idiomas-web.cjs`).
+- **Hechos:** EBITDA = resultado bruto de explotación (no «beneficio de
+  explotación», que es el EBIT); tanteo y retracto explicados los dos.
+  Retoques de redacción en 02, 05, 06 y 07.
+- **Privacidad:** espacio tras cada etiqueta de celda (al copiar ya no sale
+  «Por qué ocurreEs lo mínimo…»). Visualmente igual.
+- **Caché del CSS y del diccionario:** no se renombran. `rwadar-publicar.js`
+  ya pone una huella del contenido en el nombre al publicar
+  (`privacidad-20260820.<hash>.css`), así que el `immutable` nunca sirve bytes
+  viejos con un nombre nuevo.
+- **Pruebas:** `npm test` en verde; `comprobar-ota-compatible.cjs --base
+  c1f7106` en ok.
+
+## 4 de noviembre de 2026 (tarde, 4) · Claude · lecciones de Academy en llano y tablas de Privacidad en el móvil (sin publicar)
+
+Rama local `claude/academy-pulido` (worktree `.claude/worktrees/academy-pulido`),
+commits 969ab22 (lecciones), c9a19ab (Privacidad) y f6382f4 (retoque de la lección 6). **Sin push,
+Supabase sin tocar, nada publicado, sin OTA.**
+
+- **Academy, lecciones 1-7:** cuerpo pulido con la guía de LISTA-FINAL y
+  «Frases de ese estilo» (metáforas, frases de folleto, calcos, rayas a la
+  inglesa y jerga sin explicar). Sin cambiar hechos ni quitar avisos; el aviso
+  legal común y el reforzado de cada lección no se tocan. Fecha de revisión
+  legal **2026-11-04** en las siete (frontmatter, cabecera y pie). En la 04,
+  «A fecha de esta revisión (21 de agosto de 2026)» pasa a «A 21 de agosto de
+  2026». Regenerado con `node rwadar-academy.js` (web, sitemap y
+  `rwadar-movil/lib/academy-contenido.js`). Inglés de los cuatro resúmenes de
+  tarjeta que cambian (02, 03, 05, 06) y `copiar-idiomas-web.cjs`.
+- **Privacidad:** por debajo de 600 px, las cuatro tablas pasan a filas
+  apiladas con su etiqueta (`.tabla-apilada`, `.celda-etiqueta` en
+  `privacidad-20260820.css`). En escritorio, la tabla de siempre. El texto
+  legal, comparado con main sin las etiquetas, es idéntico.
+- **Pruebas:** `npm test` en verde (web 580, móvil 409, acceso 144);
+  `comprobar-ota-compatible.cjs --base c1f7106` en ok.
+- **Pendiente:** la palabra «espejismos» sigue en el aviso reforzado de la
+  lección 6 (texto legal, no lo he tocado). Las lecciones 8 y 9 («Próximamente»)
+  no se han revisado.
+
 ## 4 de noviembre de 2026 (noche) · Claude · entrega 2026-11-03.8: textos de Reental, Toucan y RealT (sin aplicar)
 
 Víctor: «hasta que no esté todo no has acabado». Rama local
@@ -41,6 +152,7 @@ Víctor: «hasta que no esté todo no has acabado». Rama local
   `npm test`; sellar; «Publicar web». No hace falta OTA (la app lee estos
   textos de Supabase). Detalle en
   `rwadar-app/data/verificaciones/2026-11-03.8-v2/INFORME-ENTREGA.md`.
+
 
 ## 4 de noviembre de 2026 (tarde, 2) · Claude · remates, «Recién añadidas» y textos del catálogo publicados
 

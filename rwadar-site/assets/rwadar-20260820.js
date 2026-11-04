@@ -2102,6 +2102,16 @@ var relatoInicio=(function(){
    emiCat='';emiTipoLocal='todos';emiBusquedaLocal='';const b=$('emiBuscar');if(b)b.value='';
    pintarFiltrosEmision();pintarTiposOfertaLocal();pintarEmisiones();}
   /* Tocar el radar o «Explorar el radar» abre el radar de Plataformas. */
+  /* En escritorio (1024 px o más) no hay pestañas: cada botón baja a su
+     sección, el radar al radar interactivo de Plataformas y cada tarjeta abre su ficha. */
+  const esc=!raiz.classList.contains('movil-ui')&&e.target.closest&&e.target.closest('[data-inicio-radar],[data-movil-ir],[data-perfil-oferta]');
+  if(esc){e.preventDefault();if(esc.dataset.perfilOferta){abrirDetalleOfertaLocal(esc.dataset.perfilOferta);return;}
+   const id=esc.hasAttribute('data-inicio-radar')?'tool':esc.dataset.movilIr,dest=$(id);irA(id);
+   /* El foco baja con la página, al primer título visible del destino (como Movil.ir). */
+   const foco=dest&&([...dest.querySelectorAll('h2,h3')].find(x=>x.offsetWidth>1&&x.getClientRects().length)||dest);
+   if(foco&&foco.focus){if(!/^(?:A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(foco.tagName)&&!foco.hasAttribute('tabindex'))foco.setAttribute('tabindex','-1');
+    foco.focus({preventScroll:true});}
+   return;}
   const r=e.target.closest&&e.target.closest('[data-inicio-radar]');
   if(r&&typeof Movil!=='undefined'&&Movil.ir){e.preventDefault();const radar=$('movilPanelRadar');
    if(radar)radar.classList.add('movil-radar-abierto');sincronizarRadarPlegado();Movil.ir('movilRadarIntro',r);return;}
@@ -2127,16 +2137,21 @@ var relatoInicio=(function(){
  const portada=$('relPortada'),barra=$('relProgreso'),relleno=barra&&barra.querySelector('span');
  let ancho=0,pendiente=false;
  function alto(){
-  if(!portada||window.innerWidth===ancho)return;ancho=window.innerWidth;
-  const cab=$('movilCabecera'),nav=$('movilNav'),arriba=cab?cab.offsetHeight:0;
+  if(!portada)return;
+  const cab=$('movilCabecera'),nav=$('movilNav'),hdr=document.querySelector('.hdr'),arriba=(cab&&cab.offsetHeight)||(hdr&&hdr.offsetHeight)||0;
+  /* El alto real de la cabecera (en escritorio, a 1024 px, ocupa dos líneas):
+     lo usan la barra de progreso y el salto a «Fuentes». Se mide siempre
+     porque cambia con el idioma aunque no cambie el ancho. */
+  const estilo=raiz.style&&raiz.style.setProperty?raiz.style:barra&&barra.style;
+  if(estilo)estilo.setProperty('--rel-arriba',arriba+'px');
+  if(window.innerWidth===ancho)return;ancho=window.innerWidth;
   portada.style.setProperty('--rel-alto',Math.max(320,window.innerHeight-arriba-(nav?nav.offsetHeight:0))+'px');
-  if(barra)barra.style.setProperty('--rel-arriba',arriba+'px');
  }
  function progreso(){
   if(!relleno||panel.hidden)return;
   const total=panel.offsetHeight-window.innerHeight,y=-panel.getBoundingClientRect().top;
   relleno.style.transform='scaleX('+(total>0?Math.min(1,Math.max(0,y/total)):0).toFixed(4)+')';
-  barra.classList.toggle('on',!!portada&&window.scrollY>portada.offsetHeight*.6);
+  barra.classList.toggle('on',!!portada&&window.scrollY>portada.offsetHeight*.6&&y<total+window.innerHeight);
  }
  window.addEventListener('scroll',()=>{if(pendiente)return;pendiente=true;requestAnimationFrame(()=>{pendiente=false;progreso();});},{passive:true});
  window.addEventListener('resize',()=>{alto();rotulos();quien();progreso();},{passive:true});
@@ -5045,6 +5060,13 @@ const Movil = (function(){
   .map(p=>[p.dataset.movilPanel,p]));
  const panelBuscar=paneles.get('buscar');
  const panelAcademy=paneles.get('academy');
+ /* Escritorio ancho (1024 px o más): Inicio cuenta arriba la misma historia
+    que en el móvil y el radar interactivo pasa a Plataformas. Entre 768 y
+    1023 px el escritorio sigue como estaba. */
+ const ancho=window.matchMedia('(min-width: 1024px)');
+ const panelInicio=paneles.get('inicio');
+ const anclaInicio=panelInicio&&panelInicio.parentNode&&typeof document.createComment==='function'?document.createComment('rwadar: posición de Inicio'):null;
+ if(anclaInicio)panelInicio.parentNode.insertBefore(anclaInicio,panelInicio);
  const emisiones=document.getElementById('emisiones');
  const portada=document.querySelector('#movilPanelRadar>.portada');
  const portadaTexto=document.querySelector('.portada-txt');
@@ -5135,6 +5157,7 @@ const Movil = (function(){
   /* El orden de lectura y de Tab coincide con el visual. Academy reúne las
      lecciones y la explicación 3D; no duplica una sección antes del buscador. */
   ordenEscritorio.forEach(nodo=>panelBuscar.appendChild(nodo));
+  if(ancho.matches&&portada&&herramienta&&herramienta.parentNode===panelBuscar)panelBuscar.insertBefore(portada,herramienta.nextSibling);
   if(explicador&&academyLeccion)academyLeccion.appendChild(explicador);
  }
  function ordenarBuscar(esMovil){
@@ -5398,7 +5421,16 @@ const Movil = (function(){
   });
  }
  function adaptar(){
-  const esMovil=media.matches;
+  const esMovil=media.matches,relato=!esMovil&&ancho.matches;
+  /* Inicio sube al principio de <main> (así «#top» lo abre) y vuelve a su sitio al salir. */
+  if(panelInicio&&panelBuscar&&panelBuscar.parentNode){
+   if(relato){if(panelInicio.nextSibling!==panelBuscar)panelBuscar.parentNode.insertBefore(panelInicio,panelBuscar);}
+   else if(anclaInicio&&anclaInicio.parentNode&&anclaInicio.nextSibling!==panelInicio)anclaInicio.parentNode.insertBefore(panelInicio,anclaInicio.nextSibling);
+  }
+  if(document.documentElement&&document.documentElement.classList)document.documentElement.classList.toggle('escritorio-relato',relato);
+  /* En escritorio el h1 de la portada antigua no se ve: el título de Inicio hace de h1. */
+  const titInicio=document.getElementById('inicioPortadaTit');
+  if(titInicio&&titInicio.setAttribute&&titInicio.removeAttribute){if(relato)titInicio.setAttribute('aria-level','1');else titInicio.removeAttribute('aria-level');}
   modoMovilPrevio=esMovil;
   ordenarBuscar(esMovil);
   if(document.documentElement&&document.documentElement.classList)
@@ -5411,7 +5443,8 @@ const Movil = (function(){
    mostrarAvisos(false,false);
    document.body.removeAttribute('data-movil-pestana');
    document.body.classList.remove('movil-teclado');
-   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!=='buscar';});
+   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!=='buscar'&&!(relato&&nombre==='inicio');});
+   if(relato&&typeof relatoInicio!=='undefined'&&relatoInicio)requestAnimationFrame(relatoInicio.repintar);
    geometria();
   }
  }
@@ -5569,7 +5602,7 @@ const Movil = (function(){
   window.matchMedia('(display-mode: standalone)').matches;
  if(document.documentElement&&document.documentElement.classList)
   document.documentElement.classList.toggle('pwa-standalone',standalone);
- if(media.addEventListener)media.addEventListener('change',adaptar);
+ if(media.addEventListener){media.addEventListener('change',adaptar);ancho.addEventListener('change',adaptar);}
  else if(media.addListener)media.addListener(adaptar);
  window.addEventListener('resize',()=>{
   /* Algunos WebViews cambian el viewport sin emitir change en MediaQueryList

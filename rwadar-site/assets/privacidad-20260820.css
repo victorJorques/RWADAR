@@ -57,6 +57,21 @@ td:first-child{color:var(--tx);font-weight:600;white-space:nowrap}
 @media (max-width:420px){table{font-size:.84rem}th,td{padding:10px 6px}}
 /* En pantallas aún más estrechas, guiones en las palabras largas para no desbordar la caja. */
 @media (max-width:380px){th,td{-webkit-hyphens:auto;hyphens:auto}}
+/* Tablas de Privacidad en el móvil: cada fila pasa a ser un bloque. La
+   primera celda hace de título y las demás llevan delante su etiqueta (la
+   cabecera de su columna), así que no hay que desplazar nada de lado. En
+   pantalla ancha las etiquetas no se ven y la tabla es la de siempre. */
+.celda-etiqueta{display:none}
+@media (max-width:600px){
+ .tabla-apilada,.tabla-apilada tbody,.tabla-apilada tr,.tabla-apilada td{display:block;width:100%}
+ .tabla-apilada thead{display:none}
+ .tabla-apilada{font-size:.9rem;border-top:1px solid var(--linea)}
+ .tabla-apilada tr{padding:14px 0 10px;border-bottom:1px solid var(--linea)}
+ .tabla-apilada td{padding:0 0 10px;border-bottom:0;-webkit-hyphens:manual;hyphens:manual}
+ .tabla-apilada td:first-child{white-space:normal;font-size:.95rem;padding-bottom:8px}
+ .tabla-apilada td:first-child br{display:none}
+ .tabla-apilada .celda-etiqueta{display:block;margin-bottom:2px;font-size:.8125rem;color:var(--senal)}
+}
 
 /* Página B2B. Comparte la tipografía y las reglas de lectura de las
    políticas, pero da al piloto una jerarquía propia sin scripts ni fuentes

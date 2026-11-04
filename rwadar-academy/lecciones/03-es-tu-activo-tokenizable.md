@@ -24,8 +24,8 @@ leccion_siguiente: marco-legal-cuando-tu-token-es-un-valor
 
 ### En 30 segundos (TL;DR)
 
-1. **Casi cualquier activo es tokenizable en teoría. Muy pocos lo son la semana que lo decides.** La diferencia está en cinco condiciones previas que se comprueban antes de hablar con nadie.
-2. **Ninguna de las cinco es tecnológica.** Titularidad, cargas, valoración, estructura y tamaño: todas viven en el mundo legal y contable, no en el blockchain.
+1. **Casi cualquier activo es tokenizable en teoría. Muy pocos están listos cuando decides hacerlo.** La diferencia está en cinco condiciones previas que se comprueban antes de hablar con nadie.
+2. **Ninguna de las cinco es tecnológica.** Titularidad, cargas, valoración, estructura y tamaño: todas dependen de lo legal y lo contable, no de la blockchain.
 3. **Fallar una condición casi nunca significa «no». Significa «todavía no»**, y suele venir acompañado de una lista concreta de cosas que se pueden resolver.
 
 ---
@@ -41,17 +41,17 @@ Vamos con las cinco. Al final encontrarás un semáforo para autoevaluarte y una
 
 ---
 
-### Condición 1 — Titularidad clara y acreditable
+### Condición 1 · Titularidad clara y acreditable
 
 **La pregunta que la resume:** *¿podrías vender el activo entero mañana sin pedir permiso a nadie que no esté plenamente identificado y localizado?*
 
 Si la respuesta no es un sí rotundo, esta condición no está cumplida. Es la más frecuente de todas las que fallan, y también la menos negociable: nadie estructura una emisión sobre una titularidad discutida.
 
-Situaciones que la rompen habitualmente:
+Situaciones habituales que la impiden:
 
 - **Herencias sin adjudicar** o adjudicadas pero no inscritas.
-- **Proindivisos** con copropietarios ilocalizables, en desacuerdo o simplemente no consultados.
-- **Sociedades con el libro registro de socios desactualizado**, o con participaciones cuya titularidad se apoya en documentos privados nunca elevados a público.
+- **Proindivisos** (bienes de varios copropietarios, sin dividir) con copropietarios ilocalizables, en desacuerdo o simplemente no consultados.
+- **Sociedades con el libro registro de socios desactualizado**, o con participaciones cuya titularidad se apoya en documentos privados que nunca se formalizaron ante notario.
 - **Obras de arte sin cadena de procedencia documentada**, que es el equivalente en ese sector a no tener escritura.
 - **Créditos cedidos** sin que la cesión se haya notificado o formalizado correctamente.
 
@@ -66,23 +66,23 @@ Situaciones que la rompen habitualmente:
 
 ---
 
-### Condición 2 — Cargas y restricciones identificadas y compatibles
+### Condición 2 · Cargas y restricciones identificadas y compatibles
 
 Una carga no impide tokenizar. Lo que impide tokenizar es **una carga que no sabías que tenías**, o una restricción contractual incompatible con la entrada de terceros.
 
 Lo que hay que sacar a la luz antes de empezar:
 
 - **Cargas registrales:** hipotecas, embargos, servidumbres, usufructos, condiciones resolutorias.
-- **Derechos de terceros:** opciones de compra, derechos de tanteo y retracto, arrendamientos con derechos legales asociados.
-- **Restricciones contractuales:** pactos de socios con derechos de adquisición preferente o cláusulas de arrastre y acompañamiento.
+- **Derechos de terceros:** opciones de compra, derechos de tanteo y retracto (el derecho de otro a comprar con preferencia si vendes o, si ya has vendido, a quedarse la compra en lugar del comprador), arrendamientos con derechos legales asociados.
+- **Restricciones contractuales:** pactos de socios con derechos de adquisición preferente o cláusulas de arrastre y acompañamiento (las que obligan a vender, o permiten vender, junto con otros socios).
 - **Cláusulas de cambio de control** en la financiación existente.
 
-> **Aviso — la cláusula que más operaciones frena**
+> **Aviso: la cláusula que más operaciones frena**
 > Si el activo está financiado, revisa la cláusula de cambio de control de tu contrato de préstamo antes que ninguna otra cosa. Muchas financiaciones permiten a la entidad declarar el vencimiento anticipado si la estructura de propiedad cambia sin su consentimiento. Descubrirlo con la emisión ya diseñada es la forma más cara de aprenderlo. Es una conversación que se tiene con el banco al principio, no al final.
 
 ---
 
-### Condición 3 — Una valoración defendible, no una expectativa
+### Condición 3 · Una valoración defendible, no una expectativa
 
 Aquí conviene ser directo: **si la única cifra que tienes es la que tú crees que vale, no tienes valoración.** Tampoco lo es una oferta que te hicieron hace dos años, ni el precio de un inmueble parecido en el mismo portal, ni el valor contable heredado de una compra antigua.
 
@@ -90,19 +90,19 @@ Una valoración utilizable tiene cuatro atributos: **es independiente** (la firm
 
 **Qué mira un valorador según el activo:**
 
-- **Inmobiliario:** tasación por sociedad homologada, con comparables, estado de conservación y situación arrendaticia. Atención a la vigencia: las tasaciones caducan.
+- **Inmobiliario:** tasación por sociedad homologada, con comparables, estado de conservación y si está alquilado y en qué condiciones. Atención a la vigencia: las tasaciones caducan.
 - **Deuda:** calidad crediticia del deudor, garantías, histórico de impago de la cartera y plazo residual.
-- **Pymes:** EBITDA normalizado, múltiplos del sector, dependencia de clientes o de personas clave, y deuda real.
+- **Pymes:** resultado bruto de explotación (EBITDA: beneficio antes de intereses, impuestos y amortizaciones), sin partidas extraordinarias, múltiplos del sector (cuánto se paga en ese sector por cada euro de beneficio), dependencia de clientes o de personas clave, y deuda real.
 - **Arte:** autenticidad acreditada, comparables de subasta reales —no precios de galería—, estado de conservación y liquidez histórica de ese artista y formato.
 
 > **Aviso**
-> Una valoración inflada no es un atajo comercial: es un problema diferido. Todo el reparto de la emisión se construye sobre esa cifra, y la realidad aparece en el momento de vender el activo o de que un inversor quiera salir. Un valorador que te da malas noticias te está haciendo un favor.
+> Una valoración inflada no ahorra nada: solo retrasa el problema. Todo el reparto de la emisión se construye sobre esa cifra, y la realidad aparece en el momento de vender el activo o de que un inversor quiera salir. Un valorador que te da malas noticias te está haciendo un favor.
 
 ---
 
-### Condición 4 — Una estructura capaz de recibir inversores
+### Condición 4 · Una estructura capaz de recibir inversores
 
-El activo tiene que poder alojarse en un vehículo limpio y auditable. En la práctica esto significa tres cosas:
+El activo tiene que poder estar dentro de una sociedad vehículo limpia y que se pueda auditar. En la práctica esto significa tres cosas:
 
 **Aislamiento.** El vehículo debe contener el activo del proyecto y poco más. Una sociedad que además tiene otra actividad, deudas ajenas al proyecto o gastos personales mezclados obliga a rediseñar la estructura desde cero. Es el motivo de rediseño más común que se encuentran los despachos.
 
@@ -112,28 +112,28 @@ El activo tiene que poder alojarse en un vehículo limpio y auditable. En la pr�
 
 ---
 
-### Condición 5 — Tamaño y economía que soporten los costes fijos
+### Condición 5 · Tamaño y economía que soporten los costes fijos
 
-Toda tokenización arrastra un **suelo de costes que no baja aunque el activo sea pequeño**: análisis y estructuración legal, valoración independiente, constitución del vehículo, infraestructura tecnológica, registro y custodia, auditoría y mantenimiento posterior.
+Toda tokenización tiene unos **costes mínimos que no bajan aunque el activo sea pequeño**: análisis y estructuración legal, valoración independiente, constitución del vehículo, infraestructura tecnológica, registro y custodia, auditoría y mantenimiento posterior.
 
-Ese suelo es prácticamente el mismo para una emisión pequeña que para una mediana. Y ahí está la trampa: no existe un umbral universal por debajo del cual tokenizar sea imposible, pero sí existe **un porcentaje a partir del cual deja de tener sentido para ti**.
+Esos costes mínimos son prácticamente los mismos para una emisión pequeña que para una mediana. Y ahí está la trampa: no existe un umbral universal por debajo del cual tokenizar sea imposible, pero sí existe **un porcentaje a partir del cual deja de tener sentido para ti**.
 
 > **La regla práctica**
 > No preguntes «¿cuál es el mínimo para tokenizar?». Pregunta: **«¿qué porcentaje del importe que quiero captar se van a llevar los costes fijos del proceso?»**. Esa cifra —que un proveedor serio puede estimarte en una primera conversación— es la que decide, y la decides tú.
 >
-> Recuerda además que hay costes recurrentes después de emitir: mantenimiento del registro, información periódica a los titulares y auditorías. La partida que casi todos los proyectos olvidan es la del año dos.
+> Recuerda además que hay costes recurrentes después de emitir: mantenimiento del registro, información periódica a los titulares y auditorías. La partida que casi todos los proyectos olvidan es la del segundo año.
 
 En la **Lección 5** desglosamos las siete partidas de coste, qué es fijo y qué escala con el tamaño de la emisión, con los rangos observados en el mercado.
 
 ---
 
-### La condición que no aparece en ninguna checklist: que haya alguien al otro lado
+### La condición que no aparece en ninguna lista: que haya compradores
 
 Puedes cumplir las cinco anteriores de manera impecable y aun así encontrarte con una emisión que no se coloca, porque **fraccionar un activo no crea compradores**.
 
 Antes de avanzar, conviene tener una respuesta honesta a: ¿quién compraría esto y por qué motivo? ¿Existe demanda identificable para este tipo de activo, en esta ubicación, con este perfil de riesgo y este horizonte? ¿Tienes ya una base de posibles interesados o esperas que aparezca sola?
 
-Si la respuesta a la última pregunta es «espero que aparezca sola», eso es información valiosísima que conviene tener antes de gastar en estructuración, no después. Lo tratamos a fondo en la **Lección 6**.
+Si la respuesta a la última pregunta es «espero que aparezca sola», eso es información muy útil, y conviene tenerla antes de gastar en estructuración, no después. Lo tratamos a fondo en la **Lección 6**.
 
 ---
 
@@ -147,13 +147,13 @@ Si la respuesta a la última pregunta es «espero que aparezca sola», eso es in
 | **4 · Estructura** | Vehículo limpio, cuentas ordenadas, titulares reales identificables | Sociedad con actividad mixta, subsanable | Opacidad societaria o socios que no aceptan identificación |
 | **5 · Tamaño** | Los costes fijos son una fracción asumible de lo que se capta | Al límite; depende del presupuesto final | Los costes fijos representan una parte desproporcionada |
 
-**Cómo leer tu resultado:** cualquier rojo detiene el proceso hasta resolverlo. Los ámbares no lo detienen, pero se convierten en tu lista de tareas — y en tu principal palanca de negociación cuando pidas presupuesto, porque un expediente preparado se cotiza distinto que uno por preparar.
+**Cómo leer tu resultado:** cualquier rojo detiene el proceso hasta resolverlo. Los ámbares no lo detienen, pero son tu lista de tareas. Y te ayudan a negociar cuando pidas presupuesto, porque un proveedor no cobra lo mismo por un expediente ya preparado que por uno que tiene que preparar él.
 
 ---
 
 ### Si has salido en rojo: qué significa realmente
 
-Casi ninguna condición fallida es definitiva. Son plazos, no sentencias:
+Casi ninguna condición fallida es definitiva. Casi todas se resuelven con tiempo:
 
 - **Titularidad sin resolver** → adjudicación de herencia, elevación a público, acuerdo entre copropietarios. Meses, no años, en la mayoría de casos.
 - **Cargas pendientes** → negociación con la entidad financiera o cancelación registral de cargas ya satisfechas pero no levantadas, que es más frecuente de lo que parece.
@@ -161,7 +161,7 @@ Casi ninguna condición fallida es definitiva. Son plazos, no sentencias:
 - **Estructura mezclada** → segregación del activo a un vehículo limpio, con su coste fiscal y temporal, que conviene estimar antes.
 - **Tamaño insuficiente** → agrupar varios activos en una misma emisión, o esperar. Ambas son decisiones legítimas.
 
-Y hay una quinta salida perfectamente razonable: **decidir que no**. Si al terminar este repaso concluyes que tu activo no encaja o que el esfuerzo no compensa, has ganado exactamente lo que venías a buscar. Un «no» bien fundamentado y tomado a tiempo vale más que una emisión mal preparada.
+Y hay otra salida perfectamente razonable: **decidir que no**. Si al terminar este repaso concluyes que tu activo no encaja o que el esfuerzo no compensa, ya tienes la respuesta que venías a buscar. Un «no» bien fundamentado y tomado a tiempo vale más que una emisión mal preparada.
 
 ---
 
@@ -169,7 +169,7 @@ Y hay una quinta salida perfectamente razonable: **decidir que no**. Si al termi
 
 Has terminado el **Nivel Principiante**. Sabes qué es tokenizar, quién interviene y en qué estado está tu activo.
 
-El **Nivel Intermedio** empieza con la pregunta que más miedo genera: **¿qué normativa te aplica?** En la **Lección 4** verás la frontera práctica entre un criptoactivo y un instrumento financiero, y por qué el inmobiliario, la deuda y las participaciones caen casi siempre del segundo lado — con todo lo que eso implica.
+El **Nivel Intermedio** empieza con la pregunta que más preocupa: **¿qué normativa te aplica?** En la **Lección 4** verás la frontera práctica entre un criptoactivo y un instrumento financiero, y por qué el inmobiliario, la deuda y las participaciones caen casi siempre en el segundo grupo, con todo lo que eso implica.
 
 ---
 
@@ -215,7 +215,7 @@ La condición de titularidad no exige solo *ser* propietario, exige poder **disp
 <summary>Ver respuesta</summary>
 
 **Respuesta correcta: C.**
-Una oferta pasada es un dato de contexto, no una valoración. Le faltan los cuatro atributos que hacen utilizable una cifra en una emisión: independencia de quien cobra por el éxito de la operación, metodología explícita y revisable, fecha, y vigencia. Dos años en un mercado inmobiliario pueden significar un movimiento relevante en cualquier dirección. Además, toda la arquitectura del reparto se construye sobre esa cifra: si no resiste el escrutinio de un tercero, el problema no desaparece, solo se aplaza al momento de vender.
+Una oferta pasada es un dato de contexto, no una valoración. Le faltan los cuatro atributos que hacen utilizable una cifra en una emisión: independencia de quien cobra por el éxito de la operación, metodología explícita y revisable, fecha, y vigencia. Dos años en un mercado inmobiliario pueden significar un movimiento relevante en cualquier dirección. Además, todo el reparto se calcula sobre esa cifra: si no aguanta la revisión de un tercero, el problema no desaparece, solo se aplaza al momento de vender.
 </details>
 
 ---
@@ -225,7 +225,7 @@ Una oferta pasada es un dato de contexto, no una valoración. Le faltan los cuat
 - A) Existe un umbral estándar en el sector por debajo del cual no se puede tokenizar
 - B) El tamaño es irrelevante, porque la tecnología escala sin coste
 - C) Lo determinante es qué proporción representan los costes fijos del proceso sobre el importe que se pretende captar, incluyendo los costes recurrentes posteriores a la emisión
-- D) Cuanto menor sea el activo, mejor, porque el ticket de entrada será más bajo
+- D) Cuanto menor sea el activo, mejor, porque el importe mínimo de entrada será más bajo
 
 <details>
 <summary>Ver respuesta</summary>
@@ -240,11 +240,11 @@ No hay un mínimo universal, porque depende del coste real de cada estructura y 
 
 > ### Has terminado el Nivel Principiante. Ahora ponle números a tu caso.
 >
-> El **Evaluador de Viabilidad de RWAdar**, que llegará próximamente, recorrerá estas cinco condiciones contigo y te devolverá dos cosas: una **puntuación de madurez** y un **mapa de brechas** — qué te falta, en qué orden conviene resolverlo y qué documentación tendrás que reunir. Mientras tanto, el semáforo de esta lección te sirve para hacerlo por tu cuenta.
+> El **Evaluador de Viabilidad de RWAdar**, que llegará próximamente, recorrerá estas cinco condiciones contigo y te devolverá dos cosas: una **puntuación de madurez** y una **lista de lo que te falta**: qué es, en qué orden conviene resolverlo y qué documentación tendrás que reunir. Mientras tanto, el semáforo de esta lección te sirve para hacerlo por tu cuenta.
 >
 > No te dirá si debes tokenizar ni qué proveedor elegir. Te dirá **en qué punto estás**.
 >
-> **Privacidad por diseño:** podrás completarlo de forma anónima. No tendrás que identificar tu activo ni facilitar datos personales para ver el resultado. Si más adelante decides contactar con algún proveedor, se te pedirá un consentimiento específico para ese proveedor concreto, revocable en un clic.
+> **Tu privacidad:** podrás completarlo de forma anónima. No tendrás que identificar tu activo ni facilitar datos personales para ver el resultado. Si más adelante decides contactar con algún proveedor, se te pedirá un consentimiento específico para ese proveedor concreto, revocable en un clic.
 >
 > **[Probar el Evaluador de Viabilidad →]**
 >
