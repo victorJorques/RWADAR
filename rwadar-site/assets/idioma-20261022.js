@@ -97,6 +97,7 @@
           [/^(\d+) avisos? en la ficha$/,(m,n)=>n+(n==='1'?' warning':' warnings')+' in the details'],
           [/^Desde (\d+(?:,\d+)?) € en reventa \((\d{2}\/\d{2})\)$/,(m,n,f)=>'From €'+n+' on resale ('+f+')'],
           [/^· consultada el (.+)$/,(m,f)=>'· checked on '+f],
+          [/^(.*?)· dato del (\d{2}\/\d{2}\/\d{4})$/,(m,d,f)=>d+'· data from '+f],
           [/^Revisada el (\d{2}[./]\d{2}[./]\d{4}); (.+)\.$/,(m,f,e)=>'Reviewed on '+f+'; '+t(e)+'.'],
           [/^(.+) · fuente de: (.+)$/,(m,n,c)=>n+' · source for: '+t(c)],
           [/^(\d+) acci(?:ón|ones) \((.+)\)$/,(m,n,r)=>n+(n==='1'?' share':' shares')+' ('+r+')'],

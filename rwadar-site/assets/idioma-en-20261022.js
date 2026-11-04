@@ -638,6 +638,7 @@
   "Proveedor incluido también en el radar": "Provider also included in the radar",
   "Proveedor de esta referencia · no está en el radar": "Provider of this reference · not on the radar",
   "Registro del proveedor · revisión": "Provider register · review",
+  "Registro del proveedor ·": "Provider register ·",
   "Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.": "This register does not establish supervision of this offer or whether it is open. Sources are at the end of the entry.",
   "Patrocinada. Consulta la relación comercial en la ficha; no cambia el orden editorial ni implica recomendación.": "Sponsored. Check the commercial relationship in the entry; it does not change the editorial order or imply a recommendation.",
   "EN TRES FRASES": "IN THREE SENTENCES",
