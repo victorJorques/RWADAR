@@ -76,10 +76,11 @@ paso('privacidad y transparencia describen el mismo modelo comercial',
   && normaliza(privacidad).includes('no hay atribucion comercial activa')
   && !normaliza(privacidad).includes('no hay publicidad ni espacios vendidos a terceros'));
 
+// «no cambia el orden editorial»: LISTA-FINAL.md fila 32 (revisión de frases que pidió Víctor, 04/11/2026).
 paso('la transparencia es descubrible desde la portada',
   index.includes('href="/transparencia-comercial">Transparencia comercial</a>')
   && index.includes('RWAdar no cobra comisión al inversor')
-  && index.includes('no altera el ranking editorial'));
+  && index.includes('no cambia el orden editorial'));
 
 paso('la página forma parte del árbol local publicable y de sus validaciones',
   manifiesto.includes("'transparencia-comercial.html'")
