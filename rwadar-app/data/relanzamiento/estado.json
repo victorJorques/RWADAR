@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 04/11: rediseño de la web y de la app (Inicio como historia con fuentes y sin llamadas en el texto, barra de 5 botones, «Descartadas», acabados profesionales, lista de ofertas compacta con transparencia, ficha con lo esencial y los avisos arriba, mapa de Ofertas claro). Orden de Víctor: «súbelo todo en cuanto esté». Revisiones independientes de producto, normas, lectura, técnica y accesibilidad, con correcciones; npm test completo en verde. Catálogo sin cambios (entrega 2026-11-03.6).",
+  "nota": "Claude, 04/11: remates de web y app, «Recién añadidas» y textos del catálogo para el lector (entrega 2026-11-03.7, revisión f2732257, aplicada con Aplicar catálogo y sincronizada). Orden de Víctor: «hasta que no esté todo no has acabado» y «súbelo en cuanto esté». Dos revisiones independientes del catálogo y revisión y corrección de los remates; npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "031ac441c08ba078ec070500f4e0a2d2fcff7ad3",
-    "contenidoSha256": "sha256:4a445d6a0d904b5609905523fc89195469198f665fa20419c08f8c9959fd5279",
+    "commit": "d9092daf80a74d1baf1638ed78e127b615e598d9",
+    "contenidoSha256": "sha256:c05d7fecdee97ce4aba632e05108f23da60071bab99437e1d816924b0d7af7d1",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
