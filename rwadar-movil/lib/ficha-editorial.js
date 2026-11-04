@@ -54,13 +54,18 @@
   // Idioma de una cita literal de la fuente, solo si se ve claro (si no, '').
   const PALABRAS = {
     es:['el','los','las','y','que','en','por','con','para','del','una','se','es','su','al','como','más'],
-    en:['the','of','and','to','is','are','for','with','you','your','by','on','be','this','that','from','may','will','an','in','all','at','which','it','or','not','has','have','its'],
+    en:['the','of','and','to','is','are','for','with','you','your','by','on','be','this','that','from','may','will','an','in','all','at','which','it','or','not','has','have','its','as'],
     fr:['le','les','des','du','et','est','pour','une','sur','au','aux','avec','vous','souscripteurs','tous'],
-    de:['der','die','das','und','ist','für','mit','von','den','dem','nicht','wird','wurde','auf','zu','gemäß'],
+    de:['der','die','das','und','ist','für','mit','von','den','dem','nicht','wird','wurde','auf','zu','gemäß',
+      'ein','eine','einer','einem','eines','jeder','jedem','jede','bei','werden','sind','im','sich','auch','als','oder','nach','zum','zur','über'],
   };
   function idiomaCita(valor) {
-    const palabras = texto(valor).toLowerCase().match(/[a-záéíóúüñàâçèêëîïôûßäö]+/g) || [];
+    // «Investor:in», «Käufer:innen»: la forma de género alemana no cuenta como «in» inglés.
+    const palabras = texto(valor).toLowerCase().replace(/([a-zäöüß])[:*_](?:in|innen)\b/g, '$1')
+      .match(/[a-záéíóúüñàâçèêëîïôûßäö]+/g) || [];
     const cuenta = Object.fromEntries(Object.keys(PALABRAS).map(id => [id, palabras.filter(p => PALABRAS[id].includes(p)).length]));
+    // «an» o «in» también son alemán: ä, ö, ü o ß inclinan hacia el alemán.
+    if (/[äöüß]/.test(palabras.join(' '))) cuenta.de += 1;
     const orden = Object.entries(cuenta).sort((a, b) => b[1] - a[1]);
     return (orden[0][1] >= 2 && orden[0][1] >= 2 * orden[1][1]) || (orden[0][1] === 1 && !orden[1][1] && palabras.length >= 6)
       ? orden[0][0] : '';

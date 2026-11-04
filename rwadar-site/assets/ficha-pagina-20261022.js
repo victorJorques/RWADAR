@@ -18,7 +18,7 @@
       for (const referencia of referencias) {
         const fuente=document.createElement('a'); fuente.href=referencia.fuente;
         fuente.target='_blank'; fuente.rel='noopener noreferrer';
-        fuente.textContent=' · '+(referencia.etiqueta || 'Fuente')+
+        fuente.textContent=' · '+(globalThis.RWAdarFichaEditorial.rotuloReferencia(referencia.etiqueta) || 'Fuente')+
           (referencia.consultadaEl ? ' · consultada el '+referencia.consultadaEl.split('-').reverse().join('/') : '')+' ↗';
         nodo.appendChild(fuente);
       }

@@ -2043,7 +2043,7 @@ for(const fallo of ['incompleto','transporte']){
       {etiqueta:'Éxito',valor:'0 %',fuente:'https://emisor.example/exito',fechaConsulta:'2026-10-22'}]}};
   const costes=vm.runInContext('datosClaveOfertaHtml(resumenPrueba,true)',p.contexto);
   prueba('varios costes mantienen cada fuente y consulta propias sin atribuirlos a un solo origen',
-    costes.includes('Gestión: 0,6 %; Éxito: 0 %')&&costes.includes('https://gestor.example/gestion')&&costes.includes('https://emisor.example/exito')&&
+    costes.replace(/<[^>]+>/g,'').includes('Gestión: 0,6 %; Éxito: 0 %')&&costes.includes('https://gestor.example/gestion')&&costes.includes('https://emisor.example/exito')&&
     costes.includes('Consultada el 21/10/2026 · Dato del 20/10/2026')&&costes.includes('Consultada el 22/10/2026'));
 }
 {

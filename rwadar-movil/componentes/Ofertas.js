@@ -467,6 +467,22 @@ export function DetalleOferta({
      costes van con la métrica en castellano del catálogo y la cita debajo. */
   const sinTildes = (valor) => String(valor || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const metricaCoste = (oferta.metricas || []).find((m) => /comisi|coste|gasto|tarifa/.test(sinTildes(m?.etiqueta)));
+  /* Costes: el rótulo («Comisiones») es interfaz y se traduce; la cita va
+     aparte, con su idioma y la misma nota que en «Datos con su fecha». */
+  const citasCostes = (referencias, estilo = e.referencia) => {
+    const citas = referencias.filter((ref) => String(ref?.valor || '').trim())
+      .map((ref) => ({ ref, idioma: idiomaCita(ref.valor) }));
+    const notas = [...new Set(citas.map((c) => c.idioma).filter((i) => NOTA_CITA[i]))];
+    return <>
+      <Text style={estilo}>{citas.map(({ ref, idioma }, indice) => (
+        <React.Fragment key={`coste-${indice}`}>{indice ? '; ' : ''}
+          <Text noTraducir={!rotuloTraducible(ref.etiqueta)} idiomaOriginal="es-ES">{rotuloReferencia(ref.etiqueta).replace(/\s*·\s*\d{2}\/\d{2}\/\d{4}\s*$/, '')}</Text>
+          {': '}<Text noTraducir idiomaOriginal={IDIOMA_CITA[idioma] || 'es-ES'}>{String(ref.valor).trim()}</Text>
+        </React.Fragment>
+      ))}</Text>
+      {notas.map((idioma) => <Text key={`nota-${idioma}`} style={e.referencia}>{NOTA_CITA[idioma]}</Text>)}
+    </>;
+  };
   // Reventa con mercado propio: «Abrir mercado» y la ficha oficial, como la web.
   const urlMercado = oferta.tipo === 'secundario' && oferta.urlMercado ? oferta.urlMercado : '';
   const enlacePrincipal = urlMercado || oferta.url;
@@ -646,8 +662,9 @@ export function DetalleOferta({
                       <Text style={e.metricaEtiqueta}>{etiqueta}</Text>
                       {etiqueta === 'Costes' && metricaCoste ? <>
                         <Text noTraducir idiomaOriginal="es-ES" style={e.metricaValor}>{metricaCoste.valor}</Text>
-                        <Text noTraducir idiomaOriginal="es-ES" style={e.referencia}>{dato.texto}</Text>
-                      </> : (
+                        {dato.referencias?.length ? citasCostes(dato.referencias)
+                          : <Text noTraducir idiomaOriginal="es-ES" style={e.referencia}>{dato.texto}</Text>}
+                      </> : etiqueta === 'Costes' && dato.referencias?.length ? citasCostes(dato.referencias, e.metricaValor) : (
                         <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.metricaValor}>
                           {etiqueta === 'Salida' ? String(dato.texto || '').replace(/^Salida:\s*/i, '') : dato.texto}
                         </Text>

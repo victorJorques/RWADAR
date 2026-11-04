@@ -440,8 +440,8 @@ test('el detalle muestra éxito y gestión separados con fechas y enlaces propio
   const abiertos=[];
   const detalle=componentes().DetalleOferta({oferta,onAbrirEnlace:url=>abiertos.push(url)});
   const visible=textoVisible(detalle);
-  assert.match(visible,/Comisión de gestión: 0,6 % anual/);
-  assert.match(visible,/Comisión de éxito: 0 %/);
+  assert.match(visible,/Comisión de gestión\s*:\s*0,6 % anual/);
+  assert.match(visible,/Comisión de éxito\s*:\s*0 %/);
   assert.match(visible,/Comisión de gestión\s*: fuente consultada el\s*29\/09\/2026\s*·\s*gestion\.example/);
   assert.match(visible,/Comisión de éxito\s*: fuente consultada el\s*30\/09\/2026\s*·\s*exito\.example/);
   for(const url of [gestion,exito]) {

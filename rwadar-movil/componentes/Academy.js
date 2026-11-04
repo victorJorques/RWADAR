@@ -136,7 +136,7 @@ function Indice({ progreso, onAbrirLeccion, onExplicar }) {
   const leidas = PUBLICADAS.filter((l) => progreso.leidas.includes(l.slug)).length;
   return (
     <View>
-      <Text style={e.sobrelinea}>{LECCIONES.length} LECCIONES · {NIVELES.length} NIVELES</Text>
+      <Text style={e.sobrelinea}>{PUBLICADAS.length} LECCIONES · {NIVELES.length} NIVELES</Text>
       <Text style={e.titular}>Entiende la tokenización antes de decidir</Text>
       <Text style={e.entradilla}>
         Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida.

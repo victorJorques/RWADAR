@@ -1208,9 +1208,9 @@ function pintarRadar(){
       leyenda que le faltaba: se ve de un vistazo qué color es cada tipo
       de activo, sin una tabla aparte. Va en `style` y no en `fill`
       porque un atributo de presentación pierde contra la clase CSS. */
-   /* 60 de alto (unos 44 px en un móvil, donde el radar se dibuja a ~0,75):
+   /* 66 de alto (44 px aun a 360, donde el radar se dibuja a ~0,67):
       lo que crece va hacia fuera del aro, para no tapar los puntos. */
-   +`<rect class="radar-et-zona" x="${zx.toFixed(1)}" y="${(ty-22-(ty<CY?16:0)).toFixed(1)}" width="${lado?104:96}" height="60" rx="13" fill="transparent"/>`
+   +`<rect class="radar-et-zona" x="${zx.toFixed(1)}" y="${(ty-22-(ty<CY?22:0)).toFixed(1)}" width="${lado?104:96}" height="66" rx="13" fill="transparent"/>`
    +`<text class="radar-et${largo?' radar-et-largo':''}" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="${ancla}" dominant-baseline="middle" fill="${CATMETA[c].c}">${escHtml(catCorta(c))}</text></g>`;
  });
 
@@ -2480,8 +2480,18 @@ function datosClaveOfertaHtml(resumen,completo=false,metricas=[]){
      métrica en castellano del catálogo y la cita original debajo. */
   const breve=(completo?campo.texto:textoBreveDatoTarjetaLocal(campo)).replace(nombre==='Salida'?/^Salida:\s*/i:/$^/,'');
   const coste=completo&&nombre==='Costes'&&metricas.find(x=>/comisi|coste|gasto|tarifa/i.test(normalizaBuscaLocal(x.etiqueta)));
+  /* Costes: el rótulo («Comisiones») es interfaz y se traduce; la cita va
+     aparte, con su idioma y la misma nota que en «Datos con su fecha». */
+  const refsCoste=completo&&nombre==='Costes'&&Array.isArray(campo.referencias)?campo.referencias.filter(r=>r&&textoLocal(r.valor)):[];
+  const idiomas=new Set();
+  const citaCostes=refsCoste.length?'<small class="escaparate-cita-costes">'+refsCoste.map(r=>{
+    const rotulo=rotuloRefLocal(r.etiqueta).replace(/\s*·\s*\d{2}\/\d{2}\/\d{4}\s*$/,''),idioma=idiomaCitaLocal(r.valor);
+    if(NOMBRE_IDIOMA_CITA[idioma])idiomas.add(idioma);
+    return '<span'+(rotuloTraducibleLocal(r.etiqueta)?'':' data-idioma-fuente')+'>'+escHtml(rotulo)+'</span>: <span data-idioma-fuente'+(idioma?' lang="'+idioma+'"':'')+'>'+escHtml(textoLocal(r.valor))+'</span>'}).join('; ')+'</small>'+
+    [...idiomas].map(i=>'<small class="ref-nota-idioma">Cita literal de la fuente, en '+NOMBRE_IDIOMA_CITA[i]+'.</small>').join(''):'';
   /* El dato va en su propio span: es texto de la fuente; las citas son interfaz y se traducen. */
-  if(coste)return '<div><dt>'+escHtml(nombre)+'</dt><dd><span class="dato-fuente">'+escHtml(coste.valor)+'</span><small class="escaparate-cita-original">'+escHtml(breve)+'</small>'+citas+'</dd></div>';
+  if(coste)return '<div><dt>'+escHtml(nombre)+'</dt><dd><span class="dato-fuente">'+escHtml(coste.valor)+'</span>'+(citaCostes||'<small class="escaparate-cita-original">'+escHtml(breve)+'</small>')+citas+'</dd></div>';
+  if(citaCostes)return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+citaCostes+citas+'</dd></div>';
   return '<div><dt>'+escHtml(nombre)+'</dt><dd>'+(citas?'<span class="dato-fuente">'+escHtml(breve)+'</span>':escHtml(breve))+citas+'</dd></div>';
  }).join('')+'</dl>';
 }
