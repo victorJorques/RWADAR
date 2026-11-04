@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 04/11: remates 3 (Inicio sin salto al cargar en escritorio, tableta y móvil; Inicio como historia en tableta; leyenda del radar sin marca de texto original en inglés; «Qué se adquiere» una sola vez), revisados y corregidos. Antes, la corrección de los arreglos de escritorio. Orden de Víctor: «hay que subirlo cuanto antes». npm test completo en verde.",
+  "nota": "Claude, 04/11: «Para empresas» queda pendiente por decisión de Víctor: sin enlaces y su dirección lleva a Inicio. npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "9d06bca7dc3c57e1f30f2cf6d419452b841cd6aa",
-    "contenidoSha256": "sha256:1df7c77ccf7903f2c906d772e1bcff5a4d7a0219f0433af0021977e27a942c32",
+    "commit": "d37a9cc5cc4d9d9b0110c77b25beb930e5f5cd38",
+    "contenidoSha256": "sha256:e80632b23d80139a6f7db513fb3bc11b37c36218251159bec4a4791691d8959c",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
