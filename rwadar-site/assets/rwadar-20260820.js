@@ -2105,8 +2105,13 @@ var relatoInicio=(function(){
   /* En escritorio (1024 px o más) no hay pestañas: cada botón baja a su
      sección, el radar al radar interactivo de Plataformas y cada tarjeta abre su ficha. */
   const esc=!raiz.classList.contains('movil-ui')&&e.target.closest&&e.target.closest('[data-inicio-radar],[data-movil-ir],[data-perfil-oferta]');
-  if(esc){e.preventDefault();if(esc.dataset.perfilOferta)abrirDetalleOfertaLocal(esc.dataset.perfilOferta);
-   else irA(esc.hasAttribute('data-inicio-radar')?'tool':esc.dataset.movilIr);return;}
+  if(esc){e.preventDefault();if(esc.dataset.perfilOferta){abrirDetalleOfertaLocal(esc.dataset.perfilOferta);return;}
+   const id=esc.hasAttribute('data-inicio-radar')?'tool':esc.dataset.movilIr,dest=$(id);irA(id);
+   /* El foco baja con la página, al primer título visible del destino (como Movil.ir). */
+   const foco=dest&&([...dest.querySelectorAll('h2,h3')].find(x=>x.offsetWidth>1&&x.getClientRects().length)||dest);
+   if(foco&&foco.focus){if(!/^(?:A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(foco.tagName)&&!foco.hasAttribute('tabindex'))foco.setAttribute('tabindex','-1');
+    foco.focus({preventScroll:true});}
+   return;}
   const r=e.target.closest&&e.target.closest('[data-inicio-radar]');
   if(r&&typeof Movil!=='undefined'&&Movil.ir){e.preventDefault();const radar=$('movilPanelRadar');
    if(radar)radar.classList.add('movil-radar-abierto');sincronizarRadarPlegado();Movil.ir('movilRadarIntro',r);return;}
@@ -2132,10 +2137,15 @@ var relatoInicio=(function(){
  const portada=$('relPortada'),barra=$('relProgreso'),relleno=barra&&barra.querySelector('span');
  let ancho=0,pendiente=false;
  function alto(){
-  if(!portada||window.innerWidth===ancho)return;ancho=window.innerWidth;
+  if(!portada)return;
   const cab=$('movilCabecera'),nav=$('movilNav'),hdr=document.querySelector('.hdr'),arriba=(cab&&cab.offsetHeight)||(hdr&&hdr.offsetHeight)||0;
+  /* El alto real de la cabecera (en escritorio, a 1024 px, ocupa dos líneas):
+     lo usan la barra de progreso y el salto a «Fuentes». Se mide siempre
+     porque cambia con el idioma aunque no cambie el ancho. */
+  const estilo=raiz.style&&raiz.style.setProperty?raiz.style:barra&&barra.style;
+  if(estilo)estilo.setProperty('--rel-arriba',arriba+'px');
+  if(window.innerWidth===ancho)return;ancho=window.innerWidth;
   portada.style.setProperty('--rel-alto',Math.max(320,window.innerHeight-arriba-(nav?nav.offsetHeight:0))+'px');
-  if(barra)barra.style.setProperty('--rel-arriba',arriba+'px');
  }
  function progreso(){
   if(!relleno||panel.hidden)return;
@@ -5418,6 +5428,9 @@ const Movil = (function(){
    else if(anclaInicio&&anclaInicio.parentNode&&anclaInicio.nextSibling!==panelInicio)anclaInicio.parentNode.insertBefore(panelInicio,anclaInicio.nextSibling);
   }
   if(document.documentElement&&document.documentElement.classList)document.documentElement.classList.toggle('escritorio-relato',relato);
+  /* En escritorio el h1 de la portada antigua no se ve: el título de Inicio hace de h1. */
+  const titInicio=document.getElementById('inicioPortadaTit');
+  if(titInicio&&titInicio.setAttribute&&titInicio.removeAttribute){if(relato)titInicio.setAttribute('aria-level','1');else titInicio.removeAttribute('aria-level');}
   modoMovilPrevio=esMovil;
   ordenarBuscar(esMovil);
   if(document.documentElement&&document.documentElement.classList)
