@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 04/11: Academy (lecciones en llano) y tablas de Privacidad en el móvil, e Inicio como historia también en escritorio (1024 px o más); revisión independiente y corrección de cada parte, npm test completo en verde. Antes, la entrega 2026-11-03.8. Orden de Víctor: «súbelo en cuanto esté» y «hay que subirlo cuanto antes».",
+  "nota": "Claude, 04/11: barrido de calidad de la web publicada (arreglos de móvil y escritorio, revisados) y entrega de catálogo 2026-11-04 (rótulos legibles, fuentes para personas, ARTEX y Toucan), aplicada con Aplicar catálogo y sincronizada (revisión cf79e4a4). Antes, Academy, Privacidad e Inicio en escritorio. Orden de Víctor: «hay que subirlo cuanto antes». npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "24963d48fe25ab3f6a787975a3f9cd2f2d020762",
-    "contenidoSha256": "sha256:64e6665ee2660a5f2c86e9043c3c12f265bc888bd8f88f243a77c29c57588f53",
+    "commit": "f17f460c7795138fce7c2e71950a0185059a5bfa",
+    "contenidoSha256": "sha256:5d9d839877a1c59f164aec3a0c180cc0dcd900424e1acabff2e2c355185141f8",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
