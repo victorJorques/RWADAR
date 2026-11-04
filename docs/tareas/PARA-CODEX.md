@@ -6,6 +6,45 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (tarde, 2) · Claude · textos del catálogo para el lector (entrega 2026-11-03.7, sin aplicar)
+
+Víctor: «hasta que no esté todo no has acabado». Rama local
+`claude/catalogo-2026-11-04`, commits 7900819 (entrega) y 141812b (app).
+**Sin push, Supabase sin tocar, nada publicado, sin OTA.**
+
+- **Entrega `2026-11-03.7`** (revisión 89e88b04; exige que la publicada sea
+  la 344a86aa). Solo cambian textos que ve el lector: los 26 avisos de
+  plataforma (anexo A de la lista de frases), 22 notas de estado (anexo B) y
+  tres detalles con «onboarding» o «ya se leen» (Ondo, Taurus, Blocksquare).
+  Cifras, fechas, fuentes, colecciones y las 24 ofertas, idénticas a la .6.
+  Cada texto, antes y después, en `textos-lector.json`; donde me aparto de
+  la lista para no cambiar un hecho (ARTEX, INX, Lofty, Securitize, Swarm,
+  Superstate, tZERO), lo explica su nota.
+- **Por qué `.7` del 03/11 y no `2026-11-04`:** los datos son del 03/11 y el
+  cargador exige esa fecha; fecharla el 04/11 alargaría la vigencia un día sin
+  releer fuentes. No se usa `npm run catalogo` porque relee fuentes y renueva
+  cifras; se hace como la .6, con `preparar-entrega.mjs`.
+- **Reental (fila 18), Toucan (fila 75) y RealT** están en
+  `public.plataformas` y `public.fuentes`, que el lote diario solo lee
+  (CICLO-DIARIO §5). Van aparte en `textos-plataformas.sql`, con guarda e
+  idempotente. Si se acepta tocar esas tablas,
+  `preparar-entrega.mjs --con-textos-plataformas` los mete en el aplicador.
+  RealT: sin «la mayor demanda…» (no está en las fuentes legibles; la de la
+  ciudad da 403), «Liquidación anunciada», «unos 700» y una fuente nueva
+  (Outlier Media, 16/07/2026) para la liquidación y la venta, que no tenían.
+- **No se puede como dato (fila 19, «Marketplace»):** es un valor del tipo
+  enumerado `rwa_actor`; cambiarlo es cambiar el esquema. Hay que hacerlo en
+  el código de web y app, en lo que se enseña.
+- **App:** el aviso de plataforma dice «Importante», como la web (antes
+  «Alerta crítica»). El inglés ya existía.
+- **Pruebas:** ensayo PGlite de la entrega correcto en las dos variantes;
+  `npm test` completo en verde; `comprobar-ota-compatible.cjs` ok.
+- **Pendiente (coordinador):** revisión independiente; decidir los textos de
+  `public.plataformas`; unir a `main`; «Aplicar catálogo» con `2026-11-03.7`;
+  sincronizar, regenerar fichas y sellar; «Publicar web» y «OTA Android».
+  Si se aplican los textos de `public.plataformas`, `node rwadar-app/volcar-seed.js`
+  para que `02_seed.sql` no se quede con los viejos.
+
 ## 4 de noviembre de 2026 (tarde) · Claude · rediseño publicado en web y app
 
 Víctor: «súbelo todo en cuanto esté». PR #47 (rediseño) y #48 (arreglo de la
