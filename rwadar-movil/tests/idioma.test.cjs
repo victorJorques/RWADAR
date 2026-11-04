@@ -13,7 +13,7 @@ test('las pantallas esenciales tienen traducciones completas y no cambian nombre
   assert.equal(idioma.ingles('Inicio'),'Home');
   assert.equal(idioma.ingles('Buscar'),'Search');
   assert.equal(idioma.ingles('Mínimo en euros'),'Minimum in euros');
-  assert.equal(idioma.ingles('Sin comprobar desde España'),'Not checked for access from Spain');
+  assert.equal(idioma.ingles('Sin comprobar si se puede contratar desde España'),'Not checked for access from Spain');
   assert.equal(idioma.ingles('Reventa entre inversores; depende de que haya compradores'),'Resale between investors; it depends on finding buyers');
   assert.equal(idioma.ingles('Lofty'),'Lofty');
 });

@@ -43,13 +43,13 @@ paso('declara un canal exploratorio bloqueado hasta la aprobación legal',
 paso('no inventa un precio ni presenta presupuesto, contrato o factura como disponibles',
   !/\b[1-9]\d*(?:[.,]\d+)?\s*(?:€|eur)\b/i.test(pagina)
   && !/(?:3\s*(?:%|\/)|5\s*%)/.test(textoVisible)
-  && texto.includes('por conversion valida')
+  && texto.includes('por cada contratacion valida')
   && texto.includes('sin cuota fija de presencia')
   && texto.includes('solo tras una aprobacion legal expresa podria existir una propuesta, presupuesto, contrato, factura o publicacion')
   && !texto.includes('el piloto comercial se contrata'));
 
 paso('presenta el formato futuro como esquema preliminar, no como servicio adquirido',
-  ['ficha de oferta', 'identificacion comercial', 'trazabilidad', 'control de vigencia',
+  ['ficha de oferta', 'identificacion comercial', 'fuentes y fechas', 'control de vigencia',
     'cierre del piloto'].every(fragmento => texto.includes(fragmento))
   && texto.includes('fuente primaria')
   && texto.includes('descripcion preliminar, no un catalogo de servicios ni un compromiso de entrega'));
@@ -63,14 +63,14 @@ paso('minimiza el primer contacto y prohíbe datos de inversores o clientes',
 paso('separa expresamente el patrocinio del criterio editorial',
   texto.includes('criterios que no cambiarian')
   && texto.includes('no se permitiria comprar')
-  && texto.includes('entrada automatica o posicion organica')
+  && texto.includes('entrada automatica o un puesto en el orden normal del catalogo')
   && texto.includes('nunca obligaria a rwadar a aceptar o conservar una ficha'));
 
 paso('no promete resultados ni presenta un clic como venta o cobro activo',
-  texto.includes('no prometemos trafico, inversores, registros, contactos, capital captado ni conversion')
+  texto.includes('no prometemos trafico, inversores, registros, contactos, capital captado ni contrataciones')
   && texto.includes('un clic o registro no genera comision')
   && texto.includes('no hay comisiones activas')
-  && texto.includes('sin conversion valida no habria cobro')
+  && texto.includes('sin una contratacion valida no habria cobro')
   && texto.includes('cancelaciones, devoluciones, fraude e impagos'));
 
 const ctas = [...pagina.matchAll(/<a\b([^>]*\bclass="[^"]*boton-correo[^"]*"[^>]*)>/gi)];
@@ -112,7 +112,7 @@ paso('el estado estático no usa una región viva y las colecciones conservan se
   && (pagina.match(/<span aria-hidden="true">\d<\/span>/g) || []).length === 3);
 
 paso('privacidad cubre de forma específica y conservadora las consultas B2B',
-  /<h2 id="consultas-b2b">7 · Consultas B2B por correo<\/h2>/.test(privacidad)
+  /<h2 id="consultas-b2b">7 · Consultas de empresas por correo<\/h2>/.test(privacidad)
   && ['datos minimos', 'finalidad', 'base juridica', 'acceso y proveedor', 'conservacion']
     .every(fragmento => normaliza(privacidad).includes(fragmento))
   && normaliza(privacidad).includes('interes legitimo en atender la consulta profesional que tu inicias')

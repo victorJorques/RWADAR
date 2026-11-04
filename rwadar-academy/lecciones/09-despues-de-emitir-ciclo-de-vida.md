@@ -1,6 +1,6 @@
 ---
 slug: despues-de-emitir-ciclo-de-vida
-titulo: "Después de emitir: gobierno, reporting, fiscalidad y ciclo de vida del token"
+titulo: "Después de emitir: gobierno, informes, impuestos y ciclo de vida del token"
 nivel: Avanzado
 modulo: 9
 categoria: Post-emisión
@@ -15,7 +15,7 @@ leccion_anterior: expediente-de-tokenizacion
 leccion_siguiente: 
 ---
 
-## Después de emitir: gobierno, reporting, fiscalidad y ciclo de vida del token
+## Después de emitir: gobierno, informes, impuestos y ciclo de vida del token
 
 **Nivel:** Avanzado · **Lectura:** 17 min · **Categoría:** Post-emisión
 **Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE

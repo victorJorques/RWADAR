@@ -317,7 +317,7 @@ async function altaSinUsuarioValidoFallaCerrada(codigo) {
   pruebaAlta.resolver({ id:'usuario-sin-correo' });
   await pruebaAlta.ejecucion;
   return pruebaAlta.aperturas.length === 0 && pruebaAlta.entradas() === 0 &&
-    pruebaAlta.mensajes.some(m=>/alta no es v[aá]lida/i.test(m)) && pruebaAlta.limpiezas() === 1;
+    pruebaAlta.mensajes.some(m=>/no podemos confirmar que se haya creado/i.test(m)) && pruebaAlta.limpiezas() === 1;
 }
 
 async function operacionCuentaObsoletaNoMutaVista(codigo) {
@@ -730,7 +730,7 @@ const ultimaVerificacion = arrayDe(jsCatalogo, 'P').map(p=>p.verificacionLocal?.
 // Fechas en dd/mm/aaaa en toda la web (revisión de lectura, 04/11/2026).
 const fechaPie = ultimaVerificacion.split('-').reverse().join('/');
 prueba('el HTML sin JavaScript contiene la revisión real derivada de los datos',
-  html.includes(`<p id="pieRevision">Última revisión del registro: ${fechaPie}</p>`));
+  html.includes(`<p id="pieRevision">Última revisión del catálogo: ${fechaPie}</p>`));
 
 console.log('\n=== CSP, SESIÓN Y CONTRATOS ===');
 prueba('la CSP no permite unsafe-inline ni eval', !/unsafe-inline|unsafe-eval/i.test(headers));
@@ -953,7 +953,7 @@ prueba('un signup sin usuario raíz válido nunca se presenta como alta aceptada
   await altaSinUsuarioValidoFallaCerrada(js));
 prueba('el reenvío de confirmación usa /resend con type signup y no promete entrega',
   /auth\('\/resend\?redirect_to='\+vuelta,await conAntiRobots\(\{type:'signup',email:correoPendiente\}\)\)/.test(js) &&
-  /solicitud de reenvío fue aceptada[^']*no confirma la entrega/i.test(js));
+  /Hemos pedido el reenvío[^']*no podemos confirmar que el correo te llegue/i.test(js));
 prueba('alta, entrada, recuperación y reenvío pasan por el anti-robots; renovar la sesión y cambiar la clave no',
   (js.match(/auth\('\/(signup|recover|resend)\?redirect_to='\+vuelta,await conAntiRobots\(/g) || []).length === 4 &&
   /auth\('\/token\?grant_type=password',await conAntiRobots\(/.test(js) &&
@@ -1275,7 +1275,8 @@ const codigoPaneles = inicioPaneles >= 0 && finPaneles > inicioPaneles
 // Rótulos en llano: LISTA-FINAL.md (revisión de frases que pidió Víctor, 04/11/2026), filas 42, 48, 7, 24, 25, 26 y 55.
 const camposDetalle = [
   ['Tipo de empresa', 'p.tipo'],
-  ['Quién puede entrar', 'p.acceso'],
+  // «Acreditado» se lee «Inversor acreditado» (LISTA-FINAL fila 21); el valor no cambia.
+  ['Quién puede entrar', 'etiquetaAcceso(p.acceso)'],
   ['Importe de entrada', 'p.ticket'],
   ['Tipo de activo', 'p.cat'],
   ['Región y normativa', 'p.reg'],
@@ -1886,8 +1887,8 @@ prueba(`el simulador real conserva URL HTTPS, las ${N_PLATAFORMAS} plataformas y
   vm.runInContext("new URL('https://example.test/fuente').protocol", simulacionPublicador.contexto) === 'https:' &&
   (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === 26 &&
   (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === N_OFERTAS &&
-  // La fila móvil (ESPEC-FINAL §3) esconde «Doc.» junto a «Revisa · N avisos»: va en su propio span.
-  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}"><span class="emi-ver-pre">Doc\. <\/span>/g) || []).length === N_OFERTAS);
+  // La fila móvil (ESPEC-FINAL §3) esconde «Fuente revisada el» junto a «Revisa · N avisos»: va en su propio span.
+  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}"><span class="emi-ver-pre">Fuente revisada el <\/span>/g) || []).length === N_OFERTAS);
 // Ejecutar el cliente entero, con un reloj y un DOM persistentes como los de
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
 const fechaLoteEmbebido = jsCatalogo.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
@@ -2127,9 +2128,9 @@ for(const [nombre,alterar] of [
     r.m.length>=8&&r.m.every(m=>ingles(m)!==m)&&!iw.includes("'.escaparate-comprobaciones p'")&&iw.includes("'.escaparate-comprobacion-motivo-fuente'")&&
     !/superficies='[^']*#inicio(?:Seleccion|Recientes)/.test(iw)&&ingles('cnmv.es · fuente de: Se contrata hoy desde España')==='cnmv.es · source for: Can be bought from Spain today'&&
     ingles('Revisada el 03/11/2026; cifras válidas 7 días más.')==='Reviewed on 03/11/2026; figures valid for 7 more days.'&&ingles('· consultada el 03/11/2026')==='· checked on 03/11/2026');
-  prueba('caducado: «se contrata hoy» y «mínimo y salida» en ✗, pendientes de revalidar',
-    r.antes.every(Boolean)&&!r.k.contratable[0]&&/^Pendiente de revalidar: la revisión semanal ha vencido\.$/.test(r.k.contratable[1])&&
-    !r.k.minimoSalida[0]&&/pendiente de revalidar/.test(r.k.minimoSalida[1])&&!/sin documentar/i.test(r.k.minimoSalida[1])&&!r.k.vigente[0]);
+  prueba('caducado: «se contrata hoy» y «mínimo y salida» en ✗, por volver a comprobar',
+    r.antes.every(Boolean)&&!r.k.contratable[0]&&/^Pendiente de volver a comprobar: la revisión semanal ha caducado\.$/.test(r.k.contratable[1])&&
+    !r.k.minimoSalida[0]&&/por volver a comprobar/.test(r.k.minimoSalida[1])&&!/sin documentar/i.test(r.k.minimoSalida[1])&&!r.k.vigente[0]);
   const n=(s,re)=>Number((s.match(re)||[])[1]),chip=d(cssMovil,'#movilPanelRadar .emis-filtros .f');
   const ic=n(cssMovil,/:is\(\.emis-filtros,\.fichas-f\) \.f::before\{[^}]*inset:-(\d+)px/),est=d(cssMovil,'#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar');
   const ie=n(d(cssMovil,'#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::before'),/inset:-(\d+)px/),en=d(css,'.escaparate-comprobaciones a');
@@ -2168,7 +2169,7 @@ for(const [nombre,alterar] of [
   const cinco=o=>{const t=transparencia.ofertas[o.slug],r=resumenOferta(o,plataformas,ahora);
     return !!t&&t.verificadaEl===o.verificadaEl&&o.coleccion==='principales'&&o.disponibleEs===true&&
       t.supervisada.cumple===true&&t.documentoEspana.cumple===true&&
-      (Number.isFinite(r.minimo.euros)||!!r.minimo.unidadDocumentada)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto)&&
+      (Number.isFinite(r.minimo.euros)||!!r.minimo.unidadDocumentada)&&!['Salida no documentada','Salida por volver a comprobar'].includes(r.salida.texto)&&
       o.estadoRevision==='actual'&&!r.vencida;};
   const esperadas=emi.filter(cinco).map(o=>o.slug).sort();
   vm.runInContext("huellaInicio='';emiColeccion='principales';emiCat='';emiBusquedaLocal='';pintarEmisiones()",c);
@@ -2224,7 +2225,7 @@ for(const [nombre,alterar] of [
     pl('Ver las {ofertas} ofertas',false)==='Ver las '+n[0]+' ofertas'&&pl('See the {plataformas} platforms',true)==='See the '+n[1]+' platforms'&&
     /^Catálogo revisado el \d\d\/\d\d\/\d{4}\. Próxima revisión: \d\d\/\d\d\/\d{4}\.$/.test(pl('Catálogo revisado el {revisado}. Próxima revisión: {hasta}.',false))&&
     (htmlInicio.match(/data-rel-plantilla="/g)||[]).length>=8&&p.obtiene('relMinimos').hidden===false&&p.obtiene('relVigencia').hidden===false&&
-    /<ul class="inicio-hud" id="inicioCifras" aria-label="El registro en cifras"><\/ul>/.test(htmlInicio)&&
+    /<ul class="inicio-hud" id="inicioCifras" aria-label="El catálogo en cifras"><\/ul>/.test(htmlInicio)&&
     !new RegExp(`\\b(?:${n.join('|')}) (?:ofertas|plataformas|descartadas)\\b`).test(texto(htmlInicio)));
   vm.runInContext("CATALOGO_CADUCADO=true;huellaInicio='';pintarInicio()",c);
   const sinCifras=['inicioCifras','inicioRadar','relTarjetas'].map(id=>p.obtiene(id).innerHTML);
@@ -2807,7 +2808,7 @@ prueba('la privacidad describe favoritos locales y push cerrado sin prometer bor
   /no obtiene ni registra tokens push/.test(privacidadLineal) &&
   /no quedan revocados por esta pausa/.test(privacidadLineal) &&
   /entrega automática está desactivada/.test(privacidadLineal) &&
-  /no se ha verificado de extremo a extremo/.test(privacidadLineal) &&
+  /no se ha probado entera, de principio a fin/.test(privacidadLineal) &&
   /Los avisos de nuevas emisiones tampoco están conectados/.test(privacidadLineal));
 prueba('la privacidad tampoco promete correos de cambio del radar',
   /entrega de correos por cambios del radar[\s\S]*todavía no está activa/.test(privacidadLineal));
@@ -2818,7 +2819,7 @@ prueba('privacidad y UI permiten solicitar la retirada del consentimiento anteri
   /consentimiento explícito/.test(privacidadLineal) &&
   /Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar/.test(html) &&
   /puedes retirarlo escribiendo a RWAdar@protonmail.com/.test(html) &&
-  /Está desactivado por defecto[\s\S]*faltan configurar Brevo y verificar la entrega de extremo a extremo/.test(js));
+  /Está desactivado por defecto[\s\S]*todavía no enviamos estos avisos/.test(js));
 prueba('privacidad distingue consulta pública y cuenta confirmada para funciones personales, conservando correos, sesión y borrado',
   /La consulta de la web es pública/.test(privacidadLineal) &&
   /Necesitas una cuenta con el correo confirmado para las funciones personales/.test(privacidadLineal) &&

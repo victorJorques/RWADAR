@@ -183,7 +183,7 @@ try {
     await t.pagina.waitForFunction(() => document.getElementById('avisoGlobal')?.textContent.includes('no hemos podido confirmar el cierre en el servidor'));
     ok('logout 500 limpia la memoria pero avisa que la sesión remota podría seguir activa',
       !await t.pagina.evaluate(() => Cuenta.hay()) && await t.pagina.evaluate(() => Cuenta.token()) === null &&
-      /sesión remota podría seguir activa/.test(await t.pagina.locator('#avisoGlobal').innerText()));
+      /Puede que la sesión siga abierta en otros dispositivos/.test(await t.pagina.locator('#avisoGlobal').innerText()));
     await t.ctx.close();
   }
   {

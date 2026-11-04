@@ -241,7 +241,7 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
       vigiladas = filas.map(fila => ({ id: fila.plataforma_id, nombre: fila.plataformas.nombre }));
     } catch (error) {
       actual(); if (sesionInvalida(error)) throw error;
-      avisoVigilancia = 'Has entrado, pero no se pudo cargar tu vigilancia. Vuelve a actualizarla.';
+      avisoVigilancia = 'Has entrado, pero no se pudo cargar tu lista de seguimiento. Vuelve a actualizarla.';
     }
     return { perfil: { id: usuario.id, nombre: nombreValido(perfiles[0].nombre, true) }, vigiladas, avisoVigilancia };
   }
@@ -430,7 +430,7 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
           await pedir(cliente.from('vigilancia').insert({ usuario_id: usuario.id, plataforma_id: plataformas[0].id }), actual);
         }
         const propios = await datosPropios(cliente, usuario, actual);
-        pintar({ ...propios, mensaje: anterior ? 'Plataforma retirada de tu vigilancia.' : 'Plataforma guardada en tu vigilancia. Los avisos siguen sin estar activos.' });
+        pintar({ ...propios, mensaje: anterior ? 'Ya no sigues esta plataforma.' : 'Plataforma guardada en tu lista. Todavía no enviamos avisos.' });
       });
     },
     async salir() {
@@ -472,7 +472,7 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
         await pedir(cliente.rpc('borrar_mi_cuenta'), actual);
         await almacenSesion.borrar();
         purgar();
-        pintar({ mensaje: 'Tu cuenta y su lista de vigilancia se han borrado. Los favoritos locales se conservan hasta que los borres desde Perfil.' });
+        pintar({ mensaje: 'Tu cuenta y su lista de seguimiento se han borrado. Los favoritos locales se conservan hasta que los borres desde Perfil.' });
       });
     },
     cancelar() {

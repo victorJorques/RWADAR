@@ -704,7 +704,7 @@ function barraSuperior(activa) {
 function pieHtml() {
   return `<footer class="ac-pie">
   <div class="ac-envoltura">
-    <p><b>RWAdar Academy</b> forma parte de RWAdar, un registro independiente de plataformas de tokenización de activos reales. No es asesoramiento financiero.</p>
+    <p><b>RWAdar Academy</b> forma parte de RWAdar, un catálogo independiente de ofertas y plataformas tokenizadas. No es asesoramiento financiero.</p>
     <p><a href="/">Radar</a> · <a href="/academy/">Academy</a> · <a href="/privacidad">Privacidad</a> · <a href="/transparencia-comercial">Transparencia comercial</a> · <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a></p>
   </div>
 </footer>`;
@@ -1023,18 +1023,20 @@ function bloquePortada(academy) {
     ${niveles}
     </div>
     <a class="academia-ver-todo" href="/academy/">Ver todas las lecciones <span aria-hidden="true">→</span></a>
-    <p class="academia-nota">Las lecciones son de texto. Todavía no hay vídeos: no mostraremos miniaturas ni botones que no lleven a contenido real.</p>
+    <p class="academia-nota">Las lecciones son de texto. De momento no hay vídeos.</p>
   </div>
   <!--academy:fin-->`;
 }
 
 /* El enlace discreto de Inicio a la Academy (decisión de Víctor del 04/11/2026),
-   con el número real de lecciones publicadas. En el móvil cambia a la pestaña
-   Academy; en escritorio abre /academy/. */
+   con el número real de lecciones publicadas. Solo se ve en pantallas de
+   menos de 768 px, donde cambia a la pestaña Academy; sin JavaScript abre /academy/.
+   En escritorio no aparece: Academy está en el menú de arriba y en su propia
+   sección de la portada. */
 function bloqueInicio(academy) {
   const n = publicadas(academy).length;
   return `      <!--academy-inicio:ini-->
-      <a class="b3 rel-academia rel-revela" href="/academy/" data-movil-cambiar="academy"><span>¿Empiezas de cero?</span> <span>${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en Academy</span><span class="rel-flecha" aria-hidden="true"></span></a>
+      <a class="b3 rel-academia rel-revela" href="/academy/" data-movil-cambiar="academy"><span><span>¿Empiezas de cero?</span> <span>${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en Academy</span></span><span class="rel-flecha" aria-hidden="true"></span></a>
       <!--academy-inicio:fin-->`;
 }
 

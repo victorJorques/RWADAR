@@ -65,7 +65,7 @@ test('el rediseño conserva radar, ofertas, 3D, detalle, descartes, avisos y pri
   assert.match(codigo, /INTERNO · datos locales · sin conexión a Supabase de producción/);
   assert.match(codigo, /Buscar por oferta, empresa, país o activo/);
   assert.match(codigo, /no hay comisiones ni enlaces remunerados activos/);
-  assert.match(codigo, /Una relación comercial debe identificarse y no altera el ranking editorial/);
+  assert.match(codigo, /Una relación comercial debe identificarse y no cambia el orden editorial/);
   assert.match(codigo, /oferta\.plataformaSlug !== proveedorOferta/);
   assert.match(codigo, /proveedor\.slug/);
   assert.match(codigo, /const escaparate = MODO_LOCAL \? \[/);
@@ -114,7 +114,7 @@ test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => 
   const codigo = leer('App.js');
   assert.match(codigo, /Plataformas guardadas · \$\{seguidas\.length\}/);
   assert.match(codigo, /Ofertas guardadas · \$\{ofertasGuardadas\.length\}/);
-  assert.match(codigo, /Los avisos llegarán próximamente a la app con las nuevas actualizaciones\./);
+  assert.match(codigo, /Los avisos llegarán a la app en una próxima actualización\./);
   assert.match(codigo, /\{USUARIO_LOCAL \? \(\s*<View style=\{e\.avisoProximo\}>/);
   assert.match(codigo, /guardada=\{!!ofertaAbierta && guardadas\.includes\(ofertaAbierta\.slug\)\}/);
   const ofertas = leer('componentes', 'Ofertas.js');
@@ -164,7 +164,9 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
     new Set(ofertas.map((x) => x.categoria)));
   assert.match(componente, /imagenEditorialOferta\(oferta\)/);
   assert.doesNotMatch(componente, /imagenes-ofertas|imagenOferta\(oferta\.slug\)/);
-  assert.match(componente, /\{editorial\.etiqueta\}/);
+  // Sin etiqueta encima de la foto: el pie del manifiesto va debajo, como en la web (04/11/2026).
+  assert.doesNotMatch(componente, /\{editorial\.etiqueta\}/);
+  assert.match(componente, /\{PIE_EDITORIAL\}/);
   assert.match(componente, /accessibilityLabel=\{decorativa \? undefined : editorial\.alt\}/);
   assert.doesNotMatch(componente, /oferta\.imagenAlt/);
   // La ficha de la web final (04/11/2026) ya no dice si el proveedor está en el radar.
@@ -177,7 +179,7 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   assert.match(componente, /Rentabilidad ajustada \/ publicada/);
   // Rótulos en frase normal (GUIA-ACABADOS §5, aplicada a la web el 04/11).
   assert.match(componente, /Patrocinada/);
-  assert.match(componente, /Patrocinada\. Consulta la relación comercial en la ficha; no altera el ranking/);
+  assert.match(componente, /Patrocinada\. Consulta la relación comercial en la ficha; no cambia el orden editorial/);
   // El botón de la ficha se nombra «Ver oferta en <proveedor> ↗», como la web (04/11/2026).
   assert.match(componente, /Ver oferta en <Text noTraducir idiomaOriginal="es-ES">\{oferta\.plataformaNombre\}/);
   assert.match(componente, /RWAdar no cobra comisión al inversor/);
@@ -195,8 +197,8 @@ test('ofertas separa tres colecciones y adapta una, dos o tres columnas al ancho
     assert.match(app, new RegExp(`activo=\\{grupoOfertas === '${grupo}'\\}[\\s\\S]{0,180}seleccionarGrupoOfertas\\('${grupo}'\\)`));
   }
   assert.match(app, /MODO_LOCAL \? <SegmentoOferta texto="Todo"/);
-  assert.match(app, /No confirman precio, liquidez ni disponibilidad actuales/);
-  assert.match(app, /No confirman apertura, fecha de lanzamiento ni acceso/);
+  assert.match(app, /No confirman el precio de hoy, que se pueda comprar o vender ni que sigan disponibles/);
+  assert.match(app, /No confirman que vayan a abrir, cuándo lo harán ni que puedas invertir/);
   assert.match(app, /setSecundario\(\[\]\); setEnCamino\(\[\]\)/);
 
   assert.match(app, /accessibilityLabel="Seleccionar grupo de ofertas"/);
@@ -276,7 +278,7 @@ test('la nueva interfaz no introduce identidad ni funciones ficticias de la refe
   for (const ajeno of ['Booking.com', 'Genius', 'Reservas', 'Métodos de pago', 'Mi cuenta']) {
     assert.equal(codigo.includes(ajeno), false, `se introdujo texto ajeno: ${ajeno}`);
   }
-  assert.match(codigo, /Las cuentas llegarán próximamente a la app con las nuevas actualizaciones/);
+  assert.match(codigo, /Las cuentas llegarán a la app en una próxima actualización/);
 });
 
 test('las ilustraciones por ficha son de su categoría y no llevan cifras ni promesas', () => {

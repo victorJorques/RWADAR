@@ -235,6 +235,9 @@ export default function Inicio({
   const [novedadesAbiertas, setNovedadesAbiertas] = useState(false);
   const cap = t.capitulos;
   const ultima = NOTICIAS[0];
+  // La misma línea que la web: el resumen corto (o el título) con su punto final.
+  const baseNovedad = ultima ? (ultima.resumen || ultima.titulo) : '';
+  const lineaNovedad = baseNovedad && !/[.!?…]$/.test(baseNovedad) ? `${baseNovedad}.` : baseNovedad;
 
   const bajarA = (y) => desplazamiento.current?.scrollTo?.({ y: Math.max(0, y - 8), animated: true });
   const guardar = (clave) => (ev) => { posiciones.current[clave] = ev.nativeEvent.layout.y; };
@@ -438,7 +441,7 @@ export default function Inicio({
           al tocar, todas. */}
       {ultima ? (
         <View style={e.novedades}>
-          <Text style={e.novedadTxt}><Text noTraducir style={e.novedadFecha}>{fechaES(ultima.fecha) || ultima.fechaTexto}</Text> · {ultima.titulo}</Text>
+          <Text style={e.novedadTxt}><Text noTraducir style={e.novedadFecha}>{fechaES(ultima.fecha) || ultima.fechaTexto}</Text> · {lineaNovedad}</Text>
           <Pressable onPress={() => { tacto.eleccion(); setNovedadesAbiertas((v) => !v); }}
             style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button"
             accessibilityState={{ expanded: novedadesAbiertas }} noTraducir accessibilityLabel={t.novedades}>
@@ -568,19 +571,23 @@ export default function Inicio({
             {GRUPOS_FUENTES_INICIO.map((g) => (
               <View key={g.id} style={e.grupoFuentes} onLayout={guardarGrupo(g.id)}>
                 <Text noTraducir style={e.grupoFuentesTit} accessibilityRole="header">{idioma === 'en' ? g.en : g.es}</Text>
-                {g.fuentes.map((num) => porNumero.get(num)).filter(Boolean).map((f) => (
+                {g.fuentes.map((num) => porNumero.get(num)).filter(Boolean).map((f) => {
+                  // La descripción en el idioma elegido (fuentes.json trae las dos).
+                  const descripcion = idioma === 'en' && f.texto_en ? f.texto_en : f.texto;
+                  return (
                   <View key={`${g.id}-${f.n}`} style={e.fuenteFila}>
-                    <Text noTraducir idiomaOriginal="es-ES" style={e.fuenteTxt}>{f.texto}</Text>
+                    <Text noTraducir idiomaOriginal={descripcion === f.texto ? 'es-ES' : 'en-US'} style={e.fuenteTxt}>{descripcion}</Text>
                     <View style={e.fuenteEnlaces}>
                     {f.urls.map((url) => (
                       <Pressable key={url} onPress={() => onAbrirEnlace?.(url)} style={({ pressed }) => [e.fuenteEnlace, pressed && pulsado('b3')]}
-                        accessibilityRole="link" noTraducir accessibilityLabel={`${f.texto}: ${url}`}>
+                        accessibilityRole="link" noTraducir accessibilityLabel={`${descripcion}: ${url}`}>
                         <Text noTraducir style={e.fuenteEnlaceTxt} numberOfLines={1}>{enlaceCorto(url)} ↗</Text>
                       </Pressable>
                     ))}
                     </View>
                   </View>
-                ))}
+                  );
+                })}
                 {posiciones.current[g.id] != null ? (
                   <Pressable onPress={() => { tacto.eleccion(); bajarA(posiciones.current[g.id]); }}
                     style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button" noTraducir

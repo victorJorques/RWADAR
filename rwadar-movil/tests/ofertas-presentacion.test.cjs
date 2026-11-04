@@ -58,7 +58,7 @@ function componentes(ahora = AHORA, opciones = {}) {
       Animated: { View: 'AnimatedView' },
       AppState: {}, StyleSheet: { hairlineWidth: 1, create(valor) { Object.assign(estilos, valor); return valor; } } },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
-    '../fixtures/imagenes-editoriales': opciones.imagenes || { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
+    '../fixtures/imagenes-editoriales': opciones.imagenes || { ETIQUETA_EDITORIAL: 'Ilustración editorial', PIE_EDITORIAL: 'Imágenes ilustrativas, no fotos del activo', imagenEditorial: () => null,
       imagenEditorialOferta: () => null },
     '../lib/datos': datos,
     '../lib/verificacion-local': verificacion,
@@ -119,7 +119,7 @@ test('tarjeta móvil prioriza nombre/proveedor, tres datos y la consulta de fuen
   // consultada …» sigue entero en la etiqueta accesible.
   for (const esperado of [oferta.titulo, oferta.plataformaNombre, '30/09/2026',
     'Mínimo', 'España', 'Salida', 'Ver ficha →']) assert.ok(visible.includes(esperado), esperado);
-  for (const fuera of ['7,50 %', oferta.rentabilidad.literal, oferta.documentacion.descripcion, 'Referencia documentada', '999 EUR', '123 CHF', oferta.resumen, 'RENT. AJUSTADA']) {
+  for (const fuera of ['7,50 %', oferta.rentabilidad.literal, oferta.documentacion.descripcion, 'Fuente revisada el', '999 EUR', '123 CHF', oferta.resumen, 'RENT. AJUSTADA']) {
     assert.ok(!visible.includes(fuera), `bloque largo reapareció en la tarjeta: ${fuera}`);
   }
   assert.ok(tarjeta.props.accessibilityLabel.includes('Fuente consultada 30/09/2026'));
@@ -261,7 +261,7 @@ test('registro del proveedor conserva fuente y fecha sin acreditar la oferta ni 
   const detalle = ui.DetalleOferta({oferta:dato(),plataforma,onAbrirEnlace:url=>abiertos.push(url)});
   assert.match(textoVisible(detalle),/Registro del proveedor ·\s+Registro confirmado\s+· revisión\s+21\/09\/2026/);
   assert.match(textoVisible(detalle),/Este registro no acredita la supervisión ni la apertura de esta oferta/);
-  assert.match(textoVisible(detalle),/Sin comprobar desde España/);
+  assert.match(textoVisible(detalle),/Sin comprobar si se puede contratar desde España/);
   nodos(detalle).find(n=>n.props?.accessibilityLabel?.includes('https://regulador.example/registro')).props.onPress();
   assert.deepEqual(abiertos,['https://regulador.example/registro']);
   plataforma.verificacionLocal.licenciaRegistro.fuentes[0].url = 'https://secreto@regulador.example/registro';
@@ -320,7 +320,7 @@ test('agrupar repetidas mantiene todas las referencias y la búsqueda permite ab
       assert.ok(fila.ofertas.every(o=>o.plataformaSlug===fila.proveedorSlug && o.coleccion===coleccion));
       let abierto = false;
       const tarjeta = ui.FichaGrupoOfertas({grupo:fila,onAbrir:()=>{abierto=true;}});
-      assert.match(textoVisible(tarjeta),new RegExp(`Ver\\s*${fila.ofertas.length}\\s*referencias`));
+      assert.match(textoVisible(tarjeta),new RegExp(`Ver sus\\s*${fila.ofertas.length}\\s*ofertas`));
       tarjeta.props.onPress(); assert.equal(abierto,true);
       const dentro = ui.agruparOfertasLectura(fila.ofertas,false);
       assert.equal(dentro.length,fila.ofertas.length);

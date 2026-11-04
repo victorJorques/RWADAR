@@ -1,6 +1,6 @@
 ---
 slug: marco-legal-cuando-tu-token-es-un-valor
-titulo: "El marco legal sin abogados: cuándo tu token es un valor y cuándo no"
+titulo: "El marco legal, explicado en llano: cuándo tu token es un valor y cuándo no"
 nivel: Intermedio
 modulo: 4
 categoria: Marco regulatorio
@@ -15,7 +15,7 @@ leccion_anterior: es-tu-activo-tokenizable
 leccion_siguiente: cuanto-cuesta-tokenizar
 ---
 
-## El marco legal sin abogados: cuándo tu token es un valor y cuándo no
+## El marco legal, explicado en llano: cuándo tu token es un valor y cuándo no
 
 **Nivel:** Intermedio · **Lectura:** 16 min · **Categoría:** Marco regulatorio
 **Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE

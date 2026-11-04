@@ -121,7 +121,7 @@ function moduloApp(noticias) {
 export const DESTINOS_NOTICIAS = ${JSON.stringify(destinos)};
 
 export const NOTICIAS = [
-${noticias.map(({ resumen, ...n }) => `  ${JSON.stringify(n)},`).join('\n')}
+${noticias.map((n) => `  ${JSON.stringify(n)},`).join('\n')}
 ];
 `;
 }

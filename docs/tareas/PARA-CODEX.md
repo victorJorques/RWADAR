@@ -144,6 +144,131 @@ llevaban la web y la app); sin «oportunidad», urgencia ni rentabilidades.
 - **Pendiente:** publicar web y OTA, solo con permiso de Víctor; probarlo en
   un Android real.
 
+## 4 de noviembre de 2026 (noche, 2) · Claude · corrector de los remates (sin publicar)
+
+Sigue la rama local `claude/remates`, sin push. **Nada publicado, Supabase y
+EAS sin tocar, sin OTA.** `comprobar-ota-compatible.cjs --base c1f7106…` da
+ok; el `package.json` raíz y los archivos protegidos de `rwadar-movil` no
+cambian.
+
+- **Fila 17 completa:** quedaban cinco «ha vencido» (aviso del catálogo, fila
+  «Revisada esta semana» de la ficha, página fija y app). Ahora todo dice «la
+  revisión semanal ha caducado». Comprobado con el reloj en el 12/11/2026.
+- **Inglés que faltaba** (web y app comparten diccionario y motor):
+  Academy (progreso, niveles, rótulos y resúmenes de las tarjetas, migas,
+  fechas, índice, paginación y test de las lecciones, y las etiquetas
+  accesibles de la app), Plataformas (recuento, «Show 20 more», filtros,
+  regiones, radar, comparación, ficha), cabeceras de las colecciones de
+  Ofertas, avisos del catálogo caducado y las filas del menú de Perfil de la
+  app. Las dos etiquetas de filtros que la rama había dejado a medias
+  («Filter by tipo de inversor») ya salen enteras. Un barrido en inglés de la
+  web (390 y 1366 px) ya solo encuentra en castellano datos del catálogo
+  (nombres, tipo · región de las plataformas, avisos de la fila 11) y el
+  cuerpo de las lecciones.
+- **Cuerpo de las lecciones y aviso legal de Academy:** siguen en castellano,
+  ahora marcados como «Original source text (Spanish)» también en la app y en
+  el índice de la web. **Lo decide Víctor** si el aviso legal se traduce.
+- **«Registro» → «catálogo»** donde es interfaz: pie («Última revisión del
+  catálogo»), «Explorar el catálogo», «Alcance del catálogo…», «El catálogo en
+  cifras», el radar, el aviso de «Nada abierto con ese filtro» y el pie de
+  Academy. **Quedan para Víctor** las frases legales que usan «registro»: «RWAdar
+  es un registro editorial independiente…» (Inicio y app), «El registro y su
+  selección no pueden reproducirse…» (pie) y la de Privacidad.
+- **Aviso de correo** al aceptar los avisos: ya no habla de Brevo ni de la
+  prueba «de extremo a extremo».
+- **Tablas legales en el móvil:** letra un punto menor y menos relleno; por
+  debajo de 380 px, guiones en las palabras largas. Las cuatro de Privacidad,
+  la de Transparencia comercial y la de Para empresas caben en su caja a 390,
+  360 y 320 px. El texto legal no cambia.
+- **Corrección a la entrada anterior:** el enlace a Academy de Inicio solo se
+  ve por debajo de 768 px. En escritorio no aparece; Academy sigue en el menú
+  de arriba y en su sección de la portada.
+- **Pruebas:** `npm test` completo en verde: rwadar-app sin fallos (27
+  bloques, 30 comprobaciones SQL y el mapa, 11 de 11), web 579, fichas 68,
+  precarga 32, QR, móvil 406 + 2 omitidas, herramientas al día, acceso 144.
+  Gitleaks sin hallazgos en cada commit.
+- **Capturas** a 390 × 844, dsf 2, en el scratchpad de la sesión
+  (`corr-remates/capturas/`): Academy, Plataformas y ficha en inglés (web),
+  índice de Academy en inglés con el aviso legal, tabla de Privacidad, ficha
+  fija con la revisión caducada (12/11) y, en la app en inglés, Perfil,
+  Academy y una lección con su aviso legal.
+
+**Pendiente:** lo mismo que en la entrada anterior (catálogo, cuerpo de las
+lecciones) y las decisiones de Víctor de arriba. En la ficha de plataforma,
+los valores de la tabla de datos (acceso, tipo de activo, región) siguen en
+castellano a propósito: se tratan como dato de la fuente.
+
+---
+
+## 4 de noviembre de 2026 (noche) · Claude · remates de web y app (sin publicar)
+
+Víctor: «hasta que no esté todo no has acabado». Rama local `claude/remates`
+(sale de `main` 2f9348d), commits f8f10a8…dae1ded. **Nada publicado, sin
+push, Supabase y EAS sin tocar, sin OTA.** El `package.json` raíz y
+`rwadar-movil/package.json`, `package-lock.json`, `app.json`, `eas.json` y
+`scripts/` no cambian; `comprobar-ota-compatible.cjs --base c1f7106…` da ok.
+
+- **Marca** (decisión de Víctor, fila 10): «Ofertas y plataformas
+  tokenizadas» bajo el logo (cabecera y pie), en el título, el JSON-LD, el
+  nombre al instalar y `og.png`; «Catálogo independiente» en vez de «Registro
+  independiente». Inglés: «Tokenised offers and platforms». `og.mjs` incrusta
+  ya las fuentes (antes salía con letra de sustitución), lleva el titular de la
+  web y los sectores sin abreviar (filas 2, 71 y 92). La app no enseña
+  subtítulo bajo el logo: no había dónde cambiarlo.
+- **Academy desde Inicio** (decisión de Víctor): «¿Empiezas de cero? 7
+  lecciones gratis en Academy ›» junto a «Mira, compara y decide tú», en la web
+  (lo escribe `rwadar-academy.js` con el número real; solo se ve por
+  debajo de 768 px, donde abre la pestaña Academy) y en la app (cuenta las lecciones
+  publicadas y abre Academy). Inglés incluido.
+- **Lista de frases, todo lo que vive en el código:** cuentas y seguimiento
+  (49-51, 53, 54: «Seguir» y «lista de seguimiento» también en la app y en
+  Privacidad; el aviso de correo sin Brevo ni «de extremo a extremo»), Academy
+  (59-62, 64-69; solo títulos y rótulos, el cuerpo y las fechas de revisión
+  legal de las lecciones no cambian), legales y comerciales (77, 78, 84, 85,
+  88 y 89, sin cambiar ningún hecho; el ancla `#consultas-b2b` se queda), las
+  partes que faltaban de 20, 23 y 39, y 6, 11, 13, 15, 16, 17, 21, 22, 26, 32,
+  35, 37, 38, 42, 43, 44, 47 y 55 donde quedaban (sobre todo en la app). El
+  texto centinela «Salida por volver a comprobar» cambia a la vez en web,
+  fichas, `ficha-editorial` (web y app) y app.
+- **App igual que la web:** la foto de la ficha sin etiqueta encima y con el
+  pie «Imágenes ilustrativas, no fotos del activo» (el manifiesto exige ahora
+  `pieVisibleObligatorio`; el alt sigue empezando por «Ilustración
+  editorial»); «Ficha completa ↗» (abre /ofertas/<slug> con Linking) y
+  «Compartir» (Share de react-native); la línea de novedades con el resumen
+  corto (`rwadar-noticias.js` lo copia a la app); inglés que faltaba
+  (categorías y niveles de Academy, chips con recuento, «Comprobado en»,
+  etiquetas accesibles…).
+- **Fuentes de Inicio en inglés:** `texto_en` en las 38 y `titulo_en` en los
+  grupos; `fuentes.mjs` pinta las dos en la web (se ve la del idioma elegido) y
+  genera `rwadar-movil/lib/inicio-fuentes.js`, que era copia a mano.
+- **Fechas** de las fichas generadas en dd/mm/aaaa.
+- **Prueba del mapa** al día: cuenta del catálogo (hoy 12 de 24 ofertas con
+  ubicación), recoge el mapa nuevo (JSON local al abrir Mapa, `#mapaMargen`,
+  marcadores agrupados por zoom, aviso sin teselas) y entra en la cadena
+  `test` de `rwadar-app/package.json`.
+- **Otros:** «Consúltalo en su web» no sale en grande donde va el precio; las
+  tablas de las páginas legales caben a 390 px en Transparencia comercial.
+- **Pruebas:** `npm test` completo en verde (rwadar-app con el mapa, 11
+  pruebas; web 579; fichas 68; precarga 32; QR; móvil 406 + 2 omitidas;
+  herramientas; acceso 144). Gitleaks sin hallazgos en cada commit.
+- **Capturas** a 390 × 844, dsf 2, en el scratchpad de la sesión
+  (`remates/`): cabecera (móvil y escritorio), Inicio con el enlace a Academy
+  (web y app), ficha de la app, Academy (web y app), Transparencia comercial y
+  Privacidad, y `og.png`.
+
+**Pendiente:**
+- **Ciclo de catálogo (otro agente, con permiso):** filas 11 (textos), 12, 18,
+  19 y 75, anexos A y B y RealT. Esos textos siguen en castellano también en
+  inglés: son datos.
+- Las lecciones citan en su cuerpo «aprenderás a leer el radar» (lección 06),
+  «Trazabilidad» (03) y «Mercado secundario»: cambiarlas obliga a renovar su
+  fecha de revisión legal, así que no se han tocado.
+- Las tablas de Privacidad siguen con desplazamiento lateral dentro de su caja
+  a 390 px (como antes).
+- Publicar web y OTA: lo hace el coordinador.
+
+---
+
 ## 4 de noviembre de 2026 (tarde) · Claude · rediseño publicado en web y app
 
 Víctor: «súbelo todo en cuanto esté». PR #47 (rediseño) y #48 (arreglo de la
