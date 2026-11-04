@@ -46,9 +46,11 @@ test('el titular n.º 1 y la misma historia en castellano y en inglés', () => {
   const forma = (o) => JSON.stringify(o, (k, v) => (typeof v === 'string' ? 's' : typeof v === 'function' ? 'f' : v));
   assert.equal(forma(es), forma(en), 'las dos versiones tienen los mismos apartados');
   assert.deepEqual([...contenido.CAPITULOS_INICIO], ['cap1', 'cap2', 'cap3', 'cap4', 'cap5', 'cap6']);
-  assert.equal(es.capitulos.cap3.tarjetas.length, 8);
-  assert.equal(es.capitulos.cap3.tarjetas[0].cab.startsWith('Banca europea'), true, 'empieza por lo cercano');
-  for (const t of es.capitulos.cap3.tarjetas.slice(5)) assert.ok(!t.cifra && ['Opinión', 'Previsión'].includes(t.etiqueta));
+  // Versión final de la web (04/11/2026): el carrusel del 03 lleva 5 hechos con
+  // su cifra («1 de 5»); las opiniones y la previsión pasan a su «Saber más».
+  assert.equal(es.capitulos.cap3.tarjetas.length, 5);
+  assert.equal(es.capitulos.cap3.tarjetas[0].nombre, 'Banca europea', 'empieza por lo cercano');
+  for (const t of es.capitulos.cap3.tarjetas) assert.ok(t.cifra && t.fecha, t.nombre);
 });
 
 test('sin llamadas [n] en el texto, sin frases vetadas y con «Descartadas»', () => {
@@ -156,7 +158,12 @@ test('las cifras de mercado del 03 se quitan pasados 7 días aunque no haya OTA 
   const { es, en } = contenido.INICIO;
   assert.equal(contenido.CIFRAS_MERCADO_EL, '2026-11-03');
   const [a, m, d] = contenido.CIFRAS_MERCADO_EL.split('-');
-  for (const t of [es, en]) assert.ok(t.capitulos.cap3.cifraPie.includes(`${d}/${m}/${a}`), 'la fecha va también en el texto');
+  // Desde la versión final de la web (04/11/2026) la cifra va en el «Saber más»
+  // del 03: el hueco null de la lista se llena con ella o, caducada, sin cifra.
+  for (const t of [es, en]) {
+    assert.ok(t.capitulos.cap3.mercado.includes(`${d}/${m}/${a}`), 'la fecha va también en el texto');
+    assert.equal(t.capitulos.cap3.saberMas.filter((p) => p === null).length, 1);
+  }
   const dia = (iso) => new Date(`${iso}T12:00:00`);
   assert.equal(cifras.mercadoAlDia('2026-11-03', dia('2026-11-03')), true);
   assert.equal(cifras.mercadoAlDia('2026-11-03', dia('2026-11-10')), true);
@@ -165,5 +172,5 @@ test('las cifras de mercado del 03 se quitan pasados 7 días aunque no haya OTA 
   for (const t of [es, en]) assert.doesNotMatch(t.capitulos.cap3.sinCifra, /\d{3}|%|125/);
   const inicio = leer('componentes', 'Inicio.js');
   assert.match(inicio, /const mercado = mercadoAlDia\(CIFRAS_MERCADO_EL\);/);
-  assert.match(inicio, /\{mercado \? \(/);
+  assert.match(inicio, /p \?\? \(mercado \? cap\.cap3\.mercado : cap\.cap3\.sinCifra\)/);
 });

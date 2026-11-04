@@ -53,7 +53,11 @@ test('una oferta documentada pasa las cinco comprobaciones y enseña sus puntos 
   assert.deepEqual(lista.map((c) => c.id), ['contratable', 'supervisada', 'documentoEspana', 'minimoSalida', 'vigente']);
   assert.ok(lista.every((c) => c.cumple), JSON.stringify(lista.filter((c) => !c.cumple)));
   assert.ok(t.enSeleccionOferta(o, r(o), { ahora: hoy }));
-  assert.deepEqual(t.puntosFuertesOferta(o).map((p) => p.texto), ['Registrada en la CNMV', 'KID en español']);
+  // Los puntos fuertes salen tal cual de transparencia.json (la cápsula de la
+  // comprobación 2 cambió el 04/11/2026); la prueba no fija su redacción.
+  const puntos = contenido.TRANSPARENCIA_POR_SLUG[o.slug].puntos.map((p) => p.texto);
+  assert.ok(puntos.length >= 1);
+  assert.deepEqual(t.puntosFuertesOferta(o).map((p) => p.texto), puntos);
   assert.deepEqual(t.datosCortosOferta(o, r(o)), [['Mínimo', '1 €'], ['España', 'Sí, según la fuente'], ['Salida', 'Reembolso diario']]);
   const supervisada = lista.find((c) => c.id === 'supervisada');
   assert.equal(supervisada.deFuente, true);
