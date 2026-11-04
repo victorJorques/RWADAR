@@ -1057,7 +1057,7 @@ function resumenVerificacionLocalHtml(verificacion){
  const campos=[['Estado operativo',verificacion.estadoOperativo],
   ['Licencia / registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
  return '<div class="verificacion-local-resumen" aria-label="Revisión editorial '+escHtml(verificacion.verificadoEl)+'">'+
-  '<div class="verificacion-local-fecha">REVISIÓN EDITORIAL · '+escHtml(verificacion.verificadoEl)+'</div><div class="verificacion-local-estados">'+
+  '<div class="verificacion-local-fecha">Revisión editorial · '+escHtml(verificacion.verificadoEl)+'</div><div class="verificacion-local-estados">'+
   campos.map(([nombre,campo])=>'<span class="verificacion-local-estado '+
    ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><b>'+escHtml(nombre)+'</b>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span>').join('')+
   '</div>'+verificacion.alertasCriticas.map(alerta=>'<p class="verificacion-local-alerta"><b>Alerta crítica</b>'+escHtml(alerta.detalle)+'</p>').join('')+'</div>';
@@ -4187,7 +4187,7 @@ const Cuenta = (function(){
   const pausado=modo==='registro_pausado'||modo==='recuperar_pausado';
   const registro=modo==='confirmacion_pendiente';
   const e=$('cuentaEstado');
-  $('cuentaEstadoMarca').textContent=pausado?'CUENTAS EN PAUSA':'SOLICITUD RECIBIDA';
+  $('cuentaEstadoMarca').textContent=pausado?'Cuentas en pausa':'Solicitud recibida';
   if(pausado){
    $('cuentaEstadoTexto').textContent='La confirmación obligatoria está activa, pero RWAdar todavía no tiene un servicio de correo propio probado. Para no dejar cuentas bloqueadas, no recogemos nuevas altas ni solicitudes de recuperación por ahora.';
    $('cuentaEstadoCorreo').hidden=true;$('cuentaEstadoCorreo').textContent='';
@@ -4932,9 +4932,9 @@ const Movil = (function(){
  const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
  const textos={
   inicio:['RWADAR','Inicio','Noticias, novedades y por dónde empezar'],
-  buscar:['EXPLORAR RWADAR','Buscar','Ofertas y '+total+' plataformas contrastadas'],
-  academy:['APRENDE A TU RITMO','Academy','Lecciones por niveles, con test y revisión legal'],
-  cuenta:['TU ESPACIO','Perfil','Lo que guardas, avisos y privacidad']
+  buscar:['Explorar RWAdar','Buscar','Ofertas y '+total+' plataformas contrastadas'],
+  academy:['Aprende a tu ritmo','Academy','Lecciones por niveles, con test y revisión legal'],
+  cuenta:['Tu espacio','Perfil','Lo que guardas, avisos y privacidad']
  };
  /* La app abre en Inicio. Un enlace con ancla (#emisiones, #fuera…) va a
     Buscar, que es donde está ese contenido. */
@@ -5012,7 +5012,7 @@ const Movil = (function(){
   }
  }
  function cabeceraAcademy(){
-  if(cabEtiqueta)cabEtiqueta.textContent='APRENDE A TU RITMO';
+  if(cabEtiqueta)cabEtiqueta.textContent='Aprende a tu ritmo';
   if(cabTitulo)cabTitulo.textContent='Academy';
   if(cabSub)cabSub.textContent='Lecciones por niveles, con test y revisión legal';
  }
@@ -5077,9 +5077,9 @@ const Movil = (function(){
   }else mostrarAcademy(true,true,true,origen);
  }
  const textosDetalle={
-  presentacion:['QUÉ INCLUYE EL RADAR','Qué analiza RWAdar','Alcance, límites y lectura del registro'],
-  metodo:['CRITERIOS CONTRASTADOS','Método de selección','Cómo decidimos qué plataformas entran'],
-  fuera:['TRANSPARENCIA','Fuera del radar','Descartes publicados con su motivo y sus fuentes']
+  presentacion:['Qué incluye el radar','Qué analiza RWAdar','Alcance, límites y lectura del registro'],
+  metodo:['Criterios contrastados','Método de selección','Cómo decidimos qué plataformas entran'],
+  fuera:['Transparencia','Fuera del radar','Descartes publicados con su motivo y sus fuentes']
  };
  function cabeceraDetalle(id){
   const t=textosDetalle[id]||textos.buscar;
