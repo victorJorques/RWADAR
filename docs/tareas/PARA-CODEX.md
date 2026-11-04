@@ -8,6 +8,36 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ## 4 de noviembre de 2026 (noche, 2) · Claude · QA de escritorio: 9 arreglos de la web publicada (sin publicar)
 
+**Corrección tras la revisión** (fb7dc26, 8e9a3d3, e1760bd, 88e938d; 5
+hallazgos, 1 importante y 4 menores, todos corregidos):
+- **idioma-previo (importante + menor):** solo oculta en escritorio (mismo
+  corte que la vista móvil de la web); en el móvil no saltaba y ocultarla
+  solo retrasaba la primera pintura (390 px con CPU x4: 2,2 s → 0,18 s, CLS
+  0). El tope de 1,5 s cuenta desde el inicio de la navegación, no desde que
+  corre el script. **Ojo:** no es un tope duro; el temporizador no puede
+  cortar el JS diferido, así que en escritorio con la CPU x4 la página sale
+  a los ~2–2,5 s, al terminar la traducción (CLS 0). Ya no pone `lang="en"`:
+  lo pone idioma-web; si no carga, queda `lang="es"` con el texto en
+  castellano.
+- **Barra de filtros al filtrar (menor):** el ResizeObserver observa también
+  `#plataformasResultados`. Si se filtra desde la barra con la lista
+  desplazada, la vista vuelve al principio de los resultados, bajo la barra;
+  antes la barra se quedaba sobre Academy y se iba al primer giro de rueda
+  con el foco dentro.
+- **/acceso (menor):** el botón que queda solo de su pareja ocupa la fila
+  (solo CSS, con `+` y `:has()`); los botones con caja y los enlaces de texto
+  ya no se mezclan. A 390 px la vista de entrar vuelve a medir 1010 px.
+- **Comparador (menor):** Blocksquare, Fireblocks, Taurus y Tokeny vuelven a
+  decir «No aplica» (no venden inversiones), no «Sin documentar».
+- Pruebas funcionales nuevas o ajustadas en
+  `rwadar-app/probar-web-escritorio.mjs` (idioma-previo en escritorio y
+  móvil, barra al cambiar la lista, «No aplica»); fallan con el código de
+  d469e06. `npm test` completo en verde (base de datos 886 en 27 scripts,
+  30 SQL y 11 del mapa; web 590, fichas 70, precarga 32, móvil 409 + 2
+  omitidas, acceso 145; herramientas al día). OTA `--base c1f7106…` `ok`;
+  CSS 168 389 B. `probar-orden.mjs` sigue con el único aviso de
+  `rwadar-movil/App.js`, que ya salía en `main` (no se toca la app).
+
 Rama local `claude/qa-escritorio` (sale de `main`, 081fc27). **Sin push, sin
 publicar, Supabase sin tocar, sin OTA ni EAS.** Los números son los de la
 tabla del barrido de calidad (HALLAZGOS.md del coordinador). Va en paralelo
@@ -19,19 +49,21 @@ con `claude/qa-movil` y `claude/escritorio-inicio`; se unirán después.
   «0» en castellano; ahora «€0» y «0 €».
 - **n.º 7 · el inglés saltaba** (8570810, 1f8e32e): nuevo
   `assets/idioma-previo-20261104.js` (en `ARCHIVOS_PUBLICABLES`), externo y
-  sin defer en `<head>` porque la CSP no admite scripts en línea. Si la
-  preferencia guardada es inglés pone `lang="en"` y la clase `idioma-previo`
-  (`body{visibility:hidden}` en idioma-20261022.css) hasta que idioma-web
-  avisa de que ha traducido y ha llegado DOMContentLoaded; tope de 1,5 s.
+  sin defer en `<head>` porque la CSP no admite scripts en línea. En
+  escritorio, si la preferencia guardada es inglés, pone la clase
+  `idioma-previo` (`body{visibility:hidden}` en idioma-20261022.css) hasta
+  que idioma-web avisa de que ha traducido y ha llegado DOMContentLoaded;
+  tope de 1,5 s desde la navegación (ver la corrección arriba).
   Va en Inicio, las páginas de rwadar-fichas.js, Academy, 404, privacidad,
   transparencia comercial y para empresas. CLS en inglés: **0,22 → 0** a
-  1366 y **0,067 → 0** a 820; la primera pintura en inglés pasa de ~0,25 s a
-  ~0,6 s (espera a la traducción), en castellano no cambia.
+  1366 y **0,067 → 0** a 820; en escritorio la primera pintura en inglés
+  pasa de ~0,25 s a ~0,6 s (espera a la traducción); en castellano y en el
+  móvil no cambia.
 - **n.º 8 · barra de filtros** (b315a15): `.barra` usa `top:var(--alto-cabecera)`
   (ResizeObserver sobre `.hdr`) y al acabar `#plataformasResultados` se
   empuja hacia arriba (`--barra-empuje`); no se mueven nodos del DOM, así que
   el orden móvil/escritorio de `Movil` no cambia. Tapado: 57 → 0 px a 1024 y
-  820; ya no queda fija sobre Descartadas ni el pie.
+  820; ya no queda fija sobre Descartadas ni el pie, tampoco tras filtrar.
 - **n.º 9 · cabecera de tableta** (38eb8f7): por debajo de 1280 px «Sonido y
   vibración» solo con icono (aria-label y title), enlaces y botones más
   juntos; por debajo de 1024 px salen el lema de la marca y «Ver ofertas →»
@@ -48,7 +80,8 @@ con `claude/qa-movil` y `claude/escritorio-inicio`; se unirán después.
   Si al lado ya pone «consultada el …», no repite la fecha (bebc45d).
 - **n.º 18 · comparador** (daf08ca): «Mínimo» es el mínimo más bajo
   documentado en euros entre las ofertas de esa plataforma («Desde 1 €» en
-  Spiko) o «Sin documentar», no «Alto». `textoEspanaOferta` y
+  Spiko), «No aplica» en los proveedores de infraestructura o «Sin
+  documentar», no «Alto». `textoEspanaOferta` y
   `textoSalidaOferta`: una sola función para la tarjeta (escritorio y móvil)
   y «Lo esencial» de la ficha. **No hecho:** el campo «Blockchains» de ARTEX
   («Mercado regulado (MTF)») es un dato de Supabase; corregirlo va en una
