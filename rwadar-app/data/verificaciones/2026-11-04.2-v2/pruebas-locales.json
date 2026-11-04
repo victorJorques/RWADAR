@@ -1,0 +1,132 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-04T23:56:22.056Z",
+  "etiqueta": "2026-11-04.2",
+  "revisionAnterior": "cf79e4a4-f828-96ce-681b-ae69c3d1b81b",
+  "revisionNueva": "723968ce-00f7-7f42-b3e3-6c7f401b8f89",
+  "sha256AplicarYAprobar": "a4d99551d47d65f09a9a164ecfd2a619a8afd3d019967a1560d1626497513e15",
+  "pruebas": [
+    "inventario: una transacción serializable; guarda; el lote nuevo en rwadar_catalogo (1 revisión, 25 plataformas sin ARTEX, 24 ofertas y sus fuentes); 1 update de public.plataformas (ARTEX a «descartada», solo si sigue en el radar) y 1 insert en public.fuentes (su página de preguntas frecuentes), con su guarda y su comprobación; aprobación al final; sin borrados, esquema ni permisos",
+    "cadena de producción 22/10 → 2026-11-04 (con los cambios de public.plataformas de la .8 y de la 2026-11-04 en 02_seed.sql): la publicada es la cf79e4a4",
+    "antes de aplicar, PGlite enseña lo mismo que se leyó hoy como visitante: 26 plataformas, 24 ofertas, 4 descartadas y ARTEX tal cual (salvo el uuid de cada plataforma, que se genera al instalar, y «publicadaEl» de las fuentes del radar, que la base no guarda)",
+    "idempotente: aplicarla dos veces da lo mismo (un solo cambio de estado registrado)",
+    "publicada la revisión nueva: 25 plataformas (sin ARTEX) y 24 ofertas, fechadas el 03/11 y con 7 días",
+    "las otras 25 plataformas y las 24 ofertas, idénticas salvo la revisión y «plataformas_esperadas» (26 → 25)",
+    "public.plataformas: solo cambia ARTEX (estado, categoria_slug, region_slug, actor, acceso, ticket, cadenas, web, aval, nota, etiqueta_descarte, motivo_descarte, verificada_el; y actualizada_el); public.fuentes: una nueva, su página de preguntas frecuentes; cambios_estado: una fila «ARTEX Global Markets sale del radar» con el motivo",
+    "5 descartadas: Domoblock, Goldfinch, RealT y Toucan iguales; ARTEX con su etiqueta, su motivo y su fuente; ninguna sin fuente",
+    "vistas V1 (Android 1.3.2 y anteriores): 0/0 filas antes y 0/0 después; el lote V1 ya estaba caducado y vacío",
+    "el lector de la web y el de la app lo aceptan con su propio manifiesto (25/24); vence el 11/11, como la 2026-11-04 (no se alarga)",
+    "las 24 tarjetas se ven igual (mínimo, acceso desde España y salida)",
+    "sincronizador real con estas vistas: 25 plataformas, 24 ofertas y 5 descartadas (CSV de 30 filas); con la lista cerrada actualizada sale /fuera-del-radar/artex-global-markets con el motivo y la fuente, sin /plataformas/artex-global-markets; las fichas de las otras 25 plataformas, byte a byte iguales, y las de las 24 ofertas solo cambian la revisión y «plataformas_esperadas» (26 → 25) en sus datos",
+    "worker con la lista nueva: /plataformas/artex-global-markets (con .html o barra final) → 301 a /fuera-del-radar/artex-global-markets, no-store, sin servir la copia de conservación",
+    "exportado a /tmp/claude-0/-home-user-RWADAR/bcd94329-4aea-5eb8-87b2-dce08ca7c659/scratchpad/artex/exportado lo que leería un visitante después de aplicar",
+    "si alguien vigila ARTEX con los avisos por correo activados, queda un aviso en cola, sin enviar",
+    "falla y no deja nada: la publicada no es la cf79e4a4 → Publicación distinta de la revisión anterior prevista: 344a86aa-2c53-d2f0-fed4-5fdaadda33ad. No aplicar este lote.",
+    "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+    "falla y no deja nada: el catálogo está retirado → Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+    "falla y no deja nada: otra plataforma del radar sin blockchain → Hay otra plataforma del radar sin blockchain en «cadenas»: no aplicar.",
+    "falla y no deja nada: ARTEX con otros datos («Blockchains» distinto) → ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+    "falla y no deja nada: ARTEX con otro texto («Qué hace» distinto) → ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+    "falla y no deja nada: ARTEX con una fuente propia → ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+    "falla y no deja nada: la página de ARTEX ya colgada de otra plataforma (Goldfinch) → La fuente nueva ya está en otra plataforma: no aplicar.",
+    "falla y no deja nada: ARTEX con una emisión → ARTEX tiene emisiones: no aplicar.",
+    "falla y no deja nada: una quinta descartada que no es ARTEX → ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+    "falla y no deja nada: a medias: ARTEX ya descartada y el lote sin aplicar → ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+    "falla y no deja nada: a medias: la página de ARTEX puesta y ARTEX aún en el radar → ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar."
+  ],
+  "casos": [
+    {
+      "caso": "alguien vigila ARTEX",
+      "falla": false,
+      "avisosEnCola": 1
+    },
+    {
+      "caso": "la publicada no es la cf79e4a4",
+      "falla": true,
+      "error": "Publicación distinta de la revisión anterior prevista: 344a86aa-2c53-d2f0-fed4-5fdaadda33ad. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión publicada con otra huella",
+      "falla": true,
+      "error": "La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el catálogo está retirado",
+      "falla": true,
+      "error": "Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+      "todoIgual": true
+    },
+    {
+      "caso": "otra plataforma del radar sin blockchain",
+      "falla": true,
+      "error": "Hay otra plataforma del radar sin blockchain en «cadenas»: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "ARTEX con otros datos («Blockchains» distinto)",
+      "falla": true,
+      "error": "ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "ARTEX con otro texto («Qué hace» distinto)",
+      "falla": true,
+      "error": "ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "ARTEX con una fuente propia",
+      "falla": true,
+      "error": "ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la página de ARTEX ya colgada de otra plataforma (Goldfinch)",
+      "falla": true,
+      "error": "La fuente nueva ya está en otra plataforma: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "ARTEX con una emisión",
+      "falla": true,
+      "error": "ARTEX tiene emisiones: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "una quinta descartada que no es ARTEX",
+      "falla": true,
+      "error": "ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "a medias: ARTEX ya descartada y el lote sin aplicar",
+      "falla": true,
+      "error": "ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "a medias: la página de ARTEX puesta y ARTEX aún en el radar",
+      "falla": true,
+      "error": "ARTEX, sus fuentes, las cuentas del radar o la revisión publicada no son las previstas (ni antes ni después): no aplicar.",
+      "todoIgual": true
+    }
+  ],
+  "vistasV1": {
+    "antes": {
+      "p": 0,
+      "o": 0
+    },
+    "despues": {
+      "p": 0,
+      "o": 0
+    }
+  },
+  "lecturasDelSincronizador": [
+    "/rest/v1/catalogo_plataformas_publicas_v2?select=*&limit=257",
+    "/rest/v1/plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)&order=nombre",
+    "/rest/v1/catalogo_ofertas_publicas_v2?select=*&limit=1001"
+  ],
+  "resultado": "correcto"
+}

@@ -1,0 +1,125 @@
+{
+  "tipo": "descarte_plataforma",
+  "fecha": "2026-11-03",
+  "preparadaEl": "2026-11-04",
+  "etiqueta": "2026-11-04.2",
+  "revisionAnterior": "cf79e4a4-f828-96ce-681b-ae69c3d1b81b",
+  "revisionNueva": "723968ce-00f7-7f42-b3e3-6c7f401b8f89",
+  "archivos": {
+    "cambios-plataformas.json": "86c4b368fd3958509c7b7fa01615dc9747712ae52abfade659e1d159a39f897b"
+  },
+  "cuentas": {
+    "plataformasAntes": 26,
+    "plataformasDespues": 25,
+    "fuentesRadarAntes": 69,
+    "fuentesRadarDespues": 67,
+    "descartadasAntes": 4,
+    "descartadasDespues": 5,
+    "ofertas": 24
+  },
+  "sale": {
+    "plataforma": "artex-global-markets",
+    "fuentesRadar": [
+      "artex-lb",
+      "artex-web"
+    ]
+  },
+  "sinCambios": [
+    "las 24 ofertas: documentación, cifras, avisos, colecciones 8/13/3 y vigencia (7 días desde el 03/11)",
+    "las otras 25 plataformas: verificación, estados, detalles, avisos y fuentes",
+    "las otras 4 descartadas"
+  ],
+  "plataformas": [
+    {
+      "slug": "artex-global-markets",
+      "columna": "estado",
+      "antes": "en_radar",
+      "despues": "descartada"
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "categoria_slug",
+      "antes": "materias-primas",
+      "despues": null
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "region_slug",
+      "antes": "liechtenstein",
+      "despues": null
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "actor",
+      "antes": "Marketplace",
+      "despues": null
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "acceso",
+      "antes": "Acreditado",
+      "despues": null
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "ticket",
+      "antes": "Alto",
+      "despues": null
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "cadenas",
+      "antes": "No usa blockchain",
+      "despues": null
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "web",
+      "antes": "https://www.artexgm.com",
+      "despues": null
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "aval",
+      "antes": "Licencia de sistema multilateral de negociación (MTF) bajo MiFID II del regulador de Liechtenstein; SIX aporta compensación y liquidación.",
+      "despues": null
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "nota",
+      "antes": "Mercado regulado de acciones sobre obras de arte: cada cuadro se trocea en acciones de 100 €. Ojo: el token «ARTEX» de BNB Chain no tiene relación con esta plataforma.",
+      "despues": null
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "etiqueta_descarte",
+      "antes": null,
+      "despues": "Sin blockchain"
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "motivo_descarte",
+      "antes": null,
+      "despues": "Es un mercado regulado (MTF) de acciones sobre obras de arte que no usa blockchain: su propia web dice que, por ahora, no la usa de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados."
+    },
+    {
+      "slug": "artex-global-markets",
+      "columna": "verificada_el",
+      "antes": "2026-07-26",
+      "despues": "2026-11-04"
+    }
+  ],
+  "fuentesNuevasPublicas": [
+    {
+      "plataforma": "artex-global-markets",
+      "url": "https://www.artexgm.com/faq",
+      "titulo": "ARTEX · preguntas frecuentes: por ahora no usa blockchain de ninguna forma",
+      "consultada_el": "2026-11-04"
+    }
+  ],
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 3
+  }
+}
