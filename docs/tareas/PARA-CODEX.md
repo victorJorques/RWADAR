@@ -6,6 +6,30 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 3) · Claude · Inicio en escritorio: arreglos de la revisión (sin publicar)
+
+Misma rama `claude/escritorio-inicio`, commits 800b2d2 (CSS) y 1bdb505 (JS).
+**Sin push, nada publicado, Supabase sin tocar, sin OTA.**
+
+- **Pantallas bajas (importante):** con 760 px de alto o menos, el aviso de
+  riesgo va antes de «Ver las 24 ofertas» y la portada encoge. Medido en
+  294 tamaños (1024–1920 de ancho, 560–960 de alto, ES y EN): en ninguno se
+  ve el botón sin el aviso. A 1366×650 el aviso queda en 425–473 y el botón
+  en 493–549; a 1024×600 en inglés, aviso 495–543.
+- **Foco (importante):** los botones del relato llevan el foco al título del
+  destino («Activos y ofertas documentados», «El radar», «Plataformas
+  descartadas»), como Movil.ir en el móvil.
+- **Menores:** el título de Inicio hace de h1 en escritorio (`aria-level=1`;
+  se quita por debajo de 1024); el logo y `/#top` llevan a scrollY 0;
+  `#fuentes-…` deja el grupo bajo la cabecera real (132 px con cabecera de
+  117 a 1024); los títulos de «Recién añadidas» salen enteros.
+- **Pruebas:** `npm test` en verde (web 580, fichas 68, precarga 32, móvil
+  411 con 409 bien y 2 omitidas, acceso 144/144, db 0 fallos + 30 SQL +
+  11/11, Node seguro 16); guardián OTA ok, runtime 1.4.1(23). El móvil a
+  390 px no cambia (barra de progreso a 59 px, sin `aria-level`).
+- **Capturas:** `scratchpad/escritorio/corr/` (c-es-1366x650-arriba,
+  c-en-1024x600-arriba, c-es-1024x768-logo, c-es-1024-nuevas-ancho…).
+
 ## 4 de noviembre de 2026 (noche, 2) · Claude · Inicio como historia también en escritorio (sin publicar)
 
 Rama local `claude/escritorio-inicio` (sobre `main` 320ec05), commits
