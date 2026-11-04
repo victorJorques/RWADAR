@@ -6,6 +6,52 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 4) · Claude · publicado: Academy, Inicio en escritorio, barrido de calidad y catálogo 2026-11-04
+
+Orden de Víctor: «hay que subirlo cuanto antes». Todo publicado en dos subidas,
+cada una con npm test completo, CI (pruebas + secretos), web de prueba
+comprobada a mano (Playwright a través de curl) y después producción.
+
+**Primera subida** (PR #55, merge `f1b0426`; sello `24963d4`): Academy en
+llano y tablas de Privacidad (`claude/academy-pulido`) e Inicio como historia
+en escritorio desde 1024 px (`claude/escritorio-inicio`). Web: Publicar web
+runs 41900720101 (preview) y 41901555827 (producción), ambos success.
+
+**Segunda subida** (PR #56, merge `38eaa07`; PR #57, merge `857ef73`):
+- Arreglos del barrido en móvil (`claude/qa-movil`, revisado y corregido):
+  rótulos legibles en la ficha, test de Academy sin sesión, sin aviso
+  «Registro actualizado» al cargar, saltar al contenido, inglés, una sola
+  consulta de sesión, «de 7», toque de 44 px y menores.
+- Arreglos del barrido en escritorio (`claude/qa-escritorio`, **solo la
+  implementación**; la revisión y su corrección irán en la tercera subida):
+  sin «NaN», inglés sin salto (idioma-previo en `<head>`), barra fija bajo la
+  cabecera real, cabecera en una fila desde 820 px, consultas técnicas sin
+  enlace, comparador, «Entrar», «Novedades», og/twitter.
+- Ajuste de integración: `rotuloReferencia` acepta la clave interna y el
+  rótulo legible de la entrega, quita la fecha y traduce; nombres alineados
+  con `rwadar-app/rotulos-referencias.js`.
+- Entrega de catálogo 2026-11-04 aplicada con «Aplicar catálogo» (run
+  41904025384) tras releer como visitante la f2732257 a las 20:10 UTC.
+  Comprobado en línea: revisión `cf79e4a4`, 26/24 (8/13/3), 20 «Acceso desde
+  España · consulta …» y 0 «accesoEspana», Aktionariat con `/trade`, ARTEX
+  «No usa blockchain», Toucan con 4 fuentes. Sincronizado (seed 12 fuentes,
+  transparencia lote 2026-11-04). `probar-fichas.cjs`: SwitzerLend y Spiko ya
+  no citan ninguna API.
+- Sello `f17f460`. Publicar web runs 41905751641 (preview) y 41906630808
+  (producción); OTA Android run 41906657970 (base c1f7106), todos success.
+
+Medido en la web de prueba frente a la real: cabecera a 820/1024 de 117 a
+69 px; CLS de Inicio en inglés a 1366 de 1,08 a 0; ningún «NaN», ninguna
+clave interna, ningún aviso al cargar.
+
+**Pendiente (tercera subida, en marcha):** corrección de la revisión de
+`claude/qa-escritorio`; `claude/remates-3`: CLS 0,87 a 1024 en castellano
+(viene de la primera subida), Inicio de tableta como historia, marca «texto
+original» en la leyenda del radar en inglés y «Qué se adquiere» repetido en
+la ficha fija. Sigue anotado: mTBILL necesita otra fuente de acceso desde
+España; Toucan, sin confirmar si el bloqueo sigue hoy (Verra da 403); ARTEX
+no usa blockchain (decisión editorial de Víctor si sigue en el radar).
+
 ## 4 de noviembre de 2026 (noche, 2) · Claude · entrega 2026-11-04: arreglos de datos del catálogo (sin aplicar)
 
 Rama local `claude/catalogo-2026-11-04` (worktree `catalogo-1104`, sale de
