@@ -24,8 +24,8 @@
       }
     }
     // Contratable y mínimo/salida: con la revisión vencida no se afirma nada sobre «hoy» (falla cerrado).
-    for (const [campo,motivo] of [['contratable','Pendiente de revalidar: la revisión semanal ha vencido.'],
-      ['minimoSalida','Mínimo y salida pendientes de revalidar: la revisión semanal ha vencido.']]) {
+    for (const [campo,motivo] of [['contratable','Pendiente de volver a comprobar: la revisión semanal ha caducado.'],
+      ['minimoSalida','Mínimo y salida por volver a comprobar: la revisión semanal ha caducado.']]) {
       const nodo=pagina.querySelector('[data-campo="'+campo+'"]'), fila=nodo && nodo.parentElement;
       const caduca=resumen.vencida===true || campo==='contratable' && !(resumen.accesoEspana && resumen.accesoEspana.estado==='si');
       if (!nodo || !fila || !fila.dataset || fila.dataset.cumple!=='si' || !caduca) continue;

@@ -290,7 +290,7 @@ test('el componente nativo se renderiza también con react-native-web, sin Auth 
     assert.match(html, /Cuentas en preparación|Entra en tu cuenta|Tu perfil/);
     assert.doesNotMatch(html, /undefined|access_token|refresh_token/);
     if (estado.estado === 'sin-sesion') assert.match(html, /type="password"/);
-    if (estado.estado === 'autenticada') assert.match(html, /Lista de vigilancia/);
+    if (estado.estado === 'autenticada') assert.match(html, /Lista de seguimiento/);
   }
 });
 

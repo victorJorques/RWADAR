@@ -17,13 +17,13 @@ const ESTADOS_ACCESO = new Set([
 ]);
 
 const ETIQUETAS = Object.freeze({
-  observada: 'Observada',
+  observada: 'Activa al revisarla',
   no_verificable: 'No verificable',
   confirmada_regulador: 'Registro confirmado',
-  confirmada_documento_producto: 'Documento de producto',
+  confirmada_documento_producto: 'Consta en el documento del producto',
   no_aplica_plataforma: 'No aplica a la plataforma',
   sin_registro_declarado: 'Sin registro declarado',
-  confirmado_condicionado: 'Acceso condicionado',
+  confirmado_condicionado: 'Con requisitos',
 });
 
 function asegurar(condicion, mensaje) {

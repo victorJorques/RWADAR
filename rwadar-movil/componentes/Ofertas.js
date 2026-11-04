@@ -37,7 +37,7 @@ function useFechaOferta() {
 
 function datoDestacado(oferta) {
   if (oferta.coleccion === 'secundario' || oferta.coleccion === 'en_camino') {
-    return { etiqueta: 'Referencia documental', valor: 'Consultar fuente' };
+    return { etiqueta: 'Precio y condiciones', valor: 'Consúltalos en su web' };
   }
   if (oferta.cifrasPendientes) {
     return { etiqueta: 'Condiciones actuales', valor: 'Consultar emisor' };
@@ -51,7 +51,7 @@ function datoDestacado(oferta) {
     };
   }
   if (oferta.tipo === 'valor') {
-    return { etiqueta: 'Precio de referencia', valor: oferta.precio?.mostrado || 'Consultar fuente', original: Boolean(oferta.precio?.mostrado),
+    return { etiqueta: 'Precio de referencia', valor: oferta.precio?.mostrado || 'Consúltalo en su web', original: Boolean(oferta.precio?.mostrado),
       referencia: oferta.precio?.unidad || '' };
   }
   // Reventa: «Precio observado», como clavesOfertaLocal de la web; la unidad va debajo.
@@ -139,14 +139,14 @@ export function FichaGrupoOfertas({grupo, onAbrir}) {
   const n = grupo.ofertas.length;
   return (
     <Pressable onPress={onAbrir} style={({pressed}) => [e.ficha, pressed && e.pulsado]}
-      accessibilityRole="button" accessibilityLabel={`${grupo.proveedorNombre}: ver ${n} referencias`}
+      accessibilityRole="button" accessibilityLabel={`${grupo.proveedorNombre}: ver sus ${n} ofertas`}
       accessibilityHint="Abre todas las fichas del proveedor dentro de esta colección">
       <View style={e.cuerpoGrupo}>
-        <Text style={e.datoEtiqueta}>Referencias del mismo proveedor</Text>
+        <Text style={e.datoEtiqueta}>Ofertas de la misma empresa</Text>
         <Text noTraducir idiomaOriginal="es-ES" style={e.titulo}>{grupo.proveedorNombre}</Text>
-        <Text style={e.grupoNumero}>{n} referencias</Text>
+        <Text style={e.grupoNumero}>{`${n} ofertas`}</Text>
         <Text style={e.referencia}>Cada ficha conserva su fuente, fecha, mínimo publicado, acceso desde España y condiciones de salida. No se ha confirmado que puedas contratar todas.</Text>
-        <Text style={e.abrirGrupo}>Ver {n} referencias →</Text>
+        <Text style={e.abrirGrupo}>{`Ver sus ${n} ofertas →`}</Text>
       </View>
     </Pressable>
   );
@@ -677,9 +677,9 @@ export function DetalleOferta({
 
               <Plegable titulo="Fuentes consultadas" detalle={fechaFuentes ? `· ${fechaFuentes}` : ''}>
                 <Text style={e.referencia}>Revisión del catálogo: {resumen.fechas.revisadaEl ? fechaVerificacionLocalVisible(resumen.fechas.revisadaEl) : 'sin fecha válida'}</Text>
-                <Text style={e.referencia}>Última consulta citada: {resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl) : 'no documentada'}</Text>
-                <Text style={e.referencia}>Fecha del dato en esa referencia: {resumen.fechas.fechaDato ? fechaVerificacionLocalVisible(resumen.fechas.fechaDato) : 'no indicada por la fuente'}</Text>
-                <Text style={e.referencia}>Revisar el catálogo no vuelve a comprobar las cifras antiguas. Cada referencia conserva su consulta original debajo.</Text>
+                <Text style={e.referencia}>{resumen.fechas.comprobadaEl ? `Consultamos la fuente por última vez el ${fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)}` : 'No consta cuándo consultamos la fuente'}</Text>
+                <Text style={e.referencia}>{resumen.fechas.fechaDato ? `El dato es del ${fechaVerificacionLocalVisible(resumen.fechas.fechaDato)}` : 'La fuente no dice de qué fecha es el dato'}</Text>
+                <Text style={e.referencia}>Revisar el catálogo no vuelve a comprobar las cifras antiguas. Cada dato lleva su propia fecha.</Text>
                 {fuentesAdicionales.map((url, indice) => (
                   <Pressable key={url} onPress={() => onAbrirEnlace(url)}
                     style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}

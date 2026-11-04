@@ -1275,7 +1275,8 @@ const codigoPaneles = inicioPaneles >= 0 && finPaneles > inicioPaneles
 // Rótulos en llano: LISTA-FINAL.md (revisión de frases que pidió Víctor, 04/11/2026), filas 42, 48, 7, 24, 25, 26 y 55.
 const camposDetalle = [
   ['Tipo de empresa', 'p.tipo'],
-  ['Quién puede entrar', 'p.acceso'],
+  // «Acreditado» se lee «Inversor acreditado» (LISTA-FINAL fila 21); el valor no cambia.
+  ['Quién puede entrar', 'etiquetaAcceso(p.acceso)'],
   ['Importe de entrada', 'p.ticket'],
   ['Tipo de activo', 'p.cat'],
   ['Región y normativa', 'p.reg'],
@@ -1886,8 +1887,8 @@ prueba(`el simulador real conserva URL HTTPS, las ${N_PLATAFORMAS} plataformas y
   vm.runInContext("new URL('https://example.test/fuente').protocol", simulacionPublicador.contexto) === 'https:' &&
   (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === 26 &&
   (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === N_OFERTAS &&
-  // La fila móvil (ESPEC-FINAL §3) esconde «Doc.» junto a «Revisa · N avisos»: va en su propio span.
-  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}"><span class="emi-ver-pre">Doc\. <\/span>/g) || []).length === N_OFERTAS);
+  // La fila móvil (ESPEC-FINAL §3) esconde «Fuente revisada el» junto a «Revisa · N avisos»: va en su propio span.
+  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}"><span class="emi-ver-pre">Fuente revisada el <\/span>/g) || []).length === N_OFERTAS);
 // Ejecutar el cliente entero, con un reloj y un DOM persistentes como los de
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
 const fechaLoteEmbebido = jsCatalogo.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
@@ -2127,9 +2128,9 @@ for(const [nombre,alterar] of [
     r.m.length>=8&&r.m.every(m=>ingles(m)!==m)&&!iw.includes("'.escaparate-comprobaciones p'")&&iw.includes("'.escaparate-comprobacion-motivo-fuente'")&&
     !/superficies='[^']*#inicio(?:Seleccion|Recientes)/.test(iw)&&ingles('cnmv.es · fuente de: Se contrata hoy desde España')==='cnmv.es · source for: Can be bought from Spain today'&&
     ingles('Revisada el 03/11/2026; cifras válidas 7 días más.')==='Reviewed on 03/11/2026; figures valid for 7 more days.'&&ingles('· consultada el 03/11/2026')==='· checked on 03/11/2026');
-  prueba('caducado: «se contrata hoy» y «mínimo y salida» en ✗, pendientes de revalidar',
-    r.antes.every(Boolean)&&!r.k.contratable[0]&&/^Pendiente de revalidar: la revisión semanal ha vencido\.$/.test(r.k.contratable[1])&&
-    !r.k.minimoSalida[0]&&/pendiente de revalidar/.test(r.k.minimoSalida[1])&&!/sin documentar/i.test(r.k.minimoSalida[1])&&!r.k.vigente[0]);
+  prueba('caducado: «se contrata hoy» y «mínimo y salida» en ✗, por volver a comprobar',
+    r.antes.every(Boolean)&&!r.k.contratable[0]&&/^Pendiente de volver a comprobar: la revisión semanal ha caducado\.$/.test(r.k.contratable[1])&&
+    !r.k.minimoSalida[0]&&/por volver a comprobar/.test(r.k.minimoSalida[1])&&!/sin documentar/i.test(r.k.minimoSalida[1])&&!r.k.vigente[0]);
   const n=(s,re)=>Number((s.match(re)||[])[1]),chip=d(cssMovil,'#movilPanelRadar .emis-filtros .f');
   const ic=n(cssMovil,/:is\(\.emis-filtros,\.fichas-f\) \.f::before\{[^}]*inset:-(\d+)px/),est=d(cssMovil,'#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar');
   const ie=n(d(cssMovil,'#emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::before'),/inset:-(\d+)px/),en=d(css,'.escaparate-comprobaciones a');
@@ -2168,7 +2169,7 @@ for(const [nombre,alterar] of [
   const cinco=o=>{const t=transparencia.ofertas[o.slug],r=resumenOferta(o,plataformas,ahora);
     return !!t&&t.verificadaEl===o.verificadaEl&&o.coleccion==='principales'&&o.disponibleEs===true&&
       t.supervisada.cumple===true&&t.documentoEspana.cumple===true&&
-      (Number.isFinite(r.minimo.euros)||!!r.minimo.unidadDocumentada)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto)&&
+      (Number.isFinite(r.minimo.euros)||!!r.minimo.unidadDocumentada)&&!['Salida no documentada','Salida por volver a comprobar'].includes(r.salida.texto)&&
       o.estadoRevision==='actual'&&!r.vencida;};
   const esperadas=emi.filter(cinco).map(o=>o.slug).sort();
   vm.runInContext("huellaInicio='';emiColeccion='principales';emiCat='';emiBusquedaLocal='';pintarEmisiones()",c);

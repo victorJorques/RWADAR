@@ -91,11 +91,11 @@ export function minimoDocumentado(r) {
 }
 export function salidaDocumentada(r) {
   return !!(r && r.salida && texto(r.salida.texto) &&
-    !['Salida no documentada', 'Salida pendiente de revalidar'].includes(r.salida.texto));
+    !['Salida no documentada', 'Salida por volver a comprobar'].includes(r.salida.texto));
 }
 /* Con la revisión vencida el dato existe pero falta revalidarlo: no es «sin documentar». */
 export function pendienteRevalidar(r, catalogoCaducado = false) {
-  return !!(r && (r.vencida === true || catalogoCaducado || (r.salida && r.salida.texto === 'Salida pendiente de revalidar')));
+  return !!(r && (r.vencida === true || catalogoCaducado || (r.salida && r.salida.texto === 'Salida por volver a comprobar')));
 }
 
 /* Forma corta de un dato de la tarjeta (como textoBreveDatoTarjetaLocal). */
@@ -103,7 +103,7 @@ export function datoBreve(campo) {
   if (campo && campo.texto === 'No documentado en euros' && texto(campo.unidadDocumentada)) return texto(campo.unidadDocumentada);
   return ({
     'No documentado en euros': 'No verificado', 'Sin mínimo vigente en euros': 'No verificado',
-    'Sin comprobar desde España': 'Sin confirmar', 'Salida no documentada': 'Sin documentar',
+    'Sin comprobar si se puede contratar desde España': 'Sin confirmar', 'Salida no documentada': 'Sin documentar',
     'Disponible desde España según la fuente': 'Disponible',
     'No disponible desde España según la fuente': 'No disponible',
   })[campo && campo.texto] || (campo && campo.texto) || '';
@@ -130,7 +130,7 @@ export function comprobacionesOferta(oferta, resumen, { ahora = new Date(), cata
     cumple: e[campo].cumple === true, motivo: texto(e[campo].motivo), deFuente: true,
     fuente: urlHttps(e[campo].fuente && e[campo].fuente.url)
       ? { url: urlHttps(e[campo].fuente.url), titulo: texto(e[campo].fuente.titulo), fecha: e[campo].consultadaEl } : null,
-  } : { cumple: false, motivo: 'Sin comprobación editorial para esta revisión de la oferta.', fuente: null });
+  } : { cumple: false, motivo: 'Todavía no hemos comprobado este punto en la revisión actual.', fuente: null });
   const caducado = catalogoCaducado || estado.caducado;
   const acceso = r.accesoEspana;
   const contratable = o.coleccion === 'principales' && o.disponibleEs === true && !caducado &&
@@ -138,12 +138,12 @@ export function comprobacionesOferta(oferta, resumen, { ahora = new Date(), cata
   const pendiente = caducado || pendienteRevalidar(r, catalogoCaducado);
   const minimo = !pendiente && minimoDocumentado(r), salida = !pendiente && salidaDocumentada(r);
   const vigente = o.estadoRevision === 'actual' && !caducado;
-  const vencida = 'Pendiente de revalidar: la revisión semanal ha vencido.';
+  const vencida = 'Pendiente de volver a comprobar: la revisión semanal ha caducado.';
   /* Mínimo y salida: la etiqueta es de la interfaz y el dato, de la fuente. */
   const partes = [
-    minimo ? ['Mínimo:', datoBreve(r.minimo).replace(/\.$/, '')] : [pendiente ? 'Mínimo pendiente de revalidar.' : 'Mínimo sin documentar.'],
+    minimo ? ['Mínimo:', datoBreve(r.minimo).replace(/\.$/, '')] : [pendiente ? 'Mínimo por volver a comprobar.' : 'Mínimo sin documentar.'],
     salida ? ['Salida:', texto(r.salida.texto).replace(/^Salida:\s*/, '').replace(/\.$/, '')]
-      : [pendiente ? 'Salida pendiente de revalidar.' : 'Salida sin documentar.'],
+      : [pendiente ? 'Salida por volver a comprobar.' : 'Salida sin documentar.'],
   ];
   const lista = {
     contratable: { cumple: contratable, fuente: cita(acceso), motivo: contratable
@@ -188,7 +188,7 @@ export function datosCortosOferta(oferta, resumen, { catalogoCaducado = false, t
     ? (e && texto(e.minimoCorto)) || textoCorto(datoBreve(r.minimo)) : datoBreve(r.minimo);
   const salida = salidaDocumentada(r) && !catalogoCaducado
     ? (e && texto(e.salidaCorta)) || textoCorto(datoBreve(r.salida).replace(/^Salida:\s*/, ''))
-    : pendienteRevalidar(r, catalogoCaducado) ? 'Pendiente de revalidar' : 'Sin documentar';
+    : pendienteRevalidar(r, catalogoCaducado) ? 'Pendiente de volver a comprobar' : 'Sin documentar';
   const espana = acceso === 'si' ? 'Sí, según la fuente' : acceso === 'no' ? 'No, según la fuente' : 'Sin confirmar';
   return [['Mínimo', minimo], ['España', espana], ['Salida', salida]];
 }

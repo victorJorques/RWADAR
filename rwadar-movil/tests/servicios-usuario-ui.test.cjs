@@ -56,8 +56,8 @@ test('privacidad editorial describe conexión y borrado limitado, sin prometer b
 test('Perfil editorial anuncia avisos y cuentas como próximamente, sin ofrecer activarlos', () => {
   const ui = componentes(false, false);
   const perfil = ui.PantallaPerfil({ seguidas: [], ofertasGuardadas: [] });
-  assert.match(texto(perfil), /Los avisos llegarán próximamente a la app con las nuevas actualizaciones/);
-  assert.match(texto(perfil), /Las cuentas llegarán próximamente a la app/);
+  assert.match(texto(perfil), /Los avisos llegarán a la app en una próxima actualización/);
+  assert.match(texto(perfil), /Las cuentas llegarán a la app en una próxima actualización/);
   assert.match(texto(perfil), /Lo que guardas se queda en este dispositivo/);
   assert.ok(nodos(perfil).every((n) => n.type !== 'PanelAvisos'), 'no debe pintar el panel de activación');
   assert.doesNotMatch(texto(perfil), /pedir permiso|Avisos push activos/);

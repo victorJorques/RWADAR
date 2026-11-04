@@ -172,14 +172,14 @@ function transparenciaOferta(o,catalogo) {
   const r = resumenOferta(o,catalogo.plataformas,new Date(o.verificadaEl+'T12:00:00Z'));
   const texto = Object.fromEntries(TRANSPARENCIA.criterios.map(c=>[c.id,c.texto]));
   const minimo = Number.isFinite(r.minimo.euros) || Boolean(r.minimo.unidadDocumentada);
-  const salida = !['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto);
+  const salida = !['Salida no documentada','Salida por volver a comprobar'].includes(r.salida.texto);
   const conPuntos = v => v.split('-').reverse().join('.');
   const fuente = f => f && enlace(f.url) ? '<p><a href="'+esc(enlace(f.url))+'" target="_blank" rel="noopener noreferrer"><span'+ORIGINAL+'>'+esc(f.titulo || new URL(f.url).hostname.replace(/^www\./,''))+'</span> ↗</a>'+
     (fecha(f.fecha) ? ' <span>· consultada el '+esc(conPuntos(f.fecha))+'</span>' : '')+'</p>' : '';
   const fila = (id,cumple,motivo,f,{campo='',original=false}={}) => '<li data-cumple="'+(cumple?'si':'no')+'"><strong><span class="comprobacion-marca">'+(cumple?'✓ Sí':'✗ No')+'</span> '+esc(texto[id])+'</strong>'+
     '<p'+(campo ? ' data-campo="'+campo+'"' : '')+(original ? ORIGINAL : ' class="ui"')+'>'+motivo+'</p>'+fuente(f)+'</li>';
   const editorial = id => e ? fila(id,e[id].cumple===true,esc(e[id].motivo),{...e[id].fuente,fecha:e[id].consultadaEl},{original:true}) :
-    fila(id,false,esc('Sin comprobación editorial para esta revisión de la oferta.'));
+    fila(id,false,esc('Todavía no hemos comprobado este punto en la revisión actual.'));
   const acceso = r.accesoEspana.estado==='si' && enlace(r.accesoEspana.fuente) ? {url:r.accesoEspana.fuente,fecha:r.accesoEspana.consultadaEl} : null;
   const contratable = o.coleccion==='principales' && o.disponibleEs===true && Boolean(acceso);
   const dato = v => '<span'+ORIGINAL+'>'+esc(v)+'</span>';
@@ -223,7 +223,7 @@ function paginaOferta(o,catalogo,imagen) {
     (p ? '<p><a href="'+rutaPlataforma(p)+'">Consultar ficha de plataforma</a></p>' : '')+'</section>' +
     '<section aria-labelledby="acceso"><h2 id="acceso">Acceso y condiciones</h2><p>La admisión depende de tu residencia, categoría de inversor y de las condiciones del proveedor.</p><dl>'+
     '<div><dt>Mínimo en euros</dt><dd data-campo="minimo"'+ORIGINAL+'>Consulta la fuente; no se presupone un mínimo vigente.</dd></div>'+
-    '<div><dt>Acceso desde España</dt><dd data-campo="accesoEspana"'+ORIGINAL+'>Sin comprobar desde España.</dd></div>'+
+    '<div><dt>Acceso desde España</dt><dd data-campo="accesoEspana"'+ORIGINAL+'>Sin comprobar si se puede contratar desde España.</dd></div>'+
     '<div><dt>Costes</dt><dd data-campo="costes"'+ORIGINAL+'>Confirma los costes actuales con el proveedor.</dd></div></dl></section>'+
     '<section aria-labelledby="salida"><h2 id="salida">Cómo se recupera el dinero</h2><p data-campo="salida"'+ORIGINAL+'>La salida no se da por garantizada; consulta la documentación del proveedor.</p></section>'+riesgos+
     /* El botón, con su línea, justo después de los riesgos (como en la ficha de la web). */

@@ -72,7 +72,7 @@ test('falla cerrado: sin entrada o con otra revisión no hay puntos fuertes ni S
     assert.equal(t.enSeleccionOferta(o, r(o), { ahora: hoy }), false);
     const lista = t.comprobacionesOferta(o, r(o), { ahora: hoy });
     assert.equal(lista.find((c) => c.id === 'supervisada').cumple, false);
-    assert.equal(lista.find((c) => c.id === 'supervisada').motivo, 'Sin comprobación editorial para esta revisión de la oferta.');
+    assert.equal(lista.find((c) => c.id === 'supervisada').motivo, 'Todavía no hemos comprobado este punto en la revisión actual.');
   }
 });
 
@@ -83,10 +83,10 @@ test('un aviso crítico, el catálogo caducado o la revisión vencida la sacan d
   const o = oferta();
   const caducado = t.comprobacionesOferta(o, r(o), { ahora: hoy, catalogoCaducado: true });
   assert.equal(caducado.find((c) => c.id === 'contratable').cumple, false);
-  assert.equal(caducado.find((c) => c.id === 'contratable').motivo, 'Pendiente de revalidar: la revisión semanal ha vencido.');
-  assert.match(caducado.find((c) => c.id === 'minimoSalida').motivo, /pendiente de revalidar/);
+  assert.equal(caducado.find((c) => c.id === 'contratable').motivo, 'Pendiente de volver a comprobar: la revisión semanal ha caducado.');
+  assert.match(caducado.find((c) => c.id === 'minimoSalida').motivo, /por volver a comprobar/);
   assert.equal(t.enSeleccionOferta(o, r(o), { ahora: hoy, catalogoCaducado: true }), false);
-  assert.equal(t.datosCortosOferta(o, r(o), { catalogoCaducado: true })[2][1], 'Pendiente de revalidar');
+  assert.equal(t.datosCortosOferta(o, r(o), { catalogoCaducado: true })[2][1], 'Pendiente de volver a comprobar');
 
   const tarde = new Date(hoy.getTime() + 30 * 86400000);
   assert.equal(t.enSeleccionOferta(o, r(o, tarde), { ahora: tarde }), false);

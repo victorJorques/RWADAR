@@ -92,7 +92,7 @@
       (!/no |sin confirmar|no confirm|no acredita|consultar/.test(accesoValor) &&
        /disponible|admit|permit|acceso/.test(accesoValor));
     const accesoNegativo = /^(?:no|false)$/.test(accesoValor) || /no disponible|no admit|no permit|excluid/.test(accesoValor);
-    let accesoEspana = {texto:'Sin comprobar desde España',estado:'sin_comprobar'};
+    let accesoEspana = {texto:'Sin comprobar si se puede contratar desde España',estado:'sin_comprobar'};
     if (actual && accesoExplicito && accesoRef &&
         (oferta.disponibleEs === true ? accesoPositivo : accesoNegativo)) {
       accesoEspana = {...campo(accesoRef,oferta.disponibleEs ? 'Disponible desde España según la fuente' : 'No disponible desde España según la fuente'),
@@ -109,7 +109,7 @@
     else if (oferta.coleccion === 'secundario' && referencias.length &&
         Array.isArray(oferta.documentacion?.fuentes) && oferta.documentacion.fuentes.some(fuente)) {
       salida = campo(ultimo,'Reventa entre inversores; depende de que haya compradores');
-    } else if (vencida && salidaRef) salida = {texto:'Salida pendiente de revalidar'};
+    } else if (vencida && salidaRef) salida = {texto:'Salida por volver a comprobar'};
     const costesRefs = referencias.filter(r => /comision|coste|tarifa|gastos|fee|expense/.test(normal(r.etiqueta)) ||
       (/^(?:gestion|custodia) publicada(?:\s*·|$)/.test(normal(r.etiqueta)) && /%|tarifa|coste|gratis|gratuit|comision/.test(normal(r.valor))));
     const ultimaPorConcepto = new Map();
@@ -123,7 +123,7 @@
       if (!ultimaPorConcepto.has(clave)) ultimaPorConcepto.set(clave,ref);
     }
     const gastos = [...ultimaPorConcepto.values()];
-    let costes = {texto:vencida && gastos.length ? 'Costes pendientes de revalidar' : 'Costes no documentados',referencias:[]};
+    let costes = {texto:vencida && gastos.length ? 'Costes por volver a comprobar' : 'Costes no documentados',referencias:[]};
     if (actual && gastos.length) {
       costes = {texto:gastos.map(r => texto(r.etiqueta).replace(/\s*·\s*\d{2}\/\d{2}\/\d{4}\s*$/,'') + ': ' + texto(r.valor)).join('; '),
         referencias:gastos.map(r=>({...r}))};

@@ -234,8 +234,8 @@ function etiquetaValidez(dias) {
 export function vigenciaOferta(oferta, ahora = new Date()) {
   if (oferta?.coleccion === 'secundario' || oferta?.coleccion === 'en_camino') {
     return { estado: 'documental', etiqueta: oferta.coleccion === 'en_camino'
-      ? 'Anuncio documentado · apertura no confirmada'
-      : 'Referencia documental · liquidez no confirmada', venceEl: null, dias: null };
+      ? 'Anunciada · sin confirmar que abra'
+      : 'Reventa · sin confirmar que se pueda operar', venceEl: null, dias: null };
   }
   if (oferta?.estadoRevision === 'no_verificable') {
     return {

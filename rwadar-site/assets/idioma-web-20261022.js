@@ -58,7 +58,7 @@
         [/^Fuentes consultadas · (.+)$/,'Sources checked · $1'],[/^Ver oferta en (.+) ↗$/,'See the offer on $1 ↗'],[/^Ir a la web de (.+) ↗$/,"Go to $1's website ↗"],
         [/^Ver los (\d+) datos consultados y sus fechas$/,'View the $1 data points checked and their dates'],
         [/^Revisadas el (.+)$/,'Reviewed $1'],[/^válidas 1 día más$/,'valid for 1 more day'],[/^válidas (\d+) días más$/,'valid for $1 more days'],
-        [/^válidas hasta hoy$/,'valid until today'],[/^1 lección gratis en Academy$/,'1 free lesson on Academy'],[/^(\d+) lecciones gratis en Academy$/,'$1 free lessons on Academy'],[/^Revisión editorial: (.+)$/,'Editorial review: $1'],[/^Última revisión del registro: (.+)$/,'Latest register review: $1']])
+        [/^válidas hasta hoy$/,'valid until today'],[/^1 lección gratis en Academy$/,'1 free lesson on Academy'],[/^Dato del (.+)$/,'Data from $1'],[/^Consultamos la fuente por última vez el (.+?); el dato es del (.+?)\. Cada dato lleva su propia fecha\.$/,'We last checked the source on $1; the data is from $2. Each data point has its own date.'],[/^Consultamos la fuente por última vez el (.+?)\. Cada dato lleva su propia fecha\.$/,'We last checked the source on $1. Each data point has its own date.'],[/^(\d+) lecciones gratis en Academy$/,'$1 free lessons on Academy'],[/^Revisión editorial: (.+)$/,'Editorial review: $1'],[/^Última revisión del registro: (.+)$/,'Latest register review: $1']])
         if(re.test(limpio))return origen.replace(limpio,limpio.replace(re,en));
     }
     return idioma.traducir(origen);

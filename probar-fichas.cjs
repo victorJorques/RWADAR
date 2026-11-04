@@ -158,7 +158,7 @@ for(const [nombre,contenido] of salidas){
 verificar('importes no aparecen como condiciones vigentes sin ejecutar la guarda actual',()=>{
   const pagina=salidas.get('ofertas/spiko-letras-del-tesoro-euro.html');
   assert(/data-campo="minimo"[^>]*>Consulta la fuente/.test(pagina));
-  assert(/data-campo="accesoEspana"[^>]*>Sin comprobar desde España/.test(pagina));
+  assert(/data-campo="accesoEspana"[^>]*>Sin comprobar si se puede contratar desde España/.test(pagina));
   for(const campo of ['minimo','accesoEspana','costes','salida']){
     const atributos=pagina.match(new RegExp('<(?:dd|p)\\b([^>]*data-campo="'+campo+'"[^>]*)>'))?.[1] || '';
     assert(atributos.includes('data-idioma-fuente="es"'));
@@ -230,8 +230,8 @@ verificar('con la revisión vencida la página fija deja de afirmar que se contr
   assert.equal(filas.contratable.dataset.cumple,'si');assert.equal(filas.minimoSalida.dataset.cumple,'si');assert.equal(filas.vigencia.dataset.cumple,'si');
   reloj=new Date(Date.parse(oferta.verificadaEl+'T12:00:00Z')+9*864e5);volver();
   for(const n of ['contratable','minimoSalida','vigencia']){assert.equal(filas[n].dataset.cumple,'no',n);assert.equal(filas[n].marca.textContent,'✗ No',n);}
-  assert.match(campos.contratable.textContent,/^Pendiente de revalidar: la revisión semanal ha vencido\.$/);
-  assert.match(campos.minimoSalida.textContent,/pendientes de revalidar/);
+  assert.match(campos.contratable.textContent,/^Pendiente de volver a comprobar: la revisión semanal ha caducado\.$/);
+  assert.match(campos.minimoSalida.textContent,/por volver a comprobar/);
 });
 verificar('RSS enlaza noticias estables y el sitemap contiene todas las fichas',()=>{
   const rss=salidas.get('novedades.xml'),mapa=salidas.get('sitemap.xml');

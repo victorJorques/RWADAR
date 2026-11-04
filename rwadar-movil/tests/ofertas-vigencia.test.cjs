@@ -345,7 +345,7 @@ test('una referencia del 27 de septiembre conserva su revisión documental el d�
     }
     const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
     assert.ok(detalle.includes(fuente));
-    assert.match(detalle, /Sin comprobar desde España/);
+    assert.match(detalle, /Sin comprobar si se puede contratar desde España/);
     if (estadoRevision === 'no_verificable') assert.match(detalle, /Apertura no confirmada/);
     // El estado con las palabras de la web (estadoVigenciaLocal, 04/11/2026).
     if (estadoRevision === 'fuentes_en_conflicto') assert.match(detalle, /Fuentes en conflicto/);
@@ -453,7 +453,7 @@ test('las 28 fichas reales conservan documentación y referencias fechadas en we
       assert.match(tarjeta, /Sin confirmar/);
       assert.doesNotMatch(tarjeta, /Pendiente de revisión/);
     }
-    assert.match(tarjetaWeb, /Doc\./);
+    assert.match(tarjetaWeb, /Fuente revisada el/);
     assert.ok(tarjetaWeb.includes(`datetime="${doc.revisadaEl}"`), o.slug);
     const ultimaConsulta = doc.referencias.map(r => r.fechaConsulta).sort().at(-1);
     assert.ok(tarjetaMovil.includes(ultimaConsulta
@@ -619,9 +619,9 @@ test('V2 recorre REST y normalizadores hasta tres grupos web y detalles document
   contexto.pintarEmisiones();
   const html = nodos.emiLista.innerHTML;
   assert.match(nodos.movilOfertasEstado.textContent, /24 de 24 principales/);
-  assert.match(html, /21 de 21 referencias/); assert.match(html, /4 de 4 referencias/);
-  assert.match(html, /No confirman precio, liquidez ni disponibilidad actuales/);
-  assert.match(html, /No confirman apertura, fecha de lanzamiento ni acceso/);
+  assert.match(html, /21 de 21 ofertas/); assert.match(html, /4 de 4 ofertas/);
+  assert.match(html, /No confirman el precio de hoy, que se pueda comprar o vender ni que sigan disponibles/);
+  assert.match(html, /No confirman que vayan a abrir, cuándo lo harán ni que puedas invertir/);
   assert.doesNotMatch(html, /9043 CHF/);
   const principales = html.slice(0, html.indexOf('<details class="catalogo-referencias"'));
   assert.equal((principales.match(/data-oferta-detalle=/g) || []).length, 24);
@@ -804,8 +804,8 @@ test('la entrega V2 real y versionada recorre 49 fichas, ambos clientes y el ven
     assert.equal(nativo.fecha, '2026-09-28');
     contexto.pintarEmisiones();
     assert.match(nodos.movilOfertasEstado.textContent, /24 de 24 principales/);
-    assert.match(nodos.emiLista.innerHTML, /21 de 21 referencias/);
-    assert.match(nodos.emiLista.innerHTML, /4 de 4 referencias/);
+    assert.match(nodos.emiLista.innerHTML, /21 de 21 ofertas/);
+    assert.match(nodos.emiLista.innerHTML, /4 de 4 ofertas/);
     assert.equal((nodos.emiLista.innerHTML.match(/data-oferta-detalle=/g) || []).length, 49);
     for (const o of nativo.ofertas) {
       const doc = o.documentacion;

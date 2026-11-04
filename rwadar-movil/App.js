@@ -371,7 +371,7 @@ export default function App() {
     ? MODO_LOCAL
       ? 'No se pudo leer el radar incluido en esta copia. Desliza hacia abajo para reintentar la carga local.'
       : 'No se ha podido traer el radar y todavía no hay copia guardada. Desliza hacia abajo para reintentar cuando tengas cobertura.'
-    : 'El radar no detecta nada con esos filtros.';
+    : 'Nada cumple esos filtros.';
 
   const visibles = useMemo(() => {
     const q = busqueda.trim().toLowerCase();
@@ -880,9 +880,9 @@ export default function App() {
                     </Text>
                     {/* Un solo aviso para todo el grupo, en vez de repetirlo en cada tarjeta. */}
                     <Text style={e.resultadoCompacto}>{grupoOfertas === 'secundario'
-                      ? 'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
+                      ? 'Ofertas de reventa entre inversores, tal como aparecen en su fuente. No confirman el precio de hoy, que se pueda comprar o vender ni que sigan disponibles.'
                       : grupoOfertas === 'en_camino'
-                        ? 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'
+                        ? 'Ofertas anunciadas en su fuente. No confirman que vayan a abrir, cuándo lo harán ni que puedas invertir.'
                         : 'RWAdar no recibe dinero de las inversiones.'}</Text>
                   </View>
                   {filtrosOfertasAbiertos ? (
@@ -1200,7 +1200,7 @@ function PantallaPerfil({
             {MODO_LOCAL
               ? 'Copia interna: lo guardado vive solo en su espacio local y nunca se sincroniza.'
               : USUARIO_LOCAL
-                ? 'Las cuentas llegarán próximamente a la app con las nuevas actualizaciones. Lo que guardas se queda en este dispositivo.'
+                ? 'Las cuentas llegarán a la app en una próxima actualización. Lo que guardas se queda en este dispositivo.'
                 : 'Lo que guardas se sincroniza con esta instalación.'}
           </Text>
         </View>
@@ -1251,7 +1251,7 @@ function PantallaPerfil({
             <View style={{ flex: 1 }}>
               <Text style={e.resumenEtiqueta}>Próximamente</Text>
               <Text style={e.avisoProximoTit}>Avisos de cambios</Text>
-              <Text style={e.resumenTexto}>Los avisos llegarán próximamente a la app con las nuevas actualizaciones.</Text>
+              <Text style={e.resumenTexto}>Los avisos llegarán a la app en una próxima actualización.</Text>
             </View>
           </View>
         ) : (
@@ -1398,8 +1398,8 @@ function SegmentoOferta({ texto, activo, onPress }) {
 function PanelVerificacionLocal({ verificacion, compacta = false }) {
   if (!verificacion) return null;
   const campos = [
-    ['Estado operativo', verificacion.estadoOperativo],
-    ['Licencia / registro', verificacion.licenciaRegistro],
+    ['Actividad', verificacion.estadoOperativo],
+    ['Licencia o registro', verificacion.licenciaRegistro],
     ['Acceso', verificacion.acceso],
   ];
   const fecha = fechaVerificacionLocalVisible(verificacion.verificadoEl);
@@ -1413,7 +1413,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       `${nombre}: ${etiquetaEstadoVerificacionLocal(campo.estado)}`,
       campo.detalle,
     ]),
-    ...(verificacion.alertasCriticas || []).map((alerta) => `Alerta crítica: ${alerta.detalle}`),
+    ...(verificacion.alertasCriticas || []).map((alerta) => `Importante: ${alerta.detalle}`),
   ].join('. ');
 
   return (
@@ -1441,7 +1441,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       <View style={e.verLocalAlertas}>
         {(verificacion.alertasCriticas || []).map((alerta) => (
           <View key={alerta.codigo} style={e.verLocalAlerta}>
-            <Text style={e.verLocalAlertaTitulo}>Alerta crítica</Text>
+            <Text style={e.verLocalAlertaTitulo}>Importante</Text>
             <Text noTraducir idiomaOriginal="es-ES" style={e.verLocalAlertaTexto} numberOfLines={compacta ? 3 : undefined}>
               {alerta.detalle}
             </Text>
@@ -1493,8 +1493,8 @@ function Ficha({ p, sigue, onAbrir, onSeguir, deshabilitado }) {
         <PanelVerificacionLocal verificacion={verificacion} compacta />
       ) : (
         <View style={e.etiquetas}>
-          <Text style={[e.etiqueta, e.etiquetaAcento]}>{p.acceso}</Text>
-          <Text style={e.etiqueta}>Entrada: {(p.ticket || '').toLowerCase()}</Text>
+          <Text style={[e.etiqueta, e.etiquetaAcento]}>{p.acceso === 'Acreditado' ? 'Inversor acreditado' : p.acceso}</Text>
+          <Text style={e.etiqueta}>{`Mínimo: ${(p.ticket || '').toLowerCase()}`}</Text>
         </View>
       )}
       <Pressable onPress={onSeguir} disabled={deshabilitado}
@@ -1746,7 +1746,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
 
             <Text style={e.privacidadTit}>Transparencia comercial</Text>
             <Text style={e.privacidadParrafo}>
-              RWAdar no cobra comisión al inversor ni cobra ahora a las empresas por inversiones. Las fichas editoriales son gratuitas; no hay comisiones ni enlaces remunerados activos. Las comisiones por venta quedan para una fase futura, con revisión legal y acuerdo previo, nunca retroactivas. Una relación comercial debe identificarse y no altera el ranking editorial. El dinero de la inversión nunca pasa por RWAdar.
+              RWAdar no cobra comisión al inversor ni cobra ahora a las empresas por inversiones. Las fichas editoriales son gratuitas; no hay comisiones ni enlaces remunerados activos. Las comisiones por venta quedan para una fase futura, con revisión legal y acuerdo previo, nunca retroactivas. Una relación comercial debe identificarse y no cambia el orden editorial. El dinero de la inversión nunca pasa por RWAdar.
             </Text>
             <Text style={e.privacidadParrafo}>
               La vía inicial de ingresos prevista es publicidad dentro de la app: una red publicitaria pagaría a RWAdar por los anuncios, en espacios separados y marcados como «Publicidad». No depende de invertir en un token. No hay campañas activas ni redes de anuncios integradas en esta versión.
@@ -1817,10 +1817,10 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
   if (!p) return null;
   const verificacion = p.verificacionLocal;
   const filasFicha = verificacion
-    ? [['Tipo de actor', p.actor], ['Región / marco', p.region], ['Cadenas', p.cadenas]]
-    : [['Tipo de actor', p.actor], ['Región / marco', p.region],
-      ['Quién puede entrar', p.acceso], ['Importe de entrada', p.ticket],
-      ['Cadenas', p.cadenas]];
+    ? [['Tipo de empresa', p.actor], ['Región y normativa', p.region], ['Blockchains', p.cadenas]]
+    : [['Tipo de empresa', p.actor], ['Región y normativa', p.region],
+      ['Quién puede entrar', p.acceso === 'Acreditado' ? 'Inversor acreditado' : p.acceso], ['Importe de entrada', p.ticket],
+      ['Blockchains', p.cadenas]];
   return (
     <Modal visible animationType="none" presentationStyle="fullScreen"
       statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={transicion.cerrar}>

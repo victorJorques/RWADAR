@@ -183,6 +183,8 @@ const catCorta=c=>CAT_CORTA[c]||c;
 const nombreCatHtml=c=>catCorta(c)===c?escHtml(c):
  '<span class="f-largo">'+escHtml(c)+'</span><span class="f-corto">'+escHtml(catCorta(c))+'</span>';
 const ACCESOS=["Minorista","Acreditado","Institucional","Empresas"];
+/* «Acreditado» sigue siendo el valor del filtro; solo cambia lo que se lee. */
+const etiquetaAcceso=a=>a==="Acreditado"?"Inversor acreditado":a;
 const TICKETS=["Bajo","Medio","Alto","No aplica"];
 
 /* ---- logotipo inline (CSS puede animarlo; <use> no) ----
@@ -1375,8 +1377,8 @@ function rellenaRegiones(){
  if(!s.value)S2.reg='';
 }
 rellenaRegiones();
-ACCESOS.forEach(a=>document.getElementById('fAcc').add(new Option(a,a)));
-TICKETS.forEach(t=>document.getElementById('fTic').add(new Option(t==="No aplica"?"Entrada: no aplica":"Entrada "+t.toLowerCase(),t)));
+ACCESOS.forEach(a=>document.getElementById('fAcc').add(new Option(etiquetaAcceso(a),a)));
+TICKETS.forEach(t=>document.getElementById('fTic').add(new Option(t==="No aplica"?"Mínimo: no aplica":"Mínimo "+t.toLowerCase(),t)));
 document.getElementById('fReg').onchange=e=>{S2.reg=e.target.value;Sonido.filtro();render();llevaAResultados({soloMovil:true})};
 document.getElementById('fAcc').onchange=e=>{S2.acc=e.target.value;Sonido.filtro();render();llevaAResultados({soloMovil:true})};
 document.getElementById('fTic').onchange=e=>{S2.tic=e.target.value;Sonido.filtro();render();llevaAResultados({soloMovil:true})};
@@ -1430,7 +1432,7 @@ function renderGrid(f){
   const aval=v?v.licenciaRegistro.detalle:p.aval;
   const marcaRevision=v?'Revisión editorial: '+fLarga(v.verificadoEl):'Ficha verificada';
   const marcas=v?resumenVerificacionLocalHtml(v):
-   `<div class="marcas"><span class="m acc">${escHtml(p.acceso)}</span><span class="m">Entrada: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>`;
+   `<div class="marcas"><span class="m acc">${escHtml(etiquetaAcceso(p.acceso))}</span><span class="m">Mínimo: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>`;
   return `<div class="ficha ${on?'sel':''} ${catClase(p)}">
    <button type="button" class="empresa-visual__abrir" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}${ilustrativa?'; portada ilustrativa':''}">
     <img class="empresa-visual__imagen" src="/plataformas/${portada}.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
@@ -1489,7 +1491,7 @@ function openDrawer(i){
     <h4 id="dwAccesoTit">Acceso e inversión</h4>
     <dl class="datos">
      <div><dt>Tipo de empresa</dt><dd>${escHtml(p.tipo)}</dd></div>
-     <div><dt>Quién puede entrar</dt><dd>${escHtml(p.acceso)}</dd></div>
+     <div><dt>Quién puede entrar</dt><dd>${escHtml(etiquetaAcceso(p.acceso))}</dd></div>
      <div><dt>Importe de entrada</dt><dd>${escHtml(p.ticket)}</dd></div>
     </dl>
    </section>
@@ -1562,7 +1564,7 @@ function openCompare(){
   ?`<span class="comp-estado">${escHtml(etiquetaVerificacionLocal(p.verificacionLocal[campo].estado))}</span><span class="comp-nota">${escHtml(p.verificacionLocal[campo].detalle)}</span>`
   :null;
  const rows=[['Tipo de activo',p=>escHtml(p.cat)],['Tipo de empresa',p=>escHtml(p.tipo)],['Región y normativa',p=>escHtml(p.reg)],
-  ['Estado de acceso',p=>datoLocal(p,'acceso')||`<span class="m acc">${escHtml(p.acceso)}</span>`],['Mínimo',p=>escHtml(p.ticket)],['Blockchains',p=>escHtml(p.cadenas)],
+  ['Estado de acceso',p=>datoLocal(p,'acceso')||`<span class="m acc">${escHtml(etiquetaAcceso(p.acceso))}</span>`],['Mínimo',p=>escHtml(p.ticket)],['Blockchains',p=>escHtml(p.cadenas)],
   ['Licencia o registro',p=>datoLocal(p,'licenciaRegistro')||`<span class="comp-aval">${escHtml(p.aval)}</span>`],
   ['Actividad',p=>datoLocal(p,'estadoOperativo')||`<span class="comp-nota">${escHtml(p.nota)}</span>`],
   ['Avisos importantes',p=>p.verificacionLocal?`<span class="comp-alerta">${p.verificacionLocal.alertasCriticas.map(a=>escHtml(a.detalle)).join('<br>')}</span>`:'—'],
@@ -1800,9 +1802,9 @@ function seccionReferenciasCatalogo(catalogo,coleccion){
   .sort((a,b)=>a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||a.titulo.localeCompare(b.titulo,'es'));
  const titulo=coleccion==='secundario'?'Reventa entre inversores':'Próximas ofertas';
  const alcance=coleccion==='secundario'
-  ?'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
-  :'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.';
- return '<details class="catalogo-referencias" data-coleccion="'+coleccion+'"'+(emiColeccion===coleccion?' open':'')+'><summary><h3>'+titulo+'</h3><span>'+visibles.length+' de '+todas.length+' referencias</span></summary>'+
+  ?'Ofertas de reventa entre inversores, tal como aparecen en su fuente. No confirman el precio de hoy, que se pueda comprar o vender ni que sigan disponibles.'
+  :'Ofertas anunciadas en su fuente. No confirman que vayan a abrir, cuándo lo harán ni que puedas invertir.';
+ return '<details class="catalogo-referencias" data-coleccion="'+coleccion+'"'+(emiColeccion===coleccion?' open':'')+'><summary><h3>'+titulo+'</h3><span>'+visibles.length+' de '+todas.length+' ofertas</span></summary>'+
   '<p>'+alcance+' Ordenar por rentabilidad o por mínimo solo cambia el orden de las ofertas principales.</p><div class="emis-rejilla">'+
   (visibles.length?tarjetasPorProveedorHtml(visibles):'<p>Ninguna referencia coincide con la búsqueda y la categoría.</p>')+'</div></details>';
 }
@@ -2246,7 +2248,7 @@ function etiquetaMetricaLocal(valor,indice){
  const v=normalizaBuscaLocal(valor);
  if(/meses|sin plazo|perpetuo|emision primaria|en euros/.test(v))return 'Estructura';
  if(/reparto|vencimiento|acumulacion|retirada/.test(v))return 'Cobro / salida';
- if(/^desde /.test(v))return 'Entrada';
+ if(/^desde /.test(v))return 'Mínimo';
  if(/tvl| en el fondo/.test(v))return 'Tamaño';
  if(/financiad|colocado/.test(v))return 'Financiación';
  if(/pagas |prima|descuento/.test(v))return 'Precio relativo';
@@ -2301,14 +2303,14 @@ function ordenarOfertasLocales(lista){
 }
 function clavesOfertaLocal(o,secundario){
  if(o.coleccion==='secundario'||o.coleccion==='en_camino')return {
-  destacado:{etiqueta:'Referencia documental',valor:'Consultar fuente'},auxiliares:[]};
+  destacado:{etiqueta:'Precio y condiciones',valor:'Consúltalos en su web'},auxiliares:[]};
  if(estadoVigenciaLocal(o).clase==='caducado')return {
   destacado:{etiqueta:'Condiciones actuales',valor:'Consultar emisor'},auxiliares:[]};
  const tipo=tipoOfertaLocal(o),rentabilidad=valorLocal(o.rentabilidad),precio=valorLocal(o.precio);
  const destacado=secundario
   ? {etiqueta:'Precio observado',valor:precio||'Consultar mercado'}
   : tipo==='valor'
-   ? {etiqueta:'Precio de referencia',valor:precio||'Consultar fuente'}
+   ? {etiqueta:'Precio de referencia',valor:precio||'Consúltalo en su web'}
    : {etiqueta:'Rentabilidad publicada',valor:rentabilidad||'No publicada'};
  const metricas=metricasOfertaLocal(o).filter(x=>
   !/rentabilidad publicada|precio \/ entrada/i.test(normalizaBuscaLocal(x.etiqueta)));
@@ -2347,7 +2349,7 @@ function resumenEditorialOferta(o){
  const api=typeof globalThis!=='undefined'&&globalThis.RWAdarFichaEditorial;
  if(api&&typeof api.resumenOferta==='function')return api.resumenOferta(o,typeof P!=='undefined'?P:[]);
  /* Si no carga el helper, el catálogo sigue accesible sin inventar condiciones. */
- return {minimo:{texto:'No documentado en euros'},accesoEspana:{texto:'Sin comprobar desde España'},
+ return {minimo:{texto:'No documentado en euros'},accesoEspana:{texto:'Sin comprobar si se puede contratar desde España'},
   salida:{texto:'Salida no documentada'},costes:{texto:'Costes no documentados'},fechas:{revisadaEl:o.verificadaEl}};
 }
 /* El snapshot del arranque y sus páginas pasan la misma lista cerrada durante
@@ -2379,7 +2381,7 @@ function textoBreveDatoTarjetaLocal(campo){
     enseña tal cual en vez de «No verificado»: está comprobado, solo que no en euros. */
  if(campo&&campo.texto==='No documentado en euros'&&textoLocal(campo.unidadDocumentada))return textoLocal(campo.unidadDocumentada);
  return ({'No documentado en euros':'No verificado','Sin mínimo vigente en euros':'No verificado',
-  'Sin comprobar desde España':'Sin confirmar','Salida no documentada':'Sin documentar',
+  'Sin comprobar si se puede contratar desde España':'Sin confirmar','Salida no documentada':'Sin documentar',
   /* La fila ya dice «España»: no se repite dentro del dato. */
   'Disponible desde España según la fuente':'Disponible',
   'No disponible desde España según la fuente':'No disponible'})[campo.texto]||campo.texto;
@@ -2426,9 +2428,9 @@ function catalogoSinCifrasLocal(){
   typeof CATALOGO_EMBEBIDO_BLOQUEADO!=='undefined'&&CATALOGO_EMBEBIDO_BLOQUEADO].some(Boolean);
 }
 function minimoDocumentadoLocal(r){return !!(r&&r.minimo&&(Number.isFinite(r.minimo.euros)||textoLocal(r.minimo.unidadDocumentada)))}
-function salidaDocumentadaLocal(r){return !!(r&&r.salida&&textoLocal(r.salida.texto)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto))}
+function salidaDocumentadaLocal(r){return !!(r&&r.salida&&textoLocal(r.salida.texto)&&!['Salida no documentada','Salida por volver a comprobar'].includes(r.salida.texto))}
 /* Con la revisión vencida el dato existe pero falta revalidarlo: no es «sin documentar». */
-function pendienteRevalidarLocal(r){return !!(r&&(r.vencida===true||catalogoSinCifrasLocal()||r.salida&&r.salida.texto==='Salida pendiente de revalidar'))}
+function pendienteRevalidarLocal(r){return !!(r&&(r.vencida===true||catalogoSinCifrasLocal()||r.salida&&r.salida.texto==='Salida por volver a comprobar'))}
 function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
  const e=transparenciaOferta(o),estado=estadoVigenciaLocal(o),textos=criteriosTransparencia();
  const cita=c=>c&&urlHttps(c.fuente)?{url:urlHttps(c.fuente),titulo:nombreFuenteLocal(c.fuente),fecha:fechaLocalValida(c.consultadaEl)?c.consultadaEl:''}:null;
@@ -2443,10 +2445,10 @@ function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
  const contratable=o.coleccion==='principales'&&o.disponibleEs===true&&!caducado&&!!(resumen.accesoEspana&&resumen.accesoEspana.estado==='si'&&cita(resumen.accesoEspana));
  const pendiente=caducado||pendienteRevalidarLocal(resumen),minimo=!pendiente&&minimoDocumentadoLocal(resumen),salida=!pendiente&&salidaDocumentadaLocal(resumen);
  const vigente=o.estadoRevision==='actual'&&!caducado;
- const vencida='Pendiente de revalidar: la revisión semanal ha vencido.';
+ const vencida='Pendiente de volver a comprobar: la revisión semanal ha caducado.';
  /* Mínimo y salida: la etiqueta es de la interfaz y el dato, de la fuente. */
- const partes=[minimo?['Mínimo:',textoBreveDatoTarjetaLocal(resumen.minimo).replace(/\.$/,'')]:[pendiente?'Mínimo pendiente de revalidar.':'Mínimo sin documentar.'],
-  salida?['Salida:',textoLocal(resumen.salida.texto).replace(/^Salida:\s*/,'').replace(/\.$/,'')]:[pendiente?'Salida pendiente de revalidar.':'Salida sin documentar.']];
+ const partes=[minimo?['Mínimo:',textoBreveDatoTarjetaLocal(resumen.minimo).replace(/\.$/,'')]:[pendiente?'Mínimo por volver a comprobar.':'Mínimo sin documentar.'],
+  salida?['Salida:',textoLocal(resumen.salida.texto).replace(/^Salida:\s*/,'').replace(/\.$/,'')]:[pendiente?'Salida por volver a comprobar.':'Salida sin documentar.']];
  const lista={
   contratable:{cumple:contratable,fuente:cita(resumen.accesoEspana),motivo:contratable?'Es una oferta principal y la fuente dice que se contrata desde España.':
    o.coleccion==='secundario'?'Es una referencia de reventa entre inversores, no una oferta abierta.':
@@ -2480,7 +2482,7 @@ function datosCortosOferta(o,resumen){
  const minimo=minimoDocumentadoLocal(resumen)?e&&textoLocal(e.minimoCorto)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.minimo)):
   textoBreveDatoTarjetaLocal(resumen.minimo);
  const salida=salidaDocumentadaLocal(resumen)?e&&textoLocal(e.salidaCorta)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.salida).replace(/^Salida:\s*/,'')):
-  pendienteRevalidarLocal(resumen)?'Pendiente de revalidar':'Sin documentar';
+  pendienteRevalidarLocal(resumen)?'Pendiente de volver a comprobar':'Sin documentar';
  const espana=acceso==='si'?'Sí, según la fuente':acceso==='no'?'No, según la fuente':'Sin confirmar';
  return {minimo,espana,salida};
 }
@@ -2542,8 +2544,8 @@ function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
       número, junto a la fecha; el crítico (tono stop) se lee entero siempre. */
    '<div class="emi-pie">'+(!bloqueo&&todos.length?'<p class="escaparate-avisos-n"><b>Revisa</b> · <span>'+todos.length+(todos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
     '<div class="emi-revision"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'"><span class="emi-ver-pre">'+
-    (documentacion?'Doc.':'Revisado')+' </span>'+escHtml(fechaES(fechaRevision))+'</time>'+
-    (resumen.fechas.fechaDato&&resumen.fechas.fechaDato!==fechaRevision?'<span class="emi-fecha-dato">Dato: '+escHtml(fechaES(resumen.fechas.fechaDato))+'</span>':'')+'</div>'+
+    (documentacion?'Fuente revisada el':'Revisado')+' </span>'+escHtml(fechaES(fechaRevision))+'</time>'+
+    (resumen.fechas.fechaDato&&resumen.fechas.fechaDato!==fechaRevision?'<span class="emi-fecha-dato">Dato del '+escHtml(fechaES(resumen.fechas.fechaDato))+'</span>':'')+'</div>'+
     '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Ver ficha <span aria-hidden="true">→</span></button>'+
    '</div></div></article>';
 }
@@ -2672,8 +2674,8 @@ function abrirDetalleOfertaLocal(slug){
    sinCifra?fila(sinCifra[0],escHtml(sinCifra[1])):'')+
   fila('Mínimo','<span class="escaparate-esencial-dato">'+escHtml(cortos.minimo)+'</span>')+fila('España',escHtml(cortos.espana))+
   fila('Salida','<span class="escaparate-esencial-dato">'+escHtml(cortos.salida)+'</span>')+fila('Cifras',revision)+'</dl></section>';
- const ultima=resumen.fechas.comprobadaEl?'<p class="escaparate-fechas">Última consulta citada: '+escHtml(fechaES(resumen.fechas.comprobadaEl))+
-  (resumen.fechas.fechaDato?' · Fecha de ese dato: '+escHtml(fechaES(resumen.fechas.fechaDato)):'')+'. Cada referencia conserva su fecha propia.</p>':'';
+ const ultima=resumen.fechas.comprobadaEl?'<p class="escaparate-fechas">Consultamos la fuente por última vez el '+escHtml(fechaES(resumen.fechas.comprobadaEl))+
+  (resumen.fechas.fechaDato?'; el dato es del '+escHtml(fechaES(resumen.fechas.fechaDato)):'')+'. Cada dato lleva su propia fecha.</p>':'';
  const doc=partesDocumentacionOferta(documentacion,{resumen:vigente?o.resumen:'',ultima})||{ficha:'',referencias:'',fuentes:ultima};
  d.innerHTML='<div class="escaparate-dialogo-marco"><header class="escaparate-dialogo-cab">'+
   '<div><span>'+(o.coleccion==='en_camino'?'Próxima':o.coleccion==='secundario'||secundario?'Reventa entre inversores':'Oferta principal')+'</span><h2 id="escaparateDetalleTitulo">'+escHtml(o.titulo)+'</h2></div>'+
@@ -2759,7 +2761,7 @@ function activaControlesEscaparateLocal(v2=false){
  activarDetallesOfertas();
  if(v2)return;
  const orden=document.getElementById('emiOrden');
- if(orden)orden.innerHTML='<option value="cierra">Fuente y fecha</option><option value="rent">Cifra publicada por la plataforma</option><option value="min">Mínimo documentado en euros</option><option value="az">Empresa y nombre</option>';
+ if(orden)orden.innerHTML='<option value="cierra">Las más al día primero</option><option value="rent">Rentabilidad publicada (mayor primero)</option><option value="min">Mínimo en euros (menor primero)</option><option value="az">Empresa (A-Z)</option>';
  const fechaOferta=ESCAPARATE_LOCAL&&ESCAPARATE_LOCAL.fuente&&ESCAPARATE_LOCAL.fuente.actualizacionLocal
   ?ESCAPARATE_LOCAL.fuente.actualizacionLocal.verificadoEl:'';
  const tit=document.getElementById('emiTitulo');if(tit)tit.textContent='Ofertas observadas'+
