@@ -41,32 +41,39 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
         nodos[0].vistos.every(t => t === textos[0]) && nodos[1].vistos.some(t => t !== '26') && nodos[1].vistos.every(t => /^\d+$/.test(t)));
     }
   }
-  // QA escritorio 04/11/2026, n.º 7: en inglés la página nace con lang="en" y
-  // oculta hasta traducirse; nunca más de 1,5 s y nunca en castellano.
+  // QA escritorio 04/11/2026, n.º 7: en escritorio y en inglés la página nace
+  // oculta hasta traducirse, con tope de 1,5 s desde la navegación. En el móvil
+  // (no saltaba) no se oculta, y lang lo pone idioma-web, no idioma-previo.
   {
     const codigoPrevio = lee('assets/idioma-previo-20261104.js');
-    const ensayo = (guardado, pasos) => {
-      const clases = new Set(), eventos = {}, relojes = [];
+    const ensayo = (guardado, pasos, { movil = false, ahora = 200 } = {}) => {
+      const clases = new Set(), eventos = {}, relojes = [], consultas = [];
       const raiz = { lang: 'es', classList: { add: c => clases.add(c), remove: c => clases.delete(c) } };
       const contexto = vm.createContext({
         localStorage: { getItem: k => { if (guardado instanceof Error) throw guardado; return k === 'rwadar.idioma' ? guardado : null; } },
         document: { documentElement: raiz, addEventListener: (t, fn) => { eventos[t] = fn; } },
+        matchMedia: q => { consultas.push(q); return { matches: movil && /max-width:767px/.test(q) }; },
+        performance: { now: () => ahora },
         setTimeout: (fn, ms) => relojes.push([fn, ms]),
       });
       contexto.globalThis = contexto;
       vm.runInContext(codigoPrevio, contexto);
       const inicial = { lang: raiz.lang, oculta: clases.has('idioma-previo') };
       pasos({ eventos, relojes, listo: () => contexto.RWAdarIdiomaListo && contexto.RWAdarIdiomaListo() });
-      return { inicial, final: { lang: raiz.lang, oculta: clases.has('idioma-previo') }, relojes };
+      return { inicial, final: { lang: raiz.lang, oculta: clases.has('idioma-previo') }, relojes, consultas };
     };
     const traducida = ensayo('en', ({ eventos, listo }) => { listo(); eventos.DOMContentLoaded(); });
     const soloTraducida = ensayo('en', ({ listo }) => listo());
     const tope = ensayo('en', ({ relojes }) => relojes.forEach(([fn]) => fn()));
+    const movil = ensayo('en', () => {}, { movil: true });
+    const tarde = ensayo('en', () => {}, { ahora: 1600 });
     const castellano = ensayo('es', () => {});
     const sinAlmacen = ensayo(new Error('bloqueado'), () => {});
-    prueba('idioma-previo oculta la página en inglés solo hasta traducirla y cargarla, con tope de 1,5 s',
-      traducida.inicial.lang === 'en' && traducida.inicial.oculta && !traducida.final.oculta &&
-      soloTraducida.final.oculta && tope.relojes.length === 1 && tope.relojes[0][1] === 1500 && !tope.final.oculta &&
+    prueba('idioma-previo oculta en escritorio y en inglés solo hasta traducir y cargar, con tope de 1,5 s desde la navegación; en el móvil, no',
+      traducida.inicial.oculta && !traducida.final.oculta && traducida.inicial.lang === 'es' && traducida.final.lang === 'es' &&
+      soloTraducida.final.oculta && tope.relojes.length === 1 && tope.relojes[0][1] === 1300 && !tope.final.oculta && tope.final.lang === 'es' &&
+      !movil.inicial.oculta && movil.relojes.length === 0 && movil.consultas.length === 1 &&
+      !tarde.inicial.oculta && tarde.relojes.length === 0 &&
       castellano.inicial.lang === 'es' && !castellano.inicial.oculta && castellano.relojes.length === 0 &&
       !sinAlmacen.inicial.oculta && sinAlmacen.inicial.lang === 'es');
     prueba('idioma-web avisa a idioma-previo cuando termina la primera traducción',
