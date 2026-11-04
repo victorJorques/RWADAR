@@ -2102,6 +2102,11 @@ var relatoInicio=(function(){
    emiCat='';emiTipoLocal='todos';emiBusquedaLocal='';const b=$('emiBuscar');if(b)b.value='';
    pintarFiltrosEmision();pintarTiposOfertaLocal();pintarEmisiones();}
   /* Tocar el radar o «Explorar el radar» abre el radar de Plataformas. */
+  /* En escritorio (1024 px o más) no hay pestañas: cada botón baja a su
+     sección, el radar al radar interactivo de Plataformas y cada tarjeta abre su ficha. */
+  const esc=!raiz.classList.contains('movil-ui')&&e.target.closest&&e.target.closest('[data-inicio-radar],[data-movil-ir],[data-perfil-oferta]');
+  if(esc){e.preventDefault();if(esc.dataset.perfilOferta)abrirDetalleOfertaLocal(esc.dataset.perfilOferta);
+   else irA(esc.hasAttribute('data-inicio-radar')?'tool':esc.dataset.movilIr);return;}
   const r=e.target.closest&&e.target.closest('[data-inicio-radar]');
   if(r&&typeof Movil!=='undefined'&&Movil.ir){e.preventDefault();const radar=$('movilPanelRadar');
    if(radar)radar.classList.add('movil-radar-abierto');sincronizarRadarPlegado();Movil.ir('movilRadarIntro',r);return;}
@@ -2128,7 +2133,7 @@ var relatoInicio=(function(){
  let ancho=0,pendiente=false;
  function alto(){
   if(!portada||window.innerWidth===ancho)return;ancho=window.innerWidth;
-  const cab=$('movilCabecera'),nav=$('movilNav'),arriba=cab?cab.offsetHeight:0;
+  const cab=$('movilCabecera'),nav=$('movilNav'),hdr=document.querySelector('.hdr'),arriba=(cab&&cab.offsetHeight)||(hdr&&hdr.offsetHeight)||0;
   portada.style.setProperty('--rel-alto',Math.max(320,window.innerHeight-arriba-(nav?nav.offsetHeight:0))+'px');
   if(barra)barra.style.setProperty('--rel-arriba',arriba+'px');
  }
@@ -2136,7 +2141,7 @@ var relatoInicio=(function(){
   if(!relleno||panel.hidden)return;
   const total=panel.offsetHeight-window.innerHeight,y=-panel.getBoundingClientRect().top;
   relleno.style.transform='scaleX('+(total>0?Math.min(1,Math.max(0,y/total)):0).toFixed(4)+')';
-  barra.classList.toggle('on',!!portada&&window.scrollY>portada.offsetHeight*.6);
+  barra.classList.toggle('on',!!portada&&window.scrollY>portada.offsetHeight*.6&&y<total+window.innerHeight);
  }
  window.addEventListener('scroll',()=>{if(pendiente)return;pendiente=true;requestAnimationFrame(()=>{pendiente=false;progreso();});},{passive:true});
  window.addEventListener('resize',()=>{alto();rotulos();quien();progreso();},{passive:true});
@@ -5045,6 +5050,13 @@ const Movil = (function(){
   .map(p=>[p.dataset.movilPanel,p]));
  const panelBuscar=paneles.get('buscar');
  const panelAcademy=paneles.get('academy');
+ /* Escritorio ancho (1024 px o más): Inicio cuenta arriba la misma historia
+    que en el móvil y el radar interactivo pasa a Plataformas. Entre 768 y
+    1023 px el escritorio sigue como estaba. */
+ const ancho=window.matchMedia('(min-width: 1024px)');
+ const panelInicio=paneles.get('inicio');
+ const anclaInicio=panelInicio&&panelInicio.parentNode&&typeof document.createComment==='function'?document.createComment('rwadar: posición de Inicio'):null;
+ if(anclaInicio)panelInicio.parentNode.insertBefore(anclaInicio,panelInicio);
  const emisiones=document.getElementById('emisiones');
  const portada=document.querySelector('#movilPanelRadar>.portada');
  const portadaTexto=document.querySelector('.portada-txt');
@@ -5135,6 +5147,7 @@ const Movil = (function(){
   /* El orden de lectura y de Tab coincide con el visual. Academy reúne las
      lecciones y la explicación 3D; no duplica una sección antes del buscador. */
   ordenEscritorio.forEach(nodo=>panelBuscar.appendChild(nodo));
+  if(ancho.matches&&portada&&herramienta&&herramienta.parentNode===panelBuscar)panelBuscar.insertBefore(portada,herramienta.nextSibling);
   if(explicador&&academyLeccion)academyLeccion.appendChild(explicador);
  }
  function ordenarBuscar(esMovil){
@@ -5398,7 +5411,13 @@ const Movil = (function(){
   });
  }
  function adaptar(){
-  const esMovil=media.matches;
+  const esMovil=media.matches,relato=!esMovil&&ancho.matches;
+  /* Inicio sube al principio de <main> (así «#top» lo abre) y vuelve a su sitio al salir. */
+  if(panelInicio&&panelBuscar&&panelBuscar.parentNode){
+   if(relato){if(panelInicio.nextSibling!==panelBuscar)panelBuscar.parentNode.insertBefore(panelInicio,panelBuscar);}
+   else if(anclaInicio&&anclaInicio.parentNode&&anclaInicio.nextSibling!==panelInicio)anclaInicio.parentNode.insertBefore(panelInicio,anclaInicio.nextSibling);
+  }
+  if(document.documentElement&&document.documentElement.classList)document.documentElement.classList.toggle('escritorio-relato',relato);
   modoMovilPrevio=esMovil;
   ordenarBuscar(esMovil);
   if(document.documentElement&&document.documentElement.classList)
@@ -5411,7 +5430,8 @@ const Movil = (function(){
    mostrarAvisos(false,false);
    document.body.removeAttribute('data-movil-pestana');
    document.body.classList.remove('movil-teclado');
-   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!=='buscar';});
+   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!=='buscar'&&!(relato&&nombre==='inicio');});
+   if(relato&&typeof relatoInicio!=='undefined'&&relatoInicio)requestAnimationFrame(relatoInicio.repintar);
    geometria();
   }
  }
@@ -5569,7 +5589,7 @@ const Movil = (function(){
   window.matchMedia('(display-mode: standalone)').matches;
  if(document.documentElement&&document.documentElement.classList)
   document.documentElement.classList.toggle('pwa-standalone',standalone);
- if(media.addEventListener)media.addEventListener('change',adaptar);
+ if(media.addEventListener){media.addEventListener('change',adaptar);ancho.addEventListener('change',adaptar);}
  else if(media.addListener)media.addListener(adaptar);
  window.addEventListener('resize',()=>{
   /* Algunos WebViews cambian el viewport sin emitir change en MediaQueryList
