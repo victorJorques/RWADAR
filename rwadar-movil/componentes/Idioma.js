@@ -37,11 +37,13 @@ export function SelectorIdioma(){
   </Native.View>;
 }
 const e=Native.StyleSheet.create({
-  contenedor:{paddingHorizontal:16,paddingVertical:4,backgroundColor:C.noche2},
+  contenedor:{paddingHorizontal:16,paddingVertical:8,backgroundColor:C.s0},
   fila:{flexDirection:'row',alignSelf:'flex-end',gap:4,flexWrap:'wrap'},
+  // Como el segmentado de la web (GUIA-ACABADOS §7): sin borde, la opción
+  // elegida en relieve tonal y nunca rellena de verde.
   boton:{minWidth:80,minHeight:UI.tactil||44,justifyContent:'center',alignItems:'center',
-    paddingHorizontal:12,borderRadius:R.pastilla||24,borderWidth:1,borderColor:C.linea},
-  activo:{backgroundColor:C.senal,borderColor:C.senal},pulsado:{opacity:.72},
+    paddingHorizontal:12,borderRadius:R.m||12},
+  activo:{backgroundColor:C.ton2},pulsado:{backgroundColor:C.ton},
   texto:{fontFamily:F.media,fontSize:14,lineHeight:20,color:C.tx2},
-  textoActivo:{color:C.noche,fontFamily:F.semi},aviso:{color:C.tx2,fontSize:13,lineHeight:19},
+  textoActivo:{color:C.tx,fontFamily:F.semi},aviso:{color:C.tx2,fontSize:13,lineHeight:19},
 });

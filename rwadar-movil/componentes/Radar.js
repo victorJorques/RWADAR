@@ -165,9 +165,9 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
             const [tx, ty] = pol(-90 + i * 60, RMAX + 16);
             return (
               <SvgText key={c} x={tx} y={ty} fill={COLOR_CATEGORIA[c]}
-                fontSize={9.5} fontFamily={F.mono} textAnchor="middle"
+                fontSize={11} fontFamily={F.semi} textAnchor="middle"
                 opacity={categoriaActiva && categoriaActiva !== c ? 0.35 : 1}>
-                {traducir(CORTO[c] || c).toUpperCase()}
+                {traducir(CORTO[c] || c)}
               </SvgText>
             );
           })}
@@ -276,8 +276,8 @@ export default function Radar({ datos, onAbrir, onFiltrar, categoriaActiva }) {
 
 const e = StyleSheet.create({
   caja: {
-    backgroundColor: C.noche2, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.panel, paddingVertical: 16, marginBottom: 14, alignItems: 'center',
+    backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
+    borderRadius: R.l, paddingVertical: 16, marginBottom: 14, alignItems: 'center',
   },
   /* El tamaño va inline: depende del ancho de la pantalla. Aquí solo lo
      que no cambia. */
@@ -293,7 +293,7 @@ const e = StyleSheet.create({
   },
   chincheta: { width: 8, height: 8, borderRadius: 4 },
   lecturaNom: { ...T.ficha, fontSize: 16, color: C.tx, marginTop: 4 },
-  lecturaSub: { ...T.dato, fontSize: 11, color: C.tx2, marginTop: 2 },
+  lecturaSub: { ...T.dato, fontSize: 12, color: C.tx2, marginTop: 2 },
   lecturaVacia: { ...T.menor, fontSize: 12, color: C.tx3, textAlign: 'center', lineHeight: 17 },
 
   leyenda: {
@@ -301,5 +301,5 @@ const e = StyleSheet.create({
     gap: 10, paddingHorizontal: 16, paddingTop: 12,
   },
   leyendaItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
-  leyendaTxt: { ...T.dato, fontSize: 10.5, color: C.tx3 },
+  leyendaTxt: { ...T.dato, fontSize: 12, color: C.tx3 },
 });

@@ -214,7 +214,7 @@ const e = StyleSheet.create({
     flexDirection: 'row', alignItems: 'flex-start', gap: 12,
     paddingHorizontal: 22, paddingTop: 18, paddingBottom: 10,
   },
-  arriba: { ...T.etiqueta, color: C.senal, marginBottom: 8 },
+  arriba: { ...T.etiqueta, color: C.tx3, marginBottom: 8 },
   titulo: { ...T.titular, color: C.tx },
   cerrar: {
     width: 34, height: 34, borderRadius: 17, backgroundColor: C.sup2,
