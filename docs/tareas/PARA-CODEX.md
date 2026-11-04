@@ -6,6 +6,57 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 · Claude · correcciones del revisor en el mapa de Ofertas (sin publicar)
+
+Misma rama local `claude/mapa-ofertas`, commits efb366c, f095a09, f10ecf7 y
+ad2749c sobre la entrada de abajo. **Nada publicado, sin push, Supabase sin
+tocar.** Solo los tres archivos del mapa, el bloque `#buscarMapa` de
+`index.html` y cuatro entradas junto a las del mapa en `idioma-en.js`
+(copiadas con `copiar-idiomas-web.cjs`).
+
+- **Marcadores que se tapaban:** `agruparCerca()` (en `mapa-buscar-util`)
+  junta los que en pantalla quedarían a menos de 40 px con el zoom actual y
+  se rehace al cambiar de zoom (si los grupos no cambian, no se toca nada y
+  la ficha sigue abierta). El grupo muestra el número; su ficha dice «N
+  ofertas en esta zona» y, si los puntos no son el mismo, trae «Acercar»,
+  que amplía hasta separarlos. Leyenda: «Varias ofertas juntas». Medido: 0
+  marcadores tapados a 320, 360, 390 y 1366 px, en castellano e inglés.
+- **Teclado:** al abrir una ficha el foco va a su título; Escape (Leaflet no
+  lo atendía con el foco dentro), la X o «Acercar» lo devuelven al marcador.
+  «Quitar mi ubicación» pasa el foco a «Usar mi ubicación».
+- **Avisos en una franja arriba del mapa** (`#mapaAvisos`, fuera del lienzo
+  de Leaflet): «No se ha podido cargar el mapa base» con «Reintentar» ya no
+  queda bajo los puntos, y los avisos que piden hacer algo (ubicación
+  denegada, zona sin resultados) salen ahí con una X en vez de empujar los
+  mandos. Antes de cargar siguen bajo la tarjeta. La ficha se abre por
+  debajo de la franja y con alto máximo que no tapa el zoom.
+- **Chips:** «Buscar aquí» (con `title` «Buscar en la zona visible del
+  mapa») y «Quitar mi ubicación» baja junto a la línea de distancias. Caben
+  en una línea de 320 a 1366 px; si no cupieran (iOS pone el selector a
+  16 px), bajan de línea en vez de cortarse.
+- **Contraste:** aro oscuro fino por fuera del blanco en cada marcador
+  (borde 7,2:1 sobre el mapa claro). «Fuente» de la ficha, gris como se
+  quería.
+- **«Usar mi ubicación» desde España** encuadra tu punto y las tres ofertas
+  más cercanas (hoy, un grupo «12» en Austria), en vez de un zoom 10 vacío.
+- **Cifras con el idioma:** «1,558 km» y «± 15 km» en inglés (antes
+  «± 15.000 m»); de 1 km en adelante el margen va en km.
+- **Pruebas:** `npm test` completo en verde (probar-web 578 correctas;
+  fichas 68; precarga 32; móvil 394; acceso 144; base de datos sin fallos).
+  `probar-web.mjs` sin cambios. `rwadar-app/probar-mapa-buscar.test.cjs`
+  sigue fuera de `npm test` y falla los mismos 6 de 10 que antes, por las
+  mismas razones (catálogo de 49, JSON local al abrir Mapa, margen en
+  `#mapaMargen`); no lo toqué porque estaba fuera del alcance de esta tanda.
+- Capturas con teselas reales en el scratchpad de la sesión (`mapa/`, con
+  `medidas.json`): 19 teselas nuevas bajadas con curl, 49 en la caché (tope
+  80). Antes de «Cargar mapa», 0 teselas y sin Leaflet.
+
+**Pendiente:** actualizar `probar-mapa-buscar.test.cjs` (24 ofertas, 12 con
+ubicación, una petición local antes de cargar, margen en `#mapaMargen`) y
+meterlo en `npm test`, si Víctor quiere. Publicar necesita su permiso.
+
+---
+
 ## 4 de noviembre de 2026 · Claude · mapa de Ofertas claro (sin publicar)
 
 Rama local `claude/mapa-ofertas` (sale de `claude/inicio-historia`), commits
