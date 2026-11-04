@@ -6,6 +6,56 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (3) · Claude · corrector del port a la app (sin publicar)
+
+Misma rama local `claude/app-rediseno`, commits 9c8fcd9…12e8d44 encima de
+7b09367, solo en `rwadar-movil/` y este archivo. **Nada publicado, sin push,
+sin OTA ni EAS, Supabase sin tocar**, sin dependencias ni código nativo; ni
+`package.json`, ni `app.json`, ni `eas.json`, ni `scripts/`, ni la web.
+
+- **Aviso de riesgo medido** (ESPEC-INICIO §3): va antes del botón si,
+  después, quedaría bajo la barra (lo mide con `onLayout`, así que cuenta la
+  letra grande de Android y «Revisión pendiente» arriba). Medido en Expo
+  web: 390 × 844 aviso después (botón 608-656, aviso 666-738, barra 776);
+  360 × 780, 375 × 667, 320 × 640 y 390 × 844 caducado, aviso antes y
+  entero sobre la barra. A 375 × 667 el botón ya cabe entero (518-566,
+  barra 599): radar de 132 px y márgenes más cortos.
+- **«Está en «Descartadas»»** abre Plataformas y baja a «Descartadas»
+  (estaba 5.924 px más abajo). Captura `09-tras-descartadas.png`.
+- **Inglés «Excluded»** (ESPEC §2.11 y HISTORIA-v2), no «Discarded»: 1
+  entrada de `lib/idioma-en.js` y **3** de `lib/inicio-contenido.js`
+  (no 2, como decía la entrada de abajo), con «we exclude».
+- **Selección de Inicio como la web:** solo principales, en el orden de la
+  web (Robinhood, Euro, Dólar), nota de riesgo de respaldo «Puedes perder
+  parte o todo lo que inviertas.» si entra otra oferta, y «1 $».
+- **Las cifras de mercado del 03 caducan solas:** pasados 7 días desde
+  `CIFRAS_MERCADO_EL` (`lib/inicio-contenido.js`, hoy 2026-11-03) se quitan
+  125, 14.230 millones, −3,9 % y las barras, y queda una frase sin cifra
+  (`10-mercado-caducado.png`, reloj al 11/11). **Al rehacer las cifras en
+  cada ciclo, cambiar a la vez el texto y esa fecha** (la prueba lo exige).
+- **Menores:** «Fuentes de este apartado» del 05 antes del puente;
+  «¿Cómo ordenamos?» solo nombra la Selección cuando la lista la lleva;
+  cita a 28 y cifras a 36; «Revisión pendiente» sin mono; Academy sin mono;
+  radios sueltos a R (BloqueoApp, Cuenta, segmentado); los enlaces de una
+  fuente en fila (Inicio) y la fecha junto al enlace (ficha).
+- **No hecho, a propósito:** puntos suspensivos en la barra (la prueba de
+  `radar-geometria` prohíbe `numberOfLines` y `maxFontSizeMultiplier` en la
+  barra para no bloquear la letra del sistema; que lo decida Víctor) y los
+  nombres y el solape del radar de Plataformas («Materias primas» pisaría
+  más el punto naranja; necesita recolocar rótulos).
+- **CONDICIÓN DE LA OTA:** no enviarla hasta regenerar
+  `lib/academy-contenido.js` y `lib/noticias-contenido.js` desde
+  `rwadar-academy/` y `rwadar-noticias/` con «Descartadas» (hoy dicen
+  «Fuera del radar» en 7 sitios de Academy). Es de la web: no se toca aquí.
+- **Pruebas:** `npm --prefix rwadar-movil test` 408: 406 bien, 0 fallos y
+  2 omitidas. Nuevas en `inicio-historia` (orden y nota de la Selección,
+  caducidad de las cifras); cambiadas con comentario: el aviso medido y
+  «Excluded» (`inicio-historia`) y el simulador de tema con `R`
+  (`desbloqueo-app`).
+- **Capturas** rehechas desde HEAD en el scratchpad, `app-rediseno/01` a
+  `07`, más `08-inicio-360x780.png`, `09-tras-descartadas.png` y
+  `10-mercado-caducado.png`. 0 errores y 0 peticiones externas.
+
 ## 4 de noviembre de 2026 (2) · Claude · la app con el rediseño de la web (sin publicar)
 
 Rama local `claude/app-rediseno` (sale de `claude/acabados`, 2bcbd20), commits
@@ -39,10 +89,9 @@ Ni `package.json`, ni `app.json`, ni `eas.json`, ni `scripts/`, ni la web.
   Víctor): cada apartado acaba en «Fuentes de este apartado», que abre la
   lista agrupada y baja a su grupo. Las cifras salen del catálogo y sin
   catálogo vigente no hay Selección, mínimos ni vigencia.
-- **«Descartadas»** en la app; en inglés, «Discarded» (como ya dice la web en
-  «…look at “Discarded” first»). ESPEC-INICIO §2.11 decía «Excluded»: si
-  Víctor prefiere esa, es cambiar una entrada de `lib/idioma-en.js` y dos
-  de `lib/inicio-contenido.js`.
+- **«Descartadas»** en la app; en inglés quedó «Excluded» en la entrada (3),
+  como manda ESPEC-INICIO §2.11 (1 entrada de `lib/idioma-en.js` y 3 de
+  `lib/inicio-contenido.js`).
 - **Inglés:** 54 entradas nuevas al final de `lib/idioma-en.js`; el texto
   de Inicio va en `lib/inicio-contenido.js` en los dos idiomas.
 - **Pruebas:** `npm --prefix rwadar-movil test` 406, 404 bien y 2 omitidas.
