@@ -424,7 +424,7 @@ export function DetalleOferta({
   const vigente = !catalogoCaducado && !estadoCifras.caducado && !oferta.cifrasPendientes;
   const documental = oferta.coleccion === 'secundario' || oferta.coleccion === 'en_camino';
   const destacado = datoDestacado(oferta);
-  const cifra = vigente && !documental && !/^(?:Consultar|No publicada)/.test(destacado.valor) ? destacado : null;
+  const cifra = vigente && !documental && !/^(?:Consultar|Consúlta|No publicada)/.test(destacado.valor) ? destacado : null;
   const sinCifra = cifra ? null : documental ? ['Precio y condiciones', 'Consúltalos en su web']
     : !vigente ? ['Condiciones actuales', 'Consultar emisor']
       : oferta.tipo === 'secundario' ? ['Precio y condiciones', 'Consúltalos en su web']

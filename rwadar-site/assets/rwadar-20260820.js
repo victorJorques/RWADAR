@@ -2659,7 +2659,7 @@ function abrirDetalleOfertaLocal(slug){
  const enlaces=(secundario&&urlMercado?enlace(urlMercado,'Abrir mercado','Abrir mercado de '+o.titulo+' en '+o.plataformaNombre):'')+
   (urlFicha?enlace(urlFicha,secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre,(secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre)+': '+o.titulo):'');
  /* Un precio o una rentabilidad solo salen si hay cifra publicable (nunca «Consultar fuente» en grande). */
- const cifra=vigente&&claves.destacado&&!/^(?:Consultar|No publicada)/.test(claves.destacado.valor)?claves.destacado:null;
+ const cifra=vigente&&claves.destacado&&!/^(?:Consultar|Consúlta|No publicada)/.test(claves.destacado.valor)?claves.destacado:null;
  /* Sin cifra, una línea normal que dice dónde mirar. */
  const sinCifra=cifra?null:o.coleccion==='secundario'||o.coleccion==='en_camino'||secundario?['Precio y condiciones','Consúltalos en su web']:
   !vigente?['Condiciones actuales','Consultar emisor']:tipoOfertaLocal(o)==='valor'?['Precio','En la web del proveedor']:null;
