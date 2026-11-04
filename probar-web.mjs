@@ -1601,6 +1601,14 @@ prueba('Inicio trae la historia, la franja de novedades, las fuentes, la nota le
     !/<[^>]*\s(?:style|on[a-z]+)\s*=/i.test(panelInicioHTML)&&/font:400 1rem\/1\.55/.test(declaracionesCSS(css,'.rel-aviso').join(';'))&&
     /\.rel-anim \.rel-revela,\.rel-anim \.rel-barra-rel\{opacity:1;transform:none\}/.test(css)&&/\.panel\[inert\]\{box-shadow:none\}/.test(css));
 }
+// «Fuera del radar» pasa a «Descartadas» (decisión de Víctor, 04/11/2026); /fuera-del-radar/ y #fuera se quedan.
+{
+  const ficha=lee('./fuera-del-radar/realt.html'),en=require('./rwadar-movil/lib/idioma-en.js');
+  prueba('«Descartadas» se ve en castellano y en inglés, «Fuera del radar» ya no, y la ruta /fuera-del-radar/ se queda',
+    /Descartadas/.test(textoHTML(html))&&!/fuera del radar/i.test(textoHTML(html.replace(/<!--[\s\S]*?-->/g,''))+jsSinComentarios+ficha)&&
+    /<title>RealT · Plataforma descartada/.test(ficha)&&/href="#fuera" data-movil-ir="fuera"/.test(html)&&/\/fuera-del-radar\/realt/.test(lee('./sitemap.xml'))&&
+    en['Descartadas']==='Discarded'&&en['descartadas']==='discarded'&&en['Fuentes de este apartado']==='Sources for this section'&&en['Fuentes']==='Sources');
+}
 prueba('Academy mueve el bloque real de lecciones y cuenta solo el progreso local de la cuenta',
   /id="movilAcademyLecciones"/.test(panelAcademyHTML) &&
   !/class="academia-lecciones"/.test(panelAcademyHTML) &&

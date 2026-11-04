@@ -67,7 +67,7 @@ export function bloque(d = cargarFuentes()) {
   const grupos = d.grupos.map(g => {
     const items = g.fuentes.map(n => {
       const f = porN.get(n);
-      const enlaces = f.urls.map(u => `<a class="rel-refs-url" href="${esc(u)}" target="_blank" rel="noopener nofollow">${esc(corto(u))}</a>`).join('');
+      const enlaces = f.urls.map(u => `<a class="rel-refs-url" href="${esc(u)}" target="_blank" rel="noopener nofollow" translate="no">${esc(corto(u))}</a>`).join('');
       return `            <li data-fuente="${n}"><p lang="es" translate="no">${esc(f.texto)}.</p>${enlaces}</li>`;
     }).join('\n');
     return `        <section class="rel-refs-grupo" id="fuentes-${g.id}" tabindex="-1" aria-labelledby="fuentes-${g.id}-tit">
@@ -79,7 +79,7 @@ ${items}
         </section>`;
   }).join('\n');
   return `        ${INI}
-        <p class="rel-refs-nota">${d.fuentes.length} fuentes, agrupadas por apartado. Consultadas el ${fecha(consulta)} salvo que se diga otra cosa.</p>
+        <p class="rel-refs-nota"><span>Agrupadas por apartado.</span> <span>Consultadas el</span> <time datetime="${consulta}">${fecha(consulta)}</time> <span>salvo que se diga otra cosa.</span></p>
 ${grupos}
         ${FIN}`;
 }

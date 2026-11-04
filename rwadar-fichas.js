@@ -259,8 +259,8 @@ function construirSalidas({catalogo, paginasPermitidas = permitidas} = {}) {
   for (const p of c.plataformas) salidas.set('plataformas/'+p.slug+'.html',paginaPlataforma(p,c));
   for (const f of c.fuera) {
     const ruta='/fuera-del-radar/'+slug(f.n);
-    salidas.set(ruta.slice(1)+'.html',pagina({titulo:f.n+' · Fuera del radar',descripcion:f.why,ruta,revision:c.revision,
-      contenido:'<p class="estado">'+esc(f.badge)+'</p><section><h2>Motivo publicado</h2><p>'+esc(f.why)+'</p></section><section><h2>Fuentes citables</h2>'+fuentes(f.fuentes || [])+'</section><p>Un descarte requiere fuente. Si conoces un cambio, comunícalo para revisarlo.</p>'}));
+    salidas.set(ruta.slice(1)+'.html',pagina({titulo:f.n+' · Plataforma descartada',descripcion:f.why,ruta,revision:c.revision,
+      contenido:'<p class="estado">'+esc(f.badge)+'</p><section><h2>Por qué la descartamos</h2><p>'+esc(f.why)+'</p></section><section><h2>Fuentes</h2>'+fuentes(f.fuentes || [])+'</section><p>Solo descartamos una plataforma si hay una fuente que lo justifique. Si sabes que algo ha cambiado, escríbenos y lo revisamos.</p>'}));
   }
   salidas.set('metodologia.html',pagina({titulo:'Cómo verificamos',descripcion:'Qué comprueba RWAdar, qué significa cada fecha y cómo se ordena un catálogo editorial independiente.',ruta:'/metodologia',revision:c.revision,
     contenido:'<p class="intro">RWAdar informa con la fuente al lado. Aparecer es gratuito y el veredicto editorial no se vende.</p><section><h2>Qué comprobamos</h2><p>Separar plataforma, entidad jurídica, registro y producto evita atribuir a una oferta permisos que pertenecen a otra entidad. Las fuentes del emisor describen sus condiciones; el registro del regulador delimita la supervisión.</p></section>'+

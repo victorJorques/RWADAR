@@ -475,7 +475,7 @@ select option{background:var(--sup);color:var(--tx)}
 .mm .md{width:21px;height:21px;border-radius:var(--r-s);display:grid;place-items:center;color:var(--en-senal);font-family:var(--display);font-weight:700;font-size:.57rem;flex:none;background:var(--cc)}
 .nada{font-size:.7rem;color:var(--tx-3);font-variant-numeric:tabular-nums}
 
-/* ============ 10 · FUERA DEL RADAR ============ */
+/* ============ 10 · DESCARTADAS ============ */
 .fuera{padding-block:26px 66px;scroll-margin-top:70px}
 .fuera-cab{max-width:64ch;margin-bottom:24px}
 .fuera-lista{display:flex;flex-direction:column;gap:10px}
