@@ -91,7 +91,7 @@ export default function Academy({ slug, onAbrirLeccion, onVolver, onCerrar, onAc
           </Pressable>
         ) : null}
         <View style={{ flex: 1 }}>
-          <Text style={e.cabEtiqueta}>RWADAR ACADEMY</Text>
+          <Text style={e.cabEtiqueta}>RWAdar Academy</Text>
           <Text style={e.cabTitulo} numberOfLines={1} accessibilityRole="header">
             {leccion ? `Lección ${leccion.modulo} de ${LECCIONES.length}` : 'Lecciones'}
           </Text>
@@ -148,7 +148,7 @@ function Indice({ progreso, onAbrirLeccion, onExplicar }) {
         accessibilityHint="Tutorial de Academy en cuatro pasos, también explicados en texto">
         <View style={e.extraCab}>
           <View style={e.extraIcono}><Text style={e.extraIconoTxt}>3D</Text></View>
-          <Text style={e.extraEtiqueta}>ACADEMY · TUTORIAL GUIADO</Text>
+          <Text style={e.extraEtiqueta}>Academy · tutorial guiado</Text>
         </View>
         <Text style={e.extraTit}>Mira cómo se tokeniza un edificio</Text>
         <Text style={e.extraSub}>El edificio sigue entero. Sus derechos se representan en participaciones que pueden cambiar de titular.</Text>
@@ -172,7 +172,7 @@ function Indice({ progreso, onAbrirLeccion, onExplicar }) {
         const lecciones = LECCIONES.filter((l) => l.nivel === n.id);
         return (
           <View key={n.id} style={e.nivel}>
-            <Text style={e.sobrelinea}>NIVEL {k + 1} · {n.lema.toUpperCase()}</Text>
+            <Text style={e.sobrelinea}>Nivel {k + 1} · {n.lema}</Text>
             <Text style={e.nivelTit} accessibilityRole="header">{n.nombre}</Text>
             <Text style={e.nivelPregunta}>{n.pregunta}</Text>
             {lecciones.map((l) => (
@@ -199,7 +199,7 @@ function Tarjeta({ l, progreso, onPress }) {
     <>
       <View style={e.tarjetaFila}>
         <Text style={[e.tarjetaNum, !l.publicado && e.apagado]}>{String(l.modulo).padStart(2, '0')}</Text>
-        <Text style={e.tarjetaMeta}>{l.categoria.toUpperCase()} · {l.minutos} MIN</Text>
+        <Text style={e.tarjetaMeta}>{l.categoria} · {l.minutos} min</Text>
       </View>
       <Text style={[e.tarjetaTit, !l.publicado && e.tarjetaTitPronto]}>{l.titulo}</Text>
       {l.publicado ? <Text style={e.tarjetaResumen} numberOfLines={3}>{l.resumen}</Text> : null}
@@ -230,20 +230,20 @@ function Leccion({ l, progreso, onAccion, onMarcar, onTest, onAbrirLeccion, onWe
 
   return (
     <View>
-      <Text style={e.sobrelinea}>NIVEL {numeroNivel(l.nivel)} · {nivel.nombre.toUpperCase()} · {nivel.lema.toUpperCase()}</Text>
+      <Text style={e.sobrelinea}>Nivel {numeroNivel(l.nivel)} · {nivel.nombre} · {nivel.lema}</Text>
       <Text style={e.titular} accessibilityRole="header">{l.titulo}</Text>
       <View style={e.meta}>
-        <Dato etiqueta="LECTURA" valor={`${l.minutos} min`} />
-        <Dato etiqueta="CATEGORÍA" valor={l.categoria} />
-        <Dato etiqueta="REVISIÓN LEGAL" valor={l.revisionLegalTexto} />
-        <Dato etiqueta="JURISDICCIÓN" valor={l.jurisdiccion} />
+        <Dato etiqueta="Lectura" valor={`${l.minutos} min`} />
+        <Dato etiqueta="Categoría" valor={l.categoria} />
+        <Dato etiqueta="Revisión legal" valor={l.revisionLegalTexto} />
+        <Dato etiqueta="Jurisdicción" valor={l.jurisdiccion} />
       </View>
       {leida ? <Text style={e.leidaAviso}>✓ Marcaste esta lección como leída.</Text> : null}
 
       <Bloques bloques={l.preambulo} onAccion={onAccion} />
 
       <View style={e.tldr}>
-        <Text style={e.tldrTit}>EN 30 SEGUNDOS</Text>
+        <Text style={e.tldrTit}>En 30 segundos</Text>
         {l.tldr.map((tramos, k) => (
           <View key={k} style={e.tldrFila}>
             <View style={e.tldrNum}><Text style={e.tldrNumTxt}>{k + 1}</Text></View>
@@ -265,7 +265,7 @@ function Leccion({ l, progreso, onAccion, onMarcar, onTest, onAbrirLeccion, onWe
       <Test key={l.slug} preguntas={l.quiz} onAccion={onAccion} onTerminar={onTest} />
 
       <View style={e.paso}>
-        <Text style={e.sobrelinea}>DA EL SIGUIENTE PASO</Text>
+        <Text style={e.sobrelinea}>Da el siguiente paso</Text>
         <Text style={e.pasoTit}>{l.siguientePaso.titulo}</Text>
         <Bloques bloques={l.siguientePaso.bloques} onAccion={onAccion} />
       </View>
@@ -307,7 +307,7 @@ function Vecina({ l, lado, onPress }) {
     return (
       <View style={[e.vecina, e.vecinaPronto]}>
         <Text style={[e.vecinaEtiqueta, e.apagado]}>{etiqueta}</Text>
-        <Text style={[e.vecinaEtiqueta, e.vecinaPronta]}>PRÓXIMAMENTE</Text>
+        <Text style={[e.vecinaEtiqueta, e.vecinaPronta]}>Próximamente</Text>
         <Text style={e.vecinaTit} numberOfLines={3}>{l.titulo}</Text>
       </View>
     );
@@ -353,7 +353,7 @@ function Test({ preguntas, onAccion, onTerminar }) {
         const mostrar = respondida || abiertas[k];
         return (
           <View key={k} style={e.pregunta}>
-            <Text style={e.preguntaNum}>PREGUNTA {k + 1} DE {preguntas.length}</Text>
+            <Text style={e.preguntaNum}>Pregunta {k + 1} de {preguntas.length}</Text>
             <Texto tramos={p.enunciado} estilo={e.preguntaTxt} onAccion={onAccion} />
             {p.opciones.map((o, i) => {
               const esCorrecta = respondida && i === p.correcta;
@@ -407,12 +407,12 @@ function Test({ preguntas, onAccion, onTerminar }) {
 function AvisoLegal({ leccion, onAccion }) {
   return (
     <View style={e.legal}>
-      <Text style={e.legalTit}>AVISO IMPORTANTE</Text>
+      <Text style={e.legalTit}>Aviso importante</Text>
       {AVISO_COMUN.map((tramos, k) => <Texto key={k} tramos={tramos} estilo={e.legalTxt} onAccion={onAccion} />)}
       {leccion && leccion.notaLegal.length ? (
         <View style={[e.legalPropio, leccion.avisoReforzado && e.legalReforzado]}>
           <Text style={[e.legalEtiqueta, leccion.avisoReforzado && e.legalEtiquetaReforzada]}>
-            {leccion.avisoReforzado ? 'AVISO REFORZADO PARA ESTA LECCIÓN' : 'SOBRE ESTA LECCIÓN'}
+            {leccion.avisoReforzado ? 'Aviso reforzado para esta lección' : 'Sobre esta lección'}
           </Text>
           {leccion.notaLegal.map((b, k) => (
             <Texto key={k} tramos={b.texto} estilo={[e.legalTxt, leccion.avisoReforzado && e.legalTxtReforzado]} onAccion={onAccion} />
@@ -483,7 +483,7 @@ function Tabla({ b, onAccion }) {
         <View style={[e.tablaFila, e.tablaCab]}>
           {b.cabecera.map((c, k) => (
             <View key={k} style={[e.tablaCelda, { width: ancho }]}>
-              <Text style={e.tablaCabTxt}>{c.map((t) => t.v || '').join('').toUpperCase()}</Text>
+              <Text style={e.tablaCabTxt}>{c.map((t) => t.v || '').join('')}</Text>
             </View>
           ))}
         </View>
@@ -510,7 +510,7 @@ function Acciones({ tramos, onAccion }) {
           return (
             <View key={k} style={e.accionPronto} accessible accessibilityLabel={`${destino.etiqueta}: próximamente`}>
               <Text style={e.accionProntoTxt}>{destino.etiqueta}</Text>
-              <Text style={e.pronto} numberOfLines={1}>PRÓXIMAMENTE</Text>
+              <Text style={e.pronto} numberOfLines={1}>Próximamente</Text>
             </View>
           );
         }

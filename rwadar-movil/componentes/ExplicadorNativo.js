@@ -118,7 +118,7 @@ export default function ExplicadorNativo({ onCerrar }) {
     <View style={e.pantalla}>
       <View style={e.cabecera}>
         <View style={{ flex: 1 }}>
-          <Text style={e.arriba}>ACADEMY · TUTORIAL GUIADO</Text>
+          <Text style={e.arriba}>Academy · tutorial guiado</Text>
           <Text style={e.titulo}>¿Qué es tokenizar{'\n'}un activo?</Text>
         </View>
         <Pressable onPress={() => { tacto.eleccion(); onCerrar(); }} style={e.cerrar} hitSlop={10}
@@ -146,7 +146,7 @@ export default function ExplicadorNativo({ onCerrar }) {
       </View>
 
       <View style={e.texto}>
-        <Text style={e.pasoNum} accessibilityLiveRegion="polite">PASO {paso + 1} DE {PASOS.length}</Text>
+        <Text style={e.pasoNum} accessibilityLiveRegion="polite">Paso {paso + 1} de {PASOS.length}</Text>
         <Text style={e.pasoTit}>{p.t}</Text>
         <Text style={e.pasoDes}>{p.d}</Text>
         <View style={e.mandos}>

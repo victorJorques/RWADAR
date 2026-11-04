@@ -139,7 +139,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
   if (!estado?.disponible) {
     return (
       <View style={s.tarjeta}>
-        <Text style={s.kicker}>TU CUENTA</Text>
+        <Text style={s.kicker}>Tu cuenta</Text>
         <Text style={s.titulo} accessibilityRole="header">Cuentas en preparación</Text>
         <Text style={s.parrafo}>
           El acceso requiere una cuenta confirmada. Ahora no podemos preparar la conexión: inténtalo de nuevo más tarde.
@@ -158,7 +158,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={s.tarjeta}>
-      <Text style={s.kicker}>{autenticada ? 'TU CUENTA · WEB Y APP' : 'TU ESPACIO EN RWADAR'}</Text>
+      <Text style={s.kicker}>{autenticada ? 'Tu cuenta · web y app' : 'Tu espacio en RWAdar'}</Text>
       <Text style={s.titulo} accessibilityRole="header">
         {autenticada ? (vista === 'borrar' ? 'Borrar mi cuenta' : 'Tu perfil')
           : confirmando ? 'Confirma tu correo'

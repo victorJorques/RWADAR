@@ -145,7 +145,7 @@ export default function Explicador({ onCerrar, obtenerAcceso, onPrimeraLeccion }
     <View style={e.pantalla}>
       <View style={e.cabecera}>
         <View style={{ flex: 1 }}>
-          <Text style={e.arriba}>ACADEMY · TUTORIAL 3D</Text>
+          <Text style={e.arriba}>Academy · tutorial 3D</Text>
           <Text style={e.titulo}>Aprende a tokenizar un activo</Text>
         </View>
         <Pressable onPress={onCerrar} hitSlop={12}

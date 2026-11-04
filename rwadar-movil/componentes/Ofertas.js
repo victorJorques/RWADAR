@@ -37,25 +37,25 @@ function useFechaOferta() {
 
 function datoDestacado(oferta) {
   if (oferta.coleccion === 'secundario' || oferta.coleccion === 'en_camino') {
-    return { etiqueta: 'REFERENCIA DOCUMENTAL', valor: 'Consultar fuente' };
+    return { etiqueta: 'Referencia documental', valor: 'Consultar fuente' };
   }
   if (oferta.cifrasPendientes) {
-    return { etiqueta: 'CONDICIONES ACTUALES', valor: 'Consultar emisor' };
+    return { etiqueta: 'Condiciones actuales', valor: 'Consultar emisor' };
   }
   if (oferta.tipo === 'rendimiento') {
     return {
-      etiqueta: 'RENTABILIDAD PUBLICADA',
+      etiqueta: 'Rentabilidad publicada',
       valor: oferta.rentabilidad?.mostrada || oferta.rentabilidad?.literal || 'No publicada',
       original: Boolean(oferta.rentabilidad?.mostrada || oferta.rentabilidad?.literal),
       referencia: oferta.rentabilidad?.literal || '',
     };
   }
   if (oferta.tipo === 'valor') {
-    return { etiqueta: 'PRECIO DE REFERENCIA', valor: oferta.precio?.mostrado || 'Consultar fuente', original: Boolean(oferta.precio?.mostrado),
+    return { etiqueta: 'Precio de referencia', valor: oferta.precio?.mostrado || 'Consultar fuente', original: Boolean(oferta.precio?.mostrado),
       referencia: oferta.precio?.unidad || '' };
   }
   const valor = [oferta.precio?.mostrado, oferta.precio?.unidad].filter(Boolean).join(' / ');
-  return { etiqueta: 'PRECIO EN SECUNDARIO', valor: valor || 'Consultar mercado', original:Boolean(valor) };
+  return { etiqueta: 'Precio en secundario', valor: valor || 'Consultar mercado', original:Boolean(valor) };
 }
 
 function rentabilidadSecundaria(oferta) {
@@ -86,11 +86,11 @@ function dominioFuente(url) {
 }
 
 function tipoVisible(tipo, coleccion) {
-  if (coleccion === 'en_camino') return 'EN CAMINO';
-  if (coleccion === 'secundario') return 'SECUNDARIO';
-  if (tipo === 'secundario') return 'SECUNDARIO';
-  if (tipo === 'valor') return 'VALOR';
-  return 'RENDIMIENTO';
+  if (coleccion === 'en_camino') return 'En camino';
+  if (coleccion === 'secundario') return 'Secundario';
+  if (tipo === 'secundario') return 'Secundario';
+  if (tipo === 'valor') return 'Valor';
+  return 'Rendimiento';
 }
 
 // El orden nunca usa importe, rentabilidad, patrocinio ni un perfil personal.
@@ -133,7 +133,7 @@ export function FichaGrupoOfertas({grupo, onAbrir}) {
       accessibilityRole="button" accessibilityLabel={`${grupo.proveedorNombre}: ver ${n} referencias`}
       accessibilityHint="Abre todas las fichas del proveedor dentro de esta colección">
       <View style={e.cuerpoGrupo}>
-        <Text style={e.datoEtiqueta}>REFERENCIAS DEL MISMO PROVEEDOR</Text>
+        <Text style={e.datoEtiqueta}>Referencias del mismo proveedor</Text>
         <Text noTraducir idiomaOriginal="es-ES" style={e.titulo}>{grupo.proveedorNombre}</Text>
         <Text style={e.grupoNumero}>{n} referencias</Text>
         <Text style={e.referencia}>Cada ficha conserva su fuente, fecha, mínimo publicado, acceso desde España y condiciones de salida. No se ha confirmado que puedas contratar todas.</Text>
@@ -270,8 +270,16 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
   const fechaCorta = resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)
     : documentacion ? fechaVerificacionLocalVisible(documentacion.fecha) : '';
   // Una principal vigente enseña su vigencia; lo demás, el estado que da resumenOferta.
-  const vigenteOk = !catalogoCaducado && resumen.cifrasVigentes && /vigente/.test(vigencia.estado);
+  const vigenteOk = !catalogoCaducado && resumen.cifrasVigentes &&
+    ['vigente', 'proxima', 'permanente-vigente', 'permanente-proxima'].includes(vigencia.estado);
   const estadoTexto = vigenteOk ? vigencia.etiqueta : resumen.estado.texto;
+  // «Cifras vigentes N d» empieza en mayúscula; el diccionario lo tiene en minúscula.
+  const estadoTraducido = (() => {
+    const directo = traducir(estadoTexto);
+    if (directo !== estadoTexto) return directo;
+    const minuscula = traducir(estadoTexto.charAt(0).toLowerCase() + estadoTexto.slice(1));
+    return minuscula.charAt(0).toUpperCase() + minuscula.slice(1);
+  })();
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
   const lugar = imagenEditorialOferta(oferta)?.lugar || '';
   const etiquetaAccesible = [
@@ -281,7 +289,7 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
     ...puntos.map((punto) => `✓ ${traducir(punto.texto)}`),
     ...datosCortos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
     traducir(fechaProcedencia),
-    traducir(estadoTexto),
+    estadoTraducido,
     primerCritico
       ? `${traducir(primerCritico.tono === 'stop' ? 'Aviso bloqueante' : 'Precaución')}: ${primerCritico.texto}`
       : null,
@@ -308,7 +316,8 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
             {lugar ? <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt}>{` · ${lugar}`}</Text> : null}
           </Text>
           <View style={e.metaFicha}>
-            <Text style={[e.estadoFicha, vigenteOk ? e.estadoOk : tonoVigencia(vigencia.estado)]}>{estadoTexto}</Text>
+            <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
+              style={[e.estadoFicha, vigenteOk ? e.estadoOk : tonoVigencia(vigencia.estado)]}>{estadoTraducido}</Text>
             {!catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false
               ? <Text style={e.noDisponible}>No disponible en España</Text> : null}
           </View>
@@ -412,7 +421,7 @@ export function DetalleOferta({
           </View>
           <ScrollView key={oferta.slug} style={e.modalDesplazamiento}
             contentContainerStyle={e.modalCuerpo} contentInsetAdjustmentBehavior="never">
-            <Text style={e.supra}>{oferta.coleccion && oferta.coleccion !== 'principales' ? 'REFERENCIA' : 'OFERTA'} · {tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
+            <Text style={e.supra}>{oferta.coleccion && oferta.coleccion !== 'principales' ? 'Referencia' : 'Oferta'} · {tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
             <FuenteOriginal idiomaOriginal="es-ES" />
             <Text noTraducir idiomaOriginal="es-ES" style={e.modalTitulo} accessibilityRole="header">{oferta.titulo}</Text>
             <ImagenOferta oferta={oferta} grande />
@@ -433,7 +442,7 @@ export function DetalleOferta({
               ) : null}
             </View>
             <Text style={e.riesgoSalida}>Puedes perder dinero. RWAdar no vende ni asesora.</Text>
-            <Text style={e.avisosTitulo}>¿QUIÉN PUEDE ACCEDER Y EN QUÉ CONDICIONES?</Text>
+            <Text style={e.avisosTitulo}>¿Quién puede acceder y en qué condiciones?</Text>
             <View style={e.tabla}>
               {datosParaDecidir.map(([etiqueta, dato]) => (
                 <View key={etiqueta} style={e.filaMetrica}>
@@ -449,7 +458,7 @@ export function DetalleOferta({
             <Transparencia oferta={ofertaOriginal} resumen={resumen} ahora={ahora}
               catalogoCaducado={catalogoCaducado} onAbrirEnlace={onAbrirEnlace} />
             <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>EN TRES FRASES</Text>
+              <Text style={e.avisosTitulo}>En tres frases</Text>
               {documentacion?.descripcion || oferta.resumen ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{documentacion?.descripcion || oferta.resumen}</FuenteOriginal> : <Text style={e.estadoTexto}>La fuente no aporta una descripción comprobable en esta ficha.</Text>}
               <Text style={e.referencia}>La disponibilidad de salida no está garantizada.</Text>
             </View>
@@ -478,7 +487,7 @@ export function DetalleOferta({
             </View>
             {documentacion?.descripcion ? (
               <View style={e.documentacion}>
-                <Text style={e.avisosTitulo}>CARACTERÍSTICAS DOCUMENTADAS</Text>
+                <Text style={e.avisosTitulo}>Características documentadas</Text>
                 {documentacion.caracteristicas.length ? (
                   <View style={[e.tabla, e.tablaDocumental]}>
                     {documentacion.caracteristicas.map((caracteristica, indice) => (
@@ -489,7 +498,7 @@ export function DetalleOferta({
               </View>
             ) : null}
             <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>FECHAS DE ESTA FICHA</Text>
+              <Text style={e.avisosTitulo}>Fechas de esta ficha</Text>
               <Text style={e.referencia}>Revisión del catálogo: {resumen.fechas.revisadaEl ? fechaVerificacionLocalVisible(resumen.fechas.revisadaEl) : 'sin fecha válida'}</Text>
               <Text style={e.referencia}>Última consulta citada: {resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl) : 'no documentada'}</Text>
               <Text style={e.referencia}>Fecha del dato en esa referencia: {resumen.fechas.fechaDato ? fechaVerificacionLocalVisible(resumen.fechas.fechaDato) : 'no indicada por la fuente'}</Text>
@@ -502,7 +511,7 @@ export function DetalleOferta({
             </View>
             {rentabilidadSec ? (
               <View style={e.destacadoSecundario}>
-                <Text style={e.datoEtiqueta}>RENTABILIDAD AJUSTADA / PUBLICADA</Text>
+                <Text style={e.datoEtiqueta}>Rentabilidad ajustada / publicada</Text>
                 <Text noTraducir idiomaOriginal="es-ES" style={e.destacadoValor}>{rentabilidadSec}</Text>
               </View>
             ) : null}
@@ -515,7 +524,7 @@ export function DetalleOferta({
             ) : null}
             {documentacion?.referencias.length ? (
               <View style={e.documentacion}>
-                <Text style={e.avisosTitulo}>REFERENCIAS FECHADAS</Text>
+                <Text style={e.avisosTitulo}>Referencias fechadas</Text>
                 <Text style={e.estadoTexto}>
                   Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.
                 </Text>
@@ -535,7 +544,7 @@ export function DetalleOferta({
             ) : null}
             {oferta.avisos.length ? (
               <View style={e.avisos}>
-                <Text style={e.avisosTitulo}>ANTES DE ABRIR EL ENLACE</Text>
+                <Text style={e.avisosTitulo}>Antes de abrir el enlace</Text>
                 {oferta.avisos.map((aviso, indice) => (
                   <View key={`${aviso.texto}-${indice}`} style={[
                     e.avisoFila,
@@ -554,7 +563,7 @@ export function DetalleOferta({
               </View>
             ) : null}
             <View style={e.avisos}>
-              <Text style={e.avisosTitulo}>ANTES DE IR A LA FUENTE</Text>
+              <Text style={e.avisosTitulo}>Antes de ir a la fuente</Text>
               <FilaMetrica etiqueta="¿Puedo perder dinero?" valor="Sí. Puedes perder parte o toda la inversión; una cifra publicada no garantiza el resultado." />
               <FilaMetrica etiqueta="¿Puedo vender cuando quiera?" valor={resumen.salida.texto} original={Boolean(resumen.salida.fuente)} />
               <FilaMetrica etiqueta="¿Quién custodia el activo?" original={Boolean(documentacion?.caracteristicas.find(c => /custodio|responsable de custodia/i.test(c.etiqueta))?.valor)} valor={documentacion?.caracteristicas.find(c => /custodio|responsable de custodia/i.test(c.etiqueta))?.valor || 'No consta en esta ficha. Compruébalo en la fuente.'} />
@@ -580,7 +589,7 @@ export function DetalleOferta({
             </Pressable> : null}
             {fuentesAdicionales.length ? (
               <View>
-                <Text style={e.avisosTitulo}>OTRAS FUENTES CONSULTADAS</Text>
+                <Text style={e.avisosTitulo}>Otras fuentes consultadas</Text>
                 {fuentesAdicionales.map((url, indice) => (
                   <Pressable key={url} onPress={() => onAbrirEnlace(url)}
                     style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}

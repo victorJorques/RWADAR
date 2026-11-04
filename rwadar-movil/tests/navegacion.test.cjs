@@ -1,3 +1,4 @@
+// Rótulos en frase normal, sin mayúsculas (GUIA-ACABADOS §5, aplicada a la web el 04/11/2026).
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -174,7 +175,7 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   assert.match(componente, /avisosCriticos\(oferta\)/);
   assert.match(componente, /aviso\.tono === 'stop'/);
   assert.match(componente, /aviso\.tono === 'warn'/);
-  assert.match(componente, /RENTABILIDAD AJUSTADA \/ PUBLICADA/);
+  assert.match(componente, /Rentabilidad ajustada \/ publicada/);
   // Rótulos en frase normal (GUIA-ACABADOS §5, aplicada a la web el 04/11).
   assert.match(componente, /Patrocinada/);
   assert.match(componente, /Patrocinada\. Consulta la relación comercial en la ficha; no altera el ranking/);

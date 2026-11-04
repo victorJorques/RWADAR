@@ -1,4 +1,5 @@
 'use strict';
+// Rótulos en frase normal, sin mayúsculas (GUIA-ACABADOS §5, aplicada a la web el 04/11/2026).
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
@@ -279,7 +280,7 @@ test('el detalle muestra las cuatro condiciones antes de la explicación larga y
   const texto = textoVisible(detalle);
   for (const condicion of ['Mínimo publicado en euros', 'Acceso desde España', 'Cómo recuperar el dinero', 'Costes publicados']) {
     assert.ok(texto.indexOf(condicion) >= 0 && texto.indexOf(condicion) < texto.indexOf(registro), condicion);
-    assert.ok(texto.indexOf(condicion) < texto.indexOf('EN TRES FRASES'), condicion);
+    assert.ok(texto.indexOf(condicion) < texto.indexOf('En tres frases'), condicion);
   }
   assert.ok(texto.includes(registro));
   assert.ok(texto.indexOf('Puedes perder dinero') < texto.indexOf('Mínimo publicado en euros'));
@@ -414,7 +415,7 @@ test('detalle conserva documentación, importes históricos contextualizados, ri
     'La inversión puede perder valor.', '999 EUR', oferta.rentabilidad.literal, 'no recibe ni custodia']) assert.ok(visible.includes(esperado), esperado);
   assert.ok(!visible.includes(FUENTE));
   assert.match(visible, /Ver en la fuente\s*·\s*Proveedor/);
-  assert.doesNotMatch(visible, /OTRAS FUENTES CONSULTADAS/);
+  assert.doesNotMatch(visible, /Otras fuentes consultadas/);
   const enlaces = nodos(detalle).filter(nodo => nodo.tipo === 'Pressable' && nodo.props.accessibilityLabel?.includes(FUENTE));
   assert.equal(enlaces.length, 1, 'cada destino tiene una sola acción, sin repetir el CTA principal en las referencias');
   for (const enlace of enlaces) {

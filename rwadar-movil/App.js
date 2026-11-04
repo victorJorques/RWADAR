@@ -678,6 +678,12 @@ export default function App() {
               fuera={fuera}
               cambios={avisos}
               renderCambio={(aviso) => <Aviso aviso={aviso} />}
+              plataformas={radar}
+              ofertas={todasOfertas}
+              fechaCatalogo={fechaCatalogo}
+              onAbrirPlataforma={abrir}
+              onAbrirOferta={(oferta) => { tacto.abrir(); setOfertaAbierta(oferta); }}
+              onAbrirEnlace={abrirEnlace}
             />
           ) : null}
 
@@ -787,20 +793,6 @@ export default function App() {
                       : <SegmentoOferta texto={`Próximas ${enCamino.length}`} activo={grupoOfertas === 'en_camino'}
                         onPress={() => seleccionarGrupoOfertas('en_camino')} />}
                   </View>
-                  {/* Un solo aviso para todo el grupo, en vez de repetirlo en cada tarjeta. */}
-                  <Text style={e.resultadoCompacto}>{grupoOfertas === 'secundario'
-                    ? 'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
-                    : grupoOfertas === 'en_camino'
-                      ? 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'
-                      : 'Referencias editoriales gratuitas: el proveedor comprueba admisión, condiciones y riesgos, y RWAdar no recibe dinero de las inversiones.'}</Text>
-                  <Pressable onPress={() => setCriteriosOfertasAbiertos(actual => !actual)}
-                    style={({ pressed }) => [e.criteriosOrden, pressed && e.pulsadoSuave]}
-                    accessibilityRole="button" accessibilityLabel="¿Cómo ordenamos?"
-                    accessibilityState={{ expanded: criteriosOfertasAbiertos }}>
-                    <Text style={e.botonBordeTxt}>¿Cómo ordenamos?</Text>
-                    <Text style={e.botonBordeTxt} accessible={false}>{criteriosOfertasAbiertos ? '−' : '+'}</Text>
-                  </Pressable>
-                  {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>Primero las referencias con cifras comprobables; después, las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades. Agrupamos las repetidas por proveedor; al buscar se muestran las fichas individuales.</Text> : null}
                   {grupoProveedorAbierto ? (
                     <View>
                       <Text style={e.resultadoCompacto}>Referencias de {proveedoresOferta.find(p => p.slug === grupoProveedorAbierto)?.nombre || 'este proveedor'}. La búsqueda se aplica a este grupo.</Text>
@@ -836,9 +828,12 @@ export default function App() {
                       ) : null}
                     </View>
                     <View style={e.barraFiltrosOfertas}>
-                      <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
-                        {ofertasVisibles.length} de {ofertasDelGrupo.length} {ofertasDelGrupo.length === 1 ? 'ficha' : 'fichas'} · {todasOfertas.length} en el catálogo
-                      </Text>
+                      <Pressable onPress={() => setCriteriosOfertasAbiertos(actual => !actual)}
+                        style={({ pressed }) => [e.criteriosOrden, pressed && e.b3Pulsado]}
+                        accessibilityRole="button" accessibilityLabel="¿Cómo ordenamos?"
+                        accessibilityState={{ expanded: criteriosOfertasAbiertos }}>
+                        <Text style={e.b3Txt}>¿Cómo ordenamos? {criteriosOfertasAbiertos ? '−' : '+'}</Text>
+                      </Pressable>
                       <Pressable
                         onPress={() => setFiltrosOfertasAbiertos((abiertos) => !abiertos)}
                         style={({ pressed }) => [e.botonFiltrosOfertas, filtrosOfertasAbiertos && e.botonFiltrosOfertasOn,
@@ -852,12 +847,22 @@ export default function App() {
                         </Text>
                       </Pressable>
                     </View>
+                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>Arriba, la Selección RWAdar: las que pasan las 5 comprobaciones de transparencia. Después, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.</Text> : null}
+                    <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
+                      {ofertasVisibles.length} de {ofertasDelGrupo.length} {ofertasDelGrupo.length === 1 ? 'ficha' : 'fichas'} · {todasOfertas.length} en el catálogo
+                    </Text>
+                    {/* Un solo aviso para todo el grupo, en vez de repetirlo en cada tarjeta. */}
+                    <Text style={e.resultadoCompacto}>{grupoOfertas === 'secundario'
+                      ? 'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
+                      : grupoOfertas === 'en_camino'
+                        ? 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'
+                        : 'RWAdar no recibe dinero de las inversiones.'}</Text>
                   </View>
                   {filtrosOfertasAbiertos ? (
                     <View style={e.filtrosOfertasDesplegados}>
                       {grupoOfertas === 'principales' || (MODO_LOCAL && grupoOfertas === 'todo') ? (
                         <View>
-                          <Text style={e.filtroGrupoEtiqueta}>TIPO DE OFERTA PRINCIPAL</Text>
+                          <Text style={e.filtroGrupoEtiqueta}>Tipo de oferta principal</Text>
                           <ScrollView horizontal showsHorizontalScrollIndicator={false}
                             style={e.chipsOfertas} contentContainerStyle={e.chipsContenidoCompacto}>
                             <Chip texto="Cualquier tipo" activo={!tipoOferta}
@@ -871,7 +876,7 @@ export default function App() {
                           </ScrollView>
                         </View>
                       ) : null}
-                      <Text style={e.filtroGrupoEtiqueta}>PROVEEDOR</Text>
+                      <Text style={e.filtroGrupoEtiqueta}>Proveedor</Text>
                       <ScrollView horizontal showsHorizontalScrollIndicator={false}
                         style={e.chipsOfertas} contentContainerStyle={e.chipsContenidoCompacto}>
                         <Chip texto="Todos" activo={!proveedorOferta}
@@ -894,7 +899,7 @@ export default function App() {
                   {item.tipo === 'cabecera' ? (
                     <View style={e.bloqueOfertasCab} accessibilityRole="header">
                       {item.seleccion ? <>
-                        <Text style={e.bloqueOfertasTit}><Text style={e.bloqueOfertasMarca}>Selección RWAdar</Text> · las mejor documentadas</Text>
+                        <Text style={e.bloqueOfertasTit}><Text style={e.bloqueOfertasMarca}>Selección RWAdar</Text> · la documentación más completa</Text>
                         <Text style={e.bloqueOfertasSub}>No es una recomendación de inversión.</Text>
                       </> : <Text style={e.bloqueOfertasTit}>Resto de principales</Text>}
                     </View>
@@ -1019,16 +1024,16 @@ export default function App() {
 function Cabecera({ pestana, vistaBuscar, total, ofertas, secundario, enCamino, guardados, sinConexion, onAyuda }) {
   const textos = {
     inicio: { titulo: 'Inicio', subtitulo: '' },
+    // Ofertas y Plataformas ya enseñan sus recuentos en el segmentado y los
+    // chips; la cabecera solo avisa si es una copia sin conexión o local.
     radar: {
       titulo: 'Plataformas',
-      subtitulo: MODO_LOCAL
-        ? `${total} plataformas · fixture local`
-        : `${total} plataformas${sinConexion ? ' · copia sin conexión' : ' · revisión editorial'}`,
+      subtitulo: MODO_LOCAL ? `${total} plataformas · fixture local` : sinConexion ? 'Copia sin conexión' : '',
     },
     ofertas: {
       titulo: 'Ofertas',
       subtitulo: MODO_LOCAL ? `${ofertas} principales · ${secundario} referencias secundarias`
-        : `${ofertas} principales · ${secundario} secundarias · ${enCamino} en camino`,
+        : sinConexion ? 'Copia sin conexión' : '',
     },
     perfil: {
       titulo: 'Perfil',
@@ -1162,7 +1167,7 @@ function PantallaPerfil({
       <View style={e.resumenDispositivo}>
         <View style={e.resumenMarca}><Marca tamano={48} /></View>
         <View style={{ flex: 1 }}>
-          <Text style={e.resumenEtiqueta}>TU PERFIL</Text>
+          <Text style={e.resumenEtiqueta}>Tu perfil</Text>
           <Text style={e.resumenTitulo}>Sin cuenta, por ahora</Text>
           <Text style={e.resumenTexto}>
             {MODO_LOCAL
@@ -1174,7 +1179,7 @@ function PantallaPerfil({
         </View>
         <View style={e.resumenNumero}>
           <Text style={e.resumenNumeroValor}>{total}</Text>
-          <Text style={e.resumenNumeroEtiqueta}>GUARDADOS</Text>
+          <Text style={e.resumenNumeroEtiqueta}>Guardados</Text>
         </View>
       </View>
       )}
@@ -1217,7 +1222,7 @@ function PantallaPerfil({
           <View style={e.avisoProximo}>
             <View style={e.avisoProximoIcono}><Icono nombre="avisos" color={C.senal} tamano={22} /></View>
             <View style={{ flex: 1 }}>
-              <Text style={e.resumenEtiqueta}>PRÓXIMAMENTE</Text>
+              <Text style={e.resumenEtiqueta}>Próximamente</Text>
               <Text style={e.avisoProximoTit}>Avisos de cambios</Text>
               <Text style={e.resumenTexto}>Los avisos llegarán próximamente a la app con las nuevas actualizaciones.</Text>
             </View>
@@ -1386,7 +1391,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       accessible={compacta}
       accessibilityLabel={compacta ? etiquetaAccesible : undefined}
     >
-      <Text style={e.verLocalFecha}>REVISIÓN DE FUENTES · {verificacion.verificadoEl}</Text>
+      <Text style={e.verLocalFecha}>Revisión de fuentes · {verificacion.verificadoEl}</Text>
       <View style={e.verLocalCampos}>
         {campos.map(([nombre, campo]) => {
           const atencion = campo.estado === 'no_verificable' ||
@@ -1405,7 +1410,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       <View style={e.verLocalAlertas}>
         {(verificacion.alertasCriticas || []).map((alerta) => (
           <View key={alerta.codigo} style={e.verLocalAlerta}>
-            <Text style={e.verLocalAlertaTitulo}>ALERTA CRÍTICA</Text>
+            <Text style={e.verLocalAlertaTitulo}>Alerta crítica</Text>
             <Text noTraducir idiomaOriginal="es-ES" style={e.verLocalAlertaTexto} numberOfLines={compacta ? 3 : undefined}>
               {alerta.detalle}
             </Text>
@@ -1556,7 +1561,7 @@ function PanelAvisos({ estado, tieneSeguimientos, procesando, onActivar, onAjust
           <Icono nombre="avisos" color={C.senal} tamano={24} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={e.panelAvisosEtiqueta}>ESTADO DEL DISPOSITIVO</Text>
+          <Text style={e.panelAvisosEtiqueta}>Estado del dispositivo</Text>
           <Text style={e.panelAvisosTitulo}>{titulo}</Text>
         </View>
       </View>
@@ -1761,7 +1766,7 @@ function Descartadas({ fuera }) {
           <Text style={e.fueraPor}>{f.motivo_descarte}</Text>
           {(f.fuentes || []).length > 0 && (
             <View style={e.fuentes}>
-              <Text style={e.fuentesTitulo}>COMPROBADO EN</Text>
+              <Text style={e.fuentesTitulo}>Comprobado en</Text>
               {f.fuentes.map((s) => (
                 <Pressable key={s.url} onPress={() => { tacto.eleccion(); abrirEnlace(s.url); }}
                   accessibilityRole="link" accessibilityLabel={`Abrir fuente: ${s.titulo}`}>
@@ -1812,13 +1817,13 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
               <PanelVerificacionLocal verificacion={verificacion} />
             ) : (
               <>
-                <Text style={e.detEtiqueta}>POR QUÉ ESTÁ EN EL RADAR</Text>
+                <Text style={e.detEtiqueta}>Por qué está en el radar</Text>
                 <View style={e.aval}><FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.avalTxt}>{p.aval}</FuenteOriginal></View>
-                <Text style={e.detEtiqueta}>QUÉ HACE</Text>
+                <Text style={e.detEtiqueta}>Qué hace</Text>
                 <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.detParrafo}>{p.nota}</FuenteOriginal>
               </>
             )}
-            <Text style={e.detEtiqueta}>FICHA</Text>
+            <Text style={e.detEtiqueta}>Ficha</Text>
             <View style={e.tabla}>
               {filasFicha.map(([k, v]) => (
                 <View key={k} style={e.filaTabla}>
@@ -1854,7 +1859,9 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
 }
 
 const e = StyleSheet.create({
-  criteriosOrden: { minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 8, marginBottom: 4 },
+  criteriosOrden: { minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', borderRadius: R.m, paddingHorizontal: 8, marginLeft: -8 },
+  b3Txt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },
+  b3Pulsado: { backgroundColor: C.senalT },
   pantalla: { flex: 1, backgroundColor: C.noche },
   centro: { alignItems: 'center', justifyContent: 'center' },
   cargandoTxt: { ...T.cuerpo, marginTop: 14, color: C.tx2 },

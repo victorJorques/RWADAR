@@ -1,3 +1,4 @@
+// Rótulos en frase normal, sin mayúsculas (GUIA-ACABADOS §5, aplicada a la web el 04/11/2026).
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -175,11 +176,11 @@ test('la Academy se pinta: índice y todas las lecciones publicadas', () => {
 
   for (const l of publicadas) {
     const html = renderToStaticMarkup(React.createElement(Academy, { ...props, slug: l.slug }));
-    assert.ok(html.includes('EN 30 SEGUNDOS'), l.slug);
+    assert.ok(html.includes('En 30 segundos'), l.slug);
     assert.ok(html.includes('Comprueba lo que has aprendido'), l.slug);
-    assert.ok(html.includes('DA EL SIGUIENTE PASO'), l.slug);
+    assert.ok(html.includes('Da el siguiente paso'), l.slug);
     assert.ok(html.includes(`Contenido revisado el ${l.revisionLegalTexto}`), l.slug);
-    assert.equal(html.includes('AVISO REFORZADO PARA ESTA LECCIÓN'), l.avisoReforzado, l.slug);
+    assert.equal(html.includes('Aviso reforzado para esta lección'), l.avisoReforzado, l.slug);
     assert.ok(!html.includes('undefined'), `${l.slug} pinta «undefined»`);
   }
   assert.equal(academy.resolverDestino('evaluador-viabilidad').estado, 'proximamente');
