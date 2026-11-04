@@ -1,9 +1,11 @@
 // Séptima entrega del 03/11/2026 (revisión «2026-11-03.7»), preparada el 04/11: textos
 // para el lector. Víctor pidió el 04/11 «hasta que no esté todo no has acabado», y faltaban
 // los textos del catálogo de la lista de frases: los 26 avisos de plataforma (anexo A), 22
-// notas de estado (anexo B) y tres detalles con «onboarding» o «ya se leen». Solo cambian
-// esos textos (textos-lector.json). Cifras, fechas, fuentes, colecciones y ofertas, igual
-// que en la 2026-11-03.6. Preparación LOCAL: sin red ni servicios remotos.
+// notas de estado (anexo B) y diez detalles de acceso o licencia con jerga («onboarding»,
+// «ya se leen», «B2B», «marketplace», «en este corte»…): tres de la lista, tres de la
+// revisión independiente y cuatro del corrector. Solo cambian esos textos
+// (textos-lector.json). Cifras, fechas, fuentes, colecciones y ofertas, igual que en la
+// 2026-11-03.6. Preparación LOCAL: sin red ni servicios remotos.
 //
 // La etiqueta es 2026-11-03.7 y no 2026-11-04 porque los datos siguen siendo del 03/11: el
 // cargador exige que la carpeta coincida con esa fecha, y fechar el lote el 04/11 alargaría
@@ -89,7 +91,7 @@ const cuenta = prefijo => cambios.filter(c => c.campo.startsWith(prefijo)).lengt
 assert.equal(cuenta('alerta:'), 26, 'los 26 avisos de plataforma');
 assert.equal(radar.plataformas.flatMap(p => p.alertasCriticas).length, 26, 'el lote tiene 26 avisos');
 assert.equal(cuenta('estadoOperativo'), 22, 'las 22 notas de estado del anexo B');
-assert.equal(cuenta('acceso') + cuenta('licenciaRegistro'), 3, 'los tres detalles con «onboarding» o «ya se leen»');
+assert.equal(cuenta('acceso') + cuenta('licenciaRegistro'), 10, 'los diez detalles de acceso o licencia');
 for (const p of radar.plataformas) for (const a of p.alertasCriticas) comprobarTexto(a.detalle, `${p.slug}/${a.codigo}`);
 
 // Nada más cambia: devolviendo los textos anteriores, radar y plataformas son la base exacta.
@@ -112,7 +114,7 @@ const revertir = (r, e) => {
   assert.deepEqual(e.ofertas, escaparateBase.ofertas, 'las 24 ofertas, idénticas');
 }
 
-escaparate.fuente.notaOrigen += ` Textos para el lector (${FES}, entrega ${REVISION}): los 26 avisos y 22 notas de estado de plataforma, y tres detalles de acceso o licencia, reescritos sin cambiar hechos, cifras, fechas ni fuentes.`;
+escaparate.fuente.notaOrigen += ` Textos para el lector (${FES}, entrega ${REVISION}): los 26 avisos y 22 notas de estado de plataforma, y diez detalles de acceso o licencia, reescritos sin cambiar hechos, cifras, fechas ni fuentes.`;
 escaparate.fuente.actualizacionLocal = { ...escaparate.fuente.actualizacionLocal,
   archivo: `rwadar-app/data/verificaciones/${REVISION}-v2/contraste-${REVISION}.json`,
   nota: `Lote del 03/11/2026 (entrega ${REVISION}, textos para el lector del ${FES}): 24 fichas (8 principales, 13 de reventa y 3 en camino).` };
@@ -215,7 +217,7 @@ begin
     raise exception 'Catálogo incompleto: se conserva el lote anterior';
   end if;
   update rwadar_catalogo.revisiones set estado = 'aprobada', aprobada_el = now(),
-    aprobada_referencia = 'Entrega ${REVISION}: textos para el lector (26 avisos y 22 notas de estado de plataforma, y tres detalles de acceso o licencia) pedidos por Víctor el ${FES}, sin cambiar hechos, cifras, fechas ni fuentes; resto igual a la entrega ${DESDE}.'
+    aprobada_referencia = 'Entrega ${REVISION}: textos para el lector (26 avisos y 22 notas de estado de plataforma, y diez detalles de acceso o licencia) pedidos por Víctor el ${FES}, sin cambiar hechos, cifras, fechas ni fuentes; resto igual a la entrega ${DESDE}.'
     where id = v and estado = 'borrador';
   if not exists (select 1 from rwadar_catalogo.revision_publicable_v2 where id = v) then
     raise exception 'Entrega no publicable: se deshace la transacción completa';

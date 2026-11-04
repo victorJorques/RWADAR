@@ -12,7 +12,7 @@
     "addx": {
       "estadoOperativo": {
         "antes": "La web mantiene alta y catálogo de oportunidades.",
-        "despues": "La web sigue aceptando altas y muestra su catálogo de oportunidades."
+        "despues": "La web sigue ofreciendo el alta y muestra su catálogo de oportunidades."
       },
       "alertas": {
         "no_minorista": {
@@ -24,7 +24,7 @@
     "archax": {
       "estadoOperativo": {
         "antes": "Las webs del grupo y de Europa ya se leen (requieren JavaScript). El grupo dice operar mediante entidades en Reino Unido y España; la web europea marca el MTF, la intermediación, la custodia y la tokenización como 'pre-launch'. No se confirma actividad comercial en la UE.",
-        "despues": "El grupo dice operar con empresas en Reino Unido y España. Su web europea marca como «pre-launch» (aún sin lanzar) el sistema multilateral de negociación (MTF), la intermediación, la custodia y la tokenización. No hemos podido confirmar actividad comercial en la UE.",
+        "despues": "El grupo dice que opera a través de sociedades en Reino Unido y España. Su web europea marca como «pre-launch» (aún sin lanzar) el sistema multilateral de negociación (MTF), la intermediación, la custodia y la tokenización. No hemos podido confirmar actividad comercial en la UE.",
         "nota": "Se quita «ya se leen (requieren JavaScript)», que es un apunte de cómo se leyó la web."
       },
       "alertas": {
@@ -42,8 +42,8 @@
       "alertas": {
         "registro_no_equivale_operacion": {
           "antes": "Mantener la fila como no verificable hasta confirmar web, instrumento vivo y proceso de alta.",
-          "despues": "Hasta que podamos confirmar su web, un instrumento que se negocie de verdad y cómo darse de alta, la tratamos como no verificable.",
-          "nota": "La lista proponía «No hemos podido confirmar que su web funcione…», pero su portada sí se lee (ver el estado). Se conserva lo que dice el texto: las tres cosas que faltan por confirmar."
+          "despues": "No hemos podido confirmar que haya un instrumento que se negocie de verdad; hasta que lo confirmemos, su actividad figura como no verificable.",
+          "nota": "La lista proponía «No hemos podido confirmar que su web funcione…», pero su portada sí se lee (ver el estado), y el acceso de este lote ya explica cómo se opera (a través de los miembros y brokers que publica ARTEX; confirmado con condiciones). Lo que sigue sin confirmar es un instrumento que se negocie de verdad. Solo la actividad figura como no verificable: la licencia está confirmada por el regulador."
         }
       }
     },
@@ -72,7 +72,7 @@
       "alertas": {
         "operador_y_activo": {
           "antes": "No atribuir a cada portal una licencia o vínculo registral por utilizar tecnología de tokenización. Revisar emisor, contrato y jurisdicción del activo.",
-          "despues": "Que un portal use su tecnología de tokenización no significa que tenga licencia ni que esté inscrito en un registro. Revisa quién lo emite, el contrato y la jurisdicción del activo."
+          "despues": "Que un portal use su tecnología de tokenización no significa que tenga licencia ni que esté inscrito en un registro. Revisa quién emite el activo, el contrato y su jurisdicción."
         }
       }
     },
@@ -84,11 +84,16 @@
       "alertas": {
         "protocolo_no_emisor": {
           "antes": "Verificar cada fondo, emisor, jurisdicción y documento de oferta; no atribuir al protocolo la licencia del vehículo.",
-          "despues": "Centrifuge es el protocolo, no el emisor: la licencia del vehículo de un fondo no es de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta."
+          "despues": "Centrifuge es el protocolo, no el emisor: la licencia, si la hay, es del vehículo de cada fondo, no de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta."
         }
       }
     },
     "courtyard": {
+      "licenciaRegistro": {
+        "antes": "La documentación revisada describe un marketplace de NFT/coleccionables, no una licencia de mercado de valores.",
+        "despues": "La documentación revisada describe un mercado de NFT y coleccionables, no una licencia de mercado de valores.",
+        "nota": "Corrector: «marketplace» es el anglicismo de la fila 19; como en Lofty, «mercado»."
+      },
       "alertas": {
         "coleccionable_no_valor": {
           "antes": "No presentar coleccionables, recompra o mercado secundario como inversión regulada ni como liquidez garantizada.",
@@ -109,6 +114,11 @@
       }
     },
     "fireblocks": {
+      "acceso": {
+        "antes": "La oferta principal es B2B/institucional, no un marketplace minorista directo.",
+        "despues": "Su oferta principal se dirige a empresas e instituciones; no es un mercado en el que los minoristas inviertan directamente.",
+        "nota": "Revisión independiente: «B2B» y «marketplace» son lo que la lista quita en las filas 84 y 19. Se conserva «principal» y «directo»."
+      },
       "alertas": {
         "licencia_entidad_especifica": {
           "antes": "No describir todos los servicios Fireblocks como custodia regulada; separar Trust Company, software y terceros custodios.",
@@ -155,6 +165,11 @@
         "antes": "La web mantiene productos de crédito institucional y syrup.",
         "despues": "La web sigue ofreciendo productos de crédito para instituciones y syrup."
       },
+      "acceso": {
+        "antes": "La interfaz syrup excluye varias jurisdicciones, entre ellas EE. UU. La página institucional no permite confirmar en este corte todos los requisitos de alta; comprobar el producto concreto.",
+        "despues": "La interfaz syrup excluye varias jurisdicciones, entre ellas EE. UU. Con la página institucional no hemos podido confirmar, en esta revisión, todos los requisitos de alta; comprueba los del producto concreto.",
+        "nota": "Revisión independiente: «en este corte» es jerga interna. Solo cambia la segunda frase."
+      },
       "alertas": {
         "producto_a_producto": {
           "antes": "No atribuir licencia o elegibilidad de un pool a todo Maple; protocolo, interfaz, emisor y vehículo son capas distintas.",
@@ -165,7 +180,7 @@
     "midas": {
       "estadoOperativo": {
         "antes": "El índice oficial de productos de midas.app (llms.txt) mantiene su catálogo, con mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base de 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto bloquean las consultas automáticas, así que no se comprobó cada emisión.",
-        "despues": "La lista oficial de productos de midas.app sigue incluyendo mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base del 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto no dejan leerse con herramientas automáticas, así que no hemos comprobado cada emisión."
+        "despues": "La lista oficial de productos de midas.app sigue incluyendo mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base del 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto no se dejan leer con herramientas automáticas, así que no hemos comprobado cada emisión."
       },
       "alertas": {
         "terminos_finales_no_confirmados": {
@@ -196,6 +211,11 @@
         "antes": "La portada muestra TBILL, USDO y HYBOND con sus volúmenes, y la documentación oficial de TBILL y su proceso de onboarding es legible.",
         "despues": "La portada muestra TBILL, USDO y HYBOND con sus volúmenes, y se puede leer la documentación oficial de TBILL y de su proceso de alta."
       },
+      "acceso": {
+        "antes": "TBILL es permissioned y se limita a inversores profesionales BVI o acreditados de EE. UU. tras KYC/KYT.",
+        "despues": "TBILL es de acceso restringido y se limita a inversores profesionales BVI o acreditados de EE. UU., tras pasar los controles KYC/KYT.",
+        "nota": "Corrector: «permissioned» en castellano. Su fuente: «The TBILL Vault is a permissioned protocol, meaning an Investor must meet specific criteria to be eligible» (docs.openeden.com/tbill/investor-onboarding, leído el 04/11/2026)."
+      },
       "alertas": {
         "solo_profesional": {
           "antes": "No presentar TBILL como acceso minorista ni confundir rating del fondo con garantía de capital.",
@@ -218,7 +238,12 @@
     "reental": {
       "estadoOperativo": {
         "antes": "La FAQ oficial describe registro, KYC/AML y firma del acuerdo; no se comprobó la apertura actual de una emisión concreta.",
-        "despues": "Sus preguntas frecuentes oficiales explican el registro, la verificación de identidad y de prevención del blanqueo (KYC/AML) y la firma del contrato. No hemos comprobado si ahora hay una emisión concreta abierta."
+        "despues": "Sus preguntas frecuentes oficiales explican el registro, la verificación de identidad y los controles contra el blanqueo (KYC/AML), y la firma del contrato. No hemos comprobado si ahora hay una emisión concreta abierta."
+      },
+      "acceso": {
+        "antes": "La FAQ declara alta de adultos tras KYC/AML y exige acreditación a residentes fiscales de EE. UU.; cada emisión conserva sus propios términos.",
+        "despues": "Sus preguntas frecuentes dicen que pueden darse de alta los adultos, tras la verificación de identidad y los controles contra el blanqueo (KYC/AML), y que a los residentes fiscales en EE. UU. se les exige ser inversores acreditados. Cada emisión tiene sus propios términos.",
+        "nota": "Corrector: «La FAQ declara alta de adultos…», junto a la nota de estado ya reescrita («Sus preguntas frecuentes oficiales…»)."
       },
       "alertas": {
         "emision_no_licencia_plataforma": {
@@ -242,7 +267,7 @@
     "securitize": {
       "estadoOperativo": {
         "antes": "La portada ya se lee: presenta inversiones tokenizadas (acciones de EE. UU. en cadena y fondos como ARK Venture Fund) con alta y acceso. No se comprobó una oferta concreta abierta; el registro de Securitize Markets se comprueba por separado.",
-        "despues": "La portada presenta inversiones tokenizadas (acciones de EE. UU. en blockchain y fondos como ARK Venture Fund) con alta y acceso. No hemos comprobado una oferta concreta abierta; el registro de Securitize Markets se revisa aparte."
+        "despues": "La portada presenta inversiones tokenizadas (acciones de EE. UU. en blockchain y fondos como ARK Venture Fund), con la opción de darse de alta e invertir. No hemos comprobado una oferta concreta abierta; el registro de Securitize Markets se revisa aparte."
       },
       "alertas": {
         "entidades_separadas": {
@@ -256,6 +281,11 @@
       "estadoOperativo": {
         "antes": "La página oficial Web3 mantiene productos de tesorería, suscripción y reembolso; no se realizó onboarding.",
         "despues": "Su página oficial Web3 sigue mostrando productos de tesorería, con suscripción y reembolso. No llegamos a darnos de alta."
+      },
+      "acceso": {
+        "antes": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No se comprobó en la CNMV la comercialización del fondo en España ni se hizo el onboarding.",
+        "despues": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No hemos comprobado en la CNMV que el fondo se comercialice en España, ni llegamos a darnos de alta.",
+        "nota": "Revisión independiente: quedaba «onboarding» junto a la nota de estado ya reescrita. Solo cambia la última frase."
       },
       "alertas": {
         "distribucion_espana": {
@@ -281,6 +311,11 @@
       "estadoOperativo": {
         "antes": "La web redirige a una aplicación sin contenido extraíble; no se confirmó actividad transaccional ni una oferta abierta.",
         "despues": "La web lleva a una aplicación de la que no se puede leer el contenido; no hemos confirmado que haya operaciones ni una oferta abierta."
+      },
+      "acceso": {
+        "antes": "Los términos legibles en docs.swarm.com (Swarm Capital GmbH, versión del 22/04/2024) y la FAQ (03/07/2024) exigen KYC/AML y excluyen a las personas estadounidenses, pero no hay condiciones de alta de 2026 por jurisdicción y la aplicación no muestra contenido extraíble.",
+        "despues": "Los términos que se pueden leer en docs.swarm.com (Swarm Capital GmbH, versión del 22/04/2024) y sus preguntas frecuentes (03/07/2024) exigen KYC/AML y excluyen a las personas estadounidenses, pero no hay condiciones de alta de 2026 por jurisdicción y no se puede leer el contenido de la aplicación.",
+        "nota": "Corrector: «legibles», «FAQ» y «contenido extraíble», como en la nota de estado de Swarm ya reescrita."
       },
       "alertas": {
         "acceso_no_confirmado": {
@@ -354,8 +389,8 @@
       },
       "motivo_descarte": {
         "antes": "Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones, en la mayor demanda por insalubridad de la historia de la ciudad. Un juez le prohibió cobrar alquileres en las no conformes y le ordenó reparar. En julio de 2026 la propia empresa anunció liquidación voluntaria y la venta de sus más de 700 inmuebles en Detroit.",
-        "despues": "En julio de 2025, Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones. Un juez le prohibió cobrar alquileres hasta que las viviendas cumplieran la normativa y le ordenó repararlas. En julio de 2026 la empresa anunció una liquidación voluntaria y la venta de toda su cartera. Había vendido en tokens participaciones de unos 700 inmuebles de Detroit.",
-        "motivo": "Sin «la mayor demanda…»: no está en BridgeDetroit ni en Michigan Public, y la nota de la ciudad de Detroit devuelve 403 (curl y WebFetch, 04/11/2026). La liquidación, la venta y «unos 700» no tenían fuente en la ficha; ahora la tienen (Outlier Media, 16/07/2026)."
+        "despues": "En julio de 2025, Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones. Un juez le prohibió cobrar alquileres hasta que las viviendas cumplieran la normativa y le ordenó repararlas. En julio de 2026 la empresa anunció una liquidación voluntaria y la venta de toda su cartera. Había vendido, en forma de tokens, participaciones de unos 700 inmuebles de Detroit.",
+        "motivo": "Sin «la mayor demanda…»: Outlier Media (16/07/2026) recoge que la ciudad la llamó «the largest nuisance abatement lawsuit in the city's history» (la mayor demanda por molestias públicas de su historia); es una valoración de la ciudad, no un dato comprobado, y la nota de la ciudad de Detroit devuelve 403 (curl y WebFetch, 04/11/2026). Tampoco «insalubridad», que no traduce «nuisance abatement». La liquidación, la venta y «unos 700» no tenían fuente en la ficha; ahora la tienen (Outlier Media, 16/07/2026)."
       },
       "fuentesNuevas": [
         {
@@ -377,7 +412,7 @@
         },
         {
           "url": "https://detroitmi.gov/news/city-scores-major-win-tenants-living-troubled-real-token-properties-are-subject-sweeping-lawsuit",
-          "literal": "403 con curl y con WebFetch el 04/11/2026. Se conserva, pero ya no respalda ningún superlativo."
+          "literal": "403 con curl y con WebFetch el 04/11/2026. Se conserva para la demanda; el superlativo («la mayor…») era de la ciudad y se quita."
         }
       ],
       "contraste": [
@@ -390,7 +425,7 @@
     {
       "fila": 19,
       "texto": "«Marketplace» → «Mercado de compraventa» (9 plataformas)",
-      "motivo": "No es un texto del catálogo: es el valor del tipo enumerado rwa_actor ('Marketplace', 'Emisor', 'Infraestructura') de public.plataformas.actor. Cambiarlo en la base es cambiar el esquema, que el ciclo de catálogo no permite. Se puede hacer en el código, en lo que se enseña: web (rwadar-20260820.js, que lo pinta en :1439, :1479, :1491, :1564 y :5280), fichas estáticas (rwadar-fichas.js:244) y app, con su entrada en inglés."
+      "motivo": "No es un texto del catálogo: es el valor del tipo enumerado rwa_actor ('Marketplace', 'Emisor', 'Infraestructura') de public.plataformas.actor. Cambiarlo en la base es cambiar el esquema, que el ciclo de catálogo no permite. Se hace en el código, solo en lo que se enseña, en esta misma rama: la web y las fichas fijas leen «Mercado de compraventa» y la app también (con «Marketplace» en inglés); el valor del catálogo no cambia."
     }
   ]
 }

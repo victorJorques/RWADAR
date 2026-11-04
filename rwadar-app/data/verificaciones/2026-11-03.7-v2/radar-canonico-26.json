@@ -566,7 +566,7 @@
       "fechaCanonicaConservada": "2026-07-26",
       "estadoOperativo": {
         "estado": "observada",
-        "detalle": "La web sigue aceptando altas y muestra su catálogo de oportunidades.",
+        "detalle": "La web sigue ofreciendo el alta y muestra su catálogo de oportunidades.",
         "fuentes": [
           "addx-web"
         ]
@@ -601,7 +601,7 @@
       "fechaCanonicaConservada": "2026-08-08",
       "estadoOperativo": {
         "estado": "no_verificable",
-        "detalle": "El grupo dice operar con empresas en Reino Unido y España. Su web europea marca como «pre-launch» (aún sin lanzar) el sistema multilateral de negociación (MTF), la intermediación, la custodia y la tokenización. No hemos podido confirmar actividad comercial en la UE.",
+        "detalle": "El grupo dice que opera a través de sociedades en Reino Unido y España. Su web europea marca como «pre-launch» (aún sin lanzar) el sistema multilateral de negociación (MTF), la intermediación, la custodia y la tokenización. No hemos podido confirmar actividad comercial en la UE.",
         "fuentes": [
           "archax-web",
           "archax-eu"
@@ -661,7 +661,7 @@
       "alertasCriticas": [
         {
           "codigo": "registro_no_equivale_operacion",
-          "detalle": "Hasta que podamos confirmar su web, un instrumento que se negocie de verdad y cómo darse de alta, la tratamos como no verificable.",
+          "detalle": "No hemos podido confirmar que haya un instrumento que se negocie de verdad; hasta que lo confirmemos, su actividad figura como no verificable.",
           "fuentes": [
             "artex-lb"
           ]
@@ -732,7 +732,7 @@
       "alertasCriticas": [
         {
           "codigo": "operador_y_activo",
-          "detalle": "Que un portal use su tecnología de tokenización no significa que tenga licencia ni que esté inscrito en un registro. Revisa quién lo emite, el contrato y la jurisdicción del activo.",
+          "detalle": "Que un portal use su tecnología de tokenización no significa que tenga licencia ni que esté inscrito en un registro. Revisa quién emite el activo, el contrato y su jurisdicción.",
           "fuentes": [
             "blocksquare-web",
             "blocksquare-terms"
@@ -768,7 +768,7 @@
       "alertasCriticas": [
         {
           "codigo": "protocolo_no_emisor",
-          "detalle": "Centrifuge es el protocolo, no el emisor: la licencia del vehículo de un fondo no es de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta.",
+          "detalle": "Centrifuge es el protocolo, no el emisor: la licencia, si la hay, es del vehículo de cada fondo, no de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta.",
           "fuentes": [
             "centrifuge-terms"
           ]
@@ -788,7 +788,7 @@
       },
       "licenciaRegistro": {
         "estado": "no_aplica_plataforma",
-        "detalle": "La documentación revisada describe un marketplace de NFT/coleccionables, no una licencia de mercado de valores.",
+        "detalle": "La documentación revisada describe un mercado de NFT y coleccionables, no una licencia de mercado de valores.",
         "fuentes": [
           "courtyard-terms"
         ]
@@ -868,7 +868,7 @@
       },
       "acceso": {
         "estado": "no_aplica_plataforma",
-        "detalle": "La oferta principal es B2B/institucional, no un marketplace minorista directo.",
+        "detalle": "Su oferta principal se dirige a empresas e instituciones; no es un mercado en el que los minoristas inviertan directamente.",
         "fuentes": [
           "fireblocks-web",
           "fireblocks-trust"
@@ -1014,7 +1014,7 @@
       },
       "acceso": {
         "estado": "confirmado_condicionado",
-        "detalle": "La interfaz syrup excluye varias jurisdicciones, entre ellas EE. UU. La página institucional no permite confirmar en este corte todos los requisitos de alta; comprobar el producto concreto.",
+        "detalle": "La interfaz syrup excluye varias jurisdicciones, entre ellas EE. UU. Con la página institucional no hemos podido confirmar, en esta revisión, todos los requisitos de alta; comprueba los del producto concreto.",
         "fuentes": [
           "maple-terms",
           "maple-institutional"
@@ -1036,7 +1036,7 @@
       "fechaCanonicaConservada": "2026-07-26",
       "estadoOperativo": {
         "estado": "observada",
-        "detalle": "La lista oficial de productos de midas.app sigue incluyendo mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base del 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto no dejan leerse con herramientas automáticas, así que no hemos comprobado cada emisión.",
+        "detalle": "La lista oficial de productos de midas.app sigue incluyendo mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base del 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto no se dejan leer con herramientas automáticas, así que no hemos comprobado cada emisión.",
         "fuentes": [
           "midas-mtbill",
           "midas-web"
@@ -1126,7 +1126,7 @@
       },
       "acceso": {
         "estado": "confirmado_condicionado",
-        "detalle": "TBILL es permissioned y se limita a inversores profesionales BVI o acreditados de EE. UU. tras KYC/KYT.",
+        "detalle": "TBILL es de acceso restringido y se limita a inversores profesionales BVI o acreditados de EE. UU., tras pasar los controles KYC/KYT.",
         "fuentes": [
           "openeden-onboarding"
         ]
@@ -1186,7 +1186,7 @@
       "fechaCanonicaConservada": "2026-07-26",
       "estadoOperativo": {
         "estado": "observada",
-        "detalle": "Sus preguntas frecuentes oficiales explican el registro, la verificación de identidad y de prevención del blanqueo (KYC/AML) y la firma del contrato. No hemos comprobado si ahora hay una emisión concreta abierta.",
+        "detalle": "Sus preguntas frecuentes oficiales explican el registro, la verificación de identidad y los controles contra el blanqueo (KYC/AML), y la firma del contrato. No hemos comprobado si ahora hay una emisión concreta abierta.",
         "fuentes": [
           "reental-faq"
         ]
@@ -1200,7 +1200,7 @@
       },
       "acceso": {
         "estado": "confirmado_condicionado",
-        "detalle": "La FAQ declara alta de adultos tras KYC/AML y exige acreditación a residentes fiscales de EE. UU.; cada emisión conserva sus propios términos.",
+        "detalle": "Sus preguntas frecuentes dicen que pueden darse de alta los adultos, tras la verificación de identidad y los controles contra el blanqueo (KYC/AML), y que a los residentes fiscales en EE. UU. se les exige ser inversores acreditados. Cada emisión tiene sus propios términos.",
         "fuentes": [
           "reental-faq"
         ]
@@ -1259,7 +1259,7 @@
       "fechaCanonicaConservada": "2026-07-26",
       "estadoOperativo": {
         "estado": "observada",
-        "detalle": "La portada presenta inversiones tokenizadas (acciones de EE. UU. en blockchain y fondos como ARK Venture Fund) con alta y acceso. No hemos comprobado una oferta concreta abierta; el registro de Securitize Markets se revisa aparte.",
+        "detalle": "La portada presenta inversiones tokenizadas (acciones de EE. UU. en blockchain y fondos como ARK Venture Fund), con la opción de darse de alta e invertir. No hemos comprobado una oferta concreta abierta; el registro de Securitize Markets se revisa aparte.",
         "fuentes": [
           "securitize-web",
           "securitize-finra"
@@ -1311,7 +1311,7 @@
       },
       "acceso": {
         "estado": "confirmado_condicionado",
-        "detalle": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No se comprobó en la CNMV la comercialización del fondo en España ni se hizo el onboarding.",
+        "detalle": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No hemos comprobado en la CNMV que el fondo se comercialice en España, ni llegamos a darnos de alta.",
         "fuentes": [
           "spiko-web",
           "spiko-amf",
@@ -1385,7 +1385,7 @@
       },
       "acceso": {
         "estado": "no_verificable",
-        "detalle": "Los términos legibles en docs.swarm.com (Swarm Capital GmbH, versión del 22/04/2024) y la FAQ (03/07/2024) exigen KYC/AML y excluyen a las personas estadounidenses, pero no hay condiciones de alta de 2026 por jurisdicción y la aplicación no muestra contenido extraíble.",
+        "detalle": "Los términos que se pueden leer en docs.swarm.com (Swarm Capital GmbH, versión del 22/04/2024) y sus preguntas frecuentes (03/07/2024) exigen KYC/AML y excluyen a las personas estadounidenses, pero no hay condiciones de alta de 2026 por jurisdicción y no se puede leer el contenido de la aplicación.",
         "fuentes": [
           "swarm-terms"
         ]

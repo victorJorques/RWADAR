@@ -144,8 +144,8 @@ try {
     }
     assert.deepEqual(vd, va, `${a.slug}: estados, fuentes y fechas sin cambios`);
   }
-  assert.equal(vistos, 51);
-  ok('las 26 plataformas: solo cambian los 51 textos previstos (26 avisos, 22 notas de estado, 3 detalles); estados, fuentes y fechas iguales');
+  assert.equal(vistos, 58);
+  ok('las 26 plataformas: solo cambian los 58 textos previstos (26 avisos, 22 notas de estado, 10 detalles de acceso o licencia); estados, fuentes y fechas iguales');
   const r = validarLotePublicoV2(despues.p, despues.o, { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: '2026-11-04', permitirAmpliacion: true });
   assert.equal(r.fecha, '2026-11-03');
   validarLotePublicoV2(despues.p, despues.o, { manifiesto: MANIFIESTO_CATALOGO_V2, hoy: '2026-11-10', permitirAmpliacion: true });

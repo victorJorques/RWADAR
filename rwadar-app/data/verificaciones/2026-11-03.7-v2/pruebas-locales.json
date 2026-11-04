@@ -1,17 +1,17 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-04T15:10:55.808Z",
-  "revisionId": "89e88b04-8b8a-2eef-4473-9fe0cf9ebe4c",
+  "ejecutadoEl": "2026-11-04T15:39:31.848Z",
+  "revisionId": "bd1f873b-95ec-2d2e-1fb5-17ccb505e283",
   "revisionAnterior": "344a86aa-2c53-d2f0-fed4-5fdaadda33ad",
-  "sha256AplicarYAprobar": "168a5b0eca59fafc3fe4eb002aeb4ce8234f45136d911d9262aa79721b5dc463",
-  "sha256TextosPlataformas": "d129112981604fdf6c4759f7c8138510e3a7505dbefb7aa97c1f3ac9fe639007",
+  "sha256AplicarYAprobar": "d57b5dbce55abfb80f227ef8e467b4e01c8679aa5c9fb9d507fa5f85391a2e2c",
+  "sha256TextosPlataformas": "3c762ccd348edeb57fa674562a6a1a7c65a5752fe336cd203f8c10f1b4911acc",
   "textosPlataformasEnAplicador": false,
   "pruebas": [
     "cadena de producción 22/10 → 03/11.6: la publicada es la 344a86aa",
     "rechaza una revisión anterior distinta y lo deshace todo",
     "idempotente: aplicarlo dos veces da lo mismo",
     "26 plataformas y 24 ofertas; las 24 ofertas, idénticas; fechas del 03/11 y 7 días",
-    "las 26 plataformas: solo cambian los 51 textos previstos (26 avisos, 22 notas de estado, 3 detalles); estados, fuentes y fechas iguales",
+    "las 26 plataformas: solo cambian los 58 textos previstos (26 avisos, 22 notas de estado, 10 detalles de acceso o licencia); estados, fuentes y fechas iguales",
     "el lector de la web lo acepta; vence el 11/11, como la 03/11.6",
     "las 24 tarjetas se ven igual que antes",
     "el lote solo lee public.plataformas: notas, descartes, cambios de estado y avisos, igual",
@@ -178,7 +178,7 @@
     {
       "nombre": "RealT",
       "etiqueta_descarte": "Liquidación anunciada",
-      "motivo_descarte": "En julio de 2025, Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones. Un juez le prohibió cobrar alquileres hasta que las viviendas cumplieran la normativa y le ordenó repararlas. En julio de 2026 la empresa anunció una liquidación voluntaria y la venta de toda su cartera. Había vendido en tokens participaciones de unos 700 inmuebles de Detroit.",
+      "motivo_descarte": "En julio de 2025, Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones. Un juez le prohibió cobrar alquileres hasta que las viviendas cumplieran la normativa y le ordenó repararlas. En julio de 2026 la empresa anunció una liquidación voluntaria y la venta de toda su cartera. Había vendido, en forma de tokens, participaciones de unos 700 inmuebles de Detroit.",
       "fuentes": [
         {
           "url": "https://detroitmi.gov/news/city-scores-major-win-tenants-living-troubled-real-token-properties-are-subject-sweeping-lawsuit",
