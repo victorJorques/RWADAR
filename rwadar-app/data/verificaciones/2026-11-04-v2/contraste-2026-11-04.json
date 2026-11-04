@@ -1,0 +1,2381 @@
+{
+  "tipo": "arreglos_datos",
+  "fecha": "2026-11-03",
+  "preparadaEl": "2026-11-04",
+  "etiqueta": "2026-11-04",
+  "revisionAnterior": "f2732257-206d-48ce-2067-c7e19fa33002",
+  "revisionNueva": "cf79e4a4-f828-96ce-681b-ae69c3d1b81b",
+  "archivos": {
+    "cambios-plataformas.json": "a01d2bd4e379dc5fd543b52b2130e3eb61c682fdc9b17a4ad9f5d2f7fbe3fdca",
+    "fuentes-para-personas.json": "43c8fac3f412a6d5510a5adbaaf0c58485c760096ab4f49fda797f589ea2bcc9"
+  },
+  "cuentas": {
+    "rotulos": 228,
+    "ofertasConRotulos": 21,
+    "referenciasConFuenteNueva": 39,
+    "ofertasConFuenteNueva": 18,
+    "fuentesRadar": 2
+  },
+  "sinCambios": [
+    "valores, fechas del dato y de consulta de cada referencia",
+    "cifras, avisos, colecciones 8/13/3 y vigencia (7 días desde el 03/11)",
+    "estados, detalles y avisos de las 26 plataformas",
+    "manifiesto"
+  ],
+  "rotulos": [
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "salida_instantanea · consulta 01/11/2026",
+      "despues": "Reembolso inmediato · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "accesoEspana_particulares · consulta 01/11/2026",
+      "despues": "Acceso desde España (particulares) · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "antes": "patrimonio · consulta 01/11/2026",
+      "despues": "Patrimonio y partícipes · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "antes": "divisa · consulta 01/11/2026",
+      "despues": "Moneda y tipo de cambio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "antes": "patrimonio · consulta 01/11/2026",
+      "despues": "Patrimonio y partícipes · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "robinhood-classic-stock-tokens",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "mtbill",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "mtbill",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "prosegur-digital-gold",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "prosegur-digital-gold",
+      "antes": "derecho · consulta 02/11/2026",
+      "despues": "Qué se adquiere · consulta 02/11/2026"
+    },
+    {
+      "oferta": "prosegur-digital-gold",
+      "antes": "supervision · consulta 02/11/2026",
+      "despues": "Supervisión · consulta 02/11/2026"
+    },
+    {
+      "oferta": "prosegur-digital-gold",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "prosegur-digital-gold",
+      "antes": "comisiones · consulta 02/11/2026",
+      "despues": "Comisiones · consulta 02/11/2026"
+    },
+    {
+      "oferta": "prosegur-digital-gold",
+      "antes": "custodia · consulta 02/11/2026",
+      "despues": "Custodia · consulta 02/11/2026"
+    },
+    {
+      "oferta": "prosegur-digital-gold",
+      "antes": "accesoEspana · consulta 02/11/2026",
+      "despues": "Acceso desde España · consulta 02/11/2026"
+    },
+    {
+      "oferta": "prosegur-digital-gold",
+      "antes": "rentabilidad · consulta 02/11/2026",
+      "despues": "Rentabilidad · consulta 02/11/2026"
+    },
+    {
+      "oferta": "prosegur-digital-gold",
+      "antes": "fiscalidad · consulta 02/11/2026",
+      "despues": "Fiscalidad · consulta 02/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "actividad · consulta 01/11/2026",
+      "despues": "Operaciones recientes · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "kyc · consulta 01/11/2026",
+      "despues": "Verificación de identidad · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "supervision · consulta 01/11/2026",
+      "despues": "Supervisión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "folleto · consulta 01/11/2026",
+      "despues": "Folleto · consulta 01/11/2026"
+    },
+    {
+      "oferta": "aktionariat",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "boss-info",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "boss-info",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "boss-info",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "boss-info",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "boss-info",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "boss-info",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "boss-info",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "boss-info",
+      "antes": "supervision · consulta 01/11/2026",
+      "despues": "Supervisión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "switzerlend",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "switzerlend",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "switzerlend",
+      "antes": "actividad · consulta 01/11/2026",
+      "despues": "Operaciones recientes · consulta 01/11/2026"
+    },
+    {
+      "oferta": "switzerlend",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "switzerlend",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "switzerlend",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "antes": "recaudado · consulta 01/11/2026",
+      "despues": "Recaudado · consulta 01/11/2026"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "antes": "umbral · consulta 01/11/2026",
+      "despues": "Umbral mínimo de financiación · consulta 01/11/2026"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "rentabilidad · consulta 01/11/2026",
+      "despues": "Rentabilidad · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "regimen · consulta 01/11/2026",
+      "despues": "Régimen legal · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "rentabilidad · consulta 01/11/2026",
+      "despues": "Rentabilidad · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "rentabilidad · consulta 01/11/2026",
+      "despues": "Rentabilidad · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "rentabilidad · consulta 01/11/2026",
+      "despues": "Rentabilidad · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "rentabilidad · consulta 01/11/2026",
+      "despues": "Rentabilidad · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-greenpoint",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "estado · consulta 01/11/2026",
+      "despues": "Estado de la oferta · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "precio · consulta 01/11/2026",
+      "despues": "Precio · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "minimo · consulta 01/11/2026",
+      "despues": "Mínimo de inversión · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "rentabilidad · consulta 01/11/2026",
+      "despues": "Rentabilidad · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "derecho · consulta 01/11/2026",
+      "despues": "Qué se adquiere · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "salida · consulta 01/11/2026",
+      "despues": "Salida · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "riesgos · consulta 01/11/2026",
+      "despues": "Riesgos · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "comisiones · consulta 01/11/2026",
+      "despues": "Comisiones · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "accesoEspana · consulta 01/11/2026",
+      "despues": "Acceso desde España · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "entidad · consulta 01/11/2026",
+      "despues": "Entidad que comercializa · consulta 01/11/2026"
+    },
+    {
+      "oferta": "fotovoltaica-cohotel",
+      "antes": "custodia · consulta 01/11/2026",
+      "despues": "Custodia · consulta 01/11/2026"
+    }
+  ],
+  "fuentes": [
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+      "despues": "https://data.spiko.io/eutbl/"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "etiqueta": "Patrimonio y partícipes · consulta 01/11/2026",
+      "antes": "https://public-api.spiko.io/v0/share-classes/EUTBL/totals",
+      "despues": "https://data.spiko.io/eutbl/"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "etiqueta": "Rentabilidad publicada · 31 días",
+      "antes": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+      "despues": "https://data.spiko.io/eutbl/"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-euro",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+          "https://data.spiko.io/eutbl/",
+          "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+          "https://geco.amf-france.org/produit-d-epargne/c79399",
+          "https://public-api.spiko.io/v0/net-asset-values/EUTBL/latest",
+          "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+          "https://docs.spiko.io/documentation/account_management/deposits_withdrawals",
+          "https://cdn.spiko.finance/legal_docs/EN/Terms_of_Use_EN.pdf",
+          "https://public-api.spiko.io/v0/share-classes/EUTBL/totals"
+        ],
+        "despues": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+          "https://data.spiko.io/eutbl/",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+          "https://geco.amf-france.org/produit-d-epargne/c79399",
+          "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+          "https://docs.spiko.io/documentation/account_management/deposits_withdrawals",
+          "https://cdn.spiko.finance/legal_docs/EN/Terms_of_Use_EN.pdf"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+          "https://data.spiko.io/eutbl/",
+          "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+        ],
+        "despues": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+          "https://data.spiko.io/eutbl/",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+        ]
+      }
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+      "despues": "https://data.spiko.io/ustbl/"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "etiqueta": "Patrimonio y partícipes · consulta 01/11/2026",
+      "antes": "https://public-api.spiko.io/v0/share-classes/USTBL/totals",
+      "despues": "https://data.spiko.io/ustbl/"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "etiqueta": "Rentabilidad publicada · 31 días",
+      "antes": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+      "despues": "https://data.spiko.io/ustbl/"
+    },
+    {
+      "oferta": "spiko-letras-del-tesoro-dolar",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+          "https://data.spiko.io/ustbl/",
+          "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://geco.amf-france.org/produit-d-epargne/c79398",
+          "https://public-api.spiko.io/v0/net-asset-values/USTBL/latest",
+          "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+          "https://public-api.spiko.io/v0/share-classes/USTBL/totals"
+        ],
+        "despues": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+          "https://data.spiko.io/ustbl/",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://geco.amf-france.org/produit-d-epargne/c79398",
+          "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+          "https://data.spiko.io/ustbl/",
+          "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://geco.amf-france.org/produit-d-epargne/c79398"
+        ],
+        "despues": [
+          "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+          "https://data.spiko.io/ustbl/",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://geco.amf-france.org/produit-d-epargne/c79398"
+        ]
+      }
+    },
+    {
+      "oferta": "spiko-smart-cash-euro",
+      "etiqueta": "Rendimiento neto publicado",
+      "antes": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+      "despues": "https://data.spiko.io/safo-eur"
+    },
+    {
+      "oferta": "spiko-smart-cash-euro",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://www.spiko.io/es/spiko-euro",
+          "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+          "https://geco.amf-france.org/back-office/document/download/438274",
+          "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://www.spiko.io/es/usos-principales/particulares",
+          "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+          "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&vista=17&lang=es"
+        ],
+        "despues": [
+          "https://www.spiko.io/es/spiko-euro",
+          "https://data.spiko.io/safo-eur",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+          "https://geco.amf-france.org/back-office/document/download/438274",
+          "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://www.spiko.io/es/usos-principales/particulares",
+          "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+          "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&vista=17&lang=es"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://www.spiko.io/es/spiko-euro",
+          "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+          "https://geco.amf-france.org/back-office/document/download/438274",
+          "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://www.spiko.io/es/usos-principales/particulares",
+          "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+        ],
+        "despues": [
+          "https://www.spiko.io/es/spiko-euro",
+          "https://data.spiko.io/safo-eur",
+          "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+          "https://geco.amf-france.org/back-office/document/download/438274",
+          "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+          "https://docs.spiko.io/documentation/product_overview/fund_availability",
+          "https://www.spiko.io/es/usos-principales/particulares",
+          "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+        ]
+      }
+    },
+    {
+      "oferta": "aktionariat",
+      "etiqueta": "Operaciones recientes · consulta 01/11/2026",
+      "antes": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+      "despues": "https://shares.aktionariat.com/trade"
+    },
+    {
+      "oferta": "aktionariat",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://shares.aktionariat.com",
+          "https://shares.aktionariat.com/",
+          "https://shares.aktionariat.com/invest",
+          "https://shares.aktionariat.com/trade",
+          "https://www.aktionariat.com/disclaimer",
+          "https://shares.aktionariat.com/investor-page-terms",
+          "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+          "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+          "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+          "https://www.aktionariat.com/terms-of-service"
+        ],
+        "despues": [
+          "https://shares.aktionariat.com",
+          "https://shares.aktionariat.com/",
+          "https://shares.aktionariat.com/invest",
+          "https://shares.aktionariat.com/trade",
+          "https://www.aktionariat.com/disclaimer",
+          "https://shares.aktionariat.com/investor-page-terms",
+          "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+          "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+          "https://www.aktionariat.com/terms-of-service"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://shares.aktionariat.com/invest",
+          "https://shares.aktionariat.com/trade",
+          "https://www.aktionariat.com/disclaimer",
+          "https://shares.aktionariat.com/investor-page-terms"
+        ],
+        "despues": [
+          "https://shares.aktionariat.com/invest",
+          "https://shares.aktionariat.com/trade",
+          "https://www.aktionariat.com/disclaimer",
+          "https://shares.aktionariat.com/investor-page-terms"
+        ]
+      }
+    },
+    {
+      "oferta": "kraken-xstocks",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://eu.kraken.com/xstocks",
+          "https://eu.kraken.com/legal/risk-disclosure",
+          "https://www.kraken.com/features/fee-schedule",
+          "https://support.kraken.com/articles/xstocks-faq",
+          "https://support.kraken.com/articles/xstocks-availability",
+          "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+          "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+          "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+          "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+          "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+          "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+          "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
+        ],
+        "despues": [
+          "https://eu.kraken.com/xstocks",
+          "https://eu.kraken.com/legal/risk-disclosure",
+          "https://www.kraken.com/features/fee-schedule",
+          "https://support.kraken.com/articles/xstocks-faq",
+          "https://support.kraken.com/articles/xstocks-availability",
+          "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+          "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+          "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+          "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+          "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+          "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+          "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://eu.kraken.com/xstocks",
+          "https://eu.kraken.com/legal/risk-disclosure",
+          "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+          "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+          "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+          "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+          "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
+        ],
+        "despues": [
+          "https://eu.kraken.com/xstocks",
+          "https://eu.kraken.com/legal/risk-disclosure",
+          "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+          "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+          "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+          "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+          "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "boss-info",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+      "despues": "https://shares.bossinfo.com/trade"
+    },
+    {
+      "oferta": "boss-info",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://shares.bossinfo.com",
+          "https://shares.bossinfo.com/",
+          "https://shares.bossinfo.com/invest",
+          "https://shares.bossinfo.com/trade",
+          "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+          "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+          "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS"
+        ],
+        "despues": [
+          "https://shares.bossinfo.com",
+          "https://shares.bossinfo.com/",
+          "https://shares.bossinfo.com/invest",
+          "https://shares.bossinfo.com/trade",
+          "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+          "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://shares.bossinfo.com/invest",
+          "https://shares.bossinfo.com/trade",
+          "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+          "https://shares.bossinfo.com/"
+        ],
+        "despues": [
+          "https://shares.bossinfo.com/invest",
+          "https://shares.bossinfo.com/trade",
+          "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+          "https://shares.bossinfo.com/"
+        ]
+      }
+    },
+    {
+      "oferta": "switzerlend",
+      "etiqueta": "Operaciones recientes · consulta 01/11/2026",
+      "antes": "https://shares.lend.ch/api/secondarymarkets/getTrades",
+      "despues": "https://shares.lend.ch/trade"
+    },
+    {
+      "oferta": "switzerlend",
+      "etiqueta": "Mínimo de inversión",
+      "antes": "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS",
+      "despues": "https://shares.lend.ch/invest"
+    },
+    {
+      "oferta": "switzerlend",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://shares.lend.ch",
+          "https://shares.lend.ch/",
+          "https://shares.lend.ch/invest",
+          "https://shares.lend.ch/trade",
+          "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+          "https://shares.lend.ch/api/secondarymarkets/getTrades",
+          "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS"
+        ],
+        "despues": [
+          "https://shares.lend.ch",
+          "https://shares.lend.ch/",
+          "https://shares.lend.ch/invest",
+          "https://shares.lend.ch/trade",
+          "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://shares.lend.ch/invest",
+          "https://shares.lend.ch/trade",
+          "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+          "https://shares.lend.ch/"
+        ],
+        "despues": [
+          "https://shares.lend.ch/invest",
+          "https://shares.lend.ch/trade",
+          "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+          "https://shares.lend.ch/"
+        ]
+      }
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2rah5"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2rah5"
+    },
+    {
+      "oferta": "vivienda-pluddemanngasse-101-graz",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+          "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2rah5",
+          "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+          "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+          "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2rah5",
+          "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+          "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 22/10/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2t4d7"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2t4d7"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2t4d7"
+    },
+    {
+      "oferta": "vivienda-sonnleithnergasse-2-viena",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+          "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://www.brickwise.at/assets/at0000a2t4d7",
+          "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+          "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+          "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://www.brickwise.at/assets/at0000a2t4d7",
+          "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+          "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2u5v3"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2u5v3"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "etiqueta": "Rentabilidad · consulta 01/11/2026",
+      "antes": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2U5V3",
+      "despues": "https://www.brickwise.at/assets/at0000a2u5v3"
+    },
+    {
+      "oferta": "local-de-estanco-klagenfurt",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+          "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2U5V3",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2u5v3",
+          "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+          "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+          "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2u5v3",
+          "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+          "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2wcd0"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2wcd0"
+    },
+    {
+      "oferta": "vivienda-stallhofstra-e-28-gratwein",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+          "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2wcd0",
+          "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+          "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+          "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2wcd0",
+          "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+          "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2wce8"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2wce8"
+    },
+    {
+      "oferta": "vivienda-schwarzer-weg-18-graz",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+          "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2wce8",
+          "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+          "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+          "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2wce8",
+          "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+          "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2ypq0"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2ypq0"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "etiqueta": "Rentabilidad · consulta 01/11/2026",
+      "antes": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2YPQ0",
+      "despues": "https://www.brickwise.at/assets/at0000a2ypq0"
+    },
+    {
+      "oferta": "drautalresidenz-paternion",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+          "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2YPQ0",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2ypq0",
+          "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+          "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+          "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a2ypq0",
+          "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+          "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 22/10/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2zt84"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a2zt84"
+    },
+    {
+      "oferta": "randhartingergasse-9-viena",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+          "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://www.brickwise.at/assets/at0000a2zt84",
+          "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+          "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+          "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://www.brickwise.at/assets/at0000a2zt84",
+          "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+          "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a31kp7"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a31kp7"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "etiqueta": "Rentabilidad · consulta 01/11/2026",
+      "antes": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7",
+      "despues": "https://www.brickwise.at/assets/at0000a31kp7"
+    },
+    {
+      "oferta": "apartamento-vacacional-hinterstoder-50",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+          "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a31kp7",
+          "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+          "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+          "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/assets/at0000a31kp7",
+          "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+          "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "etiqueta": "Rentabilidad por alquiler esperada (API de la app) · 22/10/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a324b4"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a324b4"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "etiqueta": "Precio · consulta 01/11/2026",
+      "antes": "https://api.app.brickwise.at/api/v2/assets",
+      "despues": "https://www.brickwise.at/assets/at0000a324b4"
+    },
+    {
+      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+          "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://www.brickwise.at/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://www.brickwise.at/assets/at0000a324b4",
+          "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+          "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+          "https://api.app.brickwise.at/api/v1/assets",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+          "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://www.brickwise.at/assets/at0000a324b4",
+          "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+          "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"
+        ]
+      }
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "etiqueta": "Recaudado · consulta 01/11/2026",
+      "antes": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+      "despues": "https://aliuscap.com/projects/casa-de-outeiro"
+    },
+    {
+      "oferta": "casa-de-outeiro",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://aliuscap.com/invest/",
+          "https://casadeouteiro.com/emision-capital/",
+          "https://aliuscap.com/projects/casa-de-outeiro",
+          "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+          "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+          "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793",
+          "https://aliuscap.com/general-terms"
+        ],
+        "despues": [
+          "https://aliuscap.com/invest/",
+          "https://casadeouteiro.com/emision-capital/",
+          "https://aliuscap.com/projects/casa-de-outeiro",
+          "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+          "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793",
+          "https://aliuscap.com/general-terms"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://aliuscap.com/projects/casa-de-outeiro",
+          "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+          "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+          "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
+        ],
+        "despues": [
+          "https://aliuscap.com/projects/casa-de-outeiro",
+          "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+          "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
+        ]
+      }
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "etiqueta": "Rentabilidad · consulta 01/11/2026",
+      "antes": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
+    },
+    {
+      "oferta": "terreno-con-arrendamiento-billa",
+      "fuentesDocumentacion": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+          "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+          "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+          "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+          "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+          "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+          "https://www.brickwise.at/imprint"
+        ]
+      },
+      "fuentesActuales": {
+        "antes": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+          "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+          "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf"
+        ],
+        "despues": [
+          "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
+          "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+          "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+          "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf"
+        ]
+      }
+    }
+  ],
+  "radar": [
+    {
+      "id": "spiko-regafi",
+      "antes": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=siren%3D%22980659585%22",
+      "despues": "https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211"
+    },
+    {
+      "id": "spiko-regafi-pasaporte-es",
+      "antes": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "despues": "https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211"
+    }
+  ],
+  "plataformas": [
+    {
+      "slug": "artex-global-markets",
+      "columna": "cadenas",
+      "antes": "Mercado regulado (MTF)",
+      "despues": "No usa blockchain"
+    },
+    {
+      "slug": "toucan-protocol",
+      "columna": "motivo_descarte",
+      "antes": "El bloqueo no viene de Toucan, sino de los registros de carbono: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudiaba entonces un estado «inmovilizado» que la permitiría. Toucan respaldó públicamente la decisión.",
+      "despues": "El bloqueo no viene de Toucan, sino de los registros de carbono: en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Verra estudiaba entonces un estado «inmovilizado» que permitiría tokenizarlos. Toucan respaldó públicamente la decisión de Verra."
+    }
+  ],
+  "fuentesNuevasPublicas": [
+    {
+      "plataforma": "toucan-protocol",
+      "url": "https://acrcarbon.org/news/acr-updates-program-rules-for-tokenization-of-carbon-credits/",
+      "titulo": "ACR · prohíbe tokenizar sus créditos sin su autorización expresa"
+    }
+  ],
+  "seQuedan": [
+    {
+      "url": "https://api.app.brickwise.at/api/v1/assets",
+      "ofertas": [
+        "apartamento-vacacional-hinterstoder-50",
+        "drautalresidenz-paternion",
+        "fotovoltaica-cohotel",
+        "fotovoltaica-greenpoint",
+        "randhartingergasse-9-viena",
+        "local-de-estanco-klagenfurt",
+        "vivienda-pluddemanngasse-101-graz",
+        "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+        "vivienda-schwarzer-weg-18-graz",
+        "vivienda-sonnleithnergasse-2-viena",
+        "vivienda-stallhofstra-e-28-gratwein"
+      ],
+      "motivo": "Libro de órdenes de la app de Brickwise (cuántas órdenes de compra y venta hay y a qué precio). Ninguna página pública lo enseña: la página del inmueble y el mercado de la app muestran el precio desde y las participaciones disponibles, no las órdenes; el detalle solo se ve dentro de la app. Se conserva la dirección de la API y queda anotado."
+    },
+    {
+      "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "ofertas": [
+        "aktionariat"
+      ],
+      "referencias": [
+        {
+          "oferta": "aktionariat",
+          "etiqueta": "Mínimo de inversión · consulta 01/11/2026"
+        },
+        {
+          "oferta": "aktionariat",
+          "etiqueta": "Mínimo de inversión"
+        },
+        {
+          "oferta": "aktionariat",
+          "etiqueta": "Salida · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "El mínimo por transferencia (500 CHF) y el aviso de venta desactivada solo van en la configuración que carga la página /invest; no se ven en pantalla ni en /invest ni en /trade (Chrome sin interfaz, 04/11/2026: solo «Number of Shares … Price per DAKS 7.25 CHF … Payment Method»). Se conserva la dirección de la API. El precio por acción y «All Trades» sí se ven y enlazan /invest y /trade."
+    },
+    {
+      "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "ofertas": [
+        "boss-info"
+      ],
+      "referencias": [
+        {
+          "oferta": "boss-info",
+          "etiqueta": "Mínimo de inversión · consulta 01/11/2026"
+        },
+        {
+          "oferta": "boss-info",
+          "etiqueta": "Mínimo de inversión"
+        },
+        {
+          "oferta": "boss-info",
+          "etiqueta": "Salida · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "El mínimo por transferencia (100 CHF) y el aviso de compra desactivada por mantenimiento solo van en la configuración que carga la página /invest; no se ven en pantalla ni en /invest ni en /trade. Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://api.app.brickwise.at/api/v2/assets",
+      "ofertas": [
+        "fotovoltaica-cohotel",
+        "fotovoltaica-greenpoint",
+        "terreno-con-arrendamiento-billa",
+        "randhartingergasse-9-viena",
+        "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+        "vivienda-sonnleithnergasse-2-viena"
+      ],
+      "referencias": [
+        {
+          "oferta": "fotovoltaica-cohotel",
+          "etiqueta": "Precio · consulta 01/11/2026"
+        },
+        {
+          "oferta": "fotovoltaica-cohotel",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026"
+        },
+        {
+          "oferta": "fotovoltaica-greenpoint",
+          "etiqueta": "Precio · consulta 01/11/2026"
+        },
+        {
+          "oferta": "fotovoltaica-greenpoint",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Precio de emisión por participación (API) · 22/10/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Riesgos · consulta 01/11/2026"
+        },
+        {
+          "oferta": "randhartingergasse-9-viena",
+          "etiqueta": "Precio de emisión por participación (API) · 22/10/2026"
+        },
+        {
+          "oferta": "randhartingergasse-9-viena",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        },
+        {
+          "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        },
+        {
+          "oferta": "vivienda-sonnleithnergasse-2-viena",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        }
+      ],
+      "motivo": "Ninguna página pública enseña estos datos tal cual: el precio de referencia (sharePrice) de Cohotel y GreenPoint, el precio de emisión, las participaciones disponibles en la emisión, la etapa de la oferta ni el enlace a las condiciones. El mercado de la app enseña otra medida (el precio desde de la reventa: Cohotel «ab € 110,00» frente a 120; GreenPoint «ab € 100,00» frente a 95), y la página del inmueble, las participaciones disponibles en la reventa (Randhartingergasse «Verfügbare Anteile 558» frente a 374 de la emisión). Cohotel, GreenPoint y Billa no tienen página propia (404). Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+      "ofertas": [
+        "fotovoltaica-cohotel"
+      ],
+      "referencias": [
+        {
+          "oferta": "fotovoltaica-cohotel",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "La rentabilidad que calcula la API (5,11 %, con 120 € por participación) no se ve en ninguna página: el mercado enseña otra medida, la distribución anual esperada («5,57 % p.a.»), y Cohotel no tiene página propia. Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+      "ofertas": [
+        "fotovoltaica-greenpoint"
+      ],
+      "referencias": [
+        {
+          "oferta": "fotovoltaica-greenpoint",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "La rentabilidad que calcula la API (6,43 %, con 95 € por participación) no se ve en ninguna página: el mercado enseña otra medida, la distribución anual esperada («6,11 % p.a.»), y GreenPoint no tiene página propia. Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+      "ofertas": [
+        "casa-de-outeiro"
+      ],
+      "motivo": "Aunque el servidor se llama «api», devuelve el PDF del documento de la emisión (application/pdf, 200 el 04/11/2026): una persona lo abre y lo lee. Se conserva."
+    },
+    {
+      "url": "https://midas.app/assets/main-DOxid0Zj.js",
+      "ofertas": [
+        "mtbill"
+      ],
+      "motivo": "Es el código JavaScript de la web de Midas, no una API ni JSON: no hay una página para personas que diga «Public offer under the EU Prospectus Regulation» (docs.midas.app/legal/eligibility-and-compliance y docs.midas.app/resources/legal-product-documentation/mtbill no lo dicen; midas.app/mtbill da 403). Se conserva y queda anotado."
+    },
+    {
+      "url": "https://docs.midas.app/llms-full.txt",
+      "ofertas": [
+        "mtbill"
+      ],
+      "motivo": "Texto plano oficial de la documentación de Midas, legible por una persona; su página HTML daba 403. Se conserva."
+    },
+    {
+      "url": "https://midas.app/llms.txt",
+      "ofertas": [
+        "mtbill"
+      ],
+      "radar": [
+        "midas"
+      ],
+      "motivo": "Texto plano oficial, legible. Se conserva."
+    },
+    {
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+      "ofertas": [
+        "prosegur-digital-gold"
+      ],
+      "motivo": "Hoja CSV oficial de ESMA (se descarga, no es una API ni JSON). Se conserva."
+    },
+    {
+      "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+      "radar": [
+        "blocksquare"
+      ],
+      "motivo": "Texto Markdown de los términos, legible. Se conserva."
+    }
+  ],
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 3
+  }
+}

@@ -23,6 +23,9 @@ const DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(DIR, '../../../..');
 const require = createRequire(import.meta.url);
 const { cargarFuentesLocales, construirSqlImportacion } = require('../../../catalogo-publico.js');
+// Rótulo legible del campo (04/11/2026): antes la etiqueta llevaba el nombre interno
+// («accesoEspana · consulta …»). El lote del 02/11 se publicó así; la entrega 2026-11-04 lo corrigió.
+const { rotuloCampo } = require('../../../rotulos-referencias.js');
 const FECHA = '2026-11-02', DESDE = '2026-10-23';
 const PREVIA = 'c406fa37-a1d3-281c-117a-95819762cfcf'; // leída en las vistas públicas el 01/11 13:10 UTC
 const INVESTIGACION = path.resolve(DIR, '../2026-11-01-v2');
@@ -152,7 +155,7 @@ function documentacionPara(slug, tarjeta, exp, docPrevia) {
     const alcance = [c.alcanceYLimites, c.localizador ? `Localizador: ${c.localizador}.` : ''].filter(Boolean).join(' ').trim();
     if (!valor || alcance.length < 12) continue;
     const fechaDato = /^\d{4}-\d{2}-\d{2}$/.test(c.fechaDato || '') && c.fechaDato <= consulta ? c.fechaDato : null;
-    referencias.push({ etiqueta: `${c.campo} · consulta ${consulta.split('-').reverse().join('/')}`.slice(0, 180),
+    referencias.push({ etiqueta: `${rotuloCampo(c.campo)} · consulta ${consulta.split('-').reverse().join('/')}`.slice(0, 180),
       valor: valor.slice(0, 3000), fechaDato, fechaConsulta: consulta, fuente: c.fuentePrimaria,
       alcance: alcance.slice(0, 3000) });
   }
