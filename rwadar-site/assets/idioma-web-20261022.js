@@ -49,7 +49,11 @@
     '.ac-indice ol','#siguiente-paso>:not(.ac-sobrelinea)','.ac-legal>p','.ac-legal-propio','main[data-idioma-documental]',
     'main[data-ficha-consulta] p:not(.migas):not(.ui):not(:has(a))','main[data-ficha-consulta] .riesgos','main[data-ficha-consulta] .fuentes:not(.puntos)','main[data-ficha-consulta] figure'
   ].join(',');
-  const superficies='.ac-legal,#emiLista,#grid,#matrix,#radarLee,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
+  // El rótulo «Original source text» va sobre lo que cita la fuente, no sobre
+  // textos de la interfaz: en el radar, sobre el punto leído (no sobre «26
+  // platforms on the radar»); en Ofertas, sobre las tarjetas (no sobre el título
+  // de la colección). Remates 04/11/2026.
+  const superficies='.ac-legal,#emiLista .catalogo-principales,#emiLista .emis-rejilla,#emiLista,#grid,#matrix,#radarLee .rl-dato,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
   function traducir(origen){
     if(idioma.obtenerIdioma()==='en'){
       const limpio=origen.trim(),m=limpio.match(/^Ver las referencias documentales y sus fechas \((\d+)\)$/);
