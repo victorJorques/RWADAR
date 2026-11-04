@@ -104,7 +104,8 @@ await db.exec('reset role');
 
 /* --- el registro editorial, aparte ---------------------------------- */
 paso('la moderación no toca el radar público',
-  (await n('select count(*)::int c from radar_publico'))[0].c === 24);
+  (await n('select count(*)::int c from radar_publico'))[0].c ===
+  (await n("select count(*)::int c from plataformas where estado='en_radar'"))[0].c);
 
 console.log('=== PRUEBAS DE MODERACIÓN ===');
 ok.forEach(t => console.log('  OK   ', t));

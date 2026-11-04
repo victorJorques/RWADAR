@@ -110,8 +110,11 @@ paso('borrar la cuenta borra sus opiniones',
   (await n(`select count(*)::int c from opiniones where usuario_id=$1`, [ana.id]))[0].c === 0);
 
 /* --- el registro editorial sigue aparte ---------------------------- */
+/* Sin fijar un número: el radar público sigue siendo el de las plataformas en el radar
+   que trae 02_seed.sql (el volcado de producción). */
 paso('las opiniones no tocan el radar público',
-  (await n('select count(*)::int c from radar_publico'))[0].c === 24);
+  (await n('select count(*)::int c from radar_publico'))[0].c ===
+  (await n("select count(*)::int c from plataformas where estado='en_radar'"))[0].c);
 
 console.log('=== PRUEBAS DE OPINIONES ===');
 ok.forEach(t => console.log('  OK   ', t));
