@@ -1607,8 +1607,9 @@ body.detalle-local-abierto{overflow:hidden}
   #movilPanelRadar .ficha>.nota,
   #movilPanelRadar .ficha>.aval,
   #movilPanelRadar .ficha>.marcas,
+  #movilPanelRadar .ficha>.verificacion-local-resumen,
   #movilPanelRadar .ficha>.ficha-pie{display:none!important}
-  #movilPanelRadar .empresa-visual__abrir{position:relative;display:block;width:100%;height:100%;min-height:0;padding:0 0 10px;
+  #movilPanelRadar .empresa-visual__abrir{position:relative;display:block;width:100%;height:auto;min-height:0;padding:0 0 10px;
     overflow:hidden;border:0;border-radius:inherit;background:none;color:var(--tx);text-align:left;cursor:pointer}
   #movilPanelRadar .empresa-visual__abrir:focus-visible{outline:2px solid var(--senal);outline-offset:-2px}
   #movilPanelRadar .empresa-visual__imagen{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
@@ -1626,7 +1627,7 @@ body.detalle-local-abierto{overflow:hidden}
     font:400 .75rem/1.3 var(--body);text-overflow:ellipsis;white-space:nowrap}
   #movilPanelRadar .empresa-visual__verificada{display:flex;align-items:center;margin:6px 10px 0;
     gap:4px;color:var(--tx-3);font:500 .75rem/1.2 var(--body)}
-  #movilPanelRadar .empresa-visual__verificada>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #movilPanelRadar .empresa-visual__verificada>span{min-width:0;overflow-wrap:anywhere}
   #movilPanelRadar .empresa-visual__verificada svg{width:11px;height:11px}
   /* La tarjeta entera abre la ficha: sin chevrón, la fecha cabe entera a 11 px. */
   #movilPanelRadar .empresa-visual__flecha{display:none}
