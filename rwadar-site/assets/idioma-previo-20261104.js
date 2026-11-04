@@ -6,20 +6,10 @@
 // Tope de 1,5 s: pase lo que pase, la página nunca se queda en blanco.
 // Sin red, sin innerHTML y sin estilos en línea (CSP).
 (() => {
-  const raiz = document.documentElement;
-  // Inicio en tableta y escritorio (768 px o más, salvo un móvil apaisado): la
-  // historia va arriba desde la primera pintura. Es la misma consulta que usa
-  // Movil.adaptar() en rwadar-20260820.js, que luego la mantiene al cambiar el
-  // tamaño. Solo en Inicio («/»); en las demás páginas la clase no hace nada.
-  try {
-    const cumple = q => globalThis.matchMedia(q).matches;
-    if (typeof location !== 'undefined' && location.pathname === '/' && typeof globalThis.matchMedia === 'function' &&
-      cumple('(min-width: 768px)') && !cumple('(max-width: 960px) and (max-height: 540px) and (hover: none) and (pointer: coarse)'))
-      raiz.classList.add('escritorio-relato');
-  } catch {}
   let guardado = null;
   try { guardado = localStorage.getItem('rwadar.idioma'); } catch { return; }
   if (guardado !== 'en') return;
+  const raiz = document.documentElement;
   raiz.lang = 'en';
   raiz.classList.add('idioma-previo');
   let traducida = false, cargada = false;
@@ -30,4 +20,17 @@
   document.addEventListener('DOMContentLoaded', () => { cargada = true; intentar(); }, { once: true });
   globalThis.RWAdarIdiomaListo = () => { traducida = true; intentar(); };
   setTimeout(mostrar, 1500);
+})();
+// Inicio sin salto al cargar (remates 04/11/2026). Va aparte, después del
+// bloque del idioma, para que sus `return` no la corten. Solo en Inicio («/»):
+// en tableta y escritorio (768 px o más, salvo un móvil apaisado) marca
+// html.escritorio-relato y la historia va arriba desde la primera pintura.
+// La consulta del móvil es la misma de Movil en rwadar-20260820.js, que luego
+// mantiene la clase al cambiar el tamaño.
+(() => {
+  try {
+    if (typeof location === 'undefined' || location.pathname !== '/' || typeof globalThis.matchMedia !== 'function') return;
+    if (!globalThis.matchMedia('(max-width: 767px), (max-width: 960px) and (max-height: 540px) and (hover: none) and (pointer: coarse)').matches &&
+      globalThis.matchMedia('(min-width: 768px)').matches) document.documentElement.classList.add('escritorio-relato');
+  } catch {}
 })();
