@@ -24,28 +24,28 @@ leccion_siguiente: es-tu-activo-tokenizable
 
 ### En 30 segundos (TL;DR)
 
-1. **Una tokenización no la hace una empresa: la hacen seis.** Cada rol tiene una función distinta, una responsabilidad distinta y, en varios casos, una licencia distinta.
+1. **Una tokenización no la hace una sola empresa.** Intervienen seis roles, cada uno con una función distinta, una responsabilidad distinta y, en varios casos, una licencia distinta.
 2. **Ningún proveedor puede cubrirlos todos**, y los que dicen que sí suelen estar describiendo una subcontratación que no te enseñan, o una actividad para la que no están autorizados.
-3. **Saber quién responde de qué es tu principal herramienta de protección.** Si algo sale mal, la pregunta no será «¿qué falló?», sino «¿quién respondía de eso?».
+3. **Saber quién responde de qué es lo que más te protege.** Si algo sale mal, la pregunta no será «¿qué falló?», sino «¿quién respondía de eso?».
 
 ---
 
 ### El error que cuesta más caro al principio
 
-La primera reunión comercial de casi cualquier dueño de activo suena parecida: una empresa tecnológica, una presentación bien hecha, y una frase que lo resume todo — *«nosotros nos encargamos de todo, llave en mano»*.
+La primera reunión comercial de casi cualquier dueño de activo suena parecida: una empresa tecnológica, una presentación bien hecha y una frase: *«nosotros nos encargamos de todo, llave en mano»*.
 
 Esa frase es cómoda y es, casi siempre, inexacta. No porque quien la dice mienta necesariamente, sino porque una tokenización es un proceso en el que intervienen funciones que **legalmente no pueden estar en las mismas manos**, y otras que sencillamente requieren competencias que ninguna empresa reúne por completo.
 
 > **La idea central**
 > Tokenizar no es contratar un proveedor. Es coordinar un equipo. Tu trabajo como propietario del activo no es encontrar a alguien que lo haga todo, sino entender qué piezas hacen falta y comprobar que cada una está cubierta por quien debe cubrirla.
 
-Esta lección es ese mapa. No es un trámite burocrático: es lo que te permite entrar en una reunión y saber, en diez minutos, si te están contando el proceso completo o solo la parte que ellos venden.
+Esta lección explica cada pieza. Con ella podrás saber, en una reunión, si te están contando el proceso completo o solo la parte que ellos venden.
 
 ---
 
 ### Los seis roles de una tokenización
 
-#### 1. El emisor — tú
+#### 1. El emisor: tú
 
 Es quien tiene el activo y quien asume la responsabilidad última frente a los inversores. En la práctica casi nunca eres tú como persona física: se constituye o se utiliza una **sociedad vehículo** que posee el activo, y lo que se emite son derechos sobre esa sociedad o sobre el flujo que genera.
 
@@ -54,13 +54,13 @@ Es quien tiene el activo y quien asume la responsabilidad última frente a los i
 - **Qué te van a exigir:** titularidad limpia, cargas identificadas, documentación al día e identificación de los socios reales.
 
 > **Aviso**
-> Es habitual que los proveedores presenten al emisor como un participante pasivo del proceso. No lo es. Si la emisión se estructura mal, quien tiene el problema encima de la mesa dentro de tres años eres tú, no la empresa que montó la infraestructura.
+> Es habitual que los proveedores presenten al emisor como un participante pasivo del proceso. No lo es. Si la emisión se estructura mal, quien tendrá el problema años después serás tú, no la empresa que montó la infraestructura.
 
 ---
 
-#### 2. El estructurador legal — el despacho
+#### 2. El estructurador legal: el despacho
 
-Es el rol más determinante y el que más se subestima. Decide **qué se emite exactamente**: ¿participaciones de una sociedad? ¿un bono? ¿derechos de crédito? ¿un contrato de cuentas en participación? De esa decisión depende todo lo demás, empezando por si lo emitido es o no un valor negociable, con el régimen legal que eso arrastra.
+Es el rol más determinante y el que más se subestima. Decide **qué se emite exactamente**: ¿participaciones de una sociedad? ¿un bono? ¿derechos de crédito? ¿un contrato de cuentas en participación? De esa decisión depende todo lo demás, empezando por si lo emitido es o no un valor negociable, con las normas que eso conlleva.
 
 - **Qué hace:** diseña la estructura jurídica, constituye el vehículo si hace falta, redacta el documento de emisión y los contratos, y determina qué obligaciones de información aplican y si existe alguna exención.
 - **Qué no hace:** no te dice si la operación es una buena idea financiera. Eso no es su función.
@@ -76,8 +76,8 @@ Es el rol más determinante y el que más se subestima. Decide **qué se emite e
 Alguien tiene que decir cuánto vale el activo, y ese alguien no puede ser ni tú ni quien vende la emisión. En inmobiliario suele ser una sociedad de tasación homologada; en una pyme, un experto en valoración de empresas; en arte, un perito con trayectoria contrastable en esa categoría concreta.
 
 - **Qué hace:** emite una valoración fundamentada, con metodología explícita y fecha.
-- **Por qué importa tanto:** es la cifra sobre la que se construye todo el reparto. Si está inflada, la emisión nace con un problema estructural que se manifestará en el momento de vender.
-- **Qué te van a exigir:** acceso real al activo, documentación y, a veces, malas noticias.
+- **Por qué importa tanto:** es la cifra sobre la que se construye todo el reparto. Si está inflada, la emisión empieza con un problema de base que aparecerá en el momento de vender.
+- **Qué te va a pedir:** acceso real al activo y documentación. Y a veces te dará malas noticias.
 
 > **Aviso**
 > Cuidado con el valorador que propone y paga la propia plataforma. No es necesariamente irregular, pero es un conflicto de interés que debes conocer y valorar. Pregunta siempre quién contrata al valorador y quién le paga.
@@ -86,7 +86,7 @@ Alguien tiene que decir cuánto vale el activo, y ese alguien no puede ser ni t�
 
 #### 4. La plataforma tecnológica
 
-Es el actor más visible del sector y, paradójicamente, el que soporta menos responsabilidad legal sobre el resultado. Construye y opera la infraestructura: los contratos inteligentes, la interfaz por la que los inversores ven su posición, la integración con los procesos de identificación.
+Es el actor más visible del sector y, paradójicamente, el que soporta menos responsabilidad legal sobre el resultado. Construye y opera la infraestructura: los contratos inteligentes, la interfaz por la que los inversores ven su posición, la conexión con la comprobación de identidad de los inversores.
 
 - **Qué hace:** tecnología. Emisión técnica de los tokens, panel de titulares, automatización de repartos si los hay.
 - **Qué no hace, aunque a veces lo parezca:** no califica jurídicamente tu emisión, no sustituye al registro autorizado cuando este es obligatorio, y no garantiza que exista un mercado para tus tokens.
@@ -104,7 +104,7 @@ Es el rol que más gente desconoce y el que más protege al inversor. Alguien ti
 En España, cuando lo emitido son valores negociables representados mediante registro distribuido, esa función corresponde a una **entidad responsable de la inscripción y el registro (ERIR)**, que debe estar autorizada para custodiar instrumentos financieros —típicamente entidades de crédito o empresas de servicios de inversión con esa habilitación—. No es un rol que pueda asumir cualquier empresa tecnológica.
 
 - **Qué hace:** administra el registro y responde de su integridad y de su correspondencia con la realidad jurídica.
-- **Por qué importa:** es la diferencia entre un token que representa un derecho oponible y una anotación en la base de datos de una empresa privada.
+- **Por qué importa:** es la diferencia entre un token que representa un derecho que puedes hacer valer frente a terceros y una anotación en la base de datos de una empresa privada.
 - **Qué debes comprobar:** que la entidad esté efectivamente autorizada y figure en el registro público del supervisor correspondiente.
 
 ---
@@ -121,7 +121,7 @@ Aquí hay que distinguir dos auditorías distintas que a menudo se confunden:
 
 ---
 
-### El mapa, de un vistazo
+### Los seis roles, en una tabla
 
 | Rol | Función principal | ¿Requiere licencia o habilitación? | Si falla, ¿qué ocurre? |
 |---|---|---|---|
@@ -134,7 +134,7 @@ Aquí hay que distinguir dos auditorías distintas que a menudo se confunden:
 
 ---
 
-### El séptimo actor del que casi nadie te habla
+### Un séptimo actor: quien vende la emisión
 
 Falta uno, y suele aparecer tarde en la conversación: **quien pone la emisión delante de los inversores**.
 
@@ -144,7 +144,7 @@ Es la parte del proceso donde más proyectos se atascan, porque muchos llegan co
 
 ---
 
-### La regla del solapamiento: quién puede acumular roles y quién no
+### Quién puede acumular roles y quién no
 
 Es perfectamente normal que un mismo grupo empresarial cubra varias funciones. Lo que no es indiferente es *cuáles*.
 
@@ -152,10 +152,10 @@ Es perfectamente normal que un mismo grupo empresarial cubra varias funciones. L
 
 **Combinaciones que exigen explicación:** quien estructura y cobra un porcentaje del éxito de la emisión no debería ser quien elige y paga al valorador. Quien opera la tecnología no debería ser quien certifica que esa tecnología es correcta.
 
-**Combinaciones que directamente no proceden:** asumir funciones de registro o de colocación sin la autorización correspondiente. Aquí no hay matiz posible ni «modelo alternativo»: o se está autorizado o no se está.
+**Combinaciones que no se permiten:** asumir funciones de registro o de colocación sin la autorización correspondiente. Aquí no hay matiz posible ni «modelo alternativo»: o se está autorizado o no se está.
 
-> **La pregunta que lo resuelve todo**
-> En cualquier reunión, pregunta: *«¿qué parte de esto hacéis vosotros directamente, qué parte subcontratáis y a quién, y qué autorizaciones tenéis?»*. Una respuesta clara y sin incomodidad es la mejor señal de solvencia que vas a obtener gratis. Una respuesta evasiva también te dice todo lo que necesitas saber.
+> **La pregunta clave**
+> En cualquier reunión, pregunta: *«¿qué parte de esto hacéis vosotros directamente, qué parte subcontratáis y a quién, y qué autorizaciones tenéis?»*. Si te responden con claridad y sin incomodarse, es buena señal, y no te cuesta nada. Si te responden con evasivas, también es una señal.
 
 ---
 
@@ -167,7 +167,7 @@ Es perfectamente normal que un mismo grupo empresarial cubra varias funciones. L
 4. ¿Qué auditorías existen, de qué tipo, de qué fecha y puedo leer el informe completo?
 5. ¿Cómo y a través de quién se va a ofrecer la emisión a inversores?
 
-Si una de las cinco no tiene respuesta concreta, no significa que el proveedor sea malo. Significa que esa pieza del mapa todavía no está cubierta — y ahora ya sabes que falta.
+Si una de las cinco no tiene respuesta concreta, no significa que el proveedor sea malo. Significa que ese rol todavía no tiene a nadie asignado, y ahora ya sabes que falta.
 
 ---
 
@@ -186,7 +186,7 @@ Sociedad creada con un fin único: poseer el activo que se va a tokenizar y aisl
 Documento que describe formalmente qué se emite, en qué condiciones, con qué derechos y sobre qué activo, incluyendo las características técnicas del registro empleado. Convive con las obligaciones generales de información al inversor —folleto o su exención— cuando resultan aplicables; no las sustituye.
 
 **Contrato inteligente (smart contract)**
-Programa que se ejecuta sobre un registro distribuido y aplica automáticamente reglas previamente definidas: emitir unidades, permitir o bloquear transmisiones, distribuir importes. Ejecuta lo que dice su código, que no siempre coincide con lo que dice el documento legal — de ahí la auditoría técnica.
+Programa que se ejecuta sobre un registro distribuido y aplica automáticamente reglas previamente definidas: emitir unidades, permitir o bloquear transmisiones, distribuir importes. Ejecuta lo que dice su código, que no siempre coincide con lo que dice el documento legal: de ahí la auditoría técnica.
 
 ---
 
@@ -203,7 +203,7 @@ Programa que se ejecuta sobre un registro distribuido y aplica automáticamente 
 <summary>Ver respuesta</summary>
 
 **Respuesta correcta: C.**
-Ni todo integral es sospechoso ni todo integral es aceptable. Hay dos filtros distintos: el de **reserva de actividad** —el registro y custodia de valores, o la colocación entre inversores, exigen autorización— y el de **conflicto de interés** —quien estructura y cobra por que la operación salga no debería elegir y pagar al valorador que fija la cifra base—. La respuesta útil no es rechazar el modelo integral, sino pedir el desglose: qué se hace internamente, qué se subcontrata, a quién y con qué habilitación.
+Un servicio integral no es sospechoso por serlo, pero tampoco es aceptable sin más. Hay dos filtros distintos: el de **reserva de actividad** —el registro y custodia de valores, o la colocación entre inversores, exigen autorización— y el de **conflicto de interés** —quien estructura y cobra por que la operación salga no debería elegir y pagar al valorador que fija la cifra base—. La respuesta útil no es rechazar el modelo integral, sino pedir el desglose: qué se hace internamente, qué se subcontrata, a quién y con qué habilitación.
 </details>
 
 ---
@@ -242,11 +242,11 @@ La calificación depende de qué derecho se representa —participación en el c
 
 ## Da el siguiente paso, sin compromiso y sin dar tus datos
 
-> ### Ahora que conoces los roles, mira el radar con otros ojos
+> ### Ahora que conoces los roles, búscalos en el radar
 >
-> Próximamente, el directorio de RWAdar permitirá filtrar a los proveedores **por categoría —marketplace, emisor, infraestructura—** precisamente por lo que acabas de leer: ningún actor cubre todo el mapa, y presentarlos como si fueran intercambiables sería engañarte. Mientras llega ese filtro, cada ficha del radar indica qué entidad figura y para qué actividad tiene permisos.
+> Próximamente, el directorio de RWAdar permitirá filtrar a los proveedores **por categoría —marketplace, emisor, infraestructura—** precisamente por lo que acabas de leer: ningún actor cubre todos los roles, y presentarlos como si fueran intercambiables sería engañarte. Mientras llega ese filtro, cada ficha del radar indica qué entidad figura y para qué actividad tiene permisos.
 >
-> **[Abrir el radar y filtrar por categoría →]** — y consulta también la sección *Descartadas*, donde publicamos las plataformas que hemos descartado, con el motivo y la fuente.
+> **[Abrir el radar y filtrar por categoría →]** Consulta también la sección *Descartadas*, donde publicamos las plataformas que hemos descartado, con el motivo y la fuente.
 >
 > ¿Prefieres empezar por tu propio activo? Próximamente, el **Evaluador de Viabilidad** te dirá en qué punto estás y qué te falta. Podrás completarlo de forma anónima: no tendrás que identificar tu activo ni facilitar datos personales para ver el resultado.
 >

@@ -24,13 +24,13 @@ leccion_siguiente: como-leer-el-radar
 
 ### En 30 segundos (TL;DR)
 
-1. **Fraccionar un activo crea divisibilidad, no compradores.** La liquidez es un hecho de mercado, no una propiedad técnica del token.
+1. **Fraccionar un activo lo hace divisible, pero no crea compradores.** La liquidez depende del mercado, no de la tecnología del token.
 2. **Cuatro condiciones producen un mercado secundario real, y la tecnología no aporta ninguna de las cuatro.** Aporta otra cosa distinta, que también tiene valor.
-3. **La mayoría de emisiones de activos reales nacen ilíquidas, y así deben presentarse.** Prometer lo contrario no es un exceso comercial: es un problema de información al inversor del que responde el emisor — es decir, tú.
+3. **La mayoría de emisiones de activos reales nacen ilíquidas (difíciles de vender), y así deben presentarse.** Prometer lo contrario no es un exceso comercial: es un problema de información al inversor del que responde el emisor, es decir, tú.
 
 ---
 
-### La frase fundacional del sector
+### Una frase muy repetida
 
 *«Convierte tu activo ilíquido en un activo líquido.»*
 
@@ -39,11 +39,11 @@ Es probablemente la frase más repetida en la tokenización de activos reales, y
 Lo que hace la tokenización es **dividir** un derecho en unidades pequeñas y hacerlas técnicamente transferibles. Eso elimina una barrera —la indivisibilidad— que efectivamente impedía la liquidez. Pero eliminar una barrera no equivale a crear un mercado.
 
 > **La idea central**
-> Un piso dividido en mil participaciones sigue siendo un piso que nadie ha comprado. La divisibilidad es una **condición necesaria** de la liquidez. No es una condición suficiente, ni de lejos.
+> Dividir un piso en mil participaciones no hace que alguien las compre. Poder dividirlo es una **condición necesaria** de la liquidez, pero no basta.
 
 ---
 
-### Qué es liquidez de verdad: tres dimensiones, no una
+### Qué es de verdad la liquidez: tres preguntas, no una
 
 Cuando alguien dice «líquido», conviene desglosar la afirmación en tres preguntas independientes:
 
@@ -52,7 +52,7 @@ Cuando alguien dice «líquido», conviene desglosar la afirmación en tres preg
 3. **¿A qué precio?** ¿Al valor razonable del activo, o con un descuento que refleja la urgencia de quien vende?
 
 > **Aviso**
-> Si puedes vender, pero solo aceptando un descuento severo sobre el valor del activo, eso no es liquidez: es **una salida de emergencia**. La diferencia importa mucho, porque un inversor que compró creyendo lo primero y se encuentra lo segundo tiene una reclamación razonable — y va dirigida al emisor.
+> Si puedes vender, pero solo aceptando un descuento severo sobre el valor del activo, eso no es liquidez: es **vender con pérdida para poder salir**. La diferencia importa mucho, porque un inversor que compró creyendo lo primero y se encuentra lo segundo tiene una reclamación razonable, y va dirigida al emisor.
 
 ---
 
@@ -62,45 +62,45 @@ Cuando alguien dice «líquido», conviene desglosar la afirmación en tres preg
 
 Como viste en la Lección 4, los instrumentos financieros no se negocian en cualquier sitio. La negociación ocurre en infraestructuras autorizadas, y para las basadas en registro distribuido existe un régimen piloto europeo específico, con sus propias condiciones y límites.
 
-Que un token sea técnicamente transferible entre dos carteras no significa que esa transmisión sea una operación de mercado válida para tu instrumento.
+Que un token sea técnicamente transferible entre dos carteras digitales no significa que esa transmisión sea una operación de mercado válida para tu instrumento.
 
 #### 2 · Profundidad: suficientes compradores y vendedores
 
-Un mercado con dos participantes no es un mercado. Hace falta una masa crítica de contrapartes potenciales interesadas en ese tipo de activo, en esa ubicación, con ese perfil de riesgo y ese horizonte. Es la condición más difícil de conseguir y la que menos se menciona.
+Un mercado con dos participantes no es un mercado. Hacen falta bastantes compradores y vendedores posibles, interesados en ese tipo de activo, en esa ubicación, con ese perfil de riesgo y ese horizonte. Es la condición más difícil de conseguir y la que menos se menciona.
 
 #### 3 · Información fiable y periódica
 
-Nadie compra a ciegas. Para que un tercero se forme una opinión de precio necesita valoraciones actualizadas, información sobre la evolución del activo y datos comparables. Sin reporting periódico creíble, la única referencia de precio disponible es la del emisor, y eso ahuyenta al comprador informado.
+Nadie compra a ciegas. Para que un tercero se forme una opinión de precio necesita valoraciones actualizadas, información sobre la evolución del activo y datos comparables. Sin informes periódicos creíbles, la única referencia de precio disponible es la del emisor, y eso ahuyenta al comprador informado.
 
-#### 4 · Ausencia de fricciones en la transmisión
+#### 4 · Ausencia de trabas en la transmisión
 
-Cada barrera reduce el universo de compradores: restricciones de transmisión en el documento de emisión, derechos de adquisición preferente, requisitos de identificación del comprador entrante, límites por tipo de inversor —minorista, cualificado— y el coste fiscal de la propia transmisión.
+Cada traba reduce el número de compradores posibles: restricciones de transmisión en el documento de emisión, derechos de adquisición preferente, requisitos de identificación del comprador entrante, límites por tipo de inversor —minorista, cualificado— y el coste fiscal de la propia transmisión.
 
 ---
 
 ### Entonces, ¿qué aporta realmente la tecnología?
 
-Aporta algo real, y merece la pena decirlo con precisión porque es donde está el valor honesto de la propuesta:
+Aporta algo real, y conviene decirlo con precisión:
 
 - **Reduce el coste unitario de registrar una transmisión**, lo que hace viable un mercado de operaciones pequeñas que antes no compensaba administrar.
-- **Automatiza la liquidación** y la actualización de la titularidad.
+- **Automatiza la liquidación** (el intercambio del token por el dinero) y la actualización de la titularidad.
 - **Permite programar en el propio instrumento las reglas de transmisión**, lo que da control sobre quién puede entrar.
 
 Es decir: **la tecnología hace más barato y más rápido operar un mercado que ya existe. No lo crea.** Cuando hay contrapartes, ayuda mucho. Cuando no las hay, no aporta nada.
 
 ---
 
-### Los cuatro espejismos de liquidez
+### Cuatro espejismos de liquidez
 
-Patrones que se presentan como liquidez y no lo son. Ninguno es necesariamente irregular; todos exigen preguntas concretas.
+Un espejismo, aquí, es algo que parece liquidez y no lo es. Ninguno es necesariamente irregular; todos exigen preguntas concretas.
 
 **1 · El mercado interno de la propia plataforma.**
-*«Podrás vender tus participaciones a otros usuarios cuando quieras.»* Podrás **ofrecerlas**. Que se vendan depende de que exista un usuario interesado en ese activo concreto en ese momento. La profundidad real está limitada a la base de usuarios de esa plataforma — pregunta cuántos son, cuántos operan y cuántas transmisiones se han cerrado realmente en los últimos doce meses. Y añade una pregunta incómoda: *si esta plataforma dejara de operar, ¿qué ocurre con el mercado?*
+*«Podrás vender tus participaciones a otros usuarios cuando quieras.»* Podrás **ofrecerlas**. Que se vendan depende de que exista un usuario interesado en ese activo concreto en ese momento. La profundidad real está limitada a los usuarios de esa plataforma: pregunta cuántos son, cuántos operan y cuántas transmisiones se han cerrado realmente en los últimos doce meses. Y añade una pregunta incómoda: *si esta plataforma dejara de operar, ¿qué ocurre con el mercado?*
 
 **2 · El compromiso de recompra del emisor o del promotor.**
-Es una garantía de crédito, no liquidez. Su valor depende íntegramente de la solvencia de quien la ofrece **en el momento de ejecutarla**, que suele coincidir con el momento en que muchos quieren salir a la vez, es decir, cuando esa solvencia está más tensionada. Pregunta si el compromiso está garantizado, con qué, y quién responde si el obligado no puede.
+Es una promesa de pago, no liquidez. Su valor depende íntegramente de la solvencia de quien la ofrece **en el momento de ejecutarla**, que suele coincidir con el momento en que muchos quieren salir a la vez, es decir, cuando más le cuesta pagar. Pregunta si el compromiso está garantizado, con qué, y quién responde si el obligado no puede.
 
-**3 · El creador de mercado contratado.**
+**3 · El creador de mercado contratado** (una entidad que se compromete a comprar y vender).
 Puede ser una solución seria. También puede ser un contrato que se cancela con un preaviso corto. Pregunta si existe obligación contractual de cotizar, con qué volumen mínimo, con qué diferencial máximo entre precio de compra y de venta, durante cuánto tiempo y en qué supuestos puede suspenderse.
 
 **4 · El volumen aparente en un mercado no regulado.**
@@ -136,19 +136,19 @@ Aquí la lección deja de hablarle al comprador y te habla a ti como emisor. Si 
 | «Mercado secundario activo» | «Número de transmisiones cerradas en los últimos 12 meses: [dato]» |
 
 > **La regla que resume esta lección**
-> Describe el **mecanismo** disponible y los **datos** observados. No prometas el **resultado**. Un inversor que entra sabiendo que el activo es ilíquido y decide entrar igualmente es un inversor tranquilo. Uno que descubre la iliquidez cuando quiere salir es una reclamación.
+> Describe el **mecanismo** disponible y los **datos** observados. No prometas el **resultado**. Un inversor que entra sabiendo que el activo es ilíquido y decide entrar igualmente es un inversor tranquilo. Uno que descubre la iliquidez cuando quiere salir acabará reclamando.
 
 ---
 
 ### Cuándo la iliquidez no es un problema
 
-Conviene cerrar sin dramatismo: **hay proyectos perfectamente sólidos que son ilíquidos por diseño, y no pasa nada** — siempre que se presenten así.
+Conviene cerrar sin dramatismo: **hay proyectos perfectamente sólidos que son ilíquidos por diseño, y no pasa nada**, siempre que se presenten así.
 
 - **Deuda con calendario de amortización:** el inversor no necesita vender, cobra en fechas conocidas.
 - **Activos con reparto periódico** y horizonte de tenencia largo, donde el rendimiento viene del flujo y no de la reventa.
 - **Emisiones dirigidas a inversores cualificados** que entran con horizonte definido y capacidad de análisis propia.
 
-La iliquidez solo se convierte en problema cuando se ha vendido lo contrario. Un proyecto honestamente ilíquido y bien remunerado es una propuesta perfectamente defendible; un proyecto ilíquido vendido como líquido es un pasivo.
+La iliquidez solo se convierte en problema cuando se ha vendido lo contrario. Un proyecto honestamente ilíquido y bien remunerado es una propuesta perfectamente defendible; un proyecto ilíquido vendido como líquido es una fuente de reclamaciones.
 
 ---
 
@@ -156,7 +156,7 @@ La iliquidez solo se convierte en problema cuando se ha vendido lo contrario. Un
 
 Has terminado el **Nivel Intermedio**. Sabes qué régimen te aplica, cuánto cuesta el proceso y qué esperar razonablemente de la liquidez.
 
-El **Nivel Avanzado** es el de la ejecución. En la **Lección 7** aprenderás a leer el radar: cómo leer en tu caso concreto los cuatro criterios que RWAdar documenta en cada ficha, qué comparar entre plataformas y cómo descartar candidatos por incompatibilidad objetiva antes de perder una sola reunión.
+El **Nivel Avanzado** trata de cómo ponerlo en marcha. En la **Lección 7** verás cómo usar RWAdar para comparar proveedores: qué significan para tu caso los cuatro criterios que documenta en cada ficha, qué comparar entre plataformas y cómo descartar las que no te encajan antes de pedir ninguna reunión.
 
 ---
 
@@ -186,7 +186,7 @@ Participante que se compromete a ofrecer simultáneamente precios de compra y de
 <summary>Ver respuesta</summary>
 
 **Respuesta correcta: B.**
-Un tablón de anuncios interno permite publicar una oferta; no crea contrapartida. Su profundidad está limitada a los usuarios de esa plataforma concreta interesados en ese activo concreto en ese momento. Las preguntas que convierten la afirmación en información útil son cuantitativas: cuántas transmisiones se han cerrado realmente en los últimos doce meses, en qué plazo medio y a qué precio respecto de la valoración vigente. Y una cualitativa que casi nadie hace: qué ocurriría con ese mercado si la plataforma dejara de operar.
+Un tablón de anuncios interno permite publicar una oferta; no crea compradores. Su profundidad está limitada a los usuarios de esa plataforma concreta interesados en ese activo concreto en ese momento. Las preguntas que convierten la afirmación en información útil son cuantitativas: cuántas transmisiones se han cerrado realmente en los últimos doce meses, en qué plazo medio y a qué precio respecto de la valoración vigente. Y una cualitativa que casi nadie hace: qué ocurriría con ese mercado si la plataforma dejara de operar.
 </details>
 
 ---
@@ -202,15 +202,15 @@ Un tablón de anuncios interno permite publicar una oferta; no crea contrapartid
 <summary>Ver respuesta</summary>
 
 **Respuesta correcta: C.**
-Un compromiso de recompra traslada el análisis desde el activo hacia quien lo asume: es riesgo de crédito, no liquidez. Y tiene una característica que lo hace especialmente delicado: la probabilidad de que muchos inversores quieran ejercerlo a la vez aumenta justo cuando el proyecto atraviesa dificultades, es decir, cuando la capacidad de pago del promotor está más comprometida. Las preguntas pertinentes son si el compromiso está garantizado, con qué activos, y quién responde subsidiariamente si el obligado no puede atenderlo.
+Un compromiso de recompra traslada el análisis desde el activo hacia quien lo asume: es riesgo de crédito (el riesgo de que quien prometió pagar no pueda hacerlo), no liquidez. Y tiene una característica que lo hace especialmente delicado: la probabilidad de que muchos inversores quieran ejercerlo a la vez aumenta justo cuando el proyecto atraviesa dificultades, es decir, cuando la capacidad de pago del promotor está más comprometida. Las preguntas pertinentes son si el compromiso está garantizado, con qué activos, y quién responde en su lugar si el obligado no puede atenderlo.
 </details>
 
 ---
 
-**3. De las cuatro condiciones que producen un mercado secundario —vía de negociación válida, profundidad, información periódica y ausencia de fricciones—, ¿cuántas aporta por sí misma la tecnología de registro distribuido?**
+**3. De las cuatro condiciones que producen un mercado secundario —vía de negociación válida, profundidad, información periódica y ausencia de trabas—, ¿cuántas aporta por sí misma la tecnología de registro distribuido?**
 
 - A) Las cuatro: es precisamente su propuesta de valor
-- B) Dos: la vía de negociación y la ausencia de fricciones
+- B) Dos: la vía de negociación y la ausencia de trabas
 - C) Ninguna; lo que aporta es reducir el coste de registrar y liquidar las transmisiones cuando ya existen contrapartes
 - D) Solo la profundidad, al ampliar el acceso a inversores internacionales
 
@@ -229,7 +229,7 @@ La tecnología no crea una vía de negociación legalmente válida —eso lo det
 >
 > Ya tienes las nueve preguntas. Llévalas a cada conversación y compara las respuestas, no las presentaciones.
 >
-> En el radar de RWAdar puedes filtrar por **nivel de acceso** —minorista, acreditado, institucional, empresas— y por región y tipo de activo, para ver a qué inversores llega realmente cada plataforma. Ese dato es el que más se aproxima a la profundidad potencial de su mercado.
+> En el radar de RWAdar puedes filtrar por **nivel de acceso** —minorista, inversor acreditado, institucional, empresas— y por región y tipo de activo, para ver a qué inversores llega realmente cada plataforma. Es el dato que más se acerca a cuántos compradores posibles tiene su mercado.
 >
 > Consulta también **Descartadas**: uno de los cuatro criterios que documentamos en cada ficha es **riesgos y alertas**, y publicamos con motivo y fuente las plataformas que hemos descartado.
 >
