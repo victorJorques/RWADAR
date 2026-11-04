@@ -926,7 +926,7 @@ export default function App() {
                   {item.tipo === 'cabecera' ? (
                     <View style={e.bloqueOfertasCab} accessibilityRole="header">
                       {item.seleccion ? <>
-                        <Text style={e.bloqueOfertasTit}><Text style={e.bloqueOfertasMarca}>Selección RWAdar</Text> · la documentación más completa</Text>
+                        <Text style={e.bloqueOfertasTit}><Text style={e.bloqueOfertasMarca}>Selección RWAdar</Text> · pasan nuestras 5 comprobaciones</Text>
                         <Text style={e.bloqueOfertasSub}>No es una recomendación de inversión.</Text>
                       </> : <Text style={e.bloqueOfertasTit}>Resto de principales</Text>}
                     </View>
@@ -1378,6 +1378,7 @@ function Chip({ texto, color, activo, onPress }) {
 }
 
 function SegmentoOferta({ texto, activo, onPress }) {
+  const [, nombreSegmento, cuentaSegmento] = String(texto).match(/^(.*?)(?: (\d+))?$/);
   return (
     <Pressable
       onPress={onPress}
@@ -1386,7 +1387,10 @@ function SegmentoOferta({ texto, activo, onPress }) {
       accessibilityState={{ selected: activo }}
       accessibilityLabel={`Mostrar ${texto.toLocaleLowerCase('es')}`}
     >
-      <Text style={[e.segmentoOfertaTxt, activo && e.segmentoOfertaTxtOn]} numberOfLines={2}>{texto}</Text>
+      {/* El nombre y la cifra por separado, para que el nombre se traduzca. */}
+      <Text style={[e.segmentoOfertaTxt, activo && e.segmentoOfertaTxtOn]} numberOfLines={2}>
+        {nombreSegmento}{cuentaSegmento ? <Text noTraducir>{` ${cuentaSegmento}`}</Text> : null}
+      </Text>
     </Pressable>
   );
 }
