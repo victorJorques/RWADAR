@@ -852,6 +852,7 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .escaparate-no-disponible{color:var(--aviso);font-size:.75rem;line-height:1.4}
 .escaparate-patrocinada{justify-self:start;color:var(--senal);font-size:.75rem;font-weight:700}
 .escaparate-oferta .escaparate-detalle-boton{white-space:nowrap}
+.escaparate-detalle-boton:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 .escaparate-aviso-compacto{margin:0;padding:7px 8px;border-left:2px solid var(--aviso);border-radius:0 var(--r-s) var(--r-s) 0;
   background:var(--aviso-t);color:var(--tx-2);font-size:.875rem;line-height:1.5;overflow-wrap:anywhere}
 .escaparate-aviso-bloqueo{border-color:var(--alarma);background:var(--alarma-t)}
