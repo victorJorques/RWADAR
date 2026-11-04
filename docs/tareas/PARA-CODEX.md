@@ -6,6 +6,10 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (4) · Claude · la app dice y enseña lo mismo que la web final (sin publicar)
+
+- Rama local `claude/inicio-historia`, commits a485ded…a787dde encima del merge 6b008ca (**nada publicado, sin push, Supabase y EAS sin tocar, sin OTA**): Inicio con los textos cortos de la web (03 con carrusel de 5, nota legal corta con la completa plegada, aviso de riesgo junto a «Mira, compara y decide tú», «Ver las 24 ofertas» en el 06); ficha de oferta como `abrirDetalleOfertaLocal` («Lo esencial» y avisos arriba; «Antes de invertir», «No es una recomendación…» y «Ver oferta en <proveedor> ↗»; lo demás plegado; sin «Consultar fuente» grande); «Cifras válidas N días más», comprobación 2 y «Inscrita en la CNMV (UE)», «Selección RWAdar · pasan nuestras 5 comprobaciones», pestañas de Ofertas en inglés y fechas dd/mm/aaaa; fila con los puntos fuertes en la columna del texto; diccionario con 5 claves nuevas y una repetida fuera, copiado a la web; `npm test` completo en verde (móvil 406 + 2 omitidas); capturas en el scratchpad (`app-final/`). Pendiente: la app conserva su etiqueta obligatoria «Ilustración editorial» sobre la foto en vez del pie «Imágenes ilustrativas…», y no tiene «Ficha completa · Copiar enlace».
+
 ## 4 de noviembre de 2026 · Claude · corrector del Inicio: menos reglas, más fácil de leer (sin publicar)
 
 Rama local `claude/inicio-historia`, commits c6a5475…0004444 (encima de
