@@ -20,6 +20,9 @@ PR #50 (remates, «Recién añadidas» y entrega 2026-11-03.7), unida a `main`.
     cualquier inversor minorista…») y ya no sale «No presentar como…».
   - **Sincronizado:** `sincronizar.js`, `rwadar-fichas.js` y
     `transparencia.json` (revisión y lote nuevos). `npm test` en verde.
+- **Publicado:**
+  - **Web:** «Publicar web» en preview y en producción desde `main` (d8dc6f5); la comprobación automática pasa en las dos. Comprobado con curl en producción: marca «Ofertas y plataformas tokenizadas», «Recién añadidas», el enlace a Academy, el aviso nuevo y el catálogo `f2732257`. `/ofertas/mf-one` sigue en 404.
+  - **App:** OTA al canal production, runtime `1.4.1(23)`, con la comprobación de compatibilidad superada. No comprobada en un móvil.
 - **Decisión de Víctor (04/11):** la nota legal NO lleva frase de «posiciones
   propias». Hoy no tiene inversiones en el radar y RWAdar no hace
   recomendaciones: valora datos y documentos. Si un día invierte en algo del
