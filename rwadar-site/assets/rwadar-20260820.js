@@ -1033,6 +1033,27 @@ const escHtml=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>
 const urlHttps=s=>{const v=String(s||'').trim();
  if(!/^https:\/\/[^\s<>"'\\]+$/i.test(v))return'';
  try{if(typeof URL==='function'){const u=new URL(v);return u.protocol==='https:'&&!u.username&&!u.password?u.href:''}return v}catch(e){return''}};
+/* Una consulta técnica (una API o una respuesta en JSON) sirve para comprobar
+   un dato, pero no es una página para personas: abrirla da un error o datos en
+   bruto. No se enlaza: se lee «Consulta técnica · fecha» (QA 04/11/2026,
+   n.º 12). La misma regla está en rwadar-fichas.js y en ficha-pagina. */
+const consultaTecnica=s=>{try{const u=new URL(String(s||''));
+ return /(?:^|\/)api(?:\/|$)/i.test(u.pathname)||/\.json$/i.test(u.pathname)||/(?:^|&)(?:format|output)=json(?:&|$)/i.test(u.search.slice(1))}catch(e){return false}};
+function desenlazarConsultasTecnicas(raiz,fechaDe){
+ if(!raiz||typeof raiz.querySelectorAll!=='function'||typeof document==='undefined'||typeof document.createElement!=='function')return;
+ raiz.querySelectorAll('a[href]').forEach(a=>{
+  const url=a.getAttribute('href');if(!consultaTecnica(url))return;
+  /* Se conserva el título; no «Ver fuente», «Fuente ↗», la flecha ni la fecha ISO. */
+  const titulo=String(a.textContent||'').replace(/\s*↗\s*$/,'').replace(/\s·\s\d{4}-\d{2}-\d{2}$/,'').trim()
+   .replace(/^(?:Abrir fuente|Ver fuente|Fuente)(?:\s·\s|$)/,'').trim();
+  const f=(String(a.textContent||'').match(/(\d{4}-\d{2}-\d{2})\s*↗?\s*$/)||[])[1]||(fechaDe&&fechaDe(url))||'';
+  const s=document.createElement('span');s.className='consulta-tecnica';
+  if(titulo)s.appendChild(document.createTextNode(titulo+' · '));
+  const r=document.createElement('span');r.textContent='Consulta técnica';s.appendChild(r);
+  if(f)s.appendChild(document.createTextNode(' · '+fechaES(f)));
+  a.replaceWith(s);
+ });
+}
 /* Las fechas salen del dato, nunca escritas a mano: una fecha de revisión
    que se queda vieja sin que nadie lo note destruye la credibilidad de un
    registro que se vende precisamente por estar al día. */
@@ -1539,6 +1560,8 @@ function openDrawer(i){
     panel: primero se ve la ficha, y ellas entran cuando lleguen. */
  if(typeof Opiniones!=="undefined"&&OPINIONES_DISPONIBLES){const c=document.getElementById("dwOpiniones");if(c)Opiniones.pinta(p.n,c);}
  const cuerpo=document.getElementById('dwBody');if(cuerpo)cuerpo.scrollTop=0;
+ /* n.º 12: las fuentes que son una API (REGAFI…) no se enlazan. */
+ desenlazarConsultasTecnicas(cuerpo,()=>p.verificacionLocal&&p.verificacionLocal.verificadoEl||'');
  openPanel('drawer');
 }
 function toggleCompare(i){
@@ -2737,6 +2760,9 @@ function abrirDetalleOfertaLocal(slug){
    metricas.map(x=>'<div><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div></details>':'')+
   doc.fuentes+
   '</div></div>';
+ /* n.º 12: sin enlaces a API ni JSON; la fecha, la de la consulta de esa fuente. */
+ desenlazarConsultasTecnicas(d,u=>(documentacion&&documentacion.referencias||[]).filter(r=>r.fuente===u).map(r=>r.fechaConsulta).sort().at(-1)||
+  (documentacion&&documentacion.revisadaEl)||o.verificadaEl);
  if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');
   if(typeof history!=='undefined'&&typeof history.pushState==='function'&&typeof location!=='undefined'){
    const previo=history.state&&typeof history.state==='object'?history.state:{};

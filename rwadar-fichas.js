@@ -154,6 +154,10 @@ function fuentes(lista) {
 function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',organizacion,oferta}) {
   const tituloPestana = (titulo.length > 55 ? titulo.slice(0,54).trimEnd() + '…' : titulo) + ' · RWAdar';
   const descripcionMeta = descripcion.replace(/\s+/g,' ').slice(0,159);
+  // n.º 12: las consultas técnicas no se enlazan; su fecha es la de la consulta.
+  const refsFuente = (oferta && oferta.documentacion && oferta.documentacion.referencias) || [];
+  contenido = sinEnlacesTecnicos(contenido, url => refsFuente.filter(r => enlace(r.fuente) === url)
+    .map(r => r.fechaConsulta).filter(fecha).sort().at(-1) || oferta?.documentacion?.revisadaEl || revision);
   const datos = { '@context':'https://schema.org','@type':'WebPage',url:ORIGEN+ruta,
     name:titulo,description:descripcionMeta,inLanguage:'es',dateModified:revision,
     isPartOf:{'@type':'WebSite',name:'RWAdar',url:ORIGEN+'/'},
@@ -329,7 +333,7 @@ function generar() {
   return cambiados;
 }
 module.exports={leerBloquesCatalogo,validarCatalogoSnapshot,validarRutasCatalogo,leerCatalogo,
-  construirSalidas,comprobar,generar,rutaOferta,rutaPlataforma,esc,enlace};
+  construirSalidas,comprobar,generar,rutaOferta,rutaPlataforma,esc,enlace,consultaTecnica,sinEnlacesTecnicos};
 if (require.main===module) {
   const pendientes=process.argv.includes('--comprobar') ? comprobar() : generar();
   console.log((process.argv.includes('--comprobar') ? 'Diferencias: ' : 'Archivos actualizados: ')+pendientes.length);

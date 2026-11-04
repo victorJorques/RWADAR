@@ -764,6 +764,27 @@ prueba('el pre-render contiene los 4 descartes', (html.match(/class="fila"/g) ||
     /html\.idioma-previo body\{visibility:hidden\}/.test(lee('assets/idioma-20261022.css')) &&
     ARCHIVOS_PUBLICABLES.includes('assets/idioma-previo-20261104.js'));
 }
+// QA escritorio 04/11/2026, n.º 12: en el panel y en la ficha de la web, una
+// API o una respuesta JSON se cita sin enlace, con su fecha.
+{
+  const inicio = js.indexOf('const consultaTecnica='), fin = js.indexOf('/* Las fechas salen del dato');
+  const fechaESCodigo = js.match(/const fechaES=[^\n]+/)[0];
+  const contexto = vm.createContext({ URL, document: { createElement: tag => ({ tag, hijos: [], appendChild(n) { this.hijos.push(n); } }),
+    createTextNode: t => ({ tag: '#text', textContent: t }) } });
+  vm.runInContext(fechaESCodigo + '\n' + js.slice(inicio, fin) + '\nthis.desenlazar=desenlazarConsultasTecnicas;this.tecnica=consultaTecnica;', contexto);
+  const enlaces = [['https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS', 'Ver fuente · shares.aktionariat.com ↗'],
+    ['https://www.regafi.fr/api/explore/v2.1/catalog/datasets/x/records', 'REGAFI (ACPR) · Spiko · 2026-11-02 ↗'],
+    ['https://shares.aktionariat.com/invest', 'Fuente 1 · shares.aktionariat.com ↗']].map(([href, texto]) => ({ href, textContent: texto,
+      getAttribute: () => href, replaceWith(n) { this.sustituto = n; } }));
+  contexto.desenlazar({ querySelectorAll: () => enlaces }, () => '2026-11-03');
+  const leido = n => n.tag === '#text' ? n.textContent : n.textContent || n.hijos.map(leido).join('');
+  prueba('la web cita sin enlace las consultas técnicas (API o JSON), con su fecha, y deja el resto de fuentes',
+    leido(enlaces[0].sustituto) === 'shares.aktionariat.com · Consulta técnica · 03/11/2026' &&
+    leido(enlaces[1].sustituto) === 'REGAFI (ACPR) · Spiko · Consulta técnica · 02/11/2026' &&
+    enlaces[0].sustituto.className === 'consulta-tecnica' && !enlaces[2].sustituto &&
+    contexto.tecnica('https://example.com/datos.json') && !contexto.tecnica('https://api-docs.example.com/guia') &&
+    /desenlazarConsultasTecnicas\(d,/.test(js) && /desenlazarConsultasTecnicas\(cuerpo,/.test(js));
+}
 prueba('todos los formularios fallan cerrados bajo form-action none',
   [...html.matchAll(/<form\b([^>]*)>/gi)].every(m => !/\baction\s*=/i.test(m[1])));
 
