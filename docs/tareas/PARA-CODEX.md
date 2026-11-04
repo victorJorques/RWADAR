@@ -6,6 +6,42 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche) · Claude · entrega 2026-11-03.8: textos de Reental, Toucan y RealT (sin aplicar)
+
+Víctor: «hasta que no esté todo no has acabado». Rama local
+`claude/catalogo-2026-11-03.8` (sale de `main`, b98719d), un commit.
+**Sin push, Supabase sin tocar, nada publicado, sin OTA ni workflows.**
+
+- **Qué es:** solo los textos de `public.plataformas` y `public.fuentes` que
+  quedaron fuera de la .7. No crea revisión del catálogo: exige que la
+  publicada sea la `f2732257` (aprobada y con su huella) y la deja publicada.
+  `aplicar-y-aprobar.sql` SHA `20d876b2e28b5bd02a3001913fc8c8dd2d103eeb07952c5af183cdb08313c49e`.
+  - **Reental:** la nota sin «La opción más accesible…».
+  - **Toucan:** «El bloqueo no viene de Toucan, sino de los registros de
+    carbono: …» (el resto, igual).
+  - **RealT:** «Liquidación anunciada» y un motivo nuevo que dice solo lo que
+    dicen sus fuentes (BridgeDetroit ×2 y Outlier, abiertas con WebFetch hoy):
+    la demanda «según la demanda», la orden «provisional», la liquidación «la
+    dijo su cofundador» y «unos 700»; sin «la mayor demanda». Sus 3 fuentes,
+    iguales, y una nueva: Outlier Media (16/07/2026), «RealT planea vender sus
+    inmuebles de Detroit».
+- **Guardas:** una transacción serializable; o todo como antes o todo ya como
+  quedaría; las fuentes de RealT y de Toucan se comparan por **dirección y
+  título** (el hueco del revisor), y Outlier también por sus fechas. Si algo
+  no es exactamente lo previsto, no cambia nada.
+- **Pruebas:** `comprobar-entrega.mjs` (PGlite) correcto, 29 comprobaciones,
+  20 casos de fallo que no dejan nada; `preparar-entrega.mjs` reproducible;
+  `npm test` completo en verde.
+- **`comprobar-revision.mjs`:** una entrega sin revisión nueva no entra en la
+  cadena de PGlite de las siguientes (su guarda depende de `02_seed.sql`).
+- **El `textos-plataformas.sql` de la .7 queda superado: no aplicarlo.**
+- **Pendiente (coordinador):** revisión independiente; unir a `main`; releer
+  como visitante (compuerta, con hora); «Aplicar catálogo» con `2026-11-03.8`;
+  comprobar en línea; `sincronizar.js`, `rwadar-fichas.js`, `volcar-seed.js`,
+  `npm test`; sellar; «Publicar web». No hace falta OTA (la app lee estos
+  textos de Supabase). Detalle en
+  `rwadar-app/data/verificaciones/2026-11-03.8-v2/INFORME-ENTREGA.md`.
+
 ## 4 de noviembre de 2026 (tarde, 2) · Claude · remates, «Recién añadidas» y textos del catálogo publicados
 
 Víctor: «hasta que no esté todo no has acabado» y «súbelo en cuanto esté».

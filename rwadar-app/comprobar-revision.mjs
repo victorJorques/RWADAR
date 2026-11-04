@@ -45,10 +45,17 @@ const leerVistas = async () => {
 
 // La revisión que hay hoy en producción, aplicada con su propio archivo. Desde el
 // 23/10 cada aplicador exige que la anterior esté publicada: se reproduce la
-// cadena desde el lote integral del 22/10 hasta la revisión de partida.
+// cadena desde el lote integral del 22/10 hasta la revisión de partida. Una entrega
+// que no crea revisión (revisionNueva: false, como la 2026-11-03.8, que solo cambia
+// textos de public.plataformas con guardas sobre su contenido) no mueve la publicada
+// y no entra en la cadena: su guarda depende de lo que haya en 02_seed.sql.
+const sinRevisionNueva = r => {
+  try { return JSON.parse(fs.readFileSync(`data/importaciones/catalogo-${r}-v2/revision.json`, 'utf8')).revisionNueva === false; }
+  catch { return false; }
+};
 const cadena = fs.readdirSync('data/importaciones').map(d => d.match(/^catalogo-(\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?)-v2$/)?.[1])
   .filter(r => r && esRevisionLocal(r) && ordenRevisionLocal(r, '2026-10-22') >= 0 && ordenRevisionLocal(r, desde) <= 0 &&
-    fs.existsSync(`data/importaciones/catalogo-${r}-v2/aplicar-y-aprobar.sql`)).sort(ordenRevisionLocal);
+    fs.existsSync(`data/importaciones/catalogo-${r}-v2/aplicar-y-aprobar.sql`) && !sinRevisionNueva(r)).sort(ordenRevisionLocal);
 assert.equal(cadena.at(-1), desde, 'la cadena termina en la revisión de partida');
 for (const r of cadena) await db.exec(fs.readFileSync(`data/importaciones/catalogo-${r}-v2/aplicar-y-aprobar.sql`, 'utf8'));
 const antes = await leerVistas();

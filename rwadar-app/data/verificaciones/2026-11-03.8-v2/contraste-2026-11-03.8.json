@@ -1,0 +1,105 @@
+{
+  "tipo": "textos_plataformas",
+  "preparadaEl": "2026-11-04",
+  "etiqueta": "2026-11-03.8",
+  "revisionPublicadaExigida": "f2732257-206d-48ce-2067-c7e19fa33002",
+  "decision": "Víctor, 04/11/2026: «hasta que no esté todo no has acabado». Quedaban fuera de la entrega 2026-11-03.7 los textos de public.plataformas y public.fuentes de Reental, Toucan y RealT; la segunda revisión independiente pidió que el motivo de RealT dijera solo lo que dicen sus fuentes.",
+  "alcance": "Solo public.plataformas (la nota de Reental, el motivo de Toucan y la etiqueta y el motivo de RealT) y public.fuentes (RealT conserva sus 3 fuentes y gana la de Outlier Media). No crea ninguna revisión del catálogo: la publicada sigue siendo la f2732257. No cambia ningún estado, así que no registra cambios de estado ni avisos.",
+  "textos": {
+    "archivo": "textos-plataformas.json",
+    "sha256": "0e8ead20748a085fefee4d4180a8e38765538f39af9a9a10d4ca05a9f45d3535"
+  },
+  "cambios": [
+    {
+      "slug": "reental",
+      "columna": "nota",
+      "antes": "Proyectos inmobiliarios en España y Latinoamérica desde 100 €. La opción más accesible para un inversor español.",
+      "despues": "Proyectos inmobiliarios en España y Latinoamérica desde 100 €.",
+      "fuentes": []
+    },
+    {
+      "slug": "toucan-protocol",
+      "columna": "motivo_descarte",
+      "antes": "El bloqueo no es suyo sino del registro: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudia un estado «inmovilizado» que la permitiría, todavía sin resolver. Toucan respaldó públicamente la decisión.",
+      "despues": "El bloqueo no viene de Toucan, sino de los registros de carbono: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudia un estado «inmovilizado» que la permitiría, todavía sin resolver. Toucan respaldó públicamente la decisión.",
+      "fuentes": [
+        {
+          "url": "https://www.spglobal.com/commodity-insights/en/news-research/latest-news/energy-transition/052522-as-verra-halts-tokenization-of-carbon-credits-toucan-vows-to-keep-web3-ethos-alive",
+          "titulo": "S&P Global · Verra detiene la tokenización de créditos de carbono"
+        },
+        {
+          "url": "https://carboncredits.com/verra-suspension-carbon-credits-proposes-immobilizing-credits/",
+          "titulo": "CarbonCredits · Verra prohíbe tokenizar créditos retirados y propone inmovilizarlos"
+        },
+        {
+          "url": "https://blog.toucan.earth/response-to-verras-announcement/",
+          "titulo": "Toucan · su propia respuesta al anuncio de Verra"
+        }
+      ]
+    },
+    {
+      "slug": "realt",
+      "columna": "etiqueta_descarte",
+      "antes": "En liquidación",
+      "despues": "Liquidación anunciada",
+      "fuentes": [
+        {
+          "url": "https://detroitmi.gov/news/city-scores-major-win-tenants-living-troubled-real-token-properties-are-subject-sweeping-lawsuit",
+          "titulo": "Ciudad de Detroit · la ciudad gana una medida para los inquilinos de Real Token"
+        },
+        {
+          "url": "https://www.bridgedetroit.com/detroit-sues-blockchain-real-estate-firm/",
+          "titulo": "BridgeDetroit · Detroit demanda a Real Token por cientos de infracciones"
+        },
+        {
+          "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
+          "titulo": "BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar"
+        },
+        {
+          "url": "https://outliermedia.org/realt-crypto-real-estate-detroit-properties/",
+          "titulo": "Outlier Media · RealT planea vender sus inmuebles de Detroit"
+        }
+      ]
+    },
+    {
+      "slug": "realt",
+      "columna": "motivo_descarte",
+      "antes": "Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones, en la mayor demanda por insalubridad de la historia de la ciudad. Un juez le prohibió cobrar alquileres en las no conformes y le ordenó reparar. En julio de 2026 la propia empresa anunció liquidación voluntaria y la venta de sus más de 700 inmuebles en Detroit.",
+      "despues": "En julio de 2025, Detroit demandó a RealT, a sus dos cofundadores y a 165 sociedades vinculadas por más de 400 inmuebles residenciales que, según la demanda, incumplían las normas de construcción, salud y seguridad. Ese mismo mes, una orden judicial provisional le prohibió cobrar alquileres en sus inmuebles hasta que tuvieran certificado de cumplimiento y le ordenó corregir las infracciones. En julio de 2026, su cofundador Jean-Marc Jacobson dijo a los inversores que la empresa entraba en liquidación voluntaria y que iban a vender todos sus activos. RealT había vendido en tokens participaciones de unos 700 inmuebles de Detroit.",
+      "fuentes": [
+        {
+          "url": "https://detroitmi.gov/news/city-scores-major-win-tenants-living-troubled-real-token-properties-are-subject-sweeping-lawsuit",
+          "titulo": "Ciudad de Detroit · la ciudad gana una medida para los inquilinos de Real Token"
+        },
+        {
+          "url": "https://www.bridgedetroit.com/detroit-sues-blockchain-real-estate-firm/",
+          "titulo": "BridgeDetroit · Detroit demanda a Real Token por cientos de infracciones"
+        },
+        {
+          "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
+          "titulo": "BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar"
+        },
+        {
+          "url": "https://outliermedia.org/realt-crypto-real-estate-detroit-properties/",
+          "titulo": "Outlier Media · RealT planea vender sus inmuebles de Detroit"
+        }
+      ]
+    }
+  ],
+  "fuentesNuevas": [
+    {
+      "url": "https://outliermedia.org/realt-crypto-real-estate-detroit-properties/",
+      "titulo": "Outlier Media · RealT planea vender sus inmuebles de Detroit",
+      "publicada_el": "2026-07-16",
+      "consultada_el": "2026-11-04",
+      "literal": "Titular: «Crypto real estate company plans to sell over 700 Detroit properties», Aaron Mondry, 16/07/2026 (WebFetch, 04/11/2026). El título en castellano dice «planea», como el titular; la propuesta de la 2026-11-03.7 decía «anuncia que venderá», que es más que «plans to sell»."
+    }
+  ],
+  "sinCambios": [
+    "rwadar_catalogo (ninguna revisión nueva; la publicada sigue siendo la .7)",
+    "estados y fechas de verificación de las plataformas",
+    "las 3 fuentes que RealT ya tenía y las 3 de Toucan",
+    "Domoblock, Goldfinch y las otras 25 plataformas del radar",
+    "24 ofertas"
+  ]
+}
