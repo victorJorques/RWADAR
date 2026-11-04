@@ -2237,6 +2237,17 @@ for(const [nombre,alterar] of [
   prueba('sin cifras, las frases con plantilla vuelven a su texto en castellano y el idioma lo traduce',
     conPlantilla.length>=8&&conPlantilla.every(t=>/\sdata-rel-sin="/.test(t))&&/\?\?el\.getAttribute\('data-rel-sin'\)/.test(js)&&!/relInicial/.test(js));
   vm.runInContext("CATALOGO_CADUCADO=false;huellaInicio='';pintarInicio()",c);
+  // Recién añadidas (04/11): altas de los últimos 30 días, de la más nueva a la más antigua y 6 como mucho; sin ninguna, oculto.
+  const alta=o=>transparencia.ofertas[o.slug]?.anadidaEl||'',dA=o=>Math.round((Date.UTC(ahora.getFullYear(),ahora.getMonth(),ahora.getDate())-Date.parse(alta(o)+'T00:00:00Z'))/864e5);
+  const altas=emi.filter(o=>o.coleccion==='principales'&&alta(o)&&dA(o)>=0&&dA(o)<30).sort((a,b)=>alta(b).localeCompare(alta(a))||a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||
+    a.titulo.localeCompare(b.titulo,'es')).slice(0,6).map(o=>o.slug),carrusel=()=>[...p.obtiene('relNuevasLista').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]);
+  const conAltas=carrusel(),oculto=p.obtiene('relNuevas').hidden;
+  vm.runInContext("var _a=Object.values(TRANSPARENCIA_POR_SLUG).map(e=>[e,e.anadidaEl]);_a.forEach(([e])=>e.anadidaEl='2000-01-01');huellaInicio='';pintarInicio()",c);
+  const sinAltas=[carrusel().length,p.obtiene('relNuevas').hidden];
+  vm.runInContext("_a.forEach(([e,f])=>e.anadidaEl=f);huellaInicio='';pintarInicio()",c);
+  prueba('Inicio: «Recién añadidas» son las altas de los últimos 30 días, ordenadas, y no sale sin ninguna',
+    JSON.stringify(conAltas)===JSON.stringify(altas)&&oculto===!altas.length&&sinAltas[0]===0&&sinAltas[1]===true&&
+    /id="relPortada"[\s\S]*id="relNuevas"[\s\S]*id="relCap1"/.test(panelInicioHTML));
   // La prueba de notas «x/5» y la del título exacto fijaban redacción: fuera (decisión de Víctor, 04/11/2026).
   vm.runInContext(`abrirDetalleOfertaLocal('${sacada}')`,c);
   const detalle=p.obtiene('escaparateDetalleLocal').innerHTML;
@@ -2256,7 +2267,7 @@ for(const [nombre,alterar] of [
     /^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>$/.test(cajaDetalle)&&
     lista.includes('<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>')&&
     detalle.includes('<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>')&&
-    (htmlInicio.match(/<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===1&&
+    (htmlInicio.match(/<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===2&&
     !/Ilustración(?: editorial)?<\/span>/.test(p.obtiene('grid').innerHTML+lista)&&
     !/(?:font-size|font)\s*:[^;]*\.[0-6]\d*rem/.test(declaracionesCSS(css,'.nota-ilustrativa').join(';')));
   // Chips de categoría: orden fijo, nombre corto y sin cortar; recuentos en Plataformas.

@@ -234,6 +234,8 @@ const es = {
     ofertas: (n) => (n ? `Ver las ${n} ofertas` : 'Ver las ofertas'),
     plataformas: (n) => (n ? `Ver las ${n} plataformas` : 'Ver las plataformas'),
     riesgo: 'Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.',
+    // Enlace discreto a la Academy (decisión de Víctor del 04/11/2026), como en la web.
+    academy: (n) => `¿Empiezas de cero? ${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en Academy`,
   },
   fuentes: {
     titulo: 'Fuentes',
@@ -468,6 +470,7 @@ const en = {
     ofertas: (n) => (n ? `See the ${n} offers` : 'See the offers'),
     plataformas: (n) => (n ? `See the ${n} platforms` : 'See the platforms'),
     riesgo: 'Investing carries risk: you can lose some or all of what you invest.',
+    academy: (n) => `Starting from scratch? ${n} free ${n === 1 ? 'lesson' : 'lessons'} on Academy`,
   },
   fuentes: {
     titulo: 'Sources',

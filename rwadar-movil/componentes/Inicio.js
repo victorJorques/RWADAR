@@ -5,6 +5,9 @@ import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { Icono } from './Navegacion';
 import Radar from './Radar';
 import { ImagenOferta } from './Ofertas';
+import RecienAnadidas from './RecienAnadidas';
+import { recienAnadidas } from '../lib/recien-anadidas';
+import { LECCIONES } from '../lib/academy-contenido';
 import { DESTINOS_NOTICIAS, NOTICIAS } from '../lib/noticias-contenido';
 import { CAPITULOS_INICIO, CIFRAS_MERCADO_EL, textosInicio } from '../lib/inicio-contenido';
 import { FUENTES_INICIO, GRUPOS_FUENTES_INICIO } from '../lib/inicio-fuentes';
@@ -200,6 +203,9 @@ function Bloque({ n, c, t, onFuentes, onLayout, children, pie = null }) {
   );
 }
 
+// Las lecciones que de verdad se pueden leer (las demás salen como «Próximamente»).
+const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
+
 export default function Inicio({
   refrescando, onActualizar, onDestino, onExplicar, fuera = [], cambios = [], renderCambio,
   plataformas = [], ofertas = [], fechaCatalogo = null, onAbrirPlataforma, onAbrirOferta, onAbrirEnlace,
@@ -309,6 +315,11 @@ export default function Inicio({
           <Text noTraducir style={e.fuentesApartadoTxt}>{t.portada.fuentes} ›</Text>
         </Pressable>
       </View>
+
+      {/* Recién añadidas: justo bajo la portada, para que al bajar un poco se
+          vean ofertas de verdad. Sin catálogo vigente, nada. */}
+      <RecienAnadidas ofertas={recienAnadidas(ofertas, { catalogoCaducado: !cifras.vigente })}
+        onAbrirOferta={onAbrirOferta} onVerTodas={() => onDestino('ofertas-nuevas')} />
 
       {cambios.length ? (
         <View style={e.seccion}>
@@ -516,6 +527,10 @@ export default function Inicio({
           <Text noTraducir style={e.b2Txt}>{t.seguir.plataformas(cifras.vigente ? cifras.plataformas : 0)}</Text>
         </Pressable>
         <Text noTraducir style={e.aviso}>{t.seguir.riesgo}</Text>
+        <Pressable onPress={() => { tacto.abrir(); onDestino('academy'); }} style={({ pressed }) => [e.b3, e.b3Tras, pressed && pulsado('b3')]}
+          accessibilityRole="link" noTraducir accessibilityLabel={t.seguir.academy(LECCIONES_PUBLICADAS)}>
+          <Text noTraducir style={e.b3Txt}>{t.seguir.academy(LECCIONES_PUBLICADAS)} ›</Text>
+        </Pressable>
         <Pressable onPress={onExplicar} style={({ pressed }) => [e.banner, pressed && pulsado('b2')]}
           accessibilityRole="button" accessibilityLabel="Abrir explicación animada sobre tokenización">
           <View style={e.bannerMarca}><Icono nombre="ayuda" color={C.senal} tamano={20} /></View>

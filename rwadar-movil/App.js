@@ -50,6 +50,7 @@ import {
 } from './componentes/Ofertas';
 import { resumenOferta } from './lib/ficha-editorial';
 import { enSeleccionOferta } from './lib/transparencia';
+import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
 const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
@@ -120,6 +121,8 @@ export default function App() {
   const [categoria, setCategoria] = useState('');
   const [busquedaOfertas, setBusquedaOfertas] = useState('');
   const [grupoOfertas, setGrupoOfertas] = useState('principales');
+  // Orden de Ofertas, como el selector de la web: «aldia» o «nuevas».
+  const [ordenOfertas, setOrdenOfertas] = useState('aldia');
   const [tipoOferta, setTipoOferta] = useState('');
   const [proveedorOferta, setProveedorOferta] = useState('');
   const [grupoProveedorAbierto, setGrupoProveedorAbierto] = useState('');
@@ -400,12 +403,13 @@ export default function App() {
   ), [ofertasDelGrupo]);
   const ofertasVisibles = useMemo(() => {
     const q = busquedaOfertas.trim().toLocaleLowerCase('es');
-    return ordenarOfertasLectura(ofertasDelGrupo.filter((oferta) => {
+    const lista = ordenarOfertasLectura(ofertasDelGrupo.filter((oferta) => {
       if (tipoOferta && oferta.tipo !== tipoOferta) return false;
       if (proveedorOferta && oferta.plataformaSlug !== proveedorOferta) return false;
       return !q || textoBusquedaOferta(oferta).includes(q);
     }));
-  }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta]);
+    return ordenOfertas === 'nuevas' ? ordenarMasNuevas(lista) : lista;
+  }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta, ordenOfertas]);
   const columnasOfertas = anchoPantalla >= 1120 ? 3 : anchoPantalla >= 720 ? 2 : 1;
   const separacionOfertas = 12;
   const anchoCeldaOferta = (anchoPantalla - (UI.margen * 2)
@@ -417,8 +421,9 @@ export default function App() {
      arriba la Selección RWAdar (las que pasan las cinco comprobaciones de
      transparencia; falla cerrado). Con dos o tres columnas siguen los grupos. */
   const filasOfertas = useMemo(() => {
-    const filas = agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas && columnasOfertas > 1);
-    const conSeleccion = columnasOfertas === 1 && (grupoOfertas === 'principales' || grupoOfertas === 'todo');
+    const filas = agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas && columnasOfertas > 1 && ordenOfertas !== 'nuevas');
+    // Con «Más nuevas primero», una sola lista: la más nueva arriba (como la web).
+    const conSeleccion = columnasOfertas === 1 && ordenOfertas !== 'nuevas' && (grupoOfertas === 'principales' || grupoOfertas === 'todo');
     if (!conSeleccion) return filas;
     const ahora = new Date();
     const elegidas = filas.filter((fila) => fila.tipo === 'oferta' &&
@@ -427,7 +432,7 @@ export default function App() {
     const resto = filas.filter((fila) => !elegidas.includes(fila));
     return [{ tipo: 'cabecera', slug: 'cabecera:seleccion', seleccion: true }, ...elegidas,
       ...(resto.length ? [{ tipo: 'cabecera', slug: 'cabecera:resto' }, ...resto] : [])];
-  }, [ofertasVisibles, hayRestriccionesOfertas, columnasOfertas, grupoOfertas, catalogoCaducado]);
+  }, [ofertasVisibles, hayRestriccionesOfertas, columnasOfertas, grupoOfertas, catalogoCaducado, ordenOfertas]);
 
   const seleccionarGrupoOfertas = (grupo) => {
     tacto.eleccion();
@@ -560,10 +565,16 @@ export default function App() {
   const irA = (destino, url) => {
     if (destino === 'academy') abrirAcademy();
     else if (destino === 'web' && url) abrirEnlace(url);
-    else if (destino === 'buscar' || destino === 'ofertas' || destino === 'fuera' || destino === 'plataformas') {
+    else if (destino === 'buscar' || destino === 'ofertas' || destino === 'ofertas-nuevas' || destino === 'fuera' || destino === 'plataformas') {
       tacto.eleccion();
       irADescartadas.current = destino === 'fuera' && fuera.length > 0;
-      setVistaBuscar(destino === 'ofertas' ? 'ofertas' : 'empresas');
+      // «Ver todas las ofertas nuevas»: Principales con «Más nuevas primero».
+      // Sin los filtros ni la búsqueda de antes, para que se vean todas las nuevas.
+      if (destino === 'ofertas-nuevas') {
+        setOrdenOfertas('nuevas'); setGrupoOfertas('principales');
+        setTipoOferta(''); setProveedorOferta(''); setGrupoProveedorAbierto(''); setBusquedaOfertas('');
+      }
+      setVistaBuscar(destino === 'ofertas' || destino === 'ofertas-nuevas' ? 'ofertas' : 'empresas');
       setPestana('buscar');
       if (irADescartadas.current && pestana === 'buscar' && vistaBuscar === 'empresas') bajarADescartadas();
     }
@@ -871,8 +882,27 @@ export default function App() {
                         </Text>
                       </Pressable>
                     </View>
+                    {/* Ordenar por, como el selector de la web. La diana de cada chip
+                        mide 48 px; el chip se ve de 36, como los demás. */}
+                    <View style={e.ordenOfertas} accessibilityRole="radiogroup" accessibilityLabel="Ordenar por">
+                      <Text style={e.ordenOfertasEtiqueta}>Ordenar por</Text>
+                      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={e.ordenOfertasChips}>
+                        {[['aldia', 'Las más al día primero'], ['nuevas', 'Más nuevas primero']].map(([valor, texto]) => (
+                          <Pressable key={valor} onPress={() => { tacto.eleccion(); setOrdenOfertas(valor); }} style={e.chipOrden}
+                            accessibilityRole="radio" accessibilityState={{ checked: ordenOfertas === valor }} accessibilityLabel={texto}>
+                            {({ pressed }) => (
+                              <View style={[e.chip, e.chipOrdenCara, ordenOfertas === valor && e.chipOn, pressed && e.pulsado]}>
+                                <Text style={[e.chipTxt, ordenOfertas === valor && e.chipTxtOn]} numberOfLines={1}>{texto}</Text>
+                              </View>
+                            )}
+                          </Pressable>
+                        ))}
+                      </ScrollView>
+                    </View>
                     {/* La frase de la Selección, solo cuando la lista la lleva arriba. */}
-                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>{filasOfertas[0]?.seleccion
+                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>{ordenOfertas === 'nuevas'
+                      ? 'Primero, las que hemos añadido al radar más recientemente. El orden no depende de pagos ni de rentabilidades.'
+                      : filasOfertas[0]?.seleccion
                       ? 'Arriba, la Selección RWAdar: las que pasan las 5 comprobaciones de transparencia. Después, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'
                       : 'Primero, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'}</Text> : null}
                     <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
@@ -935,7 +965,7 @@ export default function App() {
                       tacto.abrir(); setProveedorOferta(item.proveedorSlug); setGrupoProveedorAbierto(item.proveedorSlug);
                     }} />
                     : <FichaOferta oferta={item.oferta} plataforma={radar.find(p => p.slug === item.oferta.plataformaSlug)}
-                      catalogoCaducado={catalogoCaducado}
+                      catalogoCaducado={catalogoCaducado} nueva={esNueva(item.oferta, { catalogoCaducado })}
                       onAbrir={() => { tacto.abrir(); setOfertaAbierta(item.oferta); }} />}
                 </View>
               )}
@@ -2016,6 +2046,11 @@ const e = StyleSheet.create({
   filtroGrupoEtiqueta: { ...T.etiqueta, color: C.tx3, marginTop: 4, marginBottom: 2 },
   chipsOfertas: { maxHeight: 50 },
   chipsContenidoCompacto: { paddingTop: 5, paddingBottom: 7 },
+  ordenOfertas: { marginTop: 4 },
+  ordenOfertasEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 2 },
+  ordenOfertasChips: { maxHeight: 50 },
+  chipOrden: { minHeight: UI.tactil, justifyContent: 'center', marginRight: 8 },
+  chipOrdenCara: { marginRight: 0 },
 
   ficha: {
     backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,

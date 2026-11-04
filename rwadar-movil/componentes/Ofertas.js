@@ -86,7 +86,7 @@ function rentabilidadSecundaria(oferta) {
 // El aviso general (igual en todas las fichas) no ocupa la tarjeta: va una vez
 // encima de la lista y entero en el detalle.
 const AVISO_GENERAL = /^Referencia editorial gratuita\b/;
-function avisosCriticos(oferta) {
+export function avisosCriticos(oferta) {
   return (oferta?.avisos || [])
     .filter((aviso) => !AVISO_GENERAL.test(String(aviso?.texto || '')))
     .filter((aviso) => (aviso.tono === 'warn' || aviso.tono === 'stop')
@@ -247,12 +247,12 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
    ficha», la fecha y «Ver ficha». El aviso crítico (tono stop) se lee entero
    siempre; el ordinario se resume en su número y sigue entero para el lector
    de pantalla y en la ficha. */
-function avisosContables(oferta) {
+export function avisosContables(oferta) {
   return (oferta?.avisos || []).filter((aviso) => aviso && String(aviso.texto || '').trim() &&
     aviso.tono !== 'ok' && (!aviso.esAntiguedad || aviso.tono === 'stop'));
 }
 
-export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catalogoCaducado = false }) {
+export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catalogoCaducado = false, nueva = false }) {
   const idiomaActual = useIdioma();
   const ahora = useFechaOferta();
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
@@ -286,7 +286,7 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
   const lugar = imagenEditorialOferta(oferta)?.lugar || '';
   const etiquetaAccesible = [
-    `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar,
+    `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar, nueva && !catalogoCaducado ? traducir('Nueva') : null,
     traducir(ETIQUETA_EDITORIAL),
     oferta.patrocinada ? traducir('Contenido patrocinado; no altera el ranking') : null,
     ...puntos.map((punto) => `✓ ${traducir(punto.texto)}`),
@@ -319,6 +319,8 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
             {lugar ? <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt}>{` · ${lugar}`}</Text> : null}
           </Text>
           <View style={e.metaFicha}>
+            {/* «Nueva»: añadida al radar hace menos de 14 días (lib/recien-anadidas.js, desde App.js). */}
+            {nueva && !catalogoCaducado ? <Text style={e.etiquetaNueva}>Nueva</Text> : null}
             <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
               style={[e.estadoFicha, vigenteOk ? e.estadoOk : e.estadoCaducado]}>{estadoTraducido}</Text>
             {!catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false
@@ -827,6 +829,7 @@ const e = StyleSheet.create({
   estadoFicha: { ...T.menor, fontFamily: F.semi, color: C.tx2, fontSize: 13, lineHeight: 18 },
   estadoOk: { color: C.senal },
   metaFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 3 },
+  etiquetaNueva: { ...T.etiqueta, color: C.senal, backgroundColor: C.senalT, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden' },
   noDisponible: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.alarma },
   // Sin cifras vigentes, en ámbar en la fila y en la ficha, como la web (.caducado).
   estadoCaducado: { color: C.aviso },
