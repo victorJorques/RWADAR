@@ -9,26 +9,28 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 ## 4 de noviembre de 2026 (noche, 2) · Claude · entrega 2026-11-04: arreglos de datos del catálogo (sin aplicar)
 
 Rama local `claude/catalogo-2026-11-04` (worktree `catalogo-1104`, sale de
-`main` 081fc27), un commit. **Sin push, Supabase solo leído como visitante,
+`main` 081fc27), dos commits (preparación y corrección tras la revisión
+independiente). **Sin push, Supabase solo leído como visitante,
 nada publicado, sin OTA ni workflows.** Solo datos; la web va en otras ramas.
 
 - **Parte de la publicada:** lectura como visitante a las 19:07:11 UTC del 04/11:
   `f2732257` (la .7 con los textos de la .8), 26 plataformas, 24 ofertas
   (8/13/3). Guardada en `verificaciones/2026-11-04-v2/lectura-publica/`; el
   preparador comprueba que coincide con la base local.
-- **Etiqueta `2026-11-04`**, revisión nueva `50073929…`, `aplicar-y-aprobar.sql`
-  SHA `fccac4f2c4e610757d4f2e2001733ab2c51f24271ff1821e434d89dc1d69c2a6`.
+- **Etiqueta `2026-11-04`**, revisión nueva `cf79e4a4…`, `aplicar-y-aprobar.sql`
+  SHA `85e848edc433efa6d1a240a16438e9ccfbce5061ef9be53444f81a4e081df464`.
   Entrega documental: radar, cifras y vigencia siguen del 03/11 (vence el 11/11).
 - **Qué cambia:**
   - «Datos con su fecha»: 228 rótulos internos («accesoEspana · consulta …»)
     pasan a castellano («Acceso desde España · consulta …») en 21 ofertas;
     valores, fuentes y fechas iguales.
-  - 59 referencias en 20 ofertas y 2 fuentes del radar (REGAFI de Spiko) dejan
+  - 39 referencias en 18 ofertas y 2 fuentes del radar (REGAFI de Spiko) dejan
     la dirección de API por la página para personas (Aktionariat, BOSS Info y
     SwitzerLend `/trade` e `/invest`; Spiko `data.spiko.io`; Brickwise
     `www.brickwise.at/assets/<isin>` o el mercado de la app; Alius Capital;
     buscador de ESMA; ficha del REGAFI). Comprobadas hoy con curl y Chrome sin
-    interfaz.
+    interfaz. **Se decide por referencia:** si la página no enseña ese mismo
+    dato, la referencia conserva la API (`seQuedan[].referencias`).
   - ARTEX «Blockchains»: «Mercado regulado (MTF)» → «No usa blockchain» (su FAQ).
   - Toucan: fuente nueva del ACR (30/05/2022) y motivo fechado en mayo de 2022.
 - **Generador arreglado:** diccionario de los 67 campos en
@@ -36,8 +38,20 @@ nada publicado, sin OTA ni workflows.** Solo datos; la web va en otras ramas.
   y `montar-revision.mjs` (que falla si llega un campo sin rótulo).
 - **Lo que no se pudo:** el libro de órdenes de Brickwise
   (`api.app.brickwise.at/api/v1/assets`, 11 fichas) no tiene página pública y
-  se queda; el JS de Midas (mTBILL) no tiene equivalente; el estado de hoy de
-  Verra/ACR no se pudo leer (Verra da 403). Detalle en el informe.
+  se queda; también se quedan 14 referencias de Brickwise (precio de emisión,
+  disponibles en emisión, etapa, condiciones; y precio y rentabilidad de
+  Cohotel y GreenPoint, que el mercado da con otra medida) y las 6 del mínimo
+  y la salida de Aktionariat y BOSS Info (solo en la configuración que carga
+  `/invest`, no en pantalla); el JS de Midas (mTBILL) no tiene equivalente; el
+  estado de hoy de Verra/ACR no se pudo leer (Verra da 403). Detalle en el
+  informe, §3.
+- **Corrección tras la revisión independiente** (informe §7): Brickwise 15
+  referencias (12 conservan la API; las 3 de «Precio más bajo en mercado
+  secundario» enlazan el mercado, que enseña «Preis pro Anteil ab») y, con el
+  mismo criterio, 2 más («disponibles en emisión» de Pottendorfer y
+  Sonnleithnergasse); Aktionariat y BOSS Info 6 referencias con la API; Toucan
+  «que la permitiría» → «que permitiría tokenizarlos». Tras corregir: PGlite correcto
+  (27 + 16 fallos), preparador reproducible y `npm test` completo, salida 0.
 - **Pruebas:** `comprobar-entrega.mjs` correcto (27 comprobaciones, 16 casos de
   fallo que no dejan nada); `preparar-entrega.mjs` reproducible; `npm test`
   completo en verde.

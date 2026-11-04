@@ -902,6 +902,7 @@
       "https://shares.aktionariat.com/trade",
       "https://www.aktionariat.com/disclaimer",
       "https://shares.aktionariat.com/investor-page-terms",
+      "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
       "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
       "https://www.aktionariat.com/terms-of-service"
     ],
@@ -1033,8 +1034,8 @@
         "valor": "bankTransferLimit enabled min 500",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://shares.aktionariat.com/invest",
-        "alcance": "Configuración técnica del portal; la orden por defecto es de 100 DAKS (725 CHF). Mínimo en CHF, no en EUR. Localizador: Datos embebidos en la portada (data-sveltekit-fetched). Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+        "alcance": "Configuración técnica del portal; la orden por defecto es de 100 DAKS (725 CHF). Mínimo en CHF, no en EUR. Localizador: Datos embebidos en la portada (data-sveltekit-fetched)."
       },
       {
         "etiqueta": "Acceso desde España · consulta 01/11/2026",
@@ -1057,8 +1058,8 @@
         "valor": "As communicated to our shareholders, the sell-side of the Brokerbot will remain disabled for the foreseeable future. Feel free to post your sell offer on our secondaries widget below.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://shares.aktionariat.com/invest",
-        "alcance": "Sin fecha de reapertura. Localizador: disabledSellText; venta desactivada (sellingEnabled: no) y solo lado comprador (onlyBuySide: sí). Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+        "alcance": "Sin fecha de reapertura. Localizador: disabledSellText; venta desactivada (sellingEnabled: no) y solo lado comprador (onlyBuySide: sí)."
       },
       {
         "etiqueta": "Salida · consulta 01/11/2026",
@@ -1113,8 +1114,8 @@
         "valor": "500 CHF por transferencia bancaria",
         "fechaDato": null,
         "fechaConsulta": "2026-11-03",
-        "fuente": "https://shares.aktionariat.com/invest",
-        "alcance": "Comprobado de nuevo en la fuente el 03/11/2026 (mismo documento que en la revisión del 01/11). Configuración pública de compra del emisor. Leído el 03/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+        "alcance": "Comprobado de nuevo en la fuente el 03/11/2026 (mismo documento que en la revisión del 01/11). Configuración pública de compra del emisor."
       },
       {
         "etiqueta": "Acceso desde España",
@@ -1142,7 +1143,8 @@
       "https://shares.bossinfo.com/",
       "https://shares.bossinfo.com/invest",
       "https://shares.bossinfo.com/trade",
-      "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf"
+      "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+      "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS"
     ],
     "caracteristicas": [
       {
@@ -1280,16 +1282,16 @@
         "valor": "bankTransferLimit enabled min 100",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://shares.bossinfo.com/invest",
-        "alcance": "La orden por defecto del portal es de 500 BOSS (4.251,61 CHF). Localizador: Datos embebidos en la portada. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+        "alcance": "La orden por defecto del portal es de 500 BOSS (4.251,61 CHF). Localizador: Datos embebidos en la portada."
       },
       {
         "etiqueta": "Salida · consulta 01/11/2026",
         "valor": "Aktuell ist der Ankauf von Aktien aufgrund eines Wartungsfensters deaktiviert.",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://shares.bossinfo.com/invest",
-        "alcance": "Localizador: disabledSellText; sellingEnabled=false. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+        "alcance": "Localizador: disabledSellText; sellingEnabled=false."
       },
       {
         "etiqueta": "Salida · consulta 01/11/2026",
@@ -1320,8 +1322,8 @@
         "valor": "100 CHF por transferencia bancaria",
         "fechaDato": "2026-11-03",
         "fechaConsulta": "2026-11-03",
-        "fuente": "https://shares.bossinfo.com/invest",
-        "alcance": "Redacción en castellano del dato comprobado en la fuente el 03/11/2026. Configuración pública de compra del emisor; en cripto, desde 1 acción. Leído el 03/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+        "alcance": "Redacción en castellano del dato comprobado en la fuente el 03/11/2026. Configuración pública de compra del emisor; en cripto, desde 1 acción."
       },
       {
         "etiqueta": "Salida",
@@ -1721,6 +1723,7 @@
     "descripcion": "Genussscheine tokenizados de Brick Qogir GmbH & Co KG sobre las rentas de un terreno con supermercado alquilado a BILLA hasta 2057 en Brückl (Carintia). Emisión primaria a 100 € por participación, pendiente de alcanzar su umbral mínimo. Qué se adquiere: Genussschein tokenizado perpetuo (capital ajeno a efectos fiscales) sobre el excedente neto de alquiler y la venta del terreno con supermercado BILLA en Brückl; prenda colectiva prevista en el registro",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://api.app.brickwise.at/api/v2/assets",
       "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
       "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
       "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
@@ -1824,24 +1827,24 @@
         "valor": "6.342 de 6.404",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       },
       {
         "etiqueta": "Precio de emisión por participación (API) · 22/10/2026",
         "valor": "100,00 EUR",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       },
       {
         "etiqueta": "Estado de la oferta · consulta 01/11/2026",
         "valor": "\"stage\":\"primary\",\"availableBricks\":6322,\"bricks\":6404",
         "fechaDato": "2026-10-29",
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "El 23/10/2026 la API daba 6.342 disponibles y el 01/11 6.322: hay suscripciones en curso. Ver conflicto de plazo. Localizador: Objeto id=AT0000A3SE89: stage, availableBricks, bricks; updatedAt=2026-10-29T12:39:14.815Z. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "El 23/10/2026 la API daba 6.342 disponibles y el 01/11 6.322: hay suscripciones en curso. Ver conflicto de plazo. Localizador: Objeto id=AT0000A3SE89: stage, availableBricks, bricks; updatedAt=2026-10-29T12:39:14.815Z."
       },
       {
         "etiqueta": "Estado de la oferta · consulta 01/11/2026",
@@ -1920,8 +1923,8 @@
         "valor": "investmentConditionsUrl: https://staging.cdn.brickwise.at/cc140258-...pdf",
         "fechaDato": null,
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Las copias de storage.googleapis.com/brickwise_templates tienen el mismo SHA-256 que las de staging (contrato, KID e Informationsblatt), lo que reduce la duda de versión. Dirección del emisor: contrato Marxergasse 24/2/EG (Viena) frente a Börseplatz 4 en la API. Localizador: Objeto id=AT0000A3SE89: investmentConditionsUrl y documents{}. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "Las copias de storage.googleapis.com/brickwise_templates tienen el mismo SHA-256 que las de staging (contrato, KID e Informationsblatt), lo que reduce la duda de versión. Dirección del emisor: contrato Marxergasse 24/2/EG (Viena) frente a Börseplatz 4 en la API. Localizador: Objeto id=AT0000A3SE89: investmentConditionsUrl y documents{}."
       },
       {
         "etiqueta": "Comisiones · consulta 01/11/2026",
@@ -2286,6 +2289,7 @@
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace",
       "https://www.brickwise.at/marketplace",
+      "https://api.app.brickwise.at/api/v2/assets",
       "https://www.brickwise.at/assets/at0000a2t4d7",
       "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
       "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
@@ -2366,15 +2370,15 @@
         "valor": "0 de 2.350",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a2t4d7",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       },
       {
         "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
         "valor": "75,00 EUR",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a2t4d7",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
       },
       {
@@ -3425,6 +3429,7 @@
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace",
       "https://www.brickwise.at/marketplace",
+      "https://api.app.brickwise.at/api/v2/assets",
       "https://www.brickwise.at/assets/at0000a2zt84",
       "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
       "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
@@ -3505,23 +3510,23 @@
         "valor": "374 de 2.670",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a2zt84",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       },
       {
         "etiqueta": "Precio de emisión por participación (API) · 22/10/2026",
         "valor": "100,24 EUR",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a2zt84",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       },
       {
         "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
         "valor": "75,00 EUR",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a2zt84",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
       },
       {
@@ -3878,6 +3883,7 @@
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace",
       "https://www.brickwise.at/marketplace",
+      "https://api.app.brickwise.at/api/v2/assets",
       "https://www.brickwise.at/assets/at0000a324b4",
       "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
       "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
@@ -3958,15 +3964,15 @@
         "valor": "0 de 1.410",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a324b4",
-        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura."
       },
       {
         "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
         "valor": "80,00 EUR",
         "fechaDato": null,
         "fechaConsulta": "2026-10-22",
-        "fuente": "https://www.brickwise.at/assets/at0000a324b4",
+        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
         "alcance": "Visto en la fuente oficial el 22/10/2026. Cifra indicativa y variable; no garantiza disponibilidad, elegibilidad ni rentabilidad futura. Leído el 22/10/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
       },
       {
@@ -4092,13 +4098,15 @@
     ]
   },
   "fotovoltaica-greenpoint": {
-    "revisadaEl": "2026-11-04",
+    "revisadaEl": "2026-11-03",
     "descripcion": "Participaciones tokenizadas (Genussscheine) de Green-Point 62 GmbH ligadas a los ingresos de una instalación fotovoltaica en Wiener Neustadt. Hoy solo se compran a otros inversores en el mercado de la app. Qué se adquiere: Genussschein tokenizado a 15 años con reembolso del nominal cualificadamente subordinado",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://api.app.brickwise.at/api/v2/assets",
       "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
       "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
       "https://api.app.brickwise.at/api/v1/assets",
+      "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
       "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
       "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
       "https://www.brickwise.at/imprint"
@@ -4199,16 +4207,16 @@
         "valor": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":351",
         "fechaDato": "2026-11-01",
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "La emisión primaria terminó (campaña 30.12.2023); solo hay órdenes de reventa entre inversores. Una orden publicada no garantiza ejecución. Localizador: Objeto id=AT0000A38J32: stage, availableBricks, availableBricksSecondary; updatedAt=2026-11-01T11:33:00.389Z. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "La emisión primaria terminó (campaña 30.12.2023); solo hay órdenes de reventa entre inversores. Una orden publicada no garantiza ejecución. Localizador: Objeto id=AT0000A38J32: stage, availableBricks, availableBricksSecondary; updatedAt=2026-11-01T11:33:00.389Z."
       },
       {
         "etiqueta": "Precio · consulta 01/11/2026",
         "valor": "\"sharePrice\":95",
         "fechaDato": "2026-11-01",
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Campo sin metodología publicada en las fuentes leídas (probablemente última referencia de mercado); no es precio ejecutable. Localizador: Objeto id=AT0000A38J32: sharePrice. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "Campo sin metodología publicada en las fuentes leídas (probablemente última referencia de mercado); no es precio ejecutable. Localizador: Objeto id=AT0000A38J32: sharePrice."
       },
       {
         "etiqueta": "Precio · consulta 01/11/2026",
@@ -4239,8 +4247,8 @@
         "valor": "\"rentalReturn\":6.43; rentalSurplus=10942.56",
         "fechaDato": "2026-11-01",
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Rendimiento esperado que calcula la API para la instalación: excedente anual previsto (10942.56 €) / (1790 participaciones × 95 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado. Localizador: rentalDetails: rentalReturn, rentalSurplus, rentalIncome. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+        "alcance": "Rendimiento esperado que calcula la API para la instalación: excedente anual previsto (10942.56 €) / (1790 participaciones × 95 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado. Localizador: rentalDetails: rentalReturn, rentalSurplus, rentalIncome."
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",
@@ -4325,13 +4333,15 @@
     ]
   },
   "fotovoltaica-cohotel": {
-    "revisadaEl": "2026-11-04",
+    "revisadaEl": "2026-11-03",
     "descripcion": "Participaciones tokenizadas (Genussscheine) de COHOTEL Hotelbetriebsgesellschaft m.b.H. ligadas a los ingresos de una instalación fotovoltaica en Steyregg. Hoy solo se compran a otros inversores en el mercado de la app. Qué se adquiere: Genussschein tokenizado a 15 años con reembolso del nominal cualificadamente subordinado",
     "fuentes": [
       "https://app.brickwise.at/desktopWeb/marketplace",
+      "https://api.app.brickwise.at/api/v2/assets",
       "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
       "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
       "https://api.app.brickwise.at/api/v1/assets",
+      "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
       "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
       "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
       "https://www.brickwise.at/imprint"
@@ -4432,16 +4442,16 @@
         "valor": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":65",
         "fechaDato": "2026-10-08",
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "La emisión primaria terminó (campaña 4/.1/.024); solo hay órdenes de reventa entre inversores. Una orden publicada no garantiza ejecución. Localizador: Objeto id=AT0000A38J40: stage, availableBricks, availableBricksSecondary; updatedAt=2026-10-08T19:57:53.081Z. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "La emisión primaria terminó (campaña 4/.1/.024); solo hay órdenes de reventa entre inversores. Una orden publicada no garantiza ejecución. Localizador: Objeto id=AT0000A38J40: stage, availableBricks, availableBricksSecondary; updatedAt=2026-10-08T19:57:53.081Z."
       },
       {
         "etiqueta": "Precio · consulta 01/11/2026",
         "valor": "\"sharePrice\":120",
         "fechaDato": "2026-10-08",
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Campo sin metodología publicada en las fuentes leídas (probablemente última referencia de mercado); no es precio ejecutable. Localizador: Objeto id=AT0000A38J40: sharePrice. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://api.app.brickwise.at/api/v2/assets",
+        "alcance": "Campo sin metodología publicada en las fuentes leídas (probablemente última referencia de mercado); no es precio ejecutable. Localizador: Objeto id=AT0000A38J40: sharePrice."
       },
       {
         "etiqueta": "Precio · consulta 01/11/2026",
@@ -4472,8 +4482,8 @@
         "valor": "\"rentalReturn\":5.11; rentalSurplus=4909.64",
         "fechaDato": "2026-10-08",
         "fechaConsulta": "2026-11-01",
-        "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
-        "alcance": "Rendimiento esperado que calcula la API para la instalación: excedente anual previsto (4909.64 €) / (800 participaciones × 120 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado. Localizador: rentalDetails: rentalReturn, rentalSurplus, rentalIncome. Leído el 01/11/2026 en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el 04/11/2026)."
+        "fuente": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+        "alcance": "Rendimiento esperado que calcula la API para la instalación: excedente anual previsto (4909.64 €) / (800 participaciones × 120 € de referencia). Bruta de impuestos del inversor, sin comisión del 1,5 %; previsión sin fecha de cálculo, no reparto realizado ni garantizado. Localizador: rentalDetails: rentalReturn, rentalSurplus, rentalIncome."
       },
       {
         "etiqueta": "Qué se adquiere · consulta 01/11/2026",

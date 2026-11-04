@@ -4,7 +4,7 @@ Preparada el 04/11/2026 por Claude en el worktree
 `/home/user/RWADAR/.claude/worktrees/catalogo-1104`, rama
 `claude/catalogo-2026-11-04` (sale de `origin/main`, 081fc27; sin push).
 **Nada aplicado en Supabase, nada publicado, sin OTA, ningún workflow lanzado.**
-Estado: **preparada y probada en local** (sin revisión independiente todavía).
+Estado: **preparada y probada en local; revisada por un corrector independiente y corregidos sus tres hallazgos (§7).**
 
 Solo datos: la web la arreglan otras ramas (dejar de enlazar direcciones de API, etc.).
 
@@ -23,9 +23,9 @@ Solo datos: la web la arreglan otras ramas (dejar de enlazar direcciones de API,
   porque la documentación revisada más reciente es del 04/11. **El radar, las
   cifras y la vigencia siguen siendo del 03/11** (el lote vence el 11/11, igual
   que la .7); no se alarga ningún plazo.
-- **Revisión nueva:** `50073929-54fb-98f1-9596-d055c87e06d4`.
+- **Revisión nueva:** `cf79e4a4-f828-96ce-681b-ae69c3d1b81b`.
 - **SHA-256 de `rwadar-app/data/importaciones/catalogo-2026-11-04-v2/aplicar-y-aprobar.sql`:
-  `fccac4f2c4e610757d4f2e2001733ab2c51f24271ff1821e434d89dc1d69c2a6`.**
+  `85e848edc433efa6d1a240a16438e9ccfbce5061ef9be53444f81a4e081df464`.**
   `preparar-entrega.mjs` lo reproduce byte a byte.
 
 ## 2. Qué cambia
@@ -68,21 +68,22 @@ rótulo interno que arrastre y **falla si aparece un campo sin rótulo**. Las
 entregas publicadas no se tocan: sus archivos siguen igual y la cadena de PGlite
 de las anteriores pasa.
 
-### 2.2 Fuentes que eran direcciones de API (59 referencias en 20 ofertas, y 2 del radar)
+### 2.2 Fuentes que eran direcciones de API (39 referencias en 18 ofertas, y 2 del radar)
 
 El dato se leyó en la API ese día; la página nueva es donde una persona lo ve,
 con el valor del día en que la abra. El valor y su fecha no cambian; el alcance
-de la referencia lo dice. Esas 20 fichas quedan con la documentación revisada
-el 04/11. Cada página, comprobada hoy con curl y, si pinta los datos con
+de la referencia lo dice. Esas 18 fichas quedan con la documentación revisada
+el 04/11. **Solo se cambia una referencia si la página enseña ese mismo dato;**
+si enseña otra medida u otra cifra, o el dato solo va en la configuración que
+carga y no se ve, la referencia conserva la API (§3). La decisión es por
+referencia, no por dirección de API. Cada página, comprobada hoy con curl y, si pinta los datos con
 JavaScript, con Chrome sin interfaz (`fuentes-para-personas.json`, con el
 literal visto).
 
 | Oferta | Antes (API) | Después (página) |
 |---|---|---|
 | Aktionariat | `shares.aktionariat.com/api/secondarymarkets/getTrades` (405) | `shares.aktionariat.com/trade` («All Trades … 31 Oct 2026 / 11:56 Direct Investment 7.25 ZCHF 1 DAKS») |
-| Aktionariat (×3) | `…/api/brokerbotsettings?ticker=DAKS` (JSON) | `shares.aktionariat.com/invest` («Price per DAKS 7.25 CHF»; su HTML lleva el mínimo 500 y el aviso de venta desactivada) |
 | BOSS Info | `shares.bossinfo.com/api/secondarymarkets/getTrades` (405) | `shares.bossinfo.com/trade` («28 Sep 2026 / 11:32 Secondary Trade 6.70 ZCHF 474 BOSS») |
-| BOSS Info (×3) | `…/api/brokerbotsettings?ticker=BOSS` | `shares.bossinfo.com/invest` (mínimo 100 y aviso de mantenimiento) |
 | SwitzerLend | `shares.lend.ch/api/secondarymarkets/getTrades` (405) | `shares.lend.ch/trade` («7 Oct 2026 / 13:34 Direct Investment 68.01 ZCHF 10 LENDS») |
 | SwitzerLend | `…/api/brokerbotsettings?ticker=LENDS` | `shares.lend.ch/invest` («Price per LENDS 68.01 CHF») |
 | Spiko Letras del Tesoro euro (×3) | `public-api.spiko.io/v0/…/EUTBL/{yield,latest,totals}` | `data.spiko.io/eutbl/` (AUM, usuarios, rentabilidad a 30 días, último valor liquidativo) |
@@ -90,8 +91,9 @@ literal visto).
 | Spiko Smart Cash euro | `…/eurSAFO/yield` | `data.spiko.io/safo-eur` («30d yield 2.84%») |
 | Casa de Outeiro | `saas-pfp-base-api.token-city.com/…/slug/casa-de-outeiro/expand/…` (JSON) | `aliuscap.com/projects/casa-de-outeiro` («Recaudado 1.121.000,00 €… Umbral de éxito 2.000.000,00 €») |
 | Kraken xStocks (lista de fuentes) | `registers.esma.europa.eu/solr/…&wt=json` | el buscador de ESMA que la ficha ya enlazaba (hay que buscar el LEI) |
-| 9 inmuebles de Brickwise (Hinterstoder, Drautalresidenz, Klagenfurt, Randhartingergasse, Plüddemanngasse, Pottendorfer, Schwarzer Weg, Sonnleithnergasse, Stallhofstraße) | `api.app.brickwise.at/api/v2/assets` y `bwrealestate.app.brickwise.at/api/v1/asset/<ISIN>` | `www.brickwise.at/assets/<isin>` (rentabilidad esperada, precio por participación, participaciones disponibles; p. ej. Hinterstoder «4,85% p.a. … € 72,00 … 258») |
-| Cohotel, GreenPoint y Billa | las mismas API | `app.brickwise.at/desktopWeb/marketplace` (no tienen página propia: 404; el mercado los muestra sin iniciar sesión) |
+| 9 inmuebles de Brickwise (Hinterstoder, Drautalresidenz, Klagenfurt, Randhartingergasse, Plüddemanngasse, Pottendorfer, Schwarzer Weg, Sonnleithnergasse, Stallhofstraße): rentabilidad esperada, precio de referencia («Preis pro Anteil» = `sharePrice`) y participaciones disponibles en reventa | `api.app.brickwise.at/api/v2/assets` y `bwrealestate.app.brickwise.at/api/v1/asset/<ISIN>` | `www.brickwise.at/assets/<isin>` (p. ej. Hinterstoder «4,85% p.a. … € 72,00 … 258») |
+| Randhartingergasse, Pottendorfer y Sonnleithnergasse: solo «Precio más bajo en mercado secundario» | `api.app.brickwise.at/api/v2/assets` | `app.brickwise.at/desktopWeb/marketplace` («Preis pro Anteil ab € 78,00», «ab € 78,00» y «ab € 75,00»; la página del inmueble enseña el precio de referencia, no el más bajo) |
+| Billa: solo «Rentabilidad» | `bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89` | `app.brickwise.at/desktopWeb/marketplace` («5,07 % p.a.»; no tiene página propia: 404) |
 | Radar · Spiko (licencia y acceso) | dos consultas `www.regafi.fr/api/explore/…` (JSON) | `www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211` («Codes CIB 19183 Depuis le 15/12/2025 … Passeports en Europe … ESPAGNE … Libre prestation de services») |
 
 ### 2.3 ARTEX · «Blockchains» (public.plataformas.cadenas)
@@ -118,8 +120,8 @@ literal visto).
 - **Después:** «El bloqueo no viene de Toucan, sino de los registros de carbono:
   en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American
   Carbon Registry prohibió tokenizar los suyos sin su autorización expresa.
-  Verra estudiaba entonces un estado «inmovilizado» que la permitiría. Toucan
-  respaldó públicamente la decisión de Verra.»
+  Verra estudiaba entonces un estado «inmovilizado» que permitiría tokenizarlos.
+  Toucan respaldó públicamente la decisión de Verra.»
 - **¿«Todavía sin resolver» sigue siendo cierto?** Ya no se publica: lo quitó la
   .8. Hoy (04/11/2026) no hay una fuente legible sobre el estado actual: la
   última página del ACR (su consulta de activos digitales, abierta en
@@ -137,6 +139,25 @@ literal visto).
   - `https://api.app.brickwise.at/api/v1/assets` en 11 inmuebles de Brickwise: es
     el libro de órdenes (cuántas órdenes de compra y venta y a qué precio). Ni la
     página del inmueble ni el mercado lo enseñan; solo se ve dentro de la app.
+  - **Aktionariat y BOSS Info, `…/api/brokerbotsettings`** (3 referencias cada
+    una: los dos «Mínimo de inversión» y «Salida · consulta 01/11/2026»): el
+    mínimo por transferencia (500 y 100 CHF) y el aviso de venta o compra
+    desactivada solo van en la configuración que carga `/invest`; en pantalla
+    no se ven, ni en `/invest` ni en `/trade`.
+  - **Brickwise, `api.app.brickwise.at/api/v2/assets`** (12 referencias): Cohotel
+    y GreenPoint «Precio» y «Estado de la oferta»; Billa «Precio de emisión»,
+    «Participaciones disponibles en emisión», «Estado de la oferta» y «Riesgos»;
+    Randhartingergasse «Precio de emisión» y «Participaciones disponibles en
+    emisión»; Pottendorfer y Sonnleithnergasse «Participaciones disponibles en
+    emisión». Ninguna página enseña ese dato tal cual: el mercado da otra medida
+    (Cohotel «ab € 110,00» frente a 120; GreenPoint «ab € 100,00» frente a 95) y
+    la página del inmueble, las disponibles en reventa (Randhartingergasse 558
+    frente a 374 de la emisión). Cohotel, GreenPoint y Billa no tienen página
+    propia.
+  - **Brickwise, `bwrealestate…/api/v1/asset/<ISIN>`** de Cohotel y GreenPoint
+    («Rentabilidad»): la API calcula 5,11 % y 6,43 %; el mercado enseña otra
+    medida, la distribución esperada (5,57 % y 6,11 %).
+  - Por eso Cohotel y GreenPoint no cambian de fuente en esta entrega.
 - **No son API ni JSON, se conservan y quedan anotadas:**
   - `saas-pfp-base-api.token-city.com/…/document/263` (Casa de Outeiro): pese al
     nombre, devuelve el PDF del documento de la emisión.
@@ -176,7 +197,7 @@ Sin cambios de estado, avisos, esquema, permisos, cuentas ni funciones.
 - `comprobar-entrega.mjs` (PGlite, cadena 22/10 → 03/11.7, con los textos de la
   .8 que trae `02_seed.sql`): **correcto, 27 comprobaciones**, entre ellas:
   idempotente; publicada la nueva; 24 ofertas iguales salvo documentación (228
-  rótulos, 59 fuentes, valores y fechas iguales) y fuentes actuales; 26
+  rótulos, 39 fuentes, valores y fechas iguales) y fuentes actuales; 26
   plataformas iguales salvo «Blockchains» de ARTEX y el REGAFI de Spiko;
   `public.plataformas` y `public.fuentes` solo lo previsto; el lector de la web
   lo acepta y vence el 11/11; las 24 tarjetas se ven igual; la ficha fija de
@@ -196,7 +217,7 @@ Sin cambios de estado, avisos, esquema, permisos, cuentas ni funciones.
 2. Unir a `main`.
 3. Releer como visitante, con hora, que la publicada sigue siendo la `f2732257`.
 4. «Aplicar catálogo» con `2026-11-04`.
-5. Comprobar en línea: revisión `50073929…`, 26/24 (8/13/3); una referencia
+5. Comprobar en línea: revisión `cf79e4a4…`, 26/24 (8/13/3); una referencia
    («Acceso desde España · consulta 01/11/2026»), Aktionariat con
    `shares.aktionariat.com/trade`, ARTEX «No usa blockchain», Toucan con 4
    fuentes.
@@ -204,3 +225,31 @@ Sin cambios de estado, avisos, esquema, permisos, cuentas ni funciones.
    `node rwadar-app/volcar-seed.js`, `transparencia.json` (revisión y lote
    nuevos, como tras la .7), `npm test`; sellar; «Publicar web». La app lee el
    catálogo de Supabase: no hace falta OTA para estos datos.
+
+## 7. Corrección tras la revisión independiente (04/11/2026)
+
+El revisor leyó como visitante a las 19:36:15 UTC (la publicada sigue siendo la
+`f2732257`, idéntica a `lectura-publica/`) y encontró tres fallos. Corregidos:
+
+1. **Brickwise (importante):** 15 referencias enlazaban a una página que enseña
+   otra cifra u otra medida. Ahora se decide referencia a referencia
+   (`fuentes-para-personas.json`: `seQuedan[].referencias` y una sustitución con
+   `referencias`): 12 conservan la API (§3) y las 3 de «Precio más bajo en
+   mercado secundario» enlazan el mercado de la app, que sí enseña «Preis pro
+   Anteil ab» (Chrome sin interfaz, 04/11/2026: Randhartingergasse y
+   Pottendorfer «ab € 78,00», Sonnleithnergasse «ab € 75,00»). Con el mismo
+   criterio, también conservan la API «Participaciones disponibles en emisión»
+   de Pottendorfer y Sonnleithnergasse («0 de 1.410» y «0 de 2.350»: la página
+   enseña las disponibles en reventa).
+2. **Aktionariat y BOSS Info (importante):** las 6 referencias del mínimo y del
+   aviso de salida conservan `…/api/brokerbotsettings`; no se ven en `/invest`.
+   Las que sí se ven (precio y «All Trades») siguen enlazando `/trade`.
+3. **Toucan (menor):** «que la permitiría» → «que permitiría tokenizarlos».
+
+Cuentas nuevas: 39 referencias en 18 ofertas (antes 59 en 20); Cohotel y
+GreenPoint quedan sin cambio de fuente y con su fecha de revisión del 03/11.
+Rótulos, ARTEX y el REGAFI, igual. Revisión nueva `cf79e4a4…`, SHA nuevo arriba
+(§1); `preparar-entrega.mjs` lo reproduce y `comprobar-entrega.mjs` da correcto
+(27 comprobaciones, 16 casos de fallo que no dejan nada). `npm test` completo:
+salida 0 (base de datos 30 comprobaciones SQL y mapa 11/11; web 580; fichas 68;
+precarga 32; móvil 409 correctas y 2 omitidas; acceso 144).

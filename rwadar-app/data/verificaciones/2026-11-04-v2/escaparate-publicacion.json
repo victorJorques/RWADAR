@@ -3192,6 +3192,7 @@
       "estadoRevision": "no_verificable",
       "fuentesActuales": [
         "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
         "https://www.brickwise.at/assets/at0000a2t4d7",
         "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
         "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"
@@ -3660,6 +3661,7 @@
       "estadoRevision": "no_verificable",
       "fuentesActuales": [
         "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
         "https://www.brickwise.at/assets/at0000a2zt84",
         "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
         "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"
@@ -3852,6 +3854,7 @@
       "estadoRevision": "no_verificable",
       "fuentesActuales": [
         "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
         "https://www.brickwise.at/assets/at0000a324b4",
         "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
         "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"
@@ -3948,6 +3951,7 @@
       "estadoRevision": "no_verificable",
       "fuentesActuales": [
         "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
         "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
         "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"
       ],
@@ -4043,6 +4047,7 @@
       "estadoRevision": "no_verificable",
       "fuentesActuales": [
         "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
         "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
         "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"
       ],
@@ -4247,6 +4252,7 @@
       "estadoRevision": "no_verificable",
       "fuentesActuales": [
         "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
         "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
         "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
         "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf"

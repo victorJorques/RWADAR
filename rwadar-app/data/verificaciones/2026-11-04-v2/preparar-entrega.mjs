@@ -86,38 +86,67 @@ for (const [slug, doc] of Object.entries(documentacion)) for (const r of doc.ref
 for (const doc of Object.values(documentacion)) for (const r of doc.referencias) assert.ok(!etiquetaCruda(r.etiqueta), r.etiqueta);
 
 // ---------------------------------------------------------------- 2 · fuentes para personas
-const porOferta = new Map();
-for (const s of personas.sustituciones) for (const slug of s.ofertas) for (const api of s.apis) {
-  const m = porOferta.get(slug) || porOferta.set(slug, new Map()).get(slug);
-  assert.ok(!m.has(api), `${slug}: ${api} repetida`);
-  assert.match(s.persona, /^https:\/\//); assert.ok(s.comprobado && s.queMuestra, `${slug}: sin comprobación`);
-  m.set(api, s.persona);
-}
+// Una referencia se identifica por oferta, rótulo y dirección de antes (hay rótulos repetidos).
+const clave = (slug, etiqueta, url) => `${slug}\n${etiqueta}\n${url}`;
 const unico = l => [...new Set(l)];
+const porOferta = new Map();      // oferta → (API → página), para todo lo que cite esa API
+const porReferencia = new Map();  // referencia → página, solo esa referencia
+for (const s of personas.sustituciones) {
+  assert.match(s.persona, /^https:\/\//); assert.ok(s.comprobado && s.queMuestra, `${s.persona}: sin comprobación`);
+  if (s.referencias) {
+    assert.equal(s.apis.length, 1); assert.deepEqual(s.ofertas, unico(s.referencias.map(r => r.oferta)));
+    for (const r of s.referencias) porReferencia.set(clave(r.oferta, r.etiqueta, s.apis[0]), s.persona);
+    continue;
+  }
+  for (const slug of s.ofertas) for (const api of s.apis) {
+    const m = porOferta.get(slug) || porOferta.set(slug, new Map()).get(slug);
+    assert.ok(!m.has(api), `${slug}: ${api} repetida`);
+    m.set(api, s.persona);
+  }
+}
+// Referencias que conservan la API porque ninguna página enseña ese dato tal cual («seQuedan»).
+const seQuedanRef = new Set(personas.seQuedan.flatMap(s => (s.referencias || []).map(r => clave(r.oferta, r.etiqueta, s.url))));
+for (const k of [...porReferencia.keys(), ...seQuedanRef]) {
+  const [slug, etiqueta, url] = k.split('\n');
+  assert.equal((documentacion[slug]?.referencias || []).filter(r => r.etiqueta === etiqueta && r.fuente === url).length, 1, `${slug}: «${etiqueta}» con ${url}`);
+}
+const conCambio = unico([...porOferta.keys(), ...[...porReferencia.keys()].map(k => k.split('\n')[0])]);
 const fuentes = [];
 const usadas = new Set();
 for (const o of escaparate.ofertas) {
-  const m = porOferta.get(o.slug);
-  if (!m) continue;
+  if (!conCambio.includes(o.slug)) continue;
+  const m = porOferta.get(o.slug) || new Map();
   const doc = documentacion[o.slug];
-  const cambia = u => { if (m.has(u)) { usadas.add(`${o.slug} ${u}`); return m.get(u); } return u; };
   const antesDoc = [...doc.fuentes], antesAct = [...o.fuentesActuales];
-  doc.fuentes = unico(doc.fuentes.map(cambia));
-  o.fuentesActuales = unico(o.fuentesActuales.map(cambia));
+  const solas = new Map();  // API → páginas puestas solo en algunas referencias
   for (const r of doc.referencias) {
-    if (!m.has(r.fuente)) continue;
+    const k = clave(o.slug, r.etiqueta, r.fuente);
+    if (seQuedanRef.has(k)) continue;
+    const persona = porReferencia.get(k) || m.get(r.fuente);
+    if (!persona) continue;
     const api = r.fuente;
-    r.fuente = cambia(api);
+    if (porReferencia.has(k)) solas.set(api, unico([...(solas.get(api) || []), persona]));
+    else usadas.add(`${o.slug} ${api}`);
+    r.fuente = persona;
     r.alcance = `${r.alcance} Leído el ${fES(r.fechaConsulta)} en los datos que usa la propia web; la página enlazada es donde una persona ve ese dato, con el valor del día en que la abra (comprobada el ${FES}).`;
     assert.ok(r.alcance.length <= 3000, `${o.slug}: alcance demasiado largo`);
     fuentes.push({ oferta: o.slug, etiqueta: r.etiqueta, antes: api, despues: r.fuente });
   }
+  // Las listas de fuentes llevan la página nueva y conservan la API mientras alguna referencia la cite.
+  const cambia = u => {
+    const nuevas = [...(m.has(u) ? [m.get(u)] : []), ...(solas.get(u) || [])];
+    if (!nuevas.length) return [u];
+    if (m.has(u)) usadas.add(`${o.slug} ${u}`);
+    return [...(doc.referencias.some(r => r.fuente === u) ? [u] : []), ...nuevas];
+  };
+  doc.fuentes = unico(doc.fuentes.flatMap(cambia));
+  o.fuentesActuales = unico(o.fuentesActuales.flatMap(cambia));
   doc.revisadaEl = HOY;
   fuentes.push({ oferta: o.slug, fuentesDocumentacion: { antes: antesDoc, despues: doc.fuentes },
     fuentesActuales: { antes: antesAct, despues: o.fuentesActuales } });
 }
-// Cada sustitución se usa en su ficha (las de Brickwise traen las tres API posibles; cada ficha usa las suyas).
-for (const s of personas.sustituciones) for (const slug of s.ofertas)
+// Cada sustitución se usa en su ficha (las de Brickwise traen las API posibles; cada ficha usa las suyas).
+for (const s of personas.sustituciones) for (const slug of s.ofertas) if (!s.referencias)
   assert.ok(s.apis.some(api => usadas.has(`${slug} ${api}`)), `${slug}: ${s.persona} no sustituye nada`);
 const radarCambios = [];
 for (const s of personas.radar) for (const [i, id] of s.ids.entries()) {
@@ -138,7 +167,7 @@ assert.deepEqual(unico(todas.filter(u => API.test(u) && !quedan.has(u))), [], 'f
   const d = structuredClone(documentacion), e = structuredClone(escaparate), r = structuredClone(radar);
   for (const [slug, doc] of Object.entries(d)) {
     const b = docBase[slug];
-    if (porOferta.has(slug)) { doc.revisadaEl = b.revisadaEl; doc.fuentes = b.fuentes; }
+    if (conCambio.includes(slug)) { doc.revisadaEl = b.revisadaEl; doc.fuentes = b.fuentes; }
     doc.referencias.forEach((x, i) => { x.etiqueta = b.referencias[i].etiqueta; x.fuente = b.referencias[i].fuente; x.alcance = b.referencias[i].alcance; });
   }
   for (const o of e.ofertas) o.fuentesActuales = escaparateBase.ofertas.find(x => x.slug === o.slug).fuentesActuales;
@@ -307,7 +336,7 @@ escribir(path.join(DIR, `contraste-${ETIQUETA}.json`), { tipo: 'arreglos_datos',
   etiqueta: ETIQUETA, revisionAnterior: PREVIA, revisionNueva: nueva.revisionId,
   archivos: Object.fromEntries(['cambios-plataformas.json', 'fuentes-para-personas.json'].map(f => [f, sha(path.join(DIR, f))])),
   cuentas: { rotulos: rotulos.length, ofertasConRotulos: unico(rotulos.map(r => r.oferta)).length,
-    referenciasConFuenteNueva: fuentes.filter(f => f.etiqueta).length, ofertasConFuenteNueva: porOferta.size,
+    referenciasConFuenteNueva: fuentes.filter(f => f.etiqueta).length, ofertasConFuenteNueva: conCambio.length,
     fuentesRadar: radarCambios.length },
   sinCambios: ['valores, fechas del dato y de consulta de cada referencia', 'cifras, avisos, colecciones 8/13/3 y vigencia (7 días desde el 03/11)',
     'estados, detalles y avisos de las 26 plataformas', 'manifiesto'],
@@ -316,5 +345,5 @@ escribir(path.join(DIR, `contraste-${ETIQUETA}.json`), { tipo: 'arreglos_datos',
   fuentesNuevasPublicas: nuevasT.map(f => ({ plataforma: 'toucan-protocol', url: f.url, titulo: f.titulo })),
   seQuedan: personas.seQuedan, colecciones });
 console.log(JSON.stringify({ etiqueta: ETIQUETA, revisionId: nueva.revisionId, previa: PREVIA, sha256: sha(archivo),
-  rotulos: rotulos.length, referenciasConFuenteNueva: fuentes.filter(f => f.etiqueta).length, ofertasConFuenteNueva: porOferta.size,
+  rotulos: rotulos.length, referenciasConFuenteNueva: fuentes.filter(f => f.etiqueta).length, ofertasConFuenteNueva: conCambio.length,
   fuentesRadar: radarCambios.length, colecciones }));

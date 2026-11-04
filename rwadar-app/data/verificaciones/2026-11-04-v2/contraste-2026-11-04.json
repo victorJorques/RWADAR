@@ -4,16 +4,16 @@
   "preparadaEl": "2026-11-04",
   "etiqueta": "2026-11-04",
   "revisionAnterior": "f2732257-206d-48ce-2067-c7e19fa33002",
-  "revisionNueva": "50073929-54fb-98f1-9596-d055c87e06d4",
+  "revisionNueva": "cf79e4a4-f828-96ce-681b-ae69c3d1b81b",
   "archivos": {
-    "cambios-plataformas.json": "cac1dd28210438678e6b21aca8c59e12bf192bffc9249d3e361b60a959b77143",
-    "fuentes-para-personas.json": "e745696ac319bc0505faf3b2cc7e17d9b19c4e065bba4b3692bb78e7b57d5a94"
+    "cambios-plataformas.json": "a01d2bd4e379dc5fd543b52b2130e3eb61c682fdc9b17a4ad9f5d2f7fbe3fdca",
+    "fuentes-para-personas.json": "43c8fac3f412a6d5510a5adbaaf0c58485c760096ab4f49fda797f589ea2bcc9"
   },
   "cuentas": {
     "rotulos": 228,
     "ofertasConRotulos": 21,
-    "referenciasConFuenteNueva": 59,
-    "ofertasConFuenteNueva": 20,
+    "referenciasConFuenteNueva": 39,
+    "ofertasConFuenteNueva": 18,
     "fuentesRadar": 2
   },
   "sinCambios": [
@@ -1352,24 +1352,6 @@
     },
     {
       "oferta": "aktionariat",
-      "etiqueta": "Mínimo de inversión · consulta 01/11/2026",
-      "antes": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
-      "despues": "https://shares.aktionariat.com/invest"
-    },
-    {
-      "oferta": "aktionariat",
-      "etiqueta": "Salida · consulta 01/11/2026",
-      "antes": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
-      "despues": "https://shares.aktionariat.com/invest"
-    },
-    {
-      "oferta": "aktionariat",
-      "etiqueta": "Mínimo de inversión",
-      "antes": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
-      "despues": "https://shares.aktionariat.com/invest"
-    },
-    {
-      "oferta": "aktionariat",
       "fuentesDocumentacion": {
         "antes": [
           "https://shares.aktionariat.com",
@@ -1390,6 +1372,7 @@
           "https://shares.aktionariat.com/trade",
           "https://www.aktionariat.com/disclaimer",
           "https://shares.aktionariat.com/investor-page-terms",
+          "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
           "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
           "https://www.aktionariat.com/terms-of-service"
         ]
@@ -1470,24 +1453,6 @@
     },
     {
       "oferta": "boss-info",
-      "etiqueta": "Mínimo de inversión · consulta 01/11/2026",
-      "antes": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
-      "despues": "https://shares.bossinfo.com/invest"
-    },
-    {
-      "oferta": "boss-info",
-      "etiqueta": "Salida · consulta 01/11/2026",
-      "antes": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
-      "despues": "https://shares.bossinfo.com/invest"
-    },
-    {
-      "oferta": "boss-info",
-      "etiqueta": "Mínimo de inversión",
-      "antes": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
-      "despues": "https://shares.bossinfo.com/invest"
-    },
-    {
-      "oferta": "boss-info",
       "fuentesDocumentacion": {
         "antes": [
           "https://shares.bossinfo.com",
@@ -1503,7 +1468,8 @@
           "https://shares.bossinfo.com/",
           "https://shares.bossinfo.com/invest",
           "https://shares.bossinfo.com/trade",
-          "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf"
+          "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+          "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS"
         ]
       },
       "fuentesActuales": {
@@ -1627,15 +1593,9 @@
     },
     {
       "oferta": "vivienda-sonnleithnergasse-2-viena",
-      "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://www.brickwise.at/assets/at0000a2t4d7"
-    },
-    {
-      "oferta": "vivienda-sonnleithnergasse-2-viena",
       "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
       "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://www.brickwise.at/assets/at0000a2t4d7"
+      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
     },
     {
       "oferta": "vivienda-sonnleithnergasse-2-viena",
@@ -1666,6 +1626,7 @@
         "despues": [
           "https://app.brickwise.at/desktopWeb/marketplace",
           "https://www.brickwise.at/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
           "https://www.brickwise.at/assets/at0000a2t4d7",
           "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
           "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
@@ -1684,6 +1645,7 @@
         ],
         "despues": [
           "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
           "https://www.brickwise.at/assets/at0000a2t4d7",
           "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
           "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"
@@ -1916,21 +1878,9 @@
     },
     {
       "oferta": "randhartingergasse-9-viena",
-      "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://www.brickwise.at/assets/at0000a2zt84"
-    },
-    {
-      "oferta": "randhartingergasse-9-viena",
-      "etiqueta": "Precio de emisión por participación (API) · 22/10/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://www.brickwise.at/assets/at0000a2zt84"
-    },
-    {
-      "oferta": "randhartingergasse-9-viena",
       "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
       "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://www.brickwise.at/assets/at0000a2zt84"
+      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
     },
     {
       "oferta": "randhartingergasse-9-viena",
@@ -1955,6 +1905,7 @@
         "despues": [
           "https://app.brickwise.at/desktopWeb/marketplace",
           "https://www.brickwise.at/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
           "https://www.brickwise.at/assets/at0000a2zt84",
           "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
           "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
@@ -1973,6 +1924,7 @@
         ],
         "despues": [
           "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
           "https://www.brickwise.at/assets/at0000a2zt84",
           "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
           "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"
@@ -2045,15 +1997,9 @@
     },
     {
       "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
-      "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://www.brickwise.at/assets/at0000a324b4"
-    },
-    {
-      "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
       "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026",
       "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://www.brickwise.at/assets/at0000a324b4"
+      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
     },
     {
       "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
@@ -2084,6 +2030,7 @@
         "despues": [
           "https://app.brickwise.at/desktopWeb/marketplace",
           "https://www.brickwise.at/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
           "https://www.brickwise.at/assets/at0000a324b4",
           "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
           "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
@@ -2102,121 +2049,10 @@
         ],
         "despues": [
           "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
           "https://www.brickwise.at/assets/at0000a324b4",
           "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
           "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"
-        ]
-      }
-    },
-    {
-      "oferta": "fotovoltaica-greenpoint",
-      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "fotovoltaica-greenpoint",
-      "etiqueta": "Precio · consulta 01/11/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "fotovoltaica-greenpoint",
-      "etiqueta": "Rentabilidad · consulta 01/11/2026",
-      "antes": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "fotovoltaica-greenpoint",
-      "fuentesDocumentacion": {
-        "antes": [
-          "https://app.brickwise.at/desktopWeb/marketplace",
-          "https://api.app.brickwise.at/api/v2/assets",
-          "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
-          "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
-          "https://api.app.brickwise.at/api/v1/assets",
-          "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
-          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
-          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
-          "https://www.brickwise.at/imprint"
-        ],
-        "despues": [
-          "https://app.brickwise.at/desktopWeb/marketplace",
-          "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
-          "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
-          "https://api.app.brickwise.at/api/v1/assets",
-          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
-          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
-          "https://www.brickwise.at/imprint"
-        ]
-      },
-      "fuentesActuales": {
-        "antes": [
-          "https://app.brickwise.at/desktopWeb/marketplace",
-          "https://api.app.brickwise.at/api/v2/assets",
-          "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
-          "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"
-        ],
-        "despues": [
-          "https://app.brickwise.at/desktopWeb/marketplace",
-          "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
-          "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"
-        ]
-      }
-    },
-    {
-      "oferta": "fotovoltaica-cohotel",
-      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "fotovoltaica-cohotel",
-      "etiqueta": "Precio · consulta 01/11/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "fotovoltaica-cohotel",
-      "etiqueta": "Rentabilidad · consulta 01/11/2026",
-      "antes": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "fotovoltaica-cohotel",
-      "fuentesDocumentacion": {
-        "antes": [
-          "https://app.brickwise.at/desktopWeb/marketplace",
-          "https://api.app.brickwise.at/api/v2/assets",
-          "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
-          "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
-          "https://api.app.brickwise.at/api/v1/assets",
-          "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
-          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
-          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
-          "https://www.brickwise.at/imprint"
-        ],
-        "despues": [
-          "https://app.brickwise.at/desktopWeb/marketplace",
-          "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
-          "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
-          "https://api.app.brickwise.at/api/v1/assets",
-          "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
-          "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
-          "https://www.brickwise.at/imprint"
-        ]
-      },
-      "fuentesActuales": {
-        "antes": [
-          "https://app.brickwise.at/desktopWeb/marketplace",
-          "https://api.app.brickwise.at/api/v2/assets",
-          "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
-          "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"
-        ],
-        "despues": [
-          "https://app.brickwise.at/desktopWeb/marketplace",
-          "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
-          "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"
         ]
       }
     },
@@ -2263,32 +2099,8 @@
     },
     {
       "oferta": "terreno-con-arrendamiento-billa",
-      "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "terreno-con-arrendamiento-billa",
-      "etiqueta": "Precio de emisión por participación (API) · 22/10/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "terreno-con-arrendamiento-billa",
-      "etiqueta": "Estado de la oferta · consulta 01/11/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "terreno-con-arrendamiento-billa",
       "etiqueta": "Rentabilidad · consulta 01/11/2026",
       "antes": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
-      "despues": "https://app.brickwise.at/desktopWeb/marketplace"
-    },
-    {
-      "oferta": "terreno-con-arrendamiento-billa",
-      "etiqueta": "Riesgos · consulta 01/11/2026",
-      "antes": "https://api.app.brickwise.at/api/v2/assets",
       "despues": "https://app.brickwise.at/desktopWeb/marketplace"
     },
     {
@@ -2307,6 +2119,7 @@
         ],
         "despues": [
           "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
           "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
           "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
           "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
@@ -2325,6 +2138,7 @@
         ],
         "despues": [
           "https://app.brickwise.at/desktopWeb/marketplace",
+          "https://api.app.brickwise.at/api/v2/assets",
           "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
           "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
           "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf"
@@ -2355,7 +2169,7 @@
       "slug": "toucan-protocol",
       "columna": "motivo_descarte",
       "antes": "El bloqueo no viene de Toucan, sino de los registros de carbono: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudiaba entonces un estado «inmovilizado» que la permitiría. Toucan respaldó públicamente la decisión.",
-      "despues": "El bloqueo no viene de Toucan, sino de los registros de carbono: en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Verra estudiaba entonces un estado «inmovilizado» que la permitiría. Toucan respaldó públicamente la decisión de Verra."
+      "despues": "El bloqueo no viene de Toucan, sino de los registros de carbono: en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Verra estudiaba entonces un estado «inmovilizado» que permitiría tokenizarlos. Toucan respaldó públicamente la decisión de Verra."
     }
   ],
   "fuentesNuevasPublicas": [
@@ -2382,6 +2196,136 @@
         "vivienda-stallhofstra-e-28-gratwein"
       ],
       "motivo": "Libro de órdenes de la app de Brickwise (cuántas órdenes de compra y venta hay y a qué precio). Ninguna página pública lo enseña: la página del inmueble y el mercado de la app muestran el precio desde y las participaciones disponibles, no las órdenes; el detalle solo se ve dentro de la app. Se conserva la dirección de la API y queda anotado."
+    },
+    {
+      "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "ofertas": [
+        "aktionariat"
+      ],
+      "referencias": [
+        {
+          "oferta": "aktionariat",
+          "etiqueta": "Mínimo de inversión · consulta 01/11/2026"
+        },
+        {
+          "oferta": "aktionariat",
+          "etiqueta": "Mínimo de inversión"
+        },
+        {
+          "oferta": "aktionariat",
+          "etiqueta": "Salida · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "El mínimo por transferencia (500 CHF) y el aviso de venta desactivada solo van en la configuración que carga la página /invest; no se ven en pantalla ni en /invest ni en /trade (Chrome sin interfaz, 04/11/2026: solo «Number of Shares … Price per DAKS 7.25 CHF … Payment Method»). Se conserva la dirección de la API. El precio por acción y «All Trades» sí se ven y enlazan /invest y /trade."
+    },
+    {
+      "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "ofertas": [
+        "boss-info"
+      ],
+      "referencias": [
+        {
+          "oferta": "boss-info",
+          "etiqueta": "Mínimo de inversión · consulta 01/11/2026"
+        },
+        {
+          "oferta": "boss-info",
+          "etiqueta": "Mínimo de inversión"
+        },
+        {
+          "oferta": "boss-info",
+          "etiqueta": "Salida · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "El mínimo por transferencia (100 CHF) y el aviso de compra desactivada por mantenimiento solo van en la configuración que carga la página /invest; no se ven en pantalla ni en /invest ni en /trade. Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://api.app.brickwise.at/api/v2/assets",
+      "ofertas": [
+        "fotovoltaica-cohotel",
+        "fotovoltaica-greenpoint",
+        "terreno-con-arrendamiento-billa",
+        "randhartingergasse-9-viena",
+        "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+        "vivienda-sonnleithnergasse-2-viena"
+      ],
+      "referencias": [
+        {
+          "oferta": "fotovoltaica-cohotel",
+          "etiqueta": "Precio · consulta 01/11/2026"
+        },
+        {
+          "oferta": "fotovoltaica-cohotel",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026"
+        },
+        {
+          "oferta": "fotovoltaica-greenpoint",
+          "etiqueta": "Precio · consulta 01/11/2026"
+        },
+        {
+          "oferta": "fotovoltaica-greenpoint",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Precio de emisión por participación (API) · 22/10/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Riesgos · consulta 01/11/2026"
+        },
+        {
+          "oferta": "randhartingergasse-9-viena",
+          "etiqueta": "Precio de emisión por participación (API) · 22/10/2026"
+        },
+        {
+          "oferta": "randhartingergasse-9-viena",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        },
+        {
+          "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        },
+        {
+          "oferta": "vivienda-sonnleithnergasse-2-viena",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        }
+      ],
+      "motivo": "Ninguna página pública enseña estos datos tal cual: el precio de referencia (sharePrice) de Cohotel y GreenPoint, el precio de emisión, las participaciones disponibles en la emisión, la etapa de la oferta ni el enlace a las condiciones. El mercado de la app enseña otra medida (el precio desde de la reventa: Cohotel «ab € 110,00» frente a 120; GreenPoint «ab € 100,00» frente a 95), y la página del inmueble, las participaciones disponibles en la reventa (Randhartingergasse «Verfügbare Anteile 558» frente a 374 de la emisión). Cohotel, GreenPoint y Billa no tienen página propia (404). Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+      "ofertas": [
+        "fotovoltaica-cohotel"
+      ],
+      "referencias": [
+        {
+          "oferta": "fotovoltaica-cohotel",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "La rentabilidad que calcula la API (5,11 %, con 120 € por participación) no se ve en ninguna página: el mercado enseña otra medida, la distribución anual esperada («5,57 % p.a.»), y Cohotel no tiene página propia. Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+      "ofertas": [
+        "fotovoltaica-greenpoint"
+      ],
+      "referencias": [
+        {
+          "oferta": "fotovoltaica-greenpoint",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "La rentabilidad que calcula la API (6,43 %, con 95 € por participación) no se ve en ninguna página: el mercado enseña otra medida, la distribución anual esperada («6,11 % p.a.»), y GreenPoint no tiene página propia. Se conserva la dirección de la API."
     },
     {
       "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",

@@ -1,16 +1,16 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-04T19:30:19.234Z",
+  "ejecutadoEl": "2026-11-04T19:55:15.961Z",
   "etiqueta": "2026-11-04",
   "revisionAnterior": "f2732257-206d-48ce-2067-c7e19fa33002",
-  "revisionNueva": "50073929-54fb-98f1-9596-d055c87e06d4",
-  "sha256AplicarYAprobar": "fccac4f2c4e610757d4f2e2001733ab2c51f24271ff1821e434d89dc1d69c2a6",
+  "revisionNueva": "cf79e4a4-f828-96ce-681b-ae69c3d1b81b",
+  "sha256AplicarYAprobar": "85e848edc433efa6d1a240a16438e9ccfbce5061ef9be53444f81a4e081df464",
   "pruebas": [
     "inventario: una transacción serializable; guarda; el lote nuevo en rwadar_catalogo (1 revisión, 26 plataformas, 24 ofertas y sus fuentes); 2 update de public.plataformas (cadenas de ARTEX y motivo de Toucan) y 1 insert en public.fuentes con su guarda y su comprobación; aprobación al final; sin estados, esquema ni permisos",
     "cadena de producción 22/10 → 03/11.7 con los textos de la .8: la publicada es la f2732257",
     "idempotente: aplicarla dos veces da lo mismo",
     "publicada la revisión nueva: 26 plataformas y 24 ofertas, fechadas el 03/11 y con 7 días; sin cambios de estado ni avisos",
-    "24 ofertas: cifras, avisos y textos iguales; 228 rótulos legibles con la misma fecha; 59 referencias con la página para personas; valores y fechas iguales",
+    "24 ofertas: cifras, avisos y textos iguales; 228 rótulos legibles con la misma fecha; 39 referencias con la página para personas; valores y fechas iguales",
     "26 plataformas iguales salvo «Blockchains» de ARTEX («No usa blockchain») y las fuentes del REGAFI de Spiko (la ficha para personas)",
     "public.plataformas: solo cambian «cadenas» de ARTEX y el motivo de Toucan; public.fuentes: una nueva, la del ACR en Toucan; RealT, Domoblock y Goldfinch iguales",
     "el lector de la web y la app lo acepta; vence el 11/11, como la .7 (no se alarga)",
@@ -141,7 +141,7 @@
     {
       "nombre": "Toucan Protocol",
       "etiqueta_descarte": "Registro bloqueado",
-      "motivo_descarte": "El bloqueo no viene de Toucan, sino de los registros de carbono: en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Verra estudiaba entonces un estado «inmovilizado» que la permitiría. Toucan respaldó públicamente la decisión de Verra.",
+      "motivo_descarte": "El bloqueo no viene de Toucan, sino de los registros de carbono: en mayo de 2022, Verra prohibió tokenizar créditos ya retirados y el American Carbon Registry prohibió tokenizar los suyos sin su autorización expresa. Verra estudiaba entonces un estado «inmovilizado» que permitiría tokenizarlos. Toucan respaldó públicamente la decisión de Verra.",
       "fuentes": [
         {
           "url": "https://acrcarbon.org/news/acr-updates-program-rules-for-tokenization-of-carbon-credits/",

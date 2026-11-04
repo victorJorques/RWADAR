@@ -1,7 +1,7 @@
 {
   "etiqueta": "2026-11-04",
   "comprobadoEl": "2026-11-04",
-  "decision": "Encargo del 04/11/2026: las fuentes de la documentación que son direcciones de una API (una persona ve un error 405 o JSON) se sustituyen por la página pensada para personas que muestra lo mismo, comprobada hoy. El dato, su fecha de consulta y su valor no cambian: se leyó en la API ese día y la página es donde una persona lo ve; el alcance de cada referencia lo dice.",
+  "decision": "Encargo del 04/11/2026: las fuentes de la documentación que son direcciones de una API (una persona ve un error 405 o JSON) se sustituyen por la página pensada para personas que muestra lo mismo, comprobada hoy. El dato, su fecha de consulta y su valor no cambian: se leyó en la API ese día y la página es donde una persona lo ve; el alcance de cada referencia lo dice. Si la página no enseña ese mismo dato (otra medida, otra cifra o solo en la configuración que carga y no se ve), la referencia conserva la dirección de la API y queda en «seQuedan» con su rótulo; una sustitución con «referencias» vale solo para esas referencias.",
   "como": "curl con el proxy de la sesión y Google Chrome sin interfaz (--dump-dom) para las páginas que pintan los datos con JavaScript. Ningún inicio de sesión, muro de pago ni comprobación anti-bots sorteado.",
   "sustituciones": [
     {
@@ -17,17 +17,6 @@
     },
     {
       "apis": [
-        "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS"
-      ],
-      "persona": "https://shares.aktionariat.com/invest",
-      "ofertas": [
-        "aktionariat"
-      ],
-      "queMuestra": "Página «Direct Investment» del emisor: precio por acción y formas de pago; su HTML lleva la misma configuración que daba la API (mínimo por transferencia y avisos de compra o venta desactivada).",
-      "comprobado": "curl y Chrome sin interfaz, 04/11/2026: 200 en HTML; «Price per DAKS 7.25 CHF», y en el HTML «bankTransferLimit»: {enabled: true, min: 500} y «the sell-side of the Brokerbot will remain disabled for the foreseeable future»."
-    },
-    {
-      "apis": [
         "https://shares.bossinfo.com/api/secondarymarkets/getTrades"
       ],
       "persona": "https://shares.bossinfo.com/trade",
@@ -36,17 +25,6 @@
       ],
       "queMuestra": "Página «Secondary Trading» del emisor: precio, libro de órdenes y la lista «All Trades» con fecha, tipo, precio y cantidad de cada operación.",
       "comprobado": "Chrome sin interfaz, 04/11/2026: «All Trades … 28 Sep 2026 / 11:32 Secondary Trade 6.70 ZCHF 474 BOSS». Con curl, 200 en HTML; la lista la pinta el navegador con la misma API, que abierta directamente da «405 Method not allowed»."
-    },
-    {
-      "apis": [
-        "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS"
-      ],
-      "persona": "https://shares.bossinfo.com/invest",
-      "ofertas": [
-        "boss-info"
-      ],
-      "queMuestra": "Página «Direct Investment» del emisor: precio por acción y formas de pago; su HTML lleva la misma configuración que daba la API (mínimo por transferencia y avisos de compra o venta desactivada).",
-      "comprobado": "curl y Chrome sin interfaz, 04/11/2026: 200 en HTML; «Price per BOSS 8.5 CHF», y en el HTML «bankTransferLimit»: {enabled: true, min: 100} y «Aktuell ist der Ankauf von Aktien aufgrund eines Wartungsfensters deaktiviert»."
     },
     {
       "apis": [
@@ -156,30 +134,6 @@
     {
       "apis": [
         "https://api.app.brickwise.at/api/v2/assets",
-        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40"
-      ],
-      "persona": "https://app.brickwise.at/desktopWeb/marketplace",
-      "ofertas": [
-        "fotovoltaica-cohotel"
-      ],
-      "queMuestra": "Mercado de la app de Brickwise en el navegador (ya era la dirección de la oferta): cada inmueble con su rentabilidad esperada, el precio o la inversión mínima y si se negocia. Este activo no tiene página propia en brickwise.at.",
-      "comprobado": "Chrome sin interfaz, 04/11/2026, sin iniciar sesión: «Photovoltaik Anlage Cohotel mit Überschussbeteiligung Gewerbeallee 15, Steyregg 5,57 % p.a. Erw. laufende Ausschüttung Preis pro Anteil ab € 110,00 Laufzeit: 30.12.2038 Ausschüttungen erw. ab: 15.2.2024 Handel aktiv». www.brickwise.at/assets/at0000a38j40 da 404."
-    },
-    {
-      "apis": [
-        "https://api.app.brickwise.at/api/v2/assets",
-        "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32"
-      ],
-      "persona": "https://app.brickwise.at/desktopWeb/marketplace",
-      "ofertas": [
-        "fotovoltaica-greenpoint"
-      ],
-      "queMuestra": "Mercado de la app de Brickwise en el navegador (ya era la dirección de la oferta): cada inmueble con su rentabilidad esperada, el precio o la inversión mínima y si se negocia. Este activo no tiene página propia en brickwise.at.",
-      "comprobado": "Chrome sin interfaz, 04/11/2026, sin iniciar sesión: «Photovoltaik Anlage GreenPoint mit Überschussbeteiligung Pottendorfer Straße 62, Wiener Neustadt 6,11 % p.a. Erw. laufende Ausschüttung Preis pro Anteil ab € 100,00 Laufzeit: 30.12.2038 Ausschüttungen erw. ab: 14.2.2024 Handel aktiv». www.brickwise.at/assets/at0000a38j32 da 404."
-    },
-    {
-      "apis": [
-        "https://api.app.brickwise.at/api/v2/assets",
         "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84"
       ],
       "persona": "https://www.brickwise.at/assets/at0000a2zt84",
@@ -203,14 +157,13 @@
     },
     {
       "apis": [
-        "https://api.app.brickwise.at/api/v2/assets",
         "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89"
       ],
       "persona": "https://app.brickwise.at/desktopWeb/marketplace",
       "ofertas": [
         "terreno-con-arrendamiento-billa"
       ],
-      "queMuestra": "Mercado de la app de Brickwise en el navegador (ya era la dirección de la oferta): cada inmueble con su rentabilidad esperada, el precio o la inversión mínima y si se negocia. Este activo no tiene página propia en brickwise.at.",
+      "queMuestra": "Mercado de la app de Brickwise en el navegador (ya era la dirección de la oferta): la rentabilidad esperada del terreno («5,07 % p.a. Erw. laufende Ausschüttung»). Solo para la referencia «Rentabilidad»; el resto de datos de la API no se ven ahí (ver «seQuedan»). Este activo no tiene página propia en brickwise.at.",
       "comprobado": "Chrome sin interfaz, 04/11/2026, sin iniciar sesión: «Betriebsgrundstück mit langfristigem BILLA-Mietvertrag 10. Oktober Straße 2, Brückl 1% 5,07 % p.a. Erw. laufende Ausschüttung Mindestinvestition € 1.000,00 Laufzeit: endlos Ausschüttungen erw. ab: 14.7.2026». www.brickwise.at/assets/at0000a3se89 da 404."
     },
     {
@@ -272,6 +225,33 @@
       ],
       "queMuestra": "Página del inmueble en brickwise.at: rentabilidad corriente esperada, valor de mercado, precio por participación y participaciones disponibles.",
       "comprobado": "Chrome sin interfaz, 04/11/2026: «AT0000A2WCD0 - Stallhofstraße 28, Gratwein … Erw. lfd. Rendite* 4,11% p.a. Marktwert € 239.263,20 Preis pro Anteil € 69,96 Verfügbare Anteile 313». Con curl solo llega la plantilla de la página (con cifras de otro inmueble): los datos los pinta el navegador con la API de la app."
+    },
+    {
+      "apis": [
+        "https://api.app.brickwise.at/api/v2/assets"
+      ],
+      "persona": "https://app.brickwise.at/desktopWeb/marketplace",
+      "ofertas": [
+        "randhartingergasse-9-viena",
+        "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+        "vivienda-sonnleithnergasse-2-viena"
+      ],
+      "referencias": [
+        {
+          "oferta": "randhartingergasse-9-viena",
+          "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026"
+        },
+        {
+          "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+          "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026"
+        },
+        {
+          "oferta": "vivienda-sonnleithnergasse-2-viena",
+          "etiqueta": "Precio más bajo en mercado secundario (API) · 22/10/2026"
+        }
+      ],
+      "queMuestra": "Mercado de la app de Brickwise en el navegador: para cada inmueble, «Preis pro Anteil ab», que es la orden de venta más barata de la reventa. Solo para la referencia «Precio más bajo en mercado secundario»: la página del inmueble enseña otro precio (el de referencia, «Preis pro Anteil»).",
+      "comprobado": "Chrome sin interfaz, 04/11/2026, sin iniciar sesión: «Randhartingergasse 9, Wien 2,38 % p.a. … Preis pro Anteil ab € 78,00 … Handel aktiv», «Wohnung, Pottendorfer Straße 62 TOP 2.06 … Preis pro Anteil ab € 78,00 … Handel aktiv» y «Wohnung, Sonnleithnergasse 2 … Preis pro Anteil ab € 75,00 … Handel aktiv». Las páginas de esos inmuebles enseñan «Preis pro Anteil» 75, 72 y 80 (el precio de referencia de la API, sharePrice)."
     }
   ],
   "radar": [
@@ -306,6 +286,136 @@
         "vivienda-stallhofstra-e-28-gratwein"
       ],
       "motivo": "Libro de órdenes de la app de Brickwise (cuántas órdenes de compra y venta hay y a qué precio). Ninguna página pública lo enseña: la página del inmueble y el mercado de la app muestran el precio desde y las participaciones disponibles, no las órdenes; el detalle solo se ve dentro de la app. Se conserva la dirección de la API y queda anotado."
+    },
+    {
+      "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "ofertas": [
+        "aktionariat"
+      ],
+      "referencias": [
+        {
+          "oferta": "aktionariat",
+          "etiqueta": "Mínimo de inversión · consulta 01/11/2026"
+        },
+        {
+          "oferta": "aktionariat",
+          "etiqueta": "Mínimo de inversión"
+        },
+        {
+          "oferta": "aktionariat",
+          "etiqueta": "Salida · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "El mínimo por transferencia (500 CHF) y el aviso de venta desactivada solo van en la configuración que carga la página /invest; no se ven en pantalla ni en /invest ni en /trade (Chrome sin interfaz, 04/11/2026: solo «Number of Shares … Price per DAKS 7.25 CHF … Payment Method»). Se conserva la dirección de la API. El precio por acción y «All Trades» sí se ven y enlazan /invest y /trade."
+    },
+    {
+      "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "ofertas": [
+        "boss-info"
+      ],
+      "referencias": [
+        {
+          "oferta": "boss-info",
+          "etiqueta": "Mínimo de inversión · consulta 01/11/2026"
+        },
+        {
+          "oferta": "boss-info",
+          "etiqueta": "Mínimo de inversión"
+        },
+        {
+          "oferta": "boss-info",
+          "etiqueta": "Salida · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "El mínimo por transferencia (100 CHF) y el aviso de compra desactivada por mantenimiento solo van en la configuración que carga la página /invest; no se ven en pantalla ni en /invest ni en /trade. Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://api.app.brickwise.at/api/v2/assets",
+      "ofertas": [
+        "fotovoltaica-cohotel",
+        "fotovoltaica-greenpoint",
+        "terreno-con-arrendamiento-billa",
+        "randhartingergasse-9-viena",
+        "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+        "vivienda-sonnleithnergasse-2-viena"
+      ],
+      "referencias": [
+        {
+          "oferta": "fotovoltaica-cohotel",
+          "etiqueta": "Precio · consulta 01/11/2026"
+        },
+        {
+          "oferta": "fotovoltaica-cohotel",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026"
+        },
+        {
+          "oferta": "fotovoltaica-greenpoint",
+          "etiqueta": "Precio · consulta 01/11/2026"
+        },
+        {
+          "oferta": "fotovoltaica-greenpoint",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Precio de emisión por participación (API) · 22/10/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Estado de la oferta · consulta 01/11/2026"
+        },
+        {
+          "oferta": "terreno-con-arrendamiento-billa",
+          "etiqueta": "Riesgos · consulta 01/11/2026"
+        },
+        {
+          "oferta": "randhartingergasse-9-viena",
+          "etiqueta": "Precio de emisión por participación (API) · 22/10/2026"
+        },
+        {
+          "oferta": "randhartingergasse-9-viena",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        },
+        {
+          "oferta": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        },
+        {
+          "oferta": "vivienda-sonnleithnergasse-2-viena",
+          "etiqueta": "Participaciones disponibles en emisión (API) · 22/10/2026"
+        }
+      ],
+      "motivo": "Ninguna página pública enseña estos datos tal cual: el precio de referencia (sharePrice) de Cohotel y GreenPoint, el precio de emisión, las participaciones disponibles en la emisión, la etapa de la oferta ni el enlace a las condiciones. El mercado de la app enseña otra medida (el precio desde de la reventa: Cohotel «ab € 110,00» frente a 120; GreenPoint «ab € 100,00» frente a 95), y la página del inmueble, las participaciones disponibles en la reventa (Randhartingergasse «Verfügbare Anteile 558» frente a 374 de la emisión). Cohotel, GreenPoint y Billa no tienen página propia (404). Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+      "ofertas": [
+        "fotovoltaica-cohotel"
+      ],
+      "referencias": [
+        {
+          "oferta": "fotovoltaica-cohotel",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "La rentabilidad que calcula la API (5,11 %, con 120 € por participación) no se ve en ninguna página: el mercado enseña otra medida, la distribución anual esperada («5,57 % p.a.»), y Cohotel no tiene página propia. Se conserva la dirección de la API."
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+      "ofertas": [
+        "fotovoltaica-greenpoint"
+      ],
+      "referencias": [
+        {
+          "oferta": "fotovoltaica-greenpoint",
+          "etiqueta": "Rentabilidad · consulta 01/11/2026"
+        }
+      ],
+      "motivo": "La rentabilidad que calcula la API (6,43 %, con 95 € por participación) no se ve en ninguna página: el mercado enseña otra medida, la distribución anual esperada («6,11 % p.a.»), y GreenPoint no tiene página propia. Se conserva la dirección de la API."
     },
     {
       "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
