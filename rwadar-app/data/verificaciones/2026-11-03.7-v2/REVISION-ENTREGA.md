@@ -55,3 +55,26 @@ tiene que verlo otra revisión antes de aplicar (paso 1 del §7).
   con `--con-textos-plataformas`, `d2fecfefa50b43ae6d6e3e38fb328da893e9a842fbb049e6e54f432cc3306da1`.
 - `textos-plataformas.sql`: `3c762ccd348edeb57fa674562a6a1a7c65a5752fe336cd203f8c10f1b4911acc`.
 - `comprobar-entrega.mjs`: correcto en las dos variantes (14 OK).
+
+## Segunda revisión independiente (04/11/2026, tarde)
+
+Revisor aparte, sobre copias (`git archive`) y con las fuentes abiertas de nuevo
+(WebFetch, curl o Chrome sin interfaz, sin saltar muros).
+
+- **15 textos «(corrección)»:** 14 dicen lo mismo que su fuente. Centrifuge se
+  retoca: «la licencia, si la hay, es del vehículo de cada fondo» afirmaba más
+  que la fuente. Ahora dice «la licencia que pueda tener el vehículo de un fondo
+  no es de Centrifuge» (fuente: «Neither Centrifuge nor any affiliated entity is
+  licensed in your jurisdiction»).
+- **Fila 19 («Mercado de compraventa»):** correcta. Solo cambia lo que se
+  enseña; la base sigue guardando «Marketplace».
+- **Variante con textos de `public.plataformas`:** no se aplica en esta
+  entrega. El motivo nuevo de RealT dice más que su fuente. Reental, Toucan y
+  RealT quedan para otra entrega.
+- **Tras el retoque de Centrifuge** (variante sin textos):
+  - revisión `f2732257-206d-48ce-2067-c7e19fa33002`, previa `344a86aa`;
+  - `aplicar-y-aprobar.sql`
+    `458c2bb64fb329c77a99d250f7b9fc274e85f42e2c24d05269a2b7c86db25810`;
+  - 58 cambios y 24 ofertas (8/13/3). `comprobar-entrega.mjs`: correcto.
+
+Esta sección sustituye a la revisión `bd1f873b` y al SHA `d57b5dbc` citados arriba.

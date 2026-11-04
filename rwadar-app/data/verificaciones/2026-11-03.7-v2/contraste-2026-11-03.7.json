@@ -4,11 +4,11 @@
   "preparadaEl": "2026-11-04",
   "etiqueta": "2026-11-03.7",
   "revisionAnterior": "344a86aa-2c53-d2f0-fed4-5fdaadda33ad",
-  "revisionNueva": "bd1f873b-95ec-2d2e-1fb5-17ccb505e283",
+  "revisionNueva": "f2732257-206d-48ce-2067-c7e19fa33002",
   "decision": "Víctor, 04/11/2026: «hasta que no esté todo no has acabado». Faltaban los textos del catálogo de la lista de frases (filas 11, 12, 18, 19 y 75, anexos A y B) y RealT.",
   "textos": {
     "archivo": "textos-lector.json",
-    "sha256": "7e780048b67e136693e08fa3b23c0150337965d5e547331c1e5b2e6da7f9a7ff"
+    "sha256": "fa4c9009e8df130b61935e4d2c066e5bb83717cd0cc1140374e9959ed069d289"
   },
   "cuentas": {
     "avisos": 26,
@@ -206,7 +206,7 @@
       "plataforma": "centrifuge",
       "campo": "alerta:protocolo_no_emisor",
       "antes": "Verificar cada fondo, emisor, jurisdicción y documento de oferta; no atribuir al protocolo la licencia del vehículo.",
-      "despues": "Centrifuge es el protocolo, no el emisor: la licencia, si la hay, es del vehículo de cada fondo, no de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta.",
+      "despues": "Centrifuge es el protocolo, no el emisor: la licencia que pueda tener el vehículo de un fondo no es de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta.",
       "fuentes": [
         {
           "id": "centrifuge-terms",

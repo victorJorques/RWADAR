@@ -433,7 +433,7 @@
         "alertasCriticas": [
           {
             "codigo": "protocolo_no_emisor",
-            "detalle": "Centrifuge es el protocolo, no el emisor: la licencia, si la hay, es del vehículo de cada fondo, no de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta.",
+            "detalle": "Centrifuge es el protocolo, no el emisor: la licencia que pueda tener el vehículo de un fondo no es de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta.",
             "fuentes": [
               {
                 "id": "centrifuge-terms",

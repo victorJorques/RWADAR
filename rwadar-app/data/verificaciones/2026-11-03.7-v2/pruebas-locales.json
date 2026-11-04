@@ -1,9 +1,9 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-04T15:39:31.848Z",
-  "revisionId": "bd1f873b-95ec-2d2e-1fb5-17ccb505e283",
+  "ejecutadoEl": "2026-11-04T16:20:20.746Z",
+  "revisionId": "f2732257-206d-48ce-2067-c7e19fa33002",
   "revisionAnterior": "344a86aa-2c53-d2f0-fed4-5fdaadda33ad",
-  "sha256AplicarYAprobar": "d57b5dbce55abfb80f227ef8e467b4e01c8679aa5c9fb9d507fa5f85391a2e2c",
+  "sha256AplicarYAprobar": "458c2bb64fb329c77a99d250f7b9fc274e85f42e2c24d05269a2b7c86db25810",
   "sha256TextosPlataformas": "3c762ccd348edeb57fa674562a6a1a7c65a5752fe336cd203f8c10f1b4911acc",
   "textosPlataformasEnAplicador": false,
   "pruebas": [
