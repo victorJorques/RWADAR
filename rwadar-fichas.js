@@ -41,6 +41,30 @@ const rutaPlataforma = p => '/plataformas/' + p.slug;
 // «Marketplace» es un valor fijo del catálogo (rwa_actor); se lee «Mercado de compraventa»
 // (LISTA-FINAL fila 19), como en la web. El valor de la base no cambia.
 const tipoEmpresaVisible = t => t === 'Marketplace' ? 'Mercado de compraventa' : t;
+/* Una consulta técnica (una API o una respuesta en JSON) sirve para comprobar
+   un dato, pero no es una página para personas: abrirla da un error o datos en
+   bruto. No se enlaza; se lee «Consulta técnica» con su fecha (QA 04/11/2026,
+   n.º 12). La misma regla está en la web (rwadar-20260820.js) y en ficha-pagina. */
+function consultaTecnica(url) {
+  try {
+    const u = new URL(String(url));
+    return /(?:^|\/)api(?:\/|$)/i.test(u.pathname) || /\.json$/i.test(u.pathname) ||
+      /(?:^|&)(?:format|output)=json(?:&|$)/i.test(u.search.slice(1));
+  } catch { return false; }
+}
+const desescapa = t => String(t).replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+function sinEnlacesTecnicos(html, fechaDe = () => null) {
+  return String(html).replace(/<a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>(?: <span>· consultada el (\d{2}\/\d{2}\/\d{4})<\/span>)?/g,
+    (todo, href, interior, consultada) => {
+      const url = desescapa(href);
+      if (!consultaTecnica(url)) return todo;
+      // El título (ya escapado) se conserva; «Abrir fuente», «Fuente ↗» y la flecha, no.
+      const titulo = interior.replace(/<[^>]*>/g, '').replace(/\s*↗\s*$/, '').trim()
+        .replace(/^(?:Abrir fuente|Ver fuente|Fuente)(?:\s·\s|$)/, '').trim();
+      const f = consultada || (fecha(fechaDe(url)) ? corta(fechaDe(url)) : '');
+      return '<span class="consulta-tecnica">' + (titulo ? titulo + ' · ' : '') + '<span>Consulta técnica</span>' + (f ? ' · ' + f : '') + '</span>';
+    });
+}
 
 function leerBloquesCatalogo(codigo) {
   const ast = parse(codigo, {ecmaVersion:'latest'});
@@ -146,7 +170,7 @@ function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',org
     '<meta property="og:description" content="'+esc(descripcionMeta)+'"><meta property="og:url" content="'+ORIGEN+ruta+'">\n' +
     '<meta property="og:image" content="'+ORIGEN+imagen+'"><meta name="theme-color" content="#10100e">\n' +
     '<link rel="alternate" type="application/rss+xml" title="Novedades de RWAdar" href="/novedades.xml">\n' +
-    '<link rel="stylesheet" href="/'+CSS+'"><link rel="stylesheet" href="/assets/idioma-20261022.css">\n<script type="application/ld+json">'+json(datos)+'</script>\n' +
+    '<script src="/assets/idioma-previo-20261104.js"></script><link rel="stylesheet" href="/'+CSS+'"><link rel="stylesheet" href="/assets/idioma-20261022.css">\n<script type="application/ld+json">'+json(datos)+'</script>\n' +
     (oferta ? '<script src="/'+COMPARTIDO+'" defer></script>\n' : '') +
     '<script src="/assets/idioma-en-20261022.js" defer></script><script src="/assets/idioma-20261022.js" defer></script><script src="/assets/idioma-web-20261022.js" defer></script>\n'+
     (oferta ? '<script src="/'+JS+'" defer></script>\n' : '') +

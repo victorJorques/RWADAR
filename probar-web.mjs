@@ -678,11 +678,14 @@ const estilos = [...html.matchAll(/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhr
 const rutaScriptApp = '/assets/rwadar-20260820.js';
 const rutaAnalitica = '/assets/analitica-20260927.js';
 const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
-prueba('acceso, analítica, mapa, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
-  JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaAnalitica, '/assets/acceso-privado.js',
+// idioma-previo va en <head> y sin defer: tiene que marcar el inglés antes de pintar.
+const rutaIdiomaPrevio = '/assets/idioma-previo-20261104.js';
+prueba('idioma previo en head; acceso, analítica, mapa, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
+  JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaIdiomaPrevio, rutaAnalitica, '/assets/acceso-privado.js',
     '/assets/mapa-buscar-util-20261027.js','/assets/mapa-buscar-20261027.js',rutaCatalogo,
     '/assets/ficha-editorial-20261022.js','/assets/idioma-en-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js','/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js',rutaScriptApp]) &&
-  scripts.every(script => /\bdefer\b/.test(script[0]) && !/\basync\b/.test(script[0])));
+  html.indexOf(rutaIdiomaPrevio) < html.indexOf('</head>') && !/\b(?:defer|async)\b/.test(scripts[0][0]) &&
+  scripts.slice(1).every(script => /\bdefer\b/.test(script[0]) && !/\basync\b/.test(script[0])));
 prueba('las cuatro hojas propias versionadas cargan en el orden declarado',
   JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
     '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css']));
@@ -727,6 +730,39 @@ prueba('el pre-render contiene los 4 descartes', (html.match(/class="fila"/g) ||
       cola.length === 0 && nodos.every((n, i) => n.textContent === textos[i]) && !todos.some(t => /NaN/.test(t)) &&
       nodos[0].vistos.every(t => t === textos[0]) && nodos[1].vistos.some(t => t !== '26') && nodos[1].vistos.every(t => /^\d+$/.test(t)));
   }
+}
+// QA escritorio 04/11/2026, n.º 7: en inglés la página nace con lang="en" y
+// oculta hasta traducirse; nunca más de 1,5 s y nunca en castellano.
+{
+  const codigoPrevio = lee('assets/idioma-previo-20261104.js');
+  const ensayo = (guardado, pasos) => {
+    const clases = new Set(), eventos = {}, relojes = [];
+    const raiz = { lang: 'es', classList: { add: c => clases.add(c), remove: c => clases.delete(c) } };
+    const contexto = vm.createContext({
+      localStorage: { getItem: k => { if (guardado instanceof Error) throw guardado; return k === 'rwadar.idioma' ? guardado : null; } },
+      document: { documentElement: raiz, addEventListener: (t, fn) => { eventos[t] = fn; } },
+      setTimeout: (fn, ms) => relojes.push([fn, ms]),
+    });
+    contexto.globalThis = contexto;
+    vm.runInContext(codigoPrevio, contexto);
+    const inicial = { lang: raiz.lang, oculta: clases.has('idioma-previo') };
+    pasos({ eventos, relojes, listo: () => contexto.RWAdarIdiomaListo && contexto.RWAdarIdiomaListo() });
+    return { inicial, final: { lang: raiz.lang, oculta: clases.has('idioma-previo') }, relojes };
+  };
+  const traducida = ensayo('en', ({ eventos, listo }) => { listo(); eventos.DOMContentLoaded(); });
+  const soloTraducida = ensayo('en', ({ listo }) => listo());
+  const tope = ensayo('en', ({ relojes }) => relojes.forEach(([fn]) => fn()));
+  const castellano = ensayo('es', () => {});
+  const sinAlmacen = ensayo(new Error('bloqueado'), () => {});
+  prueba('idioma-previo oculta la página en inglés solo hasta traducirla y cargarla, con tope de 1,5 s',
+    traducida.inicial.lang === 'en' && traducida.inicial.oculta && !traducida.final.oculta &&
+    soloTraducida.final.oculta && tope.relojes.length === 1 && tope.relojes[0][1] === 1500 && !tope.final.oculta &&
+    castellano.inicial.lang === 'es' && !castellano.inicial.oculta && castellano.relojes.length === 0 &&
+    !sinAlmacen.inicial.oculta && sinAlmacen.inicial.lang === 'es');
+  prueba('idioma-web avisa a idioma-previo cuando termina la primera traducción',
+    /cargarIdioma\(almacenamiento\)\.then\(\(\)=>\{actualizar\(\);[^}]*RWAdarIdiomaListo\(\)/.test(lee('assets/idioma-web-20261022.js')) &&
+    /html\.idioma-previo body\{visibility:hidden\}/.test(lee('assets/idioma-20261022.css')) &&
+    ARCHIVOS_PUBLICABLES.includes('assets/idioma-previo-20261104.js'));
 }
 prueba('todos los formularios fallan cerrados bajo form-action none',
   [...html.matchAll(/<form\b([^>]*)>/gi)].every(m => !/\baction\s*=/i.test(m[1])));
