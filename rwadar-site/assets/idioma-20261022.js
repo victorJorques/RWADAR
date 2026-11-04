@@ -63,6 +63,7 @@
           [/^Lección (\d+): (.+)\. Próximamente$/,(m,n,ti)=>'Lesson '+n+': '+t(ti)+'. Coming soon'],
           [/^Lección (\d+): (.+)\. (\d+) minutos\.(?: (.+)\.)?$/,(m,n,ti,min,e)=>'Lesson '+n+': '+t(ti)+'. '+min+' minutes.'+(e?' '+t(e)+'.':'')],
           [/^(Anterior|Siguiente): lección (\d+), (.+)$/,(m,a,n,ti)=>(a==='Anterior'?'Previous':'Next')+': lesson '+n+', '+t(ti)],
+          [/^(.+): próximamente$/,(m,n)=>t(n)+': coming soon'],
           [/^LECCIÓN (\d+) →$/,(m,n)=>'LESSON '+n+' →'],
           [/^← LECCIÓN (\d+)$/,(m,n)=>'← LESSON '+n],
           [/^([A-D])\. (.+?)\. Respuesta (correcta|incorrecta)$/,(m,l,o,r)=>l+'. '+t(o)+'. '+(r==='correcta'?'Correct answer':'Incorrect answer')],
